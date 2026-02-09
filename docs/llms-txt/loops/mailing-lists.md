@@ -1,5 +1,9 @@
 # Source: https://loops.so/docs/contacts/mailing-lists.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://loops.so/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # List management
 
 > Organise contacts and offer a subscriber preference center with mailing lists.
@@ -189,8 +193,8 @@ This example is a typical use case of sending an email sequence to new contacts 
 How to add existing contacts to your different mailing lists within Loops.
 
 <Warning>
-  You cannot edit the list subscriptions of contacts who have been unsubscribed
-  from your audience. Likewise, if a contact unsubscribes from a list via the
+  You cannot add contacts to mailing lists if they are unsubscribed from your audience.\
+  Likewise, if a contact unsubscribes from a list via the
   Preference Center, they cannot be resubscribed by your team.
 </Warning>
 
@@ -245,6 +249,12 @@ In the final stage of the form you can select a list, which will add all contact
 ### Add contacts to lists with the API
 
 Utilizing the [Loops API](/api-reference) you can programmatically add and remove contacts to and from Lists.
+
+<Warning>
+  You cannot add contacts to mailing lists if they are unsubscribed from your audience.\
+  Likewise, if a contact unsubscribes from a list via the
+  Preference Center, they cannot be resubscribed by your team.
+</Warning>
 
 When [creating a contact](/api-reference/create-contact), [updating a contact](/api-reference/update-contact), or [sending an event](/api-reference/send-event) with the API, you can include a `mailingLists` object in the payload.
 

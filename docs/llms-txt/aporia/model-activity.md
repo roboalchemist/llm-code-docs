@@ -2,10 +2,6 @@
 
 # Source: https://docs.aporia.com/v1/monitors/model-activity.md
 
-# Source: https://docs.aporia.com/monitors-and-alerts/model-activity.md
-
-# Source: https://docs.aporia.com/v1/monitors/model-activity.md
-
 # Model Activity
 
 ### Why Monitor Model Activity?

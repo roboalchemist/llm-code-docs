@@ -75,7 +75,7 @@ Once these have been connected to Linear, any users added to the group will be g
 * You can rename these groups from your IDP after you've pushed them at first as `linear-owners` (if applicable), `linear-admins` and `linear-guests`
 * You will not be able to assign or edit admin or guest roles manually when this link is in place.
 
-If your workspace already uses SCIM and is now migrating to an Enterprise plan for the first time, follow [this migration guide](https://linear.app/docs/members-roles#changes-when-upgrading-to-the-enterprise-plan) to make sure both Owner and Admin roles get provisioned correctly going forward.
+If your workspace already uses SCIM and is now migrating to an Enterprise plan for the first time, follow [this migration guide](https://linear.app/docs/changes-to-user-roles-when-upgrading-to-enterprise) to make sure both Owner and Admin roles get provisioned correctly going forward.
 
 > [!NOTE]
 > **Guest Exceptions**
@@ -85,7 +85,7 @@ If your workspace already uses SCIM and is now migrating to an Enterprise plan f
 > 
 > For Guests added before this was an option, you can use the ... menu on the Members page to unlink their account from your identity provider and manage them in Linear.
 
-### SCIM Sync
+## SCIM Sync
 
 Linear keeps the following user and team properties in Linear up to date in near real time when we receive SCIM updates from your IDP. 
 
@@ -93,7 +93,7 @@ Linear keeps the following user and team properties in Linear up to date in near
 
 * **Email (`userName`):** primary identifier; must be a valid email. SCIM updates are accepted when the email domains are claimed by your workspace. 
 * **Full Name:** resolved in order: `name.formatted` → `name.givenName + name.familyName` → `displayName`
-* **Username:** updated from `displayName`. Linear ensures uniqueness by appending a number when needed.
+* **Username/Nickname:** updated from `displayName`. Linear ensures uniqueness by appending a number when needed.
 * **Active:**  `active: false` suspends the user; `active: true` unsuspends.
 * **Avatar:** updated from `avatarUrl` or `photos[].value` 
 

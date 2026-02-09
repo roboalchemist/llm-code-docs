@@ -1,5 +1,9 @@
 # Source: https://upstash.com/docs/workflow/basics/client/waiters.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # client.getWaiters
 
 The `getWaiters` method retrieves all waiters that are currently listening for a given event.

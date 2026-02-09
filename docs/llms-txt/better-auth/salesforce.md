@@ -4,11 +4,7 @@
 
 Salesforce provider setup and usage.
 
-***
 
-title: Salesforce
-description: Salesforce provider setup and usage.
--------------------------------------------------
 
 <Steps>
   <Step>

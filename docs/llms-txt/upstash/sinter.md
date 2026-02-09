@@ -2,23 +2,9 @@
 
 # Source: https://upstash.com/docs/redis/sdks/py/commands/set/sinter.md
 
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/set/sinter.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/set/sinter.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/set/sinter.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/set/sinter.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/set/sinter.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/set/sinter.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/set/sinter.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/set/sinter.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/set/sinter.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # SINTER
 
@@ -26,21 +12,21 @@
 
 ## Arguments
 
-<ParamField body="keys" type="...string[]" required>
+<ParamField body="keys" type="*List[str]" required>
   The keys of the sets to perform the intersection operation on.
 </ParamField>
 
 ## Response
 
-<ResponseField type="TValue[]" required>
-  The members of the resulting set.
+<ResponseField type="set[str]" required>
+  The resulting set.
 </ResponseField>
 
 <RequestExample>
-  ```ts Example  theme={"system"}
-  await redis.sadd("set1", "a", "b", "c"); 
-  await redis.sadd("set2", "c", "d", "e"); 
-  const intersection =  await redis.sinter("set1", "set2");
-  console.log(intersection); // ["c"]
+  ```py Example  theme={"system"}
+  redis.sadd("set1", "a", "b", "c"); 
+  redis.sadd("set2", "c", "d", "e"); 
+
+  assert redis.sinter("set1", "set2") == {"c"}
   ```
 </RequestExample>

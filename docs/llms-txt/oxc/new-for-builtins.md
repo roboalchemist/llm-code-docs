@@ -3,7 +3,6 @@
 ---
 url: /docs/guide/usage/linter/rules/unicorn/new-for-builtins.md
 ---
-# unicorn/new-for-builtins&#x20;
 
 ### What it does
 

@@ -2,10 +2,6 @@
 
 # Source: https://docs.kaisar.io/kaisar-network/kaisar-architecture/products/kaisar-onenode/kaisar-provider/what-is-kaisar-provider/introduction.md
 
-# Source: https://docs.kaisar.io/kaisar-network/kaisar-architecture/products/kaisar-onenode/kaisar-checker/what-is-the-kaisar-checker-node/introduction.md
-
-# Source: https://docs.kaisar.io/kaisar-network/kaisar-architecture/products/kaisar-onenode/kaisar-provider/what-is-kaisar-provider/introduction.md
-
 # Introduction
 
 As a Kaisar Provider on Kaisar Network, you contribute to supporting and expanding the network, ensuring businesses and developers have reliable access to the computational power they need to run their workloads seamlessly and efficiently.

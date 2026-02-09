@@ -305,7 +305,7 @@ content.proton.documentdb.matching.rank_profile.queries
 **Memory usage**:
 - documentdb: _vespa.content.proton.documentdb.memory\_usage.allocated\_bytes.last_
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ### On this page:
 

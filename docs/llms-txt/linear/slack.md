@@ -55,9 +55,6 @@ Linear's Enterprise plan supports connecting multiple Slack workspaces to Linear
 
 ## Linear agent for Slack
 
-> [!NOTE]
-> This agent is available on [Business](https://linear.app/pricing) and [Enterprise](https://linear.app/pricing) plans.
-
 Mention `@linear` in discussions on Slack, and the Linear agent will create issues informed by your conversation's context. Use natural language to specify issue details or simply let the agent infer what's needed.
 
 For example, try:
@@ -67,6 +64,9 @@ For example, try:
 * @linear file to the Rideshare Loyalty project
 
 To use this functionality, send `/invite @linear` to the desired Slack channel before sending. This feature is available to users in your Slack workspace with Linear accounts.
+
+> [!NOTE]
+> To use Linear Agent in group DMs, you have to invite the Linear Agent at the creation of group DM.
 
 ### Set Linear agent guidance
 
@@ -96,7 +96,7 @@ Templates in private teams are not available to the Slack integration (nor in ot
 ![Image showing a synced thread in Linear that also posts to Slack](https://webassets.linear.app/images/ornj730p/production/fa1449871ae3ec87e600bd34708505162578c054-5760x3538.png?q=95&auto=format&dpr=2)
 
 > [!NOTE]
-> To use synced threads in private channels, invite the integration using `/invite @Linear`. Synced threads is not available when using `/linear` or in DMs that don't include Linear.
+> To use synced threads in private channels, invite the integration using `/invite @Linear`. Synced threads are not available in DMs.
 
 To create a synced thread, create an issue from Slack through the _More actions_ menu on a Slack message. 
 
@@ -194,11 +194,6 @@ We do have an integration which enables non-Linear users to create issues for wo
 </details>
 
 <details>
-<summary>Can I import custom emoji from Slack to Linear?</summary>
-Go to [workspace settings](https://linear.app/settings/emojis) to import your team's favorite emoji to Linear. This is great for building team morale and creating a consistent experience in your team's workflow.
-</details>
-
-<details>
 <summary>Can I get in touch with Linear's team on Slack? </summary>
 Yes! Separate from the integration, you can also [join our community](https://linear.app/join-slack) on Slack! We have a community of Linear users who share tips, feedback, and discuss how they're using Linear with their team. There's also an #api channel for people building apps on our GraphQL API.
 </details>
@@ -220,6 +215,18 @@ Yes, you can link an existing Slack thread to a Linear issue over our API. To do
 
 <details>
 <summary>Slack URLs aren't unfurling in Linear after installing this integration</summary>
+If you are not seeing the expected preview of Linear issues in Slack, please check the following: 
+
+#### Slack Preferences
+
+Certain preview types may be blocked by Slack’s Messages and Media settings.   
+  
+If you are seeing an empty preview block in Slack when a Linear issue is mentioned, please toggle on “Show text previews of linked websites” in your Slack Preferences > Messages & Media > In-line media and links
+
+![Slack Messages and Media Settings toggled on](https://webassets.linear.app/images/ornj730p/production/459fe5bfcd919ab55ead0bd67b6dab71d42e7898-377x153.png?q=95&auto=format&dpr=2)
+
+#### Installation Order
+
 If your org installed Linear Asks first and the Slack integration discussed on this page second, unfurls will not work for the regular Slack integration. To fix this:
 
 1. Disconnect both the Asks and Slack integrations from Linear.

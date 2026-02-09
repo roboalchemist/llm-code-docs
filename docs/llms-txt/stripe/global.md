@@ -26,7 +26,9 @@ Stripe Issuing is live with local Issuance in 22 countries. [Contact us ](https:
 - AT
 - BE
 - CY
+- CZ
 - DE
+- DK
 - EE
 - ES
 - FI
@@ -34,6 +36,7 @@ Stripe Issuing is live with local Issuance in 22 countries. [Contact us ](https:
 - GB
 - GR
 - HR
+- HU
 - IE
 - IT
 - LT
@@ -41,7 +44,11 @@ Stripe Issuing is live with local Issuance in 22 countries. [Contact us ](https:
 - LV
 - MT
 - NL
+- NO
+- PL
 - PT
+- RO
+- SE
 - SI
 - SK
 - US

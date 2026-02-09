@@ -1,5 +1,9 @@
 # Source: https://docs.ultravox.ai/tools/custom/durable-vs-temporary-tools.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.ultravox.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Durable vs. Temporary Tools
 
 > Understand when to use durable tools versus temporary tools for different development stages and use cases.
@@ -220,8 +224,3 @@ Durable tools are added at call creation time via the `selectedTools` array and 
     ```
   </Step>
 </Steps>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.ultravox.ai/llms.txt

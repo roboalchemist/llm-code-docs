@@ -1,5 +1,9 @@
 # Source: https://upstash.com/docs/workflow/howto/local-development/development-server.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Development Server
 
 Upstash Workflow is built on top of Upstash QStash.
@@ -36,7 +40,7 @@ The QStash CLI provides a local development server that performs QStash function
   <Step title="Enable Local Mode on Console">
     Once you start the local server, you can go to the Workflow tab on Upstash Console and enable local mode, which will allow you to monitor and debug workflow runs with the local server.
 
-    <img src="https://mintcdn.com/upstash/4dTuKpm1gmYgMWQj/img/workflow/local-mode-workflow.png?fit=max&auto=format&n=4dTuKpm1gmYgMWQj&q=85&s=a2d6c7bd6c94fc93185aa45b57f5edfb" data-og-width="1210" width="1210" data-og-height="604" height="604" data-path="img/workflow/local-mode-workflow.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/upstash/4dTuKpm1gmYgMWQj/img/workflow/local-mode-workflow.png?w=280&fit=max&auto=format&n=4dTuKpm1gmYgMWQj&q=85&s=d9daf6c1bb467a2a465ea1982966a894 280w, https://mintcdn.com/upstash/4dTuKpm1gmYgMWQj/img/workflow/local-mode-workflow.png?w=560&fit=max&auto=format&n=4dTuKpm1gmYgMWQj&q=85&s=e9afd21ebc5c3647450e33dc4cb2a415 560w, https://mintcdn.com/upstash/4dTuKpm1gmYgMWQj/img/workflow/local-mode-workflow.png?w=840&fit=max&auto=format&n=4dTuKpm1gmYgMWQj&q=85&s=5cbd4227495ac09bca6110dd6ca4bda8 840w, https://mintcdn.com/upstash/4dTuKpm1gmYgMWQj/img/workflow/local-mode-workflow.png?w=1100&fit=max&auto=format&n=4dTuKpm1gmYgMWQj&q=85&s=c29dfcfe63bf66f035c9920970c5dba6 1100w, https://mintcdn.com/upstash/4dTuKpm1gmYgMWQj/img/workflow/local-mode-workflow.png?w=1650&fit=max&auto=format&n=4dTuKpm1gmYgMWQj&q=85&s=1dc3832b0c4b7f7f581dbeba0a9689a7 1650w, https://mintcdn.com/upstash/4dTuKpm1gmYgMWQj/img/workflow/local-mode-workflow.png?w=2500&fit=max&auto=format&n=4dTuKpm1gmYgMWQj&q=85&s=214bc906830095012847bc0b05834134 2500w" />
+    <img src="https://mintcdn.com/upstash/0HG5ARygt5BXCm9S/img/workflow/local-mode-workflow.png?fit=max&auto=format&n=0HG5ARygt5BXCm9S&q=85&s=fe713991a7fd41c24edde7e1e56b5f7e" data-og-width="2042" width="2042" data-og-height="1668" height="1668" data-path="img/workflow/local-mode-workflow.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/upstash/0HG5ARygt5BXCm9S/img/workflow/local-mode-workflow.png?w=280&fit=max&auto=format&n=0HG5ARygt5BXCm9S&q=85&s=46b588d9eb3784bc997c411756341b0e 280w, https://mintcdn.com/upstash/0HG5ARygt5BXCm9S/img/workflow/local-mode-workflow.png?w=560&fit=max&auto=format&n=0HG5ARygt5BXCm9S&q=85&s=1147a5e8df93dbca1035c77e0385c9f3 560w, https://mintcdn.com/upstash/0HG5ARygt5BXCm9S/img/workflow/local-mode-workflow.png?w=840&fit=max&auto=format&n=0HG5ARygt5BXCm9S&q=85&s=fa937e0edc160893bad21263d72e6d7b 840w, https://mintcdn.com/upstash/0HG5ARygt5BXCm9S/img/workflow/local-mode-workflow.png?w=1100&fit=max&auto=format&n=0HG5ARygt5BXCm9S&q=85&s=72811c595a9c144b2cac4e4e3bea0403 1100w, https://mintcdn.com/upstash/0HG5ARygt5BXCm9S/img/workflow/local-mode-workflow.png?w=1650&fit=max&auto=format&n=0HG5ARygt5BXCm9S&q=85&s=ad8a59a80b1001738a16a92b1723a9c9 1650w, https://mintcdn.com/upstash/0HG5ARygt5BXCm9S/img/workflow/local-mode-workflow.png?w=2500&fit=max&auto=format&n=0HG5ARygt5BXCm9S&q=85&s=c7f0612a6ea8e13dd808c9703b548820 2500w" />
   </Step>
 
   <Step title="Update Environment Variables">
@@ -62,8 +66,7 @@ The QStash CLI provides a local development server that performs QStash function
 
     const { workflowRunId } = await client.trigger({
         url: `http://localhost:3000/api/workflow`,
-        retries: 3,
-        keepTriggerConfig: true,
+        retries: 3
     });
     ```
 
@@ -83,8 +86,7 @@ The QStash CLI provides a local development server that performs QStash function
 
       const { workflowRunId } = await client.trigger({
           url: `${BASE_URL}/api/workflow`,
-          retries: 3,
-          keepTriggerConfig: true,
+          retries: 3
       });
       ```
     </Tip>

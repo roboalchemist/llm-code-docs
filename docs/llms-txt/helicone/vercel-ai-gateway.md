@@ -1,5 +1,9 @@
 # Source: https://docs.helicone.ai/guides/cookbooks/vercel-ai-gateway.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.helicone.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # How to Build a Multi-Model AI Assistant with Vercel AI Gateway and Helicone
 
 > Build a customer support assistant that switches between AI models based on query complexity while tracking costs

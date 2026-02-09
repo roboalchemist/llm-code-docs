@@ -23,7 +23,7 @@ The main tasks in creating a federation solution are:
 3. rewriting the received request to an executable query returning the desired data from each source
 4. creating the final result by selecting from, organizing and combining the returned data from each selected source
 
-The container aids with these tasks by providing a way to organize a federated execution as a set of search chains which can be configured through the application package. Read the [Container intro](../jdisc) and[Chained components](../applications/chaining.html) before proceeding. Refer to the `com.yahoo.search.federation`[Javadoc](https://javadoc.io/doc/com.yahoo.vespa/container-search/latest/com/yahoo/search/federation/package-summary.html).
+The container aids with these tasks by providing a way to organize a federated execution as a set of search chains which can be configured through the application package. Read the [Container intro](../applications/containers.html) and[Chained components](../applications/chaining.html) before proceeding. Refer to the `com.yahoo.search.federation`[Javadoc](https://javadoc.io/doc/com.yahoo.vespa/container-search/latest/com/yahoo/search/federation/package-summary.html).
 
 ## Configuring Providers
 
@@ -579,7 +579,7 @@ public class ResultBlenderTestCase {
 
 This shows how a search chain can be created programmatically, with a mock backend producing results suitable for exercising the functionality of the searcher being tested.
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ### On this page:
 

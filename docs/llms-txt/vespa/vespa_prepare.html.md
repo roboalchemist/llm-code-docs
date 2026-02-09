@@ -35,5 +35,5 @@ vespa prepare [application-directory-or-file] [flags]
 
 - [vespa](vespa.html) - The command-line tool for Vespa.ai
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 

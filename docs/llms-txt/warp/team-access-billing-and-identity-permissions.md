@@ -1,4 +1,4 @@
-# Source: https://docs.warp.dev/platform/team-access-billing-and-identity-permissions.md
+# Source: https://docs.warp.dev/agent-platform/platform/team-access-billing-and-identity-permissions.md
 
 # Team Access, Billing, and Identity Permissions
 
@@ -14,11 +14,11 @@ When someone triggers an ambient agent for the first time, Warp may prompt them 
 
 #### Team and billing requirements
 
-Integrations and [Ambient Agents](https://docs.warp.dev/ambient-agents) run inside Warp’s cloud, which means usage is billed based on [AI credits](https://docs.warp.dev/support-and-billing/plans-and-pricing/ai-credits). Credits are shared at the team level.
+Integrations and [Ambient Agents](https://docs.warp.dev/agent-platform/ambient-agents/ambient-agents-overview) run inside Warp's cloud, which means usage is billed based on [AI credits](https://docs.warp.dev/support-and-community/plans-and-billing/ai-credits). Credits are shared at the team level.
 
 Your team must meet the following requirements to run integrations:
 
-* You must be on a plan that supports **add-on credits** ([add-on-credits](https://docs.warp.dev/support-and-billing/plans-and-pricing/add-on-credits "mention"))&#x20;
+* You must be on a plan that supports [**add-on credits**](https://docs.warp.dev/support-and-community/plans-and-billing/add-on-credits).
   * Supported: **Build, Business**
   * Not supported: Pro, Turbo, Lightspeed, legacy Business.
 * Your team needs at least **20 add-on credits** available to run an integration

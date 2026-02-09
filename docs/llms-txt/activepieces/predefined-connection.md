@@ -1,5 +1,9 @@
 # Source: https://www.activepieces.com/docs/embedding/predefined-connection.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.activepieces.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Predefined Connection
 
 Use predefined connections to allow users to access your piece in the embedded app without re-entering authentication credentials.
@@ -12,14 +16,14 @@ The high-level steps are:
 ### Prerequisites
 
 * [Run the Enterprise Edition](/handbook/engineering/playbooks/run-ee)
-* [Create your piece](/developers/building-pieces/overview). Later we will customize the piece logic to use predefined connections.
+* [Create your piece](/build-pieces/building-pieces/overview). Later we will customize the piece logic to use predefined connections.
 
 ### Create a Predefined Connection
 
 <Steps>
   <Step title="Create an API Key">
     Go to **Platform Admin → Security → API Keys** and create an API key. Save it for use in the next step.
-    <img src="https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/create-api-key.png?fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=cb42e0171f14b314bfbcf58f2c7ef415" alt="Create API Key" data-og-width="1420" width="1420" data-og-height="900" height="900" data-path="resources/screenshots/create-api-key.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/create-api-key.png?w=280&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=11cd9dfa90858803063a6adb33aba934 280w, https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/create-api-key.png?w=560&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=fce77edd69bb3f90fc32ea951b813a0a 560w, https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/create-api-key.png?w=840&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=710d6cf4d50818b00b5c54bce30dbb10 840w, https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/create-api-key.png?w=1100&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=e43e20030ecbf0977ad755136e363611 1100w, https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/create-api-key.png?w=1650&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=3f0dc4414fece6dd7a2479afe212f868 1650w, https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/create-api-key.png?w=2500&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=3a8479614b105ff9a3395b3a0215b553 2500w" />
+    <img src="https://mintcdn.com/activepieces/ki8mFooo8mAmhMdP/resources/screenshots/create-api-key.png?fit=max&auto=format&n=ki8mFooo8mAmhMdP&q=85&s=36a570d63af2545c8bbc4527785ac4a4" alt="Create API Key" data-og-width="1420" width="1420" data-og-height="900" height="900" data-path="resources/screenshots/create-api-key.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/activepieces/ki8mFooo8mAmhMdP/resources/screenshots/create-api-key.png?w=280&fit=max&auto=format&n=ki8mFooo8mAmhMdP&q=85&s=f36c7b39191567c305b22a8844c92b28 280w, https://mintcdn.com/activepieces/ki8mFooo8mAmhMdP/resources/screenshots/create-api-key.png?w=560&fit=max&auto=format&n=ki8mFooo8mAmhMdP&q=85&s=3f969b6a6f80237d71b9e790d1f91d48 560w, https://mintcdn.com/activepieces/ki8mFooo8mAmhMdP/resources/screenshots/create-api-key.png?w=840&fit=max&auto=format&n=ki8mFooo8mAmhMdP&q=85&s=b0130952666b83ea9e5946e2080c9ea6 840w, https://mintcdn.com/activepieces/ki8mFooo8mAmhMdP/resources/screenshots/create-api-key.png?w=1100&fit=max&auto=format&n=ki8mFooo8mAmhMdP&q=85&s=442b0d6bb3b1e372c96334a029e477e9 1100w, https://mintcdn.com/activepieces/ki8mFooo8mAmhMdP/resources/screenshots/create-api-key.png?w=1650&fit=max&auto=format&n=ki8mFooo8mAmhMdP&q=85&s=da18e5c7c52ccaad56728166ec9a6d05 1650w, https://mintcdn.com/activepieces/ki8mFooo8mAmhMdP/resources/screenshots/create-api-key.png?w=2500&fit=max&auto=format&n=ki8mFooo8mAmhMdP&q=85&s=423bb1176e0d1efdce61745c08be43e5 2500w" />
   </Step>
 
   <Step title="Create a Global Connection via API">

@@ -1,4 +1,4 @@
-# Source: https://huggingface.co/docs/transformers/v5.0.0rc1/model_doc/parakeet.md
+# Source: https://huggingface.co/docs/transformers/v5.0.0/model_doc/parakeet.md
 
 # Parakeet
 
@@ -8,7 +8,7 @@ Parakeet models, [introduced by NVIDIA NeMo](https://developer.nvidia.com/blog/p
 
 **Model Architecture**
 
-- **Fast Conformer Encoder**: A linearly scalable Conformer architecture that processes mel-spectrogram features and reduces sequence length through subsampling. This is more efficient version of the Conformer Encoder found in [FastSpeech2Conformer](./fastspeech2_conformer) (see [ParakeetEncoder](/docs/transformers/v5.0.0rc1/en/model_doc/parakeet#transformers.ParakeetEncoder) for the encoder implementation and details).
+- **Fast Conformer Encoder**: A linearly scalable Conformer architecture that processes mel-spectrogram features and reduces sequence length through subsampling. This is more efficient version of the Conformer Encoder found in [FastSpeech2Conformer](./fastspeech2_conformer) (see [ParakeetEncoder](/docs/transformers/v5.0.0/en/model_doc/parakeet#transformers.ParakeetEncoder) for the encoder implementation and details).
 - [**ParakeetForCTC**](#parakeetforctc): a Fast Conformer Encoder + a CTC decoder
   - **CTC Decoder**: Simple but effective decoder consisting of:
     - 1D convolution projection from encoder hidden size to vocabulary size (for optimal NeMo compatibility).
@@ -158,13 +158,13 @@ outputs = model(**inputs)
 outputs.loss.backward()
 ```
 
-## ParakeetTokenizerFast[[transformers.ParakeetTokenizerFast]]
+## ParakeetTokenizer[[transformers.ParakeetTokenizer]]
 
-#### transformers.ParakeetTokenizerFast[[transformers.ParakeetTokenizerFast]]
+#### transformers.ParakeetTokenizer[[transformers.ParakeetTokenizer]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/parakeet/tokenization_parakeet_fast.py#L22)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/parakeet/tokenization_parakeet.py#L20)
 
-Inherits all methods from [PreTrainedTokenizerFast](/docs/transformers/v5.0.0rc1/en/main_classes/tokenizer#transformers.TokenizersBackend). Users should refer to this superclass for more information regarding those methods,
+Inherits all methods from [PreTrainedTokenizerFast](/docs/transformers/v5.0.0/en/main_classes/tokenizer#transformers.TokenizersBackend). Users should refer to this superclass for more information regarding those methods,
 except for `_decode` which is overridden to adapt it to CTC decoding:
 1. Group consecutive tokens
 2. Filter out the blank token
@@ -173,17 +173,17 @@ except for `_decode` which is overridden to adapt it to CTC decoding:
 
 #### transformers.ParakeetFeatureExtractor[[transformers.ParakeetFeatureExtractor]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/parakeet/feature_extraction_parakeet.py#L38)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/parakeet/feature_extraction_parakeet.py#L36)
 
 Constructs a Parakeet feature extractor.
 
-This feature extractor inherits from [SequenceFeatureExtractor](/docs/transformers/v5.0.0rc1/en/main_classes/feature_extractor#transformers.SequenceFeatureExtractor) which contains
+This feature extractor inherits from [SequenceFeatureExtractor](/docs/transformers/v5.0.0/en/main_classes/feature_extractor#transformers.SequenceFeatureExtractor) which contains
 most of the main methods. Users should refer to this superclass for more information regarding those methods.
 
 This class extracts mel-filter bank features from raw speech using a custom numpy implementation of the `Short Time
 Fourier Transform` which should match pytorch's `torch.stft` equivalent.
 
-__call__transformers.ParakeetFeatureExtractor.__call__https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/parakeet/feature_extraction_parakeet.py#L129[{"name": "raw_speech", "val": ": typing.Union[numpy.ndarray, list[float], list[numpy.ndarray], list[list[float]]]"}, {"name": "truncation", "val": ": bool = False"}, {"name": "pad_to_multiple_of", "val": ": typing.Optional[int] = None"}, {"name": "return_tensors", "val": ": typing.Union[str, transformers.utils.generic.TensorType, NoneType] = None"}, {"name": "return_attention_mask", "val": ": typing.Optional[bool] = None"}, {"name": "padding", "val": ": typing.Optional[str] = 'longest'"}, {"name": "max_length", "val": ": typing.Optional[int] = None"}, {"name": "sampling_rate", "val": ": typing.Optional[int] = None"}, {"name": "do_normalize", "val": ": typing.Optional[bool] = None"}, {"name": "device", "val": ": typing.Optional[str] = 'cpu'"}, {"name": "return_token_timestamps", "val": ": typing.Optional[bool] = None"}, {"name": "**kwargs", "val": ""}]- **raw_speech** (`np.ndarray`, `list[float]`, `list[np.ndarray]`, `list[list[float]]`) --
+__call__transformers.ParakeetFeatureExtractor.__call__https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/parakeet/feature_extraction_parakeet.py#L127[{"name": "raw_speech", "val": ": numpy.ndarray | list[float] | list[numpy.ndarray] | list[list[float]]"}, {"name": "truncation", "val": ": bool = False"}, {"name": "pad_to_multiple_of", "val": ": int | None = None"}, {"name": "return_tensors", "val": ": str | transformers.utils.generic.TensorType | None = None"}, {"name": "return_attention_mask", "val": ": bool | None = None"}, {"name": "padding", "val": ": str | None = 'longest'"}, {"name": "max_length", "val": ": int | None = None"}, {"name": "sampling_rate", "val": ": int | None = None"}, {"name": "do_normalize", "val": ": bool | None = None"}, {"name": "device", "val": ": str | None = 'cpu'"}, {"name": "return_token_timestamps", "val": ": bool | None = None"}, {"name": "**kwargs", "val": ""}]- **raw_speech** (`np.ndarray`, `list[float]`, `list[np.ndarray]`, `list[list[float]]`) --
   The sequence or batch of sequences to be padded. Each sequence can be a numpy array, a list of float
   values, a list of numpy arrays or a list of list of float values. Must be mono channel audio, not
   stereo, i.e. single float per timestep.
@@ -207,7 +207,7 @@ __call__transformers.ParakeetFeatureExtractor.__call__https://github.com/hugging
 
   
 
-- **return_tensors** (`str` or [TensorType](/docs/transformers/v5.0.0rc1/en/internal/file_utils#transformers.TensorType), *optional*) --
+- **return_tensors** (`str` or [TensorType](/docs/transformers/v5.0.0/en/internal/file_utils#transformers.TensorType), *optional*) --
   If set, will return tensors instead of list of python integers. Acceptable values are:
 
   - `'tf'`: Return TensorFlow `tf.constant` objects.
@@ -254,33 +254,60 @@ padding_value (`float`, *optional*, defaults to 0.0) : Padding value used to pad
 
 #### transformers.ParakeetProcessor[[transformers.ParakeetProcessor]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/parakeet/processing_parakeet.py#L42)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/parakeet/processing_parakeet.py#L41)
 
-__call__transformers.ParakeetProcessor.__call__https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/parakeet/processing_parakeet.py#L46[{"name": "audio", "val": ": typing.Union[numpy.ndarray, ForwardRef('torch.Tensor'), collections.abc.Sequence[numpy.ndarray], collections.abc.Sequence['torch.Tensor']]"}, {"name": "text", "val": ": typing.Union[str, list[str], list[list[str]], NoneType] = None"}, {"name": "sampling_rate", "val": ": typing.Optional[int] = None"}, {"name": "**kwargs", "val": ": typing_extensions.Unpack[transformers.models.parakeet.processing_parakeet.ParakeetProcessorKwargs]"}]
+Constructs a ParakeetProcessor which wraps a feature extractor and a tokenizer into a single processor.
+
+[ParakeetProcessor](/docs/transformers/v5.0.0/en/model_doc/parakeet#transformers.ParakeetProcessor) offers all the functionalities of `feature_extractor_class` and `tokenizer_class`. See the
+`~feature_extractor_class` and `~tokenizer_class` for more information.
+
+__call__transformers.ParakeetProcessor.__call__https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/parakeet/processing_parakeet.py#L45[{"name": "audio", "val": ": typing.Union[numpy.ndarray, ForwardRef('torch.Tensor'), collections.abc.Sequence[numpy.ndarray], collections.abc.Sequence['torch.Tensor']]"}, {"name": "text", "val": ": str | list[str] | list[list[str]] | None = None"}, {"name": "sampling_rate", "val": ": int | None = None"}, {"name": "**kwargs", "val": ": typing_extensions.Unpack[transformers.models.parakeet.processing_parakeet.ParakeetProcessorKwargs]"}]- **audio** (`Union[numpy.ndarray, torch.Tensor, collections.abc.Sequence, collections.abc.Sequence]`) --
+  The audio or batch of audios to be prepared. Each audio can be a NumPy array or PyTorch tensor.
+  In case of a NumPy array/PyTorch tensor, each audio should be of shape (C, T), where C is a number of channels,
+  and T is the sample length of the audio.
+- **text** (`Union[str, list, list]`, *optional*) --
+  The sequence or batch of sequences to be encoded. Each sequence can be a string or a list of strings
+  (pretokenized string). If you pass a pretokenized input, set `is_split_into_words=True` to avoid ambiguity with batched inputs.
+- **sampling_rate** (`int`, *optional*) --
+  The sampling rate of the input audio in Hz. This should match the sampling rate expected by the feature
+  extractor (defaults to 16000 Hz). If provided, it will be validated against the processor's expected
+  sampling rate, and an error will be raised if they don't match. If not provided, a warning will be
+  issued and the default sampling rate will be assumed.
+- **return_tensors** (`str` or [TensorType](/docs/transformers/v5.0.0/en/internal/file_utils#transformers.TensorType), *optional*) --
+  If set, will return tensors of a particular framework. Acceptable values are:
+
+  - `'pt'`: Return PyTorch `torch.Tensor` objects.
+  - `'np'`: Return NumPy `np.ndarray` objects.0
+
+**Parameters:**
+
+feature_extractor (`feature_extractor_class`) : The feature extractor is a required input.
+
+tokenizer (`tokenizer_class`) : The tokenizer is a required input.
 #### batch_decode[[transformers.ParakeetProcessor.batch_decode]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/processing_utils.py#L1520)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/processing_utils.py#L1593)
 
-This method forwards all its arguments to PreTrainedTokenizer's [batch_decode()](/docs/transformers/v5.0.0rc1/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.batch_decode). Please
+This method forwards all its arguments to PreTrainedTokenizer's [batch_decode()](/docs/transformers/v5.0.0/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.batch_decode). Please
 refer to the docstring of this method for more information.
 #### decode[[transformers.ParakeetProcessor.decode]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/processing_utils.py#L1529)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/processing_utils.py#L1602)
 
-This method forwards all its arguments to PreTrainedTokenizer's [decode()](/docs/transformers/v5.0.0rc1/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.decode). Please refer to
+This method forwards all its arguments to PreTrainedTokenizer's [decode()](/docs/transformers/v5.0.0/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.decode). Please refer to
 the docstring of this method for more information.
 
 ## ParakeetEncoderConfig[[transformers.ParakeetEncoderConfig]]
 
 #### transformers.ParakeetEncoderConfig[[transformers.ParakeetEncoderConfig]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/parakeet/configuration_parakeet.py#L26)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/parakeet/configuration_parakeet.py#L23)
 
-This is the configuration class to store the configuration of a [ParakeetEncoder](/docs/transformers/v5.0.0rc1/en/model_doc/parakeet#transformers.ParakeetEncoder). It is used to instantiate a
+This is the configuration class to store the configuration of a [ParakeetEncoder](/docs/transformers/v5.0.0/en/model_doc/parakeet#transformers.ParakeetEncoder). It is used to instantiate a
 `ParakeetEncoder` model according to the specified arguments, defining the model architecture.
 
-Configuration objects inherit from [PreTrainedConfig](/docs/transformers/v5.0.0rc1/en/main_classes/configuration#transformers.PreTrainedConfig) and can be used to control the model outputs. Read the
-documentation from [PreTrainedConfig](/docs/transformers/v5.0.0rc1/en/main_classes/configuration#transformers.PreTrainedConfig) for more information.
+Configuration objects inherit from [PreTrainedConfig](/docs/transformers/v5.0.0/en/main_classes/configuration#transformers.PreTrainedConfig) and can be used to control the model outputs. Read the
+documentation from [PreTrainedConfig](/docs/transformers/v5.0.0/en/main_classes/configuration#transformers.PreTrainedConfig) for more information.
 
 Example:
 ```python
@@ -347,13 +374,13 @@ initializer_range (`float`, *optional*, defaults to 0.02) : The standard deviati
 
 #### transformers.ParakeetCTCConfig[[transformers.ParakeetCTCConfig]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/parakeet/configuration_parakeet.py#L155)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/parakeet/configuration_parakeet.py#L152)
 
-This is the configuration class to store the configuration of a [ParakeetForCTC](/docs/transformers/v5.0.0rc1/en/model_doc/parakeet#transformers.ParakeetForCTC). It is used to instantiate a
+This is the configuration class to store the configuration of a [ParakeetForCTC](/docs/transformers/v5.0.0/en/model_doc/parakeet#transformers.ParakeetForCTC). It is used to instantiate a
 Parakeet CTC model according to the specified arguments, defining the model architecture.
 
-Configuration objects inherit from [PreTrainedConfig](/docs/transformers/v5.0.0rc1/en/main_classes/configuration#transformers.PreTrainedConfig) and can be used to control the model outputs. Read the
-documentation from [PreTrainedConfig](/docs/transformers/v5.0.0rc1/en/main_classes/configuration#transformers.PreTrainedConfig) for more information.
+Configuration objects inherit from [PreTrainedConfig](/docs/transformers/v5.0.0/en/main_classes/configuration#transformers.PreTrainedConfig) and can be used to control the model outputs. Read the
+documentation from [PreTrainedConfig](/docs/transformers/v5.0.0/en/main_classes/configuration#transformers.PreTrainedConfig) for more information.
 
 Example:
 ```python
@@ -372,17 +399,17 @@ Example:
 This configuration class is based on the Parakeet CTC architecture from NVIDIA NeMo. You can find more details
 and pre-trained models at [nvidia/parakeet-ctc-1.1b](https://huggingface.co/nvidia/parakeet-ctc-1.1b).
 
-from_encoder_configtransformers.ParakeetCTCConfig.from_encoder_confighttps://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/parakeet/configuration_parakeet.py#L225[{"name": "encoder_config", "val": ": ParakeetEncoderConfig"}, {"name": "**kwargs", "val": ""}][ParakeetCTCConfig](/docs/transformers/v5.0.0rc1/en/model_doc/parakeet#transformers.ParakeetCTCConfig)An instance of a configuration object
+from_encoder_configtransformers.ParakeetCTCConfig.from_encoder_confighttps://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/parakeet/configuration_parakeet.py#L220[{"name": "encoder_config", "val": ": ParakeetEncoderConfig"}, {"name": "**kwargs", "val": ""}][ParakeetCTCConfig](/docs/transformers/v5.0.0/en/model_doc/parakeet#transformers.ParakeetCTCConfig)An instance of a configuration object
 
-Instantiate a [ParakeetCTCConfig](/docs/transformers/v5.0.0rc1/en/model_doc/parakeet#transformers.ParakeetCTCConfig) (or a derived class) from parakeet encoder model configuration.
+Instantiate a [ParakeetCTCConfig](/docs/transformers/v5.0.0/en/model_doc/parakeet#transformers.ParakeetCTCConfig) (or a derived class) from parakeet encoder model configuration.
 
 **Parameters:**
 
 vocab_size (`int`, *optional*, defaults to 1025) : Vocabulary size of the model.
 
-ctc_loss_reduction (`str`, *optional*, defaults to `"mean"`) : Specifies the reduction to apply to the output of `torch.nn.CTCLoss`. Only relevant when training an instance of [ParakeetForCTC](/docs/transformers/v5.0.0rc1/en/model_doc/parakeet#transformers.ParakeetForCTC).
+ctc_loss_reduction (`str`, *optional*, defaults to `"mean"`) : Specifies the reduction to apply to the output of `torch.nn.CTCLoss`. Only relevant when training an instance of [ParakeetForCTC](/docs/transformers/v5.0.0/en/model_doc/parakeet#transformers.ParakeetForCTC).
 
-ctc_zero_infinity (`bool`, *optional*, defaults to `True`) : Whether to zero infinite losses and the associated gradients of `torch.nn.CTCLoss`. Infinite losses mainly occur when the inputs are too short to be aligned to the targets. Only relevant when training an instance of [ParakeetForCTC](/docs/transformers/v5.0.0rc1/en/model_doc/parakeet#transformers.ParakeetForCTC).
+ctc_zero_infinity (`bool`, *optional*, defaults to `True`) : Whether to zero infinite losses and the associated gradients of `torch.nn.CTCLoss`. Infinite losses mainly occur when the inputs are too short to be aligned to the targets. Only relevant when training an instance of [ParakeetForCTC](/docs/transformers/v5.0.0/en/model_doc/parakeet#transformers.ParakeetForCTC).
 
 encoder_config (`Union[dict, ParakeetEncoderConfig]`, *optional*) : The config object or dictionary of the encoder.
 
@@ -390,7 +417,7 @@ pad_token_id (`int`, *optional*, defaults to 1024) : Padding token id. Also used
 
 **Returns:**
 
-`[ParakeetCTCConfig](/docs/transformers/v5.0.0rc1/en/model_doc/parakeet#transformers.ParakeetCTCConfig)`
+`[ParakeetCTCConfig](/docs/transformers/v5.0.0/en/model_doc/parakeet#transformers.ParakeetCTCConfig)`
 
 An instance of a configuration object
 
@@ -398,11 +425,11 @@ An instance of a configuration object
 
 #### transformers.ParakeetEncoder[[transformers.ParakeetEncoder]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/parakeet/modeling_parakeet.py#L548)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/parakeet/modeling_parakeet.py#L549)
 
 The Parakeet Encoder model, based on the [Fast Conformer architecture](https://huggingface.co/papers/2305.05084).
 
-This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
+This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
 library implements for all its model (such as downloading or saving, resizing the input embeddings, pruning heads
 etc.)
 
@@ -410,7 +437,7 @@ This model is also a PyTorch [torch.nn.Module](https://pytorch.org/docs/stable/n
 Use it as a regular PyTorch Module and refer to the PyTorch documentation for all matter related to general usage
 and behavior.
 
-forwardtransformers.ParakeetEncoder.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/parakeet/modeling_parakeet.py#L571[{"name": "input_features", "val": ": Tensor"}, {"name": "attention_mask", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "output_attention_mask", "val": ": typing.Optional[bool] = None"}, {"name": "**kwargs", "val": ": typing_extensions.Unpack[transformers.utils.generic.TransformersKwargs]"}]- **input_features** (`torch.Tensor` of shape `(batch_size, sequence_length, feature_dim)`) --
+forwardtransformers.ParakeetEncoder.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/parakeet/modeling_parakeet.py#L572[{"name": "input_features", "val": ": Tensor"}, {"name": "attention_mask", "val": ": torch.Tensor | None = None"}, {"name": "output_attention_mask", "val": ": bool | None = None"}, {"name": "**kwargs", "val": ": typing_extensions.Unpack[transformers.utils.generic.TransformersKwargs]"}]- **input_features** (`torch.Tensor` of shape `(batch_size, sequence_length, feature_dim)`) --
   The tensors corresponding to the input audio features. Audio features can be obtained using
   `feature_extractor_class`. See `feature_extractor_class.__call__` for details (`processor_class` uses
   `feature_extractor_class` for processing audios).
@@ -422,7 +449,7 @@ forwardtransformers.ParakeetEncoder.forwardhttps://github.com/huggingface/transf
 
   [What are attention masks?](../glossary#attention-mask)
 - **output_attention_mask** (`bool`, *optional*) --
-  Whether to return the output attention mask.0[transformers.modeling_outputs.BaseModelOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.BaseModelOutput) or `tuple(torch.FloatTensor)`A [transformers.modeling_outputs.BaseModelOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.BaseModelOutput) or a tuple of
+  Whether to return the output attention mask.0[transformers.modeling_outputs.BaseModelOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.BaseModelOutput) or `tuple(torch.FloatTensor)`A [transformers.modeling_outputs.BaseModelOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.BaseModelOutput) or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
 elements depending on the configuration (`None`) and inputs.
 
@@ -436,7 +463,7 @@ elements depending on the configuration (`None`) and inputs.
 
   Attentions weights after the attention softmax, used to compute the weighted average in the self-attention
   heads.
-The [ParakeetEncoder](/docs/transformers/v5.0.0rc1/en/model_doc/parakeet#transformers.ParakeetEncoder) forward method, overrides the `__call__` special method.
+The [ParakeetEncoder](/docs/transformers/v5.0.0/en/model_doc/parakeet#transformers.ParakeetEncoder) forward method, overrides the `__call__` special method.
 
 Although the recipe for forward pass needs to be defined within this function, one should call the `Module`
 instance afterwards instead of this since the former takes care of running the pre and post processing steps while
@@ -463,13 +490,13 @@ Example:
 
 **Parameters:**
 
-config ([ParakeetEncoderConfig](/docs/transformers/v5.0.0rc1/en/model_doc/parakeet#transformers.ParakeetEncoderConfig)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
+config ([ParakeetEncoderConfig](/docs/transformers/v5.0.0/en/model_doc/parakeet#transformers.ParakeetEncoderConfig)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
 
 **Returns:**
 
-`[transformers.modeling_outputs.BaseModelOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.BaseModelOutput) or `tuple(torch.FloatTensor)``
+`[transformers.modeling_outputs.BaseModelOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.BaseModelOutput) or `tuple(torch.FloatTensor)``
 
-A [transformers.modeling_outputs.BaseModelOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.BaseModelOutput) or a tuple of
+A [transformers.modeling_outputs.BaseModelOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.BaseModelOutput) or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
 elements depending on the configuration (`None`) and inputs.
 
@@ -488,11 +515,11 @@ elements depending on the configuration (`None`) and inputs.
 
 #### transformers.ParakeetForCTC[[transformers.ParakeetForCTC]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/parakeet/modeling_parakeet.py#L673)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/parakeet/modeling_parakeet.py#L674)
 
 Parakeet Encoder with a Connectionist Temporal Classification (CTC) head.
 
-This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
+This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
 library implements for all its model (such as downloading or saving, resizing the input embeddings, pruning heads
 etc.)
 
@@ -500,7 +527,7 @@ This model is also a PyTorch [torch.nn.Module](https://pytorch.org/docs/stable/n
 Use it as a regular PyTorch Module and refer to the PyTorch documentation for all matter related to general usage
 and behavior.
 
-forwardtransformers.ParakeetForCTC.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/parakeet/modeling_parakeet.py#L684[{"name": "input_features", "val": ": Tensor"}, {"name": "attention_mask", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "labels", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "**kwargs", "val": ": typing_extensions.Unpack[transformers.utils.generic.TransformersKwargs]"}]- **input_features** (`torch.Tensor` of shape `(batch_size, sequence_length, feature_dim)`) --
+forwardtransformers.ParakeetForCTC.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/parakeet/modeling_parakeet.py#L685[{"name": "input_features", "val": ": Tensor"}, {"name": "attention_mask", "val": ": torch.Tensor | None = None"}, {"name": "labels", "val": ": torch.Tensor | None = None"}, {"name": "**kwargs", "val": ": typing_extensions.Unpack[transformers.utils.generic.TransformersKwargs]"}]- **input_features** (`torch.Tensor` of shape `(batch_size, sequence_length, feature_dim)`) --
   The tensors corresponding to the input audio features. Audio features can be obtained using
   `feature_extractor_class`. See `feature_extractor_class.__call__` for details (`processor_class` uses
   `feature_extractor_class` for processing audios).
@@ -514,7 +541,7 @@ forwardtransformers.ParakeetForCTC.forwardhttps://github.com/huggingface/transfo
 - **labels** (`torch.Tensor` of shape `(batch_size, sequence_length)`, *optional*) --
   Labels for computing the masked language modeling loss. Indices should either be in `[0, ...,
   config.vocab_size]` or -100 (see `input_ids` docstring). Tokens with indices set to `-100` are ignored
-  (masked), the loss is only computed for the tokens with labels in `[0, ..., config.vocab_size]`.0[transformers.modeling_outputs.CausalLMOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.CausalLMOutput) or `tuple(torch.FloatTensor)`A [transformers.modeling_outputs.CausalLMOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.CausalLMOutput) or a tuple of
+  (masked), the loss is only computed for the tokens with labels in `[0, ..., config.vocab_size]`.0[transformers.modeling_outputs.CausalLMOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.CausalLMOutput) or `tuple(torch.FloatTensor)`A [transformers.modeling_outputs.CausalLMOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.CausalLMOutput) or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
 elements depending on the configuration (`None`) and inputs.
 
@@ -529,7 +556,7 @@ elements depending on the configuration (`None`) and inputs.
 
   Attentions weights after the attention softmax, used to compute the weighted average in the self-attention
   heads.
-The [ParakeetForCTC](/docs/transformers/v5.0.0rc1/en/model_doc/parakeet#transformers.ParakeetForCTC) forward method, overrides the `__call__` special method.
+The [ParakeetForCTC](/docs/transformers/v5.0.0/en/model_doc/parakeet#transformers.ParakeetForCTC) forward method, overrides the `__call__` special method.
 
 Although the recipe for forward pass needs to be defined within this function, one should call the `Module`
 instance afterwards instead of this since the former takes care of running the pre and post processing steps while
@@ -556,13 +583,13 @@ Example:
 
 **Parameters:**
 
-config ([ParakeetCTCConfig](/docs/transformers/v5.0.0rc1/en/model_doc/parakeet#transformers.ParakeetCTCConfig)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
+config ([ParakeetCTCConfig](/docs/transformers/v5.0.0/en/model_doc/parakeet#transformers.ParakeetCTCConfig)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
 
 **Returns:**
 
-`[transformers.modeling_outputs.CausalLMOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.CausalLMOutput) or `tuple(torch.FloatTensor)``
+`[transformers.modeling_outputs.CausalLMOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.CausalLMOutput) or `tuple(torch.FloatTensor)``
 
-A [transformers.modeling_outputs.CausalLMOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.CausalLMOutput) or a tuple of
+A [transformers.modeling_outputs.CausalLMOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.CausalLMOutput) or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
 elements depending on the configuration (`None`) and inputs.
 
@@ -579,7 +606,7 @@ elements depending on the configuration (`None`) and inputs.
   heads.
 #### generate[[transformers.ParakeetForCTC.generate]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/parakeet/modeling_parakeet.py#L757)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/parakeet/modeling_parakeet.py#L758)
 
 Example:
 

@@ -200,7 +200,7 @@ $ vespa query 'select * from music where album contains ({maxEditDistance: 1}fuz
 
 Fuzzy matching is great for misspellings. See use of _prefixLength_ and _fast-search_ in the [reference](../reference/querying/yql.html#fuzzy).
 
-Character [normalization](../linguistics/linguistics.html#normalization) is not performed for fuzzy matches.
+Character [normalization](../linguistics/linguistics-opennlp.html#normalization) is not performed for fuzzy matches.
 
 ### Fuzzy prefix match
 
@@ -240,7 +240,7 @@ A substring search:
 $ vespa query 'select * from music where album matches "head"'
 ```
 
-Character [normalization](../linguistics/linguistics.html#normalization) is not performed for regular expression matches.
+Character [normalization](../linguistics/linguistics-opennlp.html#normalization) is not performed for regular expression matches.
 
 ## N-Gram match
 
@@ -284,7 +284,7 @@ Alternatives for matching with spell checking:
 
 3. will give the cheapest queries and exact control over misspelled matching, but a larger index, more work for the developer, and adjusting spell correction becomes more complicated. 1. will be most expensive, but maybe also most convenient There are currently no rank signals giving you the match quality. 2. Is in between, and will probably work best when incorporating ranking signals that use proximity (such as e.g. [nativeRank](../ranking/nativerank.html) but not [bm25](../ranking/bm25.html)).
 
-Read [Simplify Search with Multilingual Embedding Models](https://blog.vespa.ai/simplify-search-with-multilingual-embeddings) for semantic matching and ranking.
+Read [Simplify Search with Multilingual Embedding Models](https://blog.vespa.ai/simplify-search-with-multilingual-embeddings/) for semantic matching and ranking.
 
 ## Query Trace
 
@@ -337,7 +337,7 @@ ilscript[0].content[2] "clear_state | guard { input year | summary year | attrib
 ilscript[0].content[3] "clear_state | guard { input category_scores | summary category_scores | attribute category_scores; }"
 ```
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ### On this page:
 

@@ -1,5 +1,9 @@
 # Source: https://trigger.dev/docs/guides/example-projects/human-in-the-loop-workflow.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://trigger.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Human-in-the-loop workflow with ReactFlow and Trigger.dev waitpoint tokens
 
 > This example project creates audio summaries of newspaper articles using a human-in-the-loop workflow built with ReactFlow and Trigger.dev waitpoint tokens.
@@ -45,7 +49,7 @@ Each node in the workflow corresponds to a Trigger.dev task. The idea is to enab
 
 The waitpoint token is created in [a Next.js server action](https://github.com/triggerdotdev/examples/blob/main/article-summary-workflow/src/app/actions.ts#L26):
 
-```ts  theme={null}
+```ts  theme={"theme":"css-variables"}
 const reviewWaitpointToken = await wait.createToken({
   tags: [workflowTag],
   timeout: "1h",
@@ -55,7 +59,7 @@ const reviewWaitpointToken = await wait.createToken({
 
 and later completed in another server action in the same file:
 
-```ts  theme={null}
+```ts  theme={"theme":"css-variables"}
 await wait.completeToken<ReviewPayload>(
   { id: tokenId },
   {

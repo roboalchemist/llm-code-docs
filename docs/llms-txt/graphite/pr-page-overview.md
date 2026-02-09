@@ -1,5 +1,11 @@
 # Source: https://graphite-58cc94ce.mintlify.dev/docs/pr-page-overview.md
 
+## Documentation Index
+
+Fetch the complete documentation index at: https://graphite-58cc94ce.mintlify.dev/docs/llms.txt
+
+Use this file to discover all available pages before exploring further.
+
 # PR Page overview
 
 > Learn how to review pull requests on Graphite.
@@ -9,6 +15,10 @@ You can be notified that a PR needs your review in Graphite in one of two ways:
 
 * Pull requests appear in the *Needs Review* section of your pull request inbox
 * Through the Graphite integration for Slack
+
+<Frame>
+  <iframe width="750" height="360" src="https://www.youtube.com/embed/g04ReJ6Hmm8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen />
+</Frame>
 
 ## Stack
 
@@ -55,6 +65,10 @@ The file tree is expanded by default next to the diff, below the PR Description 
 You can press **F** to expand or collapse the file tree. When the file tree is collapsed, the list of files is still accessible from a table of contents visualizer on the left side of the page.
 
 <img src="https://graphite-email-images-prod.s3.us-west-2.amazonaws.com/file+tree+(light)+(2).gif" alt="Adding comments" className="w-full max-w-[800px] h-auto" />
+
+<Note>
+  To prevent certain files from displaying in diffs by default, you can use a [`.gitattributes` file with the `linguist-generated` attribute](https://docs.github.com/en/repositories/working-with-files/managing-files/customizing-how-changed-files-appear-on-github).
+</Note>
 
 ## Start a review
 

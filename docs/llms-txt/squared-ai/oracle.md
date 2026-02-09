@@ -2,19 +2,9 @@
 
 # Source: https://docs.squared.ai/guides/destinations/retl-destinations/database/oracle.md
 
-# Source: https://docs.squared.ai/guides/sources/data-sources/oracle.md
-
-# Source: https://docs.squared.ai/guides/destinations/retl-destinations/database/oracle.md
-
-# Source: https://docs.squared.ai/guides/sources/data-sources/oracle.md
-
-# Source: https://docs.squared.ai/guides/destinations/retl-destinations/database/oracle.md
-
-# Source: https://docs.squared.ai/guides/sources/data-sources/oracle.md
-
-# Source: https://docs.squared.ai/guides/destinations/retl-destinations/database/oracle.md
-
-# Source: https://docs.squared.ai/guides/sources/data-sources/oracle.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.squared.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Oracle
 
@@ -75,9 +65,8 @@ After configuring the connector in your application:
 
 1. Save the configuration settings.
 2. Test the connection to Oracle database from your application to ensure everything is set up correctly.
-3. Run a test query or check the connection status to verify successful connectivity.
 
-Your Oracle connector is now configured and ready to query data from your Oracle database.
+By following these steps, you’ve successfully set up an Oracle database destination connector in AI Squared. You can now efficiently transfer data to your Oracle database for storage or further distribution within AI Squared.
 
 ## Supported sync modes
 

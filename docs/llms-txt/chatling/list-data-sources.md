@@ -1,5 +1,9 @@
 # Source: https://docs.chatling.ai/api-reference/v2/knowledge-base/list-data-sources.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.chatling.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # List data sources
 
 > Get a list of the data sources added to the knowledge base.

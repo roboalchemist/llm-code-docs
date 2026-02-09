@@ -1,5 +1,9 @@
 # Source: https://docs.meshconnect.com/overview.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.meshconnect.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Overview
 
 Mesh is a global crypto payments network that connects exchanges, wallets, and payment providers, allowing merchants to accept crypto payments and stablecoin conversions easily. It streamlines payments, reduces fees, and offers instant settlement through a suite of APIs and client-side SDKs.

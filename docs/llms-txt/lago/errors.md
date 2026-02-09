@@ -1,5 +1,9 @@
 # Source: https://getlago.com/docs/api-reference/errors.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://getlago.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Errors
 
 The Lago API uses standard HTTP response codes to clearly indicate the result of each API request:

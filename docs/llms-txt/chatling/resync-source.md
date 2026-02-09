@@ -1,5 +1,9 @@
 # Source: https://docs.chatling.ai/api-reference/v2/knowledge-base/resync-source.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.chatling.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Resync data source
 
 > Resync a data source.

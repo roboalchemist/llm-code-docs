@@ -1,5 +1,9 @@
 # Source: https://getlago.com/docs/guide/billable-metrics/aggregation-types/weighted-sum.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://getlago.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # WEIGHTED SUM
 
 The Weighted Sum aggregation type adds up the value of a defined event property and prorates it based on time used per period.

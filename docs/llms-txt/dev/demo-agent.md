@@ -1,5 +1,9 @@
 # Source: https://dev.writer.com/agent-builder/demo-agent.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://dev.writer.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Agent Builder Demo Application
 
 > Explore the Agent Builder demo agent that analyzes customer reviews and drafts responses. Learn how UI, blueprints, and state variables work together.

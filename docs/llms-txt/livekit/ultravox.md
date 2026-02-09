@@ -1,6 +1,6 @@
 # Source: https://docs.livekit.io/agents/models/realtime/plugins/ultravox.md
 
-LiveKit docs › Models › Realtime models › Plugins › Ultravox Realtime API
+LiveKit docs › Models › Realtime › Plugins › Ultravox
 
 ---
 
@@ -35,7 +35,7 @@ The Ultravox plugin requires an API key which can be accessed on the Ultravox co
 
 ### Usage
 
-Use the Ultravox Realtime API in an `AgentSession`. For example, you can use it in the [Voice AI quickstart](https://docs.livekit.io/agents/start/voice-ai.md).
+Use Ultravox in an `AgentSession`. For example, you can use it in the [Voice AI quickstart](https://docs.livekit.io/agents/start/voice-ai.md).
 
 ```python
 from livekit.plugins import ultravox
@@ -79,7 +79,7 @@ The following resources provide more information about using Ultravox with LiveK
 
 ---
 
-This document was rendered at 2025-11-18T23:55:15.413Z.
+This document was rendered at 2026-02-03T03:25:06.537Z.
 For the latest version of this document, see [https://docs.livekit.io/agents/models/realtime/plugins/ultravox.md](https://docs.livekit.io/agents/models/realtime/plugins/ultravox.md).
 
 To explore all LiveKit documentation, see [llms.txt](https://docs.livekit.io/llms.txt).

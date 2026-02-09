@@ -1,16 +1,17 @@
 # Source: https://gofastmcp.com/integrations/workos.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://gofastmcp.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # WorkOS 🤝 FastMCP
 
 > Authenticate FastMCP servers with WorkOS Connect
 
 export const VersionBadge = ({version}) => {
-  return <code className="version-badge-container">
-            <p className="version-badge">
-                <span className="version-badge-label">New in version:</span> 
-                <code className="version-badge-version">{version}</code>
-            </p>
-        </code>;
+  return <Badge stroke size="lg" icon="gift" iconType="regular" className="version-badge">
+            New in version <code>{version}</code>
+        </Badge>;
 };
 
 <VersionBadge version="2.12.0" />
@@ -177,96 +178,6 @@ mcp = FastMCP(name="Production WorkOS App", auth=auth)
 
   For complete details on these parameters, see the [OAuth Proxy documentation](/servers/auth/oauth-proxy#configuration-parameters).
 </Note>
-
-## Environment Variables
-
-<VersionBadge version="2.12.1" />
-
-For production deployments, use environment variables instead of hardcoding credentials.
-
-### Provider Selection
-
-Setting this environment variable allows the WorkOS provider to be used automatically without explicitly instantiating it in code.
-
-<Card>
-  <ParamField path="FASTMCP_SERVER_AUTH" default="Not set">
-    Set to `fastmcp.server.auth.providers.workos.WorkOSProvider` to use WorkOS authentication.
-  </ParamField>
-</Card>
-
-### WorkOS-Specific Configuration
-
-These environment variables provide default values for the WorkOS provider, whether it's instantiated manually or configured via `FASTMCP_SERVER_AUTH`.
-
-<Card>
-  <ParamField path="FASTMCP_SERVER_AUTH_WORKOS_CLIENT_ID" required>
-    Your WorkOS OAuth App Client ID (e.g., `client_01K33Y6GGS7T3AWMPJWKW42Y3Q`)
-  </ParamField>
-
-  <ParamField path="FASTMCP_SERVER_AUTH_WORKOS_CLIENT_SECRET" required>
-    Your WorkOS OAuth App Client Secret
-  </ParamField>
-
-  <ParamField path="FASTMCP_SERVER_AUTH_WORKOS_AUTHKIT_DOMAIN" required>
-    Your WorkOS AuthKit domain (e.g., `https://your-app.authkit.app`)
-  </ParamField>
-
-  <ParamField path="FASTMCP_SERVER_AUTH_WORKOS_BASE_URL" default="http://localhost:8000">
-    Public URL where OAuth endpoints will be accessible (includes any mount path)
-  </ParamField>
-
-  <ParamField path="FASTMCP_SERVER_AUTH_WORKOS_ISSUER_URL" default="Uses BASE_URL">
-    Issuer URL for OAuth metadata (defaults to `BASE_URL`). Set to root-level URL when mounting under a path prefix to avoid 404 logs. See [HTTP Deployment guide](/deployment/http#mounting-authenticated-servers) for details.
-  </ParamField>
-
-  <ParamField path="FASTMCP_SERVER_AUTH_WORKOS_REDIRECT_PATH" default="/auth/callback">
-    Redirect path configured in your WorkOS OAuth App
-  </ParamField>
-
-  <ParamField path="FASTMCP_SERVER_AUTH_WORKOS_REQUIRED_SCOPES" default="[]">
-    Comma-, space-, or JSON-separated list of required OAuth scopes (e.g., `openid profile email` or `["openid","profile","email"]`)
-  </ParamField>
-
-  <ParamField path="FASTMCP_SERVER_AUTH_WORKOS_TIMEOUT_SECONDS" default="10">
-    HTTP request timeout for WorkOS API calls
-  </ParamField>
-</Card>
-
-Example `.env` file:
-
-```bash  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
-# WorkOS OAuth credentials (always used as defaults)
-FASTMCP_SERVER_AUTH_WORKOS_CLIENT_ID=client_01K33Y6GGS7T3AWMPJWKW42Y3Q
-FASTMCP_SERVER_AUTH_WORKOS_CLIENT_SECRET=your_client_secret
-FASTMCP_SERVER_AUTH_WORKOS_AUTHKIT_DOMAIN=https://your-app.authkit.app
-FASTMCP_SERVER_AUTH_WORKOS_BASE_URL=https://your-server.com
-FASTMCP_SERVER_AUTH_WORKOS_REQUIRED_SCOPES=["openid","profile","email"]
-
-# Optional: Automatically provision WorkOS auth for all servers
-FASTMCP_SERVER_AUTH=fastmcp.server.auth.providers.workos.WorkOSProvider
-```
-
-With environment variables set, you can either:
-
-**Option 1: Manual instantiation (env vars provide defaults)**
-
-```python server.py theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
-from fastmcp import FastMCP
-from fastmcp.server.auth.providers.workos import WorkOSProvider
-
-# Env vars provide default values for WorkOSProvider()
-auth = WorkOSProvider()  # Uses env var defaults
-mcp = FastMCP(name="WorkOS Protected Server", auth=auth)
-```
-
-**Option 2: Automatic provisioning (requires FASTMCP\_SERVER\_AUTH=fastmcp.server.auth.providers.workos.WorkOSProvider)**
-
-```python server.py theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
-from fastmcp import FastMCP
-
-# Auth is automatically provisioned from FASTMCP_SERVER_AUTH
-mcp = FastMCP(name="WorkOS Protected Server")
-```
 
 ## Configuration Options
 

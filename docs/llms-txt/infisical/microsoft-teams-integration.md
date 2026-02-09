@@ -1,5 +1,9 @@
 # Source: https://infisical.com/docs/documentation/platform/workflow-integrations/microsoft-teams-integration.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://infisical.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Microsoft Teams Integration
 
 > Learn how to setup the Microsoft Teams integration

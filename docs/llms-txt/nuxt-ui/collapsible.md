@@ -36,11 +36,8 @@ Use the `unmount-on-hide` prop to prevent the content from being unmounted when 
 </template>
 ```
 
-<note>
-
-You can inspect the DOM to see the content being rendered.
-
-</note>
+> [!NOTE]
+> You can inspect the DOM to see the content being rendered.
 
 ### Disabled
 
@@ -89,23 +86,11 @@ defineShortcuts({
 </template>
 ```
 
-<note>
+> [!NOTE]
+> In this example, leveraging [`defineShortcuts`](/docs/composables/define-shortcuts), you can toggle the Collapsible by pressing .
 
-In this example, leveraging [`defineShortcuts`](/docs/composables/define-shortcuts), you can toggle the Collapsible by pressing <kbd value="O">
-
-
-
-</kbd>
-
-.
-
-</note>
-
-<tip>
-
-This allows you to move the trigger outside of the Collapsible or remove it entirely.
-
-</tip>
+> [!TIP]
+> This allows you to move the trigger outside of the Collapsible or remove it entirely.
 
 ### With rotating icon
 
@@ -207,8 +192,4 @@ export default defineAppConfig({
 
 ## Changelog
 
-<component-changelog>
-
-
-
-</component-changelog>
+See the [releases page](https://github.com/nuxt/ui/releases) for the latest changes.

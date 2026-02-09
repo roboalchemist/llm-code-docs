@@ -1,8 +1,13 @@
 # Source: https://rspack.dev/api/runtime-api/hmr.md
 
-import WebpackLicense from '@components/WebpackLicense';
+CC 4.0 License> The content of this section is derived from the content of the following links and is subject to the CC BY 4.0 license.
+> 
+> - [https://webpack.js.org/api/hot-module-replacement/](https://webpack.js.org/api/hot-module-replacement/)
+> 
+> The following contents can be assumed to be the result of modifications and deletions based on the original contents if not specifically stated.
+> 
+> 
 
-<WebpackLicense from="https://webpack.js.org/api/hot-module-replacement/" />
 
 # Hot module replacement
 
@@ -62,9 +67,9 @@ When using CommonJS, update dependencies manually using `require()` in the `call
 
 `(err, {moduleId, dependencyId}) => {}`
 
-* `err`: The error thrown by the callback in the second argument or during dependency execution when using ESM dependencies.
-* `moduleId`: The current module ID.
-* `dependencyId`: The module ID of the (first) changed dependency.
+- `err`: The error thrown by the callback in the second argument or during dependency execution when using ESM dependencies.
+- `moduleId`: The current module ID.
+- `dependencyId`: The module ID of the (first) changed dependency.
 
 ### accept (self)
 
@@ -89,11 +94,11 @@ The `errorHandler` fires when evaluating this module (or its dependencies) throw
 
 `(err, {moduleId, module}) => {}`
 
-* `err`: The error when evaluating the new version.
-* `moduleId`: The current module ID.
-* `module`: The current module instance.
-  * `module.hot`: Allows using the HMR API of the errored module instance. A common scenario is to self-accept it again. It also makes sense to add a dispose handler to pass data along. Note that the errored module might already be partially executed, so avoid getting into an inconsistent state. Use `module.hot.data` to store partial state.
-  * `module.exports`: Can be overridden, but be careful since property names might be mangled in production mode.
+- `err`: The error when evaluating the new version.
+- `moduleId`: The current module ID.
+- `module`: The current module instance.
+  - `module.hot`: Allows using the HMR API of the errored module instance. A common scenario is to self-accept it again. It also makes sense to add a dispose handler to pass data along. Note that the errored module might already be partially executed, so avoid getting into an inconsistent state. Use `module.hot.data` to store partial state.
+  - `module.exports`: Can be overridden, but be careful since property names might be mangled in production mode.
 
 ### decline
 
@@ -306,14 +311,14 @@ import.meta.webpackHot
 
 The optional `options` object can include the following properties:
 
-* `ignoreUnaccepted` (boolean): Ignore changes made to unaccepted modules.
-* `ignoreDeclined` (boolean): Ignore changes made to declined modules.
-* `ignoreErrored` (boolean): Ignore errors thrown in accept handlers, error handlers and while reevaluating module.
-* `onDeclined` (function(info)): Notifier for declined modules
-* `onUnaccepted` (function(info)): Notifier for unaccepted modules
-* `onAccepted` (function(info)): Notifier for accepted modules
-* `onDisposed` (function(info)): Notifier for disposed modules
-* `onErrored` (function(info)): Notifier for errors
+- `ignoreUnaccepted` (boolean): Ignore changes made to unaccepted modules.
+- `ignoreDeclined` (boolean): Ignore changes made to declined modules.
+- `ignoreErrored` (boolean): Ignore errors thrown in accept handlers, error handlers and while reevaluating module.
+- `onDeclined` (function(info)): Notifier for declined modules
+- `onUnaccepted` (function(info)): Notifier for unaccepted modules
+- `onAccepted` (function(info)): Notifier for accepted modules
+- `onDisposed` (function(info)): Notifier for disposed modules
+- `onErrored` (function(info)): Notifier for errors
 
 The `info` parameter will be an object containing some of the following values:
 

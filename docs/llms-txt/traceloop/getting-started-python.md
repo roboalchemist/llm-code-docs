@@ -1,5 +1,9 @@
 # Source: https://www.traceloop.com/docs/openllmetry/getting-started-python.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.traceloop.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Python
 
 > Install OpenLLMetry for Python by following these 3 easy steps and get instant monitoring.
@@ -111,8 +115,3 @@ You can also check out our full working example of a RAG pipeline with Pinecone 
     </Tip>
   </Step>
 </Steps>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://www.traceloop.com/docs/llms.txt

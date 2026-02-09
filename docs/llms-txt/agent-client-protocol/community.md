@@ -1,5 +1,9 @@
 # Source: https://agentclientprotocol.com/libraries/community.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://agentclientprotocol.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Community
 
 > Community managed libraries for the Agent Client Protocol
@@ -20,7 +24,7 @@
 
 * [use-acp](https://github.com/marimo-team/use-acp)
 
+## Swift
 
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://agentclientprotocol.com/llms.txt
+* [swift-acp](https://github.com/wiedymi/swift-acp)
+* [swift-sdk](https://github.com/aptove/swift-sdk)

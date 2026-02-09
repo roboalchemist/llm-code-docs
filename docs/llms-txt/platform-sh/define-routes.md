@@ -2,15 +2,17 @@
 
 # Define routes
 
-You might need to control how people access your web applications,
-for example when you have [multiple apps](https://docs.upsun.com../create-apps/multi-app.md) in one project.
-Or you might just want to direct requests to specific places, such as removing the `www` at the start of all requests.
+A [_route_](https://docs.upsun.com/glossary.md#route) defines how requests are handled _after_ they reach Upsun. It tells the Upsun platform how to handle incoming web requests and to which application (or destination) to direct the requests. 
 
-Your project defines the routes configuration from a top-level key called `routes`,
-which is placed in a unified configuration file like `.upsun/config.yaml`.
+You define routes in a [_router_](https://docs.upsun.com/glossary.md#router), which is the `.routes` key in your project's `.upsun/config.yaml` file in your Git repository.
 
-If you have a single route served by a single app, you don't even need to configure routes in your `.upsun/config.yaml`.
-Your project then includes a [default route](#default-route-definition).
+Routes define how your web applications are accessed, which is helpful when you have [multiple apps](https://docs.upsun.com../create-apps/multi-app.md) in one project or you want to redirect requests to specific destinations, such as `example.com` rather than `www.example.com`.
+
+If you have a single route served by a single app, you do not need to configure routes: 
+your project includes a [default route](#default-route-definition).
+
+**Before adding routes to your Upsun project, you must configure your DNS records** so that each route’s hostname resolves to the project’s assigned target (for example, via CNAME or appropriate DNS records).
+If DNS doesn’t point to your project, certificate renewal will fail. 
 
 ## Examples
 
@@ -442,7 +444,7 @@ routes:
       enabled: false
 ```
 
-2. [Disable request buffering](https://docs.upsun.com/create-apps/app-reference/single-runtime-image.md#locations) in your app configuration.
+2. [Disable request buffering](https://docs.upsun.com/create-apps/image-properties/web.md#locations) in your app configuration.
 
 ```yaml  {location=".upsun/config.yaml"}
 applications:

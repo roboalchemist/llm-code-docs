@@ -6,151 +6,77 @@
 
 # Source: https://flatfile.com/docs/coding-tutorial/overview.md
 
-# Source: https://flatfile.com/docs/guides/overview.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://flatfile.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
-# Source: https://flatfile.com/docs/embedding/overview.md
+# Coding Tutorial
 
-# Source: https://flatfile.com/docs/core-concepts/overview.md
+> Learn to build Event Listeners that configure and customize Flatfile through hands-on coding tutorials
 
-# Source: https://flatfile.com/docs/coding-tutorial/overview.md
+## Events Drive Everything in Flatfile
 
-# Source: https://flatfile.com/docs/guides/overview.md
+**When you configure Flatfile with code, you're building part of an event-driven system.** Every time a user interacts with their data—editing a Record, uploading a file, clicking an [Action](/core-concepts/actions) button, etc.—the Flatfile Platform emits an **Event**. Your custom **Listeners**, defined in your code and generally deployed to the Flatfile Platform as an [Agent](/core-concepts/listeners#agents), respond to these Events by executing whatever logic you define.
 
-# Source: https://flatfile.com/docs/embedding/overview.md
+**Out of the box, Flatfile is essentially an empty slate.** Everything you see—[Workbooks](/core-concepts/workbooks), [Sheets](/core-concepts/sheets), [Fields](/core-concepts/fields), validation logic—is created by your Listeners responding to Events. This logic includes configuring your [Blueprint](/core-concepts/blueprints) in a `space:configure` job, and may be as simple as logging an Event to the console, or as complex as processing records against existing data from your own API. But given the Event/Listener pattern as basic building blocks, you can build pretty much anything your imagination can conjure.
 
-# Source: https://flatfile.com/docs/core-concepts/overview.md
+```mermaid  theme={null}
+sequenceDiagram
+    participant User
+    participant Platform as Flatfile Platform  
+    participant Listener as Listener Logic
 
-# Source: https://flatfile.com/docs/coding-tutorial/overview.md
+    User->>Platform: Edits data
+    Platform->>Platform: Internal processing
+    Platform->>Listener: Emits "commit:created"
+    Listener->>Listener: Executes your code
+```
 
-# Source: https://flatfile.com/docs/guides/overview.md
+This event-driven paradigm is fundamentally different from traditional "configuration", where you pre-define static options. Instead, you write reactive code that responds to what users actually do. Events carry structured information about what happened, including the context and any relevant data, giving your Listeners everything they need to respond intelligently.
 
-# Source: https://flatfile.com/docs/embedding/overview.md
+Common Events include:
 
-# Source: https://flatfile.com/docs/core-concepts/overview.md
+* `commit:created` - When a commit is created (after records are added or modified)
+* `job:ready` - When [Jobs](/core-concepts/jobs) are ready for execution
+* `file:created` - When a file is uploaded
 
-# Source: https://flatfile.com/docs/coding-tutorial/overview.md
+This is just a very small sample of the Events emitted by Flatfile. For a complete list, see the [Events Reference](/reference/events).
 
-# Source: https://flatfile.com/docs/guides/overview.md
+Your Listeners define how Flatfile behaves. Want to validate data when records are modified? Listen for `commit:created` Events and perform your validation in the callback. Need to process uploaded files? Listen for `file:created` Events. Want to trigger discrete units of work? Listen for `job:ready` Events (generally filtered by `{job: "domain:operation"}`, but we'll cover that later).
 
-# Source: https://flatfile.com/docs/embedding/overview.md
+For a more comprehensive understanding of this topic, see [Events and Listeners](/core-concepts/listeners).
 
-# Source: https://flatfile.com/docs/core-concepts/overview.md
+## Learning Path: Building Custom Listeners
 
-# Source: https://flatfile.com/docs/coding-tutorial/overview.md
+This tutorial series teaches you to build Event Listeners through hands-on coding. You'll start with basic Space configuration and progressively add more sophisticated functionality.
 
-# Source: https://flatfile.com/docs/guides/overview.md
+**Prerequisites**:
 
-# Guides Overview
+* Basic JavaScript or TypeScript knowledge
+* Node.js and npm installed (latest LTS version recommended)
 
-> Comprehensive guides to help you master Flatfile's features and capabilities
+You may also find it helpful to review the [Core Concepts](/core-concepts/overview) documentation to get a better understanding of the structures and terminology used in this tutorial, or just jump right into things and keep the Core Concepts documentation in mind in case you come across something you don't understand. You might even keep it open in another tab for handy reference later on.
 
-Welcome to Flatfile's comprehensive guide collection. These guides provide step-by-step instructions and best practices for implementing advanced features and customizations in your Flatfile integration.
+**Getting Started**: This tutorial is designed to be completed from scratch from an empty folder. You'll build everything step-by-step as you follow along.
 
-## Core Functionality
+**Reference Code**: If you'd like to skip ahead or you'd like a complete reference, you can find complete working examples in our [Getting Started repository](https://github.com/FlatFilers/getting-started/) with both JavaScript and TypeScript versions.
 
-Essential guides for working with Flatfile's core features and data processing capabilities.
+### Listeners 101: Your First Listener
 
-<CardGroup cols={1}>
-  <Card title="Authentication" href="/guides/authentication">
-    Complete guide to authenticating with Flatfile using API keys, Personal Access Tokens, and managing roles and permissions for your team and customers.
-  </Card>
+A three-part series that builds a complete Listener from scratch. By the end of this series, you'll have a single-page Listener that configures Spaces, creates Workbooks and Sheets, validates a single field, and adds a custom Action.
 
-  <Card title="Using Actions" href="/guides/using-actions">
-    Learn how to trigger operations based on user input. Actions allow you to create custom workflows that execute when users interact with buttons in your Flatfile interface.
-  </Card>
-
-  <Card title="Handling Data" href="/guides/using-record-hooks">
-    Master data processing with Data Hooks. This guide covers how to validate, transform, and process records as they're imported into Flatfile.
-  </Card>
-
-  <Card title="Accepting Additional Fields" href="/guides/accepting-additional-fields">
-    Enable dynamic field creation during data import. Learn how to allow users to add new fields on the fly when their data doesn't match your predefined Blueprint.
-  </Card>
-</CardGroup>
-
-## Data Processing & Filtering
-
-Advanced techniques for filtering, querying, and transforming your data.
+This is a great way to learn the basics of Listener development and get a feel for how to build your own Listeners, but it's meant to be a starting point; In the next series, we'll show you how to make your Listeners more concise and structured to prepare for more complex use cases.
 
 <CardGroup cols={1}>
-  <Card title="Advanced Filters" href="/guides/advanced-filters">
-    Create sophisticated filter combinations with complex conditions. Learn how to use logical operators, multiple criteria, and various data types to find exactly the records you need.
+  <Card title="Section 01: Your First Listener" href="/coding-tutorial/101-your-first-listener/101.01-first-listener">
+    Set up your development environment and build a Listener that configures Spaces, creates Workbooks and Sheets, and manages the Job lifecycle. You'll learn the foundational patterns for all Listener development.
   </Card>
 
-  <Card title="Custom Extractors" href="/guides/custom-extractors">
-    Build custom file parsers to handle proprietary or uncommon file formats. Learn how to create extractors that can parse any file type and integrate seamlessly with Flatfile's processing pipeline.
+  <Card title="Section 02: Adding Validation" href="/coding-tutorial/101-your-first-listener/101.02-adding-validation">
+    Add data validation to ensure Record quality. You'll learn to validate individual Fields, provide helpful error messages, and guide users toward clean data.
   </Card>
 
-  <Card title="Using Flatfile Query Language" href="/reference/ffql">
-    Master FFQL (Flatfile Query Language) to filter data in sheets with powerful query syntax. Build complex queries to search and manipulate your data programmatically.
-  </Card>
-</CardGroup>
-
-## Configuration & Customization
-
-Guides for customizing the look, feel, and behavior of your Flatfile implementation.
-
-<CardGroup cols={1}>
-  <Card title="Theme Your Space" href="/guides/theme-your-space">
-    Customize the look and feel of Flatfile to match your brand. This comprehensive guide covers all theming options including colors, fonts, and UI elements.
-  </Card>
-
-  <Card title="Translating Your Space" href="/guides/translating-your-space">
-    Implement internationalization with text overrides and translations. Make your Flatfile interface accessible to users in different languages and regions.
-  </Card>
-
-  <Card title="Customize the Guest Sidebar" href="/guides/customize-guest-sidebar">
-    Control what guests see in their sidebar interface. Learn how to limit and customize the sidebar experience for different user types.
+  <Card title="Section 03: Adding Actions" href="/coding-tutorial/101-your-first-listener/101.03-adding-actions">
+    Extend your Listener with custom Actions that let users trigger your code on demand. You'll learn to create interactive workflows and provide user feedback.
   </Card>
 </CardGroup>
-
-## Data Management
-
-Guides for managing data lifecycle, retention, and export processes.
-
-<CardGroup cols={1}>
-  <Card title="Egress" href="/guides/egress">
-    Get data out of Flatfile to external destinations. Master various patterns for exporting and syncing data to your systems and third-party services.
-  </Card>
-
-  <Card title="Utilizing Metadata" href="/guides/utilizing-metadata">
-    Store and manage descriptive information that provides additional context to your data. Learn how to effectively use metadata throughout your Flatfile implementation.
-  </Card>
-
-  <Card title="Multi-Part Jobs" href="/guides/multi-part-jobs">
-    Split complex operations into manageable parts for better performance and user experience. Learn how to break down large jobs into smaller, trackable components.
-  </Card>
-</CardGroup>
-
-## Advanced Features
-
-Specialized guides for advanced Flatfile features and enterprise capabilities.
-
-<CardGroup cols={1}>
-  <Card title="Namespaces and Filters" href="/guides/namespaces-and-filters">
-    Organize and isolate resources using namespaces. Learn how to narrow down the scope of Spaces, Workbooks, and Sheets for better organization and security.
-  </Card>
-
-  <Card title="Share Secrets" href="/guides/share-secrets">
-    Securely manage and use credentials in your listeners. Learn best practices for handling sensitive information like API keys and authentication tokens.
-  </Card>
-
-  <Card title="Authentication Examples" href="/guides/deeper/auth-examples">
-    Standardized authentication setup patterns for consistent integration across all Flatfile projects.
-  </Card>
-
-  <Card title="Webhook Examples" href="/guides/deeper/webhook-examples">
-    Standardized webhook patterns for reliable data submission to external systems.
-  </Card>
-</CardGroup>
-
-## Getting Help
-
-Need additional assistance? Here are some resources:
-
-* **[Community](https://flatfile.com/join-slack/)** - Join our Slack community for questions and discussions
-* **[Support](https://flatfile.com/join-slack/)** - Get help from our support team
-* **[API Reference](https://reference.flatfile.com)** - Detailed API documentation
-* **[Platform](https://platform.flatfile.com)** - Access your Flatfile dashboard
-
-Each guide includes practical examples, code snippets, and best practices to help you implement these features effectively in your own applications.

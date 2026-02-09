@@ -1,5 +1,9 @@
 # Source: https://docs.squared.ai/activation/data-apps/browser-extension/platform.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.squared.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Platform Extension
 
 The **Platform Extension** is a no-code method to bring AI-powered **Data Apps** into your everyday business tools (like Salesforce, HubSpot, or internal apps) using the AI Squared Chrome Extension.

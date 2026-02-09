@@ -1,5 +1,9 @@
 # Source: https://code.claude.com/docs/en/amazon-bedrock.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://code.claude.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Claude Code on Amazon Bedrock
 
 > Learn about configuring Claude Code through Amazon Bedrock, including setup, IAM configuration, and troubleshooting.
@@ -112,8 +116,6 @@ export AWS_REGION=us-east-1  # or your preferred region
 export ANTHROPIC_SMALL_FAST_MODEL_AWS_REGION=us-west-2
 ```
 
-**For VS Code Extension users**: Configure environment variables in the VS Code extension settings instead of exporting them in your shell. See [Using Third-Party Providers in VS Code](/en/vs-code#using-third-party-providers-vertex-and-bedrock) for detailed instructions. All environment variables shown in this guide should work when configured through the VS Code extension settings.
-
 When enabling Bedrock for Claude Code, keep the following in mind:
 
 * `AWS_REGION` is a required environment variable. Claude Code does not read from the `.aws` config file for this setting.
@@ -213,6 +215,20 @@ For details, see [Bedrock IAM documentation](https://docs.aws.amazon.com/bedrock
   We recommend creating a dedicated AWS account for Claude Code to simplify cost tracking and access control.
 </Note>
 
+## AWS Guardrails
+
+[Amazon Bedrock Guardrails](https://docs.aws.amazon.com/bedrock/latest/userguide/guardrails.html) let you implement content filtering for Claude Code. Create a Guardrail in the [Amazon Bedrock console](https://console.aws.amazon.com/bedrock/), publish a version, then add the Guardrail headers to your [settings file](/en/settings). Enable Cross-Region inference on your Guardrail if you're using cross-region inference profiles.
+
+Example configuration:
+
+```json  theme={null}
+{
+  "env": {
+    "ANTHROPIC_CUSTOM_HEADERS": "X-Amzn-Bedrock-GuardrailIdentifier: your-guardrail-id\nX-Amzn-Bedrock-GuardrailVersion: 1"
+  }
+}
+```
+
 ## Troubleshooting
 
 If you encounter region issues:
@@ -233,8 +249,3 @@ Claude Code uses the Bedrock [Invoke API](https://docs.aws.amazon.com/bedrock/la
 * [Bedrock pricing](https://aws.amazon.com/bedrock/pricing/)
 * [Bedrock inference profiles](https://docs.aws.amazon.com/bedrock/latest/userguide/inference-profiles-support.html)
 * [Claude Code on Amazon Bedrock: Quick Setup Guide](https://community.aws/content/2tXkZKrZzlrlu0KfH8gST5Dkppq/claude-code-on-amazon-bedrock-quick-setup-guide)- [Claude Code Monitoring Implementation (Bedrock)](https://github.com/aws-solutions-library-samples/guidance-for-claude-code-with-amazon-bedrock/blob/main/assets/docs/MONITORING.md)
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://code.claude.com/docs/llms.txt

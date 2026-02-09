@@ -1,4 +1,4 @@
-# Source: https://docs.warp.dev/integrations/linear.md
+# Source: https://docs.warp.dev/agent-platform/integrations/linear.md
 
 # Linear
 
@@ -33,8 +33,6 @@ Agents keep you informed through:
 
 Session sharing works in Warp or in a browser view and allows multiple teammates to watch the session.
 
-<figure><img src="https://2297236823-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-MbqIgTw17KQvq_DQuRr%2Fuploads%2Fgit-blob-0486003ff006e5f480edb9124a8542f04af580fc%2Flinear-warp-on-web.png?alt=media" alt=""><figcaption></figcaption></figure>
-
 #### Joining the remote session
 
 Selecting [**Open in Warp**](https://docs.warp.dev/knowledge-and-collaboration/session-sharing/ambient-agents-session-sharing) (or the web option) opens the active session. You’ll see:
@@ -43,8 +41,6 @@ Selecting [**Open in Warp**](https://docs.warp.dev/knowledge-and-collaboration/s
 * The plan pane with the task list
 * An input box to add clarifying instructions
 * A real-time view identical to a local Warp task
-
-<div align="center"><img src="https://2297236823-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-MbqIgTw17KQvq_DQuRr%2Fuploads%2Fgit-blob-dae8ed5f1ac827ea47fd8addbf1206251b4693b2%2Flinear-open-in-warp.png?alt=media" alt=""></div>
 
 Any instructions you give will interrupt the agent, feed the new context, and resume work.
 
@@ -71,7 +67,7 @@ Because PRs are created as *you*, this makes code review, auditing, and team col
 
 ### How to configure the integration
 
-Setup involves two steps powered by the [cli](https://docs.warp.dev/platform/cli "mention"). For more instructions, see [integrations-overview](https://docs.warp.dev/integrations/integrations-overview "mention").
+Setup involves two steps powered by the [Warp CLI](https://docs.warp.dev/reference/cli/README). For more instructions, see [Integrations Overview](https://docs.warp.dev/agent-platform/integrations/integrations-overview).
 
 #### 1. Create an environment
 
@@ -84,9 +80,9 @@ An environment defines everything the agent needs to run your code:
 You can create an environment via:
 
 * The CLI
-* The guided flow using `/create-environment` ([slash-commands](https://docs.warp.dev/agents/slash-commands "mention"))
+* The guided flow using `/create-environment` ([Slash Commands](https://docs.warp.dev/agent-platform/agent/slash-commands))
 
-For full instructions, see our [Environment Setup](https://docs.warp.dev/integrations/integrations-overview) docs.
+For full instructions, see our [Environment Setup](https://docs.warp.dev/agent-platform/integrations/integrations-overview) docs.
 
 #### 2. Create the Linear integration
 
@@ -116,4 +112,4 @@ After revoking access, Warp will no longer be able to read issues, receive trigg
 
 ### Troubleshooting
 
-If something isn’t working as expected—missing repos, PR failures, Linear not detecting Warp, or environment issues—see our [Integrations Troubleshooting](https://docs.warp.dev/integrations-overview#troubleshooting) page for detailed guidance on GitHub permissions, environment configuration, and common setup problems.
+If something isn’t working as expected—missing repos, PR failures, Linear not detecting Warp, or environment issues—see our [Integrations Troubleshooting](https://docs.warp.dev/agent-platform/integrations-overview#troubleshooting) page for detailed guidance on GitHub permissions, environment configuration, and common setup problems.

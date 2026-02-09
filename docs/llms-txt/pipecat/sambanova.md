@@ -2,13 +2,9 @@
 
 # Source: https://docs.pipecat.ai/server/services/llm/sambanova.md
 
-# Source: https://docs.pipecat.ai/server/services/stt/sambanova.md
-
-# Source: https://docs.pipecat.ai/server/services/llm/sambanova.md
-
-# Source: https://docs.pipecat.ai/server/services/stt/sambanova.md
-
-# Source: https://docs.pipecat.ai/server/services/llm/sambanova.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pipecat.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # SambaNova
 
@@ -57,8 +53,3 @@ Before using SambaNova LLM services, you need:
 ### Required Environment Variables
 
 * `SAMBANOVA_API_KEY`: Your SambaNova API key for authentication
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.pipecat.ai/llms.txt

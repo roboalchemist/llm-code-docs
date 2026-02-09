@@ -40,7 +40,7 @@ New filter, faster scraping, changes in input schema, in output schema, a new In
 >
 > Tired of Tripadvisor's 3000 hotels-per-search limit? We've got your back. Say hello to our latest baked-in feature: Deep city search. Now, to get all results from a country-wide search you need to just set Max search results above 3000, and watch the magic happen.
 >
-> A bit of context: while Tripadvisor never limited the search for restaurants or attractions, hotel search was a different case; it always capped at 3000. Our smart search is designed to overcome that limit by including every city within your chosen location. We scrape hotels from each one, ensuring no hidden gems slip through the cracks. This feature is available for https://console.apify.com/actors/dbEyMBriog95Fv8CW/console and https://console.apify.com/actors/qx7G70MC4WBE273SM/console.
+> A bit of context: while Tripadvisor never limited the search for restaurants or attractions, hotel search was a different case; it always capped at 3000. Our smart search is designed to overcome that limit by including every city within your chosen location. We scrape hotels from each one, ensuring no hidden gems slip through the cracks. This feature is available for [Tripadvisor Scraper](https://console.apify.com/actors/dbEyMBriog95Fv8CW/console) and [Tripadvisor Hotels Scraper](https://console.apify.com/actors/qx7G70MC4WBE273SM/console).
 >
 > Get ready for an unbeatable hotel-hunting experience. Give it a spin, and let us know what you think!
 
@@ -54,7 +54,7 @@ A common situation in web scraping that's out of your control.
 >
 > Hi,
 >
-> We've got some news regarding your favorite Actor – https://console.apify.com/actors/JJghSZmShuco4j9gJ/console. Recently, Facebook Ads have changed their data format. To keep our Actor running smoothly, we'll be adapting to these changes by slightly tweaking the Actor Output. Don't worry; it's a breeze! Some of the output data might just appear under new titles.
+> We've got some news regarding your favorite Actor – [Facebook Ads Scraper](https://console.apify.com/actors/JJghSZmShuco4j9gJ/console). Recently, Facebook Ads have changed their data format. To keep our Actor running smoothly, we'll be adapting to these changes by slightly tweaking the Actor Output. Don't worry; it's a breeze! Some of the output data might just appear under new titles.
 >
 > This change will take place on October 10; please\*\* \*\*make sure to remap your integrations accordingly.
 >
@@ -75,7 +75,7 @@ Email 1 (before the change, warning about deprecation).
 > 1. On September 22, we will deprecate it, i.e., new users will not be able to find it in Store. You will still be able to use it though.
 > 2. At the end of October, we will unpublish this Actor, and from that point on, you will not be able to use it anymore.
 >
-> Please use this time to change your integrations to our new https://apify.com/voyager/booking-scraper.
+> Please use this time to change your integrations to our new [Booking Scraper](https://apify.com/voyager/booking-scraper).
 >
 > That’s it! If you have any questions or need more information, don’t hesitate to reach out.
 
@@ -87,9 +87,9 @@ Email 2 (after the change, warning about unpublishing)
 >
 > Hi,
 >
-> Just a heads-up: today, the deprecated https://console.apify.com/actors/5T5NTHWpvetjeRo3i/console you have been using will be completely unpublished as announced, and you will not be able to use it anymore.
+> Just a heads-up: today, the deprecated [Booking Scraper](https://console.apify.com/actors/5T5NTHWpvetjeRo3i/console) you have been using will be completely unpublished as announced, and you will not be able to use it anymore.
 >
-> If you want to continue to scrape Booking.com, make sure to switch to the https://apify.com/voyager/booking-scraper.
+> If you want to continue to scrape Booking.com, make sure to switch to the [latest Actor version](https://apify.com/voyager/booking-scraper).
 >
 > For any assistance or questions, don't hesitate to reach out to our support team.
 
@@ -138,4 +138,4 @@ Newsletters are a great way to keep your users engaged without overwhelming them
 
 There may be times when you need to reach out to a specific user — whether it’s to address a unique situation, ask a question that doesn’t fit the public forum of the **Issue tab**, or explore a collaboration opportunity. While there isn’t a quick way to do this through Apify Console just yet, you can ensure users can contact you by **adding your email or other contact info to your Store bio**. This makes it easy for them to reach out directly.
 
-✍🏻 Learn best practices on how to use your Store bio to connect with your users https://docs.apify.com/academy/actor-marketing-playbook/interact-with-users/your-store-bio.md.
+✍🏻 Learn best practices on how to use your Store bio to connect with your users [Your Store bio](https://docs.apify.com/academy/actor-marketing-playbook/interact-with-users/your-store-bio.md).

@@ -2,10 +2,6 @@
 
 # Source: https://docs.avaamo.com/user-guide/about-releases/release-notes.md
 
-# Source: https://docs.avaamo.com/user-guide/release-notes/v5.0-to-v5.8.x-releases/release-notes.md
-
-# Source: https://docs.avaamo.com/user-guide/about-releases/release-notes.md
-
 # Release notes
 
 Release notes are provided for each major and minor release of the product with comprehensive details on new features, enhancements, changes, deprecations, and removals within a release version.&#x20;

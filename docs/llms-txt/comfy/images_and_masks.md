@@ -1,5 +1,9 @@
 # Source: https://docs.comfy.org/custom-nodes/backend/images_and_masks.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.comfy.org/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Images, Latents, and Masks
 
 When working with these datatypes, you will need to know about the `torch.Tensor` class.

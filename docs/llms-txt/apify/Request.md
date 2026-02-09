@@ -33,7 +33,6 @@ request = Request.from_url('https://crawlee.dev')
 * [**from\_url](https://docs.apify.com/sdk/python/sdk/python/reference/class/Request.md#from_url)
 * [**get\_query\_param\_from\_url](https://docs.apify.com/sdk/python/sdk/python/reference/class/Request.md#get_query_param_from_url)
 * [**last\_proxy\_tier](https://docs.apify.com/sdk/python/sdk/python/reference/class/Request.md#last_proxy_tier)
-* [**max\_retries](https://docs.apify.com/sdk/python/sdk/python/reference/class/Request.md#max_retries)
 * [**session\_rotation\_count](https://docs.apify.com/sdk/python/sdk/python/reference/class/Request.md#session_rotation_count)
 * [**state](https://docs.apify.com/sdk/python/sdk/python/reference/class/Request.md#state)
 
@@ -62,7 +61,7 @@ request = Request.from_url('https://crawlee.dev')
 
 ## Methods<!-- -->[**](#Methods)
 
-### [**](#crawl_depth)[**](https://github.com/apify/crawlee-python/blob/4b41e9719dcea4247ee874e5950c51d60de7e647//src/crawlee/_request.py#L351)crawl\_depth
+### [**](#crawl_depth)[**](https://github.com/apify/crawlee-python/blob/3e08b24571bbd21f25523e9aa81bc31ba308628d//src/crawlee/_request.py#L374)crawl\_depth
 
 * ****crawl\_depth**(new\_value): None
 
@@ -72,7 +71,7 @@ request = Request.from_url('https://crawlee.dev')
 
   #### Returns None
 
-### [**](#enqueue_strategy)[**](https://github.com/apify/crawlee-python/blob/4b41e9719dcea4247ee874e5950c51d60de7e647//src/crawlee/_request.py#L387)enqueue\_strategy
+### [**](#enqueue_strategy)[**](https://github.com/apify/crawlee-python/blob/3e08b24571bbd21f25523e9aa81bc31ba308628d//src/crawlee/_request.py#L406)enqueue\_strategy
 
 * ****enqueue\_strategy**(new\_enqueue\_strategy): None
 
@@ -82,7 +81,7 @@ request = Request.from_url('https://crawlee.dev')
 
   #### Returns None
 
-### [**](#forefront)[**](https://github.com/apify/crawlee-python/blob/4b41e9719dcea4247ee874e5950c51d60de7e647//src/crawlee/_request.py#L405)forefront
+### [**](#forefront)[**](https://github.com/apify/crawlee-python/blob/3e08b24571bbd21f25523e9aa81bc31ba308628d//src/crawlee/_request.py#L424)forefront
 
 * ****forefront**(new\_value): None
 
@@ -92,9 +91,9 @@ request = Request.from_url('https://crawlee.dev')
 
   #### Returns None
 
-### [**](#from_url)[**](https://github.com/apify/crawlee-python/blob/4b41e9719dcea4247ee874e5950c51d60de7e647//src/crawlee/_request.py#L240)from\_url
+### [**](#from_url)[**](https://github.com/apify/crawlee-python/blob/3e08b24571bbd21f25523e9aa81bc31ba308628d//src/crawlee/_request.py#L243)from\_url
 
-* ****from\_url**(url, \*, method, headers, payload, label, session\_id, unique\_key, keep\_url\_fragment, use\_extended\_unique\_key, always\_enqueue, kwargs): Self
+* ****from\_url**(url, \*, method, headers, payload, label, session\_id, unique\_key, keep\_url\_fragment, use\_extended\_unique\_key, always\_enqueue, enqueue\_strategy, max\_retries, kwargs): Self
 
 - Create a new `Request` instance from a URL.
 
@@ -144,11 +143,19 @@ request = Request.from_url('https://crawlee.dev')
 
     If set to `True`, the request will be enqueued even if it is already present in the queue. Using this is not allowed when a custom `unique_key` is also provided and will result in a `ValueError`.
 
+  * ##### optionalkeyword-onlyenqueue\_strategy: [EnqueueStrategy](https://crawlee.dev/python/api#EnqueueStrategy) | None = <!-- -->None
+
+    The strategy that will be used for enqueuing the request.
+
+  * ##### optionalkeyword-onlymax\_retries: int | None = <!-- -->None
+
+    Maximum number of retries for this request. Allows to override the global `max_request_retries` option of `BasicCrawler`.
+
   * ##### kwargs: Any
 
   #### Returns Self
 
-### [**](#get_query_param_from_url)[**](https://github.com/apify/crawlee-python/blob/4b41e9719dcea4247ee874e5950c51d60de7e647//src/crawlee/_request.py#L321)get\_query\_param\_from\_url
+### [**](#get_query_param_from_url)[**](https://github.com/apify/crawlee-python/blob/3e08b24571bbd21f25523e9aa81bc31ba308628d//src/crawlee/_request.py#L344)get\_query\_param\_from\_url
 
 * ****get\_query\_param\_from\_url**(param, \*, default): str | None
 
@@ -163,7 +170,7 @@ request = Request.from_url('https://crawlee.dev')
 
   #### Returns str | None
 
-### [**](#last_proxy_tier)[**](https://github.com/apify/crawlee-python/blob/4b41e9719dcea4247ee874e5950c51d60de7e647//src/crawlee/_request.py#L396)last\_proxy\_tier
+### [**](#last_proxy_tier)[**](https://github.com/apify/crawlee-python/blob/3e08b24571bbd21f25523e9aa81bc31ba308628d//src/crawlee/_request.py#L415)last\_proxy\_tier
 
 * ****last\_proxy\_tier**(new\_value): None
 
@@ -173,17 +180,7 @@ request = Request.from_url('https://crawlee.dev')
 
   #### Returns None
 
-### [**](#max_retries)[**](https://github.com/apify/crawlee-python/blob/4b41e9719dcea4247ee874e5950c51d60de7e647//src/crawlee/_request.py#L369)max\_retries
-
-* ****max\_retries**(new\_max\_retries): None
-
-- #### Parameters
-
-  * ##### new\_max\_retries: int
-
-  #### Returns None
-
-### [**](#session_rotation_count)[**](https://github.com/apify/crawlee-python/blob/4b41e9719dcea4247ee874e5950c51d60de7e647//src/crawlee/_request.py#L378)session\_rotation\_count
+### [**](#session_rotation_count)[**](https://github.com/apify/crawlee-python/blob/3e08b24571bbd21f25523e9aa81bc31ba308628d//src/crawlee/_request.py#L397)session\_rotation\_count
 
 * ****session\_rotation\_count**(new\_session\_rotation\_count): None
 
@@ -193,7 +190,7 @@ request = Request.from_url('https://crawlee.dev')
 
   #### Returns None
 
-### [**](#state)[**](https://github.com/apify/crawlee-python/blob/4b41e9719dcea4247ee874e5950c51d60de7e647//src/crawlee/_request.py#L360)state
+### [**](#state)[**](https://github.com/apify/crawlee-python/blob/3e08b24571bbd21f25523e9aa81bc31ba308628d//src/crawlee/_request.py#L383)state
 
 * ****state**(new\_state): None
 
@@ -205,107 +202,107 @@ request = Request.from_url('https://crawlee.dev')
 
 ## Properties<!-- -->[**](#Properties)
 
-### [**](#crawl_depth)[**](https://github.com/apify/crawlee-python/blob/4b41e9719dcea4247ee874e5950c51d60de7e647//src/crawlee/_request.py#L346)crawl\_depth
+### [**](#crawl_depth)[**](https://github.com/apify/crawlee-python/blob/3e08b24571bbd21f25523e9aa81bc31ba308628d//src/crawlee/_request.py#L369)crawl\_depth
 
 **crawl\_depth: int
 
 The depth of the request in the crawl tree.
 
-### [**](#crawlee_data)[**](https://github.com/apify/crawlee-python/blob/4b41e9719dcea4247ee874e5950c51d60de7e647//src/crawlee/_request.py#L337)crawlee\_data
+### [**](#crawlee_data)[**](https://github.com/apify/crawlee-python/blob/3e08b24571bbd21f25523e9aa81bc31ba308628d//src/crawlee/_request.py#L360)crawlee\_data
 
 **crawlee\_data: [CrawleeRequestData](https://crawlee.dev/python/api/class/CrawleeRequestData)
 
 Crawlee-specific configuration stored in the `user_data`.
 
-### [**](#enqueue_strategy)[**](https://github.com/apify/crawlee-python/blob/4b41e9719dcea4247ee874e5950c51d60de7e647//src/crawlee/_request.py#L382)enqueue\_strategy
+### [**](#enqueue_strategy)[**](https://github.com/apify/crawlee-python/blob/3e08b24571bbd21f25523e9aa81bc31ba308628d//src/crawlee/_request.py#L401)enqueue\_strategy
 
 **enqueue\_strategy: [EnqueueStrategy](https://crawlee.dev/python/api#EnqueueStrategy)
 
 The strategy that was used for enqueuing the request.
 
-### [**](#forefront)[**](https://github.com/apify/crawlee-python/blob/4b41e9719dcea4247ee874e5950c51d60de7e647//src/crawlee/_request.py#L400)forefront
+### [**](#forefront)[**](https://github.com/apify/crawlee-python/blob/3e08b24571bbd21f25523e9aa81bc31ba308628d//src/crawlee/_request.py#L419)forefront
 
 **forefront: bool
 
 Indicate whether the request should be enqueued at the front of the queue.
 
-### [**](#handled_at)[**](https://github.com/apify/crawlee-python/blob/4b41e9719dcea4247ee874e5950c51d60de7e647//src/crawlee/_request.py#L236)handled\_at
+### [**](#handled_at)[**](https://github.com/apify/crawlee-python/blob/3e08b24571bbd21f25523e9aa81bc31ba308628d//src/crawlee/_request.py#L239)handled\_at
 
 **handled\_at: datetime | None
 
 Timestamp when the request was handled.
 
-### [**](#label)[**](https://github.com/apify/crawlee-python/blob/4b41e9719dcea4247ee874e5950c51d60de7e647//src/crawlee/_request.py#L327)label
+### [**](#label)[**](https://github.com/apify/crawlee-python/blob/3e08b24571bbd21f25523e9aa81bc31ba308628d//src/crawlee/_request.py#L350)label
 
 **label: str | None
 
 A string used to differentiate between arbitrary request types.
 
-### [**](#last_proxy_tier)[**](https://github.com/apify/crawlee-python/blob/4b41e9719dcea4247ee874e5950c51d60de7e647//src/crawlee/_request.py#L391)last\_proxy\_tier
+### [**](#last_proxy_tier)[**](https://github.com/apify/crawlee-python/blob/3e08b24571bbd21f25523e9aa81bc31ba308628d//src/crawlee/_request.py#L410)last\_proxy\_tier
 
 **last\_proxy\_tier: int | None
 
 The last proxy tier used to process the request.
 
-### [**](#loaded_url)[**](https://github.com/apify/crawlee-python/blob/4b41e9719dcea4247ee874e5950c51d60de7e647//src/crawlee/_request.py#L233)loaded\_url
+### [**](#loaded_url)[**](https://github.com/apify/crawlee-python/blob/3e08b24571bbd21f25523e9aa81bc31ba308628d//src/crawlee/_request.py#L236)loaded\_url
 
 **loaded\_url: str | None
 
 URL of the web page that was loaded. This can differ from the original URL in case of redirects.
 
-### [**](#max_retries)[**](https://github.com/apify/crawlee-python/blob/4b41e9719dcea4247ee874e5950c51d60de7e647//src/crawlee/_request.py#L364)max\_retries
+### [**](#max_retries)[**](https://github.com/apify/crawlee-python/blob/3e08b24571bbd21f25523e9aa81bc31ba308628d//src/crawlee/_request.py#L387)max\_retries
 
 **max\_retries: int | None
 
 Crawlee-specific limit on the number of retries of the request.
 
-### [**](#method)[**](https://github.com/apify/crawlee-python/blob/4b41e9719dcea4247ee874e5950c51d60de7e647//src/crawlee/_request.py#L185)method
+### [**](#method)[**](https://github.com/apify/crawlee-python/blob/3e08b24571bbd21f25523e9aa81bc31ba308628d//src/crawlee/_request.py#L187)method
 
 **method: [HttpMethod](https://crawlee.dev/python/api#HttpMethod)
 
 HTTP request method.
 
-### [**](#model_config)[**](https://github.com/apify/crawlee-python/blob/4b41e9719dcea4247ee874e5950c51d60de7e647//src/crawlee/_request.py#L167)model\_config
+### [**](#model_config)[**](https://github.com/apify/crawlee-python/blob/3e08b24571bbd21f25523e9aa81bc31ba308628d//src/crawlee/_request.py#L169)model\_config
 
 **model\_config: Undefined
 
-### [**](#no_retry)[**](https://github.com/apify/crawlee-python/blob/4b41e9719dcea4247ee874e5950c51d60de7e647//src/crawlee/_request.py#L230)no\_retry
+### [**](#no_retry)[**](https://github.com/apify/crawlee-python/blob/3e08b24571bbd21f25523e9aa81bc31ba308628d//src/crawlee/_request.py#L233)no\_retry
 
 **no\_retry: bool
 
 If set to `True`, the request will not be retried in case of failure.
 
-### [**](#payload)[**](https://github.com/apify/crawlee-python/blob/4b41e9719dcea4247ee874e5950c51d60de7e647//src/crawlee/_request.py#L188)payload
+### [**](#payload)[**](https://github.com/apify/crawlee-python/blob/3e08b24571bbd21f25523e9aa81bc31ba308628d//src/crawlee/_request.py#L190)payload
 
 **payload: [HttpPayload](https://crawlee.dev/python/api#HttpPayload) | None
 
 HTTP request payload.
 
-### [**](#retry_count)[**](https://github.com/apify/crawlee-python/blob/4b41e9719dcea4247ee874e5950c51d60de7e647//src/crawlee/_request.py#L227)retry\_count
+### [**](#retry_count)[**](https://github.com/apify/crawlee-python/blob/3e08b24571bbd21f25523e9aa81bc31ba308628d//src/crawlee/_request.py#L230)retry\_count
 
 **retry\_count: int
 
 Number of times the request has been retried.
 
-### [**](#session_id)[**](https://github.com/apify/crawlee-python/blob/4b41e9719dcea4247ee874e5950c51d60de7e647//src/crawlee/_request.py#L332)session\_id
+### [**](#session_id)[**](https://github.com/apify/crawlee-python/blob/3e08b24571bbd21f25523e9aa81bc31ba308628d//src/crawlee/_request.py#L355)session\_id
 
 **session\_id: str | None
 
 The ID of the bound session, if there is any.
 
-### [**](#session_rotation_count)[**](https://github.com/apify/crawlee-python/blob/4b41e9719dcea4247ee874e5950c51d60de7e647//src/crawlee/_request.py#L373)session\_rotation\_count
+### [**](#session_rotation_count)[**](https://github.com/apify/crawlee-python/blob/3e08b24571bbd21f25523e9aa81bc31ba308628d//src/crawlee/_request.py#L392)session\_rotation\_count
 
 **session\_rotation\_count: int | None
 
 Crawlee-specific number of finished session rotations for the request.
 
-### [**](#state)[**](https://github.com/apify/crawlee-python/blob/4b41e9719dcea4247ee874e5950c51d60de7e647//src/crawlee/_request.py#L355)state
+### [**](#state)[**](https://github.com/apify/crawlee-python/blob/3e08b24571bbd21f25523e9aa81bc31ba308628d//src/crawlee/_request.py#L378)state
 
-**state: [RequestState](https://crawlee.dev/python/api/class/RequestState) | None
+**state: [RequestState](https://crawlee.dev/python/api/class/RequestState)
 
 Crawlee-specific request handling state.
 
-### [**](#unique_key)[**](https://github.com/apify/crawlee-python/blob/4b41e9719dcea4247ee874e5950c51d60de7e647//src/crawlee/_request.py#L169)unique\_key
+### [**](#unique_key)[**](https://github.com/apify/crawlee-python/blob/3e08b24571bbd21f25523e9aa81bc31ba308628d//src/crawlee/_request.py#L171)unique\_key
 
 **unique\_key: str
 
@@ -315,13 +312,13 @@ If `unique_key` is not provided, then it is automatically generated by normalizi
 
 Pass an arbitrary non-empty text value to the `unique_key` property to override the default behavior and specify which URLs shall be considered equal.
 
-### [**](#url)[**](https://github.com/apify/crawlee-python/blob/4b41e9719dcea4247ee874e5950c51d60de7e647//src/crawlee/_request.py#L181)url
+### [**](#url)[**](https://github.com/apify/crawlee-python/blob/3e08b24571bbd21f25523e9aa81bc31ba308628d//src/crawlee/_request.py#L183)url
 
 **url: str
 
 The URL of the web page to crawl. Must be a valid HTTP or HTTPS URL, and may include query parameters and fragments.
 
-### [**](#was_already_handled)[**](https://github.com/apify/crawlee-python/blob/4b41e9719dcea4247ee874e5950c51d60de7e647//src/crawlee/_request.py#L409)was\_already\_handled
+### [**](#was_already_handled)[**](https://github.com/apify/crawlee-python/blob/3e08b24571bbd21f25523e9aa81bc31ba308628d//src/crawlee/_request.py#L428)was\_already\_handled
 
 **was\_already\_handled: bool
 

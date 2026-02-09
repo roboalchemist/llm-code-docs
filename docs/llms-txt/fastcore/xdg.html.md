@@ -65,7 +65,13 @@ target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### xdg_cache_home
 
->  xdg_cache_home ()
+``` python
+
+def xdg_cache_home(
+    
+):
+
+```
 
 *Path corresponding to `XDG_CACHE_HOME`*
 
@@ -87,7 +93,13 @@ target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### xdg_config_dirs
 
->  xdg_config_dirs ()
+``` python
+
+def xdg_config_dirs(
+    
+):
+
+```
 
 *Paths corresponding to `XDG_CONFIG_DIRS`*
 
@@ -105,7 +117,13 @@ target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### xdg_config_home
 
->  xdg_config_home ()
+``` python
+
+def xdg_config_home(
+    
+):
+
+```
 
 *Path corresponding to `XDG_CONFIG_HOME`*
 
@@ -123,7 +141,13 @@ target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### xdg_data_dirs
 
->  xdg_data_dirs ()
+``` python
+
+def xdg_data_dirs(
+    
+):
+
+```
 
 *Paths corresponding to XDG_DATA_DIRS\`*
 
@@ -135,7 +159,13 @@ target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### xdg_data_home
 
->  xdg_data_home ()
+``` python
+
+def xdg_data_home(
+    
+):
+
+```
 
 *Path corresponding to `XDG_DATA_HOME`*
 
@@ -153,7 +183,13 @@ target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### xdg_runtime_dir
 
->  xdg_runtime_dir ()
+``` python
+
+def xdg_runtime_dir(
+    
+):
+
+```
 
 *Path corresponding to `XDG_RUNTIME_DIR`*
 
@@ -165,7 +201,13 @@ target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### xdg_state_home
 
->  xdg_state_home ()
+``` python
+
+def xdg_state_home(
+    
+):
+
+```
 
 *Path corresponding to `XDG_STATE_HOME`*
 

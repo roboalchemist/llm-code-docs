@@ -2,13 +2,9 @@
 
 # Source: https://docs.tavily.com/sdk/javascript/reference.md
 
-# Source: https://docs.tavily.com/sdk/python/reference.md
-
-# Source: https://docs.tavily.com/sdk/javascript/reference.md
-
-# Source: https://docs.tavily.com/sdk/python/reference.md
-
-# Source: https://docs.tavily.com/sdk/javascript/reference.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.tavily.com/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # SDK Reference
 
@@ -45,6 +41,29 @@ client = tavily({ apiKey: "tvly-YOUR_API_KEY", proxies });
 
 Alternatively, you can specify which proxies to use by setting the `TAVILY_HTTP_PROXY` and `TAVILY_HTTPS_PROXY` variables in your environment file.
 
+### Project Tracking
+
+You can attach a Project ID to your client to organize and track API usage by project. This is useful when a single API key is used across multiple projects.
+
+```javascript  theme={null}
+const { tavily } = require("@tavily/core");
+
+const client = tavily({
+  apiKey: "tvly-YOUR_API_KEY",
+  projectId: "your-project-id"
+});
+```
+
+Alternatively, you can set the `TAVILY_PROJECT` environment variable:
+
+```javascript  theme={null}
+process.env.TAVILY_PROJECT = "your-project-id";
+
+const client = tavily({ apiKey: "tvly-YOUR_API_KEY" });
+```
+
+All requests made with this client will include the Project ID, allowing you to filter by project in the /logs endpoint and platform usage dashboard.
+
 ## Tavily Search
 
 <Tip>
@@ -77,6 +96,7 @@ You can access Tavily Search in JavaScript through the client's `search` functio
 | `country`                  | `string`              | Boost search results from a specific country. This will prioritize content from the selected country in the search results. Available only if topic is `general`.                                                                                                                                                                                                                                                                                                                                                                                                                                   | —           |
 | `timeout`                  | `number`              | A timeout to be used in requests to the Tavily API.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 | `60`        |
 | `includeFavicon`           | `boolean`             | Whether to include the favicon URL for each result.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 | `false`     |
+| `includeUsage`             | `boolean`             | Whether to include credit usage information in the response.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        | `false`     |
 
 ### Response format
 
@@ -188,14 +208,17 @@ You can access Tavily Extract in JavaScript through the client's `extract` funct
 
 ### Parameters
 
-| Parameter             | Type       | Description                                                                                                                                                                                                                                                                                                                                                                   | Default      |
-| :-------------------- | :--------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :----------- |
-| `urls` **(required)** | `string[]` | The URLs you want to extract. The list must not contain more than 20 URLs.                                                                                                                                                                                                                                                                                                    | —            |
-| `includeImages`       | `boolean`  | Include a list of images extracted from the URLs in the response.                                                                                                                                                                                                                                                                                                             | `false`      |
-| `extractDepth`        | `string`   | The depth of the extraction process. You may experience higher latency with `"advanced"` extraction, but it offers a higher success rate and retrieves more data from the URL (e.g., tables, embedded content). `"basic"` extraction costs 1 API Credit per 5 successful URL extractions, while `"advanced"` extraction costs 2 API Credits per 5 successful URL extractions. | `"basic"`    |
-| `format`              | `str`      | The format of the extracted web page content. `"markdown"` returns content in markdown format. `"text"` returns plain text and may increase latency.                                                                                                                                                                                                                          | `"markdown"` |
-| `timeout`             | `number`   | A timeout to be used in requests to the Tavily API.  Maximum time in seconds to wait for the URL extraction before timing out. Must be between 1.0 and 60.0 seconds. If not specified, default timeouts are applied based on extract\_depth: 10 seconds for basic extraction and 30 seconds for advanced extraction.                                                          | `None`       |
-| `includeFavicon`      | `boolean`  | Whether to include the favicon URL for each result.                                                                                                                                                                                                                                                                                                                           | `false`      |
+| Parameter             | Type       | Description                                                                                                                                                                                                                                                                                                                                                                                        | Default      |
+| :-------------------- | :--------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :----------- |
+| `urls` **(required)** | `string[]` | The URLs you want to extract. The list must not contain more than 20 URLs.                                                                                                                                                                                                                                                                                                                         | —            |
+| `includeImages`       | `boolean`  | Include a list of images extracted from the URLs in the response.                                                                                                                                                                                                                                                                                                                                  | `false`      |
+| `extractDepth`        | `string`   | The depth of the extraction process. You may experience higher latency with `"advanced"` extraction, but it offers a higher success rate and retrieves more data from the URL (e.g., tables, embedded content). `"basic"` extraction costs 1 API Credit per 5 successful URL extractions, while `"advanced"` extraction costs 2 API Credits per 5 successful URL extractions.                      | `"basic"`    |
+| `format`              | `str`      | The format of the extracted web page content. `"markdown"` returns content in markdown format. `"text"` returns plain text and may increase latency.                                                                                                                                                                                                                                               | `"markdown"` |
+| `timeout`             | `number`   | A timeout to be used in requests to the Tavily API.  Maximum time in seconds to wait for the URL extraction before timing out. Must be between 1.0 and 60.0 seconds. If not specified, default timeouts are applied based on extract\_depth: 10 seconds for basic extraction and 30 seconds for advanced extraction.                                                                               | `None`       |
+| `includeFavicon`      | `boolean`  | Whether to include the favicon URL for each result.                                                                                                                                                                                                                                                                                                                                                | `false`      |
+| `includeUsage`        | `boolean`  | Whether to include credit usage information in the response.`NOTE:`The value may be 0 if the total successful URL extractions has not yet reached 5 calls. See our [Credits & Pricing documentation](https://docs.tavily.com/documentation/api-credits) for details.                                                                                                                               | `false`      |
+| `query`               | `string`   | User intent for reranking extracted content chunks. When provided, chunks are reranked based on relevance to this query.                                                                                                                                                                                                                                                                           | —            |
+| `chunksPerSource`     | `number`   | Chunks are short content snippets (maximum 500 characters each) pulled directly from the source. Use `chunksPerSource` to define the maximum number of relevant chunks returned per source and to control the `rawContent` length. Chunks will appear in the `rawContent` field as: `<chunk 1> [...] <chunk 2> [...] <chunk 3>`. Available only when `query` is provided. Must be between 1 and 5. | `3`          |
 
 ### Response format
 
@@ -212,12 +235,12 @@ The response object you receive will be in the following format:
 
 Each successful result in the `results` list will be in the following `SuccessfulResult` format:
 
-| Key                  | Type       | Description                                                                                 |
-| :------------------- | :--------- | :------------------------------------------------------------------------------------------ |
-| `url`                | `string`   | The URL of the webpage.                                                                     |
-| `raw_content`        | `string`   | The raw content extracted.                                                                  |
-| `images` (optional)  | `string[]` | This is only available if `includeImages` is set to `true`. A list of extracted image URLs. |
-| `favicon` (optional) | `string`   | The favicon URL for the result.                                                             |
+| Key                  | Type       | Description                                                                                                      |
+| :------------------- | :--------- | :--------------------------------------------------------------------------------------------------------------- |
+| `url`                | `string`   | The URL of the webpage.                                                                                          |
+| `raw_content`        | `string`   | The raw content extracted. When `query` is provided, contains the top-ranked chunks joined by `[...]` separator. |
+| `images` (optional)  | `string[]` | This is only available if `includeImages` is set to `true`. A list of extracted image URLs.                      |
+| `favicon` (optional) | `string`   | The favicon URL for the result.                                                                                  |
 
 #### Failed Results
 
@@ -295,31 +318,29 @@ Each failed result in the `results` list will be in the following `FailedResult`
 
 ## Tavily Crawl
 
-<Tip>
-  Our agent-first crawl endpoint is currently in **open beta**. Please repost any issues you encounter on our [community page](https://community.tavily.com).
-</Tip>
-
 You can access Tavily Crawl in JavaScript through the client's `crawl` function.
 
 ### Parameters
 
-| Parameter            | Type       | Description                                                                                                                                                       | Default      |
-| :------------------- | :--------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------- | :----------- |
-| `url` **(required)** | `string`   | The root URL to begin the crawl.                                                                                                                                  | —            |
-| `maxDepth`           | `number`   | Max depth of the crawl. Defines how far from the base URL the crawler can explore.                                                                                | `1`          |
-| `maxBreadth`         | `number`   | Max number of links to follow **per level** of the tree (i.e., per page).                                                                                         | `20`         |
-| `limit`              | `number`   | Total number of links the crawler will process before stopping.                                                                                                   | `50`         |
-| `instructions`       | `string`   | Natural language instructions for the crawler.                                                                                                                    | —            |
-| `selectPaths`        | `string[]` | **Regex patterns** to select only URLs with specific path patterns (e.g., `"/docs/.*"`, `"/api/v1.*"`).                                                           | `[]`         |
-| `selectDomains`      | `string[]` | **Regex patterns** to select crawling to specific domains or subdomains (e.g., `"^docs\.example\.com$"`).                                                         | `[]`         |
-| `excludePaths`       | `string[]` | **Regex patterns** to exclude URLs with specific path patterns (e.g., `"/admin/.*"`, `"/private/.*"`).                                                            | `[]`         |
-| `excludeDomains`     | `string[]` | **Regex patterns** to exclude specific domains or subdomains from crawling (e.g., `"^admin\.example\.com$"`).                                                     | `[]`         |
-| `allowExternal`      | `boolean`  | Whether to return links from external domains in crawl output.                                                                                                    | `true`       |
-| `includeImages`      | `boolean`  | Whether to extract image URLs from the crawled pages.                                                                                                             | `false`      |
-| `extractDepth`       | `string`   | Advanced extraction retrieves more data, including tables and embedded content, with higher success but may increase latency. Options: `"basic"` or `"advanced"`. | `"basic"`    |
-| `format`             | `str`      | The format of the extracted web page content. `"markdown"` returns content in markdown format. `"text"` returns plain text and may increase latency.              | `"markdown"` |
-| `timeout`            | `number`   | Maximum time in seconds to wait for the crawl operation before timing out. Must be between 10 and 150 seconds.                                                    | `150`        |
-| `includeFavicon`     | `boolean`  | Whether to include the favicon URL for each result.                                                                                                               | `false`      |
+| Parameter            | Type       | Description                                                                                                                                                                                                                                                                                                                                               | Default      |
+| :------------------- | :--------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :----------- |
+| `url` **(required)** | `string`   | The root URL to begin the crawl.                                                                                                                                                                                                                                                                                                                          | —            |
+| `maxDepth`           | `number`   | Max depth of the crawl. Defines how far from the base URL the crawler can explore.                                                                                                                                                                                                                                                                        | `1`          |
+| `maxBreadth`         | `number`   | Max number of links to follow **per level** of the tree (i.e., per page).                                                                                                                                                                                                                                                                                 | `20`         |
+| `limit`              | `number`   | Total number of links the crawler will process before stopping.                                                                                                                                                                                                                                                                                           | `50`         |
+| `instructions`       | `string`   | Natural language instructions for the crawler.                                                                                                                                                                                                                                                                                                            | —            |
+| `selectPaths`        | `string[]` | **Regex patterns** to select only URLs with specific path patterns (e.g., `"/docs/.*"`, `"/api/v1.*"`).                                                                                                                                                                                                                                                   | `[]`         |
+| `selectDomains`      | `string[]` | **Regex patterns** to select crawling to specific domains or subdomains (e.g., `"^docs\.example\.com$"`).                                                                                                                                                                                                                                                 | `[]`         |
+| `excludePaths`       | `string[]` | **Regex patterns** to exclude URLs with specific path patterns (e.g., `"/admin/.*"`, `"/private/.*"`).                                                                                                                                                                                                                                                    | `[]`         |
+| `excludeDomains`     | `string[]` | **Regex patterns** to exclude specific domains or subdomains from crawling (e.g., `"^admin\.example\.com$"`).                                                                                                                                                                                                                                             | `[]`         |
+| `allowExternal`      | `boolean`  | Whether to return links from external domains in crawl output.                                                                                                                                                                                                                                                                                            | `true`       |
+| `includeImages`      | `boolean`  | Whether to extract image URLs from the crawled pages.                                                                                                                                                                                                                                                                                                     | `false`      |
+| `extractDepth`       | `string`   | Advanced extraction retrieves more data, including tables and embedded content, with higher success but may increase latency. Options: `"basic"` or `"advanced"`.                                                                                                                                                                                         | `"basic"`    |
+| `format`             | `str`      | The format of the extracted web page content. `"markdown"` returns content in markdown format. `"text"` returns plain text and may increase latency.                                                                                                                                                                                                      | `"markdown"` |
+| `timeout`            | `number`   | Maximum time in seconds to wait for the crawl operation before timing out. Must be between 10 and 150 seconds.                                                                                                                                                                                                                                            | `150`        |
+| `includeFavicon`     | `boolean`  | Whether to include the favicon URL for each result.                                                                                                                                                                                                                                                                                                       | `false`      |
+| `includeUsage`       | `boolean`  | Whether to include credit usage information in the response.`NOTE:`The value may be 0 if the total use of /extract and /map calls has not yet reached minimum needed. See our [Credits & Pricing documentation](https://docs.tavily.com/documentation/api-credits) for details.                                                                           | `false`      |
+| `chunksPerSource`    | `number`   | Chunks are short content snippets (maximum 500 characters each) pulled directly from the source. Use `chunksPerSource` to define the maximum number of relevant chunks returned per source and to control the `rawContent` length. Chunks will appear in the `rawContent` field as: `<chunk 1> [...] <chunk 2> [...] <chunk 3>`. Must be between 1 and 5. | `3`          |
 
 ### Response format
 
@@ -392,27 +413,24 @@ Each successful result in the `results` list will be in the following `Result` f
 
 ## Tavily Map
 
-<Tip>
-  Our agent-first mapping endpoint is currently in **open beta**. Please repost any issues you encounter on our [community page](https://community.tavily.com).
-</Tip>
-
 You can access Tavily Map in JavaScript through the client's `map` function.
 
 ### Parameters
 
-| Parameter            | Type       | Description                                                                                                  | Default |
-| :------------------- | :--------- | :----------------------------------------------------------------------------------------------------------- | :------ |
-| `url` **(required)** | `string`   | The root URL to begin the mapping.                                                                           | —       |
-| `maxDepth`           | `number`   | Max depth of the mapping. Defines how far from the base URL the crawler can explore.                         | `1`     |
-| `maxBreadth`         | `number`   | Max number of links to follow **per level** of the tree (i.e., per page).                                    | `20`    |
-| `limit`              | `number`   | Total number of links the crawler will process before stopping.                                              | `50`    |
-| `instructions`       | `string`   | Natural language instructions for the mapper.                                                                | —       |
-| `selectPaths`        | `string[]` | **Regex patterns** to select only URLs with specific path patterns (e.g., `"/docs/.*"`, `"/api/v1.*"`).      | `[]`    |
-| `selectDomains`      | `string[]` | **Regex patterns** to select crawling to specific domains or subdomains (e.g., `"^docs\.example\.com$"`).    | `[]`    |
-| `excludePaths`       | `string[]` | **Regex patterns** to exclude URLs with specific path patterns (e.g., `"/admin/.*"`, `"/private/.*"`).       | `[]`    |
-| `excludeDomains`     | `string[]` | **Regex patterns** to exclude specific domains or subdomains from mapping (e.g., `"^admin\.example\.com$"`). | `[]`    |
-| `allowExternal`      | `boolean`  | Whether to return links from external domains in crawl output.                                               | `true`  |
-| `timeout`            | `number`   | Maximum time in seconds to wait for the map operation before timing out. Must be between 10 and 150 seconds. | `150`   |
+| Parameter            | Type       | Description                                                                                                                                                                                                                                                        | Default |
+| :------------------- | :--------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :------ |
+| `url` **(required)** | `string`   | The root URL to begin the mapping.                                                                                                                                                                                                                                 | —       |
+| `maxDepth`           | `number`   | Max depth of the mapping. Defines how far from the base URL the crawler can explore.                                                                                                                                                                               | `1`     |
+| `maxBreadth`         | `number`   | Max number of links to follow **per level** of the tree (i.e., per page).                                                                                                                                                                                          | `20`    |
+| `limit`              | `number`   | Total number of links the crawler will process before stopping.                                                                                                                                                                                                    | `50`    |
+| `instructions`       | `string`   | Natural language instructions for the mapper.                                                                                                                                                                                                                      | —       |
+| `selectPaths`        | `string[]` | **Regex patterns** to select only URLs with specific path patterns (e.g., `"/docs/.*"`, `"/api/v1.*"`).                                                                                                                                                            | `[]`    |
+| `selectDomains`      | `string[]` | **Regex patterns** to select crawling to specific domains or subdomains (e.g., `"^docs\.example\.com$"`).                                                                                                                                                          | `[]`    |
+| `excludePaths`       | `string[]` | **Regex patterns** to exclude URLs with specific path patterns (e.g., `"/admin/.*"`, `"/private/.*"`).                                                                                                                                                             | `[]`    |
+| `excludeDomains`     | `string[]` | **Regex patterns** to exclude specific domains or subdomains from mapping (e.g., `"^admin\.example\.com$"`).                                                                                                                                                       | `[]`    |
+| `allowExternal`      | `boolean`  | Whether to return links from external domains in crawl output.                                                                                                                                                                                                     | `true`  |
+| `timeout`            | `number`   | Maximum time in seconds to wait for the map operation before timing out. Must be between 10 and 150 seconds.                                                                                                                                                       | `150`   |
+| `includeUsage`       | `boolean`  | Whether to include credit usage information in the response.`NOTE:`The value may be 0 if the total successful pages mapped has not yet reached 10 calls. See our [Credits & Pricing documentation](https://docs.tavily.com/documentation/api-credits) for details. | `false` |
 
 ### Response format
 
@@ -461,8 +479,3 @@ The response object you receive will be in the following format:
     ```
   </Accordion>
 </AccordionGroup>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.tavily.com/llms.txt

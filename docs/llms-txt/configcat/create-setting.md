@@ -2,10 +2,7 @@
 
 # Create Flag
 
-```
-POST 
-/v1/configs/:configId/settings
-```
+Copy page
 
 This endpoint creates a new Feature Flag or Setting in a specified Config identified by the `configId` parameter.
 

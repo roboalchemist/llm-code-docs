@@ -4,6 +4,10 @@
 
 Set up money movements with Financial Accounts for platorms.
 
+> #### Accounts v2 API compatibility
+> 
+> The Accounts v2 API doesn’t support Financial Accounts workflows. If you have accounts created with Accounts v2, you can use Accounts v1 to manage the `treasury` and `card_issuing` capabilities. For details, see [Use Accounts as customers](https://docs.stripe.com/connect/use-accounts-as-customers.md).
+
 You can use [PaymentMethod](https://docs.stripe.com/payments/payment-methods.md#payment-method-object) objects to save account credentials for a US-based bank account for future use. After creating the `PaymentMethod`, you can use the same object repeatedly to move funds into and out of a financial account. Depending on your use case, you can attach the `PaymentMethod` to either a [Customer](https://docs.stripe.com/api/customers.md) object or the Stripe account.
 
 - Attach the `PaymentMethod` to a `Customer` object if you intend to use the payment method for an outbound payment to a third party.

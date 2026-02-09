@@ -19,42 +19,42 @@
 
 ## Properties<!-- -->[**](#Properties)
 
-### [**](#activeActorJobCount)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/user.ts#L262)activeActorJobCount
+### [**](#activeActorJobCount)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/user.ts#L299)activeActorJobCount
 
 **activeActorJobCount: number
 
-### [**](#actorCount)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/user.ts#L260)actorCount
+### [**](#actorCount)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/user.ts#L297)actorCount
 
 **actorCount: number
 
-### [**](#actorMemoryGbytes)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/user.ts#L259)actorMemoryGbytes
+### [**](#actorMemoryGbytes)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/user.ts#L296)actorMemoryGbytes
 
 **actorMemoryGbytes: number
 
-### [**](#actorTaskCount)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/user.ts#L261)actorTaskCount
+### [**](#actorTaskCount)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/user.ts#L298)actorTaskCount
 
 **actorTaskCount: number
 
-### [**](#monthlyActorComputeUnits)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/user.ts#L255)monthlyActorComputeUnits
+### [**](#monthlyActorComputeUnits)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/user.ts#L292)monthlyActorComputeUnits
 
 **monthlyActorComputeUnits: number
 
-### [**](#monthlyExternalDataTransferGbytes)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/user.ts#L256)monthlyExternalDataTransferGbytes
+### [**](#monthlyExternalDataTransferGbytes)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/user.ts#L293)monthlyExternalDataTransferGbytes
 
 **monthlyExternalDataTransferGbytes: number
 
-### [**](#monthlyProxySerps)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/user.ts#L257)monthlyProxySerps
+### [**](#monthlyProxySerps)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/user.ts#L294)monthlyProxySerps
 
 **monthlyProxySerps: number
 
-### [**](#monthlyResidentialProxyGbytes)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/user.ts#L258)monthlyResidentialProxyGbytes
+### [**](#monthlyResidentialProxyGbytes)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/user.ts#L295)monthlyResidentialProxyGbytes
 
 **monthlyResidentialProxyGbytes: number
 
-### [**](#monthlyUsageUsd)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/user.ts#L254)monthlyUsageUsd
+### [**](#monthlyUsageUsd)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/user.ts#L291)monthlyUsageUsd
 
 **monthlyUsageUsd: number
 
-### [**](#teamAccountSeatCount)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/user.ts#L263)teamAccountSeatCount
+### [**](#teamAccountSeatCount)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/user.ts#L300)teamAccountSeatCount
 
 **teamAccountSeatCount: number

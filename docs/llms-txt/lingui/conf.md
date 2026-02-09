@@ -409,6 +409,33 @@ Sort by the message ID, `js-lingui-id` will be used if no custom id provided.
 
 Sort by message origin (e.g. `App.js:3`)
 
+#### Custom Function[​](#custom-function "Direct link to Custom Function")
+
+You can provide custom sort function:
+
+```
+export default defineConfig({
+  // [...]
+  orderBy: (a, b) => {
+    /* `a` and `b` has a shape
+     * {
+     *   messageId: string
+     *   entry: ExtractedMessageType
+     * }
+     */
+    const aIsGlobal = a.messageId.startsWith("global.");
+    const bIsGlobal = b.messageId.startsWith("global.");
+
+    // Put `global.*` entries first
+    if (aIsGlobal && !bIsGlobal) return -1;
+    if (!aIsGlobal && bIsGlobal) return 1;
+
+    // Otherwise, sort alphabetically
+    return a.messageId.localeCompare(b.messageId);
+  },
+});
+```
+
 ## rootDir[​](#rootdir "Direct link to rootDir")
 
 Default: The root of the directory containing your Lingui configuration file or the `package.json`.

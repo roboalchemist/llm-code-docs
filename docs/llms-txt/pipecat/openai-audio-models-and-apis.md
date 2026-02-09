@@ -1,5 +1,9 @@
 # Source: https://docs.pipecat.ai/guides/features/openai-audio-models-and-apis.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pipecat.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Building With OpenAI Audio Models and APIs
 
 > Create voice agents with OpenAI audio models and Pipecat
@@ -104,8 +108,3 @@ Which approach should you choose?
 </Frame>
 
 The starter kit includes two bot configurations: cascaded model and speech-to-speech. The code can be packaged for deployment to Pipecat Cloud, a commercial platform for Pipecat agent hosting.
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.pipecat.ai/llms.txt

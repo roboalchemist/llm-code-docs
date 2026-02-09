@@ -1,163 +1,85 @@
 # Source: https://dev.writer.com/api-reference/application-api/list-applications.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://dev.writer.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # List applications
 
 > Retrieves a paginated list of no-code agents (formerly called no-code applications) with optional filtering and sorting capabilities.
 
+<Info>No-code applications are now called [no-code agents](/no-code/introduction). The [Applications API](api-reference/application-api/applications), which you can use to programmatically interact with no-code agents, still uses the term `application` to minimize breaking changes.</Info>
+
+
 ## OpenAPI
 
 ````yaml get /v1/applications
+openapi: 3.0.3
+info:
+  title: API
+  version: '1.0'
+servers:
+  - url: https://api.writer.com
+security:
+  - bearerAuth: []
 paths:
-  path: /v1/applications
-  method: get
-  servers:
-    - url: https://api.writer.com
-  request:
-    security:
-      - title: bearerAuth
-        parameters:
-          query: {}
-          header:
-            Authorization:
-              type: http
-              scheme: bearer
-              description: >-
-                Bearer authentication header of the form `Bearer <token>`, where
-                `<token>` is your [Writer API
-                key](https://dev.writer.com/api-reference/api-keys).
-          cookie: {}
-    parameters:
-      path: {}
-      query:
-        order:
+  /v1/applications:
+    get:
+      tags:
+        - Generation API
+      summary: List applications
+      description: >-
+        Retrieves a paginated list of no-code agents (formerly called no-code
+        applications) with optional filtering and sorting capabilities.
+      parameters:
+        - name: order
+          in: query
+          required: false
+          description: Sort order for the results based on creation time.
           schema:
-            - type: enum<string>
-              enum:
-                - asc
-                - desc
-              required: false
-              description: Sort order for the results based on creation time.
-              default: desc
-        before:
+            type: string
+            default: desc
+            enum:
+              - asc
+              - desc
+        - name: before
+          in: query
+          required: false
+          description: Return results before this application ID for pagination.
           schema:
-            - type: string
-              required: false
-              description: Return results before this application ID for pagination.
-              format: uuid
-        after:
+            type: string
+            format: uuid
+        - name: after
+          in: query
+          required: false
+          description: Return results after this application ID for pagination.
           schema:
-            - type: string
-              required: false
-              description: Return results after this application ID for pagination.
-              format: uuid
-        limit:
+            type: string
+            format: uuid
+        - name: limit
+          in: query
+          required: false
+          description: Maximum number of applications to return in the response.
           schema:
-            - type: integer
-              required: false
-              description: Maximum number of applications to return in the response.
-              default: 50
-        type:
+            type: integer
+            format: int32
+            default: 50
+        - name: type
+          in: query
+          required: false
+          description: Filter applications by their type.
           schema:
-            - type: enum<string>
-              enum:
-                - generation
-              required: false
-              title: application_type
-              description: Filter applications by their type.
-      header: {}
-      cookie: {}
-    body: {}
-    codeSamples:
-      - lang: cURL
-        source: |-
-          curl --location --request GET https://api.writer.com/v1/applications \
-           --header "Authorization: Bearer <token>"
-      - lang: JavaScript
-        source: |-
-          import Writer from 'writer-sdk';
-
-          const client = new Writer({
-            apiKey: process.env['WRITER_API_KEY'], // This is the default and can be omitted
-          });
-
-          async function main() {
-            // Automatically fetches more pages as needed.
-            for await (const applicationListResponse of client.applications.list()) {
-              console.log(applicationListResponse.id);
-            }
-          }
-
-          main();
-      - lang: Python
-        source: |-
-          import os
-          from writerai import Writer
-
-          client = Writer(
-              api_key=os.environ.get("WRITER_API_KEY"),  # This is the default and can be omitted
-          )
-          page = client.applications.list()
-          page = page.data[0]
-          print(page.id)
-  response:
-    '200':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              data:
-                allOf:
-                  - type: array
-                    description: List of application objects with their configurations.
-                    items:
-                      $ref: '#/components/schemas/application_with_inputs'
-              first_id:
-                allOf:
-                  - type: string
-                    format: uuid
-                    description: UUID of the first application in the current page.
-              last_id:
-                allOf:
-                  - type: string
-                    format: uuid
-                    description: UUID of the last application in the current page.
-              has_more:
-                allOf:
-                  - type: boolean
-                    description: >-
-                      Indicates if there are more results available in
-                      subsequent pages.
-            title: get_applications_response
-            description: Response object containing a paginated list of applications.
-            refIdentifier: '#/components/schemas/get_applications_response'
-            requiredProperties:
-              - data
-              - has_more
-        examples:
-          example:
-            value:
-              data:
-                - id: 3c90c3cc-0d44-4b50-8888-8dd25736052a
-                  name: <string>
-                  type: generation
-                  status: deployed
-                  inputs:
-                    - name: <string>
-                      input_type: text
-                      description: <string>
-                      required: true
-                      options:
-                        list:
-                          - <string>
-                  created_at: '2023-11-07T05:31:56Z'
-                  updated_at: '2023-11-07T05:31:56Z'
-                  last_deployed_at: '2023-11-07T05:31:56Z'
-              first_id: 3c90c3cc-0d44-4b50-8888-8dd25736052a
-              last_id: 3c90c3cc-0d44-4b50-8888-8dd25736052a
-              has_more: true
-        description: Successfully retrieved list of applications.
-  deprecated: false
-  type: path
+            $ref: '#/components/schemas/application_type'
+            default: generation
+      responses:
+        '200':
+          description: Successfully retrieved list of applications.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/get_applications_response'
+      security:
+        - bearerAuth: []
 components:
   schemas:
     application_type:
@@ -166,6 +88,30 @@ components:
       type: string
       enum:
         - generation
+    get_applications_response:
+      title: get_applications_response
+      description: Response object containing a paginated list of applications.
+      required:
+        - data
+        - has_more
+      type: object
+      properties:
+        data:
+          type: array
+          description: List of application objects with their configurations.
+          items:
+            $ref: '#/components/schemas/application_with_inputs'
+        first_id:
+          type: string
+          format: uuid
+          description: UUID of the first application in the current page.
+        last_id:
+          type: string
+          format: uuid
+          description: UUID of the last application in the current page.
+        has_more:
+          type: boolean
+          description: Indicates if there are more results available in subsequent pages.
     application_with_inputs:
       title: application_with_inputs
       description: Detailed application object including its input configuration.
@@ -339,5 +285,14 @@ components:
       enum:
         - url
         - file_id
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: >-
+        Bearer authentication header of the form `Bearer <token>`, where
+        `<token>` is your [Writer API
+        key](https://dev.writer.com/api-reference/api-keys).
 
 ````

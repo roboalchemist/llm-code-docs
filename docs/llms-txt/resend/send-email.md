@@ -1,5 +1,9 @@
 # Source: https://resend.com/docs/api-reference/emails/send-email.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://resend.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Send Email
 
 > Start sending emails through the Resend Email API.
@@ -98,7 +102,7 @@ export const ResendParamField = ({children, body, path, ...props}) => {
   The topic ID to receive the email.
 
   * If the recipient is a contact and has opted-in to the topic, the email is sent.
-  * If the recipient is a contact and has opted-out of the topic, the email is not sent and an error is returned.
+  * If the recipient is a contact and has opted-out of the topic, the email is not sent and will be marked as failed.
   * If the recipient is not a contact, the email is sent if the topic default subscription value is set to `opt-in`.
 
   <Note>Each email address (to, cc, bcc) is checked and handled separately.</Note>
@@ -109,7 +113,7 @@ export const ResendParamField = ({children, body, path, ...props}) => {
 
   [See examples](/dashboard/emails/attachments)
 
-  <Expandable defaultOpen="true" title="properties">
+  <Expandable defaultOpen title="properties">
     <ParamField body="content" type="buffer | string">
       Content of an attached file, passed as a buffer or Base64 string.
     </ParamField>
@@ -127,7 +131,7 @@ export const ResendParamField = ({children, body, path, ...props}) => {
     </ResendParamField>
 
     <ResendParamField body="content_id" type="string">
-      You can embed images using the `content_id` parameter for the attachment. To show the image, you need to include the ID in the `src` attribute of the `img` tag (e.g., `<img src="cid:...">`) of your HTML. [Learn about inline images](/dashboard/emails/embed-inline-images).
+      You can embed images using the content id parameter for the attachment. To show the image, you need to include the ID in the `src` attribute of the `img` tag (e.g., `<img src="cid:...">`) of your HTML. [Learn about inline images](/dashboard/emails/embed-inline-images).
     </ResendParamField>
   </Expandable>
 </ParamField>
@@ -137,7 +141,7 @@ export const ResendParamField = ({children, body, path, ...props}) => {
 
   [See examples](/dashboard/emails/tags).
 
-  <Expandable defaultOpen="true" title="properties">
+  <Expandable defaultOpen title="properties">
     <ParamField body="name" type="string" required>
       The name of the email tag.
 
@@ -160,7 +164,7 @@ export const ResendParamField = ({children, body, path, ...props}) => {
   To send using a template, provide a `template` object with:
 
   * `id`: the id *or* the alias of the published template
-  * `variables`: array of variable objects (if applicable)
+  * `variables`: an object with a key for each variable (if applicable)
 
   <Info>
     If a `template` is provided, you cannot send `html`, `text`, or `react` in the payload, otherwise the API will return a validation error.
@@ -176,7 +180,7 @@ export const ResendParamField = ({children, body, path, ...props}) => {
 <ParamField body="variables" type="object">
   Template variables object with key/value pairs.
 
-  ```ts  theme={null}
+  ```ts  theme={"theme":{"light":"github-light","dark":"vesper"}}
   variables: {
   	CTA: 'Sign up now',
   	CTA_LINK: 'https://example.com/signup'
@@ -187,7 +191,7 @@ export const ResendParamField = ({children, body, path, ...props}) => {
 
   See the [errors reference](/api-reference/errors) for more details or [learn more about templates](/dashboard/templates/introduction).
 
-  <Expandable defaultOpen="true" title="properties">
+  <Expandable defaultOpen title="properties">
     <ParamField body="key" type="string" required>
       The key of the variable.
 
@@ -196,12 +200,12 @@ export const ResendParamField = ({children, body, path, ...props}) => {
       It can contain no more than 50 characters.
     </ParamField>
 
-    <ParamField body="value" value="string | number" required>
+    <ParamField body="value" type="string | number" required>
       The value of the variable.
 
       Observe these technical limitations:
 
-      * `string`: maximum length of 50 characters
+      * `string`: maximum length of 2,000 characters
       * `number`: not greater than 2^53 - 1
     </ParamField>
   </Expandable>
@@ -220,7 +224,7 @@ export const ResendParamField = ({children, body, path, ...props}) => {
 </ParamField>
 
 <RequestExample>
-  ```ts Node.js theme={null}
+  ```ts Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
   import { Resend } from 'resend';
 
   const resend = new Resend('re_xxxxxxxxx');
@@ -234,7 +238,7 @@ export const ResendParamField = ({children, body, path, ...props}) => {
   });
   ```
 
-  ```php PHP theme={null}
+  ```php PHP theme={"theme":{"light":"github-light","dark":"vesper"}}
   $resend = Resend::client('re_xxxxxxxxx');
 
   $resend->emails->send([
@@ -246,7 +250,7 @@ export const ResendParamField = ({children, body, path, ...props}) => {
   ]);
   ```
 
-  ```python Python theme={null}
+  ```python Python theme={"theme":{"light":"github-light","dark":"vesper"}}
   import resend
 
   resend.api_key = "re_xxxxxxxxx"
@@ -263,7 +267,7 @@ export const ResendParamField = ({children, body, path, ...props}) => {
   print(email)
   ```
 
-  ```rb Ruby theme={null}
+  ```rb Ruby theme={"theme":{"light":"github-light","dark":"vesper"}}
   require "resend"
 
   Resend.api_key = "re_xxxxxxxxx"
@@ -280,8 +284,11 @@ export const ResendParamField = ({children, body, path, ...props}) => {
   puts sent
   ```
 
-  ```go Go theme={null}
+  ```go Go theme={"theme":{"light":"github-light","dark":"vesper"}}
+  package main
+
   import (
+  	"context"
   	"fmt"
 
   	"github.com/resend/resend-go/v3"
@@ -308,7 +315,7 @@ export const ResendParamField = ({children, body, path, ...props}) => {
   }
   ```
 
-  ```rust Rust theme={null}
+  ```rust Rust theme={"theme":{"light":"github-light","dark":"vesper"}}
   use resend_rs::types::{CreateEmailBaseOptions};
   use resend_rs::{Resend, Result};
 
@@ -331,7 +338,7 @@ export const ResendParamField = ({children, body, path, ...props}) => {
   }
   ```
 
-  ```java Java theme={null}
+  ```java Java theme={"theme":{"light":"github-light","dark":"vesper"}}
   import com.resend.*;
 
   public class Main {
@@ -351,7 +358,7 @@ export const ResendParamField = ({children, body, path, ...props}) => {
   }
   ```
 
-  ```csharp .NET theme={null}
+  ```csharp .NET theme={"theme":{"light":"github-light","dark":"vesper"}}
   using Resend;
 
   IResend resend = ResendClient.Create( "re_xxxxxxxxx" ); // Or from DI
@@ -367,7 +374,7 @@ export const ResendParamField = ({children, body, path, ...props}) => {
   Console.WriteLine( "Email Id={0}", resp.Content );
   ```
 
-  ```bash cURL theme={null}
+  ```bash cURL theme={"theme":{"light":"github-light","dark":"vesper"}}
   curl -X POST 'https://api.resend.com/emails' \
        -H 'Authorization: Bearer re_xxxxxxxxx' \
        -H 'Content-Type: application/json' \
@@ -382,7 +389,7 @@ export const ResendParamField = ({children, body, path, ...props}) => {
 </RequestExample>
 
 <ResponseExample>
-  ```json Response theme={null}
+  ```json Response theme={"theme":{"light":"github-light","dark":"vesper"}}
   {
     "id": "49a3999c-0ce1-4ea6-ab68-afcd6dc2e794"
   }

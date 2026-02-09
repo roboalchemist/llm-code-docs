@@ -1,4 +1,4 @@
-# Source: https://www.daytona.io/docs/en/claude-code-run-tasks-stream-logs-sandbox.md
+# Source: https://www.daytona.io/docs/en/guides/claude/claude-code-run-tasks-stream-logs-sandbox.md
 
 Claude Code allows you to automate and orchestrate tasks using natural language and code. With Daytona, you can easily run Claude Code inside isolated sandboxes, making it simple to experiment and execute tasks securely.
 

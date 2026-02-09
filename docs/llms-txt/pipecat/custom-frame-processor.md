@@ -1,12 +1,16 @@
 # Source: https://docs.pipecat.ai/guides/fundamentals/custom-frame-processor.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pipecat.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Custom FrameProcessor
 
 > Learn how to write your own custom FrameProcessor
 
 Pipecat's architecture is made up of a Pipeline, FrameProcessors, and Frames. See the [Core Concepts](/guides/learn/pipeline) for a full review. From that architecture, recall that FrameProcessors are the workers in the pipeline that receive frames and complete actions based on the frames received.
 
-Pipecat comes with many FrameProcessors built in. These consist of services, like `OpenAILLMService` or `CartesiaTTSService`, utilities, like `UserIdleProcessor`, and other things. Largely, you can build most of your application with these built-in FrameProcessors, but commonly, your application code may require custom frame processing logic. For example, you may want to perform an action as a result of a frame that's pushed in the pipeline.
+Pipecat comes with many FrameProcessors built in. These consist of services, like `OpenAILLMService` or `CartesiaTTSService`, utilities, like `LLMTextProcessor`, and other things. Largely, you can build most of your application with these built-in FrameProcessors, but commonly, your application code may require custom frame processing logic. For example, you may want to perform an action as a result of a frame that's pushed in the pipeline.
 
 ## Example: MetricsFrame logger
 
@@ -64,7 +68,7 @@ def format_metrics(metrics, indent=0):
 
 ## Add to a Pipeline
 
-````python  theme={null}
+```python  theme={null}
 # Create and initialize the custom FrameProcessor
 metrics_frame_processor = MetricsFrameLogger()
 
@@ -80,6 +84,7 @@ pipeline = Pipeline(
         metrics_frame_processor,  # Our custom FrameProcessor that pretty prints metrics frames
     ]
 )
+```
 
 With this positioning, the `MetricsFrameLogger` FrameProcessor will receive every MetericsFrame in the pipeline.
 
@@ -87,8 +92,8 @@ With this positioning, the `MetricsFrameLogger` FrameProcessor will receive ever
 
 FrameProcessors must inherit from the base `FrameProcessor` class. This ensures that your custom FrameProcessor will correctly handle frames like `StartFrame`, `EndFrame`, `StartInterruptionFrame` without having to write custom logic for those frames. This inheritance also provides it with the ability to `process_frame()` and `push_frame()`:
 
-- **`process_frame()`** is what allows the FrameProcessor to receive frames and add custom conditional logic based on the frames that are received.
-- **`push_frame()`** allows the FrameProcessor to push frames to the pipeline. Normally, frames are pushed DOWNSTREAM, but based on which processors need the output, you can also push UPSTREAM or in both directions.
+* **`process_frame()`** is what allows the FrameProcessor to receive frames and add custom conditional logic based on the frames that are received.
+* **`push_frame()`** allows the FrameProcessor to push frames to the pipeline. Normally, frames are pushed DOWNSTREAM, but based on which processors need the output, you can also push UPSTREAM or in both directions.
 
 ### Essential Implementation Details
 
@@ -97,7 +102,7 @@ To ensure proper base class inheritance, it's critical to include:
 1. **`super().__init__()`** in your `__init__` method
 2. **`await super().process_frame(frame, direction)`** in your `process_frame()` method
 
-```python
+```python  theme={null}
 class MyCustomProcessor(FrameProcessor):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)  # ✅ Required
@@ -112,7 +117,7 @@ class MyCustomProcessor(FrameProcessor):
             pass
 
         await self.push_frame(frame, direction)  # ✅ Required - pass frame through
-````
+```
 
 ## Critical Responsibility: Frame Forwarding
 
@@ -143,8 +148,3 @@ Most custom FrameProcessors will push frames downstream, but upstream can be use
 5. **Position carefully in pipeline**: Consider where in the pipeline your processor needs to be to receive the right frames
 
 With these patterns, you can create powerful custom FrameProcessors that extend Pipecat's capabilities for your specific use case.
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.pipecat.ai/llms.txt

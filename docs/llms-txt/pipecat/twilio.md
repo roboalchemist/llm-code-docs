@@ -1,5 +1,9 @@
 # Source: https://docs.pipecat.ai/server/services/serializers/twilio.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pipecat.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # TwilioFrameSerializer
 
 > Serializer for Twilio Media Streams WebSocket protocol
@@ -61,8 +65,3 @@ Before using TwilioFrameSerializer, you need:
 * **DTMF Handling**: Process touch-tone events from callers
 * **Auto Hang-up**: Terminate calls via Twilio's REST API
 * **μ-law Encoding**: Handle Twilio's standard audio encoding format
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.pipecat.ai/llms.txt

@@ -2,23 +2,9 @@
 
 # Source: https://upstash.com/docs/redis/sdks/py/commands/list/lpushx.md
 
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/list/lpushx.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/list/lpushx.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/list/lpushx.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/list/lpushx.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/list/lpushx.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/list/lpushx.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/list/lpushx.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/list/lpushx.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/list/lpushx.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # LPUSHX
 
@@ -26,11 +12,11 @@
 
 ## Arguments
 
-<ParamField body="key" type="string" required>
+<ParamField body="key" type="str" required>
   The key of the list.
 </ParamField>
 
-<ParamField body="elements" type="...TValue[]" required>
+<ParamField body="elements" type="*List[str]" required>
   One or more elements to push at the head of the list.
 </ParamField>
 
@@ -43,14 +29,15 @@
 </ResponseField>
 
 <RequestExample>
-  ```ts Example  theme={"system"}
-  await redis.lpush("key", "a", "b", "c"); 
-  const length = await redis.lpushx("key", "d"); 
-  console.log(length); // 4
-  ```
+  ```py Example  theme={"system"}
+  # Initialize the list
+  redis.lpush("mylist", "one")
 
-  ```ts Without existing list  theme={"system"}
-  const length = await redis.lpushx("key", "a"); 
-  console.log(length); // 0
+  assert redis.lpushx("mylist", "two", "three") == 3
+
+  assert lrange("mylist", 0, -1) == ["three", "two", "one"]
+
+  # Non existing key
+  assert redis.lpushx("non-existent-list", "one") == 0
   ```
 </RequestExample>

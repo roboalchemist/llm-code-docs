@@ -1,5 +1,9 @@
 # Source: https://docs.pinata.cloud/gateways/retrieving-files.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pinata.cloud/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Retrieving Files
 
 Gateways are Pinata's tool to deliver your content with speed and security. They're similar to CDNs but with way more features. When you create a Pinata account, you'll automatically have a Gateway created for you! To see it, simply visit the [Gateways Page](https://app.pinata.cloud/gateway).

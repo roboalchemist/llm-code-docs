@@ -1,10 +1,18 @@
-# Source: https://mintlify.com/docs/components/view.md
+# Source: https://www.mintlify.com/docs/components/view.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.mintlify.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # View
 
 > Create multi-view content for different programming languages or frameworks.
 
-Use the View component to create content that changes based on the selected view in a multi-view dropdown. This is particularly useful for showing code examples or documentation specific to different programming languages or frameworks.
+Use the `View` component to create content that changes based on the selected view in a multi-view dropdown. This is particularly useful for showing code examples or documentation specific to different programming languages or frameworks.
+
+<Tip>
+  Use one view component per language per page. Use [tabs](/components/tabs) for procedures that differ by language and [code groups](/components/code-groups) for code examples that differ by language.
+</Tip>
 
 <View title="JavaScript" icon="js">
   This content is only visible when JavaScript is selected.
@@ -41,6 +49,12 @@ Use the View component to create content that changes based on the selected view
   ```
 </View>
 ````
+
+## Table of contents behavior
+
+The table of contents automatically updates to show only the headings for the currently selected view. When you switch between views using the multi-view dropdown, the table of contents refreshes to display the relevant headings for that view.
+
+If you have different heading structures in each view, users will only see the headings that are relevant to their selected language or framework.
 
 ## Properties
 

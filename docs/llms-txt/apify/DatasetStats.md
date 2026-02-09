@@ -2,6 +2,8 @@
 
 # DatasetStats<!-- -->
 
+Statistics about dataset usage and storage.
+
 ## Index[**](#Index)
 
 ### Properties
@@ -13,7 +15,7 @@
 
 ## Properties<!-- -->[**](#Properties)
 
-### [**](#deleteCount)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/dataset.ts#L255)optionaldeleteCount
+### [**](#deleteCount)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/dataset.ts#L440)optionaldeleteCount
 
 **deleteCount?
 
@@ -21,7 +23,7 @@
 
 : number
 
-### [**](#readCount)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/dataset.ts#L253)optionalreadCount
+### [**](#readCount)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/dataset.ts#L438)optionalreadCount
 
 **readCount?
 
@@ -29,7 +31,7 @@
 
 : number
 
-### [**](#storageBytes)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/dataset.ts#L256)optionalstorageBytes
+### [**](#storageBytes)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/dataset.ts#L441)optionalstorageBytes
 
 **storageBytes?
 
@@ -37,7 +39,7 @@
 
 : number
 
-### [**](#writeCount)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/dataset.ts#L254)optionalwriteCount
+### [**](#writeCount)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/dataset.ts#L439)optionalwriteCount
 
 **writeCount?
 

@@ -1,5 +1,9 @@
 # Source: https://smartcar.com/docs/getting-started/configure-application.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://smartcar.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Configure Your Application
 
 > Learn how to configure your Smartcar application, including setting up permissions and redirect URIs.

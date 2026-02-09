@@ -1,5 +1,9 @@
 # Source: https://docs.agent.ai/actions/enrich_with_breeze_intelligence.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.agent.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Enrich with Breeze Intelligence
 
 ## Overview

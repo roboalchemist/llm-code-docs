@@ -1,5 +1,9 @@
 # Source: https://docs.galileo.ai/deployments/scheduling-automatic-backups-for-your-cluster/gcp-velero-account-setup-script.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.galileo.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Gcp Velero Account Setup Script
 
 > Set up Velero for Google Cloud backups with this GCP account script, enabling automated backup scheduling and robust data protection for Galileo clusters.

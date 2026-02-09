@@ -1,5 +1,11 @@
 # Source: https://graphite-58cc94ce.mintlify.dev/docs/set-up-merge-queue.md
 
+## Documentation Index
+
+Fetch the complete documentation index at: https://graphite-58cc94ce.mintlify.dev/docs/llms.txt
+
+Use this file to discover all available pages before exploring further.
+
 # Set Up The Graphite Merge Queue
 
 With the Graphite merge queue, rather than being merged straight into main, the PR will enter a "queue" and wait its turn to be merged.
@@ -118,13 +124,13 @@ If you haven't enabled the queue, you can change the merge strategy for your PR 
 
 Configuring the merge queue timeout allows you to place an upper-limit on the amount of time a PR can stay at the head of the queue, ensuring that the queue never hangs in the event that a regression is introduced.
 
-### Adding to the queue via label
+### Merge queue label
 
-Specifying a merge label lets users add that label to a PR to let the merge queue know to merge it when it's ready. Removing a label will remove it from the queue. This allows seamlessly merging PR's from GitHub by just adding a label.
+Allows your team to add pull requests to the merge queue from anywhere by applying this label. The PR will be queued when it’s ready to merge.
 
-Adding a label to a PR that isn't yet mergeable will toggle a PR's *Merge when ready* property—as long as the label is applied, a PR will be merged when all branch protection rules are met.
+Make sure your team uses this label exclusively for the merge queue.
 
-You can automatically create this label in Graphite while adding a merge queue to your repo, or when modifying its settings.
+For more information on using the label to enqueue PRs see [here](/get-started-merge-queue#enqueue-via-label).
 
 <Note>
   You can only enqueue via label if you have a Graphite account set up.

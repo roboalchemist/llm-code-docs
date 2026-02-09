@@ -2,14 +2,6 @@
 
 # Source: https://docs.vespa.ai/en/reference/security/mtls.html.md
 
-# Source: https://docs.vespa.ai/en/security/mtls.html.md
-
-# Source: https://docs.vespa.ai/en/reference/security/mtls.html.md
-
-# Source: https://docs.vespa.ai/en/security/mtls.html.md
-
-# Source: https://docs.vespa.ai/en/reference/security/mtls.html.md
-
 # Mutually authenticated TLS (mTLS) reference
 
  
@@ -169,7 +161,7 @@ Vespa will by default use the following TLS configuration (unless overridden by 
 - `TLS_AES_256_GCM_SHA384` (TLSv1.3)
 - `TLS_CHACHA20_POLY1305_SHA256` (TLSv1.3, JDK 12+)
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ### On this page:
 

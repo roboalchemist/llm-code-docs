@@ -2,10 +2,6 @@
 
 # Source: https://mui.com/x/react-data-grid/aggregation.md
 
-# Source: https://mui.com/x/react-data-grid/server-side-data/aggregation.md
-
-# Source: https://mui.com/x/react-data-grid/aggregation.md
-
 ---
 title: Data Grid - Aggregation
 ---

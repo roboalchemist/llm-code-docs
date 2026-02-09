@@ -1,5 +1,9 @@
 # Source: https://docs.pipecat.ai/cli/tail.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pipecat.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # tail
 
 > A terminal dashboard for monitoring Pipecat sessions in real-time
@@ -50,8 +54,3 @@ pipecat tail [OPTIONS]
   # Connect to remote session
   pipecat tail --url wss://my-bot.example.com
   ```
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.pipecat.ai/llms.txt

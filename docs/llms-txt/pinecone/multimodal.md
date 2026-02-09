@@ -1,5 +1,9 @@
 # Source: https://docs.pinecone.io/guides/assistant/multimodal.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pinecone.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Multimodal context for assistants
 
 > Process images and charts in PDFs with multimodal assistants.
@@ -111,6 +115,16 @@ Response:
 
 To enable multimodal context for a PDF, when [uploading the file](/reference/api/2025-10/assistant/upload_file), set the `multimodal` URL parameter to true (defaults to false).
 
+<Tip>
+  To improve retrieval accuracy for images found in uploaded PDFs, include relevant contextual text on the same page as each image. For example:
+
+  * **Graphs and charts**: Include nearby text explaining the experiment, methodology, or data being visualized.
+  * **Diagrams**: Add descriptive labels or explanations adjacent to technical diagrams.
+  * **Tables**: Provide context about what the data represents and any relevant methodology.
+
+  The assistant uses surrounding text when generating captions that are later passed to the LLM, so placing relevant context near images improves caption quality and retrieval accuracy.
+</Tip>
+
 <CodeGroup>
   ```Python Python theme={null}
   from pprint import pprint
@@ -182,6 +196,7 @@ Response:
 <Note>
   * The `multimodal` parameter is only available for PDF files.
   * To check the status of a file, use the [describe a file upload](/reference/api/2025-10/assistant/describe_file) endpoint.
+  * If upload processing fails, you'll need to re-upload the file.
 </Note>
 
 ### 3. Chat with the assistant
@@ -492,6 +507,6 @@ Multimodal context for assistants is only available for PDF files. Additionally,
 | :---------------------------- | :----------- | :------------ | :-------------- |
 | Max file size                 | 10 MB        | 50 MB         | 50 MB           |
 | Page limit                    | 100          | 100           | 100             |
-| Multimodal PDFs per assistant | 1            | 20            | 20              |
+| Multimodal PDFs per assistant | 10           | 20            | 20              |
 
 To learn about other assistant-related limits, see [Pinecone Assistant limits](/guides/assistant/pricing-and-limits).

@@ -1,52 +1,56 @@
 # Source: https://docs.squared.ai/api-reference/sync_runs/get_sync_run.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.squared.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Sync Run
 
 > Retrieves a sync run using sync_run_id for a specific sync.
 
+
+
 ## OpenAPI
 
 ````yaml GET /api/v1/syncs/{sync_id}/sync_runs/{sync_run_id}
+openapi: 3.0.1
+info:
+  title: AI Squared API
+  version: 1.0.0
+servers:
+  - url: https://api.squared.ai
+security: []
 paths:
-  path: /api/v1/syncs/{sync_id}/sync_runs/{sync_run_id}
-  method: get
-  servers:
-    - url: https://api.squared.ai
-  request:
-    security:
-      - title: bearerAuth
-        parameters:
-          query: {}
-          header:
-            Authorization:
-              type: http
-              scheme: bearer
-          cookie: {}
-    parameters:
-      path:
-        sync_id:
+  /api/v1/syncs/{sync_id}/sync_runs/{sync_run_id}:
+    get:
+      tags:
+        - SyncRun
+      summary: Get sync run using sync_run_id for a specific sync
+      description: Retrieves a sync run using sync_run_id for a specific sync.
+      operationId: getSyncRun
+      parameters:
+        - name: sync_id
+          in: path
+          required: true
           schema:
-            - type: integer
-              required: true
-              description: The ID of the sync.
-        sync_run_id:
+            type: integer
+          description: The ID of the sync.
+        - name: sync_run_id
+          in: path
+          required: true
           schema:
-            - type: integer
-              required: true
-              description: The ID of the sync_run.
-      query: {}
-      header: {}
-      cookie: {}
-    body: {}
-  response:
-    '200':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              data:
-                allOf:
-                  - type: object
+            type: integer
+          description: The ID of the sync_run.
+      responses:
+        '200':
+          description: A JSON object representing the sync run
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
                     properties:
                       id:
                         type: string
@@ -85,48 +89,26 @@ paths:
                           updated_at:
                             type: string
                             format: date-time
-        examples:
-          example:
-            value:
-              data:
-                id: <string>
-                type: <string>
-                attributes:
-                  sync_id: 123
-                  status: <string>
-                  started_at: '2023-11-07T05:31:56Z'
-                  finished_at: '2023-11-07T05:31:56Z'
-                  duration: 123
-                  total_query_rows: 123
-                  total_rows: 123
-                  successful_rows: 123
-                  failed_rows: 123
-                  error: <string>
-                  created_at: '2023-11-07T05:31:56Z'
-                  updated_at: '2023-11-07T05:31:56Z'
-        description: A JSON object representing the sync run
-    '404':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              message:
-                allOf:
-                  - type: string
+        '404':
+          description: Sync not found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
                     example: Sync Run not found
-              status:
-                allOf:
-                  - type: string
+                  status:
+                    type: string
                     example: not_found
-        examples:
-          example:
-            value:
-              message: Sync Run not found
-              status: not_found
-        description: Sync not found
-  deprecated: false
-  type: path
+      security:
+        - bearerAuth: []
 components:
-  schemas: {}
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
 
 ````

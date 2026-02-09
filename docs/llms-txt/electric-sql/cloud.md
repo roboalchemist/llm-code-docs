@@ -1,21 +1,35 @@
-# Source: https://electric-sql.com/product/cloud.md
+# Source: https://electric-sql.com/cloud.md
 
 ---
-url: /product/cloud.md
-description: Hosted Electric sync that's blazing fast and scales to millions of users
+url: /cloud.md
+description: >-
+  Scalable, turnkey hosting of sync and streams with low-cost, usage-based
+  pricing.
 ---
 
-# Cloud&#x20;
+# Electric Cloud
 
-Hosted Electric sync that's blazing fast
-and scales to millions of users
+Scalable, turnkey hosting of sync and streams with
 
-> \[!Warning] Electric Cloud public BETA
-> Electric Cloud is now in public BETA! See the [release post here](/blog/2025/04/07/electric-cloud-public-beta-release).
+low-cost,
 
-## Hosted Electric
+usage-based pricing.
 
-Electric Cloud is a hosted Electric service. We provision, run and operate the [Electric sync engine](/product/electric) for you.
+## Hosted sync and streams
+
+Electric Cloud provides turnkey hosting of Postgres Sync and Durable Streams.
+
+### &#x20;Postgres Sync
+
+We provision, run and operate the [Postgres sync engine](/products/postgres-sync) for you.
+
+This connects to your Postgres, consumes changes over logical replication and provides a service endpoint for [syncing shapes](/docs/guides/shapes) into your client.
+
+### &#x20;Durable Streams
+
+We now also host [Durable Streams](/products/durable-streams). See the [announcement blog post here](/blog/2025/04/07/electric-cloud-public-beta-release).
+
+Streams support [multiple protocols](./protocols), from raw binary streams, to JSON mode, to protocol specific transports and user-defined sync protocols using Durable State.
 
 ## Data delivery network
 

@@ -2,19 +2,21 @@
 
 # GitHub Action - Scan your source code for feature flags
 
-This section describes how to use ConfigCat's [GitHub Action](https://github.com/marketplace/actions/configcat-scan-repository) to automatically scan your source code for feature flag and setting usages and upload the found code references to ConfigCat. You can find more information about GitHub Actions [here](https://github.com/features/actions).
+Copy page
+
+This section describes how to use ConfigCat's [Scan Repository GitHub Action](https://github.com/marketplace/actions/configcat-scan-repository) to automatically scan your source code for feature flag and setting usages and upload the found code references to ConfigCat. You can find more information about GitHub Actions [here](https://github.com/features/actions).
 
 ## Setup[​](#setup "Direct link to Setup")
 
 1. Create a new [ConfigCat Management API credential](https://app.configcat.com/my-account/public-api-credentials) and store its values in your repository's [GitHub Secrets](https://docs.github.com/en/actions/security-guides/encrypted-secrets#creating-encrypted-secrets-for-a-repository) with the following names: `CONFIGCAT_API_USER`, `CONFIGCAT_API_PASS`.
 
-   ![Github Action secrets](/docs/assets/cli/scan/gh_secrets.png)
+   ![Github Action secrets](/docs/assets/cli/scan/github_secrets.png)
 
-2. Get your selected [Config's ID](https://configcat.com/docs/docs/advanced/code-references/overview/.md#config-id).
+2. Get your selected [Config's ID](https://configcat.com/docs/advanced/code-references/overview.md#config-id).
 
 3. Create a new Actions workflow in your GitHub repository under the `.github/workflows` folder, and put the following snippet into it. Don't forget to replace the `PASTE-YOUR-CONFIG-ID-HERE` value with your actual Config ID.
 
-   ```
+   ```yaml
    on: [push]
    name: Code references
    jobs:
@@ -39,6 +41,7 @@ This section describes how to use ConfigCat's [GitHub Action](https://github.com
              # alias-patterns: (\w+) = :CC_KEY,const (\w+) = feature_flags\.enabled\(:CC_KEY\) #optional
              # usage-patterns: feature_flags\.enabled\(:CC_KEY\)   # optional, comma delimited flag key usage patterns
              # verbose: true             # optional
+
    ```
 
 4. Commit & push your action.

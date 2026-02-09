@@ -2,18 +2,6 @@
 
 # Source: https://docs.near.org/protocol/gas.md
 
-# Source: https://docs.near.org/api/rpc/gas.md
-
-# Source: https://docs.near.org/protocol/gas.md
-
-# Source: https://docs.near.org/api/rpc/gas.md
-
-# Source: https://docs.near.org/protocol/gas.md
-
-# Source: https://docs.near.org/api/rpc/gas.md
-
-# Source: https://docs.near.org/protocol/gas.md
-
 ---
 id: gas
 title: Gas (Execution Fees)

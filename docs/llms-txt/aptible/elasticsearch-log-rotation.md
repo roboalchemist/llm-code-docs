@@ -1,5 +1,9 @@
 # Source: https://www.aptible.com/docs/how-to-guides/observability-guides/elasticsearch-log-rotation.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.aptible.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # How to set up Elasticsearch Log Rotation
 
 > ❗️ These instructions apply only to Kibana/Elasticsearch versions 7.4 or higher. Earlier versions of Elasticsearch and Kibana did not provide all of the UI features mentioned in this guide. Instead, for version 6.8 or earlier, refer to our [aptible/elasticsearch-logstash-s3-backup](https://github.com/aptible/elasticsearch-logstash-s3-backup) application.

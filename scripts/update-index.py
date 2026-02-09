@@ -19,7 +19,9 @@ def get_dir_stats(path):
     mdx_files = list(path.glob("**/*.mdx"))
     rst_files = list(path.glob("**/*.rst"))
     txt_files = list(path.glob("**/*.txt"))
-    all_files = md_files + mdx_files + rst_files + txt_files
+    sy_files = list(path.glob("**/*.sy"))
+    json_files = list(path.glob("**/*.json"))
+    all_files = md_files + mdx_files + rst_files + txt_files + sy_files + json_files
 
     file_count = len(all_files)
     total_size = sum(f.stat().st_size for f in all_files)

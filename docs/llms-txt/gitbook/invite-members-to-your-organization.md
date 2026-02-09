@@ -1,8 +1,4 @@
-# Source: https://gitbook.com/docs/documentation/zh/zhang-hu-guan-li/member-management/invite-members-to-your-organization.md
-
-# Source: https://gitbook.com/docs/documentation/fr/gestion-du-compte/member-management/invite-members-to-your-organization.md
-
-# Source: https://gitbook.com/docs/account-management/member-management/invite-members-to-your-organization.md
+# Source: https://gitbook.com/docs/documentation/ja-gitbook-documentation/akaunto/member-management/invite-members-to-your-organization.md
 
 # Source: https://gitbook.com/docs/documentation/zh/zhang-hu-guan-li/member-management/invite-members-to-your-organization.md
 

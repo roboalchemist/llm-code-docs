@@ -14,6 +14,8 @@ Powertools for AWS Lambda (Python) is a developer toolkit to implement Serverles
 
 Powertools for AWS Lambda (Python) is a developer toolkit to implement Serverless best practices and increase developer velocity.
 
+Ready to use Powertools for AWS Lambda? Jump to [Installation](https://docs.aws.amazon.com/powertools/python/latest/getting-started/install/index.md).
+
 - **Features**
 
   ______________________________________________________________________
@@ -22,1440 +24,97 @@ Powertools for AWS Lambda (Python) is a developer toolkit to implement Serverles
 
   [All features](#features)
 
+- **Installation**
+
+  ______________________________________________________________________
+
+  Install via pip, Lambda Layers, or SAR.
+
+  [Get started](https://docs.aws.amazon.com/powertools/python/latest/getting-started/install/index.md)
+
 - **Support this project**
 
   ______________________________________________________________________
 
-  Become a public reference customer, share your work, contribute, use Lambda Layers, etc.
+  Become a public reference, share your work, join the community.
 
   [Support](#support-powertools-for-aws-lambda-python)
 
-- **Available languages**
+- **Other languages**
 
   ______________________________________________________________________
 
-  Powertools for AWS Lambda is also available in other languages
+  Powertools is also available in other languages.
 
-  [Java](https://docs.aws.amazon.com/powertools/java/), [TypeScript](https://docs.aws.amazon.com/powertools/typescript/latest/), and [.NET](https://docs.aws.amazon.com/powertools/dotnet/)
-
-## Install
-
-You can install Powertools for AWS Lambda (Python) using your favorite dependency management, or Lambda Layers:
-
-Most features use Python standard library and the AWS SDK *(boto3)* that are available in the AWS Lambda runtime.
-
-- **pip**: **`pip install "aws-lambda-powertools"`**
-- **poetry**: **`poetry add "aws-lambda-powertools"`**
-- **pdm**: **`pdm add "aws-lambda-powertools"`**
-- **uv**: **`uv add "aws-lambda-powertools"`**
-
-### Extra dependencies
-
-However, you will need additional dependencies if you are using any of the features below:
-
-| Feature                                             | Install                                                              | Default dependency                  |
-| --------------------------------------------------- | -------------------------------------------------------------------- | ----------------------------------- |
-| **[Tracer](core/tracer/#install)**                  | **`pip install "aws-lambda-powertools[tracer]"`**                    | `aws-xray-sdk`                      |
-| **[Validation](utilities/validation/#install)**     | **`pip install "aws-lambda-powertools[validation]"`**                | `fastjsonschema`                    |
-| **[Parser](utilities/parser/#install)**             | **`pip install "aws-lambda-powertools[parser]"`**                    | `pydantic` *(v2)*                   |
-| **[Data Masking](utilities/data_masking/#install)** | **`pip install "aws-lambda-powertools[datamasking]"`**               | `aws-encryption-sdk`, `jsonpath-ng` |
-| **All extra dependencies at once**                  | **`pip install "aws-lambda-powertools[all]"`**                       |                                     |
-| **Two or more extra dependencies only, not all**    | **`pip install "aws-lambda-powertools[tracer,parser,datamasking]"`** |                                     |
-
-[Lambda Layer](https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html) is a .zip file archive that can contain additional code, pre-packaged dependencies, data, or configuration files. We compile and optimize [all dependencies](#install), and remove duplicate dependencies [already available in the Lambda runtime](https://github.com/aws-powertools/powertools-lambda-python/blob/develop/layer_v3/docker/Dockerfile#L34) to achieve the most optimal size.
-
-For the latter, make sure to replace `{region}` with your AWS region, e.g., `eu-west-1`, and the `{python_version}` without the period (.), e.g., `python314` for `Python 3.14`.
-
-| Architecture | Layer ARN                                                                                             |
-| ------------ | ----------------------------------------------------------------------------------------------------- |
-| x86_64       | **arn:aws:lambda:{region}:017000801446:layer:AWSLambdaPowertoolsPythonV3-{python_version}-x86_64:18** |
-| ARM          | **arn:aws:lambda:{region}:017000801446:layer:AWSLambdaPowertoolsPythonV3-{python_version}-arm64:18**  |
-
-You can add our layer using the [AWS Lambda Console *(direct link)*](https://console.aws.amazon.com/lambda/home#/add/layer):
-
-- Under Layers, choose `AWS layers` or `Specify an ARN`
-- Click to copy the [correct ARN](#lambda-layer) value based on your AWS Lambda function architecture and region
-
-We offer Parameter Store aliases for releases too, allowing you to specify either specific versions or use the latest version on every deploy. To use these you can add these snippets to your AWS CloudFormation or Terraform projects:
-
-**CloudFormation**
-
-Sample Placeholders:
-
-- `{arch}` is either `arm64` (Graviton based functions) or `x86_64`
-- `{python_version}` is the Python runtime version, e.g., `python3.14` for `Python 3.14`.
-- `{version}` is the semantic version number (e,g. 3.1.0) for a release or `latest`
-
-```
-MyFunction:
-    Type: "AWS::Lambda::Function"
-    Properties:
-        ...
-        Layers:
-        - {{resolve:ssm:/aws/service/powertools/python/{arch}/{python_version}/{version}}}
-
-```
-
-**Terraform**
-
-Using the [`aws_ssm_parameter`](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/ssm_parameter) data provider from the AWS Terraform provider allows you to lookup the value of parameters to use later in your project.
-
-```
-data "aws_ssm_parameter" "powertools_version" {
-    name = "/aws/service/powertools/python/{arch}/{python_version}/{version}"
-}
-
-resource "aws_lambda_function" "test_lambda" {
-    ...
-
-    runtime = "python3.14"
-
-    layers = [data.aws_ssm_parameter.powertools_version.value]
-}
-
-```
-
-> Are we missing a framework? please create [a documentation request](https://github.com/aws-powertools/powertools-lambda-python/issues/new?assignees=&labels=documentation%2Ctriage&projects=&template=documentation_improvements.yml&title=Docs%3A+TITLE).
-
-Thanks to the community, we've covered most popular frameworks on how to add a Lambda Layer to an existing function.
-
-```
-AWSTemplateFormatVersion: '2010-09-09'
-Transform: AWS::Serverless-2016-10-31
-
-Resources:
-    MyLambdaFunction:
-        Type: AWS::Serverless::Function
-        Properties:
-            Runtime: python3.12
-            Handler: app.lambda_handler
-            Layers:
-            - !Sub arn:aws:lambda:${AWS::Region}:017000801446:layer:AWSLambdaPowertoolsPythonV3-python312-x86_64:27
-
-```
-
-```
-service: powertools-lambda
-
-provider:
-  name: aws
-  runtime: python3.12
-  region: us-east-1
-
-functions:
-  powertools:
-    handler: lambda_function.lambda_handler
-    architecture: arm64
-    layers:
-    - arn:aws:lambda:${aws:region}:017000801446:layer:AWSLambdaPowertoolsPythonV3-python312-x86_64:27
-
-```
-
-```
-from aws_cdk import Aws, Stack, aws_lambda
-from constructs import Construct
-
-
-class SampleApp(Stack):
-    def __init__(self, scope: Construct, construct_id: str, **kwargs) -> None:
-        super().__init__(scope, construct_id, **kwargs)
-
-        powertools_layer = aws_lambda.LayerVersion.from_layer_version_arn(
-            self,
-            id="lambda-powertools",
-            layer_version_arn=f"arn:aws:lambda:{Aws.REGION}:017000801446:layer:AWSLambdaPowertoolsPythonV3-python312-x86_64:27",
-        )
-        aws_lambda.Function(
-            self,
-            "sample-app-lambda",
-            runtime=aws_lambda.Runtime.PYTHON_3_12,
-            layers=[powertools_layer],
-            code=aws_lambda.Code.from_asset("lambda"),
-            handler="hello.handler",
-        )
-
-```
-
-```
-terraform {
-  required_version = "~> 1.0.5"
-  required_providers {
-    aws = "~> 3.50.0"
-  }
-}
-
-provider "aws" {
-  region = "{region}"
-}
-
-resource "aws_iam_role" "iam_for_lambda" {
-  name = "iam_for_lambda"
-
-  assume_role_policy = <<EOF
-    {
-        "Version": "2012-10-17",
-        "Statement": [
-        {
-            "Action": "sts:AssumeRole",
-            "Principal": {
-            "Service": "lambda.amazonaws.com"
-            },
-            "Effect": "Allow"
-        }
-        ]
-    }
-    EOF
-}
-
-resource "aws_lambda_function" "test_lambda" {
-  filename      = "lambda_function_payload.zip"
-  function_name = "lambda_function_name"
-  role          = aws_iam_role.iam_for_lambda.arn
-  handler       = "index.test"
-  runtime       = "python3.12"
-  layers        = ["arn:aws:lambda:{region}:017000801446:layer:AWSLambdaPowertoolsPythonV3-python312-x86_64:27"]
-
-  source_code_hash = filebase64sha256("lambda_function_payload.zip")
-}
-
-```
-
-```
-import json
-
-import pulumi
-import pulumi_aws as aws
-
-role = aws.iam.Role(
-    "role",
-    assume_role_policy=json.dumps(
-        {
-            "Version": "2012-10-17",
-            "Statement": [
-                {"Action": "sts:AssumeRole", "Principal": {"Service": "lambda.amazonaws.com"}, "Effect": "Allow"},
-            ],
-        },
-    ),
-    managed_policy_arns=[aws.iam.ManagedPolicy.AWS_LAMBDA_BASIC_EXECUTION_ROLE],
-)
-
-lambda_function = aws.lambda_.Function(
-    "function",
-    layers=[
-        pulumi.Output.concat(
-            "arn:aws:lambda:",
-            aws.get_region_output().name,
-            ":017000801446:layer:AWSLambdaPowertoolsPythonV3-python312-x86_64:27",
-        ),
-    ],
-    tracing_config={"mode": "Active"},
-    runtime=aws.lambda_.Runtime.PYTHON3D12,
-    handler="index.handler",
-    role=role.arn,
-    architectures=["x86_64"],
-    code=pulumi.FileArchive("lambda_function_payload.zip"),
-)
-
-```
-
-```
-# Create a new one with the layer
-â¯ amplify add function
-? Select which capability you want to add: Lambda function (serverless function)
-? Provide an AWS Lambda function name: <NAME-OF-FUNCTION>
-? Choose the runtime that you want to use: Python
-? Do you want to configure advanced settings? Yes
-...
-? Do you want to enable Lambda layers for this function? Yes
-? Enter up to 5 existing Lambda layer ARNs (comma-separated): arn:aws:lambda:eu-central-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python312-x86_64:27
-â¯ amplify push -y
-
-
-# Updating an existing function and add the layer
-â¯ amplify update function
-? Select the Lambda function you want to update test2
-General information
-- Name: <NAME-OF-FUNCTION>
-? Which setting do you want to update? Lambda layers configuration
-? Do you want to enable Lambda layers for this function? Yes
-? Enter up to 5 existing Lambda layer ARNs (comma-separated): arn:aws:lambda:eu-central-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python312-x86_64:27
-? Do you want to edit the local lambda function now? No
-
-```
-
-```
-AWSTemplateFormatVersion: '2010-09-09'
-Transform: AWS::Serverless-2016-10-31
-
-Resources:
-  MyLambdaFunction:
-      Type: AWS::Serverless::Function
-      Properties:
-          Architectures: [arm64]
-          Runtime: python3.12
-          Handler: app.lambda_handler
-          Layers:
-          - !Sub arn:aws:lambda:${AWS::Region}:017000801446:layer:AWSLambdaPowertoolsPythonV3-python312-arm64:27
-
-```
-
-```
-service: powertools-lambda
-
-provider:
-  name: aws
-  runtime: python3.12
-  region: us-east-1
-
-functions:
-  powertools:
-    handler: lambda_function.lambda_handler
-    architecture: arm64
-    layers:
-    - arn:aws:lambda:${aws:region}:017000801446:layer:AWSLambdaPowertoolsPythonV3-python312-arm64:27
-
-```
-
-```
-from aws_cdk import Aws, Stack, aws_lambda
-from constructs import Construct
-
-
-class SampleApp(Stack):
-    def __init__(self, scope: Construct, construct_id: str, **kwargs) -> None:
-        super().__init__(scope, construct_id, **kwargs)
-
-        powertools_layer = aws_lambda.LayerVersion.from_layer_version_arn(
-            self,
-            id="lambda-powertools",
-            layer_version_arn=f"arn:aws:lambda:{Aws.REGION}:017000801446:layer:AWSLambdaPowertoolsPythonV3-python312-arm64:27",
-        )
-        aws_lambda.Function(
-            self,
-            "sample-app-lambda",
-            runtime=aws_lambda.Runtime.PYTHON_3_12,
-            layers=[powertools_layer],
-            architecture=aws_lambda.Architecture.ARM_64,
-            code=aws_lambda.Code.from_asset("lambda"),
-            handler="hello.handler",
-        )
-
-```
-
-```
-terraform {
-  required_version = "~> 1.0.5"
-  required_providers {
-    aws = "~> 3.50.0"
-  }
-}
-
-provider "aws" {
-  region = "{region}"
-}
-
-resource "aws_iam_role" "iam_for_lambda" {
-  name = "iam_for_lambda"
-
-  assume_role_policy = <<EOF
-    {
-      "Version": "2012-10-17",
-      "Statement": [
-        {
-          "Action": "sts:AssumeRole",
-          "Principal": {
-            "Service": "lambda.amazonaws.com"
-          },
-          "Effect": "Allow"
-        }
-      ]
-    }
-    EOF
-}
-
-resource "aws_lambda_function" "test_lambda" {
-  filename      = "lambda_function_payload.zip"
-  function_name = "lambda_function_name"
-  role          = aws_iam_role.iam_for_lambda.arn
-  handler       = "index.test"
-  runtime       = "python3.12"
-  layers        = ["arn:aws:lambda:{region}:017000801446:layer:AWSLambdaPowertoolsPythonV3-python312-arm64:27"]
-  architectures = ["arm64"]
-
-  source_code_hash = filebase64sha256("lambda_function_payload.zip")
-}
-
-```
-
-```
-import json
-
-import pulumi
-import pulumi_aws as aws
-
-role = aws.iam.Role(
-    "role",
-    assume_role_policy=json.dumps(
-        {
-            "Version": "2012-10-17",
-            "Statement": [
-                {"Action": "sts:AssumeRole", "Principal": {"Service": "lambda.amazonaws.com"}, "Effect": "Allow"},
-            ],
-        },
-    ),
-    managed_policy_arns=[aws.iam.ManagedPolicy.AWS_LAMBDA_BASIC_EXECUTION_ROLE],
-)
-
-lambda_function = aws.lambda_.Function(
-    "function",
-    layers=[
-        pulumi.Output.concat(
-            "arn:aws:lambda:",
-            aws.get_region_output().name,
-            ":017000801446:layer:AWSLambdaPowertoolsPythonV3-python312-arm64:27",
-        ),
-    ],
-    tracing_config={"mode": "Active"},
-    runtime=aws.lambda_.Runtime.PYTHON3D12,
-    handler="index.handler",
-    role=role.arn,
-    architectures=["arm64"],
-    code=pulumi.FileArchive("lambda_function_payload.zip"),
-)
-
-```
-
-```
-# Create a new one with the layer
-â¯ amplify add function
-? Select which capability you want to add: Lambda function (serverless function)
-? Provide an AWS Lambda function name: <NAME-OF-FUNCTION>
-? Choose the runtime that you want to use: Python
-? Do you want to configure advanced settings? Yes
-...
-? Do you want to enable Lambda layers for this function? Yes
-? Enter up to 5 existing Lambda layer ARNs (comma-separated): arn:aws:lambda:eu-central-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python312-arm64:27
-â¯ amplify push -y
-
-
-# Updating an existing function and add the layer
-â¯ amplify update function
-? Select the Lambda function you want to update test2
-General information
-- Name: <NAME-OF-FUNCTION>
-? Which setting do you want to update? Lambda layers configuration
-? Do you want to enable Lambda layers for this function? Yes
-? Enter up to 5 existing Lambda layer ARNs (comma-separated): arn:aws:lambda:eu-central-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python312-arm64:27
-? Do you want to edit the local lambda function now? No
-
-```
-
-You can use AWS CLI to generate a pre-signed URL to download the contents of our Lambda Layer.
-
-```
-aws lambda get-layer-version-by-arn --arn arn:aws:lambda:eu-west-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python312-x86_64:27 --region eu-west-1
-
-```
-
-You'll find the pre-signed URL under `Location` key as part of the CLI command output.
-
-[Lambda Layer](https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html) is a .zip file archive that can contain additional code, pre-packaged dependencies, data, or configuration files. We compile and optimize [all dependencies](#install), and remove duplicate dependencies [already available in the Lambda runtime](https://github.com/aws-powertools/powertools-lambda-python/blob/develop/layer_v3/docker/Dockerfile#L34) to achieve the most optimal size.
-
-For the latter, make sure to replace `{python_version}` without the period (.), e.g., `python314` for `Python 3.14`.
-
-**AWS China Beijing (cn-north-1)**
-
-| Architecture | Layer ARN                                                                                                  |
-| ------------ | ---------------------------------------------------------------------------------------------------------- |
-| x86_64       | **arn:aws-cn:lambda:cn-north-1:498634801083:layer:AWSLambdaPowertoolsPythonV3-{python_version}-x86_64:18** |
-| ARM          | **arn:aws-cn:lambda:cn-north-1:498634801083:layer:AWSLambdaPowertoolsPythonV3-{python_version}-arm64:18**  |
-
-[Lambda Layer](https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html) is a .zip file archive that can contain additional code, pre-packaged dependencies, data, or configuration files. We compile and optimize [all dependencies](#install), and remove duplicate dependencies [already available in the Lambda runtime](https://github.com/aws-powertools/powertools-lambda-python/blob/develop/layer_v3/docker/Dockerfile#L34) to achieve the most optimal size.
-
-For the latter, make sure to replace `{python_version}` without the period (.), e.g., `python314` for `Python 3.14`.
-
-**AWS GovCloud (us-gov-east-1)**
-
-| Architecture | Layer ARN                                                                                                         |
-| ------------ | ----------------------------------------------------------------------------------------------------------------- |
-| x86_64       | **arn:aws-us-gov:lambda:us-gov-east-1:165087284144:layer:AWSLambdaPowertoolsPythonV3-{python_version}-x86_64:18** |
-| ARM          | **arn:aws-us-gov:lambda:us-gov-east-1:165087284144:layer:AWSLambdaPowertoolsPythonV3-{python_version}-arm64:18**  |
-
-**AWS GovCloud (us-gov-west-1)**
-
-| Architecture | Layer ARN                                                                                                         |
-| ------------ | ----------------------------------------------------------------------------------------------------------------- |
-| x86_64       | **arn:aws-us-gov:lambda:us-gov-west-1:165093116878:layer:AWSLambdaPowertoolsPythonV3-{python_version}-x86_64:18** |
-| ARM          | **arn:aws-us-gov:lambda:us-gov-west-1:165093116878:layer:AWSLambdaPowertoolsPythonV3-{python_version}-arm64:18**  |
-
-We provide a SAR App that deploys a CloudFormation stack with a copy of our Lambda Layer in your AWS account and region.
-
-Compared with the [public Layer ARN](#lambda-layer) option, the advantage is being able to use a semantic version. Make sure to replace `{python_version}` without the period (.), e.g., `python314` for `Python 3.14`.
-
-| App                                                           | ARN                                                                                                                      | Architecture |
-| ------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------ | ------------ |
-| aws-lambda-powertools-python-layer-v3-{python_version}-x86-64 | arn:aws:serverlessrepo:eu-west-1:057560766410:applications/aws-lambda-powertools-python-layer-v3-{python_version}-x86-64 | X86_64       |
-| aws-lambda-powertools-python-layer-v3-{python_version}-arm64  | arn:aws:serverlessrepo:eu-west-1:057560766410:applications/aws-lambda-powertools-python-layer-v3-{python_version}-arm64  | ARM64        |
-
-Don't have enough permissions? Expand for a least-privilege IAM policy example
-
-Credits to [mwarkentin](https://github.com/mwarkentin) for providing the scoped down IAM permissions.
-
-```
-  AWSTemplateFormatVersion: "2010-09-09"
-  Resources:
-      PowertoolsLayerIamRole:
-        Type: "AWS::IAM::Role"
-        Properties:
-            AssumeRolePolicyDocument:
-                Version: "2012-10-17"
-                Statement:
-                    - Effect: "Allow"
-                      Principal:
-                        Service:
-                          - "cloudformation.amazonaws.com"
-                        Action:
-                          - "sts:AssumeRole"
-                Path: "/"
-
-      PowertoolsLayerIamPolicy:
-        Type: "AWS::IAM::Policy"
-        Properties:
-            PolicyName: PowertoolsLambdaLayerPolicy
-            PolicyDocument:
-                Version: "2012-10-17"
-                Statement:
-                    - Sid: CloudFormationTransform
-                      Effect: Allow
-                      Action: cloudformation:CreateChangeSet
-                      Resource:
-                        - arn:aws:cloudformation:us-east-1:aws:transform/Serverless-2016-10-31
-                    - Sid: GetCfnTemplate
-                      Effect: Allow
-                      Action:
-                        - serverlessrepo:CreateCloudFormationTemplate
-                        - serverlessrepo:GetCloudFormationTemplate
-                      Resource:
-                        # this is arn of the Powertools for AWS Lambda (Python) SAR app
-                        - arn:aws:serverlessrepo:eu-west-1:057560766410:applications/aws-lambda-powertools-python-layer-v3-python313-x86-64
-                    - Sid: S3AccessLayer
-                      Effect: Allow
-                      Action:
-                        - s3:GetObject
-                      Resource:
-                        # AWS publishes to an external S3 bucket locked down to your account ID
-                        # The below example is us publishing Powertools for AWS Lambda (Python)
-                        # Bucket: awsserverlessrepo-changesets-plntc6bfnfj
-                        # Key: *****/arn:aws:serverlessrepo:eu-west-1:057560766410:applications-aws-lambda-powertools-python-layer-v3-python313-x86-64-3.0.9/aeeccf50-****-****-****-*********
-                        - arn:aws:s3:::awsserverlessrepo-changesets-*/*
-                    - Sid: GetLayerVersion
-                      Effect: Allow
-                      Action:
-                        - lambda:PublishLayerVersion
-                        - lambda:GetLayerVersion
-                      Resource:
-                        - !Sub arn:aws:lambda:${AWS::Region}:${AWS::AccountId}:layer:aws-lambda-powertools-python-layer-v3*
-            Roles:
-            - Ref: "PowertoolsLayerIamRole"
-
-```
-
-If you're using Infrastructure as Code, here are some excerpts on how to use SAR:
-
-```
-AWSTemplateFormatVersion: '2010-09-09'
-Transform: AWS::Serverless-2016-10-31
-
-Resources:
-  AwsLambdaPowertoolsPythonLayer:
-      Type: AWS::Serverless::Application
-      Properties:
-          Location:
-              ApplicationId: arn:aws:serverlessrepo:eu-west-1:057560766410:applications/aws-lambda-powertools-python-layer-v3-python313-x86-64
-              SemanticVersion: 3.0.9 # change to latest semantic version available in SAR
-
-  MyLambdaFunction:
-      Type: AWS::Serverless::Function
-      Properties:
-        Runtime: python3.13
-        Handler: app.lambda_handler
-        Layers:
-            # fetch Layer ARN from SAR App stack output
-            - !GetAtt AwsLambdaPowertoolsPythonLayer.Outputs.LayerVersionArn
-
-```
-
-```
-service: powertools-lambda
-
-provider:
-  name: aws
-  runtime: python3.13
-  region: us-east-1
-
-functions:
-    powertools:
-      handler: lambda_function.lambda_handler
-      layers:
-          - !GetAtt AwsLambdaPowertoolsPythonLayer.Outputs.LayerVersionArn
-
-resources:
-  - AwsLambdaPowertoolsPythonLayer:
-      Type: AWS::Serverless::Application
-      Properties:
-        Location:
-          ApplicationId:  arn:aws:serverlessrepo:eu-west-1:057560766410:applications/aws-lambda-powertools-python-layer-v3-python313-x86-64
-          SemanticVersion: 3.0.9
-
-```
-
-```
-from aws_cdk import Stack, aws_lambda, aws_sam
-from constructs import Construct
-
-POWERTOOLS_BASE_NAME = "AWSLambdaPowertools"
-# Find latest from github.com/aws-powertools/powertools-lambda-python/releases
-POWERTOOLS_VER = "3.0.9"
-POWERTOOLS_ARN = (
-    "arn:aws:serverlessrepo:eu-west-1:057560766410:applications/aws-lambda-powertools-python-layer-v3-python313-x86-64"
-)
-
-
-class SampleApp(Stack):
-    def __init__(self, scope: Construct, id_: str) -> None:
-        super().__init__(scope, id_)
-
-        # Launches SAR App as CloudFormation nested stack and return Lambda Layer
-        powertools_app = aws_sam.CfnApplication(
-            self,
-            f"{POWERTOOLS_BASE_NAME}Application",
-            location={"applicationId": POWERTOOLS_ARN, "semanticVersion": POWERTOOLS_VER},
-        )
-
-        powertools_layer_arn = powertools_app.get_att("Outputs.LayerVersionArn").to_string()
-        powertools_layer_version = aws_lambda.LayerVersion.from_layer_version_arn(
-            self,
-            f"{POWERTOOLS_BASE_NAME}",
-            powertools_layer_arn,
-        )
-
-        aws_lambda.Function(
-            self,
-            "sample-app-lambda",
-            runtime=aws_lambda.Runtime.PYTHON_3_13,
-            function_name="sample-lambda",
-            code=aws_lambda.Code.from_asset("lambda"),
-            handler="hello.handler",
-            layers=[powertools_layer_version],
-        )
-
-```
-
-> Credits to [Dani Comnea](https://github.com/DanyC97) for providing the Terraform equivalent.
-
-```
-terraform {
-  required_version = "~> 0.13"
-  required_providers {
-    aws = "~> 3.50.0"
-  }
-}
-
-provider "aws" {
-  region = "us-east-1"
-}
-
-resource "aws_serverlessapplicationrepository_cloudformation_stack" "deploy_sar_stack" {
-  name = "aws-lambda-powertools-python-layer"
-
-  application_id   = data.aws_serverlessapplicationrepository_application.sar_app.application_id
-  semantic_version = data.aws_serverlessapplicationrepository_application.sar_app.semantic_version
-  capabilities = [
-    "CAPABILITY_IAM",
-    "CAPABILITY_NAMED_IAM"
-  ]
-}
-
-data "aws_serverlessapplicationrepository_application" "sar_app" {
-  application_id   = "arn:aws:serverlessrepo:eu-west-1:057560766410:applications/aws-lambda-powertools-python-layer-v3-python313-x86-64"
-  semantic_version = var.aws_powertools_version
-}
-
-variable "aws_powertools_version" {
-  type        = string
-  default     = "3.0.9"
-  description = "The Powertools for AWS Lambda (Python) release version"
-}
-
-output "deployed_powertools_sar_version" {
-  value = data.aws_serverlessapplicationrepository_application.sar_app.semantic_version
-}
-
-# Fetch Powertools for AWS Lambda (Python) Layer ARN from deployed SAR App
-output "aws_lambda_powertools_layer_arn" {
-  value = aws_serverlessapplicationrepository_cloudformation_stack.deploy_sar_stack.outputs.LayerVersionArn
-}
-
-```
-
-Every morning during business days *(~8am UTC)*, we publish a `prerelease` to PyPi to accelerate customer feedback on **unstable** releases / bugfixes until they become production ready.
-
-Here's how you can use them:
-
-- **Pip**: [**`pip install --pre "aws-lambda-powertools"`**](#)
-- **Poetry**: [**`poetry add --allow-prereleases "aws-lambda-powertools" --group dev`**](#)
-- **Pdm**: [**`pdm add -dG --prerelease "aws-lambda-powertools"`**](#)
-- **uv**: [**`uv add --prerelease allow "aws-lambda-powertools"`**](#)
-
-### Local development
-
-Using Lambda Layer? Simply add [**`"aws-lambda-powertools[all]"`**](#) as a development dependency.
-
-Powertools for AWS Lambda (Python) relies on the [AWS SDK bundled in the Lambda runtime](https://docs.aws.amazon.com/lambda/latest/dg/lambda-python.html). This helps us achieve an optimal package size and initialization. However, when developing locally, you need to install AWS SDK as a development dependency to support IDE auto-completion and to run your tests locally:
-
-- **Pip**: [**`pip install "aws-lambda-powertools[aws-sdk]"`**](#)
-- **Poetry**: [**`poetry add "aws-lambda-powertools[aws-sdk]" --group dev`**](#)
-- **Pdm**: [**`pdm add -dG "aws-lambda-powertools[aws-sdk]"`**](#)
-- **uv**: [**`uv add "aws-lambda-powertools[aws-sdk]"`**](#)
-
-**A word about dependency resolution**
-
-In this context, `[aws-sdk]` is an alias to the `boto3` package. Due to dependency resolution, it'll either install:
-
-- **(A)** the SDK version available in [Lambda runtime](https://docs.aws.amazon.com/lambda/latest/dg/lambda-python.html)
-- **(B)** a more up-to-date version if another package you use also depends on `boto3`, for example [Powertools for AWS Lambda (Python) Tracer](core/tracer/)
-
-### Lambda Layer
-
-[Lambda Layer](https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html) is a .zip file archive that can contain additional code, pre-packaged dependencies, data, or configuration files. We compile and optimize [all dependencies](#install) for Python versions from **3.9 to 3.13**, as well as for both **arm64 and x86_64** architectures, to ensure compatibility. We also remove duplicate dependencies [already available in the Lambda runtime](https://github.com/aws-powertools/powertools-lambda-layer-cdk/blob/d24716744f7d1f37617b4998c992c4c067e19e64/layer/Python/Dockerfile#L36) to achieve the most optimal size.
-
-Click to expand and copy any regional Lambda Layer ARN
-
-| Region               | Layer ARN                                                                                           |
-| -------------------- | --------------------------------------------------------------------------------------------------- |
-| **`af-south-1`**     | **arn:aws:lambda:af-south-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python39-x86_64:27**     |
-| **`ap-east-1`**      | **arn:aws:lambda:ap-east-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python39-x86_64:27**      |
-| **`ap-northeast-1`** | **arn:aws:lambda:ap-northeast-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python39-x86_64:27** |
-| **`ap-northeast-2`** | **arn:aws:lambda:ap-northeast-2:017000801446:layer:AWSLambdaPowertoolsPythonV3-python39-x86_64:27** |
-| **`ap-northeast-3`** | **arn:aws:lambda:ap-northeast-3:017000801446:layer:AWSLambdaPowertoolsPythonV3-python39-x86_64:27** |
-| **`ap-south-1`**     | **arn:aws:lambda:ap-south-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python39-x86_64:27**     |
-| **`ap-south-2`**     | **arn:aws:lambda:ap-south-2:017000801446:layer:AWSLambdaPowertoolsPythonV3-python39-x86_64:27**     |
-| **`ap-southeast-1`** | **arn:aws:lambda:ap-southeast-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python39-x86_64:27** |
-| **`ap-southeast-2`** | **arn:aws:lambda:ap-southeast-2:017000801446:layer:AWSLambdaPowertoolsPythonV3-python39-x86_64:27** |
-| **`ap-southeast-3`** | **arn:aws:lambda:ap-southeast-3:017000801446:layer:AWSLambdaPowertoolsPythonV3-python39-x86_64:27** |
-| **`ap-southeast-4`** | **arn:aws:lambda:ap-southeast-4:017000801446:layer:AWSLambdaPowertoolsPythonV3-python39-x86_64:27** |
-| **`ap-southeast-5`** | **arn:aws:lambda:ap-southeast-5:017000801446:layer:AWSLambdaPowertoolsPythonV3-python39-x86_64:27** |
-| **`ap-southeast-7`** | **arn:aws:lambda:ap-southeast-7:017000801446:layer:AWSLambdaPowertoolsPythonV3-python39-x86_64:27** |
-| **`ca-central-1`**   | **arn:aws:lambda:ca-central-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python39-x86_64:27**   |
-| **`ca-west-1`**      | **arn:aws:lambda:ca-west-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python39-x86_64:27**      |
-| **`eu-central-1`**   | **arn:aws:lambda:eu-central-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python39-x86_64:27**   |
-| **`eu-central-2`**   | **arn:aws:lambda:eu-central-2:017000801446:layer:AWSLambdaPowertoolsPythonV3-python39-x86_64:27**   |
-| **`eu-north-1`**     | **arn:aws:lambda:eu-north-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python39-x86_64:27**     |
-| **`eu-south-1`**     | **arn:aws:lambda:eu-south-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python39-x86_64:27**     |
-| **`eu-south-2`**     | **arn:aws:lambda:eu-south-2:017000801446:layer:AWSLambdaPowertoolsPythonV3-python39-x86_64:27**     |
-| **`eu-west-1`**      | **arn:aws:lambda:eu-west-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python39-x86_64:27**      |
-| **`eu-west-2`**      | **arn:aws:lambda:eu-west-2:017000801446:layer:AWSLambdaPowertoolsPythonV3-python39-x86_64:27**      |
-| **`eu-west-3`**      | **arn:aws:lambda:eu-west-3:017000801446:layer:AWSLambdaPowertoolsPythonV3-python39-x86_64:27**      |
-| **`il-central-1`**   | **arn:aws:lambda:il-central-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python39-x86_64:27**   |
-| **`me-central-1`**   | **arn:aws:lambda:me-central-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python39-x86_64:27**   |
-| **`me-south-1`**     | **arn:aws:lambda:me-south-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python39-x86_64:27**     |
-| **`mx-central-1`**   | **arn:aws:lambda:mx-central-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python39-x86_64:27**   |
-| **`sa-east-1`**      | **arn:aws:lambda:sa-east-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python39-x86_64:27**      |
-| **`us-east-1`**      | **arn:aws:lambda:us-east-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python39-x86_64:27**      |
-| **`us-east-2`**      | **arn:aws:lambda:us-east-2:017000801446:layer:AWSLambdaPowertoolsPythonV3-python39-x86_64:27**      |
-| **`us-west-1`**      | **arn:aws:lambda:us-west-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python39-x86_64:27**      |
-| **`us-west-2`**      | **arn:aws:lambda:us-west-2:017000801446:layer:AWSLambdaPowertoolsPythonV3-python39-x86_64:27**      |
-
-| Region               | Layer ARN                                                                                            |
-| -------------------- | ---------------------------------------------------------------------------------------------------- |
-| **`af-south-1`**     | **arn:aws:lambda:af-south-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python310-x86_64:27**     |
-| **`ap-east-1`**      | **arn:aws:lambda:ap-east-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python310-x86_64:27**      |
-| **`ap-northeast-1`** | **arn:aws:lambda:ap-northeast-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python310-x86_64:27** |
-| **`ap-northeast-2`** | **arn:aws:lambda:ap-northeast-2:017000801446:layer:AWSLambdaPowertoolsPythonV3-python310-x86_64:27** |
-| **`ap-northeast-3`** | **arn:aws:lambda:ap-northeast-3:017000801446:layer:AWSLambdaPowertoolsPythonV3-python310-x86_64:27** |
-| **`ap-south-1`**     | **arn:aws:lambda:ap-south-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python310-x86_64:27**     |
-| **`ap-south-2`**     | **arn:aws:lambda:ap-south-2:017000801446:layer:AWSLambdaPowertoolsPythonV3-python310-x86_64:27**     |
-| **`ap-southeast-1`** | **arn:aws:lambda:ap-southeast-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python310-x86_64:27** |
-| **`ap-southeast-2`** | **arn:aws:lambda:ap-southeast-2:017000801446:layer:AWSLambdaPowertoolsPythonV3-python310-x86_64:27** |
-| **`ap-southeast-3`** | **arn:aws:lambda:ap-southeast-3:017000801446:layer:AWSLambdaPowertoolsPythonV3-python310-x86_64:27** |
-| **`ap-southeast-4`** | **arn:aws:lambda:ap-southeast-4:017000801446:layer:AWSLambdaPowertoolsPythonV3-python310-x86_64:27** |
-| **`ap-southeast-5`** | **arn:aws:lambda:ap-southeast-5:017000801446:layer:AWSLambdaPowertoolsPythonV3-python310-x86_64:27** |
-| **`ap-southeast-7`** | **arn:aws:lambda:ap-southeast-7:017000801446:layer:AWSLambdaPowertoolsPythonV3-python310-x86_64:27** |
-| **`ca-central-1`**   | **arn:aws:lambda:ca-central-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python310-x86_64:27**   |
-| **`ca-west-1`**      | **arn:aws:lambda:ca-west-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python310-x86_64:27**      |
-| **`eu-central-1`**   | **arn:aws:lambda:eu-central-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python310-x86_64:27**   |
-| **`eu-central-2`**   | **arn:aws:lambda:eu-central-2:017000801446:layer:AWSLambdaPowertoolsPythonV3-python310-x86_64:27**   |
-| **`eu-north-1`**     | **arn:aws:lambda:eu-north-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python310-x86_64:27**     |
-| **`eu-south-1`**     | **arn:aws:lambda:eu-south-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python310-x86_64:27**     |
-| **`eu-south-2`**     | **arn:aws:lambda:eu-south-2:017000801446:layer:AWSLambdaPowertoolsPythonV3-python310-x86_64:27**     |
-| **`eu-west-1`**      | **arn:aws:lambda:eu-west-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python310-x86_64:27**      |
-| **`eu-west-2`**      | **arn:aws:lambda:eu-west-2:017000801446:layer:AWSLambdaPowertoolsPythonV3-python310-x86_64:27**      |
-| **`eu-west-3`**      | **arn:aws:lambda:eu-west-3:017000801446:layer:AWSLambdaPowertoolsPythonV3-python310-x86_64:27**      |
-| **`il-central-1`**   | **arn:aws:lambda:il-central-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python310-x86_64:27**   |
-| **`me-central-1`**   | **arn:aws:lambda:me-central-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python310-x86_64:27**   |
-| **`me-south-1`**     | **arn:aws:lambda:me-south-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python310-x86_64:27**     |
-| **`mx-central-1`**   | **arn:aws:lambda:mx-central-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python310-x86_64:27**   |
-| **`sa-east-1`**      | **arn:aws:lambda:sa-east-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python310-x86_64:27**      |
-| **`us-east-1`**      | **arn:aws:lambda:us-east-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python310-x86_64:27**      |
-| **`us-east-2`**      | **arn:aws:lambda:us-east-2:017000801446:layer:AWSLambdaPowertoolsPythonV3-python310-x86_64:27**      |
-| **`us-west-1`**      | **arn:aws:lambda:us-west-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python310-x86_64:27**      |
-| **`us-west-2`**      | **arn:aws:lambda:us-west-2:017000801446:layer:AWSLambdaPowertoolsPythonV3-python310-x86_64:27**      |
-
-| Region               | Layer ARN                                                                                            |
-| -------------------- | ---------------------------------------------------------------------------------------------------- |
-| **`af-south-1`**     | **arn:aws:lambda:af-south-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python311-x86_64:27**     |
-| **`ap-east-1`**      | **arn:aws:lambda:ap-east-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python311-x86_64:27**      |
-| **`ap-northeast-1`** | **arn:aws:lambda:ap-northeast-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python311-x86_64:27** |
-| **`ap-northeast-2`** | **arn:aws:lambda:ap-northeast-2:017000801446:layer:AWSLambdaPowertoolsPythonV3-python311-x86_64:27** |
-| **`ap-northeast-3`** | **arn:aws:lambda:ap-northeast-3:017000801446:layer:AWSLambdaPowertoolsPythonV3-python311-x86_64:27** |
-| **`ap-south-1`**     | **arn:aws:lambda:ap-south-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python311-x86_64:27**     |
-| **`ap-south-2`**     | **arn:aws:lambda:ap-south-2:017000801446:layer:AWSLambdaPowertoolsPythonV3-python311-x86_64:27**     |
-| **`ap-southeast-1`** | **arn:aws:lambda:ap-southeast-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python311-x86_64:27** |
-| **`ap-southeast-2`** | **arn:aws:lambda:ap-southeast-2:017000801446:layer:AWSLambdaPowertoolsPythonV3-python311-x86_64:27** |
-| **`ap-southeast-3`** | **arn:aws:lambda:ap-southeast-3:017000801446:layer:AWSLambdaPowertoolsPythonV3-python311-x86_64:27** |
-| **`ap-southeast-4`** | **arn:aws:lambda:ap-southeast-4:017000801446:layer:AWSLambdaPowertoolsPythonV3-python311-x86_64:27** |
-| **`ap-southeast-5`** | **arn:aws:lambda:ap-southeast-5:017000801446:layer:AWSLambdaPowertoolsPythonV3-python311-x86_64:27** |
-| **`ap-southeast-7`** | **arn:aws:lambda:ap-southeast-7:017000801446:layer:AWSLambdaPowertoolsPythonV3-python311-x86_64:27** |
-| **`ca-central-1`**   | **arn:aws:lambda:ca-central-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python311-x86_64:27**   |
-| **`ca-west-1`**      | **arn:aws:lambda:ca-west-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python311-x86_64:27**      |
-| **`eu-central-1`**   | **arn:aws:lambda:eu-central-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python311-x86_64:27**   |
-| **`eu-central-2`**   | **arn:aws:lambda:eu-central-2:017000801446:layer:AWSLambdaPowertoolsPythonV3-python311-x86_64:27**   |
-| **`eu-north-1`**     | **arn:aws:lambda:eu-north-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python311-x86_64:27**     |
-| **`eu-south-1`**     | **arn:aws:lambda:eu-south-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python311-x86_64:27**     |
-| **`eu-south-2`**     | **arn:aws:lambda:eu-south-2:017000801446:layer:AWSLambdaPowertoolsPythonV3-python311-x86_64:27**     |
-| **`eu-west-1`**      | **arn:aws:lambda:eu-west-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python311-x86_64:27**      |
-| **`eu-west-2`**      | **arn:aws:lambda:eu-west-2:017000801446:layer:AWSLambdaPowertoolsPythonV3-python311-x86_64:27**      |
-| **`eu-west-3`**      | **arn:aws:lambda:eu-west-3:017000801446:layer:AWSLambdaPowertoolsPythonV3-python311-x86_64:27**      |
-| **`il-central-1`**   | **arn:aws:lambda:il-central-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python311-x86_64:27**   |
-| **`me-central-1`**   | **arn:aws:lambda:me-central-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python311-x86_64:27**   |
-| **`me-south-1`**     | **arn:aws:lambda:me-south-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python311-x86_64:27**     |
-| **`mx-central-1`**   | **arn:aws:lambda:mx-central-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python311-x86_64:27**   |
-| **`sa-east-1`**      | **arn:aws:lambda:sa-east-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python311-x86_64:27**      |
-| **`us-east-1`**      | **arn:aws:lambda:us-east-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python311-x86_64:27**      |
-| **`us-east-2`**      | **arn:aws:lambda:us-east-2:017000801446:layer:AWSLambdaPowertoolsPythonV3-python311-x86_64:27**      |
-| **`us-west-1`**      | **arn:aws:lambda:us-west-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python311-x86_64:27**      |
-| **`us-west-2`**      | **arn:aws:lambda:us-west-2:017000801446:layer:AWSLambdaPowertoolsPythonV3-python311-x86_64:27**      |
-
-| Region               | Layer ARN                                                                                            |
-| -------------------- | ---------------------------------------------------------------------------------------------------- |
-| **`af-south-1`**     | **arn:aws:lambda:af-south-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python312-x86_64:27**     |
-| **`ap-east-1`**      | **arn:aws:lambda:ap-east-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python312-x86_64:27**      |
-| **`ap-northeast-1`** | **arn:aws:lambda:ap-northeast-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python312-x86_64:27** |
-| **`ap-northeast-2`** | **arn:aws:lambda:ap-northeast-2:017000801446:layer:AWSLambdaPowertoolsPythonV3-python312-x86_64:27** |
-| **`ap-northeast-3`** | **arn:aws:lambda:ap-northeast-3:017000801446:layer:AWSLambdaPowertoolsPythonV3-python312-x86_64:27** |
-| **`ap-south-1`**     | **arn:aws:lambda:ap-south-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python312-x86_64:27**     |
-| **`ap-south-2`**     | **arn:aws:lambda:ap-south-2:017000801446:layer:AWSLambdaPowertoolsPythonV3-python312-x86_64:27**     |
-| **`ap-southeast-1`** | **arn:aws:lambda:ap-southeast-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python312-x86_64:27** |
-| **`ap-southeast-2`** | **arn:aws:lambda:ap-southeast-2:017000801446:layer:AWSLambdaPowertoolsPythonV3-python312-x86_64:27** |
-| **`ap-southeast-3`** | **arn:aws:lambda:ap-southeast-3:017000801446:layer:AWSLambdaPowertoolsPythonV3-python312-x86_64:27** |
-| **`ap-southeast-4`** | **arn:aws:lambda:ap-southeast-4:017000801446:layer:AWSLambdaPowertoolsPythonV3-python312-x86_64:27** |
-| **`ap-southeast-5`** | **arn:aws:lambda:ap-southeast-5:017000801446:layer:AWSLambdaPowertoolsPythonV3-python312-x86_64:27** |
-| **`ap-southeast-7`** | **arn:aws:lambda:ap-southeast-7:017000801446:layer:AWSLambdaPowertoolsPythonV3-python312-x86_64:27** |
-| **`ca-central-1`**   | **arn:aws:lambda:ca-central-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python312-x86_64:27**   |
-| **`ca-west-1`**      | **arn:aws:lambda:ca-west-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python312-x86_64:27**      |
-| **`eu-central-1`**   | **arn:aws:lambda:eu-central-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python312-x86_64:27**   |
-| **`eu-central-2`**   | **arn:aws:lambda:eu-central-2:017000801446:layer:AWSLambdaPowertoolsPythonV3-python312-x86_64:27**   |
-| **`eu-north-1`**     | **arn:aws:lambda:eu-north-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python312-x86_64:27**     |
-| **`eu-south-1`**     | **arn:aws:lambda:eu-south-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python312-x86_64:27**     |
-| **`eu-south-2`**     | **arn:aws:lambda:eu-south-2:017000801446:layer:AWSLambdaPowertoolsPythonV3-python312-x86_64:27**     |
-| **`eu-west-1`**      | **arn:aws:lambda:eu-west-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python312-x86_64:27**      |
-| **`eu-west-2`**      | **arn:aws:lambda:eu-west-2:017000801446:layer:AWSLambdaPowertoolsPythonV3-python312-x86_64:27**      |
-| **`eu-west-3`**      | **arn:aws:lambda:eu-west-3:017000801446:layer:AWSLambdaPowertoolsPythonV3-python312-x86_64:27**      |
-| **`il-central-1`**   | **arn:aws:lambda:il-central-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python312-x86_64:27**   |
-| **`me-central-1`**   | **arn:aws:lambda:me-central-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python312-x86_64:27**   |
-| **`me-south-1`**     | **arn:aws:lambda:me-south-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python312-x86_64:27**     |
-| **`mx-central-1`**   | **arn:aws:lambda:mx-central-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python312-x86_64:27**   |
-| **`sa-east-1`**      | **arn:aws:lambda:sa-east-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python312-x86_64:27**      |
-| **`us-east-1`**      | **arn:aws:lambda:us-east-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python312-x86_64:27**      |
-| **`us-east-2`**      | **arn:aws:lambda:us-east-2:017000801446:layer:AWSLambdaPowertoolsPythonV3-python312-x86_64:27**      |
-| **`us-west-1`**      | **arn:aws:lambda:us-west-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python312-x86_64:27**      |
-| **`us-west-2`**      | **arn:aws:lambda:us-west-2:017000801446:layer:AWSLambdaPowertoolsPythonV3-python312-x86_64:27**      |
-
-| Region               | Layer ARN                                                                                            |
-| -------------------- | ---------------------------------------------------------------------------------------------------- |
-| **`af-south-1`**     | **arn:aws:lambda:af-south-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python313-x86_64:27**     |
-| **`ap-east-1`**      | **arn:aws:lambda:ap-east-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python313-x86_64:27**      |
-| **`ap-northeast-1`** | **arn:aws:lambda:ap-northeast-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python313-x86_64:27** |
-| **`ap-northeast-2`** | **arn:aws:lambda:ap-northeast-2:017000801446:layer:AWSLambdaPowertoolsPythonV3-python313-x86_64:27** |
-| **`ap-northeast-3`** | **arn:aws:lambda:ap-northeast-3:017000801446:layer:AWSLambdaPowertoolsPythonV3-python313-x86_64:27** |
-| **`ap-south-1`**     | **arn:aws:lambda:ap-south-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python313-x86_64:27**     |
-| **`ap-south-2`**     | **arn:aws:lambda:ap-south-2:017000801446:layer:AWSLambdaPowertoolsPythonV3-python313-x86_64:27**     |
-| **`ap-southeast-1`** | **arn:aws:lambda:ap-southeast-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python313-x86_64:27** |
-| **`ap-southeast-2`** | **arn:aws:lambda:ap-southeast-2:017000801446:layer:AWSLambdaPowertoolsPythonV3-python313-x86_64:27** |
-| **`ap-southeast-3`** | **arn:aws:lambda:ap-southeast-3:017000801446:layer:AWSLambdaPowertoolsPythonV3-python313-x86_64:27** |
-| **`ap-southeast-4`** | **arn:aws:lambda:ap-southeast-4:017000801446:layer:AWSLambdaPowertoolsPythonV3-python313-x86_64:27** |
-| **`ap-southeast-5`** | **arn:aws:lambda:ap-southeast-5:017000801446:layer:AWSLambdaPowertoolsPythonV3-python313-x86_64:27** |
-| **`ap-southeast-7`** | **arn:aws:lambda:ap-southeast-7:017000801446:layer:AWSLambdaPowertoolsPythonV3-python313-x86_64:27** |
-| **`ca-central-1`**   | **arn:aws:lambda:ca-central-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python313-x86_64:27**   |
-| **`ca-west-1`**      | **arn:aws:lambda:ca-west-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python313-x86_64:27**      |
-| **`eu-central-1`**   | **arn:aws:lambda:eu-central-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python313-x86_64:27**   |
-| **`eu-central-2`**   | **arn:aws:lambda:eu-central-2:017000801446:layer:AWSLambdaPowertoolsPythonV3-python313-x86_64:27**   |
-| **`eu-north-1`**     | **arn:aws:lambda:eu-north-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python313-x86_64:27**     |
-| **`eu-south-1`**     | **arn:aws:lambda:eu-south-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python313-x86_64:27**     |
-| **`eu-south-2`**     | **arn:aws:lambda:eu-south-2:017000801446:layer:AWSLambdaPowertoolsPythonV3-python313-x86_64:27**     |
-| **`eu-west-1`**      | **arn:aws:lambda:eu-west-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python313-x86_64:27**      |
-| **`eu-west-2`**      | **arn:aws:lambda:eu-west-2:017000801446:layer:AWSLambdaPowertoolsPythonV3-python313-x86_64:27**      |
-| **`eu-west-3`**      | **arn:aws:lambda:eu-west-3:017000801446:layer:AWSLambdaPowertoolsPythonV3-python313-x86_64:27**      |
-| **`il-central-1`**   | **arn:aws:lambda:il-central-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python313-x86_64:27**   |
-| **`me-central-1`**   | **arn:aws:lambda:me-central-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python313-x86_64:27**   |
-| **`me-south-1`**     | **arn:aws:lambda:me-south-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python313-x86_64:27**     |
-| **`mx-central-1`**   | **arn:aws:lambda:mx-central-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python313-x86_64:27**   |
-| **`sa-east-1`**      | **arn:aws:lambda:sa-east-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python313-x86_64:27**      |
-| **`us-east-1`**      | **arn:aws:lambda:us-east-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python313-x86_64:27**      |
-| **`us-east-2`**      | **arn:aws:lambda:us-east-2:017000801446:layer:AWSLambdaPowertoolsPythonV3-python313-x86_64:27**      |
-| **`us-west-1`**      | **arn:aws:lambda:us-west-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python313-x86_64:27**      |
-| **`us-west-2`**      | **arn:aws:lambda:us-west-2:017000801446:layer:AWSLambdaPowertoolsPythonV3-python313-x86_64:27**      |
-
-| Region               | Layer ARN                                                                                            |
-| -------------------- | ---------------------------------------------------------------------------------------------------- |
-| **`af-south-1`**     | **arn:aws:lambda:af-south-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python314-x86_64:27**     |
-| **`ap-east-1`**      | **arn:aws:lambda:ap-east-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python314-x86_64:27**      |
-| **`ap-northeast-1`** | **arn:aws:lambda:ap-northeast-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python314-x86_64:27** |
-| **`ap-northeast-2`** | **arn:aws:lambda:ap-northeast-2:017000801446:layer:AWSLambdaPowertoolsPythonV3-python314-x86_64:27** |
-| **`ap-northeast-3`** | **arn:aws:lambda:ap-northeast-3:017000801446:layer:AWSLambdaPowertoolsPythonV3-python314-x86_64:27** |
-| **`ap-south-1`**     | **arn:aws:lambda:ap-south-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python314-x86_64:27**     |
-| **`ap-south-2`**     | **arn:aws:lambda:ap-south-2:017000801446:layer:AWSLambdaPowertoolsPythonV3-python314-x86_64:27**     |
-| **`ap-southeast-1`** | **arn:aws:lambda:ap-southeast-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python314-x86_64:27** |
-| **`ap-southeast-2`** | **arn:aws:lambda:ap-southeast-2:017000801446:layer:AWSLambdaPowertoolsPythonV3-python314-x86_64:27** |
-| **`ap-southeast-3`** | **arn:aws:lambda:ap-southeast-3:017000801446:layer:AWSLambdaPowertoolsPythonV3-python314-x86_64:27** |
-| **`ap-southeast-4`** | **arn:aws:lambda:ap-southeast-4:017000801446:layer:AWSLambdaPowertoolsPythonV3-python314-x86_64:27** |
-| **`ap-southeast-5`** | **arn:aws:lambda:ap-southeast-5:017000801446:layer:AWSLambdaPowertoolsPythonV3-python314-x86_64:27** |
-| **`ap-southeast-7`** | **arn:aws:lambda:ap-southeast-7:017000801446:layer:AWSLambdaPowertoolsPythonV3-python314-x86_64:27** |
-| **`ca-central-1`**   | **arn:aws:lambda:ca-central-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python314-x86_64:27**   |
-| **`ca-west-1`**      | **arn:aws:lambda:ca-west-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python314-x86_64:27**      |
-| **`eu-central-1`**   | **arn:aws:lambda:eu-central-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python314-x86_64:27**   |
-| **`eu-central-2`**   | **arn:aws:lambda:eu-central-2:017000801446:layer:AWSLambdaPowertoolsPythonV3-python314-x86_64:27**   |
-| **`eu-north-1`**     | **arn:aws:lambda:eu-north-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python314-x86_64:27**     |
-| **`eu-south-1`**     | **arn:aws:lambda:eu-south-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python314-x86_64:27**     |
-| **`eu-south-2`**     | **arn:aws:lambda:eu-south-2:017000801446:layer:AWSLambdaPowertoolsPythonV3-python314-x86_64:27**     |
-| **`eu-west-1`**      | **arn:aws:lambda:eu-west-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python314-x86_64:27**      |
-| **`eu-west-2`**      | **arn:aws:lambda:eu-west-2:017000801446:layer:AWSLambdaPowertoolsPythonV3-python314-x86_64:27**      |
-| **`eu-west-3`**      | **arn:aws:lambda:eu-west-3:017000801446:layer:AWSLambdaPowertoolsPythonV3-python314-x86_64:27**      |
-| **`il-central-1`**   | **arn:aws:lambda:il-central-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python314-x86_64:27**   |
-| **`me-central-1`**   | **arn:aws:lambda:me-central-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python314-x86_64:27**   |
-| **`me-south-1`**     | **arn:aws:lambda:me-south-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python314-x86_64:27**     |
-| **`mx-central-1`**   | **arn:aws:lambda:mx-central-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python314-x86_64:27**   |
-| **`sa-east-1`**      | **arn:aws:lambda:sa-east-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python314-x86_64:27**      |
-| **`us-east-1`**      | **arn:aws:lambda:us-east-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python314-x86_64:27**      |
-| **`us-east-2`**      | **arn:aws:lambda:us-east-2:017000801446:layer:AWSLambdaPowertoolsPythonV3-python314-x86_64:27**      |
-| **`us-west-1`**      | **arn:aws:lambda:us-west-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python314-x86_64:27**      |
-| **`us-west-2`**      | **arn:aws:lambda:us-west-2:017000801446:layer:AWSLambdaPowertoolsPythonV3-python314-x86_64:27**      |
-
-Click to expand and copy any regional Lambda Layer ARN
-
-| Region               | Layer ARN                                                                                          |
-| -------------------- | -------------------------------------------------------------------------------------------------- |
-| **`af-south-1`**     | **arn:aws:lambda:af-south-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python39-arm64:27**     |
-| **`ap-east-1`**      | **arn:aws:lambda:ap-east-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python39-arm64:27**      |
-| **`ap-northeast-1`** | **arn:aws:lambda:ap-northeast-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python39-arm64:27** |
-| **`ap-northeast-2`** | **arn:aws:lambda:ap-northeast-2:017000801446:layer:AWSLambdaPowertoolsPythonV3-python39-arm64:27** |
-| **`ap-northeast-3`** | **arn:aws:lambda:ap-northeast-3:017000801446:layer:AWSLambdaPowertoolsPythonV3-python39-arm64:27** |
-| **`ap-south-1`**     | **arn:aws:lambda:ap-south-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python39-arm64:27**     |
-| **`ap-south-2`**     | **arn:aws:lambda:ap-south-2:017000801446:layer:AWSLambdaPowertoolsPythonV3-python39-arm64:27**     |
-| **`ap-southeast-1`** | **arn:aws:lambda:ap-southeast-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python39-arm64:27** |
-| **`ap-southeast-2`** | **arn:aws:lambda:ap-southeast-2:017000801446:layer:AWSLambdaPowertoolsPythonV3-python39-arm64:27** |
-| **`ap-southeast-3`** | **arn:aws:lambda:ap-southeast-3:017000801446:layer:AWSLambdaPowertoolsPythonV3-python39-arm64:27** |
-| **`ap-southeast-4`** | **arn:aws:lambda:ap-southeast-4:017000801446:layer:AWSLambdaPowertoolsPythonV3-python39-arm64:27** |
-| **`ap-southeast-5`** | **arn:aws:lambda:ap-southeast-5:017000801446:layer:AWSLambdaPowertoolsPythonV3-python39-arm64:27** |
-| **`ap-southeast-7`** | **arn:aws:lambda:ap-southeast-7:017000801446:layer:AWSLambdaPowertoolsPythonV3-python39-arm64:27** |
-| **`ca-central-1`**   | **arn:aws:lambda:ca-central-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python39-arm64:27**   |
-| **`eu-central-1`**   | **arn:aws:lambda:eu-central-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python39-arm64:27**   |
-| **`eu-central-2`**   | **arn:aws:lambda:eu-central-2:017000801446:layer:AWSLambdaPowertoolsPythonV3-python39-arm64:27**   |
-| **`eu-north-1`**     | **arn:aws:lambda:eu-north-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python39-arm64:27**     |
-| **`eu-south-1`**     | **arn:aws:lambda:eu-south-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python39-arm64:27**     |
-| **`eu-south-2`**     | **arn:aws:lambda:eu-south-2:017000801446:layer:AWSLambdaPowertoolsPythonV3-python39-arm64:27**     |
-| **`eu-west-1`**      | **arn:aws:lambda:eu-west-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python39-arm64:27**      |
-| **`eu-west-2`**      | **arn:aws:lambda:eu-west-2:017000801446:layer:AWSLambdaPowertoolsPythonV3-python39-arm64:27**      |
-| **`eu-west-3`**      | **arn:aws:lambda:eu-west-3:017000801446:layer:AWSLambdaPowertoolsPythonV3-python39-arm64:27**      |
-| **`il-central-1`**   | **arn:aws:lambda:il-central-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python39-arm64:27**   |
-| **`me-central-1`**   | **arn:aws:lambda:me-central-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python39-arm64:27**   |
-| **`me-south-1`**     | **arn:aws:lambda:me-south-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python39-arm64:27**     |
-| **`mx-central-1`**   | **arn:aws:lambda:mx-central-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python39-arm64:27**   |
-| **`sa-east-1`**      | **arn:aws:lambda:sa-east-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python39-arm64:27**      |
-| **`us-east-1`**      | **arn:aws:lambda:us-east-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python39-arm64:27**      |
-| **`us-east-2`**      | **arn:aws:lambda:us-east-2:017000801446:layer:AWSLambdaPowertoolsPythonV3-python39-arm64:27**      |
-| **`us-west-1`**      | **arn:aws:lambda:us-west-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python39-arm64:27**      |
-| **`us-west-2`**      | **arn:aws:lambda:us-west-2:017000801446:layer:AWSLambdaPowertoolsPythonV3-python39-arm64:27**      |
-
-| Region               | Layer ARN                                                                                           |
-| -------------------- | --------------------------------------------------------------------------------------------------- |
-| **`af-south-1`**     | **arn:aws:lambda:af-south-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python310-arm64:27**     |
-| **`ap-east-1`**      | **arn:aws:lambda:ap-east-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python310-arm64:27**      |
-| **`ap-northeast-1`** | **arn:aws:lambda:ap-northeast-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python310-arm64:27** |
-| **`ap-northeast-2`** | **arn:aws:lambda:ap-northeast-2:017000801446:layer:AWSLambdaPowertoolsPythonV3-python310-arm64:27** |
-| **`ap-northeast-3`** | **arn:aws:lambda:ap-northeast-3:017000801446:layer:AWSLambdaPowertoolsPythonV3-python310-arm64:27** |
-| **`ap-south-1`**     | **arn:aws:lambda:ap-south-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python310-arm64:27**     |
-| **`ap-south-2`**     | **arn:aws:lambda:ap-south-2:017000801446:layer:AWSLambdaPowertoolsPythonV3-python310-arm64:27**     |
-| **`ap-southeast-1`** | **arn:aws:lambda:ap-southeast-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python310-arm64:27** |
-| **`ap-southeast-2`** | **arn:aws:lambda:ap-southeast-2:017000801446:layer:AWSLambdaPowertoolsPythonV3-python310-arm64:27** |
-| **`ap-southeast-3`** | **arn:aws:lambda:ap-southeast-3:017000801446:layer:AWSLambdaPowertoolsPythonV3-python310-arm64:27** |
-| **`ap-southeast-4`** | **arn:aws:lambda:ap-southeast-4:017000801446:layer:AWSLambdaPowertoolsPythonV3-python310-arm64:27** |
-| **`ap-southeast-5`** | **arn:aws:lambda:ap-southeast-5:017000801446:layer:AWSLambdaPowertoolsPythonV3-python310-arm64:27** |
-| **`ap-southeast-7`** | **arn:aws:lambda:ap-southeast-7:017000801446:layer:AWSLambdaPowertoolsPythonV3-python310-arm64:27** |
-| **`ca-central-1`**   | **arn:aws:lambda:ca-central-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python310-arm64:27**   |
-| **`eu-central-1`**   | **arn:aws:lambda:eu-central-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python310-arm64:27**   |
-| **`eu-central-2`**   | **arn:aws:lambda:eu-central-2:017000801446:layer:AWSLambdaPowertoolsPythonV3-python310-arm64:27**   |
-| **`eu-north-1`**     | **arn:aws:lambda:eu-north-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python310-arm64:27**     |
-| **`eu-south-1`**     | **arn:aws:lambda:eu-south-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python310-arm64:27**     |
-| **`eu-south-2`**     | **arn:aws:lambda:eu-south-2:017000801446:layer:AWSLambdaPowertoolsPythonV3-python310-arm64:27**     |
-| **`eu-west-1`**      | **arn:aws:lambda:eu-west-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python310-arm64:27**      |
-| **`eu-west-2`**      | **arn:aws:lambda:eu-west-2:017000801446:layer:AWSLambdaPowertoolsPythonV3-python310-arm64:27**      |
-| **`eu-west-3`**      | **arn:aws:lambda:eu-west-3:017000801446:layer:AWSLambdaPowertoolsPythonV3-python310-arm64:27**      |
-| **`il-central-1`**   | **arn:aws:lambda:il-central-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python310-arm64:27**   |
-| **`me-central-1`**   | **arn:aws:lambda:me-central-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python310-arm64:27**   |
-| **`me-south-1`**     | **arn:aws:lambda:me-south-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python310-arm64:27**     |
-| **`mx-central-1`**   | **arn:aws:lambda:mx-central-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python310-arm64:27**   |
-| **`sa-east-1`**      | **arn:aws:lambda:sa-east-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python310-arm64:27**      |
-| **`us-east-1`**      | **arn:aws:lambda:us-east-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python310-arm64:27**      |
-| **`us-east-2`**      | **arn:aws:lambda:us-east-2:017000801446:layer:AWSLambdaPowertoolsPythonV3-python310-arm64:27**      |
-| **`us-west-1`**      | **arn:aws:lambda:us-west-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python310-arm64:27**      |
-| **`us-west-2`**      | **arn:aws:lambda:us-west-2:017000801446:layer:AWSLambdaPowertoolsPythonV3-python310-arm64:27**      |
-
-| Region               | Layer ARN                                                                                           |
-| -------------------- | --------------------------------------------------------------------------------------------------- |
-| **`af-south-1`**     | **arn:aws:lambda:af-south-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python311-arm64:27**     |
-| **`ap-east-1`**      | **arn:aws:lambda:ap-east-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python311-arm64:27**      |
-| **`ap-northeast-1`** | **arn:aws:lambda:ap-northeast-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python311-arm64:27** |
-| **`ap-northeast-2`** | **arn:aws:lambda:ap-northeast-2:017000801446:layer:AWSLambdaPowertoolsPythonV3-python311-arm64:27** |
-| **`ap-northeast-3`** | **arn:aws:lambda:ap-northeast-3:017000801446:layer:AWSLambdaPowertoolsPythonV3-python311-arm64:27** |
-| **`ap-south-1`**     | **arn:aws:lambda:ap-south-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python311-arm64:27**     |
-| **`ap-south-2`**     | **arn:aws:lambda:ap-south-2:017000801446:layer:AWSLambdaPowertoolsPythonV3-python311-arm64:27**     |
-| **`ap-southeast-1`** | **arn:aws:lambda:ap-southeast-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python311-arm64:27** |
-| **`ap-southeast-2`** | **arn:aws:lambda:ap-southeast-2:017000801446:layer:AWSLambdaPowertoolsPythonV3-python311-arm64:27** |
-| **`ap-southeast-3`** | **arn:aws:lambda:ap-southeast-3:017000801446:layer:AWSLambdaPowertoolsPythonV3-python311-arm64:27** |
-| **`ap-southeast-4`** | **arn:aws:lambda:ap-southeast-4:017000801446:layer:AWSLambdaPowertoolsPythonV3-python311-arm64:27** |
-| **`ap-southeast-5`** | **arn:aws:lambda:ap-southeast-5:017000801446:layer:AWSLambdaPowertoolsPythonV3-python311-arm64:27** |
-| **`ap-southeast-7`** | **arn:aws:lambda:ap-southeast-7:017000801446:layer:AWSLambdaPowertoolsPythonV3-python311-arm64:27** |
-| **`ca-central-1`**   | **arn:aws:lambda:ca-central-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python311-arm64:27**   |
-| **`eu-central-1`**   | **arn:aws:lambda:eu-central-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python311-arm64:27**   |
-| **`eu-central-2`**   | **arn:aws:lambda:eu-central-2:017000801446:layer:AWSLambdaPowertoolsPythonV3-python311-arm64:27**   |
-| **`eu-north-1`**     | **arn:aws:lambda:eu-north-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python311-arm64:27**     |
-| **`eu-south-1`**     | **arn:aws:lambda:eu-south-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python311-arm64:27**     |
-| **`eu-south-2`**     | **arn:aws:lambda:eu-south-2:017000801446:layer:AWSLambdaPowertoolsPythonV3-python311-arm64:27**     |
-| **`eu-west-1`**      | **arn:aws:lambda:eu-west-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python311-arm64:27**      |
-| **`eu-west-2`**      | **arn:aws:lambda:eu-west-2:017000801446:layer:AWSLambdaPowertoolsPythonV3-python311-arm64:27**      |
-| **`eu-west-3`**      | **arn:aws:lambda:eu-west-3:017000801446:layer:AWSLambdaPowertoolsPythonV3-python311-arm64:27**      |
-| **`il-central-1`**   | **arn:aws:lambda:il-central-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python311-arm64:27**   |
-| **`me-central-1`**   | **arn:aws:lambda:me-central-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python311-arm64:27**   |
-| **`me-south-1`**     | **arn:aws:lambda:me-south-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python311-arm64:27**     |
-| **`mx-central-1`**   | **arn:aws:lambda:mx-central-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python311-arm64:27**   |
-| **`sa-east-1`**      | **arn:aws:lambda:sa-east-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python311-arm64:27**      |
-| **`us-east-1`**      | **arn:aws:lambda:us-east-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python311-arm64:27**      |
-| **`us-east-2`**      | **arn:aws:lambda:us-east-2:017000801446:layer:AWSLambdaPowertoolsPythonV3-python311-arm64:27**      |
-| **`us-west-1`**      | **arn:aws:lambda:us-west-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python311-arm64:27**      |
-| **`us-west-2`**      | **arn:aws:lambda:us-west-2:017000801446:layer:AWSLambdaPowertoolsPythonV3-python311-arm64:27**      |
-
-| Region               | Layer ARN                                                                                           |
-| -------------------- | --------------------------------------------------------------------------------------------------- |
-| **`af-south-1`**     | **arn:aws:lambda:af-south-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python312-arm64:27**     |
-| **`ap-east-1`**      | **arn:aws:lambda:ap-east-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python312-arm64:27**      |
-| **`ap-northeast-1`** | **arn:aws:lambda:ap-northeast-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python312-arm64:27** |
-| **`ap-northeast-2`** | **arn:aws:lambda:ap-northeast-2:017000801446:layer:AWSLambdaPowertoolsPythonV3-python312-arm64:27** |
-| **`ap-northeast-3`** | **arn:aws:lambda:ap-northeast-3:017000801446:layer:AWSLambdaPowertoolsPythonV3-python312-arm64:27** |
-| **`ap-south-1`**     | **arn:aws:lambda:ap-south-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python312-arm64:27**     |
-| **`ap-south-2`**     | **arn:aws:lambda:ap-south-2:017000801446:layer:AWSLambdaPowertoolsPythonV3-python312-arm64:27**     |
-| **`ap-southeast-1`** | **arn:aws:lambda:ap-southeast-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python312-arm64:27** |
-| **`ap-southeast-2`** | **arn:aws:lambda:ap-southeast-2:017000801446:layer:AWSLambdaPowertoolsPythonV3-python312-arm64:27** |
-| **`ap-southeast-3`** | **arn:aws:lambda:ap-southeast-3:017000801446:layer:AWSLambdaPowertoolsPythonV3-python312-arm64:27** |
-| **`ap-southeast-4`** | **arn:aws:lambda:ap-southeast-4:017000801446:layer:AWSLambdaPowertoolsPythonV3-python312-arm64:27** |
-| **`ap-southeast-5`** | **arn:aws:lambda:ap-southeast-5:017000801446:layer:AWSLambdaPowertoolsPythonV3-python312-arm64:27** |
-| **`ap-southeast-7`** | **arn:aws:lambda:ap-southeast-7:017000801446:layer:AWSLambdaPowertoolsPythonV3-python312-arm64:27** |
-| **`ca-central-1`**   | **arn:aws:lambda:ca-central-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python312-arm64:27**   |
-| **`eu-central-1`**   | **arn:aws:lambda:eu-central-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python312-arm64:27**   |
-| **`eu-central-2`**   | **arn:aws:lambda:eu-central-2:017000801446:layer:AWSLambdaPowertoolsPythonV3-python312-arm64:27**   |
-| **`eu-north-1`**     | **arn:aws:lambda:eu-north-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python312-arm64:27**     |
-| **`eu-south-1`**     | **arn:aws:lambda:eu-south-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python312-arm64:27**     |
-| **`eu-south-2`**     | **arn:aws:lambda:eu-south-2:017000801446:layer:AWSLambdaPowertoolsPythonV3-python312-arm64:27**     |
-| **`eu-west-1`**      | **arn:aws:lambda:eu-west-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python312-arm64:27**      |
-| **`eu-west-2`**      | **arn:aws:lambda:eu-west-2:017000801446:layer:AWSLambdaPowertoolsPythonV3-python312-arm64:27**      |
-| **`eu-west-3`**      | **arn:aws:lambda:eu-west-3:017000801446:layer:AWSLambdaPowertoolsPythonV3-python312-arm64:27**      |
-| **`il-central-1`**   | **arn:aws:lambda:il-central-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python312-arm64:27**   |
-| **`me-central-1`**   | **arn:aws:lambda:me-central-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python312-arm64:27**   |
-| **`me-south-1`**     | **arn:aws:lambda:me-south-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python312-arm64:27**     |
-| **`mx-central-1`**   | **arn:aws:lambda:mx-central-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python312-arm64:27**   |
-| **`sa-east-1`**      | **arn:aws:lambda:sa-east-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python312-arm64:27**      |
-| **`us-east-1`**      | **arn:aws:lambda:us-east-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python312-arm64:27**      |
-| **`us-east-2`**      | **arn:aws:lambda:us-east-2:017000801446:layer:AWSLambdaPowertoolsPythonV3-python312-arm64:27**      |
-| **`us-west-1`**      | **arn:aws:lambda:us-west-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python312-arm64:27**      |
-| **`us-west-2`**      | **arn:aws:lambda:us-west-2:017000801446:layer:AWSLambdaPowertoolsPythonV3-python312-arm64:27**      |
-
-| Region               | Layer ARN                                                                                           |
-| -------------------- | --------------------------------------------------------------------------------------------------- |
-| **`af-south-1`**     | **arn:aws:lambda:af-south-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python313-arm64:27**     |
-| **`ap-east-1`**      | **arn:aws:lambda:ap-east-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python313-arm64:27**      |
-| **`ap-northeast-1`** | **arn:aws:lambda:ap-northeast-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python313-arm64:27** |
-| **`ap-northeast-2`** | **arn:aws:lambda:ap-northeast-2:017000801446:layer:AWSLambdaPowertoolsPythonV3-python313-arm64:27** |
-| **`ap-northeast-3`** | **arn:aws:lambda:ap-northeast-3:017000801446:layer:AWSLambdaPowertoolsPythonV3-python313-arm64:27** |
-| **`ap-south-1`**     | **arn:aws:lambda:ap-south-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python313-arm64:27**     |
-| **`ap-south-2`**     | **arn:aws:lambda:ap-south-2:017000801446:layer:AWSLambdaPowertoolsPythonV3-python313-arm64:27**     |
-| **`ap-southeast-1`** | **arn:aws:lambda:ap-southeast-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python313-arm64:27** |
-| **`ap-southeast-2`** | **arn:aws:lambda:ap-southeast-2:017000801446:layer:AWSLambdaPowertoolsPythonV3-python313-arm64:27** |
-| **`ap-southeast-3`** | **arn:aws:lambda:ap-southeast-3:017000801446:layer:AWSLambdaPowertoolsPythonV3-python313-arm64:27** |
-| **`ap-southeast-4`** | **arn:aws:lambda:ap-southeast-4:017000801446:layer:AWSLambdaPowertoolsPythonV3-python313-arm64:27** |
-| **`ap-southeast-5`** | **arn:aws:lambda:ap-southeast-5:017000801446:layer:AWSLambdaPowertoolsPythonV3-python313-arm64:27** |
-| **`ap-southeast-7`** | **arn:aws:lambda:ap-southeast-7:017000801446:layer:AWSLambdaPowertoolsPythonV3-python313-arm64:27** |
-| **`ca-central-1`**   | **arn:aws:lambda:ca-central-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python313-arm64:27**   |
-| **`eu-central-1`**   | **arn:aws:lambda:eu-central-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python313-arm64:27**   |
-| **`eu-central-2`**   | **arn:aws:lambda:eu-central-2:017000801446:layer:AWSLambdaPowertoolsPythonV3-python313-arm64:27**   |
-| **`eu-north-1`**     | **arn:aws:lambda:eu-north-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python313-arm64:27**     |
-| **`eu-south-1`**     | **arn:aws:lambda:eu-south-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python313-arm64:27**     |
-| **`eu-south-2`**     | **arn:aws:lambda:eu-south-2:017000801446:layer:AWSLambdaPowertoolsPythonV3-python313-arm64:27**     |
-| **`eu-west-1`**      | **arn:aws:lambda:eu-west-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python313-arm64:27**      |
-| **`eu-west-2`**      | **arn:aws:lambda:eu-west-2:017000801446:layer:AWSLambdaPowertoolsPythonV3-python313-arm64:27**      |
-| **`eu-west-3`**      | **arn:aws:lambda:eu-west-3:017000801446:layer:AWSLambdaPowertoolsPythonV3-python313-arm64:27**      |
-| **`il-central-1`**   | **arn:aws:lambda:il-central-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python313-arm64:27**   |
-| **`me-central-1`**   | **arn:aws:lambda:me-central-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python313-arm64:27**   |
-| **`me-south-1`**     | **arn:aws:lambda:me-south-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python313-arm64:27**     |
-| **`mx-central-1`**   | **arn:aws:lambda:mx-central-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python313-arm64:27**   |
-| **`sa-east-1`**      | **arn:aws:lambda:sa-east-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python313-arm64:27**      |
-| **`us-east-1`**      | **arn:aws:lambda:us-east-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python313-arm64:27**      |
-| **`us-east-2`**      | **arn:aws:lambda:us-east-2:017000801446:layer:AWSLambdaPowertoolsPythonV3-python313-arm64:27**      |
-| **`us-west-1`**      | **arn:aws:lambda:us-west-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python313-arm64:27**      |
-| **`us-west-2`**      | **arn:aws:lambda:us-west-2:017000801446:layer:AWSLambdaPowertoolsPythonV3-python313-arm64:27**      |
-
-| Region               | Layer ARN                                                                                           |
-| -------------------- | --------------------------------------------------------------------------------------------------- |
-| **`af-south-1`**     | **arn:aws:lambda:af-south-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python314-arm64:27**     |
-| **`ap-east-1`**      | **arn:aws:lambda:ap-east-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python314-arm64:27**      |
-| **`ap-northeast-1`** | **arn:aws:lambda:ap-northeast-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python314-arm64:27** |
-| **`ap-northeast-2`** | **arn:aws:lambda:ap-northeast-2:017000801446:layer:AWSLambdaPowertoolsPythonV3-python314-arm64:27** |
-| **`ap-northeast-3`** | **arn:aws:lambda:ap-northeast-3:017000801446:layer:AWSLambdaPowertoolsPythonV3-python314-arm64:27** |
-| **`ap-south-1`**     | **arn:aws:lambda:ap-south-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python314-arm64:27**     |
-| **`ap-south-2`**     | **arn:aws:lambda:ap-south-2:017000801446:layer:AWSLambdaPowertoolsPythonV3-python314-arm64:27**     |
-| **`ap-southeast-1`** | **arn:aws:lambda:ap-southeast-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python314-arm64:27** |
-| **`ap-southeast-2`** | **arn:aws:lambda:ap-southeast-2:017000801446:layer:AWSLambdaPowertoolsPythonV3-python314-arm64:27** |
-| **`ap-southeast-3`** | **arn:aws:lambda:ap-southeast-3:017000801446:layer:AWSLambdaPowertoolsPythonV3-python314-arm64:27** |
-| **`ap-southeast-4`** | **arn:aws:lambda:ap-southeast-4:017000801446:layer:AWSLambdaPowertoolsPythonV3-python314-arm64:27** |
-| **`ap-southeast-5`** | **arn:aws:lambda:ap-southeast-5:017000801446:layer:AWSLambdaPowertoolsPythonV3-python314-arm64:27** |
-| **`ap-southeast-7`** | **arn:aws:lambda:ap-southeast-7:017000801446:layer:AWSLambdaPowertoolsPythonV3-python314-arm64:27** |
-| **`ca-central-1`**   | **arn:aws:lambda:ca-central-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python314-arm64:27**   |
-| **`eu-central-1`**   | **arn:aws:lambda:eu-central-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python314-arm64:27**   |
-| **`eu-central-2`**   | **arn:aws:lambda:eu-central-2:017000801446:layer:AWSLambdaPowertoolsPythonV3-python314-arm64:27**   |
-| **`eu-north-1`**     | **arn:aws:lambda:eu-north-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python314-arm64:27**     |
-| **`eu-south-1`**     | **arn:aws:lambda:eu-south-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python314-arm64:27**     |
-| **`eu-south-2`**     | **arn:aws:lambda:eu-south-2:017000801446:layer:AWSLambdaPowertoolsPythonV3-python314-arm64:27**     |
-| **`eu-west-1`**      | **arn:aws:lambda:eu-west-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python314-arm64:27**      |
-| **`eu-west-2`**      | **arn:aws:lambda:eu-west-2:017000801446:layer:AWSLambdaPowertoolsPythonV3-python314-arm64:27**      |
-| **`eu-west-3`**      | **arn:aws:lambda:eu-west-3:017000801446:layer:AWSLambdaPowertoolsPythonV3-python314-arm64:27**      |
-| **`il-central-1`**   | **arn:aws:lambda:il-central-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python314-arm64:27**   |
-| **`me-central-1`**   | **arn:aws:lambda:me-central-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python314-arm64:27**   |
-| **`me-south-1`**     | **arn:aws:lambda:me-south-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python314-arm64:27**     |
-| **`mx-central-1`**   | **arn:aws:lambda:mx-central-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python314-arm64:27**   |
-| **`sa-east-1`**      | **arn:aws:lambda:sa-east-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python314-arm64:27**      |
-| **`us-east-1`**      | **arn:aws:lambda:us-east-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python314-arm64:27**      |
-| **`us-east-2`**      | **arn:aws:lambda:us-east-2:017000801446:layer:AWSLambdaPowertoolsPythonV3-python314-arm64:27**      |
-| **`us-west-1`**      | **arn:aws:lambda:us-west-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python314-arm64:27**      |
-| **`us-west-2`**      | **arn:aws:lambda:us-west-2:017000801446:layer:AWSLambdaPowertoolsPythonV3-python314-arm64:27**      |
-
-**Want to inspect the contents of the Layer?**
-
-The pre-signed URL to download this Lambda Layer will be within `Location` key in the CLI output. The CLI output will also contain the Powertools for AWS Lambda version it contains.
-
-```
-aws lambda get-layer-version-by-arn --arn arn:aws:lambda:eu-west-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python312-x86_64:27 --region eu-west-1
-
-```
-
-#### SAR
-
-Serverless Application Repository (SAR) App deploys a CloudFormation stack with a copy of our Lambda Layer in your AWS account and region.
-
-Compared with the [public Layer ARN](#lambda-layer) option, SAR allows you to choose a semantic version and deploys a Layer in your target account.
-
-| App                                                                                                                                                                                        | ARN                                                                                                                    | Python version | Architecture |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------- | -------------- | ------------ |
-| [aws-lambda-powertools-python-layer-v3-python39-x86-64](https://serverlessrepo.aws.amazon.com/applications/eu-west-1/057560766410/aws-lambda-powertools-python-layer-v3-python39-x86-64)   | [arn:aws:serverlessrepo:eu-west-1:057560766410:applications/aws-lambda-powertools-python-layer-v3-python39-x86-64](#)  | Python 3.9     | X86_64       |
-| [aws-lambda-powertools-python-layer-v3-python310-x86-64](https://serverlessrepo.aws.amazon.com/applications/eu-west-1/057560766410/aws-lambda-powertools-python-layer-v3-python310-x86-64) | [arn:aws:serverlessrepo:eu-west-1:057560766410:applications/aws-lambda-powertools-python-layer-v3-python310-x86-64](#) | Python 3.10    | X86_64       |
-| [aws-lambda-powertools-python-layer-v3-python311-x86-64](https://serverlessrepo.aws.amazon.com/applications/eu-west-1/057560766410/aws-lambda-powertools-python-layer-v3-python11-x86-64)  | [arn:aws:serverlessrepo:eu-west-1:057560766410:applications/aws-lambda-powertools-python-layer-v3-python311-x86-64](#) | Python 3.11    | X86_64       |
-| [aws-lambda-powertools-python-layer-v3-python312-x86-64](https://serverlessrepo.aws.amazon.com/applications/eu-west-1/057560766410/aws-lambda-powertools-python-layer-v3-python12-x86-64)  | [arn:aws:serverlessrepo:eu-west-1:057560766410:applications/aws-lambda-powertools-python-layer-v3-python312-x86-64](#) | Python 3.12    | X86_64       |
-| [aws-lambda-powertools-python-layer-v3-python313-x86-64](https://serverlessrepo.aws.amazon.com/applications/eu-west-1/057560766410/aws-lambda-powertools-python-layer-v3-python313-x86-64) | [arn:aws:serverlessrepo:eu-west-1:057560766410:applications/aws-lambda-powertools-python-layer-v3-python313-x86-64](#) | Python 3.13    | X86_64       |
-| [aws-lambda-powertools-python-layer-v3-python314-x86-64](https://serverlessrepo.aws.amazon.com/applications/eu-west-1/057560766410/aws-lambda-powertools-python-layer-v3-python314-x86-64) | [arn:aws:serverlessrepo:eu-west-1:057560766410:applications/aws-lambda-powertools-python-layer-v3-python314-x86-64](#) | Python 3.14    | X86_64       |
-| [aws-lambda-powertools-python-layer-v3-python39-arm64](https://serverlessrepo.aws.amazon.com/applications/eu-west-1/057560766410/aws-lambda-powertools-python-layer-v3-python39-arm64)     | [arn:aws:serverlessrepo:eu-west-1:057560766410:applications/aws-lambda-powertools-python-layer-v3-python39-arm64](#)   | Python 3.9     | ARM64        |
-| [aws-lambda-powertools-python-layer-v3-python310-arm64](https://serverlessrepo.aws.amazon.com/applications/eu-west-1/057560766410/aws-lambda-powertools-python-layer-v3-python310-arm64)   | [arn:aws:serverlessrepo:eu-west-1:057560766410:applications/aws-lambda-powertools-python-layer-v3-python310-arm64](#)  | Python 3.10    | ARM64        |
-| [aws-lambda-powertools-python-layer-v3-python311-arm64](https://serverlessrepo.aws.amazon.com/applications/eu-west-1/057560766410/aws-lambda-powertools-python-layer-v3-python11-arm64)    | [arn:aws:serverlessrepo:eu-west-1:057560766410:applications/aws-lambda-powertools-python-layer-v3-python311-arm64](#)  | Python 3.11    | ARM64        |
-| [aws-lambda-powertools-python-layer-v3-python312-arm64](https://serverlessrepo.aws.amazon.com/applications/eu-west-1/057560766410/aws-lambda-powertools-python-layer-v3-python12-arm64)    | [arn:aws:serverlessrepo:eu-west-1:057560766410:applications/aws-lambda-powertools-python-layer-v3-python312-arm64](#)  | Python 3.12    | ARM64        |
-| [aws-lambda-powertools-python-layer-v3-python313-arm64](https://serverlessrepo.aws.amazon.com/applications/eu-west-1/057560766410/aws-lambda-powertools-python-layer-v3-python313-arm64)   | [arn:aws:serverlessrepo:eu-west-1:057560766410:applications/aws-lambda-powertools-python-layer-v3-python313-arm64](#)  | Python 3.13    | ARM64        |
-| [aws-lambda-powertools-python-layer-v3-python314-arm64](https://serverlessrepo.aws.amazon.com/applications/eu-west-1/057560766410/aws-lambda-powertools-python-layer-v3-python314-arm64)   | [arn:aws:serverlessrepo:eu-west-1:057560766410:applications/aws-lambda-powertools-python-layer-v3-python314-arm64](#)  | Python 3.14    | ARM64        |
-
-Click to expand and copy SAR code snippets for popular frameworks
-
-You can create a shared Lambda Layers stack and make this along with other account level layers stack.
-
-```
-AWSTemplateFormatVersion: '2010-09-09'
-Transform: AWS::Serverless-2016-10-31
-
-Resources:
-  AwsLambdaPowertoolsPythonLayer:
-      Type: AWS::Serverless::Application
-      Properties:
-          Location:
-              ApplicationId: arn:aws:serverlessrepo:eu-west-1:057560766410:applications/aws-lambda-powertools-python-layer-v3-python313-x86-64
-              SemanticVersion: 3.0.9 # change to latest semantic version available in SAR
-
-  MyLambdaFunction:
-      Type: AWS::Serverless::Function
-      Properties:
-        Runtime: python3.13
-        Handler: app.lambda_handler
-        Layers:
-            # fetch Layer ARN from SAR App stack output
-            - !GetAtt AwsLambdaPowertoolsPythonLayer.Outputs.LayerVersionArn
-
-```
-
-```
-service: powertools-lambda
-
-provider:
-  name: aws
-  runtime: python3.13
-  region: us-east-1
-
-functions:
-    powertools:
-      handler: lambda_function.lambda_handler
-      layers:
-          - !GetAtt AwsLambdaPowertoolsPythonLayer.Outputs.LayerVersionArn
-
-resources:
-  - AwsLambdaPowertoolsPythonLayer:
-      Type: AWS::Serverless::Application
-      Properties:
-        Location:
-          ApplicationId:  arn:aws:serverlessrepo:eu-west-1:057560766410:applications/aws-lambda-powertools-python-layer-v3-python313-x86-64
-          SemanticVersion: 3.0.9
-
-```
-
-```
-from aws_cdk import Stack, aws_lambda, aws_sam
-from constructs import Construct
-
-POWERTOOLS_BASE_NAME = "AWSLambdaPowertools"
-# Find latest from github.com/aws-powertools/powertools-lambda-python/releases
-POWERTOOLS_VER = "3.0.9"
-POWERTOOLS_ARN = (
-    "arn:aws:serverlessrepo:eu-west-1:057560766410:applications/aws-lambda-powertools-python-layer-v3-python313-x86-64"
-)
-
-
-class SampleApp(Stack):
-    def __init__(self, scope: Construct, id_: str) -> None:
-        super().__init__(scope, id_)
-
-        # Launches SAR App as CloudFormation nested stack and return Lambda Layer
-        powertools_app = aws_sam.CfnApplication(
-            self,
-            f"{POWERTOOLS_BASE_NAME}Application",
-            location={"applicationId": POWERTOOLS_ARN, "semanticVersion": POWERTOOLS_VER},
-        )
-
-        powertools_layer_arn = powertools_app.get_att("Outputs.LayerVersionArn").to_string()
-        powertools_layer_version = aws_lambda.LayerVersion.from_layer_version_arn(
-            self,
-            f"{POWERTOOLS_BASE_NAME}",
-            powertools_layer_arn,
-        )
-
-        aws_lambda.Function(
-            self,
-            "sample-app-lambda",
-            runtime=aws_lambda.Runtime.PYTHON_3_13,
-            function_name="sample-lambda",
-            code=aws_lambda.Code.from_asset("lambda"),
-            handler="hello.handler",
-            layers=[powertools_layer_version],
-        )
-
-```
-
-> Credits to [Dani Comnea](https://github.com/DanyC97) for providing the Terraform equivalent.
-
-```
-terraform {
-  required_version = "~> 0.13"
-  required_providers {
-    aws = "~> 3.50.0"
-  }
-}
-
-provider "aws" {
-  region = "us-east-1"
-}
-
-resource "aws_serverlessapplicationrepository_cloudformation_stack" "deploy_sar_stack" {
-  name = "aws-lambda-powertools-python-layer"
-
-  application_id   = data.aws_serverlessapplicationrepository_application.sar_app.application_id
-  semantic_version = data.aws_serverlessapplicationrepository_application.sar_app.semantic_version
-  capabilities = [
-    "CAPABILITY_IAM",
-    "CAPABILITY_NAMED_IAM"
-  ]
-}
-
-data "aws_serverlessapplicationrepository_application" "sar_app" {
-  application_id   = "arn:aws:serverlessrepo:eu-west-1:057560766410:applications/aws-lambda-powertools-python-layer-v3-python313-x86-64"
-  semantic_version = var.aws_powertools_version
-}
-
-variable "aws_powertools_version" {
-  type        = string
-  default     = "3.0.9"
-  description = "The Powertools for AWS Lambda (Python) release version"
-}
-
-output "deployed_powertools_sar_version" {
-  value = data.aws_serverlessapplicationrepository_application.sar_app.semantic_version
-}
-
-# Fetch Powertools for AWS Lambda (Python) Layer ARN from deployed SAR App
-output "aws_lambda_powertools_layer_arn" {
-  value = aws_serverlessapplicationrepository_cloudformation_stack.deploy_sar_stack.outputs.LayerVersionArn
-}
-
-```
-
-Credits to [mwarkentin](https://github.com/mwarkentin) for providing the scoped down IAM permissions below.
-
-```
-  AWSTemplateFormatVersion: "2010-09-09"
-  Resources:
-      PowertoolsLayerIamRole:
-        Type: "AWS::IAM::Role"
-        Properties:
-            AssumeRolePolicyDocument:
-                Version: "2012-10-17"
-                Statement:
-                    - Effect: "Allow"
-                      Principal:
-                        Service:
-                          - "cloudformation.amazonaws.com"
-                        Action:
-                          - "sts:AssumeRole"
-                Path: "/"
-
-      PowertoolsLayerIamPolicy:
-        Type: "AWS::IAM::Policy"
-        Properties:
-            PolicyName: PowertoolsLambdaLayerPolicy
-            PolicyDocument:
-                Version: "2012-10-17"
-                Statement:
-                    - Sid: CloudFormationTransform
-                      Effect: Allow
-                      Action: cloudformation:CreateChangeSet
-                      Resource:
-                        - arn:aws:cloudformation:us-east-1:aws:transform/Serverless-2016-10-31
-                    - Sid: GetCfnTemplate
-                      Effect: Allow
-                      Action:
-                        - serverlessrepo:CreateCloudFormationTemplate
-                        - serverlessrepo:GetCloudFormationTemplate
-                      Resource:
-                        # this is arn of the Powertools for AWS Lambda (Python) SAR app
-                        - arn:aws:serverlessrepo:eu-west-1:057560766410:applications/aws-lambda-powertools-python-layer-v3-python313-x86-64
-                    - Sid: S3AccessLayer
-                      Effect: Allow
-                      Action:
-                        - s3:GetObject
-                      Resource:
-                        # AWS publishes to an external S3 bucket locked down to your account ID
-                        # The below example is us publishing Powertools for AWS Lambda (Python)
-                        # Bucket: awsserverlessrepo-changesets-plntc6bfnfj
-                        # Key: *****/arn:aws:serverlessrepo:eu-west-1:057560766410:applications-aws-lambda-powertools-python-layer-v3-python313-x86-64-3.0.9/aeeccf50-****-****-****-*********
-                        - arn:aws:s3:::awsserverlessrepo-changesets-*/*
-                    - Sid: GetLayerVersion
-                      Effect: Allow
-                      Action:
-                        - lambda:PublishLayerVersion
-                        - lambda:GetLayerVersion
-                      Resource:
-                        - !Sub arn:aws:lambda:${AWS::Region}:${AWS::AccountId}:layer:aws-lambda-powertools-python-layer-v3*
-            Roles:
-            - Ref: "PowertoolsLayerIamRole"
-
-```
-
-## Quick getting started
-
-```
-sam init --app-template hello-world-powertools-python --name sam-app --package-type Zip --runtime python3.11 --no-tracing
-
-```
+  [Java](https://docs.aws.amazon.com/powertools/java/), [TypeScript](https://docs.aws.amazon.com/powertools/typescript/latest/), [.NET](https://docs.aws.amazon.com/powertools/dotnet/)
 
 ## Features
 
-Core utilities such as Tracing, Logging, Metrics, and Event Handler will be available across all Powertools for AWS Lambda languages. Additional utilities are subjective to each language ecosystem and customer demand.
+| Utility                                                                                                           | Description                                                                                                 |
+| ----------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- |
+| [Tracer](https://docs.aws.amazon.com/powertools/python/latest/core/tracer/index.md)                               | Decorators and utilities to trace Lambda function handlers, and both synchronous and asynchronous functions |
+| [Logger](https://docs.aws.amazon.com/powertools/python/latest/core/logger/index.md)                               | Structured logging made easier, and target to enrich structured logging with key Lambda context details     |
+| [Metrics](https://docs.aws.amazon.com/powertools/python/latest/core/metrics/index.md)                             | Custom Metrics created asynchronously via CloudWatch Embedded Metric Format (EMF)                           |
+| [Event Handler](https://docs.aws.amazon.com/powertools/python/latest/core/event_handler/api_gateway/index.md)     | Event handler for API Gateway, ALB, Lambda Function URL, VPC Lattice, AppSync, and Bedrock Agents           |
+| [Parameters](https://docs.aws.amazon.com/powertools/python/latest/utilities/parameters/index.md)                  | Retrieve and cache parameter values from Parameter Store, Secrets Manager, AppConfig, or DynamoDB           |
+| [Parser](https://docs.aws.amazon.com/powertools/python/latest/utilities/parser/index.md)                          | Data parsing and deep validation using Pydantic                                                             |
+| [Batch Processing](https://docs.aws.amazon.com/powertools/python/latest/utilities/batch/index.md)                 | Handle partial failures for SQS, Kinesis Data Streams, and DynamoDB Streams                                 |
+| [Idempotency](https://docs.aws.amazon.com/powertools/python/latest/utilities/idempotency/index.md)                | Make your Lambda functions idempotent and prevent duplicate execution                                       |
+| [Feature Flags](https://docs.aws.amazon.com/powertools/python/latest/utilities/feature_flags/index.md)            | A simple rule engine to evaluate when features should be enabled                                            |
+| [Validation](https://docs.aws.amazon.com/powertools/python/latest/utilities/validation/index.md)                  | JSON Schema validator for inbound events and responses                                                      |
+| [Data Masking](https://docs.aws.amazon.com/powertools/python/latest/utilities/data_masking/index.md)              | Protect confidential data with easy removal or encryption                                                   |
+| [Streaming](https://docs.aws.amazon.com/powertools/python/latest/utilities/streaming/index.md)                    | Stream datasets larger than available memory                                                                |
+| [Middleware Factory](https://docs.aws.amazon.com/powertools/python/latest/utilities/middleware_factory/index.md)  | Create your own middleware to run logic before and after each Lambda invocation                             |
+| [Typing](https://docs.aws.amazon.com/powertools/python/latest/utilities/typing/index.md)                          | Static typing classes to speedup development in your IDE                                                    |
+| [Event Source Data Classes](https://docs.aws.amazon.com/powertools/python/latest/utilities/data_classes/index.md) | Data classes describing the schema of common Lambda event triggers                                          |
+| [JMESPath Functions](https://docs.aws.amazon.com/powertools/python/latest/utilities/jmespath_functions/index.md)  | Built-in JMESPath functions to deserialize common encoded JSON payloads                                     |
+| [Kafka](https://docs.aws.amazon.com/powertools/python/latest/utilities/kafka/index.md)                            | Deserialize and validate Kafka events with support for Avro, Protocol Buffers, and JSON Schema              |
 
-| Utility                                                                                                                                             | Description                                                                                                                                               |
-| --------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [**Tracing**](core/tracer/)                                                                                                                         | Decorators and utilities to trace Lambda function handlers, and both synchronous and asynchronous functions                                               |
-| [**Logger**](core/logger/)                                                                                                                          | Structured logging made easier, and decorator to enrich structured logging with key Lambda context details                                                |
-| [**Metrics**](core/metrics/)                                                                                                                        | Custom Metrics created asynchronously via CloudWatch Embedded Metric Format (EMF)                                                                         |
-| [**Event handler: AppSync**](core/event_handler/appsync/)                                                                                           | AppSync event handler for Lambda Direct Resolver and Amplify GraphQL Transformer function                                                                 |
-| [**Event handler: API Gateway, ALB and Lambda Function URL**](https://docs.aws.amazon.com/powertools/python/latest/core/event_handler/api_gateway/) | Amazon API Gateway REST/HTTP API and ALB event handler for Lambda functions invoked using Proxy integration, and Lambda Function URL                      |
-| [**Middleware factory**](utilities/middleware_factory/)                                                                                             | Decorator factory to create your own middleware to run logic before, and after each Lambda invocation                                                     |
-| [**Parameters**](utilities/parameters/)                                                                                                             | Retrieve parameter values from AWS Systems Manager Parameter Store, AWS Secrets Manager, or Amazon DynamoDB, and cache them for a specific amount of time |
-| [**Batch processing**](utilities/batch/)                                                                                                            | Handle partial failures for AWS SQS batch processing                                                                                                      |
-| [**Typing**](utilities/typing/)                                                                                                                     | Static typing classes to speedup development in your IDE                                                                                                  |
-| [**Validation**](utilities/validation/)                                                                                                             | JSON Schema validator for inbound events and responses                                                                                                    |
-| [**Event source data classes**](utilities/data_classes/)                                                                                            | Data classes describing the schema of common Lambda event triggers                                                                                        |
-| [**Parser**](utilities/parser/)                                                                                                                     | Data parsing and deep validation using Pydantic                                                                                                           |
-| [**Idempotency**](utilities/idempotency/)                                                                                                           | Idempotent Lambda handler                                                                                                                                 |
-| [**Data Masking**](utilities/data_masking/)                                                                                                         | Protect confidential data with easy removal or encryption                                                                                                 |
-| [**Feature Flags**](utilities/feature_flags/)                                                                                                       | A simple rule engine to evaluate when one or multiple features should be enabled depending on the input                                                   |
-| [**Streaming**](utilities/streaming/)                                                                                                               | Streams datasets larger than the available memory as streaming data.                                                                                      |
+## Examples
+
+You can find examples in the [examples directory](https://github.com/aws-powertools/powertools-lambda-python/tree/develop/examples) and a quick start using SAM CLI:
+
+```
+sam init --app-template hello-world-powertools-python --name sam-app --package-type Zip --runtime python3.13 --no-tracing
+
+```
+
+For a more complete example, check the [Powertools for AWS workshop](https://catalog.workshops.aws/serverless-powertools).
 
 ## Environment variables
 
 Info
 
-Explicit parameters take precedence over environment variables
+Explicit parameters take precedence over environment variables.
 
-| Environment variable                      | Description                                                                            | Utility                                                                                  | Default               |
-| ----------------------------------------- | -------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | --------------------- |
-| **POWERTOOLS_SERVICE_NAME**               | Sets service name used for tracing namespace, metrics dimension and structured logging | All                                                                                      | `"service_undefined"` |
-| **POWERTOOLS_METRICS_NAMESPACE**          | Sets namespace used for metrics                                                        | [Metrics](core/metrics/)                                                                 | `None`                |
-| **POWERTOOLS_METRICS_FUNCTION_NAME**      | Function name used as dimension for the **ColdStart** metric metrics                   | [Metrics](core/metrics/)                                                                 | `None`                |
-| **POWERTOOLS_METRICS_DISABLED**           | **Disables** all metrics emitted by Powertools metrics                                 | [Metrics](core/metrics/)                                                                 | `None`                |
-| **POWERTOOLS_TRACE_DISABLED**             | Explicitly disables tracing                                                            | [Tracing](core/tracer/)                                                                  | `false`               |
-| **POWERTOOLS_TRACER_CAPTURE_RESPONSE**    | Captures Lambda or method return as metadata.                                          | [Tracing](core/tracer/)                                                                  | `true`                |
-| **POWERTOOLS_TRACER_CAPTURE_ERROR**       | Captures Lambda or method exception as metadata.                                       | [Tracing](core/tracer/)                                                                  | `true`                |
-| **POWERTOOLS_TRACE_MIDDLEWARES**          | Creates sub-segment for each custom middleware                                         | [Middleware factory](utilities/middleware_factory/)                                      | `false`               |
-| **POWERTOOLS_LOGGER_LOG_EVENT**           | Logs incoming event                                                                    | [Logging](core/logger/)                                                                  | `false`               |
-| **POWERTOOLS_LOGGER_SAMPLE_RATE**         | Debug log sampling                                                                     | [Logging](core/logger/)                                                                  | `0`                   |
-| **POWERTOOLS_LOG_DEDUPLICATION_DISABLED** | Disables log deduplication filter protection to use Pytest Live Log feature            | [Logging](core/logger/)                                                                  | `false`               |
-| **POWERTOOLS_PARAMETERS_MAX_AGE**         | Adjust how long values are kept in cache (in seconds)                                  | [Parameters](utilities/parameters/#adjusting-cache-ttl)                                  | `5`                   |
-| **POWERTOOLS_PARAMETERS_SSM_DECRYPT**     | Sets whether to decrypt or not values retrieved from AWS SSM Parameters Store          | [Parameters](utilities/parameters/#ssmprovider)                                          | `false`               |
-| **POWERTOOLS_DEV**                        | Increases verbosity across utilities                                                   | Multiple; see [POWERTOOLS_DEV effect below](#optimizing-for-non-production-environments) | `false`               |
-| **POWERTOOLS_LOG_LEVEL**                  | Sets logging level                                                                     | [Logging](core/logger/)                                                                  | `INFO`                |
+| Environment variable                 | Description                                    | Utility                                                                                          | Default             |
+| ------------------------------------ | ---------------------------------------------- | ------------------------------------------------------------------------------------------------ | ------------------- |
+| `POWERTOOLS_SERVICE_NAME`            | Service name for tracing, metrics, and logging | All                                                                                              | `service_undefined` |
+| `POWERTOOLS_LOG_LEVEL`               | Sets logging level                             | [Logger](https://docs.aws.amazon.com/powertools/python/latest/core/logger/index.md)              | `INFO`              |
+| `POWERTOOLS_LOGGER_LOG_EVENT`        | Logs incoming event                            | [Logger](https://docs.aws.amazon.com/powertools/python/latest/core/logger/index.md)              | `false`             |
+| `POWERTOOLS_LOGGER_SAMPLE_RATE`      | Debug log sampling                             | [Logger](https://docs.aws.amazon.com/powertools/python/latest/core/logger/index.md)              | `0`                 |
+| `POWERTOOLS_METRICS_NAMESPACE`       | Namespace for metrics                          | [Metrics](https://docs.aws.amazon.com/powertools/python/latest/core/metrics/index.md)            | `None`              |
+| `POWERTOOLS_METRICS_DISABLED`        | Disables metrics emission                      | [Metrics](https://docs.aws.amazon.com/powertools/python/latest/core/metrics/index.md)            | `false`             |
+| `POWERTOOLS_TRACE_DISABLED`          | Disables tracing                               | [Tracer](https://docs.aws.amazon.com/powertools/python/latest/core/tracer/index.md)              | `false`             |
+| `POWERTOOLS_TRACER_CAPTURE_RESPONSE` | Captures return as metadata                    | [Tracer](https://docs.aws.amazon.com/powertools/python/latest/core/tracer/index.md)              | `true`              |
+| `POWERTOOLS_TRACER_CAPTURE_ERROR`    | Captures exception as metadata                 | [Tracer](https://docs.aws.amazon.com/powertools/python/latest/core/tracer/index.md)              | `true`              |
+| `POWERTOOLS_PARAMETERS_MAX_AGE`      | Cache TTL in seconds                           | [Parameters](https://docs.aws.amazon.com/powertools/python/latest/utilities/parameters/index.md) | `5`                 |
+| `POWERTOOLS_PARAMETERS_SSM_DECRYPT`  | Decrypt SSM parameters                         | [Parameters](https://docs.aws.amazon.com/powertools/python/latest/utilities/parameters/index.md) | `false`             |
+| `POWERTOOLS_DEV`                     | Increases verbosity for development            | Multiple                                                                                         | `false`             |
+| `POWERTOOLS_DEBUG`                   | Enables debug logging for Powertools           | All                                                                                              | `false`             |
 
-### Optimizing for non-production environments
+### Development mode
 
-We will emit a warning when this feature is used to help you detect misuse in production.
+When `POWERTOOLS_DEV` is set to `true`, it enables development-friendly settings:
 
-Whether you're prototyping locally or against a non-production environment, you can use `POWERTOOLS_DEV` to increase verbosity across multiple utilities.
-
-When `POWERTOOLS_DEV` is set to a truthy value (`1`, `true`), it'll have the following effects:
-
-| Utility           | Effect                                                                                                                                                                                                                                                        |
-| ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Logger**        | Increase JSON indentation to 4. This will ease local debugging when running functions locally under emulators or direct calls while not affecting unit tests. However, Amazon CloudWatch Logs view will degrade as each new line is treated as a new message. |
-| **Event Handler** | Enable full traceback errors in the response, indent request/responses, and CORS in dev mode (`*`).                                                                                                                                                           |
-| **Tracer**        | Future-proof safety to disables tracing operations in non-Lambda environments. This already happens automatically in the Tracer utility.                                                                                                                      |
-| **Metrics**       | Disables Powertools metrics emission by default. However, this can be overridden by explicitly setting POWERTOOLS_METRICS_DISABLED=false, which takes precedence over the dev mode setting.                                                                   |
-
-## Debug mode
-
-As a best practice for libraries, Powertools module logging statements are suppressed.
-
-When necessary, you can use `POWERTOOLS_DEBUG` environment variable to enable debugging. This will provide additional information on every internal operation.
+| Utility       | Effect                                             |
+| ------------- | -------------------------------------------------- |
+| Logger        | Increases JSON indentation to 4 for readability    |
+| Event Handler | Enables full traceback errors and CORS in dev mode |
+| Tracer        | Disables tracing in non-Lambda environments        |
+| Metrics       | Disables metrics emission (can be overridden)      |
 
 ## Support Powertools for AWS Lambda (Python)
-
-There are many ways you can help us gain future investments to improve everyone's experience:
 
 - **Become a public reference**
 
@@ -1469,7 +128,7 @@ There are many ways you can help us gain future investments to improve everyone'
 
   ______________________________________________________________________
 
-  Blog posts, video, and sample projects about Powertools for AWS Lambda.
+  Blog posts, videos, and sample projects about Powertools.
 
   [GitHub Issue template](https://github.com/aws-powertools/powertools-lambda-python/issues/new?assignees=&labels=community-content&template=share_your_work.yml&title=%5BI+Made+This%5D%3A+%3CTITLE%3E)
 
@@ -1481,24 +140,25 @@ There are many ways you can help us gain future investments to improve everyone'
 
   [Discord invite](https://discord.gg/B8zZKbbyET)
 
-### Using Lambda Layers
-
-Layers help us understand who uses Powertools for AWS Lambda (Python) in a non-intrusive way.
-
-When [using Layers](#lambda-layer), you can add Powertools for AWS Lambda (Python) as a dev dependency to not impact the development process. For Layers, we pre-package all dependencies, compile and optimize for storage and both x86_64 and ARM architecture.
-
 ## Tenets
 
 These are our core principles to guide our decision making.
 
-- **AWS Lambda only**. We optimise for AWS Lambda function environments and supported runtimes only. Utilities might work with web frameworks and non-Lambda environments, though they are not officially supported.
+- **AWS Lambda only**. We optimize for AWS Lambda function environments and supported runtimes only. Utilities might work with web frameworks and non-Lambda environments, though they are not officially supported.
 - **Eases the adoption of best practices**. The main priority of the utilities is to facilitate best practices adoption, as defined in the AWS Well-Architected Serverless Lens; all other functionality is optional.
 - **Keep it lean**. Additional dependencies are carefully considered for security and ease of maintenance, and prevent negatively impacting startup time.
 - **We strive for backwards compatibility**. New features and changes should keep backwards compatibility. If a breaking change cannot be avoided, the deprecation and migration process should be clearly defined.
-- **We work backwards from the community**. We aim to strike a balance of what would work best for 80% of customers. Emerging practices are considered and discussed via Requests for Comment (RFCs)
-- **Progressive**. Utilities are designed to be incrementally adoptable for customers at any stage of their Serverless journey. They follow language idioms and their communityâs common practices.
+- **We work backwards from the community**. We aim to strike a balance of what would work best for 80% of customers. Emerging practices are considered and discussed via Requests for Comment (RFCs).
+- **Progressive**. Utilities are designed to be incrementally adoptable for customers at any stage of their Serverless journey. They follow language idioms and their community's common practices.
 
 # Unreleased
+
+## [v3.24.0](https://github.com/aws-powertools/powertools-lambda-python/compare/v3.23.0...v3.24.0) - 2026-01-05
+
+## Maintenance
+
+- version bump
+- **ci:** remove daily changelog rebuild schedule ([#7897](https://github.com/aws-powertools/powertools-lambda-python/issues/7897))
 
 ## [v3.23.0](https://github.com/aws-powertools/powertools-lambda-python/compare/v3.22.1...v3.23.0) - 2025-11-13
 
@@ -1506,9 +166,38 @@ These are our core principles to guide our decision making.
 
 - **layer:** bump cdk version ([#7677](https://github.com/aws-powertools/powertools-lambda-python/issues/7677))
 
+## Documentation
+
+- **batch:** fix error handling code highlight line number ([#7638](https://github.com/aws-powertools/powertools-lambda-python/issues/7638))
+- **openapi:** Update docstring's openapi default version to match current default version ([#7669](https://github.com/aws-powertools/powertools-lambda-python/issues/7669))
+
 ## Maintenance
 
 - version bump
+- **ci:** new pre-release 3.22.2a0 ([#7642](https://github.com/aws-powertools/powertools-lambda-python/issues/7642))
+- **ci:** new pre-release 3.22.2a1 ([#7646](https://github.com/aws-powertools/powertools-lambda-python/issues/7646))
+- **ci:** adding support for Python 3.14 - WIP ([#7431](https://github.com/aws-powertools/powertools-lambda-python/issues/7431))
+- **ci:** new pre-release 3.22.2a2 ([#7652](https://github.com/aws-powertools/powertools-lambda-python/issues/7652))
+- **ci:** new pre-release 3.22.2a3 ([#7659](https://github.com/aws-powertools/powertools-lambda-python/issues/7659))
+- **ci:** new pre-release 3.22.2a4 ([#7674](https://github.com/aws-powertools/powertools-lambda-python/issues/7674))
+- **deps:** bump actions/dependency-review-action from 4.8.1 to 4.8.2 ([#7662](https://github.com/aws-powertools/powertools-lambda-python/issues/7662))
+- **deps:** bump pydantic from 2.12.3 to 2.12.4 ([#7641](https://github.com/aws-powertools/powertools-lambda-python/issues/7641))
+- **deps:** bump docker/setup-qemu-action from 3.6.0 to 3.7.0 ([#7639](https://github.com/aws-powertools/powertools-lambda-python/issues/7639))
+- **deps:** bump squidfunk/mkdocs-material from `58dee36` to `980e11f` in /docs ([#7661](https://github.com/aws-powertools/powertools-lambda-python/issues/7661))
+- **deps:** bump mkdocstrings-python from 1.18.2 to 1.19.0 in /docs ([#7655](https://github.com/aws-powertools/powertools-lambda-python/issues/7655))
+- **deps:** bump mkdocs-material from 9.6.23 to 9.7.0 in /docs ([#7663](https://github.com/aws-powertools/powertools-lambda-python/issues/7663))
+- **deps-dev:** bump aws-cdk-lib from 2.222.0 to 2.223.0 ([#7656](https://github.com/aws-powertools/powertools-lambda-python/issues/7656))
+- **deps-dev:** bump types-python-dateutil from 2.9.0.20251008 to 2.9.0.20251108 ([#7657](https://github.com/aws-powertools/powertools-lambda-python/issues/7657))
+- **deps-dev:** bump aws-cdk from 2.1031.1 to 2.1031.2 ([#7645](https://github.com/aws-powertools/powertools-lambda-python/issues/7645))
+- **deps-dev:** bump boto3-stubs from 1.40.70 to 1.40.71 ([#7672](https://github.com/aws-powertools/powertools-lambda-python/issues/7672))
+- **deps-dev:** bump sentry-sdk from 2.43.0 to 2.44.0 ([#7665](https://github.com/aws-powertools/powertools-lambda-python/issues/7665))
+- **deps-dev:** bump aws-cdk-aws-lambda-python-alpha from 2.222.0a0 to 2.223.0a0 ([#7664](https://github.com/aws-powertools/powertools-lambda-python/issues/7664))
+- **deps-dev:** bump boto3-stubs from 1.40.64 to 1.40.69 ([#7654](https://github.com/aws-powertools/powertools-lambda-python/issues/7654))
+- **deps-dev:** bump types-protobuf from 6.32.1.20250918 to 6.32.1.20251105 ([#7640](https://github.com/aws-powertools/powertools-lambda-python/issues/7640))
+- **deps-dev:** bump pytest-benchmark from 5.2.1 to 5.2.3 ([#7658](https://github.com/aws-powertools/powertools-lambda-python/issues/7658))
+- **deps-dev:** bump nox from 2025.10.16 to 2025.11.12 ([#7671](https://github.com/aws-powertools/powertools-lambda-python/issues/7671))
+- **deps-dev:** bump ruff from 0.14.3 to 0.14.4 ([#7649](https://github.com/aws-powertools/powertools-lambda-python/issues/7649))
+- **docs:** fix broken images ([#7644](https://github.com/aws-powertools/powertools-lambda-python/issues/7644))
 
 ## [v3.22.1](https://github.com/aws-powertools/powertools-lambda-python/compare/v3.22.0...v3.22.1) - 2025-11-05
 
@@ -8661,8 +7350,8 @@ We've made minimal breaking changes to make your transition to v3 as smooth as p
 
 Before you start, we suggest making a copy of your current working project or create a new branch with git.
 
-1. **Upgrade** Python to at least v3.9.
-1. **Ensure** you have the latest version via [Lambda Layer or PyPi](../#install).
+1. **Upgrade** Python to at least v3.10.
+1. **Ensure** you have the latest version via [Lambda Layer or PyPi](https://docs.aws.amazon.com/powertools/python/latest/#install).
 1. **Review** the following sections to confirm if you need to make changes to your code.
 
 ## Drop support for Pydantic v1
@@ -8740,7 +7429,7 @@ We have stopped exporting Pydantic objects directly from `aws_lambda_powertools.
 
 No code changes required
 
-To give you better a better experience, we're now building Powertools for AWS Lambda (Python)'s Lambda layers for specific Python versions (`3.9-3.14`) and architectures (`x86_64` & `arm64`).
+To give you better a better experience, we're now building Powertools for AWS Lambda (Python)'s Lambda layers for specific Python versions (`3.10-3.14`) and architectures (`x86_64` & `arm64`).
 
 This also allows us to include architecture-specific versions of both Pydantic v2 and AWS Encryption SDK and give you a more streamlined setup.
 
@@ -8748,13 +7437,11 @@ To take advantage of the new layers, you need to update your functions or deploy
 
 | Architecture | Python version | Layer ARN                                                                                         |
 | ------------ | -------------- | ------------------------------------------------------------------------------------------------- |
-| x86_64       | 3.9            | arn:aws:lambda:{region}:017000801446:layer:AWSLambdaPowertoolsPythonV3-python39-x86_64:{version}  |
 | x86_64       | 3.10           | arn:aws:lambda:{region}:017000801446:layer:AWSLambdaPowertoolsPythonV3-python310-x86_64:{version} |
 | x86_64       | 3.11           | arn:aws:lambda:{region}:017000801446:layer:AWSLambdaPowertoolsPythonV3-python311-x86_64:{version} |
 | x86_64       | 3.12           | arn:aws:lambda:{region}:017000801446:layer:AWSLambdaPowertoolsPythonV3-python312-x86_64:{version} |
 | x86_64       | 3.13           | arn:aws:lambda:{region}:017000801446:layer:AWSLambdaPowertoolsPythonV3-python313-x86_64:{version} |
 | x86_64       | 3.14           | arn:aws:lambda:{region}:017000801446:layer:AWSLambdaPowertoolsPythonV3-python314-x86_64:{version} |
-| arm64        | 3.9            | arn:aws:lambda:{region}:017000801446:layer:AWSLambdaPowertoolsPythonV3-python39-arm64:{version}   |
 | arm64        | 3.10           | arn:aws:lambda:{region}:017000801446:layer:AWSLambdaPowertoolsPythonV3-python310-arm64:{version}  |
 | arm64        | 3.11           | arn:aws:lambda:{region}:017000801446:layer:AWSLambdaPowertoolsPythonV3-python311-arm64:{version}  |
 | arm64        | 3.12           | arn:aws:lambda:{region}:017000801446:layer:AWSLambdaPowertoolsPythonV3-python312-arm64:{version}  |
@@ -8926,7 +7613,7 @@ def handler(event: dict, context: LambdaContext) -> dict:
 
 We refactored our codebase to align with Python guidelines and eliminated the use of `aws_lambda_powertools.shared.types` imports.
 
-Instead, we now utilize types from the standard `typing` library, which are compatible with Python versions 3.9 and above, or from `typing_extensions` (included as a required dependency) for additional type support.
+Instead, we now utilize types from the standard `typing` library, which are compatible with Python versions 3.10 and above, or from `typing_extensions` (included as a required dependency) for additional type support.
 
 ```
 -# BEFORE - v2
@@ -9024,7 +7711,7 @@ graph LR
 Our end-to-end mechanism follows four major steps:
 
 - **Feature Request**. Ideas start with a [feature request](https://github.com/aws-powertools/powertools-lambda-python/issues/new?assignees=&labels=feature-request%2Ctriage&template=feature_request.yml&title=Feature+request%3A+TITLE) to outline their use case at a high level. For complex use cases, maintainers might ask for/write a RFC.
-  - Maintainers review requests based on [project tenets](../#tenets), customers reaction (ð), and use cases.
+  - Maintainers review requests based on [project tenets](https://docs.aws.amazon.com/powertools/python/latest/#tenets), customers reaction (ð), and use cases.
 - **Request-for-comments (RFC)**. Design proposals use our [RFC issue template](https://github.com/aws-powertools/powertools-lambda-python/issues/new?assignees=&labels=RFC%2Ctriage&template=rfc.yml&title=RFC%3A+TITLE) to describe its implementation, challenges, developer experience, dependencies, and alternative solutions.
   - This helps refine the initial idea with community feedback before a decision is made.
 - **Decision**. After carefully reviewing and discussing them, maintainers make a final decision on whether to start implementation, defer or reject it, and update everyone with the next steps.
@@ -9072,7 +7759,7 @@ Tracer relies on AWS X-Ray SDK over [OpenTelemetry Distro (ADOT)](https://aws-ot
 
 ### Install
 
-This is not necessary if you're installing Powertools for AWS Lambda (Python) via [Lambda Layer/SAR](../../#lambda-layer)
+This is not necessary if you're installing Powertools for AWS Lambda (Python) via [Lambda Layer/SAR](https://docs.aws.amazon.com/powertools/python/latest/#lambda-layer)
 
 Add `aws-lambda-powertools[tracer]` as a dependency in your preferred tool: *e.g.*, *requirements.txt*, *pyproject.toml*. This will ensure you have the required dependencies before using Tracer.
 
@@ -9096,7 +7783,7 @@ Globals:
     Layers:
       # Find the latest Layer version in the official documentation
       # https://docs.aws.amazon.com/powertools/python/latest/#lambda-layer
-      - !Sub arn:aws:lambda:${AWS::Region}:017000801446:layer:AWSLambdaPowertoolsPythonV3-python312-x86_64:27
+      - !Sub arn:aws:lambda:${AWS::Region}:017000801446:layer:AWSLambdaPowertoolsPythonV3-python312-x86_64:28
 
 Resources:
   CaptureLambdaHandlerExample:
@@ -9694,7 +8381,7 @@ Globals:
     Layers:
       # Find the latest Layer version in the official documentation
       # https://docs.aws.amazon.com/powertools/python/latest/#lambda-layer
-      - !Sub arn:aws:lambda:${AWS::Region}:017000801446:layer:AWSLambdaPowertoolsPythonV3-python312-x86_64:27
+      - !Sub arn:aws:lambda:${AWS::Region}:017000801446:layer:AWSLambdaPowertoolsPythonV3-python312-x86_64:28
 
 Resources:
   LoggerLambdaHandlerExample:
@@ -9808,7 +8495,7 @@ def lambda_handler(event: dict, context: LambdaContext) -> str:
 
 ### Setting a Correlation ID
 
-You can set a Correlation ID using `correlation_id_path` param by passing a [JMESPath expression](https://jmespath.org/tutorial.html), including [our custom JMESPath Functions](../../utilities/jmespath_functions/#powertools_json-function).
+You can set a Correlation ID using `correlation_id_path` param by passing a [JMESPath expression](https://jmespath.org/tutorial.html), including [our custom JMESPath Functions](https://docs.aws.amazon.com/powertools/python/latest/utilities/jmespath_functions/#powertools_json-function).
 
 Tip
 
@@ -9858,7 +8545,7 @@ def lambda_handler(event: dict, context: LambdaContext) -> str:
 
 #### set_correlation_id method
 
-You can also use `set_correlation_id` method to inject it anywhere else in your code. Example below uses [Event Source Data Classes utility](../../utilities/data_classes/) to easily access events properties.
+You can also use `set_correlation_id` method to inject it anywhere else in your code. Example below uses [Event Source Data Classes utility](https://docs.aws.amazon.com/powertools/python/latest/utilities/data_classes/index.md) to easily access events properties.
 
 ```
 from aws_lambda_powertools import Logger
@@ -10473,7 +9160,7 @@ Logger will replace any exception hook previously registered via [sys.excepthook
 
 What are uncaught exceptions?
 
-It's any raised exception that wasn't handled by the [`except` statement](https://docs.python.org/3.9/tutorial/errors.html#handling-exceptions), leading a Python program to a non-successful exit.
+It's any raised exception that wasn't handled by the [`except` statement](https://docs.python.org/3.14/tutorial/errors.html#handling-exceptions), leading a Python program to a non-successful exit.
 
 They are typically raised intentionally to signal a problem (`raise ValueError`), or a propagated exception from elsewhere in your code that you didn't handle it willingly or not (`KeyError`, `jsonDecoderError`, etc.).
 
@@ -10504,7 +9191,7 @@ def lambda_handler(event: dict, context: LambdaContext) -> str:
     "message": "500 Server Error: INTERNAL SERVER ERROR for url: http://httpbin.org/status/500",
     "timestamp": "2022-11-16 13:51:29,198+0000",
     "service": "payment",
-    "exception": "Traceback (most recent call last):\n  File \"<input>\", line 52, in <module>\n    handler({}, {})\n  File \"<input>\", line 17, in handler\n    ret.raise_for_status()\n  File \"<input>/lib/python3.9/site-packages/requests/models.py\", line 1021, in raise_for_status\n    raise HTTPError(http_error_msg, response=self)\nrequests.exceptions.HTTPError: 500 Server Error: INTERNAL SERVER ERROR for url: http://httpbin.org/status/500",
+    "exception": "Traceback (most recent call last):\n  File \"<input>\", line 52, in <module>\n    handler({}, {})\n  File \"<input>\", line 17, in handler\n    ret.raise_for_status()\n  File \"<input>/lib/python3.13/site-packages/requests/models.py\", line 1021, in raise_for_status\n    raise HTTPError(http_error_msg, response=self)\nrequests.exceptions.HTTPError: 500 Server Error: INTERNAL SERVER ERROR for url: http://httpbin.org/status/500",
     "exception_name": "HTTPError"
 }
 
@@ -11158,7 +9845,7 @@ def lambda_handler(event: dict, context: LambdaContext) -> str:
 
 ### Reusing Logger across your code
 
-Similar to [Tracer](../tracer/#reusing-tracer-across-your-code), a new instance that uses the same `service` name will reuse a previous Logger instance.
+Similar to [Tracer](https://docs.aws.amazon.com/powertools/python/latest/core/tracer/#reusing-tracer-across-your-code), a new instance that uses the same `service` name will reuse a previous Logger instance.
 
 Notice in the CloudWatch Logs output how `payment_id` appears as expected when logging in `collect.py`.
 
@@ -12085,7 +10772,7 @@ Globals:
     Layers:
       # Find the latest Layer version in the official documentation
       # https://docs.aws.amazon.com/powertools/python/latest/#lambda-layer
-      - !Sub arn:aws:lambda:${AWS::Region}:017000801446:layer:AWSLambdaPowertoolsPythonV3-python312-x86_64:27
+      - !Sub arn:aws:lambda:${AWS::Region}:017000801446:layer:AWSLambdaPowertoolsPythonV3-python312-x86_64:28
 
 Resources:
   CaptureLambdaHandlerExample:
@@ -12805,9 +11492,9 @@ Missing your preferred provider? Please create a [feature request](https://githu
 
 Current providers:
 
-| Provider            | Notes                                                    |
-| ------------------- | -------------------------------------------------------- |
-| [Datadog](datadog/) | Uses Datadog SDK and Datadog Lambda Extension by default |
+| Provider                                                                                      | Notes                                                    |
+| --------------------------------------------------------------------------------------------- | -------------------------------------------------------- |
+| [Datadog](https://docs.aws.amazon.com/powertools/python/latest/core/metrics/datadog/index.md) | Uses Datadog SDK and Datadog Lambda Extension by default |
 
 ## Testing your code
 
@@ -13010,7 +11697,7 @@ Globals:
     Layers:
       # Find the latest Layer version in the official documentation
       # https://docs.aws.amazon.com/powertools/python/latest/#lambda-layer
-      - !Sub arn:aws:lambda:${AWS::Region}:017000801446:layer:AWSLambdaPowertoolsPythonV3-python312-x86_64:27
+      - !Sub arn:aws:lambda:${AWS::Region}:017000801446:layer:AWSLambdaPowertoolsPythonV3-python312-x86_64:28
 
 Resources:
   CaptureLambdaHandlerExample:
@@ -13730,9 +12417,9 @@ Missing your preferred provider? Please create a [feature request](https://githu
 
 Current providers:
 
-| Provider                | Notes                                                    |
-| ----------------------- | -------------------------------------------------------- |
-| [Datadog](./datadog.md) | Uses Datadog SDK and Datadog Lambda Extension by default |
+| Provider                                                                                | Notes                                                    |
+| --------------------------------------------------------------------------------------- | -------------------------------------------------------- |
+| [Datadog](https://docs.aws.amazon.com/powertools/python/latest/core/metrics/datadog.md) | Uses Datadog SDK and Datadog Lambda Extension by default |
 
 ## Testing your code
 
@@ -13948,7 +12635,7 @@ Globals:
     Layers:
       # Find the latest Layer version in the official documentation
       # https://docs.aws.amazon.com/powertools/python/latest/#lambda-layer
-      - !Sub arn:aws:lambda:${AWS::Region}:017000801446:layer:AWSLambdaPowertoolsPythonV3-python312-x86_64:27
+      - !Sub arn:aws:lambda:${AWS::Region}:017000801446:layer:AWSLambdaPowertoolsPythonV3-python312-x86_64:28
       # Find the latest Layer version in the Datadog official documentation
 
       # Datadog SDK
@@ -14319,7 +13006,7 @@ Event handler for Amazon API Gateway REST and HTTP APIs, Application Load Balanc
 
 - Lightweight routing to reduce boilerplate for API Gateway REST/HTTP API, ALB and Lambda Function URLs
 - Support for CORS, binary and Gzip compression, Decimals JSON encoding and bring your own JSON serializer
-- Built-in integration with [Event Source Data Classes utilities](../../../utilities/data_classes/) for self-documented event schema
+- Built-in integration with [Event Source Data Classes utilities](https://docs.aws.amazon.com/powertools/python/latest/utilities/data_classes/index.md) for self-documented event schema
 - Works with micro function (one or a few routes) and monolithic functions (all routes)
 - Support for Middleware
 - Support for OpenAPI schema generation
@@ -14333,7 +13020,7 @@ All examples shared in this documentation are available within the [project repo
 
 ### Install
 
-This is not necessary if you're installing Powertools for AWS Lambda (Python) via [Lambda Layer/SAR](../../../#lambda-layer).
+This is not necessary if you're installing Powertools for AWS Lambda (Python) via [Lambda Layer/SAR](https://docs.aws.amazon.com/powertools/python/latest/#lambda-layer).
 
 **When using the data validation feature**, you need to add `pydantic` as a dependency in your preferred tool *e.g., requirements.txt, pyproject.toml*. At this time, we only support Pydantic V2.
 
@@ -15585,7 +14272,7 @@ def lambda_handler(event: dict, context: LambdaContext) -> dict:
 
 ##### Validating payload subset
 
-With the addition of the [`Annotated` type starting in Python 3.9](https://docs.python.org/3/library/typing.html#typing.Annotated), types can contain additional metadata, allowing us to represent anything we want.
+With the addition of the [`Annotated` type starting in Python 3.10](https://docs.python.org/3/library/typing.html#typing.Annotated), types can contain additional metadata, allowing us to represent anything we want.
 
 We use the `Annotated` and OpenAPI `Body` type to instruct Event Handler that our payload is located in a particular JSON key.
 
@@ -15982,7 +14669,7 @@ def lambda_handler(event: dict, context: LambdaContext) -> dict:
 
 ```
 
-1. If you're not using Python 3.9 or higher, you can install and use [`typing_extensions`](https://pypi.org/project/typing-extensions/) to the same effect
+1. If you're not using Python 10 or higher, you can install and use [`typing_extensions`](https://pypi.org/project/typing-extensions/) to the same effect
 
 1. `Query` is a special OpenAPI type that can add constraints to a query string as well as document them
 
@@ -16230,7 +14917,7 @@ def lambda_handler(event: dict, context: LambdaContext) -> dict:
 
 ```
 
-1. If you're not using Python 3.9 or higher, you can install and use [`typing_extensions`](https://pypi.org/project/typing-extensions/) to the same effect
+1. If you're not using Python 3.10 or higher, you can install and use [`typing_extensions`](https://pypi.org/project/typing-extensions/) to the same effect
 
 1. `Header` is a special OpenAPI type that can add constraints and documentation to a header
 
@@ -16459,7 +15146,7 @@ def lambda_handler(event: dict, context: LambdaContext) -> dict:
 
 ### Accessing request details
 
-Event Handler integrates with [Event Source Data Classes utilities](../../../utilities/data_classes/), and it exposes their respective resolver request details and convenient methods under `app.current_event`.
+Event Handler integrates with [Event Source Data Classes utilities](https://docs.aws.amazon.com/powertools/python/latest/utilities/data_classes/index.md), and it exposes their respective resolver request details and convenient methods under `app.current_event`.
 
 That is why you see `app.resolve(event, context)` in every example. This allows Event Handler to resolve requests, and expose data like `app.lambda_context` and `app.current_event`.
 
@@ -17506,9 +16193,9 @@ def protected_route() -> list[str]:
 
 These are native middlewares that may become native features depending on customer demand.
 
-| Middleware                 | Purpose                                                                                                                 |
-| -------------------------- | ----------------------------------------------------------------------------------------------------------------------- |
-| SchemaValidationMiddleware | Validates API request body and response against JSON Schema, using [Validation utility](../../../utilities/validation/) |
+| Middleware                 | Purpose                                                                                                                                                                     |
+| -------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| SchemaValidationMiddleware | Validates API request body and response against JSON Schema, using [Validation utility](https://docs.aws.amazon.com/powertools/python/latest/utilities/validation/index.md) |
 
 #### Being a good citizen
 
@@ -17850,7 +16537,7 @@ def lambda_handler(event: dict, context: LambdaContext) -> dict:
 
 ### Debug mode
 
-You can enable debug mode via `debug` param, or via `POWERTOOLS_DEV` [environment variable](../../../#environment-variables).
+You can enable debug mode via `debug` param, or via `POWERTOOLS_DEV` [environment variable](https://docs.aws.amazon.com/powertools/python/latest/#environment-variables).
 
 This will enable full tracebacks errors in the response, print request and responses, and set CORS in development mode.
 
@@ -17908,7 +16595,7 @@ We don't have support for files, form data, and header parameters at the moment.
 
 #### Customizing OpenAPI parameters
 
-Whenever you use OpenAPI parameters to validate [query strings](./#validating-query-strings) or [path parameters](./#validating-path-parameters), you can enhance validation and OpenAPI documentation by using any of these parameters:
+Whenever you use OpenAPI parameters to validate [query strings](https://docs.aws.amazon.com/powertools/python/latest/core/event_handler/api_gateway/#validating-query-strings) or [path parameters](https://docs.aws.amazon.com/powertools/python/latest/core/event_handler/api_gateway/#validating-path-parameters), you can enhance validation and OpenAPI documentation by using any of these parameters:
 
 | Field name            | Type                 | Description                                                                                                                                 |
 | --------------------- | -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -19377,7 +18064,7 @@ stateDiagram-v2
 
 - Choose between strictly match a GraphQL field name or all of them to a function
 - Automatically parse API arguments to function arguments
-- Integrates with [Event Source Data classes utilities](../../../utilities/data_classes/) to access resolver and identity information
+- Integrates with [Event Source Data classes utilities](https://docs.aws.amazon.com/powertools/python/latest/utilities/data_classes/index.md) to access resolver and identity information
 - Support async Python 3.8+ functions and generators
 
 ## Terminology
@@ -19960,7 +18647,7 @@ def lambda_handler(event: dict, context: LambdaContext) -> dict:
 
 ### Custom data models
 
-You can subclass [AppSyncResolverEvent](../../../utilities/data_classes/#appsync-resolver) to bring your own set of methods to handle incoming events, by using `data_model` param in the `resolve` method.
+You can subclass [AppSyncResolverEvent](https://docs.aws.amazon.com/powertools/python/latest/utilities/data_classes/#appsync-resolver) to bring your own set of methods to handle incoming events, by using `data_model` param in the `resolve` method.
 
 ```
 from typing import List, TypedDict
@@ -20067,7 +18754,7 @@ type Merchant {
 
 Tip
 
-Read the **[considerations section for trade-offs between monolithic and micro functions](../api_gateway/#considerations)**, as it's also applicable here.
+Read the **[considerations section for trade-offs between monolithic and micro functions](https://docs.aws.amazon.com/powertools/python/latest/core/event_handler/api_gateway/#considerations)**, as it's also applicable here.
 
 As you grow the number of related GraphQL operations a given Lambda function should handle, it is natural to split them into separate files to ease maintenance - That's when the `Router` feature comes handy.
 
@@ -22263,7 +20950,7 @@ flowchart LR
 - Support for both OpenAPI-based and Function-based actions
 - Automatic generation of [OpenAPI schemas](https://www.openapis.org/) from your business logic code
 - Built-in data validation for requests and responses
-- Similar experience to authoring [REST and HTTP APIs](../api_gateway/)
+- Similar experience to authoring [REST and HTTP APIs](https://docs.aws.amazon.com/powertools/python/latest/core/event_handler/api_gateway/index.md)
 
 ## Terminology
 
@@ -22299,15 +20986,15 @@ An action group defines actions that the agent can help the user perform. You ca
 
 ### Install
 
-This is unnecessary if you're installing Powertools for AWS Lambda (Python) via [Lambda Layer/SAR](../../../#lambda-layer).
+This is unnecessary if you're installing Powertools for AWS Lambda (Python) via [Lambda Layer/SAR](https://docs.aws.amazon.com/powertools/python/latest/#lambda-layer).
 
 If you define the action group setting up an **OpenAPI schema**, you need to add `pydantic` as a dependency in your preferred tool *e.g., requirements.txt, pyproject.toml*. At this time, we only support Pydantic V2.
 
 ### Your first Agent
 
-To create an agent, use the `BedrockAgentResolver` or the `BedrockAgentFunctionResolver` to annotate your actions. This is similar to the way [all the other Event Handler](../api_gateway/) resolvers work.
+To create an agent, use the `BedrockAgentResolver` or the `BedrockAgentFunctionResolver` to annotate your actions. This is similar to the way [all the other Event Handler](https://docs.aws.amazon.com/powertools/python/latest/core/event_handler/api_gateway/index.md) resolvers work.
 
-The resolvers used by Amazon Bedrock Agents are compatible with all Powertools for AWS Lambda [features](../../../#features). For reference, we use [Logger](../../logger/) and [Tracer](../../tracer/) in this example.
+The resolvers used by Amazon Bedrock Agents are compatible with all Powertools for AWS Lambda [features](https://docs.aws.amazon.com/powertools/python/latest/#features). For reference, we use [Logger](https://docs.aws.amazon.com/powertools/python/latest/core/logger/index.md) and [Tracer](https://docs.aws.amazon.com/powertools/python/latest/core/tracer/index.md) in this example.
 
 **OpenAPI-based actions**
 
@@ -22553,7 +21240,7 @@ Why is this useful?
 
 You can for instance identify new conversations (`session_id`) or store and analyze entire conversations (`input_text`).
 
-In this example, we [append correlation data](../../logger/#appending-additional-keys) to all generated logs. This can be used to aggregate logs by `session_id` and observe the entire conversation between a user and the Agent.
+In this example, we [append correlation data](https://docs.aws.amazon.com/powertools/python/latest/core/logger/#appending-additional-keys) to all generated logs. This can be used to aggregate logs by `session_id` and observe the entire conversation between a user and the Agent.
 
 ```
 from time import time
@@ -23053,7 +21740,7 @@ Adding constraints to your function parameters can help you to enforce data vali
 
 #### Customizing OpenAPI parameters
 
-Whenever you use OpenAPI parameters to validate [query strings](../api_gateway/#validating-query-strings) or [path parameters](../api_gateway/#validating-path-parameters), you can enhance validation and OpenAPI documentation by using any of these parameters:
+Whenever you use OpenAPI parameters to validate [query strings](https://docs.aws.amazon.com/powertools/python/latest/core/event_handler/api_gateway/#validating-query-strings) or [path parameters](https://docs.aws.amazon.com/powertools/python/latest/core/event_handler/api_gateway/#validating-path-parameters), you can enhance validation and OpenAPI documentation by using any of these parameters:
 
 | Field name            | Type                 | Description                                                                                                                                 |
 | --------------------- | -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -23217,6 +21904,10 @@ Note
 The default response only includes the essential fields to keep the payload size minimal, as AWS Lambda has a maximum response size of 25 KB.
 
 You can use `BedrockResponse` class to add additional fields as needed, such as [session attributes, prompt session attributes, and knowledge base configurations](https://docs.aws.amazon.com/bedrock/latest/userguide/agents-lambda.html#agents-lambda-response).
+
+Content Type Behavior
+
+Amazon Bedrock Agents only support TEXT content type in the responseBody. All response bodies are automatically serialized as JSON strings regardless of the `content_type` parameter you provide. The `content_type` parameter exists for API consistency but does not affect the actual format sent to Bedrock Agents. Learn more: [AWS Bedrock Lambda Integration](https://docs.aws.amazon.com/bedrock/latest/userguide/agents-lambda.html)
 
 ```
 from http import HTTPStatus
@@ -25176,7 +23867,7 @@ stateDiagram-v2
 
 - Reports batch item failures to reduce number of retries for a record upon errors
 - Simple interface to process each batch record
-- Integrates with [Event Source Data Classes](../data_classes/) and [Parser (Pydantic)](../parser/) for self-documenting record schema
+- Integrates with [Event Source Data Classes](https://docs.aws.amazon.com/powertools/python/latest/utilities/data_classes/index.md) and [Parser (Pydantic)](https://docs.aws.amazon.com/powertools/python/latest/utilities/parser/index.md) for self-documenting record schema
 - Build your own batch processor by extending primitives
 
 ## Background
@@ -25200,7 +23891,7 @@ This behavior changes when you enable Report Batch Item Failures feature in your
 
 Warning: This utility lowers the chance of processing records more than once; it does not guarantee it
 
-We recommend implementing processing logic in an [idempotent manner](../idempotency/) wherever possible.
+We recommend implementing processing logic in an [idempotent manner](https://docs.aws.amazon.com/powertools/python/latest/utilities/idempotency/index.md) wherever possible.
 
 You can find more details on how Lambda works with either [SQS](https://docs.aws.amazon.com/lambda/latest/dg/with-sqs.html), [Kinesis](https://docs.aws.amazon.com/lambda/latest/dg/with-kinesis.html), or [DynamoDB](https://docs.aws.amazon.com/lambda/latest/dg/with-ddb.html) in the AWS Documentation.
 
@@ -25398,7 +24089,7 @@ Resources:
 Processing batches from SQS works in three stages:
 
 1. Instantiate **`BatchProcessor`** and choose **`EventType.SQS`** for the event type
-1. Define your function to handle each batch record, and use [`SQSRecord`](../data_classes/#sqs) type annotation for autocompletion
+1. Define your function to handle each batch record, and use [`SQSRecord`](https://docs.aws.amazon.com/powertools/python/latest/utilities/data_classes/#sqs) type annotation for autocompletion
 1. Use **`process_partial_response`** to kick off processing
 
 This code example uses Tracer and Logger for completion.
@@ -25627,7 +24318,7 @@ def lambda_handler(event, context: LambdaContext):
 Processing batches from Kinesis works in three stages:
 
 1. Instantiate **`BatchProcessor`** and choose **`EventType.KinesisDataStreams`** for the event type
-1. Define your function to handle each batch record, and use [`KinesisStreamRecord`](../data_classes/#kinesis-streams) type annotation for autocompletion
+1. Define your function to handle each batch record, and use [`KinesisStreamRecord`](https://docs.aws.amazon.com/powertools/python/latest/utilities/data_classes/#kinesis-streams) type annotation for autocompletion
 1. Use **`process_partial_response`** to kick off processing
 
 This code example uses Tracer and Logger for completion.
@@ -25755,7 +24446,7 @@ The second record failed to be processed, therefore the processor added its sequ
 Processing batches from DynamoDB Streams works in three stages:
 
 1. Instantiate **`BatchProcessor`** and choose **`EventType.DynamoDBStreams`** for the event type
-1. Define your function to handle each batch record, and use [`DynamoDBRecord`](../data_classes/#dynamodb-streams) type annotation for autocompletion
+1. Define your function to handle each batch record, and use [`DynamoDBRecord`](https://docs.aws.amazon.com/powertools/python/latest/utilities/data_classes/#dynamodb-streams) type annotation for autocompletion
 1. Use **`process_partial_response`** to kick off processing
 
 This code example uses Tracer and Logger for completion.
@@ -26151,7 +24842,7 @@ def lambda_handler(event, context: LambdaContext):
 
 Using tracer?
 
-`AsyncBatchProcessor` uses `asyncio.gather`. This might cause [side effects and reach trace limits at high concurrency](../../core/tracer/#concurrent-asynchronous-functions).
+`AsyncBatchProcessor` uses `asyncio.gather`. This might cause [side effects and reach trace limits at high concurrency](https://docs.aws.amazon.com/powertools/python/latest/core/tracer/#concurrent-asynchronous-functions).
 
 ## Advanced
 
@@ -26880,7 +25571,7 @@ Resources:
 
 When using Tracer to capture responses for each batch record processing, you might exceed 64K of tracing data depending on what you return from your `record_handler` function, or how big is your batch size.
 
-If that's the case, you can configure [Tracer to disable response auto-capturing](../../core/tracer/#disabling-response-auto-capture).
+If that's the case, you can configure [Tracer to disable response auto-capturing](https://docs.aws.amazon.com/powertools/python/latest/core/tracer/#disabling-response-auto-capture).
 
 ```
 import json
@@ -27981,9 +26672,9 @@ def lambda_handler(event: ConsumerRecords, context: LambdaContext):
 
 ### Integrating with Idempotency
 
-When processing Kafka messages in Lambda, failed batches can result in message reprocessing. The [idempotency utility](../idempotency/) prevents duplicate processing by tracking which messages have already been handled, ensuring each message is processed exactly once.
+When processing Kafka messages in Lambda, failed batches can result in message reprocessing. The [idempotency utility](https://docs.aws.amazon.com/powertools/python/latest/utilities/idempotency/index.md) prevents duplicate processing by tracking which messages have already been handled, ensuring each message is processed exactly once.
 
-The [idempotency utility](../idempotency/) automatically stores the result of each successful operation, returning the cached result if the same message is processed again, which prevents potentially harmful duplicate operations like double-charging customers or double-counting metrics.
+The [idempotency utility](https://docs.aws.amazon.com/powertools/python/latest/utilities/idempotency/index.md) automatically stores the result of each successful operation, returning the cached result if the same message is processed again, which prevents potentially harmful duplicate operations like double-charging customers or double-counting metrics.
 
 ```
 from aws_lambda_powertools import Logger
@@ -28445,7 +27136,7 @@ Both `validator` decorator and `validate` standalone function expects your JSON 
 
 ### Install
 
-This is not necessary if you're installing Powertools for AWS Lambda (Python) via [Lambda Layer/SAR](../../#lambda-layer)
+This is not necessary if you're installing Powertools for AWS Lambda (Python) via [Lambda Layer/SAR](https://docs.aws.amazon.com/powertools/python/latest/#lambda-layer)
 
 Add `aws-lambda-powertools[validation]` as a dependency in your preferred tool: *e.g.*, *requirements.txt*, *pyproject.toml*. This will ensure you have the required dependencies before using Validation.
 
@@ -29005,7 +27696,7 @@ INPUT = {
 
 You might have events or responses that contain non-encoded JSON, where you need to decode before validating them.
 
-You can use our built-in [JMESPath functions](../jmespath_functions/) within your expressions to do exactly that to [deserialize JSON Strings](../jmespath_functions/#powertools_json-function), [decode base64](../jmespath_functions/#powertools_base64-function), and [decompress gzip data](../jmespath_functions/#powertools_base64_gzip-function).
+You can use our built-in [JMESPath functions](https://docs.aws.amazon.com/powertools/python/latest/utilities/jmespath_functions/index.md) within your expressions to do exactly that to [deserialize JSON Strings](https://docs.aws.amazon.com/powertools/python/latest/utilities/jmespath_functions/#powertools_json-function), [decode base64](https://docs.aws.amazon.com/powertools/python/latest/utilities/jmespath_functions/#powertools_base64-function), and [decompress gzip data](https://docs.aws.amazon.com/powertools/python/latest/utilities/jmespath_functions/#powertools_base64_gzip-function).
 
 Info
 
@@ -30428,7 +29119,7 @@ def lambda_handler(event: KinesisStreamEvent, context):
 
 ```
 
-Alternatively, you can use `extract_cloudwatch_logs_from_record` to seamless integrate with the [Batch utility](../batch/) for more robust log processing.
+Alternatively, you can use `extract_cloudwatch_logs_from_record` to seamless integrate with the [Batch utility](https://docs.aws.amazon.com/powertools/python/latest/utilities/batch/index.md) for more robust log processing.
 
 ```
 from aws_lambda_powertools import Logger
@@ -32631,7 +31322,7 @@ pip install aws-lambda-powertools[parser]
 
 ```
 
-This is not necessary if you're installing Powertools for AWS Lambda (Python) via [Lambda Layer/SAR](../../#lambda-layer)
+This is not necessary if you're installing Powertools for AWS Lambda (Python) via [Lambda Layer/SAR](https://docs.aws.amazon.com/powertools/python/latest/#lambda-layer)
 
 You can also add as a dependency in your preferred tool: `e.g., requirements.txt, pyproject.toml`, etc.
 
@@ -32779,63 +31470,64 @@ def lambda_handler(event: dict, context: LambdaContext) -> list:
 
 The example above uses `SqsModel`. Other built-in models can be found below.
 
-| Model name                                       | Description                                                                                   |
-| ------------------------------------------------ | --------------------------------------------------------------------------------------------- |
-| **AlbModel**                                     | Lambda Event Source payload for Amazon Application Load Balancer                              |
-| **APIGatewayProxyEventModel**                    | Lambda Event Source payload for Amazon API Gateway                                            |
-| **ApiGatewayAuthorizerToken**                    | Lambda Event Source payload for Amazon API Gateway Lambda Authorizer with Token               |
-| **ApiGatewayAuthorizerRequest**                  | Lambda Event Source payload for Amazon API Gateway Lambda Authorizer with Request             |
-| **APIGatewayProxyEventV2Model**                  | Lambda Event Source payload for Amazon API Gateway v2 payload                                 |
-| **ApiGatewayAuthorizerRequestV2**                | Lambda Event Source payload for Amazon API Gateway v2 Lambda Authorizer                       |
-| **APIGatewayWebSocketMessageEventModel**         | Lambda Event Source payload for Amazon API Gateway WebSocket API message body                 |
-| **APIGatewayWebSocketConnectEventModel**         | Lambda Event Source payload for Amazon API Gateway WebSocket API $connect message             |
-| **APIGatewayWebSocketDisconnectEventModel**      | Lambda Event Source payload for Amazon API Gateway WebSocket API $disconnect message          |
-| **AppSyncResolverEventModel**                    | Lambda Event Source payload for AWS AppSync Resolver                                          |
-| **AppSyncEventsModel**                           | Lambda Event Source payload for AWS AppSync Events                                            |
-| **BedrockAgentEventModel**                       | Lambda Event Source payload for Bedrock Agents - OpenAPI-based                                |
-| **BedrockAgentFunctionEventModel**               | Lambda Event Source payload for Bedrock Agents - Function-based                               |
-| **CloudFormationCustomResourceCreateModel**      | Lambda Event Source payload for AWS CloudFormation `CREATE` operation                         |
-| **CloudFormationCustomResourceUpdateModel**      | Lambda Event Source payload for AWS CloudFormation `UPDATE` operation                         |
-| **CloudFormationCustomResourceDeleteModel**      | Lambda Event Source payload for AWS CloudFormation `DELETE` operation                         |
-| **CloudwatchLogsModel**                          | Lambda Event Source payload for Amazon CloudWatch Logs                                        |
-| **CognitoPreSignupTriggerModel**                 | Lambda User Pool Pre-Sign-Up trigger event                                                    |
-| **CognitoPostConfirmationTriggerModel**          | Lambda User Pool Post Confirmation trigger event                                              |
-| **CognitoPreAuthenticationTriggerModel**         | Lambda User Pool Pre Authentication trigger event                                             |
-| **CognitoPostAuthenticationTriggerModel**        | Lambda User Pool Post Authentication trigger event                                            |
-| **CognitoPreTokenGenerationTriggerModelV1**      | Lambda User Pool Pre Token Generation V1 trigger event                                        |
-| **CognitoPreTokenGenerationTriggerModelV2AndV3** | Lambda User Pool Pre Token Generation V2 and V3 trigger event                                 |
-| **CognitoMigrateUserTriggerModel**               | Lambda User Pool Migrate User trigger event                                                   |
-| **CognitoCustomMessageTriggerModel**             | Lambda User Pool Custom Message trigger event                                                 |
-| **CognitoCustomEmailSenderTriggerModel**         | Lambda User Pool Custom Email Sender trigger event                                            |
-| **CognitoCustomSMSSenderTriggerModel**           | Lambda User Pool Custom SMS Sender trigger event                                              |
-| **CognitoDefineAuthChallengeTriggerModel**       | Lambda User Pool Define Auth Challenge trigger event                                          |
-| **CognitoCreateAuthChallengeTriggerModel**       | Lambda User Pool Create Auth Challenge trigger event                                          |
-| **CognitoVerifyAuthChallengeTriggerModel**       | Lambda User Pool Verify Auth Challenge trigger event                                          |
-| **DynamoDBStreamModel**                          | Lambda Event Source payload for Amazon DynamoDB Streams                                       |
-| **EventBridgeModel**                             | Lambda Event Source payload for Amazon EventBridge                                            |
-| **IoTCoreThingEvent**                            | Lambda Event Source payload for IoT Core Thing created, updated, or deleted.                  |
-| **IoTCoreThingTypeEvent**                        | Lambda Event Source payload for IoT Core Thing Type events.                                   |
-| **IoTCoreThingTypeAssociationEvent**             | Lambda Event Source payload for IoT Core Thing Type associated or disassociated with a Thing. |
-| **IoTCoreThingGroupEvent**                       | Lambda Event Source payload for IoT Core Thing Group created, updated, or deleted.            |
-| **IoTCoreAddOrRemoveFromThingGroupEvent**        | Lambda Event Source payload for IoT Core Thing added to or removed from a Thing Group.        |
-| **IoTCoreAddOrDeleteFromThingGroupEvent**        | Lambda Event Source payload for IoT Core Thing Group added to or deleted from a Thing Group.  |
-| **KafkaMskEventModel**                           | Lambda Event Source payload for AWS MSK payload                                               |
-| **KafkaSelfManagedEventModel**                   | Lambda Event Source payload for self managed Kafka payload                                    |
-| **KinesisDataStreamModel**                       | Lambda Event Source payload for Amazon Kinesis Data Streams                                   |
-| **KinesisFirehoseModel**                         | Lambda Event Source payload for Amazon Kinesis Firehose                                       |
-| **KinesisFirehoseSqsModel**                      | Lambda Event Source payload for SQS messages wrapped in Kinesis Firehose records              |
-| **LambdaFunctionUrlModel**                       | Lambda Event Source payload for Lambda Function URL payload                                   |
-| **S3BatchOperationModel**                        | Lambda Event Source payload for Amazon S3 Batch Operation                                     |
-| **S3EventNotificationEventBridgeModel**          | Lambda Event Source payload for Amazon S3 Event Notification to EventBridge.                  |
-| **S3Model**                                      | Lambda Event Source payload for Amazon S3                                                     |
-| **S3ObjectLambdaEvent**                          | Lambda Event Source payload for Amazon S3 Object Lambda                                       |
-| **S3SqsEventNotificationModel**                  | Lambda Event Source payload for S3 event notifications wrapped in SQS event (S3->SQS)         |
-| **SesModel**                                     | Lambda Event Source payload for Amazon Simple Email Service                                   |
-| **SnsModel**                                     | Lambda Event Source payload for Amazon Simple Notification Service                            |
-| **SqsModel**                                     | Lambda Event Source payload for Amazon SQS                                                    |
-| **TransferFamilyAuthorizer**                     | Lambda Event Source payload for AWS Transfer Family Lambda authorizer                         |
-| **VpcLatticeModel**                              | Lambda Event Source payload for Amazon VPC Lattice                                            |
-| **VpcLatticeV2Model**                            | Lambda Event Source payload for Amazon VPC Lattice v2 payload                                 |
+| Model name                                        | Description                                                                                   |
+| ------------------------------------------------- | --------------------------------------------------------------------------------------------- |
+| **AlbModel**                                      | Lambda Event Source payload for Amazon Application Load Balancer                              |
+| **APIGatewayProxyEventModel**                     | Lambda Event Source payload for Amazon API Gateway                                            |
+| **ApiGatewayAuthorizerToken**                     | Lambda Event Source payload for Amazon API Gateway Lambda Authorizer with Token               |
+| **ApiGatewayAuthorizerRequest**                   | Lambda Event Source payload for Amazon API Gateway Lambda Authorizer with Request             |
+| **APIGatewayProxyEventV2Model**                   | Lambda Event Source payload for Amazon API Gateway v2 payload                                 |
+| **ApiGatewayAuthorizerRequestV2**                 | Lambda Event Source payload for Amazon API Gateway v2 Lambda Authorizer                       |
+| **APIGatewayWebSocketMessageEventModel**          | Lambda Event Source payload for Amazon API Gateway WebSocket API message body                 |
+| **APIGatewayWebSocketConnectEventModel**          | Lambda Event Source payload for Amazon API Gateway WebSocket API $connect message             |
+| **APIGatewayWebSocketDisconnectEventModel**       | Lambda Event Source payload for Amazon API Gateway WebSocket API $disconnect message          |
+| **AppSyncResolverEventModel**                     | Lambda Event Source payload for AWS AppSync Resolver                                          |
+| **AppSyncEventsModel**                            | Lambda Event Source payload for AWS AppSync Events                                            |
+| **BedrockAgentEventModel**                        | Lambda Event Source payload for Bedrock Agents - OpenAPI-based                                |
+| **BedrockAgentFunctionEventModel**                | Lambda Event Source payload for Bedrock Agents - Function-based                               |
+| **CloudFormationCustomResourceCreateModel**       | Lambda Event Source payload for AWS CloudFormation `CREATE` operation                         |
+| **CloudFormationCustomResourceUpdateModel**       | Lambda Event Source payload for AWS CloudFormation `UPDATE` operation                         |
+| **CloudFormationCustomResourceDeleteModel**       | Lambda Event Source payload for AWS CloudFormation `DELETE` operation                         |
+| **CloudwatchLogsModel**                           | Lambda Event Source payload for Amazon CloudWatch Logs                                        |
+| **CognitoPreSignupTriggerModel**                  | Lambda User Pool Pre-Sign-Up trigger event                                                    |
+| **CognitoPostConfirmationTriggerModel**           | Lambda User Pool Post Confirmation trigger event                                              |
+| **CognitoPreAuthenticationTriggerModel**          | Lambda User Pool Pre Authentication trigger event                                             |
+| **CognitoPostAuthenticationTriggerModel**         | Lambda User Pool Post Authentication trigger event                                            |
+| **CognitoPreTokenGenerationTriggerModelV1**       | Lambda User Pool Pre Token Generation V1 trigger event                                        |
+| **CognitoPreTokenGenerationTriggerModelV2AndV3**  | Lambda User Pool Pre Token Generation V2 and V3 trigger event                                 |
+| **CognitoMigrateUserTriggerModel**                | Lambda User Pool Migrate User trigger event                                                   |
+| **CognitoCustomMessageTriggerModel**              | Lambda User Pool Custom Message trigger event                                                 |
+| **CognitoCustomEmailSenderTriggerModel**          | Lambda User Pool Custom Email Sender trigger event                                            |
+| **CognitoCustomSMSSenderTriggerModel**            | Lambda User Pool Custom SMS Sender trigger event                                              |
+| **CognitoDefineAuthChallengeTriggerModel**        | Lambda User Pool Define Auth Challenge trigger event                                          |
+| **CognitoCreateAuthChallengeTriggerModel**        | Lambda User Pool Create Auth Challenge trigger event                                          |
+| **CognitoVerifyAuthChallengeTriggerModel**        | Lambda User Pool Verify Auth Challenge trigger event                                          |
+| **DynamoDBStreamModel**                           | Lambda Event Source payload for Amazon DynamoDB Streams                                       |
+| **DynamoDBStreamLambdaOnFailureDestinationModel** | Lambda on-failure destination payload for Amazon DynamoDB Streams                             |
+| **EventBridgeModel**                              | Lambda Event Source payload for Amazon EventBridge                                            |
+| **IoTCoreThingEvent**                             | Lambda Event Source payload for IoT Core Thing created, updated, or deleted.                  |
+| **IoTCoreThingTypeEvent**                         | Lambda Event Source payload for IoT Core Thing Type events.                                   |
+| **IoTCoreThingTypeAssociationEvent**              | Lambda Event Source payload for IoT Core Thing Type associated or disassociated with a Thing. |
+| **IoTCoreThingGroupEvent**                        | Lambda Event Source payload for IoT Core Thing Group created, updated, or deleted.            |
+| **IoTCoreAddOrRemoveFromThingGroupEvent**         | Lambda Event Source payload for IoT Core Thing added to or removed from a Thing Group.        |
+| **IoTCoreAddOrDeleteFromThingGroupEvent**         | Lambda Event Source payload for IoT Core Thing Group added to or deleted from a Thing Group.  |
+| **KafkaMskEventModel**                            | Lambda Event Source payload for AWS MSK payload                                               |
+| **KafkaSelfManagedEventModel**                    | Lambda Event Source payload for self managed Kafka payload                                    |
+| **KinesisDataStreamModel**                        | Lambda Event Source payload for Amazon Kinesis Data Streams                                   |
+| **KinesisFirehoseModel**                          | Lambda Event Source payload for Amazon Kinesis Firehose                                       |
+| **KinesisFirehoseSqsModel**                       | Lambda Event Source payload for SQS messages wrapped in Kinesis Firehose records              |
+| **LambdaFunctionUrlModel**                        | Lambda Event Source payload for Lambda Function URL payload                                   |
+| **S3BatchOperationModel**                         | Lambda Event Source payload for Amazon S3 Batch Operation                                     |
+| **S3EventNotificationEventBridgeModel**           | Lambda Event Source payload for Amazon S3 Event Notification to EventBridge.                  |
+| **S3Model**                                       | Lambda Event Source payload for Amazon S3                                                     |
+| **S3ObjectLambdaEvent**                           | Lambda Event Source payload for Amazon S3 Object Lambda                                       |
+| **S3SqsEventNotificationModel**                   | Lambda Event Source payload for S3 event notifications wrapped in SQS event (S3->SQS)         |
+| **SesModel**                                      | Lambda Event Source payload for Amazon Simple Email Service                                   |
+| **SnsModel**                                      | Lambda Event Source payload for Amazon Simple Notification Service                            |
+| **SqsModel**                                      | Lambda Event Source payload for Amazon SQS                                                    |
+| **TransferFamilyAuthorizer**                      | Lambda Event Source payload for AWS Transfer Family Lambda authorizer                         |
+| **VpcLatticeModel**                               | Lambda Event Source payload for Amazon VPC Lattice                                            |
+| **VpcLatticeV2Model**                             | Lambda Event Source payload for Amazon VPC Lattice v2 payload                                 |
 
 #### Extending built-in models
 
@@ -33661,7 +32353,7 @@ For full flexibility, you can use the `idempotent_function` decorator for any sy
 
 When using this decorator, you **must** call your decorated function using keyword arguments.
 
-You can use `data_keyword_argument` to tell us the argument to extract an idempotency key. We support JSON serializable data, [Dataclasses](https://docs.python.org/3.12/library/dataclasses.html), Pydantic Models, and [Event Source Data Classes](../data_classes/)
+You can use `data_keyword_argument` to tell us the argument to extract an idempotency key. We support JSON serializable data, [Dataclasses](https://docs.python.org/3.12/library/dataclasses.html), Pydantic Models, and [Event Source Data Classes](https://docs.aws.amazon.com/powertools/python/latest/utilities/data_classes/index.md)
 
 ```
 import os
@@ -34142,7 +32834,7 @@ Deserializing JSON strings in payloads for increased accuracy.
 
 The payload extracted by the `event_key_jmespath` is treated as a string by default. This means there could be differences in whitespace even when the JSON payload itself is identical.
 
-To alter this behaviour, we can use the [JMESPath built-in function](../jmespath_functions/#powertools_json-function) `powertools_json()` to treat the payload as a JSON object (dict) rather than a string.
+To alter this behaviour, we can use the [JMESPath built-in function](https://docs.aws.amazon.com/powertools/python/latest/utilities/jmespath_functions/#powertools_json-function) `powertools_json()` to treat the payload as a JSON object (dict) rather than a string.
 
 ```
 import json
@@ -34741,7 +33433,7 @@ def create_subscription_payment(event: dict) -> Payment:
 
 ##### Cache SSL connections
 
-We recommend using AWS Secrets Manager to store and rotate certificates safely, and the [Parameters feature](../parameters/) to fetch and cache optimally.
+We recommend using AWS Secrets Manager to store and rotate certificates safely, and the [Parameters feature](https://docs.aws.amazon.com/powertools/python/latest/utilities/parameters/index.md) to fetch and cache optimally.
 
 For advanced configurations, we recommend using an existing Valkey client for optimal compatibility like SSL certificates and timeout.
 
@@ -34901,7 +33593,7 @@ def lambda_handler(event: dict, context: LambdaContext) -> dict:
 
 #### Batch processing
 
-You can can easily integrate with [Batch](../batch/) using the [idempotent_function decorator](#idempotent_function-decorator) to handle idempotency per message/record in a given batch.
+You can can easily integrate with [Batch](https://docs.aws.amazon.com/powertools/python/latest/utilities/batch/index.md) using the [idempotent_function decorator](#idempotent_function-decorator) to handle idempotency per message/record in a given batch.
 
 Choosing an unique batch record attribute
 
@@ -35245,16 +33937,16 @@ graph TD;
 
 You can override and further extend idempotency behavior via **`IdempotencyConfig`** with the following options:
 
-| Parameter                       | Default | Description                                                                                                                                                                                                                    |
-| ------------------------------- | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| **event_key_jmespath**          | `""`    | JMESPath expression to extract the idempotency key from the event record using [built-in functions](../jmespath_functions/#built-in-jmespath-functions)                                                                        |
-| **payload_validation_jmespath** | `""`    | JMESPath expression to validate that the specified fields haven't changed across requests for the same idempotency key *e.g., payload tampering.*                                                                              |
-| **raise_on_no_idempotency_key** | `False` | Raise exception if no idempotency key was found in the request                                                                                                                                                                 |
-| **expires_after_seconds**       | 3600    | The number of seconds to wait before a record is expired, allowing a new transaction with the same idempotency key                                                                                                             |
-| **use_local_cache**             | `False` | Whether to cache idempotency results in-memory to save on persistence storage latency and costs                                                                                                                                |
-| **local_cache_max_items**       | 256     | Max number of items to store in local cache                                                                                                                                                                                    |
-| **hash_function**               | `md5`   | Function to use for calculating hashes, as provided by [hashlib](https://docs.python.org/3/library/hashlib.html) in the standard library.                                                                                      |
-| **response_hook**               | `None`  | Function to use for processing the stored Idempotent response. This function hook is called when an existing idempotent response is found. See [Manipulating The Idempotent Response](./#manipulating-the-idempotent-response) |
+| Parameter                       | Default | Description                                                                                                                                                                                                                                                                                             |
+| ------------------------------- | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **event_key_jmespath**          | `""`    | JMESPath expression to extract the idempotency key from the event record using [built-in functions](https://docs.aws.amazon.com/powertools/python/latest/utilities/jmespath_functions/#built-in-jmespath-functions)                                                                                     |
+| **payload_validation_jmespath** | `""`    | JMESPath expression to validate that the specified fields haven't changed across requests for the same idempotency key *e.g., payload tampering.*                                                                                                                                                       |
+| **raise_on_no_idempotency_key** | `False` | Raise exception if no idempotency key was found in the request                                                                                                                                                                                                                                          |
+| **expires_after_seconds**       | 3600    | The number of seconds to wait before a record is expired, allowing a new transaction with the same idempotency key                                                                                                                                                                                      |
+| **use_local_cache**             | `False` | Whether to cache idempotency results in-memory to save on persistence storage latency and costs                                                                                                                                                                                                         |
+| **local_cache_max_items**       | 256     | Max number of items to store in local cache                                                                                                                                                                                                                                                             |
+| **hash_function**               | `md5`   | Function to use for calculating hashes, as provided by [hashlib](https://docs.python.org/3/library/hashlib.html) in the standard library.                                                                                                                                                               |
+| **response_hook**               | `None`  | Function to use for processing the stored Idempotent response. This function hook is called when an existing idempotent response is found. See [Manipulating The Idempotent Response](https://docs.aws.amazon.com/powertools/python/latest/utilities/idempotency/#manipulating-the-idempotent-response) |
 
 ### Handling concurrent executions with the same payload
 
@@ -37619,7 +36311,7 @@ Feature flags are used to modify behaviour without changing the application's co
 
 Tip
 
-You can use [Parameters utility](../parameters/) for static flags while this utility can do both static and dynamic feature flags.
+You can use [Parameters utility](https://docs.aws.amazon.com/powertools/python/latest/utilities/parameters/index.md) for static flags while this utility can do both static and dynamic feature flags.
 
 Warning
 
@@ -39185,11 +37877,11 @@ def test_flags_condition_match(mocker):
 
 ## Feature flags vs Parameters vs Env vars
 
-| Method                                                                                               | When to use                                                                                                             | Requires new deployment on changes | Supported services                                    |
-| ---------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------- | ---------------------------------- | ----------------------------------------------------- |
-| **[Environment variables](https://docs.aws.amazon.com/lambda/latest/dg/configuration-envvars.html)** | Simple configuration that will rarely if ever change, because changing it requires a Lambda function deployment.        | Yes                                | Lambda                                                |
-| **[Parameters utility](../parameters/)**                                                             | Access to secrets, or fetch parameters in different formats from AWS System Manager Parameter Store or Amazon DynamoDB. | No                                 | Parameter Store, DynamoDB, Secrets Manager, AppConfig |
-| **Feature flags utility**                                                                            | Rule engine to define when one or multiple features should be enabled depending on the input.                           | No                                 | AppConfig                                             |
+| Method                                                                                                       | When to use                                                                                                             | Requires new deployment on changes | Supported services                                    |
+| ------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------- | ---------------------------------- | ----------------------------------------------------- |
+| **[Environment variables](https://docs.aws.amazon.com/lambda/latest/dg/configuration-envvars.html)**         | Simple configuration that will rarely if ever change, because changing it requires a Lambda function deployment.        | Yes                                | Lambda                                                |
+| **[Parameters utility](https://docs.aws.amazon.com/powertools/python/latest/utilities/parameters/index.md)** | Access to secrets, or fetch parameters in different formats from AWS System Manager Parameter Store or Amazon DynamoDB. | No                                 | Parameter Store, DynamoDB, Secrets Manager, AppConfig |
+| **Feature flags utility**                                                                                    | Rule engine to define when one or multiple features should be enabled depending on the input.                           | No                                 | AppConfig                                             |
 
 The streaming utility handles datasets larger than the available memory as streaming data.
 
@@ -39602,7 +38294,7 @@ class UpperTransform(BaseTransform):
 
 ### AWS X-Ray segment size limit
 
-We make multiple API calls to S3 as you read chunks from your S3 object. If your function is decorated with [Tracer](../../core/tracer/), you can easily hit [AWS X-Ray 64K segment size](https://docs.aws.amazon.com/general/latest/gr/xray.html#limits_xray) when processing large files.
+We make multiple API calls to S3 as you read chunks from your S3 object. If your function is decorated with [Tracer](https://docs.aws.amazon.com/powertools/python/latest/core/tracer/index.md), you can easily hit [AWS X-Ray 64K segment size](https://docs.aws.amazon.com/general/latest/gr/xray.html#limits_xray) when processing large files.
 
 Use tracer decorators in parts where you don't read your `S3Object` instead.
 
@@ -39872,7 +38564,7 @@ You can also use [`POWERTOOLS_TRACE_MIDDLEWARES`](#tracing-middleware-execution)
 
 ## Advanced
 
-For advanced use cases, you can instantiate [Tracer](../../core/tracer/) inside your middleware, and add annotations as well as metadata for additional operational insights.
+For advanced use cases, you can instantiate [Tracer](https://docs.aws.amazon.com/powertools/python/latest/core/tracer/index.md) inside your middleware, and add annotations as well as metadata for additional operational insights.
 
 ```
 import time
@@ -39936,13 +38628,13 @@ def lambda_handler(event: dict, context: LambdaContext) -> dict:
 
 ### Tracing middleware **execution**
 
-If you are making use of [Tracer](../../core/tracer/), you can trace the execution of your middleware to ease operations.
+If you are making use of [Tracer](https://docs.aws.amazon.com/powertools/python/latest/core/tracer/index.md), you can trace the execution of your middleware to ease operations.
 
 This makes use of an existing Tracer instance that you may have initialized anywhere in your code.
 
 Warning
 
-You must [enable Active Tracing](../../core/tracer/#permissions) in your Lambda function when using this feature, otherwise Lambda cannot send traces to XRay.
+You must [enable Active Tracing](https://docs.aws.amazon.com/powertools/python/latest/core/tracer/#permissions) in your Lambda function when using this feature, otherwise Lambda cannot send traces to XRay.
 
 ```
 import time
@@ -39998,11 +38690,11 @@ def lambda_handler(event: dict, context: LambdaContext) -> dict:
 
 ```
 
-When executed, your middleware name will [appear in AWS X-Ray Trace details as](../../core/tracer/) `## middleware_name`, in this example the middleware name is `## middleware_with_tracing`.
+When executed, your middleware name will [appear in AWS X-Ray Trace details as](https://docs.aws.amazon.com/powertools/python/latest/core/tracer/index.md) `## middleware_name`, in this example the middleware name is `## middleware_with_tracing`.
 
 ### Combining Powertools for AWS Lambda (Python) utilities
 
-You can create your own middleware and combine many features of Powertools for AWS Lambda (Python) such as [trace](../../core/logger/), [logs](../../core/logger/), [feature flags](../feature_flags/), [validation](../validation/), [jmespath_functions](../jmespath_functions/) and others to abstract non-functional code.
+You can create your own middleware and combine many features of Powertools for AWS Lambda (Python) such as [trace](https://docs.aws.amazon.com/powertools/python/latest/core/logger/index.md), [logs](https://docs.aws.amazon.com/powertools/python/latest/core/logger/index.md), [feature flags](https://docs.aws.amazon.com/powertools/python/latest/utilities/feature_flags/index.md), [validation](https://docs.aws.amazon.com/powertools/python/latest/utilities/validation/index.md), [jmespath_functions](https://docs.aws.amazon.com/powertools/python/latest/utilities/jmespath_functions/index.md) and others to abstract non-functional code.
 
 In the example below, we create a Middleware with the following features:
 
@@ -40421,7 +39113,7 @@ All examples shared in this documentation are available within the [project repo
 
 You might have events that contains encoded JSON payloads as string, base64, or even in compressed format. It is a common use case to decode and extract them partially or fully as part of your Lambda function invocation.
 
-Powertools for AWS Lambda (Python) also have utilities like [validation](../validation/), [idempotency](../idempotency/), or [feature flags](../feature_flags/) where you might need to extract a portion of your data before using them.
+Powertools for AWS Lambda (Python) also have utilities like [validation](https://docs.aws.amazon.com/powertools/python/latest/utilities/validation/index.md), [idempotency](https://docs.aws.amazon.com/powertools/python/latest/utilities/idempotency/index.md), or [feature flags](https://docs.aws.amazon.com/powertools/python/latest/utilities/feature_flags/index.md) where you might need to extract a portion of your data before using them.
 
 Terminology
 
@@ -40676,7 +39368,7 @@ INPUT = {
 
 > **Idempotency scenario**
 
-This sample will deserialize the JSON string within the `body` key before [Idempotency](../idempotency/) processes it.
+This sample will deserialize the JSON string within the `body` key before [Idempotency](https://docs.aws.amazon.com/powertools/python/latest/utilities/idempotency/index.md) processes it.
 
 ```
 import json
@@ -41129,7 +39821,7 @@ Resources:
         Properties:
             CodeUri: hello_world/
             Handler: app.lambda_handler
-            Runtime: python3.9
+            Runtime: python3.13
             Architectures:
                 - x86_64
             Events:
@@ -41254,7 +39946,7 @@ Resources:
         Properties:
             CodeUri: hello_world/
             Handler: app.lambda_handler
-            Runtime: python3.9
+            Runtime: python3.13
             Events:
                 HelloWorld:
                     Type: Api
@@ -41267,7 +39959,7 @@ Resources:
         Properties:
             CodeUri: hello_world/
             Handler: hello_by_name.lambda_handler
-            Runtime: python3.9
+            Runtime: python3.13
             Events:
                 HelloWorldName:
                     Type: Api
@@ -41297,7 +39989,7 @@ We could group similar routes and intents, separate read and write operations re
 
 Info: You might be already asking yourself about mono vs micro-functions
 
-If you want a more detailed explanation of these two approaches, head over to the [trade-offs on each approach](../core/event_handler/api_gateway/#considerations) later.
+If you want a more detailed explanation of these two approaches, head over to the [trade-offs on each approach](https://docs.aws.amazon.com/powertools/python/latest/core/event_handler/api_gateway/#considerations) later.
 
 A first attempt at the routing logic might look similar to the following code snippet.
 
@@ -41354,7 +40046,7 @@ Resources:
         Properties:
             CodeUri: hello_world/
             Handler: app.lambda_handler
-            Runtime: python3.9
+            Runtime: python3.13
             Events:
                 HelloWorld:
                     Type: Api
@@ -41387,11 +40079,11 @@ However, it forces us to understand the internal structure of the API Gateway re
 
 ### Simplifying with Event Handler
 
-We can massively simplify cross-cutting concerns while keeping it lightweight by using [Event Handler](../core/event_handler/api_gateway/).
+We can massively simplify cross-cutting concerns while keeping it lightweight by using [Event Handler](https://docs.aws.amazon.com/powertools/python/latest/core/event_handler/api_gateway/index.md).
 
 Tip
 
-This is available for both [REST API (API Gateway, ALB)](../core/event_handler/api_gateway/) and [GraphQL API (AppSync)](../core/event_handler/appsync/).
+This is available for both [REST API (API Gateway, ALB)](https://docs.aws.amazon.com/powertools/python/latest/core/event_handler/api_gateway/index.md) and [GraphQL API (AppSync)](https://docs.aws.amazon.com/powertools/python/latest/core/event_handler/appsync/index.md).
 
 Let's include Powertools for AWS Lambda (Python) as a dependency in `requirement.txt`, and use Event Handler to refactor our previous example.
 
@@ -41425,13 +40117,13 @@ Use `sam build && sam local start-api` and try run it locally again.
 
 Note
 
-If you're coming from [Flask](https://flask.palletsprojects.com/en/2.0.x/), you will be familiar with this experience already. [Event Handler for API Gateway](../core/event_handler/api_gateway/) uses `APIGatewayRestResolver` to give a Flask-like experience while staying true to our tenet `Keep it lean`.
+If you're coming from [Flask](https://flask.palletsprojects.com/en/2.0.x/), you will be familiar with this experience already. [Event Handler for API Gateway](https://docs.aws.amazon.com/powertools/python/latest/core/event_handler/api_gateway/index.md) uses `APIGatewayRestResolver` to give a Flask-like experience while staying true to our tenet `Keep it lean`.
 
 We have added the route annotation as the decorator for our methods. It enables us to use the parameters passed in the request directly, and our responses are simply dictionaries.
 
 Lastly, we used `return app.resolve(event, context)` so Event Handler can resolve routes, inject the current request, handle serialization, route validation, etc.
 
-From here, we could handle [404 routes](../core/event_handler/api_gateway/#handling-not-found-routes), [error handling](../core/event_handler/api_gateway/#exception-handling), [access query strings, payload](../core/event_handler/api_gateway/#accessing-request-details), etc.
+From here, we could handle [404 routes](https://docs.aws.amazon.com/powertools/python/latest/core/event_handler/api_gateway/#handling-not-found-routes), [error handling](https://docs.aws.amazon.com/powertools/python/latest/core/event_handler/api_gateway/#exception-handling), [access query strings, payload](https://docs.aws.amazon.com/powertools/python/latest/core/event_handler/api_gateway/#accessing-request-details), etc.
 
 Tip
 
@@ -41523,7 +40215,7 @@ Surely this could be easier, right?
 
 Yes! Powertools for AWS Lambda (Python) Logger to the rescue :-)
 
-As we already have Powertools for AWS Lambda (Python) as a dependency, we can simply import [Logger](../core/logger/).
+As we already have Powertools for AWS Lambda (Python) as a dependency, we can simply import [Logger](https://docs.aws.amazon.com/powertools/python/latest/core/logger/index.md).
 
 ```
 from aws_lambda_powertools import Logger
@@ -41557,8 +40249,8 @@ Let's break this down:
 
 - **L5**: We add Powertools for AWS Lambda (Python) Logger; the boilerplate is now done for you. By default, we set `INFO` as the logging level if `POWERTOOLS_LOG_LEVEL` env var isn't set.
 - **L22**: We use `logger.inject_lambda_context` decorator to inject key information from Lambda context into every log.
-- **L22**: We also instruct Logger to use the incoming API Gateway Request ID as a [correlation id](../core/logger/#setting-a-correlation-id) automatically.
-- **L22**: Since we're in dev, we also use `log_event=True` to automatically log each incoming request for debugging. This can be also set via [environment variables](../#environment-variables).
+- **L22**: We also instruct Logger to use the incoming API Gateway Request ID as a [correlation id](https://docs.aws.amazon.com/powertools/python/latest/core/logger/#setting-a-correlation-id) automatically.
+- **L22**: Since we're in dev, we also use `log_event=True` to automatically log each incoming request for debugging. This can be also set via [environment variables](https://docs.aws.amazon.com/powertools/python/latest/#environment-variables).
 
 This is how the logs would look like now:
 
@@ -41581,7 +40273,7 @@ This is how the logs would look like now:
 
 We can now search our logs by the request ID to find a specific operation. Additionally, we can also search our logs for function name, Lambda request ID, Lambda function ARN, find out whether an operation was a cold start, etc.
 
-From here, we could [set specific keys](../core/logger/#append_keys-method) to add additional contextual information about a given operation, [log exceptions](../core/logger/#logging-exceptions) to easily enumerate them later, [sample debug logs](../core/logger/#sampling-debug-logs), etc.
+From here, we could [set specific keys](https://docs.aws.amazon.com/powertools/python/latest/core/logger/#append_keys-method) to add additional contextual information about a given operation, [log exceptions](https://docs.aws.amazon.com/powertools/python/latest/core/logger/#logging-exceptions) to easily enumerate them later, [sample debug logs](https://docs.aws.amazon.com/powertools/python/latest/core/logger/#sampling-debug-logs), etc.
 
 By having structured logs like this, we can easily search and analyse them in [CloudWatch Logs Insight](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/AnalyzingLogData.html).
 
@@ -41604,7 +40296,7 @@ It's a [two-step process](https://docs.aws.amazon.com/lambda/latest/dg/services-
 1. Enable tracing in your Lambda function.
 1. Instrument your application code.
 
-Let's explore how we can instrument our code with [AWS X-Ray SDK](https://docs.aws.amazon.com/xray-sdk-for-python/latest/reference/index.html), and then simplify it with [Powertools for AWS Lambda (Python) Tracer](../core/tracer/) feature.
+Let's explore how we can instrument our code with [AWS X-Ray SDK](https://docs.aws.amazon.com/xray-sdk-for-python/latest/reference/index.html), and then simplify it with [Powertools for AWS Lambda (Python) Tracer](https://docs.aws.amazon.com/powertools/python/latest/core/tracer/index.md) feature.
 
 ```
 from aws_xray_sdk.core import xray_recorder
@@ -41654,7 +40346,7 @@ Resources:
         Properties:
             CodeUri: hello_world/
             Handler: app.lambda_handler
-            Runtime: python3.9
+            Runtime: python3.13
             Tracing: Active
             Events:
                 HelloWorld:
@@ -41787,7 +40479,7 @@ If you choose any of the traces available, try opening the `handler` subsegment 
 
 Cross-cutting concerns like filtering traces by Cold Start, including response as well as exceptions as tracing metadata can take a considerable amount of boilerplate.
 
-We can simplify our previous patterns by using [Powertools for AWS Lambda (Python) Tracer](../core/tracer/); a thin wrapper on top of X-Ray SDK.
+We can simplify our previous patterns by using [Powertools for AWS Lambda (Python) Tracer](https://docs.aws.amazon.com/powertools/python/latest/core/tracer/index.md); a thin wrapper on top of X-Ray SDK.
 
 Note
 
@@ -41839,7 +40531,7 @@ Powertools for AWS Lambda (Python) optimizes for Lambda compute environment. As 
 
 Tip
 
-You can [opt-out some of these behaviours](../core/tracer/#advanced) like disabling response capturing, explicitly patching only X modules, etc.
+You can [opt-out some of these behaviours](https://docs.aws.amazon.com/powertools/python/latest/core/tracer/#advanced) like disabling response capturing, explicitly patching only X modules, etc.
 
 Repeat the process of building, deploying, and invoking your application via the API endpoint. Within the [AWS X-Ray Console](https://console.aws.amazon.com/xray/home#/traces/), you should see a similar view:
 
@@ -41955,7 +40647,7 @@ Resources:
         Properties:
             CodeUri: hello_world/
             Handler: app.lambda_handler
-            Runtime: python3.9
+            Runtime: python3.13
             Tracing: Active
             Events:
                 HelloWorld:
@@ -41999,7 +40691,7 @@ It will be visible in your AWS X-RAY traces as additional external call. Given y
 
 ### Simplifying with Metrics
 
-[Powertools for AWS Lambda (Python) Metrics](../core/metrics/) uses [Amazon CloudWatch Embedded Metric Format (EMF)](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch_Embedded_Metric_Format.html) to create custom metrics **asynchronously** via a native integration with Lambda.
+[Powertools for AWS Lambda (Python) Metrics](https://docs.aws.amazon.com/powertools/python/latest/core/metrics/index.md) uses [Amazon CloudWatch Embedded Metric Format (EMF)](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch_Embedded_Metric_Format.html) to create custom metrics **asynchronously** via a native integration with Lambda.
 
 In general terms, EMF is a specification that expects metrics in a JSON payload within CloudWatch Logs. Lambda ingests all logs emitted by a given function into CloudWatch Logs. CloudWatch automatically looks up for log entries that follow the EMF format and transforms them into a CloudWatch metric.
 
@@ -42007,7 +40699,7 @@ Info
 
 If you are interested in the details of the EMF mechanism, follow [blog post](https://aws.amazon.com/blogs/mt/enhancing-workload-observability-using-amazon-cloudwatch-embedded-metric-format/).
 
-Let's implement that using [Metrics](../core/metrics/):
+Let's implement that using [Metrics](https://docs.aws.amazon.com/powertools/python/latest/core/metrics/index.md):
 
 ```
 from aws_lambda_powertools import Logger, Tracer, Metrics
@@ -42057,7 +40749,7 @@ That's a lot less boilerplate code! Let's break this down:
 - **L9**: We initialize `Metrics` with our service name (`APP`) and metrics namespace (`MyApp`), reducing the need to add the `service` dimension for every metric and setting the namespace later
 - **L18, 27**: We use `add_metric` similarly to our custom function, except we now have an enum `MetricCount` to help us understand which Metric Units we have at our disposal
 - **L33**: We use `@metrics.log_metrics` decorator to ensure that our metrics are aligned with the EMF output and validated before-hand, like in case we forget to set namespace, or accidentally use a metric unit as a string that doesn't exist in CloudWatch.
-- **L33**: We also use `capture_cold_start_metric=True` so we don't have to handle that logic either. Note that [Metrics](../core/metrics/) does not publish a warm invocation metric (ColdStart=0) for cost reasons. As such, treat the absence (sparse metric) as a non-cold start invocation.
+- **L33**: We also use `capture_cold_start_metric=True` so we don't have to handle that logic either. Note that [Metrics](https://docs.aws.amazon.com/powertools/python/latest/core/metrics/index.md) does not publish a warm invocation metric (ColdStart=0) for cost reasons. As such, treat the absence (sparse metric) as a non-cold start invocation.
 
 Repeat the process of building, deploying, and invoking your application via the API endpoint a few times to generate metrics - [Artillery](https://www.artillery.io/) and [K6.io](https://k6.io/open-source) are quick ways to generate some load.
 
@@ -42100,7 +40792,7 @@ If you're curious about how the EMF portion of your function logs look like, you
 
 We covered a lot of ground here and we only scratched the surface of the feature set available within Powertools for AWS Lambda (Python).
 
-When it comes to the observability features ([Tracer](../core/tracer/), [Metrics](../core/metrics/), [Logging](../core/logger/)), don't stop there! The goal here is to ensure you can ask arbitrary questions to assess your system's health; these features are only part of the wider story!
+When it comes to the observability features ([Tracer](https://docs.aws.amazon.com/powertools/python/latest/core/tracer/index.md), [Metrics](https://docs.aws.amazon.com/powertools/python/latest/core/metrics/index.md), [Logging](https://docs.aws.amazon.com/powertools/python/latest/core/logger/index.md)), don't stop there! The goal here is to ensure you can ask arbitrary questions to assess your system's health; these features are only part of the wider story!
 
 This requires a change in mindset to ensure operational excellence is part of the software development lifecycle.
 
@@ -42148,23 +40840,23 @@ This guide is organized into focused sections to help you find exactly what you 
 
 ### ð Fundamentals
 
-- **[Getting started](getting-started/)** - Prerequisites, tool selection, and basic setup
-- **[Cross-platform builds](cross-platform/)** - Handle architecture differences and compiled dependencies
+- **[Getting started](https://docs.aws.amazon.com/powertools/python/latest/build_recipes/getting-started/index.md)** - Prerequisites, tool selection, and basic setup
+- **[Cross-platform builds](https://docs.aws.amazon.com/powertools/python/latest/build_recipes/cross-platform/index.md)** - Handle architecture differences and compiled dependencies
 
 ### ð§ Build tools
 
-- **[Build with pip](build-tools/#pip)** - Simple, universal package management
-- **[Build with uv](build-tools/#uv)** - Extremely fast Rust-based package manager
-- **[Build with Poetry](build-tools/#poetry)** - Modern dependency management with lock files
-- **[Build with SAM](build-tools/#sam)** - AWS Serverless Application Model integration
-- **[Build with CDK](build-tools/#cdk)** - Infrastructure as code with type safety
-- **[Build with Pants](build-tools/#pants)** - Advanced build system for monorepos
+- **[Build with pip](https://docs.aws.amazon.com/powertools/python/latest/build_recipes/build-tools/#pip)** - Simple, universal package management
+- **[Build with uv](https://docs.aws.amazon.com/powertools/python/latest/build_recipes/build-tools/#uv)** - Extremely fast Rust-based package manager
+- **[Build with Poetry](https://docs.aws.amazon.com/powertools/python/latest/build_recipes/build-tools/#poetry)** - Modern dependency management with lock files
+- **[Build with SAM](https://docs.aws.amazon.com/powertools/python/latest/build_recipes/build-tools/#sam)** - AWS Serverless Application Model integration
+- **[Build with CDK](https://docs.aws.amazon.com/powertools/python/latest/build_recipes/build-tools/#cdk)** - Infrastructure as code with type safety
+- **[Build with Pants](https://docs.aws.amazon.com/powertools/python/latest/build_recipes/build-tools/#pants)** - Advanced build system for monorepos
 
 ### â¡ Advanced topics
 
-- **[Performance optimization](performance-optimization/)** - Reduce cold starts and package size
-- **[CI/CD integration](cicd-integration/)** - Automate builds with GitHub Actions and CodeBuild
-- **[Troubleshooting](troubleshooting/)** - Common issues and solutions
+- **[Performance optimization](https://docs.aws.amazon.com/powertools/python/latest/build_recipes/performance-optimization/index.md)** - Reduce cold starts and package size
+- **[CI/CD integration](https://docs.aws.amazon.com/powertools/python/latest/build_recipes/cicd-integration/index.md)** - Automate builds with GitHub Actions and CodeBuild
+- **[Troubleshooting](https://docs.aws.amazon.com/powertools/python/latest/build_recipes/troubleshooting/index.md)** - Common issues and solutions
 
 ## Prerequisites
 
@@ -42178,14 +40870,14 @@ Before using any of these recipes, ensure you have:
 
 Each build tool has its strengths and is optimized for different use cases. Consider your project complexity, team preferences, and deployment requirements when selecting the best approach.
 
-| Tool                                 | Best for                          | Considerations                              |
-| ------------------------------------ | --------------------------------- | ------------------------------------------- |
-| **[pip](../build-tools/#pip)**       | Simple projects, CI/CD            | Lightweight, universal                      |
-| **[uv](../build-tools/#uv)**         | Fast builds, performance-critical | Extremely fast, Rust-based                  |
-| **[poetry](../build-tools/#poetry)** | Modern Python projects            | Excellent dependency management, lock files |
-| **[SAM](../build-tools/#sam)**       | AWS-native deployments            | Integrated with AWS, local testing          |
-| **[CDK](../build-tools/#cdk)**       | Infrastructure as code            | Programmatic infrastructure, type safety    |
-| **[pants](../build-tools/#pants)**   | Monorepos, complex projects       | Advanced build system, incremental builds   |
+| Tool                                                                                                 | Best for                          | Considerations                              |
+| ---------------------------------------------------------------------------------------------------- | --------------------------------- | ------------------------------------------- |
+| **[pip](https://docs.aws.amazon.com/powertools/python/latest/build_recipes/build-tools/#pip)**       | Simple projects, CI/CD            | Lightweight, universal                      |
+| **[uv](https://docs.aws.amazon.com/powertools/python/latest/build_recipes/build-tools/#uv)**         | Fast builds, performance-critical | Extremely fast, Rust-based                  |
+| **[poetry](https://docs.aws.amazon.com/powertools/python/latest/build_recipes/build-tools/#poetry)** | Modern Python projects            | Excellent dependency management, lock files |
+| **[SAM](https://docs.aws.amazon.com/powertools/python/latest/build_recipes/build-tools/#sam)**       | AWS-native deployments            | Integrated with AWS, local testing          |
+| **[CDK](https://docs.aws.amazon.com/powertools/python/latest/build_recipes/build-tools/#cdk)**       | Infrastructure as code            | Programmatic infrastructure, type safety    |
+| **[pants](https://docs.aws.amazon.com/powertools/python/latest/build_recipes/build-tools/#pants)**   | Monorepos, complex projects       | Advanced build system, incremental builds   |
 
 Tip
 
@@ -42396,7 +41088,7 @@ Use `uv pip install` with `--platform manylinux2014_x86_64` and `--only-binary=:
 name = "lambda-powertools-uv"
 version = "0.1.0"
 description = "Lambda function with Powertools using uv"
-requires-python = ">=3.9"
+requires-python = ">=3.10"
 dependencies = [
     "aws-lambda-powertools[all]>=3.18.0",
     "pydantic>=2.10.0",
@@ -42942,7 +41634,7 @@ Resources:
       CodeUri: src/app/
       Handler: app_sam_layer.lambda_handler
       Layers:
-        - arn:aws:lambda:us-east-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python313-x86_64:27
+        - arn:aws:lambda:us-east-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python313-x86_64:28
         - !Ref DependenciesLayer
       Events:
         ApiEvent:
@@ -42961,7 +41653,7 @@ Resources:
       CodeUri: src/worker/
       Handler: worker_sam_layer.lambda_handler
       Layers:
-        - arn:aws:lambda:us-east-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python313-x86_64:27
+        - arn:aws:lambda:us-east-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python313-x86_64:28
         - !Ref DependenciesLayer
       Events:
         SQSEvent:
@@ -43269,7 +41961,7 @@ Resources:
       CodeUri: src/
       Handler: app.lambda_handler
       Layers:
-        - arn:aws:lambda:us-east-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python313-x86_64:27
+        - arn:aws:lambda:us-east-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python313-x86_64:28
         - !Ref DependenciesLayer
       Events:
         ApiEvent:
@@ -43379,7 +42071,7 @@ class PowertoolsLambdaStack(Stack):
         powertools_layer = _lambda.LayerVersion.from_layer_version_arn(
             self,
             "PowertoolsLayer",
-            layer_version_arn="arn:aws:lambda:us-east-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python313-x86_64:27",
+            layer_version_arn="arn:aws:lambda:us-east-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python313-x86_64:28",
         )
 
         # Lambda Function
@@ -43618,7 +42310,7 @@ class PowertoolsStack(Stack):
         return _lambda.LayerVersion.from_layer_version_arn(
             self,
             "PowertoolsLayer",
-            layer_version_arn="arn:aws:lambda:us-east-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python313-x86_64:27",
+            layer_version_arn="arn:aws:lambda:us-east-1:017000801446:layer:AWSLambdaPowertoolsPythonV3-python313-x86_64:28",
         )
 
     def _create_dynamodb_table(self) -> dynamodb.Table:
@@ -43956,7 +42648,7 @@ backend_packages = [
 ]
 
 [python]
-interpreter_constraints = [">=3.9,<3.14"]
+interpreter_constraints = [">=3.10,<3.14"]
 
 [python-infer]
 use_rust_parser = true
@@ -44356,7 +43048,6 @@ Lambda managed runtimes use [specific Amazon Linux versions](https://docs.aws.am
 
 | Python Runtime | Base System       | GLIBC Version | Architecture Support |
 | -------------- | ----------------- | ------------- | -------------------- |
-| **python3.9**  | Amazon Linux 2    | 2.26          | x86_64, arm64        |
 | **python3.10** | Amazon Linux 2    | 2.26          | x86_64, arm64        |
 | **python3.11** | Amazon Linux 2    | 2.26          | x86_64, arm64        |
 | **python3.12** | Amazon Linux 2023 | 2.34          | x86_64, arm64        |

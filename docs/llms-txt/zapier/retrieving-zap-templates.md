@@ -1,5 +1,9 @@
 # Source: https://docs.zapier.com/powered-by-zapier/zap-templates/retrieving-zap-templates.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.zapier.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Retrieving Zap Templates
 
 > Zap templates are pre-made Zaps that help users discover popular use cases for automating their work. Each template features a specific use case and the apps needed for it to work.

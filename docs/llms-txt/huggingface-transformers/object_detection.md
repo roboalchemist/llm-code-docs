@@ -1,6 +1,4 @@
-# Source: https://huggingface.co/docs/transformers/v5.0.0rc1/tasks/object_detection.md
-
-# Source: https://huggingface.co/docs/transformers/v4.57.3/tasks/object_detection.md
+# Source: https://huggingface.co/docs/transformers/v5.0.0/tasks/object_detection.md
 
 # Object detection
 
@@ -171,7 +169,7 @@ To keep things simple in this guide, we will set `clip=True` for `BboxParams` in
 ## Preprocess the data
 
 To finetune a model, you must preprocess the data you plan to use to match precisely the approach used for the pre-trained model.
-[AutoImageProcessor](/docs/transformers/v4.57.3/en/model_doc/auto#transformers.AutoImageProcessor) takes care of processing image data to create `pixel_values`, `pixel_mask`, and
+[AutoImageProcessor](/docs/transformers/v5.0.0/en/model_doc/auto#transformers.AutoImageProcessor) takes care of processing image data to create `pixel_values`, `pixel_mask`, and
 `labels` that a DETR model can train with. The image processor has some attributes that you won't have to worry about:
 
 - `image_mean = [0.485, 0.456, 0.406 ]`
@@ -293,7 +291,7 @@ Now you can combine the image and annotation transformations to use on a batch o
 ...     return result
 ```
 
-Apply this preprocessing function to the entire dataset using 🤗 Datasets [with_transform](https://huggingface.co/docs/datasets/v4.4.1/en/package_reference/main_classes#datasets.Dataset.with_transform) method. This method applies
+Apply this preprocessing function to the entire dataset using 🤗 Datasets [with_transform](https://huggingface.co/docs/datasets/v4.5.0/en/package_reference/main_classes#datasets.Dataset.with_transform) method. This method applies
 transformations on the fly when you load an element of the dataset.
 
 At this point, you can check what an example from the dataset looks like after the transformations. You should see a tensor
@@ -365,7 +363,7 @@ to indicate which pixels are real (1) and which are padding (0).
 
 ## Preparing function to compute mAP
 
-Object detection models are commonly evaluated with a set of COCO-style metrics. We are going to use `torchmetrics` to compute `mAP` (mean average precision) and `mAR` (mean average recall) metrics and will wrap it to `compute_metrics` function in order to use in [Trainer](/docs/transformers/v4.57.3/en/main_classes/trainer#transformers.Trainer) for evaluation.
+Object detection models are commonly evaluated with a set of COCO-style metrics. We are going to use `torchmetrics` to compute `mAP` (mean average precision) and `mAR` (mean average recall) metrics and will wrap it to `compute_metrics` function in order to use in [Trainer](/docs/transformers/v5.0.0/en/main_classes/trainer#transformers.Trainer) for evaluation.
 
 Intermediate format of boxes used for training is `YOLO` (normalized) but we will compute metrics for boxes in `Pascal VOC` (absolute) format in order to correctly handle box areas. Let's define a function that converts bounding boxes to `Pascal VOC` format:
 
@@ -485,10 +483,10 @@ require at least one GPU.
 
 Training involves the following steps:
 
-1. Load the model with [AutoModelForObjectDetection](/docs/transformers/v4.57.3/en/model_doc/auto#transformers.AutoModelForObjectDetection) using the same checkpoint as in the preprocessing.
-2. Define your training hyperparameters in [TrainingArguments](/docs/transformers/v4.57.3/en/main_classes/trainer#transformers.TrainingArguments).
-3. Pass the training arguments to [Trainer](/docs/transformers/v4.57.3/en/main_classes/trainer#transformers.Trainer) along with the model, dataset, image processor, and data collator.
-4. Call [train()](/docs/transformers/v4.57.3/en/main_classes/trainer#transformers.Trainer.train) to finetune your model.
+1. Load the model with [AutoModelForObjectDetection](/docs/transformers/v5.0.0/en/model_doc/auto#transformers.AutoModelForObjectDetection) using the same checkpoint as in the preprocessing.
+2. Define your training hyperparameters in [TrainingArguments](/docs/transformers/v5.0.0/en/main_classes/trainer#transformers.TrainingArguments).
+3. Pass the training arguments to [Trainer](/docs/transformers/v5.0.0/en/main_classes/trainer#transformers.Trainer) along with the model, dataset, image processor, and data collator.
+4. Call [train()](/docs/transformers/v5.0.0/en/main_classes/trainer#transformers.Trainer.train) to finetune your model.
 
 When loading the model from the same checkpoint that you used for the preprocessing, remember to pass the `label2id`
 and `id2label` maps that you created earlier from the dataset's metadata. Additionally, we specify `ignore_mismatched_sizes=True` to replace the existing classification head with a new one.
@@ -504,7 +502,7 @@ and `id2label` maps that you created earlier from the dataset's metadata. Additi
 ... )
 ```
 
-In the [TrainingArguments](/docs/transformers/v4.57.3/en/main_classes/trainer#transformers.TrainingArguments) use `output_dir` to specify where to save your model, then configure hyperparameters as you see fit. For `num_train_epochs=30` training will take about 35 minutes in Google Colab T4 GPU, increase the number of epoch to get better results.
+In the [TrainingArguments](/docs/transformers/v5.0.0/en/main_classes/trainer#transformers.TrainingArguments) use `output_dir` to specify where to save your model, then configure hyperparameters as you see fit. For `num_train_epochs=30` training will take about 35 minutes in Google Colab T4 GPU, increase the number of epoch to get better results.
 
 Important notes:
 
@@ -540,7 +538,7 @@ Face to upload your model).
 ... )
 ```
 
-Finally, bring everything together, and call [train()](/docs/transformers/v4.57.3/en/main_classes/trainer#transformers.Trainer.train):
+Finally, bring everything together, and call [train()](/docs/transformers/v5.0.0/en/main_classes/trainer#transformers.Trainer.train):
 
 ```py
 >>> from transformers import Trainer
@@ -1404,7 +1402,7 @@ Finally, bring everything together, and call [train()](/docs/transformers/v4.57.
   
 
 If you have set `push_to_hub` to `True` in the `training_args`, the training checkpoints are pushed to the
-Hugging Face Hub. Upon training completion, push the final model to the Hub as well by calling the [push_to_hub()](/docs/transformers/v4.57.3/en/main_classes/trainer#transformers.Trainer.push_to_hub) method.
+Hugging Face Hub. Upon training completion, push the final model to the Hub as well by calling the [push_to_hub()](/docs/transformers/v5.0.0/en/main_classes/trainer#transformers.Trainer.push_to_hub) method.
 
 ```py
 >>> trainer.push_to_hub()
@@ -1446,7 +1444,7 @@ Hugging Face Hub. Upon training completion, push the final model to the Hub as w
   'test_steps_per_second': 2.42}
 ```
 
-These results can be further improved by adjusting the hyperparameters in [TrainingArguments](/docs/transformers/v4.57.3/en/main_classes/trainer#transformers.TrainingArguments). Give it a go!
+These results can be further improved by adjusting the hyperparameters in [TrainingArguments](/docs/transformers/v5.0.0/en/main_classes/trainer#transformers.TrainingArguments). Give it a go!
 
 ## Inference
 
@@ -1466,9 +1464,9 @@ Now that you have finetuned a model, evaluated it, and uploaded it to the Huggin
 Load model and image processor from the Hugging Face Hub (skip to use already trained in this session):
 
 ```py
->>> from transformers import infer_device
+>>> from accelerate import Accelerator
 
->>> device = infer_device()
+>>> device = Accelerator().device
 >>> model_repo = "qubvel-hf/detr_finetuned_cppe5"
 
 >>> image_processor = AutoImageProcessor.from_pretrained(model_repo)

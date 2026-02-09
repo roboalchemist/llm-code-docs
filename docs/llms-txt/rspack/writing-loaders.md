@@ -1,8 +1,13 @@
 # Source: https://rspack.dev/api/loader-api/writing-loaders.md
 
-import WebpackLicense from '@components/WebpackLicense';
+CC 4.0 License> The content of this section is derived from the content of the following links and is subject to the CC BY 4.0 license.
+> 
+> - [https://webpack.js.org/api/loaders/#examples](https://webpack.js.org/api/loaders/#examples)
+> 
+> The following contents can be assumed to be the result of modifications and deletions based on the original contents if not specifically stated.
+> 
+> 
 
-<WebpackLicense from="https://webpack.js.org/api/loaders/#examples" />
 
 # Writing loaders
 
@@ -37,8 +42,8 @@ module.exports = function (source, map, meta) {
 
 ::: info
 
-* The `map` and `meta` parameters are optional, see [this.callback](/api/loader-api/context.md#thiscallback) and [Handling source maps](#handling-source-maps) for more details.
-* Rspack will internally convert loaders to async, regardless of whether it's a synchronous loader, for technical and performance reasons.
+- The `map` and `meta` parameters are optional, see [this.callback](/api/loader-api/context.md#thiscallback) and [Handling source maps](#handling-source-maps) for more details.
+- Rspack will internally convert loaders to async, regardless of whether it's a synchronous loader, for technical and performance reasons.
 
 :::
 
@@ -102,7 +107,7 @@ By default, Rspack converts file content into UTF-8 strings before passing it to
 
 By exporting `raw: true` in the loader file, a loader can receive the original `Buffer` object as input instead of a string.
 
-* CJS:
+- CJS:
 
 ```js title="raw-loader.js"
   // Process binary content
@@ -117,7 +122,7 @@ By exporting `raw: true` in the loader file, a loader can receive the original `
 module.exports.raw = true;
 ```
 
-* ESM:
+- ESM:
 
 ```js title="raw-loader.mjs"
 export default function loader(source) {
@@ -264,8 +269,8 @@ When developing loaders, properly handling source maps is essential for providin
 
 Loader APIs related to source maps:
 
-* Use [this.sourceMap](/api/loader-api/context.md#thissourcemap) to determine whether source map generation is required.
-* Use [this.callback](/api/loader-api/context.md#thiscallback) or [this.async](/api/loader-api/context.md#thisasync) methods to return the processed source map.
+- Use [this.sourceMap](/api/loader-api/context.md#thissourcemap) to determine whether source map generation is required.
+- Use [this.callback](/api/loader-api/context.md#thiscallback) or [this.async](/api/loader-api/context.md#thisasync) methods to return the processed source map.
 
 ### Automatic source map handling
 

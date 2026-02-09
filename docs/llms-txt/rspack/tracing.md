@@ -8,7 +8,7 @@
 
 Tracing can be enabled in two ways:
 
-* If using [@rspack/cli](/api/cli.md) or Rsbuild: Enable it by setting the `RSPACK_PROFILE` environment variable:
+- If using [@rspack/cli](/api/cli.md) or Rsbuild: Enable it by setting the `RSPACK_PROFILE` environment variable:
 
 ```sh
 # Rspack CLI
@@ -20,7 +20,7 @@ RSPACK_PROFILE=OVERVIEW rsbuild build
 RSPACK_PROFILE=ALL rsbuild build
 ```
 
-* If directly using `@rspack/core`: Enable it through `rspack.experiments.globalTrace.register` and `rspack.experiments.globalTrace.cleanup`. You can check how we implement [`RSPACK_PROFILE` in `@rspack/cli`](https://github.com/web-infra-dev/rspack/blob/9be47217b5179186b0825ca79990ab2808aa1a0f/packages/rspack-cli/src/utils/profile.ts#L219-L224) for more information.
+- If directly using `@rspack/core`: Enable it through `rspack.experiments.globalTrace.register` and `rspack.experiments.globalTrace.cleanup`. You can check how we implement [`RSPACK_PROFILE` in `@rspack/cli`](https://github.com/web-infra-dev/rspack/blob/9be47217b5179186b0825ca79990ab2808aa1a0f/packages/rspack-cli/src/utils/profile.ts#L219-L224) for more information.
 
 The generated `rspack.pftrace` file can be viewed and analyzed in [ui.perfetto.dev](https://ui.perfetto.dev/):
 
@@ -33,8 +33,8 @@ alt="tracing"
 
 Rspack supports two types of layers: `perfetto` and `logger`:
 
-* `perfetto`: The default value, generates a rspack.pftrace file conforming to the [`perfetto proto`](https://perfetto.dev/docs/reference/synthetic-track-event) format, which can be exported to perfetto for complex performance analysis
-* `logger`: Outputs logs directly to the terminal, suitable for simple log analysis or viewing compilation processes in CI environments
+- `perfetto`: The default value, generates a rspack.pftrace file conforming to the [`perfetto proto`](https://perfetto.dev/docs/reference/synthetic-track-event) format, which can be exported to perfetto for complex performance analysis
+- `logger`: Outputs logs directly to the terminal, suitable for simple log analysis or viewing compilation processes in CI environments
 
 You can specify the layer through the `RSPACK_TRACE_LAYER` environment variable:
 
@@ -48,8 +48,8 @@ RSPACK_TRACE_LAYER=perfetto
 
 You can specify the output location for traces:
 
-* The default output for the `logger` layer is `stdout`
-* The default output for the `perfetto` layer is `rspack.pftrace`
+- The default output for the `logger` layer is `stdout`
+- The default output for the `perfetto` layer is `rspack.pftrace`
 
 You can customize the output location through the `RSPACK_TRACE_OUTPUT` environment variable:
 
@@ -62,8 +62,8 @@ RSPACK_TRACE_LAYER=perfetto RSPACK_TRACE_OUTPUT=./perfetto.pftrace rspack dev
 
 You can configure the data to be filtered through `RSPACK_PROFILE`. Rspack provides two preset options:
 
-* `RSPACK_PROFILE=OVERVIEW`: The default value, only shows the core build process, generating a smaller JSON file
-* `RSPACK_PROFILE=ALL`: Includes all trace events, used for more complex analysis, generating a larger JSON file
+- `RSPACK_PROFILE=OVERVIEW`: The default value, only shows the core build process, generating a smaller JSON file
+- `RSPACK_PROFILE=ALL`: Includes all trace events, used for more complex analysis, generating a larger JSON file
 
 Apart from the presets, other strings will be passed directly to [Env Filter](https://docs.rs/tracing-subscriber/latest/tracing_subscriber/filter/struct.EnvFilter.html#example-syntax), supporting more complex filtering strategies:
 

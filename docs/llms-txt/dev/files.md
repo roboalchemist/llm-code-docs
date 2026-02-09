@@ -1,5 +1,9 @@
 # Source: https://dev.writer.com/home/files.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://dev.writer.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Manage files
 
 > Upload, download, list, and delete files with the File API. Use files in Knowledge Graphs and no-code agents.
@@ -27,9 +31,11 @@ This guide shows you how to perform the following actions:
 
 <Info>A file persists in your account until you [delete it](#delete-a-file).</Info>
 
+You can optionally provide a `graphId` query parameter to associate the uploaded file with a Knowledge Graph during upload.
+
 <CodeGroup>
   ```bash cURL theme={null}
-  curl --location --request POST "https://api.writer.com/v1/files" \
+  curl --location --request POST "https://api.writer.com/v1/files?graphId=<GRAPH_ID>" \
     --header "Content-Type: text/plain" \
     --header "Content-Disposition: attachment; filename=<FILE_NAME>" \
     --header "Authorization: Bearer $WRITER_API_KEY" \
@@ -38,6 +44,7 @@ This guide shows you how to perform the following actions:
   # Example:
   #   <FILE_NAME> = test.txt
   #   <FILE_PATH> = /path/to/test.txt
+  #   <GRAPH_ID> = 6029b226-1ee0-4239-a1b0-cdeebfa3ad5a (optional)
   ```
 
   ```python Python theme={null}
@@ -79,6 +86,12 @@ This guide shows you how to perform the following actions:
   ```
 </CodeGroup>
 
+### Query parameters
+
+| Parameter | Type     | Description                                                                    |
+| --------- | -------- | ------------------------------------------------------------------------------ |
+| `graphId` | `string` | Optional. The UUID of the Knowledge Graph to associate the uploaded file with. |
+
 ### Request body
 
 | Parameter             | Type     | Description                                                                                                                                                                                                                                                                  |
@@ -96,6 +109,10 @@ This guide shows you how to perform the following actions:
 | `name`       | `string`        | The name of the file.                                      |
 | `graph_ids`  | `array[string]` | The IDs of the Knowledge Graphs the file is attached to.   |
 | `status`     | `string`        | The processing status of the file.                         |
+
+<Info>
+  If you provide a `graphId` during upload, the file is associated with that Knowledge Graph. However, the `graph_ids` field in the upload response is an empty list. The association is visible in the `graph_ids` list when you retrieve the file using the [Get a file](#get-a-file) endpoint.
+</Info>
 
 ```json  theme={null}
 {

@@ -1,4 +1,8 @@
-# Source: https://docs.exa.ai/examples/exa-rag.md
+# Source: https://exa.ai/docs/examples/exa-rag.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://exa.ai/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # RAG Q&A
 
@@ -64,8 +68,7 @@ Robust retrieval helps solve all of these issues by providing quality sources of
 ```Python Python theme={null}
 # Parameters for our Highlights search
 highlights_options  = {
-    "num_sentences": 7, # how long our highlights should be
-    "highlights_per_url": 1, # just get the best highlight for each URL
+    "max_characters": 2000, # control the total length of highlight text returned
 }
 
 # Let the magic happen!
@@ -274,8 +277,3 @@ https://rationalwiki.org/wiki/Georgism
 ```
 
 Using Exa, we can easily find related papers, either for further research or to provide a source for our claims. This is just a brief intro into what Exa can do. For a look at how you can leverage getting full contents, check out [Contents Retrieval](/reference/contents-retrieval).
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.exa.ai/llms.txt

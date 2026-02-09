@@ -1,12 +1,13 @@
 # Source: https://turbo.build/guides/tools/jest.md
 
 # Jest
-Description: Learn how to use Jest in a Turborepo.
 
-import { Callout } from '#components/callout';
-import { File, Folder, Files } from '#components/files';
-import { Tabs, Tab } from 'fumadocs-ui/components/tabs';
-import { CreateTurboCallout } from './create-turbo-callout.tsx';
+<CopyPrompt
+  title="Set up Jest in a Turborepo"
+  prompt={
+  "Set up Jest in this Turborepo.\n1) Install Jest where needed\n2) Create test scripts\n3) Set up testing in turbo.json\n\nWalk me through each step."
+}
+/>
 
 [Jest](https://jestjs.io/) is a common test runner with a vast ecosystem. Integrating with Turborepo will lead to enormous speed-ups.
 
@@ -32,7 +33,7 @@ Let's say we have a monorepo that looks like this:
 
 Install `jest` into the packages where you plan on having test suites. For this example, we will have tests in `web` and `@repo/ui`:
 
-<Tabs groupId="package-manager" items={['pnpm', 'yarn', 'npm', 'bun']} persist>
+<PackageManagerTabs>
   <Tab value="pnpm">
     ```bash title="Terminal"
     pnpm add jest --save-dev --filter=@repo/ui --filter=web
@@ -58,7 +59,7 @@ Install `jest` into the packages where you plan on having test suites. For this 
     cd packages/ui && bun install jest --dev
     ```
   </Tab>
-</Tabs>
+</PackageManagerTabs>
 
 Both the `apps/web` and `packages/ui` have their own test suites, so we'll add a `test` script to their `package.json`:
 
@@ -182,3 +183,7 @@ You can now either run this task using [global `turbo`](/docs/getting-started/in
     ```
   </Tab>
 </Tabs>
+
+---
+
+[View full sitemap](/sitemap.md)

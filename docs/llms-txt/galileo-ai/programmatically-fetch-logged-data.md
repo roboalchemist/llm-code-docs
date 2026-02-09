@@ -1,10 +1,14 @@
 # Source: https://docs.galileo.ai/galileo/gen-ai-studio-products/galileo-evaluate/how-to/programmatically-fetch-logged-data.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.galileo.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Programmatically fetch logged data
 
 > If you want to fetch your logged data and metrics programmatically, you can do so via our Python clients.
 
-```py
+```py  theme={null}
 
 import promptquality as pq
 pq.login({YOUR CONSOLE URL})

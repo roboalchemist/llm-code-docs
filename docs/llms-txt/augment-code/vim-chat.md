@@ -1,5 +1,9 @@
 # Source: https://docs.augmentcode.com/vim/using-augment/vim-chat.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.augmentcode.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Chat
 
 > Use Chat to explore your codebase, quickly get up to speed on unfamiliar code, and get help working through a technical problem.

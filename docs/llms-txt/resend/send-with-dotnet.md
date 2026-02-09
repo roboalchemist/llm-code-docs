@@ -1,5 +1,9 @@
 # Source: https://resend.com/docs/send-with-dotnet.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://resend.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Send emails with .NET
 
 > Learn how to send your first email using the Resend .NET SDK.
@@ -22,11 +26,11 @@ Prefer watching a video? Check out our video walkthrough below.
 ## 1. Install
 
 <CodeGroup>
-  ```bash dotnet CLI theme={null}
+  ```bash dotnet CLI theme={"theme":{"light":"github-light","dark":"vesper"}}
   dotnet add package Resend
   ```
 
-  ```bash Visual Studio (Package Manager Console) theme={null}
+  ```bash Visual Studio (Package Manager Console) theme={"theme":{"light":"github-light","dark":"vesper"}}
   PM> Install-Package Resend
   ```
 </CodeGroup>
@@ -35,7 +39,7 @@ Prefer watching a video? Check out our video walkthrough below.
 
 In the startup of your application, configure the DI container as follows:
 
-```csharp  theme={null}
+```csharp  theme={"theme":{"light":"github-light","dark":"vesper"}}
 using Resend;
 
 builder.Services.AddOptions();
@@ -49,7 +53,7 @@ builder.Services.AddTransient<IResend, ResendClient>();
 
 Send an email using the injected `IResend` instance:
 
-```csharp  theme={null}
+```csharp  theme={"theme":{"light":"github-light","dark":"vesper"}}
 using Resend;
 
 public class FeatureImplementation

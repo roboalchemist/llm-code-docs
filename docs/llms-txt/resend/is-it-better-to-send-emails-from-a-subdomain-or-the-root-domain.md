@@ -1,5 +1,9 @@
 # Source: https://resend.com/docs/knowledge-base/is-it-better-to-send-emails-from-a-subdomain-or-the-root-domain.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://resend.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Is it better to send emails from a subdomain or the root domain?
 
 > Discover why sending emails from a subdomain can be better than using a root domain.

@@ -1,5 +1,9 @@
 # Source: https://docs.helicone.ai/getting-started/self-host/kubernetes.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.helicone.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Kubernetes Self-Hosting
 
 > Deploy Helicone using Kubernetes and Helm. Quick setup guide for running a containerized instance of the LLM observability platform on your Kubernetes cluster.

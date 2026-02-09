@@ -1,5 +1,9 @@
 # Source: https://docs.fireflies.ai/schema/askfred-message.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.fireflies.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # AskFredMessage
 
 > Schema definition for individual messages in AskFred conversation threads
@@ -100,8 +104,3 @@ Concise text without any formatting, suitable for systems that don't support mar
     Response wrapper for newly created messages
   </Card>
 </CardGroup>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.fireflies.ai/llms.txt

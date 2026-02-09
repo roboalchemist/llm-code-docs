@@ -1,5 +1,9 @@
 # Source: https://docs.pipecat.ai/server/services/memory/mem0.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pipecat.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Mem0
 
 > Long-term conversation memory service powered by Mem0
@@ -62,8 +66,3 @@ Before using Mem0 memory services, you need:
 * **Context Retrieval**: Automatic retrieval of relevant past conversations
 * **User Association**: Memory tied to specific users for personalization
 * **Session Management**: Track conversations across different runs and agents
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.pipecat.ai/llms.txt

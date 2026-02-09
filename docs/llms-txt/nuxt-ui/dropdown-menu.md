@@ -10,7 +10,9 @@ Use a [Button](/docs/components/button) or any other component in the default sl
 
 ```vue
 <script setup lang="ts">
-const items = ref<undefined>([
+import type { DropdownMenuItem } from '@nuxt/ui'
+
+const items = ref<DropdownMenuItem[][]>([
   [
     {
       label: 'Benjamin',
@@ -247,17 +249,11 @@ const items = ref<DropdownMenuItem[][]>([
 </template>
 ```
 
-<note>
+> [!NOTE]
+> You can also pass an array of arrays to the `items` prop to create separated groups of items.
 
-You can also pass an array of arrays to the `items` prop to create separated groups of items.
-
-</note>
-
-<tip>
-
-Each item can take a `children` array of objects with the same properties as the `items` prop to create a nested menu which can be controlled using the `open`, `defaultOpen` and `content` properties.
-
-</tip>
+> [!TIP]
+> Each item can take a `children` array of objects with the same properties as the `items` prop to create a nested menu which can be controlled using the `open`, `defaultOpen` and `content` properties.
 
 ### Content
 
@@ -352,17 +348,11 @@ const items = ref<DropdownMenuItem[]>([
 </template>
 ```
 
-<warning>
+> [!WARNING]
+> The `size` prop will not be proxied to the Button, you need to set it yourself.
 
-The `size` prop will not be proxied to the Button, you need to set it yourself.
-
-</warning>
-
-<note>
-
-When using the same size, the DropdownMenu items will be perfectly aligned with the Button.
-
-</note>
+> [!NOTE]
+> When using the same size, the DropdownMenu items will be perfectly aligned with the Button.
 
 ### Modal
 
@@ -483,11 +473,8 @@ const items = computed(() => [{
 </template>
 ```
 
-<note>
-
-To ensure reactivity for the `checked` state of items, it's recommended to wrap your `items` array inside a `computed`.
-
-</note>
+> [!NOTE]
+> To ensure reactivity for the `checked` state of items, it's recommended to wrap your `items` array inside a `computed`.
 
 ### With color items
 
@@ -564,17 +551,8 @@ const items: DropdownMenuItem[] = [
 </template>
 ```
 
-<note>
-
-In this example, leveraging [`defineShortcuts`](/docs/composables/define-shortcuts), you can toggle the DropdownMenu by pressing <kbd value="O">
-
-
-
-</kbd>
-
-.
-
-</note>
+> [!NOTE]
+> In this example, leveraging [`defineShortcuts`](/docs/composables/define-shortcuts), you can toggle the DropdownMenu by pressing .
 
 ### With custom slot
 
@@ -617,11 +595,9 @@ const items = [
 </template>
 ```
 
-<tip to="#slots">
-
-You can also use the `#item`, `#item-leading`, `#item-label` and `#item-trailing` slots to customize all items.
-
-</tip>
+> [!TIP]
+> See: #slots
+> You can also use the `#item`, `#item-leading`, `#item-label` and `#item-trailing` slots to customize all items.
 
 ### With trigger content width
 
@@ -670,29 +646,24 @@ const items: DropdownMenuItem[][] = [
 </template>
 ```
 
-<tip>
-
-You can also change the content width globally in your `app.config.ts`:
-
-```text
-export default defineAppConfig({
-  ui: {
-    dropdownMenu: {
-      slots: {
-        content: 'w-(--reka-dropdown-menu-trigger-width)'
-      }
-    }
-  }
-})
-```
-
-</tip>
+> [!TIP]
+> You can also change the content width globally in your `app.config.ts`:
+> ```text
+> export default defineAppConfig({
+>   ui: {
+>     dropdownMenu: {
+>       slots: {
+>         content: 'w-(--reka-dropdown-menu-trigger-width)'
+>       }
+>     }
+>   }
+> })
+> 
+> ```
 
 ### Extract shortcuts
 
-When you have some items with `kbds` property (displaying some [Kbd](/docs/components/kbd)), you can easily make them work with the [defineShortcuts](/docs/composables/define-shortcuts) composable.
-
-Inside the `defineShortcuts` composable, there is an `extractShortcuts` utility that will extract the shortcuts recursively from the items and return an object that you can pass to `defineShortcuts`. It will automatically call the `select` function of the item when the shortcut is pressed.
+Use the [extractShortcuts](/docs/composables/extract-shortcuts) utility to automatically define shortcuts from menu items with a `kbds` property. It recursively extracts shortcuts and returns an object compatible with [defineShortcuts](/docs/composables/define-shortcuts).
 
 ```vue
 <script setup lang="ts">
@@ -729,47 +700,8 @@ defineShortcuts(extractShortcuts(items))
 </script>
 ```
 
-<note>
-
-In this example, <kbd value="meta">
-
-
-
-</kbd>
-
- <kbd value="E">
-
-
-
-</kbd>
-
-, <kbd value="meta">
-
-
-
-</kbd>
-
- <kbd value="I">
-
-
-
-</kbd>
-
- and <kbd value="meta">
-
-
-
-</kbd>
-
- <kbd value="N">
-
-
-
-</kbd>
-
- would trigger the `select` function of the corresponding item.
-
-</note>
+> [!NOTE]
+> In this example,  ,   and   would trigger the `select` function of the corresponding item.
 
 ## API
 
@@ -781,21 +713,21 @@ In this example, <kbd value="meta">
  */
 interface DropdownMenuProps {
   size?: "sm" | "md" | "xs" | "lg" | "xl" | undefined;
-  items?: ArrayOrNested<DropdownMenuItem> | undefined;
+  items?: T | undefined;
   /**
    * The icon displayed when an item is checked.
    */
-  checkedIcon?: string | object | undefined;
+  checkedIcon?: any;
   /**
    * The icon displayed when an item is loading.
    */
-  loadingIcon?: string | object | undefined;
+  loadingIcon?: any;
   /**
    * The icon displayed when the item is an external link.
    * Set to `false` to hide the external icon.
    * @default "true"
    */
-  externalIcon?: string | boolean | object | undefined;
+  externalIcon?: any;
   /**
    * The content of the menu.
    */
@@ -813,12 +745,12 @@ interface DropdownMenuProps {
    * The key used to get the label from the item.
    * @default "\"label\""
    */
-  labelKey?: GetItemKeys<ArrayOrNested<DropdownMenuItem>> | undefined;
+  labelKey?: GetItemKeys<T> | undefined;
   /**
    * The key used to get the description from the item.
    * @default "\"description\""
    */
-  descriptionKey?: GetItemKeys<ArrayOrNested<DropdownMenuItem>> | undefined;
+  descriptionKey?: GetItemKeys<T> | undefined;
   disabled?: boolean | undefined;
   ui?: { content?: ClassNameValue; viewport?: ClassNameValue; arrow?: ClassNameValue; group?: ClassNameValue; label?: ClassNameValue; separator?: ClassNameValue; item?: ClassNameValue; itemLeadingIcon?: ClassNameValue; itemLeadingAvatar?: ClassNameValue; itemLeadingAvatarSize?: ClassNameValue; itemTrailing?: ClassNameValue; itemTrailingIcon?: ClassNameValue; itemTrailingKbds?: ClassNameValue; itemTrailingKbdsSize?: ClassNameValue; itemWrapper?: ClassNameValue; itemLabel?: ClassNameValue; itemDescription?: ClassNameValue; itemLabelExternalIcon?: ClassNameValue; } | undefined;
   /**
@@ -1081,8 +1013,4 @@ export default defineAppConfig({
 
 ## Changelog
 
-<component-changelog>
-
-
-
-</component-changelog>
+See the [releases page](https://github.com/nuxt/ui/releases) for the latest changes.

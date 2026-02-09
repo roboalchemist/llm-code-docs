@@ -1,8 +1,125 @@
-# Source: https://docs.tavily.com/changelog/changelog.md
+# Source: https://docs.tavily.com/changelog.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.tavily.com/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Changelog
 
 <AccordionGroup>
+  <Accordion title="Project tracking with X-Project-ID header" icon="rocket" description="January 2026">
+    <b><br />Track API usage by project with the new <code>X-Project-ID</code> header</b><br />
+
+    <ul>
+      <li>
+        You can now attach a Project ID to your API requests to organize and track usage by project. This is useful when a single API key is used across multiple projects or applications.
+      </li>
+
+      <li>
+        <b>HTTP Header:</b> Add <code>X-Project-ID: your-project-id</code> to any API request
+      </li>
+
+      <li>
+        <b>Python SDK:</b> Pass <code>project\_id="your-project-id"</code> when instantiating the client, or set the <code>TAVILY\_PROJECT</code> environment variable
+      </li>
+
+      <li>
+        <b>JavaScript SDK:</b> Pass <code>projectId: "your-project-id"</code> when instantiating the client, or set the <code>TAVILY\_PROJECT</code> environment variable
+      </li>
+
+      <li>
+        An API key can be associated with multiple projects
+      </li>
+
+      <li>
+        Filter requests by project in the <a href="/documentation/api-reference/endpoint/usage">/logs endpoint</a> and platform usage dashboard to keep track of where requests originate from
+      </li>
+    </ul>
+  </Accordion>
+
+  <Accordion title="New search_depth options fast and ultra-fast (BETA)" icon="rocket" description="December 2025">
+    <b><br /><a href="/documentation/api-reference/endpoint/search#body-search-depth"><code>search\_depth</code> parameter</a> - New options: <code>fast</code> and <code>ultra-fast</code></b><br />
+
+    <ul>
+      <li>
+        <b><code>fast</code> (BETA)</b><br />
+
+        <ul>
+          <li>Optimized for low latency while maintaining high relevance to the user query</li>
+          <li><b>Cost:</b> 1 API Credit</li>
+        </ul>
+      </li>
+
+      <li>
+        <b><code>ultra-fast</code> (BETA)</b><br />
+
+        <ul>
+          <li>Optimized strictly for latency</li>
+          <li><b>Cost:</b> 1 API Credit</li>
+        </ul>
+      </li>
+    </ul>
+  </Accordion>
+
+  <Accordion title="Intent Based Extraction" icon="rocket" description="December 2025">
+    <b><br /><a href="/documentation/api-reference/endpoint/extract#body-query"><code>query</code></a> and <a href="/documentation/api-reference/endpoint/extract#body-chunks-per-source"><code>chunks\_per\_source</code></a> parameters for Extract and Crawl</b><br />
+
+    <ul>
+      <li>
+        <b><code>query</code> (Extract)</b><br />
+
+        <ul>
+          <li><b>Type:</b> <code>string</code></li>
+          <li>User intent for reranking extracted content chunks. When provided, chunks are reranked based on relevance to this query.</li>
+        </ul>
+      </li>
+
+      <li>
+        <b><code>chunks\_per\_source</code> (Extract & Crawl)</b><br />
+
+        <ul>
+          <li><b>Type:</b> <code>integer</code></li>
+          <li><b>Range:</b> 1 to 5</li>
+          <li><b>Default:</b> 3</li>
+          <li>Chunks are short content snippets (maximum 500 characters each) pulled directly from the source.</li>
+          <li>Use <code>chunks\_per\_source</code> to define the maximum number of relevant chunks returned per source and to control the <code>raw\_content</code> length.</li>
+          <li>Chunks will appear in the <code>raw\_content</code> field as: <code>\<chunk 1> \[...] \<chunk 2> \[...] \<chunk 3></code>.</li>
+          <li>Available only when <code>query</code> is provided (Extract) or <code>instructions</code> are provided (Crawl).</li>
+        </ul>
+      </li>
+    </ul>
+  </Accordion>
+
+  <Accordion title="Include usage parameter" icon="rocket" description="December 2025">
+    <b><br /><a href="/documentation/api-reference/endpoint/search#body-include-usage"><code>include\_usage</code> parameter</a></b><br />
+
+    <ul>
+      <li>
+        You can now include credit usage information in the API response for the <a href="/documentation/api-reference/endpoint/search#body-include-usage">Search</a>, <a href="/documentation/api-reference/endpoint/extract#body-include-usage">Extract</a>, <a href="/documentation/api-reference/endpoint/crawl#body-include-usage">Crawl</a>, and <a href="/documentation/api-reference/endpoint/map#body-include-usage">Map</a> endpoints.
+      </li>
+
+      <li>
+        Set the <code>include\_usage</code> parameter to <code>true</code> to receive credit usage information in the API response.
+      </li>
+
+      <li>
+        <b>Type:</b> <code>boolean</code>
+      </li>
+
+      <li>
+        <b>Default:</b> <code>false</code>
+      </li>
+
+      <li>
+        When enabled, the response includes a <code>usage</code> object with <code>credits</code> information, making it easy to track API credit consumption for each request.
+      </li>
+
+      <li>
+        <b>Note:</b> The value may be 0 if the total successful calls have not yet reached the minimum threshold. See our <a href="/documentation/api-credits">Credits & Pricing documentation</a> for details.
+      </li>
+    </ul>
+  </Accordion>
+
   <Accordion title="Vercel AI SDK v5 integration" icon="rocket" description="November 2025">
     <b><br /><a href="/documentation/integrations/vercel">Tavily is now integrated with Vercel AI SDK v5</a></b><br />
 
@@ -171,15 +288,14 @@
     </ul>
   </Accordion>
 
-  <Accordion title="Auto parameters (BETA)" icon="rocket" description="June 2025">
-    <b>Tavily Search<br /><a href="/documentation/api-reference/endpoint/search#body-auto-parameters"><code>auto\_parameters</code> (BETA)</a></b><br />
+  <Accordion title="Auto parameters" icon="rocket" description="June 2025">
+    <b>Tavily Search<br /><a href="/documentation/api-reference/endpoint/search#body-auto-parameters"><code>auto\_parameters</code></a></b><br />
 
     <ul>
       <li><b>Boolean default:</b> <code>false</code></li>
       <li>When <code>auto\_parameters</code> is enabled, Tavily automatically configures search parameters based on your query's content and intent. You can still set other parameters manually, and your explicit values will override the automatic ones.</li>
       <li>The parameters <code>include\_answer</code>, <code>include\_raw\_content</code>, and <code>max\_results</code> must always be set manually, as they directly affect response size.</li>
       <li><b>Note:</b> <code>search\_depth</code> may be automatically set to <code>advanced</code> when it's likely to improve results. This uses <b>2 API credits per request</b>. To avoid the extra cost, you can explicitly set <code>search\_depth</code> to <code>basic</code>.</li>
-      <li>Currently in <b>BETA</b>.</li>
     </ul>
   </Accordion>
 
@@ -281,8 +397,3 @@
     </ul>
   </Accordion>
 </AccordionGroup>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.tavily.com/llms.txt

@@ -1,5 +1,9 @@
 # Source: https://docs.pinecone.io/troubleshooting/contact-support.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pinecone.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Contact Support
 
 Pinecone Support is available to customers on the **Standard** billing plan.

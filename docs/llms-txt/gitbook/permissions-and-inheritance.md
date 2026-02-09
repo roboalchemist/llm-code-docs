@@ -1,8 +1,4 @@
-# Source: https://gitbook.com/docs/documentation/zh/zhang-hu-guan-li/member-management/permissions-and-inheritance.md
-
-# Source: https://gitbook.com/docs/documentation/fr/gestion-du-compte/member-management/permissions-and-inheritance.md
-
-# Source: https://gitbook.com/docs/account-management/member-management/permissions-and-inheritance.md
+# Source: https://gitbook.com/docs/documentation/ja-gitbook-documentation/akaunto/member-management/permissions-and-inheritance.md
 
 # Source: https://gitbook.com/docs/documentation/zh/zhang-hu-guan-li/member-management/permissions-and-inheritance.md
 

@@ -1,5 +1,9 @@
 # Source: https://docs.zapier.com/platform/quickstart/ui-vs-cli.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.zapier.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Platform UI vs Platform CLI
 
 > There are two different developer tools to build either private or public integrations with on the Zapier Developer Platform: Platform UI or Platform CLI.

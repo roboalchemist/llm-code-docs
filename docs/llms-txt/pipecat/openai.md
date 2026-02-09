@@ -8,25 +8,9 @@
 
 # Source: https://docs.pipecat.ai/server/services/image-generation/openai.md
 
-# Source: https://docs.pipecat.ai/server/services/tts/openai.md
-
-# Source: https://docs.pipecat.ai/server/services/stt/openai.md
-
-# Source: https://docs.pipecat.ai/server/services/s2s/openai.md
-
-# Source: https://docs.pipecat.ai/server/services/llm/openai.md
-
-# Source: https://docs.pipecat.ai/server/services/image-generation/openai.md
-
-# Source: https://docs.pipecat.ai/server/services/tts/openai.md
-
-# Source: https://docs.pipecat.ai/server/services/stt/openai.md
-
-# Source: https://docs.pipecat.ai/server/services/s2s/openai.md
-
-# Source: https://docs.pipecat.ai/server/services/llm/openai.md
-
-# Source: https://docs.pipecat.ai/server/services/image-generation/openai.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pipecat.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # OpenAI Image Generation
 
@@ -72,8 +56,3 @@ Before using OpenAI image generation services, you need:
 ### Required Environment Variables
 
 * `OPENAI_API_KEY`: Your OpenAI API key for authentication
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.pipecat.ai/llms.txt

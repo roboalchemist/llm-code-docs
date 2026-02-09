@@ -2,10 +2,7 @@
 
 # Upload References
 
-```
-POST 
-/v1/code-references
-```
+Copy page
 
 ## Request[​](#request "Direct link to Request")
 

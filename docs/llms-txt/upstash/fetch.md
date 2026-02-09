@@ -10,149 +10,58 @@
 
 # Source: https://upstash.com/docs/search/sdks/py/commands/fetch.md
 
-# Source: https://upstash.com/docs/vector/sdks/ts/commands/fetch.md
-
-# Source: https://upstash.com/docs/vector/sdks/py/example_calls/fetch.md
-
-# Source: https://upstash.com/docs/vector/sdks/php/commands/fetch.md
-
-# Source: https://upstash.com/docs/vector/api/endpoints/fetch.md
-
-# Source: https://upstash.com/docs/search/sdks/ts/commands/fetch.md
-
-# Source: https://upstash.com/docs/search/sdks/py/commands/fetch.md
-
-# Source: https://upstash.com/docs/vector/sdks/ts/commands/fetch.md
-
-# Source: https://upstash.com/docs/vector/sdks/py/example_calls/fetch.md
-
-# Source: https://upstash.com/docs/vector/sdks/php/commands/fetch.md
-
-# Source: https://upstash.com/docs/vector/api/endpoints/fetch.md
-
-# Source: https://upstash.com/docs/search/sdks/ts/commands/fetch.md
-
-# Source: https://upstash.com/docs/search/sdks/py/commands/fetch.md
-
-# Source: https://upstash.com/docs/vector/sdks/ts/commands/fetch.md
-
-# Source: https://upstash.com/docs/vector/sdks/py/example_calls/fetch.md
-
-# Source: https://upstash.com/docs/vector/sdks/php/commands/fetch.md
-
-# Source: https://upstash.com/docs/vector/api/endpoints/fetch.md
-
-# Source: https://upstash.com/docs/search/sdks/ts/commands/fetch.md
-
-# Source: https://upstash.com/docs/search/sdks/py/commands/fetch.md
-
-# Source: https://upstash.com/docs/vector/sdks/ts/commands/fetch.md
-
-# Source: https://upstash.com/docs/vector/sdks/py/example_calls/fetch.md
-
-# Source: https://upstash.com/docs/vector/sdks/php/commands/fetch.md
-
-# Source: https://upstash.com/docs/vector/api/endpoints/fetch.md
-
-# Source: https://upstash.com/docs/search/sdks/ts/commands/fetch.md
-
-# Source: https://upstash.com/docs/search/sdks/py/commands/fetch.md
-
-# Source: https://upstash.com/docs/vector/sdks/ts/commands/fetch.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Fetch
 
-Used to retrieve the vector by ID.
+## Fetch Command for Python SDK
 
-## Arguments
+Used to retrieve documents by their IDs.
 
-<ResponseField name="IDs" type="string[] | number[]" required>
-  The IDs of the vectors you want to fetch.
-</ResponseField>
-
-**OR**
+### Arguments
 
 <ResponseField name="FetchPayload" type="object" required>
   <Expandable defaultOpen="true">
-    <ResponseField name="ids" type="string[] | number[]">
-      The IDs of the vectors you want to fetch.
+    <ResponseField name="ids" type="string[]">
+      The IDs of the documents you want to fetch.
     </ResponseField>
 
     <ResponseField name="prefix" type="string">
-      An id prefix to match vector IDs.
-
-      <Warning>
-        For fetching larger datasets with prefix, it is recommended to use the
-        paginated `range` command instead.
-      </Warning>
+      An ID prefix to match document IDs.
     </ResponseField>
   </Expandable>
 </ResponseField>
 
-<ResponseField name="Options" type="Object">
-  <Expandable defaultOpen="true">
-    <ResponseField name="includeMetadata" type="boolean">
-      Whether to include the metadata of the vectors in the response. Setting
-      this `true` would be the best practice, since it will make it easier to
-      identify the vectors.
-    </ResponseField>
+### Response
 
-    <ParamField body="includeVectors" type="boolean">
-      Whether to include the vector themselves in the response.
-    </ParamField>
-
-    <ParamField body="includeData" type="boolean">
-      Whether to include [the data field](/vector/features/metadata#data) in the
-      response.
-    </ParamField>
-
-    <ResponseField name="namespace" type="string">
-      Namespace to fetch from. If not set, default namespace is used.
-    </ResponseField>
-  </Expandable>
-</ResponseField>
-
-## Response
-
-<ResponseField name="FetchResult[]" type="Vector[]" required>
-  This field is `null` if no vector with the specified id is found.
+<ResponseField name="Documents" type="List[Document]" required>
+  This field is `null` if no document with the specified ID is found.
 
   <Expandable defaultOpen="true">
     <ResponseField name="id" type="string | number" required>
-      The ID of the resulting vector. <br />
+      The ID of the resulting document.
     </ResponseField>
 
-    <ResponseField name="vector" type="number[]">
-      The vectors (if `includeVectors` is set to true)
-    </ResponseField>
-
-    <ResponseField name="sparseVector" type="SparseVector">
-      The resulting sparseVector (if `includeVectors` is set to true)
+    <ResponseField name="content" type="Record<string, unknown>">
+      The main content of the document.
     </ResponseField>
 
     <ResponseField name="metadata" type="Record<string, unknown>">
-      The metadata of the vectors (if `includeMetadata` is set to true)
-    </ResponseField>
-
-    <ResponseField name="data" type="string">
-      The data of the vector (if `includeData` is set to true)
+      Additional metadata for the document.
     </ResponseField>
   </Expandable>
 </ResponseField>
 
 <RequestExample>
-  ```typescript Basic theme={"system"}
-  await index.fetch(["2", "3"]);
-  // [{ id: "2" }, { id: "3" }]
+  ```python By ID theme={"system"}
+  documents = index.fetch(ids=["movie-0", "movie-1"])
+  print(documents)
   ```
 
-  ```typescript Vector Not Found theme={"system"}
-  await index.fetch(["2", "3"]);
-  // [{ id: "2" }, null]
-  ```
-
-  ```typescript ID prefix theme={"system"}
-  await index.fetch({ prefix: "test-" });
-  // [{ id: "test-1" }, { id: "test-2" }, { id: "test-3" }]
+  ```python ID Prefix theme={"system"}
+  documents = index.fetch(prefix=["movie-"])
+  print(documents)
   ```
 </RequestExample>

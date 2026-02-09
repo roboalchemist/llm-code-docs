@@ -1,5 +1,9 @@
 # Source: https://docs.replit.com/billing/teams-billing/cancellation.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.replit.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Cancellation
 
 > Learn how to cancel your organization subscription and understand what happens to your resources when you delete your organization.

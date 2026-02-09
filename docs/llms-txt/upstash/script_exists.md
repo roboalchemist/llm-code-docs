@@ -2,23 +2,9 @@
 
 # Source: https://upstash.com/docs/redis/sdks/py/commands/scripts/script_exists.md
 
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/scripts/script_exists.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/scripts/script_exists.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/scripts/script_exists.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/scripts/script_exists.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/scripts/script_exists.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/scripts/script_exists.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/scripts/script_exists.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/scripts/script_exists.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/scripts/script_exists.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # SCRIPT EXISTS
 
@@ -26,21 +12,20 @@
 
 ## Arguments
 
-<ParamField body="hashes" type="string[]" required>
+<ParamField body="hashes" type="List[str]" required>
   The sha1 of the scripts to check.
 </ParamField>
 
 ## Response
 
-<ResponseField type="number[]" required>
-  An array of numbers. `1` if the script exists, otherwise `0`.
+<ResponseField type="List[bool]" required>
+  A list of booleans indicating if the script exists in the script cache.
 </ResponseField>
 
 <RequestExample>
-  ```ts Example theme={"system"}
-  await redis.scriptExists("<sha1>", "<sha2>")
-
-  // Returns 1 
-  // [1, 0]
+  ```py Example theme={"system"}
+  # Script 1 exists
+  # Script 0 does not
+  await redis.scriptExists("<sha1>", "<sha2>") == [1, 0]
   ```
 </RequestExample>

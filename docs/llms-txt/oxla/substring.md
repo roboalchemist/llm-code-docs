@@ -1,5 +1,9 @@
 # Source: https://docs.oxla.com/sql-reference/sql-functions/string-functions/substring.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.oxla.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # SUBSTRING
 
 <Warning>SUBSTR is an alias for SUBSTRING. Learn more at [SUBSTR](/sql-reference/sql-functions/string-functions/substr) documentation.</Warning>

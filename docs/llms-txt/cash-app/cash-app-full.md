@@ -148,7 +148,7 @@ Some customers qualify for Pay Monthly, which offers credit with interest payabl
 * There is no interest with Pay-in-4 and no fees when customers pay on time. Customers who qualify can use Pay Monthly, where payment is spread over 3, 6, 12 or 24 months with interest.
 * Customers can use their Cash App account to pay for purchases in four installments
 
-<img src="file:108a575b-b42b-4787-96c1-9b67a15368be" alt="cash-app-afterpay-landing-content" noZoom />
+<img src="https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/cash-app-afterpay-landing-2.png" alt="cash-app-afterpay-landing-content" noZoom />
 
 ## How is Cash App Afterpay different from Afterpay?
 
@@ -172,7 +172,7 @@ For merchants who previously offered Afterpay to US customers, Cash App Afterpay
    to the allowlist.
 </Warning>
 
-<img src="file:d905ca8f-83b9-4fca-9e61-08dfceadaab5" alt="Checking out with Cash App Afterpay" noZoom />
+<img src="https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/content - showcase messaging2.png" alt="Checking out with Cash App Afterpay" noZoom />
 
 ### Migrate to Cash App Afterpay
 
@@ -406,17 +406,17 @@ Settlement Reports explain in detail all payments made by Cash App Afterpay to y
 
 You can view and export your settlement files in the reconciliation tab of the [Business Hub](https://hub.us.afterpay.com/us).
 
-<img src="file:1c8e90e2-7e8d-4efa-b537-997b26811750" alt="Viewing Settlement Reports.png" noZoom />
+<img src="https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/Viewing Settlement Reports-3.png" alt="Viewing Settlement Reports.png" noZoom />
 
 You can export your settlement files using the Settlement Export option For additional download options, such as API requests, contact your account manager.
 
-<img src="file:36219b1c-0e69-4564-8131-8cf5246001f1" alt="Downloading the Settlement Report.png" noZoom />
+<img src="https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/Downloading the Settlement Report-3.png" alt="Downloading the Settlement Report.png" noZoom />
 
 ## Download tax invoices
 
 You can also download monthly invoices for tax reporting purposes. To download a tax invoice, select **Tax invoice** button in the reconciliation tab. Configure the details of your settlement report and click **Download**.
 
-<img src="file:ebb25579-5f68-4211-b068-e5d64437d9c5" alt="Tax Invoices - Modal.png" noZoom />
+<img src="https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/Tax Invoices - Modal-2.png" alt="Tax Invoices - Modal.png" noZoom />
 
 ## Settlement report fields
 
@@ -668,7 +668,7 @@ The extension is on GitHub. Do the following:
 
 2. Under the green *Code* heading, click **Download ZIP**. See the screenshot below:
 
-   <img src="file:43a48300-16d0-42ab-9e6c-38d1dcc7c28b" alt="adobe-comm-manual-install.png" noZoom />
+   <img src="https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/adobe-comm-manual-install.png" alt="adobe-comm-manual-install.png" noZoom />
 
 3. Unzip your files and put them into a temporary folder.
 
@@ -718,8 +718,8 @@ The table below has examples of the changes:
 
 |         | Afterpay                                                | Cash App Afterpay                                       |
 | ------- | ------------------------------------------------------- | ------------------------------------------------------- |
-| Logos   | <img src="file:66aa6b55-dbe1-457f-9030-ad900067b2b6" /> | <img src="file:83cf832e-575a-437a-a06b-0a3d2cbeb8d6" /> |
-| Buttons | <img src="file:a9fe4555-2028-4262-9ed2-27046a72b6a9" /> | <img src="file:7a7816fc-8599-4637-b81d-a6538826d39c" /> |
+| Logos   | <img src="https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/ap-logo-resized.png" /> | <img src="https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/caap-white-logo-resized.png" /> |
+| Buttons | <img src="https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/ap-button.png" /> | <img src="https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/caap-button.png" /> |
 
 ## Messaging
 
@@ -729,7 +729,7 @@ See the table below for an example of the changes:
 
 | Afterpay                                                | Cash App Afterpay                                       |
 | ------------------------------------------------------- | ------------------------------------------------------- |
-| <img src="file:ad9d3eec-de71-4924-8d18-3eadfa713672" /> | <img src="file:3d144b45-b232-4c21-a0ec-98cd4663fbdf" /> |
+| <img src="https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/ap-mess-2.png" /> | <img src="https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/caap-mess-1.png" /> |
 
 The automatic Messaging update includes changes to *learn more*/lightbox asset if you use that.
 
@@ -756,8 +756,8 @@ The table below has examples of the changes:
 
 |         | Afterpay                                                | Cash App Afterpay                                       |
 | ------- | ------------------------------------------------------- | ------------------------------------------------------- |
-| Logos   | <img src="file:66aa6b55-dbe1-457f-9030-ad900067b2b6" /> | <img src="file:83cf832e-575a-437a-a06b-0a3d2cbeb8d6" /> |
-| Buttons | <img src="file:a9fe4555-2028-4262-9ed2-27046a72b6a9" /> | <img src="file:7a7816fc-8599-4637-b81d-a6538826d39c" /> |
+| Logos   | <img src="https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/ap-logo-resized.png" /> | <img src="https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/caap-white-logo-resized.png" /> |
+| Buttons | <img src="https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/ap-button.png" /> | <img src="https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/caap-button.png" /> |
 
 ## Messaging
 
@@ -767,7 +767,7 @@ See the table below for an example of the changes:
 
 | Afterpay                                                | Cash App Afterpay                                       |
 | ------------------------------------------------------- | ------------------------------------------------------- |
-| <img src="file:ad9d3eec-de71-4924-8d18-3eadfa713672" /> | <img src="file:3d144b45-b232-4c21-a0ec-98cd4663fbdf" /> |
+| <img src="https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/ap-mess-2.png" /> | <img src="https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/caap-mess-1.png" /> |
 
 The automatic Messaging update includes changes to *learn more*/lightbox asset if you use that.
 
@@ -794,8 +794,8 @@ The table below has examples of the changes:
 
 |         | Afterpay                                                | Cash App Afterpay                                       |
 | ------- | ------------------------------------------------------- | ------------------------------------------------------- |
-| Logos   | <img src="file:66aa6b55-dbe1-457f-9030-ad900067b2b6" /> | <img src="file:83cf832e-575a-437a-a06b-0a3d2cbeb8d6" /> |
-| Buttons | <img src="file:a9fe4555-2028-4262-9ed2-27046a72b6a9" /> | <img src="file:7a7816fc-8599-4637-b81d-a6538826d39c" /> |
+| Logos   | <img src="https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/ap-logo-resized.png" /> | <img src="https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/caap-white-logo-resized.png" /> |
+| Buttons | <img src="https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/ap-button.png" /> | <img src="https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/caap-button.png" /> |
 
 ## Messaging
 
@@ -805,7 +805,7 @@ See the table below for an example of the changes:
 
 | Afterpay                                                | Cash App Afterpay                                       |
 | ------------------------------------------------------- | ------------------------------------------------------- |
-| <img src="file:ad9d3eec-de71-4924-8d18-3eadfa713672" /> | <img src="file:3d144b45-b232-4c21-a0ec-98cd4663fbdf" /> |
+| <img src="https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/ap-mess-2.png" /> | <img src="https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/caap-mess-1.png" /> |
 
 The automatic Messaging update includes changes to *learn more*/lightbox asset if you use that.
 
@@ -840,8 +840,8 @@ The table below has examples of the changes to assets:
 
 |         | Afterpay                                                | Cash App Afterpay                                       |
 | ------- | ------------------------------------------------------- | ------------------------------------------------------- |
-| Logos   | <img src="file:66aa6b55-dbe1-457f-9030-ad900067b2b6" /> | <img src="file:83cf832e-575a-437a-a06b-0a3d2cbeb8d6" /> |
-| Buttons | <img src="file:a9fe4555-2028-4262-9ed2-27046a72b6a9" /> | <img src="file:7a7816fc-8599-4637-b81d-a6538826d39c" /> |
+| Logos   | <img src="https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/ap-logo-resized.png" /> | <img src="https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/caap-white-logo-resized.png" /> |
+| Buttons | <img src="https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/ap-button.png" /> | <img src="https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/caap-button.png" /> |
 
 ## Messaging
 
@@ -851,7 +851,7 @@ See the table below for an example of the changes:
 
 | Afterpay                                                | Cash App Afterpay                                       |
 | ------------------------------------------------------- | ------------------------------------------------------- |
-| <img src="file:ad9d3eec-de71-4924-8d18-3eadfa713672" /> | <img src="file:3d144b45-b232-4c21-a0ec-98cd4663fbdf" /> |
+| <img src="https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/ap-mess-2.png" /> | <img src="https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/caap-mess-1.png" /> |
 
 The automatic Messaging update includes changes to *learn more*/lightbox asset if you use that.
 
@@ -892,22 +892,22 @@ To upgrade, to the following:
 
 1. Go to the *Module Manager* section on the left menu bar. See the picture below:
 
-   ![prestashop-1.png](file:b573dae9-c9b8-4968-9329-4abbdc5af094)
+   ![prestashop-1.png](https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/prestashop-1.png)
 
 2. Use the search bar to find the Afterpay installed module and click **Upgrade available**. See the picture below:
 
-   ![prestashop-2.png](file:737552d4-cbe5-4870-affe-57a070075707)
+   ![prestashop-2.png](https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/prestashop-2.png)
 
 3. A confirmation window appears, see the picture below:
 
-   ![prestashop-3.png](file:6d7c3509-d2a1-46b0-a937-2329a8e29be0)
+   ![prestashop-3.png](https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/prestashop-3.png)
 
 4. Ensure you have a backup of the site before any upgrade. Click **Go to maintenance page** to avoid possible cache issues. Click **Upgrade Anyway** if you have a backup of the site and are confident you can problem solve if necessary.
 
 When the upgrade is finished you receive a confirmation message. The **Actions** button shows the regular options.
 
 <Note>Open the Afterpay configuration *Settings* section to check that all the configurations are correct after the upgrade. See the picture below:</Note>
-![prestashop-4.png](file:8e99dd1d-ef90-46b3-b4c6-ce5ae19bd7b1)
+![prestashop-4.png](https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/prestashop-4.png)
 
 ## Use the Module Manager Updating Tool
 
@@ -921,11 +921,11 @@ This is a manual update procedure you can use if you have disabled the upgrade o
 
 4. Open the *Module Manager* section and click **Upload a module**. See the picture below:
 
-   ![prestashop-5.png](file:46343109-ffe2-4905-8247-62f0eb4fe763)
+   ![prestashop-5.png](https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/prestashop-5.png)
 
 5. Select the previously downloaded file from your computer and upload it. See the pictures below:
 
-   ![prestashop-6.png](file:e0269395-6743-4227-8115-d077dba84357)
+   ![prestashop-6.png](https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/prestashop-6.png)
 
 6. A confirmation message appears when the module is installed.
 
@@ -937,8 +937,8 @@ The table below has examples of the changes:
 
 |         | Afterpay                                                | Cash App Afterpay                                       |
 | ------- | ------------------------------------------------------- | ------------------------------------------------------- |
-| Logos   | <img src="file:66aa6b55-dbe1-457f-9030-ad900067b2b6" /> | <img src="file:83cf832e-575a-437a-a06b-0a3d2cbeb8d6" /> |
-| Buttons | <img src="file:a9fe4555-2028-4262-9ed2-27046a72b6a9" /> | <img src="file:7a7816fc-8599-4637-b81d-a6538826d39c" /> |
+| Logos   | <img src="https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/ap-logo-resized.png" /> | <img src="https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/caap-white-logo-resized.png" /> |
+| Buttons | <img src="https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/ap-button.png" /> | <img src="https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/caap-button.png" /> |
 
 ## Messaging
 
@@ -948,7 +948,7 @@ See the table below for an example of the changes:
 
 | Afterpay                                                | Cash App Afterpay                                       |
 | ------------------------------------------------------- | ------------------------------------------------------- |
-| <img src="file:ad9d3eec-de71-4924-8d18-3eadfa713672" /> | <img src="file:3d144b45-b232-4c21-a0ec-98cd4663fbdf" /> |
+| <img src="https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/ap-mess-2.png" /> | <img src="https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/caap-mess-1.png" /> |
 
 The automatic Messaging update includes changes to *learn more*/lightbox asset if you use that.
 
@@ -1040,8 +1040,8 @@ The table below has examples of the changes:
 
 |         | Afterpay                                                | Cash App Afterpay                                       |
 | ------- | ------------------------------------------------------- | ------------------------------------------------------- |
-| Logos   | <img src="file:66aa6b55-dbe1-457f-9030-ad900067b2b6" /> | <img src="file:83cf832e-575a-437a-a06b-0a3d2cbeb8d6" /> |
-| Buttons | <img src="file:a9fe4555-2028-4262-9ed2-27046a72b6a9" /> | <img src="file:7a7816fc-8599-4637-b81d-a6538826d39c" /> |
+| Logos   | <img src="https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/ap-logo-resized.png" /> | <img src="https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/caap-white-logo-resized.png" /> |
+| Buttons | <img src="https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/ap-button.png" /> | <img src="https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/caap-button.png" /> |
 
 ## Messaging
 
@@ -1051,7 +1051,7 @@ See the table below for an example of the changes:
 
 | Afterpay                                                | Cash App Afterpay                                       |
 | ------------------------------------------------------- | ------------------------------------------------------- |
-| <img src="file:ad9d3eec-de71-4924-8d18-3eadfa713672" /> | <img src="file:3d144b45-b232-4c21-a0ec-98cd4663fbdf" /> |
+| <img src="https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/ap-mess-2.png" /> | <img src="https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/caap-mess-1.png" /> |
 
 The automatic Messaging update includes changes to *learn more*/lightbox asset if you use that.
 
@@ -1070,7 +1070,7 @@ If you have a technical question on the migration, see our [FAQs for the Migrati
 
 If you'realready using the **Afterpay US (New)** payment app, no action is required. The new Cash App Afterpay branding will be updated automatically. Here's how it should appear:
 
-<img src="file:024f0246-18e3-4e0a-9bca-2501c59ad52a" />
+<img src="https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/Shopify-Cash-Afterpay-updated-method.png" />
 
 If you haven't migrated from the **Afterpay (New)** payment app to **Afterpay US (New)**, see [Migrate to the Afterpay US App](#migrate-to-the-afterpay-us-app) below.
 
@@ -1096,8 +1096,8 @@ The table below has examples of the changes:
 
 |         | Afterpay                                                | Cash App Afterpay                                       |
 | ------- | ------------------------------------------------------- | ------------------------------------------------------- |
-| Logos   | <img src="file:66aa6b55-dbe1-457f-9030-ad900067b2b6" /> | <img src="file:83cf832e-575a-437a-a06b-0a3d2cbeb8d6" /> |
-| Buttons | <img src="file:a9fe4555-2028-4262-9ed2-27046a72b6a9" /> | <img src="file:7a7816fc-8599-4637-b81d-a6538826d39c" /> |
+| Logos   | <img src="https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/ap-logo-resized.png" /> | <img src="https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/caap-white-logo-resized.png" /> |
+| Buttons | <img src="https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/ap-button.png" /> | <img src="https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/caap-button.png" /> |
 
 Any custom messaging updates must be reviewed by your Account Manager.
 
@@ -1109,7 +1109,7 @@ See the table below for an example of the changes:
 
 | Afterpay                                                | Cash App Afterpay                                       |
 | ------------------------------------------------------- | ------------------------------------------------------- |
-| <img src="file:ad9d3eec-de71-4924-8d18-3eadfa713672" /> | <img src="file:3d144b45-b232-4c21-a0ec-98cd4663fbdf" /> |
+| <img src="https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/ap-mess-2.png" /> | <img src="https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/caap-mess-1.png" /> |
 
 The automatic Messaging update includes changes to *learn more*/lightbox asset if you use that.
 
@@ -1141,12 +1141,12 @@ If you haven't migrated to the Afterpay US app yet, follow these two steps:
 </Note>
 
 1. Click [here](https://accounts.shopify.com/store-login?redirect=settings%2Fpayments/alternative-providers/84934657) to download the Afterpay US payment app.
-2. When the **Install app** screen appears, click **Install**. <img src="file:f04f4d63-b536-47bd-8985-b5ebc1289fb4" />
+2. When the **Install app** screen appears, click **Install**. <img src="https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/Shopify-Cash-AfterpayUS-install.png" />
 3. Once installed, Afterpay US (New) appears in your list of apps, ready to activate. Click **Activate**.
 
 Once Afterpay US (New) appears with the green 'Active' sign next to it, your customers can immediately use Afterpay US to make payments. You don't need to do any further work to configure the app.
 
-<img src="file:36b32ef3-84a5-4066-ad87-244c41985ba4" />
+<img src="https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/Shopify-Cash-AfterpayUS-activated.png" />
 
 ### Deactivate the previous Afterpay app
 
@@ -1156,11 +1156,11 @@ The final task is to deactivate the **Afterpay (New)** payment app in Shopify. D
 
 2. Go to **Settings**, then select **Payments**.
 
-3. Under Additional payment methods, select **Afterpay (New)**. Make sure *not* to select **Afterpay US (New)**, which you just installed. <img src="file:b1c0a0fd-98e7-49f4-8978-4261f0f9f32a" />
+3. Under Additional payment methods, select **Afterpay (New)**. Make sure *not* to select **Afterpay US (New)**, which you just installed. <img src="https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/Shopify-Cash-AfterpayUS-delete-method.png" />
 
 4. On the Afterpay (New) screen, click **Deactivate**, then click **Deactivate** again to confirm your choice.
 
-5. Return to your list of additional payment methods. Make sure that **Afterpay US (New)** is listed as an active payment method; **Afterpay (New)** shouldn't be on the list. <img src="file:024f0246-18e3-4e0a-9bca-2501c59ad52a" />
+5. Return to your list of additional payment methods. Make sure that **Afterpay US (New)** is listed as an active payment method; **Afterpay (New)** shouldn't be on the list. <img src="https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/Shopify-Cash-Afterpay-updated-method.png" />
 
 <Note>
   In case you need to issue a refund, capture payments, or void payments that were previously made with Afterpay, we recommend that you keep the 
@@ -1218,7 +1218,7 @@ Follow these steps:
 
 #### Afterpay appears twice at checkout
 
-<img src="file:7a9b3203-fc4c-4886-a2f7-8f6d1ef65b1a" />
+<img src="https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/Shopify-Cash-Afterpay-appears-twice.png" />
 
 If Afterpay appears twice at checkout (as shown above), make sure to deactivate the **Afterpay (New)** app. Only the **Afterpay US (New)** app should be active. Follow the instructions to [deactivate the previous Afterpay app](#deactivate-the-previous-afterpay-app).
 
@@ -1268,8 +1268,8 @@ The table below has examples of the changes:
 
 |         | Afterpay                                                | Cash App Afterpay                                       |
 | ------- | ------------------------------------------------------- | ------------------------------------------------------- |
-| Logos   | <img src="file:66aa6b55-dbe1-457f-9030-ad900067b2b6" /> | <img src="file:83cf832e-575a-437a-a06b-0a3d2cbeb8d6" /> |
-| Buttons | <img src="file:a9fe4555-2028-4262-9ed2-27046a72b6a9" /> | <img src="file:7a7816fc-8599-4637-b81d-a6538826d39c" /> |
+| Logos   | <img src="https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/ap-logo-resized.png" /> | <img src="https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/caap-white-logo-resized.png" /> |
+| Buttons | <img src="https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/ap-button.png" /> | <img src="https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/caap-button.png" /> |
 
 ## Messaging
 
@@ -1277,7 +1277,7 @@ See the table below for an example of the changes:
 
 | Afterpay                                                | Cash App Afterpay                                       |
 | ------------------------------------------------------- | ------------------------------------------------------- |
-| <img src="file:ad9d3eec-de71-4924-8d18-3eadfa713672" /> | <img src="file:3d144b45-b232-4c21-a0ec-98cd4663fbdf" /> |
+| <img src="https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/ap-mess-2.png" /> | <img src="https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/caap-mess-1.png" /> |
 
 ## FAQs
 
@@ -1308,8 +1308,8 @@ The table below has examples of the changes:
 
 |         | Afterpay                                                | Cash App Afterpay                                       |
 | ------- | ------------------------------------------------------- | ------------------------------------------------------- |
-| Logos   | <img src="file:66aa6b55-dbe1-457f-9030-ad900067b2b6" /> | <img src="file:83cf832e-575a-437a-a06b-0a3d2cbeb8d6" /> |
-| Buttons | <img src="file:a9fe4555-2028-4262-9ed2-27046a72b6a9" /> | <img src="file:7a7816fc-8599-4637-b81d-a6538826d39c" /> |
+| Logos   | <img src="https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/ap-logo-resized.png" /> | <img src="https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/caap-white-logo-resized.png" /> |
+| Buttons | <img src="https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/ap-button.png" /> | <img src="https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/caap-button.png" /> |
 
 ## Messaging
 
@@ -1319,7 +1319,7 @@ See the table below for an example of the changes:
 
 | Afterpay                                                | Cash App Afterpay                                       |
 | ------------------------------------------------------- | ------------------------------------------------------- |
-| <img src="file:ad9d3eec-de71-4924-8d18-3eadfa713672" /> | <img src="file:3d144b45-b232-4c21-a0ec-98cd4663fbdf" /> |
+| <img src="https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/ap-mess-2.png" /> | <img src="https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/caap-mess-1.png" /> |
 
 The automatic Messaging update includes changes to *learn more*/lightbox asset if you use that.
 
@@ -1351,7 +1351,7 @@ As updates for the **Afterpay Gateway for WooCommerce** plugin are released, not
 
 A number appears in WordPress Admin next to the Plugins link, it shows the number of plugin updates available.
 
-![wc-update-1.png](file:7d1ab852-6e2d-439c-8dda-9439e940a261)
+![wc-update-1.png](https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/wc-update-1.png)
 
 <Note>
   We strongly recommend that you backup website files and data before you do an update.
@@ -1369,15 +1369,15 @@ A number appears in WordPress Admin next to the Plugins link, it shows the numbe
 
 4. Click the **update now** link.
 
-   ![wc-update-2.png](file:d7beabbf-81c5-418f-9a51-945ad659eb6e)
+   ![wc-update-2.png](https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/wc-update-2.png)
 
 5. The **Afterpay Gateway for WooCommerce** plugin now starts to update.
 
-   ![wc-update-3.png](file:b7fc52ed-c978-4342-8ccc-f3ab42864926)
+   ![wc-update-3.png](https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/wc-update-3.png)
 
 6. Once complete, the notification bar turns green and the text changes to **Updated!**.
 
-   ![wc-update-4.png](file:d68ff813-5055-4643-a7ff-e917ca245466)
+   ![wc-update-4.png](https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/wc-update-4.png)
 
 ## Brand Assets
 
@@ -1387,8 +1387,8 @@ The table below has examples of the changes:
 
 |         | Afterpay                                                | Cash App Afterpay                                       |
 | ------- | ------------------------------------------------------- | ------------------------------------------------------- |
-| Logos   | <img src="file:66aa6b55-dbe1-457f-9030-ad900067b2b6" /> | <img src="file:83cf832e-575a-437a-a06b-0a3d2cbeb8d6" /> |
-| Buttons | <img src="file:a9fe4555-2028-4262-9ed2-27046a72b6a9" /> | <img src="file:7a7816fc-8599-4637-b81d-a6538826d39c" /> |
+| Logos   | <img src="https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/ap-logo-resized.png" /> | <img src="https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/caap-white-logo-resized.png" /> |
+| Buttons | <img src="https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/ap-button.png" /> | <img src="https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/caap-button.png" /> |
 
 Any custom messaging updates must be reviewed by your Account Manager.
 
@@ -1400,7 +1400,7 @@ See the table below for an example of the changes:
 
 | Afterpay                                                | Cash App Afterpay                                       |
 | ------------------------------------------------------- | ------------------------------------------------------- |
-| <img src="file:ad9d3eec-de71-4924-8d18-3eadfa713672" /> | <img src="file:3d144b45-b232-4c21-a0ec-98cd4663fbdf" /> |
+| <img src="https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/ap-mess-2.png" /> | <img src="https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/caap-mess-1.png" /> |
 
 The automatic Messaging update includes changes to *learn more*/lightbox asset if you use that.
 
@@ -1440,10 +1440,10 @@ When you update, you'll see new names that refer to both the Afterpay themes and
 
 | Legacy Afterpay theme | Afterpay asset                                          | New Cash App Afterpay theme | New Cash App Afterpay asset                             |
 | --------------------- | ------------------------------------------------------- | --------------------------- | ------------------------------------------------------- |
-| mintOnBlack           | <img src="file:7c6f7f7f-5915-42e4-9f09-1af16bb16ce1" /> | Default                     | <img src="file:01c6b469-863a-4ace-a556-791cf398dfed" /> |
-| blackOnMint           | <img src="file:f0742a09-e736-46f0-96dd-c9165ff197ab" /> | Alt                         | <img src="file:23672ded-5d6d-4383-b7cf-c343d8ee032c" /> |
-| blackOnWhite          | <img src="file:cf77fabd-ade9-404a-be49-f737a77b2eb3" /> | Light Monochrome            | <img src="file:c866d7ea-15bc-4087-9cd2-bbcbd68bee13" /> |
-| whiteOnBlack          | <img src="file:ded3a50b-740c-4ec2-8cf6-0bc1ddbe147b" /> | Dark Monochrome             | <img src="file:b4f922c8-c324-4324-98ce-7fdcb2d13fc2" /> |
+| mintOnBlack           | <img src="https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/Afterpay_Button_Checkout.png" /> | Default                     | <img src="https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/CashAppAfterpay_Button_Checkout.png" /> |
+| blackOnMint           | <img src="https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/Afterpay_Button_Continue.png" /> | Alt                         | <img src="https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/CashAppAfterpay_Button_Continue (1).png" /> |
+| blackOnWhite          | <img src="https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/Afterpay_Button_Buy.png" /> | Light Monochrome            | <img src="https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/CashAppAfterpay_Button_Buy (1).png" /> |
+| whiteOnBlack          | <img src="https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/Afterpay_Button_Pay.png" /> | Dark Monochrome             | <img src="https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/CashAppAfterpay_Button_Pay.png" /> |
 
 ##### Cash App Afterpay regions
 
@@ -1692,7 +1692,7 @@ To increase brand awareness, we recommend using brand assets with Cash green. Se
 
 <br />
 
-<img src="file:33d73fe0-2e7a-4dff-8295-77f2478fe7ff" alt="Payment Badge - Green.png" noZoom />
+<img src="https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/Showcase.png" alt="Payment Badge - Green.png" noZoom />
 
 <br />
 
@@ -1712,14 +1712,14 @@ To increase brand awareness, we recommend using brand assets with Cash green. Se
 
 | Green Black                                                                                                                                  | Green White                                                                                                                                 |
 | -------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
-| <img src="file:8c241df3-8ecb-44ab-b5b2-80a830ce46b2" alt="Lockup - Green Black.png" noZoom />                                                | <img src="file:8938f7d4-fea7-443f-a51a-098c29c9a3a7" alt="Lockup - Green White.png" noZoom />                                               |
+| <img src="https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/Lockup - Green Black.png" alt="Lockup - Green Black.png" noZoom />                                                | <img src="https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/Lockup - Green White.png" alt="Lockup - Green White.png" noZoom />                                               |
 | `html <img alt="Cash App Afterpay" src="https://static.afterpaycdn.com/en-US/integration/logo/lockup/new-color-black-32.svg" height="32" />` | `html<img alt="Cash App Afterpay" src="https://static.afterpaycdn.com/en-US/integration/logo/lockup/new-color-white-32.svg" height="32" />` |
 
 <br />
 
 | Black                                                                                                                                      | White                                                                                                                                      |
 | ------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------ |
-| <img src="file:35b492a6-5703-46b0-aef5-3c9b5588a830" alt="Lockup - Black.png" noZoom />                                                    | <img src="file:eeadc08e-f56b-4892-8289-fad51d62faf4" alt="Lockup - White.png" noZoom />                                                    |
+| <img src="https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/Lockup - Black.png" alt="Lockup - Black.png" noZoom />                                                    | <img src="https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/Lockup - White.png" alt="Lockup - White.png" noZoom />                                                    |
 | `html<img alt="Cash App Afterpay" src="https://static.afterpaycdn.com/en-US/integration/logo/lockup/new-mono-black-32.svg" height="32" />` | `html<img alt="Cash App Afterpay" src="https://static.afterpaycdn.com/en-US/integration/logo/lockup/new-mono-white-32.svg" height="32" />` |
 
 ### Payment Badge
@@ -1729,7 +1729,7 @@ To increase brand awareness, we recommend using brand assets with Cash green. Se
 <table>
   <tr>
     <td>
-      <img src="file:92c50fb0-4b18-489c-a552-fe39ad26761e" alt="Payment Badge - Green.png" noZoom />
+      <img src="https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/Payment Badge - Green.png" alt="Payment Badge - Green.png" noZoom />
 
       ***
 
@@ -1737,7 +1737,7 @@ To increase brand awareness, we recommend using brand assets with Cash green. Se
     </td>
 
     <td>
-      <img src="file:e30783a9-16f1-48e8-85ce-f93962f86b8d" alt="Payment Badge - Green on Black.png" noZoom />
+      <img src="https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/Payment Badge - Green on dark.png" alt="Payment Badge - Green on Black.png" noZoom />
 
       ***
 
@@ -1749,7 +1749,7 @@ To increase brand awareness, we recommend using brand assets with Cash green. Se
 <table>
   <tr>
     <td>
-      <img src="file:432861c5-c122-4995-b583-c2fd88aa7367" alt="Payment Badge - Mono Light.png" noZoom />
+      <img src="https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/Payment Badge - Monochrome Black on light.png" alt="Payment Badge - Mono Light.png" noZoom />
 
       ***
 
@@ -1757,7 +1757,7 @@ To increase brand awareness, we recommend using brand assets with Cash green. Se
     </td>
 
     <td>
-      <img src="file:213dc816-fa2f-4efe-ae34-6ee5c6ddbce7" alt="Payment Badge - Mono Dark.png" noZoom />
+      <img src="https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/Payment Badge - Monochrome White on dark.png" alt="Payment Badge - Mono Dark.png" noZoom />
 
       ***
 
@@ -1771,7 +1771,7 @@ To increase brand awareness, we recommend using brand assets with Cash green. Se
 <table>
   <tr>
     <td>
-      <img src="file:300e2c4e-15bb-41d9-b5e6-a7fc3c44c9b7" alt="Payment Badge - Sqaured - Green on light.png" noZoom />
+      <img src="https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/Payment Badge - Sqaured - Green on light.png" alt="Payment Badge - Sqaured - Green on light.png" noZoom />
 
       ***
 
@@ -1779,7 +1779,7 @@ To increase brand awareness, we recommend using brand assets with Cash green. Se
     </td>
 
     <td>
-      <img src="file:ab823878-8da8-43ce-8ff9-60d950082a9f" alt="Payment Badge - Squared - Green on dark.png" noZoom />
+      <img src="https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/Payment Badge - Squared - Green on dark.png" alt="Payment Badge - Squared - Green on dark.png" noZoom />
 
       ***
 
@@ -1791,7 +1791,7 @@ To increase brand awareness, we recommend using brand assets with Cash green. Se
 <table>
   <tr>
     <td>
-      <img src="file:e6864448-f00a-4a3b-9de9-4921199e1cf3" alt="Payment Badge - Squared - Monochrome Black on light.png" noZoom />
+      <img src="https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/Payment Badge - Squared - Monochrome Black on light.png" alt="Payment Badge - Squared - Monochrome Black on light.png" noZoom />
 
       ***
 
@@ -1799,7 +1799,7 @@ To increase brand awareness, we recommend using brand assets with Cash green. Se
     </td>
 
     <td>
-      <img src="file:e63e127e-5792-47ee-be44-481be73b108e" alt="Payment Badge - Squared - Monochrome White on dark.png" noZoom />
+      <img src="https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/Payment Badge - Squared - Monochrome White on dark.png" alt="Payment Badge - Squared - Monochrome White on dark.png" noZoom />
 
       ***
 
@@ -1813,7 +1813,7 @@ To increase brand awareness, we recommend using brand assets with Cash green. Se
 <table>
   <tr>
     <td>
-      <img src="file:1820d6dd-b5f3-43a6-9bd6-d7696b9a47aa" alt="alternative-badge-on-light.png" noZoom />
+      <img src="https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/alternative-badge-on-light.png" alt="alternative-badge-on-light.png" noZoom />
 
       ***
 
@@ -1821,7 +1821,7 @@ To increase brand awareness, we recommend using brand assets with Cash green. Se
     </td>
 
     <td>
-      <img src="file:e41298b8-255c-4d82-9e22-e4634bc86e0a" alt="alternative-badge-on-dark.png" noZoom />
+      <img src="https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/alternative-badge-on-dark.png" alt="alternative-badge-on-dark.png" noZoom />
 
       ***
 
@@ -1838,19 +1838,19 @@ Visit our [Messaging Guide](/cash-app-afterpay/guides/afterpay-messaging/getting
 
 <Tabs>
   <Tab title="xs">
-    <img src="file:adf8324a-ec23-4c85-8400-f143ea210e01" alt="Messaging Lockup - 12px.png" noZoom />
+    <img src="https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/Messaging Lockup - 12px.png" alt="Messaging Lockup - 12px.png" noZoom />
   </Tab>
 
   <Tab title="sm">
-    <img src="file:a2c68c46-6723-401e-8bb1-a8009ce9abdd" alt="Messaging Lockup - 14px.png" noZoom />
+    <img src="https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/Messaging Lockup - 14px.png" alt="Messaging Lockup - 14px.png" noZoom />
   </Tab>
 
   <Tab title="md">
-    <img src="file:bcc8d193-58b9-4f18-b96b-6c751789c295" alt="Messaging Lockup - 16px.png" noZoom />
+    <img src="https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/Messaging Lockup - 16px.png" alt="Messaging Lockup - 16px.png" noZoom />
   </Tab>
 
   <Tab title="lg">
-    <img src="file:bfc6840b-f6ad-479c-af33-1bfda0836ac6" alt="Messaging Lockup - 18px.png" noZoom />
+    <img src="https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/Messaging Lockup - 18px.png" alt="Messaging Lockup - 18px.png" noZoom />
   </Tab>
 </Tabs>
 
@@ -1870,56 +1870,56 @@ Visit our [Messaging Guide](/cash-app-afterpay/guides/afterpay-messaging/getting
 
 | Black Green                                                                                                                                                                                                                                                                                                                                      | Green Black                                                                                                                                                                                                                                                                                                                                      |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| <img src="file:5841d88b-1d70-406a-a1e1-3bbd620368cd" alt="Button Style - Black Green.png" noZoom />                                                                                                                                                                                                                                              | <img src="file:5f81aabd-238d-4ed4-b7c9-1e8c22f75b91" alt="Button Style - Green Black.png" noZoom />                                                                                                                                                                                                                                              |
+| <img src="https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/Button Style - Black Green.png" alt="Button Style - Black Green.png" noZoom />                                                                                                                                                                                                                                              | <img src="https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/Button Style - Green Black.png" alt="Button Style - Green Black.png" noZoom />                                                                                                                                                                                                                                              |
 | `html<button aria-label="Cash App Afterpay" style="display: inline-block; vertical-align: middle; cursor: pointer; border: transparent; background: none;"><img alt="Cash App Afterpay" aria-hidden="true" src="https://static.afterpaycdn.com/en-US/integration/button/afterpay/color-on-black.svg" height="48" style="border: 0;" /></button>` | `html<button aria-label="Cash App Afterpay" style="display: inline-block; vertical-align: middle; cursor: pointer; border: transparent; background: none;"><img alt="Cash App Afterpay" aria-hidden="true" src="https://static.afterpaycdn.com/en-US/integration/button/afterpay/black-on-green.svg" height="48" style="border: 0;" /></button>` |
 
 <br />
 
 | Black White                                                                                                                                                                                                                                                                                                                                      | White Black                                                                                                                                                                                                                                                                                                                                      |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| <img src="file:12bfc528-8293-4bcd-911f-056ff14b4ed1" alt="Button Style - Black White.png" noZoom />                                                                                                                                                                                                                                              | <img src="file:d1e44e24-7627-4197-b917-5484a201902a" alt="Button Style - White Black.png" noZoom />                                                                                                                                                                                                                                              |
+| <img src="https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/Button Style - Black White.png" alt="Button Style - Black White.png" noZoom />                                                                                                                                                                                                                                              | <img src="https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/Button Style - White Black.png" alt="Button Style - White Black.png" noZoom />                                                                                                                                                                                                                                              |
 | `html<button aria-label="Cash App Afterpay" style="display: inline-block; vertical-align: middle; cursor: pointer; border: transparent; background: none;"><img alt="Cash App Afterpay" aria-hidden="true" src="https://static.afterpaycdn.com/en-US/integration/button/afterpay/white-on-black.svg" height="48" style="border: 0;" /></button>` | `html<button aria-label="Cash App Afterpay" style="display: inline-block; vertical-align: middle; cursor: pointer; border: transparent; background: none;"><img alt="Cash App Afterpay" aria-hidden="true" src="https://static.afterpaycdn.com/en-US/integration/button/afterpay/black-on-white.svg" height="48" style="border: 0;" /></button>` |
 
 #### Rounded
 
 | Black Green                                                                                                                                                                                                                                                                                                                                              | Green Black                                                                                                                                                                                                                                                                                                                                              |
 | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| <img src="file:e181030e-dfa5-4959-aaa7-a9975b120426" alt="Button Style - Rounded Black Green.png" noZoom />                                                                                                                                                                                                                                              | <img src="file:50b60c73-5a87-42a8-8d40-c395fe35c0ea" alt="Button Style - Rounded Green Black.png" noZoom />                                                                                                                                                                                                                                              |
+| <img src="https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/Button Style - Rounded Black Green.png" alt="Button Style - Rounded Black Green.png" noZoom />                                                                                                                                                                                                                                              | <img src="https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/Button Style - Rounded Green Black.png" alt="Button Style - Rounded Green Black.png" noZoom />                                                                                                                                                                                                                                              |
 | `html<button aria-label="Cash App Afterpay" style="display: inline-block; vertical-align: middle; cursor: pointer; border: transparent; background: none;"><img alt="Cash App Afterpay" aria-hidden="true" src="https://static.afterpaycdn.com/en-US/integration/button/afterpay/color-on-black-rounded.svg" height="48" style="border: 0;" /></button>` | `html<button aria-label="Cash App Afterpay" style="display: inline-block; vertical-align: middle; cursor: pointer; border: transparent; background: none;"><img alt="Cash App Afterpay" aria-hidden="true" src="https://static.afterpaycdn.com/en-US/integration/button/afterpay/black-on-green-rounded.svg" height="48" style="border: 0;" /></button>` |
 
 <br />
 
 | Black White                                                                                                                                                                                                                                                                                                                                              | White Black                                                                                                                                                                                                                                                                                                                                              |
 | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| <img src="file:9570455f-0e79-4af8-8af7-c984d7c86c10" alt="Button Style - Rounded Black White.png" noZoom />                                                                                                                                                                                                                                              | <img src="file:eb0263f9-3e46-4f3d-9864-7a49453346fd" alt="Button Style - Rounded White Black.png" noZoom />                                                                                                                                                                                                                                              |
+| <img src="https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/Button Style - Rounded Black White.png" alt="Button Style - Rounded Black White.png" noZoom />                                                                                                                                                                                                                                              | <img src="https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/Button Style - Rounded White Black.png" alt="Button Style - Rounded White Black.png" noZoom />                                                                                                                                                                                                                                              |
 | `html<button aria-label="Cash App Afterpay" style="display: inline-block; vertical-align: middle; cursor: pointer; border: transparent; background: none;"><img alt="Cash App Afterpay" aria-hidden="true" src="https://static.afterpaycdn.com/en-US/integration/button/afterpay/white-on-black-rounded.svg" height="48" style="border: 0;" /></button>` | `html<button aria-label="Cash App Afterpay" style="display: inline-block; vertical-align: middle; cursor: pointer; border: transparent; background: none;"><img alt="Cash App Afterpay" aria-hidden="true" src="https://static.afterpaycdn.com/en-US/integration/button/afterpay/black-on-white-rounded.svg" height="48" style="border: 0;" /></button>` |
 
 ### Button Types
 
 | Checkout With                                                                                                                                                                                                                                                                                                                                                                              | Continue With                                                                                                                                                                                                                                                                                                                                                                              |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| <img src="file:b0b22dc0-73aa-41c7-9a42-60368e608987" alt="Button Type  - Checkout with.png" noZoom />                                                                                                                                                                                                                                                                                      | <img src="file:bd46ca25-7ce1-4d17-a3a3-2037f5d83226" alt="Button Type  - Continue with.png" noZoom />                                                                                                                                                                                                                                                                                      |
+| <img src="https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/Button Type  - Checkout with.png" alt="Button Type  - Checkout with.png" noZoom />                                                                                                                                                                                                                                                                                      | <img src="https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/Button Type  - Continue with.png" alt="Button Type  - Continue with.png" noZoom />                                                                                                                                                                                                                                                                                      |
 | `html<button aria-label="Checkout with Cash App Afterpay" style="display: inline-block; vertical-align: middle; cursor: pointer; border: transparent; background: none;"><img alt="Checkout with Cash App Afterpay" aria-hidden="true" src="https://static.afterpaycdn.com/en-US/integration/button/checkout-with-afterpay/color-on-black.svg" height="48" style="border: 0;" /></button>` | `html<button aria-label="Continue with Cash App Afterpay" style="display: inline-block; vertical-align: middle; cursor: pointer; border: transparent; background: none;"><img alt="Continue with Cash App Afterpay" aria-hidden="true" src="https://static.afterpaycdn.com/en-US/integration/button/continue-with-afterpay/color-on-black.svg" height="48" style="border: 0;" /></button>` |
 
 <br />
 
 | Pay With                                                                                                                                                                                                                                                                                                                                                                    | Buy With                                                                                                                                                                                                                                                                                                                                                                            |
 | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| <img src="file:be71c0f4-f515-443c-858b-f221ce893b3d" alt="Button Type  - Pay with.png" noZoom />                                                                                                                                                                                                                                                                            | <img src="file:e6752cbb-aece-4273-8f8a-d88560a60738" alt="Button Type  - Buy with.png" noZoom />                                                                                                                                                                                                                                                                                    |
+| <img src="https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/Button Type  - Pay with.png" alt="Button Type  - Pay with.png" noZoom />                                                                                                                                                                                                                                                                            | <img src="https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/Button Type  - Buy with.png" alt="Button Type  - Buy with.png" noZoom />                                                                                                                                                                                                                                                                                    |
 | `html<button aria-label="Pay with Cash App Afterpay" style="display: inline-block; vertical-align: middle; cursor: pointer; border: transparent; background: none;"><img alt="Pay with Cash App Afterpay" aria-hidden="true" src="https://static.afterpaycdn.com/en-US/integration/button/pay-with-afterpay/color-on-black.svg" height="48" style="border: 0;" /></button>` | `html<button aria-label="Buy with Cash App Afterpay (Green)" style="display: inline-block; vertical-align: middle; cursor: pointer; border: transparent; background: none;"><img alt="Buy with Cash App Afterpay" aria-hidden="true" src="https://static.afterpaycdn.com/en-US/integration/button/buy-with-afterpay/color-on-black.svg" height="48" style="border: 0;" /></button>` |
 
 <br />
 
 | Checkout With - Green                                                                                                                                                                                                                                                                                                                                                                           | Continue With - Green                                                                                                                                                                                                                                                                                                                                                                 |
 | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| <img src="file:780ad919-f81e-46f3-82bd-4f538db45dc3" alt="Button Type - Green - Checkout with.png" noZoom />                                                                                                                                                                                                                                                                                    | <img src="file:d69b6257-c5e5-4857-bae6-96f9f62037b3" alt="Button Type - Green - Continue with.png" noZoom />                                                                                                                                                                                                                                                                          |
+| <img src="https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/Button Type - Green - Checkout with.png" alt="Button Type - Green - Checkout with.png" noZoom />                                                                                                                                                                                                                                                                                    | <img src="https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/Button Type - Green - Continue with.png" alt="Button Type - Green - Continue with.png" noZoom />                                                                                                                                                                                                                                                                          |
 | `html<button aria-label="Checkout with Cash App Afterpay (Green)" style="display: inline-block; vertical-align: middle; cursor: pointer; border: transparent; background: none;"><img alt="Checkout with Cash App Afterpay" aria-hidden="true" src="https://static.afterpay.com/en-US/integration/button/checkout-with-afterpay/black-on-green.svg" height="48" style="border: 0;" /></button>` | `html<button aria-label="Buy with Cash App Afterpay (Green)" style="display: inline-block; vertical-align: middle; cursor: pointer; border: transparent; background: none;"><img alt="Buy with Cash App Afterpay" aria-hidden="true" src="https://static.afterpay.com/en-US/integration/button/continue-with-afterpay/black-on-green.svg" height="48" style="border: 0;" /></button>` |
 
 <br />
 
 | Pay With - Green                                                                                                                                                                                                                                                                                                                                                                 | Buy With - Green                                                                                                                                                                                                                                                                                                                                                                 |
 | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| <img src="file:7d369598-33b3-4520-8f8b-df9d2d88c1cf" alt="Button Type - Green - Pay with.png" noZoom />                                                                                                                                                                                                                                                                          | <img src="file:441d7d1c-d512-4258-92c8-efed1d2ce32e" alt="Button Type - Green - Buy with.png" noZoom />                                                                                                                                                                                                                                                                          |
+| <img src="https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/Button Type - Green - Pay with.png" alt="Button Type - Green - Pay with.png" noZoom />                                                                                                                                                                                                                                                                          | <img src="https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/Button Type - Green - Buy with.png" alt="Button Type - Green - Buy with.png" noZoom />                                                                                                                                                                                                                                                                          |
 | `html<button aria-label="Pay with Cash App Afterpay (Green)" style="display: inline-block; vertical-align: middle; cursor: pointer; border: transparent; background: none;"><img alt="Pay with Cash App Afterpay" aria-hidden="true" src="https://static.afterpay.com/en-US/integration/button/pay-with-afterpay/black-on-green.svg" height="48" style="border: 0;" /></button>` | `html<button aria-label="Buy with Cash App Afterpay (Green)" style="display: inline-block; vertical-align: middle; cursor: pointer; border: transparent; background: none;"><img alt="Buy with Cash App Afterpay" aria-hidden="true" src="https://static.afterpay.com/en-US/integration/button/buy-with-afterpay/black-on-green.svg" height="48" style="border: 0;" /></button>` |
 
 ## Marketing Assets
@@ -1953,28 +1953,28 @@ These changes only apply to merchants in the US.
 
 | Asset Type             | Configuration                                         | Afterpay Theme       | Before                                                                       | Cash App Afterpay Theme               | After                                                                                                                                                        | Background Color Dependency |
 | ---------------------- | ----------------------------------------------------- | -------------------- | ---------------------------------------------------------------------------- | ------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ | --------------------------- |
-| Default Lockup         | `"logoType": "lockup"`                                | Black lockup         | <img src="file:f008fb84-c6eb-4ebd-864d-38bc3d3f830f" class="img-bg-light" /> | Mono light                            | <img src="file:6bcbd611-a7b1-47bb-b3c1-c4e13c37ca85" class="img-bg-light" />                                                                                 | No                          |
-| Lockup - Mint          | `"logoType": "lockup", "lockupTheme": "mint"`         | Mint lockup          | <img src="file:e60d7fb4-aac7-4e14-9461-067a6695cda4" />                      | Color - Light variant OR Dark variant | <img src="file:d5bf101d-dda5-4bd0-adba-0fd938e61828" class="img-bg-light" /> or <img src="file:b2271f28-8e6d-4ae1-8c75-b6c39f997bf5" class="img-bg-light" /> | Yes                         |
-| Lockup - White         | `"logoType": "lockup", "lockupTheme": "white"`        | White lockup         | <img src="file:3ec5aad6-5d60-43e4-9d6d-b1a6c1623cc5" />                      | Mono dark                             | <img src="file:b235e170-6aab-4956-87fa-be07b328bb16" />                                                                                                      | No                          |
-| Lockup - Black         | `"logoType": "lockup", "lockupTheme": "black"`        | Black lockup         | <img src="file:f008fb84-c6eb-4ebd-864d-38bc3d3f830f" class="img-bg-light" /> | Mono light                            | <img src="file:6bcbd611-a7b1-47bb-b3c1-c4e13c37ca85" class="img-bg-light" />                                                                                 | No                          |
-| Badge Default          | `"logoType": "badge"`                                 | Black on mint badge  | <img src="file:6d3dd7f9-d50d-4aca-a388-3b535271e7ae" />                      | Color - Light variant OR Dark variant | <img src="file:d5bf101d-dda5-4bd0-adba-0fd938e61828" class="img-bg-light" /> or <img src="file:b2271f28-8e6d-4ae1-8c75-b6c39f997bf5" class="img-bg-light" /> | Yes                         |
-| Badge - Black on Mint  | `"logoType": "badge", "badgeTheme": "black-on-mint"`  | Black on mint badge  | <img src="file:6d3dd7f9-d50d-4aca-a388-3b535271e7ae" />                      | Color - Light variant OR Dark variant | <img src="file:d5bf101d-dda5-4bd0-adba-0fd938e61828" class="img-bg-light" /> or <img src="file:b2271f28-8e6d-4ae1-8c75-b6c39f997bf5" class="img-bg-light" /> | Yes                         |
-| Badge - Mint on Black  | `"logoType": "badge", "badgeTheme": "mint-on-black"`  | Mint on black badge  | <img src="file:79818792-154f-467c-a0c2-225fa9748381" />                      | Color - Light variant OR Dark variant | <img src="file:d5bf101d-dda5-4bd0-adba-0fd938e61828" class="img-bg-light" /> or <img src="file:b2271f28-8e6d-4ae1-8c75-b6c39f997bf5" class="img-bg-light" /> | Yes                         |
-| Badge - White on Black | `"logoType": "badge", "badgeTheme": "white-on-black"` | White on black badge | <img src="file:8b1868f1-5bde-4f06-ad4d-8708f0e52799" />                      | Mono - Dark variant OR Light variant  | <img src="file:6bcbd611-a7b1-47bb-b3c1-c4e13c37ca85" class="img-bg-light" /> or <img src="file:b235e170-6aab-4956-87fa-be07b328bb16" class="img-bg-light" /> | Yes                         |
-| Badge - Black on White | `"logoType": "badge", "badgeTheme": "black-on-white"` | Black on white badge | <img src="file:9563e5e5-d6a2-4406-a5ad-e19d8d654929" />                      | Mono - Dark variant OR Light variant  | <img src="file:6bcbd611-a7b1-47bb-b3c1-c4e13c37ca85" class="img-bg-light" /> or <img src="file:b235e170-6aab-4956-87fa-be07b328bb16" class="img-bg-light" /> | Yes                         |
+| Default Lockup         | `"logoType": "lockup"`                                | Black lockup         | <img src="https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/Afterpay_Logo_Black.png" class="img-bg-light" /> | Mono light                            | <img src="https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/RGB_CashAppAfterpay_Logo_Black_Monochrome.png" class="img-bg-light" />                                                                                 | No                          |
+| Lockup - Mint          | `"logoType": "lockup", "lockupTheme": "mint"`         | Mint lockup          | <img src="https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/Afterpay_Logo_Mint.png" />                      | Color - Light variant OR Dark variant | <img src="https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/RGB_CashAppAfterpay_Logo_Black.png" class="img-bg-light" /> or <img src="https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/RGB_CashAppAfterpay_Logo_White (1).png" class="img-bg-light" /> | Yes                         |
+| Lockup - White         | `"logoType": "lockup", "lockupTheme": "white"`        | White lockup         | <img src="https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/Afterpay_Logo_White.png" />                      | Mono dark                             | <img src="https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/RGB_CashAppAfterpay_Logo_White_Monochrome (1).png" />                                                                                                      | No                          |
+| Lockup - Black         | `"logoType": "lockup", "lockupTheme": "black"`        | Black lockup         | <img src="https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/Afterpay_Logo_Black.png" class="img-bg-light" /> | Mono light                            | <img src="https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/RGB_CashAppAfterpay_Logo_Black_Monochrome.png" class="img-bg-light" />                                                                                 | No                          |
+| Badge Default          | `"logoType": "badge"`                                 | Black on mint badge  | <img src="https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/Afterpay_Badge_BlackonMint.jpg" />                      | Color - Light variant OR Dark variant | <img src="https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/RGB_CashAppAfterpay_Logo_Black.png" class="img-bg-light" /> or <img src="https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/RGB_CashAppAfterpay_Logo_White (1).png" class="img-bg-light" /> | Yes                         |
+| Badge - Black on Mint  | `"logoType": "badge", "badgeTheme": "black-on-mint"`  | Black on mint badge  | <img src="https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/Afterpay_Badge_BlackonMint.jpg" />                      | Color - Light variant OR Dark variant | <img src="https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/RGB_CashAppAfterpay_Logo_Black.png" class="img-bg-light" /> or <img src="https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/RGB_CashAppAfterpay_Logo_White (1).png" class="img-bg-light" /> | Yes                         |
+| Badge - Mint on Black  | `"logoType": "badge", "badgeTheme": "mint-on-black"`  | Mint on black badge  | <img src="https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/Afterpay_Badge_MintonBlack.png" />                      | Color - Light variant OR Dark variant | <img src="https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/RGB_CashAppAfterpay_Logo_Black.png" class="img-bg-light" /> or <img src="https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/RGB_CashAppAfterpay_Logo_White (1).png" class="img-bg-light" /> | Yes                         |
+| Badge - White on Black | `"logoType": "badge", "badgeTheme": "white-on-black"` | White on black badge | <img src="https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/Afterpay_Badge_WhiteonBlack.png" />                      | Mono - Dark variant OR Light variant  | <img src="https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/RGB_CashAppAfterpay_Logo_Black_Monochrome.png" class="img-bg-light" /> or <img src="https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/RGB_CashAppAfterpay_Logo_White_Monochrome (1).png" class="img-bg-light" /> | Yes                         |
+| Badge - Black on White | `"logoType": "badge", "badgeTheme": "black-on-white"` | Black on white badge | <img src="https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/Afterpay_Badge_BlackonWhite.png" />                      | Mono - Dark variant OR Light variant  | <img src="https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/RGB_CashAppAfterpay_Logo_Black_Monochrome.png" class="img-bg-light" /> or <img src="https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/RGB_CashAppAfterpay_Logo_White_Monochrome (1).png" class="img-bg-light" /> | Yes                         |
 
 ### Modal assets mapping
 
 | Asset Type  | Configuration           | Afterpay Modal | Before                                                  | Cash App Afterpay Modal          | After                                                   | Background Color Dependency |
 | ----------- | ----------------------- | -------------- | ------------------------------------------------------- | -------------------------------- | ------------------------------------------------------- | --------------------------- |
-| Mint Modal  | `"modalTheme": "mint"`  | Mint Modal     | <img src="file:4a3bfdec-a7fc-4500-9a24-718dc48bfb83" /> | Standard Cash App Afterpay Modal | <img src="file:735c83ee-2471-4334-9f2f-ebcc46488780" /> | No                          |
-| White Modal | `"modalTheme": "white"` | White Modal    | <img src="file:b9be1e8a-6afb-4786-84fd-d96a8b0b8e5e" /> | Standard Cash App Afterpay Modal | <img src="file:735c83ee-2471-4334-9f2f-ebcc46488780" /> | No                          |
+| Mint Modal  | `"modalTheme": "mint"`  | Mint Modal     | <img src="https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/Afterpay_Mint_Modal.png" /> | Standard Cash App Afterpay Modal | <img src="https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/CashAppAfterpay_Modal.png" /> | No                          |
+| White Modal | `"modalTheme": "white"` | White Modal    | <img src="https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/Afterpay_White_ Modal.png" /> | Standard Cash App Afterpay Modal | <img src="https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/CashAppAfterpay_Modal.png" /> | No                          |
 
 ### Icon assets mapping
 
 | Asset Type | Configuration         | Afterpay Icon | Before                                                  | Cash App Afterpay Icon | After                                                   | Background Color Dependency |
 | ---------- | --------------------- | ------------- | ------------------------------------------------------- | ---------------------- | ------------------------------------------------------- | --------------------------- |
-| Icon       | `"data-type": "icon"` | Afterpay Icon | <img src="file:51bff0d4-3005-40c6-8615-a9a0296f8ed8" /> | Cash App Afterpay Icon | <img src="file:8b7374fc-aaaa-406d-94cc-1c8bedb6f072" /> | No                          |
+| Icon       | `"data-type": "icon"` | Afterpay Icon | <img src="https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/Afterpay_Icon.png" /> | Cash App Afterpay Icon | <img src="https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/CashApp_PaymentBadge_Green.png" /> | No                          |
 
 
 # Platforms Quickstart
@@ -2130,7 +2130,7 @@ The source code needed depends on your version of Magento. See the Readme file i
 
 2. Under the green *Code* heading, click **HTTPS** and click **Download ZIP**. See screenshot below:
 
-![adobe-comm-manual-install.png](file:43a48300-16d0-42ab-9e6c-38d1dcc7c28b)
+![adobe-comm-manual-install.png](https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/adobe-comm-manual-install.png)
 
 3. Unzip your files and put them into a temporary folder.
 
@@ -2199,7 +2199,7 @@ For details, see the following web pages on the GitHub:
 
 2. Click **Basic Settings**.
 
-![acm2-a-small.png](file:8a8d3843-505a-478d-baf7-3367dd822103)
+![acm2-a-small.png](https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/acm2-a-small.png)
 
 | Setting      | Value                                                                                                                                                                                      |
 | ------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -2212,7 +2212,7 @@ For details, see the following web pages on the GitHub:
 
 1. Click **Advanced Settings**.
 
-![acm-2-b-revised.png](file:862c8993-a246-481d-a85b-1087eaef58ca)
+![acm-2-b-revised.png](https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/acm-2-b-revised.png)
 
 | Setting                  | Value                                                                                                                         |
 | ------------------------ | ----------------------------------------------------------------------------------------------------------------------------- |
@@ -2233,7 +2233,7 @@ The above three settings are all read-only display fields. The information they 
 | Display on Cart Page                 | **Yes** - Adobe Commerce Checkout - proceed to checkout page as normal.<br /> **Yes** - Express Checkout - enable Cash App Afterpay Express Checkout from cart page. <br />**No** - Cash App Afterpay will not display on the Cart page. Click the *Use Default* checkbox to use the default setting, which is Yes. |
 | Sort Order                           | The order of payment methods at checkout.                                                                                                                                                                                                                                                                           |
 
-![acm2-c-small.png](file:f5853886-bf4d-4f09-b2f5-5865d47d0d1c)
+![acm2-c-small.png](https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/acm2-c-small.png)
 
 | Setting               | Value                                                                                                                                                                                                                                                            |
 | --------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -2260,11 +2260,11 @@ Do the following:
 
 2. Click **Advanced Frontend Settings**. The advanced frontend settings fields display, in the default setting of No, which means they are disabled. See screenshot below:
 
-![Configuration-Settings-Stores-Magento-Admin.png](file:3a0f8a71-e448-409c-9595-c46e787de0e5)
+![Configuration-Settings-Stores-Magento-Admin.png](https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/Configuration-Settings-Stores-Magento-Admin.png)
 
 The example screen below shows the range of settings when the advanced frontend settings fields are enabled:
 
-![Hyva-Configuration-Settings-Stores-Magento-Admin.png](file:8cd07e5f-8a57-4358-9dab-9d7f6c4a6e22)
+![Hyva-Configuration-Settings-Stores-Magento-Admin.png](https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/Hyva-Configuration-Settings-Stores-Magento-Admin.png)
 
 See the table below for information on the various settings.
 
@@ -2291,7 +2291,7 @@ See the table below for information on the various settings.
 
 1. Click **Express Checkout Settings**.
 
-![express-checkout-settings-small.png](file:068027e4-d9ef-4f02-814a-b03687d67197)
+![express-checkout-settings-small.png](https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/express-checkout-settings-small.png)
 
 | Setting                 | Value                                                                                                                                                                            |
 | ----------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -2399,7 +2399,7 @@ The extension is on GitHub. Do the following:
 
 2. Under the green *Code* heading, click **Download ZIP**. See screenshot below:
 
-![adobe-comm-manual-install.png](file:43a48300-16d0-42ab-9e6c-38d1dcc7c28b)
+![adobe-comm-manual-install.png](https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/adobe-comm-manual-install.png)
 
 3. Unzip your files and put them into a temporary folder.
 
@@ -2484,7 +2484,7 @@ To ensure the checkout type is correct:
 
 2. Under *Checkout Settings*, the *Checkout Type* must be: *Optimized one-page checkout*. See picture below.
 
-![bc-gs-1.png](file:226a6d0d-c06b-4b54-af4a-e6e396b59478)
+![bc-gs-1.png](https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/bc-gs-1.png)
 
 ### Store Country
 
@@ -2519,17 +2519,17 @@ Completing the below steps will enable and display Cash App Afterpay as a Paymen
 
 3. Under the *Online Payment Methods* section, click the drop-down arrow.
 
-   ![add-payment-option-1.png](file:6f174d8a-f75d-497a-bef9-0c144678c2ae)
+   ![add-payment-option-1.png](https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/add-payment-option-1.png)
 
 4. Locate *Afterpay* from the Online Payment Methods list and click **Set up**.
 
-   ![add-payment-option-2.png](file:40f0433c-5336-439c-804f-360e24e54bcb)
+   ![add-payment-option-2.png](https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/add-payment-option-2-2.png)
 
 5. Enter the Merchant ID provided by Afterpay into the *Merchant ID* field.
 
 6. Enter the Secret Key provided by Afterpay into the *Secret Key* field.
 
-   ![add-payment-option-3.png](file:a1c52f40-5983-41e5-b181-15bcf211fe18)
+   ![add-payment-option-3.png](https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/add-payment-option-3.png)
 
 7. Additionally, you can configure the following settings:
 
@@ -2719,33 +2719,33 @@ To enable Cash App Afterpay as a payment method and display the Cash App Afterpa
 
 1. Log in to the *Ecwid Website Admin Portal*.
 
-   ![ecwid-control-panel.png](file:b2c599f0-1aeb-4a9b-b820-0ab6a1998293)
+   ![ecwid-control-panel.png](https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/ecwid-control-panel.png)
 
 2. Go to *Configuration* -> *Payment*.
 
-   ![ecwid-navigate.png](file:2a381193-4ab0-47b1-bae4-eb437b0cf3fd)
+   ![ecwid-navigate.png](https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/ecwid-navigate.png)
 
 3. Contact Ecwid support [here](https://support.ecwid.com/hc/en-us/requests/new) to help with the Cash App Afterpay setup and installation. An alternative is to open the Ecwid *Control panel* and use *Open Live Chat* or email support.
 
 4. Enter the Merchant ID and Secret Key supplied by Cash App Afterpay. Ensure *Test transactions (no real charges)* is set to **Disabled**.
 
-   ![ecwid-mtid-secretkey.png](file:29c2214b-43a2-48a8-8bd9-6c28641dea2a)
+   ![ecwid-mtid-secretkey.png](https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/ecwid-mtid-secretkey.png)
 
 5. Double check that *Test transactions (no real charges)* is set to **Disabled**. See picture below:
 
-   ![ecwid-check.png](file:26d831ec-3342-4916-869c-140edb14b047)
+   ![ecwid-check.png](https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/ecwid-check.png)
 
 6. Update the *Appearance Options* text, insert the text: *Cash App Afterpay - Shop Now. Enjoy Now. Pay Later.*
 
-   ![ecwid-text.png](file:ee5f6120-14ee-4915-a0dc-34c8912bd842)
+   ![ecwid-text.png](https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/ecwid-text.png)
 
 7. Set *Enable this payment method at checkout* to **Enabled**.
 
-   ![Enable payment method](file:fc9a94d7-ad8b-4a9e-8059-e2b23d1c5cbe)
+   ![Enable payment method](https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/Ecwid_Control_Panel.png)
 
 8. Click the **Save** button.
 
-   ![Enable payment method](file:34bfb720-051a-47e4-b01f-f4234296ecdd)
+   ![Enable payment method](https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/Ecwid_Save.png)
 
 Cash App Afterpay should now be installed and available for use by your customers. Cash App Afterpay should also appear on your product pages and as a payment option on the checkout page.
 
@@ -2870,15 +2870,15 @@ To upgrade, to the following:
 
 1. Go to the *Module Manager* section on the left menu bar. See the picture below:
 
-   <img src="file:b573dae9-c9b8-4968-9329-4abbdc5af094" alt="prestashop-1.png" noZoom />
+   <img src="https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/prestashop-1.png" alt="prestashop-1.png" noZoom />
 
 2. Use the search bar to find the Afterpay installed module and click **Upgrade available**. See the picture below:
 
-   <img src="file:737552d4-cbe5-4870-affe-57a070075707" alt="prestashop-2.png" noZoom />
+   <img src="https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/prestashop-2.png" alt="prestashop-2.png" noZoom />
 
 3. A confirmation window appears, see the picture below:
 
-   <img src="file:6d7c3509-d2a1-46b0-a937-2329a8e29be0" alt="prestashop-3.png" noZoom />
+   <img src="https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/prestashop-3.png" alt="prestashop-3.png" noZoom />
 
 4. Ensure you have a backup of the site before any upgrade. Click **Go to maintenance page** to avoid possible cache issues. Click **Upgrade Anyway** if you have a backup of the site and are confident you can problem solve if necessary.
 
@@ -2892,7 +2892,7 @@ When the upgrade is finished you receive a confirmation message. The **Actions**
    section to check that all the configurations are correct after the upgrade. See the picture below:
 </Note>
 
-<img src="file:8e99dd1d-ef90-46b3-b4c6-ce5ae19bd7b1" alt="prestashop-4.png" noZoom />
+<img src="https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/prestashop-4.png" alt="prestashop-4.png" noZoom />
 
 ## Use the Module Manager Updating Tool
 
@@ -2906,11 +2906,11 @@ This is a manual update procedure you can use if you have disabled the upgrade o
 
 4. Open the *Module Manager* section and click **Upload a module**. See the picture below:
 
-   <img src="file:46343109-ffe2-4905-8247-62f0eb4fe763" alt="prestashop-5.png" noZoom />
+   <img src="https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/prestashop-5.png" alt="prestashop-5.png" noZoom />
 
 5. Select the previously downloaded file from your computer and upload it. See the pictures below:
 
-   <img src="file:e0269395-6743-4227-8115-d077dba84357" alt="prestashop-6.png" noZoom />
+   <img src="https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/prestashop-6.png" alt="prestashop-6.png" noZoom />
 
 6. A confirmation message appears when the module is installed.
 
@@ -3212,7 +3212,7 @@ Do the following:
 
 2. Under **Store Address**, the **Country** must be United States.
 
-![Shopify-1](file:df8a04c8-6c0c-4f70-bb0f-34b4d55d44ea)
+![Shopify-1](https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/Shopify-1.png)
 
 ## Store Currency
 
@@ -3224,13 +3224,13 @@ To set the store currency:
 
 2. Under **Standards and formats**, the **Currency** must be United States Dollars (USD).
 
-![hopify-2.png](file:17b58f43-a2fb-49b6-84d6-4b49801525a8)
+![hopify-2.png](https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/shopify-2.png)
 
 ## Payment Settings
 
 Check if you have **Automatically at checkout** or **Automatically when order is fulfilled** enabled.
 
-![shopify-get-started-1.png](file:126d6211-5de0-4aa5-8622-9844d9b69f94)
+![shopify-get-started-1.png](https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/shopify-get-started-1.png)
 
 In the Payment Settings, you can also apply manual capture for all payment types. If you have enabled **Manually**, follow these instructions:
 
@@ -3300,7 +3300,7 @@ After successfully verifying your Business Hub merchant account, you return to S
 
 1. Activate the payment gateway. Keep **Test mode** inactive, and click **Activate**. This screenshot shows the result:
 
-   <img src="file:36b32ef3-84a5-4066-ad87-244c41985ba4" />
+   <img src="https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/Shopify-Cash-AfterpayUS-activated.png" />
 
    <Warning>
      **Do not enable Test mode.**
@@ -3387,7 +3387,7 @@ The Cash App Pay integration process can be completed in three stages:
 
 3. Download the Cash App Pay application. The Install app screen appears. See the picture below:
 
-![cap-shop-payment-app-activation-1.png](file:8c708087-089b-44f5-97c4-4cab15efb7ff)
+![cap-shop-payment-app-activation-1.png](https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/cap-shop-payment-app-activation-1-2.png)
 
 4. Shopify asks you to grant Cash App Pay (Cash App Afterpay) permission to *View personal data* and *View and edit store data*. Click **Install** to continue.
 
@@ -3397,11 +3397,11 @@ To connect your account, do the following:
 
 1. After downloading and installing the Cash App Pay app, from the following screen, click **Connect to Cash App Pay**.
 
-![cap-shop-payment-app-activation-2.png](file:3a522c83-2722-4772-b992-578e19a8c7ae)
+![cap-shop-payment-app-activation-2.png](https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/cap-shop-payment-app-activation-2.png)
 
 2. The *Connect to Cash App Pay* screen appears:
 
-![cap-shop-payment-app-activation-3-small.png](file:b795db92-0fa9-4b50-bef2-30310c1b1aa1)
+![cap-shop-payment-app-activation-3-small.png](https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/cap-shop-payment-app-activation-3-small.png)
 
 3. Enter your Cash App Afterpay production merchant ID in the **Merchant ID** field.
 
@@ -3429,7 +3429,7 @@ To connect your account, do the following:
 
 After you click **Continue** in Step 5 above, you are redirected to the following page for final confirmation:
 
-![cap-shop-payment-app-activation-4-small.png](file:18692ad2-9c52-41d0-a463-197d8debf47d)
+![cap-shop-payment-app-activation-4-small.png](https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/cap-shop-payment-app-activation-4-small.png)
 
 Do the following:
 
@@ -3476,11 +3476,11 @@ Do the following:
 
 2. Click **Install**. An installation screen on Shopify's admin portal appears.
 
-   ![shop-app-install-A.png](file:b18b9343-e1fc-4090-801a-d8617cfee9a6)
+   ![shop-app-install-A.png](https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/shop-app-install-A.png)
 
 3. Click **Install**.
 
-   ![shop-app-install-B.png](file:0edcadf6-bb2c-47db-8301-f2af5de7f16f)
+   ![shop-app-install-B.png](https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/shop-app-install-B.png)
 
    <Note>
      If you clicked 
@@ -3500,35 +3500,35 @@ Do the following:
 
 4. Click **Connect** next to *Connect the Cash App Afterpay account*. You are taken to a get.afterpay.com URL, where the email is prefilled with the email on your Shopify store.
 
-   ![shop-app-install-C.png](file:e018910e-ab8f-4944-8de9-04b4018a3708)
+   ![shop-app-install-C.png](https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/shop-app-install-C.png)
 
 5. Send the email and Cash App Afterpay will email you a login link to the Cash App Afterpay dashboard.
 
-   ![shop-app-install-D.png](file:d147b727-2448-4960-a258-04bf5fc35d24)
+   ![shop-app-install-D.png](https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/shop-app-install-D.png)
 
 6. Login to your Cash App Afterpay dashboard and ensure you have completed all the registration steps.
 
 7. When Cash App Afterpay registration is complete, click the **Show me how** button under *Add Afterpay messaging*, at the bottom of the [get.afterpay.com](http://get.cashappafterpay.com) status page.
 
-   ![step-7-small.png](file:1e90f881-4b7f-4511-9656-3b9d17c7c497)
+   ![step-7-small.png](https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/step-7-small.png)
 
 ## Add the Messaging to the Product Pages
 
 1. Once it is installed, you need to open the *Afterpay On-Site Messaging app*. To do this, go to [Shopify Admin](https://admin.shopify.com/). Then go to *Apps* and select *Afterpay On-Site Messaging*.
 
-   ![shop-message-app-1.png](file:0e40bce7-63cc-4505-899a-2b4c1d736fb7)
+   ![shop-message-app-1.png](https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/shop-message-app-1.png)
 
 2. From the app's *Add Messaging* section, click [Open Theme Editor](https://accounts.shopify.com/lookup?rid=cb901599-a4cd-4d01-9e88-e70243d0636c).
 
-   ![shop-message-app-2.png](file:a9500984-10f9-4469-9c9d-c2b149bc02dc)
+   ![shop-message-app-2.png](https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/shop-message-app-2.png)
 
 3. From the Theme editor, click the dropdown at the top of the editor, then click *Products*.
 
-   ![shop-message-app-3.png](file:bcb87bda-a468-4f8d-a53f-ee110d83ba42)
+   ![shop-message-app-3.png](https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/shop-message-app-3.png)
 
 4. Select the *Default* product template, or the Product template that needs messaging.
 
-   ![shop-message-app-4.png](file:0a2427d1-48ea-4c78-a0cb-3416498c484f)
+   ![shop-message-app-4.png](https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/shop-message-app-4.png)
 
    > **How Messaging Works**
    >
@@ -3546,7 +3546,7 @@ Do the following:
 
 7. Click **Save** in the top right corner.
 
-   ![shop-message-app-9.png](file:808a5e51-5ed3-40e0-8c80-b1024e4fecd4)
+   ![shop-message-app-9.png](https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/shop-message-app-9.png)
 
 ## Add the Messaging to the Cart Page
 
@@ -3559,7 +3559,7 @@ You are now ready to add some messaging to the Cart page. Do the following:
 
 2. Next, to open the Cart page, click the dropdown at the top of the editor and click **Cart**.
 
-   ![shop-message-app-b.png](file:b7f54ee7-f7c1-439f-bad9-16883c3499ac)
+   ![shop-message-app-b.png](https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/shop-message-app-b.png)
 
 3. Move the mouse over the Subtotal above the Checkout button. A *+* symbol appears.
 
@@ -3579,7 +3579,7 @@ Do the following:
 
 1. To check the appearance on a mobile device, click the monitor icon and then click *Mobile* at the top right of the editor.
 
-   ![shop-message-app-mobile.png](file:2bc5e4e7-d35e-4ca3-8e34-50661f3ae959)
+   ![shop-message-app-mobile.png](https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/shop-message-app-mobile.png)
 
 2. Scroll down to *Mobile View* settings, make any changes you need.
 
@@ -3599,7 +3599,7 @@ You can adjust many aspects of the styling. To do this:
 
    Alternatively you can select *Payments Messaging - Afterpay On-Site Messaging* from the side bar under *Product information*. See picture below:
 
-   ![shop-message-app-adjust-2.png](file:571a7e08-1fa5-4a97-8b2d-90cb69c8f4b6)
+   ![shop-message-app-adjust-2.png](https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/shop-message-app-adjust-2.png)
 
 ### Text Alignment
 
@@ -3729,7 +3729,7 @@ You can set the styling separately for customers on mobile devices. To set the s
 
 2. Click the **Mobile** button that appears.
 
-   ![mobile-set-mobile.png](file:a040770a-05f8-4598-afe4-1267e115c77b)
+   ![mobile-set-mobile.png](https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/mobile-set-mobile.png)
 
 ### Breakpoint
 
@@ -3771,13 +3771,13 @@ To create the template:
 
 3. Click the Home Page dropdown, and then select *Products*. See the picture below:
 
-   ![hide-message-new-1.png](file:5eff9c63-9f8f-4a43-b22b-e4bde699c9a3)
+   ![hide-message-new-1.png](https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/hide-message-new-1.png)
 
 4. Select *Create Template*.
 
 5. Enter a name for this new template. See the picture below:
 
-   ![hide-message-3-new.png](file:5754c039-b417-4f79-828d-d4823cfd599b)
+   ![hide-message-3-new.png](https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/hide-message-3-new.png)
 
 You have now created your template and named it. Your next task is to fill this template with the product, or products, that you don't want to have Afterpay messaging.
 
@@ -3787,11 +3787,11 @@ Do the following:
 
 2. Use the Search filter to find the product that you don't want to associate with Afterpay messaging. You can also find this product from the list of existing products. See the picture below:
 
-   ![hide-message-4-new.png](file:290bbf8b-7703-46c2-8749-2d3c6bd17095)
+   ![hide-message-4-new.png](https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/hide-message-4-new.png)
 
 3. In the Online store section, open the drop-down menu and select the new theme template you created. Then apply this new template to the product. See picture below:
 
-   ![hide-message-5-new.png](file:a9208740-628d-43ad-8b89-902a7d733c16)
+   ![hide-message-5-new.png](https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/hide-message-5-new.png)
 
 4. Repeat step 3 for all the products that you don't want to associate with Afterpay messaging. Click **Save** when you have finished
 
@@ -3890,18 +3890,18 @@ var afterpay_js_snippet_version = '1.2.1';
 
 3. Navigate to **Themes**. To do this, go to **Sales channels** > **Online Store** > **Themes**.
 
-   ![shopify-ap-site-mess-1.png](file:cdbb97c8-eb46-42dc-ad15-547eb806adaa)
+   ![shopify-ap-site-mess-1.png](https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/shopify-ap-site-mess-1.png)
 
 4. Navigate to the current theme, then go to **Actions** > **edit code**.
 
-   ![shop-ap-site-mess-2.png](file:58b239d9-1d8f-4235-a7af-f818b3caf6be)
+   ![shop-ap-site-mess-2.png](https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/shop-ap-site-mess-2.png)
 
 5. Under the **Layout** folder, click **theme.liquid**.
-   ![step5.png](file:4567c3bf-94da-4f61-81cf-a08d056078eb)
+   ![step5.png](https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/Step_5.png)
 
 6. Scroll to the bottom of the `theme.liquid` file:
 
-   ![step5.png](file:e6db39d4-5668-472e-b7b4-23d5740d0961)
+   ![step5.png](https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/Step_6.png)
 
 7. Paste the copied text (Step 1), at the bottom of the `theme.liquid` file:
 
@@ -4034,7 +4034,7 @@ To find a specific order, do the following:
 
 Here is an example in the Shopify *Orders* tab:
 
-![search-for-a-specific-order-new.png](file:cfc9c908-cd63-4cf2-b43c-e74d3f73c81d)
+![search-for-a-specific-order-new.png](https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/search-for-a-specific-order-new.png)
 
 To access the Shopify Admin, use this [URL](http://shopify.com/admin/orders?query=receipt.payment_id%3A).
 
@@ -4048,7 +4048,7 @@ To reconcile orders from the export, do the following:
 
 3. Optional: Enter **"cash app pay"** in the Orders search bar. Notice the quotes for an exact match.
 
-   ![cash-app-pay.png](file:25eb7de8-c349-4a8a-82ca-4410440a6c34)
+   ![cash-app-pay.png](https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/cash-app-pay.png)
 
 4. Click **Export**.
 
@@ -4060,7 +4060,7 @@ For example, here is a Shopify export file:
 
 For example, within the Business Hub the information appears like this:
 
-<img alt="Shopify business hub" src="file:94717a03-7776-49a2-9b20-712fa9e6b94f" width="700px" />
+<img alt="Shopify business hub" src="https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/Screenshot 2025-03-25 at 10.50.01 AM.png" width="700px" />
 
 ## Search for all orders by payment method in Shopify
 
@@ -4070,7 +4070,7 @@ To search for all orders by payment method, do the following:
 
 2. Enter **"Afterpay US (New)"** or **"Cash App Pay"** (include the quotation marks for an exact match) in the *Orders* search bar.
 
-   ![search-for-all-orders.png](file:9a9ade4f-fa13-4f66-9bcc-e71997f74ef0)
+   ![search-for-all-orders.png](https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/search-for-all-orders.png)
 
 3. Click **Save as** to save this order filter.
 
@@ -4096,11 +4096,11 @@ To export all your orders by payment method in Shopify, do the following:
 
 3. Click the checkbox at the top of the column on the extreme left to select all the orders (see picture below) and click **Export** at the top right of the window.
 
-   ![export.png](file:46047722-8cef-4da6-9fc2-b9939093ad57)
+   ![export.png](https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/export.png)
 
 4. The Export orders popup appears. Click the **Selected \[n] orders** radio button, and select what type of file you want for the exported data.
 
-   ![export-orders.png](file:44a73da7-55ac-4ea9-949e-860c2265be79)
+   ![export-orders.png](https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/export-orders.png)
 
 5. Click **Export orders**.
 
@@ -4112,7 +4112,7 @@ This is a useful way to identify cross-border trade (CBT) orders. Do the followi
 
 2. Enter a search term in the search bar. For example, in the picture below, the search term is **canada afterpay**. This search shows all the Canadian Afterpay orders with their status and other information.
 
-   ![country-specific.png](file:a6c53f35-b049-48be-a04a-dccf584fa7c5)
+   ![country-specific.png](https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/country-specific.png)
 
 ## Create custom report by payment method
 
@@ -4163,7 +4163,7 @@ To enable the test mode for Afterpay US:
 2. In the *Additional payment methods* section, click **Afterpay US (New)**.
 
 3. In the *Test mode* section, turn the toggle on. See the screenshot below:
-   ![AfterpayUS\_testmode.png](file:d1f22abc-7cb3-4ad9-9301-b51e8a381699)
+   ![AfterpayUS\_testmode.png](https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/AfterpayUS_testmode.png)
 
 4. Click **Save**.
 
@@ -4201,11 +4201,11 @@ To test a Cash App Pay integration, do the following:
 
 3. In the *Test Mode* section, click the toggle on. See the picture below:
 
-   ![cap-shopify-payment-app-test-2-small.png](file:cd12d8e6-d5ff-4242-8972-a39cb1e16677)
+   ![cap-shopify-payment-app-test-2-small.png](https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/cap-shopify-payment-app-test-2-small.png)
 
 4. On the initial Cash App Pay setup screen, click **Test Mode**.
 
-   ![Shopify-Test-mode.png](file:94da0e18-c363-4b02-9754-41c2a76b9f2f)
+   ![Shopify-Test-mode.png](https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/Shopify-Test-mode-2.png)
 
 5. On the *Test Mode* screen, enter your sandbox credentials.
 
@@ -4215,7 +4215,7 @@ To test a Cash App Pay integration, do the following:
 
 8. Click **Continue**.
 
-![Shopify-Test-mode-success.png](file:d49789f5-9801-4315-a803-b1e893157441)
+![Shopify-Test-mode-success.png](https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/Shopify-Test-mode-success-2.png)
 
 Your store is now ready to mock Cash App Pay transactions with your Sandbox credentials.
 
@@ -4279,15 +4279,15 @@ To verify the changes, click **Preview** and check for the banners appearance at
 
 The images below illustrate a white, black, and green banner:
 
-![white-banner-new.png](file:c7fab4be-5dc7-4e53-95bc-bb76f5e262d2)
+![white-banner-new.png](https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/white-banner-new.png)
 
 <br />
 
-![black-banner-new.png](file:80e298e5-31f9-4404-93a9-a76a7ae20024)
+![black-banner-new.png](https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/black-banner-new.png)
 
 <br />
 
-![green-banner-new.png](file:b12bd326-f2d3-44bf-a2f8-69f0792121ff)
+![green-banner-new.png](https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/green-banner-new.png)
 
 ### Changing the Banner Color
 
@@ -4297,17 +4297,17 @@ To change the banner color:
 
 2. Click **Customize** to change the theme with the Cash App Afterpay Banner.
 
-   ![publish-customize.png](file:e93b4d77-8f2d-46f4-9ef0-8835b2908e31)
+   ![publish-customize.png](https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/publish-customize.png)
 
 3. Click **Cash App Afterpay Banner**.
 
-   ![home-page.png](file:c776f7ac-d7b4-4a55-8c99-058295fcfb0a)
+   ![home-page.png](https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/home-page.png)
 
 4. Click **Banner color**.
 
 5. Select **Black**, **White**, or **Green**.
 
-   ![shopify-banner-for-caap.png](file:fb3b04a5-7803-46d7-9027-478336a64f84)
+   ![shopify-banner-for-caap.png](https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/shopify-banner-for-caap.png)
 
 6. Click **Save**.
 
@@ -4401,19 +4401,19 @@ Then do the following:
 
 1. From your [Shopify admin](https://admin.shopify.com/), go to Online Store and select **Themes**.
 
-   ![footer-payment-1.png](file:cfb37032-5a85-426b-92b0-83b377818cb0)
+   ![footer-payment-1.png](https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/footer-payment-1.png)
 
 2. Find the theme you want to edit, then click the **...** button to open the *Actions* menu. Click **Edit Code**.
 
-   ![footer-payment-2.png](file:95ae5c9b-5d85-43a3-b651-18e84ff00d13)
+   ![footer-payment-2.png](https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/footer-payment-2.png)
 
 3. In the *Sections* directory, click **footer.liquid**.
 
-   ![footer-payment-3.png](file:694197c5-dbb8-44c4-83be-3bf879d47b9d)
+   ![footer-payment-3.png](https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/footer-payment-3.png)
 
    If your theme doesn't include this file, click **theme.liquid** in the Layout folder.
 
-   ![footer-payment-4.png](file:5f8388df-6424-49fc-babd-acc803771de8)
+   ![footer-payment-4.png](https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/footer-payment-4.png)
 
 4. Find the following code in the file:
 
@@ -4485,7 +4485,7 @@ According to Shopify, payments apps must not do any of the following:
 
 If the amount is different and the customer has paid less than the order at the Shopify shop, the order status automatically becomes **Partially Paid**.
 
-![faq-9.png](file:410f4316-3ca9-49db-b4c6-b885af5c65ff)
+![faq-9.png](https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/faq-9.png)
 
 #### Fix the problem
 
@@ -4575,7 +4575,7 @@ Sometimes it's hard to figure out what this logo URL will be, so here's a method
 
 2. Go to the *Files* page.
 
-   ![cash-app-logo-workaround.png](file:8928e1fd-4f2a-444d-bde5-d0c4eed268c1)
+   ![cash-app-logo-workaround.png](https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/cash-app-logo-workaround.png)
 
 3. Upload a square shaped logo that is at least 256 x 256 pixels in size and under 2MB file size. For the full Cash App logo specification, see the [Adding Cash App Pay to Your Site](/cash-app-afterpay/guides/api-development/add-cash-app-pay-to-your-site/overview#add-your-logo-to-the-qr-code-scanner) page. Any square shaped logo that meets the size criteria will do, the logo does not have to be the Cash App logo.
 
@@ -4628,11 +4628,11 @@ To integrate Cash App Afterpay with WIX, follow the instructions below.
 
 3. From the left side menu, select **Settings**. The **Settings** page appears.
 
-   ![wix-1.png](file:965a459d-cb4a-47d8-8241-c20f8a793e5c)
+   ![wix-1.png](https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/wix-1.png)
 
 4. Click **Accept payments**, the **Accept Payments** page appears.
 
-   ![wix-2.png](file:63b05fb3-fae4-4950-9302-f090f012752f)
+   ![wix-2.png](https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/wix-2.png)
 
 5. Look at the top-right of the screen. There is a **Your business location:** field. This should be the region you registered for Cash App Afterpay. If it shows the wrong region, click the down chevron and select the correct region.
 
@@ -4640,7 +4640,7 @@ To integrate Cash App Afterpay with WIX, follow the instructions below.
 
 7. Click **Connect**, the *Connect Afterpay* page appears. Follow the instructions on the page. You must enter the **Merchant ID** and **Secret Key** that we have given you.
 
-   ![wix-3.png](file:458aaff2-b8c6-4809-8e38-9cd60d305faa)
+   ![wix-3.png](https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/wix-3.png)
 
 8. Click **Connect**. Cash App Afterpay has now been added as a payment method. Your Payment Methods page should now include Cash App Afterpay. Your customers can now use Cash App Afterpay to buy goods or services from you.
 
@@ -4658,7 +4658,7 @@ To change your settings:
 
 2. Click **Language & region**, the **Language & Region** page appears.
 
-   ![wix-4.png](file:e4e0f2db-6a1a-4384-a4b8-0dfb56e63ede)
+   ![wix-4.png](https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/wix-4.png)
 
 3. Make the changes you want.
 
@@ -4692,7 +4692,7 @@ To find the WooCommerce version number:
 
 1. Navigate to **WordPress Admin** > **Plugins** > **Installed Plugins**.
 
-![Getting-started-1.png](file:c1b125b9-f345-41ac-a3d3-05dd7199193c)
+![Getting-started-1.png](https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/Getting-started-1.png)
 
 ### Store Currency
 
@@ -4702,7 +4702,7 @@ Please note that Store Currency must correspond to the Cash App Afterpay account
 
 2. Under **Currency options**, the currency must be United States dollar.
 
-   ![Getting-started-2.png](file:9c08be2a-3cc8-4eb7-b78c-c0c203067fd6)
+   ![Getting-started-2.png](https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/Getting-started-2.png)
 
 [**Express Checkout**](../../EXPRESS-CHECKOUT/What-is-Express-Checkout.md) is available in all supported countries with Version 3.1.0 and above.
 
@@ -4725,19 +4725,19 @@ Do the following:
 
 2. Navigate to **Plugins** > **Add New**.
 
-   ![woocom-plugin-1.png](file:a7a7a721-4e5a-4e7e-baf3-87abb45ba75f)
+   ![woocom-plugin-1.png](https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/woocom-plugin-1.png)
 
 3. Type **Cash App Afterpay** into the Keyword search box:
 
-   ![wooComm-plugin-search.png](file:5341826f-06a2-4099-b9e9-dd41100b8ec2)
+   ![wooComm-plugin-search.png](https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/wooComm-plugin-search.png)
 
 4. Locate the **Cash App Afterpay Gateway for WooCommerce** plugin and click **Install Now**.
 
-   ![wooComm-plugin-install.png](file:0c0c99a1-6df7-436e-bbf4-721ecab94c1b)
+   ![wooComm-plugin-install.png](https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/wooComm-plugin-install.png)
 
 5. Once the installation is complete, click the **Activate** button.
 
-   ![wooComm-plugin-activate.png](file:b2b5b7c8-ba81-4df3-93fb-68e1c00ef67c)
+   ![wooComm-plugin-activate.png](https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/wooComm-plugin-activate.png)
 
 ## Information for Developers
 
@@ -4766,24 +4766,24 @@ Complete the steps below to enable and display Cash App Afterpay as a Payment Me
 
 3. Find the *Cash App Afterpay Gateway for WooCommerce* in the plugin list and click the **Settings** button.
 
-   ![woo-config-1.png](file:3740d2f3-d6cb-419a-ba77-dfbdc141bd9d)
+   ![woo-config-1.png](https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/woo-config-1.png)
 
 4. Go to the *Core Configuration* section.
 
-   ![woo-config-2.png](file:5bd3f722-aeec-4b5c-820d-41ee36884439)
+   ![woo-config-2.png](https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/woo-config-2.png)
 
 5. Enter the Merchant ID provided by Cash App Afterpay into the *Merchant ID* field.
 
-   ![woo-config-3.png](file:7e694c91-a26c-42b2-85f7-b7c94976b483)
+   ![woo-config-3.png](https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/woo-config-3.png)
 
 6. Enter the Secret Key provided by Cash App Afterpay into the *Secret Key* field.
 
-   ![woo-config-4.png](file:23074613-3bbd-4389-8d57-81dd84f44e7f)
+   ![woo-config-4.png](https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/woo-config-4.png)
 
 7. Click the **Save changes** button at the bottom of the page.
 
 <Info>After a successful save of the Cash App Afterpay credentials, the *Merchant Public ID*, *Minimum Payment Amount*, *Maximum Payment Amount* and *Settlement Currency* values are updated.</Info>
-![woo-config-5.png](file:2db9a748-3b99-4a33-a4c7-af587db3dd81)
+![woo-config-5.png](https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/woo-config-5.png)
 
 <Info>
   The 
@@ -4805,7 +4805,7 @@ To enable Express Checkout:
 
 4. Find *Express Checkout Configuration* and enable the checkbox.
 
-   ![woo-config-6.png](file:91e9c435-381d-450b-8f17-a53b5f9d5758)
+   ![woo-config-6.png](https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/woo-config-6.png)
 
 ## Enabling the Cash App Afterpay Messaging for WooCommerce
 
@@ -4823,7 +4823,7 @@ To start do the following:
 
 2. Go to *Plugins* > *Installed plugins* > *Cash App Afterpay Gateway for Woocommerce* and click *Settings*.
 
-![woo-plugin-1.png](file:448607ef-d35f-4aa5-9919-66a92b5b4765)
+![woo-plugin-1.png](https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/woo-plugin-1-3.png)
 
 Under *Settings*, you can see settings for:
 
@@ -4839,7 +4839,7 @@ These settings are described below.
 
 ### Payment Info on Category Pages
 
-![woo-plugin-4.png](file:57f63bfb-2f9f-4c55-8d56-bb1864b6d4af)
+![woo-plugin-4.png](https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/woo-plugin-4-2.png)
 
 To enable the messaging on the Category page, do the following:
 
@@ -4854,11 +4854,11 @@ The positioning of the Messaging for Woocommerce relies on a hook. [This link](h
 <Warning>The hooks for Category pages and Product pages are completely different.</Warning>
 For example, use the hook `woocommerce_after_shop_loop_item`to position the messaging under the price:
 
-![woo-plugin-5.png](file:d3564775-11f0-4ee2-a7e9-d5ffb53071fb)
+![woo-plugin-5.png](https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/woo-plugin-5-2.png)
 
 Below is an example of a category page with Cash App Afterpay messaging:
 
-![woo-plugin-6.png](file:837a1929-8f5b-406e-aac9-ab45912df01b)
+![woo-plugin-6.png](https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/woo-plugin-6-2.png)
 
 <Info>
   For more information on hooks, see the 
@@ -4883,11 +4883,11 @@ The positioning of the Messaging for Woocommerce relies on a hook. [This link](h
 <Warning>The hooks for Category pages and Product pages are completely different.</Warning>
 For example, use the hook `woocommerce_before_add_to_cart_form` to position the messaging directly under the Product Page price:
 
-![woo-plugin-8.png](file:a33c78c9-bb0a-40c3-acb9-e4978634acaa)
+![woo-plugin-8.png](https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/woo-plugin-8-2.png)
 
 Below is an example of a Product Page with Cash App Afterpay messaging:
 
-![woo-plugin-9.png](file:fe1bec47-1e14-44d8-a494-4e7fd043c5de)
+![woo-plugin-9.png](https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/woo-plugin-9-2.png)
 
 <Info>
   For more information on hooks, see the 
@@ -4918,7 +4918,7 @@ As updates for the **Cash App Afterpay Gateway for WooCommerce** plugin are rele
 
 A number appears in WordPress Admin next to the Plugins link, it shows the number of plugin updates available.
 
-![wc-update-1.png](file:7d1ab852-6e2d-439c-8dda-9439e940a261)
+![wc-update-1.png](https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/wc-update-1.png)
 
 <Note>
   We strongly recommend that you backup website files and data before you do an update.
@@ -4936,15 +4936,15 @@ A number appears in WordPress Admin next to the Plugins link, it shows the numbe
 
 4. Click the **update now** link.
 
-   ![wc-update-2.png](file:d7beabbf-81c5-418f-9a51-945ad659eb6e)
+   ![wc-update-2.png](https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/wc-update-2.png)
 
 5. The **Cash App Afterpay Gateway for WooCommerce** plugin now starts to update.
 
-   ![wc-update-3.png](file:b7fc52ed-c978-4342-8ccc-f3ab42864926)
+   ![wc-update-3.png](https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/wc-update-3.png)
 
 6. Once complete, the notification bar turns green and the text changes to **Updated!**.
 
-   ![wc-update-4.png](file:d68ff813-5055-4643-a7ff-e917ca245466)
+   ![wc-update-4.png](https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/wc-update-4.png)
 
 
 # Advanced Configuration
@@ -4993,7 +4993,7 @@ Various WooCommerce hooks are assumed to be implemented by the active WordPress 
 
 Since version 2.1.0, hooks and priorities can be customised from within the plugin settings page.
 
-![hook-1.png](file:a27ef02e-9646-46ce-94bf-276f6389bdf6)
+![hook-1.png](https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/hook-1.png)
 
 ## Shortcodes
 
@@ -5023,13 +5023,13 @@ The default theme is `colour`. This can be overridden by including a `theme` att
 
 To use the shortcode on product pages, please make sure the **Payment Info on Individual Product Pages** has been enabled. Edit the text content as appropriate. Optionally, clear the hook name if you would like to disable the default behaviour of rendering the content when the hook is triggered. Instead, the content will then only render wherever the shortcode is added.
 
-![shortcode-1.png](file:c9e9bc86-c890-41e9-ae15-7391c7987332)
+![shortcode-1.png](https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/shortcode-1.png)
 
 Then paste `[afterpay_paragraph]` into the product description, or into a content area using your page builder.
 
-![shortcodes-2.png](file:3b00fd49-94ec-47b2-a8c7-eaf3555cb2a4)
+![shortcodes-2.png](https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/shortcodes-2.png)
 
-![shortcodes-3.png](file:f3929494-766f-414e-b627-db6b593430a1)
+![shortcodes-3.png](https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/shortcodes-3.png)
 
 To use the shortcode on custom pages, provide a product ID in the shortcode:
 
@@ -5037,7 +5037,7 @@ To use the shortcode on custom pages, provide a product ID in the shortcode:
 [afterpay_paragraph id="99"]
 ```
 
-![shortcodes-4.png](file:ec3bc5f4-b7b4-4ee2-a40e-ada2252724fc)
+![shortcodes-4.png](https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/shortcodes-4.png)
 
 
 # Currency Conversion
@@ -5062,7 +5062,7 @@ To implement the currency convertor, do the following:
 
 2. Click **Settings**, and then click the **Payments** tab. The Cash App Afterpay Gateway information appears.
 
-   ![woo-currency-convert-1.png](file:13fd61f8-a4f8-4b7e-bae3-6f92745c5bca)
+   ![woo-currency-convert-1.png](https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/woo-currency-convert-1.png)
 
 3. Scroll down the page and ensure that these fields contain the correct information:
 
@@ -5088,7 +5088,7 @@ To implement the currency convertor, do the following:
 
    The next section is entitled **Cross Border Trade Configuration**. This section controls the currency conversion.
 
-   ![woo-currency-conversion-2.png](file:ffd1f01b-2ae5-4864-998c-49105e1cc543)
+   ![woo-currency-conversion-2.png](https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/woo-currency-conversion-2.png)
 
 4. Scroll down the page and ensure that these fields contain the correct information:
 
@@ -5112,11 +5112,11 @@ Assuming you, the merchant, have applied the correct settings, your store page s
 
 See the screenshots below for an example:
 
-![woo-currency-conversion-3.png](file:30dc9e4e-d525-4d74-83f1-eeead5d28d56)
+![woo-currency-conversion-3.png](https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/woo-currency-conversion-3.png)
 
 In the screenshot above, the store is based in the USA and the customer wants to pay with US dollars. The prices for the items are in US dollars.
 
-![woo-currency-conversion-4.png](file:a23a49b2-0fea-4485-99f8-e58bc14f7091)
+![woo-currency-conversion-4.png](https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/woo-currency-conversion-4.png)
 
 In the screenshot above, the customer wants to pay in Australian dollars. The customer clicks the **AUD** button on the right side of the page. The prices automatically change from US dollars to Australian dollars.
 
@@ -5193,7 +5193,7 @@ The Cash App Afterpay Messaging Widget takes all the following actions:
 
 * Displays the Cash App Afterpay Information Modal when a customer clicks on the ⓘ (information) icon.
 
-<img src="file:092b925a-a50f-4b18-bea3-bc62a5c389ea" alt="small-backpack.png" />
+<img src="https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/Small-backpack.png" alt="small-backpack.png" />
 
 <Info title="Using Cash App Afterpay Messaging assets ensures">
   * You meet Cash App Afterpay's compliance criteria: You can always be sure you are using the latest terms of service; you are up-to-date with the latest regulatory information and brand identity. You will display the correct product and fee information
@@ -5223,11 +5223,11 @@ Product and cart page visibility ensures customers are aware of Cash App Afterpa
 
 The easiest way to present Cash App Afterpay as a payment option to your customers is to use the Cash App Afterpay On-Site Messaging.
 
-<img src="file:b3d6535e-c798-4c66-a702-67ad55e88e6c" alt="product-page-messaging.png" noZoom />
+<img src="https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/product-page-messaging.png" alt="product-page-messaging.png" noZoom />
 
 Above - Product page messaging.
 
-<img src="file:96a98904-238e-4964-a1ab-7fea8d0545f1" alt="cart-page-messaging.png" noZoom />
+<img src="https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/cart-page-messaging.png" alt="cart-page-messaging.png" noZoom />
 
 Above - Cart page messaging.
 
@@ -5243,7 +5243,7 @@ On-Site Messaging adds pay-over-time messaging to your store's website. For exam
 *4 payments of \$25.00 with Cash App Afterpay*
 *Learn more*
 
-<img src="file:5f12b836-87da-4504-b8d8-94936d9a75a2" alt="Product page messaging.png" noZoom />
+<img src="https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/Product page messaging-2.png" alt="Product page messaging.png" noZoom />
 
 Updates to the messaging are automatic, and a specific set of messaging logic is designed for your products (Pay in 4, Pay Monthly, etc). Use our On-Site Messaging Editor in the Business Hub to customize, preview, and manage your messaging.
 
@@ -5300,22 +5300,22 @@ Start by accessing either environment's Business Hub:
 * [Production](https://hub.us.afterpay.com)
 
 1. Once logged in, navigate to the On-Site Messaging tab in the sidebar
-   <img src="file:2d25eb33-8f86-4b71-8063-ac079e1ffca0" alt="OSM implementation 1.png" noZoom />
+   <img src="https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/OSM implementation 1.png" alt="OSM implementation 1.png" noZoom />
 
 2. From the On-Site Messaging tab, go to the Placements sub-page
-   <img src="file:0cba9e0c-9c3e-4814-bfa1-e6571f884f02" alt="OSM implementation 2.png" noZoom />
+   <img src="https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/OSM implementation 2.png" alt="OSM implementation 2.png" noZoom />
 
 3. Select the Product or Cart page to customize your messaging from the options available. You can make adjustments to the logo, text size, and theme by placement.
-   <img src="file:2a0693ee-0fde-487a-bb3b-6464a4d09092" alt="OSM implementation 3.png" noZoom />
+   <img src="https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/OSM implementation 3.png" alt="OSM implementation 3.png" noZoom />
 
 4. Navigate to the Settings sub-page to find additional advanced configuration options.
-   <img src="file:bc9c2a55-ccd7-450f-a9c7-971129d943b1" alt="OSM implementation 4.png" noZoom />
+   <img src="https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/OSM implementation 4.png" alt="OSM implementation 4.png" noZoom />
 
 5. Once your configuration settings are ready, click the Implementation Guide sub-page and follow the instructions there to add the messaging to your associated environment storefront in three steps.
 
 Here's an example from the production On-Site Messaging tab:
 
-<img src="file:675d9dfe-bdbb-4af6-abd6-47e51c388ce0" alt="OSM implementation 5.png" noZoom />
+<img src="https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/OSM implementation 5.png" alt="OSM implementation 5.png" noZoom />
 
 ### Add On-Site Messaging to your storefront
 
@@ -5791,7 +5791,7 @@ If the customer cancels the checkout, Cash App Afterpay calls the `onComplete` m
 
 **Cash App Afterpay checkout screen**
 
-<img src="file:652306b3-10df-4b05-994b-500faee590b2" alt="create-a-checkout.png" noZoom />
+<img src="https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/create-a-checkout.png" alt="create-a-checkout.png" noZoom />
 
 
 # Immediate Capture
@@ -6538,13 +6538,13 @@ Simply put, there are fewer checkout steps, leading to higher conversion.
 
 With standard checkout, the customer proceeds through the checkout process as normal, selecting Cash App Afterpay as a payment option in your payments section.
 
-<img src="file:69ac5d7d-4d38-479e-9ccf-665da40d452b" alt="Checkout Flow - Standard.png" noZoom />
+<img src="https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/Checkout Flow - Standard.png" alt="Checkout Flow - Standard.png" noZoom />
 
 ### Express checkout flow
 
 With express checkout, the customer can choose to ‘buy now with Cash App Afterpay’ on a product page, or shop for multiple items and choose to ‘checkout with Cash App Afterpay’ from the cart.
 
-<img src="file:67b0a0fd-e2a4-4053-86ad-a1c238dc46ad" alt="Checkout Flow - Express.png" noZoom />
+<img src="https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/Checkout Flow - Express.png" alt="Checkout Flow - Express.png" noZoom />
 
 There are two ways to implement express checkout:
 
@@ -6552,13 +6552,13 @@ There are two ways to implement express checkout:
 
 Customers select delivery options inside the Cash App Afterpay checkout flow. The order is completed within Cash App Afterpay checkout.
 
-<img src="file:64cb1b15-beee-4c06-be81-ebbbca07372e" alt="Integrated Shipping.png" noZoom />
+<img src="https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/Integrated Shipping.png" alt="Integrated Shipping.png" noZoom />
 
 #### Deferred shipping
 
 The customer returns to your website's checkout to select delivery options and complete their order.
 
-<img src="file:c8a2a2f8-4b9a-4c93-b6a4-809b7e64ad85" alt="Deferred Shipping.png" noZoom />
+<img src="https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/Deferred Shipping.png" alt="Deferred Shipping.png" noZoom />
 
 ### Which one is right for you?
 
@@ -6630,7 +6630,7 @@ When a customer clicks this button on a cart or product page, it launches Cash A
 
 Multiple button styles are available, each clearly communicating the next step to the customer.
 
-<img src="file:59cf9e67-dd55-4d3c-acca-ded5d2c5c9e9" alt="Button Types - All in one.png" noZoom />
+<img src="https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/Button Types - All in one.png" alt="Button Types - All in one.png" noZoom />
 
 <Info>
   Integration assets are available 
@@ -7087,7 +7087,7 @@ When a customer clicks this button on a cart or product page, it launches Cash A
 
 Multiple button styles are available, each clearly communicating the next step to the customer.
 
-<img src="file:59cf9e67-dd55-4d3c-acca-ded5d2c5c9e9" alt="Button Types - All in one.png" noZoom />
+<img src="https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/Button Types - All in one.png" alt="Button Types - All in one.png" noZoom />
 
 <Info>
   Integration assets are available 
@@ -7469,7 +7469,7 @@ AfterPay.initializeForPopup({
 
 **Integrated and Deferred Shipping**
 
-<img src="file:7cf8fa89-85aa-4237-8640-c05d605c6972" alt="Afterpay-EC-Flows.png" noZoom />
+<img src="https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/Afterpay-EC-Flows-2.png" alt="Afterpay-EC-Flows.png" noZoom />
 
 **Flow Diagram Key**
 
@@ -8004,7 +8004,7 @@ Use the connected widget on your checkout page **after** a customer completes th
 * Provides the merchant with important information, like the first payment amount.
 * Informs the merchant if there are any barriers to purchase, such as exceeding the Cash App Afterpay payment limit.
 
-<img src="file:ad1efe21-e2bb-4212-b608-bece2d5d4750" alt="Connected Widget.png" noZoom />
+<img src="https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/Connected Widget.png" alt="Connected Widget.png" noZoom />
 
 <Info title="Important">Only show the connected widget after the customer has successfully completed the Cash App Afterpay checkout (when the onComplete status is SUCCESS). You must display the connected widget during the Deferred Shipping flow.</Info>
 The connected widget requires:
@@ -8138,7 +8138,7 @@ Use the unconnected widget on your checkout page **before** the customer starts 
 
 The unconnected widget requires a defined positive `amount` to calculate the estimated payment schedule.
 
-<img src="file:a76909e3-9e11-4c4e-ac88-92a971c27849" alt="Unconnected Widget.png" noZoom />
+<img src="https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/Unconnected Widget.png" alt="Unconnected Widget.png" noZoom />
 
 If the order total changes (due to shipping method, promo code, or cart contents), the widget must be notified of the new amount. Only call the update function after the widget’s `onReady` callback has been triggered.
 
@@ -8281,16 +8281,16 @@ There is an optional style attribute that you can use to toggle particular featu
 Here are some theme examples:
 
 **Timeline**
-![Timeline.png](file:202c7471-67ed-4942-8adf-0019b8da623e)
+![Timeline.png](https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/Timeline.png)
 
 **Collapsible**
-![collapsible.png](file:411674f3-2f93-4cb3-b1a5-8c4ca6ff7ce4)
+![collapsible.png](https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/collapsible-3.png)
 
 **Collapsible (extended)**
-![collapsible-expanded.png](file:3ddeb214-3f14-48c6-b693-2ee8108c6433)
+![collapsible-expanded.png](https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/collapsible-expanded.png)
 
 **Modal**
-![Modal.png](file:ff946bff-0add-4d17-9375-14ccb1e57736)
+![Modal.png](https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/Modal.png)
 
 **Modal (open)**
 !\[Modal open.png]\(../../assets/images/Modal open.png)
@@ -8440,7 +8440,7 @@ Accepting Cash App Pay payments uses the standard API for the Cash App Afterpay 
 
 4. On clicking the button the customer is shown a QR code (on desktop).
 
-   ![Cash App Pay QR Code](file:18515766-fdb0-43fa-b7d1-8c99b77fa5d7)
+   ![Cash App Pay QR Code](https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/qrcode-cash-app-pay.png)
 
 5. If the customer confirms the order, an Order Token, the customer's Cashtag, and a SUCCESS status is returned. If the customer cancels the order, the Order Token and CANCELLED status are returned. We recommend that you display the Cashtag to the customer on the review or confirmation page. This is an example event object:
 
@@ -8576,7 +8576,7 @@ All payment resolution is handled by Cash App Afterpay. Your settlement informat
 
 Add your company or organization's logo to the QR code pop-up that appears during Cash App Pay checkout. You host this logo, send us its URL and we place it next to the QR code. See an example in the picture below:
 
-![qr-code-afterpay-resized.png](file:c7c913f4-aa32-4b7e-8ee2-2a18b90c348d)
+![qr-code-afterpay-resized.png](https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/qr-code-afterpay-resized.png)
 
 To do this:
 
@@ -8941,6 +8941,7 @@ paths:
           required: false
           schema:
             type: string
+            default: application/json
       responses:
         '200':
           description: OK
@@ -8967,8 +8968,10 @@ components:
       properties:
         customerId:
           type: string
+          description: ID of the customer that approved the customer grant.
         grantId:
           type: string
+          description: ID of the customer grant to retrieve.
       required:
         - customerId
         - grantId
@@ -8995,6 +8998,9 @@ components:
           type: string
         cashtag:
           type: string
+          description: >-
+            A publicly-accessible, unique identifier (username) for individuals
+            and businesses using Cash App.
       required:
         - customerId
         - cashtag
@@ -9003,14 +9009,45 @@ components:
       properties:
         status:
           $ref: '#/components/schemas/CashGrantDetailsStatus'
+          description: >
+            Describes whether or not this grant can be used to perform the
+            action associated with it.
+
+
+            If `ACTIVE`, it can be used to perform the action.
+
+
+            If `EXPIRED`, it may no longer be used to perform the action due to
+            the current time being past the "expires_at" time.
+
+
+            If `CONSUMED`, it was already redeemed to perform the action and
+            cannot be used again.
+
+
+            If `REVOKED`, the customer or merchant explicitly unauthorized the
+            grant, preventing it from being used to perform the action.
         cashapp:
           $ref: '#/components/schemas/CashGrantDetailsCashapp'
         createdAt:
           type: string
+          description: >-
+            When this grant was created, in [RFC
+            3339](https://datatracker.ietf.org/doc/html/rfc3339) format (UTC).
         updatedAt:
           type: string
+          description: >-
+            When this grant was last updated, in [RFC
+            3339](https://datatracker.ietf.org/doc/html/rfc3339) format (UTC).
         expiresAt:
           type: string
+          description: >
+            If present, indicates when the grant's status will become EXPIRED,
+            preventing a client from using it to create payments or refunds.
+
+
+            The timestamp is in the [RFC
+            3339](https://datatracker.ietf.org/doc/html/rfc3339) format (UTC).
       required:
         - status
         - cashapp
@@ -9022,10 +9059,13 @@ components:
       properties:
         id:
           type: string
+          description: Unique identifier for this grant issued by Cash App.
         intent:
           $ref: '#/components/schemas/CashGrantIntent'
+          description: Either ON_FILE or ONE_TIME
         type:
           $ref: '#/components/schemas/CashGrantType'
+          description: CASHAPP for all Cash App Pay transactions
         details:
           $ref: '#/components/schemas/CashGrantDetails'
       required:
@@ -9256,6 +9296,7 @@ paths:
           required: false
           schema:
             type: string
+            default: application/json
       responses:
         '200':
           description: OK
@@ -9282,8 +9323,10 @@ components:
       properties:
         customerId:
           type: string
+          description: ID of the customer that approved the customer grant.
         grantId:
           type: string
+          description: ID of the customer grant to retrieve.
       required:
         - customerId
         - grantId
@@ -9310,6 +9353,9 @@ components:
           type: string
         cashtag:
           type: string
+          description: >-
+            A publicly-accessible, unique identifier (username) for individuals
+            and businesses using Cash App.
       required:
         - customerId
         - cashtag
@@ -9318,14 +9364,45 @@ components:
       properties:
         status:
           $ref: '#/components/schemas/CashGrantDetailsStatus'
+          description: >
+            Describes whether or not this grant can be used to perform the
+            action associated with it.
+
+
+            If `ACTIVE`, it can be used to perform the action.
+
+
+            If `EXPIRED`, it may no longer be used to perform the action due to
+            the current time being past the "expires_at" time.
+
+
+            If `CONSUMED`, it was already redeemed to perform the action and
+            cannot be used again.
+
+
+            If `REVOKED`, the customer or merchant explicitly unauthorized the
+            grant, preventing it from being used to perform the action.
         cashapp:
           $ref: '#/components/schemas/CashGrantDetailsCashapp'
         createdAt:
           type: string
+          description: >-
+            When this grant was created, in [RFC
+            3339](https://datatracker.ietf.org/doc/html/rfc3339) format (UTC).
         updatedAt:
           type: string
+          description: >-
+            When this grant was last updated, in [RFC
+            3339](https://datatracker.ietf.org/doc/html/rfc3339) format (UTC).
         expiresAt:
           type: string
+          description: >
+            If present, indicates when the grant's status will become EXPIRED,
+            preventing a client from using it to create payments or refunds.
+
+
+            The timestamp is in the [RFC
+            3339](https://datatracker.ietf.org/doc/html/rfc3339) format (UTC).
       required:
         - status
         - cashapp
@@ -9337,10 +9414,13 @@ components:
       properties:
         id:
           type: string
+          description: Unique identifier for this grant issued by Cash App.
         intent:
           $ref: '#/components/schemas/CashGrantIntent'
+          description: Either ON_FILE or ONE_TIME
         type:
           $ref: '#/components/schemas/CashGrantType'
+          description: CASHAPP for all Cash App Pay transactions
         details:
           $ref: '#/components/schemas/CashGrantDetails'
       required:
@@ -9574,12 +9654,17 @@ webhooks:
               properties:
                 type:
                   type: string
+                  description: >-
+                    The type of event that occurred. `grant.status.updated` for
+                    this event.
                 eventId:
                   type: string
+                  description: A unique identifier provided by Cash App for the event.
                 grant:
                   $ref: '#/components/schemas/CashGrant'
                 timestamp:
                   type: string
+                  description: When the webhook event was created
               required:
                 - type
                 - eventId
@@ -9610,6 +9695,9 @@ components:
           type: string
         cashtag:
           type: string
+          description: >-
+            A publicly-accessible, unique identifier (username) for individuals
+            and businesses using Cash App.
       required:
         - customerId
         - cashtag
@@ -9618,14 +9706,45 @@ components:
       properties:
         status:
           $ref: '#/components/schemas/CashGrantDetailsStatus'
+          description: >
+            Describes whether or not this grant can be used to perform the
+            action associated with it.
+
+
+            If `ACTIVE`, it can be used to perform the action.
+
+
+            If `EXPIRED`, it may no longer be used to perform the action due to
+            the current time being past the "expires_at" time.
+
+
+            If `CONSUMED`, it was already redeemed to perform the action and
+            cannot be used again.
+
+
+            If `REVOKED`, the customer or merchant explicitly unauthorized the
+            grant, preventing it from being used to perform the action.
         cashapp:
           $ref: '#/components/schemas/CashGrantDetailsCashapp'
         createdAt:
           type: string
+          description: >-
+            When this grant was created, in [RFC
+            3339](https://datatracker.ietf.org/doc/html/rfc3339) format (UTC).
         updatedAt:
           type: string
+          description: >-
+            When this grant was last updated, in [RFC
+            3339](https://datatracker.ietf.org/doc/html/rfc3339) format (UTC).
         expiresAt:
           type: string
+          description: >
+            If present, indicates when the grant's status will become EXPIRED,
+            preventing a client from using it to create payments or refunds.
+
+
+            The timestamp is in the [RFC
+            3339](https://datatracker.ietf.org/doc/html/rfc3339) format (UTC).
       required:
         - status
         - cashapp
@@ -9637,10 +9756,13 @@ components:
       properties:
         id:
           type: string
+          description: Unique identifier for this grant issued by Cash App.
         intent:
           $ref: '#/components/schemas/CashGrantIntent'
+          description: Either ON_FILE or ONE_TIME
         type:
           $ref: '#/components/schemas/CashGrantType'
+          description: CASHAPP for all Cash App Pay transactions
         details:
           $ref: '#/components/schemas/CashGrantDetails'
       required:
@@ -9657,7 +9779,7 @@ components:
 
 The Cash App Afterpay shop directory provides thousands of high-quality leads to our merchant partners every day.
 
-<img src="file:c81dd57d-25ad-4138-998d-6748e42eb5ad" alt="Cash App Afterpay-Shop-Directory" noZoom />
+<img src="https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-afterpay/assets/images/Afterpay-Shop-Directory.png" alt="Cash App Afterpay-Shop-Directory" noZoom />
 
 ## Get Your Store on the Shop Directory
 
@@ -10470,6 +10592,7 @@ paths:
           required: false
           schema:
             type: string
+            default: application/json
       responses:
         '201':
           description: Returns a token, expiry date/time, and checkout URL if successful.
@@ -10516,6 +10639,9 @@ components:
       properties:
         amount:
           type: string
+          description: >-
+            The amount as a string representation of a decimal number, rounded
+            to 2 decimal places.
         currency:
           $ref: '#/components/schemas/MoneyCurrency'
       required:
@@ -10529,8 +10655,10 @@ components:
           format: email
         givenNames:
           type: string
+          description: The consumer's first name
         surname:
           type: string
+          description: The consumer's last name
         phoneNumber:
           type: string
       required:
@@ -10550,20 +10678,40 @@ components:
           type: string
         line1:
           type: string
+          description: First line of the address
         line2:
           type: string
+          description: 'Second line of the address '
         area1:
           type: string
+          description: |-
+            - AU: Suburb
+            - NZ: Town or City
+            - UK: Postal Town
+            - US: City
+            - Canada: City
         area2:
           type: string
+          description: |-
+            - NZ: suburb
+            - UK: village or local area.
         region:
           type: string
+          description: |-
+            - AU: State 
+            - NZ: Region
+            - UK: County
+            - US: State
+            - CA: Province or Territory
         postcode:
           type: string
         countryCode:
           $ref: '#/components/schemas/ContactCountryCode'
         phoneNumber:
           type: string
+          description: >-
+            The phone number, in [E.123](https://en.wikipedia.org/wiki/E.123)
+            format.
       required:
         - name
         - line1
@@ -10580,8 +10728,15 @@ components:
           type: string
         popupOriginUrl:
           type: string
+          description: >-
+            The URL location from which Cash App Afterpay is initiated (required
+            for express checkout). Optional for standard checkout when a
+            `redirectConfirmURL` is provided.
         name:
           type: string
+          description: >-
+            The merchant name displayed in the Cash App Afterpay checkout flow,
+            confirmation & refund emails, and the consumer portal
       required:
         - redirectConfirmUrl
         - redirectCancelUrl
@@ -10611,6 +10766,7 @@ components:
           format: date
         preorder:
           type: boolean
+          default: false
       required:
         - name
         - quantity
@@ -10672,6 +10828,10 @@ components:
           type: string
         mode:
           type: string
+          default: standard
+          description: |-
+            Must be set to `express` to enable express checkout. 
+            Allowed values: `express` `standard`
       required:
         - amount
         - consumer
@@ -10680,10 +10840,17 @@ components:
       properties:
         token:
           type: string
+          description: Checkout token to be used to complete payment.
         expires:
           type: string
+          description: >-
+            The UTC timestamp of when the checkout token will expire, in ISO
+            8601 format.
         redirectCheckoutUrl:
           type: string
+          description: >-
+            A URL that can be used to redirect the customer to the Cash App
+            Afterpay screenflow directly from the merchant backend.
 
 ```
 
@@ -10927,6 +11094,7 @@ paths:
           required: false
           schema:
             type: string
+            default: application/json
       responses:
         '200':
           description: >
@@ -10962,6 +11130,9 @@ components:
       properties:
         amount:
           type: string
+          description: >-
+            The amount as a string representation of a decimal number, rounded
+            to 2 decimal places.
         currency:
           $ref: '#/components/schemas/MoneyCurrency'
       required:
@@ -10975,8 +11146,10 @@ components:
           format: email
         givenNames:
           type: string
+          description: The consumer's first name
         surname:
           type: string
+          description: The consumer's last name
         phoneNumber:
           type: string
       required:
@@ -10996,20 +11169,40 @@ components:
           type: string
         line1:
           type: string
+          description: First line of the address
         line2:
           type: string
+          description: 'Second line of the address '
         area1:
           type: string
+          description: |-
+            - AU: Suburb
+            - NZ: Town or City
+            - UK: Postal Town
+            - US: City
+            - Canada: City
         area2:
           type: string
+          description: |-
+            - NZ: suburb
+            - UK: village or local area.
         region:
           type: string
+          description: |-
+            - AU: State 
+            - NZ: Region
+            - UK: County
+            - US: State
+            - CA: Province or Territory
         postcode:
           type: string
         countryCode:
           $ref: '#/components/schemas/ContactCountryCode'
         phoneNumber:
           type: string
+          description: >-
+            The phone number, in [E.123](https://en.wikipedia.org/wiki/E.123)
+            format.
       required:
         - name
         - line1
@@ -11026,8 +11219,15 @@ components:
           type: string
         popupOriginUrl:
           type: string
+          description: >-
+            The URL location from which Cash App Afterpay is initiated (required
+            for express checkout). Optional for standard checkout when a
+            `redirectConfirmURL` is provided.
         name:
           type: string
+          description: >-
+            The merchant name displayed in the Cash App Afterpay checkout flow,
+            confirmation & refund emails, and the consumer portal
       required:
         - redirectConfirmUrl
         - redirectCancelUrl
@@ -11057,6 +11257,7 @@ components:
           format: date
         preorder:
           type: boolean
+          default: false
       required:
         - name
         - quantity
@@ -11090,10 +11291,17 @@ components:
       properties:
         token:
           type: string
+          description: Checkout token to be used to complete payment.
         expires:
           type: string
+          description: >-
+            The UTC timestamp of when the checkout token will expire, in ISO
+            8601 format.
         redirectCheckoutUrl:
           type: string
+          description: >-
+            A URL that can be used to redirect the customer to the Cash App
+            Afterpay screenflow directly from the merchant backend.
         amount:
           $ref: '#/components/schemas/Money'
         consumer:
@@ -11124,6 +11332,10 @@ components:
           type: string
         mode:
           type: string
+          default: standard
+          description: |-
+            Must be set to `express` to enable express checkout. 
+            Allowed values: `express` `standard`
       required:
         - amount
         - consumer
@@ -11453,6 +11665,7 @@ paths:
           required: false
           schema:
             type: string
+            default: application/json
       responses:
         '200':
           description: >
@@ -11491,6 +11704,9 @@ components:
       properties:
         amount:
           type: string
+          description: >-
+            The amount as a string representation of a decimal number, rounded
+            to 2 decimal places.
         currency:
           $ref: '#/components/schemas/MoneyCurrency'
       required:
@@ -11685,6 +11901,7 @@ paths:
           required: false
           schema:
             type: string
+            default: application/json
       responses:
         '200':
           description: OK
@@ -11705,8 +11922,12 @@ components:
       properties:
         name:
           type: string
+          description: Name of the brand to be shown in Cash App next to payments.
         externalBrandId:
           type: string
+          description: >-
+            The brand identifier for the Cash App Afterpay <> Cash App Pay
+            merchant mapping.
       required:
         - name
         - externalBrandId
@@ -11977,6 +12198,7 @@ paths:
           required: false
           schema:
             type: string
+            default: application/json
       responses:
         '200':
           description: Success
@@ -12020,12 +12242,18 @@ components:
       properties:
         transactionAmount:
           type: string
+          description: The transaction amount for the order.
         network:
           type: string
+          description: >-
+            The payment network used by the customer. (For example, `Visa` or
+            `MasterCard`)
         networkReferenceId:
           type: string
+          description: The identifier for the payment.
         orderType:
           type: string
+          description: The type of order. `ONLINE` or `INSTORE`
       required:
         - transactionAmount
         - orderType
@@ -12034,38 +12262,78 @@ components:
       properties:
         id:
           type: string
+          description: Dispute identifier
         order:
           type: string
+          description: The token of the order that the dispute is for.
         amount:
           type: string
+          description: The amount of the dispute
         reason:
           $ref: '#/components/schemas/DisputeReason'
+          description: The reason for the dispute.
         status:
           $ref: '#/components/schemas/DisputeStatus'
+          description: >-
+            The current state of the dispute. Values depend on how the dispute
+            state machine is modeled.
         open:
           type: boolean
+          default: true
+          description: '`True` if a final decision on the dispute hasn''t been made yet.'
         responseDueBy:
           type: string
+          description: >-
+            Deadline by which the merchant must respond to the dispute. (Epoch
+            timestamp in seconds, timezone UTC +0.00)
         createdAt:
           type: string
+          description: >-
+            A timestamp indicating when the dispute was created. (Epoch
+            timestamp in seconds, timezone UTC +0.00)
         openingNote:
           type: string
+          description: >-
+            Text from the customer describing why the dispute was opened or the
+            reason for the complaint. While dispute category codes are helpful
+            at informing what a merchant should present, it doesn’t provide
+            reasoning behind the customer’s complaint. In some cases, this can
+            help merchants troubleshoot the dispute directly with their
+            customers.
         openingNoteAttachments:
           type: string
+          description: >-
+            Attachments to supplement the `openingNote` if the customer provided
+            photos or screenshots as part of their dispute description.
         updatedAt:
           type: string
+          description: >-
+            Timestamp when the dispute was updated. (Epoch timestamp in seconds,
+            timezone UTC +0.00)
         closingReason:
           $ref: '#/components/schemas/DisputeClosingReason'
+          description: >-
+            A reason indicating how the final decision on the dispute was
+            reached. Recommended possible values listed in Closing Reasons.
         closingNote:
           type: string
+          description: >-
+            Text describing in detail how the final decision on the dispute was
+            reached. This supplements the `closingReason`.
         merchantOrderId:
           type: string
+          description: The identifier for the transaction on the merchant side.
         transactionDate:
           type: string
+          description: >-
+            The timestamp of the order created by the customer. (Epoch timestamp
+            in seconds, timezone UTC +0.00)
         settlementAmount:
           type: string
+          description: The settlementAmount for audit usage.
         meta:
           $ref: '#/components/schemas/meta'
+          description: The extra information for merchants to match payment.
       required:
         - id
         - order
@@ -12087,6 +12355,9 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/dispute'
+          description: >-
+            An array of dispute objects that match the filter criteria in the
+            request.
         offset:
           type: integer
         limit:
@@ -12280,6 +12551,7 @@ paths:
           required: false
           schema:
             type: string
+            default: application/json
       responses:
         '200':
           description: Success
@@ -12323,12 +12595,18 @@ components:
       properties:
         transactionAmount:
           type: string
+          description: The transaction amount for the order.
         network:
           type: string
+          description: >-
+            The payment network used by the customer. (For example, `Visa` or
+            `MasterCard`)
         networkReferenceId:
           type: string
+          description: The identifier for the payment.
         orderType:
           type: string
+          description: The type of order. `ONLINE` or `INSTORE`
       required:
         - transactionAmount
         - orderType
@@ -12337,38 +12615,78 @@ components:
       properties:
         id:
           type: string
+          description: Dispute identifier
         order:
           type: string
+          description: The token of the order that the dispute is for.
         amount:
           type: string
+          description: The amount of the dispute
         reason:
           $ref: '#/components/schemas/DisputeReason'
+          description: The reason for the dispute.
         status:
           $ref: '#/components/schemas/DisputeStatus'
+          description: >-
+            The current state of the dispute. Values depend on how the dispute
+            state machine is modeled.
         open:
           type: boolean
+          default: true
+          description: '`True` if a final decision on the dispute hasn''t been made yet.'
         responseDueBy:
           type: string
+          description: >-
+            Deadline by which the merchant must respond to the dispute. (Epoch
+            timestamp in seconds, timezone UTC +0.00)
         createdAt:
           type: string
+          description: >-
+            A timestamp indicating when the dispute was created. (Epoch
+            timestamp in seconds, timezone UTC +0.00)
         openingNote:
           type: string
+          description: >-
+            Text from the customer describing why the dispute was opened or the
+            reason for the complaint. While dispute category codes are helpful
+            at informing what a merchant should present, it doesn’t provide
+            reasoning behind the customer’s complaint. In some cases, this can
+            help merchants troubleshoot the dispute directly with their
+            customers.
         openingNoteAttachments:
           type: string
+          description: >-
+            Attachments to supplement the `openingNote` if the customer provided
+            photos or screenshots as part of their dispute description.
         updatedAt:
           type: string
+          description: >-
+            Timestamp when the dispute was updated. (Epoch timestamp in seconds,
+            timezone UTC +0.00)
         closingReason:
           $ref: '#/components/schemas/DisputeClosingReason'
+          description: >-
+            A reason indicating how the final decision on the dispute was
+            reached. Recommended possible values listed in Closing Reasons.
         closingNote:
           type: string
+          description: >-
+            Text describing in detail how the final decision on the dispute was
+            reached. This supplements the `closingReason`.
         merchantOrderId:
           type: string
+          description: The identifier for the transaction on the merchant side.
         transactionDate:
           type: string
+          description: >-
+            The timestamp of the order created by the customer. (Epoch timestamp
+            in seconds, timezone UTC +0.00)
         settlementAmount:
           type: string
+          description: The settlementAmount for audit usage.
         meta:
           $ref: '#/components/schemas/meta'
+          description: The extra information for merchants to match payment.
       required:
         - id
         - order
@@ -12995,8 +13313,12 @@ paths:
               properties:
                 id:
                   type: string
+                  description: A unique ID given to a dispute.
                 evidence:
                   $ref: '#/components/schemas/evidence'
+                  description: >-
+                    Evidence for the dispute. Note that there should be at least
+                    one valid field.
 components:
   schemas:
     evidence:
@@ -13004,29 +13326,60 @@ components:
       properties:
         productDescription:
           type: string
+          description: >-
+            A description of the product or service and any relevant details on
+            how this was presented to the customer at the time of purchase.
         refundPolicy:
           type: string
           format: binary
+          description: >-
+            Token of the file upload. The merchant’s refund policy, as shown or
+            provided to the customer.
         refundPolicyDisclosure:
           type: string
+          description: >-
+            An explanation of how and when the customer was shown or provided
+            with the merchant’s refund policy prior to purchase.
         refundRefusalExplanation:
           type: string
+          description: >-
+            The merchant’s explanation for why the customer is not entitled to a
+            refund.
         shippingDocumentation:
           type: string
           format: binary
+          description: >-
+            Token of the file upload. A shipping label or receipt for the
+            disputed payment.
         shippingAddress:
           type: string
+          description: The address to which a physical product was shipped.
         shippingDate:
           type: string
+          description: >-
+            In cases of physical products, the date that a physical product
+            began its route to the shipping address in a clear human-readable
+            format. This date should be prior to the date of the dispute.
         shippingCarrier:
           type: string
+          description: >-
+            In cases of physical products, the delivery service that shipped a
+            physical product, such as Fedex, UPS, USPS, etc. If multiple
+            carriers were used for this purchase, separate them with commas.
         shippingTrackingNumber:
           type: string
+          description: >-
+            The tracking number for a physical product, obtained from the
+            delivery service.
         uncategorizedFile:
           type: string
           format: binary
+          description: >-
+            Token of the file upload. Additional file that’s not in any of the
+            categories above.
         uncategorizedText:
           type: string
+          description: Any additional text deemed relevant by the merchant.
     DisputeReason:
       type: string
       enum:
@@ -13061,12 +13414,18 @@ components:
       properties:
         transactionAmount:
           type: string
+          description: The transaction amount for the order.
         network:
           type: string
+          description: >-
+            The payment network used by the customer. (For example, `Visa` or
+            `MasterCard`)
         networkReferenceId:
           type: string
+          description: The identifier for the payment.
         orderType:
           type: string
+          description: The type of order. `ONLINE` or `INSTORE`
       required:
         - transactionAmount
         - orderType
@@ -13075,38 +13434,78 @@ components:
       properties:
         id:
           type: string
+          description: Dispute identifier
         order:
           type: string
+          description: The token of the order that the dispute is for.
         amount:
           type: string
+          description: The amount of the dispute
         reason:
           $ref: '#/components/schemas/DisputeReason'
+          description: The reason for the dispute.
         status:
           $ref: '#/components/schemas/DisputeStatus'
+          description: >-
+            The current state of the dispute. Values depend on how the dispute
+            state machine is modeled.
         open:
           type: boolean
+          default: true
+          description: '`True` if a final decision on the dispute hasn''t been made yet.'
         responseDueBy:
           type: string
+          description: >-
+            Deadline by which the merchant must respond to the dispute. (Epoch
+            timestamp in seconds, timezone UTC +0.00)
         createdAt:
           type: string
+          description: >-
+            A timestamp indicating when the dispute was created. (Epoch
+            timestamp in seconds, timezone UTC +0.00)
         openingNote:
           type: string
+          description: >-
+            Text from the customer describing why the dispute was opened or the
+            reason for the complaint. While dispute category codes are helpful
+            at informing what a merchant should present, it doesn’t provide
+            reasoning behind the customer’s complaint. In some cases, this can
+            help merchants troubleshoot the dispute directly with their
+            customers.
         openingNoteAttachments:
           type: string
+          description: >-
+            Attachments to supplement the `openingNote` if the customer provided
+            photos or screenshots as part of their dispute description.
         updatedAt:
           type: string
+          description: >-
+            Timestamp when the dispute was updated. (Epoch timestamp in seconds,
+            timezone UTC +0.00)
         closingReason:
           $ref: '#/components/schemas/DisputeClosingReason'
+          description: >-
+            A reason indicating how the final decision on the dispute was
+            reached. Recommended possible values listed in Closing Reasons.
         closingNote:
           type: string
+          description: >-
+            Text describing in detail how the final decision on the dispute was
+            reached. This supplements the `closingReason`.
         merchantOrderId:
           type: string
+          description: The identifier for the transaction on the merchant side.
         transactionDate:
           type: string
+          description: >-
+            The timestamp of the order created by the customer. (Epoch timestamp
+            in seconds, timezone UTC +0.00)
         settlementAmount:
           type: string
+          description: The settlementAmount for audit usage.
         meta:
           $ref: '#/components/schemas/meta'
+          description: The extra information for merchants to match payment.
       required:
         - id
         - order
@@ -13859,12 +14258,18 @@ components:
       properties:
         transactionAmount:
           type: string
+          description: The transaction amount for the order.
         network:
           type: string
+          description: >-
+            The payment network used by the customer. (For example, `Visa` or
+            `MasterCard`)
         networkReferenceId:
           type: string
+          description: The identifier for the payment.
         orderType:
           type: string
+          description: The type of order. `ONLINE` or `INSTORE`
       required:
         - transactionAmount
         - orderType
@@ -13873,38 +14278,78 @@ components:
       properties:
         id:
           type: string
+          description: Dispute identifier
         order:
           type: string
+          description: The token of the order that the dispute is for.
         amount:
           type: string
+          description: The amount of the dispute
         reason:
           $ref: '#/components/schemas/DisputeReason'
+          description: The reason for the dispute.
         status:
           $ref: '#/components/schemas/DisputeStatus'
+          description: >-
+            The current state of the dispute. Values depend on how the dispute
+            state machine is modeled.
         open:
           type: boolean
+          default: true
+          description: '`True` if a final decision on the dispute hasn''t been made yet.'
         responseDueBy:
           type: string
+          description: >-
+            Deadline by which the merchant must respond to the dispute. (Epoch
+            timestamp in seconds, timezone UTC +0.00)
         createdAt:
           type: string
+          description: >-
+            A timestamp indicating when the dispute was created. (Epoch
+            timestamp in seconds, timezone UTC +0.00)
         openingNote:
           type: string
+          description: >-
+            Text from the customer describing why the dispute was opened or the
+            reason for the complaint. While dispute category codes are helpful
+            at informing what a merchant should present, it doesn’t provide
+            reasoning behind the customer’s complaint. In some cases, this can
+            help merchants troubleshoot the dispute directly with their
+            customers.
         openingNoteAttachments:
           type: string
+          description: >-
+            Attachments to supplement the `openingNote` if the customer provided
+            photos or screenshots as part of their dispute description.
         updatedAt:
           type: string
+          description: >-
+            Timestamp when the dispute was updated. (Epoch timestamp in seconds,
+            timezone UTC +0.00)
         closingReason:
           $ref: '#/components/schemas/DisputeClosingReason'
+          description: >-
+            A reason indicating how the final decision on the dispute was
+            reached. Recommended possible values listed in Closing Reasons.
         closingNote:
           type: string
+          description: >-
+            Text describing in detail how the final decision on the dispute was
+            reached. This supplements the `closingReason`.
         merchantOrderId:
           type: string
+          description: The identifier for the transaction on the merchant side.
         transactionDate:
           type: string
+          description: >-
+            The timestamp of the order created by the customer. (Epoch timestamp
+            in seconds, timezone UTC +0.00)
         settlementAmount:
           type: string
+          description: The settlementAmount for audit usage.
         meta:
           $ref: '#/components/schemas/meta'
+          description: The extra information for merchants to match payment.
       required:
         - id
         - order
@@ -14519,6 +14964,7 @@ paths:
                   description: The file you want to upload.
                 fileType:
                   type: string
+                  description: The type of file. Only `dispute_evidence` is supported.
               required:
                 - file
                 - fileType
@@ -14529,12 +14975,15 @@ components:
       properties:
         id:
           type: string
+          description: The ID token of the file.
         createdAt:
           type: string
           format: date-time
+          description: The timestamp indicating when the file was uploaded.
         expiresAt:
           type: string
           format: date-time
+          description: 'The timestamp indicating when the uploaded file expires. '
 
 ```
 
@@ -15303,9 +15752,11 @@ components:
       properties:
         url:
           type: string
+          description: The link of the file to be retrieved.
         expiresAt:
           type: string
           format: date-time
+          description: The timestamp indicating the expiration of the link.
 
 ```
 
@@ -15966,6 +16417,7 @@ paths:
           required: false
           schema:
             type: string
+            default: application/json
       responses:
         '200':
           description: OK
@@ -16024,10 +16476,12 @@ components:
       properties:
         type:
           $ref: '#/components/schemas/GrantApprovalTypeType'
+          description: Grant Type for approval.
         merchantReference:
           type:
             - string
             - 'null'
+          description: A merchant-provided reference for the grant.
       required:
         - type
     GrantApprovalRequestMerchant:
@@ -16039,8 +16493,10 @@ components:
           type: string
         popupOriginUrl:
           type: string
+          description: This property is optional when a `redirectConfirmURL` is provided.
         name:
           type: string
+          description: The merchant name displayed in the Afterpay approval flow.
       required:
         - redirectConfirmUrl
         - redirectCancelUrl
@@ -16052,8 +16508,10 @@ components:
           format: email
         givenNames:
           type: string
+          description: The consumer's first name
         surname:
           type: string
+          description: The consumer's last name
         phoneNumber:
           type: string
       required:
@@ -16065,10 +16523,12 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/GrantApprovalType'
+          description: Grant type for approval (only single grant is supported)
         merchant:
           $ref: '#/components/schemas/GrantApprovalRequestMerchant'
         consumer:
           $ref: '#/components/schemas/Consumer'
+          description: Consumer details for the grant
       required:
         - grants
         - merchant
@@ -16077,12 +16537,15 @@ components:
       properties:
         token:
           type: string
+          description: Token identifying this grant approval request
         expires:
           type: string
           format: date-time
+          description: When this approval request expires
         redirectCheckoutUrl:
           type: string
           format: uri
+          description: URL where the consumer should be redirected to complete approval
       required:
         - token
         - expires
@@ -16302,6 +16765,7 @@ paths:
           required: false
           schema:
             type: string
+            default: application/json
       responses:
         '201':
           description: Created
@@ -16339,10 +16803,18 @@ components:
       properties:
         requestId:
           type: string
+          description: >-
+            A unique request ID, required for idempotent retries. It is
+            recommended that the merchant generate a UUID for each unique
+            request.
         token:
           type: string
+          description: The token returned from the create approval request.
         code:
           type: string
+          description: |-
+            The one-time code received from the consumer.
+            Note: The code will only be sent with the headless integration.
       required:
         - requestId
         - token
@@ -16360,35 +16832,47 @@ components:
       properties:
         id:
           type: string
+          description: Unique id identifying the grant
         type:
           $ref: '#/components/schemas/GrantType'
+          description: Type of grant
         status:
           $ref: '#/components/schemas/GrantStatus'
+          description: Current status of the grant
         created:
           type: string
           format: date-time
+          description: Timestamp when the grant was created
         merchantReference:
           type:
             - string
             - 'null'
+          description: Merchant's reference for this grant
         cancelled:
           type: string
           format: date-time
+          description: If present, indicates when the grant was cancelled
         expires:
           type: string
           format: date-time
+          description: >-
+            If present, indicates when the grant's status will become EXPIRED,
+            preventing a client from using it to create payments
         consumerReference:
           type:
             - string
             - 'null'
+          description: Reference identifier for the consumer
         email:
           type:
             - string
             - 'null'
+          description: Masked email address of the consumer
         requestId:
           type:
             - string
             - 'null'
+          description: If present, unique identifier for the request
       required:
         - id
         - type
@@ -16641,35 +17125,47 @@ components:
       properties:
         id:
           type: string
+          description: Unique id identifying the grant
         type:
           $ref: '#/components/schemas/GrantType'
+          description: Type of grant
         status:
           $ref: '#/components/schemas/GrantStatus'
+          description: Current status of the grant
         created:
           type: string
           format: date-time
+          description: Timestamp when the grant was created
         merchantReference:
           type:
             - string
             - 'null'
+          description: Merchant's reference for this grant
         cancelled:
           type: string
           format: date-time
+          description: If present, indicates when the grant was cancelled
         expires:
           type: string
           format: date-time
+          description: >-
+            If present, indicates when the grant's status will become EXPIRED,
+            preventing a client from using it to create payments
         consumerReference:
           type:
             - string
             - 'null'
+          description: Reference identifier for the consumer
         email:
           type:
             - string
             - 'null'
+          description: Masked email address of the consumer
         requestId:
           type:
             - string
             - 'null'
+          description: If present, unique identifier for the request
       required:
         - id
         - type
@@ -16884,35 +17380,47 @@ components:
       properties:
         id:
           type: string
+          description: Unique id identifying the grant
         type:
           $ref: '#/components/schemas/GrantType'
+          description: Type of grant
         status:
           $ref: '#/components/schemas/GrantStatus'
+          description: Current status of the grant
         created:
           type: string
           format: date-time
+          description: Timestamp when the grant was created
         merchantReference:
           type:
             - string
             - 'null'
+          description: Merchant's reference for this grant
         cancelled:
           type: string
           format: date-time
+          description: If present, indicates when the grant was cancelled
         expires:
           type: string
           format: date-time
+          description: >-
+            If present, indicates when the grant's status will become EXPIRED,
+            preventing a client from using it to create payments
         consumerReference:
           type:
             - string
             - 'null'
+          description: Reference identifier for the consumer
         email:
           type:
             - string
             - 'null'
+          description: Masked email address of the consumer
         requestId:
           type:
             - string
             - 'null'
+          description: If present, unique identifier for the request
       required:
         - id
         - type
@@ -17089,6 +17597,7 @@ paths:
           required: false
           schema:
             type: string
+            default: application/json
       responses:
         '200':
           description: OK
@@ -17120,11 +17629,13 @@ components:
       properties:
         token:
           type: string
+          description: Token of the grant to create an alias for
         duration:
           type:
             - string
             - 'null'
           format: duration
+          description: Duration of the grant in ISO-8601 period format
       required:
         - token
     GrantAliasResponse:
@@ -17132,9 +17643,11 @@ components:
       properties:
         token:
           type: string
+          description: Token representing the grant alias
         expiry:
           type: string
           format: date-time
+          description: Timestamp when the alias token expires
       required:
         - token
         - expiry
@@ -17333,6 +17846,7 @@ paths:
           required: false
           schema:
             type: string
+            default: application/json
       responses:
         '201':
           description: Created
@@ -17370,8 +17884,10 @@ components:
       properties:
         alias:
           type: string
+          description: Email or phone number associated with the consumer's account
         requestId:
           type: string
+          description: A unique identifier for this request
       required:
         - alias
         - requestId
@@ -17385,13 +17901,17 @@ components:
       properties:
         token:
           type: string
+          description: Token identifying the grant to be created
         requestId:
           type: string
+          description: The unique identifier from the request
         expiresAt:
           type: string
           format: date-time
+          description: When this link attempt will expire
         deliveryType:
           $ref: '#/components/schemas/GrantStartResponseDeliveryType'
+          description: How the verification code was delivered to the consumer
       required:
         - token
         - requestId
@@ -17613,35 +18133,47 @@ components:
       properties:
         id:
           type: string
+          description: Unique id identifying the grant
         type:
           $ref: '#/components/schemas/GrantType'
+          description: Type of grant
         status:
           $ref: '#/components/schemas/GrantStatus'
+          description: Current status of the grant
         created:
           type: string
           format: date-time
+          description: Timestamp when the grant was created
         merchantReference:
           type:
             - string
             - 'null'
+          description: Merchant's reference for this grant
         cancelled:
           type: string
           format: date-time
+          description: If present, indicates when the grant was cancelled
         expires:
           type: string
           format: date-time
+          description: >-
+            If present, indicates when the grant's status will become EXPIRED,
+            preventing a client from using it to create payments
         consumerReference:
           type:
             - string
             - 'null'
+          description: Reference identifier for the consumer
         email:
           type:
             - string
             - 'null'
+          description: Masked email address of the consumer
         requestId:
           type:
             - string
             - 'null'
+          description: If present, unique identifier for the request
       required:
         - id
         - type
@@ -17730,6 +18262,7 @@ paths:
           required: false
           schema:
             type: string
+            default: application/json
       responses:
         '200':
           description: OK
@@ -17756,8 +18289,10 @@ components:
       properties:
         customerId:
           type: string
+          description: ID of the customer that approved the customer grant.
         grantId:
           type: string
+          description: ID of the customer grant to retrieve.
       required:
         - customerId
         - grantId
@@ -17784,6 +18319,9 @@ components:
           type: string
         cashtag:
           type: string
+          description: >-
+            A publicly-accessible, unique identifier (username) for individuals
+            and businesses using Cash App.
       required:
         - customerId
         - cashtag
@@ -17792,14 +18330,45 @@ components:
       properties:
         status:
           $ref: '#/components/schemas/CashGrantDetailsStatus'
+          description: >
+            Describes whether or not this grant can be used to perform the
+            action associated with it.
+
+
+            If `ACTIVE`, it can be used to perform the action.
+
+
+            If `EXPIRED`, it may no longer be used to perform the action due to
+            the current time being past the "expires_at" time.
+
+
+            If `CONSUMED`, it was already redeemed to perform the action and
+            cannot be used again.
+
+
+            If `REVOKED`, the customer or merchant explicitly unauthorized the
+            grant, preventing it from being used to perform the action.
         cashapp:
           $ref: '#/components/schemas/CashGrantDetailsCashapp'
         createdAt:
           type: string
+          description: >-
+            When this grant was created, in [RFC
+            3339](https://datatracker.ietf.org/doc/html/rfc3339) format (UTC).
         updatedAt:
           type: string
+          description: >-
+            When this grant was last updated, in [RFC
+            3339](https://datatracker.ietf.org/doc/html/rfc3339) format (UTC).
         expiresAt:
           type: string
+          description: >
+            If present, indicates when the grant's status will become EXPIRED,
+            preventing a client from using it to create payments or refunds.
+
+
+            The timestamp is in the [RFC
+            3339](https://datatracker.ietf.org/doc/html/rfc3339) format (UTC).
       required:
         - status
         - cashapp
@@ -17811,10 +18380,13 @@ components:
       properties:
         id:
           type: string
+          description: Unique identifier for this grant issued by Cash App.
         intent:
           $ref: '#/components/schemas/CashGrantIntent'
+          description: Either ON_FILE or ONE_TIME
         type:
           $ref: '#/components/schemas/CashGrantType'
+          description: CASHAPP for all Cash App Pay transactions
         details:
           $ref: '#/components/schemas/CashGrantDetails'
       required:
@@ -18045,6 +18617,7 @@ paths:
           required: false
           schema:
             type: string
+            default: application/json
       responses:
         '200':
           description: OK
@@ -18071,8 +18644,10 @@ components:
       properties:
         customerId:
           type: string
+          description: ID of the customer that approved the customer grant.
         grantId:
           type: string
+          description: ID of the customer grant to retrieve.
       required:
         - customerId
         - grantId
@@ -18099,6 +18674,9 @@ components:
           type: string
         cashtag:
           type: string
+          description: >-
+            A publicly-accessible, unique identifier (username) for individuals
+            and businesses using Cash App.
       required:
         - customerId
         - cashtag
@@ -18107,14 +18685,45 @@ components:
       properties:
         status:
           $ref: '#/components/schemas/CashGrantDetailsStatus'
+          description: >
+            Describes whether or not this grant can be used to perform the
+            action associated with it.
+
+
+            If `ACTIVE`, it can be used to perform the action.
+
+
+            If `EXPIRED`, it may no longer be used to perform the action due to
+            the current time being past the "expires_at" time.
+
+
+            If `CONSUMED`, it was already redeemed to perform the action and
+            cannot be used again.
+
+
+            If `REVOKED`, the customer or merchant explicitly unauthorized the
+            grant, preventing it from being used to perform the action.
         cashapp:
           $ref: '#/components/schemas/CashGrantDetailsCashapp'
         createdAt:
           type: string
+          description: >-
+            When this grant was created, in [RFC
+            3339](https://datatracker.ietf.org/doc/html/rfc3339) format (UTC).
         updatedAt:
           type: string
+          description: >-
+            When this grant was last updated, in [RFC
+            3339](https://datatracker.ietf.org/doc/html/rfc3339) format (UTC).
         expiresAt:
           type: string
+          description: >
+            If present, indicates when the grant's status will become EXPIRED,
+            preventing a client from using it to create payments or refunds.
+
+
+            The timestamp is in the [RFC
+            3339](https://datatracker.ietf.org/doc/html/rfc3339) format (UTC).
       required:
         - status
         - cashapp
@@ -18126,10 +18735,13 @@ components:
       properties:
         id:
           type: string
+          description: Unique identifier for this grant issued by Cash App.
         intent:
           $ref: '#/components/schemas/CashGrantIntent'
+          description: Either ON_FILE or ONE_TIME
         type:
           $ref: '#/components/schemas/CashGrantType'
+          description: CASHAPP for all Cash App Pay transactions
         details:
           $ref: '#/components/schemas/CashGrantDetails'
       required:
@@ -18402,12 +19014,17 @@ webhooks:
               properties:
                 type:
                   type: string
+                  description: >-
+                    The type of event that occurred. `grant.status.updated` for
+                    this event.
                 eventId:
                   type: string
+                  description: A unique identifier provided by Cash App for the event.
                 grant:
                   $ref: '#/components/schemas/CashGrant'
                 timestamp:
                   type: string
+                  description: When the webhook event was created
               required:
                 - type
                 - eventId
@@ -18438,6 +19055,9 @@ components:
           type: string
         cashtag:
           type: string
+          description: >-
+            A publicly-accessible, unique identifier (username) for individuals
+            and businesses using Cash App.
       required:
         - customerId
         - cashtag
@@ -18446,14 +19066,45 @@ components:
       properties:
         status:
           $ref: '#/components/schemas/CashGrantDetailsStatus'
+          description: >
+            Describes whether or not this grant can be used to perform the
+            action associated with it.
+
+
+            If `ACTIVE`, it can be used to perform the action.
+
+
+            If `EXPIRED`, it may no longer be used to perform the action due to
+            the current time being past the "expires_at" time.
+
+
+            If `CONSUMED`, it was already redeemed to perform the action and
+            cannot be used again.
+
+
+            If `REVOKED`, the customer or merchant explicitly unauthorized the
+            grant, preventing it from being used to perform the action.
         cashapp:
           $ref: '#/components/schemas/CashGrantDetailsCashapp'
         createdAt:
           type: string
+          description: >-
+            When this grant was created, in [RFC
+            3339](https://datatracker.ietf.org/doc/html/rfc3339) format (UTC).
         updatedAt:
           type: string
+          description: >-
+            When this grant was last updated, in [RFC
+            3339](https://datatracker.ietf.org/doc/html/rfc3339) format (UTC).
         expiresAt:
           type: string
+          description: >
+            If present, indicates when the grant's status will become EXPIRED,
+            preventing a client from using it to create payments or refunds.
+
+
+            The timestamp is in the [RFC
+            3339](https://datatracker.ietf.org/doc/html/rfc3339) format (UTC).
       required:
         - status
         - cashapp
@@ -18465,10 +19116,13 @@ components:
       properties:
         id:
           type: string
+          description: Unique identifier for this grant issued by Cash App.
         intent:
           $ref: '#/components/schemas/CashGrantIntent'
+          description: Either ON_FILE or ONE_TIME
         type:
           $ref: '#/components/schemas/CashGrantType'
+          description: CASHAPP for all Cash App Pay transactions
         details:
           $ref: '#/components/schemas/CashGrantDetails'
       required:
@@ -18518,6 +19172,7 @@ paths:
           required: false
           schema:
             type: string
+            default: application/json
       responses:
         '201':
           description: Created
@@ -18563,6 +19218,9 @@ components:
       properties:
         amount:
           type: string
+          description: >-
+            The amount as a string representation of a decimal number, rounded
+            to 2 decimal places.
         currency:
           $ref: '#/components/schemas/MoneyCurrency'
       required:
@@ -18578,6 +19236,7 @@ components:
       properties:
         actor:
           $ref: '#/components/schemas/InitiationActor'
+          description: The party who initiated the order
       required:
         - actor
     SubscriptionType:
@@ -18606,8 +19265,10 @@ components:
       properties:
         initiation:
           $ref: '#/components/schemas/Initiation'
+          description: Who initiated the order
         subscription:
           $ref: '#/components/schemas/Subscription'
+          description: Metadata on the subscription details
       required:
         - initiation
     Consumer:
@@ -18618,8 +19279,10 @@ components:
           format: email
         givenNames:
           type: string
+          description: The consumer's first name
         surname:
           type: string
+          description: The consumer's last name
         phoneNumber:
           type: string
       required:
@@ -18639,20 +19302,40 @@ components:
           type: string
         line1:
           type: string
+          description: First line of the address
         line2:
           type: string
+          description: 'Second line of the address '
         area1:
           type: string
+          description: |-
+            - AU: Suburb
+            - NZ: Town or City
+            - UK: Postal Town
+            - US: City
+            - Canada: City
         area2:
           type: string
+          description: |-
+            - NZ: suburb
+            - UK: village or local area.
         region:
           type: string
+          description: |-
+            - AU: State 
+            - NZ: Region
+            - UK: County
+            - US: State
+            - CA: Province or Territory
         postcode:
           type: string
         countryCode:
           $ref: '#/components/schemas/ContactCountryCode'
         phoneNumber:
           type: string
+          description: >-
+            The phone number, in [E.123](https://en.wikipedia.org/wiki/E.123)
+            format.
       required:
         - name
         - line1
@@ -18686,6 +19369,7 @@ components:
           format: date
         preorder:
           type: boolean
+          default: false
       required:
         - name
         - quantity
@@ -18720,12 +19404,16 @@ components:
         requestId:
           type: string
           format: uuid
+          description: A unique identifier for the request, used for idempotency
         grantId:
           type: string
+          description: ID of the grant used to create this order
         amount:
           $ref: '#/components/schemas/Money'
+          description: The total amount of the order
         enrichments:
           $ref: '#/components/schemas/Enrichments'
+          description: Describes additional fields beyond core payment information.
         consumer:
           $ref: '#/components/schemas/Consumer'
         billing:
@@ -18742,10 +19430,13 @@ components:
             $ref: '#/components/schemas/Discount'
         merchantReference:
           type: string
+          description: The reference/order ID in the merchant's system
         shippingAmount:
           $ref: '#/components/schemas/Money'
+          description: The shipping cost amount
         taxAmount:
           $ref: '#/components/schemas/Money'
+          description: The tax amount
         courier:
           $ref: '#/components/schemas/Shipping-Courier'
       required:
@@ -18999,6 +19690,7 @@ paths:
           required: false
           schema:
             type: string
+            default: '2020-12-30'
         - name: fromCreatedDate
           in: query
           description: >-
@@ -19007,6 +19699,7 @@ paths:
           required: false
           schema:
             type: string
+            default: '2020-01-01'
         - name: tokens
           in: query
           description: One or more order tokens to search for.
@@ -19023,6 +19716,7 @@ paths:
           required: false
           schema:
             type: boolean
+            default: false
         - name: ids
           in: query
           description: One or more Cash App Afterpay Order IDs to search for.
@@ -19057,6 +19751,7 @@ paths:
           required: false
           schema:
             type: string
+            default: createdAt
         - name: ascending
           in: query
           description: >-
@@ -19065,6 +19760,7 @@ paths:
           required: false
           schema:
             type: boolean
+            default: false
         - name: Authorization
           in: header
           description: Basic authentication of the form `Basic <username:password>`.
@@ -19081,6 +19777,7 @@ paths:
           required: false
           schema:
             type: string
+            default: application/json
       responses:
         '200':
           description: >-
@@ -19126,6 +19823,9 @@ components:
       properties:
         amount:
           type: string
+          description: >-
+            The amount as a string representation of a decimal number, rounded
+            to 2 decimal places.
         currency:
           $ref: '#/components/schemas/MoneyCurrency'
       required:
@@ -19145,14 +19845,23 @@ components:
       properties:
         requestId:
           type: string
+          description: Unique ID required for safe retries. Max length 64 (varchar).
         amount:
           $ref: '#/components/schemas/Money'
         merchantReference:
           type: string
+          description: >-
+            The merchant’s internal refund id/reference. This must be included
+            along with the `requestId` to utilise idempotency. Max length 85
+            (varchar).
         refundMerchantReference:
           type: string
+          description: >-
+            A unique reference for the individual refund event. Max length 128
+            (varchar).
         refundId:
           type: string
+          description: The unique, permanent, Cash App Afterpay-generated Refund ID.
         refundedAt:
           type: string
     Consumer:
@@ -19163,8 +19872,10 @@ components:
           format: email
         givenNames:
           type: string
+          description: The consumer's first name
         surname:
           type: string
+          description: The consumer's last name
         phoneNumber:
           type: string
       required:
@@ -19184,20 +19895,40 @@ components:
           type: string
         line1:
           type: string
+          description: First line of the address
         line2:
           type: string
+          description: 'Second line of the address '
         area1:
           type: string
+          description: |-
+            - AU: Suburb
+            - NZ: Town or City
+            - UK: Postal Town
+            - US: City
+            - Canada: City
         area2:
           type: string
+          description: |-
+            - NZ: suburb
+            - UK: village or local area.
         region:
           type: string
+          description: |-
+            - AU: State 
+            - NZ: Region
+            - UK: County
+            - US: State
+            - CA: Province or Territory
         postcode:
           type: string
         countryCode:
           $ref: '#/components/schemas/ContactCountryCode'
         phoneNumber:
           type: string
+          description: >-
+            The phone number, in [E.123](https://en.wikipedia.org/wiki/E.123)
+            format.
       required:
         - name
         - line1
@@ -19248,6 +19979,7 @@ components:
           format: date
         preorder:
           type: boolean
+          default: false
       required:
         - name
         - quantity
@@ -19309,20 +20041,28 @@ components:
       properties:
         id:
           type: string
+          description: The unique, permanent, Cash App Afterpay generated Order ID.
         token:
           type: string
+          description: The token obtained from the checkout call
         status:
           $ref: '#/components/schemas/PaymentStatus'
+          description: represents the status of the order
         created:
           type: string
+          description: ' is the UTC timestamp of when the payment was completed.'
         originalAmount:
           $ref: '#/components/schemas/Money'
         openToCaptureAmount:
           $ref: '#/components/schemas/Money'
         paymentState:
           $ref: '#/components/schemas/PaymentPaymentState'
+          description: is the current state for capturing payments
         merchantReference:
           type: string
+          description: >-
+            is the merchant's order id/reference that the payment corresponds
+            to.
         refunds:
           type: array
           items:
@@ -19338,10 +20078,13 @@ components:
       properties:
         totalResults:
           type: integer
+          description: Total number of results
         offset:
           type: integer
+          description: The offer of the pagination
         limit:
           type: integer
+          description: The number of payments to include in the results
         results:
           type: array
           items:
@@ -19568,6 +20311,7 @@ paths:
           required: false
           schema:
             type: string
+            default: application/json
       responses:
         '201':
           description: >-
@@ -19627,6 +20371,9 @@ components:
       properties:
         amount:
           type: string
+          description: >-
+            The amount as a string representation of a decimal number, rounded
+            to 2 decimal places.
         currency:
           $ref: '#/components/schemas/MoneyCurrency'
       required:
@@ -19647,20 +20394,40 @@ components:
           type: string
         line1:
           type: string
+          description: First line of the address
         line2:
           type: string
+          description: 'Second line of the address '
         area1:
           type: string
+          description: |-
+            - AU: Suburb
+            - NZ: Town or City
+            - UK: Postal Town
+            - US: City
+            - Canada: City
         area2:
           type: string
+          description: |-
+            - NZ: suburb
+            - UK: village or local area.
         region:
           type: string
+          description: |-
+            - AU: State 
+            - NZ: Region
+            - UK: County
+            - US: State
+            - CA: Province or Territory
         postcode:
           type: string
         countryCode:
           $ref: '#/components/schemas/ContactCountryCode'
         phoneNumber:
           type: string
+          description: >-
+            The phone number, in [E.123](https://en.wikipedia.org/wiki/E.123)
+            format.
       required:
         - name
         - line1
@@ -19678,6 +20445,7 @@ components:
       properties:
         actor:
           $ref: '#/components/schemas/InitiationActor'
+          description: The party who initiated the order
       required:
         - actor
     SubscriptionType:
@@ -19706,8 +20474,10 @@ components:
       properties:
         initiation:
           $ref: '#/components/schemas/Initiation'
+          description: Who initiated the order
         subscription:
           $ref: '#/components/schemas/Subscription'
+          description: Metadata on the subscription details
       required:
         - initiation
     AuthorizePayment:
@@ -19716,22 +20486,53 @@ components:
         requestid:
           type: string
           format: uuid
+          description: >-
+            A unique request ID, required for idempotent retries. We recommend
+            that merchants generate a Universally Unique Identifier (UUID) for
+            each unique request.
         token:
           type: string
         merchantReference:
           type: string
+          description: >-
+            The reference/order ID that this payment corresponds to in the
+            merchant's system.
+
+
+            **Note:** Providing a new value updates any value previously set in
+            the Create Checkout request.
         amount:
           $ref: '#/components/schemas/Money'
+          description: >-
+            **Required for express checkout only.** Amount to be checked against
+            the value in the create checkout request. If the amounts do not
+            match, then the request is rejected and an error specific to this
+            scenario is returned.
         isCheckoutAdjusted:
           type: boolean
+          description: >-
+            **Express checkout only.** The isCheckoutAdjusted field can be used
+            to allow the order amount to be changed after the checkout flow.
+            Used for express checkout.
         paymentScheduleChecksum:
           type: string
+          description: >-
+            **Express checkout only.** A unique value representing the payment
+            schedule that must be provided when there has been changes since the
+            initial order creation (retrieved from checkout widget).
         items:
           type: array
           items:
             description: Any type
+          description: >-
+            **Express checkout only.** An array of order items that have been
+            updated to be provided if it has changed since the initial order
+            creation.
         shipping:
           $ref: '#/components/schemas/Contact'
+          description: >-
+            **Express checkout only.** The shipping address if it has changed
+            since the initial order creation.
         enrichments:
           $ref: '#/components/schemas/Enrichments'
       required:
@@ -19755,14 +20556,23 @@ components:
       properties:
         requestId:
           type: string
+          description: Unique ID required for safe retries. Max length 64 (varchar).
         amount:
           $ref: '#/components/schemas/Money'
         merchantReference:
           type: string
+          description: >-
+            The merchant’s internal refund id/reference. This must be included
+            along with the `requestId` to utilise idempotency. Max length 85
+            (varchar).
         refundMerchantReference:
           type: string
+          description: >-
+            A unique reference for the individual refund event. Max length 128
+            (varchar).
         refundId:
           type: string
+          description: The unique, permanent, Cash App Afterpay-generated Refund ID.
         refundedAt:
           type: string
     Consumer:
@@ -19773,8 +20583,10 @@ components:
           format: email
         givenNames:
           type: string
+          description: The consumer's first name
         surname:
           type: string
+          description: The consumer's last name
         phoneNumber:
           type: string
       required:
@@ -19822,6 +20634,7 @@ components:
           format: date
         preorder:
           type: boolean
+          default: false
       required:
         - name
         - quantity
@@ -19883,20 +20696,28 @@ components:
       properties:
         id:
           type: string
+          description: The unique, permanent, Cash App Afterpay generated Order ID.
         token:
           type: string
+          description: The token obtained from the checkout call
         status:
           $ref: '#/components/schemas/PaymentAuthStatus'
+          description: represents the status of the order
         created:
           type: string
+          description: ' is the UTC timestamp of when the payment was completed.'
         originalAmount:
           $ref: '#/components/schemas/Money'
         openToCaptureAmount:
           $ref: '#/components/schemas/Money'
         paymentState:
           $ref: '#/components/schemas/PaymentAuthPaymentState'
+          description: is the current state for capturing payments
         merchantReference:
           type: string
+          description: >-
+            is the merchant's order id/reference that the payment corresponds
+            to.
         refunds:
           type: array
           items:
@@ -20386,6 +21207,7 @@ paths:
           required: false
           schema:
             type: string
+            default: application/json
       responses:
         '201':
           description: >
@@ -20429,18 +21251,44 @@ paths:
               properties:
                 token:
                   type: string
+                  description: The token returned in the Create Checkout request.
                 merchantReference:
                   type: string
+                  description: >-
+                    The merchant’s order id/reference that this payment
+                    corresponds to. This updates any value previously provided
+                    in the Create Checkout request.
                 amount:
                   $ref: '#/components/schemas/Money'
+                  description: >-
+                    **Required for express checkout only.** Amount to be checked
+                    against the value in the create checkout request. If the
+                    amounts do not match, then the request is rejected and an
+                    error specific to this scenario is returned. 
                 isCheckoutAdjusted:
                   type: boolean
+                  description: >-
+                    **Express checkout only.** The isCheckoutAdjusted field can
+                    be used to allow the order amount to be changed after the
+                    checkout flow.
                 paymentScheduleChecksum:
                   type: string
+                  description: >-
+                    **Express checkout only.** A unique value representing the
+                    payment schedule that must be provided when there have been
+                    changes since the initial order creation (retrieved from
+                    checkout widget).
                 items:
                   $ref: '#/components/schemas/Item'
+                  description: >-
+                    **Express checkout only.** An array of order items that have
+                    been updated. Provide if it has changed since the initial
+                    order creation.
                 shipping:
                   $ref: '#/components/schemas/Contact'
+                  description: >-
+                    **Express checkout only.** The shipping address if it has
+                    changed since the initial order creation. 
                 enrichments:
                   $ref: '#/components/schemas/Enrichments'
               required:
@@ -20460,6 +21308,9 @@ components:
       properties:
         amount:
           type: string
+          description: >-
+            The amount as a string representation of a decimal number, rounded
+            to 2 decimal places.
         currency:
           $ref: '#/components/schemas/MoneyCurrency'
       required:
@@ -20491,6 +21342,7 @@ components:
           format: date
         preorder:
           type: boolean
+          default: false
       required:
         - name
         - quantity
@@ -20510,20 +21362,40 @@ components:
           type: string
         line1:
           type: string
+          description: First line of the address
         line2:
           type: string
+          description: 'Second line of the address '
         area1:
           type: string
+          description: |-
+            - AU: Suburb
+            - NZ: Town or City
+            - UK: Postal Town
+            - US: City
+            - Canada: City
         area2:
           type: string
+          description: |-
+            - NZ: suburb
+            - UK: village or local area.
         region:
           type: string
+          description: |-
+            - AU: State 
+            - NZ: Region
+            - UK: County
+            - US: State
+            - CA: Province or Territory
         postcode:
           type: string
         countryCode:
           $ref: '#/components/schemas/ContactCountryCode'
         phoneNumber:
           type: string
+          description: >-
+            The phone number, in [E.123](https://en.wikipedia.org/wiki/E.123)
+            format.
       required:
         - name
         - line1
@@ -20541,6 +21413,7 @@ components:
       properties:
         actor:
           $ref: '#/components/schemas/InitiationActor'
+          description: The party who initiated the order
       required:
         - actor
     SubscriptionType:
@@ -20569,8 +21442,10 @@ components:
       properties:
         initiation:
           $ref: '#/components/schemas/Initiation'
+          description: Who initiated the order
         subscription:
           $ref: '#/components/schemas/Subscription'
+          description: Metadata on the subscription details
       required:
         - initiation
     PaymentStatus:
@@ -20592,14 +21467,23 @@ components:
       properties:
         requestId:
           type: string
+          description: Unique ID required for safe retries. Max length 64 (varchar).
         amount:
           $ref: '#/components/schemas/Money'
         merchantReference:
           type: string
+          description: >-
+            The merchant’s internal refund id/reference. This must be included
+            along with the `requestId` to utilise idempotency. Max length 85
+            (varchar).
         refundMerchantReference:
           type: string
+          description: >-
+            A unique reference for the individual refund event. Max length 128
+            (varchar).
         refundId:
           type: string
+          description: The unique, permanent, Cash App Afterpay-generated Refund ID.
         refundedAt:
           type: string
     Consumer:
@@ -20610,8 +21494,10 @@ components:
           format: email
         givenNames:
           type: string
+          description: The consumer's first name
         surname:
           type: string
+          description: The consumer's last name
         phoneNumber:
           type: string
       required:
@@ -20690,20 +21576,28 @@ components:
       properties:
         id:
           type: string
+          description: The unique, permanent, Cash App Afterpay generated Order ID.
         token:
           type: string
+          description: The token obtained from the checkout call
         status:
           $ref: '#/components/schemas/PaymentStatus'
+          description: represents the status of the order
         created:
           type: string
+          description: ' is the UTC timestamp of when the payment was completed.'
         originalAmount:
           $ref: '#/components/schemas/Money'
         openToCaptureAmount:
           $ref: '#/components/schemas/Money'
         paymentState:
           $ref: '#/components/schemas/PaymentPaymentState'
+          description: is the current state for capturing payments
         merchantReference:
           type: string
+          description: >-
+            is the merchant's order id/reference that the payment corresponds
+            to.
         refunds:
           type: array
           items:
@@ -21219,6 +22113,7 @@ paths:
           required: false
           schema:
             type: string
+            default: application/json
       responses:
         '200':
           description: Returns a Payment object in response.
@@ -21251,6 +22146,9 @@ components:
       properties:
         amount:
           type: string
+          description: >-
+            The amount as a string representation of a decimal number, rounded
+            to 2 decimal places.
         currency:
           $ref: '#/components/schemas/MoneyCurrency'
       required:
@@ -21270,14 +22168,23 @@ components:
       properties:
         requestId:
           type: string
+          description: Unique ID required for safe retries. Max length 64 (varchar).
         amount:
           $ref: '#/components/schemas/Money'
         merchantReference:
           type: string
+          description: >-
+            The merchant’s internal refund id/reference. This must be included
+            along with the `requestId` to utilise idempotency. Max length 85
+            (varchar).
         refundMerchantReference:
           type: string
+          description: >-
+            A unique reference for the individual refund event. Max length 128
+            (varchar).
         refundId:
           type: string
+          description: The unique, permanent, Cash App Afterpay-generated Refund ID.
         refundedAt:
           type: string
     Consumer:
@@ -21288,8 +22195,10 @@ components:
           format: email
         givenNames:
           type: string
+          description: The consumer's first name
         surname:
           type: string
+          description: The consumer's last name
         phoneNumber:
           type: string
       required:
@@ -21309,20 +22218,40 @@ components:
           type: string
         line1:
           type: string
+          description: First line of the address
         line2:
           type: string
+          description: 'Second line of the address '
         area1:
           type: string
+          description: |-
+            - AU: Suburb
+            - NZ: Town or City
+            - UK: Postal Town
+            - US: City
+            - Canada: City
         area2:
           type: string
+          description: |-
+            - NZ: suburb
+            - UK: village or local area.
         region:
           type: string
+          description: |-
+            - AU: State 
+            - NZ: Region
+            - UK: County
+            - US: State
+            - CA: Province or Territory
         postcode:
           type: string
         countryCode:
           $ref: '#/components/schemas/ContactCountryCode'
         phoneNumber:
           type: string
+          description: >-
+            The phone number, in [E.123](https://en.wikipedia.org/wiki/E.123)
+            format.
       required:
         - name
         - line1
@@ -21373,6 +22302,7 @@ components:
           format: date
         preorder:
           type: boolean
+          default: false
       required:
         - name
         - quantity
@@ -21434,20 +22364,28 @@ components:
       properties:
         id:
           type: string
+          description: The unique, permanent, Cash App Afterpay generated Order ID.
         token:
           type: string
+          description: The token obtained from the checkout call
         status:
           $ref: '#/components/schemas/PaymentStatus'
+          description: represents the status of the order
         created:
           type: string
+          description: ' is the UTC timestamp of when the payment was completed.'
         originalAmount:
           $ref: '#/components/schemas/Money'
         openToCaptureAmount:
           $ref: '#/components/schemas/Money'
         paymentState:
           $ref: '#/components/schemas/PaymentPaymentState'
+          description: is the current state for capturing payments
         merchantReference:
           type: string
+          description: >-
+            is the merchant's order id/reference that the payment corresponds
+            to.
         refunds:
           type: array
           items:
@@ -21647,6 +22585,7 @@ paths:
           required: false
           schema:
             type: string
+            default: application/json
       responses:
         '201':
           description: Returns object containing the following attributes.
@@ -21667,6 +22606,8 @@ paths:
               properties:
                 merchantReference:
                   type: string
+                  default: new_merchant_order_id_1234
+                  description: The merchant’s new order ID to replace with
               required:
                 - merchantReference
 components:
@@ -21691,10 +22632,13 @@ components:
       properties:
         id:
           type: string
+          description: The unique Cash App Afterpay (merchant payment) payment ID.
         token:
           type: string
+          description: Checkout token to be used to complete customer checkout and payment.
         status:
           type: string
+          description: \"APPROVED" (update is only valid for successful orders)
         created:
           description: >-
             The payment creation time [ISO 8601 UTC/Zulu
@@ -21702,22 +22646,30 @@ components:
         originalAmount:
           $ref: >-
             #/components/schemas/V2PaymentsOrderIdPutResponsesContentApplicationJsonSchemaOriginalAmount
+          description: Total amount for the order. See Money.
         openToCaptureAmount:
           $ref: >-
             #/components/schemas/V2PaymentsOrderIdPutResponsesContentApplicationJsonSchemaOpenToCaptureAmount
+          description: Total amount that can be captured for order. See Money.
         paymentState:
           type: string
+          description: >-
+            Available states: "AUTH_APPROVED", "CAPTURED", "VOIDED", "EXPIRED",
+            "AUTH_DECLINED", "PARTIALLY_CAPTURED", "CAPTURE_DECLINED""
         merchantReference:
           description: Any type
         refunds:
           $ref: >-
             #/components/schemas/V2PaymentsOrderIdPutResponsesContentApplicationJsonSchemaRefunds
+          description: The refund details for merchant's order. See Refund.
         orderDetails:
           $ref: >-
             #/components/schemas/V2PaymentsOrderIdPutResponsesContentApplicationJsonSchemaOrderDetails
+          description: The order bound to the payment. See Order Details.
         events:
           $ref: >-
             #/components/schemas/V2PaymentsOrderIdPutResponsesContentApplicationJsonSchemaEvents
+          description: Event list for for merchant's order. See Events.
 
 ```
 
@@ -21970,6 +22922,7 @@ paths:
           required: false
           schema:
             type: string
+            default: application/json
       responses:
         '201':
           description: >-
@@ -22041,6 +22994,9 @@ components:
       properties:
         amount:
           type: string
+          description: >-
+            The amount as a string representation of a decimal number, rounded
+            to 2 decimal places.
         currency:
           $ref: '#/components/schemas/MoneyCurrency'
       required:
@@ -22052,12 +23008,24 @@ components:
         requestId:
           type: string
           format: uuid
+          description: A unique request ID, required for idempotent retries.
         merchantReference:
           type: string
+          description: >-
+            The reference/order ID that this payment corresponds to in the
+            merchant's system. 
+
+
+            Note: Providing a new value updates any value previously set in the
+            Create Checkout request.
         amount:
           $ref: '#/components/schemas/Money'
         paymentEventMerchantReference:
           type: string
+          description: >
+            A unique reference for the individual payment capture event. If
+            provided, the value appears in the daily settlement file as "Payment
+            Event ID"
     PaymentStatus:
       type: string
       enum:
@@ -22077,14 +23045,23 @@ components:
       properties:
         requestId:
           type: string
+          description: Unique ID required for safe retries. Max length 64 (varchar).
         amount:
           $ref: '#/components/schemas/Money'
         merchantReference:
           type: string
+          description: >-
+            The merchant’s internal refund id/reference. This must be included
+            along with the `requestId` to utilise idempotency. Max length 85
+            (varchar).
         refundMerchantReference:
           type: string
+          description: >-
+            A unique reference for the individual refund event. Max length 128
+            (varchar).
         refundId:
           type: string
+          description: The unique, permanent, Cash App Afterpay-generated Refund ID.
         refundedAt:
           type: string
     Consumer:
@@ -22095,8 +23072,10 @@ components:
           format: email
         givenNames:
           type: string
+          description: The consumer's first name
         surname:
           type: string
+          description: The consumer's last name
         phoneNumber:
           type: string
       required:
@@ -22116,20 +23095,40 @@ components:
           type: string
         line1:
           type: string
+          description: First line of the address
         line2:
           type: string
+          description: 'Second line of the address '
         area1:
           type: string
+          description: |-
+            - AU: Suburb
+            - NZ: Town or City
+            - UK: Postal Town
+            - US: City
+            - Canada: City
         area2:
           type: string
+          description: |-
+            - NZ: suburb
+            - UK: village or local area.
         region:
           type: string
+          description: |-
+            - AU: State 
+            - NZ: Region
+            - UK: County
+            - US: State
+            - CA: Province or Territory
         postcode:
           type: string
         countryCode:
           $ref: '#/components/schemas/ContactCountryCode'
         phoneNumber:
           type: string
+          description: >-
+            The phone number, in [E.123](https://en.wikipedia.org/wiki/E.123)
+            format.
       required:
         - name
         - line1
@@ -22180,6 +23179,7 @@ components:
           format: date
         preorder:
           type: boolean
+          default: false
       required:
         - name
         - quantity
@@ -22241,20 +23241,28 @@ components:
       properties:
         id:
           type: string
+          description: The unique, permanent, Cash App Afterpay generated Order ID.
         token:
           type: string
+          description: The token obtained from the checkout call
         status:
           $ref: '#/components/schemas/PaymentStatus'
+          description: represents the status of the order
         created:
           type: string
+          description: ' is the UTC timestamp of when the payment was completed.'
         originalAmount:
           $ref: '#/components/schemas/Money'
         openToCaptureAmount:
           $ref: '#/components/schemas/Money'
         paymentState:
           $ref: '#/components/schemas/PaymentPaymentState'
+          description: is the current state for capturing payments
         merchantReference:
           type: string
+          description: >-
+            is the merchant's order id/reference that the payment corresponds
+            to.
         refunds:
           type: array
           items:
@@ -22561,6 +23569,9 @@ components:
       properties:
         amount:
           type: string
+          description: >-
+            The amount as a string representation of a decimal number, rounded
+            to 2 decimal places.
         currency:
           $ref: '#/components/schemas/MoneyCurrency'
       required:
@@ -22580,14 +23591,23 @@ components:
       properties:
         requestId:
           type: string
+          description: Unique ID required for safe retries. Max length 64 (varchar).
         amount:
           $ref: '#/components/schemas/Money'
         merchantReference:
           type: string
+          description: >-
+            The merchant’s internal refund id/reference. This must be included
+            along with the `requestId` to utilise idempotency. Max length 85
+            (varchar).
         refundMerchantReference:
           type: string
+          description: >-
+            A unique reference for the individual refund event. Max length 128
+            (varchar).
         refundId:
           type: string
+          description: The unique, permanent, Cash App Afterpay-generated Refund ID.
         refundedAt:
           type: string
     Consumer:
@@ -22598,8 +23618,10 @@ components:
           format: email
         givenNames:
           type: string
+          description: The consumer's first name
         surname:
           type: string
+          description: The consumer's last name
         phoneNumber:
           type: string
       required:
@@ -22619,20 +23641,40 @@ components:
           type: string
         line1:
           type: string
+          description: First line of the address
         line2:
           type: string
+          description: 'Second line of the address '
         area1:
           type: string
+          description: |-
+            - AU: Suburb
+            - NZ: Town or City
+            - UK: Postal Town
+            - US: City
+            - Canada: City
         area2:
           type: string
+          description: |-
+            - NZ: suburb
+            - UK: village or local area.
         region:
           type: string
+          description: |-
+            - AU: State 
+            - NZ: Region
+            - UK: County
+            - US: State
+            - CA: Province or Territory
         postcode:
           type: string
         countryCode:
           $ref: '#/components/schemas/ContactCountryCode'
         phoneNumber:
           type: string
+          description: >-
+            The phone number, in [E.123](https://en.wikipedia.org/wiki/E.123)
+            format.
       required:
         - name
         - line1
@@ -22666,6 +23708,7 @@ components:
           format: date
         preorder:
           type: boolean
+          default: false
       required:
         - name
         - quantity
@@ -22727,20 +23770,28 @@ components:
       properties:
         id:
           type: string
+          description: The unique, permanent, Cash App Afterpay generated Order ID.
         token:
           type: string
+          description: The token obtained from the checkout call
         status:
           $ref: '#/components/schemas/PaymentStatus'
+          description: represents the status of the order
         created:
           type: string
+          description: ' is the UTC timestamp of when the payment was completed.'
         originalAmount:
           $ref: '#/components/schemas/Money'
         openToCaptureAmount:
           $ref: '#/components/schemas/Money'
         paymentState:
           $ref: '#/components/schemas/PaymentPaymentState'
+          description: is the current state for capturing payments
         merchantReference:
           type: string
+          description: >-
+            is the merchant's order id/reference that the payment corresponds
+            to.
         refunds:
           type: array
           items:
@@ -22988,6 +24039,7 @@ paths:
           required: false
           schema:
             type: string
+            default: application/json
       responses:
         '201':
           description: >
@@ -23054,6 +24106,9 @@ components:
       properties:
         amount:
           type: string
+          description: >-
+            The amount as a string representation of a decimal number, rounded
+            to 2 decimal places.
         currency:
           $ref: '#/components/schemas/MoneyCurrency'
       required:
@@ -23064,25 +24119,42 @@ components:
       properties:
         requestId:
           type: string
+          description: Unique ID required for safe retries. Max length 64 (varchar).
         amount:
           $ref: '#/components/schemas/Money'
         merchantReference:
           type: string
+          description: >-
+            The merchant’s internal refund id/reference. This must be included
+            along with the `requestId` to utilise idempotency. Max length 85
+            (varchar).
         refundMerchantReference:
           type: string
+          description: >-
+            A unique reference for the individual refund event. Max length 128
+            (varchar).
     Refund:
       type: object
       properties:
         requestId:
           type: string
+          description: Unique ID required for safe retries. Max length 64 (varchar).
         amount:
           $ref: '#/components/schemas/Money'
         merchantReference:
           type: string
+          description: >-
+            The merchant’s internal refund id/reference. This must be included
+            along with the `requestId` to utilise idempotency. Max length 85
+            (varchar).
         refundMerchantReference:
           type: string
+          description: >-
+            A unique reference for the individual refund event. Max length 128
+            (varchar).
         refundId:
           type: string
+          description: The unique, permanent, Cash App Afterpay-generated Refund ID.
         refundedAt:
           type: string
 
@@ -23369,6 +24441,7 @@ paths:
           required: false
           schema:
             type: string
+            default: application/json
       responses:
         '201':
           description: >
@@ -23407,10 +24480,22 @@ paths:
               properties:
                 amount:
                   $ref: '#/components/schemas/Money'
+                  description: >-
+                    The amount to void. Must be less than or equal to the open
+                    to capture amount.
                 requestId:
                   type: string
+                  description: >-
+                    A unique request ID, required for safe retries. It is
+                    recommended that the merchant generate a UUID for each
+                    unique void.
                 reason:
                   type: string
+                  description: >-
+                    Can be passed in void requests to conditionally modify
+                    wording of the corresponding customer refund email. This can
+                    be set to 1 of 3 values, `cancelledItems`,
+                    `amountAdjustment` or `null`
 components:
   schemas:
     MoneyCurrency:
@@ -23426,6 +24511,9 @@ components:
       properties:
         amount:
           type: string
+          description: >-
+            The amount as a string representation of a decimal number, rounded
+            to 2 decimal places.
         currency:
           $ref: '#/components/schemas/MoneyCurrency'
       required:
@@ -23450,14 +24538,23 @@ components:
       properties:
         requestId:
           type: string
+          description: Unique ID required for safe retries. Max length 64 (varchar).
         amount:
           $ref: '#/components/schemas/Money'
         merchantReference:
           type: string
+          description: >-
+            The merchant’s internal refund id/reference. This must be included
+            along with the `requestId` to utilise idempotency. Max length 85
+            (varchar).
         refundMerchantReference:
           type: string
+          description: >-
+            A unique reference for the individual refund event. Max length 128
+            (varchar).
         refundId:
           type: string
+          description: The unique, permanent, Cash App Afterpay-generated Refund ID.
         refundedAt:
           type: string
     Consumer:
@@ -23468,8 +24565,10 @@ components:
           format: email
         givenNames:
           type: string
+          description: The consumer's first name
         surname:
           type: string
+          description: The consumer's last name
         phoneNumber:
           type: string
       required:
@@ -23489,20 +24588,40 @@ components:
           type: string
         line1:
           type: string
+          description: First line of the address
         line2:
           type: string
+          description: 'Second line of the address '
         area1:
           type: string
+          description: |-
+            - AU: Suburb
+            - NZ: Town or City
+            - UK: Postal Town
+            - US: City
+            - Canada: City
         area2:
           type: string
+          description: |-
+            - NZ: suburb
+            - UK: village or local area.
         region:
           type: string
+          description: |-
+            - AU: State 
+            - NZ: Region
+            - UK: County
+            - US: State
+            - CA: Province or Territory
         postcode:
           type: string
         countryCode:
           $ref: '#/components/schemas/ContactCountryCode'
         phoneNumber:
           type: string
+          description: >-
+            The phone number, in [E.123](https://en.wikipedia.org/wiki/E.123)
+            format.
       required:
         - name
         - line1
@@ -23553,6 +24672,7 @@ components:
           format: date
         preorder:
           type: boolean
+          default: false
       required:
         - name
         - quantity
@@ -23614,20 +24734,28 @@ components:
       properties:
         id:
           type: string
+          description: The unique, permanent, Cash App Afterpay generated Order ID.
         token:
           type: string
+          description: The token obtained from the checkout call
         status:
           $ref: '#/components/schemas/PaymentStatus'
+          description: represents the status of the order
         created:
           type: string
+          description: ' is the UTC timestamp of when the payment was completed.'
         originalAmount:
           $ref: '#/components/schemas/Money'
         openToCaptureAmount:
           $ref: '#/components/schemas/Money'
         paymentState:
           $ref: '#/components/schemas/PaymentPaymentState'
+          description: is the current state for capturing payments
         merchantReference:
           type: string
+          description: >-
+            is the merchant's order id/reference that the payment corresponds
+            to.
         refunds:
           type: array
           items:
@@ -23867,6 +24995,7 @@ paths:
           required: false
           schema:
             type: string
+            default: application/json
       responses:
         '200':
           description: Returns a Payment object in response.
@@ -23899,6 +25028,9 @@ components:
       properties:
         amount:
           type: string
+          description: >-
+            The amount as a string representation of a decimal number, rounded
+            to 2 decimal places.
         currency:
           $ref: '#/components/schemas/MoneyCurrency'
       required:
@@ -23918,14 +25050,23 @@ components:
       properties:
         requestId:
           type: string
+          description: Unique ID required for safe retries. Max length 64 (varchar).
         amount:
           $ref: '#/components/schemas/Money'
         merchantReference:
           type: string
+          description: >-
+            The merchant’s internal refund id/reference. This must be included
+            along with the `requestId` to utilise idempotency. Max length 85
+            (varchar).
         refundMerchantReference:
           type: string
+          description: >-
+            A unique reference for the individual refund event. Max length 128
+            (varchar).
         refundId:
           type: string
+          description: The unique, permanent, Cash App Afterpay-generated Refund ID.
         refundedAt:
           type: string
     Consumer:
@@ -23936,8 +25077,10 @@ components:
           format: email
         givenNames:
           type: string
+          description: The consumer's first name
         surname:
           type: string
+          description: The consumer's last name
         phoneNumber:
           type: string
       required:
@@ -23957,20 +25100,40 @@ components:
           type: string
         line1:
           type: string
+          description: First line of the address
         line2:
           type: string
+          description: 'Second line of the address '
         area1:
           type: string
+          description: |-
+            - AU: Suburb
+            - NZ: Town or City
+            - UK: Postal Town
+            - US: City
+            - Canada: City
         area2:
           type: string
+          description: |-
+            - NZ: suburb
+            - UK: village or local area.
         region:
           type: string
+          description: |-
+            - AU: State 
+            - NZ: Region
+            - UK: County
+            - US: State
+            - CA: Province or Territory
         postcode:
           type: string
         countryCode:
           $ref: '#/components/schemas/ContactCountryCode'
         phoneNumber:
           type: string
+          description: >-
+            The phone number, in [E.123](https://en.wikipedia.org/wiki/E.123)
+            format.
       required:
         - name
         - line1
@@ -24021,6 +25184,7 @@ components:
           format: date
         preorder:
           type: boolean
+          default: false
       required:
         - name
         - quantity
@@ -24082,20 +25246,28 @@ components:
       properties:
         id:
           type: string
+          description: The unique, permanent, Cash App Afterpay generated Order ID.
         token:
           type: string
+          description: The token obtained from the checkout call
         status:
           $ref: '#/components/schemas/PaymentStatus'
+          description: represents the status of the order
         created:
           type: string
+          description: ' is the UTC timestamp of when the payment was completed.'
         originalAmount:
           $ref: '#/components/schemas/Money'
         openToCaptureAmount:
           $ref: '#/components/schemas/Money'
         paymentState:
           $ref: '#/components/schemas/PaymentPaymentState'
+          description: is the current state for capturing payments
         merchantReference:
           type: string
+          description: >-
+            is the merchant's order id/reference that the payment corresponds
+            to.
         refunds:
           type: array
           items:
@@ -24315,6 +25487,7 @@ paths:
           required: false
           schema:
             type: string
+            default: application/json
       responses:
         '204':
           description: >-
@@ -24604,6 +25777,7 @@ paths:
           required: false
           schema:
             type: string
+            default: text/plain
       responses:
         '200':
           description: Response with status 200
@@ -25176,7 +26350,7 @@ Link to [Capture Full Payment](/cash-app-afterpay/api-reference/reference/paymen
 
   Our documentation includes detailed API specifications, step-by-step integration guides, testing environments, and best practices to ensure a smooth implementation process. Whether you're building a new integration or optimizing an existing one, you'll find the resources you need to create a seamless payment experience for your customers.
 
-  <img src="file:3d91a62f-adf0-48be-9943-e94fe563877b" alt="convergence-splash" noZoom />
+  <img src="https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-api-docs/assets/images/content - showcase messaging.png" alt="convergence-splash" noZoom />
 </p>
 
 {/* </div> */}
@@ -25192,7 +26366,7 @@ Cash App currently supports three main use cases:
 * Web-Ecommerce
 * POS (Point-of-Sale)
 
-<img src="file:3a1e333e-aa88-4355-962a-4bd414359a0c" alt="How Cash App Pay Works" noZoom />
+<img src="https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-api-docs/assets/images/how-cash-app-pay-works.png" alt="How Cash App Pay Works" noZoom />
 
 <br />
 
@@ -25200,7 +26374,7 @@ Cash App currently supports three main use cases:
 
 The Customer visits a mobile ecommerce app(or site) and uses their Cash App to pay for goods and services.
 
-<img src="file:115f4a9d-438c-445a-87d2-a519bb5d5793" alt="Ecommerce web workflow: choose a product, checkout, add shipping address, select paymnet method, link Cash App Pay, complete purchase" noZoom />
+<img src="https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-api-docs/assets/images/mobile-ecom-flow.png" alt="Ecommerce web workflow: choose a product, checkout, add shipping address, select paymnet method, link Cash App Pay, complete purchase" noZoom />
 
 <br />
 
@@ -25210,7 +26384,7 @@ The Customer visits a mobile ecommerce app(or site) and uses their Cash App to p
 
 The Customer visits a web-based ecommerce site and pays for items by scanning the QR code generated at checkout using Cash App on their phone.
 
-<img src="file:a23f304a-c360-4031-a4e8-7ae8977b74f0" alt="Ecommerce web workflow: choose a product, checkout, scan a QR code, link Cash App Pay, complete purchase" noZoom />
+<img src="https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-api-docs/assets/images/ecom-web-flow.png" alt="Ecommerce web workflow: choose a product, checkout, scan a QR code, link Cash App Pay, complete purchase" noZoom />
 
 <br />
 
@@ -25220,7 +26394,7 @@ The Customer visits a web-based ecommerce site and pays for items by scanning th
 
 Customer goes to a merchant and uses a Point-of-Sale (POS) device, for example, like the Square POS device.
 
-<img src="file:a2d67a97-5505-4f82-b842-eb3545500a5d" alt="POS workflow: choose a product, checkout, scan a QR code, link Cash App Pay, complete purchase" noZoom />
+<img src="https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-api-docs/assets/images/pos-flow.png" alt="POS workflow: choose a product, checkout, scan a QR code, link Cash App Pay, complete purchase" noZoom />
 
 <br />
 
@@ -25236,7 +26410,7 @@ To learn more about how Cash App Pay works on different devices, see the followi
 
 # Cash App Pay on Desktop and POS devices
 
-![Web-POS Experience Diagram](file:699e845b-9bd6-4fc5-b6da-6d7fd6b4d2b5)
+![Web-POS Experience Diagram](https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-api-docs/assets/images/web-pos-experience.png)
 
 Customers can use Cash App Pay at the Merchant’s physical locations or during ecommerce checkouts using a Laptop or Desktop computer. The customer linking process consists of three-steps as follows:
 
@@ -25246,36 +26420,36 @@ Customers can use Cash App Pay at the Merchant’s physical locations or during 
       POS devices can be tablets or desktop devices
    </Note>
 
-   ![Customer chooses Cash App Pay](file:6592dbf6-21a7-4428-aabe-23cad3f97ee2)
+   ![Customer chooses Cash App Pay](https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-api-docs/assets/images/demo-customer-chooses-cash-app-pay.png)
 
 2. A QR code pops up on the screen. The Customer scans the QR code using their Cash App or the camera on their mobile device.
 
-   ![QR Code is displayed](file:bd58d1dc-6b49-4461-b2d1-eeb720ae6925)
+   ![QR Code is displayed](https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-api-docs/assets/images/demo-qr-code-displayed.png)
 
 3. The Customer approves the payment when they scan the QR code with Cash App or the camera on their mobile device.
 
-   ![Customer scans to pay](file:391cdaf3-5e9a-4cad-ab5f-f1e2611a68f7)
+   ![Customer scans to pay](https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-api-docs/assets/images/demo-customer-scans-to-pay.png)
 
 
 # Cash App Pay on Mobile Devices
 
 # Cash App Pay on Mobile devices
 
-![Mobile Experience](file:3fc0a834-e83d-42c3-92a1-927ba39bcad8)
+![Mobile Experience](https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-api-docs/assets/images/mobile-experience.png)
 
 When doing online shopping on their mobile devices (both Android and Apple) and Android tablets, the Customer can use Cash App Pay as their payment method. This is also a simple three-step process for the Customer and is as follows:
 
 1. At checkout, the Customer chooses Cash App Pay as their payment method.
 
-   ![Customer chooses Cash App Pay](file:f38cc901-264f-477e-ad2f-b9caa876adec)
+   ![Customer chooses Cash App Pay](https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-api-docs/assets/images/demo-mobile-customer-chooses-cash-app-pay.png)
 
 2. The Customer is redirected to Cash App, where the Merchant’s Business Name and Logo, transaction amount (optional), and Continue to checkout button is displayed.
 
-   ![Customer redirected to Cash App](file:4d0641a2-2ca4-4353-b983-a9e5ded149ec)
+   ![Customer redirected to Cash App](https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-api-docs/assets/images/demo-mobile-redirect-to-cash-app.png)
 
 3. The Customer selects Continue to checkout in Cash App and is automatically redirected to the Merchant's online store. Cash App Pay is displayed as the selected payment method. The Customer can also see their Cashtag displayed next to the Cash App Pay logo and brand. From here, they complete their purchase as usual.
 
-   ![Customer continues to checkout](file:0a1bab75-a25b-4d60-b4e9-b32e89a62656)
+   ![Customer continues to checkout](https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-api-docs/assets/images/demo-mobile-continue-checkout.png)
 
    <Note>
      The Customer can also be redirected directly to the order confirmation page of the Merchant.
@@ -25744,7 +26918,7 @@ To support these, Cash App Pay provides the following APIs and tools:
   * Settlements
   * Dispute Reporting
 
-![Cash App Pay Integration Basics diagram](file:86523012-c57b-4071-ad79-0231c56fe5ea)
+![Cash App Pay Integration Basics diagram](https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-api-docs/assets/images/cap-build-basics.png)
 
 ## Front end
 
@@ -26185,9 +27359,9 @@ The table below shows the different values passed and what is presented to the C
 
 The “Cash by Cash App” brand icon and name are displayed to the customer during the customer linking desktop flow.
 
-<img src="file:530d7a47-fee6-4abc-91d8-90865e81ea63" alt="Scan to Pay" />
+<img src="https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-api-docs/assets/images/scan-to-pay.png" alt="Scan to Pay" />
 
-<img src="file:0d982914-d2f5-47d7-b2ed-330c06b5f0a3" alt="Icon and Brand example" />
+<img src="https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-api-docs/assets/images/icon-and-brand.png" alt="Icon and Brand example" />
 
 ## Best Practices
 
@@ -26216,9 +27390,9 @@ The “Cash by Cash App” brand icon and name are displayed to the customer dur
 
 For security reasons, the QR codes expire periodically. If this happens, a new code will be generated automatically. This is called a **Refresh**.
 
-![QR-code-refresh.png](file:75584543-de5f-4a4e-a4c4-678ab25cf648)
+![QR-code-refresh.png](https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-api-docs/assets/images/QR-code-refresh.png)
 
-![QR-code.png](file:6851976f-2322-4b4a-9fac-c48b4df670d4)
+![QR-code.png](https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-api-docs/assets/images/QR-code.png)
 
 
 # Optimizing Performance with Request Chaining
@@ -26269,7 +27443,7 @@ As a developer, you'll use all of these API suites to build a complete Cash App 
 
 Most Cash App Pay workflows follow a simple pattern: create a customer request, get it approved by the customer to generate a grant, then use the grant to create a payment.
 
-![payment-processing-workflow.png](file:19867f17-db98-41a1-826c-6b9b115d1dc7)
+![payment-processing-workflow.png](https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-api-docs/assets/images/payment-processing-workflow.png)
 
 1. **Initiate a customer request**
    * Use Pay Kit in the browser to create a customer request.
@@ -27398,7 +28572,7 @@ Idempotency refers to the ability to call an endpoint multiple times and receive
 
 When processing a payment, we want to prevent double-charging customers. Consider the following scenario, where an intermittent error in the Cash App Pay API requires the API client to retry a request:
 
-![what-is-idempotency.png](file:7181910d-868a-40b5-b731-3329fe77fa57)
+![what-is-idempotency.png](https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-api-docs/assets/images/what-is-idempotency.png)
 
 1. API client tries to create a payment
 2. Cash App Pay API responds with `HTTP 500`
@@ -27628,7 +28802,7 @@ In general, most developers should opt to use Pay Kit instead of using the Custo
 
 The following figure shows the visualization of the Customer Request API with different entities being involved at various stages:
 
-![customer Request API visualization](file:f6cf0ba0-ef13-43c7-aa7e-934b3c4a099e)
+![customer Request API visualization](https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-api-docs/assets/images/CustomerRequest-API-visualization.png)
 
 ## Endpoints
 
@@ -28126,7 +29300,7 @@ The following table describes what action is permitted with a Grant for each act
 | ONE\_TIME\_PAYMENT | Initiate a one-time Payment from a Customer to a Merchant in a specified amount                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
 | ON\_FILE\_PAYMENT  | Store a Customer's Cash App Account, allowing a M/PSP to create Payments or issue Refunds without requiring the Customer to repeat the Customer Request approval process.<br /><br />The scope of this Grant must be provided to and approved by the Customer, which determines which Merchants can use the on-file Payment Grant to initiate Payments or issue Refunds.  The scope of Grant may be at a Merchant, Brand, or PSP level. A Merchant-specific Grant may be used by a single merchant, a brand-level Grant may be used by any Merchant associated with the Brand, and a PSP-level Grant may be used by all Merchants managed by the PSP. |
 
-![one-time-and-on-file-payment.png](file:c9c0b65f-cbc4-4f72-8cf8-73fc41a69248)
+![one-time-and-on-file-payment.png](https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-api-docs/assets/images/one-time-and-on-file-payment.png)
 
 ## Payment Authorization
 
@@ -28333,7 +29507,7 @@ curl --request POST \
 
 Also, a Customer can remove the businesses with whom they have active on-file grants. Cash App provides [grant.status.updated](/cash-app-pay-partner-api/api-reference/network-api/grant-status-updated) webhooks to alert Partners when any change to the on-file grant happens.
 
-<img src="file:c20f9405-b79a-4360-8ba6-41be458e1793" alt="Remove on file grant" noZoom />
+<img src="https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-api-docs/assets/images/remove-on-file-grant.png" alt="Remove on file grant" noZoom />
 
 ## Important terms
 
@@ -28611,7 +29785,7 @@ A dispute will be created in the `NO_RESPONSE_REQUIRED` state if Cash App has ac
 
 ## State Machine
 
-![disputes-payment-flow.png](file:cd78c524-a8c1-44fb-b834-f5b6e66e0a2c)
+![disputes-payment-flow.png](https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-api-docs/assets/images/disputes-payment-flow.png)
 
 
 # Dispute Reports
@@ -28905,7 +30079,7 @@ Refunds are linked to a previously captured Cash App Pay Payment. They must not 
   Refunds typically process in several business days following initiation, except for Stored Value Balance (SVB) which is immediate. Transaction fees will not be returned to the PSP in the event of a refund.
 </Note>
 
-![refunds.png](file:e3285ae8-7d5a-4476-aa17-c572576601e8)
+![refunds.png](https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-api-docs/assets/images/refunds.png)
 
 ## Refund Authorization
 
@@ -29009,49 +30183,49 @@ There are currently two Use Cases for the Sandbox App. We recommend that Partner
 
 1 On Desktop, navigate to our [Sandbox testing](https://sandbox.pay.withcash.app/checkout) store. Click on the **Cash App Pay** button. This displays the QR code.
 
-![Sandbox test store](file:3de06732-375c-4630-8f18-ca5039e4bdc7)
+![Sandbox test store](https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-api-docs/assets/images/sandbox-test-store.png)
 
-![Sandbox test store QR code](file:096da984-5a5c-4d16-afd9-74ef914d6e15)
+![Sandbox test store QR code](https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-api-docs/assets/images/sandbox-test-store-qr-code.png)
 
 2 Open the Sandbox App and tap the **Open Scanner** button.
 
-<img src="file:43a5e1c6-f002-486d-a81c-df84de9a1f1b" alt="Sandbox app QR scanner" />
+<img src="https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-api-docs/assets/images/sandbox-app-qr-scanner.png" alt="Sandbox app QR scanner" />
 
 3 Scan the QR code on the Desktop using the Sandbox App.
 
-<img src="file:f162202a-4fa7-49f0-a4b7-6c7c29426570" alt="Scan sandbox desktop QR code" />
+<img src="https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-api-docs/assets/images/sandbox-scan-desktop-qr.png" alt="Scan sandbox desktop QR code" />
 
 <Note>You can use the native camera on mobile device to scan the QR code on the Desktop. Tapping on the link from the QR code scan will deep link you to the Sandbox app. There may be slight variations in the deep linking based on the native camera app that you use. For example, you may have to click on a link to go to the Sandbox app.</Note>
 4 **Approve** the payment in the Sandbox App.
 
-<img src="file:6aa16179-4a0b-441b-a076-d662eb573d2d" alt="Approve payment" />
+<img src="https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-api-docs/assets/images/approve-payment.png" alt="Approve payment" />
 
 <Note>You can also **Decline** the payment and the Sandbox App will ask you to go back to the Sandbox testing store.</Note>
 5 You can see Cash App Pay has confirmed the payment by displaying the amount.
 
-<img src="file:cbdf87e3-e6d5-4a17-97f8-2560e23a3748" alt="Order confirmation" />
+<img src="https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-api-docs/assets/images/order-confirmation.png" alt="Order confirmation" />
 
 6 Observe the linked account. `$CASHTAG_C_TOKEN` is our fake account used inside the Sandbox.
 
-![Cashtag token](file:5bbf00bc-ba1b-4bee-a0ea-98fb111226c0)
+![Cashtag token](https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-api-docs/assets/images/cashtag-token.png)
 
 ## Use Case 2: Scan QR codes using a mobile device camera
 
 1 On mobile, navigate to our [Sandbox testing](https://sandbox.pay.withcash.app/checkout). Click on the **Cash App Pay** button.
 
-![Sandbox test store](file:3de06732-375c-4630-8f18-ca5039e4bdc7)
+![Sandbox test store](https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-api-docs/assets/images/sandbox-test-store.png)
 
 2 You are redirected back to the Sandbox App. **Approve** the payment in the Sandbox App.
 
-<img src="file:6aa16179-4a0b-441b-a076-d662eb573d2d" alt="Approve payment" />
+<img src="https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-api-docs/assets/images/approve-payment.png" alt="Approve payment" />
 
 3 You can see Cash App Pay has confirmed the payment by displaying the amount.
 
-<img src="file:cbdf87e3-e6d5-4a17-97f8-2560e23a3748" alt="Order confirmation" />
+<img src="https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-api-docs/assets/images/order-confirmation.png" alt="Order confirmation" />
 
 4 Observe the linked account. `$CASHTAG_C_TOKEN` is our fake account used inside the Sandbox.
 
-![Cashtag token](file:5bbf00bc-ba1b-4bee-a0ea-98fb111226c0)
+![Cashtag token](https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-api-docs/assets/images/cashtag-token.png)
 
 <Note>
   You can also **Decline** the payment and the Sandbox App will ask you to go back to the shopping website.
@@ -29061,19 +30235,19 @@ There are currently two Use Cases for the Sandbox App. We recommend that Partner
 
 1 On mobile, navigate to our [Sandbox testing](https://sandbox.pay.withcash.app/checkout). Click on the **Cash App Pay** button.
 
-![Sandbox test store](file:3de06732-375c-4630-8f18-ca5039e4bdc7)
+![Sandbox test store](https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-api-docs/assets/images/sandbox-test-store.png)
 
 2 You are redirected back to the Sandbox App. Click **View more options** in the Sandbox App.
 
-<img src="file:588b1bed-e6ac-4387-b4b8-6d06e893aea4" alt="cap-sand-view-more-opts.jpeg" />
+<img src="https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-api-docs/assets/images/cap-sand-view-more-opts.jpeg" alt="cap-sand-view-more-opts.jpeg" />
 
 3 The first of several test options appear, in the picture below they are *Account Ineligibilty Overrides* **Customer Ineligible**, and *Payment Overrides* **Connection Error** and **Compliance**.
 
-<img src="file:4fbedad9-5fd7-457a-802d-7046c034f35f" alt="2.PNG" />
+<img src="https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-api-docs/assets/images/2.PNG" alt="2.PNG" />
 
 4 Scroll down for more test options. In the picture below there are two more *Payment Overrides* **Insufficient Funds** and **Other**.
 
-<img src="file:b32bf1b1-ee19-400a-88e3-10168fafd1bc" alt="3.PNG" />
+<img src="https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-api-docs/assets/images/3.PNG" alt="3.PNG" />
 
 5 Scroll down for final set of test options. In the picture below there are three more *Payment Overrides* **Risk**, **Too Large** and **Too Small**.
 
@@ -29894,28 +31068,28 @@ We have produced a detailed online presentation called [Cash App Pay Merchant gu
 
 | Green White                                                                                                                           | Green Black                                                                                                                           |
 | ------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------- |
-| <img src="file:183a1b6d-63a3-46bf-8caf-73d7b32a250c" alt="$Pay_Logo_White.png" noZoom />                                              | <img src="file:18eec454-9b78-49c0-9f86-58db1dd2fa36" alt="$Pay_Logo_Black.png" noZoom />                                              |
+| <img src="https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-api-docs/assets/images/$Pay_Logo_White.png" alt="$Pay_Logo_White.png" noZoom />                                              | <img src="https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-api-docs/assets/images/$Pay_Logo_Black.png" alt="$Pay_Logo_Black.png" noZoom />                                              |
 | `<img alt="Cash App" src="https://static.afterpaycdn.com/en-US/integration/logo/lockup/cashapppay-color-white-32.svg" height="32" />` | `<img alt="Cash App" src="https://static.afterpaycdn.com/en-US/integration/logo/lockup/cashapppay-color-black-32.svg" height="32" />` |
 
 <br />
 
 | Mono White                                                                                                                           | Mono Black                                                                                                                           |
 | ------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------ |
-| <img src="file:57e1b2ec-e55c-4d07-a3da-637feb4b6573" alt="$Pay_Logo_MonoWhite.png" noZoom />                                         | <img src="file:94f78bfc-2480-4000-894f-f2a039fd49a3" alt="$Pay_Logo_MonoBlack.png" noZoom />                                         |
+| <img src="https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-api-docs/assets/images/$Pay_Logo_MonoWhite.png" alt="$Pay_Logo_MonoWhite.png" noZoom />                                         | <img src="https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-api-docs/assets/images/$Pay_Logo_MonoBlack.png" alt="$Pay_Logo_MonoBlack.png" noZoom />                                         |
 | `<img alt="Cash App" src="https://static.afterpaycdn.com/en-US/integration/logo/lockup/cashapppay-mono-white-32.svg" height="32" />` | `<img alt="Cash App" src="https://static.afterpaycdn.com/en-US/integration/logo/lockup/cashapppay-mono-black-32.svg" height="32" />` |
 
 ### Alternative Logo Lockup
 
 | Green White                                                                                                                        | Green Black                                                                                                                        |
 | ---------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
-| <img src="file:36d8bf3d-eb31-4a36-806f-8990cea0be42" alt="Cash App - Logo Green White.png" noZoom />                               | <img src="file:a0a7cbeb-2d36-481d-9d45-feec17802831" alt="Cash App - Logo Green Black.png" noZoom />                               |
+| <img src="https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-api-docs/assets/images/Cash App - Logo Green White.png" alt="Cash App - Logo Green White.png" noZoom />                               | <img src="https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-api-docs/assets/images/Cash App - Logo Green Black.png" alt="Cash App - Logo Green Black.png" noZoom />                               |
 | `<img alt="Cash App" src="https://static.afterpaycdn.com/en-US/integration/logo/lockup/cashapp-color-white-32.svg" height="32" />` | `<img alt="Cash App" src="https://static.afterpaycdn.com/en-US/integration/logo/lockup/cashapp-color-black-32.svg" height="32" />` |
 
 <br />
 
 | Mono White                                                                                                                        | Mono Black                                                                                                                        |
 | --------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
-| <img src="file:ae0179cf-cccb-4ff3-9632-29c3a43e77c9" alt="Cash App - Logo White.png" noZoom />                                    | <img src="file:afe7a6f1-6612-4b24-adbc-fbcd8d34c349" alt="Cash App - Logo Black.png" noZoom />                                    |
+| <img src="https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-api-docs/assets/images/Cash App - Logo White.png" alt="Cash App - Logo White.png" noZoom />                                    | <img src="https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-api-docs/assets/images/Cash App - Logo Black.png" alt="Cash App - Logo Black.png" noZoom />                                    |
 | `<img alt="Cash App" src="https://static.afterpaycdn.com/en-US/integration/logo/lockup/cashapp-mono-white-32.svg" height="32" />` | `<img alt="Cash App" src="https://static.afterpaycdn.com/en-US/integration/logo/lockup/cashapp-mono-black-32.svg" height="32" />` |
 
 ### Payment Badge
@@ -29924,41 +31098,41 @@ We have produced a detailed online presentation called [Cash App Pay Merchant gu
 
 | Green On Dark                                                                                                       | Green                                                                                                               |
 | ------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- |
-| <img src="file:c43dd1f3-8de8-44f7-8517-e6f34aa107cb" alt="Payment Badge - Green on dark.png" noZoom />              | <img src="file:045a1899-690f-45ac-bd2e-66b9c3ddf93f" alt="Payment Badge - Green.png" noZoom />                      |
+| <img src="https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-api-docs/assets/images/Payment Badge - Green on dark.png" alt="Payment Badge - Green on dark.png" noZoom />              | <img src="https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-api-docs/assets/images/Payment Badge - Green.png" alt="Payment Badge - Green.png" noZoom />                      |
 | `<img alt="Cash App Pay" src="https://static.afterpaycdn.com/en-US/integration/logo/icon/color.svg" height="24" />` | `<img alt="Cash App Pay" src="https://static.afterpaycdn.com/en-US/integration/logo/icon/color.svg" height="24" />` |
 
 <br />
 
 | Monochrome Black On Light                                                                                             | Monochrome White On Dark                                                                                             |
 | --------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
-| <img src="file:379d0ca0-7d2a-4e63-8f60-83b2b00ae642" alt="Payment Badge - Monochrome Black on light.png" noZoom />    | <img src="file:893965c2-934a-4457-b26f-c55e9a7f8251" alt="Payment Badge - Monochrome White on dark.png" noZoom />    |
+| <img src="https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-api-docs/assets/images/Payment Badge - Monochrome Black on light.png" alt="Payment Badge - Monochrome Black on light.png" noZoom />    | <img src="https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-api-docs/assets/images/Payment Badge - Monochrome White on dark.png" alt="Payment Badge - Monochrome White on dark.png" noZoom />    |
 | `<img alt="Cash App Pay" src="https://static.afterpay.com/en-US/integration/logo/icon/mono-light.svg" height="24" />` | `<img alt="Cash App Pay" src="https://static.afterpay.com/en-US/integration/logo/icon/mono-dark.svg" height="24" />` |
 
 #### Squared
 
 | Green On Dark                                                                                                                | Green                                                                                                                        |
 | ---------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
-| <img src="file:35481a81-0887-4b3c-8512-8b085846551f" alt="Squared Payment Badge - Green on dark.png" noZoom />               | <img src="file:d3a13820-c4b5-40a8-b88b-3ad5e509d96e" alt="Squared Payment Badge - Green.png" noZoom />                       |
+| <img src="https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-api-docs/assets/images/Squared Payment Badge - Green on dark.png" alt="Squared Payment Badge - Green on dark.png" noZoom />               | <img src="https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-api-docs/assets/images/Squared Payment Badge - Green.png" alt="Squared Payment Badge - Green.png" noZoom />                       |
 | `<img alt="Cash App Pay" src="https://static.afterpaycdn.com/en-US/integration/logo/squared-badge/color.svg" height="24" />` | `<img alt="Cash App Pay" src="https://static.afterpaycdn.com/en-US/integration/logo/squared-badge/color.svg" height="24" />` |
 
 <br />
 
 | Mono Light                                                                                                                        | Mono Dark                                                                                                                        |
 | --------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------- |
-| <img src="file:54302611-7f9c-49a4-b14a-64ea09846e1d" alt="Squared Payment Badge - mono light.png" noZoom />                       | <img src="file:3c139e6e-e7f7-4eff-a653-17bc722e965e" alt="Squared Payment Badge - mono dark.png" noZoom />                       |
+| <img src="https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-api-docs/assets/images/Squared Payment Badge - mono light.png" alt="Squared Payment Badge - mono light.png" noZoom />                       | <img src="https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-api-docs/assets/images/Squared Payment Badge - mono dark.png" alt="Squared Payment Badge - mono dark.png" noZoom />                       |
 | `<img alt="Cash App Pay" src="https://static.afterpaycdn.com/en-US/integration/logo/squared-badge/mono-light.svg" height="24" />` | `<img alt="Cash App Pay" src="https://static.afterpaycdn.com/en-US/integration/logo/squared-badge/mono-dark.svg" height="24" />` |
 
 ### Buttons
 
 | Black Green                                                                                | Green Black                                                                                |
 | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ |
-| <img src="file:b17d4051-64cc-422e-b06c-080ebb06d065" alt="$Pay_Button_Black.png" noZoom /> | <img src="file:96254631-2f64-4c26-8985-e5ea1f00c213" alt="$Pay_Button_Green.png" noZoom /> |
+| <img src="https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-api-docs/assets/images/$Pay_Button_Black.png" alt="$Pay_Button_Black.png" noZoom /> | <img src="https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-api-docs/assets/images/$Pay_Button_Green.png" alt="$Pay_Button_Green.png" noZoom /> |
 
 <br />
 
 | Mono White                                                                                     | Mono Black                                                                                     |
 | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
-| <img src="file:93d25ab9-557e-4b52-ac2f-a71cf8ba9288" alt="$Pay_Button_MonoBlack.png" noZoom /> | <img src="file:a0ab3d91-bc05-4704-af45-ef8f85983154" alt="$Pay_Button_MonoWhite.png" noZoom /> |
+| <img src="https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-api-docs/assets/images/$Pay_Button_MonoBlack.png" alt="$Pay_Button_MonoBlack.png" noZoom /> | <img src="https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-api-docs/assets/images/$Pay_Button_MonoWhite.png" alt="$Pay_Button_MonoWhite.png" noZoom /> |
 
 
 # Glossary of Terms
@@ -30024,13 +31198,13 @@ PSP (Payment Service Provider) Partners and directly integrated Merchants can mo
 
 <br />
 
-![](file:52da2c47-d6d1-4ead-80d2-4830ae439728)
-<Note> You can click on the **Subscribe to updates** button to see the different subscription options. <br /><br /><img src="file:4e2b1006-8b4c-4ecf-8760-aa597920f6f8" width="500" height="300" noZoom /></Note>
+![](https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-api-docs/assets/images/CAP_API_status.png)
+<Note> You can click on the **Subscribe to updates** button to see the different subscription options. <br /><br /><img src="https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-api-docs/assets/images/CAP_subscribe.png" width="500" height="300" noZoom /></Note>
 
 ## Cash App Application Status
 
 To verify any disruptions to end-using customers' Cash App services, go to the [Cash App status page.](https://status.cash.app/) <br /><br />
-![](file:fd3ff0e8-8197-40e5-9111-503f9f0de61e)
+![](https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-api-docs/assets/images/CAP_status1.png)
 
 
 # App Experience and Usage
@@ -30286,7 +31460,7 @@ Each net settlement will have a corresponding reconciliation report showing the 
 
 See the following illustrative example that explains this:
 
-<img src="file:66a8d6b7-4f48-4a1e-97f4-0be0251a9ad8" alt="incentive-calculation.png" noZoom />
+<img src="https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-api-docs/assets/images/incentive-calculation.png" alt="incentive-calculation.png" noZoom />
 
 <br />
 
@@ -30318,7 +31492,7 @@ Here are some of the things that you can do using Pay Kit:
   * Using custom elements in checkout
   * Upselling to the customer
 
-<img src="file:26ef7d2d-185a-4cc9-91df-fffe6b6f2c77" alt="Screenshot 2023-01-12 at 9.42.58 AM.png" />
+<img src="https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-api-docs/assets/images/easy-name.png" alt="Screenshot 2023-01-12 at 9.42.58 AM.png" />
 
 # Benefits of using Pay Kit
 
@@ -30337,7 +31511,7 @@ Pay Kit SDK provides a streamlined integration path for developers by abstractin
 
 {/* * **Supports forward and backward navigation:** Pay Kit handles both forward-navigation and backward-navigation scenarios on mobile.*/}
 
-* **QR code rotation:** Pay Kit automatically rotates QR codes every 30 seconds for added security. Your development team does not have to create additional programming for doing this. Thus saving your engineering team's time and effort. <img src="file:62b3c9f4-8d74-404a-ad92-e9a19ed70f49" alt="Screenshot 2023-01-12 at 9.45.49 AM.png" />
+* **QR code rotation:** Pay Kit automatically rotates QR codes every 30 seconds for added security. Your development team does not have to create additional programming for doing this. Thus saving your engineering team's time and effort. <img src="https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-api-docs/assets/images/easy-name2.png" alt="Screenshot 2023-01-12 at 9.45.49 AM.png" />
 
 * **Cash App brand adherence:** Pay Kit ensures that you adhere to Cash App Pay's brand guidelines and requirements. Any branding and UI updates are automatic and do not need any intervention from your engineering teams.
 
@@ -30369,7 +31543,7 @@ Pay Kit is a JavaScript SDK that allows you to accept Cash App Pay online. On de
 
 On mobile devices such as iPhone and Android phones, the customer is redirected from your checkout experience to Cash App. Customers can then approve the payment before they are redirected back to your site.
 
-<img src="file:070169b2-c5c7-49fe-ab29-c84cedb84550" alt="Pay Kit visualization" noZoom />
+<img src="https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-api-docs/assets/images/pay-kit-visualization.png" alt="Pay Kit visualization" noZoom />
 
 <Note title="Before you start">
   You need a merchant identifier from the [Network API](/cash-app-pay-partner-api/guides/technical-guides/api-fundamentals/network-api) to get started. We recommend that you have a working API integration.
@@ -31281,7 +32455,7 @@ To use Pay Kit iOS, Cash App must be able to call a URL that will redirect back 
 
 Choose a unique scheme for your application and register it in Xcode from the **Info** tab of your application’s Target. For example, the TipMyCAP application that exercises the SDK functionality configures a scheme as follows:
 
-![configure\_scheme.png](file:c3303994-d519-41eb-b1e8-4c6d0652db4c)
+![configure\_scheme.png](https://files.buildwithfern.com/cash-app.docs.buildwithfern.com/2026-01-27T23:03:44.161Z/cash-api-docs/assets/images/configure_scheme.png)
 
 You’ll pass a URL that uses this scheme (or a Universal Link your app handles) into the `createCustomerRequest()` method that starts the authorization process.
 
@@ -31982,6 +33156,7 @@ paths:
           required: false
           schema:
             type: integer
+            default: 50
         - name: reference_id
           in: query
           description: >-
@@ -32031,21 +33206,78 @@ components:
       properties:
         id:
           type: string
+          description: |-
+            A unique identifier for the brand issued by Cash App.
+
+            Min length: `1`
+            Max length: `128`
         name:
           type: string
+          description: |-
+            Name of the brand to be shown in Cash App next to payments.
+
+            Min length: `1`
+            Max length: `1024`
         created_at:
           type: string
           format: date-time
+          description: >-
+            When this brand was created, in [RFC
+            3339](https://datatracker.ietf.org/doc/html/rfc3339) format (UTC).
         updated_at:
           type: string
           format: date-time
+          description: >-
+            When this brand was last updated, in [RFC
+            3339](https://datatracker.ietf.org/doc/html/rfc3339) format (UTC).
         reference_id:
           type: string
+          description: >-
+            A user-defined identifier for this brand, typically used to
+            associate the brand with a record in an external system. 
+            Independent from the [merchant
+            reference_id](https://developers.cash.app/docs/api/network-api/operations/create-a-merchant#request-body).
+
+
+            Min length: `1`
+
+            Max length: `1024`
         color:
           type: string
+          description: >-
+            Primary color associated with this brand and its logo, in 6-digit
+            hex code format (`#f0f0f0`).
+
+
+            Min length: `7`
+
+            Max length: `7`
         profile_image_url:
           type: string
           format: uri
+          default: >-
+            https://franklin-assets.s3.amazonaws.com/merchants/assets/v3/generic/m_category_business.png
+          description: >-
+            URL to the image that should be shown in Cash App next to payments
+            made to this brand, typically the brand's logo.
+
+
+            The image should be square and be at least 256x256. It must be less
+            than 2MB in filesize.
+
+
+            Acceptable file formats:
+
+            - `.png`
+
+            - `.jpg`
+
+            - `.jpeg`
+
+
+            Min length: `8`
+
+            Max length: `8000`
         metadata:
           $ref: '#/components/schemas/Metadata'
       required:
@@ -32061,8 +33293,12 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Brand'
+          description: List of brands matching the given query parameters.
         cursor:
           type: string
+          description: >-
+            The pagination cursor to be used in a subsequent request. If empty,
+            this is the final response.
       required:
         - brands
 
@@ -32299,6 +33535,7 @@ paths:
                 brand:
                   $ref: >-
                     #/components/schemas/BrandsPostRequestBodyContentApplicationJsonSchemaBrand
+                  description: Details about the brand to create.
               required:
                 - idempotency_key
                 - brand
@@ -32315,13 +33552,61 @@ components:
       properties:
         name:
           type: string
+          description: |-
+            Name of the brand to be shown in Cash App next to payments.
+
+            Min length: `1`
+            Max length: `1024`
         reference_id:
           type: string
+          description: >-
+            A user-defined identifier for this brand, typically used to
+            associate the brand with a record in an external system.
+
+
+            **Must be unique across all brands. Independent from the [merchant
+            reference_id](https://developers.cash.app/docs/api/network-api/operations/create-a-merchant#request-body)**
+
+
+            Min length: `1`
+
+            Max length: `1024`
         profile_image_url:
           type: string
           format: uri
+          description: >-
+            URL to the image that should be shown in Cash App next to payments
+            made to this brand, typically the brand's logo.
+
+
+            The image should be square and be at least 256x256. It must be less
+            than 2MB in filesize.
+
+
+            Acceptable image formats:
+
+            - `png`
+
+            - `jpg`
+
+            - `jpeg`
+
+
+            Min length: `8`
+
+            Max length: `8000`
         color:
           type: string
+          description: >-
+            Primary color associated with this brand and its logo, in 6-digit
+            hex code format.
+
+
+            Pattern: `^#[a-fA-F0-9]{6}$`
+
+            Min length: `7`
+
+            Max length: `7`
         metadata:
           $ref: '#/components/schemas/Metadata'
       required:
@@ -32332,21 +33617,78 @@ components:
       properties:
         id:
           type: string
+          description: |-
+            A unique identifier for the brand issued by Cash App.
+
+            Min length: `1`
+            Max length: `128`
         name:
           type: string
+          description: |-
+            Name of the brand to be shown in Cash App next to payments.
+
+            Min length: `1`
+            Max length: `1024`
         created_at:
           type: string
           format: date-time
+          description: >-
+            When this brand was created, in [RFC
+            3339](https://datatracker.ietf.org/doc/html/rfc3339) format (UTC).
         updated_at:
           type: string
           format: date-time
+          description: >-
+            When this brand was last updated, in [RFC
+            3339](https://datatracker.ietf.org/doc/html/rfc3339) format (UTC).
         reference_id:
           type: string
+          description: >-
+            A user-defined identifier for this brand, typically used to
+            associate the brand with a record in an external system. 
+            Independent from the [merchant
+            reference_id](https://developers.cash.app/docs/api/network-api/operations/create-a-merchant#request-body).
+
+
+            Min length: `1`
+
+            Max length: `1024`
         color:
           type: string
+          description: >-
+            Primary color associated with this brand and its logo, in 6-digit
+            hex code format (`#f0f0f0`).
+
+
+            Min length: `7`
+
+            Max length: `7`
         profile_image_url:
           type: string
           format: uri
+          default: >-
+            https://franklin-assets.s3.amazonaws.com/merchants/assets/v3/generic/m_category_business.png
+          description: >-
+            URL to the image that should be shown in Cash App next to payments
+            made to this brand, typically the brand's logo.
+
+
+            The image should be square and be at least 256x256. It must be less
+            than 2MB in filesize.
+
+
+            Acceptable file formats:
+
+            - `.png`
+
+            - `.jpg`
+
+            - `.jpeg`
+
+
+            Min length: `8`
+
+            Max length: `8000`
         metadata:
           $ref: '#/components/schemas/Metadata'
       required:
@@ -32785,7 +34127,7 @@ a new one will be created.
 The HTTP response code (`200 OK` or `201 Created`) indicates
 whether the resource was updated or created, respectively.
 
-<Note title="Note">
+<Note>
 
  `brand_id` is the primary unique identifier for all Brand APIs.
  Be cautious when using `reference_id` as a unique identifier. 
@@ -32826,7 +34168,7 @@ paths:
         whether the resource was updated or created, respectively.
 
 
-        <Note title="Note">
+        <Note>
 
          `brand_id` is the primary unique identifier for all Brand APIs.
          Be cautious when using `reference_id` as a unique identifier. 
@@ -32880,6 +34222,7 @@ paths:
                 brand:
                   $ref: >-
                     #/components/schemas/BrandsPutRequestBodyContentApplicationJsonSchemaBrand
+                  description: Details about the brand to create or update.
               required:
                 - brand
 components:
@@ -32893,13 +34236,61 @@ components:
       properties:
         name:
           type: string
+          description: |-
+            Name of the brand to be shown in Cash App next to payments.
+
+            Min length: `1`
+            Max length: `1024`
         reference_id:
           type: string
+          description: >-
+            A user-defined identifier for this brand, typically used to
+            associate the brand with a record in an external system.
+
+
+            **Must be unique across all brands.  Independent from the [merchant
+            reference_id](https://developers.cash.app/docs/api/network-api/operations/create-a-merchant#request-body)**
+
+
+            Min length: `1`
+
+            Max length: `1024`
         profile_image_url:
           type: string
           format: uri
+          description: >-
+            URL to the image that should be shown in Cash App next to payments
+            made to this brand, typically the brand's logo.
+
+
+            The image should be square and be at least 256x256. It must be less
+            than 2MB in filesize.
+
+
+            Acceptable image formats:
+
+            - `png`
+
+            - `jpg`
+
+            - `jpeg`
+
+
+            Min length: `8`
+
+            Max length: `8000`
         color:
           type: string
+          description: >-
+            Primary color associated with this brand and its logo, in 6-digit
+            hex code format.
+
+
+            Pattern: `^#[a-fA-F0-9]{6}$`
+
+            Min length: `7`
+
+            Max length: `7`
         metadata:
           $ref: '#/components/schemas/Metadata'
       required:
@@ -32910,21 +34301,78 @@ components:
       properties:
         id:
           type: string
+          description: |-
+            A unique identifier for the brand issued by Cash App.
+
+            Min length: `1`
+            Max length: `128`
         name:
           type: string
+          description: |-
+            Name of the brand to be shown in Cash App next to payments.
+
+            Min length: `1`
+            Max length: `1024`
         created_at:
           type: string
           format: date-time
+          description: >-
+            When this brand was created, in [RFC
+            3339](https://datatracker.ietf.org/doc/html/rfc3339) format (UTC).
         updated_at:
           type: string
           format: date-time
+          description: >-
+            When this brand was last updated, in [RFC
+            3339](https://datatracker.ietf.org/doc/html/rfc3339) format (UTC).
         reference_id:
           type: string
+          description: >-
+            A user-defined identifier for this brand, typically used to
+            associate the brand with a record in an external system. 
+            Independent from the [merchant
+            reference_id](https://developers.cash.app/docs/api/network-api/operations/create-a-merchant#request-body).
+
+
+            Min length: `1`
+
+            Max length: `1024`
         color:
           type: string
+          description: >-
+            Primary color associated with this brand and its logo, in 6-digit
+            hex code format (`#f0f0f0`).
+
+
+            Min length: `7`
+
+            Max length: `7`
         profile_image_url:
           type: string
           format: uri
+          default: >-
+            https://franklin-assets.s3.amazonaws.com/merchants/assets/v3/generic/m_category_business.png
+          description: >-
+            URL to the image that should be shown in Cash App next to payments
+            made to this brand, typically the brand's logo.
+
+
+            The image should be square and be at least 256x256. It must be less
+            than 2MB in filesize.
+
+
+            Acceptable file formats:
+
+            - `.png`
+
+            - `.jpg`
+
+            - `.jpeg`
+
+
+            Min length: `8`
+
+            Max length: `8000`
         metadata:
           $ref: '#/components/schemas/Metadata'
       required:
@@ -33605,21 +35053,78 @@ components:
       properties:
         id:
           type: string
+          description: |-
+            A unique identifier for the brand issued by Cash App.
+
+            Min length: `1`
+            Max length: `128`
         name:
           type: string
+          description: |-
+            Name of the brand to be shown in Cash App next to payments.
+
+            Min length: `1`
+            Max length: `1024`
         created_at:
           type: string
           format: date-time
+          description: >-
+            When this brand was created, in [RFC
+            3339](https://datatracker.ietf.org/doc/html/rfc3339) format (UTC).
         updated_at:
           type: string
           format: date-time
+          description: >-
+            When this brand was last updated, in [RFC
+            3339](https://datatracker.ietf.org/doc/html/rfc3339) format (UTC).
         reference_id:
           type: string
+          description: >-
+            A user-defined identifier for this brand, typically used to
+            associate the brand with a record in an external system. 
+            Independent from the [merchant
+            reference_id](https://developers.cash.app/docs/api/network-api/operations/create-a-merchant#request-body).
+
+
+            Min length: `1`
+
+            Max length: `1024`
         color:
           type: string
+          description: >-
+            Primary color associated with this brand and its logo, in 6-digit
+            hex code format (`#f0f0f0`).
+
+
+            Min length: `7`
+
+            Max length: `7`
         profile_image_url:
           type: string
           format: uri
+          default: >-
+            https://franklin-assets.s3.amazonaws.com/merchants/assets/v3/generic/m_category_business.png
+          description: >-
+            URL to the image that should be shown in Cash App next to payments
+            made to this brand, typically the brand's logo.
+
+
+            The image should be square and be at least 256x256. It must be less
+            than 2MB in filesize.
+
+
+            Acceptable file formats:
+
+            - `.png`
+
+            - `.jpg`
+
+            - `.jpeg`
+
+
+            Min length: `8`
+
+            Max length: `8000`
         metadata:
           $ref: '#/components/schemas/Metadata'
       required:
@@ -33881,6 +35386,7 @@ paths:
                 brand:
                   $ref: >-
                     #/components/schemas/BrandsBrandIdPatchRequestBodyContentApplicationJsonSchemaBrand
+                  description: Details about the brand to update
               required:
                 - brand
 components:
@@ -33894,15 +35400,70 @@ components:
       properties:
         name:
           type: string
+          description: |-
+            Name of the brand to be shown in Cash App next to payments.
+
+            *This field cannot be cleared.*
+
+            Min length: `1`
+            Max length: `1024`
         reference_id:
           type: string
+          description: >-
+            A user-defined identifier for this brand, typically used to
+            associate the brand with a record in an external system. 
+            Independent from the [merchant
+            reference_id](https://developers.cash.app/docs/api/network-api/operations/create-a-merchant#request-body).
+
+
+            *This field cannot be cleared, and must be unique across all
+            brands.*
+
+
+            Min length: `1`
+
+            Max length: `1024`
         profile_image_url:
           type: string
           format: uri
+          description: >-
+            URL to the image that should be shown in Cash App next to payments
+            made to this brand, typically the brand's logo.
+
+
+            The image should be square and be at least 256x256. It must be less
+            than 2MB in filesize.
+
+
+            Acceptable image formats:
+
+            - `png`
+
+            - `jpg`
+
+            - `jpeg`
+
+
+            *This field cannot be cleared.*
+
+
+            Min length: `8`
+
+            Max length: `8000`
         color:
           type:
             - string
             - 'null'
+          description: >-
+            Primary color associated with this brand and its logo, in 6-digit
+            hex code format.
+
+
+            Pattern: `^#[a-fA-F0-9]{6}$`
+
+            Min length: `7`
+
+            Max length: `7`
         metadata:
           $ref: '#/components/schemas/Metadata'
     Brand:
@@ -33910,21 +35471,78 @@ components:
       properties:
         id:
           type: string
+          description: |-
+            A unique identifier for the brand issued by Cash App.
+
+            Min length: `1`
+            Max length: `128`
         name:
           type: string
+          description: |-
+            Name of the brand to be shown in Cash App next to payments.
+
+            Min length: `1`
+            Max length: `1024`
         created_at:
           type: string
           format: date-time
+          description: >-
+            When this brand was created, in [RFC
+            3339](https://datatracker.ietf.org/doc/html/rfc3339) format (UTC).
         updated_at:
           type: string
           format: date-time
+          description: >-
+            When this brand was last updated, in [RFC
+            3339](https://datatracker.ietf.org/doc/html/rfc3339) format (UTC).
         reference_id:
           type: string
+          description: >-
+            A user-defined identifier for this brand, typically used to
+            associate the brand with a record in an external system. 
+            Independent from the [merchant
+            reference_id](https://developers.cash.app/docs/api/network-api/operations/create-a-merchant#request-body).
+
+
+            Min length: `1`
+
+            Max length: `1024`
         color:
           type: string
+          description: >-
+            Primary color associated with this brand and its logo, in 6-digit
+            hex code format (`#f0f0f0`).
+
+
+            Min length: `7`
+
+            Max length: `7`
         profile_image_url:
           type: string
           format: uri
+          default: >-
+            https://franklin-assets.s3.amazonaws.com/merchants/assets/v3/generic/m_category_business.png
+          description: >-
+            URL to the image that should be shown in Cash App next to payments
+            made to this brand, typically the brand's logo.
+
+
+            The image should be square and be at least 256x256. It must be less
+            than 2MB in filesize.
+
+
+            Acceptable file formats:
+
+            - `.png`
+
+            - `.jpg`
+
+            - `.jpeg`
+
+
+            Min length: `8`
+
+            Max length: `8000`
         metadata:
           $ref: '#/components/schemas/Metadata'
       required:
@@ -34570,6 +36188,7 @@ paths:
           required: false
           schema:
             type: integer
+            default: 50
         - name: Accept
           in: header
           required: true
@@ -34625,16 +36244,44 @@ components:
       properties:
         address_line_1:
           type: string
+          description: >-
+            First line of the street address, typically including street number,
+            street name, and / or building name.
+
+
+            Min length: `1`
+
+            Max length: `1024`
         address_line_2:
           type: string
+          description: |-
+            Second line of the address, if any.
+
+            Min length: `1`
+            Max length: `1024`
         locality:
           type: string
+          description: |-
+            City or township where the entity is located.
+
+            Min length: `1`
+            Max length: `1024`
         country:
           $ref: '#/components/schemas/Country'
         postal_code:
           type: string
+          description: |-
+            ZIP or postal code.
+
+            Min length: `1`
+            Max length: `128`
         administrative_district_level_1:
           type: string
+          description: |-
+            State or province.
+
+            Min length: `1`
+            Max length: `1024`
       required:
         - country
     Metadata:
@@ -34646,19 +36293,46 @@ components:
       properties:
         in_app_fee_plan_id:
           type: string
+          description: >-
+            The fee plan ID identifying the fee plan that will be used for all
+            in-app payments.
         in_person_fee_plan_id:
           type: string
+          description: >-
+            The fee plan ID identifying the fee plan that will be used for all
+            in-person payments.
         online_fee_plan_id:
           type: string
+          description: >-
+            The fee plan ID identifying the fee plan that will be used for all
+            online payments.
     Merchant:
       type: object
       properties:
         id:
           type: string
+          description: |-
+            A unique identifier for the merchant issued by Cash App.
+
+            Min length: `1`
+            Max length: `128`
         brand_id:
           type: string
+          description: |-
+            ID of the brand associated with this merchant.
+
+            Min length: `1`
+            Max length: `128`
         name:
           type: string
+          description: >-
+            The name of the individual or business entity associated with the
+            merchant.
+
+
+            Min length: `1`
+
+            Max length: `1024`
         country:
           $ref: '#/components/schemas/Country'
         currency:
@@ -34667,19 +36341,62 @@ components:
           $ref: '#/components/schemas/Category'
         reference_id:
           type: string
+          description: >-
+            A user-defined identifier for this merchant, typically used to
+            associate the merchant with a record in an external system.
+            Independent from the [brand
+            reference_id](https://developers.cash.app/docs/api/network-api/operations/create-a-brand#request-body).
+
+
+            Min length: `1`
+
+            Max length: `1024`
         status:
           $ref: '#/components/schemas/MerchantStatus'
+          description: >-
+            Whether or not this merchant can be used to accept payments or issue
+            refunds.
+
+
+            - `ACTIVE`: The merchant can accept payments or issue refunds.
+
+            - `RISK_DISABLED`: Cash App Pay blocked this merchant due to them
+            being high risk. There is no way to re-enable them programmaticaly.
+
+            - `COMPLIANCE_DISABLED`: Cash App Pay blocked this merchant due to
+            them not following the terms of service, Program Rules, or local
+            laws. There is no way to re-enable them programmaticaly.
+
+            - `CLIENT_DISABLED`: The client called the
+            [UpdateMerchant](Network-API.v1.yaml/paths/~1merchants~1{merchant_id}/patch)
+            endpoint and disabled this merchant, preventing it from being able
+            to handle payments or refunds. To reverse this, call the endpoint
+            again with the status field set to `ACTIVE`.
+
+            - `PENDING`: The merchant is not ready to accept payments or refunds
+            yet; the registration process is still running.
         created_at:
           type: string
           format: date-time
+          description: >-
+            When this merchant was created, in [RFC
+            3339](https://datatracker.ietf.org/doc/html/rfc3339) format (UTC).
         updated_at:
           type: string
           format: date-time
+          description: >-
+            When this merchant was last updated, in [RFC
+            3339](https://datatracker.ietf.org/doc/html/rfc3339) format (UTC).
         address:
           $ref: '#/components/schemas/Address'
         site_url:
           type: string
           format: uri
+          description: |-
+            The URL of the website, if this merchant is for an eCommerce site.
+
+            Min length: `8`
+            Max length: `8000`
         metadata:
           $ref: '#/components/schemas/Metadata'
         default_fee_plans:
@@ -34703,8 +36420,12 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Merchant'
+          description: List of merchants matching the given query parameters.
         cursor:
           type: string
+          description: >-
+            The pagination cursor to be used in a subsequent request. If empty,
+            this is the final response.
       required:
         - merchants
 
@@ -34947,6 +36668,7 @@ paths:
                 merchant:
                   $ref: >-
                     #/components/schemas/MerchantsPostRequestBodyContentApplicationJsonSchemaMerchant
+                  description: Details about the merchant to create.
               required:
                 - idempotency_key
                 - merchant
@@ -34969,16 +36691,44 @@ components:
       properties:
         address_line_1:
           type: string
+          description: >-
+            First line of the street address, typically including street number,
+            street name, and / or building name.
+
+
+            Min length: `1`
+
+            Max length: `1024`
         address_line_2:
           type: string
+          description: |-
+            Second line of the address, if any.
+
+            Min length: `1`
+            Max length: `1024`
         locality:
           type: string
+          description: |-
+            City or township where the entity is located.
+
+            Min length: `1`
+            Max length: `1024`
         country:
           $ref: '#/components/schemas/Country'
         postal_code:
           type: string
+          description: |-
+            ZIP or postal code.
+
+            Min length: `1`
+            Max length: `128`
         administrative_district_level_1:
           type: string
+          description: |-
+            State or province.
+
+            Min length: `1`
+            Max length: `1024`
       required:
         - country
     Metadata:
@@ -34990,17 +36740,39 @@ components:
       properties:
         in_app_fee_plan_id:
           type: string
+          description: >-
+            The fee plan ID identifying the fee plan that will be used for all
+            in-app payments.
         in_person_fee_plan_id:
           type: string
+          description: >-
+            The fee plan ID identifying the fee plan that will be used for all
+            in-person payments.
         online_fee_plan_id:
           type: string
+          description: >-
+            The fee plan ID identifying the fee plan that will be used for all
+            online payments.
     MerchantsPostRequestBodyContentApplicationJsonSchemaMerchant:
       type: object
       properties:
         name:
           type: string
+          description: >-
+            The name of the individual or business entity associated with the
+            merchant.
+
+
+            Min length: `1`
+
+            Max length: `1024`
         brand_id:
           type: string
+          description: |
+            ID of the brand associated with this merchant.
+
+            Min length: `1`
+            Max length: `128`
         country:
           $ref: '#/components/schemas/Country'
         currency:
@@ -35009,11 +36781,28 @@ components:
           $ref: '#/components/schemas/Category'
         reference_id:
           type: string
+          description: >-
+            A user-defined identifier for this merchant, typically used to
+            associate the merchant with a record in an external system.
+
+
+            **Must be unique across all merchants. Independent from the [brand
+            reference_id](https://developers.cash.app/docs/api/network-api/operations/create-a-brand#request-body)**
+
+
+            Min length: `1`
+
+            Max length: `1024`
         address:
           $ref: '#/components/schemas/Address'
         site_url:
           type: string
           format: uri
+          description: |-
+            The URL of the website, if this merchant is for an eCommerce site.
+
+            Min length: `8`
+            Max length: `8000`
         metadata:
           $ref: '#/components/schemas/Metadata'
         default_fee_plans:
@@ -35039,10 +36828,28 @@ components:
       properties:
         id:
           type: string
+          description: |-
+            A unique identifier for the merchant issued by Cash App.
+
+            Min length: `1`
+            Max length: `128`
         brand_id:
           type: string
+          description: |-
+            ID of the brand associated with this merchant.
+
+            Min length: `1`
+            Max length: `128`
         name:
           type: string
+          description: >-
+            The name of the individual or business entity associated with the
+            merchant.
+
+
+            Min length: `1`
+
+            Max length: `1024`
         country:
           $ref: '#/components/schemas/Country'
         currency:
@@ -35051,19 +36858,62 @@ components:
           $ref: '#/components/schemas/Category'
         reference_id:
           type: string
+          description: >-
+            A user-defined identifier for this merchant, typically used to
+            associate the merchant with a record in an external system.
+            Independent from the [brand
+            reference_id](https://developers.cash.app/docs/api/network-api/operations/create-a-brand#request-body).
+
+
+            Min length: `1`
+
+            Max length: `1024`
         status:
           $ref: '#/components/schemas/MerchantStatus'
+          description: >-
+            Whether or not this merchant can be used to accept payments or issue
+            refunds.
+
+
+            - `ACTIVE`: The merchant can accept payments or issue refunds.
+
+            - `RISK_DISABLED`: Cash App Pay blocked this merchant due to them
+            being high risk. There is no way to re-enable them programmaticaly.
+
+            - `COMPLIANCE_DISABLED`: Cash App Pay blocked this merchant due to
+            them not following the terms of service, Program Rules, or local
+            laws. There is no way to re-enable them programmaticaly.
+
+            - `CLIENT_DISABLED`: The client called the
+            [UpdateMerchant](Network-API.v1.yaml/paths/~1merchants~1{merchant_id}/patch)
+            endpoint and disabled this merchant, preventing it from being able
+            to handle payments or refunds. To reverse this, call the endpoint
+            again with the status field set to `ACTIVE`.
+
+            - `PENDING`: The merchant is not ready to accept payments or refunds
+            yet; the registration process is still running.
         created_at:
           type: string
           format: date-time
+          description: >-
+            When this merchant was created, in [RFC
+            3339](https://datatracker.ietf.org/doc/html/rfc3339) format (UTC).
         updated_at:
           type: string
           format: date-time
+          description: >-
+            When this merchant was last updated, in [RFC
+            3339](https://datatracker.ietf.org/doc/html/rfc3339) format (UTC).
         address:
           $ref: '#/components/schemas/Address'
         site_url:
           type: string
           format: uri
+          description: |-
+            The URL of the website, if this merchant is for an eCommerce site.
+
+            Min length: `8`
+            Max length: `8000`
         metadata:
           $ref: '#/components/schemas/Metadata'
         default_fee_plans:
@@ -35693,6 +37543,7 @@ paths:
                 merchant:
                   $ref: >-
                     #/components/schemas/MerchantsPutRequestBodyContentApplicationJsonSchemaMerchant
+                  description: Details about the merchant to create or update.
               required:
                 - merchant
 components:
@@ -35712,16 +37563,44 @@ components:
       properties:
         address_line_1:
           type: string
+          description: >-
+            First line of the street address, typically including street number,
+            street name, and / or building name.
+
+
+            Min length: `1`
+
+            Max length: `1024`
         address_line_2:
           type: string
+          description: |-
+            Second line of the address, if any.
+
+            Min length: `1`
+            Max length: `1024`
         locality:
           type: string
+          description: |-
+            City or township where the entity is located.
+
+            Min length: `1`
+            Max length: `1024`
         country:
           $ref: '#/components/schemas/Country'
         postal_code:
           type: string
+          description: |-
+            ZIP or postal code.
+
+            Min length: `1`
+            Max length: `128`
         administrative_district_level_1:
           type: string
+          description: |-
+            State or province.
+
+            Min length: `1`
+            Max length: `1024`
       required:
         - country
     Metadata:
@@ -35733,17 +37612,39 @@ components:
       properties:
         in_app_fee_plan_id:
           type: string
+          description: >-
+            The fee plan ID identifying the fee plan that will be used for all
+            in-app payments.
         in_person_fee_plan_id:
           type: string
+          description: >-
+            The fee plan ID identifying the fee plan that will be used for all
+            in-person payments.
         online_fee_plan_id:
           type: string
+          description: >-
+            The fee plan ID identifying the fee plan that will be used for all
+            online payments.
     MerchantsPutRequestBodyContentApplicationJsonSchemaMerchant:
       type: object
       properties:
         name:
           type: string
+          description: >-
+            The name of the individual or business entity associated with the
+            merchant.
+
+
+            Min length: `1`
+
+            Max length: `1024`
         brand_id:
           type: string
+          description: |-
+            ID of the brand associated with this merchant.
+
+            Min length: `1`
+            Max length: `128`
         country:
           $ref: '#/components/schemas/Country'
         currency:
@@ -35752,11 +37653,28 @@ components:
           $ref: '#/components/schemas/Category'
         reference_id:
           type: string
+          description: >-
+            A user-defined identifier for this merchant, typically used to
+            associate the merchant with a record in an external system.
+
+
+            **Must be unique across all merchants. Independent from the [brand
+            reference_id](https://developers.cash.app/docs/api/network-api/operations/create-a-brand#request-body).**
+
+
+            Min length: `1`
+
+            Max length: `1024`
         address:
           $ref: '#/components/schemas/Address'
         site_url:
           type: string
           format: uri
+          description: |-
+            The URL of the website, if this merchant is for an eCommerce site.
+
+            Min length: `8`
+            Max length: `8000`
         metadata:
           $ref: '#/components/schemas/Metadata'
         default_fee_plans:
@@ -35782,10 +37700,28 @@ components:
       properties:
         id:
           type: string
+          description: |-
+            A unique identifier for the merchant issued by Cash App.
+
+            Min length: `1`
+            Max length: `128`
         brand_id:
           type: string
+          description: |-
+            ID of the brand associated with this merchant.
+
+            Min length: `1`
+            Max length: `128`
         name:
           type: string
+          description: >-
+            The name of the individual or business entity associated with the
+            merchant.
+
+
+            Min length: `1`
+
+            Max length: `1024`
         country:
           $ref: '#/components/schemas/Country'
         currency:
@@ -35794,19 +37730,62 @@ components:
           $ref: '#/components/schemas/Category'
         reference_id:
           type: string
+          description: >-
+            A user-defined identifier for this merchant, typically used to
+            associate the merchant with a record in an external system.
+            Independent from the [brand
+            reference_id](https://developers.cash.app/docs/api/network-api/operations/create-a-brand#request-body).
+
+
+            Min length: `1`
+
+            Max length: `1024`
         status:
           $ref: '#/components/schemas/MerchantStatus'
+          description: >-
+            Whether or not this merchant can be used to accept payments or issue
+            refunds.
+
+
+            - `ACTIVE`: The merchant can accept payments or issue refunds.
+
+            - `RISK_DISABLED`: Cash App Pay blocked this merchant due to them
+            being high risk. There is no way to re-enable them programmaticaly.
+
+            - `COMPLIANCE_DISABLED`: Cash App Pay blocked this merchant due to
+            them not following the terms of service, Program Rules, or local
+            laws. There is no way to re-enable them programmaticaly.
+
+            - `CLIENT_DISABLED`: The client called the
+            [UpdateMerchant](Network-API.v1.yaml/paths/~1merchants~1{merchant_id}/patch)
+            endpoint and disabled this merchant, preventing it from being able
+            to handle payments or refunds. To reverse this, call the endpoint
+            again with the status field set to `ACTIVE`.
+
+            - `PENDING`: The merchant is not ready to accept payments or refunds
+            yet; the registration process is still running.
         created_at:
           type: string
           format: date-time
+          description: >-
+            When this merchant was created, in [RFC
+            3339](https://datatracker.ietf.org/doc/html/rfc3339) format (UTC).
         updated_at:
           type: string
           format: date-time
+          description: >-
+            When this merchant was last updated, in [RFC
+            3339](https://datatracker.ietf.org/doc/html/rfc3339) format (UTC).
         address:
           $ref: '#/components/schemas/Address'
         site_url:
           type: string
           format: uri
+          description: |-
+            The URL of the website, if this merchant is for an eCommerce site.
+
+            Min length: `8`
+            Max length: `8000`
         metadata:
           $ref: '#/components/schemas/Metadata'
         default_fee_plans:
@@ -36655,16 +38634,44 @@ components:
       properties:
         address_line_1:
           type: string
+          description: >-
+            First line of the street address, typically including street number,
+            street name, and / or building name.
+
+
+            Min length: `1`
+
+            Max length: `1024`
         address_line_2:
           type: string
+          description: |-
+            Second line of the address, if any.
+
+            Min length: `1`
+            Max length: `1024`
         locality:
           type: string
+          description: |-
+            City or township where the entity is located.
+
+            Min length: `1`
+            Max length: `1024`
         country:
           $ref: '#/components/schemas/Country'
         postal_code:
           type: string
+          description: |-
+            ZIP or postal code.
+
+            Min length: `1`
+            Max length: `128`
         administrative_district_level_1:
           type: string
+          description: |-
+            State or province.
+
+            Min length: `1`
+            Max length: `1024`
       required:
         - country
     Metadata:
@@ -36676,19 +38683,46 @@ components:
       properties:
         in_app_fee_plan_id:
           type: string
+          description: >-
+            The fee plan ID identifying the fee plan that will be used for all
+            in-app payments.
         in_person_fee_plan_id:
           type: string
+          description: >-
+            The fee plan ID identifying the fee plan that will be used for all
+            in-person payments.
         online_fee_plan_id:
           type: string
+          description: >-
+            The fee plan ID identifying the fee plan that will be used for all
+            online payments.
     Merchant:
       type: object
       properties:
         id:
           type: string
+          description: |-
+            A unique identifier for the merchant issued by Cash App.
+
+            Min length: `1`
+            Max length: `128`
         brand_id:
           type: string
+          description: |-
+            ID of the brand associated with this merchant.
+
+            Min length: `1`
+            Max length: `128`
         name:
           type: string
+          description: >-
+            The name of the individual or business entity associated with the
+            merchant.
+
+
+            Min length: `1`
+
+            Max length: `1024`
         country:
           $ref: '#/components/schemas/Country'
         currency:
@@ -36697,19 +38731,62 @@ components:
           $ref: '#/components/schemas/Category'
         reference_id:
           type: string
+          description: >-
+            A user-defined identifier for this merchant, typically used to
+            associate the merchant with a record in an external system.
+            Independent from the [brand
+            reference_id](https://developers.cash.app/docs/api/network-api/operations/create-a-brand#request-body).
+
+
+            Min length: `1`
+
+            Max length: `1024`
         status:
           $ref: '#/components/schemas/MerchantStatus'
+          description: >-
+            Whether or not this merchant can be used to accept payments or issue
+            refunds.
+
+
+            - `ACTIVE`: The merchant can accept payments or issue refunds.
+
+            - `RISK_DISABLED`: Cash App Pay blocked this merchant due to them
+            being high risk. There is no way to re-enable them programmaticaly.
+
+            - `COMPLIANCE_DISABLED`: Cash App Pay blocked this merchant due to
+            them not following the terms of service, Program Rules, or local
+            laws. There is no way to re-enable them programmaticaly.
+
+            - `CLIENT_DISABLED`: The client called the
+            [UpdateMerchant](Network-API.v1.yaml/paths/~1merchants~1{merchant_id}/patch)
+            endpoint and disabled this merchant, preventing it from being able
+            to handle payments or refunds. To reverse this, call the endpoint
+            again with the status field set to `ACTIVE`.
+
+            - `PENDING`: The merchant is not ready to accept payments or refunds
+            yet; the registration process is still running.
         created_at:
           type: string
           format: date-time
+          description: >-
+            When this merchant was created, in [RFC
+            3339](https://datatracker.ietf.org/doc/html/rfc3339) format (UTC).
         updated_at:
           type: string
           format: date-time
+          description: >-
+            When this merchant was last updated, in [RFC
+            3339](https://datatracker.ietf.org/doc/html/rfc3339) format (UTC).
         address:
           $ref: '#/components/schemas/Address'
         site_url:
           type: string
           format: uri
+          description: |-
+            The URL of the website, if this merchant is for an eCommerce site.
+
+            Min length: `8`
+            Max length: `8000`
         metadata:
           $ref: '#/components/schemas/Metadata'
         default_fee_plans:
@@ -36979,6 +39056,7 @@ paths:
                 merchant:
                   $ref: >-
                     #/components/schemas/MerchantsMerchantIdPatchRequestBodyContentApplicationJsonSchemaMerchant
+                  description: Details about the merchant to update.
               required:
                 - merchant
 components:
@@ -36998,16 +39076,44 @@ components:
       properties:
         address_line_1:
           type: string
+          description: >-
+            First line of the street address, typically including street number,
+            street name, and / or building name.
+
+
+            Min length: `1`
+
+            Max length: `1024`
         address_line_2:
           type: string
+          description: |-
+            Second line of the address, if any.
+
+            Min length: `1`
+            Max length: `1024`
         locality:
           type: string
+          description: |-
+            City or township where the entity is located.
+
+            Min length: `1`
+            Max length: `1024`
         country:
           $ref: '#/components/schemas/Country'
         postal_code:
           type: string
+          description: |-
+            ZIP or postal code.
+
+            Min length: `1`
+            Max length: `128`
         administrative_district_level_1:
           type: string
+          description: |-
+            State or province.
+
+            Min length: `1`
+            Max length: `1024`
       required:
         - country
     MerchantsMerchantIdPatchRequestBodyContentApplicationJsonSchemaMerchantStatus:
@@ -37024,15 +39130,31 @@ components:
       properties:
         in_app_fee_plan_id:
           type: string
+          description: >-
+            The fee plan ID identifying the fee plan that will be used for all
+            in-app payments.
         in_person_fee_plan_id:
           type: string
+          description: >-
+            The fee plan ID identifying the fee plan that will be used for all
+            in-person payments.
         online_fee_plan_id:
           type: string
+          description: >-
+            The fee plan ID identifying the fee plan that will be used for all
+            online payments.
     MerchantsMerchantIdPatchRequestBodyContentApplicationJsonSchemaMerchant:
       type: object
       properties:
         brand_id:
           type: string
+          description: |-
+            ID of the brand associated with this merchant.
+
+            *This field cannot be cleared.*
+
+            Min length: `1`
+            Max length: `128`
         category:
           $ref: '#/components/schemas/Category'
         country:
@@ -37041,8 +39163,33 @@ components:
           $ref: '#/components/schemas/Currency'
         name:
           type: string
+          description: >-
+            The name of the individual or business entity associated with the
+            merchant.
+
+
+            *This field cannot be cleared.*
+
+
+            Min length: `1`
+
+            Max length: `1024`
         reference_id:
           type: string
+          description: >-
+            A user-defined identifier for this merchant, typically used to
+            associate the merchant with a record in an external system.
+            Independent from the [brand
+            reference_id](https://developers.cash.app/docs/api/network-api/operations/create-a-brand#request-body).
+
+
+            *This field cannot be cleared, and must be unique across all
+            merchants.*
+
+
+            Min length: `1`
+
+            Max length: `1024`
         address:
           $ref: '#/components/schemas/Address'
         site_url:
@@ -37050,9 +39197,29 @@ components:
             - string
             - 'null'
           format: uri
+          description: |-
+            The URL of the website, if this merchant is an eCommerce site.
+
+            Min length: `8`
+            Max length: `8000`
         status:
           $ref: >-
             #/components/schemas/MerchantsMerchantIdPatchRequestBodyContentApplicationJsonSchemaMerchantStatus
+          description: >-
+            Whether or not this merchant can be used to accept payments or issue
+            refunds.
+
+
+            **Note:** when the value is `PENDING`, `COMPLIANCE_DISABLED`, or
+            `RISK_DISABLED`, the status of the merchant cannot be changed.
+
+
+            Current values:
+
+            - `ACTIVE`: The merchant can accept payments and issue refunds.
+
+            - `CLIENT_DISABLED`: The merchant has been disabled by the API
+            client, and may be re-enabled by the API client at any time.
         metadata:
           $ref: '#/components/schemas/Metadata'
         default_fee_plans:
@@ -37070,10 +39237,28 @@ components:
       properties:
         id:
           type: string
+          description: |-
+            A unique identifier for the merchant issued by Cash App.
+
+            Min length: `1`
+            Max length: `128`
         brand_id:
           type: string
+          description: |-
+            ID of the brand associated with this merchant.
+
+            Min length: `1`
+            Max length: `128`
         name:
           type: string
+          description: >-
+            The name of the individual or business entity associated with the
+            merchant.
+
+
+            Min length: `1`
+
+            Max length: `1024`
         country:
           $ref: '#/components/schemas/Country'
         currency:
@@ -37082,19 +39267,62 @@ components:
           $ref: '#/components/schemas/Category'
         reference_id:
           type: string
+          description: >-
+            A user-defined identifier for this merchant, typically used to
+            associate the merchant with a record in an external system.
+            Independent from the [brand
+            reference_id](https://developers.cash.app/docs/api/network-api/operations/create-a-brand#request-body).
+
+
+            Min length: `1`
+
+            Max length: `1024`
         status:
           $ref: '#/components/schemas/MerchantStatus'
+          description: >-
+            Whether or not this merchant can be used to accept payments or issue
+            refunds.
+
+
+            - `ACTIVE`: The merchant can accept payments or issue refunds.
+
+            - `RISK_DISABLED`: Cash App Pay blocked this merchant due to them
+            being high risk. There is no way to re-enable them programmaticaly.
+
+            - `COMPLIANCE_DISABLED`: Cash App Pay blocked this merchant due to
+            them not following the terms of service, Program Rules, or local
+            laws. There is no way to re-enable them programmaticaly.
+
+            - `CLIENT_DISABLED`: The client called the
+            [UpdateMerchant](Network-API.v1.yaml/paths/~1merchants~1{merchant_id}/patch)
+            endpoint and disabled this merchant, preventing it from being able
+            to handle payments or refunds. To reverse this, call the endpoint
+            again with the status field set to `ACTIVE`.
+
+            - `PENDING`: The merchant is not ready to accept payments or refunds
+            yet; the registration process is still running.
         created_at:
           type: string
           format: date-time
+          description: >-
+            When this merchant was created, in [RFC
+            3339](https://datatracker.ietf.org/doc/html/rfc3339) format (UTC).
         updated_at:
           type: string
           format: date-time
+          description: >-
+            When this merchant was last updated, in [RFC
+            3339](https://datatracker.ietf.org/doc/html/rfc3339) format (UTC).
         address:
           $ref: '#/components/schemas/Address'
         site_url:
           type: string
           format: uri
+          description: |-
+            The URL of the website, if this merchant is for an eCommerce site.
+
+            Min length: `8`
+            Max length: `8000`
         metadata:
           $ref: '#/components/schemas/Metadata'
         default_fee_plans:
@@ -37710,14 +39938,28 @@ webhooks:
               properties:
                 type:
                   type: string
+                  description: >-
+                    The type of event that occurred. `merchant.status.updated`
+                    for this event.
                 event_id:
                   type: string
+                  description: A unique identifier provided by Cash App for the event.
                 created_at:
                   type: string
                   format: date-time
+                  description: >-
+                    When this event occured in [RFC
+                    3339](https://datatracker.ietf.org/doc/html/rfc3339) format
+                    (UTC).
+
+
+                    The time that the event is delivered may be significantly
+                    later than this timestamp due to webhooks being retried for
+                    up to 72 hours.
                 data:
                   $ref: >-
                     #/components/schemas/WebhooksMerchantStatusUpdatedPayloadContentApplicationJsonSchemaData
+                  description: Data about the merchant that had a status change.
               required:
                 - type
                 - event_id
@@ -37748,16 +39990,44 @@ components:
       properties:
         address_line_1:
           type: string
+          description: >-
+            First line of the street address, typically including street number,
+            street name, and / or building name.
+
+
+            Min length: `1`
+
+            Max length: `1024`
         address_line_2:
           type: string
+          description: |-
+            Second line of the address, if any.
+
+            Min length: `1`
+            Max length: `1024`
         locality:
           type: string
+          description: |-
+            City or township where the entity is located.
+
+            Min length: `1`
+            Max length: `1024`
         country:
           $ref: '#/components/schemas/Country'
         postal_code:
           type: string
+          description: |-
+            ZIP or postal code.
+
+            Min length: `1`
+            Max length: `128`
         administrative_district_level_1:
           type: string
+          description: |-
+            State or province.
+
+            Min length: `1`
+            Max length: `1024`
       required:
         - country
     Metadata:
@@ -37769,19 +40039,46 @@ components:
       properties:
         in_app_fee_plan_id:
           type: string
+          description: >-
+            The fee plan ID identifying the fee plan that will be used for all
+            in-app payments.
         in_person_fee_plan_id:
           type: string
+          description: >-
+            The fee plan ID identifying the fee plan that will be used for all
+            in-person payments.
         online_fee_plan_id:
           type: string
+          description: >-
+            The fee plan ID identifying the fee plan that will be used for all
+            online payments.
     Merchant:
       type: object
       properties:
         id:
           type: string
+          description: |-
+            A unique identifier for the merchant issued by Cash App.
+
+            Min length: `1`
+            Max length: `128`
         brand_id:
           type: string
+          description: |-
+            ID of the brand associated with this merchant.
+
+            Min length: `1`
+            Max length: `128`
         name:
           type: string
+          description: >-
+            The name of the individual or business entity associated with the
+            merchant.
+
+
+            Min length: `1`
+
+            Max length: `1024`
         country:
           $ref: '#/components/schemas/Country'
         currency:
@@ -37790,19 +40087,62 @@ components:
           $ref: '#/components/schemas/Category'
         reference_id:
           type: string
+          description: >-
+            A user-defined identifier for this merchant, typically used to
+            associate the merchant with a record in an external system.
+            Independent from the [brand
+            reference_id](https://developers.cash.app/docs/api/network-api/operations/create-a-brand#request-body).
+
+
+            Min length: `1`
+
+            Max length: `1024`
         status:
           $ref: '#/components/schemas/MerchantStatus'
+          description: >-
+            Whether or not this merchant can be used to accept payments or issue
+            refunds.
+
+
+            - `ACTIVE`: The merchant can accept payments or issue refunds.
+
+            - `RISK_DISABLED`: Cash App Pay blocked this merchant due to them
+            being high risk. There is no way to re-enable them programmaticaly.
+
+            - `COMPLIANCE_DISABLED`: Cash App Pay blocked this merchant due to
+            them not following the terms of service, Program Rules, or local
+            laws. There is no way to re-enable them programmaticaly.
+
+            - `CLIENT_DISABLED`: The client called the
+            [UpdateMerchant](Network-API.v1.yaml/paths/~1merchants~1{merchant_id}/patch)
+            endpoint and disabled this merchant, preventing it from being able
+            to handle payments or refunds. To reverse this, call the endpoint
+            again with the status field set to `ACTIVE`.
+
+            - `PENDING`: The merchant is not ready to accept payments or refunds
+            yet; the registration process is still running.
         created_at:
           type: string
           format: date-time
+          description: >-
+            When this merchant was created, in [RFC
+            3339](https://datatracker.ietf.org/doc/html/rfc3339) format (UTC).
         updated_at:
           type: string
           format: date-time
+          description: >-
+            When this merchant was last updated, in [RFC
+            3339](https://datatracker.ietf.org/doc/html/rfc3339) format (UTC).
         address:
           $ref: '#/components/schemas/Address'
         site_url:
           type: string
           format: uri
+          description: |-
+            The URL of the website, if this merchant is for an eCommerce site.
+
+            Min length: `8`
+            Max length: `8000`
         metadata:
           $ref: '#/components/schemas/Metadata'
         default_fee_plans:
@@ -37831,11 +40171,18 @@ components:
       properties:
         id:
           type: string
+          description: A unique identifier provided by Cash App for the merchant.
         object:
           $ref: >-
             #/components/schemas/WebhooksMerchantStatusUpdatedPayloadContentApplicationJsonSchemaDataObject
+          description: >-
+            A snapshot of the merchant data immediately after the merchant's
+            status changed.
         type:
           type: string
+          description: >-
+            The resource type contained in the `object` field. For this event,
+            it is `merchant`.
       required:
         - id
         - object
@@ -37909,6 +40256,7 @@ paths:
           required: false
           schema:
             type: integer
+            default: 50
         - name: cashtag
           in: query
           description: Filters results to only include customers with a matching Cashtag.
@@ -37952,10 +40300,30 @@ components:
       properties:
         id:
           type: string
+          description: |-
+            Unique identifier for this customer issued by Cash App.
+
+            Min length: `1`
+            Max length: `128`
         cashtag:
           type: string
+          description: >-
+            Public identifier for the customer on Cash App. [Learn
+            more](https://cash.app/help/us/en-us/3123-cashtags).
+
+
+            Min length: `1`
+
+            Max length: `1024`
         reference_id:
           type: string
+          description: >-
+            A user-defined identifier for this customer, typically used to
+            associate the customer with a record in an external system. This
+            value can be provided via the
+            `CustomerRequest.customer_metadata.reference_id` attribute. Upon
+            approval of the CustomerRequest, a corresponding customer resource
+            is created with the `reference_id` attribute.
       required:
         - id
         - cashtag
@@ -37966,8 +40334,12 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Customer'
+          description: List of customers matching the given query parameters.
         cursor:
           type: string
+          description: >-
+            The pagination cursor to be used in a subsequent request. If empty,
+            this is the final response.
       required:
         - customers
 
@@ -38203,10 +40575,30 @@ components:
       properties:
         id:
           type: string
+          description: |-
+            Unique identifier for this customer issued by Cash App.
+
+            Min length: `1`
+            Max length: `128`
         cashtag:
           type: string
+          description: >-
+            Public identifier for the customer on Cash App. [Learn
+            more](https://cash.app/help/us/en-us/3123-cashtags).
+
+
+            Min length: `1`
+
+            Max length: `1024`
         reference_id:
           type: string
+          description: >-
+            A user-defined identifier for this customer, typically used to
+            associate the customer with a record in an external system. This
+            value can be provided via the
+            `CustomerRequest.customer_metadata.reference_id` attribute. Upon
+            approval of the CustomerRequest, a corresponding customer resource
+            is created with the `reference_id` attribute.
       required:
         - id
         - cashtag
@@ -38467,12 +40859,38 @@ components:
       properties:
         amount:
           type: integer
+          description: >-
+            Amount to charge the customer, in the lowest unit of the associated
+            currency.
+
+
+            Min value: `1`
         currency:
           $ref: '#/components/schemas/Currency'
         scope_id:
           type: string
+          description: >-
+            ID of the client, brand, or merchant that will charge the customer.
+
+
+            If a client ID is passed, the grant from this action can be used to
+            create a payment for any merchant owned by the client.
+
+
+            If a brand ID is passed, the grant from this action can be used to
+            create a payment for any merchant that has a matching brand ID.
+
+
+            If a merchant ID is passed, the grant from this action can be used
+            to create a payment for the merchant with a matching ID.
+
+
+            Min length: `1`
+
+            Max length: `128`
         type:
           $ref: '#/components/schemas/OneTimePaymentActionType'
+          description: The type of the action (`ONE_TIME_PAYMENT`).
       required:
         - scope_id
         - type
@@ -38480,15 +40898,38 @@ components:
       type: string
       enum:
         - value: ON_FILE_PAYMENT
+      default: ON_FILE_PAYMENT
     OnFilePaymentAction:
       type: object
       properties:
         scope_id:
           type: string
+          description: >-
+            ID of the client or brand that will charge customers.
+
+
+            If a client ID is passed, the grant from this action can be used to
+            create a payment for any merchant owned by the client.
+
+
+            If a brand ID is passed, the grant from this action can be used to
+            create a payment for any merchant that has a matching brand ID.
+
+
+            Merchant IDs may *not* be passed.
+
+
+            Min length: `1`
+
+            Max length: `128`
         type:
           $ref: '#/components/schemas/OnFilePaymentActionType'
+          description: The type of the action (`ON_FILE_PAYMENT`).
         account_reference_id:
           type: string
+          description: >-
+            Identifier of the account or customer associated to the on file
+            action.
       required:
         - scope_id
         - type
@@ -38501,10 +40942,29 @@ components:
       properties:
         type:
           $ref: '#/components/schemas/OnFileDepositActionType'
+          description: The type of the action (`ON_FILE_DEPOSIT`).
         scope_id:
           type: string
+          description: >-
+            ID of the client or brand that indicates the set of merchants that
+            will deposit to customers.
+
+
+            If a client ID is passed, the grant from this action can be used to
+            create a deposit for any merchant owned by the client.
+
+
+            If a brand ID is passed, the grant from this action can be used to
+            create a deposit for any merchant that has a matching brand ID.
+
+            Min length: `1`
+
+            Max length: `128`
         account_reference_id:
           type: string
+          description: >-
+            Identifier of the account or customer associated to the on file
+            action.
       required:
         - type
         - scope_id
@@ -38518,6 +40978,7 @@ components:
       properties:
         type:
           $ref: '#/components/schemas/LinkAccountActionType'
+          description: The type of the action (`LINK_ACCOUNT`).
       required:
         - type
     Action:
@@ -38549,27 +41010,79 @@ components:
       properties:
         id:
           type: string
+          description: |-
+            Unique identifier for this grant issued by Cash App.
+
+            Min length: `1`
+            Max length: `256`
         customer_id:
           type: string
+          description: |-
+            ID of the customer that approved this grant.
+
+            Min length: `1`
+            Max length: `128`
         request_id:
           type: string
+          description: >-
+            A unique identifier issued by Cash App for the customer request that
+            resulted in the creation of this grant.
+
+
+            Min length: `1`
+
+            Max length: `128`
         action:
           $ref: '#/components/schemas/Action'
         status:
           $ref: '#/components/schemas/GrantStatus'
+          description: >-
+            Describes whether or not this grant can be used to perform the
+            action associated with it.
+
+
+            If `ACTIVE`, it can be used to perform the action.
+
+
+            If `EXPIRED`, it may no longer be used to perform the action due to
+            the current time being past the "expires_at" time.
+
+
+            If `CONSUMED`, it was already redeemed to perform the action and
+            cannot be used again.
+
+
+            If `REVOKED`, the customer or merchant explicitly unauthorized the
+            grant, preventing it from being used to perform the action.
         type:
           $ref: '#/components/schemas/GrantType'
+          description: >-
+            Describes whether this grant can be only be used once (`ONE_TIME`)
+            or repeatedly (`EXTENDED`).
         channel:
           $ref: '#/components/schemas/Channel'
         created_at:
           type: string
           format: date-time
+          description: >-
+            When this grant was created, in [RFC
+            3339](https://datatracker.ietf.org/doc/html/rfc3339) format (UTC).
         updated_at:
           type: string
           format: date-time
+          description: >-
+            When this grant was last updated, in [RFC
+            3339](https://datatracker.ietf.org/doc/html/rfc3339) format (UTC).
         expires_at:
           type: string
           format: date-time
+          description: >-
+            If present, indicates when the grant's status will become `EXPIRED`,
+            preventing a client from using it to create payments or refunds.
+
+
+            The timestamp is in the [RFC
+            3339](https://datatracker.ietf.org/doc/html/rfc3339) format (UTC).
       required:
         - id
         - customer_id
@@ -38801,6 +41314,7 @@ paths:
           required: false
           schema:
             type: integer
+            default: 50
         - name: Accept
           in: header
           required: true
@@ -38850,12 +41364,38 @@ components:
       properties:
         amount:
           type: integer
+          description: >-
+            Amount to charge the customer, in the lowest unit of the associated
+            currency.
+
+
+            Min value: `1`
         currency:
           $ref: '#/components/schemas/Currency'
         scope_id:
           type: string
+          description: >-
+            ID of the client, brand, or merchant that will charge the customer.
+
+
+            If a client ID is passed, the grant from this action can be used to
+            create a payment for any merchant owned by the client.
+
+
+            If a brand ID is passed, the grant from this action can be used to
+            create a payment for any merchant that has a matching brand ID.
+
+
+            If a merchant ID is passed, the grant from this action can be used
+            to create a payment for the merchant with a matching ID.
+
+
+            Min length: `1`
+
+            Max length: `128`
         type:
           $ref: '#/components/schemas/OneTimePaymentActionType'
+          description: The type of the action (`ONE_TIME_PAYMENT`).
       required:
         - scope_id
         - type
@@ -38863,15 +41403,38 @@ components:
       type: string
       enum:
         - value: ON_FILE_PAYMENT
+      default: ON_FILE_PAYMENT
     OnFilePaymentAction:
       type: object
       properties:
         scope_id:
           type: string
+          description: >-
+            ID of the client or brand that will charge customers.
+
+
+            If a client ID is passed, the grant from this action can be used to
+            create a payment for any merchant owned by the client.
+
+
+            If a brand ID is passed, the grant from this action can be used to
+            create a payment for any merchant that has a matching brand ID.
+
+
+            Merchant IDs may *not* be passed.
+
+
+            Min length: `1`
+
+            Max length: `128`
         type:
           $ref: '#/components/schemas/OnFilePaymentActionType'
+          description: The type of the action (`ON_FILE_PAYMENT`).
         account_reference_id:
           type: string
+          description: >-
+            Identifier of the account or customer associated to the on file
+            action.
       required:
         - scope_id
         - type
@@ -38884,10 +41447,29 @@ components:
       properties:
         type:
           $ref: '#/components/schemas/OnFileDepositActionType'
+          description: The type of the action (`ON_FILE_DEPOSIT`).
         scope_id:
           type: string
+          description: >-
+            ID of the client or brand that indicates the set of merchants that
+            will deposit to customers.
+
+
+            If a client ID is passed, the grant from this action can be used to
+            create a deposit for any merchant owned by the client.
+
+
+            If a brand ID is passed, the grant from this action can be used to
+            create a deposit for any merchant that has a matching brand ID.
+
+            Min length: `1`
+
+            Max length: `128`
         account_reference_id:
           type: string
+          description: >-
+            Identifier of the account or customer associated to the on file
+            action.
       required:
         - type
         - scope_id
@@ -38901,6 +41483,7 @@ components:
       properties:
         type:
           $ref: '#/components/schemas/LinkAccountActionType'
+          description: The type of the action (`LINK_ACCOUNT`).
       required:
         - type
     Action:
@@ -38932,27 +41515,79 @@ components:
       properties:
         id:
           type: string
+          description: |-
+            Unique identifier for this grant issued by Cash App.
+
+            Min length: `1`
+            Max length: `256`
         customer_id:
           type: string
+          description: |-
+            ID of the customer that approved this grant.
+
+            Min length: `1`
+            Max length: `128`
         request_id:
           type: string
+          description: >-
+            A unique identifier issued by Cash App for the customer request that
+            resulted in the creation of this grant.
+
+
+            Min length: `1`
+
+            Max length: `128`
         action:
           $ref: '#/components/schemas/Action'
         status:
           $ref: '#/components/schemas/GrantStatus'
+          description: >-
+            Describes whether or not this grant can be used to perform the
+            action associated with it.
+
+
+            If `ACTIVE`, it can be used to perform the action.
+
+
+            If `EXPIRED`, it may no longer be used to perform the action due to
+            the current time being past the "expires_at" time.
+
+
+            If `CONSUMED`, it was already redeemed to perform the action and
+            cannot be used again.
+
+
+            If `REVOKED`, the customer or merchant explicitly unauthorized the
+            grant, preventing it from being used to perform the action.
         type:
           $ref: '#/components/schemas/GrantType'
+          description: >-
+            Describes whether this grant can be only be used once (`ONE_TIME`)
+            or repeatedly (`EXTENDED`).
         channel:
           $ref: '#/components/schemas/Channel'
         created_at:
           type: string
           format: date-time
+          description: >-
+            When this grant was created, in [RFC
+            3339](https://datatracker.ietf.org/doc/html/rfc3339) format (UTC).
         updated_at:
           type: string
           format: date-time
+          description: >-
+            When this grant was last updated, in [RFC
+            3339](https://datatracker.ietf.org/doc/html/rfc3339) format (UTC).
         expires_at:
           type: string
           format: date-time
+          description: >-
+            If present, indicates when the grant's status will become `EXPIRED`,
+            preventing a client from using it to create payments or refunds.
+
+
+            The timestamp is in the [RFC
+            3339](https://datatracker.ietf.org/doc/html/rfc3339) format (UTC).
       required:
         - id
         - customer_id
@@ -38970,8 +41605,12 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Grant'
+          description: List of customer grants matching the given query parameters
         cursor:
           type: string
+          description: >-
+            The pagination cursor to be used in a subsequent request. If empty,
+            this is the final response.
       required:
         - grants
 
@@ -39138,7 +41777,8 @@ POST https://api.cash.app/network/v1/customers/{customer_id}/grants/{grant_id}/r
 
 Revokes a customer grant, rendering it unusable. Other endpoints will no longer be able to use the grant to perform its associated action.
 
-<Note> You cannot un-revoke a grant. Use with caution.
+<Note> 
+You cannot un-revoke a grant. Use with caution.
 </Note>
 
 **This endpoint is not rate limited.**
@@ -39164,7 +41804,9 @@ paths:
         longer be able to use the grant to perform its associated action.
 
 
-        <Note> You cannot un-revoke a grant. Use with caution.
+        <Note> 
+
+        You cannot un-revoke a grant. Use with caution.
 
         </Note>
 
@@ -39235,12 +41877,38 @@ components:
       properties:
         amount:
           type: integer
+          description: >-
+            Amount to charge the customer, in the lowest unit of the associated
+            currency.
+
+
+            Min value: `1`
         currency:
           $ref: '#/components/schemas/Currency'
         scope_id:
           type: string
+          description: >-
+            ID of the client, brand, or merchant that will charge the customer.
+
+
+            If a client ID is passed, the grant from this action can be used to
+            create a payment for any merchant owned by the client.
+
+
+            If a brand ID is passed, the grant from this action can be used to
+            create a payment for any merchant that has a matching brand ID.
+
+
+            If a merchant ID is passed, the grant from this action can be used
+            to create a payment for the merchant with a matching ID.
+
+
+            Min length: `1`
+
+            Max length: `128`
         type:
           $ref: '#/components/schemas/OneTimePaymentActionType'
+          description: The type of the action (`ONE_TIME_PAYMENT`).
       required:
         - scope_id
         - type
@@ -39248,15 +41916,38 @@ components:
       type: string
       enum:
         - value: ON_FILE_PAYMENT
+      default: ON_FILE_PAYMENT
     OnFilePaymentAction:
       type: object
       properties:
         scope_id:
           type: string
+          description: >-
+            ID of the client or brand that will charge customers.
+
+
+            If a client ID is passed, the grant from this action can be used to
+            create a payment for any merchant owned by the client.
+
+
+            If a brand ID is passed, the grant from this action can be used to
+            create a payment for any merchant that has a matching brand ID.
+
+
+            Merchant IDs may *not* be passed.
+
+
+            Min length: `1`
+
+            Max length: `128`
         type:
           $ref: '#/components/schemas/OnFilePaymentActionType'
+          description: The type of the action (`ON_FILE_PAYMENT`).
         account_reference_id:
           type: string
+          description: >-
+            Identifier of the account or customer associated to the on file
+            action.
       required:
         - scope_id
         - type
@@ -39269,10 +41960,29 @@ components:
       properties:
         type:
           $ref: '#/components/schemas/OnFileDepositActionType'
+          description: The type of the action (`ON_FILE_DEPOSIT`).
         scope_id:
           type: string
+          description: >-
+            ID of the client or brand that indicates the set of merchants that
+            will deposit to customers.
+
+
+            If a client ID is passed, the grant from this action can be used to
+            create a deposit for any merchant owned by the client.
+
+
+            If a brand ID is passed, the grant from this action can be used to
+            create a deposit for any merchant that has a matching brand ID.
+
+            Min length: `1`
+
+            Max length: `128`
         account_reference_id:
           type: string
+          description: >-
+            Identifier of the account or customer associated to the on file
+            action.
       required:
         - type
         - scope_id
@@ -39286,6 +41996,7 @@ components:
       properties:
         type:
           $ref: '#/components/schemas/LinkAccountActionType'
+          description: The type of the action (`LINK_ACCOUNT`).
       required:
         - type
     Action:
@@ -39317,27 +42028,79 @@ components:
       properties:
         id:
           type: string
+          description: |-
+            Unique identifier for this grant issued by Cash App.
+
+            Min length: `1`
+            Max length: `256`
         customer_id:
           type: string
+          description: |-
+            ID of the customer that approved this grant.
+
+            Min length: `1`
+            Max length: `128`
         request_id:
           type: string
+          description: >-
+            A unique identifier issued by Cash App for the customer request that
+            resulted in the creation of this grant.
+
+
+            Min length: `1`
+
+            Max length: `128`
         action:
           $ref: '#/components/schemas/Action'
         status:
           $ref: '#/components/schemas/GrantStatus'
+          description: >-
+            Describes whether or not this grant can be used to perform the
+            action associated with it.
+
+
+            If `ACTIVE`, it can be used to perform the action.
+
+
+            If `EXPIRED`, it may no longer be used to perform the action due to
+            the current time being past the "expires_at" time.
+
+
+            If `CONSUMED`, it was already redeemed to perform the action and
+            cannot be used again.
+
+
+            If `REVOKED`, the customer or merchant explicitly unauthorized the
+            grant, preventing it from being used to perform the action.
         type:
           $ref: '#/components/schemas/GrantType'
+          description: >-
+            Describes whether this grant can be only be used once (`ONE_TIME`)
+            or repeatedly (`EXTENDED`).
         channel:
           $ref: '#/components/schemas/Channel'
         created_at:
           type: string
           format: date-time
+          description: >-
+            When this grant was created, in [RFC
+            3339](https://datatracker.ietf.org/doc/html/rfc3339) format (UTC).
         updated_at:
           type: string
           format: date-time
+          description: >-
+            When this grant was last updated, in [RFC
+            3339](https://datatracker.ietf.org/doc/html/rfc3339) format (UTC).
         expires_at:
           type: string
           format: date-time
+          description: >-
+            If present, indicates when the grant's status will become `EXPIRED`,
+            preventing a client from using it to create payments or refunds.
+
+
+            The timestamp is in the [RFC
+            3339](https://datatracker.ietf.org/doc/html/rfc3339) format (UTC).
       required:
         - id
         - customer_id
@@ -39590,14 +42353,28 @@ webhooks:
               properties:
                 type:
                   type: string
+                  description: >-
+                    The type of event that occurred. `grant.created` for this
+                    event.
                 event_id:
                   type: string
+                  description: A unique identifier provided by Cash App for the event.
                 created_at:
                   type: string
                   format: date-time
+                  description: >-
+                    When this event occured in [RFC
+                    3339](https://datatracker.ietf.org/doc/html/rfc3339) format
+                    (UTC).
+
+
+                    The time that the event is delivered may be significantly
+                    later than this timestamp due to webhooks being retried for
+                    up to 72 hours.
                 data:
                   $ref: >-
                     #/components/schemas/WebhooksGrantCreatedPayloadContentApplicationJsonSchemaData
+                  description: Data about the grant that was created.
               required:
                 - type
                 - event_id
@@ -39618,12 +42395,38 @@ components:
       properties:
         amount:
           type: integer
+          description: >-
+            Amount to charge the customer, in the lowest unit of the associated
+            currency.
+
+
+            Min value: `1`
         currency:
           $ref: '#/components/schemas/Currency'
         scope_id:
           type: string
+          description: >-
+            ID of the client, brand, or merchant that will charge the customer.
+
+
+            If a client ID is passed, the grant from this action can be used to
+            create a payment for any merchant owned by the client.
+
+
+            If a brand ID is passed, the grant from this action can be used to
+            create a payment for any merchant that has a matching brand ID.
+
+
+            If a merchant ID is passed, the grant from this action can be used
+            to create a payment for the merchant with a matching ID.
+
+
+            Min length: `1`
+
+            Max length: `128`
         type:
           $ref: '#/components/schemas/OneTimePaymentActionType'
+          description: The type of the action (`ONE_TIME_PAYMENT`).
       required:
         - scope_id
         - type
@@ -39631,15 +42434,38 @@ components:
       type: string
       enum:
         - value: ON_FILE_PAYMENT
+      default: ON_FILE_PAYMENT
     OnFilePaymentAction:
       type: object
       properties:
         scope_id:
           type: string
+          description: >-
+            ID of the client or brand that will charge customers.
+
+
+            If a client ID is passed, the grant from this action can be used to
+            create a payment for any merchant owned by the client.
+
+
+            If a brand ID is passed, the grant from this action can be used to
+            create a payment for any merchant that has a matching brand ID.
+
+
+            Merchant IDs may *not* be passed.
+
+
+            Min length: `1`
+
+            Max length: `128`
         type:
           $ref: '#/components/schemas/OnFilePaymentActionType'
+          description: The type of the action (`ON_FILE_PAYMENT`).
         account_reference_id:
           type: string
+          description: >-
+            Identifier of the account or customer associated to the on file
+            action.
       required:
         - scope_id
         - type
@@ -39652,10 +42478,29 @@ components:
       properties:
         type:
           $ref: '#/components/schemas/OnFileDepositActionType'
+          description: The type of the action (`ON_FILE_DEPOSIT`).
         scope_id:
           type: string
+          description: >-
+            ID of the client or brand that indicates the set of merchants that
+            will deposit to customers.
+
+
+            If a client ID is passed, the grant from this action can be used to
+            create a deposit for any merchant owned by the client.
+
+
+            If a brand ID is passed, the grant from this action can be used to
+            create a deposit for any merchant that has a matching brand ID.
+
+            Min length: `1`
+
+            Max length: `128`
         account_reference_id:
           type: string
+          description: >-
+            Identifier of the account or customer associated to the on file
+            action.
       required:
         - type
         - scope_id
@@ -39669,6 +42514,7 @@ components:
       properties:
         type:
           $ref: '#/components/schemas/LinkAccountActionType'
+          description: The type of the action (`LINK_ACCOUNT`).
       required:
         - type
     Action:
@@ -39700,27 +42546,79 @@ components:
       properties:
         id:
           type: string
+          description: |-
+            Unique identifier for this grant issued by Cash App.
+
+            Min length: `1`
+            Max length: `256`
         customer_id:
           type: string
+          description: |-
+            ID of the customer that approved this grant.
+
+            Min length: `1`
+            Max length: `128`
         request_id:
           type: string
+          description: >-
+            A unique identifier issued by Cash App for the customer request that
+            resulted in the creation of this grant.
+
+
+            Min length: `1`
+
+            Max length: `128`
         action:
           $ref: '#/components/schemas/Action'
         status:
           $ref: '#/components/schemas/GrantStatus'
+          description: >-
+            Describes whether or not this grant can be used to perform the
+            action associated with it.
+
+
+            If `ACTIVE`, it can be used to perform the action.
+
+
+            If `EXPIRED`, it may no longer be used to perform the action due to
+            the current time being past the "expires_at" time.
+
+
+            If `CONSUMED`, it was already redeemed to perform the action and
+            cannot be used again.
+
+
+            If `REVOKED`, the customer or merchant explicitly unauthorized the
+            grant, preventing it from being used to perform the action.
         type:
           $ref: '#/components/schemas/GrantType'
+          description: >-
+            Describes whether this grant can be only be used once (`ONE_TIME`)
+            or repeatedly (`EXTENDED`).
         channel:
           $ref: '#/components/schemas/Channel'
         created_at:
           type: string
           format: date-time
+          description: >-
+            When this grant was created, in [RFC
+            3339](https://datatracker.ietf.org/doc/html/rfc3339) format (UTC).
         updated_at:
           type: string
           format: date-time
+          description: >-
+            When this grant was last updated, in [RFC
+            3339](https://datatracker.ietf.org/doc/html/rfc3339) format (UTC).
         expires_at:
           type: string
           format: date-time
+          description: >-
+            If present, indicates when the grant's status will become `EXPIRED`,
+            preventing a client from using it to create payments or refunds.
+
+
+            The timestamp is in the [RFC
+            3339](https://datatracker.ietf.org/doc/html/rfc3339) format (UTC).
       required:
         - id
         - customer_id
@@ -39743,11 +42641,16 @@ components:
       properties:
         id:
           type: string
+          description: A unique identifier provided by Cash App for the grant.
         object:
           $ref: >-
             #/components/schemas/WebhooksGrantCreatedPayloadContentApplicationJsonSchemaDataObject
+          description: A snapshot of the grant immediately after the grant was created.
         type:
           type: string
+          description: >-
+            The resource type contained in the `object` field. For this event,
+            it is `grant`.
       required:
         - id
         - object
@@ -39821,14 +42724,28 @@ webhooks:
               properties:
                 type:
                   type: string
+                  description: >-
+                    The type of event that occurred. `grant.status.updated` for
+                    this event.
                 event_id:
                   type: string
+                  description: A unique identifier provided by Cash App for the event.
                 created_at:
                   type: string
                   format: date-time
+                  description: >-
+                    When this event occured in [RFC
+                    3339](https://datatracker.ietf.org/doc/html/rfc3339) format
+                    (UTC).
+
+
+                    The time that the event is delivered may be significantly
+                    later than this timestamp due to webhooks being retried for
+                    up to 72 hours.
                 data:
                   $ref: >-
                     #/components/schemas/WebhooksGrantStatusUpdatedPayloadContentApplicationJsonSchemaData
+                  description: Data about the grant that had a status change.
               required:
                 - type
                 - event_id
@@ -39849,12 +42766,38 @@ components:
       properties:
         amount:
           type: integer
+          description: >-
+            Amount to charge the customer, in the lowest unit of the associated
+            currency.
+
+
+            Min value: `1`
         currency:
           $ref: '#/components/schemas/Currency'
         scope_id:
           type: string
+          description: >-
+            ID of the client, brand, or merchant that will charge the customer.
+
+
+            If a client ID is passed, the grant from this action can be used to
+            create a payment for any merchant owned by the client.
+
+
+            If a brand ID is passed, the grant from this action can be used to
+            create a payment for any merchant that has a matching brand ID.
+
+
+            If a merchant ID is passed, the grant from this action can be used
+            to create a payment for the merchant with a matching ID.
+
+
+            Min length: `1`
+
+            Max length: `128`
         type:
           $ref: '#/components/schemas/OneTimePaymentActionType'
+          description: The type of the action (`ONE_TIME_PAYMENT`).
       required:
         - scope_id
         - type
@@ -39862,15 +42805,38 @@ components:
       type: string
       enum:
         - value: ON_FILE_PAYMENT
+      default: ON_FILE_PAYMENT
     OnFilePaymentAction:
       type: object
       properties:
         scope_id:
           type: string
+          description: >-
+            ID of the client or brand that will charge customers.
+
+
+            If a client ID is passed, the grant from this action can be used to
+            create a payment for any merchant owned by the client.
+
+
+            If a brand ID is passed, the grant from this action can be used to
+            create a payment for any merchant that has a matching brand ID.
+
+
+            Merchant IDs may *not* be passed.
+
+
+            Min length: `1`
+
+            Max length: `128`
         type:
           $ref: '#/components/schemas/OnFilePaymentActionType'
+          description: The type of the action (`ON_FILE_PAYMENT`).
         account_reference_id:
           type: string
+          description: >-
+            Identifier of the account or customer associated to the on file
+            action.
       required:
         - scope_id
         - type
@@ -39883,10 +42849,29 @@ components:
       properties:
         type:
           $ref: '#/components/schemas/OnFileDepositActionType'
+          description: The type of the action (`ON_FILE_DEPOSIT`).
         scope_id:
           type: string
+          description: >-
+            ID of the client or brand that indicates the set of merchants that
+            will deposit to customers.
+
+
+            If a client ID is passed, the grant from this action can be used to
+            create a deposit for any merchant owned by the client.
+
+
+            If a brand ID is passed, the grant from this action can be used to
+            create a deposit for any merchant that has a matching brand ID.
+
+            Min length: `1`
+
+            Max length: `128`
         account_reference_id:
           type: string
+          description: >-
+            Identifier of the account or customer associated to the on file
+            action.
       required:
         - type
         - scope_id
@@ -39900,6 +42885,7 @@ components:
       properties:
         type:
           $ref: '#/components/schemas/LinkAccountActionType'
+          description: The type of the action (`LINK_ACCOUNT`).
       required:
         - type
     Action:
@@ -39931,27 +42917,79 @@ components:
       properties:
         id:
           type: string
+          description: |-
+            Unique identifier for this grant issued by Cash App.
+
+            Min length: `1`
+            Max length: `256`
         customer_id:
           type: string
+          description: |-
+            ID of the customer that approved this grant.
+
+            Min length: `1`
+            Max length: `128`
         request_id:
           type: string
+          description: >-
+            A unique identifier issued by Cash App for the customer request that
+            resulted in the creation of this grant.
+
+
+            Min length: `1`
+
+            Max length: `128`
         action:
           $ref: '#/components/schemas/Action'
         status:
           $ref: '#/components/schemas/GrantStatus'
+          description: >-
+            Describes whether or not this grant can be used to perform the
+            action associated with it.
+
+
+            If `ACTIVE`, it can be used to perform the action.
+
+
+            If `EXPIRED`, it may no longer be used to perform the action due to
+            the current time being past the "expires_at" time.
+
+
+            If `CONSUMED`, it was already redeemed to perform the action and
+            cannot be used again.
+
+
+            If `REVOKED`, the customer or merchant explicitly unauthorized the
+            grant, preventing it from being used to perform the action.
         type:
           $ref: '#/components/schemas/GrantType'
+          description: >-
+            Describes whether this grant can be only be used once (`ONE_TIME`)
+            or repeatedly (`EXTENDED`).
         channel:
           $ref: '#/components/schemas/Channel'
         created_at:
           type: string
           format: date-time
+          description: >-
+            When this grant was created, in [RFC
+            3339](https://datatracker.ietf.org/doc/html/rfc3339) format (UTC).
         updated_at:
           type: string
           format: date-time
+          description: >-
+            When this grant was last updated, in [RFC
+            3339](https://datatracker.ietf.org/doc/html/rfc3339) format (UTC).
         expires_at:
           type: string
           format: date-time
+          description: >-
+            If present, indicates when the grant's status will become `EXPIRED`,
+            preventing a client from using it to create payments or refunds.
+
+
+            The timestamp is in the [RFC
+            3339](https://datatracker.ietf.org/doc/html/rfc3339) format (UTC).
       required:
         - id
         - customer_id
@@ -39974,11 +43012,18 @@ components:
       properties:
         id:
           type: string
+          description: A unique identifier provided by Cash App for the grant.
         object:
           $ref: >-
             #/components/schemas/WebhooksGrantStatusUpdatedPayloadContentApplicationJsonSchemaDataObject
+          description: >-
+            A snapshot of the grant immediately after the grant's status
+            changed.
         type:
           type: string
+          description: >-
+            The resource type contained in the `object` field. For this event,
+            it is `grant`.
       required:
         - id
         - object
@@ -40051,14 +43096,28 @@ webhooks:
               properties:
                 type:
                   type: string
+                  description: >-
+                    The type of event that occurred. `customer.created` for this
+                    event.
                 event_id:
                   type: string
+                  description: A unique identifier provided by Cash App for the event.
                 created_at:
                   type: string
                   format: date-time
+                  description: >-
+                    When this event occured in [RFC
+                    3339](https://datatracker.ietf.org/doc/html/rfc3339) format
+                    (UTC).
+
+
+                    The time that the event is delivered may be significantly
+                    later than this timestamp due to webhooks being retried for
+                    up to 72 hours.
                 data:
                   $ref: >-
                     #/components/schemas/WebhooksCustomerCreatedPayloadContentApplicationJsonSchemaData
+                  description: Data about the Customer that was created.
               required:
                 - type
                 - event_id
@@ -40071,10 +43130,30 @@ components:
       properties:
         id:
           type: string
+          description: |-
+            Unique identifier for this customer issued by Cash App.
+
+            Min length: `1`
+            Max length: `128`
         cashtag:
           type: string
+          description: >-
+            Public identifier for the customer on Cash App. [Learn
+            more](https://cash.app/help/us/en-us/3123-cashtags).
+
+
+            Min length: `1`
+
+            Max length: `1024`
         reference_id:
           type: string
+          description: >-
+            A user-defined identifier for this customer, typically used to
+            associate the customer with a record in an external system. This
+            value can be provided via the
+            `CustomerRequest.customer_metadata.reference_id` attribute. Upon
+            approval of the CustomerRequest, a corresponding customer resource
+            is created with the `reference_id` attribute.
       required:
         - id
         - cashtag
@@ -40090,11 +43169,18 @@ components:
       properties:
         id:
           type: string
+          description: A unique identifier provided by Cash App for the customer.
         object:
           $ref: >-
             #/components/schemas/WebhooksCustomerCreatedPayloadContentApplicationJsonSchemaDataObject
+          description: >-
+            A snapshot of the customer immediately after the customer was
+            created.
         type:
           type: string
+          description: >-
+            The resource type contained in the `object` field. For this event,
+            it is `customer`.
       required:
         - id
         - object
@@ -40172,14 +43258,28 @@ webhooks:
               properties:
                 type:
                   type: string
+                  description: >-
+                    The type of event that occurred. `customer.updated` for this
+                    event.
                 event_id:
                   type: string
+                  description: A unique identifier provided by Cash App for the event.
                 created_at:
                   type: string
                   format: date-time
+                  description: >-
+                    When this event occured in [RFC
+                    3339](https://datatracker.ietf.org/doc/html/rfc3339) format
+                    (UTC).
+
+
+                    The time that the event is delivered may be significantly
+                    later than this timestamp due to webhooks being retried for
+                    up to 72 hours.
                 data:
                   $ref: >-
                     #/components/schemas/WebhooksCustomerUpdatedPayloadContentApplicationJsonSchemaData
+                  description: Data about the Customer that was updated.
               required:
                 - type
                 - event_id
@@ -40192,10 +43292,30 @@ components:
       properties:
         id:
           type: string
+          description: |-
+            Unique identifier for this customer issued by Cash App.
+
+            Min length: `1`
+            Max length: `128`
         cashtag:
           type: string
+          description: >-
+            Public identifier for the customer on Cash App. [Learn
+            more](https://cash.app/help/us/en-us/3123-cashtags).
+
+
+            Min length: `1`
+
+            Max length: `1024`
         reference_id:
           type: string
+          description: >-
+            A user-defined identifier for this customer, typically used to
+            associate the customer with a record in an external system. This
+            value can be provided via the
+            `CustomerRequest.customer_metadata.reference_id` attribute. Upon
+            approval of the CustomerRequest, a corresponding customer resource
+            is created with the `reference_id` attribute.
       required:
         - id
         - cashtag
@@ -40211,11 +43331,18 @@ components:
       properties:
         id:
           type: string
+          description: A unique identifier provided by Cash App for the customer.
         object:
           $ref: >-
             #/components/schemas/WebhooksCustomerUpdatedPayloadContentApplicationJsonSchemaDataObject
+          description: >-
+            A snapshot of the customer immediately after the customer was
+            updated.
         type:
           type: string
+          description: >-
+            The resource type contained in the `object` field. For this event,
+            it is `customer`.
       required:
         - id
         - object
@@ -40286,14 +43413,28 @@ webhooks:
               properties:
                 type:
                   type: string
+                  description: >-
+                    The type of event that occurred. `customer.deleted` for this
+                    event.
                 event_id:
                   type: string
+                  description: A unique identifier provided by Cash App for the event.
                 created_at:
                   type: string
                   format: date-time
+                  description: >-
+                    When this event occured in [RFC
+                    3339](https://datatracker.ietf.org/doc/html/rfc3339) format
+                    (UTC).
+
+
+                    The time that the event is delivered may be significantly
+                    later than this timestamp due to webhooks being retried for
+                    up to 72 hours.
                 data:
                   $ref: >-
                     #/components/schemas/WebhooksCustomerDeletedPayloadContentApplicationJsonSchemaData
+                  description: Data about the Customer that was deleted.
               required:
                 - type
                 - event_id
@@ -40306,10 +43447,30 @@ components:
       properties:
         id:
           type: string
+          description: |-
+            Unique identifier for this customer issued by Cash App.
+
+            Min length: `1`
+            Max length: `128`
         cashtag:
           type: string
+          description: >-
+            Public identifier for the customer on Cash App. [Learn
+            more](https://cash.app/help/us/en-us/3123-cashtags).
+
+
+            Min length: `1`
+
+            Max length: `1024`
         reference_id:
           type: string
+          description: >-
+            A user-defined identifier for this customer, typically used to
+            associate the customer with a record in an external system. This
+            value can be provided via the
+            `CustomerRequest.customer_metadata.reference_id` attribute. Upon
+            approval of the CustomerRequest, a corresponding customer resource
+            is created with the `reference_id` attribute.
       required:
         - id
         - cashtag
@@ -40325,11 +43486,18 @@ components:
       properties:
         id:
           type: string
+          description: A unique identifier provided by Cash App for the customer.
         object:
           $ref: >-
             #/components/schemas/WebhooksCustomerDeletedPayloadContentApplicationJsonSchemaDataObject
+          description: >-
+            A snapshot of the customer immediately after the customer was
+            deleted.
         type:
           type: string
+          description: >-
+            The resource type contained in the `object` field. For this event,
+            it is `customer`.
       required:
         - id
         - object
@@ -40409,6 +43577,7 @@ paths:
           required: false
           schema:
             type: integer
+            default: 50
         - name: Accept
           in: header
           required: true
@@ -40466,6 +43635,11 @@ components:
       properties:
         actor:
           $ref: '#/components/schemas/PaymentEnrichmentsInitiationActor'
+          description: |-
+            The party who initiated the payment.
+
+            - `CUSTOMER`
+            - `MERCHANT`
       required:
         - actor
     PaymentEnrichmentsRestrictedCategoriesItems:
@@ -40479,14 +43653,47 @@ components:
       properties:
         initiation:
           $ref: '#/components/schemas/PaymentEnrichmentsInitiation'
+          description: If present, provides information about transaction initiation.
         recurring_series_id:
           type: string
+          description: >-
+            If present, indicates that this payment is part of a recurring
+            series of payments, such as a subscription.
+
+
+            The value should contain a unique identifier for the recurring
+            series that is constant across all of its payments, so it can be
+            used to group them together.
+
+
+            Min length: `1`
+
+            Max length: `1024`
         statement_descriptor:
           type: string
+          description: >-
+            If present, adds the descriptor as line item on to a customer's
+            payment receipt in their in-app Activity page.
+
+            The descriptor will be present under the header "On statement as".
+
+
+            Statement descriptor requirements vary by platform. If the input for
+            this field exceeds the character limit, it will be truncated to the
+            limit, then suffixed with an ellipsis (...).
+
+
+            Min length: `1`
+
+            Max length: `22`
         restricted_categories:
           type: array
           items:
             $ref: '#/components/schemas/PaymentEnrichmentsRestrictedCategoriesItems'
+          description: >-
+            If present, indicates that this payment is associated with one or
+            more restricted categories. Contact the Cash App Pay support team to
+            use this field.
     ErrorCategory:
       type: string
       enum:
@@ -40506,12 +43713,31 @@ components:
       properties:
         category:
           $ref: '#/components/schemas/ErrorCategory'
+          description: The high-level reason the error occurred
         code:
           type: string
+          description: >-
+            A unique identifier for the specific type of error that occurred.
+            See the Error Code Reference for more information.
+
+
+            Min length: `1`
         detail:
           type: string
+          description: >-
+            Human-readable description of why the error occurred and how to
+            resolve it.
+
+
+            Min length: `1`
         field:
           type: string
+          description: >-
+            The field in the request that caused the error, using array and
+            object dot notation.
+
+
+            Min length: `1`
       required:
         - category
         - code
@@ -40520,8 +43746,15 @@ components:
       properties:
         basis_points:
           type: integer
+          description: >-
+            The variable fee charged for processing the payment expressed as
+            1/100th of a percentage.
         fixed_amount:
           type: integer
+          description: >-
+            The amount charged for processing the payment, in the lowest
+            denomination of currency on the payment.
+             **Note: The currency for the fee is found on the fee plan.**
     AuthorizationStatus:
       type: string
       enum:
@@ -40532,27 +43765,62 @@ components:
       properties:
         id:
           type: string
+          description: |-
+            Unique identifier for this authorization issued by Cash App.
+
+            Min length: 1 character
+            Max length: 128 characters
         amount:
           type: integer
+          description: >-
+            Total authorized amount after this authorization was processed, in
+            the lowest denomination of currency on the payment.
         currency:
           $ref: '#/components/schemas/Currency'
         status:
           $ref: '#/components/schemas/AuthorizationStatus'
+          description: >-
+            The step of the authorization processing lifecycle that this
+            authorization is currently at.
+
+
+            Allowed values:
+
+            - AUTHORIZED
+
+            - DECLINED
         created_at:
           type: string
           format: date-time
+          description: When this authorization was created, in RFC 3339 format (UTC).
         payment_id:
           type: string
+          description: ID of the payment associated with this authorization
         previous_amount:
           type: integer
+          description: Total authorized amount before this authorization was requested
         reference_id:
           type: string
+          description: >-
+            A user-defined identifier for this authorization, typically used to
+            associate the authorization with a record in an external system.
+
+
+            Min length: 1
+
+            Max length: 1024
         metadata:
           $ref: '#/components/schemas/Metadata'
         decline_errors:
           type: array
           items:
             $ref: '#/components/schemas/Error'
+          description: >-
+            If the authorization was declined, it contains a list of the reasons
+            why it was declined.
+
+
+            Min number of items: 1
       required:
         - id
         - amount
@@ -40566,41 +43834,138 @@ components:
       properties:
         id:
           type: string
+          description: |-
+            Unique identifier for this payment issued by Cash App.
+
+            Min length: `1`
+            Max length: `128`
         amount:
           type: integer
+          description: >-
+            The amount of money to collect, in the lowest denomination of
+            currency on the payment. This is the _original_ amount authorized
+            when the payment was created.
+
+
+            Min value: `1`
         net_amount:
           type: integer
+          description: >-
+            The amount remaining after refunds and voided payments are deducted
+            from the amount field. The amount will be in the lowest denomination
+            of the currency on the payment.
+
+            This is the amount that will be shown to the customer in their Cash
+            App account.
+
+
+
+            Min value: `0`
         captured_amount:
           type: integer
+          description: >-
+            The amount of money on this payment that has been allocated for
+            settlement. The amount will be in the lowest denomination of the
+            currency on the payment.
+
+
+            Min value: `0`
         voided_amount:
           type: integer
+          description: >-
+            The amount of money on this payment that is no longer authorized and
+            has been released back to the customer. The amount will be in the
+            lowest denomination of the currency on the payment.
+
+
+            Min value: `0`
         refunded_amount:
           type: integer
+          description: >-
+            Sum of captured refunds in the lowest denomination of currency on
+            the payment.
+
+
+            Min value: `0`
         currency:
           $ref: '#/components/schemas/Currency'
         customer_id:
           type: string
+          description: |-
+            ID of the customer that sent this payment.
+
+            Min length: `1`
+            Max length: `128`
         merchant_id:
           type: string
+          description: |-
+            ID of the merchant that received this payment.
+
+            Min length: `1`
+            Max length: `128`
         grant_id:
           type: string
+          description: |-
+            ID of the grant to used to create this payment.
+
+            Min length: `1`
+            Max length: `256`
         status:
           $ref: '#/components/schemas/PaymentStatus'
+          description: >-
+            The step of the payment processing lifecycle that this payment is
+            currently at.
+
+
+            - `AUTHORIZED`
+
+            - `CAPTURED`
+
+            - `VOIDED`
+
+            - `DECLINED`
         created_at:
           type: string
           format: date-time
+          description: >-
+            When this payment was created, in [RFC
+            3339](https://datatracker.ietf.org/doc/html/rfc3339) format (UTC).
         updated_at:
           type: string
           format: date-time
+          description: >-
+            When this payment was last updated, in [RFC
+            3339](https://datatracker.ietf.org/doc/html/rfc3339) format (UTC).
         capture_before:
           type: string
           format: date-time
+          description: >-
+            When this payment should be captured by, in [RFC
+            3339](https://datatracker.ietf.org/doc/html/rfc3339) format (UTC).
         refund_ids:
           type: array
           items:
             type: string
+          description: >-
+            A list of one or more IDs associated with refunds issued for this
+            payment.
+
+
+            Min array length: `1`
+
+            Min length of IDs: `1`
+
+            Max length of IDs: `128`
         reference_id:
           type: string
+          description: >-
+            A user-defined identifier for this payment, typically used to
+            associate the payment with a record in an external system.
+
+
+            Min length: `1`
+
+            Max length: `1024`
         metadata:
           $ref: '#/components/schemas/Metadata'
         enrichments:
@@ -40609,15 +43974,37 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Error'
+          description: >-
+            If the payment was declined, contains a list of the reasons why it
+            was declined.
+
+
+            Min number of items: `1`
         fee_amount:
           type: number
           format: double
+          description: >-
+            The total fee amount that was charged to the merchant for processing
+            this payment.
         fee_rate:
           $ref: '#/components/schemas/FeeRate'
+          description: >-
+            The breakdown of the fee that was charged to the merchant for
+            processing this payment.
         authorization_updates:
           type: array
           items:
             $ref: '#/components/schemas/Authorization'
+          description: >-
+            A list of authorization update attempts associated with this
+            payment, sorted in chronological order.
+
+
+            Note: This field contains only the authorization update attempts, so
+            this field will be empty when 
+
+            the payment is first created (even though the amount is authorized
+            in this flow, it is not an update).
       required:
         - id
         - amount
@@ -40639,8 +44026,12 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Payment'
+          description: List of payments matching the given query parameters.
         cursor:
           type: string
+          description: >-
+            The pagination cursor to be used in a subsequent request. If empty,
+            this is the final response.
       required:
         - payments
 
@@ -40809,7 +44200,7 @@ Content-Type: application/json
 Creates a payment from a customer to a merchant.
 
 
-<Note title="Note">
+<Note>
   Creating a payment requires a grant that is associated with the `ON_FILE_PAYMENT` or `ONE_TIME_PAYMENT` actions. To generate a grant, use the Customer Request API.
 </Note>
 
@@ -40835,7 +44226,7 @@ paths:
         Creates a payment from a customer to a merchant.
 
 
-        <Note title="Note">
+        <Note>
           Creating a payment requires a grant that is associated with the `ON_FILE_PAYMENT` or `ONE_TIME_PAYMENT` actions. To generate a grant, use the Customer Request API.
         </Note>
 
@@ -40882,8 +44273,9 @@ paths:
             appear in the response payload.
 
 
-            <Note title="Note"> **`PAYMENT_DECLINE_*` errors consume one-time
-            use grants.**
+            <Note> 
+
+            **`PAYMENT_DECLINE_*` errors consume one-time use grants.**
              This means you must repeat the Customer Request flow to get a new grant if you want to try taking the payment again. All other errors will not consume grants.
             </Note>
           content: {}
@@ -40899,6 +44291,7 @@ paths:
                 payment:
                   $ref: >-
                     #/components/schemas/PaymentsPostRequestBodyContentApplicationJsonSchemaPayment
+                  description: Data about the payment to create.
               required:
                 - idempotency_key
                 - payment
@@ -40924,6 +44317,11 @@ components:
       properties:
         actor:
           $ref: '#/components/schemas/PaymentEnrichmentsInitiationActor'
+          description: |-
+            The party who initiated the payment.
+
+            - `CUSTOMER`
+            - `MERCHANT`
       required:
         - actor
     PaymentEnrichmentsRestrictedCategoriesItems:
@@ -40937,29 +44335,96 @@ components:
       properties:
         initiation:
           $ref: '#/components/schemas/PaymentEnrichmentsInitiation'
+          description: If present, provides information about transaction initiation.
         recurring_series_id:
           type: string
+          description: >-
+            If present, indicates that this payment is part of a recurring
+            series of payments, such as a subscription.
+
+
+            The value should contain a unique identifier for the recurring
+            series that is constant across all of its payments, so it can be
+            used to group them together.
+
+
+            Min length: `1`
+
+            Max length: `1024`
         statement_descriptor:
           type: string
+          description: >-
+            If present, adds the descriptor as line item on to a customer's
+            payment receipt in their in-app Activity page.
+
+            The descriptor will be present under the header "On statement as".
+
+
+            Statement descriptor requirements vary by platform. If the input for
+            this field exceeds the character limit, it will be truncated to the
+            limit, then suffixed with an ellipsis (...).
+
+
+            Min length: `1`
+
+            Max length: `22`
         restricted_categories:
           type: array
           items:
             $ref: '#/components/schemas/PaymentEnrichmentsRestrictedCategoriesItems'
+          description: >-
+            If present, indicates that this payment is associated with one or
+            more restricted categories. Contact the Cash App Pay support team to
+            use this field.
     PaymentsPostRequestBodyContentApplicationJsonSchemaPayment:
       type: object
       properties:
         amount:
           type: integer
+          description: >-
+            The amount of money to charge the customer, in the lowest
+            denomination of currency for the payment.
+
+
+            Min value: `1`
         currency:
           $ref: '#/components/schemas/Currency'
         merchant_id:
           type: string
+          description: |-
+            ID of the merchant to make the payment to.
+
+            Min length: `1`
+            Max length: `128`
         grant_id:
           type: string
+          description: >-
+            A grant ID from the Customer Request API that indicates permission
+            to take the payment.
+
+
+            Min length: `1`
+
+            Max length: `256`
         reference_id:
           type: string
+          description: >-
+            A user-defined identifier for this payment, typically used to
+            associate the payment with a record in an external system.
+
+
+            Min length: `1`
+
+            Max length: `1024`
         capture:
           type: boolean
+          default: true
+          description: >-
+            Whether or not to automatically capture the payment once it's
+            created.
+
+
+            Default: `true`
         metadata:
           $ref: '#/components/schemas/Metadata'
         enrichments:
@@ -40995,12 +44460,31 @@ components:
       properties:
         category:
           $ref: '#/components/schemas/ErrorCategory'
+          description: The high-level reason the error occurred
         code:
           type: string
+          description: >-
+            A unique identifier for the specific type of error that occurred.
+            See the Error Code Reference for more information.
+
+
+            Min length: `1`
         detail:
           type: string
+          description: >-
+            Human-readable description of why the error occurred and how to
+            resolve it.
+
+
+            Min length: `1`
         field:
           type: string
+          description: >-
+            The field in the request that caused the error, using array and
+            object dot notation.
+
+
+            Min length: `1`
       required:
         - category
         - code
@@ -41009,8 +44493,15 @@ components:
       properties:
         basis_points:
           type: integer
+          description: >-
+            The variable fee charged for processing the payment expressed as
+            1/100th of a percentage.
         fixed_amount:
           type: integer
+          description: >-
+            The amount charged for processing the payment, in the lowest
+            denomination of currency on the payment.
+             **Note: The currency for the fee is found on the fee plan.**
     AuthorizationStatus:
       type: string
       enum:
@@ -41021,27 +44512,62 @@ components:
       properties:
         id:
           type: string
+          description: |-
+            Unique identifier for this authorization issued by Cash App.
+
+            Min length: 1 character
+            Max length: 128 characters
         amount:
           type: integer
+          description: >-
+            Total authorized amount after this authorization was processed, in
+            the lowest denomination of currency on the payment.
         currency:
           $ref: '#/components/schemas/Currency'
         status:
           $ref: '#/components/schemas/AuthorizationStatus'
+          description: >-
+            The step of the authorization processing lifecycle that this
+            authorization is currently at.
+
+
+            Allowed values:
+
+            - AUTHORIZED
+
+            - DECLINED
         created_at:
           type: string
           format: date-time
+          description: When this authorization was created, in RFC 3339 format (UTC).
         payment_id:
           type: string
+          description: ID of the payment associated with this authorization
         previous_amount:
           type: integer
+          description: Total authorized amount before this authorization was requested
         reference_id:
           type: string
+          description: >-
+            A user-defined identifier for this authorization, typically used to
+            associate the authorization with a record in an external system.
+
+
+            Min length: 1
+
+            Max length: 1024
         metadata:
           $ref: '#/components/schemas/Metadata'
         decline_errors:
           type: array
           items:
             $ref: '#/components/schemas/Error'
+          description: >-
+            If the authorization was declined, it contains a list of the reasons
+            why it was declined.
+
+
+            Min number of items: 1
       required:
         - id
         - amount
@@ -41055,41 +44581,138 @@ components:
       properties:
         id:
           type: string
+          description: |-
+            Unique identifier for this payment issued by Cash App.
+
+            Min length: `1`
+            Max length: `128`
         amount:
           type: integer
+          description: >-
+            The amount of money to collect, in the lowest denomination of
+            currency on the payment. This is the _original_ amount authorized
+            when the payment was created.
+
+
+            Min value: `1`
         net_amount:
           type: integer
+          description: >-
+            The amount remaining after refunds and voided payments are deducted
+            from the amount field. The amount will be in the lowest denomination
+            of the currency on the payment.
+
+            This is the amount that will be shown to the customer in their Cash
+            App account.
+
+
+
+            Min value: `0`
         captured_amount:
           type: integer
+          description: >-
+            The amount of money on this payment that has been allocated for
+            settlement. The amount will be in the lowest denomination of the
+            currency on the payment.
+
+
+            Min value: `0`
         voided_amount:
           type: integer
+          description: >-
+            The amount of money on this payment that is no longer authorized and
+            has been released back to the customer. The amount will be in the
+            lowest denomination of the currency on the payment.
+
+
+            Min value: `0`
         refunded_amount:
           type: integer
+          description: >-
+            Sum of captured refunds in the lowest denomination of currency on
+            the payment.
+
+
+            Min value: `0`
         currency:
           $ref: '#/components/schemas/Currency'
         customer_id:
           type: string
+          description: |-
+            ID of the customer that sent this payment.
+
+            Min length: `1`
+            Max length: `128`
         merchant_id:
           type: string
+          description: |-
+            ID of the merchant that received this payment.
+
+            Min length: `1`
+            Max length: `128`
         grant_id:
           type: string
+          description: |-
+            ID of the grant to used to create this payment.
+
+            Min length: `1`
+            Max length: `256`
         status:
           $ref: '#/components/schemas/PaymentStatus'
+          description: >-
+            The step of the payment processing lifecycle that this payment is
+            currently at.
+
+
+            - `AUTHORIZED`
+
+            - `CAPTURED`
+
+            - `VOIDED`
+
+            - `DECLINED`
         created_at:
           type: string
           format: date-time
+          description: >-
+            When this payment was created, in [RFC
+            3339](https://datatracker.ietf.org/doc/html/rfc3339) format (UTC).
         updated_at:
           type: string
           format: date-time
+          description: >-
+            When this payment was last updated, in [RFC
+            3339](https://datatracker.ietf.org/doc/html/rfc3339) format (UTC).
         capture_before:
           type: string
           format: date-time
+          description: >-
+            When this payment should be captured by, in [RFC
+            3339](https://datatracker.ietf.org/doc/html/rfc3339) format (UTC).
         refund_ids:
           type: array
           items:
             type: string
+          description: >-
+            A list of one or more IDs associated with refunds issued for this
+            payment.
+
+
+            Min array length: `1`
+
+            Min length of IDs: `1`
+
+            Max length of IDs: `128`
         reference_id:
           type: string
+          description: >-
+            A user-defined identifier for this payment, typically used to
+            associate the payment with a record in an external system.
+
+
+            Min length: `1`
+
+            Max length: `1024`
         metadata:
           $ref: '#/components/schemas/Metadata'
         enrichments:
@@ -41098,15 +44721,37 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Error'
+          description: >-
+            If the payment was declined, contains a list of the reasons why it
+            was declined.
+
+
+            Min number of items: `1`
         fee_amount:
           type: number
           format: double
+          description: >-
+            The total fee amount that was charged to the merchant for processing
+            this payment.
         fee_rate:
           $ref: '#/components/schemas/FeeRate'
+          description: >-
+            The breakdown of the fee that was charged to the merchant for
+            processing this payment.
         authorization_updates:
           type: array
           items:
             $ref: '#/components/schemas/Authorization'
+          description: >-
+            A list of authorization update attempts associated with this
+            payment, sorted in chronological order.
+
+
+            Note: This field contains only the authorization update attempts, so
+            this field will be empty when 
+
+            the payment is first created (even though the amount is authorized
+            in this flow, it is not an update).
       required:
         - id
         - amount
@@ -41649,6 +45294,11 @@ components:
       properties:
         actor:
           $ref: '#/components/schemas/PaymentEnrichmentsInitiationActor'
+          description: |-
+            The party who initiated the payment.
+
+            - `CUSTOMER`
+            - `MERCHANT`
       required:
         - actor
     PaymentEnrichmentsRestrictedCategoriesItems:
@@ -41662,14 +45312,47 @@ components:
       properties:
         initiation:
           $ref: '#/components/schemas/PaymentEnrichmentsInitiation'
+          description: If present, provides information about transaction initiation.
         recurring_series_id:
           type: string
+          description: >-
+            If present, indicates that this payment is part of a recurring
+            series of payments, such as a subscription.
+
+
+            The value should contain a unique identifier for the recurring
+            series that is constant across all of its payments, so it can be
+            used to group them together.
+
+
+            Min length: `1`
+
+            Max length: `1024`
         statement_descriptor:
           type: string
+          description: >-
+            If present, adds the descriptor as line item on to a customer's
+            payment receipt in their in-app Activity page.
+
+            The descriptor will be present under the header "On statement as".
+
+
+            Statement descriptor requirements vary by platform. If the input for
+            this field exceeds the character limit, it will be truncated to the
+            limit, then suffixed with an ellipsis (...).
+
+
+            Min length: `1`
+
+            Max length: `22`
         restricted_categories:
           type: array
           items:
             $ref: '#/components/schemas/PaymentEnrichmentsRestrictedCategoriesItems'
+          description: >-
+            If present, indicates that this payment is associated with one or
+            more restricted categories. Contact the Cash App Pay support team to
+            use this field.
     ErrorCategory:
       type: string
       enum:
@@ -41689,12 +45372,31 @@ components:
       properties:
         category:
           $ref: '#/components/schemas/ErrorCategory'
+          description: The high-level reason the error occurred
         code:
           type: string
+          description: >-
+            A unique identifier for the specific type of error that occurred.
+            See the Error Code Reference for more information.
+
+
+            Min length: `1`
         detail:
           type: string
+          description: >-
+            Human-readable description of why the error occurred and how to
+            resolve it.
+
+
+            Min length: `1`
         field:
           type: string
+          description: >-
+            The field in the request that caused the error, using array and
+            object dot notation.
+
+
+            Min length: `1`
       required:
         - category
         - code
@@ -41703,8 +45405,15 @@ components:
       properties:
         basis_points:
           type: integer
+          description: >-
+            The variable fee charged for processing the payment expressed as
+            1/100th of a percentage.
         fixed_amount:
           type: integer
+          description: >-
+            The amount charged for processing the payment, in the lowest
+            denomination of currency on the payment.
+             **Note: The currency for the fee is found on the fee plan.**
     AuthorizationStatus:
       type: string
       enum:
@@ -41715,27 +45424,62 @@ components:
       properties:
         id:
           type: string
+          description: |-
+            Unique identifier for this authorization issued by Cash App.
+
+            Min length: 1 character
+            Max length: 128 characters
         amount:
           type: integer
+          description: >-
+            Total authorized amount after this authorization was processed, in
+            the lowest denomination of currency on the payment.
         currency:
           $ref: '#/components/schemas/Currency'
         status:
           $ref: '#/components/schemas/AuthorizationStatus'
+          description: >-
+            The step of the authorization processing lifecycle that this
+            authorization is currently at.
+
+
+            Allowed values:
+
+            - AUTHORIZED
+
+            - DECLINED
         created_at:
           type: string
           format: date-time
+          description: When this authorization was created, in RFC 3339 format (UTC).
         payment_id:
           type: string
+          description: ID of the payment associated with this authorization
         previous_amount:
           type: integer
+          description: Total authorized amount before this authorization was requested
         reference_id:
           type: string
+          description: >-
+            A user-defined identifier for this authorization, typically used to
+            associate the authorization with a record in an external system.
+
+
+            Min length: 1
+
+            Max length: 1024
         metadata:
           $ref: '#/components/schemas/Metadata'
         decline_errors:
           type: array
           items:
             $ref: '#/components/schemas/Error'
+          description: >-
+            If the authorization was declined, it contains a list of the reasons
+            why it was declined.
+
+
+            Min number of items: 1
       required:
         - id
         - amount
@@ -41749,41 +45493,138 @@ components:
       properties:
         id:
           type: string
+          description: |-
+            Unique identifier for this payment issued by Cash App.
+
+            Min length: `1`
+            Max length: `128`
         amount:
           type: integer
+          description: >-
+            The amount of money to collect, in the lowest denomination of
+            currency on the payment. This is the _original_ amount authorized
+            when the payment was created.
+
+
+            Min value: `1`
         net_amount:
           type: integer
+          description: >-
+            The amount remaining after refunds and voided payments are deducted
+            from the amount field. The amount will be in the lowest denomination
+            of the currency on the payment.
+
+            This is the amount that will be shown to the customer in their Cash
+            App account.
+
+
+
+            Min value: `0`
         captured_amount:
           type: integer
+          description: >-
+            The amount of money on this payment that has been allocated for
+            settlement. The amount will be in the lowest denomination of the
+            currency on the payment.
+
+
+            Min value: `0`
         voided_amount:
           type: integer
+          description: >-
+            The amount of money on this payment that is no longer authorized and
+            has been released back to the customer. The amount will be in the
+            lowest denomination of the currency on the payment.
+
+
+            Min value: `0`
         refunded_amount:
           type: integer
+          description: >-
+            Sum of captured refunds in the lowest denomination of currency on
+            the payment.
+
+
+            Min value: `0`
         currency:
           $ref: '#/components/schemas/Currency'
         customer_id:
           type: string
+          description: |-
+            ID of the customer that sent this payment.
+
+            Min length: `1`
+            Max length: `128`
         merchant_id:
           type: string
+          description: |-
+            ID of the merchant that received this payment.
+
+            Min length: `1`
+            Max length: `128`
         grant_id:
           type: string
+          description: |-
+            ID of the grant to used to create this payment.
+
+            Min length: `1`
+            Max length: `256`
         status:
           $ref: '#/components/schemas/PaymentStatus'
+          description: >-
+            The step of the payment processing lifecycle that this payment is
+            currently at.
+
+
+            - `AUTHORIZED`
+
+            - `CAPTURED`
+
+            - `VOIDED`
+
+            - `DECLINED`
         created_at:
           type: string
           format: date-time
+          description: >-
+            When this payment was created, in [RFC
+            3339](https://datatracker.ietf.org/doc/html/rfc3339) format (UTC).
         updated_at:
           type: string
           format: date-time
+          description: >-
+            When this payment was last updated, in [RFC
+            3339](https://datatracker.ietf.org/doc/html/rfc3339) format (UTC).
         capture_before:
           type: string
           format: date-time
+          description: >-
+            When this payment should be captured by, in [RFC
+            3339](https://datatracker.ietf.org/doc/html/rfc3339) format (UTC).
         refund_ids:
           type: array
           items:
             type: string
+          description: >-
+            A list of one or more IDs associated with refunds issued for this
+            payment.
+
+
+            Min array length: `1`
+
+            Min length of IDs: `1`
+
+            Max length of IDs: `128`
         reference_id:
           type: string
+          description: >-
+            A user-defined identifier for this payment, typically used to
+            associate the payment with a record in an external system.
+
+
+            Min length: `1`
+
+            Max length: `1024`
         metadata:
           $ref: '#/components/schemas/Metadata'
         enrichments:
@@ -41792,15 +45633,37 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Error'
+          description: >-
+            If the payment was declined, contains a list of the reasons why it
+            was declined.
+
+
+            Min number of items: `1`
         fee_amount:
           type: number
           format: double
+          description: >-
+            The total fee amount that was charged to the merchant for processing
+            this payment.
         fee_rate:
           $ref: '#/components/schemas/FeeRate'
+          description: >-
+            The breakdown of the fee that was charged to the merchant for
+            processing this payment.
         authorization_updates:
           type: array
           items:
             $ref: '#/components/schemas/Authorization'
+          description: >-
+            A list of authorization update attempts associated with this
+            payment, sorted in chronological order.
+
+
+            Note: This field contains only the authorization update attempts, so
+            this field will be empty when 
+
+            the payment is first created (even though the amount is authorized
+            in this flow, it is not an update).
       required:
         - id
         - amount
@@ -42081,6 +45944,7 @@ paths:
                 authorization:
                   $ref: >-
                     #/components/schemas/PaymentsPaymentIdAuthorizationsPostRequestBodyContentApplicationJsonSchemaAuthorization
+                  description: Details about the authorization to create.
               required:
                 - idempotency_key
                 - authorization
@@ -42101,10 +45965,24 @@ components:
       properties:
         amount:
           type: integer
+          description: >-
+            The updated total amount of money to collect from the customer, in
+            the lowest denomination of currency for the payment.
+
+            This value must be greater than or equal to the current authorized
+            amount
         currency:
           $ref: '#/components/schemas/Currency'
         reference_id:
           type: string
+          description: >-
+            A user-defined identifier for this authorization, typically used to
+            associate the authorization with a record in an external system.
+
+
+            Min length: `1`
+
+            Max length: `1024`
         metadata:
           $ref: '#/components/schemas/Metadata'
       required:
@@ -42134,12 +46012,31 @@ components:
       properties:
         category:
           $ref: '#/components/schemas/ErrorCategory'
+          description: The high-level reason the error occurred
         code:
           type: string
+          description: >-
+            A unique identifier for the specific type of error that occurred.
+            See the Error Code Reference for more information.
+
+
+            Min length: `1`
         detail:
           type: string
+          description: >-
+            Human-readable description of why the error occurred and how to
+            resolve it.
+
+
+            Min length: `1`
         field:
           type: string
+          description: >-
+            The field in the request that caused the error, using array and
+            object dot notation.
+
+
+            Min length: `1`
       required:
         - category
         - code
@@ -42148,27 +46045,62 @@ components:
       properties:
         id:
           type: string
+          description: |-
+            Unique identifier for this authorization issued by Cash App.
+
+            Min length: 1 character
+            Max length: 128 characters
         amount:
           type: integer
+          description: >-
+            Total authorized amount after this authorization was processed, in
+            the lowest denomination of currency on the payment.
         currency:
           $ref: '#/components/schemas/Currency'
         status:
           $ref: '#/components/schemas/AuthorizationStatus'
+          description: >-
+            The step of the authorization processing lifecycle that this
+            authorization is currently at.
+
+
+            Allowed values:
+
+            - AUTHORIZED
+
+            - DECLINED
         created_at:
           type: string
           format: date-time
+          description: When this authorization was created, in RFC 3339 format (UTC).
         payment_id:
           type: string
+          description: ID of the payment associated with this authorization
         previous_amount:
           type: integer
+          description: Total authorized amount before this authorization was requested
         reference_id:
           type: string
+          description: >-
+            A user-defined identifier for this authorization, typically used to
+            associate the authorization with a record in an external system.
+
+
+            Min length: 1
+
+            Max length: 1024
         metadata:
           $ref: '#/components/schemas/Metadata'
         decline_errors:
           type: array
           items:
             $ref: '#/components/schemas/Error'
+          description: >-
+            If the authorization was declined, it contains a list of the reasons
+            why it was declined.
+
+
+            Min number of items: 1
       required:
         - id
         - amount
@@ -42463,6 +46395,16 @@ paths:
                   $ref: '#/components/schemas/IdempotencyKey'
                 amount:
                   type: integer
+                  description: >-
+                    The amount of money to collect from the customer, in the
+                    lowest denomination of currency for the payment.
+
+
+                    To over-capture or under-capture the payment, set this field
+                    to a different value from the current payment amount.
+
+
+                    Min value: `1`
               required:
                 - idempotency_key
                 - amount
@@ -42495,6 +46437,11 @@ components:
       properties:
         actor:
           $ref: '#/components/schemas/PaymentEnrichmentsInitiationActor'
+          description: |-
+            The party who initiated the payment.
+
+            - `CUSTOMER`
+            - `MERCHANT`
       required:
         - actor
     PaymentEnrichmentsRestrictedCategoriesItems:
@@ -42508,14 +46455,47 @@ components:
       properties:
         initiation:
           $ref: '#/components/schemas/PaymentEnrichmentsInitiation'
+          description: If present, provides information about transaction initiation.
         recurring_series_id:
           type: string
+          description: >-
+            If present, indicates that this payment is part of a recurring
+            series of payments, such as a subscription.
+
+
+            The value should contain a unique identifier for the recurring
+            series that is constant across all of its payments, so it can be
+            used to group them together.
+
+
+            Min length: `1`
+
+            Max length: `1024`
         statement_descriptor:
           type: string
+          description: >-
+            If present, adds the descriptor as line item on to a customer's
+            payment receipt in their in-app Activity page.
+
+            The descriptor will be present under the header "On statement as".
+
+
+            Statement descriptor requirements vary by platform. If the input for
+            this field exceeds the character limit, it will be truncated to the
+            limit, then suffixed with an ellipsis (...).
+
+
+            Min length: `1`
+
+            Max length: `22`
         restricted_categories:
           type: array
           items:
             $ref: '#/components/schemas/PaymentEnrichmentsRestrictedCategoriesItems'
+          description: >-
+            If present, indicates that this payment is associated with one or
+            more restricted categories. Contact the Cash App Pay support team to
+            use this field.
     ErrorCategory:
       type: string
       enum:
@@ -42535,12 +46515,31 @@ components:
       properties:
         category:
           $ref: '#/components/schemas/ErrorCategory'
+          description: The high-level reason the error occurred
         code:
           type: string
+          description: >-
+            A unique identifier for the specific type of error that occurred.
+            See the Error Code Reference for more information.
+
+
+            Min length: `1`
         detail:
           type: string
+          description: >-
+            Human-readable description of why the error occurred and how to
+            resolve it.
+
+
+            Min length: `1`
         field:
           type: string
+          description: >-
+            The field in the request that caused the error, using array and
+            object dot notation.
+
+
+            Min length: `1`
       required:
         - category
         - code
@@ -42549,8 +46548,15 @@ components:
       properties:
         basis_points:
           type: integer
+          description: >-
+            The variable fee charged for processing the payment expressed as
+            1/100th of a percentage.
         fixed_amount:
           type: integer
+          description: >-
+            The amount charged for processing the payment, in the lowest
+            denomination of currency on the payment.
+             **Note: The currency for the fee is found on the fee plan.**
     AuthorizationStatus:
       type: string
       enum:
@@ -42561,27 +46567,62 @@ components:
       properties:
         id:
           type: string
+          description: |-
+            Unique identifier for this authorization issued by Cash App.
+
+            Min length: 1 character
+            Max length: 128 characters
         amount:
           type: integer
+          description: >-
+            Total authorized amount after this authorization was processed, in
+            the lowest denomination of currency on the payment.
         currency:
           $ref: '#/components/schemas/Currency'
         status:
           $ref: '#/components/schemas/AuthorizationStatus'
+          description: >-
+            The step of the authorization processing lifecycle that this
+            authorization is currently at.
+
+
+            Allowed values:
+
+            - AUTHORIZED
+
+            - DECLINED
         created_at:
           type: string
           format: date-time
+          description: When this authorization was created, in RFC 3339 format (UTC).
         payment_id:
           type: string
+          description: ID of the payment associated with this authorization
         previous_amount:
           type: integer
+          description: Total authorized amount before this authorization was requested
         reference_id:
           type: string
+          description: >-
+            A user-defined identifier for this authorization, typically used to
+            associate the authorization with a record in an external system.
+
+
+            Min length: 1
+
+            Max length: 1024
         metadata:
           $ref: '#/components/schemas/Metadata'
         decline_errors:
           type: array
           items:
             $ref: '#/components/schemas/Error'
+          description: >-
+            If the authorization was declined, it contains a list of the reasons
+            why it was declined.
+
+
+            Min number of items: 1
       required:
         - id
         - amount
@@ -42595,41 +46636,138 @@ components:
       properties:
         id:
           type: string
+          description: |-
+            Unique identifier for this payment issued by Cash App.
+
+            Min length: `1`
+            Max length: `128`
         amount:
           type: integer
+          description: >-
+            The amount of money to collect, in the lowest denomination of
+            currency on the payment. This is the _original_ amount authorized
+            when the payment was created.
+
+
+            Min value: `1`
         net_amount:
           type: integer
+          description: >-
+            The amount remaining after refunds and voided payments are deducted
+            from the amount field. The amount will be in the lowest denomination
+            of the currency on the payment.
+
+            This is the amount that will be shown to the customer in their Cash
+            App account.
+
+
+
+            Min value: `0`
         captured_amount:
           type: integer
+          description: >-
+            The amount of money on this payment that has been allocated for
+            settlement. The amount will be in the lowest denomination of the
+            currency on the payment.
+
+
+            Min value: `0`
         voided_amount:
           type: integer
+          description: >-
+            The amount of money on this payment that is no longer authorized and
+            has been released back to the customer. The amount will be in the
+            lowest denomination of the currency on the payment.
+
+
+            Min value: `0`
         refunded_amount:
           type: integer
+          description: >-
+            Sum of captured refunds in the lowest denomination of currency on
+            the payment.
+
+
+            Min value: `0`
         currency:
           $ref: '#/components/schemas/Currency'
         customer_id:
           type: string
+          description: |-
+            ID of the customer that sent this payment.
+
+            Min length: `1`
+            Max length: `128`
         merchant_id:
           type: string
+          description: |-
+            ID of the merchant that received this payment.
+
+            Min length: `1`
+            Max length: `128`
         grant_id:
           type: string
+          description: |-
+            ID of the grant to used to create this payment.
+
+            Min length: `1`
+            Max length: `256`
         status:
           $ref: '#/components/schemas/PaymentStatus'
+          description: >-
+            The step of the payment processing lifecycle that this payment is
+            currently at.
+
+
+            - `AUTHORIZED`
+
+            - `CAPTURED`
+
+            - `VOIDED`
+
+            - `DECLINED`
         created_at:
           type: string
           format: date-time
+          description: >-
+            When this payment was created, in [RFC
+            3339](https://datatracker.ietf.org/doc/html/rfc3339) format (UTC).
         updated_at:
           type: string
           format: date-time
+          description: >-
+            When this payment was last updated, in [RFC
+            3339](https://datatracker.ietf.org/doc/html/rfc3339) format (UTC).
         capture_before:
           type: string
           format: date-time
+          description: >-
+            When this payment should be captured by, in [RFC
+            3339](https://datatracker.ietf.org/doc/html/rfc3339) format (UTC).
         refund_ids:
           type: array
           items:
             type: string
+          description: >-
+            A list of one or more IDs associated with refunds issued for this
+            payment.
+
+
+            Min array length: `1`
+
+            Min length of IDs: `1`
+
+            Max length of IDs: `128`
         reference_id:
           type: string
+          description: >-
+            A user-defined identifier for this payment, typically used to
+            associate the payment with a record in an external system.
+
+
+            Min length: `1`
+
+            Max length: `1024`
         metadata:
           $ref: '#/components/schemas/Metadata'
         enrichments:
@@ -42638,15 +46776,37 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Error'
+          description: >-
+            If the payment was declined, contains a list of the reasons why it
+            was declined.
+
+
+            Min number of items: `1`
         fee_amount:
           type: number
           format: double
+          description: >-
+            The total fee amount that was charged to the merchant for processing
+            this payment.
         fee_rate:
           $ref: '#/components/schemas/FeeRate'
+          description: >-
+            The breakdown of the fee that was charged to the merchant for
+            processing this payment.
         authorization_updates:
           type: array
           items:
             $ref: '#/components/schemas/Authorization'
+          description: >-
+            A list of authorization update attempts associated with this
+            payment, sorted in chronological order.
+
+
+            Note: This field contains only the authorization update attempts, so
+            this field will be empty when 
+
+            the payment is first created (even though the amount is authorized
+            in this flow, it is not an update).
       required:
         - id
         - amount
@@ -42862,7 +47022,8 @@ POST https://api.cash.app/network/v1/payments/{payment_id}/void
 
 Moves an authorized payment to the voided state and releases the payment authorization from the customer's Cash App account.
 
-<Note title="Note"> You can only void an authorized payment. If a payment is captured, refund it instead. You cannot void any payment that has had an attempted capture. Authorizations not captured within seven days are automatically voided.
+<Note> 
+You can only void an authorized payment. If a payment is captured, refund it instead. You cannot void any payment that has had an attempted capture. Authorizations not captured within seven days are automatically voided.
 </Note>
 
 This endpoint will return a success message if the payment was successfully voided _or_ if the payment was previously voided.
@@ -42892,10 +47053,12 @@ paths:
         authorization from the customer's Cash App account.
 
 
-        <Note title="Note"> You can only void an authorized payment. If a
-        payment is captured, refund it instead. You cannot void any payment that
-        has had an attempted capture. Authorizations not captured within seven
-        days are automatically voided.
+        <Note> 
+
+        You can only void an authorized payment. If a payment is captured,
+        refund it instead. You cannot void any payment that has had an attempted
+        capture. Authorizations not captured within seven days are automatically
+        voided.
 
         </Note>
 
@@ -42980,6 +47143,11 @@ components:
       properties:
         actor:
           $ref: '#/components/schemas/PaymentEnrichmentsInitiationActor'
+          description: |-
+            The party who initiated the payment.
+
+            - `CUSTOMER`
+            - `MERCHANT`
       required:
         - actor
     PaymentEnrichmentsRestrictedCategoriesItems:
@@ -42993,14 +47161,47 @@ components:
       properties:
         initiation:
           $ref: '#/components/schemas/PaymentEnrichmentsInitiation'
+          description: If present, provides information about transaction initiation.
         recurring_series_id:
           type: string
+          description: >-
+            If present, indicates that this payment is part of a recurring
+            series of payments, such as a subscription.
+
+
+            The value should contain a unique identifier for the recurring
+            series that is constant across all of its payments, so it can be
+            used to group them together.
+
+
+            Min length: `1`
+
+            Max length: `1024`
         statement_descriptor:
           type: string
+          description: >-
+            If present, adds the descriptor as line item on to a customer's
+            payment receipt in their in-app Activity page.
+
+            The descriptor will be present under the header "On statement as".
+
+
+            Statement descriptor requirements vary by platform. If the input for
+            this field exceeds the character limit, it will be truncated to the
+            limit, then suffixed with an ellipsis (...).
+
+
+            Min length: `1`
+
+            Max length: `22`
         restricted_categories:
           type: array
           items:
             $ref: '#/components/schemas/PaymentEnrichmentsRestrictedCategoriesItems'
+          description: >-
+            If present, indicates that this payment is associated with one or
+            more restricted categories. Contact the Cash App Pay support team to
+            use this field.
     ErrorCategory:
       type: string
       enum:
@@ -43020,12 +47221,31 @@ components:
       properties:
         category:
           $ref: '#/components/schemas/ErrorCategory'
+          description: The high-level reason the error occurred
         code:
           type: string
+          description: >-
+            A unique identifier for the specific type of error that occurred.
+            See the Error Code Reference for more information.
+
+
+            Min length: `1`
         detail:
           type: string
+          description: >-
+            Human-readable description of why the error occurred and how to
+            resolve it.
+
+
+            Min length: `1`
         field:
           type: string
+          description: >-
+            The field in the request that caused the error, using array and
+            object dot notation.
+
+
+            Min length: `1`
       required:
         - category
         - code
@@ -43034,8 +47254,15 @@ components:
       properties:
         basis_points:
           type: integer
+          description: >-
+            The variable fee charged for processing the payment expressed as
+            1/100th of a percentage.
         fixed_amount:
           type: integer
+          description: >-
+            The amount charged for processing the payment, in the lowest
+            denomination of currency on the payment.
+             **Note: The currency for the fee is found on the fee plan.**
     AuthorizationStatus:
       type: string
       enum:
@@ -43046,27 +47273,62 @@ components:
       properties:
         id:
           type: string
+          description: |-
+            Unique identifier for this authorization issued by Cash App.
+
+            Min length: 1 character
+            Max length: 128 characters
         amount:
           type: integer
+          description: >-
+            Total authorized amount after this authorization was processed, in
+            the lowest denomination of currency on the payment.
         currency:
           $ref: '#/components/schemas/Currency'
         status:
           $ref: '#/components/schemas/AuthorizationStatus'
+          description: >-
+            The step of the authorization processing lifecycle that this
+            authorization is currently at.
+
+
+            Allowed values:
+
+            - AUTHORIZED
+
+            - DECLINED
         created_at:
           type: string
           format: date-time
+          description: When this authorization was created, in RFC 3339 format (UTC).
         payment_id:
           type: string
+          description: ID of the payment associated with this authorization
         previous_amount:
           type: integer
+          description: Total authorized amount before this authorization was requested
         reference_id:
           type: string
+          description: >-
+            A user-defined identifier for this authorization, typically used to
+            associate the authorization with a record in an external system.
+
+
+            Min length: 1
+
+            Max length: 1024
         metadata:
           $ref: '#/components/schemas/Metadata'
         decline_errors:
           type: array
           items:
             $ref: '#/components/schemas/Error'
+          description: >-
+            If the authorization was declined, it contains a list of the reasons
+            why it was declined.
+
+
+            Min number of items: 1
       required:
         - id
         - amount
@@ -43080,41 +47342,138 @@ components:
       properties:
         id:
           type: string
+          description: |-
+            Unique identifier for this payment issued by Cash App.
+
+            Min length: `1`
+            Max length: `128`
         amount:
           type: integer
+          description: >-
+            The amount of money to collect, in the lowest denomination of
+            currency on the payment. This is the _original_ amount authorized
+            when the payment was created.
+
+
+            Min value: `1`
         net_amount:
           type: integer
+          description: >-
+            The amount remaining after refunds and voided payments are deducted
+            from the amount field. The amount will be in the lowest denomination
+            of the currency on the payment.
+
+            This is the amount that will be shown to the customer in their Cash
+            App account.
+
+
+
+            Min value: `0`
         captured_amount:
           type: integer
+          description: >-
+            The amount of money on this payment that has been allocated for
+            settlement. The amount will be in the lowest denomination of the
+            currency on the payment.
+
+
+            Min value: `0`
         voided_amount:
           type: integer
+          description: >-
+            The amount of money on this payment that is no longer authorized and
+            has been released back to the customer. The amount will be in the
+            lowest denomination of the currency on the payment.
+
+
+            Min value: `0`
         refunded_amount:
           type: integer
+          description: >-
+            Sum of captured refunds in the lowest denomination of currency on
+            the payment.
+
+
+            Min value: `0`
         currency:
           $ref: '#/components/schemas/Currency'
         customer_id:
           type: string
+          description: |-
+            ID of the customer that sent this payment.
+
+            Min length: `1`
+            Max length: `128`
         merchant_id:
           type: string
+          description: |-
+            ID of the merchant that received this payment.
+
+            Min length: `1`
+            Max length: `128`
         grant_id:
           type: string
+          description: |-
+            ID of the grant to used to create this payment.
+
+            Min length: `1`
+            Max length: `256`
         status:
           $ref: '#/components/schemas/PaymentStatus'
+          description: >-
+            The step of the payment processing lifecycle that this payment is
+            currently at.
+
+
+            - `AUTHORIZED`
+
+            - `CAPTURED`
+
+            - `VOIDED`
+
+            - `DECLINED`
         created_at:
           type: string
           format: date-time
+          description: >-
+            When this payment was created, in [RFC
+            3339](https://datatracker.ietf.org/doc/html/rfc3339) format (UTC).
         updated_at:
           type: string
           format: date-time
+          description: >-
+            When this payment was last updated, in [RFC
+            3339](https://datatracker.ietf.org/doc/html/rfc3339) format (UTC).
         capture_before:
           type: string
           format: date-time
+          description: >-
+            When this payment should be captured by, in [RFC
+            3339](https://datatracker.ietf.org/doc/html/rfc3339) format (UTC).
         refund_ids:
           type: array
           items:
             type: string
+          description: >-
+            A list of one or more IDs associated with refunds issued for this
+            payment.
+
+
+            Min array length: `1`
+
+            Min length of IDs: `1`
+
+            Max length of IDs: `128`
         reference_id:
           type: string
+          description: >-
+            A user-defined identifier for this payment, typically used to
+            associate the payment with a record in an external system.
+
+
+            Min length: `1`
+
+            Max length: `1024`
         metadata:
           $ref: '#/components/schemas/Metadata'
         enrichments:
@@ -43123,15 +47482,37 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Error'
+          description: >-
+            If the payment was declined, contains a list of the reasons why it
+            was declined.
+
+
+            Min number of items: `1`
         fee_amount:
           type: number
           format: double
+          description: >-
+            The total fee amount that was charged to the merchant for processing
+            this payment.
         fee_rate:
           $ref: '#/components/schemas/FeeRate'
+          description: >-
+            The breakdown of the fee that was charged to the merchant for
+            processing this payment.
         authorization_updates:
           type: array
           items:
             $ref: '#/components/schemas/Authorization'
+          description: >-
+            A list of authorization update attempts associated with this
+            payment, sorted in chronological order.
+
+
+            Note: This field contains only the authorization update attempts, so
+            this field will be empty when 
+
+            the payment is first created (even though the amount is authorized
+            in this flow, it is not an update).
       required:
         - id
         - amount
@@ -43318,7 +47699,8 @@ Content-Type: application/json
 
 Moves an authorized payment to the voided state and releases the payment authorization from the customer's Cash App account.
 
-  <Note title="Note"> You can only void an authorized payment. If a payment is captured, refund the payment instead.
+  <Note>
+  You can only void an authorized payment. If a payment is captured, refund the payment instead.
   
    You cannot void any payment that has had an attempted capture. Authorizations not captured within seven days are automatically voided.
   </Note> 
@@ -43347,7 +47729,8 @@ paths:
         Moves an authorized payment to the voided state and releases the payment
         authorization from the customer's Cash App account.
 
-          <Note title="Note"> You can only void an authorized payment. If a payment is captured, refund the payment instead.
+          <Note>
+          You can only void an authorized payment. If a payment is captured, refund the payment instead.
           
            You cannot void any payment that has had an attempted capture. Authorizations not captured within seven days are automatically voided.
           </Note> 
@@ -43402,6 +47785,10 @@ paths:
               properties:
                 idempotency_key:
                   type: string
+                  description: >-
+                    Idempotency key used in the [create
+                    payment](Network-API.v1.yaml/paths/~1payments/post) request
+                    for the payment you want to void.
               required:
                 - idempotency_key
 components:
@@ -43431,6 +47818,11 @@ components:
       properties:
         actor:
           $ref: '#/components/schemas/PaymentEnrichmentsInitiationActor'
+          description: |-
+            The party who initiated the payment.
+
+            - `CUSTOMER`
+            - `MERCHANT`
       required:
         - actor
     PaymentEnrichmentsRestrictedCategoriesItems:
@@ -43444,14 +47836,47 @@ components:
       properties:
         initiation:
           $ref: '#/components/schemas/PaymentEnrichmentsInitiation'
+          description: If present, provides information about transaction initiation.
         recurring_series_id:
           type: string
+          description: >-
+            If present, indicates that this payment is part of a recurring
+            series of payments, such as a subscription.
+
+
+            The value should contain a unique identifier for the recurring
+            series that is constant across all of its payments, so it can be
+            used to group them together.
+
+
+            Min length: `1`
+
+            Max length: `1024`
         statement_descriptor:
           type: string
+          description: >-
+            If present, adds the descriptor as line item on to a customer's
+            payment receipt in their in-app Activity page.
+
+            The descriptor will be present under the header "On statement as".
+
+
+            Statement descriptor requirements vary by platform. If the input for
+            this field exceeds the character limit, it will be truncated to the
+            limit, then suffixed with an ellipsis (...).
+
+
+            Min length: `1`
+
+            Max length: `22`
         restricted_categories:
           type: array
           items:
             $ref: '#/components/schemas/PaymentEnrichmentsRestrictedCategoriesItems'
+          description: >-
+            If present, indicates that this payment is associated with one or
+            more restricted categories. Contact the Cash App Pay support team to
+            use this field.
     ErrorCategory:
       type: string
       enum:
@@ -43471,12 +47896,31 @@ components:
       properties:
         category:
           $ref: '#/components/schemas/ErrorCategory'
+          description: The high-level reason the error occurred
         code:
           type: string
+          description: >-
+            A unique identifier for the specific type of error that occurred.
+            See the Error Code Reference for more information.
+
+
+            Min length: `1`
         detail:
           type: string
+          description: >-
+            Human-readable description of why the error occurred and how to
+            resolve it.
+
+
+            Min length: `1`
         field:
           type: string
+          description: >-
+            The field in the request that caused the error, using array and
+            object dot notation.
+
+
+            Min length: `1`
       required:
         - category
         - code
@@ -43485,8 +47929,15 @@ components:
       properties:
         basis_points:
           type: integer
+          description: >-
+            The variable fee charged for processing the payment expressed as
+            1/100th of a percentage.
         fixed_amount:
           type: integer
+          description: >-
+            The amount charged for processing the payment, in the lowest
+            denomination of currency on the payment.
+             **Note: The currency for the fee is found on the fee plan.**
     AuthorizationStatus:
       type: string
       enum:
@@ -43497,27 +47948,62 @@ components:
       properties:
         id:
           type: string
+          description: |-
+            Unique identifier for this authorization issued by Cash App.
+
+            Min length: 1 character
+            Max length: 128 characters
         amount:
           type: integer
+          description: >-
+            Total authorized amount after this authorization was processed, in
+            the lowest denomination of currency on the payment.
         currency:
           $ref: '#/components/schemas/Currency'
         status:
           $ref: '#/components/schemas/AuthorizationStatus'
+          description: >-
+            The step of the authorization processing lifecycle that this
+            authorization is currently at.
+
+
+            Allowed values:
+
+            - AUTHORIZED
+
+            - DECLINED
         created_at:
           type: string
           format: date-time
+          description: When this authorization was created, in RFC 3339 format (UTC).
         payment_id:
           type: string
+          description: ID of the payment associated with this authorization
         previous_amount:
           type: integer
+          description: Total authorized amount before this authorization was requested
         reference_id:
           type: string
+          description: >-
+            A user-defined identifier for this authorization, typically used to
+            associate the authorization with a record in an external system.
+
+
+            Min length: 1
+
+            Max length: 1024
         metadata:
           $ref: '#/components/schemas/Metadata'
         decline_errors:
           type: array
           items:
             $ref: '#/components/schemas/Error'
+          description: >-
+            If the authorization was declined, it contains a list of the reasons
+            why it was declined.
+
+
+            Min number of items: 1
       required:
         - id
         - amount
@@ -43531,41 +48017,138 @@ components:
       properties:
         id:
           type: string
+          description: |-
+            Unique identifier for this payment issued by Cash App.
+
+            Min length: `1`
+            Max length: `128`
         amount:
           type: integer
+          description: >-
+            The amount of money to collect, in the lowest denomination of
+            currency on the payment. This is the _original_ amount authorized
+            when the payment was created.
+
+
+            Min value: `1`
         net_amount:
           type: integer
+          description: >-
+            The amount remaining after refunds and voided payments are deducted
+            from the amount field. The amount will be in the lowest denomination
+            of the currency on the payment.
+
+            This is the amount that will be shown to the customer in their Cash
+            App account.
+
+
+
+            Min value: `0`
         captured_amount:
           type: integer
+          description: >-
+            The amount of money on this payment that has been allocated for
+            settlement. The amount will be in the lowest denomination of the
+            currency on the payment.
+
+
+            Min value: `0`
         voided_amount:
           type: integer
+          description: >-
+            The amount of money on this payment that is no longer authorized and
+            has been released back to the customer. The amount will be in the
+            lowest denomination of the currency on the payment.
+
+
+            Min value: `0`
         refunded_amount:
           type: integer
+          description: >-
+            Sum of captured refunds in the lowest denomination of currency on
+            the payment.
+
+
+            Min value: `0`
         currency:
           $ref: '#/components/schemas/Currency'
         customer_id:
           type: string
+          description: |-
+            ID of the customer that sent this payment.
+
+            Min length: `1`
+            Max length: `128`
         merchant_id:
           type: string
+          description: |-
+            ID of the merchant that received this payment.
+
+            Min length: `1`
+            Max length: `128`
         grant_id:
           type: string
+          description: |-
+            ID of the grant to used to create this payment.
+
+            Min length: `1`
+            Max length: `256`
         status:
           $ref: '#/components/schemas/PaymentStatus'
+          description: >-
+            The step of the payment processing lifecycle that this payment is
+            currently at.
+
+
+            - `AUTHORIZED`
+
+            - `CAPTURED`
+
+            - `VOIDED`
+
+            - `DECLINED`
         created_at:
           type: string
           format: date-time
+          description: >-
+            When this payment was created, in [RFC
+            3339](https://datatracker.ietf.org/doc/html/rfc3339) format (UTC).
         updated_at:
           type: string
           format: date-time
+          description: >-
+            When this payment was last updated, in [RFC
+            3339](https://datatracker.ietf.org/doc/html/rfc3339) format (UTC).
         capture_before:
           type: string
           format: date-time
+          description: >-
+            When this payment should be captured by, in [RFC
+            3339](https://datatracker.ietf.org/doc/html/rfc3339) format (UTC).
         refund_ids:
           type: array
           items:
             type: string
+          description: >-
+            A list of one or more IDs associated with refunds issued for this
+            payment.
+
+
+            Min array length: `1`
+
+            Min length of IDs: `1`
+
+            Max length of IDs: `128`
         reference_id:
           type: string
+          description: >-
+            A user-defined identifier for this payment, typically used to
+            associate the payment with a record in an external system.
+
+
+            Min length: `1`
+
+            Max length: `1024`
         metadata:
           $ref: '#/components/schemas/Metadata'
         enrichments:
@@ -43574,15 +48157,37 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Error'
+          description: >-
+            If the payment was declined, contains a list of the reasons why it
+            was declined.
+
+
+            Min number of items: `1`
         fee_amount:
           type: number
           format: double
+          description: >-
+            The total fee amount that was charged to the merchant for processing
+            this payment.
         fee_rate:
           $ref: '#/components/schemas/FeeRate'
+          description: >-
+            The breakdown of the fee that was charged to the merchant for
+            processing this payment.
         authorization_updates:
           type: array
           items:
             $ref: '#/components/schemas/Authorization'
+          description: >-
+            A list of authorization update attempts associated with this
+            payment, sorted in chronological order.
+
+
+            Note: This field contains only the authorization update attempts, so
+            this field will be empty when 
+
+            the payment is first created (even though the amount is authorized
+            in this flow, it is not an update).
       required:
         - id
         - amount
@@ -43912,14 +48517,28 @@ webhooks:
               properties:
                 type:
                   type: string
+                  description: >-
+                    The type of event that occurred. `payment.status.updated`
+                    for this event.
                 event_id:
                   type: string
+                  description: A unique identifier provided by Cash App for the event.
                 created_at:
                   type: string
                   format: date-time
+                  description: >-
+                    When this event occured in [RFC
+                    3339](https://datatracker.ietf.org/doc/html/rfc3339) format
+                    (UTC).
+
+
+                    The time that the event is delivered may be significantly
+                    later than this timestamp due to webhooks being retried for
+                    up to 72 hours.
                 data:
                   $ref: >-
                     #/components/schemas/WebhooksPaymentStatusUpdatedPayloadContentApplicationJsonSchemaData
+                  description: Data about the payment that had a status change.
               required:
                 - type
                 - event_id
@@ -43952,6 +48571,11 @@ components:
       properties:
         actor:
           $ref: '#/components/schemas/PaymentEnrichmentsInitiationActor'
+          description: |-
+            The party who initiated the payment.
+
+            - `CUSTOMER`
+            - `MERCHANT`
       required:
         - actor
     PaymentEnrichmentsRestrictedCategoriesItems:
@@ -43965,14 +48589,47 @@ components:
       properties:
         initiation:
           $ref: '#/components/schemas/PaymentEnrichmentsInitiation'
+          description: If present, provides information about transaction initiation.
         recurring_series_id:
           type: string
+          description: >-
+            If present, indicates that this payment is part of a recurring
+            series of payments, such as a subscription.
+
+
+            The value should contain a unique identifier for the recurring
+            series that is constant across all of its payments, so it can be
+            used to group them together.
+
+
+            Min length: `1`
+
+            Max length: `1024`
         statement_descriptor:
           type: string
+          description: >-
+            If present, adds the descriptor as line item on to a customer's
+            payment receipt in their in-app Activity page.
+
+            The descriptor will be present under the header "On statement as".
+
+
+            Statement descriptor requirements vary by platform. If the input for
+            this field exceeds the character limit, it will be truncated to the
+            limit, then suffixed with an ellipsis (...).
+
+
+            Min length: `1`
+
+            Max length: `22`
         restricted_categories:
           type: array
           items:
             $ref: '#/components/schemas/PaymentEnrichmentsRestrictedCategoriesItems'
+          description: >-
+            If present, indicates that this payment is associated with one or
+            more restricted categories. Contact the Cash App Pay support team to
+            use this field.
     ErrorCategory:
       type: string
       enum:
@@ -43992,12 +48649,31 @@ components:
       properties:
         category:
           $ref: '#/components/schemas/ErrorCategory'
+          description: The high-level reason the error occurred
         code:
           type: string
+          description: >-
+            A unique identifier for the specific type of error that occurred.
+            See the Error Code Reference for more information.
+
+
+            Min length: `1`
         detail:
           type: string
+          description: >-
+            Human-readable description of why the error occurred and how to
+            resolve it.
+
+
+            Min length: `1`
         field:
           type: string
+          description: >-
+            The field in the request that caused the error, using array and
+            object dot notation.
+
+
+            Min length: `1`
       required:
         - category
         - code
@@ -44006,8 +48682,15 @@ components:
       properties:
         basis_points:
           type: integer
+          description: >-
+            The variable fee charged for processing the payment expressed as
+            1/100th of a percentage.
         fixed_amount:
           type: integer
+          description: >-
+            The amount charged for processing the payment, in the lowest
+            denomination of currency on the payment.
+             **Note: The currency for the fee is found on the fee plan.**
     AuthorizationStatus:
       type: string
       enum:
@@ -44018,27 +48701,62 @@ components:
       properties:
         id:
           type: string
+          description: |-
+            Unique identifier for this authorization issued by Cash App.
+
+            Min length: 1 character
+            Max length: 128 characters
         amount:
           type: integer
+          description: >-
+            Total authorized amount after this authorization was processed, in
+            the lowest denomination of currency on the payment.
         currency:
           $ref: '#/components/schemas/Currency'
         status:
           $ref: '#/components/schemas/AuthorizationStatus'
+          description: >-
+            The step of the authorization processing lifecycle that this
+            authorization is currently at.
+
+
+            Allowed values:
+
+            - AUTHORIZED
+
+            - DECLINED
         created_at:
           type: string
           format: date-time
+          description: When this authorization was created, in RFC 3339 format (UTC).
         payment_id:
           type: string
+          description: ID of the payment associated with this authorization
         previous_amount:
           type: integer
+          description: Total authorized amount before this authorization was requested
         reference_id:
           type: string
+          description: >-
+            A user-defined identifier for this authorization, typically used to
+            associate the authorization with a record in an external system.
+
+
+            Min length: 1
+
+            Max length: 1024
         metadata:
           $ref: '#/components/schemas/Metadata'
         decline_errors:
           type: array
           items:
             $ref: '#/components/schemas/Error'
+          description: >-
+            If the authorization was declined, it contains a list of the reasons
+            why it was declined.
+
+
+            Min number of items: 1
       required:
         - id
         - amount
@@ -44052,41 +48770,138 @@ components:
       properties:
         id:
           type: string
+          description: |-
+            Unique identifier for this payment issued by Cash App.
+
+            Min length: `1`
+            Max length: `128`
         amount:
           type: integer
+          description: >-
+            The amount of money to collect, in the lowest denomination of
+            currency on the payment. This is the _original_ amount authorized
+            when the payment was created.
+
+
+            Min value: `1`
         net_amount:
           type: integer
+          description: >-
+            The amount remaining after refunds and voided payments are deducted
+            from the amount field. The amount will be in the lowest denomination
+            of the currency on the payment.
+
+            This is the amount that will be shown to the customer in their Cash
+            App account.
+
+
+
+            Min value: `0`
         captured_amount:
           type: integer
+          description: >-
+            The amount of money on this payment that has been allocated for
+            settlement. The amount will be in the lowest denomination of the
+            currency on the payment.
+
+
+            Min value: `0`
         voided_amount:
           type: integer
+          description: >-
+            The amount of money on this payment that is no longer authorized and
+            has been released back to the customer. The amount will be in the
+            lowest denomination of the currency on the payment.
+
+
+            Min value: `0`
         refunded_amount:
           type: integer
+          description: >-
+            Sum of captured refunds in the lowest denomination of currency on
+            the payment.
+
+
+            Min value: `0`
         currency:
           $ref: '#/components/schemas/Currency'
         customer_id:
           type: string
+          description: |-
+            ID of the customer that sent this payment.
+
+            Min length: `1`
+            Max length: `128`
         merchant_id:
           type: string
+          description: |-
+            ID of the merchant that received this payment.
+
+            Min length: `1`
+            Max length: `128`
         grant_id:
           type: string
+          description: |-
+            ID of the grant to used to create this payment.
+
+            Min length: `1`
+            Max length: `256`
         status:
           $ref: '#/components/schemas/PaymentStatus'
+          description: >-
+            The step of the payment processing lifecycle that this payment is
+            currently at.
+
+
+            - `AUTHORIZED`
+
+            - `CAPTURED`
+
+            - `VOIDED`
+
+            - `DECLINED`
         created_at:
           type: string
           format: date-time
+          description: >-
+            When this payment was created, in [RFC
+            3339](https://datatracker.ietf.org/doc/html/rfc3339) format (UTC).
         updated_at:
           type: string
           format: date-time
+          description: >-
+            When this payment was last updated, in [RFC
+            3339](https://datatracker.ietf.org/doc/html/rfc3339) format (UTC).
         capture_before:
           type: string
           format: date-time
+          description: >-
+            When this payment should be captured by, in [RFC
+            3339](https://datatracker.ietf.org/doc/html/rfc3339) format (UTC).
         refund_ids:
           type: array
           items:
             type: string
+          description: >-
+            A list of one or more IDs associated with refunds issued for this
+            payment.
+
+
+            Min array length: `1`
+
+            Min length of IDs: `1`
+
+            Max length of IDs: `128`
         reference_id:
           type: string
+          description: >-
+            A user-defined identifier for this payment, typically used to
+            associate the payment with a record in an external system.
+
+
+            Min length: `1`
+
+            Max length: `1024`
         metadata:
           $ref: '#/components/schemas/Metadata'
         enrichments:
@@ -44095,15 +48910,37 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Error'
+          description: >-
+            If the payment was declined, contains a list of the reasons why it
+            was declined.
+
+
+            Min number of items: `1`
         fee_amount:
           type: number
           format: double
+          description: >-
+            The total fee amount that was charged to the merchant for processing
+            this payment.
         fee_rate:
           $ref: '#/components/schemas/FeeRate'
+          description: >-
+            The breakdown of the fee that was charged to the merchant for
+            processing this payment.
         authorization_updates:
           type: array
           items:
             $ref: '#/components/schemas/Authorization'
+          description: >-
+            A list of authorization update attempts associated with this
+            payment, sorted in chronological order.
+
+
+            Note: This field contains only the authorization update attempts, so
+            this field will be empty when 
+
+            the payment is first created (even though the amount is authorized
+            in this flow, it is not an update).
       required:
         - id
         - amount
@@ -44130,11 +48967,18 @@ components:
       properties:
         id:
           type: string
+          description: A unique identifier provided by Cash App for the payment.
         object:
           $ref: >-
             #/components/schemas/WebhooksPaymentStatusUpdatedPayloadContentApplicationJsonSchemaDataObject
+          description: >-
+            A snapshot of the payment data immediately after the payment's
+            status changed.
         type:
           type: string
+          description: >-
+            The resource type contained in the `object` field. For this event,
+            it is `payment`.
       required:
         - id
         - object
@@ -44214,6 +49058,7 @@ paths:
           required: false
           schema:
             type: integer
+            default: 50
         - name: Accept
           in: header
           required: true
@@ -44280,12 +49125,31 @@ components:
       properties:
         category:
           $ref: '#/components/schemas/ErrorCategory'
+          description: The high-level reason the error occurred
         code:
           type: string
+          description: >-
+            A unique identifier for the specific type of error that occurred.
+            See the Error Code Reference for more information.
+
+
+            Min length: `1`
         detail:
           type: string
+          description: >-
+            Human-readable description of why the error occurred and how to
+            resolve it.
+
+
+            Min length: `1`
         field:
           type: string
+          description: >-
+            The field in the request that caused the error, using array and
+            object dot notation.
+
+
+            Min length: `1`
       required:
         - category
         - code
@@ -44294,34 +49158,97 @@ components:
       properties:
         id:
           type: string
+          description: |-
+            Unique identifier for this refund issued by Cash App.
+
+            Min length: `1`
+            Max length: `128`
         amount:
           type: integer
+          description: >-
+            Amount of money to refund, in the lowest denomination of currency on
+            the refund.
+
+
+            Min value: `1`
         currency:
           $ref: '#/components/schemas/Currency'
         customer_id:
           type: string
+          description: |-
+            ID of the customer that received this refund.
+
+            Min length: `1`
+            Max length: `128`
         merchant_id:
           type: string
+          description: |-
+            ID of the merchant that issued this refund.
+
+            Min length: `1`
+            Max length: `128`
         status:
           $ref: '#/components/schemas/RefundStatus'
+          description: >-
+            The step of the refund processing lifecycle that this refund is
+            currently at.
+
+
+            - `AUTHORIZED`
+
+            - `CAPTURED`
+
+            - `VOIDED`
+
+            - `DECLINED`
         created_at:
           type: string
           format: date-time
+          description: >-
+            When this refund was created, in [RFC
+            3339](https://datatracker.ietf.org/doc/html/rfc3339) format (UTC).
         updated_at:
           type: string
           format: date-time
+          description: >-
+            When this refund was last updated, in [RFC
+            3339](https://datatracker.ietf.org/doc/html/rfc3339) format (UTC).
         grant_id:
           type: string
+          description: |-
+            This is currently unused and empty.
+
+            Min length: `1`
+            Max length: `256`
         payment_id:
           type: string
+          description: |-
+            This is currently unused and empty.
+
+            Min length: `1`
+            Max length: `128`
         reference_id:
           type: string
+          description: >-
+            A user-defined identifier for this refund, typically used to
+            associate the refund with a record in an external system.
+
+
+            Min length: `1`
+
+            Max length: `1024`
         metadata:
           $ref: '#/components/schemas/Metadata'
         decline_errors:
           type: array
           items:
             $ref: '#/components/schemas/Error'
+          description: >-
+            If the refund was declined, contains a list of the reasons why it
+            was declined.
+
+
+            Min number of items: `1`
       required:
         - id
         - amount
@@ -44338,8 +49265,12 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Refund'
+          description: List of refunds matching the given query parameters.
         cursor:
           type: string
+          description: >-
+            The pagination cursor to be used in a subsequent request. If empty,
+            this is the final response.
       required:
         - refunds
 
@@ -44583,8 +49514,9 @@ paths:
             in the response payload.
 
 
-            <Note title="Note"> **`REFUND_DECLINE_*` errors consume one-time use
-            grants.**
+            <Note> 
+
+            **`REFUND_DECLINE_*` errors consume one-time use grants.**
              This means you must repeat the Customer Request flow to get a new grant if you want to try issuing
              the refund again. All other errors will not consume grants.
             </Note>
@@ -44601,6 +49533,7 @@ paths:
                 refund:
                   $ref: >-
                     #/components/schemas/RefundsPostRequestBodyContentApplicationJsonSchemaRefund
+                  description: Details about the refund to create.
               required:
                 - idempotency_key
                 - refund
@@ -44621,16 +49554,47 @@ components:
       properties:
         amount:
           type: integer
+          description: >-
+            The amount of money to refund the customer, in the lowest
+            denomination of currency for the refund.
+
+
+            Min value: `1`
         currency:
           $ref: '#/components/schemas/Currency'
         merchant_id:
           type: string
+          description: |-
+            ID of the merchant to make the refund from.
+
+            Min length: `1`
+            Max length: `128`
         payment_id:
           type: string
+          description: |-
+            For refunds, this is the ID of the payment to refund.
+
+            Min length: `1`
+            Max length: `128`
         capture:
           type: boolean
+          default: true
+          description: >-
+            Whether or not to automatically capture the refund once it's
+            created.
+
+
+            Default: `true`
         reference_id:
           type: string
+          description: >-
+            A user-defined identifier for this refund, typically used to
+            associate the refund with a record in an external system.
+
+
+            Min length: `1`
+
+            Max length: `1024`
         metadata:
           $ref: '#/components/schemas/Metadata'
       required:
@@ -44663,12 +49627,31 @@ components:
       properties:
         category:
           $ref: '#/components/schemas/ErrorCategory'
+          description: The high-level reason the error occurred
         code:
           type: string
+          description: >-
+            A unique identifier for the specific type of error that occurred.
+            See the Error Code Reference for more information.
+
+
+            Min length: `1`
         detail:
           type: string
+          description: >-
+            Human-readable description of why the error occurred and how to
+            resolve it.
+
+
+            Min length: `1`
         field:
           type: string
+          description: >-
+            The field in the request that caused the error, using array and
+            object dot notation.
+
+
+            Min length: `1`
       required:
         - category
         - code
@@ -44677,34 +49660,97 @@ components:
       properties:
         id:
           type: string
+          description: |-
+            Unique identifier for this refund issued by Cash App.
+
+            Min length: `1`
+            Max length: `128`
         amount:
           type: integer
+          description: >-
+            Amount of money to refund, in the lowest denomination of currency on
+            the refund.
+
+
+            Min value: `1`
         currency:
           $ref: '#/components/schemas/Currency'
         customer_id:
           type: string
+          description: |-
+            ID of the customer that received this refund.
+
+            Min length: `1`
+            Max length: `128`
         merchant_id:
           type: string
+          description: |-
+            ID of the merchant that issued this refund.
+
+            Min length: `1`
+            Max length: `128`
         status:
           $ref: '#/components/schemas/RefundStatus'
+          description: >-
+            The step of the refund processing lifecycle that this refund is
+            currently at.
+
+
+            - `AUTHORIZED`
+
+            - `CAPTURED`
+
+            - `VOIDED`
+
+            - `DECLINED`
         created_at:
           type: string
           format: date-time
+          description: >-
+            When this refund was created, in [RFC
+            3339](https://datatracker.ietf.org/doc/html/rfc3339) format (UTC).
         updated_at:
           type: string
           format: date-time
+          description: >-
+            When this refund was last updated, in [RFC
+            3339](https://datatracker.ietf.org/doc/html/rfc3339) format (UTC).
         grant_id:
           type: string
+          description: |-
+            This is currently unused and empty.
+
+            Min length: `1`
+            Max length: `256`
         payment_id:
           type: string
+          description: |-
+            This is currently unused and empty.
+
+            Min length: `1`
+            Max length: `128`
         reference_id:
           type: string
+          description: >-
+            A user-defined identifier for this refund, typically used to
+            associate the refund with a record in an external system.
+
+
+            Min length: `1`
+
+            Max length: `1024`
         metadata:
           $ref: '#/components/schemas/Metadata'
         decline_errors:
           type: array
           items:
             $ref: '#/components/schemas/Error'
+          description: >-
+            If the refund was declined, contains a list of the reasons why it
+            was declined.
+
+
+            Min number of items: `1`
       required:
         - id
         - amount
@@ -45039,12 +50085,31 @@ components:
       properties:
         category:
           $ref: '#/components/schemas/ErrorCategory'
+          description: The high-level reason the error occurred
         code:
           type: string
+          description: >-
+            A unique identifier for the specific type of error that occurred.
+            See the Error Code Reference for more information.
+
+
+            Min length: `1`
         detail:
           type: string
+          description: >-
+            Human-readable description of why the error occurred and how to
+            resolve it.
+
+
+            Min length: `1`
         field:
           type: string
+          description: >-
+            The field in the request that caused the error, using array and
+            object dot notation.
+
+
+            Min length: `1`
       required:
         - category
         - code
@@ -45053,34 +50118,97 @@ components:
       properties:
         id:
           type: string
+          description: |-
+            Unique identifier for this refund issued by Cash App.
+
+            Min length: `1`
+            Max length: `128`
         amount:
           type: integer
+          description: >-
+            Amount of money to refund, in the lowest denomination of currency on
+            the refund.
+
+
+            Min value: `1`
         currency:
           $ref: '#/components/schemas/Currency'
         customer_id:
           type: string
+          description: |-
+            ID of the customer that received this refund.
+
+            Min length: `1`
+            Max length: `128`
         merchant_id:
           type: string
+          description: |-
+            ID of the merchant that issued this refund.
+
+            Min length: `1`
+            Max length: `128`
         status:
           $ref: '#/components/schemas/RefundStatus'
+          description: >-
+            The step of the refund processing lifecycle that this refund is
+            currently at.
+
+
+            - `AUTHORIZED`
+
+            - `CAPTURED`
+
+            - `VOIDED`
+
+            - `DECLINED`
         created_at:
           type: string
           format: date-time
+          description: >-
+            When this refund was created, in [RFC
+            3339](https://datatracker.ietf.org/doc/html/rfc3339) format (UTC).
         updated_at:
           type: string
           format: date-time
+          description: >-
+            When this refund was last updated, in [RFC
+            3339](https://datatracker.ietf.org/doc/html/rfc3339) format (UTC).
         grant_id:
           type: string
+          description: |-
+            This is currently unused and empty.
+
+            Min length: `1`
+            Max length: `256`
         payment_id:
           type: string
+          description: |-
+            This is currently unused and empty.
+
+            Min length: `1`
+            Max length: `128`
         reference_id:
           type: string
+          description: >-
+            A user-defined identifier for this refund, typically used to
+            associate the refund with a record in an external system.
+
+
+            Min length: `1`
+
+            Max length: `1024`
         metadata:
           $ref: '#/components/schemas/Metadata'
         decline_errors:
           type: array
           items:
             $ref: '#/components/schemas/Error'
+          description: >-
+            If the refund was declined, contains a list of the reasons why it
+            was declined.
+
+
+            Min number of items: `1`
       required:
         - id
         - amount
@@ -45375,12 +50503,31 @@ components:
       properties:
         category:
           $ref: '#/components/schemas/ErrorCategory'
+          description: The high-level reason the error occurred
         code:
           type: string
+          description: >-
+            A unique identifier for the specific type of error that occurred.
+            See the Error Code Reference for more information.
+
+
+            Min length: `1`
         detail:
           type: string
+          description: >-
+            Human-readable description of why the error occurred and how to
+            resolve it.
+
+
+            Min length: `1`
         field:
           type: string
+          description: >-
+            The field in the request that caused the error, using array and
+            object dot notation.
+
+
+            Min length: `1`
       required:
         - category
         - code
@@ -45389,34 +50536,97 @@ components:
       properties:
         id:
           type: string
+          description: |-
+            Unique identifier for this refund issued by Cash App.
+
+            Min length: `1`
+            Max length: `128`
         amount:
           type: integer
+          description: >-
+            Amount of money to refund, in the lowest denomination of currency on
+            the refund.
+
+
+            Min value: `1`
         currency:
           $ref: '#/components/schemas/Currency'
         customer_id:
           type: string
+          description: |-
+            ID of the customer that received this refund.
+
+            Min length: `1`
+            Max length: `128`
         merchant_id:
           type: string
+          description: |-
+            ID of the merchant that issued this refund.
+
+            Min length: `1`
+            Max length: `128`
         status:
           $ref: '#/components/schemas/RefundStatus'
+          description: >-
+            The step of the refund processing lifecycle that this refund is
+            currently at.
+
+
+            - `AUTHORIZED`
+
+            - `CAPTURED`
+
+            - `VOIDED`
+
+            - `DECLINED`
         created_at:
           type: string
           format: date-time
+          description: >-
+            When this refund was created, in [RFC
+            3339](https://datatracker.ietf.org/doc/html/rfc3339) format (UTC).
         updated_at:
           type: string
           format: date-time
+          description: >-
+            When this refund was last updated, in [RFC
+            3339](https://datatracker.ietf.org/doc/html/rfc3339) format (UTC).
         grant_id:
           type: string
+          description: |-
+            This is currently unused and empty.
+
+            Min length: `1`
+            Max length: `256`
         payment_id:
           type: string
+          description: |-
+            This is currently unused and empty.
+
+            Min length: `1`
+            Max length: `128`
         reference_id:
           type: string
+          description: >-
+            A user-defined identifier for this refund, typically used to
+            associate the refund with a record in an external system.
+
+
+            Min length: `1`
+
+            Max length: `1024`
         metadata:
           $ref: '#/components/schemas/Metadata'
         decline_errors:
           type: array
           items:
             $ref: '#/components/schemas/Error'
+          description: >-
+            If the refund was declined, contains a list of the reasons why it
+            was declined.
+
+
+            Min number of items: `1`
       required:
         - id
         - amount
@@ -45620,7 +50830,8 @@ POST https://api.cash.app/network/v1/refunds/{refund_id}/void
 
 Moves an authorized refund to the voided state and removes the "pending refund" screen from a customer's Cash App account.
 
-<Note> You can only void an authorized refund.
+<Note> 
+You can only void an authorized refund.
 </Note>
 
 **This endpoint is not rate limited.**
@@ -45646,7 +50857,9 @@ paths:
         refund" screen from a customer's Cash App account.
 
 
-        <Note> You can only void an authorized refund.
+        <Note> 
+
+        You can only void an authorized refund.
 
         </Note>
 
@@ -45729,12 +50942,31 @@ components:
       properties:
         category:
           $ref: '#/components/schemas/ErrorCategory'
+          description: The high-level reason the error occurred
         code:
           type: string
+          description: >-
+            A unique identifier for the specific type of error that occurred.
+            See the Error Code Reference for more information.
+
+
+            Min length: `1`
         detail:
           type: string
+          description: >-
+            Human-readable description of why the error occurred and how to
+            resolve it.
+
+
+            Min length: `1`
         field:
           type: string
+          description: >-
+            The field in the request that caused the error, using array and
+            object dot notation.
+
+
+            Min length: `1`
       required:
         - category
         - code
@@ -45743,34 +50975,97 @@ components:
       properties:
         id:
           type: string
+          description: |-
+            Unique identifier for this refund issued by Cash App.
+
+            Min length: `1`
+            Max length: `128`
         amount:
           type: integer
+          description: >-
+            Amount of money to refund, in the lowest denomination of currency on
+            the refund.
+
+
+            Min value: `1`
         currency:
           $ref: '#/components/schemas/Currency'
         customer_id:
           type: string
+          description: |-
+            ID of the customer that received this refund.
+
+            Min length: `1`
+            Max length: `128`
         merchant_id:
           type: string
+          description: |-
+            ID of the merchant that issued this refund.
+
+            Min length: `1`
+            Max length: `128`
         status:
           $ref: '#/components/schemas/RefundStatus'
+          description: >-
+            The step of the refund processing lifecycle that this refund is
+            currently at.
+
+
+            - `AUTHORIZED`
+
+            - `CAPTURED`
+
+            - `VOIDED`
+
+            - `DECLINED`
         created_at:
           type: string
           format: date-time
+          description: >-
+            When this refund was created, in [RFC
+            3339](https://datatracker.ietf.org/doc/html/rfc3339) format (UTC).
         updated_at:
           type: string
           format: date-time
+          description: >-
+            When this refund was last updated, in [RFC
+            3339](https://datatracker.ietf.org/doc/html/rfc3339) format (UTC).
         grant_id:
           type: string
+          description: |-
+            This is currently unused and empty.
+
+            Min length: `1`
+            Max length: `256`
         payment_id:
           type: string
+          description: |-
+            This is currently unused and empty.
+
+            Min length: `1`
+            Max length: `128`
         reference_id:
           type: string
+          description: >-
+            A user-defined identifier for this refund, typically used to
+            associate the refund with a record in an external system.
+
+
+            Min length: `1`
+
+            Max length: `1024`
         metadata:
           $ref: '#/components/schemas/Metadata'
         decline_errors:
           type: array
           items:
             $ref: '#/components/schemas/Error'
+          description: >-
+            If the refund was declined, contains a list of the reasons why it
+            was declined.
+
+
+            Min number of items: `1`
       required:
         - id
         - amount
@@ -45952,7 +51247,8 @@ Content-Type: application/json
 
 Moves an authorized refund to the voided state using the idempotency key specified while creating the refund.
 
-<Note> You can only void an authorized refund. If a refund is captured, there is no way to reverse it.
+<Note> 
+You can only void an authorized refund. If a refund is captured, there is no way to reverse it.
 </Note>
 
 In rare cases, an issue with an integration, network connectivity, or the Cash App Pay API may cause an API client to end up in a state where a refund is created in Cash App Pay, but the API client doesn't know the ID of the refund. This endpoint allows an API client to void a refund using _only_ the idempotency key to recover from these situations.
@@ -45982,8 +51278,10 @@ paths:
         specified while creating the refund.
 
 
-        <Note> You can only void an authorized refund. If a refund is captured,
-        there is no way to reverse it.
+        <Note> 
+
+        You can only void an authorized refund. If a refund is captured, there
+        is no way to reverse it.
 
         </Note>
 
@@ -46087,12 +51385,31 @@ components:
       properties:
         category:
           $ref: '#/components/schemas/ErrorCategory'
+          description: The high-level reason the error occurred
         code:
           type: string
+          description: >-
+            A unique identifier for the specific type of error that occurred.
+            See the Error Code Reference for more information.
+
+
+            Min length: `1`
         detail:
           type: string
+          description: >-
+            Human-readable description of why the error occurred and how to
+            resolve it.
+
+
+            Min length: `1`
         field:
           type: string
+          description: >-
+            The field in the request that caused the error, using array and
+            object dot notation.
+
+
+            Min length: `1`
       required:
         - category
         - code
@@ -46101,34 +51418,97 @@ components:
       properties:
         id:
           type: string
+          description: |-
+            Unique identifier for this refund issued by Cash App.
+
+            Min length: `1`
+            Max length: `128`
         amount:
           type: integer
+          description: >-
+            Amount of money to refund, in the lowest denomination of currency on
+            the refund.
+
+
+            Min value: `1`
         currency:
           $ref: '#/components/schemas/Currency'
         customer_id:
           type: string
+          description: |-
+            ID of the customer that received this refund.
+
+            Min length: `1`
+            Max length: `128`
         merchant_id:
           type: string
+          description: |-
+            ID of the merchant that issued this refund.
+
+            Min length: `1`
+            Max length: `128`
         status:
           $ref: '#/components/schemas/RefundStatus'
+          description: >-
+            The step of the refund processing lifecycle that this refund is
+            currently at.
+
+
+            - `AUTHORIZED`
+
+            - `CAPTURED`
+
+            - `VOIDED`
+
+            - `DECLINED`
         created_at:
           type: string
           format: date-time
+          description: >-
+            When this refund was created, in [RFC
+            3339](https://datatracker.ietf.org/doc/html/rfc3339) format (UTC).
         updated_at:
           type: string
           format: date-time
+          description: >-
+            When this refund was last updated, in [RFC
+            3339](https://datatracker.ietf.org/doc/html/rfc3339) format (UTC).
         grant_id:
           type: string
+          description: |-
+            This is currently unused and empty.
+
+            Min length: `1`
+            Max length: `256`
         payment_id:
           type: string
+          description: |-
+            This is currently unused and empty.
+
+            Min length: `1`
+            Max length: `128`
         reference_id:
           type: string
+          description: >-
+            A user-defined identifier for this refund, typically used to
+            associate the refund with a record in an external system.
+
+
+            Min length: `1`
+
+            Max length: `1024`
         metadata:
           $ref: '#/components/schemas/Metadata'
         decline_errors:
           type: array
           items:
             $ref: '#/components/schemas/Error'
+          description: >-
+            If the refund was declined, contains a list of the reasons why it
+            was declined.
+
+
+            Min number of items: `1`
       required:
         - id
         - amount
@@ -46424,14 +51804,28 @@ webhooks:
               properties:
                 type:
                   type: string
+                  description: >-
+                    The type of event that occurred. `refund.status.updated` for
+                    this event.
                 event_id:
                   type: string
+                  description: A unique identifier provided by Cash App for the event.
                 created_at:
                   type: string
                   format: date-time
+                  description: >-
+                    When this event occured in [RFC
+                    3339](https://datatracker.ietf.org/doc/html/rfc3339) format
+                    (UTC).
+
+
+                    The time that the event is delivered may be significantly
+                    later than this timestamp due to webhooks being retried for
+                    up to 72 hours.
                 data:
                   $ref: >-
                     #/components/schemas/WebhooksRefundStatusUpdatedPayloadContentApplicationJsonSchemaData
+                  description: Data about the refund that had a status change.
               required:
                 - type
                 - event_id
@@ -46473,12 +51867,31 @@ components:
       properties:
         category:
           $ref: '#/components/schemas/ErrorCategory'
+          description: The high-level reason the error occurred
         code:
           type: string
+          description: >-
+            A unique identifier for the specific type of error that occurred.
+            See the Error Code Reference for more information.
+
+
+            Min length: `1`
         detail:
           type: string
+          description: >-
+            Human-readable description of why the error occurred and how to
+            resolve it.
+
+
+            Min length: `1`
         field:
           type: string
+          description: >-
+            The field in the request that caused the error, using array and
+            object dot notation.
+
+
+            Min length: `1`
       required:
         - category
         - code
@@ -46487,34 +51900,97 @@ components:
       properties:
         id:
           type: string
+          description: |-
+            Unique identifier for this refund issued by Cash App.
+
+            Min length: `1`
+            Max length: `128`
         amount:
           type: integer
+          description: >-
+            Amount of money to refund, in the lowest denomination of currency on
+            the refund.
+
+
+            Min value: `1`
         currency:
           $ref: '#/components/schemas/Currency'
         customer_id:
           type: string
+          description: |-
+            ID of the customer that received this refund.
+
+            Min length: `1`
+            Max length: `128`
         merchant_id:
           type: string
+          description: |-
+            ID of the merchant that issued this refund.
+
+            Min length: `1`
+            Max length: `128`
         status:
           $ref: '#/components/schemas/RefundStatus'
+          description: >-
+            The step of the refund processing lifecycle that this refund is
+            currently at.
+
+
+            - `AUTHORIZED`
+
+            - `CAPTURED`
+
+            - `VOIDED`
+
+            - `DECLINED`
         created_at:
           type: string
           format: date-time
+          description: >-
+            When this refund was created, in [RFC
+            3339](https://datatracker.ietf.org/doc/html/rfc3339) format (UTC).
         updated_at:
           type: string
           format: date-time
+          description: >-
+            When this refund was last updated, in [RFC
+            3339](https://datatracker.ietf.org/doc/html/rfc3339) format (UTC).
         grant_id:
           type: string
+          description: |-
+            This is currently unused and empty.
+
+            Min length: `1`
+            Max length: `256`
         payment_id:
           type: string
+          description: |-
+            This is currently unused and empty.
+
+            Min length: `1`
+            Max length: `128`
         reference_id:
           type: string
+          description: >-
+            A user-defined identifier for this refund, typically used to
+            associate the refund with a record in an external system.
+
+
+            Min length: `1`
+
+            Max length: `1024`
         metadata:
           $ref: '#/components/schemas/Metadata'
         decline_errors:
           type: array
           items:
             $ref: '#/components/schemas/Error'
+          description: >-
+            If the refund was declined, contains a list of the reasons why it
+            was declined.
+
+
+            Min number of items: `1`
       required:
         - id
         - amount
@@ -46536,11 +52012,18 @@ components:
       properties:
         id:
           type: string
+          description: A unique identifier provided by Cash App for the refund.
         object:
           $ref: >-
             #/components/schemas/WebhooksRefundStatusUpdatedPayloadContentApplicationJsonSchemaDataObject
+          description: >-
+            A snapshot of the refund immediately after the refund's status
+            changed.
         type:
           type: string
+          description: >-
+            The resource type contained in the `object` field. For this event,
+            it is `refund`.
       required:
         - id
         - object
@@ -46599,6 +52082,7 @@ paths:
           required: false
           schema:
             type: integer
+            default: 50
         - name: merchant_id
           in: query
           description: >-
@@ -46670,33 +52154,127 @@ components:
       properties:
         id:
           type: string
+          description: |-
+            A unique identifier for the dispute issued by Cash App.
+
+            Min length: `1`
+            Max length: `128`
         payment_id:
           type: string
+          description: |-
+            ID of the disputed payment.
+
+            Min length: `1`
+            Max length: `128`
         amount:
           type: integer
+          description: >-
+            Amount of disputed money, in the lowest denomination of currency on
+            the associated payment.
+
+
+            Min value: `1`
         customer_credited_amount:
           type:
             - integer
             - 'null'
+          description: >-
+            The amount credited to the Customer after resolving the dispute. 
+
+
+            Note: The amount will be in the lowest denomination of the currency
+            used on the associated payment.
+
+
+            Min value: `0`
         reason:
           $ref: '#/components/schemas/DisputeReason'
+          description: >-
+            4-digit code consisting of 2 letters followed by 2 numbers that
+            indicates why the dispute was created, at a high level.
+
+
+            Current values:
+
+
+            - `FR10`: Customer has no knowledge of the payment.
+
+            - `FR11`: Customer has no knowledge of the payment and liability has
+            shifted to the merchant due to collusion, fraud monitoring program
+            thresholds, or any other reason.
+
+            - `PE10`: Payment was processed twice.
+
+            - `PE11`: Payment amount differs from agreed amount.
+
+            - `PE12`: Payment was paid for by another means.
+
+            - `CD10`: Cancelled services.
+
+            - `CD11`: Goods or services differ from what was agreed upon for the
+            payment.
+
+            - `CD12`: The goods or services were not received.
+
+            - `CD13`: The purchase was cancelled or returned, but the refund has
+            not been processed.
         settlement_withholding:
           $ref: '#/components/schemas/DisputeSettlementWithholding'
+          description: >-
+            Indicates if the disputed amount has already been withheld from a
+            settlement or not.
+
+
+            Current values:
+
+
+            - `NOT_WITHHELD`: The disputed amount has not yet been withheld in a
+            settlement. It may impact future settlements if the dispute is
+            "lost" by the merchant.
+
+
+            - `WITHHELD_ALREADY`: The disputed amount was withheld in a prior
+            settlement. This dispute will not impact future settlements.
         state:
           $ref: '#/components/schemas/DisputeState'
+          description: |-
+            The step in the dispute lifecycle that this dispute is currently at:
+
+            - `RESPONSE_REQUIRED`
+            - `NO_RESPONSE_REQUIRED`
+            - `PROCESSING`
+            - `ACCEPTED`
+            - `WON`
+            - `PARTIALLY_WON`
+            - `LOST`
         created_at:
           type: string
           format: date-time
+          description: >-
+            When this dispute was created, in [RFC
+            3339](https://datatracker.ietf.org/doc/html/rfc3339) format (UTC).
         response_due_at:
           type:
             - string
             - 'null'
           format: date-time
+          description: >-
+            When the dispute must be challenged by, after which it will be
+            automatically accepted, in [RFC
+            3339](https://datatracker.ietf.org/doc/html/rfc3339) format (UTC).
         updated_at:
           type: string
           format: date-time
+          description: >-
+            When this dispute was last updated, in [RFC
+            3339](https://datatracker.ietf.org/doc/html/rfc3339) format (UTC).
         merchant_id:
           type: string
+          description: |-
+            ID of the merchant that collected the disputed payment.
+
+            Min length: `1`
+            Max length: `128`
       required:
         - id
         - payment_id
@@ -46714,8 +52292,12 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Dispute'
+          description: List of disputes matching the given query parameters.
         cursor:
           type: string
+          description: >-
+            The pagination cursor to be used in a subsequent request. If empty,
+            this is the final response.
       required:
         - disputes
 
@@ -46977,33 +52559,127 @@ components:
       properties:
         id:
           type: string
+          description: |-
+            A unique identifier for the dispute issued by Cash App.
+
+            Min length: `1`
+            Max length: `128`
         payment_id:
           type: string
+          description: |-
+            ID of the disputed payment.
+
+            Min length: `1`
+            Max length: `128`
         amount:
           type: integer
+          description: >-
+            Amount of disputed money, in the lowest denomination of currency on
+            the associated payment.
+
+
+            Min value: `1`
         customer_credited_amount:
           type:
             - integer
             - 'null'
+          description: >-
+            The amount credited to the Customer after resolving the dispute. 
+
+
+            Note: The amount will be in the lowest denomination of the currency
+            used on the associated payment.
+
+
+            Min value: `0`
         reason:
           $ref: '#/components/schemas/DisputeReason'
+          description: >-
+            4-digit code consisting of 2 letters followed by 2 numbers that
+            indicates why the dispute was created, at a high level.
+
+
+            Current values:
+
+
+            - `FR10`: Customer has no knowledge of the payment.
+
+            - `FR11`: Customer has no knowledge of the payment and liability has
+            shifted to the merchant due to collusion, fraud monitoring program
+            thresholds, or any other reason.
+
+            - `PE10`: Payment was processed twice.
+
+            - `PE11`: Payment amount differs from agreed amount.
+
+            - `PE12`: Payment was paid for by another means.
+
+            - `CD10`: Cancelled services.
+
+            - `CD11`: Goods or services differ from what was agreed upon for the
+            payment.
+
+            - `CD12`: The goods or services were not received.
+
+            - `CD13`: The purchase was cancelled or returned, but the refund has
+            not been processed.
         settlement_withholding:
           $ref: '#/components/schemas/DisputeSettlementWithholding'
+          description: >-
+            Indicates if the disputed amount has already been withheld from a
+            settlement or not.
+
+
+            Current values:
+
+
+            - `NOT_WITHHELD`: The disputed amount has not yet been withheld in a
+            settlement. It may impact future settlements if the dispute is
+            "lost" by the merchant.
+
+
+            - `WITHHELD_ALREADY`: The disputed amount was withheld in a prior
+            settlement. This dispute will not impact future settlements.
         state:
           $ref: '#/components/schemas/DisputeState'
+          description: |-
+            The step in the dispute lifecycle that this dispute is currently at:
+
+            - `RESPONSE_REQUIRED`
+            - `NO_RESPONSE_REQUIRED`
+            - `PROCESSING`
+            - `ACCEPTED`
+            - `WON`
+            - `PARTIALLY_WON`
+            - `LOST`
         created_at:
           type: string
           format: date-time
+          description: >-
+            When this dispute was created, in [RFC
+            3339](https://datatracker.ietf.org/doc/html/rfc3339) format (UTC).
         response_due_at:
           type:
             - string
             - 'null'
           format: date-time
+          description: >-
+            When the dispute must be challenged by, after which it will be
+            automatically accepted, in [RFC
+            3339](https://datatracker.ietf.org/doc/html/rfc3339) format (UTC).
         updated_at:
           type: string
           format: date-time
+          description: >-
+            When this dispute was last updated, in [RFC
+            3339](https://datatracker.ietf.org/doc/html/rfc3339) format (UTC).
         merchant_id:
           type: string
+          description: |-
+            ID of the merchant that collected the disputed payment.
+
+            Min length: `1`
+            Max length: `128`
       required:
         - id
         - payment_id
@@ -47185,7 +52861,8 @@ POST https://api.cash.app/network/v1/disputes/{dispute_id}/accept
 
 Resolves a dispute by having the merchant accept responsibility for it. This leads to a "loss" of the dispute from the merchant's perspective, and a "win" of the dispute from the customer's perspective.
 
-<Note> Once a dispute is accepted, the decision is final; it can never be changed.
+<Note> 
+After a dispute is accepted, the decision is final; it can never be changed.
 </Note>
 
 **This endpoint is not rate limited.**
@@ -47212,8 +52889,10 @@ paths:
         and a "win" of the dispute from the customer's perspective.
 
 
-        <Note> Once a dispute is accepted, the decision is final; it can never
-        be changed.
+        <Note> 
+
+        After a dispute is accepted, the decision is final; it can never be
+        changed.
 
         </Note>
 
@@ -47296,33 +52975,127 @@ components:
       properties:
         id:
           type: string
+          description: |-
+            A unique identifier for the dispute issued by Cash App.
+
+            Min length: `1`
+            Max length: `128`
         payment_id:
           type: string
+          description: |-
+            ID of the disputed payment.
+
+            Min length: `1`
+            Max length: `128`
         amount:
           type: integer
+          description: >-
+            Amount of disputed money, in the lowest denomination of currency on
+            the associated payment.
+
+
+            Min value: `1`
         customer_credited_amount:
           type:
             - integer
             - 'null'
+          description: >-
+            The amount credited to the Customer after resolving the dispute. 
+
+
+            Note: The amount will be in the lowest denomination of the currency
+            used on the associated payment.
+
+
+            Min value: `0`
         reason:
           $ref: '#/components/schemas/DisputeReason'
+          description: >-
+            4-digit code consisting of 2 letters followed by 2 numbers that
+            indicates why the dispute was created, at a high level.
+
+
+            Current values:
+
+
+            - `FR10`: Customer has no knowledge of the payment.
+
+            - `FR11`: Customer has no knowledge of the payment and liability has
+            shifted to the merchant due to collusion, fraud monitoring program
+            thresholds, or any other reason.
+
+            - `PE10`: Payment was processed twice.
+
+            - `PE11`: Payment amount differs from agreed amount.
+
+            - `PE12`: Payment was paid for by another means.
+
+            - `CD10`: Cancelled services.
+
+            - `CD11`: Goods or services differ from what was agreed upon for the
+            payment.
+
+            - `CD12`: The goods or services were not received.
+
+            - `CD13`: The purchase was cancelled or returned, but the refund has
+            not been processed.
         settlement_withholding:
           $ref: '#/components/schemas/DisputeSettlementWithholding'
+          description: >-
+            Indicates if the disputed amount has already been withheld from a
+            settlement or not.
+
+
+            Current values:
+
+
+            - `NOT_WITHHELD`: The disputed amount has not yet been withheld in a
+            settlement. It may impact future settlements if the dispute is
+            "lost" by the merchant.
+
+
+            - `WITHHELD_ALREADY`: The disputed amount was withheld in a prior
+            settlement. This dispute will not impact future settlements.
         state:
           $ref: '#/components/schemas/DisputeState'
+          description: |-
+            The step in the dispute lifecycle that this dispute is currently at:
+
+            - `RESPONSE_REQUIRED`
+            - `NO_RESPONSE_REQUIRED`
+            - `PROCESSING`
+            - `ACCEPTED`
+            - `WON`
+            - `PARTIALLY_WON`
+            - `LOST`
         created_at:
           type: string
           format: date-time
+          description: >-
+            When this dispute was created, in [RFC
+            3339](https://datatracker.ietf.org/doc/html/rfc3339) format (UTC).
         response_due_at:
           type:
             - string
             - 'null'
           format: date-time
+          description: >-
+            When the dispute must be challenged by, after which it will be
+            automatically accepted, in [RFC
+            3339](https://datatracker.ietf.org/doc/html/rfc3339) format (UTC).
         updated_at:
           type: string
           format: date-time
+          description: >-
+            When this dispute was last updated, in [RFC
+            3339](https://datatracker.ietf.org/doc/html/rfc3339) format (UTC).
         merchant_id:
           type: string
+          description: |-
+            ID of the merchant that collected the disputed payment.
+
+            Min length: `1`
+            Max length: `128`
       required:
         - id
         - payment_id
@@ -47502,9 +53275,10 @@ POST https://api.cash.app/network/v1/disputes/{dispute_id}/challenge
 
 Submits evidence uploaded to this dispute to Cash App Pay for review.
 
-Once Cash App Pay reviews the dispute, a final decision will be reached and funds will be settled appropriately. If this endpoint is not called by the `response_due_at` timestamp, the merchant will automatically "lose" the dispute.
+After Cash App Pay reviews the dispute, a final decision will be reached and funds will be settled appropriately. If this endpoint is not called by the `response_due_at` timestamp, the merchant will automatically "lose" the dispute.
 
-<Info> Challenging a dispute does not guarantee that the merchant will "win" it. It only means that it will be reviewed, instead of being automatically accepted by the merchant.
+<Info> 
+Challenging a dispute does not guarantee that the merchant will "win" it. It only means that it will be reviewed, instead of being automatically accepted by the merchant.
 </Info>
 
 **This endpoint is not rate limited.**
@@ -47529,14 +53303,16 @@ paths:
         Submits evidence uploaded to this dispute to Cash App Pay for review.
 
 
-        Once Cash App Pay reviews the dispute, a final decision will be reached
+        After Cash App Pay reviews the dispute, a final decision will be reached
         and funds will be settled appropriately. If this endpoint is not called
         by the `response_due_at` timestamp, the merchant will automatically
         "lose" the dispute.
 
 
-        <Info> Challenging a dispute does not guarantee that the merchant will
-        "win" it. It only means that it will be reviewed, instead of being
+        <Info> 
+
+        Challenging a dispute does not guarantee that the merchant will "win"
+        it. It only means that it will be reviewed, instead of being
         automatically accepted by the merchant.
 
         </Info>
@@ -47620,33 +53396,127 @@ components:
       properties:
         id:
           type: string
+          description: |-
+            A unique identifier for the dispute issued by Cash App.
+
+            Min length: `1`
+            Max length: `128`
         payment_id:
           type: string
+          description: |-
+            ID of the disputed payment.
+
+            Min length: `1`
+            Max length: `128`
         amount:
           type: integer
+          description: >-
+            Amount of disputed money, in the lowest denomination of currency on
+            the associated payment.
+
+
+            Min value: `1`
         customer_credited_amount:
           type:
             - integer
             - 'null'
+          description: >-
+            The amount credited to the Customer after resolving the dispute. 
+
+
+            Note: The amount will be in the lowest denomination of the currency
+            used on the associated payment.
+
+
+            Min value: `0`
         reason:
           $ref: '#/components/schemas/DisputeReason'
+          description: >-
+            4-digit code consisting of 2 letters followed by 2 numbers that
+            indicates why the dispute was created, at a high level.
+
+
+            Current values:
+
+
+            - `FR10`: Customer has no knowledge of the payment.
+
+            - `FR11`: Customer has no knowledge of the payment and liability has
+            shifted to the merchant due to collusion, fraud monitoring program
+            thresholds, or any other reason.
+
+            - `PE10`: Payment was processed twice.
+
+            - `PE11`: Payment amount differs from agreed amount.
+
+            - `PE12`: Payment was paid for by another means.
+
+            - `CD10`: Cancelled services.
+
+            - `CD11`: Goods or services differ from what was agreed upon for the
+            payment.
+
+            - `CD12`: The goods or services were not received.
+
+            - `CD13`: The purchase was cancelled or returned, but the refund has
+            not been processed.
         settlement_withholding:
           $ref: '#/components/schemas/DisputeSettlementWithholding'
+          description: >-
+            Indicates if the disputed amount has already been withheld from a
+            settlement or not.
+
+
+            Current values:
+
+
+            - `NOT_WITHHELD`: The disputed amount has not yet been withheld in a
+            settlement. It may impact future settlements if the dispute is
+            "lost" by the merchant.
+
+
+            - `WITHHELD_ALREADY`: The disputed amount was withheld in a prior
+            settlement. This dispute will not impact future settlements.
         state:
           $ref: '#/components/schemas/DisputeState'
+          description: |-
+            The step in the dispute lifecycle that this dispute is currently at:
+
+            - `RESPONSE_REQUIRED`
+            - `NO_RESPONSE_REQUIRED`
+            - `PROCESSING`
+            - `ACCEPTED`
+            - `WON`
+            - `PARTIALLY_WON`
+            - `LOST`
         created_at:
           type: string
           format: date-time
+          description: >-
+            When this dispute was created, in [RFC
+            3339](https://datatracker.ietf.org/doc/html/rfc3339) format (UTC).
         response_due_at:
           type:
             - string
             - 'null'
           format: date-time
+          description: >-
+            When the dispute must be challenged by, after which it will be
+            automatically accepted, in [RFC
+            3339](https://datatracker.ietf.org/doc/html/rfc3339) format (UTC).
         updated_at:
           type: string
           format: date-time
+          description: >-
+            When this dispute was last updated, in [RFC
+            3339](https://datatracker.ietf.org/doc/html/rfc3339) format (UTC).
         merchant_id:
           type: string
+          description: |-
+            ID of the merchant that collected the disputed payment.
+
+            Min length: `1`
+            Max length: `128`
       required:
         - id
         - payment_id
@@ -47878,6 +53748,7 @@ paths:
           required: false
           schema:
             type: integer
+            default: 50
         - name: Accept
           in: header
           required: true
@@ -47943,8 +53814,22 @@ components:
       properties:
         filename:
           type: string
+          description: >-
+            Name of the uploaded file. It should be descriptive enough to
+            indicate what type of information is contained in the uploaded file.
         content_type:
           $ref: '#/components/schemas/DisputeEvidenceFileContentType'
+          description: |-
+            The MIME type of the uploaded file.
+
+            Current values:
+
+            - `application/pdf`
+            - `image/heic`
+            - `image/heif`
+            - `image/jpeg`
+            - `image/png`
+            - `image/tiff`
       required:
         - filename
         - content_type
@@ -47962,19 +53847,130 @@ components:
       properties:
         id:
           type: string
+          description: |-
+            A unique identifier for the dispute evidence issued by Cash App.
+
+            Min length: `1`
+            Max length: `128`
         dispute_id:
           type: string
+          description: |-
+            ID of the dispute this evidence is associated with.
+
+            Min length: `1`
+            Max length: `128`
         category:
           $ref: '#/components/schemas/DisputeEvidenceCategory'
+          description: >-
+            Describes what type of information is contained in this piece of
+            evidence.
+
+
+            Current values:
+
+
+            - `GENERIC_EVIDENCE`: Default evidence type used if no other
+            category applies.
+
+            - `ONLINE_OR_APP_ACCESS_LOG`: Server or activity logs that show
+            proof of the cardholder’s identity and that the cardholder
+            successfully ordered and received the goods (digitally or
+            otherwise). Example evidence includes IP addresses, corresponding
+            timestamps/dates, cardholder’s name and email address linked to a
+            cardholder profile held by the seller, proof the same device and
+            card (used in dispute) were previously used in prior undisputed
+            transaction, and any related detailed activity.
+
+            - `AUTHORIZATION_DOCUMENTATION`: **[File Only]** Evidence that the
+            cardholder did provide authorization for the charge. Example
+            evidence includes a signed credit card authorization.
+
+            - `CANCELLATION_OR_REFUND_DOCUMENTATION`: Evidence that the
+            cardholder acknowledged your refund or cancellation policy. Example
+            evidence includes a signature or checkbox showing the cardholder’s
+            acknowledgement of your refund or cancellation policy.
+
+            - `CARDHOLDER_COMMUNICATION`: **[File Only]** Evidence that shows
+            relevant communication with the cardholder. Example evidence
+            includes emails or texts that show the cardholder received
+            goods/services or demonstrate cardholder satisfaction.
+
+            - `CARDHOLDER_INFORMATION`: Evidence that validates the customer's
+            identity. Example evidence includes personally identifiable details
+            such as name, email address, purchaser IP address, and a copy of the
+            cardholder ID.
+
+            - `PURCHASE_ACKNOWLEDGEMENT`: Evidence that shows proof of the
+            sale/transaction. Example evidence includes an invoice, contract, or
+            other item showing the customer’s acknowledgement of the purchase
+            and your terms.
+
+            - `DUPLICATE_CHARGE_DOCUMENTATION`: **[File Only]** Evidence that
+            shows the charges in question are valid and distinct from one
+            another. Example evidence includes receipts, shipping labels, and
+            invoices along with their distinct payment IDs.
+
+            - `PRODUCT_OR_SERVICE_DESCRIPTION`: A description of the product or
+            service sold.
+
+            - `RECEIPT`: A receipt or message sent to the cardholder detailing
+            the charge. Note: You do not need to upload the Square receipt;
+            Square submits the receipt on your behalf.
+
+            - `SERVICE_RECEIVED_DOCUMENTATION`: Evidence that the service was
+            provided to the cardholder or the expected date that services will
+            be rendered. Example evidence includes a signed delivery form, work
+            order, expected delivery date, or other written agreements.
+
+            - `PROOF_OF_DELIVERY_DOCUMENTATION`: Evidence that shows the product
+            was provided to the cardholder or the expected date of delivery.
+            Example evidence includes a signed delivery form or written
+            agreement acknowledging receipt of the goods or services.
+
+            - `RELATED_TRANSACTION_DOCUMENTATION`: Evidence that shows the
+            cardholder previously processed transactions on the same card and
+            did not dispute them.
+
+            - `REBUTTAL_EXPLANATION`: An explanation of why the cardholder’s
+            claim is invalid. Example evidence includes an explanation of why
+            each distinct charge is a legitimate purchase, why the cardholder’s
+            claim for credit owed due to their attempt to cancel, return, or
+            refund is invalid per your stated policy and cardholder agreement,
+            or an explanation of how the cardholder did not attempt to remedy
+            the issue with you first to receive credit.
+
+            - `TRACKING_NUMBER`: The tracking number for the order provided by
+            the shipping carrier. If you have multiple numbers, they need to be
+            submitted individually as separate pieces of evidence.
         file:
           $ref: '#/components/schemas/DisputeEvidenceFile'
+          description: >-
+            If the evidence is of type `FILE`, contains metadata about the
+            binary file uploaded as evidence.
         text:
           type: string
+          description: >-
+            If the evidence is of type `TEXT`, contains the blob of text created
+            as evidence.
+
+
+            Min length: `1`
+
+            Max length: `500`
         type:
           $ref: '#/components/schemas/DisputeEvidenceType'
+          description: |-
+            Indicates if the evidence is a file or plain text.
+
+            Current values:
+            - `TEXT`: The evidence is a blob of text under 500 characters.
+            - `FILE`: The evidence is an uploaded binary file.
         created_at:
           type: string
           format: date-time
+          description: >-
+            When this evidence was created, in [RFC
+            3339](https://datatracker.ietf.org/doc/html/rfc3339) format (UTC).
         metadata:
           $ref: '#/components/schemas/Metadata'
       required:
@@ -47990,8 +53986,14 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/DisputeEvidence'
+          description: >-
+            List of pieces of evidence for the dispute matching the given query
+            parameters
         cursor:
           type: string
+          description: >-
+            The pagination cursor to be used in a subsequent request. If empty,
+            this is the final response.
       required:
         - evidence
 
@@ -48161,7 +54163,8 @@ Creates a piece of evidence for the given dispute from a blob of plain text, whi
 
 If you have more than 500 characters of text to submit as evidence, split it into multiple pieces where possible.
 
-<Note> Uploading evidence does not challenge the dispute. Make sure to call the [challenge dispute](Network-API.v1.yaml/paths/~1disputes~1{dispute_id}~1challenge) endpoint before the `response_due_at` timestamp, or else the merchant will automatically "lose" the dispute.
+<Note> 
+Uploading evidence does not challenge the dispute. Make sure to call the [challenge dispute](Network-API.v1.yaml/paths/~1disputes~1{dispute_id}~1challenge) endpoint before the `response_due_at` timestamp, or else the merchant will automatically "lose" the dispute.
 </Note>
 
 **This endpoint is not rate limited.**
@@ -48193,8 +54196,10 @@ paths:
         split it into multiple pieces where possible.
 
 
-        <Note> Uploading evidence does not challenge the dispute. Make sure to
-        call the [challenge
+        <Note> 
+
+        Uploading evidence does not challenge the dispute. Make sure to call the
+        [challenge
         dispute](Network-API.v1.yaml/paths/~1disputes~1{dispute_id}~1challenge)
         endpoint before the `response_due_at` timestamp, or else the merchant
         will automatically "lose" the dispute.
@@ -48260,6 +54265,7 @@ paths:
                 evidence:
                   $ref: >-
                     #/components/schemas/DisputesDisputeIdEvidenceTextPostRequestBodyContentApplicationJsonSchemaEvidence
+                  description: Details about the evidence to create.
               required:
                 - idempotency_key
                 - evidence
@@ -48295,8 +54301,90 @@ components:
         category:
           $ref: >-
             #/components/schemas/DisputesDisputeIdEvidenceTextPostRequestBodyContentApplicationJsonSchemaEvidenceCategory
+          description: >-
+            Describes what type of information is contained in this piece of
+            evidence.
+
+
+            Current values:
+
+
+            - `GENERIC_EVIDENCE`: Default evidence type used if no other
+            category applies.
+
+            - `ONLINE_OR_APP_ACCESS_LOG`: Server or activity logs that show
+            proof of the cardholder’s identity and that the cardholder
+            successfully ordered and received the goods (digitally or
+            otherwise). Example evidence includes IP addresses, corresponding
+            timestamps/dates, cardholder’s name and email address linked to a
+            cardholder profile held by the seller, proof the same device and
+            card (used in dispute) were previously used in prior undisputed
+            transaction, and any related detailed activity.
+
+            - `AUTHORIZATION_DOCUMENTATION`: **[File Only]** Evidence that the
+            cardholder did provide authorization for the charge. Example
+            evidence includes a signed credit card authorization.
+
+            - `CANCELLATION_OR_REFUND_DOCUMENTATION`: Evidence that the
+            cardholder acknowledged your refund or cancellation policy. Example
+            evidence includes a signature or checkbox showing the cardholder’s
+            acknowledgement of your refund or cancellation policy.
+
+            - `CARDHOLDER_COMMUNICATION`: **[File Only]** Evidence that shows
+            relevant communication with the cardholder. Example evidence
+            includes emails or texts that show the cardholder received
+            goods/services or demonstrate cardholder satisfaction.
+
+            - `CARDHOLDER_INFORMATION`: Evidence that validates the customer's
+            identity. Example evidence includes personally identifiable details
+            such as name, email address, purchaser IP address, and a copy of the
+            cardholder ID.
+
+            - `PURCHASE_ACKNOWLEDGEMENT`: Evidence that shows proof of the
+            sale/transaction. Example evidence includes an invoice, contract, or
+            other item showing the customer’s acknowledgement of the purchase
+            and your terms.
+
+            - `DUPLICATE_CHARGE_DOCUMENTATION`: **[File Only]** Evidence that
+            shows the charges in question are valid and distinct from one
+            another. Example evidence includes receipts, shipping labels, and
+            invoices along with their distinct payment IDs.
+
+            - `PRODUCT_OR_SERVICE_DESCRIPTION`: A description of the product or
+            service sold.
+
+            - `RECEIPT`: A receipt or message sent to the cardholder detailing
+            the charge. Note: You do not need to upload the Square receipt;
+            Square submits the receipt on your behalf.
+
+            - `SERVICE_RECEIVED_DOCUMENTATION`: Evidence that the service was
+            provided to the cardholder or the expected date that services will
+            be rendered. Example evidence includes a signed delivery form, work
+            order, expected delivery date, or other written agreements.
+
+            - `PROOF_OF_DELIVERY_DOCUMENTATION`: Evidence that shows the product
+            was provided to the cardholder or the expected date of delivery.
+            Example evidence includes a signed delivery form or written
+            agreement acknowledging receipt of the goods or services.
+
+            - `RELATED_TRANSACTION_DOCUMENTATION`: Evidence that shows the
+            cardholder previously processed transactions on the same card and
+            did not dispute them.
+
+            - `REBUTTAL_EXPLANATION`: An explanation of why the cardholder’s
+            claim is invalid. Example evidence includes an explanation of why
+            each distinct charge is a legitimate purchase, why the cardholder’s
+            claim for credit owed due to their attempt to cancel, return, or
+            refund is invalid per your stated policy and cardholder agreement,
+            or an explanation of how the cardholder did not attempt to remedy
+            the issue with you first to receive credit.
+
+            - `TRACKING_NUMBER`: The tracking number for the order provided by
+            the shipping carrier. If you have multiple numbers, they need to be
+            submitted individually as separate pieces of evidence.
         text:
           type: string
+          description: The blob of text to upload as evidence.
         metadata:
           $ref: '#/components/schemas/Metadata'
       required:
@@ -48334,8 +54422,22 @@ components:
       properties:
         filename:
           type: string
+          description: >-
+            Name of the uploaded file. It should be descriptive enough to
+            indicate what type of information is contained in the uploaded file.
         content_type:
           $ref: '#/components/schemas/DisputeEvidenceFileContentType'
+          description: |-
+            The MIME type of the uploaded file.
+
+            Current values:
+
+            - `application/pdf`
+            - `image/heic`
+            - `image/heif`
+            - `image/jpeg`
+            - `image/png`
+            - `image/tiff`
       required:
         - filename
         - content_type
@@ -48349,19 +54451,130 @@ components:
       properties:
         id:
           type: string
+          description: |-
+            A unique identifier for the dispute evidence issued by Cash App.
+
+            Min length: `1`
+            Max length: `128`
         dispute_id:
           type: string
+          description: |-
+            ID of the dispute this evidence is associated with.
+
+            Min length: `1`
+            Max length: `128`
         category:
           $ref: '#/components/schemas/DisputeEvidenceCategory'
+          description: >-
+            Describes what type of information is contained in this piece of
+            evidence.
+
+
+            Current values:
+
+
+            - `GENERIC_EVIDENCE`: Default evidence type used if no other
+            category applies.
+
+            - `ONLINE_OR_APP_ACCESS_LOG`: Server or activity logs that show
+            proof of the cardholder’s identity and that the cardholder
+            successfully ordered and received the goods (digitally or
+            otherwise). Example evidence includes IP addresses, corresponding
+            timestamps/dates, cardholder’s name and email address linked to a
+            cardholder profile held by the seller, proof the same device and
+            card (used in dispute) were previously used in prior undisputed
+            transaction, and any related detailed activity.
+
+            - `AUTHORIZATION_DOCUMENTATION`: **[File Only]** Evidence that the
+            cardholder did provide authorization for the charge. Example
+            evidence includes a signed credit card authorization.
+
+            - `CANCELLATION_OR_REFUND_DOCUMENTATION`: Evidence that the
+            cardholder acknowledged your refund or cancellation policy. Example
+            evidence includes a signature or checkbox showing the cardholder’s
+            acknowledgement of your refund or cancellation policy.
+
+            - `CARDHOLDER_COMMUNICATION`: **[File Only]** Evidence that shows
+            relevant communication with the cardholder. Example evidence
+            includes emails or texts that show the cardholder received
+            goods/services or demonstrate cardholder satisfaction.
+
+            - `CARDHOLDER_INFORMATION`: Evidence that validates the customer's
+            identity. Example evidence includes personally identifiable details
+            such as name, email address, purchaser IP address, and a copy of the
+            cardholder ID.
+
+            - `PURCHASE_ACKNOWLEDGEMENT`: Evidence that shows proof of the
+            sale/transaction. Example evidence includes an invoice, contract, or
+            other item showing the customer’s acknowledgement of the purchase
+            and your terms.
+
+            - `DUPLICATE_CHARGE_DOCUMENTATION`: **[File Only]** Evidence that
+            shows the charges in question are valid and distinct from one
+            another. Example evidence includes receipts, shipping labels, and
+            invoices along with their distinct payment IDs.
+
+            - `PRODUCT_OR_SERVICE_DESCRIPTION`: A description of the product or
+            service sold.
+
+            - `RECEIPT`: A receipt or message sent to the cardholder detailing
+            the charge. Note: You do not need to upload the Square receipt;
+            Square submits the receipt on your behalf.
+
+            - `SERVICE_RECEIVED_DOCUMENTATION`: Evidence that the service was
+            provided to the cardholder or the expected date that services will
+            be rendered. Example evidence includes a signed delivery form, work
+            order, expected delivery date, or other written agreements.
+
+            - `PROOF_OF_DELIVERY_DOCUMENTATION`: Evidence that shows the product
+            was provided to the cardholder or the expected date of delivery.
+            Example evidence includes a signed delivery form or written
+            agreement acknowledging receipt of the goods or services.
+
+            - `RELATED_TRANSACTION_DOCUMENTATION`: Evidence that shows the
+            cardholder previously processed transactions on the same card and
+            did not dispute them.
+
+            - `REBUTTAL_EXPLANATION`: An explanation of why the cardholder’s
+            claim is invalid. Example evidence includes an explanation of why
+            each distinct charge is a legitimate purchase, why the cardholder’s
+            claim for credit owed due to their attempt to cancel, return, or
+            refund is invalid per your stated policy and cardholder agreement,
+            or an explanation of how the cardholder did not attempt to remedy
+            the issue with you first to receive credit.
+
+            - `TRACKING_NUMBER`: The tracking number for the order provided by
+            the shipping carrier. If you have multiple numbers, they need to be
+            submitted individually as separate pieces of evidence.
         file:
           $ref: '#/components/schemas/DisputeEvidenceFile'
+          description: >-
+            If the evidence is of type `FILE`, contains metadata about the
+            binary file uploaded as evidence.
         text:
           type: string
+          description: >-
+            If the evidence is of type `TEXT`, contains the blob of text created
+            as evidence.
+
+
+            Min length: `1`
+
+            Max length: `500`
         type:
           $ref: '#/components/schemas/DisputeEvidenceType'
+          description: |-
+            Indicates if the evidence is a file or plain text.
+
+            Current values:
+            - `TEXT`: The evidence is a blob of text under 500 characters.
+            - `FILE`: The evidence is an uploaded binary file.
         created_at:
           type: string
           format: date-time
+          description: >-
+            When this evidence was created, in [RFC
+            3339](https://datatracker.ietf.org/doc/html/rfc3339) format (UTC).
         metadata:
           $ref: '#/components/schemas/Metadata'
       required:
@@ -48785,7 +54998,8 @@ The file must be one of the supported formats, or else it may not be usable to c
 - `PDF`
 - `TIFF`
 
-<Note> Uploading evidence does not challenge the dispute. Make sure to call the [challenge dispute](Network-API.v1.yaml/paths/~1disputes~1{dispute_id}~1challenge) endpoint before the `response_due_at` timestamp, or else the merchant will automatically "lose" the dispute.
+<Note> 
+Uploading evidence does not challenge the dispute. Make sure to call the [challenge dispute](Network-API.v1.yaml/paths/~1disputes~1{dispute_id}~1challenge) endpoint before the `response_due_at` timestamp, or else the merchant will automatically "lose" the dispute.
 </Note>
 
 **This endpoint is not rate limited.**
@@ -48863,8 +55077,10 @@ paths:
         - `TIFF`
 
 
-        <Note> Uploading evidence does not challenge the dispute. Make sure to
-        call the [challenge
+        <Note> 
+
+        Uploading evidence does not challenge the dispute. Make sure to call the
+        [challenge
         dispute](Network-API.v1.yaml/paths/~1disputes~1{dispute_id}~1challenge)
         endpoint before the `response_due_at` timestamp, or else the merchant
         will automatically "lose" the dispute.
@@ -48986,6 +55202,20 @@ paths:
                 request:
                   $ref: >-
                     #/components/schemas/DisputesDisputeIdEvidenceFilePostRequestBodyContentMultipartFormDataSchemaRequest
+                  description: >-
+                    JSON-encoded payload describing the contents of the file
+                    uploaded
+                file:
+                  type: string
+                  format: binary
+                  description: |-
+                    Binary file to upload
+
+                    Min size: `1 byte`
+                    Max size: `5 megabytes`
+              required:
+                - request
+                - file
 components:
   schemas:
     IdempotencyKey:
@@ -49022,9 +55252,23 @@ components:
       properties:
         filename:
           type: string
+          description: >-
+            Name of the uploaded file. It should be descriptive enough to
+            indicate what type of information is contained in the uploaded file.
         content_type:
           $ref: >-
             #/components/schemas/DisputesDisputeIdEvidenceFilePostRequestBodyContentMultipartFormDataSchemaRequestEvidenceFileContentType
+          description: |-
+            The MIME type of the uploaded file.
+
+            Current values:
+
+            - `application/pdf`
+            - `image/heic`
+            - `image/heif`
+            - `image/jpeg`
+            - `image/png`
+            - `image/tiff`
       required:
         - filename
         - content_type
@@ -49038,9 +55282,91 @@ components:
         category:
           $ref: >-
             #/components/schemas/DisputesDisputeIdEvidenceFilePostRequestBodyContentMultipartFormDataSchemaRequestEvidenceCategory
+          description: >-
+            Describes what type of information is contained in this piece of
+            evidence.
+
+
+            Current values:
+
+
+            - `GENERIC_EVIDENCE`: Default evidence type used if no other
+            category applies.
+
+            - `ONLINE_OR_APP_ACCESS_LOG`: Server or activity logs that show
+            proof of the cardholder’s identity and that the cardholder
+            successfully ordered and received the goods (digitally or
+            otherwise). Example evidence includes IP addresses, corresponding
+            timestamps/dates, cardholder’s name and email address linked to a
+            cardholder profile held by the seller, proof the same device and
+            card (used in dispute) were previously used in prior undisputed
+            transaction, and any related detailed activity.
+
+            - `AUTHORIZATION_DOCUMENTATION`: **[File Only]** Evidence that the
+            cardholder did provide authorization for the charge. Example
+            evidence includes a signed credit card authorization.
+
+            - `CANCELLATION_OR_REFUND_DOCUMENTATION`: Evidence that the
+            cardholder acknowledged your refund or cancellation policy. Example
+            evidence includes a signature or checkbox showing the cardholder’s
+            acknowledgement of your refund or cancellation policy.
+
+            - `CARDHOLDER_COMMUNICATION`: **[File Only]** Evidence that shows
+            relevant communication with the cardholder. Example evidence
+            includes emails or texts that show the cardholder received
+            goods/services or demonstrate cardholder satisfaction.
+
+            - `CARDHOLDER_INFORMATION`: Evidence that validates the customer's
+            identity. Example evidence includes personally identifiable details
+            such as name, email address, purchaser IP address, and a copy of the
+            cardholder ID.
+
+            - `PURCHASE_ACKNOWLEDGEMENT`: Evidence that shows proof of the
+            sale/transaction. Example evidence includes an invoice, contract, or
+            other item showing the customer’s acknowledgement of the purchase
+            and your terms.
+
+            - `DUPLICATE_CHARGE_DOCUMENTATION`: **[File Only]** Evidence that
+            shows the charges in question are valid and distinct from one
+            another. Example evidence includes receipts, shipping labels, and
+            invoices along with their distinct payment IDs.
+
+            - `PRODUCT_OR_SERVICE_DESCRIPTION`: A description of the product or
+            service sold.
+
+            - `RECEIPT`: A receipt or message sent to the cardholder detailing
+            the charge. Note: You do not need to upload the Square receipt;
+            Square submits the receipt on your behalf.
+
+            - `SERVICE_RECEIVED_DOCUMENTATION`: Evidence that the service was
+            provided to the cardholder or the expected date that services will
+            be rendered. Example evidence includes a signed delivery form, work
+            order, expected delivery date, or other written agreements.
+
+            - `PROOF_OF_DELIVERY_DOCUMENTATION`: Evidence that shows the product
+            was provided to the cardholder or the expected date of delivery.
+            Example evidence includes a signed delivery form or written
+            agreement acknowledging receipt of the goods or services.
+
+            - `RELATED_TRANSACTION_DOCUMENTATION`: Evidence that shows the
+            cardholder previously processed transactions on the same card and
+            did not dispute them.
+
+            - `REBUTTAL_EXPLANATION`: An explanation of why the cardholder’s
+            claim is invalid. Example evidence includes an explanation of why
+            each distinct charge is a legitimate purchase, why the cardholder’s
+            claim for credit owed due to their attempt to cancel, return, or
+            refund is invalid per your stated policy and cardholder agreement,
+            or an explanation of how the cardholder did not attempt to remedy
+            the issue with you first to receive credit.
+
+            - `TRACKING_NUMBER`: The tracking number for the order provided by
+            the shipping carrier. If you have multiple numbers, they need to be
+            submitted individually as separate pieces of evidence.
         file:
           $ref: >-
             #/components/schemas/DisputesDisputeIdEvidenceFilePostRequestBodyContentMultipartFormDataSchemaRequestEvidenceFile
+          description: Metadata about the uploaded file.
         metadata:
           $ref: '#/components/schemas/Metadata'
       required:
@@ -49054,6 +55380,7 @@ components:
         evidence:
           $ref: >-
             #/components/schemas/DisputesDisputeIdEvidenceFilePostRequestBodyContentMultipartFormDataSchemaRequestEvidence
+          description: Details about the evidence to create.
     DisputeEvidenceCategory:
       type: string
       enum:
@@ -49086,8 +55413,22 @@ components:
       properties:
         filename:
           type: string
+          description: >-
+            Name of the uploaded file. It should be descriptive enough to
+            indicate what type of information is contained in the uploaded file.
         content_type:
           $ref: '#/components/schemas/DisputeEvidenceFileContentType'
+          description: |-
+            The MIME type of the uploaded file.
+
+            Current values:
+
+            - `application/pdf`
+            - `image/heic`
+            - `image/heif`
+            - `image/jpeg`
+            - `image/png`
+            - `image/tiff`
       required:
         - filename
         - content_type
@@ -49101,19 +55442,130 @@ components:
       properties:
         id:
           type: string
+          description: |-
+            A unique identifier for the dispute evidence issued by Cash App.
+
+            Min length: `1`
+            Max length: `128`
         dispute_id:
           type: string
+          description: |-
+            ID of the dispute this evidence is associated with.
+
+            Min length: `1`
+            Max length: `128`
         category:
           $ref: '#/components/schemas/DisputeEvidenceCategory'
+          description: >-
+            Describes what type of information is contained in this piece of
+            evidence.
+
+
+            Current values:
+
+
+            - `GENERIC_EVIDENCE`: Default evidence type used if no other
+            category applies.
+
+            - `ONLINE_OR_APP_ACCESS_LOG`: Server or activity logs that show
+            proof of the cardholder’s identity and that the cardholder
+            successfully ordered and received the goods (digitally or
+            otherwise). Example evidence includes IP addresses, corresponding
+            timestamps/dates, cardholder’s name and email address linked to a
+            cardholder profile held by the seller, proof the same device and
+            card (used in dispute) were previously used in prior undisputed
+            transaction, and any related detailed activity.
+
+            - `AUTHORIZATION_DOCUMENTATION`: **[File Only]** Evidence that the
+            cardholder did provide authorization for the charge. Example
+            evidence includes a signed credit card authorization.
+
+            - `CANCELLATION_OR_REFUND_DOCUMENTATION`: Evidence that the
+            cardholder acknowledged your refund or cancellation policy. Example
+            evidence includes a signature or checkbox showing the cardholder’s
+            acknowledgement of your refund or cancellation policy.
+
+            - `CARDHOLDER_COMMUNICATION`: **[File Only]** Evidence that shows
+            relevant communication with the cardholder. Example evidence
+            includes emails or texts that show the cardholder received
+            goods/services or demonstrate cardholder satisfaction.
+
+            - `CARDHOLDER_INFORMATION`: Evidence that validates the customer's
+            identity. Example evidence includes personally identifiable details
+            such as name, email address, purchaser IP address, and a copy of the
+            cardholder ID.
+
+            - `PURCHASE_ACKNOWLEDGEMENT`: Evidence that shows proof of the
+            sale/transaction. Example evidence includes an invoice, contract, or
+            other item showing the customer’s acknowledgement of the purchase
+            and your terms.
+
+            - `DUPLICATE_CHARGE_DOCUMENTATION`: **[File Only]** Evidence that
+            shows the charges in question are valid and distinct from one
+            another. Example evidence includes receipts, shipping labels, and
+            invoices along with their distinct payment IDs.
+
+            - `PRODUCT_OR_SERVICE_DESCRIPTION`: A description of the product or
+            service sold.
+
+            - `RECEIPT`: A receipt or message sent to the cardholder detailing
+            the charge. Note: You do not need to upload the Square receipt;
+            Square submits the receipt on your behalf.
+
+            - `SERVICE_RECEIVED_DOCUMENTATION`: Evidence that the service was
+            provided to the cardholder or the expected date that services will
+            be rendered. Example evidence includes a signed delivery form, work
+            order, expected delivery date, or other written agreements.
+
+            - `PROOF_OF_DELIVERY_DOCUMENTATION`: Evidence that shows the product
+            was provided to the cardholder or the expected date of delivery.
+            Example evidence includes a signed delivery form or written
+            agreement acknowledging receipt of the goods or services.
+
+            - `RELATED_TRANSACTION_DOCUMENTATION`: Evidence that shows the
+            cardholder previously processed transactions on the same card and
+            did not dispute them.
+
+            - `REBUTTAL_EXPLANATION`: An explanation of why the cardholder’s
+            claim is invalid. Example evidence includes an explanation of why
+            each distinct charge is a legitimate purchase, why the cardholder’s
+            claim for credit owed due to their attempt to cancel, return, or
+            refund is invalid per your stated policy and cardholder agreement,
+            or an explanation of how the cardholder did not attempt to remedy
+            the issue with you first to receive credit.
+
+            - `TRACKING_NUMBER`: The tracking number for the order provided by
+            the shipping carrier. If you have multiple numbers, they need to be
+            submitted individually as separate pieces of evidence.
         file:
           $ref: '#/components/schemas/DisputeEvidenceFile'
+          description: >-
+            If the evidence is of type `FILE`, contains metadata about the
+            binary file uploaded as evidence.
         text:
           type: string
+          description: >-
+            If the evidence is of type `TEXT`, contains the blob of text created
+            as evidence.
+
+
+            Min length: `1`
+
+            Max length: `500`
         type:
           $ref: '#/components/schemas/DisputeEvidenceType'
+          description: |-
+            Indicates if the evidence is a file or plain text.
+
+            Current values:
+            - `TEXT`: The evidence is a blob of text under 500 characters.
+            - `FILE`: The evidence is an uploaded binary file.
         created_at:
           type: string
           format: date-time
+          description: >-
+            When this evidence was created, in [RFC
+            3339](https://datatracker.ietf.org/doc/html/rfc3339) format (UTC).
         metadata:
           $ref: '#/components/schemas/Metadata'
       required:
@@ -49991,8 +56443,22 @@ components:
       properties:
         filename:
           type: string
+          description: >-
+            Name of the uploaded file. It should be descriptive enough to
+            indicate what type of information is contained in the uploaded file.
         content_type:
           $ref: '#/components/schemas/DisputeEvidenceFileContentType'
+          description: |-
+            The MIME type of the uploaded file.
+
+            Current values:
+
+            - `application/pdf`
+            - `image/heic`
+            - `image/heif`
+            - `image/jpeg`
+            - `image/png`
+            - `image/tiff`
       required:
         - filename
         - content_type
@@ -50010,19 +56476,130 @@ components:
       properties:
         id:
           type: string
+          description: |-
+            A unique identifier for the dispute evidence issued by Cash App.
+
+            Min length: `1`
+            Max length: `128`
         dispute_id:
           type: string
+          description: |-
+            ID of the dispute this evidence is associated with.
+
+            Min length: `1`
+            Max length: `128`
         category:
           $ref: '#/components/schemas/DisputeEvidenceCategory'
+          description: >-
+            Describes what type of information is contained in this piece of
+            evidence.
+
+
+            Current values:
+
+
+            - `GENERIC_EVIDENCE`: Default evidence type used if no other
+            category applies.
+
+            - `ONLINE_OR_APP_ACCESS_LOG`: Server or activity logs that show
+            proof of the cardholder’s identity and that the cardholder
+            successfully ordered and received the goods (digitally or
+            otherwise). Example evidence includes IP addresses, corresponding
+            timestamps/dates, cardholder’s name and email address linked to a
+            cardholder profile held by the seller, proof the same device and
+            card (used in dispute) were previously used in prior undisputed
+            transaction, and any related detailed activity.
+
+            - `AUTHORIZATION_DOCUMENTATION`: **[File Only]** Evidence that the
+            cardholder did provide authorization for the charge. Example
+            evidence includes a signed credit card authorization.
+
+            - `CANCELLATION_OR_REFUND_DOCUMENTATION`: Evidence that the
+            cardholder acknowledged your refund or cancellation policy. Example
+            evidence includes a signature or checkbox showing the cardholder’s
+            acknowledgement of your refund or cancellation policy.
+
+            - `CARDHOLDER_COMMUNICATION`: **[File Only]** Evidence that shows
+            relevant communication with the cardholder. Example evidence
+            includes emails or texts that show the cardholder received
+            goods/services or demonstrate cardholder satisfaction.
+
+            - `CARDHOLDER_INFORMATION`: Evidence that validates the customer's
+            identity. Example evidence includes personally identifiable details
+            such as name, email address, purchaser IP address, and a copy of the
+            cardholder ID.
+
+            - `PURCHASE_ACKNOWLEDGEMENT`: Evidence that shows proof of the
+            sale/transaction. Example evidence includes an invoice, contract, or
+            other item showing the customer’s acknowledgement of the purchase
+            and your terms.
+
+            - `DUPLICATE_CHARGE_DOCUMENTATION`: **[File Only]** Evidence that
+            shows the charges in question are valid and distinct from one
+            another. Example evidence includes receipts, shipping labels, and
+            invoices along with their distinct payment IDs.
+
+            - `PRODUCT_OR_SERVICE_DESCRIPTION`: A description of the product or
+            service sold.
+
+            - `RECEIPT`: A receipt or message sent to the cardholder detailing
+            the charge. Note: You do not need to upload the Square receipt;
+            Square submits the receipt on your behalf.
+
+            - `SERVICE_RECEIVED_DOCUMENTATION`: Evidence that the service was
+            provided to the cardholder or the expected date that services will
+            be rendered. Example evidence includes a signed delivery form, work
+            order, expected delivery date, or other written agreements.
+
+            - `PROOF_OF_DELIVERY_DOCUMENTATION`: Evidence that shows the product
+            was provided to the cardholder or the expected date of delivery.
+            Example evidence includes a signed delivery form or written
+            agreement acknowledging receipt of the goods or services.
+
+            - `RELATED_TRANSACTION_DOCUMENTATION`: Evidence that shows the
+            cardholder previously processed transactions on the same card and
+            did not dispute them.
+
+            - `REBUTTAL_EXPLANATION`: An explanation of why the cardholder’s
+            claim is invalid. Example evidence includes an explanation of why
+            each distinct charge is a legitimate purchase, why the cardholder’s
+            claim for credit owed due to their attempt to cancel, return, or
+            refund is invalid per your stated policy and cardholder agreement,
+            or an explanation of how the cardholder did not attempt to remedy
+            the issue with you first to receive credit.
+
+            - `TRACKING_NUMBER`: The tracking number for the order provided by
+            the shipping carrier. If you have multiple numbers, they need to be
+            submitted individually as separate pieces of evidence.
         file:
           $ref: '#/components/schemas/DisputeEvidenceFile'
+          description: >-
+            If the evidence is of type `FILE`, contains metadata about the
+            binary file uploaded as evidence.
         text:
           type: string
+          description: >-
+            If the evidence is of type `TEXT`, contains the blob of text created
+            as evidence.
+
+
+            Min length: `1`
+
+            Max length: `500`
         type:
           $ref: '#/components/schemas/DisputeEvidenceType'
+          description: |-
+            Indicates if the evidence is a file or plain text.
+
+            Current values:
+            - `TEXT`: The evidence is a blob of text under 500 characters.
+            - `FILE`: The evidence is an uploaded binary file.
         created_at:
           type: string
           format: date-time
+          description: >-
+            When this evidence was created, in [RFC
+            3339](https://datatracker.ietf.org/doc/html/rfc3339) format (UTC).
         metadata:
           $ref: '#/components/schemas/Metadata'
       required:
@@ -50307,14 +56884,28 @@ webhooks:
               properties:
                 type:
                   type: string
+                  description: >-
+                    The type of event that occurred. `dispute.created` for this
+                    event.
                 event_id:
                   type: string
+                  description: A unique identifier provided by Cash App for the event.
                 created_at:
                   type: string
                   format: date-time
+                  description: >-
+                    When this event occured in [RFC
+                    3339](https://datatracker.ietf.org/doc/html/rfc3339) format
+                    (UTC).
+
+
+                    The time that the event is delivered may be significantly
+                    later than this timestamp due to webhooks being retried for
+                    up to 72 hours.
                 data:
                   $ref: >-
                     #/components/schemas/WebhooksDisputeCreatedPayloadContentApplicationJsonSchemaData
+                  description: Data about the dispute that was created.
               required:
                 - type
                 - event_id
@@ -50353,33 +56944,127 @@ components:
       properties:
         id:
           type: string
+          description: |-
+            A unique identifier for the dispute issued by Cash App.
+
+            Min length: `1`
+            Max length: `128`
         payment_id:
           type: string
+          description: |-
+            ID of the disputed payment.
+
+            Min length: `1`
+            Max length: `128`
         amount:
           type: integer
+          description: >-
+            Amount of disputed money, in the lowest denomination of currency on
+            the associated payment.
+
+
+            Min value: `1`
         customer_credited_amount:
           type:
             - integer
             - 'null'
+          description: >-
+            The amount credited to the Customer after resolving the dispute. 
+
+
+            Note: The amount will be in the lowest denomination of the currency
+            used on the associated payment.
+
+
+            Min value: `0`
         reason:
           $ref: '#/components/schemas/DisputeReason'
+          description: >-
+            4-digit code consisting of 2 letters followed by 2 numbers that
+            indicates why the dispute was created, at a high level.
+
+
+            Current values:
+
+
+            - `FR10`: Customer has no knowledge of the payment.
+
+            - `FR11`: Customer has no knowledge of the payment and liability has
+            shifted to the merchant due to collusion, fraud monitoring program
+            thresholds, or any other reason.
+
+            - `PE10`: Payment was processed twice.
+
+            - `PE11`: Payment amount differs from agreed amount.
+
+            - `PE12`: Payment was paid for by another means.
+
+            - `CD10`: Cancelled services.
+
+            - `CD11`: Goods or services differ from what was agreed upon for the
+            payment.
+
+            - `CD12`: The goods or services were not received.
+
+            - `CD13`: The purchase was cancelled or returned, but the refund has
+            not been processed.
         settlement_withholding:
           $ref: '#/components/schemas/DisputeSettlementWithholding'
+          description: >-
+            Indicates if the disputed amount has already been withheld from a
+            settlement or not.
+
+
+            Current values:
+
+
+            - `NOT_WITHHELD`: The disputed amount has not yet been withheld in a
+            settlement. It may impact future settlements if the dispute is
+            "lost" by the merchant.
+
+
+            - `WITHHELD_ALREADY`: The disputed amount was withheld in a prior
+            settlement. This dispute will not impact future settlements.
         state:
           $ref: '#/components/schemas/DisputeState'
+          description: |-
+            The step in the dispute lifecycle that this dispute is currently at:
+
+            - `RESPONSE_REQUIRED`
+            - `NO_RESPONSE_REQUIRED`
+            - `PROCESSING`
+            - `ACCEPTED`
+            - `WON`
+            - `PARTIALLY_WON`
+            - `LOST`
         created_at:
           type: string
           format: date-time
+          description: >-
+            When this dispute was created, in [RFC
+            3339](https://datatracker.ietf.org/doc/html/rfc3339) format (UTC).
         response_due_at:
           type:
             - string
             - 'null'
           format: date-time
+          description: >-
+            When the dispute must be challenged by, after which it will be
+            automatically accepted, in [RFC
+            3339](https://datatracker.ietf.org/doc/html/rfc3339) format (UTC).
         updated_at:
           type: string
           format: date-time
+          description: >-
+            When this dispute was last updated, in [RFC
+            3339](https://datatracker.ietf.org/doc/html/rfc3339) format (UTC).
         merchant_id:
           type: string
+          description: |-
+            ID of the merchant that collected the disputed payment.
+
+            Min length: `1`
+            Max length: `128`
       required:
         - id
         - payment_id
@@ -50402,11 +57087,16 @@ components:
       properties:
         id:
           type: string
+          description: A unique identifier provided by Cash App for the dispute.
         object:
           $ref: >-
             #/components/schemas/WebhooksDisputeCreatedPayloadContentApplicationJsonSchemaDataObject
+          description: A snapshot of the dispute immediately after the dispute was created.
         type:
           type: string
+          description: >-
+            The resource type contained in the `object` field. For this event,
+            it is `dispute`.
       required:
         - id
         - object
@@ -50480,14 +57170,28 @@ webhooks:
               properties:
                 type:
                   type: string
+                  description: >-
+                    The type of event that occurred. `dispute.status.updated`
+                    for this event.
                 event_id:
                   type: string
+                  description: A unique identifier provided by Cash App for the event.
                 created_at:
                   type: string
                   format: date-time
+                  description: >-
+                    When this event occured in [RFC
+                    3339](https://datatracker.ietf.org/doc/html/rfc3339) format
+                    (UTC).
+
+
+                    The time that the event is delivered may be significantly
+                    later than this timestamp due to webhooks being retried for
+                    up to 72 hours.
                 data:
                   $ref: >-
                     #/components/schemas/WebhooksDisputeStatusUpdatedPayloadContentApplicationJsonSchemaData
+                  description: Data about the dispute that was updated.
               required:
                 - type
                 - event_id
@@ -50526,33 +57230,127 @@ components:
       properties:
         id:
           type: string
+          description: |-
+            A unique identifier for the dispute issued by Cash App.
+
+            Min length: `1`
+            Max length: `128`
         payment_id:
           type: string
+          description: |-
+            ID of the disputed payment.
+
+            Min length: `1`
+            Max length: `128`
         amount:
           type: integer
+          description: >-
+            Amount of disputed money, in the lowest denomination of currency on
+            the associated payment.
+
+
+            Min value: `1`
         customer_credited_amount:
           type:
             - integer
             - 'null'
+          description: >-
+            The amount credited to the Customer after resolving the dispute. 
+
+
+            Note: The amount will be in the lowest denomination of the currency
+            used on the associated payment.
+
+
+            Min value: `0`
         reason:
           $ref: '#/components/schemas/DisputeReason'
+          description: >-
+            4-digit code consisting of 2 letters followed by 2 numbers that
+            indicates why the dispute was created, at a high level.
+
+
+            Current values:
+
+
+            - `FR10`: Customer has no knowledge of the payment.
+
+            - `FR11`: Customer has no knowledge of the payment and liability has
+            shifted to the merchant due to collusion, fraud monitoring program
+            thresholds, or any other reason.
+
+            - `PE10`: Payment was processed twice.
+
+            - `PE11`: Payment amount differs from agreed amount.
+
+            - `PE12`: Payment was paid for by another means.
+
+            - `CD10`: Cancelled services.
+
+            - `CD11`: Goods or services differ from what was agreed upon for the
+            payment.
+
+            - `CD12`: The goods or services were not received.
+
+            - `CD13`: The purchase was cancelled or returned, but the refund has
+            not been processed.
         settlement_withholding:
           $ref: '#/components/schemas/DisputeSettlementWithholding'
+          description: >-
+            Indicates if the disputed amount has already been withheld from a
+            settlement or not.
+
+
+            Current values:
+
+
+            - `NOT_WITHHELD`: The disputed amount has not yet been withheld in a
+            settlement. It may impact future settlements if the dispute is
+            "lost" by the merchant.
+
+
+            - `WITHHELD_ALREADY`: The disputed amount was withheld in a prior
+            settlement. This dispute will not impact future settlements.
         state:
           $ref: '#/components/schemas/DisputeState'
+          description: |-
+            The step in the dispute lifecycle that this dispute is currently at:
+
+            - `RESPONSE_REQUIRED`
+            - `NO_RESPONSE_REQUIRED`
+            - `PROCESSING`
+            - `ACCEPTED`
+            - `WON`
+            - `PARTIALLY_WON`
+            - `LOST`
         created_at:
           type: string
           format: date-time
+          description: >-
+            When this dispute was created, in [RFC
+            3339](https://datatracker.ietf.org/doc/html/rfc3339) format (UTC).
         response_due_at:
           type:
             - string
             - 'null'
           format: date-time
+          description: >-
+            When the dispute must be challenged by, after which it will be
+            automatically accepted, in [RFC
+            3339](https://datatracker.ietf.org/doc/html/rfc3339) format (UTC).
         updated_at:
           type: string
           format: date-time
+          description: >-
+            When this dispute was last updated, in [RFC
+            3339](https://datatracker.ietf.org/doc/html/rfc3339) format (UTC).
         merchant_id:
           type: string
+          description: |-
+            ID of the merchant that collected the disputed payment.
+
+            Min length: `1`
+            Max length: `128`
       required:
         - id
         - payment_id
@@ -50575,11 +57373,18 @@ components:
       properties:
         id:
           type: string
+          description: A unique identifier provided by Cash App for the dispute.
         object:
           $ref: >-
             #/components/schemas/WebhooksDisputeStatusUpdatedPayloadContentApplicationJsonSchemaDataObject
+          description: >-
+            A snapshot of the dispute immediately after the dispute's status was
+            updated.
         type:
           type: string
+          description: >-
+            The resource type contained in the `object` field. For this event,
+            it is `dispute`.
       required:
         - id
         - object
@@ -50665,8 +57470,15 @@ components:
       properties:
         basis_points:
           type: integer
+          description: >-
+            The variable fee charged for processing the payment expressed as
+            1/100th of a percentage.
         fixed_amount:
           type: integer
+          description: >-
+            The amount charged for processing the payment, in the lowest
+            denomination of currency on the payment.
+             **Note: The currency for the fee is found on the fee plan.**
     Currency:
       type: string
       enum:
@@ -50680,24 +57492,41 @@ components:
       properties:
         id:
           type: string
+          description: A unique identifier for the fee plan issued by Cash App.
         rate:
           $ref: '#/components/schemas/FeeRate'
         currency:
           $ref: '#/components/schemas/Currency'
         status:
           type: string
+          description: >-
+            The state is used to determine whether or not this fee plan is
+            currently in use.
+
+            - `ACTIVE`
+
+            - `DISABLED`
         reference_id:
           type: string
         metadata:
           $ref: '#/components/schemas/Metadata'
         description:
           type: string
+          description: >-
+            A free-form text field that stores information associated with the
+            fee plan.
         created_at:
           type: string
           format: date-time
+          description: >-
+            When this fee plan was created, in [RFC
+            3339](https://datatracker.ietf.org/doc/html/rfc3339) format (UTC).
         updated_at:
           type: string
           format: date-time
+          description: >-
+            When this fee plan was last updated, in [RFC
+            3339](https://datatracker.ietf.org/doc/html/rfc3339) format (UTC).
       required:
         - id
         - rate
@@ -50921,6 +57750,7 @@ paths:
           required: false
           schema:
             type: integer
+            default: 50
         - name: currency
           in: query
           description: >-
@@ -50986,13 +57816,21 @@ components:
       enum:
         - value: ACTIVE
         - value: DISABLED
+      default: ACTIVE
     FeeRate:
       type: object
       properties:
         basis_points:
           type: integer
+          description: >-
+            The variable fee charged for processing the payment expressed as
+            1/100th of a percentage.
         fixed_amount:
           type: integer
+          description: >-
+            The amount charged for processing the payment, in the lowest
+            denomination of currency on the payment.
+             **Note: The currency for the fee is found on the fee plan.**
     Metadata:
       type: object
       additionalProperties:
@@ -51002,24 +57840,41 @@ components:
       properties:
         id:
           type: string
+          description: A unique identifier for the fee plan issued by Cash App.
         rate:
           $ref: '#/components/schemas/FeeRate'
         currency:
           $ref: '#/components/schemas/Currency'
         status:
           type: string
+          description: >-
+            The state is used to determine whether or not this fee plan is
+            currently in use.
+
+            - `ACTIVE`
+
+            - `DISABLED`
         reference_id:
           type: string
         metadata:
           $ref: '#/components/schemas/Metadata'
         description:
           type: string
+          description: >-
+            A free-form text field that stores information associated with the
+            fee plan.
         created_at:
           type: string
           format: date-time
+          description: >-
+            When this fee plan was created, in [RFC
+            3339](https://datatracker.ietf.org/doc/html/rfc3339) format (UTC).
         updated_at:
           type: string
           format: date-time
+          description: >-
+            When this fee plan was last updated, in [RFC
+            3339](https://datatracker.ietf.org/doc/html/rfc3339) format (UTC).
       required:
         - id
         - rate
@@ -51034,8 +57889,12 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/FeePlan'
+          description: List of fee plans matching the given query parameters.
         cursor:
           type: string
+          description: >-
+            The pagination cursor to be used in a subsequent request. If empty,
+            this is the final response.
 
 ```
 
@@ -51453,6 +58312,7 @@ paths:
                 request:
                   $ref: >-
                     #/components/schemas/RequestsPostRequestBodyContentApplicationJsonSchemaRequest
+                  description: Details about the request to create.
               required:
                 - idempotency_key
                 - request
@@ -51473,12 +58333,38 @@ components:
       properties:
         amount:
           type: integer
+          description: >-
+            Amount to charge the customer, in the lowest unit of the associated
+            currency.
+
+
+            Min value: `1`
         currency:
           $ref: '#/components/schemas/Currency'
         scope_id:
           type: string
+          description: >-
+            ID of the client, brand, or merchant that will charge the customer.
+
+
+            If a client ID is passed, the grant from this action can be used to
+            create a payment for any merchant owned by the client.
+
+
+            If a brand ID is passed, the grant from this action can be used to
+            create a payment for any merchant that has a matching brand ID.
+
+
+            If a merchant ID is passed, the grant from this action can be used
+            to create a payment for the merchant with a matching ID.
+
+
+            Min length: `1`
+
+            Max length: `128`
         type:
           $ref: '#/components/schemas/OneTimePaymentActionType'
+          description: The type of the action (`ONE_TIME_PAYMENT`).
       required:
         - scope_id
         - type
@@ -51486,15 +58372,38 @@ components:
       type: string
       enum:
         - value: ON_FILE_PAYMENT
+      default: ON_FILE_PAYMENT
     OnFilePaymentAction:
       type: object
       properties:
         scope_id:
           type: string
+          description: >-
+            ID of the client or brand that will charge customers.
+
+
+            If a client ID is passed, the grant from this action can be used to
+            create a payment for any merchant owned by the client.
+
+
+            If a brand ID is passed, the grant from this action can be used to
+            create a payment for any merchant that has a matching brand ID.
+
+
+            Merchant IDs may *not* be passed.
+
+
+            Min length: `1`
+
+            Max length: `128`
         type:
           $ref: '#/components/schemas/OnFilePaymentActionType'
+          description: The type of the action (`ON_FILE_PAYMENT`).
         account_reference_id:
           type: string
+          description: >-
+            Identifier of the account or customer associated to the on file
+            action.
       required:
         - scope_id
         - type
@@ -51507,10 +58416,29 @@ components:
       properties:
         type:
           $ref: '#/components/schemas/OnFileDepositActionType'
+          description: The type of the action (`ON_FILE_DEPOSIT`).
         scope_id:
           type: string
+          description: >-
+            ID of the client or brand that indicates the set of merchants that
+            will deposit to customers.
+
+
+            If a client ID is passed, the grant from this action can be used to
+            create a deposit for any merchant owned by the client.
+
+
+            If a brand ID is passed, the grant from this action can be used to
+            create a deposit for any merchant that has a matching brand ID.
+
+            Min length: `1`
+
+            Max length: `128`
         account_reference_id:
           type: string
+          description: >-
+            Identifier of the account or customer associated to the on file
+            action.
       required:
         - type
         - scope_id
@@ -51524,6 +58452,7 @@ components:
       properties:
         type:
           $ref: '#/components/schemas/LinkAccountActionType'
+          description: The type of the action (`LINK_ACCOUNT`).
       required:
         - type
     Action:
@@ -51547,6 +58476,10 @@ components:
       properties:
         reference_id:
           type: string
+          description: >-
+            The `reference_id` of the customer approving this request. When a
+            customer approves this request, that customer will be associated
+            with this `reference_id`.
     RequestsPostRequestBodyContentApplicationJsonSchemaRequest:
       type: object
       properties:
@@ -51554,14 +58487,50 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Action'
+          description: >-
+            A list of the different actions a client intends to take on the
+            customer if the request is approved.
+
+
+            No duplicate action types allowed.
+
+
+            Min number of items: `1`
+
+            Max number of items: `5`
         channel:
           $ref: >-
             #/components/schemas/RequestsPostRequestBodyContentApplicationJsonSchemaRequestChannel
+          description: >-
+            How the customer is expected to interact with the request.
+
+
+            - `IN_PERSON`: The customer presents or scans a QR code at a
+            physical location to approve the request.
+
+            - `ONLINE`: The customer scans a QR code or is redirected to Cash
+            App from a browser context.
+
+            - `IN_APP`: The customer scans a QR code or is redirected to Cash
+            App from a native mobile application context.
         redirect_url:
           type: string
           format: uri
+          description: >-
+            If this request is responded to via mobile redirect, this field
+            specifies the URL that Cash App will open for a customer in the
+            mobile device's default browser after the request is approved or
+            declined.
         reference_id:
           type: string
+          description: >-
+            A user-defined identifier for this request, typically used to
+            associate the resource with a record in an external system.
+
+
+            Min length: `1`
+
+            Max length: `1024`
         metadata:
           $ref: '#/components/schemas/Metadata'
         customer_metadata:
@@ -51576,24 +58545,60 @@ components:
         - value: DECLINED
         - value: PENDING
         - value: PROCESSING
+      default: PENDING
     RequestAuthFlowTriggers:
       type: object
       properties:
         qr_code_image_url:
           type: string
           format: uri
+          description: >-
+            Link to a QR code customers can scan with Cash App to authorize the
+            given action, encoded as a PNG file.
+
+
+            Min length: `8`
+
+            Max length: `1024`
         qr_code_svg_url:
           type: string
           format: uri
+          description: >-
+            Link to a QR code customers can scan with Cash App to authorize the
+            given action, encoded as an SVG file.
+
+
+            Min length: `8`
+
+            Max length: `1024`
         mobile_url:
           type: string
           format: uri
+          description: >-
+            If on an Android or iOS device, the URL to redirect customers to in
+            order to authorize the given action.
+
+
+            Min length: `8`
+
+            Max length: `1024`
         refreshes_at:
           type: string
           format: date-time
+          description: >-
+            When the QR code image URL will be rotated. Generally, it will
+            rotate every ~20 seconds and become invalid after 30 seconds.
         desktop_url:
           type: string
           format: uri
+          description: >-
+            If on a desktop browser, the URL to redirect customers to in order
+            to authorize the given action.
+
+
+            Min length: `8`
+
+            Max length: `1024`
       required:
         - qr_code_image_url
         - qr_code_svg_url
@@ -51609,8 +58614,22 @@ components:
       properties:
         type:
           $ref: '#/components/schemas/RequestOriginType'
+          description: >-
+            The method used to create the customer request.
+
+
+            - `DIRECT` - the client or SDKs created this customer request by
+            calling the "CreateCustomerRequest" endpoint
+
+            - `REQUEST_INITIATOR` - a customer interacted with a request
+            initiator and caused Cash App to create a customer request.
         id:
           type: string
+          description: |-
+            If present, is the ID of the initiator used to create this request.
+
+            Min length: `1`
+            Max length: `128`
       required:
         - type
     Channel:
@@ -51636,27 +58655,79 @@ components:
       properties:
         id:
           type: string
+          description: |-
+            Unique identifier for this grant issued by Cash App.
+
+            Min length: `1`
+            Max length: `256`
         customer_id:
           type: string
+          description: |-
+            ID of the customer that approved this grant.
+
+            Min length: `1`
+            Max length: `128`
         request_id:
           type: string
+          description: >-
+            A unique identifier issued by Cash App for the customer request that
+            resulted in the creation of this grant.
+
+
+            Min length: `1`
+
+            Max length: `128`
         action:
           $ref: '#/components/schemas/Action'
         status:
           $ref: '#/components/schemas/GrantStatus'
+          description: >-
+            Describes whether or not this grant can be used to perform the
+            action associated with it.
+
+
+            If `ACTIVE`, it can be used to perform the action.
+
+
+            If `EXPIRED`, it may no longer be used to perform the action due to
+            the current time being past the "expires_at" time.
+
+
+            If `CONSUMED`, it was already redeemed to perform the action and
+            cannot be used again.
+
+
+            If `REVOKED`, the customer or merchant explicitly unauthorized the
+            grant, preventing it from being used to perform the action.
         type:
           $ref: '#/components/schemas/GrantType'
+          description: >-
+            Describes whether this grant can be only be used once (`ONE_TIME`)
+            or repeatedly (`EXTENDED`).
         channel:
           $ref: '#/components/schemas/Channel'
         created_at:
           type: string
           format: date-time
+          description: >-
+            When this grant was created, in [RFC
+            3339](https://datatracker.ietf.org/doc/html/rfc3339) format (UTC).
         updated_at:
           type: string
           format: date-time
+          description: >-
+            When this grant was last updated, in [RFC
+            3339](https://datatracker.ietf.org/doc/html/rfc3339) format (UTC).
         expires_at:
           type: string
           format: date-time
+          description: >-
+            If present, indicates when the grant's status will become `EXPIRED`,
+            preventing a client from using it to create payments or refunds.
+
+
+            The timestamp is in the [RFC
+            3339](https://datatracker.ietf.org/doc/html/rfc3339) format (UTC).
       required:
         - id
         - customer_id
@@ -51672,9 +58743,31 @@ components:
       properties:
         name:
           type: string
+          description: |-
+            Name of the brand to be shown in Cash App next to payments.
+
+            Min length: `1`
+            Max length: `1024`
         logo_url:
           type: string
           format: uri
+          description: >-
+            URL to the image of the entity (brand or client) that is requesting
+            permission to perform the actions on the customer request.
+
+
+            Formats:
+
+            - `.jpg`
+
+            - `.jpeg`
+
+            - `.png`
+
+
+            Min length: `8`
+
+            Max length: `8000`
       required:
         - name
         - logo_url
@@ -51683,8 +58776,21 @@ components:
       properties:
         id:
           type: string
+          description: |-
+            Unique identifier for this customer issued by Cash App.
+
+            Min length: `1`
+            Max length: `128`
         cashtag:
           type: string
+          description: >-
+            Public identifier for the customer on Cash App. [Learn
+            more](https://cash.app/help/us/en-us/3123-cashtags).
+
+
+            Min length: `1`
+
+            Max length: `1024`
       required:
         - id
         - cashtag
@@ -51693,40 +58799,135 @@ components:
       properties:
         id:
           type: string
+          description: |-
+            A unique identifier for the request issued by Cash App.
+
+            Min length: `1`
+            Max length: `128`
         status:
           $ref: '#/components/schemas/RequestStatus'
+          description: >-
+            Indicates if the state is approved, declined, or pending. Approved
+            requests have grants, while pending and declined grants do not.
+
+
+            Current values:
+
+
+            - `PENDING`: The request has been created, but not responded to.
+
+            - `PROCESSING`: The Cash App customer is actively responding to the
+            request on their mobile device, and will require time to fill out
+            information before the request is approved / declined.
+
+            - `APPROVED`: The request was approved by the customer and grants
+            have been created for the provided actions.
+
+            - `DECLINED`: The request was denied by the customer. No grants were
+            created.
         actions:
           type: array
           items:
             $ref: '#/components/schemas/Action'
+          description: >-
+            Represents what the client intends to do to a customer if given
+            authorization.
+
+
+            No duplicate action types allowed.
+
+
+            Min number of items: `1`
+
+            Max number of items: `5`
         auth_flow_triggers:
           $ref: '#/components/schemas/RequestAuthFlowTriggers'
+          description: >-
+            While the request is `PENDING`, contains different methods that can
+            be used to start
+
+            the authorization flow in the Cash App mobile application. Its
+            contents refresh each time
+
+            the `refreshes_at` timestamp passes. When the
+
+            data refreshes, you should update any buttons
+
+            or QR codes referring to it immediately.
+
+
+            After a request has been scanned (and is no
+
+            longer in the `PENDING` status), this
+
+            field will no longer be returned.
         redirect_url:
           type: string
           format: uri
+          description: >-
+            If this request is responded to via mobile redirect, this field
+            specifies the URL that Cash App will open for a customer in the
+            mobile device's default browser after the request is approved or
+            declined.
         created_at:
           type: string
           format: date-time
+          description: >-
+            When this customer request was created, in [RFC
+            3339](https://datatracker.ietf.org/doc/html/rfc3339) format (UTC).
         updated_at:
           type: string
           format: date-time
+          description: >-
+            When the customer request was last updated, in [RFC
+            3339](https://datatracker.ietf.org/doc/html/rfc3339) format (UTC).
         expires_at:
           type: string
           format: date-time
+          description: >-
+            When this customer request will be automatically declined by Cash
+            App, in [RFC 3339](https://datatracker.ietf.org/doc/html/rfc3339)
+            format (UTC).
         origin:
           $ref: '#/components/schemas/RequestOrigin'
+          description: Metadata describing how the customer request was created.
         channel:
           $ref: '#/components/schemas/Channel'
         grants:
           type: array
           items:
             $ref: '#/components/schemas/Grant'
+          description: >-
+            If present, contains grants that can be used to perform actions
+            specified in the request using the Network API.
+
+
+            Each grant corresponds directly to an action on the request.
+
+
+            Min number of items: `1`
+
+            Max number of items: `5`
         reference_id:
           type: string
+          description: >-
+            A user-defined identifier for this request, typically used to
+            associate the resource with a record in an external system.
+
+
+            Min length: `1`
+
+            Max length: `1024`
         requester_profile:
           $ref: '#/components/schemas/RequestRequesterProfile'
+          description: >-
+            Details about the brand or client that are requesting permission to
+            perform the actions on the customer request.
         customer_profile:
           $ref: '#/components/schemas/RequestCustomerProfile'
+          description: >-
+            If the customer request was approved, contains the identity of the
+            Cash App customer that approved it.
         metadata:
           $ref: '#/components/schemas/Metadata'
         customer_metadata:
@@ -52670,6 +59871,7 @@ components:
         - value: DECLINED
         - value: PENDING
         - value: PROCESSING
+      default: PENDING
     Currency:
       type: string
       enum:
@@ -52683,12 +59885,38 @@ components:
       properties:
         amount:
           type: integer
+          description: >-
+            Amount to charge the customer, in the lowest unit of the associated
+            currency.
+
+
+            Min value: `1`
         currency:
           $ref: '#/components/schemas/Currency'
         scope_id:
           type: string
+          description: >-
+            ID of the client, brand, or merchant that will charge the customer.
+
+
+            If a client ID is passed, the grant from this action can be used to
+            create a payment for any merchant owned by the client.
+
+
+            If a brand ID is passed, the grant from this action can be used to
+            create a payment for any merchant that has a matching brand ID.
+
+
+            If a merchant ID is passed, the grant from this action can be used
+            to create a payment for the merchant with a matching ID.
+
+
+            Min length: `1`
+
+            Max length: `128`
         type:
           $ref: '#/components/schemas/OneTimePaymentActionType'
+          description: The type of the action (`ONE_TIME_PAYMENT`).
       required:
         - scope_id
         - type
@@ -52696,15 +59924,38 @@ components:
       type: string
       enum:
         - value: ON_FILE_PAYMENT
+      default: ON_FILE_PAYMENT
     OnFilePaymentAction:
       type: object
       properties:
         scope_id:
           type: string
+          description: >-
+            ID of the client or brand that will charge customers.
+
+
+            If a client ID is passed, the grant from this action can be used to
+            create a payment for any merchant owned by the client.
+
+
+            If a brand ID is passed, the grant from this action can be used to
+            create a payment for any merchant that has a matching brand ID.
+
+
+            Merchant IDs may *not* be passed.
+
+
+            Min length: `1`
+
+            Max length: `128`
         type:
           $ref: '#/components/schemas/OnFilePaymentActionType'
+          description: The type of the action (`ON_FILE_PAYMENT`).
         account_reference_id:
           type: string
+          description: >-
+            Identifier of the account or customer associated to the on file
+            action.
       required:
         - scope_id
         - type
@@ -52717,10 +59968,29 @@ components:
       properties:
         type:
           $ref: '#/components/schemas/OnFileDepositActionType'
+          description: The type of the action (`ON_FILE_DEPOSIT`).
         scope_id:
           type: string
+          description: >-
+            ID of the client or brand that indicates the set of merchants that
+            will deposit to customers.
+
+
+            If a client ID is passed, the grant from this action can be used to
+            create a deposit for any merchant owned by the client.
+
+
+            If a brand ID is passed, the grant from this action can be used to
+            create a deposit for any merchant that has a matching brand ID.
+
+            Min length: `1`
+
+            Max length: `128`
         account_reference_id:
           type: string
+          description: >-
+            Identifier of the account or customer associated to the on file
+            action.
       required:
         - type
         - scope_id
@@ -52734,6 +60004,7 @@ components:
       properties:
         type:
           $ref: '#/components/schemas/LinkAccountActionType'
+          description: The type of the action (`LINK_ACCOUNT`).
       required:
         - type
     Action:
@@ -52748,18 +60019,53 @@ components:
         qr_code_image_url:
           type: string
           format: uri
+          description: >-
+            Link to a QR code customers can scan with Cash App to authorize the
+            given action, encoded as a PNG file.
+
+
+            Min length: `8`
+
+            Max length: `1024`
         qr_code_svg_url:
           type: string
           format: uri
+          description: >-
+            Link to a QR code customers can scan with Cash App to authorize the
+            given action, encoded as an SVG file.
+
+
+            Min length: `8`
+
+            Max length: `1024`
         mobile_url:
           type: string
           format: uri
+          description: >-
+            If on an Android or iOS device, the URL to redirect customers to in
+            order to authorize the given action.
+
+
+            Min length: `8`
+
+            Max length: `1024`
         refreshes_at:
           type: string
           format: date-time
+          description: >-
+            When the QR code image URL will be rotated. Generally, it will
+            rotate every ~20 seconds and become invalid after 30 seconds.
         desktop_url:
           type: string
           format: uri
+          description: >-
+            If on a desktop browser, the URL to redirect customers to in order
+            to authorize the given action.
+
+
+            Min length: `8`
+
+            Max length: `1024`
       required:
         - qr_code_image_url
         - qr_code_svg_url
@@ -52775,8 +60081,22 @@ components:
       properties:
         type:
           $ref: '#/components/schemas/RequestOriginType'
+          description: >-
+            The method used to create the customer request.
+
+
+            - `DIRECT` - the client or SDKs created this customer request by
+            calling the "CreateCustomerRequest" endpoint
+
+            - `REQUEST_INITIATOR` - a customer interacted with a request
+            initiator and caused Cash App to create a customer request.
         id:
           type: string
+          description: |-
+            If present, is the ID of the initiator used to create this request.
+
+            Min length: `1`
+            Max length: `128`
       required:
         - type
     Channel:
@@ -52802,27 +60122,79 @@ components:
       properties:
         id:
           type: string
+          description: |-
+            Unique identifier for this grant issued by Cash App.
+
+            Min length: `1`
+            Max length: `256`
         customer_id:
           type: string
+          description: |-
+            ID of the customer that approved this grant.
+
+            Min length: `1`
+            Max length: `128`
         request_id:
           type: string
+          description: >-
+            A unique identifier issued by Cash App for the customer request that
+            resulted in the creation of this grant.
+
+
+            Min length: `1`
+
+            Max length: `128`
         action:
           $ref: '#/components/schemas/Action'
         status:
           $ref: '#/components/schemas/GrantStatus'
+          description: >-
+            Describes whether or not this grant can be used to perform the
+            action associated with it.
+
+
+            If `ACTIVE`, it can be used to perform the action.
+
+
+            If `EXPIRED`, it may no longer be used to perform the action due to
+            the current time being past the "expires_at" time.
+
+
+            If `CONSUMED`, it was already redeemed to perform the action and
+            cannot be used again.
+
+
+            If `REVOKED`, the customer or merchant explicitly unauthorized the
+            grant, preventing it from being used to perform the action.
         type:
           $ref: '#/components/schemas/GrantType'
+          description: >-
+            Describes whether this grant can be only be used once (`ONE_TIME`)
+            or repeatedly (`EXTENDED`).
         channel:
           $ref: '#/components/schemas/Channel'
         created_at:
           type: string
           format: date-time
+          description: >-
+            When this grant was created, in [RFC
+            3339](https://datatracker.ietf.org/doc/html/rfc3339) format (UTC).
         updated_at:
           type: string
           format: date-time
+          description: >-
+            When this grant was last updated, in [RFC
+            3339](https://datatracker.ietf.org/doc/html/rfc3339) format (UTC).
         expires_at:
           type: string
           format: date-time
+          description: >-
+            If present, indicates when the grant's status will become `EXPIRED`,
+            preventing a client from using it to create payments or refunds.
+
+
+            The timestamp is in the [RFC
+            3339](https://datatracker.ietf.org/doc/html/rfc3339) format (UTC).
       required:
         - id
         - customer_id
@@ -52838,9 +60210,31 @@ components:
       properties:
         name:
           type: string
+          description: |-
+            Name of the brand to be shown in Cash App next to payments.
+
+            Min length: `1`
+            Max length: `1024`
         logo_url:
           type: string
           format: uri
+          description: >-
+            URL to the image of the entity (brand or client) that is requesting
+            permission to perform the actions on the customer request.
+
+
+            Formats:
+
+            - `.jpg`
+
+            - `.jpeg`
+
+            - `.png`
+
+
+            Min length: `8`
+
+            Max length: `8000`
       required:
         - name
         - logo_url
@@ -52849,8 +60243,21 @@ components:
       properties:
         id:
           type: string
+          description: |-
+            Unique identifier for this customer issued by Cash App.
+
+            Min length: `1`
+            Max length: `128`
         cashtag:
           type: string
+          description: >-
+            Public identifier for the customer on Cash App. [Learn
+            more](https://cash.app/help/us/en-us/3123-cashtags).
+
+
+            Min length: `1`
+
+            Max length: `1024`
       required:
         - id
         - cashtag
@@ -52863,45 +60270,144 @@ components:
       properties:
         reference_id:
           type: string
+          description: >-
+            The `reference_id` of the customer approving this request. When a
+            customer approves this request, that customer will be associated
+            with this `reference_id`.
     Request:
       type: object
       properties:
         id:
           type: string
+          description: |-
+            A unique identifier for the request issued by Cash App.
+
+            Min length: `1`
+            Max length: `128`
         status:
           $ref: '#/components/schemas/RequestStatus'
+          description: >-
+            Indicates if the state is approved, declined, or pending. Approved
+            requests have grants, while pending and declined grants do not.
+
+
+            Current values:
+
+
+            - `PENDING`: The request has been created, but not responded to.
+
+            - `PROCESSING`: The Cash App customer is actively responding to the
+            request on their mobile device, and will require time to fill out
+            information before the request is approved / declined.
+
+            - `APPROVED`: The request was approved by the customer and grants
+            have been created for the provided actions.
+
+            - `DECLINED`: The request was denied by the customer. No grants were
+            created.
         actions:
           type: array
           items:
             $ref: '#/components/schemas/Action'
+          description: >-
+            Represents what the client intends to do to a customer if given
+            authorization.
+
+
+            No duplicate action types allowed.
+
+
+            Min number of items: `1`
+
+            Max number of items: `5`
         auth_flow_triggers:
           $ref: '#/components/schemas/RequestAuthFlowTriggers'
+          description: >-
+            While the request is `PENDING`, contains different methods that can
+            be used to start
+
+            the authorization flow in the Cash App mobile application. Its
+            contents refresh each time
+
+            the `refreshes_at` timestamp passes. When the
+
+            data refreshes, you should update any buttons
+
+            or QR codes referring to it immediately.
+
+
+            After a request has been scanned (and is no
+
+            longer in the `PENDING` status), this
+
+            field will no longer be returned.
         redirect_url:
           type: string
           format: uri
+          description: >-
+            If this request is responded to via mobile redirect, this field
+            specifies the URL that Cash App will open for a customer in the
+            mobile device's default browser after the request is approved or
+            declined.
         created_at:
           type: string
           format: date-time
+          description: >-
+            When this customer request was created, in [RFC
+            3339](https://datatracker.ietf.org/doc/html/rfc3339) format (UTC).
         updated_at:
           type: string
           format: date-time
+          description: >-
+            When the customer request was last updated, in [RFC
+            3339](https://datatracker.ietf.org/doc/html/rfc3339) format (UTC).
         expires_at:
           type: string
           format: date-time
+          description: >-
+            When this customer request will be automatically declined by Cash
+            App, in [RFC 3339](https://datatracker.ietf.org/doc/html/rfc3339)
+            format (UTC).
         origin:
           $ref: '#/components/schemas/RequestOrigin'
+          description: Metadata describing how the customer request was created.
         channel:
           $ref: '#/components/schemas/Channel'
         grants:
           type: array
           items:
             $ref: '#/components/schemas/Grant'
+          description: >-
+            If present, contains grants that can be used to perform actions
+            specified in the request using the Network API.
+
+
+            Each grant corresponds directly to an action on the request.
+
+
+            Min number of items: `1`
+
+            Max number of items: `5`
         reference_id:
           type: string
+          description: >-
+            A user-defined identifier for this request, typically used to
+            associate the resource with a record in an external system.
+
+
+            Min length: `1`
+
+            Max length: `1024`
         requester_profile:
           $ref: '#/components/schemas/RequestRequesterProfile'
+          description: >-
+            Details about the brand or client that are requesting permission to
+            perform the actions on the customer request.
         customer_profile:
           $ref: '#/components/schemas/RequestCustomerProfile'
+          description: >-
+            If the customer request was approved, contains the identity of the
+            Cash App customer that approved it.
         metadata:
           $ref: '#/components/schemas/Metadata'
         customer_metadata:
@@ -53788,6 +61294,7 @@ paths:
                 request:
                   $ref: >-
                     #/components/schemas/RequestsRequestIdPatchRequestBodyContentApplicationJsonSchemaRequest
+                  description: Details about the request to update
               required:
                 - request
 components:
@@ -53805,12 +61312,38 @@ components:
       properties:
         amount:
           type: integer
+          description: >-
+            Amount to charge the customer, in the lowest unit of the associated
+            currency.
+
+
+            Min value: `1`
         currency:
           $ref: '#/components/schemas/Currency'
         scope_id:
           type: string
+          description: >-
+            ID of the client, brand, or merchant that will charge the customer.
+
+
+            If a client ID is passed, the grant from this action can be used to
+            create a payment for any merchant owned by the client.
+
+
+            If a brand ID is passed, the grant from this action can be used to
+            create a payment for any merchant that has a matching brand ID.
+
+
+            If a merchant ID is passed, the grant from this action can be used
+            to create a payment for the merchant with a matching ID.
+
+
+            Min length: `1`
+
+            Max length: `128`
         type:
           $ref: '#/components/schemas/OneTimePaymentActionType'
+          description: The type of the action (`ONE_TIME_PAYMENT`).
       required:
         - scope_id
         - type
@@ -53818,15 +61351,38 @@ components:
       type: string
       enum:
         - value: ON_FILE_PAYMENT
+      default: ON_FILE_PAYMENT
     OnFilePaymentAction:
       type: object
       properties:
         scope_id:
           type: string
+          description: >-
+            ID of the client or brand that will charge customers.
+
+
+            If a client ID is passed, the grant from this action can be used to
+            create a payment for any merchant owned by the client.
+
+
+            If a brand ID is passed, the grant from this action can be used to
+            create a payment for any merchant that has a matching brand ID.
+
+
+            Merchant IDs may *not* be passed.
+
+
+            Min length: `1`
+
+            Max length: `128`
         type:
           $ref: '#/components/schemas/OnFilePaymentActionType'
+          description: The type of the action (`ON_FILE_PAYMENT`).
         account_reference_id:
           type: string
+          description: >-
+            Identifier of the account or customer associated to the on file
+            action.
       required:
         - scope_id
         - type
@@ -53839,10 +61395,29 @@ components:
       properties:
         type:
           $ref: '#/components/schemas/OnFileDepositActionType'
+          description: The type of the action (`ON_FILE_DEPOSIT`).
         scope_id:
           type: string
+          description: >-
+            ID of the client or brand that indicates the set of merchants that
+            will deposit to customers.
+
+
+            If a client ID is passed, the grant from this action can be used to
+            create a deposit for any merchant owned by the client.
+
+
+            If a brand ID is passed, the grant from this action can be used to
+            create a deposit for any merchant that has a matching brand ID.
+
+            Min length: `1`
+
+            Max length: `128`
         account_reference_id:
           type: string
+          description: >-
+            Identifier of the account or customer associated to the on file
+            action.
       required:
         - type
         - scope_id
@@ -53856,6 +61431,7 @@ components:
       properties:
         type:
           $ref: '#/components/schemas/LinkAccountActionType'
+          description: The type of the action (`LINK_ACCOUNT`).
       required:
         - type
     Action:
@@ -53875,10 +61451,29 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Action'
+          description: >-
+            A list of the different actions a client intends to take on the
+            customer if the request is approved.
+
+
+            No duplicate action types allowed.
+
+
+            Min number of items: `1`
+
+            Max number of items: `5`
         reference_id:
           type:
             - string
             - 'null'
+          description: >-
+            A user-defined identifier for this request, typically used to
+            associate the resource with a record in an external system.
+
+
+            Min length: `1`
+
+            Max length: `1024`
         metadata:
           $ref: '#/components/schemas/Metadata'
     RequestStatus:
@@ -53888,24 +61483,60 @@ components:
         - value: DECLINED
         - value: PENDING
         - value: PROCESSING
+      default: PENDING
     RequestAuthFlowTriggers:
       type: object
       properties:
         qr_code_image_url:
           type: string
           format: uri
+          description: >-
+            Link to a QR code customers can scan with Cash App to authorize the
+            given action, encoded as a PNG file.
+
+
+            Min length: `8`
+
+            Max length: `1024`
         qr_code_svg_url:
           type: string
           format: uri
+          description: >-
+            Link to a QR code customers can scan with Cash App to authorize the
+            given action, encoded as an SVG file.
+
+
+            Min length: `8`
+
+            Max length: `1024`
         mobile_url:
           type: string
           format: uri
+          description: >-
+            If on an Android or iOS device, the URL to redirect customers to in
+            order to authorize the given action.
+
+
+            Min length: `8`
+
+            Max length: `1024`
         refreshes_at:
           type: string
           format: date-time
+          description: >-
+            When the QR code image URL will be rotated. Generally, it will
+            rotate every ~20 seconds and become invalid after 30 seconds.
         desktop_url:
           type: string
           format: uri
+          description: >-
+            If on a desktop browser, the URL to redirect customers to in order
+            to authorize the given action.
+
+
+            Min length: `8`
+
+            Max length: `1024`
       required:
         - qr_code_image_url
         - qr_code_svg_url
@@ -53921,8 +61552,22 @@ components:
       properties:
         type:
           $ref: '#/components/schemas/RequestOriginType'
+          description: >-
+            The method used to create the customer request.
+
+
+            - `DIRECT` - the client or SDKs created this customer request by
+            calling the "CreateCustomerRequest" endpoint
+
+            - `REQUEST_INITIATOR` - a customer interacted with a request
+            initiator and caused Cash App to create a customer request.
         id:
           type: string
+          description: |-
+            If present, is the ID of the initiator used to create this request.
+
+            Min length: `1`
+            Max length: `128`
       required:
         - type
     Channel:
@@ -53948,27 +61593,79 @@ components:
       properties:
         id:
           type: string
+          description: |-
+            Unique identifier for this grant issued by Cash App.
+
+            Min length: `1`
+            Max length: `256`
         customer_id:
           type: string
+          description: |-
+            ID of the customer that approved this grant.
+
+            Min length: `1`
+            Max length: `128`
         request_id:
           type: string
+          description: >-
+            A unique identifier issued by Cash App for the customer request that
+            resulted in the creation of this grant.
+
+
+            Min length: `1`
+
+            Max length: `128`
         action:
           $ref: '#/components/schemas/Action'
         status:
           $ref: '#/components/schemas/GrantStatus'
+          description: >-
+            Describes whether or not this grant can be used to perform the
+            action associated with it.
+
+
+            If `ACTIVE`, it can be used to perform the action.
+
+
+            If `EXPIRED`, it may no longer be used to perform the action due to
+            the current time being past the "expires_at" time.
+
+
+            If `CONSUMED`, it was already redeemed to perform the action and
+            cannot be used again.
+
+
+            If `REVOKED`, the customer or merchant explicitly unauthorized the
+            grant, preventing it from being used to perform the action.
         type:
           $ref: '#/components/schemas/GrantType'
+          description: >-
+            Describes whether this grant can be only be used once (`ONE_TIME`)
+            or repeatedly (`EXTENDED`).
         channel:
           $ref: '#/components/schemas/Channel'
         created_at:
           type: string
           format: date-time
+          description: >-
+            When this grant was created, in [RFC
+            3339](https://datatracker.ietf.org/doc/html/rfc3339) format (UTC).
         updated_at:
           type: string
           format: date-time
+          description: >-
+            When this grant was last updated, in [RFC
+            3339](https://datatracker.ietf.org/doc/html/rfc3339) format (UTC).
         expires_at:
           type: string
           format: date-time
+          description: >-
+            If present, indicates when the grant's status will become `EXPIRED`,
+            preventing a client from using it to create payments or refunds.
+
+
+            The timestamp is in the [RFC
+            3339](https://datatracker.ietf.org/doc/html/rfc3339) format (UTC).
       required:
         - id
         - customer_id
@@ -53984,9 +61681,31 @@ components:
       properties:
         name:
           type: string
+          description: |-
+            Name of the brand to be shown in Cash App next to payments.
+
+            Min length: `1`
+            Max length: `1024`
         logo_url:
           type: string
           format: uri
+          description: >-
+            URL to the image of the entity (brand or client) that is requesting
+            permission to perform the actions on the customer request.
+
+
+            Formats:
+
+            - `.jpg`
+
+            - `.jpeg`
+
+            - `.png`
+
+
+            Min length: `8`
+
+            Max length: `8000`
       required:
         - name
         - logo_url
@@ -53995,8 +61714,21 @@ components:
       properties:
         id:
           type: string
+          description: |-
+            Unique identifier for this customer issued by Cash App.
+
+            Min length: `1`
+            Max length: `128`
         cashtag:
           type: string
+          description: >-
+            Public identifier for the customer on Cash App. [Learn
+            more](https://cash.app/help/us/en-us/3123-cashtags).
+
+
+            Min length: `1`
+
+            Max length: `1024`
       required:
         - id
         - cashtag
@@ -54005,45 +61737,144 @@ components:
       properties:
         reference_id:
           type: string
+          description: >-
+            The `reference_id` of the customer approving this request. When a
+            customer approves this request, that customer will be associated
+            with this `reference_id`.
     Request:
       type: object
       properties:
         id:
           type: string
+          description: |-
+            A unique identifier for the request issued by Cash App.
+
+            Min length: `1`
+            Max length: `128`
         status:
           $ref: '#/components/schemas/RequestStatus'
+          description: >-
+            Indicates if the state is approved, declined, or pending. Approved
+            requests have grants, while pending and declined grants do not.
+
+
+            Current values:
+
+
+            - `PENDING`: The request has been created, but not responded to.
+
+            - `PROCESSING`: The Cash App customer is actively responding to the
+            request on their mobile device, and will require time to fill out
+            information before the request is approved / declined.
+
+            - `APPROVED`: The request was approved by the customer and grants
+            have been created for the provided actions.
+
+            - `DECLINED`: The request was denied by the customer. No grants were
+            created.
         actions:
           type: array
           items:
             $ref: '#/components/schemas/Action'
+          description: >-
+            Represents what the client intends to do to a customer if given
+            authorization.
+
+
+            No duplicate action types allowed.
+
+
+            Min number of items: `1`
+
+            Max number of items: `5`
         auth_flow_triggers:
           $ref: '#/components/schemas/RequestAuthFlowTriggers'
+          description: >-
+            While the request is `PENDING`, contains different methods that can
+            be used to start
+
+            the authorization flow in the Cash App mobile application. Its
+            contents refresh each time
+
+            the `refreshes_at` timestamp passes. When the
+
+            data refreshes, you should update any buttons
+
+            or QR codes referring to it immediately.
+
+
+            After a request has been scanned (and is no
+
+            longer in the `PENDING` status), this
+
+            field will no longer be returned.
         redirect_url:
           type: string
           format: uri
+          description: >-
+            If this request is responded to via mobile redirect, this field
+            specifies the URL that Cash App will open for a customer in the
+            mobile device's default browser after the request is approved or
+            declined.
         created_at:
           type: string
           format: date-time
+          description: >-
+            When this customer request was created, in [RFC
+            3339](https://datatracker.ietf.org/doc/html/rfc3339) format (UTC).
         updated_at:
           type: string
           format: date-time
+          description: >-
+            When the customer request was last updated, in [RFC
+            3339](https://datatracker.ietf.org/doc/html/rfc3339) format (UTC).
         expires_at:
           type: string
           format: date-time
+          description: >-
+            When this customer request will be automatically declined by Cash
+            App, in [RFC 3339](https://datatracker.ietf.org/doc/html/rfc3339)
+            format (UTC).
         origin:
           $ref: '#/components/schemas/RequestOrigin'
+          description: Metadata describing how the customer request was created.
         channel:
           $ref: '#/components/schemas/Channel'
         grants:
           type: array
           items:
             $ref: '#/components/schemas/Grant'
+          description: >-
+            If present, contains grants that can be used to perform actions
+            specified in the request using the Network API.
+
+
+            Each grant corresponds directly to an action on the request.
+
+
+            Min number of items: `1`
+
+            Max number of items: `5`
         reference_id:
           type: string
+          description: >-
+            A user-defined identifier for this request, typically used to
+            associate the resource with a record in an external system.
+
+
+            Min length: `1`
+
+            Max length: `1024`
         requester_profile:
           $ref: '#/components/schemas/RequestRequesterProfile'
+          description: >-
+            Details about the brand or client that are requesting permission to
+            perform the actions on the customer request.
         customer_profile:
           $ref: '#/components/schemas/RequestCustomerProfile'
+          description: >-
+            If the customer request was approved, contains the identity of the
+            Cash App customer that approved it.
         metadata:
           $ref: '#/components/schemas/Metadata'
         customer_metadata:
@@ -54946,14 +62777,28 @@ webhooks:
               properties:
                 type:
                   type: string
+                  description: >-
+                    The type of event that occurred.
+                    `customer_request.state.updated` for this event.
                 event_id:
                   type: string
+                  description: A unique identifier provided by Cash App for the event.
                 created_at:
                   type: string
                   format: date-time
+                  description: >-
+                    When this event occured in [RFC
+                    3339](https://datatracker.ietf.org/doc/html/rfc3339) format
+                    (UTC).
+
+
+                    The time that the event is delivered may be significantly
+                    later than this timestamp due to webhooks being retried for
+                    up to 72 hours.
                 data:
                   $ref: >-
                     #/components/schemas/WebhooksCustomerRequestStateUpdatedPayloadContentApplicationJsonSchemaData
+                  description: Data about the customer request that was updated.
               required:
                 - type
                 - event_id
@@ -54968,6 +62813,7 @@ components:
         - value: DECLINED
         - value: PENDING
         - value: PROCESSING
+      default: PENDING
     Currency:
       type: string
       enum:
@@ -54981,12 +62827,38 @@ components:
       properties:
         amount:
           type: integer
+          description: >-
+            Amount to charge the customer, in the lowest unit of the associated
+            currency.
+
+
+            Min value: `1`
         currency:
           $ref: '#/components/schemas/Currency'
         scope_id:
           type: string
+          description: >-
+            ID of the client, brand, or merchant that will charge the customer.
+
+
+            If a client ID is passed, the grant from this action can be used to
+            create a payment for any merchant owned by the client.
+
+
+            If a brand ID is passed, the grant from this action can be used to
+            create a payment for any merchant that has a matching brand ID.
+
+
+            If a merchant ID is passed, the grant from this action can be used
+            to create a payment for the merchant with a matching ID.
+
+
+            Min length: `1`
+
+            Max length: `128`
         type:
           $ref: '#/components/schemas/OneTimePaymentActionType'
+          description: The type of the action (`ONE_TIME_PAYMENT`).
       required:
         - scope_id
         - type
@@ -54994,15 +62866,38 @@ components:
       type: string
       enum:
         - value: ON_FILE_PAYMENT
+      default: ON_FILE_PAYMENT
     OnFilePaymentAction:
       type: object
       properties:
         scope_id:
           type: string
+          description: >-
+            ID of the client or brand that will charge customers.
+
+
+            If a client ID is passed, the grant from this action can be used to
+            create a payment for any merchant owned by the client.
+
+
+            If a brand ID is passed, the grant from this action can be used to
+            create a payment for any merchant that has a matching brand ID.
+
+
+            Merchant IDs may *not* be passed.
+
+
+            Min length: `1`
+
+            Max length: `128`
         type:
           $ref: '#/components/schemas/OnFilePaymentActionType'
+          description: The type of the action (`ON_FILE_PAYMENT`).
         account_reference_id:
           type: string
+          description: >-
+            Identifier of the account or customer associated to the on file
+            action.
       required:
         - scope_id
         - type
@@ -55015,10 +62910,29 @@ components:
       properties:
         type:
           $ref: '#/components/schemas/OnFileDepositActionType'
+          description: The type of the action (`ON_FILE_DEPOSIT`).
         scope_id:
           type: string
+          description: >-
+            ID of the client or brand that indicates the set of merchants that
+            will deposit to customers.
+
+
+            If a client ID is passed, the grant from this action can be used to
+            create a deposit for any merchant owned by the client.
+
+
+            If a brand ID is passed, the grant from this action can be used to
+            create a deposit for any merchant that has a matching brand ID.
+
+            Min length: `1`
+
+            Max length: `128`
         account_reference_id:
           type: string
+          description: >-
+            Identifier of the account or customer associated to the on file
+            action.
       required:
         - type
         - scope_id
@@ -55032,6 +62946,7 @@ components:
       properties:
         type:
           $ref: '#/components/schemas/LinkAccountActionType'
+          description: The type of the action (`LINK_ACCOUNT`).
       required:
         - type
     Action:
@@ -55046,18 +62961,53 @@ components:
         qr_code_image_url:
           type: string
           format: uri
+          description: >-
+            Link to a QR code customers can scan with Cash App to authorize the
+            given action, encoded as a PNG file.
+
+
+            Min length: `8`
+
+            Max length: `1024`
         qr_code_svg_url:
           type: string
           format: uri
+          description: >-
+            Link to a QR code customers can scan with Cash App to authorize the
+            given action, encoded as an SVG file.
+
+
+            Min length: `8`
+
+            Max length: `1024`
         mobile_url:
           type: string
           format: uri
+          description: >-
+            If on an Android or iOS device, the URL to redirect customers to in
+            order to authorize the given action.
+
+
+            Min length: `8`
+
+            Max length: `1024`
         refreshes_at:
           type: string
           format: date-time
+          description: >-
+            When the QR code image URL will be rotated. Generally, it will
+            rotate every ~20 seconds and become invalid after 30 seconds.
         desktop_url:
           type: string
           format: uri
+          description: >-
+            If on a desktop browser, the URL to redirect customers to in order
+            to authorize the given action.
+
+
+            Min length: `8`
+
+            Max length: `1024`
       required:
         - qr_code_image_url
         - qr_code_svg_url
@@ -55073,8 +63023,22 @@ components:
       properties:
         type:
           $ref: '#/components/schemas/RequestOriginType'
+          description: >-
+            The method used to create the customer request.
+
+
+            - `DIRECT` - the client or SDKs created this customer request by
+            calling the "CreateCustomerRequest" endpoint
+
+            - `REQUEST_INITIATOR` - a customer interacted with a request
+            initiator and caused Cash App to create a customer request.
         id:
           type: string
+          description: |-
+            If present, is the ID of the initiator used to create this request.
+
+            Min length: `1`
+            Max length: `128`
       required:
         - type
     Channel:
@@ -55100,27 +63064,79 @@ components:
       properties:
         id:
           type: string
+          description: |-
+            Unique identifier for this grant issued by Cash App.
+
+            Min length: `1`
+            Max length: `256`
         customer_id:
           type: string
+          description: |-
+            ID of the customer that approved this grant.
+
+            Min length: `1`
+            Max length: `128`
         request_id:
           type: string
+          description: >-
+            A unique identifier issued by Cash App for the customer request that
+            resulted in the creation of this grant.
+
+
+            Min length: `1`
+
+            Max length: `128`
         action:
           $ref: '#/components/schemas/Action'
         status:
           $ref: '#/components/schemas/GrantStatus'
+          description: >-
+            Describes whether or not this grant can be used to perform the
+            action associated with it.
+
+
+            If `ACTIVE`, it can be used to perform the action.
+
+
+            If `EXPIRED`, it may no longer be used to perform the action due to
+            the current time being past the "expires_at" time.
+
+
+            If `CONSUMED`, it was already redeemed to perform the action and
+            cannot be used again.
+
+
+            If `REVOKED`, the customer or merchant explicitly unauthorized the
+            grant, preventing it from being used to perform the action.
         type:
           $ref: '#/components/schemas/GrantType'
+          description: >-
+            Describes whether this grant can be only be used once (`ONE_TIME`)
+            or repeatedly (`EXTENDED`).
         channel:
           $ref: '#/components/schemas/Channel'
         created_at:
           type: string
           format: date-time
+          description: >-
+            When this grant was created, in [RFC
+            3339](https://datatracker.ietf.org/doc/html/rfc3339) format (UTC).
         updated_at:
           type: string
           format: date-time
+          description: >-
+            When this grant was last updated, in [RFC
+            3339](https://datatracker.ietf.org/doc/html/rfc3339) format (UTC).
         expires_at:
           type: string
           format: date-time
+          description: >-
+            If present, indicates when the grant's status will become `EXPIRED`,
+            preventing a client from using it to create payments or refunds.
+
+
+            The timestamp is in the [RFC
+            3339](https://datatracker.ietf.org/doc/html/rfc3339) format (UTC).
       required:
         - id
         - customer_id
@@ -55136,9 +63152,31 @@ components:
       properties:
         name:
           type: string
+          description: |-
+            Name of the brand to be shown in Cash App next to payments.
+
+            Min length: `1`
+            Max length: `1024`
         logo_url:
           type: string
           format: uri
+          description: >-
+            URL to the image of the entity (brand or client) that is requesting
+            permission to perform the actions on the customer request.
+
+
+            Formats:
+
+            - `.jpg`
+
+            - `.jpeg`
+
+            - `.png`
+
+
+            Min length: `8`
+
+            Max length: `8000`
       required:
         - name
         - logo_url
@@ -55147,8 +63185,21 @@ components:
       properties:
         id:
           type: string
+          description: |-
+            Unique identifier for this customer issued by Cash App.
+
+            Min length: `1`
+            Max length: `128`
         cashtag:
           type: string
+          description: >-
+            Public identifier for the customer on Cash App. [Learn
+            more](https://cash.app/help/us/en-us/3123-cashtags).
+
+
+            Min length: `1`
+
+            Max length: `1024`
       required:
         - id
         - cashtag
@@ -55161,45 +63212,144 @@ components:
       properties:
         reference_id:
           type: string
+          description: >-
+            The `reference_id` of the customer approving this request. When a
+            customer approves this request, that customer will be associated
+            with this `reference_id`.
     Request:
       type: object
       properties:
         id:
           type: string
+          description: |-
+            A unique identifier for the request issued by Cash App.
+
+            Min length: `1`
+            Max length: `128`
         status:
           $ref: '#/components/schemas/RequestStatus'
+          description: >-
+            Indicates if the state is approved, declined, or pending. Approved
+            requests have grants, while pending and declined grants do not.
+
+
+            Current values:
+
+
+            - `PENDING`: The request has been created, but not responded to.
+
+            - `PROCESSING`: The Cash App customer is actively responding to the
+            request on their mobile device, and will require time to fill out
+            information before the request is approved / declined.
+
+            - `APPROVED`: The request was approved by the customer and grants
+            have been created for the provided actions.
+
+            - `DECLINED`: The request was denied by the customer. No grants were
+            created.
         actions:
           type: array
           items:
             $ref: '#/components/schemas/Action'
+          description: >-
+            Represents what the client intends to do to a customer if given
+            authorization.
+
+
+            No duplicate action types allowed.
+
+
+            Min number of items: `1`
+
+            Max number of items: `5`
         auth_flow_triggers:
           $ref: '#/components/schemas/RequestAuthFlowTriggers'
+          description: >-
+            While the request is `PENDING`, contains different methods that can
+            be used to start
+
+            the authorization flow in the Cash App mobile application. Its
+            contents refresh each time
+
+            the `refreshes_at` timestamp passes. When the
+
+            data refreshes, you should update any buttons
+
+            or QR codes referring to it immediately.
+
+
+            After a request has been scanned (and is no
+
+            longer in the `PENDING` status), this
+
+            field will no longer be returned.
         redirect_url:
           type: string
           format: uri
+          description: >-
+            If this request is responded to via mobile redirect, this field
+            specifies the URL that Cash App will open for a customer in the
+            mobile device's default browser after the request is approved or
+            declined.
         created_at:
           type: string
           format: date-time
+          description: >-
+            When this customer request was created, in [RFC
+            3339](https://datatracker.ietf.org/doc/html/rfc3339) format (UTC).
         updated_at:
           type: string
           format: date-time
+          description: >-
+            When the customer request was last updated, in [RFC
+            3339](https://datatracker.ietf.org/doc/html/rfc3339) format (UTC).
         expires_at:
           type: string
           format: date-time
+          description: >-
+            When this customer request will be automatically declined by Cash
+            App, in [RFC 3339](https://datatracker.ietf.org/doc/html/rfc3339)
+            format (UTC).
         origin:
           $ref: '#/components/schemas/RequestOrigin'
+          description: Metadata describing how the customer request was created.
         channel:
           $ref: '#/components/schemas/Channel'
         grants:
           type: array
           items:
             $ref: '#/components/schemas/Grant'
+          description: >-
+            If present, contains grants that can be used to perform actions
+            specified in the request using the Network API.
+
+
+            Each grant corresponds directly to an action on the request.
+
+
+            Min number of items: `1`
+
+            Max number of items: `5`
         reference_id:
           type: string
+          description: >-
+            A user-defined identifier for this request, typically used to
+            associate the resource with a record in an external system.
+
+
+            Min length: `1`
+
+            Max length: `1024`
         requester_profile:
           $ref: '#/components/schemas/RequestRequesterProfile'
+          description: >-
+            Details about the brand or client that are requesting permission to
+            perform the actions on the customer request.
         customer_profile:
           $ref: '#/components/schemas/RequestCustomerProfile'
+          description: >-
+            If the customer request was approved, contains the identity of the
+            Cash App customer that approved it.
         metadata:
           $ref: '#/components/schemas/Metadata'
         customer_metadata:
@@ -55226,11 +63376,18 @@ components:
       properties:
         id:
           type: string
+          description: A unique identifier provided by Cash App for the customer request.
         object:
           $ref: >-
             #/components/schemas/WebhooksCustomerRequestStateUpdatedPayloadContentApplicationJsonSchemaDataObject
+          description: >-
+            A snapshot of the customer request data immediately after the
+            customer request's state was updated.
         type:
           type: string
+          description: >-
+            The resource type contained in the `object` field. For this event,
+            it is `customer_request`.
       required:
         - id
         - object
@@ -55459,6 +63616,7 @@ paths:
           required: false
           schema:
             type: integer
+            default: 50
         - name: Accept
           in: header
           required: true
@@ -55522,16 +63680,34 @@ components:
       properties:
         id:
           type: string
+          description: >-
+            Unique identifier for this API key issued by Cash App. This is the
+            API key value that is passed in the `Authorization` header.
         created_at:
           type: string
           format: date-time
+          description: >-
+            When this API key was created, in [RFC
+            3339](https://datatracker.ietf.org/doc/html/rfc3339) format (UTC).
         expires_at:
           type: string
           format: date-time
+          description: >-
+            When this API key will be automatically deleted and become unusable,
+            in [RFC 3339](https://datatracker.ietf.org/doc/html/rfc3339) format
+            (UTC).
         scopes:
           $ref: '#/components/schemas/Scopes'
         reference_id:
           type: string
+          description: >-
+            A user-defined identifier for this API key, typically used to
+            associate the API key with a record in an external system.
+
+
+            Min length: `1`
+
+            Max length: `1024`
       required:
         - id
         - created_at
@@ -55544,8 +63720,12 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/ApiKey'
+          description: List of API keys for the given query parameters.
         cursor:
           type: string
+          description: >-
+            The pagination cursor to be used in a subsequent request. If empty,
+            this is the final response.
       required:
         - api_keys
 
@@ -55796,6 +63976,7 @@ paths:
                 api_key:
                   $ref: >-
                     #/components/schemas/ApiKeysPostRequestBodyContentApplicationJsonSchemaApiKey
+                  description: Details about the API key to create.
               required:
                 - idempotency_key
                 - api_key
@@ -55836,6 +64017,14 @@ components:
           $ref: '#/components/schemas/Scopes'
         reference_id:
           type: string
+          description: >-
+            A user-defined identifier for this API key, typically used to
+            associate the API key with a record in an external system.
+
+
+            Min length: `1`
+
+            Max length: `1024`
       required:
         - scopes
     ApiKey:
@@ -55843,16 +64032,34 @@ components:
       properties:
         id:
           type: string
+          description: >-
+            Unique identifier for this API key issued by Cash App. This is the
+            API key value that is passed in the `Authorization` header.
         created_at:
           type: string
           format: date-time
+          description: >-
+            When this API key was created, in [RFC
+            3339](https://datatracker.ietf.org/doc/html/rfc3339) format (UTC).
         expires_at:
           type: string
           format: date-time
+          description: >-
+            When this API key will be automatically deleted and become unusable,
+            in [RFC 3339](https://datatracker.ietf.org/doc/html/rfc3339) format
+            (UTC).
         scopes:
           $ref: '#/components/schemas/Scopes'
         reference_id:
           type: string
+          description: >-
+            A user-defined identifier for this API key, typically used to
+            associate the API key with a record in an external system.
+
+
+            Min length: `1`
+
+            Max length: `1024`
       required:
         - id
         - created_at
@@ -55865,6 +64072,18 @@ components:
           $ref: '#/components/schemas/ApiKey'
         secret:
           type: string
+          description: >-
+            Secret value to use when calculating the `X-Signature` header of
+            requests.
+
+
+            This value is not returned when retrieving an API key, so make sure
+            to store it immediately.
+
+
+            Min length: `32`
+
+            Max length: `256`
       required:
         - api_key
         - secret
@@ -56161,16 +64380,34 @@ components:
       properties:
         id:
           type: string
+          description: >-
+            Unique identifier for this API key issued by Cash App. This is the
+            API key value that is passed in the `Authorization` header.
         created_at:
           type: string
           format: date-time
+          description: >-
+            When this API key was created, in [RFC
+            3339](https://datatracker.ietf.org/doc/html/rfc3339) format (UTC).
         expires_at:
           type: string
           format: date-time
+          description: >-
+            When this API key will be automatically deleted and become unusable,
+            in [RFC 3339](https://datatracker.ietf.org/doc/html/rfc3339) format
+            (UTC).
         scopes:
           $ref: '#/components/schemas/Scopes'
         reference_id:
           type: string
+          description: >-
+            A user-defined identifier for this API key, typically used to
+            associate the API key with a record in an external system.
+
+
+            Min length: `1`
+
+            Max length: `1024`
       required:
         - id
         - created_at
@@ -56661,6 +64898,7 @@ paths:
           required: false
           schema:
             type: integer
+            default: 50
         - name: reference_id
           in: query
           description: >-
@@ -56741,33 +64979,60 @@ components:
       properties:
         id:
           type: string
+          description: The unique ID for a webhook endpoint issued by Cash App.
         api_key_id:
           type: string
+          description: >-
+            The API key ID which will be used to sign requests made to this
+            webhook endpoint.
         reference_id:
           type: string
+          description: >-
+            A user-defined identifier for this webhook endpoint, typically used
+            to associate the webhook endpoint with a record in an external
+            system.
         url:
           type:
             - string
             - 'null'
           format: uri
+          description: >-
+            The events are delivered to this endpoint URL. If NULL, events will
+            be not be delivered to an endpoint but will still be persisted and
+            accessible via the List Webhook Events API.
         event_configurations:
           type: array
           items:
             $ref: '#/components/schemas/EventConfiguration'
+          description: >-
+            The list of supported event types for this webhook endpoint. Events
+            of a particular type will only be sent to endpoints that contain the
+            type in this list.
         created_at:
           type: string
           format: date-time
+          description: The timestamp of when this webhook endpoint was created.
         updated_at:
           type: string
           format: date-time
+          description: The timestamp of when this endpoint was last updated.
         delivery_timeout:
           type: number
           format: double
+          default: 5000
+          description: >-
+            The duration, in milliseconds, that Cash App will take to deliver an
+            event to this endpoint before timing out.
         max_delivery_frequency:
           type:
             - number
             - 'null'
           format: double
+          description: >-
+            The maximum number of events per second that will be delivered to
+            this endpoint before rate limiting kicks in. The default for this
+            field is unset (NULL) which means no rate limiting. However, if you
+            enable rate limiting, the values can range from 1 to 100000.
         status:
           $ref: '#/components/schemas/WebhookEndpointStatus'
       required:
@@ -56788,6 +65053,9 @@ components:
             $ref: '#/components/schemas/WebhookEndpoint'
         cursor:
           type: string
+          description: >-
+            The pagination cursor to be used in a subsequent request. If empty,
+            this is the final response.
       required:
         - webhook_endpoints
 
@@ -57068,22 +65336,47 @@ components:
       properties:
         api_key_id:
           type: string
+          description: >-
+            The API key ID which will be used to sign requests made to this
+            webhook endpoint.
         event_configurations:
           type: array
           items:
             $ref: '#/components/schemas/EventConfiguration'
+          description: >-
+            The list of supported event types for this webhook endpoint. Events
+            of a particular type will only be sent to endpoints that contain the
+            type in this list.
         url:
           type:
             - string
             - 'null'
+          description: >-
+            The URL of the endpoint which events will be delivered to. If NULL
+            is specified, events will be not be delivered to an endpoint but
+            will still be persisted and accessible via the List Webhook Events
+            API.
         reference_id:
           type: string
+          description: >-
+            A user-defined identifier for this webhook endpoint, typically used
+            to associate the webhook endpoint with a record in an external
+            system.
         delivery_timeout:
           type: number
           format: double
+          default: 5000
+          description: >-
+            The duration, in milliseconds, that Cash App will take to deliver an
+            event to this endpoint before timing out.
         max_delivery_frequency:
           type: number
           format: double
+          description: >-
+            The maximum number of events per second that will be delivered to
+            this endpoint before rate limiting kicks in. The default for this
+            field is unset (NULL) which means no rate limiting. However, if you
+            enable rate limiting, the values can range from 1 to 100000.
       required:
         - api_key_id
         - event_configurations
@@ -57098,33 +65391,60 @@ components:
       properties:
         id:
           type: string
+          description: The unique ID for a webhook endpoint issued by Cash App.
         api_key_id:
           type: string
+          description: >-
+            The API key ID which will be used to sign requests made to this
+            webhook endpoint.
         reference_id:
           type: string
+          description: >-
+            A user-defined identifier for this webhook endpoint, typically used
+            to associate the webhook endpoint with a record in an external
+            system.
         url:
           type:
             - string
             - 'null'
           format: uri
+          description: >-
+            The events are delivered to this endpoint URL. If NULL, events will
+            be not be delivered to an endpoint but will still be persisted and
+            accessible via the List Webhook Events API.
         event_configurations:
           type: array
           items:
             $ref: '#/components/schemas/EventConfiguration'
+          description: >-
+            The list of supported event types for this webhook endpoint. Events
+            of a particular type will only be sent to endpoints that contain the
+            type in this list.
         created_at:
           type: string
           format: date-time
+          description: The timestamp of when this webhook endpoint was created.
         updated_at:
           type: string
           format: date-time
+          description: The timestamp of when this endpoint was last updated.
         delivery_timeout:
           type: number
           format: double
+          default: 5000
+          description: >-
+            The duration, in milliseconds, that Cash App will take to deliver an
+            event to this endpoint before timing out.
         max_delivery_frequency:
           type:
             - number
             - 'null'
           format: double
+          description: >-
+            The maximum number of events per second that will be delivered to
+            this endpoint before rate limiting kicks in. The default for this
+            field is unset (NULL) which means no rate limiting. However, if you
+            enable rate limiting, the values can range from 1 to 100000.
         status:
           $ref: '#/components/schemas/WebhookEndpointStatus'
       required:
@@ -57465,33 +65785,60 @@ components:
       properties:
         id:
           type: string
+          description: The unique ID for a webhook endpoint issued by Cash App.
         api_key_id:
           type: string
+          description: >-
+            The API key ID which will be used to sign requests made to this
+            webhook endpoint.
         reference_id:
           type: string
+          description: >-
+            A user-defined identifier for this webhook endpoint, typically used
+            to associate the webhook endpoint with a record in an external
+            system.
         url:
           type:
             - string
             - 'null'
           format: uri
+          description: >-
+            The events are delivered to this endpoint URL. If NULL, events will
+            be not be delivered to an endpoint but will still be persisted and
+            accessible via the List Webhook Events API.
         event_configurations:
           type: array
           items:
             $ref: '#/components/schemas/EventConfiguration'
+          description: >-
+            The list of supported event types for this webhook endpoint. Events
+            of a particular type will only be sent to endpoints that contain the
+            type in this list.
         created_at:
           type: string
           format: date-time
+          description: The timestamp of when this webhook endpoint was created.
         updated_at:
           type: string
           format: date-time
+          description: The timestamp of when this endpoint was last updated.
         delivery_timeout:
           type: number
           format: double
+          default: 5000
+          description: >-
+            The duration, in milliseconds, that Cash App will take to deliver an
+            event to this endpoint before timing out.
         max_delivery_frequency:
           type:
             - number
             - 'null'
           format: double
+          description: >-
+            The maximum number of events per second that will be delivered to
+            this endpoint before rate limiting kicks in. The default for this
+            field is unset (NULL) which means no rate limiting. However, if you
+            enable rate limiting, the values can range from 1 to 100000.
         status:
           $ref: '#/components/schemas/WebhookEndpointStatus'
       required:
@@ -57788,24 +66135,45 @@ components:
             - string
             - 'null'
           format: uri
+          description: The events are delivered to this endpoint URL.
         reference_id:
           type:
             - string
             - 'null'
+          description: >-
+            A user-defined identifier for this webhook endpoint, typically used
+            to associate the webhook endpoint with a record in an external
+            system.
         api_key_id:
           type: string
+          description: >-
+            The API key ID which will be used to sign requests made to this
+            webhook endpoint.
         event_configurations:
           type: array
           items:
             $ref: '#/components/schemas/EventConfiguration'
+          description: >-
+            The list of supported event types for this webhook endpoint. Events
+            of a particular type will only be sent to endpoints that contain the
+            type in this list.
         delivery_timeout:
           type: number
           format: double
+          default: 5000
+          description: >-
+            The duration, in milliseconds, that Cash App will take to deliver an
+            event to this endpoint before timing out.
         max_delivery_frequency:
           type:
             - number
             - 'null'
           format: double
+          description: >-
+            The maximum number of events per second that will be delivered to
+            this endpoint before rate limiting kicks in. The default for this
+            field is unset (NULL) which means no rate limiting. However, if you
+            enable rate limiting, the values can range from 1 to 100000.
     WebhookEndpointStatus:
       type: string
       enum:
@@ -57816,33 +66184,60 @@ components:
       properties:
         id:
           type: string
+          description: The unique ID for a webhook endpoint issued by Cash App.
         api_key_id:
           type: string
+          description: >-
+            The API key ID which will be used to sign requests made to this
+            webhook endpoint.
         reference_id:
           type: string
+          description: >-
+            A user-defined identifier for this webhook endpoint, typically used
+            to associate the webhook endpoint with a record in an external
+            system.
         url:
           type:
             - string
             - 'null'
           format: uri
+          description: >-
+            The events are delivered to this endpoint URL. If NULL, events will
+            be not be delivered to an endpoint but will still be persisted and
+            accessible via the List Webhook Events API.
         event_configurations:
           type: array
           items:
             $ref: '#/components/schemas/EventConfiguration'
+          description: >-
+            The list of supported event types for this webhook endpoint. Events
+            of a particular type will only be sent to endpoints that contain the
+            type in this list.
         created_at:
           type: string
           format: date-time
+          description: The timestamp of when this webhook endpoint was created.
         updated_at:
           type: string
           format: date-time
+          description: The timestamp of when this endpoint was last updated.
         delivery_timeout:
           type: number
           format: double
+          default: 5000
+          description: >-
+            The duration, in milliseconds, that Cash App will take to deliver an
+            event to this endpoint before timing out.
         max_delivery_frequency:
           type:
             - number
             - 'null'
           format: double
+          description: >-
+            The maximum number of events per second that will be delivered to
+            this endpoint before rate limiting kicks in. The default for this
+            field is unset (NULL) which means no rate limiting. However, if you
+            enable rate limiting, the values can range from 1 to 100000.
         status:
           $ref: '#/components/schemas/WebhookEndpointStatus'
       required:
@@ -58337,6 +66732,7 @@ paths:
           required: false
           schema:
             type: integer
+            default: 100
         - name: Accept
           in: header
           required: true
@@ -58414,10 +66810,30 @@ components:
       properties:
         id:
           type: string
+          description: |-
+            Unique identifier for this customer issued by Cash App.
+
+            Min length: `1`
+            Max length: `128`
         cashtag:
           type: string
+          description: >-
+            Public identifier for the customer on Cash App. [Learn
+            more](https://cash.app/help/us/en-us/3123-cashtags).
+
+
+            Min length: `1`
+
+            Max length: `1024`
         reference_id:
           type: string
+          description: >-
+            A user-defined identifier for this customer, typically used to
+            associate the customer with a record in an external system. This
+            value can be provided via the
+            `CustomerRequest.customer_metadata.reference_id` attribute. Upon
+            approval of the CustomerRequest, a corresponding customer resource
+            is created with the `reference_id` attribute.
       required:
         - id
         - cashtag
@@ -58449,16 +66865,44 @@ components:
       properties:
         address_line_1:
           type: string
+          description: >-
+            First line of the street address, typically including street number,
+            street name, and / or building name.
+
+
+            Min length: `1`
+
+            Max length: `1024`
         address_line_2:
           type: string
+          description: |-
+            Second line of the address, if any.
+
+            Min length: `1`
+            Max length: `1024`
         locality:
           type: string
+          description: |-
+            City or township where the entity is located.
+
+            Min length: `1`
+            Max length: `1024`
         country:
           $ref: '#/components/schemas/Country'
         postal_code:
           type: string
+          description: |-
+            ZIP or postal code.
+
+            Min length: `1`
+            Max length: `128`
         administrative_district_level_1:
           type: string
+          description: |-
+            State or province.
+
+            Min length: `1`
+            Max length: `1024`
       required:
         - country
     Metadata:
@@ -58470,19 +66914,46 @@ components:
       properties:
         in_app_fee_plan_id:
           type: string
+          description: >-
+            The fee plan ID identifying the fee plan that will be used for all
+            in-app payments.
         in_person_fee_plan_id:
           type: string
+          description: >-
+            The fee plan ID identifying the fee plan that will be used for all
+            in-person payments.
         online_fee_plan_id:
           type: string
+          description: >-
+            The fee plan ID identifying the fee plan that will be used for all
+            online payments.
     Merchant:
       type: object
       properties:
         id:
           type: string
+          description: |-
+            A unique identifier for the merchant issued by Cash App.
+
+            Min length: `1`
+            Max length: `128`
         brand_id:
           type: string
+          description: |-
+            ID of the brand associated with this merchant.
+
+            Min length: `1`
+            Max length: `128`
         name:
           type: string
+          description: >-
+            The name of the individual or business entity associated with the
+            merchant.
+
+
+            Min length: `1`
+
+            Max length: `1024`
         country:
           $ref: '#/components/schemas/Country'
         currency:
@@ -58491,19 +66962,62 @@ components:
           $ref: '#/components/schemas/Category'
         reference_id:
           type: string
+          description: >-
+            A user-defined identifier for this merchant, typically used to
+            associate the merchant with a record in an external system.
+            Independent from the [brand
+            reference_id](https://developers.cash.app/docs/api/network-api/operations/create-a-brand#request-body).
+
+
+            Min length: `1`
+
+            Max length: `1024`
         status:
           $ref: '#/components/schemas/MerchantStatus'
+          description: >-
+            Whether or not this merchant can be used to accept payments or issue
+            refunds.
+
+
+            - `ACTIVE`: The merchant can accept payments or issue refunds.
+
+            - `RISK_DISABLED`: Cash App Pay blocked this merchant due to them
+            being high risk. There is no way to re-enable them programmaticaly.
+
+            - `COMPLIANCE_DISABLED`: Cash App Pay blocked this merchant due to
+            them not following the terms of service, Program Rules, or local
+            laws. There is no way to re-enable them programmaticaly.
+
+            - `CLIENT_DISABLED`: The client called the
+            [UpdateMerchant](Network-API.v1.yaml/paths/~1merchants~1{merchant_id}/patch)
+            endpoint and disabled this merchant, preventing it from being able
+            to handle payments or refunds. To reverse this, call the endpoint
+            again with the status field set to `ACTIVE`.
+
+            - `PENDING`: The merchant is not ready to accept payments or refunds
+            yet; the registration process is still running.
         created_at:
           type: string
           format: date-time
+          description: >-
+            When this merchant was created, in [RFC
+            3339](https://datatracker.ietf.org/doc/html/rfc3339) format (UTC).
         updated_at:
           type: string
           format: date-time
+          description: >-
+            When this merchant was last updated, in [RFC
+            3339](https://datatracker.ietf.org/doc/html/rfc3339) format (UTC).
         address:
           $ref: '#/components/schemas/Address'
         site_url:
           type: string
           format: uri
+          description: |-
+            The URL of the website, if this merchant is for an eCommerce site.
+
+            Min length: `8`
+            Max length: `8000`
         metadata:
           $ref: '#/components/schemas/Metadata'
         default_fee_plans:
@@ -58556,33 +67070,127 @@ components:
       properties:
         id:
           type: string
+          description: |-
+            A unique identifier for the dispute issued by Cash App.
+
+            Min length: `1`
+            Max length: `128`
         payment_id:
           type: string
+          description: |-
+            ID of the disputed payment.
+
+            Min length: `1`
+            Max length: `128`
         amount:
           type: integer
+          description: >-
+            Amount of disputed money, in the lowest denomination of currency on
+            the associated payment.
+
+
+            Min value: `1`
         customer_credited_amount:
           type:
             - integer
             - 'null'
+          description: >-
+            The amount credited to the Customer after resolving the dispute. 
+
+
+            Note: The amount will be in the lowest denomination of the currency
+            used on the associated payment.
+
+
+            Min value: `0`
         reason:
           $ref: '#/components/schemas/DisputeReason'
+          description: >-
+            4-digit code consisting of 2 letters followed by 2 numbers that
+            indicates why the dispute was created, at a high level.
+
+
+            Current values:
+
+
+            - `FR10`: Customer has no knowledge of the payment.
+
+            - `FR11`: Customer has no knowledge of the payment and liability has
+            shifted to the merchant due to collusion, fraud monitoring program
+            thresholds, or any other reason.
+
+            - `PE10`: Payment was processed twice.
+
+            - `PE11`: Payment amount differs from agreed amount.
+
+            - `PE12`: Payment was paid for by another means.
+
+            - `CD10`: Cancelled services.
+
+            - `CD11`: Goods or services differ from what was agreed upon for the
+            payment.
+
+            - `CD12`: The goods or services were not received.
+
+            - `CD13`: The purchase was cancelled or returned, but the refund has
+            not been processed.
         settlement_withholding:
           $ref: '#/components/schemas/DisputeSettlementWithholding'
+          description: >-
+            Indicates if the disputed amount has already been withheld from a
+            settlement or not.
+
+
+            Current values:
+
+
+            - `NOT_WITHHELD`: The disputed amount has not yet been withheld in a
+            settlement. It may impact future settlements if the dispute is
+            "lost" by the merchant.
+
+
+            - `WITHHELD_ALREADY`: The disputed amount was withheld in a prior
+            settlement. This dispute will not impact future settlements.
         state:
           $ref: '#/components/schemas/DisputeState'
+          description: |-
+            The step in the dispute lifecycle that this dispute is currently at:
+
+            - `RESPONSE_REQUIRED`
+            - `NO_RESPONSE_REQUIRED`
+            - `PROCESSING`
+            - `ACCEPTED`
+            - `WON`
+            - `PARTIALLY_WON`
+            - `LOST`
         created_at:
           type: string
           format: date-time
+          description: >-
+            When this dispute was created, in [RFC
+            3339](https://datatracker.ietf.org/doc/html/rfc3339) format (UTC).
         response_due_at:
           type:
             - string
             - 'null'
           format: date-time
+          description: >-
+            When the dispute must be challenged by, after which it will be
+            automatically accepted, in [RFC
+            3339](https://datatracker.ietf.org/doc/html/rfc3339) format (UTC).
         updated_at:
           type: string
           format: date-time
+          description: >-
+            When this dispute was last updated, in [RFC
+            3339](https://datatracker.ietf.org/doc/html/rfc3339) format (UTC).
         merchant_id:
           type: string
+          description: |-
+            ID of the merchant that collected the disputed payment.
+
+            Min length: `1`
+            Max length: `128`
       required:
         - id
         - payment_id
@@ -58615,6 +67223,11 @@ components:
       properties:
         actor:
           $ref: '#/components/schemas/PaymentEnrichmentsInitiationActor'
+          description: |-
+            The party who initiated the payment.
+
+            - `CUSTOMER`
+            - `MERCHANT`
       required:
         - actor
     PaymentEnrichmentsRestrictedCategoriesItems:
@@ -58627,14 +67240,47 @@ components:
       properties:
         initiation:
           $ref: '#/components/schemas/PaymentEnrichmentsInitiation'
+          description: If present, provides information about transaction initiation.
         recurring_series_id:
           type: string
+          description: >-
+            If present, indicates that this payment is part of a recurring
+            series of payments, such as a subscription.
+
+
+            The value should contain a unique identifier for the recurring
+            series that is constant across all of its payments, so it can be
+            used to group them together.
+
+
+            Min length: `1`
+
+            Max length: `1024`
         statement_descriptor:
           type: string
+          description: >-
+            If present, adds the descriptor as line item on to a customer's
+            payment receipt in their in-app Activity page.
+
+            The descriptor will be present under the header "On statement as".
+
+
+            Statement descriptor requirements vary by platform. If the input for
+            this field exceeds the character limit, it will be truncated to the
+            limit, then suffixed with an ellipsis (...).
+
+
+            Min length: `1`
+
+            Max length: `22`
         restricted_categories:
           type: array
           items:
             $ref: '#/components/schemas/PaymentEnrichmentsRestrictedCategoriesItems'
+          description: >-
+            If present, indicates that this payment is associated with one or
+            more restricted categories. Contact the Cash App Pay support team to
+            use this field.
     ErrorCategory:
       type: string
       enum:
@@ -58654,12 +67300,31 @@ components:
       properties:
         category:
           $ref: '#/components/schemas/ErrorCategory'
+          description: The high-level reason the error occurred
         code:
           type: string
+          description: >-
+            A unique identifier for the specific type of error that occurred.
+            See the Error Code Reference for more information.
+
+
+            Min length: `1`
         detail:
           type: string
+          description: >-
+            Human-readable description of why the error occurred and how to
+            resolve it.
+
+
+            Min length: `1`
         field:
           type: string
+          description: >-
+            The field in the request that caused the error, using array and
+            object dot notation.
+
+
+            Min length: `1`
       required:
         - category
         - code
@@ -58668,8 +67333,15 @@ components:
       properties:
         basis_points:
           type: integer
+          description: >-
+            The variable fee charged for processing the payment expressed as
+            1/100th of a percentage.
         fixed_amount:
           type: integer
+          description: >-
+            The amount charged for processing the payment, in the lowest
+            denomination of currency on the payment.
+             **Note: The currency for the fee is found on the fee plan.**
     AuthorizationStatus:
       type: string
       enum:
@@ -58680,27 +67352,62 @@ components:
       properties:
         id:
           type: string
+          description: |-
+            Unique identifier for this authorization issued by Cash App.
+
+            Min length: 1 character
+            Max length: 128 characters
         amount:
           type: integer
+          description: >-
+            Total authorized amount after this authorization was processed, in
+            the lowest denomination of currency on the payment.
         currency:
           $ref: '#/components/schemas/Currency'
         status:
           $ref: '#/components/schemas/AuthorizationStatus'
+          description: >-
+            The step of the authorization processing lifecycle that this
+            authorization is currently at.
+
+
+            Allowed values:
+
+            - AUTHORIZED
+
+            - DECLINED
         created_at:
           type: string
           format: date-time
+          description: When this authorization was created, in RFC 3339 format (UTC).
         payment_id:
           type: string
+          description: ID of the payment associated with this authorization
         previous_amount:
           type: integer
+          description: Total authorized amount before this authorization was requested
         reference_id:
           type: string
+          description: >-
+            A user-defined identifier for this authorization, typically used to
+            associate the authorization with a record in an external system.
+
+
+            Min length: 1
+
+            Max length: 1024
         metadata:
           $ref: '#/components/schemas/Metadata'
         decline_errors:
           type: array
           items:
             $ref: '#/components/schemas/Error'
+          description: >-
+            If the authorization was declined, it contains a list of the reasons
+            why it was declined.
+
+
+            Min number of items: 1
       required:
         - id
         - amount
@@ -58714,41 +67421,138 @@ components:
       properties:
         id:
           type: string
+          description: |-
+            Unique identifier for this payment issued by Cash App.
+
+            Min length: `1`
+            Max length: `128`
         amount:
           type: integer
+          description: >-
+            The amount of money to collect, in the lowest denomination of
+            currency on the payment. This is the _original_ amount authorized
+            when the payment was created.
+
+
+            Min value: `1`
         net_amount:
           type: integer
+          description: >-
+            The amount remaining after refunds and voided payments are deducted
+            from the amount field. The amount will be in the lowest denomination
+            of the currency on the payment.
+
+            This is the amount that will be shown to the customer in their Cash
+            App account.
+
+
+
+            Min value: `0`
         captured_amount:
           type: integer
+          description: >-
+            The amount of money on this payment that has been allocated for
+            settlement. The amount will be in the lowest denomination of the
+            currency on the payment.
+
+
+            Min value: `0`
         voided_amount:
           type: integer
+          description: >-
+            The amount of money on this payment that is no longer authorized and
+            has been released back to the customer. The amount will be in the
+            lowest denomination of the currency on the payment.
+
+
+            Min value: `0`
         refunded_amount:
           type: integer
+          description: >-
+            Sum of captured refunds in the lowest denomination of currency on
+            the payment.
+
+
+            Min value: `0`
         currency:
           $ref: '#/components/schemas/Currency'
         customer_id:
           type: string
+          description: |-
+            ID of the customer that sent this payment.
+
+            Min length: `1`
+            Max length: `128`
         merchant_id:
           type: string
+          description: |-
+            ID of the merchant that received this payment.
+
+            Min length: `1`
+            Max length: `128`
         grant_id:
           type: string
+          description: |-
+            ID of the grant to used to create this payment.
+
+            Min length: `1`
+            Max length: `256`
         status:
           $ref: '#/components/schemas/PaymentStatus'
+          description: >-
+            The step of the payment processing lifecycle that this payment is
+            currently at.
+
+
+            - `AUTHORIZED`
+
+            - `CAPTURED`
+
+            - `VOIDED`
+
+            - `DECLINED`
         created_at:
           type: string
           format: date-time
+          description: >-
+            When this payment was created, in [RFC
+            3339](https://datatracker.ietf.org/doc/html/rfc3339) format (UTC).
         updated_at:
           type: string
           format: date-time
+          description: >-
+            When this payment was last updated, in [RFC
+            3339](https://datatracker.ietf.org/doc/html/rfc3339) format (UTC).
         capture_before:
           type: string
           format: date-time
+          description: >-
+            When this payment should be captured by, in [RFC
+            3339](https://datatracker.ietf.org/doc/html/rfc3339) format (UTC).
         refund_ids:
           type: array
           items:
             type: string
+          description: >-
+            A list of one or more IDs associated with refunds issued for this
+            payment.
+
+
+            Min array length: `1`
+
+            Min length of IDs: `1`
+
+            Max length of IDs: `128`
         reference_id:
           type: string
+          description: >-
+            A user-defined identifier for this payment, typically used to
+            associate the payment with a record in an external system.
+
+
+            Min length: `1`
+
+            Max length: `1024`
         metadata:
           $ref: '#/components/schemas/Metadata'
         enrichments:
@@ -58757,15 +67561,37 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Error'
+          description: >-
+            If the payment was declined, contains a list of the reasons why it
+            was declined.
+
+
+            Min number of items: `1`
         fee_amount:
           type: number
           format: double
+          description: >-
+            The total fee amount that was charged to the merchant for processing
+            this payment.
         fee_rate:
           $ref: '#/components/schemas/FeeRate'
+          description: >-
+            The breakdown of the fee that was charged to the merchant for
+            processing this payment.
         authorization_updates:
           type: array
           items:
             $ref: '#/components/schemas/Authorization'
+          description: >-
+            A list of authorization update attempts associated with this
+            payment, sorted in chronological order.
+
+
+            Note: This field contains only the authorization update attempts, so
+            this field will be empty when 
+
+            the payment is first created (even though the amount is authorized
+            in this flow, it is not an update).
       required:
         - id
         - amount
@@ -58794,12 +67620,38 @@ components:
       properties:
         amount:
           type: integer
+          description: >-
+            Amount to charge the customer, in the lowest unit of the associated
+            currency.
+
+
+            Min value: `1`
         currency:
           $ref: '#/components/schemas/Currency'
         scope_id:
           type: string
+          description: >-
+            ID of the client, brand, or merchant that will charge the customer.
+
+
+            If a client ID is passed, the grant from this action can be used to
+            create a payment for any merchant owned by the client.
+
+
+            If a brand ID is passed, the grant from this action can be used to
+            create a payment for any merchant that has a matching brand ID.
+
+
+            If a merchant ID is passed, the grant from this action can be used
+            to create a payment for the merchant with a matching ID.
+
+
+            Min length: `1`
+
+            Max length: `128`
         type:
           $ref: '#/components/schemas/OneTimePaymentActionType'
+          description: The type of the action (`ONE_TIME_PAYMENT`).
       required:
         - scope_id
         - type
@@ -58807,15 +67659,38 @@ components:
       type: string
       enum:
         - value: ON_FILE_PAYMENT
+      default: ON_FILE_PAYMENT
     OnFilePaymentAction:
       type: object
       properties:
         scope_id:
           type: string
+          description: >-
+            ID of the client or brand that will charge customers.
+
+
+            If a client ID is passed, the grant from this action can be used to
+            create a payment for any merchant owned by the client.
+
+
+            If a brand ID is passed, the grant from this action can be used to
+            create a payment for any merchant that has a matching brand ID.
+
+
+            Merchant IDs may *not* be passed.
+
+
+            Min length: `1`
+
+            Max length: `128`
         type:
           $ref: '#/components/schemas/OnFilePaymentActionType'
+          description: The type of the action (`ON_FILE_PAYMENT`).
         account_reference_id:
           type: string
+          description: >-
+            Identifier of the account or customer associated to the on file
+            action.
       required:
         - scope_id
         - type
@@ -58828,10 +67703,29 @@ components:
       properties:
         type:
           $ref: '#/components/schemas/OnFileDepositActionType'
+          description: The type of the action (`ON_FILE_DEPOSIT`).
         scope_id:
           type: string
+          description: >-
+            ID of the client or brand that indicates the set of merchants that
+            will deposit to customers.
+
+
+            If a client ID is passed, the grant from this action can be used to
+            create a deposit for any merchant owned by the client.
+
+
+            If a brand ID is passed, the grant from this action can be used to
+            create a deposit for any merchant that has a matching brand ID.
+
+            Min length: `1`
+
+            Max length: `128`
         account_reference_id:
           type: string
+          description: >-
+            Identifier of the account or customer associated to the on file
+            action.
       required:
         - type
         - scope_id
@@ -58845,6 +67739,7 @@ components:
       properties:
         type:
           $ref: '#/components/schemas/LinkAccountActionType'
+          description: The type of the action (`LINK_ACCOUNT`).
       required:
         - type
     Action:
@@ -58876,27 +67771,79 @@ components:
       properties:
         id:
           type: string
+          description: |-
+            Unique identifier for this grant issued by Cash App.
+
+            Min length: `1`
+            Max length: `256`
         customer_id:
           type: string
+          description: |-
+            ID of the customer that approved this grant.
+
+            Min length: `1`
+            Max length: `128`
         request_id:
           type: string
+          description: >-
+            A unique identifier issued by Cash App for the customer request that
+            resulted in the creation of this grant.
+
+
+            Min length: `1`
+
+            Max length: `128`
         action:
           $ref: '#/components/schemas/Action'
         status:
           $ref: '#/components/schemas/GrantStatus'
+          description: >-
+            Describes whether or not this grant can be used to perform the
+            action associated with it.
+
+
+            If `ACTIVE`, it can be used to perform the action.
+
+
+            If `EXPIRED`, it may no longer be used to perform the action due to
+            the current time being past the "expires_at" time.
+
+
+            If `CONSUMED`, it was already redeemed to perform the action and
+            cannot be used again.
+
+
+            If `REVOKED`, the customer or merchant explicitly unauthorized the
+            grant, preventing it from being used to perform the action.
         type:
           $ref: '#/components/schemas/GrantType'
+          description: >-
+            Describes whether this grant can be only be used once (`ONE_TIME`)
+            or repeatedly (`EXTENDED`).
         channel:
           $ref: '#/components/schemas/Channel'
         created_at:
           type: string
           format: date-time
+          description: >-
+            When this grant was created, in [RFC
+            3339](https://datatracker.ietf.org/doc/html/rfc3339) format (UTC).
         updated_at:
           type: string
           format: date-time
+          description: >-
+            When this grant was last updated, in [RFC
+            3339](https://datatracker.ietf.org/doc/html/rfc3339) format (UTC).
         expires_at:
           type: string
           format: date-time
+          description: >-
+            If present, indicates when the grant's status will become `EXPIRED`,
+            preventing a client from using it to create payments or refunds.
+
+
+            The timestamp is in the [RFC
+            3339](https://datatracker.ietf.org/doc/html/rfc3339) format (UTC).
       required:
         - id
         - customer_id
@@ -58924,34 +67871,97 @@ components:
       properties:
         id:
           type: string
+          description: |-
+            Unique identifier for this refund issued by Cash App.
+
+            Min length: `1`
+            Max length: `128`
         amount:
           type: integer
+          description: >-
+            Amount of money to refund, in the lowest denomination of currency on
+            the refund.
+
+
+            Min value: `1`
         currency:
           $ref: '#/components/schemas/Currency'
         customer_id:
           type: string
+          description: |-
+            ID of the customer that received this refund.
+
+            Min length: `1`
+            Max length: `128`
         merchant_id:
           type: string
+          description: |-
+            ID of the merchant that issued this refund.
+
+            Min length: `1`
+            Max length: `128`
         status:
           $ref: '#/components/schemas/RefundStatus'
+          description: >-
+            The step of the refund processing lifecycle that this refund is
+            currently at.
+
+
+            - `AUTHORIZED`
+
+            - `CAPTURED`
+
+            - `VOIDED`
+
+            - `DECLINED`
         created_at:
           type: string
           format: date-time
+          description: >-
+            When this refund was created, in [RFC
+            3339](https://datatracker.ietf.org/doc/html/rfc3339) format (UTC).
         updated_at:
           type: string
           format: date-time
+          description: >-
+            When this refund was last updated, in [RFC
+            3339](https://datatracker.ietf.org/doc/html/rfc3339) format (UTC).
         grant_id:
           type: string
+          description: |-
+            This is currently unused and empty.
+
+            Min length: `1`
+            Max length: `256`
         payment_id:
           type: string
+          description: |-
+            This is currently unused and empty.
+
+            Min length: `1`
+            Max length: `128`
         reference_id:
           type: string
+          description: >-
+            A user-defined identifier for this refund, typically used to
+            associate the refund with a record in an external system.
+
+
+            Min length: `1`
+
+            Max length: `1024`
         metadata:
           $ref: '#/components/schemas/Metadata'
         decline_errors:
           type: array
           items:
             $ref: '#/components/schemas/Error'
+          description: >-
+            If the refund was declined, contains a list of the reasons why it
+            was declined.
+
+
+            Min number of items: `1`
       required:
         - id
         - amount
@@ -58973,24 +67983,60 @@ components:
         - value: DECLINED
         - value: PENDING
         - value: PROCESSING
+      default: PENDING
     RequestAuthFlowTriggers:
       type: object
       properties:
         qr_code_image_url:
           type: string
           format: uri
+          description: >-
+            Link to a QR code customers can scan with Cash App to authorize the
+            given action, encoded as a PNG file.
+
+
+            Min length: `8`
+
+            Max length: `1024`
         qr_code_svg_url:
           type: string
           format: uri
+          description: >-
+            Link to a QR code customers can scan with Cash App to authorize the
+            given action, encoded as an SVG file.
+
+
+            Min length: `8`
+
+            Max length: `1024`
         mobile_url:
           type: string
           format: uri
+          description: >-
+            If on an Android or iOS device, the URL to redirect customers to in
+            order to authorize the given action.
+
+
+            Min length: `8`
+
+            Max length: `1024`
         refreshes_at:
           type: string
           format: date-time
+          description: >-
+            When the QR code image URL will be rotated. Generally, it will
+            rotate every ~20 seconds and become invalid after 30 seconds.
         desktop_url:
           type: string
           format: uri
+          description: >-
+            If on a desktop browser, the URL to redirect customers to in order
+            to authorize the given action.
+
+
+            Min length: `8`
+
+            Max length: `1024`
       required:
         - qr_code_image_url
         - qr_code_svg_url
@@ -59006,8 +68052,22 @@ components:
       properties:
         type:
           $ref: '#/components/schemas/RequestOriginType'
+          description: >-
+            The method used to create the customer request.
+
+
+            - `DIRECT` - the client or SDKs created this customer request by
+            calling the "CreateCustomerRequest" endpoint
+
+            - `REQUEST_INITIATOR` - a customer interacted with a request
+            initiator and caused Cash App to create a customer request.
         id:
           type: string
+          description: |-
+            If present, is the ID of the initiator used to create this request.
+
+            Min length: `1`
+            Max length: `128`
       required:
         - type
     RequestRequesterProfile:
@@ -59015,9 +68075,31 @@ components:
       properties:
         name:
           type: string
+          description: |-
+            Name of the brand to be shown in Cash App next to payments.
+
+            Min length: `1`
+            Max length: `1024`
         logo_url:
           type: string
           format: uri
+          description: >-
+            URL to the image of the entity (brand or client) that is requesting
+            permission to perform the actions on the customer request.
+
+
+            Formats:
+
+            - `.jpg`
+
+            - `.jpeg`
+
+            - `.png`
+
+
+            Min length: `8`
+
+            Max length: `8000`
       required:
         - name
         - logo_url
@@ -59026,8 +68108,21 @@ components:
       properties:
         id:
           type: string
+          description: |-
+            Unique identifier for this customer issued by Cash App.
+
+            Min length: `1`
+            Max length: `128`
         cashtag:
           type: string
+          description: >-
+            Public identifier for the customer on Cash App. [Learn
+            more](https://cash.app/help/us/en-us/3123-cashtags).
+
+
+            Min length: `1`
+
+            Max length: `1024`
       required:
         - id
         - cashtag
@@ -59036,45 +68131,144 @@ components:
       properties:
         reference_id:
           type: string
+          description: >-
+            The `reference_id` of the customer approving this request. When a
+            customer approves this request, that customer will be associated
+            with this `reference_id`.
     Request:
       type: object
       properties:
         id:
           type: string
+          description: |-
+            A unique identifier for the request issued by Cash App.
+
+            Min length: `1`
+            Max length: `128`
         status:
           $ref: '#/components/schemas/RequestStatus'
+          description: >-
+            Indicates if the state is approved, declined, or pending. Approved
+            requests have grants, while pending and declined grants do not.
+
+
+            Current values:
+
+
+            - `PENDING`: The request has been created, but not responded to.
+
+            - `PROCESSING`: The Cash App customer is actively responding to the
+            request on their mobile device, and will require time to fill out
+            information before the request is approved / declined.
+
+            - `APPROVED`: The request was approved by the customer and grants
+            have been created for the provided actions.
+
+            - `DECLINED`: The request was denied by the customer. No grants were
+            created.
         actions:
           type: array
           items:
             $ref: '#/components/schemas/Action'
+          description: >-
+            Represents what the client intends to do to a customer if given
+            authorization.
+
+
+            No duplicate action types allowed.
+
+
+            Min number of items: `1`
+
+            Max number of items: `5`
         auth_flow_triggers:
           $ref: '#/components/schemas/RequestAuthFlowTriggers'
+          description: >-
+            While the request is `PENDING`, contains different methods that can
+            be used to start
+
+            the authorization flow in the Cash App mobile application. Its
+            contents refresh each time
+
+            the `refreshes_at` timestamp passes. When the
+
+            data refreshes, you should update any buttons
+
+            or QR codes referring to it immediately.
+
+
+            After a request has been scanned (and is no
+
+            longer in the `PENDING` status), this
+
+            field will no longer be returned.
         redirect_url:
           type: string
           format: uri
+          description: >-
+            If this request is responded to via mobile redirect, this field
+            specifies the URL that Cash App will open for a customer in the
+            mobile device's default browser after the request is approved or
+            declined.
         created_at:
           type: string
           format: date-time
+          description: >-
+            When this customer request was created, in [RFC
+            3339](https://datatracker.ietf.org/doc/html/rfc3339) format (UTC).
         updated_at:
           type: string
           format: date-time
+          description: >-
+            When the customer request was last updated, in [RFC
+            3339](https://datatracker.ietf.org/doc/html/rfc3339) format (UTC).
         expires_at:
           type: string
           format: date-time
+          description: >-
+            When this customer request will be automatically declined by Cash
+            App, in [RFC 3339](https://datatracker.ietf.org/doc/html/rfc3339)
+            format (UTC).
         origin:
           $ref: '#/components/schemas/RequestOrigin'
+          description: Metadata describing how the customer request was created.
         channel:
           $ref: '#/components/schemas/Channel'
         grants:
           type: array
           items:
             $ref: '#/components/schemas/Grant'
+          description: >-
+            If present, contains grants that can be used to perform actions
+            specified in the request using the Network API.
+
+
+            Each grant corresponds directly to an action on the request.
+
+
+            Min number of items: `1`
+
+            Max number of items: `5`
         reference_id:
           type: string
+          description: >-
+            A user-defined identifier for this request, typically used to
+            associate the resource with a record in an external system.
+
+
+            Min length: `1`
+
+            Max length: `1024`
         requester_profile:
           $ref: '#/components/schemas/RequestRequesterProfile'
+          description: >-
+            Details about the brand or client that are requesting permission to
+            perform the actions on the customer request.
         customer_profile:
           $ref: '#/components/schemas/RequestCustomerProfile'
+          description: >-
+            If the customer request was approved, contains the identity of the
+            Cash App customer that approved it.
         metadata:
           $ref: '#/components/schemas/Metadata'
         customer_metadata:
@@ -59118,8 +68312,12 @@ components:
       properties:
         id:
           type: string
+          description: >-
+            The unique ID provided by Cash App for the resource contained in the
+            event.
         object:
           $ref: '#/components/schemas/EventDataDataObject'
+          description: The snapshot of the resource contained in the event.
         type:
           $ref: '#/components/schemas/EventDataType'
       required:
@@ -59131,13 +68329,16 @@ components:
       properties:
         event_id:
           type: string
+          description: The unique ID of the webhook event.
         type:
           $ref: '#/components/schemas/EventType'
         created_at:
           type: string
           format: date-time
+          description: The timestamp of when the event was created.
         data:
           $ref: '#/components/schemas/EventDataData'
+          description: The underlying data encapsulated in the event.
       required:
         - event_id
         - type
@@ -59148,8 +68349,10 @@ components:
       properties:
         id:
           type: string
+          description: The unique identifier for a webhook event issued by Cash App.
         webhook_endpoint_id:
           type: string
+          description: This event is delivered to this webhook endpoint ID.
         event_type:
           $ref: '#/components/schemas/EventType'
         status:
@@ -59157,16 +68360,22 @@ components:
         created_at:
           type: string
           format: date-time
+          description: The timestamp of when the event was created.
         updated_at:
           type: string
           format: date-time
+          description: The timestamp of when the event was last updated.
         expires_at:
           type: string
           format: date-time
+          description: >-
+            The timestamp of when this event will expire and no longer be
+            available in Cash App.
         event_data:
           $ref: '#/components/schemas/EventData'
         api_version:
           type: string
+          description: The API version used to serialize the event data.
       required:
         - id
         - webhook_endpoint_id
@@ -59186,6 +68395,9 @@ components:
             $ref: '#/components/schemas/WebhookEvent'
         cursor:
           type: string
+          description: >-
+            The pagination cursor to be used in a subsequent request. If empty,
+            this is the final response.
       required:
         - webhook_events
 
@@ -59629,11 +68841,13 @@ paths:
                   items:
                     $ref: >-
                       #/components/schemas/RequestChainsPostRequestBodyContentApplicationJsonSchemaRequestsItems
+                  description: Requests to execute
                 chains:
                   type: array
                   items:
                     $ref: >-
                       #/components/schemas/RequestChainsPostRequestBodyContentApplicationJsonSchemaChainsItems
+                  description: Chains control the order and execution modes of requests
               required:
                 - requests
                 - chains
@@ -59661,20 +68875,35 @@ components:
       properties:
         uid:
           type: string
+          description: Unique identifier for the request
         method:
           $ref: >-
             #/components/schemas/RequestChainsPostRequestBodyContentApplicationJsonSchemaRequestsItemsMethod
+          description: HTTP method of the request
         path:
           type: string
+          description: >-
+            URL path to call. Use format `{path_params key name}` to add
+            variable path parameters.
         path_params:
           $ref: >-
             #/components/schemas/RequestChainsPostRequestBodyContentApplicationJsonSchemaRequestsItemsPathParams
+          description: >-
+            A map of path parameters. The keys represent variables from the
+            `path`. The value fields allow for **Accessing a previous response's
+            value**.
         query_params:
           $ref: >-
             #/components/schemas/RequestChainsPostRequestBodyContentApplicationJsonSchemaRequestsItemsQueryParams
+          description: >-
+            A map of query parameters. The value fields allow for **Accessing a
+            previous response's value**.
         body:
           $ref: >-
             #/components/schemas/RequestChainsPostRequestBodyContentApplicationJsonSchemaRequestsItemsBody
+          description: >-
+            The body that is required for the requested endpoint. The value
+            fields allow for **Accessing a previous response's value**.
       required:
         - uid
         - method
@@ -59684,6 +68913,7 @@ components:
       properties:
         uid:
           type: string
+          description: Unique identifier for the request to execute
       required:
         - uid
     RequestChainsPostRequestBodyContentApplicationJsonSchemaChainsItemsExecutionMode:
@@ -59702,6 +68932,7 @@ components:
         execution_mode:
           $ref: >-
             #/components/schemas/RequestChainsPostRequestBodyContentApplicationJsonSchemaChainsItemsExecutionMode
+          description: Execution mode of the requests in a chain
       required:
         - requests
         - execution_mode
@@ -59726,19 +68957,28 @@ components:
       properties:
         request_uid:
           type: string
+          description: Unique identifier for the request
         execution_status:
           $ref: '#/components/schemas/ResponseExecutionStatus'
+          description: Execution status of the request
         path:
           type: string
+          description: URL path that was called
         method:
           $ref: '#/components/schemas/ResponseMethod'
+          description: HTTP method of the request
         status_code:
           type: integer
+          description: Status code of the request
         body:
           $ref: '#/components/schemas/ResponseBody'
+          description: Response body of the requested endpoint
         completed_at:
           type: string
           format: date-time
+          description: >-
+            When the request was completed, in [RFC
+            3339](https://datatracker.ietf.org/doc/html/rfc3339) format (UTC).
       required:
         - request_uid
         - execution_status

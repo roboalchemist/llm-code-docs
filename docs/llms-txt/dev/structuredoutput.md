@@ -1,8 +1,12 @@
 # Source: https://dev.writer.com/blueprints/structuredoutput.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://dev.writer.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Structured output
 
-Allows to define a JSON response format, which the agent will use to structure its output.
+Defines a JSON response format that the agent will use to structure its output.
 
 <img src="https://mintcdn.com/writer/KruNpIclsgQbhj82/images/agent-builder/blueprints/structured-output-block.png?fit=max&auto=format&n=KruNpIclsgQbhj82&q=85&s=c076d45dd7890a11f83ccb8080ff8c27" alt="" data-og-width="2188" width="2188" data-og-height="1456" height="1456" data-path="images/agent-builder/blueprints/structured-output-block.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/writer/KruNpIclsgQbhj82/images/agent-builder/blueprints/structured-output-block.png?w=280&fit=max&auto=format&n=KruNpIclsgQbhj82&q=85&s=870c0941bdc69bd910a40869fadde28b 280w, https://mintcdn.com/writer/KruNpIclsgQbhj82/images/agent-builder/blueprints/structured-output-block.png?w=560&fit=max&auto=format&n=KruNpIclsgQbhj82&q=85&s=693cb70fc92838c821d42a51c8add4e0 560w, https://mintcdn.com/writer/KruNpIclsgQbhj82/images/agent-builder/blueprints/structured-output-block.png?w=840&fit=max&auto=format&n=KruNpIclsgQbhj82&q=85&s=3f39c493f83a20e42567cf8460f75dc6 840w, https://mintcdn.com/writer/KruNpIclsgQbhj82/images/agent-builder/blueprints/structured-output-block.png?w=1100&fit=max&auto=format&n=KruNpIclsgQbhj82&q=85&s=cc0df85f56d8bd645ac9b90a32d9e2f5 1100w, https://mintcdn.com/writer/KruNpIclsgQbhj82/images/agent-builder/blueprints/structured-output-block.png?w=1650&fit=max&auto=format&n=KruNpIclsgQbhj82&q=85&s=23d2d5f5ee532c7aa14c998da2521d9b 1650w, https://mintcdn.com/writer/KruNpIclsgQbhj82/images/agent-builder/blueprints/structured-output-block.png?w=2500&fit=max&auto=format&n=KruNpIclsgQbhj82&q=85&s=c855a4318b04d32bb6350549b53c4102 2500w" />
 
@@ -185,14 +189,14 @@ Below are the possible end states of the block call.
       <td>Success</td>
       <td>-</td>
       <td>success</td>
-      <td>If the function doesn't raise an Exception.</td>
+      <td>The structured output was generated.</td>
     </tr>
 
     <tr>
       <td>Error</td>
       <td>-</td>
       <td>error</td>
-      <td>If the function raises an Exception.</td>
+      <td>There was an error generating the output.</td>
     </tr>
   </tbody>
 </table>

@@ -236,7 +236,7 @@ The beauty of Litestream is that it happily runs in the background transparent t
 Alternatively as the [Docker compose](/github-action-templates) configurations are delivered as [mix](/mix-tool) configurations, they can also be applied to existing projects, e.g:
 
 ::: sh
-x mix litestream-aws
+npx add-in litestream-aws
 :::
 
 Since Litestream is tied to deployment, hosting environment & preferred configured storage, we've had to create a matrix of configurations to integrate with each of the above templates.
@@ -247,8 +247,7 @@ Since Litestream is tied to deployment, hosting environment & preferred configur
 | **blazor**           | blazor-litestream-aws   | blazor-litestream-azure   | blazor-litestream-sftp   |
 | **blazor-vue**       | blazor-litestream-aws   | blazor-litestream-azure   | blazor-litestream-sftp   |
 | **blazor-wasm**      | blazor-litestream-aws   | blazor-litestream-azure   | blazor-litestream-sftp   |
-| **vue-ssg**          | jamstack-litestream-aws | jamstack-litestream-azure | jamstack-litestream-sftp |
-| **vue-vite**         | jamstack-litestream-aws | jamstack-litestream-azure | jamstack-litestream-sftp |
+| **vue-static**       | jamstack-litestream-aws | jamstack-litestream-azure | jamstack-litestream-sftp |
 | **nextjs**           | jamstack-litestream-aws | jamstack-litestream-azure | jamstack-litestream-sftp |
 
 ## GitHub Action Workflow

@@ -118,5 +118,5 @@ Deploying a change to an application package is generally safe to do at any time
 
 #### Next: [Schemas](schemas.html)
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 

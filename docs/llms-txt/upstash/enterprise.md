@@ -2,108 +2,68 @@
 
 # Source: https://upstash.com/docs/qstash/overall/enterprise.md
 
-# Source: https://upstash.com/docs/redis/overall/enterprise.md
-
-# Source: https://upstash.com/docs/qstash/overall/enterprise.md
-
-# Source: https://upstash.com/docs/redis/overall/enterprise.md
-
-# Source: https://upstash.com/docs/qstash/overall/enterprise.md
-
-# Source: https://upstash.com/docs/redis/overall/enterprise.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Prod Pack & Enterprise
 
-Upstash has Prod Pack and Enterprise plans for customers with critical production workloads. Prod Pack and Enterprise plans include additional monitoring and security features in addition to higher capacity limits and more powerful resources
+Upstash has Prod Pack and Enterprise plans for customers with critical production workloads. Prod Pack and Enterprise plans include additional monitoring and security features in addition to higher capacity limits and more powerful resources.
 
-Prod Pack -> Per database
+Prod Pack add-on is available for both pay-as-you-go and fixed-price plans. Enterprise plans are custom plans with additional features and higher limits.
 
-Enterprise contract -> Per account
+All features of Prod Pack and Enterprise plan for Upstash QStash are detailed below.
 
-Prod Pack are an add-on per database available to both pay-as-you-go and fixed-price plans, not per account. You can have databases on different plans in the same account and each is charged separately. Meanwhile, Enterprise plans are per account, not per database. All of your databases can be included in the same Enterprise plan covering all of your databases.
+## How to Upgrade
+
+You can activate Prod Pack in the QStash settings page in the [Upstash Console](https://upstash.com/dashboard/qstash). For the Enterprise plan, please create a request through the Upstash Console or contact [support@upstash.com](mailto:support@upstash.com).
 
 # Prod Pack Features
 
-These features are available on Prod Pack databases.
+Below QStash features are enabled with Prod Pack.
 
 ### Uptime SLA
 
-All Prod Pack databases come with an SLA guaranteeing 99.99% uptime. For mission-critical data where uptime is crucial, we recommend Prod Pack plans.
+All Prod Pack accounts come with an SLA guaranteeing 99.99% uptime. For mission-critical messaging where uptime is crucial, we recommend Prod Pack plans. Learn more about [Uptime SLA](/common/help/sla).
 
-### RBAC
+### SOC-2 Type 2 Compliance & Report
 
-Role-Based Access Control (RBAC) is a security model that manages database access. You can create multiple users with different roles to control their actions on your databases.
+Upstash QStash is SOC-2 Type 2 compliant with Prod Pack. Once you enable Prod Pack, you can request access to the report by going to [Upstash Trust Center](https://trust.upstash.com/) or contacting [support@upstash.com](mailto:support@upstash.com).
 
-We recommend using RBAC if your database is accessible to multiple developers.
+### Encryption at Rest
 
-### SOC-2 Type 2 Report
-
-We have a SOC 2 Type 2 report available for our Prod Pack and Enterprise plans. You can request access to the report by contacting [support@upstash.com](mailto:support@upstash.com).
+Encrypts the storage where your QStash message data is persisted and stored.
 
 ### Prometheus Metrics
 
 Prometheus is an open-source monitoring system widely used for monitoring and alerting in cloud-native and containerized environments.
 
-Upstash Prod Pack and Enterprise plans offer Prometheus metrics collection, enabling you to monitor your Redis databases with Prometheus in addition to console metrics.
+Upstash Prod Pack and Enterprise plans offer Prometheus metrics collection, enabling you to monitor your QStash messages with Prometheus in addition to console metrics. Learn more about [Prometheus integration](/qstash/integrations/prometheus).
 
 ### Datadog Integration
 
-Upstash Prod Pack and Enterprise plans include integration with Datadog, allowing you to monitor your Redis databases with Datadog in addition to console metrics.
-
-### More metrics on the Console
-
-Max interval of the metrics that are available on the Upstash Console increases from one week to one month for databases with Prod Pack.
-
-### High Availability for Read Regions
-
-With Prod Pack add-on, read regions of your database are [highly available](/redis/features/replication#high-availability). This ensures that if one read replica fails, you can read from another read replica in the same region without any additional latency.
-
-### More Backup Capability
-
-Backups up to 3 days are possible with the Prod Pack add-on.
-
-### Encryption at Rest
-
-Encrypts the block storage where your data is persisted and stored.
+Upstash Prod Pack and Enterprise plans include integration with Datadog, allowing you to monitor your QStash messages with Datadog in addition to console metrics. Learn more about [Datadog integration](/qstash/integrations/datadog).
 
 # Enterprise Features
 
 All Prod Pack features are included in the Enterprise plan. Additionally, Enterprise plans include:
 
-### Custom Limits
+### 100M+ Messages Daily
 
-Get a custom-tailored plan for your Upstash Redis databases to handle the growing demands of your business at any scale.
+Enterprise plans support 100 million or more messages per day, suitable for high-volume production workloads.
 
-### Professional Support
+### Unlimited Bandwidth
 
-All of the databases in the Enterprise plan get access to our professional support. The plan includes response time SLAs and priority access to our support team. Check out the [support page](/common/help/prosupport) for more details.
-
-The below features are available upon request for Enterprise customers.
+Enterprise plans include unlimited bandwidth, ensuring no data transfer limits for your messaging needs.
 
 ### SAML SSO
 
 Single Sign-On (SSO) allows you to use your existing identity provider to authenticate users for your Upstash account. This feature is available upon request for Enterprise customers.
 
-### VPC Peering and Private Links
+### Professional Support with SLA
 
-VPC Peering and Private Links enable you to connect your databases to your VPCs and other private networks, enhancing isolation and security while reducing data transfer costs. This feature is available upon request for Enterprise customers.
+Enterprise plans include access to our professional support with response time SLAs and priority access to our support team. Check out the [support page](/common/help/prosupport) for more details.
 
-### Configurable Backups
+### Dedicated Resources for Isolation
 
-Hourly backups with customizable retention are available upon request for Enterprise customers.
-
-### Access Logs
-
-Enterprise customers can request access logs to the databases.
-
-### More Resources
-
-A non-Enterprise Upstash account can create up to 100 databases and 10 teams. Enterprise customers can have more resources.
-
-### HIPAA Compliance
-
-HIPAA compliance and a BAA agreement is available with our Enterprise plan. To request access, please contact [support@upstash.com](mailto:support@upstash.com).
-
-## How to Upgrade
-
-You can activate Prod Pack on the database details page in the console. For the Enterprise plan, contact [support@upstash.com](mailto:support@upstash.com).
+Enterprise customers receive dedicated resources to ensure isolation and consistent performance for their messaging workloads.

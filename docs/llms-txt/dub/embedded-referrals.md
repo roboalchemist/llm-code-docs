@@ -1,5 +1,9 @@
 # Source: https://dub.co/docs/partners/embedded-referrals.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://dub.co/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Embedded referral dashboard
 
 > Learn how to create an embedded referral dashboard with Dub for your users to join your partner program without leaving your app.

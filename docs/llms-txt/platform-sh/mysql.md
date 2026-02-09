@@ -1,17 +1,5 @@
 # Source: https://docs.upsun.com/add-services/mysql.md
 
-# Source: https://docs.upsun.com/guides/spring/mysql.md
-
-# Source: https://docs.upsun.com/guides/strapi/database-configuration/mysql.md
-
-# Source: https://docs.upsun.com/add-services/mysql.md
-
-# Source: https://docs.upsun.com/guides/spring/mysql.md
-
-# Source: https://docs.upsun.com/guides/strapi/database-configuration/mysql.md
-
-# Source: https://docs.upsun.com/add-services/mysql.md
-
 # MariaDB/MySQL (database service)
 
 Upsun supports both MariaDB and Oracle MySQL to manage your relational databases.
@@ -32,8 +20,8 @@ When you deploy your app, you always get the latest available patches.
 
 **Note**: 
 
- - The service types ``mariadb`` and ``mysql`` both refer to MariaDB.
-Aside from their ``type`` value, MySQL and MariaDB have the same behavior and information on this page applies to both of them.
+ - Both ``mariadb`` and ``mysql`` service types use MariaDB.
+They behave identically, so the information on this page applies to both of them.
  - The service type ``oracle-mysql`` refers to MySQL as released by Oracle, Inc.
 
 | **`mariadb` / `mysql`** | **`oracle-mysql`** |
@@ -50,9 +38,9 @@ Aside from their ``type`` value, MySQL and MariaDB have the same behavior and in
 
  | 
 
-   - 8.0
+   - 8.4
 
-   - 5.7
+   - 8.0
 
  |
 
@@ -86,38 +74,26 @@ They'll be removed in the future – consider migrating to a [supported version]
 
  | 
 
+   - 5.7
+
  |
 
-### Upgrade
+### Upgrade, change, or downgrade a service
 
-When upgrading your service, skipping versions may result in data loss.
-Upgrade sequentially from one supported version to another (10.6 -> 10.11 -> 11.4),
-and check that each upgrade commit translates into an actual deployment.
+**Caution**: 
 
-To upgrade, update the service version in your [service configuration](https://docs.upsun.com...md).
+Upgrading and downgrading a service version or changing a service type are destructive processes that delete the existing service and its data.
 
-### Change the service type
+A best practice is to first back up your environment and export the data.
 
-To change the service type:
+To prevent data loss after completing either of these actions, follow these steps:
 
-1. [Export your data](#exporting-data).
-   **Note**: 
-
-Changing the service type, especially when done repeatedly, may result in data loss.
-Backing up your data is therefore crucial.
-
-2. Remove the old service from your [service configuration](https://docs.upsun.com...md).
-3. Specify a new service type.
-4. [Import your data](#importing-data) into the new service.
-
-### Downgrade
-
-You can't downgrade to a previous version and retain your data.
-To downgrade your database, follow these steps:
-
-1. [Export your data](#exporting-data).
-1. Remove the old service from your [service configuration](https://docs.upsun.com...md).
-1. Add a new service with a different name and your desired version.
+1. [Back up your environment](https://docs.upsun.com/environments/backup.md#create-a-manual-backup). If you accidentally delete the wrong service or make an error in your `config.yaml` file and need to revert your entire environment, the backup enables you to do so. 
+1. [Export the data](#exporting-data). Exporting the data to a portable file enables you to import it later. You cannot import data directly from a backup of your environment.  
+1. Change the service type in your [service configuration](https://docs.upsun.com/add-services/_index.md):
+    - **Upgrade:** Upgrade sequentially from one supported version to another (10.6 -> 10.11 -> 11.4),
+and check that each upgrade commit translates into an actual deployment.   
+    - **Change or downgrade:** Specify the new service type and the desired version.
 1. [Import your data](#importing-data) into the new service.
 
 ## Relationship reference
@@ -191,7 +167,7 @@ The structure of the ``PLATFORM_RELATIONSHIPS`` environment variable can be obta
     "is_master": true
   },
   "password": "",
-  "type": "oracle-mysql:8.0",
+  "type": "oracle-mysql:8.4",
   "public": false,
   "host_mapped": false
 }
@@ -244,10 +220,10 @@ applications:
 ```
 
 You can define ``<SERVICE_NAME>`` as you like, so long as it’s unique between all defined services and matches in both the application and services configuration.
-The example above leverages [default endpoint](https://docs.upsun.com/create-apps/app-reference/single-runtime-image.md#relationships) configuration for relationships.
-That is, it uses default endpoints behind-the-scenes,
-providing a [relationship](https://docs.upsun.com/create-apps/app-reference/single-runtime-image.md#relationships) (the network address a service is accessible from) that is identical to the name of that service.
-Depending on your needs, instead of default endpoint configuration, you can use [explicit endpoint configuration](https://docs.upsun.com/create-apps/app-reference/single-runtime-image.md#relationships).
+The example above leverages [default endpoint](https://docs.upsun.com/create-apps/image-properties/relationships.md) configuration for relationships.
+That is, it uses default endpoints behind the scenes,
+providing a [relationship](https://docs.upsun.com/create-apps/image-properties/relationships.md) (the network address a service is accessible from) that is identical to the name of that service.
+Depending on your needs, instead of default endpoint configuration, you can use [explicit endpoint configuration](https://docs.upsun.com/create-apps/image-properties/relationships.md).
 With the above definition, the application container (``<APP_NAME>``) now has [access to the service](#use-in-app) via the relationship ``<SERVICE_NAME>`` and its corresponding [service environment variables](https://docs.upsun.com/development/variables.md#service-environment-variables).
 
     .upsun/config.yaml
@@ -267,9 +243,9 @@ applications:
 
 You can define ``<SERVICE_NAME>`` and ``<RELATIONSHIP_NAME>`` as you like, so long as it’s unique between all defined services and relationships
 and matches in both the application and services configuration.
-The example above leverages [explicit endpoint](https://docs.upsun.com/create-apps/app-reference/single-runtime-image.md#relationships) configuration for relationships.
+The example above leverages [explicit endpoint](https://docs.upsun.com/create-apps/image-properties/relationships.md) configuration for relationships.
 Depending on your needs, instead of explicit endpoint configuration,
-you can use [default endpoint configuration](https://docs.upsun.com/create-apps/app-reference/single-runtime-image.md#relationships).
+you can use [default endpoint configuration](https://docs.upsun.com/create-apps/image-properties/relationships.md).
 With the above definition, the application container now has [access to the service](#use-in-app) via the relationship ``<RELATIONSHIP_NAME>`` and its corresponding [service environment variables](https://docs.upsun.com/development/variables.md#service-environment-variables).
 
 ### MariaDB example
@@ -325,7 +301,7 @@ applications:
 service:
   # The name of the service container. Must be unique within a project.
   oracle-mysql:
-    type: oracle-mysql:8.0
+    type: oracle-mysql:8.4
 ```
 
     .upsun/config.yaml
@@ -344,7 +320,7 @@ applications:
 service:
   # The name of the service container. Must be unique within a project.
   oracle-mysql_service:
-    type: oracle-mysql:8.0
+    type: oracle-mysql:8.4
 ```
 
 ### Use in app
@@ -395,7 +371,7 @@ service:
 
 This configuration defines a single application (``myapp``), whose source code exists in the ``<PROJECT_ROOT>/myapp`` directory.
 ``myapp`` has access to the ``mariadb`` service, via a relationship whose name is [identical to the service name](#2-define-the-relationship)
-(as per [default endpoint](https://docs.upsun.com/create-apps/app-reference/single-runtime-image.md#relationships) configuration for relationships).
+(as per [default endpoint](https://docs.upsun.com/create-apps/image-properties/relationships.md) configuration for relationships).
 
 From this, ``myapp`` can retrieve access credentials to the service through the [relationship environment variables](#relationship-reference).
 
@@ -437,17 +413,17 @@ The result is the complete [information for all relationships](#relationship-ref
 
 You can obtain the complete list of available service environment variables in your app container by running ``upsun ssh env``.
 
-Note that the information about the relationship can change when an app is redeployed or restarted or the relationship is changed. So your apps should only rely on the [service environment variables](https://docs.upsun.com/development/variables.md#service-environment-variables) directly rather than hard coding any values.
+Service connection details can change whenever your app restarts or redeploys. **To keep your connection stable, use [service environment variables](https://docs.upsun.com/development/variables.md#service-environment-variables) rather than hard-coding values.**
 
 You can also see a guide on how to [convert the `PLATFORM_RELATIONSHIPS` environment variable to a different form](https://support.platform.sh/hc/en-us/community/posts/16439596373010).
 
-## Configuration options
+## Configuration options {#configuration-options}
 
 You can configure your MySQL service in the [services configuration](https://docs.upsun.com...md) with the following options:
 
 | Name               | Type                       | Version                            | Description |
 | ------------------ | -------------------------- | ---------------------------------- | ----------- |
-| `schemas`          | An array of `string`s      | 10.0+                              | All databases to be created. Defaults to a single `main` database. |
+| `schemas`          | `string` array     | 10.0+                              | All databases to be created. Defaults to a single `main` database. |
 | `endpoints`        | An endpoints dictionary    | 10.0+                              | Endpoints with their permissions. See [multiple databases](#multiple-databases). |
 | `properties`       | A properties dictionary    | MariaDB: 10.1+; Oracle MySQL: 8.0+ | Additional properties for the database. Equivalent to using a `my.cnf` file. See [property options](#configure-the-database). |
 | `rotate_passwords` | A boolean                  | 10.3+                              | Defaults to `true`. When set to `false`, [password rotation](#password-rotation) is disabled. |
@@ -665,37 +641,38 @@ MariaDB configuration properties like [max_connections](https://mariadb.com/docs
 They can, however, be set indirectly, which can be useful for solving ``Too many connection`` errors.
 See [the troubleshooting documentation](https://docs.upsun.com/add-services/mysql/troubleshoot.md#too-many-connections) for more details.
 
-## Password generation
+## Password generation {#password-generation}
 
-When you connect your app to a database,
-an empty password is generated for the database by default.
-This can cause issues with your app.
+If your YAML file does not specify a `schema` and `endpoint` for the MariaDB or MySQL service, no password is generated. 
 
-To generate real passwords for your database,
-define custom endpoints in your [service configuration](#1-configure-the-service).
-For each custom endpoint you create,
-you get an automatically generated password,
-similarly to when you create [multiple databases](#multiple-databases).
-You cannot customize these generated passwords.
+Because the database container is strictly isolated, it remains invisible to any resource until you [define an explicit relationship](https://docs.upsun.com/add-services/mysql.md#2-define-the-relationship) between it and other apps or workers. The container's "walls" ensure that only authorized applications and workers can reach the data, while all other processes are blocked at the network level.
+
+If you prefer to have Upsun generate a password, you must define [`schemas` and custom `endpoints`](#1-configure-the-service) in the `services` configuration – see the example in the [multiple databases](#multiple-databases) section of this topic.
+For each custom endpoint that you define, Upsun generates a password. Note that you cannot customize these generated passwords.
+
+**Note**: 
+
+Make sure you don’t change ``services.<SERVICE_NAME>``. **Changing the service name creates a new service,
+which removes existing data from your database.**
 
 After your custom endpoints are exposed as relationships in your [app configuration](https://docs.upsun.com../../create-apps.md),
 you can retrieve the password for each endpoint
 through the `PLATFORM_RELATIONSHIPS` [environment variable](https://docs.upsun.com../../development/variables/use-variables.md#use-provided-variables)
- within your [application containers](https://docs.upsun.com/development/variables/use-variables.md#access-variables-in-your-app). 
+ within your [application containers](https://docs.upsun.com/development/variables/use-variables.md#access-variables-in-your-app).
 
-Using this method to retrieve password credentials is considered a best practice: passwords change automatically (or [_rotate_](#password-rotation)) over time, and using incorrect passwords results in application downtime. **Avoid using hard-coded passwords in your application (and code base), which can cause security issues.** 
-
-When you switch from the default configuration with an empty password to custom endpoints,
-make sure your service name remains unchanged.
-**Changing the service name creates a new service,
-which removes any existing data from your database.**
+Using this method to retrieve password credentials is considered a best practice: passwords change automatically (or [_rotate_](#password-rotation)) over time, and using incorrect passwords results in application downtime. **Avoid using hard-coded passwords in your application (and code base), which can cause security issues.**
 
 ## Password rotation {#password-rotation}
-By default, password rotation is enabled (`rotate_passwords=true`), enabling Upsun to automatically change (or _rotate_) MariaDB passwords each time it updates the MariaDB image. Password rotation also occurs as defined by any password lifetime settings in MariaDB. 
 
-Specific scenarios might warrant disabling password rotation (` rotate_passwords=false`): for example, choosing to accommodate users who access a database via an SSH tunnel and provide a password in their request because they cannot retrieve the database credentials stored in the [service or `$PLATFORM_RELATIONSHIPS` MariaDB environment variables](#mariadb-reference). 
+**Note**: 
 
-Passwords do **not** rotate automatically when you reset this value to `true`. 
+For rotation to occur, you must define a ``schema`` and ``endpoint`` in your service configuration (see [Password generation](#password-generation) above); otherwise, no password is generated to be rotated.
+
+By default, password rotation is enabled (`rotate_passwords: true`), which enables Upsun to automatically rotate MariaDB passwords during image updates or as defined by MariaDB lifetime settings. 
+
+Specific scenarios might warrant disabling password rotation by [setting `rotate_passwords=false`](https://docs.upsun.com/add-services/mysql.md#configuration-options): for example, choosing to accommodate users who access a database via an SSH tunnel and provide a password in their request because they cannot retrieve the database credentials stored in the [service or `$PLATFORM_RELATIONSHIPS` MariaDB environment variables](#mariadb-reference).
+
+Passwords do **not** rotate automatically when you reset this value to `true`.
 
 **Important**: 
 

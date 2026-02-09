@@ -1,4 +1,4 @@
-# Source: https://www.daytona.io/docs/en/claude-agent-sdk-connect-service-sandbox.md
+# Source: https://www.daytona.io/docs/en/guides/claude/claude-agent-sdk-connect-service-sandbox.md
 
 This guide demonstrates how to run a two-agent autonomous coding system using the [Claude Agent SDK](https://platform.claude.com/docs/en/agent-sdk/overview) and Daytona sandboxes. The system consists of a **Project Manager Agent** (local) and a **Developer Agent** (in-sandbox), enabling advanced delegation, planning, and secure code execution.
 
@@ -79,10 +79,7 @@ The system will start and wait for your prompt.
 
 Example chat session:
 
-<details>
-  <summary>Click to view example chat session</summary>
-  <div>
-    ```
+```
 $ npm run start
 Creating Developer Agent sandbox...
 Installing Developer Agent SDK...
@@ -135,11 +132,7 @@ Your Lunar Lander game is live at:
 TASK_COMPLETE
 
 [Project Manager] All tasks completed!
-
 ```
-
-  </div>
-</details>
 
 ---
 

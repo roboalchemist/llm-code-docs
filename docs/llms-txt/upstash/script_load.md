@@ -2,23 +2,9 @@
 
 # Source: https://upstash.com/docs/redis/sdks/py/commands/scripts/script_load.md
 
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/scripts/script_load.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/scripts/script_load.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/scripts/script_load.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/scripts/script_load.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/scripts/script_load.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/scripts/script_load.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/scripts/script_load.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/scripts/script_load.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/scripts/script_load.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # SCRIPT LOAD
 
@@ -26,23 +12,20 @@
 
 ## Arguments
 
-<ParamField body="script" type="string" required>
+<ParamField body="script" type="str" required>
   The script to load.
 </ParamField>
 
 ## Response
 
-<ResponseField type="string" required>
+<ResponseField type="str" required>
   The sha1 of the script.
 </ResponseField>
 
 <RequestExample>
-  ```ts Example theme={"system"}
-  const script = `
-    local value = redis.call('GET', KEYS[1])
-    return value
-  `;
-  const sha1 = await redis.scriptLoad(script);
+  ```py Example theme={"system"}
+  sha1 = redis.script_load("return 1")
 
+  assert redis.evalsha(sha1) == 1
   ```
 </RequestExample>

@@ -1,5 +1,9 @@
 # Source: https://docs.lancedb.com/integrations/reranking/rrf.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.lancedb.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Reciprocal Rank Fusion Reranker
 
 > Learn about LanceDB's default Reciprocal Rank Fusion (RRF) reranker for hybrid search. Implements the Cormack et al. algorithm for optimal search result ranking.
@@ -23,7 +27,7 @@ This is the default reranker used by LanceDB hybrid search. Reciprocal Rank Fusi
 | Argument       | Type  | Default       | Description                                                                                                                                                                                                             |
 | -------------- | ----- | ------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `K`            | `int` | `60`          | A constant used in the RRF formula (default is 60). Experiments indicate that k = 60 was near-optimal, but that the choice is not critical.                                                                             |
-| `return_score` | str   | `"relevance"` | Options are "relevance" or "all". The type of score to return. If "relevance", will return only the `_relevance_score`. If "all", will return all scores from the vector and FTS search along with the relevance score. |
+| `return_score` | `str` | `"relevance"` | Options are "relevance" or "all". The type of score to return. If "relevance", will return only the `_relevance_score`. If "all", will return all scores from the vector and FTS search along with the relevance score. |
 
 ## Supported Scores for each query type
 
@@ -35,8 +39,3 @@ You can specify the type of scores you want the reranker to return. The followin
 | -------------- | ----------- | ----------------------------------------------------------------------------------------------------------- |
 | `relevance`    | ✅ Supported | Returned rows only have the `_relevance_score` column.                                                      |
 | `all`          | ✅ Supported | Returned rows have vector(`_distance`) and FTS(`score`) along with Hybrid Search score(`_relevance_score`). |
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.lancedb.com/llms.txt

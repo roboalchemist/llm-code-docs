@@ -1,5 +1,9 @@
 # Source: https://docs.crewai.com/en/observability/langfuse.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.crewai.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Langfuse Integration
 
 > Learn how to integrate Langfuse with CrewAI via OpenTelemetry using OpenLit

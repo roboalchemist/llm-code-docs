@@ -1,5 +1,9 @@
 # Source: https://docs.chatling.ai/general-settings/duplicate.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.chatling.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # How to duplicate a chatbot or agent
 
 > Learn how to duplicate a chatbot/agent to create a copy of it.

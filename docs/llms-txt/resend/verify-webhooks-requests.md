@@ -1,4 +1,8 @@
-# Source: https://resend.com/docs/dashboard/webhooks/verify-webhooks-requests.md
+# Source: https://resend.com/docs/webhooks/verify-webhooks-requests.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://resend.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Verify Webhooks Requests
 
@@ -19,7 +23,7 @@ To verify the webhook request, you can use the Resend SDK, as in the example bel
   break the signature verification.
 </Tip>
 
-```js  theme={null}
+```js  theme={"theme":{"light":"github-light","dark":"vesper"}}
 export async function POST(req: NextRequest) {
   try {
     const payload = await req.text();
@@ -48,18 +52,26 @@ Alternatively, you can manually use the Svix libraries and manually pass it the 
 To verify manually, start by installing the Svix libaries.
 
 <CodeGroup>
-  ```sh npm theme={null}
+  ```sh npm theme={"theme":{"light":"github-light","dark":"vesper"}}
   npm install svix
   ```
 
-  ```sh yarn theme={null}
+  ```sh yarn theme={"theme":{"light":"github-light","dark":"vesper"}}
   yarn add svix
+  ```
+
+  ```sh pnpm theme={"theme":{"light":"github-light","dark":"vesper"}}
+  pnpm add svix
+  ```
+
+  ```sh bun theme={"theme":{"light":"github-light","dark":"vesper"}}
+  bun add svix
   ```
 </CodeGroup>
 
 Then, verify the webhooks using the code below. The payload is the raw (string) body of the request, and the headers are the headers passed in the request.
 
-```js  theme={null}
+```js  theme={"theme":{"light":"github-light","dark":"vesper"}}
 import { Webhook } from 'svix';
 
 const secret = process.env.WEBHOOK_SECRET;

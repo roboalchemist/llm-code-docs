@@ -1,90 +1,74 @@
 # Source: https://docs.anchorbrowser.io/api-reference/profiles/list-profiles.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.anchorbrowser.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # List Profiles
 
 > Fetches all stored profiles.
 
+
+
 ## OpenAPI
 
 ````yaml openapi-mintlify.yaml get /v1/profiles
+openapi: 3.1.0
+info:
+  title: AnchorBrowser API
+  version: 1.0.0
+  description: APIs to manage all browser-related actions and configuration.
+servers:
+  - url: https://api.anchorbrowser.io
+    description: API server
+security: []
 paths:
-  path: /v1/profiles
-  method: get
-  servers:
-    - url: https://api.anchorbrowser.io
-      description: API server
-  request:
-    security:
-      - title: api key header
-        parameters:
-          query: {}
-          header:
-            anchor-api-key:
-              type: apiKey
-              description: API key passed in the header
-          cookie: {}
-    parameters:
-      path: {}
-      query: {}
-      header: {}
-      cookie: {}
-    body: {}
-  response:
-    '200':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              data:
-                allOf:
-                  - type: object
-                    properties:
-                      count:
-                        type: integer
-                        description: Total number of profiles
-                      items:
-                        type: array
-                        items:
-                          $ref: '#/components/schemas/ProfileResponseSchema'
-            refIdentifier: '#/components/schemas/ProfileListResponse'
-        examples:
-          example:
-            value:
-              data:
-                count: 123
-                items:
-                  - name: <string>
-                    description: <string>
-                    source: session
-                    session_id: 3c90c3cc-0d44-4b50-8888-8dd25736052a
-                    status: <string>
-                    created_at: '2023-11-07T05:31:56Z'
-        description: List of user profiles retrieved successfully.
-    '500':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              error:
-                allOf:
-                  - type: object
-                    properties:
-                      code:
-                        type: integer
-                      message:
-                        type: string
-            refIdentifier: '#/components/schemas/ErrorResponse'
-        examples:
-          example:
-            value:
-              error:
-                code: 123
-                message: <string>
-        description: Unable to list user profiles due to an unexpected error.
-  deprecated: false
-  type: path
+  /v1/profiles:
+    get:
+      tags:
+        - Profiles
+      summary: List Profiles
+      description: Fetches all stored profiles.
+      responses:
+        '200':
+          description: List of user profiles retrieved successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProfileListResponse'
+        '500':
+          description: Unable to list user profiles due to an unexpected error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      security:
+        - api_key_header: []
 components:
   schemas:
+    ProfileListResponse:
+      type: object
+      properties:
+        data:
+          type: object
+          properties:
+            count:
+              type: integer
+              description: Total number of profiles
+            items:
+              type: array
+              items:
+                $ref: '#/components/schemas/ProfileResponseSchema'
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: integer
+            message:
+              type: string
     ProfileResponseSchema:
       type: object
       properties:
@@ -110,5 +94,11 @@ components:
           type: string
           format: date-time
           description: The timestamp when the profile was created.
+  securitySchemes:
+    api_key_header:
+      type: apiKey
+      in: header
+      name: anchor-api-key
+      description: API key passed in the header
 
 ````

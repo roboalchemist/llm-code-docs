@@ -2,10 +2,6 @@
 
 # Source: https://docs.zenml.io/api-reference/pro-api/pro-api/tenants.md
 
-# Source: https://docs.zenml.io/api-reference/pro-api/pro-api/organizations/tenants.md
-
-# Source: https://docs.zenml.io/api-reference/pro-api/pro-api/tenants.md
-
 # Tenants
 
 {% openapi src="<https://cloudapi.zenml.io/openapi.json>" path="/tenants" method="get" %}

@@ -1,5 +1,9 @@
 # Source: https://docs.pipecat.ai/server/services/llm/ollama.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pipecat.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Ollama
 
 > LLM service implementation using Ollama with OpenAI-compatible interface
@@ -64,8 +68,3 @@ Before using Ollama LLM services, you need:
   Ollama runs as a local service on port 11434. No API key required for complete
   privacy!
 </Tip>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.pipecat.ai/llms.txt

@@ -1,5 +1,9 @@
 # Source: https://docs.ultravox.ai/apps/websockets.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.ultravox.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # WebSocket Integration
 
 > Integrate with your server via direct WebSocket connections.
@@ -71,8 +75,3 @@ See [Data Messages](/apps/datamessages) for more information on all available me
 
   WebSocket connections use the same message format as WebRTC data channels. See our [Data Messages](/apps/datamessages) documentation for detailed message specifications.
 </Note>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.ultravox.ai/llms.txt

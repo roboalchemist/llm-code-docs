@@ -14,7 +14,7 @@
 
 ## Methods<!-- -->[**](#Methods)
 
-### [**](#format)[**](https://undefined/apify/apify-client-python/blob/master//src/apify_client/_logging.py#L120)format
+### [**](#format)[**](https://undefined/apify/apify-client-python/blob/25ff4e51e07fe25d1d338b042eacba1ec0c63e84//src/apify_client/_logging.py#L120)format
 
 * ****format**(record): str
 
@@ -26,6 +26,6 @@
 
 ## Properties<!-- -->[**](#Properties)
 
-### [**](#empty_record)[**](https://undefined/apify/apify-client-python/blob/master//src/apify_client/_logging.py#L109)empty\_record
+### [**](#empty_record)[**](https://undefined/apify/apify-client-python/blob/25ff4e51e07fe25d1d338b042eacba1ec0c63e84//src/apify_client/_logging.py#L109)empty\_record
 
 **empty\_record: Undefined

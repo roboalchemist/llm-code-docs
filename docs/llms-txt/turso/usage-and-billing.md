@@ -1,5 +1,9 @@
 # Source: https://docs.turso.tech/help/usage-and-billing.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.turso.tech/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Usage & Billing
 
 For the Starter and Scaler plans, Turso usage is limited monthly based on the following usage observations during each calendar month:

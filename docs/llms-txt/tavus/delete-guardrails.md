@@ -1,95 +1,97 @@
 # Source: https://docs.tavus.io/api-reference/guardrails/delete-guardrails.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.tavus.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Delete Guardrails
 
 > This endpoint deletes a single set of guardrails by its unique identifier.
 
 
+
+
 ## OpenAPI
 
 ````yaml delete /v2/guardrails/{guardrails_id}
+openapi: 3.0.3
+info:
+  title: Tavus Developer API Collection
+  version: 1.0.0
+  contact: {}
+servers:
+  - url: https://tavusapi.com
+security:
+  - apiKey: []
+tags:
+  - name: Videos
+  - name: Replicas
+  - name: Conversations
+  - name: Personas
+  - name: Replacements
+  - name: Transcriptions
+  - name: Documents
 paths:
-  path: /v2/guardrails/{guardrails_id}
-  method: delete
-  servers:
-    - url: https://tavusapi.com
-  request:
-    security:
-      - title: apiKey
-        parameters:
-          query: {}
-          header:
-            x-api-key:
-              type: apiKey
-          cookie: {}
+  /v2/guardrails/{guardrails_id}:
     parameters:
-      path:
-        guardrails_id:
-          schema:
-            - type: string
-              required: true
-              description: The unique identifier of the guardrails.
-              example: g12345
-      query: {}
-      header: {}
-      cookie: {}
-    body: {}
-  response:
-    '204':
-      _mintlify/placeholder:
-        schemaArray:
-          - type: any
-            description: NO CONTENT - Guardrails deleted successfully
-        examples: {}
-        description: NO CONTENT - Guardrails deleted successfully
-    '400':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              error:
-                allOf:
-                  - type: string
+      - name: guardrails_id
+        in: path
+        required: true
+        description: The unique identifier of the guardrails.
+        schema:
+          type: string
+          example: g12345
+    delete:
+      tags:
+        - Guardrails
+      summary: Delete Guardrails
+      description: >
+        This endpoint deletes a single set of guardrails by its unique
+        identifier.
+      operationId: deleteGuardrails
+      responses:
+        '204':
+          description: NO CONTENT - Guardrails deleted successfully
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
                     description: The error message.
                     example: Invalid guardrails_id
-        examples:
-          example:
-            value:
-              error: Invalid guardrails_id
-        description: Bad Request
-    '401':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              message:
-                allOf:
-                  - type: string
+        '401':
+          description: UNAUTHORIZED
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
                     description: The error message.
                     example: Invalid access token
-        examples:
-          example:
-            value:
-              message: Invalid access token
-        description: UNAUTHORIZED
-    '404':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              error:
-                allOf:
-                  - type: string
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
                     description: The error message.
                     example: Guardrails not found
-        examples:
-          example:
-            value:
-              error: Guardrails not found
-        description: Not Found
-  deprecated: false
-  type: path
+      security:
+        - apiKey: []
 components:
-  schemas: {}
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      in: header
+      name: x-api-key
 
 ````

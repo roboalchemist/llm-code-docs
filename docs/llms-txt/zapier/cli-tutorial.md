@@ -1,5 +1,9 @@
 # Source: https://docs.zapier.com/platform/quickstart/cli-tutorial.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.zapier.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Platform CLI tutorial
 
 > This tutorial walks you through the process of building, testing, and pushing an example app to Zapier using Platform CLI. We'll use a mock API for recipes in this tutorial, but for production Zapier apps, you'd want to connect to a real API.

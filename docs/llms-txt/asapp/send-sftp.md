@@ -1,8 +1,12 @@
 # Source: https://docs.asapp.com/reporting/send-sftp.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.asapp.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Transmitting Data to SFTP
 
-SFTP is the supported mechanism for **one-time data transmissions**, typically used for sending training data files during the implementation phase prior to initial launch. ASAPP customers can transmit the following types of training data via SFTP:
+SFTP supports **one-time data transmissions**, typically for sending training data files during the implementation phase prior to initial launch. ASAPP customers can transmit the following types of training data via SFTP:
 
 * Conversation transcripts from messaging or voice interactions
 * Recorded call audio files
@@ -22,8 +26,8 @@ In your network, open port 22 outbound to sftp.us-east-1.asapp.com.
 
 **General Requirements:**
 
-* Files should be UTF-8 encoded.
-* Control characters should be escaped.
+* Encode files in UTF-8.
+* Escape control characters.
 * You may provide files as CSV or JSONL format, but we strongly recommend JSONL where possible. (CSV files are just too fragile.)
 * If you send a CSV file, ASAPP recommends that you include a header. Otherwise, your CSV must provide columns in the exact order listed below.
 * When providing a CSV file, you must provide an explicit null value (as the unquoted string: `NULL` ) for missing or empty values.

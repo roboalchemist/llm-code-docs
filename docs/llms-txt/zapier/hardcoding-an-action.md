@@ -1,5 +1,9 @@
 # Source: https://docs.zapier.com/powered-by-zapier/zap-creation/hardcoding-an-action.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.zapier.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Hardcoding an Action
 
 > To help focus the user experience, it can be helpful to hardcode a certain Action to guide users in selecting the most appropriate action for their use-case.

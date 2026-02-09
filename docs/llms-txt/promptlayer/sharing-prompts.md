@@ -1,5 +1,9 @@
 # Source: https://docs.promptlayer.com/features/prompt-history/sharing-prompts.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.promptlayer.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Sharing Requests
 
 Often you may find yourself collaborating on prompts with other stakeholders. PromptLayer allows you to share prompts that were logged on our system easily.
@@ -19,8 +23,3 @@ Here is a link to the shared prompt from this tutorial: [https://promptlayer.com
 ***
 
 Want to say hi 👋 , submit a feature request, or report a bug? [✉️ Contact us](mailto:hello@magniv.io)
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.promptlayer.com/llms.txt

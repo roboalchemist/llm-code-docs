@@ -1,5 +1,9 @@
 # Source: https://docs.agent.ai/builder/secrets.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.agent.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Using Secrets in Agent.ai
 
 Secrets let you securely store sensitive data like API keys or tokens and use them in your agents without hardcoding values directly into your workflow. This is especially useful when using REST actions to call external services.

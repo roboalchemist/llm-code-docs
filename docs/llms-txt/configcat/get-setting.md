@@ -2,10 +2,7 @@
 
 # Get Flag
 
-```
-GET 
-/v1/settings/:settingId
-```
+Copy page
 
 This endpoint returns the metadata attributes of a Feature Flag or Setting identified by the `settingId` parameter.
 

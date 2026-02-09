@@ -1,8 +1,6 @@
 # Source: https://docs.livekit.io/transport/sdk-platforms/unity-web.md
 
-# Source: https://docs.livekit.io/home/quickstarts/unity-web.md
-
-LiveKit docs › LiveKit SDKs › Platform-specific quickstarts › Unity (WebGL)
+LiveKit docs › Get Started › SDK platform quickstarts › Unity (WebGL)
 
 ---
 
@@ -68,14 +66,14 @@ Room.TrackSubscribed += (track, publication, participant) =>
 
 ## 5. Next Steps
 
-- Set up a server to generate tokens for your app at runtime by following this guide: [Generating Tokens](https://docs.livekit.io/home/server/generating-tokens.md).
+- Set up a server to generate tokens for your app at runtime by following this guide: [Generating Tokens](https://docs.livekit.io/frontends/authentication/tokens.md).
 - View the [full SDK reference](https://livekit.github.io/client-sdk-unity-web/) and [GitHub repository](https://github.com/livekit/client-sdk-unity-web) for more documentation and examples.
 
 Happy coding!
 
 ---
 
-This document was rendered at 2025-11-18T23:54:54.030Z.
-For the latest version of this document, see [https://docs.livekit.io/home/quickstarts/unity-web.md](https://docs.livekit.io/home/quickstarts/unity-web.md).
+This document was rendered at 2026-02-03T03:25:14.474Z.
+For the latest version of this document, see [https://docs.livekit.io/transport/sdk-platforms/unity-web.md](https://docs.livekit.io/transport/sdk-platforms/unity-web.md).
 
 To explore all LiveKit documentation, see [llms.txt](https://docs.livekit.io/llms.txt).

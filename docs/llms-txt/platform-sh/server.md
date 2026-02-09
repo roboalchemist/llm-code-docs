@@ -6,7 +6,7 @@
 p:last-child]:mb-0 [&>h3]:mt-0 rounded-lg" >
 
 ### Note
-You can now use composable image (BETA) to install runtimes and tools in your application container. To find out more, see the [dedicated documentation page](https://docs.upsun.com/create-apps/app-reference/composable-image.md).
+You can now use composable image to install runtimes and tools in your application container. To find out more, see the [Composable image](https://docs.upsun.com/create-apps/app-reference/composable-image.md) topic.
 
 The Python ecosystem offers a number of web servers that can be used to deploy to Upsun.
 The following examples deploy a Django project named `myapp`.
@@ -24,7 +24,7 @@ use one of the following examples to update your [app configuration](https://doc
 
 The examples vary based on both your package manager (Pip, Pipenv, or Poetry)
 and whether your app listens on a TCP (default) or Unix (for running behind a proxy server) socket.
-For more information on upstream sockets and protocols, see the [application reference](https://docs.upsun.com/create-apps/app-reference/single-runtime-image.md#upstream).
+For more information on upstream sockets and protocols, see the [application reference](https://docs.upsun.com/create-apps/image-properties/web.md#upstream).
 
 The snippets below assume that Gunicorn has been added as a dependency to your `requirements.txt`, `Pipfile.lock`, or `poetry.lock`.
 
@@ -35,7 +35,7 @@ applications:
     # The location of the application's code.
     source:
       root: "/"
-    type: 'python:3.13'
+    type: 'python:3.14'
     web:
       commands:
         start: "gunicorn -w 4 -b localhost:$PORT app.wsgi:application"
@@ -57,7 +57,7 @@ applications:
     # The location of the application's code.
     source:
       root: "/"
-    type: 'python:3.13'
+    type: 'python:3.14'
     web:
       upstream:
         socket_family: unix
@@ -81,7 +81,7 @@ applications:
     # The location of the application's code.
     source:
       root: "/"
-    type: 'python:3.13'
+    type: 'python:3.14'
     web:
       commands:
         start: "pipenv run gunicorn -w 4 -b localhost:$PORT app.wsgi:application"
@@ -103,7 +103,7 @@ applications:
     # The location of the application's code.
     source:
       root: "/"
-    type: 'python:3.13'
+    type: 'python:3.14'
     web:
       upstream:
         socket_family: unix
@@ -127,7 +127,7 @@ applications:
     # The location of the application's code.
     source:
       root: "/"
-    type: 'python:3.13'
+    type: 'python:3.14'
     web:
       commands:
         start: "poetry run gunicorn -w 4 -b localhost:$PORT app.wsgi:application"
@@ -149,7 +149,7 @@ applications:
     # The location of the application's code.
     source:
       root: "/"
-    type: 'python:3.13'
+    type: 'python:3.14'
     web:
       upstream:
         socket_family: unix
@@ -180,7 +180,7 @@ adjust the start command to the following:
 applications:
   # The app's name, which must be unique within the project.
   myapp:
-    type: 'python:3.13'
+    type: 'python:3.14'
     web:
       upstream:
         socket_family: unix
@@ -197,7 +197,7 @@ use one of the following examples to update your [app configuration](https://doc
 
 The examples vary based on both your package manager (Pip, Pipenv, or Poetry)
 and whether your app listens on a TCP (default) or Unix (for running behind a proxy server) socket.
-For more information on upstream sockets and protocols, see the [application reference](https://docs.upsun.com/create-apps/app-reference/single-runtime-image.md#upstream).
+For more information on upstream sockets and protocols, see the [application reference](https://docs.upsun.com/create-apps/image-properties/web.md#upstream).
 
 The snippets below assume that Daphne has been added as a dependency to your `requirements.txt`, `Pipfile.lock`, or `poetry.lock`.
 
@@ -208,7 +208,7 @@ applications:
     # The location of the application's code.
     source:
       root: "/"
-    type: 'python:3.13'
+    type: 'python:3.14'
     web:
       commands:
         start: "daphne -p $PORT app.asgi:application"
@@ -230,7 +230,7 @@ applications:
     # The location of the application's code.
     source:
       root: "/"
-    type: 'python:3.13'
+    type: 'python:3.14'
     web:
       upstream:
         socket_family: unix
@@ -254,7 +254,7 @@ applications:
     # The location of the application's code.
     source:
       root: "/"
-    type: 'python:3.13'
+    type: 'python:3.14'
     web:
       commands:
         start: "pipenv run daphne -p $PORT app.asgi:application"
@@ -276,7 +276,7 @@ applications:
     # The location of the application's code.
     source:
       root: "/"
-    type: 'python:3.13'
+    type: 'python:3.14'
     web:
       upstream:
         socket_family: unix
@@ -300,7 +300,7 @@ applications:
     # The location of the application's code.
     source:
       root: "/"
-    type: 'python:3.13'
+    type: 'python:3.14'
     web:
       commands:
         start: "poetry run daphne -p $PORT app.asgi:application"
@@ -322,7 +322,7 @@ applications:
     # The location of the application's code.
     source:
       root: "/"
-    type: 'python:3.13'
+    type: 'python:3.14'
     web:
       upstream:
         socket_family: unix
@@ -346,7 +346,7 @@ use one of the following examples to update your [app configuration](https://doc
 
 The examples vary based on both your package manager (Pip, Pipenv, or Poetry)
 and whether your app listens on a TCP (default) or Unix (for running behind a proxy server) socket.
-For more information on upstream sockets and protocols, see the [application reference](https://docs.upsun.com/create-apps/app-reference/single-runtime-image.md#upstream).
+For more information on upstream sockets and protocols, see the [application reference](https://docs.upsun.com/create-apps/image-properties/web.md#upstream).
 
 The snippets below assume that Uvicorn has been added as a dependency to your `requirements.txt`, `Pipfile.lock`, or `poetry.lock`.
 
@@ -357,7 +357,7 @@ applications:
     # The location of the application's code.
     source:
       root: "/"
-    type: 'python:3.13'
+    type: 'python:3.14'
     web:
       commands:
         start: "uvicorn app.asgi:application --port $PORT --workers 4"
@@ -379,7 +379,7 @@ applications:
     # The location of the application's code.
     source:
       root: "/"
-    type: 'python:3.13'
+    type: 'python:3.14'
     web:
       upstream:
         socket_family: unix
@@ -403,7 +403,7 @@ applications:
     # The location of the application's code.
     source:
       root: "/"
-    type: 'python:3.13'
+    type: 'python:3.14'
     web:
       commands:
         start: "pipenv run uvicorn app.asgi:application --port $PORT --workers 4"
@@ -425,7 +425,7 @@ applications:
     # The location of the application's code.
     source:
       root: "/"
-    type: 'python:3.13'
+    type: 'python:3.14'
     web:
       upstream:
         socket_family: unix
@@ -449,7 +449,7 @@ applications:
     # The location of the application's code.
     source:
       root: "/"
-    type: 'python:3.13'
+    type: 'python:3.14'
     web:
       commands:
         start: "poetry run uvicorn app.asgi:application --port $PORT --workers 4"
@@ -471,7 +471,7 @@ applications:
     # The location of the application's code.
     source:
       root: "/"
-    type: 'python:3.13'
+    type: 'python:3.14'
     web:
       upstream:
         socket_family: unix
@@ -503,7 +503,7 @@ use one of the following examples to update your [app configuration](https://doc
 
 The examples vary based on both your package manager (Pip, Pipenv, or Poetry)
 and whether your app listens on a TCP (default) or Unix (for running behind a proxy server) socket.
-For more information on upstream sockets and protocols, see the [application reference](https://docs.upsun.com/create-apps/app-reference/single-runtime-image.md#upstream).
+For more information on upstream sockets and protocols, see the [application reference](https://docs.upsun.com/create-apps/image-properties/web.md#upstream).
 
 The snippets below assume that Hypercorn has been added as a dependency to your `requirements.txt`, `Pipfile.lock`, or `poetry.lock`.
 
@@ -514,7 +514,7 @@ applications:
     # The location of the application's code.
     source:
       root: "/"
-    type: 'python:3.13'
+    type: 'python:3.14'
     web:
       commands:
         start: "hypercorn app.asgi:application -b localhost:$PORT -w 4"
@@ -536,7 +536,7 @@ applications:
     # The location of the application's code.
     source:
       root: "/"
-    type: 'python:3.13'
+    type: 'python:3.14'
     web:
       upstream:
         socket_family: unix
@@ -560,7 +560,7 @@ applications:
     # The location of the application's code.
     source:
       root: "/"
-    type: 'python:3.13'
+    type: 'python:3.14'
     web:
       commands:
         start: "pipenv run hypercorn app.asgi:application -b localhost:$PORT -w 4"
@@ -582,7 +582,7 @@ applications:
     # The location of the application's code.
     source:
       root: "/"
-    type: 'python:3.13'
+    type: 'python:3.14'
     web:
       upstream:
         socket_family: unix
@@ -606,7 +606,7 @@ applications:
     # The location of the application's code.
     source:
       root: "/"
-    type: 'python:3.13'
+    type: 'python:3.14'
     web:
       commands:
         start: "poetry run hypercorn app.asgi:application -b localhost:$PORT -w 4"
@@ -628,7 +628,7 @@ applications:
     # The location of the application's code.
     source:
       root: "/"
-    type: 'python:3.13'
+    type: 'python:3.14'
     web:
       upstream:
         socket_family: unix
@@ -658,7 +658,7 @@ adjust the start command to the following:
 applications:
   # The app's name, which must be unique within the project.
   myapp:
-    type: 'python:3.13'
+    type: 'python:3.14'
     web:
       upstream:
         socket_family: unix

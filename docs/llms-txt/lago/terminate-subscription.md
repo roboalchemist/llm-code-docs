@@ -1,5 +1,9 @@
 # Source: https://getlago.com/docs/guide/subscriptions/terminate-subscription.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://getlago.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Terminate a subscription
 
 > You can terminate a subscription at any time, whether it's active or pending.
@@ -65,6 +69,7 @@ At termination, you can :
     In the Termination dialog, you can choose how to handle unused amounts:
 
     * **Skip** – Don’t generate a credit note.
+    * **Offset** — The unused due amount is offset against the invoice, reducing the remaining amount due.
     * **Refund** – If the invoice is paid or partially paid, the unused paid amount is refunded; any unpaid unused amount is credited back to the customer.
     * **Credit** (default) – The unused amount is credited back to the customer.
 

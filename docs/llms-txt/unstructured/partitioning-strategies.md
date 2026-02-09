@@ -1,5 +1,9 @@
 # Source: https://docs.unstructured.io/open-source/concepts/partitioning-strategies.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.unstructured.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Partitioning strategies
 
 For certain document types, such as images and PDFs, for example, Unstructured products offer a variety of different

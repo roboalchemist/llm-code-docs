@@ -1,118 +1,85 @@
 # Source: https://docs.anchorbrowser.io/api-reference/profiles/get-profile.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.anchorbrowser.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Get Profile
 
 > Retrieves details of a specific profile by its name.
 
+
+
 ## OpenAPI
 
 ````yaml openapi-mintlify.yaml get /v1/profiles/{name}
+openapi: 3.1.0
+info:
+  title: AnchorBrowser API
+  version: 1.0.0
+  description: APIs to manage all browser-related actions and configuration.
+servers:
+  - url: https://api.anchorbrowser.io
+    description: API server
+security: []
 paths:
-  path: /v1/profiles/{name}
-  method: get
-  servers:
-    - url: https://api.anchorbrowser.io
-      description: API server
-  request:
-    security:
-      - title: api key header
-        parameters:
-          query: {}
-          header:
-            anchor-api-key:
-              type: apiKey
-              description: API key passed in the header
-          cookie: {}
-    parameters:
-      path:
-        name:
+  /v1/profiles/{name}:
+    get:
+      tags:
+        - Profiles
+      summary: Get Profile
+      description: Retrieves details of a specific profile by its name.
+      parameters:
+        - name: name
+          in: path
+          required: true
+          description: The name of the profile to retrieve.
           schema:
-            - type: string
-              required: true
-              description: The name of the profile to retrieve.
-      query: {}
-      header: {}
-      cookie: {}
-    body: {}
-  response:
-    '200':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              data:
-                allOf:
-                  - $ref: '#/components/schemas/ProfileResponseSchema'
-            refIdentifier: '#/components/schemas/ProfileResponse'
-        examples:
-          example:
-            value:
-              data:
-                name: <string>
-                description: <string>
-                source: session
-                session_id: 3c90c3cc-0d44-4b50-8888-8dd25736052a
-                status: <string>
-                created_at: '2023-11-07T05:31:56Z'
-        description: Profile details retrieved successfully.
-    '401':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              error:
-                allOf:
-                  - &ref_0
-                    type: object
-                    properties:
-                      code:
-                        type: integer
-                      message:
-                        type: string
-            refIdentifier: '#/components/schemas/ErrorResponse'
-        examples:
-          example:
-            value:
-              error:
-                code: 123
-                message: <string>
-        description: Invalid API Key.
-    '404':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              error:
-                allOf:
-                  - *ref_0
-            refIdentifier: '#/components/schemas/ErrorResponse'
-        examples:
-          example:
-            value:
-              error:
-                code: 123
-                message: <string>
-        description: Profile not found.
-    '500':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              error:
-                allOf:
-                  - *ref_0
-            refIdentifier: '#/components/schemas/ErrorResponse'
-        examples:
-          example:
-            value:
-              error:
-                code: 123
-                message: <string>
-        description: Unable to retrieve profile due to an unexpected error.
-  deprecated: false
-  type: path
+            type: string
+      responses:
+        '200':
+          description: Profile details retrieved successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProfileResponse'
+        '401':
+          description: Invalid API Key.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Profile not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Unable to retrieve profile due to an unexpected error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      security:
+        - api_key_header: []
 components:
   schemas:
+    ProfileResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/ProfileResponseSchema'
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: integer
+            message:
+              type: string
     ProfileResponseSchema:
       type: object
       properties:
@@ -138,5 +105,11 @@ components:
           type: string
           format: date-time
           description: The timestamp when the profile was created.
+  securitySchemes:
+    api_key_header:
+      type: apiKey
+      in: header
+      name: anchor-api-key
+      description: API key passed in the header
 
 ````

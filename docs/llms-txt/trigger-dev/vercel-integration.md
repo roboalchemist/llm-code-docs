@@ -1,5 +1,9 @@
 # Source: https://trigger.dev/docs/vercel-integration.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://trigger.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Vercel integration
 
 > When you deploy to Vercel, automatically deploy your associated tasks.

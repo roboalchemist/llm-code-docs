@@ -1,5 +1,9 @@
 # Source: https://bun.com/docs/guides/runtime/set-env.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://bun.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Set environment variables
 
 The current environment variables can be accessed via `process.env` or `Bun.env`.
@@ -19,7 +23,7 @@ Bun reads the following files automatically (listed in order of increasing prece
 * `.env.production`, `.env.development`, `.env.test` (depending on value of `NODE_ENV`)
 * `.env.local` (not loaded when `NODE_ENV=test`)
 
-```txt .env icon="settings" theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ini .env icon="settings" theme={"theme":{"light":"github-light","dark":"dracula"}}
 FOO=hello
 BAR=world
 ```
@@ -44,4 +48,4 @@ Variables can also be set via the command line.
 
 ***
 
-See [Docs > Runtime > Environment variables](https://bun.com/docs/runtime/env) for more information on using environment variables with Bun.
+See [Docs > Runtime > Environment variables](/runtime/environment-variables) for more information on using environment variables with Bun.

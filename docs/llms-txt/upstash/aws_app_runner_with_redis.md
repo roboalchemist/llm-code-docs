@@ -1,5 +1,9 @@
 # Source: https://upstash.com/docs/redis/tutorials/aws_app_runner_with_redis.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Build Stateful Applications with AWS App Runner and Serverless Redis
 
 > This tutorial shows how to create a serverless and stateful application using AWS App Runner and Redis

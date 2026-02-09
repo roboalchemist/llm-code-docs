@@ -1,53 +1,3 @@
-# Source: https://learn.adafruit.com/adafruits-raspberry-pi-lesson-8-using-a-servo-motor/overview.md
-
-# Source: https://learn.adafruit.com/flora-gps-jacket/overview.md
-
-# Source: https://learn.adafruit.com/diy-wifi-raspberry-pi-touch-cam/overview.md
-
-# Source: https://learn.adafruit.com/adafruit-microphone-amplifier-breakout/overview.md
-
-# Source: https://learn.adafruit.com/digital-led-belt/overview.md
-
-# Source: https://learn.adafruit.com/pi-thermal-printer/overview.md
-
-# Source: https://learn.adafruit.com/pi-wifi-radio/overview.md
-
-# Source: https://learn.adafruit.com/adafruit-triple-axis-gyro-breakout/overview.md
-
-# Source: https://learn.adafruit.com/conductive-thread/overview.md
-
-# Source: https://learn.adafruit.com/adafruit-arduino-lesson-3-rgb-leds/overview.md
-
-# Source: https://learn.adafruit.com/skill-badge-requirements-solar/overview.md
-
-# Source: https://learn.adafruit.com/creating-accurate-footprints-in-eagle/overview.md
-
-# Source: https://learn.adafruit.com/solderless-rgb-led-clips/overview.md
-
-# Source: https://learn.adafruit.com/mcp4725-12-bit-dac-tutorial/overview.md
-
-# Source: https://learn.adafruit.com/webide/overview.md
-
-# Source: https://learn.adafruit.com/mini-thermal-receipt-printer/overview.md
-
-# Source: https://learn.adafruit.com/adding-a-real-time-clock-to-raspberry-pi/overview.md
-
-# Source: https://learn.adafruit.com/2-2-tft-display/overview.md
-
-# Source: https://learn.adafruit.com/1-8-tft-display/overview.md
-
-# Source: https://learn.adafruit.com/i2c-spi-lcd-backpack/overview.md
-
-# Source: https://learn.adafruit.com/dht-humidity-sensing-on-raspberry-pi-with-gdocs-logging/overview.md
-
-# Source: https://learn.adafruit.com/matrix-7-segment-led-backpack-with-the-raspberry-pi/overview.md
-
-# Source: https://learn.adafruit.com/el-wire-sign/overview.md
-
-# Source: https://learn.adafruit.com/drive-a-16x2-lcd-directly-with-a-raspberry-pi/overview.md
-
-# Source: https://learn.adafruit.com/mcp4725-12-bit-dac-with-raspberry-pi/overview.md
-
 # Source: https://learn.adafruit.com/adafruit-16-channel-servo-driver-with-raspberry-pi/overview.md
 
 # Source: https://learn.adafruit.com/biometric-security-box/overview.md
@@ -176,247 +126,126 @@
 
 # Source: https://learn.adafruit.com/ttl-serial-camera/overview.md
 
-# Source: https://learn.adafruit.com/el-workshop/overview.md
-
-# Source: https://learn.adafruit.com/adalight-diy-ambient-tv-lighting/overview.md
-
-# Source: https://learn.adafruit.com/rgb-lcd-shield/overview.md
-
-# Source: https://learn.adafruit.com/adafruit-ultimate-gps/overview.md
-
-# Source: https://learn.adafruit.com/send-raspberry-pi-data-to-cosm/overview.md
-
-# Source: https://learn.adafruit.com/basic-resistor-sensor-reading-on-raspberry-pi/overview.md
-
-# Source: https://learn.adafruit.com/battery-power-for-led-pixels-and-strips/overview.md
-
-# Source: https://learn.adafruit.com/papercraft-resistor-helper/overview.md
-
-# Source: https://learn.adafruit.com/adafruit-gfx-graphics-library/overview.md
-
-# Source: https://learn.adafruit.com/reading-a-analog-in-and-controlling-audio-volume-with-the-raspberry-pi/overview.md
-
-# Source: https://learn.adafruit.com/hl1606-led-strip/overview.md
-
-# Source: https://learn.adafruit.com/digital-led-strip/overview.md
-
-# Source: https://learn.adafruit.com/36mm-led-pixels/overview.md
-
-# Source: https://learn.adafruit.com/led-bicycle-handlebars/overview.md
-
-# Source: https://learn.adafruit.com/20mm-led-pixels/overview.md
-
-# Source: https://learn.adafruit.com/power-supplies/overview.md
-
-# Source: https://learn.adafruit.com/rfid-iphone/overview.md
-
-# Source: https://learn.adafruit.com/multimeters/overview.md
-
-# Source: https://learn.adafruit.com/li-ion-and-lipoly-batteries/overview.md
-
-# Source: https://learn.adafruit.com/12mm-led-pixels/overview.md
-
-# Source: https://learn.adafruit.com/fpga-rgb-matrix/overview.md
-
-# Source: https://learn.adafruit.com/character-lcds/overview.md
-
-# Source: https://learn.adafruit.com/digital-shipping-scales/overview.md
-
-# Source: https://learn.adafruit.com/barcode-scanner/overview.md
-
-# Source: https://learn.adafruit.com/playing-sounds-and-using-buttons-with-raspberry-pi/overview.md
-
-# Source: https://learn.adafruit.com/calipers/overview.md
-
-# Source: https://learn.adafruit.com/096-mini-color-oled/overview.md
-
-# Source: https://learn.adafruit.com/gps-dog-collar/overview.md
-
-# Source: https://learn.adafruit.com/electroknit/overview.md
-
-# Source: https://learn.adafruit.com/tron-bag/overview.md
-
-# Source: https://learn.adafruit.com/raspberry-pi-e-mail-notifier-using-leds/overview.md
-
-# Source: https://learn.adafruit.com/monochrome-oled-breakouts/overview.md
-
-# Source: https://learn.adafruit.com/cross-stitch/overview.md
-
-# Source: https://learn.adafruit.com/adafruit-prototyping-pi-plate/overview.md
-
-# Source: https://learn.adafruit.com/adafruit-pi-cobbler-kit/overview.md
-
-# Source: https://learn.adafruit.com/tsl2561/overview.md
-
-# Source: https://learn.adafruit.com/dht/overview.md
-
-# Source: https://learn.adafruit.com/thermistor/overview.md
-
-# Source: https://learn.adafruit.com/ir-sensor/overview.md
-
-# Source: https://learn.adafruit.com/pir-passive-infrared-proximity-motion-sensor/overview.md
-
-# Source: https://learn.adafruit.com/tilt-sensor/overview.md
-
-# Source: https://learn.adafruit.com/bmp085/overview.md
-
-# Source: https://learn.adafruit.com/tmp36-temperature-sensor/overview.md
-
-# Source: https://learn.adafruit.com/photocells/overview.md
-
-# Source: https://learn.adafruit.com/force-sensitive-resistor-fsr/overview.md
-
-# Source: https://learn.adafruit.com/usb-snes-gamepad/overview.md
-
-# Source: https://learn.adafruit.com/thermocouple/overview.md
-
-# Source: https://learn.adafruit.com/adafruit-ina219-current-sensor-breakout/overview.md
-
-# Source: https://learn.adafruit.com/smt-manufacturing/overview.md
-
-# Source: https://learn.adafruit.com/adafruit-led-backpack/overview.md
-
-# Source: https://learn.adafruit.com/beaglebone/overview.md
-
-# Source: https://learn.adafruit.com/hacking-the-kinect/overview.md
-
-# Source: https://learn.adafruit.com/el-wire/overview.md
-
-# Source: https://learn.adafruit.com/ttl-serial-camera/overview.md
-
-# Source: https://learn.adafruit.com/force-sensitive-resistor-fsr/overview.md
-
-# Source: https://learn.adafruit.com/usb-snes-gamepad/overview.md
-
-# Source: https://learn.adafruit.com/thermocouple/overview.md
-
-# Source: https://learn.adafruit.com/adafruit-ina219-current-sensor-breakout/overview.md
-
-# Source: https://learn.adafruit.com/smt-manufacturing/overview.md
-
-# Source: https://learn.adafruit.com/adafruit-led-backpack/overview.md
-
-# Source: https://learn.adafruit.com/beaglebone/overview.md
-
-# Source: https://learn.adafruit.com/hacking-the-kinect/overview.md
-
-# Source: https://learn.adafruit.com/el-wire/overview.md
-
-# Source: https://learn.adafruit.com/ttl-serial-camera/overview.md
-
-# Source: https://learn.adafruit.com/thermocouple/overview.md
-
-# Source: https://learn.adafruit.com/adafruit-ina219-current-sensor-breakout/overview.md
-
-# Source: https://learn.adafruit.com/smt-manufacturing/overview.md
-
-# Source: https://learn.adafruit.com/adafruit-led-backpack/overview.md
-
-# Source: https://learn.adafruit.com/beaglebone/overview.md
-
-# Source: https://learn.adafruit.com/hacking-the-kinect/overview.md
-
-# Source: https://learn.adafruit.com/el-wire/overview.md
-
-# Source: https://learn.adafruit.com/ttl-serial-camera/overview.md
-
-# Source: https://learn.adafruit.com/usb-snes-gamepad/overview.md
-
-# USB SNES Gamepad
+# TTL Serial Camera
 
 ## Overview
 
-This project tutorial will show you how you can convert a console game pad into a USB keyboard mouse for playing games on your PC. The USB game pad can be used with nearly any software, such as a MAME emulator, game, simulation software, or for custom user interfaces.![](https://cdn-learn.adafruit.com/assets/assets/000/000/373/medium800/gaming_done.jpg?1396762559)
+This tutorial is for our new TTL serial camera module with NTSC video output. These modules are a nice addition to a microcontroller project when you want to take a photo or control a video stream. The modules have a few features built in, such as the ability to change the brightness/saturation/hue of images, auto-contrast and auto-brightness adjustment, and motion detection.
 
-We'll start by turning the buttons of the game pad into keyboard buttons, so that pressing 'up' is converted into the 'U' key, for example. The firmware is easily adaptable, so you can adjust it for whatever software it will be used with.
+![](https://cdn-learn.adafruit.com/assets/assets/000/000/196/medium800/camera_TTL_Serial_Camera.jpeg?1396759625)
 
-Then we'll make the project more interesting by adding an accelerometer. This will allow the game pad to be used as a mouse by tilting it!
+Since it is a little confusing how this is both a snapshot and video camera, we'd like to explain it in detail now. The module was initially designed for surveillance purposes. Its meant to constantly stream TV-resolution video out of the Video pin (this is NTSC monochrome format) and also take commands from the serial port. The serial port commands can request that the module freeze the video and then download a JPEG color image. So for example, normally its just displaying video to a security monitor. When motion is detected, it would take a photo and save it to a disk for later analysis.
 
-This tutorial including the original code and Portal video is by&nbsp;[Devlin Thyne](http://thyne.net/)! Rock!
+The module is admittedly not extremely high resolution - the maximum image size it can take is 640x480 pixels. And it is sensitive to infrared light, which alters the color rendition somewhat. The reason for all this is that it's meant for surveillance, not for nature photography. However, as far as we can tell, this is the best module on the market.
 
-![](https://cdn-learn.adafruit.com/assets/assets/000/000/374/medium800/gaming_usbgamepadcontents_LRG.jpg?1396762568)
+- **Module size:** 32mm x 32mm
+- **Image sensor:** CMOS 1/4 inch
+- **CMOS Pixels:** 0.3M
+- **Pixel size:** 5.6um\*5.6um
+- **Output format:** Standard JPEG/M-JPEG
+- **White balance:** Automatic
+- **Exposure:** Automatic
+- **Gain:** Automatic
+- **Shutter:** Electronic rolling shutter
+- **SNR:** 45DB
+- **Dynamic Range:** 60DB
+- **Max analog gain:** 16DB
+- **Frame speed:** 640\*480 30fps
+- **Scan mode:** Progressive scan
+- **Viewing angle:** 60 degrees
+- **Monitoring distance:** 10 meters, maximum 15meters (adjustable)
+- **Image size:** VGA (640\*480), QVGA (320\*240), QQVGA (160\*120)
+- **Baud rate:** Default 38400 (the datasheet claims you can change the baud rate with a command but it does not work reliably)  
+- **Current draw:** 75mA
+- **Operating voltage:** DC +5V
+- **Communication:** 3.3V TTL (Three wire TX, RX, GND)
 
-## What you'll need:
+## Sample Images
 
-You'll need the following in order to build the project:
+Here are two example images, one of outside during a cloudy day, and one inside on a sunny day.
+![](https://cdn-learn.adafruit.com/assets/assets/000/000/197/medium800/camera_Test_Image_1.jpeg?1396759618)
 
-- [Game Pad Controller](http://www.adafruit.com/products/131) - We'll be using an SNES Controller
-- [Teensy](http://www.adafruit.com/products/199) - This is a very small microcontroller board that can act as a keyboard/mouse
-- [Triple-axis accelerometer](http://www.adafruit.com/products/163) - We'll be using the nice ADXL335 on a breakout board. You can skip this if you're not planning to add in the mouse capability
-- [USB cable with mini-b connector](http://www.adafruit.com/products/260) - to attach to the Teensy for plugging into a computer!
-- Ribbon cable - for all the soldering connections. Rainbow cable is the easiest to work with as its color coded
+![](https://cdn-learn.adafruit.com/assets/assets/000/000/198/medium800/camera_Test_Image_2.jpeg?1396759613)
 
-**If you want to build the entire project, [we have a project pack in the shop with all the parts listed above!](http://www.adafruit.com/products/241)**
-
-You'll also need some basic hand tools such as screwdrivers, wire strippers, [soldering iron](http://www.adafruit.com/products/180), [solder](http://www.adafruit.com/products/145), [diagonal cutters](http://www.adafruit.com/products/152), vise or third hand tool, etc.
-
-[All the code is on GitHub, including some extra sketches we've written](https://github.com/adafruit/Adafruit_Learning_System_Guides/tree/master/USB_SNES_Gamepad) so be sure to look there!
-
-- [Next Page](https://learn.adafruit.com/usb-snes-gamepad/disassemble-the-snes-controller.md)
+- [Next Page](https://learn.adafruit.com/ttl-serial-camera/wiring-the-camera.md)
 
 ## Featured Products
 
-### SNES Controller
+### TTL Serial JPEG Camera with NTSC Video
 
-[SNES Controller](https://www.adafruit.com/product/131)
-A third-party SNES (Super Nintendo/Famicom) controller. Works great with Fuzeboxen as well!
-
-No Longer Stocked
-[Buy Now](https://www.adafruit.com/product/131)
-[Related Guides to the Product](https://learn.adafruit.com/products/131/guides)
-### ADXL335 - 5V ready triple-axis accelerometer (+-3g analog out)
-
-[ADXL335 - 5V ready triple-axis accelerometer (+-3g analog out)](https://www.adafruit.com/product/163)
-We've updated our favorite triple-axis accelerometer to now have an on-board 3.3V regulator - making it a perfect choice for interfacing with a 5V microcontroller such as the Arduino. This breakout comes with 3 analog outputs for X, Y and Z axis measurements on a 0.75"x0.75"...
+[TTL Serial JPEG Camera with NTSC Video](https://www.adafruit.com/product/397)
+This camera module can be a pretty neat project addition. It was designed to be used in security systems and does two main things - it outputs NTSC video and can take snapshots of that video (in color) and transmit them over the TTL serial link. You can snap pictures at 640x480, 320x240 or...
 
 In Stock
-[Buy Now](https://www.adafruit.com/product/163)
-[Related Guides to the Product](https://learn.adafruit.com/products/163/guides)
-### USB cable - A/MiniB
+[Buy Now](https://www.adafruit.com/product/397)
+[Related Guides to the Product](https://learn.adafruit.com/products/397/guides)
+### Miniature TTL Serial JPEG Camera with NTSC Video
 
-[USB cable - A/MiniB](https://www.adafruit.com/product/260)
-This here is your standard A-miniB USB cable, for USB 1.1 or 2.0. Perfect for connecting a PC to your Teensy v2, USB Lipo charger w/Mini B connector, among other things.
-
-Approximately 3 feet / 1 meter long
-
-Color may vary!
-
-No Longer Stocked
-[Buy Now](https://www.adafruit.com/product/260)
-[Related Guides to the Product](https://learn.adafruit.com/products/260/guides)
-### Teensy (ATmega32u4 USB dev board) 2.0
-
-[Teensy (ATmega32u4 USB dev board) 2.0](https://www.adafruit.com/product/199)
-Discontinued - **you can grab** [Adafruit ItsyBitsy 32u4 - 5V 16MHz](https://www.adafruit.com/product/3677) **instead!**
-
-The Teensy 2.0 is a complete USB-based microcontoller development system, in a very small footprint! All programming is done via the USB port. No...
-
-No Longer Stocked
-[Buy Now](https://www.adafruit.com/product/199)
-[Related Guides to the Product](https://learn.adafruit.com/products/199/guides)
-### Premium Female/Male 'Extension' Jumper Wires - 20 x 6"
-
-[Premium Female/Male 'Extension' Jumper Wires - 20 x 6"](https://www.adafruit.com/product/1954)
-These Female/Male Extension jumper wires are handy for making wire harnesses or jumpering between headers on PCB's. These premium jumper wires are 6" (150mm) long and come in a 'strip' of 20 (2&nbsp;pieces of each of ten rainbow colors). They have 0.1" male header...
+[Miniature TTL Serial JPEG Camera with NTSC Video](https://www.adafruit.com/product/1386)
+This tiny little camera module can be a pretty neat project addition, it is just like [our other JPEG cameras (same chipset/software)](http://www.adafruit.com/category/35_68), but much smaller and slimmer. It was designed to be used in security systems and does two main things - it...
 
 In Stock
-[Buy Now](https://www.adafruit.com/product/1954)
-[Related Guides to the Product](https://learn.adafruit.com/products/1954/guides)
+[Buy Now](https://www.adafruit.com/product/1386)
+[Related Guides to the Product](https://learn.adafruit.com/products/1386/guides)
+### Adafruit METRO 328 Fully Assembled - Arduino IDE compatible
+
+[Adafruit METRO 328 Fully Assembled - Arduino IDE compatible](https://www.adafruit.com/product/50)
+We sure love the ATmega328 here at Adafruit, and we use them&nbsp;_a lot_&nbsp;for our own projects. The processor has plenty of GPIO, Analog inputs, hardware UART SPI and I2C, timers and PWM galore - just enough for most simple projects. When we need to go small, we use a <a...></a...>
+
+Out of Stock
+[Buy Now](https://www.adafruit.com/product/50)
+[Related Guides to the Product](https://learn.adafruit.com/products/50/guides)
+### Weatherproof TTL Serial JPEG Camera with NTSC Video and IR LEDs
+
+[Weatherproof TTL Serial JPEG Camera with NTSC Video and IR LEDs](https://www.adafruit.com/product/613)
+This weatherproof camera module is [a classy upgrade to the basic camera module we already stock in the shop](http://www.adafruit.com/products/397). The main differences is that this one comes in a nice metal case with a mounting hinge, a 1 meter long cable with the TTL & NTSC...
+
+In Stock
+[Buy Now](https://www.adafruit.com/product/613)
+[Related Guides to the Product](https://learn.adafruit.com/products/613/guides)
+### MicroSD card breakout board+
+
+[MicroSD card breakout board+](https://www.adafruit.com/product/254)
+Not just a simple breakout board, this microSD adapter goes the extra mile - designed for ease of use.
+
+- Onboard 5v-\>3v regulator provides 150mA for power-hungry cards
+- 3v level shifting means you can use this with ease on either 3v or 5v systems
+- Uses a proper level...
+
+Out of Stock
+[Buy Now](https://www.adafruit.com/product/254)
+[Related Guides to the Product](https://learn.adafruit.com/products/254/guides)
+### Half Sized Premium Breadboard - 400 Tie Points
+
+[Half Sized Premium Breadboard - 400 Tie Points](https://www.adafruit.com/product/64)
+This is a cute, half-size breadboard with&nbsp;400 tie points, good for small projects. It's 3.25" x 2.2" / 8.3cm&nbsp;x 5.5cm&nbsp;with a standard double-strip in the middle and two power rails on both sides.&nbsp;You can pull the power rails off easily to make the breadboard as...
+
+In Stock
+[Buy Now](https://www.adafruit.com/product/64)
+[Related Guides to the Product](https://learn.adafruit.com/products/64/guides)
+### SD/MicroSD Memory Card (8 GB SDHC)
+
+[SD/MicroSD Memory Card (8 GB SDHC)](https://www.adafruit.com/product/1294)
+Add mega-storage in a jiffy using this 8 GB class 4 micro-SD card. It comes with a SD adapter so you can use it with any of our shields or adapters. Preformatted to FAT so it works out of the box with our projects. Tested and works great with our <a...></a...>
+
+In Stock
+[Buy Now](https://www.adafruit.com/product/1294)
+[Related Guides to the Product](https://learn.adafruit.com/products/1294/guides)
 
 ## Related Guides
 
-- [Adafruit Analog Accelerometer Breakouts](https://learn.adafruit.com/adafruit-analog-accelerometer-breakouts.md)
-- [BLE Sniffer with nRF52840](https://learn.adafruit.com/ble-sniffer-with-nrf52840.md)
-- [Personal and Portable ESP32-S2 Web Server](https://learn.adafruit.com/wordle-personal-esp32-s2-web-server.md)
-- [NeoTrellis Light Painting](https://learn.adafruit.com/neotrellis-light-painting.md)
-- [Cheekmate - a Wireless Haptic Communication System](https://learn.adafruit.com/cheekmate-wireless-haptic-communication.md)
-- [Dimmable Li-Ion Halogen Bike Light](https://learn.adafruit.com/dimmable-li-ion-halogen-bike-light.md)
-- [Getting Started with Braille Output for CircuitPython REPL](https://learn.adafruit.com/getting-started-braille-output-circuitpython-repl.md)
-- [NeoPixel Arcade Buttons](https://learn.adafruit.com/neopixel-arcade-button.md)
-- [Link's 3D Printed Wooden Sword](https://learn.adafruit.com/links-3d-printed-wooden-sword.md)
-- [Fruit Jam Sega Genesis](https://learn.adafruit.com/fruit-jam-sega-genesis.md)
-- [Build your own NeXT with a virtual machine](https://learn.adafruit.com/build-your-own-next-with-a-virtual-machine.md)
-- [LED Matrix Wall Arcade for Pico-8](https://learn.adafruit.com/led-matrix-wall-arcade.md)
-- [Adafruit USB Host FeatherWing with MAX3421E](https://learn.adafruit.com/adafruit-usb-host-featherwing-with-max3421e.md)
-- [Flippy Floppy Drive Modification](https://learn.adafruit.com/flippy-floppy-drive-modification.md)
-- [DIY Bluetooth Gamepad](https://learn.adafruit.com/diy-bluetooth-gamepad.md)
+- [Making Adabot: Part 2](https://learn.adafruit.com/making-adabot-part-2.md)
+- [3D Printed Animatronic Robot Head](https://learn.adafruit.com/3d-printed-animatronic-robot-head.md)
+- [Arduino Lesson 14. Servo Motors](https://learn.adafruit.com/adafruit-arduino-lesson-14-servo-motors.md)
+- [Arduino Lesson 15. DC Motor Reversing](https://learn.adafruit.com/adafruit-arduino-lesson-15-dc-motor-reversing.md)
+- [Programming Arduino with Android and Windows Tablets](https://learn.adafruit.com/programming-arduino-with-android-and-windows-tablets.md)
+- [LSM303 Accelerometer + Compass Breakout](https://learn.adafruit.com/lsm303-accelerometer-slash-compass-breakout.md)
+- [Adafruit VS1053 MP3/AAC/Ogg/MIDI/WAV Codec Breakout Tutorial](https://learn.adafruit.com/adafruit-vs1053-mp3-aac-ogg-midi-wav-play-and-record-codec-tutorial.md)
+- [Naughty or Nice Machine](https://learn.adafruit.com/naughty-or-nice-machine.md)
+- [Adafruit Ultimate GPS Logger Shield](https://learn.adafruit.com/adafruit-ultimate-gps-logger-shield.md)
+- [Arduino "Hunt The Wumpus"](https://learn.adafruit.com/arduino-hunt-the-wumpus.md)
+- [Track Your Treats: Halloween Candy GPS Tracker](https://learn.adafruit.com/track-your-treats-halloween-candy-gps-tracker.md)
+- [WiFi Weather Station](https://learn.adafruit.com/wifi-weather-station-arduino-cc3000.md)
+- [Bluetooth Controlled Motorized Camera Slider](https://learn.adafruit.com/bluetooth-motorized-camera-slider.md)
+- [TMP36 Temperature Sensor](https://learn.adafruit.com/tmp36-temperature-sensor.md)
+- [Babel Fish](https://learn.adafruit.com/babel-fish.md)

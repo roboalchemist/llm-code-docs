@@ -19,7 +19,7 @@ An Apify platform implementation of the dataset client.
 
 ## Methods<!-- -->[**](#Methods)
 
-### [**](#__init__)[**](https://github.com/apify/apify-sdk-python/blob/f050b2684cf6d5e88bafe381599a3653d220ec14//src/apify/storage_clients/_apify/_dataset_client.py#L40)\_\_init\_\_
+### [**](#__init__)[**](https://github.com/apify/apify-sdk-python/blob/a01870a180ed391b8b6cad8d1894f12bcc879136//src/apify/storage_clients/_apify/_dataset_client.py#L40)\_\_init\_\_
 
 * ****\_\_init\_\_**(\*, api\_client, api\_public\_base\_url, lock): None
 
@@ -37,13 +37,13 @@ An Apify platform implementation of the dataset client.
 
   #### Returns None
 
-### [**](#drop)[**](https://github.com/apify/apify-sdk-python/blob/f050b2684cf6d5e88bafe381599a3653d220ec14//src/apify/storage_clients/_apify/_dataset_client.py#L125)drop
+### [**](#drop)[**](https://github.com/apify/apify-sdk-python/blob/a01870a180ed391b8b6cad8d1894f12bcc879136//src/apify/storage_clients/_apify/_dataset_client.py#L125)drop
 
 * **async **drop**(): None
 
 - #### Returns None
 
-### [**](#get_data)[**](https://github.com/apify/apify-sdk-python/blob/f050b2684cf6d5e88bafe381599a3653d220ec14//src/apify/storage_clients/_apify/_dataset_client.py#L148)get\_data
+### [**](#get_data)[**](https://github.com/apify/apify-sdk-python/blob/a01870a180ed391b8b6cad8d1894f12bcc879136//src/apify/storage_clients/_apify/_dataset_client.py#L148)get\_data
 
 * **async **get\_data**(\*, offset, limit, clean, desc, fields, omit, unwind, skip\_empty, skip\_hidden, flatten, view): DatasetItemsListPage
 
@@ -63,13 +63,13 @@ An Apify platform implementation of the dataset client.
 
   #### Returns DatasetItemsListPage
 
-### [**](#get_metadata)[**](https://github.com/apify/apify-sdk-python/blob/f050b2684cf6d5e88bafe381599a3653d220ec14//src/apify/storage_clients/_apify/_dataset_client.py#L66)get\_metadata
+### [**](#get_metadata)[**](https://github.com/apify/apify-sdk-python/blob/a01870a180ed391b8b6cad8d1894f12bcc879136//src/apify/storage_clients/_apify/_dataset_client.py#L66)get\_metadata
 
 * **async **get\_metadata**(): DatasetMetadata
 
 - #### Returns DatasetMetadata
 
-### [**](#iterate_items)[**](https://github.com/apify/apify-sdk-python/blob/f050b2684cf6d5e88bafe381599a3653d220ec14//src/apify/storage_clients/_apify/_dataset_client.py#L179)iterate\_items
+### [**](#iterate_items)[**](https://github.com/apify/apify-sdk-python/blob/a01870a180ed391b8b6cad8d1894f12bcc879136//src/apify/storage_clients/_apify/_dataset_client.py#L179)iterate\_items
 
 * **async **iterate\_items**(\*, offset, limit, clean, desc, fields, omit, unwind, skip\_empty, skip\_hidden): AsyncIterator\[dict]
 
@@ -87,7 +87,7 @@ An Apify platform implementation of the dataset client.
 
   #### Returns AsyncIterator\[dict]
 
-### [**](#open)[**](https://github.com/apify/apify-sdk-python/blob/f050b2684cf6d5e88bafe381599a3653d220ec14//src/apify/storage_clients/_apify/_dataset_client.py#L71)open
+### [**](#open)[**](https://github.com/apify/apify-sdk-python/blob/a01870a180ed391b8b6cad8d1894f12bcc879136//src/apify/storage_clients/_apify/_dataset_client.py#L71)open
 
 * **async **open**(\*, id, name, alias, configuration): [ApifyDatasetClient](https://docs.apify.com/sdk/python/sdk/python/reference/class/ApifyDatasetClient.md)
 
@@ -117,13 +117,13 @@ An Apify platform implementation of the dataset client.
 
   #### Returns [ApifyDatasetClient](https://docs.apify.com/sdk/python/sdk/python/reference/class/ApifyDatasetClient.md)
 
-### [**](#purge)[**](https://github.com/apify/apify-sdk-python/blob/f050b2684cf6d5e88bafe381599a3653d220ec14//src/apify/storage_clients/_apify/_dataset_client.py#L118)purge
+### [**](#purge)[**](https://github.com/apify/apify-sdk-python/blob/a01870a180ed391b8b6cad8d1894f12bcc879136//src/apify/storage_clients/_apify/_dataset_client.py#L118)purge
 
 * **async **purge**(): None
 
 - #### Returns None
 
-### [**](#push_data)[**](https://github.com/apify/apify-sdk-python/blob/f050b2684cf6d5e88bafe381599a3653d220ec14//src/apify/storage_clients/_apify/_dataset_client.py#L130)push\_data
+### [**](#push_data)[**](https://github.com/apify/apify-sdk-python/blob/a01870a180ed391b8b6cad8d1894f12bcc879136//src/apify/storage_clients/_apify/_dataset_client.py#L130)push\_data
 
 * **async **push\_data**(data): None
 

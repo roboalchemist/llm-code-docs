@@ -2,6 +2,8 @@
 
 # Getting Started
 
+Copy page
+
 This page is an overview and a short guide on how to get started.
 
 **ConfigCat** is a cloud-based service that lets you release features without code deployments.
@@ -14,7 +16,7 @@ First, **add a feature flag** on the *ConfigCat Dashboard*, and then you can **c
 
 ### Create a feature flag on the *ConfigCat Dashboard*[​](#create-a-feature-flag-on-the-configcat-dashboard "Direct link to create-a-feature-flag-on-the-configcat-dashboard")
 
-1. [Log in](https://app.configcat.com/auth/login) to the *Dashboard*
+1. [Log in](https://app.configcat.com) to the *Dashboard*
 2. Click *ADD FEATURE FLAG* and give it a name.
 
 ![Add feature flag](/docs/assets/add-feature-flag_192dpi.png)
@@ -33,11 +35,11 @@ There are ready-to-use code snippets for `Browser (JavaScript)`, `Angular`, `Rea
 
 All the ConfigCat SDKs are open-source and available on [GitHub](https://github.com/configcat).
 
-See the detailed [Docs on how to use the ConfigCat SDKs.](https://configcat.com/docs/docs/sdk-reference/overview/.md)
+See the detailed [Docs on how to use the ConfigCat SDKs.](https://configcat.com/docs/sdk-reference/overview.md)
 
 Here's a short example to demonstrate the concept:
 
-```
+```js
 // 0. If necessary, install the ConfigCat SDK package for the platform you use.
 // E.g. `npm install @configcat/sdk`
 
@@ -56,4 +58,5 @@ if (value) {
 } else {
   do_the_old_thing();
 }
+
 ```

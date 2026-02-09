@@ -1,8 +1,6 @@
 # Source: https://docs.livekit.io/transport/media/ingress-egress/egress/track.md
 
-# Source: https://docs.livekit.io/home/egress/track.md
-
-LiveKit docs › Recording & export › Recording individual tracks
+LiveKit docs › Media › Stream export & import › Egress › Track egress
 
 ---
 
@@ -12,19 +10,19 @@ LiveKit docs › Recording & export › Recording individual tracks
 
 ## Overview
 
-TrackEgress is the simplest way to export individual tracks to cloud storage or a server via WebSocket.
+Track egress is the simplest way to export individual tracks to cloud storage or a server via WebSocket.
 
-Tracks are exported as is, without transcoding. The following containers will be used depending on track codec:
+> ℹ️ **Note**
+> 
+> Track egress only exports one track, either video or audio. If you want to export video and audio together, use [TrackComposite egress](https://docs.livekit.io/transport/media/ingress-egress/egress/participant.md).
+
+Tracks are exported as is, without transcoding. The following containers are used depending on track codec:
 
 - H.264: MP4
 - VP8: WebM
 - Opus: Ogg
 
-Note: Track Egress only exports one track, either video or audio. If you want to export video and audio together, use [Track Composite Egress](https://docs.livekit.io/home/egress/track-composite.md).
-
-### Example
-
-See an example of exporting to Azure Blob Storage on the [example page](https://docs.livekit.io/home/egress/examples.md#exporting-individual-tracks-without-transcode).
+- **[Export to Azure Blob Storage](https://docs.livekit.io/reference/other/egress/examples.md#exporting-individual-tracks-without-transcode)**: See an example of exporting individual tracks to Azure Blob Storage without transcoding.
 
 ## Stream audio to WebSocket
 
@@ -33,7 +31,7 @@ You can add custom stream processing by starting a TrackEgress to your WebSocket
 The tracks will be exported as raw PCM data. This format is compatible with most transcription services.
 
 - Format: `pcm_s16le`
-- Content-Type: `audio/x-raw`
+- Content type: `audio/x-raw`
 - Sample rate: matches incoming, typically 48kHz
 
 When a `TrackEgressRequest` is started with a WebSocket URL, we'll initiate a WebSocket session to the designated URL. We recommend using query parameters in the URL in order to help you identify the track. For example: `wss://your-server.com/egress?trackID=<trackID>&participant=<participantIdentity>`
@@ -123,7 +121,7 @@ Egress started. Egress ID: EG_XXXXXXXXXXXX
 
 ---
 
-This document was rendered at 2025-11-18T23:54:57.193Z.
-For the latest version of this document, see [https://docs.livekit.io/home/egress/track.md](https://docs.livekit.io/home/egress/track.md).
+This document was rendered at 2026-02-03T03:25:17.474Z.
+For the latest version of this document, see [https://docs.livekit.io/transport/media/ingress-egress/egress/track.md](https://docs.livekit.io/transport/media/ingress-egress/egress/track.md).
 
 To explore all LiveKit documentation, see [llms.txt](https://docs.livekit.io/llms.txt).

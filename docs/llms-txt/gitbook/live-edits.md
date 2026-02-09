@@ -1,8 +1,4 @@
-# Source: https://gitbook.com/docs/documentation/zh/collaboration/live-edits.md
-
-# Source: https://gitbook.com/docs/documentation/fr/collaboration/live-edits.md
-
-# Source: https://gitbook.com/docs/collaboration/live-edits.md
+# Source: https://gitbook.com/docs/documentation/ja-gitbook-documentation/collaboration/live-edits.md
 
 # Source: https://gitbook.com/docs/documentation/zh/collaboration/live-edits.md
 

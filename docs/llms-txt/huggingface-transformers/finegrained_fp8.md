@@ -1,4 +1,4 @@
-# Source: https://huggingface.co/docs/transformers/v5.0.0rc1/quantization/finegrained_fp8.md
+# Source: https://huggingface.co/docs/transformers/v5.0.0/quantization/finegrained_fp8.md
 
 # Fine-grained FP8
 
@@ -20,7 +20,7 @@ Install Accelerate and upgrade to the latest version of PyTorch.
 pip install --upgrade accelerate torch
 ```
 
-Create a [FineGrainedFP8Config](/docs/transformers/v5.0.0rc1/en/main_classes/quantization#transformers.FineGrainedFP8Config) class and pass it to [from_pretrained()](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) to quantize it. The weights are loaded in full precision (`torch.float32`) by default regardless of the actual data type the weights are stored in. Set `dtype="auto"` to load the weights in the data type defined in a models `config.json` file to automatically load the most memory-optiomal data type.
+Create a [FineGrainedFP8Config](/docs/transformers/v5.0.0/en/main_classes/quantization#transformers.FineGrainedFP8Config) class and pass it to [from_pretrained()](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) to quantize it. The weights are loaded in full precision (`torch.float32`) by default regardless of the actual data type the weights are stored in. Set `dtype="auto"` to load the weights in the data type defined in a models `config.json` file to automatically load the most memory-optiomal data type.
 
 ```py
 from transformers import FineGrainedFP8Config, AutoModelForCausalLM, AutoTokenizer
@@ -37,7 +37,7 @@ output = quantized_model.generate(**input_ids, max_new_tokens=10)
 print(tokenizer.decode(output[0], skip_special_tokens=True))
 ```
 
-Use [save_pretrained()](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel.save_pretrained) to save the quantized model and reload it with [from_pretrained()](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel.from_pretrained).
+Use [save_pretrained()](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel.save_pretrained) to save the quantized model and reload it with [from_pretrained()](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel.from_pretrained).
 
 ```py
 quant_path = "/path/to/save/quantized/model"

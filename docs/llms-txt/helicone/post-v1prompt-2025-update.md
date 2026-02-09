@@ -1,5 +1,9 @@
 # Source: https://docs.helicone.ai/rest/prompts/post-v1prompt-2025-update.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.helicone.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Update Prompt
 
 > Create a new version of an existing prompt

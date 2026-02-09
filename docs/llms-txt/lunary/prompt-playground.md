@@ -1,5 +1,9 @@
 # Source: https://docs.lunary.ai/docs/features/prompt-playground.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.lunary.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Prompt Playground
 
 The Prompt Playground is an interactive environment for testing and refining your prompts. It provides a powerful interface to experiment with different prompt variations, test against various models, and even run prompts against custom API endpoints.
@@ -182,8 +186,3 @@ async def agent_endpoint(request: dict):
     
     return {"content": response, "tools_used": intent.tools}
 ```
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.lunary.ai/llms.txt

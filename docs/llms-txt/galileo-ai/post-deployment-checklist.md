@@ -1,5 +1,9 @@
 # Source: https://docs.galileo.ai/deployments/post-deployment-checklist.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.galileo.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Post Deployment Checklist
 
 > The following guide will walk you through steps you can take to make sure your Galileo cluster is properly deployed and running well.

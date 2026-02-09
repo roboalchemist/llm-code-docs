@@ -1,5 +1,9 @@
 # Source: https://docs.replit.com/replitai/warehouse-connectors.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.replit.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Warehouse Connectors
 
 > Connect Replit Agent to BigQuery, Databricks, and Snowflake to build data-driven applications.
@@ -125,8 +129,3 @@ After connecting, you can ask Agent to build applications that use your data. Ag
 
 * [Connectors overview](/replitai/integrations) — Learn about all integration types
 * [Connectors for Organizations](/replitai/connectors-for-organizations) — Centralized connector management for Teams and Enterprise
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.replit.com/llms.txt

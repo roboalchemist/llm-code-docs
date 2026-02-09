@@ -1,5 +1,9 @@
 # Source: https://docs.crewai.com/en/tools/ai-ml/codeinterpretertool.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.crewai.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Code Interpreter
 
 > The `CodeInterpreterTool` is a powerful tool designed for executing Python 3 code within a secure, isolated environment.

@@ -120,7 +120,7 @@ $ vespa visit --field-set "[id]" | wc -l
   98984
 ```
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ### On this page:
 

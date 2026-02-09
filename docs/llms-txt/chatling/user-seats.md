@@ -1,5 +1,9 @@
 # Source: https://docs.chatling.ai/api-reference/v2/usage/user-seats.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.chatling.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # User Seats
 
 > Get the user seats usage for the project.

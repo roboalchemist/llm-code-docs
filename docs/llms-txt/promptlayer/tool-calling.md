@@ -1,5 +1,9 @@
 # Source: https://docs.promptlayer.com/features/prompt-registry/tool-calling.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.promptlayer.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Tool Calling
 
 The Prompt Registry supports all major tool calling formats, including [OpenAI tools](https://platform.openai.com/docs/guides/function-calling), OpenAI functions, [Anthropic tools](https://docs.anthropic.com/en/docs/build-with-claude/tool-use), and Gemini tools.
@@ -118,8 +122,3 @@ For detailed information about Code Interpreter's capabilities, file handling, a
 * [OpenAI Code Interpreter Guide](https://platform.openai.com/docs/guides/tools-code-interpreter)
 * [OpenAI Responses API Announcement](https://openai.com/index/new-tools-for-building-agents/)
 * [Deep Research API Cookbook](https://cookbook.openai.com/examples/deep_research_api/introduction_to_deep_research_api)
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.promptlayer.com/llms.txt

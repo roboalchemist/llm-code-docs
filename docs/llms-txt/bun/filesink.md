@@ -1,5 +1,9 @@
 # Source: https://bun.com/docs/guides/write-file/filesink.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://bun.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Write a file incrementally
 
 Bun provides an API for incrementally writing to a file. This is useful for writing large files, or for writing to a file over a long period of time.
@@ -49,4 +53,4 @@ writer.end();
 
 ***
 
-Full documentation: [FileSink](https://bun.com/docs/api/file-io#incremental-writing-with-filesink).
+Full documentation: [FileSink](/runtime/file-io#incremental-writing-with-filesink).

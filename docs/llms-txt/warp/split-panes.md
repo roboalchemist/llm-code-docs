@@ -50,4 +50,4 @@ You can quickly find all the **pane** shortcuts by using the [Command Palette](h
 Split Panes Demo
 {% endembed %}
 
-<figure><img src="https://2297236823-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-MbqIgTw17KQvq_DQuRr%2Fuploads%2Fgit-blob-44512f81f876be15ad0a63749dc0740ddcc2e9cd%2Fsplit-panes-dragging-demo.gif?alt=media" alt=""><figcaption><p>Split Panes Drag and Drop Demo</p></figcaption></figure>
+<figure><img src="https://4009768362-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FPsjNxoJ0NFCXW6rRdHH3%2Fuploads%2Fgit-blob-44512f81f876be15ad0a63749dc0740ddcc2e9cd%2Fsplit-panes-dragging-demo.gif?alt=media" alt=""><figcaption><p>Split Panes Drag and Drop Demo</p></figcaption></figure>

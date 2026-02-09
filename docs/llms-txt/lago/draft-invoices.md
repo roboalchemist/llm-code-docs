@@ -1,5 +1,9 @@
 # Source: https://getlago.com/docs/guide/invoicing/draft-invoices.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://getlago.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Draft invoices
 
 > A draft invoice is an editable invoice by several ways.

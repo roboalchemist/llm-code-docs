@@ -4,8 +4,8 @@
 
 [@rspack/cli](https://npmjs.com/package/@rspack/cli) is the command line tool for Rspack, providing a variety of commands to make working with Rspack easier.
 
-* If you do not have `@rspack/cli` installed, please read the [Quick start](/guide/start/quick-start.md) section first.
-* If you are using Rsbuild, please refer to the [Rsbuild CLI](https://rsbuild.rs/guide/basic/cli) section.
+- If you do not have `@rspack/cli` installed, please read the [Quick start](/guide/start/quick-start.md) section first.
+- If you are using Rsbuild, please refer to the [Rsbuild CLI](https://rsbuild.rs/guide/basic/cli) section.
 
 :::warning Compatible with webpack-cli
 `@rspack/cli` is not compatible with `webpack-cli`, so there will be some differences between the two.
@@ -23,14 +23,14 @@ npx rspack -h
 
 Rspack CLI provides several common flags that can be used with all commands:
 
-| Flag                 | Description                                                                                                                                   |
-| -------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- |
-| -c, --config \[value] | Specify the path to the configuration file, see [Specify the configuration file](/config/index.md#specify-the-configuration-file)                |
-| --configLoader       | Specify the loader to load the config file, can be `native` or `register`, defaults to `register`                                             |
-| --configName         | Specify the name of the configuration to use.                                                                                                 |
-| --nodeEnv            | Set the value of `process.env.NODE_ENV`, defaults to `development` for `rspack dev`, and `production` for `rspack build` and `rspack preview` |
-| -h, --help           | Show help information                                                                                                                         |
-| -v, --version        | Show version number                                                                                                                           |
+| Flag                  | Description                                                                                                                                   |
+| --------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- |
+| -c, --config \[value] | Specify the path to the configuration file, see [Specify the configuration file](/config/index.md#specify-the-configuration-file)             |
+| --configLoader        | Specify the loader to load the config file, can be `native` or `register`, defaults to `register`                                             |
+| --configName          | Specify the name of the configuration to use.                                                                                                 |
+| --nodeEnv             | Set the value of `process.env.NODE_ENV`, defaults to `development` for `rspack dev`, and `production` for `rspack build` and `rspack preview` |
+| -h, --help            | Show help information                                                                                                                         |
+| -v, --version         | Show version number                                                                                                                           |
 
 :::tip
 All flags in Rspack CLI support the `camelCase` and `kebab-case`, for example, both `--configLoader` and `--config-loader` are valid.
@@ -68,15 +68,38 @@ Options:
   -w, --watch          watch                          [boolean] [default: false]
       --env            env passed to config function                     [array]
   -d, --devtool        devtool                        [boolean] [default: false]
-      --analyze        analyze                        [boolean] [default: false]
       --json           emit stats json
-      --profile        capture timing information for each module
-                                                      [boolean] [default: false]
 ```
 
 ## rspack dev
 
 `rspack dev` is used to run Rspack dev server, which will start a local dev server that will listen for file changes and automatically refresh the browser.
+
+:::info Required dependency
+The `rspack dev` command requires [@rspack/dev-server](https://www.npmjs.com/package/@rspack/dev-server) to be installed. If you haven't installed it yet, run:
+
+
+```sh [npm]
+npm add @rspack/dev-server -D
+```
+
+```sh [yarn]
+yarn add @rspack/dev-server -D
+```
+
+```sh [pnpm]
+pnpm add @rspack/dev-server -D
+```
+
+```sh [bun]
+bun add @rspack/dev-server -D
+```
+
+```sh [deno]
+deno add npm:@rspack/dev-server -D
+```
+
+:::
 
 ```bash
 npx rspack dev
@@ -115,6 +138,32 @@ Options:
 ## rspack preview
 
 `rspack preview` is used to preview the production build output locally, note that you need to build the output first by running the `rspack build` command.
+
+:::info Required dependency
+The `rspack preview` command requires [@rspack/dev-server](https://www.npmjs.com/package/@rspack/dev-server) to be installed. If you haven't installed it yet, run:
+
+
+```sh [npm]
+npm add @rspack/dev-server -D
+```
+
+```sh [yarn]
+yarn add @rspack/dev-server -D
+```
+
+```sh [pnpm]
+pnpm add @rspack/dev-server -D
+```
+
+```sh [bun]
+bun add @rspack/dev-server -D
+```
+
+```sh [deno]
+deno add npm:@rspack/dev-server -D
+```
+
+:::
 
 ```bash
 npx rspack preview

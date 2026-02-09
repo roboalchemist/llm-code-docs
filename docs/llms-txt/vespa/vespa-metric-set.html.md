@@ -1237,6 +1237,11 @@ vds.distributor.bytesstored
  | byte | average | Number of bytes stored in all buckets controlled by this distributor |
 | 
 
+vds.distributor.mutating\_op\_memory\_usage
+
+ | byte | max | Estimated amount of memory used by active mutating operations across all distributor stripes, in bytes |
+| 
+
 vds.bouncer.clock\_skew\_aborts
 
  | operation | count | Number of client operations that were aborted due to clock skew between sender and receiver exceeding acceptable range |
@@ -2087,6 +2092,21 @@ content.proton.documentdb.matching.docs\_matched
  | document | count, rate | Number of documents matched |
 | 
 
+content.proton.documentdb.matching.exact\_nns\_distances\_computed
+
+ | distance | rate | Number of distances computed in exact nearest-neighbor search |
+| 
+
+content.proton.documentdb.matching.approximate\_nns\_distances\_computed
+
+ | distance | rate | Number of distances computed in approximate nearest-neighbor search |
+| 
+
+content.proton.documentdb.matching.approximate\_nns\_nodes\_visited
+
+ | graph\_node | rate | Number of nodes visited in approximate nearest-neighbor search |
+| 
+
 content.proton.documentdb.matching.rank\_profile.queries
 
  | query | rate | Number of queries executed |
@@ -2125,6 +2145,21 @@ content.proton.documentdb.matching.rank\_profile.rerank\_time
 content.proton.documentdb.matching.rank\_profile.docs\_matched
 
  | document | count, rate | Number of documents matched |
+| 
+
+content.proton.documentdb.matching.rank\_profile.exact\_nns\_distances\_computed
+
+ | distance | rate | Number of distances computed in exact nearest-neighbor search |
+| 
+
+content.proton.documentdb.matching.rank\_profile.approximate\_nns\_distances\_computed
+
+ | distance | rate | Number of distances computed in approximate nearest-neighbor search |
+| 
+
+content.proton.documentdb.matching.rank\_profile.approximate\_nns\_nodes\_visited
+
+ | graph\_node | rate | Number of nodes visited in approximate nearest-neighbor search |
 | 
 
 content.proton.documentdb.matching.rank\_profile.limited\_queries
@@ -2586,7 +2621,7 @@ vds.server.fnet.num-connections
 
  | connection | count | Total number of connection objects |
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ### On this page:
 

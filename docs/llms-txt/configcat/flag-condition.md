@@ -2,6 +2,8 @@
 
 # Flag Condition (Prerequisite)
 
+Copy page
+
 ## What is a Flag Condition? What is a prerequisite flag?[​](#what-is-a-flag-condition-what-is-a-prerequisite-flag "Direct link to What is a Flag Condition? What is a prerequisite flag?")
 
 A *Flag Condition* is a condition that is based on the comparison of another feature flag's value and a preset value (*comparison value*). In other words, a Flag Condition creates a dependency between the feature flag containing the condition (*dependent flag*) and another feature flag (*prerequisite flag*, aka. master feature flag, master switch, inter-dependent feature flag, global toggle, etc.)
@@ -14,7 +16,7 @@ The prerequisite flag is evaluated with the same User Object as the one used to 
 
 The prerequisite flag can be other than a feature flag (boolean setting), in which case the prerequisite flag's evaluated value will be compared to the comparison value that you set on the Dashboard. The comparison is done according to the selected comparator and will result in true or false. This will be the result of the condition.
 
-For more details on the evaluation of Flag Conditions, please refer to [Feature Flag Evaluation](https://configcat.com/docs/docs/targeting/feature-flag-evaluation/.md#evaluation-of-a-flag-condition).
+For more details on the evaluation of Flag Conditions, please refer to [Feature Flag Evaluation](https://configcat.com/docs/targeting/feature-flag-evaluation.md#evaluation-of-a-flag-condition).
 
 ## How to set a Flag Condition?[​](#how-to-set-a-flag-condition "Direct link to How to set a Flag Condition?")
 

@@ -2,23 +2,9 @@
 
 # Source: https://upstash.com/docs/redis/sdks/py/commands/set/smembers.md
 
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/set/smembers.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/set/smembers.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/set/smembers.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/set/smembers.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/set/smembers.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/set/smembers.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/set/smembers.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/set/smembers.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/set/smembers.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # SMEMBERS
 
@@ -26,20 +12,19 @@
 
 ## Arguments
 
-<ParamField body="key" type="string" required>
+<ParamField body="key" type="str" required>
   The key of the set.
 </ParamField>
 
 ## Response
 
-<ResponseField type="TMember[]" required>
+<ResponseField type="set[str]" required>
   The members of the set.
 </ResponseField>
 
 <RequestExample>
-  ```ts Example  theme={"system"}
-  await redis.sadd("set", "a", "b", "c"); 
-  const members =  await redis.smembers("set");
-  console.log(members); // ["a", "b", "c"]
+  ```py Example  theme={"system"}
+  redis.sadd("set", "a", "b", "c"); 
+  assert redis.smembers("set") == {"a", "b", "c"}
   ```
 </RequestExample>

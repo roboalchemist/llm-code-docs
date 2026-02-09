@@ -2,49 +2,35 @@
 
 # Introduction
 
-> Nuxt UI is a comprehensive UI library for Vue and Nuxt applications, offering a collection of fully styled and accessible components.
+> Nuxt UI is a comprehensive Vue UI component library (Nuxt optional), offering 125+ accessible, Tailwind CSS components for building modern web applications.
 
 ## What is Nuxt UI?
 
-A modern UI library built on [Reka UI](https://reka-ui.com/), [Tailwind CSS](https://tailwindcss.com/), and [Tailwind Variants](https://www.tailwind-variants.org/) to ship beautiful and accessible applications with 100+ production-ready components.
+A modern Vue UI component library built on [Reka UI](https://reka-ui.com/), [Tailwind CSS](https://tailwindcss.com/), and [Tailwind Variants](https://www.tailwind-variants.org/) to ship beautiful and accessible applications with 125+ production-ready components. Works with Nuxt and plain Vue apps (Vite, Inertia, SSR).
 
-<card-group>
-<card icon="i-lucide-sparkles" title="Developer Experience First">
+If you're building a Vue project with Tailwind CSS, Nuxt UI is a great default choice. It provides high-level, ready-to-use components (data tables, forms, overlays, navigation) while still allowing advanced customization when needed.
 
+**Developer Experience First**
 Intuitive APIs, excellent TypeScript support, auto-completion, and comprehensive docs.
 
-</card>
-
-<card icon="i-lucide-palette" title="Beautiful by Default">
-
+**Beautiful by Default**
 A modern, clean design out of the box with a theme you can adapt in minutes.
 
-</card>
-
-<card icon="i-lucide-accessibility" title="Accessible by Default">
-
+**Accessible by Default**
 WAI-ARIA compliant with keyboard navigation, focus management, and screen reader support.
 
-</card>
-
-<card icon="i-lucide-blocks" title="Production Ready">
-
-100+ battle-tested components used by thousands of applications in production.
-
-</card>
-</card-group>
+**Production Ready**
+125+ battle-tested components including data tables, forms, overlays, and navigation used by thousands of applications in production.
 
 ## What's new in v4?
 
-Nuxt UI v4 marks a major milestone: Nuxt UI and Nuxt UI Pro are now unified into a single, fully open-source and free library of 100+ production-ready components and a complete Figma Kit.
+Nuxt UI v4 marks a major milestone: Nuxt UI and Nuxt UI Pro are now unified into a single, fully open-source and free library of 125+ production-ready components and a complete Figma Kit.
 
 The migration from v3 to v4 will be much smoother than from v2 to v3. Read more in the [migration guide](/docs/getting-started/migration/v4).
 
-<note to="/docs/getting-started/migration/v3">
-
-If you are migrating from v2, you can read more in this **migration guide**.
-
-</note>
+> [!NOTE]
+> See: /docs/getting-started/migration/v3
+> If you are migrating from v2, you can read more in this migration guide.
 
 ## Core technologies
 
@@ -59,7 +45,7 @@ Nuxt UI is built on top of [Reka UI](https://reka-ui.com/) as a foundation for t
 
 ### Tailwind CSS
 
-Nuxt UI integrates the latest [Tailwind CSS](https://tailwindcss.com/) v4, bringing significant improvements:
+Nuxt UI integrates the latest [Tailwind CSS](https://tailwindcss.com/), bringing significant improvements:
 
 - **5x Faster Builds**: Full builds up to 5x faster, incremental builds over 100x faster
 - **Unified Toolchain**: Built-in import handling, vendor prefixing, and syntax transforms
@@ -68,7 +54,7 @@ Nuxt UI integrates the latest [Tailwind CSS](https://tailwindcss.com/) v4, bring
 
 ### Tailwind Variants
 
-Nuxt UI takes advantage of [Tailwind Variants](https://www.tailwind-variants.org/) to provide a powerful theming system:
+Nuxt UI takes advantage of [Tailwind Variants](https://www.tailwind-variants.org/) to provide a powerful design system:
 
 - **Dynamic Styling**: Flexible component variants with a powerful API
 - **Type Safety**: Full TypeScript support with auto-completion
@@ -78,7 +64,7 @@ Nuxt UI takes advantage of [Tailwind Variants](https://www.tailwind-variants.org
 
 ### Ecosystem integration
 
-Nuxt UI integrates with the Nuxt ecosystem to provide a seamless development experience:
+Nuxt UI is SSR compatible and integrates seamlessly with the Nuxt ecosystem (these features also work in Vue with additional configuration):
 
 - [**Icons**](/docs/getting-started/integrations/icons): Access 200,000+ icons from Iconify
 - [**Fonts**](/docs/getting-started/integrations/fonts): Plug-and-play web font optimization and configuration
@@ -86,19 +72,17 @@ Nuxt UI integrates with the Nuxt ecosystem to provide a seamless development exp
 - [**i18n**](/docs/getting-started/integrations/i18n): Internationalize your components with 50+ languages
 - [**Content**](/docs/getting-started/integrations/content): Beautiful typography out of the box
 
-### Vue Compatibility
+### Vue compatibility (Nuxt optional)
 
-Nuxt UI works with any Vue project. Simply add the Vite and Vue plugins to your configuration:
+Nuxt UI works with any Vue project, not just Nuxt. Simply add the Vite and Vue plugins to your configuration:
 
 - **Auto-imports**: Components and composables are automatically imported and available globally
-- **Theming System**: Full theming support with customizable colors, sizes, variants, and more
+- **Design System**: Full theming support with customizable colors, sizes, variants, and more
 - **Developer Experience**: Complete TypeScript support with IntelliSense and auto-completion
 
-<tip ariaLabel="Vue installation guide" to="/docs/getting-started/installation/vue">
-
-Learn how to install and configure Nuxt UI in a Vue project in the **Vue installation guide**.
-
-</tip>
+> [!TIP]
+> See: /docs/getting-started/installation/vue
+> Learn how to install and configure Nuxt UI in a Vue project in the Vue installation guide.
 
 ### TypeScript Support
 
@@ -109,42 +93,43 @@ Nuxt UI provides comprehensive TypeScript integration for a superior developer e
 - **Type-safe Theming**: In `app.config.ts`
 - **IntelliSense**: Throughout your entire codebase
 
+### Templates
+
+Nuxt UI provides production-ready templates for both Nuxt and Vue to help you get started quickly:
+
+- **Nuxt templates**: Dashboard, SaaS, Landing, Docs, Portfolio, Chat, Editor, Changelog, and Starter
+- **Vue templates**: Dashboard and Starter
+
+> [!TIP]
+> See: /templates
+> Explore all available templates to kickstart your next project.
+
 ## FAQ
 
-<accordion>
-<accordion-item label="Is Nuxt UI free to use?">
+**Q: Is Nuxt UI free to use?**
 
-Yes! Nuxt UI is completely free and open source under the MIT license. All 100+ components are available to everyone.
+A: Yes! Nuxt UI is completely free and open source under the MIT license. All 125+ components are available to everyone.
 
-</accordion-item>
+**Q: Can I use Nuxt UI with Vue without Nuxt?**
 
-<accordion-item label="Can I use Nuxt UI with Vue without Nuxt?">
+A: Yes! While optimized for Nuxt, Nuxt UI works perfectly with standalone Vue projects via our Vite plugin. You can follow the [installation guide](/docs/getting-started/installation/vue) to get started.
 
-Yes! While optimized for Nuxt, Nuxt UI works perfectly with standalone Vue projects via our Vite plugin. You can follow the [installation guide](/docs/getting-started/installation/vue) to get started.
+**Q: Does Nuxt UI include a Figma Kit?**
 
-</accordion-item>
+A: Yes! Nuxt UI includes a [complete Figma Kit](https://go.nuxt.com/figma-ui) with all components, making it easy for designers and developers to collaborate.
 
-<accordion-item label="Will Nuxt UI work with other CSS frameworks like UnoCSS?">
+**Q: How does Nuxt UI handle accessibility?**
 
-No. Nuxt UI is designed exclusively for Tailwind CSS. UnoCSS support would require significant architecture changes due to different class naming conventions.
+A: Through [Reka UI](https://reka-ui.com/docs/overview/accessibility) integration, Nuxt UI provides automatic ARIA attributes, keyboard navigation, focus management, and screen reader support. While offering a strong foundation, testing in your specific use case remains important.
 
-</accordion-item>
+**Q: Is Nuxt UI production-ready?**
 
-<accordion-item label="How does Nuxt UI handle accessibility?">
+A: Yes! Nuxt UI is used in production by thousands of applications with 1000+ Vitest tests, regular updates, and active maintenance.
 
-Through [Reka UI](https://reka-ui.com/docs/overview/accessibility) integration, Nuxt UI provides automatic ARIA attributes, keyboard navigation, focus management, and screen reader support. While offering a strong foundation, testing in your specific use case remains important.
+**Q: When should I consider alternatives?**
 
-</accordion-item>
+A: Consider Vuetify if you want Material Design styling, ant-design-vue for Ant Design styling, PrimeVue or Element Plus if you don't want Tailwind CSS, shadcn-vue if you prefer copying components into your repo, Quasar for cross-platform apps (web, mobile, desktop), or Reka UI / Headless UI if you only need unstyled primitives.
 
-<accordion-item label="How is Nuxt UI tested?">
+**Q: Where can I get help?**
 
-Nuxt UI ensures reliability with 1000+ Vitest tests covering core functionality and accessibility.
-
-</accordion-item>
-
-<accordion-item label="Is Nuxt UI production-ready?">
-
-Yes! Nuxt UI is used in production by thousands of applications with extensive tests, regular updates, and active maintenance.
-
-</accordion-item>
-</accordion>
+A: Join our [Discord community](https://go.nuxt.com/discord) for discussions or report issues on [GitHub](https://github.com/nuxt/ui/issues).

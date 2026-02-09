@@ -9,7 +9,7 @@ https://api.apify.com/v2/actor-builds/:buildId
 ```
 
 
-Clientshttps://docs.apify.com/api/client/js/reference/class/BuildClient#deleteDelete the build. The build that is the current default build for the Actor cannot be deleted.
+Delete the build. The build that is the current default build for the Actor cannot be deleted.
 
 Only users with build permissions for the Actor can delete builds.
 
@@ -18,6 +18,10 @@ Only users with build permissions for the Actor can delete builds.
 ## Responses
 
 * 204
+* 400
 
 **Response Headers**
 
+
+
+Bad request - invalid input parameters or request body.

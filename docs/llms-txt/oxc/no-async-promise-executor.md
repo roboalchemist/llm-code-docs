@@ -3,7 +3,6 @@
 ---
 url: /docs/guide/usage/linter/rules/eslint/no-async-promise-executor.md
 ---
-# eslint/no-async-promise-executor&#x20;
 
 ### What it does
 

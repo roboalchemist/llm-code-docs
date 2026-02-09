@@ -4,23 +4,9 @@
 
 # Source: https://docs.galileo.ai/galileo/gen-ai-studio-products/galileo-evaluate/faq/errors-computing-metrics.md
 
-# Source: https://docs.galileo.ai/galileo/gen-ai-studio-products/galileo-observe/faq/errors-computing-metrics.md
-
-# Source: https://docs.galileo.ai/galileo/gen-ai-studio-products/galileo-guardrail-metrics/faq/errors-computing-metrics.md
-
-# Source: https://docs.galileo.ai/galileo/gen-ai-studio-products/galileo-evaluate/faq/errors-computing-metrics.md
-
-# Source: https://docs.galileo.ai/galileo/gen-ai-studio-products/galileo-observe/faq/errors-computing-metrics.md
-
-# Source: https://docs.galileo.ai/galileo/gen-ai-studio-products/galileo-guardrail-metrics/faq/errors-computing-metrics.md
-
-# Source: https://docs.galileo.ai/galileo/gen-ai-studio-products/galileo-evaluate/faq/errors-computing-metrics.md
-
-# Source: https://docs.galileo.ai/galileo/gen-ai-studio-products/galileo-observe/faq/errors-computing-metrics.md
-
-# Source: https://docs.galileo.ai/galileo/gen-ai-studio-products/galileo-guardrail-metrics/faq/errors-computing-metrics.md
-
-# Source: https://docs.galileo.ai/galileo/gen-ai-studio-products/galileo-evaluate/faq/errors-computing-metrics.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.galileo.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Error Computing Metrics | Galileo Evaluate FAQ
 

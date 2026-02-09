@@ -1,5 +1,9 @@
 # Source: https://docs.frigade.com/sdk/advanced/linking-guest-users.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.frigade.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Merging a guest session with a authenticated user
 
 > Link a guest session's state to a user when they register or log in
@@ -13,7 +17,7 @@ You can do this by calling the [Users API endpoint](/api-reference/users/overvie
 
 To do this in Javascript, you can use the `fetch` API:
 
-```jsx
+```jsx  theme={"system"}
 const options = {
   method: 'POST',
   headers: { Authorization: 'Bearer <FRIGADE_PUBLIC_API_KEY>',

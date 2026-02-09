@@ -108,7 +108,7 @@ Source: https://www.aptible.com/docs/core-concepts/apps/connecting-to-apps/app-e
 
 
 
-<img src="https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/ccfd24b-tls-endpoints.png?fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=7358d127473451d0a602a354f7e57f3e" alt="Image" data-og-width="1280" width="1280" data-og-height="720" height="720" data-path="images/ccfd24b-tls-endpoints.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/ccfd24b-tls-endpoints.png?w=280&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=02685d80d3c363e03e462e338e368ec3 280w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/ccfd24b-tls-endpoints.png?w=560&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=f6b273562653d772a67f8b70d89c0e28 560w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/ccfd24b-tls-endpoints.png?w=840&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=0d6188bfeab9e1a6f474a24ba12df6f5 840w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/ccfd24b-tls-endpoints.png?w=1100&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=d583b15b03bcfde42fec239a2fd37d27 1100w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/ccfd24b-tls-endpoints.png?w=1650&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=d1344f39716ca678eeb696708a89e47d 1650w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/ccfd24b-tls-endpoints.png?w=2500&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=3b74f97b8ec524ba8b3774720013e051 2500w" />
+<img alt="Image" />
 
 gRPC Endpoints can be created using the [`aptible endpoints:grpc:create`](/reference/aptible-cli/cli-commands/cli-endpoints-grpc-create) command.
 
@@ -159,14 +159,14 @@ We strongly recommend setting this variable to `true` on all Endpoints nowadays.
 
 ## Set `SSL_PROTOCOLS_OVERRIDE`
 
-```shell  theme={null}
+```shell theme={null}
 aptible config:set --app "$APP_HANDLE" \
         "SSL_PROTOCOLS_OVERRIDE=TLSv1.1 TLSv1.2"
 ```
 
 ## Set `DISABLE_WEAK_CIPHER_SUITES`
 
-```shell  theme={null}
+```shell theme={null}
 # Note: the value to enable DISABLE_WEAK_CIPHER_SUITES is the string "true"
 # Setting it to e.g. "1" won't work.
 aptible config:set --app "$APP_HANDLE" \
@@ -330,7 +330,7 @@ This variable must be set to your desired timeout in seconds. Any value from 0 t
 
 You can set this variable using the [`aptible config:set`](/reference/aptible-cli/cli-commands/cli-config-set) command:
 
-```shell  theme={null}
+```shell theme={null}
 aptible config:set --app "$APP_HANDLE" \
         RELEASE_HEALTHCHECK_TIMEOUT=600
 ```
@@ -467,14 +467,14 @@ We strongly recommend setting this variable to `true` on all ELB Endpoints nowad
 
 ## Set `SSL_PROTOCOLS_OVERRIDE`
 
-```shell  theme={null}
+```shell theme={null}
 aptible config:set --app "$APP_HANDLE" \
         "SSL_PROTOCOLS_OVERRIDE=TLSv1.1 TLSv1.2"
 ```
 
 ## Set `DISABLE_WEAK_CIPHER_SUITES`
 
-```shell  theme={null}
+```shell theme={null}
 # Note: the value to enable DISABLE_WEAK_CIPHER_SUITES is the string "true"
 # Setting it to e.g. "1" won't work.
 aptible config:set --app "$APP_HANDLE" \
@@ -510,7 +510,7 @@ To set `FORCE_SSL`, you'll need to use the [`aptible config:set`](/reference/apt
 
 The value must be set to the string `true` (e.g., setting to `1` won't work).
 
-```shell  theme={null}
+```shell theme={null}
 aptible config:set --app "$APP_HANDLE" \
         "FORCE_SSL=true"
 ```
@@ -533,7 +533,7 @@ This page will be served by your [HTTP(S) Endpoints](/core-concepts/apps/connect
 
 To configure one, set the `MAINTENANCE_PAGE_URL` [Configuration](/core-concepts/apps/deploying-apps/configuration) variable on your app:
 
-```shell  theme={null}
+```shell theme={null}
 aptible config:set --app "$APP_HANDLE" \
         MAINTENANCE_PAGE_URL=http://...
 ```
@@ -559,7 +559,7 @@ If your Service is scaled up, but all app [Containers](/core-concepts/architectu
 
 # Default Maintenance Page Appearance
 
-<img src="https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/error_proxy.png?fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=69e1e9b717a673a8745570e3f01339bd" alt="Default Maintenance Page" data-og-width="1488" width="1488" data-og-height="694" height="694" data-path="images/error_proxy.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/error_proxy.png?w=280&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=fb48741e5122e2167e6698a6b7dfadd7 280w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/error_proxy.png?w=560&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=def48083a9743e787a1489c1bff96755 560w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/error_proxy.png?w=840&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=586e1da87084541795647821184e816d 840w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/error_proxy.png?w=1100&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=da46716bce0183601e8e28ea0e9bd11a 1100w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/error_proxy.png?w=1650&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=26698b13ec9f6c4717989b72abc051a2 1650w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/error_proxy.png?w=2500&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=44d1b7a02e5abb271485ea9a7527b9dc 2500w" />
+<img alt="Default Maintenance Page" />
 
 
 # HTTP(S) Endpoints
@@ -567,7 +567,7 @@ Source: https://www.aptible.com/docs/core-concepts/apps/connecting-to-apps/app-e
 
 
 
-<img src="https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/d869927-https-endpoints.png?fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=c18936bfe04def5f4542b044c2f8331b" alt="Image" data-og-width="1280" width="1280" data-og-height="720" height="720" data-path="images/d869927-https-endpoints.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/d869927-https-endpoints.png?w=280&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=8d7a6ebfa1095e9d3880a461a3ad931c 280w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/d869927-https-endpoints.png?w=560&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=19597525ddb2d5feb92bcfcc5cb9e46a 560w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/d869927-https-endpoints.png?w=840&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=149c5e9ae07b6e921623cbbc531b8ca3 840w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/d869927-https-endpoints.png?w=1100&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=565fe1f5355a5ca8a25e380c402f22d6 1100w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/d869927-https-endpoints.png?w=1650&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=962739e4a6fe1832e79911db50020745 1650w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/d869927-https-endpoints.png?w=2500&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=4df341377fda481ba4050f39a448ccd7 2500w" />
+<img alt="Image" />
 
 HTTP(S) Endpoints can be created in the following ways:
 
@@ -773,7 +773,7 @@ Source: https://www.aptible.com/docs/core-concepts/apps/connecting-to-apps/app-e
 
 
 
-<img src="https://mintcdn.com/aptible/MtH_goy23rOUOZd7/images/7-app-ui.png?fit=max&auto=format&n=MtH_goy23rOUOZd7&q=85&s=1fb3a13cddd5277750d516a00a663103" alt="" data-og-width="5120" width="5120" data-og-height="2560" height="2560" data-path="images/7-app-ui.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/aptible/MtH_goy23rOUOZd7/images/7-app-ui.png?w=280&fit=max&auto=format&n=MtH_goy23rOUOZd7&q=85&s=5e235e52f27332555f321a05209559f6 280w, https://mintcdn.com/aptible/MtH_goy23rOUOZd7/images/7-app-ui.png?w=560&fit=max&auto=format&n=MtH_goy23rOUOZd7&q=85&s=5ced0a36674b19a54e974a0699f1fb66 560w, https://mintcdn.com/aptible/MtH_goy23rOUOZd7/images/7-app-ui.png?w=840&fit=max&auto=format&n=MtH_goy23rOUOZd7&q=85&s=947d9bfde105f7570bebc53c85ccd15e 840w, https://mintcdn.com/aptible/MtH_goy23rOUOZd7/images/7-app-ui.png?w=1100&fit=max&auto=format&n=MtH_goy23rOUOZd7&q=85&s=7a5c4b3709fcff5324d34d48702d92ef 1100w, https://mintcdn.com/aptible/MtH_goy23rOUOZd7/images/7-app-ui.png?w=1650&fit=max&auto=format&n=MtH_goy23rOUOZd7&q=85&s=515573ac910273a8022169ccccbac640 1650w, https://mintcdn.com/aptible/MtH_goy23rOUOZd7/images/7-app-ui.png?w=2500&fit=max&auto=format&n=MtH_goy23rOUOZd7&q=85&s=e9d60bc33f99111f21df11853281e481 2500w" />
+<img alt="" />
 
 # Overview
 
@@ -825,7 +825,7 @@ By default, the inactivity timeout is 60 seconds. You can set the IDLE\_TIMEOUT 
 
 For example:
 
-```shell  theme={null}
+```shell theme={null}
 aptible config: set--app "$APP_HANDLE" IDLE_TIMEOUT=1200
 ```
 
@@ -843,7 +843,7 @@ Source: https://www.aptible.com/docs/core-concepts/apps/connecting-to-apps/app-e
 
 
 
-<img src="https://mintcdn.com/aptible/MtH_goy23rOUOZd7/images/15715dc-tcp-endpoints.png?fit=max&auto=format&n=MtH_goy23rOUOZd7&q=85&s=8407205ce22c7fb0282cb866f7f4955d" alt="Image" data-og-width="1280" width="1280" data-og-height="720" height="720" data-path="images/15715dc-tcp-endpoints.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/aptible/MtH_goy23rOUOZd7/images/15715dc-tcp-endpoints.png?w=280&fit=max&auto=format&n=MtH_goy23rOUOZd7&q=85&s=d620696943f5519117ac8b19d637aa75 280w, https://mintcdn.com/aptible/MtH_goy23rOUOZd7/images/15715dc-tcp-endpoints.png?w=560&fit=max&auto=format&n=MtH_goy23rOUOZd7&q=85&s=d7636d2d24b7e638df577435dc1e75ff 560w, https://mintcdn.com/aptible/MtH_goy23rOUOZd7/images/15715dc-tcp-endpoints.png?w=840&fit=max&auto=format&n=MtH_goy23rOUOZd7&q=85&s=efe62411da4b0f1bcd6837665a344a58 840w, https://mintcdn.com/aptible/MtH_goy23rOUOZd7/images/15715dc-tcp-endpoints.png?w=1100&fit=max&auto=format&n=MtH_goy23rOUOZd7&q=85&s=8dab5aca85ce60c7db6641ea1fe67480 1100w, https://mintcdn.com/aptible/MtH_goy23rOUOZd7/images/15715dc-tcp-endpoints.png?w=1650&fit=max&auto=format&n=MtH_goy23rOUOZd7&q=85&s=523a7b066761dad276ba7bfd5da95e9f 1650w, https://mintcdn.com/aptible/MtH_goy23rOUOZd7/images/15715dc-tcp-endpoints.png?w=2500&fit=max&auto=format&n=MtH_goy23rOUOZd7&q=85&s=5faac17ee276512e0bdbe57b1acc3c26 2500w" />
+<img alt="Image" />
 
 TCP Endpoints can be created using the [`aptible endpoints:tcp:create`](/reference/aptible-cli/cli-commands/cli-endpoints-tcp-create) command.
 
@@ -881,7 +881,7 @@ Source: https://www.aptible.com/docs/core-concepts/apps/connecting-to-apps/app-e
 
 
 
-<img src="https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/ccfd24b-tls-endpoints.png?fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=7358d127473451d0a602a354f7e57f3e" alt="Image" data-og-width="1280" width="1280" data-og-height="720" height="720" data-path="images/ccfd24b-tls-endpoints.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/ccfd24b-tls-endpoints.png?w=280&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=02685d80d3c363e03e462e338e368ec3 280w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/ccfd24b-tls-endpoints.png?w=560&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=f6b273562653d772a67f8b70d89c0e28 560w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/ccfd24b-tls-endpoints.png?w=840&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=0d6188bfeab9e1a6f474a24ba12df6f5 840w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/ccfd24b-tls-endpoints.png?w=1100&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=d583b15b03bcfde42fec239a2fd37d27 1100w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/ccfd24b-tls-endpoints.png?w=1650&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=d1344f39716ca678eeb696708a89e47d 1650w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/ccfd24b-tls-endpoints.png?w=2500&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=3b74f97b8ec524ba8b3774720013e051 2500w" />
+<img alt="Image" />
 
 TLS Endpoints can be created using the [`aptible endpoints:tls:create`](/reference/aptible-cli/cli-commands/cli-endpoints-tls-create) command.
 
@@ -923,14 +923,14 @@ We strongly recommend setting this variable to `true` on all TLS Endpoints nowad
 
 ## Set `SSL_PROTOCOLS_OVERRIDE`
 
-```shell  theme={null}
+```shell theme={null}
 aptible config:set --app "$APP_HANDLE" \
         "SSL_PROTOCOLS_OVERRIDE=TLSv1.2 TLSv1.3"
 ```
 
 ## Set `DISABLE_WEAK_CIPHER_SUITES`
 
-```shell  theme={null}
+```shell theme={null}
 # Note: the value to enable DISABLE_WEAK_CIPHER_SUITES is the string "true"
 # Setting it to e.g. "1" won't work.
 aptible config:set --app "$APP_HANDLE" \
@@ -961,6 +961,15 @@ In either case, Aptible selects the new IP address from a pool of pre-defined IP
 
 <Warning> For this reason, when sharing IP addresses with vendors or partners for whitelisting, ensure all of the provided outbound IP addresses are whitelisted. </Warning>
 
+# Email Notifications for IP Changes
+
+When Aptible adds new outbound IP addresses to your stack's NAT gateway pool, email notifications are sent to:
+
+* Your organization's Ops Alert contact
+* All account owners
+
+This ensures timely notification of this important change to all key organization members.
+
 # Determining Outbound IP Address Pool
 
 Your outbound IP address pool can be identified by navigating to the [Stack](/core-concepts/architecture/stacks) with the Aptible Dashboard.
@@ -975,19 +984,19 @@ Learn how to connect to your Aptible Apps
 
 Expose your apps to the internet via Endpoints. All traffic received by the Endpoint will be load-balanced across all the Containers for the service. IP Filtering locks down which clients are allowed to connect to your Endpoint.
 
-<Card title="Learn more aobut App Endpoints (Load Balancers)" icon="book" iconType="duotone" href="https://www.aptible.com/docs/endpoints" />
+<Card title="Learn more aobut App Endpoints (Load Balancers)" icon="book" href="https://www.aptible.com/docs/endpoints" />
 
 # Ephemeral SSH Sessions
 
 Create an ephemeral SSH Session configured identically to your App Containers. These Ephemeral SSH Sessions are great for debugging, one-off scripts, and running ad-hoc jobs.
 
-<Card title="Learn more about Ephemeral SSH Sessions" icon="book" iconType="duotone" href="https://www.aptible.com/docs/ssh-sessions" />
+<Card title="Learn more about Ephemeral SSH Sessions" icon="book" href="https://www.aptible.com/docs/ssh-sessions" />
 
 # Outbound IP Addresses
 
 Share an App's outbound IP address with partners or vendors that use an allowlist
 
-<Card title="Learn more about Outbound IP Addresses" icon="book" iconType="duotone" href="https://www.aptible.com/docs/outbound-ips" />
+<Card title="Learn more about Outbound IP Addresses" icon="book" href="https://www.aptible.com/docs/outbound-ips" />
 
 
 # Ephemeral SSH Sessions
@@ -1075,13 +1084,13 @@ You can use the following configuration variables:
   <Accordion title="How do I set or modify configuration variables?">
     See related guide:
 
-    <Card title="How to set or modify configuration variables" icon="book-open-reader" iconType="duotone" href="https://www.aptible.com/docs/set-configuration-variables" />
+    <Card title="How to set or modify configuration variables" icon="book-open-reader" href="https://www.aptible.com/docs/set-configuration-variables" />
   </Accordion>
 
   <Accordion title="How do I synchronize configuration and code change?">
     See related guide:
 
-    <Card title="How to synchronize configuration and code changes" icon="book-open-reader" iconType="duotone" href="https://www.aptible.com/docs/synchronized-deploys" />
+    <Card title="How to synchronize configuration and code changes" icon="book-open-reader" href="https://www.aptible.com/docs/synchronized-deploys" />
   </Accordion>
 </AccordionGroup>
 
@@ -1091,7 +1100,7 @@ Source: https://www.aptible.com/docs/core-concepts/apps/deploying-apps/image/dep
 
 Learn about the deployment method for the most control: deploying via Docker Image
 
-<img src="https://mintcdn.com/aptible/MtH_goy23rOUOZd7/images/Direct-Docker-Image-Deploy.png?fit=max&auto=format&n=MtH_goy23rOUOZd7&q=85&s=7210f513517a8af9db2039284da353bd" alt="" data-og-width="3840" width="3840" data-og-height="2160" height="2160" data-path="images/Direct-Docker-Image-Deploy.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/aptible/MtH_goy23rOUOZd7/images/Direct-Docker-Image-Deploy.png?w=280&fit=max&auto=format&n=MtH_goy23rOUOZd7&q=85&s=1baf88a3409167271ec6ee5ff096761d 280w, https://mintcdn.com/aptible/MtH_goy23rOUOZd7/images/Direct-Docker-Image-Deploy.png?w=560&fit=max&auto=format&n=MtH_goy23rOUOZd7&q=85&s=e3be64ad3b0a08b9e537334a224c5e54 560w, https://mintcdn.com/aptible/MtH_goy23rOUOZd7/images/Direct-Docker-Image-Deploy.png?w=840&fit=max&auto=format&n=MtH_goy23rOUOZd7&q=85&s=d6dec8056b65271377db8379cdfb3cb7 840w, https://mintcdn.com/aptible/MtH_goy23rOUOZd7/images/Direct-Docker-Image-Deploy.png?w=1100&fit=max&auto=format&n=MtH_goy23rOUOZd7&q=85&s=5b1b3400e6437e312f119727b11c1ca7 1100w, https://mintcdn.com/aptible/MtH_goy23rOUOZd7/images/Direct-Docker-Image-Deploy.png?w=1650&fit=max&auto=format&n=MtH_goy23rOUOZd7&q=85&s=a2ae94dbfb9715e491298d4a9b9771a5 1650w, https://mintcdn.com/aptible/MtH_goy23rOUOZd7/images/Direct-Docker-Image-Deploy.png?w=2500&fit=max&auto=format&n=MtH_goy23rOUOZd7&q=85&s=f98df8b262ae091443c5d55b20c8c7e4 2500w" />
+<img alt="" />
 
 # Overview
 
@@ -1115,7 +1124,7 @@ Most Docker image registries provide long-term credentials, which you only need 
 
 With Direct Docker Image Deploy, you only need to provide the registry credentials the first time you deploy.
 
-```javascript  theme={null}
+```javascript theme={null}
 aptible deploy \
 --app "$APP_HANDLE" \
 --docker-image "$DOCKER_IMAGE" \
@@ -1129,7 +1138,7 @@ Some registries, like AWS Elastic Container Registry (ECR), only provide short-t
 
 With Direct Docker Image Deploy, you need to provide updated credentials whenever you deploy, as if it were the first time you deployed:
 
-```javascript  theme={null}
+```javascript theme={null}
 aptible deploy \
 --app "$APP_HANDLE" \
 --docker-image "$DOCKER_IMAGE" \
@@ -1143,19 +1152,19 @@ aptible deploy \
   <Accordion title="How do I deploy from Docker Image?">
     See related guide:
 
-    <Card title="How to deploy via Docker Image" icon="book-open-reader" iconType="duotone" href="https://www.aptible.com/docs/direct-docker-image-deploy-example" />
+    <Card title="How to deploy via Docker Image" icon="book-open-reader" href="https://www.aptible.com/docs/direct-docker-image-deploy-example" />
   </Accordion>
 
   <Accordion title="How do I switch from deploying with Git to deploying from Docker Image?">
     See related guide:
 
-    <Card title="How to migrate from deploying via Docker Image to deploying via Git" icon="book-open-reader" iconType="duotone" href="https://www.aptible.com/docs/migrating-from-dockerfile-deploy" />
+    <Card title="How to migrate from deploying via Docker Image to deploying via Git" icon="book-open-reader" href="https://www.aptible.com/docs/migrating-from-dockerfile-deploy" />
   </Accordion>
 
   <Accordion title="How do I synchronize configuration and code change?">
     See related guide:
 
-    <Card title="How to synchronize configuration and code changes" icon="book-open-reader" iconType="duotone" href="https://www.aptible.com/docs/synchronized-deploys" />
+    <Card title="How to synchronize configuration and code changes" icon="book-open-reader" href="https://www.aptible.com/docs/synchronized-deploys" />
   </Accordion>
 </AccordionGroup>
 
@@ -1176,7 +1185,7 @@ Both of these files are optional: when you deploy directly from a Docker image, 
 
 Here is how you can create those files in your Dockerfile, assuming you have files named `Procfile` and `.aptible.yml` at the root of your Docker build context:
 
-```dockerfile  theme={null}
+```dockerfile theme={null}
 RUN mkdir /.aptible/
 ADD Procfile /.aptible/Procfile
 ADD .aptible.yml /.aptible/.aptible.yml
@@ -1220,7 +1229,7 @@ Source: https://www.aptible.com/docs/core-concepts/apps/deploying-apps/image/dep
 
 Learn about the easiest deployment method to get started: deploying via Git Push
 
-<img src="https://mintcdn.com/aptible/MtH_goy23rOUOZd7/images/Dockerfile-deploy.png?fit=max&auto=format&n=MtH_goy23rOUOZd7&q=85&s=ccbb0ba17c1284654546b9335d9f548a" alt="" data-og-width="3840" width="3840" data-og-height="2160" height="2160" data-path="images/Dockerfile-deploy.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/aptible/MtH_goy23rOUOZd7/images/Dockerfile-deploy.png?w=280&fit=max&auto=format&n=MtH_goy23rOUOZd7&q=85&s=ff6cc66b526aea84043f4daf6601ed5c 280w, https://mintcdn.com/aptible/MtH_goy23rOUOZd7/images/Dockerfile-deploy.png?w=560&fit=max&auto=format&n=MtH_goy23rOUOZd7&q=85&s=74dd0ff37e884c4d799b8b3c44b72213 560w, https://mintcdn.com/aptible/MtH_goy23rOUOZd7/images/Dockerfile-deploy.png?w=840&fit=max&auto=format&n=MtH_goy23rOUOZd7&q=85&s=70502653e27321de76c4c4c2c4c3533a 840w, https://mintcdn.com/aptible/MtH_goy23rOUOZd7/images/Dockerfile-deploy.png?w=1100&fit=max&auto=format&n=MtH_goy23rOUOZd7&q=85&s=f0df7449737fa64b8a7f9354e7a71e25 1100w, https://mintcdn.com/aptible/MtH_goy23rOUOZd7/images/Dockerfile-deploy.png?w=1650&fit=max&auto=format&n=MtH_goy23rOUOZd7&q=85&s=07920b0ede0e62754fcb3fc25c3c2591 1650w, https://mintcdn.com/aptible/MtH_goy23rOUOZd7/images/Dockerfile-deploy.png?w=2500&fit=max&auto=format&n=MtH_goy23rOUOZd7&q=85&s=3cf24804df66893d8a034805ac818aa1 2500w" />
+<img alt="" />
 
 # Overview
 
@@ -1250,7 +1259,7 @@ If it takes Aptible longer than 30 minutes to build your image from the Dockerf
 
 A Git Remote is a reference to a repository stored on a remote server. When you provision an Aptible app, the platform creates a unique Git Remote. For example:
 
-```javascript  theme={null}
+```javascript theme={null}
 git @beta.aptible.com: $ENVIRONMENT_HANDLE / $APP_HANDLE.git
 ```
 
@@ -1299,7 +1308,7 @@ It's recommended to set the credentials before updating your `FROM` declaration
   * Selecting the \*\*Configuration \*\*tab
 * Using the [`aptible config:set`](/reference/aptible-cli/cli-commands/cli-config-set) CLI command:
 
-```javascript  theme={null}
+```javascript theme={null}
 aptible config: set \
 --app "$APP_HANDLE" \
 "APTIBLE_PRIVATE_REGISTRY_USERNAME=$USERNAME"
@@ -1322,25 +1331,25 @@ Since Docker credentials are provided as [configuration](/core-concepts/apps/de
   <Accordion title="How do I deploy with Git Push?">
     See related guide:
 
-    <Card title="How to deploy from Git" icon="book-open-reader" iconType="duotone" href="https://www.aptible.com/docs/dockerfile-deploy-example" />
+    <Card title="How to deploy from Git" icon="book-open-reader" href="https://www.aptible.com/docs/dockerfile-deploy-example" />
   </Accordion>
 
   <Accordion title="How do I switch from deploying via Docker Image to deploying via Git?">
     See related guide:
 
-    <Card title="How to migrate from deploying via Docker Image to deploying via Git" icon="book-open-reader" iconType="duotone" href="https://www.aptible.com/docs/migrating-from-direct-docker-image-deploy" />
+    <Card title="How to migrate from deploying via Docker Image to deploying via Git" icon="book-open-reader" href="https://www.aptible.com/docs/migrating-from-direct-docker-image-deploy" />
   </Accordion>
 
   <Accordion title="How do I access configuration variables during Docker build?">
     See related guide:
 
-    <Card title="How to access configuration variables during Docker build" icon="book-open-reader" iconType="duotone" href="https://www.aptible.com/docs/docker-build-configuration" />
+    <Card title="How to access configuration variables during Docker build" icon="book-open-reader" href="https://www.aptible.com/docs/docker-build-configuration" />
   </Accordion>
 
   <Accordion title="How do I synchronize configuration and code change?">
     See related guide:
 
-    <Card title="How to synchronize configuration and code changes" icon="book-open-reader" iconType="duotone" href="https://www.aptible.com/docs/synchronized-deploys" />
+    <Card title="How to synchronize configuration and code changes" icon="book-open-reader" href="https://www.aptible.com/docs/synchronized-deploys" />
   </Accordion>
 </AccordionGroup>
 
@@ -1358,13 +1367,13 @@ On Aptible, a [Docker image](https://docs.docker.com/get-started/overview/#image
 
 Deploy with Git (formerly known as Dockerfile Deploy) where you push source code (including a Dockerfile) via Git repository to Aptible, and the platform creates a Docker image on your behalf.
 
-<Card title="Learn more about deploying with Git" icon="book" iconType="duotone" href="https://www.aptible.com/docs/dockerfile-deploy" />
+<Card title="Learn more about deploying with Git" icon="book" href="https://www.aptible.com/docs/dockerfile-deploy" />
 
 # Deploy from Docker Image
 
 Deploy from Docker Image (formerly known as Direct Docker Image Deploy) where you deploy a Docker image that you have built yourself (e.g., in a CI environment), push it to a registry, and tell Aptible to fetch it from there.
 
-<Card title="Learn more about deploying from Docker Image" icon="book" iconType="duotone" href="https://www.aptible.com/docs/direct-docker-image-deploy" />
+<Card title="Learn more about deploying from Docker Image" icon="book" href="https://www.aptible.com/docs/direct-docker-image-deploy" />
 
 
 # Linking Apps to Sources
@@ -1408,7 +1417,7 @@ The Sources feature is powered by [App configuration](/core-concepts/apps/deploy
 
 For example, if you're using the Aptible CLI to deploy your app, you might use a command like this:
 
-```shell  theme={null}
+```shell theme={null}
 $ aptible deploy --app your-app \
     --docker-image=example-org/example:v1.0.1 \
     APTIBLE_GIT_REPOSITORY_URL="https://github.com/example/example" \
@@ -1443,10 +1452,10 @@ If you are just getting started, [deploy a starter template.](/getting-started/d
 
 Aptible integrates with several continuous integration services to make it easier to deploy on Aptible—whether migrating from another platform or deploying for the first time.
 
-<CardGroup cols={2}>
-  <Card title="Browse CI/CD integrations" icon="arrow-up-right" iconType="duotone" href="https://www.aptible.com/docs/core-concepts/integrations/overview#developer-tools" />
+<CardGroup>
+  <Card title="Browse CI/CD integrations" icon="arrow-up-right" href="https://www.aptible.com/docs/core-concepts/integrations/overview#developer-tools" />
 
-  <Card title="How to deploy to Aptible from CI/CD" icon="book-open-reader" iconType="duotone" href="https://www.aptible.com/docs/continuous-integration-provider-deployment" />
+  <Card title="How to deploy to Aptible from CI/CD" icon="book-open-reader" href="https://www.aptible.com/docs/continuous-integration-provider-deployment" />
 </CardGroup>
 
 
@@ -1475,7 +1484,7 @@ This file should be a `yaml` file containing any of the following configuration 
 
 `before_deploy` should be set to a list, e.g.:
 
-```yaml  theme={null}
+```yaml theme={null}
 before_deploy:
   - command1
   - command2
@@ -1563,7 +1572,7 @@ If you do not wish to use docker healthchecks, you may enable **simple healthche
 
 Since Docker Healthchecks affect your entire image and not just a single service, you MUST write a healthcheck script similar to the following:
 
-```bash  theme={null}
+```bash theme={null}
 #!/bin/bash
 
 case $APTIBLE_PROCESS_TYPE in
@@ -1584,7 +1593,7 @@ case $APTIBLE_PROCESS_TYPE in
 esac
 ```
 
-<img src="https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/service-settings-1.png?fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=88632af87227be6ac991f2e76bec3935" alt="Service Settings UI" data-og-width="5120" width="5120" data-og-height="2560" height="2560" data-path="images/service-settings-1.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/service-settings-1.png?w=280&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=c99702cd239db984d7471a9964e0309a 280w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/service-settings-1.png?w=560&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=a00306a7d1d314e1eeae8662faa53ad5 560w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/service-settings-1.png?w=840&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=2b1e30d4e3abe5ce2dbefee0bc4f0d7b 840w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/service-settings-1.png?w=1100&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=a4b9a17180c146da0dfa9a668e874fd2 1100w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/service-settings-1.png?w=1650&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=0d55c85b86dd0bfb369e040b7e2178a4 1650w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/service-settings-1.png?w=2500&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=5b405cc9909fa6f7ff55678a177e35aa 2500w" />
+<img alt="Service Settings UI" />
 
 ## Services with Endpoints
 
@@ -1604,7 +1613,7 @@ Specifically, the process is:
 
 ### Concurrent Releases
 
-<img src="https://mintcdn.com/aptible/MtH_goy23rOUOZd7/image.png?fit=max&auto=format&n=MtH_goy23rOUOZd7&q=85&s=a421e64072495adb39b1212cf4bc63d0" alt="" data-og-width="719" width="719" data-og-height="281" height="281" data-path="image.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/aptible/MtH_goy23rOUOZd7/image.png?w=280&fit=max&auto=format&n=MtH_goy23rOUOZd7&q=85&s=824fe1f05a8fb01562c799ff2b701599 280w, https://mintcdn.com/aptible/MtH_goy23rOUOZd7/image.png?w=560&fit=max&auto=format&n=MtH_goy23rOUOZd7&q=85&s=e20a46f290e1ead23fe8e7d3a8384681 560w, https://mintcdn.com/aptible/MtH_goy23rOUOZd7/image.png?w=840&fit=max&auto=format&n=MtH_goy23rOUOZd7&q=85&s=e6c2bbc04f765ea7eaf7f5c0b8188639 840w, https://mintcdn.com/aptible/MtH_goy23rOUOZd7/image.png?w=1100&fit=max&auto=format&n=MtH_goy23rOUOZd7&q=85&s=5b1d1bc3ed62b0ec530ab160ead90a5a 1100w, https://mintcdn.com/aptible/MtH_goy23rOUOZd7/image.png?w=1650&fit=max&auto=format&n=MtH_goy23rOUOZd7&q=85&s=bcd8fe89f2823b9d6a8568cba95a1977 1650w, https://mintcdn.com/aptible/MtH_goy23rOUOZd7/image.png?w=2500&fit=max&auto=format&n=MtH_goy23rOUOZd7&q=85&s=63670fa04be4c949a2e54e1714fa02b3 2500w" />
+<img alt="" />
 
 > ❗️ An important implication of zero-downtime deployments is that you'll have Containers from two different releases accepting traffic at the same time, so make sure you design your apps accordingly!
 
@@ -1628,7 +1637,7 @@ Source: https://www.aptible.com/docs/core-concepts/apps/deploying-apps/services
 
 
 
-<img src="https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/services-screenshot.png?fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=4cdf448c42f8498f82319b49b20cd346" alt="" data-og-width="5120" width="5120" data-og-height="2560" height="2560" data-path="images/services-screenshot.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/services-screenshot.png?w=280&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=c934e8c1e781dd298fb831ee451afb7d 280w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/services-screenshot.png?w=560&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=5af8be90984d1e5a8e887f18351e0844 560w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/services-screenshot.png?w=840&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=da94fb5fa5e69ba04f001c5533628349 840w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/services-screenshot.png?w=1100&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=f3edffa564ebe0fb385e7ff91cd90bb6 1100w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/services-screenshot.png?w=1650&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=9813349276625948250289113f3572bd 1650w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/services-screenshot.png?w=2500&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=b3fd10b71338eec46d6e6a59917ea0d4 2500w" />
+<img alt="" />
 
 # Overview
 
@@ -1645,7 +1654,7 @@ Services are defined one of two ways:
   <Accordion title="How do I define Services">
     See related guide
 
-    <Card title="How to define Services" icon="book-open-reader" iconType="duotone" href="https://www.aptible.com/docs/how-to-guides/app-guides/define-services" />
+    <Card title="How to define Services" icon="book-open-reader" href="https://www.aptible.com/docs/how-to-guides/app-guides/define-services" />
   </Accordion>
 
   <Accordion title="Can Services be scaled indepedently?">
@@ -1668,7 +1677,7 @@ Aptible makes managing your application simple. Whether you're using the Aptible
 <AccordionGroup>
   <Accordion title="Manually Scaling Apps">
     <Frame>
-            <img src="https://mintcdn.com/aptible/gJr2xlqbHzeeHUse/images/app-scaling2.gif?s=a61137120d0be85d65c2cde65b50549b" alt="scaling" data-og-width="1186" width="1186" data-og-height="720" height="720" data-path="images/app-scaling2.gif" data-optimize="true" data-opv="3" />
+      <img alt="scaling" />
     </Frame>
 
     Apps can be manually scaled both horizontially (number of containers) and vertically (RAM/CPU) can be scaled on-demand with zero downtime deployments. Refer to [App Scaling](/core-concepts/scaling/app-scaling) for more information.
@@ -1705,7 +1714,7 @@ Aptible makes managing your application simple. Whether you're using the Aptible
 
     For the change to take effect, the App must be restarted.
 
-    <Warning>Apps handles cannot start with "internal-" because applications with that prefix cannot have [Endpoints](/core-concepts/apps/connecting-to-apps/app-endpoints/overview) allocated due to an AWS limitation. </Warning>
+    <Warning>App handles cannot start with "internal-" or "sg-" because applications with these prefixes cannot have [Endpoints](/core-concepts/apps/connecting-to-apps/app-endpoints/overview) allocated due to AWS limitations.</Warning>
   </Accordion>
 
   <Accordion title="Deprovisioning an App">
@@ -1728,7 +1737,7 @@ Source: https://www.aptible.com/docs/core-concepts/apps/overview
 
 
 <Frame>
-    <img src="https://mintcdn.com/aptible/gJr2xlqbHzeeHUse/images/apps.png?fit=max&auto=format&n=gJr2xlqbHzeeHUse&q=85&s=6a274d2370de9a0def67cfd68d70ae18" alt="" data-og-width="2560" width="2560" data-og-height="1280" height="1280" data-path="images/apps.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/aptible/gJr2xlqbHzeeHUse/images/apps.png?w=280&fit=max&auto=format&n=gJr2xlqbHzeeHUse&q=85&s=168571ed52da361f44b3d9d901ef4304 280w, https://mintcdn.com/aptible/gJr2xlqbHzeeHUse/images/apps.png?w=560&fit=max&auto=format&n=gJr2xlqbHzeeHUse&q=85&s=90d2c45fa05ec9e2658b7e0a02ddc003 560w, https://mintcdn.com/aptible/gJr2xlqbHzeeHUse/images/apps.png?w=840&fit=max&auto=format&n=gJr2xlqbHzeeHUse&q=85&s=5736a67d39ca10a4f1565af2ac61ad35 840w, https://mintcdn.com/aptible/gJr2xlqbHzeeHUse/images/apps.png?w=1100&fit=max&auto=format&n=gJr2xlqbHzeeHUse&q=85&s=7d3958875c0260a24b5ec35695efb550 1100w, https://mintcdn.com/aptible/gJr2xlqbHzeeHUse/images/apps.png?w=1650&fit=max&auto=format&n=gJr2xlqbHzeeHUse&q=85&s=d5b293cac4f9ba59b79e515b7cc8ffac 1650w, https://mintcdn.com/aptible/gJr2xlqbHzeeHUse/images/apps.png?w=2500&fit=max&auto=format&n=gJr2xlqbHzeeHUse&q=85&s=95ddacae6b92a7274d46cd5afd19da2c 2500w" />
+  <img alt="" />
 </Frame>
 
 ## Overview
@@ -1742,23 +1751,23 @@ Aptible is a platform that simplifies the deployment and management of applicati
 
 ## Learn more using Apps on Aptible
 
-<CardGroup cols={3}>
-  <Card title="Deploying Apps" icon="book" iconType="duotone" href="https://www.aptible.com/docs/core-concepts/apps/deploying-apps/overview">
+<CardGroup>
+  <Card title="Deploying Apps" icon="book" href="https://www.aptible.com/docs/core-concepts/apps/deploying-apps/overview">
     Learn to deploy your code into Apps with an image, Services, and Configuration
   </Card>
 
-  <Card title="Connecting to Apps" icon="book" iconType="duotone" href="https://www.aptible.com/docs/core-concepts/apps/connecting-to-apps/overview">
+  <Card title="Connecting to Apps" icon="book" href="https://www.aptible.com/docs/core-concepts/apps/connecting-to-apps/overview">
     Learn to expose your App to the internet with Endpoints and connect with ephemeral SSH sessions
   </Card>
 
-  <Card title="Managing Apps" icon="book" iconType="duotone" href="https://www.aptible.com/docs/core-concepts/apps/managing-apps">
+  <Card title="Managing Apps" icon="book" href="https://www.aptible.com/docs/core-concepts/apps/managing-apps">
     Learn to scale, restart, rename, restart, and delete your Apps
   </Card>
 </CardGroup>
 
 ## Explore Starter Templates
 
-<CardGroup cols={3}>
+<CardGroup>
   <Card title="Custom Code" icon="globe" href="https://www.aptible.com/docs/custom-code-quickstart">
     Explore compatibility and deploy custom code
   </Card>
@@ -1845,7 +1854,7 @@ Container Recovery restarts *Containers* that exit, so if an app crashes but the
 
 Here's an example [Procfile](/how-to-guides/app-guides/define-services) demonstrating this issue:
 
-```yaml  theme={null}
+```yaml theme={null}
 app: (my-app &) && tail -F log/my-app.log
 ```
 
@@ -1858,7 +1867,7 @@ To ensure Container Recovery effectively keeps an App up, make sure that:
 
 For example, rewrite the above Procfile like so:
 
-```yaml  theme={null}
+```yaml theme={null}
 app: (tail -F log/my-app.log &) && my-app
 ```
 
@@ -1895,7 +1904,7 @@ Containers run with three types of environment variables and if there is a name 
 
 Docker [Images](/core-concepts/apps/deploying-apps/image/overview) define these variables via the `ENV` directive. They are present when your Containers start:
 
-```dockerfile  theme={null}
+```dockerfile theme={null}
 ENV FOO=BAR
 ```
 
@@ -1903,7 +1912,7 @@ ENV FOO=BAR
 
 Aptible injects an App's [Configuration](/core-concepts/apps/deploying-apps/configuration) as environment variables. For example, for the keys `FOO` and `BAR`:
 
-```shell  theme={null}
+```shell theme={null}
 aptible config:set --app "$APP_HANDLE" \
   FOO=SOME BAR=OTHER
 ```
@@ -1953,7 +1962,7 @@ Source: https://www.aptible.com/docs/core-concepts/architecture/environments
 
 Learn about grouping resources with environments
 
-<img src="https://mintcdn.com/aptible/MtH_goy23rOUOZd7/images/2-app-ui.png?fit=max&auto=format&n=MtH_goy23rOUOZd7&q=85&s=c262a51b2953bb9da872880ed5966c34" alt="" data-og-width="5120" width="5120" data-og-height="2560" height="2560" data-path="images/2-app-ui.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/aptible/MtH_goy23rOUOZd7/images/2-app-ui.png?w=280&fit=max&auto=format&n=MtH_goy23rOUOZd7&q=85&s=cb9a641e157a3d45de78154c9bfe39f3 280w, https://mintcdn.com/aptible/MtH_goy23rOUOZd7/images/2-app-ui.png?w=560&fit=max&auto=format&n=MtH_goy23rOUOZd7&q=85&s=aaf1912d1d2754d461ac880240aaf5a7 560w, https://mintcdn.com/aptible/MtH_goy23rOUOZd7/images/2-app-ui.png?w=840&fit=max&auto=format&n=MtH_goy23rOUOZd7&q=85&s=af812d52b35da2694515cd23588faabc 840w, https://mintcdn.com/aptible/MtH_goy23rOUOZd7/images/2-app-ui.png?w=1100&fit=max&auto=format&n=MtH_goy23rOUOZd7&q=85&s=003642c5f4dfe37c28dbc47d3315a01b 1100w, https://mintcdn.com/aptible/MtH_goy23rOUOZd7/images/2-app-ui.png?w=1650&fit=max&auto=format&n=MtH_goy23rOUOZd7&q=85&s=11232bdf1609b1a73c1ffca30a81efe3 1650w, https://mintcdn.com/aptible/MtH_goy23rOUOZd7/images/2-app-ui.png?w=2500&fit=max&auto=format&n=MtH_goy23rOUOZd7&q=85&s=851a7ac73ac246b765b686538b9b943d 2500w" />
+<img alt="" />
 
 # Overview
 
@@ -1973,13 +1982,13 @@ Environments live within [Stacks](/core-concepts/architecture/stacks) and provid
   <Accordion title="How do I create Environments?">
     ### Read more
 
-    <Card title="How to create environments" icon="book-open-reader" iconType="duotone" href="/how-to-guides/platform-guides/create-environment" />
+    <Card title="How to create environments" icon="book-open-reader" href="/how-to-guides/platform-guides/create-environment" />
   </Accordion>
 
   <Accordion title="How do I delete Environments?">
     ### Read more
 
-    <Card title="How to delete environments" icon="book-open-reader" iconType="duotone" href="/how-to-guides/platform-guides/delete-environment" />
+    <Card title="How to delete environments" icon="book-open-reader" href="/how-to-guides/platform-guides/delete-environment" />
   </Accordion>
 
   <Accordion title="How do I rename Environments?">
@@ -1989,7 +1998,7 @@ Environments live within [Stacks](/core-concepts/architecture/stacks) and provid
   <Accordion title="How do I migrate Environments?">
     ### Read more
 
-    <Card title="How to migrate environments" icon="book-open-reader" iconType="duotone" href="/how-to-guides/platform-guides/migrate-environments" />
+    <Card title="How to migrate environments" icon="book-open-reader" href="/how-to-guides/platform-guides/migrate-environments" />
   </Accordion>
 </AccordionGroup>
 
@@ -2075,7 +2084,7 @@ For all operations performed, Aptible collects operation logs. These logs are re
 
 # Activity Dashboard
 
-<img src="https://mintcdn.com/aptible/MtH_goy23rOUOZd7/images/5-app-ui.png?fit=max&auto=format&n=MtH_goy23rOUOZd7&q=85&s=b056c313e87dd846dde0bc8aaf1fb3a1" alt="" data-og-width="2560" width="2560" data-og-height="1280" height="1280" data-path="images/5-app-ui.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/aptible/MtH_goy23rOUOZd7/images/5-app-ui.png?w=280&fit=max&auto=format&n=MtH_goy23rOUOZd7&q=85&s=f83ddf57cabd3c4339c3bbb9ad6f0491 280w, https://mintcdn.com/aptible/MtH_goy23rOUOZd7/images/5-app-ui.png?w=560&fit=max&auto=format&n=MtH_goy23rOUOZd7&q=85&s=a972084e881fb1448a7f08fdc2a30f06 560w, https://mintcdn.com/aptible/MtH_goy23rOUOZd7/images/5-app-ui.png?w=840&fit=max&auto=format&n=MtH_goy23rOUOZd7&q=85&s=f84f089638f4edf484ca5f08e10eeab4 840w, https://mintcdn.com/aptible/MtH_goy23rOUOZd7/images/5-app-ui.png?w=1100&fit=max&auto=format&n=MtH_goy23rOUOZd7&q=85&s=a503f7c3153528517ab3ca8eb361d0cf 1100w, https://mintcdn.com/aptible/MtH_goy23rOUOZd7/images/5-app-ui.png?w=1650&fit=max&auto=format&n=MtH_goy23rOUOZd7&q=85&s=08399c46ca0b4e171f73cfbe4394b864 1650w, https://mintcdn.com/aptible/MtH_goy23rOUOZd7/images/5-app-ui.png?w=2500&fit=max&auto=format&n=MtH_goy23rOUOZd7&q=85&s=6d7ea7d7d47908e00b3f10d52a2c41cd 2500w" />
+<img alt="" />
 
 The Activity dashboard provides a real-time view of operations for active resources in the last seven days. Through the Activity page, you can:
 
@@ -2132,7 +2141,7 @@ A rollback can be manually initiated within the Aptible CLI by using the [`aptib
       * Within the resource summary by:
         * Navigating to the respective resource
         * Selecting the Activity tab
-          <img src="https://mintcdn.com/aptible/MtH_goy23rOUOZd7/images/Downloading-operation-logs-2.png?fit=max&auto=format&n=MtH_goy23rOUOZd7&q=85&s=247ccd8bc573aa6cd19ed6430b5d6276" alt="" data-og-width="2800" width="2800" data-og-height="2000" height="2000" data-path="images/Downloading-operation-logs-2.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/aptible/MtH_goy23rOUOZd7/images/Downloading-operation-logs-2.png?w=280&fit=max&auto=format&n=MtH_goy23rOUOZd7&q=85&s=1bf646d3bc4db6497a7babb29bf1e6cf 280w, https://mintcdn.com/aptible/MtH_goy23rOUOZd7/images/Downloading-operation-logs-2.png?w=560&fit=max&auto=format&n=MtH_goy23rOUOZd7&q=85&s=65d3b0840c5ac982e8a84d39894edd01 560w, https://mintcdn.com/aptible/MtH_goy23rOUOZd7/images/Downloading-operation-logs-2.png?w=840&fit=max&auto=format&n=MtH_goy23rOUOZd7&q=85&s=070ed8c98262ea073582fea35c75d8ca 840w, https://mintcdn.com/aptible/MtH_goy23rOUOZd7/images/Downloading-operation-logs-2.png?w=1100&fit=max&auto=format&n=MtH_goy23rOUOZd7&q=85&s=acfb03abea58d42dfb0ad73ef3b4318b 1100w, https://mintcdn.com/aptible/MtH_goy23rOUOZd7/images/Downloading-operation-logs-2.png?w=1650&fit=max&auto=format&n=MtH_goy23rOUOZd7&q=85&s=1f428db3f5512b4fdf933077f363e39d 1650w, https://mintcdn.com/aptible/MtH_goy23rOUOZd7/images/Downloading-operation-logs-2.png?w=2500&fit=max&auto=format&n=MtH_goy23rOUOZd7&q=85&s=e4e31ea164a9f48a100609c342dbb245 2500w" />
+          <img alt="" />
       * Within the Activity dashboard by:
         * Navigating to the Activity page
         * Selecting the Logs button for the respective operation
@@ -2147,7 +2156,7 @@ A rollback can be manually initiated within the Aptible CLI by using the [`aptib
     * Selecting the respective Environment
     * Selecting the **Activity Reports** tab
 
-        <img src="https://mintcdn.com/aptible/MtH_goy23rOUOZd7/images/App_UI_Activity_Reports.png?fit=max&auto=format&n=MtH_goy23rOUOZd7&q=85&s=340af39557cf152c9ba2985e7ef71328" alt="Activity reports" data-og-width="2800" width="2800" data-og-height="2000" height="2000" data-path="images/App_UI_Activity_Reports.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/aptible/MtH_goy23rOUOZd7/images/App_UI_Activity_Reports.png?w=280&fit=max&auto=format&n=MtH_goy23rOUOZd7&q=85&s=1b62c99730e3214bfbc958b93f3296de 280w, https://mintcdn.com/aptible/MtH_goy23rOUOZd7/images/App_UI_Activity_Reports.png?w=560&fit=max&auto=format&n=MtH_goy23rOUOZd7&q=85&s=a3cfaf078e221412e1b1a2f3fdcbd3e6 560w, https://mintcdn.com/aptible/MtH_goy23rOUOZd7/images/App_UI_Activity_Reports.png?w=840&fit=max&auto=format&n=MtH_goy23rOUOZd7&q=85&s=2e603c313de868ccc9a6f652d6fa118e 840w, https://mintcdn.com/aptible/MtH_goy23rOUOZd7/images/App_UI_Activity_Reports.png?w=1100&fit=max&auto=format&n=MtH_goy23rOUOZd7&q=85&s=1503d88811f970cbfbb76b20f3d6c4d6 1100w, https://mintcdn.com/aptible/MtH_goy23rOUOZd7/images/App_UI_Activity_Reports.png?w=1650&fit=max&auto=format&n=MtH_goy23rOUOZd7&q=85&s=00b99629750c148e5343b0af9e125ab1 1650w, https://mintcdn.com/aptible/MtH_goy23rOUOZd7/images/App_UI_Activity_Reports.png?w=2500&fit=max&auto=format&n=MtH_goy23rOUOZd7&q=85&s=17d99ad7038fdb9442bf441592efc813 2500w" />
+      <img alt="Activity reports" />
   </Accordion>
 
   <Accordion title="Why do Operation Failures happen?">
@@ -2375,7 +2384,7 @@ Source: https://www.aptible.com/docs/core-concepts/architecture/stacks
 Learn about using Stacks to deploy resources to various regions
 
 <Frame>
-    <img src="https://mintcdn.com/aptible/MtH_goy23rOUOZd7/images/1-app-ui.png?fit=max&auto=format&n=MtH_goy23rOUOZd7&q=85&s=bd666044298866ac13ce9444a542ae26" alt="" data-og-width="5120" width="5120" data-og-height="2560" height="2560" data-path="images/1-app-ui.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/aptible/MtH_goy23rOUOZd7/images/1-app-ui.png?w=280&fit=max&auto=format&n=MtH_goy23rOUOZd7&q=85&s=b654c604d06eb46f4fad6372356809c4 280w, https://mintcdn.com/aptible/MtH_goy23rOUOZd7/images/1-app-ui.png?w=560&fit=max&auto=format&n=MtH_goy23rOUOZd7&q=85&s=b9e8eda1d05bc5143683c02b7792b094 560w, https://mintcdn.com/aptible/MtH_goy23rOUOZd7/images/1-app-ui.png?w=840&fit=max&auto=format&n=MtH_goy23rOUOZd7&q=85&s=913f3637810b30c9f38a0c6bb6fd6c9d 840w, https://mintcdn.com/aptible/MtH_goy23rOUOZd7/images/1-app-ui.png?w=1100&fit=max&auto=format&n=MtH_goy23rOUOZd7&q=85&s=8887aa785d1d9de12f03583f6a229acd 1100w, https://mintcdn.com/aptible/MtH_goy23rOUOZd7/images/1-app-ui.png?w=1650&fit=max&auto=format&n=MtH_goy23rOUOZd7&q=85&s=0eaa88875de391bcf75443f4bab6bd8a 1650w, https://mintcdn.com/aptible/MtH_goy23rOUOZd7/images/1-app-ui.png?w=2500&fit=max&auto=format&n=MtH_goy23rOUOZd7&q=85&s=dac0bde86f760bfd5eb0de390edae025 2500w" />
+  <img alt="" />
 </Frame>
 
 # Overview
@@ -2407,7 +2416,7 @@ Dedicated stacks are built for production [environments](/core-concepts/architec
 ## Supported Regions
 
 <Frame>
-    <img src="https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/regions.png?fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=3ddaf8e8bbed083fb7f4dd7088a1e46b" alt="" data-og-width="1500" width="1500" data-og-height="1000" height="1000" data-path="images/regions.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/regions.png?w=280&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=18a083533a8c131372569164792ec6f3 280w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/regions.png?w=560&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=4ae05f8f10f53d997e31920e3d3fe5d6 560w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/regions.png?w=840&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=f57d1fc8ec956ddf123dbfe01d7ca7b9 840w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/regions.png?w=1100&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=9863c8e3596c86b32f1d1af2eca3ad8d 1100w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/regions.png?w=1650&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=6959ace0c6b15d247faf328b2089b18a 1650w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/regions.png?w=2500&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=3715b235f41e0196fb2448f8dcf75aa7 2500w" />
+  <img alt="" />
 </Frame>
 
 | Region                                    | Available on Shared Stacks | Available on Dedicated Stacks |
@@ -2435,7 +2444,7 @@ Dedicated stacks are built for production [environments](/core-concepts/architec
   <Accordion title="How do I create or deprovision a dedicated stack?">
     ### Read the guide
 
-    <Card title="How to create and deprovison dedicated stacks" icon="book-open-reader" iconType="duotone" href="https://www.aptible.com/docs/create-dedicated-stack" />
+    <Card title="How to create and deprovison dedicated stacks" icon="book-open-reader" href="https://www.aptible.com/docs/create-dedicated-stack" />
   </Accordion>
 
   <Accordion title="Does Aptible support multi-region setups for business continuity?">
@@ -2470,7 +2479,7 @@ To review or modify your billing information, navigate to your account settings 
 <Tip> Most billing actions are restricted to *Account Owners*. Billing contacts must request that an *Account Owner* make necessary changes.</Tip>
 
 <Frame>
-    <img src="https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/billing1.png?fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=f1a506d99a5cf951445832385924bcfc" alt="" data-og-width="1000" width="1000" data-og-height="500" height="500" data-path="images/billing1.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/billing1.png?w=280&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=9358966dfc3a77fd921969fdd4b2b1d9 280w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/billing1.png?w=560&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=43c73a9b56214351d441137cede3e7c2 560w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/billing1.png?w=840&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=5aba8de040086c47c7abdf36daba9384 840w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/billing1.png?w=1100&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=5f4ce69082995a474e93f9b129f1edc4 1100w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/billing1.png?w=1650&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=ffee8bb54f70f34d1761c1804835dd22 1650w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/billing1.png?w=2500&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=48a595575ebe203d51f2af4b2a79a3e2 2500w" />
+  <img alt="" />
 </Frame>
 
 The following information and settings are available under each section:
@@ -2494,7 +2503,7 @@ The following information and settings are available under each section:
     * In the Aptible Dashboard, select **Settings**
     * Select **Plans**
 
-        <img src="https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/billing2.png?fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=eb50d70e734ca9f2870c11b3edbc1285" alt="Viewing your Plan in the Aptible Dashboard" data-og-width="1000" width="1000" data-og-height="500" height="500" data-path="images/billing2.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/billing2.png?w=280&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=62bcae0b41cc549289c2832c1981f594 280w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/billing2.png?w=560&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=dc2c953edbac1029b528dfde45fd0dfa 560w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/billing2.png?w=840&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=65ee3ea0c48ad9920e6396377d6fb529 840w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/billing2.png?w=1100&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=d63b3d18dcf1b8d8560d14a4e6642932 1100w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/billing2.png?w=1650&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=96aa2cf7f286aa6a6198ec2da9f5cb61 1650w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/billing2.png?w=2500&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=20d7837fe218deee89d7b7411f034adb 2500w" />
+      <img alt="Viewing your Plan in the Aptible Dashboard" />
 
     To upgrade to Enterprise, [contact Aptible Support.](https://app.aptible.com/support)
   </Accordion>
@@ -2641,7 +2650,7 @@ On Aptible, you can configure in-process instrumentation Data (APM) to be sent t
 * Enable Datadog in-process instrumentation and
 * Forward those data through the Datadog Agent app separately hosted on Aptible
 
-<Card title="How to set up Datadog APM" icon="book-open-reader" iconType="duotone" iconType="duotone" href="https://www.aptible.com/docs/datadog-apm" />
+<Card title="How to set up Datadog APM" icon="book-open-reader" href="https://www.aptible.com/docs/datadog-apm" />
 
 
 # Mezmo Integration
@@ -2691,16 +2700,65 @@ Aptible offers VPC Peering to connect a user’s existing network to their Aptib
 
 ## Setup
 
-VPC Peering connections can only be set up by contacting [Aptible Support](/how-to-guides/troubleshooting/aptible-support).
+VPC Peering requests can be submitted through the Aptible Dashboard:
+
+<Steps>
+  <Step title="Navigate to VPC Peering">
+    Go to the Dedicated Stack where you want to create the peering connection and select the **VPC Peering** tab.
+  </Step>
+
+  <Step title="Create VPC Peering Request">
+    Click **Create VPC Peering Request**. Only Account Owners can create VPC peering requests.
+  </Step>
+
+  <Step title="Select Peering Type">
+    Choose your peering destination:
+
+    * **Peer to AWS Account**: Connect your Aptible stack to an external AWS VPC you own
+    * **Peer to Aptible Dedicated Stack**: Connect two of your Aptible dedicated stacks together
+  </Step>
+</Steps>
+
+### Peering to an AWS Account
+
+When peering to an external AWS VPC:
+
+1. The Dashboard displays your Aptible VPC information (AWS Account ID, VPC ID, Region, and CIDR) needed to create the peering connection in AWS.
+2. Go to the [Peering Connections page](https://console.aws.amazon.com/vpc/home#PeeringConnections) in the AWS VPC Dashboard and click **Create VPC Peering Connection**.
+3. Select your own VPC as the local VPC and enter the Aptible VPC details (shown in the Dashboard) for the peer VPC.
+4. After creating the peering connection in AWS, copy the **VPC Peering Connection ID** (starts with `pcx-`) and enter it in the Aptible Dashboard form.
+5. Submit the request. The Aptible team will accept the peering connection and follow up with next steps.
+
+### Peering to Another Aptible Dedicated Stack
+
+When peering two Aptible dedicated stacks together:
+
+1. Select the target dedicated stack from the dropdown.
+2. Submit the request. The Aptible team will configure the peering connection between your stacks.
+
+<Note>
+  You must have at least two dedicated stacks to use this option.
+</Note>
 
 ## Managing VPC Peering
-
-VPC Peering connections can only be managed by the Aptible Support Team. This includes deprovisioning VPC Peering connections.
 
 The details and status of VPC Peering connections can be viewed within the Aptible Dashboard by:
 
 * Navigating to the respective Dedicated Stack
 * Selecting the "VPC Peering" tab
+
+### Requesting Deletion
+
+To request deletion of a VPC peering connection:
+
+1. Navigate to the Dedicated Stack and select the **VPC Peering** tab.
+2. Find the peering connection you want to delete and click **Request Deletion**.
+3. Confirm by typing the connection ID.
+4. Submit the request. The Aptible team will process the deletion.
+
+<Note>
+  Only Account Owners can request VPC peering deletion.
+</Note>
 
 # VPN Tunnels
 
@@ -2752,11 +2810,11 @@ Explore all integrations and tools used with Aptible
 
 Deploy apps and databases to **Aptible's secure cloud** or **integrate with existing cloud** providers to standardize infrastructure.
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Host in Aptible's cloud">
-        <img src="https://mintcdn.com/aptible/uXP5kmz3uSl-opiv/images/stack02.png?fit=max&auto=format&n=uXP5kmz3uSl-opiv&q=85&s=adc516a03034cf3820a9f00562b0d3dd" alt="" data-og-width="1000" width="1000" data-og-height="650" height="650" data-path="images/stack02.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/aptible/uXP5kmz3uSl-opiv/images/stack02.png?w=280&fit=max&auto=format&n=uXP5kmz3uSl-opiv&q=85&s=235c447a9e033a69acd48a0fb85b1f0f 280w, https://mintcdn.com/aptible/uXP5kmz3uSl-opiv/images/stack02.png?w=560&fit=max&auto=format&n=uXP5kmz3uSl-opiv&q=85&s=c42da189a2648e877e734250f73f0409 560w, https://mintcdn.com/aptible/uXP5kmz3uSl-opiv/images/stack02.png?w=840&fit=max&auto=format&n=uXP5kmz3uSl-opiv&q=85&s=8c648783904e739c3da77f9224051834 840w, https://mintcdn.com/aptible/uXP5kmz3uSl-opiv/images/stack02.png?w=1100&fit=max&auto=format&n=uXP5kmz3uSl-opiv&q=85&s=c107b54c93102c8d86d2f90e41171817 1100w, https://mintcdn.com/aptible/uXP5kmz3uSl-opiv/images/stack02.png?w=1650&fit=max&auto=format&n=uXP5kmz3uSl-opiv&q=85&s=fdec6e5faf459e78c32b4a00be3ba655 1650w, https://mintcdn.com/aptible/uXP5kmz3uSl-opiv/images/stack02.png?w=2500&fit=max&auto=format&n=uXP5kmz3uSl-opiv&q=85&s=22e403c33f08aea4c83b65f0aa38dad3 2500w" />
+    <img alt="" />
 
-    <CardGroup cols={2}>
+    <CardGroup>
       <Card title="Get Started→" href="https://app.aptible.com/signup" />
 
       <Card title="Learn more→" href="https://www.aptible.com/docs/reference/pricing#aptible-hosted-pricing" />
@@ -2764,9 +2822,9 @@ Deploy apps and databases to **Aptible's secure cloud** or **integrate with exis
   </Card>
 
   <Card title="Host in your own AWS">
-        <img src="https://mintcdn.com/aptible/uXP5kmz3uSl-opiv/images/stack01.png?fit=max&auto=format&n=uXP5kmz3uSl-opiv&q=85&s=43cb4b326de6b458d5618fb1dad7eccf" alt="" data-og-width="1000" width="1000" data-og-height="650" height="650" data-path="images/stack01.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/aptible/uXP5kmz3uSl-opiv/images/stack01.png?w=280&fit=max&auto=format&n=uXP5kmz3uSl-opiv&q=85&s=ace1c8abe4d3df9e9c8d7825a11715dc 280w, https://mintcdn.com/aptible/uXP5kmz3uSl-opiv/images/stack01.png?w=560&fit=max&auto=format&n=uXP5kmz3uSl-opiv&q=85&s=24dae7cc58a14aa3ae529253f81363a5 560w, https://mintcdn.com/aptible/uXP5kmz3uSl-opiv/images/stack01.png?w=840&fit=max&auto=format&n=uXP5kmz3uSl-opiv&q=85&s=c246f82c34ac778d287e447233f32d23 840w, https://mintcdn.com/aptible/uXP5kmz3uSl-opiv/images/stack01.png?w=1100&fit=max&auto=format&n=uXP5kmz3uSl-opiv&q=85&s=d11c861d43e76ca71fc6454554b67e43 1100w, https://mintcdn.com/aptible/uXP5kmz3uSl-opiv/images/stack01.png?w=1650&fit=max&auto=format&n=uXP5kmz3uSl-opiv&q=85&s=d46fa06518dfc79ceb873e9d5481e94c 1650w, https://mintcdn.com/aptible/uXP5kmz3uSl-opiv/images/stack01.png?w=2500&fit=max&auto=format&n=uXP5kmz3uSl-opiv&q=85&s=59e7e283cb998174d5996210671ff356 2500w" />
+    <img alt="" />
 
-    <CardGroup cols={2}>
+    <CardGroup>
       <Card title="Request Access→" href="https://app.aptible.com/signup?cta=early-access" />
 
       <Card title="Learn more→" href="https://www.aptible.com/docs/reference/pricing#self-hosted-pricing" />
@@ -2778,14 +2836,14 @@ Deploy apps and databases to **Aptible's secure cloud** or **integrate with exis
 
 Aptible offers a robust selection of fully [Managed Databases](https://www.aptible.com/docs/databases) that automate provisioning, maintenance, and scaling.
 
-<CardGroup cols={4} a>
+<CardGroup>
   <Card title="Elasticsearch" icon={<svg fill="#E09600" width="30px" height="30px" viewBox="0 0 24 24" role="img" xmlns="http://www.w3.org/2000/svg"><path d="M13.394 0C8.683 0 4.609 2.716 2.644 6.667h15.641a4.77 4.77 0 0 0 3.073-1.11c.446-.375.864-.785 1.247-1.243l.001-.002A11.974 11.974 0 0 0 13.394 0zM1.804 8.889a12.009 12.009 0 0 0 0 6.222h14.7a3.111 3.111 0 1 0 0-6.222zm.84 8.444C4.61 21.283 8.684 24 13.395 24c3.701 0 7.011-1.677 9.212-4.312l-.001-.002a9.958 9.958 0 0 0-1.247-1.243 4.77 4.77 0 0 0-3.073-1.11z"/></svg>} href="https://www.aptible.com/docs/elasticsearch" />
 
   <Card title="InfluxDB" icon={<svg fill="#E09600" width="30px" height="30px" viewBox="-2.5 0 261 261" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid">     <g>         <path d="M255.59672,156.506259 L230.750771,48.7630778 C229.35754,42.9579495 224.016822,36.920616 217.979489,35.2951801 L104.895589,0.464410265 C103.502359,-2.84217094e-14 101.876923,-2.84217094e-14 100.019282,-2.84217094e-14 C95.1429738,-2.84217094e-14 90.266666,1.85764106 86.783589,4.87630778 L5.74399781,80.3429758 C1.33210029,84.290463 -0.989951029,92.1854375 0.403279765,97.7583607 L26.8746649,213.164312 C28.2678956,218.96944 33.6086137,225.006773 39.6459471,226.632209 L145.531487,259.605338 C146.924718,260.069748 148.550154,260.069748 150.407795,260.069748 C155.284103,260.069748 160.160411,258.212107 163.643488,255.19344 L250.256002,174.61826 C254.6679,169.974157 256.989951,162.543593 255.59672,156.506259 Z M116.738051,26.0069748 L194.52677,49.9241035 C197.545437,50.852924 197.545437,52.2461548 194.52677,52.9427702 L153.658667,62.2309755 C150.64,63.159796 146.228103,61.7665652 144.138257,59.4445139 L115.809231,28.7934364 C113.254974,26.23918 113.719384,25.0781543 116.738051,26.0069748 Z M165.268924,165.330054 C166.197744,168.348721 164.107898,170.206362 161.089231,169.277541 L77.2631786,143.270567 C74.2445119,142.341746 73.5478965,139.78749 75.8699478,137.697643 L139.958564,78.0209245 C142.280616,75.6988732 144.834872,76.6276937 145.531487,79.6463604 L165.268924,165.330054 Z M27.10687,89.398976 L95.1429738,26.0069748 C97.4650251,23.6849235 100.948102,24.1493338 103.270153,26.23918 L137.404308,63.159796 C139.726359,65.4818473 139.261949,68.9649243 137.172103,71.2869756 L69.1359989,134.678977 C66.8139476,137.001028 63.3308706,136.536618 61.0088193,134.446772 L26.8746649,97.5261556 C24.5526135,94.9718991 24.7848187,91.256617 27.10687,89.398976 Z M43.5934344,189.711593 L25.7136392,110.761848 C24.7848187,107.743181 26.1780495,107.046566 28.2678956,109.368617 L56.5969218,140.019695 C58.9189731,142.341746 59.6155885,146.753644 58.9189731,149.77231 L46.6121011,189.711593 C45.6832806,192.962465 44.2900498,192.962465 43.5934344,189.711593 Z M143.209436,236.15262 L54.2748705,208.520209 C51.2562038,207.591388 49.3985627,204.340516 50.3273832,201.089645 L65.1885117,153.255387 C66.1173322,150.236721 69.3682041,148.37908 72.6190759,149.3079 L161.553642,176.708106 C164.572308,177.636926 166.429949,180.887798 165.501129,184.13867 L150.64,231.972927 C149.478975,234.991594 146.460308,236.849235 143.209436,236.15262 Z M222.159181,171.367388 L162.714667,226.632209 C160.392616,228.954261 159.23159,228.02544 160.160411,225.006773 L172.467283,185.06749 C173.396103,182.048824 176.646975,178.797952 179.897847,178.333542 L220.76595,169.045336 C223.784617,167.884311 224.249027,169.277541 222.159181,171.367388 Z M228.660925,159.292721 L179.665642,170.438567 C176.646975,171.367388 173.396103,169.277541 172.699488,166.258875 L151.801026,75.6988732 C150.872206,72.6802064 152.962052,69.4293346 155.980718,68.7327192 L204.976001,57.5868728 C207.994668,56.6580523 211.24554,58.7478985 211.942155,61.7665652 L232.840617,152.326567 C233.537233,155.809644 231.679592,158.828311 228.660925,159.292721 Z">  </path>     </g> </svg>} href="https://www.aptible.com/docs/influxdb" />
 
   <Card title="MongoDB" icon={<svg fill="#E09600" width="30px" height="30px"  viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg"> <title>mongodb</title> <path d="M15.821 23.185s0-10.361 0.344-10.36c0.266 0 0.612 13.365 0.612 13.365-0.476-0.056-0.956-2.199-0.956-3.005zM22.489 12.945c-0.919-4.016-2.932-7.469-5.708-10.134l-0.007-0.006c-0.338-0.516-0.647-1.108-0.895-1.732l-0.024-0.068c0.001 0.020 0.001 0.044 0.001 0.068 0 0.565-0.253 1.070-0.652 1.409l-0.003 0.002c-3.574 3.034-5.848 7.505-5.923 12.508l-0 0.013c-0.001 0.062-0.001 0.135-0.001 0.208 0 4.957 2.385 9.357 6.070 12.115l0.039 0.028 0.087 0.063q0.241 1.784 0.412 3.576h0.601c0.166-1.491 0.39-2.796 0.683-4.076l-0.046 0.239c0.396-0.275 0.742-0.56 1.065-0.869l-0.003 0.003c2.801-2.597 4.549-6.297 4.549-10.404 0-0.061-0-0.121-0.001-0.182l0 0.009c-0.003-0.981-0.092-1.94-0.261-2.871l0.015 0.099z"></path> </svg>} href="https://www.aptible.com/docs/mongodb" />
 
-  <Card title="MySQL" icon={<svg fill="#E09600" width="30px" height="30px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m24.129 23.412-.508-.484c-.251-.331-.518-.624-.809-.891l-.005-.004q-.448-.407-.931-.774-.387-.266-1.064-.641c-.371-.167-.661-.46-.818-.824l-.004-.01-.048-.024c.212-.021.406-.06.592-.115l-.023.006.57-.157c.236-.074.509-.122.792-.133h.006c.298-.012.579-.06.847-.139l-.025.006q.194-.048.399-.109t.351-.109v-.169q-.145-.217-.351-.496c-.131-.178-.278-.333-.443-.468l-.005-.004q-.629-.556-1.303-1.076c-.396-.309-.845-.624-1.311-.916l-.068-.04c-.246-.162-.528-.312-.825-.435l-.034-.012q-.448-.182-.883-.399c-.097-.048-.21-.09-.327-.119l-.011-.002c-.117-.024-.217-.084-.29-.169l-.001-.001c-.138-.182-.259-.389-.355-.609l-.008-.02q-.145-.339-.314-.651-.363-.702-.702-1.427t-.651-1.452q-.217-.484-.399-.967c-.134-.354-.285-.657-.461-.942l.013.023c-.432-.736-.863-1.364-1.331-1.961l.028.038c-.463-.584-.943-1.106-1.459-1.59l-.008-.007c-.509-.478-1.057-.934-1.632-1.356l-.049-.035q-.896-.651-1.96-1.282c-.285-.168-.616-.305-.965-.393l-.026-.006-1.113-.278-.629-.048q-.314-.024-.629-.024c-.148-.078-.275-.171-.387-.279-.11-.105-.229-.204-.353-.295l-.01-.007c-.605-.353-1.308-.676-2.043-.93l-.085-.026c-.193-.113-.425-.179-.672-.179-.176 0-.345.034-.499.095l.009-.003c-.38.151-.67.458-.795.84l-.003.01c-.073.172-.115.371-.115.581 0 .368.13.705.347.968l-.002-.003q.544.725.834 1.14.217.291.448.605c.141.188.266.403.367.63l.008.021c.056.119.105.261.141.407l.003.016q.048.206.121.448.217.556.411 1.14c.141.425.297.785.478 1.128l-.019-.04q.145.266.291.52t.314.496c.065.098.147.179.241.242l.003.002c.099.072.164.185.169.313v.001c-.114.168-.191.369-.217.586l-.001.006c-.035.253-.085.478-.153.695l.008-.03c-.223.666-.351 1.434-.351 2.231 0 .258.013.512.04.763l-.003-.031c.06.958.349 1.838.812 2.6l-.014-.025c.197.295.408.552.641.787.168.188.412.306.684.306.152 0 .296-.037.422-.103l-.005.002c.35-.126.599-.446.617-.827v-.002c.048-.474.12-.898.219-1.312l-.013.067c.024-.063.038-.135.038-.211 0-.015-.001-.03-.002-.045v.002q-.012-.109.133-.206v.048q.145.339.302.677t.326.677c.295.449.608.841.952 1.202l-.003-.003c.345.372.721.706 1.127 1.001l.022.015c.212.162.398.337.566.528l.004.004c.158.186.347.339.56.454l.01.005v-.024h.048c-.039-.087-.102-.157-.18-.205l-.002-.001c-.079-.044-.147-.088-.211-.136l.005.003q-.217-.217-.448-.484t-.423-.508q-.508-.702-.969-1.467t-.871-1.555q-.194-.387-.375-.798t-.351-.798c-.049-.099-.083-.213-.096-.334v-.005c-.006-.115-.072-.214-.168-.265l-.002-.001c-.121.206-.255.384-.408.545l.001-.001c-.159.167-.289.364-.382.58l-.005.013c-.141.342-.244.739-.289 1.154l-.002.019q-.072.641-.145 1.318l-.048.024-.024.024c-.26-.053-.474-.219-.59-.443l-.002-.005q-.182-.351-.326-.69c-.248-.637-.402-1.374-.423-2.144v-.009c-.009-.122-.013-.265-.013-.408 0-.666.105-1.308.299-1.91l-.012.044q.072-.266.314-.896t.097-.871c-.05-.165-.143-.304-.265-.41l-.001-.001c-.122-.106-.233-.217-.335-.335l-.003-.004q-.169-.244-.326-.52t-.278-.544c-.165-.382-.334-.861-.474-1.353l-.022-.089c-.159-.565-.336-1.043-.546-1.503l.026.064c-.111-.252-.24-.47-.39-.669l.006.008q-.244-.326-.436-.617-.244-.314-.484-.605c-.163-.197-.308-.419-.426-.657l-.009-.02c-.048-.097-.09-.21-.119-.327l-.002-.011c-.011-.035-.017-.076-.017-.117 0-.082.024-.159.066-.223l-.001.002c.011-.056.037-.105.073-.145.039-.035.089-.061.143-.072h.002c.085-.055.188-.088.3-.088.084 0 .165.019.236.053l-.003-.001c.219.062.396.124.569.195l-.036-.013q.459.194.847.375c.298.142.552.292.792.459l-.018-.012q.194.121.387.266t.411.291h.339q.387 0 .822.037c.293.023.564.078.822.164l-.024-.007c.481.143.894.312 1.286.515l-.041-.019q.593.302 1.125.641c.589.367 1.098.743 1.577 1.154l-.017-.014c.5.428.954.867 1.38 1.331l.01.012c.416.454.813.947 1.176 1.464l.031.047c.334.472.671 1.018.974 1.584l.042.085c.081.154.163.343.234.536l.011.033q.097.278.217.57.266.605.57 1.221t.57 1.198l.532 1.161c.187.406.396.756.639 1.079l-.011-.015c.203.217.474.369.778.422l.008.001c.368.092.678.196.978.319l-.047-.017c.143.065.327.134.516.195l.04.011c.212.065.396.151.565.259l-.009-.005c.327.183.604.363.868.559l-.021-.015q.411.302.822.57.194.145.651.423t.484.52c-.114-.004-.249-.007-.384-.007-.492 0-.976.032-1.45.094l.056-.006c-.536.072-1.022.203-1.479.39l.04-.014c-.113.049-.248.094-.388.129l-.019.004c-.142.021-.252.135-.266.277v.001c.061.076.11.164.143.26l.002.006c.034.102.075.19.125.272l-.003-.006c.119.211.247.393.391.561l-.004-.005c.141.174.3.325.476.454l.007.005q.244.194.508.399c.161.126.343.25.532.362l.024.013c.284.174.614.34.958.479l.046.016c.374.15.695.324.993.531l-.016-.011q.291.169.58.375t.556.399c.073.072.137.152.191.239l.003.005c.091.104.217.175.36.193h.003v-.048c-.088-.067-.153-.16-.184-.267l-.001-.004c-.025-.102-.062-.191-.112-.273l.002.004zm-18.576-19.205q-.194 0-.363.012c-.115.008-.222.029-.323.063l.009-.003v.024h.048q.097.145.244.326t.266.351l.387.798.048-.024c.113-.082.2-.192.252-.321l.002-.005c.052-.139.082-.301.082-.469 0-.018 0-.036-.001-.054v.003c-.045-.044-.082-.096-.108-.154l-.001-.003-.081-.182c-.053-.084-.127-.15-.214-.192l-.003-.001c-.094-.045-.174-.102-.244-.169z"/></svg>} horizontal={false} href="https://www.aptible.com/docs/mysql" />
+  <Card title="MySQL" icon={<svg fill="#E09600" width="30px" height="30px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m24.129 23.412-.508-.484c-.251-.331-.518-.624-.809-.891l-.005-.004q-.448-.407-.931-.774-.387-.266-1.064-.641c-.371-.167-.661-.46-.818-.824l-.004-.01-.048-.024c.212-.021.406-.06.592-.115l-.023.006.57-.157c.236-.074.509-.122.792-.133h.006c.298-.012.579-.06.847-.139l-.025.006q.194-.048.399-.109t.351-.109v-.169q-.145-.217-.351-.496c-.131-.178-.278-.333-.443-.468l-.005-.004q-.629-.556-1.303-1.076c-.396-.309-.845-.624-1.311-.916l-.068-.04c-.246-.162-.528-.312-.825-.435l-.034-.012q-.448-.182-.883-.399c-.097-.048-.21-.09-.327-.119l-.011-.002c-.117-.024-.217-.084-.29-.169l-.001-.001c-.138-.182-.259-.389-.355-.609l-.008-.02q-.145-.339-.314-.651-.363-.702-.702-1.427t-.651-1.452q-.217-.484-.399-.967c-.134-.354-.285-.657-.461-.942l.013.023c-.432-.736-.863-1.364-1.331-1.961l.028.038c-.463-.584-.943-1.106-1.459-1.59l-.008-.007c-.509-.478-1.057-.934-1.632-1.356l-.049-.035q-.896-.651-1.96-1.282c-.285-.168-.616-.305-.965-.393l-.026-.006-1.113-.278-.629-.048q-.314-.024-.629-.024c-.148-.078-.275-.171-.387-.279-.11-.105-.229-.204-.353-.295l-.01-.007c-.605-.353-1.308-.676-2.043-.93l-.085-.026c-.193-.113-.425-.179-.672-.179-.176 0-.345.034-.499.095l.009-.003c-.38.151-.67.458-.795.84l-.003.01c-.073.172-.115.371-.115.581 0 .368.13.705.347.968l-.002-.003q.544.725.834 1.14.217.291.448.605c.141.188.266.403.367.63l.008.021c.056.119.105.261.141.407l.003.016q.048.206.121.448.217.556.411 1.14c.141.425.297.785.478 1.128l-.019-.04q.145.266.291.52t.314.496c.065.098.147.179.241.242l.003.002c.099.072.164.185.169.313v.001c-.114.168-.191.369-.217.586l-.001.006c-.035.253-.085.478-.153.695l.008-.03c-.223.666-.351 1.434-.351 2.231 0 .258.013.512.04.763l-.003-.031c.06.958.349 1.838.812 2.6l-.014-.025c.197.295.408.552.641.787.168.188.412.306.684.306.152 0 .296-.037.422-.103l-.005.002c.35-.126.599-.446.617-.827v-.002c.048-.474.12-.898.219-1.312l-.013.067c.024-.063.038-.135.038-.211 0-.015-.001-.03-.002-.045v.002q-.012-.109.133-.206v.048q.145.339.302.677t.326.677c.295.449.608.841.952 1.202l-.003-.003c.345.372.721.706 1.127 1.001l.022.015c.212.162.398.337.566.528l.004.004c.158.186.347.339.56.454l.01.005v-.024h.048c-.039-.087-.102-.157-.18-.205l-.002-.001c-.079-.044-.147-.088-.211-.136l.005.003q-.217-.217-.448-.484t-.423-.508q-.508-.702-.969-1.467t-.871-1.555q-.194-.387-.375-.798t-.351-.798c-.049-.099-.083-.213-.096-.334v-.005c-.006-.115-.072-.214-.168-.265l-.002-.001c-.121.206-.255.384-.408.545l.001-.001c-.159.167-.289.364-.382.58l-.005.013c-.141.342-.244.739-.289 1.154l-.002.019q-.072.641-.145 1.318l-.048.024-.024.024c-.26-.053-.474-.219-.59-.443l-.002-.005q-.182-.351-.326-.69c-.248-.637-.402-1.374-.423-2.144v-.009c-.009-.122-.013-.265-.013-.408 0-.666.105-1.308.299-1.91l-.012.044q.072-.266.314-.896t.097-.871c-.05-.165-.143-.304-.265-.41l-.001-.001c-.122-.106-.233-.217-.335-.335l-.003-.004q-.169-.244-.326-.52t-.278-.544c-.165-.382-.334-.861-.474-1.353l-.022-.089c-.159-.565-.336-1.043-.546-1.503l.026.064c-.111-.252-.24-.47-.39-.669l.006.008q-.244-.326-.436-.617-.244-.314-.484-.605c-.163-.197-.308-.419-.426-.657l-.009-.02c-.048-.097-.09-.21-.119-.327l-.002-.011c-.011-.035-.017-.076-.017-.117 0-.082.024-.159.066-.223l-.001.002c.011-.056.037-.105.073-.145.039-.035.089-.061.143-.072h.002c.085-.055.188-.088.3-.088.084 0 .165.019.236.053l-.003-.001c.219.062.396.124.569.195l-.036-.013q.459.194.847.375c.298.142.552.292.792.459l-.018-.012q.194.121.387.266t.411.291h.339q.387 0 .822.037c.293.023.564.078.822.164l-.024-.007c.481.143.894.312 1.286.515l-.041-.019q.593.302 1.125.641c.589.367 1.098.743 1.577 1.154l-.017-.014c.5.428.954.867 1.38 1.331l.01.012c.416.454.813.947 1.176 1.464l.031.047c.334.472.671 1.018.974 1.584l.042.085c.081.154.163.343.234.536l.011.033q.097.278.217.57.266.605.57 1.221t.57 1.198l.532 1.161c.187.406.396.756.639 1.079l-.011-.015c.203.217.474.369.778.422l.008.001c.368.092.678.196.978.319l-.047-.017c.143.065.327.134.516.195l.04.011c.212.065.396.151.565.259l-.009-.005c.327.183.604.363.868.559l-.021-.015q.411.302.822.57.194.145.651.423t.484.52c-.114-.004-.249-.007-.384-.007-.492 0-.976.032-1.45.094l.056-.006c-.536.072-1.022.203-1.479.39l.04-.014c-.113.049-.248.094-.388.129l-.019.004c-.142.021-.252.135-.266.277v.001c.061.076.11.164.143.26l.002.006c.034.102.075.19.125.272l-.003-.006c.119.211.247.393.391.561l-.004-.005c.141.174.3.325.476.454l.007.005q.244.194.508.399c.161.126.343.25.532.362l.024.013c.284.174.614.34.958.479l.046.016c.374.15.695.324.993.531l-.016-.011q.291.169.58.375t.556.399c.073.072.137.152.191.239l.003.005c.091.104.217.175.36.193h.003v-.048c-.088-.067-.153-.16-.184-.267l-.001-.004c-.025-.102-.062-.191-.112-.273l.002.004zm-18.576-19.205q-.194 0-.363.012c-.115.008-.222.029-.323.063l.009-.003v.024h.048q.097.145.244.326t.266.351l.387.798.048-.024c.113-.082.2-.192.252-.321l.002-.005c.052-.139.082-.301.082-.469 0-.018 0-.036-.001-.054v.003c-.045-.044-.082-.096-.108-.154l-.001-.003-.081-.182c-.053-.084-.127-.15-.214-.192l-.003-.001c-.094-.045-.174-.102-.244-.169z"/></svg>} href="https://www.aptible.com/docs/mysql" />
 
   <Card title="PostgreSQL" icon={<svg fill="#E09600" width="30px" height="30px" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">   <path d="M22.839 0c-1.245 0.011-2.479 0.188-3.677 0.536l-0.083 0.027c-0.751-0.131-1.516-0.203-2.276-0.219-1.573-0.027-2.923 0.353-4.011 0.989-1.073-0.369-3.297-1.016-5.641-0.885-1.629 0.088-3.411 0.583-4.735 1.979-1.312 1.391-2.009 3.547-1.864 6.485 0.041 0.807 0.271 2.124 0.656 3.837 0.38 1.709 0.917 3.709 1.589 5.537 0.672 1.823 1.405 3.463 2.552 4.577 0.572 0.557 1.364 1.032 2.296 0.991 0.652-0.027 1.24-0.313 1.751-0.735 0.249 0.328 0.516 0.468 0.755 0.599 0.308 0.167 0.599 0.281 0.907 0.355 0.552 0.14 1.495 0.323 2.599 0.135 0.375-0.063 0.771-0.187 1.167-0.359 0.016 0.437 0.032 0.869 0.047 1.307 0.057 1.38 0.095 2.656 0.505 3.776 0.068 0.183 0.251 1.12 0.969 1.953 0.724 0.833 2.129 1.349 3.739 1.005 1.131-0.24 2.573-0.677 3.532-2.041 0.948-1.344 1.375-3.276 1.459-6.412 0.020-0.172 0.047-0.312 0.072-0.448l0.224 0.021h0.027c1.208 0.052 2.521-0.12 3.62-0.631 0.968-0.448 1.703-0.901 2.239-1.708 0.131-0.199 0.281-0.443 0.319-0.86 0.041-0.411-0.199-1.063-0.595-1.364-0.791-0.604-1.291-0.375-1.828-0.26-0.525 0.115-1.063 0.176-1.599 0.192 1.541-2.593 2.645-5.353 3.276-7.792 0.375-1.443 0.584-2.771 0.599-3.932 0.021-1.161-0.077-2.187-0.771-3.077-2.177-2.776-5.235-3.548-7.599-3.573-0.073 0-0.145 0-0.219 0zM22.776 0.855c2.235-0.021 5.093 0.604 7.145 3.228 0.464 0.589 0.6 1.448 0.584 2.511s-0.213 2.328-0.573 3.719c-0.692 2.699-2.011 5.833-3.859 8.652 0.063 0.047 0.135 0.088 0.208 0.115 0.385 0.161 1.265 0.296 3.025-0.063 0.443-0.095 0.767-0.156 1.105 0.099 0.167 0.14 0.255 0.349 0.244 0.568-0.020 0.161-0.077 0.317-0.177 0.448-0.339 0.509-1.009 0.995-1.869 1.396-0.76 0.353-1.855 0.536-2.817 0.547-0.489 0.005-0.937-0.032-1.319-0.152l-0.020-0.004c-0.147 1.411-0.484 4.203-0.704 5.473-0.176 1.025-0.484 1.844-1.072 2.453-0.589 0.615-1.417 0.979-2.537 1.219-1.385 0.297-2.391-0.021-3.041-0.568s-0.948-1.276-1.125-1.719c-0.124-0.307-0.187-0.703-0.249-1.235-0.063-0.531-0.104-1.177-0.136-1.911-0.041-1.12-0.057-2.24-0.041-3.365-0.577 0.532-1.296 0.88-2.068 1.016-0.921 0.156-1.739 0-2.228-0.12-0.24-0.063-0.475-0.151-0.693-0.271-0.229-0.12-0.443-0.255-0.588-0.527-0.084-0.156-0.109-0.337-0.073-0.509 0.041-0.177 0.145-0.328 0.287-0.443 0.265-0.215 0.615-0.333 1.14-0.443 0.959-0.199 1.297-0.333 1.5-0.496 0.172-0.135 0.371-0.416 0.713-0.828 0-0.015 0-0.036-0.005-0.052-0.619-0.020-1.224-0.181-1.771-0.479-0.197 0.208-1.224 1.292-2.468 2.792-0.521 0.624-1.099 0.984-1.713 1.011-0.609 0.025-1.163-0.281-1.631-0.735-0.937-0.912-1.688-2.48-2.339-4.251s-1.177-3.744-1.557-5.421c-0.375-1.683-0.599-3.037-0.631-3.688-0.14-2.776 0.511-4.645 1.625-5.828s2.641-1.625 4.131-1.713c2.672-0.151 5.213 0.781 5.724 0.979 0.989-0.672 2.265-1.088 3.859-1.063 0.756 0.011 1.505 0.109 2.24 0.292l0.027-0.016c0.323-0.109 0.651-0.208 0.984-0.28 0.907-0.215 1.833-0.324 2.76-0.339zM22.979 1.745h-0.197c-0.76 0.009-1.527 0.099-2.271 0.26 1.661 0.735 2.916 1.864 3.801 3 0.615 0.781 1.12 1.64 1.505 2.557 0.152 0.355 0.251 0.651 0.303 0.88 0.031 0.115 0.047 0.213 0.057 0.312 0 0.052 0.005 0.105-0.021 0.193 0 0.005-0.005 0.016-0.005 0.021 0.043 1.167-0.249 1.957-0.287 3.072-0.025 0.808 0.183 1.756 0.235 2.792 0.047 0.973-0.072 2.041-0.703 3.093 0.052 0.063 0.099 0.125 0.151 0.193 1.672-2.636 2.88-5.547 3.521-8.032 0.344-1.339 0.525-2.552 0.541-3.509 0.016-0.959-0.161-1.657-0.391-1.948-1.792-2.287-4.213-2.871-6.24-2.885zM16.588 2.088c-1.572 0.005-2.703 0.48-3.561 1.193-0.887 0.74-1.48 1.745-1.865 2.781-0.464 1.224-0.625 2.411-0.688 3.219l0.021-0.011c0.475-0.265 1.099-0.536 1.771-0.687 0.667-0.157 1.391-0.204 2.041 0.052 0.657 0.249 1.193 0.848 1.391 1.749 0.939 4.344-0.291 5.959-0.744 7.177-0.172 0.443-0.323 0.891-0.443 1.349 0.057-0.011 0.115-0.027 0.172-0.032 0.323-0.025 0.572 0.079 0.719 0.141 0.459 0.192 0.771 0.588 0.943 1.041 0.041 0.12 0.072 0.244 0.093 0.38 0.016 0.052 0.027 0.109 0.027 0.167-0.052 1.661-0.048 3.323 0.015 4.984 0.032 0.719 0.079 1.349 0.136 1.849 0.057 0.495 0.135 0.875 0.188 1.005 0.171 0.427 0.421 0.984 0.875 1.364 0.448 0.381 1.093 0.631 2.276 0.381 1.025-0.224 1.656-0.527 2.077-0.964 0.423-0.443 0.672-1.052 0.833-1.984 0.245-1.401 0.729-5.464 0.787-6.224-0.025-0.579 0.057-1.021 0.245-1.36 0.187-0.344 0.479-0.557 0.735-0.672 0.124-0.057 0.244-0.093 0.343-0.125-0.104-0.145-0.213-0.291-0.323-0.432-0.364-0.443-0.667-0.937-0.891-1.463-0.104-0.22-0.219-0.439-0.344-0.647-0.176-0.317-0.4-0.719-0.635-1.172-0.469-0.896-0.979-1.989-1.245-3.052-0.265-1.063-0.301-2.161 0.376-2.932 0.599-0.688 1.656-0.973 3.233-0.812-0.047-0.141-0.072-0.261-0.151-0.443-0.359-0.844-0.828-1.636-1.391-2.355-1.339-1.713-3.511-3.412-6.859-3.469zM7.735 2.156c-0.167 0-0.339 0.005-0.505 0.016-1.349 0.079-2.62 0.468-3.532 1.432-0.911 0.969-1.509 2.547-1.38 5.167 0.027 0.5 0.24 1.885 0.609 3.536 0.371 1.652 0.896 3.595 1.527 5.313 0.629 1.713 1.391 3.208 2.12 3.916 0.364 0.349 0.681 0.495 0.968 0.485 0.287-0.016 0.636-0.183 1.063-0.693 0.776-0.937 1.579-1.844 2.412-2.729-1.199-1.047-1.787-2.629-1.552-4.203 0.135-0.984 0.156-1.907 0.135-2.636-0.015-0.708-0.063-1.176-0.063-1.473 0-0.011 0-0.016 0-0.027v-0.005l-0.005-0.009c0-1.537 0.272-3.057 0.792-4.5 0.375-0.996 0.928-2 1.76-2.819-0.817-0.271-2.271-0.676-3.843-0.755-0.167-0.011-0.339-0.016-0.505-0.016zM24.265 9.197c-0.905 0.016-1.411 0.251-1.681 0.552-0.376 0.433-0.412 1.193-0.177 2.131 0.233 0.937 0.719 1.984 1.172 2.855 0.224 0.437 0.443 0.828 0.619 1.145 0.183 0.323 0.313 0.547 0.391 0.745 0.073 0.177 0.157 0.333 0.24 0.479 0.349-0.74 0.412-1.464 0.375-2.224-0.047-0.937-0.265-1.896-0.229-2.864 0.037-1.136 0.261-1.876 0.277-2.751-0.324-0.041-0.657-0.068-0.985-0.068zM13.287 9.355c-0.276 0-0.552 0.036-0.823 0.099-0.537 0.131-1.052 0.328-1.537 0.599-0.161 0.088-0.317 0.188-0.463 0.303l-0.032 0.025c0.011 0.199 0.047 0.667 0.063 1.365 0.016 0.76 0 1.728-0.145 2.776-0.323 2.281 1.333 4.167 3.276 4.172 0.115-0.469 0.301-0.944 0.489-1.443 0.541-1.459 1.604-2.521 0.708-6.677-0.145-0.677-0.437-0.953-0.839-1.109-0.224-0.079-0.457-0.115-0.697-0.109zM23.844 9.625h0.068c0.083 0.005 0.167 0.011 0.239 0.031 0.068 0.016 0.131 0.037 0.183 0.073 0.052 0.031 0.088 0.083 0.099 0.145v0.011c0 0.063-0.016 0.125-0.047 0.183-0.041 0.072-0.088 0.14-0.145 0.197-0.136 0.151-0.319 0.251-0.516 0.281-0.193 0.027-0.385-0.025-0.547-0.135-0.063-0.048-0.125-0.1-0.172-0.157-0.047-0.047-0.073-0.109-0.084-0.172-0.004-0.061 0.011-0.124 0.052-0.171 0.048-0.048 0.1-0.089 0.157-0.12 0.129-0.073 0.301-0.125 0.5-0.152 0.072-0.009 0.145-0.015 0.213-0.020zM13.416 9.849c0.068 0 0.147 0.005 0.22 0.015 0.208 0.032 0.385 0.084 0.525 0.167 0.068 0.032 0.131 0.084 0.177 0.141 0.052 0.063 0.077 0.14 0.073 0.224-0.016 0.077-0.048 0.151-0.1 0.208-0.057 0.068-0.119 0.125-0.192 0.172-0.172 0.125-0.385 0.177-0.599 0.151-0.215-0.036-0.412-0.14-0.557-0.301-0.063-0.068-0.115-0.141-0.157-0.219-0.047-0.073-0.067-0.156-0.057-0.24 0.021-0.14 0.141-0.219 0.256-0.26 0.131-0.043 0.271-0.057 0.411-0.052zM25.495 19.64h-0.005c-0.192 0.073-0.353 0.1-0.489 0.163-0.14 0.052-0.251 0.156-0.317 0.285-0.089 0.152-0.156 0.423-0.136 0.885 0.057 0.043 0.125 0.073 0.199 0.095 0.224 0.068 0.609 0.115 1.036 0.109 0.849-0.011 1.896-0.208 2.453-0.469 0.453-0.208 0.88-0.489 1.255-0.817-1.859 0.38-2.905 0.281-3.552 0.016-0.156-0.068-0.307-0.157-0.443-0.267zM14.787 19.765h-0.027c-0.072 0.005-0.172 0.032-0.375 0.251-0.464 0.52-0.625 0.848-1.005 1.151-0.385 0.307-0.88 0.469-1.875 0.672-0.312 0.063-0.495 0.135-0.615 0.192 0.036 0.032 0.036 0.043 0.093 0.068 0.147 0.084 0.333 0.152 0.485 0.193 0.427 0.104 1.124 0.229 1.859 0.104 0.729-0.125 1.489-0.475 2.141-1.385 0.115-0.156 0.124-0.391 0.031-0.641-0.093-0.244-0.297-0.463-0.437-0.52-0.089-0.043-0.183-0.068-0.276-0.084z"/> </svg>} href="https://www.aptible.com/docs/postgresql" />
 
@@ -2793,15 +2851,15 @@ Aptible offers a robust selection of fully [Managed Databases](https://www.aptib
 
   <Card title="Redis" icon={<svg fill="#E09600" width="30px" height="30px" viewBox="0 -2 28 28" xmlns="http://www.w3.org/2000/svg"><path d="m27.994 14.729c-.012.267-.365.566-1.091.945-1.495.778-9.236 3.967-10.883 4.821-.589.419-1.324.67-2.116.67-.641 0-1.243-.164-1.768-.452l.019.01c-1.304-.622-9.539-3.95-11.023-4.659-.741-.35-1.119-.653-1.132-.933v2.83c0 .282.39.583 1.132.933 1.484.709 9.722 4.037 11.023 4.659.504.277 1.105.44 1.744.44.795 0 1.531-.252 2.132-.681l-.011.008c1.647-.859 9.388-4.041 10.883-4.821.76-.396 1.096-.7 1.096-.982s0-2.791 0-2.791z"/><path d="m27.992 10.115c-.013.267-.365.565-1.09.944-1.495.778-9.236 3.967-10.883 4.821-.59.421-1.326.672-2.121.672-.639 0-1.24-.163-1.763-.449l.019.01c-1.304-.627-9.539-3.955-11.023-4.664-.741-.35-1.119-.653-1.132-.933v2.83c0 .282.39.583 1.132.933 1.484.709 9.721 4.037 11.023 4.659.506.278 1.108.442 1.749.442.793 0 1.527-.251 2.128-.677l-.011.008c1.647-.859 9.388-4.043 10.883-4.821.76-.397 1.096-.7 1.096-.984s0-2.791 0-2.791z"/><path d="m27.992 5.329c.014-.285-.358-.534-1.107-.81-1.451-.533-9.152-3.596-10.624-4.136-.528-.242-1.144-.383-1.794-.383-.734 0-1.426.18-2.035.498l.024-.012c-1.731.622-9.924 3.835-11.381 4.405-.729.287-1.086.552-1.073.834v2.83c0 .282.39.583 1.132.933 1.484.709 9.721 4.038 11.023 4.66.504.277 1.105.439 1.744.439.795 0 1.531-.252 2.133-.68l-.011.008c1.647-.859 9.388-4.043 10.883-4.821.76-.397 1.096-.7 1.096-.984s0-2.791 0-2.791h-.009zm-17.967 2.684 6.488-.996-1.96 2.874zm14.351-2.588-4.253 1.68-3.835-1.523 4.246-1.679 3.838 1.517zm-11.265-2.785-.628-1.157 1.958.765 1.846-.604-.499 1.196 1.881.7-2.426.252-.543 1.311-.879-1.457-2.8-.252 2.091-.754zm-4.827 1.632c1.916 0 3.467.602 3.467 1.344s-1.559 1.344-3.467 1.344-3.474-.603-3.474-1.344 1.553-1.344 3.474-1.344z"/></svg>} href="https://www.aptible.com/docs/redis" />
 
-  <Card title="SFTP" icon="file" color="E09600" href="https://www.aptible.com/docs/sftp" />
+  <Card title="SFTP" icon="file" href="https://www.aptible.com/docs/sftp" />
 </CardGroup>
 
 ## Observability
 
 ### Logging
 
-<CardGroup cols={3}>
-  <Card title="Amazon S3" icon="aws" color="E09600" href="https://www.aptible.com/docs/s3-log-archives">
+<CardGroup>
+  <Card title="Amazon S3" icon="aws" href="https://www.aptible.com/docs/s3-log-archives">
     `Integration` `Limited Release`
 
     Archive Aptible logs to S3 for historical retention
@@ -2819,13 +2877,13 @@ Aptible offers a robust selection of fully [Managed Databases](https://www.aptib
     Send Aptible logs to Datadog
   </Card>
 
-  <Card title="Custom - HTTPS" icon="globe" color="E09600" href="https://www.aptible.com/docs/https-log-drains">
+  <Card title="Custom - HTTPS" icon="globe" href="https://www.aptible.com/docs/https-log-drains">
     `Custom`
 
     Send Aptible logs to any destination of your choice via HTTPS
   </Card>
 
-  <Card title="Custom - Syslog" icon="globe" color="E09600" href="https://www.aptible.com/docs/syslog-log-drains">
+  <Card title="Custom - Syslog" icon="globe" href="https://www.aptible.com/docs/syslog-log-drains">
     `Custom`
 
     Send Aptible logs to any destination of your choice with Syslog
@@ -2870,7 +2928,7 @@ Aptible offers a robust selection of fully [Managed Databases](https://www.aptib
 
 ### Metrics and Data
 
-<CardGroup cols={3}>
+<CardGroup>
   <Card title="Datadog - Container Monitoring" icon={<svg fill="#E09600" width="30px" height="30px"  viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" ><path  fill-rule="evenodd" d="M12.886 10.938l-1.157-.767-.965 1.622-1.122-.33-.988 1.517.05.478 5.374-.996-.313-3.378-.879 1.854zm-5.01-1.456l.861-.12c.14.064.237.088.404.13.26.069.562.134 1.009-.092.104-.052.32-.251.408-.365l3.532-.644.36 4.388L8.4 13.876l-.524-4.394zm6.56-1.581l-.348.067-.67-6.964L2.004 2.336l1.407 11.481 1.335-.195a3.03 3.03 0 00-.556-.576c-.393-.33-.254-.888-.022-1.24.307-.596 1.889-1.354 1.8-2.307-.033-.346-.088-.797-.407-1.106-.012.128.01.252.01.252s-.132-.169-.197-.398c-.065-.088-.116-.117-.185-.234-.05.136-.043.294-.043.294s-.107-.255-.125-.47a.752.752 0 00-.08.279s-.139-.403-.107-.62c-.064-.188-.252-.562-.199-1.412.348.245 1.115.187 1.414-.256.1-.147.167-.548-.05-1.337-.139-.506-.483-1.26-.618-1.546l-.016.012c.071.23.217.713.273.947.17.71.215.958.136 1.285-.068.285-.23.471-.642.68-.412.208-.958-.3-.993-.328-.4-.32-.709-.844-.744-1.098-.035-.278.16-.445.258-.672-.14.04-.298.112-.298.112s.188-.195.419-.364c.095-.063.152-.104.252-.188-.146-.003-.264.002-.264.002s.243-.133.496-.23c-.185-.007-.362 0-.362 0s.544-.245.973-.424c.295-.122.583-.086.745.15.212.308.436.476.909.58.29-.13.379-.197.744-.297.321-.355.573-.401.573-.401s-.125.115-.158.297c.182-.145.382-.265.382-.265s-.078.096-.15.249l.017.025c.213-.129.463-.23.463-.23s-.072.091-.156.209c.16-.002.486.006.612.02.745.017.9-.8 1.185-.902.358-.129.518-.206 1.128.396.523.518.932 1.444.73 1.652-.171.172-.507-.068-.879-.534a2.026 2.026 0 01-.415-.911c-.059-.313-.288-.495-.288-.495s.133.297.133.56c0 .142.018.678.246.979-.022.044-.033.217-.058.25-.265-.323-.836-.554-.929-.622.315.26 1.039.856 1.317 1.428.263.54.108 1.035.24 1.164.039.037.566.698.668 1.03.177.58.01 1.188-.222 1.566l-.647.101c-.094-.026-.158-.04-.243-.09.047-.082.14-.29.14-.333l-.036-.065a2.737 2.737 0 01-.819.726c-.367.21-.79.177-1.065.092-.781-.243-1.52-.774-1.698-.914 0 0-.005.112.028.137.197.223.648.628 1.085.91l-.93.102.44 3.444c-.196.029-.226.042-.44.073-.187-.669-.547-1.105-.94-1.36-.347-.223-.825-.274-1.283-.183l-.03.034c.319-.033.695.014 1.08.26.38.24.685.863.797 1.238.144.479.244.991-.144 1.534-.275.386-1.08.6-1.73.138.174.281.409.51.725.554.469.064.914-.018 1.22-.334.262-.27.4-.836.364-1.432l.414-.06.15 1.069 6.852-.83-.56-5.487zm-4.168-2.905c-.02.044-.05.073-.005.216l.003.008.007.019.02.042c.08.168.17.326.32.406.038-.006.078-.01.12-.013a.546.546 0 01.284.047.607.607 0 00.003-.13c-.01-.212.042-.573-.363-.762-.153-.072-.367-.05-.439.04a.175.175 0 01.034.007c.108.038.035.075.015.12zm1.134 1.978c-.053-.03-.301-.018-.475.003-.333.04-.691.155-.77.217-.143.111-.078.305.027.384.297.223.556.372.83.336.168-.022.317-.29.422-.534.072-.167.072-.348-.034-.406zM8.461 5.259c.093-.09-.467-.207-.902.09-.32.221-.33.693-.024.96.03.027.056.046.08.06a2.75 2.75 0 01.809-.24c.065-.072.14-.2.121-.434-.025-.315-.263-.265-.084-.436z" clip-rule="evenodd"/></svg>} href="https://www.aptible.com/docs/datadog">
     `Integration`
 
@@ -2901,7 +2959,7 @@ Aptible offers a robust selection of fully [Managed Databases](https://www.aptib
     Send Aptible container metrics to an InfluxDB
   </Card>
 
-  <Card title="New Relic" icon={<svg viewBox="0 0 832.8 959.8" xmlns="http://www.w3.org/2000/svg" width="30" height="30"><path d="M672.6 332.3l160.2-92.4v480L416.4 959.8V775.2l256.2-147.6z" fill="E09600"/><path d="M416.4 184.6L160.2 332.3 0 239.9 416.4 0l416.4 239.9-160.2 92.4z" fill="E09600"/><path d="M256.2 572.3L0 424.6V239.9l416.4 240v479.9l-160.2-92.2z" fill="#E09600"/></svg>} color="E09600" href="https://github.com/aptible/newrelic-metrics-example">
+  <Card title="New Relic" icon={<svg viewBox="0 0 832.8 959.8" xmlns="http://www.w3.org/2000/svg" width="30" height="30"><path d="M672.6 332.3l160.2-92.4v480L416.4 959.8V775.2l256.2-147.6z" fill="E09600"/><path d="M416.4 184.6L160.2 332.3 0 239.9 416.4 0l416.4 239.9-160.2 92.4z" fill="E09600"/><path d="M256.2 572.3L0 424.6V239.9l416.4 240v479.9l-160.2-92.2z" fill="#E09600"/></svg>} href="https://github.com/aptible/newrelic-metrics-example">
     `Compatible`
 
     > Collect custom database metrics for Aptible databases using the New Relic Agent
@@ -2910,14 +2968,14 @@ Aptible offers a robust selection of fully [Managed Databases](https://www.aptib
 
 ## Developer Tools
 
-<CardGroup cols={3}>
+<CardGroup>
   <Card title="Aptible CLI" icon={<svg version="1.0" xmlns="http://www.w3.org/2000/svg"  width="30" height="30" viewBox="50 50 200 200"  preserveAspectRatio="xMidYMid meet"> <g transform="translate(0.000000,300.000000) scale(0.100000,-0.100000)" fill="#E09600" stroke="none"> <path d="M873 1982 l-263 -266 0 -173 c0 -95 3 -173 7 -173 5 0 205 197 445 437 l438 438 438 -438 c240 -240 440 -437 445 -437 4 0 7 79 7 176 l0 176 -266 264 -266 264 -361 -1 -362 0 -262 -267z"/> <path d="M1006 1494 l-396 -396 0 -174 c0 -96 3 -174 7 -174 5 0 124 116 265 257 l258 258 0 -258 0 -257 140 0 140 0 0 570 c0 314 -4 570 -9 570 -4 0 -187 -178 -405 -396z"/> <path d="M1590 1320 l0 -570 135 0 135 0 0 260 0 260 260 -260 c143 -143 262 -260 265 -260 3 0 5 80 5 178 l0 177 -394 393 c-217 215 -397 392 -400 392 -3 0 -6 -256 -6 -570z"/> </g> </svg>} href="https://www.aptible.com/docs/reference/aptible-cli/overview">
     `Native`
 
     Manage your Aptible resources via the Aptible CLI
   </Card>
 
-  <Card title="Custom CI/CD" icon="globe" color="E09600" href="https://www.aptible.com/docs/how-to-guides/app-guides/integrate-aptible-with-ci/overview">
+  <Card title="Custom CI/CD" icon="globe" href="https://www.aptible.com/docs/how-to-guides/app-guides/integrate-aptible-with-ci/overview">
     `Custom`
 
     Deploy to Aptible using a CI/CD tool of your choice
@@ -2929,7 +2987,7 @@ Aptible offers a robust selection of fully [Managed Databases](https://www.aptib
     Deploy to Aptible using Circle CI.
   </Card>
 
-  <Card title="GitHub Actions" icon="github" color="E09600" href="https://github.com/marketplace/actions/deploy-to-aptible">
+  <Card title="GitHub Actions" icon="github" href="https://github.com/marketplace/actions/deploy-to-aptible">
     `Integration`
 
     Deploy to Aptible using GitHub Actions.
@@ -2944,8 +3002,8 @@ Aptible offers a robust selection of fully [Managed Databases](https://www.aptib
 
 ## Network & Security
 
-<CardGroup cols={3}>
-  <Card title="Google SSO" icon="google" color="E09600" href="https://www.aptible.com/docs/core-concepts/security-compliance/authentication/sso">
+<CardGroup>
+  <Card title="Google SSO" icon="google" href="https://www.aptible.com/docs/core-concepts/security-compliance/authentication/sso">
     `Integration`
 
     Configure SSO with Okta
@@ -2957,31 +3015,31 @@ Aptible offers a robust selection of fully [Managed Databases](https://www.aptib
     Configure SSO with Okta
   </Card>
 
-  <Card title="Single Sign-On (SAML)" icon="globe" color="E09600" href="https://www.aptible.com/docs/core-concepts/security-compliance/authentication/sso">
+  <Card title="Single Sign-On (SAML)" icon="globe" href="https://www.aptible.com/docs/core-concepts/security-compliance/authentication/sso">
     `Custom`
 
     Configure SSO with Popular Identity Providers
   </Card>
 
-  <Card title="SCIM (Provisioning)" icon="globe" color="E09600" href="https://www.aptible.com/docs/core-concepts/security-compliance/authentication/scim">
+  <Card title="SCIM (Provisioning)" icon="globe" href="https://www.aptible.com/docs/core-concepts/security-compliance/authentication/scim">
     `Custom`
 
     Configure SCIM with Popular Identity Providers
   </Card>
 
-  <Card title="Site-to-site VPNs " icon="globe" color="E09600" href="https://www.aptible.com/docs/network-integrations">
+  <Card title="Site-to-site VPNs " icon="globe" href="https://www.aptible.com/docs/network-integrations">
     `Native`
 
     Connect to your Aptible resources with site-to-site VPNs
   </Card>
 
-  <Card title="Twingate" icon={<svg version="1.0" xmlns="http://www.w3.org/2000/svg"  width="30px" height="30px" viewBox="0 0 275 275"  preserveAspectRatio="xMidYMid meet"> <metadata> </metadata> <g transform="translate(0.000000,300.000000) scale(0.100000,-0.100000)" fill="#E09600" stroke="none"> <path d="M1385 2248 c-160 -117 -317 -240 -351 -273 -121 -119 -124 -136 -124 -702 0 -244 3 -443 6 -443 3 0 66 42 140 93 l134 92 0 205 c1 468 10 487 342 728 l147 107 1 203 c0 111 -1 202 -3 202 -1 0 -133 -96 -292 -212z"/> <path d="M1781 1994 c-338 -249 -383 -286 -425 -348 -65 -96 -67 -109 -64 -624 l3 -462 225 156 c124 86 264 185 313 221 143 106 198 183 217 299 12 69 14 954 3 954 -5 -1 -127 -89 -272 -196z"/> </g> </svg>} color="E09600" href="https://www.aptible.com/docs/twingate">
+  <Card title="Twingate" icon={<svg version="1.0" xmlns="http://www.w3.org/2000/svg"  width="30px" height="30px" viewBox="0 0 275 275"  preserveAspectRatio="xMidYMid meet"> <metadata> </metadata> <g transform="translate(0.000000,300.000000) scale(0.100000,-0.100000)" fill="#E09600" stroke="none"> <path d="M1385 2248 c-160 -117 -317 -240 -351 -273 -121 -119 -124 -136 -124 -702 0 -244 3 -443 6 -443 3 0 66 42 140 93 l134 92 0 205 c1 468 10 487 342 728 l147 107 1 203 c0 111 -1 202 -3 202 -1 0 -133 -96 -292 -212z"/> <path d="M1781 1994 c-338 -249 -383 -286 -425 -348 -65 -96 -67 -109 -64 -624 l3 -462 225 156 c124 86 264 185 313 221 143 106 198 183 217 299 12 69 14 954 3 954 -5 -1 -127 -89 -272 -196z"/> </g> </svg>} href="https://www.aptible.com/docs/twingate">
     `Integration`
 
     Connect to your Aptible resources with a VPN alternative
   </Card>
 
-  <Card title="VPC Peering" icon="globe" color="E09600" href="https://www.aptible.com/docs/network-integrations">
+  <Card title="VPC Peering" icon="globe" href="https://www.aptible.com/docs/network-integrations">
     `Native`
 
     Connect your external resources to Aptible resources with VPC Peering.
@@ -3078,16 +3136,18 @@ Source: https://www.aptible.com/docs/core-concepts/managed-databases/connecting-
 
 When you provision a [Database](/core-concepts/managed-databases/overview) on Aptible, you'll be provided with a set of Database Credentials.
 
-<Warning> The password in Database Credentials should be protected for security. </Warning>
+<Warning>
+  The password in Database Credentials should be protected for security.
+</Warning>
 
 Database Credentials are presented as connection URLs. Many libraries can use those directly, but you can always break down the URL into components.  The structure is:
 
-<img src="https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/dbcredspath.png?fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=d06fa246b9c6116dfffaeb19e691e8b2" alt="" data-og-width="1134" width="1134" data-og-height="394" height="394" data-path="images/dbcredspath.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/dbcredspath.png?w=280&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=c7509b740b6f48e2fdf50529ecfa9088 280w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/dbcredspath.png?w=560&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=400497ce613ec794972d84981ba8fa91 560w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/dbcredspath.png?w=840&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=f285f16856b7680bf7bd48411c91d6b6 840w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/dbcredspath.png?w=1100&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=750b9c6e3d35c55bb37c932952987ea4 1100w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/dbcredspath.png?w=1650&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=814f2d57a9e8b1bc18c6ac66912baab5 1650w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/dbcredspath.png?w=2500&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=99cf80d6833df864fe3e1fd0d594f456 2500w" />
+<img alt="" />
 
 <Accordion title="Accessing Database Credentials">
   Database Credentials can be accessed from the Aptible Dashboard by selecting the respective Database > selecting "Reveal" under "Credentials"
 
-    <img src="https://mintcdn.com/aptible/MtH_goy23rOUOZd7/images/App_UI_Database_Credentials.png?fit=max&auto=format&n=MtH_goy23rOUOZd7&q=85&s=7799b2561a44e7b3df7aa7cc9f415141" alt="" data-og-width="2800" width="2800" data-og-height="2142" height="2142" data-path="images/App_UI_Database_Credentials.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/aptible/MtH_goy23rOUOZd7/images/App_UI_Database_Credentials.png?w=280&fit=max&auto=format&n=MtH_goy23rOUOZd7&q=85&s=86b7e798c0c78eb2549ba2830f8a0ea7 280w, https://mintcdn.com/aptible/MtH_goy23rOUOZd7/images/App_UI_Database_Credentials.png?w=560&fit=max&auto=format&n=MtH_goy23rOUOZd7&q=85&s=086eb3e51353ad47b04a44c65076aaa7 560w, https://mintcdn.com/aptible/MtH_goy23rOUOZd7/images/App_UI_Database_Credentials.png?w=840&fit=max&auto=format&n=MtH_goy23rOUOZd7&q=85&s=d660672d188df537ee200143a81514e6 840w, https://mintcdn.com/aptible/MtH_goy23rOUOZd7/images/App_UI_Database_Credentials.png?w=1100&fit=max&auto=format&n=MtH_goy23rOUOZd7&q=85&s=2fc0a6cad414ac5ee5c64e6b8d3b0ce8 1100w, https://mintcdn.com/aptible/MtH_goy23rOUOZd7/images/App_UI_Database_Credentials.png?w=1650&fit=max&auto=format&n=MtH_goy23rOUOZd7&q=85&s=44dc9898f2945bb6497b76f07fddb2d3 1650w, https://mintcdn.com/aptible/MtH_goy23rOUOZd7/images/App_UI_Database_Credentials.png?w=2500&fit=max&auto=format&n=MtH_goy23rOUOZd7&q=85&s=70de68fe2c29539525e17dc21d6d973e 2500w" />
+  <img alt="" />
 </Accordion>
 
 # Connecting to a Database using Database Credentials
@@ -3098,11 +3158,13 @@ There are three ways to connect to a Database using Database Credentials:
 * **Database Endpoint:** [Database Endpoints](/core-concepts/managed-databases/connecting-databases/database-endpoints) allow users to expose Aptible Databases on the public internet. When another Database Endpoint is created, a separate set of Database Credentials is provided. Database Endpoints are useful if, for example, a third party needs to be granted access to the Aptible Database. This set of Database Credentials can be found in the Dashboard.
 * **Database Tunnels:** The `aptible db:tunnel` CLI command allows users to create a [Database Tunnel](/core-concepts/managed-databases/connecting-databases/database-tunnels), which provides a convenient, ad-hoc method for users to connect to Aptible Databases from a local workstation. Database Credentials are exposed in the terminal when you successfully tunnel and are only valid while the `db:tunnel` is up. Database Tunnels persist until the connection is closed or for a maximum of 24 hours.
 
-<Tip> The Database Credentials provides credentials for the `aptible` user, but you can also create your own users for database types that support multiple users such as PostgreSQL and MySQL. Refer to the database's own documentation for detailed instructions. If setting up a restricted user, review our [Setting Up Restriced User documentation](https://www.aptible.com/docs/core-concepts/managed-databases/connecting-databases/database-credentials#setting-up-a-restricted-user) for extra considerations.</Tip>
+<Tip>
+  The Database Credentials provides credentials for the `aptible` user, but you can also create your own users for database types that support multiple users, such as PostgreSQL and MySQL. Refer to the database's own documentation for detailed instructions. If setting up a restricted user, review our [Setting Up Restricted User documentation](https://www.aptible.com/docs/core-concepts/managed-databases/connecting-databases/database-credentials#setting-up-a-restricted-user) for extra considerations.
+</Tip>
 
 Note that certain [Supported Databases](/core-concepts/managed-databases/supported-databases/overview) provide multiple credentials. Refer to the respective Database documentation for more information.
 
-# Connnecting to Mulitple Databases within your App
+# Connecting to Multiple Databases within your App
 
 You can create multiple environment variables to store multiple database URLs, utilizing different variable names for each database. These can then be used in a database.yml file. The Aptible platform is agnostic as to how you store your DB configuration, as long as your are reading the added environment variables correctly.
 
@@ -3120,18 +3182,17 @@ The `aptible` user credentials can only be rotated by contacting [Aptible Suppor
 
 Aptible role management for the Environment is limited to what the Aptible user can do through the CLI or Dashboard; Database user management is separate.
 
-You can create other database users on the Database with CREATE USER . However, this can lead to exposing the Database so that it can be accessed by this individual without giving them access to the aptible database user’s credentials. Traditionally, you use aptible db:tunnel to access the Database locally but this command prints the tunnel URL with the aptible user credentials. This can lead to two main scenarios:
+You can create other database users on the Database with CREATE USER . However, this can lead to exposing the Database so that it can be accessed by this individual without giving them access to the aptible database user’s credentials. Traditionally, you use aptible db:tunnel to access the Database locally, but this command prints the tunnel URL with the aptible user credentials. This can lead to two main scenarios:
 
 ### If you don’t mind giving this individual access to the aptible credentials
 
-Then you can give them Manage access to the Database’s Environment so they can tunnel into the database, and use the read-only user and password to log in via the tunnel. This is relatively easy to implement and can help prevent accidental writes but doesn’t ensure that this individual doesn’t login as aptible . The user would also have to remember not to copy/paste the aptible user credentials printed every time they tunnel.
+Then you can give them Manage access to the Database’s Environment so they can tunnel into the database, and use the read-only user and password to log in via the tunnel. This is relatively easy to implement and can help prevent accidental writes but doesn’t ensure that this individual doesn’t login as aptible. The user would also have to remember not to copy/paste the aptible user credentials printed every time they tunnel.
 
 ### If this individual cannot have access to the aptible credentials
 
-Then this user cannot have Manage access to the Database which removes db:tunnel as an option.
+Then this user cannot have Manage access to the Database, which removes db:tunnel as an option.
 
-* If the user only needs CLI access, you can create an App with a tool like psql installed on a different Environment on the same Stack. The user can aptible ssh into the App and use psql to access the Database using the read-only credentials. The Aptible user would require Manage access to this second Environment, but would not need any access to the Database’s Environment for this to work.
-
+* If the user only needs CLI access, you can create an App with a tool like psql installed on a different Environment on the same Stack. The user can aptible SSH into the App and use psql to access the Database using the read-only credentials. The Aptible user would require Manage access to this second Environment, but would not need any access to the Database’s Environment for this to work.
 * If the user needs access from their private system, then you’ll have to create a Database Endpoint to expose the Database over the internet. We strongly recommend using [IP Filtering](https://www.aptible.com/docs/core-concepts/apps/connecting-to-apps/app-endpoints/ip-filtering#ip-filtering) to restrict access to the IP addresses or address ranges that they’ll be accessing the Database from so that the Database isn’t exposed to the entire internet for anyone to attempt to connect to.
 
 
@@ -3140,7 +3201,7 @@ Source: https://www.aptible.com/docs/core-concepts/managed-databases/connecting-
 
 
 
-<img src="https://mintcdn.com/aptible/MtH_goy23rOUOZd7/images/5eac51b-database-endpoints-basic.png?fit=max&auto=format&n=MtH_goy23rOUOZd7&q=85&s=8165135c3b4463b1f6202053c9cae23e" alt="Image" data-og-width="1280" width="1280" data-og-height="720" height="720" data-path="images/5eac51b-database-endpoints-basic.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/aptible/MtH_goy23rOUOZd7/images/5eac51b-database-endpoints-basic.png?w=280&fit=max&auto=format&n=MtH_goy23rOUOZd7&q=85&s=d81fb821c318e4d2da7bea968d49ed03 280w, https://mintcdn.com/aptible/MtH_goy23rOUOZd7/images/5eac51b-database-endpoints-basic.png?w=560&fit=max&auto=format&n=MtH_goy23rOUOZd7&q=85&s=a2f181ad5bb3fbc97f49513061161633 560w, https://mintcdn.com/aptible/MtH_goy23rOUOZd7/images/5eac51b-database-endpoints-basic.png?w=840&fit=max&auto=format&n=MtH_goy23rOUOZd7&q=85&s=41abc094e86815ce19431a360fd3f51e 840w, https://mintcdn.com/aptible/MtH_goy23rOUOZd7/images/5eac51b-database-endpoints-basic.png?w=1100&fit=max&auto=format&n=MtH_goy23rOUOZd7&q=85&s=9f4a8d14e9cb65f3a478a0efefca8eff 1100w, https://mintcdn.com/aptible/MtH_goy23rOUOZd7/images/5eac51b-database-endpoints-basic.png?w=1650&fit=max&auto=format&n=MtH_goy23rOUOZd7&q=85&s=5d026146ef483bb1f68b721c5721e9e8 1650w, https://mintcdn.com/aptible/MtH_goy23rOUOZd7/images/5eac51b-database-endpoints-basic.png?w=2500&fit=max&auto=format&n=MtH_goy23rOUOZd7&q=85&s=a02836b1d8047e1d043ff24c9c25560e 2500w" />
+<img alt="Image" />
 
 Database Endpoints let you expose a [Database](/core-concepts/managed-databases/overview) to the public internet. <Info> The underlying AWS hardware that backs Database Endpoints has an idle connection timeout of 60 minutes. If clients need the connection to remain open longer they can work around this by periodically sending data over the connection (i.e., a "heartbeat") in order to keep it active.</Info>
 
@@ -3154,7 +3215,7 @@ Database Endpoints let you expose a [Database](/core-concepts/managed-databases/
 
 # IP Filtering
 
-<img src="https://mintcdn.com/aptible/MtH_goy23rOUOZd7/images/964e12a-database-endpoints-ip-filtering.png?fit=max&auto=format&n=MtH_goy23rOUOZd7&q=85&s=a6aee938febfb06390a74de23bef066e" alt="Image" data-og-width="1280" width="1280" data-og-height="720" height="720" data-path="images/964e12a-database-endpoints-ip-filtering.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/aptible/MtH_goy23rOUOZd7/images/964e12a-database-endpoints-ip-filtering.png?w=280&fit=max&auto=format&n=MtH_goy23rOUOZd7&q=85&s=beaaac8fe7b726387b0c79cb488b405d 280w, https://mintcdn.com/aptible/MtH_goy23rOUOZd7/images/964e12a-database-endpoints-ip-filtering.png?w=560&fit=max&auto=format&n=MtH_goy23rOUOZd7&q=85&s=732c8319492fc0389ed5bf106e96d02d 560w, https://mintcdn.com/aptible/MtH_goy23rOUOZd7/images/964e12a-database-endpoints-ip-filtering.png?w=840&fit=max&auto=format&n=MtH_goy23rOUOZd7&q=85&s=386e67be7cf8cec810248e35986ac6f1 840w, https://mintcdn.com/aptible/MtH_goy23rOUOZd7/images/964e12a-database-endpoints-ip-filtering.png?w=1100&fit=max&auto=format&n=MtH_goy23rOUOZd7&q=85&s=84a19462e1d599d928f59ce971d574b3 1100w, https://mintcdn.com/aptible/MtH_goy23rOUOZd7/images/964e12a-database-endpoints-ip-filtering.png?w=1650&fit=max&auto=format&n=MtH_goy23rOUOZd7&q=85&s=e7d3ba3ec3fe1119d1dcf7a0687ab4ff 1650w, https://mintcdn.com/aptible/MtH_goy23rOUOZd7/images/964e12a-database-endpoints-ip-filtering.png?w=2500&fit=max&auto=format&n=MtH_goy23rOUOZd7&q=85&s=37577b0469fc129dcc06afe217e0ab62 2500w" />
+<img alt="Image" />
 
 <Warning> To keep your data safe, it's highly recommended to enable IP filtering on Database Endpoints. If you do not enable filtering, your Database will be left open to the entire public internet, and it may be subject to potentially malicious traffic. </Warning>
 
@@ -3212,20 +3273,20 @@ Learn about the various ways to connect to your Database on Aptible
 
 # Read more
 
-<CardGroup cols={4}>
-  <Card title="Database Credentials" icon="book" iconType="duotone" href="https://www.aptible.com/docs/database-credentials">
+<CardGroup>
+  <Card title="Database Credentials" icon="book" href="https://www.aptible.com/docs/database-credentials">
     Connect your Database to other resources deployed on the same Stack
   </Card>
 
-  <Card title="Database Tunnels" icon="book" iconType="duotone" href="https://www.aptible.com/docs/database-tunnels">
+  <Card title="Database Tunnels" icon="book" href="https://www.aptible.com/docs/database-tunnels">
     Connect to your Database for ad-hoc access
   </Card>
 
-  <Card title="Database Endpoints" icon="book" iconType="duotone" href="https://www.aptible.com/docs/database-endpoints">
+  <Card title="Database Endpoints" icon="book" href="https://www.aptible.com/docs/database-endpoints">
     Connect your Database to the internet
   </Card>
 
-  <Card title="Network Integrations" icon="book" iconType="duotone" href="">
+  <Card title="Network Integrations" icon="book" href="">
     Connect your Database using network integrations such as VPC Peering and site-to-site VPN tunnels
   </Card>
 </CardGroup>
@@ -3260,11 +3321,7 @@ By default, Aptible provides automatic backups of all Databases. The retention p
   **Non-production environments:** Daily: 1-14, Monthly: 0, Yearly: 0, Copy backups to another region: FALSE, Keep final backups: FALSE
 </Tip>
 
-# Manual Backups
-
-Manual Backups can be created anytime and are retained indefinitely (even after the Database is deprovisioned).
-
-# Cross-region Copy Backups
+### Cross-region Copy Backups
 
 When `COPY BACKUPS TO ANOTHER REGION` is enabled on an Environment, Aptible will copy all the backups within that Environment to another region. For example, if your Stack is in the US East Coast, then Backups will be copied to the US West Coast.
 
@@ -3274,8 +3331,12 @@ When `COPY BACKUPS TO ANOTHER REGION` is enabled on an Environment, Aptible will
 
 The exact mapping of Cross-region Copy Backups is as follows:
 
+<Note>
+  Aptible guarantees that data processing and storage occur only within the US for US Stacks and EU for EU Stacks.
+</Note>
+
 | Originating region | Destination region(s)          |
-| ------------------ | ------------------------------ |
+| :----------------- | :----------------------------- |
 | us-east-1          | us-west-1, us-west-2           |
 | us-east-2          | us-west-1, us-west-2           |
 | us-west-1          | us-east-1                      |
@@ -3289,14 +3350,10 @@ The exact mapping of Cross-region Copy Backups is as follows:
 | ap-northeast-1     | ap-northeast-2                 |
 | ap-northeast-2     | ap-northeast-1                 |
 | ap-southeast-1     | ap-northeast-2, ap-southeast-2 |
-| ap-southeast-2     | ap-southeast-1                 |
+| ap-southeast-2     | ap-southeast-4                 |
 | ap-south-1         | ap-southeast-2                 |
 
-<Note>
-  Aptible guarantees that data processing and storage occur only within the US for US Stacks and EU for EU Stacks.
-</Note>
-
-# Final Backups
+### Final Backups
 
 When `KEEP FINAL BACKUP` is enabled on an Environment, Aptible will create and retain a backup of the Database when you deprovision it. Final Backups are kept indefinitely as long as the Environment has this setting enabled.
 
@@ -3304,17 +3361,56 @@ When `KEEP FINAL BACKUP` is enabled on an Environment, Aptible will create and r
   We highly recommend enabling this setting for production Environments.
 </Tip>
 
+### Point-in-time Recovery for PostgreSQL
+
+<Info>
+  Point-in-time Recovery is available for PostgreSQL 13 and newer.
+</Info>
+
+Point-in-Time Recovery (PITR) is a database backup feature that allows you to restore your database to any specific moment in time, rather than just to a pre-defined backup snapshot. Using write-ahead log (WAL) files generated by the database, you can recover your database from accidental data deletions, corruptions, or other errors by rolling back to the exact state of your database just before the problem occurred.
+
+When enabled, Aptible will automatically archive WAL files generated by your database. WAL archiving occurs whenever a segment fills (typically 16MB) or at least once per minute if there's minimal write activity.
+
+The retention period for these WAL file archives is determined by the Backup Retention Policy of the Environment where the Database resides. The configuration options are as follows:
+
+* `POINT-IN-TIME RECOVERY DATA RETAINED` - Number of days to retain archived WAL files.
+
+<Tip>
+  We recommend enabling Point-in-Time Recovery for all production databases. At this time, only 1 day of WAL archive retention is supported. If you need longer retention periods, contact [Aptible Support](/how-to-guides/troubleshooting/aptible-support).
+</Tip>
+
+Point-in-time recovery on a database is managed through two operations:
+
+* Enabling and disabling [point-in-time recovery](/core-concepts/managed-databases/managing-databases/database-backups#how-can-i-enable-point-in-time-recoveries-for-a-database)
+* Performing a [point-in-time recovery](/core-concepts/managed-databases/managing-databases/database-backups#how-do-i-perform-a-point-in-time-recovery)
+
+#### Automatic Enablement for New Databases
+
+When you provision a new Database that supports Point-in-Time Recovery (PostgreSQL 13+), Aptible automatically enables PITR if your Environment's `POINT-IN-TIME RECOVERY DATA RETAINED` setting is 1 or more days.
+
+If this setting is 0 days, a warning banner appears when creating a Database. To enable automatic PITR, update your Environment's [backup retention policy](/core-concepts/managed-databases/managing-databases/database-backups#managing-backup-retention-policy) to retain at least 1 day of recovery data.
+
+<Note>
+  Automatic PITR enablement only applies to Databases created through the Dashboard. Databases provisioned via the CLI or Terraform have PITR disabled by default—use the Dashboard to enable it after the database is created.
+</Note>
+
+# Manual Backups
+
+Manual Backups can be created anytime and are retained indefinitely (even after the Database is deprovisioned).
+
 # Managing Backup Retention Policy
 
-The retention period for Automated Backups is determined by the Backup Retention Policy for the Environment in which the Database resides.
+The retention period for Automated Backups and Write-ahead-log File archiving is determined by the Backup Retention Policy for the Environment in which the Database resides.
 
-The default Backup Retention Policy for an Environment is 30 Automatic Daily Backups, 12 Monthly Backups, 6 Yearly Backups, Keep Final Backup: Enabled, Cross-region Copy Backup: Disabled.
+The default Backup Retention Policy for an Environment is 30 Automatic Daily Backups, 12 Monthly Backups, 6 Yearly Backups, 1 day for write-ahead log archive retention, Keep Final Backup: Enabled, Cross-region Copy Backup: Disabled.
 
-Backup Retention Policies can be modified using one of these methods:
+All Backup Retention Policies can be modified within the Aptible Dashboard:
 
-* Within the Aptible Dashboard:
-  * Select the desired Environment
-  * Select the **Backups** tab
+* Select the desired Environment
+* Select the **Backups** tab
+
+Additionaly, backup retention polcies for automatic backups can be modified using one these methods:
+
 * Using the [`aptible backup_retention_policy:set CLI command`](/reference/aptible-cli/cli-commands/cli-backup-retention-policy-set).
 * Using the Aptible [Terraform Provider](https://registry.terraform.io/providers/aptible/aptible/latest/docs)
 
@@ -3323,13 +3419,15 @@ Backup Retention Policies can be modified using one of these methods:
 </Warning>
 
 <Tip>
-  **Cost Optimization Tip:** [See this related blog for more recommendations for balancing continuity and costs](https://www.aptible.com/blog/backup-strategies-on-aptible-balancing-continuity-and-costs)
+  **Cost Optimization Tip:** [See this related blog for more recommendations for
+  balancing continuity and
+  costs](https://www.aptible.com/blog/backup-strategies-on-aptible-balancing-continuity-and-costs)
 </Tip>
 
 ### Excluding a Database from new Automatic Backups
 
 <Frame>
-    <img src="https://mintcdn.com/aptible/MtH_goy23rOUOZd7/images/DisablingDatabaseBackups.gif?s=ab77a92c98cc0f60041e8a2eccdedb55" alt="Disabling Backups" data-og-width="904" width="904" data-og-height="720" height="720" data-path="images/DisablingDatabaseBackups.gif" data-optimize="true" data-opv="3" />
+  <img alt="Disabling Backups" />
 </Frame>
 
 A Database can be excluded from the backup retention policy preventing new Automatic Backups from being taken. This can be done within the Aptible Dashboard from the Database Settings, or via the [Terraform Provider](https://registry.terraform.io/providers/aptible/aptible/latest/docs).
@@ -3339,7 +3437,7 @@ Once this is selected, there will be no new automatic backups taken of this data
 * Using the [`aptible backup:list DB_HANDLE`](/reference/aptible-cli/cli-commands/cli-backup-list) to provide input into the [`aptible backup:purge BACKUP_ID`](/reference/aptible-cli/cli-commands/cli-backup-purge) command
 * Setting the output format to JSON, like so:
 
-```jsx  theme={null}
+```jsx theme={null}
 APTIBLE_OUTPUT_FORMAT=json aptible backup:list DB_HANDLE 
 ```
 
@@ -3354,14 +3452,25 @@ All Backups can be manually and individually deleted.
 Restoring a Backup creates a new Database from the backed-up data. It does not replace or modify the Database the Backup was initially created from. By default, all newly restored Databases are created as a 1GB [General Purpose Container Profile](/core-concepts/scaling/container-profiles#default-container-profile), however you can specify both container size and profile using the [`backup:restore`](/reference/aptible-cli/cli-commands/cli-backup-restore.mdx) command.
 
 <Info>
-  Deep dive: Databases Backups are stored as volume EBS Snapshots. As such, Databases restored from a Backup will initially have degraded disk performance, as described in the ["Restoring from an Amazon EBS snapshot" documentation](https://docs.aws.amazon.com/prescriptive-guidance/latest/backup-recovery/restore.html).
-  If you are using a restored Database for performance testing, the performance test should be run twice: once to ensure all of the required data has been synced to disk and the second time to get an accurate result.
-  Disk initialization time can be minimized by restoring the backup in the same region the Database is being restored to. Generally, this means the original Backup should be restored, not a copy.
+  Deep dive: Databases Backups are stored as volume EBS Snapshots. As such, Databases restored from a Backup will initially have degraded disk performance, as described in the ["Restoring from an Amazon EBS snapshot"
+  documentation](https://docs.aws.amazon.com/prescriptive-guidance/latest/backup-recovery/restore.html). If you are using a restored Database for performance testing, the performance test should be run twice: once to ensure all of the required data has been synced to disk and the second time to get an accurate result. Disk initialization time can be minimized by restoring the backup in the same region the Database is being restored to. Generally, this means the original Backup should be restored, not a copy.
 </Info>
 
 <Tip>
   If you have special retention needs (such as for a litigation hold), please contact [Aptible Support.](/how-to-guides/troubleshooting/aptible-support)
 </Tip>
+
+# Restoring using Point-in-time Recovery
+
+If supported by the database and enabled, restoring with Point-in-time Recovery creates a new Database and then applies all archived write-ahead-log files up to the specified time.
+
+<Note>
+  The database must have automatic backups enabled and the environment's write-head-log archive retention must be greater than zero days before it can enable point-in-time recovery backups.
+</Note>
+
+<Warning>
+  If there are insufficient write-ahead-log files archived, a point-in-time recovery can potentially fail and the new database will fail to start. To resolve this failure, a second point-in-time recovery can be retried with a different time specified.
+</Warning>
 
 # Encryption
 
@@ -3379,7 +3488,7 @@ Aptible provides built-in, automatic [Database Encryption](/core-concepts/manage
     * Using the [`aptible backup_retention_policy:set CLI command`](/reference/aptible-cli/cli-commands/cli-backup-retention-policy-set).
     * Using the Aptible [Terraform Provider](https://registry.terraform.io/providers/aptible/aptible/latest/docs)
 
-        <img src="https://mintcdn.com/aptible/gJr2xlqbHzeeHUse/images/backups.png?fit=max&auto=format&n=gJr2xlqbHzeeHUse&q=85&s=99804bb00264e6da0a9a3c20015cbdff" alt="Reviewing Backup Retention Policy in Aptible Dashboard" data-og-width="2800" width="2800" data-og-height="2000" height="2000" data-path="images/backups.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/aptible/gJr2xlqbHzeeHUse/images/backups.png?w=280&fit=max&auto=format&n=gJr2xlqbHzeeHUse&q=85&s=44e46a585009d35b4565efecc7c87958 280w, https://mintcdn.com/aptible/gJr2xlqbHzeeHUse/images/backups.png?w=560&fit=max&auto=format&n=gJr2xlqbHzeeHUse&q=85&s=6a9b4cb756c0cf1ccef4535cb8eff6c2 560w, https://mintcdn.com/aptible/gJr2xlqbHzeeHUse/images/backups.png?w=840&fit=max&auto=format&n=gJr2xlqbHzeeHUse&q=85&s=6dad40955f5f0a11f0117cc2980dad26 840w, https://mintcdn.com/aptible/gJr2xlqbHzeeHUse/images/backups.png?w=1100&fit=max&auto=format&n=gJr2xlqbHzeeHUse&q=85&s=65111fe53c0571174528e76fff73b6df 1100w, https://mintcdn.com/aptible/gJr2xlqbHzeeHUse/images/backups.png?w=1650&fit=max&auto=format&n=gJr2xlqbHzeeHUse&q=85&s=b62811079b049841e64a49f8bfa234bb 1650w, https://mintcdn.com/aptible/gJr2xlqbHzeeHUse/images/backups.png?w=2500&fit=max&auto=format&n=gJr2xlqbHzeeHUse&q=85&s=1bdbac630ad063bc1607f0565d8c93be 2500w" />
+      <img alt="Reviewing Backup Retention Policy in Aptible Dashboard" />
   </Accordion>
 
   <Accordion title="How do I view/manage Automatic Backups?">
@@ -3417,7 +3526,7 @@ Aptible provides built-in, automatic [Database Encryption](/core-concepts/manage
       * Selecting the **Backup Management** tab
       * Selecting Delete for the respective Backup
 
-        <img src="https://mintcdn.com/aptible/MtH_goy23rOUOZd7/images/App_UI_Purging_Backups.png?fit=max&auto=format&n=MtH_goy23rOUOZd7&q=85&s=addb53fb4b2e5f84ade35320791a650e" alt="" data-og-width="1919" width="1919" data-og-height="915" height="915" data-path="images/App_UI_Purging_Backups.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/aptible/MtH_goy23rOUOZd7/images/App_UI_Purging_Backups.png?w=280&fit=max&auto=format&n=MtH_goy23rOUOZd7&q=85&s=8d94ade53e62ac4b7b48efddf0c4ed34 280w, https://mintcdn.com/aptible/MtH_goy23rOUOZd7/images/App_UI_Purging_Backups.png?w=560&fit=max&auto=format&n=MtH_goy23rOUOZd7&q=85&s=14a21720d3b4f2e850369d6354cb03b9 560w, https://mintcdn.com/aptible/MtH_goy23rOUOZd7/images/App_UI_Purging_Backups.png?w=840&fit=max&auto=format&n=MtH_goy23rOUOZd7&q=85&s=ac0045bf43b3b2dcaa359a3e5bfa6052 840w, https://mintcdn.com/aptible/MtH_goy23rOUOZd7/images/App_UI_Purging_Backups.png?w=1100&fit=max&auto=format&n=MtH_goy23rOUOZd7&q=85&s=34dda12b721194152acf5433773cefd2 1100w, https://mintcdn.com/aptible/MtH_goy23rOUOZd7/images/App_UI_Purging_Backups.png?w=1650&fit=max&auto=format&n=MtH_goy23rOUOZd7&q=85&s=64ab67c24a0b57c9b94173e53061d8a0 1650w, https://mintcdn.com/aptible/MtH_goy23rOUOZd7/images/App_UI_Purging_Backups.png?w=2500&fit=max&auto=format&n=MtH_goy23rOUOZd7&q=85&s=0a63d4f655893b6f257973a8e17c41ae 2500w" />
+        <img alt="" />
   </Accordion>
 
   <Accordion title="How can I exclude a Database from Automatic Backups?">
@@ -3426,24 +3535,34 @@ Aptible provides built-in, automatic [Database Encryption](/core-concepts/manage
     * Select **Disabled: No new backups allowed** within **Database Backups**
   </Accordion>
 
+  <Accordion title="What databases support Point-in-time Recoveries?">
+    All databases running PostgreSQL 13 or higher can enable and perform a point-in-time-recovery.
+  </Accordion>
+
+  <Accordion title="How can I enable Point-in-time Recoveries for a Database?">
+    * Navigating to the respective Database
+    * Selecting the **Settings** tab
+    * Select **Enabled: Allow backups of write-ahead-log data according to environment backup retention policy**
+  </Accordion>
+
   <Accordion title="How should I set my Backup Retention Policy for Production Environments?">
-    For critical production data, maintaining a substantial backup repository is crucial. While compliance frameworks like HIPAA don't mandate a specific duration for data retention, our practice has been to keep backups for up to six years. The introduction of Yearly backups now makes this practice more cost-effective.
-    Aptible provides a robust default backup retention policy, but in most cases, a custom retention policy is best for tailoring to specific needs. Aptible backup retention policies are customizable at the Environment level, which applies to all databases within that environment.
+    For critical production data, maintaining a substantial backup repository is crucial. While compliance frameworks like HIPAA don't mandate a specific duration for data retention, our practice has been to keep backups for up to six years. The introduction of Yearly backups now makes this practice more cost-effective. Aptible provides a robust default backup retention policy, but in most cases, a custom retention policy is best for tailoring to specific needs. Aptible backup retention policies are customizable at the Environment level, which applies to all databases within that environment.
 
     A well-balanced backup retention policy for production environments might look something like this:
 
     * Yearly Backups Retained: 0-6
     * Monthly Backups Retained: 3-12
     * Daily Backups Retained: 15-60
+    * Point-in-time Recovery Data Retained: 1 (recommended for all production databases; only 1 day supported at this time)
   </Accordion>
 
   <Accordion title="How should I set my Backup Retention Policy for Non-production Environments?">
-    When it comes to non-production environments, the backup requirements tend to be less stringent compared to production environments. In these cases, Aptible recommends the establishment of custom retention policies tailored to the specific needs and cost considerations of non-production environments.
-    An effective backup retention policy for a non-production environment might include a more conservative approach:
+    When it comes to non-production environments, the backup requirements tend to be less stringent compared to production environments. In these cases, Aptible recommends the establishment of custom retention policies tailored to the specific needs and cost considerations of non-production environments. An effective backup retention policy for a non-production environment might include a more conservative approach:
 
     * Yearly Backups Retained: 0
     * Monthly Backups Retained: 0-1
     * Daily Backups Retained: 1-7
+    * Point-in-time Recovery Data Retained: 0
 
     To optimize costs, it’s best to disable Cross-region Copy Backups and Keep Final Backups in non-production environments — as these settings are designed for critical production resources.
   </Accordion>
@@ -3462,7 +3581,20 @@ Aptible provides built-in, automatic [Database Encryption](/core-concepts/manage
       * Selecting the **Backup Management** tab
       * Selecting **Restore to a New Database** for the respective Backup
 
-        <img src="https://mintcdn.com/aptible/MtH_goy23rOUOZd7/images/App_UI_Restoring_Backups.png?fit=max&auto=format&n=MtH_goy23rOUOZd7&q=85&s=e74166f0fed1a1f6b7d70e9404019364" alt="" data-og-width="2800" width="2800" data-og-height="2142" height="2142" data-path="images/App_UI_Restoring_Backups.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/aptible/MtH_goy23rOUOZd7/images/App_UI_Restoring_Backups.png?w=280&fit=max&auto=format&n=MtH_goy23rOUOZd7&q=85&s=7fe54d60d077a6aeb8149ba493639d02 280w, https://mintcdn.com/aptible/MtH_goy23rOUOZd7/images/App_UI_Restoring_Backups.png?w=560&fit=max&auto=format&n=MtH_goy23rOUOZd7&q=85&s=338c1392feb84a29d0e94c61837eee5d 560w, https://mintcdn.com/aptible/MtH_goy23rOUOZd7/images/App_UI_Restoring_Backups.png?w=840&fit=max&auto=format&n=MtH_goy23rOUOZd7&q=85&s=c276e972d8abeb65f4d54178f2bce5b0 840w, https://mintcdn.com/aptible/MtH_goy23rOUOZd7/images/App_UI_Restoring_Backups.png?w=1100&fit=max&auto=format&n=MtH_goy23rOUOZd7&q=85&s=b7c416df70f9a34187952238b4f1aa6c 1100w, https://mintcdn.com/aptible/MtH_goy23rOUOZd7/images/App_UI_Restoring_Backups.png?w=1650&fit=max&auto=format&n=MtH_goy23rOUOZd7&q=85&s=79d462f7af258e005d2e81cb86aca837 1650w, https://mintcdn.com/aptible/MtH_goy23rOUOZd7/images/App_UI_Restoring_Backups.png?w=2500&fit=max&auto=format&n=MtH_goy23rOUOZd7&q=85&s=47cd290be0a50b02ad7b214162eb6235 2500w" />
+        <img alt="" />
+  </Accordion>
+
+  <Accordion title="How do I perform a point-in-time-recovery?">
+    You can restore using Point-in-time recoveries from the Aptible Dashboard:
+
+    * Navigating to the respective Environment in which your Database lives in
+    * Selecting the respective Database
+    * Selecting the **Recovery** tab
+    * Specifying a name for the new database
+    * Specifying a time to recover the database to
+    * Selecting **Start Recovery**
+
+      <img alt="" />
   </Accordion>
 </AccordionGroup>
 
@@ -3522,7 +3654,7 @@ CMKs used by Aptible must be symmetric and must not use imported key material. T
 
 After creating a CMK, the key must be shared with Aptible's AWS account. When creating the CMK in the AWS console, you can specify that you would like to share the CMK with the AWS account ID `916150859591`. Alternatively, you can include the following statements in the policy for the key:
 
-```json  theme={null}
+```json theme={null}
 {
     "Sid": "Allow use of the key",
     "Effect": "Allow",
@@ -3562,7 +3694,7 @@ After creating a CMK, the key must be shared with Aptible's AWS account. When cr
 
 New databases encrypted with a CMK can be created via the Aptible CLI using the [`aptible db:create`](/reference/aptible-cli/cli-commands/cli-db-create) command. The CMK should be passed in using the `--key-arn` flag, for example:
 
-```shell  theme={null}
+```shell theme={null}
 aptible db:create $HANDLE --type $TYPE --key-arn arn:aws:kms:us-east-1:111111111111:key/aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee
 ```
 
@@ -3574,7 +3706,7 @@ Custom encryption keys can be rotated through AWS. However, this method does not
 
 CMKs can be added or rotated by creating a backup and restoring from the backup via the Aptible CLI command [`aptible backup:restore`](/reference/aptible-cli/cli-commands/cli-backup-restore)
 
-```shell  theme={null}
+```shell theme={null}
 aptible backup:restore $BACKUP_ID --key-arn arn:aws:kms:us-east-1:111111111111:key/aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee
 ```
 
@@ -3787,7 +3919,7 @@ Source: https://www.aptible.com/docs/core-concepts/managed-databases/managing-da
 
 # Overview
 
-Aptible makes database management effortless by fully managing and monitoring your Aptible Databases 24/7. From scaling to backups, Aptible automatically ensures that your Databases are secure, optimized, and always available. Aptible handles the heavy lifting and provides additional controls and options, giving you the flexibility to manage aspects of your Databases when need.
+Aptible makes database management effortless by fully managing and monitoring your Aptible Databases 24/7. From scaling to backups, Aptible automatically ensures that your Databases are secure, optimized, and always available. Aptible handles the heavy lifting and provides additional controls and options, giving you the flexibility to manage aspects of your Databases when needed.
 
 # Learn More
 
@@ -3799,7 +3931,7 @@ Aptible makes database management effortless by fully managing and monitoring yo
   </Accordion>
 
   <Accordion title="Upgrading Databases">
-    Aptible supports various methods for upgrading Databases - such as dump and restore, logical replication, and in-place upgrades.
+    Aptible supports various methods for upgrading Databases, such as dump and restore, logical replication, and in-place upgrades.
 
     Refer to [Database Upgrades](/core-concepts/managed-databases/managing-databases/database-upgrade-methods) for more information.
   </Accordion>
@@ -3819,7 +3951,7 @@ Aptible makes database management effortless by fully managing and monitoring yo
   </Accordion>
 
   <Accordion title="Encrypting Databases">
-    Aptible has built-in Database Encryption that applies to all Databases as well as the option to configure additional [Custom Database Encryption](/core-concepts/managed-databases/managing-databases/database-encryption/custom-database-encryption). [Application-Level Encryption](/core-concepts/managed-databases/managing-databases/database-encryption/application-level-encryption) may also be used.
+    Aptible has built-in Database Encryption that applies to all Databases, as well as the option to configure additional [Custom Database Encryption](/core-concepts/managed-databases/managing-databases/database-encryption/custom-database-encryption). [Application-Level Encryption](/core-concepts/managed-databases/managing-databases/database-encryption/application-level-encryption) may also be used.
 
     Refer to [Database Encryption](/core-concepts/managed-databases/managing-databases/database-encryption/overview) for more information.
   </Accordion>
@@ -3828,17 +3960,11 @@ Aptible makes database management effortless by fully managing and monitoring yo
     Databases can be restarted in the following ways:
 
     * Using the [`aptible db:restart`](/reference/aptible-cli/cli-commands/cli-db-restart) command if you are also resizing the Database
-
     * Using the [`aptible db:reload`](/reference/aptible-cli/cli-commands/cli-db-reload) command if you are not resizing the Database
-
-      * Note: this command is faster to execute than aptible db:restart
-
+      * Note: this command is faster to execute than `aptible db:restart`
     * Within the Aptible Dashboard, by:
-
       * Navigating to the database
-
       * Selecting the **Settings** tab
-
       * Selecting **Restart**
   </Accordion>
 
@@ -3846,17 +3972,17 @@ Aptible makes database management effortless by fully managing and monitoring yo
     A Database can be renamed in the following ways:
 
     * Using the [`aptible db:rename`](/reference/aptible-cli/cli-commands/cli-db-rename) command
-
     * Using the Aptible [Terraform Provider](https://registry.terraform.io/providers/aptible/aptible/latest/docs)
 
     For the change to take effect, the Database must be restarted.
+
+    <Warning>Database handles cannot start with "internal-" or "sg-" because databases with these prefixes cannot have [Database Endpoints](/core-concepts/managed-databases/connecting-databases/database-endpoints) allocated due to AWS limitations.</Warning>
   </Accordion>
 
   <Accordion title="Deprovisioning Databases">
     A Database can be deprovisioned in the following ways:
 
     * Using the [`aptible db:deprovision`](/reference/aptible-cli/cli-commands/cli-db-deprovision) command
-
     * Using the Aptible [Terraform Provider](https://registry.terraform.io/providers/aptible/aptible/latest/docs)
 
     When a Database is deprovisioned, its [Database Backups](/core-concepts/managed-databases/managing-databases/database-backups) are automatically deleted per the Environment's [Backup Retention Policy.](/core-concepts/managed-databases/managing-databases/database-backups#backup-retention-policy-for-automated-backups)
@@ -3899,7 +4025,7 @@ Source: https://www.aptible.com/docs/core-concepts/managed-databases/overview
 Learn about Aptible Managed Databases that automate provisioning, maintenance, and scaling
 
 <Frame>
-    <img src="https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/databases.png?fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=e33b49b5055dcbbf54d31337915b3b20" alt="" data-og-width="5120" width="5120" data-og-height="2560" height="2560" data-path="images/databases.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/databases.png?w=280&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=dedeacf5d10ae7f7d5d6f385648e769e 280w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/databases.png?w=560&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=0fbf113f5bf8bcffda6e2be3dc4dc4fd 560w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/databases.png?w=840&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=5d75a9ab01fe042639e9fd39ae9e516d 840w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/databases.png?w=1100&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=8da1397518552b9f8d0d674c4d2b5e22 1100w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/databases.png?w=1650&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=0db4deb963b1f991d4d7d4ae083e4783 1650w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/databases.png?w=2500&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=7887855c9af378bf25e345190ff90265 2500w" />
+  <img alt="" />
 </Frame>
 
 # Overview
@@ -3908,16 +4034,16 @@ Aptible Databases provide data persistence and are automatically configured and 
 
 ## Learn more about using Databases on Aptible
 
-<CardGroup cols={3}>
-  <Card title="Provisioning Databases" icon="book" iconType="duotone" href="https://www.aptible.com/docs/provisioning-databases">
+<CardGroup>
+  <Card title="Provisioning Databases" icon="book" href="https://www.aptible.com/docs/provisioning-databases">
     Learn how to provision secure, fully Managed Databases
   </Card>
 
-  <Card title="Connecting to Database" icon="book" iconType="duotone" href="https://www.aptible.com/docs/connecting-to-databases">
+  <Card title="Connecting to Database" icon="book" href="https://www.aptible.com/docs/connecting-to-databases">
     Learn how to connect to your Apps, your team, or the internet to your Databases
   </Card>
 
-  <Card title="Managing Databases" icon="book" iconType="duotone" href="https://www.aptible.com/docs/managing-databases">
+  <Card title="Managing Databases" icon="book" href="https://www.aptible.com/docs/managing-databases">
     Learn how to scale, upgrade, backup, restore, or replicate your Databases
   </Card>
 </CardGroup>
@@ -3926,14 +4052,14 @@ Aptible Databases provide data persistence and are automatically configured and 
 
 <Info>Custom Databases are not supported.</Info>
 
-<CardGroup cols={4} a>
+<CardGroup>
   <Card title="Elasticsearch" icon={<svg fill="#E09600" width="30px" height="30px" viewBox="0 0 24 24" role="img" xmlns="http://www.w3.org/2000/svg"><path d="M13.394 0C8.683 0 4.609 2.716 2.644 6.667h15.641a4.77 4.77 0 0 0 3.073-1.11c.446-.375.864-.785 1.247-1.243l.001-.002A11.974 11.974 0 0 0 13.394 0zM1.804 8.889a12.009 12.009 0 0 0 0 6.222h14.7a3.111 3.111 0 1 0 0-6.222zm.84 8.444C4.61 21.283 8.684 24 13.395 24c3.701 0 7.011-1.677 9.212-4.312l-.001-.002a9.958 9.958 0 0 0-1.247-1.243 4.77 4.77 0 0 0-3.073-1.11z"/></svg>} href="https://www.aptible.com/docs/elasticsearch" />
 
   <Card title="InfluxDB" icon={<svg fill="#E09600" width="30px" height="30px" viewBox="-2.5 0 261 261" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid">     <g>         <path d="M255.59672,156.506259 L230.750771,48.7630778 C229.35754,42.9579495 224.016822,36.920616 217.979489,35.2951801 L104.895589,0.464410265 C103.502359,-2.84217094e-14 101.876923,-2.84217094e-14 100.019282,-2.84217094e-14 C95.1429738,-2.84217094e-14 90.266666,1.85764106 86.783589,4.87630778 L5.74399781,80.3429758 C1.33210029,84.290463 -0.989951029,92.1854375 0.403279765,97.7583607 L26.8746649,213.164312 C28.2678956,218.96944 33.6086137,225.006773 39.6459471,226.632209 L145.531487,259.605338 C146.924718,260.069748 148.550154,260.069748 150.407795,260.069748 C155.284103,260.069748 160.160411,258.212107 163.643488,255.19344 L250.256002,174.61826 C254.6679,169.974157 256.989951,162.543593 255.59672,156.506259 Z M116.738051,26.0069748 L194.52677,49.9241035 C197.545437,50.852924 197.545437,52.2461548 194.52677,52.9427702 L153.658667,62.2309755 C150.64,63.159796 146.228103,61.7665652 144.138257,59.4445139 L115.809231,28.7934364 C113.254974,26.23918 113.719384,25.0781543 116.738051,26.0069748 Z M165.268924,165.330054 C166.197744,168.348721 164.107898,170.206362 161.089231,169.277541 L77.2631786,143.270567 C74.2445119,142.341746 73.5478965,139.78749 75.8699478,137.697643 L139.958564,78.0209245 C142.280616,75.6988732 144.834872,76.6276937 145.531487,79.6463604 L165.268924,165.330054 Z M27.10687,89.398976 L95.1429738,26.0069748 C97.4650251,23.6849235 100.948102,24.1493338 103.270153,26.23918 L137.404308,63.159796 C139.726359,65.4818473 139.261949,68.9649243 137.172103,71.2869756 L69.1359989,134.678977 C66.8139476,137.001028 63.3308706,136.536618 61.0088193,134.446772 L26.8746649,97.5261556 C24.5526135,94.9718991 24.7848187,91.256617 27.10687,89.398976 Z M43.5934344,189.711593 L25.7136392,110.761848 C24.7848187,107.743181 26.1780495,107.046566 28.2678956,109.368617 L56.5969218,140.019695 C58.9189731,142.341746 59.6155885,146.753644 58.9189731,149.77231 L46.6121011,189.711593 C45.6832806,192.962465 44.2900498,192.962465 43.5934344,189.711593 Z M143.209436,236.15262 L54.2748705,208.520209 C51.2562038,207.591388 49.3985627,204.340516 50.3273832,201.089645 L65.1885117,153.255387 C66.1173322,150.236721 69.3682041,148.37908 72.6190759,149.3079 L161.553642,176.708106 C164.572308,177.636926 166.429949,180.887798 165.501129,184.13867 L150.64,231.972927 C149.478975,234.991594 146.460308,236.849235 143.209436,236.15262 Z M222.159181,171.367388 L162.714667,226.632209 C160.392616,228.954261 159.23159,228.02544 160.160411,225.006773 L172.467283,185.06749 C173.396103,182.048824 176.646975,178.797952 179.897847,178.333542 L220.76595,169.045336 C223.784617,167.884311 224.249027,169.277541 222.159181,171.367388 Z M228.660925,159.292721 L179.665642,170.438567 C176.646975,171.367388 173.396103,169.277541 172.699488,166.258875 L151.801026,75.6988732 C150.872206,72.6802064 152.962052,69.4293346 155.980718,68.7327192 L204.976001,57.5868728 C207.994668,56.6580523 211.24554,58.7478985 211.942155,61.7665652 L232.840617,152.326567 C233.537233,155.809644 231.679592,158.828311 228.660925,159.292721 Z">  </path>     </g> </svg>} href="https://www.aptible.com/docs/influxdb" />
 
   <Card title="MongoDB" icon={<svg fill="#E09600" width="30px" height="30px"  viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg"> <title>mongodb</title> <path d="M15.821 23.185s0-10.361 0.344-10.36c0.266 0 0.612 13.365 0.612 13.365-0.476-0.056-0.956-2.199-0.956-3.005zM22.489 12.945c-0.919-4.016-2.932-7.469-5.708-10.134l-0.007-0.006c-0.338-0.516-0.647-1.108-0.895-1.732l-0.024-0.068c0.001 0.020 0.001 0.044 0.001 0.068 0 0.565-0.253 1.070-0.652 1.409l-0.003 0.002c-3.574 3.034-5.848 7.505-5.923 12.508l-0 0.013c-0.001 0.062-0.001 0.135-0.001 0.208 0 4.957 2.385 9.357 6.070 12.115l0.039 0.028 0.087 0.063q0.241 1.784 0.412 3.576h0.601c0.166-1.491 0.39-2.796 0.683-4.076l-0.046 0.239c0.396-0.275 0.742-0.56 1.065-0.869l-0.003 0.003c2.801-2.597 4.549-6.297 4.549-10.404 0-0.061-0-0.121-0.001-0.182l0 0.009c-0.003-0.981-0.092-1.94-0.261-2.871l0.015 0.099z"></path> </svg>} href="https://www.aptible.com/docs/mongodb" />
 
-  <Card title="MySQL" icon={<svg fill="#E09600" width="30px" height="30px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m24.129 23.412-.508-.484c-.251-.331-.518-.624-.809-.891l-.005-.004q-.448-.407-.931-.774-.387-.266-1.064-.641c-.371-.167-.661-.46-.818-.824l-.004-.01-.048-.024c.212-.021.406-.06.592-.115l-.023.006.57-.157c.236-.074.509-.122.792-.133h.006c.298-.012.579-.06.847-.139l-.025.006q.194-.048.399-.109t.351-.109v-.169q-.145-.217-.351-.496c-.131-.178-.278-.333-.443-.468l-.005-.004q-.629-.556-1.303-1.076c-.396-.309-.845-.624-1.311-.916l-.068-.04c-.246-.162-.528-.312-.825-.435l-.034-.012q-.448-.182-.883-.399c-.097-.048-.21-.09-.327-.119l-.011-.002c-.117-.024-.217-.084-.29-.169l-.001-.001c-.138-.182-.259-.389-.355-.609l-.008-.02q-.145-.339-.314-.651-.363-.702-.702-1.427t-.651-1.452q-.217-.484-.399-.967c-.134-.354-.285-.657-.461-.942l.013.023c-.432-.736-.863-1.364-1.331-1.961l.028.038c-.463-.584-.943-1.106-1.459-1.59l-.008-.007c-.509-.478-1.057-.934-1.632-1.356l-.049-.035q-.896-.651-1.96-1.282c-.285-.168-.616-.305-.965-.393l-.026-.006-1.113-.278-.629-.048q-.314-.024-.629-.024c-.148-.078-.275-.171-.387-.279-.11-.105-.229-.204-.353-.295l-.01-.007c-.605-.353-1.308-.676-2.043-.93l-.085-.026c-.193-.113-.425-.179-.672-.179-.176 0-.345.034-.499.095l.009-.003c-.38.151-.67.458-.795.84l-.003.01c-.073.172-.115.371-.115.581 0 .368.13.705.347.968l-.002-.003q.544.725.834 1.14.217.291.448.605c.141.188.266.403.367.63l.008.021c.056.119.105.261.141.407l.003.016q.048.206.121.448.217.556.411 1.14c.141.425.297.785.478 1.128l-.019-.04q.145.266.291.52t.314.496c.065.098.147.179.241.242l.003.002c.099.072.164.185.169.313v.001c-.114.168-.191.369-.217.586l-.001.006c-.035.253-.085.478-.153.695l.008-.03c-.223.666-.351 1.434-.351 2.231 0 .258.013.512.04.763l-.003-.031c.06.958.349 1.838.812 2.6l-.014-.025c.197.295.408.552.641.787.168.188.412.306.684.306.152 0 .296-.037.422-.103l-.005.002c.35-.126.599-.446.617-.827v-.002c.048-.474.12-.898.219-1.312l-.013.067c.024-.063.038-.135.038-.211 0-.015-.001-.03-.002-.045v.002q-.012-.109.133-.206v.048q.145.339.302.677t.326.677c.295.449.608.841.952 1.202l-.003-.003c.345.372.721.706 1.127 1.001l.022.015c.212.162.398.337.566.528l.004.004c.158.186.347.339.56.454l.01.005v-.024h.048c-.039-.087-.102-.157-.18-.205l-.002-.001c-.079-.044-.147-.088-.211-.136l.005.003q-.217-.217-.448-.484t-.423-.508q-.508-.702-.969-1.467t-.871-1.555q-.194-.387-.375-.798t-.351-.798c-.049-.099-.083-.213-.096-.334v-.005c-.006-.115-.072-.214-.168-.265l-.002-.001c-.121.206-.255.384-.408.545l.001-.001c-.159.167-.289.364-.382.58l-.005.013c-.141.342-.244.739-.289 1.154l-.002.019q-.072.641-.145 1.318l-.048.024-.024.024c-.26-.053-.474-.219-.59-.443l-.002-.005q-.182-.351-.326-.69c-.248-.637-.402-1.374-.423-2.144v-.009c-.009-.122-.013-.265-.013-.408 0-.666.105-1.308.299-1.91l-.012.044q.072-.266.314-.896t.097-.871c-.05-.165-.143-.304-.265-.41l-.001-.001c-.122-.106-.233-.217-.335-.335l-.003-.004q-.169-.244-.326-.52t-.278-.544c-.165-.382-.334-.861-.474-1.353l-.022-.089c-.159-.565-.336-1.043-.546-1.503l.026.064c-.111-.252-.24-.47-.39-.669l.006.008q-.244-.326-.436-.617-.244-.314-.484-.605c-.163-.197-.308-.419-.426-.657l-.009-.02c-.048-.097-.09-.21-.119-.327l-.002-.011c-.011-.035-.017-.076-.017-.117 0-.082.024-.159.066-.223l-.001.002c.011-.056.037-.105.073-.145.039-.035.089-.061.143-.072h.002c.085-.055.188-.088.3-.088.084 0 .165.019.236.053l-.003-.001c.219.062.396.124.569.195l-.036-.013q.459.194.847.375c.298.142.552.292.792.459l-.018-.012q.194.121.387.266t.411.291h.339q.387 0 .822.037c.293.023.564.078.822.164l-.024-.007c.481.143.894.312 1.286.515l-.041-.019q.593.302 1.125.641c.589.367 1.098.743 1.577 1.154l-.017-.014c.5.428.954.867 1.38 1.331l.01.012c.416.454.813.947 1.176 1.464l.031.047c.334.472.671 1.018.974 1.584l.042.085c.081.154.163.343.234.536l.011.033q.097.278.217.57.266.605.57 1.221t.57 1.198l.532 1.161c.187.406.396.756.639 1.079l-.011-.015c.203.217.474.369.778.422l.008.001c.368.092.678.196.978.319l-.047-.017c.143.065.327.134.516.195l.04.011c.212.065.396.151.565.259l-.009-.005c.327.183.604.363.868.559l-.021-.015q.411.302.822.57.194.145.651.423t.484.52c-.114-.004-.249-.007-.384-.007-.492 0-.976.032-1.45.094l.056-.006c-.536.072-1.022.203-1.479.39l.04-.014c-.113.049-.248.094-.388.129l-.019.004c-.142.021-.252.135-.266.277v.001c.061.076.11.164.143.26l.002.006c.034.102.075.19.125.272l-.003-.006c.119.211.247.393.391.561l-.004-.005c.141.174.3.325.476.454l.007.005q.244.194.508.399c.161.126.343.25.532.362l.024.013c.284.174.614.34.958.479l.046.016c.374.15.695.324.993.531l-.016-.011q.291.169.58.375t.556.399c.073.072.137.152.191.239l.003.005c.091.104.217.175.36.193h.003v-.048c-.088-.067-.153-.16-.184-.267l-.001-.004c-.025-.102-.062-.191-.112-.273l.002.004zm-18.576-19.205q-.194 0-.363.012c-.115.008-.222.029-.323.063l.009-.003v.024h.048q.097.145.244.326t.266.351l.387.798.048-.024c.113-.082.2-.192.252-.321l.002-.005c.052-.139.082-.301.082-.469 0-.018 0-.036-.001-.054v.003c-.045-.044-.082-.096-.108-.154l-.001-.003-.081-.182c-.053-.084-.127-.15-.214-.192l-.003-.001c-.094-.045-.174-.102-.244-.169z"/></svg>} horizontal={false} href="https://www.aptible.com/docs/mysql" />
+  <Card title="MySQL" icon={<svg fill="#E09600" width="30px" height="30px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m24.129 23.412-.508-.484c-.251-.331-.518-.624-.809-.891l-.005-.004q-.448-.407-.931-.774-.387-.266-1.064-.641c-.371-.167-.661-.46-.818-.824l-.004-.01-.048-.024c.212-.021.406-.06.592-.115l-.023.006.57-.157c.236-.074.509-.122.792-.133h.006c.298-.012.579-.06.847-.139l-.025.006q.194-.048.399-.109t.351-.109v-.169q-.145-.217-.351-.496c-.131-.178-.278-.333-.443-.468l-.005-.004q-.629-.556-1.303-1.076c-.396-.309-.845-.624-1.311-.916l-.068-.04c-.246-.162-.528-.312-.825-.435l-.034-.012q-.448-.182-.883-.399c-.097-.048-.21-.09-.327-.119l-.011-.002c-.117-.024-.217-.084-.29-.169l-.001-.001c-.138-.182-.259-.389-.355-.609l-.008-.02q-.145-.339-.314-.651-.363-.702-.702-1.427t-.651-1.452q-.217-.484-.399-.967c-.134-.354-.285-.657-.461-.942l.013.023c-.432-.736-.863-1.364-1.331-1.961l.028.038c-.463-.584-.943-1.106-1.459-1.59l-.008-.007c-.509-.478-1.057-.934-1.632-1.356l-.049-.035q-.896-.651-1.96-1.282c-.285-.168-.616-.305-.965-.393l-.026-.006-1.113-.278-.629-.048q-.314-.024-.629-.024c-.148-.078-.275-.171-.387-.279-.11-.105-.229-.204-.353-.295l-.01-.007c-.605-.353-1.308-.676-2.043-.93l-.085-.026c-.193-.113-.425-.179-.672-.179-.176 0-.345.034-.499.095l.009-.003c-.38.151-.67.458-.795.84l-.003.01c-.073.172-.115.371-.115.581 0 .368.13.705.347.968l-.002-.003q.544.725.834 1.14.217.291.448.605c.141.188.266.403.367.63l.008.021c.056.119.105.261.141.407l.003.016q.048.206.121.448.217.556.411 1.14c.141.425.297.785.478 1.128l-.019-.04q.145.266.291.52t.314.496c.065.098.147.179.241.242l.003.002c.099.072.164.185.169.313v.001c-.114.168-.191.369-.217.586l-.001.006c-.035.253-.085.478-.153.695l.008-.03c-.223.666-.351 1.434-.351 2.231 0 .258.013.512.04.763l-.003-.031c.06.958.349 1.838.812 2.6l-.014-.025c.197.295.408.552.641.787.168.188.412.306.684.306.152 0 .296-.037.422-.103l-.005.002c.35-.126.599-.446.617-.827v-.002c.048-.474.12-.898.219-1.312l-.013.067c.024-.063.038-.135.038-.211 0-.015-.001-.03-.002-.045v.002q-.012-.109.133-.206v.048q.145.339.302.677t.326.677c.295.449.608.841.952 1.202l-.003-.003c.345.372.721.706 1.127 1.001l.022.015c.212.162.398.337.566.528l.004.004c.158.186.347.339.56.454l.01.005v-.024h.048c-.039-.087-.102-.157-.18-.205l-.002-.001c-.079-.044-.147-.088-.211-.136l.005.003q-.217-.217-.448-.484t-.423-.508q-.508-.702-.969-1.467t-.871-1.555q-.194-.387-.375-.798t-.351-.798c-.049-.099-.083-.213-.096-.334v-.005c-.006-.115-.072-.214-.168-.265l-.002-.001c-.121.206-.255.384-.408.545l.001-.001c-.159.167-.289.364-.382.58l-.005.013c-.141.342-.244.739-.289 1.154l-.002.019q-.072.641-.145 1.318l-.048.024-.024.024c-.26-.053-.474-.219-.59-.443l-.002-.005q-.182-.351-.326-.69c-.248-.637-.402-1.374-.423-2.144v-.009c-.009-.122-.013-.265-.013-.408 0-.666.105-1.308.299-1.91l-.012.044q.072-.266.314-.896t.097-.871c-.05-.165-.143-.304-.265-.41l-.001-.001c-.122-.106-.233-.217-.335-.335l-.003-.004q-.169-.244-.326-.52t-.278-.544c-.165-.382-.334-.861-.474-1.353l-.022-.089c-.159-.565-.336-1.043-.546-1.503l.026.064c-.111-.252-.24-.47-.39-.669l.006.008q-.244-.326-.436-.617-.244-.314-.484-.605c-.163-.197-.308-.419-.426-.657l-.009-.02c-.048-.097-.09-.21-.119-.327l-.002-.011c-.011-.035-.017-.076-.017-.117 0-.082.024-.159.066-.223l-.001.002c.011-.056.037-.105.073-.145.039-.035.089-.061.143-.072h.002c.085-.055.188-.088.3-.088.084 0 .165.019.236.053l-.003-.001c.219.062.396.124.569.195l-.036-.013q.459.194.847.375c.298.142.552.292.792.459l-.018-.012q.194.121.387.266t.411.291h.339q.387 0 .822.037c.293.023.564.078.822.164l-.024-.007c.481.143.894.312 1.286.515l-.041-.019q.593.302 1.125.641c.589.367 1.098.743 1.577 1.154l-.017-.014c.5.428.954.867 1.38 1.331l.01.012c.416.454.813.947 1.176 1.464l.031.047c.334.472.671 1.018.974 1.584l.042.085c.081.154.163.343.234.536l.011.033q.097.278.217.57.266.605.57 1.221t.57 1.198l.532 1.161c.187.406.396.756.639 1.079l-.011-.015c.203.217.474.369.778.422l.008.001c.368.092.678.196.978.319l-.047-.017c.143.065.327.134.516.195l.04.011c.212.065.396.151.565.259l-.009-.005c.327.183.604.363.868.559l-.021-.015q.411.302.822.57.194.145.651.423t.484.52c-.114-.004-.249-.007-.384-.007-.492 0-.976.032-1.45.094l.056-.006c-.536.072-1.022.203-1.479.39l.04-.014c-.113.049-.248.094-.388.129l-.019.004c-.142.021-.252.135-.266.277v.001c.061.076.11.164.143.26l.002.006c.034.102.075.19.125.272l-.003-.006c.119.211.247.393.391.561l-.004-.005c.141.174.3.325.476.454l.007.005q.244.194.508.399c.161.126.343.25.532.362l.024.013c.284.174.614.34.958.479l.046.016c.374.15.695.324.993.531l-.016-.011q.291.169.58.375t.556.399c.073.072.137.152.191.239l.003.005c.091.104.217.175.36.193h.003v-.048c-.088-.067-.153-.16-.184-.267l-.001-.004c-.025-.102-.062-.191-.112-.273l.002.004zm-18.576-19.205q-.194 0-.363.012c-.115.008-.222.029-.323.063l.009-.003v.024h.048q.097.145.244.326t.266.351l.387.798.048-.024c.113-.082.2-.192.252-.321l.002-.005c.052-.139.082-.301.082-.469 0-.018 0-.036-.001-.054v.003c-.045-.044-.082-.096-.108-.154l-.001-.003-.081-.182c-.053-.084-.127-.15-.214-.192l-.003-.001c-.094-.045-.174-.102-.244-.169z"/></svg>} href="https://www.aptible.com/docs/mysql" />
 
   <Card title="PostgreSQL" icon={<svg fill="#E09600" width="30px" height="30px" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">   <path d="M22.839 0c-1.245 0.011-2.479 0.188-3.677 0.536l-0.083 0.027c-0.751-0.131-1.516-0.203-2.276-0.219-1.573-0.027-2.923 0.353-4.011 0.989-1.073-0.369-3.297-1.016-5.641-0.885-1.629 0.088-3.411 0.583-4.735 1.979-1.312 1.391-2.009 3.547-1.864 6.485 0.041 0.807 0.271 2.124 0.656 3.837 0.38 1.709 0.917 3.709 1.589 5.537 0.672 1.823 1.405 3.463 2.552 4.577 0.572 0.557 1.364 1.032 2.296 0.991 0.652-0.027 1.24-0.313 1.751-0.735 0.249 0.328 0.516 0.468 0.755 0.599 0.308 0.167 0.599 0.281 0.907 0.355 0.552 0.14 1.495 0.323 2.599 0.135 0.375-0.063 0.771-0.187 1.167-0.359 0.016 0.437 0.032 0.869 0.047 1.307 0.057 1.38 0.095 2.656 0.505 3.776 0.068 0.183 0.251 1.12 0.969 1.953 0.724 0.833 2.129 1.349 3.739 1.005 1.131-0.24 2.573-0.677 3.532-2.041 0.948-1.344 1.375-3.276 1.459-6.412 0.020-0.172 0.047-0.312 0.072-0.448l0.224 0.021h0.027c1.208 0.052 2.521-0.12 3.62-0.631 0.968-0.448 1.703-0.901 2.239-1.708 0.131-0.199 0.281-0.443 0.319-0.86 0.041-0.411-0.199-1.063-0.595-1.364-0.791-0.604-1.291-0.375-1.828-0.26-0.525 0.115-1.063 0.176-1.599 0.192 1.541-2.593 2.645-5.353 3.276-7.792 0.375-1.443 0.584-2.771 0.599-3.932 0.021-1.161-0.077-2.187-0.771-3.077-2.177-2.776-5.235-3.548-7.599-3.573-0.073 0-0.145 0-0.219 0zM22.776 0.855c2.235-0.021 5.093 0.604 7.145 3.228 0.464 0.589 0.6 1.448 0.584 2.511s-0.213 2.328-0.573 3.719c-0.692 2.699-2.011 5.833-3.859 8.652 0.063 0.047 0.135 0.088 0.208 0.115 0.385 0.161 1.265 0.296 3.025-0.063 0.443-0.095 0.767-0.156 1.105 0.099 0.167 0.14 0.255 0.349 0.244 0.568-0.020 0.161-0.077 0.317-0.177 0.448-0.339 0.509-1.009 0.995-1.869 1.396-0.76 0.353-1.855 0.536-2.817 0.547-0.489 0.005-0.937-0.032-1.319-0.152l-0.020-0.004c-0.147 1.411-0.484 4.203-0.704 5.473-0.176 1.025-0.484 1.844-1.072 2.453-0.589 0.615-1.417 0.979-2.537 1.219-1.385 0.297-2.391-0.021-3.041-0.568s-0.948-1.276-1.125-1.719c-0.124-0.307-0.187-0.703-0.249-1.235-0.063-0.531-0.104-1.177-0.136-1.911-0.041-1.12-0.057-2.24-0.041-3.365-0.577 0.532-1.296 0.88-2.068 1.016-0.921 0.156-1.739 0-2.228-0.12-0.24-0.063-0.475-0.151-0.693-0.271-0.229-0.12-0.443-0.255-0.588-0.527-0.084-0.156-0.109-0.337-0.073-0.509 0.041-0.177 0.145-0.328 0.287-0.443 0.265-0.215 0.615-0.333 1.14-0.443 0.959-0.199 1.297-0.333 1.5-0.496 0.172-0.135 0.371-0.416 0.713-0.828 0-0.015 0-0.036-0.005-0.052-0.619-0.020-1.224-0.181-1.771-0.479-0.197 0.208-1.224 1.292-2.468 2.792-0.521 0.624-1.099 0.984-1.713 1.011-0.609 0.025-1.163-0.281-1.631-0.735-0.937-0.912-1.688-2.48-2.339-4.251s-1.177-3.744-1.557-5.421c-0.375-1.683-0.599-3.037-0.631-3.688-0.14-2.776 0.511-4.645 1.625-5.828s2.641-1.625 4.131-1.713c2.672-0.151 5.213 0.781 5.724 0.979 0.989-0.672 2.265-1.088 3.859-1.063 0.756 0.011 1.505 0.109 2.24 0.292l0.027-0.016c0.323-0.109 0.651-0.208 0.984-0.28 0.907-0.215 1.833-0.324 2.76-0.339zM22.979 1.745h-0.197c-0.76 0.009-1.527 0.099-2.271 0.26 1.661 0.735 2.916 1.864 3.801 3 0.615 0.781 1.12 1.64 1.505 2.557 0.152 0.355 0.251 0.651 0.303 0.88 0.031 0.115 0.047 0.213 0.057 0.312 0 0.052 0.005 0.105-0.021 0.193 0 0.005-0.005 0.016-0.005 0.021 0.043 1.167-0.249 1.957-0.287 3.072-0.025 0.808 0.183 1.756 0.235 2.792 0.047 0.973-0.072 2.041-0.703 3.093 0.052 0.063 0.099 0.125 0.151 0.193 1.672-2.636 2.88-5.547 3.521-8.032 0.344-1.339 0.525-2.552 0.541-3.509 0.016-0.959-0.161-1.657-0.391-1.948-1.792-2.287-4.213-2.871-6.24-2.885zM16.588 2.088c-1.572 0.005-2.703 0.48-3.561 1.193-0.887 0.74-1.48 1.745-1.865 2.781-0.464 1.224-0.625 2.411-0.688 3.219l0.021-0.011c0.475-0.265 1.099-0.536 1.771-0.687 0.667-0.157 1.391-0.204 2.041 0.052 0.657 0.249 1.193 0.848 1.391 1.749 0.939 4.344-0.291 5.959-0.744 7.177-0.172 0.443-0.323 0.891-0.443 1.349 0.057-0.011 0.115-0.027 0.172-0.032 0.323-0.025 0.572 0.079 0.719 0.141 0.459 0.192 0.771 0.588 0.943 1.041 0.041 0.12 0.072 0.244 0.093 0.38 0.016 0.052 0.027 0.109 0.027 0.167-0.052 1.661-0.048 3.323 0.015 4.984 0.032 0.719 0.079 1.349 0.136 1.849 0.057 0.495 0.135 0.875 0.188 1.005 0.171 0.427 0.421 0.984 0.875 1.364 0.448 0.381 1.093 0.631 2.276 0.381 1.025-0.224 1.656-0.527 2.077-0.964 0.423-0.443 0.672-1.052 0.833-1.984 0.245-1.401 0.729-5.464 0.787-6.224-0.025-0.579 0.057-1.021 0.245-1.36 0.187-0.344 0.479-0.557 0.735-0.672 0.124-0.057 0.244-0.093 0.343-0.125-0.104-0.145-0.213-0.291-0.323-0.432-0.364-0.443-0.667-0.937-0.891-1.463-0.104-0.22-0.219-0.439-0.344-0.647-0.176-0.317-0.4-0.719-0.635-1.172-0.469-0.896-0.979-1.989-1.245-3.052-0.265-1.063-0.301-2.161 0.376-2.932 0.599-0.688 1.656-0.973 3.233-0.812-0.047-0.141-0.072-0.261-0.151-0.443-0.359-0.844-0.828-1.636-1.391-2.355-1.339-1.713-3.511-3.412-6.859-3.469zM7.735 2.156c-0.167 0-0.339 0.005-0.505 0.016-1.349 0.079-2.62 0.468-3.532 1.432-0.911 0.969-1.509 2.547-1.38 5.167 0.027 0.5 0.24 1.885 0.609 3.536 0.371 1.652 0.896 3.595 1.527 5.313 0.629 1.713 1.391 3.208 2.12 3.916 0.364 0.349 0.681 0.495 0.968 0.485 0.287-0.016 0.636-0.183 1.063-0.693 0.776-0.937 1.579-1.844 2.412-2.729-1.199-1.047-1.787-2.629-1.552-4.203 0.135-0.984 0.156-1.907 0.135-2.636-0.015-0.708-0.063-1.176-0.063-1.473 0-0.011 0-0.016 0-0.027v-0.005l-0.005-0.009c0-1.537 0.272-3.057 0.792-4.5 0.375-0.996 0.928-2 1.76-2.819-0.817-0.271-2.271-0.676-3.843-0.755-0.167-0.011-0.339-0.016-0.505-0.016zM24.265 9.197c-0.905 0.016-1.411 0.251-1.681 0.552-0.376 0.433-0.412 1.193-0.177 2.131 0.233 0.937 0.719 1.984 1.172 2.855 0.224 0.437 0.443 0.828 0.619 1.145 0.183 0.323 0.313 0.547 0.391 0.745 0.073 0.177 0.157 0.333 0.24 0.479 0.349-0.74 0.412-1.464 0.375-2.224-0.047-0.937-0.265-1.896-0.229-2.864 0.037-1.136 0.261-1.876 0.277-2.751-0.324-0.041-0.657-0.068-0.985-0.068zM13.287 9.355c-0.276 0-0.552 0.036-0.823 0.099-0.537 0.131-1.052 0.328-1.537 0.599-0.161 0.088-0.317 0.188-0.463 0.303l-0.032 0.025c0.011 0.199 0.047 0.667 0.063 1.365 0.016 0.76 0 1.728-0.145 2.776-0.323 2.281 1.333 4.167 3.276 4.172 0.115-0.469 0.301-0.944 0.489-1.443 0.541-1.459 1.604-2.521 0.708-6.677-0.145-0.677-0.437-0.953-0.839-1.109-0.224-0.079-0.457-0.115-0.697-0.109zM23.844 9.625h0.068c0.083 0.005 0.167 0.011 0.239 0.031 0.068 0.016 0.131 0.037 0.183 0.073 0.052 0.031 0.088 0.083 0.099 0.145v0.011c0 0.063-0.016 0.125-0.047 0.183-0.041 0.072-0.088 0.14-0.145 0.197-0.136 0.151-0.319 0.251-0.516 0.281-0.193 0.027-0.385-0.025-0.547-0.135-0.063-0.048-0.125-0.1-0.172-0.157-0.047-0.047-0.073-0.109-0.084-0.172-0.004-0.061 0.011-0.124 0.052-0.171 0.048-0.048 0.1-0.089 0.157-0.12 0.129-0.073 0.301-0.125 0.5-0.152 0.072-0.009 0.145-0.015 0.213-0.020zM13.416 9.849c0.068 0 0.147 0.005 0.22 0.015 0.208 0.032 0.385 0.084 0.525 0.167 0.068 0.032 0.131 0.084 0.177 0.141 0.052 0.063 0.077 0.14 0.073 0.224-0.016 0.077-0.048 0.151-0.1 0.208-0.057 0.068-0.119 0.125-0.192 0.172-0.172 0.125-0.385 0.177-0.599 0.151-0.215-0.036-0.412-0.14-0.557-0.301-0.063-0.068-0.115-0.141-0.157-0.219-0.047-0.073-0.067-0.156-0.057-0.24 0.021-0.14 0.141-0.219 0.256-0.26 0.131-0.043 0.271-0.057 0.411-0.052zM25.495 19.64h-0.005c-0.192 0.073-0.353 0.1-0.489 0.163-0.14 0.052-0.251 0.156-0.317 0.285-0.089 0.152-0.156 0.423-0.136 0.885 0.057 0.043 0.125 0.073 0.199 0.095 0.224 0.068 0.609 0.115 1.036 0.109 0.849-0.011 1.896-0.208 2.453-0.469 0.453-0.208 0.88-0.489 1.255-0.817-1.859 0.38-2.905 0.281-3.552 0.016-0.156-0.068-0.307-0.157-0.443-0.267zM14.787 19.765h-0.027c-0.072 0.005-0.172 0.032-0.375 0.251-0.464 0.52-0.625 0.848-1.005 1.151-0.385 0.307-0.88 0.469-1.875 0.672-0.312 0.063-0.495 0.135-0.615 0.192 0.036 0.032 0.036 0.043 0.093 0.068 0.147 0.084 0.333 0.152 0.485 0.193 0.427 0.104 1.124 0.229 1.859 0.104 0.729-0.125 1.489-0.475 2.141-1.385 0.115-0.156 0.124-0.391 0.031-0.641-0.093-0.244-0.297-0.463-0.437-0.52-0.089-0.043-0.183-0.068-0.276-0.084z"/> </svg>} href="https://www.aptible.com/docs/postgresql" />
 
@@ -3941,7 +4067,7 @@ Aptible Databases provide data persistence and are automatically configured and 
 
   <Card title="Redis" icon={<svg fill="#E09600" width="30px" height="30px" viewBox="0 -2 28 28" xmlns="http://www.w3.org/2000/svg"><path d="m27.994 14.729c-.012.267-.365.566-1.091.945-1.495.778-9.236 3.967-10.883 4.821-.589.419-1.324.67-2.116.67-.641 0-1.243-.164-1.768-.452l.019.01c-1.304-.622-9.539-3.95-11.023-4.659-.741-.35-1.119-.653-1.132-.933v2.83c0 .282.39.583 1.132.933 1.484.709 9.722 4.037 11.023 4.659.504.277 1.105.44 1.744.44.795 0 1.531-.252 2.132-.681l-.011.008c1.647-.859 9.388-4.041 10.883-4.821.76-.396 1.096-.7 1.096-.982s0-2.791 0-2.791z"/><path d="m27.992 10.115c-.013.267-.365.565-1.09.944-1.495.778-9.236 3.967-10.883 4.821-.59.421-1.326.672-2.121.672-.639 0-1.24-.163-1.763-.449l.019.01c-1.304-.627-9.539-3.955-11.023-4.664-.741-.35-1.119-.653-1.132-.933v2.83c0 .282.39.583 1.132.933 1.484.709 9.721 4.037 11.023 4.659.506.278 1.108.442 1.749.442.793 0 1.527-.251 2.128-.677l-.011.008c1.647-.859 9.388-4.043 10.883-4.821.76-.397 1.096-.7 1.096-.984s0-2.791 0-2.791z"/><path d="m27.992 5.329c.014-.285-.358-.534-1.107-.81-1.451-.533-9.152-3.596-10.624-4.136-.528-.242-1.144-.383-1.794-.383-.734 0-1.426.18-2.035.498l.024-.012c-1.731.622-9.924 3.835-11.381 4.405-.729.287-1.086.552-1.073.834v2.83c0 .282.39.583 1.132.933 1.484.709 9.721 4.038 11.023 4.66.504.277 1.105.439 1.744.439.795 0 1.531-.252 2.133-.68l-.011.008c1.647-.859 9.388-4.043 10.883-4.821.76-.397 1.096-.7 1.096-.984s0-2.791 0-2.791h-.009zm-17.967 2.684 6.488-.996-1.96 2.874zm14.351-2.588-4.253 1.68-3.835-1.523 4.246-1.679 3.838 1.517zm-11.265-2.785-.628-1.157 1.958.765 1.846-.604-.499 1.196 1.881.7-2.426.252-.543 1.311-.879-1.457-2.8-.252 2.091-.754zm-4.827 1.632c1.916 0 3.467.602 3.467 1.344s-1.559 1.344-3.467 1.344-3.474-.603-3.474-1.344 1.553-1.344 3.474-1.344z"/></svg>} href="https://www.aptible.com/docs/redis" />
 
-  <Card title="SFTP" icon="file" color="E09600" href="https://www.aptible.com/docs/sftp" />
+  <Card title="SFTP" icon="file" href="https://www.aptible.com/docs/sftp" />
 </CardGroup>
 
 
@@ -3956,14 +4082,14 @@ Aptible provides a platform to provision secure, reliable, Managed Databases in 
 
 # Explore Supported Databases
 
-<CardGroup cols={4} a>
+<CardGroup>
   <Card title="Elasticsearch" icon={<svg fill="#E09600" width="30px" height="30px" viewBox="0 0 24 24" role="img" xmlns="http://www.w3.org/2000/svg"><path d="M13.394 0C8.683 0 4.609 2.716 2.644 6.667h15.641a4.77 4.77 0 0 0 3.073-1.11c.446-.375.864-.785 1.247-1.243l.001-.002A11.974 11.974 0 0 0 13.394 0zM1.804 8.889a12.009 12.009 0 0 0 0 6.222h14.7a3.111 3.111 0 1 0 0-6.222zm.84 8.444C4.61 21.283 8.684 24 13.395 24c3.701 0 7.011-1.677 9.212-4.312l-.001-.002a9.958 9.958 0 0 0-1.247-1.243 4.77 4.77 0 0 0-3.073-1.11z"/></svg>} href="https://www.aptible.com/docs/elasticsearch" />
 
   <Card title="InfluxDB" icon={<svg fill="#E09600" width="30px" height="30px" viewBox="-2.5 0 261 261" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid">     <g>         <path d="M255.59672,156.506259 L230.750771,48.7630778 C229.35754,42.9579495 224.016822,36.920616 217.979489,35.2951801 L104.895589,0.464410265 C103.502359,-2.84217094e-14 101.876923,-2.84217094e-14 100.019282,-2.84217094e-14 C95.1429738,-2.84217094e-14 90.266666,1.85764106 86.783589,4.87630778 L5.74399781,80.3429758 C1.33210029,84.290463 -0.989951029,92.1854375 0.403279765,97.7583607 L26.8746649,213.164312 C28.2678956,218.96944 33.6086137,225.006773 39.6459471,226.632209 L145.531487,259.605338 C146.924718,260.069748 148.550154,260.069748 150.407795,260.069748 C155.284103,260.069748 160.160411,258.212107 163.643488,255.19344 L250.256002,174.61826 C254.6679,169.974157 256.989951,162.543593 255.59672,156.506259 Z M116.738051,26.0069748 L194.52677,49.9241035 C197.545437,50.852924 197.545437,52.2461548 194.52677,52.9427702 L153.658667,62.2309755 C150.64,63.159796 146.228103,61.7665652 144.138257,59.4445139 L115.809231,28.7934364 C113.254974,26.23918 113.719384,25.0781543 116.738051,26.0069748 Z M165.268924,165.330054 C166.197744,168.348721 164.107898,170.206362 161.089231,169.277541 L77.2631786,143.270567 C74.2445119,142.341746 73.5478965,139.78749 75.8699478,137.697643 L139.958564,78.0209245 C142.280616,75.6988732 144.834872,76.6276937 145.531487,79.6463604 L165.268924,165.330054 Z M27.10687,89.398976 L95.1429738,26.0069748 C97.4650251,23.6849235 100.948102,24.1493338 103.270153,26.23918 L137.404308,63.159796 C139.726359,65.4818473 139.261949,68.9649243 137.172103,71.2869756 L69.1359989,134.678977 C66.8139476,137.001028 63.3308706,136.536618 61.0088193,134.446772 L26.8746649,97.5261556 C24.5526135,94.9718991 24.7848187,91.256617 27.10687,89.398976 Z M43.5934344,189.711593 L25.7136392,110.761848 C24.7848187,107.743181 26.1780495,107.046566 28.2678956,109.368617 L56.5969218,140.019695 C58.9189731,142.341746 59.6155885,146.753644 58.9189731,149.77231 L46.6121011,189.711593 C45.6832806,192.962465 44.2900498,192.962465 43.5934344,189.711593 Z M143.209436,236.15262 L54.2748705,208.520209 C51.2562038,207.591388 49.3985627,204.340516 50.3273832,201.089645 L65.1885117,153.255387 C66.1173322,150.236721 69.3682041,148.37908 72.6190759,149.3079 L161.553642,176.708106 C164.572308,177.636926 166.429949,180.887798 165.501129,184.13867 L150.64,231.972927 C149.478975,234.991594 146.460308,236.849235 143.209436,236.15262 Z M222.159181,171.367388 L162.714667,226.632209 C160.392616,228.954261 159.23159,228.02544 160.160411,225.006773 L172.467283,185.06749 C173.396103,182.048824 176.646975,178.797952 179.897847,178.333542 L220.76595,169.045336 C223.784617,167.884311 224.249027,169.277541 222.159181,171.367388 Z M228.660925,159.292721 L179.665642,170.438567 C176.646975,171.367388 173.396103,169.277541 172.699488,166.258875 L151.801026,75.6988732 C150.872206,72.6802064 152.962052,69.4293346 155.980718,68.7327192 L204.976001,57.5868728 C207.994668,56.6580523 211.24554,58.7478985 211.942155,61.7665652 L232.840617,152.326567 C233.537233,155.809644 231.679592,158.828311 228.660925,159.292721 Z">  </path>     </g> </svg>} href="https://www.aptible.com/docs/influxdb" />
 
   <Card title="MongoDB" icon={<svg fill="#E09600" width="30px" height="30px"  viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg"> <title>mongodb</title> <path d="M15.821 23.185s0-10.361 0.344-10.36c0.266 0 0.612 13.365 0.612 13.365-0.476-0.056-0.956-2.199-0.956-3.005zM22.489 12.945c-0.919-4.016-2.932-7.469-5.708-10.134l-0.007-0.006c-0.338-0.516-0.647-1.108-0.895-1.732l-0.024-0.068c0.001 0.020 0.001 0.044 0.001 0.068 0 0.565-0.253 1.070-0.652 1.409l-0.003 0.002c-3.574 3.034-5.848 7.505-5.923 12.508l-0 0.013c-0.001 0.062-0.001 0.135-0.001 0.208 0 4.957 2.385 9.357 6.070 12.115l0.039 0.028 0.087 0.063q0.241 1.784 0.412 3.576h0.601c0.166-1.491 0.39-2.796 0.683-4.076l-0.046 0.239c0.396-0.275 0.742-0.56 1.065-0.869l-0.003 0.003c2.801-2.597 4.549-6.297 4.549-10.404 0-0.061-0-0.121-0.001-0.182l0 0.009c-0.003-0.981-0.092-1.94-0.261-2.871l0.015 0.099z"></path> </svg>} href="https://www.aptible.com/docs/mongodb" />
 
-  <Card title="MySQL" icon={<svg fill="#E09600" width="30px" height="30px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m24.129 23.412-.508-.484c-.251-.331-.518-.624-.809-.891l-.005-.004q-.448-.407-.931-.774-.387-.266-1.064-.641c-.371-.167-.661-.46-.818-.824l-.004-.01-.048-.024c.212-.021.406-.06.592-.115l-.023.006.57-.157c.236-.074.509-.122.792-.133h.006c.298-.012.579-.06.847-.139l-.025.006q.194-.048.399-.109t.351-.109v-.169q-.145-.217-.351-.496c-.131-.178-.278-.333-.443-.468l-.005-.004q-.629-.556-1.303-1.076c-.396-.309-.845-.624-1.311-.916l-.068-.04c-.246-.162-.528-.312-.825-.435l-.034-.012q-.448-.182-.883-.399c-.097-.048-.21-.09-.327-.119l-.011-.002c-.117-.024-.217-.084-.29-.169l-.001-.001c-.138-.182-.259-.389-.355-.609l-.008-.02q-.145-.339-.314-.651-.363-.702-.702-1.427t-.651-1.452q-.217-.484-.399-.967c-.134-.354-.285-.657-.461-.942l.013.023c-.432-.736-.863-1.364-1.331-1.961l.028.038c-.463-.584-.943-1.106-1.459-1.59l-.008-.007c-.509-.478-1.057-.934-1.632-1.356l-.049-.035q-.896-.651-1.96-1.282c-.285-.168-.616-.305-.965-.393l-.026-.006-1.113-.278-.629-.048q-.314-.024-.629-.024c-.148-.078-.275-.171-.387-.279-.11-.105-.229-.204-.353-.295l-.01-.007c-.605-.353-1.308-.676-2.043-.93l-.085-.026c-.193-.113-.425-.179-.672-.179-.176 0-.345.034-.499.095l.009-.003c-.38.151-.67.458-.795.84l-.003.01c-.073.172-.115.371-.115.581 0 .368.13.705.347.968l-.002-.003q.544.725.834 1.14.217.291.448.605c.141.188.266.403.367.63l.008.021c.056.119.105.261.141.407l.003.016q.048.206.121.448.217.556.411 1.14c.141.425.297.785.478 1.128l-.019-.04q.145.266.291.52t.314.496c.065.098.147.179.241.242l.003.002c.099.072.164.185.169.313v.001c-.114.168-.191.369-.217.586l-.001.006c-.035.253-.085.478-.153.695l.008-.03c-.223.666-.351 1.434-.351 2.231 0 .258.013.512.04.763l-.003-.031c.06.958.349 1.838.812 2.6l-.014-.025c.197.295.408.552.641.787.168.188.412.306.684.306.152 0 .296-.037.422-.103l-.005.002c.35-.126.599-.446.617-.827v-.002c.048-.474.12-.898.219-1.312l-.013.067c.024-.063.038-.135.038-.211 0-.015-.001-.03-.002-.045v.002q-.012-.109.133-.206v.048q.145.339.302.677t.326.677c.295.449.608.841.952 1.202l-.003-.003c.345.372.721.706 1.127 1.001l.022.015c.212.162.398.337.566.528l.004.004c.158.186.347.339.56.454l.01.005v-.024h.048c-.039-.087-.102-.157-.18-.205l-.002-.001c-.079-.044-.147-.088-.211-.136l.005.003q-.217-.217-.448-.484t-.423-.508q-.508-.702-.969-1.467t-.871-1.555q-.194-.387-.375-.798t-.351-.798c-.049-.099-.083-.213-.096-.334v-.005c-.006-.115-.072-.214-.168-.265l-.002-.001c-.121.206-.255.384-.408.545l.001-.001c-.159.167-.289.364-.382.58l-.005.013c-.141.342-.244.739-.289 1.154l-.002.019q-.072.641-.145 1.318l-.048.024-.024.024c-.26-.053-.474-.219-.59-.443l-.002-.005q-.182-.351-.326-.69c-.248-.637-.402-1.374-.423-2.144v-.009c-.009-.122-.013-.265-.013-.408 0-.666.105-1.308.299-1.91l-.012.044q.072-.266.314-.896t.097-.871c-.05-.165-.143-.304-.265-.41l-.001-.001c-.122-.106-.233-.217-.335-.335l-.003-.004q-.169-.244-.326-.52t-.278-.544c-.165-.382-.334-.861-.474-1.353l-.022-.089c-.159-.565-.336-1.043-.546-1.503l.026.064c-.111-.252-.24-.47-.39-.669l.006.008q-.244-.326-.436-.617-.244-.314-.484-.605c-.163-.197-.308-.419-.426-.657l-.009-.02c-.048-.097-.09-.21-.119-.327l-.002-.011c-.011-.035-.017-.076-.017-.117 0-.082.024-.159.066-.223l-.001.002c.011-.056.037-.105.073-.145.039-.035.089-.061.143-.072h.002c.085-.055.188-.088.3-.088.084 0 .165.019.236.053l-.003-.001c.219.062.396.124.569.195l-.036-.013q.459.194.847.375c.298.142.552.292.792.459l-.018-.012q.194.121.387.266t.411.291h.339q.387 0 .822.037c.293.023.564.078.822.164l-.024-.007c.481.143.894.312 1.286.515l-.041-.019q.593.302 1.125.641c.589.367 1.098.743 1.577 1.154l-.017-.014c.5.428.954.867 1.38 1.331l.01.012c.416.454.813.947 1.176 1.464l.031.047c.334.472.671 1.018.974 1.584l.042.085c.081.154.163.343.234.536l.011.033q.097.278.217.57.266.605.57 1.221t.57 1.198l.532 1.161c.187.406.396.756.639 1.079l-.011-.015c.203.217.474.369.778.422l.008.001c.368.092.678.196.978.319l-.047-.017c.143.065.327.134.516.195l.04.011c.212.065.396.151.565.259l-.009-.005c.327.183.604.363.868.559l-.021-.015q.411.302.822.57.194.145.651.423t.484.52c-.114-.004-.249-.007-.384-.007-.492 0-.976.032-1.45.094l.056-.006c-.536.072-1.022.203-1.479.39l.04-.014c-.113.049-.248.094-.388.129l-.019.004c-.142.021-.252.135-.266.277v.001c.061.076.11.164.143.26l.002.006c.034.102.075.19.125.272l-.003-.006c.119.211.247.393.391.561l-.004-.005c.141.174.3.325.476.454l.007.005q.244.194.508.399c.161.126.343.25.532.362l.024.013c.284.174.614.34.958.479l.046.016c.374.15.695.324.993.531l-.016-.011q.291.169.58.375t.556.399c.073.072.137.152.191.239l.003.005c.091.104.217.175.36.193h.003v-.048c-.088-.067-.153-.16-.184-.267l-.001-.004c-.025-.102-.062-.191-.112-.273l.002.004zm-18.576-19.205q-.194 0-.363.012c-.115.008-.222.029-.323.063l.009-.003v.024h.048q.097.145.244.326t.266.351l.387.798.048-.024c.113-.082.2-.192.252-.321l.002-.005c.052-.139.082-.301.082-.469 0-.018 0-.036-.001-.054v.003c-.045-.044-.082-.096-.108-.154l-.001-.003-.081-.182c-.053-.084-.127-.15-.214-.192l-.003-.001c-.094-.045-.174-.102-.244-.169z"/></svg>} horizontal={false} href="https://www.aptible.com/docs/mysql" />
+  <Card title="MySQL" icon={<svg fill="#E09600" width="30px" height="30px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m24.129 23.412-.508-.484c-.251-.331-.518-.624-.809-.891l-.005-.004q-.448-.407-.931-.774-.387-.266-1.064-.641c-.371-.167-.661-.46-.818-.824l-.004-.01-.048-.024c.212-.021.406-.06.592-.115l-.023.006.57-.157c.236-.074.509-.122.792-.133h.006c.298-.012.579-.06.847-.139l-.025.006q.194-.048.399-.109t.351-.109v-.169q-.145-.217-.351-.496c-.131-.178-.278-.333-.443-.468l-.005-.004q-.629-.556-1.303-1.076c-.396-.309-.845-.624-1.311-.916l-.068-.04c-.246-.162-.528-.312-.825-.435l-.034-.012q-.448-.182-.883-.399c-.097-.048-.21-.09-.327-.119l-.011-.002c-.117-.024-.217-.084-.29-.169l-.001-.001c-.138-.182-.259-.389-.355-.609l-.008-.02q-.145-.339-.314-.651-.363-.702-.702-1.427t-.651-1.452q-.217-.484-.399-.967c-.134-.354-.285-.657-.461-.942l.013.023c-.432-.736-.863-1.364-1.331-1.961l.028.038c-.463-.584-.943-1.106-1.459-1.59l-.008-.007c-.509-.478-1.057-.934-1.632-1.356l-.049-.035q-.896-.651-1.96-1.282c-.285-.168-.616-.305-.965-.393l-.026-.006-1.113-.278-.629-.048q-.314-.024-.629-.024c-.148-.078-.275-.171-.387-.279-.11-.105-.229-.204-.353-.295l-.01-.007c-.605-.353-1.308-.676-2.043-.93l-.085-.026c-.193-.113-.425-.179-.672-.179-.176 0-.345.034-.499.095l.009-.003c-.38.151-.67.458-.795.84l-.003.01c-.073.172-.115.371-.115.581 0 .368.13.705.347.968l-.002-.003q.544.725.834 1.14.217.291.448.605c.141.188.266.403.367.63l.008.021c.056.119.105.261.141.407l.003.016q.048.206.121.448.217.556.411 1.14c.141.425.297.785.478 1.128l-.019-.04q.145.266.291.52t.314.496c.065.098.147.179.241.242l.003.002c.099.072.164.185.169.313v.001c-.114.168-.191.369-.217.586l-.001.006c-.035.253-.085.478-.153.695l.008-.03c-.223.666-.351 1.434-.351 2.231 0 .258.013.512.04.763l-.003-.031c.06.958.349 1.838.812 2.6l-.014-.025c.197.295.408.552.641.787.168.188.412.306.684.306.152 0 .296-.037.422-.103l-.005.002c.35-.126.599-.446.617-.827v-.002c.048-.474.12-.898.219-1.312l-.013.067c.024-.063.038-.135.038-.211 0-.015-.001-.03-.002-.045v.002q-.012-.109.133-.206v.048q.145.339.302.677t.326.677c.295.449.608.841.952 1.202l-.003-.003c.345.372.721.706 1.127 1.001l.022.015c.212.162.398.337.566.528l.004.004c.158.186.347.339.56.454l.01.005v-.024h.048c-.039-.087-.102-.157-.18-.205l-.002-.001c-.079-.044-.147-.088-.211-.136l.005.003q-.217-.217-.448-.484t-.423-.508q-.508-.702-.969-1.467t-.871-1.555q-.194-.387-.375-.798t-.351-.798c-.049-.099-.083-.213-.096-.334v-.005c-.006-.115-.072-.214-.168-.265l-.002-.001c-.121.206-.255.384-.408.545l.001-.001c-.159.167-.289.364-.382.58l-.005.013c-.141.342-.244.739-.289 1.154l-.002.019q-.072.641-.145 1.318l-.048.024-.024.024c-.26-.053-.474-.219-.59-.443l-.002-.005q-.182-.351-.326-.69c-.248-.637-.402-1.374-.423-2.144v-.009c-.009-.122-.013-.265-.013-.408 0-.666.105-1.308.299-1.91l-.012.044q.072-.266.314-.896t.097-.871c-.05-.165-.143-.304-.265-.41l-.001-.001c-.122-.106-.233-.217-.335-.335l-.003-.004q-.169-.244-.326-.52t-.278-.544c-.165-.382-.334-.861-.474-1.353l-.022-.089c-.159-.565-.336-1.043-.546-1.503l.026.064c-.111-.252-.24-.47-.39-.669l.006.008q-.244-.326-.436-.617-.244-.314-.484-.605c-.163-.197-.308-.419-.426-.657l-.009-.02c-.048-.097-.09-.21-.119-.327l-.002-.011c-.011-.035-.017-.076-.017-.117 0-.082.024-.159.066-.223l-.001.002c.011-.056.037-.105.073-.145.039-.035.089-.061.143-.072h.002c.085-.055.188-.088.3-.088.084 0 .165.019.236.053l-.003-.001c.219.062.396.124.569.195l-.036-.013q.459.194.847.375c.298.142.552.292.792.459l-.018-.012q.194.121.387.266t.411.291h.339q.387 0 .822.037c.293.023.564.078.822.164l-.024-.007c.481.143.894.312 1.286.515l-.041-.019q.593.302 1.125.641c.589.367 1.098.743 1.577 1.154l-.017-.014c.5.428.954.867 1.38 1.331l.01.012c.416.454.813.947 1.176 1.464l.031.047c.334.472.671 1.018.974 1.584l.042.085c.081.154.163.343.234.536l.011.033q.097.278.217.57.266.605.57 1.221t.57 1.198l.532 1.161c.187.406.396.756.639 1.079l-.011-.015c.203.217.474.369.778.422l.008.001c.368.092.678.196.978.319l-.047-.017c.143.065.327.134.516.195l.04.011c.212.065.396.151.565.259l-.009-.005c.327.183.604.363.868.559l-.021-.015q.411.302.822.57.194.145.651.423t.484.52c-.114-.004-.249-.007-.384-.007-.492 0-.976.032-1.45.094l.056-.006c-.536.072-1.022.203-1.479.39l.04-.014c-.113.049-.248.094-.388.129l-.019.004c-.142.021-.252.135-.266.277v.001c.061.076.11.164.143.26l.002.006c.034.102.075.19.125.272l-.003-.006c.119.211.247.393.391.561l-.004-.005c.141.174.3.325.476.454l.007.005q.244.194.508.399c.161.126.343.25.532.362l.024.013c.284.174.614.34.958.479l.046.016c.374.15.695.324.993.531l-.016-.011q.291.169.58.375t.556.399c.073.072.137.152.191.239l.003.005c.091.104.217.175.36.193h.003v-.048c-.088-.067-.153-.16-.184-.267l-.001-.004c-.025-.102-.062-.191-.112-.273l.002.004zm-18.576-19.205q-.194 0-.363.012c-.115.008-.222.029-.323.063l.009-.003v.024h.048q.097.145.244.326t.266.351l.387.798.048-.024c.113-.082.2-.192.252-.321l.002-.005c.052-.139.082-.301.082-.469 0-.018 0-.036-.001-.054v.003c-.045-.044-.082-.096-.108-.154l-.001-.003-.081-.182c-.053-.084-.127-.15-.214-.192l-.003-.001c-.094-.045-.174-.102-.244-.169z"/></svg>} href="https://www.aptible.com/docs/mysql" />
 
   <Card title="PostgreSQL" icon={<svg fill="#E09600" width="30px" height="30px" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">   <path d="M22.839 0c-1.245 0.011-2.479 0.188-3.677 0.536l-0.083 0.027c-0.751-0.131-1.516-0.203-2.276-0.219-1.573-0.027-2.923 0.353-4.011 0.989-1.073-0.369-3.297-1.016-5.641-0.885-1.629 0.088-3.411 0.583-4.735 1.979-1.312 1.391-2.009 3.547-1.864 6.485 0.041 0.807 0.271 2.124 0.656 3.837 0.38 1.709 0.917 3.709 1.589 5.537 0.672 1.823 1.405 3.463 2.552 4.577 0.572 0.557 1.364 1.032 2.296 0.991 0.652-0.027 1.24-0.313 1.751-0.735 0.249 0.328 0.516 0.468 0.755 0.599 0.308 0.167 0.599 0.281 0.907 0.355 0.552 0.14 1.495 0.323 2.599 0.135 0.375-0.063 0.771-0.187 1.167-0.359 0.016 0.437 0.032 0.869 0.047 1.307 0.057 1.38 0.095 2.656 0.505 3.776 0.068 0.183 0.251 1.12 0.969 1.953 0.724 0.833 2.129 1.349 3.739 1.005 1.131-0.24 2.573-0.677 3.532-2.041 0.948-1.344 1.375-3.276 1.459-6.412 0.020-0.172 0.047-0.312 0.072-0.448l0.224 0.021h0.027c1.208 0.052 2.521-0.12 3.62-0.631 0.968-0.448 1.703-0.901 2.239-1.708 0.131-0.199 0.281-0.443 0.319-0.86 0.041-0.411-0.199-1.063-0.595-1.364-0.791-0.604-1.291-0.375-1.828-0.26-0.525 0.115-1.063 0.176-1.599 0.192 1.541-2.593 2.645-5.353 3.276-7.792 0.375-1.443 0.584-2.771 0.599-3.932 0.021-1.161-0.077-2.187-0.771-3.077-2.177-2.776-5.235-3.548-7.599-3.573-0.073 0-0.145 0-0.219 0zM22.776 0.855c2.235-0.021 5.093 0.604 7.145 3.228 0.464 0.589 0.6 1.448 0.584 2.511s-0.213 2.328-0.573 3.719c-0.692 2.699-2.011 5.833-3.859 8.652 0.063 0.047 0.135 0.088 0.208 0.115 0.385 0.161 1.265 0.296 3.025-0.063 0.443-0.095 0.767-0.156 1.105 0.099 0.167 0.14 0.255 0.349 0.244 0.568-0.020 0.161-0.077 0.317-0.177 0.448-0.339 0.509-1.009 0.995-1.869 1.396-0.76 0.353-1.855 0.536-2.817 0.547-0.489 0.005-0.937-0.032-1.319-0.152l-0.020-0.004c-0.147 1.411-0.484 4.203-0.704 5.473-0.176 1.025-0.484 1.844-1.072 2.453-0.589 0.615-1.417 0.979-2.537 1.219-1.385 0.297-2.391-0.021-3.041-0.568s-0.948-1.276-1.125-1.719c-0.124-0.307-0.187-0.703-0.249-1.235-0.063-0.531-0.104-1.177-0.136-1.911-0.041-1.12-0.057-2.24-0.041-3.365-0.577 0.532-1.296 0.88-2.068 1.016-0.921 0.156-1.739 0-2.228-0.12-0.24-0.063-0.475-0.151-0.693-0.271-0.229-0.12-0.443-0.255-0.588-0.527-0.084-0.156-0.109-0.337-0.073-0.509 0.041-0.177 0.145-0.328 0.287-0.443 0.265-0.215 0.615-0.333 1.14-0.443 0.959-0.199 1.297-0.333 1.5-0.496 0.172-0.135 0.371-0.416 0.713-0.828 0-0.015 0-0.036-0.005-0.052-0.619-0.020-1.224-0.181-1.771-0.479-0.197 0.208-1.224 1.292-2.468 2.792-0.521 0.624-1.099 0.984-1.713 1.011-0.609 0.025-1.163-0.281-1.631-0.735-0.937-0.912-1.688-2.48-2.339-4.251s-1.177-3.744-1.557-5.421c-0.375-1.683-0.599-3.037-0.631-3.688-0.14-2.776 0.511-4.645 1.625-5.828s2.641-1.625 4.131-1.713c2.672-0.151 5.213 0.781 5.724 0.979 0.989-0.672 2.265-1.088 3.859-1.063 0.756 0.011 1.505 0.109 2.24 0.292l0.027-0.016c0.323-0.109 0.651-0.208 0.984-0.28 0.907-0.215 1.833-0.324 2.76-0.339zM22.979 1.745h-0.197c-0.76 0.009-1.527 0.099-2.271 0.26 1.661 0.735 2.916 1.864 3.801 3 0.615 0.781 1.12 1.64 1.505 2.557 0.152 0.355 0.251 0.651 0.303 0.88 0.031 0.115 0.047 0.213 0.057 0.312 0 0.052 0.005 0.105-0.021 0.193 0 0.005-0.005 0.016-0.005 0.021 0.043 1.167-0.249 1.957-0.287 3.072-0.025 0.808 0.183 1.756 0.235 2.792 0.047 0.973-0.072 2.041-0.703 3.093 0.052 0.063 0.099 0.125 0.151 0.193 1.672-2.636 2.88-5.547 3.521-8.032 0.344-1.339 0.525-2.552 0.541-3.509 0.016-0.959-0.161-1.657-0.391-1.948-1.792-2.287-4.213-2.871-6.24-2.885zM16.588 2.088c-1.572 0.005-2.703 0.48-3.561 1.193-0.887 0.74-1.48 1.745-1.865 2.781-0.464 1.224-0.625 2.411-0.688 3.219l0.021-0.011c0.475-0.265 1.099-0.536 1.771-0.687 0.667-0.157 1.391-0.204 2.041 0.052 0.657 0.249 1.193 0.848 1.391 1.749 0.939 4.344-0.291 5.959-0.744 7.177-0.172 0.443-0.323 0.891-0.443 1.349 0.057-0.011 0.115-0.027 0.172-0.032 0.323-0.025 0.572 0.079 0.719 0.141 0.459 0.192 0.771 0.588 0.943 1.041 0.041 0.12 0.072 0.244 0.093 0.38 0.016 0.052 0.027 0.109 0.027 0.167-0.052 1.661-0.048 3.323 0.015 4.984 0.032 0.719 0.079 1.349 0.136 1.849 0.057 0.495 0.135 0.875 0.188 1.005 0.171 0.427 0.421 0.984 0.875 1.364 0.448 0.381 1.093 0.631 2.276 0.381 1.025-0.224 1.656-0.527 2.077-0.964 0.423-0.443 0.672-1.052 0.833-1.984 0.245-1.401 0.729-5.464 0.787-6.224-0.025-0.579 0.057-1.021 0.245-1.36 0.187-0.344 0.479-0.557 0.735-0.672 0.124-0.057 0.244-0.093 0.343-0.125-0.104-0.145-0.213-0.291-0.323-0.432-0.364-0.443-0.667-0.937-0.891-1.463-0.104-0.22-0.219-0.439-0.344-0.647-0.176-0.317-0.4-0.719-0.635-1.172-0.469-0.896-0.979-1.989-1.245-3.052-0.265-1.063-0.301-2.161 0.376-2.932 0.599-0.688 1.656-0.973 3.233-0.812-0.047-0.141-0.072-0.261-0.151-0.443-0.359-0.844-0.828-1.636-1.391-2.355-1.339-1.713-3.511-3.412-6.859-3.469zM7.735 2.156c-0.167 0-0.339 0.005-0.505 0.016-1.349 0.079-2.62 0.468-3.532 1.432-0.911 0.969-1.509 2.547-1.38 5.167 0.027 0.5 0.24 1.885 0.609 3.536 0.371 1.652 0.896 3.595 1.527 5.313 0.629 1.713 1.391 3.208 2.12 3.916 0.364 0.349 0.681 0.495 0.968 0.485 0.287-0.016 0.636-0.183 1.063-0.693 0.776-0.937 1.579-1.844 2.412-2.729-1.199-1.047-1.787-2.629-1.552-4.203 0.135-0.984 0.156-1.907 0.135-2.636-0.015-0.708-0.063-1.176-0.063-1.473 0-0.011 0-0.016 0-0.027v-0.005l-0.005-0.009c0-1.537 0.272-3.057 0.792-4.5 0.375-0.996 0.928-2 1.76-2.819-0.817-0.271-2.271-0.676-3.843-0.755-0.167-0.011-0.339-0.016-0.505-0.016zM24.265 9.197c-0.905 0.016-1.411 0.251-1.681 0.552-0.376 0.433-0.412 1.193-0.177 2.131 0.233 0.937 0.719 1.984 1.172 2.855 0.224 0.437 0.443 0.828 0.619 1.145 0.183 0.323 0.313 0.547 0.391 0.745 0.073 0.177 0.157 0.333 0.24 0.479 0.349-0.74 0.412-1.464 0.375-2.224-0.047-0.937-0.265-1.896-0.229-2.864 0.037-1.136 0.261-1.876 0.277-2.751-0.324-0.041-0.657-0.068-0.985-0.068zM13.287 9.355c-0.276 0-0.552 0.036-0.823 0.099-0.537 0.131-1.052 0.328-1.537 0.599-0.161 0.088-0.317 0.188-0.463 0.303l-0.032 0.025c0.011 0.199 0.047 0.667 0.063 1.365 0.016 0.76 0 1.728-0.145 2.776-0.323 2.281 1.333 4.167 3.276 4.172 0.115-0.469 0.301-0.944 0.489-1.443 0.541-1.459 1.604-2.521 0.708-6.677-0.145-0.677-0.437-0.953-0.839-1.109-0.224-0.079-0.457-0.115-0.697-0.109zM23.844 9.625h0.068c0.083 0.005 0.167 0.011 0.239 0.031 0.068 0.016 0.131 0.037 0.183 0.073 0.052 0.031 0.088 0.083 0.099 0.145v0.011c0 0.063-0.016 0.125-0.047 0.183-0.041 0.072-0.088 0.14-0.145 0.197-0.136 0.151-0.319 0.251-0.516 0.281-0.193 0.027-0.385-0.025-0.547-0.135-0.063-0.048-0.125-0.1-0.172-0.157-0.047-0.047-0.073-0.109-0.084-0.172-0.004-0.061 0.011-0.124 0.052-0.171 0.048-0.048 0.1-0.089 0.157-0.12 0.129-0.073 0.301-0.125 0.5-0.152 0.072-0.009 0.145-0.015 0.213-0.020zM13.416 9.849c0.068 0 0.147 0.005 0.22 0.015 0.208 0.032 0.385 0.084 0.525 0.167 0.068 0.032 0.131 0.084 0.177 0.141 0.052 0.063 0.077 0.14 0.073 0.224-0.016 0.077-0.048 0.151-0.1 0.208-0.057 0.068-0.119 0.125-0.192 0.172-0.172 0.125-0.385 0.177-0.599 0.151-0.215-0.036-0.412-0.14-0.557-0.301-0.063-0.068-0.115-0.141-0.157-0.219-0.047-0.073-0.067-0.156-0.057-0.24 0.021-0.14 0.141-0.219 0.256-0.26 0.131-0.043 0.271-0.057 0.411-0.052zM25.495 19.64h-0.005c-0.192 0.073-0.353 0.1-0.489 0.163-0.14 0.052-0.251 0.156-0.317 0.285-0.089 0.152-0.156 0.423-0.136 0.885 0.057 0.043 0.125 0.073 0.199 0.095 0.224 0.068 0.609 0.115 1.036 0.109 0.849-0.011 1.896-0.208 2.453-0.469 0.453-0.208 0.88-0.489 1.255-0.817-1.859 0.38-2.905 0.281-3.552 0.016-0.156-0.068-0.307-0.157-0.443-0.267zM14.787 19.765h-0.027c-0.072 0.005-0.172 0.032-0.375 0.251-0.464 0.52-0.625 0.848-1.005 1.151-0.385 0.307-0.88 0.469-1.875 0.672-0.312 0.063-0.495 0.135-0.615 0.192 0.036 0.032 0.036 0.043 0.093 0.068 0.147 0.084 0.333 0.152 0.485 0.193 0.427 0.104 1.124 0.229 1.859 0.104 0.729-0.125 1.489-0.475 2.141-1.385 0.115-0.156 0.124-0.391 0.031-0.641-0.093-0.244-0.297-0.463-0.437-0.52-0.089-0.043-0.183-0.068-0.276-0.084z"/> </svg>} href="https://www.aptible.com/docs/postgresql" />
 
@@ -3971,7 +4097,7 @@ Aptible provides a platform to provision secure, reliable, Managed Databases in 
 
   <Card title="Redis" icon={<svg fill="#E09600" width="30px" height="30px" viewBox="0 -2 28 28" xmlns="http://www.w3.org/2000/svg"><path d="m27.994 14.729c-.012.267-.365.566-1.091.945-1.495.778-9.236 3.967-10.883 4.821-.589.419-1.324.67-2.116.67-.641 0-1.243-.164-1.768-.452l.019.01c-1.304-.622-9.539-3.95-11.023-4.659-.741-.35-1.119-.653-1.132-.933v2.83c0 .282.39.583 1.132.933 1.484.709 9.722 4.037 11.023 4.659.504.277 1.105.44 1.744.44.795 0 1.531-.252 2.132-.681l-.011.008c1.647-.859 9.388-4.041 10.883-4.821.76-.396 1.096-.7 1.096-.982s0-2.791 0-2.791z"/><path d="m27.992 10.115c-.013.267-.365.565-1.09.944-1.495.778-9.236 3.967-10.883 4.821-.59.421-1.326.672-2.121.672-.639 0-1.24-.163-1.763-.449l.019.01c-1.304-.627-9.539-3.955-11.023-4.664-.741-.35-1.119-.653-1.132-.933v2.83c0 .282.39.583 1.132.933 1.484.709 9.721 4.037 11.023 4.659.506.278 1.108.442 1.749.442.793 0 1.527-.251 2.128-.677l-.011.008c1.647-.859 9.388-4.043 10.883-4.821.76-.397 1.096-.7 1.096-.984s0-2.791 0-2.791z"/><path d="m27.992 5.329c.014-.285-.358-.534-1.107-.81-1.451-.533-9.152-3.596-10.624-4.136-.528-.242-1.144-.383-1.794-.383-.734 0-1.426.18-2.035.498l.024-.012c-1.731.622-9.924 3.835-11.381 4.405-.729.287-1.086.552-1.073.834v2.83c0 .282.39.583 1.132.933 1.484.709 9.721 4.038 11.023 4.66.504.277 1.105.439 1.744.439.795 0 1.531-.252 2.133-.68l-.011.008c1.647-.859 9.388-4.043 10.883-4.821.76-.397 1.096-.7 1.096-.984s0-2.791 0-2.791h-.009zm-17.967 2.684 6.488-.996-1.96 2.874zm14.351-2.588-4.253 1.68-3.835-1.523 4.246-1.679 3.838 1.517zm-11.265-2.785-.628-1.157 1.958.765 1.846-.604-.499 1.196 1.881.7-2.426.252-.543 1.311-.879-1.457-2.8-.252 2.091-.754zm-4.827 1.632c1.916 0 3.467.602 3.467 1.344s-1.559 1.344-3.467 1.344-3.474-.603-3.474-1.344 1.553-1.344 3.474-1.344z"/></svg>} href="https://www.aptible.com/docs/redis" />
 
-  <Card title="SFTP" icon="file" color="E09600" href="https://www.aptible.com/docs/sftp" />
+  <Card title="SFTP" icon="file" href="https://www.aptible.com/docs/sftp" />
 </CardGroup>
 
 # FAQ
@@ -3985,10 +4111,12 @@ Aptible provides a platform to provision secure, reliable, Managed Databases in 
     * Selecting **Create Database**
       * Note: STFP Databases cannot be provisioned via the Aptible Dashboard
       <Frame>
-          <img src="https://mintcdn.com/aptible/MtH_goy23rOUOZd7/images/App_UI_Create_Database.png?fit=max&auto=format&n=MtH_goy23rOUOZd7&q=85&s=c55eda36b23821fa1b718bdb59b58331" alt="" data-og-width="2800" width="2800" data-og-height="2000" height="2000" data-path="images/App_UI_Create_Database.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/aptible/MtH_goy23rOUOZd7/images/App_UI_Create_Database.png?w=280&fit=max&auto=format&n=MtH_goy23rOUOZd7&q=85&s=498cbd9efbe2e1c49972726c50eb0b07 280w, https://mintcdn.com/aptible/MtH_goy23rOUOZd7/images/App_UI_Create_Database.png?w=560&fit=max&auto=format&n=MtH_goy23rOUOZd7&q=85&s=9f65c02355d45d8bdba737babb77fcf8 560w, https://mintcdn.com/aptible/MtH_goy23rOUOZd7/images/App_UI_Create_Database.png?w=840&fit=max&auto=format&n=MtH_goy23rOUOZd7&q=85&s=95c00ddd5e8e17fa0097bc2fcb6e889f 840w, https://mintcdn.com/aptible/MtH_goy23rOUOZd7/images/App_UI_Create_Database.png?w=1100&fit=max&auto=format&n=MtH_goy23rOUOZd7&q=85&s=12f2e18cf11a97c6d474f310539c7c2d 1100w, https://mintcdn.com/aptible/MtH_goy23rOUOZd7/images/App_UI_Create_Database.png?w=1650&fit=max&auto=format&n=MtH_goy23rOUOZd7&q=85&s=faaf40e59af898aa83ecf08311fb2c7b 1650w, https://mintcdn.com/aptible/MtH_goy23rOUOZd7/images/App_UI_Create_Database.png?w=2500&fit=max&auto=format&n=MtH_goy23rOUOZd7&q=85&s=41f23844efc0d03094531cf94998a121 2500w" />
+        <img alt="" />
       </Frame>
   * Using the [`aptible db:create`](/reference/aptible-cli/cli-commands/cli-db-create) command
   * Using the Aptible [Terraform Provider](https://registry.terraform.io/providers/aptible/aptible/latest/docs)
+
+  <Note>Database handles cannot start with `internal-` or `sg-` prefixes. Refer to [Managing Databases](/core-concepts/managed-databases/managing-databases/overview) for more information about naming restrictions.</Note>
 </Accordion>
 
 
@@ -4013,7 +4141,7 @@ That said, you can easily work around this. Here's how. When you access your Cou
 
 This code will log you in, then redirect you to Fauxton, the CouchDB management interface.
 
-```javascript  theme={null}
+```javascript theme={null}
 (function (name, password) {
   // Don't use a relative URL in fetch: if the user accessed the page by
   // setting a username and password in the URL, that would fail (in fact, it
@@ -4071,7 +4199,7 @@ The following versions of [Elasticsearch](https://www.elastic.co/elasticsearch) 
 | :-----: | :-------: | :--------------: | :--------------: |
 |   7.10  | Available |        N/A       |        N/A       |
 
-<Note>For databases on EOL versions, Aptible will prevent new databases from being provisioned and mark existing database as `DEPRECATED` on the deprecation date listed above. While existing databases will not be affected, we recommend end-of-life databases to be [upgraded](https://www.aptible.com/docs/core-concepts/managed-databases/managing-databases/database-upgrade-methods#database-upgrades). The latest version offered on Aptible will always be available for provisioning, regardless of end-of-life date.</Note>
+<Note>For databases on EOL versions, Aptible will prevent new databases from being provisioned and mark existing database as `DEPRECATED` on the deprecation date listed above. While existing databases will not be affected, we recommend end-of-life databases to be [upgraded](https://www.aptible.com/docs/core-concepts/managed-databases/managing-databases/database-upgrade-methods#database-upgrades). Restoring a database from a backup will provision a new database that matches the version associated with the backup, even if that version is EOL or Deprecated. The latest version offered on Aptible will always be available for provisioning, regardless of end-of-life date.</Note>
 
 # Connecting to Elasticsearch
 
@@ -4104,7 +4232,7 @@ Deploy will automatically set the JVM heap size to 50% of the container's memory
 
 For Elasticsearch 7.0 or later, you can easily deploy [Elastic's official Kibana image](https://hub.docker.com/_/kibana) as an App on Aptible.
 
-<Card title="How to set up Kibana on Aptible" icon="book-open-reader" iconType="duotone" horizontal href="https://www.aptible.com/docs/running-kibana">
+<Card title="How to set up Kibana on Aptible" icon="book-open-reader" href="https://www.aptible.com/docs/running-kibana">
   Read the guide
 </Card>
 
@@ -4118,7 +4246,7 @@ To avoid this, we recommend using a combination of Elasticsearch's native featur
 * [Snapshot Lifecycle Management](https://www.elastic.co/guide/en/elasticsearch/reference/current/snapshot-lifecycle-management.html) can be configured to back up indexes on a schedule, for example, to S3
 * The Elasticsearch [S3 Repository Plugin](https://www.elastic.co/guide/en/elasticsearch/plugins/current/repository-s3.html), which is installed by default
 
-<Card title="How to set up Elasticsearch Log Rotation" icon="book-open-reader" iconType="duotone" href="https://www.aptible.com/docs/elasticsearch-log-rotation" horizontal>
+<Card title="How to set up Elasticsearch Log Rotation" icon="book-open-reader" href="https://www.aptible.com/docs/elasticsearch-log-rotation">
   Read the guide
 </Card>
 
@@ -4146,7 +4274,7 @@ The following versions of [InfluxDB](https://www.influxdata.com/) are currently 
 |   1.12  |  Available |        N/A        |        N/A       |
 |   2.7   |  Available |        N/A        |        N/A       |
 
-<Note> For databases on EOL versions, Aptible will prevent new databases from being provisioned and mark existing database as `DEPRECATED` on the deprecation date listed above. While existing databases will not be affected, we recommend end-of-life databases to be [upgraded](https://www.aptible.com/docs/core-concepts/managed-databases/managing-databases/database-upgrade-methods#database-upgrades). The latest minor version of each InfluxDB major version offered on Aptible will always be available for provisioning, regardless of end-of-life date.</Note>
+<Note>For databases on EOL versions, Aptible will prevent new databases from being provisioned and mark existing database as `DEPRECATED` on the deprecation date listed above. While existing databases will not be affected, we recommend end-of-life databases to be [upgraded](https://www.aptible.com/docs/core-concepts/managed-databases/managing-databases/database-upgrade-methods#database-upgrades). Restoring a database from a backup will provision a new database that matches the version associated with the backup, even if that version is EOL or Deprecated. The latest version offered on Aptible will always be available for provisioning, regardless of end-of-life date.</Note>
 
 # Accessing data in InfluxDB using Grafana
 
@@ -4182,7 +4310,7 @@ The following versions of [MongoDB](https://www.mongodb.com/) are currently avai
 | :-----: | :-------: | :--------------: | :--------------: |
 |   4.0   | Available |        N/A       |        N/A       |
 
-<Note>For databases on EOL versions, Aptible will prevent new databases from being provisioned and mark existing database as `DEPRECATED` on the deprecation date listed above. While existing databases will not be affected, we recommend end-of-life databases to be [upgraded](https://www.aptible.com/docs/core-concepts/managed-databases/managing-databases/database-upgrade-methods#database-upgrades). The latest version offered on Aptible will always be available for provisioning, regardless of end-of-life date.</Note>
+<Note>For databases on EOL versions, Aptible will prevent new databases from being provisioned and mark existing database as `DEPRECATED` on the deprecation date listed above. While existing databases will not be affected, we recommend end-of-life databases to be [upgraded](https://www.aptible.com/docs/core-concepts/managed-databases/managing-databases/database-upgrade-methods#database-upgrades). Restoring a database from a backup will provision a new database that matches the version associated with the backup, even if that version is EOL or Deprecated. The latest version offered on Aptible will always be available for provisioning, regardless of end-of-life date.</Note>
 
 # Connecting to MongoDB
 
@@ -4249,7 +4377,7 @@ The following versions of [MySQL](https://www.mysql.com/) are currently availabl
 
 MySQL releases LTS versions on a biyearly cadence and fully end-of-lifes (EOL) major versions after 8 years of extended support.
 
-<Note> For databases on EOL versions, Aptible will prevent new databases from being provisioned and mark existing database as `DEPRECATED` on the deprecation date listed above. While existing databases will not be affected, we recommend end-of-life databases to be [upgraded](https://www.aptible.com/docs/core-concepts/managed-databases/managing-databases/database-upgrade-methods#database-upgrades). The latest version offered on Aptible will always be available for provisioning, regardless of end-of-life date.</Note>
+<Note>For databases on EOL versions, Aptible will prevent new databases from being provisioned and mark existing database as `DEPRECATED` on the deprecation date listed above. While existing databases will not be affected, we recommend end-of-life databases to be [upgraded](https://www.aptible.com/docs/core-concepts/managed-databases/managing-databases/database-upgrade-methods#database-upgrades). Restoring a database from a backup will provision a new database that matches the version associated with the backup, even if that version is EOL or Deprecated. The latest version offered on Aptible will always be available for provisioning, regardless of end-of-life date.</Note>
 
 ## Connecting with SSL
 
@@ -4282,7 +4410,7 @@ If needed, you can connect as `root` to your MySQL database. The password for `r
 
 Aptible provides you with full access to a MySQL instance. If you'd like to add more databases, you can do so by [Connecting as `root`](/core-concepts/managed-databases/supported-databases/mysql#connecting-as-root), then using SQL to create the database:
 
-```sql  theme={null}
+```sql theme={null}
 /* Substitute NAME for the actual name you'd like to use */
 CREATE DATABASE NAME;
 GRANT ALL ON NAME.* to 'aptible'@'%';
@@ -4345,7 +4473,7 @@ The following versions of [PostgreSQL](https://www.postgresql.org/) are currentl
 
 <Info>PostgreSQL releases new major versions annually, and supports major versions for 5 years before it is considered end-of-life and no longer maintained.</Info>
 
-<Note> For databases on EOL versions, Aptible will prevent new databases from being provisioned and mark existing database as `DEPRECATED` on the deprecation date listed above. While existing databases will not be affected, we recommend end-of-life databases to be [upgraded](https://www.aptible.com/docs/core-concepts/managed-databases/managing-databases/database-upgrade-methods#database-upgrades). The latest version offered on Aptible will always be available for provisioning, regardless of end-of-life date. </Note>
+<Note>For databases on EOL versions, Aptible will prevent new databases from being provisioned and mark existing database as `DEPRECATED` on the deprecation date listed above. While existing databases will not be affected, we recommend end-of-life databases to be [upgraded](https://www.aptible.com/docs/core-concepts/managed-databases/managing-databases/database-upgrade-methods#database-upgrades). Restoring a database from a backup will provision a new database that matches the version associated with the backup, even if that version is EOL or Deprecated. The latest version offered on Aptible will always be available for provisioning, regardless of end-of-life date.</Note>
 
 # Connecting to PostgreSQL
 
@@ -4418,6 +4546,14 @@ Aptible maintains a link between replicas and their source Database to ensure th
 
 On Aptible, PostgreSQL is configured with default settings for [write-ahead logging](https://www.postgresql.org/docs/current/static/wal-intro.html). Committed transactions are therefore guaranteed to be written to disk.
 
+# Point-in-time Recovery
+
+Point-in-time Recovery (PITR) is available for PostgreSQL 13 and newer. PITR lets you restore your database to any specific moment in time, protecting against accidental data deletions, corruptions, or other errors.
+
+Aptible automatically enables PITR for new PostgreSQL 13+ databases if your Environment's backup retention policy has at least 1 day of recovery data retention configured.
+
+For more details on configuring and using PITR, see [Point-in-time Recovery for PostgreSQL](/core-concepts/managed-databases/managing-databases/database-backups#point-in-time-recovery-for-postgresql).
+
 # Configuration
 
 A PostgreSQL database's [`pg_settings`](https://www.postgresql.org/docs/current/view-pg-settings.html) can be changed with [`ALTER SYSTEM`](https://www.postgresql.org/docs/current/sql-altersystem.html). Changes made this way are written to disk and will persist across database restarts.
@@ -4478,7 +4614,7 @@ The following versions of RabbitMQ are currently available:
 |   4.1   |  Available |        N/A       |        N/A       |
 |   4.2   |  Available |        N/A       |        N/A       |
 
-For databases on EOL versions, Aptible will prevent new databases from being provisioned and mark existing database as `DEPRECATED` on the deprecation date listed above. While existing databases will not be affected, we recommend end-of-life databases to be [upgraded](https://www.aptible.com/docs/core-concepts/managed-databases/managing-databases/database-upgrade-methods#database-upgrades). The latest version offered on Aptible will always be available for provisioning, regardless of end-of-life date.
+<Note>For databases on EOL versions, Aptible will prevent new databases from being provisioned and mark existing database as `DEPRECATED` on the deprecation date listed above. While existing databases will not be affected, we recommend end-of-life databases to be [upgraded](https://www.aptible.com/docs/core-concepts/managed-databases/managing-databases/database-upgrade-methods#database-upgrades). Restoring a database from a backup will provision a new database that matches the version associated with the backup, even if that version is EOL or Deprecated. The latest version offered on Aptible will always be available for provisioning, regardless of end-of-life date.</Note>
 
 # Connecting to RabbitMQ
 
@@ -4492,7 +4628,7 @@ Aptible RabbitMQ [Databases](/core-concepts/managed-databases/overview) provide 
 
 Typically, you should access the management interface via a [Database Tunnel](/core-concepts/managed-databases/connecting-databases/database-tunnels). For example:
 
-```shell  theme={null}
+```shell theme={null}
 aptible db:tunnel "$DB_HANDLE" --type management
 ```
 
@@ -4500,7 +4636,7 @@ aptible db:tunnel "$DB_HANDLE" --type management
 
 You can create a Database Tunnel to connect to the Prometheus endpoint locally, or use [Prometheus with Grafana](https://www.rabbitmq.com/docs/prometheus) as a monitoring solution.
 
-```shell  theme={null}
+```shell theme={null}
 aptible db:tunnel "$DB_HANDLE" --type prometheus
 ```
 
@@ -4538,7 +4674,7 @@ The following versions of [Redis](https://redis.io/) are currently available:
 
 <Info>Redis typically releases new major versions annually with a minor version release 6 months after. The latest major version is fully maintained and supported by Redis, while the previous major version and minor version receive security fixes only. All other versions are considered end-of-life.</Info>
 
-<Note>For databases on EOL versions, Aptible will prevent new databases from being provisioned and mark existing database as `DEPRECATED` on the deprecation date listed above. While existing databases will not be affected, we recommend end-of-life databases to be [upgraded](https://www.aptible.com/docs/core-concepts/managed-databases/managing-databases/database-upgrade-methods#database-upgrades). Follow [this guide](https://www.aptible.com/docs/how-to-guides/database-guides/upgrade-redis) to upgrade your redis databases. The latest version offered on Aptible will always be available for provisioning, regardless of end-of-life date.</Note>
+<Note>For databases on EOL versions, Aptible will prevent new databases from being provisioned and mark existing database as `DEPRECATED` on the deprecation date listed above. While existing databases will not be affected, we recommend end-of-life databases to be [upgraded](https://www.aptible.com/docs/core-concepts/managed-databases/managing-databases/database-upgrade-methods#database-upgrades). Restoring a database from a backup will provision a new database that matches the version associated with the backup, even if that version is EOL or Deprecated. The latest version offered on Aptible will always be available for provisioning, regardless of end-of-life date.</Note>
 
 # Connecting to Redis
 
@@ -4599,7 +4735,7 @@ If you use one of those (they aren't the default), make sure you understand that
 
 If you'd like to use a memory-only flavor, provision it using the [`aptible db:create`](/reference/aptible-cli/cli-commands/cli-db-create) command (substitute `$HANDLE` with your desired handle for this Database). Since the disk will only be used to store configuration files, use the minimum size (with the `--disk-size` parameter as listed below):
 
-```shell  theme={null}
+```shell theme={null}
 aptible db:create \
         --type redis \
         --version 4.0-nordb \
@@ -4675,7 +4811,7 @@ Source: https://www.aptible.com/docs/core-concepts/observability/activity
 
 Learn about tracking changes to your resources with Activity
 
-<img src="https://mintcdn.com/aptible/MtH_goy23rOUOZd7/images/Activity-overview.png?fit=max&auto=format&n=MtH_goy23rOUOZd7&q=85&s=5335c215e0d32b4d4f24c500c13b325e" alt="" data-og-width="10368" width="10368" data-og-height="5184" height="5184" data-path="images/Activity-overview.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/aptible/MtH_goy23rOUOZd7/images/Activity-overview.png?w=280&fit=max&auto=format&n=MtH_goy23rOUOZd7&q=85&s=412484a485ce07639958fec17c0337a8 280w, https://mintcdn.com/aptible/MtH_goy23rOUOZd7/images/Activity-overview.png?w=560&fit=max&auto=format&n=MtH_goy23rOUOZd7&q=85&s=62f7957c4981fe5788a9837e6dc8488e 560w, https://mintcdn.com/aptible/MtH_goy23rOUOZd7/images/Activity-overview.png?w=840&fit=max&auto=format&n=MtH_goy23rOUOZd7&q=85&s=a61554a03b59402044ac0d0e580ecc27 840w, https://mintcdn.com/aptible/MtH_goy23rOUOZd7/images/Activity-overview.png?w=1100&fit=max&auto=format&n=MtH_goy23rOUOZd7&q=85&s=c1ed6369b98de3c5fb359fd9960f7992 1100w, https://mintcdn.com/aptible/MtH_goy23rOUOZd7/images/Activity-overview.png?w=1650&fit=max&auto=format&n=MtH_goy23rOUOZd7&q=85&s=40ca966cf14eeaccf4043be8a4f1ecec 1650w, https://mintcdn.com/aptible/MtH_goy23rOUOZd7/images/Activity-overview.png?w=2500&fit=max&auto=format&n=MtH_goy23rOUOZd7&q=85&s=edcebde03c9fb4012d95443128fdf049 2500w" />
+<img alt="" />
 
 # Overview
 
@@ -4689,7 +4825,7 @@ Users can only view activity for environments to which they have access.
 
 # Activity Dashboard
 
-<img src="https://mintcdn.com/aptible/MtH_goy23rOUOZd7/images/5-app-ui-1.png?fit=max&auto=format&n=MtH_goy23rOUOZd7&q=85&s=c29dd9d15690cb4f1d1d66813cf13ec1" alt="" data-og-width="2560" width="2560" data-og-height="1280" height="1280" data-path="images/5-app-ui-1.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/aptible/MtH_goy23rOUOZd7/images/5-app-ui-1.png?w=280&fit=max&auto=format&n=MtH_goy23rOUOZd7&q=85&s=ed8ddc6b595a710c2ef825a895485385 280w, https://mintcdn.com/aptible/MtH_goy23rOUOZd7/images/5-app-ui-1.png?w=560&fit=max&auto=format&n=MtH_goy23rOUOZd7&q=85&s=360576bfeabf0a1e38fed099b34d5371 560w, https://mintcdn.com/aptible/MtH_goy23rOUOZd7/images/5-app-ui-1.png?w=840&fit=max&auto=format&n=MtH_goy23rOUOZd7&q=85&s=24c1950279bea571d831ecc3915557c1 840w, https://mintcdn.com/aptible/MtH_goy23rOUOZd7/images/5-app-ui-1.png?w=1100&fit=max&auto=format&n=MtH_goy23rOUOZd7&q=85&s=cdf36061b9129704133fa2f214e4aff3 1100w, https://mintcdn.com/aptible/MtH_goy23rOUOZd7/images/5-app-ui-1.png?w=1650&fit=max&auto=format&n=MtH_goy23rOUOZd7&q=85&s=861a3c70ff9c1132bf8e2efb38c07e65 1650w, https://mintcdn.com/aptible/MtH_goy23rOUOZd7/images/5-app-ui-1.png?w=2500&fit=max&auto=format&n=MtH_goy23rOUOZd7&q=85&s=fba9481ce2f073e790ed69b390f7d534 2500w" />
+<img alt="" />
 
 The Activity dashboard provides a real-time view of operations for active resources in the last seven days. Through the Activity page, you can:
 
@@ -4701,7 +4837,7 @@ The Activity dashboard provides a real-time view of operations for active resour
 
 # Activity Reports
 
-<img src="https://mintcdn.com/aptible/MtH_goy23rOUOZd7/images/Activity-Reports-4.png?fit=max&auto=format&n=MtH_goy23rOUOZd7&q=85&s=85320512b3c534ba8c9e12da2d347298" alt="" data-og-width="2500" width="2500" data-og-height="1250" height="1250" data-path="images/Activity-Reports-4.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/aptible/MtH_goy23rOUOZd7/images/Activity-Reports-4.png?w=280&fit=max&auto=format&n=MtH_goy23rOUOZd7&q=85&s=bb071bd5be59734eb57a1e6993d3f79f 280w, https://mintcdn.com/aptible/MtH_goy23rOUOZd7/images/Activity-Reports-4.png?w=560&fit=max&auto=format&n=MtH_goy23rOUOZd7&q=85&s=735dbbaf2a40047a3eb46880b16cf301 560w, https://mintcdn.com/aptible/MtH_goy23rOUOZd7/images/Activity-Reports-4.png?w=840&fit=max&auto=format&n=MtH_goy23rOUOZd7&q=85&s=d2c87ac19bf7f8c0db8e975c8014a207 840w, https://mintcdn.com/aptible/MtH_goy23rOUOZd7/images/Activity-Reports-4.png?w=1100&fit=max&auto=format&n=MtH_goy23rOUOZd7&q=85&s=26d18455e65c3eeb38f4edcb0884fb8f 1100w, https://mintcdn.com/aptible/MtH_goy23rOUOZd7/images/Activity-Reports-4.png?w=1650&fit=max&auto=format&n=MtH_goy23rOUOZd7&q=85&s=984236f32aeef71e38112390080127ba 1650w, https://mintcdn.com/aptible/MtH_goy23rOUOZd7/images/Activity-Reports-4.png?w=2500&fit=max&auto=format&n=MtH_goy23rOUOZd7&q=85&s=ad0789f40b9872dcb0353bbbf3983c74 2500w" />
+<img alt="" />
 
 Activity Reports provide historical data of all operations in a given environment, including operations executed on resources that were later deleted. These reports are generated on a weekly basis for each environment, and they can be accessed for the duration of the environment's existence.
 
@@ -4721,7 +4857,7 @@ Elasticsearch Ingest Pipelines are supported on Aptible but not currently expose
 
 # Get Started
 
-<Card title="Setting up a ELK stack on Aptible" icon="books" iconType="duotone" href="https://www.aptible.com/docs/elk-stack">
+<Card title="Setting up a ELK stack on Aptible" icon="books" href="https://www.aptible.com/docs/elk-stack">
   Step-by-step instructions on setting up logging to an Elasticsearch database on Aptible
 </Card>
 
@@ -4741,7 +4877,7 @@ The logs are delivered via HTTPS POST, using a JSON `Content-Type`.
 
 The payload is structured as follows. New keys may be added over time, and logs from [Ephemeral SSH Sessions](/core-concepts/apps/connecting-to-apps/ssh-sessions) include additional keys.
 
-```json  theme={null}
+```json theme={null}
 {
   "@timestamp": "2017-01-11T11:11:11.111111111Z",
   "log": "some log line from your app",
@@ -4767,7 +4903,7 @@ Both [Ephemeral SSH Sessions](/core-concepts/apps/connecting-to-apps/ssh-session
 
 # Get Started
 
-<Card title="Setting up a HTTP Log Drain on Aptible" icon="books" iconType="duotone" href="https://www.aptible.com/docs/self-hosted-https-log-drain">
+<Card title="Setting up a HTTP Log Drain on Aptible" icon="books" href="https://www.aptible.com/docs/self-hosted-https-log-drain">
   Step-by-step instructions on setting up logging to an HTTP Log Drain on Aptible
 </Card>
 
@@ -4777,28 +4913,28 @@ Source: https://www.aptible.com/docs/core-concepts/observability/logs/log-drains
 
 Learn about sending Logs to logging destinations
 
-<img src="https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/log-drain-overview.png?fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=cc2e27817fc6481aa21de13177a288e2" alt="" data-og-width="2800" width="2800" data-og-height="2000" height="2000" data-path="images/log-drain-overview.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/log-drain-overview.png?w=280&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=668d08759b3279be510b4207babce133 280w, https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/log-drain-overview.png?w=560&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=622e3fa8b202f990a06fc17b578fee07 560w, https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/log-drain-overview.png?w=840&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=8bea7a4adb22a17aa199ba899e6f9a32 840w, https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/log-drain-overview.png?w=1100&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=aa2206cb0cf036d518c5ac49016f1709 1100w, https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/log-drain-overview.png?w=1650&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=f9085cb4b08a94b4ae7e1587c7819c63 1650w, https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/log-drain-overview.png?w=2500&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=4a6261e4f8044af6a06aef22a8923309 2500w" />
+<img alt="" />
 
 Log Drains let you route Logs to logging destinations for reviewing, searching, and alerting. Log Drains support capturing logs for Apps, Databases, SSH sessions, and Endpoints.
 
 # Explore Log Drains
 
-<CardGroup cols={3}>
-  <Card title="Datadog" icon="book" iconType="duotone" href="https://www.aptible.com/docs/datadog" />
+<CardGroup>
+  <Card title="Datadog" icon="book" href="https://www.aptible.com/docs/datadog" />
 
-  <Card title="Custom - HTTPS" icon="book" iconType="duotone" href="https://www.aptible.com/docs/https-log-drains" />
+  <Card title="Custom - HTTPS" icon="book" href="https://www.aptible.com/docs/https-log-drains" />
 
-  <Card title="Custom - Syslog" icon="book" iconType="duotone" href="https://www.aptible.com/docs/syslog-log-drains" />
+  <Card title="Custom - Syslog" icon="book" href="https://www.aptible.com/docs/syslog-log-drains" />
 
-  <Card title="Elasticsearch" icon="book" iconType="duotone" href="https://www.aptible.com/docs/elasticsearch-log-drains" />
+  <Card title="Elasticsearch" icon="book" href="https://www.aptible.com/docs/elasticsearch-log-drains" />
 
-  <Card title="Logentries" icon="book" iconType="duotone" href="https://www.aptible.com/docs/syslog-log-drains" />
+  <Card title="Logentries" icon="book" href="https://www.aptible.com/docs/syslog-log-drains" />
 
-  <Card title="Mezmo" icon="book" iconType="duotone" href="https://www.aptible.com/docs/mezmo" />
+  <Card title="Mezmo" icon="book" href="https://www.aptible.com/docs/mezmo" />
 
-  <Card title="Papertrail" icon="book" iconType="duotone" href="https://www.aptible.com/docs/papertrail" />
+  <Card title="Papertrail" icon="book" href="https://www.aptible.com/docs/papertrail" />
 
-  <Card title="Sumo Logic" icon="book" iconType="duotone" href="https://www.aptible.com/docs/sumo-logic" />
+  <Card title="Sumo Logic" icon="book" href="https://www.aptible.com/docs/sumo-logic" />
 </CardGroup>
 
 
@@ -4823,7 +4959,7 @@ Syslog [Log Drains](/core-concepts/observability/logs/log-drains/overview) lets 
 
 # Get Started
 
-<Card title="Setting up a logging to Papertrail" icon="books" iconType="duotone" href="https://www.aptible.com/docs/papertrail">
+<Card title="Setting up a logging to Papertrail" icon="books" href="https://www.aptible.com/docs/papertrail">
   Step-by-step instructions on setting up logging to Papertrail
 </Card>
 
@@ -4856,7 +4992,8 @@ Aptible streams live Logs for quick access. For long term retention of logs, you
   </Tab>
 
   <Tab title="Using the the Aptible Dashboard">
-    <img src="https://mintcdn.com/aptible/gJr2xlqbHzeeHUse/images/Logs-overview.png?fit=max&auto=format&n=gJr2xlqbHzeeHUse&q=85&s=6200085336a53f33c403c5fa52e8ec3c" alt="" data-og-width="10368" width="10368" data-og-height="5184" height="5184" data-path="images/Logs-overview.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/aptible/gJr2xlqbHzeeHUse/images/Logs-overview.png?w=280&fit=max&auto=format&n=gJr2xlqbHzeeHUse&q=85&s=ee5da576003f289634d0bf2a06c1e92f 280w, https://mintcdn.com/aptible/gJr2xlqbHzeeHUse/images/Logs-overview.png?w=560&fit=max&auto=format&n=gJr2xlqbHzeeHUse&q=85&s=52514b2024ad2f1102c54f23f128a0fc 560w, https://mintcdn.com/aptible/gJr2xlqbHzeeHUse/images/Logs-overview.png?w=840&fit=max&auto=format&n=gJr2xlqbHzeeHUse&q=85&s=bbcacd1b70556d9716554a5fa44a992b 840w, https://mintcdn.com/aptible/gJr2xlqbHzeeHUse/images/Logs-overview.png?w=1100&fit=max&auto=format&n=gJr2xlqbHzeeHUse&q=85&s=73a3a7ff609a1d99413472d0780f7afc 1100w, https://mintcdn.com/aptible/gJr2xlqbHzeeHUse/images/Logs-overview.png?w=1650&fit=max&auto=format&n=gJr2xlqbHzeeHUse&q=85&s=fd597c8e1eea86225c96b62c73ef1059 1650w, https://mintcdn.com/aptible/gJr2xlqbHzeeHUse/images/Logs-overview.png?w=2500&fit=max&auto=format&n=gJr2xlqbHzeeHUse&q=85&s=f759ef350cdfa03139fc0dc0f6ce9706 2500w" />
+    <img alt="" />
+
     Within the Aptible Dashboard, logs for recent operations can be acccessed by viewing recent [Activity](/core-concepts/observability/activity).
   </Tab>
 </Tabs>
@@ -4901,7 +5038,7 @@ Once you have created a bucket and enabled versioning, apply the following polic
 
 <Warning> You need to replace `YOUR_BUCKET_NAME` in both "Resource" sections with the name of your bucket. </Warning>
 
-```json  theme={null}
+```json theme={null}
 {
   "Version": "2012-10-17",
   "Id": "Aptible log sync",
@@ -4972,7 +5109,7 @@ The files are stored and downloaded in gzip format to minimize storage and trans
 
 Once uncompressed, the logs will be in the [JSON format as emitted by Docker](https://docs.docker.com/config/containers/logging/json-file/). For example:
 
-```json  theme={null}
+```json theme={null}
 {"log":"Log line is here\n","stream":"stdout","time":"2022-01-01T12:23:45.5678Z"}
 {"log":"An error may be here\n","stream":"stderr","time":"2022-01-01T12:23:45.5678Z"}
 ```
@@ -5030,7 +5167,7 @@ All points are enriched with the following tags:
 
     * (Aptible-hosted only) Using [Aptible Metrics Terraform Module](https://registry.terraform.io/modules/aptible/metrics/aptible/latest). This provision an Influx Metric Drain with pre-built Grafana dashboards and alerts for monitoring RAM & CPU usage for your Apps & Databases. This simplifies the setup of Metric Drains so you can start monitoring your Aptible resources immediately, all hosted within your Aptible account.
     * Within the Aptible Dashboard by navigating to the respective Environment > selecting the "Metrics Drain" tab > selecting "Create Metric Drain" > selecting "InfluxDB (This Environment)" or "InfluxDB (Anywhere)"
-      <img src="https://mintcdn.com/aptible/MtH_goy23rOUOZd7/images/App_UI_InfluxDB-self.png?fit=max&auto=format&n=MtH_goy23rOUOZd7&q=85&s=95460e221fa355689af77e9c7d0907d2" alt="" data-og-width="2800" width="2800" data-og-height="2000" height="2000" data-path="images/App_UI_InfluxDB-self.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/aptible/MtH_goy23rOUOZd7/images/App_UI_InfluxDB-self.png?w=280&fit=max&auto=format&n=MtH_goy23rOUOZd7&q=85&s=bf1cff0cf333539d4f194505dfa1b50b 280w, https://mintcdn.com/aptible/MtH_goy23rOUOZd7/images/App_UI_InfluxDB-self.png?w=560&fit=max&auto=format&n=MtH_goy23rOUOZd7&q=85&s=c587d4050e558836fc65b6728b0b3c47 560w, https://mintcdn.com/aptible/MtH_goy23rOUOZd7/images/App_UI_InfluxDB-self.png?w=840&fit=max&auto=format&n=MtH_goy23rOUOZd7&q=85&s=92a34978182c6b25ef4b0fbcc47f6171 840w, https://mintcdn.com/aptible/MtH_goy23rOUOZd7/images/App_UI_InfluxDB-self.png?w=1100&fit=max&auto=format&n=MtH_goy23rOUOZd7&q=85&s=b576da4dc74e6718e5d3ce65ad004d9e 1100w, https://mintcdn.com/aptible/MtH_goy23rOUOZd7/images/App_UI_InfluxDB-self.png?w=1650&fit=max&auto=format&n=MtH_goy23rOUOZd7&q=85&s=de95f17bcd8dc568dbe650420d14003e 1650w, https://mintcdn.com/aptible/MtH_goy23rOUOZd7/images/App_UI_InfluxDB-self.png?w=2500&fit=max&auto=format&n=MtH_goy23rOUOZd7&q=85&s=c09d0e8eb567eeb8c681d832a3d83338 2500w" />
+      <img alt="" />
     * Using the [`aptible metric_drain:create:influxdb`](/reference/aptible-cli/cli-commands/cli-metric-drain-create-influxdb) command
   </Accordion>
 
@@ -5062,10 +5199,10 @@ Metric Drains lets you route metrics for [Apps](/core-concepts/apps/overview) an
 
 # Explore Metric Drains
 
-<CardGroup cols={2}>
-  <Card title="Datadog" icon="book" iconType="duotone" href="https://www.aptible.com/docs/datadog" />
+<CardGroup>
+  <Card title="Datadog" icon="book" href="https://www.aptible.com/docs/datadog" />
 
-  <Card title="InfluxDB" icon="book" iconType="duotone" href="https://www.aptible.com/docs/influxdb-metric-drain" />
+  <Card title="InfluxDB" icon="book" href="https://www.aptible.com/docs/influxdb-metric-drain" />
 </CardGroup>
 
 
@@ -5076,7 +5213,7 @@ Learn about container metrics on Aptible
 
 ## Overview
 
-<img src="https://mintcdn.com/aptible/gJr2xlqbHzeeHUse/images/Metrics-overview.png?fit=max&auto=format&n=gJr2xlqbHzeeHUse&q=85&s=452990249d4fdd19b0dd1c4a0c8d83fa" alt="" data-og-width="10368" width="10368" data-og-height="5184" height="5184" data-path="images/Metrics-overview.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/aptible/gJr2xlqbHzeeHUse/images/Metrics-overview.png?w=280&fit=max&auto=format&n=gJr2xlqbHzeeHUse&q=85&s=411ce287c764e93c32192fe0716b95db 280w, https://mintcdn.com/aptible/gJr2xlqbHzeeHUse/images/Metrics-overview.png?w=560&fit=max&auto=format&n=gJr2xlqbHzeeHUse&q=85&s=5880190677e36147c4a421909086ff2d 560w, https://mintcdn.com/aptible/gJr2xlqbHzeeHUse/images/Metrics-overview.png?w=840&fit=max&auto=format&n=gJr2xlqbHzeeHUse&q=85&s=39e5957b049fc149945e67b72501d1ea 840w, https://mintcdn.com/aptible/gJr2xlqbHzeeHUse/images/Metrics-overview.png?w=1100&fit=max&auto=format&n=gJr2xlqbHzeeHUse&q=85&s=f4a395c14b8cf9bc4fb97348f708b47f 1100w, https://mintcdn.com/aptible/gJr2xlqbHzeeHUse/images/Metrics-overview.png?w=1650&fit=max&auto=format&n=gJr2xlqbHzeeHUse&q=85&s=77ec493b5c6eeb0940a87a8ba748224c 1650w, https://mintcdn.com/aptible/gJr2xlqbHzeeHUse/images/Metrics-overview.png?w=2500&fit=max&auto=format&n=gJr2xlqbHzeeHUse&q=85&s=0154662e7caa6f33a8d28b5e1057793b 2500w" />
+<img alt="" />
 
 Aptible provides key metrics for your app and database containers, such as memory, CPU, and disk usage, and provides them in two forms:
 
@@ -5109,20 +5246,20 @@ The following metrics are available within the Aptible Dashboard
 
 ### Accessing in-app metrics
 
-Metrics can be accessed within the Aptible Dashboard by:
+To access metrics in the Aptible Dashboard, select your app or database and click the **Metrics** tab.
 
-* Selecting the respective app or database
-
-* Selecting the **Metrics** tab
+<Info>
+  Metrics are only available for apps and databases with at least one container running. If a service is scaled to zero containers, metrics will not be displayed.
+</Info>
 
 ## Metric Drains
 
 Metric Drains provide a powerful option for routing your metrics data to a destination of your choice for comprehensive monitoring, alerting, and long-term data retention.
 
-<CardGroup cols={2}>
-  <Card title="Datadog" icon="book" iconType="duotone" href="https://www.aptible.com/docs/datadog" />
+<CardGroup>
+  <Card title="Datadog" icon="book" href="https://www.aptible.com/docs/datadog" />
 
-  <Card title="InfluxDB" icon="book" iconType="duotone" href="https://www.aptible.com/docs/influxdb-metric-drain" />
+  <Card title="InfluxDB" icon="book" href="https://www.aptible.com/docs/influxdb-metric-drain" />
 </CardGroup>
 
 
@@ -5137,27 +5274,27 @@ Aptible’s observability tools are designed to provide a holistic view of your 
 
 # Activity
 
-<img src="https://mintcdn.com/aptible/MtH_goy23rOUOZd7/images/Activity-overview.png?fit=max&auto=format&n=MtH_goy23rOUOZd7&q=85&s=5335c215e0d32b4d4f24c500c13b325e" alt="" data-og-width="10368" width="10368" data-og-height="5184" height="5184" data-path="images/Activity-overview.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/aptible/MtH_goy23rOUOZd7/images/Activity-overview.png?w=280&fit=max&auto=format&n=MtH_goy23rOUOZd7&q=85&s=412484a485ce07639958fec17c0337a8 280w, https://mintcdn.com/aptible/MtH_goy23rOUOZd7/images/Activity-overview.png?w=560&fit=max&auto=format&n=MtH_goy23rOUOZd7&q=85&s=62f7957c4981fe5788a9837e6dc8488e 560w, https://mintcdn.com/aptible/MtH_goy23rOUOZd7/images/Activity-overview.png?w=840&fit=max&auto=format&n=MtH_goy23rOUOZd7&q=85&s=a61554a03b59402044ac0d0e580ecc27 840w, https://mintcdn.com/aptible/MtH_goy23rOUOZd7/images/Activity-overview.png?w=1100&fit=max&auto=format&n=MtH_goy23rOUOZd7&q=85&s=c1ed6369b98de3c5fb359fd9960f7992 1100w, https://mintcdn.com/aptible/MtH_goy23rOUOZd7/images/Activity-overview.png?w=1650&fit=max&auto=format&n=MtH_goy23rOUOZd7&q=85&s=40ca966cf14eeaccf4043be8a4f1ecec 1650w, https://mintcdn.com/aptible/MtH_goy23rOUOZd7/images/Activity-overview.png?w=2500&fit=max&auto=format&n=MtH_goy23rOUOZd7&q=85&s=edcebde03c9fb4012d95443128fdf049 2500w" />
+<img alt="" />
 
 Aptible keeps track of all changes made to your resources as operations and records this as activity. You can explore this activity in the dashboard or share it with Activity Reports.
 
-<Card title="Learn more about Activity" icon="book" iconType="duotone" href="https://www.aptible.com/docs/activity" />
+<Card title="Learn more about Activity" icon="book" href="https://www.aptible.com/docs/activity" />
 
 # Logs
 
-<img src="https://mintcdn.com/aptible/gJr2xlqbHzeeHUse/images/Logs-overview.png?fit=max&auto=format&n=gJr2xlqbHzeeHUse&q=85&s=6200085336a53f33c403c5fa52e8ec3c" alt="" data-og-width="10368" width="10368" data-og-height="5184" height="5184" data-path="images/Logs-overview.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/aptible/gJr2xlqbHzeeHUse/images/Logs-overview.png?w=280&fit=max&auto=format&n=gJr2xlqbHzeeHUse&q=85&s=ee5da576003f289634d0bf2a06c1e92f 280w, https://mintcdn.com/aptible/gJr2xlqbHzeeHUse/images/Logs-overview.png?w=560&fit=max&auto=format&n=gJr2xlqbHzeeHUse&q=85&s=52514b2024ad2f1102c54f23f128a0fc 560w, https://mintcdn.com/aptible/gJr2xlqbHzeeHUse/images/Logs-overview.png?w=840&fit=max&auto=format&n=gJr2xlqbHzeeHUse&q=85&s=bbcacd1b70556d9716554a5fa44a992b 840w, https://mintcdn.com/aptible/gJr2xlqbHzeeHUse/images/Logs-overview.png?w=1100&fit=max&auto=format&n=gJr2xlqbHzeeHUse&q=85&s=73a3a7ff609a1d99413472d0780f7afc 1100w, https://mintcdn.com/aptible/gJr2xlqbHzeeHUse/images/Logs-overview.png?w=1650&fit=max&auto=format&n=gJr2xlqbHzeeHUse&q=85&s=fd597c8e1eea86225c96b62c73ef1059 1650w, https://mintcdn.com/aptible/gJr2xlqbHzeeHUse/images/Logs-overview.png?w=2500&fit=max&auto=format&n=gJr2xlqbHzeeHUse&q=85&s=f759ef350cdfa03139fc0dc0f6ce9706 2500w" />
+<img alt="" />
 
 Aptible's log features ensure you have access to critical information generated by your containers. Logs come in three forms: CLI Logs (for quick access), Log Drains (for search and alerting), and Log Archiving (for business continuity and compliance).
 
-<Card title="Learn more about Logs" icon="book" iconType="duotone" href="https://www.aptible.com/docs/logging" />
+<Card title="Learn more about Logs" icon="book" href="https://www.aptible.com/docs/logging" />
 
 # Metrics
 
-<img src="https://mintcdn.com/aptible/gJr2xlqbHzeeHUse/images/Metrics-overview.png?fit=max&auto=format&n=gJr2xlqbHzeeHUse&q=85&s=452990249d4fdd19b0dd1c4a0c8d83fa" alt="" data-og-width="10368" width="10368" data-og-height="5184" height="5184" data-path="images/Metrics-overview.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/aptible/gJr2xlqbHzeeHUse/images/Metrics-overview.png?w=280&fit=max&auto=format&n=gJr2xlqbHzeeHUse&q=85&s=411ce287c764e93c32192fe0716b95db 280w, https://mintcdn.com/aptible/gJr2xlqbHzeeHUse/images/Metrics-overview.png?w=560&fit=max&auto=format&n=gJr2xlqbHzeeHUse&q=85&s=5880190677e36147c4a421909086ff2d 560w, https://mintcdn.com/aptible/gJr2xlqbHzeeHUse/images/Metrics-overview.png?w=840&fit=max&auto=format&n=gJr2xlqbHzeeHUse&q=85&s=39e5957b049fc149945e67b72501d1ea 840w, https://mintcdn.com/aptible/gJr2xlqbHzeeHUse/images/Metrics-overview.png?w=1100&fit=max&auto=format&n=gJr2xlqbHzeeHUse&q=85&s=f4a395c14b8cf9bc4fb97348f708b47f 1100w, https://mintcdn.com/aptible/gJr2xlqbHzeeHUse/images/Metrics-overview.png?w=1650&fit=max&auto=format&n=gJr2xlqbHzeeHUse&q=85&s=77ec493b5c6eeb0940a87a8ba748224c 1650w, https://mintcdn.com/aptible/gJr2xlqbHzeeHUse/images/Metrics-overview.png?w=2500&fit=max&auto=format&n=gJr2xlqbHzeeHUse&q=85&s=0154662e7caa6f33a8d28b5e1057793b 2500w" />
+<img alt="" />
 
 For real-time performance monitoring of your app and database containers, Aptible provides essential metrics, including memory usage, CPU usage, and disk utilization. These metrics are available as in-app visualizations or sent to a destination for monitoring and alerting.
 
-<Card title="Learn more about Metrics" icon="book" iconType="duotone" href="https://www.aptible.com/docs/metrics" />
+<Card title="Learn more about Metrics" icon="book" href="https://www.aptible.com/docs/metrics" />
 
 
 # Sources
@@ -5177,17 +5314,17 @@ To connect your App with it's Source, you'll need to configure your deployment p
 
 The Sources list view displays a list of all of the Sources configured across your deployed Apps. This view is useful for finding groups of Apps that are running code from the same Source (e.g., ephemeral environments or multiple instances of a single-tenant application).
 
-<img src="https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/sources-list.png?fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=29499d83aef3092f29c70f273d637ca6" alt="" data-og-width="5120" width="5120" data-og-height="2560" height="2560" data-path="images/sources-list.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/sources-list.png?w=280&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=436ac215494101cb4ded36f205c3c791 280w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/sources-list.png?w=560&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=f35d659346bb5eabad4398631354d527 560w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/sources-list.png?w=840&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=9cb592b500dd94aa38862a93ee9c1361 840w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/sources-list.png?w=1100&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=fcc3afd36832b3b5859cf6c685eee98b 1100w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/sources-list.png?w=1650&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=9b82fcfde539c28d73fedd4b3e0e474a 1650w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/sources-list.png?w=2500&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=a00be1ad957789acf920e6777be61d44 2500w" />
+<img alt="" />
 
 # Source Details
 
 From the Source list page, you can click into a Source to see its details, including a list of Apps deployed from the Source and their current revision information
 
-<img src="https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/sources-apps.png?fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=917352be7d6f65ae8869ba55c3992644" alt="" data-og-width="5120" width="5120" data-og-height="2560" height="2560" data-path="images/sources-apps.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/sources-apps.png?w=280&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=c6d20d6030de82e209e0d800bb159ca7 280w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/sources-apps.png?w=560&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=1221ff3e601f82dbc6e4cc277c02f87e 560w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/sources-apps.png?w=840&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=fac1455d4e7543b765ff1cb772bc650b 840w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/sources-apps.png?w=1100&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=edef1db0ed1edd5d6dc351bde22397f9 1100w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/sources-apps.png?w=1650&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=d88effdc45caff339874907486acead6 1650w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/sources-apps.png?w=2500&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=9cfee02abf3960dc45d95e4d48f1f750 2500w" />
+<img alt="" />
 
 You can also view the Deployments tab, which will display historical deployments and their revision information made from that Source across all of your Apps.
 
-<img src="https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/sources-deployments.png?fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=5160d05058181de54cc4a8bb17b1e6e2" alt="" data-og-width="5120" width="5120" data-og-height="2560" height="2560" data-path="images/sources-deployments.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/sources-deployments.png?w=280&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=9d5e225b35db71572c35bccd97509f79 280w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/sources-deployments.png?w=560&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=34fe5fd394633cf0d6b8587774760a82 560w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/sources-deployments.png?w=840&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=df2bf2c637a0b7399a89029ab53ec418 840w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/sources-deployments.png?w=1100&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=7449a415e1573043332ececfbfcd4db3 1100w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/sources-deployments.png?w=1650&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=8c57b984e1b8ae09e1bf1a323e252613 1650w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/sources-deployments.png?w=2500&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=fb8675301d3022139a63dc5f4cb85a2d 2500w" />
+<img alt="" />
 
 
 # App Scaling
@@ -5224,7 +5361,7 @@ App Services can be manually scaled via the Dashboard or [`aptible apps:scale`](
 ### Horizontal Autoscaling
 
 <Frame>
-    <img src="https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/horizontal-autoscale.png?fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=7d0dd277f0695a14c1f7cda7452d3124" alt="Horizontal Autoscaling" data-og-width="5120" width="5120" data-og-height="2560" height="2560" data-path="images/horizontal-autoscale.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/horizontal-autoscale.png?w=280&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=23a85ee7860db5903505d047e228872b 280w, https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/horizontal-autoscale.png?w=560&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=cdfb1a01d2f7317b983e822bb88a0ba2 560w, https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/horizontal-autoscale.png?w=840&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=452d314273d2d234067dec3de5e5d73b 840w, https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/horizontal-autoscale.png?w=1100&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=b09d2ff3137e3bb96a1afcaa414f816b 1100w, https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/horizontal-autoscale.png?w=1650&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=697b14862d7ecccf47e50e86dc08375d 1650w, https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/horizontal-autoscale.png?w=2500&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=9a04498ee957a67ca654d83eed996e8b 2500w" />
+  <img alt="Horizontal Autoscaling" />
 </Frame>
 
 <Info>
@@ -5237,7 +5374,7 @@ This feature can also be configured via [Terraform](/reference/terraform) or the
 
 By default, a [Horizontal Autoscaling Operation](https://www.aptible.com/docs/core-concepts/scaling/app-scaling#horizontal-autoscaling) follows the regular [Container Lifecycle](https://www.aptible.com/docs/core-concepts/architecture/containers/overview#container-lifecycle) and [Releases](https://www.aptible.com/docs/core-concepts/apps/deploying-apps/releases/overview#releases) pattern of restarting all current containers when modifying the number of running containers. However, this behavior can be disabled by enabling the **Restart Free Scaling** (`use_horizontal_scale` in Terraform) setting when configuring autoscaling for the service. With restart free scaling enabled, containers are added and removed without restarting the existing ones. When removing containers in this configuration, the service's stop timeout is still respected. Note that if the service has a [TCP](/core-concepts/apps/connecting-to-apps/app-endpoints/tcp-endpoints), ELB, or [GRPC](/core-concepts/apps/connecting-to-apps/app-endpoints/grpc-endpoints) endpoint, the regular full restart will still occur even with restart free scaling enabled. Additionally, if any endpoint associated with the service failed its most recent `provision` operation (which is an operation that is called on create of a new endpoint, or update of an existing endpoint), the regular full restart will still occur even with restart free scaling enabled.
 
-<Card title="Guide for Configuring Horizontial Autoscaling" icon="book-open-reader" iconType="duotone" href="https://www.aptible.com/docs/how-to-guides/app-guides/horizontal-autoscaling-guide" />
+<Card title="Guide for Configuring Horizontial Autoscaling" icon="book-open-reader" href="https://www.aptible.com/docs/how-to-guides/app-guides/horizontal-autoscaling-guide" />
 
 #### Configuration Options
 
@@ -5289,7 +5426,7 @@ App Services can be manually scaled via the Dashboard or [`aptible apps:scale`](
 ### Vertical Autoscaling
 
 <Frame>
-    <img src="https://mintcdn.com/aptible/uXP5kmz3uSl-opiv/images/vertical-autoscale.png?fit=max&auto=format&n=uXP5kmz3uSl-opiv&q=85&s=05218ac6eaa3b1154deae569f874a2be" alt="Vertical Autoscaling" data-og-width="5120" width="5120" data-og-height="2560" height="2560" data-path="images/vertical-autoscale.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/aptible/uXP5kmz3uSl-opiv/images/vertical-autoscale.png?w=280&fit=max&auto=format&n=uXP5kmz3uSl-opiv&q=85&s=b5580e88e08ef112118ecaeb4a69a897 280w, https://mintcdn.com/aptible/uXP5kmz3uSl-opiv/images/vertical-autoscale.png?w=560&fit=max&auto=format&n=uXP5kmz3uSl-opiv&q=85&s=67effeed2362a455284b66f4bc7b8f2b 560w, https://mintcdn.com/aptible/uXP5kmz3uSl-opiv/images/vertical-autoscale.png?w=840&fit=max&auto=format&n=uXP5kmz3uSl-opiv&q=85&s=386561e3ec8358a25d3da9e5d6e24f35 840w, https://mintcdn.com/aptible/uXP5kmz3uSl-opiv/images/vertical-autoscale.png?w=1100&fit=max&auto=format&n=uXP5kmz3uSl-opiv&q=85&s=d6f0c04391e05722c7f4aa91cc3569e1 1100w, https://mintcdn.com/aptible/uXP5kmz3uSl-opiv/images/vertical-autoscale.png?w=1650&fit=max&auto=format&n=uXP5kmz3uSl-opiv&q=85&s=d3d1af8291d4fb760a93495000f80489 1650w, https://mintcdn.com/aptible/uXP5kmz3uSl-opiv/images/vertical-autoscale.png?w=2500&fit=max&auto=format&n=uXP5kmz3uSl-opiv&q=85&s=7f9bdfb8c00c5a92038ce580c297b615 2500w" />
+  <img alt="Vertical Autoscaling" />
 </Frame>
 
 <Info>
@@ -5387,7 +5524,7 @@ In the event that this occurs during a scaling operation:
 <Accordion title="How do I modify the Container Profile for an App or Database?">
   Container Profiles can only be modified from the Aptible Dashboard when scaling the app/service or database.  The Container Profile will take effect upon restart.
 
-    <img src="https://mintcdn.com/aptible/MtH_goy23rOUOZd7/images/Container-Profiles-2.png?fit=max&auto=format&n=MtH_goy23rOUOZd7&q=85&s=b6916dae9f51cfcb9264970b2a25d467" alt="" data-og-width="2800" width="2800" data-og-height="2000" height="2000" data-path="images/Container-Profiles-2.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/aptible/MtH_goy23rOUOZd7/images/Container-Profiles-2.png?w=280&fit=max&auto=format&n=MtH_goy23rOUOZd7&q=85&s=a9c13a3fb9e20f8da2e2a89cc93a5a17 280w, https://mintcdn.com/aptible/MtH_goy23rOUOZd7/images/Container-Profiles-2.png?w=560&fit=max&auto=format&n=MtH_goy23rOUOZd7&q=85&s=2b5637dfa031e391874bc7811ac6603a 560w, https://mintcdn.com/aptible/MtH_goy23rOUOZd7/images/Container-Profiles-2.png?w=840&fit=max&auto=format&n=MtH_goy23rOUOZd7&q=85&s=cf2bd019f3a7ae252d0164d497456d16 840w, https://mintcdn.com/aptible/MtH_goy23rOUOZd7/images/Container-Profiles-2.png?w=1100&fit=max&auto=format&n=MtH_goy23rOUOZd7&q=85&s=731a93358d34741017e590f49e1ec377 1100w, https://mintcdn.com/aptible/MtH_goy23rOUOZd7/images/Container-Profiles-2.png?w=1650&fit=max&auto=format&n=MtH_goy23rOUOZd7&q=85&s=ab557b4f865270d8e047ba3132561b95 1650w, https://mintcdn.com/aptible/MtH_goy23rOUOZd7/images/Container-Profiles-2.png?w=2500&fit=max&auto=format&n=MtH_goy23rOUOZd7&q=85&s=1ed8f636cb342225117c0a595e5c4409 2500w" />
+  <img alt="" />
 </Accordion>
 
 
@@ -5397,7 +5534,7 @@ Source: https://www.aptible.com/docs/core-concepts/scaling/container-right-sizin
 Learn about using the in-app Container Right-Sizing Recommendations for performance and optimization
 
 <Frame>
-    <img src="https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/scaling-recs.png?fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=3101638da52d36dcb085e8a996aad852" alt="" data-og-width="2240" width="2240" data-og-height="1260" height="1260" data-path="images/scaling-recs.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/scaling-recs.png?w=280&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=b3634f2733c3de4ede2388c0e05998d9 280w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/scaling-recs.png?w=560&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=dc2b7c394a1abca7dbd607d867987147 560w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/scaling-recs.png?w=840&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=48a94aa3e899e669e51c8458083a91ae 840w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/scaling-recs.png?w=1100&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=4d21eddcd6f1c6c6d514a731a76edb32 1100w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/scaling-recs.png?w=1650&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=8d87bbba0e0325ca5a94b5db15defdcf 1650w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/scaling-recs.png?w=2500&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=753cb444f03df0ea1668e4c782edcb4d 2500w" />
+  <img alt="" />
 </Frame>
 
 # Overview
@@ -5567,7 +5704,7 @@ All new Databases are provisioned with GP3 volume, with a default throughput per
   <Accordion title="How do I scale a Database">
     See related guide:
 
-    <Card title="How to scale Databases" icon="book-open-reader" iconType="duotone" href="https://www.aptible.com/docs/scale-databases" />
+    <Card title="How to scale Databases" icon="book-open-reader" href="https://www.aptible.com/docs/scale-databases" />
   </Accordion>
 </AccordionGroup>
 
@@ -5662,18 +5799,18 @@ The Aptible platform simplifies the process of on-demand scaling, removing the c
 
 # Learn more about scaling resources on Aptible
 
-<CardGroup cols={3}>
-  <Card title="App Scaling" icon="book" iconType="duotone" href="https://www.aptible.com/docs/core-concepts/scaling/app-scaling" />
+<CardGroup>
+  <Card title="App Scaling" icon="book" href="https://www.aptible.com/docs/core-concepts/scaling/app-scaling" />
 
-  <Card title="Database Scaling" icon="book" iconType="duotone" href="https://www.aptible.com/docs/core-concepts/scaling/database-scaling" />
+  <Card title="Database Scaling" icon="book" href="https://www.aptible.com/docs/core-concepts/scaling/database-scaling" />
 
-  <Card title="Container Profiles" icon="book" iconType="duotone" href="https://www.aptible.com/docs/core-concepts/scaling/container-profiles" />
+  <Card title="Container Profiles" icon="book" href="https://www.aptible.com/docs/core-concepts/scaling/container-profiles" />
 
-  <Card title="CPU Allocation" icon="book" iconType="duotone" href="https://www.aptible.com/docs/core-concepts/scaling/cpu-isolation" />
+  <Card title="CPU Allocation" icon="book" href="https://www.aptible.com/docs/core-concepts/scaling/cpu-isolation" />
 
-  <Card title="Memory Management" icon="book" iconType="duotone" href="https://www.aptible.com/docs/core-concepts/scaling/memory-limits" />
+  <Card title="Memory Management" icon="book" href="https://www.aptible.com/docs/core-concepts/scaling/memory-limits" />
 
-  <Card title="Container Right-Sizing Recommendations" icon="book" iconType="duotone" href="https://www.aptible.com/docs/core-concepts/scaling/container-right-sizing-recommendations" />
+  <Card title="Container Right-Sizing Recommendations" icon="book" href="https://www.aptible.com/docs/core-concepts/scaling/container-right-sizing-recommendations" />
 </CardGroup>
 
 # FAQ
@@ -5699,7 +5836,7 @@ Aptible organizations represent an administrative domain consisting of users and
 Users represent individuals or robots with access to your organization. A user's assigned roles determine their permissions and what they can access Aptible. Manage users in the Aptible dashboard by navigating to Settings > Members.
 
 <Frame>
-    <img src="https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/org-members.png?fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=e679ff67eb7e8f65bac2acf12ce008af" alt="Managing Members" data-og-width="1550" width="1550" data-og-height="1155" height="1155" data-path="images/org-members.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/org-members.png?w=280&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=8b6a4abca712d1170671ccab412f3cb0 280w, https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/org-members.png?w=560&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=ecc685ce7a3f4eec9c8504ffc3200350 560w, https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/org-members.png?w=840&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=88f1e8262ec311025f835d63785c0c30 840w, https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/org-members.png?w=1100&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=02b36f90d894bc40a66ad6ab596d7b4e 1100w, https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/org-members.png?w=1650&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=2165b33fb06645e8a0329dc2fa0f2ebd 1650w, https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/org-members.png?w=2500&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=ca6dadcb83a5ead51e2061752c1fba9b 2500w" />
+  <img alt="Managing Members" />
 </Frame>
 
 # Roles
@@ -5707,7 +5844,7 @@ Users represent individuals or robots with access to your organization. A user's
 Use roles to define users' access in your Aptible organization. Manage roles in the Aptible Dashboard by navigating to Settings > Roles.
 
 <Frame>
-    <img src="https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/role-mgmt.png?fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=533cc6b3d234e52387499d437fa1db25" alt="Role Management" data-og-width="1541" width="1541" data-og-height="1157" height="1157" data-path="images/role-mgmt.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/role-mgmt.png?w=280&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=9dfb32475ec5d920d27b1021660a4f2e 280w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/role-mgmt.png?w=560&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=8455dabf272e907396717b13640eac11 560w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/role-mgmt.png?w=840&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=71af101b5857d67bd87a8d70724e6088 840w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/role-mgmt.png?w=1100&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=bf590ab78ad0dfcc6ebc8526f3a92c58 1100w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/role-mgmt.png?w=1650&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=49ea7fc2f3e509c55b444cd5bfa02c19 1650w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/role-mgmt.png?w=2500&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=17b3fc72acbf1d58d09053ed21de9f14 2500w" />
+  <img alt="Role Management" />
 </Frame>
 
 ## Types of Roles
@@ -5745,7 +5882,7 @@ The Custom Role Admin role is an optional role that grants:
 * the ability to add new users to the custom roles of which they are role admins
 
 <Frame>
-    <img src="https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/role-members.png?fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=c7c00a06cf5e10616418c1bcec8c40bc" alt="Edit role admins" data-og-width="1544" width="1544" data-og-height="1157" height="1157" data-path="images/role-members.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/role-members.png?w=280&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=6371f39a841bf2cb11a3ba02da2b45df 280w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/role-members.png?w=560&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=6b485fe66aade6b6cde38f414f21f21a 560w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/role-members.png?w=840&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=b61c2592a011e04e11536fb10039618f 840w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/role-members.png?w=1100&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=9543fe086bf9d4e990cfef9c6bef7d06 1100w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/role-members.png?w=1650&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=837cdfe652cf15929f740ffde6ea21a4 1650w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/role-members.png?w=2500&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=10f731525019ca2bb8b2d8822484ecdc 2500w" />
+  <img alt="Edit role admins" />
 </Frame>
 
 #### Custom Role Members
@@ -5757,7 +5894,7 @@ Custom Role Members have access to resources as defined by the permission types 
 Manage custom role permission types in the Aptible Dashboard by navigating to Settings > Roles. Select the respective role, navigate to Environments, and grant the desired permissions for the separate environments.
 
 <Frame>
-    <img src="https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/role-env-perms-edit.png?fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=3ae374878ea35c43586035ce2853065f" alt="Edit permissions" data-og-width="1542" width="1542" data-og-height="1156" height="1156" data-path="images/role-env-perms-edit.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/role-env-perms-edit.png?w=280&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=b2b6049b9f9987ba1a29c4a44e973540 280w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/role-env-perms-edit.png?w=560&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=588cd5cf0e9ab99bb85848dcc9e0d8c4 560w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/role-env-perms-edit.png?w=840&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=a1f23be4c5ace9d018ca42688ffe8fb6 840w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/role-env-perms-edit.png?w=1100&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=daac06ecc60e1006705092d88b33c883 1100w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/role-env-perms-edit.png?w=1650&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=00507e50f6a0b653c5b7cd662a76d723 1650w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/role-env-perms-edit.png?w=2500&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=b30cada0a8a96e3cb09fc01a381ac419 2500w" />
+  <img alt="Edit permissions" />
 </Frame>
 
 #### Read Permissions
@@ -5901,7 +6038,9 @@ Source: https://www.aptible.com/docs/core-concepts/security-compliance/authentic
 
 Learn about configuring Cross-domain Identity Management (SCIM) on Aptible
 
-<Frame> <img src="https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/scim-app-ui.png?fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=5260a9ef9a9db23bb071b37d227c3f4a" alt="" data-og-width="2798" width="2798" data-og-height="1610" height="1610" data-path="images/scim-app-ui.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/scim-app-ui.png?w=280&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=071934bf1f70707bafb512a0cd4ae747 280w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/scim-app-ui.png?w=560&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=824ed9af14a135f5150b6d3a69185cd3 560w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/scim-app-ui.png?w=840&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=54b811abcf11736862deaa76eeaaab5b 840w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/scim-app-ui.png?w=1100&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=fb58221cd08909817daaeaa58d5e7630 1100w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/scim-app-ui.png?w=1650&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=30b6e5063e17a311d283de916ad069c9 1650w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/scim-app-ui.png?w=2500&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=e9b2db705777beebe884e66910bcf195 2500w" /> </Frame>
+<Frame>
+  <img alt="" />
+</Frame>
 
 ## Overview
 
@@ -5931,7 +6070,7 @@ SCIM (System for Cross-domain Identity Management) is a protocol designed to sim
 
 A SCIM token is valid for one year. After the year, if it expires, you will receive an error in your IDP indicating that your token is invalid.
 
-<img src="https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/scim-token-invalid.png?fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=bdea02197c187d3f51e721cae94ef400" alt="" data-og-width="1512" width="1512" data-og-height="230" height="230" data-path="images/scim-token-invalid.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/scim-token-invalid.png?w=280&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=dac78c4259ffa603f635b268e3c5a0bf 280w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/scim-token-invalid.png?w=560&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=c9e5b90cf9bf9ef9bc4f45a7b3554dbb 560w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/scim-token-invalid.png?w=840&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=aa204a0694bd9815d1e71c2b3a0a3b94 840w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/scim-token-invalid.png?w=1100&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=c1a2f62e1b42337006fc55c3e7766a6e 1100w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/scim-token-invalid.png?w=1650&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=8c145808a89d3a16ef7dfcbee102d0c8 1650w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/scim-token-invalid.png?w=2500&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=a90584e0334f23a2bc7827abf031f238 2500w" />
+<img alt="" />
 
 ### Aptible Does Not Seem to Support Groups but Roles Instead. How Does That Work with SCIM?
 
@@ -6040,7 +6179,9 @@ Aptible supports the following SSH key types:
 
 ## Adding/Managing SSH Keys
 
-<Frame><img src="https://mintcdn.com/aptible/MtH_goy23rOUOZd7/images/1-SSHKeys.png?fit=max&auto=format&n=MtH_goy23rOUOZd7&q=85&s=8049809963310cde5e0c0b0fb25bc15c" alt="" data-og-width="5120" width="5120" data-og-height="2560" height="2560" data-path="images/1-SSHKeys.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/aptible/MtH_goy23rOUOZd7/images/1-SSHKeys.png?w=280&fit=max&auto=format&n=MtH_goy23rOUOZd7&q=85&s=363296fedd3f6463825930b97fa99eb5 280w, https://mintcdn.com/aptible/MtH_goy23rOUOZd7/images/1-SSHKeys.png?w=560&fit=max&auto=format&n=MtH_goy23rOUOZd7&q=85&s=f6cd832c428dba8ce9baa6d3c0c9e4bc 560w, https://mintcdn.com/aptible/MtH_goy23rOUOZd7/images/1-SSHKeys.png?w=840&fit=max&auto=format&n=MtH_goy23rOUOZd7&q=85&s=8f0f69f5d5527139aa571199a864b762 840w, https://mintcdn.com/aptible/MtH_goy23rOUOZd7/images/1-SSHKeys.png?w=1100&fit=max&auto=format&n=MtH_goy23rOUOZd7&q=85&s=c04585e2fccd9329b01f487354e4fbf7 1100w, https://mintcdn.com/aptible/MtH_goy23rOUOZd7/images/1-SSHKeys.png?w=1650&fit=max&auto=format&n=MtH_goy23rOUOZd7&q=85&s=8e30eff247ff5e0c06f17c604d1cfce0 1650w, https://mintcdn.com/aptible/MtH_goy23rOUOZd7/images/1-SSHKeys.png?w=2500&fit=max&auto=format&n=MtH_goy23rOUOZd7&q=85&s=0fa540f326fdd5c7c267a6c87a4bf33f 2500w" /></Frame>
+<Frame>
+  <img alt="" />
+</Frame>
 
 If you [don't already have an SSH Public Key](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/checking-for-existing-ssh-keys), generate a new SSH key using this command:
 
@@ -6068,7 +6209,7 @@ Once you have generated your SSH key, follow these steps:
 
 # Featured Troubleshooting Guides
 
-<Card title="git Push Permission Denied" icon="book-open-reader" iconType="duotone" href="https://www.aptible.com/docs/permission-denied-git-push" />
+<Card title="git Push Permission Denied" icon="book-open-reader" href="https://www.aptible.com/docs/permission-denied-git-push" />
 
 
 # Single Sign-On (SSO)
@@ -6076,7 +6217,9 @@ Source: https://www.aptible.com/docs/core-concepts/security-compliance/authentic
 
 
 
-<Frame> <img src="https://mintcdn.com/aptible/gJr2xlqbHzeeHUse/images/SSO-app-ui.png?fit=max&auto=format&n=gJr2xlqbHzeeHUse&q=85&s=69c735cebc73dc9cbaaf925a7e55b981" alt="" data-og-width="5120" width="5120" data-og-height="3060" height="3060" data-path="images/SSO-app-ui.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/aptible/gJr2xlqbHzeeHUse/images/SSO-app-ui.png?w=280&fit=max&auto=format&n=gJr2xlqbHzeeHUse&q=85&s=2a8a1e409cdf0a381d134935cf3cc729 280w, https://mintcdn.com/aptible/gJr2xlqbHzeeHUse/images/SSO-app-ui.png?w=560&fit=max&auto=format&n=gJr2xlqbHzeeHUse&q=85&s=ca0492bcdf096f0be99c486064f8207e 560w, https://mintcdn.com/aptible/gJr2xlqbHzeeHUse/images/SSO-app-ui.png?w=840&fit=max&auto=format&n=gJr2xlqbHzeeHUse&q=85&s=3cfe944f6170be54a9a8b656d0ff4b4f 840w, https://mintcdn.com/aptible/gJr2xlqbHzeeHUse/images/SSO-app-ui.png?w=1100&fit=max&auto=format&n=gJr2xlqbHzeeHUse&q=85&s=bbbd7d84fae265ee12b21877cefab86e 1100w, https://mintcdn.com/aptible/gJr2xlqbHzeeHUse/images/SSO-app-ui.png?w=1650&fit=max&auto=format&n=gJr2xlqbHzeeHUse&q=85&s=6d5a0ce318580db3b2a044def41197dd 1650w, https://mintcdn.com/aptible/gJr2xlqbHzeeHUse/images/SSO-app-ui.png?w=2500&fit=max&auto=format&n=gJr2xlqbHzeeHUse&q=85&s=82f358649697ac43978cc7200aabf926 2500w" /> </Frame>
+<Frame>
+  <img alt="" />
+</Frame>
 
 # Overview
 
@@ -6088,7 +6231,7 @@ Aptible supports the industry-standard SAML 2.0 protocol for using an external p
 
 Each organization may have only one SSO provider configured. Many SSO providers allow for federation with other SSO providers using SAML. For example, allowing Google GSuite to provide login to Okta. If you need to support multiple SSO providers, you can use federation to enable login from the other providers to the one configured with Aptible.
 
-<Card title="How to setup Single Sign-On (SSO)" icon="book-open-reader" iconType="duotone" href="https://www.aptible.com/docs/sso-setup" />
+<Card title="How to setup Single Sign-On (SSO)" icon="book-open-reader" href="https://www.aptible.com/docs/sso-setup" />
 
 ## Organization Login ID
 
@@ -6150,7 +6293,7 @@ Source: https://www.aptible.com/docs/core-concepts/security-compliance/complianc
 Learn about achieving HIPAA compliance on Aptible
 
 <Check>
-  <Tooltip tip="This compliance framework's infrastructure controls/requirements are automatically satisfied when you deploy to a Dedicated Stack. See details below for more information.">Compliance-Ready</Tooltip>
+  <Tooltip>Compliance-Ready</Tooltip>
 </Check>
 
 # Overview
@@ -6171,7 +6314,7 @@ Aptible’s story began with a focus on serving digital health companies. As a r
 
   <Step title="Show off your compliance" icon="party-horn">
     <Frame>
-            <img src="https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/screenshot-ui.6e552b45.png?fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=808fec7d4bdbe090437f3de79c2e9d84" alt="" data-og-width="1312" width="1312" data-og-height="645" height="645" data-path="images/screenshot-ui.6e552b45.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/screenshot-ui.6e552b45.png?w=280&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=98222990b7b298db06819d861394b233 280w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/screenshot-ui.6e552b45.png?w=560&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=c472cd3b11210413d3f7cfd5a674b0e6 560w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/screenshot-ui.6e552b45.png?w=840&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=a4faa7ce0ab41cd983a448635e21a32f 840w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/screenshot-ui.6e552b45.png?w=1100&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=e322259925a417312fb26c56d15fe9b6 1100w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/screenshot-ui.6e552b45.png?w=1650&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=53175f739a22b10a2b0b2d859344a8dc 1650w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/screenshot-ui.6e552b45.png?w=2500&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=67875a8a778d9b4bda6079828d16ef39 2500w" />
+      <img alt="" />
     </Frame>
 
     The Security & Compliance Dashboard and reporting serves as a great resource for showing off HIPAA compliance. When a Dedicated Stack is provisioned, the HIPAA required controls will show as 100% - by default.
@@ -6201,19 +6344,19 @@ Aptible’s story began with a focus on serving digital health companies. As a r
     Add a `Secured by Aptible` badge and link to the Secured by Aptible page to show all the security & compliance controls implemented..
 
     <Frame>
-            <img src="https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/hipaa1.png?fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=370a50fd056d2932d575103c2f5fe4b4" alt="" data-og-width="320" width="320" data-og-height="96" height="96" data-path="images/hipaa1.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/hipaa1.png?w=280&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=32816d5c77a20233b0873741e42d1568 280w, https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/hipaa1.png?w=560&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=0b82d70aeb288966b2af6a9dd663f114 560w, https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/hipaa1.png?w=840&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=e03ba3e5ba900d9a068500cab4dd59c8 840w, https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/hipaa1.png?w=1100&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=5dab9aed9c50ffa98dc433fded119086 1100w, https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/hipaa1.png?w=1650&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=ebcf9f376682656059ebc51ce3d534d4 1650w, https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/hipaa1.png?w=2500&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=36adaffd6732f94820327fdbf46794b5 2500w" />
+      <img alt="" />
     </Frame>
   </Step>
 </Steps>
 
 # Keep Reading
 
-<CardGroup cols={2}>
-  <Card title="Read HIPAA Compliance Guide for Startups" icon="book" iconType="duotone" href="https://www.aptible.com/blog/hipaa-compliance-guide-for-startups">
+<CardGroup>
+  <Card title="Read HIPAA Compliance Guide for Startups" icon="book" href="https://www.aptible.com/blog/hipaa-compliance-guide-for-startups">
     Gain a deeper understanding of HIPAA compliance
   </Card>
 
-  <Card title="Explore HITRUST" icon="book" iconType="duotone" href="https://www.aptible.com/docs/core-concepts/security-compliance/compliance-frameworks/hitrust">
+  <Card title="Explore HITRUST" icon="book" href="https://www.aptible.com/docs/core-concepts/security-compliance/compliance-frameworks/hitrust">
     Learn why Aptible is the leading platform for achieving HITRUST
   </Card>
 </CardGroup>
@@ -6261,7 +6404,7 @@ Aptible’s story began with a focus on serving digital health companies. As a r
 
   <Step title="Review the Security & Compliance Dashboard and implement HITRUST required controls">
     <Frame>
-            <img src="https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/screenshot-ui.6e552b45.png?fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=808fec7d4bdbe090437f3de79c2e9d84" alt="" data-og-width="1312" width="1312" data-og-height="645" height="645" data-path="images/screenshot-ui.6e552b45.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/screenshot-ui.6e552b45.png?w=280&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=98222990b7b298db06819d861394b233 280w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/screenshot-ui.6e552b45.png?w=560&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=c472cd3b11210413d3f7cfd5a674b0e6 560w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/screenshot-ui.6e552b45.png?w=840&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=a4faa7ce0ab41cd983a448635e21a32f 840w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/screenshot-ui.6e552b45.png?w=1100&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=e322259925a417312fb26c56d15fe9b6 1100w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/screenshot-ui.6e552b45.png?w=1650&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=53175f739a22b10a2b0b2d859344a8dc 1650w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/screenshot-ui.6e552b45.png?w=2500&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=67875a8a778d9b4bda6079828d16ef39 2500w" />
+      <img alt="" />
     </Frame>
 
     The Security & Compliance Dashboard serves as a great resource for showing off compliance. When a Dedicated Stack is provisioned, most HITRUST controls will show as complete by default, the remaining controls will show as needing attention.
@@ -6280,14 +6423,14 @@ Aptible’s story began with a focus on serving digital health companies. As a r
 
     While it varies per customer, approximately 30%-40% of controls can be fully inherited, and about 20%-30% of controls can be partially inherited.
 
-    <Card title="How to request HITRUST Inhertiance from Aptible" icon="book-open-reader" iconType="duotone" href="https://www.aptible.com/docs/how-to-guides/platform-guides/navigate-hitrust#how-to-request-hitrust-inhertiance" />
+    <Card title="How to request HITRUST Inhertiance from Aptible" icon="book-open-reader" href="https://www.aptible.com/docs/how-to-guides/platform-guides/navigate-hitrust#how-to-request-hitrust-inhertiance" />
   </Step>
 
   <Step title="Show off your compliance" icon="party-horn">
     Use the Security & Compliance Dashboard to prove your compliance and show off with a `Secured by Aptible` badge
 
     <Frame>
-            <img src="https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/secured_by_aptible_hitrust.png?fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=26740493ff6e5eac6433306e801f2117" alt="" data-og-width="354" width="354" data-og-height="96" height="96" data-path="images/secured_by_aptible_hitrust.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/secured_by_aptible_hitrust.png?w=280&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=d3c39b8fb3f2123c342256fd387d210a 280w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/secured_by_aptible_hitrust.png?w=560&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=305ce0cd7001013962fb10ab6e3ca72e 560w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/secured_by_aptible_hitrust.png?w=840&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=4cfa3c12594397a3ca5c10c3936dd1e5 840w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/secured_by_aptible_hitrust.png?w=1100&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=1339f7249785593de8bf3963ce43b261 1100w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/secured_by_aptible_hitrust.png?w=1650&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=e3426ee512394b12c7735b23ac224eaa 1650w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/secured_by_aptible_hitrust.png?w=2500&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=86b2a3754a0cce9bbde49291b09f2346 2500w" />
+      <img alt="" />
     </Frame>
   </Step>
 </Steps>
@@ -6304,7 +6447,7 @@ Source: https://www.aptible.com/docs/core-concepts/security-compliance/complianc
 Learn about achieving PCI DSS compliance on Aptible
 
 <Check>
-  <Tooltip tip="Aptible is designed to fast-track satisfying this compliance framework's infrastructure controls/requirements when deployed to a Dedicated Stack. See docs for more information.">Compliance Fast-Track</Tooltip>
+  <Tooltip>Compliance Fast-Track</Tooltip>
 </Check>
 
 # Overview
@@ -6331,19 +6474,19 @@ Aptible’s platform is designed to help businesses meet the strictest security 
     Add a `Secured by Aptible` badge and link to the Secured by Aptible page to show all the security & compliance controls implemented.
 
     <Frame>
-            <img src="https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/secured_by_aptible_pcidss.png?fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=0c3e7b0cca36a8e0fa941971c64c9bdf" alt="" data-og-width="1556" width="1556" data-og-height="198" height="198" data-path="images/secured_by_aptible_pcidss.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/secured_by_aptible_pcidss.png?w=280&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=7d4140d634b4eb60a7e05f273ca32bf0 280w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/secured_by_aptible_pcidss.png?w=560&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=e8acab01b3e98547bc99d37e80034f9b 560w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/secured_by_aptible_pcidss.png?w=840&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=7257793cbf642818a2ee5f56fa38cf75 840w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/secured_by_aptible_pcidss.png?w=1100&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=b369fd74075bbfd80daae96b930e0c90 1100w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/secured_by_aptible_pcidss.png?w=1650&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=1f1496686fe009836b3b2f109263efc7 1650w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/secured_by_aptible_pcidss.png?w=2500&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=3ea70e61824d80cbd5e647c9416d4a36 2500w" />
+      <img alt="" />
     </Frame>
   </Step>
 </Steps>
 
 # Keep Reading
 
-<CardGroup cols={2}>
-  <Card title="Explore HIPAA" icon="book" iconType="duotone" href="https://www.aptible.com/docs/core-concepts/security-compliance/compliance-frameworks/hipaa">
+<CardGroup>
+  <Card title="Explore HIPAA" icon="book" href="https://www.aptible.com/docs/core-concepts/security-compliance/compliance-frameworks/hipaa">
     Learn why Aptible is the leading platform for achieving HIPAA compliance
   </Card>
 
-  <Card title="Explore HITRUST" icon="book" iconType="duotone" href="https://www.aptible.com/docs/core-concepts/security-compliance/compliance-frameworks/hitrust">
+  <Card title="Explore HITRUST" icon="book" href="https://www.aptible.com/docs/core-concepts/security-compliance/compliance-frameworks/hitrust">
     Learn why Aptible is the leading platform for achieving HITRUST
   </Card>
 </CardGroup>
@@ -6355,7 +6498,7 @@ Source: https://www.aptible.com/docs/core-concepts/security-compliance/complianc
 Learn about achieving PIPEDA compliance on Aptible
 
 <Check>
-  <Tooltip tip="This compliance framework's infrastructure controls/requirements are automatically satisfied when you deploy to a Dedicated Stack. See details below for more information.">Compliance-Ready</Tooltip>
+  <Tooltip>Compliance-Ready</Tooltip>
 </Check>
 
 # Overview
@@ -6389,7 +6532,7 @@ Aptible’s platform is designed to help businesses meet strict data privacy and
     Leverage the **Security & Compliance Dashboard** to demonstrate your PIPEDA compliance to clients and partners. Once compliant, you can display the "Secured by Aptible" badge to showcase your commitment to protecting personal information and adhering to PIPEDA standards.
 
     <Frame>
-            <img src="https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/secured_by_aptible_pipeda.png?fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=7328a75942b6e94548305552f5cab655" alt="" data-og-width="344" width="344" data-og-height="104" height="104" data-path="images/secured_by_aptible_pipeda.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/secured_by_aptible_pipeda.png?w=280&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=3cb8306a20fdf51637670fbbfbcf2ca2 280w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/secured_by_aptible_pipeda.png?w=560&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=803ec0577169f78842cc2ab1fdda3fba 560w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/secured_by_aptible_pipeda.png?w=840&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=050969e796cec250b78b1fd30709a394 840w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/secured_by_aptible_pipeda.png?w=1100&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=17763852da55503684297f1a6e097e4a 1100w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/secured_by_aptible_pipeda.png?w=1650&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=875488c6e34ef6cdd54b2983f1376218 1650w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/secured_by_aptible_pipeda.png?w=2500&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=ac3329b2e99e61b570e566db37e99df2 2500w" />
+      <img alt="" />
     </Frame>
   </Step>
 </Steps>
@@ -6415,7 +6558,7 @@ Source: https://www.aptible.com/docs/core-concepts/security-compliance/complianc
 Learn about achieving SOC 2 compliance on Aptible
 
 <Check>
-  <Tooltip tip="Aptible is designed to fast-track satisfying this compliance framework's infrastructure controls/requirements when deployed to a Dedicated Stack. See docs for more information.">Compliance Fast-Track</Tooltip>
+  <Tooltip>Compliance Fast-Track</Tooltip>
 </Check>
 
 # Overview
@@ -6442,19 +6585,19 @@ Aptible’s platform is engineered to help businesses meet the rigorous standard
     Add a `Secured by Aptible` badge and link to the Secured by Aptible page to showcase all the security & compliance controls implemented.
 
     <Frame>
-            <img src="https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/secured_by_aptible.png?fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=2fb12eec348f90018a2792a9ba36d9e3" alt="" data-og-width="1000" width="1000" data-og-height="411" height="411" data-path="images/secured_by_aptible.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/secured_by_aptible.png?w=280&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=e24346835d09d0792d6104a94c16318c 280w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/secured_by_aptible.png?w=560&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=529c8f1f5482a10cfdb1aa66cb6b3c43 560w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/secured_by_aptible.png?w=840&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=fd792a5023ef96b8ac38763074db79c9 840w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/secured_by_aptible.png?w=1100&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=43182018766e321794538b817b80b713 1100w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/secured_by_aptible.png?w=1650&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=dd94d216eeeb1ba43a593a8bb30d1d9d 1650w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/secured_by_aptible.png?w=2500&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=09309534a7c84dffdd14f68f4359e394 2500w" />
+      <img alt="" />
     </Frame>
   </Step>
 </Steps>
 
 # Keep Reading
 
-<CardGroup cols={2}>
-  <Card title="Explore HIPAA" icon="book" iconType="duotone" href="https://www.aptible.com/docs/core-concepts/security-compliance/compliance-frameworks/hipaa">
+<CardGroup>
+  <Card title="Explore HIPAA" icon="book" href="https://www.aptible.com/docs/core-concepts/security-compliance/compliance-frameworks/hipaa">
     Learn why Aptible is the leading platform for achieving HIPAA compliance
   </Card>
 
-  <Card title="Explore HITRUST" icon="book" iconType="duotone" href="https://www.aptible.com/docs/core-concepts/security-compliance/compliance-frameworks/hitrust">
+  <Card title="Explore HITRUST" icon="book" href="https://www.aptible.com/docs/core-concepts/security-compliance/compliance-frameworks/hitrust">
     Learn why Aptible is the leading platform for achieving HITRUST
   </Card>
 </CardGroup>
@@ -6605,28 +6748,28 @@ We provide developer-friendly infrastructure guardrails and solutions to help ou
 
 # Learn more about security functionality
 
-<CardGroup cols={3}>
-  <Card title=" Authentication" icon="book" iconType="duotone" href="https://www.aptible.com/docs/authenticating-with-aptible">
+<CardGroup>
+  <Card title=" Authentication" icon="book" href="https://www.aptible.com/docs/authenticating-with-aptible">
     Learn about password authentication, SCIM, SSH keys, and Single Sign-On (SSO)
   </Card>
 
-  <Card title="Roles & Permissions" icon="book" iconType="duotone" href="https://www.aptible.com/docs/access-permissions">
+  <Card title="Roles & Permissions" icon="book" href="https://www.aptible.com/docs/access-permissions">
     Learn to managr roles & permissions
   </Card>
 
-  <Card title="Security & Compliance Dashboard" icon="book" iconType="duotone" href="https://www.aptible.com/docs/intro-compliance-dashboard">
+  <Card title="Security & Compliance Dashboard" icon="book" href="https://www.aptible.com/docs/intro-compliance-dashboard">
     Learn to review, manage, and showcase your security & compliance controls
   </Card>
 
-  <Card title="Security Scans" icon="book" iconType="duotone" href="https://www.aptible.com/docs/security-scans">
+  <Card title="Security Scans" icon="book" href="https://www.aptible.com/docs/security-scans">
     Learn about Aptible's Docker Image security scans
   </Card>
 
-  <Card title="DDoS Protection" icon="book" iconType="duotone" href="https://www.aptible.com/docs/pid-limits">
+  <Card title="DDoS Protection" icon="book" href="https://www.aptible.com/docs/pid-limits">
     Learn about Aptible's DDoS Protection
   </Card>
 
-  <Card title="Managed Host Intrusion Detection (HIDS)" icon="book" iconType="duotone" href="https://www.aptible.com/docs/hids">
+  <Card title="Managed Host Intrusion Detection (HIDS)" icon="book" href="https://www.aptible.com/docs/hids">
     Learn about Aptible's methodoloy and process for intrusion detection
   </Card>
 </CardGroup>
@@ -6637,19 +6780,19 @@ We provide developer-friendly infrastructure guardrails and solutions to help ou
   <Accordion title="How do I achieve HIPAA compliance with Aptible?">
     ## Read the guide
 
-    <Card title="How to achieve HIPAA compliance" icon="book-open-reader" iconType="duotone" href="https://www.aptible.com/docs/achieve-hipaa" />
+    <Card title="How to achieve HIPAA compliance" icon="book-open-reader" href="https://www.aptible.com/docs/achieve-hipaa" />
   </Accordion>
 
   <Accordion title="How do I achieve HITRUST compliance with Aptible?">
     ## Read the guide
 
-    <Card title="How to navigate HITRUST Certification" icon="book-open-reader" iconType="duotone" href="https://www.aptible.com/docs/requesting-hitrust-inheritance" />
+    <Card title="How to navigate HITRUST Certification" icon="book-open-reader" href="https://www.aptible.com/docs/requesting-hitrust-inheritance" />
   </Accordion>
 
   <Accordion title="How should I navigate security questionnaires and audits?">
     ## Read the guide
 
-    <Card title="How to navigate security questionnaires and audits" icon="book-open-reader" iconType="duotone" href="https://www.aptible.com/docs/security-questionnaires" />
+    <Card title="How to navigate security questionnaires and audits" icon="book-open-reader" href="https://www.aptible.com/docs/security-questionnaires" />
   </Accordion>
 
   <Accordion title="Does Aptible provide anti-virus/anti-malware/anti-spyware software?">
@@ -6679,7 +6822,7 @@ Source: https://www.aptible.com/docs/core-concepts/security-compliance/security-
 
 The performance of the security controls in the Security & Compliance Dashboard affects your readiness score towards regulations and frameworks like HIPAA and HITRUST. These scores tell you how effectively you have implemented infrastructure controls to meet these frameworks’ requirements.
 
-<img src="https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/f48c11f-compliance-visibility-scores-all.png?fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=ab18cf480d9e9960131766d0cd166b7f" alt="Image" data-og-width="3578" width="3578" data-og-height="1108" height="1108" data-path="images/f48c11f-compliance-visibility-scores-all.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/f48c11f-compliance-visibility-scores-all.png?w=280&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=871f1bee4b2a7e40525341c883d3e20d 280w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/f48c11f-compliance-visibility-scores-all.png?w=560&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=1b19bc6da070a378e35845a64ac54fd3 560w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/f48c11f-compliance-visibility-scores-all.png?w=840&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=16220e84297d41352673d98f6f23a4d0 840w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/f48c11f-compliance-visibility-scores-all.png?w=1100&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=43690123e67fd33ea1775887da01c5c9 1100w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/f48c11f-compliance-visibility-scores-all.png?w=1650&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=26505fe3a08de0586a9b4c7291fb197b 1650w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/f48c11f-compliance-visibility-scores-all.png?w=2500&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=b2df054a8fd71f910309819658b46a56 2500w" />
+<img alt="Image" />
 
 Aptible has mapped the controls visualized in the Dashboard to HIPAA and HITRUST requirements.
 
@@ -6725,7 +6868,7 @@ You can choose to ignore a control implementation, thereby no longer seeing the 
 
 In the example below, [container logging](/core-concepts/observability/logs/overview) was not implemented in the *aptible-misc* environment.
 
-<img src="https://mintcdn.com/aptible/MtH_goy23rOUOZd7/images/73a2f64-compliance-visibility-container-logging.png?fit=max&auto=format&n=MtH_goy23rOUOZd7&q=85&s=42cc9d3246da9ad2e03f907309b8b44f" alt="Image" data-og-width="3580" width="3580" data-og-height="1828" height="1828" data-path="images/73a2f64-compliance-visibility-container-logging.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/aptible/MtH_goy23rOUOZd7/images/73a2f64-compliance-visibility-container-logging.png?w=280&fit=max&auto=format&n=MtH_goy23rOUOZd7&q=85&s=f8732e006f44c454518898c9260fb40c 280w, https://mintcdn.com/aptible/MtH_goy23rOUOZd7/images/73a2f64-compliance-visibility-container-logging.png?w=560&fit=max&auto=format&n=MtH_goy23rOUOZd7&q=85&s=d3374c456d67beea9931a64c67befb88 560w, https://mintcdn.com/aptible/MtH_goy23rOUOZd7/images/73a2f64-compliance-visibility-container-logging.png?w=840&fit=max&auto=format&n=MtH_goy23rOUOZd7&q=85&s=d27f1bf42ff93432b33a49c9f16d642c 840w, https://mintcdn.com/aptible/MtH_goy23rOUOZd7/images/73a2f64-compliance-visibility-container-logging.png?w=1100&fit=max&auto=format&n=MtH_goy23rOUOZd7&q=85&s=b8d678e2819172040b6724d2dfa02811 1100w, https://mintcdn.com/aptible/MtH_goy23rOUOZd7/images/73a2f64-compliance-visibility-container-logging.png?w=1650&fit=max&auto=format&n=MtH_goy23rOUOZd7&q=85&s=cd5ada5d5b2a90cb8b83c6bc71ca2f30 1650w, https://mintcdn.com/aptible/MtH_goy23rOUOZd7/images/73a2f64-compliance-visibility-container-logging.png?w=2500&fit=max&auto=format&n=MtH_goy23rOUOZd7&q=85&s=11851166df515180cd0f52c2cb47c793 2500w" />
+<img alt="Image" />
 
 In such a scenario, you have two options:
 
@@ -6739,7 +6882,7 @@ You could also ignore the control implementation based on your organization’s 
 
 You can see control implementations you’ve ignored in the expanded view of each control. You can also unignore the control implementation if needed.
 
-<img src="https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/cff01f0-compliance-visibility-ignore.gif?s=db9ad75665118f31f183f2542c074b17" alt="Image" data-og-width="640" width="640" data-og-height="318" height="318" data-path="images/cff01f0-compliance-visibility-ignore.gif" data-optimize="true" data-opv="3" />
+<img alt="Image" />
 
 
 # Security & Compliance Dashboard
@@ -6747,7 +6890,7 @@ Source: https://www.aptible.com/docs/core-concepts/security-compliance/security-
 
 
 
-<img src="https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/screenshot-ui.6e552b45.png?fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=808fec7d4bdbe090437f3de79c2e9d84" alt="" data-og-width="1312" width="1312" data-og-height="645" height="645" data-path="images/screenshot-ui.6e552b45.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/screenshot-ui.6e552b45.png?w=280&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=98222990b7b298db06819d861394b233 280w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/screenshot-ui.6e552b45.png?w=560&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=c472cd3b11210413d3f7cfd5a674b0e6 560w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/screenshot-ui.6e552b45.png?w=840&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=a4faa7ce0ab41cd983a448635e21a32f 840w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/screenshot-ui.6e552b45.png?w=1100&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=e322259925a417312fb26c56d15fe9b6 1100w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/screenshot-ui.6e552b45.png?w=1650&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=53175f739a22b10a2b0b2d859344a8dc 1650w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/screenshot-ui.6e552b45.png?w=2500&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=67875a8a778d9b4bda6079828d16ef39 2500w" />
+<img alt="" />
 
 The Aptible Security & Compliance Dashboard provides a unified, easy-to-consume view of all the security controls Aptible fully enforces and manages on your behalf, as well as the configurations you manage on Aptible that can affect the security of your apps, databases, and endpoints hosted on the platform.
 
@@ -6781,7 +6924,7 @@ Every control tests for security safeguard implementation for specific resources
 
 You can see resources in scope by clicking on a control of interest.
 
-<img src="https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/c30c447-compliance-visibility-resources.jpeg?fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=68a0dee200d0a9c2a4eade0f6a83f6c4" alt="Image" data-og-width="3060" width="3060" data-og-height="1842" height="1842" data-path="images/c30c447-compliance-visibility-resources.jpeg" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/c30c447-compliance-visibility-resources.jpeg?w=280&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=922d481beb7f071a41f70b019656c32d 280w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/c30c447-compliance-visibility-resources.jpeg?w=560&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=95f29d7d1c414aa223dd8453cce6c3d8 560w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/c30c447-compliance-visibility-resources.jpeg?w=840&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=dceb59faad2e480efe17593a8286d587 840w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/c30c447-compliance-visibility-resources.jpeg?w=1100&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=47fd5ce4b0feeadad152da5dfac66c62 1100w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/c30c447-compliance-visibility-resources.jpeg?w=1650&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=73568b58bd924575385ce8ebfa6314df 1650w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/c30c447-compliance-visibility-resources.jpeg?w=2500&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=fe7b88f84cd8dc4ca1a224501f0ab032 2500w" />
+<img alt="Image" />
 
 
 # Shareable Compliance Posture Report
@@ -6793,11 +6936,11 @@ You can generate a shareable PDF of your overall security and compliance posture
 
 You can do this by clicking the *View as Printable Summary Report* button in the Security & Compliance Dashboard.
 
-<img src="https://mintcdn.com/aptible/MtH_goy23rOUOZd7/images/3ed3763-compliance-visibility-pdf-button.png?fit=max&auto=format&n=MtH_goy23rOUOZd7&q=85&s=797728ff11b4f13f2d310bca316ef9ed" alt="Image" data-og-width="3572" width="3572" data-og-height="1834" height="1834" data-path="images/3ed3763-compliance-visibility-pdf-button.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/aptible/MtH_goy23rOUOZd7/images/3ed3763-compliance-visibility-pdf-button.png?w=280&fit=max&auto=format&n=MtH_goy23rOUOZd7&q=85&s=2ce0e32401446b8e00306b8dead4501b 280w, https://mintcdn.com/aptible/MtH_goy23rOUOZd7/images/3ed3763-compliance-visibility-pdf-button.png?w=560&fit=max&auto=format&n=MtH_goy23rOUOZd7&q=85&s=8489c17ac3eb00c6614e7046ae97b999 560w, https://mintcdn.com/aptible/MtH_goy23rOUOZd7/images/3ed3763-compliance-visibility-pdf-button.png?w=840&fit=max&auto=format&n=MtH_goy23rOUOZd7&q=85&s=304d8a00d0b29dfde15f5ef054f4e4a5 840w, https://mintcdn.com/aptible/MtH_goy23rOUOZd7/images/3ed3763-compliance-visibility-pdf-button.png?w=1100&fit=max&auto=format&n=MtH_goy23rOUOZd7&q=85&s=b938814e56c8b3452733fd381d4c8063 1100w, https://mintcdn.com/aptible/MtH_goy23rOUOZd7/images/3ed3763-compliance-visibility-pdf-button.png?w=1650&fit=max&auto=format&n=MtH_goy23rOUOZd7&q=85&s=75636b2385777c7c74ce7f98b6942cb6 1650w, https://mintcdn.com/aptible/MtH_goy23rOUOZd7/images/3ed3763-compliance-visibility-pdf-button.png?w=2500&fit=max&auto=format&n=MtH_goy23rOUOZd7&q=85&s=29d2e9822e3b7d8414164bc9435c75ab 2500w" />
+<img alt="Image" />
 
 Clicking this will open up a print-friendly view that details the implementation of the various controls against the resources in scope for each of them. You can then save this report as a PDF and download it to your local drive by following the instructions from the prompt.
 
-<img src="https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/cb3ff99-compliance-visibility-print-button.png?fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=7fb60328590a0f93cd00351a6e037d5a" alt="Image" data-og-width="2168" width="2168" data-og-height="2014" height="2014" data-path="images/cb3ff99-compliance-visibility-print-button.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/cb3ff99-compliance-visibility-print-button.png?w=280&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=d47ded3155874df5ac0119fa7be6d360 280w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/cb3ff99-compliance-visibility-print-button.png?w=560&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=7ef6d4eb12eee56f9c0a33f2bed6e6c3 560w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/cb3ff99-compliance-visibility-print-button.png?w=840&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=fbe27671e98c732ea4130699a5c866de 840w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/cb3ff99-compliance-visibility-print-button.png?w=1100&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=522c454ef64bb84945358dbb7e8543bb 1100w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/cb3ff99-compliance-visibility-print-button.png?w=1650&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=a6aa8985d6b22c8f606cfc98c14e6d81 1650w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/cb3ff99-compliance-visibility-print-button.png?w=2500&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=e0c4989b4e7e3dd2bc76086ea322bf7a 2500w" />
+<img alt="Image" />
 
 The print-friendly report will honor the environment and control filters from the Compliance Visibility Dashboard. For example, if you’ve filtered to specific environments and control categories, the resulting print-friendly report would only highlight the control implementations pertaining to the filtered environments and categories.
 
@@ -6827,7 +6970,8 @@ Docker image security scans do **not** scan for:
 <AccordionGroup>
   <Accordion title="How do I access security scans?">
     Access Docker image security scans in the Aptible Dashboard by navigating to the respective app and selecting "Security Scan."
-    <img src="https://mintcdn.com/aptible/gJr2xlqbHzeeHUse/images/Security-Scans.png?fit=max&auto=format&n=gJr2xlqbHzeeHUse&q=85&s=068dd69243844b3ba9fa5eedf336bb84" alt="" data-og-width="1000" width="1000" data-og-height="500" height="500" data-path="images/Security-Scans.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/aptible/gJr2xlqbHzeeHUse/images/Security-Scans.png?w=280&fit=max&auto=format&n=gJr2xlqbHzeeHUse&q=85&s=b355dd37c100e3e992ddb1973b3af6bb 280w, https://mintcdn.com/aptible/gJr2xlqbHzeeHUse/images/Security-Scans.png?w=560&fit=max&auto=format&n=gJr2xlqbHzeeHUse&q=85&s=716d204dc972ad6d886fdca6d961ccd7 560w, https://mintcdn.com/aptible/gJr2xlqbHzeeHUse/images/Security-Scans.png?w=840&fit=max&auto=format&n=gJr2xlqbHzeeHUse&q=85&s=5c855d982d5c9c7072656d91294f4d3e 840w, https://mintcdn.com/aptible/gJr2xlqbHzeeHUse/images/Security-Scans.png?w=1100&fit=max&auto=format&n=gJr2xlqbHzeeHUse&q=85&s=34029ff452235228821e40720add236c 1100w, https://mintcdn.com/aptible/gJr2xlqbHzeeHUse/images/Security-Scans.png?w=1650&fit=max&auto=format&n=gJr2xlqbHzeeHUse&q=85&s=4ce6aac80b9345dff5be2c4f5a237579 1650w, https://mintcdn.com/aptible/gJr2xlqbHzeeHUse/images/Security-Scans.png?w=2500&fit=max&auto=format&n=gJr2xlqbHzeeHUse&q=85&s=b4ac80a6bb805cf6463e58ad9fc4a819 2500w" />
+
+    <img alt="" />
   </Accordion>
 
   <Accordion title="What OSes are supported?">
@@ -6888,36 +7032,42 @@ Using the Deploy Code tool in the Aptible Dashboard, you can deploy Custom Code.
 
 <Steps>
   <Step title="Deploy with Git Push">
-        <img src="https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/custom-code1.png?fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=e05a3f6c5952e32364be7ad30092a51d" alt="" data-og-width="2000" width="2000" data-og-height="1000" height="1000" data-path="images/custom-code1.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/custom-code1.png?w=280&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=ffc5eb4200fa5fb9acb20d0212f8f01a 280w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/custom-code1.png?w=560&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=49ffb07a036801cbd59268822610b3e0 560w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/custom-code1.png?w=840&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=21ddf7b1061c4b7dc84ede2369b0faf1 840w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/custom-code1.png?w=1100&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=00e247c9a3cf99681725ccd3862e10df 1100w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/custom-code1.png?w=1650&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=c6cdadd5d731e7687af9f877cd5fe531 1650w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/custom-code1.png?w=2500&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=e4c993fe2a870cf3b876635b912cc61a 2500w" />
+    <img alt="" />
   </Step>
 
   <Step title="Add an SSH key">
-    <img src="https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/custom-code2.png?fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=a6203ba1bb8d2992ea129a4e53a63f83" alt="" data-og-width="2000" width="2000" data-og-height="1000" height="1000" data-path="images/custom-code2.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/custom-code2.png?w=280&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=b0cef4ae9f082c0cda66fc36ca769fe0 280w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/custom-code2.png?w=560&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=4d692307d6e2bf7f506956a7c5fb104b 560w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/custom-code2.png?w=840&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=0b440558a5bfef1cac0ffd6820107941 840w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/custom-code2.png?w=1100&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=1126c4fd35e6414a6893ed82ec8d9048 1100w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/custom-code2.png?w=1650&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=13ccffa65d3f58a704ac5d7c39332fa9 1650w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/custom-code2.png?w=2500&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=7c3b3c9d1ef05232adcc52d7df07361a 2500w" />
+    <img alt="" />
+
     If you have not done so already, you will be prompted to set up an [SSH key](/core-concepts/security-compliance/authentication/ssh-keys#ssh-keys).
   </Step>
 
   <Step title="Environment Setup">
-    <img src="https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/custom-code3.png?fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=482bd8b4ad7900c8590f6a014963d110" alt="" data-og-width="2000" width="2000" data-og-height="1000" height="1000" data-path="images/custom-code3.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/custom-code3.png?w=280&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=ae0406e974caf43969986c358bd53623 280w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/custom-code3.png?w=560&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=ae01e7950b1df27c3ad979111f03a3b8 560w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/custom-code3.png?w=840&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=262043e89523121cd322294253c33e52 840w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/custom-code3.png?w=1100&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=0b1464327c6a19684af68c34e33f3dfd 1100w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/custom-code3.png?w=1650&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=a052d552eebc21b2bad35122b0deb5b2 1650w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/custom-code3.png?w=2500&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=ee58aa2711fd3e2f5c365631756a9661 2500w" />
+    <img alt="" />
+
     Select your [stack](/core-concepts/architecture/stacks) to deploy your resources. This will determine what region your resources are deployed to. Then, name the [environment](/core-concepts/architecture/environments) your resources will be grouped into.
   </Step>
 
   <Step title="Push your code to Aptible">
-    <img src="https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/custom-code4.png?fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=8444bf4b0fd18982a776ed6cc5bf4cef" alt="" data-og-width="2000" width="2000" data-og-height="1000" height="1000" data-path="images/custom-code4.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/custom-code4.png?w=280&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=c40cdc919f5ef480ddfed953795e6f54 280w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/custom-code4.png?w=560&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=3262f0b74ee620408eca37b29ed5b277 560w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/custom-code4.png?w=840&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=183c944d3e870c504d1ecd34ef89071b 840w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/custom-code4.png?w=1100&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=5204bfbe428b92a076cbd5eac7156a1e 1100w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/custom-code4.png?w=1650&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=6eddfe817baaa0fe33f445ad55dc860a 1650w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/custom-code4.png?w=2500&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=56b0a7cc7bcb5e300f65449f9e75b6c8 2500w" />
+    <img alt="" />
+
     Select **Custom Code** deployment, and from your command-line interface, add Aptible’s Git Server and push your code to our scan branch using the commands in the Aptible Dashboard
   </Step>
 
   <Step title="Provision a database and configure your app">
-    <img src="https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/custom-code5.png?fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=33fa6e8e398d9e9eb9c07afd516c3d55" alt="" data-og-width="2000" width="2000" data-og-height="2000" height="2000" data-path="images/custom-code5.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/custom-code5.png?w=280&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=94892ebaccf5a9f9c75384aa9c6ab1e7 280w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/custom-code5.png?w=560&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=339f44d415df8b7a9fcef90ef1289bdc 560w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/custom-code5.png?w=840&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=aced248575e0f9b88ef77226a6d4be42 840w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/custom-code5.png?w=1100&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=bbfcabeda6804cfef82cccaa5dd28d76 1100w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/custom-code5.png?w=1650&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=a21fb993fdd74c5ae7bbc5dc7d2d38e3 1650w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/custom-code5.png?w=2500&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=2937558d696be335c0ffa66702386004 2500w" />
+    <img alt="" />
+
     Optionally, provision a database, configure your app with [environment variables](/core-concepts/apps/deploying-apps/configuration#configuration-variables), or add additional [services](/core-concepts/apps/deploying-apps/services) and commands.
   </Step>
 
   <Step title="Deploy your code and view logs">
-    <img src="https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/custom-code6.png?fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=482c422d89425642f6c8028ebec5b5f0" alt="" data-og-width="2000" width="2000" data-og-height="1000" height="1000" data-path="images/custom-code6.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/custom-code6.png?w=280&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=947dd7090945a4c15bcd15dd3ad6587c 280w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/custom-code6.png?w=560&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=1934419257a8420b5e8d20c9984fba03 560w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/custom-code6.png?w=840&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=766d371a4a1ab2e4c44c6903f889a2e0 840w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/custom-code6.png?w=1100&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=736e712cb5cc741434a7f99a78f245ea 1100w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/custom-code6.png?w=1650&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=ee4340c04101cd2dd386ad26fae0b549 1650w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/custom-code6.png?w=2500&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=52291daaed610bf7745f4bf41991d9f1 2500w" />
+    <img alt="" />
+
     Deploy your code and view [logs](/core-concepts/observability/logs/overview) in real time
   </Step>
 
   <Step title="Expose your app to the internet">
-    <img src="https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/custom-code7.png?fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=0a086642589af4f75d61ff01424c4cac" alt="" data-og-width="2000" width="2000" data-og-height="1000" height="1000" data-path="images/custom-code7.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/custom-code7.png?w=280&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=74586b1e02af7c2fc872ec2dd24125fd 280w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/custom-code7.png?w=560&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=1b50f5c0b76330fabbba86cb2ab64cfe 560w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/custom-code7.png?w=840&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=c3fd450c02667f9da49fbd063a438974 840w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/custom-code7.png?w=1100&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=68d9412ae12f303ab2fdbd3446f01fd7 1100w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/custom-code7.png?w=1650&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=d7bdcd757419b272210aad0ed6a9e1a5 1650w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/custom-code7.png?w=2500&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=67082da4370c6996280175619ec6b7e4 2500w" />
+    <img alt="" />
+
     Now that your code is deployed, it's time to expose your app to the internet. Select the service that needs an [endpoint](/core-concepts/apps/connecting-to-apps/app-endpoints/overview), and Aptible will automatically provision a managed endpoint.
   </Step>
 
@@ -6930,7 +7080,7 @@ Source: https://www.aptible.com/docs/getting-started/deploy-starter-template/nod
 
 Deploy a starter template Node.js app using the Express framework on Aptible
 
-<CardGroup cols={3}>
+<CardGroup>
   <Card title="Deploy Now" icon="rocket" href="https://app.aptible.com/create" />
 
   <Card title="GitHub Repo" icon="github" href="https://github.com/aptible/template-express" />
@@ -6950,46 +7100,50 @@ Using the [Deploy Code](https://app.aptible.com/create) tool in the Aptible Da
 
 <Steps>
   <Step title="Deploy with Git Push">
-        <img src="https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/node1.png?fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=d2515d892b7f9567751f8a4c6d08955f" alt="" data-og-width="2000" width="2000" data-og-height="1000" height="1000" data-path="images/node1.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/node1.png?w=280&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=2a401f5771cf355d7021f77f50a6739a 280w, https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/node1.png?w=560&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=b743683b59ee1e24b4863dbdabd2266e 560w, https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/node1.png?w=840&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=a39956623b0d9be157e0d718eb6f3545 840w, https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/node1.png?w=1100&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=e042384b702b403ae5629d4d1159526d 1100w, https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/node1.png?w=1650&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=e73b73ae634d31199317f33c9f87c68d 1650w, https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/node1.png?w=2500&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=75bf8761266c5babffeed9812fbafbf6 2500w" />
+    <img alt="" />
   </Step>
 
   <Step title="Add an SSH key">
-    <img src="https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/node2.png?fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=f6317e159d372b927e2f6fe776c3ee7a" alt="" data-og-width="2000" width="2000" data-og-height="1000" height="1000" data-path="images/node2.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/node2.png?w=280&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=6b040e96cddb850be3fac3cd9b99e70a 280w, https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/node2.png?w=560&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=008521d1fba94cf9aba0445889713283 560w, https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/node2.png?w=840&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=9339b404627c518a77eaa61cdbdb31a8 840w, https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/node2.png?w=1100&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=8113bb5151bd05afee387aea2fd02068 1100w, https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/node2.png?w=1650&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=6a2fca1eccdde3e0e58036da05d05517 1650w, https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/node2.png?w=2500&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=56455a5296e00e013d5bcbe618a75f4e 2500w" />
+    <img alt="" />
+
     If you have not done so already, you will be prompted to set up an [SSH key](/core-concepts/security-compliance/authentication/ssh-keys#ssh-keys).
   </Step>
 
   <Step title="Environment Setup">
-        <img src="https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/node3.png?fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=be3bfb9b4c3a3f6ba39adde4ed70085d" alt="" data-og-width="2000" width="2000" data-og-height="1000" height="1000" data-path="images/node3.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/node3.png?w=280&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=53e92535701a434f26c06d3277fcddab 280w, https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/node3.png?w=560&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=67cea008d4161c7452a5122b26c94e94 560w, https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/node3.png?w=840&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=386980ac21e5ab342195e3cc9e03fb99 840w, https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/node3.png?w=1100&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=fb2ce9499b01636087b7811f339b90d8 1100w, https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/node3.png?w=1650&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=002fb394003403ea14b386d6d88a1604 1650w, https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/node3.png?w=2500&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=b18084d018f80039e116ddf6eb942fd8 2500w" />\
+    <img alt="" />\
     Select your [Stack](/core-concepts/architecture/stacks) to deploy your resources. This will determine what region your resources are deployed to. Then, name the [Environment](/core-concepts/architecture/environments) your resources will be grouped into.
   </Step>
 
   <Step title="Prepare the template">
-    <img src="https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/node4.png?fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=d5fd4b9033690c9daad39d9159a94ec1" alt="" data-og-width="2000" width="2000" data-og-height="1000" height="1000" data-path="images/node4.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/node4.png?w=280&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=f1032f6f78c968bbd4ade14dcec03110 280w, https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/node4.png?w=560&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=36532c32d33472df17e5d9c07185574f 560w, https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/node4.png?w=840&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=16f613df12b63c8a030ffe5526f7d25f 840w, https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/node4.png?w=1100&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=0d90a76741861a56874c46875af52b4c 1100w, https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/node4.png?w=1650&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=9d2214d9635dc78b3acef0572b38b62d 1650w, https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/node4.png?w=2500&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=cb95d07914b98e968307b474b15d2f9a 2500w" />
+    <img alt="" />
+
     Select **Express Template** for deployment, and follow command-line instructions.
   </Step>
 
   <Step title="Fill environment variables and deploy">
-        <img src="https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/node5.png?fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=71400219e31addf9b926b1dc04683cb3" alt="" data-og-width="2000" width="2000" data-og-height="1000" height="1000" data-path="images/node5.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/node5.png?w=280&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=6f1ab398bb55bac09d3c9f381f232ea4 280w, https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/node5.png?w=560&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=ae83f4a44790dcca8d81fbd6acbec9b3 560w, https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/node5.png?w=840&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=fdd1bfdf97e18952411b7cdcf2ba1f08 840w, https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/node5.png?w=1100&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=fc3266ee9e7f8dcac91167f09d53bfac 1100w, https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/node5.png?w=1650&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=051ae7478d14700333a519be741f1c4e 1650w, https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/node5.png?w=2500&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=5cc2588f7de3e2f8caa93b5ef90c743a 2500w" />
+    <img alt="" />
 
     Aptible will automatically fill this template's required databases, services, and app's configuration with environment variable keys for you to fill with values. Once complete, save and deploy the code!
 
     Aptible will stream logs to you in live time:
-    <img src="https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/node6.png?fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=1361b40e7b55dce2ce872e0fe12b7ae6" alt="" data-og-width="2000" width="2000" data-og-height="1000" height="1000" data-path="images/node6.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/node6.png?w=280&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=33085246283a46c29c0c1d7512c3a683 280w, https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/node6.png?w=560&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=1714b2613ea018dfc42ec8acb0b2541c 560w, https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/node6.png?w=840&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=d2496fbeb91e2457dfd6be25e2257a54 840w, https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/node6.png?w=1100&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=55fd9727cdd214ac411770e829375e83 1100w, https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/node6.png?w=1650&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=5582f7c4f08d85f43060ca3b6a3b4ff0 1650w, https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/node6.png?w=2500&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=ef9c585a1e920d89f78306d1729da771 2500w" />
+
+    <img alt="" />
   </Step>
 
   <Step title="Expose your app to the internet">
-    <img src="https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/node7.png?fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=656b0e1c2e7987dc335538b3d70d598d" alt="" data-og-width="2000" width="2000" data-og-height="1000" height="1000" data-path="images/node7.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/node7.png?w=280&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=c062d04c143ad4b871dc49f50fe29318 280w, https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/node7.png?w=560&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=7379a79d1024742177e57cc8ad419d32 560w, https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/node7.png?w=840&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=ab4ea40b5d986a205575bff1ad11228a 840w, https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/node7.png?w=1100&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=191247ee12cf933c6a8e969705aa6aab 1100w, https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/node7.png?w=1650&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=f9deeeb4218cf2fd53d69deb3ad3221e 1650w, https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/node7.png?w=2500&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=9cb8eb29a590c2437fac4fcb3b97b97a 2500w" />
+    <img alt="" />
+
     Now that your code is deployed, it's time to expose your app to the internet. Select the service that needs an [endpoint](/core-concepts/apps/connecting-to-apps/app-endpoints/overview), and Aptible will automatically provision a managed endpoint.
   </Step>
 
   <Step title="View your deployed app" icon="party-horn">
-        <img src="https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/node8.png?fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=78ef220e736fb8e4cf8083a1db202db3" alt="" data-og-width="2000" width="2000" data-og-height="1000" height="1000" data-path="images/node8.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/node8.png?w=280&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=eb51fa064e35a81b6c40b6c9541face8 280w, https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/node8.png?w=560&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=0d3db0a59f4013ce7bdca549d182a841 560w, https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/node8.png?w=840&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=c885b19b038edad3ddc9280284890eea 840w, https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/node8.png?w=1100&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=22165897fe59a1c5d69c4bedab746b82 1100w, https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/node8.png?w=1650&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=0aacd7cfce8d690a2d5e399ed6bc41f4 1650w, https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/node8.png?w=2500&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=bab597866ddae202eb7b06e395efebce 2500w" />
+    <img alt="" />
   </Step>
 </Steps>
 
 # Continue your journey
 
-<Card title="Deploy custom code" icon="books" iconType="duotone" href="https://www.aptible.com/docs/custom-code-quickstart">
+<Card title="Deploy custom code" icon="books" href="https://www.aptible.com/docs/custom-code-quickstart">
   Read our guide for deploying custom code on Aptible.
 </Card>
 
@@ -7001,7 +7155,7 @@ Source: https://www.aptible.com/docs/getting-started/deploy-starter-template/ove
 
 Use a starter template to quickly deploy your **own code** or **sample code**.
 
-<CardGroup cols={3}>
+<CardGroup>
   <Card title="Custom Code" icon="globe" href="https://www.aptible.com/docs/custom-code-quickstart">
     Explore compatibility and deploy custom code
   </Card>
@@ -7064,7 +7218,7 @@ Source: https://www.aptible.com/docs/getting-started/deploy-starter-template/php
 
 Deploy a starter template PHP app using the Laravel framework on Aptible
 
-<CardGroup cols={3}>
+<CardGroup>
   <Card title="Deploy Now" icon="rocket" href="https://app.aptible.com/create" />
 
   <Card title="GitHub Repo" icon="github" href="https://github.com/aptible/template-laravel" />
@@ -7084,45 +7238,51 @@ Using the [Deploy Code](https://app.aptible.com/create) tool in the Aptible Da
 
 <Steps>
   <Step title="Deploy with Git Push">
-        <img src="https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/php1.png?fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=7fb890d33645401e160132ba972cadab" alt="" data-og-width="2000" width="2000" data-og-height="1000" height="1000" data-path="images/php1.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/php1.png?w=280&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=c77db93d15ba0c98f3586d038194d431 280w, https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/php1.png?w=560&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=41b5fc6159cb77913261c2839c6de9e8 560w, https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/php1.png?w=840&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=0fb9503232b8d7044af366d3dfbc4ec2 840w, https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/php1.png?w=1100&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=17a988feaf6719554f1233315783133d 1100w, https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/php1.png?w=1650&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=98e94d54d2797b7f43d24974902ca1dc 1650w, https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/php1.png?w=2500&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=f367897cd61d2e98956ce14e6ffd9f81 2500w" />
+    <img alt="" />
   </Step>
 
   <Step title="Add an SSH key">
-    <img src="https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/php2.png?fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=5d4290f259189b704b68718174bc1055" alt="" data-og-width="2000" width="2000" data-og-height="1000" height="1000" data-path="images/php2.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/php2.png?w=280&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=4f0c46e1fe97c29d20059c73035358a7 280w, https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/php2.png?w=560&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=2a904c42f7f09c233f53c6bf505ccc88 560w, https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/php2.png?w=840&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=5b6362b8c43594eec920d388b9f1f9c6 840w, https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/php2.png?w=1100&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=839a8b4b62c74c521f84246326f8dacc 1100w, https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/php2.png?w=1650&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=c214fd2630cd74704d680e8c6feaf800 1650w, https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/php2.png?w=2500&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=d0a4b59e7e7b148992c8d5dd47e2d3c8 2500w" />
+    <img alt="" />
+
     If you have not done so already, you will be prompted to set up an [SSH key](/core-concepts/security-compliance/authentication/ssh-keys#ssh-keys).
   </Step>
 
   <Step title="Environment Setup">
-    <img src="https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/php3.png?fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=e55f9a60b747aae8f6ed523eea3c218b" alt="" data-og-width="2000" width="2000" data-og-height="1000" height="1000" data-path="images/php3.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/php3.png?w=280&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=4a43ae2f98ff07903cb735b92b982edf 280w, https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/php3.png?w=560&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=337e3b10fef30fb11b7a35966955948e 560w, https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/php3.png?w=840&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=c7cea86e6f8a61861678d59cbf14059d 840w, https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/php3.png?w=1100&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=fa37eff98ff4051dd259e73064be8e94 1100w, https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/php3.png?w=1650&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=b5600fce00267cae6b87774d6ea03a89 1650w, https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/php3.png?w=2500&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=dc844a600658bbeee8c1c4c57228b888 2500w" />
+    <img alt="" />
+
     Select your [stack](/core-concepts/architecture/stacks) to deploy your resources. This will determine what region your resources are deployed to. Then, name the [environment](/core-concepts/architecture/environments) your resources will be grouped into.
   </Step>
 
   <Step title="Prepare the template">
-    <img src="https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/php4.png?fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=265a454c862588b957124e7334eaeac5" alt="" data-og-width="2000" width="2000" data-og-height="1000" height="1000" data-path="images/php4.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/php4.png?w=280&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=2182dcea60d95bdeeaf10dc9cd4bc290 280w, https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/php4.png?w=560&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=fc98add810a80e1a2b9155d0de6a5030 560w, https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/php4.png?w=840&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=10ba955afc7ca892a1e7f9f0b8bdfe02 840w, https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/php4.png?w=1100&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=bea65e31a616a9b124833fb25c19cbb7 1100w, https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/php4.png?w=1650&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=71ebf643e7441dfc15ad71c6690132ed 1650w, https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/php4.png?w=2500&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=98141333d61c21b39ad72803404d25ed 2500w" />
+    <img alt="" />
+
     Select **Laravel Template** for deployment, and follow command-line instructions.
   </Step>
 
   <Step title="Fill environment variables and deploy!">
-    <img src="https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/php5.png?fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=e2fefd126f15f6937e4057f401f0ac67" alt="" data-og-width="2000" width="2000" data-og-height="1000" height="1000" data-path="images/php5.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/php5.png?w=280&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=97e9fca34cd2f03d3e065c9a00dc490e 280w, https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/php5.png?w=560&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=7a09c22c0aa9016aa038641f118f9fc7 560w, https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/php5.png?w=840&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=ed3ec259bc2f6adc46c2767344bc2352 840w, https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/php5.png?w=1100&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=a825fa17d6ab3e5bf91c0578f0a48e8d 1100w, https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/php5.png?w=1650&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=6f5abedb0bf1d8ace0e291e82a5e7436 1650w, https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/php5.png?w=2500&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=9dcc5206f0c133d6f322d4ed1009d443 2500w" />
+    <img alt="" />
+
     Aptible will automatically fill this template's required databases, services, and app's configuration with environment variable keys for you to fill with values. Once complete, save and deploy the code!
 
     Aptible will stream the logs to you in live time:
-    <img src="https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/php6.png?fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=a336e3ac17d3d4b542379776db455642" alt="" data-og-width="2000" width="2000" data-og-height="1000" height="1000" data-path="images/php6.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/php6.png?w=280&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=925c08dbdc980b7df6e3f6747fe8f3c4 280w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/php6.png?w=560&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=8a038ca210aaa6fd5c9cddcfd1514503 560w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/php6.png?w=840&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=6266f9ea3a5f85f4c6e09bec79ad48cc 840w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/php6.png?w=1100&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=daa50f45212af9d6700ecd1d0e19205e 1100w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/php6.png?w=1650&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=3016c3f5f3c748a04ed8fce0a1456515 1650w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/php6.png?w=2500&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=dcc42ff6939ba779c0164469a597a71a 2500w" />
+
+    <img alt="" />
   </Step>
 
   <Step title="Expose your app to the internet">
-    <img src="https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/php7.png?fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=c9123bc641b82d9e045943c066c4c74c" alt="" data-og-width="2000" width="2000" data-og-height="1000" height="1000" data-path="images/php7.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/php7.png?w=280&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=50e2d019f3b0373e7326e042a34eb58b 280w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/php7.png?w=560&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=8a5805d52e1e86b14aeb06992c86b6f6 560w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/php7.png?w=840&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=3ea24a610702a11c27e77470bbe41ac9 840w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/php7.png?w=1100&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=6c51060480af0acbfaff4f32abff85d4 1100w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/php7.png?w=1650&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=4648ef41a029bbebf8cd6e2b6f4bf0d6 1650w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/php7.png?w=2500&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=da74f7fb3a341d89933203c1a91004a3 2500w" />
+    <img alt="" />
+
     Now that your code is deployed, it's time to expose your app to the internet. Select the service that needs an [endpoint](/core-concepts/apps/connecting-to-apps/app-endpoints/overview), and Aptible will automatically provision a managed endpoint.
   </Step>
 
   <Step title="View your deployed app" icon="party-horn">
-        <img src="https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/php8.png?fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=a0ce83d45b5c30d87d69c02e95693cd0" alt="" data-og-width="2000" width="2000" data-og-height="1000" height="1000" data-path="images/php8.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/php8.png?w=280&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=2165810e3d8ccff041cb66574ec5079e 280w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/php8.png?w=560&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=1bb3d5dd1ebfa78d78c2ee90be467126 560w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/php8.png?w=840&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=8798e54673d2327df92d65ac1c2ded3f 840w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/php8.png?w=1100&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=e0bdf7aff8f6b0d8c214280e19df7509 1100w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/php8.png?w=1650&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=3d04e4dd82bd9b99ff99ac9c97b67491 1650w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/php8.png?w=2500&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=7d724c5c8f2fc76790c6cfaa4c31deee 2500w" />
+    <img alt="" />
   </Step>
 </Steps>
 
 # Continue your journey
 
-<Card title="Deploy custom code" icon="books" iconType="duotone" href="https://www.aptible.com/docs/custom-code-quickstart">
+<Card title="Deploy custom code" icon="books" href="https://www.aptible.com/docs/custom-code-quickstart">
   Read our guide for deploying custom code on Aptible.
 </Card>
 
@@ -7132,7 +7292,7 @@ Source: https://www.aptible.com/docs/getting-started/deploy-starter-template/pyt
 
 Deploy a starter template Python app using the Django framework on Aptible
 
-<CardGroup cols={3}>
+<CardGroup>
   <Card title="Deploy Now" icon="rocket" href="https://app.aptible.com/create" />
 
   <Card title="GitHub Repo" icon="github" href="https://github.com/aptible/template-django" />
@@ -7152,45 +7312,51 @@ Using the [Deploy Code](https://app.aptible.com/create) tool in the Aptible Da
 
 <Steps>
   <Step title="Deploy with Git Push">
-        <img src="https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/django1.png?fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=0e18c03c0590c5f184cfa9065828e978" alt="" data-og-width="2000" width="2000" data-og-height="1000" height="1000" data-path="images/django1.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/django1.png?w=280&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=67fbeb45818f8e497a499325ac136cc9 280w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/django1.png?w=560&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=44b5b2e4a810467e78346cb9d49448d8 560w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/django1.png?w=840&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=a5792bdda5208b609168ee0080c9f3dd 840w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/django1.png?w=1100&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=d137ebae4e1c329c9c97fa0d70e03b2c 1100w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/django1.png?w=1650&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=0faea048055774774400b7aadc4fe3bd 1650w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/django1.png?w=2500&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=12b7912b0e56c1b29c24a89dd9a2a0f9 2500w" />
+    <img alt="" />
   </Step>
 
   <Step title="Add an SSH key">
-    <img src="https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/django2.png?fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=dded35dce07acbc81b922f4e2792662b" alt="" data-og-width="2000" width="2000" data-og-height="1000" height="1000" data-path="images/django2.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/django2.png?w=280&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=f168b81a0b6a695f3814704c5fb193e6 280w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/django2.png?w=560&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=fca324f0e5735c3e70d28d9ccb6a5599 560w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/django2.png?w=840&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=5c8eab8802b18b0a1b30165bcfa1926a 840w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/django2.png?w=1100&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=ca85a35737f2ca76f80d13d9c4956e13 1100w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/django2.png?w=1650&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=ad7173e258aa77d1c11fd1d8ceb235a2 1650w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/django2.png?w=2500&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=11be364b335887c606bd8f381c42e498 2500w" />
+    <img alt="" />
+
     If you have not done so already, you will be prompted to set up an [SSH key](/core-concepts/security-compliance/authentication/ssh-keys#ssh-keys).
   </Step>
 
   <Step title="Environment Setup">
-    <img src="https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/django3.png?fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=805399b4dc39e1380ee75cc3cc1c729f" alt="" data-og-width="2000" width="2000" data-og-height="1000" height="1000" data-path="images/django3.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/django3.png?w=280&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=a3f48385d38f46c0c5903f7ac630d003 280w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/django3.png?w=560&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=444e5121ac9fd06bbde42e73c07a39ea 560w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/django3.png?w=840&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=ca477782078a73a406f2dc4b3ffb77a4 840w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/django3.png?w=1100&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=c172c4189e344ae4e3bf66422d346561 1100w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/django3.png?w=1650&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=20fd56f832c39735bf3d8e827313d422 1650w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/django3.png?w=2500&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=98faa63a0b178ccd8c6fca9f3ab04c16 2500w" />
+    <img alt="" />
+
     Select your [stack](/core-concepts/architecture/stacks) to deploy your resources. This will determine what region your resources are deployed to. Then, the name the [environment](/core-concepts/architecture/environments) your resources will be grouped into.
   </Step>
 
   <Step title="Prepare the template">
-    <img src="https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/django4.png?fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=af86bae61187b7b4fff5036daace7dfd" alt="" data-og-width="2000" width="2000" data-og-height="1000" height="1000" data-path="images/django4.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/django4.png?w=280&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=d0b6faa554d822e4c3966656ea91c69e 280w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/django4.png?w=560&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=33fd850f1975a25904e14e68102f0a90 560w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/django4.png?w=840&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=f0fe54bc0af5ff8b01ffef318c9b1a93 840w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/django4.png?w=1100&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=83538560be3e3c98bfda33b83e5c550c 1100w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/django4.png?w=1650&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=ed75014e44b0e00a7624d571e3c79d8d 1650w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/django4.png?w=2500&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=b6d8270a3ad27842fccddf7e25064269 2500w" />
+    <img alt="" />
+
     Select **Django Template** for deployment, and follow command-line instructions.
   </Step>
 
   <Step title="Fill environment variables and deploy!">
-    <img src="https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/django5.png?fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=2f3e10f543ef01d7eeeca62429e26755" alt="" data-og-width="2000" width="2000" data-og-height="1000" height="1000" data-path="images/django5.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/django5.png?w=280&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=8e45a3c255f881761b6d9943861b0d49 280w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/django5.png?w=560&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=f103328102f1c4f580a26aa860b62413 560w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/django5.png?w=840&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=3aa7f4f8f26815432896318b707013a9 840w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/django5.png?w=1100&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=cbeba8854d48f0d9af49fb1741dc0dd2 1100w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/django5.png?w=1650&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=b8205d620a841f725eddc70f6729726b 1650w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/django5.png?w=2500&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=f112d3dd016307de77dee605dd309dfe 2500w" />
+    <img alt="" />
+
     Aptible will automatically fill this template's required databases, services, and app's configuration with environment variable keys for you to fill with values. Once complete, save and deploy the code!
 
     Aptible will stream the logs to you in live time:
-    <img src="https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/django6.png?fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=66d30a7afbd6ac1184fb365bbcf7465a" alt="" data-og-width="2000" width="2000" data-og-height="1000" height="1000" data-path="images/django6.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/django6.png?w=280&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=6780429b8b6b7003ba1f058218e13dd3 280w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/django6.png?w=560&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=e9da1adbdb3dc505b964aa80dc40649b 560w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/django6.png?w=840&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=f867bd85a0cf6cd71b32868a39fbdc18 840w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/django6.png?w=1100&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=f30c9359655c3039f99c8b9f2b940eb4 1100w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/django6.png?w=1650&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=c8999af7d3c9e141d788d5f3712e9905 1650w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/django6.png?w=2500&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=5435c11fa949fbb310d212a80e1601db 2500w" />
+
+    <img alt="" />
   </Step>
 
   <Step title="Expose your app to the internet">
-    <img src="https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/django7.png?fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=ab2ff50e4cf3501be1046d294dca3b28" alt="" data-og-width="2000" width="2000" data-og-height="1000" height="1000" data-path="images/django7.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/django7.png?w=280&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=9ea95b19e7c2f74370d43aa901c361d0 280w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/django7.png?w=560&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=ddbc672bb25fa76c9ebfb96cd2645c40 560w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/django7.png?w=840&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=d1803fc8ab2b0db9df8cf5da39571eaf 840w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/django7.png?w=1100&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=06d536c78c8c01a8cbd45a158500acff 1100w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/django7.png?w=1650&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=0484c7903b9254481932b50ef46793be 1650w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/django7.png?w=2500&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=81a505066a00c5b2fbcd9b0b9504b6cb 2500w" />
+    <img alt="" />
+
     Now that your code is deployed, it's time to expose your app to the internet. Select the service that needs an [endpoint](/core-concepts/apps/connecting-to-apps/app-endpoints/overview), and Aptible will automatically provision a managed endpoint.
   </Step>
 
   <Step title="View your deployed app" icon="party-horn">
-        <img src="https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/django8.png?fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=ad5683908065e1d28b20bf1fd9abf54c" alt="" data-og-width="2000" width="2000" data-og-height="1000" height="1000" data-path="images/django8.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/django8.png?w=280&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=f313d36fa30df100b2240b42530e017f 280w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/django8.png?w=560&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=1daa3b5398440a4cc51cf1635e914efe 560w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/django8.png?w=840&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=c7b21eebfa9b28e815e6eb82dddfee36 840w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/django8.png?w=1100&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=387d42384b970c44869a835cd4e834ea 1100w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/django8.png?w=1650&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=b21316e1cd19fe4342f17970db1d7d3b 1650w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/django8.png?w=2500&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=e8441dd28208a26092de799cc4968ba7 2500w" />
+    <img alt="" />
   </Step>
 </Steps>
 
 # Continue your journey
 
-<Card title="Deploy custom code" icon="books" iconType="duotone" href="https://www.aptible.com/docs/custom-code-quickstart">
+<Card title="Deploy custom code" icon="books" href="https://www.aptible.com/docs/custom-code-quickstart">
   Read our guide for deploying custom code on Aptible.
 </Card>
 
@@ -7200,7 +7366,7 @@ Source: https://www.aptible.com/docs/getting-started/deploy-starter-template/pyt
 
 Deploy our Python demo app using the Flask framework with Managed PostgreSQL Database and Redis instance
 
-<CardGroup cols={3}>
+<CardGroup>
   <Card title="Deploy Now" icon="rocket" href="https://app.aptible.com/create" />
 
   <Card title="GitHub Repo" icon="github" href="https://github.com/aptible/deploy-demo-app" />
@@ -7213,7 +7379,7 @@ Deploy our Python demo app using the Flask framework with Managed PostgreSQL Dat
 The following guide is designed to help you deploy an example app on Aptible. During this process, Aptible will launch containers to run a Python app with a web server, a background worker, a Managed PostgreSQL Database, and a Redis instance.
 
 <Frame>
-    <img src="https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/flask1.png?fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=0627d26b6502fbfb650fc62e2ec920c6" alt="" data-og-width="3200" width="3200" data-og-height="1600" height="1600" data-path="images/flask1.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/flask1.png?w=280&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=84785db267e4dd30e81a8e58615dc72e 280w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/flask1.png?w=560&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=8ddb6b597cd1ea74d807688f1ce50de2 560w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/flask1.png?w=840&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=60fe864452ee40b135925cab4e6e09b9 840w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/flask1.png?w=1100&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=255564d24fbde7968b1842911d2c4512 1100w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/flask1.png?w=1650&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=9e2efc0f9f8dfbdcd96b4e31f4f95ada 1650w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/flask1.png?w=2500&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=35b8395d2e36c3069b086c5c9eeace6f 2500w" />
+  <img alt="" />
 </Frame>
 
 The demo app displays the last 20 messages of the database, including any additional messages you record via the "message board." The application was designed to guide new users through a "Setup Checklist" which showcases various features of the Aptible platform (such as database migration, scaling, etc.) using both the dashboard and Aptible CLI.
@@ -7226,40 +7392,46 @@ Using the [Deploy Code](https://app.aptible.com/create) tool in the Aptible Dash
 
 <Steps>
   <Step title="Deploy with Git Push">
-        <img src="https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/flask2.png?fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=fca1202761392674e0e50f2afa05cc8a" alt="" data-og-width="2000" width="2000" data-og-height="1000" height="1000" data-path="images/flask2.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/flask2.png?w=280&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=e31af01853eebf7bf97c1e06e65f067e 280w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/flask2.png?w=560&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=6bcd9ffd9787e8392967bfc4f1e0842f 560w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/flask2.png?w=840&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=c0764d1a2d18d67dff5701ca39fc95d6 840w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/flask2.png?w=1100&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=6cfe082a2fa1bf449ed616472a428b12 1100w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/flask2.png?w=1650&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=89f159a272c3db5fe7d660dc33e68485 1650w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/flask2.png?w=2500&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=a58f48026825770a8cee56a2ae166a6a 2500w" />
+    <img alt="" />
   </Step>
 
   <Step title="Add an SSH key">
-    <img src="https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/flask3.png?fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=230ae34d856b5b3fe8c476c6fe3454c9" alt="" data-og-width="2000" width="2000" data-og-height="1000" height="1000" data-path="images/flask3.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/flask3.png?w=280&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=268056f9bb657b48789b759ade65b9b0 280w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/flask3.png?w=560&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=4483d4b8f6114b14fdbccc40a1905ff0 560w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/flask3.png?w=840&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=fbcd180ca1a883ca395cb328d3c43961 840w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/flask3.png?w=1100&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=92c9aed1493406517fd2112b4045ed6d 1100w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/flask3.png?w=1650&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=4d5ebfc0e580b08e2cebbd43738d2f36 1650w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/flask3.png?w=2500&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=5acf5fd5d7f526c7613d481f76293d24 2500w" />
+    <img alt="" />
+
     If you have not done so already, you will be prompted to set up an [SSH key](/core-concepts/security-compliance/authentication/ssh-keys#ssh-keys).
   </Step>
 
   <Step title="Environment Setup">
-    <img src="https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/flask4.png?fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=c1644981d2945b756b24845227c23c8a" alt="" data-og-width="2000" width="2000" data-og-height="1000" height="1000" data-path="images/flask4.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/flask4.png?w=280&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=7e18050736966ff9aa6e5f6807c49348 280w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/flask4.png?w=560&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=a4267dd5314a8bf77d8eb9f0d0c75175 560w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/flask4.png?w=840&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=73d9469cb460a96167f5bf5874b72381 840w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/flask4.png?w=1100&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=4c15822a02b956da2f00638235796bc2 1100w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/flask4.png?w=1650&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=203459d77da357904134003f60f2bc03 1650w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/flask4.png?w=2500&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=3bf20ee91ec4683dd3be155945d138bb 2500w" />
+    <img alt="" />
+
     Select your [stack](/core-concepts/architecture/stacks) to deploy your resources. This will determine what region your resources are deployed to. Then, name the [environment](/core-concepts/architecture/environments) your resources will be grouped into.
   </Step>
 
   <Step title="Prepare the template">
-    <img src="https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/flask5.png?fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=30672f0cb0672b43d9dd556722399f8d" alt="" data-og-width="2000" width="2000" data-og-height="1000" height="1000" data-path="images/flask5.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/flask5.png?w=280&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=b3c19125129ef336e075dc74746f2014 280w, https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/flask5.png?w=560&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=7173a3ea935fdcf42b375a3e67204c13 560w, https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/flask5.png?w=840&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=6e28aed8450d5a33e2821c9612f51317 840w, https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/flask5.png?w=1100&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=6bff9933c16c7f76bc89e1490ee3d784 1100w, https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/flask5.png?w=1650&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=537ac49cd543d25cd540d928b6c78082 1650w, https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/flask5.png?w=2500&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=3a4b228eec0387e216815ee6f53e4d04 2500w" />
+    <img alt="" />
+
     Select **Deploy Demo App** for deployment, and follow command-line instructions.
   </Step>
 
   <Step title="Fill environment variables and deploy">
-    <img src="https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/flask6.png?fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=0d8f624eb8ff7e0914bc352aa9839a37" alt="" data-og-width="2000" width="2000" data-og-height="1000" height="1000" data-path="images/flask6.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/flask6.png?w=280&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=d22e7df9a25b824128b8deca3e593c17 280w, https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/flask6.png?w=560&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=5d53268067eb80a811b35e43736e5b54 560w, https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/flask6.png?w=840&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=03af40225d905c6bc4141b4ebb8a9b45 840w, https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/flask6.png?w=1100&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=7912fb67a23c9fa32b79501b5d309a47 1100w, https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/flask6.png?w=1650&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=a72029931b87b46bb526be520364698f 1650w, https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/flask6.png?w=2500&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=4c327a259bd99e815839adaf98024b30 2500w" />
+    <img alt="" />
+
     Aptible will automatically fill this template's app configuration, services, and required databases. This includes: a web server, a background worker, a Managed PostgreSQL Database, and a Redis instance. All you have to do is fill the complete the environment variables save and deploy the code!
 
     Aptible will show you the logs in live time:
-    <img src="https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/flask7.png?fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=a9ba3734bd9f2ef4c7941d088e7e31ea" alt="" data-og-width="2000" width="2000" data-og-height="1000" height="1000" data-path="images/flask7.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/flask7.png?w=280&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=767e4f7ca876d98b36a6f6c8c00d680c 280w, https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/flask7.png?w=560&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=50019d7c958f70960bfb56efe061f2ee 560w, https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/flask7.png?w=840&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=9a443b9655ad986dc5ac47d3afd4e665 840w, https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/flask7.png?w=1100&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=0022e027fc3c844d6c2f9afc7be31393 1100w, https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/flask7.png?w=1650&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=51a19229631731e0e6fe57cdbf210068 1650w, https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/flask7.png?w=2500&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=a69c94108054e9ecbf44e69e43711cf9 2500w" />
+
+    <img alt="" />
   </Step>
 
   <Step title="Expose your app to the internet">
-    <img src="https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/flask8.png?fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=4c34014ede13d2d1448c0654cd975a1d" alt="" data-og-width="2000" width="2000" data-og-height="1000" height="1000" data-path="images/flask8.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/flask8.png?w=280&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=729a576506ce5dec3912b2c31c03c7de 280w, https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/flask8.png?w=560&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=5db4c745eca1d4c006b8e023c8454c33 560w, https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/flask8.png?w=840&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=1411ab9487b3f37cadc7f85381964f19 840w, https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/flask8.png?w=1100&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=1d08efdd4f697087c703098287baee40 1100w, https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/flask8.png?w=1650&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=235e9c8f9280441a75d26d07f24624ba 1650w, https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/flask8.png?w=2500&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=13ac7c57d4bd646a9414696efc6eeb62 2500w" />
+    <img alt="" />
+
     Now that your code is deployed, it's time to expose your app to the internet. Select the service that needs an [endpoint](/core-concepts/apps/connecting-to-apps/app-endpoints/overview), and Aptible will automatically provision a managed endpoint.
   </Step>
 
   <Step title="View your deployed app" icon="party-horn">
     <Frame>
-            <img src="https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/flask9.png?fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=541d675b0169b77deef70b1f6ae57ee7" alt="" data-og-width="3080" width="3080" data-og-height="1924" height="1924" data-path="images/flask9.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/flask9.png?w=280&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=fd7b6fb730e5eb056e9e17c1d41a7962 280w, https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/flask9.png?w=560&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=306d5ab5e255aa22a849af058b10cab0 560w, https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/flask9.png?w=840&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=d1aaf94b9f8391c98fb14ade1e5b23af 840w, https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/flask9.png?w=1100&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=e8cdb49d654db243da972bd66028e9c8 1100w, https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/flask9.png?w=1650&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=c3e6c99abda2bf54dfe38f785cf5ab35 1650w, https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/flask9.png?w=2500&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=e5e83767010a83f3479908252c66fa47 2500w" />
+      <img alt="" />
     </Frame>
 
     From here, you can optionally test the application's message board and/or "Setup Checklist."
@@ -7268,7 +7440,7 @@ Using the [Deploy Code](https://app.aptible.com/create) tool in the Aptible Dash
 
 # Continue your journey
 
-<Card title="Deploy custom code" icon="books" iconType="duotone" href="https://www.aptible.com/docs/custom-code-quickstart">
+<Card title="Deploy custom code" icon="books" href="https://www.aptible.com/docs/custom-code-quickstart">
   Read our guide for deploying custom code on Aptible.
 </Card>
 
@@ -7278,7 +7450,7 @@ Source: https://www.aptible.com/docs/getting-started/deploy-starter-template/rub
 
 Deploy a starter template Ruby on Rails app on Aptible
 
-<CardGroup cols={3}>
+<CardGroup>
   <Card title="Deploy Now" icon="rocket" href="https://app.aptible.com/create" />
 
   <Card title="GitHub Repo" icon="github" href="https://github.com/aptible/template-rails" />
@@ -7300,51 +7472,51 @@ Using the [Deploy Code](https://app.aptible.com/create) tool in the Aptible Da
 
 <Steps>
   <Step title="Deploy with Git Push">
-        <img src="https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/ruby1.png?fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=96256d53258cc6e13216dbc8e89a66ae" alt="" data-og-width="2000" width="2000" data-og-height="1000" height="1000" data-path="images/ruby1.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/ruby1.png?w=280&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=6952d457098f0824bb316c23d01b1862 280w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/ruby1.png?w=560&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=279fa711fc1eefb5ae9df16f6bd725a7 560w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/ruby1.png?w=840&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=dbd03af3c2047b5e1be079af25b08f8c 840w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/ruby1.png?w=1100&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=daa547850d181cd31f2e6355cb3dec3d 1100w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/ruby1.png?w=1650&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=963e63c86e9a1f64b2874992d04c0b3e 1650w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/ruby1.png?w=2500&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=45e14464322d6db51f54a6213371892c 2500w" />
+    <img alt="" />
   </Step>
 
   <Step title="Add an SSH key">
-        <img src="https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/ruby2.png?fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=e207be0a7eb863176c65af7906f09f5d" alt="" data-og-width="2000" width="2000" data-og-height="1000" height="1000" data-path="images/ruby2.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/ruby2.png?w=280&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=4f4a0f30d9d478542ce70336c58dbed4 280w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/ruby2.png?w=560&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=04cb334ddb9504fab11ddc04df3f8605 560w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/ruby2.png?w=840&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=9c94e6217d4c68150822bda9d8ba7517 840w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/ruby2.png?w=1100&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=93d082c3acbe8f654f73ba719dfdf15e 1100w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/ruby2.png?w=1650&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=60e699e7c9754af0cc0dec9416f93201 1650w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/ruby2.png?w=2500&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=3f6796ccf9de036c61fb31e11a0e18ab 2500w" />
+    <img alt="" />
 
     If you have not done so already, you will be prompted to set up an [SSH key](/core-concepts/security-compliance/authentication/ssh-keys#ssh-keys).
   </Step>
 
   <Step title="Environment Setup">
-        <img src="https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/ruby3.png?fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=3f1c2f75f944a64f613a5b2e73bd040e" alt="" data-og-width="2000" width="2000" data-og-height="1000" height="1000" data-path="images/ruby3.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/ruby3.png?w=280&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=75eb457c3d2a4632f28260ada078d1de 280w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/ruby3.png?w=560&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=eacacac85b026e4e31980cb685ab17f9 560w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/ruby3.png?w=840&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=5685c30ec3830c8622d0b0553ab6c0c4 840w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/ruby3.png?w=1100&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=53d5561ea8f2cfa26513cfbe7fda1025 1100w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/ruby3.png?w=1650&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=49dc1d92f0d8af8367e4ea44ba22a9af 1650w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/ruby3.png?w=2500&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=f777706ab406e1a59f2cc2352a492558 2500w" />
+    <img alt="" />
 
     Select your [stack](/core-concepts/architecture/stacks) to deploy your resources. This will determine what region your resources are deployed to. Then, name the [environment](/core-concepts/architecture/environments) your resources will be grouped into.
   </Step>
 
   <Step title="Prepare the template">
-        <img src="https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/ruby4.png?fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=d903342f3d08fc201483957abccef969" alt="" data-og-width="2000" width="2000" data-og-height="1000" height="1000" data-path="images/ruby4.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/ruby4.png?w=280&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=03c579a513da8b71c92f71fb66e95512 280w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/ruby4.png?w=560&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=752dbe9b3695404fc3577058f7cb5901 560w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/ruby4.png?w=840&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=e6885578ea81c637ee473c21e0f7636c 840w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/ruby4.png?w=1100&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=1de8287e511fd56f53303ea061165a69 1100w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/ruby4.png?w=1650&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=7a937711cfa1852525355d3d715b89ee 1650w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/ruby4.png?w=2500&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=427db204ea338dcb37b9eb16621f220a 2500w" />
+    <img alt="" />
 
     Select `Ruby on Rails Template` for deployment, and follow the command-line instructions.
   </Step>
 
   <Step title="Fill environment variables and deploy!">
-        <img src="https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/ruby5.png?fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=249b7e4498403168cac4953860df1062" alt="" data-og-width="2000" width="2000" data-og-height="1000" height="1000" data-path="images/ruby5.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/ruby5.png?w=280&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=2b9b4020cf56e8bc8566e622e0842f00 280w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/ruby5.png?w=560&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=cec7500cac6d752f54fcaba1327c04ea 560w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/ruby5.png?w=840&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=af9b1f2e9e63224db87e4e020d182e8a 840w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/ruby5.png?w=1100&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=5b7e24cfb4fb73934b293b39b693a4e4 1100w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/ruby5.png?w=1650&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=5b1a6219160675de504b93b9a225639d 1650w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/ruby5.png?w=2500&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=59b3bf9e8d58c1ab9b0fb37d661fee87 2500w" />
+    <img alt="" />
 
     Aptible will automatically fill this template's required databases, services, and app's configuration with environment variable keys for you to fill with values. Once complete, save and deploy the code!
   </Step>
 
   <Step title="View logs in real time">
-        <img src="https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/ruby6.png?fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=f978f55674e2f3b3b402c919fb2f38d5" alt="" data-og-width="2000" width="2000" data-og-height="1000" height="1000" data-path="images/ruby6.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/ruby6.png?w=280&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=51e9399978f4a91893163750ae765be6 280w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/ruby6.png?w=560&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=744387d6da125ec8b748cb113e24a70d 560w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/ruby6.png?w=840&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=fef1b8e7a486e855699f3e88e95719f1 840w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/ruby6.png?w=1100&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=cac5130ae5fe693f25ee745912f53491 1100w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/ruby6.png?w=1650&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=029cf70e13a04d16328fbf44282b88ce 1650w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/ruby6.png?w=2500&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=e0b0dc53cc2fcadfab7cf04fe3bd0cd1 2500w" />
+    <img alt="" />
   </Step>
 
   <Step title="Expose your app to the internet">
-        <img src="https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/ruby7.png?fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=0e1dae20dbf4e1357ff608032a80b439" alt="" data-og-width="2000" width="2000" data-og-height="1000" height="1000" data-path="images/ruby7.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/ruby7.png?w=280&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=e13ecec33e221679998433e269874d9e 280w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/ruby7.png?w=560&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=231b184e7790f3995fa6a0874e3a9d86 560w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/ruby7.png?w=840&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=52ad815b583db75eb1f716402dcdb288 840w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/ruby7.png?w=1100&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=3bb2fad80f3b3b6ab2d094106c7dd0f2 1100w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/ruby7.png?w=1650&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=a3bf184780d87d6f38127ef3fcf3791b 1650w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/ruby7.png?w=2500&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=63c257b9059d1ff65f602a2758ec74fa 2500w" />
+    <img alt="" />
 
     Now that your code is deployed, it's time to expose your app to the internet. Select the service that needs an [endpoint](/core-concepts/apps/connecting-to-apps/app-endpoints/overview), and Aptible will automatically provision a managed endpoint.
   </Step>
 
   <Step title="View your deployed app 🎉" icon="party-horn">
-        <img src="https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/ruby8.png?fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=50dab00f12fa2b4ed94524a909ff8431" alt="" data-og-width="2000" width="2000" data-og-height="1000" height="1000" data-path="images/ruby8.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/ruby8.png?w=280&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=21d90ff6e42763178db2afcd765fae4a 280w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/ruby8.png?w=560&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=6aecffc6aedd37a177fe951d1edf802a 560w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/ruby8.png?w=840&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=47fcf9bd0e3348f34e0b3c31e5f53959 840w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/ruby8.png?w=1100&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=0b99804bec85a2f41c4bbbbdf0254295 1100w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/ruby8.png?w=1650&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=8f4d421d7aed43e580fd6e386a56aa53 1650w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/ruby8.png?w=2500&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=e78526a6c3d7e447eb3b328eecc9747f 2500w" />
+    <img alt="" />
   </Step>
 </Steps>
 
 # Continue your journey
 
-<Card title="Deploy custom code" icon="books" iconType="duotone" href="https://www.aptible.com/docs/custom-code-quickstart">
+<Card title="Deploy custom code" icon="books" href="https://www.aptible.com/docs/custom-code-quickstart">
   Read our guide for deploying custom code on Aptible.
 </Card>
 
@@ -7356,25 +7528,25 @@ A Platform as a Service (PaaS) that gives startups everything developers need to
 
 ## Explore compliance frameworks
 
-<CardGroup cols={3}>
-  <Card title="HIPAA" icon="shield-check" iconType="solid" color="00633F" horizontal={true} href="https://www.aptible.com/docs/core-concepts/security-compliance/compliance-frameworks/hipaa" />
+<CardGroup>
+  <Card title="HIPAA" icon="shield-check" href="https://www.aptible.com/docs/core-concepts/security-compliance/compliance-frameworks/hipaa" />
 
-  <Card title="PIPEDA" icon="shield-check" iconType="solid" color="00633F" horizontal={true} href="https://www.aptible.com/docs/core-concepts/security-compliance/compliance-frameworks/pipeda" />
+  <Card title="PIPEDA" icon="shield-check" href="https://www.aptible.com/docs/core-concepts/security-compliance/compliance-frameworks/pipeda" />
 
-  <Card title="GDPR" icon="shield-check" iconType="solid" color="00633F" horizontal={true} href="https://trust.aptible.com/" />
+  <Card title="GDPR" icon="shield-check" href="https://trust.aptible.com/" />
 
-  <Card title="HITRUST" icon="shield-check" iconType="solid" color="00633F" horizontal={true} href="https://www.aptible.com/docs/core-concepts/security-compliance/compliance-frameworks/hitrust" />
+  <Card title="HITRUST" icon="shield-check" href="https://www.aptible.com/docs/core-concepts/security-compliance/compliance-frameworks/hitrust" />
 
-  <Card title="SOC 2" icon="shield-check" iconType="solid" color="00633F" horizontal={true} href="https://www.aptible.com/docs/core-concepts/security-compliance/compliance-frameworks/soc2" />
+  <Card title="SOC 2" icon="shield-check" href="https://www.aptible.com/docs/core-concepts/security-compliance/compliance-frameworks/soc2" />
 
-  <Card title="PCI" icon="shield-check" iconType="solid" color="00633F" horizontal={true} href="https://www.aptible.com/docs/core-concepts/security-compliance/compliance-frameworks/pci" />
+  <Card title="PCI" icon="shield-check" href="https://www.aptible.com/docs/core-concepts/security-compliance/compliance-frameworks/pci" />
 </CardGroup>
 
 ## Deploy a starter template
 
 Get started by deploying your own code or sample code from **Git** or **Docker**.
 
-<CardGroup cols={3}>
+<CardGroup>
   <Card title="Custom Code" icon="globe" href="https://www.aptible.com/docs/custom-code-quickstart">
     Explore compatibility and deploy custom code
   </Card>
@@ -7435,14 +7607,14 @@ Get started by deploying your own code or sample code from **Git** or **Docker**
 
 Instantly provision secure, encrypted databases - **managed 24x7 by the Aptible SRE team**.
 
-<CardGroup cols={4} a>
+<CardGroup>
   <Card title="Elasticsearch" icon={<svg fill="#E09600" width="30px" height="30px" viewBox="0 0 24 24" role="img" xmlns="http://www.w3.org/2000/svg"><path d="M13.394 0C8.683 0 4.609 2.716 2.644 6.667h15.641a4.77 4.77 0 0 0 3.073-1.11c.446-.375.864-.785 1.247-1.243l.001-.002A11.974 11.974 0 0 0 13.394 0zM1.804 8.889a12.009 12.009 0 0 0 0 6.222h14.7a3.111 3.111 0 1 0 0-6.222zm.84 8.444C4.61 21.283 8.684 24 13.395 24c3.701 0 7.011-1.677 9.212-4.312l-.001-.002a9.958 9.958 0 0 0-1.247-1.243 4.77 4.77 0 0 0-3.073-1.11z"/></svg>} href="https://www.aptible.com/docs/elasticsearch" />
 
   <Card title="InfluxDB" icon={<svg fill="#E09600" width="30px" height="30px" viewBox="-2.5 0 261 261" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid">     <g>         <path d="M255.59672,156.506259 L230.750771,48.7630778 C229.35754,42.9579495 224.016822,36.920616 217.979489,35.2951801 L104.895589,0.464410265 C103.502359,-2.84217094e-14 101.876923,-2.84217094e-14 100.019282,-2.84217094e-14 C95.1429738,-2.84217094e-14 90.266666,1.85764106 86.783589,4.87630778 L5.74399781,80.3429758 C1.33210029,84.290463 -0.989951029,92.1854375 0.403279765,97.7583607 L26.8746649,213.164312 C28.2678956,218.96944 33.6086137,225.006773 39.6459471,226.632209 L145.531487,259.605338 C146.924718,260.069748 148.550154,260.069748 150.407795,260.069748 C155.284103,260.069748 160.160411,258.212107 163.643488,255.19344 L250.256002,174.61826 C254.6679,169.974157 256.989951,162.543593 255.59672,156.506259 Z M116.738051,26.0069748 L194.52677,49.9241035 C197.545437,50.852924 197.545437,52.2461548 194.52677,52.9427702 L153.658667,62.2309755 C150.64,63.159796 146.228103,61.7665652 144.138257,59.4445139 L115.809231,28.7934364 C113.254974,26.23918 113.719384,25.0781543 116.738051,26.0069748 Z M165.268924,165.330054 C166.197744,168.348721 164.107898,170.206362 161.089231,169.277541 L77.2631786,143.270567 C74.2445119,142.341746 73.5478965,139.78749 75.8699478,137.697643 L139.958564,78.0209245 C142.280616,75.6988732 144.834872,76.6276937 145.531487,79.6463604 L165.268924,165.330054 Z M27.10687,89.398976 L95.1429738,26.0069748 C97.4650251,23.6849235 100.948102,24.1493338 103.270153,26.23918 L137.404308,63.159796 C139.726359,65.4818473 139.261949,68.9649243 137.172103,71.2869756 L69.1359989,134.678977 C66.8139476,137.001028 63.3308706,136.536618 61.0088193,134.446772 L26.8746649,97.5261556 C24.5526135,94.9718991 24.7848187,91.256617 27.10687,89.398976 Z M43.5934344,189.711593 L25.7136392,110.761848 C24.7848187,107.743181 26.1780495,107.046566 28.2678956,109.368617 L56.5969218,140.019695 C58.9189731,142.341746 59.6155885,146.753644 58.9189731,149.77231 L46.6121011,189.711593 C45.6832806,192.962465 44.2900498,192.962465 43.5934344,189.711593 Z M143.209436,236.15262 L54.2748705,208.520209 C51.2562038,207.591388 49.3985627,204.340516 50.3273832,201.089645 L65.1885117,153.255387 C66.1173322,150.236721 69.3682041,148.37908 72.6190759,149.3079 L161.553642,176.708106 C164.572308,177.636926 166.429949,180.887798 165.501129,184.13867 L150.64,231.972927 C149.478975,234.991594 146.460308,236.849235 143.209436,236.15262 Z M222.159181,171.367388 L162.714667,226.632209 C160.392616,228.954261 159.23159,228.02544 160.160411,225.006773 L172.467283,185.06749 C173.396103,182.048824 176.646975,178.797952 179.897847,178.333542 L220.76595,169.045336 C223.784617,167.884311 224.249027,169.277541 222.159181,171.367388 Z M228.660925,159.292721 L179.665642,170.438567 C176.646975,171.367388 173.396103,169.277541 172.699488,166.258875 L151.801026,75.6988732 C150.872206,72.6802064 152.962052,69.4293346 155.980718,68.7327192 L204.976001,57.5868728 C207.994668,56.6580523 211.24554,58.7478985 211.942155,61.7665652 L232.840617,152.326567 C233.537233,155.809644 231.679592,158.828311 228.660925,159.292721 Z">  </path>     </g> </svg>} href="https://www.aptible.com/docs/influxdb" />
 
   <Card title="MongoDB" icon={<svg fill="#E09600" width="30px" height="30px"  viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg"> <title>mongodb</title> <path d="M15.821 23.185s0-10.361 0.344-10.36c0.266 0 0.612 13.365 0.612 13.365-0.476-0.056-0.956-2.199-0.956-3.005zM22.489 12.945c-0.919-4.016-2.932-7.469-5.708-10.134l-0.007-0.006c-0.338-0.516-0.647-1.108-0.895-1.732l-0.024-0.068c0.001 0.020 0.001 0.044 0.001 0.068 0 0.565-0.253 1.070-0.652 1.409l-0.003 0.002c-3.574 3.034-5.848 7.505-5.923 12.508l-0 0.013c-0.001 0.062-0.001 0.135-0.001 0.208 0 4.957 2.385 9.357 6.070 12.115l0.039 0.028 0.087 0.063q0.241 1.784 0.412 3.576h0.601c0.166-1.491 0.39-2.796 0.683-4.076l-0.046 0.239c0.396-0.275 0.742-0.56 1.065-0.869l-0.003 0.003c2.801-2.597 4.549-6.297 4.549-10.404 0-0.061-0-0.121-0.001-0.182l0 0.009c-0.003-0.981-0.092-1.94-0.261-2.871l0.015 0.099z"></path> </svg>} href="https://www.aptible.com/docs/mongodb" />
 
-  <Card title="MySQL" icon={<svg fill="#E09600" width="30px" height="30px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m24.129 23.412-.508-.484c-.251-.331-.518-.624-.809-.891l-.005-.004q-.448-.407-.931-.774-.387-.266-1.064-.641c-.371-.167-.661-.46-.818-.824l-.004-.01-.048-.024c.212-.021.406-.06.592-.115l-.023.006.57-.157c.236-.074.509-.122.792-.133h.006c.298-.012.579-.06.847-.139l-.025.006q.194-.048.399-.109t.351-.109v-.169q-.145-.217-.351-.496c-.131-.178-.278-.333-.443-.468l-.005-.004q-.629-.556-1.303-1.076c-.396-.309-.845-.624-1.311-.916l-.068-.04c-.246-.162-.528-.312-.825-.435l-.034-.012q-.448-.182-.883-.399c-.097-.048-.21-.09-.327-.119l-.011-.002c-.117-.024-.217-.084-.29-.169l-.001-.001c-.138-.182-.259-.389-.355-.609l-.008-.02q-.145-.339-.314-.651-.363-.702-.702-1.427t-.651-1.452q-.217-.484-.399-.967c-.134-.354-.285-.657-.461-.942l.013.023c-.432-.736-.863-1.364-1.331-1.961l.028.038c-.463-.584-.943-1.106-1.459-1.59l-.008-.007c-.509-.478-1.057-.934-1.632-1.356l-.049-.035q-.896-.651-1.96-1.282c-.285-.168-.616-.305-.965-.393l-.026-.006-1.113-.278-.629-.048q-.314-.024-.629-.024c-.148-.078-.275-.171-.387-.279-.11-.105-.229-.204-.353-.295l-.01-.007c-.605-.353-1.308-.676-2.043-.93l-.085-.026c-.193-.113-.425-.179-.672-.179-.176 0-.345.034-.499.095l.009-.003c-.38.151-.67.458-.795.84l-.003.01c-.073.172-.115.371-.115.581 0 .368.13.705.347.968l-.002-.003q.544.725.834 1.14.217.291.448.605c.141.188.266.403.367.63l.008.021c.056.119.105.261.141.407l.003.016q.048.206.121.448.217.556.411 1.14c.141.425.297.785.478 1.128l-.019-.04q.145.266.291.52t.314.496c.065.098.147.179.241.242l.003.002c.099.072.164.185.169.313v.001c-.114.168-.191.369-.217.586l-.001.006c-.035.253-.085.478-.153.695l.008-.03c-.223.666-.351 1.434-.351 2.231 0 .258.013.512.04.763l-.003-.031c.06.958.349 1.838.812 2.6l-.014-.025c.197.295.408.552.641.787.168.188.412.306.684.306.152 0 .296-.037.422-.103l-.005.002c.35-.126.599-.446.617-.827v-.002c.048-.474.12-.898.219-1.312l-.013.067c.024-.063.038-.135.038-.211 0-.015-.001-.03-.002-.045v.002q-.012-.109.133-.206v.048q.145.339.302.677t.326.677c.295.449.608.841.952 1.202l-.003-.003c.345.372.721.706 1.127 1.001l.022.015c.212.162.398.337.566.528l.004.004c.158.186.347.339.56.454l.01.005v-.024h.048c-.039-.087-.102-.157-.18-.205l-.002-.001c-.079-.044-.147-.088-.211-.136l.005.003q-.217-.217-.448-.484t-.423-.508q-.508-.702-.969-1.467t-.871-1.555q-.194-.387-.375-.798t-.351-.798c-.049-.099-.083-.213-.096-.334v-.005c-.006-.115-.072-.214-.168-.265l-.002-.001c-.121.206-.255.384-.408.545l.001-.001c-.159.167-.289.364-.382.58l-.005.013c-.141.342-.244.739-.289 1.154l-.002.019q-.072.641-.145 1.318l-.048.024-.024.024c-.26-.053-.474-.219-.59-.443l-.002-.005q-.182-.351-.326-.69c-.248-.637-.402-1.374-.423-2.144v-.009c-.009-.122-.013-.265-.013-.408 0-.666.105-1.308.299-1.91l-.012.044q.072-.266.314-.896t.097-.871c-.05-.165-.143-.304-.265-.41l-.001-.001c-.122-.106-.233-.217-.335-.335l-.003-.004q-.169-.244-.326-.52t-.278-.544c-.165-.382-.334-.861-.474-1.353l-.022-.089c-.159-.565-.336-1.043-.546-1.503l.026.064c-.111-.252-.24-.47-.39-.669l.006.008q-.244-.326-.436-.617-.244-.314-.484-.605c-.163-.197-.308-.419-.426-.657l-.009-.02c-.048-.097-.09-.21-.119-.327l-.002-.011c-.011-.035-.017-.076-.017-.117 0-.082.024-.159.066-.223l-.001.002c.011-.056.037-.105.073-.145.039-.035.089-.061.143-.072h.002c.085-.055.188-.088.3-.088.084 0 .165.019.236.053l-.003-.001c.219.062.396.124.569.195l-.036-.013q.459.194.847.375c.298.142.552.292.792.459l-.018-.012q.194.121.387.266t.411.291h.339q.387 0 .822.037c.293.023.564.078.822.164l-.024-.007c.481.143.894.312 1.286.515l-.041-.019q.593.302 1.125.641c.589.367 1.098.743 1.577 1.154l-.017-.014c.5.428.954.867 1.38 1.331l.01.012c.416.454.813.947 1.176 1.464l.031.047c.334.472.671 1.018.974 1.584l.042.085c.081.154.163.343.234.536l.011.033q.097.278.217.57.266.605.57 1.221t.57 1.198l.532 1.161c.187.406.396.756.639 1.079l-.011-.015c.203.217.474.369.778.422l.008.001c.368.092.678.196.978.319l-.047-.017c.143.065.327.134.516.195l.04.011c.212.065.396.151.565.259l-.009-.005c.327.183.604.363.868.559l-.021-.015q.411.302.822.57.194.145.651.423t.484.52c-.114-.004-.249-.007-.384-.007-.492 0-.976.032-1.45.094l.056-.006c-.536.072-1.022.203-1.479.39l.04-.014c-.113.049-.248.094-.388.129l-.019.004c-.142.021-.252.135-.266.277v.001c.061.076.11.164.143.26l.002.006c.034.102.075.19.125.272l-.003-.006c.119.211.247.393.391.561l-.004-.005c.141.174.3.325.476.454l.007.005q.244.194.508.399c.161.126.343.25.532.362l.024.013c.284.174.614.34.958.479l.046.016c.374.15.695.324.993.531l-.016-.011q.291.169.58.375t.556.399c.073.072.137.152.191.239l.003.005c.091.104.217.175.36.193h.003v-.048c-.088-.067-.153-.16-.184-.267l-.001-.004c-.025-.102-.062-.191-.112-.273l.002.004zm-18.576-19.205q-.194 0-.363.012c-.115.008-.222.029-.323.063l.009-.003v.024h.048q.097.145.244.326t.266.351l.387.798.048-.024c.113-.082.2-.192.252-.321l.002-.005c.052-.139.082-.301.082-.469 0-.018 0-.036-.001-.054v.003c-.045-.044-.082-.096-.108-.154l-.001-.003-.081-.182c-.053-.084-.127-.15-.214-.192l-.003-.001c-.094-.045-.174-.102-.244-.169z"/></svg>} horizontal={false} href="https://www.aptible.com/docs/mysql" />
+  <Card title="MySQL" icon={<svg fill="#E09600" width="30px" height="30px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m24.129 23.412-.508-.484c-.251-.331-.518-.624-.809-.891l-.005-.004q-.448-.407-.931-.774-.387-.266-1.064-.641c-.371-.167-.661-.46-.818-.824l-.004-.01-.048-.024c.212-.021.406-.06.592-.115l-.023.006.57-.157c.236-.074.509-.122.792-.133h.006c.298-.012.579-.06.847-.139l-.025.006q.194-.048.399-.109t.351-.109v-.169q-.145-.217-.351-.496c-.131-.178-.278-.333-.443-.468l-.005-.004q-.629-.556-1.303-1.076c-.396-.309-.845-.624-1.311-.916l-.068-.04c-.246-.162-.528-.312-.825-.435l-.034-.012q-.448-.182-.883-.399c-.097-.048-.21-.09-.327-.119l-.011-.002c-.117-.024-.217-.084-.29-.169l-.001-.001c-.138-.182-.259-.389-.355-.609l-.008-.02q-.145-.339-.314-.651-.363-.702-.702-1.427t-.651-1.452q-.217-.484-.399-.967c-.134-.354-.285-.657-.461-.942l.013.023c-.432-.736-.863-1.364-1.331-1.961l.028.038c-.463-.584-.943-1.106-1.459-1.59l-.008-.007c-.509-.478-1.057-.934-1.632-1.356l-.049-.035q-.896-.651-1.96-1.282c-.285-.168-.616-.305-.965-.393l-.026-.006-1.113-.278-.629-.048q-.314-.024-.629-.024c-.148-.078-.275-.171-.387-.279-.11-.105-.229-.204-.353-.295l-.01-.007c-.605-.353-1.308-.676-2.043-.93l-.085-.026c-.193-.113-.425-.179-.672-.179-.176 0-.345.034-.499.095l.009-.003c-.38.151-.67.458-.795.84l-.003.01c-.073.172-.115.371-.115.581 0 .368.13.705.347.968l-.002-.003q.544.725.834 1.14.217.291.448.605c.141.188.266.403.367.63l.008.021c.056.119.105.261.141.407l.003.016q.048.206.121.448.217.556.411 1.14c.141.425.297.785.478 1.128l-.019-.04q.145.266.291.52t.314.496c.065.098.147.179.241.242l.003.002c.099.072.164.185.169.313v.001c-.114.168-.191.369-.217.586l-.001.006c-.035.253-.085.478-.153.695l.008-.03c-.223.666-.351 1.434-.351 2.231 0 .258.013.512.04.763l-.003-.031c.06.958.349 1.838.812 2.6l-.014-.025c.197.295.408.552.641.787.168.188.412.306.684.306.152 0 .296-.037.422-.103l-.005.002c.35-.126.599-.446.617-.827v-.002c.048-.474.12-.898.219-1.312l-.013.067c.024-.063.038-.135.038-.211 0-.015-.001-.03-.002-.045v.002q-.012-.109.133-.206v.048q.145.339.302.677t.326.677c.295.449.608.841.952 1.202l-.003-.003c.345.372.721.706 1.127 1.001l.022.015c.212.162.398.337.566.528l.004.004c.158.186.347.339.56.454l.01.005v-.024h.048c-.039-.087-.102-.157-.18-.205l-.002-.001c-.079-.044-.147-.088-.211-.136l.005.003q-.217-.217-.448-.484t-.423-.508q-.508-.702-.969-1.467t-.871-1.555q-.194-.387-.375-.798t-.351-.798c-.049-.099-.083-.213-.096-.334v-.005c-.006-.115-.072-.214-.168-.265l-.002-.001c-.121.206-.255.384-.408.545l.001-.001c-.159.167-.289.364-.382.58l-.005.013c-.141.342-.244.739-.289 1.154l-.002.019q-.072.641-.145 1.318l-.048.024-.024.024c-.26-.053-.474-.219-.59-.443l-.002-.005q-.182-.351-.326-.69c-.248-.637-.402-1.374-.423-2.144v-.009c-.009-.122-.013-.265-.013-.408 0-.666.105-1.308.299-1.91l-.012.044q.072-.266.314-.896t.097-.871c-.05-.165-.143-.304-.265-.41l-.001-.001c-.122-.106-.233-.217-.335-.335l-.003-.004q-.169-.244-.326-.52t-.278-.544c-.165-.382-.334-.861-.474-1.353l-.022-.089c-.159-.565-.336-1.043-.546-1.503l.026.064c-.111-.252-.24-.47-.39-.669l.006.008q-.244-.326-.436-.617-.244-.314-.484-.605c-.163-.197-.308-.419-.426-.657l-.009-.02c-.048-.097-.09-.21-.119-.327l-.002-.011c-.011-.035-.017-.076-.017-.117 0-.082.024-.159.066-.223l-.001.002c.011-.056.037-.105.073-.145.039-.035.089-.061.143-.072h.002c.085-.055.188-.088.3-.088.084 0 .165.019.236.053l-.003-.001c.219.062.396.124.569.195l-.036-.013q.459.194.847.375c.298.142.552.292.792.459l-.018-.012q.194.121.387.266t.411.291h.339q.387 0 .822.037c.293.023.564.078.822.164l-.024-.007c.481.143.894.312 1.286.515l-.041-.019q.593.302 1.125.641c.589.367 1.098.743 1.577 1.154l-.017-.014c.5.428.954.867 1.38 1.331l.01.012c.416.454.813.947 1.176 1.464l.031.047c.334.472.671 1.018.974 1.584l.042.085c.081.154.163.343.234.536l.011.033q.097.278.217.57.266.605.57 1.221t.57 1.198l.532 1.161c.187.406.396.756.639 1.079l-.011-.015c.203.217.474.369.778.422l.008.001c.368.092.678.196.978.319l-.047-.017c.143.065.327.134.516.195l.04.011c.212.065.396.151.565.259l-.009-.005c.327.183.604.363.868.559l-.021-.015q.411.302.822.57.194.145.651.423t.484.52c-.114-.004-.249-.007-.384-.007-.492 0-.976.032-1.45.094l.056-.006c-.536.072-1.022.203-1.479.39l.04-.014c-.113.049-.248.094-.388.129l-.019.004c-.142.021-.252.135-.266.277v.001c.061.076.11.164.143.26l.002.006c.034.102.075.19.125.272l-.003-.006c.119.211.247.393.391.561l-.004-.005c.141.174.3.325.476.454l.007.005q.244.194.508.399c.161.126.343.25.532.362l.024.013c.284.174.614.34.958.479l.046.016c.374.15.695.324.993.531l-.016-.011q.291.169.58.375t.556.399c.073.072.137.152.191.239l.003.005c.091.104.217.175.36.193h.003v-.048c-.088-.067-.153-.16-.184-.267l-.001-.004c-.025-.102-.062-.191-.112-.273l.002.004zm-18.576-19.205q-.194 0-.363.012c-.115.008-.222.029-.323.063l.009-.003v.024h.048q.097.145.244.326t.266.351l.387.798.048-.024c.113-.082.2-.192.252-.321l.002-.005c.052-.139.082-.301.082-.469 0-.018 0-.036-.001-.054v.003c-.045-.044-.082-.096-.108-.154l-.001-.003-.081-.182c-.053-.084-.127-.15-.214-.192l-.003-.001c-.094-.045-.174-.102-.244-.169z"/></svg>} href="https://www.aptible.com/docs/mysql" />
 
   <Card title="PostgreSQL" icon={<svg fill="#E09600" width="30px" height="30px" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">   <path d="M22.839 0c-1.245 0.011-2.479 0.188-3.677 0.536l-0.083 0.027c-0.751-0.131-1.516-0.203-2.276-0.219-1.573-0.027-2.923 0.353-4.011 0.989-1.073-0.369-3.297-1.016-5.641-0.885-1.629 0.088-3.411 0.583-4.735 1.979-1.312 1.391-2.009 3.547-1.864 6.485 0.041 0.807 0.271 2.124 0.656 3.837 0.38 1.709 0.917 3.709 1.589 5.537 0.672 1.823 1.405 3.463 2.552 4.577 0.572 0.557 1.364 1.032 2.296 0.991 0.652-0.027 1.24-0.313 1.751-0.735 0.249 0.328 0.516 0.468 0.755 0.599 0.308 0.167 0.599 0.281 0.907 0.355 0.552 0.14 1.495 0.323 2.599 0.135 0.375-0.063 0.771-0.187 1.167-0.359 0.016 0.437 0.032 0.869 0.047 1.307 0.057 1.38 0.095 2.656 0.505 3.776 0.068 0.183 0.251 1.12 0.969 1.953 0.724 0.833 2.129 1.349 3.739 1.005 1.131-0.24 2.573-0.677 3.532-2.041 0.948-1.344 1.375-3.276 1.459-6.412 0.020-0.172 0.047-0.312 0.072-0.448l0.224 0.021h0.027c1.208 0.052 2.521-0.12 3.62-0.631 0.968-0.448 1.703-0.901 2.239-1.708 0.131-0.199 0.281-0.443 0.319-0.86 0.041-0.411-0.199-1.063-0.595-1.364-0.791-0.604-1.291-0.375-1.828-0.26-0.525 0.115-1.063 0.176-1.599 0.192 1.541-2.593 2.645-5.353 3.276-7.792 0.375-1.443 0.584-2.771 0.599-3.932 0.021-1.161-0.077-2.187-0.771-3.077-2.177-2.776-5.235-3.548-7.599-3.573-0.073 0-0.145 0-0.219 0zM22.776 0.855c2.235-0.021 5.093 0.604 7.145 3.228 0.464 0.589 0.6 1.448 0.584 2.511s-0.213 2.328-0.573 3.719c-0.692 2.699-2.011 5.833-3.859 8.652 0.063 0.047 0.135 0.088 0.208 0.115 0.385 0.161 1.265 0.296 3.025-0.063 0.443-0.095 0.767-0.156 1.105 0.099 0.167 0.14 0.255 0.349 0.244 0.568-0.020 0.161-0.077 0.317-0.177 0.448-0.339 0.509-1.009 0.995-1.869 1.396-0.76 0.353-1.855 0.536-2.817 0.547-0.489 0.005-0.937-0.032-1.319-0.152l-0.020-0.004c-0.147 1.411-0.484 4.203-0.704 5.473-0.176 1.025-0.484 1.844-1.072 2.453-0.589 0.615-1.417 0.979-2.537 1.219-1.385 0.297-2.391-0.021-3.041-0.568s-0.948-1.276-1.125-1.719c-0.124-0.307-0.187-0.703-0.249-1.235-0.063-0.531-0.104-1.177-0.136-1.911-0.041-1.12-0.057-2.24-0.041-3.365-0.577 0.532-1.296 0.88-2.068 1.016-0.921 0.156-1.739 0-2.228-0.12-0.24-0.063-0.475-0.151-0.693-0.271-0.229-0.12-0.443-0.255-0.588-0.527-0.084-0.156-0.109-0.337-0.073-0.509 0.041-0.177 0.145-0.328 0.287-0.443 0.265-0.215 0.615-0.333 1.14-0.443 0.959-0.199 1.297-0.333 1.5-0.496 0.172-0.135 0.371-0.416 0.713-0.828 0-0.015 0-0.036-0.005-0.052-0.619-0.020-1.224-0.181-1.771-0.479-0.197 0.208-1.224 1.292-2.468 2.792-0.521 0.624-1.099 0.984-1.713 1.011-0.609 0.025-1.163-0.281-1.631-0.735-0.937-0.912-1.688-2.48-2.339-4.251s-1.177-3.744-1.557-5.421c-0.375-1.683-0.599-3.037-0.631-3.688-0.14-2.776 0.511-4.645 1.625-5.828s2.641-1.625 4.131-1.713c2.672-0.151 5.213 0.781 5.724 0.979 0.989-0.672 2.265-1.088 3.859-1.063 0.756 0.011 1.505 0.109 2.24 0.292l0.027-0.016c0.323-0.109 0.651-0.208 0.984-0.28 0.907-0.215 1.833-0.324 2.76-0.339zM22.979 1.745h-0.197c-0.76 0.009-1.527 0.099-2.271 0.26 1.661 0.735 2.916 1.864 3.801 3 0.615 0.781 1.12 1.64 1.505 2.557 0.152 0.355 0.251 0.651 0.303 0.88 0.031 0.115 0.047 0.213 0.057 0.312 0 0.052 0.005 0.105-0.021 0.193 0 0.005-0.005 0.016-0.005 0.021 0.043 1.167-0.249 1.957-0.287 3.072-0.025 0.808 0.183 1.756 0.235 2.792 0.047 0.973-0.072 2.041-0.703 3.093 0.052 0.063 0.099 0.125 0.151 0.193 1.672-2.636 2.88-5.547 3.521-8.032 0.344-1.339 0.525-2.552 0.541-3.509 0.016-0.959-0.161-1.657-0.391-1.948-1.792-2.287-4.213-2.871-6.24-2.885zM16.588 2.088c-1.572 0.005-2.703 0.48-3.561 1.193-0.887 0.74-1.48 1.745-1.865 2.781-0.464 1.224-0.625 2.411-0.688 3.219l0.021-0.011c0.475-0.265 1.099-0.536 1.771-0.687 0.667-0.157 1.391-0.204 2.041 0.052 0.657 0.249 1.193 0.848 1.391 1.749 0.939 4.344-0.291 5.959-0.744 7.177-0.172 0.443-0.323 0.891-0.443 1.349 0.057-0.011 0.115-0.027 0.172-0.032 0.323-0.025 0.572 0.079 0.719 0.141 0.459 0.192 0.771 0.588 0.943 1.041 0.041 0.12 0.072 0.244 0.093 0.38 0.016 0.052 0.027 0.109 0.027 0.167-0.052 1.661-0.048 3.323 0.015 4.984 0.032 0.719 0.079 1.349 0.136 1.849 0.057 0.495 0.135 0.875 0.188 1.005 0.171 0.427 0.421 0.984 0.875 1.364 0.448 0.381 1.093 0.631 2.276 0.381 1.025-0.224 1.656-0.527 2.077-0.964 0.423-0.443 0.672-1.052 0.833-1.984 0.245-1.401 0.729-5.464 0.787-6.224-0.025-0.579 0.057-1.021 0.245-1.36 0.187-0.344 0.479-0.557 0.735-0.672 0.124-0.057 0.244-0.093 0.343-0.125-0.104-0.145-0.213-0.291-0.323-0.432-0.364-0.443-0.667-0.937-0.891-1.463-0.104-0.22-0.219-0.439-0.344-0.647-0.176-0.317-0.4-0.719-0.635-1.172-0.469-0.896-0.979-1.989-1.245-3.052-0.265-1.063-0.301-2.161 0.376-2.932 0.599-0.688 1.656-0.973 3.233-0.812-0.047-0.141-0.072-0.261-0.151-0.443-0.359-0.844-0.828-1.636-1.391-2.355-1.339-1.713-3.511-3.412-6.859-3.469zM7.735 2.156c-0.167 0-0.339 0.005-0.505 0.016-1.349 0.079-2.62 0.468-3.532 1.432-0.911 0.969-1.509 2.547-1.38 5.167 0.027 0.5 0.24 1.885 0.609 3.536 0.371 1.652 0.896 3.595 1.527 5.313 0.629 1.713 1.391 3.208 2.12 3.916 0.364 0.349 0.681 0.495 0.968 0.485 0.287-0.016 0.636-0.183 1.063-0.693 0.776-0.937 1.579-1.844 2.412-2.729-1.199-1.047-1.787-2.629-1.552-4.203 0.135-0.984 0.156-1.907 0.135-2.636-0.015-0.708-0.063-1.176-0.063-1.473 0-0.011 0-0.016 0-0.027v-0.005l-0.005-0.009c0-1.537 0.272-3.057 0.792-4.5 0.375-0.996 0.928-2 1.76-2.819-0.817-0.271-2.271-0.676-3.843-0.755-0.167-0.011-0.339-0.016-0.505-0.016zM24.265 9.197c-0.905 0.016-1.411 0.251-1.681 0.552-0.376 0.433-0.412 1.193-0.177 2.131 0.233 0.937 0.719 1.984 1.172 2.855 0.224 0.437 0.443 0.828 0.619 1.145 0.183 0.323 0.313 0.547 0.391 0.745 0.073 0.177 0.157 0.333 0.24 0.479 0.349-0.74 0.412-1.464 0.375-2.224-0.047-0.937-0.265-1.896-0.229-2.864 0.037-1.136 0.261-1.876 0.277-2.751-0.324-0.041-0.657-0.068-0.985-0.068zM13.287 9.355c-0.276 0-0.552 0.036-0.823 0.099-0.537 0.131-1.052 0.328-1.537 0.599-0.161 0.088-0.317 0.188-0.463 0.303l-0.032 0.025c0.011 0.199 0.047 0.667 0.063 1.365 0.016 0.76 0 1.728-0.145 2.776-0.323 2.281 1.333 4.167 3.276 4.172 0.115-0.469 0.301-0.944 0.489-1.443 0.541-1.459 1.604-2.521 0.708-6.677-0.145-0.677-0.437-0.953-0.839-1.109-0.224-0.079-0.457-0.115-0.697-0.109zM23.844 9.625h0.068c0.083 0.005 0.167 0.011 0.239 0.031 0.068 0.016 0.131 0.037 0.183 0.073 0.052 0.031 0.088 0.083 0.099 0.145v0.011c0 0.063-0.016 0.125-0.047 0.183-0.041 0.072-0.088 0.14-0.145 0.197-0.136 0.151-0.319 0.251-0.516 0.281-0.193 0.027-0.385-0.025-0.547-0.135-0.063-0.048-0.125-0.1-0.172-0.157-0.047-0.047-0.073-0.109-0.084-0.172-0.004-0.061 0.011-0.124 0.052-0.171 0.048-0.048 0.1-0.089 0.157-0.12 0.129-0.073 0.301-0.125 0.5-0.152 0.072-0.009 0.145-0.015 0.213-0.020zM13.416 9.849c0.068 0 0.147 0.005 0.22 0.015 0.208 0.032 0.385 0.084 0.525 0.167 0.068 0.032 0.131 0.084 0.177 0.141 0.052 0.063 0.077 0.14 0.073 0.224-0.016 0.077-0.048 0.151-0.1 0.208-0.057 0.068-0.119 0.125-0.192 0.172-0.172 0.125-0.385 0.177-0.599 0.151-0.215-0.036-0.412-0.14-0.557-0.301-0.063-0.068-0.115-0.141-0.157-0.219-0.047-0.073-0.067-0.156-0.057-0.24 0.021-0.14 0.141-0.219 0.256-0.26 0.131-0.043 0.271-0.057 0.411-0.052zM25.495 19.64h-0.005c-0.192 0.073-0.353 0.1-0.489 0.163-0.14 0.052-0.251 0.156-0.317 0.285-0.089 0.152-0.156 0.423-0.136 0.885 0.057 0.043 0.125 0.073 0.199 0.095 0.224 0.068 0.609 0.115 1.036 0.109 0.849-0.011 1.896-0.208 2.453-0.469 0.453-0.208 0.88-0.489 1.255-0.817-1.859 0.38-2.905 0.281-3.552 0.016-0.156-0.068-0.307-0.157-0.443-0.267zM14.787 19.765h-0.027c-0.072 0.005-0.172 0.032-0.375 0.251-0.464 0.52-0.625 0.848-1.005 1.151-0.385 0.307-0.88 0.469-1.875 0.672-0.312 0.063-0.495 0.135-0.615 0.192 0.036 0.032 0.036 0.043 0.093 0.068 0.147 0.084 0.333 0.152 0.485 0.193 0.427 0.104 1.124 0.229 1.859 0.104 0.729-0.125 1.489-0.475 2.141-1.385 0.115-0.156 0.124-0.391 0.031-0.641-0.093-0.244-0.297-0.463-0.437-0.52-0.089-0.043-0.183-0.068-0.276-0.084z"/> </svg>} href="https://www.aptible.com/docs/postgresql" />
 
@@ -7450,24 +7622,24 @@ Instantly provision secure, encrypted databases - **managed 24x7 by the Aptible 
 
   <Card title="Redis" icon={<svg fill="#E09600" width="30px" height="30px" viewBox="0 -2 28 28" xmlns="http://www.w3.org/2000/svg"><path d="m27.994 14.729c-.012.267-.365.566-1.091.945-1.495.778-9.236 3.967-10.883 4.821-.589.419-1.324.67-2.116.67-.641 0-1.243-.164-1.768-.452l.019.01c-1.304-.622-9.539-3.95-11.023-4.659-.741-.35-1.119-.653-1.132-.933v2.83c0 .282.39.583 1.132.933 1.484.709 9.722 4.037 11.023 4.659.504.277 1.105.44 1.744.44.795 0 1.531-.252 2.132-.681l-.011.008c1.647-.859 9.388-4.041 10.883-4.821.76-.396 1.096-.7 1.096-.982s0-2.791 0-2.791z"/><path d="m27.992 10.115c-.013.267-.365.565-1.09.944-1.495.778-9.236 3.967-10.883 4.821-.59.421-1.326.672-2.121.672-.639 0-1.24-.163-1.763-.449l.019.01c-1.304-.627-9.539-3.955-11.023-4.664-.741-.35-1.119-.653-1.132-.933v2.83c0 .282.39.583 1.132.933 1.484.709 9.721 4.037 11.023 4.659.506.278 1.108.442 1.749.442.793 0 1.527-.251 2.128-.677l-.011.008c1.647-.859 9.388-4.043 10.883-4.821.76-.397 1.096-.7 1.096-.984s0-2.791 0-2.791z"/><path d="m27.992 5.329c.014-.285-.358-.534-1.107-.81-1.451-.533-9.152-3.596-10.624-4.136-.528-.242-1.144-.383-1.794-.383-.734 0-1.426.18-2.035.498l.024-.012c-1.731.622-9.924 3.835-11.381 4.405-.729.287-1.086.552-1.073.834v2.83c0 .282.39.583 1.132.933 1.484.709 9.721 4.038 11.023 4.66.504.277 1.105.439 1.744.439.795 0 1.531-.252 2.133-.68l-.011.008c1.647-.859 9.388-4.043 10.883-4.821.76-.397 1.096-.7 1.096-.984s0-2.791 0-2.791h-.009zm-17.967 2.684 6.488-.996-1.96 2.874zm14.351-2.588-4.253 1.68-3.835-1.523 4.246-1.679 3.838 1.517zm-11.265-2.785-.628-1.157 1.958.765 1.846-.604-.499 1.196 1.881.7-2.426.252-.543 1.311-.879-1.457-2.8-.252 2.091-.754zm-4.827 1.632c1.916 0 3.467.602 3.467 1.344s-1.559 1.344-3.467 1.344-3.474-.603-3.474-1.344 1.553-1.344 3.474-1.344z"/></svg>} href="https://www.aptible.com/docs/redis" />
 
-  <Card title="SFTP" icon="file" color="E09600" href="https://www.aptible.com/docs/sftp" />
+  <Card title="SFTP" icon="file" href="https://www.aptible.com/docs/sftp" />
 </CardGroup>
 
 ## Use tools developers love
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Install the Aptible CLI" href="https://www.aptible.com/docs/reference/aptible-cli/overview">
     ```
      brew install --cask aptible
     ```
   </Card>
 
-  <Card title="Browse tools & integrations" href="https://www.aptible.com/docs/core-concepts/integrations/overview" img="https://mintcdn.com/aptible/gJr2xlqbHzeeHUse/images/Integrations-icon.png?fit=max&auto=format&n=gJr2xlqbHzeeHUse&q=85&s=3b58c0261f4699ac129348abb743f277" data-og-width="2000" width="2000" data-og-height="500" height="500" data-path="images/Integrations-icon.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/aptible/gJr2xlqbHzeeHUse/images/Integrations-icon.png?w=280&fit=max&auto=format&n=gJr2xlqbHzeeHUse&q=85&s=91535a6e58e7aa7de45c374c0c05998b 280w, https://mintcdn.com/aptible/gJr2xlqbHzeeHUse/images/Integrations-icon.png?w=560&fit=max&auto=format&n=gJr2xlqbHzeeHUse&q=85&s=536854fb5458560cab0de650ad4f297d 560w, https://mintcdn.com/aptible/gJr2xlqbHzeeHUse/images/Integrations-icon.png?w=840&fit=max&auto=format&n=gJr2xlqbHzeeHUse&q=85&s=dfb6859cde87c783de7782b5cd38c1d9 840w, https://mintcdn.com/aptible/gJr2xlqbHzeeHUse/images/Integrations-icon.png?w=1100&fit=max&auto=format&n=gJr2xlqbHzeeHUse&q=85&s=4748236ddda2a34241e4204b1c3747a3 1100w, https://mintcdn.com/aptible/gJr2xlqbHzeeHUse/images/Integrations-icon.png?w=1650&fit=max&auto=format&n=gJr2xlqbHzeeHUse&q=85&s=f71ad361c8ed64ae08cc3d8c57910077 1650w, https://mintcdn.com/aptible/gJr2xlqbHzeeHUse/images/Integrations-icon.png?w=2500&fit=max&auto=format&n=gJr2xlqbHzeeHUse&q=85&s=ce8afa712d1ff10d46f20b7994c37416 2500w" />
+  <Card title="Browse tools & integrations" href="https://www.aptible.com/docs/core-concepts/integrations/overview" />
 </CardGroup>
 
 ## Get help when you need it
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Troubleshooting Guides" icon="circle-info" href="https://www.aptible.com/docs/common-erorrs">
     Hitting an error? Read our troubleshooting guides for common errors
   </Card>
@@ -7549,10 +7721,10 @@ As we continued to evolve our platform, we realized we had created something exc
 
 ## Explore more
 
-<CardGroup cols={2}>
-  <Card title="Supported Regions" href="https://www.aptible.com/docs/core-concepts/architecture/stacks#supported-regions" img="https://mintcdn.com/aptible/gJr2xlqbHzeeHUse/images/Regions-icon.png?fit=max&auto=format&n=gJr2xlqbHzeeHUse&q=85&s=75166a906a48bae5aa5dfdb5f93424ce" data-og-width="600" width="600" data-og-height="300" height="300" data-path="images/Regions-icon.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/aptible/gJr2xlqbHzeeHUse/images/Regions-icon.png?w=280&fit=max&auto=format&n=gJr2xlqbHzeeHUse&q=85&s=4ea0427af0e1847653664540a49287fc 280w, https://mintcdn.com/aptible/gJr2xlqbHzeeHUse/images/Regions-icon.png?w=560&fit=max&auto=format&n=gJr2xlqbHzeeHUse&q=85&s=5f8511d0ecfd625a438646de32f9d812 560w, https://mintcdn.com/aptible/gJr2xlqbHzeeHUse/images/Regions-icon.png?w=840&fit=max&auto=format&n=gJr2xlqbHzeeHUse&q=85&s=51628198ffc2c14470d2e96960411ca0 840w, https://mintcdn.com/aptible/gJr2xlqbHzeeHUse/images/Regions-icon.png?w=1100&fit=max&auto=format&n=gJr2xlqbHzeeHUse&q=85&s=272a35be062cc7039e2326424133dc67 1100w, https://mintcdn.com/aptible/gJr2xlqbHzeeHUse/images/Regions-icon.png?w=1650&fit=max&auto=format&n=gJr2xlqbHzeeHUse&q=85&s=66a7ec009c39cf69c4634d3eecc2224e 1650w, https://mintcdn.com/aptible/gJr2xlqbHzeeHUse/images/Regions-icon.png?w=2500&fit=max&auto=format&n=gJr2xlqbHzeeHUse&q=85&s=498ed5156296a48f85be5463bd32bee5 2500w" />
+<CardGroup>
+  <Card title="Supported Regions" href="https://www.aptible.com/docs/core-concepts/architecture/stacks#supported-regions" />
 
-  <Card title="Tools & integrations" href="https://www.aptible.com/docs/core-concepts/integrations/overview" img="https://mintcdn.com/aptible/gJr2xlqbHzeeHUse/images/Integrations-icon.png?fit=max&auto=format&n=gJr2xlqbHzeeHUse&q=85&s=3b58c0261f4699ac129348abb743f277" data-og-width="2000" width="2000" data-og-height="500" height="500" data-path="images/Integrations-icon.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/aptible/gJr2xlqbHzeeHUse/images/Integrations-icon.png?w=280&fit=max&auto=format&n=gJr2xlqbHzeeHUse&q=85&s=91535a6e58e7aa7de45c374c0c05998b 280w, https://mintcdn.com/aptible/gJr2xlqbHzeeHUse/images/Integrations-icon.png?w=560&fit=max&auto=format&n=gJr2xlqbHzeeHUse&q=85&s=536854fb5458560cab0de650ad4f297d 560w, https://mintcdn.com/aptible/gJr2xlqbHzeeHUse/images/Integrations-icon.png?w=840&fit=max&auto=format&n=gJr2xlqbHzeeHUse&q=85&s=dfb6859cde87c783de7782b5cd38c1d9 840w, https://mintcdn.com/aptible/gJr2xlqbHzeeHUse/images/Integrations-icon.png?w=1100&fit=max&auto=format&n=gJr2xlqbHzeeHUse&q=85&s=4748236ddda2a34241e4204b1c3747a3 1100w, https://mintcdn.com/aptible/gJr2xlqbHzeeHUse/images/Integrations-icon.png?w=1650&fit=max&auto=format&n=gJr2xlqbHzeeHUse&q=85&s=f71ad361c8ed64ae08cc3d8c57910077 1650w, https://mintcdn.com/aptible/gJr2xlqbHzeeHUse/images/Integrations-icon.png?w=2500&fit=max&auto=format&n=gJr2xlqbHzeeHUse&q=85&s=ce8afa712d1ff10d46f20b7994c37416 2500w" />
+  <Card title="Tools & integrations" href="https://www.aptible.com/docs/core-concepts/integrations/overview" />
 </CardGroup>
 
 
@@ -7575,14 +7747,14 @@ When building your image, Aptible injects a `.aptible.env` file at the root of y
 
 Here's an example:
 
-```ruby  theme={null}
+```ruby theme={null}
 RAILS_ENV=production
 DATABASE_URL=postgresql://user:password@host:123/db
 ```
 
 If needed, you can use this file to access environment variables during your build, like this:
 
-```ruby  theme={null}
+```ruby theme={null}
 # Assume that you've already ADDed your repo:
 ADD . /app
 WORKDIR /app
@@ -7613,7 +7785,7 @@ This corresponds to Docker's behavior when you use `docker run`, so if you've st
 
 Typically, the `CMD` declaration is something you'd add in your Dockerfile, like so:
 
-```sql  theme={null}
+```sql theme={null}
 FROM alpine:3.5
 ADD . /app
 CMD ["/app/run"]
@@ -7659,7 +7831,7 @@ There are two ways to provide a Procfile:
 
 If your image does not have an `ENTRYPOINT`, the Procfile will be executed using a shell (`/bin/sh`). This means you can use shell syntax, such as:
 
-```sql  theme={null}
+```sql theme={null}
 web: setup && run "$ENVIRONMENT"
 ```
 
@@ -7669,7 +7841,7 @@ web: setup && run "$ENVIRONMENT"
 
 If you'd like to get the shell out of the equation when running your Containers, you can use the exec call, like so:
 
-```sql  theme={null}
+```sql theme={null}
 web: setup && exec run "$ENVIRONMENT"
 ```
 
@@ -7695,7 +7867,7 @@ However, it also means that you can't interpolate variables in your Procfile lin
 
 The simplest option is to alter your `Procfile` to call a shell itself, like so:
 
-```sql  theme={null}
+```sql theme={null}
 web: sh -c 'setup && exec run "$ENVIRONMENT"'
 ```
 
@@ -7703,7 +7875,7 @@ web: sh -c 'setup && exec run "$ENVIRONMENT"'
 
 A better approach is to add a launcher script in your Docker image, and delegate shell processing there. To do so, create a file called `/app.sh` in your image, with the following contents, and make it executable:
 
-```sql  theme={null}
+```sql theme={null}
 #!/bin/sh
 # Make this executable
 # Adjust the commands as needed, of course!
@@ -7712,7 +7884,7 @@ setup && exec run "$ENVIRONMENT"
 
 Once you have this launcher script, your Procfile can simply reference the launcher script, which is simpler and more explicit:
 
-```sql  theme={null}
+```sql theme={null}
 web: /app.sh
 ```
 
@@ -7722,7 +7894,7 @@ Of course, you can use any name you like: `/app.sh` isn't the only one that wo
 
 Aptible will automatically provision the services defined in your Procfile into app containers. You can scale services independently via the Aptible Dashboard or Aptible CLI:
 
-```sql  theme={null}
+```sql theme={null}
 aptible apps:scale SERVICE [--container-count COUNT] [--container-size SIZE_MB]
 ```
 
@@ -7752,7 +7924,7 @@ Use the `aptible apps:create` to create an [app](/core-concepts/apps/overview). 
 
 Use the `aptible deploy` command to deploy a public Docker image to your app like so:
 
-```js  theme={null}
+```js theme={null}
 aptible deploy --app "$APP_HANDLE" \
         --docker-image httpd:alpine
 ```
@@ -7769,7 +7941,7 @@ After you've deployed using [aptible deploy](/reference/aptible-cli/cli-command
 
 [Apps](/core-concepts/apps/overview) can be created using the **terraform** **`aptible_app`** resource.
 
-```js  theme={null}
+```js theme={null}
 resource "aptible_app" "APP" {
     env_id = ENVIRONMENT_ID
     handle = "APP_HANDLE"
@@ -7780,7 +7952,7 @@ resource "aptible_app" "APP" {
 
 Set your Docker repo with the registry username and registry password as the configuration variables: `APTIBLE_DOCKER_IMAGE`, `APTIBLE_PRIVATE_REGISTRY_USERNAME`, and `APTIBLE_PRIVATE_REGISTRY_PASSWORD`.
 
-```lua  theme={null}
+```lua theme={null}
 resource "aptible_app" "APP" {
     env_id = ENVIRONMENT_ID
     handle = "APP_HANDLE"
@@ -7825,7 +7997,7 @@ Use the `aptible apps:create` to create an [app](/core-concepts/apps/overview). 
 
 Example:
 
-```pl  theme={null}
+```pl theme={null}
 git init test-dockerfile-deploy
 cd test-dockerfile-deploy
 ```
@@ -7834,7 +8006,7 @@ cd test-dockerfile-deploy
 
 Example:
 
-```pl  theme={null}
+```pl theme={null}
 # Declare a base image:
 FROM httpd:alpine
 
@@ -7847,7 +8019,7 @@ CMD ["httpd", "-f"]
 
 Step 4: Deploy to Aptible:
 
-```pl  theme={null}
+```pl theme={null}
 # Commit the Dockerfile
 git add Dockerfile
 git commit -m "Add a Dockerfile"
@@ -7889,7 +8061,7 @@ First, lets set up your Terraform directory to work with Aptible. Create a direc
 
 Next, you will define where you want your metric drain to capture metrics. Whether this is a new environment or an exisiting one. If you are placing this in an exisiting environment you can skip this step, just make sure you have your [environment ID](https://github.com/aptible/terraform-provider-aptible/blob/master/docs/index.md#determining-the-environment-id).
 
-```js  theme={null}
+```js theme={null}
 data "aptible_stack" "test-stack" {
     name = "test-stack"
 }
@@ -7906,7 +8078,7 @@ Next, we will actually create the metric drain resource in Terraform, please sel
 
 <Tabs>
   <Tab title="Datadog">
-    ```js  theme={null}
+    ```js theme={null}
     resource "aptible_metric_drain" "datadog_drain" {
     env_id     = data.aptible_environment.example.env_id
     drain_type = "datadog"
@@ -7916,7 +8088,7 @@ Next, we will actually create the metric drain resource in Terraform, please sel
   </Tab>
 
   <Tab title="Aptible InfluxDB Database">
-    ```js  theme={null}
+    ```js theme={null}
     resource "aptible_metric_drain" "influxdb_database_drain" {
     env_id      = data.aptible_environment.example.env_id
     database_id = aptible_database.example.database_id
@@ -7927,7 +8099,7 @@ Next, we will actually create the metric drain resource in Terraform, please sel
   </Tab>
 
   <Tab title="InfluxDB">
-    ```js  theme={null}
+    ```js theme={null}
     resource "aptible_metric_drain" "influxdb_drain" {
     env_id     = data.aptible_environment.example.env_id
     drain_type = "influxdb"
@@ -7951,7 +8123,7 @@ To deploy the above changes, run `terraform apply`
 
 > Some users have reported issues with applications not sending logs to Datadog, applications will need additional configuration set. Below is an example.
 
-```js  theme={null}
+```js theme={null}
     resource "aptible_app" "load-test-datadog" {
         env_id = data.aptible_environment.example_environment.env_id
         handle = "example-app"
@@ -8052,14 +8224,14 @@ Suppose you configured your app to [deploy via Docker Image](/how-to-guides/app-
 
 **Step 1:** Push your git repository to a temporary branch. This action will not trigger a deploy, but we'll use it in just a moment:
 
-```perl  theme={null}
+```perl theme={null}
 BRANCH="deploy-$(date "+%s")"
 git push aptible "master:$BRANCH"
 ```
 
 **Step 2:** Deploy the temporary branch (using the `--git-commitish` argument), and use an empty string for the `--docker-image` argument to disable deploying via Docker Image.
 
-```perl  theme={null}
+```perl theme={null}
 aptible deploy --app "$APP_HANDLE" \
         --git-commitish "$BRANCH" \
         --docker-image ""
@@ -8069,7 +8241,7 @@ aptible deploy --app "$APP_HANDLE" \
 
 Please note if your [app](/core-concepts/apps/overview) has [Private Registry Credentials](/core-concepts/apps/overview), Aptible will attempt to log in using these credentials. Unless the app uses a private base image in its Dockerfile, these credentials should not be necessary. To prevent private registry authentication, unset the credentials when deploying:
 
-```perl  theme={null}
+```perl theme={null}
 aptible deploy --app "$APP_HANDLE" \
         --git-commitish "$BRANCH" \
         --docker-image "" \
@@ -8245,7 +8417,7 @@ A [Certificate Signing Request](https://en.wikipedia.org/wiki/Certificate_signin
 
 **Step 1:** You can generate a new CSR using OpenSSL's `openssl req` command:
 
-```bash  theme={null}
+```bash theme={null}
 openssl req -newkey rsa:2048 -nodes \
         -keyout "$DOMAIN.key" -out "$DOMAIN.csr"
 ```
@@ -8258,7 +8430,7 @@ openssl req -newkey rsa:2048 -nodes \
 
 If you are unsure which certificates, private keys, and CSRs match each other, you can compare the hashes of the modulus of each:
 
-```bash  theme={null}
+```bash theme={null}
 openssl x509 -noout -modulus -in certificate.crt | openssl md5
 openssl rsa -noout -modulus -in "$DOMAIN.key" | openssl md5
 openssl req -noout -modulus -in "$DOMAIN.csr" | openssl md5
@@ -8266,7 +8438,7 @@ openssl req -noout -modulus -in "$DOMAIN.csr" | openssl md5
 
 The certificate, private key and CSR are compatible if all three hashes match. You can use `diff3` to compare the moduli from all three files at once:
 
-```bash  theme={null}
+```bash theme={null}
 openssl x509 -noout -modulus -in certificate.crt > certificate-mod.txt
 openssl rsa -noout -modulus -in "$DOMAIN.key" > private-key-mod.txt
 openssl req -noout -modulus -in "$DOMAIN.csr" > csr-mod.txt
@@ -8289,7 +8461,7 @@ On Aptible, we offer two application deployment strategies - [Dockerfile Deploy]
 
 For both deployment options offered on Aptible, you’ll need to know how to write a Dockerfile. A Dockerfile contains all the instructions to describe how a Docker Image should be built. Docker has a great guide on [Dockerfile Best Practices](https://docs.docker.com/develop/develop-images/dockerfile_best-practices/), which we recommend checking out before starting. You can also use the Dockerfiles included in our [Starter Templates](/getting-started/deploy-starter-template/overview) as a reference to kickstart your own. Below is an example taken from our [Ruby on Rails Starter Template](/getting-started/deploy-starter-template/ruby-on-rails):
 
-```ruby  theme={null}
+```ruby theme={null}
 # syntax = docker / dockerfile: 1
 
 #[1] Choose a parent image to base your image on
@@ -8376,13 +8548,13 @@ Let's dive into the key aspects of Horizontal Autoscaling and how you can make t
 ### So what’s a good candidate?
 
 * Services that have predictable and well-understood load patterns
-  * We talk about this more in [How to set thresholds and container minimums for App Services](#how-to-set-thresholds-and-container-minimums-for-app-services)
+  * We talk about this more in [How to determine the right Horizontal Autoscaling configuration for your App Services](#how-to-determine-the-right-horizontal-autoscaling-configuration-for-your-app-services)
 * Services that have a workload that can be easily parallelized
   * Web workers as an example, since each web request is completely independent from another
 * Services that experience periods of high/low load
   * However, there’s no real risk to setting up HAS on any service just in case they ever experience higher load than expected, as long as having multiple processes running at the same time is not a problem (see above for processed that are not candidates).
 
-# How to set thresholds and container minimums for App Services
+# How to determine the right Horizontal Autoscaling configuration for your App Services
 
 Horizontal Autoscaling is configured per App Service. Guidelines to keep in mind for configuration:
 
@@ -8393,6 +8565,39 @@ Horizontal Autoscaling is configured per App Service. Guidelines to keep in mind
 * Scale Up, and Scale Down Steps - These are set to 1 by default, but you are able to modify the values if you want autoscaling events to jump up or down by more than 1 container at a time.
 
 <Tip>CPU thresholds are expressed as a decimal between 0 and 1, representing the percentage of your container's allocated CPU that is actively used by your app. For instance, if a container with a 25% CPU limit is using 12% of its allocated CPU, this would be expressed as 0.48 (or 48%).</Tip>
+
+## Percentile + Scale Up / Down Thresholds (CPU Usage)
+
+Percentiles decide how aggressively the autoscaler reacts to spikes in CPU usage. For example:
+
+* **P90:** Ignores the top 10% of CPU spikes. This ensures that application performance is mostly within the desired range by focusing on general performance trends.
+* **P95:** Ignores the top 5% of CPU spikes. This ensures better overall performance, but will also result in more scaling activity.
+* **P99:** Ignores the top 1% of CPU spikes. This results in the most scaling activity, but also the best performance.
+
+Below is an example of what P90, P95, and P99 might look like for the same exact application Scale Up Threshold of 80%.
+
+<img alt="" />
+
+<img alt="" />
+
+<img alt="" />
+
+## Scale Up/Down Cooldowns
+
+Cooldowns add deliberate pauses between scaling events to give your app time to stabilize and to prevent rapid repeated scaling events.
+
+In the example below, we wouldn’t scale up during the Scale Up Cooldown, even though CPU usage remains consistently over the Scale Up Threshold of 80%.
+
+<img alt="" />
+
+## Post Release Cooldown
+
+After a deployment, Aptible discards metrics within this interval to allow for service stabilization.
+
+In the example below, we would not scale up even though usage is over the 80% Scale Up Threshold for
+most of the Metric Lookback Time Interval. This is because the data within the Post Release Cooldown window is not included when evaluating whether or not to autoscale.
+
+<img alt="" />
 
 ### Let’s go through an example:
 
@@ -8433,7 +8638,7 @@ Learn how to create an [app](/core-concepts/apps/overview)
 
 Apps can be created/provisioned within the Dashboard the following ways:
 
-* Using the [**Deploy**](https://app.aptible.com/create) tool will automatically create a new app in a new environment as you deploy your code <img src="https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/create-app1.png?fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=c3ec85cf5e8ec92a87df551f13bfdcfa" alt="" data-og-width="2560" width="2560" data-og-height="1280" height="1280" data-path="images/create-app1.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/create-app1.png?w=280&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=165e5282966f3f0fa2a7df8f945de1ff 280w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/create-app1.png?w=560&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=934174730afdec35bb07d274807fc18d 560w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/create-app1.png?w=840&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=4df0a5ea3a68fb733636643542a9b4ae 840w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/create-app1.png?w=1100&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=a4d343b491ab0b1f74e913ca1c7cd27f 1100w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/create-app1.png?w=1650&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=4d911a7137da038eba5b32476f9230ac 1650w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/create-app1.png?w=2500&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=d0a021ccafed4697a90ab1d27c21deb3 2500w" />
+* Using the [**Deploy**](https://app.aptible.com/create) tool will automatically create a new app in a new environment as you deploy your code <img alt="" />
 
 * From the Environment by:
 
@@ -8443,13 +8648,13 @@ Apps can be created/provisioned within the Dashboard the following ways:
 
   * Selecting **Create App**
 
-<img src="https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/create-app2.png?fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=75af2b31fe3d8e99dcbb24510aba1e02" alt="" data-og-width="2800" width="2800" data-og-height="2000" height="2000" data-path="images/create-app2.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/create-app2.png?w=280&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=8619d5fdb8fd0629596f46eeb598bc14 280w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/create-app2.png?w=560&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=7126123f76743a0ecebf982447825eeb 560w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/create-app2.png?w=840&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=6ce04c6e4055ac2099bd3beef9b8dcb0 840w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/create-app2.png?w=1100&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=3b889e79e8de759ac2155d2edf9a1484 1100w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/create-app2.png?w=1650&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=359335d4dce072e92807d49a6c5764f4 1650w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/create-app2.png?w=2500&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=bc20a35b56bddc1756e9dee86724b5e1 2500w" />
+<img alt="" />
 
 ## Using the CLI
 
 Apps can be created/provsioned via the Aptible CLI by using the [`aptible apps:create`](/reference/aptible-cli/cli-commands/cli-apps-create) command.
 
-```js  theme={null}
+```js theme={null}
 aptible apps:create HANDLE
 ```
 
@@ -8457,7 +8662,7 @@ aptible apps:create HANDLE
 
 Apps can be created/provsioned via the [Aptible Terraform Provider](https://registry.terraform.io/providers/aptible/aptible/latest/docs) by using the terraform\_aptible\_app resource.
 
-```js  theme={null}
+```js theme={null}
 data "aptible_app" "APP" {
     handle = "APP_HANDLE"
 }
@@ -8510,7 +8715,7 @@ To deploy to Aptible via Git, you must have a public SSH key associated with you
 
     Finally, you must configure the workflow to deploy your application to Aptible:
 
-    ```sql  theme={null}
+    ```sql theme={null}
     on:
       push:
         branches: [ main ]
@@ -8549,7 +8754,7 @@ To deploy to Aptible via Git, you must have a public SSH key associated with you
 
     Finally, you must configure the Circle CI project to deploy your application to Aptible:
 
-    ```sql  theme={null}
+    ```sql theme={null}
     version: 2.1
 
     jobs:
@@ -8580,7 +8785,7 @@ To deploy to Aptible via Git, you must have a public SSH key associated with you
 
     Let’s break down how this works. We begin by defining when the deployment should run (when a push is made to the `circle-deploy` branch):
 
-    ```sql  theme={null}
+    ```sql theme={null}
     jobs:
       git-deploy:
         docker:
@@ -8593,7 +8798,7 @@ To deploy to Aptible via Git, you must have a public SSH key associated with you
 
     The most important part of this configuration is the value of the `command` key under the `run` step. Here we add our SSH private key to the Circle CI environment, configure a new remote for our repository on Aptible’s platform, and push our branch to Aptible:
 
-    ```sql  theme={null}
+    ```sql theme={null}
     jobs:
       git-deploy:
         # # #
@@ -8631,7 +8836,7 @@ To deploy to Aptible via Git, you must have a public SSH key associated with you
 
     Finally, you must configure the Travis CI project to deploy your application to Aptible:
 
-    ```sql  theme={null}
+    ```sql theme={null}
     language: generic
     sudo: true
 
@@ -8660,7 +8865,7 @@ To deploy to Aptible via Git, you must have a public SSH key associated with you
 
     Let’s break down how this works. We begin by defining when the deployment should run (when a push is made to the `travis-deploy` branch) and where we are going to deploy (so we add `beta.aptible.com` as a known host):
 
-    ```sql  theme={null}
+    ```sql theme={null}
     # # #
     jobs:
       include:
@@ -8672,7 +8877,7 @@ To deploy to Aptible via Git, you must have a public SSH key associated with you
 
     The Travis CI configuration then allows us to split our script into two parts, with the `before_script` configuring the Travis CI environment to use our SSH key:
 
-    ```sql  theme={null}
+    ```sql theme={null}
           # Continued from above
           before_script:
             - mkdir -p ~/.ssh
@@ -8686,7 +8891,7 @@ To deploy to Aptible via Git, you must have a public SSH key associated with you
 
     Finally, our `script` block configures a new remote for our repository on Aptible’s platform, and pushes our branch to Aptible:
 
-    ```sql  theme={null}
+    ```sql theme={null}
           # Continued from above
           script:
             - git remote add aptible git@beta.aptible.com:$APTIBLE_ENVIRONMENT/$APTIBLE_APP.git
@@ -8716,7 +8921,7 @@ To deploy to Aptible via Git, you must have a public SSH key associated with you
 
     Finally, you must configure the GitLab CI pipeline to deploy your application to Aptible:
 
-    ```sql  theme={null}
+    ```sql theme={null}
     image: debian:latest
 
     git_deploy_job:
@@ -8741,7 +8946,7 @@ To deploy to Aptible via Git, you must have a public SSH key associated with you
 
     Let’s break down how this works. We begin by defining when the deployment should run (when a push is made to the `gitlab-deploy` branch), and then we define the `before_script` that will configure SSH in our job environment:
 
-    ```sql  theme={null}
+    ```sql theme={null}
       # . . .
       before_script:
         - apt-get update && apt-get install -y git
@@ -8756,7 +8961,7 @@ To deploy to Aptible via Git, you must have a public SSH key associated with you
 
     Finally, our `script` block configures a new remote for our repository on Aptible’s platform, and pushes our branch to Aptible:
 
-    ```sql  theme={null}
+    ```sql theme={null}
       # Continued from above
       script:
         - |
@@ -8812,7 +9017,7 @@ To deploy to Aptible with a Docker image via a CI integration, you should create
 
     Finally, you must configure the workflow to deploy your application to Aptible:
 
-    ```ruby  theme={null}
+    ```ruby theme={null}
     on:
       push:
         branches: [ main ]
@@ -8888,7 +9093,7 @@ To deploy to Aptible with a Docker image via a CI integration, you should create
 
     Finally, you must configure the workflow to deploy your application to Aptible:
 
-    ```ruby  theme={null}
+    ```ruby theme={null}
     language: generic
     sudo: true
 
@@ -8929,7 +9134,7 @@ To deploy to Aptible with a Docker image via a CI integration, you should create
 
     Then, script from the `push` stage pushes our image to the Docker registry:
 
-    ```ruby  theme={null}
+    ```ruby theme={null}
     # login to your registry
     docker login \
       -u $APTIBLE_PRIVATE_REGISTRY_EMAIL \
@@ -8940,7 +9145,7 @@ To deploy to Aptible with a Docker image via a CI integration, you should create
 
     Finally, it installs the Aptible CLI in the Travis CI build environment, logs in to Aptible, and deploys your Docker image to the specified envrionment and app:
 
-    ```ruby  theme={null}
+    ```ruby theme={null}
     # download the latest aptible cli and install it
     wget https://omnibus-aptible-toolbelt.s3.amazonaws.com/aptible/omnibus-aptible-toolbelt/aptible-toolbelt-latest_amd64.deb && \
       dpkg -i ./aptible-toolbelt-latest_amd64.deb && \
@@ -8983,7 +9188,7 @@ Learn how to manually scale apps and services on Aptible
 
   * Selecting **Scale**
 
-<img src="https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/scale-apps1.png?fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=f9d711d789234e64a98a2b1ba408a388" alt="" data-og-width="2800" width="2800" data-og-height="2000" height="2000" data-path="images/scale-apps1.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/scale-apps1.png?w=280&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=c9645e6da1ca87768a91ed0b4eab3f7c 280w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/scale-apps1.png?w=560&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=47b3c3602bd9c92629978ce082265fac 560w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/scale-apps1.png?w=840&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=b444c90bff4742133877a6c1a32ab43e 840w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/scale-apps1.png?w=1100&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=d56cde924b4b16a7d37d7ddd0e8f79ea 1100w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/scale-apps1.png?w=1650&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=cb953aaec22d49f61a3e0147dc334c09 1650w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/scale-apps1.png?w=2500&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=7f08ef17bd1ca014113f76e1a8ac1731 2500w" />
+<img alt="" />
 
 ## Using the CLI
 
@@ -8993,7 +9198,7 @@ Apps and services can be manually scaled via the Aptible CLI using the [`aptibl
 
 Apps and services can be scaled programmatically via Aptible [Terraform Provider](https://registry.terraform.io/providers/aptible/aptible/latest/docs) by using the nested service element for the App resource:
 
-```js  theme={null}
+```js theme={null}
 resource "aptible_app" "APP" {
     env_id = ENVIRONMENT_ID
     handle = "APP_HANDLE"
@@ -9050,7 +9255,7 @@ Set up AWS Identity and Access Management (IAM) objects to grant access to the s
 
 * Paste the following policy JSON:
 
-```json  theme={null}
+```json theme={null}
 {
   "Version": "2012-10-17",
   "Statement": [
@@ -9075,7 +9280,7 @@ Set up AWS Identity and Access Management (IAM) objects to grant access to the s
 
 ***Note***: the example IAM policy above grants access to all secrets in the account via `"Resource": "*"`. You may additionally opt to restrict access to specific secrets for better security. An example of restricting access to a specific secret:
 
-```yaml  theme={null}
+```yaml theme={null}
 "Resource": "arn:aws:secretsmanager:us-east-1:123456789012:secret:myapp/production"
 ```
 
@@ -9117,7 +9322,7 @@ Set up AWS Identity and Access Management (IAM) objects to grant access to the s
 
 Aptible uses environment variables for configuration. Set the following AWS credentials:
 
-```bash  theme={null}
+```bash theme={null}
 AWS_ACCESS_KEY_ID
 AWS_SECRET_ACCESS_KEY
 AWS_REGION (e.g., us-east-1)
@@ -9135,14 +9340,14 @@ To set environment variables in Aptible:
 
 Add the AWS SDK gem to interact with AWS Secrets Manager:
 
-```ruby  theme={null}
+```ruby theme={null}
 # Gemfile
 gem 'aws-sdk-secretsmanager'
 ```
 
 Run:
 
-```bash  theme={null}
+```bash theme={null}
 bundle install
 ```
 
@@ -9150,7 +9355,7 @@ bundle install
 
 Create a service object that fetches secrets from AWS Secrets Manager.
 
-```ruby  theme={null}
+```ruby theme={null}
 # app/services/aws_secrets_manager_service.rb
 require 'aws-sdk-secretsmanager'
 
@@ -9182,7 +9387,7 @@ end
 
 Create an initializer to load secrets when the app starts.
 
-```ruby  theme={null}
+```ruby theme={null}
 # config/initializers/load_secrets.rb
 if Rails.env.production?
   secret_name = 'myapp/production' # Update with your secret name
@@ -9201,7 +9406,7 @@ Access the secrets via ENV variables.
 
 Example: Database Configuration
 
-```yaml  theme={null}
+```yaml theme={null}
 # config/database.yml
 production:
   adapter: postgresql
@@ -9214,7 +9419,7 @@ production:
 
 Example: API Key Usage
 
-```ruby  theme={null}
+```ruby theme={null}
 # app/services/external_api_service.rb
 class ExternalApiService
   API_KEY = ENV['API_KEY']
@@ -9237,7 +9442,7 @@ Once you've completed the steps for [CI Integration](/how-to-guides/app-guides/i
 
 **Step 2:** Add a custom deploy step that pushes to Aptible following Circle's [deployment instructions](https://circleci.com/docs/configuration#deployment). It should look something like this (adjust branch names as needed):
 
-```ruby  theme={null}
+```ruby theme={null}
 deployment:
   production:
     branch: production
@@ -9262,7 +9467,7 @@ You don't need to create a new SSH public key for your robot user when using Cod
 
 **Step 2:** Add a Custom Script deployment in Codeship with the following commands:
 
-```bash  theme={null}
+```bash theme={null}
 git fetch --depth=1000000
 git push git@beta.aptible.com:$ENVIRONMENT_HANDLE/$APP_HANDLE.git $CI_COMMIT_ID:master
 ```
@@ -9351,7 +9556,7 @@ Once you've completed the steps for [CI Integration](/how-to-guides/app-guides/i
 
 **Step 2:** Add an `after_success` deploy step. Here again, follow Travis CI's [instructions on custom deployment](http://docs.travis-ci.com/user/deployment/custom/). The `after_success` in your `.travis.yml` file should look like this:
 
-```ruby  theme={null}
+```ruby theme={null}
 after_success:
   - git fetch --depth=1000000
   - chmod 600 .travis/deploy.pem
@@ -9382,7 +9587,7 @@ In order for the Docker build cache to cache gems installed via Bundler:
 
 Here's an example of how that might look in a Dockerfile:
 
-```ruby  theme={null}
+```ruby theme={null}
 FROM ruby
 
 # If needed, install system dependencies here
@@ -9408,7 +9613,7 @@ In order for the Docker build cache to cache packages installed via npm:
 
 Here's an example of how that might look in a Dockerfile:
 
-```node  theme={null}
+```node theme={null}
 FROM node
 
 # If needed, install system dependencies here
@@ -9433,7 +9638,7 @@ In order for the Docker build cache to cache packages installed via pip:
 
 Here's an example of how that might look in a Dockerfile:
 
-```python  theme={null}
+```python theme={null}
 FROM python
 
 # If needed, install system dependencies here
@@ -9461,78 +9666,136 @@ If you are currently using [Dockerfile Deploy](/how-to-guides/app-guides/deploy-
 3. Deploy using `aptible deploy` as documented in [Using `aptible deploy`](/reference/aptible-cli/cli-commands/cli-deploy), with one exception: the first time you deploy (you don't need to do it again), add the `--git-detach` flag to this command.
 
 
-# How to migrate a NodeJS app from Heroku to Aptible
+# Heroku to Aptible Migration Guide
 Source: https://www.aptible.com/docs/how-to-guides/app-guides/migrate-nodjs-from-heroku-to-aptible
 
-Guide for migrating a NodeJS app from Heroku to Aptible
+A general guide for migrating applications from Heroku to Aptible, illustrated with a Node.js example
 
-## Overview
+# Overview
 
-Migrating applications from one PaaS to another might sound like a daunting task, but thankfully similarities between platforms makes transitioning easier than expected. However, while Heroku and Aptible are both PaaS applications with similar value props, there are some notable differences between them.
+Migrating your application from Heroku to Aptible is a relatively straightforward process. Because Heroku is also a PaaS, there are many similarities in how applications are built and operated. However, there are a few key differences, primarily in how applications are packaged, deployed, and configured.
 
-Today, developers are often switching to Aptible to access easier turn-key compliance and security at reasonable prices with stellar scalability and reliability.
+This guide focuses on those deployment and configuration differences. It is also worth noting that Aptible differs from Heroku more broadly in its strong focus on security and compliance. [Refer to the Security & Compliance docs for more information on those platform-level capabilities](https://www.aptible.com/docs/core-concepts/security-compliance/overview).
 
-One of the most common app types that’s transitioned over is a NodeJS app. We’ll guide you through the various considerations you need to make as well as give you a step-by-step guide to transition your NodeJS app to Aptible.
+This guide walks you through the general migration process for both your application and database, using a Node.js application with a PostgreSQL database as an example. If you are using a different framework, language, or database, most of the same steps will apply.
 
-## Set up
+<Tip>
+  This guide focuses on the technical steps required to migrate from Heroku to Aptible. If you require further assistance or guidance, please [contact Aptible Support](https://app.aptible.com/support).
+</Tip>
 
-Before starting, you should install Aptible’s CLI which will make setting configurations and deploying applications easier. The full guide on installing Aptible’s CLI can be found [here](/reference/aptible-cli/cli-commands/overview). Installing Aptible typically doesn’t take more than a few minutes.
+### FAQs for those migrating
 
-Additionally, you should [set up an Aptible account](https://dashboard.aptible.com/signup) and create an Aptible app to pair with your existing project.
+<AccordionGroup>
+  <Accordion title="Why migrate from Heroku to Aptible?">
+    Aptible is a security, compliance, and reliability-focused platform as a service (PaaS). Migrating to Aptible enables you to instantly adopt a stronger security and compliance posture, with built-in support for frameworks such as HIPAA, HITRUST, and SOC 2, while maintaining the ease of use and developer experience you may already be familiar with from Heroku.
 
-## Example
+    Teams typically migrate to Aptible when they need more robust security controls, stronger compliance guarantees, or higher reliability, without taking on the operational burden of managing their own infrastructure.
+  </Accordion>
 
-We’ll be moving over a stock NodeJS application with a Postgres database. However, if you use a different database, you’ll still be able to take advantage of most of this tutorial. We chose Postgres for this example because it is the most common stack pair.
+  <Accordion title="How does Aptible pricing compare to Heroku (including Heroku Shield)?">
+    If you’re coming from Heroku’s standard platform, Aptible’s pricing model will feel familiar: usage-based billing, simple line items, and no long-term lock-ins or steep minimums.
 
-## Things to consider
+    If you’re migrating from Heroku Shield specifically, Aptible differs in two important ways: Aptible does not require a 12-month contract, and Aptible does not enforce high minimum spend thresholds. This makes it easier to adopt without long-term financial commitments.
+  </Accordion>
+</AccordionGroup>
 
-While Aptible and Heroku have a lot of similarities, there are some differences in how applications are organized and deployed. We’ll summarize those in this section before moving on to a traditional step-by-step guide.
+# Before you begin
 
-### Aptible mandates Docker
+Before starting, you should:
 
-While many Heroku projects already use Docker, Heroku projects can rely on just Git and Heroku’s [Buildpacks](https://elements.heroku.com/buildpacks/heroku/heroku-buildpack-nodejs). Because Heroku originally catered to hobbyists, supporting projects without a Dockerfile was appropriate.
+1. **Create an Aptible account and select your plan**
 
-However, Aptible’s focus on production-grade deployments and evergreen reliability mean all of our adopters use containerization. Accordingly, Aptible requires Dockerfiles to build an application, even if the application isn’t using the Docker registry.
+   [Sign up for Aptible here](https://app.aptible.com/signup) - by default, you should receive a 30-day free trial.
 
-If you don’t have a Dockerfile already, you can easily add one.
+   To begin your migration, you will need to select a plan:
 
-### Similar Constraints
+   * **Development** is intended for early-stage development and testing, when you do not yet have production security or compliance requirements.
+   * **Production** is designed for production workloads and provides access to highly secure and compliant resources, including support for frameworks such as HIPAA.
 
-Like Heroku, Aptible only supports Linux for deployments (with all apps run inside a Docker container). Also like Heroku, Aptible only supports packets via ports 80 and 443, corresponding to TCP / HTTP and TLS / HTTPS.
+   If you are migrating an existing production application, or if you require compliance or higher security guarantees, you should select the Production plan and create a dedicated stack before migrating your resources.
+2. **Install the Aptible CLI**\
+   Install the Aptible CLI on your local machine. The CLI is used to authenticate, manage environments and apps, and deploy your code.\
+   [Install the CLI here.](/reference/aptible-cli/overview)
+3. **Review your existing Heroku setup**
 
-If you need to use UDP, your application will need to connect to an external service that manages UDP endpoints.
+   Before migrating, make note of the following details from your existing Heroku setup, as you will apply them throughout this guide:
 
-Additionally, like Heroku, Aptible applications are inherently ephemeral and are not expected to have persistent storage. While Aptible’s pristine state feature (which clears the app’s file system on a restart) can be disabled, it is not recommended. Instead, permanent storage should be delegated to an external service like S3 or Cloud Storage.
+   * Application process types (web, worker, background jobs)
+   * Environment variables and secrets
+   * Add-ons such as databases, caches, or third-party services
+   * Any custom build or runtime configuration
+   * Networking or domain configuration
 
-### Docker Support
+## Key considerations
 
-Similar to Heroku, Aptible supports both (i) deploying applications via Dockerfile Deploy—where Aptible builds your image—or (ii) pulling a pre-built image from a Docker Registry.
+While Aptible and Heroku are similar in many ways, there are a few important differences in how applications are built, deployed, and run. This section highlights those differences before moving on to the step-by-step migration guide.
 
-### Aptible doesn’t mandate Procfiles
+### Platform Constraints
 
-Unlike Heroku which requires Procfiles, Aptible considers Procfiles as optional. When a Procfile is missing, Aptible will infer command via the Dockerfile’s `CMD` declaration (known as an [Implicit Service](/how-to-guides/app-guides/define-services#implicit-service-cmd)). In short, Aptible requires Dockerfiles while Heroku requires Procfiles.
+Aptible and Heroku share several operational constraints:
 
-When switching over from Heroku, you can optionally keep your Procfile. Procfile syntax [is standardized](https://ddollar.github.io/foreman/) and is therefore consistent between Aptible and Heroku. Procfiles can be useful when an application has multiple services. However, you might need to change its location. If you are using the [Dockerfile Deploy](/how-to-guides/app-guides/deploy-from-git) approach, the Procfile should remain in your root director. However, if you are using [Direct Docker Image Deploy](/how-to-guides/app-guides/migrate-dockerfile-to-direct-image-deploy), the Procfile should be moved to `/.aptible/Procfile`.
+* Applications run on Linux inside containers.
+* Incoming application traffic is supported over ports 80 (HTTP) and 443 (HTTPS).
+* Applications are expected to be stateless and ephemeral.
 
-Alternatively, for `.yaml` fans, you can use Aptible’s optional `.aptible.yml` format. Similar to Procfiles, applications using Dockerfile Deploy should store the `.aptible.yml` file in the root folder, while apps using Direct Docker Image Deploy should store them at `/.aptible/.aptible.yml`.
+If your application requires UDP or other non-HTTP protocols, it will need to integrate with an external service that manages those endpoints.
+
+Persistent storage should not be stored on the application filesystem. Instead, use managed databases, object storage (such as S3 or Cloud Storage), or other external persistence services.
+
+### Aptible requires Docker
+
+Aptible requires applications to be built and run as containers, which means every application must include a Dockerfile. If your application is not already containerized, not to worry. Adding a Dockerfile is usually straightforward, and Aptible provides guidance and examples to help you get started.
+
+Aptible supports two deployment workflows:
+
+* Deploy from Git, where you push your code to Aptible and Aptible builds the Docker image for you using your Dockerfile.
+* Deploy from a Docker image, where you build the image yourself and have Aptible pull and run it from a registry.
+
+Most teams start by deploying from Git, which provides a Heroku-like experience while still benefiting from containerization. If you need more control over your build process, you can switch to deploying prebuilt images later.
+
+If you do not yet have a Dockerfile, refer to the [Getting Started with Docker guide](https://www.aptible.com/docs/how-to-guides/app-guides/getting-started-with-docker).
+
+### Procfiles are optional
+
+Heroku requires a Procfile to define application processes. Aptible does not.
+
+If no Procfile is present, Aptible will infer the service command from the Dockerfile CMD instruction. This is referred to as an [Implicit Service](https://www.aptible.com/docs/how-to-guides/app-guides/define-services#how-to-define-services).
+
+You can continue using a Procfile if your application has multiple services or process types. Procfile syntax is standardized and compatible between Heroku and Aptible.
+
+Depending on your deployment method, the Procfile location differs:
+
+* Dockerfile Deploy: keep the Procfile in the repository root.
+* Direct Docker Image Deploy: move the Procfile to `.aptible/Procfile`.
+
+Alternatively, you can use Aptible’s optional `.aptible.yml` configuration file. Its placement follows the same rules:
+
+* Root directory for Dockerfile Deploy
+* `.aptible/.aptible.yml` for Direct Docker Image Deploy
 
 ### Private Registry Authentication
 
-If you are using Docker’s private registries, you’ll need to authorize Aptible to pull images from those private registries.
+If you deploy images from a private Docker registry, you must configure Aptible with credentials that allow it to pull your images. This is done using environment variables or the Aptible CLI before deploying.
 
-## Step-by-step guide
+# Step-by-step guide
 
-### 1. Create a Dockerfile (if you don’t have one already)
+This section walks through a typical Heroku to Aptible migration. We’ll use a Node.js app with PostgreSQL as an example, but the same workflow applies to most applications.
 
-For users that don’t have a Dockerfile, you can create a Dockerfile by running
+### 1. Add a Dockerfile (if you don’t have one already)
 
-```node  theme={null}
+Aptible requires a Dockerfile. If your Heroku app used buildpacks and did not include one, you’ll need to add it before deploying.
+
+**Node.js example Dockerfile**
+
+Create a Dockerfile:
+
+```node theme={null}
 touch Dockerfile
 ```
 
-Next, we can add some contents, such as stating a node runtime, establishing a work directory, and commands to install packages.
+Next, add some contents, such as stating a node runtime, establishing a work directory, and commands to install packages.
 
-```node  theme={null}
+```node theme={null}
 FROM node:lts
 
 WORKDIR /app
@@ -9547,19 +9810,19 @@ COPY . /app
 
 We also want to expose the right port. For many Node applications, this is port 3000.
 
-```js  theme={null}
+```js theme={null}
 EXPOSE 3000
 ```
 
-Finally, we want to introduce a command for starting an application. We will use Docker’s `CMD` utility to accomplish this. `CMD` accepts an array of individual words. For instance, for **npm start** we could do:
+Finally, we want to introduce a command for starting an application. We will use Docker’s `CMD` utility to accomplish this. `CMD` accepts an array of individual words. For instance, for **npm start,** we could do:
 
-```js  theme={null}
+```js theme={null}
 CMD [ "npm", "start" ]
 ```
 
 In total, that creates a Dockerfile that looks like the following.
 
-```js  theme={null}
+```js theme={null}
 FROM node:lts
 
 WORKDIR /app
@@ -9578,49 +9841,56 @@ ARG DATABASE_URL
 CMD [ "npm", "start" ]
 ```
 
-### 2. Move over Procfiles (if applicable)
+### 2. Migrate over Procfiles (if applicable)
 
-If you wish to still use your Procfile and also want to use Docker’s registry, you need to move your Procfile’s location into inside the `.aptible` folder. We can do this by running:
+Heroku typically uses a Procfile to define process types (e.g., `web`, `worker`). Aptible supports Procfiles, but they are optional.
 
-```js  theme={null}
+* If you do not use a Procfile, Aptible will infer the command from your Dockerfile `CMD`.
+* If you do use a Procfile, you can keep using it.
+
+If you are deploying via Git deploy, keep the Procfile in the repository root.
+
+If you are deploying via Direct Docker Image Deploy, move your Procfile to `.aptible/Procfile`:
+
+```js theme={null}
 mkdir .aptible #if it doesn't exist yet
-cp Profile /.aptible/Procfile
+cp Procfile /.aptible/Procfile
 ```
 
 ### 3. Set up Aptible’s remote
 
-Assuming you followed Aptible’s instructions to [provision your account](/getting-started/deploy-custom-code) and grant SSH access, you are ready to set Aptible as a remote.
+If you haven’t already, provision an environment and app in the Aptible UI. Then add the Aptible Git remote.
 
-```bash  theme={null}
+```bash theme={null}
 git remote add aptible <your remote url> 
 #your remote should look like ~ git@beta.aptible.com:<env name>/<app name>.git
 ```
 
-### 4. Migrating databases
+### 4. Migrate your databases
 
-If you previously used Heroku PostgreSQL you’ll find comfort in Aptible’s [managed database solution](https://www.aptible.com/product#databases), which supports PostgreSQL, Redis, Elasticsearch, InfluxDB, mySQL, and MongoDB. Similar to Heroku, Aptible supports automated backups, replicas, failover logic, encryption, network isolation, and automated scaling.
+If your Heroku app uses a database (such as Heroku Postgres), you’ll migrate that data into a new [Aptible-managed database](https://www.aptible.com/docs/core-concepts/managed-databases/overview). Similar to Heroku, Aptible supports automated backups, replicas, failover logic, encryption, network isolation, and automated scaling.
 
-Of course, beyond provisioning a new database, you will need to migrate your data from Heroku to Aptible. You may also want to put your database on maintenance mode when doing this to avoid additional data being written to the database during the process. You can accomplish that by running:
+Beyond provisioning a new database, you will need to migrate your data from Heroku to Aptible. You may also want to put your database in maintenance mode when doing this to avoid additional data from being written to it during the process. You can accomplish that by running:
 
-```bash  theme={null}
+```bash theme={null}
 heroku maintenance:on --app <APP_NAME>
 ```
 
 Then, create a fresh backup of your data. We’ll use this to move the data to Aptible.
 
-```bash  theme={null}
+```bash theme={null}
 heroku pg:backups:capture --app <APP_NAME>
 ```
 
 After, you’ll want to download the backup as a file.
 
-```bash  theme={null}
+```bash theme={null}
 heroku pg:backups:download --app <APP_NAME>
 ```
 
 This will download a file named `latest.dump`, which needs to be converted into a SQL file to be imported into Postgres. We can do this by using the `pg_restore` utility. If you do not have the `pg_restore` utility, you can install it [on Mac using Homebrew](https://www.cyberithub.com/how-to-install-pg_dump-and-pg_restore-on-macos-using-7-easy-steps/) or [Postgres.app](https://postgresapp.com/downloads.html), and [one of the many Postgres clients](https://wiki.postgresql.org/wiki/PostgreSQL_Clients) on Linux.
 
-```bash  theme={null}
+```bash theme={null}
 pg_restore -f - --table=users latest.dump > data.sql
 ```
 
@@ -9628,7 +9898,7 @@ Then, we’ll want to move this into Aptible.
 
 We can create a new Database running the desired version. Assuming the environment variables above are set, this command can be copied and pasted as-is to create the Database.
 
-```bash  theme={null}
+```bash theme={null}
 aptible db:create "new_database" \
   --type postgresql \
   --version "14" \
@@ -9637,25 +9907,23 @@ aptible db:create "new_database" \
   --container-size "4096"
 ```
 
-You can use your current environment, or [create a new environment](/core-concepts/architecture/environments). Then, we will use the Aptible CLI to connect to the database.
+You can use your current environment or [create a new environment](/core-concepts/architecture/environments). Then, we will use the Aptible CLI to connect to the database.
 
-```bash  theme={null}
+```bash theme={null}
 aptible db:tunnel "new_database" --environment "my_environment"
 ```
 
-This should return the tunnel’s URL, e.g.:
-
-<img src="https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/node-heroku-aptible.png?fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=d9df353b08a7b033e8bdbec48b3be8ce" alt="" data-og-width="2000" width="2000" data-og-height="1125" height="1125" data-path="images/node-heroku-aptible.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/node-heroku-aptible.png?w=280&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=b9e0f8d01302e69d65f977fc03c4ea86 280w, https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/node-heroku-aptible.png?w=560&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=11e7bf1ec1ae19fb76773680b1eaace6 560w, https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/node-heroku-aptible.png?w=840&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=e6dfe0ef50f8c6de69ee74bdb2107826 840w, https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/node-heroku-aptible.png?w=1100&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=598d5988509893ff51b2e1b8cb679b55 1100w, https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/node-heroku-aptible.png?w=1650&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=ba2aaaf476fad1a11ad5143af224e82f 1650w, https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/node-heroku-aptible.png?w=2500&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=862080b8de18f0b9777a96af0b59cb0d 2500w" />
+This should return the tunnel’s URL.
 
 Keeping the session open, open a new Terminal tab and store the tunnel’s URL as an environment variable:
 
-```bash  theme={null}
+```bash theme={null}
 TARGET_URL='postgresql://aptible:passw0rd@localhost.aptible.in:5432/db'
 ```
 
 Using the environment variable, we can use our terminal’s pSQL client to import our exported data from Heroku (here named as `data.sql`) into the database.
 
-```bash  theme={null}
+```bash theme={null}
 psql $TARGET_URL -f data.sql > /dev/null
 ```
 
@@ -9665,7 +9933,7 @@ You might get some error messages noting that the role `aptible`, `postgres`, an
 
 If we aren’t going to use the Docker registry, we can instead directly push to Aptible, which will build an image and deploy it. To do this, first commit our changes and push our code to Aptible.
 
-```bash  theme={null}
+```bash theme={null}
 git add -A
 git commit -m "Re-organization for Aptible" 
 git push aptible <branch name> #e.g. main or master
@@ -9675,7 +9943,7 @@ git push aptible <branch name> #e.g. main or master
 
 If you used Docker’s registry for your Heroku deployments, and you were using a private registry, you’ll need to register your credentials with Aptible’s `config` utility.
 
-```bash  theme={null}
+```bash theme={null}
 aptible config:set APTIBLE_PRIVATE_REGISTRY_USERNAME=YOUR_USERNAME APTIBLE_PRIVATE_REGISTRY_PASSWORD=YOUR_USERNAME
 ```
 
@@ -9685,7 +9953,7 @@ While you can get a detailed overview of how to deploy with Docker from our [ded
 
 Most Docker registries supply long-term credentials, which you only need to provide to Aptible once. We can do that using the following command:
 
-```bash  theme={null}
+```bash theme={null}
 aptible deploy \
 --app "$APP_HANDLE" \
 --docker-image "$DOCKER_IMAGE" \
@@ -9695,7 +9963,7 @@ aptible deploy \
 
 After, we just need to provide the Docker Image URL to deploy to Aptible:
 
-```bash  theme={null}
+```bash theme={null}
 aptible deploy --app "$APP_HANDLE" \
         --docker-image "$DOCKER_IMAGE"
 ```
@@ -9704,7 +9972,9 @@ If the image URL is consistent, you can skip the `--docker-image` tag on subsequ
 
 ## Closing Thoughts
 
-And that’s it! Moving from Heroku to Aptible is actually a fairly simple process. With some modified configurations, you can switch PaaS platforms in less than a day.
+For most teams, migrating from Heroku to Aptible is a same-day process. The core steps are adding a Dockerfile, migrating your data, updating configuration, and deploying your app.
+
+Once complete, your application runs on a platform designed for security, compliance, and reliability, while preserving the simplicity and developer experience you expect from a managed PaaS.
 
 
 # All App Guides
@@ -9767,7 +10037,7 @@ If you are building on Aptible using [Dockerfile Deploy](/how-to-guides/app-guid
 
 To do so with a Rails app, you'd want to add this block toward the end of your `Dockerfile`:
 
-```bash  theme={null}
+```bash theme={null}
 RUN set -a \
  && . ./.aptible.env \
  && bundle exec rake assets:precompile
@@ -9775,7 +10045,7 @@ RUN set -a \
 
 For a Django app, you might use something like this:
 
-```bash  theme={null}
+```bash theme={null}
 RUN set -a \
  && . ./.aptible.env \
  && python manage.py collectstatic
@@ -9787,7 +10057,7 @@ RUN set -a \
 
 An alternative is to build assets when your web container starts. If your app has a [Procfile](/how-to-guides/app-guides/define-services), you can do so like this, for example (adjust as needed):
 
-```bash  theme={null}
+```bash theme={null}
 # Rails example:
 web: bundle exec rake assets:precompile && exec bundle exec rails s -b 0.0.0.0 -p 3000
 
@@ -9867,7 +10137,7 @@ To push assets to an object store from an app on Aptible, you'll need to:
 
 For example, if you're running a Rails app and using [the Asset Sync gem](https://github.com/rumblelabs/asset_sync) to automatically sync your assets to S3 at the end of the Rails assets pipeline, you might use the following [`.aptible.yml`](/core-concepts/apps/deploying-apps/releases/aptible-yml) file:
 
-```bash  theme={null}
+```bash theme={null}
 before_release:
   - bundle exec rake assets:precompile
 ```
@@ -9886,7 +10156,7 @@ Configuration variables can be set or modified in the Dashboard in the following
 
 * While deploying new code by:
 
-  * Using the [**Deploy**](https://app.aptible.com/create) tool will allow you to set environment variables as you deploy your code <img src="https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/config-var1.png?fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=321d06902821e61cc2531a40a5bcb944" alt="" data-og-width="2000" width="2000" data-og-height="2000" height="2000" data-path="images/config-var1.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/config-var1.png?w=280&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=05fc9bd061992a3562329adc05d2d34f 280w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/config-var1.png?w=560&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=18947b6a1f38a568b66bd0a6eadb0958 560w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/config-var1.png?w=840&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=72953272c9fc7fa0cb2e13367d6cc6f3 840w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/config-var1.png?w=1100&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=f5f26e141bf4fdea402073db0f985276 1100w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/config-var1.png?w=1650&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=5882316bfba1818d128866eaf9cf800c 1650w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/config-var1.png?w=2500&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=eb1c244e117a1b7409552ec912e919d3 2500w" />
+  * Using the [**Deploy**](https://app.aptible.com/create) tool will allow you to set environment variables as you deploy your code <img alt="" />
 
 * For existing apps by:
 
@@ -9894,7 +10164,7 @@ Configuration variables can be set or modified in the Dashboard in the following
 
   * Selecting the **Configuration** tab
 
-  * Selecting **Edit** within Edit Environment Variables <img src="https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/config-var2.png?fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=ed3627d46fa098c2ca022af3d5e4f9ee" alt="" data-og-width="2000" width="2000" data-og-height="1000" height="1000" data-path="images/config-var2.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/config-var2.png?w=280&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=92fc6da045262715601067d42c0b39b3 280w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/config-var2.png?w=560&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=d9cd37b9f7132793ef89ccf1f1439fb0 560w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/config-var2.png?w=840&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=e5f1d3c5596d446f7de0f20c188fcd5d 840w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/config-var2.png?w=1100&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=3814d031d958365695824c4f160eb52b 1100w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/config-var2.png?w=1650&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=ad5db8393dc60cd84931209952207742 1650w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/config-var2.png?w=2500&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=22e9f755ec58d6c9fe835d3f34f69f89 2500w" />
+  * Selecting **Edit** within Edit Environment Variables <img alt="" />
 
 ## Using the CLI
 
@@ -9927,14 +10197,14 @@ To synchronize a Configuration change and code release when using [Dockerfile De
 
 **Step 1:** Push your code to a new deploy branch on Aptible. Any name will do, as long as it's not `master`, but we recommend giving it a random-ish name like in the example below. Pushing to a branch other than `master` will **not** trigger a deploy on Aptible. However, the new code will be available for future deploys.
 
-```js  theme={null}
+```js theme={null}
 BRANCH="deploy-$(date "+%s")"
 git push aptible "master:$BRANCH"
 ```
 
 **Step 2:** Deploy this branch along with the new Configuration variables using the [`aptible deploy`](/reference/aptible-cli/cli-commands/cli-deploy) command:
 
-```js  theme={null}
+```js theme={null}
 aptible deploy \
   --app "$APP_HANDLE" \
   --git-commitish "$BRANCH" \
@@ -9943,7 +10213,7 @@ aptible deploy \
 
 Please note that you can provide some common configuration variables as arguments to CLI commands instead of updating the app configuration. For example, if you need to include [Private Registry Authentication](/core-concepts/apps/overview) credentials to let Aptible pull a source Docker image, you can use this command:
 
-```js  theme={null}
+```js theme={null}
 aptible deploy \
   --app "$APP_HANDLE" \
   --git-commitish "$BRANCH" \
@@ -9955,7 +10225,7 @@ aptible deploy \
 
 Please use the [`aptible deploy`](/reference/aptible-cli/cli-commands/cli-deploy) CLI command to deploy your app if you are using [Direct Docker Image Deploy](/how-to-guides/app-guides/migrate-dockerfile-to-direct-image-deploy). If you are not using `aptible deploy`, please review the [Direct Docker Image Deploy](/how-to-guides/app-guides/migrate-dockerfile-to-direct-image-deploy) instructions. When using `aptible deploy` with Direct Docker Image Deploy, you may append environment variables to the [`aptible deploy`](/reference/aptible-cli/cli-commands/cli-deploy) command:
 
-```js  theme={null}
+```js theme={null}
 aptible deploy \
   --app "$APP_HANDLE" \
   --docker-image "$DOCKER_IMAGE" \
@@ -9982,7 +10252,7 @@ This guide is designed to walk you through getting started with cron jobs on Apt
 
 **Step 2:** Add a `crontab` to your repository. Here is an example `crontab` you might want to adapt or reuse:
 
-```bash  theme={null}
+```bash theme={null}
 # Run every minute
 */1 * * * * bundle exec rake some:task
 
@@ -9996,7 +10266,7 @@ This guide is designed to walk you through getting started with cron jobs on Apt
 
 **Step 3:** Copy the `crontab` to your Docker image with a directive such as this one:
 
-```bash  theme={null}
+```bash theme={null}
 ADD crontab /app/crontab
 ```
 
@@ -10004,13 +10274,13 @@ ADD crontab /app/crontab
 
 **Step 4:** Add a new service (if your app already has a Procfile), or deploy a new app altogether to start Supercronic and run your cron jobs. If you are adding a service, use this `Procfile` declaration:
 
-```bash  theme={null}
+```bash theme={null}
 cron: exec /usr/local/bin/supercronic /app/crontab
 ```
 
 If you are adding a new app, you can use the same `Procfile` declaration or add a `CMD` declaration to your [Dockerfile](/core-concepts/apps/deploying-apps/image/deploying-with-git/overview):
 
-```bash  theme={null}
+```bash theme={null}
 CMD ["supercronic", "/app/crontab"]
 ```
 
@@ -10044,7 +10314,7 @@ Note that **you must create this stack in the** **`us-east-1`** **region**, but 
 
 Choose "Specify an Amazon S3 template URL", and use the following template URL:
 
-```url  theme={null}
+```url theme={null}
 https://s3.amazonaws.com/www.aptible.com/assets/cloudformation-redirect.yaml
 ```
 
@@ -10088,7 +10358,7 @@ If you're setting up a redirect for a domain that's already serving production t
 
 To do so, use `curl` and verify that the following requests return a redirect to the right host (you should see a `Location` header in the response):
 
-```sql  theme={null}
+```sql theme={null}
 # $DOMAIN should be set to your domain apex.
 # $DISTRIBUTION should be set to the DistributionHostname.
 
@@ -10231,7 +10501,7 @@ Nginx is a popular choice for a reverse proxy to route requests through to Aptib
 
 One major pitfall of using Nginx with Aptible endpoints is that, by default, Nginx disregards DNS TTLs and caches the IPs of its upstream servers forever. In contrast, the IPs for Aptible endpoints change periodically (under the hood, Aptible use AWS ELBs, from which they inherit this property). This contrast means that Nginx will, by default, eventually use the wrong IPs when pointed at an Aptible endpoint through a `proxy_pass` directive. To work around this problem, avoid the following configuration pattern in your Nginx configuration:
 
-```sql  theme={null}
+```sql theme={null}
 location / {
     proxy_pass https://hostname-of-an-endpoint;
 }
@@ -10239,7 +10509,7 @@ location / {
 
 Instead, use this:
 
-```sql  theme={null}
+```sql theme={null}
 resolver 8.8.8.8;
 set $upstream_endpoint https://hostname-of-an-endpoint;
 
@@ -10296,7 +10566,7 @@ To automatically run migrations on each deploy to Aptible, you can use a [`befor
 
 To do so, add the following to your [`.aptible.yml`](/core-concepts/apps/deploying-apps/releases/aptible-yml) file (adjust the command as needed depending on your framework):
 
-```bash  theme={null}
+```bash theme={null}
 before_release:
   - bundle exec rake db:migrate
 ```
@@ -10307,7 +10577,7 @@ before_release:
 
 If you need to run more complex migration scripts (e.g., with `if` branches, etc.), we recommend encapsulating this logic in a separate script:
 
-```python  theme={null}
+```python theme={null}
 #!/bin/sh
 # This file lives at script/before_release.sh
 
@@ -10322,7 +10592,7 @@ fi
 
 Your new `.aptible.yml` would read:
 
-```bash  theme={null}
+```bash theme={null}
 before_release:
   - script/before_release.sh
 ```
@@ -10367,7 +10637,7 @@ For settings that can be changed at runtime, the `pg_reload_conf` function (i.
 
 The `pg_settings` view contains information on the current settings being used by the Database. The following query selects the relevant columns from `pg_settings` for a single setting:
 
-```js  theme={null}
+```js theme={null}
 SELECT name, setting, context, pending_restart
 FROM pg_settings
 WHERE name = 'max_connections';
@@ -10380,7 +10650,7 @@ Note that `setting` is the current value for the session and does not reflect 
 
 Using this, you can reload the config and then query if any settings have been changed that require the Database to be restarted.
 
-```js  theme={null}
+```js theme={null}
 SELECT name, setting, context, pending_restart
 FROM pg_settings
 WHERE pending_restart IS TRUE;
@@ -10391,7 +10661,7 @@ WHERE pending_restart IS TRUE;
 
 Using this, you can show all non-default settings:
 
-```js  theme={null}
+```js theme={null}
 SELECT name, current_setting(name), source, sourcefile, sourceline
 FROM pg_settings
 WHERE(source <> 'default' OR name = 'server_version') 
@@ -10402,7 +10672,7 @@ AND name NOT IN('config_file', 'data_directory', 'hba_file', 'ident_file');
 
 Using this, you can show all non-default settings:
 
-```js  theme={null}
+```js theme={null}
 SHOW ALL;
 ```
 
@@ -10510,7 +10780,7 @@ It's recommended to test the upgrade before performing it in production. The eas
 
 Example:
 
-```sql  theme={null}
+```sql theme={null}
 aptible backup:restore 1234 --handle upgrade-test --container-size 4096
 ```
 
@@ -10526,7 +10796,7 @@ Collect information on the Database you'd like to test and store it in the follo
 
 Example:
 
-```sql  theme={null}
+```sql theme={null}
 SOURCE_HANDLE='source-db'
 SOURCE_ENVIRONMENT='test-environment'
 ```
@@ -10541,7 +10811,7 @@ Collect information on the target Database and store it in the following environ
 
 Example:
 
-```sql  theme={null}
+```sql theme={null}
 TARGET_HANDLE='upgrade-test'
 TARGET_VERSION='8.0'
 TARGET_ENVIRONMENT='test-environment'
@@ -10551,7 +10821,7 @@ TARGET_ENVIRONMENT='test-environment'
 
 Create a new Database running the desired version. Assuming the environment variables above are set, this command can be copied and pasted as-is to create the Database.
 
-```sql  theme={null}
+```sql theme={null}
 aptible db:create "$TARGET_HANDLE" \
   --type mysql \
   --version "$TARGET_VERSION" \
@@ -10566,7 +10836,7 @@ Scale all [Services](/core-concepts/apps/deploying-apps/services) that use the D
 
 Example:
 
-```sql  theme={null}
+```sql theme={null}
 aptible apps:scale --app my-app cmd --container-count 0
 ```
 
@@ -10576,19 +10846,19 @@ While this step is not strictly required, it ensures that the Services don't wri
 
 In a terminal, create a [Database Tunnel](/core-concepts/managed-databases/connecting-databases/database-tunnels) to the source Database using the Aptible CLI.
 
-```sql  theme={null}
+```sql theme={null}
 aptible db:tunnel "$SOURCE_HANDLE" --environment "$SOURCE_ENVIRONMENT" --port 5432
 ```
 
 The tunnel will block the current terminal until it's stopped. In another terminal, collect the tunnel's [Database Credentials](/core-concepts/managed-databases/connecting-databases/database-credentials), which is printed by [`aptible db:tunnel`](/reference/aptible-cli/cli-commands/cli-db-tunnel). Then dump the database and database object definitions into a file. `dump.sql` in this case.
 
-```sql  theme={null}
+```sql theme={null}
 MYSQL_PWD="$PASSWORD" mysqldump  --user root --host localhost.aptible.in --port 5432 --all-databases --routines --events  > dump.sql
 ```
 
 The following error may come up when dumping:
 
-```sql  theme={null}
+```sql theme={null}
 Unknown table 'COLUMN_STATISTICS' in information_schema (1109)
 ```
 
@@ -10600,13 +10870,13 @@ You now have a copy of your Database's database object definitions in `dump.sql`
 
 Create a [Database Tunnel](/core-concepts/managed-databases/connecting-databases/database-tunnels) to the target Database using the Aptible CLI.
 
-```sql  theme={null}
+```sql theme={null}
 aptible db:tunnel "$TARGET_HANDLE" --environment "$TARGET_ENVIRONMENT" --port 5432
 ```
 
 Again, the tunnel will block the current terminal until it's stopped. In another terminal, apply the table definitions to the target Database.
 
-```sql  theme={null}
+```sql theme={null}
 MYSQL_PWD="$PASSWORD" mysql --user root --host localhost.aptible.in --port 5432 < dump.sql
 ```
 
@@ -10616,7 +10886,7 @@ MYSQL_PWD="$PASSWORD" mysql --user root --host localhost.aptible.in --port 5432 
 
 Once you've updated the source Database, you can try the dump again by deprovisioning the target Database and starting from the [Create the target Database](/how-to-guides/database-guides/dump-restore-mysql#create-the-target-database) step.
 
-```sql  theme={null}
+```sql theme={null}
 aptible db:deprovision "$TARGET_HANDLE" --environment "$TARGET_ENVIRONMENT"
 ```
 
@@ -10626,7 +10896,7 @@ If the `$TARGET_ENVIRONMENT` is configured to [retain final Database Backups](/c
 
 You can obtain a list of final backups by running the following:
 
-```sql  theme={null}
+```sql theme={null}
 aptible backup:orphaned --environment "$TARGET_ENVIRONMENT"
 ```
 
@@ -10638,7 +10908,7 @@ Once the upgrade is complete, any Services that use the existing Database need t
 
 Example:
 
-```sql  theme={null}
+```sql theme={null}
 aptible config:set --app my-app DB_URL='mysql://aptible:pa$word@db-stack-1234.aptible.in:5432/db'
 ```
 
@@ -10648,7 +10918,7 @@ If Services were scaled down before performing the upgrade, they need to be scal
 
 Example:
 
-```sql  theme={null}
+```sql theme={null}
 aptible apps:scale --app my-app cmd --container-count 2
 ```
 
@@ -10656,7 +10926,7 @@ aptible apps:scale --app my-app cmd --container-count 2
 
 Once the original Database is no longer necessary, it should be deprovisioned, or it will continue to incur costs. Note that this will delete all automated Backups. If you'd like to retain the Backups, contact [Aptible Support](/how-to-guides/troubleshooting/aptible-support) to update them.
 
-```sql  theme={null}
+```sql theme={null}
 aptible db:deprovision "$SOURCE_HANDLE" --environment "$SOURCE_ENVIRONMENT"
 ```
 
@@ -10690,7 +10960,7 @@ Testing the schema should catch most issues but it's also recommended to test th
 
 Example:
 
-```sql  theme={null}
+```sql theme={null}
 aptible backup:restore 1234 --handle upgrade-test --container-size 4096
 ```
 
@@ -10708,7 +10978,7 @@ Collect information on the Database you'd like to upgrade and store it in the fo
 
 Example:
 
-```sql  theme={null}
+```sql theme={null}
 SOURCE_HANDLE='source-db'
 SOURCE_ENVIRONMENT='test-environment'
 ```
@@ -10727,7 +10997,7 @@ Collect information on the target Database and store it in in the following envi
 
 Example:
 
-```sql  theme={null}
+```sql theme={null}
 TARGET_HANDLE='dump-test'
 TARGET_VERSION='14'
 TARGET_ENVIRONMENT='test-environment'
@@ -10739,7 +11009,7 @@ TARGET_CONTAINER_SIZE=4096
 
 Create a new Database running the desired version. Assuming the environment variables above are set, this command can be copied and pasted as-is to create the Database.
 
-```sql  theme={null}
+```sql theme={null}
 aptible db:create "$TARGET_HANDLE" \
   --type postgresql \
   --version "$TARGET_VERSION" \
@@ -10756,7 +11026,7 @@ Scale all [Services](/core-concepts/apps/deploying-apps/services) that use the D
 
 Example scale command:
 
-```sql  theme={null}
+```sql theme={null}
 aptible apps:scale --app my-app cmd --container-count 0
 ```
 
@@ -10766,7 +11036,7 @@ While this step is not strictly required, it ensures that the Services don't wri
 
 In a separate terminal, create a [Database Tunnel](/core-concepts/managed-databases/connecting-databases/database-tunnels) to the source Database using the Aptible CLI.
 
-```sql  theme={null}
+```sql theme={null}
 aptible db:tunnel "$SOURCE_HANDLE" --environment "$SOURCE_ENVIRONMENT"
 ```
 
@@ -10778,14 +11048,14 @@ The tunnel will block the current terminal until it's stopped. Collect the tunne
 
 Example:
 
-```sql  theme={null}
+```sql theme={null}
 SOURCE_URL='postgresql://aptible:pa$word@localhost.aptible.in:5432/db'
 SOURCE_PASSWORD='pa$word'
 ```
 
 Dump the data into a file. `dump.sql` in this case.
 
-```sql  theme={null}
+```sql theme={null}
 PGPASSWORD="$SOURCE_PASSWORD" pg_dumpall -d "$SOURCE_URL" --no-password \
   | grep -E -i -v 'ALTER ROLE aptible .*PASSWORD' > dump.sql
 ```
@@ -10798,7 +11068,7 @@ You now have a copy of your Database's schema and data in `dump.sql`! The Databa
 
 In a separate terminal, create a [Database Tunnel](/core-concepts/managed-databases/connecting-databases/database-tunnels) to the target Database using the Aptible CLI.
 
-```sql  theme={null}
+```sql theme={null}
 aptible db:tunnel "$TARGET_HANDLE" --environment "$TARGET_ENVIRONMENT"
 ```
 
@@ -10806,13 +11076,13 @@ Again, the tunnel will block the current terminal until it's stopped. Collect th
 
 Example:
 
-```sql  theme={null}
+```sql theme={null}
 TARGET_URL='postgresql://aptible:passw0rd@localhost.aptible.in:5432/db'
 ```
 
 Apply the data to the target Database.
 
-```sql  theme={null}
+```sql theme={null}
 psql $TARGET_URL -f dump.sql > /dev/null
 ```
 
@@ -10820,7 +11090,7 @@ The output of `psql` can be noisy depending on the size of the source Database. 
 
 The following errors may come up when restoring the Database:
 
-```sql  theme={null}
+```sql theme={null}
 ERROR:  role "aptible" already exists
 ERROR:  role "postgres" already exists
 ERROR:  database "db" already exists
@@ -10834,7 +11104,7 @@ If there are additional errors, they will need to be addressed in order to be ab
 
 Once you've updated the source Database, you can try the dump again by deprovisioning the target Database and starting from the [Create the target Database](/how-to-guides/database-guides/dump-restore-postgresql#create-the-target-database) step.
 
-```sql  theme={null}
+```sql theme={null}
 aptible db:deprovision "$TARGET_HANDLE" --environment "$TARGET_ENVIRONMENT"
 ```
 
@@ -10842,7 +11112,7 @@ If the `$TARGET_ENVIRONMENT` is configured to [retain final Database Backups](/c
 
 You can obtain a list of final backups by running:
 
-```sql  theme={null}
+```sql theme={null}
 aptible backup:orphaned --environment "$TARGET_ENVIRONMENT"
 ```
 
@@ -10854,7 +11124,7 @@ Once the upgrade is complete, any Services that use the existing Database need t
 
 Example config command:
 
-```sql  theme={null}
+```sql theme={null}
 aptible config:set --app my-app DB_URL='postgresql://user:passw0rd@db-stack-1234.aptible.in:5432/db'
 ```
 
@@ -10864,7 +11134,7 @@ If Services were scaled down before performing the upgrade, they need to be scal
 
 Example:
 
-```sql  theme={null}
+```sql theme={null}
 aptible apps:scale --app my-app cmd --container-count 2
 ```
 
@@ -10874,7 +11144,7 @@ aptible apps:scale --app my-app cmd --container-count 2
 
 Vacuuming the target Database after upgrading reclaims space occupied by dead tuples and analyzing the tables collects information on the table's contents in order to improve query performance.
 
-```sql  theme={null}
+```sql theme={null}
 psql "$TARGET_URL" --tuples-only --no-align --command \
   'SELECT datname FROM pg_database WHERE datistemplate IS FALSE' |
 
@@ -10891,7 +11161,7 @@ done
 
 Once the original Database is no longer necessary, it should be deprovisioned or it will continue to incur costs. Note that this will delete all automated Backups. If you'd like to retain the Backups, contact [Aptible Support](/how-to-guides/troubleshooting/aptible-support) to update them.
 
-```sql  theme={null}
+```sql theme={null}
 aptible db:deprovision "$SOURCE_HANDLE" --environment "$SOURCE_ENVIRONMENT"
 ```
 
@@ -10917,7 +11187,7 @@ Databases can be scaled within the Aptible Dashboard by:
 
 * Selecting **Scale**
 
-<img src="https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/scale-databases1.png?fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=0bfef33c650941ff9e030c749b671464" alt="" data-og-width="2800" width="2800" data-og-height="2228" height="2228" data-path="images/scale-databases1.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/scale-databases1.png?w=280&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=5c0b185728158cdd8ffc3c806d215cd3 280w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/scale-databases1.png?w=560&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=00d55000e8fc9c2abd5374848421f81d 560w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/scale-databases1.png?w=840&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=6f52e4ea25b90da920157bfbe8612432 840w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/scale-databases1.png?w=1100&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=31976efd5e4fa3635750dbd90321c80b 1100w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/scale-databases1.png?w=1650&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=0542adc2f5532e841315faa281bf1186 1650w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/scale-databases1.png?w=2500&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=b2f76ec14e172d256ecf613fc59b58f8 2500w" />
+<img alt="" />
 
 ## Using the CLI
 
@@ -10927,7 +11197,7 @@ Databases can be scaled via the Aptible CLI using the [`aptible db:restart`](/r
 
 Databases can be programmatically scaled using the Aptible [Terraform Provider](https://registry.terraform.io/providers/aptible/aptible/latest/docs) using the `terraform_aptible_database` resource:
 
-```js  theme={null}
+```js theme={null}
  resource "aptible_database" "DATABASE" {
     env_id = ENVIRONMENT_ID
     handle = "DATABASE_HANDLE"
@@ -11111,7 +11381,7 @@ Collect information on the Database you'd like to test and store it in the follo
 
 Example:
 
-```sql  theme={null}
+```sql theme={null}
 SOURCE_HANDLE='source-db'
 SOURCE_ENVIRONMENT='test-environment'
 ```
@@ -11126,7 +11396,7 @@ Collect information on the target Database and store it in in the following envi
 
 Example:
 
-```sql  theme={null}
+```sql theme={null}
 TARGET_HANDLE='schema-test'
 TARGET_VERSION='14'
 TARGET_ENVIRONMENT='test-environment'
@@ -11136,7 +11406,7 @@ TARGET_ENVIRONMENT='test-environment'
 
 Create a new Database running the desired version. Assuming the environment variables above are set, this command can be copied and pasted as-is to create the Database.
 
-```sql  theme={null}
+```sql theme={null}
 aptible db:create "$TARGET_HANDLE" --type postgresql --version "$TARGET_VERSION" --environment "$TARGET_ENVIRONMENT"
 ```
 
@@ -11148,7 +11418,7 @@ By default, [`aptible db:create`](/reference/aptible-cli/cli-commands/cli-db-cre
 
 Create a [Database Tunnel](/core-concepts/managed-databases/connecting-databases/database-tunnels) to the source Database using the Aptible CLI.
 
-```sql  theme={null}
+```sql theme={null}
 aptible db:tunnel "$SOURCE_HANDLE" --environment "$SOURCE_ENVIRONMENT"
 ```
 
@@ -11160,14 +11430,14 @@ The tunnel will block the current terminal until it's stopped. In another termin
 
 Example:
 
-```sql  theme={null}
+```sql theme={null}
 SOURCE_URL='postgresql://aptible:pa$word@localhost.aptible.in:5432/db'
 SOURCE_PASSWORD='pa$word'
 ```
 
 Dump the schema into a file. `schema.sql` in this case.
 
-```sql  theme={null}
+```sql theme={null}
 PGPASSWORD="$SOURCE_PASSWORD" pg_dumpall -d "$SOURCE_URL" --schema-only --no-password \
   | grep -E -i -v 'ALTER ROLE aptible .*PASSWORD' > schema.sql
 ```
@@ -11180,7 +11450,7 @@ You now have a copy of your Database's schema in `schema.sql`! The Database Tunn
 
 Create a [Database Tunnel](/core-concepts/managed-databases/connecting-databases/database-tunnels) to the target Database using the Aptible CLI.
 
-```sql  theme={null}
+```sql theme={null}
 aptible db:tunnel "$TARGET_HANDLE" --environment "$TARGET_ENVIRONMENT"
 ```
 
@@ -11188,13 +11458,13 @@ Again, the tunnel will block the current terminal until it's stopped. In another
 
 Example:
 
-```sql  theme={null}
+```sql theme={null}
 TARGET_URL='postgresql://aptible:p@ssword@localhost.aptible.in:5432/db'
 ```
 
 Apply the schema to the target Database.
 
-```sql  theme={null}
+```sql theme={null}
 psql $TARGET_URL -f schema.sql > /dev/null
 ```
 
@@ -11202,7 +11472,7 @@ The output of `psql` can be noisy depending on the complexity of the source Data
 
 The following errors may come up when restoring the schema:
 
-```sql  theme={null}
+```sql theme={null}
 ERROR:  role "aptible" already exists
 ERROR:  role "postgres" already exists
 ERROR:  database "db" already exists
@@ -11218,7 +11488,7 @@ Once you've updated the source Database's schema you can test the changes by dep
 
 #### Step 1: Deprovision the target Database
 
-```sql  theme={null}
+```sql theme={null}
 aptible db:deprovision "$TARGET_HANDLE" --environment "$TARGET_ENVIRONMENT"
 ```
 
@@ -11228,7 +11498,7 @@ If the `$TARGET_ENVIRONMENT` is configured to [retain final Database Backups](/c
 
 You can obtain a list of final backups by running:
 
-```sql  theme={null}
+```sql theme={null}
 aptible backup:orphaned --environment "$TARGET_ENVIRONMENT"
 ```
 
@@ -11258,7 +11528,7 @@ Collect information on the Database you'd like to test and store it in the follo
 
 Example:
 
-```sql  theme={null}
+```sql theme={null}
 SOURCE_HANDLE='source-db'
 SOURCE_ENVIRONMENT='test-environment'
 ```
@@ -11273,7 +11543,7 @@ Collect information on the target Database and store it in the following environ
 
 Example:
 
-```sql  theme={null}
+```sql theme={null}
 TARGET_HANDLE='upgrade-test'
 TARGET_VERSION='8.0'
 TARGET_ENVIRONMENT='test-environment'
@@ -11283,7 +11553,7 @@ TARGET_ENVIRONMENT='test-environment'
 
 Create a new Database running the desired version. Assuming the environment variables above are set, this command can be copied and pasted as-is to create the Database.
 
-```sql  theme={null}
+```sql theme={null}
 aptible db:create "$TARGET_HANDLE" \
   --type mysql \
   --version "$TARGET_VERSION" \
@@ -11298,19 +11568,19 @@ By default, [`aptible db:create`](/reference/aptible-cli/cli-commands/cli-db-cre
 
 In a terminal, create a [Database Tunnel](/core-concepts/managed-databases/connecting-databases/database-tunnels) to the source Database using the Aptible CLI.
 
-```sql  theme={null}
+```sql theme={null}
 aptible db:tunnel "$SOURCE_HANDLE" --environment "$SOURCE_ENVIRONMENT" --port 5432
 ```
 
 The tunnel will block the current terminal until it's stopped. In another terminal, collect the tunnel's [Database Credentials](/core-concepts/managed-databases/connecting-databases/database-credentials), which are printed by [`aptible db:tunnel`](/reference/aptible-cli/cli-commands/cli-db-tunnel). Then dump the database and database object definitions into a file. `defs.sql` in this case.
 
-```sql  theme={null}
+```sql theme={null}
 MYSQL_PWD="$PASSWORD" mysqldump  --user root --host localhost.aptible.in --port 5432 --all-databases --no-data --routines --events  > defs.sql
 ```
 
 The following error may come up when dumping the table definitions:
 
-```sql  theme={null}
+```sql theme={null}
 Unknown table 'COLUMN_STATISTICS' in information_schema (1109)
 ```
 
@@ -11322,13 +11592,13 @@ You now have a copy of your Database's database object definitions in `defs.sql`
 
 Create a [Database Tunnel](/core-concepts/managed-databases/connecting-databases/database-tunnels) to the target Database using the Aptible CLI.
 
-```sql  theme={null}
+```sql theme={null}
 aptible db:tunnel "$TARGET_HANDLE" --environment "$TARGET_ENVIRONMENT" --port 5432
 ```
 
 Again, the tunnel will block the current terminal until it's stopped. In another terminal, apply the table definitions to the target Database.
 
-```sql  theme={null}
+```sql theme={null}
 MYSQL_PWD="$PASSWORD" mysql --user aptible --host localhost.aptible.in --port 5432 < defs.sql
 ```
 
@@ -11340,7 +11610,7 @@ Once you've updated the source Database's table definitions, you can test the ch
 
 #### Step 1: Deprovision the target Database
 
-```sql  theme={null}
+```sql theme={null}
 aptible db:deprovision "$TARGET_HANDLE" --environment "$TARGET_ENVIRONMENT"
 ```
 
@@ -11350,7 +11620,7 @@ If the `$TARGET_ENVIRONMENT` is configured to [retain final Database Backups](/c
 
 You can obtain a list of final backups by running the following:
 
-```sql  theme={null}
+```sql theme={null}
 aptible backup:orphaned --environment "$TARGET_ENVIRONMENT"
 ```
 
@@ -11382,7 +11652,7 @@ Collect information on the Database you'd like to upgrade and store it in the fo
 
 Example:
 
-```bash  theme={null}
+```bash theme={null}
 DB_HANDLE='my-redis'
 ENVIRONMENT='test-environment'
 VERSION='4.0'
@@ -11398,7 +11668,7 @@ An Aptible team member must update the Database's metadata to the new version in
 
 * Include the configuration values above. You may run the following command to generate a request with the required information:
 
-```bash  theme={null}
+```bash theme={null}
 echo "Please upgrade our MongoDB database, ${ENVIRONMENT} - ${DB_HANDLE}, to version ${VERSION}. Thank you."
 ```
 
@@ -11408,7 +11678,7 @@ echo "Please upgrade our MongoDB database, ${ENVIRONMENT} - ${DB_HANDLE}, to ver
 
 Once support has updated the Database, restarting it will apply the change. You may do so at your convenience with the [`aptible db:reload`](/reference/aptible-cli/cli-commands/cli-db-reload) CLI command:
 
-```bash  theme={null}
+```bash theme={null}
 aptible db:reload "$DB_HANDLE" --environment "$ENVIRONMENT"
 ```
 
@@ -11418,7 +11688,7 @@ When upgrading a replica set, restart secondary members first, then the primary 
 
 In a separate terminal, create a [Database Tunnel](/core-concepts/managed-databases/connecting-databases/database-tunnels) to the Database using the Aptible CLI.
 
-```bash  theme={null}
+```bash theme={null}
 aptible db:tunnel "$DB_HANDLE" --environment "$ENVIRONMENT"
 ```
 
@@ -11426,7 +11696,7 @@ The tunnel will block the current terminal until it's stopped. Collect the tunne
 
 Example:
 
-```bash  theme={null}
+```bash theme={null}
 DB_URL='postgresql://aptible:pa$word@localhost.aptible.in:5432/db'
 ```
 
@@ -11434,7 +11704,7 @@ DB_URL='postgresql://aptible:pa$word@localhost.aptible.in:5432/db'
 
 Run the [`setFeatureCompatibilityVersion`](https://www.mongodb.com/docs/manual/reference/command/setFeatureCompatibilityVersion/) admin command on the Database:
 
-```bash  theme={null}
+```bash theme={null}
 echo "db.adminCommand({ setFeatureCompatibilityVersion: '${VERSION}' })" |
   mongo --ssl --authenticationDatabase admin "$DB_URL"
 ```
@@ -11465,7 +11735,7 @@ Testing the schema should catch a number of issues, but it's also recommended to
 
 Example:
 
-```sql  theme={null}
+```sql theme={null}
 aptible backup:restore 1234
 --handle upgrade-test
 --container- size 4096
@@ -11481,7 +11751,7 @@ Collect information on the Database you'd like to upgrade and store it in the fo
 
 Example:
 
-```sql  theme={null}
+```sql theme={null}
 SOURCE_HANDLE = 'source-db'
 ENVIRONMENT = 'test-environment'
 ```
@@ -11496,7 +11766,7 @@ Collect information on the replica and store it in the following environment var
 
 Example:
 
-```sql  theme={null}
+```sql theme={null}
 REPLICA_HANDLE = 'upgrade-test'
 REPLICA_VERSION = '14'
 REPLICA_CONTAINER_SIZE = 4096
@@ -11508,7 +11778,7 @@ In a separate terminal, create a [Database Tunnel](/core-concepts/managed-databa
 
 Example:
 
-```sql  theme={null}
+```sql theme={null}
 aptible db:tunnel "$SOURCE_HANDLE" --environment "$ENVIRONMENT"
 ```
 
@@ -11516,7 +11786,7 @@ The tunnel will block the current terminal until it's stopped. Collect the tunne
 
 Example:
 
-```sql  theme={null}
+```sql theme={null}
 SOURCE_URL = 'postgresql://aptible:pa$word@localhost.aptible.in:5432/db'
 ```
 
@@ -11524,7 +11794,7 @@ SOURCE_URL = 'postgresql://aptible:pa$word@localhost.aptible.in:5432/db'
 
 Each PostgreSQL database on the server can only have a single `pglogical` node. If there's already an existing node, the replica will fail setup. The following script will check for existing pglogical nodes.
 
-```sql  theme={null}
+```sql theme={null}
 psql "$SOURCE_URL" --tuples-only --no-align --command \
   'SELECT datname FROM pg_database WHERE datistemplate IS FALSE' |
 
@@ -11550,7 +11820,7 @@ Logical replication requires that rows be uniquely identifiable in order to func
 
 The following script will iterate over all PostgreSQL databases on the Database server and list tables that do not have a primary key:
 
-```sql  theme={null}
+```sql theme={null}
 psql "$SOURCE_URL" --tuples-only --no-align --command \
 'SELECT datname FROM pg_database WHERE datistemplate IS FALSE' |
 
@@ -11577,7 +11847,7 @@ If all of the databases return `(0 rows)` then no action is necessary.
 
 Example output:
 
-```sql  theme={null}
+```sql theme={null}
 Database: db
 You are now connected to database "db" as user "aptible".
  table_schema | table_name
@@ -11597,7 +11867,7 @@ If any tables come back without a primary key, one can be added to an existing c
 
 The upgraded replica can be created ahead of the actual upgrade as it will stay up-to-date with the source Database.
 
-```sql  theme={null}
+```sql theme={null}
 aptible db:replicate "$SOURCE_HANDLE" "$REPLICA_HANDLE" \
   --logical \
   --version "$REPLICA_VERSION" \
@@ -11607,7 +11877,7 @@ aptible db:replicate "$SOURCE_HANDLE" "$REPLICA_HANDLE" \
 
 If the command raises errors, review the operation logs output by the command for an explanation as to why the error occurred. In order to attempt logical replication after the issue(s) have been addressed, the source Database will need to be cleaned up. See the [Cleanup](/how-to-guides/database-guides/upgrade-postgresql#cleanup) section and follow the instructions for cleaning up the source Database. The broken replica also needs to be deprovisioned in order to free up its handle to be used by the new replica:
 
-```sql  theme={null}
+```sql theme={null}
 aptible db:deprovision "$REPLICA_HANDLE" --environment "$ENVIRONMENT"
 ```
 
@@ -11617,7 +11887,7 @@ If the operation is successful, then the replica has been successfully set up. A
 
 > `pglogical` provides a convenient `replicate_ddl_command` function that, when run on the source Database, applies a DDL command to the source Database then queues the statement to be applied to the replica. For example, to add a column to a table:
 
-```sql  theme={null}
+```sql theme={null}
 SELECT pglogical.replicate_ddl_command('ALTER TABLE public.foo ADD COLUMN bar TEXT;');
 ```
 
@@ -11629,7 +11899,7 @@ SELECT pglogical.replicate_ddl_command('ALTER TABLE public.foo ADD COLUMN bar TE
 
 In a separate terminal, create a [Database Tunnel](/core-concepts/managed-databases/connecting-databases/database-tunnels) to the replica using the Aptible CLI.
 
-```sql  theme={null}
+```sql theme={null}
 aptible db:tunnel "$REPLICA_HANDLE" --environment "$ENVIRONMENT"
 ```
 
@@ -11637,7 +11907,7 @@ The tunnel will block the current terminal until it's stopped. Collect the tunne
 
 Example:
 
-```sql  theme={null}
+```sql theme={null}
 REPLICA_URL='postgresql://aptible:passw0rd@localhost.aptible.in:5432/db'
 ```
 
@@ -11645,13 +11915,13 @@ REPLICA_URL='postgresql://aptible:passw0rd@localhost.aptible.in:5432/db'
 
 While replicas are usually created very quickly, it can take some time to pull all of the data from the source Database depending on its disk footprint. The replica can be queried to see what tables still need to be initialized.
 
-```sql  theme={null}
+```sql theme={null}
 SELECT * FROM pglogical.local_sync_status WHERE NOT sync_status = 'r';
 ```
 
 If any rows are returned, the replica is still initializing. This query can be used in a short script to test and wait for initialization to complete on all databases on the replica:
 
-```sql  theme={null}
+```sql theme={null}
 psql "$REPLICA_URL" --tuples-only --no-align --command \
   'SELECT datname FROM pg_database WHERE datistemplate IS FALSE' |
 
@@ -11669,7 +11939,7 @@ There is a [known issue](https://github.com/2ndQuadrant/pglogical/issues/337) wi
 
 The following script works similarly to the one above, but it also creates a table, writes to it, then drops the table in order to ensure that initialization continues even if the source Database is idle:
 
-```sql  theme={null}
+```sql theme={null}
 psql "$REPLICA_URL" --tuples-only --no-align --command \
   'SELECT datname FROM pg_database WHERE datistemplate IS FALSE' |
 
@@ -11696,7 +11966,7 @@ Once the query returns zero rows from the replica or one of the scripts complete
 
 Each index on a table adds overhead to inserting rows, so the more indexes a table has, the longer it will take to be copied over. This can cause large Databases or those with many indexes to take much longer to initialize. If the initialization process appears to be going slowly, all of the indexes (except for primary keys) can be disabled:
 
-```sql  theme={null}
+```sql theme={null}
 psql "$REPLICA_URL" --tuples-only --no-align --command \
   'SELECT datname FROM pg_database WHERE datistemplate IS FALSE' |
 
@@ -11722,7 +11992,7 @@ aptible db:reload "$REPLICA_HANDLE" --environment "$ENVIRONMENT"
 
 After the replica has been initialized, the indexes will need to be rebuilt. This can still take some time for large tables but is much faster than the indexes being evaluated each time a row is inserted:
 
-```sql  theme={null}
+```sql theme={null}
 psql "$REPLICA_URL" --tuples-only --no-align --command \
   'SELECT datname FROM pg_database WHERE datistemplate IS FALSE' |
 
@@ -11757,7 +12027,7 @@ If any indexes have issues reindexing `CONCURRENTLY` this keyword can be removed
 
 Enabling synchronous replication ensures that all data that is written to the source Database is also written to the replica:
 
-```sql  theme={null}
+```sql theme={null}
 psql "$SOURCE_URL" << EOF
   ALTER SYSTEM SET synchronous_standby_names=aptible_subscription;
   SELECT pg_reload_conf();
@@ -11784,7 +12054,7 @@ Assuming [Database's Credentials](/core-concepts/managed-databases/connecting-da
 
 Example config command:
 
-```sql  theme={null}
+```sql theme={null}
 aptible config:set --app my-app DB_URL='postgresql://user:passw0rd@db-stack-1234.aptible.in:5432/db'
 ```
 
@@ -11792,7 +12062,7 @@ aptible config:set --app my-app DB_URL='postgresql://user:passw0rd@db-stack-1234
 
 Ensure that the sequences on the replica are up-to-date with the source Database:
 
-```sql  theme={null}
+```sql theme={null}
 psql "$SOURCE_URL" --tuples-only --no-align --command \
   'SELECT datname FROM pg_database WHERE datistemplate IS FALSE' |
 
@@ -11810,7 +12080,7 @@ Now that all the Apps have been updated to use the new replica, there is no need
 
 Drop the `pglogical` subscriptions, nodes, and extensions from the replica:
 
-```sql  theme={null}
+```sql theme={null}
 psql "$REPLICA_URL" --tuples-only --no-align --command \
   'SELECT datname FROM pg_database WHERE datistemplate IS FALSE' |
 
@@ -11826,7 +12096,7 @@ done
 
 Clear `synchronous_standby_names` on the source Database:
 
-```sql  theme={null}
+```sql theme={null}
 psql "$SOURCE_URL" << EOF
   ALTER SYSTEM RESET synchronous_standby_names;
   SELECT pg_reload_conf();
@@ -11839,7 +12109,7 @@ Scale any Services that were scaled down to zero Containers back to their origin
 
 Example scale command:
 
-```sql  theme={null}
+```sql theme={null}
 aptible apps:scale --app my-app cmd --container-count 2
 ```
 
@@ -11851,7 +12121,7 @@ Once all of the Services have come back up, the upgrade is complete!
 
 Vacuuming the target Database after upgrading reclaims space occupied by dead tuples and analyzing the tables collects information on the table's contents in order to improve query performance.
 
-```sql  theme={null}
+```sql theme={null}
 psql "$REPLICA_URL" --tuples-only --no-align --command \
   'SELECT datname FROM pg_database WHERE datistemplate IS FALSE' |
 
@@ -11870,7 +12140,7 @@ done
 
 Drop the `pglogical` replication slots (if they exist), nodes, and extensions:
 
-```sql  theme={null}
+```sql theme={null}
 psql "$SOURCE_URL" --tuples-only --no-align --command \
   'SELECT datname FROM pg_database WHERE datistemplate IS FALSE' |
 
@@ -11896,7 +12166,7 @@ done
 
 Note that you'll need to substitute `REPLICA_ID` into the script for it to properly run! If you don't remember what it is, you can always also run:
 
-```sql  theme={null}
+```sql theme={null}
 SELECT pglogical.pglogical_node_info();
 ```
 
@@ -11908,7 +12178,7 @@ If the script above raises errors about replication slots being active, then rep
 
 [`aptible db:replicate --logical`](/reference/aptible-cli/cli-commands/cli-db-replicate) may have increased the `max_worker_processes` on the replica to ensure that it has enough to support replication. Now that replication has been terminated, the setting can be set back to the default by running the following command:
 
-```sql  theme={null}
+```sql theme={null}
 psql "$REPLICA_URL" --command "ALTER SYSTEM RESET max_worker_processes;"
 ```
 
@@ -11922,7 +12192,7 @@ Aptible maintains a link between replicas and their source Database to ensure th
 
 Once the original Database is no longer necessary, it should be deprovisioned, or it will continue to incur costs. Note that this will delete all automated Backups. If you'd like to retain the Backups, contact [Aptible Support](/how-to-guides/troubleshooting/aptible-support) to update them.
 
-```sql  theme={null}
+```sql theme={null}
 aptible db:deprovision "$SOURCE_HANDLE" --environment "$SOURCE_ENVIRONMENT"
 ```
 
@@ -11951,7 +12221,7 @@ This guide covers how to upgrade a Redis [Database](/core-concepts/managed-datab
       * `ENVIRONMENT` - The handle of the environment the Database belongs to.
       * `VERSION` - The desired Redis version. Run `aptible db:versions` to see a full list of options.
 
-      ```bash  theme={null}
+      ```bash theme={null}
         DB_HANDLE='my-redis'
         ENVIRONMENT='test-environment'
         VERSION='5.0-aof'
@@ -11965,7 +12235,7 @@ This guide covers how to upgrade a Redis [Database](/core-concepts/managed-datab
       * Use the same email address that's associated with your Aptible user account to contact support.
       * Include the configuration values above. You may run the following command to generate a request with the required information:
 
-      ```bash  theme={null}
+      ```bash theme={null}
         echo "Please upgrade our Redis database, ${ENVIRONMENT} - ${DB_HANDLE}, to version ${VERSION}. Thank you."
       ```
     </Step>
@@ -11973,7 +12243,7 @@ This guide covers how to upgrade a Redis [Database](/core-concepts/managed-datab
     <Step title="Restart the Database">
       Once support has updated the Database version, you'll need to restart the database to apply the upgrade. You may do so at your convenience with the [`aptible db:reload`](/reference/aptible-cli/cli-commands/cli-db-reload) CLI command:
 
-      ```bash  theme={null}
+      ```bash theme={null}
         aptible db:reload --environment $ENVIRONMENT $DB_HANDLE
       ```
     </Step>
@@ -11997,7 +12267,7 @@ This guide covers how to upgrade a Redis [Database](/core-concepts/managed-datab
 
         Example:
 
-        ```bash  theme={null}
+        ```bash theme={null}
           SOURCE_HANDLE = 'old-db'
           ENVIRONMENT = 'test-environment'
         ```
@@ -12011,7 +12281,7 @@ This guide covers how to upgrade a Redis [Database](/core-concepts/managed-datab
 
         Example:
 
-        ```bash  theme={null}
+        ```bash theme={null}
           NEW_HANDLE = 'upgrade-test'
           NEW_VERSION = '7.0'
           NEW_CONTAINER_SIZE = 2048
@@ -12024,7 +12294,7 @@ This guide covers how to upgrade a Redis [Database](/core-concepts/managed-datab
 
         Example:
 
-        ```bash  theme={null}
+        ```bash theme={null}
           aptible db:create "$NEW_HANDLE" \
           --type "redis" \
           --version "$NEW_VERSION" \
@@ -12039,7 +12309,7 @@ This guide covers how to upgrade a Redis [Database](/core-concepts/managed-datab
 
         Example:
 
-        ```bash  theme={null}
+        ```bash theme={null}
           aptible db:tunnel "$NEW_HANDLE" --environment "$ENVIRONMENT"
         ```
 
@@ -12047,7 +12317,7 @@ This guide covers how to upgrade a Redis [Database](/core-concepts/managed-datab
 
         Example:
 
-        ```bash  theme={null}
+        ```bash theme={null}
           NEW_URL ='redis://aptible:pa$word@localhost.aptible.in:6379'
         ```
       </Step>
@@ -12063,7 +12333,7 @@ This guide covers how to upgrade a Redis [Database](/core-concepts/managed-datab
       <Step title="Connect to the New Database">
         Using the Redis CLI in the original terminal, connect to the new database:
 
-        ```bash  theme={null}
+        ```bash theme={null}
           redis-cli -u $NEW_URL
         ```
       </Step>
@@ -12071,7 +12341,7 @@ This guide covers how to upgrade a Redis [Database](/core-concepts/managed-datab
       <Step title="Initialize Replication">
         Using the variables from Step 4, run the following commands on the new database to initialize replication.
 
-        ```bash  theme={null}
+        ```bash theme={null}
           REPLICAOF $OLD_HOST $OLD_PORT
           CONFIG SET masterauth $OLD_PASSWORD
         ```
@@ -12101,7 +12371,7 @@ This guide covers how to upgrade a Redis [Database](/core-concepts/managed-datab
 
         Example:
 
-        ```bash  theme={null}
+        ```bash theme={null}
           SOURCE_HANDLE = 'old-db'
           ENVIRONMENT = 'test-environment'
         ```
@@ -12115,7 +12385,7 @@ This guide covers how to upgrade a Redis [Database](/core-concepts/managed-datab
 
         Example:
 
-        ```bash  theme={null}
+        ```bash theme={null}
           NEW_HANDLE = 'upgrade-test'
           NEW_VERSION = '7.0'
           NEW_CONTAINER_SIZE = 2048
@@ -12128,7 +12398,7 @@ This guide covers how to upgrade a Redis [Database](/core-concepts/managed-datab
 
         Example:
 
-        ```bash  theme={null}
+        ```bash theme={null}
           aptible db:create "$NEW_HANDLE" \
           --type "redis" \
           --version "$NEW_VERSION" \
@@ -12143,7 +12413,7 @@ This guide covers how to upgrade a Redis [Database](/core-concepts/managed-datab
 
         Example:
 
-        ```bash  theme={null}
+        ```bash theme={null}
           aptible db:tunnel "$NEW_HANDLE" --environment "$ENVIRONMENT"
         ```
 
@@ -12151,7 +12421,7 @@ This guide covers how to upgrade a Redis [Database](/core-concepts/managed-datab
 
         Example:
 
-        ```bash  theme={null}
+        ```bash theme={null}
           OLD_URL = 'redis://aptible:pa$word@localhost.aptible.in:6379'
         ```
       </Step>
@@ -12161,7 +12431,7 @@ This guide covers how to upgrade a Redis [Database](/core-concepts/managed-datab
 
         Example:
 
-        ```bash  theme={null}
+        ```bash theme={null}
           redis-cli -u $OLD_URL --rdb dump.rdb
         ```
       </Step>
@@ -12193,7 +12463,7 @@ Explore guides for using the Aptible platform
 
 # Getting Started
 
-<CardGroup cols={3}>
+<CardGroup>
   <Card title="Custom Code" icon="globe" href="https://www.aptible.com/docs/custom-code-quickstart">
     Explore compatibility and deploy custom code
   </Card>
@@ -12252,60 +12522,60 @@ Explore guides for using the Aptible platform
 
 # App
 
-<CardGroup cols={4}>
-  <Card title="How deploy via Docker Image" icon="book-open-reader" iconType="duotone" href="https://www.aptible.com/docs/direct-docker-image-deploy-example" />
+<CardGroup>
+  <Card title="How deploy via Docker Image" icon="book-open-reader" href="https://www.aptible.com/docs/direct-docker-image-deploy-example" />
 
-  <Card title="How to deploy to Aptible with CI/CD" icon="book-open-reader" iconType="duotone" href="https://www.aptible.com/docs/continuous-integration-provider-deployment" />
+  <Card title="How to deploy to Aptible with CI/CD" icon="book-open-reader" href="https://www.aptible.com/docs/continuous-integration-provider-deployment" />
 
-  <Card title="How to explose a web app to the internet" icon="book-open-reader" iconType="duotone" href="https://www.aptible.com/docs/expose-web-app" />
+  <Card title="How to explose a web app to the internet" icon="book-open-reader" href="https://www.aptible.com/docs/expose-web-app" />
 
   <Card title="See more" icon="angles-right" href="https://www.aptible.com/docs/deployment-guides" />
 </CardGroup>
 
 # Database
 
-<CardGroup cols={4}>
-  <Card title="How to automate database migrations" icon="book-open-reader" iconType="duotone" href="https://www.aptible.com/docs/automating-database-migrations" />
+<CardGroup>
+  <Card title="How to automate database migrations" icon="book-open-reader" href="https://www.aptible.com/docs/automating-database-migrations" />
 
-  <Card title="How to upgrade PostgreSQL with Logical Replication" icon="book-open-reader" iconType="duotone" href="https://www.aptible.com/docs/logical-replication" />
+  <Card title="How to upgrade PostgreSQL with Logical Replication" icon="book-open-reader" href="https://www.aptible.com/docs/logical-replication" />
 
-  <Card title="How to dump and restore MySQL" icon="book-open-reader" iconType="duotone" href="https://www.aptible.com/docs/mysql-dump-and-restore" />
+  <Card title="How to dump and restore MySQL" icon="book-open-reader" href="https://www.aptible.com/docs/mysql-dump-and-restore" />
 
   <Card title="See more" icon="angles-right" href="https://www.aptible.com/docs/database-guides" />
 </CardGroup>
 
 # Observability
 
-<CardGroup cols={4}>
-  <Card title="How to deploy and use Grafana" icon="book-open-reader" iconType="duotone" href="https://www.aptible.com/docs/deploying-grafana-on-deploy" />
+<CardGroup>
+  <Card title="How to deploy and use Grafana" icon="book-open-reader" href="https://www.aptible.com/docs/deploying-grafana-on-deploy" />
 
-  <Card title="How to set up Elasticsearch Log Rotation" icon="book-open-reader" iconType="duotone" href="https://www.aptible.com/docs/elasticsearch-log-rotation" />
+  <Card title="How to set up Elasticsearch Log Rotation" icon="book-open-reader" href="https://www.aptible.com/docs/elasticsearch-log-rotation" />
 
-  <Card title="How to set up Datadog APM" icon="book-open-reader" iconType="duotone" href="https://www.aptible.com/docs/datadog-apm" />
+  <Card title="How to set up Datadog APM" icon="book-open-reader" href="https://www.aptible.com/docs/datadog-apm" />
 
   <Card title="See more" icon="angles-right" href="https://www.aptible.com/docs/observability-guides" />
 </CardGroup>
 
 # Account and Platform
 
-<CardGroup cols={4}>
-  <Card title="Best Practices Guide" icon="book-open-reader" iconType="duotone" href="https://www.aptible.com/docs/best-practices-guide" />
+<CardGroup>
+  <Card title="Best Practices Guide" icon="book-open-reader" href="https://www.aptible.com/docs/best-practices-guide" />
 
-  <Card title="How to achieve HIPAA compliance" icon="book-open-reader" iconType="duotone" href="https://www.aptible.com/docs/achieve-hipaa" />
+  <Card title="How to achieve HIPAA compliance" icon="book-open-reader" href="https://www.aptible.com/docs/achieve-hipaa" />
 
-  <Card title="How to minimize downtime caused by AWS outages" icon="book-open-reader" iconType="duotone" href="https://www.aptible.com/docs/business-continuity" />
+  <Card title="How to minimize downtime caused by AWS outages" icon="book-open-reader" href="https://www.aptible.com/docs/business-continuity" />
 
   <Card title="See more" icon="angles-right" href="https://www.aptible.com/docs/platform-guides" />
 </CardGroup>
 
 # Troubleshooting Common Errors
 
-<CardGroup cols={4}>
-  <Card title="git Push Permission Denied" icon="book-open-reader" iconType="duotone" href="https://www.aptible.com/docs/permission-denied-git-push" />
+<CardGroup>
+  <Card title="git Push Permission Denied" icon="book-open-reader" href="https://www.aptible.com/docs/permission-denied-git-push" />
 
-  <Card title="HTTP Health Checks Failed" icon="book-open-reader" iconType="duotone" href="https://www.aptible.com/docs/http-health-checks-failed" />
+  <Card title="HTTP Health Checks Failed" icon="book-open-reader" href="https://www.aptible.com/docs/http-health-checks-failed" />
 
-  <Card title="Application is Currently Unavailable" icon="book-open-reader" iconType="duotone" href="https://www.aptible.com/docs/application-crashed" />
+  <Card title="Application is Currently Unavailable" icon="book-open-reader" href="https://www.aptible.com/docs/application-crashed" />
 
   <Card title="See more" icon="angles-right" href="https://www.aptible.com/docs/common-erorrs" />
 </CardGroup>
@@ -12322,7 +12592,7 @@ For all operations performed, Aptible collects operation logs. These logs are re
 
   * Navigating to the respective resource
 
-  * Selecting the **Activity** tab<img src="https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/operation-logs1.png?fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=748098a440a51de685946976802b205d" alt="" data-og-width="2800" width="2800" data-og-height="2000" height="2000" data-path="images/operation-logs1.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/operation-logs1.png?w=280&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=9d04c7002f3837083495df2fe07246db 280w, https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/operation-logs1.png?w=560&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=7518108263f213fb35e92d84fd1d08dc 560w, https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/operation-logs1.png?w=840&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=4a5f256fafb322117eb7dc63bd3b824e 840w, https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/operation-logs1.png?w=1100&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=96d030f0386fba0f54ca7f2533309702 1100w, https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/operation-logs1.png?w=1650&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=c9fb3840bd00ad4d422fec39ee18c430 1650w, https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/operation-logs1.png?w=2500&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=26fe2c3d31819af0dfaa38f90f18df54 2500w" />
+  * Selecting the **Activity** tab<img alt="" />
 
   * Selecting **Logs**
 * Within the **Activity** dashboard by:
@@ -12374,19 +12644,19 @@ Grafana needs a Database to store sessions and Dashboard definitions. It works g
 
 Once you have created the PostgreSQL Database, create a tunnel using the [`aptible db:tunnel`](/reference/aptible-cli/cli-commands/cli-db-tunnel) command, then connect using `psql` and run the following commands to create a `sessions` database for use by Grafana:
 
-```sql  theme={null}
+```sql theme={null}
 CREATE DATABASE sessions;
 ```
 
 Then, connect to the newly-created `sessions` database:
 
-```sql  theme={null}
+```sql theme={null}
 \c sessions;
 ```
 
 And finally, create a table for Grafana to store sessions in:
 
-```sql  theme={null}
+```sql theme={null}
 CREATE TABLE session (
         key       CHAR(16) NOT NULL,
         data      BYTEA,
@@ -12415,7 +12685,7 @@ Here is the minimal deployment configuration to get you started. In the example 
 
 * `$DB_PORT`: The port for your PostgreSQL database.
 
-```sql  theme={null}
+```sql theme={null}
 aptible apps:create grafana
 
 aptible deploy --app grafana --docker-image grafana/grafana \
@@ -12499,7 +12769,7 @@ Here are a few suggested queries to get started with an InfluxDB metric drain. T
 
 **RSS Memory Utilization across all resources**
 
-```sql  theme={null}
+```sql theme={null}
 SELECT MAX("memory_rss_mb") AS rss_mb
 FROM "metrics"
 WHERE $timeFilter
@@ -12513,7 +12783,7 @@ GROUP BY
 
 In the example below, replace `ENVIRONMENT` with the handle for your [environment](/core-concepts/architecture/environments) and `HANDLE` with the handle for your [app](/core-concepts/apps/overview)
 
-```sql  theme={null}
+```sql theme={null}
 SELECT MEAN("milli_cpu_usage") / 1000 AS cpu
 FROM "metrics"
 WHERE
@@ -12528,7 +12798,7 @@ GROUP BY
 
 #### Disk Utilization across all Databases
 
-```sql  theme={null}
+```sql theme={null}
 SELECT LAST(disk_usage_mb) / LAST(disk_limit_mb) AS utilization
 FROM "metrics"
 WHERE
@@ -12552,7 +12822,7 @@ Once you've added your first data source, you might also want to consider follow
 
 To upgrade Grafana, deploy the desired version to your existing app containers:
 
-```sql  theme={null}
+```sql theme={null}
 aptible deploy --app grafana --docker-image grafana/grafana:VERSION
 ```
 
@@ -12583,7 +12853,7 @@ We recommend using a combination of Elasticsearch's native features to ensure yo
 
 **Step 3:** Register the snapshot repository using the [Elasticsearch API](https://www.elastic.co/guide/en/elasticsearch/reference/7.x/put-snapshot-repo-api.html) directly because the Kibana UI does not provide you a way to specify your IAM keypair. In this example, we'll call the repository "s3\_repository" and configure it to use the "aptible\_logs" bucket created above:
 
-```bash  theme={null}
+```bash theme={null}
 curl -X PUT "https://username:password@localhost:9200/_snapshot/s3_repository?pretty" -H 'Content-Type: application/json' -d'
 {
   "type": "s3",
@@ -12646,15 +12916,15 @@ aptible db:create "$DB_HANDLE" --type elasticsearch
 
 **Step 1:** In the Aptible dashboard, create a new [log drain](/core-concepts/observability/logs/log-drains/overview):
 
-<img src="https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/elk1.png?fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=5af6301121eb961b304a3589b65a2207" alt="" data-og-width="1280" width="1280" data-og-height="883" height="883" data-path="images/elk1.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/elk1.png?w=280&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=8ea1ab0e5d35ef28577a679aae927ab2 280w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/elk1.png?w=560&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=e7df183c28a5d894735d1e23352e3b0b 560w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/elk1.png?w=840&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=0582196e515125cde85877a9425fb6c2 840w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/elk1.png?w=1100&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=eb0c0551e791bf86dea2055d90a86498 1100w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/elk1.png?w=1650&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=e52b919c79c73db80d0980b1bba0d8a2 1650w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/elk1.png?w=2500&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=d12dd4e7dee70602c6e2e0fc5da93354 2500w" />
+<img alt="" />
 
 **Step 2:** Select Elasticsearch as the destination
 
-<img src="https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/elk2.png?fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=d0eba7c968929ecedf50582b6275fa8d" alt="" data-og-width="1280" width="1280" data-og-height="883" height="883" data-path="images/elk2.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/elk2.png?w=280&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=75ed0f2197bde35a04d87a8db76ed801 280w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/elk2.png?w=560&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=2ff51e7d111f97622ae0a1723a8c40e3 560w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/elk2.png?w=840&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=9080b95badbe0d35cc4e62028605d2c6 840w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/elk2.png?w=1100&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=b879232109855f596f80b0c761d95aae 1100w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/elk2.png?w=1650&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=f90e62e93dce82eb69c4a605b8d2c39e 1650w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/elk2.png?w=2500&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=bc948732faac0c5abd77a45754d5aa1a 2500w" />
+<img alt="" />
 
 **Step 3:** Save the Log Drain:
 
-<img src="https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/elk4.png?fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=9bacc9bacede847b9c7fb9437575ce84" alt="" data-og-width="1280" width="1280" data-og-height="883" height="883" data-path="images/elk4.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/elk4.png?w=280&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=118c9176c404a75fb221bc8db4062dff 280w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/elk4.png?w=560&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=addd38e4f4a4f2a40b78b8b06f2d4400 560w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/elk4.png?w=840&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=cc6f59f3441955ebcea8853c90e33044 840w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/elk4.png?w=1100&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=a830f1ef59735af15d259302c667a811 1100w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/elk4.png?w=1650&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=d11774e73244c6c09755bc6a676f004f 1650w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/elk4.png?w=2500&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=a4e88f43ca446ae93a0e9d601d98d2a4 2500w" />
+<img alt="" />
 
 ## Set up Kibana
 
@@ -12682,7 +12952,7 @@ Activity Reports can be downloaded in CSV format within the Aptible Dashboard by
 
 * Selecting the **Activity Reports** tab
 
-<img src="https://mintcdn.com/aptible/MtH_goy23rOUOZd7/images/App_UI_Activity_Reports.png?fit=max&auto=format&n=MtH_goy23rOUOZd7&q=85&s=340af39557cf152c9ba2985e7ef71328" alt="" data-og-width="2800" width="2800" data-og-height="2000" height="2000" data-path="images/App_UI_Activity_Reports.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/aptible/MtH_goy23rOUOZd7/images/App_UI_Activity_Reports.png?w=280&fit=max&auto=format&n=MtH_goy23rOUOZd7&q=85&s=1b62c99730e3214bfbc958b93f3296de 280w, https://mintcdn.com/aptible/MtH_goy23rOUOZd7/images/App_UI_Activity_Reports.png?w=560&fit=max&auto=format&n=MtH_goy23rOUOZd7&q=85&s=a3cfaf078e221412e1b1a2f3fdcbd3e6 560w, https://mintcdn.com/aptible/MtH_goy23rOUOZd7/images/App_UI_Activity_Reports.png?w=840&fit=max&auto=format&n=MtH_goy23rOUOZd7&q=85&s=2e603c313de868ccc9a6f652d6fa118e 840w, https://mintcdn.com/aptible/MtH_goy23rOUOZd7/images/App_UI_Activity_Reports.png?w=1100&fit=max&auto=format&n=MtH_goy23rOUOZd7&q=85&s=1503d88811f970cbfbb76b20f3d6c4d6 1100w, https://mintcdn.com/aptible/MtH_goy23rOUOZd7/images/App_UI_Activity_Reports.png?w=1650&fit=max&auto=format&n=MtH_goy23rOUOZd7&q=85&s=00b99629750c148e5343b0af9e125ab1 1650w, https://mintcdn.com/aptible/MtH_goy23rOUOZd7/images/App_UI_Activity_Reports.png?w=2500&fit=max&auto=format&n=MtH_goy23rOUOZd7&q=85&s=17d99ad7038fdb9442bf441592efc813 2500w" />
+<img alt="" />
 
 
 # How to set up a self-hosted HTTPS Log Drain
@@ -12732,25 +13002,25 @@ Learn how to set up a PaperTrail Log Drain on Aptible
 
 **Step 2:** In Papertrail, find the "Log Destinations" tab. Select "Create a Log Destination," then "Create":
 
-<img src="https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/papertrail1.png?fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=b51a35219ff8b763b8be82238b9f6758" alt="" data-og-width="603" width="603" data-og-height="306" height="306" data-path="images/papertrail1.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/papertrail1.png?w=280&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=5091832e4d31ec7128878cea2b06cb57 280w, https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/papertrail1.png?w=560&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=46f8d6bade9d8cf0b3b1b9032503018f 560w, https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/papertrail1.png?w=840&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=871e6ee97e7c513d7ea3b78282436bb2 840w, https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/papertrail1.png?w=1100&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=7dd7940c2aae96cfe102a6f59864fe97 1100w, https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/papertrail1.png?w=1650&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=38d32035d9aca65ddb43c2b930aea617 1650w, https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/papertrail1.png?w=2500&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=c4a32780c76c79efa7557159d199082a 2500w" />
+<img alt="" />
 
-<img src="https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/papertrail2.png?fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=ab76351e672a1b9eaf76ccec6965dd8c" alt="" data-og-width="827" width="827" data-og-height="425" height="425" data-path="images/papertrail2.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/papertrail2.png?w=280&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=b6612ffa2cd521e3db0454b27c682387 280w, https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/papertrail2.png?w=560&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=bd4b527281413ec80283c4d50ed21fae 560w, https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/papertrail2.png?w=840&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=9657a1fd32db698182ced9ed8bf42561 840w, https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/papertrail2.png?w=1100&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=1f8f324f181cfc86e8461a706daeb983 1100w, https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/papertrail2.png?w=1650&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=75140a624123a40ce1b6f3634586e4b3 1650w, https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/papertrail2.png?w=2500&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=575097af203433f7714c7390f1a4737e 2500w" />
+<img alt="" />
 
-<img src="https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/papertrail3.png?fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=6d6896a82618bee541a49981e032d53a" alt="" data-og-width="803" width="803" data-og-height="230" height="230" data-path="images/papertrail3.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/papertrail3.png?w=280&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=a873c613629314423c9502fdc066cd00 280w, https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/papertrail3.png?w=560&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=85e20d73889156d51f33ea3a4c6188b5 560w, https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/papertrail3.png?w=840&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=ab4706600e5eef516e11c68b99e09321 840w, https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/papertrail3.png?w=1100&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=2a501bb67b6302e6da136bd4f8b09994 1100w, https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/papertrail3.png?w=1650&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=27fd6f8a9965051649eb8bec0e7ce802 1650w, https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/papertrail3.png?w=2500&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=a38d1176bf15654a4b1d56d173e2d107 2500w" />
+<img alt="" />
 
 **Step 3:** Once created, note the host and port Papertrail displays for your new log destination.
 
-<img src="https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/papertrail4.png?fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=90c709267a5f36a41d9b8a75bf69528b" alt="" data-og-width="827" width="827" data-og-height="425" height="425" data-path="images/papertrail4.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/papertrail4.png?w=280&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=0223402ea25f85339e4e3c5f61d110fd 280w, https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/papertrail4.png?w=560&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=c9820372badee4d2dd29b40286730d70 560w, https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/papertrail4.png?w=840&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=a2d0479b7a74d6909c5b58c7aba3eff5 840w, https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/papertrail4.png?w=1100&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=ec9b5a4551dc2f204a6051392179b347 1100w, https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/papertrail4.png?w=1650&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=8ce21fd5338d84b793964ccd013afe73 1650w, https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/papertrail4.png?w=2500&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=f9d416445e4261dac4eaa8461460493f 2500w" />
+<img alt="" />
 
 ## Set up a Log Drain
 
 **Step 1:** In the Aptible dashboard, create a new [log drain](/core-concepts/observability/logs/log-drains/overview) by navigating to the "Log Drains" tab in the environment of your choice:
 
-<img src="https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/papertrail5.png?fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=acdad75ed3e4818ba96415e96edaa9ff" alt="" data-og-width="1280" width="1280" data-og-height="883" height="883" data-path="images/papertrail5.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/papertrail5.png?w=280&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=8c2797a408fc22bac1cb51b1e3c66481 280w, https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/papertrail5.png?w=560&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=84733d90dcb634e0eed0f9d638bc8a2c 560w, https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/papertrail5.png?w=840&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=80764a482506d7379235b1c349185b95 840w, https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/papertrail5.png?w=1100&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=78d1cec510fcad4f24a1eccebebc2f18 1100w, https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/papertrail5.png?w=1650&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=910bf12b8851c41cbd6ed53132c7bb42 1650w, https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/papertrail5.png?w=2500&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=02ec4d10d00796bb3dfa3f5eef006d38 2500w" />
+<img alt="" />
 
 **Step 2:** Select Papertrail as the destination.
 
-<img src="https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/papertrail6.png?fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=dcaea83cc5ecbb0ed1a00ce092f1f622" alt="" data-og-width="1280" width="1280" data-og-height="883" height="883" data-path="images/papertrail6.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/papertrail6.png?w=280&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=802869038e44fca57e40ad9771b0aba8 280w, https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/papertrail6.png?w=560&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=a59b3642d066e4bfb83fe7aa267c6eb2 560w, https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/papertrail6.png?w=840&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=c93bcf3b9a84fad82268351aae29daf8 840w, https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/papertrail6.png?w=1100&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=e64b4a842f9457053a4f42f2ac95e38c 1100w, https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/papertrail6.png?w=1650&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=7bdf76409ee71f4d6d6c67c9b2cb9624 1650w, https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/papertrail6.png?w=2500&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=e42141d226a58a5508868d1fbaf9f428 2500w" />
+<img alt="" />
 
 **Step 3:** Input the host and port you received earlier and save your changes.
 
@@ -12784,11 +13054,11 @@ Datadog APM (Application Performance Monitoring) can be configured with Aptible 
   <Accordion title="Setting Up the Datadog Agent">
     To use the Datadog APM on Aptible, you'll need to deploy the Datadog Agent as an App on Aptible, set a few configuration variables, and expose it through a HTTPS endpoint.
 
-    ```shell  theme={null}
+    ```shell theme={null}
     aptible apps:create datadog-agent
     aptible config:set --app datadog-agent DD_API_KEY=foo DD_HOSTNAME=aptible
     aptible deploy --app datadog-agent --docker-image=datadog/agent:7
-    aptible endpoints:https:create --app datadog-agent --default-domain cmd
+    aptible endpoints:https:create --app datadog-agent --default-domain cmd --internal
     ```
 
     The example above deploys the Datadog Agent v7 from Dockerhub, an endpoint with a default domain, and also sets two required configuration variables.
@@ -12814,7 +13084,7 @@ Datadog APM (Application Performance Monitoring) can be configured with Aptible 
 
     To connect to the Datadog Agent, set the `DD_TRACE_AGENT_URL` configuration variable for each App.
 
-    ```shell  theme={null}
+    ```shell theme={null}
     aptible config:set --app yourapp DD_TRACE_AGENT_URL=https://app-42.on-aptible.com:443
     ```
 
@@ -12835,8 +13105,8 @@ Datadog APM (Application Performance Monitoring) can be configured with Aptible 
 
     For example, a Dockerfile pointing to a PostgreSQL database could look like this:
 
-    ```Dockerfile  theme={null}
-    FROM datadog/datadog-agent:7
+    ```Dockerfile theme={null}
+    FROM datadog/agent:7
     COPY postgres.yaml /conf.d/postgres.d/conf.yaml
     ```
 
@@ -12872,7 +13142,7 @@ Deploying Kibana on Aptible is not materially different from deploying any other
 
 Since Elastic provides prebuilt Docker images for Kibana, you can deploy their image directly using the [`aptible deploy`](/reference/aptible-cli/cli-commands/cli-deploy) command:
 
-```sql  theme={null}
+```sql theme={null}
 aptible deploy --app $HANDLE --docker-image kibana:7.8.1 \
   RELEASE_HEALTHCHECK_TIMEOUT=300 \
   FORCE_SSL=true \
@@ -13135,8 +13405,11 @@ To cancel your Deploy account and avoid any future charges, please follow these 
      </Warning>
 7. Deprovision the [environment](/core-concepts/architecture/environments) from the dashboard.
    * You can deprovision environments once all the resources in that [environment](/core-concepts/architecture/environments) have been deprovisioned. If you have not deleted all resources, you will see a message advising you to delete any remaining resources before you can successfully deprovision the [environment](/core-concepts/architecture/environments).
-8. Submit a [support](/how-to-guides/troubleshooting/aptible-support) request to deprovision your [Dedicated Stack](/core-concepts/architecture/stacks#dedicated-stacks) and, if applicable, remove Premium or Enterprise Support.
-   * If this step is incomplete, you will incur charges until Aptible deprovisions the dedicated stack and removes paid support from your account. Aptible Support can only complete this step after your team submits a request.
+8. Submit an account deletion request through the Dashboard to deprovision your [Dedicated Stack](/core-concepts/architecture/stacks#dedicated-stacks) and, if applicable, remove Premium or Enterprise Support.
+   * Navigate to your organization's settings to access the account deletion form.
+   * Confirm your organization name and provide a cancellation reason (both required).
+   * The request automatically creates a support ticket with your account details and cancellation reason.
+   * If this step is incomplete, you will incur charges until Aptible deprovisions the dedicated stack and removes paid support from your account. Aptible Support can only complete this step after you submit the account deletion form.
 
 <Warning>
   Final Invoice: Please note you will likely receive one more invoice after deprovisioning for usage from the last invoice to the time of deprovisioning.
@@ -13162,9 +13435,9 @@ Dedicated can only be provisioned by [Aptible Support.](/how-to-guides/troubles
 
 * Navigating to the **Stacks** page
 
-* Selecting **New Dedicated Stack**<img src="https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/deprovision-stack1.png?fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=da8c4f858e8350692d6046c6f0e56349" alt="" data-og-width="2500" width="2500" data-og-height="1250" height="1250" data-path="images/deprovision-stack1.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/deprovision-stack1.png?w=280&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=fd3085c281b98b9f8e78189074b5208f 280w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/deprovision-stack1.png?w=560&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=967a1f74a9e798874a514e94c75fe0a1 560w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/deprovision-stack1.png?w=840&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=6d0d3c11af4ed58f8c029bd40d0708c5 840w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/deprovision-stack1.png?w=1100&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=749f9380b027dd4c16b405fe5f3450f6 1100w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/deprovision-stack1.png?w=1650&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=f45a64628efbe48932e0cd83488d188c 1650w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/deprovision-stack1.png?w=2500&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=ea280fd0f6e3b0efd6c670354298c573 2500w" />
+* Selecting **New Dedicated Stack**<img alt="" />
 
-* Filling out the Request Dedicated Stack form<img src="https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/deprovision-stack2.png?fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=bc35e932671b94d08770c3fb29436234" alt="" data-og-width="2500" width="2500" data-og-height="1250" height="1250" data-path="images/deprovision-stack2.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/deprovision-stack2.png?w=280&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=b87f36917bbee1f92a2c4943fff56487 280w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/deprovision-stack2.png?w=560&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=6e25c624cc6345a74cae8b007a97b905 560w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/deprovision-stack2.png?w=840&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=df5720ba28a0fa341dd29d634b00378e 840w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/deprovision-stack2.png?w=1100&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=64e0e5ffda48caa072572628a9fac47f 1100w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/deprovision-stack2.png?w=1650&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=f981b5b053c93702ea510e9368afe147 1650w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/deprovision-stack2.png?w=2500&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=ebf498d7de09465d780ff304865da69f 2500w" />
+* Filling out the Request Dedicated Stack form<img alt="" />
 
 ## Deprovisoning Stacks
 
@@ -13184,9 +13457,9 @@ Learn how to create an [environment](/core-concepts/architecture/environments)
 
 Within the Aptible Dashboard, you can create an environment one of two ways:
 
-* Using the **Deploy** tool <img src="https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/create-environment1.png?fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=bdb10239d76c47ca72b83cd94dc3f10e" alt="" data-og-width="2560" width="2560" data-og-height="1280" height="1280" data-path="images/create-environment1.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/create-environment1.png?w=280&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=a86c19492b6ad172fecfb8910b7c986f 280w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/create-environment1.png?w=560&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=ec3b87a9990460e524fb8e4a7cfb3d7e 560w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/create-environment1.png?w=840&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=3e11a9f6846864d4e5ba89847a44c8ae 840w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/create-environment1.png?w=1100&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=81361c514986873a84f90b728ebc86e1 1100w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/create-environment1.png?w=1650&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=0a3d4fec259a0edc5cd42faf47b02955 1650w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/create-environment1.png?w=2500&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=750096d07b7f37b33dbf099767436355 2500w" />
+* Using the **Deploy** tool <img alt="" />
 
-* From the **Environments** page by selecting **Create Environment**<img src="https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/create-environment2.png?fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=87358bb5a033020488c5497b3f926e48" alt="" data-og-width="2000" width="2000" data-og-height="1000" height="1000" data-path="images/create-environment2.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/create-environment2.png?w=280&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=8fc008b8d89093b8382a80f6bc134abf 280w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/create-environment2.png?w=560&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=000ef2ae25651e585ccd634d29a86e60 560w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/create-environment2.png?w=840&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=2ea5cb19511423b1dbdb719380b019d3 840w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/create-environment2.png?w=1100&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=01b86ccca36ac0da562a9444d11976d6 1100w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/create-environment2.png?w=1650&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=074464a53bddf1bf85b8723c40394e42 1650w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/create-environment2.png?w=2500&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=720594c9e0833099ad37913e85cc6ad1 2500w" />
+* From the **Environments** page by selecting **Create Environment**<img alt="" />
 
 
 # How to delete environments
@@ -13206,7 +13479,7 @@ An environment can only be deprovisioned from the Dashboard by:
 
 * Selecting the **Settings** tab
 
-* Selecting **Deprovision Environment**<img src="https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/delete-environment1.png?fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=bc763d75fd95f7448c5062e04cade4a2" alt="" data-og-width="2000" width="2000" data-og-height="1000" height="1000" data-path="images/delete-environment1.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/delete-environment1.png?w=280&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=4f9268359bfd5bbed00cbd5ba739f760 280w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/delete-environment1.png?w=560&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=08999e82b44ad612379967e80d42ca9e 560w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/delete-environment1.png?w=840&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=ec399cd2db8e6f27698f2fac71f054f6 840w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/delete-environment1.png?w=1100&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=87f2bf722242afdd93a4775f04eeb7f5 1100w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/delete-environment1.png?w=1650&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=f35e8652dbe408204a732dae9b1e58ca 1650w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/delete-environment1.png?w=2500&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=146d2dc4d54264ff98d4693c4f6b8392 2500w" />
+* Selecting **Deprovision Environment**<img alt="" />
 
 > 📘 An environment can only successfully be deprovisioned once all of the resources within that Environment have been deprovisioned. The following guide describes how to deprovision each type of resource.
 
@@ -13278,7 +13551,7 @@ Since any found vulnerabilities were installed by the OS Package manager, we rec
 
 If you deploying via Git, you can use the command `aptible rebuild` to rebuild and deploy the new image:
 
-```sql  theme={null}
+```sql theme={null}
 aptible rebuild --app $HANDLE
 ```
 
@@ -13288,7 +13561,7 @@ If you are deploying via Docker Image, you will need to follow your established 
 
 The broadest thing you can try, assuming it does not introduce any compatibility issues for your application, is to update the parent image of your App: this is the one specified as the first line in your Dockerfile, for example:
 
-```sql  theme={null}
+```sql theme={null}
 FROM debian:8.2
 ```
 
@@ -13300,7 +13573,7 @@ Finally, the vulnerability details might indicate a newer OS, eg Debian 10, incl
 
 You might also find that you have pinned a specific version of a package in your Dockerfile, either for compatibility or to prevent a regression of another vulnerability. For example:
 
-```ruby  theme={null}
+```ruby theme={null}
 FROM debian: 8
 
 RUN apt - get update &&\
@@ -13322,7 +13595,7 @@ First, we suggest, as a best practice, to identify any packages that you have in
 
 In your Dockerfile, you can track which packages are installed as a build dependency and simply uninstall them when you have completed that task:
 
-```ruby  theme={null}
+```ruby theme={null}
 FROM debian:8
 
 # Declare your build-time dependencies
@@ -13411,7 +13684,7 @@ Here are some optional steps you can take:
 
    1. Review the controls implemented for you, enhance your security posture by implementing additional controls, and share a detailed report with your customers.
 
-2. Show off your compliance with a Secured by Aptible HIPAA compliance badge<img src="https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/hipaa1.png?fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=370a50fd056d2932d575103c2f5fe4b4" alt="" data-og-width="320" width="320" data-og-height="96" height="96" data-path="images/hipaa1.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/hipaa1.png?w=280&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=32816d5c77a20233b0873741e42d1568 280w, https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/hipaa1.png?w=560&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=0b82d70aeb288966b2af6a9dd663f114 560w, https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/hipaa1.png?w=840&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=e03ba3e5ba900d9a068500cab4dd59c8 840w, https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/hipaa1.png?w=1100&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=5dab9aed9c50ffa98dc433fded119086 1100w, https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/hipaa1.png?w=1650&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=ebcf9f376682656059ebc51ce3d534d4 1650w, https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/hipaa1.png?w=2500&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=36adaffd6732f94820327fdbf46794b5 2500w" />
+2. Show off your compliance with a Secured by Aptible HIPAA compliance badge<img alt="" />
 
 3. Set up log retention
 
@@ -13530,7 +13803,7 @@ This section walks through how to replicate and test your service on Aptible, pr
 * Test the migration of your database to Aptible
   * This can be done via dump and restore methods:
     * PostgreSQL: using pg\_dump
-    ```ruby  theme={null}
+    ```ruby theme={null}
     pg_dump -h [source_host] -p [source_port] -U [source_user] -W [source_database] > source_db_dump.sql
 
     psql -h [destination_host] -p [destination_port] -U [destination_user] -W [destination_database] < source_db_dump.sql
@@ -13788,7 +14061,15 @@ Should you encounter any obstacles or require further assistance during this pro
 
 Add a Secured by Aptible badge and link to the [Secured by Aptible](https://www.aptible.com/secured-by-aptible) page to show all the security & compliance controls implemented:
 
-<img src="https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/navigate1.png?fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=4146e68f912ea7d5f2eceec796a17e3a" alt="" data-og-width="320" width="320" data-og-height="96" height="96" data-path="images/navigate1.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/navigate1.png?w=280&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=ebaa5cb9427beffe011f12bb5b1bf660 280w, https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/navigate1.png?w=560&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=ed15112aa80fd0a0994558dbfab0437c 560w, https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/navigate1.png?w=840&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=03dab8f89c56a4dd50d3c0622cc63820 840w, https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/navigate1.png?w=1100&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=0233e6693c3b8fad54cb8b2e0fcc6f37 1100w, https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/navigate1.png?w=1650&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=773fbc87ab724f5381bfa763f53cb846 1650w, https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/navigate1.png?w=2500&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=daa049e2edca39f27a5b2a04f6cabc59 2500w" /><img src="https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/navigate2.png?fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=88b075f45e27cad1760c67b86076e4b0" alt="" data-og-width="354" width="354" data-og-height="96" height="96" data-path="images/navigate2.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/navigate2.png?w=280&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=9790caf0fb9f8e83155295611726e587 280w, https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/navigate2.png?w=560&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=be1f2d60d9bb72c8f7425813984e45b6 560w, https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/navigate2.png?w=840&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=edd8a8d7634df3df4b43e98863611717 840w, https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/navigate2.png?w=1100&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=0b5d9db2e0e9886053b58662b80c8f71 1100w, https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/navigate2.png?w=1650&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=37c1e1881477b09a1317a94b17f7aa39 1650w, https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/navigate2.png?w=2500&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=8567962be710b01b69721d6ce1f1469e 2500w" /><img src="https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/navigate3.png?fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=0164d56791af929a5934b49f4bfe6752" alt="" data-og-width="288" width="288" data-og-height="96" height="96" data-path="images/navigate3.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/navigate3.png?w=280&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=59a51e29444cab005391148a7ae27c80 280w, https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/navigate3.png?w=560&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=95718ac0462179a65fdb0f165759cab0 560w, https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/navigate3.png?w=840&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=6782bbd2a893010aff2c6d49027cfa46 840w, https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/navigate3.png?w=1100&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=63785c2e1f3104e26a63eb67456b7449 1100w, https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/navigate3.png?w=1650&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=c8d0e5c82f2d7c909e7a1f23c49f20e3 1650w, https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/navigate3.png?w=2500&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=e9ecdc30bfa539362fe6d74ab751a5a4 2500w" /><img src="https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/navigate4.png?fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=bf65d5321a78918876d3dc2ae4117949" alt="" data-og-width="288" width="288" data-og-height="96" height="96" data-path="images/navigate4.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/navigate4.png?w=280&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=80d3a867706a3ec7215250bd0e030960 280w, https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/navigate4.png?w=560&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=032a613d4798c9ec7a0a1a5ae9993d8c 560w, https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/navigate4.png?w=840&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=18c431c409031d18b1b4fba2ee705d30 840w, https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/navigate4.png?w=1100&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=21a97ac1c554a2952b6e68cc320158c8 1100w, https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/navigate4.png?w=1650&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=b3dee0135f422aed2314d8c44ac60eda 1650w, https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/navigate4.png?w=2500&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=7aa47d34e40c430cbde702bceee712f3 2500w" /><img src="https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/secured_by_aptible_pipeda.png?fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=7328a75942b6e94548305552f5cab655" alt="" data-og-width="344" width="344" data-og-height="104" height="104" data-path="images/secured_by_aptible_pipeda.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/secured_by_aptible_pipeda.png?w=280&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=3cb8306a20fdf51637670fbbfbcf2ca2 280w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/secured_by_aptible_pipeda.png?w=560&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=803ec0577169f78842cc2ab1fdda3fba 560w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/secured_by_aptible_pipeda.png?w=840&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=050969e796cec250b78b1fd30709a394 840w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/secured_by_aptible_pipeda.png?w=1100&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=17763852da55503684297f1a6e097e4a 1100w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/secured_by_aptible_pipeda.png?w=1650&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=875488c6e34ef6cdd54b2983f1376218 1650w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/secured_by_aptible_pipeda.png?w=2500&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=ac3329b2e99e61b570e566db37e99df2 2500w" />
+<img alt="" />
+
+<img alt="" />
+
+<img alt="" />
+
+<img alt="" />
+
+<img alt="" />
 
 
 # Platform Guides
@@ -13859,17 +14140,17 @@ If you don't have your device and cannot access a backup code, you can work with
 
 Account Owner:
 
-1. Navigate to Settings > Members <img src="https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/reset-2fa.png?fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=7bc92ab2a220aa5a636716e0250d7199" alt="" data-og-width="1017" width="1017" data-og-height="176" height="176" data-path="images/reset-2fa.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/reset-2fa.png?w=280&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=dbbb3c4d96209905363a3b485df851a0 280w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/reset-2fa.png?w=560&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=90a2125e7962691a0a98b463d36270ff 560w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/reset-2fa.png?w=840&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=71d1d37e984bd777d5ca15144e8454c5 840w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/reset-2fa.png?w=1100&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=852d9733ca75db9f13e6d9960444248f 1100w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/reset-2fa.png?w=1650&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=a5e6fd90b627eb36d753889ea5662d12 1650w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/reset-2fa.png?w=2500&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=293b541ec5879a5c13e818735417616a 2500w" />
+1. Navigate to Settings > Members <img alt="" />
 
 2. Select Reset 2FA for your user
 
-3. Select Reset on the confirmation page <img src="https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/reset-2fa-2.png?fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=8aa7922aaf14f93d27500316d9c540f6" alt="" data-og-width="1367" width="1367" data-og-height="285" height="285" data-path="images/reset-2fa-2.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/reset-2fa-2.png?w=280&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=1c35966cb1f878ffae40641a726b0c17 280w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/reset-2fa-2.png?w=560&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=8d052f97fa61eb3817a8866d7378625b 560w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/reset-2fa-2.png?w=840&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=28fa950649e678d24f6f82b6bf0736e7 840w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/reset-2fa-2.png?w=1100&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=adb343e9b08325b2a3e27207456ebacd 1100w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/reset-2fa-2.png?w=1650&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=90d4b41f82b6a1cff264d99d2e4c81a7 1650w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/reset-2fa-2.png?w=2500&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=321f66a875146e6f7c6e56e50e6194c6 2500w" />
+3. Select Reset on the confirmation page <img alt="" />
 
 User:
 
-1. Click the link in the 2FA reset email you receive. <img src="https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/reset-2fa-3.png?fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=449e01f6820a570ef68a5fc3531ca581" alt="" data-og-width="660" width="660" data-og-height="629" height="629" data-path="images/reset-2fa-3.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/reset-2fa-3.png?w=280&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=8977ec24faf72ea67c309f7836531c32 280w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/reset-2fa-3.png?w=560&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=abed0b022c8763ea4a6def205e54b83a 560w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/reset-2fa-3.png?w=840&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=2c8c070baf3c15b767285f44192b25ab 840w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/reset-2fa-3.png?w=1100&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=9e2badc894b030c3d8cd2c6579e43254 1100w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/reset-2fa-3.png?w=1650&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=ba177da20d0b54064b1fd82eb1fe7d83 1650w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/reset-2fa-3.png?w=2500&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=f4f632847d54e782f580f10c1eb3c803 2500w" />
+1. Click the link in the 2FA reset email you receive. <img alt="" />
 
-2. Complete the reset on the confirmation page. <img src="https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/reset-2fa-4.png?fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=b5e257c8750512c58602f6a24c338b7f" alt="" data-og-width="792" width="792" data-og-height="462" height="462" data-path="images/reset-2fa-4.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/reset-2fa-4.png?w=280&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=019bc9f62b90007bb30078065917ba4f 280w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/reset-2fa-4.png?w=560&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=44c5ccc8bc30bb199668ce8d3081d04d 560w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/reset-2fa-4.png?w=840&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=8e0e2dfe6ba7ca17d1f382db1ef12f39 840w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/reset-2fa-4.png?w=1100&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=c4282af049abfd3ff39f7d39a4ba2709 1100w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/reset-2fa-4.png?w=1650&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=dce7db39c587601015ca0c916e8ddb27 1650w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/reset-2fa-4.png?w=2500&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=343e40a60ea348e38e83b00944739067 2500w" />
+2. Complete the reset on the confirmation page. <img alt="" />
 
 3. Log in with your credentials.
 
@@ -13926,7 +14207,7 @@ With SCIM enabled, users won't have the option to leave your organization on the
 1. **Log in to Aptible**: Sign in to your Aptible account with OrganizationOwner privileges.
 2. **Navigate to Provisioning**: Go to the 'Settings' section in your Aptible dashboard and select Provisioning.
 
-<img src="https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/scim-app-ui.png?fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=5260a9ef9a9db23bb071b37d227c3f4a" alt="" data-og-width="2798" width="2798" data-og-height="1610" height="1610" data-path="images/scim-app-ui.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/scim-app-ui.png?w=280&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=071934bf1f70707bafb512a0cd4ae747 280w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/scim-app-ui.png?w=560&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=824ed9af14a135f5150b6d3a69185cd3 560w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/scim-app-ui.png?w=840&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=54b811abcf11736862deaa76eeaaab5b 840w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/scim-app-ui.png?w=1100&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=fb58221cd08909817daaeaa58d5e7630 1100w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/scim-app-ui.png?w=1650&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=30b6e5063e17a311d283de916ad069c9 1650w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/scim-app-ui.png?w=2500&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=e9b2db705777beebe884e66910bcf195 2500w" />
+<img alt="" />
 
 3. **Define Default Role**: Update the Default Aptible Role. New users created by SCIM will be automatically assigned to this role.
 4. **Generate SCIM Token**: Aptible will provide a SCIM token, which you will need for Entra Identity configuration. Save this token securely; it will only be displayed once.
@@ -13949,7 +14230,7 @@ Entra Identity supports SCIM 2.0, allowing you to enable user provisioning direc
 6. **Enter SCIM Connection Details**:
    * **Tenant URL**: Enter `https://auth.aptible.com/scim_v2`.
    * **Secret Token**: Paste the SCIM token you previously saved.
-     <img src="https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/entra-enable-scim.png?fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=68348bb267de390498d9e6f0efcd0ace" alt="" data-og-width="1498" width="1498" data-og-height="1476" height="1476" data-path="images/entra-enable-scim.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/entra-enable-scim.png?w=280&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=aff8218b9359c65cce7d1f4661a58838 280w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/entra-enable-scim.png?w=560&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=8336fb5b2b2e7f6b279a4bd01c89b4e2 560w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/entra-enable-scim.png?w=840&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=cb350d62f8fa81104c6e3d88d5689252 840w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/entra-enable-scim.png?w=1100&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=3847ef234fa35fa7b3360e9b60c4d76c 1100w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/entra-enable-scim.png?w=1650&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=e6150e30b619491e2355d4708416d1bd 1650w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/entra-enable-scim.png?w=2500&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=cb7ff6d4e360ac8669cb6d9635ad392a 2500w" />
+     <img alt="" />
 7. **Test Connection**: Test the SCIM connection to verify that the SCIM endpoint is functional and that the token is correct.
 8. **Save and Start Provisioning**: Save the settings and turn on provisioning to start syncing users.
 
@@ -13959,7 +14240,7 @@ Customize the attributes that Entra Identity will send to Aptible through SCIM:
 
 1. **Adjust the Mapping**: In the 'Provisioning' tab of your application, select 'Provision Microsoft Entra ID Users' to modify the attribute mappings.
 
-<img src="https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/entra-attribute-configuration.png?fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=e5b01a32c9f669dc889f66a3fa9055d2" alt="" data-og-width="1584" width="1584" data-og-height="1584" height="1584" data-path="images/entra-attribute-configuration.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/entra-attribute-configuration.png?w=280&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=331e11421cc0d4e84f0b0d28d983c44e 280w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/entra-attribute-configuration.png?w=560&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=be5cb7becb3df7a2d69bde703b6bf716 560w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/entra-attribute-configuration.png?w=840&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=36694250a2fa0ed25cb2ebf119dc638f 840w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/entra-attribute-configuration.png?w=1100&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=7195ef12590aff7f8d752c09d860bc0a 1100w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/entra-attribute-configuration.png?w=1650&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=7885becb172573bf7e1ba9dde5add864 1650w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/entra-attribute-configuration.png?w=2500&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=376e2c9b9d036ae2d0b0f302ba0d6526 2500w" />
+<img alt="" />
 
 2. **Edit Attribute Mapping**: Ensure to align with what Aptible expects, focusing on core attributes like **User Principal Name**, **Given Name**, and **Surname**.
 
@@ -13970,7 +14251,7 @@ Customize the attributes that Entra Identity will send to Aptible through SCIM:
    * **Switch(\[IsSoftDeleted], , "False", "True", "True", "False")** to **active**
    * **mailNickname** to **externalId**
 
-<img src="https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/entra-attribute-mapping.png?fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=0e65f67017917bd1e2ab8541cb720202" alt="" data-og-width="2606" width="2606" data-og-height="1872" height="1872" data-path="images/entra-attribute-mapping.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/entra-attribute-mapping.png?w=280&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=9161b0d7bfeb52fdef8f7ca333e7383a 280w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/entra-attribute-mapping.png?w=560&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=e54c39b4c7c0a575733b97f2c3446d6f 560w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/entra-attribute-mapping.png?w=840&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=0258c25099d7a0fe706637473b322d8c 840w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/entra-attribute-mapping.png?w=1100&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=fe91f0f02fd5edddd27aa2072820850c 1100w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/entra-attribute-mapping.png?w=1650&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=cdb7a1850c5063e3a68d1a2db4628af8 1650w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/entra-attribute-mapping.png?w=2500&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=d1cc21c7cd7ca29cf5c8360e9451ea27 2500w" />
+<img alt="" />
 
 ### Step 4: Test the SCIM Integration
 
@@ -13996,7 +14277,7 @@ With SCIM enabled, users won't have the option to leave your organization on the
 1. **Log in to Aptible**: Sign in to your Aptible account with OrganizationOwner privileges.
 2. **Navigate to Provisioning**: Go to the 'Settings' section in your Aptible dashboard and select Provisioning
 
-<img src="https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/scim-app-ui.png?fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=5260a9ef9a9db23bb071b37d227c3f4a" alt="" data-og-width="2798" width="2798" data-og-height="1610" height="1610" data-path="images/scim-app-ui.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/scim-app-ui.png?w=280&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=071934bf1f70707bafb512a0cd4ae747 280w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/scim-app-ui.png?w=560&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=824ed9af14a135f5150b6d3a69185cd3 560w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/scim-app-ui.png?w=840&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=54b811abcf11736862deaa76eeaaab5b 840w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/scim-app-ui.png?w=1100&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=fb58221cd08909817daaeaa58d5e7630 1100w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/scim-app-ui.png?w=1650&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=30b6e5063e17a311d283de916ad069c9 1650w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/scim-app-ui.png?w=2500&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=e9b2db705777beebe884e66910bcf195 2500w" />
+<img alt="" />
 
 1. **Define Default Role**: Update the Default Aptible Role. New Users created by SCIM will be automatically assigned to this Role.
 2. **Generate SCIM Token**: Aptible will provide a SCIM token, which you will need for the Okta configuration. Save this token securely; it will only be displayed once.
@@ -14020,23 +14301,23 @@ To set up provisioning with Okta, do the following:
 3. Go to **Applications**, and then select **Applications**.
 4. Select **Browse App Catalog**.
 
-<img src="https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/okta-select-app.png?fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=41c98723835d797a3a5bc23a98226a89" alt="" data-og-width="2670" width="2670" data-og-height="964" height="964" data-path="images/okta-select-app.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/okta-select-app.png?w=280&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=7d699e9f66b13e4ce502482664a84274 280w, https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/okta-select-app.png?w=560&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=b08e741f57ac7a9ab0c10c0ec0b37d43 560w, https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/okta-select-app.png?w=840&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=36b59c184bf50a556381227330f26fba 840w, https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/okta-select-app.png?w=1100&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=ed8ec5b70a631e7ad080702c0b6e79a5 1100w, https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/okta-select-app.png?w=1650&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=568df4214380920b6d4c5f316a4ec53f 1650w, https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/okta-select-app.png?w=2500&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=7fe1c1e9adcab209a8b2fc2e9b0fea71 2500w" />
+<img alt="" />
 
 5. Search for "SCIM 2.0 Test App (Header Auth)". Select the app from the results, and then select **Add Integration**.
 
-<img src="https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/okta-select-scim.png?fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=7c9d9bec82d1fe529f4b42fde9e440ef" alt="" data-og-width="2312" width="2312" data-og-height="1148" height="1148" data-path="images/okta-select-scim.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/okta-select-scim.png?w=280&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=4baa93b8097f1c7b93beb4cf6735bda8 280w, https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/okta-select-scim.png?w=560&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=6b40e6285ebe3aeb3794f56f5c90c5cb 560w, https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/okta-select-scim.png?w=840&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=a2767821fe0606d649385b733c0d90b9 840w, https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/okta-select-scim.png?w=1100&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=2aebff838a0674fc46d2e7ebab2abf06 1100w, https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/okta-select-scim.png?w=1650&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=ae45240e03cf288177ec06453e43a12e 1650w, https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/okta-select-scim.png?w=2500&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=8cc3ac3bac7b670a7f80efe293c1ed21 2500w" />
+<img alt="" />
 
 6. In the **General Settings** tab, enter an app name you'll recognize later, and then select **Next**.
 7. In the **Sign-On Options** tab, select **Done**.
 8. In Okta, go to the newly created app, select **Provisioning**, then select **Configure API Integration**.
 
-<img src="https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/okta-enable-scim.png?fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=8aef2726ad14bcbe8a9aa9f1e8772752" alt="" data-og-width="2008" width="2008" data-og-height="696" height="696" data-path="images/okta-enable-scim.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/okta-enable-scim.png?w=280&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=2554d383cde9140ed6eb3691c16b7590 280w, https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/okta-enable-scim.png?w=560&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=5d406ef2162090fbc05f2f8bee32d823 560w, https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/okta-enable-scim.png?w=840&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=ebb644776e92da2e07740af36b3f8515 840w, https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/okta-enable-scim.png?w=1100&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=dde2eed0b6537eb19c30d4c1d8cf90d4 1100w, https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/okta-enable-scim.png?w=1650&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=55500fb6fd5183fc6110556e67495108 1650w, https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/okta-enable-scim.png?w=2500&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=6ab8c3bfda55d5e897cd4571c789236d 2500w" />
+<img alt="" />
 
 9. Select **Enable API integration**, and enter the following:
    * **Base URL** - Enter `https://auth.aptible.com/scim_v2`.
    * **API Token** - Enter your SCIM API key.
 
-<img src="https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/okta-configure-scim.png?fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=cf836738e506b101b1a99e80a00654c2" alt="" data-og-width="3912" width="3912" data-og-height="2312" height="2312" data-path="images/okta-configure-scim.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/okta-configure-scim.png?w=280&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=c6bf0f2dcb1c4e5f9d28db3b4a979cb5 280w, https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/okta-configure-scim.png?w=560&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=0af00326f834adc06aab12b6afbb30bf 560w, https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/okta-configure-scim.png?w=840&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=71d0cad87e0662845f5a1a003a31c45f 840w, https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/okta-configure-scim.png?w=1100&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=64f851e716c71342489d245a827b0fb2 1100w, https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/okta-configure-scim.png?w=1650&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=edb90896b672468a9f166ebea200be42 1650w, https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/okta-configure-scim.png?w=2500&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=9108e2dd511aa0fda7718598e44c4d99 2500w" />
+<img alt="" />
 
 10. Select **Test API Credentials**. If successful, a verification message will appear.
 
@@ -14051,21 +14332,21 @@ To turn these features on or off, do the following:
 
 1. Go to the SCIM 2.0 test app (Header Auth) in Okta, select **Provisioning**, select **To App** on the left, then select **Edit**.
 
-<img src="https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/okta-enable-crud.png?fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=23dcb8bf19d8219decaf0bab7e6171e5" alt="" data-og-width="2026" width="2026" data-og-height="1328" height="1328" data-path="images/okta-enable-crud.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/okta-enable-crud.png?w=280&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=9537c98257f479c139992156a8507353 280w, https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/okta-enable-crud.png?w=560&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=b5e1aae7222ea49399bbfb6818c35860 560w, https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/okta-enable-crud.png?w=840&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=d1e7442b92b06a78f8915bcb49db689c 840w, https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/okta-enable-crud.png?w=1100&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=7ca444bbc811e0cb5501d88b08479fae 1100w, https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/okta-enable-crud.png?w=1650&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=6d3aec5c1bdca8eb8861b10af9433db0 1650w, https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/okta-enable-crud.png?w=2500&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=52488d6fd7de3129e51039a96f88d33a 2500w" />
+<img alt="" />
 
 2. Select features to enable them or clear them to turn them off. Aptible supports the **Create users**, **Update User Attributes**, and **Deactivate Users** features. It doesn't support the **Sync Password** feature.
 
-<img src="https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/okta-crud-enabled.png?fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=66e467d52bc649df134f55b61e940f27" alt="" data-og-width="2046" width="2046" data-og-height="1780" height="1780" data-path="images/okta-crud-enabled.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/okta-crud-enabled.png?w=280&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=6209cd9ab1d4b4a4f2d9d10ce6e4a517 280w, https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/okta-crud-enabled.png?w=560&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=952720b5d1625a1f78324d50a2b45409 560w, https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/okta-crud-enabled.png?w=840&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=d4533c09bfd406911a058cc27c82db41 840w, https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/okta-crud-enabled.png?w=1100&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=76ca4c56f7b8b59eb40980328909fb46 1100w, https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/okta-crud-enabled.png?w=1650&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=5954f1e97537df93b3bd588737c2949d 1650w, https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/okta-crud-enabled.png?w=2500&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=125e41d9650f32a28cdd5f342ed52f2b 2500w" />
+<img alt="" />
 
 3. Select **Save** to save your changes.
 
 4. Make sure only the **Username**, **Given name**, **Family name, and Display Name** attributes are mapped. Display Name is used if provided. Otherwise, the system will fall back to givenName and familyName. Other attributes are ignored if they're mapped.
 
-<img src="https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/okta-attributes-mapping.png?fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=f588742c39cac3c236b6a980de89e709" alt="" data-og-width="1524" width="1524" data-og-height="588" height="588" data-path="images/okta-attributes-mapping.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/okta-attributes-mapping.png?w=280&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=cfe424911008638d3a95eaea3a1ac0db 280w, https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/okta-attributes-mapping.png?w=560&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=8d168f2b426435d3417a5c76cae222dc 560w, https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/okta-attributes-mapping.png?w=840&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=f298f0c5740ecbd16a7a8f6157feea1b 840w, https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/okta-attributes-mapping.png?w=1100&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=a29576ab4e3a4060be56e2d1e7598014 1100w, https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/okta-attributes-mapping.png?w=1650&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=61cdb469a5952be83b41a24a76b6feb2 1650w, https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/okta-attributes-mapping.png?w=2500&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=b36b77b9d90d63981fe33d7a3958a935 2500w" />
+<img alt="" />
 
 5. Select **Assignments**, then assign relevant people and groups to the app. Learn how to [assign people and groups to an app in Okta](https://help.okta.com/en-us/content/topics/apps/apps-assign-applications.htm?cshid=ext_Apps_Apps_Page-assign).
 
-<img src="https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/okta-initiate-assignments.png?fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=c4bf9f2869fbe09acd781f35b3e72013" alt="" data-og-width="1476" width="1476" data-og-height="1074" height="1074" data-path="images/okta-initiate-assignments.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/okta-initiate-assignments.png?w=280&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=346a48d22af6e733ae81dfba90a5c453 280w, https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/okta-initiate-assignments.png?w=560&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=ca013b045e4abaa120e1231c42d8653b 560w, https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/okta-initiate-assignments.png?w=840&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=bcfc0a221a648a38a3e2b867857a40cb 840w, https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/okta-initiate-assignments.png?w=1100&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=2fb5e429a4cf20a9b2392b5dc0a2fbcb 1100w, https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/okta-initiate-assignments.png?w=1650&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=41a366383f79994fd3936a61ad467ca4 1650w, https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/okta-initiate-assignments.png?w=2500&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=510a574ebb7b45fb1b4840c3080bbbb9 2500w" />
+<img alt="" />
 
 ## Step 3: Validate the SCIM Integration
 
@@ -14084,7 +14365,7 @@ To use SSO, you must configure both the SSO provider and Aptible with metadata r
 
 To set up the SSO provider, it needs the following four pieces of information unique to Aptible. The values for each are available in your Organization's Single Sign On the settings page, accessible only by [Account Owners](/core-concepts/security-compliance/access-permissions), if you do not yet have SSO configured.
 
-<img src="https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/sso1.png?fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=069d095b0162f81621986c136918f019" alt="" data-og-width="2100" width="2100" data-og-height="1324" height="1324" data-path="images/sso1.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/sso1.png?w=280&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=7fb84e102f90404940d62d14d5e0b6f5 280w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/sso1.png?w=560&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=bf47a62180f8819f6e1511e19bfb3dee 560w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/sso1.png?w=840&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=c114a4dfdcf914ebddd56af0400892f4 840w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/sso1.png?w=1100&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=2f501e0493770b488aa6ef83aab27855 1100w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/sso1.png?w=1650&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=43f52df965c729e3655cddb6cfdd64cc 1650w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/sso1.png?w=2500&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=5ed9f319c6b77e2878dd90c53f00e593 2500w" />
+<img alt="" />
 
 You should reference your SSO Provider's walkthrough for setting up a SAML application alongside this documentation.
 
@@ -14144,7 +14425,7 @@ Once your have completed the SSO provider configuration, they should provide you
 
 Return to the Single Sign On settings page for your Organization, where you copied the values for setting up your SSO provider. Then click on the "Configure an SSO Provider"
 
-<img src="https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/sso2.png?fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=72e3379f35cd1304df39b82e30d035b8" alt="" data-og-width="2100" width="2100" data-og-height="1324" height="1324" data-path="images/sso2.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/sso2.png?w=280&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=41536165b21ec41b6aa5917a3174a7eb 280w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/sso2.png?w=560&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=106cfd028392563e704ff94a86b3fe7a 560w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/sso2.png?w=840&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=7ee73df269bd976b8c5035b53bc493e0 840w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/sso2.png?w=1100&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=20f9bca7144f449af2ccc79721cd338b 1100w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/sso2.png?w=1650&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=7b33344d81bb4c78004cda574e53ce90 1650w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/sso2.png?w=2500&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=e3f56ed365225264dec75463a1ae3b41 2500w" />
+<img alt="" />
 
 In the resulting modal box, enter either the URL or the XML contents of the file. You only need to enter one. If you enter both, Aptible will use the URL to retrieve the metadata. Aptible will then complete our setup automatically.
 
@@ -14152,11 +14433,11 @@ In the resulting modal box, enter either the URL or the XML contents of the file
 
 > Aptible only supports SSO configurations with a single certificate at this time. If you get an error when applying your configuration, check to see if it contains multiple `KeyDescriptor` elements. If you require multiple certificates please notify [Aptible Support](/how-to-guides/troubleshooting/aptible-support).
 
-<img src="https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/sso3.png?fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=36c3e9fac78f1b9f515ff24864e4f5f2" alt="" data-og-width="1318" width="1318" data-og-height="1140" height="1140" data-path="images/sso3.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/sso3.png?w=280&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=a1f537229583586a99264ae95cdedc00 280w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/sso3.png?w=560&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=eedab109764ed12a00e0f9ba20029035 560w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/sso3.png?w=840&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=55cce2671210110ad81679b143de8ba4 840w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/sso3.png?w=1100&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=aecf8824e06352abbe9603628c5ba4ce 1100w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/sso3.png?w=1650&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=68f008c5bb96e0d22e94970449e82d89 1650w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/sso3.png?w=2500&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=ae4beb3e7ce74a6f9d595a9742758f3a 2500w" />
+<img alt="" />
 
-> ❗️ Warning
-
-> When you retrieve the metadata, you should ensure the SSO provider's site is an HTTPS site. This ensure that the metadata is not tampered with during download. If an attacker could alter that metadata, they could substitute their own information and hi-jack your SSO configuration.
+<Warning>
+  Aptible requires HTTPS for metadata URLs. If you provide an HTTP URL, you'll receive an error: "metadata\_url invalid, ensure it uses https". HTTPS prevents tampering during download—without it, an attacker could substitute their own information and hijack your SSO configuration.
+</Warning>
 
 Once processing is complete, you should see data from your SSO provider. You can confirm these with the SSO provider's website to ensure they are correct.
 
@@ -14178,7 +14459,7 @@ As a complement to the generic guide, we will present a detailed walkthrough for
 
 * Select SAML 2.0 as the Sign on method.
 
-<img src="https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/sso4.png?fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=f715ab37ec20cb5287d416ec910dcd6d" alt="" data-og-width="1408" width="1408" data-og-height="818" height="818" data-path="images/sso4.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/sso4.png?w=280&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=ffd34183be466ef5e7d8fb4e12dfb1d2 280w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/sso4.png?w=560&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=931823cd6eb525a79677f8fa406b8343 560w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/sso4.png?w=840&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=224c02ba29f21390a7b9ceac13ea5a26 840w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/sso4.png?w=1100&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=349c648dc12a7578ed8360806319eb79 1100w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/sso4.png?w=1650&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=f3fc7a26eee6a85e468f993c3bf8c588 1650w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/sso4.png?w=2500&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=41605e048be41b6d7f6fa4c161a7c7d2 2500w" />
+<img alt="" />
 
 ## Create SAML Integration
 
@@ -14186,7 +14467,7 @@ As a complement to the generic guide, we will present a detailed walkthrough for
 
 * You may download and use our [logo](https://mintlify.s3-us-west-1.amazonaws.com/aptible/images/aptible_logo.png) for an image.
 
-<img src="https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/sso5.png?fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=e36c0f5d63b629dd4ce5d8231bb42ad2" alt="" data-og-width="2072" width="2072" data-og-height="1288" height="1288" data-path="images/sso5.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/sso5.png?w=280&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=8c7e99be829987b2f389399f31c6662d 280w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/sso5.png?w=560&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=f6f1ae7b6c0f372748c53f69bd0f804c 560w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/sso5.png?w=840&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=1697421fc62e8a4406f774c78bc181a8 840w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/sso5.png?w=1100&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=65f4c3b5dd0876af6251364a9ddec28f 1100w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/sso5.png?w=1650&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=4147535261f824a2043caaed6671cb13 1650w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/sso5.png?w=2500&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=52de2f2dc8d21e22b9e5d983cf949970 2500w" />
+<img alt="" />
 
 ## Enter SAML Settings from Aptible Single Sign On Settings Page
 
@@ -14194,7 +14475,7 @@ As a complement to the generic guide, we will present a detailed walkthrough for
 
 * Select the Single Sign On settings in the sidebar
 
-<img src="https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/sso6.png?fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=26edc04ad115aaa4d4383d6defb7b9d8" alt="" data-og-width="2100" width="2100" data-og-height="1324" height="1324" data-path="images/sso6.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/sso6.png?w=280&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=8ad564e4eb3944635d9f864fcfdc4a78 280w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/sso6.png?w=560&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=712ff7fdfae11ea605304432a0faa8fc 560w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/sso6.png?w=840&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=7513a59dd612ead15678586dbd28e265 840w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/sso6.png?w=1100&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=7a6c0c7acf82459dd596602149e5add2 1100w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/sso6.png?w=1650&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=6c077fdd136f3cf2edc0ede51353202b 1650w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/sso6.png?w=2500&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=000cdc90730aa57ffab8980057b28380 2500w" />
+<img alt="" />
 
 * Copy and paste the Single Sign On URL
 
@@ -14208,7 +14489,7 @@ As a complement to the generic guide, we will present a detailed walkthrough for
 
 * Click Next
 
-<img src="https://mintcdn.com/aptible/uXP5kmz3uSl-opiv/images/sso7.png?fit=max&auto=format&n=uXP5kmz3uSl-opiv&q=85&s=d8b0107c34a2224fcc09fdc0c9c14b6d" alt="" data-og-width="1538" width="1538" data-og-height="1132" height="1132" data-path="images/sso7.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/aptible/uXP5kmz3uSl-opiv/images/sso7.png?w=280&fit=max&auto=format&n=uXP5kmz3uSl-opiv&q=85&s=2ccb4d3e685019dff7836314f0d8e2ff 280w, https://mintcdn.com/aptible/uXP5kmz3uSl-opiv/images/sso7.png?w=560&fit=max&auto=format&n=uXP5kmz3uSl-opiv&q=85&s=643911df4c2f93992bbd124d5176c977 560w, https://mintcdn.com/aptible/uXP5kmz3uSl-opiv/images/sso7.png?w=840&fit=max&auto=format&n=uXP5kmz3uSl-opiv&q=85&s=eba84f2a61a660a1cb98be69413da4d3 840w, https://mintcdn.com/aptible/uXP5kmz3uSl-opiv/images/sso7.png?w=1100&fit=max&auto=format&n=uXP5kmz3uSl-opiv&q=85&s=36ff8f33a251df1e85bc7a90f66ae0e7 1100w, https://mintcdn.com/aptible/uXP5kmz3uSl-opiv/images/sso7.png?w=1650&fit=max&auto=format&n=uXP5kmz3uSl-opiv&q=85&s=0b7cbadf7f373878faa9589748108872 1650w, https://mintcdn.com/aptible/uXP5kmz3uSl-opiv/images/sso7.png?w=2500&fit=max&auto=format&n=uXP5kmz3uSl-opiv&q=85&s=33c28644b6dfd9746ee0eca789273ec9 2500w" />
+<img alt="" />
 
 ## Fill-in Okta's Feedback Page
 
@@ -14220,11 +14501,11 @@ As a complement to the generic guide, we will present a detailed walkthrough for
 
 * When complete, click Finish.
 
-<img src="https://mintcdn.com/aptible/uXP5kmz3uSl-opiv/images/sso8.png?fit=max&auto=format&n=uXP5kmz3uSl-opiv&q=85&s=95ab69e432aac15f8b57acb7d338530d" alt="" data-og-width="1538" width="1538" data-og-height="1490" height="1490" data-path="images/sso8.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/aptible/uXP5kmz3uSl-opiv/images/sso8.png?w=280&fit=max&auto=format&n=uXP5kmz3uSl-opiv&q=85&s=c2754d7acd60e5063c098fd556f4df36 280w, https://mintcdn.com/aptible/uXP5kmz3uSl-opiv/images/sso8.png?w=560&fit=max&auto=format&n=uXP5kmz3uSl-opiv&q=85&s=1b637856204cd748a4bbc6e17c67cff0 560w, https://mintcdn.com/aptible/uXP5kmz3uSl-opiv/images/sso8.png?w=840&fit=max&auto=format&n=uXP5kmz3uSl-opiv&q=85&s=20326978400bb8db21478895a72558de 840w, https://mintcdn.com/aptible/uXP5kmz3uSl-opiv/images/sso8.png?w=1100&fit=max&auto=format&n=uXP5kmz3uSl-opiv&q=85&s=3f0f6256c2209cfde29f99ed7f6f420b 1100w, https://mintcdn.com/aptible/uXP5kmz3uSl-opiv/images/sso8.png?w=1650&fit=max&auto=format&n=uXP5kmz3uSl-opiv&q=85&s=ece0de41890085de20faee8e31f07448 1650w, https://mintcdn.com/aptible/uXP5kmz3uSl-opiv/images/sso8.png?w=2500&fit=max&auto=format&n=uXP5kmz3uSl-opiv&q=85&s=ab12c4db65ae2faaf725d0fea30894e2 2500w" />
+<img alt="" />
 
 * Copy the link for Identity Provider metadata
 
-<img src="https://mintcdn.com/aptible/uXP5kmz3uSl-opiv/images/sso9.png?fit=max&auto=format&n=uXP5kmz3uSl-opiv&q=85&s=e56ad6ec675d307616541a0be3e34838" alt="" data-og-width="1538" width="1538" data-og-height="1490" height="1490" data-path="images/sso9.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/aptible/uXP5kmz3uSl-opiv/images/sso9.png?w=280&fit=max&auto=format&n=uXP5kmz3uSl-opiv&q=85&s=e4d632ddb69c0d516ab5ba738f220f3b 280w, https://mintcdn.com/aptible/uXP5kmz3uSl-opiv/images/sso9.png?w=560&fit=max&auto=format&n=uXP5kmz3uSl-opiv&q=85&s=21abda43e0496eba5b3e34aeddd21d04 560w, https://mintcdn.com/aptible/uXP5kmz3uSl-opiv/images/sso9.png?w=840&fit=max&auto=format&n=uXP5kmz3uSl-opiv&q=85&s=877d14d6c0701162fafbba7ea2eeec1e 840w, https://mintcdn.com/aptible/uXP5kmz3uSl-opiv/images/sso9.png?w=1100&fit=max&auto=format&n=uXP5kmz3uSl-opiv&q=85&s=a1fe0118daeba82261901b8dbc91e831 1100w, https://mintcdn.com/aptible/uXP5kmz3uSl-opiv/images/sso9.png?w=1650&fit=max&auto=format&n=uXP5kmz3uSl-opiv&q=85&s=d724a1094f45ce7257f174a3d490ae55 1650w, https://mintcdn.com/aptible/uXP5kmz3uSl-opiv/images/sso9.png?w=2500&fit=max&auto=format&n=uXP5kmz3uSl-opiv&q=85&s=888338f7a8d2ee07cae99da1ff53cf70 2500w" />
+<img alt="" />
 
 * Open the Single Sign On settings page for your Organization in Aptible
 
@@ -14232,11 +14513,33 @@ As a complement to the generic guide, we will present a detailed walkthrough for
 
 * Paste the metadata URL into the box
 
-<img src="https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/sso10.png?fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=5ad1d7263947d1a84192acfc8cec536c" alt="" data-og-width="1472" width="1472" data-og-height="1222" height="1222" data-path="images/sso10.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/sso10.png?w=280&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=6dcf2d2dab9073b48211ab058aaf15d2 280w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/sso10.png?w=560&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=ea68874d0f9928ee674189b9fb3dc832 560w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/sso10.png?w=840&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=2e16cb5e479a2d2dd4733758b675be1b 840w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/sso10.png?w=1100&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=33c3a536b4fb635eb45444f3d3c93a34 1100w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/sso10.png?w=1650&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=39ac6b7ee6f1e15acab47e509d14182a 1650w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/sso10.png?w=2500&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=6cd5e732d3503e8de735a31bd74738b1 2500w" />
+<img alt="" />
 
 ## Assign Users to Aptible Deploy
 
 * Follow [Okta's guide to assign users](https://developer.okta.com/docs/guides/saml-application-setup/assign-users-to-the-app/) to the new application.
+
+## Troubleshooting Common SSO Configuration Errors
+
+### Metadata URL Invalid Error
+
+If you get "metadata\_url invalid, ensure it uses https", your metadata URL is using HTTP instead of HTTPS. Aptible requires HTTPS for all metadata URLs to prevent the metadata from being tampered with during retrieval.
+
+Verify that your SSO provider's metadata URL begins with `https://`. Most modern SSO providers use HTTPS by default. If your provider only offers an HTTP metadata URL, use the metadata file XML content option instead.
+
+### Metadata URL Timeout Error
+
+If you get "metadata\_url request timed out", Aptible couldn't retrieve the metadata from your SSO provider within 5 seconds. This typically happens when the SSO provider's metadata endpoint is slow to respond, there are network connectivity issues between Aptible and your SSO provider, or the metadata endpoint is temporarily unavailable.
+
+To fix this:
+
+1. Wait a moment and try configuring the SSO provider again
+2. Check with your SSO provider to ensure the metadata endpoint is accessible and responding quickly
+3. Use the metadata file XML content option instead of the URL—download the metadata file from your SSO provider and paste its contents into the configuration form
+
+<Tip>
+  If you're experiencing repeated metadata URL issues, use the metadata file XML content option instead of the URL.
+</Tip>
 
 ## Frequently Asked Questions
 
@@ -14282,13 +14585,13 @@ This guide provides detailed instructions on how to set up a custom SAML applica
   <Step title="Accessing the Applications Dashboard">
     Log into your Auth0 dashboard. Navigate to **Applications** using the left navigation menu and click **Create Application**. Enter a name for your application (we suggest "Aptible"), select **Regular Web Applications**, and click **Create**.
 
-        <img src="https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/sso-auth0-create.png?fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=bcc6343645fa1b2ca79bf6f0d28b79e4" alt="" data-og-width="1594" width="1594" data-og-height="1320" height="1320" data-path="images/sso-auth0-create.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/sso-auth0-create.png?w=280&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=ad3dae5e44e869e558866e5f17f378de 280w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/sso-auth0-create.png?w=560&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=d87aab0d8d9785fcea8b01625335e101 560w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/sso-auth0-create.png?w=840&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=9b6f4f8714cc6b4a485fca7465cb80ca 840w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/sso-auth0-create.png?w=1100&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=805120cce4a21bbdfcbbc4b781e0664b 1100w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/sso-auth0-create.png?w=1650&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=955ed2d5ccaaf01df433b476817e2102 1650w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/sso-auth0-create.png?w=2500&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=d628ba6e3f4dd6434f429260dac4442e 2500w" />
+    <img alt="" />
   </Step>
 
   <Step title="Enabling SAML2 WEB APP">
     Select the **Addons** tab and enable the **SAML2 WEB APP** add-on by toggling it on. Navigate to the **Usage** tab and download the Identity Provider Metadata or copy the link to it. Close this window—It will toggle back to off, which is expected. We will activate it later.
 
-        <img src="https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/sso-auth0-metadata.png?fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=02fde8e7f4ec3f687182592ff9a833bd" alt="" data-og-width="1262" width="1262" data-og-height="840" height="840" data-path="images/sso-auth0-metadata.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/sso-auth0-metadata.png?w=280&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=58d9fcdecabfaede40f23ecf2ecf9e5d 280w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/sso-auth0-metadata.png?w=560&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=4c44272296dc0a0f7ba46e5f8a6d4a2c 560w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/sso-auth0-metadata.png?w=840&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=ac23cde6cb0b6d5ccce3dc7a9467bd68 840w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/sso-auth0-metadata.png?w=1100&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=903c39de360bd708c8654a010d1cb410 1100w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/sso-auth0-metadata.png?w=1650&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=7a5a10677e89b8eecb776778a91f6bcd 1650w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/sso-auth0-metadata.png?w=2500&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=e32d7cb67d8d8701b42c6ac563ee0550 2500w" />
+    <img alt="" />
   </Step>
 
   <Step title="Enable SAML Integration">
@@ -14297,7 +14600,7 @@ This guide provides detailed instructions on how to set up a custom SAML applica
     * **Single Sign-On URL** (Assertion Consumer Service \[ACS] URL):\
       `https://auth.aptible.com/organizations/xxxxx-xxx-xxxx-xxxx-xxxxxxxxxxxx/saml/consume`
 
-        <img src="https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/sso-auth0-acs.png?fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=282eef17d189276eee417e79a27dd3c1" alt="" data-og-width="1896" width="1896" data-og-height="1086" height="1086" data-path="images/sso-auth0-acs.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/sso-auth0-acs.png?w=280&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=1c4f82abaaa4b86f493462d88f1312eb 280w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/sso-auth0-acs.png?w=560&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=62992c0ea81165e8d60847439397c703 560w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/sso-auth0-acs.png?w=840&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=b7435c4bcb77d9bbd1cffcee4b191db9 840w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/sso-auth0-acs.png?w=1100&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=bfe2625eb2d4b3d7e4c8bf8b7931c408 1100w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/sso-auth0-acs.png?w=1650&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=128e0b34152244deca91b056d9b8518b 1650w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/sso-auth0-acs.png?w=2500&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=a666b0591d6b9fb80d0e06e133493f2e 2500w" />
+      <img alt="" />
   </Step>
 
   <Step title="Upload Identity Provider Metadata">
@@ -14306,7 +14609,7 @@ This guide provides detailed instructions on how to set up a custom SAML applica
     * **Shortcut SSO login URL**:\
       `https://app.aptible.com/sso/xxxxx-xxx-xxxx-xxxx-xxxxxxxxxxxx`
 
-        <img src="https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/sso-auth0-shortcut.png?fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=8289a856a132dd07065773172568d613" alt="" data-og-width="2308" width="2308" data-og-height="812" height="812" data-path="images/sso-auth0-shortcut.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/sso-auth0-shortcut.png?w=280&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=6ce3a01319d31522b7baf9d217e5241c 280w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/sso-auth0-shortcut.png?w=560&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=16bd5a5268ce0a2545ddb8a996cf0e3f 560w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/sso-auth0-shortcut.png?w=840&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=1d0e87c106f31bc47621eea332a8d22a 840w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/sso-auth0-shortcut.png?w=1100&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=9039f2f91bc1339477512b7caff68ed0 1100w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/sso-auth0-shortcut.png?w=1650&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=a311221b3380daaa05e5944f33ead733 1650w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/sso-auth0-shortcut.png?w=2500&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=1e307bfef28e306ee39761f00af5607f 2500w" />
+      <img alt="" />
   </Step>
 
   <Step title="Configuring SAML2 in Auth0">
@@ -14320,7 +14623,7 @@ This guide provides detailed instructions on how to set up a custom SAML applica
       (this is the Aptible value of **Single Sign-On URL - Assertion Consumer Service \[ACS] URL**).
     * Scroll down to **Advanced Settings -> Grant Types**. Select the grant type appropriate for your Auth0 configuration. Save the changes. Re-enable the **SAML2 WEB APP** add-on by toggling it on. Switch to the **Settings** tab. Copy the following into the **Settings** space (ensure that nothing else remains there):
 
-    ```json  theme={null}
+    ```json theme={null}
     { 
       "nameIdentifierProbes": [ 
         "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress" 
@@ -14328,7 +14631,7 @@ This guide provides detailed instructions on how to set up a custom SAML applica
     }
     ```
 
-        <img src="https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/sso-auth0-settings.png?fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=94fa509f5550f092193d2e747ece1459" alt="" data-og-width="1948" width="1948" data-og-height="1164" height="1164" data-path="images/sso-auth0-settings.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/sso-auth0-settings.png?w=280&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=96669cd2d78714193f28a28e4179634e 280w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/sso-auth0-settings.png?w=560&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=92ffd9c7ac786e2f1a6677bb94bd3ac9 560w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/sso-auth0-settings.png?w=840&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=37e9c4aec77df5e89fd561c5576fc26b 840w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/sso-auth0-settings.png?w=1100&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=f73f4ec9830aa66f021a575474c61ec0 1100w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/sso-auth0-settings.png?w=1650&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=b9924c23baf9896d97d01343d92936f3 1650w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/sso-auth0-settings.png?w=2500&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=8db0aade344d1d0709695191290ce7a6 2500w" />
+    <img alt="" />
   </Step>
 
   <Step title="Finalize the Setup">
@@ -14336,7 +14639,7 @@ This guide provides detailed instructions on how to set up a custom SAML applica
 
     * Ensure that the correct users have access to your app (specific to your setup). Save the changes.
 
-        <img src="https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/sso-auth0-itworks.png?fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=9170e3b4a44e01fe97112e8ac2e1f0e6" alt="" data-og-width="1888" width="1888" data-og-height="1676" height="1676" data-path="images/sso-auth0-itworks.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/sso-auth0-itworks.png?w=280&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=0811fe2e651ec75461592700acc6b49c 280w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/sso-auth0-itworks.png?w=560&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=44c4b1ffad918687455296cec9c7c8a0 560w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/sso-auth0-itworks.png?w=840&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=6cf7235519f8438e016790da754c6369 840w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/sso-auth0-itworks.png?w=1100&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=de282653986ac0934654bc8b43281044 1100w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/sso-auth0-itworks.png?w=1650&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=63b5095418db257aad6c786f7d8a6334 1650w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/sso-auth0-itworks.png?w=2500&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=1d36f91d8f6c6fd8731948f6214982ea 2500w" />
+      <img alt="" />
   </Step>
 </Steps>
 
@@ -14396,7 +14699,7 @@ Source: https://www.aptible.com/docs/how-to-guides/troubleshooting/aptible-suppo
 
 
 
-<Cardgroup cols={2}>
+<Cardgroup>
   <Card title="Troubleshooting Guides" icon="magnifying-glass" href="https://www.aptible.com/docs/common-erorrs">
     Hitting an Error? Read our troubleshooting guides for common errors
 
@@ -14606,7 +14909,7 @@ Source: https://www.aptible.com/docs/how-to-guides/troubleshooting/common-errors
 
 If you are connecting to a [MongoDB](/core-concepts/managed-databases/supported-databases/mongodb) [Database](/core-concepts/managed-databases/managing-databases/overview) on Aptible, either through your app or a [Database Tunnel](/core-concepts/managed-databases/connecting-databases/database-tunnels), you might hit an error such as this one:
 
-```sql  theme={null}
+```sql theme={null}
 MongoDB shell version: 3.2.1
 connecting to: 172.17.0.2:27017/db
 2016-02-08T10:43:40.421+0000 E QUERY    [thread1] Error: network error while attempting to run command 'isMaster' on host '172.17.0.2:27017'  :
@@ -14634,7 +14937,7 @@ Connection URLs generated by Aptible include the `ssl=true` parameter, which sho
 
 The MongoDB CLI client does not accept database URLs. Use the following to connect:
 
-```bash  theme={null}
+```bash theme={null}
 mongo --ssl \
         --username aptible --password "$PASSWORD" \
         --host "$HOST" --port "$PORT"
@@ -14720,7 +15023,7 @@ Source: https://www.aptible.com/docs/how-to-guides/troubleshooting/common-errors
 
 When pushing to your [App](/core-concepts/apps/overview)'s [Git Remote](/how-to-guides/app-guides/deploy-from-git#git-remote), you may encounter a Permission denied error. Below are a few common reasons this may occur and steps to resolve them.
 
-```sql  theme={null}
+```sql theme={null}
 Pushing to git@beta.aptible.com:[environment]/[app].git
 Permission denied (publickey).
 fatal: Could not read from remote repository.
@@ -14778,7 +15081,7 @@ Source: https://www.aptible.com/docs/how-to-guides/troubleshooting/common-errors
 
 You may encounter the following error messages when running a `git push` from a CI platform, such as Circle CI, Travis CI, Jenkins and others:
 
-```bash  theme={null}
+```bash theme={null}
 error: Could not read COMMIT_HASH
 fatal: revision walk setup failed
 fatal: reference is not a tree: COMMIT_HASH
@@ -14798,13 +15101,13 @@ Shallow clones are often used by CI platforms to make builds faster, but you can
 
 To solve this problem, update your build script to run this command before pushing to Aptible:
 
-```bash  theme={null}
+```bash theme={null}
 git fetch --unshallow || true
 ```
 
 If your CI platform uses an old version of git, `--unshallow` may not be available. In that case, you can try fetching a number of commits large enough to fetch all commits through to the repository root, thus unshallowing your repository:
 
-```bash  theme={null}
+```bash theme={null}
 git fetch --depth=1000000
 ```
 
@@ -15234,7 +15537,7 @@ This command deprovisions an [App](/core-concepts/apps/overview).
 
 ```
 Usage:
-  aptible apps:deprovision
+  aptible apps:deprovision [--app APP]
 
 Options:
       [--app=APP]
@@ -15272,7 +15575,7 @@ This command [scales](/core-concepts/scaling/overview) App [Services](/core-conc
 
 ```
 Usage:
-  aptible apps:scale SERVICE [--container-count COUNT] [--container-size SIZE_MB] [--container-profile PROFILE]
+  aptible apps:scale [--app APP] SERVICE [--container-count COUNT] [--container-size SIZE_MB] [--container-profile PROFILE]
 
 Options:
       [--app=APP]
@@ -15285,7 +15588,7 @@ Options:
 
 # Examples
 
-```shell  theme={null}
+```shell theme={null}
 # Scale a service up or down
 aptible apps:scale --app "$APP_HANDLE" SERVICE \
         --container-count COUNT \
@@ -15333,7 +15636,7 @@ Options:
 
 # Examples
 
-```shell  theme={null}
+```shell theme={null}
 aptible backup:list "$DB_HANDLE"
 ```
 
@@ -15409,7 +15712,7 @@ Options:
 
 ## Restore a Backup
 
-```shell  theme={null}
+```shell theme={null}
 aptible backup:restore "$BACKUP_ID"
 ```
 
@@ -15417,7 +15720,7 @@ aptible backup:restore "$BACKUP_ID"
 
 You can also customize the new [Database](/core-concepts/managed-databases/overview) that will be created from the Backup:
 
-```shell  theme={null}
+```shell theme={null}
 aptible backup:restore "$BACKUP_ID" \
         --handle "$NEW_DATABASE_HANDLE" \
         --container-size "$CONTAINER_SIZE_MB" \
@@ -15439,7 +15742,7 @@ Therefore, there are two situations where the default handle can be invalid:
 
 You can restore Backups across [Environments](/core-concepts/architecture/environments) as long as they are hosted on the same type of [Stack](/core-concepts/architecture/stacks). You can only restore Backups from a [Dedicated Stack](/core-concepts/architecture/stacks#dedicated-stacks) in another Dedicated Stack and backups from a Shared Stack in another Shared Stack. Since Environments are globally unique, you do not need to specify the Stack in your command:
 
-```shell  theme={null}
+```shell theme={null}
 aptible backup:restore "$BACKUP_ID" \
         --environment "$ENVIRONMENT_HANDLE"
 ```
@@ -15511,7 +15814,7 @@ This command prints an App's [Configuration](/core-concepts/apps/deploying-apps/
 
 ```
 Usage:
-  aptible config
+  aptible config [--app APP]
 
 Options:
       [--app=APP]
@@ -15525,7 +15828,7 @@ Options:
 
 # Examples
 
-```shell  theme={null}
+```shell theme={null}
 aptible config --app "$APP_HANDLE"
 ```
 
@@ -15539,9 +15842,9 @@ This command is an alias to [`aptible config:set`](/reference/aptible-cli/cli-co
 
 # Synopsis
 
-```javascript  theme={null}
+```javascript theme={null}
 Usage:
-  aptible config:add [VAR1=VAL1] [VAR2=VAL2] [...]
+  aptible config:add [--app APP] [VAR1=VAL1] [VAR2=VAL2] [...]
 
 Options:
       [--app=APP]
@@ -15561,7 +15864,7 @@ This command prints a single value from the App's [Configuration](/core-concepts
 
 ```
 Usage:
-  aptible config:get [VAR1]
+  aptible config:get [--app APP] [VAR1]
 
 Options:
       [--app=APP]
@@ -15571,7 +15874,7 @@ Options:
 
 # Examples
 
-```shell  theme={null}
+```shell theme={null}
 aptible config:get FORCE_SSL --app "$APP_HANDLE"
 ```
 
@@ -15587,7 +15890,7 @@ This command is an alias to [`aptible config:unset`](/reference/aptible-cli/cli-
 
 ```
 Usage:
-  aptible config:rm [VAR1][VAR2][...]
+  aptible config:rm [--app APP] [VAR1][VAR2][...]
 
 Options:
  [--app=APP]
@@ -15607,7 +15910,7 @@ This command sets [Configuration](/core-concepts/apps/deploying-apps/configurati
 
 ```
 Usage:
-  aptible config:set [VAR1=VAL1] [VAR2=VAL2] [...]
+  aptible config:set [--app APP] [VAR1=VAL1] [VAR2=VAL2] [...]
 
 Options:
       [--app=APP]
@@ -15619,7 +15922,7 @@ Options:
 
 ## Setting variables
 
-```shell  theme={null}
+```shell theme={null}
 aptible config:set --app "$APP_HANDLE" \
         VARIABLE_1=VALUE_1 \
         VARIABLE_2=VALUE_2
@@ -15629,7 +15932,7 @@ aptible config:set --app "$APP_HANDLE" \
 
 > 📘 Setting variables from a file is a convenient way to set complex variables that contain spaces, newlines, or other special characters.
 
-```shell  theme={null}
+```shell theme={null}
 # This will read file.txt and set it as VARIABLE
 
 aptible config:set --app "$APP_HANDLE" \
@@ -15638,7 +15941,7 @@ aptible config:set --app "$APP_HANDLE" \
 
 > ❗️ Warning: When setting variables from a file using PowerShell, you need to use `Get-Content` with the `-Raw` option to preserve newlines.
 
-```shell  theme={null}
+```shell theme={null}
 aptible config:set --app "$APP_HANDLE" \
         VARIABLE=$(Get-Content file.txt -Raw)
 ```
@@ -15647,7 +15950,7 @@ aptible config:set --app "$APP_HANDLE" \
 
 To delete a variable, set it to an empty value:
 
-```shell  theme={null}
+```shell theme={null}
 aptible config:set --app "$APP_HANDLE" \
         VARIABLE=
 ```
@@ -15664,14 +15967,14 @@ This command is used to remove [Configuration](/core-concepts/apps/deploying-app
 
 > You can also use [`aptible config:set`](/reference/aptible-cli/cli-commands/cli-config-set) to set and remove Configuration variables at the same time by passing an empty value:
 
-```shell  theme={null}
+```shell theme={null}
 aptible config:set --app "$APP_HANDLE" \
         VAR_TO_ADD=some VAR_TO_REMOVE=
 ```
 
 # Examples
 
-```shell  theme={null}
+```shell theme={null}
 aptible config:unset --app "$APP_HANDLE" \
         VAR_TO_REMOVE
 ```
@@ -15680,7 +15983,7 @@ aptible config:unset --app "$APP_HANDLE" \
 
 ```
 Usage:
-  aptible config:unset [VAR1] [VAR2] [...]
+  aptible config:unset [--app APP] [VAR1] [VAR2] [...]
 
 Options:
       [--app=APP]
@@ -15710,7 +16013,7 @@ Options:
 
 # Examples
 
-```shell  theme={null}
+```shell theme={null}
 aptible db:backup "$DB_HANDLE"
 ```
 
@@ -15778,7 +16081,7 @@ You can specify the type using the `--type` option. This parameter defaults to `
 
 For example, to create a [Redis](/core-concepts/managed-databases/supported-databases/redis) database:
 
-```shell  theme={null}
+```shell theme={null}
 aptible db:create --type redis
 ```
 
@@ -15786,7 +16089,7 @@ aptible db:create --type redis
 
 Use the `--version` flag in combination with `--type` to use a specific version:
 
-```shell  theme={null}
+```shell theme={null}
 aptible db:create --type postgresql --version 9.6
 ```
 
@@ -15794,13 +16097,13 @@ aptible db:create --type postgresql --version 9.6
 
 #### Create a new Database with a custom Disk Size
 
-```shell  theme={null}
+```shell theme={null}
 aptible db:create --disk-size 20 "$DB_HANDLE"
 ```
 
 #### Create a new Database with a custom Container Size
 
-```shell  theme={null}
+```shell theme={null}
 aptible db:create --container-size 2048 "$DB_HANDLE"
 ```
 
@@ -15987,21 +16290,21 @@ Options:
 
 #### Create a replica with a custom Disk Size
 
-```shell  theme={null}
+```shell theme={null}
 aptible db:replicate "$DB_HANDLE" "$REPLICA_HANDLE" \
             --disk-size 20
 ```
 
 #### Create a replica with a custom Container Size
 
-```shell  theme={null}
+```shell theme={null}
 aptible db:replicate "$DB_HANDLE" "$REPLICA_HANDLE" \
             --container-size 2048
 ```
 
 #### Create a replica with a custom Container and Disk Size
 
-```shell  theme={null}
+```shell theme={null}
 aptible db:replicate "$DB_HANDLE" "$REPLICA_HANDLE" \
             --container-size 2048 \
             --disk-size 20
@@ -16009,7 +16312,7 @@ aptible db:replicate "$DB_HANDLE" "$REPLICA_HANDLE" \
 
 #### Create an upgraded replica for logical replication
 
-```shell  theme={null}
+```shell theme={null}
 aptible db:replicate "$DB_HANDLE" "$REPLICA_HANDLE" \
             --logical --version 12
 ```
@@ -16042,7 +16345,7 @@ The replica does not wait for the initial data sync to complete before coming on
 
 When run on the replica, the following query will list all tables that are not in the `replicating` state and, therefore, have not finished syncing the initial data from the source Database.
 
-```postgresql  theme={null}
+```postgresql theme={null}
 SELECT * FROM pglogical.local_sync_status WHERE NOT sync_status = 'r';
 ```
 
@@ -16077,21 +16380,21 @@ Options:
 
 #### Resize the Container
 
-```shell  theme={null}
+```shell theme={null}
 aptible db:restart "$DB_HANDLE" \
         --container-size 2048
 ```
 
 #### Resize the Disk
 
-```shell  theme={null}
+```shell theme={null}
 aptible db:restart "$DB_HANDLE" \
         --disk-size 120
 ```
 
 #### Resize Container and Disk
 
-```shell  theme={null}
+```shell theme={null}
 aptible db:restart "$DB_HANDLE" \
         --container-size 2048 \
         --disk-size 120
@@ -16137,13 +16440,13 @@ Options:
 
 To tunnel using your Database's default Database Credential:
 
-```shell  theme={null}
+```shell theme={null}
 aptible db:tunnel "$DB_HANDLE"
 ```
 
 To tunnel using a specific Database Credential:
 
-```shell  theme={null}
+```shell theme={null}
 aptible db:tunnel "$DB_HANDLE" --type "$CREDENTIAL_TYPE"
 ```
 
@@ -16197,15 +16500,15 @@ Docker image names are only supported in image:tag; sha256 format is not support
 
 ```
 Usage:
-  aptible deploy [OPTIONS] [VAR1=VAL1] [VAR2=VAL2] [...]
+  aptible deploy [--app APP] [OPTIONS] [VAR1=VAL1] [VAR2=VAL2] [...]
 
 Options:
       [--git-commitish=GIT_COMMITISH]                                  # Deploy a specific git commit or branch: the commitish must have been pushed to Aptible beforehand
       [--git-detach], [--no-git-detach]                                # Detach this app from its git repository: its Procfile, Dockerfile, and .aptible.yml will be ignored until you deploy again with git
-      [--docker-image=APTIBLE_DOCKER_IMAGE]                            # Shorthand for APTIBLE_DOCKER_IMAGE=...
-      [--private-registry-email=APTIBLE_PRIVATE_REGISTRY_EMAIL]        # Shorthand for APTIBLE_PRIVATE_REGISTRY_EMAIL=...
-      [--private-registry-username=APTIBLE_PRIVATE_REGISTRY_USERNAME]  # Shorthand for APTIBLE_PRIVATE_REGISTRY_USERNAME=...
-      [--private-registry-password=APTIBLE_PRIVATE_REGISTRY_PASSWORD]  # Shorthand for APTIBLE_PRIVATE_REGISTRY_PASSWORD=...
+      [--docker-image=DOCKER_IMAGE]                                    # The docker image to deploy. If none specified, the currently deployed image will be pulled again
+      [--private-registry-username=USERNAME]                           # Username for Docker images located in a private repository
+      [--private-registry-password=PASSWORD]                           # Password for Docker images located in a private repository
+      [--private-registry-email=EMAIL]                                 # This parameter is deprecated
       [--app=APP]
   --env, [--environment=ENVIRONMENT]
   -r, [--remote=REMOTE]
@@ -16235,13 +16538,13 @@ Options:
 
 #### Create a new Database Endpoint
 
-```shell  theme={null}
+```shell theme={null}
 aptible endpoints:database:create  "$DATABASE_HANDLE"
 ```
 
 #### Create a new Database Endpoint with IP Filtering
 
-```shell  theme={null}
+```shell theme={null}
 aptible endpoints:database:create  "$DATABASE_HANDLE" \
         --ip-whitelist 1.1.1.1/1 2.2.2.2
 ```
@@ -16296,7 +16599,7 @@ The examples below `$ENDPOINT_HOSTNAME` reference the [Endpoint Hostname](/core-
 
 #### Deprovision an App Endpoint
 
-```shell  theme={null}
+```shell theme={null}
 aptible endpoints:deprovision \
         --app "$APP_HANDLE" \
         "$ENDPOINT_HOSTNAME"
@@ -16304,7 +16607,7 @@ aptible endpoints:deprovision \
 
 #### Deprovision a Database Endpoint
 
-```shell  theme={null}
+```shell theme={null}
 aptible endpoints:deprovision \
         --database "$DATABASE_HANDLE" \
         "$ENDPOINT_HOSTNAME"
@@ -16353,7 +16656,7 @@ In the example below, `$CERTIFICATE_FINGERPRINT` is the SHA-256 fingerprint of a
 
 > ❗️ Warning: Everything after the `--ports` argument is assumed to be part of the list of ports, so you need to pass it last.
 
-```shell  theme={null}
+```shell theme={null}
 aptible endpoints:grpc:create \
         "$SERVICE" \
         --app "$APP_HANDLE" \
@@ -16438,7 +16741,7 @@ In all the examples below, `$SERVICE` represents the name of a [Service](/core-c
 
 In the example below, `$CERTIFICATE_FILE` is the path to a file containing a PEM-formatted certificate bundle, and `$PRIVATE_KEY_FILE` is the path to a file containing the matching private key (see [Format](/core-concepts/apps/connecting-to-apps/app-endpoints/custom-certificate#format) for more information).
 
-```shell  theme={null}
+```shell theme={null}
 aptible endpoints:https:create \
         --app "$APP_HANDLE" \
         --certificate-file "$CERTIFICATE_FILE" \
@@ -16452,7 +16755,7 @@ In the example below, `$CERTIFICATE_FINGERPRINT` is the SHA-256 fingerprint of a
 
 > 📘 Tip: Use the Dashboard to easily locate the Certificate Fingerprint for a given Certificate.
 
-```shell  theme={null}
+```shell theme={null}
 aptible endpoints:https:create \
         --app "$APP_HANDLE" \
         --certificate-fingerprint "$CERTIFICATE_FINGERPRINT" \
@@ -16467,7 +16770,7 @@ After initial provisioning completes, the CLI will return the [Managed HTTPS Val
 
 Once you've created these records, use the [`aptible endpoints:renew`](/reference/aptible-cli/cli-commands/cli-endpoints-renew) to complete provisioning.
 
-```shell  theme={null}
+```shell theme={null}
 aptible endpoints:https:create \
         --app "$APP_HANDLE" \
         --managed-tls \
@@ -16477,7 +16780,7 @@ aptible endpoints:https:create \
 
 #### Create a new Endpoint using a [Default Domain](/core-concepts/apps/connecting-to-apps/app-endpoints/default-domain)
 
-```shell  theme={null}
+```shell theme={null}
 aptible endpoints:https:create \
         --app "$APP_HANDLE" \
         --default-domain \
@@ -16486,7 +16789,7 @@ aptible endpoints:https:create \
 
 #### Create a new Endpoint using a custom Container Port and an existing Certificate
 
-```shell  theme={null}
+```shell theme={null}
 aptible endpoints:https:create \
         --app "$APP_HANDLE" \
         --certificate-fingerprint "$CERTIFICATE_FINGERPRINT" \
@@ -16555,14 +16858,14 @@ Options:
 
 #### List Endpoints for an App
 
-```shell  theme={null}
+```shell theme={null}
 aptible endpoints:list \
         --app "$APP_HANDLE"
 ```
 
 #### List Endpoints for a Database
 
-```shell  theme={null}
+```shell theme={null}
 aptible endpoints:list \
         --database "$DATABASE_HANDLE"
 ```
@@ -16575,6 +16878,8 @@ Hostname: elb-foobar-123.aptible.in
 Status: provisioned
 Type: https
 Port: default
+Load Balancing Algorithm Type: round_robin
+Shared: false
 Internal: false
 IP Whitelist: all traffic
 Default Domain Enabled: false
@@ -16644,7 +16949,7 @@ In all the examples below, `$SERVICE` represents the name of a [Service](/core-c
 
 #### Create a new Endpoint
 
-```shell  theme={null}
+```shell theme={null}
 aptible endpoints:tcp:create \
         --app "$APP_HANDLE" \
         "$SERVICE"
@@ -16652,7 +16957,7 @@ aptible endpoints:tcp:create \
 
 #### Create a new Endpoint using a [Default Domain](/core-concepts/apps/connecting-to-apps/app-endpoints/default-domain)
 
-```shell  theme={null}
+```shell theme={null}
 aptible endpoints:tcp:create \
         --app "$APP_HANDLE" \
         --default-domain \
@@ -16665,7 +16970,7 @@ aptible endpoints:tcp:create \
 
 > The `--ports` argument accepts a list of ports, so you need to pass it last.
 
-```shell  theme={null}
+```shell theme={null}
 aptible endpoints:tcp:create \
         --app "$APP_HANDLE" \
         "$SERVICE" \
@@ -16742,7 +17047,7 @@ In the example below, `$CERTIFICATE_FINGERPRINT` is the SHA-256 fingerprint of a
 
 > ❗️ Warning: Everything after the `--ports` argument is assumed to be part of the list of ports, so you need to pass it last.
 
-```shell  theme={null}
+```shell theme={null}
 aptible endpoints:tls:create \
         "$SERVICE" \
         --app "$APP_HANDLE" \
@@ -17192,13 +17497,13 @@ Options:
 
 ## App logs
 
-```shell  theme={null}
+```shell theme={null}
 aptible logs --app "$APP_HANDLE"
 ```
 
 ## Database logs
 
-```shell  theme={null}
+```shell theme={null}
 aptible logs --database "$DATABASE_HANDLE"
 ```
 
@@ -17245,7 +17550,7 @@ Retrieves container logs from an S3 archive in your own AWS account. You must pr
 
 By default, no logs are downloaded. Matching file names are printed on the screen.
 
-```shell  theme={null}
+```shell theme={null}
 aptible logs_from_archive --database-id "$ID" \
         --stack "$STACK" \
         --region "$REGION" \
@@ -17256,7 +17561,7 @@ aptible logs_from_archive --database-id "$ID" \
 
 You can specify a date range in UTC to limit the search to logs emitted during a time period.
 
-```shell  theme={null}
+```shell theme={null}
 aptible logs_from_archive --database-id "$ID" --start-date "2022-08-30" --end-date "2022-10-03" \
         --stack "$STACK" \
         --region "$REGION" \
@@ -17269,7 +17574,7 @@ Once you have identified the files you wish to download, add the `--download-loc
 
 > ❗️ Warning: Since container logs may include PHI or sensitive credentials, please choose the download location carefully.
 
-```shell  theme={null}
+```shell theme={null}
 aptible logs_from_archive --app-id "$ID" --download-location "$LOCAL_PATH" \
         --stack "$STACK" \
         --region "$REGION" \
@@ -17280,7 +17585,7 @@ aptible logs_from_archive --app-id "$ID" --download-location "$LOCAL_PATH" \
 
 You can search for logs for a specific container if you know the container ID.
 
-```shell  theme={null}
+```shell theme={null}
 aptible logs_from_archive --container-id "$ID" \
         --stack "$STACK" \
         --region "$REGION" \
@@ -17391,6 +17696,48 @@ Options:
 ```
 
 
+# aptible metric_drain:create:influxdb:customv2
+Source: https://www.aptible.com/docs/reference/aptible-cli/cli-commands/cli-metric-drain-create-influxdb-customv2
+
+
+
+This command lets you create a [Metric Drain](/core-concepts/observability/metrics/metrics-drains/overview) to forward your container metrics to an InfluxDB v2 database hosted outside Aptible.
+
+> 📘 This command is for InfluxDB v2 destinations, which use organizations, buckets, and tokens for authentication. For InfluxDB v1 (which uses databases, usernames, and passwords), use [metric\_drain:create:influxdb:custom](/reference/aptible-cli/cli-commands/cli-metric-drain-create-influxdb-custom).
+
+# Synopsis
+
+```
+Usage:
+  aptible metric_drain:create:influxdb:customv2 HANDLE --org ORGANIZATION --token INFLUX_TOKEN --url URL_INCLUDING_PORT --bucket INFLUX_BUCKET_NAME --environment ENVIRONMENT
+
+Options:
+  [--bucket=BUCKET]
+  [--org=ORG]
+  [--token=TOKEN]
+  [--url=URL]
+  --env, [--environment=ENVIRONMENT]
+```
+
+# Examples
+
+```bash theme={null}
+aptible metric_drain:create:influxdb:customv2 my-influxdb-v2-drain \
+  --org my-org \
+  --token my-influxdb-auth-token \
+  --url https://influxdb.example.com:8086 \
+  --bucket production-metrics \
+  --environment production
+```
+
+# Related Commands
+
+* [aptible metric\_drain:list](/reference/aptible-cli/cli-commands/cli-metric-drain-list) - List all metric drains
+* [aptible metric\_drain:create:influxdb](/reference/aptible-cli/cli-commands/cli-metric-drain-create-influxdb) - Create a metric drain for InfluxDB hosted on Aptible
+* [aptible metric\_drain:create:influxdb:custom](/reference/aptible-cli/cli-commands/cli-metric-drain-create-influxdb-custom) - Create a metric drain for external InfluxDB v1
+* [aptible metric\_drain:deprovision](/reference/aptible-cli/cli-commands/cli-metric-drain-deprovision) - Remove a metric drain
+
+
 # aptible metric_drain:deprovision
 Source: https://www.aptible.com/docs/reference/aptible-cli/cli-commands/cli-metric-drain-deprovision
 
@@ -17472,6 +17819,101 @@ Usage:
 ```
 
 
+# aptible organizations
+Source: https://www.aptible.com/docs/reference/aptible-cli/cli-commands/cli-organizations
+
+
+
+This command lists all organizations you have access to, along with your roles in each organization.
+
+# Synopsis
+
+```
+Usage:
+  aptible organizations
+
+Options:
+  None
+```
+
+# Output
+
+The command displays each organization with its ID, name, and your roles within that organization.
+
+## Text Format
+
+By default, the command outputs in a human-readable text format:
+
+```
+Id: 5ca1ab1e-0000-0000-0000-000000000000
+Name: Acme Prod
+Roles:
+  Id: 5afe5afe-0000-0000-0000-000000000000
+  Name: Deploy Owners
+
+  Id: acce5500-0000-0000-0000-000000000000
+  Name: Read Only
+
+Id: cafecafe-cafe-cafe-cafe-cafecafecafe
+Name: Acme Test
+Roles:
+  Id: c0ffee50-0000-0000-0000-000000000000
+  Name: Account Owners
+```
+
+## JSON Format
+
+Set the `APTIBLE_OUTPUT_FORMAT=json` environment variable for machine-readable JSON output:
+
+```shell theme={null}
+APTIBLE_OUTPUT_FORMAT=json aptible organizations
+```
+
+```json theme={null}
+[
+  {
+    "id": "5ca1ab1e-0000-0000-0000-000000000000",
+    "name": "Acme Prod",
+    "roles": [
+      {
+        "id": "5afe5afe-0000-0000-0000-000000000000",
+        "name": "Deploy Owners"
+      },
+      {
+        "id": "acce5500-0000-0000-0000-000000000000",
+        "name": "Read Only"
+      }
+    ]
+  },
+  {
+    "id": "cafecafe-cafe-cafe-cafe-cafecafecafe",
+    "name": "Acme Test",
+    "roles": [
+      {
+        "id": "c0ffee50-0000-0000-0000-000000000000",
+        "name": "Account Owners"
+      }
+    ]
+  }
+]
+```
+
+# Examples
+
+```shell theme={null}
+aptible organizations
+```
+
+```shell theme={null}
+APTIBLE_OUTPUT_FORMAT=json aptible organizations
+```
+
+# Related Commands
+
+* [aptible environment:list](/reference/aptible-cli/cli-commands/cli-environment-list) - List environments within an organization
+* [aptible login](/reference/aptible-cli/cli-commands/cli-login) - Log in to Aptible
+
+
 # aptible rebuild
 Source: https://www.aptible.com/docs/reference/aptible-cli/cli-commands/cli-rebuild
 
@@ -17483,7 +17925,7 @@ This command rebuilds an [App](/core-concepts/apps/overview) and restarts its [S
 
 ```
 Usage:
-  aptible rebuild
+  aptible rebuild [--app APP]
 
 Options:
       [--app=APP]
@@ -17503,7 +17945,7 @@ This command restarts an [App](/core-concepts/apps/overview) and all its associa
 
 ```
 Usage:
-  aptible restart
+  aptible restart [--app APP]
 
 Options:
       [--simulate-oom], [--no-simulate-oom]  # Add this flag to simulate an OOM restart and test your app's response (not recommended on production apps).
@@ -17515,7 +17957,7 @@ Options:
 
 # Examples
 
-```shell  theme={null}
+```shell theme={null}
 aptible restart --app "$APP_HANDLE"
 ```
 
@@ -17531,7 +17973,7 @@ This command lists all [Services](/core-concepts/apps/deploying-apps/services) f
 
 ```
 Usage:
-  aptible services
+  aptible services [--app APP]
 
 Options:
       [--app=APP]
@@ -17553,7 +17995,7 @@ For more information, see the [Autoscaling documentation](/core-concepts/scaling
 
 ```
 Usage:
-  aptible services:autoscaling_policy SERVICE
+  aptible services:autoscaling_policy [--app APP] SERVICE
 
 Options:
       [--app=APP]
@@ -17575,7 +18017,7 @@ For more information, see the [Autoscaling documentation](/core-concepts/scaling
 
 ```
 Usage:
-  aptible services:autoscaling_policy:set SERVICE --autoscaling-type (horizontal|vertical) [--metric-lookback-seconds SECONDS] [--percentile PERCENTILE] [--post-scale-up-cooldown-seconds SECONDS] [--post-scale-down-cooldown-seconds SECONDS] [--post-release-cooldown-seconds SECONDS] [--mem-cpu-ratio-r-threshold RATIO] [--mem-cpu-ratio-c-threshold RATIO] [--mem-scale-up-threshold THRESHOLD] [--mem-scale-down-threshold THRESHOLD] [--minimum-memory MEMORY] [--maximum-memory MEMORY] [--min-cpu-threshold THRESHOLD] [--max-cpu-threshold THRESHOLD] [--min-containers CONTAINERS] [--max-containers CONTAINERS] [--scale-up-step STEPS] [--scale-down-step STEPS]
+  aptible services:autoscaling_policy:set [--app APP] SERVICE --autoscaling-type (horizontal|vertical) [--metric-lookback-seconds SECONDS] [--percentile PERCENTILE] [--post-scale-up-cooldown-seconds SECONDS] [--post-scale-down-cooldown-seconds SECONDS] [--post-release-cooldown-seconds SECONDS] [--mem-cpu-ratio-r-threshold RATIO] [--mem-cpu-ratio-c-threshold RATIO] [--mem-scale-up-threshold THRESHOLD] [--mem-scale-down-threshold THRESHOLD] [--minimum-memory MEMORY] [--maximum-memory MEMORY] [--min-cpu-threshold THRESHOLD] [--max-cpu-threshold THRESHOLD] [--min-containers CONTAINERS] [--max-containers CONTAINERS] [--scale-up-step STEPS] [--scale-down-step STEPS]
 
 Options:
       [--app=APP]
@@ -17614,7 +18056,7 @@ This command lets you configure [Services](/core-concepts/apps/deploying-apps/se
 
 ```
 Usage:
-  aptible services:settings [--app APP] SERVICE [--force-zero-downtime|--no-force-zero-downtime] [--simple-health-check|--no-simple-health-check] [--stop-timeout SECONDS]
+  aptible services:settings [--app APP] SERVICE [--force-zero-downtime|--no-force-zero-downtime] [--simple-health-check|--no-simple-health-check] [--restart-free-scaling|--no-restart-free-scaling] [--stop-timeout SECONDS]
 
 Options:
       [--app=APP]
@@ -17622,18 +18064,19 @@ Options:
   -r, [--remote=REMOTE]
       [--force-zero-downtime|--no-force-zero-downtime]
       [--simple-health-check|--no-simple-health-check]
+      [--restart-free-scaling|--no-restart-free-scaling]
       [--stop-timeout=SECONDS]
 ```
 
 # Examples
 
-```shell  theme={null}
+```shell theme={null}
 aptible services:settings --app "$APP_HANDLE" SERVICE \
         --force-zero-downtime \
         --simple-health-check
 ```
 
-```shell  theme={null}
+```shell theme={null}
 aptible services:settings --app "$APP_HANDLE" SERVICE \
         --stop-timeout 60
 ```
@@ -17645,6 +18088,10 @@ For Services without endpoints, you can force a zero downtime deployment strateg
 #### Simple Health Check
 
 When enabled, instead of using Docker healthchecks, Aptible will ensure your container can stay up for 30 seconds before continuing the deployment.
+
+#### Restart Free Scaling
+
+When enabled, scaling operations that only change the number of containers will not restart existing containers.
 
 
 # aptible ssh
@@ -17658,7 +18105,7 @@ This command creates [Ephemeral SSH Sessions](/core-concepts/apps/connecting-to-
 
 ```
 Usage:
-  aptible ssh [COMMAND]
+  aptible ssh [--app APP] [COMMAND]
 
 Options:
       [--app=APP]
@@ -17674,7 +18121,7 @@ Description:
 
 # Examples
 
-```shell  theme={null}
+```shell theme={null}
 aptible ssh --app "$APP_HANDLE"
 ```
 
@@ -17740,7 +18187,7 @@ For an overview of what features the CLI supports, see the Feature Support Matri
 
 <Tabs>
   <Tab title="MacOS">
-    [](https://omnibus-aptible-toolbelt.s3.us-east-1.amazonaws.com/aptible/omnibus-aptible-toolbelt/master/gh-64/pkg/aptible-toolbelt-0.25.0%2B20250825144101-mac-os-x.10.15.7-1.pkg)Install v0.25.0 with **Homebrew**
+    [](https://omnibus-aptible-toolbelt.s3.us-east-1.amazonaws.com/aptible/omnibus-aptible-toolbelt/master/gh-68/pkg/aptible-toolbelt-0.26.1%2B20260113191247-mac-os-x.10.15.7-1.pkg)Install v0.25.0 with **Homebrew**
 
     ```
     brew install --cask aptible
@@ -17748,7 +18195,7 @@ For an overview of what features the CLI supports, see the Feature Support Matri
   </Tab>
 
   <Tab title="Windows">
-    [Download v0.25.0 for Windows ↓](https://omnibus-aptible-toolbelt.s3.us-east-1.amazonaws.com/aptible/omnibus-aptible-toolbelt/master/gh-64/pkg/aptible-toolbelt-0.25.0%2B20250825143722~windows.6.3.9600-1-x64.msi)
+    [Download v0.25.0 for Windows ↓](https://omnibus-aptible-toolbelt.s3.us-east-1.amazonaws.com/aptible/omnibus-aptible-toolbelt/master/gh-68/pkg/aptible-toolbelt-0.26.1%2B20260113185203~windows.6.3.9600-1-x64.msi)
   </Tab>
 
   <Tab title="Debian">
@@ -17903,11 +18350,11 @@ The [Aptible Dashboard](https://app.aptible.com/login) allows you to create, vie
 
 When you first sign up for Aptible, you will first be guided through your first deployment using one of our [starter templates](/getting-started/deploy-starter-template/overview) or your own [custom code](/getting-started/deploy-custom-code). Once you’ve done so, you will be routed to your account within Aptible Dashboard.
 
-<Card title="Sign up for Aptible" icon="arrow-up-right-from-square" iconType="duotone" href="https://app.aptible.com/login" />
+<Card title="Sign up for Aptible" icon="arrow-up-right-from-square" href="https://app.aptible.com/login" />
 
 # Navigating the Dashboard
 
-<img src="https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/dashboard1.png?fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=f72e0b1043076425d38e941d536bb641" alt="" data-og-width="2560" width="2560" data-og-height="1280" height="1280" data-path="images/dashboard1.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/dashboard1.png?w=280&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=032d7633114f03a1ebe9c9cc3f13a152 280w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/dashboard1.png?w=560&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=d5045d1eab7e9346e0c30f3a5dabe02a 560w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/dashboard1.png?w=840&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=d3052972a0d848783d9c13c9040fd78f 840w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/dashboard1.png?w=1100&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=abd9365418681ffd9235e8af9d970833 1100w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/dashboard1.png?w=1650&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=aab27b77e75b168f63d3c273e51694a0 1650w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/dashboard1.png?w=2500&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=33fa7ef61c47401bdced8853fbf928b3 2500w" />
+<img alt="" />
 
 ## Organization Selector
 
@@ -17927,25 +18374,25 @@ The Aptible Dashboard is organized to provide a view of resources categorized by
 
 * Create new resources
 
-<CardGroup cols={2}>
-  <Card title="Learn more about resources" icon="book" iconType="duotone" href="https://www.aptible.com/docs/platform" />
+<CardGroup>
+  <Card title="Learn more about resources" icon="book" href="https://www.aptible.com/docs/platform" />
 
-  <Card title="View resources in the dashboard" icon="arrow-up-right-from-square" iconType="duotone" href="https://app.aptible.com/apps" />
+  <Card title="View resources in the dashboard" icon="arrow-up-right-from-square" href="https://app.aptible.com/apps" />
 </CardGroup>
 
 # Deployments
 
 The Deployments page provides a view of all deployments initiated through the Deploy tool in the Aptible Dashboard. This view includes both successful deployments and those that are currently pending.
 
-<CardGroup cols={2}>
-  <Card title="Learn more about deployments" icon="book" iconType="duotone" href="https://www.aptible.com/docs/deploying-apps" />
+<CardGroup>
+  <Card title="Learn more about deployments" icon="book" href="https://www.aptible.com/docs/deploying-apps" />
 
-  <Card title="View deployments in the dashboard" icon="arrow-up-right-from-square" iconType="duotone" href="https://app.aptible.com/deployments" />
+  <Card title="View deployments in the dashboard" icon="arrow-up-right-from-square" href="https://app.aptible.com/deployments" />
 </CardGroup>
 
 # Activity
 
-<img src="https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/dashboard2.png?fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=793092155802484246ac3d17fc72eece" alt="" data-og-width="2560" width="2560" data-og-height="1280" height="1280" data-path="images/dashboard2.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/dashboard2.png?w=280&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=e7b2fb7e4b52d51d472249eca44e5d7b 280w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/dashboard2.png?w=560&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=dcab8487c8d26a0d56c87e820015a117 560w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/dashboard2.png?w=840&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=8504b90ca529c31bea753f57795fcda0 840w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/dashboard2.png?w=1100&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=4004e2e196e5e86014048711b5840b12 1100w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/dashboard2.png?w=1650&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=41c6712d86a43d06c6f4c086205a8423 1650w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/dashboard2.png?w=2500&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=065fbc248a8bb32b2ff245f9a67b271d 2500w" />
+<img alt="" />
 
 The Activity page provides a real-time view of operations in the last seven days. Through the Activity page, you can:
 
@@ -17957,10 +18404,10 @@ The Activity page provides a real-time view of operations in the last seven days
 
 <Tip> **Troubleshooting with our team?** Link the Aptible Support team to the logs for the operation you are having trouble with </Tip>
 
-<CardGroup cols={2}>
-  <Card title="Learn more about activity" icon="book" iconType="duotone" href="https://www.aptible.com/docs/activity" />
+<CardGroup>
+  <Card title="Learn more about activity" icon="book" href="https://www.aptible.com/docs/activity" />
 
-  <Card title="View activity in the dashboard" icon="arrow-up-right-from-square" iconType="duotone" href="https://app.aptible.com/activity" />
+  <Card title="View activity in the dashboard" icon="arrow-up-right-from-square" href="https://app.aptible.com/activity" />
 </CardGroup>
 
 # Security & Compliance
@@ -17973,15 +18420,16 @@ The Security & Compliance Dashboard provides a comprehensive view of the securit
 
 * Share and export a summarized report
 
-<CardGroup cols={2}>
-  <Card title="Learn more about the Security & Compliance Dashboard" icon="book" iconType="duotone" href="https://www.aptible.com/docs/activity" />
+<CardGroup>
+  <Card title="Learn more about the Security & Compliance Dashboard" icon="book" href="https://www.aptible.com/docs/activity" />
 
-  <Card title="View Security & Compliance in the dashboard" icon="arrow-up-right-from-square" iconType="duotone" href="https://dashboard.aptible.com/controls" />
+  <Card title="View Security & Compliance in the dashboard" icon="arrow-up-right-from-square" href="https://dashboard.aptible.com/controls" />
 </CardGroup>
 
 # Deploy Tool
 
-<img src="https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/dashboard3.png?fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=f6fee36d9956f600fbe67ba7ca74c713" alt="" data-og-width="2560" width="2560" data-og-height="1280" height="1280" data-path="images/dashboard3.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/dashboard3.png?w=280&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=18f0222e31e3d1663bb41bff8efaebef 280w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/dashboard3.png?w=560&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=1b83803d7a1eb22c65e5ae0475698460 560w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/dashboard3.png?w=840&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=0125bf850a1b9ed25918f27af7d9026e 840w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/dashboard3.png?w=1100&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=12b03b5102f82be76f7043e738c32a6f 1100w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/dashboard3.png?w=1650&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=2ac899b28782ee87750f5d2911d2b8fd 1650w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/dashboard3.png?w=2500&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=2b5669ca62a427980eb6b72d315e1c07 2500w" />
+<img alt="" />
+
 The Deploy tool offers a guided experience to deploy code to a new Aptible environment. Through the Deploy tool, you can:
 
 * Configure your new environment
@@ -17990,10 +18438,10 @@ The Deploy tool offers a guided experience to deploy code to a new Aptible envir
 
 * Easily provision the necessary resources for your code: apps, databases, and endpoints
 
-<CardGroup cols={2}>
-  <Card title="Learn more about deploying with a starter template" icon="book" iconType="duotone" href="https://www.aptible.com/docs/quickstart-guides" />
+<CardGroup>
+  <Card title="Learn more about deploying with a starter template" icon="book" href="https://www.aptible.com/docs/quickstart-guides" />
 
-  <Card title="Deploy from the dashboard" icon="arrow-up-right-from-square" iconType="duotone" href="https://app.aptible.com/create" />
+  <Card title="Deploy from the dashboard" icon="arrow-up-right-from-square" href="https://app.aptible.com/create" />
 </CardGroup>
 
 # Settings
@@ -18026,10 +18474,10 @@ The Support tool empowers you to get help using the Aptible platform. With this 
 
 * View recommended documentation related to your request
 
-<CardGroup cols={2}>
-  <Card title="Learn more about Aptible Support" icon="book" iconType="duotone" href="https://www.aptible.com/docs/support" />
+<CardGroup>
+  <Card title="Learn more about Aptible Support" icon="book" href="https://www.aptible.com/docs/support" />
 
-  <Card title="Contact Aptible Support" icon="arrow-up-right-from-square" iconType="duotone" href="https://app.aptible.com/support" />
+  <Card title="Contact Aptible Support" icon="arrow-up-right-from-square" href="https://app.aptible.com/support" />
 </CardGroup>
 
 
@@ -18248,16 +18696,16 @@ Learn about Aptible's pricing
 
 The Aptible Hosted option allows organizations to provision infrastructure fully hosted by Aptible. This is ideal for organizations that prefer not to manage their own infrastructure and/or are looking to quickly get started. With this offering, the Aptible platform fee and infrastructure costs are wrapped into a simple, usage-based pricing model.
 
-<CardGroup cols={3}>
-  <Card title="Get started in minutes" icon="sparkles" iconType="duotone">
+<CardGroup>
+  <Card title="Get started in minutes" icon="sparkles">
     Instantly deploy apps & databases
   </Card>
 
-  <Card title="Simple pricing, fully on-demand" icon="play-pause" iconType="duotone">
+  <Card title="Simple pricing, fully on-demand" icon="play-pause">
     Pay-as-you-go, no contract required
   </Card>
 
-  <Card title="Fast track compliance" icon="shield-halved" iconType="duotone">
+  <Card title="Fast track compliance" icon="shield-halved">
     Infrastructure for ready for HIPAA, SOC 2, HITRUST & more
   </Card>
 </CardGroup>
@@ -18296,16 +18744,16 @@ Aptible offers discounts for Enterprise and volume agreements. All agreements re
 
 The Self Hosted offering allows companies to host the Aptible platform directly within their own AWS accounts. This is ideal for organizations that already existing AWS usage or organizations interested in host their own infrastructure. With this offering, you pay Aptible a platform fee, and your infrastructure costs are paid directly to AWS.
 
-<CardGroup cols={3}>
-  <Card title="Unified Infrastructure" icon="badge-check" iconType="duotone">
+<CardGroup>
+  <Card title="Unified Infrastructure" icon="badge-check">
     Manage your AWS infrastructure in your own account
   </Card>
 
-  <Card title="Infrastructure costs paid directly to AWS" icon="aws" iconType="duotone">
+  <Card title="Infrastructure costs paid directly to AWS" icon="aws">
     Leverage AWS discount and credit programs
   </Card>
 
-  <Card title="Full access to AWS tools" icon="unlock" iconType="duotone">
+  <Card title="Full access to AWS tools" icon="unlock">
     Unlock full access to tools and services within AWS marketplace
   </Card>
 </CardGroup>
@@ -18318,7 +18766,7 @@ All pricing for our Self Hosted offering is custom. This allows us to tailor agr
 
 All Aptible customers receive access to email support with our Customer Reliability team. Our support plans give you additional access to things like increased targetted response times, 24x7 urgent support, Slack support, and a designated technical resources from the Aptible team.
 
-<CardGroup cols={3}>
+<CardGroup>
   <Card title="Standard" icon="signal-fair">
     **\$0/mo**
 
@@ -18424,7 +18872,7 @@ For an overview of what actions the Aptible Terraform Provider supports, see the
 
 The Environment resource is used to create and manage [Environments](https://www.aptible.com/docs/core-concepts/architecture/environments) running on Aptible Deploy.
 
-```perl  theme={null}
+```perl theme={null}
 data "aptible_stack" "example" {
     name = "example-stack"
 }
@@ -18442,7 +18890,7 @@ resource "aptible_environment" "example" {
 
 If you’re already using Direct Docker Image Deployment, managing this is pretty easy. Set your Docker repo, registry username, and registry password as the configuration variables `APTIBLE_DOCKER_IMAGE`, `APTIBLE_PRIVATE_REGISTRY_USERNAME`, and `APTIBLE_PRIVATE_REGISTRY_PASSWORD`.
 
-```perl  theme={null}
+```perl theme={null}
 resource "aptible_app" "example-app" {
     env_id         = data.aptible_environment.example.env_id
     handle         = "example-app"
@@ -18464,7 +18912,7 @@ resource "aptible_app" "example-app" {
 
 The service `process_type` should match what's contained in your Procfile. Otherwise, service container sizes and container counts cannot be defined and managed individually. The process\_type maps directly to the Service name used in the Procfile. If you are not using a Procfile, you will have a single Service with the process\_type of cmd.
 
-```perl  theme={null}
+```perl theme={null}
 resource "aptible_app" "example-app" {
   env_id         = data.aptible_environment.example.env_id
   handle         = "exmaple-app"
@@ -18490,7 +18938,7 @@ resource "aptible_app" "example-app" {
 
 Resources can easily be referenced in configurations when using Terraform. Here is an example of an App configuration that references Databases:
 
-```perl  theme={null}
+```perl theme={null}
 resource "aptible_app" "example-app" {
     env_id = data.aptible_environment.example.env_id
     handle = "example-app"
@@ -18526,7 +18974,7 @@ resource "aptible_database" "example-pg-db" {
 
 Some apps use the port, hostname, username, and password broken apart rather than as a standalone connection URL. Terraform can break those apart, or you can add some logic in your app or container entry point to achieve this. This also works with endpoints. For example:
 
-```perl  theme={null}
+```perl theme={null}
 resource "aptible_app" "example-app" {
   env_id = data.aptible_environment.example.env_id
   handle = "example-app"
@@ -18572,7 +19020,7 @@ The value `aptible_endpoint.example-endpoint.virtual_domain` will be the domain 
 
 One potential risk of relying on URLs to be set in App configurations is circular dependencies. This happens when your App uses the Endpoint URL in its configuration, but the Endpoint cannot be created until the App exists. Terraform does not have a graceful way of handling circular dependencies. While this approach won't work for default domains, the easiest option is to define a variable that can be referenced in both the Endpoint resource and the App configuration:
 
-```perl  theme={null}
+```perl theme={null}
 variable "example_domain" {
   description = "The domain name"
   type        = string
@@ -18610,7 +19058,7 @@ resource "aptible_endpoint" "example-endpoint" {
 
 While Aptible does not directly manage your DNS, we do provide you the information you need to manage DNS. For example, if you are using Cloudflare for your DNS, and you have an endpoint called `example-endpoint`, you would be able to create the record:
 
-```perl  theme={null}
+```perl theme={null}
 resource "cloudflare_record" "example_app_dns" {
   zone_id = cloudflare_zone.example.id
   name    = "www.example"
@@ -18622,7 +19070,7 @@ resource "cloudflare_record" "example_app_dns" {
 
 And for the Managed HTTPS [dns-01](/core-concepts/apps/connecting-to-apps/app-endpoints/managed-tls#dns-01) verification record:
 
-```perl  theme={null}
+```perl theme={null}
 resource "cloudflare_record" "example_app_acme" {
   zone_id = cloudflare_zone.example.id
   name    = "_acme-challange.www.example"
@@ -18636,7 +19084,7 @@ resource "cloudflare_record" "example_app_acme" {
 
 You can use Terraform to mark values as secure. These values are redacted in the output of `terraform plan` and `terraform apply`.
 
-```perl  theme={null}
+```perl theme={null}
 
 variable "shhh" {
   description = "A sensitive value"
@@ -18660,7 +19108,7 @@ resource "aptible_app" "example-app" {
 
 When you run `terraform state show` these values will also be marked as sensitive. For example:
 
-```perl  theme={null}
+```perl theme={null}
 resource "aptible_app" "example-app" {
     app_id   = 000000
     config   = {

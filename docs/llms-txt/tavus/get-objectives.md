@@ -1,48 +1,71 @@
 # Source: https://docs.tavus.io/api-reference/objectives/get-objectives.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.tavus.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Get Objective
 
 > This endpoint returns a single objective by its unique identifier.
 
 
+
+
 ## OpenAPI
 
 ````yaml get /v2/objectives/{objectives_id}
+openapi: 3.0.3
+info:
+  title: Tavus Developer API Collection
+  version: 1.0.0
+  contact: {}
+servers:
+  - url: https://tavusapi.com
+security:
+  - apiKey: []
+tags:
+  - name: Videos
+  - name: Replicas
+  - name: Conversations
+  - name: Personas
+  - name: Replacements
+  - name: Transcriptions
+  - name: Documents
 paths:
-  path: /v2/objectives/{objectives_id}
-  method: get
-  servers:
-    - url: https://tavusapi.com
-  request:
-    security:
-      - title: apiKey
-        parameters:
-          query: {}
-          header:
-            x-api-key:
-              type: apiKey
-          cookie: {}
+  /v2/objectives/{objectives_id}:
     parameters:
-      path:
-        objectives_id:
+      - name: objectives_id
+        in: path
+        required: true
+        description: The unique identifier of the objective.
+        schema:
+          type: string
+          example: o12345
+    get:
+      tags:
+        - Objectives
+      summary: Get Objective
+      description: |
+        This endpoint returns a single objective by its unique identifier.
+      operationId: getObjective
+      parameters:
+        - name: objectives_id
+          in: path
+          required: true
+          description: The unique identifier of the objective.
           schema:
-            - type: string
-              required: true
-              description: The unique identifier of the objective.
-              example: o12345
-      query: {}
-      header: {}
-      cookie: {}
-    body: {}
-  response:
-    '200':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              data:
-                allOf:
-                  - type: object
+            type: string
+            example: o12345
+      responses:
+        '200':
+          description: Successfully retrieved objective
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
                     properties:
                       objective_name:
                         type: string
@@ -108,73 +131,46 @@ paths:
                           ISO 8601 timestamp of when the objective was last
                           updated
                         example: '2024-01-15T10:30:00Z'
-        examples:
-          example:
-            value:
-              data:
-                objective_name: ask_if_new_patient
-                objective_prompt: Ask the patient if they are new or have been here before
-                confirmation_mode: auto
-                output_variables:
-                  - patient_status
-                modality: verbal
-                next_conditional_objectives:
-                  new_patient_intake_process: If the patient has never been to the practice before
-                  existing_patient_intake_process: If the patient has been to the practice before
-                next_required_objectives:
-                  - get_patient_name
-                callback_url: https://your-server.com/webhook
-                created_at: '2024-01-15T10:30:00Z'
-                updated_at: '2024-01-15T10:30:00Z'
-        description: Successfully retrieved objective
-    '400':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              error:
-                allOf:
-                  - type: string
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
                     description: The error message.
                     example: Invalid objectives_id
-        examples:
-          example:
-            value:
-              error: Invalid objectives_id
-        description: Bad Request
-    '401':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              message:
-                allOf:
-                  - type: string
+        '401':
+          description: UNAUTHORIZED
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
                     description: The error message.
                     example: Invalid access token
-        examples:
-          example:
-            value:
-              message: Invalid access token
-        description: UNAUTHORIZED
-    '404':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              error:
-                allOf:
-                  - type: string
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
                     description: The error message.
                     example: Objective not found
-        examples:
-          example:
-            value:
-              error: Objective not found
-        description: Not Found
-  deprecated: false
-  type: path
+      security:
+        - apiKey: []
 components:
-  schemas: {}
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      in: header
+      name: x-api-key
 
 ````

@@ -3,7 +3,6 @@
 ---
 url: /docs/guide/usage/linter/rules/promise/catch-or-return.md
 ---
-# promise/catch-or-return&#x20;
 
 ### What it does
 

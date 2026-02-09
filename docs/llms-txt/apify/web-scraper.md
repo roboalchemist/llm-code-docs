@@ -2,19 +2,19 @@
 
 #
 
-This scraping tutorial will go into the nitty gritty details of extracting data from **https://apify.com/store** using **Web Scraper** (https://apify.com/apify/web-scraper). If you arrived here from the https://docs.apify.com/academy/apify-scrapers/getting-started.md, tutorial, great! You are ready to continue where we left off. If you haven't seen the Getting started yet, check it out, it will help you learn about Apify and scraping in general and set you up for this tutorial, because this one builds on topics and code examples discussed there.
+This scraping tutorial will go into the nitty gritty details of extracting data from **[https://apify.com/store](https://apify.com/store)** using **Web Scraper** ([apify/web-scraper](https://apify.com/apify/web-scraper)). If you arrived here from the [Getting started with Apify scrapers](https://docs.apify.com/academy/apify-scrapers/getting-started.md), tutorial, great! You are ready to continue where we left off. If you haven't seen the Getting started yet, check it out, it will help you learn about Apify and scraping in general and set you up for this tutorial, because this one builds on topics and code examples discussed there.
 
 ## Getting to know our tools
 
-In the https://docs.apify.com/academy/apify-scrapers/getting-started tutorial, we've confirmed that the scraper works as expected, so now it's time to add more data to the results.
+In the [Getting started with Apify scrapers](https://docs.apify.com/academy/apify-scrapers/getting-started) tutorial, we've confirmed that the scraper works as expected, so now it's time to add more data to the results.
 
-To do that, we'll be using the https://jquery.com/, because it provides some nice tools and a lot of people familiar with JavaScript already know how to use it.
+To do that, we'll be using the [jQuery library](https://jquery.com/), because it provides some nice tools and a lot of people familiar with JavaScript already know how to use it.
 
-> https://api.jquery.com/ if you're not familiar with it. And if you don't want to use it, that's okay. Everything can be done using pure JavaScript, too.
+> [Check out the jQuery docs](https://api.jquery.com/) if you're not familiar with it. And if you don't want to use it, that's okay. Everything can be done using pure JavaScript, too.
 
 To add jQuery, all we need to do is turn on **Inject jQuery** under the **Input and options** tab. This will add a `context.jQuery` function that you can use.
 
-Now that's out of the way, let's open one of the Actor detail pages in the Store, for example the https://apify.com/apify/web-scraper page and use our DevTools-Fu to scrape some data.
+Now that's out of the way, let's open one of the Actor detail pages in the Store, for example the [Web Scraper](https://apify.com/apify/web-scraper) page and use our DevTools-Fu to scrape some data.
 
 ## Building our Page function
 
@@ -29,7 +29,7 @@ Before we start, let's do a quick recap of the data we chose to scrape:
 
 ![$1](https://raw.githubusercontent.com/apify/actor-scraper/master/docs/img/scraping-practice.webp)
 
-We've already scraped numbers 1 and 2 in the https://docs.apify.com/academy/apify-scrapers/getting-started.md tutorial, so let's get to the next one on the list: title.
+We've already scraped numbers 1 and 2 in the [Getting started with Apify scrapers](https://docs.apify.com/academy/apify-scrapers/getting-started.md) tutorial, so let's get to the next one on the list: title.
 
 ### Title
 
@@ -515,13 +515,13 @@ async function pageFunction(context) {
 
 ## Final word
 
-Thank you for reading this whole tutorial! Really! It's important to us that our users have the best information available to them so that they can use Apify effectively. We're glad that you made it all the way here and congratulations on creating your first scraping task. We hope that you liked the tutorial and if there's anything you'd like to ask, https://discord.gg/jyEM2PRvMU!
+Thank you for reading this whole tutorial! Really! It's important to us that our users have the best information available to them so that they can use Apify effectively. We're glad that you made it all the way here and congratulations on creating your first scraping task. We hope that you liked the tutorial and if there's anything you'd like to ask, [join us on Discord](https://discord.gg/jyEM2PRvMU)!
 
 ## What's next
 
-* Check out the https://docs.apify.com/sdk and its https://docs.apify.com/sdk/js/docs/guides/apify-platform tutorial if you'd like to try building your own Actors. It's a bit more complex and involved than writing a `pageFunction`, but it allows you to fine-tune all the details of your scraper to your liking.
-* https://docs.apify.com/platform/actors.md, from how they work to https://docs.apify.com/platform/actors/publishing.md them in Apify Store, and even https://blog.apify.com/make-regular-passive-income-developing-web-automation-actors-b0392278d085/ on Actors.
-* Found out you're not into the coding part but would still to use Apify Actors? Check out our https://apify.com/store or https://apify.com/contact-sales from an Apify-certified developer.
+* Check out the [Apify SDK](https://docs.apify.com/sdk) and its [Getting started](https://docs.apify.com/sdk/js/docs/guides/apify-platform) tutorial if you'd like to try building your own Actors. It's a bit more complex and involved than writing a `pageFunction`, but it allows you to fine-tune all the details of your scraper to your liking.
+* [Take a deep dive into Actors](https://docs.apify.com/platform/actors.md), from how they work to [publishing](https://docs.apify.com/platform/actors/publishing.md) them in Apify Store, and even [making money](https://blog.apify.com/make-regular-passive-income-developing-web-automation-actors-b0392278d085/) on Actors.
+* Found out you're not into the coding part but would still to use Apify Actors? Check out our [ready-made solutions](https://apify.com/store) or [order a custom Actor](https://apify.com/contact-sales) from an Apify-certified developer.
 
 **Learn how to scrape a website using Apify's Web Scraper. Build an Actor's page function, extract information from a web page and download your data.**
 

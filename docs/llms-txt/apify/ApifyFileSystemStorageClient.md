@@ -11,10 +11,11 @@ The only difference is that it uses `ApifyFileSystemKeyValueStoreClient` for key
 ### Methods
 
 * [**create\_kvs\_client](https://docs.apify.com/sdk/python/sdk/python/reference/class/ApifyFileSystemStorageClient.md#create_kvs_client)
+* [**get\_storage\_client\_cache\_key](https://docs.apify.com/sdk/python/sdk/python/reference/class/ApifyFileSystemStorageClient.md#get_storage_client_cache_key)
 
 ## Methods<!-- -->[**](#Methods)
 
-### [**](#create_kvs_client)[**](https://github.com/apify/apify-sdk-python/blob/f050b2684cf6d5e88bafe381599a3653d220ec14//src/apify/storage_clients/_file_system/_storage_client.py#L25)create\_kvs\_client
+### [**](#create_kvs_client)[**](https://github.com/apify/apify-sdk-python/blob/a01870a180ed391b8b6cad8d1894f12bcc879136//src/apify/storage_clients/_file_system/_storage_client.py#L34)create\_kvs\_client
 
 * **async **create\_kvs\_client**(\*, id, name, alias, configuration): FileSystemKeyValueStoreClient
 
@@ -26,3 +27,13 @@ The only difference is that it uses `ApifyFileSystemKeyValueStoreClient` for key
   * ##### optionalkeyword-onlyconfiguration: [Configuration](https://docs.apify.com/sdk/python/sdk/python/reference/class/Configuration.md) | None = <!-- -->None
 
   #### Returns FileSystemKeyValueStoreClient
+
+### [**](#get_storage_client_cache_key)[**](https://github.com/apify/apify-sdk-python/blob/a01870a180ed391b8b6cad8d1894f12bcc879136//src/apify/storage_clients/_file_system/_storage_client.py#L27)get\_storage\_client\_cache\_key
+
+* ****get\_storage\_client\_cache\_key**(configuration): Hashable
+
+- #### Parameters
+
+  * ##### configuration: [Configuration](https://docs.apify.com/sdk/python/sdk/python/reference/class/Configuration.md)
+
+  #### Returns Hashable

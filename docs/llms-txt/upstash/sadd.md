@@ -2,23 +2,9 @@
 
 # Source: https://upstash.com/docs/redis/sdks/py/commands/set/sadd.md
 
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/set/sadd.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/set/sadd.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/set/sadd.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/set/sadd.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/set/sadd.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/set/sadd.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/set/sadd.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/set/sadd.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/set/sadd.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # SADD
 
@@ -26,7 +12,7 @@
 
 ## Arguments
 
-<ParamField body="key" type="string" required>
+<ParamField body="key" type="str" required>
   The key of the set.
 </ParamField>
 
@@ -41,11 +27,7 @@
 </ResponseField>
 
 <RequestExample>
-  ```ts Example  theme={"system"}
-  // 3
-  await redis.sadd("key", "a", "b", "c"); 
-
-  // 0
-  await redis.sadd("key", "a", "b"); 
+  ```py Example  theme={"system"}
+  assert redis.sadd("key", "a", "b", "c") == 3
   ```
 </RequestExample>

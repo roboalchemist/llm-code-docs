@@ -1,5 +1,9 @@
 # Source: https://dev.writer.com/agent-builder/dataframes.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://dev.writer.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Build data tables with DataFrames
 
 The [**DataFrame** component](/components/dataframe) lets you display structured data in a table format with built-in features like sorting, searching, and downloading. It's designed to work with [Pandas DataFrames](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.html) or [PyArrow tables](https://arrow.apache.org/docs/python/generated/pyarrow.Table.html).

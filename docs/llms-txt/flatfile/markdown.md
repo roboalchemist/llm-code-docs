@@ -1,5 +1,9 @@
 # Source: https://flatfile.com/docs/plugins/markdown.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://flatfile.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Markdown File Extractor
 
 > Automatically parse Markdown files and extract tables into Flatfile Sheets
@@ -10,7 +14,7 @@ The Markdown Extractor plugin is designed to automatically parse Markdown files 
 
 Install the Markdown Extractor plugin using npm:
 
-```bash
+```bash  theme={null}
 npm install @flatfile/plugin-markdown-extractor
 ```
 
@@ -43,7 +47,7 @@ The plugin accepts the following configuration options:
 ### Basic Usage
 
 <CodeGroup>
-  ```javascript JavaScript
+  ```javascript JavaScript theme={null}
   import { listener } from '@flatfile/listener';
   import { MarkdownExtractor } from '@flatfile/plugin-markdown-extractor';
 
@@ -52,7 +56,7 @@ The plugin accepts the following configuration options:
   }
   ```
 
-  ```typescript TypeScript
+  ```typescript TypeScript theme={null}
   import { listener } from '@flatfile/listener';
   import { MarkdownExtractor } from '@flatfile/plugin-markdown-extractor';
 
@@ -65,7 +69,7 @@ The plugin accepts the following configuration options:
 ### Configuration Example
 
 <CodeGroup>
-  ```javascript JavaScript
+  ```javascript JavaScript theme={null}
   import { listener } from '@flatfile/listener';
   import { MarkdownExtractor } from '@flatfile/plugin-markdown-extractor';
 
@@ -80,7 +84,7 @@ The plugin accepts the following configuration options:
   }
   ```
 
-  ```typescript TypeScript
+  ```typescript TypeScript theme={null}
   import { listener } from '@flatfile/listener';
   import { MarkdownExtractor } from '@flatfile/plugin-markdown-extractor';
 
@@ -99,7 +103,7 @@ The plugin accepts the following configuration options:
 ### Direct Parser Usage
 
 <CodeGroup>
-  ```javascript JavaScript
+  ```javascript JavaScript theme={null}
   import * as fs from 'fs';
   import { markdownParser } from '@flatfile/plugin-markdown-extractor';
 
@@ -111,7 +115,7 @@ The plugin accepts the following configuration options:
   console.log(JSON.stringify(workbookData, null, 2));
   ```
 
-  ```typescript TypeScript
+  ```typescript TypeScript theme={null}
   import * as fs from 'fs';
   import { markdownParser } from '@flatfile/plugin-markdown-extractor';
 
@@ -139,7 +143,7 @@ The main factory function used to create and configure the markdown extractor pl
 **Example:**
 
 <CodeGroup>
-  ```javascript JavaScript
+  ```javascript JavaScript theme={null}
   import { listener } from '@flatfile/listener';
   import { MarkdownExtractor } from '@flatfile/plugin-markdown-extractor';
 
@@ -152,7 +156,7 @@ The main factory function used to create and configure the markdown extractor pl
   }
   ```
 
-  ```typescript TypeScript
+  ```typescript TypeScript theme={null}
   import { listener } from '@flatfile/listener';
   import { MarkdownExtractor } from '@flatfile/plugin-markdown-extractor';
 
@@ -180,7 +184,7 @@ A low-level function that directly parses a Buffer containing markdown content i
 **Example:**
 
 <CodeGroup>
-  ```javascript JavaScript
+  ```javascript JavaScript theme={null}
   import { markdownParser } from '@flatfile/plugin-markdown-extractor';
 
   const markdownContent = '| ID | Name |\n|----|------|\n| 1  | Test |';
@@ -190,7 +194,7 @@ A low-level function that directly parses a Buffer containing markdown content i
   console.log(JSON.stringify(workbookData, null, 2));
   ```
 
-  ```typescript TypeScript
+  ```typescript TypeScript theme={null}
   import { markdownParser } from '@flatfile/plugin-markdown-extractor';
 
   const markdownContent = '| ID | Name |\n|----|------|\n| 1  | Test |';
@@ -208,7 +212,7 @@ A low-level function that directly parses a Buffer containing markdown content i
 This example demonstrates how the `errorHandling` option affects behavior when parsing a malformed table:
 
 <CodeGroup>
-  ```javascript JavaScript
+  ```javascript JavaScript theme={null}
   import { markdownParser } from '@flatfile/plugin-markdown-extractor';
 
   // Table has a header with 2 columns but a data row with 3
@@ -230,7 +234,7 @@ This example demonstrates how the `errorHandling` option affects behavior when p
   //-> Result in lenient mode: {}
   ```
 
-  ```typescript TypeScript
+  ```typescript TypeScript theme={null}
   import { markdownParser } from '@flatfile/plugin-markdown-extractor';
 
   // Table has a header with 2 columns but a data row with 3
@@ -258,11 +262,11 @@ This example demonstrates how the `errorHandling` option affects behavior when p
 To diagnose parsing issues, enable debug mode:
 
 <CodeGroup>
-  ```javascript JavaScript
+  ```javascript JavaScript theme={null}
   listener.use(MarkdownExtractor({ debug: true }));
   ```
 
-  ```typescript TypeScript
+  ```typescript TypeScript theme={null}
   listener.use(MarkdownExtractor({ debug: true }));
   ```
 </CodeGroup>

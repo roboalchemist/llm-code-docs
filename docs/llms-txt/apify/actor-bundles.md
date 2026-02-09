@@ -18,15 +18,15 @@ The main advantage of an Actor bundle is its ease of use. The user inputs a keyw
 
 ### Examples of bundles
 
-🔍 https://apify.com/tri_angle/social-media-finder searches for profiles on 13 social media sites provided just the (nick)name.
+🔍 [Social Media Finder](https://apify.com/tri_angle/social-media-finder) searches for profiles on 13 social media sites provided just the (nick)name.
 
-🍝 https://apify.com/tri_angle/restaurant-review-aggregator gets restaurant reviews from Google Maps, DoorDash, Uber Eats, Yelp, Tripadvisor, and Facebook in one place.
+🍝 [Restaurant Review Aggregator](https://apify.com/tri_angle/restaurant-review-aggregator) gets restaurant reviews from Google Maps, DoorDash, Uber Eats, Yelp, Tripadvisor, and Facebook in one place.
 
-🤔 https://apify.com/tri_angle/social-media-sentiment-analysis-tool not only collects comments from Facebook, Instagram, and TikTok but also performs sentiment analysis on them. It unites post scrapers, comments scrapers and a text analysis tool.
+🤔 [Social Media Sentiment Analysis Tool](https://apify.com/tri_angle/social-media-sentiment-analysis-tool) not only collects comments from Facebook, Instagram, and TikTok but also performs sentiment analysis on them. It unites post scrapers, comments scrapers and a text analysis tool.
 
-🦾 https://apify.com/tri_angle/wcc-pinecone-integration scrapes a website and stores the data in a Pinecone database to build and improve your own AI chatbot assistant.
+🦾 [Website Content Crawler + Pinecone bundle](https://apify.com/tri_angle/wcc-pinecone-integration) scrapes a website and stores the data in a Pinecone database to build and improve your own AI chatbot assistant.
 
-🤖 https://apify.com/tri_angle/pinecone-gpt-chatbot combines OpenAI's GPT models with Pinecone's vector database, which simplifies creating a GPT chatbot.
+🤖 [Pinecone GPT chatbot](https://apify.com/tri_angle/pinecone-gpt-chatbot) combines OpenAI's GPT models with Pinecone's vector database, which simplifies creating a GPT chatbot.
 
 As you can see, they vary in complexity and range.
 
@@ -62,4 +62,4 @@ That said, don’t abandon SEO entirely. You can still capture some SEO value by
 
 ## Resources
 
-Learn more about Actor Bundles: https://blog.apify.com/apify-power-actors/
+Learn more about Actor Bundles: [https://blog.apify.com/apify-power-actors/](https://blog.apify.com/apify-power-actors/)

@@ -1,5 +1,9 @@
 # Source: https://www.aptible.com/docs/core-concepts/scaling/memory-limits.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.aptible.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Memory Management
 
 > Learn how Aptible enforces memory limits to ensure predictable performance

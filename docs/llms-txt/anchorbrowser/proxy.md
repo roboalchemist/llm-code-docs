@@ -1,8 +1,16 @@
 # Source: https://docs.anchorbrowser.io/advanced/proxy.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.anchorbrowser.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Proxy
 
-Anchor provides proxy configurations to help you access websites from different geographic locations. You can use custom proxies or leverage Anchor's built-in proxy infrastructure for localization.
+Anchor provides proxy configurations to access websites from different geographic locations, configurable down to the **city level.** Use custom proxies or Anchor's built-in proxy for localization.
+
+<Warning>
+  Anchor Browser infrastructure is fully hosted in the US. For GDPR compliance, upgrade to the [Growth tier](https://app.anchorbrowser.io/billing) or [contact support](https://mail.google.com/mail/?view=cm\&fs=1\&to=support@anchorbrowser.io\&su=Full%20GDPR%20Compatibility%20Request).
+</Warning>
 
 #### Quick Start Example
 
@@ -12,20 +20,18 @@ Here's a simple example of how to use Anchor's built-in proxy:
   ```javascript node.js theme={null}
   import AnchorBrowser from 'anchorbrowser';
 
-  (async () => {
-    const anchor_client = new AnchorBrowser({apiKey: process.env.ANCHOR_API_KEY});
-    
-    const session = await anchor_client.sessions.create({
+  const anchor_client = new AnchorBrowser({apiKey: process.env.ANCHOR_API_KEY});
+
+  const session = await anchor_client.sessions.create({
       session: {
         proxy: {
           active: true,
           country_code: 'gb',
         }
       }
-    });
-    
-    console.log("Session created:", session.data);
-  })().catch(console.error);
+  });
+
+  console.log("Session created:", session.data);
   ```
 
   ```python python theme={null}
@@ -35,12 +41,12 @@ Here's a simple example of how to use Anchor's built-in proxy:
   anchor_client = Anchorbrowser(api_key=os.getenv("ANCHOR_API_KEY"))
 
   session = anchor_client.sessions.create(
-      session={
-          'proxy': {
-              'active': True,
-              'country_code': 'gb',
-          }
+    session={
+      'proxy': {
+          'active': True,
+          'country_code': 'gb',
       }
+    }
   )
   print("Session created:", session.data)
   ```
@@ -78,23 +84,21 @@ Anchor Browser supports the following proxy protocols:
   ```javascript node.js theme={null}
   import AnchorBrowser from 'anchorbrowser';
 
-  (async () => {
-    const anchorClient = new AnchorBrowser({apiKey: process.env.ANCHOR_API_KEY});
-    
-    const response = await anchorClient.sessions.create({
-      session: {
-        proxy: {
-          active: true
-          type: 'custom',
-          server: 'proxy.example.com:port',
-          username: 'myUser',
-          password: 'myPassword',
-        }
+  const anchorClient = new AnchorBrowser({apiKey: process.env.ANCHOR_API_KEY});
+
+  const response = await anchorClient.sessions.create({
+    session: {
+      proxy: {
+        active: true
+        type: 'custom',
+        server: 'proxy.example.com:port',
+        username: 'myUser',
+        password: 'myPassword',
       }
-    });
+    }
+  });
     
-    console.log('Session created:', response.data);
-  })().catch(console.error);
+  console.log('Session created:', response.data);
   ```
 
   ```python python theme={null}
@@ -105,15 +109,15 @@ Anchor Browser supports the following proxy protocols:
   anchor_client = Anchorbrowser(api_key=os.getenv('ANCHOR_API_KEY'))
 
   response = anchor_client.sessions.create(
-      session={
-          'proxy': {
-              'active': True
-              'type': 'custom',
-              'server': 'proxy.example.com:port',
-              'username': 'myUser',
-              'password': 'myPassword',
-          }
+    session={
+      'proxy': {
+          'active': True
+          'type': 'custom',
+          'server': 'proxy.example.com:port',
+          'username': 'myUser',
+          'password': 'myPassword',
       }
+    }
   )
 
   print('Session created:')
@@ -141,22 +145,20 @@ For even more precise geographic targeting, you can specify both `region` and `c
   ```javascript node.js theme={null}
   import AnchorBrowser from 'anchorbrowser';
 
-  (async () => {
-    const anchorClient = new AnchorBrowser({apiKey: process.env.ANCHOR_API_KEY});
-    
-    const response = await anchorClient.sessions.create({
-      session: {
-        proxy: {
-          active: true,
-          country_code: 'us',
-          region: 'ca',
-          city: 'los-angeles'
-        }
+  const anchorClient = new AnchorBrowser({apiKey: process.env.ANCHOR_API_KEY});
+
+  const response = await anchorClient.sessions.create({
+    session: {
+      proxy: {
+        active: true,
+        country_code: 'us',
+        region: 'ca',
+        city: 'los-angeles'
       }
-    });
+    }
+  });
     
-    console.log('Session created:', response.data);
-  })().catch(console.error);
+  console.log('Session created:', response.data);
   ```
 
   ```python python theme={null}

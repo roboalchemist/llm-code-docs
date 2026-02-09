@@ -1,5 +1,9 @@
 # Source: https://www.aptible.com/docs/how-to-guides/app-guides/synchronize-config-code-changes.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.aptible.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # How to synchronize configuration and code changes
 
 Updating the [configuration](/core-concepts/apps/deploying-apps/configuration) of your [app](/core-concepts/apps/overview) using [`aptible config:set`](/reference/aptible-cli/cli-commands/cli-config-set) then deploying your app through [Dockerfile Deploy](/how-to-guides/app-guides/deploy-from-git) or [Direct Docker Image Deploy](/how-to-guides/app-guides/migrate-dockerfile-to-direct-image-deploy) will deploy your app twice:

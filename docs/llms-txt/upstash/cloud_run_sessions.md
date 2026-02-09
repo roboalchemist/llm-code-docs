@@ -1,5 +1,9 @@
 # Source: https://upstash.com/docs/redis/tutorials/cloud_run_sessions.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Session Management on Google Cloud Run with Serverless Redis
 
 > This tutorial shows how to manage user sessions on Google Cloud Run using Serverless Redis.

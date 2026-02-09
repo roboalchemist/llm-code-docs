@@ -15,7 +15,7 @@ Linear automatically tracks events related to account access, subscriptions, and
 
 ## Configure
 
-Only workspace administrators can access audit logs given the sensitive nature of the information. You can find them under [**Workspace Settings > Administration > Audit Log**](https://linear.app/settings/audit-log) 
+Only workspace owners can access audit logs given the sensitive nature of the information. You can find them under [**Workspace Settings > Administration > Audit Log**](https://linear.app/settings/audit-log) 
 
 ## Access via API
 

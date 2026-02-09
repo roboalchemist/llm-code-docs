@@ -2,10 +2,7 @@
 
 # Update value
 
-```
-PATCH 
-/v2/environments/:environmentId/settings/:settingId/value
-```
+Copy page
 
 This endpoint updates the value of a Feature Flag or Setting with a collection of [JSON Patch](https://jsonpatch.com) operations in a specified Environment.
 
@@ -15,7 +12,7 @@ The advantage of using JSON Patch is that you can describe individual update ope
 
 For example: We have the following resource of a Feature Flag.
 
-```
+```json
 {
   "defaultValue": {
     "boolValue": false
@@ -40,11 +37,12 @@ For example: We have the following resource of a Feature Flag.
     }
   ]
 }
+
 ```
 
 If we send an update request body as below:
 
-```
+```json
 [
   {
     "op": "replace",
@@ -52,13 +50,14 @@ If we send an update request body as below:
     "value": true
   }
 ]
+
 ```
 
 Only the first Targeting Rule's `value` is going to be set to `false` and all the other fields are remaining unchanged.
 
 So we get a response like this:
 
-```
+```json
 {
   "defaultValue": {
     "boolValue": false
@@ -83,6 +82,7 @@ So we get a response like this:
     }
   ]
 }
+
 ```
 
 ## Request[​](#request "Direct link to Request")

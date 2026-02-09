@@ -1,5 +1,9 @@
 # Source: https://upstash.com/docs/redis/help/shared-responsibility-model.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Shared Responsibility Model
 
 The Shared Responsibility Model defines the security and operational responsibilities between Upstash and our customers when using Upstash Redis. This model ensures clarity in who is responsible for what aspects of security, compliance, and operations.

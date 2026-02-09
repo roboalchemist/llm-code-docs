@@ -86,7 +86,7 @@ Environment settings:
 | `staging` | Used for [automated staging tests](../applications/testing.html#staging-tests). | - | `min(max(2, 0.05 * spec), spec)` |
 | `prod` | Hosts all production deployments. | No expiry | `max(2, spec)` |
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ### On this page:
 

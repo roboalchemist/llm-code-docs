@@ -1,5 +1,9 @@
 # Source: https://braintrust.dev/docs/cookbook/recipes/AmazonBedrockStrands.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://braintrust.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Observability for Strands Agents on Amazon Bedrock
 
 <div className="text-sm">[Contributed](https://github.com/braintrustdata/braintrust-cookbook/blob/main/examples/AmazonBedrockStrands/AmazonBedrockStrands.ipynb) by [Ishan Singh](https://www.linkedin.com/in/shan199434/) on 2025-11-18</div>
@@ -294,12 +298,7 @@ print("Cleanup completed")
 
 Now that you have a working Strands Agent deployed to Amazon Bedrock AgentCore Runtime with full observability, you can build on this foundation:
 
-* Add more [tools](/core/functions/tools) to expand agent capabilities beyond web search
-* Create [custom scorers](/core/functions/scorers) to evaluate agent performance and accuracy
-* Build [evaluation datasets](/core/datasets) from production logs to continuously improve your agent
-* Use the [playground](/core/playground) to test and refine agent behavior before deploying updates
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://braintrust.dev/docs/llms.txt
+* Add more [tools](/deploy/functions) to expand agent capabilities beyond web search
+* Create [custom scorers](/evaluate/write-scorers) to evaluate agent performance and accuracy
+* Build [evaluation datasets](/annotate/datasets) from production logs to continuously improve your agent
+* Use the [playground](/evaluate/playgrounds) to test and refine agent behavior before deploying updates

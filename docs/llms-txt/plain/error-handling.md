@@ -1,5 +1,9 @@
 # Source: https://www.plain.com/docs/graphql/error-handling.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.plain.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Error handling
 
 > GraphQL queries and mutations require different error handling.

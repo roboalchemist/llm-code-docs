@@ -2,10 +2,7 @@
 
 # Delete Group
 
-```
-DELETE 
-/v2/:organizationId/Groups/:groupId
-```
+Copy page
 
 This endpoint deletes an existing group.
 

@@ -4,11 +4,7 @@
 
 Integrate Better Auth with Drizzle ORM.
 
-***
 
-title: Drizzle ORM Adapter
-description: Integrate Better Auth with Drizzle ORM.
-----------------------------------------------------
 
 Drizzle ORM is a powerful and flexible ORM for Node.js and TypeScript. It provides a simple and intuitive API for working with databases, and supports a wide range of databases including MySQL, PostgreSQL, SQLite, and more.
 
@@ -24,8 +20,7 @@ import { drizzleAdapter } from "better-auth/adapters/drizzle";
 import { db } from "./database.ts";
 
 export const auth = betterAuth({
-  database: drizzleAdapter(db, {
-    // [!code highlight]
+  database: drizzleAdapter(db, { // [!code highlight]
     provider: "sqlite", // or "pg" or "mysql" // [!code highlight]
   }), // [!code highlight]
   //... the rest of your config
@@ -39,7 +34,7 @@ your database schema based on your Better Auth configuration and plugins.
 
 To generate the schema required by Better Auth, run the following command:
 
-<CodeBlockTabs defaultValue="npm">
+<CodeBlockTabs defaultValue="npm" groupId="persist-install" persist>
   <CodeBlockTabsList>
     <CodeBlockTabsTrigger value="npm">
       npm
@@ -85,53 +80,99 @@ To generate the schema required by Better Auth, run the following command:
 
 To generate and apply the migration, run the following commands:
 
-<CodeBlockTabs defaultValue="npm">
-  <CodeBlockTabsList>
-    <CodeBlockTabsTrigger value="npm">
-      npm
-    </CodeBlockTabsTrigger>
+<Tabs items={["generate", "migrate"]}>
+  <Tab value="generate">
+    <CodeBlockTabs defaultValue="npm" groupId="persist-install" persist>
+      <CodeBlockTabsList>
+        <CodeBlockTabsTrigger value="npm">
+          npm
+        </CodeBlockTabsTrigger>
 
-    <CodeBlockTabsTrigger value="pnpm">
-      pnpm
-    </CodeBlockTabsTrigger>
+        <CodeBlockTabsTrigger value="pnpm">
+          pnpm
+        </CodeBlockTabsTrigger>
 
-    <CodeBlockTabsTrigger value="yarn">
-      yarn
-    </CodeBlockTabsTrigger>
+        <CodeBlockTabsTrigger value="yarn">
+          yarn
+        </CodeBlockTabsTrigger>
 
-    <CodeBlockTabsTrigger value="bun">
-      bun
-    </CodeBlockTabsTrigger>
-  </CodeBlockTabsList>
+        <CodeBlockTabsTrigger value="bun">
+          bun
+        </CodeBlockTabsTrigger>
+      </CodeBlockTabsList>
 
-  <CodeBlockTab value="npm">
-    ```bash title="Schema Migration"
-    npx drizzle-kit generate # generate the migration file
-    npx drizzle-kit migrate # apply the migration
-    ```
-  </CodeBlockTab>
+      <CodeBlockTab value="npm">
+        ```bash
+        npx drizzle-kit generate # generate the migration file
+        ```
+      </CodeBlockTab>
 
-  <CodeBlockTab value="pnpm">
-    ```bash title="Schema Migration"
-    pnpm dlx drizzle-kit generate # generate the migration file
-    npx drizzle-kit migrate # apply the migration
-    ```
-  </CodeBlockTab>
+      <CodeBlockTab value="pnpm">
+        ```bash
+        pnpm dlx drizzle-kit generate # generate the migration file
+        ```
+      </CodeBlockTab>
 
-  <CodeBlockTab value="yarn">
-    ```bash title="Schema Migration"
-    yarn dlx drizzle-kit generate # generate the migration file
-    npx drizzle-kit migrate # apply the migration
-    ```
-  </CodeBlockTab>
+      <CodeBlockTab value="yarn">
+        ```bash
+        yarn dlx drizzle-kit generate # generate the migration file
+        ```
+      </CodeBlockTab>
 
-  <CodeBlockTab value="bun">
-    ```bash title="Schema Migration"
-    bun x drizzle-kit generate # generate the migration file
-    npx drizzle-kit migrate # apply the migration
-    ```
-  </CodeBlockTab>
-</CodeBlockTabs>
+      <CodeBlockTab value="bun">
+        ```bash
+        bun x drizzle-kit generate # generate the migration file
+        ```
+      </CodeBlockTab>
+    </CodeBlockTabs>
+  </Tab>
+
+  <Tab value="migrate">
+    <CodeBlockTabs defaultValue="npm" groupId="persist-install" persist>
+      <CodeBlockTabsList>
+        <CodeBlockTabsTrigger value="npm">
+          npm
+        </CodeBlockTabsTrigger>
+
+        <CodeBlockTabsTrigger value="pnpm">
+          pnpm
+        </CodeBlockTabsTrigger>
+
+        <CodeBlockTabsTrigger value="yarn">
+          yarn
+        </CodeBlockTabsTrigger>
+
+        <CodeBlockTabsTrigger value="bun">
+          bun
+        </CodeBlockTabsTrigger>
+      </CodeBlockTabsList>
+
+      <CodeBlockTab value="npm">
+        ```bash
+        npx drizzle-kit migrate # apply the migration
+        ```
+      </CodeBlockTab>
+
+      <CodeBlockTab value="pnpm">
+        ```bash
+        pnpm dlx drizzle-kit migrate # apply the migration
+        ```
+      </CodeBlockTab>
+
+      <CodeBlockTab value="yarn">
+        ```bash
+        yarn dlx drizzle-kit migrate # apply the migration
+        ```
+      </CodeBlockTab>
+
+      <CodeBlockTab value="bun">
+        ```bash
+        bun x drizzle-kit migrate # apply the migration
+        ```
+      </CodeBlockTab>
+    </CodeBlockTabs>
+  </Tab>
+</Tabs>
 
 ## Joins (Experimental)
 
@@ -169,10 +210,10 @@ import { schema } from "./schema";
 export const auth = betterAuth({
   database: drizzleAdapter(db, {
     provider: "sqlite", // or "pg" or "mysql"
-    schema: {
-      ...schema,
-      user: schema.users,
-    },
+    schema: { // [!code highlight]
+      ...schema, // [!code highlight]
+      user: schema.users, // [!code highlight]
+    }, // [!code highlight]
   }),
 });
 ```

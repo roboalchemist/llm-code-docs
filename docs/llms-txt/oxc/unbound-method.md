@@ -3,7 +3,6 @@
 ---
 url: /docs/guide/usage/linter/rules/typescript/unbound-method.md
 ---
-# typescript/unbound-method&#x20;
 
 ### What it does
 

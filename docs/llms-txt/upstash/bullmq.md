@@ -1,5 +1,9 @@
 # Source: https://upstash.com/docs/redis/integrations/bullmq.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # BullMQ with Upstash Redis
 
 You can use BullMQ and Bull with Upstash Redis. BullMQ is a Node.js queue library that is built on top of Bull. It is a Redis-based queue library so you can use Upstash Redis as its storage.

@@ -4,11 +4,7 @@
 
 Linear provider setup and usage.
 
-***
 
-title: Linear
-description: Linear provider setup and usage.
----------------------------------------------
 
 <Steps>
   <Step>

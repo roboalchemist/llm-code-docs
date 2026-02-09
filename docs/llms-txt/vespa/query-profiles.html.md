@@ -2,14 +2,6 @@
 
 # Source: https://docs.vespa.ai/en/reference/querying/query-profiles.html.md
 
-# Source: https://docs.vespa.ai/en/querying/query-profiles.html.md
-
-# Source: https://docs.vespa.ai/en/reference/querying/query-profiles.html.md
-
-# Source: https://docs.vespa.ai/en/querying/query-profiles.html.md
-
-# Source: https://docs.vespa.ai/en/reference/querying/query-profiles.html.md
-
 # Query Profile Reference
 
  
@@ -189,7 +181,7 @@ This defines the type of this field. The type is one of:
 
 An identifier is a string matches the pattern `[a-zA-Z_/][a-zA-Z0-9_/]*`.
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ### On this page:
 

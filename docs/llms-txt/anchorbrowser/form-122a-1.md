@@ -1,5 +1,9 @@
 # Source: https://docs.anchorbrowser.io/integrations/open-source/playwright/government/USA/federal/form-122a-1.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.anchorbrowser.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Form 122A-1
 
 > Automate Chapter 7 bankruptcy means test and income statement workflows with Playwright when APIs aren't available.

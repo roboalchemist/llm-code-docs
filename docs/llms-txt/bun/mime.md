@@ -1,5 +1,9 @@
 # Source: https://bun.com/docs/guides/read-file/mime.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://bun.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Get the MIME type of a file
 
 The `Bun.file()` function accepts a path and returns a `BunFile` instance. The `BunFile` class extends `Blob`, so use the `.type` property to read the MIME type.
@@ -17,4 +21,4 @@ file.type; // image/png
 
 ***
 
-Refer to [API > File I/O](https://bun.com/docs/api/file-io) for more information on working with `BunFile`.
+Refer to [API > File I/O](/runtime/file-io) for more information on working with `BunFile`.

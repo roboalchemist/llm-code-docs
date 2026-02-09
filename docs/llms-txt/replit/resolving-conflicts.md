@@ -1,5 +1,9 @@
 # Source: https://docs.replit.com/teams/projects/resolving-conflicts.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.replit.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Conflict Resolution in Projects
 
 > Learn how to handle and resolve merge conflicts when multiple team members make changes to the same files in a Replit Project.

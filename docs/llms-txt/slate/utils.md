@@ -2,14 +2,6 @@
 
 # Source: https://docs.slatejs.org/v0.47/slate-core/utils.md
 
-# Source: https://docs.slatejs.org/v0.47/slate-react/utils.md
-
-# Source: https://docs.slatejs.org/v0.47/slate-core/utils.md
-
-# Source: https://docs.slatejs.org/v0.47/slate-react/utils.md
-
-# Source: https://docs.slatejs.org/v0.47/slate-core/utils.md
-
 # Utils
 
 ```javascript

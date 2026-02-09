@@ -1,5 +1,9 @@
 # Source: https://docs.helicone.ai/guides/prompt-engineering/use-chain-of-thought-prompting.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.helicone.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Use Chain-of-Thought prompting
 
 > By encouraging the model to generate intermediate reasoning steps before arriving at a final answer, you can achieve more accurate and insightful responses.

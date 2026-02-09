@@ -1,8 +1,4 @@
-# Source: https://gitbook.com/docs/documentation/zh/collaboration/merge-rules.md
-
-# Source: https://gitbook.com/docs/documentation/fr/collaboration/merge-rules.md
-
-# Source: https://gitbook.com/docs/collaboration/merge-rules.md
+# Source: https://gitbook.com/docs/documentation/ja-gitbook-documentation/collaboration/merge-rules.md
 
 # Source: https://gitbook.com/docs/documentation/zh/collaboration/merge-rules.md
 
@@ -20,7 +16,7 @@ Merge rules allow you to define requirements that must be met before change requ
 
 These rules help maintain content quality and ensure proper review processes across your documentation workflow.
 
-When you have merge rules configured, they’ll automatically evaluate change requests before they can be merged. If a rule isn’t satisfied, the merge will be blocked until the requirements are met.&#x20;
+When you have merge rules configured, they’ll automatically evaluate change requests before they can be merged. If a rule isn’t satisfied, the merge will be blocked until the requirements are met.
 
 This provides an automated way to enforce your team’s collaboration and review standards.
 
@@ -32,7 +28,7 @@ You can configure merge rules at different levels to match your team’s workflo
 
 Organizations can set default merge rules that all spaces inherit. This provides consistency across multiple spaces while still allowing individual spaces to customize their rules as needed.
 
-To configure merge rules for your organization, open the organization menu  at the top of the sidebar and choose **Settings** <picture><source srcset="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2F6uYUpJto7WTkJf9BUPHv%2Fsettings%20-%20dark.svg?alt=media&#x26;token=bf52415f-e999-43a2-9a1a-c85176a014cd" media="(prefers-color-scheme: dark)"><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FwkBqgOPry9HAcW4cxJk0%2Fsettings.svg?alt=media&#x26;token=67bdbb00-ebf3-4a2d-9df8-0c822406f71c" alt=""></picture>. In the Settings screen, select **Merge rules** under the **Organization** section of the sidebar. Here you can specify merge rules for your entire organization.
+To configure merge rules for your organization, open the organization menu at the top of the sidebar and choose **Settings** <picture><source srcset="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2F6uYUpJto7WTkJf9BUPHv%2Fsettings%20-%20dark.svg?alt=media&#x26;token=bf52415f-e999-43a2-9a1a-c85176a014cd" media="(prefers-color-scheme: dark)"><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FwkBqgOPry9HAcW4cxJk0%2Fsettings.svg?alt=media&#x26;token=67bdbb00-ebf3-4a2d-9df8-0c822406f71c" alt=""></picture>. In the Settings screen, select **Merge rules** under the **Organization** section of the sidebar. Here you can specify merge rules for your entire organization.
 
 Choose between unrestricted merging, or select from the list of presets to apply to change requests across your entire organization.
 

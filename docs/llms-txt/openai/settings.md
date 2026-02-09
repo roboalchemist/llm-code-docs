@@ -1,25 +1,58 @@
 # Source: https://developers.openai.com/codex/ide/settings.md
 
-# Codex IDE extension settings
+# Source: https://developers.openai.com/codex/app/settings.md
 
-Use these settings to customize the Codex IDE extension.
+# Codex app settings
 
-## Change a setting
+Use the settings panel to tune how the Codex app behaves, how it opens files,
+and how it connects to tools. Open [**Settings**](codex://settings) from the app menu or
+press <kbd>Cmd</kbd>+<kbd>,</kbd>.
 
-To change a setting, follow these steps:
+## General
 
-1. Open your editor settings.
-2. Search for `Codex` or the setting name.
-3. Update the value.
+Choose where files open and how much command output appears in threads. You can also
+require <kbd>Cmd</kbd>+<kbd>Enter</kbd> for multiline prompts or prevent sleep while a
+thread runs.
 
-The Codex IDE extension uses the Codex CLI. Configure some behavior, such as the default model, approvals, and sandbox settings, in the shared `~/.codex/config.toml` file instead of in editor settings. See [Basic Config](/codex/config-basic).
+## Appearance
 
-## Settings reference
+Pick a theme, decide whether the window is solid, and adjust UI or code fonts. Font
+choices apply across the app, including the diff review panel and terminal.
 
-| Setting                                      | Description                                                                                                                                                                                                                                                                   |
-| -------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `chatgpt.cliExecutable`                      | Development only: Path to the Codex CLI executable. You don't need to set this unless you're actively developing the Codex CLI. If you set this manually, parts of the extension might not work as expected.                                                                    |
-| `chatgpt.commentCodeLensEnabled`             | Show CodeLens above to-do comments so you can complete them with Codex.                                                                                                                                                                                                       |
-| `chatgpt.localeOverride`                     | Preferred language for the Codex UI. Leave empty to detect automatically.                                                                                                                                                                                                     |
-| `chatgpt.openOnStartup`                      | Focus the Codex sidebar when the extension finishes starting.                                                                                                                                                                                                                 |
-| `chatgpt.runCodexInWindowsSubsystemForLinux` | Windows only: Run Codex in WSL when Windows Subsystem for Linux (WSL) is available. Recommended for improved sandbox security and better performance. Codex agent mode on Windows currently requires WSL. Changing this setting reloads VS Code to apply the change. |
+## Notifications
+
+Choose when turn completion notifications appear, and whether the app should prompt for
+notification permissions.
+
+## Agent configuration
+
+Codex agents in the app inherit the same configuration as the IDE and CLI extension.
+Use the in-app controls for common settings, or edit `config.toml` for advanced
+options. See [Codex security](https://developers.openai.com/codex/security) and
+[config basics](https://developers.openai.com/codex/config-basic) for more detail.
+
+## Git
+
+Use Git settings to standardize branch naming and choose whether Codex uses force
+pushes.
+You can also set prompts that Codex uses to generate commit messages and pull request descriptions.
+
+## Integrations & MCP
+
+Connect external tools via MCP (Model Context Protocol). Enable recommended servers or
+add your own. If a server requires OAuth, the app starts the auth flow. These settings
+also apply to the Codex CLI and IDE extension because the MCP configuration lives in
+`config.toml`. See the [Model Context Protocol docs](https://developers.openai.com/codex/mcp) for details.
+
+## Personalization
+
+Choose between the **Friendly** and **Pragmatic** personalities as your default personality. You
+can update this at any time.
+
+You can also add your own custom instructions. Editing custom instructions updates your
+[personal instructions in `AGENTS.md`](https://developers.openai.com/codex/guides/agents-md).
+
+## Archived threads
+
+The **Archived threads** section lists archived chats with dates and project
+context. Use **Unarchive** to restore a thread.

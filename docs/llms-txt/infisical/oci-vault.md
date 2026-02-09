@@ -1,5 +1,9 @@
 # Source: https://infisical.com/docs/integrations/secret-syncs/oci-vault.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://infisical.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # OCI Vault Sync
 
 > Learn how to configure an Oracle Cloud Infrastructure Vault Sync for Infisical.

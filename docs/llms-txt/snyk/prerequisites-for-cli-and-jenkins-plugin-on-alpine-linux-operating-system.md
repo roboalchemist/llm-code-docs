@@ -1,0 +1,16 @@
+# Source: https://docs.snyk.io/developer-tools/snyk-cli/install-or-update-the-snyk-cli/prerequisites-for-cli-and-jenkins-plugin-on-alpine-linux-operating-system.md
+
+# Prerequisites for CLI and Jenkins plugin on Alpine Linux operating system
+
+Before running Snyk CLI and Snyk Jenkins plugin on the Alpine Linux operating system, follow these steps to establish the prerequisites:
+
+1. Ensure that `libstdc++` is installed.\
+   To install `libstdc++`, open a terminal from within the relevant container and run `apk add libstdc++` .\
+   The command either adds the shared library to your container environment or returns `OK` if the shared library is already installed in `/usr/lib`.
+2. Ensure that Snyk CLI version 1.185.5 or above is installed on your system.\
+   Snyk recommends that you install the **latest** version.
+3. To use the Snyk Jenkins plugin, ensure also that the Snyk Jenkins plugin v2.10.0 or above is installed.\
+   Snyk recommends that you install the **latest** version.
+4. After you install the Snyk CLI, you must [authenticate](https://docs.snyk.io/developer-tools/snyk-cli/authenticate-to-use-the-cli).
+
+For additional information, see [Install or update the Snyk CLI](https://docs.snyk.io/developer-tools/snyk-cli/install-or-update-the-snyk-cli) and [Jenkins Plugin](https://docs.snyk.io/developer-tools/snyk-ci-cd-integrations/jenkins-plugin-integration-with-snyk) in the CI/CD docs.

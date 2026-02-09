@@ -6,7 +6,7 @@ Learn how to reconcile revenue recognition data with other financial reports.
 
 You can reconcile the cash account from Stripe Revenue Recognition and the **Balance Summary** report’s balance change from the activity section within the same month. Because revenue recognition focuses on revenue-generating activities, you must exclude fees, network costs, contributions, and financing paydowns from the **Balance Summary** report’s balance change from the activity section before reconciling. To get the cash amount in Stripe Revenue Recognition, download the balance sheet report in the summary format.
 
-> The balance sheet report doesn’t take corrections into account. If you have corrections for the month that you’re attempting to reconcile reports for, you must also consider the revenue recognition corrections summary reports for all subsequent months. You must factor any corrections that would have been booked to the `original_accounting_period` of the reconciliation month into the Stripe Revenue Recognition cash amount.
+The balance sheet report doesn’t take corrections into account. If you have corrections for the month that you’re attempting to reconcile reports for, you must also consider the revenue recognition corrections summary reports for all subsequent months. You must factor any corrections that would have been booked to the `original_accounting_period` of the reconciliation month into the Stripe Revenue Recognition cash amount.
 
 ## Example
 
@@ -18,6 +18,8 @@ As an example, the balance sheet report might look like the following, with a 10
 | Cash    | eur      | +15.00     |
 
 To get the cash amount in the **Balance Summary** report’s balance change from the activity section, set the currency to USD, and the report timezone to UTC.
+
+Revenue recognition and **Balance Summary** use different timestamps associated with a transaction. This discrepancy can lead to mismatches in reconciliation if a payment takes a long time to process.
 
 After downloading the report in the summary format, it might look like the following:
 
@@ -37,13 +39,11 @@ For reports prior to March 2025, the total gross amount excludes some Stripe fee
 
 For reports on or after March 2025, the cash amount displayed in the Revenue Recognition balance sheet already accounts for Stripe fees. The net change in cash from the balance sheet is 50 USD, matching the net total amount.
 
-> Revenue recognition and **Balance Summary** use different timestamps associated with a transaction. This discrepancy can lead to mismatches in reconciliation if a payment takes a long time to process.
-
 ## Journal entries
 
 The journal entries in the **Debits and credits** report don’t consider fees, network costs, contributions, and financing paydowns. However, you can use Stripe fees in your revenue recognition reporting to create journal entries for these items.
 
-> As of March 1, 2025, journal entries in the **Debits and credits** report automatically incorporate fees, network costs, and contributions. Stripe fees for charges paid before March are not displayed to prevent showing only a portion of the total fee. As a result, discrepancies might arise when these fees are associated with charges in later periods, such as during disputes. To enable Stripe fees support in Stripe Revenue Recognition for all accounting periods and avoid the discrepancies, [create a ticket](https://support.stripe.com/contact/email?topic=financial_reports) on our support page.
+As of March 1, 2025, journal entries in the **Debits and credits** report automatically incorporate fees, network costs, and contributions. Stripe fees for charges paid before March are not displayed to prevent showing only a portion of the total fee. As a result, discrepancies might arise when these fees are associated with charges in later periods, such as during disputes. To enable Stripe fees support in Stripe Revenue Recognition for all accounting periods and avoid the discrepancies, [contact support](https://support.stripe.com/contact/email?topic=financial_reports).
 
 With Stripe fees enabled, you can do the following to reconcile revenue recognition fees with the [Balance Summary](https://docs.stripe.com/reports/balance.md) report’s balance change from the activity section:
 
@@ -66,8 +66,8 @@ In the following example, you calculate the total fees: `-1000.00 + -0.50 + -0.4
 
 If you download the **Debits and credits** report in the summary format, you can see `1001.90` debited from the Fees expense account and credited to the Cash account.
 
+The **Debits and credits** report doesn’t take corrections into account. If there were corrections issued for the month for which you’re attempting to reconcile reports, you must also consider the revenue recognition corrections summary reports for all subsequent months. Any corrections that would have been booked to the `original_accounting_period` of the reconciliation month must be factored into the Stripe Revenue Recognition cash amount.
+
 | debit | credit | amount  |
 | ----- | ------ | ------- |
 | Fees  | Cash   | 1001.90 |
-
-> The debits and credits report doesn’t take corrections into account. If there were corrections issued for the month for which you’re attempting to reconcile reports, you must also consider the revenue recognition corrections summary reports for all subsequent months. Any corrections that would have been booked to the `original_accounting_period` of the reconciliation month must be factored into the Stripe Revenue Recognition cash amount.

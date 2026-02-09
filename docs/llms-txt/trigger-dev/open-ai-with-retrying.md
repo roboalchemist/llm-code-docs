@@ -1,5 +1,9 @@
 # Source: https://trigger.dev/docs/guides/examples/open-ai-with-retrying.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://trigger.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Call OpenAI with retrying
 
 > This example will show you how to call OpenAI with retrying using Trigger.dev.
@@ -10,7 +14,7 @@ Sometimes OpenAI calls can take a long time to complete, or they can fail. This 
 
 ## Task code
 
-```ts trigger/openai.ts theme={null}
+```ts trigger/openai.ts theme={"theme":"css-variables"}
 import { task } from "@trigger.dev/sdk";
 import OpenAI from "openai";
 
@@ -49,7 +53,7 @@ export const openaiTask = task({
 
 To test this task in the dashboard, you can use the following payload:
 
-```json  theme={null}
+```json  theme={"theme":"css-variables"}
 {
   "prompt": "What is the meaning of life?"
 }

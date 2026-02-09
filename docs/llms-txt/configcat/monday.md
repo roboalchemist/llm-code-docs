@@ -2,6 +2,8 @@
 
 # monday.com - Manage feature flags from monday
 
+Copy page
+
 The [ConfigCat Feature Flags monday app](https://monday.com/marketplace/10000079) allows you to connect your Monday items and feature flags. Create or link existing flags to your items without leaving your monday instance.
 
 Turn features On/Off right from a linked item on your Monday board. You can also easily modify the linked flags to edit or add new Targeting or Percentage Rules.
@@ -51,7 +53,7 @@ Your browser does not support the video tag.
 2. See the linked feature flags in the **Feature Flag (ConfigCat)** view.
 3. You can manage the selected feature flag from this Item.
 4. You can add new Targeting Rules or Percentage Options to Feature Flags.
-5. You can add new Targeting Rules with User, Segment or Prerequisite conditions with a large selection of Comparators. [Read more about Targeting.](https://configcat.com/docs/docs/targeting/targeting-overview/.md)
+5. You can add new Targeting Rules with User, Segment or Prerequisite conditions with a large selection of Comparators. [Read more about Targeting.](https://configcat.com/docs/targeting/targeting-overview.md)
 6. You can remove Targeting Rules as well.
 
 Your browser does not support the video tag.

@@ -1,5 +1,9 @@
 # Source: https://braintrust.dev/docs/cookbook/recipes/VoiceAgent.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://braintrust.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Evaluating a voice agent
 
 <div className="text-sm">[Contributed](https://github.com/braintrustdata/braintrust-cookbook/blob/main/examples/VoiceAgent/voiceagent.ipynb) by [Adrian Barbir](https://www.linkedin.com/in/adrianbarbir/) on 2025-02-13</div>
@@ -172,7 +176,7 @@ def load_eval_data(limit=20):
 
 ## Task definition and audio attachment
 
-Below is our core task function, `task_func`, which receives an audio snippet, [attaches the raw audio to Braintrust for logging](/core/experiments/write#attachments), and prompts an LLM to classify the language. Notice how we create an `Attachment` object and call `current_span().log(input={"audio_attachment": attachment})`. This adds the attachment to your log's trace details, which is helpful if you want to replay or debug your audio data.
+Below is our core task function, `task_func`, which receives an audio snippet, [attaches the raw audio to Braintrust for logging](/evaluate/run-evaluations#attachments), and prompts an LLM to classify the language. Notice how we create an `Attachment` object and call `current_span().log(input={"audio_attachment": attachment})`. This adds the attachment to your log's trace details, which is helpful if you want to replay or debug your audio data.
 
 ```python  theme={"theme":{"light":"github-light","dark":"github-dark-dimmed"}}
 def task_func(example):
@@ -305,8 +309,3 @@ You might consider:
 * Learning to [evaluate prompt chaining agents](/cookbook/recipes/PromptChaining)
 
 * Diving deeper into [LLM classifiers](/cookbook/recipes/PrecisionRecall)
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://braintrust.dev/docs/llms.txt

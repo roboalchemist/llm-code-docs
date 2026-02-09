@@ -16,6 +16,10 @@ Deletes a specific environment variable.
 ## Responses
 
 * 204
+* 400
 
 **Response Headers**
 
+
+
+Bad request - invalid input parameters or request body.

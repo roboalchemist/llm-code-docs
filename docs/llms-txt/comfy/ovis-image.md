@@ -1,5 +1,9 @@
 # Source: https://docs.comfy.org/tutorials/image/ovis/ovis-image.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.comfy.org/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Ovis-Image ComfyUI Workflow Example
 
 > Ovis-Image is a 7B text-to-image model specifically optimized for high-quality text rendering, designed to operate efficiently under stringent computational constraints.
@@ -80,8 +84,3 @@
 │   └── 📂 vae/
 │          └── ae.safetensors
 ```
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.comfy.org/llms.txt

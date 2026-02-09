@@ -1,5 +1,9 @@
 # Source: https://upstash.com/docs/redis/tutorials/serverless_java_redis.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Serverless API with Java and Redis
 
 In this tutorial, we will build a stateful serverless API using Java and Redis

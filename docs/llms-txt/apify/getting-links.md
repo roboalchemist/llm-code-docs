@@ -2,18 +2,6 @@
 
 # Source: https://docs.apify.com/academy/scraping-basics-javascript/getting-links.md
 
-# Source: https://docs.apify.com/academy/scraping-basics-python/getting-links.md
-
-# Source: https://docs.apify.com/academy/scraping-basics-javascript/getting-links.md
-
-# Source: https://docs.apify.com/academy/scraping-basics-python/getting-links.md
-
-# Source: https://docs.apify.com/academy/scraping-basics-javascript/getting-links.md
-
-# Source: https://docs.apify.com/academy/scraping-basics-python/getting-links.md
-
-# Source: https://docs.apify.com/academy/scraping-basics-javascript2/getting-links.md
-
 # Getting links from HTML with Node.js
 
 **In this lesson, we'll locate and extract links to individual product pages. We'll use Cheerio to find the relevant bits of HTML.**
@@ -223,7 +211,7 @@ The program is much easier to read now. With the `parseProduct()` function handy
 
 Refactoring
 
-We turned the whole program upside down, and at the same time, we didn't make any actual changes! This is https://en.wikipedia.org/wiki/Code_refactoring: improving the structure of existing code without changing its behavior.
+We turned the whole program upside down, and at the same time, we didn't make any actual changes! This is [refactoring](https://en.wikipedia.org/wiki/Code_refactoring): improving the structure of existing code without changing its behavior.
 
 ![Refactoring](/assets/images/refactoring-269525c424ecc082de290a3ecfd4d9ce.gif)
 
@@ -283,7 +271,7 @@ Hmm, but that isn't what we wanted! Where is the beginning of each URL? It turns
 
 ## Turning relative links into absolute
 
-Browsers reading the HTML know the base address and automatically resolve such links, but we'll have to do this manually. The built-in https://developer.mozilla.org/en-US/docs/Web/API/URL object will help us.
+Browsers reading the HTML know the base address and automatically resolve such links, but we'll have to do this manually. The built-in [URL](https://developer.mozilla.org/en-US/docs/Web/API/URL) object will help us.
 
 We'll change the `parseProduct()` function so that it also takes the base URL as an argument and then joins it with the relative URL to the product page:
 
@@ -348,7 +336,7 @@ These challenges are here to help you test what you’ve learned in this lesson.
 
 Real world
 
-You're about to touch the real web, which is practical and exciting! But websites change, so some exercises might break. If you run into any issues, please leave a comment below or https://github.com/apify/apify-docs/issues.
+You're about to touch the real web, which is practical and exciting! But websites change, so some exercises might break. If you run into any issues, please leave a comment below or [file a GitHub Issue](https://github.com/apify/apify-docs/issues).
 
 ### Scrape links to countries in Africa
 
@@ -378,21 +366,23 @@ Solution
 ```
 import * as cheerio from 'cheerio';
 
-const listingURL = "https://en.wikipedia.org/wiki/List_of_sovereign_states_and_dependent_territories_in_Africa";
-const response = await fetch(listingURL);
+const listingUrl = 'https://en.wikipedia.org/wiki/List_of_sovereign_states_and_dependent_territories_in_Africa';
+const response = await fetch(listingUrl);
 
-if (response.ok) {
-  const html = await response.text();
-  const $ = cheerio.load(html);
+if (!response.ok) {
+  throw new Error(`HTTP ${response.status}`);
+}
 
-  for (const element of $(".wikitable tr td:nth-child(3)").toArray()) {
-    const nameCell = $(element);
-    const link = nameCell.find("a").first();
-    const url = new URL(link.attr("href"), listingURL).href;
+const html = await response.text();
+const $ = cheerio.load(html);
+
+for (const element of $('.wikitable tr td:nth-child(3)').toArray()) {
+  const $nameCell = $(element);
+  const $link = $nameCell.find('a').first();
+  if ($link.length) {
+    const url = new URL($link.attr('href'), listingUrl).href;
     console.log(url);
   }
-} else {
-  throw new Error(`HTTP ${response.status}`);
 }
 ```
 
@@ -425,20 +415,23 @@ Solution
 ```
 import * as cheerio from 'cheerio';
 
-const listingURL = "https://www.theguardian.com/sport/formulaone";
-const response = await fetch(listingURL);
+const listingUrl = 'https://www.theguardian.com/sport/formulaone';
+const response = await fetch(listingUrl);
 
-if (response.ok) {
-  const html = await response.text();
-  const $ = cheerio.load(html);
+if (!response.ok) {
+  throw new Error(`HTTP ${response.status}`);
+}
 
-  for (const element of $("#maincontent ul li").toArray()) {
-    const link = $(element).find("a").first();
-    const url = new URL(link.attr("href"), listingURL).href;
+const html = await response.text();
+const $ = cheerio.load(html);
+
+for (const element of $('#maincontent ul li').toArray()) {
+  const $item = $(element);
+  const $link = $item.find('a').first();
+  if ($link.length) {
+    const url = new URL($link.attr('href'), listingUrl).href;
     console.log(url);
   }
-} else {
-  throw new Error(`HTTP ${response.status}`);
 }
 ```
 

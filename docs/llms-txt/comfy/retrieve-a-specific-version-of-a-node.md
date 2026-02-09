@@ -1,194 +1,151 @@
 # Source: https://docs.comfy.org/api-reference/registry/retrieve-a-specific-version-of-a-node.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.comfy.org/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Retrieve a specific version of a node
+
+
 
 ## OpenAPI
 
 ````yaml https://api.comfy.org/openapi get /nodes/{nodeId}/versions/{versionId}
+openapi: 3.0.2
+info:
+  title: Comfy API
+  version: '1.0'
+servers:
+  - url: https://api.comfy.org
+security: []
 paths:
-  path: /nodes/{nodeId}/versions/{versionId}
-  method: get
-  servers:
-    - url: https://api.comfy.org
-  request:
-    security: []
-    parameters:
-      path:
-        nodeId:
+  /nodes/{nodeId}/versions/{versionId}:
+    get:
+      tags:
+        - Registry
+      summary: Retrieve a specific version of a node
+      operationId: GetNodeVersion
+      parameters:
+        - in: path
+          name: nodeId
+          required: true
           schema:
-            - type: string
-              required: true
-        versionId:
+            type: string
+        - description: The version of the node. (Not a UUID).
+          in: path
+          name: versionId
+          required: true
           schema:
-            - type: string
-              required: true
-              description: The version of the node. (Not a UUID).
-      query: {}
-      header: {}
-      cookie: {}
-    body: {}
-  response:
-    '200':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              changelog:
-                allOf:
-                  - description: Summary of changes made in this version
-                    type: string
-              comfy_node_extract_status:
-                allOf:
-                  - description: The status of comfy node extraction process.
-                    type: string
-              createdAt:
-                allOf:
-                  - description: The date and time the version was created.
-                    format: date-time
-                    type: string
-              dependencies:
-                allOf:
-                  - description: A list of pip dependencies required by the node.
-                    items:
-                      type: string
-                    type: array
-              deprecated:
-                allOf:
-                  - description: Indicates if this version is deprecated.
-                    type: boolean
-              downloadUrl:
-                allOf:
-                  - description: '[Output Only] URL to download this version of the node'
-                    type: string
-              id:
-                allOf:
-                  - type: string
-              node_id:
-                allOf:
-                  - description: The unique identifier of the node.
-                    type: string
-              status:
-                allOf:
-                  - $ref: '#/components/schemas/NodeVersionStatus'
-              status_reason:
-                allOf:
-                  - type: string
-              supported_accelerators:
-                allOf:
-                  - description: >-
-                      List of accelerators (e.g. CUDA, DirectML, ROCm) that this
-                      node supports
-                    items:
-                      type: string
-                    type: array
-              supported_comfyui_frontend_version:
-                allOf:
-                  - description: Supported versions of ComfyUI frontend
-                    type: string
-              supported_comfyui_version:
-                allOf:
-                  - description: Supported versions of ComfyUI
-                    type: string
-              supported_os:
-                allOf:
-                  - description: List of operating systems that this node supports
-                    items:
-                      type: string
-                    type: array
-              tags:
-                allOf:
-                  - items:
-                      type: string
-                    type: array
-              tags_admin:
-                allOf:
-                  - description: Admin-only tags for security warnings and admin metadata
-                    items:
-                      type: string
-                    type: array
-              version:
-                allOf:
-                  - description: >-
-                      The version identifier, following semantic versioning.
-                      Must be unique for the node.
-                    type: string
-            refIdentifier: '#/components/schemas/NodeVersion'
-        examples:
-          example:
-            value:
-              changelog: <string>
-              comfy_node_extract_status: <string>
-              createdAt: '2023-11-07T05:31:56Z'
-              dependencies:
-                - <string>
-              deprecated: true
-              downloadUrl: <string>
-              id: <string>
-              node_id: <string>
-              status: NodeVersionStatusActive
-              status_reason: <string>
-              supported_accelerators:
-                - <string>
-              supported_comfyui_frontend_version: <string>
-              supported_comfyui_version: <string>
-              supported_os:
-                - <string>
-              tags:
-                - <string>
-              tags_admin:
-                - <string>
-              version: <string>
-        description: Detailed information about a specific node version
-    '404':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              details:
-                allOf:
-                  - description: >-
-                      Optional detailed information about the error or hints for
-                      resolving it.
-                    items:
-                      type: string
-                    type: array
-              message:
-                allOf:
-                  - description: A clear and concise description of the error.
-                    type: string
-            refIdentifier: '#/components/schemas/Error'
-        examples:
-          example:
-            value:
-              details:
-                - <string>
-              message: <string>
-        description: Node version not found
-    '500':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              error:
-                allOf:
-                  - type: string
-              message:
-                allOf:
-                  - type: string
-            refIdentifier: '#/components/schemas/ErrorResponse'
-            requiredProperties:
-              - error
-              - message
-        examples:
-          example:
-            value:
-              error: <string>
-              message: <string>
-        description: Internal server error
-  deprecated: false
-  type: path
+            type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NodeVersion'
+          description: Detailed information about a specific node version
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Node version not found
+        '500':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Internal server error
 components:
   schemas:
+    NodeVersion:
+      properties:
+        changelog:
+          description: Summary of changes made in this version
+          type: string
+        comfy_node_extract_status:
+          description: The status of comfy node extraction process.
+          type: string
+        createdAt:
+          description: The date and time the version was created.
+          format: date-time
+          type: string
+        dependencies:
+          description: A list of pip dependencies required by the node.
+          items:
+            type: string
+          type: array
+        deprecated:
+          description: Indicates if this version is deprecated.
+          type: boolean
+        downloadUrl:
+          description: '[Output Only] URL to download this version of the node'
+          type: string
+        id:
+          type: string
+        node_id:
+          description: The unique identifier of the node.
+          type: string
+        status:
+          $ref: '#/components/schemas/NodeVersionStatus'
+        status_reason:
+          type: string
+        supported_accelerators:
+          description: >-
+            List of accelerators (e.g. CUDA, DirectML, ROCm) that this node
+            supports
+          items:
+            type: string
+          type: array
+        supported_comfyui_frontend_version:
+          description: Supported versions of ComfyUI frontend
+          type: string
+        supported_comfyui_version:
+          description: Supported versions of ComfyUI
+          type: string
+        supported_os:
+          description: List of operating systems that this node supports
+          items:
+            type: string
+          type: array
+        tags:
+          items:
+            type: string
+          type: array
+        tags_admin:
+          description: Admin-only tags for security warnings and admin metadata
+          items:
+            type: string
+          type: array
+        version:
+          description: >-
+            The version identifier, following semantic versioning. Must be
+            unique for the node.
+          type: string
+      type: object
+    Error:
+      properties:
+        details:
+          description: >-
+            Optional detailed information about the error or hints for resolving
+            it.
+          items:
+            type: string
+          type: array
+        message:
+          description: A clear and concise description of the error.
+          type: string
+      type: object
+    ErrorResponse:
+      properties:
+        error:
+          type: string
+        message:
+          type: string
+      required:
+        - error
+        - message
+      type: object
     NodeVersionStatus:
       enum:
         - NodeVersionStatusActive

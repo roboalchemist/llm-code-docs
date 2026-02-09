@@ -1,5 +1,9 @@
 # Source: https://smartcar.com/docs/integrations/webhooks/best-practices/architecture.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://smartcar.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Architecture Patterns
 
 > Design patterns for reliable webhook processing
@@ -200,8 +204,3 @@ For a complete serverless implementation, see the [Webhook Receiver Recipe](/get
     Deploy serverless infrastructure
   </Card>
 </CardGroup>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://smartcar.com/docs/llms.txt

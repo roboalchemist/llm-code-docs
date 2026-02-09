@@ -1,5 +1,9 @@
 # Source: https://www.activepieces.com/docs/build-pieces/building-pieces/development-setup.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.activepieces.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Development setup
 
 ## Prerequisites
@@ -45,8 +49,3 @@ For local development, pieces are loaded from your local `dist` folder instead o
 ```sh  theme={null}
 AP_DEV_PIECES=google-sheets,cal-com npm start
 ```
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://www.activepieces.com/docs/llms.txt

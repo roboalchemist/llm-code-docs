@@ -1,5 +1,9 @@
 # Source: https://docs.argil.ai/resources/create-avatar-styles.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.argil.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Creating avatar styles
 
 > What does it mean to add styles and how to add styles to your avatar
@@ -18,7 +22,7 @@ When you are in the avatar tab, you can either hover over avatar cards and click
 
 Then you will be able to describe in full where you want to be standing, what you are wearing, the light, etc.
 
-Last step is to pick whether you want a vertical avatar or a horizontal one.
+Last step is to pick whether you want a vertical avatar or a horizontal one and pay a few credits to generate the image.
 
 <Expandable title="Example of prompt">
   "is in a crowded restaurant, with a formal suit. The light is a bit dark. We can see from the chest to the head, hands are visible."

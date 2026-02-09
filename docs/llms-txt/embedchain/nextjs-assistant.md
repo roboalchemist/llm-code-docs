@@ -1,5 +1,9 @@
 # Source: https://docs.embedchain.ai/examples/nextjs-assistant.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.embedchain.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # null
 
 Fork the Embedchain repo on [Github](https://github.com/embedchain/embedchain) to create your own NextJS discord and slack bot powered by Embedchain.
@@ -30,13 +34,13 @@ Before running the ec commands to develope the app, open `fly.toml` file and upd
 
 Now, we need to launch this application with fly.io. You can see your app on [fly.io dashboard](https://fly.io/dashboard). Run the following command to launch your app on fly.io:
 
-```bash
+```bash  theme={null}
 fly launch --no-deploy
 ```
 
 To run the app in development, run the following command:
 
-```bash
+```bash  theme={null}
 ec dev
 ```
 
@@ -70,7 +74,7 @@ Once you have your discord bot token and discord app name. Navigate to `nextjs_d
 
 To run the app in development:
 
-```bash
+```bash  theme={null}
 python app.py
 ```
 
@@ -78,7 +82,7 @@ Before deploying the app, open `fly.toml` file and update the `name` variable to
 
 Now, we need to launch this application with fly.io. You can see your app on [fly.io dashboard](https://fly.io/dashboard). Run the following command to launch your app on fly.io:
 
-```bash
+```bash  theme={null}
 fly launch --no-deploy
 ```
 
@@ -100,7 +104,7 @@ For Slack bot, you will need to create the bot on slack developer portal and get
 * Once you enable the event subscription, you will need to subscribe to bot events to authorize the bot to listen to app mention events of the bot. Do that by tapping on `Add Bot User Event` button and select `app_mention`.
 * On the left Sidebar, go to `OAuth and Permissions` and add the following scopes under `Bot Token Scopes`:
 
-```text
+```text  theme={null}
 app_mentions:read
 channels:history
 channels:read
@@ -116,7 +120,7 @@ Once you have your slack bot token and slack app token. Navigate to `nextjs_slac
 
 To run the app in development:
 
-```bash
+```bash  theme={null}
 python app.py
 ```
 
@@ -124,7 +128,7 @@ Before deploying the app, open `fly.toml` file and update the `name` variable to
 
 Now, we need to launch this application with fly.io. You can see your app on [fly.io dashboard](https://fly.io/dashboard). Run the following command to launch your app on fly.io:
 
-```bash
+```bash  theme={null}
 fly launch --no-deploy
 ```
 

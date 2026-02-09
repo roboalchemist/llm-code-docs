@@ -1,5 +1,9 @@
 # Source: https://docs.baseten.co/examples/models/microsoft/all-mpnet-base-v2.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.baseten.co/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # All MPNet Base V2
 
 > A text embedding model with a context window of 384 tokens and a dimensionality of 768 values.

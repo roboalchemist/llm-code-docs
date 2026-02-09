@@ -10,54 +10,54 @@
 
 # Source: https://docs.turso.tech/agentfs/introduction.md
 
-# Source: https://docs.turso.tech/sdk/introduction.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.turso.tech/llms.txt
+> Use this file to discover all available pages before exploring further.
 
-# Source: https://docs.turso.tech/introduction.md
+# AgentFS
 
-# Source: https://docs.turso.tech/features/embedded-replicas/introduction.md
+> A filesystem for AI agents, built on Turso
 
-# Source: https://docs.turso.tech/cli/introduction.md
+AgentFS is a filesystem for AI agents. It provides copy-on-write isolation, letting agents safely modify files while keeping your original data untouched.
+It is available both as a CLI, that wraps an existing program in a sandboxed session, and an SDK that allows you to build custom agents with a filesystem
+abstraction.
 
-# Source: https://docs.turso.tech/api-reference/introduction.md
+## Key Features
 
-# Source: https://docs.turso.tech/agentfs/introduction.md
+* **Copy-on-Write Isolation** — Run agents in sandboxed environments where changes are isolated from your source tree
+* **Single File Storage** — Everything stored in one portable SQLite database for easy sharing and snapshotting
+* **Built-in Auditing** — Every file operation is recorded and queryable
+* **Cloud Sync** — Optionally sync agent state to Turso Cloud
 
-# Source: https://docs.turso.tech/sdk/introduction.md
+## Quick Start
 
-# Source: https://docs.turso.tech/introduction.md
+```bash  theme={null}
+# Install
+curl -fsSL https://agentfs.ai/install | bash
 
-# Source: https://docs.turso.tech/features/embedded-replicas/introduction.md
+# Run a shell in an isolated environment
+cd /path/to/project
+agentfs run bash
 
-# Source: https://docs.turso.tech/cli/introduction.md
+# Any changes are isolated - your original files are safe
+```
 
-# Source: https://docs.turso.tech/api-reference/introduction.md
-
-# Source: https://docs.turso.tech/agentfs/introduction.md
-
-# Source: https://docs.turso.tech/sdk/introduction.md
-
-# Source: https://docs.turso.tech/introduction.md
-
-# Source: https://docs.turso.tech/features/embedded-replicas/introduction.md
-
-# Source: https://docs.turso.tech/cli/introduction.md
-
-# Source: https://docs.turso.tech/api-reference/introduction.md
-
-# Turso Platform API
-
-The Turso API gives you everything needed to manage your organization and its members, groups, databases, and API tokens.
-
-If you want to programatically create and manage databases, either for building a platform where you provide SQLite databases to your users or have a per-user SQLite database architecture, this is the API to do that.
+## Next Steps
 
 <CardGroup cols={2}>
-  <Card title="API Quickstart" icon="play" href="/api-reference/quickstart">
-    Get started with the Turso API to create your first database.
+  <Card title="Installation" icon="download" href="/agentfs/installation">
+    Install the AgentFS CLI
+  </Card>
+
+  <Card title="Agentic Coding" icon="robot" href="/agentfs/guides/sandbox">
+    Run AI coding agents safely
+  </Card>
+
+  <Card title="AgentFS SDKs" icon="robot" href="/agentfs/sdk">
+    Build custom agents with the AgentFS SDKs
   </Card>
 </CardGroup>
 
-## API Resources
-
-Start integrating the Turso API with your platform in a few simple steps.
-
-<Snippet file="platform-api-links.mdx" />
+<Warning>
+  This software is ALPHA; use only for development, testing, and experimentation. We are working to make it production-ready, but do not use it for critical data until it is ready.
+</Warning>

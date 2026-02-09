@@ -1,5 +1,9 @@
 # Source: https://docs.baseten.co/observability/metrics.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.baseten.co/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Metrics
 
 > Understand the load and performance of your model

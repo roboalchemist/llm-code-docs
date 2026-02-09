@@ -1,5 +1,9 @@
 # Source: https://docs.promptlayer.com/reference/templates-publish.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.promptlayer.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Publish Prompt Template
 
 Publish Prompt Template allows you to programmatically create a new version of a prompt template and make it available for use in the application.
@@ -884,7 +888,3 @@ components:
       title: ToolCall
 
 ````
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.promptlayer.com/llms.txt

@@ -4,23 +4,9 @@
 
 # Source: https://infisical.com/docs/documentation/platform/identities/oidc-auth/azure.md
 
-# Source: https://infisical.com/docs/documentation/platform/sso/azure.md
-
-# Source: https://infisical.com/docs/documentation/platform/scim/azure.md
-
-# Source: https://infisical.com/docs/documentation/platform/identities/oidc-auth/azure.md
-
-# Source: https://infisical.com/docs/documentation/platform/sso/azure.md
-
-# Source: https://infisical.com/docs/documentation/platform/scim/azure.md
-
-# Source: https://infisical.com/docs/documentation/platform/identities/oidc-auth/azure.md
-
-# Source: https://infisical.com/docs/documentation/platform/sso/azure.md
-
-# Source: https://infisical.com/docs/documentation/platform/scim/azure.md
-
-# Source: https://infisical.com/docs/documentation/platform/identities/oidc-auth/azure.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://infisical.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Azure
 

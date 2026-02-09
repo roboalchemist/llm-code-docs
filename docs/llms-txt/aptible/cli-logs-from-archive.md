@@ -1,5 +1,9 @@
 # Source: https://www.aptible.com/docs/reference/aptible-cli/cli-commands/cli-logs-from-archive.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.aptible.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # aptible logs_from_archive
 
 This command is used to retrieve container logs from your own [Disaster Log Archive](/core-concepts/observability/logs/s3-log-archives).

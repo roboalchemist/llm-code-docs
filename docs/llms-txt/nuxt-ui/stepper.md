@@ -10,7 +10,9 @@ Use the Stepper component to display a list of items in a stepper.
 
 ```vue
 <script setup lang="ts">
-const items = ref<undefined>([
+import type { StepperItem } from '@nuxt/ui'
+
+const items = ref<StepperItem[]>([
   {
     title: 'Address',
     description: 'Add your address here',
@@ -74,11 +76,8 @@ const items = ref<StepperItem[]>([
 </template>
 ```
 
-<note>
-
-Click on the items to navigate through the steps.
-
-</note>
+> [!NOTE]
+> Click on the items to navigate through the steps.
 
 ### Color
 
@@ -204,11 +203,9 @@ const items = ref<StepperItem[]>([
 </template>
 ```
 
-<note to="#with-controls">
-
-This can be useful when you want to force navigation with controls.
-
-</note>
+> [!NOTE]
+> See: #with-controls
+> This can be useful when you want to force navigation with controls.
 
 ## Examples
 
@@ -271,7 +268,7 @@ const stepper = useTemplateRef('stepper')
 
 ### Control active item
 
-You can control the active item by using the `default-value` prop or the `v-model` directive with the index of the item.
+You can control the active item by using the `default-value` prop or the `v-model` directive with the `value` of the item. If no `value` is provided, it defaults to the index.
 
 ```vue [StepperModelValueExample.vue]
 <script setup lang="ts">
@@ -314,11 +311,8 @@ onMounted(() => {
 </template>
 ```
 
-<tip>
-
-You can also pass the `value` of one of the items if provided.
-
-</tip>
+> [!TIP]
+> Use the `value-key` prop to change the key used to match items when a `v-model` or `default-value` is provided.
 
 ### With content slot
 
@@ -418,7 +412,7 @@ const items = [
  * Props for the Stepper component
  */
 interface StepperProps {
-  items: StepperItem[];
+  items: T[];
   /**
    * The element or component this component should render as.
    */
@@ -430,6 +424,11 @@ interface StepperProps {
    * @default "\"horizontal\""
    */
   orientation?: "horizontal" | "vertical" | undefined;
+  /**
+   * The key used to get the value from the item.
+   * @default "\"value\""
+   */
+  valueKey?: GetItemKeys<T> | undefined;
   /**
    * The value of the step that should be active when initially rendered. Use when you do not need to control the state of the steps.
    */
@@ -453,6 +452,7 @@ interface StepperProps {
  */
 interface StepperSlots {
   indicator(): any;
+  wrapper(): any;
   title(): any;
   description(): any;
   content(): any;
@@ -466,8 +466,8 @@ interface StepperSlots {
  * Emitted events for the Stepper component
  */
 interface StepperEmits {
-  next: (payload: [value: StepperItem]) => void;
-  prev: (payload: [value: StepperItem]) => void;
+  next: (payload: [value: T]) => void;
+  prev: (payload: [value: T]) => void;
   update:modelValue: (payload: [value: string | number | undefined]) => void;
 }
 ```
@@ -806,8 +806,4 @@ export default defineAppConfig({
 
 ## Changelog
 
-<component-changelog>
-
-
-
-</component-changelog>
+See the [releases page](https://github.com/nuxt/ui/releases) for the latest changes.

@@ -1,5 +1,9 @@
 # Source: https://docs.zapier.com/platform/build/cli-hook-trigger.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.zapier.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Add an instant trigger using REST Hooks in Zapier Platform CLI
 
 > REST Hooks are an alternative to polling. The main differences are allowing your customers' Zaps to trigger instantly; and avoiding polling triggers' numerous - and sometimes unnecessary - requests to your API's endpoints to check for new data.

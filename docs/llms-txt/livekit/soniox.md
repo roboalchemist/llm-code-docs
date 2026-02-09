@@ -1,6 +1,6 @@
 # Source: https://docs.livekit.io/agents/models/stt/plugins/soniox.md
 
-LiveKit docs › Models › Speech-to-text (STT) › Plugins › Soniox
+LiveKit docs › Models › STT › Plugins › Soniox
 
 ---
 
@@ -25,7 +25,7 @@ This section provides a quick reference for the Soniox STT plugin. For more info
 Install the plugin from PyPI:
 
 ```shell
-uv add "livekit-agents[soniox]~=1.2"
+uv add "livekit-agents[soniox]~=1.3"
 
 ```
 
@@ -39,21 +39,28 @@ Set `SONIOX_API_KEY` in your `.env` file.
 
 Use Soniox STT in an `AgentSession` or as a standalone transcription service. For example, you can use this STT in the [Voice AI quickstart](https://docs.livekit.io/agents/start/voice-ai.md).
 
+Set STT options for Soniox using the `params` argument:
+
 ```python
 from livekit.plugins import soniox
 
 session = AgentSession(
-   stt=soniox.STT(),
-   # ... llm, tts, etc.
+   stt=soniox.STT(
+      params=soniox.STTOptions(
+         model="stt-rt-v3",
+         language_hints=["en"]
+      )
+   ),
+# ... llm, tts, etc.
 )
 
 ```
 
 ### Parameters
 
-This section describes some of the available parameters. See the [plugin reference](https://docs.livekit.io/reference/python/v1/livekit/plugins/soniox/index.html.md) for a complete list of all available parameters.
+The `soniox.STT` constructor takes an `STTOptions` object as the `params` argument. This section describes some of the available options. See the [STTOptions reference](https://docs.livekit.io/reference/python/v1/livekit/plugins/soniox/index.html.md#livekit.plugins.soniox.STTOptions) for a complete list.
 
-- **`model`** _(string)_ (optional) - Default: `stt-rt-preview`: The Soniox STT model to use. See [documentation](https://soniox.com/docs/stt/models) for a complete list of supported models.
+- **`model`** _(string)_ (optional) - Default: `stt-rt-v3`: The Soniox STT model to use. See [documentation](https://soniox.com/docs/stt/models) for a complete list of supported models.
 
 - **`context`** _(string)_ (optional) - Default: `None`: Free-form text that provides additional context or vocabulary to bias transcription towards domain-specific terms.
 
@@ -75,7 +82,7 @@ The following resources provide more information about using Soniox with LiveKit
 
 ---
 
-This document was rendered at 2025-11-18T23:55:09.069Z.
+This document was rendered at 2026-02-03T03:25:04.083Z.
 For the latest version of this document, see [https://docs.livekit.io/agents/models/stt/plugins/soniox.md](https://docs.livekit.io/agents/models/stt/plugins/soniox.md).
 
 To explore all LiveKit documentation, see [llms.txt](https://docs.livekit.io/llms.txt).

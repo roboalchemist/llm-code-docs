@@ -12,9 +12,9 @@ An Actor is a combination of source code and various settings in a Docker contai
 
 What is Docker image?
 
-A Docker image is a lightweight, standalone, executable package of software that includes everything needed to run an application: code, runtime, system tools, system libraries, and settings. For more information visit Docker's https://www.docker.com/resources/what-container/.
+A Docker image is a lightweight, standalone, executable package of software that includes everything needed to run an application: code, runtime, system tools, system libraries, and settings. For more information visit Docker's [site](https://www.docker.com/resources/what-container/).
 
-With every new version of an Actor, a new build is created. Each Actor build has its number (for example, **1.2.34**), and some builds are tagged for easier use (for example, *latest* or *beta*). When running an Actor, you can choose what build you want to run by selecting a tag or number in the run options. To change which build a tag refers to, you can reassign it using the https://docs.apify.com/api/v2/act-put.md API endpoint.
+With every new version of an Actor, a new build is created. Each Actor build has its number (for example, **1.2.34**), and some builds are tagged for easier use (for example, *latest* or *beta*). When running an Actor, you can choose what build you want to run by selecting a tag or number in the run options. To change which build a tag refers to, you can reassign it using the [Actor update](https://docs.apify.com/api/v2/act-put.md) API endpoint.
 
 ![Actor run options](/assets/images/actor-run-options-100b9aca271d49f64e9ddc3b42c98c5e.png)
 
@@ -22,13 +22,13 @@ Each build may have different features, input, or output. By fixing the build to
 
 ## Runs
 
-When you start an Actor, an Actor run is created. An Actor run is a Docker container created from the build's Docker image with dedicated resources (CPU, memory, disk space). For more on this topic, see https://docs.apify.com/platform/actors/running/usage-and-resources.md.
+When you start an Actor, an Actor run is created. An Actor run is a Docker container created from the build's Docker image with dedicated resources (CPU, memory, disk space). For more on this topic, see [Usage and resources](https://docs.apify.com/platform/actors/running/usage-and-resources.md).
 
-Each run has its own (default) https://docs.apify.com/platform/storage.md assigned, which it may but not necessarily need to use:
+Each run has its own (default) [storages](https://docs.apify.com/platform/storage.md) assigned, which it may but not necessarily need to use:
 
-* https://docs.apify.com/platform/storage/key-value-store.md containing the input and enabling Actor to store other files.
-* https://docs.apify.com/platform/storage/dataset.md enabling Actor to store the results.
-* https://docs.apify.com/platform/storage/request-queue.md to maintain a queue of URLs to be processed.
+* [Key-value store](https://docs.apify.com/platform/storage/key-value-store.md) containing the input and enabling Actor to store other files.
+* [Dataset](https://docs.apify.com/platform/storage/dataset.md) enabling Actor to store the results.
+* [Request queue](https://docs.apify.com/platform/storage/request-queue.md) to maintain a queue of URLs to be processed.
 
 What's happening inside of an Actor is visible on the Actor run log in the Actor run detail:
 
@@ -36,18 +36,18 @@ What's happening inside of an Actor is visible on the Actor run log in the Actor
 
 ### Origin
 
-Both **Actor runs** and **builds** have the **Origin** field indicating how the Actor run or build was invoked, respectively. The origin is displayed in Apify Console and available via https://docs.apify.com/api/v2/actor-run-get in the `meta.origin` field.
+Both **Actor runs** and **builds** have the **Origin** field indicating how the Actor run or build was invoked, respectively. The origin is displayed in Apify Console and available via [API](https://docs.apify.com/api/v2/actor-run-get) in the `meta.origin` field.
 
-| Name          | Origin                                                                      |
-| ------------- | --------------------------------------------------------------------------- |
-| `DEVELOPMENT` | Manually from Apify Console in the Development mode (own Actor)             |
-| `WEB`         | Manually from Apify Console in "normal" mode (someone else's Actor or task) |
-| `API`         | From https://docs.apify.com/api                                             |
-| `CLI`         | From https://docs.apify.com/cli/                                            |
-| `SCHEDULER`   | Using a schedule                                                            |
-| `WEBHOOK`     | Using a webhook                                                             |
-| `ACTOR`       | From another Actor run                                                      |
-| `STANDBY`     | From https://docs.apify.com/platform/actors/running/standby.md              |
+| Name          | Origin                                                                          |
+| ------------- | ------------------------------------------------------------------------------- |
+| `DEVELOPMENT` | Manually from Apify Console in the Development mode (own Actor)                 |
+| `WEB`         | Manually from Apify Console in "normal" mode (someone else's Actor or task)     |
+| `API`         | From [Apify API](https://docs.apify.com/api)                                    |
+| `CLI`         | From [Apify CLI](https://docs.apify.com/cli/)                                   |
+| `SCHEDULER`   | Using a schedule                                                                |
+| `WEBHOOK`     | Using a webhook                                                                 |
+| `ACTOR`       | From another Actor run                                                          |
+| `STANDBY`     | From [Actor Standby](https://docs.apify.com/platform/actors/running/standby.md) |
 
 ## Lifecycle
 
@@ -75,7 +75,7 @@ You can abort runs with the statuses **READY**, **RUNNING**, or **TIMING-OUT** i
 * *Immediately* - this is the default option. The Actor process is killed immediately with no grace period.
 * *Gracefully* - the Actor run receives a signal about aborting via the `aborting` event and is granted a 30-second window to finish in-progress tasks before getting aborted. This is helpful in cases where you plan to resurrect the run later because it gives the Actor a chance to persist its state. When resurrected, the Actor can restart where it left off.
 
-You can abort a run in Apify Console using the **Abort** button or via API using the https://docs.apify.com/api/v2/actor-run-abort-post.md endpoint.
+You can abort a run in Apify Console using the **Abort** button or via API using the [Abort run](https://docs.apify.com/api/v2/actor-run-abort-post.md) endpoint.
 
 ### Resurrection of finished run
 
@@ -87,7 +87,7 @@ The whole process of resurrection looks as follows:
 * Updated duration will not include the time when the Actor was not running.
 * Timeout will be counted from the point when this Actor run was resurrected.
 
-Resurrection can be performed in Apify Console using the **resurrect** button or via API using the https://docs.apify.com/api/v2/act-run-resurrect-post.md API endpoint.
+Resurrection can be performed in Apify Console using the **resurrect** button or via API using the [Resurrect run](https://docs.apify.com/api/v2/act-run-resurrect-post.md) API endpoint.
 
 Settings adjustments
 
@@ -99,10 +99,10 @@ You can also adjust timeout and memory or change Actor build before the resurrec
 
 ### Data retention
 
-Apify securely stores your ten most recent runs indefinitely, ensuring your records are always accessible. All **Actor runs** beyond the latest ten are deleted along with their default storages (Key-value store, Dataset, Request queue) after the data retention period based on your https://apify.com/pricing.
+Apify securely stores your ten most recent runs indefinitely, ensuring your records are always accessible. All **Actor runs** beyond the latest ten are deleted along with their default storages (Key-value store, Dataset, Request queue) after the data retention period based on your [subscription plan](https://apify.com/pricing).
 
 **Actor builds** are deleted only when they are *not tagged* and have not been used for over 90 days.
 
 ## Sharing
 
-Share your Actor runs with other Apify users via the https://docs.apify.com/platform/collaboration.md system.
+Share your Actor runs with other Apify users via the [access rights](https://docs.apify.com/platform/collaboration.md) system.

@@ -1,12 +1,21 @@
 # Source: https://graphite-58cc94ce.mintlify.dev/docs/cli-overview.md
 
-# CLI Overview
+> ## Documentation Index
+>
+> Fetch the complete documentation index at: https://graphite-58cc94ce.mintlify.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+## CLI Overview
 
 > Create, stack, and submit pull requests directly from the command line.
 
 The Graphite CLI is a tool to help you break up large engineering tasks into a series of small, incremental code changes directly from the command line. The Graphite CLI makes it easy to stay unblocked as an author, develop faster, and provide more helpful comments as a reviewer.
 
-## Start with a guide
+<Frame>
+  <iframe width="750" height="360" src="https://www.youtube.com/embed/8c3EHpWA9no" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen />
+</Frame>
+
+## Get started
 
 <CardGroup cols={2}>
   <Card href="/install-the-cli" icon="chevron-right" title="Set up the CLI">
@@ -17,12 +26,12 @@ The Graphite CLI is a tool to help you break up large engineering tasks into a s
     Set up shell completion, custom branch naming, PR messages, and more.
   </Card>
 
-  <Card href="/initialize-in-a-repo" icon="zap" title="Initialize Graphite in a repository">
-    Learn how to initialize Graphite inside of an existing repository.
-  </Card>
-
   <Card href="/cli-quick-start" icon="circle-play" title="Quick start">
     Learn how to author stacked pull requests with the CLI, from your first edit to merging.
+  </Card>
+
+  <Card href="/cheatsheet" icon="list-checks" title="Command cheatsheet">
+    A quick reference for the most common Graphite CLI commands.
   </Card>
 </CardGroup>
 

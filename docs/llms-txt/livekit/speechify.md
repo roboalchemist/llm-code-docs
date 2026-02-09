@@ -1,6 +1,6 @@
 # Source: https://docs.livekit.io/agents/models/tts/plugins/speechify.md
 
-LiveKit docs › Models › Text-to-speech (TTS) › Plugins › Speechify
+LiveKit docs › Models › TTS › Plugins › Speechify
 
 ---
 
@@ -25,7 +25,7 @@ This section includes a brief overview of the Speechify TTS plugin. For more inf
 Install the plugin from PyPI:
 
 ```shell
-uv add "livekit-agents[speechify]~=1.2"
+uv add "livekit-agents[speechify]~=1.3"
 
 ```
 
@@ -86,7 +86,7 @@ The following resources provide more information about using Speechify with Live
 
 ---
 
-This document was rendered at 2025-11-18T23:55:14.745Z.
+This document was rendered at 2026-02-03T03:25:06.064Z.
 For the latest version of this document, see [https://docs.livekit.io/agents/models/tts/plugins/speechify.md](https://docs.livekit.io/agents/models/tts/plugins/speechify.md).
 
 To explore all LiveKit documentation, see [llms.txt](https://docs.livekit.io/llms.txt).

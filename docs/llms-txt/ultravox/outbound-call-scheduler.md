@@ -1,5 +1,9 @@
 # Source: https://docs.ultravox.ai/telephony/outbound-call-scheduler.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.ultravox.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Outbound Call Scheduler
 
 > Schedule and manage batches of outbound calls automatically with concurrency control and retry handling.
@@ -259,8 +263,3 @@ Use [Delete Scheduled Batch](/api-reference/agents/agents-scheduled-batches-dele
 * Explore the [Scheduled Call Batch](/api-reference/agents/agents-scheduled-batches-list) APIs
 * Learn about [Outbound Calls](/telephony/outbound-calls) for single-call scenarios
 * Explore [Template Context](/agents/making-calls#template-context-and-variables) for dynamic call personalization
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.ultravox.ai/llms.txt

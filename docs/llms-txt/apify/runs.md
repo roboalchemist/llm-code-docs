@@ -12,14 +12,14 @@ When you start an Actor, you create a run. A run is a single execution of your A
 
 You can start an Actor in several ways:
 
-* Manually from the https://console.apify.com/actors UI
-* Via the https://docs.apify.com/api/v2/act-runs-post.md
-* Using the https://docs.apify.com/platform/schedules.md provided by the Apify platform
-* By one of the available https://docs.apify.com/platform/integrations.md
+* Manually from the [Apify Console](https://console.apify.com/actors) UI
+* Via the [Apify API](https://docs.apify.com/api/v2/act-runs-post.md)
+* Using the [Scheduler](https://docs.apify.com/platform/schedules.md) provided by the Apify platform
+* By one of the available [integrations](https://docs.apify.com/platform/integrations.md)
 
 ## Input and environment variables
 
-The run receives input via the `INPUT` record of its default https://docs.apify.com/platform/storage/key-value-store.md. Environment variables are also passed to the run. For more information about environment variables check the https://docs.apify.com/platform/actors/development/programming-interface/environment-variables.md section.
+The run receives input via the `INPUT` record of its default [key-value store](https://docs.apify.com/platform/storage/key-value-store.md). Environment variables are also passed to the run. For more information about environment variables check the [Environment variables](https://docs.apify.com/platform/actors/development/programming-interface/environment-variables.md) section.
 
 ## Run duration and timeout
 

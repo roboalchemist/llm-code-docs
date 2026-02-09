@@ -18,20 +18,20 @@ Rspack doesn't directly remove dead code—it marks unused exports as potential 
 
 To effectively leverage tree shaking, you need to:
 
-* Set Rspack's [mode](/config/mode.md) to `production` to enable tree shaking optimizations.
-  * In production builds, `mode` defaults to `production`.
-* Use ES module syntax (`import` and `export`).
-  * When using compilers like SWC or Babel, ensure they don't transform ES modules to CommonJS.
-  * For example, in [@babel/preset-env](https://babeljs.io/docs/en/babel-preset-env), set `modules` to `false`.
+- Set Rspack's [mode](/config/mode.md) to `production` to enable tree shaking optimizations.
+  - In production builds, `mode` defaults to `production`.
+- Use ES module syntax (`import` and `export`).
+  - When using compilers like SWC or Babel, ensure they don't transform ES modules to CommonJS.
+  - For example, in [@babel/preset-env](https://babeljs.io/docs/en/babel-preset-env), set `modules` to `false`.
 
 ## Configurations
 
 When [mode](/config/mode.md) is set to `production`, Rspack enables several tree shaking optimizations:
 
-* [usedExports](/config/optimization.md#optimizationusedexports): Detects which module exports are used, enabling removal of unused exports.
-* [sideEffects](/config/optimization.md#optimizationsideeffects): Analyzes modules for side effects. Modules without side effects can be further optimized through re-exports.
-* [providedExports](/config/optimization.md#optimizationprovidedExports): Analyzes all exports and tracks their re-export sources.
-* [innerGraph](/config/optimization.md#optimizationsinnergraph): Tracks variable usage to more accurately determine if exports are actually used.
+- [usedExports](/config/optimization.md#optimizationusedexports): Detects which module exports are used, enabling removal of unused exports.
+- [sideEffects](/config/optimization.md#optimizationsideeffects): Analyzes modules for side effects. Modules without side effects can be further optimized through re-exports.
+- [providedExports](/config/optimization.md#optimizationprovidedExports): Analyzes all exports and tracks their re-export sources.
+- [innerGraph](/config/optimization.md#optimizationsinnergraph): Tracks variable usage to more accurately determine if exports are actually used.
 
 The following examples illustrate how these options work. For clarity, we'll use simplified code to demonstrate code removal.
 
@@ -166,7 +166,7 @@ Since `value` is used, the `foo` it depends on is retained.
 
 ## Pure annotation
 
-Use the `/*#__PURE__*/` annotation to tell Rspack that a function call is side-effect-free (pure). Place it before function calls to mark them as having no side effects.
+Use the [`/*#__PURE__*/`](https://github.com/javascript-compiler-hints/compiler-notations-spec/blob/main/pure-notation-spec.md) annotation to tell Rspack that a function call is side-effect-free (pure). Place it before function calls to mark them as having no side effects.
 
 When an unused variable's initial value is marked as side-effect-free (pure), it's treated as dead code and removed by the minimizer.
 
@@ -176,7 +176,7 @@ When an unused variable's initial value is marked as side-effect-free (pure), it
 
 :::tip
 
-* Function arguments aren't marked by the annotation and may need to be marked individually.
-* This behavior is enabled when [optimization.innerGraph](/config/optimization.md#optimizationinnergraph) is set to true.
+- Function arguments aren't marked by the annotation and may need to be marked individually.
+- This behavior is enabled when [optimization.innerGraph](/config/optimization.md#optimizationinnergraph) is set to true.
 
 :::

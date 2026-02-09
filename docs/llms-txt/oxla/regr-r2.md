@@ -1,5 +1,9 @@
 # Source: https://docs.oxla.com/sql-reference/sql-functions/aggregate-functions/regr-r2.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.oxla.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # REGR_R2()
 
 The `REGR_R2()` aggregate function calculates the coefficient of determination (R<sup>2</sup>) for a linear regression model. The R<sup>2</sup> value indicates how well the independent variable (x) explains the variability of the dependent variable (y).

@@ -1,5 +1,9 @@
 # Source: https://getlago.com/docs/guide/lago-cloud.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://getlago.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Lago Cloud
 
 > Lago Cloud is the fully hosted version of our open-source billing API.

@@ -1,5 +1,9 @@
 # Source: https://docs.galileo.ai/galileo/gen-ai-studio-products/galileo-protect/how-to/invoking-rulesets.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.galileo.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Invoking Rulesets
 
 > Invoke rulesets in Galileo Protect to apply AI safeguards effectively, with comprehensive guidance on ruleset usage, configuration, and execution.
@@ -16,7 +20,7 @@ You might choose to run multiple validations on different *stages* of your workf
 
     To create a new project:
 
-    ```py
+    ```py  theme={null}
     import galileo_protect as gp
 
     gp.create_project("<project_name>")
@@ -25,14 +29,14 @@ You might choose to run multiple validations on different *stages* of your workf
 
     And to create a new stage thereafter:
 
-    ```py
+    ```py  theme={null}
     stage = gp.create_stage(name="<stage_name>")
     stage_id = stage.id
     ```
 
     If you want to add a stage to a pre-existing project, please also specify the project ID alongwith your stage creation request:
 
-    ```py
+    ```py  theme={null}
     stage = gp.create_stage(name="<stage_name>", project_id="<project_id>")
     stage_id = stage.id
     ```
@@ -41,7 +45,7 @@ You might choose to run multiple validations on different *stages* of your workf
 
     At invocation time, you can either pass the project ID and stage name or the stage ID directly. These can be set as environment variables or passed directly to the `invoke` method as below.
 
-    ```py
+    ```py  theme={null}
     response = gp.invoke(
         payload=gp.Payload(output="here is my SSN 123-45-6789"),
         prioritized_rulesets=[
@@ -71,7 +75,7 @@ You might choose to run multiple validations on different *stages* of your workf
 
     If the project or stage name don't exist, a project + stage will be created for you for convenience.
 
-    ```javascript
+    ```javascript  theme={null}
     const body = {
       prioritized_rulesets: [
         {

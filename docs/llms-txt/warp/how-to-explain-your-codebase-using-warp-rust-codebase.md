@@ -20,8 +20,7 @@ This walkthrough shows:
 
 {% stepper %}
 {% step %}
-
-### Prompt
+**Prompt**
 
 {% code title="prompt.txt" %}
 
@@ -37,8 +36,7 @@ so I can add a new agent button to it.
 {% endstep %}
 
 {% step %}
-
-### How Warp’s Agent Searches
+**How Warp’s Agent Searches**
 
 Warp begins by using **semantic (vectorized) search** to locate relevant files.\
 Once it finds probable matches (e.g., `agent_management_popup.rs`), it switches to **symbolic search** (`grep` and direct code reads).
@@ -47,8 +45,7 @@ Warp intelligently reads large files (splitting them into smaller chunks) to ext
 {% endstep %}
 
 {% step %}
-
-### Generated Explanation
+**Generated Explanation**
 
 Warp returns a full breakdown:
 

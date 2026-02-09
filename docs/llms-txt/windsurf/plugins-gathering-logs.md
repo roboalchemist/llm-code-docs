@@ -1,6 +1,12 @@
 # Source: https://docs.windsurf.com/troubleshooting/plugins-gathering-logs.md
 
-# Gathering Logs
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.windsurf.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Gathering Plugin Logs
+
+> How to collect diagnostic logs from JetBrains, VS Code, Eclipse, Visual Studio, and NeoVim for troubleshooting Windsurf plugin issues.
 
 If you're having issues, the first step in the troubleshooting process is to retrieve the logs from your IDE. Here's how you can get Windsurf logs for each of the major IDEs:
 

@@ -16,9 +16,6 @@
 
 # Source: https://rspack.dev/config/index.md
 
-import { PackageManagerTabs } from '@theme';
-import { Tabs, Tab } from '@theme';
-
 # Configure Rspack
 
 Rspack provides configurations similar to webpack. This chapter will show you how to use the Rspack configuration.
@@ -29,52 +26,54 @@ When you run the Rspack CLI, Rspack automatically reads the `rspack.config.*` fi
 
 A basic Rspack configuration file looks like this:
 
-<Tabs>
-  <Tab label="ESM">
-    ```js title="rspack.config.mjs"
-    import { defineConfig } from '@rspack/cli';
 
-    export default defineConfig({
-      entry: {
-        main: './src/index.js',
-      },
-    });
-    ```
-  </Tab>
+**ESM**
 
-  <Tab label="CJS">
-    ```js title="rspack.config.cjs"
-    const { defineConfig } = require('@rspack/cli');
+```js title="rspack.config.mjs"
+import { defineConfig } from '@rspack/cli';
 
-    module.exports = defineConfig({
-      entry: {
-        main: './src/index.js',
-      },
-    });
-    ```
-  </Tab>
+export default defineConfig({
+  entry: {
+    main: './src/index.js',
+  },
+});
+```
 
-  <Tab label="TypeScript">
-    ```ts title="rspack.config.ts"
-    import { defineConfig } from '@rspack/cli';
 
-    export default defineConfig({
-      entry: {
-        main: './src/index.js',
-      },
-    });
-    ```
-  </Tab>
-</Tabs>
+**CJS**
+
+```js title="rspack.config.cjs"
+const { defineConfig } = require('@rspack/cli');
+
+module.exports = defineConfig({
+  entry: {
+    main: './src/index.js',
+  },
+});
+```
+
+
+**TypeScript**
+
+```ts title="rspack.config.ts"
+import { defineConfig } from '@rspack/cli';
+
+export default defineConfig({
+  entry: {
+    main: './src/index.js',
+  },
+});
+```
+
 
 ## Configuration file formats
 
 Rspack supports these configuration file formats:
 
-* `rspack.config.js`: defaults to `CommonJS` format, or `ES modules` format if the type of the package.json is "module".
-* `rspack.config.ts`: `TypeScript` format, see [TypeScript configuration file](#typescript-configuration-file) for more details.
-* `rspack.config.cjs`: Forced to `CommonJS` format.
-* `rspack.config.mjs`: Forced to `ES modules` format.
+- `rspack.config.js`: defaults to `CommonJS` format, or `ES modules` format if the type of the package.json is "module".
+- `rspack.config.ts`: `TypeScript` format, see [TypeScript configuration file](#typescript-configuration-file) for more details.
+- `rspack.config.cjs`: Forced to `CommonJS` format.
+- `rspack.config.mjs`: Forced to `ES modules` format.
 
 Note that Rspack will first search JS configuration file and then TS configuration file.
 
@@ -100,7 +99,7 @@ If your JavaScript runtime already natively supports TypeScript, you can use the
 
 For example, Node.js already natively supports TypeScript, you can use the following command to use the Node.js native loader to load the configuration file:
 
-* For Node.js v22.18+ and v24.3+ which support native TypeScript by default, you can run the following command to load the TS config:
+- For Node.js v22.18+ and v24.3+ which support native TypeScript by default, you can run the following command to load the TS config:
 
 ```json title="package.json"
 {
@@ -118,7 +117,26 @@ For lower Node.js versions, you can use `esbuild-register` to load the configura
 
 Install [esbuild](https://npmjs.com/package/esbuild) and [esbuild-register](https://npmjs.com/package/esbuild-register), no additional configuration is needed.
 
-<PackageManagerTabs command="add esbuild esbuild-register -D" />
+
+```sh [npm]
+npm add esbuild esbuild-register -D
+```
+
+```sh [yarn]
+yarn add esbuild esbuild-register -D
+```
+
+```sh [pnpm]
+pnpm add esbuild esbuild-register -D
+```
+
+```sh [bun]
+bun add esbuild esbuild-register -D
+```
+
+```sh [deno]
+deno add npm:esbuild npm:esbuild-register -D
+```
 
 ### Using ts-node
 
@@ -126,7 +144,26 @@ You can also use [ts-node](https://npmjs.com/package/ts-node) to load the config
 
 1. Install `ts-node`:
 
-<PackageManagerTabs command="add ts-node -D" />
+
+```sh [npm]
+npm add ts-node -D
+```
+
+```sh [yarn]
+yarn add ts-node -D
+```
+
+```sh [pnpm]
+pnpm add ts-node -D
+```
+
+```sh [bun]
+bun add ts-node -D
+```
+
+```sh [deno]
+deno add npm:ts-node -D
+```
 
 2. Then configure `ts-node` to use `CommonJS` modules in `tsconfig.json`:
 
@@ -144,32 +181,33 @@ You can also use [ts-node](https://npmjs.com/package/ts-node) to load the config
 
 Use the `defineConfig` helper to enable auto-completion. For JavaScript configuration files, you can use the `// @ts-check` comment to enable type checking.
 
-<Tabs>
-  <Tab label="TypeScript">
-    ```ts title="rspack.config.ts"
-    import { defineConfig } from '@rspack/cli';
 
-    export default defineConfig({
-      entry: {
-        main: './src/index.js',
-      },
-    });
-    ```
-  </Tab>
+**TypeScript**
 
-  <Tab label="JavaScript">
-    ```js title="rspack.config.mjs"
-    // @ts-check
-    import { defineConfig } from '@rspack/cli';
+```ts title="rspack.config.ts"
+import { defineConfig } from '@rspack/cli';
 
-    export default defineConfig({
-      entry: {
-        main: './src/index.js',
-      },
-    });
-    ```
-  </Tab>
-</Tabs>
+export default defineConfig({
+  entry: {
+    main: './src/index.js',
+  },
+});
+```
+
+
+**JavaScript**
+
+```js title="rspack.config.mjs"
+// @ts-check
+import { defineConfig } from '@rspack/cli';
+
+export default defineConfig({
+  entry: {
+    main: './src/index.js',
+  },
+});
+```
+
 
 Alternatively, you can use [JSDoc](https://jsdoc.app/) for type checking.
 
@@ -219,8 +257,8 @@ export default function (env, argv) {
 
 As you can see from the example above, the function takes two input parameters:
 
-* The first argument is `env`, which corresponds to the value of the `--env` option when running the CLI command.
-* The second argument is `argv`, which contains all the options passed to the CLI.
+- The first argument is `env`, which corresponds to the value of the `--env` option when running the CLI command.
+- The second argument is `argv`, which contains all the options passed to the CLI.
 
 ### Determine the current environment
 
@@ -260,7 +298,26 @@ export default {
 
 First install `webpack-merge`:
 
-<PackageManagerTabs command="add webpack-merge -D" />
+
+```sh [npm]
+npm add webpack-merge -D
+```
+
+```sh [yarn]
+yarn add webpack-merge -D
+```
+
+```sh [pnpm]
+pnpm add webpack-merge -D
+```
+
+```sh [bun]
+bun add webpack-merge -D
+```
+
+```sh [deno]
+deno add npm:webpack-merge -D
+```
 
 Then you can use its `merge` function to merge configurations:
 

@@ -1,5 +1,9 @@
 # Source: https://docs.galileo.ai/galileo/gen-ai-studio-products/galileo-protect/concepts/ruleset.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.galileo.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Ruleset
 
 > All of the Rules within a Ruleset are executed in parallel, and the final resolution depends on all of the rules being completed.
@@ -10,7 +14,7 @@ For example, a ruleset can be defined as "PII metric contains SSN AND toxicity g
 
 The order in which Rulesets appear in the list matters. Only one Action gets taken In the example above, the ruleset is the list of Guardrail metrics stored in `prioritized_rulesets`.
 
-```py
+```py  theme={null}
 gp.Ruleset(
     rules=[
         gp.Rule(

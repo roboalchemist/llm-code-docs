@@ -1,5 +1,9 @@
 # Source: https://docs.embedchain.ai/api-reference/store/ai-assistants.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.embedchain.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # AI Assistant
 
 The `AIAssistant` class, an alternative to the OpenAI Assistant API, is designed for those who prefer using large language models (LLMs) other than those provided by OpenAI. It facilitates the creation of AI Assistants with several key benefits:

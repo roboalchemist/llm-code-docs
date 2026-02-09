@@ -1,5 +1,9 @@
 # Source: https://docs.asapp.com/changelog/messaging-virtual-agent.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.asapp.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # ASAPP Messaging Updates - Virtual Agent
 
 > New updates and improvements for ASAPP Messaging - Virtual Agent

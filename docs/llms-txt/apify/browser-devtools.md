@@ -1,20 +1,22 @@
 # Source: https://docs.apify.com/academy/scraping-basics-javascript/legacy/data-extraction/browser-devtools.md
 
-# Source: https://docs.apify.com/academy/web-scraping-for-beginners/data-extraction/browser-devtools.md
-
 # Starting with browser DevTools
 
 **Learn about browser DevTools, a valuable tool in the world of web scraping, and how you can use them to extract data from a website.**
 
+Archived course
+
+This is an archive of our old course. Check out our new [Web scraping basics for JavaScript devs](https://docs.apify.com/academy/scraping-basics-javascript.md) course instead! We plan to completely retire this old course in a few months.
+
 ***
 
-Even though DevTools stands for developer tools, everyone can use them to inspect a website. Each major browser has its own DevTools. We will use Chrome DevTools as an example, but the advice is applicable to any browser, as the tools are extremely similar. To open Chrome DevTools, you can press **F12** or right-click anywhere in the page and choose **Inspect**. Now go to https://www.wikipedia.org/ and open your DevTools there.
+Even though DevTools stands for developer tools, everyone can use them to inspect a website. Each major browser has its own DevTools. We will use Chrome DevTools as an example, but the advice is applicable to any browser, as the tools are extremely similar. To open Chrome DevTools, you can press **F12** or right-click anywhere in the page and choose **Inspect**. Now go to [Wikipedia](https://www.wikipedia.org/) and open your DevTools there.
 
 ![Wikipedia with Chrome DevTools open](/assets/images/browser-devtools-wikipedia-d20b19ea46ed30572858ddc63d9e0f23.png)
 
 ## Elements tab
 
-When you first open Chrome DevTools on Wikipedia, you will start on the Elements tab (In Firefox it's called the **Inspector**). You can use this tab to inspect the page's HTML on the left hand side, and its CSS on the right. The items in the HTML view are called https://docs.apify.com/academy/concepts/html-elements.md.
+When you first open Chrome DevTools on Wikipedia, you will start on the Elements tab (In Firefox it's called the **Inspector**). You can use this tab to inspect the page's HTML on the left hand side, and its CSS on the right. The items in the HTML view are called **elements**.
 
 ![Elements tab in Chrome DevTools](/assets/images/browser-devtools-elements-tab-fb7aa7fc2b9442bb7fd94dbc6955e4c8.png)
 
@@ -68,10 +70,10 @@ By changing HTML elements from the Console, you can change what's displayed on t
 
 ![Chrome DevTools JavaScript command execution](/assets/images/browser-devtools-console-commands-9f82a9905f884595024c32ee4519760a.png)
 
-> In JavaScript, the web page is called `document`. From the Console you can interact with it in many ways. Go through https://developer.mozilla.org/en-US/docs/Web/API/Document_object_model/Using_the_Document_Object_Model to learn more.
+> In JavaScript, the web page is called `document`. From the Console you can interact with it in many ways. Go through [document basics](https://developer.mozilla.org/en-US/docs/Web/API/Document_object_model/Using_the_Document_Object_Model) to learn more.
 
 ## Next up
 
-In this lesson, we learned the absolute basics of interaction with a page using the DevTools. In the https://docs.apify.com/academy/web-scraping-for-beginners/data-extraction/using-devtools.md, you will learn how to extract data from it. We will extract data about the on-sale products on the https://warehouse-theme-metal.myshopify.com.
+In this lesson, we learned the absolute basics of interaction with a page using the DevTools. In the [next lesson](https://docs.apify.com/academy/scraping-basics-javascript/legacy/data-extraction/using-devtools.md), you will learn how to extract data from it. We will extract data about the on-sale products on the [Warehouse store](https://warehouse-theme-metal.myshopify.com).
 
 It isn't a real store, but a full-featured demo of a Shopify online store. And that is perfect for our purposes. Shopify is one of the largest e-commerce platforms in the world, and it uses all the latest technologies that a real e-commerce web application would use. Learning to scrape a Shopify store is useful, because you can immediately apply the learnings to millions of websites.

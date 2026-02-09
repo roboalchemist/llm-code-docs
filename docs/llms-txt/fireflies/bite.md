@@ -2,183 +2,172 @@
 
 # Source: https://docs.fireflies.ai/graphql-api/query/bite.md
 
-# Source: https://docs.fireflies.ai/schema/bite.md
-
-# Source: https://docs.fireflies.ai/graphql-api/query/bite.md
-
-# Source: https://docs.fireflies.ai/schema/bite.md
-
-# Source: https://docs.fireflies.ai/graphql-api/query/bite.md
-
-# Source: https://docs.fireflies.ai/schema/bite.md
-
-# Source: https://docs.fireflies.ai/graphql-api/query/bite.md
-
-# Source: https://docs.fireflies.ai/schema/bite.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.fireflies.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Bite
 
-> Schema for Bite
+> Querying bite details
 
-<ResponseField name="id" type="String">
-  A unique identifier for the Bite
-</ResponseField>
+## Overview
 
-<ResponseField name="transcript_id" type="String">
-  A unique identifier for the transcript the Bite is associated to
-</ResponseField>
+The bite query is designed to fetch details associated with a specific bite ID.
 
-<ResponseField name="start_time" type="String">
-  Start time for the Bite
-</ResponseField>
+## Arguments
 
-<ResponseField name="end_time" type="String">
-  End time for the Bite
-</ResponseField>
+<ParamField path="id" type="ID" required>
+  Unique identifier of the bite
+</ParamField>
 
-<ResponseField name="name" type="String">
-  A string representing the title of the Bite
-</ResponseField>
+## Schema
 
-<ResponseField name="thumbnail" type="String">
-  URL of the Bite's thumbnail image
-</ResponseField>
+Fields available to the [Bite](/schema/bite) query
 
-<ResponseField name="preview" type="String">
-  URL to a short preview video of the Bite
-</ResponseField>
+## Usage Example
 
-<ResponseField name="status" type="String">
-  Current processing status of the Bite. Acceptable values include 'pending', 'processing', 'ready',
-  and 'error'
-</ResponseField>
+```graphql  theme={null}
+query Bite($biteId: ID!) {
+  bite(id: $biteId) {
+    transcript_id
+    name
+    id
+    thumbnail
+    preview
+    status
+    summary
+    user_id
+    start_time
+    end_time
+    summary_status
+    media_type
+    created_at
+    created_from {
+      description
+      duration
+      id
+      name
+      type
+    }
+    captions {
+      end_time
+      index
+      speaker_id
+      speaker_name
+      start_time
+      text
+    }
+    sources {
+      src
+      type
+    }
+    privacies
+    user {
+      first_name
+      last_name
+      picture
+      name
+      id
+    }
+  }
+}
+```
 
-<ResponseField name="summary" type="String">
-  An AI-generated summary describing the content of the Bite
-</ResponseField>
+<RequestExample>
+  ```bash curl theme={null}
+  curl -X POST \
+  	-H "Content-Type: application/json" \
+  	-H "Authorization: Bearer your_api_key" \
+  	--data '{ "query": "query Bite($biteId: ID!) { bite(id: $biteId) { user_id name status summary } }", "variables": { "biteId": "your_bite_id" } }' \
+  	https://api.fireflies.ai/graphql
+  ```
 
-<ResponseField name="userId" type="String">
-  Identifier of the user who created the Bite
-</ResponseField>
+  ```javascript javascript theme={null}
+  const axios = require('axios');
 
-<ResponseField name="summary_status" type="String">
-  Status of the AI summary generation process
-</ResponseField>
+  const url = 'https://api.fireflies.ai/graphql';
+  const headers = {
+    'Content-Type': 'application/json',
+    Authorization: 'Bearer your_api_key'
+  };
+  const data = {
+    query: 'query Bite($biteId: ID!) { bite(id: $biteId) { user_id name status summary } }',
+    variables: { biteId: 'your_bite_id' }
+  };
 
-<ResponseField name="media_type" type="String">
-  Type of the Bite, either 'video' or 'audio'
-</ResponseField>
+  axios
+    .post(url, data, { headers: headers })
+    .then(response => {
+      console.log(response.data);
+    })
+    .catch(error => {
+      console.error('Error:', error);
+    });
+  ```
 
-<ResponseField name="privacies" type="[BitePrivacy]">
-  Array specifying the visibility of the Bite. Possible values are `public`, `team`, and
-  `participants`. For example, `["team", "participants"]` indicates visibility to both team members
-  and participants, while `["public"]` allows anyone to access the bite through its link
-</ResponseField>
+  ```python python theme={null}
+  import requests
 
-<ResponseField name="created_at" type="String">
-  The date when this Bite was created
-</ResponseField>
+  url = 'https://api.fireflies.ai/graphql'
+  headers = {
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer your_api_key'
+  }
+  data = '{"query": "query Bite($biteId: ID!) { bite(id: $biteId) { user_id name status summary } }", "variables": {"biteId": "your_bite_id"}}'
 
-<ResponseField name="user" type="BiteUser">
-  Object representing the user who created the Bite, including relevant user details
+  response = requests.post(url, headers=headers, data=data)
+  print(response.json())
+  ```
 
-  <Expandable title="properties">
-    <ResponseField name="name" type="String" required>
-      Name associated with the User
-    </ResponseField>
+  ```java java theme={null}
+  import java.net.URI;
+  import java.net.http.HttpClient;
+  import java.net.http.HttpRequest;
+  import java.net.http.HttpResponse;
+  import java.net.http.HttpRequest.BodyPublishers;
 
-    <ResponseField name="id" type="String" required>
-      ID of the User
-    </ResponseField>
+  public class ApiRequest {
+      public static void main(String[] args) {
+          HttpClient client = HttpClient.newHttpClient();
+          String jsonRequest = "{\"query\": \"query Bite($biteId: ID!) { bite(id: $biteId) { user_id name status summary } }\", \"variables\": {\"biteId\": \"your_bite_id\"}}";
+          HttpRequest request = HttpRequest.newBuilder()
+              .uri(URI.create("https://api.fireflies.ai/graphql"))
+              .header("Content-Type", "application/json")
+              .header("Authorization", "Bearer your_api_key")
+              .POST(BodyPublishers.ofString(jsonRequest))
+              .build();
 
-    <ResponseField name="first_name" type="String">
-      First name of the User
-    </ResponseField>
+          client.sendAsync(request, HttpResponse.BodyHandlers.ofString())
+              .thenApply(HttpResponse::body)
+              .thenAccept(System.out::println)
+              .join();
+      }
+  }
 
-    <ResponseField name="last_name" type="String">
-      Last name of the User
-    </ResponseField>
+  ```
+</RequestExample>
 
-    <ResponseField name="picture" type="String">
-      Picture associated with the User
-    </ResponseField>
-  </Expandable>
-</ResponseField>
-
-<ResponseField name="sources" type="[MediaSource]">
-  Array of MediaSource objects for the Bite
-
-  <Expandable title="properties">
-    <ResponseField name="src" type="String" required>
-      Source of the media
-    </ResponseField>
-
-    <ResponseField name="type" type="String">
-      Type of the media
-    </ResponseField>
-  </Expandable>
-</ResponseField>
-
-<ResponseField name="captions" type="[BiteCaption]">
-  Array of Object describing text captions associated with the Bite
-
-  <Expandable title="properties">
-    <ResponseField name="index" type="String" required>
-      Index
-    </ResponseField>
-
-    <ResponseField name="speaker_id" type="String" required>
-      SpeakerId associated with the caption object
-    </ResponseField>
-
-    <ResponseField name="text" type="String" required>
-      Text associated with the caption
-    </ResponseField>
-
-    <ResponseField name="speaker_name" type="String" required>
-      Name of the speaker associated with this caption
-    </ResponseField>
-
-    <ResponseField name="start_time" type="String" required>
-      Start time for the caption
-    </ResponseField>
-
-    <ResponseField name="end_time" type="String" required>
-      End time for the caption
-    </ResponseField>
-  </Expandable>
-</ResponseField>
-
-<ResponseField name="created_from" type="BiteOrigin">
-  Object describing the origin of the Bite with the following properties
-
-  <Expandable title="properties">
-    <ResponseField name="id" type="String" required>
-      Unique identifier
-    </ResponseField>
-
-    <ResponseField name="name" type="String" required>
-      Name of the origin source
-    </ResponseField>
-
-    <ResponseField name="type" type="String" required>
-      Type of the original source, e.g., 'meeting'
-    </ResponseField>
-
-    <ResponseField name="duration" type="String">
-      Length of the original source in seconds
-    </ResponseField>
-  </Expandable>
-</ResponseField>
+<ResponseExample>
+  ```json Response theme={null}
+  {
+    "data": {
+      "bite": {
+        "user_id": "user-id",
+        "id": "bite-id",
+      }
+    }
+  }
+  ```
+</ResponseExample>
 
 ## Additional Resources
 
 <CardGroup cols={2}>
-  <Card title="Transcript" icon="link" href="/schema/transcript">
-    Schema for Transcript
+  <Card title="Bites" icon="link" href="/graphql-api/query/bites">
+    Querying list of bites
   </Card>
 
   <Card title="Create Bite" icon="link" href="/graphql-api/mutation/create-bite">
-    Use the API to create bites from your transcripts
+    Use the API to create a bite
   </Card>
 </CardGroup>

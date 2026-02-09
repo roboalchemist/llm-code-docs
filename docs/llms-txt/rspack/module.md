@@ -1,21 +1,24 @@
 # Source: https://rspack.dev/config/module.md
 
-import { ApiMeta, Stability } from '../../../components/ApiMeta';
-import PropertyType from '@components/PropertyType';
-import WebpackLicense from '@components/WebpackLicense';
+CC 4.0 License> The content of this section is derived from the content of the following links and is subject to the CC BY 4.0 license.
+> 
+> - [https://webpack.docschina.org/configuration/module/](https://webpack.docschina.org/configuration/module/)
+> 
+> The following contents can be assumed to be the result of modifications and deletions based on the original contents if not specifically stated.
+> 
+> 
 
-<WebpackLicense from="https://webpack.docschina.org/configuration/module/" />
 
 # Module
 
 Used to decide how to handle different types of modules in a project.
 
-* **Type:** `Object`
-* **Default:** `{}`
+- **Type:** `Object`
+- **Default:** `{}`
 
 ## module.defaultRules
 
-* **Type:** `(Rule | Falsy)[]`
+- **Type:** `(Rule | Falsy)[]`
 
 `defaultRules` configures the built-in module resolution and processing rules that Rspack enables by default. These rules are applied automatically to ensure that common resource types such as JavaScript, JSON, CSS, and Wasm can be correctly resolved and bundled.
 
@@ -55,8 +58,8 @@ See the [source code](https://github.com/web-infra-dev/rspack/blob/main/packages
 
 ## module.noParse
 
-* **Type:** `string | string[] | RegExp | RegExp[] | ((request: string) => boolean)`
-* **Default:** `undefined`
+- **Type:** `string | string[] | RegExp | RegExp[] | ((request: string) => boolean)`
+- **Default:** `undefined`
 
 Keep module mechanism of the matched modules as-is, such as `module.exports`, `require`, `import`.
 
@@ -92,68 +95,10 @@ export default {
 };
 ```
 
-## module.unsafeCache
-
-* **Type:** `boolean | RegExp`
-
-This is a performance optimization option that reduces the overhead of recording module resolution-related files in Rspack by **assuming that the resolution results of matched modules will not change**.
-
-During module resolution, Rspack needs to record relevant files that may affect the resolution results. For example:
-
-```js
-import 'the-module';
-```
-
-When resolving `the-module`, Rspack not only obtains the actual module path but also records the associated `package.json`:
-
-```json
-{
-  "exports": {
-    ".": "./lib/index.js"
-  }
-}
-```
-
-Because the `exports` field in `package.json` may affect the module's resolution path. When these files change, Rspack needs to re-perform module resolution.
-
-After enabling `unsafeCache`, matched modules are considered to have stable resolution results that will not change, so Rspack will no longer record files associated with the resolution of these modules.
-
-`unsafeCache` has the following default behavior:
-
-* If [cache](/config/cache.md) is disabled, the value is `false`
-* If [cache](/config/cache.md) is enabled:
-  * For modules from the `node_modules` directory, the value is `true`
-  * In other cases, the value is `false`
-
-```js title="rspack.config.mjs"
-export default {
-  //...
-  module: {
-    unsafeCache: false,
-  },
-};
-```
-
-:::tip Differences from Webpack
-Even when `module.unsafeCache: false` is set, Rspack still caches the association between `Dependency` and `Module` because Rspack uses an incremental algorithm when building the module graph. In contrast, Webpack completely disables module graph caching.
-
-To ensure resolution accuracy, Rspack completely records all related files during the module resolution process when `unsafeCache` is disabled.
-:::
-
-:::tip Relationship with `watchOptions.ignored`
-File recording: Occurs during the make phase, storing associated paths and building indexes with Dependencies.
-
-File watching: After compilation ends, recorded file paths are passed to the watcher, which can ignore specific paths through the `ignored` configuration.
-
-Incremental building: When the watcher detects file changes, Rspack finds the affected Dependencies through the paths and re-executes module resolution.
-
-Both are architecturally layered, each responsible for different functional phases.
-:::
-
 ## module.parser
 
-* **Type:** `Object`
-* **Default:** `{}`
+- **Type:** `Object`
+- **Default:** `{}`
 
 Configure all parsers' options in one place with `module.parser`.
 
@@ -210,8 +155,8 @@ export default {
 
 ### module.parser.asset.dataUrlCondition
 
-* **Type:** `{ maxSize: number }`
-* **Default:** `{ maxSize: 8096 }`
+- **Type:** `{ maxSize: number }`
+- **Default:** `{ maxSize: 8096 }`
 
 If the module size is less than or equal to `maxSize`, then the module will be Base64 encoded, otherwise a file will be created. This option can be used only for [Asset modules](/guide/features/asset-module.md).
 
@@ -248,10 +193,11 @@ export default {
 
 ### module.parser.javascript.commonjsMagicComments
 
-<PropertyType type="boolean" defaultValueList={[{ defaultValue: 'false' }]} />
+- Type: `boolean`
+- Default:`false`
 
-<ApiMeta addedVersion="1.5.6" />
 
+[Added in v1.5.6](https://github.com/web-infra-dev/rspack/releases/tag/v1.5.6)
 Enable [Magic comments](/api/runtime-api/module-methods.md#magic-comments) support for CommonJS.
 
 ```js title="rspack.config.mjs"
@@ -274,7 +220,9 @@ const x = require(/* webpackIgnore: true */ 'x');
 
 ### module.parser.javascript.dynamicImportMode
 
-<PropertyType type="'lazy' | 'eager' | 'weak' | 'lazy-once'" defaultValueList={[{ defaultValue: "'lazy'" }]} />
+- Type: `'lazy' | 'eager' | 'weak' | 'lazy-once'`
+- Default:`'lazy'`
+
 
 Specifies global mode for dynamic import, see [`webpackMode`](/api/runtime-api/module-methods.md#webpackmode) for more details.
 
@@ -292,7 +240,9 @@ export default {
 
 ### module.parser.javascript.dynamicImportPrefetch
 
-<PropertyType type="boolean | number" defaultValueList={[{ defaultValue: 'false' }]} />
+- Type: `boolean | number`
+- Default:`false`
+
 
 Specifies global prefetch for dynamic import, see [`webpackPrefetch`](/api/runtime-api/module-methods.md#webpackprefetch) for more details.
 
@@ -310,7 +260,9 @@ export default {
 
 ### module.parser.javascript.dynamicImportPreload
 
-<PropertyType type="boolean | number" defaultValueList={[{ defaultValue: 'false' }]} />
+- Type: `boolean | number`
+- Default:`false`
+
 
 Specifies global preload for dynamic import, see [`webpackPreload`](/api/runtime-api/module-methods.md#webpackpreload) for more details.
 
@@ -328,9 +280,10 @@ export default {
 
 ### module.parser.javascript.dynamicImportFetchPriority
 
-<ApiMeta addedVersion="1.0.0" />
+[Added in v1.0.0](https://github.com/web-infra-dev/rspack/releases/tag/v1.0.0)
+- Type: `'low' | 'high' | 'auto'`
+- Default:`'auto'`
 
-<PropertyType type="'low' | 'high' | 'auto'" defaultValueList={[{ defaultValue: "'auto'" }]} />
 
 Specifies global `fetchPriority` for dynamic import, see [`webpackFetchPriority`](/api/runtime-api/module-methods.md#webpackfetchpriority) for more details.
 
@@ -348,13 +301,15 @@ export default {
 
 ### module.parser.javascript.url
 
-<PropertyType type="true | false | 'relative' | 'new-url-relative'" defaultValueList={[{ defaultValue: 'true' }]} />
+- Type: `true | false | 'relative' | 'new-url-relative'`
+- Default:`true`
+
 
 Enable parsing of `new URL()` syntax.
 
-* `true`: Generate absolute URLs that include the root URL (default behavior).
-* `'relative'`: Generate relative URLs without the root URL.
-* `'new-url-relative'`: Generate static relative URLs that are replaced at compile-time with the correct public path.
+- `true`: Generate absolute URLs that include the root URL (default behavior).
+- `'relative'`: Generate relative URLs without the root URL.
+- `'new-url-relative'`: Generate static relative URLs that are replaced at compile-time with the correct public path.
 
 When using `'new-url-relative'`, Rspack generates relative URLs that will be replaced at compile-time with the correct public path:
 
@@ -401,7 +356,9 @@ export default {
 
 ### module.parser.javascript.exprContextCritical
 
-<PropertyType type="boolean | undefined" defaultValueList={[{ defaultValue: 'true' }]} />
+- Type: `boolean | undefined`
+- Default:`true`
+
 
 Enable warnings for full dynamic dependencies (`import(variable)`).
 
@@ -419,7 +376,9 @@ export default {
 
 ### module.parser.javascript.wrappedContextCritical
 
-<PropertyType type="boolean | undefined" defaultValueList={[{ defaultValue: 'false' }]} />
+- Type: `boolean | undefined`
+- Default:`false`
+
 
 Enable warnings for partial dynamic dependencies (`import("./path/to/" + variable)`).
 
@@ -437,7 +396,9 @@ export default {
 
 ### module.parser.javascript.unknownContextCritical
 
-<PropertyType type="boolean | undefined" defaultValueList={[{ defaultValue: 'true' }]} />
+- Type: `boolean | undefined`
+- Default:`true`
+
 
 Enable warnings when using the `require` function in a non-statically-analyzable way (`require(variable)`).
 
@@ -455,7 +416,9 @@ export default {
 
 ### module.parser.javascript.wrappedContextRegExp
 
-<PropertyType type="RegExp | undefined" defaultValueList={[{ defaultValue: '/.*/' }]} />
+- Type: `RegExp | undefined`
+- Default:`/.*/`
+
 
 Set a regular expression to match wrapped dynamic dependencies.
 
@@ -473,9 +436,10 @@ export default {
 
 ### module.parser.javascript.importMeta
 
-<ApiMeta addedVersion="1.0.0-alpha.6" />
+[Added in v1.0.0-alpha.6](https://github.com/web-infra-dev/rspack/releases/tag/v1.0.0-alpha.6)
+- Type: `boolean`
+- Default:`true`
 
-<PropertyType type="boolean" defaultValueList={[{ defaultValue: 'true' }]} />
 
 Enable or disable evaluating `import.meta`.
 
@@ -493,14 +457,16 @@ export default {
 
 ### module.parser.javascript.exportsPresence
 
-<PropertyType type="'error' | 'warn' | 'auto' | false" defaultValueList={[{ defaultValue: "'auto'" }]} />
+- Type: `'error' | 'warn' | 'auto' | false`
+- Default:`'auto'`
+
 
 Warn or error for using non-existent exports and conflicting re-exports.
 
-* `"error"`: Report errors.
-* `"warn"`: Report warnings.
-* `"auto"`: Depending on whether the module is a strict ESM, give an error if it is, otherwise give a warning.
-* `false`: Disable this feature.
+- `"error"`: Report errors.
+- `"warn"`: Report warnings.
+- `"auto"`: Depending on whether the module is a strict ESM, give an error if it is, otherwise give a warning.
+- `false`: Disable this feature.
 
 ```js title="rspack.config.mjs"
 export default {
@@ -516,7 +482,8 @@ export default {
 
 ### module.parser.javascript.importExportsPresence
 
-<PropertyType type="'error' | 'warn' | 'auto' | false" />
+- Type: `'error' | 'warn' | 'auto' | false`
+
 
 Warn or error for using non-existent exports, defaulting to the configuration of [module.parser.javascript.exportsPresence](#moduleparserjavascriptexportspresence).
 
@@ -534,7 +501,8 @@ export default {
 
 ### module.parser.javascript.reexportExportsPresence
 
-<PropertyType type="'error' | 'warn' | 'auto' | false" />
+- Type: `'error' | 'warn' | 'auto' | false`
+
 
 Warn or error for conflicting re-exports, defaulting to the configuration of [module.parser.javascript.exportsPresence](#moduleparserjavascriptexportspresence).
 
@@ -552,7 +520,7 @@ export default {
 
 ### module.parser.javascript.strictExportPresence
 
-* **Type:** `boolean`
+- **Type:** `boolean`
 
 Emit errors instead of warnings when imported names don't exist in imported module.
 
@@ -570,10 +538,9 @@ export default {
 
 ### module.parser.javascript.typeReexportsPresence
 
-<ApiMeta stability={Stability.Experimental} addedVersion="1.4.1" />
-
-* **Type:** `'no-tolerant' | 'tolerant' | 'tolerant-no-check'`
-* **Default:** `'no-tolerant'`
+[Added in v1.4.1](https://github.com/web-infra-dev/rspack/releases/tag/v1.4.1)Stability: Experimental
+- **Type:** `'no-tolerant' | 'tolerant' | 'tolerant-no-check'`
+- **Default:** `'no-tolerant'`
 
 Controls error tolerance for type re-exports, commonly seen in these two scenarios:
 
@@ -608,9 +575,9 @@ WARNING in ./re-exports.ts
 When using Rspack to bundle TypeScript, we strongly recommend enabling [isolatedModules](https://www.typescriptlang.org/tsconfig/#isolatedModules) in tsconfig.json (also recommended with other bundlers as it matches how bundlers compile TypeScript: [.ts files are independent and compiled separately](/guide/tech/typescript.md#%E5%BC%80%E5%90%AF-isolatedmodules)). This will give TypeScript's own warning for type re-exports: `Re-exporting a type when 'isolatedModules' is enabled requires using 'export type'.`
 :::
 
-* `'no-tolerant'`: Default behavior, shows errors for type re-exports.
-* `'tolerant'`: Tolerates type re-exports while verifying the existence of corresponding type exports in child modules. Requires coordination with [`collectTypeScriptInfo.typeExports`](/guide/features/builtin-swc-loader.md#collecttypescriptinfotypeexports) from builtin:swc-loader to collect type export information.
-* `'tolerant-no-check'`: Tolerates type re-exports without checking child modules (may incorrectly tolerate some invalid cases, though IDEs usually provide warnings). Better performance as it skeps child module checks.
+- `'no-tolerant'`: Default behavior, shows errors for type re-exports.
+- `'tolerant'`: Tolerates type re-exports while verifying the existence of corresponding type exports in child modules. Requires coordination with [`collectTypeScriptInfo.typeExports`](/guide/features/builtin-swc-loader.md#collecttypescriptinfotypeexports) from builtin:swc-loader to collect type export information.
+- `'tolerant-no-check'`: Tolerates type re-exports without checking child modules (may incorrectly tolerate some invalid cases, though IDEs usually provide warnings). Better performance as it skeps child module checks.
 
 ```js title="rspack.config.mjs"
 export default {
@@ -648,9 +615,9 @@ Please refer to [type reexports presence example](https://github.com/rstackjs/rs
 
 ### module.parser.javascript.worker
 
-<ApiMeta addedVersion="1.0.0-alpha.0" />
+[Added in v1.0.0-alpha.0](https://github.com/web-infra-dev/rspack/releases/tag/v1.0.0-alpha.0)
+- Type: `string[] | boolean`
 
-<PropertyType type="string[] | boolean" />
 
 Provide custom syntax for Worker parsing, commonly used to support Worklet:
 
@@ -679,9 +646,9 @@ export default {
 
 ### module.parser.javascript.overrideStrict
 
-<ApiMeta addedVersion="1.0.0-alpha.4" />
+[Added in v1.0.0-alpha.4](https://github.com/web-infra-dev/rspack/releases/tag/v1.0.0-alpha.4)
+- Type: `'strict' | 'non-strict'`
 
-<PropertyType type="'strict' | 'non-strict'" />
 
 Override the module to strict or non-strict.
 
@@ -701,7 +668,9 @@ export default {
 
 ### module.parser.javascript.commonjs
 
-<PropertyType type="boolean | { exports?: boolean | 'skipInEsm' }" defaultValueList={[{ defaultValue: 'true' }]} />
+- Type: `boolean | { exports?: boolean | 'skipInEsm' }`
+- Default:`true`
+
 
 Controls CommonJS-specific parser behaviour. The default `true` keeps Rspack's standard handling for CommonJS export mutations. Set `{ exports: 'skipInEsm' }` to skip rewriting CommonJS export assignments when the module is evaluated as ESM, preserving the original runtime side effects. Provide `false` to disable CommonJS export handling entirely.
 
@@ -719,11 +688,122 @@ export default {
 };
 ```
 
+### module.parser.javascript.requireAlias
+
+- Type: `boolean`
+- Default:`false`
+
+
+Control whether renaming of the CommonJS `require` function will be parsed and transformed.
+
+When set to `true`, Rspack will parse and transform cases where `require` is assigned to a variable or passed as a parameter (e.g., `const req = require; req('./module')`).
+
+```js title="rspack.config.mjs"
+export default {
+  module: {
+    parser: {
+      javascript: {
+        requireAlias: true,
+      },
+    },
+  },
+};
+```
+
+### module.parser.javascript.requireAsExpression
+
+- Type: `boolean`
+- Default:`false`
+
+
+Control whether `require` used as an expression will be parsed.
+
+When set to `true`, Rspack will parse `require` when it's used as an expression (e.g., `const req = require; req('./module')`) and emit a warning. When set to `false`, this pattern will be ignored.
+
+```js title="rspack.config.mjs"
+export default {
+  module: {
+    parser: {
+      javascript: {
+        requireAsExpression: true,
+      },
+    },
+  },
+};
+```
+
+### module.parser.javascript.requireDynamic
+
+- Type: `boolean`
+- Default:`true`
+
+
+Control whether dynamic `require` calls will be parsed.
+
+When set to `false`, Rspack will not parse dynamic `require` calls where the module path is not a static string (e.g., `require(variable)`). This can improve build performance if your code doesn't use dynamic requires.
+
+```js title="rspack.config.mjs"
+export default {
+  module: {
+    parser: {
+      javascript: {
+        requireDynamic: false,
+      },
+    },
+  },
+};
+```
+
+### module.parser.javascript.requireResolve
+
+- Type: `boolean`
+- Default:`true`
+
+
+Control whether `require.resolve()` calls will be parsed.
+
+When set to `false`, Rspack will not parse `require.resolve()` calls. This can improve build performance if your code doesn't use `require.resolve()`.
+
+```js title="rspack.config.mjs"
+export default {
+  module: {
+    parser: {
+      javascript: {
+        requireResolve: false,
+      },
+    },
+  },
+};
+```
+
+### module.parser.javascript.importDynamic
+
+- Type: `boolean`
+- Default:`true`
+
+
+Control whether dynamic `import()` calls will be parsed.
+
+When set to `false`, Rspack will not parse dynamic `import()` calls where the module path is not a static string (e.g., `import(variable)`). This can improve build performance if your code doesn't use dynamic imports.
+
+```js title="rspack.config.mjs"
+export default {
+  module: {
+    parser: {
+      javascript: {
+        importDynamic: false,
+      },
+    },
+  },
+};
+```
+
 ### module.parser.javascript.jsx
 
-<ApiMeta stability={Stability.Experimental} addedVersion="1.5.7" />
+[Added in v1.5.7](https://github.com/web-infra-dev/rspack/releases/tag/v1.5.7)Stability: Experimental
+- Type: `boolean`
+- Default:`false`
 
-<PropertyType type="boolean" defaultValueList={[{ defaultValue: 'false' }]} />
 
 Allow the JavaScript parser to understand JSX syntax so that parsing and minimization can operate on files that keep JSX in the final bundle.
 
@@ -795,8 +875,7 @@ export default {
 
 ### module.parser.json
 
-<ApiMeta addedVersion="1.2.0" />
-
+[Added in v1.2.0](https://github.com/web-infra-dev/rspack/releases/tag/v1.2.0)
 Parser options for `json` modules.
 
 ```js title="rspack.config.mjs"
@@ -813,10 +892,9 @@ export default {
 
 ### module.parser.json.exportsDepth
 
-<ApiMeta addedVersion="1.2.0" />
-
-* **Type:** `number`
-* **Default:** production mode is `Number.MAX_SAFE_INTEGER`, development mode is `1`
+[Added in v1.2.0](https://github.com/web-infra-dev/rspack/releases/tag/v1.2.0)
+- **Type:** `number`
+- **Default:** production mode is `Number.MAX_SAFE_INTEGER`, development mode is `1`
 
 The depth of json dependency flagged as `exportInfo`.
 
@@ -858,14 +936,10 @@ export default {
 };
 ```
 
-:::warning
-This configuration will only work if [experiments.css](/config/experiments.md#experimentscss) is enabled.
-:::
-
 ### module.parser\["css/auto"].namedExports
 
-* **Type:** `boolean`
-* **Default:** `true`
+- **Type:** `boolean`
+- **Default:** `true`
 
 Use ES modules named export for CSS exports.
 
@@ -917,8 +991,8 @@ import classes, { class1, class2 } from './index.module.css';
 
 ### module.parser\["css/auto"].url
 
-* **Type:** `boolean`
-* **Default:** `true`
+- **Type:** `boolean`
+- **Default:** `true`
 
 Allow to enable/disables handling the CSS functions url.
 
@@ -952,10 +1026,6 @@ export default {
   },
 };
 ```
-
-:::warning
-This configuration will only work if [experiments.css](/config/experiments.md#experimentscss) is enabled.
-:::
 
 ### module.parser.css.namedExports
 
@@ -1005,10 +1075,6 @@ export default {
 };
 ```
 
-:::warning
-This configuration will only work if [experiments.css](/config/experiments.md#experimentscss) is enabled.
-:::
-
 ### module.parser\["css/module"].namedExports
 
 Same as [`module.parser["css/auto"].namedExports`](#moduleparsercssautonamedexports).
@@ -1043,8 +1109,8 @@ export default {
 
 ## module.generator
 
-* **Type:** `Object`
-* **Default:** `{}`
+- **Type:** `Object`
+- **Default:** `{}`
 
 Configure all generators' options in one place with `module.generator`.
 
@@ -1119,8 +1185,8 @@ export default {
 
 ### module.generator.asset.binary
 
-* **Type:** `boolean | undefined`
-* **Default:** `undefined`
+- **Type:** `boolean | undefined`
+- **Default:** `undefined`
 
 Whether or not this asset module should be considered binary. This can be set to `false` to treat this asset module as text.
 If not set, the module type will be used to determine if the module is binary.
@@ -1139,8 +1205,8 @@ export default {
 
 ### module.generator.asset.dataUrl
 
-* **Type:** `Object | (source: Buffer, context: { filename: string, module: Module }) => string`
-* **Default:** `{}`
+- **Type:** `Object | (source: Buffer, context: { filename: string, module: Module }) => string`
+- **Default:** `{}`
 
 Only for modules with module type `'asset'` or `'asset/inline'`.
 
@@ -1183,8 +1249,8 @@ export default {
 
 ### module.generator.asset.dataUrl.encoding
 
-* **Type:** `false | 'base64'`
-* **Default:** `'base64'`
+- **Type:** `false | 'base64'`
+- **Default:** `'base64'`
 
 When set to 'base64', module source will be encoded using Base64 algorithm. Setting encoding to false will disable encoding. Only for modules with module type `'asset'` or `'asset/inline'`.
 
@@ -1204,8 +1270,8 @@ export default {
 
 ### module.generator.asset.dataUrl.mimetype
 
-* **Type:** `string`
-* **Default:** `require('mime-types').lookup(ext)`
+- **Type:** `string`
+- **Default:** `require('mime-types').lookup(ext)`
 
 A mimetype for data URI. Resolves from module resource extension by default. Only for modules with module type `'asset'` or `'asset/inline'`.
 
@@ -1225,15 +1291,15 @@ export default {
 
 ### module.generator.asset.importMode
 
-* **Type:** `'url' | 'preserve'`
-* **Default:** `'url'`
+- **Type:** `'url' | 'preserve'`
+- **Default:** `'url'`
 
 If `"url"`, a URL pointing to the asset will be generated based on [publicPath](#modulegeneratorassetpublicpath).
 If `"preserve"`, preserve import/require statement from generated asset.
 
 Only for modules with module type `'asset'` or `'asset/resource'`.
 
-* `'asset'`:
+- `'asset'`:
 
 ```js title="rspack.config.mjs"
 export default {
@@ -1247,7 +1313,7 @@ export default {
 };
 ```
 
-* `'asset/resource'`:
+- `'asset/resource'`:
 
 ```js title="rspack.config.mjs"
 export default {
@@ -1263,9 +1329,9 @@ export default {
 
 ### module.generator.asset.filename
 
-* **Type:** `string | ((pathData: PathData, assetInfo?: AssetInfo) => string)`
-* **Default:** `undefined`
-* **Supported Template string:** checkout [`output.assetModuleFilename`](/config/output.md#outputassetmodulefilename)
+- **Type:** `string | ((pathData: PathData, assetInfo?: AssetInfo) => string)`
+- **Default:** `undefined`
+- **Supported Template string:** checkout [`output.assetModuleFilename`](/config/output.md#outputassetmodulefilename)
 
 Same as `output.assetModuleFilename`. Overrides `output.assetModuleFilename` and only works for `asset` and `asset/resource` module types.
 
@@ -1283,8 +1349,8 @@ export default {
 
 ### module.generator.asset.outputPath
 
-* **Type:** `string | ((pathData: PathData, assetInfo?: AssetInfo) => string)`
-* **Default:** `undefined`
+- **Type:** `string | ((pathData: PathData, assetInfo?: AssetInfo) => string)`
+- **Default:** `undefined`
 
 Emit the asset in the specified folder relative to [`output.path`](/config/output.md#outputpath).
 
@@ -1304,8 +1370,8 @@ export default {
 
 ### module.generator.asset.publicPath
 
-* **Type:** `string | ((pathData: PathData, assetInfo?: AssetInfo) => string)`
-* **Default:** `undefined`
+- **Type:** `string | ((pathData: PathData, assetInfo?: AssetInfo) => string)`
+- **Default:** `undefined`
 
 Override [`output.publicPath`](/config/output.md#outputpublicpath), only for modules with module type `'asset'` or `'asset/resource'`.
 
@@ -1323,14 +1389,14 @@ export default {
 
 ### module.generator.asset.emit
 
-* **Type:** `boolean`
-* **Default:** `true`
+- **Type:** `boolean`
+- **Default:** `true`
 
 Whether to output assets to disk. You can set this option to `false` to avoid outputting unnecessary files for some scenarios such as SSR.
 
 Only for modules with module type `'asset'` or `'asset/resource'`.
 
-* `'asset'`:
+- `'asset'`:
 
 ```js title="rspack.config.mjs"
 export default {
@@ -1344,7 +1410,7 @@ export default {
 };
 ```
 
-* `'asset/resource'`:
+- `'asset/resource'`:
 
 ```js title="rspack.config.mjs"
 export default {
@@ -1556,14 +1622,10 @@ export default {
 };
 ```
 
-:::warning
-This configuration will only work if [experiments.css](/config/experiments.md#experimentscss) is enabled.
-:::
-
 ### module.generator\["css/auto"].exportsConvention
 
-* **Type:** `'as-is' | 'camel-case' | 'camel-case-only' | 'dashes' | 'dashes-only'`
-* **Default:** `'as-is'`
+- **Type:** `'as-is' | 'camel-case' | 'camel-case-only' | 'dashes' | 'dashes-only'`
+- **Default:** `'as-is'`
 
 Customize how CSS export names are exported to javascript modules, such as keeping them as is, transforming them to camel case, etc.
 
@@ -1581,8 +1643,8 @@ export default {
 
 ### module.generator\["css/auto"].exportsOnly
 
-* **Type:** `boolean`
-* **Default:** `true` for node environments, `false` for web environments.
+- **Type:** `boolean`
+- **Default:** `true` for node environments, `false` for web environments.
 
 If `true`, **only exports** the identifier mappings from CSS into the output JavaScript files, without embedding any stylesheets in the template. Useful if you are using CSS Modules for pre-rendering (e.g. SSR).
 
@@ -1602,8 +1664,8 @@ export default {
 
 ### module.generator\["css/auto"].localIdentName
 
-* **Type:** `string`
-* **Default:** `[uniqueName]-[id]-[local]`
+- **Type:** `string`
+- **Default:** `[uniqueName]-[id]-[local]`
 
 Customize the format of the local class names generated for CSS modules, besides the substitutions at [File-level](/config/output.md#file-context) and [Module-level](/config/output.md#module-context), also include `[uniqueName]` and `[local]`.
 
@@ -1621,8 +1683,8 @@ export default {
 
 ### module.generator\["css/auto"].esModule
 
-* **Type:** `boolean`
-* **Default:** `true`
+- **Type:** `boolean`
+- **Default:** `true`
 
 This configuration is available for improved ESM-CJS interoperability purposes.
 
@@ -1689,10 +1751,6 @@ export default {
 };
 ```
 
-:::warning
-This configuration will only work if [experiments.css](/config/experiments.md#experimentscss) is enabled.
-:::
-
 ### module.generator.css.exportsOnly
 
 Same as [`module.generator["css/auto"].exportsOnly`](#modulegeneratorcssautoexportsonly).
@@ -1740,10 +1798,6 @@ export default {
   },
 };
 ```
-
-:::warning
-This configuration will only work if [experiments.css](/config/experiments.md#experimentscss) is enabled.
-:::
 
 ### module.generator\["css/module"].exportsConvention
 
@@ -1811,8 +1865,8 @@ export default {
 
 ### module.generator.json.JSONParse
 
-* **Type:** `boolean`
-* **Default:** `true`
+- **Type:** `boolean`
+- **Default:** `true`
 
 Use `JSON.parse` when the JSON string is longer than 20 characters.
 

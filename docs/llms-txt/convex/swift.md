@@ -2,10 +2,6 @@
 
 # Source: https://docs.convex.dev/quickstart/swift.md
 
-# Source: https://docs.convex.dev/client/swift.md
-
-# Source: https://docs.convex.dev/quickstart/swift.md
-
 # iOS Swift Quickstart
 
 Learn how to query data from Convex in an application targeting iOS and MacOS devices built with Swift and SwiftUI.

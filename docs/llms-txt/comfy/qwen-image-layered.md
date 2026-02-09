@@ -1,5 +1,9 @@
 # Source: https://docs.comfy.org/tutorials/image/qwen/qwen-image-layered.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.comfy.org/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Qwen-Image-Layered ComfyUI Workflow Example
 
 > Qwen-Image-Layered is a model capable of decomposing an image into multiple RGBA layers, enabling inherent editability through layer decomposition.
@@ -103,8 +107,3 @@ For input size, 640px is recommended. Use 1024px for high-resolution output.
 ### Prompt (optional)
 
 The text prompt is intended to describe the overall content of the input image—including elements that may be partially occluded (e.g., you may specify the text hidden behind a foreground object). It is not designed to control the semantic content of individual layers explicitly.
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.comfy.org/llms.txt

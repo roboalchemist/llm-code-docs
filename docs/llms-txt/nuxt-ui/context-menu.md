@@ -10,7 +10,9 @@ Use anything you like in the default slot of the ContextMenu, and right-click on
 
 ```vue
 <script setup lang="ts">
-const items = ref<undefined>([
+import type { ContextMenuItem } from '@nuxt/ui'
+
+const items = ref<ContextMenuItem[][]>([
   [
     {
       label: 'Appearance',
@@ -251,17 +253,11 @@ const items = ref<ContextMenuItem[][]>([
 </template>
 ```
 
-<note>
+> [!NOTE]
+> You can also pass an array of arrays to the `items` prop to create separated groups of items.
 
-You can also pass an array of arrays to the `items` prop to create separated groups of items.
-
-</note>
-
-<tip>
-
-Each item can take a `children` array of objects with the same properties as the `items` prop to create a nested menu which can be controlled using the `open`, `defaultOpen` and `content` properties.
-
-</tip>
+> [!TIP]
+> Each item can take a `children` array of objects with the same properties as the `items` prop to create a nested menu which can be controlled using the `open`, `defaultOpen` and `content` properties.
 
 ### Size
 
@@ -413,11 +409,8 @@ const items = computed<ContextMenuItem[]>(() => [{
 </template>
 ```
 
-<note>
-
-To ensure reactivity for the `checked` state of items, it's recommended to wrap your `items` array inside a `computed`.
-
-</note>
+> [!NOTE]
+> To ensure reactivity for the `checked` state of items, it's recommended to wrap your `items` array inside a `computed`.
 
 ### With color items
 
@@ -509,17 +502,13 @@ const items = [
 </template>
 ```
 
-<tip to="#slots">
-
-You can also use the `#item`, `#item-leading`, `#item-label` and `#item-trailing` slots to customize all items.
-
-</tip>
+> [!TIP]
+> See: #slots
+> You can also use the `#item`, `#item-leading`, `#item-label` and `#item-trailing` slots to customize all items.
 
 ### Extract shortcuts
 
-When you have some items with `kbds` property (displaying some [Kbd](/docs/components/kbd)), you can easily make them work with the [defineShortcuts](/docs/composables/define-shortcuts) composable.
-
-Inside the `defineShortcuts` composable, there is an `extractShortcuts` utility that will extract the shortcuts recursively from the items and return an object that you can pass to `defineShortcuts`. It will automatically call the `select` function of the item when the shortcut is pressed.
+Use the [extractShortcuts](/docs/composables/extract-shortcuts) utility to automatically define shortcuts from menu items with a `kbds` property. It recursively extracts shortcuts and returns an object compatible with [defineShortcuts](/docs/composables/define-shortcuts).
 
 ```vue
 <script setup lang="ts">
@@ -581,113 +570,8 @@ defineShortcuts(extractShortcuts(items))
 </script>
 ```
 
-<note>
-
-In this example, <kbd value="meta">
-
-
-
-</kbd>
-
- <kbd value="S">
-
-
-
-</kbd>
-
-, <kbd value="shift">
-
-
-
-</kbd>
-
- <kbd value="meta">
-
-
-
-</kbd>
-
- <kbd value="D">
-
-
-
-</kbd>
-
-, <kbd value="option">
-
-
-
-</kbd>
-
- <kbd value="meta">
-
-
-
-</kbd>
-
- <kbd value="U">
-
-
-
-</kbd>
-
-, <kbd value="option">
-
-
-
-</kbd>
-
- <kbd value="meta">
-
-
-
-</kbd>
-
- <kbd value="I">
-
-
-
-</kbd>
-
-, <kbd value="option">
-
-
-
-</kbd>
-
- <kbd value="meta">
-
-
-
-</kbd>
-
- <kbd value="C">
-
-
-
-</kbd>
-
- and <kbd value="option">
-
-
-
-</kbd>
-
- <kbd value="meta">
-
-
-
-</kbd>
-
- <kbd value="J">
-
-
-
-</kbd>
-
- would trigger the `select` function of the corresponding item.
-
-</note>
+> [!NOTE]
+> In this example,  ,   ,   ,   ,    and    would trigger the `select` function of the corresponding item.
 
 ## API
 
@@ -699,21 +583,21 @@ In this example, <kbd value="meta">
  */
 interface ContextMenuProps {
   size?: "sm" | "md" | "xs" | "lg" | "xl" | undefined;
-  items?: ArrayOrNested<ContextMenuItem> | undefined;
+  items?: T | undefined;
   /**
    * The icon displayed when an item is checked.
    */
-  checkedIcon?: string | object | undefined;
+  checkedIcon?: any;
   /**
    * The icon displayed when an item is loading.
    */
-  loadingIcon?: string | object | undefined;
+  loadingIcon?: any;
   /**
    * The icon displayed when the item is an external link.
    * Set to `false` to hide the external icon.
    * @default "true"
    */
-  externalIcon?: string | boolean | object | undefined;
+  externalIcon?: any;
   /**
    * The content of the menu.
    */
@@ -727,12 +611,12 @@ interface ContextMenuProps {
    * The key used to get the label from the item.
    * @default "\"label\""
    */
-  labelKey?: GetItemKeys<ArrayOrNested<ContextMenuItem>> | undefined;
+  labelKey?: GetItemKeys<T> | undefined;
   /**
    * The key used to get the description from the item.
    * @default "\"description\""
    */
-  descriptionKey?: GetItemKeys<ArrayOrNested<ContextMenuItem>> | undefined;
+  descriptionKey?: GetItemKeys<T> | undefined;
   disabled?: boolean | undefined;
   ui?: { content?: ClassNameValue; viewport?: ClassNameValue; group?: ClassNameValue; label?: ClassNameValue; separator?: ClassNameValue; item?: ClassNameValue; itemLeadingIcon?: ClassNameValue; itemLeadingAvatar?: ClassNameValue; itemLeadingAvatarSize?: ClassNameValue; itemTrailing?: ClassNameValue; itemTrailingIcon?: ClassNameValue; itemTrailingKbds?: ClassNameValue; itemTrailingKbdsSize?: ClassNameValue; itemWrapper?: ClassNameValue; itemLabel?: ClassNameValue; itemDescription?: ClassNameValue; itemLabelExternalIcon?: ClassNameValue; } | undefined;
   /**
@@ -990,8 +874,4 @@ export default defineAppConfig({
 
 ## Changelog
 
-<component-changelog>
-
-
-
-</component-changelog>
+See the [releases page](https://github.com/nuxt/ui/releases) for the latest changes.

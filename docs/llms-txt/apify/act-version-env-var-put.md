@@ -9,7 +9,7 @@ https://api.apify.com/v2/acts/:actorId/versions/:versionNumber/env-vars/:envVarN
 ```
 
 
-Clientshttps://docs.apify.com/api/client/python/reference/class/ActorEnvVarClientAsync#updateUpdates Actor environment variable using values specified by a  passed as JSON in the POST payload. If the object does not define a specific property, its value will not be updated.
+Updates Actor environment variable using values specified by a  passed as JSON in the POST payload. If the object does not define a specific property, its value will not be updated.
 
 The request needs to specify the `Content-Type: application/json` HTTP header!
 
@@ -22,6 +22,10 @@ The response is the  as returned by the  endpoint.
 ## Responses
 
 * 200
+* 400
 
 **Response Headers**
 
+
+
+Bad request - invalid input parameters or request body.

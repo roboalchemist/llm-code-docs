@@ -2,6 +2,8 @@
 
 # Unreal Engine SDK Reference
 
+Copy page
+
 [![Star on GitHub](https://img.shields.io/github/stars/configcat/unreal-engine-sdk.svg?style=social)](https://github.com/configcat/unreal-engine-sdk/stargazers) [![Build Status](https://img.shields.io/github/actions/workflow/status/configcat/unreal-engine-sdk/plugin-ci.yml?logo=GitHub\&label=Unreal\&branch=main)](https://github.com/configcat/unreal-engine-sdk/actions/workflows/plugin-ci.yml)
 
 [ConfigCat Unreal SDK on GitHub](https://github.com/configcat/unreal-engine-sdk)
@@ -22,7 +24,7 @@ Prequesities to building manually:
 To download:
 
 * Create a `Plugins` folder in the root folder of your project (where the `.uproject` file is located).
-* Head to the download the latest [ConfigCat.zip](https://github.com/configcat/unreal-engine-sdk/releases/latest/download/ConfigCat.zip) archive or any of the previous versions from: [Releases](https://github.com/configcat/unreal-engine-sdk/releases)
+* Head to the [Releases page](https://github.com/configcat/unreal-engine-sdk/releases) and download the latest archive.
 * Unzip the content inside the `Plugins` folder.
 
 Note: if you are using a locally built plugin, you will need to rebuild from source manually.
@@ -42,21 +44,21 @@ You can configure all ConfigCat related settings inside the `Edit -> Project Set
 
 ![Unreal Engine plugin settings](/docs/assets/unreal/plugin-settings.png)
 
-| Properties                    | Description                                                                                                                                                                                                                                                                                                                         |
-| ----------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `Sdk Key`                     | SDK Key to access your feature flags and settings. Get it from the *ConfigCat Dashboard*.                                                                                                                                                                                                                                           |
-| `Base Url`                    | Optional, sets the CDN base url (forward proxy, dedicated subscription) from where the sdk will download the config JSON.                                                                                                                                                                                                           |
-| `Data Governance`             | Optional, defaults to `Global`. Describes the location of your feature flag and setting data within the ConfigCat CDN. This parameter needs to be in sync with your Data Governance preferences. [More about Data Governance](https://configcat.com/docs/docs/advanced/data-governance/.md). Available options: `Global`, `EuOnly`. |
-| `Connect Timeout`             | Optional, defaults to `8000ms`. Sets the amount of milliseconds to wait for the server to make the initial connection (i.e. completing the TCP connection handshake). `0` means it never times out during transfer                                                                                                                  |
-| `Read Timeout`                | Optional, defaults to `5000ms`. Sets the amount of milliseconds to wait for the server to respond before giving up. `0` means it never times out during transfer.                                                                                                                                                                   |
-| `Polling Mode`                | Optional, sets the polling mode for the client. [More about polling modes](#polling-modes).                                                                                                                                                                                                                                         |
-| `Auto Poll Interval`          | For PollingMode == Custom, sets at least how often this policy should fetch the latest config JSON and refresh the cache.                                                                                                                                                                                                           |
-| `Maximum Inititial Wait Time` | For PollingMode == Custom, sets the maximum waiting time between initialization and the first config acquisition in seconds.                                                                                                                                                                                                        |
-| `Cache Refresh Interval`      | For PollingMode == LazyLoad, sets how long the cache will store its value before fetching the latest from the network again.                                                                                                                                                                                                        |
-| `Proxies`                     | Optional, sets proxy addresses. e.g. { "https": "your\_proxy\_ip<!-- -->:your\_proxy\_port<!-- -->" } on each http request                                                                                                                                                                                                          |
-| `Proxy Authentications`       | Optional, sets proxy authentication on each http request.                                                                                                                                                                                                                                                                           |
-| `Start Offline`               | Optional, sets the SDK ot be initialized in offline mode.                                                                                                                                                                                                                                                                           |
-| `Auto Initialize`             | Optional, automatically initialization the SDK client. You can disable it if you want to manually initialize at a later stage.                                                                                                                                                                                                      |
+| Properties                    | Description                                                                                                                                                                                                                                                                                                                   |
+| ----------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `Sdk Key`                     | SDK Key to access your feature flags and settings. Get it from the *ConfigCat Dashboard*.                                                                                                                                                                                                                                     |
+| `Base Url`                    | Optional, sets the CDN base url (forward proxy, dedicated subscription) from where the sdk will download the config JSON.                                                                                                                                                                                                     |
+| `Data Governance`             | Optional, defaults to `Global`. Describes the location of your feature flag and setting data within the ConfigCat CDN. This parameter needs to be in sync with your Data Governance preferences. [More about Data Governance](https://configcat.com/docs/advanced/data-governance.md). Available options: `Global`, `EuOnly`. |
+| `Connect Timeout`             | Optional, defaults to `8000ms`. Sets the amount of milliseconds to wait for the server to make the initial connection (i.e. completing the TCP connection handshake). `0` means it never times out during transfer                                                                                                            |
+| `Read Timeout`                | Optional, defaults to `5000ms`. Sets the amount of milliseconds to wait for the server to respond before giving up. `0` means it never times out during transfer.                                                                                                                                                             |
+| `Polling Mode`                | Optional, sets the polling mode for the client. [More about polling modes](#polling-modes).                                                                                                                                                                                                                                   |
+| `Auto Poll Interval`          | For PollingMode == Custom, sets at least how often this policy should fetch the latest config JSON and refresh the cache.                                                                                                                                                                                                     |
+| `Maximum Inititial Wait Time` | For PollingMode == Custom, sets the maximum waiting time between initialization and the first config acquisition in seconds.                                                                                                                                                                                                  |
+| `Cache Refresh Interval`      | For PollingMode == LazyLoad, sets how long the cache will store its value before fetching the latest from the network again.                                                                                                                                                                                                  |
+| `Proxies`                     | Optional, sets proxy addresses. e.g. { "https": "your\_proxy\_ip<!-- -->:your\_proxy\_port<!-- -->" } on each http request                                                                                                                                                                                                    |
+| `Proxy Authentications`       | Optional, sets proxy authentication on each http request.                                                                                                                                                                                                                                                                     |
+| `Start Offline`               | Optional, sets the SDK ot be initialized in offline mode.                                                                                                                                                                                                                                                                     |
+| `Auto Initialize`             | Optional, automatically initialization the SDK client. You can disable it if you want to manually initialize at a later stage.                                                                                                                                                                                                |
 
 ### 4. Get your setting value[​](#4-get-your-setting-value "Direct link to 4. Get your setting value")
 
@@ -67,30 +69,32 @@ You can configure all ConfigCat related settings inside the `Edit -> Project Set
 
 Add the ConfigCat Dependency to your `.Build.cs` file:
 
-```
+```cpp
 PrivateDependencyModuleNames.AddRange(new string[]
 {
   "ConfigCat"
 });
+
 ```
 
 Access feature flags:
 
-```
+```cpp
 #include "ConfigCatSubsystem.h"
 
 UConfigCatSubsystem* ConfigCat = UConfigCatSubsystem::Get(this);
 bool bIsMyAwesomeFeatureEnabled = ConfigCat->GetBoolValue(TEXT("isMyAwesomeFeatureEnabled"), false);
 SetMyAwesomeFeatureEnabled(bIsMyAwesomeFeatureEnabled);
+
 ```
 
 ## Anatomy of `GetValue`[​](#anatomy-of-getvalue "Direct link to anatomy-of-getvalue")
 
-| Parameters      | Description                                                                                                                                             |
-| --------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `Key`           | **REQUIRED.** The key of a specific setting or feature flag. Set on *ConfigCat Dashboard* for each setting.                                             |
-| `Default Value` | **REQUIRED.** This value will be returned in case of an error.                                                                                          |
-| `User`          | Optional, *User Object*. Essential when using Targeting. [Read more about Targeting.](https://configcat.com/docs/docs/targeting/targeting-overview/.md) |
+| Parameters      | Description                                                                                                                                       |
+| --------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `Key`           | **REQUIRED.** The key of a specific setting or feature flag. Set on *ConfigCat Dashboard* for each setting.                                       |
+| `Default Value` | **REQUIRED.** This value will be returned in case of an error.                                                                                    |
+| `User`          | Optional, *User Object*. Essential when using Targeting. [Read more about Targeting.](https://configcat.com/docs/targeting/targeting-overview.md) |
 
 * Blueprints
 * C++
@@ -99,44 +103,47 @@ SetMyAwesomeFeatureEnabled(bIsMyAwesomeFeatureEnabled);
 
 Access value depending on type:
 
-```
+```cpp
 UConfigCatSubsystem* ConfigCat = UConfigCatSubsystem::Get(this);
 
 bool bMyFirstFeatureFlag = ConfigCat->GetBoolValue(TEXT("myFirstFeatureFlag"), false);
 int MySecondFeatureFlag = ConfigCat->GetIntValue(TEXT("mySecondFeatureFlag"), 0);
 double MyThirdFeatureFlag = ConfigCat->GetDoubleValue(TEXT("myThirdFeatureFlag"), 0.0);
 FString MyFourthFeatureFlag = ConfigCat->GetStringValue(TEXT("myForthFeatureFlag"), TEXT(""));
+
 ```
 
 Access value depending on type targeting an user:
 
-```
+```cpp
 UConfigCatSubsystem* ConfigCat = UConfigCatSubsystem::Get(this);
 
 auto User = UConfigCatUserWrapper::CreateUser(TEXT("#USER-IDENTIFIER#"));
 FString TargetValue = ConfigCat->GetStringValue(TEXT("targetValue"), TEXT(""), User);
+
 ```
 
 ## Anatomy of `GetValueDetails()`[​](#anatomy-of-getvaluedetails "Direct link to anatomy-of-getvaluedetails")
 
 `GetValueDetails()` is similar to `GetValue()` but instead of returning the evaluated value only, it gives more detailed information about the evaluation result.
 
-| Parameters      | Description                                                                                                                                             |
-| --------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `Key`           | **REQUIRED.** The key of a specific setting or feature flag. Set on *ConfigCat Dashboard* for each setting.                                             |
-| `Default Value` | **REQUIRED.** This value will be returned in case of an error.                                                                                          |
-| `User`          | Optional, *User Object*. Essential when using Targeting. [Read more about Targeting.](https://configcat.com/docs/docs/targeting/targeting-overview/.md) |
+| Parameters      | Description                                                                                                                                       |
+| --------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `Key`           | **REQUIRED.** The key of a specific setting or feature flag. Set on *ConfigCat Dashboard* for each setting.                                       |
+| `Default Value` | **REQUIRED.** This value will be returned in case of an error.                                                                                    |
+| `User`          | Optional, *User Object*. Essential when using Targeting. [Read more about Targeting.](https://configcat.com/docs/targeting/targeting-overview.md) |
 
 * Blueprints
 * C++
 
 ![Unreal Engine Get Value Details](/docs/assets/unreal/blueprints-get-value-details.png)
 
-```
+```cpp
 UConfigCatSubsystem* ConfigCat = UConfigCatSubsystem::Get(this);
 
 auto User = UConfigCatUserWrapper::CreateUser(TEXT("#USER-IDENTIFIER#"));
 auto Details = ConfigCat->GetStringValueDetails(TEXT("myFeatureFlag"),  TEXT(""), User);
+
 ```
 
 The `Details` result contains the following information:
@@ -154,15 +161,16 @@ The `Details` result contains the following information:
 
 ## User Object[​](#user-object "Direct link to User Object")
 
-The [User Object](https://configcat.com/docs/docs/targeting/user-object/.md) is essential if you'd like to use ConfigCat's [Targeting](https://configcat.com/docs/docs/targeting/targeting-overview/.md) feature.
+The [User Object](https://configcat.com/docs/targeting/user-object.md) is essential if you'd like to use ConfigCat's [Targeting](https://configcat.com/docs/targeting/targeting-overview.md) feature.
 
 * Blueprints
 * C++
 
 ![Unreal Engine Create User](/docs/assets/unreal/blueprints-create-user.png)
 
-```
+```cpp
 auto User = UConfigCatUserWrapper::CreateUser(TEXT("#UNIQUE-USER-IDENTIFIER#"));
+
 ```
 
 ### Customized User Object creation[​](#customized-user-object-creation "Direct link to Customized User Object creation")
@@ -179,12 +187,13 @@ auto User = UConfigCatUserWrapper::CreateUser(TEXT("#UNIQUE-USER-IDENTIFIER#"));
 
 ![Unreal Engine Create User Custom](/docs/assets/unreal/blueprints-create-user-custom.png)
 
-```
+```cpp
 TMap<FString, FString> Attributes;
 Attributes.Emplace(TEXT("SubscriptionType"), TEXT("Pro"));
 Attributes.Emplace(TEXT("UserRole"), TEXT("Admin"));
 auto User = UConfigCatUserWrapper::CreateUser(TEXT("#UNIQUE-USER-IDENTIFIER#"), TEXT("john@example.com"), 
   TEXT("United Kingdom"), Attributes);
+
 ```
 
 ### Default user[​](#default-user "Direct link to Default user")
@@ -198,10 +207,11 @@ You can set the default User Object with the `setDefaultUser()` method of the Co
 
 ![Unreal Engine Set Default User](/docs/assets/unreal/blueprints-set-default-user.png)
 
-```
+```cpp
 UConfigCatSubsystem* ConfigCat = UConfigCatSubsystem::Get(this);
 auto User = UConfigCatUserWrapper::CreateUser(TEXT("#UNIQUE-USER-IDENTIFIER#"));
 ConfigCat->SetDefaultUser(User);
+
 ```
 
 Whenever the `GetValue()`, `GetValueDetails()`, `GetAllValues()`, or `GetAllValueDetails()` methods are called without an explicit `user` parameter, the SDK will automatically use the default user as a User Object.
@@ -211,13 +221,14 @@ Whenever the `GetValue()`, `GetValueDetails()`, `GetAllValues()`, or `GetAllValu
 
 ![Unreal Engine Default User Example](/docs/assets/unreal/blueprints-default-user-example.png)
 
-```
+```cpp
 UConfigCatSubsystem* ConfigCat = UConfigCatSubsystem::Get(this);
 auto User = UConfigCatUserWrapper::CreateUser(TEXT("#UNIQUE-USER-IDENTIFIER#"));
 ConfigCat->SetDefaultUser(User);
 
 // The default user will be used at the evaluation process.
 bool bMySetting = ConfigCat->GetBoolValue(TEXT("keyOfMySetting"), false);
+
 ```
 
 When the `user` parameter is specified on the requesting method, it takes precedence over the default user.
@@ -227,7 +238,7 @@ When the `user` parameter is specified on the requesting method, it takes preced
 
 ![Unreal Engine Other User Example](/docs/assets/unreal/blueprints-other-user-example.png)
 
-```
+```cpp
 UConfigCatSubsystem* ConfigCat = UConfigCatSubsystem::Get(this);
 auto User = UConfigCatUserWrapper::CreateUser(TEXT("#UNIQUE-USER-IDENTIFIER#"));
 ConfigCat->SetDefaultUser(User);
@@ -236,6 +247,7 @@ auto OtherUser = UConfigCatUserWrapper::CreateUser(TEXT("#OTHER-UNIQUE-USER-IDEN
 
 // OtherUser will be used at the evaluation process.
 bool bMySetting = ConfigCat->GetBoolValue(TEXT("keyOfMySetting"), false, OtherUser);
+
 ```
 
 For deleting the default user, you can do the following:
@@ -245,14 +257,15 @@ For deleting the default user, you can do the following:
 
 ![Unreal Engine Clear Default User](/docs/assets/unreal/blueprints-clear-default-user.png)
 
-```
+```cpp
 UConfigCatSubsystem* ConfigCat = UConfigCatSubsystem::Get(this);
 ConfigCat->ClearDefaultUser();
+
 ```
 
 ## Polling Modes[​](#polling-modes "Direct link to Polling Modes")
 
-The *ConfigCat SDK* supports 3 different polling strategies to fetch feature flags and settings from the ConfigCat CDN. Once the latest data is downloaded, it is stored in the cache, then calls to `GetValue()` use the cached data to evaluate feature flags and settings. With the following polling modes, you can customize the SDK to best fit to your application's lifecycle.<br />[More about polling modes.](https://configcat.com/docs/docs/advanced/caching/.md)
+The *ConfigCat SDK* supports 3 different polling strategies to fetch feature flags and settings from the ConfigCat CDN. Once the latest data is downloaded, it is stored in the cache, then calls to `GetValue()` use the cached data to evaluate feature flags and settings. With the following polling modes, you can customize the SDK to best fit to your application's lifecycle.<br />[More about polling modes.](https://configcat.com/docs/advanced/caching.md)
 
 ### Auto polling (default)[​](#auto-polling-default "Direct link to Auto polling (default)")
 
@@ -290,9 +303,10 @@ Manual polling gives you full control over when the config data is downloaded fr
 
 ![Unreal Engine Manual Force Refresh](/docs/assets/unreal/blueprints-manual-force-refresh.png)
 
-```
+```cpp
 UConfigCatSubsystem* ConfigCat = UConfigCatSubsystem::Get(this);
 ConfigCat->ForceRefresh();
+
 ```
 
 > `GetValue()` returns `DefaultValue` if the cache is empty. Call `ForceRefresh()` to update the cache.
@@ -316,13 +330,14 @@ You can subscribe to these events either on SDK initialization:
 
 ![Unreal Engine Blueprint Event Delegates](/docs/assets/unreal/blueprint-event-delegates.png)
 
-```
+```cpp
 UConfigCatSubsystem* ConfigCat = UConfigCatSubsystem::Get(this);
     
 ConfigCat->OnClientReady.AddWeakLambda(this, [](){ /* OnClientReady callback */ });
 ConfigCat->OnConfigChanged.AddWeakLambda(this, [](UConfigCatSettingsWrapper* Config){ /* OnConfigChanged callback */ });
 ConfigCat->OnFlagEvaluated.AddWeakLambda(this, [](UConfigCatEvaluationWrapper* Details){ /* OnFlagEvaluated callback */ });
 ConfigCat->OnError.AddWeakLambda(this, [](const FString& Error, const FString& Exception){ /* OnError callback */ });
+
 ```
 
 ## Online / Offline mode[​](#online--offline-mode "Direct link to Online / Offline mode")
@@ -340,12 +355,13 @@ To put the SDK back in online mode, you can use `SetOnline`;
 
 ![Unreal Engine Blueprint Offline Functionality](/docs/assets/unreal/blueprint-offline-functionality.png)
 
-```
+```cpp
 UConfigCatSubsystem* ConfigCat = UConfigCatSubsystem::Get(this);
 
 ConfigCat->SetOffline();
 ConfigCat->SetOnline();
 bool bIsOffline = ConfigCat->IsOffline();
+
 ```
 
 ## Flag Overrides[​](#flag-overrides "Direct link to Flag Overrides")
@@ -378,7 +394,7 @@ The SDK supports 2 types of JSON structures to describe feature flags & settings
 
 ##### 1. Simple (key-value) structure[​](#1-simple-key-value-structure "Direct link to 1. Simple (key-value) structure")
 
-```
+```json
 {
   "flags": {
     "enabledFeature": true,
@@ -388,6 +404,7 @@ The SDK supports 2 types of JSON structures to describe feature flags & settings
     "stringSetting": "test"
   }
 }
+
 ```
 
 ##### 2. Complex (full-featured) structure[​](#2-complex-full-featured-structure "Direct link to 2. Complex (full-featured) structure")
@@ -398,18 +415,19 @@ You can download your current config JSON from ConfigCat's CDN and use it as a b
 
 A convenient way to get the config JSON for a specific SDK Key is to install the [ConfigCat CLI](https://github.com/configcat/cli) tool and execute the following command:
 
-```
+```bash
 configcat config-json get -f v6 -p {YOUR-SDK-KEY} > config.json
+
 ```
 
-(Depending on your [Data Governance](https://configcat.com/docs/docs/advanced/data-governance/.md) settings, you may need to add the `--eu` switch.)
+(Depending on your [Data Governance](https://configcat.com/docs/advanced/data-governance.md) settings, you may need to add the `--eu` switch.)
 
-Alternatively, you can download the config JSON manually, based on your [Data Governance](https://configcat.com/docs/docs/advanced/data-governance/.md) settings:
+Alternatively, you can download the config JSON manually, based on your [Data Governance](https://configcat.com/docs/advanced/data-governance.md) settings:
 
 * GLOBAL: `https://cdn-global.configcat.com/configuration-files/{YOUR-SDK-KEY}/config_v6.json`
 * EU: `https://cdn-eu.configcat.com/configuration-files/{YOUR-SDK-KEY}/config_v6.json`
 
-```
+```json
 {
   "p": {
     // hash salt, required only when confidential text comparator(s) are used
@@ -538,6 +556,7 @@ Alternatively, you can download the config JSON manually, based on your [Data Go
     }
   }
 }
+
 ```
 
 For a more comprehensive specification of the config JSON v6 format, you may refer to [this JSON schema document](https://github.com/configcat/config-json/blob/main/V6/config.schema.json).
@@ -561,10 +580,11 @@ You can get the keys for all available feature flags and settings by calling the
 
 ![Unreal Engine Get All Keys](/docs/assets/unreal/blueprints-get-all-keys.png)
 
-```
+```cpp
 UConfigCatSubsystem* ConfigCat = UConfigCatSubsystem::Get(this);
 
 TArray<FString> Keys = ConfigCat->GetAllKeys();
+
 ```
 
 ## `GetAllValues()`[​](#getallvalues "Direct link to getallvalues")
@@ -576,12 +596,13 @@ Evaluates and returns the values of all feature flags and settings. Passing a Us
 
 ![Unreal Engine Get All Values](/docs/assets/unreal/blueprints-get-all-values.png)
 
-```
+```cpp
 UConfigCatSubsystem* ConfigCat = UConfigCatSubsystem::Get(this);
 TMap<FString, UConfigCatValueWrapper*> SettingValues = ConfigCat->GetAllValues();
 
 auto User = UConfigCatUserWrapper::CreateUser(TEXT("#UNIQUE-USER-IDENTIFIER#"));
 TMap<FString, UConfigCatValueWrapper*> SettingValuesTargeting = ConfigCat->GetAllValues(User);
+
 ```
 
 ## `GetAllValueDetails`[​](#getallvaluedetails "Direct link to getallvaluedetails")
@@ -593,11 +614,12 @@ Evaluates and returns the detailed values of all feature flags and settings. Pas
 
 ![Unreal Engine Get All Value Details](/docs/assets/unreal/blueprints-get-all-value-details.png)
 
-```
+```cpp
 UConfigCatSubsystem* ConfigCat = UConfigCatSubsystem::Get(this);
 auto User = UConfigCatUserWrapper::CreateUser(TEXT("#UNIQUE-USER-IDENTIFIER#"));
 
 TArray<UConfigCatEvaluationWrapper*> AllValueDetails = ConfigCat->GetAllValueDetails(User);
+
 ```
 
 ## Custom Cache[​](#custom-cache "Direct link to Custom Cache")
@@ -617,10 +639,11 @@ Call the `forceRefresh()` method on the client to download the latest config JSO
 
 ![Unreal Engine Blueprint Force Refresh](/docs/assets/unreal/blueprints-force-refresh.png)
 
-```
+```cpp
 UConfigCatSubsystem* ConfigCat = UConfigCatSubsystem::Get(this);
 
 ConfigCat->ForceRefresh();
+
 ```
 
 ## Using ConfigCat behind a proxy[​](#using-configcat-behind-a-proxy "Direct link to Using ConfigCat behind a proxy")
@@ -649,16 +672,17 @@ Via **DefaultEngine.ini**:
 
 In the `[Core.Log]` category add `LogConfigCat=VerbosityLevel` inside the `DefaultEngine.ini`. For example:
 
-```
+```text
 [Core.Log]
 LogConfigCat=Warning ;to only show warnings and above
+
 ```
 
 Note: Since the Unreal Engine SDK is a wrapper of the CPP SDK, all logs coming from the CPP SDK are tagged wtih `[CPP-SDK]`.
 
 Info level logging helps to inspect how a feature flag was evaluated:
 
-```
+```bash
 [Info]: Evaluating getValue(isPOCFeatureEnabled)
 User object: {
     "Email": "john@example.com",
@@ -666,15 +690,16 @@ User object: {
 }
 Evaluating rule: [Email:john@example.com] [CONTAINS] [@something.com] => no match
 Evaluating rule: [Email:john@example.com] [CONTAINS] [@example.com] => match, returning: true
+
 ```
 
 ## Sensitive information handling[​](#sensitive-information-handling "Direct link to Sensitive information handling")
 
-The frontend/mobile SDKs are running in your users' browsers/devices. The SDK is [downloading a config JSON](https://configcat.com/docs/docs/requests/.md) file from ConfigCat's CDN servers. The URL path for this config JSON file contains your SDK key, so the SDK key and the content of your config JSON file (feature flag keys, feature flag values, Targeting Rules, % rules) can be visible to your users. In ConfigCat, all SDK keys are read-only. They only allow downloading your config JSON files, but nobody can make any changes with them in your ConfigCat account.
+The frontend/mobile SDKs are running in your users' browsers/devices. The SDK is [downloading a config JSON](https://configcat.com/docs/requests.md) file from ConfigCat's CDN servers. The URL path for this config JSON file contains your SDK key, so the SDK key and the content of your config JSON file (feature flag keys, feature flag values, Targeting Rules, % rules) can be visible to your users. In ConfigCat, all SDK keys are read-only. They only allow downloading your config JSON files, but nobody can make any changes with them in your ConfigCat account.
 
 If you do not want to expose the SDK key or the content of the config JSON file, we recommend using the SDK in your backend components only. You can always create a backend endpoint using the ConfigCat SDK that can evaluate feature flags for a specific user, and call that backend endpoint from your frontend/mobile applications.
 
-Also, we recommend using [confidential targeting comparators](https://configcat.com/docs/docs/targeting/targeting-rule/user-condition/.md#confidential-text-comparators) in the Targeting Rules of those feature flags that are used in the frontend/mobile SDKs.
+Also, we recommend using [confidential targeting comparators](https://configcat.com/docs/targeting/targeting-rule/user-condition.md#confidential-text-comparators) in the Targeting Rules of those feature flags that are used in the frontend/mobile SDKs.
 
 ## Sample Applications[​](#sample-applications "Direct link to Sample Applications")
 

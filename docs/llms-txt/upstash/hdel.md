@@ -2,23 +2,9 @@
 
 # Source: https://upstash.com/docs/redis/sdks/py/commands/hash/hdel.md
 
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/hash/hdel.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/hash/hdel.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/hash/hdel.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/hash/hdel.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/hash/hdel.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/hash/hdel.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/hash/hdel.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/hash/hdel.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/hash/hdel.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # HDEL
 
@@ -26,23 +12,25 @@
 
 ## Arguments
 
-<ParamField body="key" type="string" required>
+<ParamField body="key" type="str" required>
   The key to get.
 </ParamField>
 
-<ParamField body="fields" required>
+<ParamField body="fields" type="*List[str]" required>
   One or more fields to delete.
 </ParamField>
 
 ## Response
 
-<ResponseField type="integer" required>
+<ResponseField type="int" required>
   The number of fields that were removed from the hash.
 </ResponseField>
 
 <RequestExample>
-  ```ts Example theme={"system"}
-  await redis.hdel(key, 'field1', 'field2');
-  // returns 5
+  ```py Example theme={"system"}
+  redis.hset("myhash", "field1", "Hello")
+  redis.hset("myhash", "field2", "World")
+
+  assert redis.hdel("myhash", "field1", "field2") == 2
   ```
 </RequestExample>

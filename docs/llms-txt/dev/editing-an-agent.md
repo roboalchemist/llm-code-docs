@@ -1,5 +1,9 @@
 # Source: https://dev.writer.com/no-code/editing-an-agent.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://dev.writer.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Edit an agent
 
 You can edit a deployed agent's name, configuration, and metadata (in Agent Guide) and then push the changes to the deployed instances of the agent. To edit your deployed agent:

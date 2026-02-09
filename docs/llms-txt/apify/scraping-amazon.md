@@ -1,10 +1,12 @@
 # Source: https://docs.apify.com/academy/scraping-basics-javascript/legacy/challenge/scraping-amazon.md
 
-# Source: https://docs.apify.com/academy/web-scraping-for-beginners/challenge/scraping-amazon.md
-
 # Scraping Amazon
 
 **Build your first web scraper with Crawlee. Let's extract product information from Amazon to give you an idea of what real-world scraping looks like.**
+
+Archived course
+
+This is an archive of our old course. Check out our new [Web scraping basics for JavaScript devs](https://docs.apify.com/academy/scraping-basics-javascript.md) course instead! We plan to completely retire this old course in a few months.
 
 ***
 
@@ -26,7 +28,7 @@ router.addHandler(labels.PRODUCT, async ({ $ }) => {
 ```
 
 
-Great! But wait, where do we go from here? We need to go to the offers page next and scrape each offer, but how can we do that? Let's take a small break from writing the scraper and open up https://docs.apify.com/academy/tools/proxyman.md to analyze requests which we might be difficult to find in the network tab, then we'll click the button on the product page that loads up all of the product offers:
+Great! But wait, where do we go from here? We need to go to the offers page next and scrape each offer, but how can we do that? Let's take a small break from writing the scraper and open up Proxyman to analyze requests which we might be difficult to find in the network tab, then we'll click the button on the product page that loads up all of the product offers:
 
 ![View offers button](/assets/images/view-offers-button-11e242f1d72d36745d86c7a0f114e637.jpg)
 
@@ -40,7 +42,7 @@ https://www.amazon.com/gp/aod/ajax/ref=auto_load_aod?asin=B07ZPKBL9V&pc=dp
 ```
 
 
-The `asin` https://www.branch.io/glossary/query-parameters/ matches up with our product's ASIN, which means we can use this for any product of which we have the ASIN.
+The `asin` [query parameter](https://www.branch.io/glossary/query-parameters/) matches up with our product's ASIN, which means we can use this for any product of which we have the ASIN.
 
 Here's what this page looks like:
 
@@ -48,7 +50,7 @@ Here's what this page looks like:
 
 Wow, that's ugly. But for our scenario, this is really great. When we click the **View offers** button, we usually have to wait for the offers to load and render, which would mean we could have to switch our entire crawler to a **PuppeteerCrawler** or **PlaywrightCrawler**. The data on this page we've just found appears to be loaded statically, which means we can still use CheerioCrawler and keep the scraper as efficient as possible 😎
 
-> It's totally possible to scrape the same data as this crawler using https://docs.apify.com/academy/puppeteer-playwright.md; however, with this offers link found in Postman, we can follow the same workflow much more quickly with static HTTP requests using CheerioCrawler.
+> It's totally possible to scrape the same data as this crawler using [Puppeteer or Playwright](https://docs.apify.com/academy/puppeteer-playwright.md); however, with this offers link found in Postman, we can follow the same workflow much more quickly with static HTTP requests using CheerioCrawler.
 
 First, we'll create a request for each product's offers page:
 

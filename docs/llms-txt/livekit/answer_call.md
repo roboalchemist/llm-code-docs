@@ -234,7 +234,7 @@ if __name__ == "__main__":
 
 ---
 
-This document was rendered at 2025-12-31T18:29:42.891Z.
+This document was rendered at 2026-02-03T03:25:29.125Z.
 For the latest version of this document, see [https://docs.livekit.io/recipes/answer_call.md](https://docs.livekit.io/recipes/answer_call.md).
 
 To explore all LiveKit documentation, see [llms.txt](https://docs.livekit.io/llms.txt).

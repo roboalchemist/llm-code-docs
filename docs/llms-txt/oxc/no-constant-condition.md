@@ -3,7 +3,6 @@
 ---
 url: /docs/guide/usage/linter/rules/eslint/no-constant-condition.md
 ---
-# eslint/no-constant-condition&#x20;
 
 ### What it does
 

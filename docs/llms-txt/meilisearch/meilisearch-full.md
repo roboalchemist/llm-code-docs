@@ -11,7 +11,7 @@ Discover our guides, examples, and APIs to build fast and relevant search experi
 
 ## Overview
 
-<CardGroup cols={3}>
+<CardGroup>
   <Card title="What is Meilisearch?" icon="flag" href="/learn/getting_started/what_is_meilisearch">
     Get an overview of Meilisearch features and philosophy.
   </Card>
@@ -29,7 +29,7 @@ Discover our guides, examples, and APIs to build fast and relevant search experi
 
 Take at look at example applications built with Meilisearch.
 
-<CardGroup cols={3}>
+<CardGroup>
   <Card title="App Search" icon="laravel" href="https://saas.meilisearch.com/">
     Search through multiple Eloquent models with Laravel.
   </Card>
@@ -103,7 +103,7 @@ For example, [Mistral's embeddings documentation](https://docs.mistral.ai/api/#t
 
 Open your text editor and create an embedder object. Give it a name and set its source to `"rest"`:
 
-```json  theme={null}
+```json theme={null}
 {
   "EMBEDDER_NAME": {
     "source": "rest"
@@ -113,7 +113,7 @@ Open your text editor and create an embedder object. Give it a name and set its 
 
 Next, configure the URL Meilisearch should use to contact the embedding provider:
 
-```json  theme={null}
+```json theme={null}
 {
   "EMBEDDER_NAME": {
     "source": "rest",
@@ -136,7 +136,7 @@ In many cases, your provider requires you to explicitly set which model you want
 
 Update your embedder object adding this field and its value:
 
-```json  theme={null}
+```json theme={null}
 {
   "EMBEDDER_NAME": {
     "source": "rest",
@@ -156,7 +156,7 @@ The prompt corresponds to the data that the provider will use to generate your d
 
 Most providers accept either a string or an array of strings. A single string will generate one request per document in your database:
 
-```json  theme={null}
+```json theme={null}
 {
   "EMBEDDER_NAME": {
     "source": "rest",
@@ -173,7 +173,7 @@ Most providers accept either a string or an array of strings. A single string wi
 
 An array of strings allows Meilisearch to send up to 10 documents in one request, reducing the number of API calls to the provider:
 
-```json  theme={null}
+```json theme={null}
 {
   "EMBEDDER_NAME": {
     "source": "rest",
@@ -193,7 +193,7 @@ When using array prompts, the first item must be `{{text}}`. If you want to send
 
 When using other embedding providers, `input` might be called something else, like `text` or `prompt`:
 
-```json  theme={null}
+```json theme={null}
 {
   "EMBEDDER_NAME": {
     "source": "rest",
@@ -212,7 +212,7 @@ You may add as many fields to the `request` object as you need. Meilisearch will
 
 For example, Mistral allows you to optionally configure an `encoding_format`. Set it by declaring this field in your embedder's `request`:
 
-```json  theme={null}
+```json theme={null}
 {
   "EMBEDDER_NAME": {
     "source": "rest",
@@ -232,7 +232,7 @@ You must indicate where Meilisearch can find the document embeddings in the prov
 
 Cloudflare's embeddings are located in an array inside `response.result.data`. Describe the full path to the embedding array in your embedder's `response`. The first array item must be `"{{embedding}}"`:
 
-```json  theme={null}
+```json theme={null}
 {
   "EMBEDDER_NAME": {
     "source": "rest",
@@ -251,7 +251,7 @@ Cloudflare's embeddings are located in an array inside `response.result.data`. D
 
 If the response contains multiple embeddings, use `"{{..}}"` as its second value:
 
-```json  theme={null}
+```json theme={null}
 {
   "EMBEDDER_NAME": {
     "source": "rest",
@@ -279,7 +279,7 @@ When using `"{{..}}"`, it must be present in both `request` and `response`.
 
 It is possible the response contains a single embedding outside of an array. Use `"{{embedding}}"` as its value:
 
-```json  theme={null}
+```json theme={null}
 {
   "EMBEDDER_NAME": {
     "source": "rest",
@@ -299,7 +299,7 @@ It is possible the response contains a single embedding outside of an array. Use
 
 It is also possible the response is a single item or array not nested in an object:
 
-```json  theme={null}
+```json theme={null}
 {
   "EMBEDDER_NAME": {
     "source": "rest",
@@ -329,7 +329,7 @@ Your provider might also request you to add specific headers to your request. Fo
 
 Add the `headers` field to your embedder object:
 
-```json  theme={null}
+```json theme={null}
 {
   "EMBEDDER_NAME": {
     "source": "rest",
@@ -357,7 +357,7 @@ By default, Meilisearch includes a `Content-Type` header. It may also include an
 
 Like other remote embedders, you're likely required to supply an `apiKey`:
 
-```json  theme={null}
+```json theme={null}
 {
   "EMBEDDER_NAME": {
     "source": "rest",
@@ -382,7 +382,7 @@ Like other remote embedders, you're likely required to supply an `apiKey`:
 
 You should also set a `documentTemplate`. Good templates are short and include only highly relevant document data:
 
-```json  theme={null}
+```json theme={null}
 {
   "EMBEDDER_NAME": {
     "source": "rest",
@@ -410,7 +410,7 @@ You should also set a `documentTemplate`. Good templates are short and include o
 
 Now the embedder object is complete, update your index settings:
 
-```sh  theme={null}
+```sh theme={null}
 curl \
   -X PATCH 'MEILISEARCH_URL/indexes/INDEX_NAME/settings/embedders' \
   -H 'Content-Type: application/json' \
@@ -492,7 +492,7 @@ This guide shows you what to do and what to avoid when writing a `documentTempla
 
 Take a look at this document from a database of movies:
 
-```json  theme={null}
+```json theme={null}
 {
   "id": 2,
   "title": "Ariel",
@@ -592,7 +592,7 @@ Open a blank file in your text editor. You will only use this file to build your
 
 In your blank file, create your `embedder` object:
 
-```json  theme={null}
+```json theme={null}
 {
   "products-openai": {}
 }
@@ -606,7 +606,7 @@ Meilisearch relies on third-party services to generate embeddings. These service
 
 Add a new `source` field to your embedder object:
 
-```json  theme={null}
+```json theme={null}
 {
   "products-openai": {
     "source": "openAi"
@@ -622,7 +622,7 @@ Models supply the information required for embedders to process your documents.
 
 Add a new `model` field to your embedder object:
 
-```json  theme={null}
+```json theme={null}
 {
   "products-openai": {
     "source": "openAi",
@@ -639,7 +639,7 @@ Log into OpenAI, or create an account if this is your first time using it. Gener
 
 Add the `apiKey` field to your embedder:
 
-```json  theme={null}
+```json theme={null}
 {
   "products-openai": {
     "source": "openAi",
@@ -661,7 +661,7 @@ Meilisearch embedders only accept textual input, but documents can be complex ob
 
 A good template should be short and only include the most important information about a document. Add the following `documentTemplate` to your embedder:
 
-```json  theme={null}
+```json theme={null}
 {
   "products-openai": {
     "source": "openAi",
@@ -678,7 +678,7 @@ This template starts by giving the general context of the document: `An object u
 
 Your embedder object is ready. Send it to Meilisearch by updating your index settings:
 
-```sh  theme={null}
+```sh theme={null}
 curl \
   -X PATCH 'MEILISEARCH_URL/indexes/kitchenware/settings/embedders' \
   -H 'Content-Type: application/json' \
@@ -700,7 +700,7 @@ Meilisearch and OpenAI will start processing your documents and updating your in
 
 AI-powered searches are very similar to basic text searches. You must query the `/search` endpoint with a request containing both the `q` and the `hybrid` parameters:
 
-```sh  theme={null}
+```sh theme={null}
 curl \
   -X POST 'MEILISEARCH_URL/indexes/kitchenware/search' \
   -H 'content-type: application/json' \
@@ -746,7 +746,7 @@ This guide shows the main steps to search through a database of images using Mei
 
 First, enable the `multimodal` experimental feature:
 
-```sh  theme={null}
+```sh theme={null}
 curl \
   -X PATCH 'MEILISEARCH_URL/experimental-features/' \
   -H 'Content-Type: application/json' \
@@ -771,7 +771,7 @@ Use `indexingFragments` to tell Meilisearch how to send document data to the pro
 
 For example, when using VoyageAI's multimodal model, an indexing fragment might look like this:
 
-```json  theme={null}
+```json theme={null}
 "indexingFragments": {
   "TEXTUAL_FRAGMENT_NAME": {
     "value": {
@@ -804,7 +804,7 @@ Any JSON string value appearing in a fragment is handled as a Liquid template, w
 
 Use `searchFragments` to tell Meilisearch how to send search query data to the chosen provider's REST API when converting them into embeddings:
 
-```json  theme={null}
+```json theme={null}
 "searchFragments": {
   "USER_TEXT_FRAGMENT": {
     "value": {
@@ -842,7 +842,7 @@ Each semantic search query for this embedder should match exactly one search fra
 
 Your embedder should look similar to this example with all fragments and embedding provider data:
 
-```sh  theme={null}
+```sh theme={null}
 curl \
   -X PATCH 'MEILISEARCH_URL/indexes/INDEX_NAME/settings' \
   -H 'Content-Type: application/json' \
@@ -895,11 +895,28 @@ curl \
               ]
             }
           }
+        },
+        "request": {
+          "inputs": [
+            "{{fragment}}",
+            "{{..}}"
+          ],
+          "model": "voyage-multimodal-3"
+        },
+        "response": {
+          "data": [
+            {
+              "embedding": "{{embedding}}"
+            },
+            "{{..}}"
+          ]
         }
       }
     }
   }'
 ```
+
+Since the `source` of this embedder is `rest`, you must also specify a [`request` and a `response` fields](/reference/api/settings#body-21). These respectively instruct Meilisearch on how to structure the request sent to the embeddings provider, and where to find the embeddings in the provider's response.
 
 ## Add documents
 
@@ -915,7 +932,7 @@ The final step is to perform searches using different types of content.
 
 Use the following search query to retrieve a mix of documents with images matching the description, documents with and documents containing the specified keywords:
 
-```sh  theme={null}
+```sh theme={null}
 curl -X POST 'http://localhost:7700/indexes/INDEX_NAME/search' \
   -H 'Content-Type: application/json' \
   --data-binary '{
@@ -930,7 +947,7 @@ curl -X POST 'http://localhost:7700/indexes/INDEX_NAME/search' \
 
 You can also use an image to search for other, similar images:
 
-```sh  theme={null}
+```sh theme={null}
 curl -X POST 'http://localhost:7700/indexes/INDEX_NAME/search' \
   -H 'Content-Type: application/json' \
   --data-binary '{
@@ -990,7 +1007,7 @@ In most cases your system should run these steps periodically or whenever you up
 
 Configure the `embedder` index setting, settings its source to `userProvided`:
 
-```sh  theme={null}
+```sh theme={null}
 curl \
   -X PATCH 'MEILISEARCH_URL/indexes/movies/settings' \
   -H 'Content-Type: application/json' \
@@ -1024,7 +1041,7 @@ Since you are using a `userProvided` embedder, you must also generate the embedd
 
 Once you have the query's vector, pass it to the `vector` search parameter to perform a semantic AI-powered search:
 
-```sh  theme={null}
+```sh theme={null}
 curl -X POST -H 'content-type: application/json' \
   'localhost:7700/indexes/products/search' \
   --data-binary '{ 
@@ -1039,7 +1056,7 @@ Replace `VECTORIZED_QUERY` with the embedding generated by your provider and `EM
 
 If your images have any associated metadata, you may perform a hybrid search by including the original `q`:
 
-```sh  theme={null}
+```sh theme={null}
 curl -X POST -H 'content-type: application/json' \
   'localhost:7700/indexes/products/search' \
   --data-binary '{ 
@@ -1079,7 +1096,7 @@ First, you will create an embedder and add documents to your index. You will the
 
 ## Create a new index
 
-Create an index called `movies` and add this <a href="/assets/datasets/movies.json" download="movies.json">`movies.json`</a> dataset to it. If necessary, consult the [getting started](/learn/getting_started/cloud_quick_start) for more instructions on index creation.
+Create an index called `movies` and add this <a href="/assets/datasets/movies.json">`movies.json`</a> dataset to it. If necessary, consult the [getting started](/learn/getting_started/cloud_quick_start) for more instructions on index creation.
 
 Each document in the dataset represents a single movie and has the following structure:
 
@@ -1094,11 +1111,11 @@ Each document in the dataset represents a single movie and has the following str
 
 Next, use the Cloud UI to configure an OpenAI embedder:
 
-<img src="https://mintcdn.com/meilisearch-6b28dec2/JZ1wsU7CEWrp9Xec/assets/images/similar-guide/01-add-embedder-ui.gif?s=f51f0a2afd10d4614c8be26f34ddfa1e" alt="Animated image of the Meilisearch Cloud UI showing a user clicking on &#x22;add embedder&#x22;. This opens up a modal window, where the user fills in the name of the embedder, chooses OpenAI as its source. They then select a model, input their API key, and type out a document template." data-og-width="1358" width="1358" data-og-height="814" height="814" data-path="assets/images/similar-guide/01-add-embedder-ui.gif" data-optimize="true" data-opv="3" />
+<img alt="Animated image of the Meilisearch Cloud UI showing a user clicking on &#x22;add embedder&#x22;. This opens up a modal window, where the user fills in the name of the embedder, chooses OpenAI as its source. They then select a model, input their API key, and type out a document template." />
 
 You may also use the `/settings/embedders` API subroute to configure your embedder:
 
-<CodeSamples id="related_results_embedder_1" />
+<CodeSamples />
 
 Replace `MEILISEARCH_URL`, `MEILISEARCH_API_KEY`, and `OPENAI_API_KEY` with the corresponding values in your application.
 
@@ -1108,7 +1125,7 @@ Meilisearch will start generating the embeddings for all movies in your dataset.
 
 With your documents added and all embeddings generated, you can perform a search:
 
-<CodeSamples id="related_results_search_1" />
+<CodeSamples />
 
 This request returns a list of movies. Pick the top result and take note of its primary key in the `id` field. In this case, it's the movie "Batman" with `id` 192.
 
@@ -1116,7 +1133,7 @@ This request returns a list of movies. Pick the top result and take note of its 
 
 Pass "Batman"'s `id` to your index's [`/similar` route](/reference/api/similar), specifying `movies-text` as your embedder:
 
-<CodeSamples id="related_results_similar_1" />
+<CodeSamples />
 
 Meilisearch will return a list of the 20 documents most similar to the movie you chose. You may then choose to display some of these similar results to your users, pointing them to other movies that may also interest them.
 
@@ -1146,7 +1163,7 @@ This guide shows how to perform AI-powered searches with user-generated embeddin
 
 Configure the `embedder` index setting, settings its source to `userProvided`:
 
-```sh  theme={null}
+```sh theme={null}
 curl \
   -X PATCH 'MEILISEARCH_URL/indexes/movies/settings' \
   -H 'Content-Type: application/json' \
@@ -1168,7 +1185,7 @@ curl \
 
 Next, use [the `/documents` endpoint](/reference/api/documents?utm_campaign=vector-search\&utm_source=docs\&utm_medium=vector-search-guide) to upload vectorized documents. Place vector data in your documents' `_vectors` field:
 
-```sh  theme={null}
+```sh theme={null}
 curl -X POST -H 'content-type: application/json' \
 'localhost:7700/indexes/products/documents' \
 --data-binary '[
@@ -1183,23 +1200,31 @@ When using a custom embedder, you must vectorize both your documents and user qu
 
 Once you have the query's vector, pass it to the `vector` search parameter to perform an AI-powered search:
 
-```sh  theme={null}
+```sh theme={null}
 curl -X POST -H 'content-type: application/json' \
   'localhost:7700/indexes/products/search' \
-  --data-binary '{ "vector": [0, 1, 2] }'
+  --data-binary '{ 
+    "vector": [0, 1, 2],
+    "hybrid": {
+      "embedder": "image2text"
+    }
+  }'
 ```
 
 `vector` must be an array of numbers indicating the search vector. You must generate these yourself when using vector search with user-provided embeddings.
 
 `vector` can be used together with [other search parameters](/reference/api/search?utm_campaign=vector-search\&utm_source=docs\&utm_medium=vector-search-guide), including [`filter`](/reference/api/search#filter) and [`sort`](/reference/api/search#sort):
 
-```sh  theme={null}
+```sh theme={null}
 curl -X POST -H 'content-type: application/json' \
   'localhost:7700/indexes/products/search' \
   --data-binary '{
     "vector": [0, 1, 2],
     "filter": "price < 10",
-    "sort": ["price:asc"]
+    "sort": ["price:asc"],
+    "hybrid": {
+      "embedder": "image2text"
+    }
   }'
 ```
 
@@ -1395,7 +1420,7 @@ Once you have established what is a conversion in your application, configure it
   curl \
     -X POST 'https://PROJECT_URL/events' \
     -H 'Content-Type: application/json' \
-    -H 'Authorization: Bearer DEFAULT_SEARCH_API_KEY'
+    -H 'Authorization: Bearer DEFAULT_SEARCH_API_KEY' \
     --data-binary '{
       "eventType": "conversion",
       "eventName": "Product Added To Cart",
@@ -1430,7 +1455,7 @@ Use `/events` to submit analytics events such as `click` and `conversion` to Mei
 
 ## Send an event
 
-<RouteHighlighter method="POST" path="/events" />
+<RouteHighlighter method="POST" />
 
 Send an analytics event to Meilisearch Cloud.
 
@@ -1447,7 +1472,7 @@ Send an analytics event to Meilisearch Cloud.
 | `position`   | Integer | N/A           | An integer indicating the clicked document's position in the search result list |
 | `userId`     | String  | N/A           | An arbitrary string identifying the user who performed the action               |
 
-```json  theme={null}
+```json theme={null}
 {
   "eventType": "click",
   "eventName": "Search Result Clicked",
@@ -1478,10 +1503,6 @@ Source: https://www.meilisearch.com/docs/learn/analytics/migrate_analytics_monit
 
 Follow this guide to ensure your Meilisearch Cloud analytics configuration is up to date after the November 2025 release.
 
-<Note>
-  This article refers to a new version of the Meilisearch Cloud analytics that is being rolled out in November 2025. Some features described here may not yet be available to your account. Contact support for more information.
-</Note>
-
 ## Analytics and monitoring are always active
 
 Analytics and monitoring are now active in all Meilisearch Cloud projects. Basic functionality requires no extra configuration. Tracking user conversion, clickthrough, and clicked result position must instead be explicitly configured.
@@ -1490,7 +1511,7 @@ Analytics and monitoring are now active in all Meilisearch Cloud projects. Basic
 
 Meilisearch no longer requires `edge.meilisearch.com` to track search analytics. Update your application so all API requests, including click and conversion events, point to your project URL:
 
-```sh  theme={null}
+```sh theme={null}
 curl \
   -X POST 'https://PROJECT_URL/indexes/products/search' \
   -H 'Content-Type: application/json' \
@@ -1536,7 +1557,7 @@ Tasks are objects containing information that allow you to track their progress 
 
 A [task object](/reference/api/tasks#task-object) includes data not present in the original request, such as when the request was enqueued, the type of request, and an error code when the task fails:
 
-```json  theme={null}
+```json theme={null}
 {
     "uid": 1,
     "indexUid": "movies",
@@ -1561,7 +1582,7 @@ For a comprehensive description of each task object field, consult the [task API
 
 When you make an API request for an asynchronous operation, Meilisearch returns a [summarized version](/reference/api/tasks#summarized-task-object) of the full `task` object.
 
-```json  theme={null}
+```json theme={null}
 {
   "taskUid": 0,
   "indexUid": "movies",
@@ -1663,7 +1684,7 @@ Suppose you add a new document to your instance using the [add documents endpoin
 
 When you query the [get task endpoint](/reference/api/tasks#get-one-task) using this value, you see that it has been `enqueued`:
 
-```json  theme={null}
+```json theme={null}
 {
     "uid": 1,
     "indexUid": "movies",
@@ -1684,7 +1705,7 @@ When you query the [get task endpoint](/reference/api/tasks#get-one-task) using 
 
 Later, you check the task's progress one more time. It was successfully processed and its `status` changed to `succeeded`:
 
-```json  theme={null}
+```json theme={null}
 {
     "uid": 1,
     "indexUid": "movies",
@@ -1705,7 +1726,7 @@ Later, you check the task's progress one more time. It was successfully processe
 
 Had the task failed, the response would have included a detailed `error` object:
 
-```json  theme={null}
+```json theme={null}
 {
     "uid": 1,
     "indexUid": "movies",
@@ -2042,7 +2063,7 @@ Use the `limit` parameter to change the number of returned tasks:
 
 Meilisearch will return a batch of tasks. Each batch of returned tasks is often called a "page" of tasks, and the size of that page is determined by `limit`:
 
-```json  theme={null}
+```json theme={null}
 {
   "results": [
     …
@@ -2132,7 +2153,7 @@ Use the `next` value included in the response to your previous query together wi
 
 This will return a new batch of tasks:
 
-```json  theme={null}
+```json theme={null}
 {
   "results": [
     …
@@ -2172,7 +2193,7 @@ This guide teaches you how to configure a single webhook via instance options to
 
 Restart your Meilisearch instance and provide the webhook URL to `--task-webhook-URL`:
 
-```sh  theme={null}
+```sh theme={null}
 meilisearch --task-webhook-url http://localhost:8000
 ```
 
@@ -2182,7 +2203,7 @@ You may also define the webhook URL with environment variables or in the configu
 
 Depending on your setup, you may need to provide an authorization header. Provide it to `task-webhook-authorization-header`:
 
-```sh  theme={null}
+```sh theme={null}
 meilisearch --task-webhook-url http://localhost:8000 --task-webhook-authorization-header Bearer aSampleMasterKey
 ```
 
@@ -2190,7 +2211,7 @@ meilisearch --task-webhook-url http://localhost:8000 --task-webhook-authorizatio
 
 A common asynchronous operation is adding or updating documents to an index. The following example adds a test document to our `books` index:
 
-```sh  theme={null}
+```sh theme={null}
 curl \
   -X POST 'MEILISEARCH_URL/indexes/books/documents' \
   -H 'Content-Type: application/json' \
@@ -2205,13 +2226,13 @@ curl \
 
 When Meilisearch finishes indexing this document, it will send a `POST` request the URL you configured with `--task-webhook-url`. The request body will be one or more task objects in [ndjson](https://github.com/ndjson/ndjson-spec) format:
 
-```ndjson  theme={null}
+```ndjson theme={null}
 {"uid":4,"indexUid":"books","status":"succeeded","type":"documentAdditionOrUpdate","canceledBy":null,"details.receivedDocuments":1,"details.indexedDocuments":1,"duration":"PT0.001192S","enqueuedAt":"2022-08-04T12:28:15.159167Z","startedAt":"2022-08-04T12:28:15.161996Z","finishedAt":"2022-08-04T12:28:15.163188Z"}
 ```
 
 If Meilisearch has batched multiple tasks, it will only trigger the webhook once all tasks in a batch are finished. In this case, the response payload will include all tasks, each separated by a new line:
 
-```ndjson  theme={null}
+```ndjson theme={null}
 {"uid":4,"indexUid":"books","status":"succeeded","type":"documentAdditionOrUpdate","canceledBy":null,"details.receivedDocuments":1,"details.indexedDocuments":1,"duration":"PT0.001192S","enqueuedAt":"2022-08-04T12:28:15.159167Z","startedAt":"2022-08-04T12:28:15.161996Z","finishedAt":"2022-08-04T12:28:15.163188Z"}
 {"uid":5,"indexUid":"books","status":"succeeded","type":"documentAdditionOrUpdate","canceledBy":null,"details.receivedDocuments":1,"details.indexedDocuments":1,"duration":"PT0.001192S","enqueuedAt":"2022-08-04T12:28:15.159167Z","startedAt":"2022-08-04T12:28:15.161996Z","finishedAt":"2022-08-04T12:28:15.163188Z"}
 {"uid":6,"indexUid":"books","status":"succeeded","type":"documentAdditionOrUpdate","canceledBy":null,"details.receivedDocuments":1,"details.indexedDocuments":1,"duration":"PT0.001192S","enqueuedAt":"2022-08-04T12:28:15.159167Z","startedAt":"2022-08-04T12:28:15.161996Z","finishedAt":"2022-08-04T12:28:15.163188Z"}
@@ -2366,7 +2387,7 @@ Start by creating an index, then add a large number of documents to this index:
 
 Instead of processing your request immediately, Meilisearch will add it to a queue and return a summarized task object:
 
-```json  theme={null}
+```json theme={null}
 {
   "taskUid": 0,
   "indexUid": "movies",
@@ -2390,11 +2411,11 @@ Meilisearch processes tasks in the order they were added to the queue. You can c
 
 Log into your [Meilisearch Cloud](https://meilisearch.com/cloud) account and navigate to your project. Click the "Tasks" link in the project menu:
 
-<img src="https://mintcdn.com/meilisearch-6b28dec2/AA65w-9bZrf-CgFA/assets/images/cloud-tasks-tutorial/01-tasks-menu.png?fit=max&auto=format&n=AA65w-9bZrf-CgFA&q=85&s=fa0c41118e73610ce8feb3d00d8edcf8" alt="Meilisearch Cloud menu with &#x22;Tasks&#x22; highlighted" data-og-width="741" width="741" data-og-height="88" height="88" data-path="assets/images/cloud-tasks-tutorial/01-tasks-menu.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/meilisearch-6b28dec2/AA65w-9bZrf-CgFA/assets/images/cloud-tasks-tutorial/01-tasks-menu.png?w=280&fit=max&auto=format&n=AA65w-9bZrf-CgFA&q=85&s=0a38c93989e60feac0d62e89734b6128 280w, https://mintcdn.com/meilisearch-6b28dec2/AA65w-9bZrf-CgFA/assets/images/cloud-tasks-tutorial/01-tasks-menu.png?w=560&fit=max&auto=format&n=AA65w-9bZrf-CgFA&q=85&s=2d00985f7331bdc753d6495420138f58 560w, https://mintcdn.com/meilisearch-6b28dec2/AA65w-9bZrf-CgFA/assets/images/cloud-tasks-tutorial/01-tasks-menu.png?w=840&fit=max&auto=format&n=AA65w-9bZrf-CgFA&q=85&s=2c1ae4d1199834325dc8a56de832440d 840w, https://mintcdn.com/meilisearch-6b28dec2/AA65w-9bZrf-CgFA/assets/images/cloud-tasks-tutorial/01-tasks-menu.png?w=1100&fit=max&auto=format&n=AA65w-9bZrf-CgFA&q=85&s=4a0ffa37afffd5ecafbc8f60fa1146c7 1100w, https://mintcdn.com/meilisearch-6b28dec2/AA65w-9bZrf-CgFA/assets/images/cloud-tasks-tutorial/01-tasks-menu.png?w=1650&fit=max&auto=format&n=AA65w-9bZrf-CgFA&q=85&s=118885dce2373e61e91a1ad7ec595d62 1650w, https://mintcdn.com/meilisearch-6b28dec2/AA65w-9bZrf-CgFA/assets/images/cloud-tasks-tutorial/01-tasks-menu.png?w=2500&fit=max&auto=format&n=AA65w-9bZrf-CgFA&q=85&s=2eace6f4f7d5d37704ecfe45692d3224 2500w" />
+<img alt="Meilisearch Cloud menu with &#x22;Tasks&#x22; highlighted" />
 
 This will lead you to the task overview, which shows a list of all batches enqueued, processing, and completed in your project:
 
-<img src="https://mintcdn.com/meilisearch-6b28dec2/yVi-_6x9VC7WidLt/assets/images/cloud-tasks-tutorial/02-tasks-table.png?fit=max&auto=format&n=yVi-_6x9VC7WidLt&q=85&s=4b96002c50b30ceeb710b86c5a149794" alt="A table listing multiple Meilisearch Cloud tasks" data-og-width="1313" width="1313" data-og-height="747" height="747" data-path="assets/images/cloud-tasks-tutorial/02-tasks-table.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/meilisearch-6b28dec2/yVi-_6x9VC7WidLt/assets/images/cloud-tasks-tutorial/02-tasks-table.png?w=280&fit=max&auto=format&n=yVi-_6x9VC7WidLt&q=85&s=9f4c1d7f7c4482d4d62d5955d5bf394b 280w, https://mintcdn.com/meilisearch-6b28dec2/yVi-_6x9VC7WidLt/assets/images/cloud-tasks-tutorial/02-tasks-table.png?w=560&fit=max&auto=format&n=yVi-_6x9VC7WidLt&q=85&s=a0317c808bb3dc53a49284f4cceecbaf 560w, https://mintcdn.com/meilisearch-6b28dec2/yVi-_6x9VC7WidLt/assets/images/cloud-tasks-tutorial/02-tasks-table.png?w=840&fit=max&auto=format&n=yVi-_6x9VC7WidLt&q=85&s=20d394bacdf790642a45ca9e9dc6d274 840w, https://mintcdn.com/meilisearch-6b28dec2/yVi-_6x9VC7WidLt/assets/images/cloud-tasks-tutorial/02-tasks-table.png?w=1100&fit=max&auto=format&n=yVi-_6x9VC7WidLt&q=85&s=6123f23d384895eba29177d3f21e55bc 1100w, https://mintcdn.com/meilisearch-6b28dec2/yVi-_6x9VC7WidLt/assets/images/cloud-tasks-tutorial/02-tasks-table.png?w=1650&fit=max&auto=format&n=yVi-_6x9VC7WidLt&q=85&s=eec878d617e53f7603b83dd663a1c80f 1650w, https://mintcdn.com/meilisearch-6b28dec2/yVi-_6x9VC7WidLt/assets/images/cloud-tasks-tutorial/02-tasks-table.png?w=2500&fit=max&auto=format&n=yVi-_6x9VC7WidLt&q=85&s=8e3da5ba46723c40d935c7f822f1b673 2500w" />
+<img alt="A table listing multiple Meilisearch Cloud tasks" />
 
 All Meilisearch tasks are processed in batches. When the batch containing your task changes its `status` to `succeeded`, Meilisearch has finished processing your request.
 
@@ -2464,7 +2485,7 @@ Use the `taskUid` from your request's response to check the status of a task:
 
 This will return the full task object:
 
-```json  theme={null}
+```json theme={null}
 {
   "uid": 4,
   "indexUid" :"movie",
@@ -2503,7 +2524,7 @@ When creating your conversational search agent, you may be able to extend the mo
 <Note>
   This is an experimental feature. Use the Meilisearch Cloud UI or the experimental features endpoint to activate it:
 
-  ```sh  theme={null}
+  ```sh theme={null}
   curl \
     -X PATCH 'MEILISEARCH_URL/experimental-features/' \
     -H 'Content-Type: application/json' \
@@ -2540,7 +2561,7 @@ This tool reports real-time progress of internal search operations. When declare
 
 **Example Response**:
 
-```json  theme={null}
+```json theme={null}
 {
   "function": {
     "name": "_meiliSearchProgress",
@@ -2564,7 +2585,7 @@ Since the `/chats/{workspace}/chat/completions` endpoint is stateless, this tool
 
 **Example Response**:
 
-```json  theme={null}
+```json theme={null}
 {
   "function": {
     "name": "_meiliAppendConversationMessage",
@@ -2586,7 +2607,7 @@ This tool provides the source documents that were used by the LLM to generate re
 
 **Example Response**:
 
-```json  theme={null}
+```json theme={null}
 {
   "function": {
     "name": "_meiliSearchSources",
@@ -2600,7 +2621,7 @@ This tool provides the source documents that were used by the LLM to generate re
 Include these tools in your request's `tools` array to enable enhanced functionality:
 
 <CodeGroup>
-  ```json  theme={null}
+  ```json theme={null}
   {
     …
     "tools": [
@@ -2782,9 +2803,9 @@ Follow the [dedicated MCP guide](/guides/ai/mcp) if you want to implement it in 
 # Getting started with conversational search
 Source: https://www.meilisearch.com/docs/learn/chat/getting_started_with_chat
 
-Learn how to implement AI-powered conversational search in your application
+This article walks you through implementing Meilisearch's chat completions feature to create conversational search experiences in your application.
 
-This guide walks you through implementing Meilisearch's chat completions feature to create conversational search experiences in your application.
+To successfully implement a conversational search interface you must follow three steps: configure indexes for chat usage, create a chat workspaces, and build a chat interface.
 
 ## Prerequisites
 
@@ -2794,13 +2815,15 @@ Before starting, ensure you have:
 * An API key from an LLM provider
 * At least one index with searchable content
 
-## Enable the chat completions feature
+## Setup
+
+### Enable the chat completions feature
 
 First, enable the chat completions experimental feature:
 
-```bash
+```bash theme={null}
 curl \
-  -X PATCH 'http://localhost:7700/experimental-features/' \
+  -X PATCH 'MEILISEARCH_URL/experimental-features/' \
   -H 'Authorization: Bearer MEILISEARCH_KEY' \
   -H 'Content-Type: application/json' \
   --data-binary '{
@@ -2808,24 +2831,28 @@ curl \
   }'
 ```
 
-## Find your chat API key
+<Warning>
+  Conversational search is still in early development. Conversational agents may occasionally hallucinate inaccurate and misleading information, so it is important to closely monitor it in production environments.
+</Warning>
+
+### Find your chat API key
 
 When Meilisearch runs with a master key on an instance created after v1.15.1, it automatically generates a "Default Chat API Key" with `chatCompletions` and `search` permissions on all indexes. Check if you have the key using:
 
-```bash
-curl http://localhost:7700/keys \
+```bash theme={null}
+curl MEILISEARCH_URL/keys \
   -H "Authorization: Bearer MEILISEARCH_KEY"
 ```
 
-Look for the key with the description "Default Chat API Key" Use this key when querying the `/chats` endpoint.
+Look for the key with the description "Default Chat API Key".
 
-### Troubleshooting: Missing default chat API key
+#### Troubleshooting: Missing default chat API key
 
 If your instance does not have a Default Chat API Key, create one manually:
 
-```bash
+```bash theme={null}
 curl \
-  -X POST 'http://localhost:7700/keys' \
+  -X POST 'MEILISEARCH_URL/keys' \
   -H 'Authorization: Bearer MEILISEARCH_KEY' \
   -H 'Content-Type: application/json' \
   --data-binary '{
@@ -2837,100 +2864,107 @@ curl \
   }'
 ```
 
-## Configure your indexes for chat
+## Configure your indexes
 
-Each index that you want to be searchable through chat needs specific configuration:
+After activating the `/chats` route and obtaining an API key with chat permissions, configure the `chat` settings for each index you want to be searchable via chat UI:
 
-```bash
+```bash theme={null}
 curl \
-  -X PATCH 'http://localhost:7700/indexes/movies/settings' \
+  -X PATCH 'MEILISEARCH_URL/indexes/INDEX_NAME/settings' \
   -H 'Authorization: Bearer MEILISEARCH_KEY' \
   -H 'Content-Type: application/json' \
   --data-binary '{
     "chat": {
-      "description": "A comprehensive movie database containing titles, descriptions, genres, and release dates to help users find movies",
+      "description": "A comprehensive database of TYPE_OF_DOCUMENT containing titles, descriptions, genres, and release dates to help users searching for TYPE_OF_DOCUMENT",
       "documentTemplate": "{% for field in fields %}{% if field.is_searchable and field.value != nil %}{{ field.name }}: {{ field.value }}\n{% endif %}{% endfor %}",
-      "documentTemplateMaxBytes": 400,
-      "searchParameters": {}
+      "documentTemplateMaxBytes": 400
     }
   }'
 ```
 
-<Note>
-  The `description` field helps the LLM understand what data is in the index, improving search relevance.
-</Note>
+* `description` gives the initial context of the conversation to the LLM. A good description improves relevance of the chat's answers
+* `documentTemplate` defines the document data Meilisearch sends to the AI provider. This template outputs all searchable fields in your documents, which may not be ideal if your documents have many fields. Consult the best [document template best practices](/learn/ai_powered_search/document_template_best_practices) article for more guidance
+* `documentTemplateMaxBytes` establishes a size limit for the document templates. Documents bigger than 400 bytes are truncated to ensure a good balance between speed and relevancy
 
 ## Configure a chat completions workspace
 
-Create a workspace with your LLM provider settings. Here are examples for different providers:
+The next step is to create a workspace. Chat completion workspaces are isolated configurations targeting different use cases. Each workspace can:
+
+* Use different embedding providers (OpenAI, Azure OpenAI, Mistral, Gemini, vLLM)
+* Establish separate conversation contexts via baseline prompts
+* Access a specific set of indexes
+
+For example, you may have one workspace for publicly visible data, and another for data only available for logged in users.
+
+Create a workspace setting your LLM provider as its `source`:
 
 <CodeGroup>
-  ```bash openAi
+  ```bash OpenAI theme={null}
   curl \
-    -X PATCH 'http://localhost:7700/chats/my-assistant/settings' \
+    -X PATCH 'MEILISEARCH_URL/chats/WORKSPACE_NAME/settings' \
     -H 'Authorization: Bearer MEILISEARCH_KEY' \
     -H 'Content-Type: application/json' \
     --data-binary '{
       "source": "openAi",
-      "apiKey": "sk-abc...",
-      "baseUrl": "https://api.openai.com/v1",
+      "apiKey": "PROVIDER_API_KEY",
+      "baseUrl": "PROVIDER_API_URL",
       "prompts": {
         "system": "You are a helpful assistant. Answer questions based only on the provided context."
       }
     }'
   ```
 
-  ```bash azureOpenAi
+  ```bash Azure OpenAI theme={null}
   curl \
-    -X PATCH 'http://localhost:7700/chats/my-assistant/settings' \
+    -X PATCH 'MEILISEARCH_URL/chats/WORKSPACE_NAME/settings' \
     -H 'Authorization: Bearer MEILISEARCH_KEY' \
     -H 'Content-Type: application/json' \
     --data-binary '{
       "source": "azureOpenAi",
-      "apiKey": "your-azure-key",
-      "baseUrl": "https://your-resource.openai.azure.com",
+      "apiKey": "PROVIDER_API_KEY",
+      "baseUrl": "PROVIDER_API_URL",
       "prompts": {
         "system": "You are a helpful assistant. Answer questions based only on the provided context."
       }
     }'
   ```
 
-  ```bash mistral
+  ```bash Mistral theme={null}
   curl \
-    -X PATCH 'http://localhost:7700/chats/my-assistant/settings' \
+    -X PATCH 'MEILISEARCH_URL/chats/WORKSPACE_NAME/settings' \
     -H 'Authorization: Bearer MEILISEARCH_KEY' \
     -H 'Content-Type: application/json' \
     --data-binary '{
       "source": "mistral",
-      "apiKey": "your-mistral-key",
+      "apiKey": "PROVIDER_API_KEY",
       "prompts": {
         "system": "You are a helpful assistant. Answer questions based only on the provided context."
       }
     }'
   ```
 
-  ```bash gemini
+  ```bash Gemini theme={null}
   curl \
-    -X PATCH 'http://localhost:7700/chats/my-assistant/settings' \
+    -X PATCH 'MEILISEARCH_URL/chats/WORKSPACE_NAME/settings' \
     -H 'Authorization: Bearer MEILISEARCH_KEY' \
     -H 'Content-Type: application/json' \
     --data-binary '{
       "source": "gemini",
-      "apiKey": "your-gemini-key",
+      "apiKey": "PROVIDER_API_KEY",
       "prompts": {
         "system": "You are a helpful assistant. Answer questions based only on the provided context."
       }
     }'
   ```
 
-  ```bash vLlm
+  ```bash vLLM theme={null}
   curl \
-    -X PATCH 'http://localhost:7700/chats/my-assistant/settings' \
+    -X PATCH 'MEILISEARCH_URL/chats/WORKSPACE_NAME/settings' \
     -H 'Authorization: Bearer MEILISEARCH_KEY' \
     -H 'Content-Type: application/json' \
     --data-binary '{
       "source": "vLlm",
-      "baseUrl": "http://localhost:8000",
+      "baseUrl": "PROVIDER_API_URL",
       "prompts": {
         "system": "You are a helpful assistant. Answer questions based only on the provided context."
       }
@@ -2938,24 +2972,29 @@ Create a workspace with your LLM provider settings. Here are examples for differ
   ```
 </CodeGroup>
 
+Which fields are mandatory will depend on your chosen provider `source`. In most cases, you will have to provide an `apiKey` to access the provider.
+
+`baseUrl` indicates the URL Meilisearch queries when users submit questions to your chat interface. This is only mandatory for Azure OpenAI and vLLM sources.
+
+`prompts.system` gives the conversational search bot the baseline context of your users and their questions. [The `prompts` object accepts a few other fields](/reference/api/chats#prompts) that provide more information to improve how the agent uses the information it finds via Meilisearch. In real-life scenarios filling these fields would improve the quality of conversational search results.
+
 ## Send your first chat completions request
 
-Now you can start a conversation. Note the `-N` flag for handling streaming responses:
+You have finished configuring your conversational search agent. To test everything is working as expected, send a streaming `curl` query to the chat completions API route:
 
-```bash
+```bash theme={null}
 curl -N \
-  -X POST 'http://localhost:7700/chats/my-assistant/chat/completions' \
-  -H 'Authorization: Bearer <chat-api-key>' \
+  -X POST 'MEILISEARCH_URL/chats/WORKSPACE_NAME/chat/completions' \
+  -H 'Authorization: Bearer MEILISEARCH_API_KEY' \
   -H 'Content-Type: application/json' \
   --data-binary '{
-    "model": "gpt-3.5-turbo",
+    "model": "PROVIDER_MODEL_UID",
     "messages": [
       {
         "role": "user",
-        "content": "What movies do you have about space exploration?"
+        "content": "USER_PROMPT"
       }
     ],
-    "stream": true,
     "tools": [
       {
         "type": "function",
@@ -2975,127 +3014,51 @@ curl -N \
   }'
 ```
 
-Take particular note of the `tools` array. These settings are optional, but greatly improve user experience:
+* `model` is mandatory and must indicate a model supported by your chosen `source`
+* `messages` contains the messages exchanged between the conversational search agent and the user
+* `tools` sets up two optional but highly [recommended tools](/learn/chat/chat_tooling_reference):
+  * `_meiliSearchProgress`: shows users what searches are being performed
+  * `_meiliSearchSources`: displays the actual documents used to generate responses
 
-* **`_meiliSearchProgress`**: shows users what searches are being performed
-* **`_meiliSearchSources`**: displays the actual documents used to generate responses
+If Meilisearch returns a stream of data containing the chat agent response, you have correctly configured Meilisearch for conversational search:
 
-## Build a chat interface using the OpenAI SDK
+```sh theme={null}
+data: {"id":"chatcmpl-123","object":"chat.completion.chunk","created":1677652288,"model":"gpt-3.5-turbo","choices":[{"index":0,"delta":{"content":"Meilisearch"},"finish_reason":null}]}
+```
 
-Since Meilisearch's chat endpoint is OpenAI-compatible, you can use the official OpenAI SDK:
+If Meilisearch returns an error, consult the [troubleshooting section](#troubleshooting) to understand diagnose and fix the issues you encountered.
 
-<CodeGroup>
-  ```javascript JavaScript
-  import OpenAI from 'openai';
+## Next steps
 
-  const client = new OpenAI({
-    baseURL: 'http://localhost:7700/chats/my-assistant',
-    apiKey: 'YOUR_CHAT_API_KEY',
-  });
+In this article, you have seen how to activate the chats completion route, prepare your indexes to serve as a base for your AI agent, and performed your first conversational search.
 
-  const completion = await client.chat.completions.create({
-    model: 'gpt-3.5-turbo',
-    messages: [{ role: 'user', content: 'What is Meilisearch?' }],
-    stream: true,
-  });
+In most cases, that is only the beginning of adding conversational search to your application. Next, you are most likely going to want to add a graphical user interface to your application.
 
-  for await (const chunk of completion) {
-    console.log(chunk.choices[0]?.delta?.content || '');
-  }
-  ```
+### Building a chat interface using the OpenAI SDK
 
-  ```python Python
-  from openai import OpenAI
+Meilisearch's chat endpoint was designed to be OpenAI-compatible. This means you can use the official OpenAI SDK in any supported programming language, even if your provider is not OpenAI.
 
-  client = OpenAI(
-      base_url="http://localhost:7700/chats/my-assistant",
-      api_key="YOUR_CHAT_API_KEY"
-  )
+Integrating Meilisearch and the OpenAI SDK with JavaScript would look like this:
 
-  stream = client.chat.completions.create(
-      model="gpt-3.5-turbo",
-      messages=[{"role": "user", "content": "What is Meilisearch?"}],
-      stream=True,
-  )
+```javascript JavaScript theme={null}
+import OpenAI from 'openai';
 
-  for chunk in stream:
-      if chunk.choices[0].delta.content is not None:
-          print(chunk.choices[0].delta.content, end="")
-  ```
+const client = new OpenAI({
+  baseURL: 'MEILISEARCH_URL/chats/WORKSPACE_NAME',
+  apiKey: 'PROVIDER_API_KEY',
+});
 
-  ```typescript TypeScript
-  import OpenAI from 'openai';
+const completion = await client.chat.completions.create({
+  model: 'PROVIDER_MODEL_UID',
+  messages: [{ role: 'user', content: 'USER_PROMPT' }]
+});
 
-  const client = new OpenAI({
-    baseURL: 'http://localhost:7700/chats/my-assistant',
-    apiKey: 'YOUR_CHAT_API_KEY',
-  });
+for await (const chunk of completion) {
+  console.log(chunk.choices[0]?.delta?.content || '');
+}
+```
 
-  const stream = await client.chat.completions.create({
-    model: 'gpt-3.5-turbo',
-    messages: [{ role: 'user', content: 'What is Meilisearch?' }],
-    stream: true,
-  });
-
-  for await (const chunk of stream) {
-    const content = chunk.choices[0]?.delta?.content || '';
-    process.stdout.write(content);
-  }
-  ```
-</CodeGroup>
-
-### Error handling
-
-When using the OpenAI SDK with Meilisearch's chat completions endpoint, errors from the streamed responses are natively handled by OpenAI. This means you can use the SDK's built-in error handling mechanisms without additional configuration:
-
-<CodeGroup>
-  ```javascript JavaScript
-  import OpenAI from 'openai';
-
-  const client = new OpenAI({
-    baseURL: 'http://localhost:7700/chats/my-assistant',
-    apiKey: 'MEILISEARCH_KEY',
-  });
-
-  try {
-    const stream = await client.chat.completions.create({
-      model: 'gpt-3.5-turbo',
-      messages: [{ role: 'user', content: 'What is Meilisearch?' }],
-      stream: true,
-    });
-
-    for await (const chunk of stream) {
-      console.log(chunk.choices[0]?.delta?.content || '');
-    }
-  } catch (error) {
-    // OpenAI SDK automatically handles streaming errors
-    console.error('Chat completion error:', error);
-  }
-  ```
-
-  ```python Python
-  from openai import OpenAI
-
-  client = OpenAI(
-      base_url="http://localhost:7700/chats/my-assistant",
-      api_key="MEILISEARCH_KEY"
-  )
-
-  try:
-      stream = client.chat.completions.create(
-          model="gpt-3.5-turbo",
-          messages=[{"role": "user", "content": "What is Meilisearch?"}],
-          stream=True,
-      )
-
-      for chunk in stream:
-          if chunk.choices[0].delta.content is not None:
-              print(chunk.choices[0].delta.content, end="")
-  except Exception as error:
-      # OpenAI SDK automatically handles streaming errors
-      print(f"Chat completion error: {error}")
-  ```
-</CodeGroup>
+Take particular note of the last lines, which output the streamed responses to the browser console. In a real-life application, you would instead print the response chunks to the user interface.
 
 ## Troubleshooting
 
@@ -3123,7 +3086,7 @@ When using the OpenAI SDK with Meilisearch's chat completions endpoint, errors f
 
 * Use either the master key or the "Default Chat API Key"
 * Don't use search or admin API keys for chat endpoints
-* Find your chat key: `curl http://localhost:7700/keys -H "Authorization: Bearer MEILISEARCH_KEY"`
+* Find your chat key: `curl MEILISEARCH_URL/keys -H "Authorization: Bearer MEILISEARCH_KEY"`
 
 #### "Socket connection closed unexpectedly"
 
@@ -3133,15 +3096,15 @@ When using the OpenAI SDK with Meilisearch's chat completions endpoint, errors f
 
 1. Check workspace configuration:
 
-   ```bash
-   curl http://localhost:7700/chats/my-assistant/settings \
+   ```bash theme={null}
+   curl MEILISEARCH_URL/chats/WORKSPACE_NAME/settings \
      -H "Authorization: Bearer MEILISEARCH_KEY"
    ```
 
 2. Update with valid API key:
 
-   ```bash
-   curl -X PATCH http://localhost:7700/chats/my-assistant/settings \
+   ```bash theme={null}
+   curl -X PATCH MEILISEARCH_URL/chats/WORKSPACE_NAME/settings \
      -H "Authorization: Bearer MEILISEARCH_KEY" \
      -H "Content-Type: application/json" \
      -d '{"apiKey": "your-valid-api-key"}'
@@ -3155,21 +3118,6 @@ When using the OpenAI SDK with Meilisearch's chat completions endpoint, errors f
 
 * Include `_meiliSearchProgress` and `_meiliSearchSources` tools in your request
 * Ensure indexes have proper chat descriptions configured
-
-#### "stream: false is not supported" error
-
-**Cause:** Trying to use non-streaming responses
-
-**Solution:**
-
-* Always set `"stream": true` in your requests
-* Non-streaming responses are not yet supported
-
-## Next steps
-
-* Explore [advanced chat API features](/reference/api/chats)
-* Learn about [conversational search concepts](/learn/chat/conversational_search)
-* Review [security best practices](/learn/security/basic_security)
 
 
 # Configuring index settings
@@ -3189,13 +3137,13 @@ This tutorial will show you how to check and change an index setting using the [
 Log into your Meilisearch account and navigate to your project. Then, click on "Indexes":
 
 <Frame>
-  <img src="https://mintcdn.com/meilisearch-6b28dec2/AA65w-9bZrf-CgFA/assets/images/cloud-index-settings/01-indexes-tab.png?fit=max&auto=format&n=AA65w-9bZrf-CgFA&q=85&s=6ae40f9c533145ff029b2f8a2cd7cfb0" alt="The main menu of the project view in the Meilisearch Cloud interface. Menu items include 'Indexes' among other options such as 'Settings' and 'Analytics'." data-og-width="1434" width="1434" data-og-height="270" height="270" data-path="assets/images/cloud-index-settings/01-indexes-tab.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/meilisearch-6b28dec2/AA65w-9bZrf-CgFA/assets/images/cloud-index-settings/01-indexes-tab.png?w=280&fit=max&auto=format&n=AA65w-9bZrf-CgFA&q=85&s=d99b137cd3d6d72ed587b512076b6bd3 280w, https://mintcdn.com/meilisearch-6b28dec2/AA65w-9bZrf-CgFA/assets/images/cloud-index-settings/01-indexes-tab.png?w=560&fit=max&auto=format&n=AA65w-9bZrf-CgFA&q=85&s=2c35a7b9b100d0e27b7b1334a8bf0125 560w, https://mintcdn.com/meilisearch-6b28dec2/AA65w-9bZrf-CgFA/assets/images/cloud-index-settings/01-indexes-tab.png?w=840&fit=max&auto=format&n=AA65w-9bZrf-CgFA&q=85&s=b73106336ba925511de8e692e612db24 840w, https://mintcdn.com/meilisearch-6b28dec2/AA65w-9bZrf-CgFA/assets/images/cloud-index-settings/01-indexes-tab.png?w=1100&fit=max&auto=format&n=AA65w-9bZrf-CgFA&q=85&s=b8021d59d58a2c0af1d1b7c8d76e154a 1100w, https://mintcdn.com/meilisearch-6b28dec2/AA65w-9bZrf-CgFA/assets/images/cloud-index-settings/01-indexes-tab.png?w=1650&fit=max&auto=format&n=AA65w-9bZrf-CgFA&q=85&s=1095b8dceaf9fbfdb823c3914f19fd83 1650w, https://mintcdn.com/meilisearch-6b28dec2/AA65w-9bZrf-CgFA/assets/images/cloud-index-settings/01-indexes-tab.png?w=2500&fit=max&auto=format&n=AA65w-9bZrf-CgFA&q=85&s=2929903f16a68dd0bb2c01bcddd49b07 2500w" />
+  <img alt="The main menu of the project view in the Meilisearch Cloud interface. Menu items include 'Indexes' among other options such as 'Settings' and 'Analytics'." />
 </Frame>
 
 Find the index you want to configure and click on its "Settings" button:
 
 <Frame>
-  <img src="https://mintcdn.com/meilisearch-6b28dec2/AA65w-9bZrf-CgFA/assets/images/cloud-index-settings/02-index-settings.png?fit=max&auto=format&n=AA65w-9bZrf-CgFA&q=85&s=13cc6499c1ddfb31b15c6c0f3d853dcf" alt="A list of indexes in a Meilisearch Cloud project. It shows an index named 'books' along with a few icons and buttons. One of these buttons is 'Settings.'" data-og-width="2508" width="2508" data-og-height="270" height="270" data-path="assets/images/cloud-index-settings/02-index-settings.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/meilisearch-6b28dec2/AA65w-9bZrf-CgFA/assets/images/cloud-index-settings/02-index-settings.png?w=280&fit=max&auto=format&n=AA65w-9bZrf-CgFA&q=85&s=d6cea96fd4ecf73d0e63efc934e8ca25 280w, https://mintcdn.com/meilisearch-6b28dec2/AA65w-9bZrf-CgFA/assets/images/cloud-index-settings/02-index-settings.png?w=560&fit=max&auto=format&n=AA65w-9bZrf-CgFA&q=85&s=9cd524671ded8fd86c7485ca27334ae7 560w, https://mintcdn.com/meilisearch-6b28dec2/AA65w-9bZrf-CgFA/assets/images/cloud-index-settings/02-index-settings.png?w=840&fit=max&auto=format&n=AA65w-9bZrf-CgFA&q=85&s=4fb23ef8f02af16185825e444977685c 840w, https://mintcdn.com/meilisearch-6b28dec2/AA65w-9bZrf-CgFA/assets/images/cloud-index-settings/02-index-settings.png?w=1100&fit=max&auto=format&n=AA65w-9bZrf-CgFA&q=85&s=785fffbc32fd80c31a4440fa4c06fa28 1100w, https://mintcdn.com/meilisearch-6b28dec2/AA65w-9bZrf-CgFA/assets/images/cloud-index-settings/02-index-settings.png?w=1650&fit=max&auto=format&n=AA65w-9bZrf-CgFA&q=85&s=7854a71660b06e8b9091b86cd473f76b 1650w, https://mintcdn.com/meilisearch-6b28dec2/AA65w-9bZrf-CgFA/assets/images/cloud-index-settings/02-index-settings.png?w=2500&fit=max&auto=format&n=AA65w-9bZrf-CgFA&q=85&s=8f77ca51a3ba40bb7b27e5493cb7e15a 2500w" />
+  <img alt="A list of indexes in a Meilisearch Cloud project. It shows an index named 'books' along with a few icons and buttons. One of these buttons is 'Settings.'" />
 </Frame>
 
 ## Checking a setting's current value
@@ -3203,13 +3151,13 @@ Find the index you want to configure and click on its "Settings" button:
 Using the menu on the left-hand side, click on "Attributes":
 
 <Frame>
-  <img src="https://mintcdn.com/meilisearch-6b28dec2/AA65w-9bZrf-CgFA/assets/images/cloud-index-settings/03-general-settings.png?fit=max&auto=format&n=AA65w-9bZrf-CgFA&q=85&s=1a8384b3ae83b73a1e2dc237ec64b88d" alt="The index configuration overview together with a menu with links to pages dedicated to various index settings." data-og-width="2698" width="2698" data-og-height="1162" height="1162" data-path="assets/images/cloud-index-settings/03-general-settings.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/meilisearch-6b28dec2/AA65w-9bZrf-CgFA/assets/images/cloud-index-settings/03-general-settings.png?w=280&fit=max&auto=format&n=AA65w-9bZrf-CgFA&q=85&s=5f1cb3f7a068dc6425f490903b593d47 280w, https://mintcdn.com/meilisearch-6b28dec2/AA65w-9bZrf-CgFA/assets/images/cloud-index-settings/03-general-settings.png?w=560&fit=max&auto=format&n=AA65w-9bZrf-CgFA&q=85&s=db552fb16e408879b8a6ccb9274c2bdc 560w, https://mintcdn.com/meilisearch-6b28dec2/AA65w-9bZrf-CgFA/assets/images/cloud-index-settings/03-general-settings.png?w=840&fit=max&auto=format&n=AA65w-9bZrf-CgFA&q=85&s=2cd54cfaa7b987791bdde8d7d71a32d3 840w, https://mintcdn.com/meilisearch-6b28dec2/AA65w-9bZrf-CgFA/assets/images/cloud-index-settings/03-general-settings.png?w=1100&fit=max&auto=format&n=AA65w-9bZrf-CgFA&q=85&s=2206ff9b629661ffd5099f9c71c93af6 1100w, https://mintcdn.com/meilisearch-6b28dec2/AA65w-9bZrf-CgFA/assets/images/cloud-index-settings/03-general-settings.png?w=1650&fit=max&auto=format&n=AA65w-9bZrf-CgFA&q=85&s=9d09df33614b9488c57003df5d97d8e8 1650w, https://mintcdn.com/meilisearch-6b28dec2/AA65w-9bZrf-CgFA/assets/images/cloud-index-settings/03-general-settings.png?w=2500&fit=max&auto=format&n=AA65w-9bZrf-CgFA&q=85&s=757fdf41bda5e042ba414c72553b4142 2500w" />
+  <img alt="The index configuration overview together with a menu with links to pages dedicated to various index settings." />
 </Frame>
 
 The first setting is "Searchable attributes" and lists all attributes in your dataset's documents:
 
 <Frame>
-  <img src="https://mintcdn.com/meilisearch-6b28dec2/AA65w-9bZrf-CgFA/assets/images/cloud-index-settings/04-searchable-attributes-default.png?fit=max&auto=format&n=AA65w-9bZrf-CgFA&q=85&s=c816186b8272133994f1f84a73dfb131" alt="The 'Searchable attributes' configuration section showing six attributes. One of them, 'id' is this index's primary key." data-og-width="2052" width="2052" data-og-height="1058" height="1058" data-path="assets/images/cloud-index-settings/04-searchable-attributes-default.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/meilisearch-6b28dec2/AA65w-9bZrf-CgFA/assets/images/cloud-index-settings/04-searchable-attributes-default.png?w=280&fit=max&auto=format&n=AA65w-9bZrf-CgFA&q=85&s=8de5b2eef4135099c837c46783111aab 280w, https://mintcdn.com/meilisearch-6b28dec2/AA65w-9bZrf-CgFA/assets/images/cloud-index-settings/04-searchable-attributes-default.png?w=560&fit=max&auto=format&n=AA65w-9bZrf-CgFA&q=85&s=f892a5fd5022d804dd8eb1d6d502b2ab 560w, https://mintcdn.com/meilisearch-6b28dec2/AA65w-9bZrf-CgFA/assets/images/cloud-index-settings/04-searchable-attributes-default.png?w=840&fit=max&auto=format&n=AA65w-9bZrf-CgFA&q=85&s=28008994ba43c92defaa90a4931ef0bf 840w, https://mintcdn.com/meilisearch-6b28dec2/AA65w-9bZrf-CgFA/assets/images/cloud-index-settings/04-searchable-attributes-default.png?w=1100&fit=max&auto=format&n=AA65w-9bZrf-CgFA&q=85&s=755cd081ae37952a6b5b625cb89ad35b 1100w, https://mintcdn.com/meilisearch-6b28dec2/AA65w-9bZrf-CgFA/assets/images/cloud-index-settings/04-searchable-attributes-default.png?w=1650&fit=max&auto=format&n=AA65w-9bZrf-CgFA&q=85&s=c238a7e0db3dcdd40d1a043debb5edf8 1650w, https://mintcdn.com/meilisearch-6b28dec2/AA65w-9bZrf-CgFA/assets/images/cloud-index-settings/04-searchable-attributes-default.png?w=2500&fit=max&auto=format&n=AA65w-9bZrf-CgFA&q=85&s=4f96a34d903247bff17ae8c6f4ec15a6 2500w" />
+  <img alt="The 'Searchable attributes' configuration section showing six attributes. One of them, 'id' is this index's primary key." />
 </Frame>
 
 Clicking on other settings will show you similar interfaces that allow visualizing and editing all Meilisearch index settings.
@@ -3221,13 +3169,13 @@ All documents include a primary key attribute. In most cases, this attribute doe
 Find your primary key, then click on the bin icon:
 
 <Frame>
-  <img src="https://mintcdn.com/meilisearch-6b28dec2/AA65w-9bZrf-CgFA/assets/images/cloud-index-settings/05-searchable-attributes-delete.png?fit=max&auto=format&n=AA65w-9bZrf-CgFA&q=85&s=36bb808b8d3cad725690a8887e326f4f" alt="The same 'Searchable attributes' list as before, with the bin-shaped 'delete' icon highlighted." data-og-width="2052" width="2052" data-og-height="1058" height="1058" data-path="assets/images/cloud-index-settings/05-searchable-attributes-delete.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/meilisearch-6b28dec2/AA65w-9bZrf-CgFA/assets/images/cloud-index-settings/05-searchable-attributes-delete.png?w=280&fit=max&auto=format&n=AA65w-9bZrf-CgFA&q=85&s=ca809b1eedb345c8d7ce9dde611799a5 280w, https://mintcdn.com/meilisearch-6b28dec2/AA65w-9bZrf-CgFA/assets/images/cloud-index-settings/05-searchable-attributes-delete.png?w=560&fit=max&auto=format&n=AA65w-9bZrf-CgFA&q=85&s=f27316775a8b6b3b9daf093217981676 560w, https://mintcdn.com/meilisearch-6b28dec2/AA65w-9bZrf-CgFA/assets/images/cloud-index-settings/05-searchable-attributes-delete.png?w=840&fit=max&auto=format&n=AA65w-9bZrf-CgFA&q=85&s=d5e2cb56580646abab2acfd2f8f8279d 840w, https://mintcdn.com/meilisearch-6b28dec2/AA65w-9bZrf-CgFA/assets/images/cloud-index-settings/05-searchable-attributes-delete.png?w=1100&fit=max&auto=format&n=AA65w-9bZrf-CgFA&q=85&s=3f85e9c388b16f51c4d79b56f99d125d 1100w, https://mintcdn.com/meilisearch-6b28dec2/AA65w-9bZrf-CgFA/assets/images/cloud-index-settings/05-searchable-attributes-delete.png?w=1650&fit=max&auto=format&n=AA65w-9bZrf-CgFA&q=85&s=f828e060fb015e7181a23f56337678d0 1650w, https://mintcdn.com/meilisearch-6b28dec2/AA65w-9bZrf-CgFA/assets/images/cloud-index-settings/05-searchable-attributes-delete.png?w=2500&fit=max&auto=format&n=AA65w-9bZrf-CgFA&q=85&s=fb2d9ef9b02831157fcf11d384548643 2500w" />
+  <img alt="The same 'Searchable attributes' list as before, with the bin-shaped 'delete' icon highlighted." />
 </Frame>
 
 Meilisearch will display a pop-up window asking you to confirm you want to remove the attribute from the searchable attributes list. Click on "Yes, remove attribute":
 
 <Frame>
-  <img src="https://mintcdn.com/meilisearch-6b28dec2/AA65w-9bZrf-CgFA/assets/images/cloud-index-settings/06-searchable-attributes-confirm-deletion.png?fit=max&auto=format&n=AA65w-9bZrf-CgFA&q=85&s=d06d98c407b8b46d77f30f4bc42f8570" alt="A pop-up window over the index settings interface. It reads: 'Are you sure you want to remove the attribute id?' Below it are two buttons: 'Cancel' and 'Yes, remove attribute'." data-og-width="2032" width="2032" data-og-height="1060" height="1060" data-path="assets/images/cloud-index-settings/06-searchable-attributes-confirm-deletion.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/meilisearch-6b28dec2/AA65w-9bZrf-CgFA/assets/images/cloud-index-settings/06-searchable-attributes-confirm-deletion.png?w=280&fit=max&auto=format&n=AA65w-9bZrf-CgFA&q=85&s=0b4e6395ea240e9b2111401401aac186 280w, https://mintcdn.com/meilisearch-6b28dec2/AA65w-9bZrf-CgFA/assets/images/cloud-index-settings/06-searchable-attributes-confirm-deletion.png?w=560&fit=max&auto=format&n=AA65w-9bZrf-CgFA&q=85&s=d0f526a22e308d717f961f8f45a022f7 560w, https://mintcdn.com/meilisearch-6b28dec2/AA65w-9bZrf-CgFA/assets/images/cloud-index-settings/06-searchable-attributes-confirm-deletion.png?w=840&fit=max&auto=format&n=AA65w-9bZrf-CgFA&q=85&s=b6f85d7a35bef85bfc9a113ed2899939 840w, https://mintcdn.com/meilisearch-6b28dec2/AA65w-9bZrf-CgFA/assets/images/cloud-index-settings/06-searchable-attributes-confirm-deletion.png?w=1100&fit=max&auto=format&n=AA65w-9bZrf-CgFA&q=85&s=1f2fc5cc4d9c4231359ad99ab82bc6b9 1100w, https://mintcdn.com/meilisearch-6b28dec2/AA65w-9bZrf-CgFA/assets/images/cloud-index-settings/06-searchable-attributes-confirm-deletion.png?w=1650&fit=max&auto=format&n=AA65w-9bZrf-CgFA&q=85&s=54bb7517b9b1c8bb607005ce2933d891 1650w, https://mintcdn.com/meilisearch-6b28dec2/AA65w-9bZrf-CgFA/assets/images/cloud-index-settings/06-searchable-attributes-confirm-deletion.png?w=2500&fit=max&auto=format&n=AA65w-9bZrf-CgFA&q=85&s=dac3618e8302a3b8c76b8929729b01fa 2500w" />
+  <img alt="A pop-up window over the index settings interface. It reads: 'Are you sure you want to remove the attribute id?' Below it are two buttons: 'Cancel' and 'Yes, remove attribute'." />
 </Frame>
 
 Most updates to an index's settings will cause Meilisearch to re-index all its data. Wait a few moments until this operation is complete. You are not allowed to update any index settings during this time.
@@ -3235,13 +3183,13 @@ Most updates to an index's settings will cause Meilisearch to re-index all its d
 Once Meilisearch finishes indexing, the primary key will no longer appear in the searchable attributes list:
 
 <Frame>
-  <img src="https://mintcdn.com/meilisearch-6b28dec2/AA65w-9bZrf-CgFA/assets/images/cloud-index-settings/07-searchable-attributes-attribute-deleted.png?fit=max&auto=format&n=AA65w-9bZrf-CgFA&q=85&s=ae4fabdfeb593b825707ed7eb2ad3ed9" alt="The same 'Searchable attributes' list as before. It only contains five searchable attributes after removing the primary key." data-og-width="2038" width="2038" data-og-height="978" height="978" data-path="assets/images/cloud-index-settings/07-searchable-attributes-attribute-deleted.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/meilisearch-6b28dec2/AA65w-9bZrf-CgFA/assets/images/cloud-index-settings/07-searchable-attributes-attribute-deleted.png?w=280&fit=max&auto=format&n=AA65w-9bZrf-CgFA&q=85&s=5b1fcc6192fb3039380b99139121f98e 280w, https://mintcdn.com/meilisearch-6b28dec2/AA65w-9bZrf-CgFA/assets/images/cloud-index-settings/07-searchable-attributes-attribute-deleted.png?w=560&fit=max&auto=format&n=AA65w-9bZrf-CgFA&q=85&s=10a0eebd0f3c97cf8215c29eb67c5b3d 560w, https://mintcdn.com/meilisearch-6b28dec2/AA65w-9bZrf-CgFA/assets/images/cloud-index-settings/07-searchable-attributes-attribute-deleted.png?w=840&fit=max&auto=format&n=AA65w-9bZrf-CgFA&q=85&s=e2f18b36c65a05ee261beefe13764b6b 840w, https://mintcdn.com/meilisearch-6b28dec2/AA65w-9bZrf-CgFA/assets/images/cloud-index-settings/07-searchable-attributes-attribute-deleted.png?w=1100&fit=max&auto=format&n=AA65w-9bZrf-CgFA&q=85&s=e24e323063ca565cc61797dc04edfed0 1100w, https://mintcdn.com/meilisearch-6b28dec2/AA65w-9bZrf-CgFA/assets/images/cloud-index-settings/07-searchable-attributes-attribute-deleted.png?w=1650&fit=max&auto=format&n=AA65w-9bZrf-CgFA&q=85&s=351b45acf248bb54ecdf11029f678bf7 1650w, https://mintcdn.com/meilisearch-6b28dec2/AA65w-9bZrf-CgFA/assets/images/cloud-index-settings/07-searchable-attributes-attribute-deleted.png?w=2500&fit=max&auto=format&n=AA65w-9bZrf-CgFA&q=85&s=2bdfd91c01b6734e4817b53b71474b3d 2500w" />
+  <img alt="The same 'Searchable attributes' list as before. It only contains five searchable attributes after removing the primary key." />
 </Frame>
 
 If you deleted the wrong attribute, click on "Add attributes" to add it back to the list. You may also click on "Reset to default", which will bring back the searchable list to its original state when you first added your first document to this index:
 
 <Frame>
-  <img src="https://mintcdn.com/meilisearch-6b28dec2/AA65w-9bZrf-CgFA/assets/images/cloud-index-settings/08-searchable-attributes-reset.png?fit=max&auto=format&n=AA65w-9bZrf-CgFA&q=85&s=aa84826f368d2babc98364522fd7a46a" alt="The same 'Searchable attributes' list as before. Two buttons on its top-right corner are highlighted: 'Reset to default' and 'Add attributes'." data-og-width="2038" width="2038" data-og-height="978" height="978" data-path="assets/images/cloud-index-settings/08-searchable-attributes-reset.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/meilisearch-6b28dec2/AA65w-9bZrf-CgFA/assets/images/cloud-index-settings/08-searchable-attributes-reset.png?w=280&fit=max&auto=format&n=AA65w-9bZrf-CgFA&q=85&s=1c7bcdd5e643933ce9729861fe1d2f55 280w, https://mintcdn.com/meilisearch-6b28dec2/AA65w-9bZrf-CgFA/assets/images/cloud-index-settings/08-searchable-attributes-reset.png?w=560&fit=max&auto=format&n=AA65w-9bZrf-CgFA&q=85&s=1ef53952ca5ccd55af7d5c79cbc479e3 560w, https://mintcdn.com/meilisearch-6b28dec2/AA65w-9bZrf-CgFA/assets/images/cloud-index-settings/08-searchable-attributes-reset.png?w=840&fit=max&auto=format&n=AA65w-9bZrf-CgFA&q=85&s=3e0f44be697d33909f11497abd33d222 840w, https://mintcdn.com/meilisearch-6b28dec2/AA65w-9bZrf-CgFA/assets/images/cloud-index-settings/08-searchable-attributes-reset.png?w=1100&fit=max&auto=format&n=AA65w-9bZrf-CgFA&q=85&s=9665751500078c3abdce6a7542eb8a3b 1100w, https://mintcdn.com/meilisearch-6b28dec2/AA65w-9bZrf-CgFA/assets/images/cloud-index-settings/08-searchable-attributes-reset.png?w=1650&fit=max&auto=format&n=AA65w-9bZrf-CgFA&q=85&s=694bb7ceb73736117e805595ee16aecd 1650w, https://mintcdn.com/meilisearch-6b28dec2/AA65w-9bZrf-CgFA/assets/images/cloud-index-settings/08-searchable-attributes-reset.png?w=2500&fit=max&auto=format&n=AA65w-9bZrf-CgFA&q=85&s=94d89182ef21c83883d47b0a9bdeabad 2500w" />
+  <img alt="The same 'Searchable attributes' list as before. Two buttons on its top-right corner are highlighted: 'Reset to default' and 'Add attributes'." />
 </Frame>
 
 ## Conclusion
@@ -3295,7 +3243,7 @@ Depending on your setup, you might also need to replace `localhost:7700` with th
 
 You should receive a response immediately:
 
-```json  theme={null}
+```json theme={null}
 [
   "*"
 ]
@@ -3330,7 +3278,7 @@ Use the `PUT` endpoint of the `/settings/searchable-attributes` subroute, replac
 
 This time, Meilisearch will not process your request immediately. Instead, you will receive a summarized task object while the search engine works on updating your index setting as soon as it has enough resources:
 
-```json  theme={null}
+```json theme={null}
 {
   "taskUid": 1,
   "indexUid": "INDEX_NAME",
@@ -3355,7 +3303,7 @@ Processing the index setting change might take some time, depending on how many 
 
 Meilisearch will respond with a task object:
 
-```json  theme={null}
+```json theme={null}
 {
   "uid": 1,
   "indexUid": "INDEX_NAME",
@@ -3385,7 +3333,7 @@ If task `status` is `succeeded`, you successfully updated your index's searchabl
 
 Meilisearch should return an array with the new values:
 
-```json  theme={null}
+```json theme={null}
 [
   "title",
   "overview"
@@ -3417,7 +3365,7 @@ Creating a dump is also referred to as exporting it. Launching Meilisearch with 
 **You cannot manually export dumps in Meilisearch Cloud**. To [migrate your project to the most recent Meilisearch release](/learn/update_and_migration/updating), use the Cloud interface:
 
 <Frame>
-  <img src="https://mintcdn.com/meilisearch-6b28dec2/kYJO98Uevt3SrL1y/assets/images/cloud-dumps/01-export-dump.png?fit=max&auto=format&n=kYJO98Uevt3SrL1y&q=85&s=a7bf333c25efde3ce77440665a198ebe" alt="The General settings interface displaying various data fields relating to a Meilisearch Cloud project. One of them reads 'Meilisearch version'. Its value is 'v1.6.2'. Next to the value is a button 'Update to v1.7.0'" data-og-width="1304" width="1304" data-og-height="467" height="467" data-path="assets/images/cloud-dumps/01-export-dump.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/meilisearch-6b28dec2/kYJO98Uevt3SrL1y/assets/images/cloud-dumps/01-export-dump.png?w=280&fit=max&auto=format&n=kYJO98Uevt3SrL1y&q=85&s=fdae92e2bcb03a42f850c896ec3484c8 280w, https://mintcdn.com/meilisearch-6b28dec2/kYJO98Uevt3SrL1y/assets/images/cloud-dumps/01-export-dump.png?w=560&fit=max&auto=format&n=kYJO98Uevt3SrL1y&q=85&s=4ccd327c24282a4663c605dbe75a6e83 560w, https://mintcdn.com/meilisearch-6b28dec2/kYJO98Uevt3SrL1y/assets/images/cloud-dumps/01-export-dump.png?w=840&fit=max&auto=format&n=kYJO98Uevt3SrL1y&q=85&s=1b0d5d3e06ca1df7d8644d380557907b 840w, https://mintcdn.com/meilisearch-6b28dec2/kYJO98Uevt3SrL1y/assets/images/cloud-dumps/01-export-dump.png?w=1100&fit=max&auto=format&n=kYJO98Uevt3SrL1y&q=85&s=5a3858b4bda94fde3afe6ba6c76d1fac 1100w, https://mintcdn.com/meilisearch-6b28dec2/kYJO98Uevt3SrL1y/assets/images/cloud-dumps/01-export-dump.png?w=1650&fit=max&auto=format&n=kYJO98Uevt3SrL1y&q=85&s=38c169efe1de64d32b3a053f06d8ce93 1650w, https://mintcdn.com/meilisearch-6b28dec2/kYJO98Uevt3SrL1y/assets/images/cloud-dumps/01-export-dump.png?w=2500&fit=max&auto=format&n=kYJO98Uevt3SrL1y&q=85&s=84930cd16377e6e8c3472d4342d8e4d8 2500w" />
+  <img alt="The General settings interface displaying various data fields relating to a Meilisearch Cloud project. One of them reads 'Meilisearch version'. Its value is 'v1.6.2'. Next to the value is a button 'Update to v1.7.0'" />
 </Frame>
 
 If you need to create a dump for reasons other than upgrading, contact the support team via the Meilisearch Cloud interface or the [official Meilisearch Discord server](https://discord.meilisearch.com).
@@ -3485,7 +3433,7 @@ To create a dump, use the [create a dump endpoint](/reference/api/dump#create-a-
 
 This will return a [summarized task object](/learn/async/asynchronous_operations#summarized-task-objects) that you can use to check the status of your dump.
 
-```json  theme={null}
+```json theme={null}
 {
   "taskUid": 1,
   "indexUid": null,
@@ -3557,7 +3505,7 @@ The dump creation process is an asynchronous task that takes time proportional t
 
 This should return an object with detailed information about the dump operation:
 
-```json  theme={null}
+```json theme={null}
 {
   "uid": 1,
   "indexUid": null,
@@ -3592,14 +3540,14 @@ If a dump file is visible in the file system, the dump process was successfully 
 You can import a dump into Meilisearch when creating a new project, below the plan selector:
 
 <Frame>
-  <img src="https://mintcdn.com/meilisearch-6b28dec2/kYJO98Uevt3SrL1y/assets/images/cloud-dumps/02-import-dump.png?fit=max&auto=format&n=kYJO98Uevt3SrL1y&q=85&s=926e6359fdaa603f162a17bbff890b39" alt="The project creation interface, with a few inputs fields: project name, region selection, and plan selection. Right below all of these, is a file upload button named 'Import .dump'" data-og-width="1182" width="1182" data-og-height="919" height="919" data-path="assets/images/cloud-dumps/02-import-dump.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/meilisearch-6b28dec2/kYJO98Uevt3SrL1y/assets/images/cloud-dumps/02-import-dump.png?w=280&fit=max&auto=format&n=kYJO98Uevt3SrL1y&q=85&s=4f69b08c574cb96c8e38b07ada68c132 280w, https://mintcdn.com/meilisearch-6b28dec2/kYJO98Uevt3SrL1y/assets/images/cloud-dumps/02-import-dump.png?w=560&fit=max&auto=format&n=kYJO98Uevt3SrL1y&q=85&s=51e355acd1cb0f3649cab27264797b2e 560w, https://mintcdn.com/meilisearch-6b28dec2/kYJO98Uevt3SrL1y/assets/images/cloud-dumps/02-import-dump.png?w=840&fit=max&auto=format&n=kYJO98Uevt3SrL1y&q=85&s=d53a1e277f13a5ff234a69312ff608b6 840w, https://mintcdn.com/meilisearch-6b28dec2/kYJO98Uevt3SrL1y/assets/images/cloud-dumps/02-import-dump.png?w=1100&fit=max&auto=format&n=kYJO98Uevt3SrL1y&q=85&s=39341b7df774ac8c75319b032864c48d 1100w, https://mintcdn.com/meilisearch-6b28dec2/kYJO98Uevt3SrL1y/assets/images/cloud-dumps/02-import-dump.png?w=1650&fit=max&auto=format&n=kYJO98Uevt3SrL1y&q=85&s=3d8bc6dd2ee6d5c85b7c5f8931373c02 1650w, https://mintcdn.com/meilisearch-6b28dec2/kYJO98Uevt3SrL1y/assets/images/cloud-dumps/02-import-dump.png?w=2500&fit=max&auto=format&n=kYJO98Uevt3SrL1y&q=85&s=a4c6993671db22bd63e36c6ce03d4f70 2500w" />
+  <img alt="The project creation interface, with a few inputs fields: project name, region selection, and plan selection. Right below all of these, is a file upload button named 'Import .dump'" />
 </Frame>
 
 ### Importing a dump in self-hosted instances
 
 Import a dump by launching a Meilisearch instance with the [`--import-dump` configuration option](/learn/self_hosted/configure_meilisearch_at_launch#import-dump):
 
-```bash  theme={null}
+```bash theme={null}
 ./meilisearch --import-dump /dumps/20200813-042312213.dump
 ```
 
@@ -3631,7 +3579,7 @@ It is good practice to create regular backups of your Meilisearch data. This ens
 
 Use the [`--schedule-snapshot` configuration option](/learn/self_hosted/configure_meilisearch_at_launch#schedule-snapshot-creation) to create snapshots at regular time intervals:
 
-```bash  theme={null}
+```bash theme={null}
 meilisearch --schedule-snapshot
 ```
 
@@ -3641,7 +3589,7 @@ Meilisearch **automatically overwrites** old snapshots during snapshot creation.
 
 In cases where your database is updated several times a day, it might be better to modify the interval between each new snapshot:
 
-```bash  theme={null}
+```bash theme={null}
 meilisearch --schedule-snapshot=3600
 ```
 
@@ -3655,7 +3603,7 @@ This instructs Meilisearch to create a new snapshot once every hour.
 
 To import snapshot data into your instance, launch Meilisearch using `--import-snapshot`:
 
-```bash  theme={null}
+```bash theme={null}
 meilisearch --import-snapshot mySnapShots/data.ms.snapshot
 ```
 
@@ -3803,7 +3751,7 @@ In the example above, the distance between `Bruce` and `Willis` is equal to **1*
 
 Let's see another example. Given two documents:
 
-```json  theme={null}
+```json theme={null}
 [
   {
     "movie_id": "001",
@@ -3844,7 +3792,7 @@ Meilisearch flattens arrays and concatenates them into strings. Non-string value
 
 The following input:
 
-```json  theme={null}
+```json theme={null}
 [
   [
     "Bruce Willis",
@@ -3856,7 +3804,7 @@ The following input:
 
 Will be processed as if all elements were arranged at the same level:
 
-```json  theme={null}
+```json theme={null}
 "Bruce Willis. Vin Diesel. Kung Fu Panda."
 ```
 
@@ -3870,7 +3818,7 @@ Keep in mind that the flattened objects represented here are an intermediary sna
 
 In the example below, the `patient_name` key contains an object:
 
-```json  theme={null}
+```json theme={null}
 {
   "id": 0,
   "patient_name": {
@@ -3882,7 +3830,7 @@ In the example below, the `patient_name` key contains an object:
 
 During indexing, Meilisearch uses dot notation to eliminate nested fields:
 
-```json  theme={null}
+```json theme={null}
 {
   "id": 0,
   "patient_name.forename": "Imogen",
@@ -3894,7 +3842,7 @@ Using dot notation, no information is lost when flattening nested objects, regar
 
 Imagine that the example document above includes an additional object, `address`, containing home and work addresses, each of which are objects themselves. After flattening, the document would look like this:
 
-```json  theme={null}
+```json theme={null}
 {
   "id": 0,
   "patient_name.forename": "Imogen",
@@ -3910,7 +3858,7 @@ Imagine that the example document above includes an additional object, `address`
 
 Meilisearch's internal flattening process also eliminates nesting in arrays of objects. In this case, values are grouped by key. Consider the following document:
 
-```json  theme={null}
+```json theme={null}
 {
   "id": 0,
   "patient_name": "Imogen Temult",
@@ -3930,7 +3878,7 @@ Meilisearch's internal flattening process also eliminates nesting in arrays of o
 
 After flattening, it would look like this:
 
-```json  theme={null}
+```json theme={null}
 {
   "id": 0,
   "patient_name": "Imogen Temult",
@@ -3954,7 +3902,7 @@ Once all objects inside a document have been flattened, Meilisearch will continu
 
 Meilisearch has no concept of subdocuments and cannot perform nested document querying. In the previous example, the relationship between an appointment's date and doctor is lost when flattening the `appointments` array:
 
-```json  theme={null}
+```json theme={null}
 …
   "appointments.date": [
     "2022-01-01",
@@ -3969,7 +3917,7 @@ Meilisearch has no concept of subdocuments and cannot perform nested document qu
 
 This may lead to unexpected behavior during search. The following dataset shows two patients and their respective appointments:
 
-```json  theme={null}
+```json theme={null}
 [
   {
     "id": 0,
@@ -4000,7 +3948,7 @@ This may lead to unexpected behavior during search. The following dataset shows 
 
 The following query returns patients `0` and `1`:
 
-```sh  theme={null}
+```sh theme={null}
 curl \
   -X POST 'MEILISEARCH_URL/indexes/clinic_patients/search' \
   -H 'Content-Type: application/json' \
@@ -4014,7 +3962,7 @@ Meilisearch is unable to only return patients who had an appointment with `Jeste
 
 The best way to work around this limitation is reformatting your data. The above example could be fixed by merging appointment data in a new `appointmentsMerged` field so the relationship between appointment and doctor remains intact:
 
-```json  theme={null}
+```json theme={null}
 [
   {
     "id": 0,
@@ -4033,6 +3981,10 @@ The best way to work around this limitation is reformatting your data. The above
   }
 ]
 ```
+
+### Updating object fields
+
+Object fields cannot be partially updated. Updating an object field with either the `PUT` or `POST` routes with an object fully replaces that value and removes any omitted subfields. Dot notation is also not supported when updating a document.
 
 ## Possible tokenization issues
 
@@ -4145,7 +4097,7 @@ On the other hand, if you run Meilisearch along with other programs, the OS will
 
 ## Measured disk usage
 
-The following measurements were taken using <a href="/assets/datasets/movies.json" download="movies.json">movies.json</a> an 8.6 MB JSON dataset containing 19,553 documents.
+The following measurements were taken using <a href="/assets/datasets/movies.json">movies.json</a> an 8.6 MB JSON dataset containing 19,553 documents.
 
 After indexing, the dataset size in LMDB is about 122MB.
 
@@ -4168,10 +4120,6 @@ Database size is affected by a large number of criteria, including settings, rel
 Source: https://www.meilisearch.com/docs/learn/filtering_and_sorting/filter_expression_reference
 
 The `filter` search parameter expects a filter expression. Filter expressions are made of attributes, values, and several operators.
-
-export const NoticeTag = ({label}) => <span className="noticeTag noticeTag--{ label }">
-    {label}
-  </span>;
 
 The `filter` search parameter expects a filter expression. Filter expressions are made of attributes, values, and several operators.
 
@@ -4366,7 +4314,7 @@ NOT dairy_product.name CONTAINS kef
 <Note>
   This is an experimental feature. Use the experimental features endpoint to activate it:
 
-  ```sh  theme={null}
+  ```sh theme={null}
   curl \
     -X PATCH 'MEILISEARCH_URL/experimental-features/' \
     -H 'Content-Type: application/json' \
@@ -4501,7 +4449,7 @@ In this guide you will see how to configure and use Meilisearch filters in a hyp
 
 Suppose you have a collection of movies called `movie_ratings` containing the following fields:
 
-```json  theme={null}
+```json theme={null}
 [
   {
     "id": 458723,
@@ -5027,7 +4975,7 @@ To start filtering documents based on their geographic location, you must make s
 
 When using JSON and NDJSON, `_geo` must contain an object with two keys: `lat` and `lng`. Both fields must contain either a floating point number or a string indicating, respectively, latitude and longitude:
 
-```json  theme={null}
+```json theme={null}
 {
   …
   "_geo": {
@@ -5039,7 +4987,7 @@ When using JSON and NDJSON, `_geo` must contain an object with two keys: `lat` a
 
 `_geojson` must be an object whose contents follow the [GeoJSON specification](https://geojson.org/):
 
-```json  theme={null}
+```json theme={null}
 {
   …
   "_geojson": {
@@ -5072,7 +5020,7 @@ Meilisearch does not support transmeridian shapes. If your document includes a t
 
 Suppose we have a JSON array containing a few restaurants:
 
-```json  theme={null}
+```json theme={null}
 [
   {
     "id": 1,
@@ -5100,7 +5048,7 @@ Suppose we have a JSON array containing a few restaurants:
 
 Our restaurant dataset looks like this once we add `_geo` data:
 
-```json  theme={null}
+```json theme={null}
 [
   {
     "id": 1,
@@ -5146,7 +5094,7 @@ Our restaurant dataset looks like this once we add `_geo` data:
 
 If your dataset is formatted as CSV, the file header must have a `_geo` column. Each row in the dataset must then contain a column with a comma-separated string indicating latitude and longitude:
 
-```csv  theme={null}
+```csv theme={null}
 "id:number","name:string","address:string","type:string","rating:number","_geo:string"
 "1","Nàpiz Milano","Viale Vittorio Veneto, 30, 20124, Milan, Italy","pizzeria",9,"45.4777599,9.1967508"
 "2","Bouillon Pigalle","22 Bd de Clichy, 75018 Paris, France","french",8,"48.8826517,2.3352748"
@@ -5264,7 +5212,7 @@ _geoPolygon([LAT, LNG], [LAT, LNG], [LAT, LNG], …)
 
 ### Examples
 
-Using our <a id="downloadRestaurants" href="/assets/datasets/restaurants.json" download="restaurants.json">example dataset</a>, we can search for places to eat near the center of Milan with `_geoRadius`:
+Using our <a href="/assets/datasets/restaurants.json">example dataset</a>, we can search for places to eat near the center of Milan with `_geoRadius`:
 
 <CodeGroup>
   ```bash cURL theme={null}
@@ -5441,7 +5389,7 @@ And with `_geoPolygon`:
 
 <CodeSamplesGeosearchGuideFilterUsage4 />
 
-```json  theme={null}
+```json theme={null}
 [
   {
     "id": 1,
@@ -5560,7 +5508,7 @@ It is also possible to combine `_geoRadius`, `_geoBoundingBox`, and `_geoPolygon
   ```
 </CodeGroup>
 
-```json  theme={null}
+```json theme={null}
 [
   {
     "id": 1,
@@ -5753,9 +5701,9 @@ The `_geoPoint` sorting function can be used like any other sorting rule. We can
   ```
 </CodeGroup>
 
-With our <a id="downloadRestaurants" href="/assets/datasets/restaurants.json" download="restaurants.json">restaurants dataset</a>, the results look like this:
+With our <a href="/assets/datasets/restaurants.json">restaurants dataset</a>, the results look like this:
 
-```json  theme={null}
+```json theme={null}
 [
   {
     "id": 2,
@@ -5892,7 +5840,7 @@ With our <a id="downloadRestaurants" href="/assets/datasets/restaurants.json" do
   ```
 </CodeGroup>
 
-```json  theme={null}
+```json theme={null}
 [
   {
     "id": 2,
@@ -5945,9 +5893,9 @@ In Meilisearch, facets are a specialized type of filter. This guide shows you ho
 
 ## Configure facet index settings
 
-First, create a new index using this <a id="downloadBooks" href="/assets/datasets/books.json" download="books.json">books dataset</a>. Documents in this dataset have the following fields:
+First, create a new index using this <a href="/assets/datasets/books.json">books dataset</a>. Documents in this dataset have the following fields:
 
-```json  theme={null}
+```json theme={null}
 {
   "id": 5,
   "title": "Hard Times",
@@ -6115,7 +6063,7 @@ Make a search query setting the `facets` search parameter:
 
 The response returns all books matching the query. It also returns two fields you can use to create a faceted search interface, `facetDistribution` and `facetStats`:
 
-```json  theme={null}
+```json theme={null}
 {
   "hits": [
     …
@@ -6245,7 +6193,7 @@ The above code sample sorts the `genres` facet by descending value count.
 
 Repeating the previous query using the new settings will result in a different order in `facetsDistribution`:
 
-```json  theme={null}
+```json theme={null}
 {
   …
   "facetDistribution": {
@@ -6353,7 +6301,7 @@ The following code sample searches the `genres` facet for values starting with `
 
 The response contains a `facetHits` array listing all matching facets, together with the total number of documents that include that facet:
 
-```json  theme={null}
+```json theme={null}
 {
   …
   "facetHits": [
@@ -6425,7 +6373,7 @@ After you have decided which fields you will allow your users to sort on, you mu
 
 Suppose you have collection of books containing the following fields:
 
-```json  theme={null}
+```json theme={null}
 [
   {
     "id": 1,
@@ -6533,7 +6481,7 @@ When users sort results at search time, [Meilisearch's ranking rules](/learn/rel
 
 This is the default configuration of Meilisearch's ranking rules:
 
-```json  theme={null}
+```json theme={null}
 [
   "words",
   "typo",
@@ -6705,7 +6653,7 @@ Attributes must be given as `attribute:sorting_order`. In other words, each attr
 
 When using the `POST` route, `sort` expects an array of strings:
 
-```json  theme={null}
+```json theme={null}
 "sort": [
   "price:asc",
   "author:desc"
@@ -6811,7 +6759,7 @@ Suppose you are searching for books in a webshop and want to see the cheapest sc
 
 With our example dataset, the results look like this:
 
-```json  theme={null}
+```json theme={null}
 [
   {
     "id": 1,
@@ -6929,7 +6877,7 @@ It is common to search books based on an author's name. `sort` can help grouping
   ```
 </CodeGroup>
 
-```json  theme={null}
+```json theme={null}
 [
   {
     "id": 2,
@@ -7089,7 +7037,7 @@ To filter and sort search results chronologically, your documents must have at l
 
 As an example, consider a database of video games. In this dataset, the release year is formatted as a timestamp:
 
-```json  theme={null}
+```json theme={null}
 [
   {
     "id": 0,
@@ -7112,7 +7060,7 @@ As an example, consider a database of video games. In this dataset, the release 
 ]
 ```
 
-Once all documents in your dataset have a date field, [index your data](/reference/api/documents#add-or-replace-documents) as usual. The example below adds a <a id="downloadVideogames" href="/assets/datasets/videogames.json" download="videogames.json">videogame dataset</a> to a `games` index:
+Once all documents in your dataset have a date field, [index your data](/reference/api/documents#add-or-replace-documents) as usual. The example below adds a <a href="/assets/datasets/videogames.json">videogame dataset</a> to a `games` index:
 
 <CodeGroup>
   ```bash cURL theme={null}
@@ -7555,7 +7503,7 @@ This tutorial walks you through setting up [Meilisearch Cloud](https://meilisear
 
 You need a Meilisearch Cloud account to follow along. If you don't have one, register for a 14-day free trial account at [https://cloud.meilisearch.com/register](https://cloud.meilisearch.com/register?utm_campaign=oss\&utm_source=docs\&utm_medium=cloud-quick-start).
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/KK2rV7i4IdI?si=F2DuOvzr7Du2jorz" title="Getting started with Meilisearch Cloud" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen />
+<iframe title="Getting started with Meilisearch Cloud" />
 
 ## Creating a project
 
@@ -7564,25 +7512,25 @@ To use Meilisearch Cloud, you must first create a project. Projects act as conta
 Click the "New project" button on the top menu. If you have a free trial account and this is your first project, the button will read "Start free trial" instead:
 
 <Frame>
-  <img src="https://mintcdn.com/meilisearch-6b28dec2/kYJO98Uevt3SrL1y/assets/images/cloud-getting-started/1-new-project.png?fit=max&auto=format&n=kYJO98Uevt3SrL1y&q=85&s=dca6d7e62d243815bf4f803d790e1958" alt="The Meilisearch Cloud menu, featuring the 'New Project' button" data-og-width="2666" width="2666" data-og-height="436" height="436" data-path="assets/images/cloud-getting-started/1-new-project.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/meilisearch-6b28dec2/kYJO98Uevt3SrL1y/assets/images/cloud-getting-started/1-new-project.png?w=280&fit=max&auto=format&n=kYJO98Uevt3SrL1y&q=85&s=18d536004a95296f5249f8206b2702e0 280w, https://mintcdn.com/meilisearch-6b28dec2/kYJO98Uevt3SrL1y/assets/images/cloud-getting-started/1-new-project.png?w=560&fit=max&auto=format&n=kYJO98Uevt3SrL1y&q=85&s=5710973f5b0177aa4040b9b03241f0fa 560w, https://mintcdn.com/meilisearch-6b28dec2/kYJO98Uevt3SrL1y/assets/images/cloud-getting-started/1-new-project.png?w=840&fit=max&auto=format&n=kYJO98Uevt3SrL1y&q=85&s=35c46d67dac67ad4d3c27ca5a16d4d37 840w, https://mintcdn.com/meilisearch-6b28dec2/kYJO98Uevt3SrL1y/assets/images/cloud-getting-started/1-new-project.png?w=1100&fit=max&auto=format&n=kYJO98Uevt3SrL1y&q=85&s=a791a5991bb0792c9fbdd54083a4d176 1100w, https://mintcdn.com/meilisearch-6b28dec2/kYJO98Uevt3SrL1y/assets/images/cloud-getting-started/1-new-project.png?w=1650&fit=max&auto=format&n=kYJO98Uevt3SrL1y&q=85&s=419ddce65eb9e21d51f43ef754970263 1650w, https://mintcdn.com/meilisearch-6b28dec2/kYJO98Uevt3SrL1y/assets/images/cloud-getting-started/1-new-project.png?w=2500&fit=max&auto=format&n=kYJO98Uevt3SrL1y&q=85&s=d8cbf977638d0aff0f49a86eb3bbf837 2500w" />
+  <img alt="The Meilisearch Cloud menu, featuring the 'New Project' button" />
 </Frame>
 
 Name your project `meilisearch-quick-start` and select the region closest to you, then click on "Create project":
 
 <Frame>
-  <img src="https://mintcdn.com/meilisearch-6b28dec2/AA65w-9bZrf-CgFA/assets/images/cloud-getting-started/2-create-project.png?fit=max&auto=format&n=AA65w-9bZrf-CgFA&q=85&s=e4a0eaa9fa080cd8e7614a2ad01a2c4c" alt="A modal window with two mandatory fields: 'Project name' and 'Select a region'" data-og-width="2378" width="2378" data-og-height="1434" height="1434" data-path="assets/images/cloud-getting-started/2-create-project.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/meilisearch-6b28dec2/AA65w-9bZrf-CgFA/assets/images/cloud-getting-started/2-create-project.png?w=280&fit=max&auto=format&n=AA65w-9bZrf-CgFA&q=85&s=87c04aabe98064a7c025bba508ec1e19 280w, https://mintcdn.com/meilisearch-6b28dec2/AA65w-9bZrf-CgFA/assets/images/cloud-getting-started/2-create-project.png?w=560&fit=max&auto=format&n=AA65w-9bZrf-CgFA&q=85&s=003c5e19d29d59bac588a93957f014a8 560w, https://mintcdn.com/meilisearch-6b28dec2/AA65w-9bZrf-CgFA/assets/images/cloud-getting-started/2-create-project.png?w=840&fit=max&auto=format&n=AA65w-9bZrf-CgFA&q=85&s=bc60950990d421207421a002dbb29516 840w, https://mintcdn.com/meilisearch-6b28dec2/AA65w-9bZrf-CgFA/assets/images/cloud-getting-started/2-create-project.png?w=1100&fit=max&auto=format&n=AA65w-9bZrf-CgFA&q=85&s=7e4f4f6857ff7c801738176e76e9ce25 1100w, https://mintcdn.com/meilisearch-6b28dec2/AA65w-9bZrf-CgFA/assets/images/cloud-getting-started/2-create-project.png?w=1650&fit=max&auto=format&n=AA65w-9bZrf-CgFA&q=85&s=1ebd70a961b8b4c2cf2869ea1b6a11bb 1650w, https://mintcdn.com/meilisearch-6b28dec2/AA65w-9bZrf-CgFA/assets/images/cloud-getting-started/2-create-project.png?w=2500&fit=max&auto=format&n=AA65w-9bZrf-CgFA&q=85&s=fd24a644d29042a43a41f8c98d1c0824 2500w" />
+  <img alt="A modal window with two mandatory fields: 'Project name' and 'Select a region'" />
 </Frame>
 
 If you are not using a free trial account, you must also choose a billing plan based on the size of your dataset and number of searches per month:
 
 <Frame>
-  <img src="https://mintcdn.com/meilisearch-6b28dec2/AA65w-9bZrf-CgFA/assets/images/cloud-getting-started/3-project-billing.png?fit=max&auto=format&n=AA65w-9bZrf-CgFA&q=85&s=8d258fe7694e0480ff7d01869604642f" alt="A variation of the previous modal window with an extra mandatory field: 'Select a plan'. There are a few billing plan options" data-og-width="1182" width="1182" data-og-height="919" height="919" data-path="assets/images/cloud-getting-started/3-project-billing.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/meilisearch-6b28dec2/AA65w-9bZrf-CgFA/assets/images/cloud-getting-started/3-project-billing.png?w=280&fit=max&auto=format&n=AA65w-9bZrf-CgFA&q=85&s=5484476746d8831e6e07e2b75c389d13 280w, https://mintcdn.com/meilisearch-6b28dec2/AA65w-9bZrf-CgFA/assets/images/cloud-getting-started/3-project-billing.png?w=560&fit=max&auto=format&n=AA65w-9bZrf-CgFA&q=85&s=71f8e5986aae7536122e64e6f89a5238 560w, https://mintcdn.com/meilisearch-6b28dec2/AA65w-9bZrf-CgFA/assets/images/cloud-getting-started/3-project-billing.png?w=840&fit=max&auto=format&n=AA65w-9bZrf-CgFA&q=85&s=c3bf5a1cac68feeb962c0a9a054fbe75 840w, https://mintcdn.com/meilisearch-6b28dec2/AA65w-9bZrf-CgFA/assets/images/cloud-getting-started/3-project-billing.png?w=1100&fit=max&auto=format&n=AA65w-9bZrf-CgFA&q=85&s=9ff773e293758f3eb233445075756a66 1100w, https://mintcdn.com/meilisearch-6b28dec2/AA65w-9bZrf-CgFA/assets/images/cloud-getting-started/3-project-billing.png?w=1650&fit=max&auto=format&n=AA65w-9bZrf-CgFA&q=85&s=781602854f9435cf693e00c8d4a75783 1650w, https://mintcdn.com/meilisearch-6b28dec2/AA65w-9bZrf-CgFA/assets/images/cloud-getting-started/3-project-billing.png?w=2500&fit=max&auto=format&n=AA65w-9bZrf-CgFA&q=85&s=05b937ce5b06c1e15942e71a29340ab7 2500w" />
+  <img alt="A variation of the previous modal window with an extra mandatory field: 'Select a plan'. There are a few billing plan options" />
 </Frame>
 
 Creating your project might take a few minutes. Check the project list to follow its status. Once the project is ready, click on its name to go to the project overview page:
 
 <Frame>
-  <img src="https://mintcdn.com/meilisearch-6b28dec2/AA65w-9bZrf-CgFA/assets/images/cloud-getting-started/4-project-list.png?fit=max&auto=format&n=AA65w-9bZrf-CgFA&q=85&s=1bebe5a9eb52ac7da36903d953fcdc26" alt="Meilisearch Cloud's main list of projects. It features only one project, 'meilisearch-quick-start', and shows information such as API keys, URL, and number of monthly searches" data-og-width="2734" width="2734" data-og-height="1000" height="1000" data-path="assets/images/cloud-getting-started/4-project-list.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/meilisearch-6b28dec2/AA65w-9bZrf-CgFA/assets/images/cloud-getting-started/4-project-list.png?w=280&fit=max&auto=format&n=AA65w-9bZrf-CgFA&q=85&s=9d2a6110b087cb47c18d3d80e4e255b7 280w, https://mintcdn.com/meilisearch-6b28dec2/AA65w-9bZrf-CgFA/assets/images/cloud-getting-started/4-project-list.png?w=560&fit=max&auto=format&n=AA65w-9bZrf-CgFA&q=85&s=ea8c93e6dc791e1c655fd885c5a8671f 560w, https://mintcdn.com/meilisearch-6b28dec2/AA65w-9bZrf-CgFA/assets/images/cloud-getting-started/4-project-list.png?w=840&fit=max&auto=format&n=AA65w-9bZrf-CgFA&q=85&s=24e1ce997e6e6fbae84e7d6661829070 840w, https://mintcdn.com/meilisearch-6b28dec2/AA65w-9bZrf-CgFA/assets/images/cloud-getting-started/4-project-list.png?w=1100&fit=max&auto=format&n=AA65w-9bZrf-CgFA&q=85&s=f35d97aa7483888f6211fec9d960c5eb 1100w, https://mintcdn.com/meilisearch-6b28dec2/AA65w-9bZrf-CgFA/assets/images/cloud-getting-started/4-project-list.png?w=1650&fit=max&auto=format&n=AA65w-9bZrf-CgFA&q=85&s=5adae7c151f556c711db369372cdbf6a 1650w, https://mintcdn.com/meilisearch-6b28dec2/AA65w-9bZrf-CgFA/assets/images/cloud-getting-started/4-project-list.png?w=2500&fit=max&auto=format&n=AA65w-9bZrf-CgFA&q=85&s=1cb6c62fa0f6842090be3d8735be982c 2500w" />
+  <img alt="Meilisearch Cloud's main list of projects. It features only one project, 'meilisearch-quick-start', and shows information such as API keys, URL, and number of monthly searches" />
 </Frame>
 
 ## Creating an index and adding documents
@@ -7592,37 +7540,37 @@ After creating your project, you must index the data you want to search. Meilise
 First, click on the indexes tab in the project page menu:
 
 <Frame>
-  <img src="https://mintcdn.com/meilisearch-6b28dec2/AA65w-9bZrf-CgFA/assets/images/cloud-getting-started/5-project-page-menu-indexes.png?fit=max&auto=format&n=AA65w-9bZrf-CgFA&q=85&s=12e73b016d800c0772fe6fe650d2e731" alt="The project overview page, featuring a secondary menu with several links. A red arrow points at a menu item: 'Indexes'" data-og-width="2606" width="2606" data-og-height="1242" height="1242" data-path="assets/images/cloud-getting-started/5-project-page-menu-indexes.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/meilisearch-6b28dec2/AA65w-9bZrf-CgFA/assets/images/cloud-getting-started/5-project-page-menu-indexes.png?w=280&fit=max&auto=format&n=AA65w-9bZrf-CgFA&q=85&s=c162d6e3614747beec584bbace98094c 280w, https://mintcdn.com/meilisearch-6b28dec2/AA65w-9bZrf-CgFA/assets/images/cloud-getting-started/5-project-page-menu-indexes.png?w=560&fit=max&auto=format&n=AA65w-9bZrf-CgFA&q=85&s=0abdf7c59993a5c5d104f0331b3321d7 560w, https://mintcdn.com/meilisearch-6b28dec2/AA65w-9bZrf-CgFA/assets/images/cloud-getting-started/5-project-page-menu-indexes.png?w=840&fit=max&auto=format&n=AA65w-9bZrf-CgFA&q=85&s=4d5a50463ff38c10ee2c463d4a9686c8 840w, https://mintcdn.com/meilisearch-6b28dec2/AA65w-9bZrf-CgFA/assets/images/cloud-getting-started/5-project-page-menu-indexes.png?w=1100&fit=max&auto=format&n=AA65w-9bZrf-CgFA&q=85&s=3a52f1339e07a443459b99510a958506 1100w, https://mintcdn.com/meilisearch-6b28dec2/AA65w-9bZrf-CgFA/assets/images/cloud-getting-started/5-project-page-menu-indexes.png?w=1650&fit=max&auto=format&n=AA65w-9bZrf-CgFA&q=85&s=0b60bd394186d90aee0e8baa27bcad25 1650w, https://mintcdn.com/meilisearch-6b28dec2/AA65w-9bZrf-CgFA/assets/images/cloud-getting-started/5-project-page-menu-indexes.png?w=2500&fit=max&auto=format&n=AA65w-9bZrf-CgFA&q=85&s=07aeca7bb9e56647b0a72044a6dea1a6 2500w" />
+  <img alt="The project overview page, featuring a secondary menu with several links. A red arrow points at a menu item: 'Indexes'" />
 </Frame>
 
 This leads you to the index listing. Click on "New index":
 
 <Frame>
-  <img src="https://mintcdn.com/meilisearch-6b28dec2/AA65w-9bZrf-CgFA/assets/images/cloud-getting-started/6-index-list-empty.png?fit=max&auto=format&n=AA65w-9bZrf-CgFA&q=85&s=ffc0b9b52c78b2672242001abb636f39" alt="An empty list of indexes in this project with a button on the upper right corner" data-og-width="1199" width="1199" data-og-height="226" height="226" data-path="assets/images/cloud-getting-started/6-index-list-empty.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/meilisearch-6b28dec2/AA65w-9bZrf-CgFA/assets/images/cloud-getting-started/6-index-list-empty.png?w=280&fit=max&auto=format&n=AA65w-9bZrf-CgFA&q=85&s=0a48b2b44bb2a4b4907f3a31a58deb76 280w, https://mintcdn.com/meilisearch-6b28dec2/AA65w-9bZrf-CgFA/assets/images/cloud-getting-started/6-index-list-empty.png?w=560&fit=max&auto=format&n=AA65w-9bZrf-CgFA&q=85&s=420df86226dd8c6ee186c1f2b04bbb43 560w, https://mintcdn.com/meilisearch-6b28dec2/AA65w-9bZrf-CgFA/assets/images/cloud-getting-started/6-index-list-empty.png?w=840&fit=max&auto=format&n=AA65w-9bZrf-CgFA&q=85&s=abfe3b728880bed56fff131385538865 840w, https://mintcdn.com/meilisearch-6b28dec2/AA65w-9bZrf-CgFA/assets/images/cloud-getting-started/6-index-list-empty.png?w=1100&fit=max&auto=format&n=AA65w-9bZrf-CgFA&q=85&s=2b42a1cf9386fe7ce1628fa10d196004 1100w, https://mintcdn.com/meilisearch-6b28dec2/AA65w-9bZrf-CgFA/assets/images/cloud-getting-started/6-index-list-empty.png?w=1650&fit=max&auto=format&n=AA65w-9bZrf-CgFA&q=85&s=0e56c784caebdfc52e441f4f1d65a5d6 1650w, https://mintcdn.com/meilisearch-6b28dec2/AA65w-9bZrf-CgFA/assets/images/cloud-getting-started/6-index-list-empty.png?w=2500&fit=max&auto=format&n=AA65w-9bZrf-CgFA&q=85&s=ca30b31bcfb81cee236da9aa9b166b6d 2500w" />
+  <img alt="An empty list of indexes in this project with a button on the upper right corner" />
 </Frame>
 
 Write `movies` in the name field and click on "Create Index":
 
 <Frame>
-  <img src="https://mintcdn.com/meilisearch-6b28dec2/AA65w-9bZrf-CgFA/assets/images/cloud-getting-started/7-create-index.png?fit=max&auto=format&n=AA65w-9bZrf-CgFA&q=85&s=5e6922a0f807d9afb2c508ab964632aa" alt="A modal window with one mandatory field: 'Index name'" data-og-width="762" width="762" data-og-height="393" height="393" data-path="assets/images/cloud-getting-started/7-create-index.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/meilisearch-6b28dec2/AA65w-9bZrf-CgFA/assets/images/cloud-getting-started/7-create-index.png?w=280&fit=max&auto=format&n=AA65w-9bZrf-CgFA&q=85&s=2fe9aeda434d99ada07d2f47fde8a56a 280w, https://mintcdn.com/meilisearch-6b28dec2/AA65w-9bZrf-CgFA/assets/images/cloud-getting-started/7-create-index.png?w=560&fit=max&auto=format&n=AA65w-9bZrf-CgFA&q=85&s=c513e933a2c196daa32546fae41e656b 560w, https://mintcdn.com/meilisearch-6b28dec2/AA65w-9bZrf-CgFA/assets/images/cloud-getting-started/7-create-index.png?w=840&fit=max&auto=format&n=AA65w-9bZrf-CgFA&q=85&s=a86c969f1c747d08b401f326991a5f45 840w, https://mintcdn.com/meilisearch-6b28dec2/AA65w-9bZrf-CgFA/assets/images/cloud-getting-started/7-create-index.png?w=1100&fit=max&auto=format&n=AA65w-9bZrf-CgFA&q=85&s=265abbbb7d13754d1ec20214bc4cbd95 1100w, https://mintcdn.com/meilisearch-6b28dec2/AA65w-9bZrf-CgFA/assets/images/cloud-getting-started/7-create-index.png?w=1650&fit=max&auto=format&n=AA65w-9bZrf-CgFA&q=85&s=27c06fcc2fb94bcfdad12f99b682092b 1650w, https://mintcdn.com/meilisearch-6b28dec2/AA65w-9bZrf-CgFA/assets/images/cloud-getting-started/7-create-index.png?w=2500&fit=max&auto=format&n=AA65w-9bZrf-CgFA&q=85&s=1655ed7b988594657f82c98fce5829d8 2500w" />
+  <img alt="A modal window with one mandatory field: 'Index name'" />
 </Frame>
 
 The final step in creating an index is to add data to it. Choose "File upload":
 
 <Frame>
-  <img src="https://mintcdn.com/meilisearch-6b28dec2/AA65w-9bZrf-CgFA/assets/images/cloud-getting-started/8-file-upload.png?fit=max&auto=format&n=AA65w-9bZrf-CgFA&q=85&s=beff013ef09a96d7b7e0f5ef3f35ec5f" alt="Another modal window with three options. A red arrow points at the chosen option, 'File upload'" data-og-width="778" width="778" data-og-height="538" height="538" data-path="assets/images/cloud-getting-started/8-file-upload.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/meilisearch-6b28dec2/AA65w-9bZrf-CgFA/assets/images/cloud-getting-started/8-file-upload.png?w=280&fit=max&auto=format&n=AA65w-9bZrf-CgFA&q=85&s=7ea8a5f07b5fe86f40c1f3e77c72e886 280w, https://mintcdn.com/meilisearch-6b28dec2/AA65w-9bZrf-CgFA/assets/images/cloud-getting-started/8-file-upload.png?w=560&fit=max&auto=format&n=AA65w-9bZrf-CgFA&q=85&s=769d7f000427f800da21d658f2d557a6 560w, https://mintcdn.com/meilisearch-6b28dec2/AA65w-9bZrf-CgFA/assets/images/cloud-getting-started/8-file-upload.png?w=840&fit=max&auto=format&n=AA65w-9bZrf-CgFA&q=85&s=8bef9bd26807d365466ca61832213f4d 840w, https://mintcdn.com/meilisearch-6b28dec2/AA65w-9bZrf-CgFA/assets/images/cloud-getting-started/8-file-upload.png?w=1100&fit=max&auto=format&n=AA65w-9bZrf-CgFA&q=85&s=19e764487087d36472b6f317988949da 1100w, https://mintcdn.com/meilisearch-6b28dec2/AA65w-9bZrf-CgFA/assets/images/cloud-getting-started/8-file-upload.png?w=1650&fit=max&auto=format&n=AA65w-9bZrf-CgFA&q=85&s=d645c1fd953613ce9478a5865643ad29 1650w, https://mintcdn.com/meilisearch-6b28dec2/AA65w-9bZrf-CgFA/assets/images/cloud-getting-started/8-file-upload.png?w=2500&fit=max&auto=format&n=AA65w-9bZrf-CgFA&q=85&s=d56bf65c4fb1db8086639229233aec13 2500w" />
+  <img alt="Another modal window with three options. A red arrow points at the chosen option, 'File upload'" />
 </Frame>
 
-Meilisearch Cloud will ask you for your dataset. To follow along, use this <a href="/assets/datasets/movies.json" download="movies.json">list of movies</a>. Download the file to your computer, drag and drop it into the indicated area, then click on "Import documents":
+Meilisearch Cloud will ask you for your dataset. To follow along, use this <a href="/assets/datasets/movies.json">list of movies</a>. Download the file to your computer, drag and drop it into the indicated area, then click on "Import documents":
 
 <Frame>
-  <img src="https://mintcdn.com/meilisearch-6b28dec2/AA65w-9bZrf-CgFA/assets/images/cloud-getting-started/9-data-import.png?fit=max&auto=format&n=AA65w-9bZrf-CgFA&q=85&s=c2281410bab3263b80a14b0afc0c1161" alt="Another modal window with a large drag-and-drop area. It indicates a file named 'movies.json' will be uploaded" data-og-width="759" width="759" data-og-height="593" height="593" data-path="assets/images/cloud-getting-started/9-data-import.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/meilisearch-6b28dec2/AA65w-9bZrf-CgFA/assets/images/cloud-getting-started/9-data-import.png?w=280&fit=max&auto=format&n=AA65w-9bZrf-CgFA&q=85&s=7ea9f672060305bbe42af513134c5f6d 280w, https://mintcdn.com/meilisearch-6b28dec2/AA65w-9bZrf-CgFA/assets/images/cloud-getting-started/9-data-import.png?w=560&fit=max&auto=format&n=AA65w-9bZrf-CgFA&q=85&s=f3299a01b63f4ef7e1e1bdb4988639ed 560w, https://mintcdn.com/meilisearch-6b28dec2/AA65w-9bZrf-CgFA/assets/images/cloud-getting-started/9-data-import.png?w=840&fit=max&auto=format&n=AA65w-9bZrf-CgFA&q=85&s=e2d2cd10a7450c003604e53b2aa980fc 840w, https://mintcdn.com/meilisearch-6b28dec2/AA65w-9bZrf-CgFA/assets/images/cloud-getting-started/9-data-import.png?w=1100&fit=max&auto=format&n=AA65w-9bZrf-CgFA&q=85&s=43d72a55e539aed4cc84e937aa5b823d 1100w, https://mintcdn.com/meilisearch-6b28dec2/AA65w-9bZrf-CgFA/assets/images/cloud-getting-started/9-data-import.png?w=1650&fit=max&auto=format&n=AA65w-9bZrf-CgFA&q=85&s=bf85502a3d7d6ac62fb3eca9de6360ec 1650w, https://mintcdn.com/meilisearch-6b28dec2/AA65w-9bZrf-CgFA/assets/images/cloud-getting-started/9-data-import.png?w=2500&fit=max&auto=format&n=AA65w-9bZrf-CgFA&q=85&s=8e6fa167da1d9bf66c5c9fbcf22decbb 2500w" />
+  <img alt="Another modal window with a large drag-and-drop area. It indicates a file named 'movies.json' will be uploaded" />
 </Frame>
 
 Meilisearch Cloud will index your documents. This may take a moment. Click on "See index list" and wait. Once it is done, click on "Settings" to visit the index overview:
 
 <Frame>
-  <img src="https://mintcdn.com/meilisearch-6b28dec2/kYJO98Uevt3SrL1y/assets/images/cloud-getting-started/10-index-list-filled.png?fit=max&auto=format&n=kYJO98Uevt3SrL1y&q=85&s=55c84387fb8290f88be986b97838d0dc" alt="A list of all indexes in this project. It shows a single index, `movies`, and indicates it contains over 30,000 documents" data-og-width="1312" width="1312" data-og-height="254" height="254" data-path="assets/images/cloud-getting-started/10-index-list-filled.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/meilisearch-6b28dec2/kYJO98Uevt3SrL1y/assets/images/cloud-getting-started/10-index-list-filled.png?w=280&fit=max&auto=format&n=kYJO98Uevt3SrL1y&q=85&s=75257d0281036977d5a6367e24447ecd 280w, https://mintcdn.com/meilisearch-6b28dec2/kYJO98Uevt3SrL1y/assets/images/cloud-getting-started/10-index-list-filled.png?w=560&fit=max&auto=format&n=kYJO98Uevt3SrL1y&q=85&s=399666bb7676c4fa3f0d44de017d53c3 560w, https://mintcdn.com/meilisearch-6b28dec2/kYJO98Uevt3SrL1y/assets/images/cloud-getting-started/10-index-list-filled.png?w=840&fit=max&auto=format&n=kYJO98Uevt3SrL1y&q=85&s=fdaedde8e4f156a2a4af677f1244cc2f 840w, https://mintcdn.com/meilisearch-6b28dec2/kYJO98Uevt3SrL1y/assets/images/cloud-getting-started/10-index-list-filled.png?w=1100&fit=max&auto=format&n=kYJO98Uevt3SrL1y&q=85&s=8cc2a20a6f2cfac2274f17154feee85b 1100w, https://mintcdn.com/meilisearch-6b28dec2/kYJO98Uevt3SrL1y/assets/images/cloud-getting-started/10-index-list-filled.png?w=1650&fit=max&auto=format&n=kYJO98Uevt3SrL1y&q=85&s=cc61053f1f7959b864c2374a0ea05913 1650w, https://mintcdn.com/meilisearch-6b28dec2/kYJO98Uevt3SrL1y/assets/images/cloud-getting-started/10-index-list-filled.png?w=2500&fit=max&auto=format&n=kYJO98Uevt3SrL1y&q=85&s=98ef3ee8530c0d202321ed8bc26d57c0 2500w" />
+  <img alt="A list of all indexes in this project. It shows a single index, `movies`, and indicates it contains over 30,000 documents" />
 </Frame>
 
 ## Searching
@@ -7632,19 +7580,19 @@ With all data uploaded and processed, the last step is to run a few test searche
 Click on the project name on the breadcrumb menu to return to the project overview:
 
 <Frame>
-  <img src="https://mintcdn.com/meilisearch-6b28dec2/kYJO98Uevt3SrL1y/assets/images/cloud-getting-started/11-index-list-breadcrumb.png?fit=max&auto=format&n=kYJO98Uevt3SrL1y&q=85&s=b6e496f676b9209129c3c02395caf4e7" alt="The index list page. A red arrow points at the breadcrumb menu" data-og-width="1312" width="1312" data-og-height="309" height="309" data-path="assets/images/cloud-getting-started/11-index-list-breadcrumb.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/meilisearch-6b28dec2/kYJO98Uevt3SrL1y/assets/images/cloud-getting-started/11-index-list-breadcrumb.png?w=280&fit=max&auto=format&n=kYJO98Uevt3SrL1y&q=85&s=2c8d6f9862953df3b5be17a11d84d1d0 280w, https://mintcdn.com/meilisearch-6b28dec2/kYJO98Uevt3SrL1y/assets/images/cloud-getting-started/11-index-list-breadcrumb.png?w=560&fit=max&auto=format&n=kYJO98Uevt3SrL1y&q=85&s=fa96a169a05e7cced69388ccd4d7f483 560w, https://mintcdn.com/meilisearch-6b28dec2/kYJO98Uevt3SrL1y/assets/images/cloud-getting-started/11-index-list-breadcrumb.png?w=840&fit=max&auto=format&n=kYJO98Uevt3SrL1y&q=85&s=4d03bd78473b09e7a93be31f213f4a5a 840w, https://mintcdn.com/meilisearch-6b28dec2/kYJO98Uevt3SrL1y/assets/images/cloud-getting-started/11-index-list-breadcrumb.png?w=1100&fit=max&auto=format&n=kYJO98Uevt3SrL1y&q=85&s=3960d720845d529d9b78a260a75cd486 1100w, https://mintcdn.com/meilisearch-6b28dec2/kYJO98Uevt3SrL1y/assets/images/cloud-getting-started/11-index-list-breadcrumb.png?w=1650&fit=max&auto=format&n=kYJO98Uevt3SrL1y&q=85&s=27b8d23843166c773ce0e6c442eaccd7 1650w, https://mintcdn.com/meilisearch-6b28dec2/kYJO98Uevt3SrL1y/assets/images/cloud-getting-started/11-index-list-breadcrumb.png?w=2500&fit=max&auto=format&n=kYJO98Uevt3SrL1y&q=85&s=fc24df8282d91ff3249f6ed62e7f18b6 2500w" />
+  <img alt="The index list page. A red arrow points at the breadcrumb menu" />
 </Frame>
 
 Meilisearch Cloud comes with a search preview interface. Click on "Search preview" to access it:
 
 <Frame>
-  <img src="https://mintcdn.com/meilisearch-6b28dec2/kYJO98Uevt3SrL1y/assets/images/cloud-getting-started/12-project-page-url.png?fit=max&auto=format&n=kYJO98Uevt3SrL1y&q=85&s=3d02b861aec9a91d0cfb73b170c1eeea" alt="The project overview page. A red arrow points at a menu item named 'Search preview'" data-og-width="2606" width="2606" data-og-height="1242" height="1242" data-path="assets/images/cloud-getting-started/12-project-page-url.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/meilisearch-6b28dec2/kYJO98Uevt3SrL1y/assets/images/cloud-getting-started/12-project-page-url.png?w=280&fit=max&auto=format&n=kYJO98Uevt3SrL1y&q=85&s=b18bc81366cf7bcf3a37d914b06a1f01 280w, https://mintcdn.com/meilisearch-6b28dec2/kYJO98Uevt3SrL1y/assets/images/cloud-getting-started/12-project-page-url.png?w=560&fit=max&auto=format&n=kYJO98Uevt3SrL1y&q=85&s=54aa242a009f25341834d2d703a759f7 560w, https://mintcdn.com/meilisearch-6b28dec2/kYJO98Uevt3SrL1y/assets/images/cloud-getting-started/12-project-page-url.png?w=840&fit=max&auto=format&n=kYJO98Uevt3SrL1y&q=85&s=10f350b72986ff62a79a899a63d78c88 840w, https://mintcdn.com/meilisearch-6b28dec2/kYJO98Uevt3SrL1y/assets/images/cloud-getting-started/12-project-page-url.png?w=1100&fit=max&auto=format&n=kYJO98Uevt3SrL1y&q=85&s=46722d6fb8eb1075150e02739bfa90c2 1100w, https://mintcdn.com/meilisearch-6b28dec2/kYJO98Uevt3SrL1y/assets/images/cloud-getting-started/12-project-page-url.png?w=1650&fit=max&auto=format&n=kYJO98Uevt3SrL1y&q=85&s=38d30933e9cae3f781e5fe003d5a4f0a 1650w, https://mintcdn.com/meilisearch-6b28dec2/kYJO98Uevt3SrL1y/assets/images/cloud-getting-started/12-project-page-url.png?w=2500&fit=max&auto=format&n=kYJO98Uevt3SrL1y&q=85&s=0ecefefd1ef7e4e20461eeb433dace06 2500w" />
+  <img alt="The project overview page. A red arrow points at a menu item named 'Search preview'" />
 </Frame>
 
 Finally, try searching for a few movies, like "Solaris":
 
 <Frame>
-  <img src="https://mintcdn.com/meilisearch-6b28dec2/kYJO98Uevt3SrL1y/assets/images/cloud-getting-started/13-search-preview.png?fit=max&auto=format&n=kYJO98Uevt3SrL1y&q=85&s=7f9882e15e98486cedeb0e9cf8c50468" alt="The search preview interface, with 'solaris' written in the search bar" data-og-width="2546" width="2546" data-og-height="1296" height="1296" data-path="assets/images/cloud-getting-started/13-search-preview.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/meilisearch-6b28dec2/kYJO98Uevt3SrL1y/assets/images/cloud-getting-started/13-search-preview.png?w=280&fit=max&auto=format&n=kYJO98Uevt3SrL1y&q=85&s=645ed57671b2fe2dff3aef63e3bac59a 280w, https://mintcdn.com/meilisearch-6b28dec2/kYJO98Uevt3SrL1y/assets/images/cloud-getting-started/13-search-preview.png?w=560&fit=max&auto=format&n=kYJO98Uevt3SrL1y&q=85&s=560db72642e975cf8006e7ea8b000690 560w, https://mintcdn.com/meilisearch-6b28dec2/kYJO98Uevt3SrL1y/assets/images/cloud-getting-started/13-search-preview.png?w=840&fit=max&auto=format&n=kYJO98Uevt3SrL1y&q=85&s=1e26319b0bd070abff68f8e7c8252305 840w, https://mintcdn.com/meilisearch-6b28dec2/kYJO98Uevt3SrL1y/assets/images/cloud-getting-started/13-search-preview.png?w=1100&fit=max&auto=format&n=kYJO98Uevt3SrL1y&q=85&s=788177360af0aa4bbd0d75b6ab3501a2 1100w, https://mintcdn.com/meilisearch-6b28dec2/kYJO98Uevt3SrL1y/assets/images/cloud-getting-started/13-search-preview.png?w=1650&fit=max&auto=format&n=kYJO98Uevt3SrL1y&q=85&s=1883589d7859364e5e5e4922a839006d 1650w, https://mintcdn.com/meilisearch-6b28dec2/kYJO98Uevt3SrL1y/assets/images/cloud-getting-started/13-search-preview.png?w=2500&fit=max&auto=format&n=kYJO98Uevt3SrL1y&q=85&s=db7728d91ebf30e02a81c8c27647edcb 2500w" />
+  <img alt="The search preview interface, with 'solaris' written in the search bar" />
 </Frame>
 
 If you can see the results coming in as you type, congratulations: you now know all the basic steps to using Meilisearch Cloud.
@@ -7668,7 +7616,7 @@ Nothing will be shared between two indexes if they contain the exact same docume
 ## Structure
 
 <Frame>
-  <img src="https://mintcdn.com/meilisearch-6b28dec2/AA65w-9bZrf-CgFA/assets/images/document_structure.svg?fit=max&auto=format&n=AA65w-9bZrf-CgFA&q=85&s=4339d27c58f67d1aeba6fb37200b8c48" alt="Diagram illustration Meilisearch's document structure" data-og-width="378" width="378" data-og-height="276" height="276" data-path="assets/images/document_structure.svg" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/meilisearch-6b28dec2/AA65w-9bZrf-CgFA/assets/images/document_structure.svg?w=280&fit=max&auto=format&n=AA65w-9bZrf-CgFA&q=85&s=6680e1193e48e15a345158b42b274cff 280w, https://mintcdn.com/meilisearch-6b28dec2/AA65w-9bZrf-CgFA/assets/images/document_structure.svg?w=560&fit=max&auto=format&n=AA65w-9bZrf-CgFA&q=85&s=981ffc0c043c3cf3c62455d65cf29c0f 560w, https://mintcdn.com/meilisearch-6b28dec2/AA65w-9bZrf-CgFA/assets/images/document_structure.svg?w=840&fit=max&auto=format&n=AA65w-9bZrf-CgFA&q=85&s=21580e49735d25e24b7ef0c9107f3432 840w, https://mintcdn.com/meilisearch-6b28dec2/AA65w-9bZrf-CgFA/assets/images/document_structure.svg?w=1100&fit=max&auto=format&n=AA65w-9bZrf-CgFA&q=85&s=6e55f48e96503c7f8df61c0938af43d6 1100w, https://mintcdn.com/meilisearch-6b28dec2/AA65w-9bZrf-CgFA/assets/images/document_structure.svg?w=1650&fit=max&auto=format&n=AA65w-9bZrf-CgFA&q=85&s=9ff6198daf6d1de8b89b72a754e529a3 1650w, https://mintcdn.com/meilisearch-6b28dec2/AA65w-9bZrf-CgFA/assets/images/document_structure.svg?w=2500&fit=max&auto=format&n=AA65w-9bZrf-CgFA&q=85&s=a01166ce805f2ed1bdfa7c2ba95a7f1f 2500w" />
+  <img alt="Diagram illustration Meilisearch's document structure" />
 </Frame>
 
 ### Important terms
@@ -7746,7 +7694,7 @@ Meilisearch will only accept JSON documents when it receives the `application/js
 
 As an example, let's say you are creating an index that contains information about movies. A sample document might look like this:
 
-```json  theme={null}
+```json theme={null}
 {
   "id": 1564,
   "title": "Kung Fu Panda",
@@ -7775,7 +7723,7 @@ Compared to JSON, NDJSON has better writing performance and is less CPU and memo
 
 The above JSON document would look like this in NDJSON:
 
-```json  theme={null}
+```json theme={null}
 { "id": 1564, "title": "Kung Fu Panda", "genres": "Children's Animation", "release-year": 2008, "cast": [{ "Jack Black": "Po" }, { "Jackie Chan": "Monkey" }] }
 ```
 
@@ -7791,7 +7739,7 @@ Compared to JSON, CSV has better writing performance and is less CPU and memory 
 
 The above JSON document would look like this in CSV:
 
-```csv  theme={null}
+```csv theme={null}
   "id:number","title:string","genres:string","release-year:number"
   "1564","Kung Fu Panda","Children's Animation","2008"
 ```
@@ -7848,7 +7796,7 @@ While implicit index creation is more convenient, requiring only a single API re
 
 The `uid` is the **unique identifier** of an index. It is set when creating the index and must be an integer or string containing only alphanumeric characters `a-z A-Z 0-9`, hyphens `-` and underscores `_`.
 
-```json  theme={null}
+```json theme={null}
 {
   "uid": "movies",
   "createdAt": "2019-11-20T09:40:33.711324Z",
@@ -7987,7 +7935,7 @@ The primary field is a special field that must be present in all documents. Its 
 
 Suppose we have an index of books. Each document contains a number of fields with data on the book's `author`, `title`, and `price`. More importantly, each document contains a **primary field** consisting of the index's **primary key** `id` and a **unique id**.
 
-```json  theme={null}
+```json theme={null}
 [
   {
     "id": 1,
@@ -8016,7 +7964,7 @@ Every index has a primary key, an attribute that must be shared across all docum
 
 #### Example
 
-```json  theme={null}
+```json theme={null}
 {
     "id": 1,
     "title": "Diary of a Wimpy Kid",
@@ -8040,13 +7988,13 @@ Document addition requests in Meilisearch are atomic. This means that **if the p
 
 Good:
 
-```json  theme={null}
+```json theme={null}
 "id": "_Aabc012_"
 ```
 
 Bad:
 
-```json  theme={null}
+```json theme={null}
 "id": "@BI+* ^5h2%"
 ```
 
@@ -8129,7 +8077,7 @@ The code below creates an index called `books` and sets `reference_number` as it
   ```
 </CodeGroup>
 
-```json  theme={null}
+```json theme={null}
 {
   "taskUid": 1,
   "indexUid": "books",
@@ -8312,7 +8260,7 @@ The code below adds a document to the `books` index and sets `reference_number` 
 
 **Response:**
 
-```json  theme={null}
+```json theme={null}
 {
   "taskUid": 1,
   "indexUid": "books",
@@ -8394,7 +8342,7 @@ The code below updates the primary key to `title`:
 
 **Response:**
 
-```json  theme={null}
+```json theme={null}
 {
   "taskUid": 1,
   "indexUid": "books",
@@ -8418,7 +8366,7 @@ This section covers some primary key errors and how to resolve them.
 
 This error occurs when you add documents to an index for the first time and Meilisearch finds multiple attributes ending with `id`. It can be resolved by [manually setting the index's primary key](#setting-the-primary-key-on-document-addition).
 
-```json  theme={null}
+```json theme={null}
 {
   "uid": 4,
   "indexUid": "books",
@@ -8446,7 +8394,7 @@ This error occurs when you add documents to an index for the first time and Meil
 
 This error occurs when you add documents to an index for the first time and none of them have an attribute ending with `id`. It can be resolved by [manually setting the index's primary key](#setting-the-primary-key-on-document-addition), or ensuring that all documents you add possess an `id` attribute.
 
-```json  theme={null}
+```json theme={null}
 {
   "uid": 1,
   "indexUid": "books",
@@ -8474,7 +8422,7 @@ This error occurs when you add documents to an index for the first time and none
 
 This happens when your document id does not have the correct [format](#formatting-the-document-id). The document id can only be of type integer or string, composed of alphanumeric characters `a-z A-Z 0-9`, hyphens `-`, and underscores `_`.
 
-```json  theme={null}
+```json theme={null}
 {
     "uid": 1,
     "indexUid": "books",
@@ -8502,7 +8450,7 @@ This happens when your document id does not have the correct [format](#formattin
 
 This error occurs when your index already has a primary key, but one of the documents you are trying to add is missing this attribute.
 
-```json  theme={null}
+```json theme={null}
 {
     "uid": 1,
     "indexUid": "books",
@@ -8543,25 +8491,25 @@ Meilisearch Cloud gives you access to a dedicated search preview interface. This
 Log into your [Meilisearch Cloud](https://cloud.meilisearch.com/login) account, navigate to your project, then click on "Search preview":
 
 <Frame>
-  <img src="https://mintcdn.com/meilisearch-6b28dec2/JZ1wsU7CEWrp9Xec/assets/images/search_preview/01-search-preview-menu.png?fit=max&auto=format&n=JZ1wsU7CEWrp9Xec&q=85&s=f76987596aa2549e5b7a3bdcf01eabe3" alt="Meilisearch Cloud's project menu with the last option, 'Search preview', selected" data-og-width="1504" width="1504" data-og-height="296" height="296" data-path="assets/images/search_preview/01-search-preview-menu.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/meilisearch-6b28dec2/JZ1wsU7CEWrp9Xec/assets/images/search_preview/01-search-preview-menu.png?w=280&fit=max&auto=format&n=JZ1wsU7CEWrp9Xec&q=85&s=a45bf80ae943b341a133504cfdc817d0 280w, https://mintcdn.com/meilisearch-6b28dec2/JZ1wsU7CEWrp9Xec/assets/images/search_preview/01-search-preview-menu.png?w=560&fit=max&auto=format&n=JZ1wsU7CEWrp9Xec&q=85&s=237d33e4fc16af7854af897643baa9f0 560w, https://mintcdn.com/meilisearch-6b28dec2/JZ1wsU7CEWrp9Xec/assets/images/search_preview/01-search-preview-menu.png?w=840&fit=max&auto=format&n=JZ1wsU7CEWrp9Xec&q=85&s=3e7111338fc0f0174e6b7ebf17747e05 840w, https://mintcdn.com/meilisearch-6b28dec2/JZ1wsU7CEWrp9Xec/assets/images/search_preview/01-search-preview-menu.png?w=1100&fit=max&auto=format&n=JZ1wsU7CEWrp9Xec&q=85&s=2476c6c1dd572bacb2f24c4819b04617 1100w, https://mintcdn.com/meilisearch-6b28dec2/JZ1wsU7CEWrp9Xec/assets/images/search_preview/01-search-preview-menu.png?w=1650&fit=max&auto=format&n=JZ1wsU7CEWrp9Xec&q=85&s=09a48b56403ecaeed20215a10741ff46 1650w, https://mintcdn.com/meilisearch-6b28dec2/JZ1wsU7CEWrp9Xec/assets/images/search_preview/01-search-preview-menu.png?w=2500&fit=max&auto=format&n=JZ1wsU7CEWrp9Xec&q=85&s=78e44a7733820aa7d36fc22db31fc5e2 2500w" />
+  <img alt="Meilisearch Cloud's project menu with the last option, 'Search preview', selected" />
 </Frame>
 
 Select the index you want to search on using the input on the left-hand side:
 
 <Frame>
-  <img src="https://mintcdn.com/meilisearch-6b28dec2/JZ1wsU7CEWrp9Xec/assets/images/search_preview/02-select-index.png?fit=max&auto=format&n=JZ1wsU7CEWrp9Xec&q=85&s=77ea975607d145e3a40bf7213a03d47f" alt="Meilisearch Cloud's search preview interface, with the index selecting input highlighted" data-og-width="1352" width="1352" data-og-height="758" height="758" data-path="assets/images/search_preview/02-select-index.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/meilisearch-6b28dec2/JZ1wsU7CEWrp9Xec/assets/images/search_preview/02-select-index.png?w=280&fit=max&auto=format&n=JZ1wsU7CEWrp9Xec&q=85&s=7534fa2c677e8ea88943bed5ecb7e55f 280w, https://mintcdn.com/meilisearch-6b28dec2/JZ1wsU7CEWrp9Xec/assets/images/search_preview/02-select-index.png?w=560&fit=max&auto=format&n=JZ1wsU7CEWrp9Xec&q=85&s=6747c82a7ae670be95cfc85582da7674 560w, https://mintcdn.com/meilisearch-6b28dec2/JZ1wsU7CEWrp9Xec/assets/images/search_preview/02-select-index.png?w=840&fit=max&auto=format&n=JZ1wsU7CEWrp9Xec&q=85&s=940e1a7b5e04711b9b448a94b13e442a 840w, https://mintcdn.com/meilisearch-6b28dec2/JZ1wsU7CEWrp9Xec/assets/images/search_preview/02-select-index.png?w=1100&fit=max&auto=format&n=JZ1wsU7CEWrp9Xec&q=85&s=a61bcc61998de872e1686453297e712b 1100w, https://mintcdn.com/meilisearch-6b28dec2/JZ1wsU7CEWrp9Xec/assets/images/search_preview/02-select-index.png?w=1650&fit=max&auto=format&n=JZ1wsU7CEWrp9Xec&q=85&s=173b4bc1373146fcc40e005725ca0c9a 1650w, https://mintcdn.com/meilisearch-6b28dec2/JZ1wsU7CEWrp9Xec/assets/images/search_preview/02-select-index.png?w=2500&fit=max&auto=format&n=JZ1wsU7CEWrp9Xec&q=85&s=644422c265c9669ac16ab518af9f57df 2500w" />
+  <img alt="Meilisearch Cloud's search preview interface, with the index selecting input highlighted" />
 </Frame>
 
 Then use the main input to perform plain keyword searches:
 
 <Frame>
-  <img src="https://mintcdn.com/meilisearch-6b28dec2/JZ1wsU7CEWrp9Xec/assets/images/search_preview/03-basic-search.png?fit=max&auto=format&n=JZ1wsU7CEWrp9Xec&q=85&s=c75c91a2bc553a7866088ba7239eeb61" alt="Meilisearch Cloud's search preview interface, with the search input selected and containing a search string" data-og-width="2090" width="2090" data-og-height="954" height="954" data-path="assets/images/search_preview/03-basic-search.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/meilisearch-6b28dec2/JZ1wsU7CEWrp9Xec/assets/images/search_preview/03-basic-search.png?w=280&fit=max&auto=format&n=JZ1wsU7CEWrp9Xec&q=85&s=2643f5e7b48e4ba84958080c1eb1e29a 280w, https://mintcdn.com/meilisearch-6b28dec2/JZ1wsU7CEWrp9Xec/assets/images/search_preview/03-basic-search.png?w=560&fit=max&auto=format&n=JZ1wsU7CEWrp9Xec&q=85&s=d305c27f77772e4e7b3a150468f47b1f 560w, https://mintcdn.com/meilisearch-6b28dec2/JZ1wsU7CEWrp9Xec/assets/images/search_preview/03-basic-search.png?w=840&fit=max&auto=format&n=JZ1wsU7CEWrp9Xec&q=85&s=6ff21a753d922be13bd267e026a547eb 840w, https://mintcdn.com/meilisearch-6b28dec2/JZ1wsU7CEWrp9Xec/assets/images/search_preview/03-basic-search.png?w=1100&fit=max&auto=format&n=JZ1wsU7CEWrp9Xec&q=85&s=ad7ab39b77c10ea86e9529ffe6941d29 1100w, https://mintcdn.com/meilisearch-6b28dec2/JZ1wsU7CEWrp9Xec/assets/images/search_preview/03-basic-search.png?w=1650&fit=max&auto=format&n=JZ1wsU7CEWrp9Xec&q=85&s=5a5e7c14fcc3e818fa4fa474ed537f13 1650w, https://mintcdn.com/meilisearch-6b28dec2/JZ1wsU7CEWrp9Xec/assets/images/search_preview/03-basic-search.png?w=2500&fit=max&auto=format&n=JZ1wsU7CEWrp9Xec&q=85&s=3d3e413b9182d7c2354516803895a0cc 2500w" />
+  <img alt="Meilisearch Cloud's search preview interface, with the search input selected and containing a search string" />
 </Frame>
 
 When debugging relevancy, you may want to activate the "Ranking score" option. This displays the overall [ranking score](/learn/relevancy/ranking_score) for each result, together with the score for each individual ranking rule:
 
 <Frame>
-  <img src="https://mintcdn.com/meilisearch-6b28dec2/JZ1wsU7CEWrp9Xec/assets/images/search_preview/04-score.png?fit=max&auto=format&n=JZ1wsU7CEWrp9Xec&q=85&s=fcf5955fde56ef32db913e2e49d87098" alt="The same search preview interface as in the previous image, but with the 'Ranking score' option turned on. Search results are the same, but include the document's ranking score" data-og-width="2070" width="2070" data-og-height="1122" height="1122" data-path="assets/images/search_preview/04-score.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/meilisearch-6b28dec2/JZ1wsU7CEWrp9Xec/assets/images/search_preview/04-score.png?w=280&fit=max&auto=format&n=JZ1wsU7CEWrp9Xec&q=85&s=32ae50e5f06a0c248519da3f2c3275af 280w, https://mintcdn.com/meilisearch-6b28dec2/JZ1wsU7CEWrp9Xec/assets/images/search_preview/04-score.png?w=560&fit=max&auto=format&n=JZ1wsU7CEWrp9Xec&q=85&s=8881ff71d939e731b6a25d9e81d22bd2 560w, https://mintcdn.com/meilisearch-6b28dec2/JZ1wsU7CEWrp9Xec/assets/images/search_preview/04-score.png?w=840&fit=max&auto=format&n=JZ1wsU7CEWrp9Xec&q=85&s=a787f99010a5619646d59e052e3bc59e 840w, https://mintcdn.com/meilisearch-6b28dec2/JZ1wsU7CEWrp9Xec/assets/images/search_preview/04-score.png?w=1100&fit=max&auto=format&n=JZ1wsU7CEWrp9Xec&q=85&s=1b2c09ae18d049e0e1a29720ac418843 1100w, https://mintcdn.com/meilisearch-6b28dec2/JZ1wsU7CEWrp9Xec/assets/images/search_preview/04-score.png?w=1650&fit=max&auto=format&n=JZ1wsU7CEWrp9Xec&q=85&s=c8c7721a8f287e1197f6a3920287e672 1650w, https://mintcdn.com/meilisearch-6b28dec2/JZ1wsU7CEWrp9Xec/assets/images/search_preview/04-score.png?w=2500&fit=max&auto=format&n=JZ1wsU7CEWrp9Xec&q=85&s=b8684593f617bd5ea06d8ddfa6c4fdbd 2500w" />
+  <img alt="The same search preview interface as in the previous image, but with the 'Ranking score' option turned on. Search results are the same, but include the document's ranking score" />
 </Frame>
 
 ## Configuring search options
@@ -8569,7 +8517,7 @@ When debugging relevancy, you may want to activate the "Ranking score" option. T
 Use the menu on the left-hand side to configure [sorting](/learn/filtering_and_sorting/sort_search_results) and [filtering](/learn/filtering_and_sorting/filter_search_results). These require you to first edit your index's sortable and filterable attributes. You may additionally configure any filterable attributes as facets. In this example, "Genres" is one of the configured facets:
 
 <Frame>
-  <img src="https://mintcdn.com/meilisearch-6b28dec2/JZ1wsU7CEWrp9Xec/assets/images/search_preview/05-sidebar-options.png?fit=max&auto=format&n=JZ1wsU7CEWrp9Xec&q=85&s=496df2a204905ce1790e751f27c85d95" alt="The sidebar of the search preview interface, with a handful of options, including 'Sort by', 'AI-powered search', 'Filters', and 'Genres'" data-og-width="522" width="522" data-og-height="1136" height="1136" data-path="assets/images/search_preview/05-sidebar-options.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/meilisearch-6b28dec2/JZ1wsU7CEWrp9Xec/assets/images/search_preview/05-sidebar-options.png?w=280&fit=max&auto=format&n=JZ1wsU7CEWrp9Xec&q=85&s=5a54cd1832662d28dd87c64a3d18d9ae 280w, https://mintcdn.com/meilisearch-6b28dec2/JZ1wsU7CEWrp9Xec/assets/images/search_preview/05-sidebar-options.png?w=560&fit=max&auto=format&n=JZ1wsU7CEWrp9Xec&q=85&s=f3f591fb90f0d123e292afe482b5d498 560w, https://mintcdn.com/meilisearch-6b28dec2/JZ1wsU7CEWrp9Xec/assets/images/search_preview/05-sidebar-options.png?w=840&fit=max&auto=format&n=JZ1wsU7CEWrp9Xec&q=85&s=a6d880b59d9d68e8b7eb311b42075944 840w, https://mintcdn.com/meilisearch-6b28dec2/JZ1wsU7CEWrp9Xec/assets/images/search_preview/05-sidebar-options.png?w=1100&fit=max&auto=format&n=JZ1wsU7CEWrp9Xec&q=85&s=3acb77a347622c09740320ee2ad8b92e 1100w, https://mintcdn.com/meilisearch-6b28dec2/JZ1wsU7CEWrp9Xec/assets/images/search_preview/05-sidebar-options.png?w=1650&fit=max&auto=format&n=JZ1wsU7CEWrp9Xec&q=85&s=4d3cd2ae15f267705679f06261a53ded 1650w, https://mintcdn.com/meilisearch-6b28dec2/JZ1wsU7CEWrp9Xec/assets/images/search_preview/05-sidebar-options.png?w=2500&fit=max&auto=format&n=JZ1wsU7CEWrp9Xec&q=85&s=539b0489a19d059290fc04c4076a130a 2500w" />
+  <img alt="The sidebar of the search preview interface, with a handful of options, including 'Sort by', 'AI-powered search', 'Filters', and 'Genres'" />
 </Frame>
 
 You can also perform [AI-powered searches](/learn/ai_powered_search/getting_started_with_ai_search) if this functionality has been enabled for your project.
@@ -8577,7 +8525,7 @@ You can also perform [AI-powered searches](/learn/ai_powered_search/getting_star
 Clicking on "Advanced parameters" gives you access to further customization options, including setting which document fields Meilisearch returns and explicitly declaring the search language:
 
 <Frame>
-  <img src="https://mintcdn.com/meilisearch-6b28dec2/JZ1wsU7CEWrp9Xec/assets/images/search_preview/06-sidebar-options-advanced.png?fit=max&auto=format&n=JZ1wsU7CEWrp9Xec&q=85&s=18df4070ee16ef721ffd1ce0eade99da" alt="The same sidebar as before with the 'Advanced parameters' option highlighted" data-og-width="522" width="522" data-og-height="1136" height="1136" data-path="assets/images/search_preview/06-sidebar-options-advanced.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/meilisearch-6b28dec2/JZ1wsU7CEWrp9Xec/assets/images/search_preview/06-sidebar-options-advanced.png?w=280&fit=max&auto=format&n=JZ1wsU7CEWrp9Xec&q=85&s=2c186955ad3f2c6c16979b079ccc165d 280w, https://mintcdn.com/meilisearch-6b28dec2/JZ1wsU7CEWrp9Xec/assets/images/search_preview/06-sidebar-options-advanced.png?w=560&fit=max&auto=format&n=JZ1wsU7CEWrp9Xec&q=85&s=0eb717769b58664824c6a86afc39b6d1 560w, https://mintcdn.com/meilisearch-6b28dec2/JZ1wsU7CEWrp9Xec/assets/images/search_preview/06-sidebar-options-advanced.png?w=840&fit=max&auto=format&n=JZ1wsU7CEWrp9Xec&q=85&s=476768119e39858b2c097b58ef039475 840w, https://mintcdn.com/meilisearch-6b28dec2/JZ1wsU7CEWrp9Xec/assets/images/search_preview/06-sidebar-options-advanced.png?w=1100&fit=max&auto=format&n=JZ1wsU7CEWrp9Xec&q=85&s=43f70047ce14dd28f7cfd4e7a9728892 1100w, https://mintcdn.com/meilisearch-6b28dec2/JZ1wsU7CEWrp9Xec/assets/images/search_preview/06-sidebar-options-advanced.png?w=1650&fit=max&auto=format&n=JZ1wsU7CEWrp9Xec&q=85&s=92444e11c5456f11367218d5ef9801fb 1650w, https://mintcdn.com/meilisearch-6b28dec2/JZ1wsU7CEWrp9Xec/assets/images/search_preview/06-sidebar-options-advanced.png?w=2500&fit=max&auto=format&n=JZ1wsU7CEWrp9Xec&q=85&s=cc0859ab30caecbb40a8ed44d0b5610b 2500w" />
+  <img alt="The same sidebar as before with the 'Advanced parameters' option highlighted" />
 </Frame>
 
 ## Exporting search options
@@ -8585,7 +8533,7 @@ Clicking on "Advanced parameters" gives you access to further customization opti
 You can export the full search query for further testing in other tools and environments. Click on the cloud icon next to "Advanced parameters", then choose to download a JSON file or copy the query to your clipboard:
 
 <Frame>
-  <img src="https://mintcdn.com/meilisearch-6b28dec2/JZ1wsU7CEWrp9Xec/assets/images/search_preview/07-sidebar-options-export.png?fit=max&auto=format&n=JZ1wsU7CEWrp9Xec&q=85&s=9e6674fb128f25eaaa250fdf3d8b96f1" alt="The same sidebar as before with the 'Export' option highlighted" data-og-width="522" width="522" data-og-height="1136" height="1136" data-path="assets/images/search_preview/07-sidebar-options-export.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/meilisearch-6b28dec2/JZ1wsU7CEWrp9Xec/assets/images/search_preview/07-sidebar-options-export.png?w=280&fit=max&auto=format&n=JZ1wsU7CEWrp9Xec&q=85&s=7bc7df86a83f5bf9536c9ea2d1e5f677 280w, https://mintcdn.com/meilisearch-6b28dec2/JZ1wsU7CEWrp9Xec/assets/images/search_preview/07-sidebar-options-export.png?w=560&fit=max&auto=format&n=JZ1wsU7CEWrp9Xec&q=85&s=89f2985263e3863b1a262f9596ba6d76 560w, https://mintcdn.com/meilisearch-6b28dec2/JZ1wsU7CEWrp9Xec/assets/images/search_preview/07-sidebar-options-export.png?w=840&fit=max&auto=format&n=JZ1wsU7CEWrp9Xec&q=85&s=6f2e675d5745f65daccac069b4bd5113 840w, https://mintcdn.com/meilisearch-6b28dec2/JZ1wsU7CEWrp9Xec/assets/images/search_preview/07-sidebar-options-export.png?w=1100&fit=max&auto=format&n=JZ1wsU7CEWrp9Xec&q=85&s=26e9f74ab8a735ce95fae0cb305afcfb 1100w, https://mintcdn.com/meilisearch-6b28dec2/JZ1wsU7CEWrp9Xec/assets/images/search_preview/07-sidebar-options-export.png?w=1650&fit=max&auto=format&n=JZ1wsU7CEWrp9Xec&q=85&s=cec58f4892d0f7684c6d842eeb76e7e2 1650w, https://mintcdn.com/meilisearch-6b28dec2/JZ1wsU7CEWrp9Xec/assets/images/search_preview/07-sidebar-options-export.png?w=2500&fit=max&auto=format&n=JZ1wsU7CEWrp9Xec&q=85&s=8c0dff9eb1a6c5c5831ce10af05ad69f 2500w" />
+  <img alt="The same sidebar as before with the 'Export' option highlighted" />
 </Frame>
 
 
@@ -8602,7 +8550,7 @@ Meilisearch is a **RESTful search API**. It aims to be a **ready-to-go solution*
 
 ## Demo
 
-[<img src="https://mintcdn.com/meilisearch-6b28dec2/AA65w-9bZrf-CgFA/assets/images/movies-demo-dark.gif?s=baae8cf6f1dbe895a8bf66fbd4a57c54" alt="Search bar updating results" data-og-width="1764" width="1764" data-og-height="932" height="932" data-path="assets/images/movies-demo-dark.gif" data-optimize="true" data-opv="3" />](https://where2watch.meilisearch.com/?utm_campaign=oss\&utm_source=docs\&utm_medium=what-is-meilisearch\&utm_content=gif)
+[<img alt="Search bar updating results" />](https://where2watch.meilisearch.com/?utm_campaign=oss\&utm_source=docs\&utm_medium=what-is-meilisearch\&utm_content=gif)
 *Meilisearch helps you find where to watch a movie at [where2watch.meilisearch.com](https://where2watch.meilisearch.com/?utm_campaign=oss\&utm_source=docs\&utm_medium=what-is-meilisearch\&utm_content=link).*
 
 ## Features
@@ -8692,6 +8640,12 @@ Meilisearch is optimized for information retrieval was not designed to be your m
 ## Create separate indexes for multiple languages
 
 If you have a multilingual dataset, create a separate index for each language.
+
+## Avoid creating too many indexes
+
+Due to the complexities of dynamic virtual address management, having more indexes than necessary can negatively impact performance.
+
+What constitutes too many indexes depends on your specific setup. If you notice significant performance degradation when performing multi-index searches, try to reduce the number of indexes in your instance.
 
 ## Remove I/O operation limits
 
@@ -8805,7 +8759,7 @@ The [`localizedAttributes` setting](/reference/api/settings#localized-attributes
 
 For example, if your dataset contains multilingual titles, you can declare which attribute belongs to which language:
 
-```json  theme={null}
+```json theme={null}
 {
   "id": 1,
   "title_en": "Danube Steamship Company",
@@ -8814,7 +8768,7 @@ For example, if your dataset contains multilingual titles, you can declare which
 }
 ```
 
-```javascript  theme={null}
+```javascript theme={null}
 client.index('INDEX_NAME').updateLocalizedAttributes([
   { attributePatterns: ['*_en'], locales: ['eng'] },
   { attributePatterns: ['*_de'], locales: ['deu'] },
@@ -8826,7 +8780,7 @@ client.index('INDEX_NAME').updateLocalizedAttributes([
 
 When performing searches, you can specify [query locales](/reference/api/search#query-locales) to ensure queries are tokenized with the correct rules.
 
-```javascript  theme={null}
+```javascript theme={null}
 client.index('INDEX_NAME').search('schiff', { locales: ['deu'] })
 ```
 
@@ -8854,7 +8808,7 @@ The `progressTrace` field within the batch object offers a detailed breakdown of
 `progressTrace` is a hierarchical trace showing each phase of indexing and how long it took.
 Each entry follows the structure:
 
-```json  theme={null}
+```json theme={null}
 "processing tasks > indexing > extracting word proximity": "33.71s"
 ```
 
@@ -8900,9 +8854,9 @@ Focus on the **longest-running steps** and investigate which index settings or d
 
 ### `waiting for extractors`
 
-| Description                                  | Optimization                                                                                                                                 |
-| -------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
-| Time spent waiting for CPU-bound extraction. | No direct optimization possible. Indicates a CPU bottleneck. Use more cores or scale horizontally with [sharding](/learn/advanced/sharding). |
+| Description                                  | Optimization                                                                                                                                               |
+| -------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Time spent waiting for CPU-bound extraction. | No direct optimization possible. Indicates a CPU bottleneck. Use more cores or scale horizontally with [sharding](/learn/multi_search/implement_sharding). |
 
 ### `post processing facets > strings bulk` / `numbers bulk`
 
@@ -8918,9 +8872,10 @@ Focus on the **longest-running steps** and investigate which index settings or d
 
 ### Embeddings
 
-| Trace key                        | Description                          | Optimization                                                                                                                                                                                                                            |
-| -------------------------------- | ------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `writing embeddings to database` | Time spent saving vector embeddings. | Use embedding vectors with fewer dimensions. <br />- [Disabling embedding regeneration on document update](/reference/api/documents#vectors). <br />- Consider enabling [binary quantization](/reference/api/settings#binaryquantized). |
+| Trace key                        | Description                                                           | Optimization                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
+| -------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `writing embeddings to database` | Time spent saving vector embeddings.                                  | Use embedding vectors with fewer dimensions. <br />- Consider enabling [binary quantization](/reference/api/settings#binaryquantized).                                                                                                                                                                                                                                                                                                                                            |
+| `extracting embeddings`          | Time spent extracting embeddings from embedding providers' responses. | Reduce the amount of data sent to embeddings provider. <br />- [Include fewer attributes in `documentTemplate`](/learn/ai_powered_search/document_template_best_practices). <br />- [Reduce maximum size of the document template](/reference/api/settings#update-embedder-settings). <br />- [Disabling embedding regeneration on document update](/reference/api/documents#vectors). <br />- If using a third-party service like OpenAI, upgrade your account to a higher tier. |
 
 ### `post processing words > word prefix *`
 
@@ -8938,13 +8893,13 @@ Focus on the **longest-running steps** and investigate which index settings or d
 
 If you see:
 
-```json  theme={null}
+```json theme={null}
 "processing tasks > indexing > post processing facets > facet search": "1763.06s"
 ```
 
 [Facet searching](/learn/filtering_and_sorting/search_with_facet_filters#searching-facet-values) is raking significant indexing time. If your application doesn’t use facets, disable the feature:
 
-```bash  theme={null}
+```bash theme={null}
 curl \
   -X PUT 'MEILISEARCH_URL/indexes/INDEX_UID/settings/facet-search' \
   -H 'Content-Type: application/json' \
@@ -9031,6 +8986,18 @@ Send a `PATCH` request targeting the index you want to rename:
     --data-binary '{ "uid": "INDEX_B" }'
   ```
 
+  ```python Python theme={null}
+  client.index("INDEX_A").update(new_uid="INDEX_B")
+  ```
+
+  ```java Java theme={null}
+  client.updateIndex("indexA", null, "indexB");
+  ```
+
+  ```ruby Ruby theme={null}
+  client.index('indexA').update(uid: 'indexB')
+  ```
+
   ```rust Rust theme={null}
   curl \
     -X PATCH 'MEILISEARCH_URL/indexes/INDEX_A' \
@@ -9072,10 +9039,6 @@ Source: https://www.meilisearch.com/docs/learn/multi_search/implement_sharding
 
 This guide walks you through implementing a sharding strategy by activating the `/network` route, configuring the network object, and performing remote federated searches.
 
-export const NoticeTag = ({label}) => <span className="noticeTag noticeTag--{ label }">
-    {label}
-  </span>;
-
 Sharding is the process of splitting an index containing many documents into multiple smaller indexes, often called shards. This horizontal scaling technique is useful when handling large databases. In Meilisearch, the best way to implement a sharding strategy is to use remote federated search.
 
 This guide walks you through activating the `/network` route, configuring the network object, and performing remote federated searches.
@@ -9104,7 +9067,7 @@ If you are using Meilisearch Cloud, contact support to enable this feature in yo
 
 Use the `/experimental-features` route to enable `network`:
 
-```sh  theme={null}
+```sh theme={null}
 curl \
   -X PATCH 'MEILISEARCH_URL/experimental-features/' \
   -H 'Content-Type: application/json'  \
@@ -9127,7 +9090,7 @@ Next, you must configure the network object. It consists of the following fields
 
 Use the `/network` route to configure the `remotes` field of the network object. `remotes` should be an object containing one or more objects. Each one of the nested objects should consist of the name of each instance, associated with its URL and an API key with search permission:
 
-```sh  theme={null}
+```sh theme={null}
 curl \
   -X PATCH 'MEILISEARCH_URL/network' \
   -H 'Content-Type: application/json' \
@@ -9156,7 +9119,7 @@ Configure the entire set of remote instances in your sharded database, making su
 
 Now all instances share the same list of remotes, set the `self` field to specify which of the remotes corresponds to the current instance:
 
-```sh  theme={null}
+```sh theme={null}
 curl \
   -X PATCH 'MEILISEARCH_URL/network' \
   -H 'Content-Type: application/json' \
@@ -9171,7 +9134,7 @@ Meilisearch processes searches on the remote that corresponds to `self` locally 
 
 Finally enable the automatic sharding of documents by Meilisearch on all instances:
 
-```sh  theme={null}
+```sh theme={null}
 curl \
   -X PATCH 'MEILISEARCH_URL/network' \
   -H 'Content-Type: application/json' \
@@ -9247,7 +9210,6 @@ Send your federated search request containing one query per instance:
           }
         }
       ]
-    }'
   ```
 </CodeGroup>
 
@@ -9300,7 +9262,7 @@ Download the following datasets: <a href="/assets/datasets/crm-chats.json">`crm-
 
 Add the datasets to Meilisearch and create three separate indexes, `profiles`, `chats`, and `tickets`:
 
-```sh  theme={null}
+```sh theme={null}
 curl  -X POST 'MEILISEARCH_URL/indexes/profiles'  -H 'Content-Type: application/json'  --data-binary @crm-profiles.json &&
 curl  -X POST 'MEILISEARCH_URL/indexes/chats'  -H 'Content-Type: application/json'  --data-binary @crm-chats.json &&
 curl  -X POST 'MEILISEARCH_URL/indexes/tickets'  -H 'Content-Type: application/json'  --data-binary @crm-tickets.json
@@ -9314,7 +9276,7 @@ When you are looking for Natasha Nguyen's email address in your CRM application,
 
 Use the `/multi-search` endpoint with the `federation` parameter to query the three indexes simultaneously:
 
-```sh  theme={null}
+```sh theme={null}
 curl \
   -X POST 'MEILISEARCH_URL/multi-search' \
   -H 'Content-Type: application/json' \
@@ -9339,7 +9301,7 @@ curl \
 
 Meilisearch should respond with a single list of search results:
 
-```json  theme={null}
+```json theme={null}
 {
   "hits": [
     {
@@ -9368,7 +9330,7 @@ Since this is a CRM application, users have profiles with their preferred contac
 
 Use the `weight` property of the `federation` parameter to boost results coming from a specific query:
 
-```sh  theme={null}
+```sh theme={null}
 curl \
   -X POST 'MEILISEARCH_URL/multi-search' \
   -H 'Content-Type: application/json' \
@@ -9396,7 +9358,7 @@ curl \
 
 This request will lead to results from the query targeting `profile` ranking higher than documents from other queries:
 
-```json  theme={null}
+```json theme={null}
 {
   "hits": [
   {
@@ -9443,7 +9405,7 @@ Open a support ticket requesting Meilisearch to activate search personalization 
 
 Relaunch your instance using the search personalization instance option:
 
-```sh  theme={null}
+```sh theme={null}
 meilisearch --experimental-personalization-api-key="COHERE_API_KEY"
 ```
 
@@ -9466,7 +9428,7 @@ Once search personalization is active and you have a pipeline in place to genera
 
 Submit a search query and include the `personalize` search parameter. `personalize` must be an object with a single field, `userContext`. Use the description you generated in the previous step as the value for `userContext`:
 
-```sh  theme={null}
+```sh theme={null}
 curl \
   -X POST 'MEILISEARCH_URL/indexes/INDEX_NAME/search' \
   -H 'Content-Type: application/json' \
@@ -9523,7 +9485,7 @@ If you manually configure [the searchable attributes list](/learn/relevancy/disp
 
 ## Example
 
-```json  theme={null}
+```json theme={null}
 [
   "title",
   "overview",
@@ -9537,7 +9499,7 @@ With the above attribute ranking order, matching words found in the `title` fiel
 
 By default, nested fields share the same weight as their parent attribute. Use dot notation to set different weights for attributes in nested objects:
 
-```json  theme={null}
+```json theme={null}
 [
   "title",
   "review.critic",
@@ -9560,8 +9522,6 @@ Custom ranking rules promote certain documents over other search results that ar
 
 There are two types of ranking rules in Meilisearch: [built-in ranking rules](/learn/relevancy/ranking_rules) and custom ranking rules. This article describes the main aspects of using and configuring custom ranking rules.
 
-Custom ranking rules promote certain documents over other search results that are otherwise equally relevant.
-
 ## Ascending and descending sorting rules
 
 Meilisearch supports two types of custom rules: one for ascending sort and one for descending sort.
@@ -9575,6 +9535,14 @@ To add a custom ranking rule, you have to communicate the attribute name followe
 **The attribute must have either a numeric or a string value** in all of the documents contained in that index.
 
 You can add this rule to the existing list of ranking rules using the [update settings endpoint](/reference/api/settings#update-settings) or [update ranking rules endpoint](/reference/api/settings#update-ranking-rules).
+
+## How to use custom ranking rules
+
+Custom ranking rules sort results in lexicographical order. For example, `Elena` will rank higher than `Ryu` and lower than `11` in a descending sort.
+
+Since this operation does not take into consideration document relevancy, in the majority of cases you should place custom ranking rules after the built-in ranking rules. This ensures that results are first sorted by relevancy, and the lexicographical sorting takes place only when two or more documents share the same ranking score.
+
+Setting a custom ranking rule at a high position may result in a degraded search experience, since users will see documents in alphanumerical order instead of sorted by relevance.
 
 ## Example
 
@@ -9594,7 +9562,7 @@ movie_ranking:desc
 
 The following array includes all built-in ranking rules and places the custom rules at the bottom of the processing order:
 
-```json  theme={null}
+```json theme={null}
 [
   "words",
   "typo",
@@ -9951,7 +9919,7 @@ Suppose you have an e-commerce dataset. For an index that contains information a
 
 As shown below, this dataset contains three documents representing different versions of a Lee jeans leather jacket. One of the jackets is brown, one is black, and the last one is blue.
 
-```json  theme={null}
+```json theme={null}
 [
   {
     "id": 1,
@@ -10045,7 +10013,7 @@ By setting `distinctAttribute` to `product_id`, search requests **will never ret
 
 After setting the distinct attribute as shown above, querying for `lee leather jacket` would only return the first document found. The response would look like this:
 
-```json  theme={null}
+```json theme={null}
 {
   "hits": [
     {
@@ -10213,7 +10181,7 @@ Built-in ranking rules are the core of Meilisearch's relevancy calculations.
 
 Meilisearch contains six built-in ranking rules in the following order:
 
-```json  theme={null}
+```json theme={null}
 [
   "words",
   "typo",
@@ -10271,7 +10239,7 @@ Results are sorted by **the similarity of the matched words with the query words
 <Tabs>
   <Tab title="Typo">
     <Frame>
-      <img src="https://mintcdn.com/meilisearch-6b28dec2/JZ1wsU7CEWrp9Xec/assets/images/ranking-rules/vogli3.png?fit=max&auto=format&n=JZ1wsU7CEWrp9Xec&q=85&s=319f9f3f8c558fe1a8c94de4992f4d75" alt="Demonstrating the typo ranking rule by searching for 'vogli'" data-og-width="1282" width="1282" data-og-height="792" height="792" data-path="assets/images/ranking-rules/vogli3.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/meilisearch-6b28dec2/JZ1wsU7CEWrp9Xec/assets/images/ranking-rules/vogli3.png?w=280&fit=max&auto=format&n=JZ1wsU7CEWrp9Xec&q=85&s=6d931272de3ee910c85162beddc8c9af 280w, https://mintcdn.com/meilisearch-6b28dec2/JZ1wsU7CEWrp9Xec/assets/images/ranking-rules/vogli3.png?w=560&fit=max&auto=format&n=JZ1wsU7CEWrp9Xec&q=85&s=c58750b8345194550ef22f577d9b19a0 560w, https://mintcdn.com/meilisearch-6b28dec2/JZ1wsU7CEWrp9Xec/assets/images/ranking-rules/vogli3.png?w=840&fit=max&auto=format&n=JZ1wsU7CEWrp9Xec&q=85&s=0159ecd910b53a81784b7dafca3d25e6 840w, https://mintcdn.com/meilisearch-6b28dec2/JZ1wsU7CEWrp9Xec/assets/images/ranking-rules/vogli3.png?w=1100&fit=max&auto=format&n=JZ1wsU7CEWrp9Xec&q=85&s=7d4c58b92f234bcc06d7b1b9d0f52373 1100w, https://mintcdn.com/meilisearch-6b28dec2/JZ1wsU7CEWrp9Xec/assets/images/ranking-rules/vogli3.png?w=1650&fit=max&auto=format&n=JZ1wsU7CEWrp9Xec&q=85&s=0106068bbc92126dcbbee85ff3e9f0b3 1650w, https://mintcdn.com/meilisearch-6b28dec2/JZ1wsU7CEWrp9Xec/assets/images/ranking-rules/vogli3.png?w=2500&fit=max&auto=format&n=JZ1wsU7CEWrp9Xec&q=85&s=94548519d854614f01e9371ee1ef2500 2500w" />
+      <img alt="Demonstrating the typo ranking rule by searching for 'vogli'" />
     </Frame>
 
     ### Typo
@@ -10284,7 +10252,7 @@ Results are sorted by **the similarity of the matched words with the query words
 
   <Tab title="Proximity">
     <Frame>
-      <img src="https://mintcdn.com/meilisearch-6b28dec2/JZ1wsU7CEWrp9Xec/assets/images/ranking-rules/new_road.png?fit=max&auto=format&n=JZ1wsU7CEWrp9Xec&q=85&s=69d1a2b3a87a8a0d2a7c37d5ffd26bf3" alt="Demonstrating the proximity ranking rule by searching for 'new road'" data-og-width="1334" width="1334" data-og-height="822" height="822" data-path="assets/images/ranking-rules/new_road.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/meilisearch-6b28dec2/JZ1wsU7CEWrp9Xec/assets/images/ranking-rules/new_road.png?w=280&fit=max&auto=format&n=JZ1wsU7CEWrp9Xec&q=85&s=9c64ac58c858e5118f5a885f796a3241 280w, https://mintcdn.com/meilisearch-6b28dec2/JZ1wsU7CEWrp9Xec/assets/images/ranking-rules/new_road.png?w=560&fit=max&auto=format&n=JZ1wsU7CEWrp9Xec&q=85&s=38698a58612d78c869cf098908b4d054 560w, https://mintcdn.com/meilisearch-6b28dec2/JZ1wsU7CEWrp9Xec/assets/images/ranking-rules/new_road.png?w=840&fit=max&auto=format&n=JZ1wsU7CEWrp9Xec&q=85&s=ab790d9ef503b27f90d4b8a0f01ccebe 840w, https://mintcdn.com/meilisearch-6b28dec2/JZ1wsU7CEWrp9Xec/assets/images/ranking-rules/new_road.png?w=1100&fit=max&auto=format&n=JZ1wsU7CEWrp9Xec&q=85&s=78bcce8de37f2a91599431de1bfea671 1100w, https://mintcdn.com/meilisearch-6b28dec2/JZ1wsU7CEWrp9Xec/assets/images/ranking-rules/new_road.png?w=1650&fit=max&auto=format&n=JZ1wsU7CEWrp9Xec&q=85&s=556e103b525ff7f3716926bfe3de0449 1650w, https://mintcdn.com/meilisearch-6b28dec2/JZ1wsU7CEWrp9Xec/assets/images/ranking-rules/new_road.png?w=2500&fit=max&auto=format&n=JZ1wsU7CEWrp9Xec&q=85&s=d9f59cb3562c3cf58bc7f1f672cdde62 2500w" />
+      <img alt="Demonstrating the proximity ranking rule by searching for 'new road'" />
     </Frame>
 
     ### Proximity
@@ -10296,7 +10264,7 @@ Results are sorted by **the similarity of the matched words with the query words
 
   <Tab title="Attribute">
     <Frame>
-      <img src="https://mintcdn.com/meilisearch-6b28dec2/JZ1wsU7CEWrp9Xec/assets/images/ranking-rules/belgium.png?fit=max&auto=format&n=JZ1wsU7CEWrp9Xec&q=85&s=746e2f7fa1a584ea468bddba2ec195ed" alt="Demonstrating the attribute ranking rule by searching for 'belgium'" data-og-width="1330" width="1330" data-og-height="930" height="930" data-path="assets/images/ranking-rules/belgium.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/meilisearch-6b28dec2/JZ1wsU7CEWrp9Xec/assets/images/ranking-rules/belgium.png?w=280&fit=max&auto=format&n=JZ1wsU7CEWrp9Xec&q=85&s=46c4cdae0f78d826b4e02821eb9ebc09 280w, https://mintcdn.com/meilisearch-6b28dec2/JZ1wsU7CEWrp9Xec/assets/images/ranking-rules/belgium.png?w=560&fit=max&auto=format&n=JZ1wsU7CEWrp9Xec&q=85&s=4a6d4f52ca8246b0b98a1b929ea9a8ea 560w, https://mintcdn.com/meilisearch-6b28dec2/JZ1wsU7CEWrp9Xec/assets/images/ranking-rules/belgium.png?w=840&fit=max&auto=format&n=JZ1wsU7CEWrp9Xec&q=85&s=f6610c4068ea04e5d2d675371a3afa2e 840w, https://mintcdn.com/meilisearch-6b28dec2/JZ1wsU7CEWrp9Xec/assets/images/ranking-rules/belgium.png?w=1100&fit=max&auto=format&n=JZ1wsU7CEWrp9Xec&q=85&s=96673c98d27ceb6f19c0eccad9e0d0d0 1100w, https://mintcdn.com/meilisearch-6b28dec2/JZ1wsU7CEWrp9Xec/assets/images/ranking-rules/belgium.png?w=1650&fit=max&auto=format&n=JZ1wsU7CEWrp9Xec&q=85&s=3b8e75664c38fcd6e0166ca4574b4f70 1650w, https://mintcdn.com/meilisearch-6b28dec2/JZ1wsU7CEWrp9Xec/assets/images/ranking-rules/belgium.png?w=2500&fit=max&auto=format&n=JZ1wsU7CEWrp9Xec&q=85&s=cf7aeefcbf01514851ed81c2458cd1e9 2500w" />
+      <img alt="Demonstrating the attribute ranking rule by searching for 'belgium'" />
     </Frame>
 
     ### Attribute
@@ -10308,7 +10276,7 @@ Results are sorted by **the similarity of the matched words with the query words
 
   <Tab title="Exactness">
     <Frame>
-      <img src="https://mintlify.s3.us-west-1.amazonaws.com/meilisearch-6b28dec2/assets/images/ranking-rules/knight.png%3Fraw=true" alt="Demonstrating the exactness ranking rule by searching for 'Knight'" />
+      <img alt="Demonstrating the exactness ranking rule by searching for 'Knight'" />
     </Frame>
 
     ### Exactness
@@ -10486,7 +10454,7 @@ All synonyms are **lowercased** and **de-unicoded** during the indexing process.
 
 Consider a situation where `Résumé` and `CV` are set as synonyms.
 
-```json  theme={null}
+```json theme={null}
 {
   "Résumé": [
     "CV"
@@ -10515,7 +10483,7 @@ However, if you search for `iphone`, documents containing `phone` will be ranked
 
 To create a one-way synonym list, this is the JSON syntax that should be [added to the settings](/reference/api/settings#update-synonyms).
 
-```json  theme={null}
+```json theme={null}
 {
   "phone": [
     "iphone"
@@ -10529,7 +10497,7 @@ To create a one-way synonym list, this is the JSON syntax that should be [added 
 
 Taking the following set of search results:
 
-```json  theme={null}
+```json theme={null}
 [
   {
     "id": 0,
@@ -10558,7 +10526,7 @@ When a search is done with one of these words, all synonyms will be considered a
 
 To create a mutual association between four words, this is the JSON syntax that should be [added to the settings](/reference/api/settings#update-synonyms).
 
-```json  theme={null}
+```json theme={null}
 {
   "shoe": [
     "boot",
@@ -10591,7 +10559,7 @@ Meilisearch treats multi-word synonyms as [phrases](/reference/api/search#phrase
 
 Suppose you set `San Francisco` and `SF` as synonyms with a [mutual association](#mutual-association)
 
-```json  theme={null}
+```json theme={null}
 {
   "san francisco": [
     "sf"
@@ -11026,7 +10994,6 @@ You can disable typo tolerance for a specific [document attribute](/learn/gettin
     disable_on_words: None,
     min_word_size_for_typos: None,
   };
-
   let task: TaskInfo = client
     .index("movies")
     .set_typo_tolerance(&typo_tolerance)
@@ -11088,7 +11055,7 @@ There are many search engines on the web, both open-source and otherwise. Decidi
 
 Note: we are only listing libraries officially supported by the internal teams of each different search engine.
 
-Can't find a client you'd like us to support? [Submit your idea or vote for it](https://roadmap.meilisearch.com/tabs/1-under-consideration) 😇
+Can't find a client you'd like us to support? [Submit your idea here](https://github.com/orgs/meilisearch/discussions)
 
 | SDK                                                                                                           | Meilisearch | Algolia |   Typesense   |               Elasticsearch               |   |
 | ------------------------------------------------------------------------------------------------------------- | :---------: | :-----: | :-----------: | :---------------------------------------: | - |
@@ -11104,7 +11071,7 @@ Can't find a client you'd like us to support? [Submit your idea or vote for it](
 | [Go client](https://github.com/meilisearch/meilisearch-go)                                                    |      ✅      |    ✅    |       ✅       |                     ✅                     |   |
 | [Dart client](https://github.com/meilisearch/meilisearch-dart)                                                |      ✅      |    ✅    |       ✅       |                     ❌                     |   |
 | [Symfony](https://github.com/meilisearch/meilisearch-symfony)                                                 |      ✅      |    ✅    |       ✅       |                     ❌                     |   |
-| [Django](https://roadmap.meilisearch.com/c/60-django)                                                         |      ❌      |    ✅    |       ❌       |                     ❌                     |   |
+| Django                                                                                                        |      ❌      |    ✅    |       ❌       |                     ❌                     |   |
 | [Rails](https://github.com/meilisearch/meilisearch-rails)                                                     |      ✅      |    ✅    |  🔶 <br />WIP |                     ✅                     |   |
 | [Official Laravel Scout Support](https://github.com/laravel/scout)                                            |      ✅      |    ✅    |       ✅       | ❌ <br /> Available as a standalone module |   |
 | [Instantsearch](https://github.com/meilisearch/meilisearch-js-plugins/tree/main/packages/instant-meilisearch) |      ✅      |    ✅    |       ✅       |                     ✅                     |   |
@@ -11150,18 +11117,18 @@ Can't find a client you'd like us to support? [Submit your idea or vote for it](
 
 ##### Search
 
-|                                                                                                                            |                            Meilisearch                           |                                                         Algolia                                                         |                                                              Typesense                                                             | Elasticsearch |
-| -------------------------------------------------------------------------------------------------------------------------- | :--------------------------------------------------------------: | :---------------------------------------------------------------------------------------------------------------------: | :--------------------------------------------------------------------------------------------------------------------------------: | :-----------: |
-| Placeholder search                                                                                                         |                                 ✅                                |                                                            ✅                                                            |                                                                  ✅                                                                 |       ✅       |
-| Multi-index search                                                                                                         |                                 ✅                                |                                                            ✅                                                            |                                                                  ✅                                                                 |       ✅       |
-| Federated search                                                                                                           |                                 ✅                                |                                                            ❌                                                            |                                                                  ❌                                                                 |       ✅       |
-| Exact phrase search                                                                                                        |                                 ✅                                |                                                            ✅                                                            |                                                                  ✅                                                                 |       ✅       |
-| Geo search                                                                                                                 |                                 ✅                                |                                                            ✅                                                            |                                                                  ✅                                                                 |       ✅       |
-| Sort by                                                                                                                    |                                 ✅                                | 🔶 <br /> Limited to one `sort_by` rule per index. Indexes may have to be duplicated for each sort field and sort order |                                            ✅ <br /> Up to 3 sort fields per search query                                           |       ✅       |
-| Filtering                                                                                                                  | ✅ <br /> Support complex filter queries with an SQL-like syntax. |                             🔶 <br /> Does not support `OR` operation across multiple fields                            |                                                                  ✅                                                                 |       ✅       |
-| Faceted search                                                                                                             |                                 ✅                                |                                                            ✅                                                            | ✅ <br /> Faceted fields must be searchable <br /> Faceting can take several seconds when >10 million facet values must be returned |       ✅       |
-| Distinct attributes <br /><div style={{color: "#A9A9A9", fontSize: "0.9em"}}>De-duplicate documents by a field value</div> |                                 ✅                                |                                                            ✅                                                            |                                                                  ✅                                                                 |       ✅       |
-| Grouping <br /><div style={{color: "#A9A9A9", fontSize: "0.9em"}}>Bucket documents by field values</div>                   |                                 ❌                                |                                                            ✅                                                            |                                                                  ✅                                                                 |       ✅       |
+|                                                                              |                            Meilisearch                           |                                                         Algolia                                                         |                                                              Typesense                                                             | Elasticsearch |
+| ---------------------------------------------------------------------------- | :--------------------------------------------------------------: | :---------------------------------------------------------------------------------------------------------------------: | :--------------------------------------------------------------------------------------------------------------------------------: | :-----------: |
+| Placeholder search                                                           |                                 ✅                                |                                                            ✅                                                            |                                                                  ✅                                                                 |       ✅       |
+| Multi-index search                                                           |                                 ✅                                |                                                            ✅                                                            |                                                                  ✅                                                                 |       ✅       |
+| Federated search                                                             |                                 ✅                                |                                                            ❌                                                            |                                                                  ❌                                                                 |       ✅       |
+| Exact phrase search                                                          |                                 ✅                                |                                                            ✅                                                            |                                                                  ✅                                                                 |       ✅       |
+| Geo search                                                                   |                                 ✅                                |                                                            ✅                                                            |                                                                  ✅                                                                 |       ✅       |
+| Sort by                                                                      |                                 ✅                                | 🔶 <br /> Limited to one `sort_by` rule per index. Indexes may have to be duplicated for each sort field and sort order |                                            ✅ <br /> Up to 3 sort fields per search query                                           |       ✅       |
+| Filtering                                                                    | ✅ <br /> Support complex filter queries with an SQL-like syntax. |                             🔶 <br /> Does not support `OR` operation across multiple fields                            |                                                                  ✅                                                                 |       ✅       |
+| Faceted search                                                               |                                 ✅                                |                                                            ✅                                                            | ✅ <br /> Faceted fields must be searchable <br /> Faceting can take several seconds when >10 million facet values must be returned |       ✅       |
+| Distinct attributes <br /><div>De-duplicate documents by a field value</div> |                                 ✅                                |                                                            ✅                                                            |                                                                  ✅                                                                 |       ✅       |
+| Grouping <br /><div>Bucket documents by field values</div>                   |                                 ❌                                |                                                            ✅                                                            |                                                                  ✅                                                                 |       ✅       |
 
 ##### AI-powered search
 
@@ -11374,7 +11341,7 @@ When contributing content to the Meilisearch docs, store screenshots, images, GI
 
 The build process does not currently support static assets with relative paths. When adding them to a document, make sure the asset URL points to the raw GitHub file address:
 
-```markdown  theme={null}
+```markdown theme={null}
 \!\[Image description\]\(https://raw.githubusercontent.com/meilisearch/documentation/[branch_name]/assets/images/[guide_name]/diagram.png\)
 ```
 
@@ -11479,8 +11446,8 @@ There are many ways to contribute to Meilisearch directly as well, such as:
 * Contributing to the [main engine](https://github.com/meilisearch/meilisearch/blob/main/CONTRIBUTING.md)
 * Contributing to [our integrations](https://github.com/meilisearch/integration-guides)
   * [Creating an integration](https://github.com/meilisearch/integration-guides/blob/main/resources/build-integration.md)
+* Share your feedback and usecases on our [GitHub Discussions](https://github.com/orgs/meilisearch/discussions)
 * Creating written or video content (tutorials, blog posts, etc.)
-* Voting on our [public roadmap](https://roadmap.meilisearch.com/tabs/5-ideas)
 
 There are also many valuable ways of supporting the above repositories:
 
@@ -11514,7 +11481,7 @@ Experimental features fall into two groups based on how they are activated or de
 
 Some experimental features can be [activated at launch](/learn/self_hosted/configure_meilisearch_at_launch), for example with a command-line flag:
 
-```sh  theme={null}
+```sh theme={null}
 ./meilisearch --experimental-enable-metrics
 ```
 
@@ -11618,7 +11585,7 @@ Your document upload probably failed. To understand why, please check the status
 
 Here is an example of a failed task:
 
-```json  theme={null}
+```json theme={null}
 {
     "uid": 1,
     "indexUid": "movies",
@@ -11651,9 +11618,7 @@ More information in the [asynchronous operations guide](/learn/async/asynchronou
 
 ## Do you provide a public roadmap for Meilisearch and its integration tools?
 
-Yes, as Meilisearch and its integration tools are open source, we maintain a [public roadmap](https://roadmap.meilisearch.com/) for the general features we plan to do.
-
-For more accurate features and issues, everything is detailed in the issues of all our [GitHub repositories](https://github.com/meilisearch/meilisearch/issues).
+Yes, we maintain a [public roadmap](https://roadmap.meilisearch.com/). You will be able to see what we plan to do in the future and our on-going projects.
 
 ## What are the recommended requirements for hosting a Meilisearch instance?
 
@@ -11819,26 +11784,26 @@ If your query is `Hello - World`:
 
 The following filter is composed of a number of filter expressions. Since these statements are all chained with `OR` operators, there is no nesting:
 
-```sql  theme={null}
+```sql theme={null}
 genre = "romance" OR genre = "horror" OR genre = "adventure"
 ```
 
 Replacing `OR` with `AND` does not change the filter structure. The following filter's nesting level remains 1:
 
-```sql  theme={null}
+```sql theme={null}
 genre = "romance" AND genre = "horror" AND genre = "adventure"
 ```
 
 Nesting only occurs when alternating `AND` and `OR` operators. The following example fetches documents that either belong only to `user` `1`, or belong to users `2` and `3`:
 
-```sql  theme={null}
+```sql theme={null}
 # AND is nested inside OR, creating a second level of nesting
 user = 1 OR user = 2 AND user = 3
 ```
 
 Adding parentheses can help visualizing nesting depth:
 
-```sql  theme={null}
+```sql theme={null}
 # Depth 2
 user = 1 OR (user = 2 AND user = 3)
 
@@ -12054,20 +12019,20 @@ Data collection can be disabled at any time by setting a command-line option or 
 
 <Tabs>
   <Tab title="Command-line option">
-    ```bash  theme={null}
+    ```bash theme={null}
     meilisearch --no-analytics
     ```
   </Tab>
 
   <Tab title="Environment variable">
-    ```bash  theme={null}
+    ```bash theme={null}
     export MEILI_NO_ANALYTICS=true
     meilisearch
     ```
   </Tab>
 
   <Tab title="With systemctl">
-    ```bash  theme={null}
+    ```bash theme={null}
     # First, open /etc/systemd/system/meilisearch.service with a text editor:
 
     nano /etc/systemd/system/meilisearch.service
@@ -12336,7 +12301,7 @@ Meilisearch Cloud automatically generates a master key for each project. This me
 You can view your master key by visiting your project settings, then clicking "API Keys" on the sidebar:
 
 <Frame>
-  <img src="https://mintcdn.com/meilisearch-6b28dec2/pdzkg8J6JAejKYyu/assets/images/security/01-master-api-keys.png?fit=max&auto=format&n=pdzkg8J6JAejKYyu&q=85&s=40a99ee767aded0f531c51662260f709" alt="An interface element named 'API keys' showing obscured security keys including: 'Master key', 'Default Search API Key', and 'Default Admin API Key'" data-og-width="1356" width="1356" data-og-height="694" height="694" data-path="assets/images/security/01-master-api-keys.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/meilisearch-6b28dec2/pdzkg8J6JAejKYyu/assets/images/security/01-master-api-keys.png?w=280&fit=max&auto=format&n=pdzkg8J6JAejKYyu&q=85&s=11613845b13d8e618b04ed52c82a8d83 280w, https://mintcdn.com/meilisearch-6b28dec2/pdzkg8J6JAejKYyu/assets/images/security/01-master-api-keys.png?w=560&fit=max&auto=format&n=pdzkg8J6JAejKYyu&q=85&s=0c223c64b31ac18bc6d38c4fc9fa1783 560w, https://mintcdn.com/meilisearch-6b28dec2/pdzkg8J6JAejKYyu/assets/images/security/01-master-api-keys.png?w=840&fit=max&auto=format&n=pdzkg8J6JAejKYyu&q=85&s=89b4ebd7c2440a0fa0fd7e12511b998f 840w, https://mintcdn.com/meilisearch-6b28dec2/pdzkg8J6JAejKYyu/assets/images/security/01-master-api-keys.png?w=1100&fit=max&auto=format&n=pdzkg8J6JAejKYyu&q=85&s=931cb3adbdc6129f39fac32567dbcbb1 1100w, https://mintcdn.com/meilisearch-6b28dec2/pdzkg8J6JAejKYyu/assets/images/security/01-master-api-keys.png?w=1650&fit=max&auto=format&n=pdzkg8J6JAejKYyu&q=85&s=6a958a1717d9fe2a89a023d1e958dca0 1650w, https://mintcdn.com/meilisearch-6b28dec2/pdzkg8J6JAejKYyu/assets/images/security/01-master-api-keys.png?w=2500&fit=max&auto=format&n=pdzkg8J6JAejKYyu&q=85&s=04373f15dcd2ced80236785193370c3e 2500w" />
+  <img alt="An interface element named 'API keys' showing obscured security keys including: 'Master key', 'Default Search API Key', and 'Default Admin API Key'" />
 </Frame>
 
 ### Creating the master key in a self-hosted instance
@@ -12345,7 +12310,7 @@ To protect your self-hosted instance, relaunch it using the `--master-key` comma
 
 <Tabs>
   <Tab title="CLI">
-    ```sh  theme={null}
+    ```sh theme={null}
     ./meilisearch --master-key="MASTER_KEY"
     ```
   </Tab>
@@ -12353,14 +12318,14 @@ To protect your self-hosted instance, relaunch it using the `--master-key` comma
   <Tab title="Environment variable">
     UNIX:
 
-    ```sh  theme={null}
+    ```sh theme={null}
     export MEILI_MASTER_KEY="MASTER_KEY"
     ./meilisearch
     ```
 
     Windows:
 
-    ```sh  theme={null}
+    ```sh theme={null}
     set MEILI_MASTER_KEY="MASTER_KEY"
     ./meilisearch
     ```
@@ -12394,14 +12359,14 @@ Restart Meilisearch with the argument above to use this new and secure master ke
 
 ## Obtaining API keys
 
-When your project is protected, Meilisearch automatically generates two API keys: `Default Search API Key` and `Default Admin API Key`. API keys are authorization tokens designed to safely communicate with the Meilisearch API.
+When your project is protected, Meilisearch automatically generates four API keys: `Default Search API Key`, `Default Admin API Key`, `Default Read-Only Admin API Key`, and `Default Chat API Key`. API keys are authorization tokens designed to safely communicate with the Meilisearch API.
 
 ### Obtaining API keys in Meilisearch Cloud
 
 Find your API keys by visiting your project settings, then clicking "API Keys" on the sidebar:
 
 <Frame>
-  <img src="https://mintcdn.com/meilisearch-6b28dec2/pdzkg8J6JAejKYyu/assets/images/security/01-master-api-keys.png?fit=max&auto=format&n=pdzkg8J6JAejKYyu&q=85&s=40a99ee767aded0f531c51662260f709" alt="An interface element named 'API keys' showing three obscured keys: 'Master key', 'Default Search API Key', and 'Default Admin API Key'" data-og-width="1356" width="1356" data-og-height="694" height="694" data-path="assets/images/security/01-master-api-keys.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/meilisearch-6b28dec2/pdzkg8J6JAejKYyu/assets/images/security/01-master-api-keys.png?w=280&fit=max&auto=format&n=pdzkg8J6JAejKYyu&q=85&s=11613845b13d8e618b04ed52c82a8d83 280w, https://mintcdn.com/meilisearch-6b28dec2/pdzkg8J6JAejKYyu/assets/images/security/01-master-api-keys.png?w=560&fit=max&auto=format&n=pdzkg8J6JAejKYyu&q=85&s=0c223c64b31ac18bc6d38c4fc9fa1783 560w, https://mintcdn.com/meilisearch-6b28dec2/pdzkg8J6JAejKYyu/assets/images/security/01-master-api-keys.png?w=840&fit=max&auto=format&n=pdzkg8J6JAejKYyu&q=85&s=89b4ebd7c2440a0fa0fd7e12511b998f 840w, https://mintcdn.com/meilisearch-6b28dec2/pdzkg8J6JAejKYyu/assets/images/security/01-master-api-keys.png?w=1100&fit=max&auto=format&n=pdzkg8J6JAejKYyu&q=85&s=931cb3adbdc6129f39fac32567dbcbb1 1100w, https://mintcdn.com/meilisearch-6b28dec2/pdzkg8J6JAejKYyu/assets/images/security/01-master-api-keys.png?w=1650&fit=max&auto=format&n=pdzkg8J6JAejKYyu&q=85&s=6a958a1717d9fe2a89a023d1e958dca0 1650w, https://mintcdn.com/meilisearch-6b28dec2/pdzkg8J6JAejKYyu/assets/images/security/01-master-api-keys.png?w=2500&fit=max&auto=format&n=pdzkg8J6JAejKYyu&q=85&s=04373f15dcd2ced80236785193370c3e 2500w" />
+  <img alt="An interface element named 'API keys' showing three obscured keys: 'Master key', 'Default Search API Key', and 'Default Admin API Key'" />
 </Frame>
 
 ### Obtaining API keys in a self-hosted instance
@@ -12409,12 +12374,12 @@ Find your API keys by visiting your project settings, then clicking "API Keys" o
 Use your master key to query the `/keys` endpoint to view all API keys in your instance:
 
 <CodeGroup>
-  ```bash cURL theme={null}
+  ```bash cURL theme={null} theme={null}
   curl -X GET 'MEILISEARCH_URL/keys' \
   -H 'Authorization: Bearer MASTER_KEY'
   ```
 
-  ```rust Rust theme={null}
+  ```rust Rust theme={null} theme={null}
   let client = Client::new("http://localhost:7700", Some("MASTER_KEY"));
   client
     .get_keys()
@@ -12427,16 +12392,16 @@ Use your master key to query the `/keys` endpoint to view all API keys in your i
   Only use the master key to manage API keys. Never use the master key to perform searches or other common operations.
 </Warning>
 
-Meilisearch's response will include at least the two default API keys:
+Meilisearch's response will include at least the default API keys:
 
-```json  theme={null}
+```json theme={null}
 {
   "results": [
     {
       "name": "Default Search API Key",
       "description": "Use it to search from the frontend",
       "key": "0beec7b5ea3f0fdbc95d0dd47f3c5bc275da8a33",
-      "uid": "123-345-456-987-abc",
+      "uid": "74c9c733-3368-4738-bbe5-1d18a5fecb37",
       "actions": [
         "search"
       ],
@@ -12451,7 +12416,7 @@ Meilisearch's response will include at least the two default API keys:
       "name": "Default Admin API Key",
       "description": "Use it for anything that is not a search operation. Caution! Do not expose it on a public frontend",
       "key": "62cdb7020ff920e5aa642c3d4066950dd1f01f4d",
-      "uid": "123-345-456-987-abc",
+      "uid": "20f7e4c4-612c-4dd1-b783-7934cc038213",
       "actions": [
         "*"
       ],
@@ -12461,6 +12426,38 @@ Meilisearch's response will include at least the two default API keys:
       "expiresAt": null,
       "createdAt": "2024-01-25T16:19:53.94816Z",
       "updatedAt": "2024-01-25T16:19:53.94816Z"
+    },
+    {
+      "name": "Default Read-Only Admin API Key",
+      "description": "Use it to read information across the whole database. Caution! Do not expose this key on a public frontend",
+      "key": "9e32fb64e3569a749b0b87900d1026074e798743",
+      "uid": "7dc1ec09-94fb-49b5-b77b-03ce75af89a0",
+      "actions": [
+        "*.get",
+        "keys.get"
+      ],
+      "indexes": [
+        "*"
+      ],
+      "expiresAt": null,
+      "createdAt": "2024-01-25T16:19:53.94716Z",
+      "updatedAt": "2024-01-25T16:19:53.94716Z"
+    },
+    {
+      "name": "Default Chat API Key",
+      "description": "Use it to chat and search from the frontend",
+      "key": "0acaa4f3d57517e4b4d7c0052b02772620bd375a",
+      "uid": "d4e13ace-2a00-428c-90d1-b1c99eec98bd",
+      "actions": [
+        "chatCompletions",
+        "search"
+      ],
+      "indexes": [
+        "*"
+      ],
+      "expiresAt": null,
+      "createdAt": "2024-01-25T16:19:53.94606Z",
+      "updatedAt": "2024-01-25T16:19:53.94606Z"
     }
   ],
   …
@@ -12474,7 +12471,7 @@ Now you have your API keys, you can safely query the Meilisearch API. Add API ke
 Use the `Default Admin API Key` to perform sensitive operations, such as creating a new index:
 
 <CodeGroup>
-  ```bash cURL theme={null}
+  ```bash cURL theme={null} theme={null}
   curl \
     -X POST 'MEILISEARCH_URL/indexes' \
     -H 'Content-Type: application/json' \
@@ -12485,7 +12482,7 @@ Use the `Default Admin API Key` to perform sensitive operations, such as creatin
     }'
   ```
 
-  ```rust Rust theme={null}
+  ```rust Rust theme={null} theme={null}
   let client = Client::new("http://localhost:7700", Some("DEFAULT_ADMIN_API_KEY"));
   let task = client
     .create_index("medical_records", Some("id"))
@@ -12497,7 +12494,7 @@ Use the `Default Admin API Key` to perform sensitive operations, such as creatin
 Then use the `Default Search API Key` to perform search operations in the index you just created:
 
 <CodeGroup>
-  ```bash cURL theme={null}
+  ```bash cURL theme={null} theme={null}
   curl \
     -X POST 'MEILISEARCH_URL/indexes/medical_records/search' \
     -H 'Content-Type: application/json' \
@@ -12505,7 +12502,7 @@ Then use the `Default Search API Key` to perform search operations in the index 
     --data-binary '{ "q": "appointments" }'
   ```
 
-  ```rust Rust theme={null}
+  ```rust Rust theme={null} theme={null}
   let client = Client::new("http://localhost:7700", Some("DEFAULT_SEARCH_API_KEY"));
   let index = client.index("medical_records");
   index
@@ -12516,6 +12513,21 @@ Then use the `Default Search API Key` to perform search operations in the index 
     .unwrap();
   ```
 </CodeGroup>
+
+### Admin API keys
+
+Meilisearch provides two admin API keys for managing your instance:
+
+* The `Default Admin API Key` grants full access to all Meilisearch operations except API key management. Use it to configure index settings, add documents, and perform other administrative tasks.
+* The `Default Read-Only Admin API Key` allows read-only access to the whole database. Use it when you need to retrieve information from your Meilisearch instance without being able to modify it.
+
+<Warning>
+  Do not expose admin API keys on a public frontend.
+</Warning>
+
+### Chat API key
+
+The `Default Chat API Key` is designed for frontend usage with [conversational search](/learn/chat/getting_started_with_chat). It has access to both `search` and `chatCompletions` actions, allowing users to both perform searches and interact with the chat completions feature.
 
 ## Conclusion
 
@@ -12547,7 +12559,12 @@ API keys grant access to a specific set of indexes, routes, and endpoints. You c
 
 **Use API keys for all API operations except API key management.** This includes search, configuring index settings, managing indexes, and adding and updating documents.
 
-In many cases, the default API keys are all you need to safely manage your Meilisearch project. Use the `Default Search API key` for searching, and the `Default Admin API Key` to configure index settings, add documents, and other operations.
+In many cases, the default API keys are all you need to safely manage your Meilisearch project:
+
+* Use the `Default Search API Key` for search operations from the frontend
+* Use the `Default Admin API Key` to configure index settings, add documents, and other operations. Do not expose it on a public frontend
+* Use the `Default Read-Only Admin API Key` for read-only access to all indexes, documents, and settings. Do not expose it on a public frontend
+* Use the `Default Chat API Key` for [conversational search](/learn/chat/getting_started_with_chat). It can be safely used from the frontend
 
 
 # Generate a tenant token without a library
@@ -12563,7 +12580,7 @@ The full process requires you to create a token header, prepare the data payload
 
 The token header must specify a `JWT` type and an encryption algorithm. Supported tenant token encryption algorithms are `HS256`, `HS384`, and `HS512`.
 
-```json  theme={null}
+```json theme={null}
 {
   "alg": "HS256",
   "typ": "JWT"
@@ -12574,7 +12591,7 @@ The token header must specify a `JWT` type and an encryption algorithm. Supporte
 
 First, create a set of search rules:
 
-```json  theme={null}
+```json theme={null}
 {
   "INDEX_NAME": {
     "filter": "ATTRIBUTE = VALUE"
@@ -12584,7 +12601,7 @@ First, create a set of search rules:
 
 Next, find your default search API key. Query the [get an API key endpoint](/reference/api/keys#get-one-key) and inspect the `uid`  field to obtain your API key's UID:
 
-```sh  theme={null}
+```sh theme={null}
 curl \
   -X GET 'MEILISEARCH_URL/keys/API_KEY' \
   -H 'Authorization: Bearer MASTER_KEY'
@@ -12592,13 +12609,13 @@ curl \
 
 For maximum security, you should also set an expiry date for your tenant tokens. The following Node.js example configures the token to expire 20 minutes after its creation:
 
-```js  theme={null}
+```js theme={null}
 parseInt(Date.now() / 1000) + 20 * 60
 ```
 
 Lastly, assemble all parts of the payload in a single object:
 
-```json  theme={null}
+```json theme={null}
 {
   "exp": UNIX_TIMESTAMP,
   "apiKeyUid": "API_KEY_UID",
@@ -12646,7 +12663,7 @@ There are two steps to use tenant tokens with an official SDK: generating the te
 
 First, import the SDK. Then create a set of [search rules](/learn/security/tenant_token_reference#search-rules):
 
-```json  theme={null}
+```json theme={null}
 {
   "patient_medical_records": {
     "filter": "user_id = 1"
@@ -12658,7 +12675,7 @@ Search rules must be an object where each key corresponds to an index in your in
 
 Next, find your default search API key. Query the [get an API key endpoint](/reference/api/keys#get-one-key) and inspect the `uid`  field to obtain your API key's UID:
 
-```sh  theme={null}
+```sh theme={null}
 curl \
   -X GET 'MEILISEARCH_URL/keys/API_KEY' \
   -H 'Authorization: Bearer MASTER_KEY'
@@ -12858,7 +12875,7 @@ This guide shows you the main steps when creating tenant tokens using [`node-jso
 
 First, create a set of search rules:
 
-```json  theme={null}
+```json theme={null}
 {
   "INDEX_NAME": {
     "filter": "ATTRIBUTE = VALUE"
@@ -12868,7 +12885,7 @@ First, create a set of search rules:
 
 Next, find your default search API key. Query the [get an API key endpoint](/reference/api/keys#get-one-key) and inspect the `uid`  field to obtain your API key's UID:
 
-```sh  theme={null}
+```sh theme={null}
 curl \
   -X GET 'MEILISEARCH_URL/keys/API_KEY' \
   -H 'Authorization: Bearer MASTER_KEY'
@@ -12876,7 +12893,7 @@ curl \
 
 For maximum security, you should also set an expiry date for your tenant tokens. The following example configures the token to expire 20 minutes after its creation:
 
-```js  theme={null}
+```js theme={null}
 parseInt(Date.now() / 1000) + 20 * 60
 ```
 
@@ -12884,7 +12901,7 @@ parseInt(Date.now() / 1000) + 20 * 60
 
 First, include `jsonwebtoken` in your application. Next, assemble the token payload and pass it to `jsonwebtoken`'s `sign` method:
 
-```js  theme={null}
+```js theme={null}
 const jwt = require('jsonwebtoken');
 
 const apiKey = 'API_KEY';
@@ -13021,7 +13038,7 @@ Meilisearch's tenant tokens are JSON web tokens (JWTs). Their payload is made of
 
 ## Example payload
 
-```json  theme={null}
+```json theme={null}
 {
   "exp": 1646756934,
   "apiKeyUid": "at5cd97d-5a4b-4226-a868-2d0eb6d197ab",
@@ -13041,7 +13058,7 @@ The search rules object are a set of instructions defining search parameters Mei
 
 `searchRules` must be a JSON object. Each key must correspond to one or more indexes:
 
-```json  theme={null}
+```json theme={null}
 {
   "searchRules": {
     "*": {},
@@ -13053,7 +13070,7 @@ The search rules object are a set of instructions defining search parameters Mei
 
 Each search rule object may contain a single `filter` key. This `filter`'s value must be a [filter expression](/learn/filtering_and_sorting/filter_expression_reference):
 
-```json  theme={null}
+```json theme={null}
 {
   "*": {
     "filter": "attribute_A = value_X AND attribute_B = value_Y"
@@ -13073,7 +13090,7 @@ A token may contain rules for any number of indexes. **Specific rulesets take pr
 
 The search rule may also be an empty object. In this case, the tenant token will have access to all documents in an index:
 
-```json  theme={null}
+```json theme={null}
 {
   "INDEX_NAME": {}
 }
@@ -13085,7 +13102,7 @@ The search rule may also be an empty object. In this case, the tenant token will
 
 In this example, the user will only receive `medical_records` documents whose `user_id` equals `1`:
 
-```json  theme={null}
+```json theme={null}
 {
   "medical_records": {
     "filter": "user_id = 1"
@@ -13097,7 +13114,7 @@ In this example, the user will only receive `medical_records` documents whose `u
 
 In this example, the user will only receive `medical_records` documents whose `user_id` equals `1` and whose `published` field equals `true`:
 
-```json  theme={null}
+```json theme={null}
 {
   "medical_records": {
     "filter": "user_id = 1 AND published = true"
@@ -13109,7 +13126,7 @@ In this example, the user will only receive `medical_records` documents whose `u
 
 In this example, the user has access to all documents in `medical_records`:
 
-```json  theme={null}
+```json theme={null}
 {
   "medical_records": {}
 }
@@ -13119,7 +13136,7 @@ In this example, the user has access to all documents in `medical_records`:
 
 In this example, the user will receive documents from any index starting with `medical`. This includes indexes such as `medical_records` and `medical_patents`:
 
-```json  theme={null}
+```json theme={null}
 {
   "medical*": {
     "filter": "user_id = 1"
@@ -13131,7 +13148,7 @@ In this example, the user will receive documents from any index starting with `m
 
 In this example, the user will receive documents from any index in the whole instance:
 
-```json  theme={null}
+```json theme={null}
 {
   "*": {
     "filter": "user_id = 1"
@@ -13143,7 +13160,7 @@ In this example, the user will receive documents from any index in the whole ins
 
 In this example, the user has access to documents with `user_id = 1` for all indexes, except one. When querying `medical_records`, the user will only have access to published documents:
 
-```json  theme={null}
+```json theme={null}
 {
   "*": {
     "filter": "user_id = 1"
@@ -13158,7 +13175,7 @@ In this example, the user has access to documents with `user_id = 1` for all ind
 
 Tenant token payloads must include an API key UID to validate requests. The UID is an alphanumeric string identifying an API key:
 
-```json  theme={null}
+```json theme={null}
 {
   "apiKeyUid": "at5cd97d-5a4b-4226-a868-2d0eb6d197ab"
 }
@@ -13178,7 +13195,7 @@ Since a master key is not an API key, **you cannot use a master key to create a 
 
 The expiry date must be a UNIX timestamp or `null`:
 
-```json  theme={null}
+```json theme={null}
 {
   "exp": 1646756934
 }
@@ -13200,10 +13217,6 @@ Source: https://www.meilisearch.com/docs/learn/self_hosted/configure_meilisearch
 
 Configure Meilisearch at launch with command-line options, environment variables, or a configuration file.
 
-export const NoticeTag = ({label}) => <span className="noticeTag noticeTag--{ label }">
-    {label}
-  </span>;
-
 When self-hosting Meilisearch, you can configure your instance at launch with **command-line options**, **environment variables**, or a **configuration file**.
 
 These startup options affect your entire Meilisearch instance, not just a single index. For settings that affect search within a single index, see [index settings](/reference/api/settings).
@@ -13212,7 +13225,7 @@ These startup options affect your entire Meilisearch instance, not just a single
 
 Pass **command-line options** and their respective values when launching a Meilisearch instance.
 
-```bash  theme={null}
+```bash theme={null}
 ./meilisearch --db-path ./meilifiles --http-addr 'localhost:7700'
 ```
 
@@ -13220,7 +13233,7 @@ In the previous example, `./meilisearch` is the command that launches a Meilisea
 
 Meilisearch also has a number of **command-line flags.** Unlike command-line options, **flags don't take values**. If a flag is given, it is activated and changes Meilisearch's default behavior.
 
-```bash  theme={null}
+```bash theme={null}
 ./meilisearch --no-analytics
 ```
 
@@ -13234,7 +13247,7 @@ To configure a Meilisearch instance using environment variables, set the environ
 
 <Tabs>
   <Tab title="UNIX">
-    ```sh  theme={null}
+    ```sh theme={null}
     export MEILI_DB_PATH=./meilifiles
     export MEILI_HTTP_ADDR=localhost:7700
     ./meilisearch
@@ -13242,7 +13255,7 @@ To configure a Meilisearch instance using environment variables, set the environ
   </Tab>
 
   <Tab title="Windows">
-    ```sh  theme={null}
+    ```sh theme={null}
     set MEILI_DB_PATH=./meilifiles
     set MEILI_HTTP_ADDR=127.0.0.1:7700
     ./meilisearch
@@ -13264,7 +13277,7 @@ Meilisearch accepts a configuration file in the `.toml` format as an alternative
 
 You can download a default configuration file using the following command:
 
-```sh  theme={null}
+```sh theme={null}
 curl https://raw.githubusercontent.com/meilisearch/meilisearch/latest/config.toml > config.toml
 ```
 
@@ -13289,7 +13302,7 @@ You can override the default location of the configuration file using the `MEILI
 
 <Tabs>
   <Tab title="CLI">
-    ```sh  theme={null}
+    ```sh theme={null}
     ./meilisearch --config-file-path="./config.toml"
     ```
   </Tab>
@@ -13297,14 +13310,14 @@ You can override the default location of the configuration file using the `MEILI
   <Tab title="Environment variable">
     UNIX:
 
-    ```sh  theme={null}
+    ```sh theme={null}
     export MEILI_CONFIG_FILE_PATH="./config.toml"
     ./meilisearch
     ```
 
     Windows:
 
-    ```sh  theme={null}
+    ```sh theme={null}
     set MEILI_CONFIG_FILE_PATH="./config.toml"
     ./meilisearch
     ```
@@ -13315,7 +13328,7 @@ You can override the default location of the configuration file using the `MEILI
 
 You can configure any environment variable or CLI option using a configuration file. In configuration files, options must be written in [snake case](https://en.wikipedia.org/wiki/Snake_case). For example, `--import-dump` would be written as `import_dump`.
 
-```toml  theme={null}
+```toml theme={null}
 import_dump = "./example.dump"
 ```
 
@@ -13331,7 +13344,7 @@ To configure Meilisearch with environment variables in a cloud-hosted instance, 
 
 After editing your configuration options, relaunch the Meilisearch service:
 
-```sh  theme={null}
+```sh theme={null}
 systemctl restart meilisearch
 ```
 
@@ -13915,6 +13928,30 @@ Activates SSL session resumption.
 Activates SSL tickets.
 
 
+# Enterprise and Community editions
+Source: https://www.meilisearch.com/docs/learn/self_hosted/enterprise_edition
+
+Self-hosted users can choose between the Community Edition and the Enterprise Edition. The Community edition is free under the MIT license, while Enterprise offers advanced features under a BUSL license.
+
+## What is the Meilisearch Community Edition?
+
+The Meilisearch Community Edition (CE) is a free version of Meilisearch. It offers all essential Meilisearch features, such as full-text search and AI-powered search, under an MIT license.
+
+## What is the Meilisearch Enterprise Edition?
+
+The Enterprise Edition (EE) is a version of Meilisearch with advanced features. It is available under a BUSL license and cannot be freely used in production. EE is the Meilisearch version that powers Meilisearch Cloud.
+
+The only feature exclusive to the Enterprise Edition is [sharding](/learn/multi_search/implement_sharding).
+
+## When should you use each edition?
+
+In most cases, using Meilisearch Cloud is the recommended way of integrating Meilisearch with your application.
+
+Use the Meilisearch Community Edition when you want to host Meilisearch independently.
+
+Meilisearch makes the Enterprise Edition binaries available for testing EE-only features before committing to a Meilisearch Cloud plan. If you want to self-host the Enterprise Edition in a production environment, [contact the sales team](mailto:sales@meilisearch.com).
+
+
 # Getting started with self-hosted Meilisearch
 Source: https://www.meilisearch.com/docs/learn/self_hosted/getting_started_with_self_hosted_meilisearch
 
@@ -13935,7 +13972,7 @@ To follow this tutorial you need:
 
 First, you need to download and install Meilisearch. This command installs the latest Meilisearch version in your local machine:
 
-```bash  theme={null}
+```bash theme={null}
 # Install Meilisearch
 curl -L https://install.meilisearch.com | sh
 ```
@@ -13948,7 +13985,7 @@ Learn more about other installation options in the [installation guide](/learn/s
 
 Next, launch Meilisearch by running the following command in your terminal:
 
-```bash  theme={null}
+```bash theme={null}
 # Launch Meilisearch
 ./meilisearch --master-key="aSampleMasterKey"
 ```
@@ -13985,7 +14022,7 @@ To learn more about securing Meilisearch, refer to the [security tutorial](/lear
 
 In this quick start, you will search through a collection of movies.
 
-To follow along, first click this link to download the file: <a href="https://www.meilisearch.com/movies.json" download="movies.json">movies.json</a>. Then, move the downloaded file into your working directory.
+To follow along, first click this link to download the file: <a href="https://www.meilisearch.com/movies.json">movies.json</a>. Then, move the downloaded file into your working directory.
 
 <Note>
   Meilisearch accepts data in JSON, NDJSON, and CSV formats.
@@ -14006,8 +14043,8 @@ Open a new terminal window and run the following command:
   // With npm:
   // npm install meilisearch
 
-  // Or with yarn:
-  // yarn add meilisearch
+  // Or with pnpm:
+  // pnpm add meilisearch
 
   // In your .js file:
   // With the `require` syntax:
@@ -14072,14 +14109,14 @@ Open a new terminal window and run the following command:
   // <dependency>
   //   <groupId>com.meilisearch.sdk</groupId>
   //   <artifactId>meilisearch-java</artifactId>
-  //   <version>0.17.1</version>
+  //   <version>0.18.0</version>
   //   <type>pom</type>
   // </dependency>
 
   // For Gradle
   // Add the following line to the `dependencies` section of your `build.gradle`:
   //
-  // implementation 'com.meilisearch.sdk:meilisearch-java:0.17.1'
+  // implementation 'com.meilisearch.sdk:meilisearch-java:0.18.0'
 
   // In your .java file:
   import com.meilisearch.sdk;
@@ -14186,7 +14223,7 @@ Open a new terminal window and run the following command:
   ```text Rust theme={null}
   // In your .toml file:
     [dependencies]
-    meilisearch-sdk = "0.31.0"
+    meilisearch-sdk = "0.32.0"
     # futures: because we want to block on futures
     futures = "0.3"
     # serde: required if you are going to use documents
@@ -14286,7 +14323,7 @@ Open a new terminal window and run the following command:
 
 Meilisearch stores data in the form of discrete records, called [documents](/learn/getting_started/documents). Each document is an object composed of multiple fields, which are pairs of one attribute and one value:
 
-```json  theme={null}
+```json theme={null}
 {
   "attribute": "value"
 }
@@ -14304,7 +14341,7 @@ The previous command added documents from `movies.json` to a new index called `m
 
 After adding documents, you should receive a response like this:
 
-```json  theme={null}
+```json theme={null}
 {
     "taskUid": 0,
     "indexUid": "movies",
@@ -14380,7 +14417,7 @@ Use the returned `taskUid` to [check the status](/reference/api/tasks) of your d
 
 If the document addition is successful, the response should look like this:
 
-```json  theme={null}
+```json theme={null}
 {
    "uid": 0,
    "indexUid": "movies",
@@ -14500,7 +14537,7 @@ Now that you have Meilisearch set up, you can start searching!
 
 In the above code sample, the parameter `q` represents the search query. This query instructs Meilisearch to search for `botman` in the documents you added in [the previous step](#add-documents):
 
-```json  theme={null}
+```json theme={null}
 {
   "hits": [
     {
@@ -14557,7 +14594,7 @@ Take a look at the [Meilisearch Cloud tutorial](/learn/getting_started/cloud_qui
 
     Launch Meilisearch to start the server.
 
-    ```bash  theme={null}
+    ```bash theme={null}
     # Install Meilisearch
     curl -L https://install.meilisearch.com | sh
 
@@ -14571,7 +14608,7 @@ Take a look at the [Meilisearch Cloud tutorial](/learn/getting_started/cloud_qui
 
     Launch Meilisearch to start the server.
 
-    ```bash  theme={null}
+    ```bash theme={null}
     # Update brew and install Meilisearch
     brew update && brew install meilisearch
 
@@ -14585,7 +14622,7 @@ Take a look at the [Meilisearch Cloud tutorial](/learn/getting_started/cloud_qui
 
     These commands launch the **latest stable release** of Meilisearch.
 
-    ```bash  theme={null}
+    ```bash theme={null}
     # Fetch the latest version of Meilisearch image from DockerHub
     docker pull getmeili/meilisearch:v1.16
 
@@ -14606,7 +14643,7 @@ Take a look at the [Meilisearch Cloud tutorial](/learn/getting_started/cloud_qui
 
     Launch Meilisearch to start the server.
 
-    ```bash  theme={null}
+    ```bash theme={null}
     # Add Meilisearch package
     echo "deb [trusted=yes] https://apt.fury.io/meilisearch/ /" | sudo tee /etc/apt/sources.list.d/fury.list
 
@@ -14623,7 +14660,7 @@ Take a look at the [Meilisearch Cloud tutorial](/learn/getting_started/cloud_qui
 
     Once the Rust toolchain is installed, clone the repository on your local system and change it to your working directory.
 
-    ```bash  theme={null}
+    ```bash theme={null}
     git clone https://github.com/meilisearch/meilisearch
     cd meilisearch
     ```
@@ -14632,13 +14669,13 @@ Take a look at the [Meilisearch Cloud tutorial](/learn/getting_started/cloud_qui
 
     In the cloned repository, run the following command to access the most recent version of Meilisearch:
 
-    ```bash  theme={null}
+    ```bash theme={null}
     git checkout latest
     ```
 
     Finally, update the Rust toolchain, compile the project, and execute the binary.
 
-    ```bash  theme={null}
+    ```bash theme={null}
     # Update the Rust toolchain to the latest version
     rustup update
 
@@ -14666,7 +14703,7 @@ Take a look at the [Meilisearch Cloud tutorial](/learn/getting_started/cloud_qui
 
     Go to the [latest Meilisearch release](https://github.com/meilisearch/meilisearch/releases/latest), scroll down to "Assets", and select the binary corresponding to your operating system.
 
-    ```bash  theme={null}
+    ```bash theme={null}
     # Rename binary to meilisearch. Replace {meilisearch_os} with the name of the downloaded binary
     mv {meilisearch_os} meilisearch
 
@@ -14687,7 +14724,7 @@ We discourage the use of older Meilisearch versions. Before installing an older 
   <Tab title="cURL">
     Download the binary of a specific version under "Assets" on our [GitHub changelog](https://github.com/meilisearch/meilisearch/releases).
 
-    ```bash  theme={null}
+    ```bash theme={null}
     # Replace {meilisearch_version} and {meilisearch_os} with the specific version and OS you want to download
     # For example, if you want to download v1.0 on macOS,
     # replace {meilisearch_version} and {meilisearch_os} with v1.0 and meilisearch-macos-amd64 respectively
@@ -14707,7 +14744,7 @@ We discourage the use of older Meilisearch versions. Before installing an older 
   <Tab title="Docker">
     When using **Docker**, you can run [any tag available in our official Docker image](https://hub.docker.com/r/getmeili/meilisearch/tags).<br />
 
-    ```bash  theme={null}
+    ```bash theme={null}
     # Fetch specific version of Meilisearch image from DockerHub. Replace vX.Y.Z with the version you want to use
     docker pull getmeili/meilisearch:vX.Y.Z
 
@@ -14728,7 +14765,7 @@ We discourage the use of older Meilisearch versions. Before installing an older 
 
     Once the Rust toolchain is installed, clone the repository on your local system and change it to your working directory.
 
-    ```bash  theme={null}
+    ```bash theme={null}
     git clone https://github.com/meilisearch/meilisearch
     cd meilisearch
     ```
@@ -14737,14 +14774,14 @@ We discourage the use of older Meilisearch versions. Before installing an older 
 
     In the cloned repository, run the following command to access a specific version of Meilisearch:
 
-    ```bash  theme={null}
+    ```bash theme={null}
     # Replace vX.Y.Z with the specific version you want to use
     git checkout vX.Y.Z
     ```
 
     Finally, update the Rust toolchain, compile the project, and execute the binary.
 
-    ```bash  theme={null}
+    ```bash theme={null}
     # Update the Rust toolchain to the latest version
     rustup update
 
@@ -14759,7 +14796,7 @@ We discourage the use of older Meilisearch versions. Before installing an older 
   <Tab title="Direct download">
     Download the binary of a specific version under "Assets" on our [GitHub changelog](https://github.com/meilisearch/meilisearch/releases).
 
-    ```bash  theme={null}
+    ```bash theme={null}
     # Rename binary to meilisearch. Replace {meilisearch_os} with the name of the downloaded binary
     mv {meilisearch_os} meilisearch
 
@@ -14871,7 +14908,7 @@ Before continuing, make sure you have both Meilisearch and Node.js installed and
 
 Start by creating a directory `algolia-meilisearch-migration` and generating a `package.json` file with `npm`:
 
-```bash  theme={null}
+```bash theme={null}
 mkdir algolia-meilisearch-migration
 cd algolia-meilisearch-migration
 npm init -y
@@ -14881,7 +14918,7 @@ This will set up the environment we need to install dependencies.
 
 Next, create a `script.js` file:
 
-```bash  theme={null}
+```bash theme={null}
 touch script.js
 ```
 
@@ -14891,7 +14928,7 @@ This file will contain our migration script.
 
 To get started, you'll need two different packages. The first is `algoliasearch`, the JavaScript client for the Algolia API, and the second is `meilisearch`, the JavaScript client for the Meilisearch API.
 
-```bash  theme={null}
+```bash theme={null}
 npm install -s algoliasearch@4.13 meilisearch@0.25.1
 ```
 
@@ -14901,7 +14938,7 @@ You'll need your **Application ID** and **Admin API Key** to start the Algolia c
 
 Paste the below code in `script.js`:
 
-```js  theme={null}
+```js theme={null}
 const algoliaSearch = require("algoliasearch");
 
 const algoliaClient = algoliaSearch(
@@ -14919,7 +14956,7 @@ Replace `INDEX_NAME` with the name of the Algolia index you would like to migrat
 
 To fetch all Algolia index data at once, use Algolia's [`browseObjects`](https://www.algolia.com/doc/api-reference/api-methods/browse/) method.
 
-```js  theme={null}
+```js theme={null}
 let records = [];
 await algoliaIndex.browseObjects({
     batch: (hits) => {
@@ -14936,7 +14973,7 @@ The `batch` callback method is invoked on each batch of hits and the content is 
 
 Create a Meilisearch client by passing the host URL and API key of your Meilisearch instance. The easiest option is to use the automatically generated [admin API key](/learn/security/basic_security).
 
-```js  theme={null}
+```js theme={null}
 const { MeiliSearch } = require("meilisearch");
 
 const meiliClient = new MeiliSearch({
@@ -14952,20 +14989,20 @@ Replace `MEILI_HOST`,`MEILI_API_KEY`, and `MEILI_INDEX_NAME` with your Meilisear
 
 Next, use the Meilisearch JavaScript method [`addDocumentsInBatches`](https://github.com/meilisearch/meilisearch-js#documents-) to upload all your records in batches of 100,000.
 
-```js  theme={null}
+```js theme={null}
 const BATCH_SIZE = 100000;
 await meiliIndex.addDocumentsInBatches(records, BATCH_SIZE);
 ```
 
 That's all! When you're ready to run the script, enter the below command:
 
-```bash  theme={null}
+```bash theme={null}
 node script.js
 ```
 
 ### Finished script
 
-```js  theme={null}
+```js theme={null}
 const algoliaSearch = require("algoliasearch");
 const { MeiliSearch } = require("meilisearch");
 
@@ -15096,7 +15133,7 @@ To migrate Meilisearch, you must first [export a dump](/learn/data_backup/dumps)
 
 To export a dump, make sure your self-hosted Meilisearch instance is running. Then, open your terminal and run the following command, replacing `MEILISEARCH_URL` with your instance's address:
 
-```sh  theme={null}
+```sh theme={null}
 curl -X POST 'MEILISEARCH_URL:7700/dumps'
 ```
 
@@ -15117,13 +15154,13 @@ Navigate to Meilisearch Cloud in your browser and log in. If you don't have a Me
 You can only import dumps into new Meilisearch Cloud projects. If this is your first time using Meilisearch Cloud, create a new project by clicking on the "Create a project" button. Otherwise, click on the "New project" button:
 
 <Frame>
-  <img src="https://mintcdn.com/meilisearch-6b28dec2/AA65w-9bZrf-CgFA/assets/images/cloud-migration/1-new-project.png?fit=max&auto=format&n=AA65w-9bZrf-CgFA&q=85&s=e7fd7464c7dc1ea71b18af4fff5f51dd" alt="The Meilisearch Cloud menu, featuring the 'New Project' button" data-og-width="1363" width="1363" data-og-height="204" height="204" data-path="assets/images/cloud-migration/1-new-project.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/meilisearch-6b28dec2/AA65w-9bZrf-CgFA/assets/images/cloud-migration/1-new-project.png?w=280&fit=max&auto=format&n=AA65w-9bZrf-CgFA&q=85&s=12352b81b3f80b3a6b70b248f33ea5c7 280w, https://mintcdn.com/meilisearch-6b28dec2/AA65w-9bZrf-CgFA/assets/images/cloud-migration/1-new-project.png?w=560&fit=max&auto=format&n=AA65w-9bZrf-CgFA&q=85&s=a884dcb89ebd41cf2beea2fafc7af100 560w, https://mintcdn.com/meilisearch-6b28dec2/AA65w-9bZrf-CgFA/assets/images/cloud-migration/1-new-project.png?w=840&fit=max&auto=format&n=AA65w-9bZrf-CgFA&q=85&s=23f9f9842177105ebb398bd5894571a0 840w, https://mintcdn.com/meilisearch-6b28dec2/AA65w-9bZrf-CgFA/assets/images/cloud-migration/1-new-project.png?w=1100&fit=max&auto=format&n=AA65w-9bZrf-CgFA&q=85&s=d71c340c9224adf2b0a23e7e1fa11d98 1100w, https://mintcdn.com/meilisearch-6b28dec2/AA65w-9bZrf-CgFA/assets/images/cloud-migration/1-new-project.png?w=1650&fit=max&auto=format&n=AA65w-9bZrf-CgFA&q=85&s=508e156ab4426c0f578e1cd20d58d70b 1650w, https://mintcdn.com/meilisearch-6b28dec2/AA65w-9bZrf-CgFA/assets/images/cloud-migration/1-new-project.png?w=2500&fit=max&auto=format&n=AA65w-9bZrf-CgFA&q=85&s=e687c3db7c693b539eb64a3eca69fe3e 2500w" />
+  <img alt="The Meilisearch Cloud menu, featuring the 'New Project' button" />
 </Frame>
 
 Fill in your project name, choose a server location, and select your plan. Then, click on the "Import .dump" button and select the dump file you generated in the previous step:
 
 <Frame>
-  <img src="https://mintcdn.com/meilisearch-6b28dec2/AA65w-9bZrf-CgFA/assets/images/cloud-migration/2-import-dump.png?fit=max&auto=format&n=AA65w-9bZrf-CgFA&q=85&s=d9a4ad0acae62c348170f5403bf28ff6" alt="A modal window with three mandatory fields: 'Project name', 'Select a region', and 'Select a plan'. Further down, an optional field: 'Import .dump'" data-og-width="1182" width="1182" data-og-height="919" height="919" data-path="assets/images/cloud-migration/2-import-dump.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/meilisearch-6b28dec2/AA65w-9bZrf-CgFA/assets/images/cloud-migration/2-import-dump.png?w=280&fit=max&auto=format&n=AA65w-9bZrf-CgFA&q=85&s=d9f983aa0f06335abd62df01483b9d53 280w, https://mintcdn.com/meilisearch-6b28dec2/AA65w-9bZrf-CgFA/assets/images/cloud-migration/2-import-dump.png?w=560&fit=max&auto=format&n=AA65w-9bZrf-CgFA&q=85&s=a487d44e2d835a115253628dac2cf778 560w, https://mintcdn.com/meilisearch-6b28dec2/AA65w-9bZrf-CgFA/assets/images/cloud-migration/2-import-dump.png?w=840&fit=max&auto=format&n=AA65w-9bZrf-CgFA&q=85&s=93f1efc17db6884c1f184c9eb2e16b82 840w, https://mintcdn.com/meilisearch-6b28dec2/AA65w-9bZrf-CgFA/assets/images/cloud-migration/2-import-dump.png?w=1100&fit=max&auto=format&n=AA65w-9bZrf-CgFA&q=85&s=10058769b039c74ce6a1dd5b169cf4f2 1100w, https://mintcdn.com/meilisearch-6b28dec2/AA65w-9bZrf-CgFA/assets/images/cloud-migration/2-import-dump.png?w=1650&fit=max&auto=format&n=AA65w-9bZrf-CgFA&q=85&s=2cd8efa79f760712f346bceff06f9e79 1650w, https://mintcdn.com/meilisearch-6b28dec2/AA65w-9bZrf-CgFA/assets/images/cloud-migration/2-import-dump.png?w=2500&fit=max&auto=format&n=AA65w-9bZrf-CgFA&q=85&s=6484c3857945edecfd43efb3c4154f97 2500w" />
+  <img alt="A modal window with three mandatory fields: 'Project name', 'Select a region', and 'Select a plan'. Further down, an optional field: 'Import .dump'" />
 </Frame>
 
 Meilisearch will start creating a new project and importing your data. This might take a few moments depending on the size of your dataset. Monitor the project creation status in the project overview page.
@@ -15169,7 +15206,7 @@ To access previous versions of the Meilisearch documentation, the first step is 
 
 Open your console and run the following command. It will create a `documentation` directory in your current location containing the Meilisearch documentation site project files:
 
-```sh  theme={null}
+```sh theme={null}
 git clone https://github.com/meilisearch/documentation.git
 ```
 
@@ -15181,7 +15218,7 @@ The documentation repository contains tags for versions from `v0.8` up to the la
 
 For example, the following command retrieves the Meilisearch v0.20 documentation:
 
-```sh  theme={null}
+```sh theme={null}
 git checkout v0.20
 ```
 
@@ -15207,7 +15244,7 @@ To access the Meilisearch documentation for versions 1.2 and later, read the `.m
 
 This version of the Meilisearch documentation manages its dependencies with Yarn. Run the following command to install all required packages:
 
-```sh  theme={null}
+```sh theme={null}
 yarn install
 ```
 
@@ -15215,7 +15252,7 @@ yarn install
 
 After installing dependencies, use Yarn to start the server:
 
-```sh  theme={null}
+```sh theme={null}
 yarn dev
 ```
 
@@ -15229,7 +15266,7 @@ Yarn will build the website from the markdown source files. Once the server is o
 
 Accessing Meilisearch documentation from v0.11 to v0.16 requires launching an HTTP server on your local machine. Run the following command on your console:
 
-```sh  theme={null}
+```sh theme={null}
 python3 -m http.server 8080
 ```
 
@@ -15246,10 +15283,6 @@ The build workflow on early versions of the documentation website involves multi
 Source: https://www.meilisearch.com/docs/learn/update_and_migration/updating
 
 Learn how to migrate to the latest Meilisearch release.
-
-export const NoticeTag = ({label}) => <span className="noticeTag noticeTag--{ label }">
-    {label}
-  </span>;
 
 Currently, Meilisearch databases are only compatible with the version of Meilisearch used to create them. The following guide will walk you through using a [dump](/learn/data_backup/dumps) to migrate an existing database from an older version of Meilisearch to the most recent one.
 
@@ -15270,7 +15303,7 @@ Click on the project you want to update. Look for the "General settings" section
 Whenever a new version of Meilisearch is available, you will see an update button next to the "Meilisearch version" field.
 
 <Frame>
-  <img src="https://mintcdn.com/meilisearch-6b28dec2/JZ1wsU7CEWrp9Xec/assets/images/updating/update-button.png?fit=max&auto=format&n=JZ1wsU7CEWrp9Xec&q=85&s=fc235690bbec818d7ecebaa5f8fac67a" alt="Button to update Meilisearch version to 1.0.2" data-og-width="1334" width="1334" data-og-height="455" height="455" data-path="assets/images/updating/update-button.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/meilisearch-6b28dec2/JZ1wsU7CEWrp9Xec/assets/images/updating/update-button.png?w=280&fit=max&auto=format&n=JZ1wsU7CEWrp9Xec&q=85&s=5afd1311ba489a26e409682eec61c7be 280w, https://mintcdn.com/meilisearch-6b28dec2/JZ1wsU7CEWrp9Xec/assets/images/updating/update-button.png?w=560&fit=max&auto=format&n=JZ1wsU7CEWrp9Xec&q=85&s=b4be9c17f1fa4abb756d60e918d0b0c2 560w, https://mintcdn.com/meilisearch-6b28dec2/JZ1wsU7CEWrp9Xec/assets/images/updating/update-button.png?w=840&fit=max&auto=format&n=JZ1wsU7CEWrp9Xec&q=85&s=0c1f9839c5da26cb4843ec8d64ec8fa2 840w, https://mintcdn.com/meilisearch-6b28dec2/JZ1wsU7CEWrp9Xec/assets/images/updating/update-button.png?w=1100&fit=max&auto=format&n=JZ1wsU7CEWrp9Xec&q=85&s=958921f06b80499557bffeb936dd590e 1100w, https://mintcdn.com/meilisearch-6b28dec2/JZ1wsU7CEWrp9Xec/assets/images/updating/update-button.png?w=1650&fit=max&auto=format&n=JZ1wsU7CEWrp9Xec&q=85&s=1b4e2acdf1d5548db26f73044323db8b 1650w, https://mintcdn.com/meilisearch-6b28dec2/JZ1wsU7CEWrp9Xec/assets/images/updating/update-button.png?w=2500&fit=max&auto=format&n=JZ1wsU7CEWrp9Xec&q=85&s=de4ef231efd3d26ec0216f841362dab1 2500w" />
+  <img alt="Button to update Meilisearch version to 1.0.2" />
 </Frame>
 
 To update to the latest Meilisearch release, click the "Update to v.X.Y.Z" button.
@@ -15278,7 +15311,7 @@ To update to the latest Meilisearch release, click the "Update to v.X.Y.Z" butto
 This will open a pop-up with more information about the update process. Read it, then click on "Update". The "Status" of your project will change from "running" to "updating".
 
 <Frame>
-  <img src="https://mintcdn.com/meilisearch-6b28dec2/JZ1wsU7CEWrp9Xec/assets/images/updating/update-in-progress.png?fit=max&auto=format&n=JZ1wsU7CEWrp9Xec&q=85&s=c1c19b020779cf312374e26038e42862" alt="Project update in progress" data-og-width="1369" width="1369" data-og-height="539" height="539" data-path="assets/images/updating/update-in-progress.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/meilisearch-6b28dec2/JZ1wsU7CEWrp9Xec/assets/images/updating/update-in-progress.png?w=280&fit=max&auto=format&n=JZ1wsU7CEWrp9Xec&q=85&s=c65e3078ee94ed5778b62a3c746a04f2 280w, https://mintcdn.com/meilisearch-6b28dec2/JZ1wsU7CEWrp9Xec/assets/images/updating/update-in-progress.png?w=560&fit=max&auto=format&n=JZ1wsU7CEWrp9Xec&q=85&s=cc02301b4ed8a592f66abee4426b2622 560w, https://mintcdn.com/meilisearch-6b28dec2/JZ1wsU7CEWrp9Xec/assets/images/updating/update-in-progress.png?w=840&fit=max&auto=format&n=JZ1wsU7CEWrp9Xec&q=85&s=2a2725b01d8c0f55d491d71f260de60d 840w, https://mintcdn.com/meilisearch-6b28dec2/JZ1wsU7CEWrp9Xec/assets/images/updating/update-in-progress.png?w=1100&fit=max&auto=format&n=JZ1wsU7CEWrp9Xec&q=85&s=90a44ab8d70ac17af34b48c34600cb71 1100w, https://mintcdn.com/meilisearch-6b28dec2/JZ1wsU7CEWrp9Xec/assets/images/updating/update-in-progress.png?w=1650&fit=max&auto=format&n=JZ1wsU7CEWrp9Xec&q=85&s=fceca15660e17e660fd04ca9d026b496 1650w, https://mintcdn.com/meilisearch-6b28dec2/JZ1wsU7CEWrp9Xec/assets/images/updating/update-in-progress.png?w=2500&fit=max&auto=format&n=JZ1wsU7CEWrp9Xec&q=85&s=c20322ca0541ea2983c7ad40902d027e 2500w" />
+  <img alt="Project update in progress" />
 </Frame>
 
 Once the project has been successfully updated, you will receive an email confirming the update and "Status" will change back to "running".
@@ -15299,7 +15332,7 @@ Dumpless upgrades are available when upgrading from Meilisearch >=v1.12 to Meili
 
 Dumpless upgrades are an experimental feature. Because of that, it may in rare occasions partially fail and result in a corrupted database. To prevent data loss, create a snapshot of your instance:
 
-```sh  theme={null}
+```sh theme={null}
 curl \
   -X POST 'MEILISEARCH_URL/snapshots'
 ```
@@ -15318,7 +15351,7 @@ Next, stop your Meilisearch instance.
   <Tab title="Cloud platforms">
     If you're running Meilisearch as a `systemctl` service, connect via SSH to your cloud instance and execute the following command to stop Meilisearch:
 
-    ```bash  theme={null}
+    ```bash theme={null}
     systemctl stop meilisearch
     ```
 
@@ -15332,13 +15365,13 @@ Install the latest version of Meilisearch using:
 
 <Tabs>
   <Tab title="Local installation">
-    ```bash  theme={null}
+    ```bash theme={null}
     curl -L https://install.meilisearch.com | sh
     ```
   </Tab>
 
   <Tab title="Cloud platforms">
-    ```sh  theme={null}
+    ```sh theme={null}
     # replace MEILISEARCH_VERSION with the version of your choice. Use the format: `vX.X.X`
     curl "https://github.com/meilisearch/meilisearch/releases/download/MEILISEARCH_VERSION/meilisearch-linux-amd64" --output meilisearch --location --show-error
     ```
@@ -15363,13 +15396,13 @@ Execute the command below to import the dump at launch:
 
 <Tabs>
   <Tab title="Local installation">
-    ```bash  theme={null}
+    ```bash theme={null}
     ./meilisearch --experimental-dumpless-upgrade 
     ```
   </Tab>
 
   <Tab title="Cloud platforms">
-    ```sh  theme={null}
+    ```sh theme={null}
     meilisearch --experimental-dumpless-upgrade 
     ```
   </Tab>
@@ -15413,7 +15446,7 @@ First, verify the version of Meilisearch that's compatible with your database us
 
 The response should look something like this:
 
-```json  theme={null}
+```json theme={null}
 {
   "commitSha": "stringOfLettersAndNumbers",
   "commitDate": "YYYY-MM-DDTimestamp",
@@ -15468,7 +15501,7 @@ If the response is anything else, save the current list of displayed attributes 
 
 This command returns an `updateId`. Use the get update endpoint to track the status of the operation:
 
-```sh  theme={null}
+```sh theme={null}
  # replace {indexUid} with the uid of your index and {updateId} with the updateId returned by the previous request
   curl \
     -X GET 'http://<your-domain-name>/indexes/{indexUid}/updates/{updateId}'
@@ -15487,37 +15520,37 @@ If you're unsure where your Meilisearch directory is located, try this:
 
 <Tabs>
   <Tab title="UNIX">
-    ```bash  theme={null}
+    ```bash theme={null}
     which meilisearch
     ```
 
     It should return something like this:
 
-    ```bash  theme={null}
+    ```bash theme={null}
     /absolute/path/to/your/meilisearch/directory
     ```
   </Tab>
 
   <Tab title="Windows CMD">
-    ```bash  theme={null}
+    ```bash theme={null}
     where meilisearch
     ```
 
     It should return something like this:
 
-    ```bash  theme={null}
+    ```bash theme={null}
     /absolute/path/to/your/meilisearch/directory
     ```
   </Tab>
 
   <Tab title="Windows PowerShell">
-    ```bash  theme={null}
+    ```bash theme={null}
     (Get-Command meilisearch).Path
     ```
 
     It should return something like this:
 
-    ```bash  theme={null}
+    ```bash theme={null}
     /absolute/path/to/your/meilisearch/directory
     ```
   </Tab>
@@ -15534,13 +15567,12 @@ You can then create a dump of your database:
   curl \
     -X POST 'http://<your-domain-name>/dumps' \
     -H 'Authorization: Bearer API_KEY'
-  # -H 'X-Meili-API-Key: API_KEY' for v0.24 or below
   ```
 </CodeGroup>
 
 The server should return a response that looks like this:
 
-```json  theme={null}
+```json theme={null}
 {
   "taskUid": 1,
   "indexUid": null,
@@ -15555,7 +15587,7 @@ Use the `taskUid` to [track the status](/reference/api/tasks#get-one-task) of yo
 <Note>
   For v0.27 and below, the response to your request returns a dump `uid`. Use it  with the `/dumps/:dump_uid/status` route to track the request status:
 
-  ```sh  theme={null}
+  ```sh theme={null}
     curl \
       -X GET 'http://<your-domain-name>/dumps/:dump_uid/status'
       -H 'Authorization: Bearer API_KEY'
@@ -15579,7 +15611,7 @@ Stop your Meilisearch instance.
   <Tab title="Cloud platforms">
     If you're running Meilisearch as a `systemctl` service, connect via SSH to your cloud instance and execute the following command to stop Meilisearch:
 
-    ```bash  theme={null}
+    ```bash theme={null}
     systemctl stop meilisearch
     ```
 
@@ -15617,13 +15649,13 @@ Install the latest version of Meilisearch using:
 
 <Tabs>
   <Tab title="Local installation">
-    ```bash  theme={null}
+    ```bash theme={null}
     curl -L https://install.meilisearch.com | sh
     ```
   </Tab>
 
   <Tab title="Cloud platforms">
-    ```sh  theme={null}
+    ```sh theme={null}
     # replace {meilisearch_version} with the version of your choice. Use the format: `vX.X.X`
     curl "https://github.com/meilisearch/meilisearch/releases/download/{meilisearch_version}/meilisearch-linux-amd64" --output meilisearch --location --show-error
     ```
@@ -15650,7 +15682,7 @@ Execute the command below to import the dump at launch:
 
 <Tabs>
   <Tab title="Local installation">
-    ```bash  theme={null}
+    ```bash theme={null}
     # replace {dump_uid.dump} with the name of your dump file
     ./meilisearch --import-dump dumps/{dump_uid.dump} --master-key="MASTER_KEY"
     # Or, if you chose another location for data files and dumps before the update, also add the same parameters
@@ -15659,7 +15691,7 @@ Execute the command below to import the dump at launch:
   </Tab>
 
   <Tab title="Cloud platforms">
-    ```sh  theme={null}
+    ```sh theme={null}
     # replace {dump_uid.dump} with the name of your dump file
     meilisearch --db-path /var/lib/meilisearch/data.ms --import-dump "/var/opt/meilisearch/dumps/{dump_uid.dump}"
     ```
@@ -15753,26 +15785,13 @@ Source: https://www.meilisearch.com/docs/reference/api/documents
 
 The /documents route allows you to create, manage, and delete documents.
 
-export const NoticeTag = ({label}) => <span className="noticeTag noticeTag--{ label }">
-    {label}
-  </span>;
-
-export const RouteHighlighter = ({method, path}) => <div className={`routeHighlighter routeHighlighter--${method}`}>
-    <div className="routeHighlighter__method">
-      {method}
-    </div>
-    <div className="routeHighlighter__path">
-      {path}
-    </div>
-  </div>;
-
 The `/documents` route allows you to create, manage, and delete documents.
 
 [Learn more about documents.](/learn/getting_started/documents)
 
 ## Get documents with POST
 
-<RouteHighlighter method="POST" path="/indexes/{index_uid}/documents/fetch" />
+<RouteHighlighter method="POST" />
 
 Get a set of documents.
 
@@ -15837,7 +15856,8 @@ Use `offset` and `limit` to browse through documents.
   client.index('books').getDocuments({
     filter: '(rating > 3 AND (genres = Adventure OR genres = Fiction)) AND language = English',
     fields: ['title', 'genres', 'rating', 'language'],
-    limit: 3
+    limit: 3,
+    sort: ['release_date:desc']
   })
   ```
 
@@ -15925,7 +15945,7 @@ Use `offset` and `limit` to browse through documents.
 
 #### Response: `200 Ok`
 
-```json  theme={null}
+```json theme={null}
 {
   "results": [
     {
@@ -15962,7 +15982,7 @@ Use `offset` and `limit` to browse through documents.
   This endpoint will be deprecated in the near future. Consider using POST `/indexes/{index_uid}/documents/fetch` instead.
 </Warning>
 
-<RouteHighlighter method="GET" path="/indexes/{index_uid}/documents" />
+<RouteHighlighter method="GET" />
 
 Get a set of documents.
 
@@ -16016,7 +16036,8 @@ Using the query parameters `offset` and `limit`, you can browse through all your
   ```javascript JS theme={null}
   client.index('movies').getDocuments({
     limit: 2,
-    filter: 'genres = action'
+    filter: 'genres = action',
+    sort: ['release_date:desc']
   })
   ```
 
@@ -16086,7 +16107,7 @@ Using the query parameters `offset` and `limit`, you can browse through all your
 
 #### Response: `200 Ok`
 
-```json  theme={null}
+```json theme={null}
 {
   "results": [
     {
@@ -16121,7 +16142,7 @@ Using the query parameters `offset` and `limit`, you can browse through all your
 
 ## Get one document
 
-<RouteHighlighter method="GET" path="/indexes/{index_uid}/documents/{document_id}" />
+<RouteHighlighter method="GET" />
 
 Get one document using its unique id.
 
@@ -16212,7 +16233,7 @@ Get one document using its unique id.
 
 #### Response: `200 Ok`
 
-```json  theme={null}
+```json theme={null}
 {
   "id": 25684,
   "title": "American Ninja 5",
@@ -16223,7 +16244,7 @@ Get one document using its unique id.
 
 ## Add or replace documents
 
-<RouteHighlighter method="POST" path="/indexes/{index_uid}/documents" />
+<RouteHighlighter method="POST" />
 
 Add an array of documents or replace them if they already exist. If the provided index does not exist, it will be created.
 
@@ -16248,6 +16269,7 @@ This endpoint accepts the following content types:
 | **`primaryKey`**     | `null`        | [Primary key](/learn/getting_started/primary_key#primary-field) of the index                                                            |
 | **`csvDelimiter`**   | `","`         | Configure the character separating CSV fields. Must be a string containing [one ASCII character](https://www.rfc-editor.org/rfc/rfc20). |
 | **`customMetadata`** | `null`        | An arbitrary string accessible via the [generated task object](/reference/api/tasks#custommetadata)                                     |
+| **`skipCreation`**   | `false`       | If `true`, updates existing documents, but does not add new documents to the index                                                      |
 
 <Warning>
   Configuring `csvDelimiter` and sending data with a content type other than CSV will cause Meilisearch to throw an error.
@@ -16259,7 +16281,7 @@ If you want to [set the primary key of your index on document addition](/learn/g
 
 An array of documents. Each document is represented as a JSON object.
 
-```json  theme={null}
+```json theme={null}
 [
   {
     "id": 287947,
@@ -16277,7 +16299,7 @@ An array of documents. Each document is represented as a JSON object.
 
 Each key of the `_vectors` object must be the name of a configured embedder and correspond to a nested object with two fields, `embeddings` and `regenerate`:
 
-```json  theme={null}
+```json theme={null}
 [
   {
     "id": 452,
@@ -16303,7 +16325,7 @@ Each key of the `_vectors` object must be the name of a configured embedder and 
 
 You may also use an array shorthand to add embeddings to a document:
 
-```json  theme={null}
+```json theme={null}
 "_vectors": {
   "default": [0.003, 0.1, 0.75]
 }
@@ -16311,7 +16333,7 @@ You may also use an array shorthand to add embeddings to a document:
 
 Vector embeddings added with the shorthand are not replaced when Meilisearch generates new embeddings. The above example is equivalent to:
 
-```json  theme={null}
+```json theme={null}
 "default": {
   "embeddings": [0.003, 0.1, 0.75],
   "regenerate": false
@@ -16357,7 +16379,7 @@ Vector embeddings added with the shorthand are not replaced when Meilisearch gen
     'poster': 'https://image.tmdb.org/t/p/w1280/xnopI5Xtky18MPhK40cZAGAOVeV.jpg',
     'overview': 'A boy is given the ability to become an adult superhero in times of need with a single magic word.',
     'release_date': '2019-03-23'
-  }])
+  }], skip_creation=True)
   ```
 
   ```php PHP theme={null}
@@ -16405,7 +16427,8 @@ Vector embeddings added with the shorthand are not replaced when Meilisearch gen
       "release_date": "2019-03-23",
     },
   }
-  client.Index("movies").AddDocuments(documents, nil)
+  options := &meilisearch.DocumentOptions{SkipCreation: false}
+  client.Index("movies").AddDocuments(documents, options)
   ```
 
   ```csharp C# theme={null}
@@ -16480,7 +16503,7 @@ Vector embeddings added with the shorthand are not replaced when Meilisearch gen
 
 #### Response: `202 Accepted`
 
-```json  theme={null}
+```json theme={null}
 {
     "taskUid": 1,
     "indexUid": "movies",
@@ -16494,11 +16517,19 @@ You can use this `taskUid` to get more details on [the status of the task](/refe
 
 ## Add or update documents
 
-<RouteHighlighter method="PUT" path="/indexes/{index_uid}/documents" />
+<RouteHighlighter method="PUT" />
 
 Add a list of documents or update them if they already exist. If the provided index does not exist, it will be created.
 
-If you send an already existing document (same [document id](/learn/getting_started/primary_key#document-id)) the old document will be only partially updated according to the fields of the new document. Thus, any fields not present in the new document are kept and remain unchanged.
+If you send an already existing document (same [document id](/learn/getting_started/primary_key#document-id)) the old document will be only partially updated according to the fields of the new document. Any fields not present in the new document are kept and remain unchanged.
+
+<Warning>
+  Partial updates apply only to top-level fields. You cannot perform a partial update of a nested field.
+
+  Updating an object replaces the entire object and removes any omitted subfields.
+
+  Using dot notation in an update request creates a new flat attribute instead of updating the existing nested field.
+</Warning>
 
 To completely overwrite a document, check out the [add or replace documents route](/reference/api/documents#add-or-replace-documents).
 
@@ -16523,6 +16554,7 @@ This endpoint accepts the following content types:
 | **`primaryKey`**     | `null`        | [Primary key](/learn/getting_started/primary_key#primary-field) of the documents                                                        |
 | **`csvDelimiter`**   | `","`         | Configure the character separating CSV fields. Must be a string containing [one ASCII character](https://www.rfc-editor.org/rfc/rfc20). |
 | **`customMetadata`** | `null`        | An arbitrary string accessible via the [generated task object](/reference/api/tasks#custommetadata)                                     |
+| **`skipCreation`**   | `false`       | If `true`, updates existing documents, but does not add new documents to the index                                                      |
 
 <Warning>
   Configuring `csvDelimiter` and sending data with a content type other than CSV will cause Meilisearch to throw an error.
@@ -16532,7 +16564,7 @@ This endpoint accepts the following content types:
 
 An array of documents. Each document is represented as a JSON object.
 
-```json  theme={null}
+```json theme={null}
 [
   {
     "id": 287947,
@@ -16570,7 +16602,7 @@ An array of documents. Each document is represented as a JSON object.
       'id': 287947,
       'title': 'Shazam ⚡️',
       'genres': 'comedy'
-  }])
+  }], skip_creation=True)
   ```
 
   ```php PHP theme={null}
@@ -16610,7 +16642,8 @@ An array of documents. Each document is represented as a JSON object.
       "genres": "comedy",
     },
   }
-  client.Index("movies").UpdateDocuments(documents, nil)
+  options := &meilisearch.DocumentOptions{SkipCreation: true}
+  client.Index("movies").UpdateDocuments(documents, options)
   ```
 
   ```csharp C# theme={null}
@@ -16626,7 +16659,8 @@ An array of documents. Each document is represented as a JSON object.
   #[derive(Serialize, Deserialize)]
   struct IncompleteMovie {
     id: usize,
-    title: String
+    title: String,
+    genres: String
   }
 
   let task: TaskInfo = client
@@ -16634,7 +16668,8 @@ An array of documents. Each document is represented as a JSON object.
     .add_or_update(&[
       IncompleteMovie {
         id: 287947,
-        title: "Shazam ⚡️".to_string()
+        title: "Shazam ⚡️".to_string(),
+        genres: "comedy".to_string()
       }
     ], None)
     .await
@@ -16680,7 +16715,7 @@ The documents are matched because they have the same [primary key](/learn/gettin
 
 #### Response: `202 Accepted`
 
-```json  theme={null}
+```json theme={null}
 {
     "taskUid": 1,
     "indexUid": "movies",
@@ -16694,14 +16729,14 @@ You can use this `taskUid` to get more details on [the status of the task](/refe
 
 ## Update documents with function <NoticeTag type="experimental" label="experimental" />
 
-<RouteHighlighter method="POST" path="/indexes/{index_uid}/documents/edit" />
+<RouteHighlighter method="POST" />
 
 Use a [RHAI function](https://rhai.rs/book/engine/hello-world.html) to edit one or more documents directly in Meilisearch.
 
 <Note>
   This is an experimental feature. Use the experimental features endpoint to activate it:
 
-  ```sh  theme={null}
+  ```sh theme={null}
   curl \
     -X PATCH 'MEILISEARCH_URL/experimental-features/' \
     -H 'Content-Type: application/json' \
@@ -16740,7 +16775,7 @@ Use `context` to pass data to the `function` scope. By default a function only h
 
 ### Example
 
-```sh  theme={null}
+```sh theme={null}
 curl \
 -X POST 'MEILISEARCH_URL/indexes/INDEX_NAME/documents/edit' \
 -H 'Content-Type: application/json' \
@@ -16751,7 +16786,7 @@ curl \
 
 ## Delete all documents
 
-<RouteHighlighter method="DELETE" path="/indexes/{index_uid}/documents" />
+<RouteHighlighter method="DELETE" />
 
 Delete all documents in the specified index.
 
@@ -16829,7 +16864,7 @@ Delete all documents in the specified index.
 
 #### Response: `202 Accepted`
 
-```json  theme={null}
+```json theme={null}
 {
     "taskUid": 1,
     "indexUid": "movies",
@@ -16843,7 +16878,7 @@ You can use this `taskUid` to get more details on [the status of the task](/refe
 
 ## Delete one document
 
-<RouteHighlighter method="DELETE" path="/indexes/{index_uid}/documents/{document_id}" />
+<RouteHighlighter method="DELETE" />
 
 Delete one document based on its unique id.
 
@@ -16922,7 +16957,7 @@ Delete one document based on its unique id.
 
 #### Response: `202 Accepted`
 
-```json  theme={null}
+```json theme={null}
 {
     "taskUid": 1,
     "indexUid": "movies",
@@ -16936,7 +16971,7 @@ You can use this `taskUid` to get more details on [the status of the task](/refe
 
 ## Delete documents by filter
 
-<RouteHighlighter method="POST" path="/indexes/{index_uid}/documents/delete" />
+<RouteHighlighter method="POST" />
 
 Delete a set of documents based on a filter.
 
@@ -17034,7 +17069,7 @@ A filter expression written as a string or array of array of strings for the doc
 
 #### Response: `202 Accepted`
 
-```json  theme={null}
+```json theme={null}
 {
     "taskUid": 1,
     "indexUid": "movies",
@@ -17048,7 +17083,7 @@ You can use this `taskUid` to get more details on [the status of the task](/refe
 
 ## Delete documents by batch
 
-<RouteHighlighter method="POST" path="/indexes/{index_uid}/documents/delete-batch" />
+<RouteHighlighter method="POST" />
 
 Delete a set of documents based on an array of document ids.
 
@@ -17068,7 +17103,7 @@ Delete a set of documents based on an array of document ids.
 
 An array of numbers containing the unique ids of the documents to be deleted.
 
-```json  theme={null}
+```json theme={null}
 [23488, 153738, 437035, 363869]
 ```
 
@@ -17145,7 +17180,7 @@ An array of numbers containing the unique ids of the documents to be deleted.
 
 #### Response: `202 Accepted`
 
-```json  theme={null}
+```json theme={null}
 {
     "taskUid": 1,
     "indexUid": "movies",
@@ -17158,178 +17193,10 @@ An array of numbers containing the unique ids of the documents to be deleted.
 You can use this `taskUid` to get more details on [the status of the task](/reference/api/tasks#get-one-task).
 
 
-# Facet search
-Source: https://www.meilisearch.com/docs/reference/api/facet_search
-
-The /facet-search route allows you to search for facet values.
-
-export const RouteHighlighter = ({method, path}) => <div className={`routeHighlighter routeHighlighter--${method}`}>
-    <div className="routeHighlighter__method">
-      {method}
-    </div>
-    <div className="routeHighlighter__path">
-      {path}
-    </div>
-  </div>;
-
-The `/facet-search` route allows you to search for facet values. Facet search supports [prefix search](/learn/engine/prefix) and [typo tolerance](/learn/relevancy/typo_tolerance_settings). The returned hits are sorted lexicographically in ascending order.
-
-<Note>
-  Meilisearch does not support facet search on numbers. Convert numeric facets to strings to make them searchable.
-
-  Internally, Meilisearch represents numbers as [`float64`](https://en.wikipedia.org/wiki/Double-precision_floating-point_format). This means they lack precision and can be represented in different ways, making it difficult to search facet values effectively.
-</Note>
-
-## Perform a facet search
-
-Search for a facet value within a given facet.
-
-<RouteHighlighter method="POST" path="/indexes/{index_uid}/facet-search" />
-
-<Warning>
-  This endpoint will not work without first explicitly adding attributes to the [`filterableAttributes`](/reference/api/settings#update-filterable-attributes) list. [Learn more about facets in our dedicated guide.](/learn/filtering_and_sorting/search_with_facet_filters)
-</Warning>
-
-<Warning>
-  Meilisearch's facet search does not support multi-word facets and only considers the first term in the`facetQuery`.
-
-  For example, searching for `Jane` will return `Jane Austen`, but searching for `Austen` will not return `Jane Austen`.
-</Warning>
-
-### Body
-
-| Name                                                                                                  | Type                                                                 | Default value | Description                                                                                                                                        |
-| ----------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------- | ------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **`facetName`** \*                                                                                    | String                                                               | `null`        | Facet name to search values on                                                                                                                     |
-| **`facetQuery`**                                                                                      | String                                                               | `null`        | Search query for a given facet value. If `facetQuery` isn't specified, Meilisearch returns all facet values for the searched facet, limited to 100 |
-| **[`q`](/reference/api/search#query-q)**                                                              | String                                                               | `""`          | Query string                                                                                                                                       |
-| **[`filter`](/reference/api/search#filter)**                                                          | [String\*](/learn/filtering_and_sorting/filter_expression_reference) | `null`        | Filter queries by an attribute's value                                                                                                             |
-| **[`matchingStrategy`](/reference/api/search#matching-strategy)**                                     | String                                                               | `"last"`      | Strategy used to match query terms within documents                                                                                                |
-| **[`attributesToSearchOn`](/reference/api/search##customize-attributes-to-search-on-at-search-time)** | Array of strings                                                     | `null`        | Restrict search to the specified attributes                                                                                                        |
-| **`exhaustiveFacetCount`**                                                                            | Boolean                                                              | `false`       | Return an exhaustive count of facets, up to the limit defined by [`maxTotalHits`](/reference/api/settings#pagination)                              |
-
-### Response
-
-| Name                   | Type    | Description                                             |
-| :--------------------- | :------ | :------------------------------------------------------ |
-| **`facetHits.value`**  | String  | Facet value matching the `facetQuery`                   |
-| **`facetHits.count`**  | Integer | Number of documents with a facet value matching `value` |
-| **`facetQuery`**       | String  | The original `facetQuery`                               |
-| **`processingTimeMs`** | Number  | Processing time of the query                            |
-
-### Example
-
-<CodeGroup>
-  ```bash cURL theme={null}
-  curl \
-    -X POST 'MEILISEARCH_URL/indexes/books/facet-search' \
-    -H 'Content-Type: application/json' \
-    --data-binary '{
-      "facetQuery": "fiction",
-      "facetName": "genres",
-      "filter": "rating > 3"
-    }'
-  ```
-
-  ```javascript JS theme={null}
-  client.index('books').searchForFacetValues({
-    facetQuery: 'fiction',
-    facetName: 'genres'
-    filter: 'rating > 3'
-  })
-  ```
-
-  ```python Python theme={null}
-  client.index('books').facet_search('genres', 'fiction', {
-    'filter': 'rating > 3'
-  })
-  ```
-
-  ```php PHP theme={null}
-  $client->index('books')->facetSearch(
-    (new FacetSearchQuery())
-        ->setFacetQuery('fiction')
-        ->setFacetName('genres')
-        ->setFilter(['rating > 3'])
-  );
-  ```
-
-  ```java Java theme={null}
-  FacetSearchRequest fsr = FacetSearchRequest.builder().facetName("genres").facetQuery("fiction").filter(new String[]{"rating > 3"}).build();
-  client.index("books").facetSearch(fsr);
-  ```
-
-  ```ruby Ruby theme={null}
-  client.index('books').facet_search('genres', 'fiction', filter: 'rating > 3')
-  ```
-
-  ```go Go theme={null}
-  client.Index("books").FacetSearch(&meilisearch.FacetSearchRequest{
-    FacetQuery: "fiction",
-    FacetName: "genres",
-    Filter: "rating > 3",
-  })
-  ```
-
-  ```csharp C# theme={null}
-  var query = new SearchFacetsQuery()
-  {
-    FacetQuery = "fiction",
-    Filter = "rating > 3"
-  };
-  await client.Index("books").FacetSearchAsync("genres", query);
-  ```
-
-  ```rust Rust theme={null}
-  let res = client.index("books")
-    .facet_search("genres")
-    .with_facet_query("fiction")
-    .with_filter("rating > 3")
-    .execute()
-    .await
-    .unwrap();
-  ```
-
-  ```dart Dart theme={null}
-  await client.index('books').facetSearch(
-        FacetSearchQuery(
-          facetQuery: 'fiction',
-          facetName: 'genres',
-          filter: 'rating > 3',
-        ),
-      );
-  ```
-</CodeGroup>
-
-#### Response: `200 Ok`
-
-```json  theme={null}
-{
-  "facetHits": [
-    {
-      "value": "fiction",
-      "count": 7
-    }
-  ],
-  "facetQuery": "fiction",
-  "processingTimeMs": 0
-}
-```
-
-
 # Indexes
 Source: https://www.meilisearch.com/docs/reference/api/indexes
 
 The /indexes route allows you to create, manage, and delete your indexes.
-
-export const RouteHighlighter = ({method, path}) => <div className={`routeHighlighter routeHighlighter--${method}`}>
-    <div className="routeHighlighter__method">
-      {method}
-    </div>
-    <div className="routeHighlighter__path">
-      {path}
-    </div>
-  </div>;
 
 The `/indexes` route allows you to create, manage, and delete your indexes.
 
@@ -17337,7 +17204,7 @@ The `/indexes` route allows you to create, manage, and delete your indexes.
 
 ## Index object
 
-```json  theme={null}
+```json theme={null}
 {
   "uid": "movies",
   "createdAt": "2022-02-10T07:45:15.628261Z",
@@ -17355,7 +17222,7 @@ The `/indexes` route allows you to create, manage, and delete your indexes.
 
 ## List all indexes
 
-<RouteHighlighter method="GET" path="/indexes" />
+<RouteHighlighter method="GET" />
 
 List all indexes. Results can be paginated by using the `offset` and `limit` query parameters.
 
@@ -17440,7 +17307,7 @@ List all indexes. Results can be paginated by using the `offset` and `limit` que
 
 #### Response: `200 Ok`
 
-```json  theme={null}
+```json theme={null}
 {
   "results": [
     {
@@ -17470,7 +17337,7 @@ List all indexes. Results can be paginated by using the `offset` and `limit` que
 
 ## Get one index
 
-<RouteHighlighter method="GET" path="/indexes/{index_uid}" />
+<RouteHighlighter method="GET" />
 
 Get information about an index.
 
@@ -17541,7 +17408,7 @@ Get information about an index.
 
 #### Response: `200 Ok`
 
-```json  theme={null}
+```json theme={null}
 {
   "uid": "movies",
   "createdAt": "2022-02-10T07:45:15.628261Z",
@@ -17552,7 +17419,7 @@ Get information about an index.
 
 ## Create an index
 
-<RouteHighlighter method="POST" path="/indexes" />
+<RouteHighlighter method="POST" />
 
 Create an index.
 
@@ -17563,7 +17430,7 @@ Create an index.
 | **`uid`** \*     | String          | N/A           | [`uid`](/learn/getting_started/indexes#index-uid) of the requested index                 |
 | **`primaryKey`** | String / `null` | `null`        | [`Primary key`](/learn/getting_started/primary_key#primary-field) of the requested index |
 
-```json  theme={null}
+```json theme={null}
 {
   "uid": "movies",
   "primaryKey": "id"
@@ -17638,7 +17505,7 @@ Create an index.
 
 #### Response: `202 Accepted`
 
-```json  theme={null}
+```json theme={null}
 {
   "taskUid": 0,
   "indexUid": "movies",
@@ -17652,7 +17519,7 @@ You can use the response's `taskUid` to [track the status of your request](/refe
 
 ## Update an index
 
-<RouteHighlighter method="PATCH" path="/indexes/{index_uid}" />
+<RouteHighlighter method="PATCH" />
 
 Update an index's [primary key](/learn/getting_started/primary_key#primary-key). You can freely update the primary key of an index as long as it contains no documents.
 
@@ -17737,7 +17604,7 @@ To change the primary key of an index that already contains documents, you must 
 
 #### Response: `202 Accepted`
 
-```json  theme={null}
+```json theme={null}
 {
   "taskUid": 1,
   "indexUid": "movies",
@@ -17751,7 +17618,7 @@ You can use the response's `taskUid` to [track the status of your request](/refe
 
 ## Delete an index
 
-<RouteHighlighter method="DELETE" path="/indexes/{index_uid}" />
+<RouteHighlighter method="DELETE" />
 
 Delete an index.
 
@@ -17826,7 +17693,7 @@ Delete an index.
 
 #### Response: `202 Accepted`
 
-```json  theme={null}
+```json theme={null}
 {
   "taskUid": 1,
   "indexUid": "movies",
@@ -17840,7 +17707,7 @@ You can use the response's `taskUid` to [track the status of your request](/refe
 
 ## Swap indexes
 
-<RouteHighlighter method="POST" path="/swap-indexes" />
+<RouteHighlighter method="POST" />
 
 Swap the documents, settings, and task history of two or more indexes. **You can only swap indexes in pairs.** A single request can swap as many index pairs as you wish.
 
@@ -17957,7 +17824,7 @@ Use `rename: false` if you are swapping two existing indexes. Use `rename: true`
 
 #### Response
 
-```json  theme={null}
+```json theme={null}
 {
   "taskUid": 3,
   "indexUid": null,
@@ -17979,26 +17846,13 @@ Source: https://www.meilisearch.com/docs/reference/api/multi_search
 
 The /multi-search route allows you to perform multiple search queries on one or more indexes.
 
-export const NoticeTag = ({label}) => <span className="noticeTag noticeTag--{ label }">
-    {label}
-  </span>;
-
-export const RouteHighlighter = ({method, path}) => <div className={`routeHighlighter routeHighlighter--${method}`}>
-    <div className="routeHighlighter__method">
-      {method}
-    </div>
-    <div className="routeHighlighter__path">
-      {path}
-    </div>
-  </div>;
-
 The `/multi-search` route allows you to perform multiple search queries on one or more indexes by bundling them into a single HTTP request. Multi-search is also known as federated search.
 
 ## Perform a multi-search
 
 Bundle multiple search queries in a single API request. Use this endpoint to search through multiple indexes at once.
 
-<RouteHighlighter method="POST" path="/multi-search" />
+<RouteHighlighter method="POST" />
 
 ### Body
 
@@ -18030,7 +17884,7 @@ If `federation` is missing or `null`, Meilisearch returns a list of multiple sea
 
 `facetsByIndex` must be an object. Its keys must correspond to indexes in your Meilisearch project. Each key must be associated with an array of attributes in the filterable attributes list of that index:
 
-```json  theme={null}
+```json theme={null}
 "facetsByIndex": {
   "INDEX_A": ["ATTRIBUTE_X", "ATTRIBUTE_Y"],
   "INDEX_B": ["ATTRIBUTE_Z"]
@@ -18039,7 +17893,7 @@ If `federation` is missing or `null`, Meilisearch returns a list of multiple sea
 
 When you specify `facetsByIndex`, multi-search responses include an extra `facetsByIndex` field. The response's `facetsByIndex` is an object with one field for each queried index:
 
-```json  theme={null}
+```json theme={null}
 {
   "hits" [ … ],
   …
@@ -18078,7 +17932,7 @@ When you specify `facetsByIndex`, multi-search responses include an extra `facet
 
 When both `facetsByIndex` and `mergeFacets` are present and not null, facet information included in multi-search responses is merged across all queried indexes. Instead of `facetsByIndex`, the response includes two extra fields: `facetDistribution` and `facetStats`:
 
-```json  theme={null}
+```json theme={null}
 {
   "hits": [ … ],
   …
@@ -18397,7 +18251,7 @@ Each result in the `hits` array contains an additional `_federation` field with 
 
 ##### Response: `200 Ok`
 
-```json  theme={null}
+```json theme={null}
 {
   "results": [
     {
@@ -18522,7 +18376,7 @@ Each result in the `hits` array contains an additional `_federation` field with 
 
 ##### Response: `200 Ok`
 
-```json  theme={null}
+```json theme={null}
 {
   "hits": [
     {
@@ -18579,13 +18433,12 @@ Each result in the `hits` array contains an additional `_federation` field with 
           }
         }
       ]
-    }'
   ```
 </CodeGroup>
 
 ##### Response: `200 Ok`
 
-```json  theme={null}
+```json theme={null}
 {
   "hits": [
     {
@@ -18634,25 +18487,12 @@ Source: https://www.meilisearch.com/docs/reference/api/network
 
 Use the `/network` route to create a network of Meilisearch instances.
 
-export const NoticeTag = ({label}) => <span className="noticeTag noticeTag--{ label }">
-    {label}
-  </span>;
-
-export const RouteHighlighter = ({method, path}) => <div className={`routeHighlighter routeHighlighter--${method}`}>
-    <div className="routeHighlighter__method">
-      {method}
-    </div>
-    <div className="routeHighlighter__path">
-      {path}
-    </div>
-  </div>;
-
 Use the `/network` route to create a network of Meilisearch instances. This is particularly useful when used together with federated search to implement horizontal database partition strategies such as sharding.
 
 <Note>
   This is an experimental feature. Use the Meilisearch Cloud UI or the experimental features endpoint to activate it:
 
-  ```sh  theme={null}
+  ```sh theme={null}
   curl \
     -X PATCH 'MEILISEARCH_URL/experimental-features/' \
     -H 'Content-Type: application/json' \
@@ -18675,7 +18515,7 @@ Use the `/network` route to create a network of Meilisearch instances. This is p
 
 ## The network object
 
-```json  theme={null}
+```json theme={null}
 {
   "self": "ms-00",
   "sharding": false,
@@ -18714,7 +18554,7 @@ Use the `/network` route to create a network of Meilisearch instances. This is p
 
 #### The remote object
 
-```json  theme={null}
+```json theme={null}
 "ms-00": {
   "url": "http://ms-1235.example.meilisearch.io",
   "searchApiKey": "Ecd1SDDi4pqdJD6qYLxD3y7VZAEb4d9j6LJgt4d6xas",
@@ -18742,7 +18582,7 @@ Use the `/network` route to create a network of Meilisearch instances. This is p
 
 ## Get the network object
 
-<RouteHighlighter method="GET" path="/network" />
+<RouteHighlighter method="GET" />
 
 Returns the current value of the instance's network object.
 
@@ -18753,11 +18593,30 @@ Returns the current value of the instance's network object.
   curl \
     -X GET 'MEILISEARCH_URL/network'
   ```
+
+  ```python Python theme={null}
+  client.get_all_networks()
+  ```
+
+  ```php PHP theme={null}
+  $client->getNetwork();
+  ```
+
+  ```go Go theme={null}
+  client.GetNetwork();
+  ```
+
+  ```rust Rust theme={null}
+  let network = client
+    .get_network_state()
+    .await
+    .unwrap();
+  ```
 </CodeGroup>
 
 #### Response: `200 Ok`
 
-```json  theme={null}
+```json theme={null}
 {
   "self": "ms-00",
   "sharding": false,
@@ -18778,7 +18637,7 @@ Returns the current value of the instance's network object.
 
 ## Update the network object
 
-<RouteHighlighter method="PATCH" path="/network" />
+<RouteHighlighter method="PATCH" />
 
 Update the `self` and `remotes` fields of the network object.
 
@@ -18815,11 +18674,77 @@ To reset `self`, `sharding` and `remotes` to their original value, set them to `
       }
     }'
   ```
+
+  ```python Python theme={null}
+  client.add_or_update_networks({
+      "remotes": {
+          "http://localhost:7700": {
+              "searchApiKey": "masterKey"
+          }
+      },
+      "leader": None
+  })
+  ```
+
+  ```php PHP theme={null}
+  $client->updateNetwork([
+    'self' => 'ms-00',
+    'leader' => 'ms-00',
+    'remotes' => [
+      'ms-00' => [
+        'url' => 'http://INSTANCE_URL',
+        'searchApiKey' => 'INSTANCE_API_KEY',
+        'writeApiKey' => 'INSTANCE_WRITE_API_KEY'
+      ],
+      'ms-01' => [
+        'url' => 'http://ANOTHER_INSTANCE_URL',
+        'searchApiKey' => 'ANOTHER_INSTANCE_API_KEY',
+        'writeApiKey' => 'ANOTHER_INSTANCE_WRITE_API_KEY'
+      ]
+    ]
+  ]);
+  ```
+
+  ```go Go theme={null}
+  client.UpdateNetwork(&meilisearch.UpdateNetworkRequest{
+    Self: meilisearch.String("ms-00"),
+    Leader: meilisearch.String("ms-00"),
+    Remotes: meilisearch.NewOpt(map[string]meilisearch.Opt[meilisearch.Remote]{
+      "ms-00": meilisearch.NewOpt(meilisearch.Remote{
+        URL:          meilisearch.String("https://meilisearch.com"),
+        SearchAPIKey: meilisearch.String("ReadKey"),
+        WriteAPIKey: meilisearch.String("WriteKey"),
+      },
+    },
+  });
+  ```
+
+  ```rust Rust theme={null}
+  let mut remotes = std::collections::HashMap::new();
+  remotes.insert(String::from("ms-01"), Some(meilisearch_sdk::network::RemoteConfig {
+    url: "https://ms-01.enterprise.meilisearch.com".to_string(),
+    search_api_key: "SEARCH_API_KEY".to_string(),
+    write_api_key: Some("WRITE_API_KEY".to_string()),
+  }));
+  // Remove ms-00 from the topology
+  remotes.insert(String::from("ms-00"), None);
+
+  let update = meilisearch_sdk::network::NetworkUpdate {
+    leader: Some("ms-01".to_string()),
+    remotes: Some(remotes),
+    ..meilisearch_sdk::network::NetworkUpdate::default()
+  };
+
+  let task: TaskInfo = client
+    .update_network_state(&update)
+    .await
+    .unwrap();
+  ```
 </CodeGroup>
 
 #### Response: `200 Ok`
 
-```json  theme={null}
+```json theme={null}
 {
   "self": "ms-00",
   "sharding": true,
@@ -18843,15 +18768,6 @@ To reset `self`, `sharding` and `remotes` to their original value, set them to `
 Source: https://www.meilisearch.com/docs/reference/api/overview
 
 Consult this page for an overview of how to query Meilisearch's API, which types of parameters it supports, and how it structures its responses.
-
-export const RouteHighlighter = ({method, path}) => <div className={`routeHighlighter routeHighlighter--${method}`}>
-    <div className="routeHighlighter__method">
-      {method}
-    </div>
-    <div className="routeHighlighter__path">
-      {path}
-    </div>
-  </div>;
 
 This reference describes the general behavior of Meilisearch's RESTful API.
 
@@ -19046,7 +18962,7 @@ Meilisearch Cloud includes this header by default.
 
 Responses will include a `metadata` object:
 
-```json  theme={null}
+```json theme={null}
 {
   "hits": [ … ],
   "metadata": {
@@ -19080,7 +18996,7 @@ The request body is data sent to the API. It is used with PUT, POST, and PATCH m
 
 Meilisearch is an **asynchronous API**. This means that in response to most write requests, you will receive a summarized version of the `task` object:
 
-```json  theme={null}
+```json theme={null}
 {
     "taskUid": 1,
     "indexUid": "movies",
@@ -19104,19 +19020,6 @@ Source: https://www.meilisearch.com/docs/reference/api/search
 
 The /search route allows you to search your indexed documents. This route includes a large number of parameters you can use to customize returned search results.
 
-export const NoticeTag = ({label}) => <span className="noticeTag noticeTag--{ label }">
-    {label}
-  </span>;
-
-export const RouteHighlighter = ({method, path}) => <div className={`routeHighlighter routeHighlighter--${method}`}>
-    <div className="routeHighlighter__method">
-      {method}
-    </div>
-    <div className="routeHighlighter__path">
-      {path}
-    </div>
-  </div>;
-
 Meilisearch exposes two routes to perform searches:
 
 * A POST route: this is the preferred route when using API authentication, as it allows [preflight request](https://developer.mozilla.org/en-US/docs/Glossary/Preflight_request) caching and better performance
@@ -19126,7 +19029,7 @@ You may find exhaustive descriptions of the parameters accepted by the two route
 
 ## Search in an index with POST
 
-<RouteHighlighter method="POST" path="/indexes/{index_uid}/search" />
+<RouteHighlighter method="POST" />
 
 Search for documents matching a specific query in the given index.
 
@@ -19271,7 +19174,7 @@ You can [read more about pagination in our dedicated guide](/guides/front_end/pa
 
 #### Response: `200 Ok`
 
-```json  theme={null}
+```json theme={null}
 {
   "hits": [
     {
@@ -19301,7 +19204,7 @@ You can [read more about pagination in our dedicated guide](/guides/front_end/pa
 
 ## Search in an index with GET
 
-<RouteHighlighter method="GET" path="/indexes/{index_uid}/search" />
+<RouteHighlighter method="GET" />
 
 Search for documents matching a specific query in the given index.
 
@@ -19389,7 +19292,7 @@ This endpoint should only be used when no API key is required. If an API key is 
 
 #### Response: `200 Ok`
 
-```json  theme={null}
+```json theme={null}
 {
   "hits": [
     {
@@ -19507,7 +19410,7 @@ You can search for films mentioning `shifu` by setting the `q` parameter:
 
 This will give you a list of documents that contain your query terms in at least one attribute.
 
-```json  theme={null}
+```json theme={null}
 {
   "hits": [
     {
@@ -20222,7 +20125,7 @@ If your documents contain `_geo` or `_geojson` data, you can use the following b
   <Tab title="_geoRadius">
     `_geoRadius` establishes a circular area based on a central point and a radius. This filter rule accepts the following parameters: `lat`, `lng`, `distance_in_meters`, `resolution`.
 
-    ```json  theme={null}
+    ```json theme={null}
     _geoRadius(lat, lng, distance_in_meters, resolution)
     ```
 
@@ -20453,7 +20356,7 @@ When `facets` is set, the search results object includes the [`facetDistribution
 
 `facetDistribution` contains the number of matching documents distributed among the values of a given facet. Each facet is represented as an object:
 
-```json  theme={null}
+```json theme={null}
 {
   …
  "facetDistribution": {
@@ -20476,7 +20379,7 @@ When `facets` is set, the search results object includes the [`facetDistribution
 
 `facetStats` contains the lowest (`min`) and highest (`max`) numerical values across all documents in each facet. Only numeric values are considered:
 
-```json  theme={null}
+```json theme={null}
 {
   …
 "facetStats": {
@@ -20573,7 +20476,7 @@ Given a movie ratings database, the following code sample returns the number of 
 
 The response shows the facet distribution for `genres` and `rating`. Since `rating` is a numeric field, you get its minimum and maximum values in `facetStats`.
 
-```json  theme={null}
+```json theme={null}
 {
   …
   "estimatedTotalHits": 22,
@@ -20920,7 +20823,7 @@ If you use `shifu` as a search query and set the value of the `cropLength` param
 
 You will get the following response with the **cropped text in the `_formatted` object**:
 
-```json  theme={null}
+```json theme={null}
 {
   "id": 50393,
   "title": "Kung Fu Panda Holiday",
@@ -21078,7 +20981,7 @@ When searching for `shifu`, you can use `cropMarker` to change the default `…`
   ```
 </CodeGroup>
 
-```json  theme={null}
+```json theme={null}
 {
   "id": 50393,
   "title": "Kung Fu Panda Holiday",
@@ -21216,7 +21119,7 @@ The following query highlights matches present in the `overview` attribute:
 
 The highlighted version of the text would then be found in the `_formatted` object included in each returned document:
 
-```json  theme={null}
+```json theme={null}
 {
   "id": 50393,
   "title": "Kung Fu Panda Holiday",
@@ -21373,7 +21276,7 @@ The following query encloses highlighted matches in `<span>` tags with a `class`
 
 You can find the highlighted query terms inside the `_formatted` property:
 
-```json  theme={null}
+```json theme={null}
 {
   "id": 50393,
   "title": "Kung Fu Panda Holiday",
@@ -21513,7 +21416,7 @@ If you set `showMatchesPosition` to `true` and search for `winter feast`:
 
 You would get the following response with **information about the matches in the `_matchesPosition` object**. Note how Meilisearch searches for `winter` and `feast` separately because of the whitespace:
 
-```json  theme={null}
+```json theme={null}
 {
   "id": 50393,
   "title": "Kung Fu Panda Holiday",
@@ -21745,7 +21648,7 @@ When dealing with documents containing `_geo` data, you can use `_geoPoint` to s
 
 Queries using `_geoPoint` will always include a `geoDistance` field containing the distance in meters between the document location and the `_geoPoint`:
 
-```json  theme={null}
+```json theme={null}
 [
   {
     "id": 1,
@@ -22081,7 +21984,7 @@ The code sample below returns the `_rankingScore` when searching for `dragon` in
   ```
 </CodeGroup>
 
-```json  theme={null}
+```json theme={null}
 {
   "hits": [
     {
@@ -22245,7 +22148,7 @@ The code sample below returns the `_rankingScoreDetail` when searching for `drag
   ```
 </CodeGroup>
 
-```json  theme={null}
+```json theme={null}
 {
   "hits": [
     {
@@ -22519,7 +22422,7 @@ Configures Meilisearch to return search results based on a query's meaning and c
   ```
 </CodeGroup>
 
-```json  theme={null}
+```json theme={null}
 {
   "query": "PLACEHOLDER_QUERY",
   "processingTimeMs": 10,
@@ -22557,7 +22460,7 @@ Use a custom vector to perform a search query. Must be an array of numbers corre
   ```bash cURL theme={null}
   curl -X POST 'MEILISEARCH_URL/indexes/INDEX_NAME/search' \
     -H 'content-type: application/json' \
-    --data-binary '{ 
+    --data-binary '{
       "vector": [0, 1, 2],
       "hybrid": {
         "embedder": "EMBEDDER_NAME"
@@ -22583,6 +22486,10 @@ Use a custom vector to perform a search query. Must be an array of numbers corre
 **Default value**: `false`
 
 Return document and query embeddings with search results. If `true`, Meilisearch will display vector data in each [document's `_vectors` field](/reference/api/documents#_vectors).
+
+<Warning>
+  `_vectors` must be included in the [displayedAttributes](/reference/api/settings#displayed-attributes) list to be returned in the response.
+</Warning>
 
 #### Example
 
@@ -22617,6 +22524,15 @@ Return document and query embeddings with search results. If `true`, Meilisearch
   ]);
   ```
 
+  ```ruby Ruby theme={null}
+  client.index('INDEX_NAME').search('kitchen utensils', {
+    retrieve_vectors: true,
+    hybrid: {
+      embedder: 'EMBEDDER_NAME'
+    }
+  })
+  ```
+
   ```rust Rust theme={null}
   let results = index
     .search()
@@ -22629,7 +22545,7 @@ Return document and query embeddings with search results. If `true`, Meilisearch
   ```
 </CodeGroup>
 
-```json  theme={null}
+```json theme={null}
 {
   "hits": [
     {
@@ -22723,7 +22639,7 @@ In case of a mismatch between `locales` and the [localized attributes index sett
   ```
 </CodeGroup>
 
-```json  theme={null}
+```json theme={null}
 {
   "hits": [
     {
@@ -22746,7 +22662,7 @@ In case of a mismatch between `locales` and the [localized attributes index sett
 <Note>
   This is an experimental feature. Use the Meilisearch Cloud UI or the experimental features endpoint to activate it:
 
-  ```sh  theme={null}
+  ```sh theme={null}
   curl \
     -X PATCH 'MEILISEARCH_URL/experimental-features/' \
     -H 'Content-Type: application/json' \
@@ -22766,7 +22682,7 @@ It is mandatory to specify an embedder when using `media`. `media` is incompatib
 
 <CodeSamplesSearchParameterReferenceMedia1 />
 
-```json  theme={null}
+```json theme={null}
 {
   "hits": [
     {
@@ -22800,22 +22716,13 @@ Source: https://www.meilisearch.com/docs/reference/api/similar
 
 The /similar route accepts one search result and uses AI-powered search to return a number of similar documents.
 
-export const RouteHighlighter = ({method, path}) => <div className={`routeHighlighter routeHighlighter--${method}`}>
-    <div className="routeHighlighter__method">
-      {method}
-    </div>
-    <div className="routeHighlighter__path">
-      {path}
-    </div>
-  </div>;
-
 The `/similar` route uses AI-powered search to return a number of documents similar to a target document.
 
 Meilisearch exposes two routes for retrieving similar documents: `POST` and `GET`. In the majority of cases, `POST` will offer better performance and ease of use.
 
 ## Get similar documents with `POST`
 
-<RouteHighlighter method="POST" path="/indexes/{index_uid}/similar" />
+<RouteHighlighter method="POST" />
 
 Retrieve documents similar to a specific search result.
 
@@ -22894,7 +22801,7 @@ Retrieve documents similar to a specific search result.
 
 #### Response: `200 OK`
 
-```json  theme={null}
+```json theme={null}
 {
   "hits": [
     {
@@ -22920,7 +22827,7 @@ Retrieve documents similar to a specific search result.
 
 ## Get similar documents with `GET`
 
-<RouteHighlighter method="GET" path="/indexes/{index_uid}/similar" />
+<RouteHighlighter method="GET" />
 
 Retrieve documents similar to a specific search result.
 
@@ -22956,7 +22863,7 @@ Retrieve documents similar to a specific search result.
 
 #### Response: `200 OK`
 
-```json  theme={null}
+```json theme={null}
 {
   "hits": [
     {
@@ -23011,7 +22918,7 @@ Download and install [Claude Desktop](https://claude.ai/download).
 
 You can install the Meilisearch MCP server using `uv` or `pip`:
 
-```bash  theme={null}
+```bash theme={null}
 # Using uv (recommended)
 uv pip install meilisearch-mcp
 
@@ -23025,7 +22932,7 @@ Open Claude Desktop, click on the Claude menu in the top bar, and select "Settin
 
 Add the Meilisearch MCP server to your configuration:
 
-```json  theme={null}
+```json theme={null}
 {
   "mcpServers": {
     "meilisearch": {
@@ -23170,7 +23077,7 @@ Open the logs file in your text editor or log viewer:
 
 Open your terminal and query the MCP Inspector with `npx`:
 
-```bash  theme={null}
+```bash theme={null}
 npx @modelcontextprotocol/inspector uvx -n meilisearch-mcp
 ```
 
@@ -23202,7 +23109,7 @@ Follow Nvidia's [CUDA installation instructions](https://docs.nvidia.com/cuda/cu
 
 After you have installed CUDA in your machine, run the following command in your command-line terminal:
 
-```sh  theme={null}
+```sh theme={null}
 nvcc --version | head -1
 ```
 
@@ -23216,13 +23123,13 @@ nvcc: NVIDIA (R) Cuda compiler driver
 
 First, clone Meilisearch:
 
-```sh  theme={null}
+```sh theme={null}
 git clone https://github.com/meilisearch/meilisearch.git
 ```
 
 Then, compile the Meilisearch binary with `cuda` enabled:
 
-```sh  theme={null}
+```sh theme={null}
 cargo build --release --features cuda
 ```
 
@@ -23232,13 +23139,13 @@ This might take a few moments. Once the compiler is done, you should have a CUDA
 
 Run your freshly compiled binary:
 
-```sh  theme={null}
+```sh theme={null}
 ./meilisearch
 ```
 
 Then add the Hugging Face embedder to your index settings:
 
-```sh  theme={null}
+```sh theme={null}
 curl \
   -X PATCH 'MEILISEARCH_URL/indexes/INDEX_NAME/settings/embedders' \
   -H 'Content-Type: application/json' \
@@ -23247,7 +23154,7 @@ curl \
 
 Meilisearch will return a summarized task object and place your request on the task queue:
 
-```json  theme={null}
+```json theme={null}
 {
   "taskUid": 1,
   "indexUid": "INDEX_NAME",
@@ -23277,8 +23184,8 @@ Docker is a tool that bundles applications into containers. Docker containers en
 
 Docker containers are distributed in images. To use Meilisearch, use the `docker pull` command to download a Meilisearch image:
 
-```sh  theme={null}
-docker pull getmeili/meilisearch:v1.16
+```sh theme={null}
+docker pull getmeili/meilisearch:latest
 ```
 
 Meilisearch deploys a new Docker image with every release of the engine. Each image is tagged with the corresponding Meilisearch version, indicated in the above example by the text following the `:` symbol. You can see [the full list of available Meilisearch Docker images](https://hub.docker.com/r/getmeili/meilisearch/tags#!) on Docker Hub.
@@ -23291,11 +23198,11 @@ Meilisearch deploys a new Docker image with every release of the engine. Each im
 
 After completing the previous step, use `docker run` to launch the Meilisearch image:
 
-```sh  theme={null}
+```sh theme={null}
 docker run -it --rm \
   -p 7700:7700 \
   -v $(pwd)/meili_data:/meili_data \
-  getmeili/meilisearch:v1.16
+  getmeili/meilisearch:latest
 ```
 
 ### Configure Meilisearch
@@ -23306,23 +23213,23 @@ Meilisearch accepts a number of instance options during launch. You can configur
 
 To pass environment variables to Docker, add the `-e` argument to `docker run`. The example below launches Meilisearch with a master key:
 
-```sh  theme={null}
+```sh theme={null}
 docker run -it --rm \
   -p 7700:7700 \
   -e MEILI_MASTER_KEY='MASTER_KEY'\
   -v $(pwd)/meili_data:/meili_data \
-  getmeili/meilisearch:v1.16
+  getmeili/meilisearch:latest
 ```
 
 #### Passing instance options with CLI arguments
 
 If you want to pass command-line arguments to Meilisearch with Docker, you must add a line to the end of your `docker run` command explicitly launching the `meilisearch` binary:
 
-```sh  theme={null}
+```sh theme={null}
 docker run -it --rm \
   -p 7700:7700 \
   -v $(pwd)/meili_data:/meili_data \
-  getmeili/meilisearch:v1.16 \
+  getmeili/meilisearch:latest \
   meilisearch --master-key="MASTER_KEY"
 ```
 
@@ -23336,11 +23243,11 @@ By default, data written to a Docker container is deleted every time the contain
 
 To keep your data intact between reboots, specify a dedicated volume by running Docker with the `-v` command-line option:
 
-```sh  theme={null}
+```sh theme={null}
 docker run -it --rm \
   -p 7700:7700 \
   -v $(pwd)/meili_data:/meili_data \
-  getmeili/meilisearch:v1.16
+  getmeili/meilisearch:latest 
 ```
 
 The example above uses `$(pwd)/meili_data`, which is a directory in the host machine. Depending on your OS, mounting volumes from the host to the container might result in performance loss and is only recommended when developing your application.
@@ -23351,11 +23258,11 @@ To export a dump, [use the create dump endpoint as described in our dumps guide]
 
 To import a dump, use Meilisearch's `--import-dump` command-line option and specify the path to the dump file. Make sure the path points to a volume reachable by Docker:
 
-```sh  theme={null}
+```sh theme={null}
 docker run -it --rm \
   -p 7700:7700 \
   -v $(pwd)/meili_data:/meili_data \
-  getmeili/meilisearch:v1.16 \
+  getmeili/meilisearch:latest \
   meilisearch --import-dump /meili_data/dumps/20200813-042312213.dump
 ```
 
@@ -23371,11 +23278,11 @@ Use dumps to migrate data between different Meilisearch releases. [Read more abo
 
 To generate a Meilisearch snapshot with Docker, launch Meilisearch with `--schedule-snapshot` and `--snapshot-dir`:
 
-```sh  theme={null}
+```sh theme={null}
 docker run -it --rm \
   -p 7700:7700 \
   -v $(pwd)/meili_data:/meili_data \
-  getmeili/meilisearch:v1.16 \
+  getmeili/meilisearch:latest \
   meilisearch --schedule-snapshot --snapshot-dir /meili_data/snapshots
 ```
 
@@ -23383,11 +23290,11 @@ docker run -it --rm \
 
 To import a snapshot, launch Meilisearch with the `--import-snapshot` option:
 
-```sh  theme={null}
+```sh theme={null}
 docker run -it --rm \
   -p 7700:7700 \
   -v $(pwd)/meili_data:/meili_data \
-  getmeili/meilisearch:v1.16 \
+  getmeili/meilisearch:latest \
   meilisearch --import-snapshot /meili_data/snapshots/data.ms.snapshot
 ```
 
@@ -23423,7 +23330,7 @@ Cloudflare Worker AI offers the following embedding models:
 
 Here's an example of embedder settings for Cloudflare Worker AI:
 
-```json  theme={null}
+```json theme={null}
 {
   "cloudflare": {
     "source": "rest",
@@ -23466,7 +23373,7 @@ It's recommended to monitor the tasks queue to ensure everything is running smoo
 With the embedder set up, you can now perform semantic searches using Meilisearch. When you send a search query, Meilisearch will generate an embedding for the query using the configured embedder and then use it to find the most semantically similar documents in the vector store.
 To perform a semantic search, you simply need to make a normal search request but include the hybrid parameter:
 
-```json  theme={null}
+```json theme={null}
 {
   "q": "<Query made by the user>",
   "hybrid": {
@@ -23520,7 +23427,7 @@ Cohere offers multiple embedding models:
 
 Here's an example of embedder settings for Cohere:
 
-```json  theme={null}
+```json theme={null}
 {
   "cohere": {
     "source": "rest",
@@ -23567,7 +23474,7 @@ It's recommended to monitor the tasks queue to ensure everything is running smoo
 With the embedder set up, you can now perform semantic searches using Meilisearch. When you send a search query, Meilisearch will generate an embedding for the query using the configured embedder and then use it to find the most semantically similar documents in the vector store.
 To perform a semantic search, you simply need to make a normal search request but include the hybrid parameter:
 
-```json  theme={null}
+```json theme={null}
 {
   "q": "<Query made by the user>",
   "hybrid": {
@@ -23589,6 +23496,107 @@ You can use the Meilisearch API or client libraries to perform searches and retr
 ## Conclusion
 
 By following this guide, you should now have Meilisearch set up with Cohere embedding, enabling you to leverage semantic search capabilities in your application. Meilisearch's auto-batching and efficient handling of embeddings make it a powerful choice for integrating semantic search into your project.
+
+To explore further configuration options for embedders, consult the [detailed documentation about the embedder setting possibilities](/reference/api/settings).
+
+
+# Semantic Search with Gemini Embeddings
+Source: https://www.meilisearch.com/docs/guides/embedders/gemini
+
+This guide will walk you through the process of setting up Meilisearch with Gemini embeddings to enable semantic search capabilities.
+
+## Requirements
+
+To follow this guide, you'll need:
+
+* A [Meilisearch Cloud](https://www.meilisearch.com/cloud) project running version >=1.13
+* A Google account with an API key for embedding generation. You can sign up for a Google account at [Google](https://google.com/)
+
+## Setting up Meilisearch
+
+To set up an embedder in Meilisearch, you need to configure it to your settings. You can refer to the [Meilisearch documentation](/reference/api/settings) for more details on updating the embedder settings.
+
+While using Gemini to generate embeddings, you'll need to use the model `gemini-embedding-001`. Unlike some other services, Gemini currently offers only one embedding model.
+
+Here's an example of embedder settings for Gemini:
+
+```json theme={null}
+{
+  "gemini": {
+    "source": "rest",
+    "dimensions": 3072,
+    "documentTemplate": "<Custom template (Optional, but recommended)>",
+    "headers": {
+    "Content-Type": "application/json",
+    "x-goog-api-key": "<Google API Key>"
+    },
+    "url": "https://generativelanguage.googleapis.com/v1beta/models/gemini-embedding-001:batchEmbedContents",
+    "request": {
+    "requests": [
+        {
+        "model": "models/gemini-embedding-001",
+        "content": {
+            "parts": [
+            { "text": "{{text}}" }
+            ]
+        }
+        },
+        "{{..}}"
+    ]
+    },
+    "response": {
+    "embeddings": [
+        { "values": "{{embedding}}" },
+        "{{..}}"
+    ]
+    }
+  }
+}
+```
+
+In this configuration:
+
+* `source`: Specifies the source of the embedder, which is set to "rest" for using a REST API.
+* `headers`: Replace `<Google API Key>` with your actual Google API key.
+* `dimensions`: Specifies the dimensions of the embeddings, set to 3072 for the `gemini-embedding-001` model.
+* `documentTemplate`: Optionally, you can provide a [custom template](/learn/ai_powered_search/getting_started_with_ai_search) for generating embeddings from your documents.
+* `url`: Specifies the URL of the Gemini API endpoint.
+* `request`: Defines the request structure for the Gemini API, including the model name and input parameters.
+* `response`: Defines the expected response structure from the Gemini API, including the embedding data.
+
+Once you've configured the embedder settings, Meilisearch will automatically generate embeddings for your documents and store them in the vector store.
+
+Please note that most third-party tools have rate limiting, which is managed by Meilisearch. If you have a free account, the indexation process may take some time, but Meilisearch will handle it with a retry strategy.
+
+It's recommended to monitor the tasks queue to ensure everything is running smoothly. You can access the tasks queue using the Cloud UI or the [Meilisearch API](https://www.meilisearch.com/docs/reference/api/tasks).
+
+## Testing semantic search
+
+With the embedder set up, you can now perform semantic searches using Meilisearch. When you send a search query, Meilisearch will generate an embedding for the query using the configured embedder and then use it to find the most semantically similar documents in the vector store.
+To perform a semantic search, you simply need to make a normal search request but include the hybrid parameter:
+
+```json theme={null}
+{
+  "q": "<Query made by the user>",
+  "hybrid": {
+    "semanticRatio": 1,
+    "embedder": "gemini"
+  }
+}
+```
+
+In this request:
+
+* `q`: Represents the user's search query.
+* `hybrid`: Specifies the configuration for the hybrid search.
+  * `semanticRatio`: Allows you to control the balance between semantic search and traditional search. A value of 1 indicates pure semantic search, while a value of 0 represents full-text search. You can adjust this parameter to achieve a hybrid search experience.
+  * `embedder`: The name of the embedder used for generating embeddings. Make sure to use the same name as specified in the embedder configuration, which in this case is "gemini".
+
+You can use the Meilisearch API or client libraries to perform searches and retrieve the relevant documents based on semantic similarity.
+
+## Conclusion
+
+By following this guide, you should now have Meilisearch set up with Gemini embedding, enabling you to leverage semantic search capabilities in your application. Meilisearch's auto-batching and efficient handling of embeddings make it a powerful choice for integrating semantic search into your project.
 
 To explore further configuration options for embedders, consult the [detailed documentation about the embedder setting possibilities](/reference/api/settings).
 
@@ -23618,7 +23626,7 @@ To follow this guide, you'll need:
 
 Set up an embedder using the update settings endpoint:
 
-```json  theme={null}
+```json theme={null}
 {
   "hf-inference": {
     "source": "rest",
@@ -23655,7 +23663,7 @@ Once you've configured the embedder, Meilisearch will automatically generate emb
 
 With the embedder set up, you can now perform semantic searches. Make a search request with the `hybrid` search parameter, setting `semanticRatio` to `1`:
 
-```json  theme={null}
+```json theme={null}
 {
   "q": "QUERY_TERMS",
   "hybrid": {
@@ -23704,7 +23712,7 @@ While using Mistral to generate embeddings, you'll need to use the model `mistra
 
 Here's an example of embedder settings for Mistral:
 
-```json  theme={null}
+```json theme={null}
 {
   "mistral": {
     "source": "rest",
@@ -23749,7 +23757,7 @@ It's recommended to monitor the tasks queue to ensure everything is running smoo
 With the embedder set up, you can now perform semantic searches using Meilisearch. When you send a search query, Meilisearch will generate an embedding for the query using the configured embedder and then use it to find the most semantically similar documents in the vector store.
 To perform a semantic search, you simply need to make a normal search request but include the hybrid parameter:
 
-```json  theme={null}
+```json theme={null}
 {
   "q": "<Query made by the user>",
   "hybrid": {
@@ -23804,7 +23812,7 @@ OpenAI offers three main embedding models:
 
 Here's an example of embedder settings for OpenAI:
 
-```json  theme={null}
+```json theme={null}
 {
   "openai": {
     "source": "openAi",
@@ -23835,7 +23843,7 @@ It's recommended to monitor the tasks queue to ensure everything is running smoo
 With the embedder set up, you can now perform semantic searches using Meilisearch. When you send a search query, Meilisearch will generate an embedding for the query using the configured embedder and then use it to find the most semantically similar documents in the vector store.
 To perform a semantic search, you simply need to make a normal search request but include the hybrid parameter:
 
-```json  theme={null}
+```json theme={null}
 {
   "q": "<Query made by the user>",
   "hybrid": {
@@ -23891,7 +23899,7 @@ Voyage AI offers the following embedding models:
 
 Here's an example of embedder settings for Voyage AI:
 
-```json  theme={null}
+```json theme={null}
 {
   "voyage": {
     "source": "rest",
@@ -23936,7 +23944,7 @@ It's recommended to monitor the tasks queue to ensure everything is running smoo
 With the embedder set up, you can now perform semantic searches using Meilisearch. When you send a search query, Meilisearch will generate an embedding for the query using the configured embedder and then use it to find the most semantically similar documents in the vector store.
 To perform a semantic search, you simply need to make a normal search request but include the hybrid parameter:
 
-```json  theme={null}
+```json theme={null}
 {
   "q": "<Query made by the user>",
   "hybrid": {
@@ -23976,7 +23984,7 @@ Using [`instant-meilisearch`](https://github.com/meilisearch/instant-meilisearch
 3. Copy-paste one the code sample below
 4. Open `index.html` in your browser by double-clicking it in your folder
 
-```js  theme={null}
+```js theme={null}
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -24061,7 +24069,7 @@ Though this approach offers less precision than a full-blown page selector, it d
 
 To implement this interface in a website or application, we make our queries with the `limit` and `offset` search parameters. Response bodies will include an `estimatedTotalHits` field, containing a partial count of search results. This is Meilisearch's default behavior:
 
-```json  theme={null}
+```json theme={null}
 {
   "hits": [
     …
@@ -24082,7 +24090,7 @@ To implement this interface in a website or application, we make our queries wit
 
 For example, you can use Meilisearch's JavaScript SDK to get the first ten films in a movies database:
 
-```js  theme={null}
+```js theme={null}
 const results = await index.search("tarkovsky", { limit: 10, offset: 0 });
 ```
 
@@ -24092,13 +24100,13 @@ You can use both parameters together to create search pages.
 
 If you set `limit` to `20` and `offset` to `0`, you get the first twenty search results. We can call this our first page.
 
-```js  theme={null}
+```js theme={null}
 const results = await index.search("tarkovsky", { limit: 20, offset: 0 });
 ```
 
 Likewise, if you set `limit` to `20` and `offset` to `40`, you skip the first 40 search results and get documents ranked from 40 through 59. We can call this the third results page.
 
-```js  theme={null}
+```js theme={null}
 const results = await index.search("tarkovsky", { limit: 20, offset: 40 });
 ```
 
@@ -24112,7 +24120,7 @@ Even though this UI pattern does not allow users to jump to a specific page, it 
 
 The following JavaScript snippet stores the page number in an HTML element, `.pagination`, and updates it every time the user moves to a different search results page:
 
-```js  theme={null}
+```js theme={null}
 function updatePageNumber(elem) {
   const directionBtn = elem.id
   // Get the page number stored in the pagination element
@@ -24146,7 +24154,7 @@ To know when to disable the "Next" button, we recommend setting your query's `li
 
 The following JavaScript snippet runs checks whether we should disable a button every time the user navigates to another search results page:
 
-```js  theme={null}
+```js theme={null}
 function updatePageNumber() {
   const pageNumber = parseInt(document.querySelector('.pagination').dataset.pageNumber)
 
@@ -24193,7 +24201,7 @@ By default, Meilisearch queries only return `estimatedTotalHits`. This value is 
 
 When your query contains either [`hitsPerPage`](/reference/api/search#number-of-results-per-page), [`page`](/reference/api/search#page), or both these search parameters, Meilisearch returns `totalHits` and `totalPages` instead of `estimatedTotalHits`. `totalHits` contains the exhaustive number of results for that query, and `totalPages` contains the exhaustive number of pages of search results for the same query:
 
-```json  theme={null}
+```json theme={null}
 {
   "hits": [
     …
@@ -24215,7 +24223,7 @@ Since `hitsPerPage` defines the number of results on a page, it has a direct eff
 
 The following example returns the first 25 search results for a query:
 
-```js  theme={null}
+```js theme={null}
 const results = await index.search(
   "tarkovsky",
   {
@@ -24226,7 +24234,7 @@ const results = await index.search(
 
 To navigate through pages of search results, use the `page` search parameter. If you set `hitsPerPage` to `25` and your `totalPages` is `4`, `page` `1` contains documents from 1 to 25. Setting `page` to `2` instead returns documents from 26 to 50:
 
-```js  theme={null}
+```js theme={null}
 const results = await index.search(
   "tarkovsky",
   {
@@ -24248,7 +24256,7 @@ For ease of use, queries with `hitsPerPage` and `page` always return the current
 
 In the following example, we create a list of page buttons dynamically and highlight the current page:
 
-```js  theme={null}
+```js theme={null}
 const pageNavigation = document.querySelector('#page-navigation');
 const listContainer = pageNavigation.querySelector('#page-list');
 const results = await index.search(
@@ -24283,7 +24291,7 @@ Your users are likely to be more interested in the page immediately after or bef
 
 In this example, we add these buttons as the first and last elements of our page navigation component:
 
-```js  theme={null}
+```js theme={null}
 const pageNavigation = document.querySelector('#page-navigation');
 
 const buttonNext = document.createElement('button');
@@ -24298,7 +24306,7 @@ pageNavigation.append(buttonNext);
 
 We can also disable them as required when on the first or last page of search results:
 
-```js  theme={null}
+```js theme={null}
 buttonNext.disabled = results.page === results.totalPages;
 buttonPrevious.disabled = results.page === 1;
 ```
@@ -24315,7 +24323,7 @@ Integrate a search-as-you-type experience into your React app.
 
 Create your React application using a [Vite](https://vitejs.dev/) template:
 
-```bash  theme={null}
+```bash theme={null}
 npm create vite@latest my-app -- --template react
 ```
 
@@ -24323,7 +24331,7 @@ npm create vite@latest my-app -- --template react
 
 Navigate to your React app and install `react-instantsearch`, `@meilisearch/instant-meilisearch`, and `instantsearch.css`.
 
-```bash  theme={null}
+```bash theme={null}
 npm install react-instantsearch @meilisearch/instant-meilisearch instantsearch.css
 ```
 
@@ -24335,7 +24343,7 @@ npm install react-instantsearch @meilisearch/instant-meilisearch instantsearch.c
 
 Use the following URL and API key to connect to a Meilisearch instance containing data from Steam video games.
 
-```jsx  theme={null}
+```jsx theme={null}
 import React from 'react';
 import { instantMeiliSearch } from '@meilisearch/instant-meilisearch';
 
@@ -24349,7 +24357,7 @@ const { searchClient } = instantMeiliSearch(
 
 `<InstantSearch>` is the root provider component for the InstantSearch library. It takes two props: the `searchClient` and the [index name](/learn/getting_started/indexes#index-uid).
 
-```jsx  theme={null}
+```jsx theme={null}
 import React from 'react';
 import { InstantSearch } from 'react-instantsearch';
 import { instantMeiliSearch } from '@meilisearch/instant-meilisearch';
@@ -24376,7 +24384,7 @@ Add the `SearchBox` and `InfiniteHits` components inside the `InstantSearch` wra
 
 Import the CSS library to style the search components.
 
-```jsx  theme={null}
+```jsx theme={null}
 import React from 'react';
 import { InstantSearch, SearchBox, InfiniteHits } from 'react-instantsearch';
 import { instantMeiliSearch } from '@meilisearch/instant-meilisearch';
@@ -24416,14 +24424,14 @@ export default App
 
 Start the app by running:
 
-```bash  theme={null}
+```bash theme={null}
 npm run dev
 ```
 
 Now open your browser and navigate to your React app URL (e.g. `localhost:3000`), and start searching.
 
 <Frame>
-  <img src="https://mintcdn.com/meilisearch-6b28dec2/JZ1wsU7CEWrp9Xec/assets/images/react_quick_start/react-qs-search-ui.png?fit=max&auto=format&n=JZ1wsU7CEWrp9Xec&q=85&s=bd1b370f6f241678c10d73fcabc53f35" alt="React app search UI with a search bar at the top and search results for a few video games" data-og-width="2998" width="2998" data-og-height="2176" height="2176" data-path="assets/images/react_quick_start/react-qs-search-ui.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/meilisearch-6b28dec2/JZ1wsU7CEWrp9Xec/assets/images/react_quick_start/react-qs-search-ui.png?w=280&fit=max&auto=format&n=JZ1wsU7CEWrp9Xec&q=85&s=1cdfc195c346055ef31d005a6fb0d5da 280w, https://mintcdn.com/meilisearch-6b28dec2/JZ1wsU7CEWrp9Xec/assets/images/react_quick_start/react-qs-search-ui.png?w=560&fit=max&auto=format&n=JZ1wsU7CEWrp9Xec&q=85&s=455b88f5f06779ffe739e22b630c08f4 560w, https://mintcdn.com/meilisearch-6b28dec2/JZ1wsU7CEWrp9Xec/assets/images/react_quick_start/react-qs-search-ui.png?w=840&fit=max&auto=format&n=JZ1wsU7CEWrp9Xec&q=85&s=3a6a0715756827f0bc9c4b7910220d39 840w, https://mintcdn.com/meilisearch-6b28dec2/JZ1wsU7CEWrp9Xec/assets/images/react_quick_start/react-qs-search-ui.png?w=1100&fit=max&auto=format&n=JZ1wsU7CEWrp9Xec&q=85&s=b6c0b03f3e245243a1f12e46ec440754 1100w, https://mintcdn.com/meilisearch-6b28dec2/JZ1wsU7CEWrp9Xec/assets/images/react_quick_start/react-qs-search-ui.png?w=1650&fit=max&auto=format&n=JZ1wsU7CEWrp9Xec&q=85&s=d347a47a1e18cc04327c95e5740083ee 1650w, https://mintcdn.com/meilisearch-6b28dec2/JZ1wsU7CEWrp9Xec/assets/images/react_quick_start/react-qs-search-ui.png?w=2500&fit=max&auto=format&n=JZ1wsU7CEWrp9Xec&q=85&s=d3ccd8e1bb6ff042b576ba01400add3d 2500w" />
+  <img alt="React app search UI with a search bar at the top and search results for a few video games" />
 </Frame>
 
 Encountering issues? Check out the code in action in our [live demo](https://codesandbox.io/p/sandbox/eager-dust-f98w2w)!
@@ -24467,7 +24475,7 @@ The scraper tool needs a configuration file to know what content you want to scr
 
 Here is an example of a basic configuration file:
 
-```json  theme={null}
+```json theme={null}
 {
   "index_uid": "docs",
   "start_urls": [
@@ -24517,7 +24525,7 @@ In our case, the main container is `theme-default-content` and the selector titl
 
 You can run the scraper with Docker. With our local Meilisearch instance set up at [the first step](#run-a-meilisearch-instance), we run:
 
-```bash  theme={null}
+```bash theme={null}
 docker run -t --rm \
   --network=host \
   -e MEILISEARCH_HOST_URL='MEILISEARCH_URL' \
@@ -24551,13 +24559,13 @@ In your VuePress project:
 
 <Tabs>
   <Tab title="yarn">
-    ```bash  theme={null}
+    ```bash theme={null}
     yarn add vuepress-plugin-meilisearch
     ```
   </Tab>
 
   <Tab title="npm">
-    ```bash  theme={null}
+    ```bash theme={null}
     npm install vuepress-plugin-meilisearch
     ```
   </Tab>
@@ -24565,7 +24573,7 @@ In your VuePress project:
 
 In your `config.js` file:
 
-```js  theme={null}
+```js theme={null}
 module.exports = {
   plugins: [
     [
@@ -24595,10 +24603,11 @@ These three fields are mandatory, but more [optional fields are available](https
 
 If you don't use VuePress for your documentation, we provide a [front-end SDK](https://github.com/meilisearch/docs-searchbar.js) to integrate a powerful and relevant search bar to any documentation website.
 
-<img src="https://mintcdn.com/meilisearch-6b28dec2/JZ1wsU7CEWrp9Xec/assets/images/tuto-searchbar-for-docs/docxtemplater-searchbar-demo.gif?s=162300f7a78811e55ee85d6b32af6ed9" alt="Docxtemplater search bar updating results for &#x22;HTML&#x22;" data-og-width="1280" width="1280" data-og-height="572" height="572" data-path="assets/images/tuto-searchbar-for-docs/docxtemplater-searchbar-demo.gif" data-optimize="true" data-opv="3" />
+<img alt="Docxtemplater search bar updating results for &#x22;HTML&#x22;" />
+
 *[Docxtemplater](https://docxtemplater.com/) search bar demo*
 
-```html  theme={null}
+```html theme={null}
 <!DOCTYPE html>
 <html>
   <head>
@@ -24653,7 +24662,7 @@ Integrate a search-as-you-type experience into your Vue app.
 
 Run the `npm create` tool to install base dependencies and create your app folder structure.
 
-```bash  theme={null}
+```bash theme={null}
 npm create vue@latest my-app
 ```
 
@@ -24661,7 +24670,7 @@ npm create vue@latest my-app
 
 Navigate to your Vue app and install `vue-instantsearch`, `@meilisearch/instant-meilisearch`, and `instantsearch.css`.
 
-```bash  theme={null}
+```bash theme={null}
 npm install vue-instantsearch @meilisearch/instant-meilisearch instantsearch.css
 ```
 
@@ -24673,7 +24682,7 @@ npm install vue-instantsearch @meilisearch/instant-meilisearch instantsearch.css
 
 Include InstantSearch into `main.js` to include the Vue InstantSearch library.
 
-```js  theme={null}
+```js theme={null}
 import { createApp } from 'vue';
 import App from './App.vue';
 import InstantSearch from 'vue-instantsearch/vue3/es';
@@ -24687,7 +24696,7 @@ app.mount('#app');
 
 Add the code below to the `App.vue` file.
 
-```js  theme={null}
+```js theme={null}
 <template>
   <ais-instant-search :search-client="searchClient" index-name="steam-videogames">
   </ais-instant-search>
@@ -24763,14 +24772,14 @@ Use the slot directive to customize how each search result is rendered.
 
 Start the app by running:
 
-```bash  theme={null}
+```bash theme={null}
 npm run dev
 ```
 
 Now open your browser, navigate to your Vue app URL (e.g., `localhost:5173`), and start searching.
 
 <Frame>
-  <img src="https://mintcdn.com/meilisearch-6b28dec2/JZ1wsU7CEWrp9Xec/assets/images/react_quick_start/react-qs-search-ui.png?fit=max&auto=format&n=JZ1wsU7CEWrp9Xec&q=85&s=bd1b370f6f241678c10d73fcabc53f35" alt="Vue app search UI with a search bar at the top and search results for a few video games" data-og-width="2998" width="2998" data-og-height="2176" height="2176" data-path="assets/images/react_quick_start/react-qs-search-ui.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/meilisearch-6b28dec2/JZ1wsU7CEWrp9Xec/assets/images/react_quick_start/react-qs-search-ui.png?w=280&fit=max&auto=format&n=JZ1wsU7CEWrp9Xec&q=85&s=1cdfc195c346055ef31d005a6fb0d5da 280w, https://mintcdn.com/meilisearch-6b28dec2/JZ1wsU7CEWrp9Xec/assets/images/react_quick_start/react-qs-search-ui.png?w=560&fit=max&auto=format&n=JZ1wsU7CEWrp9Xec&q=85&s=455b88f5f06779ffe739e22b630c08f4 560w, https://mintcdn.com/meilisearch-6b28dec2/JZ1wsU7CEWrp9Xec/assets/images/react_quick_start/react-qs-search-ui.png?w=840&fit=max&auto=format&n=JZ1wsU7CEWrp9Xec&q=85&s=3a6a0715756827f0bc9c4b7910220d39 840w, https://mintcdn.com/meilisearch-6b28dec2/JZ1wsU7CEWrp9Xec/assets/images/react_quick_start/react-qs-search-ui.png?w=1100&fit=max&auto=format&n=JZ1wsU7CEWrp9Xec&q=85&s=b6c0b03f3e245243a1f12e46ec440754 1100w, https://mintcdn.com/meilisearch-6b28dec2/JZ1wsU7CEWrp9Xec/assets/images/react_quick_start/react-qs-search-ui.png?w=1650&fit=max&auto=format&n=JZ1wsU7CEWrp9Xec&q=85&s=d347a47a1e18cc04327c95e5740083ee 1650w, https://mintcdn.com/meilisearch-6b28dec2/JZ1wsU7CEWrp9Xec/assets/images/react_quick_start/react-qs-search-ui.png?w=2500&fit=max&auto=format&n=JZ1wsU7CEWrp9Xec&q=85&s=d3ccd8e1bb6ff042b576ba01400add3d 2500w" />
+  <img alt="Vue app search UI with a search bar at the top and search results for a few video games" />
 </Frame>
 
 Encountering issues? Check out the code in action in our [live demo](https://codesandbox.io/p/sandbox/ms-vue3-is-forked-wsrkl8)!
@@ -24799,19 +24808,19 @@ Then, use `curl` to do requests. It is a simple way to specify that you want to 
 
 Start by running the binary.
 
-```bash  theme={null}
+```bash theme={null}
 ./meilisearch
 ```
 
 And then, send a request.
 
-```bash  theme={null}
+```bash theme={null}
 curl -kvs --http2 --request GET 'http://localhost:7700/indexes'
 ```
 
 You will get the following answer from the server:
 
-```bash  theme={null}
+```bash theme={null}
 *   Trying ::1...
 * TCP_NODELAY set
 * Connection failed
@@ -24843,25 +24852,25 @@ The answer `< HTTP/1.1 200 OK` indicates that the server still uses HTTP/1.
 
 This time, start by generating the SSL certificates. mkcert creates two files: `127.0.0.1.pem` and `127.0.0.1-key.pem`.
 
-```bash  theme={null}
+```bash theme={null}
 mkcert '127.0.0.1'
 ```
 
 Then, use the certificate and the key to configure Meilisearch with SSL.
 
-```bash  theme={null}
+```bash theme={null}
 ./meilisearch --ssl-cert-path ./127.0.0.1.pem --ssl-key-path ./127.0.0.1-key.pem
 ```
 
 Next, make the same request as above but change `http://` to `https://`.
 
-```bash  theme={null}
+```bash theme={null}
 curl -kvs --http2 --request GET 'https://localhost:7700/indexes'
 ```
 
 You will get the following answer from the server:
 
-```bash  theme={null}
+```bash theme={null}
 *   Trying ::1...
 * TCP_NODELAY set
 * Connection failed
@@ -24913,14 +24922,14 @@ You will get the following answer from the server:
 
 You can see that the server now supports HTTP/2.
 
-```bash  theme={null}
+```bash theme={null}
 * Using HTTP2, server supports multi-use
 * Connection state changed (HTTP/2 confirmed)
 ```
 
 The server successfully receives HTTP/2 requests.
 
-```bash  theme={null}
+```bash theme={null}
 < HTTP/2 200
 ```
 
@@ -24942,9 +24951,9 @@ In this guide, you will see how to use JavaScript with Node.js to split a single
 
 ## Dataset
 
-<a id="downloadstories" href="/assets/datasets/stories.json" download="stories.json">`stories.json`</a> contains two documents, each storing the full text of a short story in its `text` field:
+<a href="/assets/datasets/stories.json">`stories.json`</a> contains two documents, each storing the full text of a short story in its `text` field:
 
-```json  theme={null}
+```json theme={null}
 [
   {
     "id": 0,
@@ -24969,7 +24978,7 @@ In this guide, you will see how to use JavaScript with Node.js to split a single
 
 Create a `split_documents.js` file in your working directory:
 
-```js  theme={null}
+```js theme={null}
 #!/usr/bin/env node
 
 const datasetPath = process.argv[2];
@@ -24999,7 +25008,7 @@ fs.writeFileSync("stories-split.json", JSON.stringify(splitDocuments));
 
 Next, run the script on your console, specifying the path to your JSON dataset:
 
-```sh  theme={null}
+```sh theme={null}
 node ./split_documents.js ./stories.json
 ```
 
@@ -25011,7 +25020,7 @@ Right now, Meilisearch would not accept the new dataset because many documents s
 
 Update the script from the previous step to create a new field, `story_id`:
 
-```js  theme={null}
+```js theme={null}
 #!/usr/bin/env node
 
 const datasetPath = process.argv[2];
@@ -25046,7 +25055,7 @@ This dataset is now valid, but since each document effectively points to the sam
 
 To prevent that from happening, configure `story_id` as the index's distinct attribute:
 
-```sh  theme={null}
+```sh theme={null}
 curl \
   -X PUT 'MEILISEARCH_URL/indexes/INDEX_NAME/settings/distinct-attribute' \
   -H 'Content-Type: application/json' \
@@ -25083,7 +25092,7 @@ Create a folder for your application with an empty `setup.py` file.
 
 Before writing any code, install the necessary dependencies:
 
-```bash  theme={null}
+```bash theme={null}
 pip install langchain openai meilisearch python-dotenv
 ```
 
@@ -25099,7 +25108,7 @@ OPENAI_API_KEY="your OpenAI API key"
 
 Now that you have your environment variables available, create a `setup.py` file with some boilerplate code:
 
-```python  theme={null}
+```python theme={null}
 # setup.py
 
 import os
@@ -25125,7 +25134,7 @@ if "OPENAI_API_KEY" not in os.environ:
 
 Now that the project is ready, import some documents in Meilisearch. First, download this small movies dataset:
 
-<Card horizontal title="movies-lite.json" icon="file" href="https://gist.githubusercontent.com/Strift/1524ab5e2015e50bbcb215fb4d950a38/raw/movies-lite.json?raw=true">
+<Card title="movies-lite.json" icon="file" href="https://gist.githubusercontent.com/Strift/1524ab5e2015e50bbcb215fb4d950a38/raw/movies-lite.json?raw=true">
   Download movies-lite.json
 </Card>
 
@@ -25133,7 +25142,7 @@ Then, update the setup.py file to load the JSON and store it in Meilisearch. You
 
 To use vector search, we need to set the embedders index setting. In this case, you are using an `userProvided` source which requires to specify the size of the vectors in a `dimensions` field. The default model used by `OpenAIEmbeddings()` is `text-embedding-ada-002`, which has 1,536 dimensions.
 
-```python  theme={null}
+```python theme={null}
 # setup.py
 
 # previous code
@@ -25167,7 +25176,7 @@ Your Meilisearch instance will now contain your documents. Meilisearch runs task
 
 Your database is now populated with the data from the movies dataset. Create a new `search.py` file to make a semantic search query: searching for documents using similarity search.
 
-```python  theme={null}
+```python theme={null}
 # search.py
 
 import os
@@ -25261,7 +25270,7 @@ With that in mind, the first step is to define such these models and their relat
 
 In `app/Models/Contact.php`:
 
-```php  theme={null}
+```php theme={null}
 <?php
 
 namespace App\Models;
@@ -25283,7 +25292,7 @@ class Contact extends Model
 
 In `app/Models/User.php`:
 
-```php  theme={null}
+```php theme={null}
 <?php
 
 namespace App\Models;
@@ -25336,7 +25345,7 @@ class User extends Authenticatable
 
 And in `app/Models/Organization.php`:
 
-```php  theme={null}
+```php theme={null}
 <?php
 namespace App\Models;
 
@@ -25362,7 +25371,7 @@ In this guide, you will generate the token when the organization is retrieved fr
 
 Update `app/Models/Organization.php`:
 
-```php  theme={null}
+```php theme={null}
 <?php
 
 namespace App\Models;
@@ -25447,7 +25456,7 @@ Use [view composers](https://laravel.com/docs/10.x/views#view-composers) to prov
 
 Create a new `app/View/Composers/AuthComposer.php` file:
 
-```php  theme={null}
+```php theme={null}
 <?php
 
 namespace App\View\Composers;
@@ -25479,7 +25488,7 @@ class AuthComposer
 
 Now, register this view composer in the `AppServiceProvider`:
 
-```php  theme={null}
+```php theme={null}
 <?php
 
 namespace App\Providers;
@@ -25517,13 +25526,13 @@ This guide uses **Vue InstantSearch** to build your search interface. Vue Instan
 
 First, install the dependencies:
 
-```bash  theme={null}
+```bash theme={null}
 npm install vue-instantsearch @meilisearch/instant-meilisearch
 ```
 
 Now, create a Vue app that uses Vue InstantSearch. Open a new `resources/js/vue-app.js` file:
 
-```js  theme={null}
+```js theme={null}
 import { createApp } from 'vue'
 import InstantSearch from 'vue-instantsearch/vue3/es'
 import Meilisearch from './components/Meilisearch.vue'
@@ -25544,7 +25553,7 @@ The `Meilisearch` component is responsible for initializing a Vue Instantsearch 
 
 Create it in `resources/js/components/Meilisearch.vue`:
 
-```vue  theme={null}
+```vue theme={null}
 <script setup lang="ts">
 import { instantMeiliSearch } from "@meilisearch/instant-meilisearch"
 
@@ -25567,7 +25576,7 @@ const { searchClient } = instantMeiliSearch(props.host, props.apiKey)
 
 You can use the `Meilisearch` component it in any Blade view by providing it with the tenant token. Don't forget to add the `@vite` directive to include the Vue app in your view.
 
-```blade  theme={null}
+```blade theme={null}
 <!-- resources/views/contacts/index.blade.php -->
 
 <div id="vue-app">
@@ -25605,7 +25614,7 @@ Before you start, make sure you have the following installed on your machine:
 
 You will also need a Laravel application. If you don't have one, you can create a new one by running the following command:
 
-```sh  theme={null}
+```sh theme={null}
 composer create-project laravel/laravel my-application
 ```
 
@@ -25615,13 +25624,13 @@ Laravel comes with out-of-the-box full-text search capabilities via Laravel Scou
 
 To enable it, navigate to your Laravel application directory and install Scout via the Composer package manager:
 
-```sh  theme={null}
+```sh theme={null}
 composer require laravel/scout
 ```
 
 After installing Scout, you need to publish the Scout configuration file. You can do this by running the following `artisan` command:
 
-```sh  theme={null}
+```sh theme={null}
 php artisan vendor:publish --provider="Laravel\Scout\ScoutServiceProvider"
 ```
 
@@ -25631,13 +25640,13 @@ This command should create a new configuration file in your application director
 
 Now you need to configure Laravel Scout to use the Meilisearch driver. First, install the dependencies required to use Scout with Meilisearch via Composer:
 
-```sh  theme={null}
+```sh theme={null}
 composer require meilisearch/meilisearch-php http-interop/http-factory-guzzle
 ```
 
 Then, update the environment variables in your `.env` file:
 
-```sh  theme={null}
+```sh theme={null}
 SCOUT_DRIVER=meilisearch
 # Use the host below if you're running Meilisearch via Laravel Sail
 MEILISEARCH_HOST=http://meilisearch:7700
@@ -25668,7 +25677,7 @@ With Scout installed and configured, add the `Laravel\Scout\Searchable` trait to
 
 Here’s an example model:
 
-```php  theme={null}
+```php theme={null}
 <?php
 
 namespace App\Models;
@@ -25686,7 +25695,7 @@ To configure which fields to store in Meilisearch, use the `toSearchableArray` m
 
 The example below shows how to store a model's relationships data in Meilisearch:
 
-```php  theme={null}
+```php theme={null}
 <?php
 
 namespace App\Models;
@@ -25726,7 +25735,7 @@ Configure which attributes are [filterable](/learn/filtering_and_sorting/filter_
 
 In Laravel, you can configure your index settings via the `config/scout.php` file:
 
-```php  theme={null}
+```php theme={null}
 <?php
 
 use App\Models\Contact;
@@ -25758,7 +25767,7 @@ After changing your index settings, you will need to synchronize your Scout inde
 
 To synchronize your index settings, run the following command:
 
-```sh  theme={null}
+```sh theme={null}
 php artisan scout:sync-index-settings
 ```
 
@@ -25768,7 +25777,7 @@ You built an example application to demonstrate how to use Meilisearch with Lara
 
 <Frame>
   <a href="https://saas.meilisearch.com/?utm_campaign=laravel&utm_source=docs&utm_medium=laravel-scout-guide">
-    <img src="https://mintcdn.com/meilisearch-6b28dec2/AA65w-9bZrf-CgFA/assets/images/demos/saas-demo-screenshot.png?fit=max&auto=format&n=AA65w-9bZrf-CgFA&q=85&s=63cf64bd4aa4ebd7facba4171e75e74d" alt="Laravel Scout example application" data-og-width="1600" width="1600" data-og-height="1007" height="1007" data-path="assets/images/demos/saas-demo-screenshot.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/meilisearch-6b28dec2/AA65w-9bZrf-CgFA/assets/images/demos/saas-demo-screenshot.png?w=280&fit=max&auto=format&n=AA65w-9bZrf-CgFA&q=85&s=0da7c958966c7e58e2a93b86dc5e31ab 280w, https://mintcdn.com/meilisearch-6b28dec2/AA65w-9bZrf-CgFA/assets/images/demos/saas-demo-screenshot.png?w=560&fit=max&auto=format&n=AA65w-9bZrf-CgFA&q=85&s=aa27f21d6b81fb2aa85600122b3e4235 560w, https://mintcdn.com/meilisearch-6b28dec2/AA65w-9bZrf-CgFA/assets/images/demos/saas-demo-screenshot.png?w=840&fit=max&auto=format&n=AA65w-9bZrf-CgFA&q=85&s=df9de0a14285a7008ef9ed48a705cecc 840w, https://mintcdn.com/meilisearch-6b28dec2/AA65w-9bZrf-CgFA/assets/images/demos/saas-demo-screenshot.png?w=1100&fit=max&auto=format&n=AA65w-9bZrf-CgFA&q=85&s=6d13d434685a26ea6b0ce354856d93c1 1100w, https://mintcdn.com/meilisearch-6b28dec2/AA65w-9bZrf-CgFA/assets/images/demos/saas-demo-screenshot.png?w=1650&fit=max&auto=format&n=AA65w-9bZrf-CgFA&q=85&s=d980dbf11b734850d31c5715675f3a5f 1650w, https://mintcdn.com/meilisearch-6b28dec2/AA65w-9bZrf-CgFA/assets/images/demos/saas-demo-screenshot.png?w=2500&fit=max&auto=format&n=AA65w-9bZrf-CgFA&q=85&s=b68777cc5df7a1640c461de583141200 2500w" />
+    <img alt="Laravel Scout example application" />
   </a>
 </Frame>
 
@@ -25809,7 +25818,7 @@ In Meilisearch, you might have one index containing data belonging to many disti
 
 This guide uses a simple data model to represent medical appointments. The documents in the Meilisearch index will look like this:
 
-```json  theme={null}
+```json theme={null}
 [
   {
     "id": 1,
@@ -25840,7 +25849,7 @@ The first step is generating a tenant token that will allow a given patient to s
 
 Create a `search.js` file and use the following code to generate a tenant token:
 
-```js  theme={null}
+```js theme={null}
 // search.js
 
 import { Meilisearch } from 'meilisearch'
@@ -25886,7 +25895,7 @@ Now that you have a tenant token, use it to perform searches. To achieve this, y
 
 This guide uses [Express.js](https://expressjs.com/en/starter/installing.html) to create the server. You can install `express` by running:
 
-```sh  theme={null}
+```sh theme={null}
 # with NPM
 npm i express
 # with Yarn
@@ -25897,7 +25906,7 @@ pnpm add express
 
 Then, add the following code in a `server.js` file:
 
-```js  theme={null}
+```js theme={null}
 // server.js
 
 import express from 'express'
@@ -25924,7 +25933,7 @@ Now that we have an endpoint, you will use it to retrieve the tenant token in yo
 
 Create `client.html` file and insert this code:
 
-```html  theme={null}
+```html theme={null}
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -25996,40 +26005,40 @@ This how-to guide explains how to use Postman when testing and debugging Meilise
 
 Are you tired of using the `curl` command in your terminal to test Meilisearch? It can be tedious to re-write every route when wanting to try out an API.
 
-Postman is a platform that lets you create HTTP requests you can easily reuse and share with everyone. We provide a <a href="/docs/assets/misc/meilisearch-collection-postman.json" download="meilisearch-collection-postman.json">Postman collection</a> containing all the routes of the Meilisearch API! 🚀
+Postman is a platform that lets you create HTTP requests you can easily reuse and share with everyone. We provide a <a href="/assets/misc/meilisearch-collection-postman.json">Postman collection</a> containing all the routes of the Meilisearch API! 🚀
 
 If you don't have Postman already, you can [download it here](https://www.postman.com/downloads/). It's free and available on many OS distributions.
 
 ## Import the collection
 
-Once you have downloaded the <a href="/docs/assets/misc/meilisearch-collection-postman.json" download="meilisearch-collection-postman.json">Postman collection</a>, you need to import it into Postman.
+Once you have downloaded the <a href="/assets/misc/meilisearch-collection-postman.json">Postman collection</a>, you need to import it into Postman.
 
 <Frame>
-  <img src="https://mintcdn.com/meilisearch-6b28dec2/AA65w-9bZrf-CgFA/assets/images/postman/import.png?fit=max&auto=format&n=AA65w-9bZrf-CgFA&q=85&s=2988a404b0dbf30dbb67c3d6ff7fc814" alt="The 'Import' button" data-og-width="2560" width="2560" data-og-height="1230" height="1230" data-path="assets/images/postman/import.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/meilisearch-6b28dec2/AA65w-9bZrf-CgFA/assets/images/postman/import.png?w=280&fit=max&auto=format&n=AA65w-9bZrf-CgFA&q=85&s=8f9af57fde3c20c7a3c584078cb1868a 280w, https://mintcdn.com/meilisearch-6b28dec2/AA65w-9bZrf-CgFA/assets/images/postman/import.png?w=560&fit=max&auto=format&n=AA65w-9bZrf-CgFA&q=85&s=0da73f2ea44918212425b16e0e925619 560w, https://mintcdn.com/meilisearch-6b28dec2/AA65w-9bZrf-CgFA/assets/images/postman/import.png?w=840&fit=max&auto=format&n=AA65w-9bZrf-CgFA&q=85&s=ad839600c251085a8aa51fde7d7ee8ad 840w, https://mintcdn.com/meilisearch-6b28dec2/AA65w-9bZrf-CgFA/assets/images/postman/import.png?w=1100&fit=max&auto=format&n=AA65w-9bZrf-CgFA&q=85&s=fd045a6b9f13c332ba8e9ddee3803ec2 1100w, https://mintcdn.com/meilisearch-6b28dec2/AA65w-9bZrf-CgFA/assets/images/postman/import.png?w=1650&fit=max&auto=format&n=AA65w-9bZrf-CgFA&q=85&s=9ef57260d96b3db3e4b463f33d0e7281 1650w, https://mintcdn.com/meilisearch-6b28dec2/AA65w-9bZrf-CgFA/assets/images/postman/import.png?w=2500&fit=max&auto=format&n=AA65w-9bZrf-CgFA&q=85&s=badfa5137cf7d9e47049cb9441887448 2500w" />
+  <img alt="The 'Import' button" />
 </Frame>
 
 ## Edit the configuration
 
 <Frame>
-  <img src="https://mintcdn.com/meilisearch-6b28dec2/AA65w-9bZrf-CgFA/assets/images/postman/edit.png?fit=max&auto=format&n=AA65w-9bZrf-CgFA&q=85&s=6cff687396925eca6b3294385344d97f" alt="Selecting 'Edit' from the overflow menu" data-og-width="2560" width="2560" data-og-height="1230" height="1230" data-path="assets/images/postman/edit.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/meilisearch-6b28dec2/AA65w-9bZrf-CgFA/assets/images/postman/edit.png?w=280&fit=max&auto=format&n=AA65w-9bZrf-CgFA&q=85&s=94b606b340fabc389942b5ff5734dada 280w, https://mintcdn.com/meilisearch-6b28dec2/AA65w-9bZrf-CgFA/assets/images/postman/edit.png?w=560&fit=max&auto=format&n=AA65w-9bZrf-CgFA&q=85&s=69abdf14cb9be5af25d2e80701211d6c 560w, https://mintcdn.com/meilisearch-6b28dec2/AA65w-9bZrf-CgFA/assets/images/postman/edit.png?w=840&fit=max&auto=format&n=AA65w-9bZrf-CgFA&q=85&s=e064c67511c7e2d83efb5c684f4fb1ef 840w, https://mintcdn.com/meilisearch-6b28dec2/AA65w-9bZrf-CgFA/assets/images/postman/edit.png?w=1100&fit=max&auto=format&n=AA65w-9bZrf-CgFA&q=85&s=d8662ebffadba2ffd9ccfeff3903b5d9 1100w, https://mintcdn.com/meilisearch-6b28dec2/AA65w-9bZrf-CgFA/assets/images/postman/edit.png?w=1650&fit=max&auto=format&n=AA65w-9bZrf-CgFA&q=85&s=bb52e9ee84adff8072d588094913b81c 1650w, https://mintcdn.com/meilisearch-6b28dec2/AA65w-9bZrf-CgFA/assets/images/postman/edit.png?w=2500&fit=max&auto=format&n=AA65w-9bZrf-CgFA&q=85&s=7f04be26ab1b83d7d423320483a52c72 2500w" />
+  <img alt="Selecting 'Edit' from the overflow menu" />
 </Frame>
 
 Set the "Token" if needed (set to `masterKey` by default):
 
 <Frame>
-  <img src="https://mintcdn.com/meilisearch-6b28dec2/JZ1wsU7CEWrp9Xec/assets/images/postman/set_token.png?fit=max&auto=format&n=JZ1wsU7CEWrp9Xec&q=85&s=30c7c589930a6244bd4ed3aae820e36a" alt="The 'Token' field set to masterKey and 'Type' to Bearer Token in the 'Authorization' tab." data-og-width="2560" width="2560" data-og-height="1228" height="1228" data-path="assets/images/postman/set_token.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/meilisearch-6b28dec2/JZ1wsU7CEWrp9Xec/assets/images/postman/set_token.png?w=280&fit=max&auto=format&n=JZ1wsU7CEWrp9Xec&q=85&s=3a2df5a9724b64ef379825c108f7279c 280w, https://mintcdn.com/meilisearch-6b28dec2/JZ1wsU7CEWrp9Xec/assets/images/postman/set_token.png?w=560&fit=max&auto=format&n=JZ1wsU7CEWrp9Xec&q=85&s=4113d2bd84431ed4084e4ccaaeadefe2 560w, https://mintcdn.com/meilisearch-6b28dec2/JZ1wsU7CEWrp9Xec/assets/images/postman/set_token.png?w=840&fit=max&auto=format&n=JZ1wsU7CEWrp9Xec&q=85&s=2044c69a5610e21559d7fab2c239b7f4 840w, https://mintcdn.com/meilisearch-6b28dec2/JZ1wsU7CEWrp9Xec/assets/images/postman/set_token.png?w=1100&fit=max&auto=format&n=JZ1wsU7CEWrp9Xec&q=85&s=ef9bdd391eb0dc0c00df160d736cff5c 1100w, https://mintcdn.com/meilisearch-6b28dec2/JZ1wsU7CEWrp9Xec/assets/images/postman/set_token.png?w=1650&fit=max&auto=format&n=JZ1wsU7CEWrp9Xec&q=85&s=7fab5c08c97e89ea53a524c3ac32fadc 1650w, https://mintcdn.com/meilisearch-6b28dec2/JZ1wsU7CEWrp9Xec/assets/images/postman/set_token.png?w=2500&fit=max&auto=format&n=JZ1wsU7CEWrp9Xec&q=85&s=08557f9bf1121c6cfafd0352b7189eec 2500w" />
+  <img alt="The 'Token' field set to masterKey and 'Type' to Bearer Token in the 'Authorization' tab." />
 </Frame>
 
 Set `url` (set to Meilisearch's local port by default) and `indexUID` (set to `indexUID` by default):
 
 <Frame>
-  <img src="https://mintcdn.com/meilisearch-6b28dec2/JZ1wsU7CEWrp9Xec/assets/images/postman/set_variables.png?fit=max&auto=format&n=JZ1wsU7CEWrp9Xec&q=85&s=bff1da18e0174ca819b966fda19c5640" alt="Setting the 'URL' to http://localhost:7700/ and 'indexUID' to indexUId in the Variables tab." data-og-width="2560" width="2560" data-og-height="1230" height="1230" data-path="assets/images/postman/set_variables.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/meilisearch-6b28dec2/JZ1wsU7CEWrp9Xec/assets/images/postman/set_variables.png?w=280&fit=max&auto=format&n=JZ1wsU7CEWrp9Xec&q=85&s=7e74f27d74c73f19d8a7fc41132dd2ff 280w, https://mintcdn.com/meilisearch-6b28dec2/JZ1wsU7CEWrp9Xec/assets/images/postman/set_variables.png?w=560&fit=max&auto=format&n=JZ1wsU7CEWrp9Xec&q=85&s=773de1fb6686b24934a0aa80e9f4acc2 560w, https://mintcdn.com/meilisearch-6b28dec2/JZ1wsU7CEWrp9Xec/assets/images/postman/set_variables.png?w=840&fit=max&auto=format&n=JZ1wsU7CEWrp9Xec&q=85&s=3455731ab15690f16d5c49592c9362ac 840w, https://mintcdn.com/meilisearch-6b28dec2/JZ1wsU7CEWrp9Xec/assets/images/postman/set_variables.png?w=1100&fit=max&auto=format&n=JZ1wsU7CEWrp9Xec&q=85&s=04e7a7ddb61a3844eecd9642e8798488 1100w, https://mintcdn.com/meilisearch-6b28dec2/JZ1wsU7CEWrp9Xec/assets/images/postman/set_variables.png?w=1650&fit=max&auto=format&n=JZ1wsU7CEWrp9Xec&q=85&s=b1a9235638f7924ad25e7015995f009a 1650w, https://mintcdn.com/meilisearch-6b28dec2/JZ1wsU7CEWrp9Xec/assets/images/postman/set_variables.png?w=2500&fit=max&auto=format&n=JZ1wsU7CEWrp9Xec&q=85&s=e5c8b109865f5fef2a69cb694d485ab3 2500w" />
+  <img alt="Setting the 'URL' to http://localhost:7700/ and 'indexUID' to indexUId in the Variables tab." />
 </Frame>
 
 The `url` and `indexUID` variables are used in all the collection routes, like in this one:
 
 <Frame>
-  <img src="https://mintcdn.com/meilisearch-6b28dec2/JZ1wsU7CEWrp9Xec/assets/images/postman/url.png?fit=max&auto=format&n=JZ1wsU7CEWrp9Xec&q=85&s=bcc5a283b91cee7bf61ee45beda74f4e" alt="Highlighting {{url}} and {{indexUID}}" data-og-width="2560" width="2560" data-og-height="1230" height="1230" data-path="assets/images/postman/url.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/meilisearch-6b28dec2/JZ1wsU7CEWrp9Xec/assets/images/postman/url.png?w=280&fit=max&auto=format&n=JZ1wsU7CEWrp9Xec&q=85&s=f7f7b5e01091b2b3ffdbb39cf6f1f3a5 280w, https://mintcdn.com/meilisearch-6b28dec2/JZ1wsU7CEWrp9Xec/assets/images/postman/url.png?w=560&fit=max&auto=format&n=JZ1wsU7CEWrp9Xec&q=85&s=dc8330e90aa16ef4af4253fc15404769 560w, https://mintcdn.com/meilisearch-6b28dec2/JZ1wsU7CEWrp9Xec/assets/images/postman/url.png?w=840&fit=max&auto=format&n=JZ1wsU7CEWrp9Xec&q=85&s=269c47d68066c7765178a66039b532c2 840w, https://mintcdn.com/meilisearch-6b28dec2/JZ1wsU7CEWrp9Xec/assets/images/postman/url.png?w=1100&fit=max&auto=format&n=JZ1wsU7CEWrp9Xec&q=85&s=edfc0c92c8b13e454de490ab918eb04f 1100w, https://mintcdn.com/meilisearch-6b28dec2/JZ1wsU7CEWrp9Xec/assets/images/postman/url.png?w=1650&fit=max&auto=format&n=JZ1wsU7CEWrp9Xec&q=85&s=190dbb92de27408d4c53ee07c013543c 1650w, https://mintcdn.com/meilisearch-6b28dec2/JZ1wsU7CEWrp9Xec/assets/images/postman/url.png?w=2500&fit=max&auto=format&n=JZ1wsU7CEWrp9Xec&q=85&s=2e8b9ca061f3e98ced0a5f20e894ab0a 2500w" />
+  <img alt="Highlighting {{url}} and {{indexUID}}" />
 </Frame>
 
 ## Start to use it
@@ -26037,7 +26046,7 @@ The `url` and `indexUID` variables are used in all the collection routes, like i
 You can now [run your Meilisearch instance](/learn/self_hosted/getting_started_with_self_hosted_meilisearch#setup-and-installation) and create your first index:
 
 <Frame>
-  <img src="https://mintcdn.com/meilisearch-6b28dec2/AA65w-9bZrf-CgFA/assets/images/postman/create_index.png?fit=max&auto=format&n=AA65w-9bZrf-CgFA&q=85&s=4b71dab0ac5071c21b9434f2df080102" alt="The 'Send' button" data-og-width="2560" width="2560" data-og-height="1224" height="1224" data-path="assets/images/postman/create_index.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/meilisearch-6b28dec2/AA65w-9bZrf-CgFA/assets/images/postman/create_index.png?w=280&fit=max&auto=format&n=AA65w-9bZrf-CgFA&q=85&s=e1dbf8f45a3f79d4221e1c8b7751643e 280w, https://mintcdn.com/meilisearch-6b28dec2/AA65w-9bZrf-CgFA/assets/images/postman/create_index.png?w=560&fit=max&auto=format&n=AA65w-9bZrf-CgFA&q=85&s=26bf9fa6822d7101fc7c4a0d271b8095 560w, https://mintcdn.com/meilisearch-6b28dec2/AA65w-9bZrf-CgFA/assets/images/postman/create_index.png?w=840&fit=max&auto=format&n=AA65w-9bZrf-CgFA&q=85&s=21e8b61dce8f7dc4e811fd684ee0db5d 840w, https://mintcdn.com/meilisearch-6b28dec2/AA65w-9bZrf-CgFA/assets/images/postman/create_index.png?w=1100&fit=max&auto=format&n=AA65w-9bZrf-CgFA&q=85&s=f61e561444e88dfdceaa4915f9361ed7 1100w, https://mintcdn.com/meilisearch-6b28dec2/AA65w-9bZrf-CgFA/assets/images/postman/create_index.png?w=1650&fit=max&auto=format&n=AA65w-9bZrf-CgFA&q=85&s=9146465c19328e0fc9f2348ee273c5dc 1650w, https://mintcdn.com/meilisearch-6b28dec2/AA65w-9bZrf-CgFA/assets/images/postman/create_index.png?w=2500&fit=max&auto=format&n=AA65w-9bZrf-CgFA&q=85&s=c0460830efc82f4c54827d84cba547b7 2500w" />
+  <img alt="The 'Send' button" />
 </Frame>
 
 
@@ -26058,7 +26067,7 @@ If you prefer to use the self-hosted version of Meilisearch, you can follow the 
 
 Ensure your environment uses at least Ruby 2.7.0 and Rails 6.1.
 
-```bash  theme={null}
+```bash theme={null}
 rails new blog
 ```
 
@@ -26066,7 +26075,7 @@ rails new blog
 
 Navigate to your Rails app and install the `meilisearch-rails` gem.
 
-```bash  theme={null}
+```bash theme={null}
 bundle add meilisearch-rails
 ```
 
@@ -26074,13 +26083,13 @@ bundle add meilisearch-rails
 
 Run the following command to create a `config/initializers/meilisearch.rb` file.
 
-```bash  theme={null}
+```bash theme={null}
 bin/rails meilisearch:install
 ```
 
 Then add your Meilisearch URL and [Default Admin API Key](/learn/security/basic_security#obtaining-api-keys). On Meilisearch Cloud, you can find your credentials in your project settings.
 
-```Ruby  theme={null}
+```Ruby theme={null}
 MeiliSearch::Rails.configuration = {
   meilisearch_url: '<your Meilisearch URL>',
   meilisearch_api_key: '<your Meilisearch API key>'
@@ -26091,7 +26100,7 @@ MeiliSearch::Rails.configuration = {
 
 Create an example `Article` model and generate the migration files.
 
-```bash  theme={null}
+```bash theme={null}
 bin/rails generate model Article title:string body:text
 
 bin/rails db:migrate
@@ -26101,7 +26110,7 @@ bin/rails db:migrate
 
 Include the `MeiliSearch::Rails` module and the `meilisearch` block.
 
-```Ruby  theme={null}
+```Ruby theme={null}
 class Article < ApplicationRecord
     include MeiliSearch::Rails
     
@@ -26120,11 +26129,11 @@ Once configured, `meilisearch-rails` automatically syncs your table data with yo
 
 Use the Rails console to create new entries in the database.
 
-```bash  theme={null}
+```bash theme={null}
 bin/rails console
 ```
 
-```Ruby  theme={null}
+```Ruby theme={null}
 # Use a loop to create and save 5 unique articles with predefined titles and bodies
 titles = ["Welcome to Rails", "Exploring Rails", "Advanced Rails", "Rails Tips", "Rails in Production"]
 bodies = [
@@ -26147,7 +26156,7 @@ end
 
 The backend search returns ORM-compliant objects reloaded from your database.
 
-```Ruby  theme={null}
+```Ruby theme={null}
 # Meilisearch is typo-tolerant:
 hits = Article.search('deepre')
 hits.first
@@ -26159,7 +26168,7 @@ We strongly recommend using the frontend search to enjoy the swift and responsiv
 
 For testing purposes, you can explore the records using our built-in [search preview](/learn/getting_started/search_preview).
 
-<img src="https://mintcdn.com/meilisearch-6b28dec2/JZ1wsU7CEWrp9Xec/assets/images/rails_quick_start/rails-qs-search-preview.gif?s=843128064a071d30c615dfaaa409fe5d" alt="Searching through Rails table data with Meilisearch search preview UI" data-og-width="1256" width="1256" data-og-height="966" height="966" data-path="assets/images/rails_quick_start/rails-qs-search-preview.gif" data-optimize="true" data-opv="3" />
+<img alt="Searching through Rails table data with Meilisearch search preview UI" />
 
 We also provide resources to help you quickly build your own [frontend interface](/guides/front_end/front_end_integration).
 
@@ -26192,7 +26201,7 @@ This tutorial will guide you through setting up a production-ready Meilisearch i
 
 Log into your server via SSH, update the list of available packages, and install `curl`:
 
-```sh  theme={null}
+```sh theme={null}
 apt update
 apt install curl -y
 ```
@@ -26201,7 +26210,7 @@ Using the latest version of a package is good security practice, especially in p
 
 Next, use `curl` to download and run the Meilisearch command-line installer:
 
-```sh  theme={null}
+```sh theme={null}
 # Install Meilisearch latest version from the script
 curl -L https://install.meilisearch.com | sh
 ```
@@ -26210,7 +26219,7 @@ The Meilisearch installer is a set of scripts that ensure you will get the corre
 
 Next, you need to make the binary accessible from anywhere in your system. Move the binary file into `/usr/local/bin`:
 
-```sh  theme={null}
+```sh theme={null}
 mv ./meilisearch /usr/local/bin/
 ```
 
@@ -26220,13 +26229,13 @@ Meilisearch is now installed in your system, but it is not publicly accessible.
 
 Running applications as root exposes you to unnecessary security risks. To prevent that, create a dedicated user for Meilisearch:
 
-```sh  theme={null}
+```sh theme={null}
 useradd -d /var/lib/meilisearch -s /bin/false -m -r meilisearch
 ```
 
 Then give the new user ownership of the Meilisearch binary:
 
-```sh  theme={null}
+```sh theme={null}
 chown meilisearch:meilisearch /usr/local/bin/meilisearch
 ```
 
@@ -26236,7 +26245,7 @@ After installing Meilisearch and taking the first step towards keeping your data
 
 First, create the directories where Meilisearch will store its data:
 
-```bash  theme={null}
+```bash theme={null}
 mkdir /var/lib/meilisearch/data /var/lib/meilisearch/dumps /var/lib/meilisearch/snapshots
 chown -R meilisearch:meilisearch /var/lib/meilisearch
 chmod 750 /var/lib/meilisearch
@@ -26246,13 +26255,13 @@ In this tutorial, you're creating the directories in your droplet's local disk. 
 
 Next, download the default configuration to `/etc`:
 
-```bash  theme={null}
+```bash theme={null}
 curl https://raw.githubusercontent.com/meilisearch/meilisearch/latest/config.toml > /etc/meilisearch.toml
 ```
 
 Finally, update the following lines in the `meilisearch.toml` file so Meilisearch uses the directories you created earlier to store its data, replacing `MASTER_KEY` with a 16-byte string:
 
-```ini  theme={null}
+```ini theme={null}
 env = "production"
 master_key = "MASTER_KEY"
 db_path = "/var/lib/meilisearch/data"
@@ -26274,7 +26283,7 @@ Service files are text files that tell your operating system how to run your pro
 
 Run this command to create a service file in `/etc/systemd/system`:
 
-```bash  theme={null}
+```bash theme={null}
 cat << EOF > /etc/systemd/system/meilisearch.service
 [Unit]
 Description=Meilisearch
@@ -26297,7 +26306,7 @@ EOF
 
 With your service file now ready to go, activate the service using `systemctl`:
 
-```bash  theme={null}
+```bash theme={null}
 systemctl enable meilisearch
 systemctl start meilisearch
 ```
@@ -26306,13 +26315,13 @@ With `systemctl enable`, you're telling the operating system you want it to run 
 
 Ensure everything is working by checking the service status:
 
-```sh  theme={null}
+```sh theme={null}
 systemctl status meilisearch
 ```
 
 You should see a message confirming your service is running:
 
-```sh  theme={null}
+```sh theme={null}
 ● meilisearch.service - Meilisearch
    Loaded: loaded (/etc/systemd/system/meilisearch.service; enabled; vendor preset: enabled)
    Active: active (running) since Fri 2023-04-10 14:27:49 UTC; 1min 8s ago
@@ -26335,13 +26344,13 @@ A [reverse proxy](https://www.keycdn.com/support/nginx-reverse-proxy) is an appl
 
 First, install Nginx on your machine:
 
-```bash  theme={null}
+```bash theme={null}
 apt-get install nginx -y
 ```
 
 Next, delete the default configuration file:
 
-```bash  theme={null}
+```bash theme={null}
 rm -f /etc/nginx/sites-enabled/default
 ```
 
@@ -26349,7 +26358,7 @@ Nginx comes with a set of default settings, such as its default HTTP port, that 
 
 Create a new configuration file specifying the reverse proxy settings:
 
-```sh  theme={null}
+```sh theme={null}
 cat << EOF > /etc/nginx/sites-enabled/meilisearch
 server {
     listen 80 default_server;
@@ -26364,7 +26373,7 @@ EOF
 
 Finally, enable the Nginx service:
 
-```bash  theme={null}
+```bash theme={null}
 systemctl daemon-reload
 systemctl enable nginx
 systemctl restart nginx
@@ -26382,13 +26391,13 @@ Use [certbot](https://certbot.eff.org/) to configure enable HTTPS in your server
 
 First, install the required packages on your system:
 
-```bash  theme={null}
+```bash theme={null}
 sudo apt install certbot python3-certbot-nginx -y
 ```
 
 Next, run certbot:
 
-```bash  theme={null}
+```bash theme={null}
 certbot --nginx
 ```
 
@@ -26398,7 +26407,7 @@ Certbot will finish configuring Nginx. Once it is done, all traffic to your serv
 
 Your security certificate must be renewed every 90 days. Certbot schedules the renewal automatically. Run a test to verify this process is in place:
 
-```bash  theme={null}
+```bash theme={null}
 sudo certbot renew --dry-run
 ```
 
@@ -26428,14 +26437,14 @@ This tutorial will show you how to integrate Meilisearch with [Strapi](https://s
 
 Create a directory called `my-app` where you will add the back and front-end parts of the application. Generate a back-end API using Strapi inside `my-app`:
 
-```bash  theme={null}
+```bash theme={null}
 npx create-strapi-app@latest back --quickstart
 ```
 
 This command creates a Strapi app in a new directory called `back` and opens the admin dashboard. Create an account to access it.
 
 <Frame>
-  <img src="https://mintcdn.com/meilisearch-6b28dec2/JZ1wsU7CEWrp9Xec/assets/images/strapi-v4/strapi-signup.png?fit=max&auto=format&n=JZ1wsU7CEWrp9Xec&q=85&s=70fc84168bb7fb9fd02f7c8e8a355e6f" alt="Strapi sign up form" data-og-width="1182" width="1182" data-og-height="1690" height="1690" data-path="assets/images/strapi-v4/strapi-signup.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/meilisearch-6b28dec2/JZ1wsU7CEWrp9Xec/assets/images/strapi-v4/strapi-signup.png?w=280&fit=max&auto=format&n=JZ1wsU7CEWrp9Xec&q=85&s=bda631c9ffb14b64c9db95a3790fe202 280w, https://mintcdn.com/meilisearch-6b28dec2/JZ1wsU7CEWrp9Xec/assets/images/strapi-v4/strapi-signup.png?w=560&fit=max&auto=format&n=JZ1wsU7CEWrp9Xec&q=85&s=9fb576a186eeacefb42866e1f947b492 560w, https://mintcdn.com/meilisearch-6b28dec2/JZ1wsU7CEWrp9Xec/assets/images/strapi-v4/strapi-signup.png?w=840&fit=max&auto=format&n=JZ1wsU7CEWrp9Xec&q=85&s=6ddc7b378249e3b9e2337b4b8f8aae2b 840w, https://mintcdn.com/meilisearch-6b28dec2/JZ1wsU7CEWrp9Xec/assets/images/strapi-v4/strapi-signup.png?w=1100&fit=max&auto=format&n=JZ1wsU7CEWrp9Xec&q=85&s=42dac0e10de2625cef348b1a113d691a 1100w, https://mintcdn.com/meilisearch-6b28dec2/JZ1wsU7CEWrp9Xec/assets/images/strapi-v4/strapi-signup.png?w=1650&fit=max&auto=format&n=JZ1wsU7CEWrp9Xec&q=85&s=ddb1b2851f3c5bd2c5ddd83dc9e97008 1650w, https://mintcdn.com/meilisearch-6b28dec2/JZ1wsU7CEWrp9Xec/assets/images/strapi-v4/strapi-signup.png?w=2500&fit=max&auto=format&n=JZ1wsU7CEWrp9Xec&q=85&s=13c29ed8b09e0894fd70e7e7e0c19c1a 2500w" />
+  <img alt="Strapi sign up form" />
 </Frame>
 
 Once you have created your account, you should be redirected to Strapi's admin dashboard. This is where you will configure your back-end API.
@@ -26445,7 +26454,7 @@ Once you have created your account, you should be redirected to Strapi's admin d
 The next step is to create a new collection type. A collection is like a blueprint of your content—in this case, it will be a collection of restaurants. You will create another collection called "Category" to organize your restaurants later.
 
 <Frame>
-  <img src="https://mintcdn.com/meilisearch-6b28dec2/JZ1wsU7CEWrp9Xec/assets/images/strapi-v4/strapi-dashboard.png?fit=max&auto=format&n=JZ1wsU7CEWrp9Xec&q=85&s=48bf76fba358174b265d072da1ee8ef7" alt="Strapi dashboard with side menu 'Content-Type Builder' option circled" data-og-width="1600" width="1600" data-og-height="1121" height="1121" data-path="assets/images/strapi-v4/strapi-dashboard.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/meilisearch-6b28dec2/JZ1wsU7CEWrp9Xec/assets/images/strapi-v4/strapi-dashboard.png?w=280&fit=max&auto=format&n=JZ1wsU7CEWrp9Xec&q=85&s=a765842cc28a8c0814ec130cee3500a5 280w, https://mintcdn.com/meilisearch-6b28dec2/JZ1wsU7CEWrp9Xec/assets/images/strapi-v4/strapi-dashboard.png?w=560&fit=max&auto=format&n=JZ1wsU7CEWrp9Xec&q=85&s=ec9ae1cfb2655bb555c2e7c14f96dfa2 560w, https://mintcdn.com/meilisearch-6b28dec2/JZ1wsU7CEWrp9Xec/assets/images/strapi-v4/strapi-dashboard.png?w=840&fit=max&auto=format&n=JZ1wsU7CEWrp9Xec&q=85&s=7cf080211dd1fa971f79767bd2611d6d 840w, https://mintcdn.com/meilisearch-6b28dec2/JZ1wsU7CEWrp9Xec/assets/images/strapi-v4/strapi-dashboard.png?w=1100&fit=max&auto=format&n=JZ1wsU7CEWrp9Xec&q=85&s=56ecf7b8761adcabea34ea8e52872ac3 1100w, https://mintcdn.com/meilisearch-6b28dec2/JZ1wsU7CEWrp9Xec/assets/images/strapi-v4/strapi-dashboard.png?w=1650&fit=max&auto=format&n=JZ1wsU7CEWrp9Xec&q=85&s=a6b884b020533c7e0f4ae520d4b2bf0d 1650w, https://mintcdn.com/meilisearch-6b28dec2/JZ1wsU7CEWrp9Xec/assets/images/strapi-v4/strapi-dashboard.png?w=2500&fit=max&auto=format&n=JZ1wsU7CEWrp9Xec&q=85&s=e6a0ecd7c8eb8e9d4548142e23875913 2500w" />
+  <img alt="Strapi dashboard with side menu 'Content-Type Builder' option circled" />
 </Frame>
 
 To follow along, complete "Part B:  Build your data structure with the Content-type Builder" and steps 2 to 5 in "Part D: Add content to your Strapi Cloud project with the Content Manager" from Strapi's quick start guide. These will include:
@@ -26460,7 +26469,7 @@ To follow along, complete "Part B:  Build your data structure with the Content-t
 After finishing those steps of Strapi's quick start guide, two new collections named Restaurant and Category should have appeared under `Content Manager > Collection Types`. If you click on `Restaurant`, you can see that there is only one. Add more by clicking the `+ Create new entry` button in the upper-right corner of the dashboard.
 
 <Frame>
-  <img src="https://mintcdn.com/meilisearch-6b28dec2/JZ1wsU7CEWrp9Xec/assets/images/strapi-v4/strapi-restaurant-content-type.png?fit=max&auto=format&n=JZ1wsU7CEWrp9Xec&q=85&s=9a48461ccb58d28c9ee77a454d180d82" alt="Strapi dashboard: Content manager side menu, arrow indicating the location of the Restaurant Collection Type" data-og-width="1600" width="1600" data-og-height="543" height="543" data-path="assets/images/strapi-v4/strapi-restaurant-content-type.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/meilisearch-6b28dec2/JZ1wsU7CEWrp9Xec/assets/images/strapi-v4/strapi-restaurant-content-type.png?w=280&fit=max&auto=format&n=JZ1wsU7CEWrp9Xec&q=85&s=fee172fcc1537afc463fcb3c0985528c 280w, https://mintcdn.com/meilisearch-6b28dec2/JZ1wsU7CEWrp9Xec/assets/images/strapi-v4/strapi-restaurant-content-type.png?w=560&fit=max&auto=format&n=JZ1wsU7CEWrp9Xec&q=85&s=ed57f54ba6c5c255b4dd88f83cdfd9a9 560w, https://mintcdn.com/meilisearch-6b28dec2/JZ1wsU7CEWrp9Xec/assets/images/strapi-v4/strapi-restaurant-content-type.png?w=840&fit=max&auto=format&n=JZ1wsU7CEWrp9Xec&q=85&s=d10efe5f7a7d84df277e670aa6ddc32b 840w, https://mintcdn.com/meilisearch-6b28dec2/JZ1wsU7CEWrp9Xec/assets/images/strapi-v4/strapi-restaurant-content-type.png?w=1100&fit=max&auto=format&n=JZ1wsU7CEWrp9Xec&q=85&s=0b8247e73282afff52a671228c3eb060 1100w, https://mintcdn.com/meilisearch-6b28dec2/JZ1wsU7CEWrp9Xec/assets/images/strapi-v4/strapi-restaurant-content-type.png?w=1650&fit=max&auto=format&n=JZ1wsU7CEWrp9Xec&q=85&s=1f8581ad75a5a6261ac226842900d526 1650w, https://mintcdn.com/meilisearch-6b28dec2/JZ1wsU7CEWrp9Xec/assets/images/strapi-v4/strapi-restaurant-content-type.png?w=2500&fit=max&auto=format&n=JZ1wsU7CEWrp9Xec&q=85&s=beab55d92e929bde4a234070e7d23565 2500w" />
+  <img alt="Strapi dashboard: Content manager side menu, arrow indicating the location of the Restaurant Collection Type" />
 </Frame>
 
 Add the following three restaurants, one by one. For each restaurant, you need to press `Save` and then `Publish`.
@@ -26471,7 +26480,7 @@ Add the following three restaurants, one by one. For each restaurant, you need t
 Next, add the `French food` category on the bottom right corner of the page.
 
 <Frame>
-  <img src="https://mintcdn.com/meilisearch-6b28dec2/JZ1wsU7CEWrp9Xec/assets/images/strapi-v4/strapi-add-category.png?fit=max&auto=format&n=JZ1wsU7CEWrp9Xec&q=85&s=120181437848772076be675d9a958525" alt="Strapi dashboard: create an entry form, arrow indicating the location of the categorie's location in the right side menu" data-og-width="1600" width="1600" data-og-height="780" height="780" data-path="assets/images/strapi-v4/strapi-add-category.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/meilisearch-6b28dec2/JZ1wsU7CEWrp9Xec/assets/images/strapi-v4/strapi-add-category.png?w=280&fit=max&auto=format&n=JZ1wsU7CEWrp9Xec&q=85&s=76afe7664cd20de05b6646e7444ec6c8 280w, https://mintcdn.com/meilisearch-6b28dec2/JZ1wsU7CEWrp9Xec/assets/images/strapi-v4/strapi-add-category.png?w=560&fit=max&auto=format&n=JZ1wsU7CEWrp9Xec&q=85&s=a500c409daed7deb81c3efdbcbc5ade8 560w, https://mintcdn.com/meilisearch-6b28dec2/JZ1wsU7CEWrp9Xec/assets/images/strapi-v4/strapi-add-category.png?w=840&fit=max&auto=format&n=JZ1wsU7CEWrp9Xec&q=85&s=a7f5f3c7c850502d88cb3c5b3526de33 840w, https://mintcdn.com/meilisearch-6b28dec2/JZ1wsU7CEWrp9Xec/assets/images/strapi-v4/strapi-add-category.png?w=1100&fit=max&auto=format&n=JZ1wsU7CEWrp9Xec&q=85&s=e4d3e27db15cb6842c8fc6c7b6b9f261 1100w, https://mintcdn.com/meilisearch-6b28dec2/JZ1wsU7CEWrp9Xec/assets/images/strapi-v4/strapi-add-category.png?w=1650&fit=max&auto=format&n=JZ1wsU7CEWrp9Xec&q=85&s=f06b4fa139e0064329c5f1cf8fd8dc79 1650w, https://mintcdn.com/meilisearch-6b28dec2/JZ1wsU7CEWrp9Xec/assets/images/strapi-v4/strapi-add-category.png?w=2500&fit=max&auto=format&n=JZ1wsU7CEWrp9Xec&q=85&s=18c0e8a99c32761f9a085afb71226334 2500w" />
+  <img alt="Strapi dashboard: create an entry form, arrow indicating the location of the categorie's location in the right side menu" />
 </Frame>
 
 * Name: `The Slimy Snail`
@@ -26496,13 +26505,13 @@ To add the Meilisearch plugin to Strapi, you need to first quit the Strapi app. 
 
 Next, install the plugin in the `back` directory.
 
-```bash  theme={null}
+```bash theme={null}
 npm install strapi-plugin-meilisearch
 ```
 
 After the installation, you have to rebuild the Strapi app before starting it again in development mode, since it makes configuration easier.
 
-```bash  theme={null}
+```bash theme={null}
 npm run build
 npm run develop
 ```
@@ -26512,13 +26521,13 @@ At this point, your Strapi app should be running once again on the default addre
 Once connected, you should see the new `meilisearch` plugin on the left side of the screen.
 
 <Frame>
-  <img src="https://mintcdn.com/meilisearch-6b28dec2/JZ1wsU7CEWrp9Xec/assets/images/strapi-v4/strapi-meilisearch-plugin.png?fit=max&auto=format&n=JZ1wsU7CEWrp9Xec&q=85&s=e0f59e8f3491643ae24c962f60013dfc" alt="Strapi dashboard with plugins side menu: arrow pointing at the 'meilisearch' option" data-og-width="1600" width="1600" data-og-height="715" height="715" data-path="assets/images/strapi-v4/strapi-meilisearch-plugin.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/meilisearch-6b28dec2/JZ1wsU7CEWrp9Xec/assets/images/strapi-v4/strapi-meilisearch-plugin.png?w=280&fit=max&auto=format&n=JZ1wsU7CEWrp9Xec&q=85&s=93da7b0d5f0308a0b2ef2943621549cd 280w, https://mintcdn.com/meilisearch-6b28dec2/JZ1wsU7CEWrp9Xec/assets/images/strapi-v4/strapi-meilisearch-plugin.png?w=560&fit=max&auto=format&n=JZ1wsU7CEWrp9Xec&q=85&s=0c622dc24e7003fdc1830432e9928be0 560w, https://mintcdn.com/meilisearch-6b28dec2/JZ1wsU7CEWrp9Xec/assets/images/strapi-v4/strapi-meilisearch-plugin.png?w=840&fit=max&auto=format&n=JZ1wsU7CEWrp9Xec&q=85&s=12dda4e3d5c5490d775b40079a63ad07 840w, https://mintcdn.com/meilisearch-6b28dec2/JZ1wsU7CEWrp9Xec/assets/images/strapi-v4/strapi-meilisearch-plugin.png?w=1100&fit=max&auto=format&n=JZ1wsU7CEWrp9Xec&q=85&s=9a182ea9737b021120107b1f6f094ff4 1100w, https://mintcdn.com/meilisearch-6b28dec2/JZ1wsU7CEWrp9Xec/assets/images/strapi-v4/strapi-meilisearch-plugin.png?w=1650&fit=max&auto=format&n=JZ1wsU7CEWrp9Xec&q=85&s=fa570000d8dd1c2066830b1e3ebb137a 1650w, https://mintcdn.com/meilisearch-6b28dec2/JZ1wsU7CEWrp9Xec/assets/images/strapi-v4/strapi-meilisearch-plugin.png?w=2500&fit=max&auto=format&n=JZ1wsU7CEWrp9Xec&q=85&s=c04ac5b97bc138e41210cb720be9404d 2500w" />
+  <img alt="Strapi dashboard with plugins side menu: arrow pointing at the 'meilisearch' option" />
 </Frame>
 
 Add your Meilisearch credentials on the Settings tab of the `meilisearch` plugin page.
 
 <Frame>
-  <img src="https://mintcdn.com/meilisearch-6b28dec2/JZ1wsU7CEWrp9Xec/assets/images/strapi-v4/strapi-meilisearch-credentials.png?fit=max&auto=format&n=JZ1wsU7CEWrp9Xec&q=85&s=94dc34c18b9e4920988be133248cb37a" alt="Strapi dashboard with Meilisearch plugin selected: arrow pointing to the location of the settings tab" data-og-width="2972" width="2972" data-og-height="1228" height="1228" data-path="assets/images/strapi-v4/strapi-meilisearch-credentials.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/meilisearch-6b28dec2/JZ1wsU7CEWrp9Xec/assets/images/strapi-v4/strapi-meilisearch-credentials.png?w=280&fit=max&auto=format&n=JZ1wsU7CEWrp9Xec&q=85&s=4452fbb72d70ff55c8ba4b3a1221a4a5 280w, https://mintcdn.com/meilisearch-6b28dec2/JZ1wsU7CEWrp9Xec/assets/images/strapi-v4/strapi-meilisearch-credentials.png?w=560&fit=max&auto=format&n=JZ1wsU7CEWrp9Xec&q=85&s=32c0e895866418d99915758913db0526 560w, https://mintcdn.com/meilisearch-6b28dec2/JZ1wsU7CEWrp9Xec/assets/images/strapi-v4/strapi-meilisearch-credentials.png?w=840&fit=max&auto=format&n=JZ1wsU7CEWrp9Xec&q=85&s=08796db3f6a1d7c2b1356a9188aa374c 840w, https://mintcdn.com/meilisearch-6b28dec2/JZ1wsU7CEWrp9Xec/assets/images/strapi-v4/strapi-meilisearch-credentials.png?w=1100&fit=max&auto=format&n=JZ1wsU7CEWrp9Xec&q=85&s=fcf80d47b485a19a82cc081e3e4e0c6f 1100w, https://mintcdn.com/meilisearch-6b28dec2/JZ1wsU7CEWrp9Xec/assets/images/strapi-v4/strapi-meilisearch-credentials.png?w=1650&fit=max&auto=format&n=JZ1wsU7CEWrp9Xec&q=85&s=85a35ccff442e4ac003ec32c0bb93d83 1650w, https://mintcdn.com/meilisearch-6b28dec2/JZ1wsU7CEWrp9Xec/assets/images/strapi-v4/strapi-meilisearch-credentials.png?w=2500&fit=max&auto=format&n=JZ1wsU7CEWrp9Xec&q=85&s=73563d87e86fe28b8e68acde7d4fbf6b 2500w" />
+  <img alt="Strapi dashboard with Meilisearch plugin selected: arrow pointing to the location of the settings tab" />
 </Frame>
 
 Now it's time to add your Strapi collection to Meilisearch. In the `Collections` tab on the `meilisearch` plugin page, you should see the `restaurant` and `category` content-types.
@@ -26526,7 +26535,7 @@ Now it's time to add your Strapi collection to Meilisearch. In the `Collections`
 By clicking on the checkbox next to `restaurant`, the content-type is automatically indexed in Meilisearch.
 
 <Frame>
-  <img src="https://mintcdn.com/meilisearch-6b28dec2/JZ1wsU7CEWrp9Xec/assets/images/strapi-v4/strapi-add-collection-to-meilisearch.gif?s=a53a3797fe19369c339f230c7295b651" alt="GIF showing the mouse clicking on 'restaurant' in the Meilisearch collections tab" data-og-width="1526" width="1526" data-og-height="658" height="658" data-path="assets/images/strapi-v4/strapi-add-collection-to-meilisearch.gif" data-optimize="true" data-opv="3" />
+  <img alt="GIF showing the mouse clicking on 'restaurant' in the Meilisearch collections tab" />
 </Frame>
 
 The word “Hooked” appears when you click on the `restaurant`'s checkbox in the `Collections` tab. This means that each time you add, update or delete an entry in your restaurant content-types, Meilisearch is automatically updated.
@@ -26534,7 +26543,7 @@ The word “Hooked” appears when you click on the `restaurant`'s checkbox in t
 Once the indexing finishes, your restaurants are in Meilisearch. Access the [search preview](/learn/getting_started/search_preview) confirm everything is working correctly by searching for “butter”.
 
 <Frame>
-  <img src="https://mintcdn.com/meilisearch-6b28dec2/JZ1wsU7CEWrp9Xec/assets/images/strapi-v4/strapi-search-preview.gif?s=6ff00ea82dbc55cc71d17a5b1947caec" alt="GIF showing the word 'butter' being typed in the search bar and search results appearing instantly" data-og-width="1558" width="1558" data-og-height="930" height="930" data-path="assets/images/strapi-v4/strapi-search-preview.gif" data-optimize="true" data-opv="3" />
+  <img alt="GIF showing the word 'butter' being typed in the search bar and search results appearing instantly" />
 </Frame>
 
 Your Strapi entries are sent to Meilisearch as is. You can modify the data before sending it to Meilisearch, for instance by removing a field. Check out all the customization options on the [strapi-plugin-meilisearch page](https://github.com/meilisearch/strapi-plugin-meilisearch/#-customization).
@@ -26570,7 +26579,7 @@ In this guide you will learn how to link a [Meilisearch Cloud](https://www.meili
 From your Vercel dashboard, create a new project. You can create a project from a template, or import a Git repository.
 
 <Frame>
-  <img src="https://mintcdn.com/meilisearch-6b28dec2/JZ1wsU7CEWrp9Xec/assets/images/vercel/01.create-new-project-on-vercel-dashboard.png?fit=max&auto=format&n=JZ1wsU7CEWrp9Xec&q=85&s=6e15dd4e0c4e249c51b51fec3055c98c" alt="Create a new project on Vercel dashboard" data-og-width="3170" width="3170" data-og-height="2192" height="2192" data-path="assets/images/vercel/01.create-new-project-on-vercel-dashboard.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/meilisearch-6b28dec2/JZ1wsU7CEWrp9Xec/assets/images/vercel/01.create-new-project-on-vercel-dashboard.png?w=280&fit=max&auto=format&n=JZ1wsU7CEWrp9Xec&q=85&s=fa941af45bd4611d48d4a1ee6b7bb024 280w, https://mintcdn.com/meilisearch-6b28dec2/JZ1wsU7CEWrp9Xec/assets/images/vercel/01.create-new-project-on-vercel-dashboard.png?w=560&fit=max&auto=format&n=JZ1wsU7CEWrp9Xec&q=85&s=3c73dd79018d2ffb48bebfdb8789b9a7 560w, https://mintcdn.com/meilisearch-6b28dec2/JZ1wsU7CEWrp9Xec/assets/images/vercel/01.create-new-project-on-vercel-dashboard.png?w=840&fit=max&auto=format&n=JZ1wsU7CEWrp9Xec&q=85&s=0e74d2cccb2ce57d61521a03fc0007eb 840w, https://mintcdn.com/meilisearch-6b28dec2/JZ1wsU7CEWrp9Xec/assets/images/vercel/01.create-new-project-on-vercel-dashboard.png?w=1100&fit=max&auto=format&n=JZ1wsU7CEWrp9Xec&q=85&s=a836ed6a0b546808569513d80c322cda 1100w, https://mintcdn.com/meilisearch-6b28dec2/JZ1wsU7CEWrp9Xec/assets/images/vercel/01.create-new-project-on-vercel-dashboard.png?w=1650&fit=max&auto=format&n=JZ1wsU7CEWrp9Xec&q=85&s=69b7b99341509fdb51bef3af7da512b3 1650w, https://mintcdn.com/meilisearch-6b28dec2/JZ1wsU7CEWrp9Xec/assets/images/vercel/01.create-new-project-on-vercel-dashboard.png?w=2500&fit=max&auto=format&n=JZ1wsU7CEWrp9Xec&q=85&s=aeaebe81fcfafe6fbad151a56fad5808 2500w" />
+  <img alt="Create a new project on Vercel dashboard" />
 </Frame>
 
 Select your project, then click on **Deploy**. Once deployment is complete, go back to your project’s dashboard.
@@ -26580,19 +26589,19 @@ Select your project, then click on **Deploy**. Once deployment is complete, go b
 Go to the project settings tab and click on **Integrations** on the sidebar menu to the left of your screen.
 
 <Frame>
-  <img src="https://mintcdn.com/meilisearch-6b28dec2/JZ1wsU7CEWrp9Xec/assets/images/vercel/02.project-settings-integrations-tab.png?fit=max&auto=format&n=JZ1wsU7CEWrp9Xec&q=85&s=5ff5bfb58c214d46d9e4ab4490d51fbc" alt="Selecting the integration tab in the project settings" data-og-width="3166" width="3166" data-og-height="2230" height="2230" data-path="assets/images/vercel/02.project-settings-integrations-tab.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/meilisearch-6b28dec2/JZ1wsU7CEWrp9Xec/assets/images/vercel/02.project-settings-integrations-tab.png?w=280&fit=max&auto=format&n=JZ1wsU7CEWrp9Xec&q=85&s=8b72514da452a415c1a0626b3e9bcc1d 280w, https://mintcdn.com/meilisearch-6b28dec2/JZ1wsU7CEWrp9Xec/assets/images/vercel/02.project-settings-integrations-tab.png?w=560&fit=max&auto=format&n=JZ1wsU7CEWrp9Xec&q=85&s=870f750f59da1aecff8bd435803d38f2 560w, https://mintcdn.com/meilisearch-6b28dec2/JZ1wsU7CEWrp9Xec/assets/images/vercel/02.project-settings-integrations-tab.png?w=840&fit=max&auto=format&n=JZ1wsU7CEWrp9Xec&q=85&s=1b87b81cb9834678eb371bb2fbd08593 840w, https://mintcdn.com/meilisearch-6b28dec2/JZ1wsU7CEWrp9Xec/assets/images/vercel/02.project-settings-integrations-tab.png?w=1100&fit=max&auto=format&n=JZ1wsU7CEWrp9Xec&q=85&s=5a585107a749fea1aac890d543b3e96e 1100w, https://mintcdn.com/meilisearch-6b28dec2/JZ1wsU7CEWrp9Xec/assets/images/vercel/02.project-settings-integrations-tab.png?w=1650&fit=max&auto=format&n=JZ1wsU7CEWrp9Xec&q=85&s=f0c72256abca2c7cc4accd2e42eeb1ef 1650w, https://mintcdn.com/meilisearch-6b28dec2/JZ1wsU7CEWrp9Xec/assets/images/vercel/02.project-settings-integrations-tab.png?w=2500&fit=max&auto=format&n=JZ1wsU7CEWrp9Xec&q=85&s=445bd2c1f32bcf115368c363f9102124 2500w" />
+  <img alt="Selecting the integration tab in the project settings" />
 </Frame>
 
 Search for the [Meilisearch integration](https://vercel.com/integrations/meilisearch-cloud) in the search bar. Click on the **Add integration** button.
 
 <Frame>
-  <img src="https://mintcdn.com/meilisearch-6b28dec2/JZ1wsU7CEWrp9Xec/assets/images/vercel/03.meilisearch-cloud-integration-page-in-marketplace.png?fit=max&auto=format&n=JZ1wsU7CEWrp9Xec&q=85&s=593d5541a55d2dbf987f9cc8876233c6" alt="Meilisearch integration page in Vercel's marketplace" data-og-width="3160" width="3160" data-og-height="1824" height="1824" data-path="assets/images/vercel/03.meilisearch-cloud-integration-page-in-marketplace.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/meilisearch-6b28dec2/JZ1wsU7CEWrp9Xec/assets/images/vercel/03.meilisearch-cloud-integration-page-in-marketplace.png?w=280&fit=max&auto=format&n=JZ1wsU7CEWrp9Xec&q=85&s=4c137e770314f0b1fdca6bec67e76e58 280w, https://mintcdn.com/meilisearch-6b28dec2/JZ1wsU7CEWrp9Xec/assets/images/vercel/03.meilisearch-cloud-integration-page-in-marketplace.png?w=560&fit=max&auto=format&n=JZ1wsU7CEWrp9Xec&q=85&s=1f9ab661e6991c7656bef91b59bf3597 560w, https://mintcdn.com/meilisearch-6b28dec2/JZ1wsU7CEWrp9Xec/assets/images/vercel/03.meilisearch-cloud-integration-page-in-marketplace.png?w=840&fit=max&auto=format&n=JZ1wsU7CEWrp9Xec&q=85&s=2fc4cfc4b3115aee2b645a2cb90d9ad6 840w, https://mintcdn.com/meilisearch-6b28dec2/JZ1wsU7CEWrp9Xec/assets/images/vercel/03.meilisearch-cloud-integration-page-in-marketplace.png?w=1100&fit=max&auto=format&n=JZ1wsU7CEWrp9Xec&q=85&s=f0b05adce0df921ea4262325c729f772 1100w, https://mintcdn.com/meilisearch-6b28dec2/JZ1wsU7CEWrp9Xec/assets/images/vercel/03.meilisearch-cloud-integration-page-in-marketplace.png?w=1650&fit=max&auto=format&n=JZ1wsU7CEWrp9Xec&q=85&s=966de5e03ebb7d644cfdf2e40dbff9a5 1650w, https://mintcdn.com/meilisearch-6b28dec2/JZ1wsU7CEWrp9Xec/assets/images/vercel/03.meilisearch-cloud-integration-page-in-marketplace.png?w=2500&fit=max&auto=format&n=JZ1wsU7CEWrp9Xec&q=85&s=0f3a8127d9a1de041b201cc9dc0a4879 2500w" />
+  <img alt="Meilisearch integration page in Vercel's marketplace" />
 </Frame>
 
 Select the Vercel account or team and the project you to which you want to add the integration. You may add the Meilisearch integration to one or more projects in this menu.
 
 <Frame>
-  <img src="https://mintcdn.com/meilisearch-6b28dec2/JZ1wsU7CEWrp9Xec/assets/images/vercel/04.add-meilisearch-cloud-form.png?fit=max&auto=format&n=JZ1wsU7CEWrp9Xec&q=85&s=97d54737e717596f3ab64d3bc935b8b4" alt="Form to add Meilisearch integration, the 'Specific projects' option is selected" data-og-width="3170" width="3170" data-og-height="1824" height="1824" data-path="assets/images/vercel/04.add-meilisearch-cloud-form.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/meilisearch-6b28dec2/JZ1wsU7CEWrp9Xec/assets/images/vercel/04.add-meilisearch-cloud-form.png?w=280&fit=max&auto=format&n=JZ1wsU7CEWrp9Xec&q=85&s=fb7f39f8f666590bf63661d56a38494b 280w, https://mintcdn.com/meilisearch-6b28dec2/JZ1wsU7CEWrp9Xec/assets/images/vercel/04.add-meilisearch-cloud-form.png?w=560&fit=max&auto=format&n=JZ1wsU7CEWrp9Xec&q=85&s=4fd557704b4c6ccecda6f5d315f10c4c 560w, https://mintcdn.com/meilisearch-6b28dec2/JZ1wsU7CEWrp9Xec/assets/images/vercel/04.add-meilisearch-cloud-form.png?w=840&fit=max&auto=format&n=JZ1wsU7CEWrp9Xec&q=85&s=ac7009ed45ed7f1c0d79e18cadf61ffa 840w, https://mintcdn.com/meilisearch-6b28dec2/JZ1wsU7CEWrp9Xec/assets/images/vercel/04.add-meilisearch-cloud-form.png?w=1100&fit=max&auto=format&n=JZ1wsU7CEWrp9Xec&q=85&s=0edd8d8fb7aadd36642e06ad0b2e0036 1100w, https://mintcdn.com/meilisearch-6b28dec2/JZ1wsU7CEWrp9Xec/assets/images/vercel/04.add-meilisearch-cloud-form.png?w=1650&fit=max&auto=format&n=JZ1wsU7CEWrp9Xec&q=85&s=88765a4a800597d601dfb580bd2e2c04 1650w, https://mintcdn.com/meilisearch-6b28dec2/JZ1wsU7CEWrp9Xec/assets/images/vercel/04.add-meilisearch-cloud-form.png?w=2500&fit=max&auto=format&n=JZ1wsU7CEWrp9Xec&q=85&s=8b3825969191d0fcb7fae05697963009 2500w" />
+  <img alt="Form to add Meilisearch integration, the 'Specific projects' option is selected" />
 </Frame>
 
 Click on **Continue**. Vercel will display a list with the permissions the integration needs to work properly. Review it, then click on **Add Integration**.
@@ -26604,18 +26613,18 @@ Vercel will redirect you to the Meilisearch Cloud page. Log in or create an acco
 You can choose an existing project or create a new one. To create a new project, complete the form with the project name and region.
 
 <Frame>
-  <img src="https://mintcdn.com/meilisearch-6b28dec2/JZ1wsU7CEWrp9Xec/assets/images/vercel/05.create-a-meilisearch-cloud-project-form.png?fit=max&auto=format&n=JZ1wsU7CEWrp9Xec&q=85&s=74a92949b681a05606f6bd6c9ae040c0" alt="Meilisearch Cloud form to create a project complete, with 'search-app' as the project's name and 'Frankfurt' as the region" data-og-width="3166" width="3166" data-og-height="1824" height="1824" data-path="assets/images/vercel/05.create-a-meilisearch-cloud-project-form.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/meilisearch-6b28dec2/JZ1wsU7CEWrp9Xec/assets/images/vercel/05.create-a-meilisearch-cloud-project-form.png?w=280&fit=max&auto=format&n=JZ1wsU7CEWrp9Xec&q=85&s=4d10b33197d3027375224d96fbe421f1 280w, https://mintcdn.com/meilisearch-6b28dec2/JZ1wsU7CEWrp9Xec/assets/images/vercel/05.create-a-meilisearch-cloud-project-form.png?w=560&fit=max&auto=format&n=JZ1wsU7CEWrp9Xec&q=85&s=58495bb4510891111968366318e80341 560w, https://mintcdn.com/meilisearch-6b28dec2/JZ1wsU7CEWrp9Xec/assets/images/vercel/05.create-a-meilisearch-cloud-project-form.png?w=840&fit=max&auto=format&n=JZ1wsU7CEWrp9Xec&q=85&s=4a5e1189440766896fbc3752eb218f47 840w, https://mintcdn.com/meilisearch-6b28dec2/JZ1wsU7CEWrp9Xec/assets/images/vercel/05.create-a-meilisearch-cloud-project-form.png?w=1100&fit=max&auto=format&n=JZ1wsU7CEWrp9Xec&q=85&s=a6968767b6a32c9ebe12baaa9e2cfce3 1100w, https://mintcdn.com/meilisearch-6b28dec2/JZ1wsU7CEWrp9Xec/assets/images/vercel/05.create-a-meilisearch-cloud-project-form.png?w=1650&fit=max&auto=format&n=JZ1wsU7CEWrp9Xec&q=85&s=4cd664e99a0c7d1461c38b31256be316 1650w, https://mintcdn.com/meilisearch-6b28dec2/JZ1wsU7CEWrp9Xec/assets/images/vercel/05.create-a-meilisearch-cloud-project-form.png?w=2500&fit=max&auto=format&n=JZ1wsU7CEWrp9Xec&q=85&s=964e5c0d58247ca98926dd192292e4f0 2500w" />
+  <img alt="Meilisearch Cloud form to create a project complete, with 'search-app' as the project's name and 'Frankfurt' as the region" />
 </Frame>
 
 Once you click on **Create project**, you should see the following message: “Your Meilisearch + Vercel integration is one click away from being completed.” Click "Finish the Vercel integration setup". Meilisearch will then redirect you back to the Vercel integration page.
 
 <Frame>
-  <img src="https://mintcdn.com/meilisearch-6b28dec2/JZ1wsU7CEWrp9Xec/assets/images/vercel/06.meilisearch-cloud-integration-page-in-vercel-dashboard.png?fit=max&auto=format&n=JZ1wsU7CEWrp9Xec&q=85&s=fdca42c84aa785dc7baa68ba5587066d" alt="Meilisearch integration page in Vercel's dashboard" data-og-width="3160" width="3160" data-og-height="1826" height="1826" data-path="assets/images/vercel/06.meilisearch-cloud-integration-page-in-vercel-dashboard.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/meilisearch-6b28dec2/JZ1wsU7CEWrp9Xec/assets/images/vercel/06.meilisearch-cloud-integration-page-in-vercel-dashboard.png?w=280&fit=max&auto=format&n=JZ1wsU7CEWrp9Xec&q=85&s=a14d776b03467b217e98c42ebb5c0b04 280w, https://mintcdn.com/meilisearch-6b28dec2/JZ1wsU7CEWrp9Xec/assets/images/vercel/06.meilisearch-cloud-integration-page-in-vercel-dashboard.png?w=560&fit=max&auto=format&n=JZ1wsU7CEWrp9Xec&q=85&s=b523b78f5f3ffb7e7c5c56c15ca8c547 560w, https://mintcdn.com/meilisearch-6b28dec2/JZ1wsU7CEWrp9Xec/assets/images/vercel/06.meilisearch-cloud-integration-page-in-vercel-dashboard.png?w=840&fit=max&auto=format&n=JZ1wsU7CEWrp9Xec&q=85&s=d21a71ff78d9239ecec3ced54b68f178 840w, https://mintcdn.com/meilisearch-6b28dec2/JZ1wsU7CEWrp9Xec/assets/images/vercel/06.meilisearch-cloud-integration-page-in-vercel-dashboard.png?w=1100&fit=max&auto=format&n=JZ1wsU7CEWrp9Xec&q=85&s=ee69553153d6a57388126cf50282fb18 1100w, https://mintcdn.com/meilisearch-6b28dec2/JZ1wsU7CEWrp9Xec/assets/images/vercel/06.meilisearch-cloud-integration-page-in-vercel-dashboard.png?w=1650&fit=max&auto=format&n=JZ1wsU7CEWrp9Xec&q=85&s=3620e71a9973ee4419128bcab71039ea 1650w, https://mintcdn.com/meilisearch-6b28dec2/JZ1wsU7CEWrp9Xec/assets/images/vercel/06.meilisearch-cloud-integration-page-in-vercel-dashboard.png?w=2500&fit=max&auto=format&n=JZ1wsU7CEWrp9Xec&q=85&s=041e08d7d8f34cfde964fed279bc9fdb 2500w" />
+  <img alt="Meilisearch integration page in Vercel's dashboard" />
 </Frame>
 
 ### Understand and use Meilisearch API keys
 
-Meilisearch creates two default API keys: [`Default Search API Key` and `Default Admin API Key`](/learn/security/basic_security#obtaining-api-keys).
+Meilisearch creates [four default API keys](/learn/security/basic_security#obtaining-api-keys): `Default Search API Key`, `Default Admin API Key`, `Default Read-Only Admin API Key`, and `Default Chat API Key`.
 
 #### Admin API key
 
@@ -26625,7 +26634,7 @@ Use the `Default Admin API Key`, to control who can access or create new documen
 
 Use the `Default Search API Key` to access the [search route](/reference/api/search). This is the one you want to use in your front end.
 
-Both keys are automatically added to Vercel along with the Meilisearch URL.
+The Search and Admin API keys are automatically added to Vercel along with the Meilisearch URL. For more information on the other default keys, consult the [security documentation](/learn/security/basic_security#obtaining-api-keys).
 
 <Tip>
   The master key–which hasn’t been added to Vercel–grants users full control over an instance. You can find it in your project’s overview on your [Meilisearch Cloud dashboard](https://cloud.meilisearch.com/projects/?utm_campaign=oss\&utm_source=docs\&utm_medium=vercel-integration). Read more about [Meilisearch security](https://www.meilisearch.com/docs/learn/security/master_api_keys).
@@ -26640,7 +26649,7 @@ Go back to your project settings and check the new Meilisearch environment varia
 * `MEILISEARCH_SEARCH_KEY`
 
 <Frame>
-  <img src="https://mintcdn.com/meilisearch-6b28dec2/JZ1wsU7CEWrp9Xec/assets/images/vercel/07.project-settings-environment-variables-tab.png?fit=max&auto=format&n=JZ1wsU7CEWrp9Xec&q=85&s=ea05c280602dee85f62c8d8ece4fffcd" alt="Display the environment variables in the project settings" data-og-width="3170" width="3170" data-og-height="1826" height="1826" data-path="assets/images/vercel/07.project-settings-environment-variables-tab.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/meilisearch-6b28dec2/JZ1wsU7CEWrp9Xec/assets/images/vercel/07.project-settings-environment-variables-tab.png?w=280&fit=max&auto=format&n=JZ1wsU7CEWrp9Xec&q=85&s=682ba36bdabddeeb25b337ffb254a7f1 280w, https://mintcdn.com/meilisearch-6b28dec2/JZ1wsU7CEWrp9Xec/assets/images/vercel/07.project-settings-environment-variables-tab.png?w=560&fit=max&auto=format&n=JZ1wsU7CEWrp9Xec&q=85&s=dc9fd4f0493031dfe022a37f86ce57c3 560w, https://mintcdn.com/meilisearch-6b28dec2/JZ1wsU7CEWrp9Xec/assets/images/vercel/07.project-settings-environment-variables-tab.png?w=840&fit=max&auto=format&n=JZ1wsU7CEWrp9Xec&q=85&s=ed83788f81c77a988a08000a5ce2dd9a 840w, https://mintcdn.com/meilisearch-6b28dec2/JZ1wsU7CEWrp9Xec/assets/images/vercel/07.project-settings-environment-variables-tab.png?w=1100&fit=max&auto=format&n=JZ1wsU7CEWrp9Xec&q=85&s=250561db2eef801f9e18604424021085 1100w, https://mintcdn.com/meilisearch-6b28dec2/JZ1wsU7CEWrp9Xec/assets/images/vercel/07.project-settings-environment-variables-tab.png?w=1650&fit=max&auto=format&n=JZ1wsU7CEWrp9Xec&q=85&s=324fbc492280a9900b9ff002310d6f87 1650w, https://mintcdn.com/meilisearch-6b28dec2/JZ1wsU7CEWrp9Xec/assets/images/vercel/07.project-settings-environment-variables-tab.png?w=2500&fit=max&auto=format&n=JZ1wsU7CEWrp9Xec&q=85&s=4e59ef51490b6096097c98fba882dd7c 2500w" />
+  <img alt="Display the environment variables in the project settings" />
 </Frame>
 
 <Tip>
@@ -26650,7 +26659,7 @@ Go back to your project settings and check the new Meilisearch environment varia
 ## Take advantage of the Meilisearch Cloud dashboard
 
 <Frame>
-  <img src="https://mintcdn.com/meilisearch-6b28dec2/JZ1wsU7CEWrp9Xec/assets/images/vercel/08.meilisearch-cloud-dashboard.png?fit=max&auto=format&n=JZ1wsU7CEWrp9Xec&q=85&s=f7e86364e1f4488e9c22b458874ecee1" alt="Meilisearch Cloud dashboard: overview of the 'search-app' project" data-og-width="3166" width="3166" data-og-height="1830" height="1830" data-path="assets/images/vercel/08.meilisearch-cloud-dashboard.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/meilisearch-6b28dec2/JZ1wsU7CEWrp9Xec/assets/images/vercel/08.meilisearch-cloud-dashboard.png?w=280&fit=max&auto=format&n=JZ1wsU7CEWrp9Xec&q=85&s=a32fb458872a4f8cd020db253201304c 280w, https://mintcdn.com/meilisearch-6b28dec2/JZ1wsU7CEWrp9Xec/assets/images/vercel/08.meilisearch-cloud-dashboard.png?w=560&fit=max&auto=format&n=JZ1wsU7CEWrp9Xec&q=85&s=0797a7727fcb302bc8fbee105e57dba0 560w, https://mintcdn.com/meilisearch-6b28dec2/JZ1wsU7CEWrp9Xec/assets/images/vercel/08.meilisearch-cloud-dashboard.png?w=840&fit=max&auto=format&n=JZ1wsU7CEWrp9Xec&q=85&s=5b26711c0446e13cedb6b0a26881d25b 840w, https://mintcdn.com/meilisearch-6b28dec2/JZ1wsU7CEWrp9Xec/assets/images/vercel/08.meilisearch-cloud-dashboard.png?w=1100&fit=max&auto=format&n=JZ1wsU7CEWrp9Xec&q=85&s=8634800efa5b34760eeee209c0c59f25 1100w, https://mintcdn.com/meilisearch-6b28dec2/JZ1wsU7CEWrp9Xec/assets/images/vercel/08.meilisearch-cloud-dashboard.png?w=1650&fit=max&auto=format&n=JZ1wsU7CEWrp9Xec&q=85&s=cdacb22130e147e0b649bc2fbe9a6e30 1650w, https://mintcdn.com/meilisearch-6b28dec2/JZ1wsU7CEWrp9Xec/assets/images/vercel/08.meilisearch-cloud-dashboard.png?w=2500&fit=max&auto=format&n=JZ1wsU7CEWrp9Xec&q=85&s=30ba7fdb2156904e0354ab8f4ae7f909 2500w" />
+  <img alt="Meilisearch Cloud dashboard: overview of the 'search-app' project" />
 </Frame>
 
 Use the [Meilisearch Cloud dashboard](https://cloud.meilisearch.com/projects/?utm_campaign=oss\&utm_source=docs\&utm_medium=vercel-integration), to index documents and manage your project settings.
@@ -26667,20 +26676,11 @@ Source: https://www.meilisearch.com/docs/reference/api/batches
 
 The /batches route allows you to monitor how Meilisearch is grouping and processing asynchronous operations.
 
-export const RouteHighlighter = ({method, path}) => <div className={`routeHighlighter routeHighlighter--${method}`}>
-    <div className="routeHighlighter__method">
-      {method}
-    </div>
-    <div className="routeHighlighter__path">
-      {path}
-    </div>
-  </div>;
-
 The `/batches` route gives information about the progress of batches of [asynchronous operations](/learn/async/asynchronous_operations).
 
 ## Batch object
 
-```json  theme={null}
+```json theme={null}
 {
   "uid": 0,
   "progress": {
@@ -26823,7 +26823,7 @@ Only present in batches with at least one task querying an embedder. This field 
 
 ## Get batches
 
-<RouteHighlighter method="GET" path="/batches" />
+<RouteHighlighter method="GET" />
 
 List all batches, regardless of index. The batch objects are contained in the `results` array.
 
@@ -26904,7 +26904,7 @@ Batch results are [paginated](/learn/async/paginating_tasks) and can be [filtere
 
 #### Response: `200 Ok`
 
-```json  theme={null}
+```json theme={null}
 {
   "results": [
     {
@@ -26951,7 +26951,7 @@ Batch results are [paginated](/learn/async/paginating_tasks) and can be [filtere
 
 ## Get one batch
 
-<RouteHighlighter method="GET" path="/batches/{batch_uid}" />
+<RouteHighlighter method="GET" />
 
 Get a single batch.
 
@@ -27000,7 +27000,7 @@ Get a single batch.
 
 #### Response: `200 Ok`
 
-```json  theme={null}
+```json theme={null}
 {
   "uid": 1,
   "details": {
@@ -27041,21 +27041,12 @@ Source: https://www.meilisearch.com/docs/reference/api/chats
 
 Use the chat completion API to create conversational search experiences using LLM technology
 
-export const RouteHighlighter = ({method, path}) => <div className={`routeHighlighter routeHighlighter--${method}`}>
-    <div className="routeHighlighter__method">
-      {method}
-    </div>
-    <div className="routeHighlighter__path">
-      {path}
-    </div>
-  </div>;
-
 The `/chats` route enables AI-powered conversational search by integrating Large Language Models (LLMs) with your Meilisearch data.
 
 <Note>
   This is an experimental feature. Use the Meilisearch Cloud UI or the experimental features endpoint to activate it:
 
-  ```sh  theme={null}
+  ```sh theme={null}
   curl \
     -X PATCH 'MEILISEARCH_URL/experimental-features/' \
     -H 'Content-Type: application/json' \
@@ -27081,7 +27072,7 @@ Workspaces are groups of chat settings tailored towards specific use cases. You 
 
 ### Chat workspace object
 
-```json  theme={null}
+```json theme={null}
 {
   "uid": "WORKSPACE_NAME"
 }
@@ -27093,7 +27084,7 @@ Workspaces are groups of chat settings tailored towards specific use cases. You 
 
 ### Chat workspace settings object
 
-```json  theme={null}
+```json theme={null}
 {
   "source": "PROVIDER",
   "orgId": null,
@@ -27165,7 +27156,7 @@ The prompts object accepts the following fields:
 
 ### List chat workspaces
 
-<RouteHighlighter method="GET" path="/chats" />
+<RouteHighlighter method="GET" />
 
 List all chat workspaces. Results can be paginated by using the `offset` and `limit` query parameters.
 
@@ -27187,14 +27178,14 @@ List all chat workspaces. Results can be paginated by using the `offset` and `li
 
 #### Example
 
-```sh  theme={null}
+```sh theme={null}
   curl \
     -X GET 'MEILISEARCH_URL/chats?limit=3'
 ```
 
 ##### Response: `200 Ok`
 
-```json  theme={null}
+```json theme={null}
 {
   "results": [
     { "uid": "WORKSPACE_1" },
@@ -27209,7 +27200,7 @@ List all chat workspaces. Results can be paginated by using the `offset` and `li
 
 ### Get one chat workspace
 
-<RouteHighlighter method="GET" path="/chats/{workspace_uid}" />
+<RouteHighlighter method="GET" />
 
 Get information about a workspace.
 
@@ -27221,14 +27212,14 @@ Get information about a workspace.
 
 #### Example
 
-```sh  theme={null}
+```sh theme={null}
   curl \
     -X GET 'MEILISEARCH_URL/chats/WORKSPACE_UID'
 ```
 
 ##### Response: `200 Ok`
 
-```json  theme={null}
+```json theme={null}
 {
   "uid": "WORKSPACE_UID"
 }
@@ -27236,7 +27227,7 @@ Get information about a workspace.
 
 ### Get chat workspace settings
 
-<RouteHighlighter method="GET" path="/chats/{workspace_uid}/settings" />
+<RouteHighlighter method="GET" />
 
 Retrieve the current settings for a chat workspace.
 
@@ -27250,7 +27241,7 @@ Retrieve the current settings for a chat workspace.
 
 Returns the settings object. For security reasons, the `apiKey` field is obfuscated.
 
-```json  theme={null}
+```json theme={null}
 {
   "source": "openAi",
   "prompts": {
@@ -27271,7 +27262,7 @@ Returns the settings object. For security reasons, the `apiKey` field is obfusca
 
 ### Create a chat workspace and update chat workspace settings
 
-<RouteHighlighter method="PATCH" path="/chats/{workspace_uid}/settings" />
+<RouteHighlighter method="PATCH" />
 
 Configure the LLM provider and settings for a chat workspace.
 
@@ -27307,7 +27298,7 @@ If a workspace does not exist, querying this endpoint will create it.
 
 #### Request body
 
-```json  theme={null}
+```json theme={null}
 {
   "source": "openAi",
   "apiKey": "OPEN_AI_API_KEY",
@@ -27403,7 +27394,7 @@ Returns the updated settings object. `apiKey` is write-only and will not be retu
 
 ### Reset chat workspace settings
 
-<RouteHighlighter method="DELETE" path="/chats/{workspace_uid}/settings" />
+<RouteHighlighter method="DELETE" />
 
 Reset a chat workspace's settings to its default values.
 
@@ -27417,7 +27408,7 @@ Reset a chat workspace's settings to its default values.
 
 Returns the settings object without the `apiKey` field.
 
-```json  theme={null}
+```json theme={null}
 {
   "source": "openAi",
   "prompts": {
@@ -27442,7 +27433,7 @@ After creating a workspace, you can use the chat completions API to create a con
 
 ### Stream chat completions
 
-<RouteHighlighter method="POST" path="/chats/{workspace_uid}/chat/completions" />
+<RouteHighlighter method="POST" />
 
 Create a chat completions stream using Meilisearch's OpenAI-compatible interface. This endpoint searches relevant indexes and generates responses based on the retrieved content.
 
@@ -27454,7 +27445,7 @@ Create a chat completions stream using Meilisearch's OpenAI-compatible interface
 
 ### Request body
 
-```json  theme={null}
+```json theme={null}
 {
   "model": "gpt-3.5-turbo",
   "messages": [
@@ -27573,15 +27564,6 @@ Source: https://www.meilisearch.com/docs/reference/api/compact
 
 Use the `/compact` route to reduce database fragmentation.
 
-export const RouteHighlighter = ({method, path}) => <div className={`routeHighlighter routeHighlighter--${method}`}>
-    <div className="routeHighlighter__method">
-      {method}
-    </div>
-    <div className="routeHighlighter__path">
-      {path}
-    </div>
-  </div>;
-
 Index fragmentation occurs naturally as you use Meilisearch and can lead to decreased performance over time. `/compact` reorganizes the database and prunes unused space, which may lead to improved indexing and search speeds.
 
 Meilisearch Cloud monitors database fragmentation and compacts indexes as needed. Self-hosted users may have to build a pipeline to periodically compact indexes and fix performance degradation.
@@ -27596,7 +27578,7 @@ Meilisearch Cloud monitors database fragmentation and compacts indexes as needed
 
 ## Compact database
 
-<RouteHighlighter method="POST" path="/indexes/{index_uid}/compact" />
+<RouteHighlighter method="POST" />
 
 Compact the specified index.
 
@@ -27618,6 +27600,10 @@ During compaction, Meilisearch must temporarily duplicate the database. Ensure y
   client.index("INDEX_NAME").compact();
   ```
 
+  ```ruby Ruby theme={null}
+  client.index('INDEX_UID').compact
+  ```
+
   ```rust Rust theme={null}
   let task: TaskInfo = client
     .index("INDEX_UID")
@@ -27629,7 +27615,7 @@ During compaction, Meilisearch must temporarily duplicate the database. Ensure y
 
 #### Response: `202 Accepted`
 
-```json  theme={null}
+```json theme={null}
 {
   "taskUid": 1,
   "indexUid": "INDEX_NAME",
@@ -27645,15 +27631,6 @@ Source: https://www.meilisearch.com/docs/reference/api/dump
 
 The /dumps route allows the creation of database dumps. Use dumps to migrate Meilisearch to a new version.
 
-export const RouteHighlighter = ({method, path}) => <div className={`routeHighlighter routeHighlighter--${method}`}>
-    <div className="routeHighlighter__method">
-      {method}
-    </div>
-    <div className="routeHighlighter__path">
-      {path}
-    </div>
-  </div>;
-
 The `/dumps` route allows the creation of database dumps. Dumps are `.dump` files that can be used to restore Meilisearch data or migrate between different versions.
 
 <Warning>
@@ -27664,7 +27641,7 @@ The `/dumps` route allows the creation of database dumps. Dumps are `.dump` file
 
 ## Create a dump
 
-<RouteHighlighter method="POST" path="/dumps" />
+<RouteHighlighter method="POST" />
 
 Triggers a dump creation task. Once the process is complete, a dump is created in the [dump directory](/learn/self_hosted/configure_meilisearch_at_launch#dump-directory). If the dump directory does not exist yet, it will be created.
 
@@ -27733,7 +27710,7 @@ Dump tasks take priority over all other tasks in the queue. This means that a ne
 
 #### Response: `202 Accepted`
 
-```json  theme={null}
+```json theme={null}
 {
   "taskUid": 1,
   "indexUid": null,
@@ -27751,15 +27728,6 @@ Source: https://www.meilisearch.com/docs/reference/api/experimental_features
 
 The /experimental-features route allows you to manage some of Meilisearch's experimental features.
 
-export const RouteHighlighter = ({method, path}) => <div className={`routeHighlighter routeHighlighter--${method}`}>
-    <div className="routeHighlighter__method">
-      {method}
-    </div>
-    <div className="routeHighlighter__path">
-      {path}
-    </div>
-  </div>;
-
 The `/experimental-features` route allows you to activate or deactivate some of Meilisearch's [experimental features](/learn/resources/experimental_features_overview).
 
 This route is **synchronous**. This means that no task object will be returned, and any activated or deactivated features will be made available or unavailable immediately.
@@ -27770,7 +27738,7 @@ This route is **synchronous**. This means that no task object will be returned, 
 
 ## Experimental features object
 
-```json  theme={null}
+```json theme={null}
 {
   "metrics": false,
   "logsRoute": true,
@@ -27796,7 +27764,7 @@ This route is **synchronous**. This means that no task object will be returned, 
 
 ## Get all experimental features
 
-<RouteHighlighter method="GET" path="/experimental-features" />
+<RouteHighlighter method="GET" />
 
 Get a list of all experimental features that can be activated via the `/experimental-features` route and whether or not they are currently activated.
 
@@ -27828,7 +27796,7 @@ Get a list of all experimental features that can be activated via the `/experime
 
 #### Response: `200 Ok`
 
-```json  theme={null}
+```json theme={null}
 {
   "metrics": false,
   "logsRoute": true,
@@ -27843,7 +27811,7 @@ Get a list of all experimental features that can be activated via the `/experime
 
 ## Configure experimental features
 
-<RouteHighlighter method="PATCH" path="/experimental-features" />
+<RouteHighlighter method="PATCH" />
 
 Activate or deactivate experimental features.
 
@@ -27886,7 +27854,7 @@ Setting a field to `null` leaves its value unchanged.
 
 ### Response: `200 Ok`
 
-```json  theme={null}
+```json theme={null}
 {
   "metrics": false,
   "logsRoute": true,
@@ -27904,20 +27872,11 @@ Source: https://www.meilisearch.com/docs/reference/api/export
 
 Migrate between instances with the `/export` route
 
-export const RouteHighlighter = ({method, path}) => <div className={`routeHighlighter routeHighlighter--${method}`}>
-    <div className="routeHighlighter__method">
-      {method}
-    </div>
-    <div className="routeHighlighter__path">
-      {path}
-    </div>
-  </div>;
-
 Use the `/export` route to transfer data from your origin instance to a remote target instance. This is particularly useful when migrating from your local development environment to a Meilisearch Cloud instance.
 
 ## Migrate database between instances
 
-<RouteHighlighter method="POST" path="/export" />
+<RouteHighlighter method="POST" />
 
 Migrate data from the origin instance to a target instance.
 
@@ -27963,7 +27922,7 @@ Each index object accepts the following fields:
 
 #### Response
 
-```json  theme={null}
+```json theme={null}
 {
   "taskUid": 2,
   "indexUid": null,
@@ -27974,25 +27933,166 @@ Each index object accepts the following fields:
 ```
 
 
+# Facet search
+Source: https://www.meilisearch.com/docs/reference/api/facet_search
+
+The /facet-search route allows you to search for facet values.
+
+The `/facet-search` route allows you to search for facet values. Facet search supports [prefix search](/learn/engine/prefix) and [typo tolerance](/learn/relevancy/typo_tolerance_settings). The returned hits are sorted lexicographically in ascending order.
+
+<Note>
+  Meilisearch does not support facet search on numbers. Convert numeric facets to strings to make them searchable.
+
+  Internally, Meilisearch represents numbers as [`float64`](https://en.wikipedia.org/wiki/Double-precision_floating-point_format). This means they lack precision and can be represented in different ways, making it difficult to search facet values effectively.
+</Note>
+
+## Perform a facet search
+
+Search for a facet value within a given facet.
+
+<RouteHighlighter method="POST" />
+
+<Warning>
+  This endpoint will not work without first explicitly adding attributes to the [`filterableAttributes`](/reference/api/settings#update-filterable-attributes) list. [Learn more about facets in our dedicated guide.](/learn/filtering_and_sorting/search_with_facet_filters)
+</Warning>
+
+<Warning>
+  Meilisearch's facet search does not support multi-word facets and only considers the first term in the`facetQuery`.
+
+  For example, searching for `Jane` will return `Jane Austen`, but searching for `Austen` will not return `Jane Austen`.
+</Warning>
+
+### Body
+
+| Name                                                                                                  | Type                                                                 | Default value | Description                                                                                                                                        |
+| ----------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------- | ------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **`facetName`** \*                                                                                    | String                                                               | `null`        | Facet name to search values on                                                                                                                     |
+| **`facetQuery`**                                                                                      | String                                                               | `null`        | Search query for a given facet value. If `facetQuery` isn't specified, Meilisearch returns all facet values for the searched facet, limited to 100 |
+| **[`q`](/reference/api/search#query-q)**                                                              | String                                                               | `""`          | Query string                                                                                                                                       |
+| **[`filter`](/reference/api/search#filter)**                                                          | [String\*](/learn/filtering_and_sorting/filter_expression_reference) | `null`        | Filter queries by an attribute's value                                                                                                             |
+| **[`matchingStrategy`](/reference/api/search#matching-strategy)**                                     | String                                                               | `"last"`      | Strategy used to match query terms within documents                                                                                                |
+| **[`attributesToSearchOn`](/reference/api/search##customize-attributes-to-search-on-at-search-time)** | Array of strings                                                     | `null`        | Restrict search to the specified attributes                                                                                                        |
+| **`exhaustiveFacetCount`**                                                                            | Boolean                                                              | `false`       | Return an exhaustive count of facets, up to the limit defined by [`maxTotalHits`](/reference/api/settings#pagination)                              |
+
+### Response
+
+| Name                   | Type    | Description                                             |
+| :--------------------- | :------ | :------------------------------------------------------ |
+| **`facetHits.value`**  | String  | Facet value matching the `facetQuery`                   |
+| **`facetHits.count`**  | Integer | Number of documents with a facet value matching `value` |
+| **`facetQuery`**       | String  | The original `facetQuery`                               |
+| **`processingTimeMs`** | Number  | Processing time of the query                            |
+
+### Example
+
+<CodeGroup>
+  ```bash cURL theme={null}
+  curl \
+    -X POST 'MEILISEARCH_URL/indexes/books/facet-search' \
+    -H 'Content-Type: application/json' \
+    --data-binary '{
+      "facetQuery": "fiction",
+      "facetName": "genres",
+      "filter": "rating > 3"
+    }'
+  ```
+
+  ```javascript JS theme={null}
+  client.index('books').searchForFacetValues({
+    facetQuery: 'fiction',
+    facetName: 'genres'
+    filter: 'rating > 3'
+  })
+  ```
+
+  ```python Python theme={null}
+  client.index('books').facet_search('genres', 'fiction', {
+    'filter': 'rating > 3'
+  })
+  ```
+
+  ```php PHP theme={null}
+  $client->index('books')->facetSearch(
+    (new FacetSearchQuery())
+        ->setFacetQuery('fiction')
+        ->setFacetName('genres')
+        ->setFilter(['rating > 3'])
+  );
+  ```
+
+  ```java Java theme={null}
+  FacetSearchRequest fsr = FacetSearchRequest.builder().facetName("genres").facetQuery("fiction").filter(new String[]{"rating > 3"}).build();
+  client.index("books").facetSearch(fsr);
+  ```
+
+  ```ruby Ruby theme={null}
+  client.index('books').facet_search('genres', 'fiction', filter: 'rating > 3')
+  ```
+
+  ```go Go theme={null}
+  client.Index("books").FacetSearch(&meilisearch.FacetSearchRequest{
+    FacetQuery: "fiction",
+    FacetName: "genres",
+    Filter: "rating > 3",
+  })
+  ```
+
+  ```csharp C# theme={null}
+  var query = new SearchFacetsQuery()
+  {
+    FacetQuery = "fiction",
+    Filter = "rating > 3"
+  };
+  await client.Index("books").FacetSearchAsync("genres", query);
+  ```
+
+  ```rust Rust theme={null}
+  let res = client.index("books")
+    .facet_search("genres")
+    .with_facet_query("fiction")
+    .with_filter("rating > 3")
+    .execute()
+    .await
+    .unwrap();
+  ```
+
+  ```dart Dart theme={null}
+  await client.index('books').facetSearch(
+        FacetSearchQuery(
+          facetQuery: 'fiction',
+          facetName: 'genres',
+          filter: 'rating > 3',
+        ),
+      );
+  ```
+</CodeGroup>
+
+#### Response: `200 Ok`
+
+```json theme={null}
+{
+  "facetHits": [
+    {
+      "value": "fiction",
+      "count": 7
+    }
+  ],
+  "facetQuery": "fiction",
+  "processingTimeMs": 0
+}
+```
+
+
 # Health
 Source: https://www.meilisearch.com/docs/reference/api/health
 
 The /health route allows you to verify the status and availability of a Meilisearch instance.
 
-export const RouteHighlighter = ({method, path}) => <div className={`routeHighlighter routeHighlighter--${method}`}>
-    <div className="routeHighlighter__method">
-      {method}
-    </div>
-    <div className="routeHighlighter__path">
-      {path}
-    </div>
-  </div>;
-
 The `/health` route allows you to verify the status and availability of a Meilisearch instance.
 
 ## Get health
 
-<RouteHighlighter method="GET" path="/health" />
+<RouteHighlighter method="GET" />
 
 Get health of Meilisearch server.
 
@@ -28058,7 +28158,7 @@ Get health of Meilisearch server.
 
 #### Response: `200 OK`
 
-```json  theme={null}
+```json theme={null}
 { "status": "available" }
 ```
 
@@ -28068,15 +28168,6 @@ Source: https://www.meilisearch.com/docs/reference/api/keys
 
 The /keys route allows you to create, manage, and delete API keys.
 
-export const RouteHighlighter = ({method, path}) => <div className={`routeHighlighter routeHighlighter--${method}`}>
-    <div className="routeHighlighter__method">
-      {method}
-    </div>
-    <div className="routeHighlighter__path">
-      {path}
-    </div>
-  </div>;
-
 The `/keys` route allows you to create, manage, and delete API keys. To use these endpoints, you must first [set the master key](/learn/security/basic_security). Once a master key is set, you can access these endpoints by supplying it in the header of the request, or using API keys that have access to the `keys.get`, `keys.create`, `keys.update`, or `keys.delete` actions.
 
 <Warning>
@@ -28085,7 +28176,7 @@ The `/keys` route allows you to create, manage, and delete API keys. To use thes
 
 ## Key object
 
-```json  theme={null}
+```json theme={null}
 {
   "name": "Default Search API Key",
   "description": "Use it to search from the frontend code",
@@ -28213,7 +28304,7 @@ You can also use the `*` character as a wildcard by adding it at the end of a st
 
 ## Get all keys
 
-<RouteHighlighter method="GET" path="/keys" />
+<RouteHighlighter method="GET" />
 
 Returns the 20 most recently created keys in a `results` array. **Expired keys are included in the response**, but deleted keys are not.
 
@@ -28238,44 +28329,44 @@ Results can be paginated using the `offset` and `limit` query parameters.
 ### Example
 
 <CodeGroup>
-  ```bash cURL theme={null}
+  ```bash cURL theme={null} theme={null}
   curl \
     -X GET 'MEILISEARCH_URL/keys?limit=3' \
     -H 'Authorization: Bearer MASTER_KEY'
   ```
 
-  ```javascript JS theme={null}
+  ```javascript JS theme={null} theme={null}
   client.getKeys({ limit: 3 })
   ```
 
-  ```python Python theme={null}
+  ```python Python theme={null} theme={null}
   client.get_keys({'limit': 3})
   ```
 
-  ```php PHP theme={null}
+  ```php PHP theme={null} theme={null}
   $client->getKeys((new KeysQuery())->setLimit(3));
   ```
 
-  ```java Java theme={null}
+  ```java Java theme={null} theme={null}
   KeysQuery query = new KeysQuery().setLimit(3);
   client.getKeys(query);
   ```
 
-  ```ruby Ruby theme={null}
+  ```ruby Ruby theme={null} theme={null}
   client.keys(limit: 3)
   ```
 
-  ```go Go theme={null}
+  ```go Go theme={null} theme={null}
   client.GetKeys(&meilisearch.KeysQuery{
     Limit: 3
   });
   ```
 
-  ```csharp C# theme={null}
+  ```csharp C# theme={null} theme={null}
   ResourceResults<Key> keyResult = await client.GetKeysAsync(new KeysQuery { Limit = 3 });
   ```
 
-  ```rust Rust theme={null}
+  ```rust Rust theme={null} theme={null}
   let mut query = KeysQuery::new()
     .with_limit(3)
     .execute(&client)
@@ -28283,7 +28374,7 @@ Results can be paginated using the `offset` and `limit` query parameters.
     .unwrap();
   ```
 
-  ```swift Swift theme={null}
+  ```swift Swift theme={null} theme={null}
   client.getKeys(params: KeysQuery(limit: 3)) { result in
       switch result {
       case .success(let keys):
@@ -28294,14 +28385,14 @@ Results can be paginated using the `offset` and `limit` query parameters.
   }
   ```
 
-  ```dart Dart theme={null}
+  ```dart Dart theme={null} theme={null}
   await client.getKeys(params: KeysQuery(limit: 3));
   ```
 </CodeGroup>
 
 #### Response: `200 Ok`
 
-```json  theme={null}
+```json theme={null}
 {
   "results": [
     {
@@ -28323,7 +28414,7 @@ Results can be paginated using the `offset` and `limit` query parameters.
     },
     {
       "name": "Default Search API Key",
-      "description": "Use it to search from the frontend code",
+      "description": "Use it to search from the frontend",
       "key": "0a6e572506c52ab0bd6195921575d23092b7f0c284ab4ac86d12346c33057f99",
       "uid": "74c9c733-3368-4738-bbe5-1d18a5fecb37",
       "actions": [
@@ -28350,11 +28441,43 @@ Results can be paginated using the `offset` and `limit` query parameters.
       "expiresAt": null,
       "createdAt": "2021-08-11T10:00:00Z",
       "updatedAt": "2021-08-11T10:00:00Z"
+    },
+    {
+      "name": "Default Read-Only Admin API Key",
+      "description": "Use it to read information across the whole database. Caution! Do not expose this key on a public frontend",
+      "key": "9e32fb64e3569a749b0b87900d1026074e798743cde77bf44c9ef33884100923",
+      "uid": "7dc1ec09-94fb-49b5-b77b-03ce75af89a0",
+      "actions": [
+        "*.get",
+        "keys.get"
+      ],
+      "indexes": [
+        "*"
+      ],
+      "expiresAt": null,
+      "createdAt": "2021-08-11T10:00:00Z",
+      "updatedAt": "2021-08-11T10:00:00Z"
+    },
+    {
+      "name": "Default Chat API Key",
+      "description": "Use it to chat and search from the frontend",
+      "key": "0acaa4f3d57517e4b4d7c0052b02772620bd375a2a5e742aaebf7f6b8b9638cc",
+      "uid": "d4e13ace-2a00-428c-90d1-b1c99eec98bd",
+      "actions": [
+        "chatCompletions",
+        "search"
+      ],
+      "indexes": [
+        "*"
+      ],
+      "expiresAt": null,
+      "createdAt": "2021-08-11T10:00:00Z",
+      "updatedAt": "2021-08-11T10:00:00Z"
     }
   ],
   "offset": 0,
-  "limit": 3,
-  "total": 7
+  "limit": 20,
+  "total": 5
 }
 ```
 
@@ -28364,7 +28487,7 @@ Results can be paginated using the `offset` and `limit` query parameters.
 
 ## Get one key
 
-<RouteHighlighter method="GET" path="/keys/{key_or_uid}" />
+<RouteHighlighter method="GET" />
 
 Get information on the specified key. Attempting to use this endpoint with a non-existent or deleted key will result in [an error](/reference/errors/error_codes#api_key_not_found).
 
@@ -28380,48 +28503,48 @@ A valid API `key` or `uid` is required.
 ### Example
 
 <CodeGroup>
-  ```bash cURL theme={null}
+  ```bash cURL theme={null} theme={null}
   curl \
     -X GET 'MEILISEARCH_URL/keys/6062abda-a5aa-4414-ac91-ecd7944c0f8d' \
     -H 'Authorization: Bearer MASTER_KEY'
   ```
 
-  ```javascript JS theme={null}
+  ```javascript JS theme={null} theme={null}
   client.getKey('6062abda-a5aa-4414-ac91-ecd7944c0f8d')
   ```
 
-  ```python Python theme={null}
+  ```python Python theme={null} theme={null}
   client.get_key('6062abda-a5aa-4414-ac91-ecd7944c0f8d')
   ```
 
-  ```php PHP theme={null}
+  ```php PHP theme={null} theme={null}
   $client->getKey('6062abda-a5aa-4414-ac91-ecd7944c0f8d');
   ```
 
-  ```java Java theme={null}
+  ```java Java theme={null} theme={null}
   client.getKey("6062abda-a5aa-4414-ac91-ecd7944c0f8d");
   ```
 
-  ```ruby Ruby theme={null}
+  ```ruby Ruby theme={null} theme={null}
   client.key('6062abda-a5aa-4414-ac91-ecd7944c0f8d')
   ```
 
-  ```go Go theme={null}
+  ```go Go theme={null} theme={null}
   client.GetKey("6062abda-a5aa-4414-ac91-ecd7944c0f8d")
   ```
 
-  ```csharp C# theme={null}
+  ```csharp C# theme={null} theme={null}
   Key key = await client.GetKeyAsync("d0552b41536279a0ad88bd595327b96f01176a60c2243e906c52ac02375f9bc4");
   ```
 
-  ```rust Rust theme={null}
+  ```rust Rust theme={null} theme={null}
   let key = client
     .get_key("6062abda-a5aa-4414-ac91-ecd7944c0f8d")
     .await
     .unwrap();
   ```
 
-  ```swift Swift theme={null}
+  ```swift Swift theme={null} theme={null}
   client.getKey(keyOrUid: "6062abda-a5aa-4414-ac91-ecd7944c0f8d") { result in
       switch result {
       case .success(let key):
@@ -28432,14 +28555,14 @@ A valid API `key` or `uid` is required.
   }
   ```
 
-  ```dart Dart theme={null}
+  ```dart Dart theme={null} theme={null}
   await client.getKey('6062abda-a5aa-4414-ac91-ecd7944c0f8d');
   ```
 </CodeGroup>
 
 #### Response: `200 Ok`
 
-```json  theme={null}
+```json theme={null}
 {
   "name": null,
   "description": "Add documents: Products API key",
@@ -28461,7 +28584,7 @@ For an explanation of these fields, see the [key object](#key-object).
 
 ## Create a key
 
-<RouteHighlighter method="POST" path="/keys" />
+<RouteHighlighter method="POST" />
 
 Create an API key with the provided description, permissions, and expiration date.
 
@@ -28479,7 +28602,7 @@ Create an API key with the provided description, permissions, and expiration dat
 ### Example
 
 <CodeGroup>
-  ```bash cURL theme={null}
+  ```bash cURL theme={null} theme={null}
   curl \
     -X POST 'MEILISEARCH_URL/keys' \
     -H 'Authorization: Bearer MASTER_KEY' \
@@ -28492,7 +28615,7 @@ Create an API key with the provided description, permissions, and expiration dat
     }'
   ```
 
-  ```javascript JS theme={null}
+  ```javascript JS theme={null} theme={null}
   client.createKey({
     description: 'Add documents: Products API key',
     actions: ['documents.add'],
@@ -28501,7 +28624,7 @@ Create an API key with the provided description, permissions, and expiration dat
   })
   ```
 
-  ```python Python theme={null}
+  ```python Python theme={null} theme={null}
   client.create_key(options={
     'description': 'Add documents: Products API key',
     'actions': ['documents.add'],
@@ -28510,7 +28633,7 @@ Create an API key with the provided description, permissions, and expiration dat
   })
   ```
 
-  ```php PHP theme={null}
+  ```php PHP theme={null} theme={null}
   $client->createKey([
     'description' => 'Add documents: Products API key',
     'actions' => ['documents.add'],
@@ -28519,7 +28642,7 @@ Create an API key with the provided description, permissions, and expiration dat
   ]);
   ```
 
-  ```java Java theme={null}
+  ```java Java theme={null} theme={null}
   SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'");
   Date dateParsed = format.parse("2042-04-02T00:42:42Z");
 
@@ -28533,7 +28656,7 @@ Create an API key with the provided description, permissions, and expiration dat
   client.createKey(keyInfo);
   ```
 
-  ```ruby Ruby theme={null}
+  ```ruby Ruby theme={null} theme={null}
   client.create_key(
     description: 'Add documents: Products API key',
     actions: ['documents.add'],
@@ -28542,7 +28665,7 @@ Create an API key with the provided description, permissions, and expiration dat
   )
   ```
 
-  ```go Go theme={null}
+  ```go Go theme={null} theme={null}
   client.CreateKey(&meilisearch.Key{
     Description: "Add documents: Products API key",
     Actions: []string{"documents.add"},
@@ -28551,7 +28674,7 @@ Create an API key with the provided description, permissions, and expiration dat
   })
   ```
 
-  ```csharp C# theme={null}
+  ```csharp C# theme={null} theme={null}
   Key keyOptions = new Key
   {
       Description = "Add documents: Products API key",
@@ -28562,7 +28685,7 @@ Create an API key with the provided description, permissions, and expiration dat
   Key createdKey = await this.client.CreateKeyAsync(keyOptions);
   ```
 
-  ```rust Rust theme={null}
+  ```rust Rust theme={null} theme={null}
   let mut key_options = KeyBuilder::new();
   key_options
     .with_name("Add documents: Products API key")
@@ -28575,7 +28698,7 @@ Create an API key with the provided description, permissions, and expiration dat
     .unwrap();
   ```
 
-  ```swift Swift theme={null}
+  ```swift Swift theme={null} theme={null}
   let keyParams = KeyParams(
     description: "Add documents: Products API key",
     actions: ["documents.add"],
@@ -28592,7 +28715,7 @@ Create an API key with the provided description, permissions, and expiration dat
   }
   ```
 
-  ```dart Dart theme={null}
+  ```dart Dart theme={null} theme={null}
   await client.createKey(
       description: 'Add documents: Products API key',
       actions: ['documents.add'],
@@ -28603,7 +28726,7 @@ Create an API key with the provided description, permissions, and expiration dat
 
 #### Response: `201 Created`
 
-```json  theme={null}
+```json theme={null}
 {
   "name": null,
   "description": "Manage documents: Products/Reviews API key",
@@ -28623,7 +28746,7 @@ Create an API key with the provided description, permissions, and expiration dat
 
 ## Update a key
 
-<RouteHighlighter method="PATCH" path="/keys/{key_or_uid}" />
+<RouteHighlighter method="PATCH" />
 
 Update the `name` and `description` of an API key.
 
@@ -28648,7 +28771,7 @@ A valid API `key` or `uid` is required.
 ### Example
 
 <CodeGroup>
-  ```bash cURL theme={null}
+  ```bash cURL theme={null} theme={null}
   curl \
     -X PATCH 'MEILISEARCH_URL/keys/6062abda-a5aa-4414-ac91-ecd7944c0f8d' \
     -H 'Authorization: Bearer MASTER_KEY' \
@@ -28659,14 +28782,14 @@ A valid API `key` or `uid` is required.
     }'
   ```
 
-  ```javascript JS theme={null}
+  ```javascript JS theme={null} theme={null}
   client.updateKey('6062abda-a5aa-4414-ac91-ecd7944c0f8d', {
       name: 'Products/Reviews API key',
       description: 'Manage documents: Products/Reviews API key',
   })
   ```
 
-  ```python Python theme={null}
+  ```python Python theme={null} theme={null}
   client.update_key(key_or_uid='6062abda-a5aa-4414-ac91-ecd7944c0f8d',
     options={
       'name': 'Products/Reviews API key',
@@ -28674,7 +28797,7 @@ A valid API `key` or `uid` is required.
   })
   ```
 
-  ```php PHP theme={null}
+  ```php PHP theme={null} theme={null}
   $client->updateKey('6062abda-a5aa-4414-ac91-ecd7944c0f8d',
     [
       'name' => 'Products/Reviews API key',
@@ -28682,7 +28805,7 @@ A valid API `key` or `uid` is required.
     ]);
   ```
 
-  ```java Java theme={null}
+  ```java Java theme={null} theme={null}
   KeyUpdate keyChanges = new KeyUpdate();
   keyChanges.setName("Products/Reviews API key");
   keyChanges.setDescription("Manage documents: Products/Reviews API key");
@@ -28690,7 +28813,7 @@ A valid API `key` or `uid` is required.
   client.updateKey("6062abda-a5aa-4414-ac91-ecd7944c0f8d", keyChanges);
   ```
 
-  ```ruby Ruby theme={null}
+  ```ruby Ruby theme={null} theme={null}
   client.update_key(
     '6062abda-a5aa-4414-ac91-ecd7944c0f8d',
     {
@@ -28700,7 +28823,7 @@ A valid API `key` or `uid` is required.
   )
   ```
 
-  ```go Go theme={null}
+  ```go Go theme={null} theme={null}
   client.UpdateKey("6062abda-a5aa-4414-ac91-ecd7944c0f8d", &meilisearch.Key{
     Description: "Manage documents: Products/Reviews API key",
     Actions: []string{"documents.add", "document.delete"},
@@ -28709,7 +28832,7 @@ A valid API `key` or `uid` is required.
   })
   ```
 
-  ```csharp C# theme={null}
+  ```csharp C# theme={null} theme={null}
   await client.UpdateKeyAsync(
     "6062abda-a5aa-4414-ac91-ecd7944c0f8d",
     description: "Manage documents: Products/Reviews API key",
@@ -28717,7 +28840,7 @@ A valid API `key` or `uid` is required.
   )
   ```
 
-  ```rust Rust theme={null}
+  ```rust Rust theme={null} theme={null}
   let mut key = client
     .get_key("6062abda-a5aa-4414-ac91-ecd7944c0f8d")
     .await
@@ -28730,7 +28853,7 @@ A valid API `key` or `uid` is required.
       .unwrap();
   ```
 
-  ```swift Swift theme={null}
+  ```swift Swift theme={null} theme={null}
   let keyParams = KeyUpdateParams(
     description: "Manage documents: Products/Reviews API key",
     name: "Products/Reviews API key"
@@ -28746,7 +28869,7 @@ A valid API `key` or `uid` is required.
   }
   ```
 
-  ```dart Dart theme={null}
+  ```dart Dart theme={null} theme={null}
   await client.updateKey(
     '6062abda-a5aa-4414-ac91-ecd7944c0f8d',
     description: 'Manage documents: Products/Reviews API key',
@@ -28757,7 +28880,7 @@ A valid API `key` or `uid` is required.
 
 #### Response: `200 Ok`
 
-```json  theme={null}
+```json theme={null}
 {
   "name": "Products/Reviews API key",
   "description": "Manage documents: Products/Reviews API key",
@@ -28779,7 +28902,7 @@ A valid API `key` or `uid` is required.
 
 ## Delete a key
 
-<RouteHighlighter method="DELETE" path="/keys/{key_or_uid}" />
+<RouteHighlighter method="DELETE" />
 
 Delete the specified API key.
 
@@ -28795,41 +28918,41 @@ A valid API `key` or `uid` is required.
 ### Example
 
 <CodeGroup>
-  ```bash cURL theme={null}
+  ```bash cURL theme={null} theme={null}
   curl \
     -X DELETE 'MEILISEARCH_URL/keys/6062abda-a5aa-4414-ac91-ecd7944c0f8d' \
     -H 'Authorization: Bearer MASTER_KEY'
   ```
 
-  ```javascript JS theme={null}
+  ```javascript JS theme={null} theme={null}
   client.deleteKey('6062abda-a5aa-4414-ac91-ecd7944c0f8d')
   ```
 
-  ```python Python theme={null}
+  ```python Python theme={null} theme={null}
   client.delete_key('6062abda-a5aa-4414-ac91-ecd7944c0f8d')
   ```
 
-  ```php PHP theme={null}
+  ```php PHP theme={null} theme={null}
   $client->deleteKey('6062abda-a5aa-4414-ac91-ecd7944c0f8d');
   ```
 
-  ```java Java theme={null}
+  ```java Java theme={null} theme={null}
   client.deleteKey("6062abda-a5aa-4414-ac91-ecd7944c0f8d")
   ```
 
-  ```ruby Ruby theme={null}
+  ```ruby Ruby theme={null} theme={null}
   client.delete_key('6062abda-a5aa-4414-ac91-ecd7944c0f8d')
   ```
 
-  ```go Go theme={null}
+  ```go Go theme={null} theme={null}
   client.DeleteKey("6062abda-a5aa-4414-ac91-ecd7944c0f8d")
   ```
 
-  ```csharp C# theme={null}
+  ```csharp C# theme={null} theme={null}
   client.DeleteKeyAsync("6062abda-a5aa-4414-ac91-ecd7944c0f8d")
   ```
 
-  ```rust Rust theme={null}
+  ```rust Rust theme={null} theme={null}
   let key = client
     .get_key("6062abda-a5aa-4414-ac91-ecd7944c0f8d")
     .await
@@ -28839,7 +28962,7 @@ A valid API `key` or `uid` is required.
     .await?;
   ```
 
-  ```swift Swift theme={null}
+  ```swift Swift theme={null} theme={null}
   client.deleteKey(keyOrUid: "6062abda-a5aa-4414-ac91-ecd7944c0f8d") { result in
       switch result {
       case .success:
@@ -28850,7 +28973,7 @@ A valid API `key` or `uid` is required.
   }
   ```
 
-  ```dart Dart theme={null}
+  ```dart Dart theme={null} theme={null}
   await client.deleteKey('6062abda-a5aa-4414-ac91-ecd7944c0f8d');
   ```
 </CodeGroup>
@@ -28863,19 +28986,10 @@ Source: https://www.meilisearch.com/docs/reference/api/logs
 
 Customize Meilisearch logs with two experimental features: --experimental-logs-mode and --experimental-enable-logs-route.
 
-export const RouteHighlighter = ({method, path}) => <div className={`routeHighlighter routeHighlighter--${method}`}>
-    <div className="routeHighlighter__method">
-      {method}
-    </div>
-    <div className="routeHighlighter__path">
-      {path}
-    </div>
-  </div>;
-
 <Note>
   This is an experimental feature. Use the experimental features endpoint to activate it:
 
-  ```sh  theme={null}
+  ```sh theme={null}
   curl \
     -X PATCH 'MEILISEARCH_URL/experimental-features/' \
     -H 'Content-Type: application/json'  \
@@ -28889,7 +29003,7 @@ export const RouteHighlighter = ({method, path}) => <div className={`routeHighli
 
 ## Customize log levels
 
-<RouteHighlighter method="POST" path="/logs/stderr" />
+<RouteHighlighter method="POST" />
 
 Customize logging levels for the default logging system.
 
@@ -28914,7 +29028,7 @@ Customize logging levels for the default logging system.
 
 ## Start log stream
 
-<RouteHighlighter method="POST" path="/logs/stream" />
+<RouteHighlighter method="POST" />
 
 Opens a continuous stream of logs for focused debugging sessions. The stream will continue to run indefinitely until you [interrupt](#interrupt-log-stream) it.
 
@@ -28945,7 +29059,7 @@ Opens a continuous stream of logs for focused debugging sessions. The stream wil
 
 ## Interrupt log stream
 
-<RouteHighlighter method="DELETE" path="/logs/stream" />
+<RouteHighlighter method="DELETE" />
 
 Interrupt a log stream.
 
@@ -28955,6 +29069,7 @@ Interrupt a log stream.
   ```bash cURL theme={null}
   curl \
     -X DELETE MEILISEARCH_URL/logs/stream
+  }'
   ```
 </CodeGroup>
 
@@ -28964,21 +29079,12 @@ Source: https://www.meilisearch.com/docs/reference/api/metrics
 
 The /metrics endpoint is an experimental feature. It exposes data compatible with Prometheus and offers insight into Meilisearch's behavior and performance.
 
-export const RouteHighlighter = ({method, path}) => <div className={`routeHighlighter routeHighlighter--${method}`}>
-    <div className="routeHighlighter__method">
-      {method}
-    </div>
-    <div className="routeHighlighter__path">
-      {path}
-    </div>
-  </div>;
-
 The `/metrics` route exposes data compatible with [Prometheus](https://prometheus.io/). You will also need to have Grafana installed in your system to make use of this feature.
 
 <Note>
   This is an experimental feature. Use the experimental features endpoint to activate it:
 
-  ```sh  theme={null}
+  ```sh theme={null}
   curl \
     -X PATCH 'MEILISEARCH_URL/experimental-features/' \
     -H 'Content-Type: application/json' \
@@ -29012,7 +29118,7 @@ The `/metrics` route exposes data compatible with [Prometheus](https://prometheu
 
 ## Get metrics
 
-<RouteHighlighter method="GET" path="/metrics" />
+<RouteHighlighter method="GET" />
 
 Get data for current status of your instance. In most cases, you should only query this endpoint via a Prometheus-compatible tool such as Grafana.
 
@@ -29095,19 +29201,6 @@ Source: https://www.meilisearch.com/docs/reference/api/settings
 
 The /settings route allows you to customize search settings for the given index.
 
-export const NoticeTag = ({label}) => <span className="noticeTag noticeTag--{ label }">
-    {label}
-  </span>;
-
-export const RouteHighlighter = ({method, path}) => <div className={`routeHighlighter routeHighlighter--${method}`}>
-    <div className="routeHighlighter__method">
-      {method}
-    </div>
-    <div className="routeHighlighter__path">
-      {path}
-    </div>
-  </div>;
-
 Use the `/settings` route to customize search settings for a given index. You can either modify all index settings at once using the [update settings endpoint](#update-settings), or use a child route to configure a single setting.
 
 For a conceptual overview of index settings, refer to the [indexes explanation](/learn/getting_started/indexes#index-settings). To learn more about the basics of index configuration, refer to the [index configuration tutorial](/learn/configuration/configuring_index_settings_api).
@@ -29120,7 +29213,7 @@ For a conceptual overview of index settings, refer to the [indexes explanation](
 
 By default, the settings object looks like this. All fields are modifiable.
 
-```json  theme={null}
+```json theme={null}
 {
   "displayedAttributes": [
     "*"
@@ -29176,7 +29269,7 @@ This route allows you to retrieve, configure, or reset all of an index's setting
 
 ### Get settings
 
-<RouteHighlighter method="GET" path="/indexes/{index_uid}/settings" />
+<RouteHighlighter method="GET" />
 
 Get the settings of an index.
 
@@ -29248,7 +29341,7 @@ Get the settings of an index.
 
 ##### Response: `200 Ok`
 
-```json  theme={null}
+```json theme={null}
 {
   "displayedAttributes": [
     "*"
@@ -29300,7 +29393,7 @@ Get the settings of an index.
 
 ### Update settings
 
-<RouteHighlighter method="PATCH" path="/indexes/{index_uid}/settings" />
+<RouteHighlighter method="PATCH" />
 
 Update the settings of an index.
 
@@ -29907,7 +30000,7 @@ If the provided index does not exist, it will be created.
 
 ##### Response: `202 Accepted`
 
-```json  theme={null}
+```json theme={null}
 {
   "taskUid": 1,
   "indexUid": "movies",
@@ -29921,7 +30014,7 @@ You can use this `taskUid` to get more details on [the status of the task](/refe
 
 ### Reset settings
 
-<RouteHighlighter method="DELETE" path="/indexes/{index_uid}/settings" />
+<RouteHighlighter method="DELETE" />
 
 Reset all the settings of an index to their [default value](#settings-object).
 
@@ -29993,7 +30086,7 @@ Reset all the settings of an index to their [default value](#settings-object).
 
 ##### Response: `202 Accepted`
 
-```json  theme={null}
+```json theme={null}
 {
   "taskUid": 1,
   "indexUid": "movies",
@@ -30016,7 +30109,7 @@ Custom dictionaries are also useful in a few use-cases for space-separated langu
 <Tip>
   User-defined dictionaries can be used together with synonyms. It can be useful to configure Meilisearch so different spellings of an author's initials return the same results:
 
-  ```json  theme={null}
+  ```json theme={null}
   "dictionary": ["W. E. B.", "W.E.B."],
   "synonyms": {
     "W. E. B.": ["W.E.B."],
@@ -30027,7 +30120,7 @@ Custom dictionaries are also useful in a few use-cases for space-separated langu
 
 ### Get dictionary
 
-<RouteHighlighter method="GET" path="/indexes/{index_uid}/settings/dictionary" />
+<RouteHighlighter method="GET" />
 
 Get an index's user-defined dictionary.
 
@@ -30090,13 +30183,13 @@ Get an index's user-defined dictionary.
 
 ##### Response: `200 OK`
 
-```json  theme={null}
+```json theme={null}
 []
 ```
 
 ### Update dictionary
 
-<RouteHighlighter method="PUT" path="/indexes/{index_uid}/settings/dictionary" />
+<RouteHighlighter method="PUT" />
 
 Update an index's user-defined dictionary.
 
@@ -30108,7 +30201,7 @@ Update an index's user-defined dictionary.
 
 #### Body
 
-```json  theme={null}
+```json theme={null}
 ["J. R. R.", "W. E. B."]
 ```
 
@@ -30174,7 +30267,7 @@ Update an index's user-defined dictionary.
 
 ##### Response: `202 Accepted`
 
-```json  theme={null}
+```json theme={null}
 {
   "taskUid": 1,
   "indexUid": "books",
@@ -30188,7 +30281,7 @@ Use the returned `taskUid` to get more details on [the status of the task](/refe
 
 ### Reset dictionary
 
-<RouteHighlighter method="DELETE" path="/indexes/{index_uid}/settings/dictionary" />
+<RouteHighlighter method="DELETE" />
 
 Reset an index's dictionary to its default value, `[]`.
 
@@ -30251,7 +30344,7 @@ Reset an index's dictionary to its default value, `[]`.
 
 ##### Response: `202 Accepted`
 
-```json  theme={null}
+```json theme={null}
 {
   "taskUid": 1,
   "indexUid": "books",
@@ -30273,7 +30366,7 @@ By default, the `displayedAttributes` array is equal to all fields in your datas
 
 ### Get displayed attributes
 
-<RouteHighlighter method="GET" path="/indexes/{index_uid}/settings/displayed-attributes" />
+<RouteHighlighter method="GET" />
 
 Get the displayed attributes of an index.
 
@@ -30345,7 +30438,7 @@ Get the displayed attributes of an index.
 
 ##### Response: `200 Ok`
 
-```json  theme={null}
+```json theme={null}
 [
   "title",
   "overview",
@@ -30356,7 +30449,7 @@ Get the displayed attributes of an index.
 
 ### Update displayed attributes
 
-<RouteHighlighter method="PUT" path="/indexes/{index_uid}/settings/displayed-attributes" />
+<RouteHighlighter method="PUT" />
 
 Update the displayed attributes of an index.
 
@@ -30500,7 +30593,7 @@ If an attribute contains an object, you can use dot notation to specify one or m
 
 ##### Response: `202 Accepted`
 
-```json  theme={null}
+```json theme={null}
 {
   "taskUid": 1,
   "indexUid": "movies",
@@ -30514,7 +30607,7 @@ You can use this `taskUid` to get more details on [the status of the task](/refe
 
 ### Reset displayed attributes
 
-<RouteHighlighter method="DELETE" path="/indexes/{index_uid}/settings/displayed-attributes" />
+<RouteHighlighter method="DELETE" />
 
 Reset the displayed attributes of the index to the default value.
 
@@ -30586,7 +30679,7 @@ Reset the displayed attributes of the index to the default value.
 
 ##### Response: `202 Accepted`
 
-```json  theme={null}
+```json theme={null}
 {
   "taskUid": 1,
   "indexUid": "movies",
@@ -30610,7 +30703,7 @@ The distinct attribute is a field whose value will always be unique in the retur
 
 ### Get distinct attribute
 
-<RouteHighlighter method="GET" path="/indexes/{index_uid}/settings/distinct-attribute" />
+<RouteHighlighter method="GET" />
 
 Get the distinct attribute of an index.
 
@@ -30682,13 +30775,13 @@ Get the distinct attribute of an index.
 
 ##### Response: `200 Ok`
 
-```json  theme={null}
+```json theme={null}
 "skuid"
 ```
 
 ### Update distinct attribute
 
-<RouteHighlighter method="PUT" path="/indexes/{index_uid}/settings/distinct-attribute" />
+<RouteHighlighter method="PUT" />
 
 Update the distinct attribute field of an index.
 
@@ -30778,7 +30871,7 @@ If an attribute contains an object, you can use dot notation to set one or more 
 
 ##### Response: `202 Accepted`
 
-```json  theme={null}
+```json theme={null}
 {
   "taskUid": 1,
   "indexUid": "movies",
@@ -30792,7 +30885,7 @@ You can use this `taskUid` to get more details on [the status of the task](/refe
 
 ### Reset distinct attribute
 
-<RouteHighlighter method="DELETE" path="/indexes/{index_uid}/settings/distinct-attribute" />
+<RouteHighlighter method="DELETE" />
 
 Reset the distinct attribute of an index to its default value.
 
@@ -30864,7 +30957,7 @@ Reset the distinct attribute of an index to its default value.
 
 ##### Response: `202 Accepted`
 
-```json  theme={null}
+```json theme={null}
 {
   "taskUid": 1,
   "indexUid": "movies",
@@ -30894,7 +30987,7 @@ With Meilisearch, you can create [faceted search interfaces](/learn/filtering_an
 
 ### Get faceting settings
 
-<RouteHighlighter method="GET" path="/indexes/{index_uid}/settings/faceting" />
+<RouteHighlighter method="GET" />
 
 Get the faceting settings of an index.
 
@@ -30955,7 +31048,7 @@ Get the faceting settings of an index.
 
 ##### Response: `200 OK`
 
-```json  theme={null}
+```json theme={null}
 {
   "maxValuesPerFacet": 100,
   "sortFacetValuesBy": {
@@ -30966,7 +31059,7 @@ Get the faceting settings of an index.
 
 ### Update faceting settings
 
-<RouteHighlighter method="PATCH" path="/indexes/{index_uid}/settings/faceting" />
+<RouteHighlighter method="PATCH" />
 
 Partially update the faceting settings for an index. Any parameters not provided in the body will be left unchanged.
 
@@ -31116,7 +31209,7 @@ The following code sample sets `maxValuesPerFacet` to `2`, sorts the `genres` fa
 
 ##### Response: `202 Accepted`
 
-```json  theme={null}
+```json theme={null}
 {
   "taskUid": 1,
   "indexUid": "books",
@@ -31189,7 +31282,7 @@ Reset an index's faceting settings to their [default value](#faceting-object). S
 
 ##### Response: `200 OK`
 
-```json  theme={null}
+```json theme={null}
 {
   "taskUid": 1,
   "indexUid": "books",
@@ -31215,10 +31308,10 @@ Attributes in the `filterableAttributes` list can be used as [filters](/learn/fi
 
 Filterable attribute objects must contain the following fields:
 
-| Name                    | Type             | Default value                                                               | Description                                                        |
-| ----------------------- | ---------------- | --------------------------------------------------------------------------- | ------------------------------------------------------------------ |
-| **`attributePatterns`** | Array of strings | `[]`                                                                        | A list of strings indicating filterable fields                     |
-| **`features`**          | Object           | `{"facetSearch": false, "filters": {"equality": true, "comparison": false}` | A list outlining filter types enabled for the specified attributes |
+| Name                    | Type             | Default value                                                              | Description                                                        |
+| ----------------------- | ---------------- | -------------------------------------------------------------------------- | ------------------------------------------------------------------ |
+| **`attributePatterns`** | Array of strings | `[]`                                                                       | A list of strings indicating filterable fields                     |
+| **`features`**          | Object           | `{"facetSearch": false, "filter": {"equality": true, "comparison": false}` | A list outlining filter types enabled for the specified attributes |
 
 #### `attributePatterns`
 
@@ -31245,7 +31338,7 @@ Calculating `comparison` filters is a resource-intensive operation. Disabling th
 
 ### Get filterable attributes
 
-<RouteHighlighter method="GET" path="/indexes/{index_uid}/settings/filterable-attributes" />
+<RouteHighlighter method="GET" />
 
 Get the filterable attributes for an index.
 
@@ -31317,7 +31410,7 @@ Get the filterable attributes for an index.
 
 ##### Response: `200 Ok`
 
-```json  theme={null}
+```json theme={null}
 [
   "genres",
   "director",
@@ -31327,7 +31420,7 @@ Get the filterable attributes for an index.
 
 ### Update filterable attributes
 
-<RouteHighlighter method="PUT" path="/indexes/{index_uid}/settings/filterable-attributes" />
+<RouteHighlighter method="PUT" />
 
 Update an index's filterable attributes list.
 
@@ -31473,14 +31566,30 @@ If an attribute contains an object, you can use dot notation to set one or more 
   ```
 
   ```rust Rust theme={null}
-  let filterable_attributes = [
-    "genres",
-    "director"
+  use meilisearch_sdk::settings::{
+    FilterableAttribute,
+    FilterableAttributesSettings,
+    FilterFeatures,
+    FilterFeatureModes,
+  };
+
+  // Mixed legacy + new syntax
+  let filterable_attributes: Vec<FilterableAttribute> = vec![
+    // legacy: plain attribute name
+    "author".into(),
+    // new syntax: settings object
+    FilterableAttribute::Settings(FilterableAttributesSettings {
+      attribute_patterns: vec!["genre".to_string()],
+      features: FilterFeatures {
+        facet_search: true,
+        filter: FilterFeatureModes { equality: true, comparison: false },
+      },
+    }),
   ];
 
   let task: TaskInfo = client
     .index("movies")
-    .set_filterable_attributes(&filterable_attributes)
+    .set_filterable_attributes_advanced(filterable_attributes)
     .await
     .unwrap();
   ```
@@ -31505,7 +31614,7 @@ If an attribute contains an object, you can use dot notation to set one or more 
 
 ##### Response: `202 Accepted`
 
-```json  theme={null}
+```json theme={null}
 {
   "taskUid": 1,
   "indexUid": "movies",
@@ -31519,7 +31628,7 @@ You can use this `taskUid` to get more details on [the status of the task](/refe
 
 ### Reset filterable attributes
 
-<RouteHighlighter method="DELETE" path="/indexes/{index_uid}/settings/filterable-attributes" />
+<RouteHighlighter method="DELETE" />
 
 Reset an index's filterable attributes list back to its default value.
 
@@ -31591,7 +31700,7 @@ Reset an index's filterable attributes list back to its default value.
 
 ##### Response: `202 Accepted`
 
-```json  theme={null}
+```json theme={null}
 {
   "taskUid": 1,
   "indexUid": "movies",
@@ -31648,7 +31757,7 @@ You may also set `attributePatterns` to `*`, in which case Meilisearch will trea
 
 ### Get localized attributes settings
 
-<RouteHighlighter method="GET" path="/indexes/{index_uid}/settings/localized-attributes" />
+<RouteHighlighter method="GET" />
 
 Get the localized attributes settings of an index.
 
@@ -31701,7 +31810,7 @@ Get the localized attributes settings of an index.
 
 ##### Response: `200 OK`
 
-```json  theme={null}
+```json theme={null}
 [
   {"locales": ["jpn"], "attributePatterns": ["*_ja"]}
 ]
@@ -31709,7 +31818,7 @@ Get the localized attributes settings of an index.
 
 ### Update localized attribute settings
 
-<RouteHighlighter method="PUT" path="/indexes/{index_uid}/settings/localized-attributes" />
+<RouteHighlighter method="PUT" />
 
 Update the localized attributes settings of an index.
 
@@ -31802,7 +31911,7 @@ Update the localized attributes settings of an index.
 
 ##### Response: `202 Accepted`
 
-```json  theme={null}
+```json theme={null}
 {
   "taskUid": 1,
   "indexUid": "INDEX_NAME",
@@ -31816,7 +31925,7 @@ You can use the returned `taskUid` to get more details on [the status of the tas
 
 ### Reset localized attributes settings
 
-<RouteHighlighter method="DELETE" path="/indexes/{index_uid}/settings/localized-attributes" />
+<RouteHighlighter method="DELETE" />
 
 Reset an index's localized attributes to their [default value](#localized-attributes-object).
 
@@ -31869,7 +31978,7 @@ Reset an index's localized attributes to their [default value](#localized-attrib
 
 ##### Response: `202 Accepted`
 
-```json  theme={null}
+```json theme={null}
 {
   "taskUid": 1,
   "indexUid": "INDEX_NAME",
@@ -31903,7 +32012,7 @@ For example, if you set `maxTotalHits` to 100, you will not be able to access se
 
 ### Get pagination settings
 
-<RouteHighlighter method="GET" path="/indexes/{index_uid}/settings/pagination" />
+<RouteHighlighter method="GET" />
 
 Get the pagination settings of an index.
 
@@ -31964,7 +32073,7 @@ Get the pagination settings of an index.
 
 ##### Response: `200 OK`
 
-```json  theme={null}
+```json theme={null}
 {
   "maxTotalHits": 1000
 }
@@ -31972,7 +32081,7 @@ Get the pagination settings of an index.
 
 ### Update pagination settings
 
-<RouteHighlighter method="PATCH" path="/indexes/{index_uid}/settings/pagination" />
+<RouteHighlighter method="PATCH" />
 
 Partially update the pagination settings for an index.
 
@@ -32066,7 +32175,7 @@ Partially update the pagination settings for an index.
 
 ##### Response: `202 Accepted`
 
-```json  theme={null}
+```json theme={null}
 {
   "taskUid": 1,
   "indexUid": "books",
@@ -32139,7 +32248,7 @@ Reset an index's pagination settings to their [default value](#pagination-object
 
 ##### Response: `202 Accepted`
 
-```json  theme={null}
+```json theme={null}
 {
   "taskUid": 1,
   "indexUid": "books",
@@ -32162,7 +32271,7 @@ Calculating the distance between words is a resource-intensive operation. Loweri
 
 ### Get proximity precision settings
 
-<RouteHighlighter method="GET" path="/indexes/{index_uid}/settings/proximity-precision" />
+<RouteHighlighter method="GET" />
 
 Get the proximity precision settings of an index.
 
@@ -32229,7 +32338,7 @@ Get the proximity precision settings of an index.
 
 ### Update proximity precision settings
 
-<RouteHighlighter method="PUT" path="/indexes/{index_uid}/settings/proximity-precision" />
+<RouteHighlighter method="PUT" />
 
 Update the pagination settings for an index.
 
@@ -32298,7 +32407,7 @@ Update the pagination settings for an index.
 
 ##### Response: `202 Accepted`
 
-```json  theme={null}
+```json theme={null}
 {
   "taskUid": 1,
   "indexUid": "books",
@@ -32312,7 +32421,7 @@ You can use the returned `taskUid` to get more details on [the status of the tas
 
 ### Reset proximity precision settings
 
-<RouteHighlighter method="DELETE" path="/indexes/{index_uid}/settings/proximity-precision" />
+<RouteHighlighter method="DELETE" />
 
 Reset an index's proximity precision setting to its default value.
 
@@ -32373,7 +32482,7 @@ Reset an index's proximity precision setting to its default value.
 
 ##### Response: `202 Accepted`
 
-```json  theme={null}
+```json theme={null}
 {
   "taskUid": 1,
   "indexUid": "books",
@@ -32393,7 +32502,7 @@ Processing filterable attributes for facet search is a resource-intensive operat
 
 ### Get facet search settings
 
-<RouteHighlighter method="GET" path="/indexes/{index_uid}/settings/facet-search" />
+<RouteHighlighter method="GET" />
 
 Get the facet search settings of an index.
 
@@ -32442,13 +32551,13 @@ Get the facet search settings of an index.
 
 ##### Response: `200 OK`
 
-```json  theme={null}
+```json theme={null}
 true
 ```
 
 ### Update facet search settings
 
-<RouteHighlighter method="PUT" path="/indexes/{index_uid}/settings/facet-search" />
+<RouteHighlighter method="PUT" />
 
 Update the facet search settings for an index.
 
@@ -32505,7 +32614,7 @@ Update the facet search settings for an index.
 
 ##### Response: `202 Accepted`
 
-```json  theme={null}
+```json theme={null}
 {
   "taskUid": 1,
   "indexUid": "INDEX_UID",
@@ -32519,7 +32628,7 @@ Use the returned `taskUid` to get more details on [the status of the task](/refe
 
 ### Reset facet search settings
 
-<RouteHighlighter method="DELETE" path="/indexes/{index_uid}/settings/facet-search" />
+<RouteHighlighter method="DELETE" />
 
 Reset an index's facet search to its default settings.
 
@@ -32568,7 +32677,7 @@ Reset an index's facet search to its default settings.
 
 ##### Response: `202 Accepted`
 
-```json  theme={null}
+```json theme={null}
 {
   "taskUid": 1,
   "indexUid": "INDEX_UID",
@@ -32591,7 +32700,7 @@ Use `prefixSearch` to change how prefix search works. It accepts one of the foll
 
 ### Get prefix search settings
 
-<RouteHighlighter method="GET" path="/indexes/{index_uid}/settings/prefix-search" />
+<RouteHighlighter method="GET" />
 
 Get the prefix search settings of an index.
 
@@ -32640,13 +32749,13 @@ Get the prefix search settings of an index.
 
 ##### Response: `200 OK`
 
-```json  theme={null}
+```json theme={null}
 "indexingTime"
 ```
 
 ### Update prefix search settings
 
-<RouteHighlighter method="PUT" path="/indexes/{index_uid}/settings/prefix-search" />
+<RouteHighlighter method="PUT" />
 
 Update the prefix search settings for an index.
 
@@ -32703,7 +32812,7 @@ Update the prefix search settings for an index.
 
 ##### Response: `202 Accepted`
 
-```json  theme={null}
+```json theme={null}
 {
   "taskUid": 1,
   "indexUid": "INDEX_UID",
@@ -32717,7 +32826,7 @@ Use the returned `taskUid` to get more details on [the status of the task](/refe
 
 ### Reset prefix search settings
 
-<RouteHighlighter method="DELETE" path="/indexes/{index_uid}/settings/prefix-search" />
+<RouteHighlighter method="DELETE" />
 
 Reset an index's prefix search to its default settings.
 
@@ -32766,7 +32875,7 @@ Reset an index's prefix search to its default settings.
 
 ##### Response: `202 Accepted`
 
-```json  theme={null}
+```json theme={null}
 {
   "taskUid": 1,
   "indexUid": "INDEX_UID",
@@ -32797,7 +32906,7 @@ Ranking rules are built-in rules that rank search results according to certain c
 
 #### Default order
 
-```json  theme={null}
+```json theme={null}
 [
   "words",
   "typo",
@@ -32810,7 +32919,7 @@ Ranking rules are built-in rules that rank search results according to certain c
 
 ### Get ranking rules
 
-<RouteHighlighter method="GET" path="/indexes/{index_uid}/settings/ranking-rules" />
+<RouteHighlighter method="GET" />
 
 Get the ranking rules of an index.
 
@@ -32882,7 +32991,7 @@ Get the ranking rules of an index.
 
 ##### Response: `200 Ok`
 
-```json  theme={null}
+```json theme={null}
 [
   "words",
   "typo",
@@ -32896,7 +33005,7 @@ Get the ranking rules of an index.
 
 ### Update ranking rules
 
-<RouteHighlighter method="PUT" path="/indexes/{index_uid}/settings/ranking-rules" />
+<RouteHighlighter method="PUT" />
 
 Update the ranking rules of an index.
 
@@ -33098,7 +33207,7 @@ To create a custom ranking rule, give an attribute followed by a colon (`:`) and
 
 ##### Response: `202 Accepted`
 
-```json  theme={null}
+```json theme={null}
 {
   "taskUid": 1,
   "indexUid": "movies",
@@ -33112,7 +33221,7 @@ You can use this `taskUid` to get more details on [the status of the task](/refe
 
 ### Reset ranking rules
 
-<RouteHighlighter method="DELETE" path="/indexes/{index_uid}/settings/ranking-rules" />
+<RouteHighlighter method="DELETE" />
 
 Reset the ranking rules of an index to their [default value](#default-order).
 
@@ -33188,7 +33297,7 @@ Reset the ranking rules of an index to their [default value](#default-order).
 
 ##### Response: `202 Accepted`
 
-```json  theme={null}
+```json theme={null}
 {
   "taskUid": 1,
   "indexUid": "movies",
@@ -33214,7 +33323,7 @@ By default, the `searchableAttributes` array is equal to all fields in your data
 
 ### Get searchable attributes
 
-<RouteHighlighter method="GET" path="/indexes/{index_uid}/settings/searchable-attributes" />
+<RouteHighlighter method="GET" />
 
 Get the searchable attributes of an index.
 
@@ -33286,7 +33395,7 @@ Get the searchable attributes of an index.
 
 ##### Response: `200 Ok`
 
-```json  theme={null}
+```json theme={null}
 [
   "title",
   "overview",
@@ -33297,7 +33406,7 @@ Get the searchable attributes of an index.
 
 ### Update searchable attributes
 
-<RouteHighlighter method="PUT" path="/indexes/{index_uid}/settings/searchable-attributes" />
+<RouteHighlighter method="PUT" />
 
 Update the searchable attributes of an index.
 
@@ -33432,7 +33541,7 @@ In this example, a document with a match in `title` will be more relevant than a
 
 ##### Response: `202 Accepted`
 
-```json  theme={null}
+```json theme={null}
 {
   "taskUid": 1,
   "indexUid": "movies",
@@ -33446,7 +33555,7 @@ You can use this `taskUid` to get more details on [the status of the task](/refe
 
 ### Reset searchable attributes
 
-<RouteHighlighter method="DELETE" path="/indexes/{index_uid}/settings/searchable-attributes" />
+<RouteHighlighter method="DELETE" />
 
 Reset the searchable attributes of the index to the default value.
 
@@ -33518,7 +33627,7 @@ Reset the searchable attributes of the index to the default value.
 
 ##### Response: `202 Accepted`
 
-```json  theme={null}
+```json theme={null}
 {
   "taskUid": 1,
   "indexUid": "movies",
@@ -33538,7 +33647,7 @@ By default, Meilisearch interrupts searches after 1500 milliseconds.
 
 ### Get search cutoff
 
-<RouteHighlighter method="GET" path="/indexes/{index_uid}/settings/search-cutoff-ms" />
+<RouteHighlighter method="GET" />
 
 Get an index's search cutoff value.
 
@@ -33599,13 +33708,13 @@ Get an index's search cutoff value.
 
 ##### Response: `200 Ok`
 
-```json  theme={null}
+```json theme={null}
 null
 ```
 
 ### Update search cutoff
 
-<RouteHighlighter method="PUT" path="/indexes/{index_uid}/settings/search-cutoff-ms" />
+<RouteHighlighter method="PUT" />
 
 Update an index's search cutoff value.
 
@@ -33676,7 +33785,7 @@ A single integer indicating the cutoff value in milliseconds.
 
 ##### Response: `202 Accepted`
 
-```json  theme={null}
+```json theme={null}
 {
   "taskUid": 1,
   "indexUid": "movies",
@@ -33690,7 +33799,7 @@ Use this `taskUid` to get more details on [the status of the task](/reference/ap
 
 ### Reset search cutoff
 
-<RouteHighlighter method="DELETE" path="/indexes/{index_uid}/settings/search-cutoff-ms" />
+<RouteHighlighter method="DELETE" />
 
 Reset an index's search cutoff value to its default value, `null`. This translates to a cutoff of 1500ms.
 
@@ -33751,7 +33860,7 @@ Reset an index's search cutoff value to its default value, `null`. This translat
 
 ##### Response: `202 Accepted`
 
-```json  theme={null}
+```json theme={null}
 {
   "taskUid": 1,
   "indexUid": "movies",
@@ -33769,7 +33878,7 @@ Tokens in the `separatorTokens` list are added on top of [Meilisearch's default 
 
 ### Get separator tokens
 
-<RouteHighlighter method="GET" path="/indexes/{index_uid}/settings/separator-tokens" />
+<RouteHighlighter method="GET" />
 
 Get an index's list of custom separator tokens.
 
@@ -33836,13 +33945,13 @@ Get an index's list of custom separator tokens.
 
 ##### Response: `200 Ok`
 
-```json  theme={null}
+```json theme={null}
 []
 ```
 
 ### Update separator tokens
 
-<RouteHighlighter method="PUT" path="/indexes/{index_uid}/settings/separator-tokens" />
+<RouteHighlighter method="PUT" />
 
 Update an index's list of custom separator tokens.
 
@@ -33923,7 +34032,7 @@ An array of strings, with each string indicating a word separator.
 
 ##### Response: `202 Accepted`
 
-```json  theme={null}
+```json theme={null}
 {
   "taskUid": 1,
   "indexUid": "movies",
@@ -33937,7 +34046,7 @@ Use this `taskUid` to get more details on [the status of the task](/reference/ap
 
 ### Reset separator tokens
 
-<RouteHighlighter method="DELETE" path="/indexes/{index_uid}/settings/separator-tokens" />
+<RouteHighlighter method="DELETE" />
 
 Reset an index's list of custom separator tokens to its default value, `[]`.
 
@@ -34004,7 +34113,7 @@ Reset an index's list of custom separator tokens to its default value, `[]`.
 
 ##### Response: `202 Accepted`
 
-```json  theme={null}
+```json theme={null}
 {
   "taskUid": 1,
   "indexUid": "movies",
@@ -34022,7 +34131,7 @@ Remove tokens from Meilisearch's default [list of word separators](/learn/engine
 
 ### Get non-separator tokens
 
-<RouteHighlighter method="GET" path="/indexes/{index_uid}/settings/non-separator-tokens" />
+<RouteHighlighter method="GET" />
 
 Get an index's list of non-separator tokens.
 
@@ -34089,13 +34198,13 @@ Get an index's list of non-separator tokens.
 
 ##### Response: `200 Ok`
 
-```json  theme={null}
+```json theme={null}
 []
 ```
 
 ### Update non-separator tokens
 
-<RouteHighlighter method="PUT" path="/indexes/{index_uid}/settings/non-separator-tokens" />
+<RouteHighlighter method="PUT" />
 
 Update an index's list of non-separator tokens.
 
@@ -34176,7 +34285,7 @@ An array of strings, with each string indicating a token present in [list of wor
 
 ##### Response: `202 Accepted`
 
-```json  theme={null}
+```json theme={null}
 {
   "taskUid": 1,
   "indexUid": "movies",
@@ -34190,7 +34299,7 @@ Use this `taskUid` to get more details on [the status of the task](/reference/ap
 
 ### Reset non-separator tokens
 
-<RouteHighlighter method="DELETE" path="/indexes/{index_uid}/settings/non-separator-tokens" />
+<RouteHighlighter method="DELETE" />
 
 Reset an index's list of non-separator tokens to its default value, `[]`.
 
@@ -34257,7 +34366,7 @@ Reset an index's list of non-separator tokens to its default value, `[]`.
 
 ##### Response: `202 Accepted`
 
-```json  theme={null}
+```json theme={null}
 {
   "taskUid": 1,
   "indexUid": "movies",
@@ -34281,7 +34390,7 @@ Attributes that can be used when sorting search results using the [`sort` search
 
 ### Get sortable attributes
 
-<RouteHighlighter method="GET" path="/indexes/{index_uid}/settings/sortable-attributes" />
+<RouteHighlighter method="GET" />
 
 Get the sortable attributes of an index.
 
@@ -34353,7 +34462,7 @@ Get the sortable attributes of an index.
 
 ##### Response: `200 Ok`
 
-```json  theme={null}
+```json theme={null}
 [
   "price",
   "author.surname"
@@ -34362,7 +34471,7 @@ Get the sortable attributes of an index.
 
 ### Update sortable attributes
 
-<RouteHighlighter method="PUT" path="/indexes/{index_uid}/settings/sortable-attributes" />
+<RouteHighlighter method="PUT" />
 
 Update an index's sortable attributes list.
 
@@ -34479,7 +34588,7 @@ If an attribute contains an object, you can use dot notation to set one or more 
 
 ##### Response: `202 Accepted`
 
-```json  theme={null}
+```json theme={null}
 {
   "taskUid": 1,
   "indexUid": "movies",
@@ -34493,7 +34602,7 @@ You can use this `taskUid` to get more details on [the status of the task](/refe
 
 ### Reset sortable attributes
 
-<RouteHighlighter method="DELETE" path="/indexes/{index_uid}/settings/sortable-attributes" />
+<RouteHighlighter method="DELETE" />
 
 Reset an index's sortable attributes list back to its default value.
 
@@ -34565,7 +34674,7 @@ Reset an index's sortable attributes list back to its default value.
 
 ##### Response: `202 Accepted`
 
-```json  theme={null}
+```json theme={null}
 {
   "taskUid": 1,
   "indexUid": "movies",
@@ -34593,7 +34702,7 @@ Words added to the `stopWords` list are ignored in future search queries.
 
 ### Get stop words
 
-<RouteHighlighter method="GET" path="/indexes/{index_uid}/settings/stop-words" />
+<RouteHighlighter method="GET" />
 
 Get the stop words list of an index.
 
@@ -34665,7 +34774,7 @@ Get the stop words list of an index.
 
 ##### Response: `200 Ok`
 
-```json  theme={null}
+```json theme={null}
 [
   "of",
   "the",
@@ -34675,7 +34784,7 @@ Get the stop words list of an index.
 
 ### Update stop words
 
-<RouteHighlighter method="PUT" path="/indexes/{index_uid}/settings/stop-words" />
+<RouteHighlighter method="PUT" />
 
 Update the list of stop words of an index.
 
@@ -34766,7 +34875,7 @@ If a list of stop words already exists, it will be overwritten (*replaced*).
 
 ##### Response: `202 Accepted`
 
-```json  theme={null}
+```json theme={null}
 {
   "taskUid": 1,
   "indexUid": "movies",
@@ -34780,7 +34889,7 @@ You can use this `taskUid` to get more details on [the status of the task](/refe
 
 ### Reset stop words
 
-<RouteHighlighter method="DELETE" path="/indexes/{index_uid}/settings/stop-words" />
+<RouteHighlighter method="DELETE" />
 
 Reset the list of stop words of an index to its default value.
 
@@ -34852,7 +34961,7 @@ Reset the list of stop words of an index to its default value.
 
 ##### Response: `202 Accepted`
 
-```json  theme={null}
+```json theme={null}
 {
   "taskUid": 1,
   "indexUid": "movies",
@@ -34872,7 +34981,7 @@ The `synonyms` object contains words and their respective synonyms. A synonym in
 
 ### Get synonyms
 
-<RouteHighlighter method="GET" path="/indexes/{index_uid}/settings/synonyms" />
+<RouteHighlighter method="GET" />
 
 Get the list of synonyms of an index.
 
@@ -34944,7 +35053,7 @@ Get the list of synonyms of an index.
 
 ##### Response: `200 OK`
 
-```json  theme={null}
+```json theme={null}
 {
   "wolverine": [
     "xmen",
@@ -34962,7 +35071,7 @@ Get the list of synonyms of an index.
 
 ### Update synonyms
 
-<RouteHighlighter method="PUT" path="/indexes/{index_uid}/settings/synonyms" />
+<RouteHighlighter method="PUT" />
 
 Update the list of synonyms of an index. Synonyms are [normalized](/learn/relevancy/synonyms#normalization).
 
@@ -35103,7 +35212,7 @@ An object that contains all synonyms and their associated words. Add the associa
 
 ##### Response: `202 Accepted`
 
-```json  theme={null}
+```json theme={null}
 {
   "taskUid": 1,
   "indexUid": "movies",
@@ -35117,7 +35226,7 @@ You can use this `taskUid` to get more details on [the status of the task](/refe
 
 ### Reset synonyms
 
-<RouteHighlighter method="DELETE" path="/indexes/{index_uid}/settings/synonyms" />
+<RouteHighlighter method="DELETE" />
 
 Reset the list of synonyms of an index to its default value.
 
@@ -35189,7 +35298,7 @@ Reset the list of synonyms of an index to its default value.
 
 ##### Response: `202 Accepted`
 
-```json  theme={null}
+```json theme={null}
 {
   "taskUid": 1,
   "indexUid": "movies",
@@ -35220,7 +35329,7 @@ Typo tolerance helps users find relevant results even when their search queries 
 
 ### Get typo tolerance settings
 
-<RouteHighlighter method="GET" path="/indexes/{index_uid}/settings/typo-tolerance" />
+<RouteHighlighter method="GET" />
 
 Get the typo tolerance settings of an index.
 
@@ -35281,7 +35390,7 @@ Get the typo tolerance settings of an index.
 
 ##### Response: `200 OK`
 
-```json  theme={null}
+```json theme={null}
 {
   "enabled": true,
   "minWordSizeForTypos": {
@@ -35295,7 +35404,7 @@ Get the typo tolerance settings of an index.
 
 ### Update typo tolerance settings
 
-<RouteHighlighter method="PATCH" path="/indexes/{index_uid}/settings/typo-tolerance" />
+<RouteHighlighter method="PATCH" />
 
 Partially update the typo tolerance settings for an index.
 
@@ -35458,7 +35567,7 @@ Partially update the typo tolerance settings for an index.
 
 ##### Response: `202 Accepted`
 
-```json  theme={null}
+```json theme={null}
 {
   "taskUid": 1,
   "indexUid": "books",
@@ -35472,7 +35581,7 @@ You can use the returned `taskUid` to get more details on [the status of the tas
 
 ### Reset typo tolerance settings
 
-<RouteHighlighter method="DELETE" path="/indexes/{index_uid}/settings/typo-tolerance" />
+<RouteHighlighter method="DELETE" />
 
 Reset an index's typo tolerance settings to their [default value](#typo-tolerance-object).
 
@@ -35533,7 +35642,7 @@ Reset an index's typo tolerance settings to their [default value](#typo-toleranc
 
 ##### Response: `202 Accepted`
 
-```json  theme={null}
+```json theme={null}
 {
   "taskUid": 1,
   "indexUid": "books",
@@ -35553,7 +35662,7 @@ Embedders translate documents and queries into vector embeddings. You must confi
 
 The embedders object may contain up to 256 embedder objects. Each embedder object must be assigned a unique name:
 
-```json  theme={null}
+```json theme={null}
 {
   "default": {
     "source": "huggingFace",
@@ -35593,7 +35702,7 @@ These embedder objects may contain the following fields:
 
 ### Get embedder settings
 
-<RouteHighlighter method="GET" path="/indexes/{index_uid}/settings/embedders" />
+<RouteHighlighter method="GET" />
 
 Get the embedders configured for an index.
 
@@ -35622,7 +35731,7 @@ Get the embedders configured for an index.
 
 ##### Response: `200 OK`
 
-```json  theme={null}
+```json theme={null}
 {
   "default": {
     "source":  "openAi",
@@ -35636,7 +35745,7 @@ Get the embedders configured for an index.
 
 ### Update embedder settings
 
-<RouteHighlighter method="PATCH" path="/indexes/{index_uid}/settings/embedders" />
+<RouteHighlighter method="PATCH" />
 
 Partially update the embedder settings for an index. When this setting is updated Meilisearch may reindex all documents and regenerate their embeddings.
 
@@ -35648,7 +35757,7 @@ Partially update the embedder settings for an index. When this setting is update
 
 #### Body
 
-```json  theme={null}
+```json theme={null}
 {
   "default": {
     "source": <String>,
@@ -35702,7 +35811,7 @@ Choose `composite` to use one embedder during indexing time, and another embedde
 <Note>
   This is an experimental feature. Use the experimental features endpoint to activate it:
 
-  ```sh  theme={null}
+  ```sh theme={null}
   curl \
     -X PATCH 'MEILISEARCH_URL/experimental-features/' \
     -H 'Content-Type: application/json' \
@@ -35803,7 +35912,7 @@ This field is incompatible with all other embedders.
 
 The field containing the input text Meilisearch should send to the embedder must be replaced with `"{{text}}"`:
 
-```json  theme={null}
+```json theme={null}
 {
   "source": "rest",
   "request": {
@@ -35816,7 +35925,7 @@ The field containing the input text Meilisearch should send to the embedder must
 
 If sending multiple documents in a single request, replace the input field with `["{{text}}", "{{..}}"]`:
 
-```json  theme={null}
+```json theme={null}
 {
   "source": "rest",
   "request": {
@@ -35837,7 +35946,7 @@ This field is incompatible with all other embedders.
 
 The field containing the embedding itself must be replaced with `"{{embedding}}"`:
 
-```json  theme={null}
+```json theme={null}
 {
   "source": "rest",
   "response": {
@@ -35850,7 +35959,7 @@ The field containing the embedding itself must be replaced with `"{{embedding}}"
 
 If a single response includes multiple embeddings, the field containing the embedding itself must be an array with two items. One must declare the location and structure of a single embedding, while the second item should be `"{{..}}"`:
 
-```json  theme={null}
+```json theme={null}
 {
   "source": "rest",
   "response": {
@@ -35876,7 +35985,7 @@ For mathematical reasons, the `_rankingScore` of semantic search results tend to
 
 Use `distribution` when configuring an embedder to correct the returned `_rankingScore`s of the semantic hits with an affine transformation:
 
-```sh  theme={null}
+```sh theme={null}
 curl \
   -X PATCH 'MEILISEARCH_URL/indexes/INDEX_NAME/settings' \
   -H 'Content-Type: application/json' \
@@ -35969,7 +36078,7 @@ Both fields must be an object and accept the same fields as a regular embedder, 
 <Note>
   This is an experimental feature. Use the Meilisearch Cloud UI or the experimental features endpoint to activate it:
 
-  ```sh  theme={null}
+  ```sh theme={null}
   curl \
     -X PATCH 'MEILISEARCH_URL/experimental-features/' \
     -H 'Content-Type: application/json' \
@@ -35981,7 +36090,7 @@ Both fields must be an object and accept the same fields as a regular embedder, 
 
 `indexingFragments` specifies which fields in your documents should be used to generate multimodal embeddings. It must be an object with the following structure:
 
-```json  theme={null}
+```json theme={null}
   "FRAGMENT_NAME": {
     "value": {
       …
@@ -35993,7 +36102,7 @@ Both fields must be an object and accept the same fields as a regular embedder, 
 
 For example, for [VoyageAI's multimodal embedding route](https://docs.voyageai.com/reference/multimodal-embeddings-api), `value` must be an object containing a `content` field. `content` itself must contain an array of objects with a `type` field. Depending on `type`'s value, you must include either `text`, `image_url`, or `image_base64`:
 
-```json  theme={null}
+```json theme={null}
 {
   "VOYAGE_FRAGMENT_NAME_A": {
     "value": {
@@ -36041,7 +36150,7 @@ You must specify at least one valid fragment in `searchFragments` when using `in
 <Note>
   This is an experimental feature. Use the Meilisearch Cloud UI or the experimental features endpoint to activate it:
 
-  ```sh  theme={null}
+  ```sh theme={null}
   curl \
     -X PATCH 'MEILISEARCH_URL/experimental-features/' \
     -H 'Content-Type: application/json' \
@@ -36053,7 +36162,7 @@ You must specify at least one valid fragment in `searchFragments` when using `in
 
 `searchFragments` instructs Meilisearch how to parse fields present in a query's [`media` search parameter](/reference/api/search#media). It must be an object following the same structure as the [`indexingFragments`](/reference/api/settings#indexingfragments) object:
 
-```json  theme={null}
+```json theme={null}
   "FRAGMENT_NAME": {
     "value": {
       …
@@ -36065,7 +36174,7 @@ As with `indexingFragments`, the content of `value` should follow your model's s
 
 Use Liquid templates to interpolate search query data into the fragment fields, where `{{media.*}}` gives you access to all [multimodal data received with a query](/reference/api/search#media) and `{{q}}` gives you access to the regular textual query:
 
-```json  theme={null}
+```json theme={null}
 {
   "SEARCH_FRAGMENT_A": {
     "value": {
@@ -36166,7 +36275,7 @@ You must specify at least one valid fragment in `indexingFragments` when using `
 
 ##### Response: `202 Accepted`
 
-```json  theme={null}
+```json theme={null}
 {
   "taskUid": 1,
   "indexUid": "kitchenware",
@@ -36180,7 +36289,7 @@ You can use the returned `taskUid` to get more details on [the status of the tas
 
 ### Reset embedder settings
 
-<RouteHighlighter method="DELETE" path="/indexes/{index_uid}/settings/embedders" />
+<RouteHighlighter method="DELETE" />
 
 Removes all embedders from your index.
 
@@ -36211,7 +36320,7 @@ To remove a single embedder, use the [update embedder settings endpoint](#update
 
 ##### Response: `202 Accepted`
 
-```json  theme={null}
+```json theme={null}
 {
   "taskUid": 1,
   "indexUid": "books",
@@ -36228,7 +36337,7 @@ You can use the returned `taskUid` to get more details on [the status of the tas
 <Note>
   This is an experimental feature. Use the Meilisearch Cloud UI or the experimental features endpoint to activate it:
 
-  ```sh  theme={null}
+  ```sh theme={null}
   curl \
     -X PATCH 'http://localhost:7700/experimental-features/' \
     -H 'Authorization: Bearer MEILISEARCH_API_KEY' \
@@ -36243,7 +36352,7 @@ The chat settings allow you to configure how your index integrates with Meilisea
 
 ### Chat object
 
-```json  theme={null}
+```json theme={null}
 {
   "description": "A comprehensive movie database containing titles, overviews, genres, and release dates to help users find movies",
   "documentTemplate": "{% for field in fields %}{% if field.is_searchable and field.value != nil %}{{ field.name }}: {{ field.value }}\n{% endif %}{% endfor %}",
@@ -36278,7 +36387,7 @@ Must be one of the following [search parameters](/reference/api/search#search-pa
 
 ### Get index chat settings
 
-<RouteHighlighter method="GET" path="/indexes/{index_uid}/settings/chat" />
+<RouteHighlighter method="GET" />
 
 Get the index chat settings configured for an index.
 
@@ -36290,7 +36399,7 @@ Get the index chat settings configured for an index.
 
 #### Example
 
-```bash  theme={null}
+```bash theme={null}
 curl \
   -X GET 'http://localhost:7700/indexes/movies/settings/chat' \
   -H 'Authorization: Bearer MEILISEARCH_KEY'
@@ -36298,7 +36407,7 @@ curl \
 
 ##### Response: `200 OK`
 
-```json  theme={null}
+```json theme={null}
 {
   "description": "",
   "documentTemplate": "{% for field in fields %} {% if field.is_searchable and not field.value == nil %}{{ field.name }}: {{ field.value }} {% endif %} {% endfor %}",
@@ -36309,7 +36418,7 @@ curl \
 
 ### Update index chat settings
 
-<RouteHighlighter method="PUT" path="/indexes/{index_uid}/settings/chat" />
+<RouteHighlighter method="PUT" />
 
 Partially update the index chat settings for an index.
 
@@ -36321,7 +36430,7 @@ Partially update the index chat settings for an index.
 
 #### Body
 
-```json  theme={null}
+```json theme={null}
 {
   "description": <String>,
   "documentTemplate": <String>,
@@ -36340,7 +36449,7 @@ Partially update the index chat settings for an index.
 
 #### Example
 
-```bash  theme={null}
+```bash theme={null}
 curl \
   -X PATCH 'http://localhost:7700/indexes/movies/settings/chat' \
   -H 'Authorization: Bearer MEILISEARCH_KEY' \
@@ -36357,7 +36466,7 @@ curl \
 
 ##### Response: `202 Accepted`
 
-```json  theme={null}
+```json theme={null}
 {
   "taskUid": 1,
   "indexUid": "movies",
@@ -36374,7 +36483,7 @@ You can use the returned `taskUid` to get more details on [the status of the tas
 <Note>
   This is an experimental feature. On Meilisearch Cloud, contact support to activate it. On OSS, use the experimental features endpoint:
 
-  ```sh  theme={null}
+  ```sh theme={null}
   curl \
     -X PATCH 'http://localhost:7700/experimental-features/' \
     -H 'Authorization: Bearer MEILISEARCH_API_KEY' \
@@ -36391,7 +36500,7 @@ The experimental vector store may improve performance in large Meilisearch datab
 
 ### Get vector store settings
 
-<RouteHighlighter method="GET" path="/indexes/{index_uid}/settings/vector-store" />
+<RouteHighlighter method="GET" />
 
 Get the vector store of an index.
 
@@ -36407,13 +36516,13 @@ Get the vector store of an index.
 
 ##### Response: `200 OK`
 
-```json  theme={null}
+```json theme={null}
 "stable"
 ```
 
 ### Update vector store settings
 
-<RouteHighlighter method="PATCH" path="/indexes/{index_uid}/settings/vector-store" />
+<RouteHighlighter method="PATCH" />
 
 Update the vector store of an index.
 
@@ -36437,7 +36546,7 @@ When switching between vector stores, Meilisearch must convert all vector data f
 
 ##### Response: `202 Accepted`
 
-```json  theme={null}
+```json theme={null}
 {
   "taskUid": 1,
   "indexUid": "INDEX_UID",
@@ -36451,7 +36560,7 @@ Use the returned `taskUid` to get more details on [the status of the task](/refe
 
 ### Reset vector store settings
 
-<RouteHighlighter method="DELETE" path="/indexes/{index_uid}/settings/vector-store" />
+<RouteHighlighter method="DELETE" />
 
 Reset an index's vector store to its default settings.
 
@@ -36502,7 +36611,7 @@ If you had set `vectorStore` to anything other than the default value, resetting
 
 ##### Response: `202 Accepted`
 
-```json  theme={null}
+```json theme={null}
 {
   "taskUid": 1,
   "indexUid": "INDEX_UID",
@@ -36520,15 +36629,6 @@ Source: https://www.meilisearch.com/docs/reference/api/snapshots
 
 The /snapshots route creates database snapshots. Use snapshots to backup your Meilisearch data.
 
-export const RouteHighlighter = ({method, path}) => <div className={`routeHighlighter routeHighlighter--${method}`}>
-    <div className="routeHighlighter__method">
-      {method}
-    </div>
-    <div className="routeHighlighter__path">
-      {path}
-    </div>
-  </div>;
-
 The `/snapshot` route allows you to create database snapshots. Snapshots are `.snapshot` files that can be used to make quick backups of Meilisearch data.
 
 [Learn more about snapshots.](/learn/data_backup/snapshots)
@@ -36539,7 +36639,7 @@ The `/snapshot` route allows you to create database snapshots. Snapshots are `.s
 
 ## Create a snapshot
 
-<RouteHighlighter method="POST" path="/snapshots" />
+<RouteHighlighter method="POST" />
 
 Triggers a snapshot creation task. Once the process is complete, Meilisearch creates a snapshot in the [snapshot directory](/learn/self_hosted/configure_meilisearch_at_launch#snapshot-destination). If the snapshot directory does not exist yet, it will be created.
 
@@ -36597,7 +36697,7 @@ Snapshot tasks take priority over other tasks in the queue.
 
 #### Response: `202 Accepted`
 
-```json  theme={null}
+```json theme={null}
 {
   "taskUid": 1,
   "indexUid": null,
@@ -36615,20 +36715,11 @@ Source: https://www.meilisearch.com/docs/reference/api/stats
 
 The /stats route you gives extended information and metrics about indexes and the Meilisearch database.
 
-export const RouteHighlighter = ({method, path}) => <div className={`routeHighlighter routeHighlighter--${method}`}>
-    <div className="routeHighlighter__method">
-      {method}
-    </div>
-    <div className="routeHighlighter__path">
-      {path}
-    </div>
-  </div>;
-
 The `/stats` route gives extended information and metrics about indexes and the Meilisearch database.
 
 ## Stats object
 
-```json  theme={null}
+```json theme={null}
 {
   "databaseSize": 447819776,
   "usedDatabaseSize": 196608,
@@ -36688,7 +36779,7 @@ The `/stats` route gives extended information and metrics about indexes and the 
 
 ## Get stats of all indexes
 
-<RouteHighlighter method="GET" path="/stats" />
+<RouteHighlighter method="GET" />
 
 Get stats of all indexes.
 
@@ -36753,7 +36844,7 @@ Get stats of all indexes.
 
 #### Response: `200 Ok`
 
-```json  theme={null}
+```json theme={null}
 {
   "databaseSize": 447819776,
   "usedDatabaseSize": 196608,
@@ -36793,7 +36884,7 @@ Get stats of all indexes.
 
 ## Get stats of an index
 
-<RouteHighlighter method="GET" path="/indexes/{index_uid}/stats" />
+<RouteHighlighter method="GET" />
 
 Get stats of an index.
 
@@ -36865,7 +36956,7 @@ Get stats of an index.
 
 #### Response: `200 Ok`
 
-```json  theme={null}
+```json theme={null}
 {
   "numberOfDocuments": 19654,
   "numberOfEmbeddedDocuments": 1,
@@ -36889,24 +36980,11 @@ Source: https://www.meilisearch.com/docs/reference/api/tasks
 
 The /tasks route allows you to manage and monitor Meilisearch's asynchronous operations.
 
-export const NoticeTag = ({label}) => <span className="noticeTag noticeTag--{ label }">
-    {label}
-  </span>;
-
-export const RouteHighlighter = ({method, path}) => <div className={`routeHighlighter routeHighlighter--${method}`}>
-    <div className="routeHighlighter__method">
-      {method}
-    </div>
-    <div className="routeHighlighter__path">
-      {path}
-    </div>
-  </div>;
-
 The `/tasks` route gives information about the progress of [asynchronous operations](/learn/async/asynchronous_operations).
 
 ## Task object
 
-```json  theme={null}
+```json theme={null}
 {
   "uid": 4,
   "batchUids": 0,
@@ -37107,7 +37185,7 @@ The `details` object is set to `null` for `snapshotCreation` tasks.
 <Note>
   This is an experimental feature. Use the Meilisearch Cloud UI or the experimental features endpoint to activate it:
 
-  ```sh  theme={null}
+  ```sh theme={null}
   curl \
     -X PATCH 'MEILISEARCH_URL/experimental-features/' \
     -H 'Content-Type: application/json' \
@@ -37158,7 +37236,7 @@ You can use this `taskUid` to get more details on [the status of the task](#get-
 
 ## Get tasks
 
-<RouteHighlighter method="GET" path="/tasks" />
+<RouteHighlighter method="GET" />
 
 List all tasks globally, regardless of index. The `task` objects are contained in the `results` array.
 
@@ -37199,48 +37277,48 @@ Task results are [paginated](/learn/async/paginating_tasks) and can be [filtered
 ### Example
 
 <CodeGroup>
-  ```bash cURL theme={null} theme={null}
+  ```bash cURL theme={null}
   curl \
     -X GET 'MEILISEARCH_URL/tasks'
   ```
 
-  ```javascript JS theme={null} theme={null}
+  ```javascript JS theme={null}
   client.tasks.getTasks()
   ```
 
-  ```python Python theme={null} theme={null}
+  ```python Python theme={null}
   client.get_tasks()
   ```
 
-  ```php PHP theme={null} theme={null}
+  ```php PHP theme={null}
   $client->getTasks();
   ```
 
-  ```java Java theme={null} theme={null}
+  ```java Java theme={null}
   client.getTasks();
   ```
 
-  ```ruby Ruby theme={null} theme={null}
+  ```ruby Ruby theme={null}
   client.tasks
   ```
 
-  ```go Go theme={null} theme={null}
+  ```go Go theme={null}
   client.GetTasks(nil);
   ```
 
-  ```csharp C# theme={null} theme={null}
+  ```csharp C# theme={null}
   ResourceResults<Task> taskResult = await client.GetTasksAsync();
 
   ```
 
-  ```rust Rust theme={null} theme={null}
+  ```rust Rust theme={null}
   let tasks: TasksResults = client
     .get_tasks()
     .await
     .unwrap();
   ```
 
-  ```swift Swift theme={null} theme={null}
+  ```swift Swift theme={null}
   client.getTasks { (result) in
       switch result {
       case .success(let tasks):
@@ -37251,14 +37329,14 @@ Task results are [paginated](/learn/async/paginating_tasks) and can be [filtered
   }
   ```
 
-  ```dart Dart theme={null} theme={null}
+  ```dart Dart theme={null}
   await client.getTasks();
   ```
 </CodeGroup>
 
 #### Response: `200 Ok`
 
-```json  theme={null}
+```json theme={null}
 {
   "results": [
     {
@@ -37303,7 +37381,7 @@ Task results are [paginated](/learn/async/paginating_tasks) and can be [filtered
 
 ## Get one task
 
-<RouteHighlighter method="GET" path="/tasks/{task_uid}" />
+<RouteHighlighter method="GET" />
 
 Get a single task.
 
@@ -37320,48 +37398,48 @@ Get a single task.
 ### Example
 
 <CodeGroup>
-  ```bash cURL theme={null} theme={null}
+  ```bash cURL theme={null}
   curl \
     -X GET 'MEILISEARCH_URL/tasks/1'
   ```
 
-  ```javascript JS theme={null} theme={null}
+  ```javascript JS theme={null}
   client.tasks.getTask(1)
   ```
 
-  ```python Python theme={null} theme={null}
+  ```python Python theme={null}
   client.get_task(1)
   ```
 
-  ```php PHP theme={null} theme={null}
+  ```php PHP theme={null}
   $client->getTask(1);
   ```
 
-  ```java Java theme={null} theme={null}
+  ```java Java theme={null}
   client.getTask(1);
   ```
 
-  ```ruby Ruby theme={null} theme={null}
+  ```ruby Ruby theme={null}
   client.task(1)
   ```
 
-  ```go Go theme={null} theme={null}
+  ```go Go theme={null}
   client.GetTask(1);
   ```
 
-  ```csharp C# theme={null} theme={null}
+  ```csharp C# theme={null}
   TaskInfo task = await client.GetTaskAsync(1);
 
   ```
 
-  ```rust Rust theme={null} theme={null}
+  ```rust Rust theme={null}
   let task: Task = client
     .get_task(1)
     .await
     .unwrap();
   ```
 
-  ```swift Swift theme={null} theme={null}
+  ```swift Swift theme={null}
   client.getTask(taskUid: 1) { (result) in
         switch result {
         case .success(let task):
@@ -37372,14 +37450,14 @@ Get a single task.
     }
   ```
 
-  ```dart Dart theme={null} theme={null}
+  ```dart Dart theme={null}
   await client.getTask(1);
   ```
 </CodeGroup>
 
 #### Response: `200 Ok`
 
-```json  theme={null}
+```json theme={null}
 {
   "uid": 1,
   "indexUid": "movies",
@@ -37406,7 +37484,7 @@ Get a single task.
 
 ## Cancel tasks
 
-<RouteHighlighter method="POST" path="/tasks/cancel?{query_parameter}" />
+<RouteHighlighter method="POST" />
 
 Cancel any number of `enqueued` or `processing` tasks based on their `uid`, `status`, `type`, `indexUid`, or the date at which they were enqueued (`enqueuedAt`) or processed (`startedAt`).
 
@@ -37444,50 +37522,50 @@ A valid `uids`, `statuses`, `types`, `indexUids`, or date(`beforeXAt` or `afterX
 ### Example
 
 <CodeGroup>
-  ```bash cURL theme={null} theme={null}
+  ```bash cURL theme={null}
   curl \
     -X POST 'MEILISEARCH_URL/tasks/cancel?uids=1,2'
   ```
 
-  ```javascript JS theme={null} theme={null}
+  ```javascript JS theme={null}
   client.tasks.cancelTasks({ uids: [1, 2] })
   ```
 
-  ```python Python theme={null} theme={null}
+  ```python Python theme={null}
   client.cancel_tasks({'uids': ['1', '2']})
   ```
 
-  ```php PHP theme={null} theme={null}
+  ```php PHP theme={null}
   $client->cancelTasks((new CancelTasksQuery())->setUids([1, 2]));
   ```
 
-  ```java Java theme={null} theme={null}
+  ```java Java theme={null}
   CancelTasksQuery query = new CancelTasksQuery().setUids(new int[] {1, 2})
   client.cancelTasks(query);
   ```
 
-  ```ruby Ruby theme={null} theme={null}
+  ```ruby Ruby theme={null}
   client.cancel_tasks(uids: [1, 2])
   ```
 
-  ```go Go theme={null} theme={null}
+  ```go Go theme={null}
   client.CancelTasks(&meilisearch.CancelTasksQuery{
     UIDS: []int64{1, 2},
   });
   ```
 
-  ```csharp C# theme={null} theme={null}
+  ```csharp C# theme={null}
   await client.CancelTasksAsync(new CancelTasksQuery { Uids = new List<int> { 1, 2 } });
   ```
 
-  ```rust Rust theme={null} theme={null}
+  ```rust Rust theme={null}
   let mut query = tasks::TasksCancelQuery::new(&client);
   query.with_uids([1, 2]);
 
   let res = client.cancel_task_with(&query).await.unwrap();
   ```
 
-  ```swift Swift theme={null} theme={null}
+  ```swift Swift theme={null}
   client.cancelTasks(filter: CancelTasksQuery(uids: [1, 2])) { (result) in
       switch result {
       case .success(let taskInfo):
@@ -37498,14 +37576,14 @@ A valid `uids`, `statuses`, `types`, `indexUids`, or date(`beforeXAt` or `afterX
   }
   ```
 
-  ```dart Dart theme={null} theme={null}
+  ```dart Dart theme={null}
   await client.cancelTasks(params: CancelTasksQuery(uids: [1, 2]));
   ```
 </CodeGroup>
 
 #### Response: `200 Ok`
 
-```json  theme={null}
+```json theme={null}
 {
   "taskUid": 3,
   "indexUid": null,
@@ -37525,13 +37603,13 @@ You can use this `taskUid` to get more details on the [status of the task](#get-
 
 You can cancel all `processing` and `enqueued` tasks using the following filter:
 
-<RouteHighlighter method="POST" path="/tasks/cancel?statuses=processing,enqueued" />
+<RouteHighlighter method="POST" />
 
 The API key used must have access to all indexes (`"indexes": [*]`) and the [`task.cancel`](/reference/api/keys#actions) action.
 
 ## Delete tasks
 
-<RouteHighlighter method="DELETE" path="/tasks?{query_parameter}" />
+<RouteHighlighter method="DELETE" />
 
 Delete a finished (`succeeded`, `failed`, or `canceled`) task based on `uid`, `status`, `type`, `indexUid`, `canceledBy`, or date. Task deletion is an atomic transaction: **either all tasks are successfully deleted, or none are**.
 
@@ -37566,50 +37644,50 @@ A valid `uids`, `statuses`, `types`, `indexUids`, `canceledBy`, or date(`beforeX
 ### Example
 
 <CodeGroup>
-  ```bash cURL theme={null} theme={null}
+  ```bash cURL theme={null}
   curl \
     -X DELETE 'MEILISEARCH_URL/tasks?uids=1,2'
   ```
 
-  ```javascript JS theme={null} theme={null}
+  ```javascript JS theme={null}
   client.tasks.deleteTasks({ uids: [1, 2] })
   ```
 
-  ```python Python theme={null} theme={null}
+  ```python Python theme={null}
   client.delete_tasks({'uids': ['1', '2']})
   ```
 
-  ```php PHP theme={null} theme={null}
+  ```php PHP theme={null}
   $client->deleteTasks((new DeleteTasksQuery())->setUids([1, 2]));
   ```
 
-  ```java Java theme={null} theme={null}
+  ```java Java theme={null}
   DeleteTasksQuery query = new DeleteTasksQuery().setUids(new int[] {1, 2})
   client.deleteTasks(query);
   ```
 
-  ```ruby Ruby theme={null} theme={null}
+  ```ruby Ruby theme={null}
   client.delete_tasks(uids: [1, 2])
   ```
 
-  ```go Go theme={null} theme={null}
+  ```go Go theme={null}
   client.DeleteTaks(&meilisearch.DeleteTasksQuery{
     UIDS: []int64{1, 2},
   });
   ```
 
-  ```csharp C# theme={null} theme={null}
+  ```csharp C# theme={null}
   await client.DeleteTasksAsync(new DeleteTasksQuery { Uids = new List<int> { 1, 2 } });
   ```
 
-  ```rust Rust theme={null} theme={null}
+  ```rust Rust theme={null}
   let mut query = tasks::TasksDeleteQuery::new(&client);
   query.with_uids([1, 2]);
 
   let res = client.delete_tasks_with(&query).await.unwrap();
   ```
 
-  ```swift Swift theme={null} theme={null}
+  ```swift Swift theme={null}
   client.deleteTasks(filter: DeleteTasksQuery(uids: [1, 2])) { (result) in
       switch result {
       case .success(let taskInfo):
@@ -37620,14 +37698,14 @@ A valid `uids`, `statuses`, `types`, `indexUids`, `canceledBy`, or date(`beforeX
   }
   ```
 
-  ```dart Dart theme={null} theme={null}
+  ```dart Dart theme={null}
   await client.deleteTasks(params: DeleteTasksQuery(uids: [1, 2]));
   ```
 </CodeGroup>
 
 #### Response: `200 Ok`
 
-```json  theme={null}
+```json theme={null}
 {
   "taskUid": 3,
   "indexUid": null,
@@ -37647,7 +37725,7 @@ You can use this `taskUid` to get more details on the [status of the task](#get-
 
 You can delete all finished tasks by using the following filter:
 
-<RouteHighlighter method="DELETE" path="/tasks?statuses=failed,canceled,succeeded" />
+<RouteHighlighter method="DELETE" />
 
 The API key used must have access to all indexes (`"indexes": [*]`) and the [`task.delete`](/reference/api/keys#actions) action.
 
@@ -37656,15 +37734,6 @@ The API key used must have access to all indexes (`"indexes": [*]`) and the [`ta
 Source: https://www.meilisearch.com/docs/reference/api/version
 
 The /version route allows you to check the version of a running Meilisearch instance.
-
-export const RouteHighlighter = ({method, path}) => <div className={`routeHighlighter routeHighlighter--${method}`}>
-    <div className="routeHighlighter__method">
-      {method}
-    </div>
-    <div className="routeHighlighter__path">
-      {path}
-    </div>
-  </div>;
 
 The `/version` route allows you to check the version of a running Meilisearch instance.
 
@@ -37678,7 +37747,7 @@ The `/version` route allows you to check the version of a running Meilisearch in
 
 ## Get version of Meilisearch
 
-<RouteHighlighter method="GET" path="/version" />
+<RouteHighlighter method="GET" />
 
 Get version of Meilisearch.
 
@@ -37743,7 +37812,7 @@ Get version of Meilisearch.
 
 #### Response: `200 Ok`
 
-```json  theme={null}
+```json theme={null}
 {
   "commitSha": "b46889b5f0f2f8b91438a08a358ba8f05fc09fc1",
   "commitDate": "2019-11-15T09:51:54.278247+00:00",
@@ -37757,20 +37826,11 @@ Source: https://www.meilisearch.com/docs/reference/api/webhooks
 
 Use the /webhooks to trigger automatic workflows when Meilisearch finishes processing tasks.
 
-export const RouteHighlighter = ({method, path}) => <div className={`routeHighlighter routeHighlighter--${method}`}>
-    <div className="routeHighlighter__method">
-      {method}
-    </div>
-    <div className="routeHighlighter__path">
-      {path}
-    </div>
-  </div>;
-
 Use the `/webhooks` to trigger automatic workflows when Meilisearch finishes processing tasks.
 
 ## The webhook object
 
-```json  theme={null}
+```json theme={null}
 {
   "uuid": "V4_UUID_GENERATED_BY_MEILISEARCH",
   "url": "WEBHOOK_NOTIFICATION_TARGET_URL",
@@ -37793,7 +37853,7 @@ When Meilisearch finishes processing a task, it sends the relevant [task object]
 
 ## Get all webhooks
 
-<RouteHighlighter method="GET" path="/webhooks" />
+<RouteHighlighter method="GET" />
 
 Get a list of all webhooks configured in the current Meilisearch instance.
 
@@ -37824,7 +37884,7 @@ Get a list of all webhooks configured in the current Meilisearch instance.
 
 #### Response: `200 OK`
 
-```json  theme={null}
+```json theme={null}
 {
   "results": [
     {
@@ -37847,7 +37907,7 @@ Get a list of all webhooks configured in the current Meilisearch instance.
 
 ## Get a single webhook
 
-<RouteHighlighter method="GET" path="/webhooks/{uuid}" />
+<RouteHighlighter method="GET" />
 
 Get a single webhook configured in the current Meilisearch instance.
 
@@ -37857,7 +37917,7 @@ Get a single webhook configured in the current Meilisearch instance.
 
 #### Response: `200 OK`
 
-```json  theme={null}
+```json theme={null}
 {
   "uuid": "UUID_V4",
   "url": "WEBHOOK_TARGET_URL",
@@ -37870,7 +37930,7 @@ Get a single webhook configured in the current Meilisearch instance.
 
 ## Create a webhook
 
-<RouteHighlighter method="POST" path="/webhooks" />
+<RouteHighlighter method="POST" />
 
 Create a new webhook. When Meilisearch finishes processing a task, it sends the relevant [task object](/reference/api/tasks#task-object) to all configured webhooks.
 
@@ -37930,7 +37990,7 @@ You can create up to 20 webhooks. Having multiple webhooks active at the same ti
 
 #### Response: `200 OK`
 
-```json  theme={null}
+```json theme={null}
 {
   "uuid": "627ea538-733d-4545-8d2d-03526eb381ce",
   "url": "WEBHOOK_TARGET_URL",
@@ -37944,7 +38004,7 @@ You can create up to 20 webhooks. Having multiple webhooks active at the same ti
 
 ## Update a webhook
 
-<RouteHighlighter method="PATCH" path="/webhooks/{uuid}" />
+<RouteHighlighter method="PATCH" />
 
 Update the configuration for the specified webhook. To remove a field, set its value to `null`.
 
@@ -38005,7 +38065,7 @@ When updating the `headers` field, Meilisearch only changes the headers you have
 
 #### Response: `200 OK`
 
-```json  theme={null}
+```json theme={null}
 {
   "uuid": "627ea538-733d-4545-8d2d-03526eb381ce",
   "url": "WEBHOOK_TARGET_URL",
@@ -38018,7 +38078,7 @@ When updating the `headers` field, Meilisearch only changes the headers you have
 
 ## Delete a webhook
 
-<RouteHighlighter method="DELETE" path="/webhooks/{uuid}" />
+<RouteHighlighter method="DELETE" />
 
 Delete a webhook and stop sending task completion data to the target URL.
 
@@ -38853,7 +38913,7 @@ All detailed task responses contain an [`error`](/reference/api/tasks#error) fie
 
 ### Error format
 
-```json  theme={null}
+```json theme={null}
 {
   "message": "Index `movies` not found.",
   "code": "index_not_found",

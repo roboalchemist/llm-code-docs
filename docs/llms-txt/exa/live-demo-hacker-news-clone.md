@@ -1,4 +1,8 @@
-# Source: https://docs.exa.ai/examples/live-demo-hacker-news-clone.md
+# Source: https://exa.ai/docs/examples/live-demo-hacker-news-clone.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://exa.ai/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Hacker News Clone
 
@@ -109,8 +113,3 @@ If orange isn't your vibe, go to the styles.css. To get there, go to the left si
 To keep your site running all the time, you'll need to deploy it on Replit using Deployments. Click Deploy in the top right corner and select Autoscale. You can leave the default settings and click Deploy. This does cost money though. Alternatively you can deploy the site on your own. It's only two files (index.js and public/styles.css).
 
 Well, there you have it! You just made your very own Hacker News-style site using the Exa API. Share it on X and [tag us](https://x.com/ExaAILabs) for a retweet!
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.exa.ai/llms.txt

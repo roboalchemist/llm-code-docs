@@ -1,5 +1,9 @@
 # Source: https://smartcar.com/docs/api-reference/management/get-vehicle-connections.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://smartcar.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Vehicle Connections
 
 > Returns a paged list of all vehicles that are connected to the application associated with the management API token used, sorted in descending order by connection date.

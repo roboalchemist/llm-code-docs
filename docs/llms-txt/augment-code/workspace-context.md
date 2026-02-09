@@ -1,5 +1,9 @@
 # Source: https://docs.augmentcode.com/cli/setup-auggie/workspace-context.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.augmentcode.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Workspace context
 
 > Auggie will automatically index the current working directory or directory you specify to give Augment a full view of your system.

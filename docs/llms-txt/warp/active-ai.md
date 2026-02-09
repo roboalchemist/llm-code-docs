@@ -1,4 +1,4 @@
-# Source: https://docs.warp.dev/agents/active-ai.md
+# Source: https://docs.warp.dev/agent-platform/agent/active-ai.md
 
 # Active AI
 
@@ -14,19 +14,19 @@ Prompt Suggestions are contextual, AI-powered suggestions that activate Agent Mo
 
 To disable, please visit `Settings > AI > Active AI > Prompt Suggestions`
 
-<figure><img src="https://2297236823-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-MbqIgTw17KQvq_DQuRr%2Fuploads%2Fgit-blob-9068c40fd8eea9b45eebcda6f08832023b4e9fa0%2Fprompt-suggestions-example.png?alt=media" alt=""><figcaption><p>Example of inline banner popping up when relevant contextually.</p></figcaption></figure>
+<figure><img src="https://769506432-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FAULCelT4yIUOcSwWWvPk%2Fuploads%2Fgit-blob-9068c40fd8eea9b45eebcda6f08832023b4e9fa0%2Fprompt-suggestions-example%20(1).png?alt=media" alt=""><figcaption><p>Example of inline banner popping up when relevant contextually.</p></figcaption></figure>
 
 #### Accepting a Prompt Suggestion
 
-If you press `CMD-ENTER` (on Mac), `CTRL-SHIFT-ENTER` (on Linux/Windows), or click on the chip, the suggestion will auto-populate into your input and run against [Agent Mode](https://docs.warp.dev/agents/using-agents) (with the most recent block attached).
+If you press `CMD-ENTER` (on Mac), `CTRL-SHIFT-ENTER` (on Linux/Windows), or click on the chip, the suggestion will auto-populate into your input and run against [Agent Mode](https://docs.warp.dev/agent-platform/agent/using-agents) (with the most recent block attached).
 
 {% hint style="info" %}
 Prompt Suggestions use an LLM to generate prompts based on your terminal session, specifically the most recent block. These AI requests do not contribute towards your AI limits, however, any accepted prompts run in Agent Mode contribute as normal. Visit **Settings > AI > Active AI** if you'd like to turn it off.
 
-If [Secret Redaction](https://docs.warp.dev/privacy/secret-redaction) is enabled, any selected regexes are applied to content sent to Active AI features to prevent any sensitive data being leaked.
+If [Secret Redaction](https://docs.warp.dev/support-and-community/privacy-and-security/secret-redaction) is enabled, any selected regexes are applied to content sent to Active AI features to prevent any sensitive data being leaked.
 {% endhint %}
 
-<figure><img src="https://2297236823-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-MbqIgTw17KQvq_DQuRr%2Fuploads%2Fgit-blob-010f0d6e8d02c054768b2939c9d45cf84447b5e4%2Fprompt-suggestions-setting.png?alt=media&#x26;token=dd516c64-622a-49e0-a624-d33bc4deb542" alt=""><figcaption><p>Setting for Prompt Suggestions</p></figcaption></figure>
+<figure><img src="https://769506432-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FAULCelT4yIUOcSwWWvPk%2Fuploads%2Fgit-blob-010f0d6e8d02c054768b2939c9d45cf84447b5e4%2Fprompt-suggestions-setting%20(1).png?alt=media" alt=""><figcaption><p>Setting for Prompt Suggestions</p></figcaption></figure>
 
 ### Next Command
 
@@ -34,12 +34,12 @@ Next Command uses AI to suggest the next command to run based on your active ter
 
 To disable, please visit `Settings > AI > Active AI > Next Command`
 
-<figure><img src="https://2297236823-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-MbqIgTw17KQvq_DQuRr%2Fuploads%2Fgit-blob-289af9c9cd2fb02ca803eab4b469215a56ad851c%2FScreenshot%202024-12-12%20at%205.26.10%E2%80%AFPM.png?alt=media" alt=""><figcaption></figcaption></figure>
+<figure><img src="https://769506432-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FAULCelT4yIUOcSwWWvPk%2Fuploads%2Fgit-blob-289af9c9cd2fb02ca803eab4b469215a56ad851c%2Fnext-command.png?alt=media" alt=""><figcaption></figcaption></figure>
 
 {% hint style="info" %}
 Next Command is an LLM-based feature which utilizes your command history (enriched with git branch, exit code, and directory metadata) as well as recent block input and output to generate the next command suggestions.
 
-[Secret Redaction](https://docs.warp.dev/privacy/secret-redaction) is automatically applied to any content sent to Active AI features to prevent any sensitive data being leaked.
+[Secret Redaction](https://docs.warp.dev/support-and-community/privacy-and-security/secret-redaction) is automatically applied to any content sent to Active AI features to prevent any sensitive data being leaked.
 {% endhint %}
 
 #### Accepting Next Commands
@@ -54,11 +54,11 @@ Next Commands are unlimited across all of Warp's plans, including the Free plan.
 
 Suggested Code Diffs automatically surface potential fixes for command-line errors encountered within Warp. These are most often compiler errors, but they may also include other situations where Warp can confidently predict a straightforward resolution, such as simple merge conflicts.
 
-<figure><img src="https://2297236823-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-MbqIgTw17KQvq_DQuRr%2Fuploads%2Fgit-blob-0dabe7c7313fc92d98dbb646fc0f30e6a95faf93%2Fsuggested-code-diffs-generating-fix.png?alt=media" alt=""><figcaption></figcaption></figure>
+<figure><img src="https://769506432-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FAULCelT4yIUOcSwWWvPk%2Fuploads%2Fgit-blob-0dabe7c7313fc92d98dbb646fc0f30e6a95faf93%2Fsuggested-code-diffs-generating-fix.png?alt=media" alt=""><figcaption></figcaption></figure>
 
 When an error occurs, Warp evaluates whether it is appropriate for an LLM to generate a fix. If so, a “Generating fix” banner will appear while Warp prepares a proposed diff. You can stop this process at any time by pressing `CTRL + C` or the stop button.
 
-<figure><img src="https://2297236823-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-MbqIgTw17KQvq_DQuRr%2Fuploads%2Fgit-blob-a659d3c741620c94996bca9f732f68f09b39f984%2Fsuggested-code-diffs.png?alt=media" alt=""><figcaption></figcaption></figure>
+<figure><img src="https://769506432-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FAULCelT4yIUOcSwWWvPk%2Fuploads%2Fgit-blob-a659d3c741620c94996bca9f732f68f09b39f984%2Fsuggested-code-diffs.png?alt=media" alt=""><figcaption></figcaption></figure>
 
 #### **Using a Suggested Code Diff**
 
@@ -72,4 +72,4 @@ Suggested Code Diffs do not count toward your AI request limits. There are maxim
 
 ## Active AI Privacy
 
-See our [Privacy Page](https://docs.warp.dev/privacy/privacy) for more information on how we handle data with Active AI.
+See our [Privacy Page](https://docs.warp.dev/support-and-community/privacy-and-security/privacy) for more information on how we handle data with Active AI.

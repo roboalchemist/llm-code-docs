@@ -1,6 +1,6 @@
 # Source: https://docs.apify.com/academy/expert-scraping-with-apify/saving-useful-stats.md
 
-# VII - Saving useful run statistics
+# Saving useful run statistics
 
 **Understand how to save statistics about an Actor's run, what types of statistics you can save, and why you might want to save them for a large-scale scraper.**
 
@@ -14,10 +14,10 @@ The types of values that are saved are totally up to you, but the most common ar
 
 Before moving on, give these valuable resources a quick lookover:
 
-* Refamiliarize with the various available data on the https://crawlee.dev/api/core/class/Request.
-* Learn about the https://crawlee.dev/api/browser-crawler/interface/BrowserCrawlerOptions#failedRequestHandler.
-* Understand how to use the https://crawlee.dev/api/browser-crawler/interface/BrowserCrawlerOptions#errorHandler function to handle request failures.
-* Ensure you are comfortable using https://docs.apify.com/sdk/js/docs/guides/result-storage#key-value-store and https://docs.apify.com/sdk/js/docs/guides/result-storage#dataset, and understand the differences between the two storage types.
+* Refamiliarize with the various available data on the [Request object](https://crawlee.dev/api/core/class/Request).
+* Learn about the [failedRequestHandler function](https://crawlee.dev/api/browser-crawler/interface/BrowserCrawlerOptions#failedRequestHandler).
+* Understand how to use the [errorHandler](https://crawlee.dev/api/browser-crawler/interface/BrowserCrawlerOptions#errorHandler) function to handle request failures.
+* Ensure you are comfortable using [key-value stores](https://docs.apify.com/sdk/js/docs/guides/result-storage#key-value-store) and [datasets](https://docs.apify.com/sdk/js/docs/guides/result-storage#dataset), and understand the differences between the two storage types.
 
 ## Knowledge check 📝
 
@@ -55,7 +55,7 @@ Also, an object including these values should be persisted during the run in th 
 ```
 
 
-https://docs.apify.com/academy/expert-scraping-with-apify/solutions/saving-stats.md
+[Solution](https://docs.apify.com/academy/expert-scraping-with-apify/solutions/saving-stats.md)
 
 ## Wrap up
 

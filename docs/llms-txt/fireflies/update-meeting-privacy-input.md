@@ -1,5 +1,9 @@
 # Source: https://docs.fireflies.ai/schema/input/update-meeting-privacy-input.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.fireflies.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # UpdateMeetingPrivacyInput
 
 > Schema for UpdateMeetingPrivacyInput

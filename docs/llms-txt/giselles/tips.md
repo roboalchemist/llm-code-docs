@@ -1,5 +1,9 @@
 # Source: https://docs.giselles.ai/en/prompts/tips.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.giselles.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Tips
 
 > Practical Tips for Effective Prompt Creation in Giselle’s Generator Nodes.
@@ -67,8 +71,8 @@ Although Giselle nodes are single-shot, you can achieve iterative refinement by 
 Combine diverse AI models across nodes to maximize output quality:
 
 * **Claude** for nuanced analysis and ethical considerations.
-* **GPT-4o** for structured and creative content creation.
-* **Fal AI** for high-quality image and visual content generation.
+* **GPT-5.2** for structured and creative content creation.
+* **Gemini** for high-quality image and visual content generation.
 
 ## Common Pitfalls to Avoid
 
@@ -135,9 +139,8 @@ Output Format:
 Choose AI models carefully according to task requirements and capabilities:
 
 * **Claude**: nuanced, ethical analyses.
-* **Gemini**: complex multimodal inputs.
-* **GPT-4o**: structured outputs and creative content.
-* **Fal AI**: image generation tasks.
+* **Gemini**: complex multimodal inputs and image generation.
+* **GPT-5.2**: structured outputs and creative content.
 
 ### 2. Visualize and Collaborate
 

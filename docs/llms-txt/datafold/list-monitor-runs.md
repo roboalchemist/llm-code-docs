@@ -1,155 +1,153 @@
 # Source: https://docs.datafold.com/api-reference/monitors/list-monitor-runs.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.datafold.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # List Monitor Runs
+
+
 
 ## OpenAPI
 
 ````yaml openapi-public.json get /api/v1/monitors/{id}/runs
+openapi: 3.1.0
+info:
+  contact:
+    email: support@datafold.com
+    name: API Support
+  description: >-
+    The Datafold API reference is a guide to our available endpoints and
+    authentication methods.
+
+    If you're just getting started with Datafold, we recommend first checking
+    out our [documentation](https://docs.datafold.com).
+
+
+    :::info
+      To use the Datafold API, you should first create a Datafold API Key,
+      which should be stored as a local environment variable named DATAFOLD_API_KEY.
+      This can be set in your Datafold Cloud's Settings under the Account page.
+    :::
+  title: Datafold API
+  version: latest
+servers:
+  - description: Default server
+    url: https://app.datafold.com
+security:
+  - ApiKeyAuth: []
 paths:
-  path: /api/v1/monitors/{id}/runs
-  method: get
-  servers:
-    - url: https://app.datafold.com
-      description: Default server
-  request:
-    security:
-      - title: ApiKeyAuth
-        parameters:
-          query: {}
-          header:
-            Authorization:
-              type: apiKey
-              description: Use the 'Authorization' header with the format 'Key <api-key>'
-          cookie: {}
-    parameters:
-      path:
-        id:
+  /api/v1/monitors/{id}/runs:
+    get:
+      tags:
+        - Monitors
+      summary: List Monitor Runs
+      operationId: list_monitor_runs_api_v1_monitors__id__runs_get
+      parameters:
+        - description: The unique identifier of the monitor.
+          in: path
+          name: id
+          required: true
           schema:
-            - type: integer
-              required: true
-              title: Id
-              description: The unique identifier of the monitor.
-      query:
-        page:
+            description: The unique identifier of the monitor.
+            title: Id
+            type: integer
+        - description: The page number to retrieve.
+          in: query
+          name: page
+          required: false
           schema:
-            - type: integer
-              required: false
-              title: Page
-              description: The page number to retrieve.
-              default: 1
-        page_size:
+            default: 1
+            description: The page number to retrieve.
+            title: Page
+            type: integer
+        - description: The number of items to retrieve per page.
+          in: query
+          name: page_size
+          required: false
           schema:
-            - type: integer
-              required: false
-              title: Page Size
-              description: The number of items to retrieve per page.
-              default: 10
-        start_time:
+            default: 10
+            description: The number of items to retrieve per page.
+            title: Page Size
+            type: integer
+        - description: Include runs with a timestamp >= this value.
+          in: query
+          name: start_time
+          required: false
           schema:
-            - type: string
-              required: false
-              title: Start Time
-              description: Include runs with a timestamp >= this value.
-              format: date-time
-            - type: 'null'
-              required: false
-              title: Start Time
-              description: Include runs with a timestamp >= this value.
-        end_time:
+            anyOf:
+              - format: date-time
+                type: string
+              - type: 'null'
+            description: Include runs with a timestamp >= this value.
+            title: Start Time
+        - description: Include runs with a timestamp <= this value.
+          in: query
+          name: end_time
+          required: false
           schema:
-            - type: string
-              required: false
-              title: End Time
-              description: Include runs with a timestamp <= this value.
-              format: date-time
-            - type: 'null'
-              required: false
-              title: End Time
-              description: Include runs with a timestamp <= this value.
-      header: {}
-      cookie: {}
-    body: {}
-  response:
-    '200':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              count:
-                allOf:
-                  - description: Total number of monitor runs.
-                    title: Count
-                    type: integer
-              page:
-                allOf:
-                  - description: Current page number in the paginated result.
-                    title: Page
-                    type: integer
-              page_size:
-                allOf:
-                  - description: Number of runs per page.
-                    title: Page Size
-                    type: integer
-              runs:
-                allOf:
-                  - description: List of monitor runs.
-                    items:
-                      $ref: '#/components/schemas/ApiPublicMonitorRunOut'
-                    title: Runs
-                    type: array
-              total_pages:
-                allOf:
-                  - description: Total number of pages available.
-                    title: Total Pages
-                    type: integer
-            title: ApiPublicListMonitorRunsOut
-            refIdentifier: '#/components/schemas/ApiPublicListMonitorRunsOut'
-            requiredProperties:
-              - count
-              - runs
-              - page
-              - page_size
-              - total_pages
-        examples:
-          example:
-            value:
-              count: 123
-              page: 123
-              page_size: 123
-              runs:
-                - diff_id: 123
-                  monitor_id: 123
-                  run_id: 123
-                  started_at: '2023-11-07T05:31:56Z'
-                  state: ok
-              total_pages: 123
-        description: Successful Response
-    '422':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              detail:
-                allOf:
-                  - items:
-                      $ref: '#/components/schemas/ValidationError'
-                    title: Detail
-                    type: array
-            title: HTTPValidationError
-            refIdentifier: '#/components/schemas/HTTPValidationError'
-        examples:
-          example:
-            value:
-              detail:
-                - loc:
-                    - <string>
-                  msg: <string>
-                  type: <string>
-        description: Validation Error
-  deprecated: false
-  type: path
+            anyOf:
+              - format: date-time
+                type: string
+              - type: 'null'
+            description: Include runs with a timestamp <= this value.
+            title: End Time
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiPublicListMonitorRunsOut'
+          description: Successful Response
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
 components:
   schemas:
+    ApiPublicListMonitorRunsOut:
+      properties:
+        count:
+          description: Total number of monitor runs.
+          title: Count
+          type: integer
+        page:
+          description: Current page number in the paginated result.
+          title: Page
+          type: integer
+        page_size:
+          description: Number of runs per page.
+          title: Page Size
+          type: integer
+        runs:
+          description: List of monitor runs.
+          items:
+            $ref: '#/components/schemas/ApiPublicMonitorRunOut'
+          title: Runs
+          type: array
+        total_pages:
+          description: Total number of pages available.
+          title: Total Pages
+          type: integer
+      required:
+        - count
+        - runs
+        - page
+        - page_size
+        - total_pages
+      title: ApiPublicListMonitorRunsOut
+      type: object
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          title: Detail
+          type: array
+      title: HTTPValidationError
+      type: object
     ApiPublicMonitorRunOut:
       properties:
         diff_id:
@@ -183,18 +181,6 @@ components:
         - monitor_id
       title: ApiPublicMonitorRunOut
       type: object
-    MonitorRunState:
-      enum:
-        - ok
-        - alert
-        - error
-        - learning
-        - checking
-        - created
-        - skipped
-        - cancelled
-      title: MonitorRunState
-      type: string
     ValidationError:
       properties:
         loc:
@@ -216,5 +202,23 @@ components:
         - type
       title: ValidationError
       type: object
+    MonitorRunState:
+      enum:
+        - ok
+        - alert
+        - error
+        - learning
+        - checking
+        - created
+        - skipped
+        - cancelled
+      title: MonitorRunState
+      type: string
+  securitySchemes:
+    ApiKeyAuth:
+      description: Use the 'Authorization' header with the format 'Key <api-key>'
+      in: header
+      name: Authorization
+      type: apiKey
 
 ````

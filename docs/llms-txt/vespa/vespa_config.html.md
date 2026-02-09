@@ -29,11 +29,11 @@ The following global flags/options can be configured:
 
 application
 
-Specifies the application ID to manage. It has three parts, separated by dots, with the third part being optional. If the third part is omitted it defaults to "default". This is only relevant for the "cloud" and "hosted" targets. See [https://docs.vespa.ai/en/cloud/tenant-apps-instances.html](https://docs.vespa.ai/en/cloud/tenant-apps-instances.html) for more details. This has no default value. Examples: tenant1.app1, tenant1.app1.instance1
+Specifies the application ID to manage. It has three parts, separated by dots, with the third part being optional. If the third part is omitted it defaults to "default". This is only relevant for the "cloud" and "hosted" targets. See [https://docs.vespa.ai/en/learn/tenant-apps-instances.html](https://docs.vespa.ai/en/learn/tenant-apps-instances.html) for more details. This has no default value. Examples: tenant1.app1, tenant1.app1.instance1
 
 cluster
 
-Specifies the container cluster to manage. If left empty (default) and the application has only one container cluster, that cluster is chosen automatically. When an application has multiple cluster this must specify a valid cluster name, as specified in services.xml. See[https://docs.vespa.ai/en/reference/services-container.html](https://docs.vespa.ai/en/reference/services-container.html) for more details.
+Specifies the container cluster to manage. If left empty (default) and the application has only one container cluster, that cluster is chosen automatically. When an application has multiple cluster this must specify a valid cluster name, as specified in services.xml. See[https://docs.vespa.ai/en/reference/applications/services/container.html](https://docs.vespa.ai/en/reference/applications/services/container.html) for more details.
 
 color
 
@@ -60,7 +60,7 @@ Authentication is configured automatically for the cloud and hosted targets. To 
 
 zone
 
-Specifies a custom zone to use when connecting to a Vespa Cloud application. This is only relevant for cloud and hosted targets and defaults to a dev zone. See [https://docs.vespa.ai/en/cloud/zones.html](https://docs.vespa.ai/en/cloud/zones.html) for available zones. Examples: dev.aws-us-east-1c, dev.gcp-us-central1-f
+Specifies a custom zone to use when connecting to a Vespa Cloud application. This is only relevant for cloud and hosted targets and defaults to a dev zone. See [https://docs.vespa.ai/en/operations/zones.html](https://docs.vespa.ai/en/operations/zones.html) for available zones. Examples: dev.aws-us-east-1c, dev.gcp-us-central1-f
 
 ```
 vespa config [flags]
@@ -91,7 +91,7 @@ vespa config [flags]
 - [vespa config set](vespa_config_set.html) - Set a configuration option.
 - [vespa config unset](vespa_config_unset.html) - Unset a configuration option.
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ### On this page:
 

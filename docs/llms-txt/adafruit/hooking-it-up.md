@@ -1,5 +1,3 @@
-# Source: https://learn.adafruit.com/mcp4725-12-bit-dac-with-raspberry-pi/hooking-it-up.md
-
 # Source: https://learn.adafruit.com/adafruit-16-channel-servo-driver-with-raspberry-pi/hooking-it-up.md
 
 # Adafruit 16 Channel Servo Driver with Raspberry Pi
@@ -44,7 +42,7 @@ We have a spot on the PCB for soldering in an electrolytic capacitor. Based on y
 [5V 2A (2000mA) switching power supply - UL Listed](https://www.adafruit.com/product/276)
 This is an FCC/CE certified and UL listed power supply. Need a lot of 5V power? This switching supply gives a clean regulated 5V output at up to 2000mA. 110 or 240 input, so it works in any country. The plugs are "US 2-prong" style so you may need a plug adapter, but you can pick one...
 
-Out of Stock
+In Stock
 [Buy Now](https://www.adafruit.com/product/276)
 [Related Guides to the Product](https://learn.adafruit.com/products/276/guides)
 ### Female DC Power adapter - 2.1mm jack to screw terminal block
@@ -100,18 +98,18 @@ In Stock
 
 ## Related Guides
 
-- [Adafruit  PCA9685 16-Channel Servo Driver](https://learn.adafruit.com/16-channel-pwm-servo-driver.md)
-- [MIDI Controlled Robot Lyre with CircuitPython](https://learn.adafruit.com/midi-controlled-robot-lyre-with-circuitpython.md)
 - [Raspberry Pi Wifi-Controlled Cat Laser Toy](https://learn.adafruit.com/raspberry-pi-wifi-controlled-cat-laser-toy.md)
+- [Adafruit  PCA9685 16-Channel Servo Driver](https://learn.adafruit.com/16-channel-pwm-servo-driver.md)
 - [CircuitPython Hardware: PCA9685 PWM & Servo Driver](https://learn.adafruit.com/micropython-hardware-pca9685-pwm-and-servo-driver.md)
-- [Adafruit IO Basics: Analog Output](https://learn.adafruit.com/adafruit-io-basics-analog-output.md)
-- [Adafruit Motor Selection Guide](https://learn.adafruit.com/adafruit-motor-selection-guide.md)
 - [LED Tricks: Gamma Correction](https://learn.adafruit.com/led-tricks-gamma-correction.md)
-- [PiGRRL 2](https://learn.adafruit.com/pigrrl-2.md)
-- [Retro Gaming with Raspberry Pi](https://learn.adafruit.com/retro-gaming-with-raspberry-pi.md)
-- [Arduino Lesson 6. Digital Inputs](https://learn.adafruit.com/adafruit-arduino-lesson-6-digital-inputs.md)
-- [Playing sounds and using buttons with Raspberry Pi](https://learn.adafruit.com/playing-sounds-and-using-buttons-with-raspberry-pi.md)
-- [Let’s Put LEDs in Things!](https://learn.adafruit.com/lets-put-leds-in-things.md)
-- [ Adafruit DRV8833 DC/Stepper Motor Driver Breakout Board](https://learn.adafruit.com/adafruit-drv8833-dc-stepper-motor-driver-breakout-board.md)
-- [Arduino Yun Temboo Twitter Tracker](https://learn.adafruit.com/arduino-yun-temboo-twitter-tracker.md)
-- [Adafruit 16-Channel PWM/Servo HAT & Bonnet for Raspberry Pi](https://learn.adafruit.com/adafruit-16-channel-pwm-servo-hat-for-raspberry-pi.md)
+- [Adafruit Motor Selection Guide](https://learn.adafruit.com/adafruit-motor-selection-guide.md)
+- [Adafruit IO Basics: Analog Output](https://learn.adafruit.com/adafruit-io-basics-analog-output.md)
+- [MIDI Controlled Robot Lyre with CircuitPython](https://learn.adafruit.com/midi-controlled-robot-lyre-with-circuitpython.md)
+- [Digital Circuits 4: Sequential Circuits](https://learn.adafruit.com/digital-circuits-4-sequential-circuits.md)
+- [MASLOW: an Open WiFi Detector with Adafruit Pro Trinket and CC3000](https://learn.adafruit.com/wifi-hotspot-finder-adafruit-pro-trinket-cc3000.md)
+- [Current Limiting Stepper Driver with DRV8871](https://learn.adafruit.com/current-limiting-stepper-driver-with-drv8871.md)
+- [CRICKIT Flippy Robot](https://learn.adafruit.com/crickit-flippy-robot.md)
+- [Adafruit NFC/RFID on Raspberry Pi](https://learn.adafruit.com/adafruit-nfc-rfid-on-raspberry-pi.md)
+- [Stumble-Bot](https://learn.adafruit.com/stumble-bot-with-circuit-playground-and-crickit.md)
+- [Adabot Toy Robot Friend](https://learn.adafruit.com/adabot-rp2040.md)
+- [Making PCB Jewelry & Art with Gingerbread and KiCad](https://learn.adafruit.com/making-pcb-art-with-gingerbread-and-kicad.md)

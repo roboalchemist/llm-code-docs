@@ -6,7 +6,7 @@
 
 ## Browser challenges
 
-Browser challenges are a type of security measure that relies on browser fingerprints. These challenges typically involve a JavaScript program that collects both static and dynamic browser fingerprints. Static fingerprints include attributes such as User-Agent, video card, and number of CPU cores available. Dynamic fingerprints, on the other hand, might involve rendering fonts or objects in the canvas (known as a https://docs.apify.com/academy/anti-scraping/techniques/fingerprinting.md#with-canvases), or playing audio in the https://docs.apify.com/academy/anti-scraping/techniques/fingerprinting.md#from-audiocontext. We were covering the details in the previous https://docs.apify.com/academy/anti-scraping/techniques/fingerprinting.md lesson.
+Browser challenges are a type of security measure that relies on browser fingerprints. These challenges typically involve a JavaScript program that collects both static and dynamic browser fingerprints. Static fingerprints include attributes such as User-Agent, video card, and number of CPU cores available. Dynamic fingerprints, on the other hand, might involve rendering fonts or objects in the canvas (known as a [canvas fingerprint](https://docs.apify.com/academy/anti-scraping/techniques/fingerprinting.md#with-canvases)), or playing audio in the [AudioContext](https://docs.apify.com/academy/anti-scraping/techniques/fingerprinting.md#from-audiocontext). We were covering the details in the previous [fingerprinting](https://docs.apify.com/academy/anti-scraping/techniques/fingerprinting.md) lesson.
 
 While some browser challenges are relatively straightforward - for example, loading an image and checking if it renders correctly - others can be much more complex. One well-known example of a complex browser challenge is Cloudflare's browser screen check. In this challenge, Cloudflare visually inspects the browser screen and blocks the first request if any inconsistencies are found. This approach provides an extra layer of protection against automated attacks.
 
@@ -22,8 +22,8 @@ When you encounter a Cloudflare browser challenge, the platform checks your canv
 
 It's worth noting that Cloudflare's protection is highly customizable, and can be adjusted to be extremely strict or relatively loose. This makes it a powerful tool for website owners who want to protect against automated traffic, while still allowing legitimate traffic to flow through.
 
-If you want to learn how to bypass Cloudflare challenge visit the https://docs.apify.com/academy/anti-scraping/mitigation/cloudflare-challenge.md article.
+If you want to learn how to bypass Cloudflare challenge visit the [Bypassing Cloudflare challenge](https://docs.apify.com/academy/anti-scraping/mitigation/cloudflare-challenge.md) article.
 
 ## Next up
 
-In the https://docs.apify.com/academy/anti-scraping/techniques/captchas.md, we'll be covering **CAPTCHAs**, which were mentioned throughout this lesson. It's important to note that attempting to solve a captcha programmatically is the last resort - always try to avoid being presented with the captcha in the first place by using the techniques mentioned in this lesson.
+In the [next lesson](https://docs.apify.com/academy/anti-scraping/techniques/captchas.md), we'll be covering **CAPTCHAs**, which were mentioned throughout this lesson. It's important to note that attempting to solve a captcha programmatically is the last resort - always try to avoid being presented with the captcha in the first place by using the techniques mentioned in this lesson.

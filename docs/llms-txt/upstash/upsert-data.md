@@ -2,117 +2,90 @@
 
 # Source: https://upstash.com/docs/vector/api/endpoints/upsert-data.md
 
-# Source: https://upstash.com/docs/vector/sdks/php/commands/upsert-data.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
-# Source: https://upstash.com/docs/vector/api/endpoints/upsert-data.md
+# Upsert Data
 
-# Source: https://upstash.com/docs/vector/sdks/php/commands/upsert-data.md
+> Upserts (inserts or updates) the raw text data after embedding it.
 
-# Source: https://upstash.com/docs/vector/api/endpoints/upsert-data.md
+<Warning>
+  To use this endpoint, the index must be created with an [embedding model](/vector/features/embeddingmodels).
+</Warning>
 
-# Source: https://upstash.com/docs/vector/sdks/php/commands/upsert-data.md
+<Tip>
+  Vector embedding of the raw text data will be upserted into the
+  default namespace by default.
+  You can use a different namespace by specifying it in the request path.
+</Tip>
 
-# Source: https://upstash.com/docs/vector/api/endpoints/upsert-data.md
+## Request
 
-# Source: https://upstash.com/docs/vector/sdks/php/commands/upsert-data.md
+You can either upsert a single data, or multiple data in an array.
 
-# Source: https://upstash.com/docs/vector/api/endpoints/upsert-data.md
+<ParamField body="id" type="string" required>
+  The id of the vector.
+</ParamField>
 
-# Source: https://upstash.com/docs/vector/sdks/php/commands/upsert-data.md
+<ParamField body="data" type="string" required>
+  The raw text data to embed and upsert.
+</ParamField>
 
-# Upserting Data with Embedding Models
+<ParamField body="metadata" type="Object">
+  The metadata of the vector. This makes identifying vectors
+  on retrieval easier and can be used to with filters on queries.
+</ParamField>
 
-Upstash Vector provides embedding models that can automatically generate vector embeddings for you.
+<Note>
+  Data field of the vector will be automatically set to the
+  raw text data, so that you can access it later, during
+  queries.
+</Note>
 
-You can read more about [Embedding Models](/vector/features/embeddingmodels) on our docs.
+## Path
 
-## Upsert Data
+<ParamField path="namespace" type="string" default="">
+  The namespace to use.
+  When no namespace is specified, the default namespace will be used.
+</ParamField>
 
-We’ll use the `upsertData()` method to instruct the SDK to upsert data that generates vectors from one of our embedding models, as demonstrated below:
+## Response
 
-<CodeGroup>
-  ```php simple theme={"system"}
-  use Upstash\Vector\Index;
-  use Upstash\Vector\DataUpsert;
+<ResponseField name="result" type="string">
+  `"Success"` string.
+</ResponseField>
 
-  $index = new Index(
-    url: "<UPSTASH_VECTOR_REST_URL>",
-    token: "<UPSTASH_VECTOR_REST_TOKEN>",
-  );
-
-  $index->upsertData(new DataUpsert(
-    id: '1',
-    data: 'The capital of Japan is Tokyo',
-  ));
+<RequestExample>
+  ```sh curl theme={"system"}
+  curl $UPSTASH_VECTOR_REST_URL/upsert-data \
+    -X POST \
+    -H "Authorization: Bearer $UPSTASH_VECTOR_REST_TOKEN" \
+    -d '[ 
+      { "id": "id-0", "data": "Upstash is a serverless data platform.", "metadata": { "link": "upstash.com" } }, 
+      { "id": "id-1", "data": "Upstash Vector is a serverless vector database." }
+    ]'
   ```
 
-  ```php using namespaces theme={"system"}
-  use Upstash\Vector\Index;
-  use Upstash\Vector\DataUpsert;
-
-  $index = new Index(
-    url: "<UPSTASH_VECTOR_REST_URL>",
-    token: "<UPSTASH_VECTOR_REST_TOKEN>",
-  );
-
-  $index->namespace('my-namespace')->upsertData(new DataUpsert(
-    id: '1',
-    data: 'The capital of Japan is Tokyo',
-  ));
+  ```sh curl (Namespace) theme={"system"}
+  curl $UPSTASH_VECTOR_REST_URL/upsert-data/ns \
+    -X POST \
+    -H "Authorization: Bearer $UPSTASH_VECTOR_REST_TOKEN" \
+    -d '{ "id": "id-2", "data": "Upstash is a serverless data platform.", "metadata": { "link": "upstash.com" } }'
   ```
-</CodeGroup>
+</RequestExample>
 
-You can also enhance your index by adding metadata, enabling more efficient filtering in the future.
-
-You can read more about [Metadata](/vector/features/metadata#metadata), [Data](/vector/features/metadata#data) and [Metadata Filtering](/vector/features/filtering) on our docs.
-
-## Upsert Data Many
-
-Building on the previous section, Upstash Vector also supports generating multiple vectors at once.
-
-To do this, we’ll use the `upsertDataMany()` method, which enables you to efficiently insert or update multiple vectors in an index, as shown below:
-
-<CodeGroup>
-  ```php simple theme={"system"}
-  use Upstash\Vector\Index;
-  use Upstash\Vector\DataUpsert;
-
-  $index = new Index(
-    url: "<UPSTASH_VECTOR_REST_URL>",
-    token: "<UPSTASH_VECTOR_REST_TOKEN>",
-  );
-
-  $index->upsertDataMany([
-    new DataUpsert(id: '1', data: 'The capital of Japan is Tokyo'),
-    new DataUpsert(id: '2', data: 'The capital of France is Paris'),
-    new DataUpsert(id: '3', data: 'The capital of Germany is Berlin'),
-  ]);
+<ResponseExample>
+  ```json 200 OK theme={"system"}
+  {
+      "result": "Success"
+  }
   ```
 
-  ```php using namespaces theme={"system"}
-  use Upstash\Vector\Index;
-  use Upstash\Vector\DataUpsert;
-
-  $index = new Index(
-    url: "<UPSTASH_VECTOR_REST_URL>",
-    token: "<UPSTASH_VECTOR_REST_TOKEN>",
-  );
-
-  $index->namespace('my-namespace')->upsertDataMany([
-    new DataUpsert(id: '1', data: 'The capital of Japan is Tokyo'),
-    new DataUpsert(id: '2', data: 'The capital of France is Paris'),
-    new DataUpsert(id: '3', data: 'The capital of Germany is Berlin'),
-  ]);
+  ```json 422 Unprocessable Entity theme={"system"}
+  {
+      "error": "Embedding data for this index is not allowed. The index must be created with an embedding model to use it.",
+      "status": 422
+  }
   ```
-</CodeGroup>
-
-Upserting multiple records simultaneously improves performance by allowing you to batch your upserts efficiently.
-
-<Note>For optimal results, we recommend limiting each batch to no more than 1,000 records at a time.</Note>
-
-## Sparse Indexes & Hybrid Indexes
-
-Sparse and hybrid indexes do not require a different API. They will generate their vectors and sparse vectors
-based on the models you selected when creating your vector index.
-
-You can read more about [Sparse Indexes](/vector/features/sparseindexes) and [Hybrid Indexes](/vector/features/hybridindexes) on our docs.
+</ResponseExample>

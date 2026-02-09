@@ -1,5 +1,9 @@
 # Source: https://docs.pipecat.ai/deployment/pipecat-cloud/fundamentals/error-codes.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pipecat.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Troubleshooting
 
 > Common issues and solutions when deploying agents to Pipecat Cloud
@@ -83,8 +87,3 @@ This will print all the features enabled in the base image that you can use. For
 2025-10-22 22:04:41.412 | INFO     | feature_manager:log_features_summary:299 - ✅ WhatsApp Integration: ENABLED
 2025-10-22 22:04:41.412 | INFO     | feature_manager:log_features_summary:314 - ============================================================
 ```
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.pipecat.ai/llms.txt

@@ -1,4 +1,8 @@
-# Source: https://docs.exa.ai/integrations/google-adk.md
+# Source: https://exa.ai/docs/integrations/google-adk.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://exa.ai/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Google ADK
 
@@ -89,8 +93,3 @@ root_agent = Agent(
 
 * [Exa MCP Server Documentation](https://docs.exa.ai/reference/exa-mcp)
 * [Exa MCP Server Repository](https://github.com/exa-labs/exa-mcp-server)
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.exa.ai/llms.txt

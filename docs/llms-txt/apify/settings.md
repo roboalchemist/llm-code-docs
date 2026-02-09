@@ -28,11 +28,11 @@ In the **Session Information** section, you can adjust the session configuration
 
 ## Integrations
 
-The **Integrations** tab provides essential tools for enhancing your interaction with our platform. Here, you can access your **Personal API Tokens**, which are necessary for using our https://docs.apify.com/api/v2. This page also facilitates the integration of your Slack workspace and lists your **Actor Integration Accounts**. This section represents any third-party integrations added by you or your team. For detailed guidance on utilizing these integrations, refer to our https://docs.apify.com/platform/integrations.
+The **Integrations** tab provides essential tools for enhancing your interaction with our platform. Here, you can access your **Personal API Tokens**, which are necessary for using our [REST API](https://docs.apify.com/api/v2). This page also facilitates the integration of your Slack workspace and lists your **Actor Integration Accounts**. This section represents any third-party integrations added by you or your team. For detailed guidance on utilizing these integrations, refer to our [Integrations documentation](https://docs.apify.com/platform/integrations).
 
 ## Organization
 
-The **Organizations** tab is where you can view your accounts' current organizations, create new organizations, or convert your user account into an organization account. For more information on how to set up an organization check out this https://help.apify.com/en/articles/8698948-how-to-set-up-an-organization-account.
+The **Organizations** tab is where you can view your accounts' current organizations, create new organizations, or convert your user account into an organization account. For more information on how to set up an organization check out this [article](https://help.apify.com/en/articles/8698948-how-to-set-up-an-organization-account).
 
 ## Notifications
 

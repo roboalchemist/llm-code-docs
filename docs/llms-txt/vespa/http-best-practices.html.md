@@ -43,7 +43,7 @@ The same principle applies to `429 Too Many Requests` responses from the [Docume
 
 For more general advise on retries and timeouts see _Amazon Builder's Library_'s[excellent article](https://aws.amazon.com/builders-library/timeouts-retries-and-backoff-with-jitter/) on the subject.
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ### On this page:
 

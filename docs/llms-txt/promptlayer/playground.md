@@ -1,5 +1,9 @@
 # Source: https://docs.promptlayer.com/why-promptlayer/playground.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.promptlayer.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Playground
 
 The Playground is a native way to create and run new LLM requests all through PromptLayer. Your run history will be tracked in the sidebar. The Playground is most useful as a tool to "replay" and debug old requests.
@@ -23,8 +27,3 @@ The Playground fully supports [OpenAI function calling](https://platform.openai.
 ## Custom models
 
 The Playground also supports the use of custom models for LLM requests. This means you can use a fine-tuned model or a dedicated OpenAI instance.
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.promptlayer.com/llms.txt

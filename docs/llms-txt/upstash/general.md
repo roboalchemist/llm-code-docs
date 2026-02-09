@@ -1,5 +1,9 @@
 # Source: https://upstash.com/docs/workflow/troubleshooting/general.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # General
 
 ## Running Steps Inside try/catch Blocks
@@ -212,17 +216,13 @@ If the function `someCondition()` is non-deterministic, the recommended approach
 
 ## Retry Configuration
 
-Retry settings can be configured in three locations:
+Retry settings can be configured in two locations:
 
-1. [**Workflow Start** (publish/publishJSON or client.trigger)](/workflow/howto/start)
+1. [**Workflow Start** (client.trigger)](/workflow/howto/start): For the triggered workflow run
    * Default retries: 3
 
-2. [**Context Call**](/workflow/basics/context#context-call)
+2. [**Context Call**](/workflow/basics/context#context-call): For third party requests
    * Default retries: 0
-
-3. [**Serve Options**](/workflow/basics/serve#retries)
-   * Default retries: 3
-   * Covers all other requests except the above two
 
 ## Verbose Mode Diagnostics
 
@@ -307,3 +307,23 @@ If it appears like the initial step has failed:
 If it appears like the initial step has completed but the workflow is still stuck:
 
 * Workflow SDK could be unable to correctly infer the workflow URL due to a proxy or an issue in the request object. To check if this is the issue, try passing the [`baseUrl` parameter to the `serve` method](/workflow/basics/serve/advanced#param-base-url). This will override the automatic URL inference and use the provided base URL instead.
+
+## Non-workflow Destination Error
+
+Full error:
+
+```
+detected a non-workflow destination for trigger/invoke.
+make sure you are sending the request to the correct endpoint
+```
+
+This error occurs when you call a non-workflow endpoint with `client.trigger` or via Request Builder on Upstash Console. If you check Upstash Console, you will see that the workflow run has started but failed before running any steps:
+
+<img src="https://mintcdn.com/upstash/vhXtL3vW4DRJuhOZ/img/workflow/non-workflow-endpoint-log.png?fit=max&auto=format&n=vhXtL3vW4DRJuhOZ&q=85&s=ecb10a4cbca174249dc896935ac0a8c5" data-og-width="1408" width="1408" data-og-height="1182" height="1182" data-path="img/workflow/non-workflow-endpoint-log.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/upstash/vhXtL3vW4DRJuhOZ/img/workflow/non-workflow-endpoint-log.png?w=280&fit=max&auto=format&n=vhXtL3vW4DRJuhOZ&q=85&s=26651d655e15668a7cf06e37f04655f5 280w, https://mintcdn.com/upstash/vhXtL3vW4DRJuhOZ/img/workflow/non-workflow-endpoint-log.png?w=560&fit=max&auto=format&n=vhXtL3vW4DRJuhOZ&q=85&s=56300fe8f6dd728737e68de9dbdd480e 560w, https://mintcdn.com/upstash/vhXtL3vW4DRJuhOZ/img/workflow/non-workflow-endpoint-log.png?w=840&fit=max&auto=format&n=vhXtL3vW4DRJuhOZ&q=85&s=19ae3ef2f4f5f9cb87d99560c39d5158 840w, https://mintcdn.com/upstash/vhXtL3vW4DRJuhOZ/img/workflow/non-workflow-endpoint-log.png?w=1100&fit=max&auto=format&n=vhXtL3vW4DRJuhOZ&q=85&s=8d46feb1999d7bcce41cc977a6a46bf6 1100w, https://mintcdn.com/upstash/vhXtL3vW4DRJuhOZ/img/workflow/non-workflow-endpoint-log.png?w=1650&fit=max&auto=format&n=vhXtL3vW4DRJuhOZ&q=85&s=418e4346aba4e784091673985e2f1483 1650w, https://mintcdn.com/upstash/vhXtL3vW4DRJuhOZ/img/workflow/non-workflow-endpoint-log.png?w=2500&fit=max&auto=format&n=vhXtL3vW4DRJuhOZ&q=85&s=f4ef0e623dd7c5f477f9166dd227aab6 2500w" />
+
+Another way you can encounter this error is if you are calling a workflow endpoint on an older SDK version (before 0.2.17 in TypeScript and 0.1.4 in Python) from a newer SDK version. If this happens, in the logs, you will see that the first step of the workflow run has completed successfully, but the workflow fails immediately after that with the same error.
+
+To fix this error, ensure that:
+
+* You are calling a valid workflow endpoint.
+* Both the caller and the workflow endpoint are using the latest SDK versions.

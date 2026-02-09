@@ -1,5 +1,9 @@
 # Source: https://docs.fireworks.ai/fine-tuning/environments.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.fireworks.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Agent Tracing
 
 > Understand where your agent runs and how tracing enables reinforcement fine-tuning

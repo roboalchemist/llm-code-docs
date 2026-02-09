@@ -3,7 +3,6 @@
 ---
 url: /docs/guide/usage/linter/rules/unicorn/explicit-length-check.md
 ---
-# unicorn/explicit-length-check&#x20;
 
 ### What it does
 

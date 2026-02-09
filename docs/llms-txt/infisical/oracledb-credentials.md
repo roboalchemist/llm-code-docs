@@ -1,5 +1,9 @@
 # Source: https://infisical.com/docs/documentation/platform/secret-rotation/oracledb-credentials.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://infisical.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # OracleDB Credentials Rotation
 
 > Learn how to automatically rotate Oracle Database credentials.
@@ -63,6 +67,11 @@
        <Note>
          If your Oracle usernames were created without "quotes", Oracle sees them as UPPERCASE. Please use UPPERCASE for those names in the fields above.
        </Note>
+
+        <img src="https://mintlify.s3.us-west-1.amazonaws.com/infisical/images/secret-rotations-v2/oracledb-credentials/oracledb-credentials-advance-parameters.png" alt="Rotation Advance Parameters" />
+
+    * **Rotation Statement** - the template string query to generate password for the rotated user.
+    * **Password Requirements** - the requirements for the password of the MySQL users that will be created for the rotation.
 
     5. Specify the secret names that the active credentials should be mapped to. Then click **Next**.
        <img src="https://mintlify.s3.us-west-1.amazonaws.com/infisical/images/secret-rotations-v2/oracledb-credentials/oracledb-credentials-secrets-mapping.png" alt="Rotation Secrets Mapping" />

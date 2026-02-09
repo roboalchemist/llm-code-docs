@@ -4,87 +4,88 @@
 
 # Source: https://upstash.com/docs/workflow/basics/client/dlq/restart.md
 
-# Source: https://upstash.com/docs/workflow/rest/dlq/restart.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
-# Source: https://upstash.com/docs/workflow/features/dlq/restart.md
+# client.dlq.restart
 
-# Source: https://upstash.com/docs/workflow/basics/client/dlq/restart.md
+The `dlq.restart` method restarts one or more workflow runs from **Dead Letter Queue (DLQ)**.
+This allows you to reprocess workflow runs that previously failed after exhausting retries.
 
-# Source: https://upstash.com/docs/workflow/rest/dlq/restart.md
+## Arguments
 
-# Source: https://upstash.com/docs/workflow/features/dlq/restart.md
-
-# Source: https://upstash.com/docs/workflow/basics/client/dlq/restart.md
-
-# Source: https://upstash.com/docs/workflow/rest/dlq/restart.md
-
-# Source: https://upstash.com/docs/workflow/features/dlq/restart.md
-
-# Source: https://upstash.com/docs/workflow/basics/client/dlq/restart.md
-
-# Source: https://upstash.com/docs/workflow/rest/dlq/restart.md
-
-# Source: https://upstash.com/docs/workflow/features/dlq/restart.md
-
-# Source: https://upstash.com/docs/workflow/basics/client/dlq/restart.md
-
-# Source: https://upstash.com/docs/workflow/rest/dlq/restart.md
-
-# Restart Workflow Run
-
-> Restart a failed workflow run from the beginning
-
-When a workflow run fails, it's automatically moved to the DLQ (Dead Letter Queue) where it can be analyzed and restarted.
-The restart feature allows you to start a failed workflow completely over from the beginning, re-executing all steps from scratch.
-
-This is useful when you want to ensure a clean execution or when the workflow failure might have been caused by corrupted state that requires a fresh start.
-
-When you restart a workflow,  completely new workflow run is created using the original workflow's initial configuration and payload.
-All previous step results are discarded and the workflow executes as if it's running for the first time.
-
-You can overwrite the retries and flow control settings by passing the respective headers in the restart request.
-
-## Request
-
-<ParamField path="dlqId" type="string" required>
-  The ID of the DLQ message containing the failed workflow run
+<ParamField body="dlqId" type="string|string[]" required>
+  The DLQ entry ID or list of IDs to restart.
+  Use the `dlqId` field from messages returned by `client.dlq.list()`.
 </ParamField>
 
-<ParamField header="Upstash-Flow-Control-Key" type="string">
-  Optional. Overwrite the flow control key for the restarted workflow. If not provided, the original workflow run configuration will be reused.
+<ParamField body="flowControl" type="object" optional>
+  An optional flow control configuration to limit concurrency and execution rate of restarted workflow runs.
+
+  See [Flow Control](/workflow/features/flow-control) for details.
+
+  <Expandable title="properties">
+    <ParamField body="key" type="string">
+      A logical grouping key that identifies which requests share the same flow control limits.
+    </ParamField>
+
+    <ParamField body="rate" type="number">
+      The maximum number of allowed requests per second.
+    </ParamField>
+
+    <ParamField body="parallelism" type="number">
+      The maximum number of concurrent requests allowed.
+    </ParamField>
+
+    <ParamField body="period" type="string|number">
+      The time window used to enforce the defined rate limit. Default is `1s`.
+    </ParamField>
+  </Expandable>
 </ParamField>
 
-<ParamField header="Upstash-Flow-Control-Value" type="string">
-  Optional. Overwrite the flow control values for the restarted workflow. If not provided, the original workflow run configuration will be reused.
+<ParamField body="retries" type="number" optional>
+  Number of retry attempts to apply to the restarted workflow invocation.
+  Defaults to `3` if not provided.
 </ParamField>
-
-<ParamField header="Upstash-Retries" type="integer">
-  Optional. Overwrite the retry configuration for the restarted workflow steps.
-</ParamField>
-
-<RequestExample>
-  ```sh  theme={"system"}
-  curl -X POST https://qstash.upstash.io/v2/dlq/restart/dlq_XYZ \
-  -H "Authorization: Bearer <token>" \
-  -H "Upstash-Workflow-RunId: my-restarted-workflow-XYZ" 
-  ```
-</RequestExample>
 
 ## Response
 
-<ResponseField name="workflowRunId" type="string">
-  The ID of the restarted workflow run
+`client.dlq.restart()` returns one or more objects containing details of the restarted workflow run(s):
+
+<ResponseField name="workflowRuns" type="object[]">
+  <Expandable defaultOpen>
+    <ResponseField name="workflowRunId" type="string">
+      The ID of the new workflow run created from the restarted DLQ message.
+    </ResponseField>
+
+    <ResponseField name="workflowCreatedAt" type="number">
+      The Unix timestamp (in milliseconds) when the new workflow run was created.
+    </ResponseField>
+  </Expandable>
 </ResponseField>
 
-<ResponseField name="workflowCreatedAt" type="integer">
-  Unix timestamp when the restarted workflow was created
-</ResponseField>
+## Usage
 
-<ResponseExample>
-  ```json  theme={"system"}
-  {
-    "workflowRunId": "my-restarted-workflow-XYZ",
-    "workflowCreatedAt": 1748527971000
-  }
+<CodeGroup>
+  ```ts Single theme={"system"}
+  const { messages } = await client.dlq.list();
+
+  const response = await client.dlq.restart({
+    dlqId: messages[0].dlqId, // Use the dlqId from the message
+    flowControl: {
+      key: "my-flow-control-key",
+      parallelism: 10,
+    },
+    retries: 3,
+  });
+
   ```
-</ResponseExample>
+
+  ```ts Multiple theme={"system"}
+  const responses = await client.dlq.restart({
+    dlqId: ["dlq-12345", "dlq-67890"],
+    retries: 5,
+  });
+  ```
+</CodeGroup>

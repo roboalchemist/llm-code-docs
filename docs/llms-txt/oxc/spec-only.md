@@ -3,7 +3,6 @@
 ---
 url: /docs/guide/usage/linter/rules/promise/spec-only.md
 ---
-# promise/spec-only&#x20;
 
 ### What it does
 

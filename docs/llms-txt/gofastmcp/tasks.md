@@ -2,13 +2,13 @@
 
 # Source: https://gofastmcp.com/clients/tasks.md
 
-# Source: https://gofastmcp.com/servers/tasks.md
-
-# Source: https://gofastmcp.com/clients/tasks.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://gofastmcp.com/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Background Tasks
 
-> Execute operations asynchronously and track their progress
+> Execute operations asynchronously and track their progress.
 
 export const VersionBadge = ({version}) => {
   return <Badge stroke size="lg" icon="gift" iconType="regular" className="version-badge">
@@ -18,13 +18,13 @@ export const VersionBadge = ({version}) => {
 
 <VersionBadge version="2.14.0" />
 
-The [MCP task protocol](https://modelcontextprotocol.io/specification/2025-11-25/basic/utilities/tasks) lets you request operations to run asynchronously. This returns a Task object immediately, letting you track progress, cancel operations, or await results.
+Use this when you need to run long operations asynchronously while doing other work.
 
-See [Server Background Tasks](/servers/tasks) for how to enable this on the server side.
+The MCP task protocol lets you request operations to run in the background. The call returns a Task object immediately, letting you track progress, cancel operations, or await results.
 
 ## Requesting Background Execution
 
-Pass `task=True` to run an operation as a background task. The call returns immediately with a Task object while the work executes on the server.
+Pass `task=True` to run an operation as a background task:
 
 ```python  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
 from fastmcp import Client
@@ -49,24 +49,35 @@ resource_task = await client.read_resource("file://large.txt", task=True)
 prompt_task = await client.get_prompt("my_prompt", args, task=True)
 ```
 
-## Working with Task Objects
+## Task API
 
-All task types share a common interface for retrieving results, checking status, and receiving updates.
+All task types share a common interface.
 
-To get the result, call `await task.result()` or simply `await task`. This blocks until the task completes and returns the result. You can also check status without blocking using `await task.status()`, which returns the current state (`"working"`, `"completed"`, `"failed"`, or `"cancelled"`) along with any progress message from the server.
+### Getting Results
+
+Call `await task.result()` or simply `await task` to block until the task completes:
 
 ```python  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
 task = await client.call_tool("analyze", {"text": "hello"}, task=True)
 
-# Check current status (non-blocking)
-status = await task.status()
-print(f"{status.status}: {status.statusMessage}")
-
 # Wait for result (blocking)
 result = await task.result()
+# or: result = await task
 ```
 
-For more control over waiting, use `task.wait()` with an optional timeout or target state:
+### Checking Status
+
+Check the current status without blocking:
+
+```python  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
+status = await task.status()
+print(f"{status.status}: {status.statusMessage}")
+# status.status is "working", "completed", "failed", or "cancelled"
+```
+
+### Waiting with Control
+
+Use `task.wait()` for more control over waiting:
 
 ```python  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
 # Wait up to 30 seconds for completion
@@ -76,11 +87,17 @@ status = await task.wait(timeout=30.0)
 status = await task.wait(state="completed", timeout=30.0)
 ```
 
-To cancel a running task, call `await task.cancel()`.
+### Cancellation
 
-### Real-Time Status Updates
+Cancel a running task:
 
-Register callbacks to receive status updates as the server reports progress. Both sync and async callbacks are supported.
+```python  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
+await task.cancel()
+```
+
+## Status Updates
+
+Register callbacks to receive real-time status updates as the server reports progress:
 
 ```python  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
 def on_status_change(status):
@@ -95,9 +112,34 @@ async def on_status_async(status):
 task.on_status_change(on_status_async)
 ```
 
+### Handler Template
+
+```python  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
+from fastmcp import Client
+
+def status_handler(status):
+    """
+    Handle task status updates.
+
+    Args:
+        status: Task status object with:
+            - taskId: Unique task identifier
+            - status: "working", "completed", "failed", or "cancelled"
+            - statusMessage: Optional progress message from server
+    """
+    if status.status == "working":
+        print(f"Progress: {status.statusMessage}")
+    elif status.status == "completed":
+        print("Task completed")
+    elif status.status == "failed":
+        print(f"Task failed: {status.statusMessage}")
+
+task.on_status_change(status_handler)
+```
+
 ## Graceful Degradation
 
-You can always pass `task=True` regardless of whether the server supports background tasks. Per the MCP specification, servers without task support execute the operation immediately and return the result inline. The Task API provides a consistent interface either way.
+You can always pass `task=True` regardless of whether the server supports background tasks. Per the MCP specification, servers without task support execute the operation immediately and return the result inline.
 
 ```python  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
 task = await client.call_tool("my_tool", args, task=True)
@@ -111,9 +153,9 @@ else:
 result = await task.result()
 ```
 
-This means you can write task-aware client code without worrying about server capabilities.
+This lets you write task-aware client code without worrying about server capabilities.
 
-## Complete Example
+## Example
 
 ```python  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
 import asyncio
@@ -145,7 +187,4 @@ async def main():
 asyncio.run(main())
 ```
 
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://gofastmcp.com/llms.txt
+See [Server Background Tasks](/servers/tasks) for how to enable background task support on the server side.

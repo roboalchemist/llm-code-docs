@@ -1,5 +1,9 @@
 # Source: https://docs.zapier.com/platform/build/connection-label.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.zapier.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Add a connection label
 
 > Zapier users can authenticate multiple accounts for any app. By default, every new app account added to Zapier is identified by the app's name, followed by a number (#2, #3, …) for accounts connected after the first.

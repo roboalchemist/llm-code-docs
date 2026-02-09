@@ -1,5 +1,9 @@
 # Source: https://docs.chatling.ai/api-reference/v2/conversations/update-conversation.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.chatling.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Update conversation
 
 > Update a conversation's properties.

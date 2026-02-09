@@ -1,5 +1,9 @@
 # Source: https://getlago.com/docs/faq/community.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://getlago.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Community
 
 ## 1. What’s the community like?
@@ -17,7 +21,7 @@ There are many ways to contribute to the Lago community. You can:
 * Contribute to the Lago codebase (learn more [here](https://github.com/getlago/lago/blob/main/CONTRIBUTING.md))
 * Report bugs or suggesting improvements ([here](https://github.com/getlago/lago/blob/main/CONTRIBUTING.md))
 
-For instance, our community played a pivotal role in introducing the "[Latest](https://docs.getlago.com/guide/billable-metrics/aggregation-types/overview)" aggregation type to Lago's product. Additionally, we regularly receive translation contributions from users in languages such as Italian, Spanish, and Norwegian.
+For instance, our community played a pivotal role in introducing the "[Latest](/guide/billable-metrics/aggregation-types/latest)" aggregation type to Lago's product. Additionally, we regularly receive translation contributions from users in languages such as Italian, Spanish, and Norwegian.
 
 Thanks to valuable contributions from our users, our community continues to grow stronger!
 

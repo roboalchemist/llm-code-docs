@@ -55,8 +55,8 @@ Note that in this model, the video duration is defined by the number of frames, 
 
 ### Retrieve the generated video from the server
 
-After sending a request for video generation, this task is added to the queue. This endpoint lets you check the status of a video generation task using its `generation_id`, obtained from the endpoint described above.\
-If the video generation task status is `complete`, the response will include the final result — with the generated video URL and additional metadata.
+After sending a request for video generation, this task is added to the queue. This endpoint lets you check the status of a video generation task using its `id`, obtained from the endpoint described above.\
+If the video generation task status is `completed`, the response will include the final result — with the generated video URL and additional metadata.
 
 ## GET /v2/video/generations
 
@@ -144,7 +144,7 @@ def main():
                 print("Still waiting... Checking again in 10 seconds.")
                 time.sleep(10)
             else:
-                print("Processing complete:/n", response_data)
+                print("Processing complete:\n", response_data)
                 return response_data
    
         print("Timeout reached. Stopping.")
@@ -303,7 +303,7 @@ Generation ID:   67b69e0c-922f-4eae-9b90-8c4605131d3b:krea/krea-wan-14b/text-to-
 Status: queued
 Still waiting... Checking again in 10 seconds.
 Status: completed
-Processing complete:/n {'id': '67b69e0c-922f-4eae-9b90-8c4605131d3b:krea/krea-wan-14b/text-to-video', 'status': 'completed', 'video': {'url': 'https://cdn.aimlapi.com/flamingo/files/b/zebra/GR3ehIPWwREVvJduWH6Pn_R07gifMb.mp4'}}
+Processing complete:\n {'id': '67b69e0c-922f-4eae-9b90-8c4605131d3b:krea/krea-wan-14b/text-to-video', 'status': 'completed', 'video': {'url': 'https://cdn.aimlapi.com/flamingo/files/b/zebra/GR3ehIPWwREVvJduWH6Pn_R07gifMb.mp4'}}
 ```
 
 {% endcode %}

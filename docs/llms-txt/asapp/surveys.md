@@ -1,10 +1,14 @@
 # Source: https://docs.asapp.com/agent-desk/virtual-agent/surveys.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.asapp.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Surveys
 
 > Collect customer satisfaction feedback after interactions with agents and AI systems.
 
-Surveys allow you to gather customer satisfaction (CSAT) feedback following interactions with Virtual Agents or Generative Agents. This feature helps you evaluate and improve your support quality by capturing structured feedback directly from customers.
+Surveys allow you to gather customer satisfaction (CSAT) feedback following interactions with Virtual Agents or GenerativeAgents. This feature helps you evaluate and improve your support quality by capturing structured feedback directly from customers.
 
 With surveys, you can:
 
@@ -18,10 +22,10 @@ With surveys, you can:
 ASAPP supports three types of surveys:
 
 * **Virtual Agent Surveys**: Collect feedback after interactions with automated Virtual Agent flows.
-  * These surveys are triggered only at the end of Virtual Agent interactions.
+  * The system triggers these surveys only at the end of Virtual Agent interactions.
 
-* **Generative Agent Surveys**: Collect feedback after interactions with AI-powered Generative Agents.
-  * These surveys are triggered only at the end of Generative Agent interactions, not when escalating from Virtual Agent to Generative Agent, to avoid redundant feedback collection.
+* **GenerativeAgent Surveys**: Collect feedback after interactions with AI-powered GenerativeAgents.
+  * The system triggers these surveys only at the end of GenerativeAgent interactions, not when escalating from Virtual Agent to GenerativeAgent, to avoid redundant feedback collection.
 
 ## Setting up Surveys
 
@@ -29,14 +33,14 @@ Each survey type has a different setup process:
 
 <Tabs>
   <Tab title="Virtual Agent Surveys">
-    Virtual Agent surveys must be configured and are then triggered at the end of the Virtual Agent interaction when the final flow ends with SRS options and the customer selects the positive outcome.
+    Virtual Agent surveys require configuration and the system then triggers them at the end of the Virtual Agent interaction when the final flow ends with SRS options and the customer selects the positive outcome.
 
     <Steps>
       <Step title="Enable Virtual Agent Surveys">
         Work with your ASAPP account team to enable Virtual Agent surveys for your organization.
 
         <Warning>
-          Virtual Agent surveys are disabled by default and require ASAPP assistance to enable.
+          The system disables Virtual Agent surveys by default and they require ASAPP assistance to enable.
         </Warning>
       </Step>
 
@@ -66,20 +70,20 @@ Each survey type has a different setup process:
     </Steps>
   </Tab>
 
-  <Tab title="Generative Agent Surveys">
-    Generative Agent surveys must be configured and are then triggered at the end of the Generative Agent interaction when GenerativeAgent returns control to VirtualAgent with a specific system transfer.
+  <Tab title="GenerativeAgent Surveys">
+    GenerativeAgent surveys require configuration and the system then triggers them at the end of the GenerativeAgent interaction when GenerativeAgent returns control to VirtualAgent with a specific system transfer.
 
     <Steps>
-      <Step title="Enable Generative Agent Surveys">
-        Work with your ASAPP account team to enable Generative Agent surveys for your organization.
+      <Step title="Enable GenerativeAgent Surveys">
+        Work with your ASAPP account team to enable GenerativeAgent surveys for your organization.
 
         <Warning>
-          Generative Agent surveys are disabled by default and require ASAPP assistance to enable.
+          The system disables GenerativeAgent surveys by default and they require ASAPP assistance to enable.
         </Warning>
       </Step>
 
       <Step title="Create Survey Intent">
-        Create an intent that maps to a flow that opens the Generative Agent survey form.
+        Create an intent that maps to a flow that opens the GenerativeAgent survey form.
 
         1. Navigate to VirtualAgent > Intents
         2. Create a new intent (e.g., "survey\_feedback")
@@ -98,14 +102,14 @@ Each survey type has a different setup process:
         4. Save the function configuration
       </Step>
 
-      <Step title="Modify Generative Agent Tasks">
-        Add the system transfer function to relevant Generative Agent tasks to enable survey triggering.
+      <Step title="Modify GenerativeAgent Tasks">
+        Add the system transfer function to relevant GenerativeAgent tasks to enable survey triggering.
       </Step>
 
       <Step title="Test the Survey">
         Once the survey is enabled and configured, you can test it by walking through a flow that engages GenerativeAgent and follow the conversation to trigger the return of control to VirtualAgent.
 
-        The survey should appear after the GenerativeAgent returns control to VirtualAgent.
+        The survey should appear after GenerativeAgent returns control to VirtualAgent.
       </Step>
     </Steps>
   </Tab>
@@ -115,19 +119,19 @@ Each survey type has a different setup process:
 
 You can use third-party survey providers to collect feedback from your customers, such as Qualtrics. This results in displaying a survey link for the user to click into the third-party survey tool.
 
-Results from external surveys are integrated into your reporting.
+The system integrates results from external surveys into your reporting.
 
 To use a third-party survey provider, work with your ASAPP account team to configure the survey settings to display the survey link.
 
 ## Survey Results and Reporting
 
-Survey results are automatically stored and viewable in Conversation Manager.
+The system automatically stores survey results and makes them viewable in Conversation Manager.
 
 <Warning>
-  Results are not available in Conversation Manager for third-party surveys.
+  Conversation Manager does not provide results for third-party surveys.
 </Warning>
 
-Events will be created for when a survey is displayed and when a survey is submitted. This data is available via the [ASAPP Messaging Feeds](/reporting/retrieve-messaging-data).
+The system creates events for when a survey is displayed and when a survey is submitted. This data is available via the [ASAPP Messaging Feeds](/reporting/retrieve-messaging-data).
 
 ## Next Steps
 

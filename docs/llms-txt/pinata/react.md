@@ -2,13 +2,9 @@
 
 # Source: https://docs.pinata.cloud/frameworks/react.md
 
-# Source: https://docs.pinata.cloud/sdk/react.md
-
-# Source: https://docs.pinata.cloud/frameworks/react.md
-
-# Source: https://docs.pinata.cloud/sdk/react.md
-
-# Source: https://docs.pinata.cloud/frameworks/react.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pinata.cloud/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # React
 

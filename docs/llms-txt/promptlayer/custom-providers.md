@@ -1,5 +1,9 @@
 # Source: https://docs.promptlayer.com/features/custom-providers.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.promptlayer.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Custom Providers
 
 Custom providers let you connect to additional LLM providers beyond the built-in options, including DeepSeek, Grok, and more!
@@ -51,8 +55,3 @@ Custom providers give you complete control over your model infrastructure while 
 Looking for specific integration guides? See our detailed setup instructions for [OpenRouter](/features/openrouter-integration), [Exa](/features/exa-integration), and [xAI (Grok)](/features/xai-integration).
 
 Follow the steps above to configure any OpenAI-compatible provider as a custom provider in PromptLayer.
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.promptlayer.com/llms.txt

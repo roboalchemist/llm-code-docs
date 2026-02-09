@@ -6,14 +6,6 @@
 
 # Source: https://docs.zenml.io/stacks/stack-components/orchestrators/local.md
 
-# Source: https://docs.zenml.io/stacks/stack-components/image-builders/local.md
-
-# Source: https://docs.zenml.io/stacks/stack-components/artifact-stores/local.md
-
-# Source: https://docs.zenml.io/stacks/stack-components/deployers/local.md
-
-# Source: https://docs.zenml.io/stacks/stack-components/orchestrators/local.md
-
 # Local Orchestrator
 
 The local orchestrator is an [orchestrator](https://docs.zenml.io/stacks/stack-components/orchestrators) flavor that comes built-in with ZenML and runs your pipelines locally.

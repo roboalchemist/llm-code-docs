@@ -10,7 +10,9 @@ Isaac Lab
 
 NVIDIA Isaac™ Lab is an open-source, unified framework for [robot learning](https://www.nvidia.com/en-us/glossary/robot-learning/) designed to help train robot policies.   
   
-It’s built on [NVIDIA Isaac Sim™](https://developer.nvidia.com/isaac/sim), delivering high-fidelity physics simulation using [NVIDIA PhysX®](https://developer.nvidia.com/physx-sdk) and physically based rendering with NVIDIA RTX™. This bridges the gap between high-fidelity simulation and perception-based robot training, helping developers and researchers build more robots, more efficiently.
+It’s built on [NVIDIA Isaac Sim™](https://developer.nvidia.com/isaac/sim), delivering high-fidelity physics simulation using [NVIDIA PhysX®](https://developer.nvidia.com/physx-sdk) and physically based rendering with NVIDIA RTX™. This bridges the gap between high-fidelity simulation and perception-based robot training, helping developers and researchers build more robots, more efficiently.  
+  
+Built on Isaac Lab, [Isaac Lab-Arena](https://developer.nvidia.com/isaac/lab-arena) is an open-source framework for scalable policy evaluation in simulation that gives you streamlined APIs to simplify task curation and diversification.
 
 [Download Now from GitHub  
 ](https://github.com/isaac-sim/IsaacLab &quot;Download on GitHub&quot;)[Documentation  
@@ -37,11 +39,11 @@ See how Isaac Lab’s combination of advanced simulation capabilities and data-c
 
 [Read Whitepaper](https://research.nvidia.com/publication/2025-09_isaac-lab-gpu-accelerated-simulation-framework-multi-modal-robot-learning)
 
-### Next-Generation Open-Source Physics Simulation Engine
+### NVIDIA Isaac Lab-Arena
 
-Built on Warp and [OpenUSD](https://developer.nvidia.com/usd), Newton is optimized for advancing robot learning and development and compatible with learning frameworks such as MuJoCo Playground or Isaac Lab.
+Built on Isaac Lab, Isaac Lab-Arena is an open-source framework for scalable policy evaluation in simulation.
 
-[Read Blog](https://developer.nvidia.com/blog/train-a-quadruped-locomotion-policy-and-simulate-cloth-manipulation-with-nvidia-isaac-lab-and-newton/)
+[Read Blog](https://developer.nvidia.com/blog/simplify-generalist-robot-policy-evaluation-in-simulation-with-nvidia-isaac-lab-arena/)
 
 ### Isaac Lab Courses
 
@@ -54,7 +56,7 @@ Explore the fundamentals of robot learning and Isaac Lab, a powerful tool for de
 Stay informed with our [recurring office hours](https://addevent.com/calendar/ae483892) that cover in-depth topics with experts answering questions about Isaac Lab.
 
 [Watch the Livestreams  
-](https://www.youtube.com/@NVIDIAOmniverse/streams)
+](https://www.youtube.com/watch?v=12vqcFywtWQ&amp;list=PL3jK4xNnlCVcnMqm4Lnqa5Bok4_iP5NsK)
 
 * * *
 

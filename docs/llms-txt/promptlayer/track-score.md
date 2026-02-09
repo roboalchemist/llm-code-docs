@@ -1,5 +1,9 @@
 # Source: https://docs.promptlayer.com/reference/track-score.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.promptlayer.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Track Score
 
 Track score allows you to associate a score 0-100 with each request.
@@ -21,6 +25,13 @@ paths:
         - score
       summary: Track Score
       operationId: trackScore
+      parameters:
+        - name: X-API-KEY
+          in: header
+          required: true
+          schema:
+            type: string
+          description: Your PromptLayer API Key.
       requestBody:
         required: true
         content:
@@ -42,13 +53,9 @@ paths:
                     A name for this request score. If not provided, the score
                     will be tracked as `default`.
                   optional: true
-                api_key:
-                  type: string
-                  description: Your PromptLayer API Key.
               required:
                 - request_id
                 - score
-                - api_key
       responses:
         '200':
           description: Score tracked successfully
@@ -70,7 +77,3 @@ paths:
           description: Unauthorized
 
 ````
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.promptlayer.com/llms.txt

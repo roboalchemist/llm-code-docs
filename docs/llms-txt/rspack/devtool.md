@@ -1,8 +1,13 @@
 # Source: https://rspack.dev/config/devtool.md
 
-import WebpackLicense from '@components/WebpackLicense';
+CC 4.0 License> The content of this section is derived from the content of the following links and is subject to the CC BY 4.0 license.
+> 
+> - [https://webpack.js.org/configuration/devtool/](https://webpack.js.org/configuration/devtool/)
+> 
+> The following contents can be assumed to be the result of modifications and deletions based on the original contents if not specifically stated.
+> 
+> 
 
-<WebpackLicense from="https://webpack.js.org/configuration/devtool/" />
 
 # Devtool
 
@@ -10,29 +15,29 @@ Choose a style of source mapping to enhance the debugging process. These values 
 
 Use the [SourceMapDevToolPlugin](/plugins/webpack/source-map-dev-tool-plugin.md) or [EvalSourceMapDevToolPlugin](/plugins/webpack/eval-source-map-dev-tool-plugin.md) for a more fine grained configuration.
 
-* **Type:**
+- **Type:**
 
 ```ts
 type Devtool = 'string' | false;
 ```
 
-* **Default:** `cheap-module-source-map` in development mode and `source-map` in production mode
+- **Default:** `cheap-module-source-map` in development mode and `source-map` in production mode
 
 ## Configuration guide
 
 ### Step 1: determine debugging needs
 
-* **Not required** → Set `devtool: false`
-  * Disables all debugging information
-  * Zero build overhead with maximum build speed
-* **Required** → Proceed to [Step 2](#step-2-define-debugging-requirements)
+- **Not required** → Set `devtool: false`
+  - Disables all debugging information
+  - Zero build overhead with maximum build speed
+- **Required** → Proceed to [Step 2](#step-2-define-debugging-requirements)
 
 ### Step 2: define debugging requirements
 
-* **Module-level positioning only** → Set `devtool: 'eval'`
-  * Each module executed via `eval()` with `//# sourceURL` comment
-  * Extremely fast build speed
-* **Full source code mapping needed** → Proceed to [Step 3](#step-3-configure-sourcemap)
+- **Module-level positioning only** → Set `devtool: 'eval'`
+  - Each module executed via `eval()` with `//# sourceURL` comment
+  - Extremely fast build speed
+- **Full source code mapping needed** → Proceed to [Step 3](#step-3-configure-sourcemap)
 
 ### Step 3: configure source map
 
@@ -40,15 +45,21 @@ Set `devtool: 'source-map'`, A full source map is emitted as a separate file. It
 
 It also supports combination with the following modifiers to improve performance and control source map generation.
 
-Performance optimization modifiers, to speed up the build, usually used in development environments:
+Performance optimization modifiers, to speed up the build, usually used in **development environments**:
 
 | Modifier | Effect                                                                                                                                         | Performance improvement |
 | -------- | ---------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------- |
-| eval     | Each module is executed with `eval()` and a source map is added as a DataUrl to the `eval()`, avoiding chunk-level multiple source map concate | ⚡⚡⚡                  |
-| cheap    | Maps line numbers only (no columns), ignores source maps from loaders                                                                          | ⚡⚡                    |
-| module   | Processes source maps from loaders to map to original code (line-only mapping)                                                                 | ⚡                      |
+| eval     | Each module is executed with `eval()` and a source map is added as a DataUrl to the `eval()`, avoiding chunk-level multiple source map concate | ⚡⚡⚡                     |
+| cheap    | Maps line numbers only (no columns), ignores source maps from loaders                                                                          | ⚡⚡                      |
+| module   | Processes source maps from loaders to map to original code (line-only mapping)                                                                 | ⚡                       |
 
-Functional modifiers, to control source map generation, usually used in production environments:
+:::tip FAQ
+In production, it’s **expected** that no source map file is emitted when using the `cheap` modifier (e.g. `cheap-source-map` or `cheap-module-source-map`).
+
+This is because `cheap` only provides **line-level** mappings, while production builds are typically minified into a single line. In that case, a source map has little practical value.
+:::
+
+Functional modifiers, to control source map generation, usually used in **production environments**:
 
 | Modifier  | Effect                                                                                                                                       |
 | --------- | -------------------------------------------------------------------------------------------------------------------------------------------- |

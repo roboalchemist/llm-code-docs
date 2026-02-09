@@ -1,5 +1,9 @@
 # Source: https://upstash.com/docs/vector/integrations/flowise.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Flowise with Upstash Vector and Redis
 
 Flowise is an open source low-code tool for developers to build customized LLM orchestration flows & AI agents. With Upstash Vector and Upstash Redis, you can extend your Flowise flows to include semantic search, caching, and conversation memory.

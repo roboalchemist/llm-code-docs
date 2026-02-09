@@ -1,5 +1,9 @@
 # Source: https://docs.pinecone.io/integrations/build-integration/integration-ecosystem.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pinecone.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Integration ecosystem
 
 Anyone can use the [Pinecone SDKs](/reference/pinecone-sdks) or the [Pinecone API](/reference/api/introduction) to build a native Pinecone integration. We encourage you to build and launch freely to support your users.
@@ -10,8 +14,3 @@ Listing on our official [Integrations](/integrations/overview) page is a curated
 
 * [Attribute usage to your integration](/integrations/build-integration/attribute-usage-to-your-integration)
 * [Connect your users to Pinecone](/integrations/build-integration/connect-your-users-to-pinecone)
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.pinecone.io/llms.txt

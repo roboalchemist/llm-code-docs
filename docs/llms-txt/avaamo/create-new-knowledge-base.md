@@ -2,10 +2,6 @@
 
 # Source: https://docs.avaamo.com/user-guide/how-to/build-skills/create-skill/using-smalltalk/create-new-knowledge-base.md
 
-# Source: https://docs.avaamo.com/user-guide/how-to/build-skills/create-skill/using-avaamo-answers-1/create-new-knowledge-base.md
-
-# Source: https://docs.avaamo.com/user-guide/how-to/build-skills/create-skill/using-smalltalk/create-new-knowledge-base.md
-
 # Create a new Smalltalk skill
 
 Based on your requirement, you can either start by creating a new Smalltalk skill from scratch or by importing from any one of the available skills. See [Import skill](#import-skill), for more information.

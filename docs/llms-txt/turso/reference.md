@@ -18,65 +18,9 @@
 
 # Source: https://docs.turso.tech/sdk/c/reference.md
 
-# Source: https://docs.turso.tech/sdk/ts/reference.md
-
-# Source: https://docs.turso.tech/sdk/swift/reference.md
-
-# Source: https://docs.turso.tech/sdk/rust/reference.md
-
-# Source: https://docs.turso.tech/sdk/python/reference.md
-
-# Source: https://docs.turso.tech/sdk/php/reference.md
-
-# Source: https://docs.turso.tech/sdk/kotlin/reference.md
-
-# Source: https://docs.turso.tech/sdk/http/reference.md
-
-# Source: https://docs.turso.tech/sdk/go/reference.md
-
-# Source: https://docs.turso.tech/sdk/flutter/reference.md
-
-# Source: https://docs.turso.tech/sdk/c/reference.md
-
-# Source: https://docs.turso.tech/sdk/ts/reference.md
-
-# Source: https://docs.turso.tech/sdk/swift/reference.md
-
-# Source: https://docs.turso.tech/sdk/rust/reference.md
-
-# Source: https://docs.turso.tech/sdk/python/reference.md
-
-# Source: https://docs.turso.tech/sdk/php/reference.md
-
-# Source: https://docs.turso.tech/sdk/kotlin/reference.md
-
-# Source: https://docs.turso.tech/sdk/http/reference.md
-
-# Source: https://docs.turso.tech/sdk/go/reference.md
-
-# Source: https://docs.turso.tech/sdk/flutter/reference.md
-
-# Source: https://docs.turso.tech/sdk/c/reference.md
-
-# Source: https://docs.turso.tech/sdk/ts/reference.md
-
-# Source: https://docs.turso.tech/sdk/swift/reference.md
-
-# Source: https://docs.turso.tech/sdk/rust/reference.md
-
-# Source: https://docs.turso.tech/sdk/python/reference.md
-
-# Source: https://docs.turso.tech/sdk/php/reference.md
-
-# Source: https://docs.turso.tech/sdk/kotlin/reference.md
-
-# Source: https://docs.turso.tech/sdk/http/reference.md
-
-# Source: https://docs.turso.tech/sdk/go/reference.md
-
-# Source: https://docs.turso.tech/sdk/flutter/reference.md
-
-# Source: https://docs.turso.tech/sdk/c/reference.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.turso.tech/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # C Reference
 

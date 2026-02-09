@@ -1,5 +1,9 @@
 # Source: https://docs.pinata.cloud/sdk/upload/public/file-array.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pinata.cloud/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # fileArray
 
 > `org:files:write`

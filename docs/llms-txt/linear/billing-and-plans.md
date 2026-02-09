@@ -113,18 +113,20 @@ To add a VAT number for an existing subscription, go to [Settings > Billing > Bi
 
 In certain areas Linear is required to apply sales tax. The billing address you provide is used to determine whether tax must be applied, and if so the applicable rate.
 
-Areas in which Linear must apply sales tax as of October 1st, 2025 include the following. We anticipate this list will grow over time, and we will keep it updated with new additions.
+Areas in which Linear must apply sales tax as of January 2026 include the following. We anticipate this list will grow over time, and we will keep it updated with new additions.
 
 * Arizona
 * Chicago, Illinois (PPLT Tax)
 * Colorado
 * Connecticut
 * District of Columbia
+* Kentucky
 * Maryland
 * Massachusetts
 * New York
 * Ohio
 * Pennsylvania
+* South Carolina
 * Tennessee
 * Texas
 * Utah

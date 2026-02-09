@@ -1,10 +1,8 @@
 # Source: https://configcat.com/docs/advanced/team-management/scim/scim-overview.md
 
-# (Beta) User provisioning (SCIM) Overview
+# User provisioning (SCIM) Overview
 
-info
-
-**Beta Feature**: SCIM provisioning is in public beta. It has been thoroughly tested with various Identity Providers. We're now collecting feedback from real-world usage to fine-tune the experience. Share your feedback [here](https://configcat.com/support).
+Copy page
 
 This section describes how to configure *User provisioning (SCIM)* for your Organization in ConfigCat.
 
@@ -14,12 +12,12 @@ Go to the **User provisioning (SCIM)** section on the [Authentication & Provisio
 
 ## Prerequisites[​](#prerequisites "Direct link to Prerequisites")
 
-* [Verified domain](https://configcat.com/docs/docs/advanced/team-management/domain-verification/.md): You must verify your company's email domain before you can set up User provisioning (SCIM).
+* [Verified domain](https://configcat.com/docs/advanced/team-management/domain-verification.md): You must verify your company's email domain before you can set up User provisioning (SCIM).
 * Identity Provider that supports SCIM 2.0.
 
 ## Supported SCIM 2.0 endpoints[​](#supported-scim-20-endpoints "Direct link to Supported SCIM 2.0 endpoints")
 
-Check our User Provisioning (SCIM) API documentation [here](https://configcat.com/docs/docs/api/scim/configcat-user-provisioning-scim-api/.md).
+Check our User Provisioning (SCIM) API documentation [here](https://configcat.com/docs/api/scim/configcat-user-provisioning-scim-api.md).
 
 ## 1. Connect your Identity Provider[​](#connect "Direct link to 1. Connect your Identity Provider")
 
@@ -38,9 +36,9 @@ A dialog will open. Copy the *token* and save it somewhere safe - you'll need it
 
 Go to your Identity Provider, and connect it to ConfigCat. To help, we prepared specific Identity Provider-specific instructions for a few providers. These instructions are tested and validated:
 
-* [Entra ID (Azure AD)](https://configcat.com/docs/docs/advanced/team-management/scim/identity-providers/entra-id/.md)
-* [Okta](https://configcat.com/docs/docs/advanced/team-management/scim/identity-providers/okta/.md)
-* [OneLogin](https://configcat.com/docs/docs/advanced/team-management/scim/identity-providers/onelogin/.md)
+* [Entra ID (Azure AD)](https://configcat.com/docs/advanced/team-management/scim/identity-providers/entra-id.md)
+* [Okta](https://configcat.com/docs/advanced/team-management/scim/identity-providers/okta.md)
+* [OneLogin](https://configcat.com/docs/advanced/team-management/scim/identity-providers/onelogin.md)
 
 info
 

@@ -1,8 +1,4 @@
-# Source: https://gitbook.com/docs/documentation/zh/publishing-documentation/authenticated-access/setting-up-aws-cognito.md
-
-# Source: https://gitbook.com/docs/documentation/fr/publishing-documentation/authenticated-access/setting-up-aws-cognito.md
-
-# Source: https://gitbook.com/docs/publishing-documentation/authenticated-access/setting-up-aws-cognito.md
+# Source: https://gitbook.com/docs/documentation/ja-gitbook-documentation/publishing-documentation/authenticated-access/setting-up-aws-cognito.md
 
 # Source: https://gitbook.com/docs/documentation/zh/publishing-documentation/authenticated-access/setting-up-aws-cognito.md
 
@@ -20,22 +16,19 @@ To setup your GitBook site with authenticated access using AWS Cognito, the proc
 
 {% stepper %}
 {% step %}
-
-#### Create a new AWS Cognito application
+**Create a new AWS Cognito application**
 
 Create an AWS Cognito application from your AWS dashboard.
 {% endstep %}
 
 {% step %}
-
-#### Install and configure the AWS Cognito integration
+**Install and configure the AWS Cognito integration**
 
 Install the AWS Cognito integration and add the required configuration.
 {% endstep %}
 
 {% step %}
-
-#### Configure AWS Cognito for adaptive content (optional)
+**Configure AWS Cognito for adaptive content (optional)**
 
 Configure AWS Cognito to work with adaptive content in GitBook.
 {% endstep %}

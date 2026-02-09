@@ -1,47 +1,50 @@
 # Source: https://docs.anchorbrowser.io/api-reference/browser-sessions/get-browser-session-pages.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.anchorbrowser.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Get Browser Session Pages
 
 > Retrieves a list of pages associated with a specific browser session.
 
+
+
 ## OpenAPI
 
 ````yaml openapi-mintlify.yaml get /v1/sessions/{session_id}/pages
+openapi: 3.1.0
+info:
+  title: AnchorBrowser API
+  version: 1.0.0
+  description: APIs to manage all browser-related actions and configuration.
+servers:
+  - url: https://api.anchorbrowser.io
+    description: API server
+security: []
 paths:
-  path: /v1/sessions/{session_id}/pages
-  method: get
-  servers:
-    - url: https://api.anchorbrowser.io
-      description: API server
-  request:
-    security:
-      - title: api key header
-        parameters:
-          query: {}
-          header:
-            anchor-api-key:
-              type: apiKey
-              description: API key passed in the header
-          cookie: {}
-    parameters:
-      path:
-        session_id:
+  /v1/sessions/{session_id}/pages:
+    get:
+      tags:
+        - Browser Sessions
+      summary: Get Browser Session Pages
+      description: Retrieves a list of pages associated with a specific browser session.
+      parameters:
+        - in: path
+          name: session_id
+          required: true
+          description: The ID of the session to retrieve pages for.
           schema:
-            - type: string
-              required: true
-              description: The ID of the session to retrieve pages for.
-      query: {}
-      header: {}
-      cookie: {}
-    body: {}
-  response:
-    '200':
-      application/json:
-        schemaArray:
-          - type: array
-            items:
-              allOf:
-                - type: object
+            type: string
+      responses:
+        '200':
+          description: Session pages retrieved successfully.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
                   properties:
                     id:
                       type: string
@@ -60,71 +63,43 @@ paths:
                     - title
                     - url
                     - frontend_url
-        examples:
-          example:
-            value:
-              - id: <string>
-                title: <string>
-                url: <string>
-                frontend_url: <string>
-        description: Session pages retrieved successfully.
-    '401':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              error:
-                allOf:
-                  - &ref_0
-                    type: object
-                    properties:
-                      code:
-                        type: integer
-                      message:
-                        type: string
-            refIdentifier: '#/components/schemas/ErrorResponse'
-        examples:
-          example:
-            value:
-              error:
-                code: 123
-                message: <string>
-        description: Invalid API Key or unauthorized access.
-    '404':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              error:
-                allOf:
-                  - *ref_0
-            refIdentifier: '#/components/schemas/ErrorResponse'
-        examples:
-          example:
-            value:
-              error:
-                code: 123
-                message: <string>
-        description: Session not found.
-    '500':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              error:
-                allOf:
-                  - *ref_0
-            refIdentifier: '#/components/schemas/ErrorResponse'
-        examples:
-          example:
-            value:
-              error:
-                code: 123
-                message: <string>
-        description: Internal server error.
-  deprecated: false
-  type: path
+        '401':
+          description: Invalid API Key or unauthorized access.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Session not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Internal server error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      security:
+        - api_key_header: []
 components:
-  schemas: {}
+  schemas:
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: integer
+            message:
+              type: string
+  securitySchemes:
+    api_key_header:
+      type: apiKey
+      in: header
+      name: anchor-api-key
+      description: API key passed in the header
 
 ````

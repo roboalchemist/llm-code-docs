@@ -1,5 +1,9 @@
 # Source: https://docs.chatling.ai/general-settings/rate-limit.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.chatling.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Rate limit
 
 > Learn how to set a rate limit for your chatbot to prevent it from being spammed.

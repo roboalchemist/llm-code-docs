@@ -1,251 +1,186 @@
 # Source: https://docs.datafold.com/api-reference/data-diffs/get-a-data-diff-summary.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.datafold.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Get a data diff summary
+
+
 
 ## OpenAPI
 
 ````yaml get /api/v1/datadiffs/{datadiff_id}/summary_results
+openapi: 3.1.0
+info:
+  contact:
+    email: support@datafold.com
+    name: API Support
+  description: >-
+    The Datafold API reference is a guide to our available endpoints and
+    authentication methods.
+
+    If you're just getting started with Datafold, we recommend first checking
+    out our [documentation](https://docs.datafold.com).
+
+
+    :::info
+      To use the Datafold API, you should first create a Datafold API Key,
+      which should be stored as a local environment variable named DATAFOLD_API_KEY.
+      This can be set in your Datafold Cloud's Settings under the Account page.
+    :::
+  title: Datafold API
+  version: latest
+servers:
+  - description: Default server
+    url: https://app.datafold.com
+security:
+  - ApiKeyAuth: []
 paths:
-  path: /api/v1/datadiffs/{datadiff_id}/summary_results
-  method: get
-  servers:
-    - url: https://app.datafold.com
-      description: Default server
-  request:
-    security:
-      - title: ApiKeyAuth
-        parameters:
-          query: {}
-          header:
-            Authorization:
-              type: apiKey
-              description: Use the 'Authorization' header with the format 'Key <api-key>'
-          cookie: {}
-    parameters:
-      path:
-        datadiff_id:
+  /api/v1/datadiffs/{datadiff_id}/summary_results:
+    get:
+      tags:
+        - Data diffs
+      summary: Get a data diff summary
+      operationId: get_diff_summary_v1_api_v1_datadiffs__datadiff_id__summary_results_get
+      parameters:
+        - in: path
+          name: datadiff_id
+          required: true
           schema:
-            - type: integer
-              required: true
-              title: Data diff id
-      query: {}
-      header: {}
-      cookie: {}
-    body: {}
-  response:
-    '200':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              dependencies:
-                allOf:
-                  - items:
-                      $ref: '#/components/schemas/ApiCIDependency'
-                    title: Dependencies
-                    type: array
-              materialized_results:
-                allOf:
-                  - $ref: '#/components/schemas/ApiMaterializedResults'
-                    description: Results of the diff, materialized into tables.
-              pks:
-                allOf:
-                  - $ref: '#/components/schemas/ApiDataDiffSummaryPKs'
+            title: Data diff id
+            type: integer
+      responses:
+        '200':
+          content:
+            application/json:
               schema:
-                allOf:
-                  - $ref: '#/components/schemas/ApiDataDiffSummarySchema'
-              status:
-                allOf:
-                  - enum:
-                      - done
-                      - success
-                    title: Status
-                    type: string
-              values:
-                allOf:
-                  - anyOf:
-                      - $ref: '#/components/schemas/ApiDataDiffSummaryValues'
-                      - type: 'null'
-            title: ApiDataDiffSummaryForDone
-            refIdentifier: '#/components/schemas/ApiDataDiffSummaryForDone'
-            requiredProperties:
-              - status
-              - pks
-              - dependencies
-              - schema
-              - materialized_results
-          - type: object
-            properties:
-              pks:
-                allOf:
-                  - anyOf:
-                      - $ref: '#/components/schemas/ApiDataDiffSummaryPKs'
-                      - type: 'null'
-              status:
-                allOf:
-                  - enum:
-                      - done
-                      - success
-                    title: Status
-                    type: string
-              values:
-                allOf:
-                  - anyOf:
-                      - $ref: '#/components/schemas/ApiDataDiffSummaryValues'
-                      - type: 'null'
-            title: ApiCrossDataDiffSummaryForDone
-            refIdentifier: '#/components/schemas/ApiCrossDataDiffSummaryForDone'
-            requiredProperties:
-              - status
-          - type: object
-            properties:
-              error:
-                allOf:
-                  - anyOf:
-                      - $ref: '#/components/schemas/ApiDataDiffError'
-                      - additionalProperties: true
-                        type: object
-                    title: Error
-              status:
-                allOf:
-                  - const: failed
-                    title: Status
-                    type: string
-            title: ApiDataDiffSummaryForFailed
-            refIdentifier: '#/components/schemas/ApiDataDiffSummaryForFailed'
-            requiredProperties:
-              - status
-              - error
-          - type: object
-            properties:
-              status:
-                allOf:
-                  - enum:
-                      - running
-                      - pending
-                    title: Status
-                    type: string
-            title: ApiDataDiffSummaryForRunning
-            refIdentifier: '#/components/schemas/ApiDataDiffSummaryForRunning'
-            requiredProperties:
-              - status
-          - type: object
-            properties:
-              dependencies:
-                allOf:
-                  - items:
-                      $ref: '#/components/schemas/ApiCIDependency'
-                    title: Dependencies
-                    type: array
-              status:
-                allOf:
-                  - enum:
-                      - done
-                      - success
-                    title: Status
-                    type: string
-            title: InternalApiDataDiffDependencies
-            refIdentifier: '#/components/schemas/InternalApiDataDiffDependencies'
-            requiredProperties:
-              - status
-              - dependencies
-        examples:
-          example:
-            value:
-              dependencies:
-                - data_source_id: 123
-                  data_source_type: <string>
-                  item_type: <string>
-                  name: <string>
-                  path:
-                    - <string>
-                  popularity: 123
-                  primary_key: <string>
-                  query_type: <string>
-                  raw_sql: <string>
-                  remote_id: <string>
-                  table_name: <string>
-                  uid: <string>
-              materialized_results:
-                diff:
-                  - data_source_id: 123
-                    is_sampled: true
-                    path:
-                      - <string>
-                duplicates1:
-                  - data_source_id: 123
-                    is_sampled: true
-                    path:
-                      - <string>
-                duplicates2:
-                  - data_source_id: 123
-                    is_sampled: true
-                    path:
-                      - <string>
-                exclusives:
-                  - data_source_id: 123
-                    is_sampled: true
-                    path:
-                      - <string>
-              pks:
-                distincts:
-                  - <any>
-                dupes:
-                  - <any>
-                exclusives:
-                  - <any>
-                nulls:
-                  - <any>
-                total_rows:
-                  - <any>
+                anyOf:
+                  - $ref: '#/components/schemas/ApiDataDiffSummaryForDone'
+                  - $ref: '#/components/schemas/ApiCrossDataDiffSummaryForDone'
+                  - $ref: '#/components/schemas/ApiDataDiffSummaryForFailed'
+                  - $ref: '#/components/schemas/ApiDataDiffSummaryForRunning'
+                  - $ref: '#/components/schemas/InternalApiDataDiffDependencies'
+                title: >-
+                  Response Get Diff Summary V1 Api V1 Datadiffs  Datadiff Id 
+                  Summary Results Get
+          description: Successful Response
+        '422':
+          content:
+            application/json:
               schema:
-                column_counts:
-                  - <any>
-                column_reorders: 123
-                column_type_differs:
-                  - <string>
-                column_type_mismatches: 123
-                columns_mismatched:
-                  - <any>
-                exclusive_columns:
-                  - - <string>
-              status: done
-              values:
-                columns_diff_stats:
-                  - {}
-                columns_with_differences: 123
-                compared_columns: 123
-                rows_with_differences: 123
-                total_rows: 123
-                total_values: 123
-                values_with_differences: 123
-        description: Successful Response
-    '422':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              detail:
-                allOf:
-                  - items:
-                      $ref: '#/components/schemas/ValidationError'
-                    title: Detail
-                    type: array
-            title: HTTPValidationError
-            refIdentifier: '#/components/schemas/HTTPValidationError'
-        examples:
-          example:
-            value:
-              detail:
-                - loc:
-                    - <string>
-                  msg: <string>
-                  type: <string>
-        description: Validation Error
-  deprecated: false
-  type: path
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
 components:
   schemas:
+    ApiDataDiffSummaryForDone:
+      properties:
+        dependencies:
+          items:
+            $ref: '#/components/schemas/ApiCIDependency'
+          title: Dependencies
+          type: array
+        materialized_results:
+          $ref: '#/components/schemas/ApiMaterializedResults'
+          description: Results of the diff, materialized into tables.
+        pks:
+          $ref: '#/components/schemas/ApiDataDiffSummaryPKs'
+        schema:
+          $ref: '#/components/schemas/ApiDataDiffSummarySchema'
+        status:
+          enum:
+            - done
+            - success
+          title: Status
+          type: string
+        values:
+          anyOf:
+            - $ref: '#/components/schemas/ApiDataDiffSummaryValues'
+            - type: 'null'
+      required:
+        - status
+        - pks
+        - dependencies
+        - schema
+        - materialized_results
+      title: ApiDataDiffSummaryForDone
+      type: object
+    ApiCrossDataDiffSummaryForDone:
+      properties:
+        pks:
+          anyOf:
+            - $ref: '#/components/schemas/ApiDataDiffSummaryPKs'
+            - type: 'null'
+        status:
+          enum:
+            - done
+            - success
+          title: Status
+          type: string
+        values:
+          anyOf:
+            - $ref: '#/components/schemas/ApiDataDiffSummaryValues'
+            - type: 'null'
+      required:
+        - status
+      title: ApiCrossDataDiffSummaryForDone
+      type: object
+    ApiDataDiffSummaryForFailed:
+      properties:
+        error:
+          anyOf:
+            - $ref: '#/components/schemas/ApiDataDiffError'
+            - additionalProperties: true
+              type: object
+          title: Error
+        status:
+          const: failed
+          title: Status
+          type: string
+      required:
+        - status
+        - error
+      title: ApiDataDiffSummaryForFailed
+      type: object
+    ApiDataDiffSummaryForRunning:
+      properties:
+        status:
+          enum:
+            - running
+            - pending
+          title: Status
+          type: string
+      required:
+        - status
+      title: ApiDataDiffSummaryForRunning
+      type: object
+    InternalApiDataDiffDependencies:
+      properties:
+        dependencies:
+          items:
+            $ref: '#/components/schemas/ApiCIDependency'
+          title: Dependencies
+          type: array
+        status:
+          enum:
+            - done
+            - success
+          title: Status
+          type: string
+      required:
+        - status
+        - dependencies
+      title: InternalApiDataDiffDependencies
+      type: object
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          title: Detail
+          type: array
+      title: HTTPValidationError
+      type: object
     ApiCIDependency:
       properties:
         data_source_id:
@@ -307,18 +242,53 @@ components:
         - data_source_type
       title: ApiCIDependency
       type: object
-    ApiDataDiffError:
+    ApiMaterializedResults:
       properties:
-        error_type:
-          title: Error Type
-          type: string
-        error_value:
-          title: Error Value
-          type: string
-      required:
-        - error_type
-        - error_value
-      title: ApiDataDiffError
+        diff:
+          anyOf:
+            - items:
+                $ref: '#/components/schemas/ApiMaterializedResult'
+              type: array
+            - type: 'null'
+          description: >-
+            Results of row-to-row comparison between dataset A and B. Semantics
+            is the same as for `exclusive_pks1` field.
+          title: Diff
+        duplicates1:
+          anyOf:
+            - items:
+                $ref: '#/components/schemas/ApiMaterializedResult'
+              type: array
+            - type: 'null'
+          description: >-
+            Rows with duplicate primary keys detected in dataset A. Semantics is
+            the same as for `exclusive_pks1` field.
+          title: Duplicates1
+        duplicates2:
+          anyOf:
+            - items:
+                $ref: '#/components/schemas/ApiMaterializedResult'
+              type: array
+            - type: 'null'
+          description: >-
+            Rows with duplicate primary keys detected in dataset B. Semantics is
+            the same as for `exclusive_pks1` field.
+          title: Duplicates2
+        exclusives:
+          anyOf:
+            - items:
+                $ref: '#/components/schemas/ApiMaterializedResult'
+              type: array
+            - type: 'null'
+          description: >-
+            Rows with exclusive primary keys detected in dataset A and B. `None`
+            if table is not ready yet or if materialization wasn't requested. If
+            materialization is completed, for a diff inside a single database
+            the field will contain a list with one element. If diff compares
+            tables in different databases, the list may contain one or two
+            entries.
+          title: Exclusives
+      title: ApiMaterializedResults
       type: object
     ApiDataDiffSummaryPKs:
       properties:
@@ -454,75 +424,18 @@ components:
         - columns_diff_stats
       title: ApiDataDiffSummaryValues
       type: object
-    ApiMaterializedResult:
+    ApiDataDiffError:
       properties:
-        data_source_id:
-          description: Id of the DataSource where the table is located
-          title: Data Source Id
-          type: integer
-        is_sampled:
-          description: If sampling was applied
-          title: Is Sampled
-          type: boolean
-        path:
-          description: Path segments of the table
-          items:
-            type: string
-          title: Path
-          type: array
+        error_type:
+          title: Error Type
+          type: string
+        error_value:
+          title: Error Value
+          type: string
       required:
-        - data_source_id
-        - path
-        - is_sampled
-      title: ApiMaterializedResult
-      type: object
-    ApiMaterializedResults:
-      properties:
-        diff:
-          anyOf:
-            - items:
-                $ref: '#/components/schemas/ApiMaterializedResult'
-              type: array
-            - type: 'null'
-          description: >-
-            Results of row-to-row comparison between dataset A and B. Semantics
-            is the same as for `exclusive_pks1` field.
-          title: Diff
-        duplicates1:
-          anyOf:
-            - items:
-                $ref: '#/components/schemas/ApiMaterializedResult'
-              type: array
-            - type: 'null'
-          description: >-
-            Rows with duplicate primary keys detected in dataset A. Semantics is
-            the same as for `exclusive_pks1` field.
-          title: Duplicates1
-        duplicates2:
-          anyOf:
-            - items:
-                $ref: '#/components/schemas/ApiMaterializedResult'
-              type: array
-            - type: 'null'
-          description: >-
-            Rows with duplicate primary keys detected in dataset B. Semantics is
-            the same as for `exclusive_pks1` field.
-          title: Duplicates2
-        exclusives:
-          anyOf:
-            - items:
-                $ref: '#/components/schemas/ApiMaterializedResult'
-              type: array
-            - type: 'null'
-          description: >-
-            Rows with exclusive primary keys detected in dataset A and B. `None`
-            if table is not ready yet or if materialization wasn't requested. If
-            materialization is completed, for a diff inside a single database
-            the field will contain a list with one element. If diff compares
-            tables in different databases, the list may contain one or two
-            entries.
-          title: Exclusives
-      title: ApiMaterializedResults
+        - error_type
+        - error_value
+      title: ApiDataDiffError
       type: object
     ValidationError:
       properties:
@@ -545,5 +458,33 @@ components:
         - type
       title: ValidationError
       type: object
+    ApiMaterializedResult:
+      properties:
+        data_source_id:
+          description: Id of the DataSource where the table is located
+          title: Data Source Id
+          type: integer
+        is_sampled:
+          description: If sampling was applied
+          title: Is Sampled
+          type: boolean
+        path:
+          description: Path segments of the table
+          items:
+            type: string
+          title: Path
+          type: array
+      required:
+        - data_source_id
+        - path
+        - is_sampled
+      title: ApiMaterializedResult
+      type: object
+  securitySchemes:
+    ApiKeyAuth:
+      description: Use the 'Authorization' header with the format 'Key <api-key>'
+      in: header
+      name: Authorization
+      type: apiKey
 
 ````

@@ -2,10 +2,6 @@
 
 # Source: https://vuejs.org/api/application.md
 
-# Source: https://vuejs.org/guide/essentials/application.md
-
-# Source: https://vuejs.org/api/application.md
-
 ---
 url: /api/application.md
 ---

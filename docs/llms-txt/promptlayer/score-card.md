@@ -1,5 +1,9 @@
 # Source: https://docs.promptlayer.com/features/evaluations/score-card.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.promptlayer.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Score Card
 
 The score card feature in PromptLayer allows you to assign a score to each evaluation you run. This score provides a quick and easy way to assess the performance of your prompts and compare different versions.
@@ -125,8 +129,3 @@ The score card and any score matrices will be displayed side-by-side for easy co
 <Frame>
     <img src="https://mintcdn.com/promptlayer/jUVR1Bx755pIFGwB/images/score-card/compare.png?fit=max&auto=format&n=jUVR1Bx755pIFGwB&q=85&s=5192d223841cf30ff0e0cf84d61e3db9" alt="Compare Score Cards" data-og-width="1203" width="1203" data-og-height="830" height="830" data-path="images/score-card/compare.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/promptlayer/jUVR1Bx755pIFGwB/images/score-card/compare.png?w=280&fit=max&auto=format&n=jUVR1Bx755pIFGwB&q=85&s=4242a8ff0e0284cc60db0fa0e660bb50 280w, https://mintcdn.com/promptlayer/jUVR1Bx755pIFGwB/images/score-card/compare.png?w=560&fit=max&auto=format&n=jUVR1Bx755pIFGwB&q=85&s=a20ceebcbaee7983dfeee326adab8a3a 560w, https://mintcdn.com/promptlayer/jUVR1Bx755pIFGwB/images/score-card/compare.png?w=840&fit=max&auto=format&n=jUVR1Bx755pIFGwB&q=85&s=0884129fee1d5372f274463e43ab8da1 840w, https://mintcdn.com/promptlayer/jUVR1Bx755pIFGwB/images/score-card/compare.png?w=1100&fit=max&auto=format&n=jUVR1Bx755pIFGwB&q=85&s=7b1e1b9ab8841e7bdc28b13a8f777118 1100w, https://mintcdn.com/promptlayer/jUVR1Bx755pIFGwB/images/score-card/compare.png?w=1650&fit=max&auto=format&n=jUVR1Bx755pIFGwB&q=85&s=6924015175eba7391b03b7ae89b1ca5b 1650w, https://mintcdn.com/promptlayer/jUVR1Bx755pIFGwB/images/score-card/compare.png?w=2500&fit=max&auto=format&n=jUVR1Bx755pIFGwB&q=85&s=c40ab82f35ca2df9ab4db69708bab309 2500w" />
 </Frame>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.promptlayer.com/llms.txt

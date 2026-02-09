@@ -39,5 +39,5 @@ Example:
 
 Alias used in [services.xml](services/services.html) to refer to the host.
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 

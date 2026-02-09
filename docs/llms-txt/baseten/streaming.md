@@ -6,29 +6,9 @@
 
 # Source: https://docs.baseten.co/development/chain/streaming.md
 
-# Source: https://docs.baseten.co/inference/streaming.md
-
-# Source: https://docs.baseten.co/examples/streaming.md
-
-# Source: https://docs.baseten.co/development/model/streaming.md
-
-# Source: https://docs.baseten.co/development/chain/streaming.md
-
-# Source: https://docs.baseten.co/inference/streaming.md
-
-# Source: https://docs.baseten.co/examples/streaming.md
-
-# Source: https://docs.baseten.co/development/model/streaming.md
-
-# Source: https://docs.baseten.co/development/chain/streaming.md
-
-# Source: https://docs.baseten.co/inference/streaming.md
-
-# Source: https://docs.baseten.co/examples/streaming.md
-
-# Source: https://docs.baseten.co/development/model/streaming.md
-
-# Source: https://docs.baseten.co/development/chain/streaming.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.baseten.co/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Streaming
 

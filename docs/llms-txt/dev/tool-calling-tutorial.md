@@ -1,5 +1,9 @@
 # Source: https://dev.writer.com/agent-builder/tool-calling-tutorial.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://dev.writer.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Tool calling with external APIs
 
 This tutorial walks through building an agent that can intelligently call external APIs to get information and make decisions based on the information. It takes the name of a city and calls several tools and APIs to determine if it's a good day to view the sunset in that location.
@@ -354,7 +358,7 @@ You can see the agent's progress and reasoning in the **Logs** tab.
 
 ## Next steps
 
-This tutorial demonstrates the basics of tool calling with external APIs. To continue improving on this agent, you might consider adding a **Structured Output** block after the Tool Calling block to ensure the agent returns the results in the correct format. You could also add more components to the UI to display the results in a more user-friendly way, such as a [**Metric**](/components/metric) block to display the weather conditions, a [**Google Maps**](/components/googlemaps) block to display the recommended locations, or different **Text** blocks to display the different sections of the results.
+This tutorial demonstrates the basics of tool calling with external APIs. To continue improving on this agent, you might consider adding a **Structured Output** block after the Tool Calling block to ensure the agent returns the results in the correct format. You could also add more components to the UI to display the results in a more user-friendly way, such as a [**Metric**](/components/metric) block to display the weather conditions or different **Text** blocks to display the different sections of the results.
 
 Next, you might want to learn more about tool calling:
 

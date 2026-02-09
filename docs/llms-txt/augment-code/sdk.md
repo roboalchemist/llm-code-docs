@@ -1,5 +1,9 @@
 # Source: https://docs.augmentcode.com/cli/sdk.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.augmentcode.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Auggie SDK
 
 > Build custom integrations and agents using the Auggie SDK.
@@ -79,3 +83,13 @@ Both SDKs provide:
 * **Multiple Output Modes** - String responses, typed returns, streaming, and more
 * **Codebase Awareness** - Automatic indexing and context from your workspace
 * **Custom Tools** - Extend Auggie with your own tools and integrations
+
+## TypeScript-Specific Features
+
+The TypeScript SDK also includes:
+
+* **AI SDK Provider** - Use Augment as a language model provider with [Vercel's AI SDK](https://sdk.vercel.ai/docs)
+  * Compatible with `generateText`, `streamText`, and other AI SDK functions
+  * Full support for tool calling (function calling)
+  * Works with API credentials only (no local Auggie installation needed)
+  * See the [TypeScript SDK documentation](/cli/sdk-typescript#ai-sdk-provider-vercel-ai-sdk) for details

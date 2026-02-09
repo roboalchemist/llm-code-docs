@@ -1,5 +1,9 @@
 # Source: https://www.aptible.com/docs/core-concepts/managed-databases/supported-databases/postgresql.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.aptible.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # PostgreSQL
 
 > Learn about running secure, Managed PostgreSQL Databases on Aptible
@@ -18,7 +22,7 @@ The following versions of [PostgreSQL](https://www.postgresql.org/) are currentl
 
 <Info>PostgreSQL releases new major versions annually, and supports major versions for 5 years before it is considered end-of-life and no longer maintained.</Info>
 
-<Note> For databases on EOL versions, Aptible will prevent new databases from being provisioned and mark existing database as `DEPRECATED` on the deprecation date listed above. While existing databases will not be affected, we recommend end-of-life databases to be [upgraded](https://www.aptible.com/docs/core-concepts/managed-databases/managing-databases/database-upgrade-methods#database-upgrades). The latest version offered on Aptible will always be available for provisioning, regardless of end-of-life date. </Note>
+<Note>For databases on EOL versions, Aptible will prevent new databases from being provisioned and mark existing database as `DEPRECATED` on the deprecation date listed above. While existing databases will not be affected, we recommend end-of-life databases to be [upgraded](https://www.aptible.com/docs/core-concepts/managed-databases/managing-databases/database-upgrade-methods#database-upgrades). Restoring a database from a backup will provision a new database that matches the version associated with the backup, even if that version is EOL or Deprecated. The latest version offered on Aptible will always be available for provisioning, regardless of end-of-life date.</Note>
 
 # Connecting to PostgreSQL
 
@@ -90,6 +94,14 @@ Aptible maintains a link between replicas and their source Database to ensure th
 # Data Integrity and Durability
 
 On Aptible, PostgreSQL is configured with default settings for [write-ahead logging](https://www.postgresql.org/docs/current/static/wal-intro.html). Committed transactions are therefore guaranteed to be written to disk.
+
+# Point-in-time Recovery
+
+Point-in-time Recovery (PITR) is available for PostgreSQL 13 and newer. PITR lets you restore your database to any specific moment in time, protecting against accidental data deletions, corruptions, or other errors.
+
+Aptible automatically enables PITR for new PostgreSQL 13+ databases if your Environment's backup retention policy has at least 1 day of recovery data retention configured.
+
+For more details on configuring and using PITR, see [Point-in-time Recovery for PostgreSQL](/core-concepts/managed-databases/managing-databases/database-backups#point-in-time-recovery-for-postgresql).
 
 # Configuration
 

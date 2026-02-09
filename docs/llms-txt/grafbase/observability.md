@@ -2,18 +2,6 @@
 
 # Source: https://grafbase.com/docs/gateway/observability.md
 
-# Source: https://grafbase.com/docs/platform/self-hosting/observability.md
-
-# Source: https://grafbase.com/docs/gateway/observability.md
-
-# Source: https://grafbase.com/docs/platform/self-hosting/observability.md
-
-# Source: https://grafbase.com/docs/gateway/observability.md
-
-# Source: https://grafbase.com/docs/platform/self-hosting/observability.md
-
-# Source: https://grafbase.com/docs/gateway/observability.md
-
 # Observability in the Grafbase Gateway
 
 The Grafbase Gateway lets you monitor gateway operations and errors through logs, traces, and metrics. When you use the gateway with a Grafbase access token, the Grafbase dashboard receives gateway operation analytics automatically.

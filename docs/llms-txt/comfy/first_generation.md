@@ -1,5 +1,9 @@
 # Source: https://docs.comfy.org/get_started/first_generation.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.comfy.org/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Getting Started with AI Image Generation
 
 > This tutorial will guide you through your first image generation with ComfyUI, covering basic interface operations like workflow loading, model installation, and image generation

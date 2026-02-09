@@ -1,11 +1,15 @@
 # Source: https://docs.frigade.com/component/inline-card.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.frigade.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Card
 
 > Communicate information or drive action via in-line content cards
 
 <Frame className="h-96 items-center">
-  <img src="https://mintlify.s3.us-west-1.amazonaws.com/frigade-docs/images/components/inline-card.svg" style={{ maxWidth: "300px" }} />
+  <img src="https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/components/inline-card.svg?fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=abfab3323d2170b86b6ee639e15944dd" style={{ maxWidth: "300px" }} data-og-width="360" width="360" data-og-height="165" height="165" data-path="images/components/inline-card.svg" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/components/inline-card.svg?w=280&fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=6abc6d7c71151f904a656b78283f5616 280w, https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/components/inline-card.svg?w=560&fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=92d84811248e1db170f274ede35174d4 560w, https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/components/inline-card.svg?w=840&fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=f69788ea49c6d800fa5777dab22bb7ea 840w, https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/components/inline-card.svg?w=1100&fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=9b4f485d6b364775deea9388f28772ca 1100w, https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/components/inline-card.svg?w=1650&fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=a7ccd2699537edf8410ee3df11409dd0 1650w, https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/components/inline-card.svg?w=2500&fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=4db6b8e14ca67696eefbbf9faa2e9d0b 2500w" />
 </Frame>
 
 ## About this component
@@ -42,7 +46,7 @@ The `Card` component is a handy little UI element that’s great for showing off
 
 <Tabs>
   <Tab title="Code">
-    ```tsx
+    ```tsx  theme={"system"}
     import * as Frigade from '@frigade/react';
 
     const App = () => {

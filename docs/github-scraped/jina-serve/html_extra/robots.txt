@@ -1,0 +1,4 @@
+# Source: https://github.com/jina-ai/serve/blob/master/docs/html_extra/robots.txt
+
+User-agent: *
+sitemap: https://jina.ai/serve/sitemap.xml

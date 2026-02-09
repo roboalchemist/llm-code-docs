@@ -2,22 +2,6 @@
 
 # Source: https://grafbase.com/docs/platform/api.md
 
-# Source: https://grafbase.com/docs/platform/self-hosting/charts/api.md
-
-# Source: https://grafbase.com/docs/platform/api.md
-
-# Source: https://grafbase.com/docs/platform/self-hosting/charts/api.md
-
-# Source: https://grafbase.com/docs/platform/api.md
-
-# Source: https://grafbase.com/docs/platform/self-hosting/charts/api.md
-
-# Source: https://grafbase.com/docs/platform/api.md
-
-# Source: https://grafbase.com/docs/platform/self-hosting/charts/api.md
-
-# Source: https://grafbase.com/docs/platform/api.md
-
 # Grafbase API
 
 The [Grafbase Dashboard](/dashboard) is powered by the Grafbase API. This same API is available for users to manage their account and projects programmatically.

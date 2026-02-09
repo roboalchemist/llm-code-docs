@@ -3,7 +3,6 @@
 ---
 url: /docs/guide/usage/linter/rules/unicorn/consistent-date-clone.md
 ---
-# unicorn/consistent-date-clone&#x20;
 
 ### What it does
 

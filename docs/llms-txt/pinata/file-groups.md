@@ -1,5 +1,9 @@
 # Source: https://docs.pinata.cloud/files/file-groups.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pinata.cloud/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Groups
 
 Private Groups allow you to organize your Pinata content through the Pinata App, SDK, or API, giving you a clearer picture of what your files are being used for.

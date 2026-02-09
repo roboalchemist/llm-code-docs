@@ -1,5 +1,9 @@
 # Source: https://docs.pipecat.ai/server/utilities/audio/silero-vad-analyzer.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pipecat.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # SileroVADAnalyzer
 
 > Voice Activity Detection analyzer using the Silero VAD ONNX model
@@ -47,14 +51,11 @@ pip install "pipecat-ai[silero]"
 ## Usage Example
 
 ```python  theme={null}
-transport = DailyTransport(
-    room_url,
-    token,
-    "Respond bot",
-    DailyParams(
-        audio_in_enabled=True,
-        audio_out_enabled=True,
-        vad_analyzer=SileroVADAnalyzer(params=VADParams(stop_secs=0.5)),
+context = LLMContext(messages)
+user_aggregator, assistant_aggregator = LLMContextAggregatorPair(
+    context,
+    user_params=LLMUserAggregatorParams(
+        vad_analyzer=SileroVADAnalyzer(params=VADParams(stop_secs=0.2)),
     ),
 )
 ```
@@ -84,8 +85,3 @@ Model Management
 * Built-in model file included
 * CPU-optimized inference
 * Supports 8kHz and 16kHz audio
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.pipecat.ai/llms.txt

@@ -1,5 +1,9 @@
 # Source: https://braintrust.dev/docs/api-reference/envvars/delete-env_var.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://braintrust.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Delete env_var
 
 > Delete an env_var object by its id
@@ -138,6 +142,29 @@ components:
           nullable: true
           format: date-time
           description: Date the environment variable was last used
+        metadata:
+          type: object
+          nullable: true
+          additionalProperties:
+            nullable: true
+          description: >-
+            Optional metadata associated with the environment variable when
+            managed via the function secrets API
+        secret_type:
+          type: string
+          nullable: true
+          description: >-
+            Optional classification for the secret (for example, the AI provider
+            name)
+        secret_category:
+          type: string
+          enum:
+            - env_var
+            - ai_provider
+          default: env_var
+          description: >-
+            The category of the secret: env_var for regular environment
+            variables, ai_provider for AI provider API keys
       required:
         - id
         - object_type
@@ -159,7 +186,3 @@ components:
         page](https://www.braintrustdata.com/app/settings?subroute=api-keys).
 
 ````
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://braintrust.dev/docs/llms.txt

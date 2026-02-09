@@ -1,5 +1,9 @@
 # Source: https://www.aptible.com/docs/how-to-guides/observability-guides/setup-kibana.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.aptible.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # How to set up Kibana on Aptible
 
 > ❗️ These instructions apply only to Kibana/Elasticsearch versions 7.0 or higher. Earlier versions on Deploy did not make use of Elasaticsearch's native authentication or encryption, so we built our own Kibana App compatible with those versions, which you can find here: [aptible/docker-kibana](https://github.com/aptible/docker-kibana)

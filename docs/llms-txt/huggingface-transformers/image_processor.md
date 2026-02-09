@@ -1,4 +1,4 @@
-# Source: https://huggingface.co/docs/transformers/v5.0.0rc1/main_classes/image_processor.md
+# Source: https://huggingface.co/docs/transformers/v5.0.0/main_classes/image_processor.md
 
 # Image Processor
 
@@ -42,18 +42,18 @@ These benchmarks were run on an [AWS EC2 g5.2xlarge instance](https://aws.amazon
 
 #### transformers.ImageProcessingMixin[[transformers.ImageProcessingMixin]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/image_processing_base.py#L61)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/image_processing_base.py#L61)
 
 This is an image processor mixin used to provide saving/loading functionality for sequential and image feature
 extractors.
 
-from_pretrainedtransformers.ImageProcessingMixin.from_pretrainedhttps://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/image_processing_base.py#L88[{"name": "pretrained_model_name_or_path", "val": ": typing.Union[str, os.PathLike]"}, {"name": "cache_dir", "val": ": typing.Union[str, os.PathLike, NoneType] = None"}, {"name": "force_download", "val": ": bool = False"}, {"name": "local_files_only", "val": ": bool = False"}, {"name": "token", "val": ": typing.Union[str, bool, NoneType] = None"}, {"name": "revision", "val": ": str = 'main'"}, {"name": "**kwargs", "val": ""}]- **pretrained_model_name_or_path** (`str` or `os.PathLike`) --
+from_pretrainedtransformers.ImageProcessingMixin.from_pretrainedhttps://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/image_processing_base.py#L84[{"name": "pretrained_model_name_or_path", "val": ": str | os.PathLike"}, {"name": "cache_dir", "val": ": str | os.PathLike | None = None"}, {"name": "force_download", "val": ": bool = False"}, {"name": "local_files_only", "val": ": bool = False"}, {"name": "token", "val": ": str | bool | None = None"}, {"name": "revision", "val": ": str = 'main'"}, {"name": "**kwargs", "val": ""}]- **pretrained_model_name_or_path** (`str` or `os.PathLike`) --
   This can be either:
 
   - a string, the *model id* of a pretrained image_processor hosted inside a model repo on
     huggingface.co.
   - a path to a *directory* containing a image processor file saved using the
-    [save_pretrained()](/docs/transformers/v5.0.0rc1/en/main_classes/image_processor#transformers.ImageProcessingMixin.save_pretrained) method, e.g.,
+    [save_pretrained()](/docs/transformers/v5.0.0/en/internal/image_processing_utils#transformers.ImageProcessingMixin.save_pretrained) method, e.g.,
     `./my_model_directory/`.
   - a path or url to a saved image processor JSON *file*, e.g.,
     `./my_model_directory/preprocessor_config.json`.
@@ -91,9 +91,9 @@ from_pretrainedtransformers.ImageProcessingMixin.from_pretrainedhttps://github.c
 - **kwargs** (`dict[str, Any]`, *optional*) --
   The values in kwargs of any keys which are image processor attributes will be used to override the
   loaded values. Behavior concerning key/value pairs whose keys are *not* image processor attributes is
-  controlled by the `return_unused_kwargs` keyword parameter.0A image processor of type [ImageProcessingMixin](/docs/transformers/v5.0.0rc1/en/main_classes/image_processor#transformers.ImageProcessingMixin).
+  controlled by the `return_unused_kwargs` keyword parameter.0A image processor of type [ImageProcessingMixin](/docs/transformers/v5.0.0/en/internal/image_processing_utils#transformers.ImageProcessingMixin).
 
-Instantiate a type of [ImageProcessingMixin](/docs/transformers/v5.0.0rc1/en/main_classes/image_processor#transformers.ImageProcessingMixin) from an image processor.
+Instantiate a type of [ImageProcessingMixin](/docs/transformers/v5.0.0/en/internal/image_processing_utils#transformers.ImageProcessingMixin) from an image processor.
 
 Examples:
 
@@ -120,7 +120,7 @@ assert unused_kwargs == {"foo": False}
 
 **Parameters:**
 
-pretrained_model_name_or_path (`str` or `os.PathLike`) : This can be either:  - a string, the *model id* of a pretrained image_processor hosted inside a model repo on huggingface.co. - a path to a *directory* containing a image processor file saved using the [save_pretrained()](/docs/transformers/v5.0.0rc1/en/main_classes/image_processor#transformers.ImageProcessingMixin.save_pretrained) method, e.g., `./my_model_directory/`. - a path or url to a saved image processor JSON *file*, e.g., `./my_model_directory/preprocessor_config.json`.
+pretrained_model_name_or_path (`str` or `os.PathLike`) : This can be either:  - a string, the *model id* of a pretrained image_processor hosted inside a model repo on huggingface.co. - a path to a *directory* containing a image processor file saved using the [save_pretrained()](/docs/transformers/v5.0.0/en/internal/image_processing_utils#transformers.ImageProcessingMixin.save_pretrained) method, e.g., `./my_model_directory/`. - a path or url to a saved image processor JSON *file*, e.g., `./my_model_directory/preprocessor_config.json`.
 
 cache_dir (`str` or `os.PathLike`, *optional*) : Path to a directory in which a downloaded pretrained model image processor should be cached if the standard cache should not be used.
 
@@ -140,13 +140,13 @@ kwargs (`dict[str, Any]`, *optional*) : The values in kwargs of any keys which a
 
 **Returns:**
 
-A image processor of type [ImageProcessingMixin](/docs/transformers/v5.0.0rc1/en/main_classes/image_processor#transformers.ImageProcessingMixin).
+A image processor of type [ImageProcessingMixin](/docs/transformers/v5.0.0/en/internal/image_processing_utils#transformers.ImageProcessingMixin).
 #### save_pretrained[[transformers.ImageProcessingMixin.save_pretrained]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/image_processing_base.py#L187)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/image_processing_base.py#L183)
 
 Save an image processor object to the directory `save_directory`, so that it can be re-loaded using the
-[from_pretrained()](/docs/transformers/v5.0.0rc1/en/main_classes/image_processor#transformers.ImageProcessingMixin.from_pretrained) class method.
+[from_pretrained()](/docs/transformers/v5.0.0/en/internal/image_processing_utils#transformers.ImageProcessingMixin.from_pretrained) class method.
 
 **Parameters:**
 
@@ -154,32 +154,41 @@ save_directory (`str` or `os.PathLike`) : Directory where the image processor JS
 
 push_to_hub (`bool`, *optional*, defaults to `False`) : Whether or not to push your model to the Hugging Face model hub after saving it. You can specify the repository you want to push to with `repo_id` (will default to the name of `save_directory` in your namespace).
 
-kwargs (`dict[str, Any]`, *optional*) : Additional key word arguments passed along to the [push_to_hub()](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.utils.PushToHubMixin.push_to_hub) method.
+kwargs (`dict[str, Any]`, *optional*) : Additional key word arguments passed along to the [push_to_hub()](/docs/transformers/v5.0.0/en/main_classes/model#transformers.utils.PushToHubMixin.push_to_hub) method.
 
 ## BatchFeature[[transformers.BatchFeature]]
 
 #### transformers.BatchFeature[[transformers.BatchFeature]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/feature_extraction_utils.py#L57)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/feature_extraction_utils.py#L58)
 
-Holds the output of the [pad()](/docs/transformers/v5.0.0rc1/en/main_classes/feature_extractor#transformers.SequenceFeatureExtractor.pad) and feature extractor specific `__call__` methods.
+Holds the output of the [pad()](/docs/transformers/v5.0.0/en/main_classes/feature_extractor#transformers.SequenceFeatureExtractor.pad) and feature extractor specific `__call__` methods.
 
 This class is derived from a python dictionary and can be used as a dictionary.
 
-convert_to_tensorstransformers.BatchFeature.convert_to_tensorshttps://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/feature_extraction_utils.py#L141[{"name": "tensor_type", "val": ": typing.Union[str, transformers.utils.generic.TensorType, NoneType] = None"}]- **tensor_type** (`str` or [TensorType](/docs/transformers/v5.0.0rc1/en/internal/file_utils#transformers.TensorType), *optional*) --
-  The type of tensors to use. If `str`, should be one of the values of the enum [TensorType](/docs/transformers/v5.0.0rc1/en/internal/file_utils#transformers.TensorType). If
-  `None`, no modification is done.0
+convert_to_tensorstransformers.BatchFeature.convert_to_tensorshttps://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/feature_extraction_utils.py#L157[{"name": "tensor_type", "val": ": str | transformers.utils.generic.TensorType | None = None"}, {"name": "skip_tensor_conversion", "val": ": list[str] | set[str] | None = None"}]- **tensor_type** (`str` or [TensorType](/docs/transformers/v5.0.0/en/internal/file_utils#transformers.TensorType), *optional*) --
+  The type of tensors to use. If `str`, should be one of the values of the enum [TensorType](/docs/transformers/v5.0.0/en/internal/file_utils#transformers.TensorType). If
+  `None`, no modification is done.
+- **skip_tensor_conversion** (`list[str]` or `set[str]`, *optional*) --
+  List or set of keys that should NOT be converted to tensors, even when `tensor_type` is specified.0
 
 Convert the inner content to tensors.
+
+Note:
+Values that don't have an array-like structure (e.g., strings, dicts, lists of strings) are
+automatically skipped and won't be converted to tensors. Ragged arrays (lists of arrays with
+different lengths) are still attempted, though they may raise errors during conversion.
 
 **Parameters:**
 
 data (`dict`, *optional*) : Dictionary of lists/arrays/tensors returned by the __call__/pad methods ('input_values', 'attention_mask', etc.).
 
 tensor_type (`Union[None, str, TensorType]`, *optional*) : You can give a tensor_type here to convert the lists of integers in PyTorch/Numpy Tensors at initialization.
+
+skip_tensor_conversion (`list[str]` or `set[str]`, *optional*) : List or set of keys that should NOT be converted to tensors, even when `tensor_type` is specified.
 #### to[[transformers.BatchFeature.to]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/feature_extraction_utils.py#L172)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/feature_extraction_utils.py#L211)
 
 Send all values to device by calling `v.to(*args, **kwargs)` (PyTorch only). This should support casting in
 different `dtypes` and sending the `BatchFeature` to a different `device`.
@@ -192,7 +201,7 @@ kwargs (`Dict`, *optional*) : Will be passed to the `to(...)` function of the te
 
 **Returns:**
 
-`[BatchFeature](/docs/transformers/v5.0.0rc1/en/main_classes/image_processor#transformers.BatchFeature)`
+`[BatchFeature](/docs/transformers/v5.0.0/en/main_classes/image_processor#transformers.BatchFeature)`
 
 The same instance after modification.
 
@@ -200,9 +209,9 @@ The same instance after modification.
 
 #### transformers.BaseImageProcessor[[transformers.BaseImageProcessor]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/image_processing_utils.py#L39)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/image_processing_utils.py#L38)
 
-center_croptransformers.BaseImageProcessor.center_crophttps://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/image_processing_utils.py#L128[{"name": "image", "val": ": ndarray"}, {"name": "size", "val": ": dict"}, {"name": "data_format", "val": ": typing.Union[transformers.image_utils.ChannelDimension, str, NoneType] = None"}, {"name": "input_data_format", "val": ": typing.Union[transformers.image_utils.ChannelDimension, str, NoneType] = None"}, {"name": "**kwargs", "val": ""}]- **image** (`np.ndarray`) --
+center_croptransformers.BaseImageProcessor.center_crophttps://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/image_processing_utils.py#L124[{"name": "image", "val": ": ndarray"}, {"name": "size", "val": ": dict"}, {"name": "data_format", "val": ": str | transformers.image_utils.ChannelDimension | None = None"}, {"name": "input_data_format", "val": ": str | transformers.image_utils.ChannelDimension | None = None"}, {"name": "**kwargs", "val": ""}]- **image** (`np.ndarray`) --
   Image to center crop.
 - **size** (`dict[str, int]`) --
   Size of the output image.
@@ -231,7 +240,7 @@ data_format (`str` or `ChannelDimension`, *optional*) : The channel dimension fo
 input_data_format (`ChannelDimension` or `str`, *optional*) : The channel dimension format for the input image. If unset, the channel dimension format is inferred from the input image. Can be one of: - `"channels_first"` or `ChannelDimension.FIRST`: image in (num_channels, height, width) format. - `"channels_last"` or `ChannelDimension.LAST`: image in (height, width, num_channels) format.
 #### normalize[[transformers.BaseImageProcessor.normalize]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/image_processing_utils.py#L91)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/image_processing_utils.py#L87)
 
 Normalize an image. image = (image - image_mean) / image_std.
 
@@ -254,7 +263,7 @@ input_data_format (`ChannelDimension` or `str`, *optional*) : The channel dimens
 The normalized image.
 #### rescale[[transformers.BaseImageProcessor.rescale]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/image_processing_utils.py#L59)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/image_processing_utils.py#L55)
 
 Rescale an image by a scale factor. image = image * scale.
 
@@ -278,9 +287,9 @@ The rescaled image.
 
 #### transformers.BaseImageProcessorFast[[transformers.BaseImageProcessorFast]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/image_processing_utils_fast.py#L168)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/image_processing_utils_fast.py#L167)
 
-center_croptransformers.BaseImageProcessorFast.center_crophttps://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/image_processing_utils_fast.py#L586[{"name": "image", "val": ": torch.Tensor"}, {"name": "size", "val": ": SizeDict"}, {"name": "**kwargs", "val": ""}]- **image** (`"torch.Tensor"`) --
+center_croptransformers.BaseImageProcessorFast.center_crophttps://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/image_processing_utils_fast.py#L585[{"name": "image", "val": ": torch.Tensor"}, {"name": "size", "val": ": SizeDict"}, {"name": "**kwargs", "val": ""}]- **image** (`"torch.Tensor"`) --
   Image to center crop.
 - **size** (`dict[str, int]`) --
   Size of the output image.0`torch.Tensor`The center cropped image.
@@ -302,12 +311,12 @@ size (`dict[str, int]`) : Size of the output image.
 The center cropped image.
 #### compile_friendly_resize[[transformers.BaseImageProcessorFast.compile_friendly_resize]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/image_processing_utils_fast.py#L473)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/image_processing_utils_fast.py#L472)
 
-A wrapper around `F.resize` so that it is compatible with torch.compile when the image is a uint8 tensor.
+A wrapper around `tvF.resize` so that it is compatible with torch.compile when the image is a uint8 tensor.
 #### convert_to_rgb[[transformers.BaseImageProcessorFast.convert_to_rgb]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/image_processing_utils_fast.py#L627)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/image_processing_utils_fast.py#L626)
 
 Converts an image to RGB format. Only converts if the image is of type PIL.Image.Image, otherwise returns the image
 as is.
@@ -323,12 +332,12 @@ image (ImageInput) : The image to convert.
 The converted image.
 #### filter_out_unused_kwargs[[transformers.BaseImageProcessorFast.filter_out_unused_kwargs]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/image_processing_utils_fast.py#L643)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/image_processing_utils_fast.py#L642)
 
 Filter out the unused kwargs from the kwargs dictionary.
 #### normalize[[transformers.BaseImageProcessorFast.normalize]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/image_processing_utils_fast.py#L518)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/image_processing_utils_fast.py#L517)
 
 Normalize an image. image = (image - image_mean) / image_std.
 
@@ -347,7 +356,7 @@ std (`torch.Tensor`, `float` or `Iterable[float]`) : Image standard deviation to
 The normalized image.
 #### pad[[transformers.BaseImageProcessorFast.pad]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/image_processing_utils_fast.py#L346)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/image_processing_utils_fast.py#L345)
 
 Pads images to `(pad_size["height"], pad_size["width"])` or to the largest size in the batch.
 
@@ -372,49 +381,49 @@ disable_grouping (`bool`, *optional*, defaults to `False`) : Whether to disable 
 The padded images and pixel masks if `return_mask` is `True`.
 #### preprocess[[transformers.BaseImageProcessorFast.preprocess]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/image_processing_utils_fast.py#L839)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/image_processing_utils_fast.py#L838)
 
 **Parameters:**
 
-images (`Union[PIL.Image.Image, numpy.ndarray, torch.Tensor, list['PIL.Image.Image'], list[numpy.ndarray], list['torch.Tensor']]`) : Image to preprocess. Expects a single or batch of images with pixel values ranging from 0 to 255. If passing in images with pixel values between 0 and 1, set `do_rescale=False`.
+images (`Union[PIL.Image.Image, numpy.ndarray, torch.Tensor, list, list, list]`) : Image to preprocess. Expects a single or batch of images with pixel values ranging from 0 to 255. If passing in images with pixel values between 0 and 1, set `do_rescale=False`.
 
-do_convert_rgb (`bool`, *optional*) : Whether to convert the image to RGB.
+do_convert_rgb (`bool | None.do_convert_rgb`) : Whether to convert the image to RGB.
 
-do_resize (`bool`, *optional*) : Whether to resize the image.
+do_resize (`bool | None.do_resize`) : Whether to resize the image.
 
-size (`Annotated[Union[int, list[int], tuple[int, ...], dict[str, int], NoneType], None]`) : Describes the maximum input dimensions to the model.
+size (`Annotated[int | list[int] | tuple[int, ...] | dict[str, int] | None, None]`) : Describes the maximum input dimensions to the model.
 
-crop_size (`Annotated[Union[int, list[int], tuple[int, ...], dict[str, int], NoneType], None]`) : Size of the output image after applying `center_crop`.
+crop_size (`Annotated[int | list[int] | tuple[int, ...] | dict[str, int] | None, None]`) : Size of the output image after applying `center_crop`.
 
 resample (`Annotated[Union[PILImageResampling, int, NoneType], None]`) : Resampling filter to use if resizing the image. This can be one of the enum `PILImageResampling`. Only has an effect if `do_resize` is set to `True`.
 
-do_rescale (`bool`, *optional*) : Whether to rescale the image.
+do_rescale (`bool | None.do_rescale`) : Whether to rescale the image.
 
-rescale_factor (`float`, *optional*) : Rescale factor to rescale the image by if `do_rescale` is set to `True`.
+rescale_factor (`float | None.rescale_factor`) : Rescale factor to rescale the image by if `do_rescale` is set to `True`.
 
-do_normalize (`bool`, *optional*) : Whether to normalize the image.
+do_normalize (`bool | None.do_normalize`) : Whether to normalize the image.
 
-image_mean (`Union[float, list[float], tuple[float, ...], NoneType]`) : Image mean to use for normalization. Only has an effect if `do_normalize` is set to `True`.
+image_mean (`float | list[float] | tuple[float, ...] | None.image_mean`) : Image mean to use for normalization. Only has an effect if `do_normalize` is set to `True`.
 
-image_std (`Union[float, list[float], tuple[float, ...], NoneType]`) : Image standard deviation to use for normalization. Only has an effect if `do_normalize` is set to `True`.
+image_std (`float | list[float] | tuple[float, ...] | None.image_std`) : Image standard deviation to use for normalization. Only has an effect if `do_normalize` is set to `True`.
 
-do_pad (`bool`, *optional*) : Whether to pad the image. Padding is done either to the largest size in the batch or to a fixed square size per image. The exact padding strategy depends on the model.
+do_pad (`bool | None.do_pad`) : Whether to pad the image. Padding is done either to the largest size in the batch or to a fixed square size per image. The exact padding strategy depends on the model.
 
-pad_size (`Annotated[Union[int, list[int], tuple[int, ...], dict[str, int], NoneType], None]`) : The size in `{"height": int, "width" int}` to pad the images to. Must be larger than any image size provided for preprocessing. If `pad_size` is not provided, images will be padded to the largest height and width in the batch. Applied only when `do_pad=True.`
+pad_size (`Annotated[int | list[int] | tuple[int, ...] | dict[str, int] | None, None]`) : The size in `{"height": int, "width" int}` to pad the images to. Must be larger than any image size provided for preprocessing. If `pad_size` is not provided, images will be padded to the largest height and width in the batch. Applied only when `do_pad=True.`
 
-do_center_crop (`bool`, *optional*) : Whether to center crop the image.
+do_center_crop (`bool | None.do_center_crop`) : Whether to center crop the image.
 
-data_format (`Union[~image_utils.ChannelDimension, str, NoneType]`) : Only `ChannelDimension.FIRST` is supported. Added for compatibility with slow processors.
+data_format (`str | ~image_utils.ChannelDimension | None.data_format`) : Only `ChannelDimension.FIRST` is supported. Added for compatibility with slow processors.
 
-input_data_format (`Union[~image_utils.ChannelDimension, str, NoneType]`) : The channel dimension format for the input image. If unset, the channel dimension format is inferred from the input image. Can be one of: - `"channels_first"` or `ChannelDimension.FIRST`: image in (num_channels, height, width) format. - `"channels_last"` or `ChannelDimension.LAST`: image in (height, width, num_channels) format. - `"none"` or `ChannelDimension.NONE`: image in (height, width) format.
+input_data_format (`str | ~image_utils.ChannelDimension | None.input_data_format`) : The channel dimension format for the input image. If unset, the channel dimension format is inferred from the input image. Can be one of: - `"channels_first"` or `ChannelDimension.FIRST`: image in (num_channels, height, width) format. - `"channels_last"` or `ChannelDimension.LAST`: image in (height, width, num_channels) format. - `"none"` or `ChannelDimension.NONE`: image in (height, width) format.
 
 device (`Annotated[Union[str, torch.device, NoneType], None]`) : The device to process the images on. If unset, the device is inferred from the input images.
 
-return_tensors (`Annotated[Union[str, ~utils.generic.TensorType, NoneType], None]`) : Returns stacked tensors if set to `pt, otherwise returns a list of tensors.
+return_tensors (`Annotated[str | ~utils.generic.TensorType | None, None]`) : Returns stacked tensors if set to `pt, otherwise returns a list of tensors.
 
-disable_grouping (`bool`, *optional*) : Whether to disable grouping of images by size to process them individually and not in batches. If None, will be set to True if the images are on CPU, and False otherwise. This choice is based on empirical observations, as detailed here: https://github.com/huggingface/transformers/pull/38157
+disable_grouping (`bool | None.disable_grouping`) : Whether to disable grouping of images by size to process them individually and not in batches. If None, will be set to True if the images are on CPU, and False otherwise. This choice is based on empirical observations, as detailed here: https://github.com/huggingface/transformers/pull/38157
 
-image_seq_length (`int`, *optional*) : The number of image tokens to be used for each image in the input. Added for backward compatibility but this should be set as a processor attribute in future models.
+image_seq_length (`int | None.image_seq_length`) : The number of image tokens to be used for each image in the input. Added for backward compatibility but this should be set as a processor attribute in future models.
 
 **Returns:**
 
@@ -425,7 +434,7 @@ image_seq_length (`int`, *optional*) : The number of image tokens to be used for
   initialization.
 #### rescale[[transformers.BaseImageProcessorFast.rescale]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/image_processing_utils_fast.py#L498)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/image_processing_utils_fast.py#L497)
 
 Rescale an image by a scale factor. image = image * scale.
 
@@ -442,12 +451,12 @@ scale (`float`) : The scaling factor to rescale pixel values by.
 The rescaled image.
 #### rescale_and_normalize[[transformers.BaseImageProcessorFast.rescale_and_normalize]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/image_processing_utils_fast.py#L558)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/image_processing_utils_fast.py#L557)
 
 Rescale and normalize images.
 #### resize[[transformers.BaseImageProcessorFast.resize]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/image_processing_utils_fast.py#L417)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/image_processing_utils_fast.py#L416)
 
 Resize an image to `(size["height"], size["width"])`.
 

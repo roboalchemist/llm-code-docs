@@ -129,7 +129,7 @@ interface ProgressProps {
    */
   inverted?: boolean | undefined;
   size?: "2xs" | "xs" | "sm" | "md" | "lg" | "xl" | "2xl" | undefined;
-  color?: "primary" | "secondary" | "success" | "info" | "warning" | "error" | "neutral" | undefined;
+  color?: "error" | "primary" | "secondary" | "success" | "info" | "warning" | "neutral" | undefined;
   /**
    * The orientation of the progress bar.
    * @default "\"horizontal\""
@@ -450,8 +450,4 @@ export default defineAppConfig({
 
 ## Changelog
 
-<component-changelog>
-
-
-
-</component-changelog>
+See the [releases page](https://github.com/nuxt/ui/releases) for the latest changes.

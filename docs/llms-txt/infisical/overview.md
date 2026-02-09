@@ -18,8 +18,6 @@
 
 # Source: https://infisical.com/docs/documentation/platform/sso/general-oidc/overview.md
 
-# Source: https://infisical.com/docs/documentation/platform/ssh/overview.md
-
 # Source: https://infisical.com/docs/documentation/platform/secrets-mgmt/overview.md
 
 # Source: https://infisical.com/docs/documentation/platform/secret-scanning/overview.md
@@ -56,7 +54,7 @@
 
 # Source: https://infisical.com/docs/documentation/platform/dynamic-secrets/overview.md
 
-# Source: https://infisical.com/docs/documentation/platform/agentic-manager/overview.md
+# Source: https://infisical.com/docs/documentation/platform/agent-sentinel/overview.md
 
 # Source: https://infisical.com/docs/documentation/platform/access-controls/overview.md
 
@@ -70,217 +68,9 @@
 
 # Source: https://infisical.com/docs/changelog/overview.md
 
-# Source: https://infisical.com/docs/self-hosting/overview.md
-
-# Source: https://infisical.com/docs/sdks/overview.md
-
-# Source: https://infisical.com/docs/internals/permissions/overview.md
-
-# Source: https://infisical.com/docs/internals/overview.md
-
-# Source: https://infisical.com/docs/integrations/secret-syncs/overview.md
-
-# Source: https://infisical.com/docs/integrations/platforms/kubernetes/overview.md
-
-# Source: https://infisical.com/docs/integrations/app-connections/overview.md
-
-# Source: https://infisical.com/docs/documentation/platform/sso/overview.md
-
-# Source: https://infisical.com/docs/documentation/platform/sso/keycloak-oidc/overview.md
-
-# Source: https://infisical.com/docs/documentation/platform/sso/general-oidc/overview.md
-
-# Source: https://infisical.com/docs/documentation/platform/ssh/overview.md
-
-# Source: https://infisical.com/docs/documentation/platform/secrets-mgmt/overview.md
-
-# Source: https://infisical.com/docs/documentation/platform/secret-scanning/overview.md
-
-# Source: https://infisical.com/docs/documentation/platform/secret-rotation/overview.md
-
-# Source: https://infisical.com/docs/documentation/platform/scim/overview.md
-
-# Source: https://infisical.com/docs/documentation/platform/pki/overview.md
-
-# Source: https://infisical.com/docs/documentation/platform/pki/enrollment-methods/overview.md
-
-# Source: https://infisical.com/docs/documentation/platform/pki/certificates/overview.md
-
-# Source: https://infisical.com/docs/documentation/platform/pki/certificate-syncs/overview.md
-
-# Source: https://infisical.com/docs/documentation/platform/pki/ca/overview.md
-
-# Source: https://infisical.com/docs/documentation/platform/pam/overview.md
-
-# Source: https://infisical.com/docs/documentation/platform/ldap/overview.md
-
-# Source: https://infisical.com/docs/documentation/platform/kms/overview.md
-
-# Source: https://infisical.com/docs/documentation/platform/kms-configuration/overview.md
-
-# Source: https://infisical.com/docs/documentation/platform/identities/overview.md
-
-# Source: https://infisical.com/docs/documentation/platform/gateways/relay-deployment/overview.md
-
-# Source: https://infisical.com/docs/documentation/platform/gateways/overview.md
-
-# Source: https://infisical.com/docs/documentation/platform/external-migrations/overview.md
-
-# Source: https://infisical.com/docs/documentation/platform/dynamic-secrets/overview.md
-
-# Source: https://infisical.com/docs/documentation/platform/agentic-manager/overview.md
-
-# Source: https://infisical.com/docs/documentation/platform/access-controls/overview.md
-
-# Source: https://infisical.com/docs/documentation/platform/access-controls/abac/overview.md
-
-# Source: https://infisical.com/docs/documentation/getting-started/overview.md
-
-# Source: https://infisical.com/docs/contributing/getting-started/overview.md
-
-# Source: https://infisical.com/docs/cli/overview.md
-
-# Source: https://infisical.com/docs/changelog/overview.md
-
-# Source: https://infisical.com/docs/self-hosting/overview.md
-
-# Source: https://infisical.com/docs/sdks/overview.md
-
-# Source: https://infisical.com/docs/internals/permissions/overview.md
-
-# Source: https://infisical.com/docs/internals/overview.md
-
-# Source: https://infisical.com/docs/integrations/secret-syncs/overview.md
-
-# Source: https://infisical.com/docs/integrations/platforms/kubernetes/overview.md
-
-# Source: https://infisical.com/docs/integrations/app-connections/overview.md
-
-# Source: https://infisical.com/docs/documentation/platform/sso/overview.md
-
-# Source: https://infisical.com/docs/documentation/platform/sso/keycloak-oidc/overview.md
-
-# Source: https://infisical.com/docs/documentation/platform/sso/general-oidc/overview.md
-
-# Source: https://infisical.com/docs/documentation/platform/ssh/overview.md
-
-# Source: https://infisical.com/docs/documentation/platform/secrets-mgmt/overview.md
-
-# Source: https://infisical.com/docs/documentation/platform/secret-scanning/overview.md
-
-# Source: https://infisical.com/docs/documentation/platform/secret-rotation/overview.md
-
-# Source: https://infisical.com/docs/documentation/platform/scim/overview.md
-
-# Source: https://infisical.com/docs/documentation/platform/pki/overview.md
-
-# Source: https://infisical.com/docs/documentation/platform/pki/enrollment-methods/overview.md
-
-# Source: https://infisical.com/docs/documentation/platform/pki/certificates/overview.md
-
-# Source: https://infisical.com/docs/documentation/platform/pki/certificate-syncs/overview.md
-
-# Source: https://infisical.com/docs/documentation/platform/pki/ca/overview.md
-
-# Source: https://infisical.com/docs/documentation/platform/pam/overview.md
-
-# Source: https://infisical.com/docs/documentation/platform/ldap/overview.md
-
-# Source: https://infisical.com/docs/documentation/platform/kms/overview.md
-
-# Source: https://infisical.com/docs/documentation/platform/kms-configuration/overview.md
-
-# Source: https://infisical.com/docs/documentation/platform/identities/overview.md
-
-# Source: https://infisical.com/docs/documentation/platform/gateways/relay-deployment/overview.md
-
-# Source: https://infisical.com/docs/documentation/platform/gateways/overview.md
-
-# Source: https://infisical.com/docs/documentation/platform/external-migrations/overview.md
-
-# Source: https://infisical.com/docs/documentation/platform/dynamic-secrets/overview.md
-
-# Source: https://infisical.com/docs/documentation/platform/access-controls/overview.md
-
-# Source: https://infisical.com/docs/documentation/platform/access-controls/abac/overview.md
-
-# Source: https://infisical.com/docs/documentation/getting-started/overview.md
-
-# Source: https://infisical.com/docs/contributing/getting-started/overview.md
-
-# Source: https://infisical.com/docs/cli/overview.md
-
-# Source: https://infisical.com/docs/changelog/overview.md
-
-# Source: https://infisical.com/docs/self-hosting/overview.md
-
-# Source: https://infisical.com/docs/sdks/overview.md
-
-# Source: https://infisical.com/docs/internals/permissions/overview.md
-
-# Source: https://infisical.com/docs/internals/overview.md
-
-# Source: https://infisical.com/docs/integrations/secret-syncs/overview.md
-
-# Source: https://infisical.com/docs/integrations/platforms/kubernetes/overview.md
-
-# Source: https://infisical.com/docs/integrations/app-connections/overview.md
-
-# Source: https://infisical.com/docs/documentation/platform/sso/overview.md
-
-# Source: https://infisical.com/docs/documentation/platform/sso/keycloak-oidc/overview.md
-
-# Source: https://infisical.com/docs/documentation/platform/sso/general-oidc/overview.md
-
-# Source: https://infisical.com/docs/documentation/platform/ssh/overview.md
-
-# Source: https://infisical.com/docs/documentation/platform/secrets-mgmt/overview.md
-
-# Source: https://infisical.com/docs/documentation/platform/secret-scanning/overview.md
-
-# Source: https://infisical.com/docs/documentation/platform/secret-rotation/overview.md
-
-# Source: https://infisical.com/docs/documentation/platform/scim/overview.md
-
-# Source: https://infisical.com/docs/documentation/platform/pki/overview.md
-
-# Source: https://infisical.com/docs/documentation/platform/pki/enrollment-methods/overview.md
-
-# Source: https://infisical.com/docs/documentation/platform/pki/certificates/overview.md
-
-# Source: https://infisical.com/docs/documentation/platform/pki/certificate-syncs/overview.md
-
-# Source: https://infisical.com/docs/documentation/platform/pki/ca/overview.md
-
-# Source: https://infisical.com/docs/documentation/platform/pam/overview.md
-
-# Source: https://infisical.com/docs/documentation/platform/ldap/overview.md
-
-# Source: https://infisical.com/docs/documentation/platform/kms/overview.md
-
-# Source: https://infisical.com/docs/documentation/platform/kms-configuration/overview.md
-
-# Source: https://infisical.com/docs/documentation/platform/identities/overview.md
-
-# Source: https://infisical.com/docs/documentation/platform/gateways/relay-deployment/overview.md
-
-# Source: https://infisical.com/docs/documentation/platform/gateways/overview.md
-
-# Source: https://infisical.com/docs/documentation/platform/external-migrations/overview.md
-
-# Source: https://infisical.com/docs/documentation/platform/dynamic-secrets/overview.md
-
-# Source: https://infisical.com/docs/documentation/platform/access-controls/overview.md
-
-# Source: https://infisical.com/docs/documentation/platform/access-controls/abac/overview.md
-
-# Source: https://infisical.com/docs/documentation/getting-started/overview.md
-
-# Source: https://infisical.com/docs/contributing/getting-started/overview.md
-
-# Source: https://infisical.com/docs/cli/overview.md
-
-# Source: https://infisical.com/docs/changelog/overview.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://infisical.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Changelog
 

@@ -30,7 +30,7 @@ Learn how to manage state synchronization.
 
 ---
 
-This document was rendered at 2025-12-31T18:29:37.956Z.
+This document was rendered at 2026-02-03T03:25:19.380Z.
 For the latest version of this document, see [https://docs.livekit.io/transport/data/state.md](https://docs.livekit.io/transport/data/state.md).
 
 To explore all LiveKit documentation, see [llms.txt](https://docs.livekit.io/llms.txt).

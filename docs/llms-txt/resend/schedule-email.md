@@ -1,5 +1,9 @@
 # Source: https://resend.com/docs/dashboard/emails/schedule-email.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://resend.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Schedule Email
 
 > Send emails at a specific time without additional complexity.
@@ -28,7 +32,7 @@ You can use the various Resend SDKs to schedule emails.
 The date can be defined using natural language, such as `"in 1 hour"`, `"tomorrow at 9am"`, or `"Friday at 3pm ET"`.
 
 <CodeGroup>
-  ```ts Node.js {10} theme={null}
+  ```ts Node.js {10} theme={"theme":{"light":"github-light","dark":"vesper"}}
   import { Resend } from 'resend';
 
   const resend = new Resend('re_xxxxxxxxx');
@@ -42,7 +46,7 @@ The date can be defined using natural language, such as `"in 1 hour"`, `"tomorro
   });
   ```
 
-  ```php PHP {8} theme={null}
+  ```php PHP {8} theme={"theme":{"light":"github-light","dark":"vesper"}}
   $resend = Resend::client('re_xxxxxxxxx');
 
   $resend->emails->send([
@@ -54,7 +58,7 @@ The date can be defined using natural language, such as `"in 1 hour"`, `"tomorro
   ]);
   ```
 
-  ```python Python {10} theme={null}
+  ```python Python {10} theme={"theme":{"light":"github-light","dark":"vesper"}}
   import resend
 
   resend.api_key = "re_xxxxxxxxx"
@@ -70,7 +74,7 @@ The date can be defined using natural language, such as `"in 1 hour"`, `"tomorro
   resend.Emails.send(params)
   ```
 
-  ```rb Ruby {10} theme={null}
+  ```rb Ruby {10} theme={"theme":{"light":"github-light","dark":"vesper"}}
   require "resend"
 
   Resend.api_key = "re_xxxxxxxxx"
@@ -86,35 +90,38 @@ The date can be defined using natural language, such as `"in 1 hour"`, `"tomorro
   Resend::Emails.send(params)
   ```
 
-  ```go Go {16} theme={null}
+  ```go Go {17} theme={"theme":{"light":"github-light","dark":"vesper"}}
+  package main
+
   import (
+  	"context"
   	"fmt"
 
   	"github.com/resend/resend-go/v3"
   )
 
   func main() {
-    ctx := context.TODO()
-    client := resend.NewClient("re_xxxxxxxxx")
+  	ctx := context.TODO()
+  	client := resend.NewClient("re_xxxxxxxxx")
 
-    params := &resend.SendEmailRequest{
-      From:        "Acme <onboarding@resend.dev>",
-      To:          []string{"delivered@resend.dev"},
-      Subject:     "hello world",
-      Html:        "<p>it works!</p>",
-      ScheduledAt: "in 1 min"
-    }
+  	params := &resend.SendEmailRequest{
+  		From:        "Acme <onboarding@resend.dev>",
+  		To:          []string{"delivered@resend.dev"},
+  		Subject:     "hello world",
+  		Html:        "<p>it works!</p>",
+  		ScheduledAt: "in 1 min",
+  	}
 
-    sent, err := client.Emails.SendWithContext(ctx, params)
+  	sent, err := client.Emails.SendWithContext(ctx, params)
 
-    if err != nil {
-      panic(err)
-    }
-    fmt.Println(sent.Id)
+  	if err != nil {
+  		panic(err)
+  	}
+  	fmt.Println(sent.Id)
   }
   ```
 
-  ```rust Rust {14} theme={null}
+  ```rust Rust {14} theme={"theme":{"light":"github-light","dark":"vesper"}}
   use resend_rs::types::CreateEmailBaseOptions;
   use resend_rs::{Resend, Result};
 
@@ -136,7 +143,7 @@ The date can be defined using natural language, such as `"in 1 hour"`, `"tomorro
   }
   ```
 
-  ```java Java {12} theme={null}
+  ```java Java {12} theme={"theme":{"light":"github-light","dark":"vesper"}}
   import com.resend.*;
 
   public class Main {
@@ -156,7 +163,7 @@ The date can be defined using natural language, such as `"in 1 hour"`, `"tomorro
   }
   ```
 
-  ```csharp .NET {11} theme={null}
+  ```csharp .NET {11} theme={"theme":{"light":"github-light","dark":"vesper"}}
   using Resend;
 
   IResend resend = ResendClient.Create( "re_xxxxxxxxx" ); // Or from DI
@@ -172,7 +179,7 @@ The date can be defined using natural language, such as `"in 1 hour"`, `"tomorro
   Console.WriteLine( "Email Id={0}", resp.Content );
   ```
 
-  ```bash cURL {9} theme={null}
+  ```bash cURL {9} theme={"theme":{"light":"github-light","dark":"vesper"}}
   curl -X POST 'https://api.resend.com/emails' \
        -H 'Authorization: Bearer re_xxxxxxxxx' \
        -H 'Content-Type: application/json' \
@@ -191,7 +198,7 @@ The date can be defined using natural language, such as `"in 1 hour"`, `"tomorro
 You can also use a date in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format (e.g: `2024-08-05T11:52:01.858Z`).
 
 <CodeGroup>
-  ```ts Node.js {5} theme={null}
+  ```ts Node.js {5} theme={"theme":{"light":"github-light","dark":"vesper"}}
   import { Resend } from 'resend';
 
   const resend = new Resend('re_xxxxxxxxx');
@@ -207,7 +214,7 @@ You can also use a date in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) fo
   });
   ```
 
-  ```php PHP {3} theme={null}
+  ```php PHP {3} theme={"theme":{"light":"github-light","dark":"vesper"}}
   $resend = Resend::client('re_xxxxxxxxx');
 
   $oneMinuteFromNow = (new DateTime())->modify('+1 minute')->format(DateTime::ISO8601);
@@ -221,7 +228,7 @@ You can also use a date in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) fo
   ]);
   ```
 
-  ```python Python {6} theme={null}
+  ```python Python {6} theme={"theme":{"light":"github-light","dark":"vesper"}}
   import resend
   from datetime import datetime, timedelta
 
@@ -240,7 +247,7 @@ You can also use a date in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) fo
   resend.Emails.send(params)
   ```
 
-  ```rb Ruby {5} theme={null}
+  ```rb Ruby {5} theme={"theme":{"light":"github-light","dark":"vesper"}}
   require "resend"
 
   Resend.api_key = "re_xxxxxxxxx"
@@ -258,38 +265,42 @@ You can also use a date in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) fo
   Resend::Emails.send(params)
   ```
 
-  ```go Go {12} theme={null}
+  ```go Go {13} theme={"theme":{"light":"github-light","dark":"vesper"}}
+  package main
+
   import (
+  	"context"
   	"fmt"
+  	"time"
 
   	"github.com/resend/resend-go/v3"
   )
 
   func main() {
-    ctx := context.TODO()
-    client := resend.NewClient("re_xxxxxxxxx")
+  	ctx := context.TODO()
+  	client := resend.NewClient("re_xxxxxxxxx")
 
-    oneMinuteFromNow := time.Now().Add(time.Minute * time.Duration(1))
-    oneMinuteFromNowISO := oneMinuteFromNow.Format("2006-01-02T15:04:05-0700")
+  	oneMinuteFromNow := time.Now().Add(time.Minute * time.Duration(1))
+  	oneMinuteFromNowISO := oneMinuteFromNow.Format("2006-01-02T15:04:05-0700")
 
-    params := &resend.SendEmailRequest{
-      From:        "Acme <onboarding@resend.dev>",
-      To:          []string{"delivered@resend.dev"},
-      Subject:     "hello world",
-      Html:        "<p>it works!</p>",
-      ScheduledAt: oneMinuteFromNowISO
-    }
+  	params := &resend.SendEmailRequest{
+  		From:        "Acme <onboarding@resend.dev>",
+  		To:          []string{"delivered@resend.dev"},
+  		Subject:     "hello world",
+  		Html:        "<p>it works!</p>",
+  		ScheduledAt: oneMinuteFromNowISO,
+  	}
 
-    sent, err := client.Emails.SendWithContext(ctx, params)
+  	sent, err := client.Emails.SendWithContext(ctx, params)
 
-    if err != nil {
-      panic(err)
-    }
-    fmt.Println(sent.Id)
+  	if err != nil {
+  		panic(err)
+  	}
+  	fmt.Println(sent.Id)
   }
   ```
 
-  ```rust Rust {12-15} theme={null}
+  ```rust Rust {12-15} theme={"theme":{"light":"github-light","dark":"vesper"}}
   use chrono::{Local, TimeDelta};
   use resend_rs::types::CreateEmailBaseOptions;
   use resend_rs::{Resend, Result};
@@ -316,7 +327,7 @@ You can also use a date in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) fo
   }
   ```
 
-  ```java Java {7-10} theme={null}
+  ```java Java {7-10} theme={"theme":{"light":"github-light","dark":"vesper"}}
   import com.resend.*;
 
   public class Main {
@@ -341,7 +352,7 @@ You can also use a date in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) fo
   }
   ```
 
-  ```csharp .NET {11} theme={null}
+  ```csharp .NET {11} theme={"theme":{"light":"github-light","dark":"vesper"}}
   using Resend;
 
   IResend resend = ResendClient.Create( "re_xxxxxxxxx" ); // Or from DI
@@ -357,7 +368,7 @@ You can also use a date in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) fo
   Console.WriteLine( "Email Id={0}", resp.Content );
   ```
 
-  ```bash cURL {9} theme={null}
+  ```bash cURL {9} theme={"theme":{"light":"github-light","dark":"vesper"}}
   curl -X POST 'https://api.resend.com/emails' \
        -H 'Authorization: Bearer re_xxxxxxxxx' \
        -H 'Content-Type: application/json' \
@@ -384,20 +395,20 @@ After scheduling an email, you might need to update the scheduled time.
 You can do so with the following method:
 
 <CodeGroup>
-  ```ts Node.js {3} theme={null}
+  ```ts Node.js {3} theme={"theme":{"light":"github-light","dark":"vesper"}}
   resend.emails.update({
     id: '49a3999c-0ce1-4ea6-ab68-afcd6dc2e794',
     scheduledAt: 'in 1 min',
   });
   ```
 
-  ```php PHP {2} theme={null}
+  ```php PHP {2} theme={"theme":{"light":"github-light","dark":"vesper"}}
   $resend->emails->update('49a3999c-0ce1-4ea6-ab68-afcd6dc2e794', [
     'scheduled_at' => 'in 1 min'
   ]);
   ```
 
-  ```python Python {3} theme={null}
+  ```python Python {3} theme={"theme":{"light":"github-light","dark":"vesper"}}
   update_params: resend.Emails.UpdateParams = {
     "id": "49a3999c-0ce1-4ea6-ab68-afcd6dc2e794",
     "scheduled_at": "in 1 min"
@@ -406,7 +417,7 @@ You can do so with the following method:
   resend.Emails.update(params=update_params)
   ```
 
-  ```rb Ruby {3} theme={null}
+  ```rb Ruby {3} theme={"theme":{"light":"github-light","dark":"vesper"}}
   update_params = {
     "email_id": "49a3999c-0ce1-4ea6-ab68-afcd6dc2e794",
     "scheduled_at": "in 1 min"
@@ -415,21 +426,33 @@ You can do so with the following method:
   updated_email = Resend::Emails.update(update_params)
   ```
 
-  ```go Go {3} theme={null}
-  updateParams := &resend.UpdateEmailRequest{
-    Id:          "49a3999c-0ce1-4ea6-ab68-afcd6dc2e794",
-    ScheduledAt: "in 1 min",
-  }
+  ```go Go {7} theme={"theme":{"light":"github-light","dark":"vesper"}}
+  package main
 
-  updatedEmail, err := client.Emails.Update(updateParams)
+  import (
+  	"fmt"
 
-  if err != nil {
-    panic(err)
+  	"github.com/resend/resend-go/v3"
+  )
+
+  func main() {
+  	client := resend.NewClient("re_xxxxxxxxx")
+
+  	updateParams := &resend.UpdateEmailRequest{
+  		Id:          "49a3999c-0ce1-4ea6-ab68-afcd6dc2e794",
+  		ScheduledAt: "in 1 min",
+  	}
+
+  	updatedEmail, err := client.Emails.Update(updateParams)
+
+  	if err != nil {
+  		panic(err)
+  	}
+  	fmt.Printf("%v\n", updatedEmail)
   }
-  fmt.Printf("%v\n", updatedEmail)
   ```
 
-  ```rust Rust {2} theme={null}
+  ```rust Rust {2} theme={"theme":{"light":"github-light","dark":"vesper"}}
   let update = UpdateEmailOptions::new()
     .with_scheduled_at("in 1 min");
 
@@ -439,7 +462,7 @@ You can do so with the following method:
     .await?;
   ```
 
-  ```java Java {2} theme={null}
+  ```java Java {2} theme={"theme":{"light":"github-light","dark":"vesper"}}
   UpdateEmailOptions updateParams = UpdateEmailOptions.builder()
     .scheduledAt("in 1 min")
     .build();
@@ -447,7 +470,7 @@ You can do so with the following method:
   UpdateEmailResponse data = resend.emails().update("49a3999c-0ce1-4ea6-ab68-afcd6dc2e794", updateParams);
   ```
 
-  ```csharp .NET {7} theme={null}
+  ```csharp .NET {7} theme={"theme":{"light":"github-light","dark":"vesper"}}
   using Resend;
 
   IResend resend = ResendClient.Create( "re_xxxxxxxxx" ); // Or from DI
@@ -458,7 +481,7 @@ You can do so with the following method:
   );
   ```
 
-  ```bash cURL {5} theme={null}
+  ```bash cURL {5} theme={"theme":{"light":"github-light","dark":"vesper"}}
   curl -X PATCH 'https://api.resend.com/emails/49a3999c-0ce1-4ea6-ab68-afcd6dc2e794' \
        -H 'Authorization: Bearer re_xxxxxxxxx' \
        -H 'Content-Type: application/json' \
@@ -479,23 +502,23 @@ You can also reschedule an email directly in the Resend dashboard.
 If you need to cancel a scheduled email, you can do so with the following code:
 
 <CodeGroup>
-  ```ts Node.js theme={null}
+  ```ts Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
   resend.emails.cancel('49a3999c-0ce1-4ea6-ab68-afcd6dc2e794');
   ```
 
-  ```php PHP theme={null}
+  ```php PHP theme={"theme":{"light":"github-light","dark":"vesper"}}
   $resend->emails->cancel('49a3999c-0ce1-4ea6-ab68-afcd6dc2e794');
   ```
 
-  ```python Python theme={null}
+  ```python Python theme={"theme":{"light":"github-light","dark":"vesper"}}
   resend.Emails.cancel(email_id="49a3999c-0ce1-4ea6-ab68-afcd6dc2e794")
   ```
 
-  ```rb Ruby theme={null}
+  ```rb Ruby theme={"theme":{"light":"github-light","dark":"vesper"}}
   Resend::Emails.cancel("49a3999c-0ce1-4ea6-ab68-afcd6dc2e794")
   ```
 
-  ```go Go theme={null}
+  ```go Go theme={"theme":{"light":"github-light","dark":"vesper"}}
   canceled, err := client.Emails.Cancel("49a3999c-0ce1-4ea6-ab68-afcd6dc2e794")
   if err != nil {
     panic(err)
@@ -503,20 +526,20 @@ If you need to cancel a scheduled email, you can do so with the following code:
   fmt.Println(canceled.Id)
   ```
 
-  ```rust Rust theme={null}
+  ```rust Rust theme={"theme":{"light":"github-light","dark":"vesper"}}
   let _canceled = resend
     .emails
     .cancel("49a3999c-0ce1-4ea6-ab68-afcd6dc2e794")
     .await?;
   ```
 
-  ```java Java theme={null}
+  ```java Java theme={"theme":{"light":"github-light","dark":"vesper"}}
   CancelEmailResponse canceled = resend
       .emails()
       .cancel("49a3999c-0ce1-4ea6-ab68-afcd6dc2e794");
   ```
 
-  ```csharp .NET theme={null}
+  ```csharp .NET theme={"theme":{"light":"github-light","dark":"vesper"}}
   using Resend;
 
   IResend resend = ResendClient.Create( "re_xxxxxxxxx" ); // Or from DI
@@ -524,7 +547,7 @@ If you need to cancel a scheduled email, you can do so with the following code:
   await resend.EmailCancelAsync( new Guid( "49a3999c-0ce1-4ea6-ab68-afcd6dc2e794" ) );
   ```
 
-  ```bash cURL theme={null}
+  ```bash cURL theme={"theme":{"light":"github-light","dark":"vesper"}}
   curl -X POST 'https://api.resend.com/emails/49a3999c-0ce1-4ea6-ab68-afcd6dc2e794/cancel' \
        -H 'Authorization: Bearer re_xxxxxxxxx' \
        -H 'Content-Type: application/json'
@@ -535,8 +558,17 @@ You can also cancel a scheduled email in the Resend dashboard.
 
 <video autoPlay muted loop playsInline className="w-full" src="https://mintcdn.com/resend/OWNnQaVDyqcGyhhN/images/schedule-email-api-3.mp4?fit=max&auto=format&n=OWNnQaVDyqcGyhhN&q=85&s=aecf439970de96a8c7e15489ef81a67b" data-path="images/schedule-email-api-3.mp4" />
 
+## Scheduled email failures
+
+Scheduled emails may fail to send for several reasons. When this happens, you'll see a failure notification in the email details screen with specific information about why the email couldn't be sent.
+
+Common failure reasons include:
+
+* **API key is no longer active** - The API key used to schedule the email has been deleted, expired, or suspended. The email cannot be sent.
+* **Account under review** - Your account has been flagged for review and sending has been temporarily suspended. Contact [support@resend.com](mailto:support@resend.com) if you believe this is an error.
+
+You can view the failure reason and details in the Resend dashboard by clicking on the failed email.
+
 ## Limitations
 
-* Batch emails cannot be scheduled
 * Emails sent via SMTP cannot be scheduled
-* Emails with attachments cannot be scheduled

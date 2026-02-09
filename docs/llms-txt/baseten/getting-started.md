@@ -2,13 +2,9 @@
 
 # Source: https://docs.baseten.co/development/chain/getting-started.md
 
-# Source: https://docs.baseten.co/training/getting-started.md
-
-# Source: https://docs.baseten.co/development/chain/getting-started.md
-
-# Source: https://docs.baseten.co/training/getting-started.md
-
-# Source: https://docs.baseten.co/development/chain/getting-started.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.baseten.co/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Your first Chain
 
@@ -28,7 +24,7 @@ pip install --upgrade truss 'pydantic>=2.0.0'
 ```
 
 <Accordion title="Help for setting up a clean development environment">
-  Truss requires python `>=3.8,<3.13`. To set up a fresh development environment,
+  Truss requires python `>=3.9,<3.15`. To set up a fresh development environment,
   you can use the following commands, creating a environment named `chains_env`
   using `pyenv`:
 

@@ -1,5 +1,9 @@
 # Source: https://docs.promptlayer.com/self-hosted.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.promptlayer.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Self-Hosted PromptLayer
 
 > Deploy PromptLayer in your own infrastructure for complete data control and compliance
@@ -282,8 +286,3 @@ Ready to deploy PromptLayer in your infrastructure? Our enterprise team is here 
 <Card title="Get Started" icon="rocket" href="mailto:hello@promptlayer.com">
   Contact our team to discuss your self-hosted deployment requirements and get a customized solution.
 </Card>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.promptlayer.com/llms.txt

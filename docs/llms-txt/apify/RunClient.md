@@ -2,19 +2,31 @@
 
 # Source: https://docs.apify.com/api/client/js/reference/class/RunClient.md
 
-# Source: https://docs.apify.com/api/client/python/reference/class/RunClient.md
-
-# Source: https://docs.apify.com/api/client/js/reference/class/RunClient.md
-
-# Source: https://docs.apify.com/api/client/python/reference/class/RunClient.md
-
-# Source: https://docs.apify.com/api/client/js/reference/class/RunClient.md
-
-# Source: https://docs.apify.com/api/client/python/reference/class/RunClient.md
-
-# Source: https://docs.apify.com/api/client/js/reference/class/RunClient.md
-
 # RunClient<!-- -->
+
+Client for managing a specific Actor run.
+
+Provides methods to get run details, abort, metamorph, resurrect, wait for completion, and access the run's dataset, key-value store, request queue, and logs.
+
+* **@example**
+
+  ```
+  const client = new ApifyClient({ token: 'my-token' });
+  const runClient = client.run('my-run-id');
+
+  // Get run details
+  const run = await runClient.get();
+
+  // Wait for the run to finish
+  const finishedRun = await runClient.waitForFinish();
+
+  // Access the run's dataset
+  const { items } = await runClient.dataset().listItems();
+  ```
+
+* **@see**
+
+  <https://docs.apify.com/platform/actors/running/runs-and-builds>
 
 ### Hierarchy
 
@@ -42,6 +54,7 @@
 * [**dataset](#dataset)
 * [**delete](#delete)
 * [**get](#get)
+* [**getStreamedLog](#getStreamedLog)
 * [**keyValueStore](#keyValueStore)
 * [**log](#log)
 * [**metamorph](#metamorph)
@@ -53,25 +66,25 @@
 
 ## Properties<!-- -->[**](#Properties)
 
-### [**](#apifyClient)[**](https://github.com/apify/apify-client-js/blob/master/src/base/api_client.ts#L35)inheritedapifyClient
+### [**](#apifyClient)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/base/api_client.ts#L36)inheritedapifyClient
 
 **apifyClient: [ApifyClient](https://docs.apify.com/api/client/js/api/client/js/reference/class/ApifyClient.md)
 
 Inherited from ResourceClient.apifyClient
 
-### [**](#baseUrl)[**](https://github.com/apify/apify-client-js/blob/master/src/base/api_client.ts#L27)inheritedbaseUrl
+### [**](#baseUrl)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/base/api_client.ts#L28)inheritedbaseUrl
 
 **baseUrl: string
 
 Inherited from ResourceClient.baseUrl
 
-### [**](#httpClient)[**](https://github.com/apify/apify-client-js/blob/master/src/base/api_client.ts#L37)inheritedhttpClient
+### [**](#httpClient)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/base/api_client.ts#L38)inheritedhttpClient
 
 **httpClient: HttpClient
 
 Inherited from ResourceClient.httpClient
 
-### [**](#id)[**](https://github.com/apify/apify-client-js/blob/master/src/base/api_client.ts#L23)optionalinheritedid
+### [**](#id)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/base/api_client.ts#L24)optionalinheritedid
 
 **id?
 
@@ -81,7 +94,7 @@ Inherited from ResourceClient.httpClient
 
 Inherited from ResourceClient.id
 
-### [**](#params)[**](https://github.com/apify/apify-client-js/blob/master/src/base/api_client.ts#L39)optionalinheritedparams
+### [**](#params)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/base/api_client.ts#L40)optionalinheritedparams
 
 **params?
 
@@ -91,19 +104,19 @@ Inherited from ResourceClient.id
 
 Inherited from ResourceClient.params
 
-### [**](#publicBaseUrl)[**](https://github.com/apify/apify-client-js/blob/master/src/base/api_client.ts#L29)inheritedpublicBaseUrl
+### [**](#publicBaseUrl)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/base/api_client.ts#L30)inheritedpublicBaseUrl
 
 **publicBaseUrl: string
 
 Inherited from ResourceClient.publicBaseUrl
 
-### [**](#resourcePath)[**](https://github.com/apify/apify-client-js/blob/master/src/base/api_client.ts#L31)inheritedresourcePath
+### [**](#resourcePath)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/base/api_client.ts#L32)inheritedresourcePath
 
 **resourcePath: string
 
 Inherited from ResourceClient.resourcePath
 
-### [**](#safeId)[**](https://github.com/apify/apify-client-js/blob/master/src/base/api_client.ts#L25)optionalinheritedsafeId
+### [**](#safeId)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/base/api_client.ts#L26)optionalinheritedsafeId
 
 **safeId?
 
@@ -113,7 +126,7 @@ Inherited from ResourceClient.resourcePath
 
 Inherited from ResourceClient.safeId
 
-### [**](#url)[**](https://github.com/apify/apify-client-js/blob/master/src/base/api_client.ts#L33)inheritedurl
+### [**](#url)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/base/api_client.ts#L34)inheritedurl
 
 **url: string
 
@@ -121,11 +134,25 @@ Inherited from ResourceClient.url
 
 ## Methods<!-- -->[**](#Methods)
 
-### [**](#abort)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/run.ts#L46)abort
+### [**](#abort)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/run.ts#L99)abort
 
 * ****abort**(options): Promise<[ActorRun](https://docs.apify.com/api/client/js/api/client/js/reference/interface/ActorRun.md)>
 
-- <https://docs.apify.com/api/v2#/reference/actor-runs/abort-run/abort-run>
+- Aborts the Actor run.
+
+  * **@see**
+
+    <https://docs.apify.com/api/v2/actor-run-abort-post>
+
+  * **@example**
+
+    ```
+    // Abort immediately
+    await client.run('run-id').abort();
+
+    // Abort gracefully (allows cleanup)
+    await client.run('run-id').abort({ gracefully: true });
+    ```
 
   ***
 
@@ -133,13 +160,21 @@ Inherited from ResourceClient.url
 
   * ##### options: [RunAbortOptions](https://docs.apify.com/api/client/js/api/client/js/reference/interface/RunAbortOptions.md) = <!-- -->{}
 
+    Abort options
+
   #### Returns Promise<[ActorRun](https://docs.apify.com/api/client/js/api/client/js/reference/interface/ActorRun.md)>
 
-### [**](#charge)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/run.ts#L160)charge
+  The updated ActorRun object with `ABORTING` or `ABORTED` status
+
+### [**](#charge)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/run.ts#L293)charge
 
 * ****charge**(options): Promise\<ApifyResponse\<Record\<string, never>>>
 
-- <https://docs.apify.com/api/v2#/reference/actor-runs/charge-events-in-run>
+- Charges the Actor run for a specific event.
+
+  * **@see**
+
+    <https://docs.apify.com/api/v2/post-charge-run>
 
   ***
 
@@ -147,35 +182,69 @@ Inherited from ResourceClient.url
 
   * ##### options: [RunChargeOptions](https://docs.apify.com/api/client/js/api/client/js/reference/interface/RunChargeOptions.md)
 
+    Charge options including event name and count.
+
   #### Returns Promise\<ApifyResponse\<Record\<string, never>>>
 
-### [**](#dataset)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/run.ts#L220)dataset
+  Empty response object.
+
+### [**](#dataset)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/run.ts#L375)dataset
 
 * ****dataset**(): [DatasetClient](https://docs.apify.com/api/client/js/api/client/js/reference/class/DatasetClient.md)\<Record\<string | number, unknown>>
 
-- <https://docs.apify.com/api/v2#/reference/actor-runs/run-object-and-its-storages>
+- Returns a client for the default dataset of this Actor run.
 
-  This also works through `actorClient.lastRun().dataset()`. <https://docs.apify.com/api/v2#/reference/actors/last-run-object-and-its-storages>
+  * **@see**
+
+    <https://docs.apify.com/api/v2/actor-run-get>
+
+  * **@example**
+
+    ```
+    // Access run's dataset
+    const { items } = await client.run('run-id').dataset().listItems();
+    ```
 
   ***
 
   #### Returns [DatasetClient](https://docs.apify.com/api/client/js/api/client/js/reference/class/DatasetClient.md)\<Record\<string | number, unknown>>
 
-### [**](#delete)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/run.ts#L66)delete
+  A client for accessing the run's default dataset
+
+### [**](#delete)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/run.ts#L121)delete
 
 * ****delete**(): Promise\<void>
 
-- <https://docs.apify.com/api/v2#/reference/actor-runs/delete-run/delete-run>
+- Deletes the Actor run.
+
+  * **@see**
+
+    <https://docs.apify.com/api/v2/actor-run-delete>
 
   ***
 
   #### Returns Promise\<void>
 
-### [**](#get)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/run.ts#L32)get
+### [**](#get)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/run.ts#L71)get
 
 * ****get**(options): Promise\<undefined | [ActorRun](https://docs.apify.com/api/client/js/api/client/js/reference/interface/ActorRun.md)>
 
-- <https://docs.apify.com/api/v2#/reference/actor-runs/run-object/get-run>
+- Gets the Actor run object from the Apify API.
+
+  * **@see**
+
+    <https://docs.apify.com/api/v2/actor-run-get>
+
+  * **@example**
+
+    ```
+    // Get run status immediately
+    const run = await client.run('run-id').get();
+    console.log(`Status: ${run.status}`);
+
+    // Wait up to 60 seconds for run to finish
+    const run = await client.run('run-id').get({ waitForFinish: 60 });
+    ```
 
   ***
 
@@ -183,75 +252,182 @@ Inherited from ResourceClient.url
 
   * ##### options: [RunGetOptions](https://docs.apify.com/api/client/js/api/client/js/reference/interface/RunGetOptions.md) = <!-- -->{}
 
+    Get options
+
   #### Returns Promise\<undefined | [ActorRun](https://docs.apify.com/api/client/js/api/client/js/reference/interface/ActorRun.md)>
 
-### [**](#keyValueStore)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/run.ts#L234)keyValueStore
+  The ActorRun object, or `undefined` if it does not exist
+
+### [**](#getStreamedLog)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/run.ts#L447)getStreamedLog
+
+* ****getStreamedLog**(options): Promise\<undefined | [StreamedLog](https://docs.apify.com/api/client/js/api/client/js/reference/class/StreamedLog.md)>
+
+- Get StreamedLog for convenient streaming of the run log and their redirection.
+
+  ***
+
+  #### Parameters
+
+  * ##### options: [GetStreamedLogOptions](https://docs.apify.com/api/client/js/api/client/js/reference/interface/GetStreamedLogOptions.md) = <!-- -->{}
+
+  #### Returns Promise\<undefined | [StreamedLog](https://docs.apify.com/api/client/js/api/client/js/reference/class/StreamedLog.md)>
+
+### [**](#keyValueStore)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/run.ts#L395)keyValueStore
 
 * ****keyValueStore**(): [KeyValueStoreClient](https://docs.apify.com/api/client/js/api/client/js/reference/class/KeyValueStoreClient.md)
 
-- <https://docs.apify.com/api/v2#/reference/actor-runs/run-object-and-its-storages>
+- Returns a client for the default key-value store of this Actor run.
 
-  This also works through `actorClient.lastRun().keyValueStore()`. <https://docs.apify.com/api/v2#/reference/actors/last-run-object-and-its-storages>
+  * **@see**
+
+    <https://docs.apify.com/api/v2/actor-run-get>
+
+  * **@example**
+
+    ```
+    // Access run's key-value store
+    const output = await client.run('run-id').keyValueStore().getRecord('OUTPUT');
+    ```
 
   ***
 
   #### Returns [KeyValueStoreClient](https://docs.apify.com/api/client/js/api/client/js/reference/class/KeyValueStoreClient.md)
 
-### [**](#log)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/run.ts#L262)log
+  A client for accessing the run's default key-value store
+
+### [**](#log)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/run.ts#L436)log
 
 * ****log**(): [LogClient](https://docs.apify.com/api/client/js/api/client/js/reference/class/LogClient.md)
 
-- <https://docs.apify.com/api/v2#/reference/actor-runs/run-object-and-its-storages>
+- Returns a client for accessing the log of this Actor run.
 
-  This also works through `actorClient.lastRun().log()`. <https://docs.apify.com/api/v2#/reference/actors/last-run-object-and-its-storages>
+  * **@see**
+
+    <https://docs.apify.com/api/v2/actor-run-get>
+
+  * **@example**
+
+    ```
+    // Get run log
+    const log = await client.run('run-id').log().get();
+    console.log(log);
+    ```
 
   ***
 
   #### Returns [LogClient](https://docs.apify.com/api/client/js/api/client/js/reference/class/LogClient.md)
 
-### [**](#metamorph)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/run.ts#L73)metamorph
+  A client for accessing the run's log
+
+### [**](#metamorph)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/run.ts#L150)metamorph
 
 * ****metamorph**(targetActorId, input, options): Promise<[ActorRun](https://docs.apify.com/api/client/js/api/client/js/reference/interface/ActorRun.md)>
 
-- <https://docs.apify.com/api/v2#/reference/actor-runs/metamorph-run/metamorph-run>
+- Transforms the Actor run into a run of another Actor (metamorph).
+
+  This operation preserves the run ID, storages (dataset, key-value store, request queue), and resource allocation. The run effectively becomes a run of the target Actor with new input. This is useful for chaining Actor executions or implementing complex workflows.
+
+  * **@see**
+
+    <https://docs.apify.com/api/v2/actor-run-metamorph-post>
+
+  * **@example**
+
+    ```
+    // Transform current run into another Actor
+    const metamorphedRun = await client.run('original-run-id').metamorph(
+      'target-actor-id',
+      { url: 'https://example.com' }
+    );
+    console.log(`Run ${metamorphedRun.id} is now running ${metamorphedRun.actId}`);
+    ```
 
   ***
 
   #### Parameters
 
   * ##### targetActorId: string
+
+    ID or username/name of the target Actor
+
   * ##### input: unknown
+
+    Input for the target Actor. Can be any JSON-serializable value.
+
   * ##### options: [RunMetamorphOptions](https://docs.apify.com/api/client/js/api/client/js/reference/interface/RunMetamorphOptions.md) = <!-- -->{}
+
+    Metamorph options
 
   #### Returns Promise<[ActorRun](https://docs.apify.com/api/client/js/api/client/js/reference/interface/ActorRun.md)>
 
-### [**](#reboot)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/run.ts#L116)reboot
+  The metamorphed ActorRun object (same ID, but now running the target Actor)
+
+### [**](#reboot)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/run.ts#L205)reboot
 
 * ****reboot**(): Promise<[ActorRun](https://docs.apify.com/api/client/js/api/client/js/reference/interface/ActorRun.md)>
 
-- <https://docs.apify.com/api/v2#/reference/actor-runs/reboot-run/reboot-run>
+- Reboots the Actor run.
+
+  Rebooting restarts the Actor's Docker container while preserving the run ID and storages. This can be useful to recover from certain errors or to force the Actor to restart with a fresh environment.
+
+  * **@see**
+
+    <https://docs.apify.com/api/v2/actor-run-reboot-post>
+
+  * **@example**
+
+    ```
+    const run = await client.run('run-id').reboot();
+    ```
 
   ***
 
   #### Returns Promise<[ActorRun](https://docs.apify.com/api/client/js/api/client/js/reference/interface/ActorRun.md)>
 
-### [**](#requestQueue)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/run.ts#L248)requestQueue
+  The updated ActorRun object
+
+### [**](#requestQueue)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/run.ts#L415)requestQueue
 
 * ****requestQueue**(): [RequestQueueClient](https://docs.apify.com/api/client/js/api/client/js/reference/class/RequestQueueClient.md)
 
-- <https://docs.apify.com/api/v2#/reference/actor-runs/run-object-and-its-storages>
+- Returns a client for the default Request queue of this Actor run.
 
-  This also works through `actorClient.lastRun().requestQueue()`. <https://docs.apify.com/api/v2#/reference/actors/last-run-object-and-its-storages>
+  * **@see**
+
+    <https://docs.apify.com/api/v2/actor-run-get>
+
+  * **@example**
+
+    ```
+    // Access run's Request queue
+    const { items } = await client.run('run-id').requestQueue().listHead();
+    ```
 
   ***
 
   #### Returns [RequestQueueClient](https://docs.apify.com/api/client/js/api/client/js/reference/class/RequestQueueClient.md)
 
-### [**](#resurrect)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/run.ts#L135)resurrect
+  A client for accessing the run's default Request queue
+
+### [**](#resurrect)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/run.ts#L261)resurrect
 
 * ****resurrect**(options): Promise<[ActorRun](https://docs.apify.com/api/client/js/api/client/js/reference/interface/ActorRun.md)>
 
-- <https://docs.apify.com/api/v2#/reference/actor-runs/resurrect-run/resurrect-run>
+- Resurrects a finished Actor run, starting it again with the same settings.
+
+  This creates a new run with the same configuration as the original run. The original run's storages (dataset, key-value store, request queue) are preserved and reused.
+
+  * **@see**
+
+    <https://docs.apify.com/api/v2/post-resurrect-run>
+
+  * **@example**
+
+    ```
+    // Resurrect a failed run with more memory
+    const newRun = await client.run('failed-run-id').resurrect({ memory: 2048 });
+    console.log(`New run started: ${newRun.id}`);
+    ```
 
   ***
 
@@ -259,27 +435,62 @@ Inherited from ResourceClient.url
 
   * ##### options: [RunResurrectOptions](https://docs.apify.com/api/client/js/api/client/js/reference/interface/RunResurrectOptions.md) = <!-- -->{}
 
+    Resurrection options (override original run settings)
+
   #### Returns Promise<[ActorRun](https://docs.apify.com/api/client/js/api/client/js/reference/interface/ActorRun.md)>
 
-### [**](#update)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/run.ts#L126)update
+  The new (resurrected) ActorRun object
+
+### [**](#update)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/run.ts#L232)update
 
 * ****update**(newFields): Promise<[ActorRun](https://docs.apify.com/api/client/js/api/client/js/reference/interface/ActorRun.md)>
 
-- #### Parameters
+- Updates the Actor run with specified fields.
+
+  * **@example**
+
+    ```
+    // Set a status message
+    await client.run('run-id').update({
+      statusMessage: 'Processing items: 50/100'
+    });
+    ```
+
+  ***
+
+  #### Parameters
 
   * ##### newFields: [RunUpdateOptions](https://docs.apify.com/api/client/js/api/client/js/reference/interface/RunUpdateOptions.md)
 
+    Fields to update
+
   #### Returns Promise<[ActorRun](https://docs.apify.com/api/client/js/api/client/js/reference/interface/ActorRun.md)>
 
-### [**](#waitForFinish)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/run.ts#L203)waitForFinish
+  The updated ActorRun object
+
+### [**](#waitForFinish)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/run.ts#L352)waitForFinish
 
 * ****waitForFinish**(options): Promise<[ActorRun](https://docs.apify.com/api/client/js/api/client/js/reference/interface/ActorRun.md)>
 
-- Returns a promise that resolves with the finished Run object when the provided actor run finishes or with the unfinished Run object when the `waitSecs` timeout lapses. The promise is NOT rejected based on run status. You can inspect the `status` property of the Run object to find out its status.
+- Waits for the Actor run to finish and returns the finished Run object.
 
-  The difference between this function and the `waitForFinish` parameter of the `get` method is the fact that this function can wait indefinitely. Its use is preferable to the `waitForFinish` parameter alone, which it uses internally.
+  The promise resolves when the run reaches a terminal state (`SUCCEEDED`, `FAILED`, `ABORTED`, or `TIMED-OUT`). If `waitSecs` is provided and the timeout is reached, the promise resolves with the unfinished Run object (status will be `RUNNING` or `READY`). The promise is NOT rejected based on run status.
 
-  This is useful when you need to chain actor executions. Similar effect can be achieved by using webhooks, so be sure to review which technique fits your use-case better.
+  Unlike the `waitForFinish` parameter in get, this method can wait indefinitely by polling the run status. It uses the `waitForFinish` parameter internally (max 60s per call) and continuously polls until the run finishes or the timeout is reached.
+
+  * **@example**
+
+    ```
+    // Wait indefinitely for run to finish
+    const run = await client.run('run-id').waitForFinish();
+    console.log(`Run finished with status: ${run.status}`);
+
+    // Wait up to 5 minutes
+    const run = await client.run('run-id').waitForFinish({ waitSecs: 300 });
+    if (run.status === 'SUCCEEDED') {
+      console.log('Run succeeded!');
+    }
+    ```
 
   ***
 
@@ -287,4 +498,8 @@ Inherited from ResourceClient.url
 
   * ##### options: [RunWaitForFinishOptions](https://docs.apify.com/api/client/js/api/client/js/reference/interface/RunWaitForFinishOptions.md) = <!-- -->{}
 
+    Wait options
+
   #### Returns Promise<[ActorRun](https://docs.apify.com/api/client/js/api/client/js/reference/interface/ActorRun.md)>
+
+  The ActorRun object (finished or still running if timeout was reached)

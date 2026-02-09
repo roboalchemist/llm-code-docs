@@ -2,19 +2,9 @@
 
 # Source: https://docs.apify.com/api/client/js/reference/interface/RequestQueueStats.md
 
-# Source: https://docs.apify.com/sdk/python/reference/class/RequestQueueStats.md
-
-# Source: https://docs.apify.com/api/client/js/reference/interface/RequestQueueStats.md
-
-# Source: https://docs.apify.com/sdk/python/reference/class/RequestQueueStats.md
-
-# Source: https://docs.apify.com/api/client/js/reference/interface/RequestQueueStats.md
-
-# Source: https://docs.apify.com/sdk/python/reference/class/RequestQueueStats.md
-
-# Source: https://docs.apify.com/api/client/js/reference/interface/RequestQueueStats.md
-
 # RequestQueueStats<!-- -->
+
+Statistics about Request Queue usage and storage.
 
 ## Index[**](#Index)
 
@@ -28,7 +18,7 @@
 
 ## Properties<!-- -->[**](#Properties)
 
-### [**](#deleteCount)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/request_queue.ts#L578)optionaldeleteCount
+### [**](#deleteCount)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/request_queue.ts#L832)optionaldeleteCount
 
 **deleteCount?
 
@@ -36,7 +26,7 @@
 
 : number
 
-### [**](#headItemReadCount)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/request_queue.ts#L579)optionalheadItemReadCount
+### [**](#headItemReadCount)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/request_queue.ts#L833)optionalheadItemReadCount
 
 **headItemReadCount?
 
@@ -44,7 +34,7 @@
 
 : number
 
-### [**](#readCount)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/request_queue.ts#L576)optionalreadCount
+### [**](#readCount)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/request_queue.ts#L830)optionalreadCount
 
 **readCount?
 
@@ -52,7 +42,7 @@
 
 : number
 
-### [**](#storageBytes)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/request_queue.ts#L580)optionalstorageBytes
+### [**](#storageBytes)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/request_queue.ts#L834)optionalstorageBytes
 
 **storageBytes?
 
@@ -60,7 +50,7 @@
 
 : number
 
-### [**](#writeCount)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/request_queue.ts#L577)optionalwriteCount
+### [**](#writeCount)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/request_queue.ts#L831)optionalwriteCount
 
 **writeCount?
 

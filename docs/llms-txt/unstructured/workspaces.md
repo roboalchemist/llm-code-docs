@@ -1,5 +1,9 @@
 # Source: https://docs.unstructured.io/ui/account/workspaces.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.unstructured.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Workspaces
 
 <Note>
@@ -240,7 +244,7 @@ An API key is valid only for the workspace for which it was created.
 4. In the sidebar, above your user icon, click the **Settings** (gear) icon.
 5. Click **Manage Workspace**.
 6. In the top navigation bar, click **API Keys**.
-7. n the list of available keys, click the ellipses next to the key you want to delete.
+7. In the list of available keys, click the ellipses next to the key you want to delete.
 8. Click **Delete**.
 9. Confirm the deletion by clicking **Continue**.
 

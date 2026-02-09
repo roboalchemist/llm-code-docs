@@ -1,147 +1,153 @@
-# Source: https://docs.exa.ai/reference/team-management/get-api-key-usage.md
+# Source: https://exa.ai/docs/reference/team-management/get-api-key-usage.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://exa.ai/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Get API Key Usage
 
 > Retrieve usage analytics and billing data for a specific API key.
 
+<Card title="Get your Exa API key" icon="key" horizontal href="https://dashboard.exa.ai/api-keys" />
+
+## Overview
+
+The Get API Key Usage endpoint allows you to retrieve detailed billing and usage analytics for a specific API key over a given time period. This endpoint returns cost data from Exa's billing system, providing an authoritative view of what you're being billed for that API key.
+
+## Path Parameters
+
+* **id**: The unique identifier of the API key to retrieve usage for
+
+## Query Parameters
+
+* **start\_date** (optional): Start date for the usage period in ISO 8601 format (e.g., `2025-01-01T00:00:00Z` or `2025-01-01`). Defaults to 30 days ago. Must be within the last 100 days.
+* **end\_date** (optional): End date for the usage period in ISO 8601 format. Defaults to the current time.
+* **group\_by** (optional): Time granularity for grouping results (`hour`, `day`, or `month`). Currently reserved for future enhancements and does not change the response shape. Defaults to `day`.
+
+## Response
+
+Returns detailed usage and billing information including:
+
+* **api\_key\_id**: Unique identifier of the API key
+* **api\_key\_name**: Descriptive name of the API key (if set)
+* **team\_id**: Team ID this key belongs to
+* **period**: Object containing the start and end dates of the usage period
+* **total\_cost\_usd**: Total cost in USD for the specified period
+* **cost\_breakdown**: Array of cost breakdowns by price type, each containing:
+  * **price\_id**: Unique identifier for the price
+  * **price\_name**: Name of the price (e.g., "Neural Search", "Content Retrieval")
+  * **quantity**: Total quantity consumed
+  * **amount\_usd**: Cost in USD for this price type
+* **metadata**: Object containing report generation timestamp
+
+## Important Notes
+
+* **100-Day Lookback Limit**: The billing system has a 100-day lookback limit. Requests with `start_date` older than 100 days will return a 400 error.
+* **Zero Usage**: If the API key has no usage in the requested period, `total_cost_usd` will be 0 and `cost_breakdown` may be empty.
+* **Team Ownership**: The service API key used for authentication must belong to the same team as the requested API key. Cross-team access is not permitted.
+* **Date Formats**: Dates can be provided in ISO 8601 format with or without time components (e.g., `2025-01-01` or `2025-01-01T00:00:00Z`).
+
+## Use Cases
+
+This endpoint is useful for:
+
+* Building API-key-level billing dashboards
+* Monitoring usage and costs for specific API keys
+* Creating automated alerts based on usage thresholds
+* Generating usage reports for internal cost allocation
+* Debugging billing questions for specific API keys
+
+
 ## OpenAPI
 
 ````yaml get /api-keys/{id}/usage
+openapi: 3.1.0
+info:
+  version: 1.0.0
+  title: Team Management API
+  description: >-
+    API for managing API keys within teams. Provides CRUD operations for
+    creating, listing, updating, and deleting API keys with team-based access
+    controls.
+servers:
+  - url: https://admin-api.exa.ai/team-management
+security:
+  - apikey: []
 paths:
-  path: /api-keys/{id}/usage
-  method: get
-  servers:
-    - url: https://admin-api.exa.ai/team-management
-  request:
-    security:
-      - title: apikey
-        parameters:
-          query: {}
-          header:
-            x-api-key:
-              type: apiKey
-              description: Service API key for team authentication
-          cookie: {}
-    parameters:
-      path:
-        id:
+  /api-keys/{id}/usage:
+    get:
+      tags:
+        - Team Management
+      summary: Get API Key Usage
+      description: >-
+        Retrieves usage analytics and billing data for a specific API key over a
+        given time period. Returns cost breakdown by price type from the billing
+        system.
+      operationId: get-api-key-usage
+      parameters:
+        - name: id
+          in: path
+          required: true
           schema:
-            - type: string
-              required: true
-              description: The unique identifier of the API key
-              format: uuid
-      query:
-        start_date:
+            type: string
+            format: uuid
+          description: The unique identifier of the API key
+        - name: start_date
+          in: query
+          required: false
           schema:
-            - type: string
-              required: false
-              description: >-
-                Start date for the usage period (ISO 8601 format). Defaults to
-                30 days ago. Must be within the last 100 days.
-              format: date-time
-        end_date:
+            type: string
+            format: date-time
+          description: >-
+            Start date for the usage period (ISO 8601 format). Defaults to 30
+            days ago. Must be within the last 100 days.
+          example: '2025-01-01T00:00:00Z'
+        - name: end_date
+          in: query
+          required: false
           schema:
-            - type: string
-              required: false
-              description: >-
-                End date for the usage period (ISO 8601 format). Defaults to
-                current time.
-              format: date-time
-        group_by:
+            type: string
+            format: date-time
+          description: >-
+            End date for the usage period (ISO 8601 format). Defaults to current
+            time.
+          example: '2025-01-31T23:59:59Z'
+        - name: group_by
+          in: query
+          required: false
           schema:
-            - type: enum<string>
-              enum:
-                - hour
-                - day
-                - month
-              required: false
-              description: >-
-                Time granularity for grouping results. Currently reserved for
-                future enhancements and does not change the response shape.
-                Defaults to 'day'.
-      header: {}
-      cookie: {}
-    body: {}
-    codeSamples:
-      - label: Get usage for the last 30 days (default)
-        lang: bash
-        source: >
-          curl -X GET
-          'https://admin-api.exa.ai/team-management/api-keys/{id}/usage' \
-            -H 'x-api-key: YOUR-SERVICE-KEY'
-      - label: Get usage for a specific date range
-        lang: bash
-        source: >
-          curl -X GET
-          'https://admin-api.exa.ai/team-management/api-keys/{id}/usage?start_date=2025-01-01&end_date=2025-01-31'
-          \
-            -H 'x-api-key: YOUR-SERVICE-KEY'
-      - label: Get usage for a specific date range
-        lang: python
-        source: |
-          import requests
-          from datetime import datetime, timedelta
-
-          headers = {
-              'x-api-key': 'YOUR-SERVICE-KEY'
-          }
-
-          params = {
-              'start_date': '2025-01-01T00:00:00Z',
-              'end_date': '2025-01-31T23:59:59Z'
-          }
-
-          response = requests.get(
-              'https://admin-api.exa.ai/team-management/api-keys/{id}/usage',
-              headers=headers,
-              params=params
-          )
-
-          print(response.json())
-      - label: Get usage for a specific date range
-        lang: javascript
-        source: |
-          const params = new URLSearchParams({
-            start_date: '2025-01-01T00:00:00Z',
-            end_date: '2025-01-31T23:59:59Z'
-          });
-
-          const response = await fetch(
-            `https://admin-api.exa.ai/team-management/api-keys/{id}/usage?${params}`,
-            {
-              method: 'GET',
-              headers: {
-                'x-api-key': 'YOUR-SERVICE-KEY'
-              }
-            }
-          );
-
-          const result = await response.json();
-          console.log(result);
-  response:
-    '200':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              api_key_id:
-                allOf:
-                  - type: string
+            type: string
+            enum:
+              - hour
+              - day
+              - month
+          description: >-
+            Time granularity for grouping results. Currently reserved for future
+            enhancements and does not change the response shape. Defaults to
+            'day'.
+          example: day
+      responses:
+        '200':
+          description: Usage data retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  api_key_id:
+                    type: string
                     format: uuid
                     description: The API key ID
-              api_key_name:
-                allOf:
-                  - type: string
+                  api_key_name:
+                    type: string
                     nullable: true
                     description: The name of the API key
-              team_id:
-                allOf:
-                  - type: string
+                  team_id:
+                    type: string
                     format: uuid
                     description: The team ID this key belongs to
-              period:
-                allOf:
-                  - type: object
+                  period:
+                    type: object
                     properties:
                       start:
                         type: string
@@ -151,14 +157,12 @@ paths:
                         type: string
                         format: date-time
                         description: End of the usage period
-              total_cost_usd:
-                allOf:
-                  - type: number
+                  total_cost_usd:
+                    type: number
                     description: Total cost in USD for the period
                     example: 45.67
-              cost_breakdown:
-                allOf:
-                  - type: array
+                  cost_breakdown:
+                    type: array
                     description: Breakdown of costs by price type
                     items:
                       type: object
@@ -177,44 +181,41 @@ paths:
                         amount_usd:
                           type: number
                           description: Cost in USD for this price type
-              metadata:
-                allOf:
-                  - type: object
+                  metadata:
+                    type: object
                     properties:
                       generated_at:
                         type: string
                         format: date-time
                         description: When this report was generated
-        examples:
-          example:
-            value:
-              api_key_id: 550e8400-e29b-41d4-a716-446655440000
-              api_key_name: Production API Key
-              team_id: 660e8400-e29b-41d4-a716-446655440000
-              period:
-                start: '2025-01-01T00:00:00Z'
-                end: '2025-01-31T23:59:59Z'
-              total_cost_usd: 45.67
-              cost_breakdown:
-                - price_id: price_neural_search
-                  price_name: Neural Search
-                  quantity: 1000
-                  amount_usd: 30
-                - price_id: price_content_retrieval
-                  price_name: Content Retrieval
-                  quantity: 500
-                  amount_usd: 15.67
-              metadata:
-                generated_at: '2025-02-01T10:30:00Z'
-        description: Usage data retrieved successfully
-    '400':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              error:
-                allOf:
-                  - type: string
+              example:
+                api_key_id: 550e8400-e29b-41d4-a716-446655440000
+                api_key_name: Production API Key
+                team_id: 660e8400-e29b-41d4-a716-446655440000
+                period:
+                  start: '2025-01-01T00:00:00Z'
+                  end: '2025-01-31T23:59:59Z'
+                total_cost_usd: 45.67
+                cost_breakdown:
+                  - price_id: price_neural_search
+                    price_name: Neural Search
+                    quantity: 1000
+                    amount_usd: 30
+                  - price_id: price_content_retrieval
+                    price_name: Content Retrieval
+                    quantity: 500
+                    amount_usd: 15.67
+                metadata:
+                  generated_at: '2025-02-01T10:30:00Z'
+        '400':
+          description: Bad Request - Invalid parameters
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
                     examples:
                       - Invalid API key ID format. Must be a valid UUID.
                       - >-
@@ -227,60 +228,44 @@ paths:
                       - >-
                         Invalid group_by parameter. Must be one of: hour, day,
                         month
-        examples:
-          example:
-            value:
-              error: Invalid API key ID format. Must be a valid UUID.
-        description: Bad Request - Invalid parameters
-    '401':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              error:
-                allOf:
-                  - type: string
+        '401':
+          description: Unauthorized - Invalid or missing service key
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
                     example: Unauthorized
-        examples:
-          example:
-            value:
-              error: Unauthorized
-        description: Unauthorized - Invalid or missing service key
-    '404':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              error:
-                allOf:
-                  - type: string
+        '404':
+          description: Not Found - API key does not exist
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
                     example: API key not found
-        examples:
-          example:
-            value:
-              error: API key not found
-        description: Not Found - API key does not exist
-    '500':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              error:
-                allOf:
-                  - type: string
+        '500':
+          description: Internal Server Error - Failed to fetch usage data
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
                     example: Failed to fetch usage data. Please try again later.
-        examples:
-          example:
-            value:
-              error: Failed to fetch usage data. Please try again later.
-        description: Internal Server Error - Failed to fetch usage data
-  deprecated: false
-  type: path
+      security:
+        - apikey: []
 components:
-  schemas: {}
+  securitySchemes:
+    apikey:
+      type: apiKey
+      in: header
+      name: x-api-key
+      description: Service API key for team authentication
 
 ````
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.exa.ai/llms.txt

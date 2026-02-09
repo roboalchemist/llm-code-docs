@@ -1,5 +1,9 @@
 # Source: https://docs.crewai.com/en/enterprise/guides/outlook-trigger.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.crewai.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Outlook Trigger
 
 > Launch automations from Outlook emails and calendar updates
@@ -9,7 +13,8 @@
 Automate responses when Outlook delivers a new message or when an event is removed from the calendar. Teams commonly route escalations, file tickets, or alert attendees of cancellations.
 
 <Tip>
-  Connect Outlook in **Tools & Integrations** and ensure the trigger is enabled for your deployment.
+  Connect Outlook in **Tools & Integrations** and ensure the trigger is enabled
+  for your deployment.
 </Tip>
 
 ## Enabling the Outlook Trigger
@@ -50,7 +55,9 @@ crewai triggers run microsoft_outlook/email_received
 The `crewai triggers run` command will execute your crew with a complete Outlook payload, allowing you to test your parsing logic before deployment.
 
 <Warning>
-  Use `crewai triggers run microsoft_outlook/email_received` (not `crewai run`) to simulate trigger execution during development. After deployment, your crew will automatically receive the trigger payload.
+  Use `crewai triggers run microsoft_outlook/email_received` (not `crewai run`)
+  to simulate trigger execution during development. After deployment, your crew
+  will automatically receive the trigger payload.
 </Warning>
 
 ## Troubleshooting

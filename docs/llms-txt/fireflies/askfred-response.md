@@ -1,5 +1,9 @@
 # Source: https://docs.fireflies.ai/schema/askfred-response.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.fireflies.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # AskFredResponse
 
 > Response wrapper for AskFred mutations
@@ -46,8 +50,3 @@ The `AskFredResponse` type is a wrapper object returned by AskFred mutations whe
     Thread containing multiple messages
   </Card>
 </CardGroup>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.fireflies.ai/llms.txt

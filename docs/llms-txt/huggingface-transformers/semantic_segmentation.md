@@ -1,6 +1,4 @@
-# Source: https://huggingface.co/docs/transformers/v5.0.0rc1/tasks/semantic_segmentation.md
-
-# Source: https://huggingface.co/docs/transformers/v4.57.3/tasks/semantic_segmentation.md
+# Source: https://huggingface.co/docs/transformers/v5.0.0/tasks/semantic_segmentation.md
 
 # Image Segmentation
 
@@ -191,10 +189,10 @@ Start by loading a smaller subset of the SceneParse150 dataset from the 🤗 Dat
 ```py
 >>> from datasets import load_dataset
 
->>> ds = load_dataset("scene_parse_150", split="train[:50]")
+>>> ds = load_dataset("merve/scene_parse_150", split="train[:50]")
 ```
 
-Split the dataset's `train` split into a train and test set with the [train_test_split](https://huggingface.co/docs/datasets/v4.4.1/en/package_reference/main_classes#datasets.Dataset.train_test_split) method:
+Split the dataset's `train` split into a train and test set with the [train_test_split](https://huggingface.co/docs/datasets/v4.5.0/en/package_reference/main_classes#datasets.Dataset.train_test_split) method:
 
 ```py
 >>> ds = ds.train_test_split(test_size=0.2)
@@ -237,7 +235,7 @@ You'll also want to create a dictionary that maps a label id to a label class wh
 
 You could also create and use your own dataset if you prefer to train with the [run_semantic_segmentation.py](https://github.com/huggingface/transformers/blob/main/examples/pytorch/semantic-segmentation/run_semantic_segmentation.py) script instead of a notebook instance. The script requires:
 
-1. a [DatasetDict](https://huggingface.co/docs/datasets/v4.4.1/en/package_reference/main_classes#datasets.DatasetDict) with two [Image](https://huggingface.co/docs/datasets/v4.4.1/en/package_reference/main_classes#datasets.Image) columns, "image" and "label"
+1. a [DatasetDict](https://huggingface.co/docs/datasets/v4.5.0/en/package_reference/main_classes#datasets.DatasetDict) with two [Image](https://huggingface.co/docs/datasets/v4.5.0/en/package_reference/main_classes#datasets.Image) columns, "image" and "label"
 
      ```py
      from datasets import Dataset, DatasetDict, Image
@@ -280,7 +278,7 @@ You could also create and use your own dataset if you prefer to train with the [
      # simple example
      id2label = {0: 'cat', 1: 'dog'}
      with open('id2label.json', 'w') as fp:
-     json.dump(id2label, fp)
+         json.dump(id2label, fp)
      ```
 
 As an example, take a look at this [example dataset](https://huggingface.co/datasets/nielsr/ade20k-demo) which was created with the steps shown above.
@@ -320,7 +318,7 @@ Now create two preprocessing functions to prepare the images and annotations for
 ...     return inputs
 ```
 
-To apply the `jitter` over the entire dataset, use the 🤗 Datasets [set_transform](https://huggingface.co/docs/datasets/v4.4.1/en/package_reference/main_classes#datasets.Dataset.set_transform) function. The transform is applied on the fly which is faster and consumes less disk space:
+To apply the `jitter` over the entire dataset, use the 🤗 Datasets [set_transform](https://huggingface.co/docs/datasets/v4.5.0/en/package_reference/main_classes#datasets.Dataset.set_transform) function. The transform is applied on the fly which is faster and consumes less disk space:
 
 ```py
 >>> train_ds.set_transform(train_transforms)
@@ -374,9 +372,9 @@ Your `compute_metrics` function is ready to go now, and you'll return to it when
 
 ### Train
 
-If you aren't familiar with finetuning a model with the [Trainer](/docs/transformers/v4.57.3/en/main_classes/trainer#transformers.Trainer), take a look at the basic tutorial [here](../training#finetune-with-trainer)!
+If you aren't familiar with finetuning a model with the [Trainer](/docs/transformers/v5.0.0/en/main_classes/trainer#transformers.Trainer), take a look at the basic tutorial [here](../training#finetune-with-trainer)!
 
-You're ready to start training your model now! Load SegFormer with [AutoModelForSemanticSegmentation](/docs/transformers/v4.57.3/en/model_doc/auto#transformers.AutoModelForSemanticSegmentation), and pass the model the mapping between label ids and label classes:
+You're ready to start training your model now! Load SegFormer with [AutoModelForSemanticSegmentation](/docs/transformers/v5.0.0/en/model_doc/auto#transformers.AutoModelForSemanticSegmentation), and pass the model the mapping between label ids and label classes:
 
 ```py
 >>> from transformers import AutoModelForSemanticSegmentation, TrainingArguments, Trainer
@@ -386,9 +384,9 @@ You're ready to start training your model now! Load SegFormer with [AutoModelFor
 
 At this point, only three steps remain:
 
-1. Define your training hyperparameters in [TrainingArguments](/docs/transformers/v4.57.3/en/main_classes/trainer#transformers.TrainingArguments). It is important you don't remove unused columns because this'll drop the `image` column. Without the `image` column, you can't create `pixel_values`. Set `remove_unused_columns=False` to prevent this behavior! The only other required parameter is `output_dir` which specifies where to save your model. You'll push this model to the Hub by setting `push_to_hub=True` (you need to be signed in to Hugging Face to upload your model). At the end of each epoch, the [Trainer](/docs/transformers/v4.57.3/en/main_classes/trainer#transformers.Trainer) will evaluate the IoU metric and save the training checkpoint.
-2. Pass the training arguments to [Trainer](/docs/transformers/v4.57.3/en/main_classes/trainer#transformers.Trainer) along with the model, dataset, tokenizer, data collator, and `compute_metrics` function.
-3. Call [train()](/docs/transformers/v4.57.3/en/main_classes/trainer#transformers.Trainer.train) to finetune your model.
+1. Define your training hyperparameters in [TrainingArguments](/docs/transformers/v5.0.0/en/main_classes/trainer#transformers.TrainingArguments). It is important you don't remove unused columns because this'll drop the `image` column. Without the `image` column, you can't create `pixel_values`. Set `remove_unused_columns=False` to prevent this behavior! The only other required parameter is `output_dir` which specifies where to save your model. You'll push this model to the Hub by setting `push_to_hub=True` (you need to be signed in to Hugging Face to upload your model). At the end of each epoch, the [Trainer](/docs/transformers/v5.0.0/en/main_classes/trainer#transformers.Trainer) will evaluate the IoU metric and save the training checkpoint.
+2. Pass the training arguments to [Trainer](/docs/transformers/v5.0.0/en/main_classes/trainer#transformers.Trainer) along with the model, dataset, tokenizer, data collator, and `compute_metrics` function.
+3. Call [train()](/docs/transformers/v5.0.0/en/main_classes/trainer#transformers.Trainer.train) to finetune your model.
 
 ```py
 >>> training_args = TrainingArguments(
@@ -419,7 +417,7 @@ At this point, only three steps remain:
 >>> trainer.train()
 ```
 
-Once training is completed, share your model to the Hub with the [push_to_hub()](/docs/transformers/v4.57.3/en/main_classes/trainer#transformers.Trainer.push_to_hub) method so everyone can use your model:
+Once training is completed, share your model to the Hub with the [push_to_hub()](/docs/transformers/v5.0.0/en/main_classes/trainer#transformers.Trainer.push_to_hub) method so everyone can use your model:
 
 ```py
 >>> trainer.push_to_hub()
@@ -446,8 +444,8 @@ Reload the dataset and load an image for inference.
 We will now see how to infer without a pipeline. Process the image with an image processor and place the `pixel_values` on a GPU:
 
 ```py
->>> from transformers import infer_device
->>> device = infer_device()
+>>> from accelerate import Accelerator
+>>> device = Accelerator().device
 >>> encoding = image_processor(image, return_tensors="pt")
 >>> pixel_values = encoding.pixel_values.to(device)
 ```

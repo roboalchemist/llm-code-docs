@@ -1,12 +1,16 @@
 # Source: https://trigger.dev/docs/wait-for.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://trigger.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Wait for
 
 > Wait for a period of time, then continue execution.
 
 Inside your tasks you can wait for a period of time before you want execution to continue.
 
-```ts /trigger/long-task.ts theme={null}
+```ts /trigger/long-task.ts theme={"theme":"css-variables"}
 export const veryLongTask = task({
   id: "very-long-task",
   run: async (payload) => {
@@ -38,7 +42,7 @@ When triggering and waiting for subtasks, the parent is checkpointed and while w
 
 You can pass an idempotency key to any wait function, allowing you to skip waits if the same idempotency key is used again. This can be useful if you want to skip waits when retrying a task, for example:
 
-```ts  theme={null}
+```ts  theme={"theme":"css-variables"}
 // Specify the idempotency key and TTL when waiting for a duration:
 await wait.for({ seconds: 10 }, { idempotencyKey: "my-idempotency-key", idempotencyKeyTTL: "1h" });
 ```

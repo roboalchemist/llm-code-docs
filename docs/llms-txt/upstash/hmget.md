@@ -2,23 +2,9 @@
 
 # Source: https://upstash.com/docs/redis/sdks/py/commands/hash/hmget.md
 
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/hash/hmget.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/hash/hmget.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/hash/hmget.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/hash/hmget.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/hash/hmget.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/hash/hmget.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/hash/hmget.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/hash/hmget.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/hash/hmget.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # HMGET
 
@@ -26,28 +12,27 @@
 
 ## Arguments
 
-<ParamField body="key" type="string" required>
+<ParamField body="key" type="str" required>
   The key of the hash.
 </ParamField>
 
-<ParamField body="fields" type="...string[]" required>
+<ParamField body="fields" type="*List[str]" required>
   One or more fields to get.
 </ParamField>
 
 ## Response
 
-<ResponseField type="Record<string, unknown>" required>
+<ResponseField type="List[str | None]" required>
   An object containing the fields and their values.
 </ResponseField>
 
 <RequestExample>
-  ```ts Example theme={"system"}
-  await redis.hset("key", {
-    id: 1,
-    username: "chronark",
-    name: "andreas"
-    });
-  const fields = await redis.hmget("key", "username", "name");
-  console.log(fields); // { username: "chronark", name: "andreas" }
+  ```py Example theme={"system"}
+  redis.hset("myhash", values={
+      "field1": "Hello",
+      "field2": "World"
+  })
+
+  assert redis.hmget("myhash", "field1", "field2") == ["Hello", "World"]
   ```
 </RequestExample>

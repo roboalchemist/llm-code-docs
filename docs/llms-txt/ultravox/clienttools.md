@@ -1,5 +1,9 @@
 # Source: https://docs.ultravox.ai/tutorials/clienttools.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.ultravox.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Tutorial: Building Interactive UI with Client Tools
 
 > Learn how to implement client-side tools in Ultravox to create dynamic, interactive user interfaces.
@@ -449,8 +453,3 @@ Now that you've implemented basic client tools, you can:
 
 * [Tools Reference](/tools/overview)
 * [Tutorial Source Code](https://github.com/fixie-ai/ultravox-tutorial-client-tools)
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.ultravox.ai/llms.txt

@@ -1,5 +1,9 @@
 # Source: https://braintrust.dev/docs/integrations/sdk-integrations/apollo-graphql.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://braintrust.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Apollo GraphQL
 
 [Apollo GraphQL](https://www.apollographql.com/) is a platform for building GraphQL APIs. Braintrust traces Apollo GraphQL operations using OpenTelemetry to capture queries, mutations, resolvers, and errors.
@@ -316,8 +320,3 @@ limits:
 * [Apollo GraphQL documentation](https://www.apollographql.com/docs/)
 * [Apollo Router documentation](https://www.apollographql.com/docs/router/)
 * [Braintrust OpenTelemetry guide](/integrations/sdk-integrations/opentelemetry)
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://braintrust.dev/docs/llms.txt

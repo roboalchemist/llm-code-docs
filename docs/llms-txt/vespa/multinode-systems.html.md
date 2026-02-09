@@ -89,7 +89,7 @@ Can [AWS Auto Scaling](https://aws.amazon.com/autoscaling/) be used? Read the [a
 ```
 $ SSH_AUTH_SOCK=/dev/null ssh -i mykeypair.pem centos@ec2-3-231-33-190.compute-1.amazonaws.com
 ```
-- On each of the 10 hosts, install Vespa using the [installaton procedure](build-install.html#rpms): 
+- On each of the 10 hosts, install Vespa using the [installation procedure](build-install.html#rpms): 
 ```
 $ sudo dnf config-manager \
   --add-repo https://raw.githubusercontent.com/vespa-engine/vespa/master/dist/vespa-engine.repo
@@ -486,7 +486,7 @@ Observe that both clusters use `node1`. This is a non-recommended configuration,
 
 ## Autoscaling
 
-A common question is, _"Can [AWS Auto Scaling](https://aws.amazon.com/autoscaling/) be used?"_ That is a difficult question to answer, here is a transcript from the [Vespa Slack](http://slack.vespa.ai):
+A common question is, _"Can [AWS Auto Scaling](https://aws.amazon.com/autoscaling/) be used?"_ That is a difficult question to answer, here is a transcript from the [Vespa Slack](https://slack.vespa.ai):
 
 > I have a question about deployment. I set up cluster on two AWS auto-scaling groups (config & services) based on [multinode-systems.html#aws-ec2](#aws-ec2). But if one of instances was replaced by auto-scaling group, I need manually update hosts.xml file, zip it and deploy new version of the app. I'm thinking about automation of this process by Cloudwatch & Lambda... I wonder if there is some node-discovery mechanism which can e.g. check instances tags and update hosts config based on it?
 
@@ -500,14 +500,14 @@ Nothing of this is impossible, and it is actually implemented at [cloud.vespa.ai
 
 So, my recommendation is starting with a static set of hosts, like in [multinode-HA](https://github.com/vespa-engine/sample-apps/tree/master/examples/operations/multinode-HA) - and in parallel try out [cloud.vespa.ai/en/free-trial](https://cloud.vespa.ai/en/free-trial) with autoscaling experiments using your data and use cases.
 
-Autoscaling can save money, but before going there, it is wise to read anout [performance](/en/performance) and optimize resources using a static node set (or use the sizing suggestions from the Vespa Cloud Console). I.e., get the node resources right first, then consider if autoscaling node count for your load patterns makes sense.
+Autoscaling can save money, but before going there, it is wise to read about [performance](/en/performance/) and optimize resources using a static node set (or use the sizing suggestions from the Vespa Cloud Console). I.e., get the node resources right first, then consider if autoscaling node count for your load patterns makes sense.
 
 ## Next steps
 
 - [Multinode-HA](https://github.com/vespa-engine/sample-apps/tree/master/examples/operations/multinode-HA) is a high-availability multi-node template - use this as a basis for the final configuration.
 - The [multinode](https://github.com/vespa-engine/sample-apps/tree/master/examples/operations/multinode) sample application is a useful for experimenting with node state transitions. 
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ### On this page:
 

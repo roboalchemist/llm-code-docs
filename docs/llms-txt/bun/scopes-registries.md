@@ -1,5 +1,9 @@
 # Source: https://bun.com/docs/pm/scopes-registries.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://bun.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Scopes and registries
 
 > Configure private registries and scoped packages

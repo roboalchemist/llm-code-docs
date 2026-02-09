@@ -1,5 +1,9 @@
 # Source: https://docs.galileo.ai/deployments/deploying-galileo-exoscale.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.galileo.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Exoscale
 
 > The Galileo applications run on managed Kubernetes-like environments, but this document will specifically cover the configuration and deployment of an Exoscale Cloud SKS environment.
@@ -35,7 +39,7 @@ Recommended Cluster Configuration
 
 1. **Create security groups**
 
-```sh
+```sh  theme={null}
 exo compute security-group create sks-security-group
 
 exo compute security-group rule add sks-security-group \
@@ -59,7 +63,7 @@ exo compute security-group rule add sks-security-group \
 
 1. **Create SKS cluster**
 
-```sh
+```sh  theme={null}
 exo compute sks create galileo \
     --kubernetes-version "1.24"
     --zone ch-gva-2 \
@@ -85,7 +89,7 @@ exo compute sks nodepool add galileo galileo-runner \
 
 Longhorn is Open-Source Software that you can install inside your SKS cluster. Installation of Longhorn takes a few minutes, you need a SKS Cluster and access to this cluster via kubectl.
 
-```sh
+```sh  theme={null}
 kubectl apply -f https://raw.githubusercontent.com/longhorn/longhorn/1.3.1/deploy/longhorn.yaml
 ```
 

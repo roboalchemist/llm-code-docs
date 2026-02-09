@@ -1,6 +1,17 @@
 # Source: https://docs.windsurf.com/troubleshooting/plugins-enterprise/visualstudio.md
 
-# Visual Studio
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.windsurf.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Visual Studio Troubleshooting
+
+> Troubleshoot Visual Studio plugin issues including IntelliCode conflicts, Tab key bindings, and marketplace visibility problems.
+
+<Note>
+  We strongly recommend using the native Windsurf Editor or the JetBrains local plugin for their advanced agentic AI capabilities and cutting-edge features.
+  The Visual Studio plugin is under maintenance mode.
+</Note>
 
 # Supported Versions
 
@@ -9,14 +20,6 @@ Visual Studio 17.5.5 or greater.
 # Gathering extension logs
 
 Go to `View > Output`, select `Codeium` in the dropdown, and copy the logs.
-
-# How to reset or change your Enterprise URL
-
-1. Open the settings/preferences dialog (Tools → Options).
-2. Select Codeium.
-3. Set the Portal URL to `<NEW_URL>` and set the API URL to `<NEW_URL>/_route/api_server`.
-4. Click OK and restart Visual Studio.
-5. Upon restart, you will be prompted to sign in to the enterprise portal.
 
 # Known IDE issues and solutions
 

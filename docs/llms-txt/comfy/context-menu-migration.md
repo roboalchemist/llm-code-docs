@@ -1,5 +1,9 @@
 # Source: https://docs.comfy.org/custom-nodes/js/context-menu-migration.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.comfy.org/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Context Menu Migration Guide
 
 This guide helps you migrate from the deprecated monkey-patching approach to the new context menu extension API.

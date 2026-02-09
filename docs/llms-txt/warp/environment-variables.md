@@ -19,7 +19,7 @@ You can create new environment variables through:
 
 Any of these entry points will open the environment variables editor where you can name and describe your environment variables.
 
-<figure><img src="https://2297236823-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-MbqIgTw17KQvq_DQuRr%2Fuploads%2Fgit-blob-60031624761404b585bab0b0ab8bc102146f8774%2FScreenshot%202024-09-25%20at%205.35.23%E2%80%AFPM.png?alt=media&#x26;token=943267be-6cd6-4204-ac2b-7bd71744ae2c" alt=""><figcaption></figcaption></figure>
+<figure><img src="https://4009768362-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FPsjNxoJ0NFCXW6rRdHH3%2Fuploads%2Fgit-blob-60031624761404b585bab0b0ab8bc102146f8774%2Fenv-var-create.png?alt=media" alt=""><figcaption></figcaption></figure>
 
 ## Managing individual environment variables
 
@@ -29,11 +29,11 @@ Warp supports two types of environment variables: static variables and dynamic v
 
 Static variables are similar to .env files. You create the variables by entering raw strings of text. Each variable has a variable name and a corresponding value.
 
-<figure><img src="https://2297236823-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-MbqIgTw17KQvq_DQuRr%2Fuploads%2Fgit-blob-9d2ebafcff40c9a4b42c1f4688dfc0b4df7442bc%2FScreenshot%202024-09-25%20at%205.38.40%E2%80%AFPM.png?alt=media&#x26;token=d27a57c8-354a-4ef3-aa6b-76d5ef35384c" alt=""><figcaption></figcaption></figure>
+<figure><img src="https://4009768362-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FPsjNxoJ0NFCXW6rRdHH3%2Fuploads%2Fgit-blob-9d2ebafcff40c9a4b42c1f4688dfc0b4df7442bc%2Fenv-var-static-variable-save.png?alt=media" alt=""><figcaption></figcaption></figure>
 
 After you save the environment variable, you can click it to load it into your terminal session.
 
-<figure><img src="https://2297236823-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-MbqIgTw17KQvq_DQuRr%2Fuploads%2Fgit-blob-84d294108011a26c1622563395493d9b906041d3%2FScreenshot%202024-09-25%20at%205.40.04%E2%80%AFPM.png?alt=media&#x26;token=b031de59-9c9f-446c-a719-67e57e215f9b" alt=""><figcaption></figcaption></figure>
+<figure><img src="https://4009768362-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FPsjNxoJ0NFCXW6rRdHH3%2Fuploads%2Fgit-blob-84d294108011a26c1622563395493d9b906041d3%2Fenv-var-static-variable-load.png?alt=media" alt=""><figcaption></figcaption></figure>
 
 When you use static variables, Warp stores them securely in Warp Drive.\
 \
@@ -57,7 +57,7 @@ To create a new dynamic variable:
 2. Use the key icon to reveal the dynamic variable menu.
 3. Select an integrated password manager or "Command" to write your own custom integration.
 
-<figure><img src="https://2297236823-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-MbqIgTw17KQvq_DQuRr%2Fuploads%2Fgit-blob-a21c85e8db37d7db7d45f441a11686d34e44c197%2FScreenshot%202024-09-25%20at%205.54.24%E2%80%AFPM.png?alt=media&#x26;token=27dfbd71-706a-4847-8768-f15bd42ce24a" alt=""><figcaption></figcaption></figure>
+<figure><img src="https://4009768362-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FPsjNxoJ0NFCXW6rRdHH3%2Fuploads%2Fgit-blob-a21c85e8db37d7db7d45f441a11686d34e44c197%2Fenv-var-dynamic-variables.png?alt=media" alt=""><figcaption></figcaption></figure>
 
 #### **Integrated password managers**
 
@@ -68,7 +68,7 @@ Before you get started, please ensure you have the CLI installed for your tool o
 
 Then, you can click the key icon and select your manager from the dropdown menu.
 
-<figure><img src="https://2297236823-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-MbqIgTw17KQvq_DQuRr%2Fuploads%2Fgit-blob-a2842e00c0d30d8be8f770e275e4522c7be018a3%2FScreenshot%202024-09-25%20at%206.07.50%E2%80%AFPM.png?alt=media&#x26;token=1c06fecd-4426-440d-af5d-96f33b704955" alt=""><figcaption></figcaption></figure>
+<figure><img src="https://4009768362-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FPsjNxoJ0NFCXW6rRdHH3%2Fuploads%2Fgit-blob-a2842e00c0d30d8be8f770e275e4522c7be018a3%2Fenv-var-password-mgrs.png?alt=media" alt=""><figcaption></figcaption></figure>
 
 The CLI will require you to authenticate and then provide you with a list of available secrets.
 
@@ -108,9 +108,9 @@ First, click your environment variable from Warp Drive or the Command Palette.
 
 Then, review the confirmation block. If your environment variables are correct, hit enter to load them into your session.
 
-<figure><img src="https://2297236823-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-MbqIgTw17KQvq_DQuRr%2Fuploads%2Fgit-blob-72be659d8d1c0e250378a9f614277835ce20a207%2Fenv-var-load-to-input.png?alt=media&#x26;token=214859fc-f69b-4c57-af8d-0dc40ff3e7a2" alt=""><figcaption></figcaption></figure>
+<figure><img src="https://4009768362-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FPsjNxoJ0NFCXW6rRdHH3%2Fuploads%2Fgit-blob-72be659d8d1c0e250378a9f614277835ce20a207%2Fenv-var-load-to-input%20(1).png?alt=media" alt=""><figcaption></figcaption></figure>
 
-<figure><img src="https://2297236823-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-MbqIgTw17KQvq_DQuRr%2Fuploads%2Fgit-blob-1700f9b09f242a312d4bd1e81662acc1092dc172%2FScreenshot%202024-09-25%20at%206.14.17%E2%80%AFPM.png?alt=media&#x26;token=a8f1d9dc-2c72-4a62-9b04-74670ca71fe3" alt=""><figcaption></figcaption></figure>
+<figure><img src="https://4009768362-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FPsjNxoJ0NFCXW6rRdHH3%2Fuploads%2Fgit-blob-1700f9b09f242a312d4bd1e81662acc1092dc172%2Fenv-var-load-in-session.png?alt=media" alt=""><figcaption></figcaption></figure>
 
 These environment variables will now be present for the remainder of your session.
 

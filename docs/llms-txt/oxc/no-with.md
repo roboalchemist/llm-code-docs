@@ -3,7 +3,6 @@
 ---
 url: /docs/guide/usage/linter/rules/eslint/no-with.md
 ---
-# eslint/no-with&#x20;
 
 ### What it does
 

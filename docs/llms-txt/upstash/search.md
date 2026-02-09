@@ -2,105 +2,98 @@
 
 # Source: https://upstash.com/docs/search/sdks/py/commands/search.md
 
-# Source: https://upstash.com/docs/search/sdks/ts/commands/search.md
-
-# Source: https://upstash.com/docs/search/sdks/py/commands/search.md
-
-# Source: https://upstash.com/docs/search/sdks/ts/commands/search.md
-
-# Source: https://upstash.com/docs/search/sdks/py/commands/search.md
-
-# Source: https://upstash.com/docs/search/sdks/ts/commands/search.md
-
-# Source: https://upstash.com/docs/search/sdks/py/commands/search.md
-
-# Source: https://upstash.com/docs/search/sdks/ts/commands/search.md
-
-# Source: https://upstash.com/docs/search/sdks/py/commands/search.md
-
-# Source: https://upstash.com/docs/search/sdks/ts/commands/search.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Search
 
-The search method is designed to retrieve the most relevant documents from the database, using AI-powered search capabilities. This method supports a variety of options to configure the query to your needs.
+## Search Command for Python SDK
+
+The search method is designed to retrieve the most relevant documents from the database, using AI-powered search capabilities.
 
 For more details on how the search algorithm works, please refer to our [advanced settings documentation](/search/features/advanced-settings).
 
-<Note>
-  The score returned from search requests is a normalized value between 0 and 1, where 1 indicates the highest relevance and 0 the lowest.
-</Note>
+### Arguments
 
-## Arguments
-
-<ResponseField name="Payload" type="SearchCommandPayload" required>
+<ResponseField name="Payload" type="dict" required>
   <Expandable defaultOpen="true">
     <ResponseField name="query" type="string" required>
       The search query string.
     </ResponseField>
 
-    <ResponseField name="limit" type="number" required>
-      The maximum number of results to return. Defaults to 5.
+    <ResponseField name="limit" type="int" required>
+      The maximum number of results to return. Defaults to 10.
     </ResponseField>
 
-    <ResponseField name="reranking" type="boolean">
+    <ResponseField name="reranking" type="bool">
       Whether to enable AI-powered reranking of results. Disabled by default.
     </ResponseField>
 
     <ResponseField name="filter" type="string">
       A [filter](/search/features/filtering) for narrowing down the search results based on content fields.
-      See [typesafe filtering section](/search/features/filtering#typesafe-filters-typescript) for advanced usage.
     </ResponseField>
 
-    <ResponseField name="semanticWeight" type="number">
+    <ResponseField name="semantic_weight" type="number">
       Optional relevance balance between semantic and keyword search (0-1 range, defaults to 0.75).
       For instance, 0.2 applies 20% semantic matching with 80% full-text matching.
       You can learn more about how Upstash Search works from [our docs](/search/features/algorithm).
     </ResponseField>
 
-    <ResponseField name="inputEnrichment" type="boolean">
+    <ResponseField name="input_enrichment" type="boolean">
       Optional boolean to enhance queries before searching (enabled by default).
-    </ResponseField>
-
-    <ResponseField name="keepOriginalQueryAfterEnrichment" type="boolean">
-      Optional boolean to keep the original query alongside the enriched one (false by default).
     </ResponseField>
   </Expandable>
 </ResponseField>
 
-## Response
+### Response
 
-<ResponseField name="Response" type="SearchResult" required>
+<ResponseField name="Documents" type="List[DocumentScore]" required>
+  This field is `null` if no document with the specified ID is found.
+
   <Expandable defaultOpen="true">
-    <ResponseField name="results" type="Document[]">
-      The list of documents matching the search query.
+    <ResponseField name="id" type="string | number" required>
+      The ID of the resulting document.
+    </ResponseField>
+
+    <ResponseField name="content" type="Record<string, unknown>">
+      The main content of the document.
+    </ResponseField>
+
+    <ResponseField name="metadata" type="Record<string, unknown>">
+      Additional metadata for the document.
+    </ResponseField>
+
+    <ResponseField name="score" type="float" required>
+      Similarity score of the document
     </ResponseField>
   </Expandable>
 </ResponseField>
 
 <RequestExample>
-  ```typescript Basic Search theme={"system"}
-  const searchResults = await index.search({
-    query: "space opera",
-    limit: 2,
-  });
-  console.log(searchResults);
+  ```python Basic Search theme={"system"}
+  results = index.search(
+      query="space opera",
+      limit=2
+  )
+  print(results)
   ```
 
-  ```typescript Search with Reranking theme={"system"}
-  const searchResults = await index.search({
-    query: "space opera",
-    limit: 2,
-    reranking: true,
-  });
-  console.log(searchResults);
+  ```python Search with Reranking theme={"system"}
+  results = index.search(
+      query="space opera",
+      limit=2,
+      reranking=True
+  )
+  print(results)
   ```
 
-  ```typescript Search with Filter theme={"system"}
-  const searchResults = await index.search({
-    query: "space",
-    limit: 2,
-    filter: "category = 'classic'",
-  });
-  console.log(searchResults);
+  ```python Search with Filter theme={"system"}
+  results = index.search(
+      query="space", 
+      limit=2, 
+      filter="category = 'classic'"
+  )
+  print(results)
   ```
 </RequestExample>

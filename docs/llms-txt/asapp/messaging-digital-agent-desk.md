@@ -1,8 +1,59 @@
 # Source: https://docs.asapp.com/changelog/messaging-digital-agent-desk.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.asapp.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # ASAPP Messaging Updates - Digital Agent Desk
 
 > New updates and improvements for ASAPP Messaging - Digital Agent Desk
+
+<Update label="2025 - French and Spanish Language Support for AutoPilot">
+  ## French and Spanish Language Support for AutoPilot
+
+  ASAPP now supports French and Spanish languages for the AutoPilot feature in Digital Agent Desk. This enhancement allows agents to automate customer interactions in these additional languages, improving customer experience and operational efficiency.
+
+  **Key Benefits**:
+
+  * **Broadened Language Support**: Engage with a wider customer base by supporting French and Spanish speakers.
+  * **Consistent Customer Experience**: Ensure that customers receive timely and relevant responses in their preferred language.
+  * **Increased Agent Efficiency**: Reduce agent workload by automating routine interactions in multiple languages.
+
+  ## How It Works
+
+  To enable French or Spanish language support for AutoPilot, please contact your ASAPP account team.
+
+  Once enabled, agents can configure AutoPilot messages in the desired language directly within the Digital Agent Desk interface.
+
+  <Card href="/agent-desk/digital-agent-desk#autopilot" title="AutoPilot Feature Overview">
+    Learn more about how to set up and use AutoPilot in your Digital Agent Desk environment.
+  </Card>
+</Update>
+
+<Update label="2025 - Undelivered Messages">
+  ## Undelivered Messages
+
+  Undelivered Messages displays clear indicators when Live Agent messages fail to reach customers, enhancing transparency and accountability. It adds visible indicators to transcripts whenever delivery failures occur.
+
+  Organizations gain a better understanding of conversation outcomes, reduce agent guesswork about message delivery status, and proactively address quality or technical issues.
+
+  **Key Benefits**:
+
+  * **Enhanced Transparency**: Agents receive clear visibility into message delivery failures through indicators in transcripts, eliminating guesswork about whether customers received their messages.
+  * **Improved Customer Experience**: Agents can quickly identify and manually resend failed messages, ensuring customers receive critical information without delay.
+  * **Zero Performance Impact**: The feature operates passively without affecting message delivery speed, latency, or system performance.
+  * **No Setup Required**: All customers automatically receive undelivered message visibility with no configuration or implementation effort needed.
+  * **Comprehensive Visibility**: Delivery failure indicators appear in both live conversations and historical transcript views, providing complete context across all interactions.
+  * **Built-in Reporting**: Delivery failure data integrates with existing transcript exports and utterance feeds, enabling analysis and operational insights without additional tooling.
+
+  <Frame>
+    <img src="https://mintcdn.com/asapp/1fDV2_vz_I8h9n4C/images/messaging-platform/digital-agent-desk/undelivered-messages.png?fit=max&auto=format&n=1fDV2_vz_I8h9n4C&q=85&s=29dfb750245fb666a456bedb17cbf0ee" alt="Undelivered Messages Interface" data-og-width="420" width="420" data-og-height="772" height="772" data-path="images/messaging-platform/digital-agent-desk/undelivered-messages.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/asapp/1fDV2_vz_I8h9n4C/images/messaging-platform/digital-agent-desk/undelivered-messages.png?w=280&fit=max&auto=format&n=1fDV2_vz_I8h9n4C&q=85&s=5a60eb4d0486061cfd7146abd725fea7 280w, https://mintcdn.com/asapp/1fDV2_vz_I8h9n4C/images/messaging-platform/digital-agent-desk/undelivered-messages.png?w=560&fit=max&auto=format&n=1fDV2_vz_I8h9n4C&q=85&s=5be6e69ff374df45b5ef22cd951784b9 560w, https://mintcdn.com/asapp/1fDV2_vz_I8h9n4C/images/messaging-platform/digital-agent-desk/undelivered-messages.png?w=840&fit=max&auto=format&n=1fDV2_vz_I8h9n4C&q=85&s=5d25caeb66cf40dfa8dcd10482bcb7ca 840w, https://mintcdn.com/asapp/1fDV2_vz_I8h9n4C/images/messaging-platform/digital-agent-desk/undelivered-messages.png?w=1100&fit=max&auto=format&n=1fDV2_vz_I8h9n4C&q=85&s=21c682dd867e2c1537b894480f55840b 1100w, https://mintcdn.com/asapp/1fDV2_vz_I8h9n4C/images/messaging-platform/digital-agent-desk/undelivered-messages.png?w=1650&fit=max&auto=format&n=1fDV2_vz_I8h9n4C&q=85&s=01c756776ac02820dbd009a366461249 1650w, https://mintcdn.com/asapp/1fDV2_vz_I8h9n4C/images/messaging-platform/digital-agent-desk/undelivered-messages.png?w=2500&fit=max&auto=format&n=1fDV2_vz_I8h9n4C&q=85&s=3eb3ef04178d5472ab1217895fb9dcc8 2500w" />
+  </Frame>
+
+  <Card href="/agent-desk/digital-agent-desk/agent-desk-navigation#undelivered-messages" title="Undelivered Messages">
+    Learn more about how Undelivered Messages work in your Digital Agent Desk environment.
+  </Card>
+</Update>
 
 <Update label="2025 - Live Agent Summary">
   ## Live Agent Summary
@@ -22,7 +73,7 @@
     <img src="https://mintcdn.com/asapp/Ve91OvW2QLqQ2_fD/images/messaging-platform/digital-agent-desk/live-agent-summary.png?fit=max&auto=format&n=Ve91OvW2QLqQ2_fD&q=85&s=49c918b3f79b2c698ddf55712951deae" alt="Live Agent Summary Interface" data-og-width="1600" width="1600" data-og-height="958" height="958" data-path="images/messaging-platform/digital-agent-desk/live-agent-summary.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/asapp/Ve91OvW2QLqQ2_fD/images/messaging-platform/digital-agent-desk/live-agent-summary.png?w=280&fit=max&auto=format&n=Ve91OvW2QLqQ2_fD&q=85&s=b97feb705af646e40812c3b21973a9c3 280w, https://mintcdn.com/asapp/Ve91OvW2QLqQ2_fD/images/messaging-platform/digital-agent-desk/live-agent-summary.png?w=560&fit=max&auto=format&n=Ve91OvW2QLqQ2_fD&q=85&s=80dee0619c8352496fce236c024ddf00 560w, https://mintcdn.com/asapp/Ve91OvW2QLqQ2_fD/images/messaging-platform/digital-agent-desk/live-agent-summary.png?w=840&fit=max&auto=format&n=Ve91OvW2QLqQ2_fD&q=85&s=135476acb6eda677e539019e3a8d48b9 840w, https://mintcdn.com/asapp/Ve91OvW2QLqQ2_fD/images/messaging-platform/digital-agent-desk/live-agent-summary.png?w=1100&fit=max&auto=format&n=Ve91OvW2QLqQ2_fD&q=85&s=cd35be066d4eee6a429b0e6aae6d91cf 1100w, https://mintcdn.com/asapp/Ve91OvW2QLqQ2_fD/images/messaging-platform/digital-agent-desk/live-agent-summary.png?w=1650&fit=max&auto=format&n=Ve91OvW2QLqQ2_fD&q=85&s=1676401919d345aadd3671f6799c3551 1650w, https://mintcdn.com/asapp/Ve91OvW2QLqQ2_fD/images/messaging-platform/digital-agent-desk/live-agent-summary.png?w=2500&fit=max&auto=format&n=Ve91OvW2QLqQ2_fD&q=85&s=38d5c54784c9ff3998237b7a689e172f 2500w" />
   </Frame>
 
-  <Card href="/messaging-platform/digital-agent-desk/live-agent-summary" title="Live Agent Summary">
+  <Card href="/agent-desk/digital-agent-desk/live-agent-summary" title="Live Agent Summary">
     Learn more about how to set up and use Live Agent Summary in your Digital Agent Desk environment.
   </Card>
 </Update>

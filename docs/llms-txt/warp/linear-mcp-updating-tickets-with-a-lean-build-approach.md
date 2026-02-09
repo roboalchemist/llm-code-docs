@@ -19,8 +19,7 @@ This walkthrough demonstrates:
 
 {% stepper %}
 {% step %}
-
-### Setting Up the Scenario
+**Setting Up the Scenario**
 
 The goal is to use Warp’s agent to update a Linear epic with a new, leaner build approach and reflect the changes in related subtasks.
 
@@ -29,8 +28,7 @@ Copy the **ticket ID** (e.g. “Empty Studio 36”).
 {% endstep %}
 
 {% step %}
-
-### Define the Update Prompt
+**Define the Update Prompt**
 
 Within Warp, run the MCP command to edit the Linear issue.
 
@@ -50,8 +48,7 @@ Warp parses the issue context and updates the ticket’s fields accordingly.
 {% endstep %}
 
 {% step %}
-
-### Observing the Changes
+**Observing the Changes**
 
 After execution:
 
@@ -62,8 +59,7 @@ After execution:
   {% endstep %}
 
 {% step %}
-
-### Propagating Updates to Child Tasks
+**Propagating Updates to Child Tasks**
 
 Warp’s agent can cascade changes to linked subtasks.\
 If it begins editing other epics unexpectedly, you can constrain its scope by specifying task IDs in the prompt:
@@ -79,8 +75,7 @@ Do not modify other epics or related tickets.
 {% endstep %}
 
 {% step %}
-
-### Review and Verification
+**Review and Verification**
 
 Re-open the Linear epic to confirm updates:
 

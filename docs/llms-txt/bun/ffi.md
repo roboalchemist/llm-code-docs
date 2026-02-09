@@ -1,5 +1,9 @@
 # Source: https://bun.com/docs/runtime/ffi.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://bun.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # FFI
 
 > Use Bun's FFI module to efficiently call native libraries from JavaScript
@@ -355,6 +359,8 @@ Bun represents [pointers](https://en.wikipedia.org/wiki/Pointer_\(computer_progr
   64-bit processors support up to [52 bits of addressable space](https://en.wikipedia.org/wiki/64-bit_computing#Limits_of_processors). [JavaScript numbers](https://en.wikipedia.org/wiki/Double-precision_floating-point_format#IEEE_754_double-precision_binary_floating-point_format:_binary64) support 53 bits of usable space, so that leaves us with about 11 bits of extra space.
 
   **Why not `BigInt`?** `BigInt` is slower. JavaScript engines allocate a separate `BigInt` which means they can't fit into a regular JavaScript value. If you pass a `BigInt` to a function, it will be converted to a `number`
+
+  **Windows Note**: The Windows API type HANDLE does not represent a virtual address, and using `ptr` for it will *not* work as expected. Use `u64` to safely represent HANDLE values.
 </Accordion>
 
 To convert from a `TypedArray` to a pointer:

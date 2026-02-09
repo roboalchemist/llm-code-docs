@@ -3,7 +3,6 @@
 ---
 url: /docs/guide/usage/linter/rules/typescript/only-throw-error.md
 ---
-# typescript/only-throw-error&#x20;
 
 ### What it does
 

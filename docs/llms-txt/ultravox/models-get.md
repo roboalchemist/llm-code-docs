@@ -1,5 +1,9 @@
 # Source: https://docs.ultravox.ai/api-reference/other/models-get.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.ultravox.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # List Models
 
 > Retrieves the list of all available models that can be used for inference
@@ -86,7 +90,3 @@ components:
       description: API key
 
 ````
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.ultravox.ai/llms.txt

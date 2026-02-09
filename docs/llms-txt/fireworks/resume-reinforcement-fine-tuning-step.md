@@ -1,5 +1,9 @@
 # Source: https://docs.fireworks.ai/api-reference/resume-reinforcement-fine-tuning-step.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.fireworks.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Resume Rlor Trainer Job
 
 
@@ -10,7 +14,7 @@
 openapi: 3.1.0
 info:
   title: Gateway REST API
-  version: 4.15.25
+  version: 4.21.6
 servers:
   - url: https://api.fireworks.ai
 security:
@@ -104,6 +108,9 @@ components:
           description: >-
             The Weights & Biases team/user account for logging training
             progress.
+        awsS3Config:
+          $ref: '#/components/schemas/gatewayAwsS3Config'
+          description: The AWS configuration for S3 dataset access.
         keepAlive:
           type: boolean
           title: indicates this RLOR trainer job should run in keep-alive mode
@@ -119,7 +126,45 @@ components:
           description: >-
             Reinforcement learning loss method + hyperparameters for the
             underlying trainer.
-      title: 'Next ID: 22'
+        nodeCount:
+          type: integer
+          format: int32
+          description: |-
+            The number of nodes to use for the fine-tuning job.
+            If not specified, the default is 1.
+        acceleratorSeconds:
+          type: object
+          additionalProperties:
+            type: string
+            format: int64
+          description: >-
+            Accelerator seconds used by the job, keyed by accelerator type
+            (e.g., "NVIDIA_H100_80GB").
+
+            Updated periodically.
+          readOnly: true
+        serviceMode:
+          type: boolean
+          title: >-
+            Whether to deploy as a service with tinker-style api endpoints
+            exposure
+        directRouteHandle:
+          type: string
+          title: |-
+            Only valid when service_mode enabled
+            The direct route handle for the trainer in service mode (tinker api)
+          readOnly: true
+        hotLoadDeploymentId:
+          type: string
+          description: >-
+            The deployment ID used for hot loading. When set, checkpoints are
+            saved
+
+            to this deployment's hot load bucket, enabling weight swaps on
+            inference.
+
+            Only valid for service-mode or keep-alive jobs.
+      title: 'Next ID: 29'
     gatewayJobState:
       type: string
       enum:
@@ -214,10 +259,18 @@ components:
           type: integer
           format: int32
           title: Number of steps for learning rate warm up
+        batchSizeSamples:
+          type: integer
+          format: int32
+          description: The number of samples per gradient batch.
+        optimizerWeightDecay:
+          type: number
+          format: float
+          description: Weight decay (L2 regularization) for optimizer.
       title: |-
         BaseTrainingConfig contains common configuration fields shared across
         different training job types.
-        Next ID: 19
+        Next ID: 22
     gatewayWandbConfig:
       type: object
       properties:
@@ -245,6 +298,29 @@ components:
         logging which
 
         will be used by a training job.
+    gatewayAwsS3Config:
+      type: object
+      properties:
+        credentialsSecret:
+          type: string
+          title: >-
+            Reference to a Secret resource containing AWS access key
+            credentials.
+
+            Format: accounts/{account_id}/secrets/{secret_id}
+
+            The secret value must be JSON: {"aws_access_key_id": "AKIA...",
+            "aws_secret_access_key": "..."}
+        iamRoleArn:
+          type: string
+          title: >-
+            IAM role ARN to assume for accessing S3 datasets via GCP OIDC
+            federation.
+
+            Format: arn:aws:iam::account-id:role/role-name
+      description: |-
+        AwsS3Config is the configuration for AWS S3 dataset access which
+        will be used by a training job.
     gatewayReinforcementLearningLossConfig:
       type: object
       properties:
@@ -259,6 +335,9 @@ components:
       description: >-
         Loss method + hyperparameters for reinforcement-learning-style
         fine-tuning (e.g. RFT / RL trainers).
+
+        For preference jobs (DPO API), the default loss method is GRPO when
+        METHOD_UNSPECIFIED.
     gatewayCode:
       type: string
       enum:
@@ -441,6 +520,8 @@ components:
         - US_GEORGIA_3
         - NA_BRITISHCOLUMBIA_1
         - US_GEORGIA_4
+        - EU_ICELAND_3
+        - US_OHIO_1
       default: REGION_UNSPECIFIED
       description: |-
         - US_IOWA_1: GCP us-central1 (Iowa)
@@ -476,6 +557,8 @@ components:
          - US_GEORGIA_3: Alicloud us-southeast-1
          - NA_BRITISHCOLUMBIA_1: Fluidstack ca-west-1
          - US_GEORGIA_4: DigitalOcean us-atl1 MI350X
+         - EU_ICELAND_3: Crusoe eu-iceland1 (Anysphere BYOC) [HIDE_FROM_DOCS]
+         - US_OHIO_1: Lambda us-midwest-2 (Ohio)
       title: 'Next ID: 35'
     ReinforcementLearningLossConfigMethod:
       type: string
@@ -483,7 +566,17 @@ components:
         - METHOD_UNSPECIFIED
         - GRPO
         - DAPO
+        - DPO
+        - ORPO
+        - GSPO_TOKEN
       default: METHOD_UNSPECIFIED
+      title: |-
+        - METHOD_UNSPECIFIED: Defaults to GRPO
+         - GRPO: Group Relative Policy Optimization (default for preference jobs)
+         - DAPO: Decoupled Alignment Preference Optimization
+         - DPO: Direct Preference Optimization
+         - ORPO: Odds Ratio Preference Optimization (reference-free)
+         - GSPO_TOKEN: Group Sequence Policy Optimization (token-level)
   securitySchemes:
     BearerAuth:
       type: http
@@ -494,7 +587,3 @@ components:
       bearerFormat: API_KEY
 
 ````
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.fireworks.ai/llms.txt

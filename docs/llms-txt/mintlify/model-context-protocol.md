@@ -1,4 +1,8 @@
-# Source: https://mintlify.com/docs/ai/model-context-protocol.md
+# Source: https://www.mintlify.com/docs/ai/model-context-protocol.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.mintlify.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Model Context Protocol
 
@@ -12,114 +16,98 @@ export const PreviewButton = ({children, href}) => {
 
 ## About MCP servers
 
-The Model Context Protocol (MCP) is an open protocol that creates standardized connections between AI applications and external services, like documentation. Mintlify generates an MCP server from your documentation and OpenAPI specifications, preparing your content for the broader AI ecosystem where any MCP client (like Claude, Cursor, Goose, and others) can connect to your documentation and APIs.
+The Model Context Protocol (MCP) is an open protocol that creates standardized connections between AI applications and external services, like documentation. Mintlify generates an MCP server from your documentation, preparing your content for the broader AI ecosystem where any MCP client like Claude, Cursor, Goose, ChatGPT, and others can connect to your documentation.
 
-Your MCP server exposes tools for AI applications to search your documentation and interact with your APIs.
+Your MCP server exposes a search tool for AI applications to query your documentation. Your users must connect your MCP server to their tools.
 
-## Accessing your MCP server
+### How MCP servers work
+
+When an AI application connects to your documentation MCP server, it can search your documentation directly instead of making a generic web search in response to a user's prompt. Your MCP server provides access to all indexed content on your documentation site.
+
+* The AI application can proactively search your documentation while generating a response, not just when explicitly asked.
+* The AI application determines when to use the search tool based on the context of the conversation and the relevance of your documentation.
+* Each search (tool call) happens during the generation process, so the AI application searches up-to-date information from your documentation to generate its response.
+
+<Tip>
+  Some AI tools like Claude support both MCP and Skills. MCP gives the AI access to your documentation content, while Skills instruct the AI how to use that content effectively. They're complementary. MCP provides the data and Skills provide the instructions.
+</Tip>
+
+### Search filtering parameters
+
+The MCP search tool supports optional filtering parameters that AI applications can use to narrow search results.
+
+* **`version`**: Filter results to a specific documentation version. For example, `'v0.7'`. Only returns content tagged with the specified version or content available across all versions.
+* **`language`**: Filter results to a specific language code. For example, `'en'`, `'zh'`, or `'es'`. Only returns content in the specified language or content available across all languages.
+* **`apiReferenceOnly`**: When set to `true`, only returns API reference documentation pages.
+* **`codeOnly`**: When set to `true`, only returns code snippets and examples.
+
+AI applications determine when to apply these filters based on the context of the user's query. For example, if a user asks about a specific API version or requests code examples, the AI application may automatically apply the appropriate filters to provide more relevant results.
+
+### MCP compared to web search
+
+AI tools can search the web, but MCP provides distinct advantages for documentation.
+
+* **Direct source access**: Web search depends on what search engines have indexed, which may be stale or incomplete. MCP searches your current indexed documentation directly.
+* **Integrated workflow**: MCP allows the AI to search during response generation rather than performing a separate web search.
+* **No search noise**: SEO and ranking algorithms influence web search results. MCP goes straight to your documentation content.
+
+## Access your MCP server
 
 <Note>
-  MCP servers can only be generated for public documentation. Documentation behind end-user authentication cannot be accessed for server generation.
+  MCP servers are only available for public documentation. Documentation behind end-user authentication cannot generate an MCP server.
 </Note>
 
 Mintlify automatically generates an MCP server for your documentation and hosts it at your documentation URL with the `/mcp` path. For example, Mintlify's MCP server is available at `https://mintlify.com/docs/mcp`.
 
-You can see and copy your MCP server URL in your [dashboard](https://dashboard.mintlify.com/products/mcp).
+View and copy your MCP server URL on the [MCP server page](https://dashboard.mintlify.com/products/mcp) in your dashboard.
 
-The `/mcp` path is reserved for hosted MCP servers and cannot be used for other navigation elements.
+<Frame>
+  <img src="https://mintcdn.com/mintlify/l_uyIoyoCoduAB2a/images/mcp/mcp-server-page-light.png?fit=max&auto=format&n=l_uyIoyoCoduAB2a&q=85&s=fe99ba970692e913694abeda27db201f" alt="MCP server page in the dashboard." className="block dark:hidden" data-og-width="2066" width="2066" data-og-height="972" height="972" data-path="images/mcp/mcp-server-page-light.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/mintlify/l_uyIoyoCoduAB2a/images/mcp/mcp-server-page-light.png?w=280&fit=max&auto=format&n=l_uyIoyoCoduAB2a&q=85&s=b95d116fb0deb4a8b1501a1600c8af56 280w, https://mintcdn.com/mintlify/l_uyIoyoCoduAB2a/images/mcp/mcp-server-page-light.png?w=560&fit=max&auto=format&n=l_uyIoyoCoduAB2a&q=85&s=e20ecc55e13447b4f89477c0d83e420a 560w, https://mintcdn.com/mintlify/l_uyIoyoCoduAB2a/images/mcp/mcp-server-page-light.png?w=840&fit=max&auto=format&n=l_uyIoyoCoduAB2a&q=85&s=400cfd653555303e7cfc12cc62d293f5 840w, https://mintcdn.com/mintlify/l_uyIoyoCoduAB2a/images/mcp/mcp-server-page-light.png?w=1100&fit=max&auto=format&n=l_uyIoyoCoduAB2a&q=85&s=0183c7ca768576d3cfa6f1b5328148d6 1100w, https://mintcdn.com/mintlify/l_uyIoyoCoduAB2a/images/mcp/mcp-server-page-light.png?w=1650&fit=max&auto=format&n=l_uyIoyoCoduAB2a&q=85&s=2a5ac421d21b6eb3309cf51b4593098b 1650w, https://mintcdn.com/mintlify/l_uyIoyoCoduAB2a/images/mcp/mcp-server-page-light.png?w=2500&fit=max&auto=format&n=l_uyIoyoCoduAB2a&q=85&s=0bb46e2c4bf2b9de40cb2b8795e53282 2500w" />
 
-## Configuring your MCP server
+  <img src="https://mintcdn.com/mintlify/l_uyIoyoCoduAB2a/images/mcp/mcp-server-page-dark.png?fit=max&auto=format&n=l_uyIoyoCoduAB2a&q=85&s=81739348dcafa3573ecc588a8ca38fbe" alt="MCP server page in the dashboard." className="hidden dark:block" data-og-width="2068" width="2068" data-og-height="974" height="974" data-path="images/mcp/mcp-server-page-dark.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/mintlify/l_uyIoyoCoduAB2a/images/mcp/mcp-server-page-dark.png?w=280&fit=max&auto=format&n=l_uyIoyoCoduAB2a&q=85&s=b1ce166a28e15b58b7d2aa9f0f59d1ee 280w, https://mintcdn.com/mintlify/l_uyIoyoCoduAB2a/images/mcp/mcp-server-page-dark.png?w=560&fit=max&auto=format&n=l_uyIoyoCoduAB2a&q=85&s=d331efc54fb79f407c27bb91ef9c41ee 560w, https://mintcdn.com/mintlify/l_uyIoyoCoduAB2a/images/mcp/mcp-server-page-dark.png?w=840&fit=max&auto=format&n=l_uyIoyoCoduAB2a&q=85&s=ce0728b8e7a3dbff1c42787a8aafeb97 840w, https://mintcdn.com/mintlify/l_uyIoyoCoduAB2a/images/mcp/mcp-server-page-dark.png?w=1100&fit=max&auto=format&n=l_uyIoyoCoduAB2a&q=85&s=ad0e7fbb386ea294d5e2970882778687 1100w, https://mintcdn.com/mintlify/l_uyIoyoCoduAB2a/images/mcp/mcp-server-page-dark.png?w=1650&fit=max&auto=format&n=l_uyIoyoCoduAB2a&q=85&s=20bf80ca67cc899ffabeeee7bb21112f 1650w, https://mintcdn.com/mintlify/l_uyIoyoCoduAB2a/images/mcp/mcp-server-page-dark.png?w=2500&fit=max&auto=format&n=l_uyIoyoCoduAB2a&q=85&s=4d32e173f7ce6ccedbbc62e2af0c9519 2500w" />
+</Frame>
 
-All MCP servers include the `search` tool by default, which allows users to query information from your docs in other tools.
+<Note>
+  Hosted MCP servers use the `/mcp` path in their URLs. Other navigation elements cannot use the `/mcp` path.
+</Note>
 
-If you have a [Pro or Custom plan](https://mintlify.com/pricing?ref=mcp), you can expose endpoints from your OpenAPI specification as MCP tools.
+## Content filtering and indexing
 
-To expose endpoints as MCP tools, use the `mcp` object within the `x-mint` extension at either the file or endpoint level. For example, the Mintlify MCP server includes tools to create assistant chats, get status updates, and trigger updates.
+Your MCP server searches content that Mintlify indexes from your documentation repository. File processing and search indexing control what content is available through your MCP server.
 
-MCP servers follow a security-first approach where API endpoints are not exposed by default. You must explicitly enable endpoints to make them available as MCP tools. Only expose endpoints that are safe for public access through AI tools.
+### File processing with `.mintignore`
 
-<ResponseField name="mcp" type="object">
-  The MCP configuration for the endpoint.
+If files match [.mintignore](/organize/mintignore) patterns, Mintlify does not process or index them. These files are not available through your MCP server.
 
-  <Expandable title="MCP">
-    <ResponseField name="enabled" type="boolean">
-      Whether to expose the endpoint as an MCP tool. Takes precedence over the file-level configuration.
-    </ResponseField>
+### Search indexing with `docs.json`
 
-    <ResponseField name="name" type="string">
-      The name of the MCP tool.
-    </ResponseField>
+By default, Mintlify only indexes pages included in your `docs.json` navigation for search through your MCP server.
 
-    <ResponseField name="description" type="string">
-      The description of the MCP tool.
-    </ResponseField>
-  </Expandable>
-</ResponseField>
-
-### File-level configuration
-
-Enable MCP for all endpoints by default in an OpenAPI specification file and selectively exclude endpoints:
+Mintlify excludes [hidden pages](/organize/hidden-pages) (pages not in your navigation) from the search index unless you choose to index all pages. To include hidden pages in your MCP server's search results, add the `seo.indexing` property to your `docs.json`.
 
 ```json  theme={null}
-{
-  "openapi": "3.1.0",
-  "x-mint": {
-    "mcp": {
-      "enabled": true
-    }
-  },
-  // ...
-  "paths": {
-    "/api/v1/users": {
-      "get": {
-        "x-mint": {
-          "mcp": {
-            "enabled": false // Disables MCP for this endpoint
-          }
-        },
-        // ...
-      }
-    }
-  }
+"seo": {
+    "indexing": "all"
 }
 ```
 
-### Endpoint-level configuration
+To exclude a specific page from search indexing, add `noindex: true` to its frontmatter.
 
-Enable MCP for specific endpoints:
-
-```json  theme={null}
-{
-  "paths": {
-    "/api/v1/users": {
-      "get": {
-        "x-mint": {
-          "mcp": {
-            "enabled": true,
-            "name": "get-users",
-            "description": "Get a list of users"
-          },
-          // ...
-        }
-      }
-    },
-    "/api/v1/delete": {
-      "delete": {
-        // No `x-mint: mcp` so this endpoint is not exposed as an MCP tool
-        // ...
-      }
-    }
-  }
-}
+```mdx  theme={null}
+---
+title: "Hidden page"
+description: "This page is not in the navigation and is not available through search."
+noindex: true
+---
 ```
 
-## Using your MCP server
+## Use your MCP server
 
 Your users must connect your MCP server to their preferred AI tools.
 
 1. Make your MCP server URL publicly available.
 2. Users copy your MCP server URL and add it to their tools.
-3. Users access your documentation and API endpoints through their tools.
+3. Users access your documentation through their tools.
 
 These are some of the ways you can help your users connect to your MCP server:
 
@@ -184,7 +172,7 @@ These are some of the ways you can help your users connect to your MCP server:
 
         1. Use <kbd>Command</kbd> + <kbd>Shift</kbd> + <kbd>P</kbd> (<kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>P</kbd> on Windows) to open the command palette.
         2. Search for "Open MCP settings".
-        3. Select **Add custom MCP**. This will open the `mcp.json` file.
+        3. Select **Add custom MCP**. This opens the `mcp.json` file.
         4. In `mcp.json`, configure your server:
 
         ```json  theme={null}
@@ -231,9 +219,9 @@ These are some of the ways you can help your users connect to your MCP server:
   </Tab>
 </Tabs>
 
-### Example: Connecting to the Mintlify MCP server
+### Example: Connect to the Mintlify MCP server
 
-Connect to the Mintlify MCP server to interact with the Mintlify API and search our documentation. This will give you more accurate answers about how to use Mintlify in your local environment and demonstrates how you can help your users connect to your MCP server.
+Connect to the Mintlify MCP server to search this documentation site within your preferred AI tool. This gives you more accurate answers about how to use Mintlify in your local environment and demonstrates how you can help your users connect to your MCP server.
 
 <Tabs>
   <Tab title="Contextual menu">
@@ -290,7 +278,7 @@ Connect to the Mintlify MCP server to interact with the Mintlify API and search 
       <Step title="Open MCP settings">
         1. Use <kbd>Command</kbd> + <kbd>Shift</kbd> + <kbd>P</kbd> (<kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>P</kbd> on Windows) to open the command palette.
         2. Search for "Open MCP settings".
-        3. Select **Add custom MCP**. This will open the `mcp.json` file.
+        3. Select **Add custom MCP**. This opens the `mcp.json` file.
       </Step>
 
       <Step title="Configure the Mintlify MCP server">
@@ -335,47 +323,14 @@ Connect to the Mintlify MCP server to interact with the Mintlify API and search 
   </Tab>
 </Tabs>
 
-## Authentication
+### Using multiple MCP servers
 
-When you enable an API endpoint for MCP, the server includes the authentication requirements defined in your OpenAPI `securitySchemes` and `securityRequirement`. Any keys are handled directly by the tool and not stored or processed by Mintlify.
+Users can connect multiple MCP servers to their AI tools. Connected MCP servers do not consume context until the AI calls a search tool. The AI decides when to search based on query relevance, so it doesn't search every connected server for every question.
 
-If a user asks their AI tool to call a protected endpoint, the tool will request the necessary authentication credentials from the user at that moment.
+When the AI searches, each query returns multiple results that add to the conversation's context. If the AI searches several servers for a single question, this can use up significant context.
 
-## Monitoring your MCP server
+Best practices for using multiple MCP servers:
 
-You can view all available MCP tools in the **Available tools** section of the [MCP Server page](https://dashboard.mintlify.com/products/mcp) in your dashboard.
-
-<Frame>
-  <img src="https://mintcdn.com/mintlify/Y6rP0BmbzgwHuEoU/images/mcp/mcp-server-page-light.png?fit=max&auto=format&n=Y6rP0BmbzgwHuEoU&q=85&s=c369f390aa3f129b29193bb4d3434cef" alt="MCP dashboard with Available tools section emphasized" className="block dark:hidden" data-og-width="3024" width="3024" data-og-height="1548" height="1548" data-path="images/mcp/mcp-server-page-light.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/mintlify/Y6rP0BmbzgwHuEoU/images/mcp/mcp-server-page-light.png?w=280&fit=max&auto=format&n=Y6rP0BmbzgwHuEoU&q=85&s=c578d322fd05f23a72742fcf6064dba6 280w, https://mintcdn.com/mintlify/Y6rP0BmbzgwHuEoU/images/mcp/mcp-server-page-light.png?w=560&fit=max&auto=format&n=Y6rP0BmbzgwHuEoU&q=85&s=a4ac282920f79d787429c0660fa1e53c 560w, https://mintcdn.com/mintlify/Y6rP0BmbzgwHuEoU/images/mcp/mcp-server-page-light.png?w=840&fit=max&auto=format&n=Y6rP0BmbzgwHuEoU&q=85&s=b4bc9185afd76ede33c644fb8b76da86 840w, https://mintcdn.com/mintlify/Y6rP0BmbzgwHuEoU/images/mcp/mcp-server-page-light.png?w=1100&fit=max&auto=format&n=Y6rP0BmbzgwHuEoU&q=85&s=e009c48bfcb603154c8c65ee5f85af57 1100w, https://mintcdn.com/mintlify/Y6rP0BmbzgwHuEoU/images/mcp/mcp-server-page-light.png?w=1650&fit=max&auto=format&n=Y6rP0BmbzgwHuEoU&q=85&s=bb94ccfc738c7ab831bdbef0a0d6004d 1650w, https://mintcdn.com/mintlify/Y6rP0BmbzgwHuEoU/images/mcp/mcp-server-page-light.png?w=2500&fit=max&auto=format&n=Y6rP0BmbzgwHuEoU&q=85&s=4c10450981a41f94529b144529d8d9b5 2500w" />
-
-  <img src="https://mintcdn.com/mintlify/Y6rP0BmbzgwHuEoU/images/mcp/mcp-server-page-dark.png?fit=max&auto=format&n=Y6rP0BmbzgwHuEoU&q=85&s=77c2901b45017b6e2c978f92f335b813" alt="MCP dashboard with Available tools section emphasized" className="hidden dark:block" data-og-width="3018" width="3018" data-og-height="1540" height="1540" data-path="images/mcp/mcp-server-page-dark.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/mintlify/Y6rP0BmbzgwHuEoU/images/mcp/mcp-server-page-dark.png?w=280&fit=max&auto=format&n=Y6rP0BmbzgwHuEoU&q=85&s=878922df800c3f6af0a2252751875841 280w, https://mintcdn.com/mintlify/Y6rP0BmbzgwHuEoU/images/mcp/mcp-server-page-dark.png?w=560&fit=max&auto=format&n=Y6rP0BmbzgwHuEoU&q=85&s=12f14f7dc63efed79e6b236b741537cc 560w, https://mintcdn.com/mintlify/Y6rP0BmbzgwHuEoU/images/mcp/mcp-server-page-dark.png?w=840&fit=max&auto=format&n=Y6rP0BmbzgwHuEoU&q=85&s=a9b4c02a878876c97cdfd1c678a5f55a 840w, https://mintcdn.com/mintlify/Y6rP0BmbzgwHuEoU/images/mcp/mcp-server-page-dark.png?w=1100&fit=max&auto=format&n=Y6rP0BmbzgwHuEoU&q=85&s=a5254919bde1cc9276ca77cbfdd729b5 1100w, https://mintcdn.com/mintlify/Y6rP0BmbzgwHuEoU/images/mcp/mcp-server-page-dark.png?w=1650&fit=max&auto=format&n=Y6rP0BmbzgwHuEoU&q=85&s=a351abe9adc0599d36d946ca17872a8f 1650w, https://mintcdn.com/mintlify/Y6rP0BmbzgwHuEoU/images/mcp/mcp-server-page-dark.png?w=2500&fit=max&auto=format&n=Y6rP0BmbzgwHuEoU&q=85&s=db77e179fe76df93f369434e1399d223 2500w" />
-</Frame>
-
-## Troubleshooting
-
-<AccordionGroup>
-  <Accordion title="MCP server only shows search tool">
-    If your MCP server only exposes the search tool despite having an OpenAPI specification:
-
-    1. Verify your OpenAPI specification is valid and accessible.
-    2. Ensure you've explicitly enabled MCP for specific endpoints using `x-mint.mcp.enabled: true`.
-    3. Check your deployment logs for OpenAPI processing errors.
-
-    If OpenAPI processing fails, the server continues with just the search tool to maintain functionality.
-  </Accordion>
-
-  <Accordion title="Authentication issues">
-    If users report authentication problems:
-
-    1. Check that your OpenAPI specification includes proper `securitySchemes` definitions.
-    2. Confirm that enabled endpoints work with the specified authentication methods.
-  </Accordion>
-
-  <Accordion title="Tool descriptions missing or unclear">
-    If AI tools aren't using your API endpoints effectively:
-
-    1. Add detailed `summary` and `description` fields to your endpoints.
-    2. Ensure parameter names and descriptions are self-explanatory.
-    3. Use the MCP dashboard to verify how your endpoints appear as tools.
-  </Accordion>
-</AccordionGroup>
+* Connect only the MCP servers relevant to your current work.
+* Be specific in your prompts so the AI searches the most relevant server.
+* Disconnect servers you're not actively using to reduce potential context usage.

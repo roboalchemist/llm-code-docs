@@ -1,14 +1,10 @@
-# Source: https://www.better-auth.com/llms.txt/docs/errors/unable_to_link_account.md
+# Source: https://www.better-auth.com/llms.txt/docs/reference/errors/unable_to_link_account.md
 
-# Unable to link account
+# unable_to_link_account
 
 The account could not be linked.
 
-***
 
-title: Unable to link account
-description: The account could not be linked.
----------------------------------------------
 
 ## What is it?
 

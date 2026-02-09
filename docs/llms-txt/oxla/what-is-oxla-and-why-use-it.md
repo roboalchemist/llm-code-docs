@@ -1,5 +1,9 @@
 # Source: https://docs.oxla.com/introduction/what-is-oxla-and-why-use-it.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.oxla.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # What is Oxla and why use it
 
 Oxla is a highly resource-efficient, self-hosted, column-oriented OLAP database and query engine. It’s available under a proprietary license with [capacity-based pricing](https://www.oxla.com/pricing), and also comes in a forever-free, single-node [Developer Edition](/quickstart) for POCs and non-commercial use.

@@ -17,29 +17,26 @@ The Bitbucket Cloud API token integration lets you:
 ### How to set up the Bitbucket Cloud Integration
 
 {% hint style="info" %}
-Admin permissions are required; however, Snyk's access is ultimately limited by the [permissions assigned to the API Token](https://support.atlassian.com/bitbucket-cloud/docs/create-an-api-token/).\\
-
-**Note:** **Scopeless tokens are not supported.** You must select specific permissions (scopes) when creating your token in Bitbucket.
-
+Admin permissions are required; however, Snyk's access is ultimately limited by the [permissions assigned to the API Token](https://support.atlassian.com/bitbucket-cloud/docs/create-an-api-token/).\
 \
-To improve security, the use of app passwords in Bitbucket Cloud is transitioning to API tokens. Existing integrations that use app passwords will continue to function temporarily until **9 June 2026.**\
-To ensure continued support and functionality, update your Bitbucket Cloud integration in Snyk to use a scoped API token.
+To improve security, the use of app passwords in Bitbucket Cloud is transitioning to API tokens. Existing integrations that use app passwords will continue to function temporarily until 9 June 2026.\
+To ensure continued support and functionality, update your Bitbucket Cloud integration in Snyk to use an API token.
 {% endhint %}
 
 1. To give Snyk access to your Bitbucket account, set up a dedicated service account in Bitbucket with admin permissions. See the [Bitbucket documentation ](https://support.atlassian.com/bitbucket-cloud/docs/grant-access-to-a-workspace/)to learn more about adding users to a workspace.\
    The newly created user must have **Admin** permissions to all the repositories you need to monitor with Snyk.
 2. In Snyk, go to the **Integrations** page, open the **Bitbucket Cloud** card, and configure the **Account credentials**.
-3. In BitBucket, under the Personal settings, select Atlassian account settings **>** **Security** tab> Create and manage API tokens.
+3. In BitBucket, under the Personal settings, select **Atlassian account settings** > **Security** > **Create and manage API tokens**.
 4. Follow the Bitbucket procedure to set up an account with the following permissions:
 
-   * **read:user:bitbucket**
-   * **read:workspace:bitbucket**
-   * **read:repository:bitbucket**
+   * read:user:bitbucket
+   * read:workspace:bitbucket
+   * read:repository:bitbucket
 
    See the [Bitbucket documentation ](https://support.atlassian.com/bitbucket-cloud/docs/create-an-api-token/)for more details about the procedure.
 5. Enter the email and the [API key for the Bitbucket account](https://developer.atlassian.com/cloud/bitbucket/rest/intro/#api-tokens) you created, and **save** your changes.\
    You can find your email under the Bitbucket **Personal settings.**\
-   Snyk connects to your Bitbucket Cloud account. When the connection succeeds, the confirmation message "**Bitbucket Cloud settings successfully updated**" appears.
+   Snyk connects to your Bitbucket Cloud account. When the connection succeeds, the confirmation message **Bitbucket Cloud settings successfully updated** appears.
 
 ### How to add Bitbucket repositories to Snyk
 
@@ -78,7 +75,7 @@ The example that follows shows a fix Pull Request opened by Snyk.
 
 To review and adjust the automatic fix pull request settings:
 
-1. In Snyk, go to **Organization settings** > **Integrations > Source control > Bitbucket Cloud**, and click **Edit Settings**.
+1. In Snyk, go to **Organization settings** > **Integrations** > **Source control** > **Bitbucket Cloud**, and click **Edit Settings**.
 2. Scroll to the **Automatic fix PRs** section and configure the relevant options.
 
 <figure><img src="https://2533899886-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-MdwVZ6HOZriajCf5nXH%2Fuploads%2Fgit-blob-7f0c95f209e66a9553a316d04b5fd8375ffb6d50%2FScreenshot%202023-05-03%20at%2014.49.59.png?alt=media" alt="Configure Automatic fix PRs"><figcaption><p>Configure Automatic fix PRs</p></figcaption></figure>
@@ -99,8 +96,8 @@ The example that follows shows a Snyk pull request build check on the Bitbucket 
 
 To review and adjust the pull request tests settings:
 
-1. In Snyk, go to **Organization settings** > **Integrations > Source control > Bitbucket Cloud**, and click **Edit Settings**.
-2. Scroll to **Default Snyk test for pull requests > Open Source Security & Licenses**, and configure the relevant options.
+1. In Snyk, go to **Organization settings** > **Integrations > Source control** > **Bitbucket Cloud**, and click **Edit Settings**.
+2. Scroll to **Default Snyk test for pull requests** > **Open Source Security & Licenses**, and configure the relevant options.
 
 <figure><img src="https://2533899886-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-MdwVZ6HOZriajCf5nXH%2Fuploads%2Fgit-blob-51630c7bb2dd83e96a8d498d9ff806e45fa4ecb7%2FScreenshot%202022-03-16%20at%2010.07.50.png?alt=media&#x26;token=64278851-ae68-4560-8469-99096cfca820" alt="Configuring the options for pull request Open Source Security &#x26; Licenses"><figcaption><p>Configuring the options for pull request Open Source Security &#x26; Licenses</p></figcaption></figure>
 
@@ -134,7 +131,7 @@ To disconnect this integration, in **Organization settings** > **Integrations:**
 
 ### Migrate to the Bitbucket Cloud App
 
-This section describes how to migrate your existing [Bitbucket Cloud API token integration](https://docs.snyk.io/developer-tools/scm-integrations/organization-level-integrations/bitbucket-cloud), displayed in Snyk as Bitbucket Cloud, to the [**Bitbucket Cloud App**](https://docs.snyk.io/developer-tools/scm-integrations/organization-level-integrations/bitbucket-cloud-app) integration.
+This section describes how to migrate your existing [Bitbucket Cloud API token integration](https://docs.snyk.io/developer-tools/scm-integrations/organization-level-integrations/bitbucket-cloud), displayed in Snyk as Bitbucket Cloud, to the [Bitbucket Cloud App](https://docs.snyk.io/developer-tools/scm-integrations/organization-level-integrations/bitbucket-cloud-app) integration.
 
 To migrate to the new app integration, you must remove all the previously imported Projects from Snyk, delete the API token and its Projects, set up the new app integration, and reimport your Projects to Snyk from the new integration.
 
@@ -170,12 +167,12 @@ Remove the Snyk tab for the PAT integration in Bitbucket Cloud (optional)
 
 The Bitbucket Cloud integration has an optional first-party interface app.
 
-This app can be installed on your Bitbucket Cloud workspace to enrich the PAT integration with a first-party interface as the "***Snyk***" tab)
+This app can be installed on your Bitbucket Cloud workspace to enrich the PAT integration with a first-party interface as the Snyk tab)
 
 If you have used this app, before setting up the Snyk Bitbucket Cloud App in the next step, remove the previous interface app in Bitbucket Cloud.\
 This functionality is supported out-of-the-box in the Snyk App integration.\
 \
-Go to your **Workspace settings** page in **Bitbucket.org > Manage installed apps**, expand the **Snyk Security for Bitbucket Cloud** app, and click **Remove.**
+Go to your **Workspace settings** page in **Bitbucket.org** > **Manage installed apps**, expand the **Snyk Security for Bitbucket Cloud** app, and click **Remove.**
 
 <figure><img src="https://2533899886-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-MdwVZ6HOZriajCf5nXH%2Fuploads%2Fgit-blob-5c212b38d75babf4df8577b00309a1c9d6d6f6e5%2Fremove_snyk-security-bbc_11oct2022.png?alt=media" alt="Remove the first-party Snyk Legacy interface app in Bitbucket"><figcaption><p>Remove the first-party Snyk Legacy interface app in Bitbucket</p></figcaption></figure>
 

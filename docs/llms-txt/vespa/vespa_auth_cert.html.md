@@ -16,7 +16,7 @@ The private key and certificate will be stored in the Vespa CLI home directory (
 
 It's possible to override the private key and certificate used through environment variables. This can be useful in continuous integration systems.
 
-It's also possible override the CA certificate which can be useful when using self-signed certificates with a self-hosted Vespa service. See [https://docs.vespa.ai/en/operations-selfhosted/mtls.html](https://docs.vespa.ai/en/operations-selfhosted/mtls.html) for more information.
+It's also possible override the CA certificate which can be useful when using self-signed certificates with a self-hosted Vespa service. See [https://docs.vespa.ai/en/security/mtls.html](https://docs.vespa.ai/en/security/mtls.html) for more information.
 
 Example of setting the CA certificate, certificate and key in-line:
 
@@ -42,7 +42,7 @@ export VESPA_CLI_DATA_PLANE_TRUST_ALL=true
 
 Note that when overriding key pair through environment variables, that key pair will always be used for all applications. It's not possible to specify an application-specific key.
 
-See [https://docs.vespa.ai/en/cloud/security/guide.html](https://docs.vespa.ai/en/cloud/security/guide.html) for more details.
+See [https://docs.vespa.ai/en/security/guide.html](https://docs.vespa.ai/en/security/guide.html) for more details.
 
 ```
 vespa auth cert [flags]
@@ -81,7 +81,7 @@ $ vespa auth cert -a my-tenant.my-app.my-instance path/to/application/package
 - [vespa auth](vespa_auth.html) - Manage Vespa Cloud credentials
 - [vespa auth cert add](vespa_auth_cert_add.html) - Add certificate to application package
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ### On this page:
 

@@ -1,5 +1,9 @@
 # Source: https://flatfile.com/docs/plugins/html-table.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://flatfile.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # HTML Table Extractor
 
 > Parse HTML files and extract data from tables within them, converting structured data into Flatfile-compatible format
@@ -12,7 +16,7 @@ The plugin can handle multiple tables within a single HTML file, creating a sepa
 
 Install the plugin using npm:
 
-```bash
+```bash  theme={null}
 npm install @flatfile/plugin-extract-html-table
 ```
 
@@ -36,7 +40,7 @@ By default, the plugin processes HTML files with `handleColspan` and `handleRows
 ### Basic Usage
 
 <CodeGroup>
-  ```javascript
+  ```javascript  theme={null}
   import { FlatfileListener } from '@flatfile/listener';
   import { HTMLTableExtractor } from '@flatfile/plugin-extract-html-table';
 
@@ -46,7 +50,7 @@ By default, the plugin processes HTML files with `handleColspan` and `handleRows
   listener.use(HTMLTableExtractor());
   ```
 
-  ```typescript
+  ```typescript  theme={null}
   import { FlatfileListener } from '@flatfile/listener';
   import { HTMLTableExtractor } from '@flatfile/plugin-extract-html-table';
 
@@ -60,7 +64,7 @@ By default, the plugin processes HTML files with `handleColspan` and `handleRows
 ### Configuration Example
 
 <CodeGroup>
-  ```javascript
+  ```javascript  theme={null}
   import { FlatfileListener } from '@flatfile/listener';
   import { HTMLTableExtractor } from '@flatfile/plugin-extract-html-table';
 
@@ -76,7 +80,7 @@ By default, the plugin processes HTML files with `handleColspan` and `handleRows
   );
   ```
 
-  ```typescript
+  ```typescript  theme={null}
   import { FlatfileListener } from '@flatfile/listener';
   import { HTMLTableExtractor } from '@flatfile/plugin-extract-html-table';
 
@@ -98,7 +102,7 @@ By default, the plugin processes HTML files with `handleColspan` and `handleRows
 This example shows how to use the parser function directly, outside of a Flatfile listener, to process an HTML file:
 
 <CodeGroup>
-  ```javascript
+  ```javascript  theme={null}
   import * as fs from 'fs';
   import { htmlTableParser } from '@flatfile/plugin-extract-html-table';
 
@@ -121,7 +125,7 @@ This example shows how to use the parser function directly, outside of a Flatfil
   }
   ```
 
-  ```typescript
+  ```typescript  theme={null}
   import * as fs from 'fs';
   import { htmlTableParser } from '@flatfile/plugin-extract-html-table';
 
@@ -148,7 +152,7 @@ This example shows how to use the parser function directly, outside of a Flatfil
 ### Example with HTML Content
 
 <CodeGroup>
-  ```javascript
+  ```javascript  theme={null}
   import { htmlTableParser } from '@flatfile/plugin-extract-html-table';
 
   const htmlContent = '<table><thead><tr><th>Name</th><th>Age</th></tr></thead><tbody><tr><td>John</td><td>30</td></tr></tbody></table>';
@@ -164,7 +168,7 @@ This example shows how to use the parser function directly, outside of a Flatfil
   // }
   ```
 
-  ```typescript
+  ```typescript  theme={null}
   import { htmlTableParser } from '@flatfile/plugin-extract-html-table';
 
   const htmlContent = '<table><thead><tr><th>Name</th><th>Age</th></tr></thead><tbody><tr><td>John</td><td>30</td></tr></tbody></table>';
@@ -186,7 +190,7 @@ This example shows how to use the parser function directly, outside of a Flatfil
 If data is missing or incorrect, enable `debug: true` in the configuration to see a step-by-step log of the parsing process:
 
 <CodeGroup>
-  ```javascript
+  ```javascript  theme={null}
   listener.use(
     HTMLTableExtractor({
       debug: true
@@ -194,7 +198,7 @@ If data is missing or incorrect, enable `debug: true` in the configuration to se
   );
   ```
 
-  ```typescript
+  ```typescript  theme={null}
   listener.use(
     HTMLTableExtractor({
       debug: true

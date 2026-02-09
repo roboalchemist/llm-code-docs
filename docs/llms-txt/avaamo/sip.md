@@ -2,10 +2,6 @@
 
 # Source: https://docs.avaamo.com/user-guide/configuration/channels/sip.md
 
-# Source: https://docs.avaamo.com/user-guide/how-to/build-agents/configure-agents/deploy/sip.md
-
-# Source: https://docs.avaamo.com/user-guide/configuration/channels/sip.md
-
 # SIP
 
 Session Initiation Protocol (SIP) is a means of initiating and sending voice and other unified communications services through the Internet. It is a protocol used for initiating, maintaining, and terminating real-time sessions that include voice, video, and messaging applications. See [SIP](https://datatracker.ietf.org/doc/html/rfc3261), for more information.

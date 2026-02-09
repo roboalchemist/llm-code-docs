@@ -4,11 +4,7 @@
 
 Better Auth session management.
 
-***
 
-title: Session Management
-description: Better Auth session management.
---------------------------------------------
 
 Better Auth manages session using a traditional cookie-based session management. The session is stored in a cookie and is sent to the server on every request. The server then verifies the session and returns the user data if the session is valid.
 
@@ -253,6 +249,52 @@ await auth.api.getSession({
         disableCookieCache: true,
     }, 
     headers: req.headers, // pass the headers
+});
+```
+
+## Sessions in Secondary Storage
+
+By default, if you provide a [secondary storage](/docs/concepts/database#secondary-storage) in your auth configuration, the session will be stored in the secondary storage.
+
+```ts
+betterAuth({
+  // ... other options
+  secondaryStorage: {
+    // Your implementation here
+  },
+});
+```
+
+### Storing Sessions in the Database
+
+By default, Better Auth already stores sessions in the database, however if you provide a secondary storage,
+Better Auth will store sessions in the secondary storage instead of the database.
+
+You can choose to store sessions in the database instead of secondary storage by passing
+`storeSessionInDatabase: true` in the session configuration.
+
+```ts title="auth.ts"
+export const auth = betterAuth({
+    secondaryStorage: { /** your secondary storage implementation here */ },
+    session: { // [!code highlight]
+        storeSessionInDatabase: true, // [!code highlight]
+    } // [!code highlight]
+});
+```
+
+### Preserving Sessions
+
+When a session is revoked, it will be removed from the secondary storage, however if you enable `preserveSessionInDatabase`,
+the session will be preserved in the database and not be deleted.
+
+This is useful if you want to keep track of the sessions that have been revoked.
+
+```ts title="auth.ts"
+export const auth = betterAuth({
+    secondaryStorage: { /** your secondary storage implementation here */ },
+    session: { // [!code highlight]
+        preserveSessionInDatabase: true, // [!code highlight]
+    } // [!code highlight]
 });
 ```
 

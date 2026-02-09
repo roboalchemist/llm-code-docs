@@ -1,5 +1,9 @@
 # Source: https://dev.writer.com/home/kg-query.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://dev.writer.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Ask questions to Knowledge Graphs
 
 The Knowledge Graph [question endpoint](/api-reference/kg-api/question) allows you to ask questions directly to one or more Knowledge Graphs. This provides a direct way to query your Knowledge Graphs without needing to use chat completions. You can also enable subqueries to break down complex questions into smaller subqueries and provide answers for each one.

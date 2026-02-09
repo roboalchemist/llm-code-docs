@@ -1,5 +1,9 @@
 # Source: https://loops.so/docs/api-reference/api-key.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://loops.so/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # API key
 
 > Test that an API key is valid.

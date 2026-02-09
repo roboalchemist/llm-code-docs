@@ -4,11 +4,7 @@
 
 Twitch provider setup and usage.
 
-***
 
-title: Twitch
-description: Twitch provider setup and usage.
----------------------------------------------
 
 <Steps>
   <Step>

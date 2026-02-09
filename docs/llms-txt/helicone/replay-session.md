@@ -1,5 +1,9 @@
 # Source: https://docs.helicone.ai/guides/cookbooks/replay-session.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.helicone.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Replaying LLM Sessions
 
 > Learn how to replay and modify LLM sessions using Helicone to optimize your AI agents and improve their performance.

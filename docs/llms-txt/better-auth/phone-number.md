@@ -4,11 +4,7 @@
 
 Phone number plugin
 
-***
 
-title: Phone Number
-description: Phone number plugin
---------------------------------
 
 The phone number plugin extends the authentication system by allowing users to sign in and sign up using their phone number. It includes OTP (One-Time Password) functionality to verify phone numbers.
 
@@ -41,7 +37,7 @@ The phone number plugin extends the authentication system by allowing users to s
 
     <Tabs items={["migrate", "generate"]}>
       <Tab value="migrate">
-        <CodeBlockTabs defaultValue="npm">
+        <CodeBlockTabs defaultValue="npm" groupId="persist-install" persist>
           <CodeBlockTabsList>
             <CodeBlockTabsTrigger value="npm">
               npm
@@ -87,7 +83,7 @@ The phone number plugin extends the authentication system by allowing users to s
       </Tab>
 
       <Tab value="generate">
-        <CodeBlockTabs defaultValue="npm">
+        <CodeBlockTabs defaultValue="npm" groupId="persist-install" persist>
           <CodeBlockTabsList>
             <CodeBlockTabsTrigger value="npm">
               npm
@@ -158,6 +154,7 @@ The phone number plugin extends the authentication system by allowing users to s
 
 To send an OTP to a user's phone number for verification, you can use the `sendVerificationCode` endpoint.
 
+
 ### Client Side
 
 ```ts
@@ -180,17 +177,19 @@ const data = await auth.api.sendPhoneNumberOTP({
 
 ```ts
 type sendPhoneNumberOTP = {
-    /**
-     * Phone number to send OTP. 
-     */
-    phoneNumber: string = "+1234567890"
-
+      /**
+       * Phone number to send OTP. 
+       */
+      phoneNumber: string = "+1234567890"
+  
 }
 ```
+
 
 ### Verify Phone Number
 
 After the OTP is sent, users can verify their phone number by providing the code.
+
 
 ### Client Side
 
@@ -220,25 +219,26 @@ const data = await auth.api.verifyPhoneNumber({
 
 ```ts
 type verifyPhoneNumber = {
-    /**
-     * Phone number to verify. 
-     */
-    phoneNumber: string = "+1234567890"
-    /**
-     * OTP code. 
-     */
-    code: string = "123456"
-    /**
-     * Disable session creation after verification. 
-     */
-    disableSession?: boolean = false
-    /**
-     * Check if there is a session and update the phone number. 
-     */
-    updatePhoneNumber?: boolean = true
-
+      /**
+       * Phone number to verify. 
+       */
+      phoneNumber: string = "+1234567890"
+      /**
+       * OTP code. 
+       */
+      code: string = "123456"
+      /**
+       * Disable session creation after verification. 
+       */
+      disableSession?: boolean = false
+      /**
+       * Check if there is a session and update the phone number. 
+       */
+      updatePhoneNumber?: boolean = true
+  
 }
 ```
+
 
 <Callout>
   When the phone number is verified, the `phoneNumberVerified` field in the user table is set to `true`. If `disableSession` is not set to `true`, a session is created for the user. Additionally, if `callbackOnVerification` is provided, it will be called.
@@ -277,6 +277,7 @@ export const auth = betterAuth({
 
 In addition to signing in a user using send-verify flow, you can also use phone number as an identifier and sign in a user using phone number and password.
 
+
 ### Client Side
 
 ```ts
@@ -303,21 +304,22 @@ const data = await auth.api.signInPhoneNumber({
 
 ```ts
 type signInPhoneNumber = {
-    /**
-     * Phone number to sign in. 
-     */
-    phoneNumber: string = "+1234567890"
-    /**
-     * Password to use for sign in. 
-     */
-    password: string
-    /**
-     * Remember the session. 
-     */
-    rememberMe?: boolean = true
-
+      /**
+       * Phone number to sign in. 
+       */
+      phoneNumber: string = "+1234567890"
+      /**
+       * Password to use for sign in. 
+       */
+      password: string
+      /**
+       * Remember the session. 
+       */
+      rememberMe?: boolean = true
+  
 }
 ```
+
 
 ### Update Phone Number
 
@@ -357,6 +359,7 @@ const isVerified = await authClient.phoneNumber.verify({
 
 To initiate a request password reset flow using `phoneNumber`, you can start by calling `requestPasswordReset` on the client to send an OTP code to the user's phone number.
 
+
 ### Client Side
 
 ```ts
@@ -379,15 +382,17 @@ const data = await auth.api.requestPasswordResetPhoneNumber({
 
 ```ts
 type requestPasswordResetPhoneNumber = {
-    /**
-     * The phone number which is associated with the user. 
-     */
-    phoneNumber: string = "+1234567890"
-
+      /**
+       * The phone number which is associated with the user. 
+       */
+      phoneNumber: string = "+1234567890"
+  
 }
 ```
 
+
 Then, you can reset the password by calling `resetPassword` on the client with the OTP code and the new password.
+
 
 ### Client Side
 
@@ -415,21 +420,22 @@ const data = await auth.api.resetPasswordPhoneNumber({
 
 ```ts
 type resetPasswordPhoneNumber = {
-    /**
-     * The one time password to reset the password. 
-     */
-    otp: string = "123456"
-    /**
-     * The phone number to the account which intends to reset the password for. 
-     */
-    phoneNumber: string = "+1234567890"
-    /**
-     * The new password. 
-     */
-    newPassword: string = "new-and-secure-password"
-
+      /**
+       * The one time password to reset the password. 
+       */
+      otp: string = "123456"
+      /**
+       * The phone number to the account which intends to reset the password for. 
+       */
+      phoneNumber: string = "+1234567890"
+      /**
+       * The new password. 
+       */
+      newPassword: string = "new-and-secure-password"
+  
 }
 ```
+
 
 ## Options
 

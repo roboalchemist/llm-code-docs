@@ -20,6 +20,7 @@ Vespa Cloud Enclave is available in AWS, Azure, and GCP.
 ## Azure
 
 - [Getting started](azure-getting-started.html)
+- [Architecture and security](azure-architecture)
 
 ## GCP
 
@@ -49,7 +50,13 @@ Navigate to the _modules_ directory for details.
 Deployment failed: Invalid application: In container cluster 'mycluster': Could not provision load balancer mytenant:myapp:myinstance:mycluster: Expected to find exactly 1 resource, but got 0 for subnet with service 'tenantelb'
 ```
 
- Copyright © 2025 - [Cookie Preferences](#)
+**Do we need to take any actions when AWS sends us Amazon EC2 Instance Retirement, Amazon EC2 Instance Availability Issue, or Amazon EC2 Maintenance notifications,?**
+
+Vespa Cloud will take proactive actions on maintenance operations and replace instances that are scheduled for maintenance tasks ahead of time to reduce any impact the maintenance may incur.
+
+All EC2 instance failures are detected by our control plane, and the problematic instances are automatically replaced. The system will, as part of the replacement process, also ensure that the document distribution is kept in line with your application configuration.
+
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ### On this page:
 

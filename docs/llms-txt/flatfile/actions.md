@@ -1,5 +1,9 @@
 # Source: https://flatfile.com/docs/core-concepts/actions.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://flatfile.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Actions
 
 > User-triggered operations in Flatfile
@@ -20,7 +24,7 @@ Given that Actions are powered by Jobs, the [Jobs Lifecycle](/core-concepts/jobs
 </Note>
 
 <Frame caption="Several Action examples">
-  <img src="https://mintlify.s3.us-west-1.amazonaws.com/flatfileinc/core-concepts/assets/workbook-sheet-actions.png" width="610" />
+  <img src="https://mintcdn.com/flatfileinc/JzFdJ3ksHuS-ooTQ/core-concepts/assets/workbook-sheet-actions.png?fit=max&auto=format&n=JzFdJ3ksHuS-ooTQ&q=85&s=4acd05076d175fc73ebfa5229a805cd7" width="610" data-og-width="2400" data-og-height="910" data-path="core-concepts/assets/workbook-sheet-actions.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/flatfileinc/JzFdJ3ksHuS-ooTQ/core-concepts/assets/workbook-sheet-actions.png?w=280&fit=max&auto=format&n=JzFdJ3ksHuS-ooTQ&q=85&s=c4737f81fbd457dbfc94c959ef5f0460 280w, https://mintcdn.com/flatfileinc/JzFdJ3ksHuS-ooTQ/core-concepts/assets/workbook-sheet-actions.png?w=560&fit=max&auto=format&n=JzFdJ3ksHuS-ooTQ&q=85&s=54d9a40da07873e3cc1d24c65747d884 560w, https://mintcdn.com/flatfileinc/JzFdJ3ksHuS-ooTQ/core-concepts/assets/workbook-sheet-actions.png?w=840&fit=max&auto=format&n=JzFdJ3ksHuS-ooTQ&q=85&s=7d2923a6ba32927fe6d8758964f23d9d 840w, https://mintcdn.com/flatfileinc/JzFdJ3ksHuS-ooTQ/core-concepts/assets/workbook-sheet-actions.png?w=1100&fit=max&auto=format&n=JzFdJ3ksHuS-ooTQ&q=85&s=5b8c285c67fd76a817272d0afb854789 1100w, https://mintcdn.com/flatfileinc/JzFdJ3ksHuS-ooTQ/core-concepts/assets/workbook-sheet-actions.png?w=1650&fit=max&auto=format&n=JzFdJ3ksHuS-ooTQ&q=85&s=5055051c0fee9c8ce80418d322323641 1650w, https://mintcdn.com/flatfileinc/JzFdJ3ksHuS-ooTQ/core-concepts/assets/workbook-sheet-actions.png?w=2500&fit=max&auto=format&n=JzFdJ3ksHuS-ooTQ&q=85&s=2bbe85e7949df7714481ffc11ff30cbb 2500w" />
 </Frame>
 
 ## Types of Actions
@@ -56,7 +60,7 @@ Actions appear in different parts of the UI depending on where they're mounted:
 
 Every Action requires an `operation` (unique identifier) and `label` (display text):
 
-```javascript
+```javascript  theme={null}
 {
   operation: "submitActionBg",
   mode: "background",

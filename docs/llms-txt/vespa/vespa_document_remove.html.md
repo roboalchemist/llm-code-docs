@@ -50,7 +50,7 @@ $ vespa document remove id:mynamespace:music::a-head-full-of-dreams
 
 - [vespa document](vespa_document.html) - Issue a single document operation to Vespa
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ### On this page:
 

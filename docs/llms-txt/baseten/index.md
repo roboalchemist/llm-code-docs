@@ -1,135 +1,126 @@
 # Source: https://docs.baseten.co/reference/cli/index.md
 
-# Truss CLI overview
+# Source: https://docs.baseten.co/engines/index.md
 
-> Install and configure the Truss CLI for deploying models, chains, and training jobs.
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.baseten.co/llms.txt
+> Use this file to discover all available pages before exploring further.
 
-The `truss` CLI is your primary interface for everything from packaging and
-deploying AI models to building and orchestrating multi-step chains to launching and
-managing training jobs.
+# Overview
 
-Use the following commands to manage your models, chains, and training jobs:
+> Engine selection guide for embeddings, dense LLMs, and MoE models
 
-* **Models**: Package and deploy individual model servers.
-* **Chains**: Build and deploy multi-step inference pipelines.
-* **Training**: Launch and manage training jobs.
+Baseten engines optimize model inference for specific architectures using [TensorRT-LLM](https://github.com/NVIDIA/TensorRT-LLM). Select an engine based on your model type (embeddings, dense LLMs, or mixture-of-experts) to achieve the best latency and throughput.
 
-<Accordion title="Install the Truss CLI">
-  To use Truss, install a recent Truss version and ensure pydantic is v2:
-
-  ```bash  theme={"system"}
-  pip install --upgrade truss 'pydantic>=2.0.0'
-  ```
-
-  <Accordion title="Help for setting up a clean development environment">
-    Truss requires python `>=3.9,<3.15`. To set up a fresh development environment,
-    you can use the following commands, creating a environment named `truss_env`
-    using `pyenv`:
-
-    ```bash  theme={"system"}
-    curl https://pyenv.run | bash
-    echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.bashrc
-    echo '[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.bashrc
-    echo 'eval "$(pyenv init -)"' >> ~/.bashrc
-    source ~/.bashrc
-    pyenv install 3.11.0
-    ENV_NAME="truss_env"
-    pyenv virtualenv 3.11.0 $ENV_NAME
-    pyenv activate $ENV_NAME
-    pip install --upgrade truss 'pydantic>=2.0.0'
-    ```
-  </Accordion>
-
-  To deploy Truss remotely, you also need a
-  [Baseten account](https://app.baseten.co/signup).
-  It is handy to export your API key to the current shell session or permanently in your `.bashrc`:
-
-  ```bash ~/.bashrc theme={"system"}
-  export BASETEN_API_KEY="nPh8..."
-  ```
-</Accordion>
-
-## CLI structure
-
-The `truss` CLI organizes commands by workflow:
-
-```
-truss [OPTIONS] COMMAND [ARGS]...
-```
-
-### Model commands
-
-Use these commands to package, deploy, and iterate on individual models.
-
-| Command                                               | Description                       |
-| ----------------------------------------------------- | --------------------------------- |
-| [`truss login`](/reference/cli/truss/login)           | Authenticate with Baseten         |
-| [`truss init`](/reference/cli/truss/init)             | Create a new Truss project        |
-| [`truss push`](/reference/cli/truss/push)             | Deploy a model to Baseten         |
-| [`truss watch`](/reference/cli/truss/watch)           | Live reload during development    |
-| [`truss predict`](/reference/cli/truss/predict)       | Call the packaged model           |
-| [`truss model-logs`](/reference/cli/truss/model-logs) | Fetch logs for the packaged model |
-
-### Chain commands
-
-Use these commands to build multi-model pipelines with shared dependencies.
-
-| Command                                                        | Description                    |
-| -------------------------------------------------------------- | ------------------------------ |
-| [`truss chains init`](/reference/cli/chains/chains-cli#init)   | Initialize a new Chain project |
-| [`truss chains push`](/reference/cli/chains/chains-cli#push)   | Deploy a Chain to Baseten      |
-| [`truss chains watch`](/reference/cli/chains/chains-cli#watch) | Live reload Chain development  |
-
-### Training commands
-
-Use these commands to launch, monitor, and manage training jobs.
-
-| Command                                                         | Description                     |
-| --------------------------------------------------------------- | ------------------------------- |
-| [`truss train init`](/reference/cli/training/training-cli#init) | Initialize a training project   |
-| [`truss train push`](/reference/cli/training/training-cli#push) | Deploy and run a training job   |
-| [`truss train logs`](/reference/cli/training/training-cli#logs) | Stream logs from a training job |
-| [`truss train view`](/reference/cli/training/training-cli#view) | List and inspect training jobs  |
-
-## Authentication
-
-After installing Truss, authenticate with Baseten using either method:
-
-**Option 1: Environment variable (recommended for CI/CD)**
-
-```sh  theme={"system"}
-export BASETEN_API_KEY="YOUR_API_KEY"
-```
-
-**Option 2: Interactive login**
-
-```sh  theme={"system"}
-truss login
-```
-
-This opens a browser window to authenticate and stores your credentials locally.
-
-## Next steps
+## Engine ecosystem
 
 <CardGroup cols={2}>
-  <Card title="Deploy your first model" icon="rocket" href="/examples/deploy-your-first-model">
-    Package and deploy a model in minutes.
+  <Card title="BEI (Embeddings & Classification)" href="/engines/bei/overview" icon="brain-circuit" iconType="duotone">
+    Embeddings, reranking, and classification models with up to 1400 embeddings/sec throughput.
   </Card>
 
-  <Card title="Build a Chain" icon="link" href="/development/chain/getting-started">
-    Create multi-step inference pipelines.
+  <Card title="Engine-Builder-LLM (Dense Models)" href="/engines/engine-builder-llm/overview" icon="microchip" iconType="duotone">
+    Dense text generation models with [lookahead decoding](/engines/engine-builder-llm/lookahead-decoding), [structured outputs](/engines/performance-concepts/structured-outputs), and single node inference.
   </Card>
 
-  <Card title="Launch a training job" icon="dumbbell" href="/training/getting-started">
-    Fine-tune models on Baseten infrastructure.
+  <Card title="BIS-LLM (MoE & Advanced)" href="/engines/bis-llm/overview" icon="network" iconType="duotone">
+    MoE models with [KV-aware routing](/engines/bis-llm/advanced-features#kv-aware-routing), [tool calling](/engines/performance-concepts/function-calling), and speculative decoding.
   </Card>
 
-  <Card title="Truss configuration" icon="gear" href="/reference/truss-configuration">
-    Configure dependencies, resources, and more.
+  <Card title="Specialized Deployments" href="#specialized-deployments" icon="server" iconType="duotone">
+    Specialized engines for models like Whisper, Orpheus, or Flux, available as dedicated deployments rather than self-serviceable options.
   </Card>
 </CardGroup>
 
+## Engine selection
 
----
+Select an engine based on your model's architecture and expected workload.
 
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.baseten.co/llms.txt
+| Model type         | Architecture                  | Recommended engine | Key features                              | **Hardware**             |
+| ------------------ | ----------------------------- | ------------------ | ----------------------------------------- | ------------------------ |
+| **Dense LLM**      | CausalLM (text generation)    | Engine-Builder-LLM | Lookahead decoding, structured outputs    | H100, B200               |
+| **MoE Models**     | Mixture of Experts            | BIS-LLM            | KV-aware routing, advanced quantization   | H100, B200               |
+| **Large Models**   | 700B+ parameters              | BIS-LLM            | Distributed inference, `FP4` support      | H100, B200               |
+| **Embeddings**     | BERT-based (bidirectional)    | BEI-Bert           | Cold-start optimization, 16-bit precision | T4, L4, A10G, H100, B200 |
+| **Embeddings**     | Causal (Llama, Mistral, Qwen) | BEI                | `FP8` quantization, high throughput       | L4, A10G, H100, B200     |
+| **Reranking**      | Cross-encoder architectures   | BEI / BEI-Bert     | Low latency, batch processing             | L4, A10G, H100, B200     |
+| **Classification** | Sequence classification       | BEI / BEI-Bert     | High throughput, cached weights           | L4, A10G, H100, B200     |
+
+### Feature availability
+
+| Feature                              | BIS-LLM | Engine-Builder-LLM | BEI | BEI-Bert | Notes                                            |
+| ------------------------------------ | ------- | ------------------ | --- | -------- | ------------------------------------------------ |
+| **Quantization**                     | ✅       | ✅                  | ✅   | ❌        | BEI-Bert: `FP16`/`BF16` only                     |
+| **KV quantization**                  | ✅       | ✅                  | ⚠️  | ⚠️       | `FP8_KV`, `FP4_KV` supported                     |
+| **Speculative lookahead decoding**   | Gated   | ✅                  | ❌   | ❌        | n-gram based speculation                         |
+| **Self-serviceable**                 | Gated/✅ | ✅                  | ✅   | ✅        | All engines self-service                         |
+| **KV-routing**                       | Gated   | ❌                  | ❌   | ❌        | BIS-LLM only                                     |
+| **Disaggregated serving**            | Gated   | ❌                  | ❌   | ❌        | BIS-LLM enterprise                               |
+| **Tool calling & structured output** | ✅       | ✅                  | ❌   | ❌        | Function calling support                         |
+| **Classification models**            | ❌       | ❌                  | ✅   | ✅        | Sequence classification                          |
+| **Embedding models**                 | ❌       | ❌                  | ✅   | ✅        | Embedding generation                             |
+| **Mixture-of-experts**               | ✅       | ⚠️ (Qwen3MoE only) | ❌   | ❌        | Mixture of Experts models like DeepSeek          |
+| **MTP and Eagle 3 speculation**      | Gated   | ❌                  | ❌   | ❌        | Model-based speculation                          |
+| **HTTP request cancellation**        | ✅       | ❌                  | ✅   | ✅        | Engine-Builder supports it within the first 10ms |
+| **MultiModal Inputs**                | Gated   | ❌                  | ⚠️  | ❌        | Selected architectures only                      |
+
+## Architecture recommendations
+
+### BEI vs BEI-Bert (embeddings)
+
+BEI-Bert optimizes BERT-based architectures (sentence-transformers, jinaai, nomic-ai) with fast cold-start performance and 16-bit precision. Choose BEI-Bert for bidirectional models under 4B parameters where cold-start latency matters. Jina-BERT, Nomic, and ModernBERT architectures all run well on this engine.
+
+BEI handles causal embedding architectures (Llama, Mistral, Qwen) with `FP8`/`FP4` quantization support. Choose BEI when you need maximum throughput or want to run larger embedding models like BAAI/bge, Qwen3-Embedding, or Salesforce/SFR-Embedding with quantization.
+
+### Engine-Builder-LLM vs BIS-LLM (text generation)
+
+Engine-Builder-LLM serves dense models (non-MoE) with lookahead decoding and structured outputs. Choose it for Llama 3.3, Qwen-3, Qwen2.5, Mistral, or Gemma-3 when you need speculative decoding for coding agents or JSON schema validation.
+
+BIS-LLM serves large MoE models with KV-aware routing and advanced tool calling. Choose it for DeepSeek-R1, Qwen3MoE, Kimi-K2, Llama-4, or GLM-4.7 when you need enterprise features like disaggregated serving or H100/B200 optimization.
+
+## Performance benchmarks
+
+Benchmark results depend on model size, GPU type, and quantization settings. The figures below represent typical performance on H100 GPUs.
+
+### Embedding performance (BEI/BEI-Bert)
+
+* **Throughput**: Up to 1400 client embeddings per second.
+* **Latency**: Sub-millisecond response times.
+* **Quantization**: `FP8`/`FP4` provides 2x speedup with less than 1% accuracy loss.
+
+### Text generation performance (Engine-Builder-LLM/BIS-LLM)
+
+* **Speculative decoding**: Faster inference for code and structured content through lookahead decoding.
+* **Quantization**: Memory reduction and speed improvements with `FP8`/`FP4`.
+* **Distributed inference**: Scalable deployment with tensor parallelism.
+
+## Hardware requirements and optimization
+
+*[Quantization](/engines/performance-concepts/quantization-guide)* reduces memory usage and improves inference speed.
+
+| Quantization  | Minimum GPU | Recommended GPU | Memory reduction | Notes                                       |
+| ------------- | ----------- | --------------- | ---------------- | ------------------------------------------- |
+| `FP16`/`BF16` | A100        | H100            | None             | Baseline precision                          |
+| `FP8`         | L4          | H100            | \~50%            | Good balance of performance and accuracy    |
+| `FP8_KV`      | L4          | H100            | \~60%            | KV cache quantization for memory efficiency |
+| `FP4`         | B200        | B200            | \~75%            | B200-only quantization                      |
+| `FP4_KV`      | B200        | B200            | \~80%            | Maximum memory reduction                    |
+
+<Note id="specialized-deployments">
+  Some models require specialized engines that are not self-serviceable:
+
+  * **Whisper**: Audio transcription and speech recognition.
+  * **Orpheus**: Audio generation.
+</Note>
+
+## Next steps
+
+* [BEI documentation](/engines/bei/overview): Embeddings and classification.
+* [Engine-Builder-LLM documentation](/engines/engine-builder-llm/overview): Dense text generation.
+* [BIS-LLM documentation](/engines/bis-llm/overview): MoE and advanced features.
+
+**Examples:**
+
+* [BEI deployment guide](/examples/bei): Complete embedding model setup.
+* [TensorRT-LLM examples](/examples/tensorrt-llm): Dense LLM deployment.
+* [DeepSeek examples](/examples/models/deepseek/deepseek-r1): Large MoE deployment.

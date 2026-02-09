@@ -1,5 +1,9 @@
 # Source: https://dev.writer.com/blueprints/changepage.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://dev.writer.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Change page
 
 Navigates the user to another page in the app. Requires a valid page key.
@@ -108,7 +112,7 @@ Below are the possible end states of the block call.
       <td>Error</td>
       <td>-</td>
       <td>error</td>
-      <td>The event handler execution wasn't successful.</td>
+      <td>There was an error changing the page.</td>
     </tr>
   </tbody>
 </table>

@@ -2,158 +2,257 @@
 
 # Source: https://docs.fireflies.ai/graphql-api/query/transcript.md
 
-# Source: https://docs.fireflies.ai/schema/transcript.md
-
-# Source: https://docs.fireflies.ai/graphql-api/query/transcript.md
-
-# Source: https://docs.fireflies.ai/schema/transcript.md
-
-# Source: https://docs.fireflies.ai/graphql-api/query/transcript.md
-
-# Source: https://docs.fireflies.ai/schema/transcript.md
-
-# Source: https://docs.fireflies.ai/graphql-api/query/transcript.md
-
-# Source: https://docs.fireflies.ai/schema/transcript.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.fireflies.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Transcript
 
-> Schema for Transcript
+> Querying transcript details
 
-<ResponseField name="id" type="ID">
-  Unique identifier of the Transcript.
-</ResponseField>
+## Overview
 
-<ResponseField name="title" type="String">
-  Title of the Transcript.
-</ResponseField>
+The transcript query is designed to fetch details associated with a specific transcript ID.
 
-<ResponseField name="host_email" type="String">
-  [DEPRECATED](/additional-info/deprecated) <br />
-  Email address of the meeting host.
-</ResponseField>
+## Arguments
 
-<ResponseField name="organizer_email" type="String">
-  Email address of the meeting organizer.
-</ResponseField>
+<ParamField path="id" type="String" required />
 
-<ResponseField name="user" type="User">
-  The [User](/schema/user) who Fred recorded the meeting on behalf of
-</ResponseField>
+## Schema
 
-<ResponseField name="speakers" type="[Speaker]">
-  The speakers array contains the id and name of the speaker as it appears within the transcript
-</ResponseField>
+Fields available to the [Transcript](/schema/transcript) query
 
-<ResponseField name="transcript_url" type="String">
-  The url to view the transcript in the dashboard
-</ResponseField>
+## Usage Example
 
-<ResponseField name="participants" type="[String]">
-  An array of email addresses of meeting participants guests, including participants that do not
-  have Fireflies account.
-</ResponseField>
+```graphql  theme={null}
+query Transcript($transcriptId: String!) {
+  transcript(id: $transcriptId) {
+    id
+    dateString
+    privacy
+    analytics {
+      sentiments {
+        negative_pct
+        neutral_pct
+        positive_pct
+      }
+      categories {
+        questions
+        date_times
+        metrics
+        tasks
+      }
+      speakers {
+        speaker_id
+        name
+        duration
+        word_count
+        longest_monologue
+        monologues_count
+        filler_words
+        questions
+        duration_pct
+        words_per_minute
+      }
+    }
+    speakers {
+      id
+      name
+    }
+    sentences {
+      index
+      speaker_name
+      speaker_id
+      text
+      raw_text
+      start_time
+      end_time
+      ai_filters {
+        task
+        pricing
+        metric
+        question
+        date_and_time
+        text_cleanup
+        sentiment
+      }
+    }
+    title
+    host_email
+    organizer_email
+    calendar_id
+    user {
+      user_id
+      email
+      name
+      num_transcripts
+      recent_meeting
+      minutes_consumed
+      is_admin
+      integrations
+    }
+    fireflies_users
+    participants
+    date
+    transcript_url
+    audio_url
+    video_url
+    duration
+    meeting_attendees {
+      displayName
+      email
+      phoneNumber
+      name
+      location
+    }
+    meeting_attendance {
+      name
+      join_time
+      leave_time
+    }
+    summary {
+      keywords
+      action_items
+      outline
+      shorthand_bullet
+      overview
+      bullet_gist
+      gist
+      short_summary
+      short_overview
+      meeting_type
+      topics_discussed
+      transcript_chapters
+    }
+    cal_id
+    calendar_type
+    meeting_info {
+      fred_joined
+      silent_meeting
+      summary_status
+    }
+    apps_preview {
+      outputs {
+        transcript_id
+        user_id
+        app_id
+        created_at
+        title
+        prompt
+        response
+      }
+    }
+    meeting_link
+    channels {
+      id
+    }
+  }
+}
+```
 
-<ResponseField name="meeting_attendees" type="[MeetingAttendee]">
-  List of [MeetingAttendee](/schema/meeting-attendee)
-</ResponseField>
+<RequestExample>
+  ```bash curl theme={null}
+  curl -X POST \
+  	-H "Content-Type: application/json" \
+  	-H "Authorization: Bearer your_api_key" \
+  	--data '{ "query": "query Transcript($transcriptId: String!) { transcript(id: $transcriptId) { title id } }", "variables": { "transcriptId": "your_transcript_id" } }' \
+  	https://api.fireflies.ai/graphql
+  ```
 
-<ResponseField name="meeting_attendance" type="[MeetingAttendance]">
-  List of [MeetingAttendance](/schema/meeting-attendance) records showing when participants joined and left the meeting
-</ResponseField>
+  ```javascript javascript theme={null}
+  const axios = require('axios');
 
-<ResponseField name="fireflies_users" type="[String]">
-  An array of email addresses of only Fireflies users participants that have fireflies account that
-  participated in the meeting
-</ResponseField>
+  const url = 'https://api.fireflies.ai/graphql';
+  const headers = {
+    'Content-Type': 'application/json',
+    Authorization: 'Bearer your_api_key'
+  };
+  const data = {
+    query: 'query Transcript($transcriptId: String!) { transcript(id: $transcriptId) { title id } }',
+    variables: { transcriptId: 'your_transcript_id' }
+  };
 
-<ResponseField name="duration" type="Number">
-  Duration of the audio in minutes
-</ResponseField>
+  axios
+    .post(url, data, { headers: headers })
+    .then(response => {
+      console.log(response.data);
+    })
+    .catch(error => {
+      console.error('Error:', error);
+    });
+  ```
 
-<ResponseField name="dateString" type="DateTime">
-  String representation of DateTime. Example: `2024-04-22T20:14:04.454Z`
-</ResponseField>
+  ```python python theme={null}
+  import requests
 
-<ResponseField name="date" type="Float">
-  Date the transcript was created represented in milliseconds from
-  [EPOCH](https://en.wikipedia.org/wiki/Epoch_\(computing\)).
+  url = 'https://api.fireflies.ai/graphql'
+  headers = {
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer your_api_key'
+  }
+  data = '{"query": "query Transcript($transcriptId: String!) { transcript(id: $transcriptId) { title id } }", "variables": {"transcriptId": "your_transcript_id"}}'
 
-  The timezone for this field is UTC +00:00
-</ResponseField>
+  response = requests.post(url, headers=headers, data=data)
+  print(response.json())
+  ```
 
-<ResponseField name="audio_url" type="String">
-  Secure, newly generated hashed url that allows you download meeting audio. This url expires after
-  every 24 hours. You'd have to make another request to generate a new audio\_url.
+  ```java java theme={null}
+  import java.net.URI;
+  import java.net.http.HttpClient;
+  import java.net.http.HttpRequest;
+  import java.net.http.HttpResponse;
+  import java.net.http.HttpRequest.BodyPublishers;
 
-  You need to be subscribed to subscribed to a pro or higher plan to query audio\_url. View plans [here](https://fireflies.ai/pricing)
-</ResponseField>
+  public class ApiRequest {
+      public static void main(String[] args) {
+          HttpClient client = HttpClient.newHttpClient();
+          String jsonRequest = "{\"query\": \"query Transcript($transcriptId: String!) { transcript(id: $transcriptId) { title id } }\", \"variables\": {\"transcriptId\": \"your_transcript_id\"}}";
+          HttpRequest request = HttpRequest.newBuilder()
+              .uri(URI.create("https://api.fireflies.ai/graphql"))
+              .header("Content-Type", "application/json")
+              .header("Authorization", "Bearer your_api_key")
+              .POST(BodyPublishers.ofString(jsonRequest))
+              .build();
 
-<ResponseField name="video_url" type="String">
-  Secure, newly generated hashed url that allows you download meeting video. This url expires after
-  every 24 hours. You'd have to make another request to generate a new video\_url. You will need to
-  enable `RECORD MEETING VIDEO` setting on your Fireflies
-  [dashboard](https://app.fireflies.ai/settings) for this to work.
+          client.sendAsync(request, HttpResponse.BodyHandlers.ofString())
+              .thenApply(HttpResponse::body)
+              .thenAccept(System.out::println)
+              .join();
+      }
+  }
 
-  You need to be subscribed to a business or higher plan to query video\_url. View plans [here](https://fireflies.ai/pricing)
-</ResponseField>
+  ```
+</RequestExample>
 
-<ResponseField name="sentence" type="[Sentence]">
-  An array of [Sentence](/schema/sentence)(s), containing transcript details like `raw_text`,
-  `speaker_name`, etc.
-</ResponseField>
+<ResponseExample>
+  ```json Response theme={null}
+  {
+    "data": {
+      "transcript": {
+        "title": "Weekly sync",
+        "id": "transcript-id",
+      }
+    }
+  }
+  ```
+</ResponseExample>
 
-<ResponseField name="calendar_id" type="String">
-  Calendar provider event ID. This field represents calId for google calendar and iCalUID for
-  outlook calendar.
-</ResponseField>
+## Error Codes
 
-<ResponseField name="summary" type="Summary">
-  AI generated [Summary](/schema/summary) of the meeting.
-</ResponseField>
+List of possible error codes that may be returned by the `transcript` query. Full list of error codes can be found [here](/miscellaneous/error-codes).
 
-<ResponseField name="meeting_info" type="MeetingInfo">
-  [MeetingInfo](/schema/meeting-info) metadata fields.
-</ResponseField>
-
-<ResponseField name="cal_id" type="String">
-  Calendar provider event ID with a timestamp that helps uniquely identify recurring events
-</ResponseField>
-
-<ResponseField name="calendar_type" type="String">
-  Calendar provider name
-</ResponseField>
-
-<ResponseField name="apps" type="Apps">
-  Preview of [Apps](/schema/apps) generated from the transcript. Max limit of 5 most recent AI App Outputs per meeting. Use the [Apps Query](/graphql-api/query/apps) to fetch the entire list of AI App Outputs
-</ResponseField>
-
-<ResponseField name="meeting_link" type="String">
-  The web conferencing url of the meeting. This field is only populated if the meeting was hosted on a supported platform such as Google Meet, Zoom, etc.
-</ResponseField>
-
-<ResponseField name="analytics" type="MeetingAnalytics">
-  [MeetingAnalytics](/schema/meeting-analytics) contains analytics data about the meeting, including:
-
-  * `sentiments`: Sentiment analysis showing percentages of positive, neutral, and negative sentiments
-  * `categories`: Counts of different types of content (questions, date/times, metrics, tasks)
-  * `speakers`: Detailed analytics for each speaker including duration, word count, filler words, etc.
-
-  You need to be subscribed to subscribed to a pro or higher plan to query meeting analytics. View plans [here](https://fireflies.ai/pricing)
-</ResponseField>
-
-<ResponseField name="channels" type="[Channel]">
-  An array of [Channel](/schema/channel) the meeting belongs to
-</ResponseField>
+<Accordion title="object_not_found (transcript)">
+  <p>The transcript ID you are trying to query does not exist or you do not have access to it.</p>
+</Accordion>
 
 ## Additional Resources
 
 <CardGroup cols={2}>
-  <Card title="Summary" icon="link" href="/schema/summary">
-    Schema for Summary
+  <Card title="Transcripts" icon="link" href="/graphql-api/query/transcripts">
+    Querying list of transcripts
   </Card>
 
-  <Card title="Sentence" icon="link" href="/schema/sentence">
-    Schema for Sentence
+  <Card title="Update Meeting Title" icon="link" href="/graphql-api/mutation/update-meeting-title">
+    Use the API to update meeting titles
   </Card>
 </CardGroup>

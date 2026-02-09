@@ -1,5 +1,9 @@
 # Source: https://docs.lunary.ai/docs/more/data-warehouse/bigquery.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.lunary.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # BigQuery Connector
 
 ## Setup Google Cloud
@@ -66,8 +70,3 @@ Because you've modified your source, you must wait until the changes to your par
 
 1. Add `wal_level=logical` to the postgresql.conf file, or do this on the server command line.
 2. Restart the server.
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.lunary.ai/llms.txt

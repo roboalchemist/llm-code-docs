@@ -18,19 +18,13 @@ The Page component helps you create layouts with optional left and right columns
 </template>
 ```
 
-<tip>
-
-The page will display as a centered single column layout if no slots are specified.
-
-</tip>
+> [!TIP]
+> The page will display as a centered single column layout if no slots are specified.
 
 ## Examples
 
-<note>
-
-While these examples use [Nuxt Content](https://content.nuxt.com), the components can be integrated with any content management system.
-
-</note>
+> [!NOTE]
+> While these examples use [Nuxt Content](https://content.nuxt.com), the components can be integrated with any content management system.
 
 ### Within a layout
 
@@ -56,11 +50,8 @@ const navigation = inject<Ref<ContentNavigationItem[]>>('navigation')
 </template>
 ```
 
-<note>
-
-In this example, we use the `ContentNavigation` component to display the navigation injected in `app.vue`.
-
-</note>
+> [!NOTE]
+> In this example, we use the `ContentNavigation` component to display the navigation injected in `app.vue`.
 
 ### Within a page
 
@@ -102,11 +93,8 @@ const { data: surround } = await useAsyncData(`${route.path}-surround`, () => {
 </template>
 ```
 
-<note>
-
-In this example, we use the `ContentToc` component to display the table of contents.
-
-</note>
+> [!NOTE]
+> In this example, we use the `ContentToc` component to display the table of contents.
 
 ## API
 
@@ -181,8 +169,4 @@ export default defineAppConfig({
 
 ## Changelog
 
-<component-changelog>
-
-
-
-</component-changelog>
+See the [releases page](https://github.com/nuxt/ui/releases) for the latest changes.

@@ -7,7 +7,7 @@
 For examples and details on the usage of this React component, visit the component demo pages:
 
 - [Charts - Bars](/x/react-charts/bars/)
-- [Chart composition](/x/react-charts/composition/)
+- [Charts - Composition](/x/react-charts/composition/)
 - [Charts - Lines](/x/react-charts/lines/)
 - [Charts - Scatter](/x/react-charts/scatter/)
 

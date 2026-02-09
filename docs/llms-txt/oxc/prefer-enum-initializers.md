@@ -3,7 +3,6 @@
 ---
 url: /docs/guide/usage/linter/rules/typescript/prefer-enum-initializers.md
 ---
-# typescript/prefer-enum-initializers&#x20;
 
 ### What it does
 

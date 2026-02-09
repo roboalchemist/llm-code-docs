@@ -1,5 +1,9 @@
 # Source: https://docs.turso.tech/api-reference/locations/closest-region.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.turso.tech/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Closest Region
 
 > Returns the closest region to the user's location.

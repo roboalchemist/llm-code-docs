@@ -1,11 +1,15 @@
 # Source: https://docs.argil.ai/resources/moderated-content.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.argil.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Moderated content
 
 > Here are the current rules we apply to the content we moderate. 
 
 <Info>
-  Note that content restrictions only apply to Argil’s avatars. If you wish to generate content outside of our restrictions, please train your own avatar ([see how](https://docs.argil.ai/resources/training-tips))
+  Note that content restrictions only apply to Argil’s avatars. If you wish to generate content outside of our restrictions, please train your own avatar ([see how](https://docs.argil.ai/resources/create-an-avatar))
 </Info>
 
 <Warning>
@@ -15,9 +19,8 @@
 On Argil, to protect our customers and to comply with our “safe synthetic content guidelines”, we prevent some content to be generated. There are 3 scenarios:
 
 * Video generated with **your** avatar: no content is restricted
-* Video generated with **Argil’s human avatars**: submitted to content restrictions (see below)
-
-***
+* Video generated with **Argil’s human avatars (Argil Legacy)**: submitted to content restrictions (see below)
+* Video generated with **Argil's AI generated avatars (Argil Atom)**: submitted to less content restrictions (the restrictions below with an \* will not apply to Atom avatars).
 
 ### Here’s an exhaustive list of content that is restricted:
 
@@ -82,11 +85,11 @@ You will not use the Platform to generate, upload, or share any content that is 
 
 **Banned:** Harassment includes targeted attacks, threats, or content meant to humiliate an individual. Persistent, unwanted commentary or personal attacks against a specific person also fall under this banned category.
 
-### **Misinformation** and fake news
+### **Misinformation** and fake news\*
 
 **Banned:** Misinformation is flagged when it spreads false narratives as facts, especially on topics like health, science, or current events. Conspiracy theories or fabricated claims that could mislead or harm the audience are strictly not allowed.
 
-### **Sensitive Political Topics**
+### **Political Topics\***
 
 **Banned:** Content is banned when it incites unrest, promotes illegal political actions, or glorifies controversial figures without nuance. Content that polarizes communities or compromises public safety through biased narratives is flagged.
 
@@ -94,11 +97,11 @@ You will not use the Platform to generate, upload, or share any content that is 
 
 **Why do we restrict content?**
 
-We have very strong contracts in place with our actors that are used as Argil’s avatars.
+We have very strong contracts in place with our actors that are used as Argil’s avatars (Argil Legacy avatars) and prefer to be too strict with these cases in terms of content moderated.
 
 If you think that a video has been wrongly flagged, please send an email to [support@argil.ai](mailto:support@argil.ai) (**and ideally include the transcript of said video**).
 
-*Please note that Argil created a feature on the platform to automatically filter the generation of prohibited content, but this feature can be too strict and in some cases doesn’t work.*
+*Please note that Argil created a feature on the platform to automatically filter the generation of prohibited content, but this feature can be too strict and in some cases doesn’t work as AI comprehension of context and tone can be faulty.*
 
 ### Users that violate these guidelines may see the immediate termination of their access to the Platform and a permanent ban from future use.
 

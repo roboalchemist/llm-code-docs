@@ -1,5 +1,9 @@
 # Source: https://docs.lunary.ai/docs/integrations/ollama.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.lunary.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Ollama Integration
 
 Ollama allow you to self-host quickly large language models.
@@ -66,8 +70,3 @@ Our SDKs include automatic integrations with Ollama.
     </Tabs>
   </Step>
 </Steps>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.lunary.ai/llms.txt

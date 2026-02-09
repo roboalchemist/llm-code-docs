@@ -23,15 +23,7 @@ We welcome PR's with support of missing APIs which typically only requires addin
 Install from NuGet with:
 
 :::copy
-`<PackageReference Include="ServiceStack.Stripe" Version="8.*" />`
-:::
-
-### ASP .NET Core on .NET Framework
-
-To use this library in [ASP.NET Core Apps running on the .NET Framework](/templates/corefx), install the **.NET Standard 2.0** only NuGet package instead:
-
-:::copy
-`<PackageReference Include="ServiceStack.Stripe.Core" Version="8.*" />`
+`<PackageReference Include="ServiceStack.Stripe" Version="10.*" />`
 :::
 
 ## Usage
@@ -39,7 +31,7 @@ To use this library in [ASP.NET Core Apps running on the .NET Framework](/templa
 Requires a [registered Stripe API Key](https://manage.stripe.com/register), e.g:
 
 ```csharp
-var gateway = new StripeGateway("sk_test_REDACTED");
+var gateway = new StripeGateway("sk_test_23KlmQohLKD4dfmAvxYESZ2z");
 ```
 
 Request DTO's are just clean POCO's with `[Route]` attributes defined, e.g:
@@ -81,7 +73,7 @@ StripeCustomer customer = await gateway.SendAsync(new GetStripeCustomer { Id = c
 Both of these calls translates to the [Retrieving a Customer](https://stripe.com/docs/api/curl#retrieve_customer) HTTP Request, Example in curl:
 
 :::sh
-curl https://api.stripe.com/v1/customers/cus_3552jPRgtQeRcK -u STRIPE_KEY_REDACTED:
+curl https://api.stripe.com/v1/customers/cus_3552jPRgtQeRcK -u yDOr26HsxyhpuRB3qbG07qfCmDhqutnA:
 :::
 
 ### Open-Ended, Declarative Message-based APIs

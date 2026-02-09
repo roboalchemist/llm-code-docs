@@ -16,11 +16,8 @@ The Link component is a wrapper around [`<NuxtLink>`](https://nuxt.com/docs/api/
 
 The incentive behind this is to provide the same API as NuxtLink back in Nuxt 2 / Vue 2. You can read more about it in the Vue Router [migration from Vue 2](https://router.vuejs.org/guide/migration/#removal-of-the-exact-prop-in-router-link) guide.
 
-<note>
-
-It is used by the [`Breadcrumb`](/docs/components/breadcrumb), [`Button`](/docs/components/button), [`ContextMenu`](/docs/components/context-menu), [`DropdownMenu`](/docs/components/dropdown-menu) and [`NavigationMenu`](/docs/components/navigation-menu) components.
-
-</note>
+> [!NOTE]
+> It is used by the [`Breadcrumb`](/docs/components/breadcrumb), [`Button`](/docs/components/button), [`ContextMenu`](/docs/components/context-menu), [`DropdownMenu`](/docs/components/dropdown-menu) and [`NavigationMenu`](/docs/components/navigation-menu) components.
 
 ### Tag
 
@@ -34,11 +31,8 @@ The `Link` components renders an `<a>` tag when a `to` prop is provided, otherwi
 </template>
 ```
 
-<note>
-
-You can inspect the rendered HTML by changing the `to` prop.
-
-</note>
+> [!NOTE]
+> You can inspect the rendered HTML by changing the `to` prop.
 
 ### Style
 
@@ -52,11 +46,8 @@ By default, the link has default active and inactive styles, check out the [#the
 </template>
 ```
 
-<note>
-
-Try changing the `to` prop to see the active and inactive states.
-
-</note>
+> [!NOTE]
+> Try changing the `to` prop to see the active and inactive states.
 
 You can override this behavior by using the `raw` prop and provide your own styles using `class`, `active-class` and `inactive-class`.
 
@@ -122,6 +113,10 @@ interface LinkProps {
    * The class to apply when the link is inactive.
    */
   inactiveClass?: string | undefined;
+  /**
+   * Whether RouterLink should not wrap its content in an `a` tag. Useful when
+   * using `v-slot` to create a custom RouterLink
+   */
   custom?: boolean | undefined;
   /**
    * When `true`, only styles from `class`, `activeClass`, and `inactiveClass` will be applied.
@@ -130,32 +125,11 @@ interface LinkProps {
   /**
    * Route Location the link should navigate to when clicked on.
    */
-  to?: string | RouteLocationAsRelativeGeneric | RouteLocationAsPathGeneric | undefined;
-  /**
-   * Class to apply when the link is active
-   */
-  activeClass?: string | undefined;
-  /**
-   * Class to apply when the link is exact active
-   */
-  exactActiveClass?: string | undefined;
-  /**
-   * Value passed to the attribute `aria-current` when the link is exact active.
-   * @default "\"page\""
-   */
-  ariaCurrentValue?: "step" | "page" | "true" | "false" | "location" | "date" | "time" | undefined;
-  /**
-   * Pass the returned promise of `router.push()` to `document.startViewTransition()` if supported.
-   */
-  viewTransition?: boolean | undefined;
-  /**
-   * Calls `router.replace` instead of `router.push`.
-   */
-  replace?: boolean | undefined;
+  to?: string | kt | Tt | undefined;
   /**
    * An alias for `to`. If used with `to`, `href` will be ignored
    */
-  href?: string | RouteLocationAsRelativeGeneric | RouteLocationAsPathGeneric | undefined;
+  href?: string | kt | Tt | undefined;
   /**
    * Forces the link to be considered as external (true) or internal (false). This is helpful to handle edge-cases
    */
@@ -163,11 +137,11 @@ interface LinkProps {
   /**
    * Where to display the linked URL, as the name for a browsing context.
    */
-  target?: "_blank" | "_parent" | "_self" | "_top" | (string & {}) | null | undefined;
+  target?: (string & {}) | "_blank" | "_parent" | "_self" | "_top" | null | undefined;
   /**
    * A rel attribute value to apply on the link. Defaults to "noopener noreferrer" for external links.
    */
-  rel?: (string & {}) | "noopener" | "noreferrer" | "nofollow" | "sponsored" | "ugc" | null | undefined;
+  rel?: "noopener" | "noreferrer" | "nofollow" | "sponsored" | "ugc" | (string & {}) | null | undefined;
   /**
    * If set to true, no rel attribute will be added to the link
    */
@@ -192,7 +166,28 @@ interface LinkProps {
    * An option to either add or remove trailing slashes in the `href` for this specific link.
    * Overrides the global `trailingSlash` option if provided.
    */
-  trailingSlash?: "append" | "remove" | undefined;
+  trailingSlash?: "remove" | "append" | undefined;
+  /**
+   * Class to apply when the link is active
+   */
+  activeClass?: string | undefined;
+  /**
+   * Class to apply when the link is exact active
+   */
+  exactActiveClass?: string | undefined;
+  /**
+   * Value passed to the attribute `aria-current` when the link is exact active.
+   * @default "\"page\""
+   */
+  ariaCurrentValue?: "step" | "page" | "true" | "false" | "location" | "date" | "time" | undefined;
+  /**
+   * Pass the returned promise of `router.push()` to `document.startViewTransition()` if supported.
+   */
+  viewTransition?: boolean | undefined;
+  /**
+   * Calls `router.replace` instead of `router.push`.
+   */
+  replace?: boolean | undefined;
   name?: string | undefined;
   autofocus?: Booleanish | undefined;
   form?: string | undefined;
@@ -209,11 +204,9 @@ interface LinkProps {
 }
 ```
 
-<callout icon="i-simple-icons-mdnwebdocs" target="_blank" to="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a#attributes">
-
-This component also supports all native `<a>` HTML attributes.
-
-</callout>
+> [!NOTE]
+> See: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a#attributes
+> This component also supports all native `<a>` HTML attributes.
 
 ### Slots
 
@@ -259,8 +252,4 @@ export default defineAppConfig({
 
 ## Changelog
 
-<component-changelog>
-
-
-
-</component-changelog>
+See the [releases page](https://github.com/nuxt/ui/releases) for the latest changes.

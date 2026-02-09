@@ -1,26 +1,38 @@
 # Source: https://docs.argil.ai/resources/create-an-avatar.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.argil.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Create an avatar from scratch
 
 > There are two ways to create an avatar: a picture or a generation in the builder. Let's see the differences and how to create the two of them. We will also see how to pick your voice. 
 
-<img src="https://mintcdn.com/argil/aljDgH83krSQCQxS/images/Captured%E2%80%99e%CC%81cran2025-10-14a%CC%8015.20.19.png?fit=max&auto=format&n=aljDgH83krSQCQxS&q=85&s=444cd30e8800bd69839830e30f3c916f" alt="Personal avatar VS AI influencer" data-og-width="824" width="824" data-og-height="654" height="654" data-path="images/Captured’écran2025-10-14à15.20.19.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/argil/aljDgH83krSQCQxS/images/Captured%E2%80%99e%CC%81cran2025-10-14a%CC%8015.20.19.png?w=280&fit=max&auto=format&n=aljDgH83krSQCQxS&q=85&s=571a8f9ef412d5a5681d9b2b43434f2b 280w, https://mintcdn.com/argil/aljDgH83krSQCQxS/images/Captured%E2%80%99e%CC%81cran2025-10-14a%CC%8015.20.19.png?w=560&fit=max&auto=format&n=aljDgH83krSQCQxS&q=85&s=dc3d3f278f234573857f77b3c76935a1 560w, https://mintcdn.com/argil/aljDgH83krSQCQxS/images/Captured%E2%80%99e%CC%81cran2025-10-14a%CC%8015.20.19.png?w=840&fit=max&auto=format&n=aljDgH83krSQCQxS&q=85&s=2eb54831c4a3d107c4e77852191af39a 840w, https://mintcdn.com/argil/aljDgH83krSQCQxS/images/Captured%E2%80%99e%CC%81cran2025-10-14a%CC%8015.20.19.png?w=1100&fit=max&auto=format&n=aljDgH83krSQCQxS&q=85&s=f96900c9710ec9a7044a80fb74f78608 1100w, https://mintcdn.com/argil/aljDgH83krSQCQxS/images/Captured%E2%80%99e%CC%81cran2025-10-14a%CC%8015.20.19.png?w=1650&fit=max&auto=format&n=aljDgH83krSQCQxS&q=85&s=5e7035f48842318e9d9ae85e5d503400 1650w, https://mintcdn.com/argil/aljDgH83krSQCQxS/images/Captured%E2%80%99e%CC%81cran2025-10-14a%CC%8015.20.19.png?w=2500&fit=max&auto=format&n=aljDgH83krSQCQxS&q=85&s=b6117fbe3c65da59a3871e4df926c748 2500w" />
+## Quick video tutorial
+
+<iframe src="https://www.youtube.com/embed/tpAlxfkICsQ" title="YouTube video player" frameborder="0" className="w-full aspect-video rounded-xl" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen />
 
 ### Personal avatar VS AI influencer
 
-A personal avatar is based on your own image or picture. An AI influencer is created using your own prompts. You can directly add images or products to your AI influencer whereas it comes in a second step for the personal avatar.
+A personal avatar is based on your own image or picture. An AI influencer is created using your own prompts. You can directly add images or products to your AI influencer whereas it comes in a second step for the personal avatar. A small difference is that an AI influencer costs credits to generate.
 
 ### How to create a great personal avatar?
 
 The picture you should take of yourself needs to check the following boxes:
 
 1. **Have great lighting (put yourself in front of a window)**
-
 2. **Don't smile and if possible, have your mouth slitghtly opened like in the middle of a sentence**
-
 3. **All of your face should be within the frame**
-
 4. **The closer you are to the camera, the better the output will be**
+5. **Please upload 720p minimum, 1080p ideally**
+
+<Expandable title="Example of pictures you need to input">
+    <img src="https://mintcdn.com/argil/Y17m3YXWeUT0uwgM/images/1MMFueXBCaDK3v7agBWLY.png?fit=max&auto=format&n=Y17m3YXWeUT0uwgM&q=85&s=024533f65081b01cb35f6bb6ad7882a1" alt="1MM Fue XB Ca Dk3v7ag BWLY" data-og-width="1536" width="1536" data-og-height="2752" height="2752" data-path="images/1MMFueXBCaDK3v7agBWLY.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/argil/Y17m3YXWeUT0uwgM/images/1MMFueXBCaDK3v7agBWLY.png?w=280&fit=max&auto=format&n=Y17m3YXWeUT0uwgM&q=85&s=cd05f80168ad3add7b471d96e28a9c77 280w, https://mintcdn.com/argil/Y17m3YXWeUT0uwgM/images/1MMFueXBCaDK3v7agBWLY.png?w=560&fit=max&auto=format&n=Y17m3YXWeUT0uwgM&q=85&s=43eff3d2b0e7d4edf44f349212de7843 560w, https://mintcdn.com/argil/Y17m3YXWeUT0uwgM/images/1MMFueXBCaDK3v7agBWLY.png?w=840&fit=max&auto=format&n=Y17m3YXWeUT0uwgM&q=85&s=4bc5068794cccb60eb7912aae3545503 840w, https://mintcdn.com/argil/Y17m3YXWeUT0uwgM/images/1MMFueXBCaDK3v7agBWLY.png?w=1100&fit=max&auto=format&n=Y17m3YXWeUT0uwgM&q=85&s=0b04dd753fe97b0ff0ece0878fa5b9df 1100w, https://mintcdn.com/argil/Y17m3YXWeUT0uwgM/images/1MMFueXBCaDK3v7agBWLY.png?w=1650&fit=max&auto=format&n=Y17m3YXWeUT0uwgM&q=85&s=60650b15632036e8911e42dc24fbe9c0 1650w, https://mintcdn.com/argil/Y17m3YXWeUT0uwgM/images/1MMFueXBCaDK3v7agBWLY.png?w=2500&fit=max&auto=format&n=Y17m3YXWeUT0uwgM&q=85&s=4f03fd462aeffd5450e7a2426cdde9d9 2500w" />
+
+    <img src="https://mintcdn.com/argil/X0PRMAONeltMnnBF/images/enhanced-image(9)2.jpeg?fit=max&auto=format&n=X0PRMAONeltMnnBF&q=85&s=78a7f9fb6a036bd9f5f2e348ac3da0ec" alt="Enhanced Image (9) 2" data-og-width="3072" width="3072" data-og-height="5504" height="5504" data-path="images/enhanced-image(9)2.jpeg" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/argil/X0PRMAONeltMnnBF/images/enhanced-image(9)2.jpeg?w=280&fit=max&auto=format&n=X0PRMAONeltMnnBF&q=85&s=a04713266240be627b8bcc51e624ec44 280w, https://mintcdn.com/argil/X0PRMAONeltMnnBF/images/enhanced-image(9)2.jpeg?w=560&fit=max&auto=format&n=X0PRMAONeltMnnBF&q=85&s=8b562e3cbd98120f2064c6916017b5b5 560w, https://mintcdn.com/argil/X0PRMAONeltMnnBF/images/enhanced-image(9)2.jpeg?w=840&fit=max&auto=format&n=X0PRMAONeltMnnBF&q=85&s=d3f0b8a98a149729b3bffa496bd0fcdc 840w, https://mintcdn.com/argil/X0PRMAONeltMnnBF/images/enhanced-image(9)2.jpeg?w=1100&fit=max&auto=format&n=X0PRMAONeltMnnBF&q=85&s=bfd3b61edd1fc7f74eaa8e07075ef1cd 1100w, https://mintcdn.com/argil/X0PRMAONeltMnnBF/images/enhanced-image(9)2.jpeg?w=1650&fit=max&auto=format&n=X0PRMAONeltMnnBF&q=85&s=7cbfe69902a2e9a1bc2aa744ee595a8b 1650w, https://mintcdn.com/argil/X0PRMAONeltMnnBF/images/enhanced-image(9)2.jpeg?w=2500&fit=max&auto=format&n=X0PRMAONeltMnnBF&q=85&s=b507333b92812f74caf33e59e408b596 2500w" />
+
+    <img src="https://mintcdn.com/argil/X0PRMAONeltMnnBF/images/hqZMMQ-D9AiXnSs2mFJ_e.png?fit=max&auto=format&n=X0PRMAONeltMnnBF&q=85&s=f185498ab32f28cfe1ff0602ed07f326" alt="Hq ZMMQ D9ai Xn Ss2m FJ E" data-og-width="2752" width="2752" data-og-height="1536" height="1536" data-path="images/hqZMMQ-D9AiXnSs2mFJ_e.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/argil/X0PRMAONeltMnnBF/images/hqZMMQ-D9AiXnSs2mFJ_e.png?w=280&fit=max&auto=format&n=X0PRMAONeltMnnBF&q=85&s=82430d3ed7e80aec142799a3536482fd 280w, https://mintcdn.com/argil/X0PRMAONeltMnnBF/images/hqZMMQ-D9AiXnSs2mFJ_e.png?w=560&fit=max&auto=format&n=X0PRMAONeltMnnBF&q=85&s=a3b33f4868afefc9ad61b3e1021a2d37 560w, https://mintcdn.com/argil/X0PRMAONeltMnnBF/images/hqZMMQ-D9AiXnSs2mFJ_e.png?w=840&fit=max&auto=format&n=X0PRMAONeltMnnBF&q=85&s=7f1af07554c4b5819dd52e64c147670c 840w, https://mintcdn.com/argil/X0PRMAONeltMnnBF/images/hqZMMQ-D9AiXnSs2mFJ_e.png?w=1100&fit=max&auto=format&n=X0PRMAONeltMnnBF&q=85&s=ca4283a0f5e9f684ffd1849d25c82921 1100w, https://mintcdn.com/argil/X0PRMAONeltMnnBF/images/hqZMMQ-D9AiXnSs2mFJ_e.png?w=1650&fit=max&auto=format&n=X0PRMAONeltMnnBF&q=85&s=0c7a26d4b92f3fcb9fd848f858df4603 1650w, https://mintcdn.com/argil/X0PRMAONeltMnnBF/images/hqZMMQ-D9AiXnSs2mFJ_e.png?w=2500&fit=max&auto=format&n=X0PRMAONeltMnnBF&q=85&s=03738f33d852b799149631c2520fa14f 2500w" />
+</Expandable>
 
 <Tip>
   The pictures that work best are with a single human-like face. Avoid animals or multiple people on screen (even on posters).

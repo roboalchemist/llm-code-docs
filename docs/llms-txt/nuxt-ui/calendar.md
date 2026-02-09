@@ -26,11 +26,15 @@ Use the `default-value` prop to set the initial value when you do not need to co
 </template>
 ```
 
-<note>
+**Nuxt:**
+> [!NOTE]
+> See: /docs/getting-started/integrations/i18n/nuxt#locale
+> This component uses the `@internationalized/date` package for locale-aware formatting. The date format is determined by the `locale` prop of the App component.
 
-This component relies on the [`@internationalized/date`](https://react-spectrum.adobe.com/internationalized/date/index.html) package which provides objects and functions for representing and manipulating dates and times in a locale-aware manner.
-
-</note>
+**Vue:**
+> [!NOTE]
+> See: /docs/getting-started/integrations/i18n/vue#locale
+> This component uses the `@internationalized/date` package for locale-aware formatting. The date format is determined by the `locale` prop of the App component.
 
 ### Multiple
 
@@ -133,6 +137,16 @@ Use the `fixed-weeks` prop to display the calendar with fixed weeks.
 ```vue
 <template>
   <UCalendar :fixed-weeks="false" />
+</template>
+```
+
+### Week Numbers `4.4+`
+
+Use the `week-numbers` prop to display week numbers in the calendar.
+
+```vue
+<template>
+  <UCalendar week-numbers fixed-weeks />
 </template>
 ```
 
@@ -257,11 +271,9 @@ const hebrewDate = shallowRef(new CalendarDate(new HebrewCalendar(), 5781, 1, 1)
 </template>
 ```
 
-<note to="https://react-spectrum.adobe.com/internationalized/date/Calendar.html#implementations">
-
-You can check all the available calendars on `@internationalized/date` docs.
-
-</note>
+> [!NOTE]
+> See: https://react-spectrum.adobe.com/internationalized/date/Calendar.html#implementations
+> You can check all the available calendars on `@internationalized/date` docs.
 
 ### With external controls
 
@@ -377,50 +389,50 @@ interface CalendarProps {
   /**
    * The icon to use for the next year control.
    */
-  nextYearIcon?: string | object | undefined;
+  nextYearIcon?: any;
   /**
    * Configure the next year button.
    * `{ color: 'neutral', variant: 'ghost' }`{lang="ts-type"}
    */
-  nextYear?: ButtonProps | undefined;
+  nextYear?: Omit<ButtonProps, LinkPropsKeys> | undefined;
   /**
    * The icon to use for the next month control.
    */
-  nextMonthIcon?: string | object | undefined;
+  nextMonthIcon?: any;
   /**
    * Configure the next month button.
    * `{ color: 'neutral', variant: 'ghost' }`{lang="ts-type"}
    */
-  nextMonth?: ButtonProps | undefined;
+  nextMonth?: Omit<ButtonProps, LinkPropsKeys> | undefined;
   /**
    * The icon to use for the previous year control.
    */
-  prevYearIcon?: string | object | undefined;
+  prevYearIcon?: any;
   /**
    * Configure the prev year button.
    * `{ color: 'neutral', variant: 'ghost' }`{lang="ts-type"}
    */
-  prevYear?: ButtonProps | undefined;
+  prevYear?: Omit<ButtonProps, LinkPropsKeys> | undefined;
   /**
    * The icon to use for the previous month control.
    */
-  prevMonthIcon?: string | object | undefined;
+  prevMonthIcon?: any;
   /**
    * Configure the prev month button.
    * `{ color: 'neutral', variant: 'ghost' }`{lang="ts-type"}
    */
-  prevMonth?: ButtonProps | undefined;
+  prevMonth?: Omit<ButtonProps, LinkPropsKeys> | undefined;
   color?: "primary" | "secondary" | "success" | "info" | "warning" | "error" | "neutral" | undefined;
   variant?: "solid" | "outline" | "soft" | "subtle" | undefined;
   size?: "md" | "xs" | "sm" | "lg" | "xl" | undefined;
   /**
    * Whether or not a range of dates can be selected
    */
-  range?: boolean | undefined;
+  range?: R | undefined;
   /**
    * Whether or not multiple dates can be selected
    */
-  multiple?: boolean | undefined;
+  multiple?: M | undefined;
   /**
    * Show month controls
    * @default "true"
@@ -431,17 +443,12 @@ interface CalendarProps {
    * @default "true"
    */
   yearControls?: boolean | undefined;
-  defaultValue?: DateValue | DateRange | DateValue[] | undefined;
-  modelValue?: DateValue | DateRange | DateValue[] | null | undefined;
-  ui?: { root?: ClassNameValue; header?: ClassNameValue; body?: ClassNameValue; heading?: ClassNameValue; grid?: ClassNameValue; gridRow?: ClassNameValue; gridWeekDaysRow?: ClassNameValue; gridBody?: ClassNameValue; headCell?: ClassNameValue; cell?: ClassNameValue; cellTrigger?: ClassNameValue; } | undefined;
-  /**
-   * The default placeholder date
-   */
-  defaultPlaceholder?: DateValue | undefined;
-  /**
-   * The placeholder date, which is used to determine what month to display when no date is selected. This updates as the user navigates the calendar and can be used to programmatically control the calendar view
-   */
-  placeholder?: DateValue | undefined;
+  defaultValue?: CalendarDate | CalendarDateTime | ZonedDateTime | DateRange | DateValue[];
+  modelValue?: null | CalendarDate | CalendarDateTime | ZonedDateTime | DateRange | DateValue[];
+  weekNumbers?: boolean | undefined;
+  ui?: { root?: ClassNameValue; header?: ClassNameValue; body?: ClassNameValue; heading?: ClassNameValue; grid?: ClassNameValue; gridRow?: ClassNameValue; gridWeekDaysRow?: ClassNameValue; gridBody?: ClassNameValue; headCell?: ClassNameValue; headCellWeek?: ClassNameValue; cell?: ClassNameValue; cellTrigger?: ClassNameValue; cellWeek?: ClassNameValue; } | undefined;
+  defaultPlaceholder?: CalendarDate | CalendarDateTime | ZonedDateTime;
+  placeholder?: CalendarDate | CalendarDateTime | ZonedDateTime;
   /**
    * When combined with `isDateUnavailable`, determines whether non-contiguous ranges, i.e. ranges containing unavailable dates, may be selected.
    */
@@ -471,14 +478,8 @@ interface CalendarProps {
    * @default "true"
    */
   fixedWeeks?: boolean | undefined;
-  /**
-   * The maximum date that can be selected
-   */
-  maxValue?: DateValue | undefined;
-  /**
-   * The minimum date that can be selected
-   */
-  minValue?: DateValue | undefined;
+  maxValue?: CalendarDate | CalendarDateTime | ZonedDateTime;
+  minValue?: CalendarDate | CalendarDateTime | ZonedDateTime;
   /**
    * The number of months to display at once
    */
@@ -546,7 +547,7 @@ interface CalendarSlots {
  * Emitted events for the Calendar component
  */
 interface CalendarEmits {
-  update:modelValue: (payload: [date: DateValue | DateRange | DateValue[] | null | undefined]) => void;
+  update:modelValue: (payload: [date: CalendarModelValue<R, M>]) => void;
   update:placeholder: (payload: [date: DateValue] & [date: DateValue]) => void;
   update:validModelValue: (payload: [date: DateRange]) => void;
   update:startValue: (payload: [date: DateValue | undefined]) => void;
@@ -569,11 +570,13 @@ export default defineAppConfig({
         gridWeekDaysRow: 'mb-1 grid w-full grid-cols-7',
         gridBody: 'grid',
         headCell: 'rounded-md',
+        headCellWeek: 'rounded-md text-muted',
         cell: 'relative text-center',
         cellTrigger: [
           'm-0.5 relative flex items-center justify-center rounded-full whitespace-nowrap focus-visible:ring-2 focus:outline-none data-disabled:text-muted data-unavailable:line-through data-unavailable:text-muted data-unavailable:pointer-events-none data-today:font-semibold data-[outside-view]:text-muted',
           'transition'
-        ]
+        ],
+        cellWeek: 'relative text-center text-muted'
       },
       variants: {
         color: {
@@ -616,31 +619,45 @@ export default defineAppConfig({
           xs: {
             heading: 'text-xs',
             cell: 'text-xs',
+            cellWeek: 'text-xs',
             headCell: 'text-[10px]',
+            headCellWeek: 'text-[10px]',
             cellTrigger: 'size-7',
             body: 'space-y-2 pt-2'
           },
           sm: {
             heading: 'text-xs',
             headCell: 'text-xs',
+            headCellWeek: 'text-xs',
+            cellWeek: 'text-xs',
             cell: 'text-xs',
             cellTrigger: 'size-7'
           },
           md: {
             heading: 'text-sm',
             headCell: 'text-xs',
+            headCellWeek: 'text-xs',
+            cellWeek: 'text-xs',
             cell: 'text-sm',
             cellTrigger: 'size-8'
           },
           lg: {
             heading: 'text-md',
             headCell: 'text-md',
+            headCellWeek: 'text-md',
             cellTrigger: 'size-9 text-md'
           },
           xl: {
             heading: 'text-lg',
             headCell: 'text-lg',
+            headCellWeek: 'text-lg',
             cellTrigger: 'size-10 text-lg'
+          }
+        },
+        weekNumbers: {
+          true: {
+            gridRow: 'grid-cols-8',
+            gridWeekDaysRow: 'grid-cols-8 [&>*:first-child]:col-start-2'
           }
         }
       },
@@ -854,8 +871,4 @@ export default defineAppConfig({
 
 ## Changelog
 
-<component-changelog>
-
-
-
-</component-changelog>
+See the [releases page](https://github.com/nuxt/ui/releases) for the latest changes.

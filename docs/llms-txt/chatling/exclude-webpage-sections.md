@@ -1,5 +1,9 @@
 # Source: https://docs.chatling.ai/knowledge-base/exclude-webpage-sections.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.chatling.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Exclude webpage sections
 
 > Learn how to exclude certain sections of a webpage when adding a data source.

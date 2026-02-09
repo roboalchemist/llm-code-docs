@@ -1,9 +1,13 @@
 # Source: https://docs.fireworks.ai/tools-sdks/python-client/the-tutorial.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.fireworks.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Tutorial
 
 <Warning>
-  This SDK documentation applies to version [0.19.20](https://pypi.org/project/fireworks-ai/0.19.20/) and earlier. The Build SDK will be deprecated and replaced with version 1.0.0 of the SDK (see our [changelog](/updates/changelog#2025-11-12) for more details). Please migrate to the new SDK when it becomes available.
+  This SDK documentation applies to version [0.19.20](https://pypi.org/project/fireworks-ai/0.19.20/) and earlier. The Build SDK will be deprecated and replaced with version 1.0.0 of the SDK (see our [changelog](/updates/changelog#2025-11-12) for more details). Please migrate to the [new SDK](/tools-sdks/python-sdk).
 </Warning>
 
 ## Foreword
@@ -62,7 +66,7 @@ To get started with the Fireworks AI Python SDK, you need to install the `firect
     Create an API key by running the following command:
 
     ```bash {1,4} theme={null}
-    $ firectl create api-key --key-name "quick-start"
+    $ firectl api-key create --key-name "quick-start"
     Key Id: key_42vAYeb7rwt9zzg1
     Display Name: quick-start
     Key: fw_3ZLd....

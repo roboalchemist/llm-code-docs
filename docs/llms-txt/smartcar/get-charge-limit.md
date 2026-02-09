@@ -1,5 +1,9 @@
 # Source: https://smartcar.com/docs/api-reference/evs/get-charge-limit.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://smartcar.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Charge Limit
 
 > Returns the charge limit configuration for the vehicle.
@@ -44,7 +48,7 @@ error if the OEM is unable to provide a charge limit unless the vehicle is plugg
 **Ford and Lincoln**<br />
 If a vehicle starts charging as a result of a [start charge](/api-reference/evs/control-charge) request, this endpoint will always return `1` if the charging location has a schedule in place.
 
-For the vehicle to respect its charge limit, please set one along with preferred charge times or clear the schedule through through the [charge schedule by location](/api-reference/ford/set-charge-schedule-by-location) endpoint.
+For the vehicle to respect its charge limit, please set one along with preferred charge times or clear the schedule through the [charge schedule by location](/api-reference/ford/set-charge-schedule-by-location) endpoint.
 
 **BMW and MINI**<br />
 Vehicle needs to be on OS Version 8+

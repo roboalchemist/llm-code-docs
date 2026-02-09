@@ -1,5 +1,9 @@
 # Source: https://braintrust.dev/docs/api-reference/organizations/get-organization.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://braintrust.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Get organization
 
 > Get an organization object by its id
@@ -134,6 +138,8 @@ components:
           nullable: true
           format: date-time
           description: Date of organization creation
+        image_rendering_mode:
+          $ref: '#/components/schemas/ImageRenderingMode'
       required:
         - id
         - name
@@ -141,6 +147,18 @@ components:
       type: string
       format: uuid
       description: Organization id
+    ImageRenderingMode:
+      type: string
+      nullable: true
+      enum:
+        - auto
+        - click_to_load
+        - blocked
+        - null
+      description: >-
+        Controls how images are rendered in the UI: 'auto' loads images
+        automatically, 'click_to_load' shows a placeholder until clicked,
+        'blocked' prevents image loading entirely
   securitySchemes:
     bearerAuth:
       type: http
@@ -153,7 +171,3 @@ components:
         page](https://www.braintrustdata.com/app/settings?subroute=api-keys).
 
 ````
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://braintrust.dev/docs/llms.txt

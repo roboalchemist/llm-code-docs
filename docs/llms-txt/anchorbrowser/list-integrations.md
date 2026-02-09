@@ -1,90 +1,71 @@
 # Source: https://docs.anchorbrowser.io/api-reference/integrations/list-integrations.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.anchorbrowser.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # List Integrations
 
 > Retrieves all integrations for the authenticated team.
 
+
+
 ## OpenAPI
 
 ````yaml openapi-mintlify.yaml get /v1/integrations
+openapi: 3.1.0
+info:
+  title: AnchorBrowser API
+  version: 1.0.0
+  description: APIs to manage all browser-related actions and configuration.
+servers:
+  - url: https://api.anchorbrowser.io
+    description: API server
+security: []
 paths:
-  path: /v1/integrations
-  method: get
-  servers:
-    - url: https://api.anchorbrowser.io
-      description: API server
-  request:
-    security:
-      - title: api key header
-        parameters:
-          query: {}
-          header:
-            anchor-api-key:
-              type: apiKey
-              description: API key passed in the header
-          cookie: {}
-    parameters:
-      path: {}
-      query: {}
-      header: {}
-      cookie: {}
-    body: {}
-  response:
-    '200':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              data:
-                allOf:
-                  - type: object
-                    properties:
-                      integrations:
-                        type: array
-                        items:
-                          $ref: '#/components/schemas/IntegrationItem'
-            refIdentifier: '#/components/schemas/IntegrationListResponse'
-        examples:
-          example:
-            value:
-              data:
-                integrations:
-                  - id: 550e8400-e29b-41d4-a716-446655440000
-                    name: My 1Password Integration
-                    type: 1PASSWORD
-                    path: integrations/team-id/550e8400-e29b-41d4-a716-446655440000
-                    createdAt: '2024-01-01T00:00:00.000Z'
-        description: List of integrations retrieved successfully
-    '500':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              error:
-                allOf:
-                  - type: object
-                    properties:
-                      code:
-                        type: integer
-                      message:
-                        type: string
-            refIdentifier: '#/components/schemas/ErrorResponse'
-        examples:
-          example:
-            value:
-              error:
-                code: 123
-                message: <string>
-        description: Failed to list integrations
-  deprecated: false
-  type: path
+  /v1/integrations:
+    get:
+      tags:
+        - Integrations
+      summary: List Integrations
+      description: Retrieves all integrations for the authenticated team.
+      responses:
+        '200':
+          description: List of integrations retrieved successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IntegrationListResponse'
+        '500':
+          description: Failed to list integrations
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      security:
+        - api_key_header: []
 components:
   schemas:
-    IntegrationType:
-      type: string
-      enum:
-        - 1PASSWORD
-      description: The type of integration
+    IntegrationListResponse:
+      type: object
+      properties:
+        data:
+          type: object
+          properties:
+            integrations:
+              type: array
+              items:
+                $ref: '#/components/schemas/IntegrationItem'
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: integer
+            message:
+              type: string
     IntegrationItem:
       type: object
       properties:
@@ -108,5 +89,16 @@ components:
           format: date-time
           description: Timestamp when the integration was created
           example: '2024-01-01T00:00:00.000Z'
+    IntegrationType:
+      type: string
+      enum:
+        - 1PASSWORD
+      description: The type of integration
+  securitySchemes:
+    api_key_header:
+      type: apiKey
+      in: header
+      name: anchor-api-key
+      description: API key passed in the header
 
 ````

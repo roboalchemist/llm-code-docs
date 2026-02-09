@@ -1,18 +1,22 @@
 # Source: https://docs.intelligems.io/checkout/getting-started-with-checkout.md
 
-# Getting Started with Checkout Experiences
+# Getting Started with Checkout Personalizations
 
 {% hint style="success" %}
 **Shopify Plus Required**
 
-Checkout Experiences require a Shopify Plus account. This is a Shopify limitation - adding app blocks on the checkout page are only available to Shopify Plus merchants. If you're not on Shopify Plus, you'll see a message in the Intelligems app letting you know this feature isn't available.
+Checkout Personalizations require a Shopify Plus account. This is a Shopify limitation - adding app blocks on the checkout page are only available to Shopify Plus merchants. If you're not on Shopify Plus, you'll see a message in the Intelligems app letting you know this feature isn't available.
 {% endhint %}
 
-## What are Checkout Experiences?
+{% hint style="info" %}
+Yes, Checkout Personalizations and Checkout testing work on Headless stores
+{% endhint %}
 
-Checkout Experiences help you add custom content blocks to your Shopify checkout page to build trust, reduce cart abandonment, and improve conversion rates. These blocks appear directly on the checkout page where customers complete their purchase.
+## What are Checkout Personalizations?
 
-With Checkout Experiences, you can:
+Checkout Personalizations help you add custom content blocks to your Shopify checkout page to build trust, reduce cart abandonment, improve AOV, and improve conversion rates. These blocks appear directly on the checkout page where customers complete their purchase.
+
+With Checkout Personalizations, you can:
 
 * Add trust badges to build customer confidence
 * Display security guarantees and certifications
@@ -20,14 +24,15 @@ With Checkout Experiences, you can:
 * Highlight shipping and return policies
 * Add custom callouts and messaging
 * Test different checkout content to see what converts best
+* Add product upsells
 
-## How to Access Checkout Experiences
+## How to Access Checkout Personalizations
 
-You can find the Checkout Experiences feature in your Intelligems dashboard:
+You can find the Checkout Personalizations feature in your Intelligems dashboard:
 
 1. Log into your Intelligems account
-2. Navigate to the Checkout Experiences section
-3. Click "Create New Checkout Experience" to get started
+2. Navigate to the Checkout Personalization section
+3. Click "Create New Checkout Personalization" to get started
 
 ## Types of Blocks
 
@@ -87,22 +92,43 @@ Static images allow you to add custom graphics to your checkout.
 
 **Example:** Payment security badges or industry certifications
 
-## Setting Up Your First Checkout Experience
+### 4. Product Upsell
+
+Add product directly upsells into your checkout
+
+**When to use it:**&#x20;
+
+* You want to show complementary, easy-add items at checkout
+* You want to increase AOV
+* You want to show a specific item to all customers
+
+**How it works:**&#x20;
+
+* Select your product(s) - up to three
+* Update your headline and and colors
+  * Product images, titles, and prices are pulled from Shopify and cannot be edited
+* Once a product is added to cart, it is automatically removed from the product upsell block
+* If a selected product variant is out of stock:
+  * The add to cart button is disabled and the button copy says out of stock
+
+**Example:** Show complementary products that are one size for easy add-on
+
+## Setting Up Your First Checkout Personalization
 
 Follow these steps to create and activate a block:
 
 ### Step 1: Choose Your Block Type and Name It
 
-1. Go to Checkout Experiences in your dashboard
-2. Click "Create New Checkout Experience"
-3. Select a layout type (Trust Badge, Callout, or Static Image)
-4. Give your experience a clear, descriptive name (like "Lifetime Warranty Badge" or "Security Trust Badges")
+1. Go to Checkout Personalizations in your dashboard
+2. Click "Create New Checkout Personalization"
+3. Select a layout type (Trust Badge or Upsell)
+4. Give your experience a clear, descriptive name (like "Lifetime Warranty Badge" or "Security Trust Badges" or "Best Selling Upsells")
 
 ### Step 2: Understanding Block Structure
 
 Before diving into configuration, it's helpful to understand what makes up a block.
 
-#### **What's in a Badge?**
+#### **For Trust Badges: What's in a Badge?**
 
 Each badge in your block contains three elements:
 
@@ -112,14 +138,18 @@ Each badge in your block contains three elements:
 
 #### Block Composition
 
-* A single block can contain **1 to 15 badges**
+* A single block can contain **1 to 6 badges**
 * Each badge can be customized individually (different icons, text, colors)
 * Badges are arranged in a grid layout that you control (rows and columns)
 * The entire block can optionally include a heading above all badges
 
-Now let's configure your block.
+#### For Upsells: Select your products
 
-\[Screenshot with labels for each area of the layout]
+* You can select **1 to 3 products**
+* You can choose vertical or horizontal layout
+* Update colors, copy, image size, and more
+
+Now let's configure your block.
 
 ### Step 3: Configure Block Structure and Layout
 
@@ -134,12 +164,12 @@ Now let's configure your block.
 
 * A unique identifier used to connect this block to Shopify checkout
 * Must be unique across all your blocks
-* Use lowercase letters, numbers, and hyphens (e.g., "trust-badge-1", "warranty-callout")
+* Use lowercase letters, numbers, and hyphens (e.g., "trust-badge-1", "warranty-callout", "3-product-upsell")
 * You'll need this exact ID when adding the block to Shopify
 
 **Heading (Optional)**
 
-* Add a main heading above your badges (e.g., "CHECKOUT NOW!" or "Why Shop With Us")
+* Add a main heading above your badges or products (e.g., "CHECKOUT NOW!" or "Why Shop With Us")
 * Leave the heading text field blank to hide the heading entirely
 * The heading appears centered above all badges
 
@@ -172,7 +202,7 @@ The total badges displayed = rows × columns. If you have more badges configured
 * **Right:** Icon to the right of text
 * **Bottom:** Icon below text
 
-This applies uniformly to all badges in the block.
+This applies uniformly to all badges in the block. Product upsells can be 1-3 products, either vertical or horizontal layout.&#x20;
 
 ### Step 4: Design Your Block - Typography and Visual Style
 
@@ -186,7 +216,7 @@ Typography settings apply to all badges uniformly and use [preset options from y
 
 #### Color Settings
 
-All color options come directly from your Shopify checkout brand settings. These are not custom color pickers - you're selecting from [preset colors defined in your checkout theme](https://docs.intelligems.io/personalizations/getting-started-with-checkout#common-questions).
+All color options come directly from your Shopify checkout brand settings. These are not custom color pickers - you're selecting from [preset colors defined in your checkout theme](https://docs.intelligems.io/personalizations/getting-started-with-checkout#common-questions). You can't fully customize checkout block colors because the checkout is a secure, locked environment for security and consistency, limiting changes to basic theme settings like accent colors - this is a Shopify limitation.&#x20;
 
 * **Title Color:** Sets the color for badge title text.
 * **Subtitle Color:** Sets the color for badge subtitle text. Uses the same color palette as title colors.
@@ -207,7 +237,7 @@ All color options come directly from your Shopify checkout brand settings. These
 
 ### Step 5: Configure Individual Badges
 
-Now configure the content for each badge. You can add up to 15 badges per block using the "+ Add badge" button.
+Now configure the content for each badge for Trust Badges. You can add up to 6 badges per block using the "+ Add badge" button.
 
 Each badge has the following settings:
 
@@ -230,7 +260,7 @@ Each badge has the following settings:
 
 #### **Configuring Multiple Badges:**
 
-Use the "+ Add badge" button at the bottom of the badges section to add more badges (up to 15 total). Each badge is configured independently with its own icon, colors, title, and subtitle.
+Use the "+ Add badge" button at the bottom of the badges section to add more badges (up to 6 total). Each badge is configured independently with its own icon, colors, title, and subtitle.
 
 You can also:
 
@@ -259,13 +289,13 @@ As you make changes, the preview pane updates in real-time to show how your bloc
 
 **Note:** The preview shows your block in the Intelligems interface. The final appearance on your Shopify checkout may have slight variations based on your checkout theme settings.
 
-### Step 8: Save and Create Experience
+### Step 8: Save and Create Personalization
 
 1. Click "Next" when you're satisfied with your block design
-2. Choose whether to create a single Experience or a Test:
-   * **Create Experience:** Activate this block on your checkout
-   * **Create Test:** Test multiple variations against each other
-3. Your Checkout Experience is now created and ready for Shopify configuration
+2. Choose whether to create a single Personalization or a Test:
+   * **Complete checkout setup:** Activate this block on your checkout to a targeted audience or all visitors
+   * **Create a checkout test:** Test multiple variations against each other
+3. Your Checkout Personalization is now created and ready for Shopify configuration
 
 ### Step 9: Add Block to Shopify Checkout
 
@@ -284,22 +314,22 @@ This is a required step - you must configure the block in Shopify for it to appe
 11. Click **Save** in the top right corner
 12. Use **Preview** to see your block on a live checkout page and in a **Shop Pay** checkout
 
-**Important:** Each Checkout Experience needs to be added to your Shopify checkout separately using its unique Block ID. Without this step, the block won't appear on your checkout page.
+**Important:** Each Checkout Personalization needs to be added to your Shopify checkout separately using its unique Block ID. Without this step, the block won't appear on your checkout page.
 
-### Step 10: Activate Your Experience
+### Step 10: Activate Your Personalization
 
 Once your block is configured in Shopify:
 
-1. Return to your Intelligems Experience
+1. Return to your Intelligems Personalization
 2. Set up any targeting (optional) - see Targeting section below
-3. Review your Experience settings
+3. Review your Personalization settings
 4. Click "Activate" to make it live
 
 Your block will now appear for customers based on your targeting settings.
 
-## Targeting Your Checkout Experiences
+## Targeting Your Checkout Personalizations
 
-You can control who sees your Checkout Experiences using targeting rules:
+You can control who sees your Checkout Personalizations using targeting rules:
 
 **Audience Targeting:**
 
@@ -321,17 +351,17 @@ You can control who sees your Checkout Experiences using targeting rules:
 * Display country-specific guarantees or policies
 * Limit to specific marketing campaigns
 
-## Adding Multiple Blocks to One Experience
+## Adding Multiple Blocks to One Personalization
 
-You can add multiple blocks to a single Experience. All blocks in the Experience will activate together.
+You can add multiple blocks to a single Personalization. All blocks in the Personalization will activate together.
 
 **To add multiple blocks:**
 
 1. Create your first block and save it
-2. In your Experience, click "Add another block"
+2. In your Personalization, click "Add another block"
 3. Configure your second block with a different Location ID
 4. Repeat for additional blocks
-5. Save the updated Experience
+5. Save the updated Personalization
 6. Add each block to your Shopify checkout using its unique Block ID
 
 ## FAQs <a href="#common-questions" id="common-questions"></a>
@@ -339,28 +369,31 @@ You can add multiple blocks to a single Experience. All blocks in the Experience
 * **Do I need to be on Shopify Plus?**
 
   Yes, Shopify checkout extensibility and using blocks are only available to Shopify Plus merchants. This is a Shopify limitation, not an Intelligems one.
-* **Do Checkout Experiences have any impact on my Checkout page's load time?**\
+* **Do Checkout Personalizations have any impact on my Checkout page's load time?**\
   Intelligems blocks have no impact on your core checkout performance. Intelligems doesn’t interfere with the loading of payment details, shipping forms, or any other critical elements needed for customers to complete their purchase. Blocks load only after the checkout page has been fully initialized, and their load time is driven mostly by the user’s internet connection. Average load time is 248 milliseconds.
 * **Can I use dynamic content in my blocks?**
 
-  Not yet. Currently, Checkout Experiences only support static text and images. Additional blocks like countdown timers, upsells, recommendations, and reviews are coming soon.
+  Not yet. Currently, Checkout Personalizations only support static text and images. Additional blocks like countdown timers, upsells, recommendations, and reviews are coming soon.
+* **Can I add both a Trust Badge and an Upsell block to my checkout?**\
+  Yes, you can add multiple Trust Badge blocks or Upsell blocks to an Experience or Test. Create your first block in a test or Personalization, then in the Modifications tab, click + Add another block and add another block.&#x20;
 * **How many blocks can I add to my checkout?**
 
-  You can add as many blocks as you want to a single Experience, and create multiple Experiences. However, we recommend keeping your checkout clean with only the most important messages.
+  You can add as many blocks as you want to a single Personalization, and create multiple Personalizations. However, we recommend keeping your checkout clean with only the most important messages.
 * **Can I test these blocks?**
 
-  Yes! If you're on a Plus or Blue plan, you can create tests with different Checkout Experiences to see which performs best. Testing blocks is not available on Core plans.
+  Yes! If you're on a Plus or Blue plan, you can create tests with different Checkout Personalizations to see which performs best. Testing blocks is not available on Core plans.
 * **What if I change my block in Intelligems?**
 
   Changes to your block design will automatically update on your checkout. You don't need to reconfigure anything in Shopify unless you're changing the Block ID.
 * **Can blocks appear conditionally?**
 
   Yes, you can use Intelligems targeting to show blocks only to specific audiences, countries, devices, or based on other conditions.
-* **Will this work with checkout extensions?** Yes, Intelligems Checkout Experiences work alongside other Shopify checkout extensions and apps.
+* **Will this work with checkout extensions?** Yes, Intelligems Checkout Personalizations work alongside other Shopify checkout extensions and apps.
 * **Where do the color and typography options come from?**
 
   All colors come from your Shopify checkout brand settings.
 
+  \
   **To modify available options:**
 
   1. Go to your Shopify admin
@@ -372,13 +405,13 @@ You can add multiple blocks to a single Experience. All blocks in the Experience
 
 ## Getting Help
 
-If you need assistance with setting up Checkout Experiences:
+If you need assistance with setting up Checkout Personalizations:
 
 * Check the technical integration guides for detailed setup instructions
 * Contact Intelligems support for help with complex configurations
 * Work with your Shopify team if you need help accessing checkout customization
 
-For more details about testing different checkout experiences, see Testing Checkout Experiences.
+For more details about testing different checkout Personalizations, see [Testing Checkout Personalizations.](https://docs.intelligems.io/checkout/testing-checkout-experiences)
 
 ***
 

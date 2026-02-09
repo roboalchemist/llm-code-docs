@@ -1,5 +1,9 @@
 # Source: https://braintrust.dev/docs/api-reference/groups/create-group.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://braintrust.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Create group
 
 > Create a new group. If there is an existing group with the same name as the one specified in the request, will return the existing group unmodified
@@ -223,7 +227,3 @@ components:
         page](https://www.braintrustdata.com/app/settings?subroute=api-keys).
 
 ````
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://braintrust.dev/docs/llms.txt

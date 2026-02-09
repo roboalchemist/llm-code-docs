@@ -1,4 +1,8 @@
-# Source: https://mintlify.com/docs/create/files.md
+# Source: https://www.mintlify.com/docs/create/files.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.mintlify.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Files
 
@@ -16,78 +20,21 @@ Files must be less than 20 MB for images and 100 MB for other file types.
 
 ## Supported file types
 
-### Image formats
+Supported file types for all plans:
 
-* `.jpeg`, `.jpg`, `.jfif`, `.pjpeg`, `.pjp`
-* `.png`
-* `.svg`, `.svgz`
-* `.ico`
-* `.webp`
-* `.gif`, `.apng`
-* `.avif`
-* `.bmp`
-* `.tiff`, `.tif`
+* **Images**: `.png`, `.jpg`, `.jpeg`, `.gif`, `.webp`, `.svg`, `.ico`
+* **Video**: `.mp4`, `.webm`
+* **Audio**: `.mp3`, `.wav`
+* **Data**: `.json`, `.yaml`
+* **Stylesheets**: `.css`
+* **Scripts**: `.js`
+* **Fonts**: `.woff`, `.woff2`, `.ttf`, `.eot`
 
-### Video formats
+Supported file types for Enterprise plans:
 
-* `.mp4`
-* `.webm`
-* `.ogg`
-* `.avi`
-* `.mov`
-* `.wmv`
-* `.flv`
-* `.mkv`
-* `.m4v`
-
-### Audio formats
-
-* `.mp3`
-* `.wav`
-* `.flac`
-* `.aac`
-* `.ogg`
-* `.wma`
-* `.m4a`
-
-### Font formats
-
-* `.woff`
-* `.woff2`
-* `.ttf`
-* `.otf`
-* `.eot`
-
-### Document formats
-
-<Note>Document formats are only available for Custom plans and are not supported when authentication is enabled.</Note>
-
-* `.pdf`
-* `.txt`
-* `.doc`, `.docx`
-* `.xls`, `.xlsx`
-* `.ppt`, `.pptx`
-* `.rtf`
-* `.odt`, `.ods`, `.odp`
-
-### Data formats
-
-<Note>Data formats are only available for Custom plans and are not supported when authentication is enabled.</Note>
-
-* `.csv`
-* `.tsv`
-* `.xml`
-
-### Archive formats
-
-<Note>Archive formats are only available for Custom plans and are not supported when authentication is enabled.</Note>
-
-* `.zip`
-* `.rar`
-* `.7z`
-* `.tar`
-* `.gz`
-* `.bz2`
+* **Documents**: `.pdf`, `.txt`
+* **Data**: `.xml`, `.csv`
+* **Archives**: `.zip`
 
 ## File organization
 

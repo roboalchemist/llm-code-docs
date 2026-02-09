@@ -2,21 +2,9 @@
 
 # Source: https://infisical.com/docs/integrations/app-connections/databricks.md
 
-# Source: https://infisical.com/docs/integrations/secret-syncs/databricks.md
-
-# Source: https://infisical.com/docs/integrations/app-connections/databricks.md
-
-# Source: https://infisical.com/docs/integrations/secret-syncs/databricks.md
-
-# Source: https://infisical.com/docs/integrations/cloud/databricks.md
-
-# Source: https://infisical.com/docs/integrations/app-connections/databricks.md
-
-# Source: https://infisical.com/docs/integrations/secret-syncs/databricks.md
-
-# Source: https://infisical.com/docs/integrations/cloud/databricks.md
-
-# Source: https://infisical.com/docs/integrations/app-connections/databricks.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://infisical.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Databricks Connection
 
@@ -63,11 +51,44 @@ Infisical supports the use of [service principals](https://docs.databricks.com/e
   </Step>
 </Steps>
 
+<Accordion title="Configure Permissions for Secret Rotation">
+  <Steps>
+    <Step title="Add Service Principal to Admin Group">
+      Navigate to **Settings** > **Identity & Access** > **Groups** and select the admin group (typically named "admins" or "workspace-admins").
+
+            <img src="https://mintlify.s3.us-west-1.amazonaws.com/infisical/images/app-connections/databricks/admin-group.png" alt="Admin Group" />
+
+      Click **Add** and select the service principal you created for Infisical to add it to the admin group.
+
+      <img src="https://mintlify.s3.us-west-1.amazonaws.com/infisical/images/app-connections/databricks/add-to-admin-group.png" alt="Add to Admin Group" />
+      <img src="https://mintlify.s3.us-west-1.amazonaws.com/infisical/images/app-connections/databricks/add-to-admin-group-form.png" alt="Add to Admin Group Modal" />
+    </Step>
+
+    <Step title="Grant Manage Permission for Target Service Principals">
+      For each service principal whose secrets you want to rotate, navigate to **Settings** > **Identity & Access** > **Service Principals** and select the target service principal.
+
+            <img src="https://mintlify.s3.us-west-1.amazonaws.com/infisical/images/app-connections/databricks/select-target-service-principal.png" alt="Select Target Service Principal" />
+    </Step>
+
+    <Step title="Open Permissions Tab">
+      Click on the **Permissions** tab for the selected service principal. And then click the **Grant access** button to open the permission modal
+
+            <img src="https://mintlify.s3.us-west-1.amazonaws.com/infisical/images/app-connections/databricks/permissions-tab.png" alt="Permissions Tab" />
+    </Step>
+
+    <Step title="Grant Manage Permission to Infisical Service Principal">
+      In the **User, Group or Service Principal** field, select the service principal you created for Infisical. In the **Permission** field, select **Manage** to allow the Infisical service principal to manage credentials and secrets for this service principal. Click **Save** to apply the permissions. Repeat these steps for each service principal whose secrets you want to rotate.
+
+            <img src="https://mintlify.s3.us-west-1.amazonaws.com/infisical/images/app-connections/databricks/assign-manage-permission.png" alt="Assign Manage Permission" />
+    </Step>
+  </Steps>
+</Accordion>
+
 ## Setup Databricks Connection in Infisical
 
 <Steps>
   <Step title="Navigate to App Connections">
-    Navigate to the **App Connections** page in the desired project. <img src="https://mintlify.s3.us-west-1.amazonaws.com/infisical/images/app-connections/general/add-connection.png" alt="App Connections
+    Navigate to the **Integrations** tab in the desired project, then select **App Connections**. <img src="https://mintlify.s3.us-west-1.amazonaws.com/infisical/images/app-connections/general/add-connection.png" alt="App Connections
     Tab" />
   </Step>
 

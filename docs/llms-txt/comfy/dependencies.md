@@ -1,5 +1,9 @@
 # Source: https://docs.comfy.org/development/core-concepts/dependencies.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.comfy.org/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Dependencies
 
 > Understand dependencies in ComfyUI
@@ -35,14 +39,16 @@ ComfyUI is a Python-based project. We build a standalone Python environment to r
 You can view ComfyUI's current dependencies in the [requirements.txt](https://github.com/comfyanonymous/ComfyUI/blob/master/requirements.txt) file:
 
 ```text  theme={null}
-comfyui-frontend-package==1.14.5
+comfyui-frontend-package==1.32.9
+comfyui-workflow-templates==0.7.25
+comfyui-embedded-docs==0.3.1
 torch
 torchsde
 torchvision
 torchaudio
 numpy>=1.25.0
 einops
-transformers>=4.28.1
+transformers>=4.50.3
 tokenizers>=0.13.3
 sentencepiece
 safetensors>=0.4.2
@@ -53,12 +59,15 @@ Pillow
 scipy
 tqdm
 psutil
+alembic
+SQLAlchemy
+av>=14.2.0
 
 #non essential dependencies:
 kornia>=0.7.1
 spandrel
-soundfile
-av
+pydantic~=2.0
+pydantic-settings~=2.0
 ```
 
 As ComfyUI evolves, we may adjust dependencies accordingly, such as adding new dependencies or removing ones that are no longer needed.

@@ -1,5 +1,9 @@
 # Source: https://bun.com/docs/runtime/streams.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://bun.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Streams
 
 > Use Bun's streams API to work with binary data without loading it all into memory at once

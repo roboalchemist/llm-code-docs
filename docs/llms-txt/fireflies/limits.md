@@ -1,5 +1,9 @@
 # Source: https://docs.fireflies.ai/fundamentals/limits.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.fireflies.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Limits
 
 > File size and API rate limits for the Fireflies API

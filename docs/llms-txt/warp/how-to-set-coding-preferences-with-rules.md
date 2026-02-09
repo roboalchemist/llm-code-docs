@@ -10,8 +10,7 @@ This tutorial teaches you how to customize your development setup using **Warpâ€
 
 {% stepper %}
 {% step %}
-
-### The Problem
+**The Problem**
 
 When using AI tools to write or modify code, they often default to outdated or undesired tools.\
 For example, many agents still use **npm** instead of **pnpm** â€” or **pip** instead of **miniconda**.
@@ -20,8 +19,7 @@ Warp fixes this by letting you define your preferences once, and then applying t
 {% endstep %}
 
 {% step %}
-
-### The Rule Setup
+**The Rule Setup**
 
 You can set Rules for how you want the AI to handle environments, dependencies, and commands.
 
@@ -42,8 +40,7 @@ This ensures the agent automatically chooses the right package manager or enviro
 {% endstep %}
 
 {% step %}
-
-### Supported Use Cases
+**Supported Use Cases**
 
 You can apply Rules to:
 

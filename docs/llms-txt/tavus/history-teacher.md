@@ -1,5 +1,9 @@
 # Source: https://docs.tavus.io/sections/conversational-video-interface/conversation/usecases/history-teacher.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.tavus.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # History Teacher
 
 > Engage in historical discussions with our History Teacher persona.
@@ -26,11 +30,10 @@
       "perception_tool_prompt": "",
       "tool_prompt": ""
     },
-    "stt": {
-      "participant_pause_sensitivity": "high",
-      "participant_interrupt_sensitivity": "medium",
-      "smart_turn_detection": true,
-      "hotwords": ""
+    "conversational_flow": {
+      "turn_detection_model": "sparrow-1",
+      "turn_taking_patience": "medium",
+      "replica_interruptibility": "low"
     }
   },
   "default_replica_id": "r6ae5b6efc9d",
@@ -46,7 +49,7 @@ This predefined persona is configured to provide personalized history lessons. I
 * **System Prompt**: Provides comprehensive behavioral instructions to maintain a natural, spoken-word style that is calm, personable, and professional.
 * **Model Layers**:
   * **Perception Configuration**: Uses the `raven-0` perception model to observe the student's engagement, attention, environment, and facial expressions.
-  - **STT Layer**: Uses `tavus-advanced` engine with smart turn detection for seamless real-time conversations.
+  - **Conversational Flow Layer**: Uses `sparrow-1` turn detection model with medium turn-taking patience for balanced educational dialogue and low replica interruptibility for clear, uninterrupted teaching.
 
 ## Create a Conversation with the History Teacher Persona
 

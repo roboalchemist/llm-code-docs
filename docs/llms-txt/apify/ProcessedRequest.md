@@ -16,24 +16,24 @@ Represents a processed request.
 
 ## Properties<!-- -->[**](#Properties)
 
-### [**](#id)[**](https://github.com/apify/crawlee-python/blob/4b41e9719dcea4247ee874e5950c51d60de7e647//src/crawlee/storage_clients/models.py#L140)id
+### [**](#id)[**](https://github.com/apify/crawlee-python/blob/3e08b24571bbd21f25523e9aa81bc31ba308628d//src/crawlee/storage_clients/models.py#L145)id
 
 **id: str | None
 
 Internal representation of the request by the storage client. Only some clients use id.
 
-### [**](#model_config)[**](https://github.com/apify/crawlee-python/blob/4b41e9719dcea4247ee874e5950c51d60de7e647//src/crawlee/storage_clients/models.py#L138)model\_config
+### [**](#model_config)[**](https://github.com/apify/crawlee-python/blob/3e08b24571bbd21f25523e9aa81bc31ba308628d//src/crawlee/storage_clients/models.py#L143)model\_config
 
 **model\_config: Undefined
 
-### [**](#unique_key)[**](https://github.com/apify/crawlee-python/blob/4b41e9719dcea4247ee874e5950c51d60de7e647//src/crawlee/storage_clients/models.py#L143)unique\_key
+### [**](#unique_key)[**](https://github.com/apify/crawlee-python/blob/3e08b24571bbd21f25523e9aa81bc31ba308628d//src/crawlee/storage_clients/models.py#L148)unique\_key
 
 **unique\_key: str
 
-### [**](#was_already_handled)[**](https://github.com/apify/crawlee-python/blob/4b41e9719dcea4247ee874e5950c51d60de7e647//src/crawlee/storage_clients/models.py#L145)was\_already\_handled
+### [**](#was_already_handled)[**](https://github.com/apify/crawlee-python/blob/3e08b24571bbd21f25523e9aa81bc31ba308628d//src/crawlee/storage_clients/models.py#L150)was\_already\_handled
 
 **was\_already\_handled: bool
 
-### [**](#was_already_present)[**](https://github.com/apify/crawlee-python/blob/4b41e9719dcea4247ee874e5950c51d60de7e647//src/crawlee/storage_clients/models.py#L144)was\_already\_present
+### [**](#was_already_present)[**](https://github.com/apify/crawlee-python/blob/3e08b24571bbd21f25523e9aa81bc31ba308628d//src/crawlee/storage_clients/models.py#L149)was\_already\_present
 
 **was\_already\_present: bool

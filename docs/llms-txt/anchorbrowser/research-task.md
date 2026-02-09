@@ -1,22 +1,63 @@
 # Source: https://docs.anchorbrowser.io/examples/research-task.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.anchorbrowser.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Deep Research
 
 The following example demonstrates how to use Anchor Browser to perform web research tasks.
 
-```tsx node.js theme={null}
-import { chromium } from 'playwright';
+<CodeGroup>
+  ```tsx node.js theme={null}
+  import Anchorbrowser from 'anchorbrowser';
 
-const browser = await chromium.connectOverCDP(connectionString);
-const context = browser.contexts()[0];
-const ai = context.serviceWorkers()[0];
-const page = context.pages()[0];
+  const anchorClient = new Anchorbrowser()
+  const session = await anchorClient.sessions.create()
+  const sessionId = session.data?.id
 
-await page.goto("http://docs.anchorbrowser.io/", { waitUntil: 'domcontentloaded' });
+  const result = await anchorClient.agent.task(
+    `Find the most recent NBA game played by the Milwaukee Bucks
+     and provide the result.`,
+    {
+      taskOptions: {
+        url: 'https://nba.com/',
+      },
+      sessionId: sessionId,
+    }
+  )
+  console.log(result)
 
-const result = await ai.evaluate('Find the most recent NBA game played by the Milwaukee Bucks and provide the result.')
-console.log(result);
+  const author = await anchorClient.agent.task(
+    `Find an article discussing the game and provide the author's name.`,
+    {
+      sessionId: sessionId,
+    }
+  )
+  console.log(author)
+  ```
 
-const author = await ai.evaluate('Find an article discussing the game and provide the author\'s name.')
-console.log(author);
-```
+  ```python python theme={null}
+  from anchorbrowser import Anchorbrowser
+
+  anchor_client = Anchorbrowser()
+  session = anchor_client.sessions.create()
+  session_id = session.data.id
+
+  result = anchor_client.agent.task(
+    '''Find the most recent NBA game played by the Milwaukee Bucks
+       and provide the result.''',
+    task_options={
+      'url': 'https://nba.com/',
+    },
+    session_id=session_id,
+  )
+  print(result)
+
+  author = anchor_client.agent.task(
+    'Find an article discussing the game and provide the author\'s name.',
+    session_id=session_id,
+  )
+  print(author)
+  ```
+</CodeGroup>

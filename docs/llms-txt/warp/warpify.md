@@ -8,8 +8,8 @@
 
 ## Subshells
 
-<figure><img src="https://2297236823-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-MbqIgTw17KQvq_DQuRr%2Fuploads%2Fgit-blob-bbd768d41f956ba63cc7410138fc2e5980c74d30%2Fsubshells-demo.gif?alt=media" alt=""><figcaption><p>Warpify Subshells Demo</p></figcaption></figure>
+<figure><img src="https://4009768362-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FPsjNxoJ0NFCXW6rRdHH3%2Fuploads%2Fgit-blob-bbd768d41f956ba63cc7410138fc2e5980c74d30%2Fsubshells-demo.gif?alt=media" alt=""><figcaption><p>Warpify Subshells Demo</p></figcaption></figure>
 
 ## SSH
 
-<figure><img src="https://2297236823-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-MbqIgTw17KQvq_DQuRr%2Fuploads%2Fgit-blob-5cfba89554e738ad331b86151eae6b7bb819e306%2Fsubshell-ssh-demo.gif?alt=media&#x26;token=6af18eca-bfd1-4fd7-888a-2af3dd65dd51" alt=""><figcaption><p>Warpify SSH Demo</p></figcaption></figure>
+<figure><img src="https://4009768362-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FPsjNxoJ0NFCXW6rRdHH3%2Fuploads%2Fgit-blob-5cfba89554e738ad331b86151eae6b7bb819e306%2Fsubshell-ssh-demo.gif?alt=media" alt=""><figcaption><p>Warpify SSH Demo</p></figcaption></figure>

@@ -10,13 +10,13 @@
 
 ## Run your first Apify Actor
 
-Before you can run an Actor, you have to either choose one of the existing ones from https://apify.com/store or https://docs.apify.com/platform/actors/development.md. To get started, we recommend trying out an Actor from the https://apify.com/store. Once you have chosen an Actor, you can start it in a number of ways.
+Before you can run an Actor, you have to either choose one of the existing ones from [Apify Store](https://apify.com/store) or [build your own](https://docs.apify.com/platform/actors/development.md). To get started, we recommend trying out an Actor from the [Store](https://apify.com/store). Once you have chosen an Actor, you can start it in a number of ways.
 
-> **You will need an Apify account to complete this tutorial. If you don't have one, https://console.apify.com/sign-up first. Don't worry about the price - it's free.**
+> **You will need an Apify account to complete this tutorial. If you don't have one, [complete the sign-up process](https://console.apify.com/sign-up) first. Don't worry about the price - it's free.**
 
 ### 1. Choose your Actor
 
-After you sign-in to Apify Console, navigate to https://console.apify.com/store. We'll pick the https://console.apify.com/actors/aYG0l9s7dbB7j3gbS/information/version-0/readme:
+After you sign-in to Apify Console, navigate to [Apify Store](https://console.apify.com/store). We'll pick the [Website Content Crawler](https://console.apify.com/actors/aYG0l9s7dbB7j3gbS/information/version-0/readme):
 
 ![Apify Store](/assets/images/store-5b5e59758034626dd92a45735c138c20.png)
 
@@ -47,11 +47,11 @@ And you can use the export button at the bottom left to export the data in multi
 
 ![Export results](/assets/images/export-results-b04ca04e8fbe111ee6b091c9f2b5e973.png)
 
-And that's it! Now you can get back to the Actor's input, play with it, and try out more of the https://apify.com/store or https://docs.apify.com/platform/actors/development.md.
+And that's it! Now you can get back to the Actor's input, play with it, and try out more of the [Apify Actors](https://apify.com/store) or [build your own](https://docs.apify.com/platform/actors/development.md).
 
 ## Running via Apify API
 
-Actors can also be invoked using the Apify API by sending an HTTP POST request to the https://docs.apify.com/api/v2.md#/reference/actors/run-collection/run-actor endpoint, such as:
+Actors can also be invoked using the Apify API by sending an HTTP POST request to the [Run Actor](https://docs.apify.com/api/v2.md#/reference/actors/run-collection/run-actor) endpoint, such as:
 
 
 ```
@@ -59,15 +59,15 @@ https://api.apify.com/v2/acts/compass~crawler-google-places/runs?token=<YOUR_API
 ```
 
 
-An Actor's input and its content type can be passed as a payload of the POST request, and additional options can be specified using URL query parameters. For more details, see the https://docs.apify.com/api/v2.md#/reference/actors/run-collection/run-actor section in the API reference.
+An Actor's input and its content type can be passed as a payload of the POST request, and additional options can be specified using URL query parameters. For more details, see the [Run Actor](https://docs.apify.com/api/v2.md#/reference/actors/run-collection/run-actor) section in the API reference.
 
-> To learn more about this, read the https://docs.apify.com/academy/api/run-actor-and-retrieve-data-via-api.md tutorial.
+> To learn more about this, read the [Run an Actor or task and retrieve data via API](https://docs.apify.com/academy/api/run-actor-and-retrieve-data-via-api.md) tutorial.
 
 ## Running programmatically
 
 Actors can also be invoked programmatically from your own applications or from other Actors.
 
-To start an Actor from your own application, we recommend using our API client libraries for https://docs.apify.com/api/client/js/reference/class/ActorClient#call or https://docs.apify.com/api/client/python/reference/class/ActorClient#call.
+To start an Actor from your own application, we recommend using our API client libraries for [JavaScript](https://docs.apify.com/api/client/js/reference/class/ActorClient#call) or [Python](https://docs.apify.com/api/client/python/reference/class/ActorClient#call).
 
 * JavaScript
 * Python
@@ -109,4 +109,4 @@ print(dataset_items)
 
 The newly started Actor runs under the account associated with the provided `token`, and therefore all resources consumed are charged to this user account.
 
-Internally, the `call()` function invokes the https://docs.apify.com/api/v2.md#/reference/actors/run-collection/run-actor API endpoint, waits for the Actor to finish, and reads its output using the https://docs.apify.com/api/v2.md#/reference/datasets/item-collection/get-items API endpoint.
+Internally, the `call()` function invokes the [Run Actor](https://docs.apify.com/api/v2.md#/reference/actors/run-collection/run-actor) API endpoint, waits for the Actor to finish, and reads its output using the [Get dataset items](https://docs.apify.com/api/v2.md#/reference/datasets/item-collection/get-items) API endpoint.

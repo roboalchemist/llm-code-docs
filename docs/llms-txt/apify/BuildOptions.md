@@ -2,6 +2,8 @@
 
 # BuildOptions<!-- -->
 
+Configuration options used for an Actor build.
+
 ## Index[**](#Index)
 
 ### Properties
@@ -13,7 +15,7 @@
 
 ## Properties<!-- -->[**](#Properties)
 
-### [**](#betaPackages)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/build.ts#L159)optionalbetaPackages
+### [**](#betaPackages)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/build.ts#L265)optionalbetaPackages
 
 **betaPackages?
 
@@ -21,7 +23,7 @@
 
 : boolean
 
-### [**](#diskMbytes)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/build.ts#L161)optionaldiskMbytes
+### [**](#diskMbytes)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/build.ts#L267)optionaldiskMbytes
 
 **diskMbytes?
 
@@ -29,7 +31,7 @@
 
 : number
 
-### [**](#memoryMbytes)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/build.ts#L160)optionalmemoryMbytes
+### [**](#memoryMbytes)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/build.ts#L266)optionalmemoryMbytes
 
 **memoryMbytes?
 
@@ -37,7 +39,7 @@
 
 : number
 
-### [**](#useCache)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/build.ts#L158)optionaluseCache
+### [**](#useCache)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/build.ts#L264)optionaluseCache
 
 **useCache?
 

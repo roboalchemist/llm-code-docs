@@ -2,10 +2,6 @@
 
 # Source: https://docs.aporia.com/v1/data-sources/delta-lake.md
 
-# Source: https://docs.aporia.com/data-sources/delta-lake.md
-
-# Source: https://docs.aporia.com/v1/data-sources/delta-lake.md
-
 # Delta Lake
 
 This guide describes how to connect Aporia to a [Delta Lake](https://delta.io/) data source in order to monitor a new ML Model in production. We will assume that your model inputs, outputs, and optionally delayed actuals are stored in Delta Lake.

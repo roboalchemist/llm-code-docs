@@ -1,5 +1,9 @@
 # Source: https://docs.zapier.com/platform/reference/transfer.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.zapier.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Transfer
 
 > [Transfer](https://help.zapier.com/hc/en-us/articles/8496274335885) is a Zapier functionality that enables users to perform bulk operations using their historical data.

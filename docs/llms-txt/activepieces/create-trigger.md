@@ -1,6 +1,8 @@
 # Source: https://www.activepieces.com/docs/build-pieces/building-pieces/create-trigger.md
 
-# Source: https://www.activepieces.com/docs/developers/building-pieces/create-trigger.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.activepieces.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Create Trigger
 
@@ -128,10 +130,10 @@ export const gelato = createPiece({
 
 By default, the development setup only builds specific components. Open the file `packages/server/api/.env` and include "gelato" in the `AP_DEV_PIECES`.
 
-For more details, check out the [Piece Development](../development-setup/getting-started) section.
+For more details, check out the [Piece Development](./development-setup) section.
 
 Once you edit the environment variable, restart the backend. The piece will be rebuilt. After this process, you'll need to **refresh** the frontend to see the changes.
 
 To test the trigger, use the load sample data from flow builder in Activepieces. It should function as shown in the screenshot.
 
-<img src="https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/gelato-trigger.png?fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=0ac29f0025296b3ecc2111709a2b9a33" alt="Gelato Action" data-og-width="2560" width="2560" data-og-height="1440" height="1440" data-path="resources/screenshots/gelato-trigger.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/gelato-trigger.png?w=280&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=eca339aa40eb13c77c0523a69a53e98a 280w, https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/gelato-trigger.png?w=560&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=904295025aa163dec6da607b7c8a2b50 560w, https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/gelato-trigger.png?w=840&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=797d6f9dd13b1c2c4bf48f9e7b074c89 840w, https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/gelato-trigger.png?w=1100&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=9faad30e7502ed152a76af3085047433 1100w, https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/gelato-trigger.png?w=1650&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=21ae16d188441fee36496bf699763488 1650w, https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/gelato-trigger.png?w=2500&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=462aa47d42e057d2f34b3872a83cc35b 2500w" />
+<img src="https://mintcdn.com/activepieces/uHZ35vXyxX7goNO-/resources/screenshots/gelato-trigger.png?fit=max&auto=format&n=uHZ35vXyxX7goNO-&q=85&s=3619f34fbf72163d9ac814c4351437ef" alt="Gelato Action" data-og-width="2560" width="2560" data-og-height="1440" height="1440" data-path="resources/screenshots/gelato-trigger.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/activepieces/uHZ35vXyxX7goNO-/resources/screenshots/gelato-trigger.png?w=280&fit=max&auto=format&n=uHZ35vXyxX7goNO-&q=85&s=98b9a6891651d993e69c76efa43c2c8e 280w, https://mintcdn.com/activepieces/uHZ35vXyxX7goNO-/resources/screenshots/gelato-trigger.png?w=560&fit=max&auto=format&n=uHZ35vXyxX7goNO-&q=85&s=9480e0ff0d94a0ac50e21886f4fe57c4 560w, https://mintcdn.com/activepieces/uHZ35vXyxX7goNO-/resources/screenshots/gelato-trigger.png?w=840&fit=max&auto=format&n=uHZ35vXyxX7goNO-&q=85&s=6f14d03b7081ffb223e1dc2d8a0aef0f 840w, https://mintcdn.com/activepieces/uHZ35vXyxX7goNO-/resources/screenshots/gelato-trigger.png?w=1100&fit=max&auto=format&n=uHZ35vXyxX7goNO-&q=85&s=999ed8b95ce3ff1f2b04366394d52631 1100w, https://mintcdn.com/activepieces/uHZ35vXyxX7goNO-/resources/screenshots/gelato-trigger.png?w=1650&fit=max&auto=format&n=uHZ35vXyxX7goNO-&q=85&s=d9be7464104458ab3a3232639f7b5c4e 1650w, https://mintcdn.com/activepieces/uHZ35vXyxX7goNO-/resources/screenshots/gelato-trigger.png?w=2500&fit=max&auto=format&n=uHZ35vXyxX7goNO-&q=85&s=2dc1a6a4beb5fc1b80c80cda0c544ebc 2500w" />

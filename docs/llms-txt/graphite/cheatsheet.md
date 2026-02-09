@@ -1,40 +1,128 @@
 # Source: https://graphite-58cc94ce.mintlify.dev/docs/cheatsheet.md
 
-# Command Cheatsheet
+> ## Documentation Index
+>
+> Fetch the complete documentation index at: https://graphite-58cc94ce.mintlify.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
-While you can find a full list of `gt` commands in the [command reference](/command-reference), there are a handful of common commands and combinations to remember.
+## Command Cheatsheet
 
-This list is grouped by primary function.
+Common tasks and their commands. Click any command to see full documentation in the [command reference](/command-reference).
 
-## Basic workflow commands
+## Viewing your stack
 
-These commands are constantly in use when creating and pushing changes to a repository with Graphite.
+| Task                                                          | Command               | Short Form |
+| ------------------------------------------------------------- | --------------------- | ---------- |
+| See full information about all of your branches and their PRs | [`gt log`][log]       |            |
+| See all of your branches                                      | [`gt log short`][log] | `gt ls`    |
 
-| Command                                               | Alias                        | Description                                                                                                                            |
-| ----------------------------------------------------- | ---------------------------- | -------------------------------------------------------------------------------------------------------------------------------------- |
-| `gt log short`                                        | `gt ls`                      | List Graphite-tracked stacks and branches in your repository in a minimized format                                                     |
-| `gt create --all --message <COMMIT_MESSAGE>`          | `gt c -am <COMMIT_MESSAGE>`  | Create changes, stage the changes, create a new branch and commit the changes to the new branch all at once                            |
-| `gt submit --stack`                                   | `gt ss`                      | Submit your changes across all PRs on a stack                                                                                          |
-| `gt submit --stack --update-only`                     | `gt ss -u`                   | Update all PRs for branches in your stack that already have PRs, but do not create new ones                                            |
-| `gt modify`                                           | `gt m -a`                    | Update an existing branch with all new changes by amending the existing commit on that branch                                          |
-| `gt modify --all --commit --message <COMMIT_MESSAGE>` | `gt m -cam <COMMIT_MESSAGE>` | Update an existing branch with all new changes by creating an entirely new commit on that branch                                       |
-| `gt undo`                                             | `gt undo`                    | Undo the most recent Graphite mutations                                                                                                |
-| `gt sync --force`                                     | `gt sync -f`                 | Pull your trunk branch, automatically clean up any branches corresponding to merged PRs, and restack any branches that do not conflict |
+## Creating and modifying branches
 
-## Collaborate on a stack
+| Task                                                                  | Command                                                  | Short Form            |
+| --------------------------------------------------------------------- | -------------------------------------------------------- | --------------------- |
+| Create a new branch                                                   | [`gt create`][create]                                    | `gt c`                |
+| Create a branch, stage all, commit with message                       | [`gt create --all --message "message"`][create]          | `gt c -am "message"`  |
+| Amend staged changes to current branch                                | [`gt modify`][modify]                                    | `gt m`                |
+| Stage all changes and amend them to current branch                    | [`gt modify --all`][modify]                              | `gt m -a`             |
+| Add a new commit to current branch                                    | [`gt modify --commit`][modify]                           | `gt m -c`             |
+| Stage all changes and add a new commit to current branch with message | [`gt modify --commit --all --message "message"`][modify] | `gt m -cam "message"` |
+| Amend staged changes to a downstack branch                            | [`gt modify --into`][modify]                             | `gt m --into`         |
 
-Commands to view teammates' code and communicate changes.
+## Syncing and submitting
 
-| Command                | Alias   | Description                                                                                                                                        |
-| ---------------------- | ------- | -------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `gt get <BRANCH_NAME>` |         | Get a stack locally that's been created or manipulated by someone else. Often followed up with \`gt delete\` to delete irrelevant branches locally |
-| `gt checkout`          | `gt co` | Often used when to check out a singular branch for collaboration OR personal use                                                                   |
+| Task                                                                           | Command                                     | Short Form |
+| ------------------------------------------------------------------------------ | ------------------------------------------- | ---------- |
+| Pull trunk, clean up merged branches, restack                                  | [`gt sync`][sync]                           |            |
+| Push current branch and all downstack branches to remote and create/update PRs | [`gt submit`][submit]                       |            |
+| Push all branches in current stack to remote and create/update PRs             | [`gt submit --stack`][submit]               | `gt ss`    |
+| Only push branches and update PRs for branches that already have PRs open      | [`gt submit --stack --update-only`][submit] | `gt ss -u` |
 
-## Stack navigation/manipulation commands
+## Navigating your stack
 
-Commands to move up and down the stack, and to restack branches (if necessary).
+| Task                           | Command                              | Short Form         |
+| ------------------------------ | ------------------------------------ | ------------------ |
+| Switch to a specific branch    | [`gt checkout`][checkout]            | `gt co`            |
+| Move up one branch             | [`gt up`][up]                        | `gt u`             |
+| Move down one branch           | [`gt down`][down]                    | `gt d`             |
+| Move up/down multiple branches | [`gt up 3`][up], [`gt down 2`][down] | `gt u 3`, `gt d 2` |
+| Go to the top of the stack     | [`gt top`][top]                      | `gt t`             |
+| Go to the bottom of the stack  | [`gt bottom`][bottom]                | `gt b`             |
 
-| Command             | Alias        | Description                                                                                                                                                                        |
-| ------------------- | ------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `gt up, gt down`    | `gt u, gt d` | Quickly move up and down a stack of branches. By default, it takes a step argument of 1, but can add a step value (for example, \`gt up 2\`) to skip a certain number of branches. |
-| `gt top, gt bottom` | `gt t, gt b` | Quickly move all the way down (b) or all the way up (t) a stack                                                                                                                    |
+## Reorganizing your stack
+
+| Task                                                                         | Command                 | Short Form |
+| ---------------------------------------------------------------------------- | ----------------------- | ---------- |
+| Move branch to a new parent                                                  | [`gt move`][move]       |            |
+| Fold branch into its parent                                                  | [`gt fold`][fold]       |            |
+| Delete branch but keep changes in working tree                               | [`gt pop`][pop]         |            |
+| Reorder branches in your stack                                               | [`gt reorder`][reorder] |            |
+| Split branch into multiple branches                                          | [`gt split`][split]     | `gt sp`    |
+| Squash all commits in branch into one                                        | [`gt squash`][squash]   | `gt sq`    |
+| Distribute staged changes to downstack branches by amending relevant commits | [`gt absorb`][absorb]   | `gt ab`    |
+
+## Recovery
+
+| Task                                   | Command           | Short Form |
+| -------------------------------------- | ----------------- | ---------- |
+| Undo the most recent Graphite mutation | [`gt undo`][undo] |            |
+
+## Tracking branches
+
+| Task                                                | Command                 | Short Form |
+| --------------------------------------------------- | ----------------------- | ---------- |
+| Start tracking an existing Git branch with Graphite | [`gt track`][track]     | `gt tr`    |
+| Stop tracking a branch                              | [`gt untrack`][untrack] | `gt utr`   |
+
+## Collaborating
+
+| Task                                        | Command                   | Short Form |
+| ------------------------------------------- | ------------------------- | ---------- |
+| Fetch a teammate's stack locally            | [`gt get`][get]           |            |
+| Freeze a branch to prevent accidental edits | [`gt freeze`][freeze]     |            |
+| Unfreeze a branch                           | [`gt unfreeze`][unfreeze] |            |
+
+[log]: /command-reference#gt-log-%5Bcommand%5D
+
+[create]: /command-reference#gt-create-%5Bname%5D
+
+[modify]: /command-reference#gt-modify
+
+[sync]: /command-reference#gt-sync
+
+[submit]: /command-reference#gt-submit
+
+[up]: /command-reference#gt-up-%5Bsteps%5D
+
+[down]: /command-reference#gt-down-%5Bsteps%5D
+
+[top]: /command-reference#gt-top
+
+[bottom]: /command-reference#gt-bottom
+
+[checkout]: /command-reference#gt-checkout-%5Bbranch%5D
+
+[move]: /command-reference#gt-move
+
+[fold]: /command-reference#gt-fold
+
+[pop]: /command-reference#gt-pop
+
+[reorder]: /command-reference#gt-reorder
+
+[split]: /command-reference#gt-split
+
+[squash]: /command-reference#gt-squash
+
+[absorb]: /command-reference#gt-absorb
+
+[track]: /command-reference#gt-track-%5Bbranch%5D
+
+[untrack]: /command-reference#gt-untrack-%5Bbranch%5D
+
+[get]: /command-reference#gt-get-%5Bbranch%5D
+
+[freeze]: /command-reference#gt-freeze-%5Bbranch%5D
+
+[unfreeze]: /command-reference#gt-unfreeze-%5Bbranch%5D
+
+[undo]: /command-reference#gt-undo

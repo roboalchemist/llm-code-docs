@@ -1,5 +1,9 @@
 # Source: https://docs.helicone.ai/features/advanced-usage/moderations.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.helicone.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Moderations
 
 > Enable OpenAI's moderation feature in your LLM applications to automatically detect and filter harmful content in user messages.

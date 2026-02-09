@@ -2,10 +2,6 @@
 
 # Source: https://docs.avaamo.com/user-guide/skills.md
 
-# Source: https://docs.avaamo.com/user-guide/overview-and-concepts/skills.md
-
-# Source: https://docs.avaamo.com/user-guide/skills.md
-
 # Skills
 
 - [Built-in skills](/user-guide/skills/built-in-skills.md)
@@ -42,12 +38,27 @@
 - [Configure connection](/user-guide/skills/knowledge-skill/add-content-to-knowledge-skill/files/step-2-configure-content-source-and-ingest-content/configure-connection.md)
 - [Upload files](/user-guide/skills/knowledge-skill/add-content-to-knowledge-skill/files/step-2-configure-content-source-and-ingest-content/upload-files.md)
 - [Set Document Attributes](/user-guide/skills/knowledge-skill/add-content-to-knowledge-skill/files/step-2-configure-content-source-and-ingest-content/set-document-attributes.md)
+- [Confluence](/user-guide/skills/knowledge-skill/add-content-to-knowledge-skill/confluence.md)
+- [Pre-requisites](/user-guide/skills/knowledge-skill/add-content-to-knowledge-skill/confluence/pre-requisites.md)
+- [Step 1: Select the content source type](/user-guide/skills/knowledge-skill/add-content-to-knowledge-skill/confluence/step-1-select-the-content-source-type.md): The first step is to choose the type of content source from which information must be gathered or accessed.
+- [Step 2: Configure content source and ingest content](/user-guide/skills/knowledge-skill/add-content-to-knowledge-skill/confluence/step-2-configure-content-source-and-ingest-content.md)
+- [Configure connection](/user-guide/skills/knowledge-skill/add-content-to-knowledge-skill/confluence/step-2-configure-content-source-and-ingest-content/configure-connection.md)
+- [Filter articles](/user-guide/skills/knowledge-skill/add-content-to-knowledge-skill/confluence/step-2-configure-content-source-and-ingest-content/filter-articles.md)
+- [Set Document Attributes](/user-guide/skills/knowledge-skill/add-content-to-knowledge-skill/confluence/step-2-configure-content-source-and-ingest-content/set-document-attributes.md)
 - [Testing and validation](/user-guide/skills/knowledge-skill/add-content-to-knowledge-skill/testing-and-validation.md)
 - [Common actions](/user-guide/skills/knowledge-skill/add-content-to-knowledge-skill/common-actions.md)
 - [View and edit knowledge](/user-guide/skills/knowledge-skill/view-and-edit-knowledge.md)
 - [Prompt skill](/user-guide/skills/prompt-skill.md)
 - [Create prompt skill](/user-guide/skills/prompt-skill/create-prompt-skill.md)
 - [Add prompt](/user-guide/skills/prompt-skill/add-prompt.md)
+- [Prompt Versions](/user-guide/skills/prompt-skill/prompt-versions.md)
 - [Functions](/user-guide/skills/prompt-skill/functions.md)
 - [Advanced Settings](/user-guide/skills/prompt-skill/advanced-settings.md)
 - [Debug Log](/user-guide/skills/prompt-skill/debug-log.md)
+- [Dialog skill](/user-guide/skills/dialog-skill.md)
+- [Quick overview](/user-guide/skills/dialog-skill/quick-overview.md)
+- [Create dialog skill](/user-guide/skills/dialog-skill/create-dialog-skill.md)
+- [Add invocation](/user-guide/skills/dialog-skill/add-invocation.md)
+- [Flow designer - Overview](/user-guide/skills/dialog-skill/flow-designer-overview.md)
+- [Add user intent](/user-guide/skills/dialog-skill/add-user-intent.md)
+- [Build skill responses](/user-guide/skills/dialog-skill/build-skill-responses.md)

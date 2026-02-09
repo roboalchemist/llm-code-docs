@@ -2,48 +2,25 @@
 
 # Source: https://upstash.com/docs/devops/developer-api/authentication.md
 
-# Source: https://upstash.com/docs/qstash/api/authentication.md
-
-# Source: https://upstash.com/docs/devops/developer-api/authentication.md
-
-# Source: https://upstash.com/docs/qstash/api/authentication.md
-
-# Source: https://upstash.com/docs/devops/developer-api/authentication.md
-
-# Source: https://upstash.com/docs/qstash/api/authentication.md
-
-# Source: https://upstash.com/docs/devops/developer-api/authentication.md
-
-# Source: https://upstash.com/docs/qstash/api/authentication.md
-
-# Source: https://upstash.com/docs/devops/developer-api/authentication.md
-
-# Source: https://upstash.com/docs/qstash/api/authentication.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Authentication
 
-> Authentication for the QStash API
+> Authentication for the Upstash Developer API
 
-You'll need to authenticate your requests to access any of the endpoints in the
-QStash API. In this guide, we'll look at how authentication works.
+The Upstash API requires API keys to authenticate requests. You can view and
+manage API keys at the Upstash Console.
 
-## Bearer Token
+Upstash API uses HTTP Basic authentication. You should pass `EMAIL` and
+`API_KEY` as basic authentication username and password respectively.
 
-When making requests to QStash, you will need your `QSTASH_TOKEN` — you will
-find it in the [console](https://console.upstash.com/qstash). Here's how to add
-the token to the request header using cURL:
+With a client such as `curl`, you can pass your credentials with the `-u`
+option, as the following example shows:
 
-```bash  theme={"system"}
-curl https://qstash.upstash.io/v2/publish/... \
-  -H "Authorization: Bearer <QSTASH_TOKEN>"
+```curl  theme={"system"}
+curl https://api.upstash.com/v2/redis/databases -u EMAIL:API_KEY
 ```
 
-## Query Parameter
-
-In environments where setting the header is not possible, you can use the `qstash_token` query parameter instead.
-
-```bash  theme={"system"}
-curl https://qstash.upstash.io/v2/publish/...?qstash_token=<QSTASH_TOKEN>
-```
-
-Always keep your token safe and reset it if you suspect it has been compromised.
+Replace `EMAIL` and `API_KEY` with your email and API key.

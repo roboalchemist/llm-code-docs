@@ -1,5 +1,10 @@
 # Source: https://graphite-58cc94ce.mintlify.dev/docs/feature-requests-bugs.md
 
+## Documentation Index
+
+> Fetch the complete documentation index at: https://graphite-58cc94ce.mintlify.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Feature Requests & Bugs
 
 > Learn how to easily share feature requests and bug reports with the Graphite team.
@@ -14,4 +19,4 @@ As a Graphite user, your feature requests and bug reports play a huge part in he
 
 * [Contact us via our feedback form](https://graphite.com/contact-us)
 
-* Reach out to [support@graphite.dev](mailto:support@graphite.dev)
+* Reach out to [support@graphite.com](mailto:support@graphite.com)

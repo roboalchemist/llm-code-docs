@@ -1,8 +1,12 @@
 # Source: https://dev.writer.com/blueprints/aistudioagent.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://dev.writer.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # AI Studio Agent
 
-Runs an Writer AI Studio agent app by ID.
+Runs a Writer AI Studio agent app by ID.
 
 <img src="https://mintcdn.com/writer/dHnl9w_Om9ycQRLE/images/agent-builder/blueprints/ai-studio-agent-block.png?fit=max&auto=format&n=dHnl9w_Om9ycQRLE&q=85&s=e0eb9481a50bca31956d08f8141afa51" alt="" data-og-width="2310" width="2310" data-og-height="1490" height="1490" data-path="images/agent-builder/blueprints/ai-studio-agent-block.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/writer/dHnl9w_Om9ycQRLE/images/agent-builder/blueprints/ai-studio-agent-block.png?w=280&fit=max&auto=format&n=dHnl9w_Om9ycQRLE&q=85&s=5e3876b2a54cca7d802481492f32092f 280w, https://mintcdn.com/writer/dHnl9w_Om9ycQRLE/images/agent-builder/blueprints/ai-studio-agent-block.png?w=560&fit=max&auto=format&n=dHnl9w_Om9ycQRLE&q=85&s=aafa6e36255a59e6206ce6d0f385de79 560w, https://mintcdn.com/writer/dHnl9w_Om9ycQRLE/images/agent-builder/blueprints/ai-studio-agent-block.png?w=840&fit=max&auto=format&n=dHnl9w_Om9ycQRLE&q=85&s=9da17b9e90d225b41521585c8a9f20ef 840w, https://mintcdn.com/writer/dHnl9w_Om9ycQRLE/images/agent-builder/blueprints/ai-studio-agent-block.png?w=1100&fit=max&auto=format&n=dHnl9w_Om9ycQRLE&q=85&s=57f8351879d732b62e1d8e49d83a9d63 1100w, https://mintcdn.com/writer/dHnl9w_Om9ycQRLE/images/agent-builder/blueprints/ai-studio-agent-block.png?w=1650&fit=max&auto=format&n=dHnl9w_Om9ycQRLE&q=85&s=341ccb90a97ca54daeacd73edf31da6f 1650w, https://mintcdn.com/writer/dHnl9w_Om9ycQRLE/images/agent-builder/blueprints/ai-studio-agent-block.png?w=2500&fit=max&auto=format&n=dHnl9w_Om9ycQRLE&q=85&s=bc291c5ede6c905ebbf2e390cf19d306 2500w" />
 
@@ -133,14 +137,14 @@ Below are the possible end states of the block call.
       <td>Success</td>
       <td>-</td>
       <td>success</td>
-      <td>If the execution was successful.</td>
+      <td>The agent ran successfully.</td>
     </tr>
 
     <tr>
       <td>Error</td>
       <td>-</td>
       <td>error</td>
-      <td>If the function raises an Exception.</td>
+      <td>There was an error running the agent.</td>
     </tr>
   </tbody>
 </table>

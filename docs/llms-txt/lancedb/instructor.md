@@ -1,5 +1,9 @@
 # Source: https://docs.lancedb.com/integrations/embedding/instructor.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.lancedb.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Instructor
 
 export const PyEmbeddingInstructorUsage = "import tempfile\nfrom pathlib import Path\n\nimport lancedb\nfrom lancedb.embeddings import get_registry\nfrom lancedb.pydantic import LanceModel, Vector\n\ninstructor = (\n    get_registry()\n    .get(\"instructor\")\n    .create(\n        source_instruction=\"represent the document for retrieval\",\n        query_instruction=\"represent the document for retrieving the most similar documents\",\n    )\n)\n\nclass Schema(LanceModel):\n    vector: Vector(instructor.ndims()) = instructor.VectorField()\n    text: str = instructor.SourceField()\n\ndb = lancedb.connect(str(Path(tempfile.mkdtemp()) / \"instructor-demo\"))\ntbl = db.create_table(\"test\", schema=Schema, mode=\"overwrite\")\n\ntexts = [\n    {\n        \"text\": \"Capitalism has been dominant in the Western world since the end of feudalism.\"\n    },\n    {\n        \"text\": \"The disparate impact theory is especially controversial under the Fair Housing Act.\"\n    },\n    {\n        \"text\": \"Disparate impact in United States labor law refers to practices in employment.\"\n    },\n]\n\ntbl.add(texts)\n";
@@ -34,8 +38,3 @@ More information about the model can be found at the [source URL](https://github
     {PyEmbeddingInstructorUsage}
   </CodeBlock>
 </CodeGroup>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.lancedb.com/llms.txt

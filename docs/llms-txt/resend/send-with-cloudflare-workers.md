@@ -1,5 +1,9 @@
 # Source: https://resend.com/docs/send-with-cloudflare-workers.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://resend.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Send emails with Cloudflare Workers
 
 > Learn how to send your first email using Cloudflare Workers.
@@ -18,16 +22,20 @@ To get the most out of this guide, you'll need to:
 Get the Resend Node.js SDK.
 
 <CodeGroup>
-  ```bash npm theme={null}
+  ```bash npm theme={"theme":{"light":"github-light","dark":"vesper"}}
   npm install resend
   ```
 
-  ```bash yarn theme={null}
+  ```bash yarn theme={"theme":{"light":"github-light","dark":"vesper"}}
   yarn add resend
   ```
 
-  ```bash pnpm theme={null}
+  ```bash pnpm theme={"theme":{"light":"github-light","dark":"vesper"}}
   pnpm add resend
+  ```
+
+  ```bash bun theme={"theme":{"light":"github-light","dark":"vesper"}}
+  bun add resend
   ```
 </CodeGroup>
 
@@ -35,7 +43,7 @@ Get the Resend Node.js SDK.
 
 Start by creating your email template on `src/emails/email-template.tsx`:
 
-```tsx src/emails/email-template.tsx theme={null}
+```tsx src/emails/email-template.tsx theme={"theme":{"light":"github-light","dark":"vesper"}}
 import * as React from 'react';
 
 interface EmailTemplateProps {
@@ -59,7 +67,7 @@ Change the file extension of the worker's main file to `tsx` and modify your con
 
 After that, you can send your email using the `react` parameter:
 
-```tsx src/index.tsx theme={null}
+```tsx src/index.tsx theme={"theme":{"light":"github-light","dark":"vesper"}}
 import { Resend } from 'resend';
 import { EmailTemplate } from './emails/email-template';
 

@@ -1,5 +1,9 @@
 # Source: https://docs.giselles.ai/en/releases/roadmap.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.giselles.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Roadmap
 
 > Discover our product development plans and upcoming milestones.

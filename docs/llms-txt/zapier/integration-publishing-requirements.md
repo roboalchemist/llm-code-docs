@@ -1,5 +1,9 @@
 # Source: https://docs.zapier.com/platform/publish/integration-publishing-requirements.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.zapier.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Integration publishing requirements
 
 > We're excited you are creating an integration for the [Zapier Platform](https://zapier.com/developer-platform). We're here to help you understand our platform and its requirements so that you can successfully prepare your Zapier integration for publishing. Thousands of partners have built integrations on the Zapier Platform that enable our mutual users to set up Zaps as easily and quickly as possible.
@@ -8,42 +12,39 @@ When your Zapier integration meets these requirements, it will pass the review f
 
 Please review these requirements carefully before submitting to ensure your integration is compliant. Integrations and their associated apps must meet all requirements to be published.
 
-**Important**: integrations for prohibited apps will be removed from the platform. Integrations for restricted apps or that do not meet all requirements will be allowed to remain [private](/platform/quickstart/private-vs-public-integrations).
+**Important**: integrations for prohibited apps will be removed from the platform. Integrations for restricted apps or that do not meet all requirements will be allowed to remain [private](/platform/quickstart/private-vs-public-integrations). Also, per our Platform Terms, your integration and app’s compliance with third-party terms is your responsibility, and we expect our partners to ensure their compliance.
 
 Work through each section and ask the [PublishBot](https://publishbot.zapier.app/) or write in via the [contact form](https://developer.zapier.com/contact) for any questions.
 
 ## Key considerations
 
 * Because the Zapier Platform is always changing and improving to keep up with the needs of our customers, this is a living document.
-
 * If you prefer your integration to be accessible to a limited group of users, or if the Zapier integration review requirements do not align with your needs, you might want to consider maintaining your integration as private. Learn more about [private vs public integrations](/platform/quickstart/private-vs-public-integrations).
-
 * We encourage diversity on the Zapier Platform, provided your integration respects users with varying viewpoints and ensures a high-quality user experience. Any integration found to contain or exhibit behavior deemed inappropriate, discriminatory, or crossing acceptable boundaries will be rejected.
-
 * We reserve the right to reject publishing requests or to remove users and integrations from the Zapier Platform if we believe these requirements, the [Platform Agreement](https://zapier.com/platform/tos), or our [Terms of Service](https://zapier.com/legal/terms-of-service) have not been met. This includes attempts to exploit the review process, illicitly acquire user data, or manipulate test users.
 
 ## Sections
 
 <CardGroup cols={3}>
-  <Card title="Prohibited Integrations" icon="ban" href="/publish/integration-publishing-requirements#1-prohibited-integrations" horizontal />
+  <Card title="Prohibited Integrations" icon="ban" horizontal href="/publish/integration-publishing-requirements#1-prohibited-integrations" />
 
-  <Card title="Restricted Integrations" icon="triangle-exclamation" href="/publish/integration-publishing-requirements#2-restricted-integrations" horizontal />
+  <Card title="Restricted Integrations" icon="triangle-exclamation" horizontal href="/publish/integration-publishing-requirements#2-restricted-integrations" />
 
-  <Card title="Ownership and Permissions" icon="user-shield" href="/publish/integration-publishing-requirements#3-ownership-and-permissions" horizontal />
-
-  {" "}
-
-  <Card title="Data Security and Privacy" icon="lock" href="/publish/integration-publishing-requirements#4-data-security-and-user-privacy" horizontal />
-
-  <Card title="Quality and Functionality" icon="circle-check" href="/publish/integration-publishing-requirements#5-quality-and-functionality" horizontal />
+  <Card title="Ownership and Permissions" icon="user-shield" horizontal href="/publish/integration-publishing-requirements#3-ownership-and-permissions" />
 
   {" "}
 
-  <Card title="Integration Listing" icon="list" href="/publish/integration-publishing-requirements#6-integration-listing" horizontal />
+  <Card title="Data Security and Privacy" icon="lock" horizontal href="/publish/integration-publishing-requirements#4-data-security-and-user-privacy" />
 
-  <Card title="Support" icon="headset" href="/publish/integration-publishing-requirements#7-support" horizontal />
+  <Card title="Quality and Functionality" icon="circle-check" horizontal href="/publish/integration-publishing-requirements#5-quality-and-functionality" />
 
-  <Card title="Submission Process" icon="paper-plane" href="/publish/integration-publishing-requirements#8-submission-process" horizontal />
+  {" "}
+
+  <Card title="Integration Listing" icon="list" horizontal href="/publish/integration-publishing-requirements#6-integration-listing" />
+
+  <Card title="Support" icon="headset" horizontal href="/publish/integration-publishing-requirements#7-support" />
+
+  <Card title="Submission Process" icon="paper-plane" horizontal href="/publish/integration-publishing-requirements#8-submission-process" />
 </CardGroup>
 
 ## 1. Prohibited integrations
@@ -79,11 +80,8 @@ Apps/integrations should not include content that is discriminatory, defamatory,
 Integrations must not attempt to bypass, evade, or otherwise interfere with controls or restrictions imposed by websites, APIs, or other services. This includes, but is not limited to:
 
 * CAPTCHA solving
-
 * Bot detection evasion
-
 * Geo-restriction workarounds
-
 * Accessing gated/protected content without proper authorization
 
 If your app includes such functionality, you must provide evidence of compliance with applicable legal requirements. Zapier may reject or remove integrations that expose non-compliant circumvention features through Zapier.
@@ -137,7 +135,9 @@ For security reasons, all API endpoints used by an integration (including authen
 
 ### 4.3 Integration stores credentials securely
 
-Do not hard code credentials such as API Keys, Client IDs, Client Secrets, etc. into your integration. Use the appropriate section in the Platform UI (e.g. Application Credentials) or use [environment variables](/platform/build/env) instead.
+Do not hard code credentials such as API Keys, Client IDs, Client Secrets, etc. into your integration. Use the appropriate section in the Platform UI (e.g. Application Credentials) or use [environment variables](/platform/build/env) instead.\
+\
+When using [environment variables](/platform/build/env), you can store credentials that are used only in the authentication process (such as a Client ID and Client Secret, which are used only in requesting an access token in an OAuth v2 authentication). However, do not store tokens or authentication credentials included in every API request from the integration.
 
 ## 5. Quality and functionality
 
@@ -229,4 +229,4 @@ At our discretion, we reserve the right to reject publishing requests or to remo
 
 ***
 
-*Need help? [Tell us about your problem](https://developer.zapier.com/contact) and we'll connect you with the right resource or contact support.*
+[*Need help? Tell us about your problem and we'll connect you with the right resource or contact support.*](https://developer.zapier.com/contact)

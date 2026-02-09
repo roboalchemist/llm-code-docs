@@ -52,7 +52,7 @@ Once configured to use Endpoint Routing we can then use the [mix](https://docs.s
 [openapi3](https://gist.github.com/gistlyn/dac47b68e77796902cde0f0b7b9c6ac2) Startup Configuration with:
 
 :::sh
-x mix openapi3
+npx add-in openapi3
 :::
 
 ### Manually Configure OpenAPI v3 and Swagger UI 
@@ -60,9 +60,9 @@ x mix openapi3
 This will install the required ASP.NET Core Microsoft, Swashbuckle and ServiceStack Open API NuGet packages:
 
 ```xml
-<PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="8.*" />
+<PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="10.*" />
 <PackageReference Include="Swashbuckle.AspNetCore" Version="7.*" />
-<PackageReference Include="ServiceStack.AspNetCore.OpenApi" Version="8.*" />
+<PackageReference Include="ServiceStack.AspNetCore.OpenApi" Version="10.*" />
 ```
 
 Then add the `Configure.OpenApi.cs` [Modular Startup](https://docs.servicestack.net/modular-startup) class to your project:
@@ -103,7 +103,7 @@ public class ConfigureOpenApi : IHostingStartup
 }
 ```
 
-All this setup is done for you in our updated [Identity Auth .NET 8 Templates](https://servicestack.net/start).
+All this setup is done for you in our updated [Identity Auth .NET 10 Templates](https://servicestack.net/start).
 
 ## Open API Attributes
 

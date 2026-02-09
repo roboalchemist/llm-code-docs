@@ -1,14 +1,10 @@
-# Source: https://www.better-auth.com/llms.txt/docs/errors/signup_disabled.md
+# Source: https://www.better-auth.com/llms.txt/docs/reference/errors/signup_disabled.md
 
-# Signup disabled
+# signup_disabled
 
 Signup disabled error
 
-***
 
-title: Signup disabled
-description: Signup disabled error
-----------------------------------
 
 This error occurs when you disable sign up in your oauth provider config and a user tries to sign up with that provider.
 

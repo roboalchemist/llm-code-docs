@@ -1,5 +1,9 @@
 # Source: https://docs.comfy.org/built-in-nodes/partner-node/video/kwai_vgi/kling-image-to-video.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.comfy.org/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Kling Image to Video - ComfyUI Built-in Node
 
 > A node that converts static images to dynamic videos using Kling's AI technology

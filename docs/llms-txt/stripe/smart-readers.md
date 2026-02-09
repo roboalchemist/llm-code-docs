@@ -4,15 +4,18 @@
 
 Learn about Stripe's pre-certified in-person payment readers.
 
-Ready to buy? Browse [available readers and accessories](https://dashboard.stripe.com/terminal/shop).
+In the Dashboard, [browse and purchase available readers and accessories](https://dashboard.stripe.com/terminal/shop).
 
-Terminal’s smart readers are compatible with the JavaScript, iOS, Android, and React Native SDKs. In addition to the Terminal SDKs, the BBPOS WisePOS E and the Stripe Reader S700 are compatible with server-driven integration. Smart readers communicate with the SDKs and Stripe API over the internet.
+Terminal’s smart readers are compatible with the JavaScript, iOS, Android, and React Native SDKs. In addition to the Terminal SDKs, the BBPOS WisePOS, the Stripe Reader S700, and Verifone readers are compatible with a server-driven integration. Smart readers communicate with the SDKs and Stripe API over the internet.
 
 | Reader                                                                               | Available in                                                                                                     |
 | ------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------- |
 | [Stripe Reader S700](https://docs.stripe.com/terminal/readers/stripe-reader-s700.md) | Available in: US, CA, GB, IE, SG, AU, NZ, FR, DE, NL, BE, AT, ES, DK, SE, NO, CH, IT, LU, PT, FI, MY, CZ, PL, JP |
 | [BBPOS WisePOS E](https://docs.stripe.com/terminal/readers/bbpos-wisepos-e.md)       | Available in: US, CA, GB, IE, SG, AU, NZ, NL, BE, AT, ES, DK, SE, NO, CH, IT, LU, PT, FI, MY, CZ, PL             |
-| [Verifone P400](https://docs.stripe.com/terminal/readers/verifone-p400.md)           | Available in: US, CA                                                                                             |
+| [Verifone V660p](https://docs.stripe.com/terminal/payments/setup-reader/v660p.md)    | Available in: US, CA                                                                                             |
+| [Verifone UX700](https://docs.stripe.com/terminal/payments/setup-reader/ux700.md)    | Available in: US, CA                                                                                             |
+| [Verifone P630](https://docs.stripe.com/terminal/payments/setup-reader/p630.md)      | Available in: US, CA                                                                                             |
+| [Verifone M425](https://docs.stripe.com/terminal/payments/setup-reader/m425.md)      | Available in: US, CA                                                                                             |
 
 ## Reader software updates
 

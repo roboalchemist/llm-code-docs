@@ -2,13 +2,9 @@
 
 # Source: https://docs.pipecat.ai/deployment/pipecat-cloud/guides/krisp-viva.md
 
-# Source: https://docs.pipecat.ai/guides/features/krisp-viva.md
-
-# Source: https://docs.pipecat.ai/deployment/pipecat-cloud/guides/krisp-viva.md
-
-# Source: https://docs.pipecat.ai/guides/features/krisp-viva.md
-
-# Source: https://docs.pipecat.ai/deployment/pipecat-cloud/guides/krisp-viva.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pipecat.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Krisp VIVA Noise Cancellation
 
@@ -43,7 +39,6 @@ In your bot code, import and add the `KrispVivaFilter()` to your transport:
 
 ```python  theme={null}
 from pipecat.audio.filters.krisp_viva_filter import KrispVivaFilter
-from pipecat.audio.vad.silero import SileroVADAnalyzer
 from pipecat.transports.daily.transport import DailyParams, DailyTransport
 
 transport = DailyTransport(
@@ -54,7 +49,6 @@ transport = DailyTransport(
         audio_in_enabled=True,
         audio_in_filter=KrispVivaFilter(),  # Add Krisp VIVA filter here
         audio_out_enabled=True,
-        vad_analyzer=SileroVADAnalyzer(),
     ),
 )
 ```
@@ -178,8 +172,3 @@ If you're experiencing issues with Krisp noise cancellation:
 * Confirm you've added the `KrispVivaFilter()` to your transport configuration
 * Check your logs for any Krisp-related error messages
 * Confirm that you have **not** added any Krisp-related dependencies to your `requirements.txt` or `pyproject.toml` files, as they are not needed and may cause conflicts.
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.pipecat.ai/llms.txt

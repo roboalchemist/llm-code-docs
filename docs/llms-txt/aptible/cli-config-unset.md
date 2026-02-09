@@ -1,5 +1,9 @@
 # Source: https://www.aptible.com/docs/reference/aptible-cli/cli-commands/cli-config-unset.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.aptible.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # aptible config:unset
 
 This command is used to remove [Configuration](/core-concepts/apps/deploying-apps/configuration) variables from an [App](/core-concepts/apps/overview).
@@ -24,7 +28,7 @@ aptible config:unset --app "$APP_HANDLE" \
 
 ```
 Usage:
-  aptible config:unset [VAR1] [VAR2] [...]
+  aptible config:unset [--app APP] [VAR1] [VAR2] [...]
 
 Options:
       [--app=APP]

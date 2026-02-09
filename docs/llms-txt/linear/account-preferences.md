@@ -48,11 +48,11 @@ You can also build your own custom theme. Find and use over 70 themes (and count
 
 ## Desktop application
 
-When logged into your web app and navigating to your preferences, you have the option to select whether you want Linear links to be directed to your desktop app.
+Choose whether to attempt to open Linear URLs in the desktop app.
 
 Select whether you want notification badges on your desktop app icon, or remove them to avoid the noise.
 
-Spell check is available here as well to aid you in typing.
+Choose whether to enable spell check.
 
 ## Automations and workflows
 
@@ -76,3 +76,14 @@ If you've enabled Linear's GitHub or GitLab integrations, you'll likely copy the
 * **On git branch copy, auto-assign to yourself**
 
 We highly recommend these settings for any developers using Linear. In combination, they save you a few clicks every time you begin an issue.
+
+
+
+### FAQ
+
+<details>
+<summary>Open in Desktop app is not working (Chromium browsers)</summary>
+Please ensure you've granted local network access to Linear in Chrome's site settings. If you can still reproduce with these settings on, please let us know at support@linear.app.
+
+![Local network access turned on for Linear in Chrome's site settings](https://webassets.linear.app/images/ornj730p/production/0b1b244b80beacb0241ccbbd72db1911f206cb1b-666x520.png?q=95&auto=format&dpr=2)
+</details>

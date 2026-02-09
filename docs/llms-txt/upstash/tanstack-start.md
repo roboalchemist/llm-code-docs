@@ -1,5 +1,9 @@
 # Source: https://upstash.com/docs/workflow/quickstarts/tanstack-start.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # TanStack Start
 
 <Card title="GitHub Repository" icon="github" href="https://github.com/upstash/workflow-js/tree/main/examples/tanstack-start" horizontal>
@@ -177,8 +181,7 @@ const client = Client()
 const { workflowRunId } = await client.trigger({
   url: `http://localhost:3000/api/workflow`,
   body: "Hello World!",
-  retries: 3,
-  keepTriggerConfig: true,
+  retries: 3
 });
 ```
 
@@ -208,8 +211,7 @@ Check the Upstash Workflow dashboard to view logs of your workflow run:
   const { workflowRunId } = await client.trigger({
     url: `${BASE_URL}/api/workflow`,
     body: "Hello World!",
-    retries: 3,
-    keepTriggerConfig: true,
+    retries: 3
   });
   ```
 </Tip>

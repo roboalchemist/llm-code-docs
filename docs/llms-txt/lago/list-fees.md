@@ -1,524 +1,408 @@
 # Source: https://getlago.com/docs/api-reference/fees/list-fees.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://getlago.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # List all fees
 
 > This endpoint is used for retrieving all fees that has been issued.
 
+<RequestExample>
+  ```bash cURL theme={"dark"}
+  curl --location --request GET "$LAGO_URL/api/v1/fees?page=2&per_page=20&external_customer_id=hooli_1234" \
+    --header "Authorization: Bearer $API_KEY"
+  ```
+
+  ```python Python theme={"dark"}
+  from lago_python_client.client import Client
+  from lago_python_client.exceptions import LagoApiError
+
+  client.fees.find_all({'per_page': 2, 'page': 1})
+  ```
+
+  ```ruby Ruby theme={"dark"}
+  require 'lago-ruby-client'
+
+  client.fees.get_all({ per_page: 2, page: 3 })
+  ```
+
+  ```js Javascript theme={"dark"}
+  await client.fees.findAllFees({ per_page: 2, page: 3 });
+  ```
+
+  ```go Go theme={"dark"}
+  feeListInput := &lago.FeeListInput{
+  PerPage: 1,
+  Page: 1,
+  CreatedAtFrom: "2022-01-01T00:00:00Z",
+  CreatedAtTo: "2022-01-01T00:00:00Z",
+  }
+
+  feeResult, err := lagoClient.Fee().GetList(feeListInput)
+  if err != nil {
+  // Error is *lago.Error
+  panic(err)
+  }
+
+  // feeResult is *lago.FeeResult
+  fmt.Println(feeResult)
+  ```
+</RequestExample>
+
+
 ## OpenAPI
 
 ````yaml GET /fees
+openapi: 3.1.0
+info:
+  title: Lago API documentation
+  description: >-
+    Lago API allows your application to push customer information and metrics
+    (events) from your application to the billing application.
+  version: 1.41.0
+  license:
+    name: AGPLv3
+    identifier: AGPLv3
+  contact:
+    email: tech@getlago.com
+servers:
+  - url: https://api.getlago.com/api/v1
+    description: US Lago cluster
+  - url: https://api.eu.getlago.com/api/v1
+    description: EU Lago cluster
+security:
+  - bearerAuth: []
+tags:
+  - name: activity_logs
+    description: Everything about Activity logs
+    externalDocs:
+      description: Find out more
+      url: https://doc.getlago.com/api-reference/audit-logs/activity-logs-object
+  - name: analytics
+    description: Everything about Analytics
+  - name: api_logs
+    description: Everything about API logs
+    externalDocs:
+      description: Find out more
+      url: https://doc.getlago.com/api-reference/audit-logs/api-logs-object
+  - name: billable_metrics
+    description: Everything about Billable metric collection
+    externalDocs:
+      description: Find out more
+      url: https://doc.getlago.com/api-reference/billable-metrics/object
+  - name: features
+    description: Everything about Feature collection
+    externalDocs:
+      description: Find out more
+      url: https://doc.getlago.com/api-reference/features/object
+  - name: entitlements
+    description: Everything about Entitlement collection
+    externalDocs:
+      description: Find out more
+      url: https://doc.getlago.com/api-reference/entitlements/object
+  - name: billing_entities
+    description: Everything about Billing Entities
+    externalDocs:
+      description: Find out more
+      url: https://doc.getlago.com/api-reference/billing-entities/object
+  - name: customers
+    description: Everything about Customer collection
+    externalDocs:
+      description: Find out more
+      url: https://doc.getlago.com/api-reference/customers/object
+  - name: plans
+    description: Everything about Plan collection
+    externalDocs:
+      description: Find out more
+      url: https://doc.getlago.com/api-reference/plans/object
+  - name: subscriptions
+    description: Everything about Subscription collection
+    externalDocs:
+      description: Find out more
+      url: https://doc.getlago.com/api-reference/subscriptions/subscription-object
+  - name: events
+    description: Everything about Event collection
+    externalDocs:
+      description: Find out more
+      url: https://doc.getlago.com/api-reference/events/event-object
+  - name: organizations
+    description: Everything about Organization collection
+    externalDocs:
+      description: Find out more
+      url: https://doc.getlago.com/api-reference/organizations/organization-object
+  - name: taxes
+    description: Everything about Tax collection
+    externalDocs:
+      description: Find out more
+      url: https://doc.getlago.com/api-reference/taxes/tax-object
+  - name: coupons
+    description: Everything about Coupon collection
+    externalDocs:
+      description: Find out more
+      url: https://doc.getlago.com/api-reference/coupons/coupon-object
+  - name: add_ons
+    description: Everything about Add-on collection
+    externalDocs:
+      description: Find out more
+      url: https://doc.getlago.com/api-reference/add-ons/add-on-object
+  - name: fees
+    description: Everything about Fees
+    externalDocs:
+      description: Find out more
+      url: https://doc.getlago.com/api-reference/invoices/invoice-object#fee-object
+  - name: invoices
+    description: Everything about Invoice collection
+    externalDocs:
+      description: Find out more
+      url: https://doc.getlago.com/api-reference/invoices/invoice-object
+  - name: wallets
+    description: Everything about Wallet collection
+    externalDocs:
+      description: Find out more
+      url: https://doc.getlago.com/api-reference/wallets/wallet-object
+  - name: credit_notes
+    description: Everything about Credit notes collection
+    externalDocs:
+      description: Find out more
+      url: https://doc.getlago.com/api-reference/credit-notes/credit-note-object
+  - name: webhooks
+    description: Everything about Webhooks
+    externalDocs:
+      description: Find out more
+      url: >-
+        https://doc.getlago.com/api-reference/webhooks/format---signature#1-retrieve-the-public-key
+  - name: webhook_endpoints
+    description: Everything about Webhook Endpoints
+    externalDocs:
+      description: Find out more
+      url: >-
+        https://doc.getlago.com/api-reference/webhook-endpoints/webhook-endpoint-object
+  - name: payment_receipts
+    description: Everything about Payment receipts
+    externalDocs:
+      description: Find out more
+      url: >-
+        https://doc.getlago.com/api-reference/payment-receipts/payment-receipt-object
+  - name: payment_requests
+    description: Everything about PaymentRequests
+    externalDocs:
+      description: Find out more
+      url: >-
+        https://doc.getlago.com/api-reference/payment-requests/payment-request-object
+  - name: payments
+    description: Everything about Payments
+    externalDocs:
+      description: Find out more
+      url: https://doc.getlago.com/api-reference/payments/payment-object
+externalDocs:
+  description: Lago Github
+  url: https://github.com/getlago
 paths:
-  path: /fees
-  method: get
-  servers:
-    - url: https://api.getlago.com/api/v1
-      description: US Lago cluster
-    - url: https://api.eu.getlago.com/api/v1
-      description: EU Lago cluster
-  request:
-    security:
-      - title: bearerAuth
-        parameters:
-          query: {}
-          header:
-            Authorization:
-              type: http
-              scheme: bearer
-          cookie: {}
-    parameters:
-      path: {}
-      query:
-        page:
-          schema:
-            - type: integer
-              required: false
-              description: Page number.
-              example: 1
+  /fees:
+    get:
+      tags:
+        - fees
+      summary: List all fees
+      description: This endpoint is used for retrieving all fees that has been issued.
+      operationId: findAllFees
+      parameters:
+        - $ref: '#/components/parameters/page'
+        - $ref: '#/components/parameters/per_page'
+        - $ref: '#/components/parameters/external_customer_id'
+        - $ref: '#/components/parameters/external_subscription_id'
+        - name: event_transaction_id
+          in: query
+          description: Filter results by event transaction ID
+          required: false
           explode: true
-        per_page:
           schema:
-            - type: integer
-              required: false
-              description: Number of records per page.
-              example: 20
+            type: string
+            example: et_12345678
+        - name: currency
+          in: query
+          description: Filter results by fee"s currency.
+          required: false
           explode: true
-        external_customer_id:
           schema:
-            - type: string
-              required: false
-              description: Unique identifier assigned to the customer in your application.
-              example: 5eb02857-a71e-4ea2-bcf9-57d3a41bc6ba
+            allOf:
+              - $ref: '#/components/schemas/Currency'
+              - example: USD
+        - name: fee_type
+          in: query
+          description: >-
+            The fee type. Possible values are `add-on`, `charge`, `credit`,
+            `subscription` or "commitment".
+          required: false
           explode: true
-        external_subscription_id:
           schema:
-            - type: string
-              required: false
-              description: External subscription ID
-              example: 5eb02857-a71e-4ea2-bcf9-57d3a41bc6ba
+            type: string
+            enum:
+              - charge
+              - add_on
+              - subscription
+              - credit
+              - commitment
+            example: charge
+        - name: billable_metric_code
+          in: query
+          description: >-
+            Filter results by the `code` of the billable metric attached to the
+            fee. Only applies to `charge` types.
+          required: false
           explode: true
-        event_transaction_id:
           schema:
-            - type: string
-              required: false
-              description: Filter results by event transaction ID
-              example: et_12345678
+            type: string
+            example: bm_code
+        - name: payment_status
+          in: query
+          description: >-
+            Indicates the payment status of the fee. It represents the current
+            status of the payment associated with the fee. The possible values
+            for this field are `pending`, `succeeded`, `failed` and refunded`.
+          required: false
           explode: true
-        currency:
           schema:
-            - type: enum<string>
-              enum:
-                - AED
-                - AFN
-                - ALL
-                - AMD
-                - ANG
-                - AOA
-                - ARS
-                - AUD
-                - AWG
-                - AZN
-                - BAM
-                - BBD
-                - BDT
-                - BGN
-                - BIF
-                - BMD
-                - BND
-                - BOB
-                - BRL
-                - BSD
-                - BWP
-                - BYN
-                - BZD
-                - CAD
-                - CDF
-                - CHF
-                - CLF
-                - CLP
-                - CNY
-                - COP
-                - CRC
-                - CVE
-                - CZK
-                - DJF
-                - DKK
-                - DOP
-                - DZD
-                - EGP
-                - ETB
-                - EUR
-                - FJD
-                - FKP
-                - GBP
-                - GEL
-                - GHS
-                - GIP
-                - GMD
-                - GNF
-                - GTQ
-                - GYD
-                - HKD
-                - HNL
-                - HRK
-                - HTG
-                - HUF
-                - IDR
-                - ILS
-                - INR
-                - ISK
-                - JMD
-                - JPY
-                - KES
-                - KGS
-                - KHR
-                - KMF
-                - KRW
-                - KYD
-                - KZT
-                - LAK
-                - LBP
-                - LKR
-                - LRD
-                - LSL
-                - MAD
-                - MDL
-                - MGA
-                - MKD
-                - MMK
-                - MNT
-                - MOP
-                - MRO
-                - MUR
-                - MVR
-                - MWK
-                - MXN
-                - MYR
-                - MZN
-                - NAD
-                - NGN
-                - NIO
-                - NOK
-                - NPR
-                - NZD
-                - PAB
-                - PEN
-                - PGK
-                - PHP
-                - PKR
-                - PLN
-                - PYG
-                - QAR
-                - RON
-                - RSD
-                - RUB
-                - RWF
-                - SAR
-                - SBD
-                - SCR
-                - SEK
-                - SGD
-                - SHP
-                - SLL
-                - SOS
-                - SRD
-                - STD
-                - SZL
-                - THB
-                - TJS
-                - TOP
-                - TRY
-                - TTD
-                - TWD
-                - TZS
-                - UAH
-                - UGX
-                - USD
-                - UYU
-                - UZS
-                - VND
-                - VUV
-                - WST
-                - XAF
-                - XCD
-                - XOF
-                - XPF
-                - YER
-                - ZAR
-                - ZMW
-              required: false
-              description: Filter results by fee"s currency.
-              refIdentifier: '#/components/schemas/Currency'
-              example: USD
+            type: string
+            enum:
+              - pending
+              - succeeded
+              - failed
+              - refunded
+            example: succeeded
+        - name: created_at_from
+          in: query
+          description: Filter results created after creation date and time in UTC.
+          required: false
           explode: true
-        fee_type:
           schema:
-            - type: enum<string>
-              enum:
-                - charge
-                - add_on
-                - subscription
-                - credit
-                - commitment
-              required: false
-              description: >-
-                The fee type. Possible values are `add-on`, `charge`, `credit`,
-                `subscription` or "commitment".
-              example: charge
+            type: string
+            example: '2023-03-28T12:21:51Z'
+            format: date-time
+        - name: created_at_to
+          in: query
+          description: Filter results created before creation date and time in UTC.
+          required: false
           explode: true
-        billable_metric_code:
           schema:
-            - type: string
-              required: false
-              description: >-
-                Filter results by the `code` of the billable metric attached to
-                the fee. Only applies to `charge` types.
-              example: bm_code
+            type: string
+            example: '2023-03-28T12:21:51Z'
+            format: date-time
+        - name: succeeded_at_from
+          in: query
+          description: >-
+            Filter results with payment success after creation date and time in
+            UTC.
+          required: false
           explode: true
-        payment_status:
           schema:
-            - type: enum<string>
-              enum:
-                - pending
-                - succeeded
-                - failed
-                - refunded
-              required: false
-              description: >-
-                Indicates the payment status of the fee. It represents the
-                current status of the payment associated with the fee. The
-                possible values for this field are `pending`, `succeeded`,
-                `failed` and refunded`.
-              example: succeeded
+            type: string
+            example: '2023-03-28T12:21:51Z'
+            format: date-time
+        - name: succeeded_at_to
+          in: query
+          description: >-
+            Filter results with payment success after creation date and time in
+            UTC.
+          required: false
           explode: true
-        created_at_from:
           schema:
-            - type: string
-              required: false
-              description: Filter results created after creation date and time in UTC.
-              format: date-time
-              example: '2023-03-28T12:21:51Z'
+            type: string
+            example: '2023-03-28T12:21:51Z'
+            format: date-time
+        - name: failed_at_from
+          in: query
+          description: >-
+            Filter results with payment failure after creation date and time in
+            UTC.
+          required: false
           explode: true
-        created_at_to:
           schema:
-            - type: string
-              required: false
-              description: Filter results created before creation date and time in UTC.
-              format: date-time
-              example: '2023-03-28T12:21:51Z'
+            type: string
+            example: '2023-03-28T12:21:51Z'
+            format: date-time
+        - name: failed_at_to
+          in: query
+          description: >-
+            Filter results with payment failure after creation date and time in
+            UTC.
+          required: false
           explode: true
-        succeeded_at_from:
           schema:
-            - type: string
-              required: false
-              description: >-
-                Filter results with payment success after creation date and time
-                in UTC.
-              format: date-time
-              example: '2023-03-28T12:21:51Z'
+            type: string
+            example: '2023-03-28T12:21:51Z'
+            format: date-time
+        - name: refunded_at_from
+          in: query
+          description: >-
+            Filter results with payment refund after creation date and time in
+            UTC.
+          required: false
           explode: true
-        succeeded_at_to:
           schema:
-            - type: string
-              required: false
-              description: >-
-                Filter results with payment success after creation date and time
-                in UTC.
-              format: date-time
-              example: '2023-03-28T12:21:51Z'
+            type: string
+            example: '2023-03-28T12:21:51Z'
+            format: date-time
+        - name: refunded_at_to
+          in: query
+          description: >-
+            Filter results with payment refund after creation date and time in
+            UTC.
+          required: false
           explode: true
-        failed_at_from:
           schema:
-            - type: string
-              required: false
-              description: >-
-                Filter results with payment failure after creation date and time
-                in UTC.
-              format: date-time
-              example: '2023-03-28T12:21:51Z'
-          explode: true
-        failed_at_to:
-          schema:
-            - type: string
-              required: false
-              description: >-
-                Filter results with payment failure after creation date and time
-                in UTC.
-              format: date-time
-              example: '2023-03-28T12:21:51Z'
-          explode: true
-        refunded_at_from:
-          schema:
-            - type: string
-              required: false
-              description: >-
-                Filter results with payment refund after creation date and time
-                in UTC.
-              format: date-time
-              example: '2023-03-28T12:21:51Z'
-          explode: true
-        refunded_at_to:
-          schema:
-            - type: string
-              required: false
-              description: >-
-                Filter results with payment refund after creation date and time
-                in UTC.
-              format: date-time
-              example: '2023-03-28T12:21:51Z'
-          explode: true
-      header: {}
-      cookie: {}
-    body: {}
-  response:
-    '200':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              fees:
-                allOf:
-                  - type: array
-                    items:
-                      $ref: '#/components/schemas/FeeObject'
-              meta:
-                allOf:
-                  - $ref: '#/components/schemas/PaginationMeta'
-            refIdentifier: '#/components/schemas/FeesPaginated'
-            requiredProperties:
-              - fees
-              - meta
-        examples:
-          example:
-            value:
-              fees:
-                - lago_id: 1a901a90-1a90-1a90-1a90-1a901a901a90
-                  lago_charge_id: 1a901a90-1a90-1a90-1a90-1a901a901a90
-                  lago_charge_filter_id: 1a901a90-1a90-1a90-1a90-1a901a901a90
-                  lago_invoice_id: 1a901a90-1a90-1a90-1a90-1a901a901a90
-                  lago_true_up_fee_id: 1a901a90-1a90-1a90-1a90-1a901a901a90
-                  lago_true_up_parent_fee_id: 1a901a90-1a90-1a90-1a90-1a901a901a90
-                  lago_subscription_id: 1a901a90-1a90-1a90-1a90-1a901a901a90
-                  lago_customer_id: 1a901a90-1a90-1a90-1a90-1a901a901a90
-                  external_customer_id: external_id
-                  external_subscription_id: external_id
-                  amount_cents: 100
-                  precise_amount: '1.0001'
-                  precise_total_amount: '1.0212'
-                  amount_currency: EUR
-                  taxes_amount_cents: 20
-                  taxes_precise_amount: '0.20123'
-                  taxes_rate: 20
-                  units: '0.32'
-                  precise_unit_amount: '312.5'
-                  total_aggregated_units: '0.32'
-                  total_amount_cents: 120
-                  total_amount_currency: EUR
-                  events_count: 23
-                  pay_in_advance: true
-                  invoiceable: true
-                  from_date: '2022-04-29T08:59:51Z'
-                  to_date: '2022-05-29T08:59:51Z'
-                  payment_status: pending
-                  created_at: '2022-08-24T14:58:59Z'
-                  succeeded_at: '2022-08-24T14:58:59Z'
-                  failed_at: '2022-08-24T14:58:59Z'
-                  refunded_at: '2022-08-24T14:58:59Z'
-                  event_transaction_id: transaction_1234567890
-                  description: Fee description
-                  precise_coupons_amount_cents: '0.0'
-                  amount_details:
-                    plan_amount_cents: 10000
-                    graduated_ranges:
-                      - units: '10.0'
-                        from_value: 0
-                        to_value: 10
-                        flat_unit_amount: '1.0'
-                        per_unit_amount: '1.0'
-                        per_unit_total_amount: '10.0'
-                        total_with_flat_amount: '11.0'
-                    graduated_percentage_ranges:
-                      - units: '10.0'
-                        from_value: 0
-                        to_value: 10
-                        flat_unit_amount: '1.0'
-                        rate: '1.0'
-                        per_unit_total_amount: '10.0'
-                        total_with_flat_amount: '11.0'
-                    free_units: '10.0'
-                    paid_units: '40.0'
-                    per_package_size: 1000
-                    per_package_unit_amount: '0.5'
-                    per_unit_total_amount: '10.0'
-                    units: '20.0'
-                    free_events: 10
-                    rate: '1.0'
-                    paid_events: 20
-                    fixed_fee_unit_amount: '1.0'
-                    fixed_fee_total_amount: '20.0'
-                    min_max_adjustment_total_amount: '20.0'
-                    per_unit_amount: '0.5'
-                    flat_unit_amount: '10.0'
-                  self_billed: false
-                  item:
-                    type: subscription
-                    code: startup
-                    name: Startup
-                    description: Startup
-                    invoice_display_name: Setup Fee (SF1)
-                    filter_invoice_display_name: AWS eu-east-1
-                    filters: {}
-                    lago_item_id: 1a901a90-1a90-1a90-1a90-1a901a901a90
-                    item_type: Subscription
-                    grouped_by: {}
-                  applied_taxes:
-                    - lago_id: 1a901a90-1a90-1a90-1a90-1a901a901a90
-                      lago_tax_id: 1a901a90-1a90-1a90-1a90-1a901a901a90
-                      tax_name: TVA
-                      tax_code: french_standard_vat
-                      tax_rate: 20
-                      tax_description: French standard VAT
-                      amount_cents: 2000
-                      amount_currency: USD
-                      created_at: '2022-09-14T16:35:31Z'
-                      lago_fee_id: 1a901a90-1a90-1a90-1a90-1a901a901a90
-                  pricing_unit_details:
-                    lago_pricing_unit_id: 1a901a90-1a90-1a90-1a90-1a901a901a90
-                    pricing_unit_code: credits
-                    short_name: CR
-                    amount_cents: 200
-                    precise_amount_cents: '200.0'
-                    unit_amount_cents: 100
-                    precise_unit_amount: '100.0'
-                    conversion_rate: '0.5'
-              meta:
-                current_page: 2
-                next_page: 3
-                prev_page: 1
-                total_pages: 4
-                total_count: 70
-        description: Successful response
-    '401':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              status:
-                allOf:
-                  - type: integer
-                    format: int32
-                    example: 401
-              error:
-                allOf:
-                  - type: string
-                    example: Unauthorized
-            refIdentifier: '#/components/schemas/ApiErrorUnauthorized'
-            requiredProperties:
-              - status
-              - error
-        examples:
-          example:
-            value:
-              status: 401
-              error: Unauthorized
-        description: Unauthorized error
-    '422':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              status:
-                allOf:
-                  - type: integer
-                    format: int32
-                    example: 422
-              error:
-                allOf:
-                  - type: string
-                    example: Unprocessable entity
-              code:
-                allOf:
-                  - type: string
-                    example: validation_errors
-              error_details:
-                allOf:
-                  - type: object
-            refIdentifier: '#/components/schemas/ApiErrorUnprocessableEntity'
-            requiredProperties:
-              - status
-              - error
-              - code
-              - error_details
-        examples:
-          example:
-            value:
-              status: 422
-              error: Unprocessable entity
-              code: validation_errors
-              error_details: {}
-        description: Unprocessable entity error
-  deprecated: false
-  type: path
+            type: string
+            example: '2023-03-28T12:21:51Z'
+            format: date-time
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FeesPaginated'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '422':
+          $ref: '#/components/responses/UnprocessableEntity'
 components:
+  parameters:
+    page:
+      name: page
+      in: query
+      description: Page number.
+      required: false
+      explode: true
+      schema:
+        type: integer
+        example: 1
+    per_page:
+      name: per_page
+      in: query
+      description: Number of records per page.
+      required: false
+      explode: true
+      schema:
+        type: integer
+        example: 20
+    external_customer_id:
+      name: external_customer_id
+      in: query
+      description: Unique identifier assigned to the customer in your application.
+      required: false
+      explode: true
+      schema:
+        type: string
+        example: 5eb02857-a71e-4ea2-bcf9-57d3a41bc6ba
+    external_subscription_id:
+      name: external_subscription_id
+      in: query
+      description: External subscription ID
+      required: false
+      explode: true
+      schema:
+        type: string
+        example: 5eb02857-a71e-4ea2-bcf9-57d3a41bc6ba
   schemas:
     Currency:
       type: string
@@ -662,6 +546,477 @@ components:
         - YER
         - ZAR
         - ZMW
+    FeesPaginated:
+      type: object
+      required:
+        - fees
+        - meta
+      properties:
+        fees:
+          type: array
+          items:
+            $ref: '#/components/schemas/FeeObject'
+        meta:
+          $ref: '#/components/schemas/PaginationMeta'
+    FeeObject:
+      type: object
+      required:
+        - item
+        - amount_cents
+        - amount_currency
+        - taxes_amount_cents
+        - taxes_rate
+        - total_amount_cents
+        - total_amount_currency
+        - pay_in_advance
+        - invoiceable
+        - units
+        - total_aggregated_units
+        - precise_unit_amount
+        - payment_status
+      properties:
+        lago_id:
+          type:
+            - string
+            - 'null'
+          format: uuid
+          description: >-
+            Unique identifier assigned to the fee within the Lago application.
+            This ID is exclusively created by Lago and serves as a unique
+            identifier for the fee's record within the Lago system.
+          example: 1a901a90-1a90-1a90-1a90-1a901a901a90
+        lago_charge_id:
+          type:
+            - string
+            - 'null'
+          format: uuid
+          description: Unique identifier assigned to the charge that the fee belongs to
+          example: 1a901a90-1a90-1a90-1a90-1a901a901a90
+        lago_charge_filter_id:
+          type:
+            - string
+            - 'null'
+          format: uuid
+          description: >-
+            Unique identifier assigned to the charge filter that the fee belongs
+            to
+          example: 1a901a90-1a90-1a90-1a90-1a901a901a90
+        lago_fixed_charge_id:
+          type:
+            - string
+            - 'null'
+          format: uuid
+          description: >-
+            Unique identifier assigned to the fixed charge that the fee belongs
+            to
+          example: 1a901a90-1a90-1a90-1a90-1a901a901a90
+        lago_invoice_id:
+          type:
+            - string
+            - 'null'
+          format: uuid
+          description: Unique identifier assigned to the invoice that the fee belongs to
+          example: 1a901a90-1a90-1a90-1a90-1a901a901a90
+        lago_true_up_fee_id:
+          type:
+            - string
+            - 'null'
+          format: uuid
+          description: >-
+            Unique identifier assigned to the true-up fee when a minimum has
+            been set to the charge. This identifier helps to distinguish and
+            manage the true-up fee associated with the charge, which may be
+            applicable when a minimum threshold or limit is set for the charge
+            amount.
+          example: 1a901a90-1a90-1a90-1a90-1a901a901a90
+        lago_true_up_parent_fee_id:
+          type:
+            - string
+            - 'null'
+          format: uuid
+          description: >-
+            Unique identifier assigned to the parent fee on which the true-up
+            fee is assigned. This identifier establishes the relationship
+            between the parent fee and the associated true-up fee.
+          example: 1a901a90-1a90-1a90-1a90-1a901a901a90
+        lago_subscription_id:
+          type:
+            - string
+            - 'null'
+          format: uuid
+          description: >-
+            Unique identifier assigned to the subscription, created by Lago.
+            This field is specifically displayed when the fee type is charge or
+            subscription.
+          example: 1a901a90-1a90-1a90-1a90-1a901a901a90
+        lago_customer_id:
+          type:
+            - string
+            - 'null'
+          format: uuid
+          description: >-
+            Unique identifier assigned to the customer, created by Lago. This
+            field is specifically displayed when the fee type is charge or
+            subscription.
+          example: 1a901a90-1a90-1a90-1a90-1a901a901a90
+        external_customer_id:
+          type:
+            - string
+            - 'null'
+          description: >-
+            Unique identifier assigned to the customer in your application. This
+            field is specifically displayed when the fee type is charge or
+            subscription.
+          example: external_id
+        external_subscription_id:
+          type:
+            - string
+            - 'null'
+          description: >-
+            Unique identifier assigned to the subscription in your application.
+            This field is specifically displayed when the fee type is charge or
+            subscription.
+          example: external_id
+        amount_cents:
+          type: integer
+          description: The cost of this specific fee, excluding any applicable taxes.
+          example: 100
+        precise_amount:
+          type: string
+          description: >-
+            The cost of this specific fee, excluding any applicable taxes, with
+            precision.
+          example: '1.0001'
+        precise_total_amount:
+          type: string
+          description: >-
+            The cost of this specific fee, including any applicable taxes, with
+            precision.
+          example: '1.0212'
+        amount_currency:
+          $ref: '#/components/schemas/Currency'
+          description: >-
+            The currency of this specific fee. It indicates the monetary unit in
+            which the fee's cost is expressed.
+          example: EUR
+        taxes_amount_cents:
+          type: integer
+          description: The cost of the tax associated with this specific fee.
+          example: 20
+        taxes_precise_amount:
+          type: string
+          description: >-
+            The cost of the tax associated with this specific fee, with
+            precision.
+          example: '0.20123'
+        taxes_rate:
+          type: number
+          description: The tax rate associated with this specific fee.
+          example: 20
+        units:
+          type: string
+          description: >-
+            The number of units used to charge the customer. This field
+            indicates the quantity or count of units consumed or utilized in the
+            context of the charge. It helps in determining the basis for
+            calculating the fee or cost associated with the usage of the service
+            or product provided to the customer.
+          example: '0.32'
+        precise_unit_amount:
+          type: string
+          description: The unit amount of the fee per unit, with precision.
+          example: '312.5'
+        total_aggregated_units:
+          type: string
+          description: >-
+            The total number of units that have been aggregated for this
+            specific fee.
+          example: '0.32'
+        total_amount_cents:
+          type: integer
+          description: The cost of this specific fee, including any applicable taxes.
+          example: 120
+        total_amount_currency:
+          $ref: '#/components/schemas/Currency'
+          description: The currency of this specific fee, including any applicable taxes.
+          example: EUR
+        events_count:
+          type:
+            - integer
+            - 'null'
+          description: >-
+            The number of events that have been sent and used to charge the
+            customer. This field indicates the count or quantity of events that
+            have been processed and considered in the charging process.
+          example: 23
+        pay_in_advance:
+          type: boolean
+          description: >-
+            Flag that indicates whether the fee was paid in advance. It serves
+            as a boolean value, where `true` represents that the fee was paid in
+            advance (straightaway), and `false` indicates that the fee was not
+            paid in arrears (at the end of the period).
+          example: true
+        invoiceable:
+          type: boolean
+          description: >-
+            Flag that indicates whether the fee was included on the invoice. It
+            serves as a boolean value, where `true` represents that the fee was
+            included on the invoice, and `false` indicates that the fee was not
+            included on the invoice.
+          example: true
+        from_date:
+          type:
+            - string
+            - 'null'
+          format: date-time
+          description: >-
+            The beginning date of the period that the fee covers. It is
+            applicable only to `subscription`, `charge`, `fixed_charge` and
+            `commitment` fees. This field indicates the start date of the
+            billing period or subscription period associated with the fee.
+          example: '2022-04-29T08:59:51Z'
+        to_date:
+          type:
+            - string
+            - 'null'
+          format: date-time
+          description: >-
+            The ending date of the period that the fee covers. It is applicable
+            only to `subscription`, `charge`, `fixed_charge` and `commitment`
+            fees. This field indicates the end date of the billing period or
+            subscription period associated with the fee.
+          example: '2022-05-29T08:59:51Z'
+        payment_status:
+          type: string
+          enum:
+            - pending
+            - succeeded
+            - failed
+            - refunded
+          description: >-
+            Indicates the payment status of the fee. It represents the current
+            status of the payment associated with the fee. The possible values
+            for this field are `pending`, `succeeded`, `failed` and `refunded`.
+          example: pending
+        created_at:
+          type:
+            - string
+            - 'null'
+          format: date-time
+          description: >-
+            The date and time when the fee was created. It is provided in
+            Coordinated Universal Time (UTC) format.
+          example: '2022-08-24T14:58:59Z'
+        succeeded_at:
+          type:
+            - string
+            - 'null'
+          format: date-time
+          description: >-
+            The date and time when the payment for the fee was successfully
+            processed. It is provided in Coordinated Universal Time (UTC)
+            format.
+          example: '2022-08-24T14:58:59Z'
+        failed_at:
+          type:
+            - string
+            - 'null'
+          format: date-time
+          description: >-
+            The date and time when the payment for the fee failed to process. It
+            is provided in Coordinated Universal Time (UTC) format.
+          example: '2022-08-24T14:58:59Z'
+        refunded_at:
+          type:
+            - string
+            - 'null'
+          format: date-time
+          description: >-
+            The date and time when the payment for the fee was refunded. It is
+            provided in Coordinated Universal Time (UTC) format
+          example: '2022-08-24T14:58:59Z'
+        event_transaction_id:
+          type:
+            - string
+            - 'null'
+          description: >-
+            Unique identifier assigned to the transaction. This field is
+            specifically displayed when the fee type is `charge` and the payment
+            for the fee is made in advance (`pay_in_advance` is set to `true`).
+          example: transaction_1234567890
+        description:
+          type:
+            - string
+            - 'null'
+          description: The description of the fee.
+          example: Fee description
+        precise_coupons_amount_cents:
+          type: string
+          description: The coupon amount applied to the fee, with precision.
+          example: '0.0'
+        amount_details:
+          $ref: '#/components/schemas/FeeAmountDetails'
+          description: List of all unit amount details for calculating the fee.
+        self_billed:
+          type: boolean
+          example: false
+          description: >-
+            Indicates if the fee belongs to self-billed invoice. Self-billing is
+            a process where an organization creates the invoice on behalf of the
+            partner.
+        item:
+          type: object
+          description: Item attached to the fee
+          required:
+            - type
+            - code
+            - name
+            - lago_item_id
+            - item_type
+          properties:
+            type:
+              type: string
+              enum:
+                - charge
+                - fixed_charge
+                - add_on
+                - subscription
+                - credit
+                - commitment
+              description: >-
+                The fee type. Possible values are `add-on`, `charge`,
+                `fixed_charge`, `credit`, `subscription` or `commitment`.
+              example: subscription
+            code:
+              type: string
+              description: >-
+                The code of the fee item. It can be the code of the `add-on`,
+                the code of the `charge`, the code of the `fixed_charge`, the
+                code of the `credit` or the code of the `subscription`.
+              example: startup
+            name:
+              type: string
+              description: >
+                The name of the fee item. The value depends on the type of the
+                fee item:
+
+
+                - If the fee item is a `charge`, it is the billable metric name.
+
+                - If the fee item is a `add-on`, it is the add-on name.
+
+                - If the fee item is a `credit`, it is the wallet transaction
+                name if set, or `"credit"` if not.
+
+                - If the fee item is a `fixed_charge`, it is the fixed charge
+                add-on name.
+
+                - For all the other fee items, it is the subscription plan name.
+              example: Startup
+            description:
+              type:
+                - string
+                - 'null'
+              description: >
+                The description of the fee item. The value depends on the type
+                of the fee item:
+
+
+                - If the fee item is a `charge`, it is the billable metric
+                description.
+
+                - If the fee item is a `add-on`, it is the add-on description.
+
+                - If the fee item is a `credit`, it is always `"credit"`.
+
+                - If the fee item is a `fixed_charge`, it is the fixed charge
+                add-on description.
+
+                - For all the other fee items, it is the subscription plan
+                description.
+              example: Startup
+            invoice_display_name:
+              type: string
+              description: >
+                Specifies the name that will be displayed on an invoice. If no
+                value is set for this field, we'll fallback to a value that
+                depends on the type of the fee items:
+
+
+                - If the fee item is a `charge`, we'll fallback to the
+                `invoice_display_name` of the `charge` or the billable metric
+                name if no `invoice_display_name` is set.
+
+                - If the fee item is a `add-on`, we'll fallback to the
+                `invoice_name` of the `add-on` or the `name` of the `add-on`.
+
+                - If the fee item is a `credit`, we'll fallback to the wallet
+                transaction name if set, or `credit` if not.
+
+                - If the fee item is a `fixed_charge`, we'll fallback to the
+                `invoice_display_name` of the `fixed_charge` or the
+                `invoice_name` of the `fixed_charge_add_on` if no
+                `invoice_display_name` is set.
+
+                - For all the other fee items, we'll fallback to the
+                `invoice_display_name` of the subscription plan.
+              example: Setup Fee (SF1)
+            filter_invoice_display_name:
+              type:
+                - string
+                - 'null'
+              description: >-
+                Specifies the name that will be displayed on an invoice. If no
+                value is set for this field, the actual charge filter values
+                will be used as the default display name.
+              example: AWS eu-east-1
+            filters:
+              type:
+                - object
+                - 'null'
+              description: Key value list of event properties
+              additionalProperties:
+                type: array
+                items:
+                  type: string
+            lago_item_id:
+              type: string
+              example: 1a901a90-1a90-1a90-1a90-1a901a901a90
+              description: >-
+                Unique identifier of the fee item, created by Lago. It can be
+                the identifier of the `add-on`, the `charge`, the `credit`, the
+                `subscription` or the `commitment`.
+              format: uuid
+            item_type:
+              type: string
+              enum:
+                - AddOn
+                - BillableMetric
+                - Subscription
+                - WalletTransaction
+              description: >-
+                The type of the fee item. Possible values are `AddOn`,
+                `BillableMetric`, `WalletTransaction`, `Subscription`.
+              example: Subscription
+            grouped_by:
+              type: object
+              description: >-
+                Key value list of event properties aggregated by the charge
+                model
+              additionalProperties:
+                type: string
+        applied_taxes:
+          type: array
+          description: List of fee applied taxes
+          items:
+            $ref: '#/components/schemas/FeeAppliedTaxObject'
+        pricing_unit_details:
+          $ref: '#/components/schemas/PricingUnitDetailsObject'
+          type:
+            - object
+            - 'null'
+          description: Details about the pricing unit used and amounts for this fee.
     PaginationMeta:
       type: object
       required:
@@ -693,6 +1048,39 @@ components:
           type: integer
           description: Total number of records.
           example: 70
+    ApiErrorUnauthorized:
+      type: object
+      required:
+        - status
+        - error
+      properties:
+        status:
+          type: integer
+          format: int32
+          example: 401
+        error:
+          type: string
+          example: Unauthorized
+    ApiErrorUnprocessableEntity:
+      type: object
+      required:
+        - status
+        - error
+        - code
+        - error_details
+      properties:
+        status:
+          type: integer
+          format: int32
+          example: 422
+        error:
+          type: string
+          example: Unprocessable entity
+        code:
+          type: string
+          example: validation_errors
+        error_details:
+          type: object
     FeeAmountDetails:
       type: object
       properties:
@@ -898,6 +1286,63 @@ components:
             The unit price, excluding tax, for a specific tier of a `volume`
             charge model.
           example: '10.0'
+    FeeAppliedTaxObject:
+      allOf:
+        - $ref: '#/components/schemas/BaseAppliedTax'
+      type: object
+      properties:
+        lago_fee_id:
+          type: string
+          format: uuid
+          description: Unique identifier of the fee, created by Lago.
+          example: 1a901a90-1a90-1a90-1a90-1a901a901a90
+    PricingUnitDetailsObject:
+      type: object
+      required:
+        - lago_pricing_unit_id
+        - pricing_unit_code
+        - short_name
+        - amount_cents
+        - precise_amount_cents
+        - unit_amount_cents
+        - precise_unit_amount
+        - conversion_rate
+      properties:
+        lago_pricing_unit_id:
+          type: string
+          format: uuid
+          description: Unique identifier of the pricing unit, created by Lago.
+          example: 1a901a90-1a90-1a90-1a90-1a901a901a90
+        pricing_unit_code:
+          type: string
+          description: The code of the pricing unit.
+          example: credits
+        short_name:
+          type: string
+          description: >-
+            The short name of the pricing unit. Will be used as currency name in
+            the UI and PDFs.
+          example: CR
+        amount_cents:
+          type: integer
+          description: The amount in cents in the pricing unit.
+          example: 200
+        precise_amount_cents:
+          type: string
+          description: The precise amount in cents in the pricing unit.
+          example: '200.0'
+        unit_amount_cents:
+          type: integer
+          description: The unit amount in cents in the pricing unit.
+          example: 100
+        precise_unit_amount:
+          type: string
+          description: The precise unit amount in the pricing unit.
+          example: '100.0'
+        conversion_rate:
+          type: string
+          description: The conversion rate from pricing units to the plan's currency.
+          example: '0.5'
     BaseAppliedTax:
       type: object
       required:
@@ -960,511 +1405,22 @@ components:
             field provides the timestamp for the exact moment when the applied
             tax was initially created.
           example: '2022-09-14T16:35:31Z'
-    FeeAppliedTaxObject:
-      allOf:
-        - $ref: '#/components/schemas/BaseAppliedTax'
-      type: object
-      properties:
-        lago_fee_id:
-          type: string
-          format: uuid
-          description: Unique identifier of the fee, created by Lago.
-          example: 1a901a90-1a90-1a90-1a90-1a901a901a90
-    PricingUnitDetailsObject:
-      type: object
-      required:
-        - lago_pricing_unit_id
-        - pricing_unit_code
-        - short_name
-        - amount_cents
-        - precise_amount_cents
-        - unit_amount_cents
-        - precise_unit_amount
-        - conversion_rate
-      properties:
-        lago_pricing_unit_id:
-          type: string
-          format: uuid
-          description: Unique identifier of the pricing unit, created by Lago.
-          example: 1a901a90-1a90-1a90-1a90-1a901a901a90
-        pricing_unit_code:
-          type: string
-          description: The code of the pricing unit.
-          example: credits
-        short_name:
-          type: string
-          description: >-
-            The short name of the pricing unit. Will be used as currency name in
-            the UI and PDFs.
-          example: CR
-        amount_cents:
-          type: integer
-          description: The amount in cents in the pricing unit.
-          example: 200
-        precise_amount_cents:
-          type: string
-          description: The precise amount in cents in the pricing unit.
-          example: '200.0'
-        unit_amount_cents:
-          type: integer
-          description: The unit amount in cents in the pricing unit.
-          example: 100
-        precise_unit_amount:
-          type: string
-          description: The precise unit amount in the pricing unit.
-          example: '100.0'
-        conversion_rate:
-          type: string
-          description: The conversion rate from pricing units to the plan's currency.
-          example: '0.5'
-    FeeObject:
-      type: object
-      required:
-        - item
-        - amount_cents
-        - amount_currency
-        - taxes_amount_cents
-        - taxes_rate
-        - total_amount_cents
-        - total_amount_currency
-        - pay_in_advance
-        - invoiceable
-        - units
-        - total_aggregated_units
-        - precise_unit_amount
-        - payment_status
-      properties:
-        lago_id:
-          type:
-            - string
-            - 'null'
-          format: uuid
-          description: >-
-            Unique identifier assigned to the fee within the Lago application.
-            This ID is exclusively created by Lago and serves as a unique
-            identifier for the fee's record within the Lago system.
-          example: 1a901a90-1a90-1a90-1a90-1a901a901a90
-        lago_charge_id:
-          type:
-            - string
-            - 'null'
-          format: uuid
-          description: Unique identifier assigned to the charge that the fee belongs to
-          example: 1a901a90-1a90-1a90-1a90-1a901a901a90
-        lago_charge_filter_id:
-          type:
-            - string
-            - 'null'
-          format: uuid
-          description: >-
-            Unique identifier assigned to the charge filter that the fee belongs
-            to
-          example: 1a901a90-1a90-1a90-1a90-1a901a901a90
-        lago_invoice_id:
-          type:
-            - string
-            - 'null'
-          format: uuid
-          description: Unique identifier assigned to the invoice that the fee belongs to
-          example: 1a901a90-1a90-1a90-1a90-1a901a901a90
-        lago_true_up_fee_id:
-          type:
-            - string
-            - 'null'
-          format: uuid
-          description: >-
-            Unique identifier assigned to the true-up fee when a minimum has
-            been set to the charge. This identifier helps to distinguish and
-            manage the true-up fee associated with the charge, which may be
-            applicable when a minimum threshold or limit is set for the charge
-            amount.
-          example: 1a901a90-1a90-1a90-1a90-1a901a901a90
-        lago_true_up_parent_fee_id:
-          type:
-            - string
-            - 'null'
-          format: uuid
-          description: >-
-            Unique identifier assigned to the parent fee on which the true-up
-            fee is assigned. This identifier establishes the relationship
-            between the parent fee and the associated true-up fee.
-          example: 1a901a90-1a90-1a90-1a90-1a901a901a90
-        lago_subscription_id:
-          type:
-            - string
-            - 'null'
-          format: uuid
-          description: >-
-            Unique identifier assigned to the subscription, created by Lago.
-            This field is specifically displayed when the fee type is charge or
-            subscription.
-          example: 1a901a90-1a90-1a90-1a90-1a901a901a90
-        lago_customer_id:
-          type:
-            - string
-            - 'null'
-          format: uuid
-          description: >-
-            Unique identifier assigned to the customer, created by Lago. This
-            field is specifically displayed when the fee type is charge or
-            subscription.
-          example: 1a901a90-1a90-1a90-1a90-1a901a901a90
-        external_customer_id:
-          type:
-            - string
-            - 'null'
-          description: >-
-            Unique identifier assigned to the customer in your application. This
-            field is specifically displayed when the fee type is charge or
-            subscription.
-          example: external_id
-        external_subscription_id:
-          type:
-            - string
-            - 'null'
-          description: >-
-            Unique identifier assigned to the subscription in your application.
-            This field is specifically displayed when the fee type is charge or
-            subscription.
-          example: external_id
-        amount_cents:
-          type: integer
-          description: The cost of this specific fee, excluding any applicable taxes.
-          example: 100
-        precise_amount:
-          type: string
-          description: >-
-            The cost of this specific fee, excluding any applicable taxes, with
-            precision.
-          example: '1.0001'
-        precise_total_amount:
-          type: string
-          description: >-
-            The cost of this specific fee, including any applicable taxes, with
-            precision.
-          example: '1.0212'
-        amount_currency:
-          $ref: '#/components/schemas/Currency'
-          description: >-
-            The currency of this specific fee. It indicates the monetary unit in
-            which the fee's cost is expressed.
-          example: EUR
-        taxes_amount_cents:
-          type: integer
-          description: The cost of the tax associated with this specific fee.
-          example: 20
-        taxes_precise_amount:
-          type: string
-          description: >-
-            The cost of the tax associated with this specific fee, with
-            precision.
-          example: '0.20123'
-        taxes_rate:
-          type: number
-          description: The tax rate associated with this specific fee.
-          example: 20
-        units:
-          type: string
-          description: >-
-            The number of units used to charge the customer. This field
-            indicates the quantity or count of units consumed or utilized in the
-            context of the charge. It helps in determining the basis for
-            calculating the fee or cost associated with the usage of the service
-            or product provided to the customer.
-          example: '0.32'
-        precise_unit_amount:
-          type: string
-          description: The unit amount of the fee per unit, with precision.
-          example: '312.5'
-        total_aggregated_units:
-          type: string
-          description: >-
-            The total number of units that have been aggregated for this
-            specific fee.
-          example: '0.32'
-        total_amount_cents:
-          type: integer
-          description: The cost of this specific fee, including any applicable taxes.
-          example: 120
-        total_amount_currency:
-          $ref: '#/components/schemas/Currency'
-          description: The currency of this specific fee, including any applicable taxes.
-          example: EUR
-        events_count:
-          type:
-            - integer
-            - 'null'
-          description: >-
-            The number of events that have been sent and used to charge the
-            customer. This field indicates the count or quantity of events that
-            have been processed and considered in the charging process.
-          example: 23
-        pay_in_advance:
-          type: boolean
-          description: >-
-            Flag that indicates whether the fee was paid in advance. It serves
-            as a boolean value, where `true` represents that the fee was paid in
-            advance (straightaway), and `false` indicates that the fee was not
-            paid in arrears (at the end of the period).
-          example: true
-        invoiceable:
-          type: boolean
-          description: >-
-            Flag that indicates whether the fee was included on the invoice. It
-            serves as a boolean value, where `true` represents that the fee was
-            included on the invoice, and `false` indicates that the fee was not
-            included on the invoice.
-          example: true
-        from_date:
-          type:
-            - string
-            - 'null'
-          format: date-time
-          description: >-
-            The beginning date of the period that the fee covers. It is
-            applicable only to `subscription` and `charge` fees. This field
-            indicates the start date of the billing period or subscription
-            period associated with the fee.
-          example: '2022-04-29T08:59:51Z'
-        to_date:
-          type:
-            - string
-            - 'null'
-          format: date-time
-          description: >-
-            The ending date of the period that the fee covers. It is applicable
-            only to `subscription` and `charge` fees. This field indicates the
-            end date of the billing period or subscription period associated
-            with the fee.
-          example: '2022-05-29T08:59:51Z'
-        payment_status:
-          type: string
-          enum:
-            - pending
-            - succeeded
-            - failed
-            - refunded
-          description: >-
-            Indicates the payment status of the fee. It represents the current
-            status of the payment associated with the fee. The possible values
-            for this field are `pending`, `succeeded`, `failed` and `refunded`.
-          example: pending
-        created_at:
-          type:
-            - string
-            - 'null'
-          format: date-time
-          description: >-
-            The date and time when the fee was created. It is provided in
-            Coordinated Universal Time (UTC) format.
-          example: '2022-08-24T14:58:59Z'
-        succeeded_at:
-          type:
-            - string
-            - 'null'
-          format: date-time
-          description: >-
-            The date and time when the payment for the fee was successfully
-            processed. It is provided in Coordinated Universal Time (UTC)
-            format.
-          example: '2022-08-24T14:58:59Z'
-        failed_at:
-          type:
-            - string
-            - 'null'
-          format: date-time
-          description: >-
-            The date and time when the payment for the fee failed to process. It
-            is provided in Coordinated Universal Time (UTC) format.
-          example: '2022-08-24T14:58:59Z'
-        refunded_at:
-          type:
-            - string
-            - 'null'
-          format: date-time
-          description: >-
-            The date and time when the payment for the fee was refunded. It is
-            provided in Coordinated Universal Time (UTC) format
-          example: '2022-08-24T14:58:59Z'
-        event_transaction_id:
-          type:
-            - string
-            - 'null'
-          description: >-
-            Unique identifier assigned to the transaction. This field is
-            specifically displayed when the fee type is `charge` and the payment
-            for the fee is made in advance (`pay_in_advance` is set to `true`).
-          example: transaction_1234567890
-        description:
-          type:
-            - string
-            - 'null'
-          description: The description of the fee.
-          example: Fee description
-        precise_coupons_amount_cents:
-          type: string
-          description: The coupon amount applied to the fee, with precision.
-          example: '0.0'
-        amount_details:
-          $ref: '#/components/schemas/FeeAmountDetails'
-          description: List of all unit amount details for calculating the fee.
-        self_billed:
-          type: boolean
-          example: false
-          description: >-
-            Indicates if the fee belongs to self-billed invoice. Self-billing is
-            a process where an organization creates the invoice on behalf of the
-            partner.
-        item:
-          type: object
-          description: Item attached to the fee
-          required:
-            - type
-            - code
-            - name
-            - lago_item_id
-            - item_type
-          properties:
-            type:
-              type: string
-              enum:
-                - charge
-                - add_on
-                - subscription
-                - credit
-                - commitment
-              description: >-
-                The fee type. Possible values are `add-on`, `charge`, `credit`,
-                `subscription` or `commitment`.
-              example: subscription
-            code:
-              type: string
-              description: >-
-                The code of the fee item. It can be the code of the `add-on`,
-                the code of the `charge`, the code of the `credit` or the code
-                of the `subscription`.
-              example: startup
-            name:
-              type: string
-              description: >
-                The name of the fee item. The value depends on the type of the
-                fee item:
-
-
-                - If the fee item is a `charge`, it is the billable metric name.
-
-                - If the fee item is a `add-on`, it is the add-on name.
-
-                - If the fee item is a `credit`, it is the wallet transaction
-                name if set, or `"credit"` if not.
-
-                - If the fee item is a `fixed_charge`, it is the fixed charge
-                add-on name.
-
-                - For all the other fee items, it is the subscription plan name.
-              example: Startup
-            description:
-              type:
-                - string
-                - 'null'
-              description: >
-                The description of the fee item. The value depends on the type
-                of the fee item:
-
-
-                - If the fee item is a `charge`, it is the billable metric
-                description.
-
-                - If the fee item is a `add-on`, it is the add-on description.
-
-                - If the fee item is a `credit`, it is always `"credit"`.
-
-                - If the fee item is a `fixed_charge`, it is the fixed charge
-                add-on description.
-
-                - For all the other fee items, it is the subscription plan
-                description.
-              example: Startup
-            invoice_display_name:
-              type: string
-              description: >
-                Specifies the name that will be displayed on an invoice. If no
-                value is set for this field, we'll fallback to a value that
-                depends on the type of the fee items:
-
-
-                - If the fee item is a `charge`, we'll fallback to the
-                `invoice_display_name` of the `charge` or the billable metric
-                name if no `invoice_display_name` is set.
-
-                - If the fee item is a `add-on`, we'll fallback to the
-                `invoice_name` of the `add-on` or the `name` of the `add-on`.
-
-                - If the fee item is a `credit`, we'll fallback to the wallet
-                transaction name if set, or `credit` if not.
-
-                - If the fee item is a `fixed_charge`, we'll fallback to the
-                `invoice_display_name` of the `fixed_charge` or the
-                `invoice_name` of the `fixed_charge_add_on` if no
-                `invoice_display_name` is set.
-
-                - For all the other fee items, we'll fallback to the
-                `invoice_display_name` of the subscription plan.
-              example: Setup Fee (SF1)
-            filter_invoice_display_name:
-              type:
-                - string
-                - 'null'
-              description: >-
-                Specifies the name that will be displayed on an invoice. If no
-                value is set for this field, the actual charge filter values
-                will be used as the default display name.
-              example: AWS eu-east-1
-            filters:
-              type:
-                - object
-                - 'null'
-              description: Key value list of event properties
-              additionalProperties:
-                type: array
-                items:
-                  type: string
-            lago_item_id:
-              type: string
-              example: 1a901a90-1a90-1a90-1a90-1a901a901a90
-              description: >-
-                Unique identifier of the fee item, created by Lago. It can be
-                the identifier of the `add-on`, the `charge`, the `credit`, the
-                `subscription` or the `commitment`.
-              format: uuid
-            item_type:
-              type: string
-              enum:
-                - AddOn
-                - BillableMetric
-                - Subscription
-                - WalletTransaction
-              description: >-
-                The type of the fee item. Possible values are `AddOn`,
-                `BillableMetric`, `WalletTransaction`, `Subscription`.
-              example: Subscription
-            grouped_by:
-              type: object
-              description: >-
-                Key value list of event properties aggregated by the charge
-                model
-              additionalProperties:
-                type: string
-        applied_taxes:
-          type: array
-          description: List of fee applied taxes
-          items:
-            $ref: '#/components/schemas/FeeAppliedTaxObject'
-        pricing_unit_details:
-          type:
-            - object
-            - 'null'
-          description: Details about the pricing unit used and amounts for this fee.
-          $ref: '#/components/schemas/PricingUnitDetailsObject'
+  responses:
+    Unauthorized:
+      description: Unauthorized error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ApiErrorUnauthorized'
+    UnprocessableEntity:
+      description: Unprocessable entity error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ApiErrorUnprocessableEntity'
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
 
 ````

@@ -1,5 +1,9 @@
 # Source: https://docs.promptlayer.com/features/prompt-registry/template-variables.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.promptlayer.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Template Variables
 
 Creating flexible, dynamic prompts is essential to getting the most out of LLMs. PromptLayer's template system allows you to build reusable prompts where values can be inserted at runtime. This guide explains the two formatting options available in our platform: `f-string` and `jinja2`.
@@ -263,8 +267,3 @@ When creating a template in PromptLayer, select the appropriate format based on 
 ## Structured Outputs
 
 Template variables can also be used within structured output schemas to create dynamic validation rules and response formats. For more information, see our [Structured Outputs documentation](/features/prompt-registry/structured-outputs).
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.promptlayer.com/llms.txt

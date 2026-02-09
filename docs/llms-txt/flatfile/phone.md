@@ -1,5 +1,9 @@
 # Source: https://flatfile.com/docs/plugins/phone.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://flatfile.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Phone Number Validation and Formatting Plugin
 
 > Validates and formats phone numbers in Flatfile using country-specific validation with libphonenumber-js library
@@ -10,7 +14,7 @@ This plugin validates phone numbers in a specified field against a corresponding
 
 Install the plugin using npm:
 
-```bash
+```bash  theme={null}
 npm install @flatfile/plugin-validate-phone
 ```
 
@@ -34,7 +38,7 @@ The plugin accepts a configuration object with the following parameters:
 ### Basic Usage
 
 <CodeGroup>
-  ```javascript JavaScript
+  ```javascript JavaScript theme={null}
   import { FlatfileListener } from '@flatfile/listener';
   import validatePhone from '@flatfile/plugin-validate-phone';
 
@@ -47,7 +51,7 @@ The plugin accepts a configuration object with the following parameters:
   }
   ```
 
-  ```typescript TypeScript
+  ```typescript TypeScript theme={null}
   import { FlatfileListener } from '@flatfile/listener';
   import validatePhone from '@flatfile/plugin-validate-phone';
 
@@ -66,7 +70,7 @@ This example validates the 'phone' field using the 'country' field in all sheets
 ### Configuration Example
 
 <CodeGroup>
-  ```javascript JavaScript
+  ```javascript JavaScript theme={null}
   import { FlatfileListener } from '@flatfile/listener';
   import validatePhone from '@flatfile/plugin-validate-phone';
 
@@ -82,7 +86,7 @@ This example validates the 'phone' field using the 'country' field in all sheets
   }
   ```
 
-  ```typescript TypeScript
+  ```typescript TypeScript theme={null}
   import { FlatfileListener } from '@flatfile/listener';
   import validatePhone from '@flatfile/plugin-validate-phone';
 
@@ -104,7 +108,7 @@ This example validates and formats phone numbers in the "contacts" sheet using t
 ### Advanced Usage with Format Options
 
 <CodeGroup>
-  ```javascript JavaScript
+  ```javascript JavaScript theme={null}
   import { FlatfileListener } from '@flatfile/listener';
   import validatePhone from '@flatfile/plugin-validate-phone';
 
@@ -119,7 +123,7 @@ This example validates and formats phone numbers in the "contacts" sheet using t
   }
   ```
 
-  ```typescript TypeScript
+  ```typescript TypeScript theme={null}
   import { FlatfileListener } from '@flatfile/listener';
   import validatePhone from '@flatfile/plugin-validate-phone';
 

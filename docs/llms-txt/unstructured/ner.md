@@ -1,5 +1,9 @@
 # Source: https://docs.unstructured.io/ui/enriching/ner.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.unstructured.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Named entity recognition (NER)
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/ZEMegRGjCR0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen />

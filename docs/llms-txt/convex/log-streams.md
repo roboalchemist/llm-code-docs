@@ -119,7 +119,7 @@ Log events have a well-defined JSON schema that allow building complex, type-saf
 
 All events will have the following three fields:
 
-* `topic`: string, categorizes a log event, one of `["verification", "console", "function_execution", "audit_log", "scheduler_stats", "current_storage_usage"]`
+* `topic`: string, categorizes a log event, one of `["verification", "console", "function_execution", "audit_log", "concurrency_stats", "scheduler_stats", "current_storage_usage"]`
 * `timestamp`: number, Unix epoch timestamp in milliseconds as an integer
 * `convex`: An object containing metadata related to your Convex deployment, including `deployment_name`, `deployment_type`, `project_name`, and `project_slug`.
 
@@ -247,6 +247,32 @@ The following fields are added under `function` for all `console` and `function_
 * `path`: string, e.g. `"myDir/myFile:myFunction"`, or `"POST /my_endpoint"`
 * `cached`: optional boolean, for queries this denotes whether this event came from a cached function execution
 * `request_id`: string, the [request ID](/functions/debugging.md#finding-relevant-logs-by-request-id) of the function.
+
+### `concurrency_stats` events[​](#concurrency_stats-events "Direct link to concurrency_stats-events")
+
+These events are sent once a minute, reporting function concurrency statistics. Events are only sent if the stats have changed. Missing data points should be interpolated from the previous data event.
+
+Schema:
+
+Each event contains concurrency statistics for each function type (e.g. queries, mutations, actions). The records for each events have the following schema:
+
+* `num_running`: The maximum number of concurrently running functions within the minute the metric was reported
+
+* `num_queued`: The maximum number of queued functions within the minute the metric was reported. Functions may become temporarily queued when concurrency limits have been reached.
+
+* `topic`: `"concurrency_stats"`
+
+* `timestamp`: Unix epoch timestamp in milliseconds
+
+* `query`: Concurrency stats for queries
+
+* `mutation`: Concurrency stats for mutations
+
+* `action`: Concurrency stats for actions
+
+* `node_action`: Concurrency stats for node actions
+
+* `http_action`: Concurrency stats for HTTP actions
 
 ### `scheduler_stats` events[​](#scheduler_stats-events "Direct link to scheduler_stats-events")
 

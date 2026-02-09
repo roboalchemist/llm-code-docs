@@ -15,15 +15,15 @@ description: >-
 
 Developed by an open collective, stewarded by [Tanner Linsley](https://github.com/tannerlinsley), it's one of the best and most popular ways to build modern apps.
 
-## TanStack DB
+## TanStack DB
 
-Electric have [partnered with TanStack](https://tanstack.com/blog/tanstack-db-0.1-the-embedded-client-database-for-tanstack-query) to build [TanStack DB](https://tanstack.com/db), a reactive client store for building super fast apps on sync.
+Electric have [partnered with TanStack](https://tanstack.com/blog/tanstack-db-0.1-the-embedded-client-database-for-tanstack-query) to build [TanStack DB](/products/tanstack-db), a reactive client store for building super fast apps on sync.
 
-Type-safe, declarative, incrementally adoptable and insanely fast, it's the [future of app development with Electric](/blog/2025/07/29/local-first-sync-with-tanstack-db) and the best way of [building AI apps and agentic systems](/blog/2025/04/09/building-ai-apps-on-sync).
+Type-safe, declarative, incrementally adoptable and insanely fast, it's the [future of app development with Electric](/blog/2025/07/29/super-fast-apps-on-sync-with-tanstack-db) and the best way of [building AI apps and agentic systems](/blog/2025/04/09/building-ai-apps-on-sync).
 
 See the blog post for more details:
 
-[Maxi Ferreira](https://x.com/charca) also wrote an [awesome interactive guide](https://frontendatscale.com/blog/tanstack-db) to what TanStack DB is, how it works, and why it might change the way you build apps:
+[Maxi Ferreira](https://x.com/charca) also wrote an [awesome interactive guide](https://frontendatscale.com/blog/tanstack-db) to what TanStack DB is, how it works, and why it might change the way you build apps:
 
 ### Project links
 

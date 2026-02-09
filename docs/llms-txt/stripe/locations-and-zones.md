@@ -23,8 +23,9 @@ The required [address properties](https://docs.stripe.com/api/terminal/locations
 ### Required Address Properties
 
 - Australia, Canada, Italy, Japan (Beta), Spain, United States: `line1`, `city`, `state`, `postal_code`, and `country` required
-- Austria, Belgium, Czech Republic, Denmark, Finland, France, Germany, Luxembourg, Malaysia, Netherlands, New Zealand, Norway, Poland (Beta), Portugal, Sweden, Switzerland, United Kingdom: `line1`, `city`, `postal_code`, and `country` required
-- Ireland, Singapore: `line1`, `postal_code`, and `country` required
+- Austria, Belgium, Czech Republic, Denmark, Estonia (Beta), Finland, France, Germany, Hungary (Beta), Latvia (Beta), Liechtenstein (Beta), Lithuania (Beta), Luxembourg, Malaysia, Netherlands, New Zealand, Norway, Poland (Beta), Portugal, Romania (Beta), Slovakia (Beta), Sweden, Switzerland, United Kingdom: `line1`, `city`, `postal_code`, and `country` required
+- Bulgaria (Beta), Croatia (Beta), Cyprus (Beta), Ireland, Malta (Beta), Singapore, Slovenia (Beta): `line1`, `postal_code`, and `country` required
+- Gibraltar (Beta): `line1` and `country` required
 
 > You can use the Dashboard or API to update a `Location` object. After you create a location, you can’t change its country. Instead, create a new location in the new country, and then re-register any readers associated with the old location.
 
@@ -38,13 +39,13 @@ Zones are the top-level groups that can consist of either more zones or location
 
 > This is a Dashboard for when dashboard-or-api is dashboard. View the full page at https://docs.stripe.com/terminal/fleet/locations-and-zones?dashboard-or-api=dashboard.
 
-First, you must [register your reader to a location](https://docs.stripe.com/terminal/fleet/register-readers.md?dashboard-or-api=dashboard) to accept payments. You can manage your locations and zones in the [Manage locations](https://dashboard.stripe.com/terminal/locations/manage) page. To open this page from the Terminal reader page, click the **Manage locations** button on the **Readers** tab.
+First, you must [register your reader to a location](https://docs.stripe.com/terminal/fleet/register-readers.md?dashboard-or-api=dashboard) to accept payments. You can manage your locations and zones in the [Manage locations](https://dashboard.stripe.com/terminal/locations/manage) page. To open this page, click the **Manage locations** button on the **Locations** tab.
 
 ### Create a location
 
 To create a location:
 
-1. Click the overflow menu (⋯) on the **All locations** row, then click **Create location**.
+1. On the [Terminal Locations](https://dashboard.stripe.com/terminal/locations) page, click **Create location**
 1. Enter a name and a valid address. Providing an address ensures that the correct configuration and settings are applied based on the region where the readers are operating.
 1. Click **Done**.
 
@@ -78,8 +79,8 @@ To add or move a location to a zone:
 
 To delete a location, you must remove the readers associate with it:
 
-1. Remove all readers from the location in which you want to delete.
-1. Click the overflow menu (⋯) on the location, then click **Delete location**.
+1. On the [Terminal Locations](https://dashboard.stripe.com/terminal/locations) page, click the overflow menu (⋯) on the location. Or, click the location and click the overflow menu button from the details page.
+1. Click **Delete location**.
 1. Click **Delete**.
 
 ### Delete a zone

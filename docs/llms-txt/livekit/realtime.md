@@ -1,10 +1,10 @@
 # Source: https://docs.livekit.io/agents/models/realtime.md
 
-LiveKit docs › Models › Realtime models › Overview
+LiveKit docs › Models › Realtime › Overview
 
 ---
 
-# Realtime model plugins
+# Realtime models overview
 
 > Guides for adding realtime model integrations to your agents.
 
@@ -18,7 +18,20 @@ The agents framework includes plugins for popular realtime models out of the box
 
 LiveKit is open source and welcomes [new plugin contributions](https://docs.livekit.io/agents/models.md#contribute).
 
-## How to use
+### Plugins
+
+The following table lists the available realtime model providers.
+
+| Provider | Python | Node.js |
+| -------- | ------ | ------- |
+| [Amazon Nova Sonic](https://docs.livekit.io/agents/models/realtime/plugins/nova-sonic.md) | ✓ | — |
+| [Azure OpenAI Realtime API](https://docs.livekit.io/agents/models/realtime/plugins/azure-openai.md) | ✓ | ✓ |
+| [Gemini Live API](https://docs.livekit.io/agents/models/realtime/plugins/gemini.md) | ✓ | ✓ |
+| [OpenAI Realtime API](https://docs.livekit.io/agents/models/realtime/plugins/openai.md) | ✓ | ✓ |
+| [Ultravox Realtime](https://docs.livekit.io/agents/models/realtime/plugins/ultravox.md) | ✓ | — |
+| [xAI Grok Voice Agent API](https://docs.livekit.io/agents/models/realtime/plugins/xai.md) | ✓ | — |
+
+## Usage
 
 Realtime model plugins have a constructor method to create a `RealtimeModel` instance. This instance can be passed directly to an `AgentSession` or `Agent` in its constructor, in place of an [LLM instance](https://docs.livekit.io/agents/models/llm.md).
 
@@ -48,7 +61,7 @@ const session = new voice.AgentSession({
 
 For additional information about installing and using plugins, see the [plugins overview](https://docs.livekit.io/agents/models.md#plugins).
 
-### Usage with separate TTS
+### Separate TTS configuration
 
 To use a realtime model with a different [TTS instance](https://docs.livekit.io/agents/models/tts.md), configure the realtime model to use a text-only response modality and include a TTS instance in your `AgentSession` configuration.
 
@@ -74,25 +87,13 @@ const session = new voice.AgentSession({
 
 This feature requires support for a text-only response modality. Visit the relevant provider page for details about supported features.
 
-## Available plugins
-
-The following table lists the available realtime model providers.
-
-| Provider | Python | Node.js |
-| -------- | ------ | ------- |
-| [Amazon Nova Sonic](https://docs.livekit.io/agents/models/realtime/plugins/nova-sonic.md) | ✓ | — |
-| [Azure OpenAI Realtime API](https://docs.livekit.io/agents/models/realtime/plugins/azure-openai.md) | ✓ | ✓ |
-| [Gemini Live API](https://docs.livekit.io/agents/models/realtime/plugins/gemini.md) | ✓ | ✓ |
-| [OpenAI Realtime API](https://docs.livekit.io/agents/models/realtime/plugins/openai.md) | ✓ | ✓ |
-| [Ultravox Realtime API](https://docs.livekit.io/agents/models/realtime/plugins/ultravox.md) | ✓ | — |
-
 ## Considerations and limitations
 
 Realtime models bring great benefits due to their wider range of audio understanding and expressive output. However, they also have some limitations and considerations to keep in mind.
 
 ### Turn detection and VAD
 
-In general, LiveKit recommends using the built-in turn detection capabilities of the realtime model whenever possible. Accurate turn detection relies on both VAD and context gained from realtime speech-to-text, which, as discussed in the following section, isn't available with realtime models. If you need to use the LiveKit [turn detector model](https://docs.livekit.io/agents/build/turns/turn-detector.md), you must also add a separate STT plugin to provide the necessary interim transcripts.
+In general, LiveKit recommends using the built-in turn detection capabilities of the realtime model whenever possible. Accurate turn detection relies on both VAD and context gained from realtime speech-to-text, which, as discussed in the following section, isn't available with realtime models. If you need to use the LiveKit [turn detector model](https://docs.livekit.io/agents/logic/turns/turn-detector/.md), you must also add a separate STT plugin to provide the necessary interim transcripts.
 
 ### Delayed transcription
 
@@ -108,7 +109,7 @@ Current models only support loading call history in text format. This limits the
 
 ---
 
-This document was rendered at 2025-11-18T23:55:14.902Z.
+This document was rendered at 2026-02-03T03:25:06.218Z.
 For the latest version of this document, see [https://docs.livekit.io/agents/models/realtime.md](https://docs.livekit.io/agents/models/realtime.md).
 
 To explore all LiveKit documentation, see [llms.txt](https://docs.livekit.io/llms.txt).

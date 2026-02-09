@@ -4,11 +4,7 @@
 
 Apple provider setup and usage.
 
-***
 
-title: Apple
-description: Apple provider setup and usage.
---------------------------------------------
 
 <Steps>
   <Step>

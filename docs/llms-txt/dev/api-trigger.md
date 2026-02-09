@@ -1,5 +1,9 @@
 # Source: https://dev.writer.com/agent-builder/api-trigger.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://dev.writer.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Trigger blueprints via API
 
 > Enable external systems to trigger blueprints via HTTP API calls. Integrate agents with webhooks, schedulers, and third-party services programmatically.

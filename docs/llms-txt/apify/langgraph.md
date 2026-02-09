@@ -8,21 +8,21 @@
 
 ## What is LangGraph
 
-https://www.langchain.com/langgraph is a framework designed for constructing stateful, multi-agent applications with Large Language Models (LLMs), allowing developers to build complex AI agent workflows that can leverage tools, APIs, and databases.
+[LangGraph](https://www.langchain.com/langgraph) is a framework designed for constructing stateful, multi-agent applications with Large Language Models (LLMs), allowing developers to build complex AI agent workflows that can leverage tools, APIs, and databases.
 
 Explore LangGraph
 
-For more in-depth details on LangGraph, check out its https://langchain-ai.github.io/langgraph/.
+For more in-depth details on LangGraph, check out its [official documentation](https://langchain-ai.github.io/langgraph/).
 
 ## How to use Apify with LangGraph
 
-This guide will demonstrate how to use Apify Actors with LangGraph by building a ReAct agent that will use the https://apify.com/apify/rag-web-browser Actor to search Google for TikTok profiles and https://apify.com/clockworks/free-tiktok-scraper Actor to extract data from the TikTok profiles to analyze the profiles.
+This guide will demonstrate how to use Apify Actors with LangGraph by building a ReAct agent that will use the [RAG Web Browser](https://apify.com/apify/rag-web-browser) Actor to search Google for TikTok profiles and [TikTok Data Extractor](https://apify.com/clockworks/free-tiktok-scraper) Actor to extract data from the TikTok profiles to analyze the profiles.
 
 ### Prerequisites
 
-* **Apify API token**: To use Apify Actors in LangGraph, you need an Apify API token. If you don't have one, you can learn how to obtain it in the https://docs.apify.com/platform/integrations/api.
+* **Apify API token**: To use Apify Actors in LangGraph, you need an Apify API token. If you don't have one, you can learn how to obtain it in the [Apify documentation](https://docs.apify.com/platform/integrations/api).
 
-* **OpenAI API key**: In order to work with agents in LangGraph, you need an OpenAI API key. If you don't have one, you can get it from the https://platform.openai.com/account/api-keys.
+* **OpenAI API key**: In order to work with agents in LangGraph, you need an OpenAI API key. If you don't have one, you can get it from the [OpenAI platform](https://platform.openai.com/account/api-keys).
 
 * **Python packages**: You need to install the following Python packages:
 
@@ -162,5 +162,5 @@ for state in agent_executor.stream(
 
 ## Resources
 
-* https://docs.apify.com/platform/actors
-* https://langchain-ai.github.io/langgraph/how-tos/create-react-agent/
+* [Apify Actors](https://docs.apify.com/platform/actors)
+* [LangGraph - How to Create a ReAct Agent](https://langchain-ai.github.io/langgraph/how-tos/create-react-agent/)

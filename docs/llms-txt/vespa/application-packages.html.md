@@ -120,5 +120,5 @@ An application can be given a user-defined version, available at[/ApplicationSta
 </services>
 ```
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 

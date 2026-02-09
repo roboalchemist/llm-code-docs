@@ -1,5 +1,9 @@
 # Source: https://bun.com/docs/pm/cli/outdated.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://bun.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # bun outdated
 
 > Check for outdated dependencies
@@ -14,7 +18,7 @@ bun outdated
 | Package                        | Current | Update    | Latest     |
 | ------------------------------ | ------- | --------- | ---------- |
 | @sinclair/typebox              | 0.34.15 | 0.34.16   | 0.34.16    |
-| @types/bun (dev)               | 1.2.0   | 1.2.23    | 1.2.23     |
+| @types/bun (dev)               | 1.3.0   | 1.3.3     | 1.3.3      |
 | eslint (dev)                   | 8.57.1  | 8.57.1    | 9.20.0     |
 | eslint-plugin-security (dev)   | 2.1.1   | 2.1.1     | 3.0.1      |
 | eslint-plugin-sonarjs (dev)    | 0.23.0  | 0.23.0    | 3.0.1      |
@@ -54,7 +58,7 @@ bun outdated eslint-plugin-security eslint-plugin-sonarjs
 You can also pass glob patterns to check for outdated packages:
 
 ```sh terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
-bun outdated eslint*
+bun outdated 'eslint*'
 ```
 
 ```txt  theme={"theme":{"light":"github-light","dark":"dracula"}}
@@ -74,7 +78,7 @@ bun outdated '@types/*'
 ```txt  theme={"theme":{"light":"github-light","dark":"dracula"}}
 | Package            | Current | Update | Latest |
 | ------------------ | ------- | ------ | ------ |
-| @types/bun (dev)   | 1.2.0   | 1.2.23 | 1.2.23 |
+| @types/bun (dev)   | 1.3.0   | 1.3.3  | 1.3.3 |
 ```
 
 Or to exclude all `@types/*` packages:

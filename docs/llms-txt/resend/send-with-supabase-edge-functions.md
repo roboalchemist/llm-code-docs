@@ -1,5 +1,9 @@
 # Source: https://resend.com/docs/send-with-supabase-edge-functions.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://resend.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Send emails with Supabase Edge Functions
 
 > Learn how to send your first email using Supabase Edge Functions.
@@ -17,7 +21,7 @@ Make sure you have the latest version of the [Supabase CLI](https://supabase.com
 
 Create a new function locally:
 
-```bash  theme={null}
+```bash  theme={"theme":{"light":"github-light","dark":"vesper"}}
 supabase functions new resend
 ```
 
@@ -25,7 +29,7 @@ supabase functions new resend
 
 Paste the following code into the `index.ts` file:
 
-```ts index.ts theme={null}
+```ts index.ts theme={"theme":{"light":"github-light","dark":"vesper"}}
 const RESEND_API_KEY = Deno.env.get('RESEND_API_KEY');
 
 const handler = async (_request: Request): Promise<Response> => {
@@ -60,14 +64,14 @@ Deno.serve(handler);
 
 Run function locally:
 
-```bash  theme={null}
+```bash  theme={"theme":{"light":"github-light","dark":"vesper"}}
 supabase functions start
 supabase functions serve resend --no-verify-jwt
 ```
 
 Deploy function to Supabase:
 
-```bash  theme={null}
+```bash  theme={"theme":{"light":"github-light","dark":"vesper"}}
 supabase functions deploy resend
 ```
 

@@ -85,7 +85,7 @@ The tabs also appear in the storage detail view:
 
 ### API Example
 
-With the key-value store schema defined, you can use the API to list keys from a specific collection by using the `collection` query parameter when calling the https://docs.apify.com/api/v2/key-value-store-keys-get endpoint:
+With the key-value store schema defined, you can use the API to list keys from a specific collection by using the `collection` query parameter when calling the [Get list of keys](https://docs.apify.com/api/v2/key-value-store-keys-get) endpoint:
 
 Get list of keys from a collection
 
@@ -134,7 +134,7 @@ GET https://api.apify.com/v2/key-value-stores/{storeId}/keys?prefix=document-
 
 When you define a key-value store schema with specific `contentTypes` for collections, the Apify platform validates any data being stored against these specifications. For example, if you've specified that a collection should only contain JSON data with content type `application/json`, attempts to store data with other content types in that collection will be rejected.
 
-The validation happens automatically when you call `Actor.setValue()` or use the https://docs.apify.com/api/v2/key-value-store-record-put API endpoint.
+The validation happens automatically when you call `Actor.setValue()` or use the [Put record](https://docs.apify.com/api/v2/key-value-store-record-put) API endpoint.
 
 If you've defined a `jsonSchema` for a collection with content type `application/json`, the platform will also validate that the JSON data conforms to the specified schema. This helps ensure data consistency and prevents storing malformed data.
 

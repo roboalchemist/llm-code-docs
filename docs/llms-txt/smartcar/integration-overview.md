@@ -1,28 +1,65 @@
 # Source: https://smartcar.com/docs/getting-started/integration-overview.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://smartcar.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Integrate with Smartcar To Receive Vehicle Data
 
 > Welcome to the integration phase of your Smartcar journey! After configuring your application and connecting vehicles, the next crucial step is to integrate your systems with Smartcar to receive vehicle data.
 
-## The architecture that's right for you
+## Choosing Webhooks or the REST API
 
-<Info>
-  Webhooks are the recommended way to receive real-time vehicle data from Smartcar. You can still use the REST API for retrieving data and issuing commands, but webhooks are the most scalable and reliable option for most use cases.
-</Info>
+Understanding the differences between webhooks and the REST API will help you choose the right integration method for your use case.
 
-## Webhooks
+### When to Use Webhooks
 
-[Webhooks](/integrations/webhooks/overview) are the most efficient way to receive real-time vehicle data. Smartcar sends you a payload whenever a vehicle event occurs, such as a change in battery level or location. This allows you to build applications that respond instantly to vehicle changes without polling an API.
+**[Webhooks](/integrations/webhooks/overview) are the recommended approach** for applications that need real-time or frequently updated vehicle data. Use webhooks when:
 
-**Quick Start**: Deploy a production-ready webhook receiver in minutes with our [Webhook Receiver Recipe](/getting-started/tutorials/webhook-receiver-recipe) - a complete AWS serverless solution.
+* You need real-time notifications when vehicle data changes
+* You're monitoring vehicle data continuously (e.g., fleet tracking, charging monitoring)
+* You're building applications that react to vehicle events (e.g., alerts, automation)
+* You need to scale to monitor many vehicles efficiently
+* You want to avoid rate limits and reduce server load
 
-Get started with Webhooks [here](/integrations/webhooks/overview).
+**Advantages of webhooks:**
 
-## REST APIs
+* **Require less effort and resources** - no polling the API repeatedly
+* **Scale better** - Scale effortlessly to monitor thousands of vehicles, with no complex polling logic to maintain
+* **Near real-time updates** - receive data within seconds of changes being detected
+* **Avoid rate limits** - Smartcar pushes data to you instead of you calling the API
+* **More reliable** - no missed updates due to polling intervals
+* **Automatic optimizations** - Smartcar continuously optimizes data retrieval, and your application benefits immediately without code changes
 
-If you prefer to retrieve data on demand, you can use the Smartcar [Vehicles API](/api-reference/vehicles-api-intro). This allows you to query vehicle data at any time, but it may not be as efficient for real-time applications. The Vehicles API provides endpoints for accessing signals, issuing commands, and retrieving vehicle attributes.
+**Quick Start**: Deploy a production-ready webhook receiver in minutes with our [Webhook Receiver Recipe](/getting-started/tutorials/webhook-receiver-recipe) - a complete AWS serverless solution that implements best practices for you.
+
+Learn more about [Webhooks](/integrations/webhooks/overview).
+
+### When to Use the REST API
+
+The Vehicles API is designed for **infrequent data retrieval and command execution**. Use the API when:
+
+* You need vehicle data only once or occasionally (e.g., user profile display)
+* You're issuing commands to vehicles (lock/unlock, start/stop charging)
+* You're exploring available signals or testing your integration
+* You have a small number of vehicles and don't need continuous monitoring
 
 The Vehicles API is designed primarily for exploration and non-frequent data retrieval. This API is not designed for continuous polling or real-time monitoring. Data is typically updated once every 24 hours unless the vehicle is actively subscribed to a webhook, which enables more frequent updates. For most use cases, you should avoid polling the Vehicles API at high frequency leverage [webhooks](/integrations/webhooks/overview) instead.
+
+Learn more about the [Vehicles API](/api-reference/vehicles-api-intro).
+
+<Warning>
+  **Do not poll the Vehicles API for real-time monitoring.** The API is not designed for continuous polling. Frequent polling will:
+
+  * Consume your API rate limit quota quickly
+  * Put unnecessary load on your servers and Smartcar's infrastructure
+  * Provide stale data (updated only every 24 hours without webhook subscriptions)
+  * Not scale as your fleet grows
+
+  Use webhooks instead for any use case requiring frequent or real-time data.
+</Warning>
+
+***
 
 ## CSVs (coming soon)
 

@@ -1,4 +1,8 @@
-# Source: https://mintlify.com/docs/deploy/authentication-setup.md
+# Source: https://www.mintlify.com/docs/deploy/authentication-setup.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.mintlify.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Authentication setup
 
@@ -7,20 +11,12 @@
 <Info>
   [Pro plans](https://mintlify.com/pricing?ref=authentication) include password authentication.
 
-  [Custom plans](https://mintlify.com/pricing?ref=authentication) include all authentication methods.
+  [Enterprise plans](https://mintlify.com/pricing?ref=authentication) include all authentication methods.
 </Info>
 
 Authentication requires users to log in before accessing your documentation.
 
-## Authentication modes
-
-Choose between full and partial authentication modes based on your access control needs.
-
-**Full authentication**: All pages are protected. Users must log in before accessing any content.
-
-**Partial authentication**: Some pages are publicly viewable while others require authentication. Users can browse public content freely and authenticate only when accessing protected pages.
-
-When configuring any handshake method below, you'll select either **Full authentication** or **Partial authentication** in your dashboard settings.
+When you enable authentication, users must log in to access any content. You can configure specific pages or groups as public while keeping other pages protected.
 
 ## Configure authentication
 
@@ -29,22 +25,22 @@ Select the handshake method that you want to configure.
 <Tabs>
   <Tab title="Password">
     <Info>
-      Password authentication provides access control only and does **not** support content personalization.
+      Password authentication provides access control only and does **not** support user-specific features like group-based access control or API playground pre-filling.
     </Info>
 
     ### Prerequisites
 
     * Your security requirements allow sharing passwords among users.
 
-    ### Implementation
+    ### Set up
 
     <Steps>
       <Step title="Create a password.">
         1. In your dashboard, go to [Authentication](https://dashboard.mintlify.com/settings/deployment/authentication).
-        2. Select **Full Authentication** or **Partial Authentication**.
-        3. Select **Password**.
-        4. Enter a secure password.
-        5. Select **Save changes**.
+        2. Enable authentication.
+        3. In the **Password Protection** section, enter a secure password
+
+        After you enter a password, your site redploys. When it finishes deploying, anyone who visits your site must enter the password to access your content.
       </Step>
 
       <Step title="Distribute access.">
@@ -54,7 +50,7 @@ Select the handshake method that you want to configure.
 
     ### Example
 
-    Your documentation is hosted at `docs.foo.com` and you need basic access control without tracking individual users. You want to prevent public access while keeping setup simple.
+    Your host your documentation at `docs.foo.com` and you need basic access control without tracking individual users. You want to prevent public access while keeping setup simple.
 
     **Create a strong password** in your dashboard. **Share credentials** with authorized users. That's it!
   </Tab>
@@ -64,14 +60,16 @@ Select the handshake method that you want to configure.
 
     * Everyone who needs to access your documentation must be a member of your Mintlify organization.
 
-    ### Implementation
+    ### Set up
 
     <Steps>
       <Step title="Enable Mintlify dashboard authentication.">
         1. In your dashboard, go to [Authentication](https://dashboard.mintlify.com/settings/deployment/authentication).
-        2. Select **Full Authentication** or **Partial Authentication**.
-        3. Select **Mintlify Auth**.
-        4. Select **Enable Mintlify Auth**.
+        2. Enable authentication.
+        3. In the **Custom Authentication** section, click **Mintlify Auth**.
+        4. Click **Enable Mintlify Auth**.
+
+        After you enable Mintlify authentication, your site redeploys. When it finishes deploying, anyone who visits your site must log in to your Mintlify organization to access your content.
       </Step>
 
       <Step title="Add authorized users.">
@@ -83,36 +81,41 @@ Select the handshake method that you want to configure.
 
     ### Example
 
-    Your documentation is hosted at `docs.foo.com` and your entire team has access to your dashboard. You want to restrict access to team members only.
+    Your host your documentation at `docs.foo.com` and your entire team has access to your dashboard. You want to restrict access to team members only.
 
     **Enable Mintlify authentication** in your dashboard settings.
 
-    **Verify team access** by checking that all team members are added to your organization.
+    **Verify team access** by checking that all team members are active in your organization.
   </Tab>
 
   <Tab title="OAuth 2.0">
     ### Prerequisites
 
     * An OAuth or OIDC server that supports the Authorization Code Flow.
-    * Ability to create an API endpoint accessible by OAuth access tokens (optional, to enable personalization features).
+    * Ability to create an API endpoint accessible by OAuth access tokens (optional, to enable group-based access control).
 
-    ### Implementation
+    ### Set up
 
     <Steps>
       <Step title="Configure your OAuth settings.">
         1. In your dashboard, go to [Authentication](https://dashboard.mintlify.com/settings/deployment/authentication).
-        2. Select **Full Authentication** or **Partial Authentication**.
-        3. Select **OAuth** and configure these fields:
+        2. Enable authentication.
+        3. In the **Custom Authentication** section, click **OAuth**.
+        4. Configure these fields:
 
         * **Authorization URL**: Your OAuth endpoint.
         * **Client ID**: Your OAuth 2.0 client identifier.
         * **Client Secret**: Your OAuth 2.0 client secret.
-        * **Scopes**: Permissions to request. Copy the **entire** scope string (for example, for a scope like `provider.users.docs`, copy the complete `provider.users.docs`). Use multiple scopes if you need different access levels.
+        * **Scopes** (optional): Permissions to request. Copy the **entire** scope string (for example, for a scope like `provider.users.docs`, copy the complete `provider.users.docs`). Use multiple scopes if you need different access levels.
+        * **Additional authorization parameters** (optional): Additional query parameters to add to the initial authorization request.
         * **Token URL**: Your OAuth token exchange endpoint.
-        * **Info API URL** (optional): Endpoint on your server that Mintlify calls to retrieve user info for personalization. If omitted, the OAuth flow will only be used to verify identity and the user info will be empty.
-        * **Logout URL**: The native logout URL for your OAuth provider. If your provider has a `returnTo` or similar parameter, point it back to your docs URL.
+        * **Info API URL** (optional): Endpoint on your server that Mintlify calls to retrieve user info. Required for group-based access control. If omitted, the OAuth flow only verifies identity.
+        * **Logout URL** (optional): The native logout URL for your OAuth provider. When users log out, Mintlify validates the logout redirect against this configured URL for security. The redirect only succeeds if it exactly matches the configured `logoutUrl`. If you do not configure a logout URL, users redirect to `/login`. Mintlify redirects users with a `GET` request and does not append query parameters, so include any parameters (for example, `returnTo`) directly in the URL.
+        * **Redirect URL** (optional): The URL to redirect users to after authentication.
 
-        4. Select **Save changes**.
+        5. Click **Save changes**.
+
+        After you configure your OAuth settings, your site redeploys. When it finishes deploying, anyone who visits your site must log in to your OAuth provider to access your content.
       </Step>
 
       <Step title="Configure your OAuth server.">
@@ -121,10 +124,13 @@ Select the handshake method that you want to configure.
       </Step>
 
       <Step title="Create your user info endpoint (optional).">
-        To enable personalization features, create an API endpoint that:
+        To enable group-based access control, create an API endpoint that:
 
-        * Accepts OAuth access tokens for authentication.
-        * Returns user data in the `User` format. See [User data format](/deploy/personalization-setup#user-data-format) for more information.
+        * Responds to `GET` requests.
+        * Accepts an `Authorization: Bearer <access_token>` header for authentication.
+        * Returns user data in the `User` format. See [User data format](#user-data-format) for more information.
+
+        Mintlify calls this endpoint with the OAuth access token to retrieve user information. No additional query parameters are sent.
 
         Add this endpoint URL to the **Info API URL** field in your [authentication settings](https://dashboard.mintlify.com/settings/deployment/authentication).
       </Step>
@@ -132,7 +138,7 @@ Select the handshake method that you want to configure.
 
     ### Example
 
-    Your documentation is hosted at `foo.com/docs` and you have an existing OAuth server at `auth.foo.com` that supports the Authorization Code Flow.
+    Your host your documentation at `foo.com/docs` and you have an existing OAuth server at `auth.foo.com` that supports the Authorization Code Flow.
 
     **Configure your OAuth server details** in your dashboard:
 
@@ -147,13 +153,19 @@ Select the handshake method that you want to configure.
 
     ```json  theme={null}
     {
-      "content": {
-        "firstName": "Jane",
-        "lastName": "Doe"
-      },
-      "groups": ["engineering", "admin"]
+      "groups": ["engineering", "admin"],
+      "expiresAt": 1735689600,
+      "apiPlaygroundInputs": {
+        "header": {
+          "Authorization": "Bearer user_abc123"
+        }
+      }
     }
     ```
+
+    <Note>
+      Control session length with the `expiresAt` field in your user info response. This is a Unix timestamp (seconds since epoch) indicating when the session should expire. See [User data format](#user-data-format) for more details.
+    </Note>
 
     **Configure your OAuth server to allow redirects** to your callback URL.
   </Tab>
@@ -164,22 +176,25 @@ Select the handshake method that you want to configure.
     * An authentication system that can generate and sign JWTs.
     * A backend service that can create redirect URLs.
 
-    ### Implementation
+    ### Set up
 
     <Steps>
       <Step title="Generate a private key.">
         1. In your dashboard, go to [Authentication](https://dashboard.mintlify.com/settings/deployment/authentication).
-        2. Select **Full Authentication** or **Partial Authentication**.
-        3. Select **JWT**.
-        4. Enter the URL of your existing login flow and select **Save changes**.
-        5. Select **Generate new key**.
-        6. Store your key securely where it can be accessed by your backend.
+        2. Enable authentication.
+        3. In the **Custom Authentication** section, click **JWT**.
+        4. Enter the URL of your existing login flow.
+        5. Click **Save changes**.
+        6. Click **Generate new key**.
+        7. Store your key securely where it can be accessed by your backend.
+
+        After you generate a private key, your site redeploys. When it finishes deploying, anyone who visits your site must log in to your JWT authentication system to access your content.
       </Step>
 
       <Step title="Integrate Mintlify authentication into your login flow.">
         Modify your existing login flow to include these steps after user authentication:
 
-        * Create a JWT containing the authenticated user's info in the `User` format. See [User data format](/deploy/personalization-setup#user-data-format) for more information.
+        * Create a JWT containing the authenticated user's info in the `User` format. See [User data format](#user-data-format) for more information.
         * Sign the JWT with your secret key, using the EdDSA algorithm.
         * Create a redirect URL back to the `/login/jwt-callback` path of your docs, including the JWT as the hash.
       </Step>
@@ -187,7 +202,7 @@ Select the handshake method that you want to configure.
 
     ### Example
 
-    Your documentation is hosted at `docs.foo.com` with an existing authentication system at `foo.com`. You want to extend your login flow to grant access to the docs while keeping your docs separate from your dashboard (or you don't have a dashboard).
+    Your host your documentation at `docs.foo.com` with an existing authentication system at `foo.com`. You want to extend your login flow to grant access to the docs while keeping your docs separate from your dashboard (or you don't have a dashboard).
 
     Create a login endpoint at `https://foo.com/docs-login` that extends your existing authentication.
 
@@ -209,9 +224,10 @@ Select the handshake method that you want to configure.
         const user = {
           expiresAt: Math.floor((Date.now() + TWO_WEEKS_IN_MS) / 1000), // 2 week session expiration
           groups: res.locals.user.groups,
-          content: {
-            firstName: res.locals.user.firstName,
-            lastName: res.locals.user.lastName,
+          apiPlaygroundInputs: {
+            header: {
+              "Authorization": `Bearer ${res.locals.user.apiKey}`,
+            },
           },
         };
 
@@ -238,11 +254,12 @@ Select the handshake method that you want to configure.
         jwt_token = jwt.encode(
           payload={
             'exp': int((datetime.now() + timedelta(seconds=10)).timestamp()),    # 10 second JWT expiration
-            'expiresAt': int((datetime.now() + timedelta(weeks=2)).timestamp()), # 1 week session expiration
+            'expiresAt': int((datetime.now() + timedelta(weeks=2)).timestamp()), # 2 week session expiration
             'groups': ['admin'] if current_user.is_admin else [],
-            'content': {
-              'firstName': current_user.first_name,
-              'lastName': current_user.last_name,
+            'apiPlaygroundInputs': {
+              'header': {
+                'Authorization': f'Bearer {current_user.api_key}',
+              },
             },
           },
           key=private_key,
@@ -255,7 +272,7 @@ Select the handshake method that you want to configure.
 
     ### Redirect unauthenticated users
 
-    When an unauthenticated user tries to access a protected page, their intended destination is preserved in the redirect to your login URL:
+    When an unauthenticated user tries to access a protected page, the redirect to your login URL preserves the user's intended destination.
 
     1. User attempts to visit a protected page: `https://docs.foo.com/quickstart`.
     2. Redirect to your login URL with a redirect query parameter: `https://foo.com/docs-login?redirect=%2Fquickstart`.
@@ -266,7 +283,7 @@ Select the handshake method that you want to configure.
 
 ## Make pages public
 
-When using partial authentication, all pages are protected by default. You can make specific pages viewable without authentication at the page or group level with the `public` property.
+When using authentication, all pages require authentication to access by default. You can make specific pages viewable without authentication at the page or group level with the `public` property.
 
 ### Individual pages
 
@@ -314,15 +331,12 @@ To make all pages in a group public, add `"public": true` beneath the group's na
 
 When you use OAuth or JWT authentication, you can restrict specific pages to certain user groups. This is useful when you want different users to see different content based on their role or attributes.
 
-Groups are managed through user data passed during authentication.
+Manage groups through user data passed during authentication. See [User data format](#user-data-format) for details.
 
-```json Example user info highlight={2} theme={null}
+```json Example user info theme={null}
 {
   "groups": ["admin", "beta-users"],
-  "content": {
-    "firstName": "Jane",
-    "lastName": "Doe"
-  }
+  "expiresAt": 1735689600
 }
 ```
 
@@ -337,37 +351,110 @@ groups: ["admin"]
 
 Users must belong to at least one of the listed groups to access the page. If a user tries to access a page without the required group, they'll receive a 404 error.
 
-### Interaction with authentication modes
+### How groups interact with public pages
 
-Groups work differently depending on your authentication mode.
-
-**Full authentication with groups:**
-
-* All pages require authentication.
-* Pages without a `groups` property are accessible to all authenticated users.
+* All pages require authentication by default.
 * Pages with a `groups` property are only accessible to authenticated users in those groups.
+* Pages without a `groups` property are accessible to all authenticated users.
+* Pages with `public: true` and no `groups` property are accessible to everyone.
 
-**Partial authentication with groups:**
+<CodeGroup>
+  ```mdx Public page theme={null}
+  ---
+  title: "Public guide"
+  public: true
+  ---
+  ```
 
-* Pages require authentication unless you make them public.
-* Pages with `public: true` and no `groups` are accessible to everyone.
-* Pages with `groups` (with or without `public: true`) are only accessible to authenticated users in those groups.
+  ```mdx Protected page theme={null}
+  ---
+  title: "API reference"
+  ---
+  ```
 
-```mdx Anyone can view this page theme={null}
----
-title: "Public guide"
-public: true
----
-```
+  ```mdx Protected page with groups theme={null}
+  ---
+  title: "Advanced configurations"
+  groups: ["pro", "enterprise"]
+  ---
+  ```
+</CodeGroup>
 
-````mdx Only authenticated users can view this page theme={null}
----
-title: "API reference"
----
+## User data format
 
-```mdx Only authenticated users in the pro or enterprise groups can view this page
----
-title: "Advanced configurations"
-groups: ["pro", "enterprise"]
----
-````
+When using OAuth or JWT authentication, your system returns user data that controls session length, group membership, and [content personalization](/create/personalization).
+
+<CodeGroup>
+  ```tsx Format theme={null}
+  type User = {
+    expiresAt?: number;
+    groups?: string[];
+    content?: Record<string, any>;
+    apiPlaygroundInputs?: {
+      server?: Record<string, string>;
+      header?: Record<string, unknown>;
+      query?: Record<string, unknown>;
+      cookie?: Record<string, unknown>;
+    };
+  };
+  ```
+
+  ```json Example theme={null}
+  {
+    "expiresAt": 1735689600,
+    "groups": ["admin", "beta-users"],
+    "content": {
+      "firstName": "Jane",
+      "company": "Acme Corp"
+    },
+    "apiPlaygroundInputs": {
+      "header": {
+        "Authorization": "Bearer user_abc123"
+      },
+      "server": {
+        "baseUrl": "https://api.foo.com"
+      }
+    }
+  }
+  ```
+</CodeGroup>
+
+<ParamField path="expiresAt" type="number">
+  Session expiration time in seconds since epoch. When the current time passes this value, the user must re-authenticate.
+
+  <Warning>**For JWT:** This differs from the JWT's `exp` claim, which determines when a JWT is considered invalid. Set the JWT `exp` claim to a short duration (10 seconds or less) for security. Use `expiresAt` for the actual session length (hours to weeks).</Warning>
+</ParamField>
+
+<ParamField path="groups" type="string[]">
+  List of groups the user belongs to. Pages with matching `groups` in their frontmatter are accessible to this user.
+
+  **Example**: A user with `groups: ["admin", "engineering"]` can access pages tagged with either the `admin` or `engineering` groups.
+</ParamField>
+
+<ParamField path="content" type="Record<string, any>">
+  Custom data accessible in MDX pages via the `user` variable for [personalized content](/create/personalization#dynamic-mdx-content).
+</ParamField>
+
+<ParamField path="apiPlaygroundInputs" type="object">
+  Pre-fills API playground fields with user-specific values. When a user authenticates, these values populate the corresponding input fields in the API playground. Users can override pre-filled values, and their overrides persist in local storage.
+
+  Only values that match the current endpoint's security scheme are applied.
+
+  <Expandable title="properties">
+    <ParamField path="header" type="Record<string, unknown>">
+      Header values to pre-fill, keyed by header name.
+    </ParamField>
+
+    <ParamField path="query" type="Record<string, unknown>">
+      Query parameter values to pre-fill, keyed by parameter name.
+    </ParamField>
+
+    <ParamField path="cookie" type="Record<string, unknown>">
+      Cookie values to pre-fill, keyed by cookie name.
+    </ParamField>
+
+    <ParamField path="server" type="Record<string, string>">
+      Server variable values to pre-fill, keyed by variable name.
+    </ParamField>
+  </Expandable>
+</ParamField>

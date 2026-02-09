@@ -18,7 +18,7 @@ Statistics about API client usage and rate limit errors.
 
 ## Methods<!-- -->[**](#Methods)
 
-### [**](#add_rate_limit_error)[**](https://undefined/apify/apify-client-python/blob/master//src/apify_client/_statistics.py#L18)add\_rate\_limit\_error
+### [**](#add_rate_limit_error)[**](https://undefined/apify/apify-client-python/blob/25ff4e51e07fe25d1d338b042eacba1ec0c63e84//src/apify_client/_statistics.py#L18)add\_rate\_limit\_error
 
 * ****add\_rate\_limit\_error**(attempt): None
 
@@ -36,19 +36,19 @@ Statistics about API client usage and rate limit errors.
 
 ## Properties<!-- -->[**](#Properties)
 
-### [**](#calls)[**](https://undefined/apify/apify-client-python/blob/master//src/apify_client/_statistics.py#L9)calls
+### [**](#calls)[**](https://undefined/apify/apify-client-python/blob/25ff4e51e07fe25d1d338b042eacba1ec0c63e84//src/apify_client/_statistics.py#L9)calls
 
 **calls: int
 
 Total number of API method calls made by the client.
 
-### [**](#rate_limit_errors)[**](https://undefined/apify/apify-client-python/blob/master//src/apify_client/_statistics.py#L15)rate\_limit\_errors
+### [**](#rate_limit_errors)[**](https://undefined/apify/apify-client-python/blob/25ff4e51e07fe25d1d338b042eacba1ec0c63e84//src/apify_client/_statistics.py#L15)rate\_limit\_errors
 
 **rate\_limit\_errors: defaultdict\[int, int]
 
 List tracking which retry attempts encountered rate limit (429) errors.
 
-### [**](#requests)[**](https://undefined/apify/apify-client-python/blob/master//src/apify_client/_statistics.py#L12)requests
+### [**](#requests)[**](https://undefined/apify/apify-client-python/blob/25ff4e51e07fe25d1d338b042eacba1ec0c63e84//src/apify_client/_statistics.py#L12)requests
 
 **requests: int
 

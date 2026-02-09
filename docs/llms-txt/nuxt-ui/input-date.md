@@ -22,6 +22,16 @@ Use the `default-value` prop to set the initial value when you do not need to co
 </template>
 ```
 
+**Nuxt:**
+> [!NOTE]
+> See: /docs/getting-started/integrations/i18n/nuxt#locale
+> This component uses the `@internationalized/date` package for locale-aware formatting. The date format is determined by the `locale` prop of the App component.
+
+**Vue:**
+> [!NOTE]
+> See: /docs/getting-started/integrations/i18n/vue#locale
+> This component uses the `@internationalized/date` package for locale-aware formatting. The date format is determined by the `locale` prop of the App component.
+
 ### Range
 
 Use the `range` prop to select a range of dates.
@@ -134,15 +144,15 @@ Use a [Calendar](/docs/components/calendar) and a [Popover](/docs/components/pop
 <script setup lang="ts">
 import { CalendarDate } from '@internationalized/date'
 
-const inputDateRef = useTemplateRef('inputDateRef')
+const inputDate = useTemplateRef('inputDate')
 
 const modelValue = shallowRef(new CalendarDate(2022, 1, 10))
 </script>
 
 <template>
-  <UInputDate ref="inputDateRef" v-model="modelValue">
+  <UInputDate ref="inputDate" v-model="modelValue">
     <template #trailing>
-      <UPopover :reference="inputDateRef?.inputsRef[3]?.$el">
+      <UPopover :reference="inputDate?.inputsRef[3]?.$el">
         <UButton
           color="neutral"
           variant="link"
@@ -169,7 +179,7 @@ Use a [Calendar](/docs/components/calendar) and a [Popover](/docs/components/pop
 <script setup lang="ts">
 import { CalendarDate } from '@internationalized/date'
 
-const inputDateRef = useTemplateRef('inputDateRef')
+const inputDate = useTemplateRef('inputDate')
 
 const modelValue = shallowRef({
   start: new CalendarDate(2022, 1, 10),
@@ -178,9 +188,9 @@ const modelValue = shallowRef({
 </script>
 
 <template>
-  <UInputDate ref="inputDateRef" v-model="modelValue" range>
+  <UInputDate ref="inputDate" v-model="modelValue" range>
     <template #trailing>
-      <UPopover :reference="inputDateRef?.inputsRef[0]?.$el">
+      <UPopover :reference="inputDate?.inputsRef[0]?.$el">
         <UButton
           color="neutral"
           variant="link"
@@ -227,18 +237,18 @@ interface InputDateProps {
   /**
    * The icon to use as a range separator.
    */
-  separatorIcon?: string | object | undefined;
+  separatorIcon?: any;
   /**
    * Whether or not a range of dates can be selected
    */
-  range?: boolean | undefined;
-  defaultValue?: DateValue | DateRange | undefined;
-  modelValue?: InputDateModelValue<boolean>;
+  range?: R | undefined;
+  defaultValue?: CalendarDate | CalendarDateTime | ZonedDateTime | DateRange;
+  modelValue?: null | CalendarDate | CalendarDateTime | ZonedDateTime | DateRange;
   ui?: { base?: ClassNameValue; leading?: ClassNameValue; leadingIcon?: ClassNameValue; leadingAvatar?: ClassNameValue; leadingAvatarSize?: ClassNameValue; trailing?: ClassNameValue; trailingIcon?: ClassNameValue; segment?: ClassNameValue; separatorIcon?: ClassNameValue; } | undefined;
   /**
    * Display an icon based on the `leading` and `trailing` props.
    */
-  icon?: string | object | undefined;
+  icon?: any;
   /**
    * Display an avatar on the left side.
    */
@@ -250,7 +260,7 @@ interface InputDateProps {
   /**
    * Display an icon on the left side.
    */
-  leadingIcon?: string | object | undefined;
+  leadingIcon?: any;
   /**
    * When `true`, the icon will be displayed on the right side.
    */
@@ -258,7 +268,7 @@ interface InputDateProps {
   /**
    * Display an icon on the right side.
    */
-  trailingIcon?: string | object | undefined;
+  trailingIcon?: any;
   /**
    * When `true`, the loading icon will be displayed.
    */
@@ -266,15 +276,9 @@ interface InputDateProps {
   /**
    * The icon when the `loading` prop is `true`.
    */
-  loadingIcon?: string | object | undefined;
-  /**
-   * The default placeholder date
-   */
-  defaultPlaceholder?: DateValue | undefined;
-  /**
-   * The placeholder date, which is used to determine what month to display when no date is selected. This updates as the user navigates the calendar and can be used to programmatically control the calendar view
-   */
-  placeholder?: DateValue | undefined;
+  loadingIcon?: any;
+  defaultPlaceholder?: CalendarDate | CalendarDateTime | ZonedDateTime;
+  placeholder?: CalendarDate | CalendarDateTime | ZonedDateTime;
   /**
    * The hour cycle used for formatting times. Defaults to the local preference
    */
@@ -291,14 +295,8 @@ interface InputDateProps {
    * Whether or not to hide the time zone segment of the field
    */
   hideTimeZone?: boolean | undefined;
-  /**
-   * The maximum date that can be selected
-   */
-  maxValue?: DateValue | undefined;
-  /**
-   * The minimum date that can be selected
-   */
-  minValue?: DateValue | undefined;
+  maxValue?: CalendarDate | CalendarDateTime | ZonedDateTime;
+  minValue?: CalendarDate | CalendarDateTime | ZonedDateTime;
   /**
    * Whether or not the date field is disabled
    */
@@ -347,7 +345,7 @@ interface InputDateSlots {
  * Emitted events for the InputDate component
  */
 interface InputDateEmits {
-  update:modelValue: (payload: [date: InputDateModelValue<boolean>]) => void;
+  update:modelValue: (payload: [date: InputDateModelValue<R>]) => void;
   update:placeholder: (payload: [date: DateValue] & [date: DateValue]) => void;
   change: (payload: [event: Event]) => void;
   blur: (payload: [event: FocusEvent]) => void;
@@ -380,14 +378,8 @@ export default defineAppConfig({
       },
       variants: {
         fieldGroup: {
-          horizontal: {
-            root: 'group has-focus-visible:z-[1]',
-            base: 'group-not-only:group-first:rounded-e-none group-not-only:group-last:rounded-s-none group-not-last:group-not-first:rounded-none'
-          },
-          vertical: {
-            root: 'group has-focus-visible:z-[1]',
-            base: 'group-not-only:group-first:rounded-b-none group-not-only:group-last:rounded-t-none group-not-last:group-not-first:rounded-none'
-          }
+          horizontal: 'not-only:first:rounded-e-none not-only:last:rounded-s-none not-last:not-first:rounded-none focus-visible:z-[1]',
+          vertical: 'not-only:first:rounded-b-none not-only:last:rounded-t-none not-last:not-first:rounded-none focus-visible:z-[1]'
         },
         size: {
           xs: {
@@ -683,8 +675,4 @@ export default defineAppConfig({
 
 ## Changelog
 
-<component-changelog>
-
-
-
-</component-changelog>
+See the [releases page](https://github.com/nuxt/ui/releases) for the latest changes.

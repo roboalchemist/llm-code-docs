@@ -20,13 +20,10 @@ Use it inside the default slot of the [DashboardGroup](/docs/components/dashboar
 </template>
 ```
 
-<warning>
+> [!WARNING]
+> This component does not have a single root element when using the `resizable` prop, so wrap it in a container (e.g., `<div class="flex flex-1">`) if you use page transitions or require a single root for layout.
 
-This component does not have a single root element when using the `resizable` prop, so wrap it in a container (e.g., `<div class="flex flex-1">`) if you use page transitions or require a single root for layout.
-
-</warning>
-
-Use the `left`, `default` and `right` slots to customize the sidebar and the `body` or `content` slots to customize the sidebar menu.
+Use the `header`, `default` and `footer` slots to customize the sidebar and the `body` or `content` slots to customize the sidebar menu.
 
 ```vue [DashboardSidebarExample.vue]
 <script setup lang="ts">
@@ -121,11 +118,8 @@ const items: NavigationMenuItem[][] = [[{
 </template>
 ```
 
-<note>
-
-Drag the sidebar near the left edge of the screen to collapse it.
-
-</note>
+> [!NOTE]
+> Drag the sidebar near the left edge of the screen to collapse it.
 
 ### Resizable
 
@@ -143,11 +137,8 @@ Use the `resizable` prop to make the sidebar resizable.
 
 Use the `collapsible` prop to make the sidebar collapsible when dragging near the edge of the screen.
 
-<warning>
-
-The [`DashboardSidebarCollapse`](/docs/components/dashboard-sidebar-collapse) component will have no effect if the sidebar is not **collapsible**.
-
-</warning>
+> [!WARNING]
+> The [`DashboardSidebarCollapse`](/docs/components/dashboard-sidebar-collapse) component will have no effect if the sidebar is not collapsible.
 
 ```vue
 <template>
@@ -157,11 +148,9 @@ The [`DashboardSidebarCollapse`](/docs/components/dashboard-sidebar-collapse) co
 </template>
 ```
 
-<tip to="#slots">
-
-You can access the `collapsed` state in the slot props to customize the content of the sidebar when it is collapsed.
-
-</tip>
+> [!TIP]
+> See: #slots
+> You can access the `collapsed` state in the slot props to customize the content of the sidebar when it is collapsed.
 
 ### Size
 
@@ -175,17 +164,12 @@ Use the `min-size`,  `max-size`, `default-size` and `collapsed-size` props to cu
 </template>
 ```
 
-<tip to="/docs/components/dashboard-group#props">
+> [!TIP]
+> See: /docs/components/dashboard-group#props
+> Sizes are calculated as percentages by default. You can change this using the `unit` prop on the `DashboardGroup` component.
 
-Sizes are calculated as percentages by default. You can change this using the `unit` prop on the `DashboardGroup` component.
-
-</tip>
-
-<note>
-
-The `collapsed-size` prop is set to `0` by default but the sidebar has a `min-w-16` to make sure it is visible.
-
-</note>
+> [!NOTE]
+> The `collapsed-size` prop is set to `0` by default but the sidebar has a `min-w-16` to make sure it is visible.
 
 ### Side
 
@@ -205,11 +189,9 @@ Use the `mode` prop to change the mode of the sidebar menu. Defaults to `slideov
 
 Use the `body` slot to fill the menu body (under the header) or the `content` slot to fill the entire menu.
 
-<tip to="#props">
-
-You can use the `menu` prop to customize the menu of the sidebar, it will adapt depending on the mode you choose.
-
-</tip>
+> [!TIP]
+> See: #props
+> You can use the `menu` prop to customize the menu of the sidebar, it will adapt depending on the mode you choose.
 
 ```vue [DashboardSidebarModeExample.vue]
 <script setup lang="ts">
@@ -255,11 +237,8 @@ const items: NavigationMenuItem[] = [{
 </template>
 ```
 
-<note>
-
-These examples contain the [`DashboardGroup`](/docs/components/dashboard-group), [`DashboardPanel`](/docs/components/dashboard-panel) and [`DashboardNavbar`](/docs/components/dashboard-navbar) components as they are required to demonstrate the sidebar on mobile.
-
-</note>
+> [!NOTE]
+> These examples contain the [`DashboardGroup`](/docs/components/dashboard-group), [`DashboardPanel`](/docs/components/dashboard-panel) and [`DashboardNavbar`](/docs/components/dashboard-navbar) components as they are required to demonstrate the sidebar on mobile.
 
 ### Toggle
 
@@ -403,17 +382,8 @@ defineShortcuts({
 </template>
 ```
 
-<note>
-
-In this example, leveraging [`defineShortcuts`](/docs/composables/define-shortcuts), you can toggle the open state of the DashboardSidebar by pressing <kbd value="O">
-
-
-
-</kbd>
-
-.
-
-</note>
+> [!NOTE]
+> In this example, leveraging [`defineShortcuts`](/docs/composables/define-shortcuts), you can toggle the open state of the DashboardSidebar by pressing .
 
 ### Control collapsed state
 
@@ -458,17 +428,8 @@ defineShortcuts({
 </template>
 ```
 
-<note>
-
-In this example, leveraging [`defineShortcuts`](/docs/composables/define-shortcuts), you can toggle the collapsed state of the DashboardSidebar by pressing <kbd value="C">
-
-
-
-</kbd>
-
-.
-
-</note>
+> [!NOTE]
+> In this example, leveraging [`defineShortcuts`](/docs/composables/define-shortcuts), you can toggle the collapsed state of the DashboardSidebar by pressing .
 
 ## API
 
@@ -483,17 +444,17 @@ interface DashboardSidebarProps {
    * The mode of the sidebar menu.
    * @default "\"slideover\" as never"
    */
-  mode?: DashboardSidebarMode | undefined;
+  mode?: T | undefined;
   /**
    * The props for the sidebar menu component.
    */
-  menu?: ModalProps | SlideoverProps | DrawerProps | undefined;
+  menu?: DashboardSidebarMenu<T> | undefined;
   /**
    * Customize the toggle button to open the sidebar.
    * `{ color: 'neutral', variant: 'ghost' }`{lang="ts-type"}
    * @default "true"
    */
-  toggle?: boolean | Partial<ButtonProps> | undefined;
+  toggle?: boolean | Omit<ButtonProps, LinkPropsKeys> | undefined;
   /**
    * The side to render the toggle button on.
    * @default "\"left\""
@@ -614,8 +575,4 @@ export default defineAppConfig({
 
 ## Changelog
 
-<component-changelog>
-
-
-
-</component-changelog>
+See the [releases page](https://github.com/nuxt/ui/releases) for the latest changes.

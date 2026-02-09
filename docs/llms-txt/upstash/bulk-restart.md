@@ -1,5 +1,9 @@
 # Source: https://upstash.com/docs/workflow/rest/dlq/bulk-restart.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Bulk Restart Workflow Runs
 
 > Restart multiple failed workflow runs in a single request.

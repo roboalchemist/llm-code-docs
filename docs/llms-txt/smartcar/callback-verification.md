@@ -1,14 +1,22 @@
 # Source: https://smartcar.com/docs/integrations/webhooks/callback-verification.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://smartcar.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Callback URI Verification
 
-> Verify your newly-created webhook.
+> Verify your webhook endpoint can receive deliveries
 
 <Info>
-  This page covers the verification step **when first setting up a webhook** on Dashboard. Please see our [payload verification](/integrations/webhooks/payload-verification) section for information on how to verify webhook payloads from vehicles.
+  **This page covers initial endpoint verification.** For verifying webhook payload signatures from vehicles, see [Payload Verification](/integrations/webhooks/payload-verification).
 </Info>
 
-When you first set up a webhook in the Smartcar Dashboard, Smartcar will post a challenge request to ensure we're sending payloads to the correct place. This is a **one time** event and will be in the following format:
+When you create a webhook or update a callback URI in the Smartcar Dashboard, Smartcar sends a one-time `VERIFY` event to confirm your endpoint is ready. Your endpoint must respond correctly before Smartcar will deliver any vehicle data.
+
+## The VERIFY Event
+
+Smartcar sends a challenge request to your callback URI in this format:
 
 <CodeGroup>
   ```json Version 4.0 (NEW) theme={null}
@@ -40,25 +48,35 @@ When you first set up a webhook in the Smartcar Dashboard, Smartcar will post a 
   ```
 </CodeGroup>
 
-Upon receiving the request, your server will need respond to the challenge by hashing `payload.challenge` with your `application_management_token` to create a `SHA-256` based `HMAC`.
+## Required Response
+
+Your endpoint must respond with:
+
+1. **Status code**: `200 OK`
+2. **Content-Type header**: `application/json`
+3. **Response body**: A JSON object containing the HMAC-SHA256 hash of the challenge
+
+### Generate the HMAC
+
+Create an HMAC-SHA256 hash of the `challenge` string using your **Application Management Token** as the secret key:
 
 <Tip>
-  Our [backend SDKs](/api-reference/api-sdks) have helper methods to generate the `HMAC`.
+  Our [backend SDKs](/api-reference/api-sdks) have helper methods to generate the HMAC.
 </Tip>
 
 <CodeGroup>
-  ```python Python theme={null}
-      hmac = smartcar.hash_challenge(
-              application_management_token, 
-              payload.challenge
-          )
-  ```
-
   ```js Node theme={null}
       let hmac = smartcar.hashChallenge(
           application_management_token, 
           payload.challenge
       ); 
+  ```
+
+  ```python Python theme={null}
+      hmac = smartcar.hash_challenge(
+              application_management_token, 
+              payload.challenge
+          )
   ```
 
   ```java Java theme={null}
@@ -76,13 +94,21 @@ Upon receiving the request, your server will need respond to the challenge by ha
   ```
 </CodeGroup>
 
-Return the hex-encoded hash as the value for `challenge` in your response body with a `200` status code, and the `Content-Type` header set to `application/json`.
+### Return the Response
 
-```json verificationResponse.body theme={null}
+Return the hex-encoded hash in your response body with the key `challenge`:
+
+```json Response Body theme={null}
 {
-  "challenge" : "{HMAC}"
+  "challenge": "{HMAC-hex-string}"
 }
 ```
+
+<Warning>
+  If your endpoint fails to respond correctly within 15 seconds, Smartcar will not activate the webhook. You can retry verification from the Dashboard at any time.
+</Warning>
+
+***
 
 ## Verify webhook challenges inside the Dashboard
 

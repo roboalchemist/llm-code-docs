@@ -2,14 +2,6 @@
 
 # Source: https://docs.slatejs.org/v0.47/slate-core/node.md
 
-# Source: https://docs.slatejs.org/api/nodes/node.md
-
-# Source: https://docs.slatejs.org/v0.47/slate-core/node.md
-
-# Source: https://docs.slatejs.org/api/nodes/node.md
-
-# Source: https://docs.slatejs.org/v0.47/slate-core/node.md
-
 # Node
 
 `Node` is not a publicly accessible module, but instead an interface that [`Document`](https://docs.slatejs.org/v0.47/slate-core/document), [`Block`](https://docs.slatejs.org/v0.47/slate-core/block) and [`Inline`](https://docs.slatejs.org/v0.47/slate-core/inline) all implement.

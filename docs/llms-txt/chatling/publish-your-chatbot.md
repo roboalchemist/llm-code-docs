@@ -1,5 +1,9 @@
 # Source: https://docs.chatling.ai/chatbot/builder/publish-your-chatbot.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.chatling.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Publish your chatbot
 
 > Learn how to publish your chatbot and make it live.

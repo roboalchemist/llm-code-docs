@@ -3,7 +3,6 @@
 ---
 url: /docs/guide/usage/linter/rules/jest/no-disabled-tests.md
 ---
-# jest/no-disabled-tests&#x20;
 
 ### What it does
 
@@ -16,7 +15,7 @@ feature is often helpful while debugging or to create placeholders for future
 tests. Before committing changes we may want to check that all tests are
 running.
 
-### Example
+### Examples
 
 ```js
 describe.skip("foo", () => {});

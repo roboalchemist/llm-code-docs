@@ -1,0 +1,114 @@
+# Source: https://docs.datadoghq.com/security/default_rules/def-000-n9a.md
+
+---
+title: Modify the System Login Banner for Remote Connections
+description: Datadog, the leading service for cloud-scale monitoring.
+breadcrumbs: >-
+  Docs > Datadog Security > OOTB Rules > Modify the System Login Banner for
+  Remote Connections
+---
+
+# Modify the System Login Banner for Remote Connections
+ 
+## Description{% #description %}
+
+To configure the system login banner edit `/etc/issue.net`. Replace the default text with a message compliant with the local site policy or a legal disclaimer. The DoD required text is either:
+
+`You are accessing a U.S. Government (USG) Information System (IS) that is provided for USG-authorized use only. By using this IS (which includes any device attached to this IS), you consent to the following conditions:
+
+-The USG routinely intercepts and monitors communications on this IS for purposes including, but not limited to, penetration testing, COMSEC monitoring, network operations and defense, personnel misconduct (PM), law enforcement (LE), and counterintelligence (CI) investigations.
+
+-At any time, the USG may inspect and seize data stored on this IS.
+
+-Communications using, or data stored on, this IS are not private, are subject to routine monitoring, interception, and search, and may be disclosed or used for any USG-authorized purpose.
+
+-This IS includes security measures (e.g., authentication and access controls) to protect USG interests â not for your personal benefit or privacy.
+
+-Notwithstanding the above, using this IS does not constitute consent to PM, LE or CI investigative searching or monitoring of the content of privileged communications, or work product, related to personal representation or services by attorneys, psychotherapists, or clergy, and their assistants. Such communications and work product are private and confidential. See User Agreement for details.`
+
+OR:
+
+`I've read & consent to terms in IS user agreem't.`
+
+## Rationale{% #rationale %}
+
+Display of a standardized and approved use notification before granting access to the operating system ensures privacy and security notification verbiage used is consistent with applicable federal laws, Executive Orders, directives, policies, regulations, standards, and guidance.
+
+System use notifications are required only for access via login interfaces with human users and are not required when such human interfaces do not exist.
+
+## Remediation{% #remediation %}
+
+### Shell script{% #shell-script %}
+
+The following script can be run on the host to remediate the issue.
+
+```bash
+#!/bin/bash
+
+# Remediation is applicable only in certain platforms
+if dpkg-query --show --showformat='${db:Status-Status}' 'linux-base' 2>/dev/null | grep -q '^installed$'; then
+
+remote_login_banner_text='^Authorized[\s\n]+uses[\s\n]+only\.[\s\n]+All[\s\n]+activity[\s\n]+may[\s\n]+be[\s\n]+monitored[\s\n]+and[\s\n]+reported\.$'
+
+
+# Multiple regexes transform the banner regex into a usable banner
+# 0 - Remove anchors around the banner text
+remote_login_banner_text=$(echo "$remote_login_banner_text" | sed 's/^\^\(.*\)\$$/\1/g')
+# 1 - Keep only the first banners if there are multiple
+#    (dod_banners contains the long and short banner)
+remote_login_banner_text=$(echo "$remote_login_banner_text" | sed 's/^(\(.*\.\)|.*)$/\1/g')
+# 2 - Add spaces ' '. (Transforms regex for "space or newline" into a " ")
+remote_login_banner_text=$(echo "$remote_login_banner_text" | sed 's/\[\\s\\n\]+/ /g')
+# 3 - Adds newlines. (Transforms "(?:\[\\n\]+|(?:\\n)+)" into "\n")
+remote_login_banner_text=$(echo "$remote_login_banner_text" | sed 's/(?:\[\\n\]+|(?:\\\\n)+)/\n/g')
+# 4 - Remove any leftover backslash. (From any parethesis in the banner, for example).
+remote_login_banner_text=$(echo "$remote_login_banner_text" | sed 's/\\//g')
+formatted=$(echo "$remote_login_banner_text" | fold -sw 80)
+
+cat <<EOF >/etc/issue.net
+$formatted
+EOF
+
+else
+    >&2 echo 'Remediation is not applicable, nothing was done'
+fi
+```
+
+### Ansible playbook{% #ansible-playbook %}
+
+The following playbook can be run with Ansible to remediate the issue.
+
+```gdscript3
+- name: Gather the package facts
+  package_facts:
+    manager: auto
+  tags:
+  - DISA-STIG-UBTU-20-010038
+  - banner_etc_issue_net
+  - low_complexity
+  - medium_disruption
+  - medium_severity
+  - no_reboot_needed
+  - unknown_strategy
+- name: XCCDF Value remote_login_banner_text # promote to variable
+  set_fact:
+    remote_login_banner_text: !!str ^Authorized[\s\n]+uses[\s\n]+only\.[\s\n]+All[\s\n]+activity[\s\n]+may[\s\n]+be[\s\n]+monitored[\s\n]+and[\s\n]+reported\.$
+  tags:
+    - always
+
+- name: Modify the System Login Banner for Remote Connections - ensure correct banner
+  copy:
+    dest: /etc/issue.net
+    content: '{{ remote_login_banner_text | regex_replace("^\^(.*)\$$", "\1") | regex_replace("^\((.*\.)\|.*\)$",
+      "\1") | regex_replace("\[\\s\\n\]\+"," ") | regex_replace("\(\?:\[\\n\]\+\|\(\?:\\\\n\)\+\)",
+      "\n") | regex_replace("\\", "") | wordwrap() }}'
+  when: '"linux-base" in ansible_facts.packages'
+  tags:
+  - DISA-STIG-UBTU-20-010038
+  - banner_etc_issue_net
+  - low_complexity
+  - medium_disruption
+  - medium_severity
+  - no_reboot_needed
+  - unknown_strategy
+```

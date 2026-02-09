@@ -2,227 +2,214 @@
 
 # Source: https://preactjs.com/guide/v10/refs
 
-<!DOCTYPE html>
-<html lang="en">
-	<head>
-		<meta charset="utf-8">
-		<link rel="icon" href="/favicon.ico">
-		<title>References – Preact Guide</title>
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimal-ui">
-		<meta name="color-scheme" content="dark light">
-		<meta name="theme-color" content="#673AB8">
-		<link rel="alternate" type="application/rss+xml" href="https://preactjs.com/feed.xml">
-		<link rel="alternate" type="application/atom+xml" href="https://preactjs.com/feed.atom">
-		<meta property="og:image" content="https://preactjs.com/app-icon.png">
-		<meta name="twitter:card" content="summary">
-		<link href="https://esm.sh" rel="preconnect" crossorigin="anonymous">
-		<link href="https://www.google-analytics.com" rel="preconnect" crossorigin="anonymous">
-		<script type="module" crossorigin src="/assets/index-nodqeQT7.js"></script>
-		<link rel="stylesheet" crossorigin href="/assets/index-CzbcAXL9.css">
-	<meta name="description" content="Refs are a way of creating stable values that are local to a component instance and persist across renders">
-<meta property="og:url" content="https://preactjs.com/guide/v10/refs">
-<meta property="og:title" content="References – Preact Guide">
-<meta property="og:description" content="Refs are a way of creating stable values that are local to a component instance and persist across renders">
-<link rel="preload" href="/.netlify/functions/release?repo=preact" as="fetch" fetchpriority="low">
-<link rel="preload" href="/contributors.json" as="fetch" fetchpriority="low">
-<link rel="preload" href="/content/en/guide/v10/refs.json" as="fetch" fetchpriority="low">
-<script>ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga('set','dimension1','master');onerror=function(e,f,l,c){ga('send','event','exception',e,f+':'+l+':'+c)}</script></head>
-	<body class="banner">
-		<div id="app"><header class="_header_nxrmc_38 "><div class="_banner_nxrmc_1"><a href="https://www.stopputin.net/">We stand with Ukraine. <b>Show your support</b> 🇺🇦</a></div><div class="_outer_nxrmc_24"><div class="_inner_nxrmc_301"><nav><a href="/" class="home" aria-label="Home"><svg aria-label="Preact Logo" width="34px" height="34px" viewBox="-256 -256 512 512" style="display:inline-block; margin:-.25em 0 0; vertical-align:middle;"><path d="M0,-256 221.7025033688164,-128 221.7025033688164,128 0,256 -221.7025033688164,128 -221.7025033688164,-128z" fill="white"></path><ellipse cx="0" cy="0" rx="75px" ry="196px" stroke-width="16px" stroke-dasharray="387 60" stroke-dashoffset="0" fill="none" stroke="#673ab8" transform="rotate(52)"></ellipse><ellipse cx="0" cy="0" rx="75px" ry="196px" stroke-width="16px" stroke-dasharray="387 60" stroke-dashoffset="0" fill="none" stroke="#673ab8" transform="rotate(-52)"></ellipse><circle cx="0" cy="0" r="34" fill="#673ab8"></circle></svg>Preact</a><a href="/tutorial">Tutorial</a><a href="/guide/v10/getting-started" class="_current_nxrmc_92 ">Guide</a><div class="_navGroup_nxrmc_78" data-open="false"><button aria-haspopup="true" aria-expanded="false">About</button><nav aria-label="submenu" aria-hidden="true"><a href="/about/we-are-using">Companies using Preact</a><a href="/about/libraries-addons">Libraries &amp; Add-ons</a><a href="/about/demos-examples">Demos &amp; Examples</a><a href="/about/project-goals">Project Goals</a><a href="/about/browser-support">Browser Support</a></nav></div><a href="/blog">Blog</a><a href="/repl">REPL</a></nav><div class="_search_nxrmc_479"><button type="button" aria-label="Search" class="DocSearch DocSearch-Button"><span class="DocSearch-Button-Container"><span class="DocSearch-Button-Placeholder">Search</span></span></button></div><div class="_social_nxrmc_321"><a href="https://github.com/preactjs/preact/releases/tag/11.0.0-beta.0" class="_socialItem_nxrmc_357 _release_nxrmc_396">v11.0.0-beta.0</a><a class="_socialItem_nxrmc_357" aria-label="Browse the code on GitHub" href="https://github.com/preactjs/preact" target="_blank" rel="noopener noreferrer"><svg aria-hidden="true" viewBox="0 0 24 24"><use href="/icons.svg#github"></use></svg></a><a class="_socialItem_nxrmc_357" aria-label="Follow us on Twitter" href="https://twitter.com/preactjs" target="_blank" rel="noopener noreferrer"><svg aria-hidden="true" viewBox="0 0 34 27.646"><use href="/icons.svg#twitter"></use></svg></a><a class="_socialItem_nxrmc_357" aria-label="Follow us on Bluesky" href="https://bsky.app/profile/preactjs.com" target="_blank" rel="noopener noreferrer"><svg aria-hidden="true" viewBox="0 0 568 501"><use href="/icons.svg#bluesky"></use></svg></a><a class="_socialItem_nxrmc_357" aria-label="Chat with us on Slack" href="http://chat.preactjs.com/" target="_blank" rel="noopener noreferrer"><svg aria-hidden="true" viewBox="0 0 512 512"><use href="/icons.svg#slack"></use></svg></a></div><div class="_translation_nxrmc_322"><div class="_navGroup_nxrmc_78" data-open="false"><button aria-haspopup="true" aria-expanded="false" aria-label="Select your language"><svg aria-hidden="true" viewBox="0 0 24 24"><use href="/icons.svg#i18n"></use></svg></button><nav aria-label="submenu" aria-hidden="true"></nav></div></div><div class="_hamburger_nxrmc_402" data-open="false"><div class="_hb1_nxrmc_444"></div><div class="_hb2_nxrmc_445"></div><div class="_hb3_nxrmc_446"></div></div></div></div><a href="https://opencollective.com/preact" target="_blank" rel="noopener noreferrer" class="_corner_1vho8_1"><div class="_cornerText_1vho8_31">Help<br>Support Us</div></a></header><main><loading-bar></loading-bar><!--$s--><div class="_page_sqynl_1 _withSidebar_sqynl_119"><div class="_outer_sqynl_111"><div class="_sidebarWrap_sqynl_115"><div class="_wrapper_14rnv_1" data-open="false"><button class="_toggle_14rnv_6">Guide</button><aside class="_sidebar_14rnv_58"><div class="_sidebarInner_14rnv_93"><label class="_root_1cgs3_1">Version: <select class="_select_1cgs3_8"><option value="v11">11.x (preview)</option><option selected value="v10">10.x (current)</option><option value="v8">8.x</option></select></label><nav class="_toc_1ttwe_1 "><h3 class="_category_1ttwe_50 _level-2_1ttwe_79">Introduction</h3><div class="_accordionBody_1ttwe_68"><a href="/guide/v10/getting-started" class="_link_1ttwe_16  ">Getting Started</a><a href="/guide/v10/whats-new" class="_link_1ttwe_16  ">What's new?</a><a href="/guide/v10/upgrade-guide" class="_link_1ttwe_16  ">Upgrading from 8.x</a><a href="/guide/v10/differences-to-react" class="_link_1ttwe_16  ">Differences to React</a></div><h3 class="_category_1ttwe_50 _level-2_1ttwe_79">Essentials</h3><div class="_accordionBody_1ttwe_68"><a href="/guide/v10/components" class="_link_1ttwe_16  ">Components</a><a href="/guide/v10/hooks" class="_link_1ttwe_16  ">Hooks</a><a href="/guide/v10/signals" class="_link_1ttwe_16  ">Signals</a><a href="/guide/v10/forms" class="_link_1ttwe_16  ">Forms</a><a href="/guide/v10/refs" class="_link_1ttwe_16 _linkActive_1ttwe_43 ">References</a><a href="/guide/v10/context" class="_link_1ttwe_16  ">Context</a></div><h3 class="_category_1ttwe_50 _level-2_1ttwe_79">Debug &amp; Test</h3><div class="_accordionBody_1ttwe_68"><a href="/guide/v10/debugging" class="_link_1ttwe_16  ">Debugging Tools</a><a href="/guide/v10/preact-testing-library" class="_link_1ttwe_16  ">Preact Testing Library</a><a href="/guide/v10/unit-testing-with-enzyme" class="_link_1ttwe_16  ">Unit Testing with Enzyme</a></div><h3 class="_category_1ttwe_50 _level-2_1ttwe_79">Advanced</h3><div class="_accordionBody_1ttwe_68"><a href="/guide/v10/api-reference" class="_link_1ttwe_16  ">API Reference</a><a href="/guide/v10/web-components" class="_link_1ttwe_16  ">Web Components</a><a href="/guide/v10/server-side-rendering" class="_link_1ttwe_16  ">Server-Side Rendering</a><a href="/guide/v10/options" class="_link_1ttwe_16  ">Option Hooks</a><a href="/guide/v10/typescript" class="_link_1ttwe_16  ">TypeScript</a><a href="/guide/v10/no-build-workflows" class="_link_1ttwe_16  ">No-Build Workflows</a></div><h3 class="_category_1ttwe_50 _level-2_1ttwe_79">Libraries</h3><div class="_accordionBody_1ttwe_68"><a href="/guide/v10/preact-iso" class="_link_1ttwe_16  ">preact-iso</a><a href="/guide/v10/preact-custom-element" class="_link_1ttwe_16  ">preact-custom-element</a><a href="/guide/v10/preact-root-fragment" class="_link_1ttwe_16  ">preact-root-fragment</a></div></nav></div></aside></div></div><div class="_inner_sqynl_59"><div class="_wrapper_1gw8e_1"><a class="_edit_1gw8e_13" href="https://github.com/preactjs/preact-www/tree/master/content/en/guide/v10/refs.md" target="_blank" rel="noopener noreferrer">Edit this Page</a></div><content-region name="/guide/v10/refs" can-edit><div class="markup"><h1>References</h1><p>References, or refs for short, are stable, local values that persist across component renders but don't trigger rerenders like state or props would when they change.</p>
-<p>Most often you'll see refs used to facilitate imperative manipulation of the DOM but they can be used to store any arbitrary local value that you need to be kept stable. You may use them to track a previous state value, keep a reference to an interval or timeout ID, or simply a counter value. Importantly, refs should not be used for rendering logic, instead, consumed in lifecycle methods and event handlers only.</p>
-<hr>
-<nav><ul><li><a href="#creating-a-ref">Creating a Ref</a></li><li><a href="#using-refs-to-access-dom-nodes">Using Refs to Access DOM Nodes</a><ul><li><a href="#callback-refs">Callback Refs</a></li></ul></li><li><a href="#using-refs-to-store-local-values">Using Refs to Store Local Values</a></li></ul></nav><hr>
+# References
 
-				<h2 id="creating-a-ref">
-					<a class="fragment-link" href="#creating-a-ref">
-						<svg width="16" height="16" viewBox="0 0 24 24" aria-label="Link to: Creating a Ref (#creating-a-ref)">
-							<use href="/icons.svg#link"></use>
-						</svg>
-					</a>
-					<span>Creating a Ref</span>
-				</h2><p>There are two ways to create refs in Preact, depending on your preferred component style: <code>createRef</code> (class components) and <code>useRef</code> (function components/hooks). Both APIs fundamentally work the same way: they create a stable, plain object with a <code>current</code> property, optionally initialized to a value.</p>
-<div><div class="_tabs_1dgk4_1" role="tablist" aria-label="API Styles" aria-orientation="horizontal"><button class="_tab_1dgk4_1" role="tab" id="tab-P0-0-Classes" aria-controls="panel-P0-0-Classes" aria-selected="true" tabindex="0">Classes</button><button class="_tab_1dgk4_1" role="tab" id="tab-P0-0-Hooks" aria-controls="panel-P0-0-Hooks" aria-selected="false" tabindex="-1">Hooks</button></div><div role="tabpanel" id="panel-P0-0-Classes" aria-labelledby="tab-P0-0-Classes" tabindex="0"><div class="highlight-container">
-					<pre class="highlight"><code class="language-jsx"><span class="token keyword">import</span> <span class="token punctuation">{</span> createRef <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'preact'</span><span class="token punctuation">;</span>
+References, or refs for short, are stable, local values that persist across component renders but don't trigger rerenders like state or props would when they change.
 
-<span class="token keyword">class</span> <span class="token class-name">MyComponent</span> <span class="token keyword">extends</span> <span class="token class-name">Component</span> <span class="token punctuation">{</span>
-	countRef <span class="token operator">=</span> <span class="token function">createRef</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-	inputRef <span class="token operator">=</span> <span class="token function">createRef</span><span class="token punctuation">(</span><span class="token keyword">null</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+Most often you'll see refs used to facilitate imperative manipulation of the DOM but they can be used to store any arbitrary local value that you need to be kept stable. You may use them to track a previous state value, keep a reference to an interval or timeout ID, or simply a counter value. Importantly, refs should not be used for rendering logic, instead, consumed in lifecycle methods and event handlers only.
 
-	<span class="token comment">// ...</span>
-<span class="token punctuation">}</span></code></pre>
-					
-				</div></div><div role="tabpanel" id="panel-P0-0-Hooks" aria-labelledby="tab-P0-0-Hooks" tabindex="0" hidden><div class="highlight-container">
-					<pre class="highlight"><code class="language-jsx"><span class="token keyword">import</span> <span class="token punctuation">{</span> useRef <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'preact/hooks'</span><span class="token punctuation">;</span>
+---
 
-<span class="token keyword">function</span> <span class="token function">MyComponent</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-	<span class="token keyword">const</span> countRef <span class="token operator">=</span> <span class="token function">useRef</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-	<span class="token keyword">const</span> inputRef <span class="token operator">=</span> <span class="token function">useRef</span><span class="token punctuation">(</span><span class="token keyword">null</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+*   [Creating a Ref](#creating-a-ref)
+*   [Using Refs to Access DOM Nodes](#using-refs-to-access-dom-nodes)
+    *   [Callback Refs](#callback-refs)
+*   [Using Refs to Store Local Values](#using-refs-to-store-local-values)
 
-	<span class="token comment">// ...</span>
-<span class="token punctuation">}</span></code></pre>
-					
-				</div></div></div>
+---
 
+## Creating a Ref
 
-				<h2 id="using-refs-to-access-dom-nodes">
-					<a class="fragment-link" href="#using-refs-to-access-dom-nodes">
-						<svg width="16" height="16" viewBox="0 0 24 24" aria-label="Link to: Using Refs to Access DOM Nodes (#using-refs-to-access-dom-nodes)">
-							<use href="/icons.svg#link"></use>
-						</svg>
-					</a>
-					<span>Using Refs to Access DOM Nodes</span>
-				</h2><p>The most common use case for refs is to access the underlying DOM node of a component. This is useful for imperative DOM manipulation, such as measuring elements, calling native methods on various elements (such as <code>.focus()</code> or <code>.play()</code>), and integrating with third-party libraries written in vanilla JS. In the following examples, upon rendering, Preact will assign the DOM node to the <code>current</code> property of the ref object, making it available for use after the component has mounted.</p>
-<div><div class="_tabs_1dgk4_1" role="tablist" aria-label="API Styles" aria-orientation="horizontal"><button class="_tab_1dgk4_1" role="tab" id="tab-P0-1-Classes" aria-controls="panel-P0-1-Classes" aria-selected="true" tabindex="0">Classes</button><button class="_tab_1dgk4_1" role="tab" id="tab-P0-1-Hooks" aria-controls="panel-P0-1-Hooks" aria-selected="false" tabindex="-1">Hooks</button></div><div role="tabpanel" id="panel-P0-1-Classes" aria-labelledby="tab-P0-1-Classes" tabindex="0"><div class="highlight-container">
-					<pre class="highlight"><code class="language-jsx"><span class="token keyword">class</span> <span class="token class-name">MyInput</span> <span class="token keyword">extends</span> <span class="token class-name">Component</span> <span class="token punctuation">{</span>
-	ref <span class="token operator">=</span> <span class="token function">createRef</span><span class="token punctuation">(</span><span class="token keyword">null</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+There are two ways to create refs in Preact, depending on your preferred component style: `createRef` (class components) and `useRef` (function components/hooks). Both APIs fundamentally work the same way: they create a stable, plain object with a `current` property, optionally initialized to a value.
 
-	<span class="token function">componentDidMount</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-		console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>ref<span class="token punctuation">.</span>current<span class="token punctuation">)</span><span class="token punctuation">;</span>
-		<span class="token comment">// Logs: [HTMLInputElement]</span>
-	<span class="token punctuation">}</span>
+### Classes
 
-	<span class="token function">render</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-		<span class="token keyword">return</span> <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">ref</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span><span class="token keyword">this</span><span class="token punctuation">.</span>ref<span class="token punctuation">}</span></span> <span class="token punctuation">/></span></span><span class="token punctuation">;</span>
-	<span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-</code></pre>
-					<a class="repl-link" href="/repl?code=aW1wb3J0IHsgcmVuZGVyLCBDb21wb25lbnQsIGNyZWF0ZVJlZiB9IGZyb20gJ3ByZWFjdCc7CgpjbGFzcyBNeUlucHV0IGV4dGVuZHMgQ29tcG9uZW50IHsKCXJlZiA9IGNyZWF0ZVJlZihudWxsKTsKCgljb21wb25lbnREaWRNb3VudCgpIHsKCQljb25zb2xlLmxvZyh0aGlzLnJlZi5jdXJyZW50KTsKCQkvLyBMb2dzOiBbSFRNTElucHV0RWxlbWVudF0KCX0KCglyZW5kZXIoKSB7CgkJcmV0dXJuIDxpbnB1dCByZWY9e3RoaXMucmVmfSAvPjsKCX0KfQoKcmVuZGVyKDxNeUlucHV0IC8%2BLCBkb2N1bWVudC5nZXRFbGVtZW50QnlJZCgnYXBwJykpOwo%3D">Run in REPL</a>
-				</div></div><div role="tabpanel" id="panel-P0-1-Hooks" aria-labelledby="tab-P0-1-Hooks" tabindex="0" hidden><div class="highlight-container">
-					<pre class="highlight"><code class="language-jsx"><span class="token keyword">function</span> <span class="token function">MyInput</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-	<span class="token keyword">const</span> ref <span class="token operator">=</span> <span class="token function">useRef</span><span class="token punctuation">(</span><span class="token keyword">null</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+```jsx
+import { createRef } from 'preact';
 
-	<span class="token function">useEffect</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
-		console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>ref<span class="token punctuation">.</span>current<span class="token punctuation">)</span><span class="token punctuation">;</span>
-		<span class="token comment">// Logs: [HTMLInputElement]</span>
-	<span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+class MyComponent extends Component {
+  countRef = createRef();
+  inputRef = createRef(null);
 
-	<span class="token keyword">return</span> <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">ref</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span>ref<span class="token punctuation">}</span></span> <span class="token punctuation">/></span></span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-</code></pre>
-					<a class="repl-link" href="/repl?code=aW1wb3J0IHsgcmVuZGVyIH0gZnJvbSAncHJlYWN0JzsKaW1wb3J0IHsgdXNlUmVmLCB1c2VFZmZlY3QgfSBmcm9tICdwcmVhY3QvaG9va3MnOwoKZnVuY3Rpb24gTXlJbnB1dCgpIHsKCWNvbnN0IHJlZiA9IHVzZVJlZihudWxsKTsKCgl1c2VFZmZlY3QoKCkgPT4gewoJCWNvbnNvbGUubG9nKHJlZi5jdXJyZW50KTsKCQkvLyBMb2dzOiBbSFRNTElucHV0RWxlbWVudF0KCX0sIFtdKTsKCglyZXR1cm4gPGlucHV0IHJlZj17cmVmfSAvPjsKfQoKcmVuZGVyKDxNeUlucHV0IC8%2BLCBkb2N1bWVudC5nZXRFbGVtZW50QnlJZCgnYXBwJykpOwo%3D">Run in REPL</a>
-				</div></div></div>
+  // ...
+}
+```
 
+### Hooks
 
-				<h3 id="callback-refs">
-					<a class="fragment-link" href="#callback-refs">
-						<svg width="16" height="16" viewBox="0 0 24 24" aria-label="Link to: Callback Refs (#callback-refs)">
-							<use href="/icons.svg#link"></use>
-						</svg>
-					</a>
-					<span>Callback Refs</span>
-				</h3><p>Another way to use references is by passing a function to the <code>ref</code> prop, where the DOM node will be passed as an argument.</p>
-<div><div class="_tabs_1dgk4_1" role="tablist" aria-label="API Styles" aria-orientation="horizontal"><button class="_tab_1dgk4_1" role="tab" id="tab-P0-2-Classes" aria-controls="panel-P0-2-Classes" aria-selected="true" tabindex="0">Classes</button><button class="_tab_1dgk4_1" role="tab" id="tab-P0-2-Hooks" aria-controls="panel-P0-2-Hooks" aria-selected="false" tabindex="-1">Hooks</button></div><div role="tabpanel" id="panel-P0-2-Classes" aria-labelledby="tab-P0-2-Classes" tabindex="0"><div class="highlight-container">
-					<pre class="highlight"><code class="language-jsx"><span class="token keyword">class</span> <span class="token class-name">MyInput</span> <span class="token keyword">extends</span> <span class="token class-name">Component</span> <span class="token punctuation">{</span>
-	<span class="token function">render</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-		<span class="token keyword">return</span> <span class="token punctuation">(</span>
-			<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span>
-				<span class="token attr-name">ref</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span><span class="token parameter">dom</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
-					console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'Mounted:'</span><span class="token punctuation">,</span> dom<span class="token punctuation">)</span><span class="token punctuation">;</span>
+```jsx
+import { useRef } from 'preact/hooks';
 
-					<span class="token comment">// As of Preact 10.23.0, you can optionally return a cleanup function</span>
-					<span class="token keyword">return</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
-						console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'Unmounted:'</span><span class="token punctuation">,</span> dom<span class="token punctuation">)</span><span class="token punctuation">;</span>
-					<span class="token punctuation">}</span><span class="token punctuation">;</span>
-				<span class="token punctuation">}</span><span class="token punctuation">}</span></span>
-			<span class="token punctuation">/></span></span>
-		<span class="token punctuation">)</span><span class="token punctuation">;</span>
-	<span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-</code></pre>
-					<a class="repl-link" href="/repl?code=aW1wb3J0IHsgcmVuZGVyLCBDb21wb25lbnQgfSBmcm9tICdwcmVhY3QnOwoKY2xhc3MgTXlJbnB1dCBleHRlbmRzIENvbXBvbmVudCB7CglyZW5kZXIoKSB7CgkJcmV0dXJuICgKCQkJPGlucHV0CgkJCQlyZWY9e2RvbSA9PiB7CgkJCQkJY29uc29sZS5sb2coJ01vdW50ZWQ6JywgZG9tKTsKCgkJCQkJLy8gQXMgb2YgUHJlYWN0IDEwLjIzLjAsIHlvdSBjYW4gb3B0aW9uYWxseSByZXR1cm4gYSBjbGVhbnVwIGZ1bmN0aW9uCgkJCQkJcmV0dXJuICgpID0%2BIHsKCQkJCQkJY29uc29sZS5sb2coJ1VubW91bnRlZDonLCBkb20pOwoJCQkJCX07CgkJCQl9fQoJCQkvPgoJCSk7Cgl9Cn0KCnJlbmRlcig8TXlJbnB1dCAvPiwgZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoJ2FwcCcpKTsK">Run in REPL</a>
-				</div></div><div role="tabpanel" id="panel-P0-2-Hooks" aria-labelledby="tab-P0-2-Hooks" tabindex="0" hidden><div class="highlight-container">
-					<pre class="highlight"><code class="language-jsx"><span class="token keyword">function</span> <span class="token function">MyInput</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-	<span class="token keyword">return</span> <span class="token punctuation">(</span>
-		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span>
-			<span class="token attr-name">ref</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span><span class="token parameter">dom</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
-				console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'Mounted:'</span><span class="token punctuation">,</span> dom<span class="token punctuation">)</span><span class="token punctuation">;</span>
+function MyComponent() {
+  const countRef = useRef();
+  const inputRef = useRef(null);
 
-				<span class="token comment">// As of Preact 10.23.0, you can optionally return a cleanup function</span>
-				<span class="token keyword">return</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
-					console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'Unmounted:'</span><span class="token punctuation">,</span> dom<span class="token punctuation">)</span><span class="token punctuation">;</span>
-				<span class="token punctuation">}</span><span class="token punctuation">;</span>
-			<span class="token punctuation">}</span><span class="token punctuation">}</span></span>
-		<span class="token punctuation">/></span></span>
-	<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-</code></pre>
-					<a class="repl-link" href="/repl?code=aW1wb3J0IHsgcmVuZGVyIH0gZnJvbSAncHJlYWN0JzsKCmZ1bmN0aW9uIE15SW5wdXQoKSB7CglyZXR1cm4gKAoJCTxpbnB1dAoJCQlyZWY9e2RvbSA9PiB7CgkJCQljb25zb2xlLmxvZygnTW91bnRlZDonLCBkb20pOwoKCQkJCS8vIEFzIG9mIFByZWFjdCAxMC4yMy4wLCB5b3UgY2FuIG9wdGlvbmFsbHkgcmV0dXJuIGEgY2xlYW51cCBmdW5jdGlvbgoJCQkJcmV0dXJuICgpID0%2BIHsKCQkJCQljb25zb2xlLmxvZygnVW5tb3VudGVkOicsIGRvbSk7CgkJCQl9OwoJCQl9fQoJCS8%2BCgkpOwp9CgpyZW5kZXIoPE15SW5wdXQgLz4sIGRvY3VtZW50LmdldEVsZW1lbnRCeUlkKCdhcHAnKSk7Cg%3D%3D">Run in REPL</a>
-				</div></div></div>
+  // ...
+}
+```
 
-<blockquote>
-<p>If the provided ref callback is unstable (such as one that's defined inline, as shown above), and <em>does not</em> return a cleanup function, <strong>it will be called twice</strong> upon all rerenders: once with <code>null</code> and then once with the actual reference. This is a common issue and the <code>createRef</code>/<code>useRef</code> APIs make this a little easier by forcing the user to check if <code>ref.current</code> is defined.</p>
-<p>A stable function, for comparison, could be a method on the class component instance, a function defined outside of the component, or a function created with <code>useCallback</code>, for example.</p>
-</blockquote>
+## Using Refs to Access DOM Nodes
 
-				<h2 id="using-refs-to-store-local-values">
-					<a class="fragment-link" href="#using-refs-to-store-local-values">
-						<svg width="16" height="16" viewBox="0 0 24 24" aria-label="Link to: Using Refs to Store Local Values (#using-refs-to-store-local-values)">
-							<use href="/icons.svg#link"></use>
-						</svg>
-					</a>
-					<span>Using Refs to Store Local Values</span>
-				</h2><p>Refs aren't limited to storing DOM nodes, however; they can be used to store any type of value that you may need.</p>
-<p>In the following example, we store the ID of an interval in a ref to be able to start &amp; stop it independently.</p>
-<div><div class="_tabs_1dgk4_1" role="tablist" aria-label="API Styles" aria-orientation="horizontal"><button class="_tab_1dgk4_1" role="tab" id="tab-P0-3-Classes" aria-controls="panel-P0-3-Classes" aria-selected="true" tabindex="0">Classes</button><button class="_tab_1dgk4_1" role="tab" id="tab-P0-3-Hooks" aria-controls="panel-P0-3-Hooks" aria-selected="false" tabindex="-1">Hooks</button></div><div role="tabpanel" id="panel-P0-3-Classes" aria-labelledby="tab-P0-3-Classes" tabindex="0"><div class="highlight-container">
-					<pre class="highlight"><code class="language-jsx"><span class="token keyword">class</span> <span class="token class-name">SimpleClock</span> <span class="token keyword">extends</span> <span class="token class-name">Component</span> <span class="token punctuation">{</span>
-	state <span class="token operator">=</span> <span class="token punctuation">{</span>
-		<span class="token literal-property property">time</span><span class="token operator">:</span> Date<span class="token punctuation">.</span><span class="token function">now</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-	<span class="token punctuation">}</span><span class="token punctuation">;</span>
-	intervalId <span class="token operator">=</span> <span class="token function">createRef</span><span class="token punctuation">(</span><span class="token keyword">null</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+The most common use case for refs is to access the underlying DOM node of a component. This is useful for imperative DOM manipulation, such as measuring elements, calling native methods on various elements (such as `.focus()` or `.play()`), and integrating with third-party libraries written in vanilla JS. In the following examples, upon rendering, Preact will assign the DOM node to the `current` property of the ref object, making it available for use after the component has mounted.
 
-	<span class="token function-variable function">startClock</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
-		<span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">setState</span><span class="token punctuation">(</span><span class="token punctuation">{</span> <span class="token literal-property property">time</span><span class="token operator">:</span> Date<span class="token punctuation">.</span><span class="token function">now</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-		<span class="token keyword">this</span><span class="token punctuation">.</span>intervalId<span class="token punctuation">.</span>current <span class="token operator">=</span> <span class="token function">setInterval</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
-			<span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">setState</span><span class="token punctuation">(</span><span class="token punctuation">{</span> <span class="token literal-property property">time</span><span class="token operator">:</span> Date<span class="token punctuation">.</span><span class="token function">now</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-		<span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token number">1000</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-	<span class="token punctuation">}</span><span class="token punctuation">;</span>
+### Classes
 
-	<span class="token function-variable function">stopClock</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
-		<span class="token function">clearInterval</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>intervalId<span class="token punctuation">.</span>current<span class="token punctuation">)</span><span class="token punctuation">;</span>
-	<span class="token punctuation">}</span><span class="token punctuation">;</span>
+```jsx
+class MyInput extends Component {
+  ref = createRef(null);
 
-	<span class="token function">render</span><span class="token punctuation">(</span><span class="token parameter">_<span class="token punctuation">,</span> <span class="token punctuation">{</span> time <span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-		<span class="token keyword">const</span> formattedTime <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span>time<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toLocaleTimeString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  componentDidMount() {
+    console.log(this.ref.current);
+    // Logs: [HTMLInputElement]
+  }
 
-		<span class="token keyword">return</span> <span class="token punctuation">(</span>
-			<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">></span></span><span class="token plain-text">
-				</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">onClick</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span><span class="token keyword">this</span><span class="token punctuation">.</span>startClock<span class="token punctuation">}</span></span><span class="token punctuation">></span></span><span class="token plain-text">Start Clock</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span><span class="token plain-text">
-				</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>time</span> <span class="token attr-name">dateTime</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span>formattedTime<span class="token punctuation">}</span></span><span class="token punctuation">></span></span><span class="token punctuation">{</span>formattedTime<span class="token punctuation">}</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>time</span><span class="token punctuation">></span></span><span class="token plain-text">
-				</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">onClick</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span><span class="token keyword">this</span><span class="token punctuation">.</span>stopClock<span class="token punctuation">}</span></span><span class="token punctuation">></span></span><span class="token plain-text">Stop Clock</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span><span class="token plain-text">
-			</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
-		<span class="token punctuation">)</span><span class="token punctuation">;</span>
-	<span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-</code></pre>
-					<a class="repl-link" href="/repl?code=aW1wb3J0IHsgcmVuZGVyLCBDb21wb25lbnQsIGNyZWF0ZVJlZiB9IGZyb20gJ3ByZWFjdCc7CgpjbGFzcyBTaW1wbGVDbG9jayBleHRlbmRzIENvbXBvbmVudCB7CglzdGF0ZSA9IHsKCQl0aW1lOiBEYXRlLm5vdygpCgl9OwoJaW50ZXJ2YWxJZCA9IGNyZWF0ZVJlZihudWxsKTsKCglzdGFydENsb2NrID0gKCkgPT4gewoJCXRoaXMuc2V0U3RhdGUoeyB0aW1lOiBEYXRlLm5vdygpIH0pOwoJCXRoaXMuaW50ZXJ2YWxJZC5jdXJyZW50ID0gc2V0SW50ZXJ2YWwoKCkgPT4gewoJCQl0aGlzLnNldFN0YXRlKHsgdGltZTogRGF0ZS5ub3coKSB9KTsKCQl9LCAxMDAwKTsKCX07CgoJc3RvcENsb2NrID0gKCkgPT4gewoJCWNsZWFySW50ZXJ2YWwodGhpcy5pbnRlcnZhbElkLmN1cnJlbnQpOwoJfTsKCglyZW5kZXIoXywgeyB0aW1lIH0pIHsKCQljb25zdCBmb3JtYXR0ZWRUaW1lID0gbmV3IERhdGUodGltZSkudG9Mb2NhbGVUaW1lU3RyaW5nKCk7CgoJCXJldHVybiAoCgkJCTxkaXY%2BCgkJCQk8YnV0dG9uIG9uQ2xpY2s9e3RoaXMuc3RhcnRDbG9ja30%2BU3RhcnQgQ2xvY2s8L2J1dHRvbj4KCQkJCTx0aW1lIGRhdGVUaW1lPXtmb3JtYXR0ZWRUaW1lfT57Zm9ybWF0dGVkVGltZX08L3RpbWU%2BCgkJCQk8YnV0dG9uIG9uQ2xpY2s9e3RoaXMuc3RvcENsb2NrfT5TdG9wIENsb2NrPC9idXR0b24%2BCgkJCTwvZGl2PgoJCSk7Cgl9Cn0KCnJlbmRlcig8U2ltcGxlQ2xvY2sgLz4sIGRvY3VtZW50LmdldEVsZW1lbnRCeUlkKCdhcHAnKSk7Cg%3D%3D">Run in REPL</a>
-				</div></div><div role="tabpanel" id="panel-P0-3-Hooks" aria-labelledby="tab-P0-3-Hooks" tabindex="0" hidden><div class="highlight-container">
-					<pre class="highlight"><code class="language-jsx"><span class="token keyword">function</span> <span class="token function">SimpleClock</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-	<span class="token keyword">const</span> <span class="token punctuation">[</span>time<span class="token punctuation">,</span> setTime<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">useState</span><span class="token punctuation">(</span>Date<span class="token punctuation">.</span><span class="token function">now</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-	<span class="token keyword">const</span> intervalId <span class="token operator">=</span> <span class="token function">useRef</span><span class="token punctuation">(</span><span class="token keyword">null</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  render() {
+    return <input ref={this.ref} />;
+  }
+}
 
-	<span class="token keyword">const</span> <span class="token function-variable function">startClock</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
-		<span class="token function">setTime</span><span class="token punctuation">(</span>Date<span class="token punctuation">.</span><span class="token function">now</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-		intervalId<span class="token punctuation">.</span>current <span class="token operator">=</span> <span class="token function">setInterval</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
-			<span class="token function">setTime</span><span class="token punctuation">(</span>Date<span class="token punctuation">.</span><span class="token function">now</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-		<span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token number">1000</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-	<span class="token punctuation">}</span><span class="token punctuation">;</span>
+[Run in REPL](/repl?code=aW1wb3J0IHsgcmVuZGVyLCBDb21wb25lbnQsIGNyZWF0ZVJlZiB9IGZyb20gJ3ByZWFjdCc7CgpjbGFzcyBTaUlucHV0IGV4dGVuZHMgQ29tcG9uZW50IHsKCXJlZiA9IGNyZWF0ZVJlZihudWxsKTsKCgljb21wb25lbnREaWRNb3VudCgpIHsKCQljb25zb2xlLmxvZyh0aGlzLnJlZi5jdXJyZW50KTsKCQkvLyBMb2dzOiBbSFRNTElucHV0RWxlbWVudF0KCX0KCglyZW5kZXIoKSB7CgkJcmV0dXJuIDxpbnB1dCByZWY9e3RoaXMucmVmfSAvPjsKCX0KfQoKcmVuZGVyKDxNeUlucHV0IC8%2BLCBkb2N1bWVudC5nZXRFbGVtZW50QnlJZCgnYXBwJykpOwo%3D)
+```
 
-	<span class="token keyword">const</span> <span class="token function-variable function">stopClock</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
-		<span class="token function">clearInterval</span><span class="token punctuation">(</span>intervalId<span class="token punctuation">.</span>current<span class="token punctuation">)</span><span class="token punctuation">;</span>
-	<span class="token punctuation">}</span><span class="token punctuation">;</span>
+### Hooks
 
-	<span class="token keyword">const</span> formattedTime <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span>time<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toLocaleTimeString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+```jsx
+function MyInput() {
+  const ref = useRef(null);
 
-	<span class="token keyword">return</span> <span class="token punctuation">(</span>
-		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">></span></span><span class="token plain-text">
-			</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">onClick</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span>startClock<span class="token punctuation">}</span></span><span class="token punctuation">></span></span><span class="token plain-text">Start Clock</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span><span class="token plain-text">
-			</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>time</span> <span class="token attr-name">dateTime</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span>formattedTime<span class="token punctuation">}</span></span><span class="token punctuation">></span></span><span class="token punctuation">{</span>formattedTime<span class="token punctuation">}</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>time</span><span class="token punctuation">></span></span><span class="token plain-text">
-			</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">onClick</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span>stopClock<span class="token punctuation">}</span></span><span class="token punctuation">></span></span><span class="token plain-text">Stop Clock</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span><span class="token plain-text">
-		</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
-	<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-</code></pre>
-					<a class="repl-link" href="/repl?code=aW1wb3J0IHsgcmVuZGVyIH0gZnJvbSAncHJlYWN0JzsKaW1wb3J0IHsgdXNlU3RhdGUsIHVzZVJlZiB9IGZyb20gJ3ByZWFjdC9ob29rcyc7CgpmdW5jdGlvbiBTaW1wbGVDbG9jaygpIHsKCWNvbnN0IFt0aW1lLCBzZXRUaW1lXSA9IHVzZVN0YXRlKERhdGUubm93KCkpOwoJY29uc3QgaW50ZXJ2YWxJZCA9IHVzZVJlZihudWxsKTsKCgljb25zdCBzdGFydENsb2NrID0gKCkgPT4gewoJCXNldFRpbWUoRGF0ZS5ub3coKSk7CgkJaW50ZXJ2YWxJZC5jdXJyZW50ID0gc2V0SW50ZXJ2YWwoKCkgPT4gewoJCQlzZXRUaW1lKERhdGUubm93KCkpOwoJCX0sIDEwMDApOwoJfTsKCgljb25zdCBzdG9wQ2xvY2sgPSAoKSA9PiB7CgkJY2xlYXJJbnRlcnZhbChpbnRlcnZhbElkLmN1cnJlbnQpOwoJfTsKCgljb25zdCBmb3JtYXR0ZWRUaW1lID0gbmV3IERhdGUodGltZSkudG9Mb2NhbGVUaW1lU3RyaW5nKCk7CgoJcmV0dXJuICgKCQk8ZGl2PgoJCQk8YnV0dG9uIG9uQ2xpY2s9e3N0YXJ0Q2xvY2t9PlN0YXJ0IENsb2NrPC9idXR0b24%2BCgkJCTx0aW1lIGRhdGVUaW1lPXtmb3JtYXR0ZWRUaW1lfT57Zm9ybWF0dGVkVGltZX08L3RpbWU%2BCgkJCTxidXR0b24gb25DbGljaz17c3RvcENsb2NrfT5TdG9wIENsb2NrPC9idXR0b24%2BCgkJPC9kaXY%2BCgkpOwp9CgpyZW5kZXIoPFNpbXBsZUNsb2NrIC8%2BLCBkb2N1bWVudC5nZXRFbGVtZW50QnlJZCgnYXBwJykpOwo%3D">Run in REPL</a>
-				</div></div></div></div></content-region><footer class="_footer_8z8ez_1"><div><p><label>Language: <select><option selected value="en">English</option><option value="de">German</option><option value="es">Spanish</option><option value="fr">French</option><option value="it">Italian</option><option value="ja">Japanese</option><option value="kr">Korean</option><option value="pt-br">Brazilian Portuguese</option><option value="ru">Русский</option><option value="tr">Turkish</option><option value="zh">简体中文</option></select><code>?lang=en</code></label></p><p style="line-height: 1">Built by a bunch of <a href="https://github.com/preactjs/preact/graphs/contributors" target="_blank" rel="noopener noreferrer">lovely people</a>  like <a href="https://github.com/vpzomtrrfrt" target="_blank" rel="noopener noreferrer">@vpzomtrrfrt</a>.</p></div></footer></div></div></div><!--/$s--></main><script type="isodata"></script><script async defer src="https://www.google-analytics.com/analytics.js"></script><script type="application/json" id="prerender-data">{"preactVersion":"11.0.0-beta.0","preactReleaseURL":"https://github.com/preactjs/preact/releases/tag/11.0.0-beta.0","preactOrgRepos":[{"html_url":"https://github.com/preactjs/preact","full_name":"preactjs/preact","stargazers_count":38228,"description":"⚛️ Fast 3kB React alternative with the same modern API. Components & Virtual DOM."},{"html_url":"https://github.com/preactjs/wmr","full_name":"preactjs/wmr","stargazers_count":4936,"description":"👩‍🚀 The tiny all-in-one development tool for modern web apps."},{"html_url":"https://github.com/preactjs/preact-cli","full_name":"preactjs/preact-cli","stargazers_count":4688,"description":"😺 Your next Preact PWA starts in 30 seconds."},{"html_url":"https://github.com/preactjs/signals","full_name":"preactjs/signals","stargazers_count":4331,"description":"Manage state with style in every framework"},{"html_url":"https://github.com/preactjs/awesome-preact","full_name":"preactjs/awesome-preact","stargazers_count":965,"description":"A curated list of amazingly awesome things regarding Preact ecosystem :star2:"}]}</script></div>
-	</body>
-</html>
+  useEffect(() => {
+    console.log(ref.current);
+    // Logs: [HTMLInputElement]
+  }, []);
+
+  return <input ref={ref} />;
+}
+```
+
+[Run in REPL](/repl?code=aW1wb3J0IHsgcmVuZGVyIH0gZnJvbSAncHJlYWN0JzsKaW1wb3J0IHsgdXNlUmVmLCB1c2VFZmZlY3QgfSBmcm9tICdwcmVhY3QvaG9va3MnOwoKZnVuY3Rpb24gTXlJbnB1dCgpIHsKCWNvbnN0IHJlZiA9IHVzZVJlZihudWxsKTsKCgl1c2VFZmZlY3QoKCkgPT4gewoJCWNvbnNvbGUubG9nKHJlZi5jdXJyZW50KTsKCQkvLyBMb2dzOiBbSFRNTElucHV0RWxlbWVudF0KCX0sIFtdKTsKCglyZXR1cm4gPGlucHV0IHJlZj17cmVmfSAvPjsKfQoKcmVuZGVyKDxNeUlucHV0IC8%2BLCBkb2N1bWVudC5nZXRFbGVtZW50QnlJZCgnYXBwJykpOwo%3D)
+
+### Callback Refs
+
+Another way to use references is by passing a function to the `ref` prop, where the DOM node will be passed as an argument.
+
+#### Classes
+
+```jsx
+class MyInput extends Component {
+  render() {
+    return (
+      <input
+        ref={dom => {
+          console.log('Mounted:', dom);
+
+          // As of Preact 10.23.0, you can optionally return a cleanup function
+          return () => {
+            console.log('Unmounted:', dom);
+          };
+        }}
+      />
+    );
+  }
+}
+
+[Run in REPL](/repl?code=aW1wb3J0IHsgcmVuZGVyLCBDb21wb25lbnQgfSBmcm9tICdwcmVhY3QnOwoKY2xhc3MgTXlJbnB1dCBleHRlbmRzIENvbXBvbmVudCB7CglyZW5kZXIoKSB7CgkJcmV0dXJuICgKCQkJPGlucHV0CgkJCQlyZWY9e2RvbSA9PiB7CgkJCQkJY29uc29sZS5sb2coJ01vdW50ZWQ6JywgZG9tKTsKCgkJCQkJLy8gQXMgb2YgUHJlYWN0IDEwLjIzLjAsIHlvdSBjYW4gb3B0aW9uYWxseSByZXR1cm4gYSBjbGVhbnVwIGZ1bmN0aW9uCgkJCQkJcmV0dXJuICgpID0%2BIHsKCQkJCQkJY29uc29sZS5sb2coJ1VubW91bnRlZDonLCBkb20pOwoJCQkJCX07CgkJCQl9fQoJCQkvPgoJCSk7Cgl9Cn0KCnJlbmRlcig8TXlJbnB1dCAvPiwgZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoJ2FwcCcpKTsK)
+```
+
+#### Hooks
+
+```jsx
+function MyInput() {
+  return (
+    <input
+      ref={dom => {
+        console.log('Mounted:', dom);
+
+        // As of Preact 10.23.0, you can optionally return a cleanup function
+        return () => {
+          console.log('Unmounted:', dom);
+        };
+      }}
+    />
+  );
+}
+```
+
+[Run in REPL](/repl?code=aW1wb3J0IHsgcmVuZGVyIH0gZnJvbSAncHJlYWN0JzsKCmZ1bmN0aW9uIE15SW5wdXQoKSB7CglyZXR1cm4gKAoJCTxpbnB1dAoJCQlyZWY9e2RvbSA9PiB7CgkJCQljb25zb2xlLmxvZygnTW91bnRlZDonLCBkb20pOwoKCQkJCS8vIEFzIG9mIFByZWFjdCAxMC4yMy4wLCB5b3UgY2FuIG9wdGlvbmFsbHkgcmV0dXJuIGEgY2xlYW51cCBmdW5jdGlvbgoJCQkJcmV0dXJuICgpID0%2BIHsKCQkJCQljb25zb2xlLmxvZygnVW5tb3VudGVkOicsIGRvbSk7CgkJCQl9OwoJCQl9fQoJCS8%2BCgkpOwp9CgpyZW5kZXIoPE15SW5wdXQgLz4sIGRvY3VtZW50LmdldEVsZW1lbnRCeUlkKCdhcHAnKSk7Cg%3D%3D)
+
+> If the provided ref callback is unstable (such as one that's defined inline, as shown above), and _does not_ return a cleanup function, **it will be called twice** upon all rerenders: once with `null` and then once with the actual reference. This is a common issue and the `createRef`/`useRef` APIs make this a little easier by forcing the user to check if `ref.current` is defined.
+>
+> A stable function, for comparison, could be a method on the class component instance, a function defined outside of the component, or a function created with `useCallback`, for example.
+
+## Using Refs to Store Local Values
+
+Refs aren't limited to storing DOM nodes, however; they can be used to store any type of value that you may need.
+
+In the following example, we store the ID of an interval in a ref to be able to start & stop it independently.
+
+### Classes
+
+```jsx
+class SimpleClock extends Component {
+  state = {
+    time: Date.now()
+  };
+  intervalId = createRef(null);
+
+  startClock = () => {
+    this.setState({ time: Date.now() });
+    this.intervalId.current = setInterval(() => {
+      this.setState({ time: Date.now() });
+    }, 1000);
+  };
+
+  stopClock = () => {
+    clearInterval(this.intervalId.current);
+  };
+
+  render(_,
+    { time }) {
+    const formattedTime = new Date(time).toLocaleTimeString();
+
+    return (
+      <div>
+        <button onClick={this.startClock}>Start Clock</button>
+        <time dateTime={formattedTime}>{formattedTime}</time>
+        <button onClick={this.stopClock}>Stop Clock</button>
+      </div>
+    );
+  }
+}
+```
+
+[Run in REPL](/repl?code=aW1wb3J0IHsgcmVuZGVyLCBDb21wb25lbnQsIGNyZWF0ZVJlZiB9IGZyb20gJ3ByZWFjdCc7CgpjbGFzcyBTaW1wbGVDbG9jayBleHRlbmRzIENvbXBvbmVudCB7CglzdGF0ZSA9IHsKCQl0aW1lOiBEYXRlLm5vdygpCgl9OwoJaW50ZXJ2YWxJZCA9IGNyZWF0ZVJlZihudWxsKTsKCglzdGFydENsb2NrID0gKCkgPT4gewoJCXRoaXMuc2V0U3RhdGUoeyB0aW1lOiBEYXRlLm5vdygpIH0pOwoJCXRoaXMuaW50ZXJ2YWxJZC5jdXJyZW50ID0gc2V0SW50ZXJ2YWwoKCkgPT4gewoJCQl0aGlzLnNldFN0YXRlKHsgdGltZTogRGF0ZS5ub3coKSB9KTsKCQl9LCAxMDAwKTsKCX07CgoJc3RvcENsb2NrID0gKCkgPT4gewoJCWNsZWFySW50ZXJ2YWwodGhpcy5pbnRlcnZhbElkLmN1cnJlbnQpOwoJfTsKCglyZW5kZXIoXywgeyB0aW1lIH0pIHsKCQljb25zdCBmb3JtYXR0ZWRUaW1lID0gbmV3IERhdGUodGltZSkudG9Mb2NhbGVUaW1lU3RyaW5nKCk7CgoJCXJldHVybiAoCgkJCTxkaXY%2BCgkJCQk8YnV0dG9uIG9uQ2xpY2s9e3RoaXMuc3RhcnRDbG9ja30%2BU3RhcnQgQ2xvY2s8L2J1dHRvbj4KCQkJCTx0aW1lIGRhdGVUaW1lPXtmb3JtYXR0ZWRUaW1lfT57Zm9ybWF0dGVkVGltZX08L3RpbWU%2BCgkJCQk8YnV0dG9uIG9uQ2xpY2s9e3RoaXMuc3RvcENsb2NrfT5TdG9wIENsb2NrPC9idXR0b24%2BCgkJCTwvZGl2PgoJCSk7Cgl9Cn0KCnJlbmRlcig8U2ltcGxlQ2xvY2sgLz4sIGRvY3VtZW50LmdldEVsZW1lbnRCeUlkKCdhcHAnKSk7Cg%3D%3D)
+
+### Hooks
+
+```jsx
+function SimpleClock() {
+  const [time, setTime] = useState(Date.now());
+  const intervalId = useRef(null);
+
+  const startClock = () => {
+    setTime(Date.now());
+    intervalId.current = setInterval(() => {
+      setTime(Date.now());
+    }, 1000);
+  };
+
+  const stopClock = () => {
+    clearInterval(intervalId.current);
+  };
+
+  const formattedTime = new Date(time).toLocaleTimeString();
+
+  return (
+    <div>
+      <button onClick={startClock}>Start Clock</button>
+      <time dateTime={formattedTime}>{formattedTime}</time>
+      <button onClick={stopClock}>Stop Clock</button>
+    </div>
+  );
+}
+```
+
+[Run in REPL](/repl?code=aW1wb3J0IHsgcmVuZGVyIH0gZnJvbSAncHJlYWN0JzsKaW1wb3J0IHsgdXNlU3RhdGUsIHVzZVJlZiB9IGZyb20gJ3ByZWFjdC9ob29rcyc7CgpmdW5jdGlvbiBTaW1wbGVDbG9jaygpIHsKCWNvbnN0IFt0aW1lLCBzZXRUaW1lXSA9IHVzZVN0YXRlKERhdGUubm93KCkpOwoJY29uc3QgaW50ZXJ2YWxJZCA9IHVzZVJlZihudWxsKTsKCgljb25zdCBzdGFydENsb2NrID0gKCkgPT4gewoJCXNldFRpbWUoRGF0ZS5ub3coKSk7CgkJaW50ZXJ2YWxJZC5jdXJyZW50ID0gc2V0SW50ZXJ2YWwoKCkgPT4gewoJCQlzZXRUaW1lKERhdGUubm93KCkpOwoJCX0sIDEwMDApOwoJfTsKCgljb25zdCBzdG9wQ2xvY2sgPSAoKSA9PiB7CgkJY2xlYXJJbnRlcnZhbChpbnRlcnZhbElkLmN1cnJlbnQpOwoJfTsKCgljb25zdCBmb3JtYXR0ZWRUaW1lID0gbmV3IERhdGUodGltZSkudG9Mb2NhbGVUaW1lU3RyaW5nKCk7CgoJcmV0dXJuICgKCQk8ZGl2PgoJCQk8YnV0dG9uIG9uQ2xpY2s9e3N0YXJ0Q2xvY2t9PlN0YXJ0IENsb2NrPC9idXR0b24%2BCgkJCTx0aW1lIGRhdGVUaW1lPXtmb3JtYXR0ZWRUaW1lfT57Zm9ybWF0dGVkVGltZX08L3RpbWU%2BCgkJCTxidXR0b24gb25DbGljaz17c3RvcENsb2NrfT5TdG9wIENsb2NrPC9idXR0b24%2BCgkJPC9kaXY%2BCgkpOwp9CgpyZW5kZXIoPFNpbXBsZUNsb2NrIC8%2BLCBkb2N1bWVudC5nZXRFbGVtZW50QnlJZCgnYXBwJykpOwo%3D)

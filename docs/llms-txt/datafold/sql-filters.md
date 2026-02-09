@@ -1,5 +1,9 @@
 # Source: https://docs.datafold.com/deployment-testing/configuration/model-specific-ci/sql-filters.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.datafold.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # SQL Filters
 
 > Use dbt YAML configuration to set model-specific filters for Datafold CI.

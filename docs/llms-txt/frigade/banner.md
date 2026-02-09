@@ -1,15 +1,27 @@
 # Source: https://docs.frigade.com/component/banner.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.frigade.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Banner
 
 > Communicate information or drive action via in-line banners
 
 <Frame className="h-96 items-center px-4">
   <img
-    src="https://mintlify.s3.us-west-1.amazonaws.com/frigade-docs/images/components/banner.svg"
+    src="https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/components/banner.svg?fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=85007c7bf1c50af98cb76411ff1256e3"
     style={{
     height: "auto",
   }}
+    data-og-width="1000"
+    width="1000"
+    data-og-height="100"
+    height="100"
+    data-path="images/components/banner.svg"
+    data-optimize="true"
+    data-opv="3"
+    srcset="https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/components/banner.svg?w=280&fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=28087310105f6277a14b4ef167423363 280w, https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/components/banner.svg?w=560&fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=b02de011f0cd469ccf6a2eb7304f7f8f 560w, https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/components/banner.svg?w=840&fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=b77009cb787e78dfdaad5f49c0f31b21 840w, https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/components/banner.svg?w=1100&fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=691706e4786fb88c6539c6f2b734ce62 1100w, https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/components/banner.svg?w=1650&fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=4e5781f625009647b9da7edfab7f40bc 1650w, https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/components/banner.svg?w=2500&fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=01e0b610a723d20c9b46e130fe01da0e 2500w"
   />
 </Frame>
 
@@ -47,7 +59,7 @@ The `Banner` component is a versatile, persistent UI component that typically sp
 
 <Tabs>
   <Tab title="Code">
-    ```tsx
+    ```tsx  theme={"system"}
     import * as Frigade from '@frigade/react';
 
     const App = () => {

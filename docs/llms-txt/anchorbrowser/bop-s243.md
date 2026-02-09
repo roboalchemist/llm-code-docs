@@ -1,5 +1,9 @@
 # Source: https://docs.anchorbrowser.io/integrations/open-source/playwright/government/USA/federal/bop-s243.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.anchorbrowser.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # BOP Form BP-S0243
 
 > Automate Bureau of Prisons inmate request workflows with Playwright when APIs aren't available.

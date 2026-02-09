@@ -203,55 +203,7 @@ Put the file on all container nodes, configure the location and [deploy](../basi
     </config>
 ```
 
-## Special tokens
-
-Query tokens are built from _text characters_, as defined by `isTextCharacter` in[com.yahoo.text.Text](https://github.com/vespa-engine/vespa/blob/master/vespajlib/src/main/java/com/yahoo/text/Text.java). To query for terms with other characters, like _c++_ or _.net_, use _special tokens_. Unlike query rewriting/phrasing, special tokens modifies data at feeding time, so changes to configuration should be followed by (automatic) document re-feed.
-
-Add a [specialtokens config](../reference/applications/services/services.html#generic-config) to _services.xml_ to enable. Specify a token list called _default_, with a list of tokens. A token can have an optional replacement. All special tokens must be in lower-case. There is no need to enable it for particular fields, or indicate the need for special token handling during query input. Refer to [specialtokens.def](https://github.com/vespa-engine/vespa/blob/master/configdefinitions/src/vespa/specialtokens.def) for details. Example configuration:
-
-```
-<?xml version="1.0" encoding="UTF-8"?>
-<services version="1.0">
-    <config name="vespa.configdefinition.specialtokens">
-        <tokenlist>
-            <item>
-                <name>default</name>
-                <tokens>
-                    <item>
-                        <token>c++</token>
-                    </item>
-                    <item>
-                        <token>wal-mart</token>
-                        <replace>walmart</replace>
-                    </item>
-                    <item>
-                        <token>.net</token>
-                    </item>
-                </tokens>
-            </item>
-        </tokenlist>
-    </config>
-    ...
-</services>
-```
-
- **Note:** Special tokens is most useful for text search, meaning fields with longer text. For use cases with full exact matching in small fields, like `where product contains "M&M"`, consider using [match: exact](../reference/schemas/schemas.html#match), like
-```
-field product type string {
-        indexing: summary | index
-        match: exact
-    }
-```
-
-Remember to encode queries when testing with non-textual characters. The Vespa CLI has a `-v` option to print as YQL:
-
-```
-$ vespa query -v 'select * from items where product contains "M&M"'
-
-curl http://127.0.0.1:8080/search/\?timeout=10s\&yql=select+%2A+from+items+where+product+contains+%22M%26M%22
-```
-
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ### On this page:
 
@@ -262,5 +214,4 @@ curl http://127.0.0.1:8080/search/\?timeout=10s\&yql=select+%2A+from+items+where
 - [Using multiple rule bases](#using-multiple-rule-bases)
 - [Using a finite state automaton](#using-a-finite-state-automaton)
 - [Query phrasing](#query-phrasing)
-- [Special tokens](#special-tokens)
 

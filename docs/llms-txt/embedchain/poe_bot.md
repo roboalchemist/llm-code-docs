@@ -1,12 +1,16 @@
 # Source: https://docs.embedchain.ai/examples/poe_bot.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.embedchain.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # 🔮 Poe Bot
 
 ### 🚀 Getting started
 
 1. Install embedchain python package:
 
-```bash
+```bash  theme={null}
 pip install fastapi-poe==0.0.16 
 ```
 
@@ -19,7 +23,7 @@ pip install fastapi-poe==0.0.16
 8. You will need to set `OPENAI_API_KEY` for generating embeddings and using LLM. Copy your OpenAI API key from [here](https://platform.openai.com/account/api-keys) and paste it in `.env` as `OPENAI_API_KEY`.
 9. Now create your bot using the following code snippet.
 
-```bash
+```bash  theme={null}
 # make sure that you have set OPENAI_API_KEY and POE_API_KEY in .env file
 from embedchain.bots import PoeBot
 
@@ -36,7 +40,7 @@ poe_bot.start()
 
 10. You can paste the above in a file called `your_script.py` and then simply do
 
-```bash
+```bash  theme={null}
 python your_script.py
 ```
 
@@ -56,7 +60,7 @@ Now your bot will start running at port `8080` by default.
 
 * To ask the bot questions, just type your query in the Poe interface:
 
-```text
+```text  theme={null}
 <your-question-here>
 ```
 

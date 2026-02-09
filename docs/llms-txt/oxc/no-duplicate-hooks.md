@@ -3,7 +3,6 @@
 ---
 url: /docs/guide/usage/linter/rules/jest/no-duplicate-hooks.md
 ---
-# jest/no-duplicate-hooks&#x20;
 
 ### What it does
 

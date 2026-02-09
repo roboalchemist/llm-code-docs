@@ -166,11 +166,7 @@ Below is a full list of environment variables with their default values:
 | `DEFAULT_RUNNER_CPU`                       | number  | `4`                                                  | Default runner CPU allocation                                                                        |
 | `DEFAULT_RUNNER_MEMORY`                    | number  | `8`                                                  | Default runner memory allocation (GB)                                                                |
 | `DEFAULT_RUNNER_DISK`                      | number  | `50`                                                 | Default runner disk allocation (GB)                                                                  |
-| `DEFAULT_RUNNER_GPU`                       | number  | `0`                                                  | Default runner GPU allocation                                                                        |
-| `DEFAULT_RUNNER_GPU_TYPE`                  | string  | `none`                                               | Default runner GPU type                                                                              |
-| `DEFAULT_RUNNER_CAPACITY`                  | number  | `100`                                                | Default runner capacity                                                                              |
-| `DEFAULT_RUNNER_REGION`                    | string  | `us`                                                 | Default runner region                                                                                |
-| `DEFAULT_RUNNER_CLASS`                     | string  | `small`                                              | Default runner class                                                                                 |
+| `DEFAULT_RUNNER_API_VERSION`               | string  | `0`                                                  | Default runner API version                                                                           |
 | `DEFAULT_ORG_QUOTA_TOTAL_CPU_QUOTA`        | number  | `10000`                                              | Default organization total CPU quota                                                                 |
 | `DEFAULT_ORG_QUOTA_TOTAL_MEMORY_QUOTA`     | number  | `10000`                                              | Default organization total memory quota                                                              |
 | `DEFAULT_ORG_QUOTA_TOTAL_DISK_QUOTA`       | number  | `100000`                                             | Default organization total disk quota                                                                |
@@ -182,8 +178,12 @@ Below is a full list of environment variables with their default values:
 | `DEFAULT_ORG_QUOTA_VOLUME_QUOTA`           | number  | `10000`                                              | Default organization volume quota                                                                    |
 | `SSH_GATEWAY_API_KEY`                      | string  | `ssh_secret_api_token`                               | SSH gateway API key                                                                                  |
 | `SSH_GATEWAY_COMMAND`                      | string  | `ssh -p 2222 {{TOKEN}}@localhost`                    | SSH gateway command template                                                                         |
+| `SSH_GATEWAY_PUBLIC_KEY`                   | string  | (Base64-encoded OpenSSH public key)                  | SSH gateway public key for authentication                                                            |
+| `SSH_GATEWAY_URL`                          | string  | `localhost:2222`                                     | SSH gateway URL                                                                                      |
 | `RUNNER_DECLARATIVE_BUILD_SCORE_THRESHOLD` | number  | `10`                                                 | Runner declarative build score threshold                                                             |
 | `RUNNER_AVAILABILITY_SCORE_THRESHOLD`      | number  | `10`                                                 | Runner availability score threshold                                                                  |
+| `RUNNER_HEALTH_TIMEOUT_SECONDS`            | number  | `3`                                                  | Runner health-check timeout in seconds                                                               |
+| `RUNNER_START_SCORE_THRESHOLD`             | number  | `3`                                                  | Runner start score threshold                                                                         |
 | `RUN_MIGRATIONS`                           | boolean | `true`                                               | Enable database migrations on startup                                                                |
 | `ADMIN_API_KEY`                            | string  | (empty)                                              | Admin API key, auto-generated if empty, used only upon initial setup, not recommended for production |
 | `ADMIN_TOTAL_CPU_QUOTA`                    | number  | `0`                                                  | Admin total CPU quota, used only upon initial setup                                                  |
@@ -196,23 +196,49 @@ Below is a full list of environment variables with their default values:
 | `ADMIN_MAX_SNAPSHOT_SIZE`                  | number  | `100`                                                | Admin max snapshot size, used only upon initial setup                                                |
 | `ADMIN_VOLUME_QUOTA`                       | number  | `0`                                                  | Admin volume quota, used only upon initial setup                                                     |
 | `SKIP_USER_EMAIL_VERIFICATION`             | boolean | `true`                                               | Skip user email verification process                                                                 |
+| `RATE_LIMIT_ANONYMOUS_TTL`                 | number  | (empty)                                              | Anonymous rate limit time-to-live (seconds, empty - rate limit is disabled)                          |
+| `RATE_LIMIT_ANONYMOUS_LIMIT`               | number  | (empty)                                              | Anonymous rate limit (requests per TTL, empty - rate limit is disabled)                              |
+| `RATE_LIMIT_AUTHENTICATED_TTL`             | number  | (empty)                                              | Authenticated rate limit time-to-live (seconds, empty - rate limit is disabled)                      |
+| `RATE_LIMIT_AUTHENTICATED_LIMIT`           | number  | (empty)                                              | Authenticated rate limit (requests per TTL, empty - rate limit is disabled)                          |
+| `RATE_LIMIT_SANDBOX_CREATE_TTL`            | number  | (empty)                                              | Sandbox create rate limit time-to-live (seconds, empty - rate limit is disabled)                     |
+| `RATE_LIMIT_SANDBOX_CREATE_LIMIT`          | number  | (empty)                                              | Sandbox create rate limit (requests per TTL, empty - rate limit is disabled)                         |
+| `RATE_LIMIT_SANDBOX_LIFECYCLE_TTL`         | number  | (empty)                                              | Sandbox lifecycle rate limit time-to-live (seconds, empty - rate limit is disabled)                  |
+| `RATE_LIMIT_SANDBOX_LIFECYCLE_LIMIT`       | number  | (empty)                                              | Sandbox lifecycle rate limit (requests per TTL, empty - rate limit is disabled)                      |
+| `RATE_LIMIT_FAILED_AUTH_TTL`               | number  | (empty)                                              | Failed authentication rate limit time-to-live (seconds, empty - rate limit is disabled)              |
+| `RATE_LIMIT_FAILED_AUTH_LIMIT`             | number  | (empty)                                              | Failed authentication rate limit (requests per TTL, empty - rate limit is disabled)                  |
+| `DEFAULT_REGION_ID`                        | string  | `us`                                                 | Default region ID                                                                                    |
+| `DEFAULT_REGION_NAME`                      | string  | `us`                                                 | Default region name                                                                                  |
+| `DEFAULT_REGION_ENFORCE_QUOTAS`            | boolean | `false`                                              | Enable region-based resource limits for default region                                               |
 
 ### Runner
 
-| Variable                   | Type    | Default Value                     | Description                           |
-| -------------------------- | ------- | --------------------------------- | ------------------------------------- |
-| `VERSION`                  | string  | `0.0.1`                           | Runner service version                |
-| `ENVIRONMENT`              | string  | `development`                     | Application environment               |
-| `API_PORT`                 | number  | `3003`                            | Runner API service port               |
-| `API_TOKEN`                | string  | `secret_api_token`                | Runner API authentication token       |
-| `LOG_FILE_PATH`            | string  | `/home/daytona/runner/runner.log` | Path to runner log file               |
-| `RESOURCE_LIMITS_DISABLED` | boolean | `true`                            | Disable resource limits for sandboxes |
-| `AWS_ENDPOINT_URL`         | string  | `http://minio:9000`               | AWS S3-compatible storage endpoint    |
-| `AWS_REGION`               | string  | `us-east-1`                       | AWS region                            |
-| `AWS_ACCESS_KEY_ID`        | string  | `minioadmin`                      | AWS access key ID                     |
-| `AWS_SECRET_ACCESS_KEY`    | string  | `minioadmin`                      | AWS secret access key                 |
-| `AWS_DEFAULT_BUCKET`       | string  | `daytona`                         | AWS default bucket name               |
-| `SERVER_URL`               | string  | `http://api:3000/api`             | Daytona API server URL                |
+| Variable                                | Type    | Default Value                     | Description                                                    |
+| --------------------------------------- | ------- | --------------------------------- | -------------------------------------------------------------- |
+| `DAYTONA_API_URL`                       | string  | `http://api:3000/api`             | Daytona API URL                                                |
+| `DAYTONA_RUNNER_TOKEN`                  | string  | `secret_api_token`                | Runner API authentication token                                |
+| `VERSION`                               | string  | `0.0.1`                           | Runner service version                                         |
+| `ENVIRONMENT`                           | string  | `development`                     | Application environment                                        |
+| `API_PORT`                              | number  | `3003`                            | Runner API service port                                        |
+| `LOG_FILE_PATH`                         | string  | `/home/daytona/runner/runner.log` | Path to runner log file                                        |
+| `RESOURCE_LIMITS_DISABLED`              | boolean | `true`                            | Disable resource limits for sandboxes                          |
+| `AWS_ENDPOINT_URL`                      | string  | `http://minio:9000`               | AWS S3-compatible storage endpoint                             |
+| `AWS_REGION`                            | string  | `us-east-1`                       | AWS region                                                     |
+| `AWS_ACCESS_KEY_ID`                     | string  | `minioadmin`                      | AWS access key ID                                              |
+| `AWS_SECRET_ACCESS_KEY`                 | string  | `minioadmin`                      | AWS secret access key                                          |
+| `AWS_DEFAULT_BUCKET`                    | string  | `daytona`                         | AWS default bucket name                                        |
+| `DAEMON_START_TIMEOUT_SEC`              | number  | `60`                              | Daemon start timeout in seconds                                |
+| `SANDBOX_START_TIMEOUT_SEC`             | number  | `30`                              | Sandbox start timeout in seconds                               |
+| `USE_SNAPSHOT_ENTRYPOINT`               | boolean | `false`                           | Use snapshot entrypoint for sandbox                            |
+| `RUNNER_DOMAIN`                         | string  | (none)                            | Runner domain name (hostname for runner URLs)                  |
+| `VOLUME_CLEANUP_INTERVAL_SEC`           | number  | `30`                              | Volume cleanup interval in seconds (minimum: 10s)              |
+| `COLLECTOR_WINDOW_SIZE`                 | number  | `60`                              | Metrics collector window size (number of samples)              |
+| `CPU_USAGE_SNAPSHOT_INTERVAL`           | string  | `5s`                              | CPU usage snapshot interval duration (minimum: 1s)             |
+| `ALLOCATED_RESOURCES_SNAPSHOT_INTERVAL` | string  | `5s`                              | Allocated resources snapshot interval (minimum: 1s)            |
+| `POLL_TIMEOUT`                          | string  | `30s`                             | Poller service timeout duration (e.g., `30s`, `1m`)            |
+| `POLL_LIMIT`                            | number  | `10`                              | Maximum poll attempts per request (min: 1, max: 100)           |
+| `HEALTHCHECK_INTERVAL`                  | string  | `30s`                             | Interval between health checks (minimum: 10s)                  |
+| `HEALTHCHECK_TIMEOUT`                   | string  | `10s`                             | Health check timeout duration                                  |
+| `API_VERSION`                           | number  | `2`                               | Runner API version (default: 2)                                |
 
 ### SSH Gateway
 
@@ -226,21 +252,23 @@ Below is a full list of environment variables with their default values:
 
 ### Proxy
 
-| Variable             | Type    | Default Value               | Description                    |
-| -------------------- | ------- | --------------------------- | ------------------------------ |
-| `DAYTONA_API_URL`    | string  | `http://api:3000/api`       | Daytona API URL                |
-| `PROXY_PORT`         | number  | `4000`                      | Proxy service port             |
-| `PROXY_DOMAIN`       | string  | `proxy.localhost:4000`      | Proxy domain                   |
-| `PROXY_API_KEY`      | string  | `super_secret_key`          | Proxy API authentication key   |
-| `PROXY_PROTOCOL`     | string  | `http`                      | Proxy protocol (http or https) |
-| `OIDC_CLIENT_ID`     | string  | `daytona`                   | OIDC client identifier         |
-| `OIDC_CLIENT_SECRET` | string  | (empty)                     | OIDC client secret             |
-| `OIDC_DOMAIN`        | string  | `http://dex:5556/dex`       | OIDC domain                    |
-| `OIDC_PUBLIC_DOMAIN` | string  | `http://localhost:5556/dex` | OIDC public domain             |
-| `OIDC_AUDIENCE`      | string  | `daytona`                   | OIDC audience identifier       |
-| `REDIS_HOST`         | string  | `redis`                     | Redis server hostname          |
-| `REDIS_PORT`         | number  | `6379`                      | Redis server port              |
-| `TOOLBOX_ONLY_MODE`  | boolean | `false`                     | Allow only toolbox requests    |
+| Variable                  | Type    | Default Value               | Description                     |
+| ------------------------- | ------- | --------------------------- | ------------------------------- |
+| `DAYTONA_API_URL`         | string  | `http://api:3000/api`       | Daytona API URL                 |
+| `PROXY_PORT`              | number  | `4000`                      | Proxy service port              |
+| `PROXY_API_KEY`           | string  | `super_secret_key`          | Proxy API authentication key    |
+| `PROXY_PROTOCOL`          | string  | `http`                      | Proxy protocol (http or https)  |
+| `COOKIE_DOMAIN`           | string  | `$PROXY_DOMAIN`             | Cookie domain for proxy cookies |
+| `OIDC_CLIENT_ID`          | string  | `daytona`                   | OIDC client identifier          |
+| `OIDC_CLIENT_SECRET`      | string  | (empty)                     | OIDC client secret              |
+| `OIDC_DOMAIN`             | string  | `http://dex:5556/dex`       | OIDC domain                     |
+| `OIDC_PUBLIC_DOMAIN`      | string  | `http://localhost:5556/dex` | OIDC public domain              |
+| `OIDC_AUDIENCE`           | string  | `daytona`                   | OIDC audience identifier        |
+| `REDIS_HOST`              | string  | `redis`                     | Redis server hostname           |
+| `REDIS_PORT`              | number  | `6379`                      | Redis server port               |
+| `TOOLBOX_ONLY_MODE`       | boolean | `false`                     | Allow only toolbox requests     |
+| `PREVIEW_WARNING_ENABLED` | boolean | `false`                     | Enable browser preview warning  |
+| `SHUTDOWN_TIMEOUT_SEC`    | number  | `3600`                      | Shutdown timeout in seconds     |
 
 ## [OPTIONAL] Configure Auth0 for Authentication
 

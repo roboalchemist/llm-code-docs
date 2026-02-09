@@ -1,5 +1,9 @@
 # Source: https://docs.crewai.com/en/observability/patronus-evaluation.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.crewai.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Patronus AI Evaluation
 
 > Monitor and evaluate CrewAI agent performance using Patronus AI's comprehensive evaluation platform for LLM outputs and agent behaviors.

@@ -68,12 +68,18 @@ parse this information.
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/docments.py#L27"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/docments.py#L26"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### docstring
 
->  docstring (sym)
+``` python
+
+def docstring(
+    sym
+):
+
+```
 
 *Get docstring for `sym` for functions ad classes*
 
@@ -84,12 +90,18 @@ test_eq(docstring(add), "The sum of two numbers.")
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/docments.py#L35"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/docments.py#L34"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### parse_docstring
 
->  parse_docstring (sym)
+``` python
+
+def parse_docstring(
+    sym
+):
+
+```
 
 *Parse a numpy-style docstring in `sym`*
 
@@ -100,36 +112,54 @@ target="_blank" style="float:right; font-size:smaller">source</a>
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/docments.py#L40"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/docments.py#L39"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### isdataclass
 
->  isdataclass (s)
+``` python
+
+def isdataclass(
+    s
+):
+
+```
 
 *Check if `s` is a dataclass but not a dataclass’ instance*
 
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/docments.py#L45"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/docments.py#L44"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### get_dataclass_source
 
->  get_dataclass_source (s)
+``` python
+
+def get_dataclass_source(
+    s
+):
+
+```
 
 *Get source code for dataclass `s`*
 
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/docments.py#L50"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/docments.py#L49"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### get_source
 
->  get_source (s)
+``` python
+
+def get_source(
+    s
+):
+
+```
 
 *Get source code for string, function object or dataclass `s`*
 
@@ -149,12 +179,18 @@ _get_comment(2, 'a', {2: ' the 1st number to add'}, parms)
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/docments.py#L132"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/docments.py#L133"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### get_name
 
->  get_name (obj)
+``` python
+
+def get_name(
+    obj
+):
+
+```
 
 *Get the name of `obj`*
 
@@ -166,12 +202,18 @@ test_eq(get_name(L.map), 'map')
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/docments.py#L141"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/docments.py#L146"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### qual_name
 
->  qual_name (obj)
+``` python
+
+def qual_name(
+    obj
+):
+
+```
 
 *Get the qualified name of `obj`*
 
@@ -181,18 +223,127 @@ assert qual_name(docscrape) == 'fastcore.docscrape'
 
 ## Docments
 
+Let’s manually go through each step of `_docments` to see what it does:
+
+``` python
+def _b(
+    z:str='b', # Last
+):
+    return b, a
+
+@delegates(_b)
+def _c(
+    b:str, # Ignore
+    a:int=2
+): return b, a # Third
+
+@delegates(_c)
+def _d(
+    c:int, # First
+    b:str, # Second
+    **kwargs
+)->int: # Return an int
+    return c, _c(b, **kwargs)
+```
+
+``` python
+s = _d
+nps = parse_docstring(s)
+if isclass(s) and not is_dataclass(s): s = s.__init__
+comments = {o.start[0]:_clean_comment(o.string) for o in _tokens(s) if o.type==COMMENT}
+comments
+```
+
+    {3: ' First', 4: ' Second', 6: ' Return an int'}
+
+``` python
+parms = _param_locs(s, returns=True, args_kwargs=True) or {}
+parms
+```
+
+    {3: 'c', 4: 'b', 5: 'kwargs', 6: 'return'}
+
+``` python
+docs = {arg:_get_comment(line, arg, comments, parms) for line,arg in parms.items()}
+docs
+```
+
+    {'c': 'First', 'b': 'Second', 'kwargs': None, 'return': 'Return an int'}
+
+``` python
+sig = signature(s, eval_str=True)
+res = {name:_get_full(p, docs) for name,p in sig.parameters.items()}
+res
+```
+
+    {'c': {'docment': 'First', 'anno': int, 'default': inspect._empty},
+     'b': {'docment': 'Second', 'anno': str, 'default': inspect._empty},
+     'a': {'docment': None, 'anno': int, 'default': 2},
+     'z': {'docment': None, 'anno': str, 'default': 'b'}}
+
+``` python
+res['return'] = AttrDict(docment=docs.get('return'), anno=sig.return_annotation, default=empty)
+res = _merge_docs(res, nps)
+res
+```
+
+    {'c': {'docment': 'First', 'anno': int, 'default': inspect._empty},
+     'b': {'docment': 'Second', 'anno': str, 'default': inspect._empty},
+     'a': {'docment': None, 'anno': int, 'default': 2},
+     'z': {'docment': None, 'anno': str, 'default': 'b'},
+     'return': {'docment': 'Return an int',
+      'anno': int,
+      'default': inspect._empty}}
+
+``` python
+_d.__delwrap__
+```
+
+    <function __main__._c(b: str, a: int = 2, *, z: str = 'b')>
+
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/docments.py#L168"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/docments.py#L153"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### docments
 
->  docments (elt, full=False, args_kwargs=False, returns=True,
->                eval_str=False)
+``` python
 
-*Generates a `docment`*
+def docments(
+    s, full:bool=False, eval_str:bool=False, returns:bool=True, args_kwargs:bool=False
+):
+
+```
+
+*Get docments for `s`*
+
+``` python
+docments(_d)
+```
+
+``` python
+{'a': None, 'b': 'Second', 'c': 'First', 'return': 'Return an int', 'z': 'Last'}
+```
+
+``` python
+docments(_d, full=True)
+```
+
+``` python
+{ 'a': {'anno': <class 'int'>, 'default': 2, 'docment': None},
+  'b': { 'anno': <class 'str'>,
+         'default': <class 'inspect._empty'>,
+         'docment': 'Second'},
+  'c': { 'anno': <class 'int'>,
+         'default': <class 'inspect._empty'>,
+         'docment': 'First'},
+  'return': { 'anno': <class 'int'>,
+              'default': <class 'inspect._empty'>,
+              'docment': 'Return an int'},
+  'z': {'anno': <class 'str'>, 'default': 'b', 'docment': 'Last'}}
+```
 
 The returned `dict` has parameter names as keys, docments as values. The
 return value comment appears in the `return`, unless `returns=False`.
@@ -205,11 +356,13 @@ def add(
 )->int:    # the result of adding `a` to `b`
     "The sum of two numbers."
     return a+b
+```
 
+``` python
 docments(add)
 ```
 
-``` json
+``` python
 { 'a': 'the 1st number to add',
   'b': 'the 2nd number to add',
   'return': 'the result of adding `a` to `b`'}
@@ -218,22 +371,25 @@ docments(add)
 `args_kwargs=True` adds args and kwargs docs too:
 
 ``` python
-def add(*args, # some args
+def add(
     a:int, # the 1st number to add
+    *args, # some args
     b=0,   # the 2nd number to add
     **kwargs, # Passed to the `example` function
 )->int:    # the result of adding `a` to `b`
     "The sum of two numbers."
     return a+b
+```
 
+``` python
 docments(add, args_kwargs=True)
 ```
 
-``` json
+``` python
 { 'a': 'the 1st number to add',
   'args': 'some args',
   'b': 'the 2nd number to add',
-  'kwargs': None,
+  'kwargs': 'Passed to the `example` function',
   'return': 'the result of adding `a` to `b`'}
 ```
 
@@ -246,7 +402,7 @@ default value, if the annotation is empty and a default is supplied.
 docments(add, full=True)
 ```
 
-``` json
+``` python
 { 'a': { 'anno': <class 'int'>,
          'default': <class 'inspect._empty'>,
          'docment': 'the 1st number to add'},
@@ -270,7 +426,17 @@ To evaluate stringified annotations (from python 3.10), use `eval_str`:
 docments(add, full=True, eval_str=True)['a']
 ```
 
-``` json
+``` python
+{ 'anno': <class 'int'>,
+  'default': <class 'inspect._empty'>,
+  'docment': 'the 1st number to add'}
+```
+
+``` python
+docments(add, full=True)['a']
+```
+
+``` python
 { 'anno': <class 'int'>,
   'default': <class 'inspect._empty'>,
   'docment': 'the 1st number to add'}
@@ -296,7 +462,7 @@ def add(
 docments(add)
 ```
 
-``` json
+``` python
 { 'a': 'The first operand',
   'b': 'This is the second of the operands to the *addition* operator.\n'
        'Note that passing a negative value here is the equivalent of the '
@@ -342,15 +508,15 @@ class Adder:
 docments(Adder)
 ```
 
-``` json
-{'a': 'First operand', 'b': '2nd operand', 'return': None}
+``` python
+{'a': 'First operand', 'b': '2nd operand', 'return': None, 'self': None}
 ```
 
 ``` python
 docments(Adder.calculate)
 ```
 
-``` json
+``` python
 {'return': 'Integral result of addition operator', 'self': None}
 ```
 
@@ -380,7 +546,7 @@ print(add_np.__doc__)
 docments(add_np)
 ```
 
-``` json
+``` python
 { 'a': 'the 1st number to add',
   'b': 'the 2nd number to add (default: 0)',
   'return': 'the result of adding `a` to `b`'}
@@ -405,11 +571,11 @@ b : int
 docments(add_mixed, full=True)
 ```
 
-``` json
+``` python
 { 'a': { 'anno': <class 'int'>,
          'default': <class 'inspect._empty'>,
          'docment': 'the first number to add'},
-  'b': { 'anno': 'int',
+  'b': { 'anno': <class 'inspect._empty'>,
          'default': <class 'inspect._empty'>,
          'docment': 'the 2nd number to add (default: 0)'},
   'return': { 'anno': <class 'int'>,
@@ -431,7 +597,7 @@ from fastcore.meta import delegates
 ```
 
 ``` python
-def _a(a:int=2): return a # First
+def _a(a:str=None): return a # First
 
 @delegates(_a)
 def _b(b:str, # Second
@@ -442,7 +608,7 @@ def _b(b:str, # Second
 docments(_b)
 ```
 
-``` json
+``` python
 {'a': 'First', 'b': 'Second', 'return': None}
 ```
 
@@ -450,9 +616,9 @@ docments(_b)
 docments(_b, full=True)
 ```
 
-``` json
-{ 'a': {'anno': <class 'int'>, 'default': 2, 'docment': 'First'},
-  'b': { 'anno': 'str',
+``` python
+{ 'a': {'anno': <class 'str'>, 'default': None, 'docment': 'First'},
+  'b': { 'anno': <class 'str'>,
          'default': <class 'inspect._empty'>,
          'docment': 'Second'},
   'return': { 'anno': <class 'inspect._empty'>,
@@ -460,39 +626,78 @@ docments(_b, full=True)
               'docment': None}}
 ```
 
-------------------------------------------------------------------------
-
-<a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/docments.py#L185"
-target="_blank" style="float:right; font-size:smaller">source</a>
-
-### sig2str
-
->  sig2str (func)
-
-*Generate function signature with docments as comments*
+Builtins just return an empty dict:
 
 ``` python
-print(sig2str(_d))
+docments(str)
 ```
 
-    def _d(
-        b:str # Second,
-        a:int=2 # Third,
-        c:int # First
-    )->int: # Return an int
+``` python
+{'args': None, 'kwargs': None, 'return': None, 'self': None}
+```
 
 ## Extract docstrings
 
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/docments.py#L246"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/docments.py#L174"
+target="_blank" style="float:right; font-size:smaller">source</a>
+
+### sig_source
+
+``` python
+
+def sig_source(
+    obj
+):
+
+```
+
+*Full source of signature line(s) for a function or class.*
+
+``` python
+print(sig_source(flexiclass))
+```
+
+    def flexiclass(
+            cls # The class to convert
+        ) -> dataclass:
+
+``` python
+def simple(x: dict[str, int]): return x
+print(sig_source(simple))
+```
+
+    def simple(x: dict[str, int]): return x
+
+``` python
+def multi(a, b=1,
+          c=2,
+          d=3):
+    return a
+print(sig_source(multi))
+```
+
+    def multi(a, b=1,
+              c=2,
+              d=3):
+
+------------------------------------------------------------------------
+
+<a
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/docments.py#L221"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### extract_docstrings
 
->  extract_docstrings (code)
+``` python
+
+def extract_docstrings(
+    code
+):
+
+```
 
 *Create a dict from function/class/method names to tuples of docstrings
 and param lists*
@@ -542,12 +747,18 @@ function or method.
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/docments.py#L270"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/docments.py#L254"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### DocmentTbl
 
->  DocmentTbl (obj, verbose=True, returns=True)
+``` python
+
+def DocmentTbl(
+    obj, verbose:bool=True, returns:bool=True
+):
+
+```
 
 *Compute the docment table string*
 
@@ -613,10 +824,14 @@ rendered:
 
 ``` python
 def _f(a,
-        b, #param b
-        c  #param c
-       ): ...
+        b:int, #param b
+        c:str='foo'  #param c
+       )->str: # Result of doing it
+    "Do a thing"
+    ...
+```
 
+``` python
 _dm2 = DocmentTbl(_f)
 _dm2
 ```
@@ -625,6 +840,8 @@ _dm2
 <thead>
 <tr>
 <th></th>
+<th><strong>Type</strong></th>
+<th><strong>Default</strong></th>
 <th><strong>Details</strong></th>
 </tr>
 </thead>
@@ -632,14 +849,26 @@ _dm2
 <tr>
 <td>a</td>
 <td></td>
+<td></td>
+<td></td>
 </tr>
 <tr>
 <td>b</td>
+<td>int</td>
+<td></td>
 <td>param b</td>
 </tr>
 <tr>
 <td>c</td>
+<td>str</td>
+<td>foo</td>
 <td>param c</td>
+</tr>
+<tr>
+<td><strong>Returns</strong></td>
+<td><strong>str</strong></td>
+<td></td>
+<td><strong>Result of doing it</strong></td>
 </tr>
 </tbody>
 </table>
@@ -728,6 +957,136 @@ DocmentTbl(_Test.foo)
 </tbody>
 </table>
 
+------------------------------------------------------------------------
+
+<a
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/docments.py#L311"
+target="_blank" style="float:right; font-size:smaller">source</a>
+
+### DocmentList
+
+``` python
+
+def DocmentList(
+    obj
+):
+
+```
+
+*Initialize self. See help(type(self)) for accurate signature.*
+
+``` python
+DocmentList(_f)
+```
+
+- `a`
+- `b:int`   *param b*
+- `c:str=foo`   *param c*
+- `return:str`   *Result of doing it*
+
+``` python
+print(_fmt_sig('foo', [('a:int', 'first'), ('b:str', None), ('c', 'third')], ')->int:', 80))
+```
+
+    def foo(
+        a:int, # first
+        b:str, c, # third
+    )->int:
+
+------------------------------------------------------------------------
+
+<a
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/docments.py#L347"
+target="_blank" style="float:right; font-size:smaller">source</a>
+
+### DocmentText
+
+``` python
+
+def DocmentText(
+    obj, maxline:int=110, docstring:bool=True
+):
+
+```
+
+*Initialize self. See help(type(self)) for accurate signature.*
+
+``` python
+DocmentText(_f).params
+```
+
+    [('a', None), ('b:int', 'param b'), ("c:str='foo'", 'param c')]
+
+``` python
+DocmentText(_f)
+```
+
+``` python
+def _f(
+    a, b:int, # param b
+    c:str='foo', # param c
+)->str: # Result of doing it
+    "Do a thing"
+```
+
+``` python
+def _g(
+    a, b:int, cccccccccccccccccccc:int, ccccccccdccccccccccc:int, cccccccccccecccccccc:int, cccccccfcccccccccc:int, ccccccccccccgccccc:int, # hi
+    c:str='foo'
+)->str:
+    "Do a thing"
+
+DocmentText(_g, maxline=80, docstring=False)
+```
+
+``` python
+def _g(
+    a, b:int, cccccccccccccccccccc:int, ccccccccdccccccccccc:int,
+    cccccccccccecccccccc:int, cccccccfcccccccccc:int, ccccccccccccgccccc:int, # hi
+    c:str='foo'
+)->str:
+```
+
+``` python
+DocmentText(partial(_g, 1), maxline=80, docstring=False)
+```
+
+``` python
+def _g[partial: 1](
+    b:int, cccccccccccccccccccc:int, ccccccccdccccccccccc:int,
+    cccccccccccecccccccc:int, cccccccfcccccccccc:int, ccccccccccccgccccc:int,
+    c:str='foo'
+)->str:
+```
+
+------------------------------------------------------------------------
+
+<a
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/docments.py#L376"
+target="_blank" style="float:right; font-size:smaller">source</a>
+
+### sig2str
+
+``` python
+
+def sig2str(
+    func, maxline:int=110
+):
+
+```
+
+*Generate function signature with docments as comments*
+
+``` python
+print(sig2str(_d))
+```
+
+    def _d(
+        c:int, # First
+        b:str, # Second
+        a:int=2, z:str='b', # Last
+    )->int: # Return an int
+
 ## Documentation For An Object
 
 Render the signature as well as the
@@ -737,30 +1096,42 @@ complete documentation for an object.
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/docments.py#L349"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/docments.py#L390"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### ShowDocRenderer
 
->  ShowDocRenderer (sym, name:str|None=None, title_level:int=3)
+``` python
+
+def ShowDocRenderer(
+    sym, name:str | None=None, title_level:int=3, maxline:int=110
+):
+
+```
 
 *Show documentation for `sym`*
 
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/docments.py#L398"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/docments.py#L425"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### MarkdownRenderer
 
->  MarkdownRenderer (sym, name:str|None=None, title_level:int=3)
+``` python
+
+def MarkdownRenderer(
+    sym, name:str | None=None, title_level:int=3, maxline:int=110
+):
+
+```
 
 *Markdown renderer for `show_doc`*
 
 ``` python
 def _f(a,
-        b:int, #param b
+        b:callable=print, #param b
         c:str='foo'  #param c
        )->str: # Result of doing it
     "Do a thing"
@@ -769,43 +1140,52 @@ def _f(a,
 MarkdownRenderer(_f)
 ```
 
->  _f (a, b:int, c:str='foo')
+``` python
+
+def _f(
+    a, b:callable=print, # param b
+    c:str='foo', # param c
+)->str: # Result of doing it
+
+```
 
 *Do a thing*
 
-<table>
-<thead>
-<tr>
-<th></th>
-<th><strong>Type</strong></th>
-<th><strong>Default</strong></th>
-<th><strong>Details</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>a</td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>b</td>
-<td>int</td>
-<td></td>
-<td>param b</td>
-</tr>
-<tr>
-<td>c</td>
-<td>str</td>
-<td>foo</td>
-<td>param c</td>
-</tr>
-<tr>
-<td><strong>Returns</strong></td>
-<td><strong>str</strong></td>
-<td></td>
-<td><strong>Result of doing it</strong></td>
-</tr>
-</tbody>
-</table>
+``` python
+def f(a:int=0 # aa
+): pass
+
+@delegates(f)
+def g(
+    b:int|str, # bb
+    **kwargs
+): return kwargs
+```
+
+``` python
+MarkdownRenderer(g)
+```
+
+``` python
+
+def g(
+    b:int | str, # bb
+    a:int=0, # aa
+):
+
+```
+
+``` python
+MarkdownRenderer(next)
+```
+
+``` python
+
+def next(iterator, default=..., /)
+
+```
+
+*Return the next item from the iterator.*
+
+If default is given and the iterator is exhausted, it is returned
+instead of raising StopIteration.

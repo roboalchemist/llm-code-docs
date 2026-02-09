@@ -1,160 +1,155 @@
 # Source: https://vercel.mintlify-docs-rest-api-reference.com/docs/rest-api/reference/endpoints/rolling-release/update-the-rolling-release-settings-for-the-project.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://vercel.mintlify.app/docs/rest-api/reference/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Update the rolling release settings for the project
 
-> Update (or disable) Rolling Releases for a project. Changing the config never alters a rollout that's already in-flight. It only affects the next production deployment. This also applies to disabling Rolling Releases. If you want to also stop the current rollout, call this endpoint to disable the feature, and then call either the /complete or /abort endpoint. Note: Enabling Rolling Releases automatically enables skew protection on the project with the default value if it wasn't configured already.
+> Update (or disable) Rolling Releases for a project. When disabling with the resolve-on-disable feature flag enabled, any active rolling release document is resolved using the disableRolloutAction parameter: "abort" to roll back (default), or "complete" to promote the canary to production. When enabling or updating config, changes only affect the next production deployment and do not alter a rollout that's already in-flight. Note: Enabling Rolling Releases automatically enables skew protection on the project with the default value if it wasn't configured already.
+
+
 
 ## OpenAPI
 
 ````yaml https://spec.speakeasy.com/vercel/vercel-docs/vercel-oas-with-code-samples patch /v1/projects/{idOrName}/rolling-release/config
+openapi: 3.0.3
+info:
+  title: Vercel REST API & SDK
+  description: >-
+    The [`@vercel/sdk`](https://www.npmjs.com/package/@vercel/sdk) is a
+    type-safe Typescript SDK that allows you to access the resources and methods
+    of the Vercel REST API. Learn how to [install
+    it](https://vercel.com/docs/rest-api/sdk#installing-vercel-sdk) and
+    [authenticate](https://vercel.com/docs/rest-api/sdk#authentication) with a
+    Vercel access token.
+  contact:
+    email: support@vercel.com
+    name: Vercel Support
+    url: https://vercel.com/support
+  version: 0.0.1
+servers:
+  - url: https://api.vercel.com
+    description: Production API
+security: []
 paths:
-  path: /v1/projects/{idOrName}/rolling-release/config
-  method: patch
-  servers:
-    - url: https://api.vercel.com
-      description: Production API
-  request:
-    security:
-      - title: bearerToken
-        parameters:
-          query: {}
-          header:
-            Authorization:
-              type: http
-              scheme: bearer
-              description: Default authentication mechanism
-          cookie: {}
-    parameters:
-      path:
-        idOrName:
+  /v1/projects/{idOrName}/rolling-release/config:
+    patch:
+      tags:
+        - rolling-release
+      summary: Update the rolling release settings for the project
+      description: >-
+        Update (or disable) Rolling Releases for a project. When disabling with
+        the resolve-on-disable feature flag enabled, any active rolling release
+        document is resolved using the disableRolloutAction parameter: "abort"
+        to roll back (default), or "complete" to promote the canary to
+        production. When enabling or updating config, changes only affect the
+        next production deployment and do not alter a rollout that's already
+        in-flight. Note: Enabling Rolling Releases automatically enables skew
+        protection on the project with the default value if it wasn't configured
+        already.
+      operationId: updateRollingReleaseConfig
+      parameters:
+        - name: idOrName
+          description: Project ID or project name (URL-encoded)
+          in: path
+          required: true
           schema:
-            - type: string
-              required: true
-              description: Project ID or project name (URL-encoded)
-      query:
-        teamId:
+            description: Project ID or project name (URL-encoded)
+            type: string
+        - description: The Team identifier to perform the request on behalf of.
+          in: query
+          name: teamId
           schema:
-            - type: string
-              description: The Team identifier to perform the request on behalf of.
-              example: team_1a2b3c4d5e6f7g8h9i0j1k2l
-        slug:
+            type: string
+            example: team_1a2b3c4d5e6f7g8h9i0j1k2l
+        - description: The Team slug to perform the request on behalf of.
+          in: query
+          name: slug
           schema:
-            - type: string
-              description: The Team slug to perform the request on behalf of.
-              example: my-team-url-slug
-      header: {}
-      cookie: {}
-    body: {}
-    codeSamples:
-      - label: updateRollingReleaseConfig
-        lang: typescript
-        source: |-
-          import { Vercel } from "@vercel/sdk";
-
-          const vercel = new Vercel({
-            bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
-          });
-
-          async function run() {
-            const result = await vercel.rollingRelease.updateRollingReleaseConfig({
-              idOrName: "<value>",
-              teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
-              slug: "my-team-url-slug",
-            });
-
-            console.log(result);
-          }
-
-          run();
-  response:
-    '200':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              rollingRelease:
-                allOf:
-                  - nullable: true
-            requiredProperties:
-              - rollingRelease
-          - type: object
-            properties:
-              rollingRelease:
-                allOf:
-                  - nullable: true
-                    properties:
-                      stages:
+            type: string
+            example: my-team-url-slug
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - properties:
+                      rollingRelease:
                         nullable: true
-                        items:
-                          properties:
-                            targetPercentage:
-                              type: number
-                              description: >-
-                                The percentage of traffic to serve to the canary
-                                deployment (0-100)
-                              example: 25
-                            requireApproval:
-                              type: boolean
-                              description: >-
-                                Whether or not this stage requires manual
-                                approval to proceed
-                              example: false
-                            duration:
-                              type: number
-                              description: >-
-                                Duration in minutes for automatic advancement to
-                                the next stage
-                              example: 600
-                            linearShift:
-                              type: boolean
-                              description: >-
-                                Whether to linearly shift traffic over the
-                                duration of this stage
-                              example: false
-                          required:
-                            - targetPercentage
-                          type: object
-                          description: >-
-                            A stage object configured for a rolling release once
-                            a new deployment is triggered the first stage will
-                            be read in the proxy for first time visitors, and if
-                            a RNG < targetPercentage then it will serve the new
-                            deployment. Upon approval the next stage will be
-                            read, etc.
-                        type: array
+                    required:
+                      - rollingRelease
                     type: object
-            requiredProperties:
-              - rollingRelease
-        examples:
-          example:
-            value:
-              rollingRelease: <any>
-        description: ''
-    '400':
-      _mintlify/placeholder:
-        schemaArray:
-          - type: any
-            description: One of the provided values in the request query is invalid.
-        examples: {}
-        description: One of the provided values in the request query is invalid.
-    '401':
-      _mintlify/placeholder:
-        schemaArray:
-          - type: any
-            description: The request is not authorized.
-        examples: {}
-        description: The request is not authorized.
-    '403':
-      _mintlify/placeholder:
-        schemaArray:
-          - type: any
-            description: You do not have permission to access this resource.
-        examples: {}
-        description: You do not have permission to access this resource.
-    '404': {}
-  deprecated: false
-  type: path
+                  - properties:
+                      rollingRelease:
+                        nullable: true
+                        properties:
+                          stages:
+                            nullable: true
+                            items:
+                              properties:
+                                targetPercentage:
+                                  type: number
+                                  description: >-
+                                    The percentage of traffic to serve to the
+                                    canary deployment (0-100)
+                                  example: 25
+                                requireApproval:
+                                  type: boolean
+                                  enum:
+                                    - false
+                                    - true
+                                  description: >-
+                                    Whether or not this stage requires manual
+                                    approval to proceed
+                                  example: false
+                                duration:
+                                  type: number
+                                  description: >-
+                                    Duration in minutes for automatic
+                                    advancement to the next stage
+                                  example: 600
+                                linearShift:
+                                  type: boolean
+                                  enum:
+                                    - false
+                                    - true
+                                  description: >-
+                                    Whether to linearly shift traffic over the
+                                    duration of this stage
+                                  example: false
+                              required:
+                                - targetPercentage
+                              type: object
+                              description: >-
+                                A stage object configured for a rolling release
+                                once a new deployment is triggered the first
+                                stage will be read in the proxy for first time
+                                visitors, and if a RNG < targetPercentage then
+                                it will serve the new deployment. Upon approval
+                                the next stage will be read, etc.
+                            type: array
+                        type: object
+                    required:
+                      - rollingRelease
+                    type: object
+        '400':
+          description: One of the provided values in the request query is invalid.
+        '401':
+          description: The request is not authorized.
+        '403':
+          description: You do not have permission to access this resource.
+        '404':
+          description: ''
+      security:
+        - bearerToken: []
 components:
-  schemas: {}
+  securitySchemes:
+    bearerToken:
+      type: http
+      description: Default authentication mechanism
+      scheme: bearer
 
 ````

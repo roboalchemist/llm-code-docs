@@ -2,10 +2,7 @@
 
 # Update User
 
-```
-PATCH 
-/v2/:organizationId/Users/:userId
-```
+Copy page
 
 This endpoint updates an existing user by applying JSON Patch operations.
 

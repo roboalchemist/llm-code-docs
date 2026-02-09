@@ -1,4 +1,8 @@
-# Source: https://docs.exa.ai/websets/dashboard/websets-example-queries.md
+# Source: https://exa.ai/docs/websets/dashboard/websets-example-queries.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://exa.ai/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Example queries
 
@@ -49,8 +53,3 @@
 1. Research papers, published in a major US journal, focused on cell generation technology
 2. Research papers that disagree with transformer based model methodology for AI training
 3. Research papers written by someone with a phd, focused on astrophysics.
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.exa.ai/llms.txt

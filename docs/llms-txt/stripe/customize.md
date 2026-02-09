@@ -4,6 +4,8 @@
 
 Learn how to customize the content and branding of your invoices.
 
+If your Connect platform uses [customer-configured Accounts](https://docs.stripe.com/api/v2/core/accounts/create.md#v2_create_accounts-configuration-customer), use our [guide](https://docs.stripe.com/connect/use-accounts-as-customers.md) to replace `Customer` and event references in your code with the equivalent Accounts v2 API references.
+
 You can customize the content of an *invoice* (Invoices are statements of amounts owed by a customer. They track the status of payments from draft through paid or otherwise finalized. Subscriptions automatically generate invoices, or you can manually create a one-off invoice) in the following ways:
 
 - Through the API
@@ -13,9 +15,6 @@ You can customize the content of an *invoice* (Invoices are statements of amount
 - Through account [Invoice settings](https://dashboard.stripe.com/settings/billing/invoice)
 
 You can also set a customer preferred language and include public information in your [account details](https://dashboard.stripe.com/settings/account/?support_details=true). Because you know more about your customers and your business than Stripe does, make sure your invoices include all of the required information. Your invoices must be accurate, charge the appropriate tax, and comply with all applicable laws and regulations in your region.
-![Invoice settings](https://b.stripecdn.com/docs-statics-srv/assets/invoice-settings-screenshot.6174ac7fd03e2bbe688cddf0a22d6ee2.png)
-
-Invoice settings
 
 ## Branding 
 
@@ -134,9 +133,6 @@ You can set the page size for your invoice PDF, including finalized invoices, to
 #### Dashboard
 
 To set the page size using the Dashboard, go to the [Invoice Editor](https://dashboard.stripe.com/invoices/create), and find the **Advanced options** section. Then, in the **PDF page size** sub-section, select **A4** or **Letter**.
-![Advanced options on the Invoice Editor](https://b.stripecdn.com/docs-statics-srv/assets/invoice-page-size.3a72380d4dc6061ea9b86ef8e59a97d6.png)
-
-**Advanced options** on the Invoice Editor
 
 #### API
 

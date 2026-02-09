@@ -4,12 +4,6 @@
 
 # Source: https://docs.aporia.com/v1/monitors/custom-metrics.md
 
-# Source: https://docs.aporia.com/ml-monitoring-as-code/custom-metrics.md
-
-# Source: https://docs.aporia.com/monitors-and-alerts/custom-metrics.md
-
-# Source: https://docs.aporia.com/v1/monitors/custom-metrics.md
-
 # Custom Metric
 
 In case the monitoring metrics provided by Aporia are insufficient for your use-case, you can define your own custom metric using our custom metric definition language.

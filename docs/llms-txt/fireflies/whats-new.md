@@ -1,10 +1,36 @@
 # Source: https://docs.fireflies.ai/getting-started/whats-new.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.fireflies.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # What's New
 
 > Latest updates to the Fireflies API
 
 Take a look at our latest updates, features, and improvements for the Fireflies API.
+
+<Update label="2.16.0" description="AskFred - AI Meeting Assistant">
+  ### AskFred - AI Meeting Assistant
+
+  Introducing **AskFred**, an AI-powered assistant that lets you query your meeting transcripts using natural language. Ask questions about single meetings or analyze patterns across multiple meetings with context-aware, conversational responses.
+
+  **Key Capabilities:**
+
+  * Ask questions in plain language and get instant answers
+  * Maintain conversation threads with contextual follow-ups
+  * Query across multiple meetings with flexible filters
+  * Receive AI-generated suggestions for deeper exploration
+  * Multilingual question and response support
+
+  **Get Started:**
+
+  * [Overview](/askfred/overview) - Learn about capabilities
+  * [Quickstart](/askfred/quickstart) - Create your first thread
+  * [Use Cases](/askfred/use-cases) - Common scenarios and examples
+
+  **New API Operations:** [askfred\_threads](/graphql-api/query/askfred-threads), [askfred\_thread](/graphql-api/query/askfred-thread), [createAskFredThread](/graphql-api/mutation/create-askfred-thread), [continueAskFredThread](/graphql-api/mutation/continue-askfred-thread), [deleteAskFredThread](/graphql-api/mutation/delete-askfred-thread)
+</Update>
 
 <Update label="2.15.0" description="Set Meeting Channels">
   ### Set Meeting Channels

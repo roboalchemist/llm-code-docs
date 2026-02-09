@@ -510,10 +510,10 @@ ipv6.parse("2001:db8:85a3::8a2e:370:7334"); // ✅
 Validate IP address ranges specified with [CIDR notation](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing).
 
 ```ts
-const cidrv4 = z.string().cidrv4();
+const cidrv4 = z.cidrv4();
 cidrv4.parse("192.168.0.0/24"); // ✅
 
-const cidrv6 = z.string().cidrv6();
+const cidrv6 = z.cidrv6();
 cidrv6.parse("2001:db8::/32"); // ✅
 ```
 
@@ -1715,6 +1715,37 @@ To extract the internal option schemas:
 
   <br/> */}
 
+## Exclusive unions (XOR)
+
+An exclusive union (XOR) is a union where exactly one option must match. Unlike regular unions that succeed when any option matches, `z.xor()` fails if zero options match OR if multiple options match.
+
+```ts
+const schema = z.xor([z.string(), z.number()]);
+
+schema.parse("hello"); // ✅ passes
+schema.parse(42);      // ✅ passes
+schema.parse(true);    // ❌ fails (zero matches)
+```
+
+This is useful when you want to ensure mutual exclusivity between options:
+
+```ts
+// Validate that exactly ONE of these matches
+const payment = z.xor([
+  z.object({ type: z.literal("card"), cardNumber: z.string() }),
+  z.object({ type: z.literal("bank"), accountNumber: z.string() }),
+]);
+
+payment.parse({ type: "card", cardNumber: "1234" }); // ✅ passes
+```
+
+If the input could match multiple options, `z.xor()` will fail:
+
+```ts
+const overlapping = z.xor([z.string(), z.any()]);
+overlapping.parse("hello"); // ❌ fails (matches both string and any)
+```
+
 ## Discriminated unions
 
 A [discriminated union](https://www.typescriptlang.org/docs/handbook/2/narrowing.html#discriminated-unions) is a special kind of union in which a) all the options are object schemas that b) share a particular key (the "discriminator"). Based on the value of the discriminator key, TypeScript is able to "narrow" the type signature as you'd expect.
@@ -1814,6 +1845,8 @@ type EmployedPerson = z.infer<typeof EmployedPerson>;
 
 Record schemas are used to validate types such as `Record<string, string>`.
 
+### `z.record`
+
 ```ts
 const IdCache = z.record(z.string(), z.string());
 type IdCache = z.infer<typeof IdCache>; // Record<string, string>
@@ -1840,6 +1873,31 @@ const Person = z.record(Keys, z.string());
 // { id: string; name: string; email: string }
 ```
 
+**New** — As of v4.2, Zod properly supports numeric keys inside records in a way that more closely mirrors TypeScript itself. A `number` schema, when used as a record key, will validate that the key is a valid "numeric string". Additional numerical constraints (min, max, step, etc.) will also be validated.
+
+```ts
+const numberKeys = z.record(z.number(), z.string());
+numberKeys.parse({ 
+  1: "one", // ✅
+  2: "two", // ✅
+  "1.5": "one", // ✅
+  "-3": "two", // ✅
+  abc: "one" // ❌
+});
+
+// further validation is also supported
+const intKeys = z.record(z.int().step(1).min(0).max(10), z.string());
+intKeys.parse({ 
+  0: "zero", // ✅
+  1: "one", // ✅
+  2: "two", // ✅
+  12: "twelve", // ❌
+  abc: "one" // ❌
+});
+```
+
+### `z.partialRecord`
+
 <Callout>
   **Zod 4** — In Zod 4, if you pass a `z.enum` as the first argument to `z.record()`, Zod will exhaustively check that all enum values exist in the input as keys. This behavior agrees with TypeScript:
 
@@ -1860,20 +1918,24 @@ const Person = z.partialRecord(Keys, z.string());
 // { id?: string; name?: string; email?: string }
 ```
 
-<Accordions>
-  <Accordion title="A note on numeric keys">
-    Though TypeScript lets you define `Record` types with `number` keys (e.g. `Record<number, unknown>`), numerical keys don't actually exist in JavaScript, which converts all keys to strings.
+### `z.looseRecord`
 
-    ```ts
-    const myObject = { 1: "one" };
+By default, `z.record()` errors on keys that don't match the key schema. Use `z.looseRecord()` to pass through non-matching keys unchanged. This is particularly useful when combined with intersections to model multiple pattern properties:
 
-    Object.keys(myObject); 
-    // => ["1"]
-    ```
+```ts
+const schema = z
+  .object({ name: z.string() })
+  .and(z.looseRecord(z.string().regex(/_phone$/), z.e164()));
 
-    As you can see, JavaScript automatically casts all numeric keys to strings under the hood. As such, using `z.number()` as a key schema inside `z.record()` will always throw an error during parsing, but Zod allows it for the sake of parity with TypeScript's type system.
-  </Accordion>
-</Accordions>
+type schema = z.infer<typeof schema>;
+// => { name: string } & Record<string, string>
+
+schema.parse({ 
+  name: "John",
+  home_phone: "+12345678900",     // validated as phone number
+  work_phone: "+12345678900",     // validated as phone number
+});
+```
 
 ## Maps
 
@@ -2873,12 +2935,30 @@ Under the hood, this works by attaching a "brand" to the schema's inferred type.
 
 ```ts
 const Cat = z.object({ name: z.string() }).brand<"Cat">();
-type Cat = z.infer<typeof Cat>; // { name: string } & z.$brand<"Cat">
+type Cat = z.output<typeof Cat>; // { name: string } & z.$brand<"Cat">
 ```
 
 With this brand, any plain (unbranded) data structures are no longer assignable to the inferred type. You have to parse some data with the schema to get branded data.
 
 > Note that branded types do not affect the runtime result of `.parse`. It is a static-only construct.
+
+By default, only the *output type* is branded.
+
+```ts
+const USD = z.string().brand<"USD">();
+
+type USDOutput = z.output<typeof USD>; // string & z.$brand<"USD">
+type USDInput = z.input<typeof USD>; // string
+```
+
+To customize this, pass a second generic to `.brand()` to specify the direction of the brand.
+
+```ts
+// requires Zod 4.2+
+z.string().brand<"Cat", "out">(); // output is branded (default)
+z.string().brand<"Cat", "in">(); // input is branded
+z.string().brand<"Cat", "inout">(); // both are branded
+```
 
 ## Readonly
 
@@ -3045,6 +3125,48 @@ You can customize the error message and other options by passing a second argume
 ```ts
 z.custom<...>((val) => ..., "custom error message");
 ```
+
+## Apply
+
+Use `.apply()` to incorporate external functions into Zod's method chain:
+
+<Tabs groupId="lib" items={["Zod", "Zod Mini"]}>
+  <Tab value="Zod">
+    ```ts
+    function setCommonNumberChecks<T extends z.ZodNumber>(schema: T) {
+      return schema
+        .min(0)
+        .max(100);
+    }
+
+    const schema = z.number()
+      .apply(setCommonNumberChecks)
+      .nullable();
+
+    schema.parse(0);  // => 0
+    schema.parse(-1); // ❌ throws
+    schema.parse(101); // ❌ throws
+    schema.parse(null); // => null
+    ```
+  </Tab>
+
+  <Tab value="Zod Mini">
+    ```ts
+    function setCommonNumberChecks<T extends z.ZodMiniNumber>(schema: T) {
+      return schema.check(z.minimum(0), z.maximum(100));
+    }
+
+    const schema = z.nullable(
+      z.number().apply(setCommonNumberChecks)
+    );
+
+    z.parse(schema, 0);   // => 0
+    z.parse(schema, -1);  // ❌ throws
+    z.parse(schema, 101); // ❌ throws
+    z.parse(schema, null); // => null
+    ```
+  </Tab>
+</Tabs>
 
 
 # Basic usage
@@ -4093,8 +4215,8 @@ The `iss` object is a [discriminated union](https://www.typescriptlang.org/docs/
 > For a breakdown of all Zod issue codes, see the [`zod/v4/core`](/packages/core#issue-types) documentation.
 
 ```ts
-const result = schema.safeParse(12, {
-  error: (iss) => {
+z.config({
+  customError: (iss) => {
     if (iss.code === "invalid_type") {
       return `invalid type, expected ${iss.expected}`;
     }
@@ -4102,15 +4224,15 @@ const result = schema.safeParse(12, {
       return `minimum is ${iss.minimum}`;
     }
     // ...
-  }
-})
+  },
+});
 ```
 
 ## Internationalization
 
 To support internationalization of error message, Zod provides several built-in **locales**. These are exported from the `zod/v4/core` package.
 
-> **Note** — The regular `zod` library automatically loads the `en` locale automatically. Zod Mini does not load any locale by default; instead all error messages default to `Invalid input`.
+> **Note** — The regular `zod` library loads the `en` locale automatically. Zod Mini does not load any locale by default; instead all error messages default to `Invalid input`.
 
 <Tabs groupId="lib" items={["Zod", "Zod Mini"]}>
   <Tab value="Zod">
@@ -4186,6 +4308,7 @@ The following locales are available:
 * `frCA` — Canadian French
 * `he` — Hebrew
 * `hu` — Hungarian
+* `hy` — Armenian
 * `id` — Indonesian
 * `is` — Icelandic
 * `it` — Italian
@@ -4210,6 +4333,7 @@ The following locales are available:
 * `tr` — Türkçe
 * `uk` — Ukrainian
 * `ur` — Urdu
+* `uz` — Uzbek
 * `vi` — Tiếng Việt
 * `zhCN` — Simplified Chinese
 * `zhTW` — Traditional Chinese
@@ -4625,6 +4749,31 @@ import { Accordion, Accordions } from 'fumadocs-ui/components/accordion';
   **New** — Zod 4 introduces a new feature: native [JSON Schema](https://json-schema.org/) conversion. JSON Schema is a standard for describing the structure of JSON (with JSON). It's widely used in [OpenAPI](https://www.openapis.org/) definitions and defining [structured outputs](https://platform.openai.com/docs/guides/structured-outputs?api-mode=chat) for AI.
 </Callout>
 
+## `z.fromJSONSchema()`
+
+<Callout type="warn">
+  **Experimental** — The `z.fromJSONSchema()` function is experimental and is not considered part of Zod's stable API. It is likely to undergo implementation changes in future releases.
+</Callout>
+
+Zod provides `z.fromJSONSchema()` to convert a JSON Schema into a Zod schema.
+
+```ts
+import * as z from "zod";
+
+const jsonSchema = {
+  type: "object",
+  properties: {
+    name: { type: "string" },
+    age: { type: "number" },
+  },
+  required: ["name", "age"],
+};
+
+const zodSchema = z.fromJSONSchema(jsonSchema);
+```
+
+## `z.toJSONSchema()`
+
 To convert a Zod schema to JSON Schema, use the `z.toJSONSchema()` function.
 
 ```ts
@@ -4650,6 +4799,7 @@ All schema & checks are converted to their closest JSON Schema equivalent. Some 
 z.bigint(); // ❌
 z.int64(); // ❌
 z.symbol(); // ❌
+z.undefined(); // ❌
 z.void(); // ❌
 z.date(); // ❌
 z.map(); // ❌
@@ -4658,158 +4808,6 @@ z.transform(); // ❌
 z.nan(); // ❌
 z.custom(); // ❌
 ```
-
-## String formats
-
-Zod converts the following schema types to the equivalent JSON Schema `format`:
-
-```ts
-// Supported via `format`
-z.email(); // => { type: "string", format: "email" }
-z.iso.datetime(); // => { type: "string", format: "date-time" }
-z.iso.date(); // => { type: "string", format: "date" }
-z.iso.time(); // => { type: "string", format: "time" }
-z.iso.duration(); // => { type: "string", format: "duration" }
-z.ipv4(); // => { type: "string", format: "ipv4" }
-z.ipv6(); // => { type: "string", format: "ipv6" }
-z.uuid(); // => { type: "string", format: "uuid" }
-z.guid(); // => { type: "string", format: "uuid" }
-z.url(); // => { type: "string", format: "uri" }
-```
-
-These schemas are supported via `contentEncoding`:
-
-```ts
-z.base64(); // => { type: "string", contentEncoding: "base64" }
-```
-
-All other string formats are supported via `pattern`:
-
-```ts
-z.base64url();
-z.cuid();
-z.emoji();
-z.nanoid();
-z.cuid2();
-z.ulid();
-z.cidrv4();
-z.cidrv6();
-z.mac();
-```
-
-## Numeric types
-
-Zod converts the following numeric types to JSON Schema:
-
-```ts
-// number
-z.number(); // => { type: "number" }
-z.float32(); // => { type: "number", exclusiveMinimum: ..., exclusiveMaximum: ... }
-z.float64(); // => { type: "number", exclusiveMinimum: ..., exclusiveMaximum: ... }
-
-// integer
-z.int(); // => { type: "integer" }
-z.int32(); // => { type: "integer", exclusiveMinimum: ..., exclusiveMaximum: ... }
-```
-
-## Object schemas
-
-By default, `z.object()` schemas contain `additionalProperties: "false"`. This is an accurate representation of Zod's default behavior, as plain `z.object()` schema strip additional properties.
-
-```ts
-import * as z from "zod";
-
-const schema = z.object({
-  name: z.string(),
-  age: z.number(),
-});
-
-z.toJSONSchema(schema)
-// => {
-//   type: 'object',
-//   properties: { name: { type: 'string' }, age: { type: 'number' } },
-//   required: [ 'name', 'age' ],
-//   additionalProperties: false,
-// }
-```
-
-When converting to JSON Schema in `"input"` mode, `additionalProperties` is not set. See the [`io` docs](#io) for more information.
-
-```ts
-import * as z from "zod";
-
-const schema = z.object({
-  name: z.string(),
-  age: z.number(),
-});
-
-z.toJSONSchema(schema, { io: "input" });
-// => {
-//   type: 'object',
-//   properties: { name: { type: 'string' }, age: { type: 'number' } },
-//   required: [ 'name', 'age' ],
-// }
-```
-
-By contrast:
-
-* `z.looseObject()` will *never* set `additionalProperties: false`
-* `z.strictObject()` will *always* set `additionalProperties: false`
-
-## File schemas
-
-Zod converts `z.file()` to the following OpenAPI-friendly schema:
-
-```ts
-z.file();
-// => { type: "string", format: "binary", contentEncoding: "binary" }
-```
-
-Size and MIME checks are also represented:
-
-```ts
-z.file().min(1).max(1024 * 1024).mime("image/png");
-// => {
-//   type: "string",
-//   format: "binary",
-//   contentEncoding: "binary",
-//   contentMediaType: "image/png",
-//   minLength: 1,
-//   maxLength: 1048576,
-// }
-```
-
-## Nullability
-
-Zod converts both `undefined`/`null` to `{ type: "null" }` in JSON Schema.
-
-```ts
-z.null(); 
-// => { type: "null" }
-
-z.undefined(); 
-// => { type: "null" }
-```
-
-Similarly, `nullable` is represented via a union with `null`::
-
-```ts
-z.nullable(z.string());
-// => { oneOf: [{ type: "string" }, { type: "null" }] }
-```
-
-Optional schemas are represented as-is, though they are decorated with an `optional` annotation.
-
-```ts
-z.optional(z.string());
-// => { type: "string" }
-```
-
-{/* ### Pipes
-
-  Pipes contain and input and and output schema. Zod uses the *output schema* for JSON Schema conversion. */}
-
-## Configuration
 
 A second argument can be used to customize the conversion logic.
 
@@ -4825,10 +4823,18 @@ Below is a quick reference for each supported parameter. Each one is explained i
 interface ToJSONSchemaParams {
   /** The JSON Schema version to target.
    * - `"draft-2020-12"` — Default. JSON Schema Draft 2020-12
-   * - `"draft-7"` — JSON Schema Draft 7
-   * - `"draft-4"` — JSON Schema Draft 4
+   * - `"draft-07"` — JSON Schema Draft 7
+   * - `"draft-04"` — JSON Schema Draft 4
    * - `"openapi-3.0"` — OpenAPI 3.0 Schema Object */
-  target?: "draft-4" | "draft-7" | "draft-2020-12" | "openapi-3.0";
+  target?:
+    | "draft-04"
+    | "draft-4"
+    | "draft-07"
+    | "draft-7"
+    | "draft-2020-12"
+    | "openapi-3.0"
+    | ({} & string)
+    | undefined;
 
   /** A registry used to look up metadata for each schema. 
    * Any schema with an `id` property will be extracted as a $def. */
@@ -4857,14 +4863,29 @@ interface ToJSONSchemaParams {
 }
 ```
 
+### `io`
+
+Some schema types have different input and output types, e.g. `ZodPipe`, `ZodDefault`, and coerced primitives. By default, the result of `z.toJSONSchema` represents the *output type*; use `"io": "input"` to extract the input type instead.
+
+```ts
+const mySchema = z.string().transform(val => val.length).pipe(z.number());
+// ZodPipe
+
+const jsonSchema = z.toJSONSchema(mySchema); 
+// => { type: "number" }
+
+const jsonSchema = z.toJSONSchema(mySchema, { io: "input" }); 
+// => { type: "string" }
+```
+
 ### `target`
 
 To set the target JSON Schema version, use the `target` parameter. By default, Zod will target Draft 2020-12.
 
 ```ts
-z.toJSONSchema(schema, { target: "draft-7" });
+z.toJSONSchema(schema, { target: "draft-07" });
 z.toJSONSchema(schema, { target: "draft-2020-12" });
-z.toJSONSchema(schema, { target: "draft-4" });
+z.toJSONSchema(schema, { target: "draft-04" });
 z.toJSONSchema(schema, { target: "openapi-3.0" });
 ```
 
@@ -4925,6 +4946,7 @@ The following APIs are not representable in JSON Schema. By default, Zod will th
 z.bigint(); // ❌
 z.int64(); // ❌
 z.symbol(); // ❌
+z.undefined(); // ❌
 z.void(); // ❌
 z.date(); // ❌
 z.map(); // ❌
@@ -5032,7 +5054,7 @@ z.toJSONSchema(mySchema, {
 });
 ```
 
-Note that unrepresentable types will throw an `Error` before this functions is called. If you are trying to define custom behavior for an unrepresentable type, you'll need to use set the `unrepresentable: "any"` alongside `override`.
+Note that unrepresentable types will throw an `Error` before this function is called. If you are trying to define custom behavior for an unrepresentable type, you'll need to set the `unrepresentable: "any"` alongside `override`.
 
 ```ts
 // support z.date() as ISO datetime strings
@@ -5048,20 +5070,158 @@ const result = z.toJSONSchema(z.date(), {
 });
 ```
 
-### `io`
+## Conversion
 
-Some schema types have different input and output types, e.g. `ZodPipe`, `ZodDefault`, and coerced primitives. By default, the result of `z.toJSONSchema` represents the *output type*; use `"io": "input"` to extract the input type instead.
+Below are additional details regarding Zod's JSON Schema conversion logic.
+
+### String formats
+
+Zod converts the following schema types to the equivalent JSON Schema `format`:
 
 ```ts
-const mySchema = z.string().transform(val => val.length).pipe(z.number());
-// ZodPipe
+// Supported via `format`
+z.email(); // => { type: "string", format: "email" }
+z.iso.datetime(); // => { type: "string", format: "date-time" }
+z.iso.date(); // => { type: "string", format: "date" }
+z.iso.time(); // => { type: "string", format: "time" }
+z.iso.duration(); // => { type: "string", format: "duration" }
+z.ipv4(); // => { type: "string", format: "ipv4" }
+z.ipv6(); // => { type: "string", format: "ipv6" }
+z.uuid(); // => { type: "string", format: "uuid" }
+z.guid(); // => { type: "string", format: "uuid" }
+z.url(); // => { type: "string", format: "uri" }
+```
 
-const jsonSchema = z.toJSONSchema(mySchema); 
-// => { type: "number" }
+These schemas are supported via `contentEncoding`:
 
-const jsonSchema = z.toJSONSchema(mySchema, { io: "input" }); 
+```ts
+z.base64(); // => { type: "string", contentEncoding: "base64" }
+```
+
+All other string formats are supported via `pattern`:
+
+```ts
+z.base64url();
+z.cuid();
+z.emoji();
+z.nanoid();
+z.cuid2();
+z.ulid();
+z.cidrv4();
+z.cidrv6();
+z.mac();
+```
+
+### Numeric types
+
+Zod converts the following numeric types to JSON Schema:
+
+```ts
+// number
+z.number(); // => { type: "number" }
+z.float32(); // => { type: "number", exclusiveMinimum: ..., exclusiveMaximum: ... }
+z.float64(); // => { type: "number", exclusiveMinimum: ..., exclusiveMaximum: ... }
+
+// integer
+z.int(); // => { type: "integer" }
+z.int32(); // => { type: "integer", exclusiveMinimum: ..., exclusiveMaximum: ... }
+```
+
+### Object schemas
+
+By default, `z.object()` schemas contain `additionalProperties: "false"`. This is an accurate representation of Zod's default behavior, as plain `z.object()` schema strip additional properties.
+
+```ts
+import * as z from "zod";
+
+const schema = z.object({
+  name: z.string(),
+  age: z.number(),
+});
+
+z.toJSONSchema(schema)
+// => {
+//   type: 'object',
+//   properties: { name: { type: 'string' }, age: { type: 'number' } },
+//   required: [ 'name', 'age' ],
+//   additionalProperties: false,
+// }
+```
+
+When converting to JSON Schema in `"input"` mode, `additionalProperties` is not set. See the [`io` docs](#io) for more information.
+
+```ts
+import * as z from "zod";
+
+const schema = z.object({
+  name: z.string(),
+  age: z.number(),
+});
+
+z.toJSONSchema(schema, { io: "input" });
+// => {
+//   type: 'object',
+//   properties: { name: { type: 'string' }, age: { type: 'number' } },
+//   required: [ 'name', 'age' ],
+// }
+```
+
+By contrast:
+
+* `z.looseObject()` will *never* set `additionalProperties: false`
+* `z.strictObject()` will *always* set `additionalProperties: false`
+
+### File schemas
+
+Zod converts `z.file()` to the following OpenAPI-friendly schema:
+
+```ts
+z.file();
+// => { type: "string", format: "binary", contentEncoding: "binary" }
+```
+
+Size and MIME checks are also represented:
+
+```ts
+z.file().min(1).max(1024 * 1024).mime("image/png");
+// => {
+//   type: "string",
+//   format: "binary",
+//   contentEncoding: "binary",
+//   contentMediaType: "image/png",
+//   minLength: 1,
+//   maxLength: 1048576,
+// }
+```
+
+### Nullability
+
+Zod converts `z.null()` to `{ type: "null" }` in JSON Schema.
+
+```ts
+z.null();
+// => { type: "null" }
+```
+
+Note that `z.undefined()` is unrepresentable in JSON Schema (see [below](#unrepresentable)).
+
+Similarly, `nullable` is represented via a union with `null`:
+
+```ts
+z.nullable(z.string());
+// => { oneOf: [{ type: "string" }, { type: "null" }] }
+```
+
+Optional schemas are represented as-is, though they are decorated with an `optional` annotation.
+
+```ts
+z.optional(z.string());
 // => { type: "string" }
 ```
+
+{/* ### Pipes
+
+  Pipes contain an input and an output schema. Zod uses the *output schema* for JSON Schema conversion. */}
 
 ## Registries
 
@@ -5387,7 +5547,7 @@ To constrain the input schema to a specific subclass:
 import * as z4 from "zod/v4/core";
 
 // only accepts object schemas
-function inferSchema<T>(schema: z4.$ZodObject) {
+function inferSchema<T extends z4.$ZodObject>(schema: T) {
   return schema;
 }
 ```
@@ -5555,9 +5715,13 @@ For a more convenient approach, use the `.meta()` method to register a schema in
 
   <Tab value="Zod Mini">
     ```ts
-    // no equivalent
-      
-     
+    const emailSchema = z.email().check(
+      z.meta({ 
+        id: "email_address",
+        title: "Email address",
+        description: "Please enter a valid email address",
+      })
+    );
     ```
   </Tab>
 </Tabs>
@@ -5600,11 +5764,10 @@ The `.describe()` method is a shorthand for registering a schema in `z.globalReg
 
   <Tab value="Zod Mini">
     ```ts
-    // no equivalent
-     
-     
-     
-     
+    const emailSchema = z.email().check(z.describe("An email address"));
+
+    // equivalent to
+    z.email().check(z.meta({ description: "An email address" }));
     ```
   </Tab>
 </Tabs>
@@ -5711,767 +5874,6 @@ This fellowship is a way to bridge that gap. All-in-all, I'm beyond excited to h
 So if you're building an app sometime soon, be smart—validate your `Request` bodies (or, uh, Server Action arguments?) and don't roll your own auth.
 
 
-# Zod Core
-
-import { Callout } from "fumadocs-ui/components/callout"
-import { Accordion, Accordions } from 'fumadocs-ui/components/accordion';
-
-This sub-package exports the core classes and utilities that are consumed by Zod and Zod Mini. It is not intended to be used directly; instead it's designed to be extended by other packages. It implements:
-
-```ts
-import * as z from "zod/v4/core";
-
-// the base class for all Zod schemas
-z.$ZodType;
-
-// subclasses of $ZodType that implement common parsers
-z.$ZodString
-z.$ZodObject
-z.$ZodArray
-// ...
-
-// the base class for all Zod checks
-z.$ZodCheck;
-
-// subclasses of $ZodCheck that implement common checks
-z.$ZodCheckMinLength
-z.$ZodCheckMaxLength
-
-// the base class for all Zod errors
-z.$ZodError;
-
-// issue formats (types only)
-{} as z.$ZodIssue;
-
-// utils
-z.util.isValidJWT(...);
-```
-
-## Schemas
-
-The base class for all Zod schemas is `$ZodType`. It accepts two generic parameters: `Output` and `Input`.
-
-```ts
-export class $ZodType<Output = unknown, Input = unknown> {
-  _zod: { /* internals */}
-}
-```
-
-`zod/v4/core` exports a number of subclasses that implement some common parsers. A union of all first-party subclasses is exported as `z.$ZodTypes`.
-
-```ts
-export type $ZodTypes =
-  | $ZodString
-  | $ZodNumber
-  | $ZodBigInt
-  | $ZodBoolean
-  | $ZodDate
-  | $ZodSymbol
-  | $ZodUndefined
-  | $ZodNullable
-  | $ZodNull
-  | $ZodAny
-  | $ZodUnknown
-  | $ZodNever
-  | $ZodVoid
-  | $ZodArray
-  | $ZodObject
-  | $ZodUnion // $ZodDiscriminatedUnion extends this
-  | $ZodIntersection
-  | $ZodTuple
-  | $ZodRecord
-  | $ZodMap
-  | $ZodSet
-  | $ZodLiteral
-  | $ZodEnum
-  | $ZodPromise
-  | $ZodLazy
-  | $ZodOptional
-  | $ZodDefault
-  | $ZodTemplateLiteral
-  | $ZodCustom
-  | $ZodTransform
-  | $ZodNonOptional
-  | $ZodReadonly
-  | $ZodNaN
-  | $ZodPipe // $ZodCodec extends this
-  | $ZodSuccess
-  | $ZodCatch
-  | $ZodFile;
-```
-
-<Accordions>
-  <Accordion title="Inheritance diagram">
-    Here is a complete inheritance diagram for the core schema classes:
-
-    ```txt
-    - $ZodType
-        - $ZodString
-            - $ZodStringFormat
-                - $ZodGUID
-                - $ZodUUID
-                - $ZodEmail
-                - $ZodURL
-                - $ZodEmoji
-                - $ZodNanoID
-                - $ZodCUID
-                - $ZodCUID2
-                - $ZodULID
-                - $ZodXID
-                - $ZodKSUID
-                - $ZodISODateTime
-                - $ZodISODate
-                - $ZodISOTime
-                - $ZodISODuration
-                - $ZodIPv4
-                - $ZodIPv6
-                - $ZodCIDRv4
-                - $ZodCIDRv6
-                - $ZodBase64
-                - $ZodBase64URL
-                - $ZodE164
-                - $ZodJWT
-        - $ZodNumber
-            - $ZodNumberFormat
-        - $ZodBigInt
-            - $ZodBigIntFormat
-        - $ZodBoolean
-        - $ZodSymbol
-        - $ZodUndefined
-        - $ZodNull
-        - $ZodAny
-        - $ZodUnknown
-        - $ZodNever
-        - $ZodVoid
-        - $ZodDate
-        - $ZodArray
-        - $ZodObject
-        - $ZodUnion
-            - $ZodDiscriminatedUnion
-        - $ZodIntersection
-        - $ZodTuple
-        - $ZodRecord
-        - $ZodMap
-        - $ZodSet
-        - $ZodEnum
-        - $ZodLiteral
-        - $ZodFile
-        - $ZodTransform
-        - $ZodOptional
-        - $ZodNullable
-        - $ZodDefault
-        - $ZodPrefault
-        - $ZodNonOptional
-        - $ZodSuccess
-        - $ZodCatch
-        - $ZodNaN
-        - $ZodPipe
-            - $ZodCodec
-        - $ZodReadonly
-        - $ZodTemplateLiteral
-        - $ZodCustom
-
-    ```
-  </Accordion>
-</Accordions>
-
-## Internals
-
-All `zod/v4/core` subclasses only contain a single property: `_zod`. This property is an object containing the schemas *internals*. The goal is to make `zod/v4/core` as extensible and unopinionated as possible. Other libraries can "build their own Zod" on top of these classes without `zod/v4/core` cluttering up the interface. Refer to the implementations of `zod` and `zod/mini` for examples of how to extend these classes.
-
-The `_zod` internals property contains some notable properties:
-
-* `.def` — The schema's *definition*: this is the object you pass into the class's constructor to create an instance. It completely describes the schema, and it's JSON-serializable.
-  * `.def.type` — A string representing the schema's type, e.g. `"string"`, `"object"`, `"array"`, etc.
-  * `.def.checks` — An array of *checks* that are executed by the schema after parsing.
-* `.input` — A virtual property that "stores" the schema's *inferred input type*.
-* `.output` — A virtual property that "stores" the schema's *inferred output type*.
-* `.run()` — The schema's internal parser implementation.
-
-If you are implementing a tool (say, a code generator) that must traverse Zod schemas, you can cast any schema to `$ZodTypes` and use the `def` property to discriminate between these classes.
-
-```ts
-export function walk(_schema: z.$ZodType) {
-  const schema = _schema as z.$ZodTypes;
-  const def = schema._zod.def;
-  switch (def.type) {
-    case "string": {
-      // ...
-      break;
-    }
-    case "object": {
-      // ...
-      break;
-    }
-  }
-}
-```
-
-There are a number of subclasses of `$ZodString` that implement various *string formats*. These are exported as `z.$ZodStringFormatTypes`.
-
-```ts
-export type $ZodStringFormatTypes =
-  | $ZodGUID
-  | $ZodUUID
-  | $ZodEmail
-  | $ZodURL
-  | $ZodEmoji
-  | $ZodNanoID
-  | $ZodCUID
-  | $ZodCUID2
-  | $ZodULID
-  | $ZodXID
-  | $ZodKSUID
-  | $ZodISODateTime
-  | $ZodISODate
-  | $ZodISOTime
-  | $ZodISODuration
-  | $ZodIPv4
-  | $ZodIPv6
-  | $ZodCIDRv4
-  | $ZodCIDRv6
-  | $ZodBase64
-  | $ZodBase64URL
-  | $ZodE164
-  | $ZodJWT
-```
-
-## Parsing
-
-As the Zod Core schema classes have no methods, there are top-level functions for parsing data.
-
-```ts
-import * as z from "zod/v4/core";
-
-const schema = new z.$ZodString({ type: "string" });
-z.parse(schema, "hello");
-z.safeParse(schema, "hello");
-await z.parseAsync(schema, "hello");
-await z.safeParseAsync(schema, "hello");
-```
-
-## Checks
-
-Every Zod schema contains an array of *checks*. These perform post-parsing refinements (and occasionally mutations) that *do not affect* the inferred type.
-
-```ts
-const schema = z.string().check(z.email()).check(z.min(5));
-// => $ZodString
-
-schema._zod.def.checks;
-// => [$ZodCheckEmail, $ZodCheckMinLength]
-```
-
-The base class for all Zod checks is `$ZodCheck`. It accepts a single generic parameter `T`.
-
-```ts
-export class $ZodCheck<in T = unknown> {
-  _zod: { /* internals */}
-}
-```
-
-The `_zod` internals property contains some notable properties:
-
-* `.def` — The check's *definition*: this is the object you pass into the class's constructor to create the check. It completely describes the check, and it's JSON-serializable.
-  * `.def.check` — A string representing the check's type, e.g. `"min_length"`, `"less_than"`, `"string_format"`, etc.
-* `.check()` — Contains the check's validation logic.
-
-`zod/v4/core` exports a number of subclasses that perform some common refinements. All first-party subclasses are exported as a union called `z.$ZodChecks`.
-
-```ts
-export type $ZodChecks =
-  | $ZodCheckLessThan
-  | $ZodCheckGreaterThan
-  | $ZodCheckMultipleOf
-  | $ZodCheckNumberFormat
-  | $ZodCheckBigIntFormat
-  | $ZodCheckMaxSize
-  | $ZodCheckMinSize
-  | $ZodCheckSizeEquals
-  | $ZodCheckMaxLength
-  | $ZodCheckMinLength
-  | $ZodCheckLengthEquals
-  | $ZodCheckProperty
-  | $ZodCheckMimeType
-  | $ZodCheckOverwrite
-  | $ZodCheckStringFormat
-```
-
-You can use the `._zod.def.check` property to discriminate between these classes.
-
-```ts
-const check = {} as z.$ZodChecks;
-const def = check._zod.def;
-
-switch (def.check) {
-  case "less_than":
-  case "greater_than":
-    // ...
-    break;
-}
-```
-
-As with schema types, there are a number of subclasses of `$ZodCheckStringFormat` that implement various *string formats*.
-
-```ts
-export type $ZodStringFormatChecks =
-  | $ZodCheckRegex
-  | $ZodCheckLowerCase
-  | $ZodCheckUpperCase
-  | $ZodCheckIncludes
-  | $ZodCheckStartsWith
-  | $ZodCheckEndsWith
-  | $ZodGUID
-  | $ZodUUID
-  | $ZodEmail
-  | $ZodURL
-  | $ZodEmoji
-  | $ZodNanoID
-  | $ZodCUID
-  | $ZodCUID2
-  | $ZodULID
-  | $ZodXID
-  | $ZodKSUID
-  | $ZodISODateTime
-  | $ZodISODate
-  | $ZodISOTime
-  | $ZodISODuration
-  | $ZodIPv4
-  | $ZodIPv6
-  | $ZodCIDRv4
-  | $ZodCIDRv6
-  | $ZodBase64
-  | $ZodBase64URL
-  | $ZodE164
-  | $ZodJWT;
-```
-
-Use a nested `switch` to discriminate between the different string format checks.
-
-```ts
-const check = {} as z.$ZodChecks;
-const def = check._zod.def;
-
-switch (def.check) {
-  case "less_than":
-  case "greater_than":
-  // ...
-  case "string_format":
-    {
-      const formatCheck = check as z.$ZodStringFormatChecks;
-      const formatCheckDef = formatCheck._zod.def;
-
-      switch (formatCheckDef.format) {
-        case "email":
-        case "url":
-          // do stuff
-      }
-    }
-    break;
-}
-```
-
-You'll notice some of these string format *checks* overlap with the string format *types* above. That's because these classes implement both the `$ZodCheck` and `$ZodType` interfaces. That is, they can be used as either a check or a type. In these cases, both `._zod.parse` (the schema parser) and `._zod.check` (the check validation) are executed during parsing. In effect, the instance is prepended to its own `checks` array (though it won't actually exist in `._zod.def.checks`).
-
-```ts
-// as a type
-z.email().parse("user@example.com");
-
-// as a check
-z.string().check(z.email()).parse("user@example.com")
-```
-
-## Errors
-
-The base class for all errors in Zod is `$ZodError`.
-
-> For performance reasons, `$ZodError` *does not* extend the built-in `Error` class! So using `instanceof Error` will return `false`.
-
-* The `zod` package implements a subclass of `$ZodError` called `ZodError` with some additional convenience methods.
-* The `zod/mini` sub-package directly uses `$ZodError`
-
-```ts
-export class $ZodError<T = unknown> implements Error {
- public issues: $ZodIssue[];
-}
-```
-
-## Issues
-
-The `issues` property corresponds to an array of `$ZodIssue` objects. All issues extend the `z.$ZodIssueBase` interface.
-
-```ts
-export interface $ZodIssueBase {
-  readonly code?: string;
-  readonly input?: unknown;
-  readonly path: PropertyKey[];
-  readonly message: string;
-}
-```
-
-Zod defines the following issue subtypes:
-
-```ts
-export type $ZodIssue =
-  | $ZodIssueInvalidType
-  | $ZodIssueTooBig
-  | $ZodIssueTooSmall
-  | $ZodIssueInvalidStringFormat
-  | $ZodIssueNotMultipleOf
-  | $ZodIssueUnrecognizedKeys
-  | $ZodIssueInvalidUnion
-  | $ZodIssueInvalidKey
-  | $ZodIssueInvalidElement
-  | $ZodIssueInvalidValue
-  | $ZodIssueCustom;
-```
-
-For details on each type, refer to [the implementation](https://github.com/colinhacks/zod/blob/main/packages/zod/src/v4/core/errors.ts).
-
-{/* ## Best practices
-
-  If you're reading this page, you're likely trying to build some kind of tool or library on top of Zod. This section breaks down some best practices for doing so.
-
-  1. If you're just accept user-defined schemas, use Standard Schema instead
-
-  Zod implements the [Standard Schema](https://standardschema.dev/) specification, a standard interface for schema libraries to expose their validation logic and inferred types to third-party tools. If your goal is to accept user-defined schemas, extracting their inferred types, and using them to parse data, then Standard Schema is all you need. Refer to the Standard Schema website/docs for more information.
-
-  2. Set up `peerDependencies` properly!
-
-  If your tool accepts Zod schemas from a consumer/user, you should add `"zod/v4/core"` to `peerDependencies`. This lets your users "bring their own Zod". Be as flexible as possible with the version range. For example, if your tool is compatible with `zod/v4/core`, you can use the following. This allows your users to bring any version of `zod/v4/core`, avoiding accidental duplicate installs.
-
-
-  ```json
-  {
-  "peerDependencies": {
-    "zod/v4/core": "*"
-  }
-  }
-  ```
-
-  Since package managers generally won't install your own `peerDependencies`, you'll need to add `zod/v4/core` to your `devDependencies` as well. As new versions of `zod/v4/core` are released, you can update your `devDependencies` to match the latest version. This is important for testing and development purposes.
-
-  ```json
-  {
-  "peerDependencies": {
-    "zod": "*"
-  },
-  "devDependencies": {
-    "zod": "^3.25.0"
-  }
-  }
-  ``` */}
-
-
-# Zod Mini
-
-import { Tabs, Tab } from 'fumadocs-ui/components/tabs';
-import { Callout } from 'fumadocs-ui/components/callout';
-
-<Callout type="info">
-  **Note** — The docs for Zod Mini are interleaved with the regular Zod docs via tabbed code blocks. This page is designed to explain why Zod Mini exists, when to use it, and some key differences from regular Zod.
-</Callout>
-
-Zod Mini variant was introduced with the release of Zod 4. To try it:
-
-```sh
-npm install zod@^4.0.0
-```
-
-To import it:
-
-```ts
-import * as z from "zod/mini";
-```
-
-Zod Mini implements the exact same functionality as `zod`, but using a *functional*, *tree-shakable* API. If you're coming from `zod`, this means you generally will use *functions* in place of methods.
-
-```ts
-// regular Zod
-const mySchema = z.string().optional().nullable();
-
-// Zod Mini
-const mySchema = z.nullable(z.optional(z.string()));
-```
-
-## Tree-shaking
-
-Tree-shaking is a technique used by modern bundlers to remove unused code from the final bundle. It's also referred to as *dead-code elimination*.
-
-In regular Zod, schemas provide a range of convenience methods to perform some common operations (e.g. `.min()` on string schemas). Bundlers are generally not able to remove ("treeshake") unused method implementations from your bundle, but they are able to remove unused top-level functions. As such, the API of Zod Mini uses more functions than methods.
-
-```ts
-// regular Zod
-z.string().min(5).max(10).trim()
-
-// Zod Mini
-z.string().check(z.minLength(5), z.maxLength(10), z.trim());
-```
-
-To give a general idea about the bundle size reduction, consider this simple script:
-
-```ts
-z.boolean().parse(true)
-```
-
-Bundling this with Zod and Zod Mini results in the following bundle sizes. Zod Mini results in a 64% reduction.
-
-| Package  | Bundle size (gzip) |
-| -------- | ------------------ |
-| Zod Mini | `2.12kb`           |
-| Zod      | `5.91kb`           |
-
-With a marginally more complex schema that involves object types:
-
-```ts
-const schema = z.object({ a: z.string(), b: z.number(), c: z.boolean() });
-
-schema.parse({
-  a: "asdf",
-  b: 123,
-  c: true,
-});
-```
-
-| Package  | Bundle size (gzip) |
-| -------- | ------------------ |
-| Zod Mini | `4.0kb`            |
-| Zod      | `13.1kb`           |
-
-This gives you a sense of the bundle sizes involved. Look closely at these numbers and run your own benchmarks to determine if using Zod Mini is worth it for your use case.
-
-## When (not) to use Zod Mini
-
-In general you should probably use regular Zod unless you have uncommonly strict constraints around bundle size. Many developers massively overestimate the importance of bundle size to application performance. In practice, bundle size on the scale of Zod (`5-10kb` typically) is only a meaningful concern when optimizing front-end bundles for a user base with slow mobile network connections in rural or developing areas.
-
-Let's run through some considerations:
-
-### DX
-
-The API of Zod Mini is more verbose and less discoverable. The methods in Zod's API are much easier to discover & autocomplete through Intellisense than the top-level functions in Zod Mini. It isn't possible to quickly build a schema with chained APIs. (Speaking as the creator of Zod: I spent a lot of time designing the Zod Mini API to be as ergonomic as possible, but I still have a strong preference the standard Zod API.)
-
-### Backend development
-
-If you are using Zod on the backend, bundle size on the scale of Zod is not meaningful. This is true even in resource-constrained environments like Lambda. [This post](https://medium.com/@adtanasa/size-is-almost-all-that-matters-for-optimizing-aws-lambda-cold-starts-cad54f65cbb) benchmarks cold start times with bundles of various sizes. Here is a subset of the results:
-
-| Bundle size                           | Lambda cold start time   |
-| ------------------------------------- | ------------------------ |
-| `1kb`                                 | `171ms`                  |
-| `17kb` (size of gzipped non-Mini Zod) | `171.6ms` (interpolated) |
-| `128kb`                               | `176ms`                  |
-| `256kb`                               | `182ms`                  |
-| `512kb`                               | `279ms`                  |
-| `1mb`                                 | `557ms`                  |
-
-The minimum cold start time for a negligible `1kb` bundle is `171ms`. The next bundle size tested is `128kb`, which added only `5ms`. When gzipped, the bundle size for the entirely of regular Zod is roughly `17kb`, which would correspond to a `0.6ms` increase in startup time.
-
-### Internet speed
-
-Generally, the round trip time to the server (`100-200ms`) will dwarf the time required to download an additional `10kb`. Only on slow 3G connections (sub-`1Mbps`) does the download time for an additional `10kb` become more significant. If you aren't optimizing specifically for users in rural or developing areas, your time is likely better spent optimizing something else.
-
-## `ZodMiniType`
-
-All Zod Mini schemas extend the `z.ZodMiniType` base class, which in turn extends `z.core.$ZodType` from [`zod/v4/core`](/packages/core). While this class implements far fewer methods than `ZodType` in `zod`, some particularly useful methods remain.
-
-### `.parse`
-
-This is an obvious one. All Zod Mini schemas implement the same parsing methods as `zod`.
-
-```ts
-import * as z from "zod/mini"
-
-const mySchema = z.string();
-
-mySchema.parse('asdf')
-await mySchema.parseAsync('asdf')
-mySchema.safeParse('asdf')
-await mySchema.safeParseAsync('asdf')
-```
-
-### `.check()`
-
-In regular Zod there are dedicated methods on schema subclasses for performing common checks:
-
-```ts
-import * as z from "zod";
-
-z.string()
-  .min(5)
-  .max(10)
-  .refine(val => val.includes("@"))
-  .trim()
-```
-
-In Zod Mini such methods aren't implemented. Instead you pass these checks into schemas using the `.check()` method:
-
-```ts
-import * as z from "zod/mini"
-
-z.string().check(
-  z.minLength(5), 
-  z.maxLength(10),
-  z.refine(val => val.includes("@")),
-  z.trim()
-);
-```
-
-The following checks are implemented. Some of these checks only apply to schemas of certain types (e.g. strings or numbers). The APIs are all type-safe; TypeScript won't let you add an unsupported check to your schema.
-
-```ts
-z.lt(value);
-z.lte(value); // alias: z.maximum()
-z.gt(value);
-z.gte(value); // alias: z.minimum()
-z.positive();
-z.negative();
-z.nonpositive();
-z.nonnegative();
-z.multipleOf(value);
-z.maxSize(value);
-z.minSize(value);
-z.size(value);
-z.maxLength(value);
-z.minLength(value);
-z.length(value);
-z.regex(regex);
-z.lowercase();
-z.uppercase();
-z.includes(value);
-z.startsWith(value);
-z.endsWith(value);
-z.property(key, schema);
-z.mime(value);
-
-// custom checks
-z.refine()
-z.check()   // replaces .superRefine()
-
-// mutations (these do not change the inferred types)
-z.overwrite(value => newValue);
-z.normalize();
-z.trim();
-z.toLowerCase();
-z.toUpperCase();
-```
-
-### `.register()`
-
-For registering a schema in a [registry](/metadata#registries).
-
-```ts
-const myReg = z.registry<{title: string}>();
-
-z.string().register(myReg, { title: "My cool string schema" });
-```
-
-### `.brand()`
-
-For *branding* a schema. Refer to the [Branded types](/api#branded-types) docs for more information.
-
-```ts
-import * as z from "zod/mini"
-
-const USD = z.string().brand("USD");
-```
-
-### `.clone(def)`
-
-Returns an identical clone of the current schema using the provided `def`.
-
-```ts
-const mySchema = z.string()
-
-mySchema.clone(mySchema._zod.def);
-```
-
-## No default locale
-
-While regular Zod automatically loads the English (`en`) locale, Zod Mini does not. This reduces the bundle size in scenarios where error messages are unnecessary, localized to a non-English language, or otherwise customized.
-
-This means, by default the `message` property of all issues will simply read `"Invalid input"`. To load the English locale:
-
-```ts
-import * as z from "zod/mini"
-
-z.config(z.locales.en());
-```
-
-Refer to the [Locales](/error-customization#internationalization) docs for more on localization.
-
-
-# Zod
-
-The `zod/v4` package is the "flagship" library of the Zod ecosystem. It strikes a balance between developer experience and bundle size that's ideal for the vast majority of applications.
-
-> If you have uncommonly strict constraints around bundle size, consider [Zod Mini](/packages/mini).
-
-Zod aims to provide a schema API that maps one-to-one to TypeScript's type system.
-
-```ts
-import * as z from "zod";
-
-const schema = z.object({
-  name: z.string(),
-  age: z.number().int().positive(),
-  email: z.email(),
-});
-```
-
-The API relies on methods to provide a concise, chainable, autocomplete-friendly way to define complex types.
-
-```ts
-z.string()
-  .min(5)
-  .max(10)
-  .toLowerCase();
-```
-
-All schemas extend the `z.ZodType` base class, which in turn extends `z.$ZodType` from [`zod/v4/core`](/packages/core). All instance of `ZodType` implement the following methods:
-
-```ts
-import * as z from "zod";
-
-const mySchema = z.string();
-
-// parsing
-mySchema.parse(data);
-mySchema.safeParse(data);
-mySchema.parseAsync(data);
-mySchema.safeParseAsync(data);
-
-
-// refinements
-mySchema.refine(refinementFunc);
-mySchema.superRefine(refinementFunc); // deprecated, use `.check()`
-mySchema.overwrite(overwriteFunc);
-
-// wrappers
-mySchema.optional();
-mySchema.nonoptional();
-mySchema.nullable();
-mySchema.nullish();
-mySchema.default(defaultValue);
-mySchema.array();
-mySchema.or(otherSchema);
-mySchema.transform(transformFunc);
-mySchema.catch(catchValue);
-mySchema.pipe(otherSchema);
-mySchema.readonly();
-
-// metadata and registries
-mySchema.register(registry, metadata);
-mySchema.describe(description);
-mySchema.meta(metadata);
-
-// utilities
-mySchema.check(checkOrFunction);
-mySchema.clone(def);
-mySchema.brand<T>();
-mySchema.isOptional(); // boolean
-mySchema.isNullable(); // boolean
-```
-
-
 # Migration guide
 
 import { Callout } from "fumadocs-ui/components/callout";
@@ -6505,9 +5907,9 @@ Many of Zod's behaviors and APIs have been made more intuitive and cohesive. The
 
 Zod 4 standardizes the APIs for error customization under a single, unified `error` param. Previously Zod's error customization APIs were fragmented and inconsistent. This is cleaned up in Zod 4.
 
-### deprecates `message`
+### deprecates `message` parameter
 
-Replaces `message` with `error`. The `message` parameter is still supported but deprecated.
+Replaces `message` param with `error`. The old `message` parameter is still supported but deprecated.
 
 <Tabs groupId="error-message" items={["Zod 4", "Zod 3"]} persist>
   <Tab value="Zod 4">
@@ -8067,17 +7469,17 @@ Read the [template literal docs](/api#template-literals) for more info.
 
 ## Number formats
 
-New numeric "formats" have been added for representing fixed-width integer and float types. These return a `ZodNumber` instance with proper minimum/maximum constraints already added.
+New numeric "formats" have been added for representing fixed-width integer and float types. These return a `ZodNumber` instance with proper inclusive minimum/maximum constraints already added.
 
 ```ts
-z.int();      // [Number.MIN_SAFE_INTEGER, Number.MAX_SAFE_INTEGER],
+z.int();      // [Number.MIN_SAFE_INTEGER, Number.MAX_SAFE_INTEGER]
 z.float32();  // [-3.4028234663852886e38, 3.4028234663852886e38]
 z.float64();  // [-1.7976931348623157e308, 1.7976931348623157e308]
 z.int32();    // [-2147483648, 2147483647]
 z.uint32();   // [0, 4294967295]
 ```
 
-Similarly the following `bigint` numeric formats have also been added. These integer types exceed what can be safely represented by a `number` in JavaScript, so these return a `ZodBigInt` instance with the proper minimum/maximum constraints already added.
+Similarly the following `bigint` numeric formats have also been added. These integer types exceed what can be safely represented by a `number` in JavaScript, so these return a `ZodBigInt` instance with the proper inclusive minimum/maximum constraints already added.
 
 ```ts
 z.int64();    // [-9223372036854775808n, 9223372036854775807n]
@@ -8119,7 +7521,7 @@ z.stringbool({
 })
 ```
 
-Refer to the [`z.stringbool()` docs](/api#stringbools) for more information.
+Refer to the [`z.stringbool()` docs](/api#stringbool) for more information.
 
 ## Simplified error customization
 
@@ -8383,5 +7785,770 @@ Imagine you're a library trying to build a function `acceptSchema` that accepts 
 4. `zod-compat`. This extremely hand-wavy solution you see online is "define interfaces for each version that represents some basic functionality". Basically some utility types libraries can use to approximate the real deal. This is error prone, a ton of work, needs to be kept synchronized with the real implementations, and ultimately libraries are developing against a shadow version of your library that probably lacks detail. It also only works for types: if a library depends on any runtime code in Zod it falls apart.
 
 Hence, subpaths.
+
+
+# Zod Core
+
+import { Callout } from "fumadocs-ui/components/callout"
+import { Accordion, Accordions } from 'fumadocs-ui/components/accordion';
+
+This sub-package exports the core classes and utilities that are consumed by Zod and Zod Mini. It is not intended to be used directly; instead it's designed to be extended by other packages. It implements:
+
+```ts
+import * as z from "zod/v4/core";
+
+// the base class for all Zod schemas
+z.$ZodType;
+
+// subclasses of $ZodType that implement common parsers
+z.$ZodString
+z.$ZodObject
+z.$ZodArray
+// ...
+
+// the base class for all Zod checks
+z.$ZodCheck;
+
+// subclasses of $ZodCheck that implement common checks
+z.$ZodCheckMinLength
+z.$ZodCheckMaxLength
+
+// the base class for all Zod errors
+z.$ZodError;
+
+// issue formats (types only)
+{} as z.$ZodIssue;
+
+// utils
+z.util.isValidJWT(...);
+```
+
+## Schemas
+
+The base class for all Zod schemas is `$ZodType`. It accepts two generic parameters: `Output` and `Input`.
+
+```ts
+export class $ZodType<Output = unknown, Input = unknown> {
+  _zod: { /* internals */}
+}
+```
+
+`zod/v4/core` exports a number of subclasses that implement some common parsers. A union of all first-party subclasses is exported as `z.$ZodTypes`.
+
+```ts
+export type $ZodTypes =
+  | $ZodString
+  | $ZodNumber
+  | $ZodBigInt
+  | $ZodBoolean
+  | $ZodDate
+  | $ZodSymbol
+  | $ZodUndefined
+  | $ZodNullable
+  | $ZodNull
+  | $ZodAny
+  | $ZodUnknown
+  | $ZodNever
+  | $ZodVoid
+  | $ZodArray
+  | $ZodObject
+  | $ZodUnion // $ZodDiscriminatedUnion extends this
+  | $ZodIntersection
+  | $ZodTuple
+  | $ZodRecord
+  | $ZodMap
+  | $ZodSet
+  | $ZodLiteral
+  | $ZodEnum
+  | $ZodPromise
+  | $ZodLazy
+  | $ZodOptional
+  | $ZodDefault
+  | $ZodTemplateLiteral
+  | $ZodCustom
+  | $ZodTransform
+  | $ZodNonOptional
+  | $ZodReadonly
+  | $ZodNaN
+  | $ZodPipe // $ZodCodec extends this
+  | $ZodSuccess
+  | $ZodCatch
+  | $ZodFile;
+```
+
+<Accordions>
+  <Accordion title="Inheritance diagram">
+    Here is a complete inheritance diagram for the core schema classes:
+
+    ```txt
+    - $ZodType
+        - $ZodString
+            - $ZodStringFormat
+                - $ZodGUID
+                - $ZodUUID
+                - $ZodEmail
+                - $ZodURL
+                - $ZodEmoji
+                - $ZodNanoID
+                - $ZodCUID
+                - $ZodCUID2
+                - $ZodULID
+                - $ZodXID
+                - $ZodKSUID
+                - $ZodISODateTime
+                - $ZodISODate
+                - $ZodISOTime
+                - $ZodISODuration
+                - $ZodIPv4
+                - $ZodIPv6
+                - $ZodCIDRv4
+                - $ZodCIDRv6
+                - $ZodBase64
+                - $ZodBase64URL
+                - $ZodE164
+                - $ZodJWT
+        - $ZodNumber
+            - $ZodNumberFormat
+        - $ZodBigInt
+            - $ZodBigIntFormat
+        - $ZodBoolean
+        - $ZodSymbol
+        - $ZodUndefined
+        - $ZodNull
+        - $ZodAny
+        - $ZodUnknown
+        - $ZodNever
+        - $ZodVoid
+        - $ZodDate
+        - $ZodArray
+        - $ZodObject
+        - $ZodUnion
+            - $ZodDiscriminatedUnion
+        - $ZodIntersection
+        - $ZodTuple
+        - $ZodRecord
+        - $ZodMap
+        - $ZodSet
+        - $ZodEnum
+        - $ZodLiteral
+        - $ZodFile
+        - $ZodTransform
+        - $ZodOptional
+        - $ZodNullable
+        - $ZodDefault
+        - $ZodPrefault
+        - $ZodNonOptional
+        - $ZodSuccess
+        - $ZodCatch
+        - $ZodNaN
+        - $ZodPipe
+            - $ZodCodec
+        - $ZodReadonly
+        - $ZodTemplateLiteral
+        - $ZodCustom
+
+    ```
+  </Accordion>
+</Accordions>
+
+## Internals
+
+All `zod/v4/core` subclasses only contain a single property: `_zod`. This property is an object containing the schemas *internals*. The goal is to make `zod/v4/core` as extensible and unopinionated as possible. Other libraries can "build their own Zod" on top of these classes without `zod/v4/core` cluttering up the interface. Refer to the implementations of `zod` and `zod/mini` for examples of how to extend these classes.
+
+The `_zod` internals property contains some notable properties:
+
+* `.def` — The schema's *definition*: this is the object you pass into the class's constructor to create an instance. It completely describes the schema, and it's JSON-serializable.
+  * `.def.type` — A string representing the schema's type, e.g. `"string"`, `"object"`, `"array"`, etc.
+  * `.def.checks` — An array of *checks* that are executed by the schema after parsing.
+* `.input` — A virtual property that "stores" the schema's *inferred input type*.
+* `.output` — A virtual property that "stores" the schema's *inferred output type*.
+* `.run()` — The schema's internal parser implementation.
+
+If you are implementing a tool (say, a code generator) that must traverse Zod schemas, you can cast any schema to `$ZodTypes` and use the `def` property to discriminate between these classes.
+
+```ts
+export function walk(_schema: z.$ZodType) {
+  const schema = _schema as z.$ZodTypes;
+  const def = schema._zod.def;
+  switch (def.type) {
+    case "string": {
+      // ...
+      break;
+    }
+    case "object": {
+      // ...
+      break;
+    }
+  }
+}
+```
+
+There are a number of subclasses of `$ZodString` that implement various *string formats*. These are exported as `z.$ZodStringFormatTypes`.
+
+```ts
+export type $ZodStringFormatTypes =
+  | $ZodGUID
+  | $ZodUUID
+  | $ZodEmail
+  | $ZodURL
+  | $ZodEmoji
+  | $ZodNanoID
+  | $ZodCUID
+  | $ZodCUID2
+  | $ZodULID
+  | $ZodXID
+  | $ZodKSUID
+  | $ZodISODateTime
+  | $ZodISODate
+  | $ZodISOTime
+  | $ZodISODuration
+  | $ZodIPv4
+  | $ZodIPv6
+  | $ZodCIDRv4
+  | $ZodCIDRv6
+  | $ZodBase64
+  | $ZodBase64URL
+  | $ZodE164
+  | $ZodJWT
+```
+
+## Parsing
+
+As the Zod Core schema classes have no methods, there are top-level functions for parsing data.
+
+```ts
+import * as z from "zod/v4/core";
+
+const schema = new z.$ZodString({ type: "string" });
+z.parse(schema, "hello");
+z.safeParse(schema, "hello");
+await z.parseAsync(schema, "hello");
+await z.safeParseAsync(schema, "hello");
+```
+
+## Checks
+
+Every Zod schema contains an array of *checks*. These perform post-parsing refinements (and occasionally mutations) that *do not affect* the inferred type.
+
+```ts
+const schema = z.string().check(z.email()).check(z.min(5));
+// => $ZodString
+
+schema._zod.def.checks;
+// => [$ZodCheckEmail, $ZodCheckMinLength]
+```
+
+The base class for all Zod checks is `$ZodCheck`. It accepts a single generic parameter `T`.
+
+```ts
+export class $ZodCheck<in T = unknown> {
+  _zod: { /* internals */}
+}
+```
+
+The `_zod` internals property contains some notable properties:
+
+* `.def` — The check's *definition*: this is the object you pass into the class's constructor to create the check. It completely describes the check, and it's JSON-serializable.
+  * `.def.check` — A string representing the check's type, e.g. `"min_length"`, `"less_than"`, `"string_format"`, etc.
+* `.check()` — Contains the check's validation logic.
+
+`zod/v4/core` exports a number of subclasses that perform some common refinements. All first-party subclasses are exported as a union called `z.$ZodChecks`.
+
+```ts
+export type $ZodChecks =
+  | $ZodCheckLessThan
+  | $ZodCheckGreaterThan
+  | $ZodCheckMultipleOf
+  | $ZodCheckNumberFormat
+  | $ZodCheckBigIntFormat
+  | $ZodCheckMaxSize
+  | $ZodCheckMinSize
+  | $ZodCheckSizeEquals
+  | $ZodCheckMaxLength
+  | $ZodCheckMinLength
+  | $ZodCheckLengthEquals
+  | $ZodCheckProperty
+  | $ZodCheckMimeType
+  | $ZodCheckOverwrite
+  | $ZodCheckStringFormat
+```
+
+You can use the `._zod.def.check` property to discriminate between these classes.
+
+```ts
+const check = {} as z.$ZodChecks;
+const def = check._zod.def;
+
+switch (def.check) {
+  case "less_than":
+  case "greater_than":
+    // ...
+    break;
+}
+```
+
+As with schema types, there are a number of subclasses of `$ZodCheckStringFormat` that implement various *string formats*.
+
+```ts
+export type $ZodStringFormatChecks =
+  | $ZodCheckRegex
+  | $ZodCheckLowerCase
+  | $ZodCheckUpperCase
+  | $ZodCheckIncludes
+  | $ZodCheckStartsWith
+  | $ZodCheckEndsWith
+  | $ZodGUID
+  | $ZodUUID
+  | $ZodEmail
+  | $ZodURL
+  | $ZodEmoji
+  | $ZodNanoID
+  | $ZodCUID
+  | $ZodCUID2
+  | $ZodULID
+  | $ZodXID
+  | $ZodKSUID
+  | $ZodISODateTime
+  | $ZodISODate
+  | $ZodISOTime
+  | $ZodISODuration
+  | $ZodIPv4
+  | $ZodIPv6
+  | $ZodCIDRv4
+  | $ZodCIDRv6
+  | $ZodBase64
+  | $ZodBase64URL
+  | $ZodE164
+  | $ZodJWT;
+```
+
+Use a nested `switch` to discriminate between the different string format checks.
+
+```ts
+const check = {} as z.$ZodChecks;
+const def = check._zod.def;
+
+switch (def.check) {
+  case "less_than":
+  case "greater_than":
+  // ...
+  case "string_format":
+    {
+      const formatCheck = check as z.$ZodStringFormatChecks;
+      const formatCheckDef = formatCheck._zod.def;
+
+      switch (formatCheckDef.format) {
+        case "email":
+        case "url":
+          // do stuff
+      }
+    }
+    break;
+}
+```
+
+You'll notice some of these string format *checks* overlap with the string format *types* above. That's because these classes implement both the `$ZodCheck` and `$ZodType` interfaces. That is, they can be used as either a check or a type. In these cases, both `._zod.parse` (the schema parser) and `._zod.check` (the check validation) are executed during parsing. In effect, the instance is prepended to its own `checks` array (though it won't actually exist in `._zod.def.checks`).
+
+```ts
+// as a type
+z.email().parse("user@example.com");
+
+// as a check
+z.string().check(z.email()).parse("user@example.com")
+```
+
+## Errors
+
+The base class for all errors in Zod is `$ZodError`.
+
+> For performance reasons, `$ZodError` *does not* extend the built-in `Error` class! So using `instanceof Error` will return `false`.
+
+* The `zod` package implements a subclass of `$ZodError` called `ZodError` with some additional convenience methods.
+* The `zod/mini` sub-package directly uses `$ZodError`
+
+```ts
+export class $ZodError<T = unknown> implements Error {
+ public issues: $ZodIssue[];
+}
+```
+
+## Issues
+
+The `issues` property corresponds to an array of `$ZodIssue` objects. All issues extend the `z.$ZodIssueBase` interface.
+
+```ts
+export interface $ZodIssueBase {
+  readonly code?: string;
+  readonly input?: unknown;
+  readonly path: PropertyKey[];
+  readonly message: string;
+}
+```
+
+Zod defines the following issue subtypes:
+
+```ts
+export type $ZodIssue =
+  | $ZodIssueInvalidType
+  | $ZodIssueTooBig
+  | $ZodIssueTooSmall
+  | $ZodIssueInvalidStringFormat
+  | $ZodIssueNotMultipleOf
+  | $ZodIssueUnrecognizedKeys
+  | $ZodIssueInvalidUnion
+  | $ZodIssueInvalidKey
+  | $ZodIssueInvalidElement
+  | $ZodIssueInvalidValue
+  | $ZodIssueCustom;
+```
+
+For details on each type, refer to [the implementation](https://github.com/colinhacks/zod/blob/main/packages/zod/src/v4/core/errors.ts).
+
+{/* ## Best practices
+
+  If you're reading this page, you're likely trying to build some kind of tool or library on top of Zod. This section breaks down some best practices for doing so.
+
+  1. If you're just accept user-defined schemas, use Standard Schema instead
+
+  Zod implements the [Standard Schema](https://standardschema.dev/) specification, a standard interface for schema libraries to expose their validation logic and inferred types to third-party tools. If your goal is to accept user-defined schemas, extracting their inferred types, and using them to parse data, then Standard Schema is all you need. Refer to the Standard Schema website/docs for more information.
+
+  2. Set up `peerDependencies` properly!
+
+  If your tool accepts Zod schemas from a consumer/user, you should add `"zod/v4/core"` to `peerDependencies`. This lets your users "bring their own Zod". Be as flexible as possible with the version range. For example, if your tool is compatible with `zod/v4/core`, you can use the following. This allows your users to bring any version of `zod/v4/core`, avoiding accidental duplicate installs.
+
+
+  ```json
+  {
+  "peerDependencies": {
+    "zod/v4/core": "*"
+  }
+  }
+  ```
+
+  Since package managers generally won't install your own `peerDependencies`, you'll need to add `zod/v4/core` to your `devDependencies` as well. As new versions of `zod/v4/core` are released, you can update your `devDependencies` to match the latest version. This is important for testing and development purposes.
+
+  ```json
+  {
+  "peerDependencies": {
+    "zod": "*"
+  },
+  "devDependencies": {
+    "zod": "^3.25.0"
+  }
+  }
+  ``` */}
+
+
+# Zod Mini
+
+import { Tabs, Tab } from 'fumadocs-ui/components/tabs';
+import { Callout } from 'fumadocs-ui/components/callout';
+
+<Callout type="info">
+  **Note** — The docs for Zod Mini are interleaved with the regular Zod docs via tabbed code blocks. This page is designed to explain why Zod Mini exists, when to use it, and some key differences from regular Zod.
+</Callout>
+
+Zod Mini variant was introduced with the release of Zod 4. To try it:
+
+```sh
+npm install zod@^4.0.0
+```
+
+To import it:
+
+```ts
+import * as z from "zod/mini";
+```
+
+Zod Mini implements the exact same functionality as `zod`, but using a *functional*, *tree-shakable* API. If you're coming from `zod`, this means you generally will use *functions* in place of methods.
+
+```ts
+// regular Zod
+const mySchema = z.string().optional().nullable();
+
+// Zod Mini
+const mySchema = z.nullable(z.optional(z.string()));
+```
+
+## Tree-shaking
+
+Tree-shaking is a technique used by modern bundlers to remove unused code from the final bundle. It's also referred to as *dead-code elimination*.
+
+In regular Zod, schemas provide a range of convenience methods to perform some common operations (e.g. `.min()` on string schemas). Bundlers are generally not able to remove ("treeshake") unused method implementations from your bundle, but they are able to remove unused top-level functions. As such, the API of Zod Mini uses more functions than methods.
+
+```ts
+// regular Zod
+z.string().min(5).max(10).trim()
+
+// Zod Mini
+z.string().check(z.minLength(5), z.maxLength(10), z.trim());
+```
+
+To give a general idea about the bundle size reduction, consider this simple script:
+
+```ts
+z.boolean().parse(true)
+```
+
+Bundling this with Zod and Zod Mini results in the following bundle sizes. Zod Mini results in a 64% reduction.
+
+| Package  | Bundle size (gzip) |
+| -------- | ------------------ |
+| Zod Mini | `2.12kb`           |
+| Zod      | `5.91kb`           |
+
+With a marginally more complex schema that involves object types:
+
+```ts
+const schema = z.object({ a: z.string(), b: z.number(), c: z.boolean() });
+
+schema.parse({
+  a: "asdf",
+  b: 123,
+  c: true,
+});
+```
+
+| Package  | Bundle size (gzip) |
+| -------- | ------------------ |
+| Zod Mini | `4.0kb`            |
+| Zod      | `13.1kb`           |
+
+This gives you a sense of the bundle sizes involved. Look closely at these numbers and run your own benchmarks to determine if using Zod Mini is worth it for your use case.
+
+## When (not) to use Zod Mini
+
+In general you should probably use regular Zod unless you have uncommonly strict constraints around bundle size. Many developers massively overestimate the importance of bundle size to application performance. In practice, bundle size on the scale of Zod (`5-10kb` typically) is only a meaningful concern when optimizing front-end bundles for a user base with slow mobile network connections in rural or developing areas.
+
+Let's run through some considerations:
+
+### DX
+
+The API of Zod Mini is more verbose and less discoverable. The methods in Zod's API are much easier to discover & autocomplete through Intellisense than the top-level functions in Zod Mini. It isn't possible to quickly build a schema with chained APIs. (Speaking as the creator of Zod: I spent a lot of time designing the Zod Mini API to be as ergonomic as possible, but I still have a strong preference the standard Zod API.)
+
+### Backend development
+
+If you are using Zod on the backend, bundle size on the scale of Zod is not meaningful. This is true even in resource-constrained environments like Lambda. [This post](https://medium.com/@adtanasa/size-is-almost-all-that-matters-for-optimizing-aws-lambda-cold-starts-cad54f65cbb) benchmarks cold start times with bundles of various sizes. Here is a subset of the results:
+
+| Bundle size                           | Lambda cold start time   |
+| ------------------------------------- | ------------------------ |
+| `1kb`                                 | `171ms`                  |
+| `17kb` (size of gzipped non-Mini Zod) | `171.6ms` (interpolated) |
+| `128kb`                               | `176ms`                  |
+| `256kb`                               | `182ms`                  |
+| `512kb`                               | `279ms`                  |
+| `1mb`                                 | `557ms`                  |
+
+The minimum cold start time for a negligible `1kb` bundle is `171ms`. The next bundle size tested is `128kb`, which added only `5ms`. When gzipped, the bundle size for the entirely of regular Zod is roughly `17kb`, which would correspond to a `0.6ms` increase in startup time.
+
+### Internet speed
+
+Generally, the round trip time to the server (`100-200ms`) will dwarf the time required to download an additional `10kb`. Only on slow 3G connections (sub-`1Mbps`) does the download time for an additional `10kb` become more significant. If you aren't optimizing specifically for users in rural or developing areas, your time is likely better spent optimizing something else.
+
+## `ZodMiniType`
+
+All Zod Mini schemas extend the `z.ZodMiniType` base class, which in turn extends `z.core.$ZodType` from [`zod/v4/core`](/packages/core). While this class implements far fewer methods than `ZodType` in `zod`, some particularly useful methods remain.
+
+### `.parse`
+
+This is an obvious one. All Zod Mini schemas implement the same parsing methods as `zod`.
+
+```ts
+import * as z from "zod/mini"
+
+const mySchema = z.string();
+
+mySchema.parse('asdf')
+await mySchema.parseAsync('asdf')
+mySchema.safeParse('asdf')
+await mySchema.safeParseAsync('asdf')
+```
+
+### `.check()`
+
+In regular Zod there are dedicated methods on schema subclasses for performing common checks:
+
+```ts
+import * as z from "zod";
+
+z.string()
+  .min(5)
+  .max(10)
+  .refine(val => val.includes("@"))
+  .trim()
+```
+
+In Zod Mini such methods aren't implemented. Instead you pass these checks into schemas using the `.check()` method:
+
+```ts
+import * as z from "zod/mini"
+
+z.string().check(
+  z.minLength(5), 
+  z.maxLength(10),
+  z.refine(val => val.includes("@")),
+  z.trim()
+);
+```
+
+The following checks are implemented. Some of these checks only apply to schemas of certain types (e.g. strings or numbers). The APIs are all type-safe; TypeScript won't let you add an unsupported check to your schema.
+
+```ts
+z.lt(value);
+z.lte(value); // alias: z.maximum()
+z.gt(value);
+z.gte(value); // alias: z.minimum()
+z.positive();
+z.negative();
+z.nonpositive();
+z.nonnegative();
+z.multipleOf(value);
+z.maxSize(value);
+z.minSize(value);
+z.size(value);
+z.maxLength(value);
+z.minLength(value);
+z.length(value);
+z.regex(regex);
+z.lowercase();
+z.uppercase();
+z.includes(value);
+z.startsWith(value);
+z.endsWith(value);
+z.property(key, schema);
+z.mime(value);
+
+// custom checks
+z.refine()
+z.check()   // replaces .superRefine()
+
+// mutations (these do not change the inferred types)
+z.overwrite(value => newValue);
+z.normalize();
+z.trim();
+z.toLowerCase();
+z.toUpperCase();
+
+// metadata (registers schema in z.globalRegistry)
+z.meta({ title: "...", description: "..." });
+z.describe("...");
+```
+
+### `.register()`
+
+For registering a schema in a [registry](/metadata#registries).
+
+```ts
+const myReg = z.registry<{title: string}>();
+
+z.string().register(myReg, { title: "My cool string schema" });
+```
+
+### `.brand()`
+
+For *branding* a schema. Refer to the [Branded types](/api#branded-types) docs for more information.
+
+```ts
+import * as z from "zod/mini"
+
+const USD = z.string().brand("USD");
+```
+
+### `.clone(def)`
+
+Returns an identical clone of the current schema using the provided `def`.
+
+```ts
+const mySchema = z.string()
+
+mySchema.clone(mySchema._zod.def);
+```
+
+## No default locale
+
+While regular Zod automatically loads the English (`en`) locale, Zod Mini does not. This reduces the bundle size in scenarios where error messages are unnecessary, localized to a non-English language, or otherwise customized.
+
+This means, by default the `message` property of all issues will simply read `"Invalid input"`. To load the English locale:
+
+```ts
+import * as z from "zod/mini"
+
+z.config(z.locales.en());
+```
+
+Refer to the [Locales](/error-customization#internationalization) docs for more on localization.
+
+
+# Zod
+
+The `zod/v4` package is the "flagship" library of the Zod ecosystem. It strikes a balance between developer experience and bundle size that's ideal for the vast majority of applications.
+
+> If you have uncommonly strict constraints around bundle size, consider [Zod Mini](/packages/mini).
+
+Zod aims to provide a schema API that maps one-to-one to TypeScript's type system.
+
+```ts
+import * as z from "zod";
+
+const schema = z.object({
+  name: z.string(),
+  age: z.number().int().positive(),
+  email: z.email(),
+});
+```
+
+The API relies on methods to provide a concise, chainable, autocomplete-friendly way to define complex types.
+
+```ts
+z.string()
+  .min(5)
+  .max(10)
+  .toLowerCase();
+```
+
+All schemas extend the `z.ZodType` base class, which in turn extends `z.$ZodType` from [`zod/v4/core`](/packages/core). All instance of `ZodType` implement the following methods:
+
+```ts
+import * as z from "zod";
+
+const mySchema = z.string();
+
+// parsing
+mySchema.parse(data);
+mySchema.safeParse(data);
+mySchema.parseAsync(data);
+mySchema.safeParseAsync(data);
+
+
+// refinements
+mySchema.refine(refinementFunc);
+mySchema.superRefine(refinementFunc); // deprecated, use `.check()`
+mySchema.overwrite(overwriteFunc);
+
+// wrappers
+mySchema.optional();
+mySchema.nonoptional();
+mySchema.nullable();
+mySchema.nullish();
+mySchema.default(defaultValue);
+mySchema.array();
+mySchema.or(otherSchema);
+mySchema.transform(transformFunc);
+mySchema.catch(catchValue);
+mySchema.pipe(otherSchema);
+mySchema.readonly();
+
+// metadata and registries
+mySchema.register(registry, metadata);
+mySchema.describe(description);
+mySchema.meta(metadata);
+
+// utilities
+mySchema.check(checkOrFunction);
+mySchema.clone(def);
+mySchema.brand<T>();
+mySchema.isOptional(); // boolean
+mySchema.isNullable(); // boolean
+```
 
 

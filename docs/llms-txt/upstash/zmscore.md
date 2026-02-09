@@ -2,23 +2,9 @@
 
 # Source: https://upstash.com/docs/redis/sdks/py/commands/zset/zmscore.md
 
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/zset/zmscore.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/zset/zmscore.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/zset/zmscore.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/zset/zmscore.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/zset/zmscore.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/zset/zmscore.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/zset/zmscore.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/zset/zmscore.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/zset/zmscore.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # ZMSCORE
 
@@ -26,27 +12,20 @@
 
 ## Arguments
 
-<ParamField body="key" type="string" required>
-  The key to get.
+<ParamField body="key" type="str" required>
+  The key of the sorted set.
 </ParamField>
 
 ## Response
 
-<ResponseField body="members" type="TMember[]" required>
+<ResponseField body="members" type="List[str]" required>
   The members of the sorted set.
 </ResponseField>
 
 <RequestExample>
-  ```ts Example theme={"system"}
+  ```py Example theme={"system"}
+  redis.zadd("myset", {"a": 1, "b": 2, "c": 3})
 
-  await redis.zadd("key", 
-      { score: 1, member: "m1" },
-      { score: 2, member: "m2" },
-      { score: 3, member: "m3" },
-      { score: 4, member: "m4" },
-  )
-
-  const scores = await redis.zmscore("key", ["m2", "m4"])
-  console.log(scores) // [2, 4]
+  assert redis.zlexcount("myset", "-", "+") == 3
   ```
 </RequestExample>

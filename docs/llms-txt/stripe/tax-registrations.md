@@ -117,14 +117,9 @@ result, err := sc.V1AccountSessions.Create(context.TODO(), params)
 var options = new AccountSessionCreateOptions
 {
     Account = "{{CONNECTEDACCOUNT_ID}}",
-    Components = new AccountSessionComponentsOptions
-    {
-        TaxRegistrations = new AccountSessionComponentsTaxRegistrationsOptions
-        {
-            Enabled = true,
-        },
-    },
+    Components = new AccountSessionComponentsOptions(),
 };
+options.AddExtraParam("components[tax_registrations][enabled]", true);
 var client = new StripeClient("<<YOUR_SECRET_KEY>>");
 var service = client.V1.AccountSessions;
 AccountSession accountSession = service.Create(options);

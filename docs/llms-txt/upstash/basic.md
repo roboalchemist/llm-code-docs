@@ -1,29 +1,26 @@
 # Source: https://upstash.com/docs/workflow/howto/realtime/basic.md
 
-# Real-time Workflow Updates
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
-When you [trigger a workflow](/workflow/howto/start), your workflow starts executing as a background job. Traditionally, the only way to check workflow status is by repeatedly calling [`client.logs`](/workflow/basics/client/logs) to fetch the workflow state. However, this approach is slow and expensive. A better solution is to use [**Upstash Realtime**](/realtime/overall/quickstart), which enables you to emit events from your workflow and subscribe to them in real-time on your frontend.
+# Realtime Quickstart
+
+[**Upstash Realtime**](/realtime/overall/quickstart) lets you emit events from your workflow and subscribe to them in real-time on your frontend.
 
 ## How It Works
 
-[Upstash Realtime](/realtime/overall/quickstart) is powered by [Upstash Redis](/redis/overall/getstarted) and provides a simple API for publishing and subscribing to events:
+Upstash Realtime is powered by Upstash Redis and provides a clean, 100% type-safe API for publishing and subscribing to events:
 
-* When you **emit** an event, it's instantly delivered to live subscribers and stored for later retrieval
-* Your frontend can **subscribe** to these events in real-time
-* You can also fetch events emitted in the past
+* Your frontend can subscribe to events
+* When you **emit** an event, it's instantly delivered to live subscribers on the frontend
+* You can also replay events that happened in the past
 
 This guide shows you how to integrate Upstash Workflow with Upstash Realtime to display real-time progress updates in your frontend.
 
-## Prerequisites
-
-* An Upstash account with:
-  * A QStash project for workflows
-  * A Redis database for Realtime
-* Next.js application set up
-
 ## Setup
 
-### 1. Install Dependencies
+### 1. Install Packages
 
 ```bash  theme={"system"}
 npm install @upstash/workflow @upstash/realtime @upstash/redis zod
@@ -34,24 +31,20 @@ npm install @upstash/workflow @upstash/realtime @upstash/redis zod
 Create a Realtime instance in `lib/realtime.ts`:
 
 ```typescript  theme={"system"}
-import { InferRealtimeEvents, Realtime } from "@upstash/realtime";
-import { Redis } from "@upstash/redis";
-import z from "zod/v4";
+import { InferRealtimeEvents, Realtime } from "@upstash/realtime"
+import { Redis } from "@upstash/redis"
+import z from "zod/v4"
 
-const redis = Redis.fromEnv();
-
-const events = z.discriminatedUnion("type", [
-  z.object({ type: z.literal("runStart"), workflowRunId: z.string(), timestamp: z.number() }),
-  z.object({ type: z.literal("runFinish"), workflowRunId: z.string(), timestamp: z.number(), status: z.union([z.literal("success"), z.literal("failed")]), error: z.string().optional() }),
-  z.object({ type: z.literal("stepStart"), workflowRunId: z.string(), timestamp: z.number(), stepName: z.string() }),
-  z.object({ type: z.literal("stepFinish"), workflowRunId: z.string(), timestamp: z.number(), stepName: z.string(), result: z.unknown().optional() }),
-  z.object({ type: z.literal("stepFail"), workflowRunId: z.string(), timestamp: z.number(), stepName: z.string(), error: z.string() }),
-])
+const redis = Redis.fromEnv()
 
 const schema = {
   workflow: {
-    update: events
-  }
+    runFinish: z.object({}),
+    stepFinish: z.object({
+      stepName: z.string(),
+      result: z.unknown().optional(),
+    }),
+  },
 }
 
 export const realtime = new Realtime({ schema, redis })
@@ -62,333 +55,226 @@ export type RealtimeEvents = InferRealtimeEvents<typeof realtime>
 
 Create an API route at `app/api/realtime/route.ts` to handle Realtime connections:
 
-```typescript  theme={"system"}
-import { handle } from "@upstash/realtime";
-import { realtime } from "@/lib/realtime";
+```typescript title="app/api/realtime/route.ts" theme={"system"}
+import { handle } from "@upstash/realtime"
+import { realtime } from "@/lib/realtime"
 
-export const maxDuration = 300;
-
-export const GET = handle({ realtime });
+export const GET = handle({ realtime })
 ```
 
 This endpoint enables Server-Sent Events (SSE) connections for real-time updates.
+
+### 4. Add the Realtime Provider
+
+Wrap your application in the `RealtimeProvider` by updating your root layout at `app/layout.tsx`:
+
+```tsx title="app/layout.tsx" theme={"system"}
+"use client"
+
+import { RealtimeProvider } from "@upstash/realtime/client"
+
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+  return (
+    <html>
+      <body>
+        <RealtimeProvider>{children}</RealtimeProvider>
+      </body>
+    </html>
+  )
+}
+```
+
+### 5. Create a Typed Client Hook
+
+Create a typed `useRealtime` hook at `lib/realtime-client.ts`:
+
+```typescript title="lib/realtime-client.ts" theme={"system"}
+"use client"
+
+import { createRealtime } from "@upstash/realtime/client"
+import type { RealtimeEvents } from "./realtime"
+
+export const { useRealtime } = createRealtime<RealtimeEvents>()
+```
+
+***
 
 ## Building the Workflow
 
 ### 1. Create the Workflow Endpoint
 
-Create your workflow at `app/api/workflow/basic/route.ts`:
+Create your workflow at `app/api/workflow/route.ts`:
 
-```typescript  theme={"system"}
-import { serve } from "@upstash/workflow/nextjs";
-import { realtime } from "@/lib/realtime";
-import { WorkflowAbort } from "@upstash/workflow";
+```typescript title="app/api/workflow/route.ts" theme={"system"}
+import { serve } from "@upstash/workflow/nextjs"
+import { realtime } from "@/lib/realtime"
 
 type WorkflowPayload = {
-  userId: string;
-  action: string;
-};
+  userId: string
+  action: string
+}
 
-export const { POST } = serve<WorkflowPayload>(
-  async (context) => {
-    const { userId, action } = context.requestPayload;
-    const workflowRunId = context.workflowRunId;
+export const { POST } = serve<WorkflowPayload>(async (context) => {
+  const { userId, action } = context.requestPayload
+  const workflowRunId = context.workflowRunId
 
-    // Create a channel based on the workflow run ID
-    const channel = realtime.channel(workflowRunId);
+  const channel = realtime.channel(workflowRunId)
 
-    // Emit run start event
-    await context.run("start-workflow", () =>
-      channel.emit("workflow.update", {
-        type: "runStart",
-        workflowRunId,
-        timestamp: Date.now(),
-      })
-    );
+  await context.run("validate-data", async () => {
+    const result = { valid: true, userId, action }
 
-    // Step 1: Data Validation
-    try {
-      await context.run("validate-data", async () => {
-        // Emit step start
-        await channel.emit("workflow.update", {
-          type: "stepStart",
-          workflowRunId,
-          stepName: "validate-data",
-          timestamp: Date.now(),
-        });
+    // emit step completion
+    await channel.emit("workflow.stepFinish", {
+      stepName: "validate-data",
+      result,
+    })
 
-        // Your validation logic
-        if (!userId || !action) {
-          throw new Error("Missing required fields");
-        }
+    return result
+  })
 
-        const result = { valid: true, userId, action };
+  // emit run completion
+  await context.run("run-finish", () => channel.emit("workflow.runFinish", {}))
 
-        // sleep 500 ms
-        await new Promise((resolve) => setTimeout(resolve, 500));
-
-        // Emit step completion
-        await channel.emit("workflow.update", {
-          type: "stepFinish",
-          workflowRunId,
-          stepName: "validate-data",
-          timestamp: Date.now(),
-          result,
-        });
-
-        return result;
-      });
-    } catch (error) {
-      if (error instanceof WorkflowAbort) {
-        throw error;
-      }
-      // Emit failure event
-      await channel.emit("workflow.update", {
-        type: "stepFail",
-        workflowRunId,
-        stepName: "validate-data",
-        timestamp: Date.now(),
-        error: error instanceof Error ? error.message : "Unknown error",
-      });
-      throw error;
-    }
-
-    // Additional steps follow the same pattern...
-
-    // Emit run completion
-    await channel.emit("workflow.update", {
-      type: "runFinish",
-      workflowRunId,
-      timestamp: Date.now(),
-      status: "success",
-    });
-
-    return { success: true, workflowRunId };
-  },
-  {
-    // Handle workflow failures
-    failureFunction: async ({ context }) => {
-      const workflowRunId = context.workflowRunId;
-      const channel = realtime.channel(workflowRunId);
-
-      await channel.emit("workflow.update", {
-        type: "runFinish",
-        workflowRunId,
-        timestamp: Date.now(),
-        status: "failed",
-        error: "Workflow execution failed",
-      });
-    },
-  }
-);
+  return { success: true, workflowRunId }
+})
 ```
 
 **Key points:**
 
-* Use `realtime.channel(workflowRunId)` to create a unique channel per workflow run
-* Emit events at each significant step (start, step start/finish/fail, completion)
-* Wrap each step in try-catch to handle and emit failures
-* Use [`failureFunction`](/workflow/features/failure-callback) to emit failure events if the entire workflow fails
+* We use `realtime.channel(workflowRunId)` to create a unique channel per workflow run
+* Emit events after each step completes
+* Emit events inside `context.run` steps to ensure that they are emitted only once
+* Events are emitted to separate event names like `workflow.stepFinish` and `workflow.runFinish`
 
 ### 2. Create a Trigger Endpoint
 
 Create an endpoint to trigger workflows at `app/api/trigger/route.ts`:
 
-```typescript  theme={"system"}
-import { NextRequest, NextResponse } from "next/server";
-import { Client } from "@upstash/workflow";
+```typescript title="app/api/trigger/route.ts" theme={"system"}
+import { NextRequest, NextResponse } from "next/server"
+import { Client } from "@upstash/workflow"
 
 export const workflowClient = new Client({
   token: process.env.QSTASH_TOKEN,
   baseUrl: process.env.QSTASH_URL,
-});
+})
 
 export async function POST(request: NextRequest) {
-  try {
-    const body = await request.json() as { workflowType: string };
-    const workflowUrl = `${request.nextUrl.origin}/api/workflow/${body.workflowType}`;
+  const workflowUrl = `${request.nextUrl.origin}/api/workflow`
 
-    const { workflowRunId } = await workflowClient.trigger({
-      url: workflowUrl,
-      body: {
-        userId: "user-123",
-        action: "process-data",
-      },
-    });
+  const { workflowRunId } = await workflowClient.trigger({
+    url: workflowUrl,
+    body: {
+      userId: "user-123",
+      action: "process-data",
+    },
+  })
 
-    return NextResponse.json({ workflowRunId });
-  } catch (error) {
-    console.error("Error triggering workflow:", error);
-    return NextResponse.json(
-      { error: "Failed to trigger workflow" },
-      { status: 500 }
-    );
-  }
+  return NextResponse.json({ workflowRunId })
 }
 ```
+
+***
 
 ## Building the Frontend
 
 ### 1. Create a Custom Hook
 
-Create a React hook to manage the Realtime subscription at `hooks/useWorkflowWithRealtime.ts`:
+Create a React hook to manage the Realtime subscription at `hooks/useWorkflow.ts`:
 
 ```typescript  theme={"system"}
-"use client";
+"use client"
 
-import { useRealtime } from "@upstash/realtime/client";
-import { useState, useCallback } from "react";
-import type { RealtimeEvents } from "@/lib/realtime";
+import { useRealtime } from "@/lib/realtime-client"
+import { useState, useCallback } from "react"
 
 interface WorkflowStep {
-  stepName: string;
-  status: "running" | "completed" | "failed";
-  timestamp: number;
-  error?: string;
-  result?: unknown;
+  stepName: string
+  result?: unknown
 }
 
-export function useWorkflowWithRealtime() {
-  const [workflowRunId, setWorkflowRunId] = useState<string | null>(null);
-  const [steps, setSteps] = useState<WorkflowStep[]>([]);
-  const [isTriggering, setIsTriggering] = useState(false);
-  const [runStatus, setRunStatus] = useState<{
-    status: "running" | "success" | "failed";
-    error?: string;
-  } | null>(null);
+export function useWorkflow() {
+  const [workflowRunId, setWorkflowRunId] = useState<string | null>(null)
+  const [steps, setSteps] = useState<WorkflowStep[]>([])
+  const [isRunFinished, setIsRunFinished] = useState(false)
 
-  // Subscribe to workflow updates
-  useRealtime<RealtimeEvents>({
-    enabled: !!workflowRunId,
+  useRealtime({
+    enabled: Boolean(workflowRunId),
     channels: workflowRunId ? [workflowRunId] : [],
-    event: "workflow.update",
-    history: true, // Fetch past events on connection
-    onData(data) {
-      if (data.type === "runStart") {
-        setRunStatus({ status: "running" });
-      } else if (data.type === "runFinish") {
-        setRunStatus({
-          status: data.status,
-          error: data.error,
-        });
-      } else if (data.type === "stepStart") {
-        setSteps((prev) => [
-          ...prev,
-          {
-            stepName: data.stepName,
-            status: "running",
-            timestamp: data.timestamp,
-          },
-        ]);
-      } else if (data.type === "stepFinish") {
-        setSteps((prev) =>
-          prev.map((step) =>
-            step.stepName === data.stepName
-              ? { ...step, status: "completed", result: data.result }
-              : step
-          )
-        );
-      } else if (data.type === "stepFail") {
-        setSteps((prev) =>
-          prev.map((step) =>
-            step.stepName === data.stepName
-              ? { ...step, status: "failed", error: data.error }
-              : step
-          )
-        );
+    events: ["workflow.stepFinish", "workflow.runFinish"],
+    onData({ event, data }) {
+      if (event === "workflow.stepFinish") {
+        setSteps((data) => [...prev, data])
+      }
+
+      if (event === "workflow.runFinish") {
+        setIsRunFinished(true)
       }
     },
-  });
+  })
 
-  const trigger = useCallback(async () => {
-    setIsTriggering(true);
-    setSteps([]);
-    setRunStatus(null);
+  const trigger = () => {
+    setSteps([])
+    setIsRunFinished(false)
 
-    try {
-      const response = await fetch("/api/trigger", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ workflowType: "basic" }),
-      });
+    const response = await fetch("/api/trigger", {
+      method: "POST",
+    })
 
-      const data = await response.json();
-      setWorkflowRunId(data.workflowRunId);
-    } catch (error) {
-      console.error("Error triggering workflow:", error);
-    } finally {
-      setIsTriggering(false);
-    }
-  }, []);
+    const data = await response.json()
+    setWorkflowRunId(data.workflowRunId)
+  }
 
   return {
     trigger,
-    isTriggering,
     workflowRunId,
     steps,
-    runStatus,
-  };
+    isRunFinished,
+  }
 }
 ```
 
 **Key features:**
 
-* `history: true` fetches past events when connecting, so users can see what happened before they joined
+* Subscribe to multiple events using the `events` array: `["workflow.stepFinish", "workflow.runFinish"]`
 * The hook manages both triggering the workflow and subscribing to updates
 * Type-safe event handling with TypeScript
 
 ### 2. Use the Hook in Your Component
 
-```typescript  theme={"system"}
-"use client";
+```tsx  theme={"system"}
+"use client"
 
-import { useWorkflowWithRealtime } from "@/hooks/useWorkflowWithRealtime";
+import { useWorkflow } from "@/hooks/useWorkflow"
 
 export default function WorkflowPage() {
-  const { trigger, isTriggering, steps, runStatus } = useWorkflowWithRealtime();
+  const { trigger, steps, isRunFinished } = useWorkflow()
 
   return (
-    <div style={{ maxWidth: "600px", margin: "40px auto", fontFamily: "Arial, sans-serif" }}>
-      <button onClick={trigger} disabled={isTriggering}>
-        {isTriggering ? "Starting..." : "Click to Trigger Workflow"}
-      </button>
+    <div>
+      <button onClick={trigger}>Click to Trigger Workflow</button>
 
-      <h3 style={{ marginTop: "20px" }}>Run Status:</h3>
+      {isRunFinished && <p>✅ Workflow Finished!</p>}
 
-      {runStatus && (
-        <div>{runStatus.status}</div>
-      )}
+      <p>Workflow Steps:</p>
 
-      <h3 style={{ marginTop: "20px" }}>Workflow Steps:</h3>
-
-      <div>
-        {steps.map((step, index) => (
-          <div key={index}>
-            <strong>{step.stepName}</strong>: {step.status}
-            {step.error && <span> - {step.error}</span>}
-          </div>
-        ))}
-      </div>
+      {steps.map((step, index) => (
+        <div key={index}>
+          <strong>{step.stepName}</strong>
+          {Boolean(step.result) && <span>: {JSON.stringify(step.result)}</span>}
+        </div>
+      ))}
     </div>
-  );
+  )
 }
 ```
 
 ## How It All Works Together
 
 1. **User triggers workflow**: The frontend calls `/api/trigger`, which returns a `workflowRunId`
-2. **Workflow executes**: The workflow runs as a background job, emitting events at each step
-3. **Frontend subscribes**: Using the `workflowRunId`, the frontend subscribes to the Realtime channel
+2. **Frontend subscribes**: Using the `workflowRunId`, the frontend subscribes to the Realtime channel
+3. **Workflow executes**: The workflow runs as a background job, emitting events at each step
 4. **Real-time updates**: As the workflow emits events, they're instantly delivered to the frontend via Server-Sent Events
-5. **History on connect**: When connecting, `history: true` fetches past events from Redis, so users see the full progress even if they join late
-
-## Benefits Over Polling
-
-| Polling (`client.logs`)        | Realtime                      |
-| ------------------------------ | ----------------------------- |
-| Slow (requires HTTP requests)  | Instant (Server-Sent Events)  |
-| Expensive (repeated API calls) | Efficient (single connection) |
-| High latency (poll interval)   | Low latency (real-time)       |
 
 ## Full Example
 

@@ -53,5 +53,5 @@ Non-exhaustive list of status codes:
 
 Responses are in Prometheus format, the values are the same as in [/metrics/v1/values](metrics-v1.html#metrics-v1-values)
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 

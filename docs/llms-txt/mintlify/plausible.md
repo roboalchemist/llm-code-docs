@@ -1,4 +1,8 @@
-# Source: https://mintlify.com/docs/integrations/analytics/plausible.md
+# Source: https://www.mintlify.com/docs/integrations/analytics/plausible.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.mintlify.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Plausible
 
@@ -14,8 +18,8 @@ Add your site's domain to `docs.json` to send analytics to Plausible.
   ```json Analytics options in docs.json theme={null}
   "integrations": {
       "plausible": {
-          "domain": "required",
-          "server": "optional"
+          "domain": "required - your documentation domain",
+          "server": "optional - your self-hosted Plausible server URL"
       }
   }
   ```

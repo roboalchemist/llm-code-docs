@@ -15,7 +15,7 @@ When you [trigger a task](/triggering) from your backend code, you need to set t
 
 Each environment has its own secret key. You can find the value on the API keys page in the Trigger.dev dashboard:
 
-<img src="https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/api-keys.png?fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=89dd26bf57f345bad4508ee5eec70c8c" alt="How to find your secret key" data-og-width="1600" width="1600" data-og-height="900" height="900" data-path="images/api-keys.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/api-keys.png?w=280&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=988f98dd098b108ca51d8c0aeb829344 280w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/api-keys.png?w=560&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=14431ee3376a9a6b845744b0b3acce60 560w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/api-keys.png?w=840&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=9059b9369eb793b9df4cceee1f985286 840w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/api-keys.png?w=1100&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=ccd1e2a8512f491128a53cd4ebe8823f 1100w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/api-keys.png?w=1650&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=ab656ff2f4b95e32558aacaa485c86ea 1650w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/api-keys.png?w=2500&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=3bb0b87a8e1a3033a8ff1ba3590f5786 2500w" />
+<img alt="How to find your secret key" />
 
 <Note>
   For preview branches, you need to also set the `TRIGGER_PREVIEW_BRANCH` environment variable as
@@ -26,14 +26,14 @@ Each environment has its own secret key. You can find the value on the API keys 
 
 To automatically configure the SDK with your secret key, you can set the `TRIGGER_SECRET_KEY` environment variable. The SDK will automatically use this value when calling API methods (like `trigger`).
 
-```bash .env theme={null}
+```bash .env theme={"theme":"css-variables"}
 TRIGGER_SECRET_KEY="tr_dev_…"
 TRIGGER_PREVIEW_BRANCH="my-branch" # Only needed for preview branches
 ```
 
 You can do the same if you are self-hosting and need to change the default URL by using `TRIGGER_API_URL`.
 
-```bash .env theme={null}
+```bash .env theme={"theme":"css-variables"}
 TRIGGER_API_URL="https://trigger.example.com"
 TRIGGER_PREVIEW_BRANCH="my-branch" # Only needed for preview branches
 ```
@@ -44,7 +44,7 @@ The default URL is `https://api.trigger.dev`.
 
 If you prefer to manually configure the SDK, you can call the `configure` method:
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 import { configure } from "@trigger.dev/sdk";
 import { myTask } from "./trigger/myTasks";
 
@@ -60,6 +60,32 @@ async function triggerTask() {
 ```
 
 
+# Overview
+Source: https://trigger.dev/docs/building-with-ai
+
+Tools and resources for building Trigger.dev projects with AI coding assistants.
+
+We provide tools to help you build Trigger.dev projects with AI coding assistants. We recommend using them for the best developer experience.
+
+<CardGroup>
+  <Card title="MCP Server" icon="sparkles" href="/mcp-introduction">
+    Give your AI assistant direct access to Trigger.dev tools - search docs, trigger tasks, deploy projects, and monitor runs.
+
+    ```bash theme={"theme":"css-variables"}
+    npx trigger.dev@latest install-mcp
+    ```
+  </Card>
+
+  <Card title="Skills" icon="wand-magic-sparkles" href="/skills">
+    Portable instruction sets that teach any AI coding assistant Trigger.dev best practices for writing tasks, configs, and more.
+
+    ```bash theme={"theme":"css-variables"}
+    npx skills add triggerdotdev/skills
+    ```
+  </Card>
+</CardGroup>
+
+
 # Bulk actions
 Source: https://trigger.dev/docs/bulk-actions
 
@@ -67,33 +93,33 @@ Perform actions like replay and cancel on multiple runs at once.
 
 Bulk actions allow you to perform replaying and canceling on multiple runs at once. This is especially useful when you need to retry a batch of failed runs with a new version of your code, or when you need to cancel multiple in-progress runs.
 
-<video src="https://content.trigger.dev/bulk-actions.mp4" preload="auto" controls={true} loop muted autoPlay={true} width="100%" height="100%" />
+<video />
 
 ## How to create a new bulk action
 
-<Icon icon="circle-1" iconType="solid" color="#FF2D6B" size="20" /> Open the bulk action panel from the top right of the runs page
+<Icon icon="circle-1" /> Open the bulk action panel from the top right of the runs page
 
-<img src="https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/bulk-action-open-panel.png?fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=e514c6b6e2c85aa8dc9bbb2cc6604f21" alt="Access bulk actions" data-og-width="964" width="964" data-og-height="603" height="603" data-path="images/bulk-action-open-panel.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/bulk-action-open-panel.png?w=280&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=2db95026487a80b1d57ee2e9d323de2e 280w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/bulk-action-open-panel.png?w=560&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=deac85b94c6525e9ca7136e4d7901430 560w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/bulk-action-open-panel.png?w=840&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=390ddf4d7547afda4ef773ebd77df3a3 840w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/bulk-action-open-panel.png?w=1100&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=287b549119575900dcc9a35e2a7ab102 1100w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/bulk-action-open-panel.png?w=1650&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=64b3370c36d84378503b75a0ad69625e 1650w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/bulk-action-open-panel.png?w=2500&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=a27ba4f0c162eedea68d4aa30fea586d 2500w" />
+<img alt="Access bulk actions" />
 
-<Icon icon="circle-2" iconType="solid" color="#FF2D6B" size="20" /> Filter the runs table to show the runs you want to bulk action
+<Icon icon="circle-2" /> Filter the runs table to show the runs you want to bulk action
 
-<Icon icon="circle-3" iconType="solid" color="#FF2D6B" size="20" /> Alternatively, you can select individual runs
+<Icon icon="circle-3" /> Alternatively, you can select individual runs
 
-<Icon icon="circle-4" iconType="solid" color="#FF2D6B" size="20" /> Choose the runs you want to bulk action
+<Icon icon="circle-4" /> Choose the runs you want to bulk action
 
-<Icon icon="circle-5" iconType="solid" color="#FF2D6B" size="20" /> Name your bulk action (optional)
+<Icon icon="circle-5" /> Name your bulk action (optional)
 
-<Icon icon="circle-6" iconType="solid" color="#FF2D6B" size="20" /> Choose the action you want to perform, replay or cancel
+<Icon icon="circle-6" /> Choose the action you want to perform, replay or cancel
 
-<Icon icon="circle-7" iconType="solid" color="#FF2D6B" size="20" /> Click the "Replay" or "Cancel" button and confirm in the dialog
+<Icon icon="circle-7" /> Click the "Replay" or "Cancel" button and confirm in the dialog
 
-<img src="https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/bulk-action-create.png?fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=defba18d2817528b5cbbfbdac1b01552" alt="Access bulk actions" data-og-width="2259" width="2259" data-og-height="1367" height="1367" data-path="images/bulk-action-create.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/bulk-action-create.png?w=280&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=19fd9f671352330844e7f110ad14a0f8 280w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/bulk-action-create.png?w=560&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=87fd7db03b2a74b800ef8e0a604bd6f0 560w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/bulk-action-create.png?w=840&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=ea3a3098343e2d2e60da28dc7b9fef31 840w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/bulk-action-create.png?w=1100&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=8161348b29508970accc2f5446e50efe 1100w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/bulk-action-create.png?w=1650&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=924aaf1bb8da051d13bd69ea4519d7cd 1650w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/bulk-action-create.png?w=2500&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=6803e8104f4d87f836cf33c62b62a8d1 2500w" />
+<img alt="Access bulk actions" />
 
-<Icon icon="circle-8" iconType="solid" color="#FF2D6B" size="20" /> You'll now view the bulk action processing from the bulk action page
+<Icon icon="circle-8" /> You'll now view the bulk action processing from the bulk action page
 
-<Icon icon="circle-9" iconType="solid" color="#FF2D6B" size="20" /> You can replay or view the runs from this page
+<Icon icon="circle-9" /> You can replay or view the runs from this page
 
-<img src="https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/bulk-action-page.png?fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=a796b724494a8c0cce3883d2befc5b46" alt="Access bulk actions" data-og-width="2257" width="2257" data-og-height="1361" height="1361" data-path="images/bulk-action-page.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/bulk-action-page.png?w=280&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=7a3efe830f40fa011a4989395b15e379 280w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/bulk-action-page.png?w=560&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=f92ad95480036aa4aa2a8afc068ac13d 560w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/bulk-action-page.png?w=840&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=2608c90d86865c4e11f61ab04bae1500 840w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/bulk-action-page.png?w=1100&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=f76d6f0f705e3ee06b4093a6ab2f1d0e 1100w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/bulk-action-page.png?w=1650&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=1e717867248f17650f73fdfa29483255 1650w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/bulk-action-page.png?w=2500&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=0efccaacafe8c9b650ff5beee3f8b82e 2500w" />
+<img alt="Access bulk actions" />
 
 <Note>
   You can only cancel runs that are in states that allow cancellation (like QUEUED or EXECUTING).
@@ -117,15 +143,15 @@ Use the deploy command to deploy your tasks to Trigger.dev.
 Run the command like this:
 
 <CodeGroup>
-  ```bash npm theme={null}
+  ```bash npm theme={"theme":"css-variables"}
   npx trigger.dev@latest deploy
   ```
 
-  ```bash pnpm theme={null}
+  ```bash pnpm theme={"theme":"css-variables"}
   pnpm dlx trigger.dev@latest deploy
   ```
 
-  ```bash yarn theme={null}
+  ```bash yarn theme={"theme":"css-variables"}
   yarn dlx trigger.dev@latest deploy
   ```
 </CodeGroup>
@@ -152,128 +178,92 @@ When deploying from CI/CD environments such as GitHub Actions, GitLab CI, or Jen
 npx trigger.dev@latest deploy [path]
 ```
 
-<ParamField body="Project path" type="[path]">
+<ParamField type="[path]">
   The path to the project. Defaults to the current directory.
 </ParamField>
 
 ## Options
 
-<ParamField body="Config file" type="--config | -c">
+<ParamField type="--config | -c">
   The name of the config file found at the project path. Defaults to `trigger.config.ts`
 </ParamField>
 
-<ParamField body="Project ref" type="--project-ref | -p">
+<ParamField type="--project-ref | -p">
   The project ref. Required if there is no config file.
 </ParamField>
 
-<ParamField body="Env file" type="--env-file">
+<ParamField type="--env-file">
   Load environment variables from a file. This will only hydrate the `process.env` of the CLI
   process, not the tasks.
 </ParamField>
 
-<ParamField body="Skip update check" type="--skip-update-check">
+<ParamField type="--skip-update-check">
   Skip checking for `@trigger.dev` package updates.
 </ParamField>
 
-<ParamField body="Environment" type="--env | -e">
+<ParamField type="--env | -e">
   Defaults to `prod` but you can specify `staging` or `preview`. If you specify `preview` we will
   try and automatically detect the branch name from git.
 </ParamField>
 
-<ParamField body="Preview branch" type="--branch | -b">
+<ParamField type="--branch | -b">
   When using `--env preview` the branch is automatically detected from git. But you can manually
   specify it by using this option, e.g. `--branch my-branch` or `-b my-branch`.
 </ParamField>
 
-<ParamField body="Dry run" type="--dry-run">
+<ParamField type="--dry-run">
   Create a deployable build but don't deploy it. Prints out the build path so you can inspect it.
 </ParamField>
 
-<ParamField body="Skip promotion" type="--skip-promotion">
+<ParamField type="--skip-promotion">
   Skips automatically promoting the newly deployed version to the "current" deploy.
 </ParamField>
 
-<ParamField body="Skip syncing env vars" type="--skip-sync-env-vars">
+<ParamField type="--skip-sync-env-vars">
   Turn off syncing environment variables with the Trigger.dev instance.
+</ParamField>
+
+<ParamField type="--local-build">
+  Force building the deployment image locally using your local Docker. This is automatic when self-hosting.
 </ParamField>
 
 ### Common options
 
 These options are available on most commands.
 
-<ParamField body="Login profile" type="--profile">
+<ParamField type="--profile">
   The login profile to use. Defaults to "default".
 </ParamField>
 
-<ParamField body="API URL" type="--api-url | -a">
+<ParamField type="--api-url | -a">
   Override the default API URL. If not specified, it uses `https://api.trigger.dev`. This can also be set via the `TRIGGER_API_URL` environment variable.
 </ParamField>
 
-<ParamField body="Log level" type="--log-level | -l">
+<ParamField type="--log-level | -l">
   The CLI log level to use. Options are `debug`, `info`, `log`, `warn`, `error`, and `none`. This does not affect the log level of your trigger.dev tasks. Defaults to `log`.
 </ParamField>
 
-<ParamField body="Skip telemetry" type="--skip-telemetry">
+<ParamField type="--skip-telemetry">
   Opt-out of sending telemetry data. This can also be done via the `TRIGGER_TELEMETRY_DISABLED` environment variable. Just set it to anything other than an empty string.
 </ParamField>
 
-<ParamField body="Help" type="--help | -h">
+<ParamField type="--help | -h">
   Shows the help information for the command.
 </ParamField>
 
-<ParamField body="Version" type="--version | -v">
+<ParamField type="--version | -v">
   Displays the version number of the CLI.
 </ParamField>
 
 ### Self-hosting
 
-These options are typically used when [self-hosting](/open-source-self-hosting) or for local development.
+When [self-hosting](/self-hosting/overview), builds are performed locally by default. Once you've logged in to your self-hosted instance using the CLI, you can deploy with:
 
-<ParamField body="Self-hosted (builds locally)" type="--self-hosted">
-  Builds and loads the image using your local docker. Use the `--registry` option to specify the
-  registry to push the image to when using `--self-hosted`, or just use `--push` to push to the
-  default registry.
-</ParamField>
-
-<ParamField body="Skip deploying the image" type="--skip-deploy | -D">
-  Load the built image into your local docker.
-</ParamField>
-
-<ParamField body="Load image" type="--load-image">
-  Loads the image into your local docker after building it.
-</ParamField>
-
-<ParamField body="Registry" type="--registry">
-  Specify the registry to push the image to when using `--self-hosted`. Will automatically enable
-  `--push`.
-</ParamField>
-
-<ParamField body="Push image" type="--push">
-  When using the `--self-hosted` flag, push the image to the registry.
-</ParamField>
-
-<ParamField body="Namespace" type="--namespace">
-  The namespace to use when pushing the image to the registry. For example, if pushing to Docker
-  Hub, the namespace is your Docker Hub username.
-</ParamField>
-
-<ParamField body="Network" type="--network">
-  The networking mode for RUN instructions when using `--self-hosted`.
-</ParamField>
-
-## Examples
-
-### Push to Docker Hub (self-hosted)
-
-An example of deploying to Docker Hub when using a self-hosted setup:
-
-```bash  theme={null}
-npx trigger.dev@latest deploy \
-  --self-hosted \
-  --load-image \
-  --registry docker.io \
-  --namespace mydockerhubusername
+```bash theme={"theme":"css-variables"}
+npx trigger.dev@latest deploy
 ```
+
+For CI/CD environments, set `TRIGGER_ACCESS_TOKEN` and `TRIGGER_API_URL` environment variables. See the [GitHub Actions guide](/github-actions#self-hosting) for more details.
 
 
 # CLI dev command
@@ -284,15 +274,15 @@ The `trigger.dev dev` command is used to run your tasks locally.
 This runs a server on your machine that can execute Trigger.dev tasks:
 
 <CodeGroup>
-  ```bash npm theme={null}
+  ```bash npm theme={"theme":"css-variables"}
   npx trigger.dev@latest dev
   ```
 
-  ```bash pnpm theme={null}
+  ```bash pnpm theme={"theme":"css-variables"}
   pnpm dlx trigger.dev@latest dev
   ```
 
-  ```bash yarn theme={null}
+  ```bash yarn theme={"theme":"css-variables"}
   yarn dlx trigger.dev@latest dev
   ```
 </CodeGroup>
@@ -305,24 +295,24 @@ It is worth noting that each task runs in a separate Node process. This means th
 
 ## Options
 
-<ParamField body="Config file" type="--config | -c">
+<ParamField type="--config | -c">
   The name of the config file found at the project path. Defaults to `trigger.config.ts`
 </ParamField>
 
-<ParamField body="Project ref" type="--project-ref | -p">
+<ParamField type="--project-ref | -p">
   The project ref. Required if there is no config file.
 </ParamField>
 
-<ParamField body="Env file" type="--env-file">
+<ParamField type="--env-file">
   Load environment variables from a file. This will only hydrate the `process.env` of the CLI
   process, not the tasks.
 </ParamField>
 
-<ParamField body="Skip update check" type="--skip-update-check">
+<ParamField type="--skip-update-check">
   Skip checking for `@trigger.dev` package updates.
 </ParamField>
 
-<ParamField body="Analyze build output" type="--analyze">
+<ParamField type="--analyze">
   Analyzes the build output and displays detailed import timings. This is useful for debugging the
   start times for your runs which can be caused by importing lots of code or heavy packages.
 </ParamField>
@@ -331,27 +321,27 @@ It is worth noting that each task runs in a separate Node process. This means th
 
 These options are available on most commands.
 
-<ParamField body="Login profile" type="--profile">
+<ParamField type="--profile">
   The login profile to use. Defaults to "default".
 </ParamField>
 
-<ParamField body="API URL" type="--api-url | -a">
+<ParamField type="--api-url | -a">
   Override the default API URL. If not specified, it uses `https://api.trigger.dev`. This can also be set via the `TRIGGER_API_URL` environment variable.
 </ParamField>
 
-<ParamField body="Log level" type="--log-level | -l">
+<ParamField type="--log-level | -l">
   The CLI log level to use. Options are `debug`, `info`, `log`, `warn`, `error`, and `none`. This does not affect the log level of your trigger.dev tasks. Defaults to `log`.
 </ParamField>
 
-<ParamField body="Skip telemetry" type="--skip-telemetry">
+<ParamField type="--skip-telemetry">
   Opt-out of sending telemetry data. This can also be done via the `TRIGGER_TELEMETRY_DISABLED` environment variable. Just set it to anything other than an empty string.
 </ParamField>
 
-<ParamField body="Help" type="--help | -h">
+<ParamField type="--help | -h">
   Shows the help information for the command.
 </ParamField>
 
-<ParamField body="Version" type="--version | -v">
+<ParamField type="--version | -v">
   Displays the version number of the CLI.
 </ParamField>
 
@@ -359,13 +349,13 @@ These options are available on most commands.
 
 Install the concurrently package as a dev dependency:
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 concurrently --raw --kill-others npm:dev:remix npm:dev:trigger
 ```
 
 Then add something like this in your package.json scripts:
 
-```json  theme={null}
+```json theme={"theme":"css-variables"}
 "scripts": {
   "dev": "concurrently --raw --kill-others npm:dev:*",
   "dev:trigger": "npx trigger.dev@latest dev",
@@ -385,15 +375,15 @@ The `trigger.dev dev` command is used to run your tasks locally.
 This runs a server on your machine that can execute Trigger.dev tasks:
 
 <CodeGroup>
-  ```bash npm theme={null}
+  ```bash npm theme={"theme":"css-variables"}
   npx trigger.dev@latest dev
   ```
 
-  ```bash pnpm theme={null}
+  ```bash pnpm theme={"theme":"css-variables"}
   pnpm dlx trigger.dev@latest dev
   ```
 
-  ```bash yarn theme={null}
+  ```bash yarn theme={"theme":"css-variables"}
   yarn dlx trigger.dev@latest dev
   ```
 </CodeGroup>
@@ -406,24 +396,24 @@ It is worth noting that each task runs in a separate Node process. This means th
 
 ## Options
 
-<ParamField body="Config file" type="--config | -c">
+<ParamField type="--config | -c">
   The name of the config file found at the project path. Defaults to `trigger.config.ts`
 </ParamField>
 
-<ParamField body="Project ref" type="--project-ref | -p">
+<ParamField type="--project-ref | -p">
   The project ref. Required if there is no config file.
 </ParamField>
 
-<ParamField body="Env file" type="--env-file">
+<ParamField type="--env-file">
   Load environment variables from a file. This will only hydrate the `process.env` of the CLI
   process, not the tasks.
 </ParamField>
 
-<ParamField body="Skip update check" type="--skip-update-check">
+<ParamField type="--skip-update-check">
   Skip checking for `@trigger.dev` package updates.
 </ParamField>
 
-<ParamField body="Analyze build output" type="--analyze">
+<ParamField type="--analyze">
   Analyzes the build output and displays detailed import timings. This is useful for debugging the
   start times for your runs which can be caused by importing lots of code or heavy packages.
 </ParamField>
@@ -432,27 +422,27 @@ It is worth noting that each task runs in a separate Node process. This means th
 
 These options are available on most commands.
 
-<ParamField body="Login profile" type="--profile">
+<ParamField type="--profile">
   The login profile to use. Defaults to "default".
 </ParamField>
 
-<ParamField body="API URL" type="--api-url | -a">
+<ParamField type="--api-url | -a">
   Override the default API URL. If not specified, it uses `https://api.trigger.dev`. This can also be set via the `TRIGGER_API_URL` environment variable.
 </ParamField>
 
-<ParamField body="Log level" type="--log-level | -l">
+<ParamField type="--log-level | -l">
   The CLI log level to use. Options are `debug`, `info`, `log`, `warn`, `error`, and `none`. This does not affect the log level of your trigger.dev tasks. Defaults to `log`.
 </ParamField>
 
-<ParamField body="Skip telemetry" type="--skip-telemetry">
+<ParamField type="--skip-telemetry">
   Opt-out of sending telemetry data. This can also be done via the `TRIGGER_TELEMETRY_DISABLED` environment variable. Just set it to anything other than an empty string.
 </ParamField>
 
-<ParamField body="Help" type="--help | -h">
+<ParamField type="--help | -h">
   Shows the help information for the command.
 </ParamField>
 
-<ParamField body="Version" type="--version | -v">
+<ParamField type="--version | -v">
   Displays the version number of the CLI.
 </ParamField>
 
@@ -460,13 +450,13 @@ These options are available on most commands.
 
 Install the concurrently package as a dev dependency:
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 concurrently --raw --kill-others npm:dev:remix npm:dev:trigger
 ```
 
 Then add something like this in your package.json scripts:
 
-```json  theme={null}
+```json theme={"theme":"css-variables"}
 "scripts": {
   "dev": "concurrently --raw --kill-others npm:dev:*",
   "dev:trigger": "npx trigger.dev@latest dev",
@@ -486,43 +476,43 @@ Use these options when running the CLI `init` command.
 Run the command like this:
 
 <CodeGroup>
-  ```bash npm theme={null}
+  ```bash npm theme={"theme":"css-variables"}
   npx trigger.dev@latest init
   ```
 
-  ```bash pnpm theme={null}
+  ```bash pnpm theme={"theme":"css-variables"}
   pnpm dlx trigger.dev@latest init
   ```
 
-  ```bash yarn theme={null}
+  ```bash yarn theme={"theme":"css-variables"}
   yarn dlx trigger.dev@latest init
   ```
 </CodeGroup>
 
 ## Options
 
-<ParamField body="Javascript" type="--javascript">
+<ParamField type="--javascript">
   By default, the init command assumes you are using TypeScript. Use this flag to initialize a
   project that uses JavaScript.
 </ParamField>
 
-<ParamField body="Project ref" type="--project-ref | -p">
+<ParamField type="--project-ref | -p">
   The project ref to use when initializing the project.
 </ParamField>
 
-<ParamField body="Package tag" type="--tag | -t">
+<ParamField type="--tag | -t">
   The version of the `@trigger.dev/sdk` package to install. Defaults to `latest`.
 </ParamField>
 
-<ParamField body="Skip package install" type="--skip-package-install">
+<ParamField type="--skip-package-install">
   Skip installing the `@trigger.dev/sdk` package.
 </ParamField>
 
-<ParamField body="Override config" type="--override-config">
+<ParamField type="--override-config">
   Override the existing config file if it exists.
 </ParamField>
 
-<ParamField body="Package arguments" type="--pkg-args">
+<ParamField type="--pkg-args">
   Additional arguments to pass to the package manager. Accepts CSV for multiple args.
 </ParamField>
 
@@ -530,27 +520,27 @@ Run the command like this:
 
 These options are available on most commands.
 
-<ParamField body="Login profile" type="--profile">
+<ParamField type="--profile">
   The login profile to use. Defaults to "default".
 </ParamField>
 
-<ParamField body="API URL" type="--api-url | -a">
+<ParamField type="--api-url | -a">
   Override the default API URL. If not specified, it uses `https://api.trigger.dev`. This can also be set via the `TRIGGER_API_URL` environment variable.
 </ParamField>
 
-<ParamField body="Log level" type="--log-level | -l">
+<ParamField type="--log-level | -l">
   The CLI log level to use. Options are `debug`, `info`, `log`, `warn`, `error`, and `none`. This does not affect the log level of your trigger.dev tasks. Defaults to `log`.
 </ParamField>
 
-<ParamField body="Skip telemetry" type="--skip-telemetry">
+<ParamField type="--skip-telemetry">
   Opt-out of sending telemetry data. This can also be done via the `TRIGGER_TELEMETRY_DISABLED` environment variable. Just set it to anything other than an empty string.
 </ParamField>
 
-<ParamField body="Help" type="--help | -h">
+<ParamField type="--help | -h">
   Shows the help information for the command.
 </ParamField>
 
-<ParamField body="Version" type="--version | -v">
+<ParamField type="--version | -v">
   Displays the version number of the CLI.
 </ParamField>
 
@@ -562,11 +552,11 @@ The Trigger.dev CLI has a number of options and commands to help you develop loc
 
 ## Options
 
-<ParamField body="Help" type="--help | -h">
+<ParamField type="--help | -h">
   Shows the help information for the command.
 </ParamField>
 
-<ParamField body="Version" type="--version | -v">
+<ParamField type="--version | -v">
   Displays the version number of the CLI.
 </ParamField>
 
@@ -592,15 +582,15 @@ Use these options when using the `list-profiles` CLI command.
 Run the command like this:
 
 <CodeGroup>
-  ```bash npm theme={null}
+  ```bash npm theme={"theme":"css-variables"}
   npx trigger.dev@latest list-profiles
   ```
 
-  ```bash pnpm theme={null}
+  ```bash pnpm theme={"theme":"css-variables"}
   pnpm dlx trigger.dev@latest list-profiles
   ```
 
-  ```bash yarn theme={null}
+  ```bash yarn theme={"theme":"css-variables"}
   yarn dlx trigger.dev@latest list-profiles
   ```
 </CodeGroup>
@@ -611,19 +601,19 @@ Run the command like this:
 
 These options are available on most commands.
 
-<ParamField body="Log level" type="--log-level | -l">
+<ParamField type="--log-level | -l">
   The CLI log level to use. Options are `debug`, `info`, `log`, `warn`, `error`, and `none`. This does not affect the log level of your trigger.dev tasks. Defaults to `log`.
 </ParamField>
 
-<ParamField body="Skip telemetry" type="--skip-telemetry">
+<ParamField type="--skip-telemetry">
   Opt-out of sending telemetry data. This can also be done via the `TRIGGER_TELEMETRY_DISABLED` environment variable. Just set it to anything other than an empty string.
 </ParamField>
 
-<ParamField body="Help" type="--help | -h">
+<ParamField type="--help | -h">
   Shows the help information for the command.
 </ParamField>
 
-<ParamField body="Version" type="--version | -v">
+<ParamField type="--version | -v">
   Displays the version number of the CLI.
 </ParamField>
 
@@ -636,15 +626,15 @@ Use these options when logging in to Trigger.dev using the CLI.
 Run the command like this:
 
 <CodeGroup>
-  ```bash npm theme={null}
+  ```bash npm theme={"theme":"css-variables"}
   npx trigger.dev@latest login
   ```
 
-  ```bash pnpm theme={null}
+  ```bash pnpm theme={"theme":"css-variables"}
   pnpm dlx trigger.dev@latest login
   ```
 
-  ```bash yarn theme={null}
+  ```bash yarn theme={"theme":"css-variables"}
   yarn dlx trigger.dev@latest login
   ```
 </CodeGroup>
@@ -655,27 +645,27 @@ Run the command like this:
 
 These options are available on most commands.
 
-<ParamField body="Login profile" type="--profile">
+<ParamField type="--profile">
   The login profile to use. Defaults to "default".
 </ParamField>
 
-<ParamField body="API URL" type="--api-url | -a">
+<ParamField type="--api-url | -a">
   Override the default API URL. If not specified, it uses `https://api.trigger.dev`. This can also be set via the `TRIGGER_API_URL` environment variable.
 </ParamField>
 
-<ParamField body="Log level" type="--log-level | -l">
+<ParamField type="--log-level | -l">
   The CLI log level to use. Options are `debug`, `info`, `log`, `warn`, `error`, and `none`. This does not affect the log level of your trigger.dev tasks. Defaults to `log`.
 </ParamField>
 
-<ParamField body="Skip telemetry" type="--skip-telemetry">
+<ParamField type="--skip-telemetry">
   Opt-out of sending telemetry data. This can also be done via the `TRIGGER_TELEMETRY_DISABLED` environment variable. Just set it to anything other than an empty string.
 </ParamField>
 
-<ParamField body="Help" type="--help | -h">
+<ParamField type="--help | -h">
   Shows the help information for the command.
 </ParamField>
 
-<ParamField body="Version" type="--version | -v">
+<ParamField type="--version | -v">
   Displays the version number of the CLI.
 </ParamField>
 
@@ -688,15 +678,15 @@ Use these options when using the `logout` CLI command.
 Run the command like this:
 
 <CodeGroup>
-  ```bash npm theme={null}
+  ```bash npm theme={"theme":"css-variables"}
   npx trigger.dev@latest logout
   ```
 
-  ```bash pnpm theme={null}
+  ```bash pnpm theme={"theme":"css-variables"}
   pnpm dlx trigger.dev@latest logout
   ```
 
-  ```bash yarn theme={null}
+  ```bash yarn theme={"theme":"css-variables"}
   yarn dlx trigger.dev@latest logout
   ```
 </CodeGroup>
@@ -707,27 +697,27 @@ Run the command like this:
 
 These options are available on most commands.
 
-<ParamField body="Login profile" type="--profile">
+<ParamField type="--profile">
   The login profile to use. Defaults to "default".
 </ParamField>
 
-<ParamField body="API URL" type="--api-url | -a">
+<ParamField type="--api-url | -a">
   Override the default API URL. If not specified, it uses `https://api.trigger.dev`. This can also be set via the `TRIGGER_API_URL` environment variable.
 </ParamField>
 
-<ParamField body="Log level" type="--log-level | -l">
+<ParamField type="--log-level | -l">
   The CLI log level to use. Options are `debug`, `info`, `log`, `warn`, `error`, and `none`. This does not affect the log level of your trigger.dev tasks. Defaults to `log`.
 </ParamField>
 
-<ParamField body="Skip telemetry" type="--skip-telemetry">
+<ParamField type="--skip-telemetry">
   Opt-out of sending telemetry data. This can also be done via the `TRIGGER_TELEMETRY_DISABLED` environment variable. Just set it to anything other than an empty string.
 </ParamField>
 
-<ParamField body="Help" type="--help | -h">
+<ParamField type="--help | -h">
   Shows the help information for the command.
 </ParamField>
 
-<ParamField body="Version" type="--version | -v">
+<ParamField type="--version | -v">
   Displays the version number of the CLI.
 </ParamField>
 
@@ -740,15 +730,15 @@ The `trigger.dev preview archive` command can be used to archive a preview branc
 Run the command like this:
 
 <CodeGroup>
-  ```bash npm theme={null}
+  ```bash npm theme={"theme":"css-variables"}
   npx trigger.dev@latest preview archive
   ```
 
-  ```bash pnpm theme={null}
+  ```bash pnpm theme={"theme":"css-variables"}
   pnpm dlx trigger.dev@latest preview archive
   ```
 
-  ```bash yarn theme={null}
+  ```bash yarn theme={"theme":"css-variables"}
   yarn dlx trigger.dev@latest preview archive
   ```
 </CodeGroup>
@@ -761,31 +751,31 @@ It will archive the preview branch, automatically detecting the branch name from
 npx trigger.dev@latest preview archive [path]
 ```
 
-<ParamField body="Project path" type="[path]">
+<ParamField type="[path]">
   The path to the project. Defaults to the current directory.
 </ParamField>
 
 ## Options
 
-<ParamField body="Preview branch" type="--branch | -b">
+<ParamField type="--branch | -b">
   When using `--env preview` the branch is automatically detected from git. But you can manually
   specify it by using this option, e.g. `--branch my-branch` or `-b my-branch`.
 </ParamField>
 
-<ParamField body="Config file" type="--config | -c">
+<ParamField type="--config | -c">
   The name of the config file found at the project path. Defaults to `trigger.config.ts`
 </ParamField>
 
-<ParamField body="Project ref" type="--project-ref | -p">
+<ParamField type="--project-ref | -p">
   The project ref. Required if there is no config file.
 </ParamField>
 
-<ParamField body="Env file" type="--env-file">
+<ParamField type="--env-file">
   Load environment variables from a file. This will only hydrate the `process.env` of the CLI
   process, not the tasks.
 </ParamField>
 
-<ParamField body="Skip update check" type="--skip-update-check">
+<ParamField type="--skip-update-check">
   Skip checking for `@trigger.dev` package updates.
 </ParamField>
 
@@ -793,27 +783,27 @@ npx trigger.dev@latest preview archive [path]
 
 These options are available on most commands.
 
-<ParamField body="Login profile" type="--profile">
+<ParamField type="--profile">
   The login profile to use. Defaults to "default".
 </ParamField>
 
-<ParamField body="API URL" type="--api-url | -a">
+<ParamField type="--api-url | -a">
   Override the default API URL. If not specified, it uses `https://api.trigger.dev`. This can also be set via the `TRIGGER_API_URL` environment variable.
 </ParamField>
 
-<ParamField body="Log level" type="--log-level | -l">
+<ParamField type="--log-level | -l">
   The CLI log level to use. Options are `debug`, `info`, `log`, `warn`, `error`, and `none`. This does not affect the log level of your trigger.dev tasks. Defaults to `log`.
 </ParamField>
 
-<ParamField body="Skip telemetry" type="--skip-telemetry">
+<ParamField type="--skip-telemetry">
   Opt-out of sending telemetry data. This can also be done via the `TRIGGER_TELEMETRY_DISABLED` environment variable. Just set it to anything other than an empty string.
 </ParamField>
 
-<ParamField body="Help" type="--help | -h">
+<ParamField type="--help | -h">
   Shows the help information for the command.
 </ParamField>
 
-<ParamField body="Version" type="--version | -v">
+<ParamField type="--version | -v">
   Displays the version number of the CLI.
 </ParamField>
 
@@ -826,15 +816,15 @@ Use the promote command to promote a previously deployed version to the current 
 Run the command like this:
 
 <CodeGroup>
-  ```bash npm theme={null}
+  ```bash npm theme={"theme":"css-variables"}
   npx trigger.dev@latest promote [version]
   ```
 
-  ```bash pnpm theme={null}
+  ```bash pnpm theme={"theme":"css-variables"}
   pnpm dlx trigger.dev@latest promote [version]
   ```
 
-  ```bash yarn theme={null}
+  ```bash yarn theme={"theme":"css-variables"}
   yarn dlx trigger.dev@latest promote [version]
   ```
 </CodeGroup>
@@ -845,7 +835,7 @@ Run the command like this:
 npx trigger.dev@latest promote [version]
 ```
 
-<ParamField body="Deployment version" type="[version]">
+<ParamField type="[version]">
   The version to promote. This is the version that was previously deployed.
 </ParamField>
 
@@ -853,27 +843,27 @@ npx trigger.dev@latest promote [version]
 
 These options are available on most commands.
 
-<ParamField body="Login profile" type="--profile">
+<ParamField type="--profile">
   The login profile to use. Defaults to "default".
 </ParamField>
 
-<ParamField body="API URL" type="--api-url | -a">
+<ParamField type="--api-url | -a">
   Override the default API URL. If not specified, it uses `https://api.trigger.dev`. This can also be set via the `TRIGGER_API_URL` environment variable.
 </ParamField>
 
-<ParamField body="Log level" type="--log-level | -l">
+<ParamField type="--log-level | -l">
   The CLI log level to use. Options are `debug`, `info`, `log`, `warn`, `error`, and `none`. This does not affect the log level of your trigger.dev tasks. Defaults to `log`.
 </ParamField>
 
-<ParamField body="Skip telemetry" type="--skip-telemetry">
+<ParamField type="--skip-telemetry">
   Opt-out of sending telemetry data. This can also be done via the `TRIGGER_TELEMETRY_DISABLED` environment variable. Just set it to anything other than an empty string.
 </ParamField>
 
-<ParamField body="Help" type="--help | -h">
+<ParamField type="--help | -h">
   Shows the help information for the command.
 </ParamField>
 
-<ParamField body="Version" type="--version | -v">
+<ParamField type="--version | -v">
   Displays the version number of the CLI.
 </ParamField>
 
@@ -886,15 +876,15 @@ The `trigger.dev switch` command can be used to switch between profiles.
 Run the command like this:
 
 <CodeGroup>
-  ```bash npm theme={null}
+  ```bash npm theme={"theme":"css-variables"}
   npx trigger.dev@latest switch [profile]
   ```
 
-  ```bash pnpm theme={null}
+  ```bash pnpm theme={"theme":"css-variables"}
   pnpm dlx trigger.dev@latest switch [profile]
   ```
 
-  ```bash yarn theme={null}
+  ```bash yarn theme={"theme":"css-variables"}
   yarn dlx trigger.dev@latest switch [profile]
   ```
 </CodeGroup>
@@ -907,7 +897,7 @@ It will switch to the specified profile. If no profile is specified, it will lis
 npx trigger.dev@latest switch [profile]
 ```
 
-<ParamField body="Profile" type="[profile]">
+<ParamField type="[profile]">
   The profile to switch to. If not specified, it will list all available profiles and run interactively.
 </ParamField>
 
@@ -920,15 +910,15 @@ Use these options when using the `update` CLI command.
 Run the command like this:
 
 <CodeGroup>
-  ```bash npm theme={null}
+  ```bash npm theme={"theme":"css-variables"}
   npx trigger.dev@latest update
   ```
 
-  ```bash pnpm theme={null}
+  ```bash pnpm theme={"theme":"css-variables"}
   pnpm dlx trigger.dev@latest update
   ```
 
-  ```bash yarn theme={null}
+  ```bash yarn theme={"theme":"css-variables"}
   yarn dlx trigger.dev@latest update
   ```
 </CodeGroup>
@@ -939,19 +929,19 @@ Run the command like this:
 
 These options are available on most commands.
 
-<ParamField body="Log level" type="--log-level | -l">
+<ParamField type="--log-level | -l">
   The CLI log level to use. Options are `debug`, `info`, `log`, `warn`, `error`, and `none`. This does not affect the log level of your trigger.dev tasks. Defaults to `log`.
 </ParamField>
 
-<ParamField body="Skip telemetry" type="--skip-telemetry">
+<ParamField type="--skip-telemetry">
   Opt-out of sending telemetry data. This can also be done via the `TRIGGER_TELEMETRY_DISABLED` environment variable. Just set it to anything other than an empty string.
 </ParamField>
 
-<ParamField body="Help" type="--help | -h">
+<ParamField type="--help | -h">
   Shows the help information for the command.
 </ParamField>
 
-<ParamField body="Version" type="--version | -v">
+<ParamField type="--version | -v">
   Displays the version number of the CLI.
 </ParamField>
 
@@ -964,15 +954,15 @@ Use these options to display the current logged in user and project details.
 Run the command like this:
 
 <CodeGroup>
-  ```bash npm theme={null}
+  ```bash npm theme={"theme":"css-variables"}
   npx trigger.dev@latest whoami
   ```
 
-  ```bash pnpm theme={null}
+  ```bash pnpm theme={"theme":"css-variables"}
   pnpm dlx trigger.dev@latest whoami
   ```
 
-  ```bash yarn theme={null}
+  ```bash yarn theme={"theme":"css-variables"}
   yarn dlx trigger.dev@latest whoami
   ```
 </CodeGroup>
@@ -983,27 +973,27 @@ Run the command like this:
 
 These options are available on most commands.
 
-<ParamField body="Login profile" type="--profile">
+<ParamField type="--profile">
   The login profile to use. Defaults to "default".
 </ParamField>
 
-<ParamField body="API URL" type="--api-url | -a">
+<ParamField type="--api-url | -a">
   Override the default API URL. If not specified, it uses `https://api.trigger.dev`. This can also be set via the `TRIGGER_API_URL` environment variable.
 </ParamField>
 
-<ParamField body="Log level" type="--log-level | -l">
+<ParamField type="--log-level | -l">
   The CLI log level to use. Options are `debug`, `info`, `log`, `warn`, `error`, and `none`. This does not affect the log level of your trigger.dev tasks. Defaults to `log`.
 </ParamField>
 
-<ParamField body="Skip telemetry" type="--skip-telemetry">
+<ParamField type="--skip-telemetry">
   Opt-out of sending telemetry data. This can also be done via the `TRIGGER_TELEMETRY_DISABLED` environment variable. Just set it to anything other than an empty string.
 </ParamField>
 
-<ParamField body="Help" type="--help | -h">
+<ParamField type="--help | -h">
   Shows the help information for the command.
 </ParamField>
 
-<ParamField body="Version" type="--version | -v">
+<ParamField type="--version | -v">
   Displays the version number of the CLI.
 </ParamField>
 
@@ -1023,7 +1013,7 @@ This file is used to configure your project and how it's built.
 
 The `trigger.config.ts` file is used to configure your Trigger.dev project. It is a TypeScript file at the root of your project that exports a default configuration object. Here's an example:
 
-```ts trigger.config.ts theme={null}
+```ts trigger.config.ts theme={"theme":"css-variables"}
 import { defineConfig } from "@trigger.dev/sdk";
 
 export default defineConfig({
@@ -1065,7 +1055,7 @@ The config file handles a lot of things, like:
 
 You can specify the directories where your tasks are located using the `dirs` option:
 
-```ts trigger.config.ts theme={null}
+```ts trigger.config.ts theme={"theme":"css-variables"}
 import { defineConfig } from "@trigger.dev/sdk";
 
 export default defineConfig({
@@ -1078,7 +1068,7 @@ If you omit the `dirs` option, we will automatically detect directories that are
 
 We will search for TypeScript and JavaScript files in the specified directories and include them in the build process. We automatically exclude files that have `.test` or `.spec` in the name, but you can customize this by specifying glob patterns in the `ignorePatterns` option:
 
-```ts trigger.config.ts theme={null}
+```ts trigger.config.ts theme={"theme":"css-variables"}
 import { defineConfig } from "@trigger.dev/sdk";
 
 export default defineConfig({
@@ -1092,7 +1082,7 @@ export default defineConfig({
 
 You can specify a custom path to your tsconfig file. This is useful if you have a custom tsconfig file that you want to use.
 
-```ts trigger.config.ts theme={null}
+```ts trigger.config.ts theme={"theme":"css-variables"}
 import { defineConfig } from "@trigger.dev/sdk";
 
 export default defineConfig({
@@ -1106,7 +1096,7 @@ export default defineConfig({
 
 You can add lifecycle functions to get notified when any task starts, succeeds, or fails using `onStart`, `onSuccess` and `onFailure`:
 
-```ts trigger.config.ts theme={null}
+```ts trigger.config.ts theme={"theme":"css-variables"}
 import { defineConfig } from "@trigger.dev/sdk";
 
 export default defineConfig({
@@ -1133,11 +1123,11 @@ Read more about task lifecycle functions in the [tasks overview](/tasks/overview
 
 We use OpenTelemetry (OTEL) for our run logs. This means you get a lot of information about your tasks with no effort. But you probably want to add more information to your logs. For example, here's all the Prisma calls automatically logged:
 
-<img src="https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/auto-instrumentation.png?fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=c23b7b3b9b853d52af2850b732e576d7" alt="The run log" data-og-width="1442" width="1442" data-og-height="521" height="521" data-path="images/auto-instrumentation.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/auto-instrumentation.png?w=280&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=d087748854dbe051414c3f842f183af8 280w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/auto-instrumentation.png?w=560&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=c86e6cc078f69e7585836db0561eae15 560w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/auto-instrumentation.png?w=840&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=c03cb732f67e320ac58efc3fd6001a66 840w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/auto-instrumentation.png?w=1100&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=f91182e7070b80515e916f1401c40212 1100w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/auto-instrumentation.png?w=1650&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=6182199af22c75f77a02bdfb9a8d42d5 1650w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/auto-instrumentation.png?w=2500&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=b161da0f8c3c970e234e7574c0042951 2500w" />
+<img alt="The run log" />
 
 Here we add Prisma and OpenAI instrumentations to your `trigger.config.ts` file.
 
-```ts trigger.config.ts theme={null}
+```ts trigger.config.ts theme={"theme":"css-variables"}
 import { defineConfig } from "@trigger.dev/sdk";
 import { PrismaInstrumentation } from "@prisma/instrumentation";
 import { OpenAIInstrumentation } from "@traceloop/instrumentation-openai";
@@ -1169,7 +1159,7 @@ Some ones we recommend:
 
 You can also configure custom telemetry exporters to send your traces and logs to other external services. For example, you can send your logs to [Axiom](https://axiom.co/docs/guides/opentelemetry-nodejs#exporter-instrumentation-ts). First, add the opentelemetry exporter packages to your package.json file:
 
-```json package.json theme={null}
+```json package.json theme={"theme":"css-variables"}
 "dependencies": {
   "@opentelemetry/exporter-logs-otlp-http": "0.52.1",
   "@opentelemetry/exporter-trace-otlp-http": "0.52.1"
@@ -1178,7 +1168,7 @@ You can also configure custom telemetry exporters to send your traces and logs t
 
 Then, configure the exporters in your `trigger.config.ts` file:
 
-```ts trigger.config.ts theme={null}
+```ts trigger.config.ts theme={"theme":"css-variables"}
 import { defineConfig } from "@trigger.dev/sdk";
 import { OTLPTraceExporter } from "@opentelemetry/exporter-trace-otlp-http";
 import { OTLPLogExporter } from "@opentelemetry/exporter-logs-otlp-http";
@@ -1217,7 +1207,7 @@ Make sure to set the `AXIOM_API_TOKEN` and `AXIOM_DATASET` environment variables
 
 It's important to note that you cannot configure exporters using `OTEL_*` environment variables, as they would conflict with our internal telemetry. Instead you should configure the exporters via passing in arguments to the `OTLPTraceExporter` and `OTLPLogExporter` constructors. For example, here is how you can configure exporting to Honeycomb:
 
-```ts trigger.config.ts theme={null}
+```ts trigger.config.ts theme={"theme":"css-variables"}
 import { defineConfig } from "@trigger.dev/sdk";
 import { OTLPTraceExporter } from "@opentelemetry/exporter-trace-otlp-http";
 import { OTLPLogExporter } from "@opentelemetry/exporter-logs-otlp-http";
@@ -1256,7 +1246,7 @@ export default defineConfig({
 
 We currently only officially support the `node` runtime, but you can try our experimental `bun` runtime by setting the `runtime` option in your config file:
 
-```ts trigger.config.ts theme={null}
+```ts trigger.config.ts theme={"theme":"css-variables"}
 import { defineConfig } from "@trigger.dev/sdk";
 
 export default defineConfig({
@@ -1280,11 +1270,11 @@ Trigger.dev runs your tasks on specific Node.js versions:
 
 * Node.js `21.7.3` (default)
 * Node.js `22.16.0` (`node-22`)
-* Bun `1.2.20` (`bun`)
+* Bun `1.3.3` (`bun`)
 
 You can change the runtime by setting the `runtime` field in your `trigger.config.ts` file.
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 import { defineConfig } from "@trigger.dev/sdk";
 
 export default defineConfig({
@@ -1298,7 +1288,7 @@ export default defineConfig({
 
 You can specify the default machine for all tasks in your project:
 
-```ts trigger.config.ts theme={null}
+```ts trigger.config.ts theme={"theme":"css-variables"}
 import { defineConfig } from "@trigger.dev/sdk";
 
 export default defineConfig({
@@ -1314,7 +1304,7 @@ See our [machines documentation](/machines) for more information.
 
 You can set the log level for your project:
 
-```ts trigger.config.ts theme={null}
+```ts trigger.config.ts theme={"theme":"css-variables"}
 import { defineConfig } from "@trigger.dev/sdk";
 
 export default defineConfig({
@@ -1330,7 +1320,7 @@ The `logLevel` only determines which logs are sent to the Trigger.dev instance w
 
 You can control console logging behavior in development:
 
-```ts trigger.config.ts theme={null}
+```ts trigger.config.ts theme={"theme":"css-variables"}
 import { defineConfig } from "@trigger.dev/sdk";
 
 export default defineConfig({
@@ -1345,7 +1335,7 @@ export default defineConfig({
 
 You can set the default `maxDuration` for all tasks in your project:
 
-```ts trigger.config.ts theme={null}
+```ts trigger.config.ts theme={"theme":"css-variables"}
 import { defineConfig } from "@trigger.dev/sdk";
 
 export default defineConfig({
@@ -1363,7 +1353,7 @@ Keep the process alive after the task has finished running so the next task does
 
 Note that the process could be killed at any time, and we don't make any guarantees about the process being alive for a certain amount of time
 
-```ts trigger.config.ts theme={null}
+```ts trigger.config.ts theme={"theme":"css-variables"}
 import { defineConfig } from "@trigger.dev/sdk";
 
 export default defineConfig({
@@ -1375,7 +1365,7 @@ export default defineConfig({
 
 You can pass an object to the `processKeepAlive` option to configure the behavior:
 
-```ts trigger.config.ts theme={null}
+```ts trigger.config.ts theme={"theme":"css-variables"}
 import { defineConfig } from "@trigger.dev/sdk";
 
 export default defineConfig({
@@ -1395,7 +1385,7 @@ export default defineConfig({
 
 You can control the working directory behavior in development:
 
-```ts trigger.config.ts theme={null}
+```ts trigger.config.ts theme={"theme":"css-variables"}
 import { defineConfig } from "@trigger.dev/sdk";
 
 export default defineConfig({
@@ -1411,7 +1401,7 @@ When set to `false`, the current working directory will be set to the build dire
 
 CA Cert file to be added to NODE\_EXTRA\_CA\_CERT environment variable, useful in use with self signed cert in the trigger.dev environment.
 
-```ts trigger.config.ts theme={null}
+```ts trigger.config.ts theme={"theme":"css-variables"}
 import { defineConfig } from "@trigger.dev/sdk";
 
 export default defineConfig({
@@ -1426,7 +1416,7 @@ export default defineConfig({
 
 You can customize the build process using the `build` option:
 
-```ts trigger.config.ts theme={null}
+```ts trigger.config.ts theme={"theme":"css-variables"}
 import { defineConfig } from "@trigger.dev/sdk";
 
 export default defineConfig({
@@ -1455,7 +1445,7 @@ export default defineConfig({
 
 All code is bundled by default, but you can exclude some packages from the bundle using the `external` option:
 
-```ts trigger.config.ts theme={null}
+```ts trigger.config.ts theme={"theme":"css-variables"}
 import { defineConfig } from "@trigger.dev/sdk";
 
 export default defineConfig({
@@ -1471,7 +1461,7 @@ When a package is excluded from the bundle, it will be added to a dynamically ge
 
 Each entry in the external should be a package name, not necessarily the import path. For example, if you want to exclude the `ai` package, but you are importing `ai/rsc`, you should just include `ai` in the `external` array:
 
-```ts trigger.config.ts theme={null}
+```ts trigger.config.ts theme={"theme":"css-variables"}
 import { defineConfig } from "@trigger.dev/sdk";
 
 export default defineConfig({
@@ -1483,16 +1473,32 @@ export default defineConfig({
 });
 ```
 
+#### WebAssembly (WASM) packages
+
+Packages that use WebAssembly (WASM) must be added to the `external` array. WASM files are binary modules that need to be loaded at runtime and cannot be bundled into JavaScript code. When you add a WASM package to `external`, the package will be installed as a dependency in the runtime environment, ensuring the WASM files are available at their expected paths.
+
+```ts trigger.config.ts theme={"theme":"css-variables"}
+import { defineConfig } from "@trigger.dev/sdk";
+
+export default defineConfig({
+  project: "<project ref>",
+  // Your other config settings...
+  build: {
+    external: ["your-wasm-package-name"],
+  },
+});
+```
+
 <Note>
-  Any packages that install or build a native binary should be added to external, as native binaries
-  cannot be bundled. For example, `re2`, `sharp`, and `sqlite3` should be added to external.
+  Any packages that install or build a native binary or use WebAssembly (WASM) should be added to external, as they
+  cannot be bundled. For example, `re2`, `sharp`, `sqlite3`, and WASM packages should be added to external.
 </Note>
 
 ### JSX
 
 You can customize the `jsx` options that are passed to `esbuild` using the `jsx` option:
 
-```ts trigger.config.ts theme={null}
+```ts trigger.config.ts theme={"theme":"css-variables"}
 import { defineConfig } from "@trigger.dev/sdk";
 
 export default defineConfig({
@@ -1519,7 +1525,7 @@ See the [esbuild JSX documentation](https://esbuild.github.io/content-types/#jsx
 
 You can add custom [import conditions](https://esbuild.github.io/api/#conditions) to your build using the `conditions` option:
 
-```ts trigger.config.ts theme={null}
+```ts trigger.config.ts theme={"theme":"css-variables"}
 import { defineConfig } from "@trigger.dev/sdk";
 
 export default defineConfig({
@@ -1583,7 +1589,7 @@ Use the additionalFiles build extension to copy additional files to the build di
 
 Import the `additionalFiles` build extension and use it in your `trigger.config.ts` file:
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 import { defineConfig } from "@trigger.dev/sdk";
 import { additionalFiles } from "@trigger.dev/build/extensions/core";
 
@@ -1605,7 +1611,7 @@ This extension effects both the `dev` and the `deploy` commands, and the resulti
 
 If you use `legacyDevProcessCwdBehaviour: false`, you can then do this:
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 import path from "node:path";
 
 // You can use `process.cwd()` if you use `legacyDevProcessCwdBehaviour: false`
@@ -1622,7 +1628,7 @@ Use the additionalPackages build extension to include additional packages in the
 
 Import the `additionalPackages` build extension and use it in your `trigger.config.ts` file:
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 import { defineConfig } from "@trigger.dev/sdk";
 import { additionalPackages } from "@trigger.dev/build/extensions/core";
 
@@ -1637,7 +1643,7 @@ export default defineConfig({
 
 This allows you to include additional packages in the build that are not automatically included via imports. This is useful if you want to install a package that includes a CLI tool that you want to invoke in your tasks via `exec`. We will try to automatically resolve the version of the package but you can specify the version by using the `@` symbol:
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 import { defineConfig } from "@trigger.dev/sdk";
 
 export default defineConfig({
@@ -1659,7 +1665,7 @@ Use the aptGet build extension to install system packages into the deployed imag
 
 You can install system packages into the deployed image using the `aptGet` extension:
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 import { defineConfig } from "@trigger.dev/sdk";
 import { aptGet } from "@trigger.dev/build/extensions/core";
 
@@ -1674,7 +1680,7 @@ export default defineConfig({
 
 If you want to install a specific version of a package, you can specify the version like this:
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 import { defineConfig } from "@trigger.dev/sdk";
 
 export default defineConfig({
@@ -1694,7 +1700,7 @@ Use the audioWaveform build extension to add support for Audio Waveform in your 
 
 Previously, we installed [Audio Waveform](https://github.com/bbc/audiowaveform) in the build image. That's been moved to a build extension:
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 import { defineConfig } from "@trigger.dev/sdk";
 import { audioWaveform } from "@trigger.dev/build/extensions/audioWaveform";
 
@@ -1728,7 +1734,7 @@ Build extensions allow you to hook into the build system and customize the build
 
 Build extensions are added to your `trigger.config.ts` file, with a required `name` and optional build hook functions. Here's a simple example of a build extension that just logs a message when the build starts:
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 import { defineConfig } from "@trigger.dev/sdk";
 
 export default defineConfig({
@@ -1753,7 +1759,7 @@ You can also extract that out into a function instead of defining it inline, in 
   code will work. Make sure it's version matches that of the installed `@trigger.dev/sdk` package.
 </Note>
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 import { defineConfig } from "@trigger.dev/sdk";
 import { BuildExtension } from "@trigger.dev/build";
 
@@ -1780,7 +1786,7 @@ function myExtension(): BuildExtension {
 
 This allows the extension to add additional dependencies to the list of externals for the build. This is useful for dependencies that are not included in the bundle, but are expected to be available at runtime.
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 import { defineConfig } from "@trigger.dev/sdk";
 
 export default defineConfig({
@@ -1802,7 +1808,7 @@ export default defineConfig({
 
 This hook runs before the build starts. It receives the `BuildContext` object as an argument.
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 import { defineConfig } from "@trigger.dev/sdk";
 
 export default defineConfig({
@@ -1822,7 +1828,7 @@ export default defineConfig({
 
 If you want to add an esbuild plugin, you must do so in the `onBuildStart` hook. Here's an example of adding a custom esbuild plugin:
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 import { defineConfig } from "@trigger.dev/sdk";
 
 export default defineConfig({
@@ -1852,7 +1858,7 @@ export default defineConfig({
 
 You can use the `BuildContext.target` property to determine if the build is for `dev` or `deploy`:
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 import { defineConfig } from "@trigger.dev/sdk";
 
 export default defineConfig({
@@ -1878,7 +1884,7 @@ export default defineConfig({
 
 This hook runs after the build completes. It receives the `BuildContext` object and a `BuildManifest` object as arguments. This is where you can add in one or more `BuildLayer`'s to the context.
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 import { defineConfig } from "@trigger.dev/sdk";
 
 export default defineConfig({
@@ -1905,7 +1911,7 @@ See the [addLayer](#addlayer) documentation for more information on how to use `
 
 Can either be `dev` or `deploy`, matching the CLI command name that is being run.
 
-```sh  theme={null}
+```sh theme={"theme":"css-variables"}
 npx trigger.dev@latest dev # BuildTarget is "dev"
 npx trigger.dev@latest deploy # BuildTarget is "deploy"
 ```
@@ -1914,18 +1920,18 @@ npx trigger.dev@latest deploy # BuildTarget is "deploy"
 
 ### addLayer()
 
-<ParamField path="layer" type="BuildLayer">
+<ParamField type="BuildLayer">
   The layer to add to the build context. See the [BuildLayer](#buildlayer) documentation for more
   information.
 </ParamField>
 
 ### registerPlugin()
 
-<ParamField path="plugin" type="esbuild.Plugin" required>
+<ParamField type="esbuild.Plugin">
   The esbuild plugin to register.
 </ParamField>
 
-<ParamField path="options" type="object">
+<ParamField type="object">
   <Expandable title="properties">
     <ResponseField name="target" type="BuildTarget">
       An optional target to register the plugin for. If not provided, the plugin will be registered
@@ -1943,21 +1949,21 @@ npx trigger.dev@latest deploy # BuildTarget is "deploy"
 
 Resolves a path relative to the project's working directory.
 
-<ParamField path="path" type="string">
+<ParamField type="string">
   The path to resolve.
 </ParamField>
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 const resolvedPath = context.resolvePath("my-other-dependency");
 ```
 
 ### properties
 
-<ParamField path="target" type="BuildTarget">
+<ParamField type="BuildTarget">
   The target of the build, either `dev` or `deploy`.
 </ParamField>
 
-<ParamField path="config" type="ResolvedConfig">
+<ParamField type="ResolvedConfig">
   <Expandable title="properties">
     <ResponseField name="runtime" type="string">
       The runtime of the project (either node or bun)
@@ -2001,27 +2007,27 @@ const resolvedPath = context.resolvePath("my-other-dependency");
   </Expandable>
 </ParamField>
 
-<ParamField path="logger" type="BuildLogger">
+<ParamField type="BuildLogger">
   A logger object that can be used to log messages to the console.
 </ParamField>
 
 ## BuildLayer
 
-<ParamField path="id" type="string">
+<ParamField type="string">
   A unique identifier for the layer.
 </ParamField>
 
-<ParamField path="commands" type="string[]">
+<ParamField type="string[]">
   An array of commands to run in the image build container.
 
-  ```ts  theme={null}
+  ```ts theme={"theme":"css-variables"}
   commands: ["echo 'Hello, world!'"];
   ```
 
   These commands are run after packages have been installed and the code copied into the container in the "build" stage of the Dockerfile. This means you cannot install system packages in these commands because they won't be available in the final stage. To do that, please use the `pkgs` property of the `image` object.
 </ParamField>
 
-<ParamField path="image" type="object">
+<ParamField type="object">
   <Expandable title="properties">
     <ResponseField name="pkgs" type="string[]">
       An array of system packages to install in the image build container.
@@ -2033,7 +2039,7 @@ const resolvedPath = context.resolvePath("my-other-dependency");
   </Expandable>
 </ParamField>
 
-<ParamField path="build" type="object">
+<ParamField type="object">
   <Expandable title="properties">
     <ResponseField name="env" type="Record<string, string>">
       Environment variables to add to the image build container, but only during the "build" stage
@@ -2043,7 +2049,7 @@ const resolvedPath = context.resolvePath("my-other-dependency");
   </Expandable>
 </ParamField>
 
-<ParamField path="deploy" type="object">
+<ParamField type="object">
   <Expandable title="properties">
     <ResponseField name="env" type="Record<string, string>">
       Environment variables that should sync to the Trigger.dev project, which will then be avalable
@@ -2053,11 +2059,11 @@ const resolvedPath = context.resolvePath("my-other-dependency");
   </Expandable>
 </ParamField>
 
-<ParamField path="dependencies" type="Record<string, string>">
+<ParamField type="Record<string, string>">
   An object of dependencies to add to the build. The key is the package name and the value is the
   version.
 
-  ```ts  theme={null}
+  ```ts theme={"theme":"css-variables"}
   dependencies: {
     "my-dependency": "^1.0.0",
   };
@@ -2068,7 +2074,7 @@ const resolvedPath = context.resolvePath("my-other-dependency");
 
 Add a command that will echo the value of an environment variable:
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 context.addLayer({
   id: "my-layer",
   commands: [`echo $MY_ENV_VAR`],
@@ -2084,14 +2090,14 @@ context.addLayer({
 
 When creating a build extension, you may run into issues with the build process. One thing that can help is turning on `debug` logging when running either `dev` or `deploy`:
 
-```sh  theme={null}
+```sh theme={"theme":"css-variables"}
 npx trigger.dev@latest dev --log-level debug
 npx trigger.dev@latest deploy --log-level debug
 ```
 
 Another helpful tool is the `--dry-run` flag on the `deploy` command, which will bundle your project and generate the Containerfile (e.g. the Dockerfile) without actually deploying it. This can help you see what the final image will look like and debug any issues with the build process.
 
-```sh  theme={null}
+```sh theme={"theme":"css-variables"}
 npx trigger.dev@latest deploy --dry-run
 ```
 
@@ -2105,7 +2111,7 @@ Use the emitDecoratorMetadata build extension to enable support for the emitDeco
 
 If you need support for the `emitDecoratorMetadata` typescript compiler option, import the `emitDecoratorMetadata` build extension and use it in your `trigger.config.ts` file:
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 import { defineConfig } from "@trigger.dev/sdk";
 import { emitDecoratorMetadata } from "@trigger.dev/build/extensions/typescript";
 
@@ -2135,7 +2141,7 @@ Use the esbuildPlugin build extension to add existing or custom esbuild plugins 
 
 You can easily add existing or custom esbuild plugins to your build process using the `esbuildPlugin` extension:
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 import { defineConfig } from "@trigger.dev/sdk";
 import { esbuildPlugin } from "@trigger.dev/build/extensions";
 import { sentryEsbuildPlugin } from "@sentry/esbuild-plugin";
@@ -2167,7 +2173,7 @@ Use the ffmpeg build extension to include FFmpeg in your project
 
 You can add the `ffmpeg` build extension to your build process:
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 import { defineConfig } from "@trigger.dev/sdk";
 import { ffmpeg } from "@trigger.dev/build/extensions/core";
 
@@ -2186,7 +2192,7 @@ By default, this will install the version of `ffmpeg` that is available in the D
 
 If you need FFmpeg 7.x, you can pass `{ version: "7" }` to the extension. This will install a static build of FFmpeg 7.x instead of using the Debian package:
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 import { defineConfig } from "@trigger.dev/sdk";
 import { ffmpeg } from "@trigger.dev/build/extensions/core";
 
@@ -2213,7 +2219,7 @@ Use the lightpanda build extension to add Lightpanda browser to your project
 
 To use the Lightpanda browser in your project, add the extension to your `trigger.config.ts` file:
 
-```ts trigger.config.ts theme={null}
+```ts trigger.config.ts theme={"theme":"css-variables"}
 import { defineConfig } from "@trigger.dev/sdk";
 import { lightpanda } from "@trigger.dev/build/extensions/lightpanda";
 
@@ -2232,7 +2238,7 @@ export default defineConfig({
 
 For example:
 
-```ts trigger.config.ts theme={null}
+```ts trigger.config.ts theme={"theme":"css-variables"}
 import { defineConfig } from "@trigger.dev/sdk";
 import { lightpanda } from "@trigger.dev/build/extensions/lightpanda";
 
@@ -2256,7 +2262,7 @@ When running in dev, you will first have to download the Lightpanda browser bina
 ## Next steps
 
 <CardGroup>
-  <Card title="Lightpanda" color="#6ac6e2" icon="bolt" href="/guides/examples/lightpanda">
+  <Card title="Lightpanda" icon="bolt" href="/guides/examples/lightpanda">
     Learn how to use Lightpanda in your project.
   </Card>
 </CardGroup>
@@ -2273,7 +2279,7 @@ You can use pre-built extensions by installing the `@trigger.dev/build` package 
 
 Build extensions are added to your `trigger.config.ts` file under the `build.extensions` property:
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 import { defineConfig } from "@trigger.dev/sdk";
 
 export default defineConfig({
@@ -2293,7 +2299,7 @@ export default defineConfig({
 
 If you are using a pre-built extension, you can import it from the `@trigger.dev/build` package:
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 import { defineConfig } from "@trigger.dev/sdk";
 import { ffmpeg } from "@trigger.dev/build/extensions/core";
 
@@ -2348,7 +2354,7 @@ If you are using [Playwright](https://playwright.dev/), you should use the Playw
 
 You can use it for a simple Playwright setup like this:
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 import { defineConfig } from "@trigger.dev/sdk";
 import { playwright } from "@trigger.dev/build/extensions/playwright";
 
@@ -2375,7 +2381,7 @@ export default defineConfig({
 
 ### Custom browsers and version
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 import { defineConfig } from "@trigger.dev/sdk";
 import { playwright } from "@trigger.dev/build/extensions/playwright";
 
@@ -2396,7 +2402,7 @@ export default defineConfig({
 
 By default, browsers are run in headless mode. If you need to run browsers with a UI (for example, for debugging), set `headless: false`. This will automatically set up a virtual display using Xvfb.
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 import { defineConfig } from "@trigger.dev/sdk";
 import { playwright } from "@trigger.dev/build/extensions/playwright";
 
@@ -2421,13 +2427,39 @@ The extension sets the following environment variables during the build:
 * `PLAYWRIGHT_SKIP_BROWSER_VALIDATION`: Set to `1` to skip browser validation at runtime
 * `DISPLAY`: Set to `:99` if `headless: false` (for Xvfb)
 
+## Troubleshooting
+
+### Browser download failures
+
+If you encounter errors during the build process related to browser downloads (e.g., "failed to solve: process did not complete successfully: exit code: 9"), this is a known issue with certain Playwright versions.
+
+**Workaround:** Revert Playwright to version `1.40.0` in your project dependencies. You can specify this version explicitly in your config:
+
+```ts theme={"theme":"css-variables"}
+import { defineConfig } from "@trigger.dev/sdk";
+import { playwright } from "@trigger.dev/build/extensions/playwright";
+
+export default defineConfig({
+  project: "<project ref>",
+  build: {
+    extensions: [
+      playwright({
+        version: "1.40.0",
+      }),
+    ],
+  },
+});
+```
+
+For more details, see [GitHub issue #2440](https://github.com/triggerdotdev/trigger.dev/issues/2440#issuecomment-3815104376).
+
 ## Managing browser instances
 
 To prevent issues with waits and resumes, you can use middleware and locals to manage the browser instance. This will ensure the browser is available for the whole run, and is properly cleaned up on waits, resumes, and after the run completes.
 
 Here's an example using `chromium`, but you can adapt it for other browsers:
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 import { logger, tasks, locals } from "@trigger.dev/sdk";
 import { chromium, type Browser } from "playwright";
 
@@ -2475,7 +2507,7 @@ tasks.onResume("playwright-browser", async () => {
 
 You can then use `getBrowser()` in your task's `run` function to access the browser instance:
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 export const playwrightTestTask = task({
   id: "playwright-test",
   run: async () => {
@@ -2504,180 +2536,1014 @@ Source: https://trigger.dev/docs/config/extensions/prismaExtension
 
 Use the prismaExtension build extension to use Prisma with Trigger.dev
 
-If you are using Prisma, you should use the prisma build extension.
-
-* Automatically handles copying Prisma files to the build directory
-* Generates the Prisma client during the deploy process
-* Optionally will migrate the database during the deploy process
-* Support for TypedSQL and multiple schema files
-* You can use `prismaSchemaFolder` to specify just the directory containing your schema file, instead of the full path
-* You can add the extension twice if you have multiple separate schemas in the same project (example below)
-
-You can use it for a simple Prisma setup like this:
-
-```ts  theme={null}
-import { defineConfig } from "@trigger.dev/sdk";
-import { prismaExtension } from "@trigger.dev/build/extensions/prisma";
-
-export default defineConfig({
-  project: "<project ref>",
-  // Your other config settings...
-  build: {
-    extensions: [
-      prismaExtension({
-        version: "5.19.0", // optional, we'll automatically detect the version if not provided
-        schema: "prisma/schema.prisma",
-      }),
-    ],
-  },
-});
-```
+The `prismaExtension` supports multiple Prisma versions and deployment strategies through **three distinct modes** that handle the evolving Prisma ecosystem, from legacy setups to Prisma 7.
 
 <Note>
-  This does not have any effect when running the `dev` command, only when running the `deploy`
-  command.
+  The `prismaExtension` requires an explicit `mode` parameter. All configurations must specify a
+  mode.
 </Note>
 
-### Migrations
+## Migration from previous versions
 
-If you want to also run migrations during the build process, you can pass in the `migrate` option:
+### Before (pre 4.1.1)
 
-```ts  theme={null}
-import { defineConfig } from "@trigger.dev/sdk";
+```ts theme={"theme":"css-variables"}
 import { prismaExtension } from "@trigger.dev/build/extensions/prisma";
 
+extensions: [
+  prismaExtension({
+    schema: "prisma/schema.prisma",
+    migrate: true,
+    typedSql: true,
+    directUrlEnvVarName: "DATABASE_URL_UNPOOLED",
+  }),
+];
+```
+
+### After (4.1.1+)
+
+```ts theme={"theme":"css-variables"}
+import { prismaExtension } from "@trigger.dev/build/extensions/prisma";
+
+extensions: [
+  prismaExtension({
+    mode: "legacy", // MODE IS REQUIRED
+    schema: "prisma/schema.prisma",
+    migrate: true,
+    typedSql: true,
+    directUrlEnvVarName: "DATABASE_URL_UNPOOLED",
+  }),
+];
+```
+
+## Choosing the right mode
+
+Use this decision tree to determine which mode is right for your project:
+
+```mermaid theme={"theme":"css-variables"}
+flowchart TD
+    Start([Which mode should I use?]) --> Q1{Using Prisma 7 or<br/>6.20+ beta?}
+    Q1 -->|Yes| Modern[Modern Mode]
+    Q1 -->|No| Q2{Using Prisma 6.16+<br/>with engineType='client'?}
+    Q2 -->|Yes| Modern
+    Q2 -->|No| Q3{Need custom client<br/>output path?}
+    Q3 -->|Yes| Q4{Want to manage<br/>prisma generate yourself?}
+    Q4 -->|Yes| Engine[Engine-only Mode]
+    Q4 -->|No| Legacy[Legacy Mode]
+    Q3 -->|No| Legacy
+
+    Modern -->|Features| ModernFeatures["• Zero configuration<br/>• Database adapters<br/>• Plain TypeScript (no binaries)<br/>• You manage generation"]
+    Engine -->|Features| EngineFeatures["• Only installs engines<br/>• Auto version detection<br/>• You manage generation<br/>• Minimal overhead"]
+    Legacy -->|Features| LegacyFeatures["• Auto prisma generate<br/>• Migrations support<br/>• TypedSQL support<br/>• Config file support"]
+
+    style Modern fill:#10b981,stroke:#059669,color:#fff
+    style Engine fill:#3b82f6,stroke:#2563eb,color:#fff
+    style Legacy fill:#8b5cf6,stroke:#7c3aed,color:#fff
+```
+
+## Extension modes
+
+### Legacy mode
+
+**Use when:** You're using Prisma 6.x or earlier with the `prisma-client-js` provider.
+
+**Features:**
+
+* Automatic `prisma generate` during deployment
+* Supports single-file schemas (`prisma/schema.prisma`)
+* Supports multi-file schemas (Prisma 6.7+, directory-based schemas)
+* Supports Prisma config files (`prisma.config.ts`) via `@prisma/config` package
+* Migration support with `migrate: true`
+* TypedSQL support with `typedSql: true`
+* Custom generator selection
+* Handles Prisma client versioning automatically (with filesystem fallback detection)
+* Automatic extraction of schema and migrations paths from config files
+
+**Schema configuration:**
+
+```prisma theme={"theme":"css-variables"}
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["typedSql"]
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DATABASE_URL_UNPOOLED")
+}
+```
+
+**Extension configuration:**
+
+```ts theme={"theme":"css-variables"}
+// Single-file schema
+prismaExtension({
+  mode: "legacy",
+  schema: "prisma/schema.prisma",
+  migrate: true,
+  typedSql: true,
+  directUrlEnvVarName: "DATABASE_URL_UNPOOLED",
+});
+
+// Multi-file schema (Prisma 6.7+)
+prismaExtension({
+  mode: "legacy",
+  schema: "./prisma", // Point to directory
+  migrate: true,
+  typedSql: true,
+  directUrlEnvVarName: "DATABASE_URL_UNPOOLED",
+});
+```
+
+**Tested versions:**
+
+* Prisma 6.14.0
+* Prisma 6.7.0+ (multi-file schema support)
+* Prisma 5.x
+
+***
+
+### Engine-only mode
+
+**Use when:** You have a custom Prisma client output path and want to manage `prisma generate` yourself.
+
+**Features:**
+
+* Only installs Prisma engine binaries (no client generation)
+* Automatic version detection from `@prisma/client`
+* Manual override of version and binary target
+* Minimal overhead - just ensures engines are available
+* You control when and how `prisma generate` runs
+
+**Schema configuration:**
+
+```prisma theme={"theme":"css-variables"}
+generator client {
+  provider      = "prisma-client-js"
+  output        = "../src/generated/prisma"
+  // Ensure the "debian-openssl-3.0.x" binary target is included for deployment to the trigger.dev cloud
+  binaryTargets = ["native", "debian-openssl-3.0.x"]
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DATABASE_URL_UNPOOLED")
+}
+```
+
+**Extension configuration:**
+
+```ts theme={"theme":"css-variables"}
+// Auto-detect version
+prismaExtension({
+  mode: "engine-only",
+});
+
+// Explicit version (recommended for reproducible builds)
+prismaExtension({
+  mode: "engine-only",
+  version: "6.19.0",
+});
+```
+
+**Important notes:**
+
+* You **must** run `prisma generate` yourself (typically in a prebuild script)
+* Your schema **must** include the correct `binaryTargets` for deployment to the trigger.dev cloud. The binary target is `debian-openssl-3.0.x`.
+* The extension sets `PRISMA_QUERY_ENGINE_LIBRARY` and `PRISMA_QUERY_ENGINE_SCHEMA_ENGINE` environment variables to the correct paths for the binary targets.
+
+**package.json example:**
+
+```json theme={"theme":"css-variables"}
+{
+  "scripts": {
+    "prebuild": "prisma generate",
+    "dev": "trigger dev",
+    "deploy": "trigger deploy"
+  }
+}
+```
+
+**Tested versions:**
+
+* Prisma 6.19.0
+* Prisma 6.16.0+
+
+***
+
+### Modern mode
+
+**Use when:** You're using Prisma 6.16+ with the new `prisma-client` provider (with `engineType = "client"`) or preparing for Prisma 7.
+
+**Features:**
+
+* Designed for the new Prisma architecture
+* Zero configuration required
+* Automatically marks `@prisma/client` as external
+* Works with Prisma 7 beta releases & Prisma 7 when released
+* You manage client generation (like engine-only mode)
+
+**Schema configuration (Prisma 6.16+ with engineType):**
+
+```prisma theme={"theme":"css-variables"}
+generator client {
+  provider        = "prisma-client"
+  output          = "../src/generated/prisma"
+  engineType      = "client"
+  previewFeatures = ["views"]
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DATABASE_URL_UNPOOLED")
+}
+```
+
+**Schema configuration (Prisma 7):**
+
+```prisma theme={"theme":"css-variables"}
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+```
+
+**Extension configuration:**
+
+```ts theme={"theme":"css-variables"}
+prismaExtension({
+  mode: "modern",
+});
+```
+
+**Prisma config (Prisma 7):**
+
+```ts theme={"theme":"css-variables"}
+// prisma.config.ts
+import { defineConfig, env } from "prisma/config";
+import "dotenv/config";
+
 export default defineConfig({
-  project: "<project ref>",
-  // Your other config settings...
-  build: {
-    extensions: [
-      prismaExtension({
-        schema: "prisma/schema.prisma",
-        migrate: true,
-        directUrlEnvVarName: "DATABASE_URL_UNPOOLED", // optional - the name of the environment variable that contains the direct database URL if you are using a direct database URL
-      }),
-    ],
+  schema: "prisma/schema.prisma",
+  migrations: {
+    path: "prisma/migrations",
+  },
+  datasource: {
+    url: env("DATABASE_URL"),
   },
 });
 ```
 
-### clientGenerator
+**Important notes:**
 
-If you have multiple `generator` statements defined in your schema file, you can pass in the `clientGenerator` option to specify the `prisma-client-js` generator, which will prevent other generators from being generated. Some examples where you may need to do this include when using the `prisma-kysely` or `prisma-json-types-generator` generators.
+* You **must** run `prisma generate` yourself.
+* Requires Prisma 6.16.0+ or Prisma 7 beta
+* The new `prisma-client` provider generates plain TypeScript (no Rust binaries)
+* Requires database adapters (e.g., `@prisma/adapter-pg` for PostgreSQL)
 
-<CodeGroup>
-  ```prisma schema.prisma theme={null}
-  datasource db {
-    provider  = "postgresql"
-    url       = env("DATABASE_URL")
-    directUrl = env("DATABASE_URL_UNPOOLED")
-  }
+**Tested versions:**
 
-  // We only want to generate the prisma-client-js generator
-  generator client {
-    provider        = "prisma-client-js"
-  }
+* Prisma 6.16.0 with `engineType = "client"`
+* Prisma 6.20.0-integration-next.8 (Prisma 7 beta)
 
-  generator kysely {
-    provider     = "prisma-kysely"
-    output       = "../../src/kysely"
-    enumFileName = "enums.ts"
-    fileName     = "types.ts"
-  }
+***
 
-  generator json {
-    provider = "prisma-json-types-generator"
-  }
-  ```
+## Migration guide
 
-  ```ts trigger.config.ts theme={null}
-  import { defineConfig } from "@trigger.dev/sdk";
-  import { prismaExtension } from "@trigger.dev/build/extensions/prisma";
+### From old prismaExtension to legacy mode
 
-  export default defineConfig({
-    project: "<project ref>",
-    // Your other config settings...
-    build: {
-      extensions: [
-        prismaExtension({
-          schema: "prisma/schema.prisma",
-          clientGenerator: "client",
-        }),
-      ],
-    },
-  });
-  ```
-</CodeGroup>
+If you were using the previous `prismaExtension`, migrate to legacy mode:
 
-### TypedSQL
-
-If you are using [TypedSQL](https://www.prisma.io/typedsql), you'll need to enable it via the `typedSql` option:
-
-```ts  theme={null}
-import { defineConfig } from "@trigger.dev/sdk";
-
-export default defineConfig({
-  project: "<project ref>",
-  // Your other config settings...
-  build: {
-    extensions: [
-      prismaExtension({
-        schema: "prisma/schema.prisma",
-        typedSql: true,
-      }),
-    ],
-  },
-});
-```
-
-<Note>
-  The `prismaExtension` will inject the `DATABASE_URL` environment variable into the build process. Learn more about setting environment variables for deploying in our [Environment Variables](/deploy-environment-variables) guide.
-
-  These environment variables are only used during the build process and are not embedded in the final container image.
-
-  If you're experiencing database connection issues during deployment, you may need to add `?connection_limit=1` to your `DATABASE_URL` to limit the number of concurrent connections during the build process.
-</Note>
-
-### Using with Supabase Supavisor
-
-When using Prisma with Supabase's Supavisor pooler, use a pooled URL for Prisma Client and a session/direct URL for schema operations to avoid prepared statement conflicts. As of Feb 28, 2025, port 6543 runs Transaction Mode only; use port 5432 for Session Mode.
-
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
+// Old
 prismaExtension({
   schema: "prisma/schema.prisma",
+  migrate: true,
+});
+
+// New - add mode
+prismaExtension({
+  mode: "legacy",
+  schema: "prisma/schema.prisma",
+  migrate: true,
+});
+```
+
+### Preparing for Prisma 7
+
+If you want to adopt the new Prisma architecture, use modern mode:
+
+1. Update your schema to use `prisma-client` provider
+2. Add database adapters to your dependencies
+3. Configure the extension:
+
+```ts theme={"theme":"css-variables"}
+prismaExtension({
+  mode: "modern",
+});
+```
+
+### Manage your own prisma generate step
+
+When using `modern` and `engine-only` modes, you'll need to ensure that you run `prisma generate` yourself before deploying your project.
+
+#### Github Actions
+
+If you are deploying your project using GitHub Actions, you can add a step to your workflow to run `prisma generate` before deploying your project, for example:
+
+```yaml theme={"theme":"css-variables"}
+steps:
+  - name: Generate Prisma client
+    run: npx prisma@6.19.0 generate
+  - name: Deploy Trigger.dev
+    run: npx trigger.dev@4.1.1 deploy
+    env:
+      TRIGGER_ACCESS_TOKEN: ${{ secrets.TRIGGER_ACCESS_TOKEN }}
+```
+
+#### Trigger.dev Github integration
+
+If you are using the [Trigger.dev Github integration](/github-integration), you can configure a pre-build command to run `prisma generate` before deploying your project. Navigate to your project's settings page and configure the pre-build command to run `prisma generate`, for example:
+
+<img alt="Pre-build command" />
+
+***
+
+## Version compatibility matrix
+
+| Prisma version   | Recommended mode      | Notes                                        |
+| ---------------- | --------------------- | -------------------------------------------- |
+| \< 5.0           | Legacy                | Older Prisma versions                        |
+| 5.0 - 6.15       | Legacy                | Standard Prisma setup                        |
+| 6.7+             | Legacy                | Multi-file schema support                    |
+| 6.16+            | Engine-only or Modern | Modern mode requires `engineType = "client"` |
+| 6.20+ (7.0 beta) | Modern                | Prisma 7 with new architecture               |
+
+***
+
+## Prisma config file support
+
+Legacy mode supports loading configuration from a `prisma.config.ts` file using the official `@prisma/config` package.
+
+**Use when:** You want to use Prisma's new config file format (Prisma 6+) to centralize your Prisma configuration.
+
+**Benefits:**
+
+* Single source of truth for Prisma configuration
+* Automatic extraction of schema location and migrations path
+* Type-safe configuration with TypeScript
+* Works seamlessly with Prisma 7's config-first approach
+
+**prisma.config.ts:**
+
+```ts theme={"theme":"css-variables"}
+import { defineConfig, env } from "prisma/config";
+import "dotenv/config";
+
+export default defineConfig({
+  schema: "prisma/schema.prisma",
+  migrations: {
+    path: "prisma/migrations",
+  },
+  datasource: {
+    url: env("DATABASE_URL"),
+    directUrl: env("DATABASE_URL_UNPOOLED"),
+  },
+});
+```
+
+**trigger.config.ts:**
+
+```ts theme={"theme":"css-variables"}
+import { prismaExtension } from "@trigger.dev/build/extensions/prisma";
+
+prismaExtension({
+  mode: "legacy",
+  configFile: "./prisma.config.ts", // Use config file instead of schema
+  migrate: true,
+  directUrlEnvVarName: "DATABASE_URL_UNPOOLED", // For migrations
+});
+```
+
+**What gets extracted:**
+
+* `schema` - The schema file or directory path
+* `migrations.path` - The migrations directory path (if specified)
+
+**Note:** Either `schema` or `configFile` must be specified, but not both.
+
+**When to use which:**
+
+| Use `schema` option          | Use `configFile` option           |
+| ---------------------------- | --------------------------------- |
+| Standard Prisma setup        | Using Prisma 6+ with config files |
+| Single or multi-file schemas | Preparing for Prisma 7            |
+| No `prisma.config.ts` file   | Centralized configuration needed  |
+| Simple setup                 | Want migrations path in config    |
+
+***
+
+## Multi-file schema support
+
+Prisma 6.7 introduced support for splitting your schema across multiple files in a directory structure.
+
+**Example structure:**
+
+```
+prisma/
+├── schema.prisma (main file with generator/datasource)
+├── models/
+│   ├── users.prisma
+│   └── posts.prisma
+└── sql/
+    └── getUserByEmail.sql
+```
+
+**Configuration:**
+
+```ts theme={"theme":"css-variables"}
+prismaExtension({
+  mode: "legacy",
+  schema: "./prisma", // Point to directory instead of file
+  migrate: true,
+  typedSql: true,
+});
+```
+
+**package.json:**
+
+```json theme={"theme":"css-variables"}
+{
+  "prisma": {
+    "schema": "./prisma"
+  }
+}
+```
+
+***
+
+## TypedSQL support
+
+TypedSQL is available in legacy mode for Prisma 5.19.0+ with the `typedSql` preview feature.
+
+**Schema configuration:**
+
+```prisma theme={"theme":"css-variables"}
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["typedSql"]
+}
+```
+
+**Extension configuration:**
+
+```ts theme={"theme":"css-variables"}
+prismaExtension({
+  mode: "legacy",
+  schema: "prisma/schema.prisma",
+  typedSql: true, // Enable TypedSQL
+});
+```
+
+**Usage in tasks:**
+
+```ts theme={"theme":"css-variables"}
+import { db, sql } from "./db";
+
+const users = await db.$queryRawTyped(sql.getUserByEmail("user@example.com"));
+```
+
+***
+
+## Database migration support
+
+Migrations are supported in legacy mode only.
+
+**Extension configuration:**
+
+```ts theme={"theme":"css-variables"}
+// Using schema option
+prismaExtension({
+  mode: "legacy",
+  schema: "prisma/schema.prisma",
+  migrate: true, // Run migrations on deployment
+  directUrlEnvVarName: "DATABASE_URL_UNPOOLED", // For connection pooling
+});
+
+// Using configFile option
+prismaExtension({
+  mode: "legacy",
+  configFile: "./prisma.config.ts", // Migrations path extracted from config
+  migrate: true,
+});
+```
+
+**What this does:**
+
+1. Copies `prisma/migrations/` to the build output
+2. Runs `prisma migrate deploy` before generating the client
+3. Uses the `directUrlEnvVarName` for unpooled connections (required for migrations)
+
+When using `configFile`, the migrations path is automatically extracted from your `prisma.config.ts`:
+
+```ts theme={"theme":"css-variables"}
+// prisma.config.ts
+export default defineConfig({
+  schema: "prisma/schema.prisma",
+  migrations: {
+    path: "prisma/migrations", // Automatically used by the extension
+  },
+});
+```
+
+***
+
+## Binary targets and deployment
+
+### Trigger.dev Cloud
+
+The default binary target is `debian-openssl-3.0.x` for Trigger.dev Cloud deployments.
+
+**Legacy mode:** Handled automatically
+
+**Engine-only mode:** Specify in schema like so:
+
+```prisma theme={"theme":"css-variables"}
+generator client {
+  provider      = "prisma-client-js"
+  binaryTargets = ["native", "debian-openssl-3.0.x"]
+}
+```
+
+**Modern mode:** Handled by database adapters
+
+### Self-hosted / local deployment
+
+For local deployments (e.g., Docker on macOS), you may need a different binary target like so:
+
+```ts theme={"theme":"css-variables"}
+prismaExtension({
+  mode: "engine-only",
+  version: "6.19.0",
+  binaryTarget: "linux-arm64-openssl-3.0.x", // For macOS ARM64
+});
+```
+
+***
+
+## Environment variables
+
+### Required variables
+
+All modes:
+
+* `DATABASE_URL`: Your database connection string
+
+Legacy mode with migrations:
+
+* `DATABASE_URL_UNPOOLED` (or your custom `directUrlEnvVarName`): Direct database connection for migrations
+
+### Auto-set variables
+
+Engine-only mode sets:
+
+* `PRISMA_QUERY_ENGINE_LIBRARY`: Path to the query engine
+* `PRISMA_QUERY_ENGINE_SCHEMA_ENGINE`: Path to the schema engine
+
+***
+
+## Troubleshooting
+
+### "Could not find Prisma schema"
+
+**Legacy mode:** Ensure the `schema` path is correct relative to your working directory.
+
+```ts theme={"theme":"css-variables"}
+// If your project structure is:
+// project/
+//   trigger.config.ts
+//   prisma/
+//     schema.prisma
+
+prismaExtension({
+  mode: "legacy",
+  schema: "./prisma/schema.prisma", // Correct
+  // schema: "prisma/schema.prisma", // Also works
+});
+```
+
+### "Could not determine @prisma/client version"
+
+The extension includes improved version detection that tries multiple strategies:
+
+1. Check if `@prisma/client` is imported in your code (externals)
+2. Use the `version` option if specified
+3. Detect from filesystem by looking for `@prisma/client` or `prisma` in `node_modules`
+
+**Legacy mode:** The extension will automatically detect the version from your installed packages. If it still fails, specify the version explicitly:
+
+```ts theme={"theme":"css-variables"}
+prismaExtension({
+  mode: "legacy",
+  schema: "prisma/schema.prisma",
+  version: "6.19.0", // Add explicit version
+});
+```
+
+**Engine-only mode:** Specify the version explicitly:
+
+```ts theme={"theme":"css-variables"}
+prismaExtension({
+  mode: "engine-only",
+  version: "6.19.0", // Add explicit version
+});
+```
+
+### "Binary target not found"
+
+**Engine-only mode:** Make sure your schema includes the deployment binary target:
+
+```prisma theme={"theme":"css-variables"}
+generator client {
+  provider      = "prisma-client-js"
+  binaryTargets = ["native", "linux-arm64-openssl-3.0.x"]
+}
+```
+
+### "Module not found: @prisma/client/sql"
+
+**Legacy mode:** Make sure `typedSql: true` is set and you have Prisma 5.19.0+:
+
+```ts theme={"theme":"css-variables"}
+prismaExtension({
+  mode: "legacy",
+  schema: "prisma/schema.prisma",
+  typedSql: true, // Required for TypedSQL
+});
+```
+
+### "Config file not found" or config loading errors
+
+**Legacy mode with configFile:** Ensure the config file path is correct:
+
+```ts theme={"theme":"css-variables"}
+prismaExtension({
+  mode: "legacy",
+  configFile: "./prisma.config.ts", // Path relative to project root
+  migrate: true,
+});
+```
+
+**Requirements:**
+
+* The config file must exist at the specified path
+* Your project must have the `prisma` package installed (Prisma 6+)
+* The config file must have a default export
+* The config must specify a `schema` path
+
+**Debugging:**
+
+Use `--log-level debug` in your `trigger deploy` command to see detailed logs:
+
+```ts theme={"theme":"css-variables"}
+npx trigger.dev@latest deploy --log-level debug
+```
+
+Then grep for `[PrismaExtension]` in your build logs to see detailed information about config loading, schema resolution, and migrations setup.
+
+***
+
+## Complete examples
+
+### Example 1: Standard Prisma 6 setup (legacy mode)
+
+**prisma/schema.prisma:**
+
+```prisma theme={"theme":"css-variables"}
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["typedSql"]
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DATABASE_URL_UNPOOLED")
+}
+```
+
+**trigger.config.ts:**
+
+```ts theme={"theme":"css-variables"}
+import { defineConfig } from "@trigger.dev/sdk";
+import { prismaExtension } from "@trigger.dev/build/extensions/prisma";
+
+export default defineConfig({
+  project: process.env.TRIGGER_PROJECT_REF!,
+  build: {
+    extensions: [
+      prismaExtension({
+        mode: "legacy",
+        schema: "prisma/schema.prisma",
+        migrate: true,
+        typedSql: true,
+        directUrlEnvVarName: "DATABASE_URL_UNPOOLED",
+      }),
+    ],
+  },
+});
+```
+
+***
+
+### Example 2: Multi-file schema (legacy mode)
+
+**prisma/schema.prisma:**
+
+```prisma theme={"theme":"css-variables"}
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["typedSql"]
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DATABASE_URL_UNPOOLED")
+}
+```
+
+**prisma/models/users.prisma:**
+
+```prisma theme={"theme":"css-variables"}
+model User {
+  id        String  @id @default(cuid())
+  email     String  @unique
+  name      String?
+  posts     Post[]
+}
+```
+
+**prisma/models/posts.prisma:**
+
+```prisma theme={"theme":"css-variables"}
+model Post {
+  id        String   @id @default(cuid())
+  title     String
+  content   String
+  authorId  String
+  author    User     @relation(fields: [authorId], references: [id])
+}
+```
+
+**package.json:**
+
+```json theme={"theme":"css-variables"}
+{
+  "prisma": {
+    "schema": "./prisma"
+  }
+}
+```
+
+**trigger.config.ts:**
+
+```ts theme={"theme":"css-variables"}
+prismaExtension({
+  mode: "legacy",
+  schema: "./prisma", // Directory, not file
+  migrate: true,
+  typedSql: true,
   directUrlEnvVarName: "DATABASE_URL_UNPOOLED",
-}),
+});
 ```
 
-```bash  theme={null}
-# Environment variables
-# Pooled (Transaction Mode, port 6543)
-DATABASE_URL="postgresql://postgres.[PROJECT_REF]:<PASSWORD>@aws-0-[REGION].pooler.supabase.com:6543/postgres?pgbouncer=true&connection_limit=1"
-# Session/Direct (used by Prisma schema engine, port 5432)
-DATABASE_URL_UNPOOLED="postgresql://postgres.[PROJECT_REF]:<PASSWORD>@aws-0-[REGION].pooler.supabase.com:5432/postgres"
+***
+
+### Example 3: Using Prisma config file (legacy mode)
+
+Use a `prisma.config.ts` file to centralize your Prisma configuration.
+
+**prisma.config.ts:**
+
+```ts theme={"theme":"css-variables"}
+import { defineConfig, env } from "prisma/config";
+import "dotenv/config";
+
+export default defineConfig({
+  schema: "prisma/schema.prisma",
+  migrations: {
+    path: "prisma/migrations",
+  },
+  datasource: {
+    url: env("DATABASE_URL"),
+    directUrl: env("DATABASE_URL_UNPOOLED"),
+  },
+});
 ```
 
-<Note>
-  Use the pooled connection (port 6543, Transaction Mode) for regular Prisma Client queries. Use the
-  session/direct connection (port 5432, Session Mode) for migrations and other schema operations.
-</Note>
+**prisma/schema.prisma:**
 
-### Multiple schemas
+```prisma theme={"theme":"css-variables"}
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["typedSql"]
+}
 
-If you have multiple separate schemas in the same project you can add the extension multiple times:
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DATABASE_URL_UNPOOLED")
+}
 
-```ts  theme={null}
+model User {
+  id        String  @id @default(cuid())
+  email     String  @unique
+  name      String?
+}
+```
+
+**trigger.config.ts:**
+
+```ts theme={"theme":"css-variables"}
+import { defineConfig } from "@trigger.dev/sdk";
+import { prismaExtension } from "@trigger.dev/build/extensions/prisma";
+
+export default defineConfig({
+  project: process.env.TRIGGER_PROJECT_REF!,
+  build: {
+    extensions: [
+      prismaExtension({
+        mode: "legacy",
+        configFile: "./prisma.config.ts", // Load from config file
+        migrate: true,
+        typedSql: true,
+        // schema and migrations path are extracted from prisma.config.ts
+      }),
+    ],
+  },
+});
+```
+
+**src/db.ts:**
+
+```ts theme={"theme":"css-variables"}
+import { PrismaClient } from "@prisma/client";
+export * as sql from "@prisma/client/sql";
+
+export const db = new PrismaClient({
+  datasources: {
+    db: {
+      url: process.env.DATABASE_URL,
+    },
+  },
+});
+```
+
+***
+
+### Example 4: Custom output path (engine-only mode)
+
+**prisma/schema.prisma:**
+
+```prisma theme={"theme":"css-variables"}
+generator client {
+  provider      = "prisma-client-js"
+  output        = "../src/generated/prisma"
+  binaryTargets = ["native", "linux-arm64-openssl-3.0.x"]
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DATABASE_URL_UNPOOLED")
+}
+```
+
+**package.json:**
+
+```json theme={"theme":"css-variables"}
+{
+  "scripts": {
+    "generate": "prisma generate",
+    "dev": "pnpm generate && trigger dev",
+    "deploy": "trigger deploy"
+  }
+}
+```
+
+**trigger.config.ts:**
+
+```ts theme={"theme":"css-variables"}
 prismaExtension({
-  schema: 'prisma/schema/main.prisma',
-  version: '6.2.0',
-  migrate: false,
-}),
-prismaExtension({
-  schema: 'prisma/schema/secondary.prisma',
-  version: '6.2.0',
-  migrate: false,
-}),
+  mode: "engine-only",
+  version: "6.19.0",
+  binaryTarget: "linux-arm64-openssl-3.0.x",
+});
 ```
+
+**src/db.ts:**
+
+```ts theme={"theme":"css-variables"}
+import { PrismaClient } from "./generated/prisma/client.js";
+
+export const db = new PrismaClient({
+  datasources: {
+    db: {
+      url: process.env.DATABASE_URL,
+    },
+  },
+});
+```
+
+***
+
+### Example 5: Prisma 7 beta (modern mode)
+
+**prisma/schema.prisma:**
+
+```prisma theme={"theme":"css-variables"}
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+```
+
+**prisma.config.ts:**
+
+```ts theme={"theme":"css-variables"}
+import { defineConfig, env } from "prisma/config";
+import "dotenv/config";
+
+export default defineConfig({
+  schema: "prisma/schema.prisma",
+  migrations: {
+    path: "prisma/migrations",
+  },
+  datasource: {
+    url: env("DATABASE_URL"),
+  },
+});
+```
+
+**package.json:**
+
+```json theme={"theme":"css-variables"}
+{
+  "dependencies": {
+    "@prisma/client": "6.20.0-integration-next.8",
+    "@prisma/adapter-pg": "6.20.0-integration-next.8"
+  },
+  "scripts": {
+    "generate": "prisma generate",
+    "dev": "pnpm generate && trigger dev",
+    "deploy": "trigger deploy"
+  }
+}
+```
+
+**trigger.config.ts:**
+
+```ts theme={"theme":"css-variables"}
+prismaExtension({
+  mode: "modern",
+});
+```
+
+**src/db.ts:**
+
+```ts theme={"theme":"css-variables"}
+import { PrismaClient } from "./generated/prisma/client.js";
+import { PrismaPg } from "@prisma/adapter-pg";
+
+const adapter = new PrismaPg({
+  connectionString: process.env.DATABASE_URL!,
+});
+
+export const db = new PrismaClient({ adapter });
+```
+
+***
+
+## Resources
+
+* [Prisma Documentation](https://www.prisma.io/docs)
+* [Multi-File Schema (Prisma 6.7+)](https://www.prisma.io/docs/orm/prisma-schema/overview/location#multi-file-prisma-schema)
+* [TypedSQL (Prisma 5.19+)](https://www.prisma.io/docs/orm/prisma-client/using-raw-sql/typedsql)
+* [Prisma 7 Beta Documentation](https://www.prisma.io/docs)
+
+***
 
 
 # Puppeteer
@@ -2689,7 +3555,7 @@ Use the puppeteer build extension to enable support for Puppeteer in your projec
 
 To use Puppeteer in your project, add these build settings to your `trigger.config.ts` file:
 
-```ts trigger.config.ts theme={null}
+```ts trigger.config.ts theme={"theme":"css-variables"}
 import { defineConfig } from "@trigger.dev/sdk";
 import { puppeteer } from "@trigger.dev/build/extensions/puppeteer";
 
@@ -2704,7 +3570,7 @@ export default defineConfig({
 
 And add the following environment variable in your Trigger.dev dashboard on the Environment Variables page:
 
-```bash  theme={null}
+```bash theme={"theme":"css-variables"}
 PUPPETEER_EXECUTABLE_PATH: "/usr/bin/google-chrome-stable",
 ```
 
@@ -2720,13 +3586,13 @@ If you need to execute Python scripts in your Trigger.dev project, you can use t
 
 First, you'll need to install the `@trigger.dev/python` package:
 
-```bash  theme={null}
+```bash theme={"theme":"css-variables"}
 npm add @trigger.dev/python
 ```
 
 Then, you can use the `pythonExtension` build extension in your `trigger.config.ts` file:
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 import { defineConfig } from "@trigger.dev/sdk";
 import { pythonExtension } from "@trigger.dev/python/extension";
 
@@ -2740,7 +3606,7 @@ export default defineConfig({
 
 This will take care of adding python to the build image and setting up the necessary environment variables to execute Python scripts. You can then use our `python` utilities in the `@trigger.dev/python` package to execute Python scripts in your tasks. For example, running a Python script inline in a task:
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 import { task } from "@trigger.dev/sdk";
 import { python } from "@trigger.dev/python";
 
@@ -2757,7 +3623,7 @@ export const myScript = task({
 
 You can automatically add python scripts to your project using the `scripts` option in the `pythonExtension` function. This will copy the specified scripts to the build directory during the deploy process. For example:
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 import { defineConfig } from "@trigger.dev/sdk";
 import { pythonExtension } from "@trigger.dev/python/extension";
 
@@ -2775,7 +3641,7 @@ export default defineConfig({
 
 This will copy all Python files in the `python` directory to the build directory during the deploy process. You can then execute these scripts using the `python.runScript` function:
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 import { task } from "@trigger.dev/sdk";
 import { python } from "@trigger.dev/python";
 
@@ -2797,7 +3663,7 @@ export const myScript = task({
 
 If you have a `requirements.txt` file in your project, you can use the `requirementsFile` option in the `pythonExtension` function to install the required packages during the build process. For example:
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 import { defineConfig } from "@trigger.dev/sdk";
 import { pythonExtension } from "@trigger.dev/python/extension";
 
@@ -2824,7 +3690,7 @@ This will install the packages specified in the `requirements.txt` file during t
 
 If you are using a virtual environment in your project, you can use the `devPythonBinaryPath` option in the `pythonExtension` function to specify the path to the Python binary in the virtual environment. For example:
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 import { defineConfig } from "@trigger.dev/sdk";
 import { pythonExtension } from "@trigger.dev/python/extension";
 
@@ -2846,7 +3712,7 @@ This has no effect in production mode, but in development mode, it will use the 
 
 All of the `python` functions have a streaming version that allows you to stream the output of the Python script as it runs. For example:
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 import { task } from "@trigger.dev/sdk";
 import { python } from "@trigger.dev/python";
 
@@ -2868,7 +3734,7 @@ export const myStreamingScript = task({
 
 We automatically inject the environment variables in the `process.env` object when running Python scripts. You can access these environment variables in your Python scripts using the `os.environ` dictionary. For example:
 
-```python  theme={null}
+```python theme={"theme":"css-variables"}
 import os
 
 print(os.environ["MY_ENV_VAR"])
@@ -2876,7 +3742,7 @@ print(os.environ["MY_ENV_VAR"])
 
 You can also pass additional environment variables to the Python script using the `env` option in the `python.runScript` function. For example:
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 import { task } from "@trigger.dev/sdk";
 import { python } from "@trigger.dev/python";
 
@@ -2903,7 +3769,7 @@ The `syncEnvVars` build extension will sync env vars from another service into T
 
 `syncEnvVars` takes an async callback function, and any env vars returned from the callback will be synced to Trigger.dev.
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 import { defineConfig } from "@trigger.dev/sdk";
 import { syncEnvVars } from "@trigger.dev/build/extensions/core";
 
@@ -2931,7 +3797,7 @@ The callback is passed a context object with the following properties:
 
 In this example we're using env vars from [Infisical](https://infisical.com).
 
-```ts trigger.config.ts theme={null}
+```ts trigger.config.ts theme={"theme":"css-variables"}
 import { defineConfig } from "@trigger.dev/sdk";
 import { syncEnvVars } from "@trigger.dev/build/extensions/core";
 import { InfisicalSDK } from "@infisical/sdk";
@@ -2966,16 +3832,42 @@ export default defineConfig({
 
 The `syncVercelEnvVars` build extension syncs environment variables from your Vercel project to Trigger.dev.
 
-<Note>
-  You need to set the `VERCEL_ACCESS_TOKEN` and `VERCEL_PROJECT_ID` environment variables, or pass
-  in the token and project ID as arguments to the `syncVercelEnvVars` build extension. If you're
-  working with a team project, you'll also need to set `VERCEL_TEAM_ID`, which can be found in your
-  team settings. You can find / generate the `VERCEL_ACCESS_TOKEN` in your Vercel
-  [dashboard](https://vercel.com/account/settings/tokens). Make sure the scope of the token covers
-  the project with the environment variables you want to sync.
-</Note>
+<AccordionGroup>
+  <Accordion title="Setting up authentication including team projects">
+    You need to set the `VERCEL_ACCESS_TOKEN` and `VERCEL_PROJECT_ID` environment variables, or pass
+    in the token and project ID as arguments to the `syncVercelEnvVars` build extension. If you're
+    working with a team project, you'll also need to set `VERCEL_TEAM_ID`, which can be found in your
+    team settings.
 
-```ts  theme={null}
+    You can find / generate the `VERCEL_ACCESS_TOKEN` in your Vercel
+    [dashboard](https://vercel.com/account/settings/tokens). Make sure the scope of the token covers
+    the project with the environment variables you want to sync.
+  </Accordion>
+
+  <Accordion title="Running in Vercel build environment">
+    When running the build from a Vercel build environment (e.g., during a Vercel deployment), the
+    environment variable values will be read from `process.env` instead of fetching them from the
+    Vercel API. This is determined by checking if the `VERCEL` environment variable is present.
+
+    The API is still used to determine which environment variables are configured for your project, but
+    the actual values come from the local environment. Reading values from `process.env` allows the
+    extension to use values that Vercel integrations (such as the Neon integration) set per preview
+    deployment in the "Provisioning Integrations" phase that happens just before the Vercel build
+    starts.
+  </Accordion>
+
+  <Accordion title="Using with Neon database Vercel integration">
+    If you have the Neon database Vercel integration installed and are running builds outside of the
+    Vercel environment, we recommend using `syncNeonEnvVars` in addition to `syncVercelEnvVars` for your
+    database environment variables.
+
+    This ensures that the correct database connection strings are used for your
+    selected environment and current branch, as `syncVercelEnvVars` may not accurately reflect
+    branch-specific database credentials when run locally.
+  </Accordion>
+</AccordionGroup>
+
+```ts theme={"theme":"css-variables"}
 import { defineConfig } from "@trigger.dev/sdk";
 import { syncVercelEnvVars } from "@trigger.dev/build/extensions/core";
 
@@ -2991,7 +3883,7 @@ export default defineConfig({
 
 Or you can pass in the token and project ID as arguments:
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 import { defineConfig } from "@trigger.dev/sdk";
 import { syncVercelEnvVars } from "@trigger.dev/build/extensions/core";
 
@@ -3002,13 +3894,93 @@ export default defineConfig({
     extensions: [
       syncVercelEnvVars({
         projectId: "your-vercel-project-id",
-        vercelAccessToken: "your-vercel-access-token",
+        vercelAccessToken: "your-vercel-access-token", // optional, we recommend to keep it as env variable
         vercelTeamId: "your-vercel-team-id", // optional
       }),
     ],
   },
 });
 ```
+
+### syncNeonEnvVars
+
+The `syncNeonEnvVars` build extension syncs environment variables from your Neon database project to Trigger.dev. It automatically detects branches and builds the appropriate database connection strings for your environment.
+
+<AccordionGroup>
+  <Accordion title="Setting up authentication">
+    You need to set the `NEON_ACCESS_TOKEN` and `NEON_PROJECT_ID` environment variables, or pass them
+    as arguments to the `syncNeonEnvVars` build extension.
+
+    You can generate a `NEON_ACCESS_TOKEN` in your Neon [dashboard](https://console.neon.tech/app/settings/api-keys).
+  </Accordion>
+
+  <Accordion title="Running in Vercel environment">
+    When running the build from a Vercel environment (determined by checking if the `VERCEL`
+    environment variable is present), this extension is skipped entirely.
+
+    This is because Neon's Vercel integration already handles environment variable synchronization in Vercel environments.
+  </Accordion>
+
+  <Accordion title="Using with Neon database Vercel integration">
+    If you have the Neon database Vercel integration installed and are running builds outside of the
+    Vercel environment, we recommend using `syncNeonEnvVars` in addition to `syncVercelEnvVars` for your
+    database environment variables.
+
+    This ensures that the correct database connection strings are used for your selected environment and current branch, as `syncVercelEnvVars` may not accurately reflect branch-specific database credentials when run locally.
+  </Accordion>
+</AccordionGroup>
+
+<Note>
+  This extension is skipped for `prod` environments. It is designed to sync branch-specific
+  database connections for preview/staging environments.
+</Note>
+
+```ts theme={"theme":"css-variables"}
+import { defineConfig } from "@trigger.dev/sdk";
+import { syncNeonEnvVars } from "@trigger.dev/build/extensions/core";
+
+export default defineConfig({
+  project: "<project ref>",
+  // Your other config settings...
+  build: {
+    // This will automatically use the NEON_ACCESS_TOKEN and NEON_PROJECT_ID environment variables
+    extensions: [syncNeonEnvVars()],
+  },
+});
+```
+
+Or you can pass in the token and project ID as arguments:
+
+```ts theme={"theme":"css-variables"}
+import { defineConfig } from "@trigger.dev/sdk";
+import { syncNeonEnvVars } from "@trigger.dev/build/extensions/core";
+
+export default defineConfig({
+  project: "<project ref>",
+  // Your other config settings...
+  build: {
+    extensions: [
+      syncNeonEnvVars({
+        projectId: "your-neon-project-id",
+        neonAccessToken: "your-neon-access-token", // optional, we recommend to keep it as env variable
+        branch: "your-branch-name", // optional, defaults to ctx.branch
+        databaseName: "your-database-name", // optional, defaults to the first database
+        roleName: "your-role-name", // optional, defaults to the database owner
+        envVarPrefix: "MY_PREFIX_", // optional, prefix for all synced env vars
+      }),
+    ],
+  },
+});
+```
+
+The extension syncs the following environment variables (with optional prefix):
+
+* `DATABASE_URL` - Pooled connection string
+* `DATABASE_URL_UNPOOLED` - Direct connection string
+* `POSTGRES_URL`, `POSTGRES_URL_NO_SSL`, `POSTGRES_URL_NON_POOLING`
+* `POSTGRES_PRISMA_URL` - Connection string optimized for Prisma
+* `POSTGRES_HOST`, `POSTGRES_USER`, `POSTGRES_PASSWORD`, `POSTGRES_DATABASE`
+* `PGHOST`, `PGHOST_UNPOOLED`, `PGUSER`, `PGPASSWORD`, `PGDATABASE`
 
 
 # Context
@@ -3024,7 +3996,7 @@ Context (`ctx`) is a way to get information about a run.
 </Note>
 
 <RequestExample>
-  ```typescript Context example theme={null}
+  ```typescript Context example theme={"theme":"css-variables"}
   import { task } from "@trigger.dev/sdk";
 
   export const parentTask = task({
@@ -3041,10 +4013,10 @@ Context (`ctx`) is a way to get information about a run.
 ## Context properties
 
 <ResponseField name="task" type="object">
-  <Expandable title="properties" defaultOpen={true}>
+  <Expandable title="properties">
     <ResponseField name="exportName" type="string">
       The exported function name of the task e.g. `myTask` if you defined it like this: `export
-            const myTask = task(...)`.
+                  const myTask = task(...)`.
     </ResponseField>
 
     <ResponseField name="id" type="string">
@@ -3091,7 +4063,7 @@ Context (`ctx`) is a way to get information about a run.
       The ID of the task run.
     </ResponseField>
 
-    <ResponseField name="context" type="any" optional>
+    <ResponseField name="context" type="any">
       The context of the task run.
     </ResponseField>
 
@@ -3111,11 +4083,11 @@ Context (`ctx`) is a way to get information about a run.
       The start time of the task run.
     </ResponseField>
 
-    <ResponseField name="idempotencyKey" type="string" optional>
+    <ResponseField name="idempotencyKey" type="string">
       An optional [idempotency key](/idempotency) for the task run.
     </ResponseField>
 
-    <ResponseField name="maxAttempts" type="number" optional>
+    <ResponseField name="maxAttempts" type="number">
       The [maximum number of attempts](/triggering#maxattempts) allowed for this task run.
     </ResponseField>
 
@@ -3134,11 +4106,11 @@ Context (`ctx`) is a way to get information about a run.
       use the [usage SDK functions](/run-usage).
     </ResponseField>
 
-    <ResponseField name="version" type="string" optional>
+    <ResponseField name="version" type="string">
       The [version](/versioning) of the task run.
     </ResponseField>
 
-    <ResponseField name="maxDuration" type="number" optional>
+    <ResponseField name="maxDuration" type="number">
       The [maximum allowed duration](/runs/max-duration) for the task run.
     </ResponseField>
   </Expandable>
@@ -3170,45 +4142,45 @@ Context (`ctx`) is a way to get information about a run.
       The type of the environment (PRODUCTION, STAGING, DEVELOPMENT, or PREVIEW).
     </ResponseField>
 
-    <ResponseField name="branchName" type="string" optional>
+    <ResponseField name="branchName" type="string">
       If the environment is `PREVIEW` then this will be the branch name.
     </ResponseField>
 
     <ResponseField name="git" type="object">
       <Expandable title="properties">
-        <ResponseField name="commitAuthorName" type="string" optional>
+        <ResponseField name="commitAuthorName" type="string">
           The name of the commit author.
         </ResponseField>
 
-        <ResponseField name="commitMessage" type="string" optional>
+        <ResponseField name="commitMessage" type="string">
           The message of the commit.
         </ResponseField>
 
-        <ResponseField name="commitRef" type="string" optional>
+        <ResponseField name="commitRef" type="string">
           The ref of the commit.
         </ResponseField>
 
-        <ResponseField name="commitSha" type="string" optional>
+        <ResponseField name="commitSha" type="string">
           The SHA of the commit.
         </ResponseField>
 
-        <ResponseField name="dirty" type="boolean" optional>
+        <ResponseField name="dirty" type="boolean">
           Whether the commit is dirty, i.e. there are uncommitted changes.
         </ResponseField>
 
-        <ResponseField name="remoteUrl" type="string" optional>
+        <ResponseField name="remoteUrl" type="string">
           The remote URL of the repository.
         </ResponseField>
 
-        <ResponseField name="pullRequestNumber" type="number" optional>
+        <ResponseField name="pullRequestNumber" type="number">
           The number of the pull request.
         </ResponseField>
 
-        <ResponseField name="pullRequestTitle" type="string" optional>
+        <ResponseField name="pullRequestTitle" type="string">
           The title of the pull request.
         </ResponseField>
 
-        <ResponseField name="pullRequestState" type="string" optional>
+        <ResponseField name="pullRequestState" type="string">
           The state of the pull request (open, closed, or merged).
         </ResponseField>
       </Expandable>
@@ -3252,7 +4224,7 @@ Context (`ctx`) is a way to get information about a run.
   </Expandable>
 </ResponseField>
 
-<ResponseField name="batch" type="object" optional>
+<ResponseField name="batch" type="object">
   Optional information about the batch, if applicable.
 
   <Expandable title="properties">
@@ -3262,7 +4234,7 @@ Context (`ctx`) is a way to get information about a run.
   </Expandable>
 </ResponseField>
 
-<ResponseField name="machine" type="object" optional>
+<ResponseField name="machine" type="object">
   Optional information about the machine preset used for execution.
 
   <Expandable title="properties">
@@ -3301,12 +4273,12 @@ We deploy your tasks and scale them up and down when they are triggered. So any 
 <Steps>
   <Step title="Go to the Environment Variables page">
     In the sidebar select the "Environment Variables" page, then press the "New environment variable"
-    button. <img src="https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/environment-variables-page.jpg?fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=af652254781808a35c2bcefd4b61b59f" alt="Environment variables page" data-og-width="1600" width="1600" data-og-height="900" height="900" data-path="images/environment-variables-page.jpg" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/environment-variables-page.jpg?w=280&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=fd6487833d9c659f8a514c7cc86cf84d 280w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/environment-variables-page.jpg?w=560&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=1758721fd84f5040b88997db401f7391 560w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/environment-variables-page.jpg?w=840&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=4416f51b1528ae14285a03b560f22389 840w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/environment-variables-page.jpg?w=1100&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=12b90b89f7662aadaea07df17d9d3898 1100w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/environment-variables-page.jpg?w=1650&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=28e6921620cda10d335a095dbfa85806 1650w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/environment-variables-page.jpg?w=2500&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=4f6c67a030b20699bde25c22d68e57af 2500w" />
+    button. <img alt="Environment variables page" />
   </Step>
 
   <Step title="Add your environment variables">
-    You can add values for your local dev environment, staging and prod. <img src="https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/environment-variables-panel.jpg?fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=79b5fd91e809cb0c6c9298410922df96" alt="Environment variables
-    page" data-og-width="1600" width="1600" data-og-height="900" height="900" data-path="images/environment-variables-panel.jpg" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/environment-variables-panel.jpg?w=280&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=4c3f6181dea5542157cdbdebafb44989 280w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/environment-variables-panel.jpg?w=560&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=b0c302ef3d814a0c781b684e64d090f9 560w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/environment-variables-panel.jpg?w=840&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=a110ee9bb119eaaf7404097904a1f442 840w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/environment-variables-panel.jpg?w=1100&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=6e774fb137908fbaaf28318d1bfa419d 1100w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/environment-variables-panel.jpg?w=1650&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=aa5d4bef7b66551887043c4420807bc4 1650w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/environment-variables-panel.jpg?w=2500&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=ed23a501677d11631bb832eb6f95ceae 2500w" />
+    You can add values for your local dev environment, staging and prod. <img alt="Environment variables
+    page" />
   </Step>
 </Steps>
 
@@ -3321,11 +4293,11 @@ You can edit an environment variable's values. You cannot edit the key name, you
 
 <Steps>
   <Step title="Press the action button on a variable">
-        <img src="https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/environment-variables-actions.png?fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=05dd8ce39784065107f6eba1625866d0" alt="Environment variables page" data-og-width="1600" width="1600" data-og-height="900" height="900" data-path="images/environment-variables-actions.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/environment-variables-actions.png?w=280&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=fbed005dc7dcd0058a422838de4c0b9b 280w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/environment-variables-actions.png?w=560&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=7e7f70a3116af7bba9837b4f87a85637 560w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/environment-variables-actions.png?w=840&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=00ef502fa21ec6d5b0ad1268844fca1f 840w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/environment-variables-actions.png?w=1100&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=ead290a05e430dc69fa2cfdb2fa4217d 1100w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/environment-variables-actions.png?w=1650&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=d769af16568cd23cbe1a7d6d5ed7c46e 1650w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/environment-variables-actions.png?w=2500&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=ce9fba7375a89774d6eb6fd3800ba2b9 2500w" />
+    <img alt="Environment variables page" />
   </Step>
 
   <Step title="Press edit">
-        <img src="https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/environment-variables-edit-popover.png?fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=e865f9406555034430788bbf98fbc785" alt="Environment variables page" data-og-width="1600" width="1600" data-og-height="900" height="900" data-path="images/environment-variables-edit-popover.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/environment-variables-edit-popover.png?w=280&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=f163d64590aa81c0cb6d74c3c7f94a2a 280w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/environment-variables-edit-popover.png?w=560&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=0a7d79db13a818c545764a658c81aba8 560w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/environment-variables-edit-popover.png?w=840&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=dbe05ce74ce05ae3100b8520f24a48e1 840w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/environment-variables-edit-popover.png?w=1100&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=c0660d9ee4369bd8bdf4e7c5b9849258 1100w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/environment-variables-edit-popover.png?w=1650&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=b030c985d2733fc8b6ae7bdcb6577688 1650w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/environment-variables-edit-popover.png?w=2500&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=a56b25cb17ed5da98f82f0ede3e1b14f 2500w" />
+    <img alt="Environment variables page" />
   </Step>
 </Steps>
 
@@ -3338,12 +4310,12 @@ You can edit an environment variable's values. You cannot edit the key name, you
 
 <Steps>
   <Step title="Press the action button on a variable">
-        <img src="https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/environment-variables-actions.png?fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=05dd8ce39784065107f6eba1625866d0" alt="Environment variables page" data-og-width="1600" width="1600" data-og-height="900" height="900" data-path="images/environment-variables-actions.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/environment-variables-actions.png?w=280&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=fbed005dc7dcd0058a422838de4c0b9b 280w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/environment-variables-actions.png?w=560&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=7e7f70a3116af7bba9837b4f87a85637 560w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/environment-variables-actions.png?w=840&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=00ef502fa21ec6d5b0ad1268844fca1f 840w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/environment-variables-actions.png?w=1100&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=ead290a05e430dc69fa2cfdb2fa4217d 1100w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/environment-variables-actions.png?w=1650&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=d769af16568cd23cbe1a7d6d5ed7c46e 1650w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/environment-variables-actions.png?w=2500&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=ce9fba7375a89774d6eb6fd3800ba2b9 2500w" />
+    <img alt="Environment variables page" />
   </Step>
 
   <Step title="Press delete">
-    This will immediately delete the variable. <img src="https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/environment-variables-delete-popover.png?fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=642350946bd75c3c508065a198aaa005" alt="Environment variables
-    page" data-og-width="1600" width="1600" data-og-height="900" height="900" data-path="images/environment-variables-delete-popover.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/environment-variables-delete-popover.png?w=280&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=9f4d42ee9719adbb6c6850c63839e6a2 280w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/environment-variables-delete-popover.png?w=560&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=8ec32e6dffaa55bc7baabeec69610136 560w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/environment-variables-delete-popover.png?w=840&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=42771e6c5b67013d13dbb23a84f37754 840w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/environment-variables-delete-popover.png?w=1100&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=59a6c0bf701def1f80311e61916d481d 1100w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/environment-variables-delete-popover.png?w=1650&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=2b0182cb34138fc9beda364b95de7f68 1650w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/environment-variables-delete-popover.png?w=2500&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=5564d5157938fad70bbb0bed5cbd7ad7 2500w" />
+    This will immediately delete the variable. <img alt="Environment variables
+    page" />
   </Step>
 </Steps>
 
@@ -3364,6 +4336,85 @@ We have a complete set of SDK functions (and REST API) you can use to directly m
 | [envvars.update()](/management/envvars/update)     | Update a single environment variable                        |
 | [envvars.del()](/management/envvars/delete)        | Delete a single environment variable                        |
 
+#### Initial load from .env file
+
+To initially load environment variables from a `.env` file into your Trigger.dev cloud environment, you can use `envvars.upload()`. This is useful for one-time bulk imports when setting up a new project or environment.
+
+```ts theme={"theme":"css-variables"}
+import { envvars } from "@trigger.dev/sdk";
+import { readFileSync } from "fs";
+import { parse } from "dotenv";
+
+// Read and parse your .env file
+const envContent = readFileSync(".env.production", "utf-8");
+const parsed = parse(envContent);
+
+// Upload to Trigger.dev (replace with your project ref and environment slug)
+await envvars.upload("proj_your_project_ref", "prod", {
+  variables: parsed,
+  override: false, // Set to true to override existing variables
+});
+```
+
+When called inside a task, you can omit the project ref and environment slug as they'll be automatically inferred from the task context:
+
+```ts theme={"theme":"css-variables"}
+import { envvars, task } from "@trigger.dev/sdk";
+import { readFileSync } from "fs";
+import { parse } from "dotenv";
+
+export const setupEnvVars = task({
+  id: "setup-env-vars",
+  run: async () => {
+    const envContent = readFileSync(".env.production", "utf-8");
+    const parsed = parse(envContent);
+
+    // projectRef and environment slug are automatically inferred from ctx
+    await envvars.upload({
+      variables: parsed,
+      override: false,
+    });
+  },
+});
+```
+
+<Note>
+  This is different from `syncEnvVars` which automatically syncs variables during every deploy. Use `envvars.upload()` for one-time initial loads, and `syncEnvVars` for ongoing synchronization.
+</Note>
+
+#### Getting the current environment
+
+When using `envvars.retrieve()` inside a task, you can access the current environment information from the task context (`ctx`). The `envvars.retrieve()` function doesn't return the environment, but you can get it from `ctx.environment`:
+
+```ts theme={"theme":"css-variables"}
+import { envvars, task } from "@trigger.dev/sdk";
+
+export const myTask = task({
+  id: "my-task",
+  run: async (payload, { ctx }) => {
+    // Get the current environment information
+    const currentEnv = ctx.environment.slug; // e.g., "dev", "prod", "staging"
+    const envType = ctx.environment.type; // e.g., "DEVELOPMENT", "PRODUCTION", "STAGING", "PREVIEW"
+
+    // Retrieve an environment variable
+    // When called inside a task, projectRef and slug are automatically inferred
+    const apiKey = await envvars.retrieve("API_KEY");
+
+    console.log(`Retrieved API_KEY from environment: ${currentEnv} (${envType})`);
+    console.log(`Value: ${apiKey.value}`);
+  },
+});
+```
+
+The context object provides:
+
+* `ctx.environment.slug` - The environment slug (e.g., "dev", "prod")
+* `ctx.environment.type` - The environment type ("DEVELOPMENT", "PRODUCTION", "STAGING", or "PREVIEW")
+* `ctx.environment.id` - The environment ID
+* `ctx.project.ref` - The project reference
+
+For more information about the context object, see the [Context documentation](/context).
+
 ### Sync env vars from another service
 
 You could use the SDK functions above but it's much easier to use our `syncEnvVars` build extension in your `trigger.config` file.
@@ -3375,7 +4426,7 @@ You could use the SDK functions above but it's much easier to use our `syncEnvVa
 
 In this example we're using env vars from [Infisical](https://infisical.com).
 
-```ts trigger.config.ts theme={null}
+```ts trigger.config.ts theme={"theme":"css-variables"}
 import { defineConfig } from "@trigger.dev/sdk";
 import { syncEnvVars } from "@trigger.dev/build/extensions/core";
 import { InfisicalSDK } from "@infisical/sdk";
@@ -3427,7 +4478,7 @@ This means that you need to redeploy your Trigger.dev tasks if you change the en
 
 `syncEnvVars` does not have any effect when running the `dev` command locally. If you want to inject environment variables from another service into your local environment you can do so via a `.env` file or just supplying them as environment variables in your terminal. Most services will have a CLI tool that allows you to run a command with environment variables set:
 
-```sh  theme={null}
+```sh theme={"theme":"css-variables"}
 infisical run -- npx trigger.dev@latest dev
 ```
 
@@ -3437,7 +4488,7 @@ Any environment variables set in the CLI command will be available to your local
 
 You can return env vars as an object with string keys and values, or an array of names + values.
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 return {
   MY_ENV_VAR: "my value",
   MY_OTHER_ENV_VAR: "my other value",
@@ -3446,7 +4497,7 @@ return {
 
 or
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 return [
   {
     name: "MY_ENV_VAR",
@@ -3485,7 +4536,7 @@ Securely pass a Google credential JSON file to your Trigger.dev task using envir
   <Step title="Use the environment variable in your code">
     Add the following code to your Trigger.dev task:
 
-    ```ts  theme={null}
+    ```ts theme={"theme":"css-variables"}
     import { google } from "googleapis";
 
     const credentials = JSON.parse(
@@ -3527,7 +4578,7 @@ This is the simplest way to bring dotenvx or `.env.production` variables into yo
 
 If you'd prefer an automated flow, you can use the `syncEnvVars` build extension to programmatically load and return your variables:
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 import { defineConfig } from "@trigger.dev/sdk";
 import { syncEnvVars } from "@trigger.dev/build/extensions/core";
 import dotenvx from "@dotenvx/dotenvx";
@@ -3575,7 +4626,7 @@ Atomic deploys achieve synchronization by deploying your tasks to Trigger.dev wi
 
 If you deploy to Vercel via their CLI, you can use this sample workflow that demonstrates performing atomic deploys with GitHub Actions, Trigger.dev, and Vercel:
 
-```yml  theme={null}
+```yml theme={"theme":"css-variables"}
 name: Deploy to Trigger.dev (prod)
 on:
   push:
@@ -3644,7 +4695,7 @@ By default, Vercel automatically promotes new deployments to production. To prev
 1. Go to your Production environment settings in Vercel at `https://vercel.com/<team-slug>/<project-slug>/settings/environments/production`
 2. Disable the "Auto-assign Custom Production Domains" setting:
 
-<img src="https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/deployment/auto-assign-production-domains.png?fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=1a82653803937c6ede1654685ae3ab1a" alt="Vercel project settings showing the auto-promotion setting" data-og-width="3680" width="3680" data-og-height="2382" height="2382" data-path="deployment/auto-assign-production-domains.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/deployment/auto-assign-production-domains.png?w=280&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=51949f92176304c5138b0d872a96a00b 280w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/deployment/auto-assign-production-domains.png?w=560&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=8d9909069f5df4f737cff40aa3f7442b 560w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/deployment/auto-assign-production-domains.png?w=840&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=a03b0fde711bd11841eabba8f67b0782 840w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/deployment/auto-assign-production-domains.png?w=1100&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=35ec9c3a631ddb638f819ba1f73a2c73 1100w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/deployment/auto-assign-production-domains.png?w=1650&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=53606d194dccfb069794a90693bcd78f 1650w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/deployment/auto-assign-production-domains.png?w=2500&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=4aefd7660260c92d5e0256186edf0b58 2500w" />
+<img alt="Vercel project settings showing the auto-promotion setting" />
 
 3. Hit the "Save" button to apply the changes.
 
@@ -3654,7 +4705,7 @@ Now whenever you push to your main branch, Vercel will deploy your application t
 
 Now we want to deploy that same commit to Trigger.dev, and then promote the Vercel deployment when that completes. Here's a sample GitHub Actions workflow that does this:
 
-```yml  theme={null}
+```yml theme={"theme":"css-variables"}
 name: Deploy to Trigger.dev (prod)
 
 on:
@@ -3737,15 +4788,15 @@ Learn how to deploy your tasks to Trigger.dev.
 Before you can run production workloads on Trigger.dev, you need to deploy your tasks. The only way to do this at the moment is through the [deploy CLI command](/cli-deploy):
 
 <CodeGroup>
-  ```bash npm theme={null}
+  ```bash npm theme={"theme":"css-variables"}
   npx trigger.dev@latest deploy
   ```
 
-  ```bash pnpm theme={null}
+  ```bash pnpm theme={"theme":"css-variables"}
   pnpm dlx trigger.dev@latest deploy
   ```
 
-  ```bash yarn theme={null}
+  ```bash yarn theme={"theme":"css-variables"}
   yarn dlx trigger.dev@latest deploy
   ```
 </CodeGroup>
@@ -3756,7 +4807,7 @@ Let's assume you have an existing trigger.dev project with a few tasks that you 
 
 First, let's make sure you are logged in to the CLI (if you haven't already):
 
-```bash  theme={null}
+```bash theme={"theme":"css-variables"}
 npx trigger.dev login
 ```
 
@@ -3764,13 +4815,13 @@ This will open a browser window where you can log in with your Trigger.dev accou
 
 Now you can deploy your tasks:
 
-```bash  theme={null}
+```bash theme={"theme":"css-variables"}
 npx trigger.dev deploy
 ```
 
 This should print out a success message and let you know a new version has been deployed:
 
-```bash  theme={null}
+```bash theme={"theme":"css-variables"}
 Trigger.dev (3.3.16)
 ------------------------------------------------------
 ┌  Deploying project
@@ -3786,7 +4837,7 @@ Trigger.dev (3.3.16)
 
 Now if you visit your Trigger.dev dashboard you should see the new version deployed:
 
-<img src="https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/deployment/my-first-deployment.png?fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=8344be75888505d3036e114a4a15eeeb" alt="Trigger.dev dashboard showing the latest version deployed" data-og-width="3680" width="3680" data-og-height="2382" height="2382" data-path="deployment/my-first-deployment.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/deployment/my-first-deployment.png?w=280&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=cac39957aa83193bff6e3a3b87fafd74 280w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/deployment/my-first-deployment.png?w=560&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=8561cd6fed50a4694cbb1daf925c3580 560w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/deployment/my-first-deployment.png?w=840&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=8645655fd002204b6dcfb65dc5f9eeec 840w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/deployment/my-first-deployment.png?w=1100&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=a515ee7f96995c3da3038e44aa00a60b 1100w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/deployment/my-first-deployment.png?w=1650&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=90f7d69e2f1e12ed7a55cf9d98ceb2ae 1650w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/deployment/my-first-deployment.png?w=2500&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=e3d467bc4d5de26e0ab935f657c73634 2500w" />
+<img alt="Trigger.dev dashboard showing the latest version deployed" />
 
 <Note>
   Deploying consists of building your tasks and uploading them to the Trigger.dev cloud. This
@@ -3797,17 +4848,17 @@ Now if you visit your Trigger.dev dashboard you should see the new version deplo
 
 Once you have deployed your tasks, you can trigger tasks exactly the same way you did locally, but with the "PROD" API key:
 
-<img src="https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/deployment/api-key.png?fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=aeb9a89c08e9cd4a60c5a18a738126f7" alt="Trigger.dev dashboard showing the API key" data-og-width="3680" width="3680" data-og-height="2382" height="2382" data-path="deployment/api-key.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/deployment/api-key.png?w=280&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=05bcc6ce43becedbb845431960f77d40 280w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/deployment/api-key.png?w=560&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=5b44df0271962534989ed980e6e0d8a6 560w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/deployment/api-key.png?w=840&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=640a299e25e4816fceb80c4213b8e454 840w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/deployment/api-key.png?w=1100&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=f8da89fb8751a1946e563958bbfb88a8 1100w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/deployment/api-key.png?w=1650&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=310401c9ae6cb588764c4ec40845b404 1650w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/deployment/api-key.png?w=2500&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=96b825a5094caa74ac1b504802aa1a41 2500w" />
+<img alt="Trigger.dev dashboard showing the API key" />
 
 Copy the API key from the dashboard and set the `TRIGGER_SECRET_KEY` environment variable, and then any tasks you trigger will run against the deployed version:
 
-```txt .env theme={null}
+```txt .env theme={"theme":"css-variables"}
 TRIGGER_SECRET_KEY="tr_prod_abc123"
 ```
 
 Now you can trigger your tasks:
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 import { myTask } from "./trigger/tasks";
 
 await myTask.trigger({ foo: "bar" });
@@ -3838,13 +4889,13 @@ The current version defines which version of the code new task runs will execute
 
 You can optionally specify the version when triggering a task using the `version` parameter. This is useful when you want to run a task against a specific version of the code:
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 await myTask.trigger({ foo: "bar" }, { version: "20250228.1" });
 ```
 
 If you want to set a global version to run all tasks against, you can use the `TRIGGER_VERSION` environment variable:
 
-```bash  theme={null}
+```bash theme={"theme":"css-variables"}
 TRIGGER_VERSION=20250228.1
 ```
 
@@ -3863,23 +4914,23 @@ Trigger and wait functions version lock child task runs to the parent task run v
 
 When you deploy, the new version is automatically promoted be the current version. If you want to skip this promotion, you can use the `--skip-promotion` flag:
 
-```bash  theme={null}
+```bash theme={"theme":"css-variables"}
 npx trigger.dev deploy --skip-promotion
 ```
 
 This will create a new deployment version but not promote it to the current version:
 
-<img src="https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/deployment/skip-promotion.png?fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=bc95f9c6a0ccffb47d3d5026587c3cf4" alt="Trigger.dev dashboard showing the latest version deployed but not promoted" data-og-width="3680" width="3680" data-og-height="2382" height="2382" data-path="deployment/skip-promotion.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/deployment/skip-promotion.png?w=280&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=c5d92f5c6be5252b269c977ddab4d6c8 280w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/deployment/skip-promotion.png?w=560&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=311e323fef63322878f6ced3985ebdfb 560w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/deployment/skip-promotion.png?w=840&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=2525cede6e9f48e4fea404a6a9264009 840w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/deployment/skip-promotion.png?w=1100&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=60c76e6e1fa70fc1594b891802d0b9ca 1100w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/deployment/skip-promotion.png?w=1650&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=296f61ab0d0ceae21bd661100fa88dec 1650w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/deployment/skip-promotion.png?w=2500&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=0cee76dfc877b3f9458fab9c2ac8d960 2500w" />
+<img alt="Trigger.dev dashboard showing the latest version deployed but not promoted" />
 
 This allows you to deploy and test a new version without affecting new task runs. When you want to promote the version, you can do so from the CLI:
 
-```bash  theme={null}
+```bash theme={"theme":"css-variables"}
 npx trigger.dev promote 20250228.1
 ```
 
 Or from the dashboard:
 
-<img src="https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/deployment/promote-button.png?fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=48aaab3ef5f3ef4bc63d2f15566746e2" alt="Trigger.dev dashboard showing the promote button" data-og-width="3680" width="3680" data-og-height="2382" height="2382" data-path="deployment/promote-button.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/deployment/promote-button.png?w=280&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=6f9c8cea47d6cee468271830244bcd03 280w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/deployment/promote-button.png?w=560&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=ccd06eca746c1428f1fba3348c63bb51 560w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/deployment/promote-button.png?w=840&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=03fecc67bfd2e4b8d2a23e50bccdeaaa 840w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/deployment/promote-button.png?w=1100&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=3fdb56c5c9cc5131e5f26f9efe41ff07 1100w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/deployment/promote-button.png?w=1650&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=54529693d8d673d25f721aa66cda2d94 1650w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/deployment/promote-button.png?w=2500&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=cec8c4a1ee1b52e0b367f5b3d09871a5 2500w" />
+<img alt="Trigger.dev dashboard showing the promote button" />
 
 To learn more about skipping promotion and how this enables atomic deployments, see our [Atomic deployment](/deployment/atomic-deployment) guide.
 
@@ -3887,7 +4938,7 @@ To learn more about skipping promotion and how this enables atomic deployments, 
 
 By default, the `deploy` command will deploy to the `prod` environment. If you want to deploy to a different environment, you can use the `--env` flag:
 
-```bash  theme={null}
+```bash theme={"theme":"css-variables"}
 npx trigger.dev deploy --env staging
 ```
 
@@ -3898,21 +4949,21 @@ npx trigger.dev deploy --env staging
 
 This will create an entirely new version of your tasks for the `staging` environment, with a new version number and an independent current version:
 
-<img src="https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/deployment/staging-deploy.png?fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=1a35a918611faf39246296633c28ba7f" alt="Trigger.dev dashboard showing the staging environment" data-og-width="3680" width="3680" data-og-height="2382" height="2382" data-path="deployment/staging-deploy.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/deployment/staging-deploy.png?w=280&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=e0548dca7ddaec29119449bfdac1569c 280w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/deployment/staging-deploy.png?w=560&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=9ae816833dd01066d6f54777e00ad9c2 560w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/deployment/staging-deploy.png?w=840&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=54ab132986f150ba263ef461b901872d 840w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/deployment/staging-deploy.png?w=1100&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=3fed2a9daf41ddb7d76acdee2a76ff29 1100w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/deployment/staging-deploy.png?w=1650&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=1ce57df105b4ce7a4f316047be934a92 1650w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/deployment/staging-deploy.png?w=2500&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=9070a4a84cc1b356419d2331ae984b13 2500w" />
+<img alt="Trigger.dev dashboard showing the staging environment" />
 
 Now you can trigger tasks against the staging environment by setting the `TRIGGER_SECRET_KEY` environment variable to the staging API key:
 
-```txt .env theme={null}
+```txt .env theme={"theme":"css-variables"}
 TRIGGER_SECRET_KEY="tr_stg_abcd123"
 ```
 
-Currently, we only support two environments: `prod` and `staging`. Multiple environments are on our roadmap which you can track [here](https://feedback.trigger.dev/p/more-environments).
+For additional environments beyond `prod` and `staging`, you can use [preview branches](/deployment/preview-branches), which allow you to create isolated environments for each branch of your code.
 
 ## Local builds
 
 By default we use a remote build provider to speed up builds. However, you can also force the build to happen locally on your machine using the `--force-local-build` flag:
 
-```bash  theme={null}
+```bash theme={"theme":"css-variables"}
 npx trigger.dev deploy --force-local-build
 ```
 
@@ -3941,7 +4992,7 @@ When things go wrong with your deployment, there are a few things you can do to 
 
 You can do a "dry run" of the deployment to see what is built and uploaded without actually deploying:
 
-```bash  theme={null}
+```bash theme={"theme":"css-variables"}
 npx trigger.dev deploy --dry-run
 
 #  Dry run complete. View the built project at /<project path>/.trigger/tmp/<build dir>
@@ -3969,7 +5020,7 @@ Usually there will be some useful guidance below this message. If you can't figu
 
 This happens because `.node` files are native code and can't be bundled like other packages. To fix this, add your package to [`build.external`](/config/config-file#external) in the `trigger.config.ts` file like this:
 
-```ts trigger.config.ts theme={null}
+```ts trigger.config.ts theme={"theme":"css-variables"}
 import { defineConfig } from "@trigger.dev/sdk";
 
 export default defineConfig({
@@ -4000,7 +5051,7 @@ Create isolated environments for each branch of your code, allowing you to test 
 
 The preview environment is special – you create branches from it. The branches you create live under the preview environment and have all the features you're used to from other environments (like staging or production). That means you can trigger runs, have schedules, test them, use Realtime, etc.
 
-<img src="https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/deployment/preview-environment-branches.png?fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=1ea48ad7377b6824a293e69044448b53" alt="Preview environment and branches" data-og-width="620" width="620" data-og-height="420" height="420" data-path="deployment/preview-environment-branches.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/deployment/preview-environment-branches.png?w=280&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=69369bcd1ab2140a176cc511b15c2a97 280w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/deployment/preview-environment-branches.png?w=560&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=89cfa57faadd32d488631ba089082c2e 560w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/deployment/preview-environment-branches.png?w=840&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=11366f107502a534f4301c76b7e6493d 840w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/deployment/preview-environment-branches.png?w=1100&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=f51b933f65ef7dcb24e693185e8142dc 1100w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/deployment/preview-environment-branches.png?w=1650&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=1c035becc9fb7ae0e75b8171a176d03c 1650w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/deployment/preview-environment-branches.png?w=2500&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=c5f3be2cf5cd9cc99e18cc5a0f9a0998 2500w" />
+<img alt="Preview environment and branches" />
 
 We recommend you automatically create a preview branch for each git branch when a Pull Request is opened and then archive it automatically when the PR is merged/closed.
 
@@ -4038,14 +5089,14 @@ Before we talk about how to deploy to preview branches, one important thing to u
 
 When deploying to somewhere that supports `process.env` (like Node.js runtimes) you can just set the environment variables:
 
-```bash  theme={null}
+```bash theme={"theme":"css-variables"}
 TRIGGER_SECRET_KEY="tr_preview_1234567890"
 TRIGGER_PREVIEW_BRANCH="your-branch-name"
 ```
 
 If you're deploying somewhere that doesn't support `process.env` (like some edge runtimes) you can manually configure the SDK:
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 import { configure } from "@trigger.dev/sdk";
 import { myTask } from "./trigger/myTasks";
 
@@ -4067,7 +5118,7 @@ This GitHub Action will:
 2. Deploy the preview branch.
 3. Archive the preview branch when the Pull Request is merged/closed.
 
-```yml .github/workflows/trigger-preview-branches.yml theme={null}
+```yml .github/workflows/trigger-preview-branches.yml theme={"theme":"css-variables"}
 name: Deploy to Trigger.dev (preview branches)
 
 on:
@@ -4108,13 +5159,13 @@ You can manually specify the branch using `--branch <branch-name>` in the deploy
 
 Creating and deploying a preview branch manually is easy:
 
-```bash  theme={null}
+```bash theme={"theme":"css-variables"}
 npx trigger.dev@latest deploy --env preview
 ```
 
 This will create and deploy a preview branch, automatically detecting the git branch. If for some reason the auto-detection doesn't work it will let you know and tell you do this:
 
-```bash  theme={null}
+```bash theme={"theme":"css-variables"}
 npx trigger.dev@latest deploy --env preview --branch your-branch-name
 ```
 
@@ -4122,7 +5173,7 @@ npx trigger.dev@latest deploy --env preview --branch your-branch-name
 
 You can manually archive a preview branch with the CLI:
 
-```bash  theme={null}
+```bash theme={"theme":"css-variables"}
 npx trigger.dev@latest preview archive
 ```
 
@@ -4132,18 +5183,19 @@ Again we will try auto-detect the current branch. But you can specify the branch
 
 From the "Preview branches" page you can create a branch:
 
-<img src="https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/deployment/preview-branches.png?fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=2f169fe8a12fd5e71c68e72dff38d0ba" alt="Preview branches page" data-og-width="2832" width="2832" data-og-height="2060" height="2060" data-path="deployment/preview-branches.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/deployment/preview-branches.png?w=280&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=d77850e6aabba369b59bb11e49415629 280w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/deployment/preview-branches.png?w=560&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=c18074538e204e2a8049d3969049d6c9 560w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/deployment/preview-branches.png?w=840&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=84140227247ee335b6daec14586fc2f8 840w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/deployment/preview-branches.png?w=1100&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=59cdc0dedce739dfbd926cf171029898 1100w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/deployment/preview-branches.png?w=1650&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=d0335bb6a3865d7f3e51b5bbc26b7642 1650w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/deployment/preview-branches.png?w=2500&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=643a7ea8cea29bec0cf4c3dd5e9b7b9f 2500w" />
-<img src="https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/deployment/preview-branches-new.png?fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=daac2d1f55ba7ddc7bba83bceb9f65f8" alt="Create preview branch" data-og-width="1196" width="1196" data-og-height="603" height="603" data-path="deployment/preview-branches-new.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/deployment/preview-branches-new.png?w=280&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=72cd18942952158e9ebfcf4a788e653e 280w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/deployment/preview-branches-new.png?w=560&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=3d166afef618f1e992dfa921dd2a73e5 560w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/deployment/preview-branches-new.png?w=840&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=f3e9a8814ae6039751aa648dec8b2066 840w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/deployment/preview-branches-new.png?w=1100&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=051c4f7ed376b7e7901debb23142125a 1100w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/deployment/preview-branches-new.png?w=1650&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=d241dccbfbbad0d59a165feba6f2ae5d 1650w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/deployment/preview-branches-new.png?w=2500&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=c07177baf4a0581142ac55f2213181e5 2500w" />
+<img alt="Preview branches page" />
+
+<img alt="Create preview branch" />
 
 You can also archive a branch:
 
-<img src="https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/deployment/preview-branches-archive.png?fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=1908c37fe8b46c3f942b0caf386094fd" alt="Archive preview branch" data-og-width="2832" width="2832" data-og-height="2060" height="2060" data-path="deployment/preview-branches-archive.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/deployment/preview-branches-archive.png?w=280&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=e1035c51deb29876494525b4317f4fb4 280w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/deployment/preview-branches-archive.png?w=560&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=a237012a0892cdb9fab4e40a293d1041 560w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/deployment/preview-branches-archive.png?w=840&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=a809dadcaa8d7903ad34610951721884 840w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/deployment/preview-branches-archive.png?w=1100&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=834c2099f1f7771a793c9ec84717b5fa 1100w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/deployment/preview-branches-archive.png?w=1650&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=9cbcbaf8c212805aea80207a731a24d5 1650w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/deployment/preview-branches-archive.png?w=2500&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=0c65583a0291f776674ff89c21c409ca 2500w" />
+<img alt="Archive preview branch" />
 
 ## Environment variables
 
 You can set environment variables for "Preview" and they will get applied to all branches (existing and new). You can also set environment variables for a specific branch. If they are set for both then the branch-specific variables will take precedence.
 
-<img src="https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/deployment/preview-environment-variables.png?fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=dcf6d3db8d2892e68351ddcdd367ac6e" alt="Environment variables" data-og-width="1012" width="1012" data-og-height="586" height="586" data-path="deployment/preview-environment-variables.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/deployment/preview-environment-variables.png?w=280&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=379f827c4015c9d2fd362267843a84cf 280w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/deployment/preview-environment-variables.png?w=560&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=fa4d754f9946cf09cfeacd065f5eeddb 560w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/deployment/preview-environment-variables.png?w=840&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=ba1f6b354220f2bf3b06ac13be1343f0 840w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/deployment/preview-environment-variables.png?w=1100&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=9b3b68749706d0c00978ea6fb4dc7b29 1100w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/deployment/preview-environment-variables.png?w=1650&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=cb25b22522a78e81bac0b2d06475058d 1650w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/deployment/preview-environment-variables.png?w=2500&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=3d088494a88aa0bc8a52775e17448ed6 2500w" />
+<img alt="Environment variables" />
 
 These can be set manually in the dashboard, or automatically at deploy time using the [syncEnvVars()](/config/extensions/syncEnvVars) or [syncVercelEnvVars()](/config/extensions/syncEnvVars#syncvercelenvvars) build extensions.
 
@@ -4151,7 +5203,7 @@ These can be set manually in the dashboard, or automatically at deploy time usin
 
 Full instructions are in the [syncEnvVars()](/config/extensions/syncEnvVars) documentation.
 
-```ts trigger.config.ts theme={null}
+```ts trigger.config.ts theme={"theme":"css-variables"}
 import { defineConfig } from "@trigger.dev/sdk";
 // You will need to install the @trigger.dev/build package
 import { syncEnvVars } from "@trigger.dev/build/extensions/core";
@@ -4177,7 +5229,7 @@ You need to set the `VERCEL_ACCESS_TOKEN`, `VERCEL_PROJECT_ID` and `VERCEL_TEAM_
 
 The extension will automatically detect a preview branch deploy from Vercel and sync the appropriate environment variables.
 
-```ts trigger.config.ts theme={null}
+```ts trigger.config.ts theme={"theme":"css-variables"}
 import { defineConfig } from "@trigger.dev/sdk";
 // You will need to install the @trigger.dev/build package
 import { syncVercelEnvVars } from "@trigger.dev/build/extensions/core";
@@ -4216,7 +5268,7 @@ This task will retry 10 times with exponential backoff.
 * `openai.chat.completions.create()` can throw an error.
 * The result can be empty and we want to try again. So we manually throw an error.
 
-```ts /trigger/openai.ts theme={null}
+```ts /trigger/openai.ts theme={"theme":"css-variables"}
 import { task } from "@trigger.dev/sdk";
 import OpenAI from "openai";
 
@@ -4255,7 +5307,7 @@ export const openaiTask = task({
 
 One way to gain reliability is to break your work into smaller tasks and [trigger](/triggering) them from each other. Each task can have its own retrying behavior:
 
-```ts /trigger/multiple-tasks.ts theme={null}
+```ts /trigger/multiple-tasks.ts theme={"theme":"css-variables"}
 import { task } from "@trigger.dev/sdk";
 
 export const myTask = task({
@@ -4294,7 +5346,7 @@ We provide some useful functions that you can use to retry smaller parts of a ta
 
 You can retry a block of code that can throw an error, with the same retry settings as a task.
 
-```ts /trigger/retry-on-throw.ts theme={null}
+```ts /trigger/retry-on-throw.ts theme={"theme":"css-variables"}
 import { task, logger, retry } from "@trigger.dev/sdk";
 
 export const retryOnThrow = task({
@@ -4330,7 +5382,7 @@ You can use `fetch`, `axios`, or any other library in your code.
 
 But we do provide a convenient function to perform HTTP requests with conditional retrying based on the response:
 
-```ts /trigger/retry-fetch.ts theme={null}
+```ts /trigger/retry-fetch.ts theme={"theme":"css-variables"}
 import { task, logger, retry } from "@trigger.dev/sdk";
 
 export const taskWithFetchRetries = task({
@@ -4426,7 +5478,7 @@ In this complicated example:
 * If we've run out of requests or tokens we retry at the time specified in the headers.
 
 <CodeGroup>
-  ```ts tasks.ts theme={null}
+  ```ts tasks.ts theme={"theme":"css-variables"}
   import { task } from "@trigger.dev/sdk";
   import { calculateISO8601DurationOpenAIVariantResetAt, openai } from "./openai.js";
 
@@ -4484,7 +5536,7 @@ In this complicated example:
   });
   ```
 
-  ```ts openai.ts theme={null}
+  ```ts openai.ts theme={"theme":"css-variables"}
   import { OpenAI } from "openai";
 
   export const openai = new OpenAI({ apiKey: env.OPENAI_API_KEY });
@@ -4531,7 +5583,7 @@ In this complicated example:
 
 You can prevent retries by throwing an `AbortTaskRunError`. This will fail the task attempt and disable retrying.
 
-```ts /trigger/myTasks.ts theme={null}
+```ts /trigger/myTasks.ts theme={"theme":"css-variables"}
 import { task, AbortTaskRunError } from "@trigger.dev/sdk";
 
 export const openaiTask = task({
@@ -4557,7 +5609,7 @@ export const openaiTask = task({
 
 Sometimes you want to catch an error and don't want to retry the task. You can use try/catch as you normally would. In this example we fallback to using Replicate if OpenAI fails.
 
-```ts /trigger/myTasks.ts theme={null}
+```ts /trigger/myTasks.ts theme={"theme":"css-variables"}
 import { task } from "@trigger.dev/sdk";
 
 export const openaiTask = task({
@@ -4621,7 +5673,7 @@ This simple GitHub action workflow will deploy your Trigger.dev tasks when new c
 </Warning>
 
 <CodeGroup>
-  ```yaml .github/workflows/release-trigger-prod.yml theme={null}
+  ```yaml .github/workflows/release-trigger-prod.yml theme={"theme":"css-variables"}
   name: Deploy to Trigger.dev (prod)
 
   on:
@@ -4651,7 +5703,7 @@ This simple GitHub action workflow will deploy your Trigger.dev tasks when new c
             npx trigger.dev@latest deploy
   ```
 
-  ```yaml .github/workflows/release-trigger-staging.yml theme={null}
+  ```yaml .github/workflows/release-trigger-staging.yml theme={"theme":"css-variables"}
   name: Deploy to Trigger.dev (staging)
 
   # Requires manually calling the workflow from a branch / commit to deploy to staging
@@ -4696,8 +5748,8 @@ If you already have a GitHub action file, you can just add the final step "🚀 
   </Step>
 
   <Step title="Add the TRIGGER_ACCESS_TOKEN">
-    Add the name `TRIGGER_ACCESS_TOKEN` and the value of your access token. <img src="https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/github-access-token.png?fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=6c516d32254c19937c0e7104753316a7" alt="Add TRIGGER_ACCESS_TOKEN
-    in GitHub" data-og-width="1373" width="1373" data-og-height="919" height="919" data-path="images/github-access-token.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/github-access-token.png?w=280&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=067664630f87c18f4f22ad7b1b4483e0 280w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/github-access-token.png?w=560&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=153409ea82e92f09591159880a32594a 560w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/github-access-token.png?w=840&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=3088626084cb0a4a13f6155f7a6b56c2 840w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/github-access-token.png?w=1100&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=3845374b71af491ff1a43e8deca2f445 1100w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/github-access-token.png?w=1650&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=ebe6406d9a669c5e045378d24fbcb9c3 1650w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/github-access-token.png?w=2500&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=f8a87db188028dc7b104f6cf9ddbde0a 2500w" />
+    Add the name `TRIGGER_ACCESS_TOKEN` and the value of your access token. <img alt="Add TRIGGER_ACCESS_TOKEN
+    in GitHub" />
   </Step>
 </Steps>
 
@@ -4706,7 +5758,7 @@ If you already have a GitHub action file, you can just add the final step "🚀 
 The CLI and `@trigger.dev/*` package versions need to be in sync with the `trigger.dev` CLI, otherwise there will be errors and unpredictable behavior. Hence, the `deploy` command will automatically fail during CI on any version mismatches.
 Tip: add the `trigger.dev` CLI to your `devDependencies` and the deploy command to your `package.json` file to keep versions managed in the same place. For example:
 
-```json  theme={null}
+```json theme={"theme":"css-variables"}
 {
   "scripts": {
     "deploy:trigger-prod": "trigger deploy",
@@ -4720,7 +5772,7 @@ Tip: add the `trigger.dev` CLI to your `devDependencies` and the deploy command 
 
 Your workflow file will follow the version specified in the `package.json` script, like so:
 
-```yaml .github/workflows/release-trigger.yml theme={null}
+```yaml .github/workflows/release-trigger.yml theme={"theme":"css-variables"}
 - name: 🚀 Deploy Trigger.dev
   env:
     TRIGGER_ACCESS_TOKEN: ${{ secrets.TRIGGER_ACCESS_TOKEN }}
@@ -4732,19 +5784,14 @@ You should use the version you run locally during dev and manual deploy. The cur
 
 ## Self-hosting
 
-When self-hosting, you will have to take a few additional steps:
+When self-hosting, you need to:
 
-* Specify the `TRIGGER_API_URL` environment variable. You can add it to the GitHub secrets the same way as the access token. This should point at your webapp domain, for example: `https://trigger.example.com`
-* Setup docker as you will need to build and push the image to your registry. On [Trigger.dev Cloud](https://cloud.trigger.dev) this is all done remotely.
+* Set up Docker Buildx in your CI environment for building images locally.
 * Add your registry credentials to the GitHub secrets.
-* Use the `--self-hosted` and `--push` flags when deploying.
-
-<Tip>If you're self-hosting v4, the `--self-hosted` and `--push` flags are **NOT** needed.</Tip>
-
-Other than that, your GitHub action file will look very similar to the one above:
+* Specify the `TRIGGER_API_URL` environment variable pointing to your webapp domain, for example: `https://trigger.example.com`
 
 <CodeGroup>
-  ```yaml .github/workflows/release-trigger-self-hosted.yml theme={null}
+  ```yaml .github/workflows/release-trigger-self-hosted.yml theme={"theme":"css-variables"}
   name: Deploy to Trigger.dev (self-hosted)
 
   on:
@@ -4767,13 +5814,11 @@ Other than that, your GitHub action file will look very similar to the one above
         - name: Install dependencies
           run: npm install
 
-        # docker setup - part 1
         - name: Set up Docker Buildx
           uses: docker/setup-buildx-action@v3
           with:
             version: latest
 
-        # docker setup - part 2
         - name: Login to DockerHub
           uses: docker/login-action@v3
           with:
@@ -4783,11 +5828,9 @@ Other than that, your GitHub action file will look very similar to the one above
         - name: 🚀 Deploy Trigger.dev
           env:
             TRIGGER_ACCESS_TOKEN: ${{ secrets.TRIGGER_ACCESS_TOKEN }}
-            # required when self-hosting
             TRIGGER_API_URL: ${{ secrets.TRIGGER_API_URL }}
-          # deploy with additional flags
           run: |
-            npx trigger.dev@latest deploy --self-hosted --push
+            npx trigger.dev@latest deploy
   ```
 </CodeGroup>
 
@@ -4837,7 +5880,7 @@ This eliminates the need to manually run the `trigger.dev deploy` command or set
 
 Our GitHub integration uses branch tracking to determine when and where to deploy your code.
 
-<img src="https://mintcdn.com/trigger/rYmvd2BT_CpeAo5i/deployment/git-settings.png?fit=max&auto=format&n=rYmvd2BT_CpeAo5i&q=85&s=22539316605344f0d461e9132b365161" alt="Trigger.dev project git settings" data-og-width="2128" width="2128" data-og-height="1312" height="1312" data-path="deployment/git-settings.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/trigger/rYmvd2BT_CpeAo5i/deployment/git-settings.png?w=280&fit=max&auto=format&n=rYmvd2BT_CpeAo5i&q=85&s=d6e36be08415a61faffca2d42a4f581f 280w, https://mintcdn.com/trigger/rYmvd2BT_CpeAo5i/deployment/git-settings.png?w=560&fit=max&auto=format&n=rYmvd2BT_CpeAo5i&q=85&s=56da45f1ba051ae3849c01f1752b3bc8 560w, https://mintcdn.com/trigger/rYmvd2BT_CpeAo5i/deployment/git-settings.png?w=840&fit=max&auto=format&n=rYmvd2BT_CpeAo5i&q=85&s=f72bcc7fa00d560bcafec619b1fc987a 840w, https://mintcdn.com/trigger/rYmvd2BT_CpeAo5i/deployment/git-settings.png?w=1100&fit=max&auto=format&n=rYmvd2BT_CpeAo5i&q=85&s=984cc0145d10478fa1e4e9383a28be9d 1100w, https://mintcdn.com/trigger/rYmvd2BT_CpeAo5i/deployment/git-settings.png?w=1650&fit=max&auto=format&n=rYmvd2BT_CpeAo5i&q=85&s=271094babe4404695f896005a11e9ba9 1650w, https://mintcdn.com/trigger/rYmvd2BT_CpeAo5i/deployment/git-settings.png?w=2500&fit=max&auto=format&n=rYmvd2BT_CpeAo5i&q=85&s=46c3892badd5efd5dd1ff6da7bae4e0b 2500w" />
+<img alt="Trigger.dev project git settings" />
 
 ### Production and staging branches
 
@@ -4872,7 +5915,7 @@ You can disconnect a repository at any time from your project git settings. This
 
 To add or remove repository access for the Trigger.dev GitHub app, follow the link in the `Connect GitHub repository` modal:
 
-<img src="https://mintcdn.com/trigger/rYmvd2BT_CpeAo5i/deployment/connect-repo.png?fit=max&auto=format&n=rYmvd2BT_CpeAo5i&q=85&s=60a5382c08d707000e907b292242f388" alt="Trigger.dev prompt to connect a GitHub repository" data-og-width="2128" width="2128" data-og-height="1312" height="1312" data-path="deployment/connect-repo.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/trigger/rYmvd2BT_CpeAo5i/deployment/connect-repo.png?w=280&fit=max&auto=format&n=rYmvd2BT_CpeAo5i&q=85&s=8f66d138ecf9cc56a8ff97d9e484d40f 280w, https://mintcdn.com/trigger/rYmvd2BT_CpeAo5i/deployment/connect-repo.png?w=560&fit=max&auto=format&n=rYmvd2BT_CpeAo5i&q=85&s=ac67e6a07bd9e132609c66480b843b2e 560w, https://mintcdn.com/trigger/rYmvd2BT_CpeAo5i/deployment/connect-repo.png?w=840&fit=max&auto=format&n=rYmvd2BT_CpeAo5i&q=85&s=5a538fa4904a6fd41fbbaf36e101521f 840w, https://mintcdn.com/trigger/rYmvd2BT_CpeAo5i/deployment/connect-repo.png?w=1100&fit=max&auto=format&n=rYmvd2BT_CpeAo5i&q=85&s=06dde82cb6f249a009cc0714dc9eaf73 1100w, https://mintcdn.com/trigger/rYmvd2BT_CpeAo5i/deployment/connect-repo.png?w=1650&fit=max&auto=format&n=rYmvd2BT_CpeAo5i&q=85&s=1d4bfea5cfe868c25fa73ce902123470 1650w, https://mintcdn.com/trigger/rYmvd2BT_CpeAo5i/deployment/connect-repo.png?w=2500&fit=max&auto=format&n=rYmvd2BT_CpeAo5i&q=85&s=ffea2ffa393258159c1c60e2686af341 2500w" />
+<img alt="Trigger.dev prompt to connect a GitHub repository" />
 
 Alternatively, you can follow these steps on GitHub:
 
@@ -4915,7 +5958,7 @@ Example `.npmrc` file containing credentials for a private npm registry and a Gi
 
 Encode it to base64:
 
-```bash  theme={null}
+```bash theme={"theme":"css-variables"}
 # Encode your .npmrc file
 cat .npmrc | base64
 ```
@@ -4938,6 +5981,191 @@ Trigger.dev is [Open Source on GitHub](https://github.com/triggerdotdev/trigger.
 You can also [self-host](/open-source-self-hosting) the project if you want to run it on your own infrastructure.
 
 
+# Claude Agent SDK setup guide
+Source: https://trigger.dev/docs/guides/ai-agents/claude-code-trigger
+
+Build AI agents that can read files, run commands, and edit code using the Claude Agent SDK and Trigger.dev.
+
+The [Claude Agent SDK](https://platform.claude.com/docs/en/agent-sdk/overview) gives you the same tools, agent loop, and context management that power Claude Code. Combined with Trigger.dev, you get durable execution, automatic retries, and full observability for your agents.
+
+## Setup
+
+<Note>
+  This guide assumes you are working with an existing [Trigger.dev](https://trigger.dev) project.
+  Follow our [quickstart](/quick-start) to get set up if you don't have a project yet.
+</Note>
+
+<Steps>
+  <Step title="Install the Claude Agent SDK">
+    ```bash npm theme={"theme":"css-variables"}
+    npm install @anthropic-ai/claude-agent-sdk
+    ```
+  </Step>
+
+  <Step title="Configure trigger.config.ts">
+    Add the SDK to the `external` array so it's not bundled:
+
+    ```ts trigger.config.ts theme={"theme":"css-variables"}
+    import { defineConfig } from "@trigger.dev/sdk";
+
+    export default defineConfig({
+      project: process.env.TRIGGER_PROJECT_REF!,
+      build: {
+        external: ["@anthropic-ai/claude-agent-sdk"],
+      },
+      machine: "small-2x",
+    });
+    ```
+
+    <Note>
+      Adding packages to `external` prevents them from being bundled, which is necessary for the Claude
+      Agent SDK. See the [build configuration docs](/config/config-file#external) for more details.
+    </Note>
+  </Step>
+
+  <Step title="Set your API key">
+    Add your Anthropic API key to your environment variables. The SDK reads it automatically.
+
+    ```bash theme={"theme":"css-variables"}
+    ANTHROPIC_API_KEY=sk-ant-...
+    ```
+
+    You can set this in the [Trigger.dev dashboard](https://cloud.trigger.dev) under **Environment Variables**, or in your `.env` file for local development.
+  </Step>
+
+  <Step title="Create your first agent task">
+    This example creates a task where Claude generates code in an empty workspace. The agent will create files based on your prompt:
+
+    ```ts trigger/claude-agent.ts theme={"theme":"css-variables"}
+    import { query } from "@anthropic-ai/claude-agent-sdk";
+    import { schemaTask, logger } from "@trigger.dev/sdk";
+    import { mkdtemp, rm, readdir } from "node:fs/promises";
+    import { tmpdir } from "node:os";
+    import { join } from "node:path";
+    import { z } from "zod";
+
+    export const codeGenerator = schemaTask({
+      id: "code-generator",
+      schema: z.object({
+        prompt: z.string(),
+      }),
+      run: async ({ prompt }, { signal }) => {
+        const abortController = new AbortController();
+        signal.addEventListener("abort", () => abortController.abort());
+
+        // Create an empty workspace for the agent
+        // The agent will create files here based on the prompt
+        const workDir = await mkdtemp(join(tmpdir(), "claude-agent-"));
+        logger.info("Created workspace", { workDir });
+
+        try {
+          const result = query({
+            prompt,
+            options: {
+              model: "claude-sonnet-4-20250514",
+              abortController,
+              cwd: workDir,
+              maxTurns: 10,
+              permissionMode: "acceptEdits",
+              allowedTools: ["Read", "Edit", "Write", "Glob"],
+            },
+          });
+
+          for await (const message of result) {
+            logger.info("Agent message", { type: message.type });
+          }
+
+          // See what files Claude created
+          const files = await readdir(workDir, { recursive: true });
+          logger.info("Files created", { files });
+
+          return { filesCreated: files };
+        } finally {
+          await rm(workDir, { recursive: true, force: true });
+        }
+      },
+    });
+    ```
+  </Step>
+
+  <Step title="Run the dev server">
+    ```bash theme={"theme":"css-variables"}
+    npx trigger.dev@latest dev
+    ```
+  </Step>
+
+  <Step title="Test your agent">
+    Go to the Trigger.dev dashboard, find your `code-generator` task, and trigger it with a test payload:
+
+    ```json theme={"theme":"css-variables"}
+    {
+      "prompt": "Create a Node.js project with a fibonacci.ts file containing a function to calculate fibonacci numbers, and a fibonacci.test.ts file with tests."
+    }
+    ```
+  </Step>
+</Steps>
+
+## How it works
+
+The `query()` function runs Claude in an agentic loop where it can:
+
+1. **Read files** - Explore codebases with `Read`, `Grep`, and `Glob` tools
+2. **Edit files** - Modify code with `Edit` and `Write` tools
+3. **Run commands** - Execute shell commands with `Bash` tool (if enabled)
+4. **Think step by step** - Use extended thinking for complex problems
+
+The agent continues until it completes the task or reaches `maxTurns`.
+
+### Permission modes
+
+| Mode                  | What it does                                          |
+| --------------------- | ----------------------------------------------------- |
+| `"default"`           | Asks for approval on potentially dangerous operations |
+| `"acceptEdits"`       | Auto-approves file operations, asks for bash/network  |
+| `"bypassPermissions"` | Skips all safety checks (not recommended)             |
+
+### Available tools
+
+```ts theme={"theme":"css-variables"}
+allowedTools: [
+  "Task", // Planning and task management
+  "Glob", // Find files by pattern
+  "Grep", // Search file contents
+  "Read", // Read file contents
+  "Edit", // Edit existing files
+  "Write", // Create new files
+  "Bash", // Run shell commands
+  "TodoRead", // Read todo list
+  "TodoWrite", // Update todo list
+];
+```
+
+## GitHub repo
+
+<Card title="View the Claude Agent SDK + Trigger.dev example" icon="GitHub" href="https://github.com/triggerdotdev/examples/tree/main/claude-agent-sdk-trigger">
+  A complete example with two agent patterns: basic safe code generation and advanced with bash
+  execution.
+</Card>
+
+## Example projects using the Claude Agent SDK
+
+<CardGroup>
+  <Card title="Claude changelog generator" icon="scroll" href="/guides/example-projects/claude-changelog-generator">
+    Generate changelogs from git commits using custom MCP tools.
+  </Card>
+
+  <Card title="Claude GitHub wiki agent" icon="book" href="/guides/example-projects/claude-github-wiki">
+    Analyze repositories and answer questions with real-time streaming.
+  </Card>
+</CardGroup>
+
+## Learn more
+
+* [Claude Agent SDK docs](https://platform.claude.com/docs/en/agent-sdk/overview) – Official Anthropic documentation
+* [Trigger.dev Realtime](/realtime/overview) – Stream agent progress to your frontend
+* [Waitpoints](/wait) – Add human-in-the-loop approval steps
+
+
 # Generate and translate copy
 Source: https://trigger.dev/docs/guides/ai-agents/generate-translate-copy
 
@@ -4947,7 +6175,7 @@ Create an AI agent workflow that generates and translates copy
 
 **Prompt chaining** is an AI workflow pattern that decomposes a complex task into a sequence of steps, where each LLM call processes the output of the previous one. This approach trades off latency for higher accuracy by making each LLM call an easier, more focused task, with the ability to add programmatic checks between steps to ensure the process remains on track.
 
-<img src="https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/guides/ai-agents/prompt-chaining.png?fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=8bc4a5c5ff644c6b7c675672d5cab313" alt="Generating and translating copy" data-og-width="1293" width="1293" data-og-height="428" height="428" data-path="guides/ai-agents/prompt-chaining.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/guides/ai-agents/prompt-chaining.png?w=280&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=b3122be12a3e08d344331200b5beff33 280w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/guides/ai-agents/prompt-chaining.png?w=560&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=b505be00532b2e8c583a7a83d7d1ad67 560w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/guides/ai-agents/prompt-chaining.png?w=840&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=5e63269a727185873ea0d35392d8a568 840w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/guides/ai-agents/prompt-chaining.png?w=1100&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=16ad5688eac01d05220a8b20fc75af1a 1100w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/guides/ai-agents/prompt-chaining.png?w=1650&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=40c58aedf4cccde7e3654e25aedc274a 1650w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/guides/ai-agents/prompt-chaining.png?w=2500&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=fcf4372192360767b8e1de9a50ff6340 2500w" />
+<img alt="Generating and translating copy" />
 
 ## Example task
 
@@ -4961,7 +6189,7 @@ In this example, we'll create a workflow that generates and translates copy. Thi
 * Validates the generated copy meets word count requirements (±10 words)
 * Translates the validated copy to the target language while preserving tone
 
-```typescript  theme={null}
+```typescript theme={"theme":"css-variables"}
 import { openai } from "@ai-sdk/openai";
 import { task } from "@trigger.dev/sdk";
 import { generateText } from "ai";
@@ -5040,7 +6268,7 @@ export const generateAndTranslateTask = task({
 
 On the Test page in the dashboard, select the `generate-and-translate-copy` task and include a payload like the following:
 
-```json  theme={null}
+```json theme={"theme":"css-variables"}
 {
   marketingSubject: "The controversial new Jaguar electric concept car",
   targetLanguage: "Spanish",
@@ -5050,7 +6278,7 @@ On the Test page in the dashboard, select the `generate-and-translate-copy` task
 
 This example payload generates copy and then translates it using sequential LLM calls. The translation only begins after the generated copy has been validated against the word count requirements.
 
-<video src="https://content.trigger.dev/agent-prompt-chaining-3.mp4" controls muted autoPlay loop />
+<video />
 
 
 # AI agents overview
@@ -5058,35 +6286,17 @@ Source: https://trigger.dev/docs/guides/ai-agents/overview
 
 Real world AI agent example tasks using Trigger.dev
 
-## Overview
-
-These guides will show you how to set up different types of AI agent workflows with Trigger.dev. The examples take inspiration from Anthropic's blog post on [building effective agents](https://www.anthropic.com/research/building-effective-agents).
-
-<CardGroup cols={2}>
-  <Card title="Prompt chaining" img="https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/guides/ai-agents/prompt-chaining.png?fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=8bc4a5c5ff644c6b7c675672d5cab313" href="/guides/ai-agents/generate-translate-copy" data-og-width="1293" width="1293" data-og-height="428" height="428" data-path="guides/ai-agents/prompt-chaining.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/guides/ai-agents/prompt-chaining.png?w=280&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=b3122be12a3e08d344331200b5beff33 280w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/guides/ai-agents/prompt-chaining.png?w=560&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=b505be00532b2e8c583a7a83d7d1ad67 560w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/guides/ai-agents/prompt-chaining.png?w=840&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=5e63269a727185873ea0d35392d8a568 840w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/guides/ai-agents/prompt-chaining.png?w=1100&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=16ad5688eac01d05220a8b20fc75af1a 1100w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/guides/ai-agents/prompt-chaining.png?w=1650&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=40c58aedf4cccde7e3654e25aedc274a 1650w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/guides/ai-agents/prompt-chaining.png?w=2500&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=fcf4372192360767b8e1de9a50ff6340 2500w">
-    Chain prompts together to generate and translate marketing copy automatically
-  </Card>
-
-  <Card title="Routing" img="https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/guides/ai-agents/routing.png?fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=2f586095b267c7d969afdc0a1e167071" href="/guides/ai-agents/route-question" data-og-width="1293" width="1293" data-og-height="428" height="428" data-path="guides/ai-agents/routing.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/guides/ai-agents/routing.png?w=280&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=40f3589d2b62e618a7b1d792be296330 280w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/guides/ai-agents/routing.png?w=560&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=d0cd9a0c53b7ee3fb0d7ef0e84e97936 560w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/guides/ai-agents/routing.png?w=840&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=b0e6a9e0aef55f30078825981a3f5445 840w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/guides/ai-agents/routing.png?w=1100&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=97fc784cc9a90f4c542f7ce4423d4ea5 1100w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/guides/ai-agents/routing.png?w=1650&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=2ccca06d7bf06a3fd3d07bde7fc982ef 1650w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/guides/ai-agents/routing.png?w=2500&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=371e95357260a464adb4fe5408fe6a30 2500w">
-    Send questions to different AI models based on complexity analysis
-  </Card>
-
-  <Card title="Parallelization" img="https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/guides/ai-agents/parallelization.png?fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=385b3c71db00c3995cb3de787ef462b4" href="/guides/ai-agents/respond-and-check-content" data-og-width="1293" width="1293" data-og-height="428" height="428" data-path="guides/ai-agents/parallelization.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/guides/ai-agents/parallelization.png?w=280&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=560093586ba22fa29ef9b31f99e9b773 280w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/guides/ai-agents/parallelization.png?w=560&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=2fe3d6a2b9d9dc31804cf5ba89910849 560w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/guides/ai-agents/parallelization.png?w=840&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=84ccb0dd6586fdd84ffbed4705f8e05a 840w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/guides/ai-agents/parallelization.png?w=1100&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=8c036426d21172e60147fa5cb5907f6d 1100w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/guides/ai-agents/parallelization.png?w=1650&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=03cf5a5f250bac272f7a068e7283abc4 1650w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/guides/ai-agents/parallelization.png?w=2500&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=7d50bd85587ffbe8a020ad63b797e414 2500w">
-    Simultaneously check for inappropriate content while responding to customer inquiries
-  </Card>
-
-  <Card title="Orchestrator" img="https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/guides/ai-agents/orchestrator-workers.png?fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=05a71d4ef13664e4e73ed32bfd2a942c" href="/guides/ai-agents/verify-news-article" data-og-width="1293" width="1293" data-og-height="428" height="428" data-path="guides/ai-agents/orchestrator-workers.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/guides/ai-agents/orchestrator-workers.png?w=280&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=035f5aa0c78609052e8b456d07b2b52d 280w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/guides/ai-agents/orchestrator-workers.png?w=560&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=4a011fa4f129882e3bb025f3ce05ef50 560w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/guides/ai-agents/orchestrator-workers.png?w=840&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=ccc65d7967ba73b1acfe056f8ca2935b 840w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/guides/ai-agents/orchestrator-workers.png?w=1100&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=42cd3b5918af9d2254decbe1b27cd999 1100w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/guides/ai-agents/orchestrator-workers.png?w=1650&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=b1e9b61d149c08a99e0cdea56ab25d3a 1650w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/guides/ai-agents/orchestrator-workers.png?w=2500&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=3237a8fbb14118204277d67294f8a7e4 2500w">
-    Coordinate multiple AI workers to verify news article accuracy
-  </Card>
-
-  <Card title="Evaluator-optimizer" img="https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/guides/ai-agents/evaluator-optimizer.png?fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=60942bcc65c91600a84882c90eabc016" href="/guides/ai-agents/translate-and-refine" data-og-width="1293" width="1293" data-og-height="428" height="428" data-path="guides/ai-agents/evaluator-optimizer.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/guides/ai-agents/evaluator-optimizer.png?w=280&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=d38309cc661150f5d5f53d72bc52716e 280w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/guides/ai-agents/evaluator-optimizer.png?w=560&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=9d53fef641d7c81ab0815111c675dab1 560w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/guides/ai-agents/evaluator-optimizer.png?w=840&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=05ecd7d9039c13fe5c0877e584455660 840w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/guides/ai-agents/evaluator-optimizer.png?w=1100&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=a0348eeb47d70e01de841ef2753c4c39 1100w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/guides/ai-agents/evaluator-optimizer.png?w=1650&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=5ff8bb708f22b482e1eeadc7f13697d8 1650w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/guides/ai-agents/evaluator-optimizer.png?w=2500&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=06ab54339a2fc6ef4553e65b47d66219 2500w">
-    Translate text and automatically improve quality through feedback loops
-  </Card>
-</CardGroup>
-
 ## Example projects using AI agents
 
-<CardGroup cols={2}>
+<CardGroup>
+  <Card icon="scroll" title="Claude changelog generator" href="/guides/example-projects/claude-changelog-generator">
+    Automatically generate professional changelogs from git commits using Claude.
+  </Card>
+
+  <Card icon="book" title="Claude GitHub wiki agent" href="/guides/example-projects/claude-github-wiki">
+    Generate and maintain GitHub wiki documentation with Claude-powered analysis.
+  </Card>
+
   <Card icon="hand" title="Human-in-the-loop workflow" href="/guides/example-projects/human-in-the-loop-workflow">
     Create audio summaries of newspaper articles using a human-in-the-loop workflow built with
     ReactFlow and Trigger.dev waitpoint tokens.
@@ -5108,6 +6318,36 @@ These guides will show you how to set up different types of AI agent workflows w
   <Card title="Vercel AI SDK deep research agent" icon="triangle" href="/guides/example-projects/vercel-ai-sdk-deep-research">
     Use the Vercel AI SDK to generate comprehensive PDF reports using a deep research agent.
   </Card>
+
+  <Card title="Smart Spreadsheet" icon="table" href="/guides/example-projects/smart-spreadsheet">
+    Enrich company data using Exa search and Claude with real-time streaming results.
+  </Card>
+</CardGroup>
+
+## Agent fundamentals
+
+These guides will show you how to set up different types of AI agent workflows with Trigger.dev. The examples take inspiration from Anthropic's blog post on [building effective agents](https://www.anthropic.com/research/building-effective-agents).
+
+<CardGroup>
+  <Card title="Prompt chaining" href="/guides/ai-agents/generate-translate-copy">
+    Chain prompts together to generate and translate marketing copy automatically
+  </Card>
+
+  <Card title="Routing" href="/guides/ai-agents/route-question">
+    Send questions to different AI models based on complexity analysis
+  </Card>
+
+  <Card title="Parallelization" href="/guides/ai-agents/respond-and-check-content">
+    Simultaneously check for inappropriate content while responding to customer inquiries
+  </Card>
+
+  <Card title="Orchestrator" href="/guides/ai-agents/verify-news-article">
+    Coordinate multiple AI workers to verify news article accuracy
+  </Card>
+
+  <Card title="Evaluator-optimizer" href="/guides/ai-agents/translate-and-refine">
+    Translate text and automatically improve quality through feedback loops
+  </Card>
 </CardGroup>
 
 
@@ -5119,7 +6359,8 @@ Create an AI agent workflow that responds to customer inquiries while checking i
 ## Overview
 
 **Parallelization** is a workflow pattern where multiple tasks or processes run simultaneously instead of sequentially, allowing for more efficient use of resources and faster overall execution. It's particularly valuable when different parts of a task can be handled independently, such as running content analysis and response generation at the same time.
-<img src="https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/guides/ai-agents/parallelization.png?fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=385b3c71db00c3995cb3de787ef462b4" alt="Parallelization" data-og-width="1293" width="1293" data-og-height="428" height="428" data-path="guides/ai-agents/parallelization.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/guides/ai-agents/parallelization.png?w=280&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=560093586ba22fa29ef9b31f99e9b773 280w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/guides/ai-agents/parallelization.png?w=560&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=2fe3d6a2b9d9dc31804cf5ba89910849 560w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/guides/ai-agents/parallelization.png?w=840&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=84ccb0dd6586fdd84ffbed4705f8e05a 840w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/guides/ai-agents/parallelization.png?w=1100&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=8c036426d21172e60147fa5cb5907f6d 1100w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/guides/ai-agents/parallelization.png?w=1650&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=03cf5a5f250bac272f7a068e7283abc4 1650w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/guides/ai-agents/parallelization.png?w=2500&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=7d50bd85587ffbe8a020ad63b797e414 2500w" />
+
+<img alt="Parallelization" />
 
 ## Example task
 
@@ -5133,7 +6374,7 @@ In this example, we'll create a workflow that simultaneously checks content for 
 * Generates customer service responses using an AI model
 * Simultaneously checks for inappropriate content while generating responses
 
-```typescript  theme={null}
+```typescript theme={"theme":"css-variables"}
 import { openai } from "@ai-sdk/openai";
 import { batch, task } from "@trigger.dev/sdk";
 import { generateText } from "ai";
@@ -5229,7 +6470,7 @@ export const handleCustomerQuestion = task({
 
 On the Test page in the dashboard, select the `handle-customer-question` task and include a payload like the following:
 
-```json  theme={null}
+```json theme={"theme":"css-variables"}
 {
   "question": "Can you explain 2FA?"
 }
@@ -5237,7 +6478,7 @@ On the Test page in the dashboard, select the `handle-customer-question` task an
 
 When triggered with a question, the task simultaneously generates a response while checking for inappropriate content using two parallel LLM calls. The main task waits for both operations to complete before delivering the final response.
 
-<video src="https://content.trigger.dev/agent-parallelization.mp4" controls muted autoPlay loop />
+<video />
 
 
 # Route a question to a different AI model
@@ -5249,7 +6490,7 @@ Create an AI agent workflow that routes a question to a different AI model depen
 
 **Routing** is a workflow pattern that classifies an input and directs it to a specialized followup task. This pattern allows for separation of concerns and building more specialized prompts, which is particularly effective when there are distinct categories that are better handled separately. Without routing, optimizing for one kind of input can hurt performance on other inputs.
 
-<img src="https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/guides/ai-agents/routing.png?fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=2f586095b267c7d969afdc0a1e167071" alt="Routing" data-og-width="1293" width="1293" data-og-height="428" height="428" data-path="guides/ai-agents/routing.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/guides/ai-agents/routing.png?w=280&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=40f3589d2b62e618a7b1d792be296330 280w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/guides/ai-agents/routing.png?w=560&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=d0cd9a0c53b7ee3fb0d7ef0e84e97936 560w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/guides/ai-agents/routing.png?w=840&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=b0e6a9e0aef55f30078825981a3f5445 840w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/guides/ai-agents/routing.png?w=1100&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=97fc784cc9a90f4c542f7ce4423d4ea5 1100w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/guides/ai-agents/routing.png?w=1650&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=2ccca06d7bf06a3fd3d07bde7fc982ef 1650w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/guides/ai-agents/routing.png?w=2500&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=371e95357260a464adb4fe5408fe6a30 2500w" />
+<img alt="Routing" />
 
 ## Example task
 
@@ -5263,7 +6504,7 @@ In this example, we'll create a workflow that routes a question to a different A
 * Directs simple questions to `gpt-4o` and complex ones to `gpt-o3-mini`
 * Returns both the answer and metadata about the routing decision
 
-````typescript  theme={null}
+````typescript theme={"theme":"css-variables"}
 import { openai } from "@ai-sdk/openai";
 import { task } from "@trigger.dev/sdk";
 import { generateText } from "ai";
@@ -5338,13 +6579,13 @@ export const routeAndAnswerQuestion = task({
 
 Triggering our task with a simple question shows it routing to the gpt-4o model and returning the answer with reasoning:
 
-```json  theme={null}
+```json theme={"theme":"css-variables"}
 {
   "question": "How many planets are there in the solar system?"
 }
 ```
 
-<video src="https://content.trigger.dev/agent-routing.mp4" controls muted autoPlay loop />
+<video />
 
 
 # Translate text and refine it based on feedback
@@ -5356,7 +6597,7 @@ This guide will show you how to create a task that translates text and refines i
 
 This example is based on the **evaluator-optimizer** pattern, where one LLM generates a response while another provides evaluation and feedback in a loop. This is particularly effective for tasks with clear evaluation criteria where iterative refinement provides better results.
 
-<img src="https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/guides/ai-agents/evaluator-optimizer.png?fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=60942bcc65c91600a84882c90eabc016" alt="Evaluator-optimizer" data-og-width="1293" width="1293" data-og-height="428" height="428" data-path="guides/ai-agents/evaluator-optimizer.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/guides/ai-agents/evaluator-optimizer.png?w=280&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=d38309cc661150f5d5f53d72bc52716e 280w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/guides/ai-agents/evaluator-optimizer.png?w=560&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=9d53fef641d7c81ab0815111c675dab1 560w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/guides/ai-agents/evaluator-optimizer.png?w=840&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=05ecd7d9039c13fe5c0877e584455660 840w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/guides/ai-agents/evaluator-optimizer.png?w=1100&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=a0348eeb47d70e01de841ef2753c4c39 1100w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/guides/ai-agents/evaluator-optimizer.png?w=1650&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=5ff8bb708f22b482e1eeadc7f13697d8 1650w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/guides/ai-agents/evaluator-optimizer.png?w=2500&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=06ab54339a2fc6ef4553e65b47d66219 2500w" />
+<img alt="Evaluator-optimizer" />
 
 ## Example task
 
@@ -5370,7 +6611,7 @@ This example task translates text into a target language and refines the transla
 * Uses `generateText` again to evaluate the translation
 * Recursively calls itself to refine the translation based on the feedback
 
-```typescript  theme={null}
+```typescript theme={"theme":"css-variables"}
 import { task } from "@trigger.dev/sdk";
 import { generateText } from "ai";
 import { openai } from "@ai-sdk/openai";
@@ -5500,7 +6741,7 @@ export const translateAndRefine = task({
 
 On the Test page in the dashboard, select the `translate-and-refine` task and include a payload like the following:
 
-```json  theme={null}
+```json theme={"theme":"css-variables"}
 {
   "text": "In the twilight of his years, the old clockmaker's hands, once steady as the timepieces he crafted, now trembled like autumn leaves in the wind.",
   "targetLanguage": "French"
@@ -5509,7 +6750,7 @@ On the Test page in the dashboard, select the `translate-and-refine` task and in
 
 This example payload translates the text into French and should be suitably difficult to require a few iterations, depending on the model used and the prompt criteria you set.
 
-<video src="https://content.trigger.dev/agent-evaluator-optimizer.mp4" controls muted autoPlay loop />
+<video />
 
 
 # Verify a news article
@@ -5521,7 +6762,7 @@ Create an AI agent workflow that verifies the facts in a news article
 
 This example demonstrates the **orchestrator-workers** pattern, where a central AI agent dynamically breaks down complex tasks and delegates them to specialized worker agents. This pattern is particularly effective when tasks require multiple perspectives or parallel processing streams, with the orchestrator synthesizing the results into a cohesive output.
 
-<img src="https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/guides/ai-agents/orchestrator-workers.png?fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=05a71d4ef13664e4e73ed32bfd2a942c" alt="Orchestrator" data-og-width="1293" width="1293" data-og-height="428" height="428" data-path="guides/ai-agents/orchestrator-workers.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/guides/ai-agents/orchestrator-workers.png?w=280&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=035f5aa0c78609052e8b456d07b2b52d 280w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/guides/ai-agents/orchestrator-workers.png?w=560&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=4a011fa4f129882e3bb025f3ce05ef50 560w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/guides/ai-agents/orchestrator-workers.png?w=840&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=ccc65d7967ba73b1acfe056f8ca2935b 840w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/guides/ai-agents/orchestrator-workers.png?w=1100&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=42cd3b5918af9d2254decbe1b27cd999 1100w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/guides/ai-agents/orchestrator-workers.png?w=1650&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=b1e9b61d149c08a99e0cdea56ab25d3a 1650w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/guides/ai-agents/orchestrator-workers.png?w=2500&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=3237a8fbb14118204277d67294f8a7e4 2500w" />
+<img alt="Orchestrator" />
 
 ## Example task
 
@@ -5536,7 +6777,7 @@ Our example task uses multiple LLM calls to extract claims from a news article a
 * Evaluates claims against recent sources and analyzes historical context in parallel
 * Combines results into a structured analysis report
 
-```typescript  theme={null}
+```typescript theme={"theme":"css-variables"}
 import { openai } from "@ai-sdk/openai";
 import { batch, logger, task } from "@trigger.dev/sdk";
 import { CoreMessage, generateText } from "ai";
@@ -5715,7 +6956,7 @@ export const newsFactChecker = task({
 
 On the Test page in the dashboard, select the `news-fact-checker` task and include a payload like the following:
 
-```json  theme={null}
+```json theme={"theme":"css-variables"}
 {
   "article": "Tesla announced a new breakthrough in battery technology today. The company claims their new batteries will have 50% more capacity and cost 30% less to produce. Elon Musk stated this development will enable electric vehicles to achieve price parity with gasoline cars by 2024. The new batteries are scheduled to enter production next quarter at the Texas Gigafactory."
 }
@@ -5723,7 +6964,7 @@ On the Test page in the dashboard, select the `news-fact-checker` task and inclu
 
 This example payload verifies the claims in the news article and provides a report on the results.
 
-<video src="https://content.trigger.dev/agent-orchestrator-workers.mp4" controls muted autoPlay loop />
+<video />
 
 
 # dotenvx
@@ -5763,8 +7004,6 @@ Source: https://trigger.dev/docs/guides/community/sveltekit
 
 A plugin for SvelteKit to integrate with Trigger.dev.
 
-export const framework_0 = "SvelteKit"
-
 This is a community developed Vite plugin from [@cptCrunch\_](https://x.com/cptCrunch_) that enables seamless integration between SvelteKit and Trigger.dev by allowing you to use your SvelteKit functions directly in your Trigger.dev projects.
 
 ## Features
@@ -5777,7 +7016,7 @@ This is a community developed Vite plugin from [@cptCrunch\_](https://x.com/cptC
 
 ## Prerequisites
 
-* Setup a project in {framework_0}
+* Setup a project in&#x20;
 * Ensure TypeScript is installed
 * [Create a Trigger.dev account](https://cloud.trigger.dev)
 * Create a new Trigger.dev project
@@ -5786,7 +7025,7 @@ This is a community developed Vite plugin from [@cptCrunch\_](https://x.com/cptC
 
 [View setup guide on npm](https://www.npmjs.com/package/triggerkit)
 
-```bash  theme={null}
+```bash theme={"theme":"css-variables"}
 npm i triggerkit
 ```
 
@@ -5835,7 +7074,7 @@ The task runs daily at 5pm ET to find the cheapest Broadway tickets available fo
 
 This task runs daily at 5pm ET, in [src/trigger/broadway-monitor.ts](https://github.com/triggerdotdev/examples/tree/main/anchor-browser-web-scraper/src/trigger/broadway-monitor.ts):
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 import { schedules } from "@trigger.dev/sdk";
 import Anchorbrowser from "anchorbrowser";
 
@@ -5894,7 +7133,7 @@ export const broadwayMonitor = schedules.task({
 
 Since Anchor Browser uses browser automation libraries (Playwright) under the hood, we need to configure Trigger.dev to handle these dependencies properly by excluding them from the build bundle in [trigger.config.ts](https://github.com/triggerdotdev/examples/tree/main/anchor-browser-web-scraper/trigger.config.ts):
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 import { defineConfig } from "@trigger.dev/sdk";
 
 export default defineConfig({
@@ -5937,7 +7176,7 @@ This demo is a full stack example that uses the following:
 
 ## Video
 
-<video controls className="w-full aspect-video" src="https://content.trigger.dev/batch-llm-evaluator.mp4" />
+<video />
 
 ## Relevant code
 
@@ -5965,6 +7204,180 @@ To learn more, take a look at the following resources:
 * [React hooks](/realtime/react-hooks) - learn more about using React hooks to interact with the Trigger.dev API
 
 
+# Changelog generator using Claude Agent SDK
+Source: https://trigger.dev/docs/guides/example-projects/claude-changelog-generator
+
+Automatically generate changelogs from your git commit history using the Claude Agent SDK and Trigger.dev.
+
+## Overview
+
+This demo how to build an AI agent using the Claude Agent SDK that explores GitHub commits, investigates unclear changes by fetching diffs on demand, and generates developer-friendly changelogs.
+
+## Tech stack
+
+* **[Next.js](https://nextjs.org)** – Frontend framework using App Router
+* **[Claude Agent SDK](https://docs.anthropic.com/en/docs/agents-and-tools/claude-agent-sdk)** – Anthropic's agent SDK for building AI agents with custom tools
+* **[Trigger.dev](https://trigger.dev)** – workflow orchestration with real-time streaming, observability, and deployment
+* **[Octokit](https://github.com/octokit/octokit.js)** – GitHub API client for fetching commits and diffs
+
+## Demo video
+
+<video />
+
+## GitHub repo
+
+<Card title="View the changelog generator repo" icon="GitHub" href="https://github.com/triggerdotdev/examples/tree/main/changelog-generator">
+  Click here to view the full open source code for this project in our examples repository on
+  GitHub. You can fork it and use it as a starting point for your own project.
+</Card>
+
+## How it works
+
+The agent workflow:
+
+1. **Receive request** – User provides a GitHub repo URL and date range
+2. **List commits** – Agent calls `list_commits` MCP tool to get all commits
+3. **Analyze commits** – Agent categorizes each commit:
+   * Skip trivial commits (typos, formatting)
+   * Include clear features/improvements directly
+   * Investigate unclear commits by fetching their diffs
+4. **Generate changelog** – Agent writes a categorized markdown changelog
+5. **Stream output** – Changelog streams to the frontend in real-time
+
+## Features
+
+* **Two-phase analysis** – Lists all commits first, then selectively fetches diffs only for ambiguous ones
+* **Custom tools** – `list_commits` and `get_commit_diff` called autonomously by Claude
+* **Real-time streaming** – Changelog streams to the frontend as it's generated via Trigger.dev Realtime
+* **Live observability** – Agent phase, turn count, and tool calls broadcast via run metadata
+* **Private repo support** – Optional GitHub token for private repositories
+
+## Relevant code
+
+| File                                                                                                                                                 | Description                            |
+| ---------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------- |
+| [`trigger/generate-changelog.ts`](https://github.com/triggerdotdev/examples/blob/main/changelog-generator/trigger/generate-changelog.ts)             | Main task with custom tools            |
+| [`trigger/changelog-stream.ts`](https://github.com/triggerdotdev/examples/blob/main/changelog-generator/trigger/changelog-stream.ts)                 | Stream definition for real-time output |
+| [`app/api/generate-changelog/route.ts`](https://github.com/triggerdotdev/examples/blob/main/changelog-generator/app/api/generate-changelog/route.ts) | API endpoint that triggers the task    |
+| [`app/response/[runId]/page.tsx`](https://github.com/triggerdotdev/examples/blob/main/changelog-generator/app/response/%5BrunId%5D/page.tsx)         | Streaming display page                 |
+
+## trigger.config.ts
+
+You need to mark the Claude Agent SDK as external in your trigger.config.ts file.
+
+```ts trigger.config.ts theme={"theme":"css-variables"}
+import { defineConfig } from "@trigger.dev/sdk";
+
+export default defineConfig({
+  project: process.env.TRIGGER_PROJECT_REF!,
+  runtime: "node",
+  logLevel: "log",
+  maxDuration: 300,
+  build: {
+    external: ["@anthropic-ai/claude-agent-sdk"],
+  },
+  machine: "small-2x",
+});
+```
+
+<Note>
+  Adding packages to `external` prevents them from being bundled, which is necessary for the Claude
+  Agent SDK. See the [build configuration docs](/config/config-file#external) for more details.
+</Note>
+
+## Learn more
+
+* [**Building agents with Claude Agent SDK**](/guides/ai-agents/claude-code-trigger) – Comprehensive guide for using Claude Agent SDK with Trigger.dev
+* [**Realtime**](/realtime/overview) – Stream task progress to your frontend
+* [**Scheduled tasks**](/tasks/scheduled) – Automate changelog generation on a schedule
+
+
+# Claude GitHub wiki
+Source: https://trigger.dev/docs/guides/example-projects/claude-github-wiki
+
+Ask questions about any public GitHub repository and get AI-powered analysis using the Claude Agent SDK and Trigger.dev.
+
+## Overview
+
+This demo shows how to build an AI agent using the Claude Agent SDK that clones any public GitHub repo and uses Claude to answer questions about its codebase. The agent explores the code using `Grep` and `Read` tools to provide detailed, accurate answers.
+
+## Tech stack
+
+* **[Next.js](https://nextjs.org/)** – React framework with App Router for the frontend
+* **[Claude Agent SDK](https://docs.anthropic.com/en/docs/agents-and-tools/claude-agent-sdk)** – Anthropic's SDK for building AI agents with file system and search tools
+* **[Trigger.dev](https://trigger.dev/)** – workflow orchestration with real-time streaming, observability, and deployment
+
+## Demo video
+
+<video />
+
+## GitHub repo
+
+<Card title="View the Claude GitHub wiki agent repo" icon="GitHub" href="https://github.com/triggerdotdev/examples/tree/main/claude-agent-github-wiki">
+  Click here to view the full code for this project in our examples repository on GitHub. You can
+  fork it and use it as a starting point for your own project.
+</Card>
+
+## How it works
+
+The agent workflow:
+
+1. **Receive question** – User provides a GitHub URL and question about the repo
+2. **Clone repository** – Shallow clone to a temp directory (depth=1 for speed)
+3. **Analyze with Claude** – Agent explores the codebase using allowed tools:
+   * `Grep` – Search for patterns across files
+   * `Read` – Read file contents
+4. **Stream response** – Analysis streams to the frontend in real-time
+5. **Cleanup** – Temp directory is always deleted, even on failure
+
+## Features
+
+* **Ask anything about any public repo** – Architecture, security vulnerabilities, API endpoints, testing strategies, etc.
+* **Claude Agent SDK exploration** – Claude explores the codebase using `Grep` and `Read` tools
+* **Cancel anytime** – Abort long-running tasks with proper cleanup
+* **Trigger.dev [Realtime](/realtime/overview) streaming** – Watch Claude's analysis stream in as it's generated
+* **Progress tracking** – See clone status, analysis progress, and repo size via Trigger.dev metadata
+
+## Relevant code
+
+| File                                                                                                                                              | Description                                                         |
+| ------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------- |
+| [`trigger/analyze-repo.ts`](https://github.com/triggerdotdev/examples/blob/main/claude-agent-github-wiki/trigger/analyze-repo.ts)                 | Main task that clones repo, runs Claude agent, and streams response |
+| [`trigger/agent-stream.ts`](https://github.com/triggerdotdev/examples/blob/main/claude-agent-github-wiki/trigger/agent-stream.ts)                 | Typed stream definition for real-time text responses                |
+| [`app/api/analyze-repo/route.ts`](https://github.com/triggerdotdev/examples/blob/main/claude-agent-github-wiki/app/api/analyze-repo/route.ts)     | API endpoint that triggers the task                                 |
+| [`app/response/[runId]/page.tsx`](https://github.com/triggerdotdev/examples/blob/main/claude-agent-github-wiki/app/response/%5BrunId%5D/page.tsx) | Real-time streaming display with progress                           |
+
+## trigger.config.ts
+
+You need to mark the Claude Agent SDK as external in your trigger.config.ts file.
+
+```ts trigger.config.ts theme={"theme":"css-variables"}
+import { defineConfig } from "@trigger.dev/sdk";
+
+export default defineConfig({
+  project: process.env.TRIGGER_PROJECT_REF!,
+  runtime: "node",
+  logLevel: "log",
+  maxDuration: 3600, // 60 minutes for large repos
+  build: {
+    external: ["@anthropic-ai/claude-agent-sdk"],
+  },
+  machine: "medium-2x",
+});
+```
+
+<Note>
+  Adding packages to `external` prevents them from being bundled, which is necessary for the Claude
+  Agent SDK. See the [build configuration docs](/config/config-file#external) for more details.
+</Note>
+
+## Learn more
+
+* [**Building agents with Claude Agent SDK**](/guides/ai-agents/claude-code-trigger) – Comprehensive guide for using Claude Agent SDK with Trigger.dev
+* [**Trigger.dev Realtime**](/realtime/overview) – Stream task progress to your frontend
+* [**Errors and retrying**](/errors-retrying) – Handle failures gracefully
+
+
 # Claude 3.7 thinking chatbot
 Source: https://trigger.dev/docs/guides/example-projects/claude-thinking-chatbot
 
@@ -5988,7 +7401,7 @@ This demo is a full stack example that uses the following:
 
 ## Video
 
-<video controls className="w-full aspect-video" src="https://github.com/user-attachments/assets/053739a5-9736-4cb5-ab1c-81c35b69f4c4" />
+<video />
 
 ## Relevant code
 
@@ -6038,7 +7451,7 @@ This demo is a full stack example that uses the following:
 
 ## Video
 
-<video controls className="w-full aspect-video" src="https://content.trigger.dev/reactflow-waitpoints-example.mov" />
+<video />
 
 ## Relevant code
 
@@ -6059,7 +7472,7 @@ Each node in the workflow corresponds to a Trigger.dev task. The idea is to enab
 
 The waitpoint token is created in [a Next.js server action](https://github.com/triggerdotdev/examples/blob/main/article-summary-workflow/src/app/actions.ts#L26):
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 const reviewWaitpointToken = await wait.createToken({
   tags: [workflowTag],
   timeout: "1h",
@@ -6069,7 +7482,7 @@ const reviewWaitpointToken = await wait.createToken({
 
 and later completed in another server action in the same file:
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 await wait.completeToken<ReviewPayload>(
   { id: tokenId },
   {
@@ -6204,7 +7617,7 @@ This demo is a full stack example that uses the following:
 
 ## Post to Slack
 
-<img src="https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/slack-meme-approval.png?fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=b1f4a27701fd8f2899e4454f7bb72e91" alt="Meme Generator with Human-in-the-Loop Approval" data-og-width="1073" width="1073" data-og-height="900" height="900" data-path="images/slack-meme-approval.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/slack-meme-approval.png?w=280&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=cdc950328aa47c2b6bc01350bca4ee98 280w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/slack-meme-approval.png?w=560&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=a4a89e890e1380f99abad6142284dd44 560w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/slack-meme-approval.png?w=840&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=661bae7ff1423a52296186cac080e225 840w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/slack-meme-approval.png?w=1100&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=df8f583f34558590e910bfdce86d3f28 1100w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/slack-meme-approval.png?w=1650&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=3628c0b4def34c6423ac6f09464bd3ed 1650w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/slack-meme-approval.png?w=2500&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=4f9d0357cc10f5c9f5e57203987102c5 2500w" />
+<img alt="Meme Generator with Human-in-the-Loop Approval" />
 
 ## Relevant code
 
@@ -6259,7 +7672,7 @@ Guardrails are safety mechanisms that run alongside AI agents to validate input,
 
 ## Video
 
-<video controls className="w-full aspect-video" src="https://github.com/user-attachments/assets/9b1e55c7-467d-4aca-8b4a-a018014c0827" />
+<video />
 
 ## Relevant code
 
@@ -6299,7 +7712,7 @@ By combining the OpenAI Agents SDK with Trigger.dev, you can create durable agen
 
 ## Video
 
-<video controls className="w-full aspect-video" src="https://github.com/user-attachments/assets/d3a1c709-412f-48e8-a4aa-f0ef50dce5c8" />
+<video />
 
 ## Tech stack
 
@@ -6354,7 +7767,7 @@ This project demonstrates how to build an AI-powered product image generator tha
 
 ## Video
 
-<video controls className="w-full aspect-video" src="https://content.trigger.dev/product-image-generator-example.mp4" />
+<video />
 
 ## GitHub repo
 
@@ -6419,7 +7832,7 @@ The frontend is a Next.js app that allows users to upload a CSV file, which is t
 
 ## Video
 
-<video controls className="w-full aspect-video" src="https://github.com/user-attachments/assets/25160343-6663-452c-8a27-819c3fd7b8df" />
+<video />
 
 ## Relevant code
 
@@ -6464,7 +7877,97 @@ This full stack Next.js project showcases the following:
 
 This video walks through the process of creating this task in a Next.js project.
 
-<iframe width="100%" height="315" src="https://www.youtube.com/embed/BWZqYfUaigg?si=XpqVUEIf1j4bsYZ4" title="Trigger.dev walkthrough" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen />
+<iframe title="Trigger.dev walkthrough" />
+
+## Learn more about Trigger.dev Realtime
+
+To learn more, take a look at the following resources:
+
+* [Trigger.dev Realtime](/realtime) - learn more about how to subscribe to runs and get real-time updates
+* [Realtime streaming](/realtime/react-hooks/streams) - learn more about streaming data from your tasks
+* [Batch Triggering](/triggering#tasks-batchtrigger) - learn more about how to trigger tasks in batches
+* [React hooks](/realtime/react-hooks) - learn more about using React hooks to interact with the Trigger.dev API
+
+
+# Smart Spreadsheet
+Source: https://trigger.dev/docs/guides/example-projects/smart-spreadsheet
+
+An AI-powered company enrichment tool that uses Exa search and Claude to extract verified company data with source attribution.
+
+## Overview
+
+Smart Spreadsheet is an AI-powered tool that enriches company data on demand. Input a company name or website URL and get verified information including industry, headcount, and funding details; each with source attribution. Results appear in the frontend in real-time as each task completes.
+
+* A [Next.js](https://nextjs.org/) app with [Trigger.dev](https://trigger.dev/) for background tasks
+* [Exa](https://exa.ai/) – an AI-native search engine that returns clean, structured content ready for LLM extraction
+* [Claude](https://anthropic.com/) via the [Vercel AI SDK](https://sdk.vercel.ai/) for data extraction
+* [Supabase](https://supabase.com/) PostgreSQL database for persistence
+* Trigger.dev [Realtime](/realtime/overview) for live updates to the frontend
+
+## Video
+
+<video />
+
+## GitHub repo
+
+<Card title="View the Smart Spreadsheet repo" icon="github" href="https://github.com/triggerdotdev/examples/tree/main/smart-spreadsheet">
+  Click here to view the full code for this project in our examples repository on GitHub. You can
+  fork it and use it as a starting point for your own project.
+</Card>
+
+## How it works
+
+The enrichment workflow:
+
+1. **Trigger enrichment** – User enters a company name or URL in the spreadsheet UI
+2. **Parallel data gathering** – Four subtasks run concurrently to fetch basic info, industry, employee count, and funding details
+3. **AI extraction** – Each subtask uses Exa search + Claude to extract structured data with source URLs
+4. **Real-time updates** – Results appear in the frontend as each subtask completes
+5. **Persist results** – Enriched data is saved to Supabase with source attribution
+
+## Features
+
+* **Parallel processing** – All four enrichment categories run simultaneously using [batch.triggerByTaskAndWait](/triggering#batch-trigger-by-task-and-wait)
+* **Source attribution** – Every data point includes the URL it was extracted from
+* **Live updates** – Results appear in the UI as each task completes using [Realtime](/realtime/overview)
+* **Structured extraction** – Zod schemas ensure consistent data output from Claude
+
+## Key code patterns
+
+### Parallel task execution
+
+The main task triggers all four enrichment subtasks simultaneously using `batch.triggerByTaskAndWait`:
+
+```ts src/trigger/enrich-company.ts theme={"theme":"css-variables"}
+const { runs } = await batch.triggerByTaskAndWait([
+  { task: getBasicInfo, payload: { companyName, companyUrl } },
+  { task: getIndustry, payload: { companyName, companyUrl } },
+  { task: getEmployeeCount, payload: { companyName, companyUrl } },
+  { task: getFundingRound, payload: { companyName, companyUrl } },
+]);
+```
+
+### Live updates from child tasks
+
+Each subtask uses `metadata.parent.set()` to update the parent's metadata as soon as data is extracted:
+
+```ts src/trigger/get-basic-info.ts theme={"theme":"css-variables"}
+// After Claude extracts the data, update the parent task's metadata
+metadata.parent.set("website", object.website);
+metadata.parent.set("description", object.description);
+```
+
+The frontend subscribes to these metadata updates using [Realtime](/realtime/overview), so users see each field populate as it's discovered.
+
+## Relevant code
+
+| File                                                                                                                                           | Description                                                            |
+| ---------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------- |
+| [`src/trigger/enrich-company.ts`](https://github.com/triggerdotdev/examples/blob/main/smart-spreadsheet/src/trigger/enrich-company.ts)         | Main orchestrator that triggers parallel subtasks and persists results |
+| [`src/trigger/get-basic-info.ts`](https://github.com/triggerdotdev/examples/blob/main/smart-spreadsheet/src/trigger/get-basic-info.ts)         | Extracts company website and description                               |
+| [`src/trigger/get-industry.ts`](https://github.com/triggerdotdev/examples/blob/main/smart-spreadsheet/src/trigger/get-industry.ts)             | Classifies company industry                                            |
+| [`src/trigger/get-employee-count.ts`](https://github.com/triggerdotdev/examples/blob/main/smart-spreadsheet/src/trigger/get-employee-count.ts) | Finds employee headcount                                               |
+| [`src/trigger/get-funding-round.ts`](https://github.com/triggerdotdev/examples/blob/main/smart-spreadsheet/src/trigger/get-funding-round.ts)   | Discovers latest funding information                                   |
 
 ## Learn more about Trigger.dev Realtime
 
@@ -6674,7 +8177,7 @@ Deep research agent which generates comprehensive PDF reports using Vercel's AI 
 
 This full-stack project is an intelligent deep research agent that autonomously conducts multi-layered web research, generating comprehensive reports which are then converted to PDF and uploaded to storage.
 
-<video controls className="w-full aspect-video" src="https://github.com/user-attachments/assets/aa86d2b2-7aa7-4948-82ff-5e1e80cf8e37" />
+<video />
 
 **Tech stack:**
 
@@ -6759,7 +8262,7 @@ We use the [`useRealtimeTaskTrigger`](/realtime/react-hooks/triggering#userealti
 
 **Frontend (React Hook)**:
 
-```typescript  theme={null}
+```typescript theme={"theme":"css-variables"}
 const triggerInstance = useRealtimeTaskTrigger<typeof deepResearchOrchestrator>("deep-research", {
   accessToken: triggerToken,
 });
@@ -6770,7 +8273,7 @@ As the research progresses, the metadata is set within the tasks and the fronten
 
 **Task Metadata**:
 
-```typescript  theme={null}
+```typescript theme={"theme":"css-variables"}
 metadata.set("status", {
   progress: 25,
   label: `Searching the web for: "${query}"`,
@@ -6817,7 +8320,7 @@ This demo is a full stack example that uses the following:
 
 ## Video
 
-<video controls className="w-full aspect-video" src="https://github.com/user-attachments/assets/960edcb6-e225-4983-a48c-6fa697295dec" />
+<video />
 
 ## Relevant code
 
@@ -6845,7 +8348,7 @@ This example demonstrates how to use Trigger.dev to make reliable calls to AI AP
 
 ## Task code
 
-```ts trigger/generateContent.ts theme={null}
+```ts trigger/generateContent.ts theme={"theme":"css-variables"}
 import { task } from "@trigger.dev/sdk";
 import OpenAI from "openai";
 
@@ -6904,7 +8407,7 @@ function generateImagePrompt(theme: string, description: string): any {
 
 To test this task in the dashboard, you can use the following payload:
 
-```json  theme={null}
+```json theme={"theme":"css-variables"}
 {
   "theme": "A beautiful sunset",
   "description": "A sunset over the ocean with a tiny yacht in the distance."
@@ -6928,7 +8431,7 @@ Transcribe audio using [Deepgram's](https://developers.deepgram.com/docs/introdu
 
 ## Task code
 
-```ts trigger/deepgramTranscription.ts theme={null}
+```ts trigger/deepgramTranscription.ts theme={"theme":"css-variables"}
 import { createClient } from "@deepgram/sdk";
 import { logger, task } from "@trigger.dev/sdk";
 
@@ -6977,7 +8480,7 @@ export const deepgramTranscription = task({
 
 To test this task in the dashboard, you can use the following payload:
 
-```json  theme={null}
+```json theme={"theme":"css-variables"}
 {
   "audioUrl": "https://dpgr.am/spacewalk.wav"
 }
@@ -6993,7 +8496,7 @@ This example task generates an image from a URL using Fal.ai and uploads it to C
 
 This video walks through the process of creating this task in a Next.js project.
 
-<iframe width="100%" height="315" src="https://www.youtube.com/embed/AyRT4X8dHK0?si=ugA172V_3TMjik9h" title="Trigger.dev walkthrough" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen />
+<iframe title="Trigger.dev walkthrough" />
 
 ## Prerequisites
 
@@ -7006,7 +8509,7 @@ This video walks through the process of creating this task in a Next.js project.
 
 This task converts an image to a cartoon using Fal.ai, and uploads the result to Cloudflare R2.
 
-```ts trigger/fal-ai-image-to-cartoon.ts theme={null}
+```ts trigger/fal-ai-image-to-cartoon.ts theme={"theme":"css-variables"}
 import { logger, task } from "@trigger.dev/sdk";
 import { PutObjectCommand, S3Client } from "@aws-sdk/client-s3";
 import * as fal from "@fal-ai/serverless-client";
@@ -7082,7 +8585,7 @@ export const falAiImageToCartoon = task({
 
 You can test your task by triggering it from the Trigger.dev dashboard.
 
-```json  theme={null}
+```json theme={"theme":"css-variables"}
 "imageUrl": "<image-url>", // Replace with the URL of the image you want to convert to a cartoon
 "fileName": "<file-name>" // Replace with the name you want to save the file as in Cloudflare R2
 ```
@@ -7104,7 +8607,7 @@ This example task generates an image from a prompt using Fal.ai and shows the pr
 
 This video walks through the process of creating this task in a Next.js project.
 
-<iframe width="100%" height="315" src="https://www.youtube.com/embed/BWZqYfUaigg?si=XpqVUEIf1j4bsYZ4" title="Trigger.dev walkthrough" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen />
+<iframe title="Trigger.dev walkthrough" />
 
 ## Prerequisites
 
@@ -7116,7 +8619,7 @@ This video walks through the process of creating this task in a Next.js project.
 
 This task generates an image from a prompt using Fal.ai.
 
-```ts trigger/fal-ai-image-from-prompt-realtime.ts theme={null}
+```ts trigger/fal-ai-image-from-prompt-realtime.ts theme={"theme":"css-variables"}
 import * as fal from "@fal-ai/serverless-client";
 import { logger, schemaTask } from "@trigger.dev/sdk";
 import { z } from "zod";
@@ -7158,7 +8661,7 @@ export const realtimeImageGeneration = schemaTask({
 
 You can test your task by triggering it from the Trigger.dev dashboard. Here's an example payload:
 
-```json  theme={null}
+```json theme={"theme":"css-variables"}
 {
   "imageUrl": "https://static.vecteezy.com/system/resources/previews/005/857/332/non_2x/funny-portrait-of-cute-corgi-dog-outdoors-free-photo.jpg",
   "prompt": "Dress this dog for Christmas"
@@ -7171,8 +8674,6 @@ Source: https://trigger.dev/docs/guides/examples/ffmpeg-video-processing
 
 These examples show you how to process videos in various ways using FFmpeg with Trigger.dev.
 
-export const packages_0 = "ffmpeg"
-
 ## Prerequisites
 
 * A project with [Trigger.dev initialized](/quick-start)
@@ -7182,7 +8683,7 @@ export const packages_0 = "ffmpeg"
 
 To use these example tasks, you'll first need to add our FFmpeg extension to your project configuration like this:
 
-```ts trigger.config.ts theme={null}
+```ts trigger.config.ts theme={"theme":"css-variables"}
 import { ffmpeg } from "@trigger.dev/build/extensions/core";
 import { defineConfig } from "@trigger.dev/sdk";
 
@@ -7217,7 +8718,7 @@ This task demonstrates how to use FFmpeg to compress a video, reducing its file 
 
 ### Task code
 
-```ts trigger/ffmpeg-compress-video.ts theme={null}
+```ts trigger/ffmpeg-compress-video.ts theme={"theme":"css-variables"}
 import { PutObjectCommand, S3Client } from "@aws-sdk/client-s3";
 import { logger, task } from "@trigger.dev/sdk";
 import ffmpeg from "fluent-ffmpeg";
@@ -7310,7 +8811,7 @@ export const ffmpegCompressVideo = task({
 
 To test this task, use this payload structure:
 
-```json  theme={null}
+```json theme={"theme":"css-variables"}
 {
   "videoUrl": "<video-url>" // Replace <a-video-url> with the URL of the video you want to upload
 }
@@ -7329,7 +8830,7 @@ This task demonstrates how to use FFmpeg to extract audio from a video, convert 
 
 ### Task code
 
-```ts trigger/ffmpeg-extract-audio.ts theme={null}
+```ts trigger/ffmpeg-extract-audio.ts theme={"theme":"css-variables"}
 import { PutObjectCommand, S3Client } from "@aws-sdk/client-s3";
 import { logger, task } from "@trigger.dev/sdk";
 import ffmpeg from "fluent-ffmpeg";
@@ -7424,7 +8925,7 @@ To test this task, use this payload structure:
   will fail.
 </Warning>
 
-```json  theme={null}
+```json theme={"theme":"css-variables"}
 {
   "videoUrl": "<video-url>" // Replace <a-video-url> with the URL of the video you want to upload
 }
@@ -7442,7 +8943,7 @@ This task demonstrates how to use FFmpeg to generate a thumbnail from a video at
 
 ### Task code
 
-```ts trigger/ffmpeg-generate-thumbnail.ts theme={null}
+```ts trigger/ffmpeg-generate-thumbnail.ts theme={"theme":"css-variables"}
 import { PutObjectCommand, S3Client } from "@aws-sdk/client-s3";
 import { logger, task } from "@trigger.dev/sdk";
 import ffmpeg from "fluent-ffmpeg";
@@ -7529,7 +9030,7 @@ export const ffmpegGenerateThumbnail = task({
 
 To test this task in the dashboard, you can use the following payload:
 
-```json  theme={null}
+```json theme={"theme":"css-variables"}
 {
   "videoUrl": "<video-url>" // Replace <a-video-url> with the URL of the video you want to upload
 }
@@ -7537,7 +9038,7 @@ To test this task in the dashboard, you can use the following payload:
 
 ## Local development
 
-To test this example task locally, be sure to install any packages from the build extensions you added to your `trigger.config.ts` file to your local machine. In this case, you need to install {packages_0}.
+To test this example task locally, be sure to install any packages from the build extensions you added to your `trigger.config.ts` file to your local machine. In this case, you need to install .
 
 
 # Crawl a URL using Firecrawl
@@ -7560,12 +9061,12 @@ Here are two examples of how to use Firecrawl with Trigger.dev:
 
 This task crawls a website and returns the `crawlResult` object. You can set the `limit` parameter to control the number of URLs that are crawled.
 
-```ts trigger/firecrawl-url-crawl.ts theme={null}
-import FirecrawlApp from "@mendable/firecrawl-js";
+```ts trigger/firecrawl-url-crawl.ts theme={"theme":"css-variables"}
+import Firecrawl from "@mendable/firecrawl-js";
 import { task } from "@trigger.dev/sdk";
 
 // Initialize the Firecrawl client with your API key
-const firecrawlClient = new FirecrawlApp({
+const firecrawlClient = new Firecrawl({
   apiKey: process.env.FIRECRAWL_API_KEY, // Get this from your Firecrawl dashboard
 });
 
@@ -7575,15 +9076,15 @@ export const firecrawlCrawl = task({
     const { url } = payload;
 
     // Crawl: scrapes all the URLs of a web page and return content in LLM-ready format
-    const crawlResult = await firecrawlClient.crawlUrl(url, {
+    const crawlResult = await firecrawlClient.crawl(url, {
       limit: 100, // Limit the number of URLs to crawl
       scrapeOptions: {
         formats: ["markdown", "html"],
       },
     });
 
-    if (!crawlResult.success) {
-      throw new Error(`Failed to crawl: ${crawlResult.error}`);
+    if (crawlResult.status === "failed") {
+      throw new Error(`Failed to crawl: ${url}`);
     }
 
     return {
@@ -7597,7 +9098,7 @@ export const firecrawlCrawl = task({
 
 You can test your task by triggering it from the Trigger.dev dashboard.
 
-```json  theme={null}
+```json theme={"theme":"css-variables"}
 "url": "<url-to-crawl>" // Replace with the URL you want to crawl
 ```
 
@@ -7605,12 +9106,12 @@ You can test your task by triggering it from the Trigger.dev dashboard.
 
 This task scrapes a single URL and returns the `scrapeResult` object.
 
-```ts trigger/firecrawl-url-scrape.ts theme={null}
-import FirecrawlApp, { ScrapeResponse } from "@mendable/firecrawl-js";
+```ts trigger/firecrawl-url-scrape.ts theme={"theme":"css-variables"}
+import Firecrawl from "@mendable/firecrawl-js";
 import { task } from "@trigger.dev/sdk";
 
 // Initialize the Firecrawl client with your API key
-const firecrawlClient = new FirecrawlApp({
+const firecrawlClient = new Firecrawl({
   apiKey: process.env.FIRECRAWL_API_KEY, // Get this from your Firecrawl dashboard
 });
 
@@ -7620,13 +9121,9 @@ export const firecrawlScrape = task({
     const { url } = payload;
 
     // Scrape: scrapes a URL and get its content in LLM-ready format (markdown, structured data via LLM Extract, screenshot, html)
-    const scrapeResult = (await firecrawlClient.scrapeUrl(url, {
+    const scrapeResult = await firecrawlClient.scrape(url, {
       formats: ["markdown", "html"],
-    })) as ScrapeResponse;
-
-    if (!scrapeResult.success) {
-      throw new Error(`Failed to scrape: ${scrapeResult.error}`);
-    }
+    });
 
     return {
       data: scrapeResult,
@@ -7639,7 +9136,7 @@ export const firecrawlScrape = task({
 
 You can test your task by triggering it from the Trigger.dev dashboard.
 
-```json  theme={null}
+```json theme={"theme":"css-variables"}
 "url": "<url-to-scrape>" // Replace with the URL you want to scrape
 ```
 
@@ -7648,8 +9145,6 @@ You can test your task by triggering it from the Trigger.dev dashboard.
 Source: https://trigger.dev/docs/guides/examples/libreoffice-pdf-conversion
 
 This example demonstrates how to convert documents to PDF using LibreOffice with Trigger.dev.
-
-export const packages_0 = "libreoffice"
 
 ## Prerequisites
 
@@ -7661,7 +9156,7 @@ export const packages_0 = "libreoffice"
 
 To deploy this task, you'll need to add LibreOffice to your project configuration, like this:
 
-```ts trigger.config.ts theme={null}
+```ts trigger.config.ts theme={"theme":"css-variables"}
 import { aptGet } from "@trigger.dev/build/extensions/core";
 import { defineConfig } from "@trigger.dev/sdk";
 
@@ -7698,7 +9193,7 @@ This task demonstrates how to use LibreOffice to convert a document (.doc or .do
 
 ### Task code
 
-```ts trigger/libreoffice-pdf-convert.ts theme={null}
+```ts trigger/libreoffice-pdf-convert.ts theme={"theme":"css-variables"}
 import { PutObjectCommand, S3Client } from "@aws-sdk/client-s3";
 import { task } from "@trigger.dev/sdk";
 import libreoffice from "libreoffice-convert";
@@ -7769,7 +9264,7 @@ export const libreOfficePdfConvert = task({
 
 To test this task, use this payload structure:
 
-```json  theme={null}
+```json theme={"theme":"css-variables"}
 {
   "documentUrl": "<a-document-url>" // Replace <a-document-url> with the URL of the document you want to convert
 }
@@ -7777,7 +9272,7 @@ To test this task, use this payload structure:
 
 ## Local development
 
-To test this example task locally, be sure to install any packages from the build extensions you added to your `trigger.config.ts` file to your local machine. In this case, you need to install {packages_0}.
+To test this example task locally, be sure to install any packages from the build extensions you added to your `trigger.config.ts` file to your local machine. In this case, you need to install .
 
 
 # Lightpanda
@@ -7811,11 +9306,11 @@ In this task we use Lightpanda browser to get links from a provided URL. You wil
 
 Make sure to add `LIGHTPANDA_TOKEN` to your Trigger.dev dashboard on the Environment Variables page:
 
-```bash  theme={null}
+```bash theme={"theme":"css-variables"}
 LIGHTPANDA_TOKEN="<your-token>"
 ```
 
-```ts trigger/lightpanda-cloud-puppeteer.ts theme={null}
+```ts trigger/lightpanda-cloud-puppeteer.ts theme={"theme":"css-variables"}
 import { logger, task } from "@trigger.dev/sdk";
 import puppeteer from "puppeteer-core";
 
@@ -7874,7 +9369,7 @@ export const lightpandaCloudPuppeteer = task({
 Proxies can be used with your browser via the proxy query string parameter. By default, the proxy used is "datacenter" which is a pool of shared datacenter IPs.
 `datacenter` accepts an optional `country` query string parameter which is an [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) country code.
 
-```bash  theme={null}
+```bash theme={"theme":"css-variables"}
 # This example will use a German IP
 wss://cloud.lightpanda.io/ws?proxy=datacenter&country=de&token=${token}
 ```
@@ -7893,7 +9388,7 @@ A session is alive until you close it or the connection is closed. The max durat
 
 This task will dump the HTML of a provided URL using the Lightpanda browser binary. You will have to pass the URL as a payload when triggering the task.
 
-```ts trigger/lightpanda-fetch.ts theme={null}
+```ts trigger/lightpanda-fetch.ts theme={"theme":"css-variables"}
 import { logger, task } from "@trigger.dev/sdk";
 import { execSync } from "node:child_process";
 
@@ -7925,7 +9420,7 @@ export const lightpandaFetch = task({
 
 This task initializes a Lightpanda CDP server and uses it with `puppeteer-core` to scrape a provided URL.
 
-```ts trigger/lightpanda-cdp.ts theme={null}
+```ts trigger/lightpanda-cdp.ts theme={"theme":"css-variables"}
 import { logger, task } from "@trigger.dev/sdk";
 import { spawn, type ChildProcessWithoutNullStreams } from "node:child_process";
 import puppeteer from "puppeteer-core";
@@ -8017,7 +9512,7 @@ Sometimes OpenAI calls can take a long time to complete, or they can fail. This 
 
 ## Task code
 
-```ts trigger/openai.ts theme={null}
+```ts trigger/openai.ts theme={"theme":"css-variables"}
 import { task } from "@trigger.dev/sdk";
 import OpenAI from "openai";
 
@@ -8056,7 +9551,7 @@ export const openaiTask = task({
 
 To test this task in the dashboard, you can use the following payload:
 
-```json  theme={null}
+```json theme={"theme":"css-variables"}
 {
   "prompt": "What is the meaning of life?"
 }
@@ -8068,8 +9563,6 @@ Source: https://trigger.dev/docs/guides/examples/pdf-to-image
 
 This example will show you how to turn a PDF into an image using MuPDF and Trigger.dev.
 
-export const packages_0 = "mupdf-tools from MuPDF"
-
 ## Overview
 
 This example demonstrates how to use Trigger.dev to turn a PDF into a series of images using MuPDF and upload them to Cloudflare R2.
@@ -8078,7 +9571,7 @@ This example demonstrates how to use Trigger.dev to turn a PDF into a series of 
 
 To use this example, add these build settings below to your `trigger.config.ts` file. They ensure that the `mutool` and `curl` packages are installed when you deploy your task. You can learn more about this and see more build settings [here](/config/extensions/aptGet).
 
-```ts trigger.config.ts theme={null}
+```ts trigger.config.ts theme={"theme":"css-variables"}
 export default defineConfig({
   project: "<project ref>",
   // Your other config settings...
@@ -8090,7 +9583,7 @@ export default defineConfig({
 
 ## Task code
 
-```ts trigger/pdfToImage.ts theme={null}
+```ts trigger/pdfToImage.ts theme={"theme":"css-variables"}
 import { logger, task } from "@trigger.dev/sdk";
 import { PutObjectCommand, S3Client } from "@aws-sdk/client-s3";
 import { execSync } from "child_process";
@@ -8156,7 +9649,7 @@ export const pdfToImage = task({
 
 To test this task in the dashboard, you can use the following payload:
 
-```json  theme={null}
+```json theme={"theme":"css-variables"}
 {
   "pdfUrl": "https://pdfobject.com/pdf/sample.pdf",
   "documentId": "unique-document-id"
@@ -8165,15 +9658,13 @@ To test this task in the dashboard, you can use the following payload:
 
 ## Local development
 
-To test this example task locally, be sure to install any packages from the build extensions you added to your `trigger.config.ts` file to your local machine. In this case, you need to install {packages_0}.
+To test this example task locally, be sure to install any packages from the build extensions you added to your `trigger.config.ts` file to your local machine. In this case, you need to install .
 
 
 # Puppeteer
 Source: https://trigger.dev/docs/guides/examples/puppeteer
 
 These examples demonstrate how to use Puppeteer with Trigger.dev.
-
-export const packages_0 = "the Puppeteer library."
 
 ## Prerequisites
 
@@ -8196,7 +9687,7 @@ There are 3 example tasks to follow on this page:
 
 To use all examples on this page, you'll first need to add these build settings to your `trigger.config.ts` file:
 
-```ts trigger.config.ts theme={null}
+```ts trigger.config.ts theme={"theme":"css-variables"}
 import { defineConfig } from "@trigger.dev/sdk";
 import { puppeteer } from "@trigger.dev/build/extensions/puppeteer";
 
@@ -8216,7 +9707,7 @@ Learn more about the [trigger.config.ts](/config/config-file) file including set
 
 Set the following environment variable in your [Trigger.dev dashboard](/deploy-environment-variables) or [using the SDK](/deploy-environment-variables#in-your-code):
 
-```bash  theme={null}
+```bash theme={"theme":"css-variables"}
 PUPPETEER_EXECUTABLE_PATH: "/usr/bin/google-chrome-stable",
 ```
 
@@ -8228,7 +9719,7 @@ In this example we use [Puppeteer](https://pptr.dev/) to log out the title of a 
 
 ### Task code
 
-```ts trigger/puppeteer-basic-example.ts theme={null}
+```ts trigger/puppeteer-basic-example.ts theme={"theme":"css-variables"}
 import { logger, task } from "@trigger.dev/sdk";
 import puppeteer from "puppeteer";
 
@@ -8260,7 +9751,7 @@ In this example we use [Puppeteer](https://pptr.dev/) to generate a PDF from the
 
 ### Task code
 
-```ts trigger/puppeteer-generate-pdf.ts theme={null}
+```ts trigger/puppeteer-generate-pdf.ts theme={"theme":"css-variables"}
 import { logger, task } from "@trigger.dev/sdk";
 import puppeteer from "puppeteer";
 import { PutObjectCommand, S3Client } from "@aws-sdk/client-s3";
@@ -8323,11 +9814,12 @@ In this example we use [Puppeteer](https://pptr.dev/) with a [BrowserBase](https
 <Warning>
   When web scraping, you MUST use the technique below which uses a proxy with Puppeteer. Direct
   scraping without using `browserWSEndpoint` is prohibited and will result in account suspension.
+  Screenshots are also prohibited when scraping.
 </Warning>
 
 ### Task code
 
-```ts trigger/scrape-website.ts theme={null}
+```ts trigger/scrape-website.ts theme={"theme":"css-variables"}
 import { logger, task } from "@trigger.dev/sdk";
 import puppeteer from "puppeteer-core";
 
@@ -8373,7 +9865,7 @@ There's no payload required for this task so you can just click "Run test" from 
 
 ## Local development
 
-To test this example task locally, be sure to install any packages from the build extensions you added to your `trigger.config.ts` file to your local machine. In this case, you need to install {packages_0}.
+To test this example task locally, be sure to install any packages from the build extensions you added to your `trigger.config.ts` file to your local machine. In this case, you need to install .
 
 ## Proxying
 
@@ -8411,7 +9903,7 @@ This example demonstrates how to use Trigger.dev to send emails using [React Ema
   .tsx file.
 </Warning>
 
-```tsx trigger/sendReactEmail.tsx theme={null}
+```tsx trigger/sendReactEmail.tsx theme={"theme":"css-variables"}
 import { Body, Button, Container, Head, Heading, Html, Preview } from "@react-email/components";
 import { logger, task } from "@trigger.dev/sdk";
 import { Resend } from "resend";
@@ -8491,7 +9983,8 @@ export const sendEmail = task({
 ## The email
 
 This example email should look like this:
-<img src="https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/react-email.png?fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=89d3a9eb719a46bfdbe445157260dbc7" alt="React Email" data-og-width="1202" width="1202" data-og-height="526" height="526" data-path="images/react-email.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/react-email.png?w=280&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=725f712a1680d1c755b237ba970c5125 280w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/react-email.png?w=560&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=adad5c98b98b563889846e2a49f221ca 560w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/react-email.png?w=840&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=6f9bf6a14de88f2d3ff96f7d1a571e7b 840w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/react-email.png?w=1100&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=322a321698bfedacdb974f22b47fb43a 1100w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/react-email.png?w=1650&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=dc7e4bc132c05f616b0ae34852d792ae 1650w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/react-email.png?w=2500&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=1281ba4f08fe017c3cab10d66c208592 2500w" />
+
+<img alt="React Email" />
 
 This is just a simple implementation, you can customize the email to be as complex as you want. Check out the [React email templates](https://react.email/templates) for more inspiration.
 
@@ -8499,7 +9992,7 @@ This is just a simple implementation, you can customize the email to be as compl
 
 To test this task in the [dashboard](https://cloud.trigger.dev), you can use the following payload:
 
-```json  theme={null}
+```json theme={"theme":"css-variables"}
 {
   "to": "recipient@example.com",
   "name": "Jane Doe",
@@ -8520,15 +10013,15 @@ We recommend using our [Cursor rules](https://trigger.dev/changelog/cursor-rules
 
 #### Video: creating a new email template using Cursor
 
-<video src="https://content.trigger.dev/trigger-welcome-email-cursor.mp4" controls muted autoPlay loop />
+<video />
 
 #### The generated email template
 
-<img src="https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/react-email-welcome.png?fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=a6f143fe952bc0a93a2a50c96970b863" alt="Cursor" data-og-width="1559" width="1559" data-og-height="1141" height="1141" data-path="images/react-email-welcome.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/react-email-welcome.png?w=280&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=2487ce4d2be4b80794cb4820a2953ec9 280w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/react-email-welcome.png?w=560&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=1059539f4cd6983974e5ae79023fda9e 560w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/react-email-welcome.png?w=840&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=70bd8821dfbdd05bec826784070a2919 840w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/react-email-welcome.png?w=1100&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=f55b8f390636416420d513d7ed428e21 1100w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/react-email-welcome.png?w=1650&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=7a1a3281a62666deac2d98f40f05e0e5 1650w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/react-email-welcome.png?w=2500&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=e145996626c42ce55077aafb7cebfa47 2500w" />
+<img alt="Cursor" />
 
 #### The generated code
 
-```tsx emails/trigger-welcome-email.tsx theme={null}
+```tsx emails/trigger-welcome-email.tsx theme={"theme":"css-variables"}
 import {
   Body,
   Button,
@@ -8676,7 +10169,7 @@ const footer = {
 
 And then to trigger the email, you can use the following task:
 
-```tsx trigger/triggerWelcomeEmail.tsx theme={null}
+```tsx trigger/triggerWelcomeEmail.tsx theme={"theme":"css-variables"}
 import { logger, task } from "@trigger.dev/sdk";
 import { Resend } from "resend";
 import TriggerWelcomeEmail from "emails/trigger-welcome-email";
@@ -8734,7 +10227,7 @@ See our [common problems guide](/troubleshooting#reactdomserver-rendertopipeable
 
 Check out the [React Email docs](https://react.email/docs) and learn how to set up and use React Email, including how to preview your emails locally.
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Components" icon="puzzle-piece" href="https://react.email/components">
     Pre-built components you can copy and paste into your emails.
   </Card>
@@ -8758,7 +10251,7 @@ This example demonstrates how to use Trigger.dev to generate a PDF using [react-
 
 <Info> This example must be a .tsx file to use React components.</Info>
 
-```ts trigger/generateResumePDF.tsx theme={null}
+```ts trigger/generateResumePDF.tsx theme={"theme":"css-variables"}
 import { logger, task } from "@trigger.dev/sdk";
 import { renderToBuffer, Document, Page, Text, View } from "@react-pdf/renderer";
 import { PutObjectCommand, S3Client } from "@aws-sdk/client-s3";
@@ -8824,7 +10317,7 @@ export const generateResumePDF = task({
 
 To test this task in the dashboard, you can use the following payload:
 
-```json  theme={null}
+```json theme={"theme":"css-variables"}
 {
   "text": "Hello, world!"
 }
@@ -8842,7 +10335,7 @@ This example demonstrates how to use Trigger.dev to generate images from source 
 
 ## Task code
 
-```tsx trigger/generateImage.tsx theme={null}
+```tsx trigger/generateImage.tsx theme={"theme":"css-variables"}
 import { PutObjectCommand, S3Client } from "@aws-sdk/client-s3";
 import { task, wait } from "@trigger.dev/sdk";
 import Replicate, { Prediction } from "replicate";
@@ -8954,7 +10447,7 @@ Additionally this task uses wait.for to wait for a certain amount of time before
 
 ## Task code
 
-```ts trigger/email-sequence.ts theme={null}
+```ts trigger/email-sequence.ts theme={"theme":"css-variables"}
 import { Resend } from "resend";
 
 const resend = new Resend(process.env.RESEND_ASP_KEY);
@@ -9016,7 +10509,7 @@ export const emailSequence = task({
 
 To test this task in the dashboard, you can use the following payload:
 
-```json  theme={null}
+```json theme={"theme":"css-variables"}
 {
   "userId": "123",
   "email": "<your-test-email>", // Replace with your test email
@@ -9038,7 +10531,7 @@ This can be customized and extended however you like, full list of options can b
 
 ## Task code
 
-```tsx trigger/generateOgImage.ts theme={null}
+```tsx trigger/generateOgImage.ts theme={"theme":"css-variables"}
 import { schemaTask } from "@trigger.dev/sdk";
 import { z } from "zod";
 import satori from "satori";
@@ -9143,13 +10636,13 @@ export const generateOgImage = schemaTask({
 
 This image was generated using the above task.
 
-<img src="https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/react-satori-og.jpg?fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=10c7715e00714ea7ef7c27bb7ace5c0c" alt="OG Image" data-og-width="1200" width="1200" data-og-height="630" height="630" data-path="images/react-satori-og.jpg" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/react-satori-og.jpg?w=280&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=8cd98cbeef77cb233b870851ce7cb74f 280w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/react-satori-og.jpg?w=560&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=6fe23d397f6b7c27ea5c4dd471315ae9 560w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/react-satori-og.jpg?w=840&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=3b5900f0b2fba062fa9b5255410404c0 840w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/react-satori-og.jpg?w=1100&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=3c140d3148b7f9820fbb83576aa50635 1100w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/react-satori-og.jpg?w=1650&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=4ab2adcc93d6e0fde7541cf4fd62df15 1650w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/react-satori-og.jpg?w=2500&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=f588de73d95f7c3cebb82a4278de3ec5 2500w" />
+<img alt="OG Image" />
 
 ## Testing your task
 
 To test this task in the [dashboard](https://cloud.trigger.dev), you can use the following payload:
 
-```json  theme={null}
+```json theme={"theme":"css-variables"}
 {
   "title": "My Awesome OG image",
   "imageUrl": "<your-image-url>",
@@ -9164,9 +10657,7 @@ Source: https://trigger.dev/docs/guides/examples/scrape-hacker-news
 
 This example demonstrates how to scrape the top 3 articles from Hacker News using BrowserBase and Puppeteer, summarize them with ChatGPT and send a nicely formatted email summary to yourself every weekday using Resend.
 
-export const packages_0 = "the Puppeteer library"
-
-<iframe width="100%" height="315" src="https://www.youtube.com/embed/6azvzrZITKY?si=muKtsBiS9TJGGKWg" title="YouTube video player" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen />
+<iframe title="YouTube video player" />
 
 ## Overview
 
@@ -9202,7 +10693,7 @@ And we'll be using the following tools and features:
 
 First up, add these build settings to your `trigger.config.ts` file:
 
-```tsx trigger.config.ts theme={null}
+```tsx trigger.config.ts theme={"theme":"css-variables"}
 import { defineConfig } from "@trigger.dev/sdk";
 import { puppeteer } from "@trigger.dev/build/extensions/puppeteer";
 
@@ -9222,7 +10713,7 @@ Learn more about the [trigger.config.ts](/config/config-file) file including set
 
 Set the following environment variable in your local `.env` file to run this task locally. And before deploying your task, set them in the [Trigger.dev dashboard](/deploy-environment-variables) or [using the SDK](/deploy-environment-variables#in-your-code):
 
-```bash  theme={null}
+```bash theme={"theme":"css-variables"}
 BROWSERBASE_API_KEY: "<your BrowserBase API key>"
 OPENAI_API_KEY: "<your OpenAI API key>"
 RESEND_API_KEY: "<your Resend API key>"
@@ -9230,7 +10721,7 @@ RESEND_API_KEY: "<your Resend API key>"
 
 ### Task code
 
-```ts trigger/scrape-hacker-news.ts theme={null}
+```ts trigger/scrape-hacker-news.ts theme={"theme":"css-variables"}
 import { render } from "@react-email/render";
 import { logger, schedules, task, wait } from "@trigger.dev/sdk";
 import { OpenAI } from "openai";
@@ -9369,7 +10860,7 @@ To prevent the main example from becoming too cluttered, we'll create a separate
 
 Notice how this file is imported into the main task code and passed to Resend to send the email.
 
-```tsx summarize-hn-email.tsx theme={null}
+```tsx summarize-hn-email.tsx theme={"theme":"css-variables"}
 import { Html, Head, Body, Container, Section, Heading, Text, Link } from "@react-email/components";
 
 interface Article {
@@ -9400,7 +10891,7 @@ export const HNSummaryEmail: React.FC<{ articles: Article[] }> = ({ articles }) 
 
 ## Local development
 
-To test this example task locally, be sure to install any packages from the build extensions you added to your `trigger.config.ts` file to your local machine. In this case, you need to install {packages_0}.
+To test this example task locally, be sure to install any packages from the build extensions you added to your `trigger.config.ts` file to your local machine. In this case, you need to install .
 
 ## Testing your task
 
@@ -9421,9 +10912,12 @@ Automatically send errors and source maps to your Sentry project from your Trigg
 * A [Sentry](https://sentry.io) account and project
 * A [Trigger.dev](https://trigger.dev) account and project
 
-## Build configuration
+## Setup
 
-To send errors to Sentry when there are errors in your tasks, you'll need to add this build configuration to your `trigger.config.ts` file. This will then run every time you deploy your project.
+This setup involves two files:
+
+1. **`trigger.config.ts`** - Configures the build to upload source maps to Sentry during deployment
+2. **`trigger/init.ts`** - Initializes Sentry and registers the error tracking hook at runtime
 
 <Note>
   You will need to set the `SENTRY_AUTH_TOKEN` and `SENTRY_DSN` environment variables. You can find
@@ -9433,11 +10927,14 @@ To send errors to Sentry when there are errors in your tasks, you'll need to add
   dashboard](https://cloud.trigger.dev), under environment variables in your project's sidebar.
 </Note>
 
-```ts trigger.config.ts theme={null}
+### Build configuration
+
+Add this build configuration to your `trigger.config.ts` file. This uses the Sentry esbuild plugin to upload source maps every time you deploy your project.
+
+```ts trigger.config.ts theme={"theme":"css-variables"}
 import { defineConfig } from "@trigger.dev/sdk";
 import { esbuildPlugin } from "@trigger.dev/build/extensions";
 import { sentryEsbuildPlugin } from "@sentry/esbuild-plugin";
-import * as Sentry from "@sentry/node";
 
 export default defineConfig({
   project: "<project ref>",
@@ -9455,23 +10952,6 @@ export default defineConfig({
       ),
     ],
   },
-  init: async () => {
-    Sentry.init({
-      defaultIntegrations: false,
-      // The Data Source Name (DSN) is a unique identifier for your Sentry project.
-      dsn: process.env.SENTRY_DSN,
-      // Update this to match the environment you want to track errors for
-      environment: process.env.NODE_ENV === "production" ? "production" : "development",
-    });
-  },
-  onFailure: async ({ payload, error, ctx }) => {
-    Sentry.captureException(error, {
-      extra: {
-        payload,
-        ctx,
-      },
-    });
-  },
 });
 ```
 
@@ -9481,13 +10961,46 @@ export default defineConfig({
   deploying). You can use pre-built extensions or create your own.
 </Note>
 
+### Runtime initialization
+
+Create a `trigger/init.ts` file to initialize Sentry and register the global `onFailure` hook. This file is automatically loaded when your tasks execute.
+
+```ts trigger/init.ts theme={"theme":"css-variables"}
+import { tasks } from "@trigger.dev/sdk";
+import * as Sentry from "@sentry/node";
+
+// Initialize Sentry
+Sentry.init({
+  defaultIntegrations: false,
+  // The Data Source Name (DSN) is a unique identifier for your Sentry project.
+  dsn: process.env.SENTRY_DSN,
+  // Update this to match the environment you want to track errors for
+  environment: process.env.NODE_ENV === "production" ? "production" : "development",
+});
+
+// Register a global onFailure hook to capture errors
+tasks.onFailure(({ payload, error, ctx }) => {
+  Sentry.captureException(error, {
+    extra: {
+      payload,
+      ctx,
+    },
+  });
+});
+```
+
+<Note>
+  Learn more about [global lifecycle hooks](/tasks/overview#global-lifecycle-hooks) and the
+  [`init.ts` file](/tasks/overview#init-ts).
+</Note>
+
 ## Testing that errors are being sent to Sentry
 
 To test that errors are being sent to Sentry, you need to create a task that will fail.
 
 This task takes no payload, and will throw an error.
 
-```ts trigger/sentry-error-test.ts theme={null}
+```ts trigger/sentry-error-test.ts theme={"theme":"css-variables"}
 import { task } from "@trigger.dev/sdk";
 
 export const sentryErrorTest = task({
@@ -9507,15 +11020,15 @@ export const sentryErrorTest = task({
 After creating the task, deploy your project.
 
 <CodeGroup>
-  ```bash npm theme={null}
+  ```bash npm theme={"theme":"css-variables"}
   npx trigger.dev@latest deploy
   ```
 
-  ```bash pnpm theme={null}
+  ```bash pnpm theme={"theme":"css-variables"}
   pnpm dlx trigger.dev@latest deploy
   ```
 
-  ```bash yarn theme={null}
+  ```bash yarn theme={"theme":"css-variables"}
   yarn dlx trigger.dev@latest deploy
   ```
 </CodeGroup>
@@ -9532,8 +11045,6 @@ Source: https://trigger.dev/docs/guides/examples/sharp-image-processing
 
 This example demonstrates how to process images using the Sharp library with Trigger.dev.
 
-export const packages_0 = "the Sharp image processing library"
-
 ## Overview
 
 This task processes and watermarks an image using the Sharp library, and then uploads it to R2 storage.
@@ -9548,7 +11059,7 @@ This task processes and watermarks an image using the Sharp library, and then up
 
 To use this example, you'll first need to add these build settings to your `trigger.config.ts` file:
 
-```ts trigger.config.ts theme={null}
+```ts trigger.config.ts theme={"theme":"css-variables"}
 import { defineConfig } from "@trigger.dev/sdk";
 
 export default defineConfig({
@@ -9574,7 +11085,7 @@ export default defineConfig({
 
 ## Task code
 
-```ts trigger/sharp-image-processing.ts theme={null}
+```ts trigger/sharp-image-processing.ts theme={"theme":"css-variables"}
 import { S3Client } from "@aws-sdk/client-s3";
 import { Upload } from "@aws-sdk/lib-storage";
 import { logger, task } from "@trigger.dev/sdk";
@@ -9648,7 +11159,7 @@ export const sharpProcessImage = task({
 
 To test this task in the dashboard, you can use the following payload:
 
-```json  theme={null}
+```json theme={"theme":"css-variables"}
 {
   "imageUrl": "<an-image-url.jpg>", // Replace with a URL to a JPEG image
   "watermarkUrl": "<an-image-url.png>" // Replace with a URL to a PNG watermark image
@@ -9657,7 +11168,7 @@ To test this task in the dashboard, you can use the following payload:
 
 ## Local development
 
-To test this example task locally, be sure to install any packages from the build extensions you added to your `trigger.config.ts` file to your local machine. In this case, you need to install {packages_0}.
+To test this example task locally, be sure to install any packages from the build extensions you added to your `trigger.config.ts` file to your local machine. In this case, you need to install .
 
 
 # Trigger a task from Stripe webhook events
@@ -9689,7 +11200,7 @@ First you'll need to create a [Stripe webhook](https://stripe.com/docs/webhooks)
 Here are examples of how you can set up a handler using different frameworks:
 
 <CodeGroup>
-  ```ts Next.js theme={null}
+  ```ts Next.js theme={"theme":"css-variables"}
   // app/api/stripe-webhook/route.ts
   import { NextResponse } from "next/server";
   import { tasks } from "@trigger.dev/sdk";
@@ -9739,7 +11250,7 @@ Here are examples of how you can set up a handler using different frameworks:
   }
   ```
 
-  ```ts Remix theme={null}
+  ```ts Remix theme={"theme":"css-variables"}
   // app/webhooks.stripe.ts
   import { type ActionFunctionArgs, json } from "@remix-run/node";
   import type { stripeCheckoutCompleted } from "src/trigger/stripe-webhook";
@@ -9785,7 +11296,7 @@ Here are examples of how you can set up a handler using different frameworks:
 
 This task is triggered when a `checkout.session.completed` event is received from Stripe.
 
-```ts trigger/stripe-checkout-completed.ts theme={null}
+```ts trigger/stripe-checkout-completed.ts theme={"theme":"css-variables"}
 import { task } from "@trigger.dev/sdk";
 import type stripe from "stripe";
 
@@ -9833,7 +11344,7 @@ This is a basic task which inserts a new row into a table from a Trigger.dev tas
 
 ### Task code
 
-```ts trigger/supabase-database-insert.ts theme={null}
+```ts trigger/supabase-database-insert.ts theme={"theme":"css-variables"}
 import { createClient } from "@supabase/supabase-js";
 import { task } from "@trigger.dev/sdk";
 import jwt from "jsonwebtoken";
@@ -9895,7 +11406,7 @@ export const supabaseDatabaseInsert = task({
 
 To test this task in the [Trigger.dev dashboard](https://cloud.trigger.dev), you can use the following payload:
 
-```json  theme={null}
+```json theme={"theme":"css-variables"}
 {
   "userId": "user_12345"
 }
@@ -9928,7 +11439,7 @@ This type of task is useful for managing user subscriptions, updating user detai
 
 ### Task code
 
-```ts trigger/supabase-update-user-subscription.ts theme={null}
+```ts trigger/supabase-update-user-subscription.ts theme={"theme":"css-variables"}
 import { createClient } from "@supabase/supabase-js";
 import { AbortTaskRunError, task } from "@trigger.dev/sdk";
 // Generate the Typescript types using the Supabase CLI: https://supabase.com/docs/guides/api/rest/generating-types
@@ -10009,7 +11520,7 @@ export const supabaseUpdateUserSubscription = task({
 
 To test this task in the [Trigger.dev dashboard](https://cloud.trigger.dev), you can use the following payload:
 
-```json  theme={null}
+```json theme={"theme":"css-variables"}
 {
   "userId": "user_12345",
   "newPlan": "pro"
@@ -10022,7 +11533,7 @@ If the task completes successfully, you will see a new row in your `user_subscri
 
 ### Full walkthrough guides from development to deployment
 
-<CardGroup cols={1}>
+<CardGroup>
   <Card title="Edge function hello world guide" icon="book" href="/guides/frameworks/supabase-edge-functions-basic">
     Learn how to trigger a task from a Supabase edge function when a URL is visited.
   </Card>
@@ -10039,7 +11550,7 @@ If the task completes successfully, you will see a new row in your `user_subscri
 
 ### Task examples with code you can copy and paste
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Supabase database operations" icon="bolt" href="/guides/examples/supabase-database-operations">
     Run basic CRUD operations on a table in a Supabase database using Trigger.dev.
   </Card>
@@ -10068,7 +11579,7 @@ This task downloads a video from a provided URL and uploads it to Supabase Stora
 
 ### Task code
 
-```ts trigger/supabase-storage-upload.ts theme={null}
+```ts trigger/supabase-storage-upload.ts theme={"theme":"css-variables"}
 import { createClient } from "@supabase/supabase-js";
 import { logger, task } from "@trigger.dev/sdk";
 import fetch from "node-fetch";
@@ -10121,7 +11632,7 @@ export const supabaseStorageUpload = task({
 
 To test this task in the dashboard, you can use the following payload:
 
-```json  theme={null}
+```json theme={"theme":"css-variables"}
 {
   "videoUrl": "<a-video-url>" // Replace <a-video-url> with the URL of the video you want to upload
 }
@@ -10138,7 +11649,7 @@ This task downloads a video from a provided URL, saves it to a temporary file, a
 
 ### Task code
 
-```ts trigger/supabase-storage-upload-s3.ts theme={null}
+```ts trigger/supabase-storage-upload-s3.ts theme={"theme":"css-variables"}
 import { PutObjectCommand, S3Client } from "@aws-sdk/client-s3";
 import { logger, task } from "@trigger.dev/sdk";
 import fetch from "node-fetch";
@@ -10197,7 +11708,7 @@ export const supabaseStorageUploadS3 = task({
 
 To test this task in the dashboard, you can use the following payload:
 
-```json  theme={null}
+```json theme={"theme":"css-variables"}
 {
   "videoUrl": "<a-video-url>" // Replace <a-video-url> with the URL of the video you want to upload
 }
@@ -10207,7 +11718,7 @@ To test this task in the dashboard, you can use the following payload:
 
 ### Full walkthrough guides from development to deployment
 
-<CardGroup cols={1}>
+<CardGroup>
   <Card title="Edge function hello world guide" icon="book" href="/guides/frameworks/supabase-edge-functions-basic">
     Learn how to trigger a task from a Supabase edge function when a URL is visited.
   </Card>
@@ -10224,7 +11735,7 @@ To test this task in the dashboard, you can use the following payload:
 
 ### Task examples with code you can copy and paste
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Supabase database operations" icon="bolt" href="/guides/examples/supabase-database-operations">
     Run basic CRUD operations on a table in a Supabase database using Trigger.dev.
   </Card>
@@ -10252,7 +11763,7 @@ This task shows how to use the Vercel AI SDK to generate text from a prompt with
 
 ### Task code
 
-```ts trigger/vercel-ai-sdk-openai.ts theme={null}
+```ts trigger/vercel-ai-sdk-openai.ts theme={"theme":"css-variables"}
 import { logger, task } from "@trigger.dev/sdk";
 import { generateText } from "ai";
 // Install the package of the AI model you want to use, in this case OpenAI
@@ -10282,7 +11793,7 @@ export const openaiTask = task({
 
 To test this task in the dashboard, you can use the following payload:
 
-```json  theme={null}
+```json theme={"theme":"css-variables"}
 {
   "prompt": "What is the meaning of life?"
 }
@@ -10292,7 +11803,7 @@ To test this task in the dashboard, you can use the following payload:
 
 ### Walk-through guides from development to deployment
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Next.js - setup guide" icon="N" href="/guides/frameworks/nextjs">
     Learn how to setup Trigger.dev with Next.js, using either the pages or app router.
   </Card>
@@ -10304,12 +11815,12 @@ To test this task in the dashboard, you can use the following payload:
 
 ### Task examples
 
-<CardGroup cols={2}>
-  <Card title="Fal.ai with Realtime in Next.js" img="https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/fal-realtime-thumbnail.png?fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=9ac31bb57678b222a82b04055184eea0" href="/guides/examples/fal-ai-realtime" data-og-width="1442" width="1442" data-og-height="812" height="812" data-path="images/fal-realtime-thumbnail.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/fal-realtime-thumbnail.png?w=280&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=086231461af2b9520f9200889fc04724 280w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/fal-realtime-thumbnail.png?w=560&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=c5ab58baba8000266aac79117dc8944d 560w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/fal-realtime-thumbnail.png?w=840&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=988fe253a646e5af2188f81297d01897 840w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/fal-realtime-thumbnail.png?w=1100&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=db65bbdf0995fc1ac72bda2512c31800 1100w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/fal-realtime-thumbnail.png?w=1650&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=6e7890d597065f8bc9edd0ac90257185 1650w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/fal-realtime-thumbnail.png?w=2500&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=60bc05bc63c0c1d1ad59eaafb0808aa6 2500w">
+<CardGroup>
+  <Card title="Fal.ai with Realtime in Next.js" href="/guides/examples/fal-ai-realtime">
     Generate an image from a prompt using Fal.ai and Trigger.dev Realtime.
   </Card>
 
-  <Card title="Generate a cartoon using Fal.ai in Next.js" img="https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/fal-generate-cartoon-thumbnail.png?fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=003d7870f36310d14ca9a71a952667d3" href="/guides/examples/fal-ai-image-to-cartoon" data-og-width="1442" width="1442" data-og-height="816" height="816" data-path="images/fal-generate-cartoon-thumbnail.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/fal-generate-cartoon-thumbnail.png?w=280&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=ec0e05813f874082257e2d32bad407a8 280w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/fal-generate-cartoon-thumbnail.png?w=560&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=f3f70889ad11953d44f72224712722aa 560w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/fal-generate-cartoon-thumbnail.png?w=840&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=b8df38a222a7431d55a1af1af61dffd1 840w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/fal-generate-cartoon-thumbnail.png?w=1100&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=268ac6b0faf34bb46a8a8d676658b0b8 1100w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/fal-generate-cartoon-thumbnail.png?w=1650&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=4be96f4df2d49b7a71d0e960df9cc93b 1650w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/fal-generate-cartoon-thumbnail.png?w=2500&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=bc15e1a3df4484cfdcd200d49fd1ac4b 2500w">
+  <Card title="Generate a cartoon using Fal.ai in Next.js" href="/guides/examples/fal-ai-image-to-cartoon">
     Convert an image to a cartoon using Fal.ai.
   </Card>
 
@@ -10342,7 +11853,15 @@ To sync environment variables, you just need to add our build extension to your 
   the project with the environment variables you want to sync.
 </Note>
 
-```ts trigger.config.ts theme={null}
+<Note>
+  When running the build from a Vercel build environment (e.g., during a Vercel deployment), the
+  environment variable values will be read from `process.env` instead of fetching them from the
+  Vercel API. This is determined by checking if the `VERCEL` environment variable is present. The
+  API is still used to determine which environment variables are configured for your project, but
+  the actual values come from the local environment.
+</Note>
+
+```ts trigger.config.ts theme={"theme":"css-variables"}
 import { defineConfig } from "@trigger.dev/sdk";
 import { syncVercelEnvVars } from "@trigger.dev/build/extensions/core";
 
@@ -10380,7 +11899,7 @@ export default defineConfig({
 
 To sync the environment variables, all you need to do is run our `deploy` command. You should see some output in the console indicating that the environment variables have been synced, and they should now be available in your Trigger.dev dashboard.
 
-```bash  theme={null}
+```bash theme={"theme":"css-variables"}
 npx trigger.dev@latest deploy
 ```
 
@@ -10388,7 +11907,7 @@ npx trigger.dev@latest deploy
 
 ### Walk-through guides from development to deployment
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Next.js - setup guide" icon="N" href="/guides/frameworks/nextjs">
     Learn how to setup Trigger.dev with Next.js, using either the pages or app router.
   </Card>
@@ -10400,12 +11919,12 @@ npx trigger.dev@latest deploy
 
 ### Task examples
 
-<CardGroup cols={2}>
-  <Card title="Fal.ai with Realtime in Next.js" img="https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/fal-realtime-thumbnail.png?fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=9ac31bb57678b222a82b04055184eea0" href="/guides/examples/fal-ai-realtime" data-og-width="1442" width="1442" data-og-height="812" height="812" data-path="images/fal-realtime-thumbnail.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/fal-realtime-thumbnail.png?w=280&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=086231461af2b9520f9200889fc04724 280w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/fal-realtime-thumbnail.png?w=560&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=c5ab58baba8000266aac79117dc8944d 560w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/fal-realtime-thumbnail.png?w=840&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=988fe253a646e5af2188f81297d01897 840w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/fal-realtime-thumbnail.png?w=1100&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=db65bbdf0995fc1ac72bda2512c31800 1100w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/fal-realtime-thumbnail.png?w=1650&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=6e7890d597065f8bc9edd0ac90257185 1650w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/fal-realtime-thumbnail.png?w=2500&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=60bc05bc63c0c1d1ad59eaafb0808aa6 2500w">
+<CardGroup>
+  <Card title="Fal.ai with Realtime in Next.js" href="/guides/examples/fal-ai-realtime">
     Generate an image from a prompt using Fal.ai and Trigger.dev Realtime.
   </Card>
 
-  <Card title="Generate a cartoon using Fal.ai in Next.js" img="https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/fal-generate-cartoon-thumbnail.png?fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=003d7870f36310d14ca9a71a952667d3" href="/guides/examples/fal-ai-image-to-cartoon" data-og-width="1442" width="1442" data-og-height="816" height="816" data-path="images/fal-generate-cartoon-thumbnail.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/fal-generate-cartoon-thumbnail.png?w=280&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=ec0e05813f874082257e2d32bad407a8 280w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/fal-generate-cartoon-thumbnail.png?w=560&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=f3f70889ad11953d44f72224712722aa 560w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/fal-generate-cartoon-thumbnail.png?w=840&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=b8df38a222a7431d55a1af1af61dffd1 840w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/fal-generate-cartoon-thumbnail.png?w=1100&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=268ac6b0faf34bb46a8a8d676658b0b8 1100w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/fal-generate-cartoon-thumbnail.png?w=1650&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=4be96f4df2d49b7a71d0e960df9cc93b 1650w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/fal-generate-cartoon-thumbnail.png?w=2500&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=bc15e1a3df4484cfdcd200d49fd1ac4b 2500w">
+  <Card title="Generate a cartoon using Fal.ai in Next.js" href="/guides/examples/fal-ai-image-to-cartoon">
     Convert an image to a cartoon using Fal.ai.
   </Card>
 
@@ -10425,8 +11944,6 @@ Source: https://trigger.dev/docs/guides/frameworks/bun
 
 This guide will show you how to setup Trigger.dev in your existing Bun project, test an example task, and view the run.
 
-export const framework_0 = "Bun"
-
 <Warning>
   The trigger.dev CLI does not yet support Bun. So you will need to run the CLI using Node.js.
   Bun will still be used to execute your tasks, even in the `dev` environment.
@@ -10434,7 +11951,7 @@ export const framework_0 = "Bun"
 
 ## Prerequisites
 
-* Setup a project in {framework_0}
+* Setup a project in&#x20;
 * Ensure TypeScript is installed
 * [Create a Trigger.dev account](https://cloud.trigger.dev)
 * Create a new Trigger.dev project
@@ -10452,15 +11969,15 @@ export const framework_0 = "Bun"
     Run this command in the root of your project to get started:
 
     <CodeGroup>
-      ```bash npm theme={null}
+      ```bash npm theme={"theme":"css-variables"}
       npx trigger.dev@latest init --runtime bun
       ```
 
-      ```bash pnpm theme={null}
+      ```bash pnpm theme={"theme":"css-variables"}
       pnpm dlx trigger.dev@latest init --runtime bun
       ```
 
-      ```bash yarn theme={null}
+      ```bash yarn theme={"theme":"css-variables"}
       yarn dlx trigger.dev@latest init --runtime bun
       ```
     </CodeGroup>
@@ -10478,7 +11995,7 @@ export const framework_0 = "Bun"
   <Step title="Update example.ts to use Bun">
     Open the `/src/trigger/example.ts` file and replace the contents with the following:
 
-    ```ts example.ts theme={null}
+    ```ts example.ts theme={"theme":"css-variables"}
     import { Database } from "bun:sqlite";
     import { task } from "@trigger.dev/sdk";
 
@@ -10504,15 +12021,15 @@ export const framework_0 = "Bun"
     It can also update your `@trigger.dev/*` packages to prevent version mismatches and failed deploys. You will always be prompted first.
 
     <CodeGroup>
-      ```bash npm theme={null}
+      ```bash npm theme={"theme":"css-variables"}
       npx trigger.dev@latest dev
       ```
 
-      ```bash pnpm theme={null}
+      ```bash pnpm theme={"theme":"css-variables"}
       pnpm dlx trigger.dev@latest dev
       ```
 
-      ```bash yarn theme={null}
+      ```bash yarn theme={"theme":"css-variables"}
       yarn dlx trigger.dev@latest dev
       ```
     </CodeGroup>
@@ -10521,23 +12038,23 @@ export const framework_0 = "Bun"
   <Step title="Perform a test run using the dashboard">
     The CLI `dev` command spits out various useful URLs. Right now we want to visit the Test page.
 
-    You should see our Example task in the list <Icon icon="circle-1" iconType="solid" size={20} color="F43F47" />, select it. Most tasks have a "payload" which you enter in the JSON editor <Icon icon="circle-2" iconType="solid" size={20} color="F43F47" />, but our example task doesn't need any input.
+    You should see our Example task in the list <Icon icon="circle-1" />, select it. Most tasks have a "payload" which you enter in the JSON editor <Icon icon="circle-2" />, but our example task doesn't need any input.
 
-    You can configure options on the run <Icon icon="circle-3" iconType="solid" size={20} color="F43F47" />, view recent payloads <Icon icon="circle-4" iconType="solid" size={20} color="F43F47" />, and create run templates <Icon icon="circle-5" iconType="solid" size={20} color="F43F47" />.
+    You can configure options on the run <Icon icon="circle-3" />, view recent payloads <Icon icon="circle-4" />, and create run templates <Icon icon="circle-5" />.
 
-    Press the "Run test" button <Icon icon="circle-6" iconType="solid" size={20} color="F43F47" />.
+    Press the "Run test" button <Icon icon="circle-6" />.
 
-        <img src="https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/test-dashboard.png?fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=92c810690f961d0033dd94d758c6bbfb" alt="Test page" data-og-width="2254" width="2254" data-og-height="1367" height="1367" data-path="images/test-dashboard.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/test-dashboard.png?w=280&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=970cc3e2d58a06fbf197fce5d6d0664b 280w, https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/test-dashboard.png?w=560&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=10d36ffd64e1f455f45a20d5e39f7bca 560w, https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/test-dashboard.png?w=840&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=62b4ec2301d11e645d3ebe45b2e3adc2 840w, https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/test-dashboard.png?w=1100&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=2db30f2ebfe494c81f5965a014e4fc6e 1100w, https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/test-dashboard.png?w=1650&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=67b24a2d00bde47226c4db88c4f7ac51 1650w, https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/test-dashboard.png?w=2500&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=e44fddf5357449c582b92cd3d434e43d 2500w" />
+    <img alt="Test page" />
   </Step>
 
   <Step title="View your run">
     Congratulations, you should see the run page which will live reload showing you the current state of the run.
 
-        <img src="https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/run-page.png?fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=4b0bb5f9b181499cf324cdb8d5d673a8" alt="Run page" data-og-width="2978" width="2978" data-og-height="2110" height="2110" data-path="images/run-page.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/run-page.png?w=280&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=d7f419295b621c779c6a9a10b9152958 280w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/run-page.png?w=560&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=c66995702aace3888813ee1a66d33f97 560w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/run-page.png?w=840&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=c6c36408dc85f156d15a333ddb849d26 840w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/run-page.png?w=1100&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=2c1d7275465749eeae32196698f4a1b5 1100w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/run-page.png?w=1650&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=6965f3e2263296fb6529384021ce362a 1650w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/run-page.png?w=2500&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=7d890c5d199be7feaddc9162435bcc17 2500w" />
+    <img alt="Run page" />
 
     If you go back to your terminal you'll see that the dev command also shows the task status and links to the run log.
 
-        <img src="https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/terminal-completed-run.png?fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=a9284c5228343b72d798c6e36f5acb24" alt="Terminal showing completed run" data-og-width="955" width="955" data-og-height="197" height="197" data-path="images/terminal-completed-run.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/terminal-completed-run.png?w=280&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=62826752155594bd580ae51582870cce 280w, https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/terminal-completed-run.png?w=560&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=5270d0e823346fe8517fcc356cc5d20c 560w, https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/terminal-completed-run.png?w=840&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=8ae13acb781c5d08e2351af3c2cbb70a 840w, https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/terminal-completed-run.png?w=1100&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=da9e9f485055786210b6d7ce3812b9cf 1100w, https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/terminal-completed-run.png?w=1650&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=dd59fd38559b7b7ca865a015d029e0de 1650w, https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/terminal-completed-run.png?w=2500&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=4de391f21eb74db6e3f7c174d86b4b71 2500w" />
+    <img alt="Terminal showing completed run" />
   </Step>
 </Steps>
 
@@ -10570,25 +12087,31 @@ Follow these steps if you don't already have Trigger.dev set up in your project.
     Run this command in the root of your project to get started:
 
     <CodeGroup>
-      ```bash npm theme={null}
+      ```bash npm theme={"theme":"css-variables"}
       npx trigger.dev@latest init
       ```
 
-      ```bash pnpm theme={null}
+      ```bash pnpm theme={"theme":"css-variables"}
       pnpm dlx trigger.dev@latest init
       ```
 
-      ```bash yarn theme={null}
+      ```bash yarn theme={"theme":"css-variables"}
       yarn dlx trigger.dev@latest init
       ```
     </CodeGroup>
 
     It will do a few things:
 
-    1. Log you into the CLI if you're not already logged in.
-    2. Create a `trigger.config.ts` file in the root of your project.
-    3. Ask where you'd like to create the `/trigger` directory.
-    4. Create the `/trigger` directory with an example task, `/trigger/example.[ts/js]`.
+    <Tip title="MCP Server">
+      Our [Trigger.dev MCP server](/mcp-introduction) gives your AI assistant direct access to Trigger.dev tools; search docs, trigger tasks, deploy projects, and monitor runs. We recommend installing it for the best developer experience.
+    </Tip>
+
+    1. Ask if you want to install the [Trigger.dev MCP server](/mcp-introduction) for your AI assistant.
+    2. Log you into the CLI if you're not already logged in.
+    3. Ask you to select your project.
+    4. Install the required SDK packages.
+    5. Ask where you'd like to create the `/trigger` directory and create it with an example task.
+    6. Create a `trigger.config.ts` file in the root of your project.
 
     Install the "Hello World" example task when prompted. We'll use this task to test the setup.
   </Step>
@@ -10599,15 +12122,15 @@ Follow these steps if you don't already have Trigger.dev set up in your project.
     It can also update your `@trigger.dev/*` packages to prevent version mismatches and failed deploys. You will always be prompted first.
 
     <CodeGroup>
-      ```bash npm theme={null}
+      ```bash npm theme={"theme":"css-variables"}
       npx trigger.dev@latest dev
       ```
 
-      ```bash pnpm theme={null}
+      ```bash pnpm theme={"theme":"css-variables"}
       pnpm dlx trigger.dev@latest dev
       ```
 
-      ```bash yarn theme={null}
+      ```bash yarn theme={"theme":"css-variables"}
       yarn dlx trigger.dev@latest dev
       ```
     </CodeGroup>
@@ -10616,23 +12139,23 @@ Follow these steps if you don't already have Trigger.dev set up in your project.
   <Step title="Perform a test run using the dashboard">
     The CLI `dev` command spits out various useful URLs. Right now we want to visit the Test page.
 
-    You should see our Example task in the list <Icon icon="circle-1" iconType="solid" size={20} color="F43F47" />, select it. Most tasks have a "payload" which you enter in the JSON editor <Icon icon="circle-2" iconType="solid" size={20} color="F43F47" />, but our example task doesn't need any input.
+    You should see our Example task in the list <Icon icon="circle-1" />, select it. Most tasks have a "payload" which you enter in the JSON editor <Icon icon="circle-2" />, but our example task doesn't need any input.
 
-    You can configure options on the run <Icon icon="circle-3" iconType="solid" size={20} color="F43F47" />, view recent payloads <Icon icon="circle-4" iconType="solid" size={20} color="F43F47" />, and create run templates <Icon icon="circle-5" iconType="solid" size={20} color="F43F47" />.
+    You can configure options on the run <Icon icon="circle-3" />, view recent payloads <Icon icon="circle-4" />, and create run templates <Icon icon="circle-5" />.
 
-    Press the "Run test" button <Icon icon="circle-6" iconType="solid" size={20} color="F43F47" />.
+    Press the "Run test" button <Icon icon="circle-6" />.
 
-        <img src="https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/test-dashboard.png?fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=92c810690f961d0033dd94d758c6bbfb" alt="Test page" data-og-width="2254" width="2254" data-og-height="1367" height="1367" data-path="images/test-dashboard.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/test-dashboard.png?w=280&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=970cc3e2d58a06fbf197fce5d6d0664b 280w, https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/test-dashboard.png?w=560&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=10d36ffd64e1f455f45a20d5e39f7bca 560w, https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/test-dashboard.png?w=840&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=62b4ec2301d11e645d3ebe45b2e3adc2 840w, https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/test-dashboard.png?w=1100&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=2db30f2ebfe494c81f5965a014e4fc6e 1100w, https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/test-dashboard.png?w=1650&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=67b24a2d00bde47226c4db88c4f7ac51 1650w, https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/test-dashboard.png?w=2500&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=e44fddf5357449c582b92cd3d434e43d 2500w" />
+    <img alt="Test page" />
   </Step>
 
   <Step title="View your run">
     Congratulations, you should see the run page which will live reload showing you the current state of the run.
 
-        <img src="https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/run-page.png?fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=4b0bb5f9b181499cf324cdb8d5d673a8" alt="Run page" data-og-width="2978" width="2978" data-og-height="2110" height="2110" data-path="images/run-page.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/run-page.png?w=280&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=d7f419295b621c779c6a9a10b9152958 280w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/run-page.png?w=560&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=c66995702aace3888813ee1a66d33f97 560w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/run-page.png?w=840&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=c6c36408dc85f156d15a333ddb849d26 840w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/run-page.png?w=1100&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=2c1d7275465749eeae32196698f4a1b5 1100w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/run-page.png?w=1650&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=6965f3e2263296fb6529384021ce362a 1650w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/run-page.png?w=2500&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=7d890c5d199be7feaddc9162435bcc17 2500w" />
+    <img alt="Run page" />
 
     If you go back to your terminal you'll see that the dev command also shows the task status and links to the run log.
 
-        <img src="https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/terminal-completed-run.png?fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=a9284c5228343b72d798c6e36f5acb24" alt="Terminal showing completed run" data-og-width="955" width="955" data-og-height="197" height="197" data-path="images/terminal-completed-run.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/terminal-completed-run.png?w=280&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=62826752155594bd580ae51582870cce 280w, https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/terminal-completed-run.png?w=560&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=5270d0e823346fe8517fcc356cc5d20c 560w, https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/terminal-completed-run.png?w=840&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=8ae13acb781c5d08e2351af3c2cbb70a 840w, https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/terminal-completed-run.png?w=1100&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=da9e9f485055786210b6d7ce3812b9cf 1100w, https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/terminal-completed-run.png?w=1650&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=dd59fd38559b7b7ca865a015d029e0de 1650w, https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/terminal-completed-run.png?w=2500&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=4de391f21eb74db6e3f7c174d86b4b71 2500w" />
+    <img alt="Terminal showing completed run" />
   </Step>
 </Steps>
 
@@ -10649,7 +12172,7 @@ Follow these steps if you don't already have Trigger.dev set up in your project.
       that includes `name`, `age` and `email` fields.
     </Note>
 
-    ```ts /trigger/drizzle-add-new-user.ts theme={null}
+    ```ts /trigger/drizzle-add-new-user.ts theme={"theme":"css-variables"}
     import { eq } from "drizzle-orm";
     import { task } from "@trigger.dev/sdk";
     import { users } from "src/db/schema";
@@ -10678,7 +12201,7 @@ Follow these steps if you don't already have Trigger.dev set up in your project.
 
     It is marked as an external to ensure that it is not bundled into the task's bundle, and instead will be installed and loaded from `node_modules` at runtime.
 
-    ```js /trigger.config.js theme={null}
+    ```js /trigger.config.js theme={"theme":"css-variables"}
     import { defineConfig } from "@trigger.dev/sdk";
 
     export default defineConfig({
@@ -10695,46 +12218,37 @@ Follow these steps if you don't already have Trigger.dev set up in your project.
     Once the build configuration is added, you can now deploy your task using the Trigger.dev CLI.
 
     <CodeGroup>
-      ```bash npm theme={null}
+      ```bash npm theme={"theme":"css-variables"}
       npx trigger.dev@latest deploy
       ```
 
-      ```bash pnpm theme={null}
+      ```bash pnpm theme={"theme":"css-variables"}
       pnpm dlx trigger.dev@latest deploy
       ```
 
-      ```bash yarn theme={null}
+      ```bash yarn theme={"theme":"css-variables"}
       yarn dlx trigger.dev@latest deploy
       ```
     </CodeGroup>
   </Step>
 
   <Step title="Adding your DATABASE_URL environment variable to Trigger.dev">
-    In your Trigger.dev dashboard sidebar click "Environment Variables" <Icon icon="circle-1" iconType="solid" size={20} color="A8FF53" />, and then the "New environment variable" button <Icon icon="circle-2" iconType="solid" size={20} color="A8FF53" />.
+    In your Trigger.dev dashboard sidebar click "Environment Variables" <Icon icon="circle-1" />, and then the "New environment variable" button <Icon icon="circle-2" />.
 
-        <img src="https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/environment-variables-page.jpg?fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=af652254781808a35c2bcefd4b61b59f" alt="Environment variables page" data-og-width="1600" width="1600" data-og-height="900" height="900" data-path="images/environment-variables-page.jpg" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/environment-variables-page.jpg?w=280&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=fd6487833d9c659f8a514c7cc86cf84d 280w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/environment-variables-page.jpg?w=560&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=1758721fd84f5040b88997db401f7391 560w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/environment-variables-page.jpg?w=840&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=4416f51b1528ae14285a03b560f22389 840w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/environment-variables-page.jpg?w=1100&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=12b90b89f7662aadaea07df17d9d3898 1100w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/environment-variables-page.jpg?w=1650&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=28e6921620cda10d335a095dbfa85806 1650w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/environment-variables-page.jpg?w=2500&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=4f6c67a030b20699bde25c22d68e57af 2500w" />
+    <img alt="Environment variables page" />
 
     You can add values for your local dev environment, staging and prod. in this case we will add the `DATABASE_URL` for the production environment.
 
-        <img
-          src="https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/environment-variables-panel.jpg?fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=79b5fd91e809cb0c6c9298410922df96"
-          alt="Environment variables
-    page"
-          data-og-width="1600"
-          width="1600"
-          data-og-height="900"
-          height="900"
-          data-path="images/environment-variables-panel.jpg"
-          data-optimize="true"
-          data-opv="3"
-          srcset="https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/environment-variables-panel.jpg?w=280&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=4c3f6181dea5542157cdbdebafb44989 280w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/environment-variables-panel.jpg?w=560&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=b0c302ef3d814a0c781b684e64d090f9 560w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/environment-variables-panel.jpg?w=840&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=a110ee9bb119eaaf7404097904a1f442 840w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/environment-variables-panel.jpg?w=1100&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=6e774fb137908fbaaf28318d1bfa419d 1100w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/environment-variables-panel.jpg?w=1650&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=aa5d4bef7b66551887043c4420807bc4 1650w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/environment-variables-panel.jpg?w=2500&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=ed23a501677d11631bb832eb6f95ceae 2500w"
-        />
+    <img
+      alt="Environment variables
+page"
+    />
   </Step>
 
   <Step title="Running your task">
     To test this task, go to the 'test' page in the Trigger.dev dashboard and run the task with the following payload:
 
-    ```json  theme={null}
+    ```json theme={"theme":"css-variables"}
     {
       "name": "<a-name>", // e.g. "John Doe"
       "age": "<an-age>", // e.g. 25
@@ -10748,7 +12262,7 @@ Follow these steps if you don't already have Trigger.dev set up in your project.
 
 ## Useful next steps
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Tasks overview" icon="diagram-subtask" href="/tasks/overview">
     Learn what tasks are and their options
   </Card>
@@ -10772,13 +12286,11 @@ Source: https://trigger.dev/docs/guides/frameworks/nextjs
 
 This guide will show you how to setup Trigger.dev in your existing Next.js project, test an example task, and view the run.
 
-export const framework_0 = "Next.js"
-
 <Note>This guide can be followed for both App and Pages router as well as Server Actions.</Note>
 
 ## Prerequisites
 
-* Setup a project in {framework_0}
+* Setup a project in&#x20;
 * Ensure TypeScript is installed
 * [Create a Trigger.dev account](https://cloud.trigger.dev)
 * Create a new Trigger.dev project
@@ -10792,25 +12304,31 @@ export const framework_0 = "Next.js"
     Run this command in the root of your project to get started:
 
     <CodeGroup>
-      ```bash npm theme={null}
+      ```bash npm theme={"theme":"css-variables"}
       npx trigger.dev@latest init
       ```
 
-      ```bash pnpm theme={null}
+      ```bash pnpm theme={"theme":"css-variables"}
       pnpm dlx trigger.dev@latest init
       ```
 
-      ```bash yarn theme={null}
+      ```bash yarn theme={"theme":"css-variables"}
       yarn dlx trigger.dev@latest init
       ```
     </CodeGroup>
 
     It will do a few things:
 
-    1. Log you into the CLI if you're not already logged in.
-    2. Create a `trigger.config.ts` file in the root of your project.
-    3. Ask where you'd like to create the `/trigger` directory.
-    4. Create the `/trigger` directory with an example task, `/trigger/example.[ts/js]`.
+    <Tip title="MCP Server">
+      Our [Trigger.dev MCP server](/mcp-introduction) gives your AI assistant direct access to Trigger.dev tools; search docs, trigger tasks, deploy projects, and monitor runs. We recommend installing it for the best developer experience.
+    </Tip>
+
+    1. Ask if you want to install the [Trigger.dev MCP server](/mcp-introduction) for your AI assistant.
+    2. Log you into the CLI if you're not already logged in.
+    3. Ask you to select your project.
+    4. Install the required SDK packages.
+    5. Ask where you'd like to create the `/trigger` directory and create it with an example task.
+    6. Create a `trigger.config.ts` file in the root of your project.
 
     Install the "Hello World" example task when prompted. We'll use this task to test the setup.
   </Step>
@@ -10821,15 +12339,15 @@ export const framework_0 = "Next.js"
     It can also update your `@trigger.dev/*` packages to prevent version mismatches and failed deploys. You will always be prompted first.
 
     <CodeGroup>
-      ```bash npm theme={null}
+      ```bash npm theme={"theme":"css-variables"}
       npx trigger.dev@latest dev
       ```
 
-      ```bash pnpm theme={null}
+      ```bash pnpm theme={"theme":"css-variables"}
       pnpm dlx trigger.dev@latest dev
       ```
 
-      ```bash yarn theme={null}
+      ```bash yarn theme={"theme":"css-variables"}
       yarn dlx trigger.dev@latest dev
       ```
     </CodeGroup>
@@ -10838,30 +12356,30 @@ export const framework_0 = "Next.js"
   <Step title="Perform a test run using the dashboard">
     The CLI `dev` command spits out various useful URLs. Right now we want to visit the Test page.
 
-    You should see our Example task in the list <Icon icon="circle-1" iconType="solid" size={20} color="F43F47" />, select it. Most tasks have a "payload" which you enter in the JSON editor <Icon icon="circle-2" iconType="solid" size={20} color="F43F47" />, but our example task doesn't need any input.
+    You should see our Example task in the list <Icon icon="circle-1" />, select it. Most tasks have a "payload" which you enter in the JSON editor <Icon icon="circle-2" />, but our example task doesn't need any input.
 
-    You can configure options on the run <Icon icon="circle-3" iconType="solid" size={20} color="F43F47" />, view recent payloads <Icon icon="circle-4" iconType="solid" size={20} color="F43F47" />, and create run templates <Icon icon="circle-5" iconType="solid" size={20} color="F43F47" />.
+    You can configure options on the run <Icon icon="circle-3" />, view recent payloads <Icon icon="circle-4" />, and create run templates <Icon icon="circle-5" />.
 
-    Press the "Run test" button <Icon icon="circle-6" iconType="solid" size={20} color="F43F47" />.
+    Press the "Run test" button <Icon icon="circle-6" />.
 
-        <img src="https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/test-dashboard.png?fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=92c810690f961d0033dd94d758c6bbfb" alt="Test page" data-og-width="2254" width="2254" data-og-height="1367" height="1367" data-path="images/test-dashboard.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/test-dashboard.png?w=280&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=970cc3e2d58a06fbf197fce5d6d0664b 280w, https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/test-dashboard.png?w=560&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=10d36ffd64e1f455f45a20d5e39f7bca 560w, https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/test-dashboard.png?w=840&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=62b4ec2301d11e645d3ebe45b2e3adc2 840w, https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/test-dashboard.png?w=1100&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=2db30f2ebfe494c81f5965a014e4fc6e 1100w, https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/test-dashboard.png?w=1650&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=67b24a2d00bde47226c4db88c4f7ac51 1650w, https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/test-dashboard.png?w=2500&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=e44fddf5357449c582b92cd3d434e43d 2500w" />
+    <img alt="Test page" />
   </Step>
 
   <Step title="View your run">
     Congratulations, you should see the run page which will live reload showing you the current state of the run.
 
-        <img src="https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/run-page.png?fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=4b0bb5f9b181499cf324cdb8d5d673a8" alt="Run page" data-og-width="2978" width="2978" data-og-height="2110" height="2110" data-path="images/run-page.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/run-page.png?w=280&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=d7f419295b621c779c6a9a10b9152958 280w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/run-page.png?w=560&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=c66995702aace3888813ee1a66d33f97 560w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/run-page.png?w=840&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=c6c36408dc85f156d15a333ddb849d26 840w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/run-page.png?w=1100&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=2c1d7275465749eeae32196698f4a1b5 1100w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/run-page.png?w=1650&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=6965f3e2263296fb6529384021ce362a 1650w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/run-page.png?w=2500&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=7d890c5d199be7feaddc9162435bcc17 2500w" />
+    <img alt="Run page" />
 
     If you go back to your terminal you'll see that the dev command also shows the task status and links to the run log.
 
-        <img src="https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/terminal-completed-run.png?fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=a9284c5228343b72d798c6e36f5acb24" alt="Terminal showing completed run" data-og-width="955" width="955" data-og-height="197" height="197" data-path="images/terminal-completed-run.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/terminal-completed-run.png?w=280&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=62826752155594bd580ae51582870cce 280w, https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/terminal-completed-run.png?w=560&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=5270d0e823346fe8517fcc356cc5d20c 560w, https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/terminal-completed-run.png?w=840&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=8ae13acb781c5d08e2351af3c2cbb70a 840w, https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/terminal-completed-run.png?w=1100&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=da9e9f485055786210b6d7ce3812b9cf 1100w, https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/terminal-completed-run.png?w=1650&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=dd59fd38559b7b7ca865a015d029e0de 1650w, https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/terminal-completed-run.png?w=2500&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=4de391f21eb74db6e3f7c174d86b4b71 2500w" />
+    <img alt="Terminal showing completed run" />
   </Step>
 </Steps>
 
 <Tip>
   Instead of running your Next.js app and Trigger.dev dev server in separate terminals, you can run them concurrently. First, add these scripts to your `package.json`:
 
-  ```json  theme={null}
+  ```json theme={"theme":"css-variables"}
   {
     "scripts": {
       "trigger:dev": "npx trigger.dev@latest dev",
@@ -10872,7 +12390,7 @@ export const framework_0 = "Next.js"
 
   Then, in your terminal, you can start both servers with a single command:
 
-  ```bash  theme={null}
+  ```bash theme={"theme":"css-variables"}
   npm run dev
   ```
 
@@ -10883,7 +12401,7 @@ export const framework_0 = "Next.js"
 
 Set your `TRIGGER_SECRET_KEY` environment variable in your `.env.local` file if using the Next.js App router or `.env` file if using Pages router. This key is used to authenticate with Trigger.dev, so you can trigger runs from your Next.js app. Visit the API Keys page in the dashboard and select the DEV secret key.
 
-<img src="https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/api-keys.png?fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=89dd26bf57f345bad4508ee5eec70c8c" alt="How to find your secret key" data-og-width="1600" width="1600" data-og-height="900" height="900" data-path="images/api-keys.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/api-keys.png?w=280&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=988f98dd098b108ca51d8c0aeb829344 280w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/api-keys.png?w=560&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=14431ee3376a9a6b845744b0b3acce60 560w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/api-keys.png?w=840&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=9059b9369eb793b9df4cceee1f985286 840w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/api-keys.png?w=1100&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=ccd1e2a8512f491128a53cd4ebe8823f 1100w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/api-keys.png?w=1650&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=ab656ff2f4b95e32558aacaa485c86ea 1650w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/api-keys.png?w=2500&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=3bb0b87a8e1a3033a8ff1ba3590f5786 2500w" />
+<img alt="How to find your secret key" />
 
 For more information on authenticating with Trigger.dev, see the [API keys page](/apikeys).
 
@@ -10901,7 +12419,7 @@ Here are the steps to trigger your task in the Next.js App and Pages router and 
       <Step title="Add your task">
         Add this code to your `route.ts` file which imports your task along with `NextResponse` to handle the API route response:
 
-        ```ts app/api/hello-world/route.ts theme={null}
+        ```ts app/api/hello-world/route.ts theme={"theme":"css-variables"}
         // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
         import type { helloWorldTask } from "@/trigger/example";
         import { tasks } from "@trigger.dev/sdk";
@@ -10925,15 +12443,15 @@ Here are the steps to trigger your task in the Next.js App and Pages router and 
         Run your Next.js app:
 
         <CodeGroup>
-          ```bash npm theme={null}
+          ```bash npm theme={"theme":"css-variables"}
           npm run dev
           ```
 
-          ```bash pnpm theme={null}
+          ```bash pnpm theme={"theme":"css-variables"}
           pnpm run dev
           ```
 
-          ```bash yarn theme={null}
+          ```bash yarn theme={"theme":"css-variables"}
           yarn dev
           ```
         </CodeGroup>
@@ -10941,28 +12459,28 @@ Here are the steps to trigger your task in the Next.js App and Pages router and 
         Run the dev server from Step 2. of the [Initial Setup](/guides/frameworks/nextjs#initial-setup) section above if it's not already running:
 
         <CodeGroup>
-          ```bash npm theme={null}
+          ```bash npm theme={"theme":"css-variables"}
           npx trigger.dev@latest dev
           ```
 
-          ```bash pnpm theme={null}
+          ```bash pnpm theme={"theme":"css-variables"}
           pnpm dlx trigger.dev@latest dev
           ```
 
-          ```bash yarn theme={null}
+          ```bash yarn theme={"theme":"css-variables"}
           yarn dlx trigger.dev@latest dev
           ```
         </CodeGroup>
 
         Now visit the URL in your browser to trigger the task. Ensure the port number is the same as the one you're running your Next.js app on. For example, if you're running your Next.js app on port 3000, visit:
 
-        ```bash  theme={null}
+        ```bash theme={"theme":"css-variables"}
         http://localhost:3000/api/hello-world
         ```
 
         You should see the CLI log the task run with a link to view the logs in the dashboard.
 
-                <img src="https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/trigger-cli-run-success.png?fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=75168b271620e7206a50b041224a98b0" alt="Trigger.dev CLI showing a successful run" data-og-width="839" width="839" data-og-height="174" height="174" data-path="images/trigger-cli-run-success.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/trigger-cli-run-success.png?w=280&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=5593976094a4db89b9bcefe743b670f5 280w, https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/trigger-cli-run-success.png?w=560&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=3ece99db078f44f61721287482ac6288 560w, https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/trigger-cli-run-success.png?w=840&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=49c3058ed0f3baa282eba729cc765924 840w, https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/trigger-cli-run-success.png?w=1100&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=863029ceaad9808f725ce07a119a861a 1100w, https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/trigger-cli-run-success.png?w=1650&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=98f234c6774c19d0966c77c157a696c3 1650w, https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/trigger-cli-run-success.png?w=2500&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=fb955cb91d22967fc4251ab00d09547d 2500w" />
+        <img alt="Trigger.dev CLI showing a successful run" />
 
         Visit the [Trigger.dev dashboard](https://cloud.trigger.dev) to see your run.
       </Step>
@@ -10974,7 +12492,7 @@ Here are the steps to trigger your task in the Next.js App and Pages router and 
       <Step title="Create an `actions.ts` file">
         Create an `actions.ts` file in the `app/api` directory and add this code which imports your `helloWorldTask()` task. Make sure to include `"use server";` at the top of the file.
 
-        ```ts app/api/actions.ts theme={null}
+        ```ts app/api/actions.ts theme={"theme":"css-variables"}
           "use server";
 
           import type { helloWorldTask } from "@/trigger/example";
@@ -11001,7 +12519,7 @@ Here are the steps to trigger your task in the Next.js App and Pages router and 
       <Step title="Create a button to trigger your task">
         For the purposes of this guide, we'll create a button with an `onClick` event that triggers your task. We'll add this to the `page.tsx` file so we can trigger the task by clicking the button. Make sure to import your task and include `"use client";` at the top of your file.
 
-        ```ts app/page.tsx theme={null}
+        ```ts app/page.tsx theme={"theme":"css-variables"}
         "use client";
 
         import { myTask } from "./actions";
@@ -11026,44 +12544,44 @@ Here are the steps to trigger your task in the Next.js App and Pages router and 
         Run your Next.js app:
 
         <CodeGroup>
-          ```bash npm theme={null}
+          ```bash npm theme={"theme":"css-variables"}
           npm run dev
           ```
 
-          ```bash pnpm theme={null}
+          ```bash pnpm theme={"theme":"css-variables"}
           pnpm run dev
           ```
 
-          ```bash yarn theme={null}
+          ```bash yarn theme={"theme":"css-variables"}
           yarn dev
           ```
         </CodeGroup>
 
         Open your app in a browser, making sure the port number is the same as the one you're running your Next.js app on. For example, if you're running your Next.js app on port 3000, visit:
 
-        ```bash  theme={null}
+        ```bash theme={"theme":"css-variables"}
         http://localhost:3000
         ```
 
         Run the dev server from Step 2. of the [Initial Setup](/guides/frameworks/nextjs#initial-setup) section above if it's not already running:
 
         <CodeGroup>
-          ```bash npm theme={null}
+          ```bash npm theme={"theme":"css-variables"}
           npx trigger.dev@latest dev
           ```
 
-          ```bash pnpm theme={null}
+          ```bash pnpm theme={"theme":"css-variables"}
           pnpm dlx trigger.dev@latest dev
           ```
 
-          ```bash yarn theme={null}
+          ```bash yarn theme={"theme":"css-variables"}
           yarn dlx trigger.dev@latest dev
           ```
         </CodeGroup>
 
         Then click the button we created in your app to trigger the task. You should see the CLI log the task run with a link to view the logs.
 
-                <img src="https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/trigger-cli-run-success.png?fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=75168b271620e7206a50b041224a98b0" alt="Trigger.dev CLI showing a successful run" data-og-width="839" width="839" data-og-height="174" height="174" data-path="images/trigger-cli-run-success.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/trigger-cli-run-success.png?w=280&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=5593976094a4db89b9bcefe743b670f5 280w, https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/trigger-cli-run-success.png?w=560&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=3ece99db078f44f61721287482ac6288 560w, https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/trigger-cli-run-success.png?w=840&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=49c3058ed0f3baa282eba729cc765924 840w, https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/trigger-cli-run-success.png?w=1100&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=863029ceaad9808f725ce07a119a861a 1100w, https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/trigger-cli-run-success.png?w=1650&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=98f234c6774c19d0966c77c157a696c3 1650w, https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/trigger-cli-run-success.png?w=2500&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=fb955cb91d22967fc4251ab00d09547d 2500w" />
+        <img alt="Trigger.dev CLI showing a successful run" />
 
         Visit the [Trigger.dev dashboard](https://cloud.trigger.dev) to see your run.
       </Step>
@@ -11075,7 +12593,7 @@ Here are the steps to trigger your task in the Next.js App and Pages router and 
       <Step title="Create an API route">
         Create an API route in the `pages/api` directory. Then create a `hello-world .ts` (or `hello-world.js`) file for your task and copy this code example:
 
-        ```ts pages/api/hello-world.ts theme={null}
+        ```ts pages/api/hello-world.ts theme={"theme":"css-variables"}
         // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
         import { helloWorldTask } from "@/trigger/example";
         import { tasks } from "@trigger.dev/sdk";
@@ -11099,15 +12617,15 @@ Here are the steps to trigger your task in the Next.js App and Pages router and 
         Run your Next.js app:
 
         <CodeGroup>
-          ```bash npm theme={null}
+          ```bash npm theme={"theme":"css-variables"}
           npm run dev
           ```
 
-          ```bash pnpm theme={null}
+          ```bash pnpm theme={"theme":"css-variables"}
           pnpm run dev
           ```
 
-          ```bash yarn theme={null}
+          ```bash yarn theme={"theme":"css-variables"}
           yarn dev
           ```
         </CodeGroup>
@@ -11115,28 +12633,28 @@ Here are the steps to trigger your task in the Next.js App and Pages router and 
         Run the dev server from Step 2. of the [Initial Setup](/guides/frameworks/nextjs#initial-setup) section above if it's not already running:
 
         <CodeGroup>
-          ```bash npm theme={null}
+          ```bash npm theme={"theme":"css-variables"}
           npx trigger.dev@latest dev
           ```
 
-          ```bash pnpm theme={null}
+          ```bash pnpm theme={"theme":"css-variables"}
           pnpm dlx trigger.dev@latest dev
           ```
 
-          ```bash yarn theme={null}
+          ```bash yarn theme={"theme":"css-variables"}
           yarn dlx trigger.dev@latest dev
           ```
         </CodeGroup>
 
         Now visit the URL in your browser to trigger the task. Ensure the port number is the same as the one you're running your Next.js app on. For example, if you're running your Next.js app on port 3000, visit:
 
-        ```bash  theme={null}
+        ```bash theme={"theme":"css-variables"}
         http://localhost:3000/api/hello-world
         ```
 
         You should see the CLI log the task run with a link to view the logs in the dashboard.
 
-                <img src="https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/trigger-cli-run-success.png?fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=75168b271620e7206a50b041224a98b0" alt="Trigger.dev CLI showing a successful run" data-og-width="839" width="839" data-og-height="174" height="174" data-path="images/trigger-cli-run-success.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/trigger-cli-run-success.png?w=280&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=5593976094a4db89b9bcefe743b670f5 280w, https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/trigger-cli-run-success.png?w=560&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=3ece99db078f44f61721287482ac6288 560w, https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/trigger-cli-run-success.png?w=840&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=49c3058ed0f3baa282eba729cc765924 840w, https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/trigger-cli-run-success.png?w=1100&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=863029ceaad9808f725ce07a119a861a 1100w, https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/trigger-cli-run-success.png?w=1650&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=98f234c6774c19d0966c77c157a696c3 1650w, https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/trigger-cli-run-success.png?w=2500&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=fb955cb91d22967fc4251ab00d09547d 2500w" />
+        <img alt="Trigger.dev CLI showing a successful run" />
 
         Visit the [Trigger.dev dashboard](https://cloud.trigger.dev) to see your run.
       </Step>
@@ -11157,7 +12675,7 @@ If you want to automatically sync environment variables from your Vercel project
   the project with the environment variables you want to sync.
 </Note>
 
-```ts trigger.config.ts theme={null}
+```ts trigger.config.ts theme={"theme":"css-variables"}
 import { defineConfig } from "@trigger.dev/sdk";
 import { syncVercelEnvVars } from "@trigger.dev/build/extensions/core";
 
@@ -11180,10 +12698,10 @@ export default defineConfig({
 If you have any environment variables in your tasks, be sure to add them in the dashboard so deployed code runs successfully. In Node.js, these environment variables are accessed in your code using `process.env.MY_ENV_VAR`.
 
 In the sidebar select the "Environment Variables" page, then press the "New environment variable"
-button. <img src="https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/environment-variables-page.jpg?fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=af652254781808a35c2bcefd4b61b59f" alt="Environment variables page" data-og-width="1600" width="1600" data-og-height="900" height="900" data-path="images/environment-variables-page.jpg" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/environment-variables-page.jpg?w=280&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=fd6487833d9c659f8a514c7cc86cf84d 280w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/environment-variables-page.jpg?w=560&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=1758721fd84f5040b88997db401f7391 560w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/environment-variables-page.jpg?w=840&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=4416f51b1528ae14285a03b560f22389 840w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/environment-variables-page.jpg?w=1100&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=12b90b89f7662aadaea07df17d9d3898 1100w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/environment-variables-page.jpg?w=1650&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=28e6921620cda10d335a095dbfa85806 1650w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/environment-variables-page.jpg?w=2500&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=4f6c67a030b20699bde25c22d68e57af 2500w" />
+button. <img alt="Environment variables page" />
 
-You can add values for your local dev environment, staging and prod. <img src="https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/environment-variables-panel.jpg?fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=79b5fd91e809cb0c6c9298410922df96" alt="Environment variables
-page" data-og-width="1600" width="1600" data-og-height="900" height="900" data-path="images/environment-variables-panel.jpg" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/environment-variables-panel.jpg?w=280&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=4c3f6181dea5542157cdbdebafb44989 280w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/environment-variables-panel.jpg?w=560&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=b0c302ef3d814a0c781b684e64d090f9 560w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/environment-variables-panel.jpg?w=840&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=a110ee9bb119eaaf7404097904a1f442 840w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/environment-variables-panel.jpg?w=1100&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=6e774fb137908fbaaf28318d1bfa419d 1100w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/environment-variables-panel.jpg?w=1650&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=aa5d4bef7b66551887043c4420807bc4 1650w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/environment-variables-panel.jpg?w=2500&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=ed23a501677d11631bb832eb6f95ceae 2500w" />
+You can add values for your local dev environment, staging and prod. <img alt="Environment variables
+page" />
 
 You can also add environment variables in code by following the steps on the [Environment Variables page](/deploy-environment-variables#in-your-code).
 
@@ -11192,15 +12710,15 @@ You can also add environment variables in code by following the steps on the [En
 For this guide, we'll manually deploy your task by running the [CLI deploy command](/cli-deploy) below. Other ways to deploy are listed in the next section.
 
 <CodeGroup>
-  ```bash npm theme={null}
+  ```bash npm theme={"theme":"css-variables"}
   npx trigger.dev@latest deploy
   ```
 
-  ```bash pnpm theme={null}
+  ```bash pnpm theme={"theme":"css-variables"}
   pnpm dlx trigger.dev@latest deploy
   ```
 
-  ```bash yarn theme={null}
+  ```bash yarn theme={"theme":"css-variables"}
   yarn dlx trigger.dev@latest deploy
   ```
 </CodeGroup>
@@ -11231,7 +12749,7 @@ The handlers are slightly different for the App and Pages router:
 
 If you are using the App router, create a new revalidation route at `app/api/revalidate/path/route.ts`:
 
-```ts app/api/revalidate/path/route.ts theme={null}
+```ts app/api/revalidate/path/route.ts theme={"theme":"css-variables"}
 import { NextRequest, NextResponse } from "next/server";
 import { revalidatePath } from "next/cache";
 
@@ -11261,7 +12779,7 @@ export async function POST(request: NextRequest) {
 
 If you are using the Pages router, create a new revalidation route at `pages/api/revalidate/path.ts`:
 
-```ts pages/api/revalidate/path.ts theme={null}
+```ts pages/api/revalidate/path.ts theme={"theme":"css-variables"}
 import type { NextApiRequest, NextApiResponse } from "next";
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
@@ -11300,7 +12818,7 @@ This task takes a `path` as a payload and will revalidate the path you specify, 
   To run this task in production, you will need to set the `REVALIDATION_SECRET` environment variable in Vercel, in your project settings, and also in your environment variables in the Trigger.dev dashboard.
 </Note>
 
-```ts trigger/revalidate-path.ts theme={null}
+```ts trigger/revalidate-path.ts theme={"theme":"css-variables"}
 import { logger, task } from "@trigger.dev/sdk";
 
 const NEXTJS_APP_URL = process.env.NEXTJS_APP_URL; // e.g. "http://localhost:3000" or "https://my-nextjs-app.vercel.app"
@@ -11355,7 +12873,7 @@ export const revalidatePath = task({
 
 You can test your revalidation task in the Trigger.dev dashboard on the testing page, using the following payload.
 
-```json  theme={null}
+```json theme={"theme":"css-variables"}
 {
   "path": "<path-to-revalidate>" // e.g. "blog"
 }
@@ -11365,7 +12883,7 @@ You can test your revalidation task in the Trigger.dev dashboard on the testing 
 
 This issue occurs during the Next.js app build process on GitHub CI where the Trigger.dev SDK is expecting the TRIGGER\_SECRET\_KEY environment variable to be set at build time. Next.js attempts to compile routes and creates static pages, which can cause issues with SDKs that require runtime environment variables. The solution is to mark the relevant pages as dynamic to prevent Next.js from trying to make them static. You can do this by adding the following line to the route file:
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 export const dynamic = "force-dynamic";
 ```
 
@@ -11375,13 +12893,13 @@ An issue can sometimes arise when you try to pass a function directly to the `on
 
 This works:
 
-```tsx  theme={null}
+```tsx theme={"theme":"css-variables"}
 <Button onClick={() => myTask()}>Trigger my task</Button>
 ```
 
 Whereas this does not work:
 
-```tsx  theme={null}
+```tsx theme={"theme":"css-variables"}
 <Button onClick={myTask}>Trigger my task</Button>
 ```
 
@@ -11389,7 +12907,7 @@ Whereas this does not work:
 
 ### Walk-through guides from development to deployment
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Next.js - setup guide" icon="N" href="/guides/frameworks/nextjs">
     Learn how to setup Trigger.dev with Next.js, using either the pages or app router.
   </Card>
@@ -11401,12 +12919,12 @@ Whereas this does not work:
 
 ### Task examples
 
-<CardGroup cols={2}>
-  <Card title="Fal.ai with Realtime in Next.js" img="https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/fal-realtime-thumbnail.png?fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=9ac31bb57678b222a82b04055184eea0" href="/guides/examples/fal-ai-realtime" data-og-width="1442" width="1442" data-og-height="812" height="812" data-path="images/fal-realtime-thumbnail.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/fal-realtime-thumbnail.png?w=280&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=086231461af2b9520f9200889fc04724 280w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/fal-realtime-thumbnail.png?w=560&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=c5ab58baba8000266aac79117dc8944d 560w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/fal-realtime-thumbnail.png?w=840&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=988fe253a646e5af2188f81297d01897 840w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/fal-realtime-thumbnail.png?w=1100&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=db65bbdf0995fc1ac72bda2512c31800 1100w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/fal-realtime-thumbnail.png?w=1650&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=6e7890d597065f8bc9edd0ac90257185 1650w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/fal-realtime-thumbnail.png?w=2500&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=60bc05bc63c0c1d1ad59eaafb0808aa6 2500w">
+<CardGroup>
+  <Card title="Fal.ai with Realtime in Next.js" href="/guides/examples/fal-ai-realtime">
     Generate an image from a prompt using Fal.ai and Trigger.dev Realtime.
   </Card>
 
-  <Card title="Generate a cartoon using Fal.ai in Next.js" img="https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/fal-generate-cartoon-thumbnail.png?fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=003d7870f36310d14ca9a71a952667d3" href="/guides/examples/fal-ai-image-to-cartoon" data-og-width="1442" width="1442" data-og-height="816" height="816" data-path="images/fal-generate-cartoon-thumbnail.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/fal-generate-cartoon-thumbnail.png?w=280&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=ec0e05813f874082257e2d32bad407a8 280w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/fal-generate-cartoon-thumbnail.png?w=560&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=f3f70889ad11953d44f72224712722aa 560w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/fal-generate-cartoon-thumbnail.png?w=840&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=b8df38a222a7431d55a1af1af61dffd1 840w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/fal-generate-cartoon-thumbnail.png?w=1100&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=268ac6b0faf34bb46a8a8d676658b0b8 1100w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/fal-generate-cartoon-thumbnail.png?w=1650&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=4be96f4df2d49b7a71d0e960df9cc93b 1650w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/fal-generate-cartoon-thumbnail.png?w=2500&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=bc15e1a3df4484cfdcd200d49fd1ac4b 2500w">
+  <Card title="Generate a cartoon using Fal.ai in Next.js" href="/guides/examples/fal-ai-image-to-cartoon">
     Convert an image to a cartoon using Fal.ai.
   </Card>
 
@@ -11422,7 +12940,7 @@ Whereas this does not work:
 
 ## Useful next steps
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Tasks overview" icon="diagram-subtask" href="/tasks/overview">
     Learn what tasks are and their options
   </Card>
@@ -11470,7 +12988,7 @@ Create a new file `pages/api/webhook-handler.ts` or `pages/api/webhook-hander.js
 
 In your new file, add the following code:
 
-```ts /pages/api/webhook-handler.ts theme={null}
+```ts /pages/api/webhook-handler.ts theme={"theme":"css-variables"}
 import { helloWorldTask } from "@/trigger/example";
 import { tasks } from "@trigger.dev/sdk";
 import type { NextApiRequest, NextApiResponse } from "next";
@@ -11494,7 +13012,7 @@ Create a new file in the `app/api/webhook-handler/route.ts` or `app/api/webhook-
 
 In your new file, add the following code:
 
-```ts /app/api/webhook-handler/route.ts theme={null}
+```ts /app/api/webhook-handler/route.ts theme={"theme":"css-variables"}
 import type { helloWorldTask } from "@/trigger/example";
 import { tasks } from "@trigger.dev/sdk";
 import { NextResponse } from "next/server";
@@ -11521,15 +13039,15 @@ Now that you have your webhook handler set up, you can trigger the 'Hello World'
     First, run your Next.js app.
 
     <CodeGroup>
-      ```bash npm theme={null}
+      ```bash npm theme={"theme":"css-variables"}
       npm run dev
       ```
 
-      ```bash pnpm theme={null}
+      ```bash pnpm theme={"theme":"css-variables"}
       pnpm run dev
       ```
 
-      ```bash yarn theme={null}
+      ```bash yarn theme={"theme":"css-variables"}
       yarn dev
       ```
     </CodeGroup>
@@ -11537,15 +13055,15 @@ Now that you have your webhook handler set up, you can trigger the 'Hello World'
     Then, open up a second terminal window and start the Trigger.dev dev server:
 
     <CodeGroup>
-      ```bash npm theme={null}
+      ```bash npm theme={"theme":"css-variables"}
       npx trigger.dev@latest dev
       ```
 
-      ```bash pnpm theme={null}
+      ```bash pnpm theme={"theme":"css-variables"}
       pnpm dlx trigger.dev@latest dev
       ```
 
-      ```bash yarn theme={null}
+      ```bash yarn theme={"theme":"css-variables"}
       yarn dlx trigger.dev@latest dev
       ```
     </CodeGroup>
@@ -11559,7 +13077,7 @@ Now that you have your webhook handler set up, you can trigger the 'Hello World'
       the below command with that URL instead.
     </Tip>
 
-    ```bash  theme={null}
+    ```bash theme={"theme":"css-variables"}
     curl -X POST -H "Content-Type: application/json" -d '{"Name": "John Doe", "Age": "87"}' http://localhost:3000/api/webhook-handler
     ```
 
@@ -11577,7 +13095,7 @@ Now that you have your webhook handler set up, you can trigger the 'Hello World'
 
 ### Walk-through guides from development to deployment
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Next.js - setup guide" icon="N" href="/guides/frameworks/nextjs">
     Learn how to setup Trigger.dev with Next.js, using either the pages or app router.
   </Card>
@@ -11589,12 +13107,12 @@ Now that you have your webhook handler set up, you can trigger the 'Hello World'
 
 ### Task examples
 
-<CardGroup cols={2}>
-  <Card title="Fal.ai with Realtime in Next.js" img="https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/fal-realtime-thumbnail.png?fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=9ac31bb57678b222a82b04055184eea0" href="/guides/examples/fal-ai-realtime" data-og-width="1442" width="1442" data-og-height="812" height="812" data-path="images/fal-realtime-thumbnail.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/fal-realtime-thumbnail.png?w=280&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=086231461af2b9520f9200889fc04724 280w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/fal-realtime-thumbnail.png?w=560&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=c5ab58baba8000266aac79117dc8944d 560w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/fal-realtime-thumbnail.png?w=840&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=988fe253a646e5af2188f81297d01897 840w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/fal-realtime-thumbnail.png?w=1100&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=db65bbdf0995fc1ac72bda2512c31800 1100w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/fal-realtime-thumbnail.png?w=1650&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=6e7890d597065f8bc9edd0ac90257185 1650w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/fal-realtime-thumbnail.png?w=2500&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=60bc05bc63c0c1d1ad59eaafb0808aa6 2500w">
+<CardGroup>
+  <Card title="Fal.ai with Realtime in Next.js" href="/guides/examples/fal-ai-realtime">
     Generate an image from a prompt using Fal.ai and Trigger.dev Realtime.
   </Card>
 
-  <Card title="Generate a cartoon using Fal.ai in Next.js" img="https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/fal-generate-cartoon-thumbnail.png?fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=003d7870f36310d14ca9a71a952667d3" href="/guides/examples/fal-ai-image-to-cartoon" data-og-width="1442" width="1442" data-og-height="816" height="816" data-path="images/fal-generate-cartoon-thumbnail.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/fal-generate-cartoon-thumbnail.png?w=280&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=ec0e05813f874082257e2d32bad407a8 280w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/fal-generate-cartoon-thumbnail.png?w=560&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=f3f70889ad11953d44f72224712722aa 560w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/fal-generate-cartoon-thumbnail.png?w=840&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=b8df38a222a7431d55a1af1af61dffd1 840w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/fal-generate-cartoon-thumbnail.png?w=1100&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=268ac6b0faf34bb46a8a8d676658b0b8 1100w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/fal-generate-cartoon-thumbnail.png?w=1650&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=4be96f4df2d49b7a71d0e960df9cc93b 1650w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/fal-generate-cartoon-thumbnail.png?w=2500&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=bc15e1a3df4484cfdcd200d49fd1ac4b 2500w">
+  <Card title="Generate a cartoon using Fal.ai in Next.js" href="/guides/examples/fal-ai-image-to-cartoon">
     Convert an image to a cartoon using Fal.ai.
   </Card>
 
@@ -11614,11 +13132,9 @@ Source: https://trigger.dev/docs/guides/frameworks/nodejs
 
 This guide will show you how to setup Trigger.dev in your existing Node.js project, test an example task, and view the run.
 
-export const framework_0 = "Node.js"
-
 ## Prerequisites
 
-* Setup a project in {framework_0}
+* Setup a project in&#x20;
 * Ensure TypeScript is installed
 * [Create a Trigger.dev account](https://cloud.trigger.dev)
 * Create a new Trigger.dev project
@@ -11632,25 +13148,31 @@ export const framework_0 = "Node.js"
     Run this command in the root of your project to get started:
 
     <CodeGroup>
-      ```bash npm theme={null}
+      ```bash npm theme={"theme":"css-variables"}
       npx trigger.dev@latest init
       ```
 
-      ```bash pnpm theme={null}
+      ```bash pnpm theme={"theme":"css-variables"}
       pnpm dlx trigger.dev@latest init
       ```
 
-      ```bash yarn theme={null}
+      ```bash yarn theme={"theme":"css-variables"}
       yarn dlx trigger.dev@latest init
       ```
     </CodeGroup>
 
     It will do a few things:
 
-    1. Log you into the CLI if you're not already logged in.
-    2. Create a `trigger.config.ts` file in the root of your project.
-    3. Ask where you'd like to create the `/trigger` directory.
-    4. Create the `/trigger` directory with an example task, `/trigger/example.[ts/js]`.
+    <Tip title="MCP Server">
+      Our [Trigger.dev MCP server](/mcp-introduction) gives your AI assistant direct access to Trigger.dev tools; search docs, trigger tasks, deploy projects, and monitor runs. We recommend installing it for the best developer experience.
+    </Tip>
+
+    1. Ask if you want to install the [Trigger.dev MCP server](/mcp-introduction) for your AI assistant.
+    2. Log you into the CLI if you're not already logged in.
+    3. Ask you to select your project.
+    4. Install the required SDK packages.
+    5. Ask where you'd like to create the `/trigger` directory and create it with an example task.
+    6. Create a `trigger.config.ts` file in the root of your project.
 
     Install the "Hello World" example task when prompted. We'll use this task to test the setup.
   </Step>
@@ -11661,15 +13183,15 @@ export const framework_0 = "Node.js"
     It can also update your `@trigger.dev/*` packages to prevent version mismatches and failed deploys. You will always be prompted first.
 
     <CodeGroup>
-      ```bash npm theme={null}
+      ```bash npm theme={"theme":"css-variables"}
       npx trigger.dev@latest dev
       ```
 
-      ```bash pnpm theme={null}
+      ```bash pnpm theme={"theme":"css-variables"}
       pnpm dlx trigger.dev@latest dev
       ```
 
-      ```bash yarn theme={null}
+      ```bash yarn theme={"theme":"css-variables"}
       yarn dlx trigger.dev@latest dev
       ```
     </CodeGroup>
@@ -11678,29 +13200,29 @@ export const framework_0 = "Node.js"
   <Step title="Perform a test run using the dashboard">
     The CLI `dev` command spits out various useful URLs. Right now we want to visit the Test page.
 
-    You should see our Example task in the list <Icon icon="circle-1" iconType="solid" size={20} color="F43F47" />, select it. Most tasks have a "payload" which you enter in the JSON editor <Icon icon="circle-2" iconType="solid" size={20} color="F43F47" />, but our example task doesn't need any input.
+    You should see our Example task in the list <Icon icon="circle-1" />, select it. Most tasks have a "payload" which you enter in the JSON editor <Icon icon="circle-2" />, but our example task doesn't need any input.
 
-    You can configure options on the run <Icon icon="circle-3" iconType="solid" size={20} color="F43F47" />, view recent payloads <Icon icon="circle-4" iconType="solid" size={20} color="F43F47" />, and create run templates <Icon icon="circle-5" iconType="solid" size={20} color="F43F47" />.
+    You can configure options on the run <Icon icon="circle-3" />, view recent payloads <Icon icon="circle-4" />, and create run templates <Icon icon="circle-5" />.
 
-    Press the "Run test" button <Icon icon="circle-6" iconType="solid" size={20} color="F43F47" />.
+    Press the "Run test" button <Icon icon="circle-6" />.
 
-        <img src="https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/test-dashboard.png?fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=92c810690f961d0033dd94d758c6bbfb" alt="Test page" data-og-width="2254" width="2254" data-og-height="1367" height="1367" data-path="images/test-dashboard.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/test-dashboard.png?w=280&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=970cc3e2d58a06fbf197fce5d6d0664b 280w, https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/test-dashboard.png?w=560&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=10d36ffd64e1f455f45a20d5e39f7bca 560w, https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/test-dashboard.png?w=840&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=62b4ec2301d11e645d3ebe45b2e3adc2 840w, https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/test-dashboard.png?w=1100&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=2db30f2ebfe494c81f5965a014e4fc6e 1100w, https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/test-dashboard.png?w=1650&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=67b24a2d00bde47226c4db88c4f7ac51 1650w, https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/test-dashboard.png?w=2500&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=e44fddf5357449c582b92cd3d434e43d 2500w" />
+    <img alt="Test page" />
   </Step>
 
   <Step title="View your run">
     Congratulations, you should see the run page which will live reload showing you the current state of the run.
 
-        <img src="https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/run-page.png?fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=4b0bb5f9b181499cf324cdb8d5d673a8" alt="Run page" data-og-width="2978" width="2978" data-og-height="2110" height="2110" data-path="images/run-page.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/run-page.png?w=280&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=d7f419295b621c779c6a9a10b9152958 280w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/run-page.png?w=560&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=c66995702aace3888813ee1a66d33f97 560w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/run-page.png?w=840&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=c6c36408dc85f156d15a333ddb849d26 840w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/run-page.png?w=1100&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=2c1d7275465749eeae32196698f4a1b5 1100w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/run-page.png?w=1650&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=6965f3e2263296fb6529384021ce362a 1650w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/run-page.png?w=2500&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=7d890c5d199be7feaddc9162435bcc17 2500w" />
+    <img alt="Run page" />
 
     If you go back to your terminal you'll see that the dev command also shows the task status and links to the run log.
 
-        <img src="https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/terminal-completed-run.png?fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=a9284c5228343b72d798c6e36f5acb24" alt="Terminal showing completed run" data-og-width="955" width="955" data-og-height="197" height="197" data-path="images/terminal-completed-run.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/terminal-completed-run.png?w=280&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=62826752155594bd580ae51582870cce 280w, https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/terminal-completed-run.png?w=560&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=5270d0e823346fe8517fcc356cc5d20c 560w, https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/terminal-completed-run.png?w=840&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=8ae13acb781c5d08e2351af3c2cbb70a 840w, https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/terminal-completed-run.png?w=1100&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=da9e9f485055786210b6d7ce3812b9cf 1100w, https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/terminal-completed-run.png?w=1650&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=dd59fd38559b7b7ca865a015d029e0de 1650w, https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/terminal-completed-run.png?w=2500&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=4de391f21eb74db6e3f7c174d86b4b71 2500w" />
+    <img alt="Terminal showing completed run" />
   </Step>
 </Steps>
 
 ## Useful next steps
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Tasks overview" icon="diagram-subtask" href="/tasks/overview">
     Learn what tasks are and their options
   </Card>
@@ -11747,25 +13269,31 @@ Follow these steps if you don't already have Trigger.dev set up in your project.
     Run this command in the root of your project to get started:
 
     <CodeGroup>
-      ```bash npm theme={null}
+      ```bash npm theme={"theme":"css-variables"}
       npx trigger.dev@latest init
       ```
 
-      ```bash pnpm theme={null}
+      ```bash pnpm theme={"theme":"css-variables"}
       pnpm dlx trigger.dev@latest init
       ```
 
-      ```bash yarn theme={null}
+      ```bash yarn theme={"theme":"css-variables"}
       yarn dlx trigger.dev@latest init
       ```
     </CodeGroup>
 
     It will do a few things:
 
-    1. Log you into the CLI if you're not already logged in.
-    2. Create a `trigger.config.ts` file in the root of your project.
-    3. Ask where you'd like to create the `/trigger` directory.
-    4. Create the `/trigger` directory with an example task, `/trigger/example.[ts/js]`.
+    <Tip title="MCP Server">
+      Our [Trigger.dev MCP server](/mcp-introduction) gives your AI assistant direct access to Trigger.dev tools; search docs, trigger tasks, deploy projects, and monitor runs. We recommend installing it for the best developer experience.
+    </Tip>
+
+    1. Ask if you want to install the [Trigger.dev MCP server](/mcp-introduction) for your AI assistant.
+    2. Log you into the CLI if you're not already logged in.
+    3. Ask you to select your project.
+    4. Install the required SDK packages.
+    5. Ask where you'd like to create the `/trigger` directory and create it with an example task.
+    6. Create a `trigger.config.ts` file in the root of your project.
 
     Install the "Hello World" example task when prompted. We'll use this task to test the setup.
   </Step>
@@ -11776,15 +13304,15 @@ Follow these steps if you don't already have Trigger.dev set up in your project.
     It can also update your `@trigger.dev/*` packages to prevent version mismatches and failed deploys. You will always be prompted first.
 
     <CodeGroup>
-      ```bash npm theme={null}
+      ```bash npm theme={"theme":"css-variables"}
       npx trigger.dev@latest dev
       ```
 
-      ```bash pnpm theme={null}
+      ```bash pnpm theme={"theme":"css-variables"}
       pnpm dlx trigger.dev@latest dev
       ```
 
-      ```bash yarn theme={null}
+      ```bash yarn theme={"theme":"css-variables"}
       yarn dlx trigger.dev@latest dev
       ```
     </CodeGroup>
@@ -11793,23 +13321,23 @@ Follow these steps if you don't already have Trigger.dev set up in your project.
   <Step title="Perform a test run using the dashboard">
     The CLI `dev` command spits out various useful URLs. Right now we want to visit the Test page.
 
-    You should see our Example task in the list <Icon icon="circle-1" iconType="solid" size={20} color="F43F47" />, select it. Most tasks have a "payload" which you enter in the JSON editor <Icon icon="circle-2" iconType="solid" size={20} color="F43F47" />, but our example task doesn't need any input.
+    You should see our Example task in the list <Icon icon="circle-1" />, select it. Most tasks have a "payload" which you enter in the JSON editor <Icon icon="circle-2" />, but our example task doesn't need any input.
 
-    You can configure options on the run <Icon icon="circle-3" iconType="solid" size={20} color="F43F47" />, view recent payloads <Icon icon="circle-4" iconType="solid" size={20} color="F43F47" />, and create run templates <Icon icon="circle-5" iconType="solid" size={20} color="F43F47" />.
+    You can configure options on the run <Icon icon="circle-3" />, view recent payloads <Icon icon="circle-4" />, and create run templates <Icon icon="circle-5" />.
 
-    Press the "Run test" button <Icon icon="circle-6" iconType="solid" size={20} color="F43F47" />.
+    Press the "Run test" button <Icon icon="circle-6" />.
 
-        <img src="https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/test-dashboard.png?fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=92c810690f961d0033dd94d758c6bbfb" alt="Test page" data-og-width="2254" width="2254" data-og-height="1367" height="1367" data-path="images/test-dashboard.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/test-dashboard.png?w=280&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=970cc3e2d58a06fbf197fce5d6d0664b 280w, https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/test-dashboard.png?w=560&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=10d36ffd64e1f455f45a20d5e39f7bca 560w, https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/test-dashboard.png?w=840&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=62b4ec2301d11e645d3ebe45b2e3adc2 840w, https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/test-dashboard.png?w=1100&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=2db30f2ebfe494c81f5965a014e4fc6e 1100w, https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/test-dashboard.png?w=1650&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=67b24a2d00bde47226c4db88c4f7ac51 1650w, https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/test-dashboard.png?w=2500&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=e44fddf5357449c582b92cd3d434e43d 2500w" />
+    <img alt="Test page" />
   </Step>
 
   <Step title="View your run">
     Congratulations, you should see the run page which will live reload showing you the current state of the run.
 
-        <img src="https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/run-page.png?fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=4b0bb5f9b181499cf324cdb8d5d673a8" alt="Run page" data-og-width="2978" width="2978" data-og-height="2110" height="2110" data-path="images/run-page.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/run-page.png?w=280&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=d7f419295b621c779c6a9a10b9152958 280w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/run-page.png?w=560&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=c66995702aace3888813ee1a66d33f97 560w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/run-page.png?w=840&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=c6c36408dc85f156d15a333ddb849d26 840w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/run-page.png?w=1100&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=2c1d7275465749eeae32196698f4a1b5 1100w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/run-page.png?w=1650&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=6965f3e2263296fb6529384021ce362a 1650w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/run-page.png?w=2500&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=7d890c5d199be7feaddc9162435bcc17 2500w" />
+    <img alt="Run page" />
 
     If you go back to your terminal you'll see that the dev command also shows the task status and links to the run log.
 
-        <img src="https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/terminal-completed-run.png?fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=a9284c5228343b72d798c6e36f5acb24" alt="Terminal showing completed run" data-og-width="955" width="955" data-og-height="197" height="197" data-path="images/terminal-completed-run.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/terminal-completed-run.png?w=280&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=62826752155594bd580ae51582870cce 280w, https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/terminal-completed-run.png?w=560&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=5270d0e823346fe8517fcc356cc5d20c 560w, https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/terminal-completed-run.png?w=840&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=8ae13acb781c5d08e2351af3c2cbb70a 840w, https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/terminal-completed-run.png?w=1100&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=da9e9f485055786210b6d7ce3812b9cf 1100w, https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/terminal-completed-run.png?w=1650&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=dd59fd38559b7b7ca865a015d029e0de 1650w, https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/terminal-completed-run.png?w=2500&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=4de391f21eb74db6e3f7c174d86b4b71 2500w" />
+    <img alt="Terminal showing completed run" />
   </Step>
 </Steps>
 
@@ -11826,7 +13354,7 @@ Follow these steps if you don't already have Trigger.dev set up in your project.
       an `id` field, a `name` field, and an `email` field.
     </Note>
 
-    ```ts /trigger/prisma-add-new-user.ts theme={null}
+    ```ts /trigger/prisma-add-new-user.ts theme={"theme":"css-variables"}
     import { PrismaClient } from "@prisma/client";
     import { task } from "@trigger.dev/sdk";
 
@@ -11860,23 +13388,25 @@ Follow these steps if you don't already have Trigger.dev set up in your project.
 
     This will ensure that the Prisma client is available when the task runs.
 
-    For a full list of options available in the Prisma build extension, see the [Prisma build extension documentation](https://trigger.dev/docs/config/extensions/prismaExtension).
-
-    ```js /trigger.config.js theme={null}
+    ```js /trigger.config.js theme={"theme":"css-variables"}
     export default defineConfig({
       project: "<project ref>", // Your project reference
       // Your other config settings...
       build: {
         extensions: [
           prismaExtension({
+            mode: "legacy", // required
             version: "5.20.0", // optional, we'll automatically detect the version if not provided
-            // update this to the path of your Prisma schema file
-            schema: "prisma/schema.prisma",
+            schema: "prisma/schema.prisma", // update this to the path of your Prisma schema file
           }),
         ],
       },
     });
     ```
+
+    The `prismaExtension` requires a `mode` parameter. For standard Prisma setups, use `"legacy"`
+    mode. See the [Prisma extension documentation](/config/extensions/prismaExtension) for other modes
+    and full configuration options.
 
     <Note>
       [Build extensions](/config/extensions/overview) allow you to hook into the build system and
@@ -11890,7 +13420,7 @@ Follow these steps if you don't already have Trigger.dev set up in your project.
 
     If you want to automatically log all Prisma queries and mutations, you can use the Prisma instrumentation extension.
 
-    ```js /trigger.config.js theme={null}
+    ```js /trigger.config.js theme={"theme":"css-variables"}
     import { defineConfig } from "@trigger.dev/sdk";
     import { PrismaInstrumentation } from "@prisma/instrumentation";
     import { OpenAIInstrumentation } from "@traceloop/instrumentation-openai";
@@ -11908,44 +13438,35 @@ Follow these steps if you don't already have Trigger.dev set up in your project.
     With the build extension and task configured, you can now deploy your task using the Trigger.dev CLI.
 
     <CodeGroup>
-      ```bash npm theme={null}
+      ```bash npm theme={"theme":"css-variables"}
       npx trigger.dev@latest deploy
       ```
 
-      ```bash pnpm theme={null}
+      ```bash pnpm theme={"theme":"css-variables"}
       pnpm dlx trigger.dev@latest deploy
       ```
 
-      ```bash yarn theme={null}
+      ```bash yarn theme={"theme":"css-variables"}
       yarn dlx trigger.dev@latest deploy
       ```
     </CodeGroup>
   </Step>
 
   <Step title="Adding your DATABASE_URL environment variable to Trigger.dev">
-    In your Trigger.dev dashboard sidebar click "Environment Variables" <Icon icon="circle-1" iconType="solid" size={20} color="A8FF53" />, and then the "New environment variable" button <Icon icon="circle-2" iconType="solid" size={20} color="A8FF53" />.
+    In your Trigger.dev dashboard sidebar click "Environment Variables" <Icon icon="circle-1" />, and then the "New environment variable" button <Icon icon="circle-2" />.
 
     You can add values for your local dev environment, staging and prod. in this case we will add the `DATABASE_URL` for the production environment.
 
-        <img
-          src="https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/environment-variables-panel.jpg?fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=79b5fd91e809cb0c6c9298410922df96"
-          alt="Environment variables
-    page"
-          data-og-width="1600"
-          width="1600"
-          data-og-height="900"
-          height="900"
-          data-path="images/environment-variables-panel.jpg"
-          data-optimize="true"
-          data-opv="3"
-          srcset="https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/environment-variables-panel.jpg?w=280&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=4c3f6181dea5542157cdbdebafb44989 280w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/environment-variables-panel.jpg?w=560&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=b0c302ef3d814a0c781b684e64d090f9 560w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/environment-variables-panel.jpg?w=840&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=a110ee9bb119eaaf7404097904a1f442 840w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/environment-variables-panel.jpg?w=1100&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=6e774fb137908fbaaf28318d1bfa419d 1100w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/environment-variables-panel.jpg?w=1650&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=aa5d4bef7b66551887043c4420807bc4 1650w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/environment-variables-panel.jpg?w=2500&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=ed23a501677d11631bb832eb6f95ceae 2500w"
-        />
+    <img
+      alt="Environment variables
+page"
+    />
   </Step>
 
   <Step title="Running your task">
     To test this task, go to the 'test' page in the Trigger.dev dashboard and run the task with the following payload:
 
-    ```json  theme={null}
+    ```json theme={"theme":"css-variables"}
     {
       "name": "<a-name>", // e.g. "John Doe"
       "email": "<a-email>", // e.g. "john@doe.test"
@@ -11959,7 +13480,7 @@ Follow these steps if you don't already have Trigger.dev set up in your project.
 
 ## Useful next steps
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Tasks overview" icon="diagram-subtask" href="/tasks/overview">
     Learn what tasks are and their options
   </Card>
@@ -11983,11 +13504,9 @@ Source: https://trigger.dev/docs/guides/frameworks/remix
 
 This guide will show you how to setup Trigger.dev in your existing Remix project, test an example task, and view the run.
 
-export const framework_0 = "Remix"
-
 ## Prerequisites
 
-* Setup a project in {framework_0}
+* Setup a project in&#x20;
 * Ensure TypeScript is installed
 * [Create a Trigger.dev account](https://cloud.trigger.dev)
 * Create a new Trigger.dev project
@@ -12001,25 +13520,31 @@ export const framework_0 = "Remix"
     Run this command in the root of your project to get started:
 
     <CodeGroup>
-      ```bash npm theme={null}
+      ```bash npm theme={"theme":"css-variables"}
       npx trigger.dev@latest init
       ```
 
-      ```bash pnpm theme={null}
+      ```bash pnpm theme={"theme":"css-variables"}
       pnpm dlx trigger.dev@latest init
       ```
 
-      ```bash yarn theme={null}
+      ```bash yarn theme={"theme":"css-variables"}
       yarn dlx trigger.dev@latest init
       ```
     </CodeGroup>
 
     It will do a few things:
 
-    1. Log you into the CLI if you're not already logged in.
-    2. Create a `trigger.config.ts` file in the root of your project.
-    3. Ask where you'd like to create the `/trigger` directory.
-    4. Create the `/trigger` directory with an example task, `/trigger/example.[ts/js]`.
+    <Tip title="MCP Server">
+      Our [Trigger.dev MCP server](/mcp-introduction) gives your AI assistant direct access to Trigger.dev tools; search docs, trigger tasks, deploy projects, and monitor runs. We recommend installing it for the best developer experience.
+    </Tip>
+
+    1. Ask if you want to install the [Trigger.dev MCP server](/mcp-introduction) for your AI assistant.
+    2. Log you into the CLI if you're not already logged in.
+    3. Ask you to select your project.
+    4. Install the required SDK packages.
+    5. Ask where you'd like to create the `/trigger` directory and create it with an example task.
+    6. Create a `trigger.config.ts` file in the root of your project.
 
     Install the "Hello World" example task when prompted. We'll use this task to test the setup.
   </Step>
@@ -12030,15 +13555,15 @@ export const framework_0 = "Remix"
     It can also update your `@trigger.dev/*` packages to prevent version mismatches and failed deploys. You will always be prompted first.
 
     <CodeGroup>
-      ```bash npm theme={null}
+      ```bash npm theme={"theme":"css-variables"}
       npx trigger.dev@latest dev
       ```
 
-      ```bash pnpm theme={null}
+      ```bash pnpm theme={"theme":"css-variables"}
       pnpm dlx trigger.dev@latest dev
       ```
 
-      ```bash yarn theme={null}
+      ```bash yarn theme={"theme":"css-variables"}
       yarn dlx trigger.dev@latest dev
       ```
     </CodeGroup>
@@ -12047,23 +13572,23 @@ export const framework_0 = "Remix"
   <Step title="Perform a test run using the dashboard">
     The CLI `dev` command spits out various useful URLs. Right now we want to visit the Test page.
 
-    You should see our Example task in the list <Icon icon="circle-1" iconType="solid" size={20} color="F43F47" />, select it. Most tasks have a "payload" which you enter in the JSON editor <Icon icon="circle-2" iconType="solid" size={20} color="F43F47" />, but our example task doesn't need any input.
+    You should see our Example task in the list <Icon icon="circle-1" />, select it. Most tasks have a "payload" which you enter in the JSON editor <Icon icon="circle-2" />, but our example task doesn't need any input.
 
-    You can configure options on the run <Icon icon="circle-3" iconType="solid" size={20} color="F43F47" />, view recent payloads <Icon icon="circle-4" iconType="solid" size={20} color="F43F47" />, and create run templates <Icon icon="circle-5" iconType="solid" size={20} color="F43F47" />.
+    You can configure options on the run <Icon icon="circle-3" />, view recent payloads <Icon icon="circle-4" />, and create run templates <Icon icon="circle-5" />.
 
-    Press the "Run test" button <Icon icon="circle-6" iconType="solid" size={20} color="F43F47" />.
+    Press the "Run test" button <Icon icon="circle-6" />.
 
-        <img src="https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/test-dashboard.png?fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=92c810690f961d0033dd94d758c6bbfb" alt="Test page" data-og-width="2254" width="2254" data-og-height="1367" height="1367" data-path="images/test-dashboard.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/test-dashboard.png?w=280&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=970cc3e2d58a06fbf197fce5d6d0664b 280w, https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/test-dashboard.png?w=560&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=10d36ffd64e1f455f45a20d5e39f7bca 560w, https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/test-dashboard.png?w=840&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=62b4ec2301d11e645d3ebe45b2e3adc2 840w, https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/test-dashboard.png?w=1100&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=2db30f2ebfe494c81f5965a014e4fc6e 1100w, https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/test-dashboard.png?w=1650&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=67b24a2d00bde47226c4db88c4f7ac51 1650w, https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/test-dashboard.png?w=2500&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=e44fddf5357449c582b92cd3d434e43d 2500w" />
+    <img alt="Test page" />
   </Step>
 
   <Step title="View your run">
     Congratulations, you should see the run page which will live reload showing you the current state of the run.
 
-        <img src="https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/run-page.png?fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=4b0bb5f9b181499cf324cdb8d5d673a8" alt="Run page" data-og-width="2978" width="2978" data-og-height="2110" height="2110" data-path="images/run-page.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/run-page.png?w=280&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=d7f419295b621c779c6a9a10b9152958 280w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/run-page.png?w=560&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=c66995702aace3888813ee1a66d33f97 560w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/run-page.png?w=840&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=c6c36408dc85f156d15a333ddb849d26 840w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/run-page.png?w=1100&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=2c1d7275465749eeae32196698f4a1b5 1100w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/run-page.png?w=1650&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=6965f3e2263296fb6529384021ce362a 1650w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/run-page.png?w=2500&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=7d890c5d199be7feaddc9162435bcc17 2500w" />
+    <img alt="Run page" />
 
     If you go back to your terminal you'll see that the dev command also shows the task status and links to the run log.
 
-        <img src="https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/terminal-completed-run.png?fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=a9284c5228343b72d798c6e36f5acb24" alt="Terminal showing completed run" data-og-width="955" width="955" data-og-height="197" height="197" data-path="images/terminal-completed-run.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/terminal-completed-run.png?w=280&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=62826752155594bd580ae51582870cce 280w, https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/terminal-completed-run.png?w=560&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=5270d0e823346fe8517fcc356cc5d20c 560w, https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/terminal-completed-run.png?w=840&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=8ae13acb781c5d08e2351af3c2cbb70a 840w, https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/terminal-completed-run.png?w=1100&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=da9e9f485055786210b6d7ce3812b9cf 1100w, https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/terminal-completed-run.png?w=1650&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=dd59fd38559b7b7ca865a015d029e0de 1650w, https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/terminal-completed-run.png?w=2500&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=4de391f21eb74db6e3f7c174d86b4b71 2500w" />
+    <img alt="Terminal showing completed run" />
   </Step>
 </Steps>
 
@@ -12071,7 +13596,7 @@ export const framework_0 = "Remix"
 
 Set your `TRIGGER_SECRET_KEY` environment variable in your `.env` file. This key is used to authenticate with Trigger.dev, so you can trigger runs from your Remix app. Visit the API Keys page in the dashboard and select the DEV secret key.
 
-<img src="https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/api-keys.png?fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=89dd26bf57f345bad4508ee5eec70c8c" alt="How to find your secret key" data-og-width="1600" width="1600" data-og-height="900" height="900" data-path="images/api-keys.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/api-keys.png?w=280&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=988f98dd098b108ca51d8c0aeb829344 280w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/api-keys.png?w=560&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=14431ee3376a9a6b845744b0b3acce60 560w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/api-keys.png?w=840&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=9059b9369eb793b9df4cceee1f985286 840w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/api-keys.png?w=1100&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=ccd1e2a8512f491128a53cd4ebe8823f 1100w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/api-keys.png?w=1650&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=ab656ff2f4b95e32558aacaa485c86ea 1650w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/api-keys.png?w=2500&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=3bb0b87a8e1a3033a8ff1ba3590f5786 2500w" />
+<img alt="How to find your secret key" />
 
 For more information on authenticating with Trigger.dev, see the [API keys page](/apikeys).
 
@@ -12085,7 +13610,7 @@ For more information on authenticating with Trigger.dev, see the [API keys page]
   <Step title="Add your task">
     Add this code to your `api.hello-world.ts` file which imports your task:
 
-    ```ts app/routes/api.hello-world.ts theme={null}
+    ```ts app/routes/api.hello-world.ts theme={"theme":"css-variables"}
     import type { helloWorldTask } from "../../src/trigger/example";
     import { tasks } from "@trigger.dev/sdk";
 
@@ -12103,15 +13628,15 @@ For more information on authenticating with Trigger.dev, see the [API keys page]
     Run your Remix app:
 
     <CodeGroup>
-      ```bash npm theme={null}
+      ```bash npm theme={"theme":"css-variables"}
       npm run dev
       ```
 
-      ```bash pnpm theme={null}
+      ```bash pnpm theme={"theme":"css-variables"}
       pnpm run dev
       ```
 
-      ```bash yarn theme={null}
+      ```bash yarn theme={"theme":"css-variables"}
       yarn dev
       ```
     </CodeGroup>
@@ -12119,28 +13644,28 @@ For more information on authenticating with Trigger.dev, see the [API keys page]
     Run the dev server from Step 2. of the [Initial Setup](/guides/frameworks/remix#initial-setup) section above if it's not already running:
 
     <CodeGroup>
-      ```bash npm theme={null}
+      ```bash npm theme={"theme":"css-variables"}
       npx trigger.dev@latest dev
       ```
 
-      ```bash pnpm theme={null}
+      ```bash pnpm theme={"theme":"css-variables"}
       pnpm dlx trigger.dev@latest dev
       ```
 
-      ```bash yarn theme={null}
+      ```bash yarn theme={"theme":"css-variables"}
       yarn dlx trigger.dev@latest dev
       ```
     </CodeGroup>
 
     Now visit the URL in your browser to trigger the task. Ensure the port number is the same as the one you're running your Remix app on. For example, if you're running your Remix app on port 3000, visit:
 
-    ```bash  theme={null}
+    ```bash theme={"theme":"css-variables"}
     http://localhost:3000/api/trigger
     ```
 
     You should see the CLI log the task run with a link to view the logs in the dashboard.
 
-        <img src="https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/trigger-cli-run-success.png?fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=75168b271620e7206a50b041224a98b0" alt="Trigger.dev CLI showing a successful run" data-og-width="839" width="839" data-og-height="174" height="174" data-path="images/trigger-cli-run-success.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/trigger-cli-run-success.png?w=280&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=5593976094a4db89b9bcefe743b670f5 280w, https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/trigger-cli-run-success.png?w=560&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=3ece99db078f44f61721287482ac6288 560w, https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/trigger-cli-run-success.png?w=840&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=49c3058ed0f3baa282eba729cc765924 840w, https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/trigger-cli-run-success.png?w=1100&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=863029ceaad9808f725ce07a119a861a 1100w, https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/trigger-cli-run-success.png?w=1650&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=98f234c6774c19d0966c77c157a696c3 1650w, https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/trigger-cli-run-success.png?w=2500&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=fb955cb91d22967fc4251ab00d09547d 2500w" />
+    <img alt="Trigger.dev CLI showing a successful run" />
 
     Visit the [Trigger.dev dashboard](https://cloud.trigger.dev) to see your run.
   </Step>
@@ -12151,10 +13676,10 @@ For more information on authenticating with Trigger.dev, see the [API keys page]
 If you have any environment variables in your tasks, be sure to add them in the dashboard so deployed code runs successfully. In Node.js, these environment variables are accessed in your code using `process.env.MY_ENV_VAR`.
 
 In the sidebar select the "Environment Variables" page, then press the "New environment variable"
-button. <img src="https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/environment-variables-page.jpg?fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=af652254781808a35c2bcefd4b61b59f" alt="Environment variables page" data-og-width="1600" width="1600" data-og-height="900" height="900" data-path="images/environment-variables-page.jpg" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/environment-variables-page.jpg?w=280&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=fd6487833d9c659f8a514c7cc86cf84d 280w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/environment-variables-page.jpg?w=560&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=1758721fd84f5040b88997db401f7391 560w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/environment-variables-page.jpg?w=840&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=4416f51b1528ae14285a03b560f22389 840w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/environment-variables-page.jpg?w=1100&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=12b90b89f7662aadaea07df17d9d3898 1100w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/environment-variables-page.jpg?w=1650&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=28e6921620cda10d335a095dbfa85806 1650w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/environment-variables-page.jpg?w=2500&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=4f6c67a030b20699bde25c22d68e57af 2500w" />
+button. <img alt="Environment variables page" />
 
-You can add values for your local dev environment, staging and prod. <img src="https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/environment-variables-panel.jpg?fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=79b5fd91e809cb0c6c9298410922df96" alt="Environment variables
-page" data-og-width="1600" width="1600" data-og-height="900" height="900" data-path="images/environment-variables-panel.jpg" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/environment-variables-panel.jpg?w=280&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=4c3f6181dea5542157cdbdebafb44989 280w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/environment-variables-panel.jpg?w=560&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=b0c302ef3d814a0c781b684e64d090f9 560w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/environment-variables-panel.jpg?w=840&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=a110ee9bb119eaaf7404097904a1f442 840w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/environment-variables-panel.jpg?w=1100&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=6e774fb137908fbaaf28318d1bfa419d 1100w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/environment-variables-panel.jpg?w=1650&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=aa5d4bef7b66551887043c4420807bc4 1650w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/environment-variables-panel.jpg?w=2500&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=ed23a501677d11631bb832eb6f95ceae 2500w" />
+You can add values for your local dev environment, staging and prod. <img alt="Environment variables
+page" />
 
 You can also add environment variables in code by following the steps on the [Environment Variables page](/deploy-environment-variables#in-your-code).
 
@@ -12163,15 +13688,15 @@ You can also add environment variables in code by following the steps on the [En
 For this guide, we'll manually deploy your task by running the [CLI deploy command](/cli-deploy) below. Other ways to deploy are listed in the next section.
 
 <CodeGroup>
-  ```bash npm theme={null}
+  ```bash npm theme={"theme":"css-variables"}
   npx trigger.dev@latest deploy
   ```
 
-  ```bash pnpm theme={null}
+  ```bash pnpm theme={"theme":"css-variables"}
   pnpm dlx trigger.dev@latest deploy
   ```
 
-  ```bash yarn theme={null}
+  ```bash yarn theme={"theme":"css-variables"}
   yarn dlx trigger.dev@latest deploy
   ```
 </CodeGroup>
@@ -12201,7 +13726,7 @@ There are a few extra steps to follow to deploy your `/api/hello-world` API endp
   <Step title="Update your API route">
     Update your API route to use the `runtime: "edge"` option and change it to an `action()` so we can trigger the task from a curl request later on.
 
-    ```ts app/routes/api.hello-world.ts theme={null}
+    ```ts app/routes/api.hello-world.ts theme={"theme":"css-variables"}
     import { tasks } from "@trigger.dev/sdk";
     import type { helloWorldTask } from "../../src/trigger/example";
     //      👆 **type-only** import
@@ -12224,7 +13749,7 @@ There are a few extra steps to follow to deploy your `/api/hello-world` API endp
   <Step title="Update the Vercel configuration">
     Create or update the `vercel.json` file with the following:
 
-    ```json vercel.json theme={null}
+    ```json vercel.json theme={"theme":"css-variables"}
     {
       "buildCommand": "npm run vercel-build",
       "devCommand": "npm run dev",
@@ -12238,7 +13763,7 @@ There are a few extra steps to follow to deploy your `/api/hello-world` API endp
   <Step title="Update package.json scripts">
     Update your `package.json` to include the following scripts:
 
-    ```json package.json theme={null}
+    ```json package.json theme={"theme":"css-variables"}
     "scripts": {
         "build": "remix vite:build",
         "dev": "remix vite:dev",
@@ -12257,13 +13782,13 @@ There are a few extra steps to follow to deploy your `/api/hello-world` API endp
   <Step title="Add your Vercel environment variables">
     In the Vercel project settings, add your Trigger.dev secret key:
 
-    ```bash  theme={null}
+    ```bash theme={"theme":"css-variables"}
     TRIGGER_SECRET_KEY=your-secret-key
     ```
 
     You can find this key in the Trigger.dev dashboard under API Keys and select the environment key you want to use.
 
-        <img src="https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/api-keys.png?fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=89dd26bf57f345bad4508ee5eec70c8c" alt="How to find your secret key" data-og-width="1600" width="1600" data-og-height="900" height="900" data-path="images/api-keys.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/api-keys.png?w=280&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=988f98dd098b108ca51d8c0aeb829344 280w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/api-keys.png?w=560&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=14431ee3376a9a6b845744b0b3acce60 560w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/api-keys.png?w=840&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=9059b9369eb793b9df4cceee1f985286 840w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/api-keys.png?w=1100&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=ccd1e2a8512f491128a53cd4ebe8823f 1100w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/api-keys.png?w=1650&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=ab656ff2f4b95e32558aacaa485c86ea 1650w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/api-keys.png?w=2500&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=3bb0b87a8e1a3033a8ff1ba3590f5786 2500w" />
+    <img alt="How to find your secret key" />
   </Step>
 
   <Step title="Deploy your project">
@@ -12278,7 +13803,7 @@ There are a few extra steps to follow to deploy your `/api/hello-world` API endp
   <Step title="Test your task in production">
     After deployment, you can test your task in production by running this curl command:
 
-    ```bash  theme={null}
+    ```bash theme={"theme":"css-variables"}
     curl -X POST https://your-app.vercel.app/api/hello-world \
     -H "Content-Type: application/json" \
     -d '{"name": "James"}'
@@ -12302,7 +13827,7 @@ The `runtime: "edge"` configuration in the API route allows for better performan
 
 ## Useful next steps
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Tasks overview" icon="diagram-subtask" href="/tasks/overview">
     Learn what tasks are and their options
   </Card>
@@ -12344,7 +13869,7 @@ The webhook handler in this guide will be an API route. Create a new file `app/r
 
 In your new file, add the following code:
 
-```ts /api/webhook-handler.ts theme={null}
+```ts /api/webhook-handler.ts theme={"theme":"css-variables"}
 import type { ActionFunctionArgs } from "@remix-run/node";
 import { tasks } from "@trigger.dev/sdk";
 import { helloWorldTask } from "src/trigger/example";
@@ -12370,15 +13895,15 @@ Now that you have a webhook handler set up, you can trigger the 'Hello World' ta
     First, run your Remix app.
 
     <CodeGroup>
-      ```bash npm theme={null}
+      ```bash npm theme={"theme":"css-variables"}
       npm run dev
       ```
 
-      ```bash pnpm theme={null}
+      ```bash pnpm theme={"theme":"css-variables"}
       pnpm run dev
       ```
 
-      ```bash yarn theme={null}
+      ```bash yarn theme={"theme":"css-variables"}
       yarn dev
       ```
     </CodeGroup>
@@ -12386,15 +13911,15 @@ Now that you have a webhook handler set up, you can trigger the 'Hello World' ta
     Then, open up a second terminal window and start the Trigger.dev dev server:
 
     <CodeGroup>
-      ```bash npm theme={null}
+      ```bash npm theme={"theme":"css-variables"}
       npx trigger.dev@latest dev
       ```
 
-      ```bash pnpm theme={null}
+      ```bash pnpm theme={"theme":"css-variables"}
       pnpm dlx trigger.dev@latest dev
       ```
 
-      ```bash yarn theme={null}
+      ```bash yarn theme={"theme":"css-variables"}
       yarn dlx trigger.dev@latest dev
       ```
     </CodeGroup>
@@ -12408,7 +13933,7 @@ Now that you have a webhook handler set up, you can trigger the 'Hello World' ta
       below command with that URL instead.
     </Tip>
 
-    ```bash  theme={null}
+    ```bash theme={"theme":"css-variables"}
     curl -X POST -H "Content-Type: application/json" -d '{"Name": "John Doe", "Age": "87"}' http://localhost:5173/api/webhook-handler
     ```
 
@@ -12432,7 +13957,7 @@ This guide will show you how to trigger tasks from database changes using Sequin
 
 Often, task runs coincide with database changes. For instance, you might want to use a Trigger.dev task to generate an embedding for each post in your database:
 
-<img src="https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/sequin-intro.png?fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=2b47f798eae889e5ae4273368ee9cdc1" alt="Sequin and Trigger.dev Overview" data-og-width="1773" width="1773" data-og-height="492" height="492" data-path="images/sequin-intro.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/sequin-intro.png?w=280&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=9c9196f7d3a2a2a9fdf874702460c059 280w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/sequin-intro.png?w=560&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=ce2fe0003447192821d6ddafe872ffe8 560w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/sequin-intro.png?w=840&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=f1bfbbc8c685ff84061f57d0a0312aca 840w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/sequin-intro.png?w=1100&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=51d4acaeaa75050b0327cd77220ca814 1100w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/sequin-intro.png?w=1650&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=8320b585fc6fb4446a46f3c2913fc831 1650w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/sequin-intro.png?w=2500&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=e533eec55e2c3ae56d5a99bcb6bbd7db 2500w" />
+<img alt="Sequin and Trigger.dev Overview" />
 
 In this guide, you'll learn how to use Sequin to trigger Trigger.dev tasks from database changes.
 
@@ -12457,46 +13982,46 @@ You'll need the following to follow this guide:
 
 Start by creating a new Trigger.dev task that takes in a Sequin change event as a payload, creates an embedding, and then inserts the embedding into the database:
 
-<Steps titleSize="h3">
+<Steps>
   <Step title="Create a `create-embedding-for-post` task">
     In your `src/trigger/tasks` directory, create a new file called `create-embedding-for-post.ts` and add the following code:
 
     <CodeGroup>
-      ```ts trigger/create-embedding-for-post.ts theme={null}
+      ```ts trigger/create-embedding-for-post.ts theme={"theme":"css-variables"}
       import { task } from "@trigger.dev/sdk";
       import { OpenAI } from "openai";
       import { upsertEmbedding } from "../util";
 
       const openai = new OpenAI({
-      apiKey: process.env.OPENAI_API_KEY,
+        apiKey: process.env.OPENAI_API_KEY,
       });
 
       export const createEmbeddingForPost = task({
-      id: "create-embedding-for-post",
-      run: async (payload: {
-      record: {
-      id: number;
-      title: string;
-      body: string;
-      author: string;
-      createdAt: string;
-      embedding: string | null;
-      },
-      metadata: {
-      table_schema: string,
-      table_name: string,
-      consumer: {
-      id: string;
-      name: string;
-      };
-      };
-      }) => {
-      // Create an embedding using the title and body of payload.record
-      const content = `${payload.record.title}\n\n${payload.record.body}`;
-      const embedding = (await openai.embeddings.create({
-      model: "text-embedding-ada-002",
-      input: content,
-      })).data[0].embedding;
+        id: "create-embedding-for-post",
+        run: async (payload: {
+          record: {
+            id: number;
+            title: string;
+            body: string;
+            author: string;
+            createdAt: string;
+            embedding: string | null;
+          },
+          metadata: {
+            table_schema: string,
+            table_name: string,
+            consumer: {
+              id: string;
+              name: string;
+            };
+          };
+        }) => {
+          // Create an embedding using the title and body of payload.record
+          const content = `${payload.record.title}\n\n${payload.record.body}`;
+          const embedding = (await openai.embeddings.create({
+            model: "text-embedding-ada-002",
+            input: content,
+          })).data[0].embedding;
 
           // Upsert the embedding in the database. See utils.ts for the implementation -> ->
           await upsertEmbedding(embedding, payload.record.id);
@@ -12507,12 +14032,10 @@ Start by creating a new Trigger.dev task that takes in a Sequin change event as 
             embedding: JSON.stringify(embedding),
           };
         }
-
       });
-
       ```
 
-      ```ts utils.ts theme={null}
+      ```ts utils.ts theme={"theme":"css-variables"}
       import pg from "pg";
 
       export async function upsertEmbedding(embedding: number[], id: number) {
@@ -12550,14 +14073,14 @@ Start by creating a new Trigger.dev task that takes in a Sequin change event as 
   <Step title="Add the task to your Trigger.dev project">
     Register the `create-embedding-for-post` task to your Trigger.dev cloud project by running the following command:
 
-    ```bash  theme={null}
+    ```bash theme={"theme":"css-variables"}
     npx trigger.dev@latest dev
     ```
 
     In the Trigger.dev dashboard, you should now see the `create-embedding-for-post` task:
 
     <Frame>
-      <img src="https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/sequin-register-task.png?fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=747c6f96abca5112fb406fe215e0b587" alt="Task added" data-og-width="2834" width="2834" data-og-height="482" height="482" data-path="images/sequin-register-task.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/sequin-register-task.png?w=280&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=a641edafb2f279adabeb241452f97a2a 280w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/sequin-register-task.png?w=560&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=fea53dc47cd6fe8aa9ced24df43afa91 560w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/sequin-register-task.png?w=840&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=8569ed20a7843f45bd41a49062dccaaa 840w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/sequin-register-task.png?w=1100&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=f2377811f9fa930b91335a61dfe6a107 1100w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/sequin-register-task.png?w=1650&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=726d52318e2994eee969ef6f6f17dc5c 1650w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/sequin-register-task.png?w=2500&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=2c3fd7773430f2d99da46e8de7a94dd1 2500w" />
+      <img alt="Task added" />
     </Frame>
   </Step>
 </Steps>
@@ -12577,11 +14100,11 @@ You'll now create an API endpoint that will receive posts from Sequin and then t
   documentation](https://trigger.dev/docs/guides/frameworks/nextjs).
 </Info>
 
-<Steps titleSize="h3">
+<Steps>
   <Step title="Create a route handler">
     Add a route handler by creating a new `route.ts` file in a `/app/api/create-embedding-for-post` directory:
 
-    ```ts app/api/create-embedding-for-post/route.ts theme={null}
+    ```ts app/api/create-embedding-for-post/route.ts theme={"theme":"css-variables"}
     import type { createEmbeddingForPost } from "@/trigger/create-embedding-for-post";
     import { tasks } from "@trigger.dev/sdk";
     import { NextResponse } from "next/server";
@@ -12607,7 +14130,7 @@ You'll now create an API endpoint that will receive posts from Sequin and then t
   <Step title="Set secret keys">
     You'll need to set four secret keys in a `.env.local` file:
 
-    ```bash  theme={null}
+    ```bash theme={"theme":"css-variables"}
     SEQUIN_WEBHOOK_SECRET=your-secret-key
     TRIGGER_SECRET_KEY=secret-from-trigger-dev
     OPENAI_API_KEY=sk-proj-asdfasdfasdf
@@ -12631,7 +14154,7 @@ You'll now create an API endpoint that will receive posts from Sequin and then t
 
 You'll now configure Sequin to send every row in your `posts` table to your Trigger.dev task.
 
-<Steps titleSize="h3">
+<Steps>
   <Step title="Connect Sequin to your database">
     1. Login to your Sequin account and click the **Add New Database** button.
     2. Enter the connection details for your Postgres database.
@@ -12642,7 +14165,7 @@ You'll now configure Sequin to send every row in your `posts` table to your Trig
 
     3. Follow the instructions to create a publication and a replication slot by running two SQL commands in your database:
 
-    ```sql  theme={null}
+    ```sql theme={"theme":"css-variables"}
     create publication sequin_pub for all tables;
     select pg_create_logical_replication_slot('sequin_slot', 'pgoutput');
     ```
@@ -12662,7 +14185,7 @@ You'll now configure Sequin to send every row in your `posts` table to your Trig
     1. In the Sequin console, open the **HTTP Endpoint** tab and click the **Create HTTP Endpoint** button.
     2. Enter a name for your endpoint (i.e. `local_endpoint`) and flip the **Use localhost** switch. Follow the instructions in the Sequin console to [install the Sequin CLI](https://sequinstream.com/docs/cli), then run:
 
-    ```bash  theme={null}
+    ```bash theme={"theme":"css-variables"}
     sequin tunnel --ports=3001:local_endpoint
     ```
 
@@ -12684,14 +14207,14 @@ You'll now configure Sequin to send every row in your `posts` table to your Trig
     4. You'll now set the sort and filter for the consumer. For this guide, we'll sort by `updated_at` and start at the beginning of the table. We won't apply any filters:
 
     <Frame>
-      <img src="https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/sequin-sort-and-filter.png?fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=ff47bd808e04dc361aa45fdf353604a0" alt="Consumer Sort and Filter" data-og-width="1880" width="1880" data-og-height="980" height="980" data-path="images/sequin-sort-and-filter.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/sequin-sort-and-filter.png?w=280&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=e0dc893629a4fe4e84d1a8df13dd4929 280w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/sequin-sort-and-filter.png?w=560&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=af076e0deed39c456fb63471a43db6de 560w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/sequin-sort-and-filter.png?w=840&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=c273e1d361b2c1f85e6a70cdb0425a43 840w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/sequin-sort-and-filter.png?w=1100&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=71a729303042a8388f550530d9f16cf1 1100w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/sequin-sort-and-filter.png?w=1650&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=a4a7f5bbf7bea59e0fac5b8d822c3631 1650w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/sequin-sort-and-filter.png?w=2500&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=c7b8f9fbc1fdca8bc70dc593c4dad4f4 2500w" />
+      <img alt="Consumer Sort and Filter" />
     </Frame>
 
     5. On the next screen, select **Push** to have Sequin send the events to your webhook URL. Click **Continue**.
     6. Now, give your consumer a name (i.e. `posts_push_consumer`) and in the **HTTP Endpoint** section select the `local_endpoint` you created above. Add the exact API route you created in the previous step (i.e. `/api/create-embedding-for-post`):
 
     <Frame>
-      <img src="https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/sequin-consumer-config.png?fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=67defd6931a599625ba1688d920bb7e6" alt="Consumer Endpoint" data-og-width="1990" width="1990" data-og-height="1312" height="1312" data-path="images/sequin-consumer-config.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/sequin-consumer-config.png?w=280&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=57804d5d01973860174459a2c2618987 280w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/sequin-consumer-config.png?w=560&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=5cf6e70ac1cfad808bbb9a0746b61720 560w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/sequin-consumer-config.png?w=840&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=b6fcaad93ead958208e23a5ea71d8afa 840w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/sequin-consumer-config.png?w=1100&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=1fe0b25fc33ed12670bb11125a68b68b 1100w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/sequin-consumer-config.png?w=1650&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=1db08ad9fc8923069c5e7a627f5b615f 1650w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/sequin-consumer-config.png?w=2500&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=20ecfe5931f428662687f3e4ab77e202 2500w" />
+      <img alt="Consumer Endpoint" />
     </Frame>
 
     7. Click the **Create Consumer** button.
@@ -12702,7 +14225,7 @@ You'll now configure Sequin to send every row in your `posts` table to your Trig
 
 ## Test end-to-end
 
-<Steps titleSize="h3">
+<Steps>
   <Step title="Spin up you dev environment">
     1. The Next.js app is running: `npm run dev`
     2. The Trigger.dev dev server is running `npx trigger.dev@latest dev`
@@ -12710,7 +14233,7 @@ You'll now configure Sequin to send every row in your `posts` table to your Trig
   </Step>
 
   <Step title="Create a new post in your database">
-    ```sql  theme={null}
+    ```sql theme={"theme":"css-variables"}
     insert into
     posts (title, body, author)
     values
@@ -12726,14 +14249,14 @@ You'll now configure Sequin to send every row in your `posts` table to your Trig
     In the Sequin console, navigate to the [**Trace**](https://console.sequinstream.com/trace) tab and confirm that Sequin delivered the event to your local endpoint:
 
     <Frame>
-      <img src="https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/sequin-trace.png?fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=dd86f0e4f083bff4921c54d15822a465" alt="Trace Event" data-og-width="2818" width="2818" data-og-height="1622" height="1622" data-path="images/sequin-trace.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/sequin-trace.png?w=280&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=e0f4b9353418a510c04ff85fe9680eb6 280w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/sequin-trace.png?w=560&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=d2589ab5edb952c9a13b949e5f648bd2 560w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/sequin-trace.png?w=840&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=e0363b09ab88bc159c5865888d8cf642 840w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/sequin-trace.png?w=1100&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=ac67708d978c528b9a6aecf8e5c9f854 1100w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/sequin-trace.png?w=1650&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=3c90e4277c0a5aff51c11eabe5f25965 1650w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/sequin-trace.png?w=2500&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=f0460a55146329bd7906a1dff4032482 2500w" />
+      <img alt="Trace Event" />
     </Frame>
   </Step>
 
   <Step title="Confirm the event was received by your endpoint">
     In your local terminal, you should see a `200` response in your Next.js app:
 
-    ```bash  theme={null}
+    ```bash theme={"theme":"css-variables"}
     POST /api/create-embedding-for-post 200 in 262ms
     ```
   </Step>
@@ -12742,7 +14265,7 @@ You'll now configure Sequin to send every row in your `posts` table to your Trig
     Finally, in the [**Trigger.dev dashboard**](https://cloud.trigger.dev/), navigate to the Runs page and confirm that the task run completed successfully:
 
     <Frame>
-      <img src="https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/sequin-final-run.png?fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=2268cf3d51e4821aba5e13467a1f96ec" alt="Task run" data-og-width="3198" width="3198" data-og-height="2038" height="2038" data-path="images/sequin-final-run.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/sequin-final-run.png?w=280&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=0f4001b06cba64dd3f890ee6024c0537 280w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/sequin-final-run.png?w=560&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=33721ede31a7e68c5d9c5a0f64f50cd6 560w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/sequin-final-run.png?w=840&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=cb21081fa0989a2a225bbd940eb40041 840w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/sequin-final-run.png?w=1100&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=0a33666f493cde10babf7414892cbc2b 1100w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/sequin-final-run.png?w=1650&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=bf4b50f0734948802244a669ac203773 1650w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/sequin-final-run.png?w=2500&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=a0958fb3d3160984ca3ec726c7d79168 2500w" />
+      <img alt="Task run" />
     </Frame>
   </Step>
 </Steps>
@@ -12777,7 +14300,7 @@ To use JWTs with Supabase, you'll need to add the `SUPABASE_JWT_SECRET` environm
 
 This example code shows how to create a JWT token for a user and initialize a Supabase client with that token for authentication, allowing the task to perform database operations as that specific user. You can adapt this code to fit your own use case.
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 
 // The rest of your task code
 async run(payload: { user_id: string }) {
@@ -12821,7 +14344,7 @@ Using JWTs to authenticate Supabase operations is more secure than using service
 
 This example code creates a Supabase client with admin-level privileges using a service role key, bypassing all Row Level Security policies to allow unrestricted database access.
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 // Create a single Supabase client for interacting with your database
 // 'Database' supplies the type definitions to supabase-js
 const supabase = createClient<Database>(
@@ -12837,7 +14360,7 @@ const supabase = createClient<Database>(
 
 ### Full walkthrough guides from development to deployment
 
-<CardGroup cols={1}>
+<CardGroup>
   <Card title="Edge function hello world guide" icon="book" href="/guides/frameworks/supabase-edge-functions-basic">
     Learn how to trigger a task from a Supabase edge function when a URL is visited.
   </Card>
@@ -12854,7 +14377,7 @@ const supabase = createClient<Database>(
 
 ### Task examples with code you can copy and paste
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Supabase database operations" icon="bolt" href="/guides/examples/supabase-database-operations">
     Run basic CRUD operations on a table in a Supabase database using Trigger.dev.
   </Card>
@@ -12899,7 +14422,7 @@ This guide shows you how to set up and deploy a simple Supabase edge function ex
 
     You can create a new project by running the following command in your terminal using the Supabase CLI:
 
-    ```bash  theme={null}
+    ```bash theme={"theme":"css-variables"}
     supabase init
     ```
 
@@ -12916,7 +14439,7 @@ This guide shows you how to set up and deploy a simple Supabase edge function ex
 
     This is required for the Trigger.dev SDK to work correctly.
 
-    ```ts package.json theme={null}
+    ```ts package.json theme={"theme":"css-variables"}
     {
       "devDependencies": {
         "typescript": "^5.6.2"
@@ -12933,25 +14456,31 @@ This guide shows you how to set up and deploy a simple Supabase edge function ex
     Run this command in the root of your project to get started:
 
     <CodeGroup>
-      ```bash npm theme={null}
+      ```bash npm theme={"theme":"css-variables"}
       npx trigger.dev@latest init
       ```
 
-      ```bash pnpm theme={null}
+      ```bash pnpm theme={"theme":"css-variables"}
       pnpm dlx trigger.dev@latest init
       ```
 
-      ```bash yarn theme={null}
+      ```bash yarn theme={"theme":"css-variables"}
       yarn dlx trigger.dev@latest init
       ```
     </CodeGroup>
 
     It will do a few things:
 
-    1. Log you into the CLI if you're not already logged in.
-    2. Create a `trigger.config.ts` file in the root of your project.
-    3. Ask where you'd like to create the `/trigger` directory.
-    4. Create the `/trigger` directory with an example task, `/trigger/example.[ts/js]`.
+    <Tip title="MCP Server">
+      Our [Trigger.dev MCP server](/mcp-introduction) gives your AI assistant direct access to Trigger.dev tools; search docs, trigger tasks, deploy projects, and monitor runs. We recommend installing it for the best developer experience.
+    </Tip>
+
+    1. Ask if you want to install the [Trigger.dev MCP server](/mcp-introduction) for your AI assistant.
+    2. Log you into the CLI if you're not already logged in.
+    3. Ask you to select your project.
+    4. Install the required SDK packages.
+    5. Ask where you'd like to create the `/trigger` directory and create it with an example task.
+    6. Create a `trigger.config.ts` file in the root of your project.
 
     Install the "Hello World" example task when prompted. We'll use this task to test the setup.
   </Step>
@@ -12962,15 +14491,15 @@ This guide shows you how to set up and deploy a simple Supabase edge function ex
     It can also update your `@trigger.dev/*` packages to prevent version mismatches and failed deploys. You will always be prompted first.
 
     <CodeGroup>
-      ```bash npm theme={null}
+      ```bash npm theme={"theme":"css-variables"}
       npx trigger.dev@latest dev
       ```
 
-      ```bash pnpm theme={null}
+      ```bash pnpm theme={"theme":"css-variables"}
       pnpm dlx trigger.dev@latest dev
       ```
 
-      ```bash yarn theme={null}
+      ```bash yarn theme={"theme":"css-variables"}
       yarn dlx trigger.dev@latest dev
       ```
     </CodeGroup>
@@ -12979,23 +14508,23 @@ This guide shows you how to set up and deploy a simple Supabase edge function ex
   <Step title="Perform a test run using the dashboard">
     The CLI `dev` command spits out various useful URLs. Right now we want to visit the Test page.
 
-    You should see our Example task in the list <Icon icon="circle-1" iconType="solid" size={20} color="F43F47" />, select it. Most tasks have a "payload" which you enter in the JSON editor <Icon icon="circle-2" iconType="solid" size={20} color="F43F47" />, but our example task doesn't need any input.
+    You should see our Example task in the list <Icon icon="circle-1" />, select it. Most tasks have a "payload" which you enter in the JSON editor <Icon icon="circle-2" />, but our example task doesn't need any input.
 
-    You can configure options on the run <Icon icon="circle-3" iconType="solid" size={20} color="F43F47" />, view recent payloads <Icon icon="circle-4" iconType="solid" size={20} color="F43F47" />, and create run templates <Icon icon="circle-5" iconType="solid" size={20} color="F43F47" />.
+    You can configure options on the run <Icon icon="circle-3" />, view recent payloads <Icon icon="circle-4" />, and create run templates <Icon icon="circle-5" />.
 
-    Press the "Run test" button <Icon icon="circle-6" iconType="solid" size={20} color="F43F47" />.
+    Press the "Run test" button <Icon icon="circle-6" />.
 
-        <img src="https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/test-dashboard.png?fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=92c810690f961d0033dd94d758c6bbfb" alt="Test page" data-og-width="2254" width="2254" data-og-height="1367" height="1367" data-path="images/test-dashboard.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/test-dashboard.png?w=280&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=970cc3e2d58a06fbf197fce5d6d0664b 280w, https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/test-dashboard.png?w=560&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=10d36ffd64e1f455f45a20d5e39f7bca 560w, https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/test-dashboard.png?w=840&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=62b4ec2301d11e645d3ebe45b2e3adc2 840w, https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/test-dashboard.png?w=1100&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=2db30f2ebfe494c81f5965a014e4fc6e 1100w, https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/test-dashboard.png?w=1650&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=67b24a2d00bde47226c4db88c4f7ac51 1650w, https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/test-dashboard.png?w=2500&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=e44fddf5357449c582b92cd3d434e43d 2500w" />
+    <img alt="Test page" />
   </Step>
 
   <Step title="View your run">
     Congratulations, you should see the run page which will live reload showing you the current state of the run.
 
-        <img src="https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/run-page.png?fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=4b0bb5f9b181499cf324cdb8d5d673a8" alt="Run page" data-og-width="2978" width="2978" data-og-height="2110" height="2110" data-path="images/run-page.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/run-page.png?w=280&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=d7f419295b621c779c6a9a10b9152958 280w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/run-page.png?w=560&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=c66995702aace3888813ee1a66d33f97 560w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/run-page.png?w=840&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=c6c36408dc85f156d15a333ddb849d26 840w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/run-page.png?w=1100&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=2c1d7275465749eeae32196698f4a1b5 1100w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/run-page.png?w=1650&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=6965f3e2263296fb6529384021ce362a 1650w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/run-page.png?w=2500&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=7d890c5d199be7feaddc9162435bcc17 2500w" />
+    <img alt="Run page" />
 
     If you go back to your terminal you'll see that the dev command also shows the task status and links to the run log.
 
-        <img src="https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/terminal-completed-run.png?fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=a9284c5228343b72d798c6e36f5acb24" alt="Terminal showing completed run" data-og-width="955" width="955" data-og-height="197" height="197" data-path="images/terminal-completed-run.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/terminal-completed-run.png?w=280&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=62826752155594bd580ae51582870cce 280w, https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/terminal-completed-run.png?w=560&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=5270d0e823346fe8517fcc356cc5d20c 560w, https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/terminal-completed-run.png?w=840&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=8ae13acb781c5d08e2351af3c2cbb70a 840w, https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/terminal-completed-run.png?w=1100&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=da9e9f485055786210b6d7ce3812b9cf 1100w, https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/terminal-completed-run.png?w=1650&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=dd59fd38559b7b7ca865a015d029e0de 1650w, https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/terminal-completed-run.png?w=2500&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=4de391f21eb74db6e3f7c174d86b4b71 2500w" />
+    <img alt="Terminal showing completed run" />
   </Step>
 </Steps>
 
@@ -13007,7 +14536,7 @@ This guide shows you how to set up and deploy a simple Supabase edge function ex
 
     In your project, run the following command in the terminal using the Supabase CLI:
 
-    ```bash  theme={null}
+    ```bash theme={"theme":"css-variables"}
     supabase functions new edge-function-trigger
     ```
   </Step>
@@ -13015,7 +14544,7 @@ This guide shows you how to set up and deploy a simple Supabase edge function ex
   <Step title="Update the edge function code">
     Replace the placeholder code in your `edge-function-trigger/index.ts` file with the following:
 
-    ```ts functions/edge-function-trigger/index.ts theme={null}
+    ```ts functions/edge-function-trigger/index.ts theme={"theme":"css-variables"}
     // Setup type definitions for built-in Supabase Runtime APIs
     import "jsr:@supabase/functions-js/edge-runtime.d.ts";
     // Import the Trigger.dev SDK - replace "<your-sdk-version>" with the version of the SDK you are using, e.g. "3.0.0". You can find this in your package.json file.
@@ -13047,7 +14576,7 @@ This guide shows you how to set up and deploy a simple Supabase edge function ex
   <Step title="Deploy your edge function using the Supabase CLI">
     You can now deploy your edge function with the following command in your terminal:
 
-    ```bash  theme={null}
+    ```bash theme={"theme":"css-variables"}
     supabase functions deploy edge-function-trigger --no-verify-jwt
     ```
 
@@ -13079,13 +14608,13 @@ To trigger a task from your edge function, you need to set your Trigger.dev secr
 
 To do this, first go to your Trigger.dev [project dashboard](https://cloud.trigger.dev) and copy the `prod` secret key from the API keys page.
 
-<img src="https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/api-key-prod.png?fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=0733b8d37ded28dfc8eb55cfbbf8d1de" alt="How to find your prod secret key" data-og-width="1624" width="1624" data-og-height="924" height="924" data-path="images/api-key-prod.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/api-key-prod.png?w=280&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=b6322b1c7486febaa68d044cdcee166a 280w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/api-key-prod.png?w=560&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=5a9c86949e65af4e51e105f3e3a6bcc9 560w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/api-key-prod.png?w=840&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=0b8cd9edac7b0f133e8790c302a64269 840w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/api-key-prod.png?w=1100&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=5f86de1e7348b781d66bd13737b0dd37 1100w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/api-key-prod.png?w=1650&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=5f2fc6b58d2ed8d6d6a1653bb840bd67 1650w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/api-key-prod.png?w=2500&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=aed3fb7368091c0ee12cac472e02fc07 2500w" />
+<img alt="How to find your prod secret key" />
 
-Then, in [Supabase](https://supabase.com/dashboard/projects), select your project, navigate to 'Project settings' <Icon icon="circle-1" iconType="solid" size={20} color="A8FF53" />, click 'Edge functions' <Icon icon="circle-2" iconType="solid" size={20} color="A8FF53" /> in the configurations menu, and then click the 'Add new secret' <Icon icon="circle-3" iconType="solid" size={20} color="A8FF53" /> button.
+Then, in [Supabase](https://supabase.com/dashboard/projects), select your project, navigate to 'Project settings' <Icon icon="circle-1" />, click 'Edge functions' <Icon icon="circle-2" /> in the configurations menu, and then click the 'Add new secret' <Icon icon="circle-3" /> button.
 
-Add `TRIGGER_SECRET_KEY` <Icon icon="circle-4" iconType="solid" size={20} color="A8FF53" /> with the pasted value of your Trigger.dev `prod` secret key.
+Add `TRIGGER_SECRET_KEY` <Icon icon="circle-4" /> with the pasted value of your Trigger.dev `prod` secret key.
 
-<img src="https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/supabase-keys-1.png?fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=70842bf838bc1ea9e1f195c9926bb746" alt="Add secret key in Supabase" data-og-width="1624" width="1624" data-og-height="924" height="924" data-path="images/supabase-keys-1.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/supabase-keys-1.png?w=280&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=1b893de3a516863384e77179c709a631 280w, https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/supabase-keys-1.png?w=560&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=ba9cab56f377dc72898cd388a3280901 560w, https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/supabase-keys-1.png?w=840&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=37d7d313be698f7015fe490fc01cad30 840w, https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/supabase-keys-1.png?w=1100&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=73a7d40712c7a889bbe6af3803b86df7 1100w, https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/supabase-keys-1.png?w=1650&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=0c62e86405a9e23947ed073be6c5fca4 1650w, https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/supabase-keys-1.png?w=2500&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=30c4316db62c7820dd5c513c922b2976 2500w" />
+<img alt="Add secret key in Supabase" />
 
 ## Deploy your task and trigger it from your edge function
 
@@ -13094,15 +14623,15 @@ Add `TRIGGER_SECRET_KEY` <Icon icon="circle-4" iconType="solid" size={20} color=
     Next, deploy your `hello-world` task to [Trigger.dev cloud](https://cloud.trigger.dev).
 
     <CodeGroup>
-      ```bash npm theme={null}
+      ```bash npm theme={"theme":"css-variables"}
       npx trigger.dev@latest deploy
       ```
 
-      ```bash pnpm theme={null}
+      ```bash pnpm theme={"theme":"css-variables"}
       pnpm dlx trigger.dev@latest deploy
       ```
 
-      ```bash yarn theme={null}
+      ```bash yarn theme={"theme":"css-variables"}
       yarn dlx trigger.dev@latest deploy
       ```
     </CodeGroup>
@@ -13119,7 +14648,7 @@ Add `TRIGGER_SECRET_KEY` <Icon icon="circle-4" iconType="solid" size={20} color=
 
     Once loaded you should see ‘OK’ on the new screen.
 
-        <img src="https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/supabase-function-url.png?fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=39bf78f3b0d9fab4d92cc1cda60fbcec" alt="Edge function URL" data-og-width="1624" width="1624" data-og-height="924" height="924" data-path="images/supabase-function-url.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/supabase-function-url.png?w=280&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=ec78f91a1c5569170094e79228eb7e13 280w, https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/supabase-function-url.png?w=560&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=bb2c38ef3741c7f9efbf9aeeed2d9212 560w, https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/supabase-function-url.png?w=840&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=91eeaf194a648ab24e3d372722f0ba3d 840w, https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/supabase-function-url.png?w=1100&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=2ad7b3e2ffb9a70bb87dff0b0c41c94c 1100w, https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/supabase-function-url.png?w=1650&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=d25ca24ca979a211d53163b0a8daf9aa 1650w, https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/supabase-function-url.png?w=2500&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=f29534a7737c8c81db3da9c382dc9e97 2500w" />
+    <img alt="Edge function URL" />
 
     The task will be triggered when your edge function URL is accessed.
 
@@ -13133,7 +14662,7 @@ Add `TRIGGER_SECRET_KEY` <Icon icon="circle-4" iconType="solid" size={20} color=
 
 ### Full walkthrough guides from development to deployment
 
-<CardGroup cols={1}>
+<CardGroup>
   <Card title="Edge function hello world guide" icon="book" href="/guides/frameworks/supabase-edge-functions-basic">
     Learn how to trigger a task from a Supabase edge function when a URL is visited.
   </Card>
@@ -13150,7 +14679,7 @@ Add `TRIGGER_SECRET_KEY` <Icon icon="circle-4" iconType="solid" size={20} color=
 
 ### Task examples with code you can copy and paste
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Supabase database operations" icon="bolt" href="/guides/examples/supabase-database-operations">
     Run basic CRUD operations on a table in a Supabase database using Trigger.dev.
   </Card>
@@ -13202,7 +14731,7 @@ Supabase and Trigger.dev can be used together to create powerful workflows trigg
 
     You can create a new project by running the following command in your terminal using the Supabase CLI:
 
-    ```bash  theme={null}
+    ```bash theme={"theme":"css-variables"}
     supabase init
     ```
 
@@ -13219,7 +14748,7 @@ Supabase and Trigger.dev can be used together to create powerful workflows trigg
 
     This is required for the Trigger.dev SDK to work correctly.
 
-    ```ts package.json theme={null}
+    ```ts package.json theme={"theme":"css-variables"}
     {
       "devDependencies": {
         "typescript": "^5.6.2"
@@ -13236,15 +14765,15 @@ Supabase and Trigger.dev can be used together to create powerful workflows trigg
     Run this command in the root of your project to get started:
 
     <CodeGroup>
-      ```bash npm theme={null}
+      ```bash npm theme={"theme":"css-variables"}
       npx trigger.dev@latest init
       ```
 
-      ```bash pnpm theme={null}
+      ```bash pnpm theme={"theme":"css-variables"}
       pnpm dlx trigger.dev@latest init
       ```
 
-      ```bash yarn theme={null}
+      ```bash yarn theme={"theme":"css-variables"}
       yarn dlx trigger.dev@latest init
       ```
     </CodeGroup>
@@ -13264,15 +14793,15 @@ Supabase and Trigger.dev can be used together to create powerful workflows trigg
 
 First, in the Supabase project dashboard, you'll need to create a new table to store the video URL and transcription.
 
-To do this, click on 'Table Editor' <Icon icon="circle-1" iconType="solid" size={20} color="A8FF53" /> in the left-hand menu and create a new table. <Icon icon="circle-2" iconType="solid" size={20} color="A8FF53" />
+To do this, click on 'Table Editor' <Icon icon="circle-1" /> in the left-hand menu and create a new table. <Icon icon="circle-2" />
 
-<img src="https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/supabase-new-table-1.png?fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=4b7630a86b91ac5f942ac31538ad401d" alt="How to create a new Supabase table" data-og-width="1624" width="1624" data-og-height="924" height="924" data-path="images/supabase-new-table-1.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/supabase-new-table-1.png?w=280&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=cb8f066d063d37ba77150315e852ce86 280w, https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/supabase-new-table-1.png?w=560&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=e6826c90fe6a0b9ade20f16e343bffc8 560w, https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/supabase-new-table-1.png?w=840&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=f502bf263b08fb57a28095131987eef5 840w, https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/supabase-new-table-1.png?w=1100&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=bda96d83c7276830f239d7a1773cf379 1100w, https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/supabase-new-table-1.png?w=1650&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=0db75386570571a94a218936a250c737 1650w, https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/supabase-new-table-1.png?w=2500&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=0a2bbf11537f694d5e8888c590d8a22b 2500w" />
+<img alt="How to create a new Supabase table" />
 
-Call your table `video_transcriptions`. <Icon icon="circle-1" iconType="solid" size={20} color="A8FF53" />
+Call your table `video_transcriptions`. <Icon icon="circle-1" />
 
-Add two new columns, one called `video_url` with the type `text` <Icon icon="circle-2" iconType="solid" size={20} color="A8FF53" />, and another called `transcription`, also with the type `text` <Icon icon="circle-3" iconType="solid" size={20} color="A8FF53" />.
+Add two new columns, one called `video_url` with the type `text` <Icon icon="circle-2" />, and another called `transcription`, also with the type `text` <Icon icon="circle-3" />.
 
-<img src="https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/supabase-new-table-2.png?fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=a1c1f36b91edf8538ae33cc465f9ec47" alt="How to create a new Supabase table 2" data-og-width="3224" width="3224" data-og-height="1824" height="1824" data-path="images/supabase-new-table-2.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/supabase-new-table-2.png?w=280&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=a1a99d222b35bd675f86b37cd83e14b4 280w, https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/supabase-new-table-2.png?w=560&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=6189562ca9bebf649c074db28126c3ed 560w, https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/supabase-new-table-2.png?w=840&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=73262a6abaa2851fbabed87f3200b930 840w, https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/supabase-new-table-2.png?w=1100&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=53054702bf0efbd27e3920cb8957d1aa 1100w, https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/supabase-new-table-2.png?w=1650&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=4efb3c0cbaa50ed4611f62fc537ca04b 1650w, https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/supabase-new-table-2.png?w=2500&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=78d48f7f37128ea37b494a76a824f511 2500w" />
+<img alt="How to create a new Supabase table 2" />
 
 ## Create and deploy the Trigger.dev task
 
@@ -13280,7 +14809,7 @@ Add two new columns, one called `video_url` with the type `text` <Icon icon="cir
 
 To allow you to use TypeScript to interact with your table, you need to [generate the type definitions](https://supabase.com/docs/guides/api/rest/generating-types) for your Supabase table using the Supabase CLI.
 
-```bash  theme={null}
+```bash theme={"theme":"css-variables"}
 supabase gen types --lang=typescript --project-id <project-ref> --schema public > database.types.ts
 ```
 
@@ -13295,15 +14824,15 @@ This task takes a video from a public video url, extracts the audio using FFmpeg
 You will need to install some additional dependencies for this task:
 
 <CodeGroup>
-  ```bash npm theme={null}
+  ```bash npm theme={"theme":"css-variables"}
   npm install @deepgram/sdk @supabase/supabase-js fluent-ffmpeg
   ```
 
-  ```bash pnpm theme={null}
+  ```bash pnpm theme={"theme":"css-variables"}
   pnpm install @deepgram/sdk @supabase/supabase-js fluent-ffmpeg
   ```
 
-  ```bash yarn theme={null}
+  ```bash yarn theme={"theme":"css-variables"}
   yarn install @deepgram/sdk @supabase/supabase-js fluent-ffmpeg
   ```
 </CodeGroup>
@@ -13316,7 +14845,7 @@ These dependencies will allow you to interact with the Deepgram and Supabase API
   place to prevent this.
 </Warning>
 
-```ts /trigger/videoProcessAndUpdate.ts theme={null}
+```ts /trigger/videoProcessAndUpdate.ts theme={"theme":"css-variables"}
 // Install any missing dependencies below
 import { createClient as createDeepgramClient } from "@deepgram/sdk";
 import { createClient as createSupabaseClient } from "@supabase/supabase-js";
@@ -13430,7 +14959,7 @@ export const videoProcessAndUpdate = task({
 
 Before you can deploy the task, you'll need to add the FFmpeg build extension to your `trigger.config.ts` file.
 
-```ts trigger.config.ts theme={null}
+```ts trigger.config.ts theme={"theme":"css-variables"}
 // Add this import
 import { ffmpeg } from "@trigger.dev/build/extensions/core";
 import { defineConfig } from "@trigger.dev/sdk";
@@ -13462,22 +14991,22 @@ If you are modifying this example and using popular FFmpeg libraries like `fluen
 
 You will need to add your `DEEPGRAM_SECRET_KEY`, `SUPABASE_PROJECT_URL` and `SUPABASE_SERVICE_ROLE_KEY` as environment variables in your Trigger.dev project. This can be done in the 'Environment Variables' page in your project dashboard.
 
-<img src="https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/environment-variables-page.jpg?fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=af652254781808a35c2bcefd4b61b59f" alt="Adding environment variables" data-og-width="1600" width="1600" data-og-height="900" height="900" data-path="images/environment-variables-page.jpg" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/environment-variables-page.jpg?w=280&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=fd6487833d9c659f8a514c7cc86cf84d 280w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/environment-variables-page.jpg?w=560&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=1758721fd84f5040b88997db401f7391 560w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/environment-variables-page.jpg?w=840&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=4416f51b1528ae14285a03b560f22389 840w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/environment-variables-page.jpg?w=1100&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=12b90b89f7662aadaea07df17d9d3898 1100w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/environment-variables-page.jpg?w=1650&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=28e6921620cda10d335a095dbfa85806 1650w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/environment-variables-page.jpg?w=2500&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=4f6c67a030b20699bde25c22d68e57af 2500w" />
+<img alt="Adding environment variables" />
 
 ### Deploying your task
 
 Now you can now deploy your task using the following command:
 
 <CodeGroup>
-  ```bash npm theme={null}
+  ```bash npm theme={"theme":"css-variables"}
   npx trigger.dev@latest deploy
   ```
 
-  ```bash pnpm theme={null}
+  ```bash pnpm theme={"theme":"css-variables"}
   pnpm dlx trigger.dev@latest deploy
   ```
 
-  ```bash yarn theme={null}
+  ```bash yarn theme={"theme":"css-variables"}
   yarn dlx trigger.dev@latest deploy
   ```
 </CodeGroup>
@@ -13488,23 +15017,23 @@ Now you can now deploy your task using the following command:
 
 Go to your Trigger.dev [project dashboard](https://cloud.trigger.dev) and copy the `prod` secret key from the API keys page.
 
-<img src="https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/api-key-prod.png?fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=0733b8d37ded28dfc8eb55cfbbf8d1de" alt="How to find your prod secret key" data-og-width="1624" width="1624" data-og-height="924" height="924" data-path="images/api-key-prod.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/api-key-prod.png?w=280&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=b6322b1c7486febaa68d044cdcee166a 280w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/api-key-prod.png?w=560&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=5a9c86949e65af4e51e105f3e3a6bcc9 560w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/api-key-prod.png?w=840&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=0b8cd9edac7b0f133e8790c302a64269 840w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/api-key-prod.png?w=1100&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=5f86de1e7348b781d66bd13737b0dd37 1100w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/api-key-prod.png?w=1650&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=5f2fc6b58d2ed8d6d6a1653bb840bd67 1650w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/api-key-prod.png?w=2500&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=aed3fb7368091c0ee12cac472e02fc07 2500w" />
+<img alt="How to find your prod secret key" />
 
-Then, in [Supabase](https://supabase.com/dashboard/projects), select the project you want to use, navigate to 'Project settings' <Icon icon="circle-1" iconType="solid" size={20} color="A8FF53" />, click 'Edge Functions' <Icon icon="circle-2" iconType="solid" size={20} color="A8FF53" /> in the configurations menu, and then click the 'Add new secret' <Icon icon="circle-3" iconType="solid" size={20} color="A8FF53" /> button.
+Then, in [Supabase](https://supabase.com/dashboard/projects), select the project you want to use, navigate to 'Project settings' <Icon icon="circle-1" />, click 'Edge Functions' <Icon icon="circle-2" /> in the configurations menu, and then click the 'Add new secret' <Icon icon="circle-3" /> button.
 
-Add `TRIGGER_SECRET_KEY` <Icon icon="circle-4" iconType="solid" size={20} color="A8FF53" /> with the pasted value of your Trigger.dev `prod` secret key.
+Add `TRIGGER_SECRET_KEY` <Icon icon="circle-4" /> with the pasted value of your Trigger.dev `prod` secret key.
 
-<img src="https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/supabase-keys-1.png?fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=70842bf838bc1ea9e1f195c9926bb746" alt="Add secret key in Supabase" data-og-width="1624" width="1624" data-og-height="924" height="924" data-path="images/supabase-keys-1.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/supabase-keys-1.png?w=280&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=1b893de3a516863384e77179c709a631 280w, https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/supabase-keys-1.png?w=560&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=ba9cab56f377dc72898cd388a3280901 560w, https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/supabase-keys-1.png?w=840&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=37d7d313be698f7015fe490fc01cad30 840w, https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/supabase-keys-1.png?w=1100&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=73a7d40712c7a889bbe6af3803b86df7 1100w, https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/supabase-keys-1.png?w=1650&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=0c62e86405a9e23947ed073be6c5fca4 1650w, https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/supabase-keys-1.png?w=2500&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=30c4316db62c7820dd5c513c922b2976 2500w" />
+<img alt="Add secret key in Supabase" />
 
 ### Create a new Edge Function using the Supabase CLI
 
 Now create an Edge Function using the Supabase CLI. Call it `video-processing-handler`. This function will be triggered by the Database Webhook.
 
-```bash  theme={null}
+```bash theme={"theme":"css-variables"}
 supabase functions new video-processing-handler
 ```
 
-```ts functions/video-processing-handler/index.ts theme={null}
+```ts functions/video-processing-handler/index.ts theme={"theme":"css-variables"}
 // Setup type definitions for built-in Supabase Runtime APIs
 import "jsr:@supabase/functions-js/edge-runtime.d.ts";
 import { tasks } from "npm:@trigger.dev/sdk@latest";
@@ -13538,7 +15067,7 @@ Deno.serve(async (req) => {
 
 Now deploy your new Edge Function with the following command:
 
-```bash  theme={null}
+```bash theme={"theme":"css-variables"}
 supabase functions deploy video-processing-handler
 ```
 
@@ -13548,30 +15077,30 @@ There will be a link to the dashboard in your terminal output.
 
 ## Create the Database Webhook
 
-In your Supabase project dashboard, click 'Project settings' <Icon icon="circle-1" iconType="solid" size={20} color="A8FF53" />, then the 'API' tab <Icon icon="circle-2" iconType="solid" size={20} color="A8FF53" />, and copy the `anon` `public` API key from the table <Icon icon="circle-3" iconType="solid" size={20} color="A8FF53" />.
+In your Supabase project dashboard, click 'Project settings' <Icon icon="circle-1" />, then the 'API' tab <Icon icon="circle-2" />, and copy the `anon` `public` API key from the table <Icon icon="circle-3" />.
 
-<img src="https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/supabase-api-key.png?fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=7d842b953497f2819e64abd2497e0f25" alt="How to find your Supabase API keys" data-og-width="1624" width="1624" data-og-height="924" height="924" data-path="images/supabase-api-key.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/supabase-api-key.png?w=280&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=1b09ec34e37b4569f6ffae7b41100bad 280w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/supabase-api-key.png?w=560&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=a205e60a3d33fae2ff4f719287df05c4 560w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/supabase-api-key.png?w=840&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=c9ba5c95634b152931fab0d43f75778c 840w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/supabase-api-key.png?w=1100&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=736ebe39bec4eec64ac11e0ca03e6d09 1100w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/supabase-api-key.png?w=1650&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=6483cb22bbbed8fbaf29d05f5ed50580 1650w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/supabase-api-key.png?w=2500&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=569ff35cadfacd0d89408e4be2f336b6 2500w" />
+<img alt="How to find your Supabase API keys" />
 
-Then, go to 'Database' <Icon icon="circle-1" iconType="solid" size={20} color="A8FF53" /> click on 'Webhooks' <Icon icon="circle-2" iconType="solid" size={20} color="A8FF53" />, and then click 'Create a new hook' <Icon icon="circle-3" iconType="solid" size={20} color="A8FF53" />.
+Then, go to 'Database' <Icon icon="circle-1" /> click on 'Webhooks' <Icon icon="circle-2" />, and then click 'Create a new hook' <Icon icon="circle-3" />.
 
-<img src="https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/supabase-create-webhook-1.png?fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=b14ffc5195561195ba824430fd5b3566" alt="How to create a new webhook" data-og-width="1624" width="1624" data-og-height="924" height="924" data-path="images/supabase-create-webhook-1.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/supabase-create-webhook-1.png?w=280&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=f388b147fed1a3e4e68015d4b56e54e5 280w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/supabase-create-webhook-1.png?w=560&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=94e5f71acebb513862c8855c1500e57b 560w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/supabase-create-webhook-1.png?w=840&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=962d9b080e507d5af564fabd6db53f1a 840w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/supabase-create-webhook-1.png?w=1100&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=693a3b514e1e1dac9787e78c1bbe7aea 1100w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/supabase-create-webhook-1.png?w=1650&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=46f027cf03b1b286f375848ee81d7a94 1650w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/supabase-create-webhook-1.png?w=2500&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=d9af95ddd3d3f6be3ecd08d20ad4604c 2500w" />
+<img alt="How to create a new webhook" />
 
-<Icon icon="circle-1" iconType="solid" size={20} color="A8FF53" /> Call the hook `edge-function-hook`.
+<Icon icon="circle-1" /> Call the hook `edge-function-hook`.
 
-<Icon icon="circle-2" iconType="solid" size={20} color="A8FF53" /> Select the new table you have created:
+<Icon icon="circle-2" /> Select the new table you have created:
 `public` `video_transcriptions`.
 
-<Icon icon="circle-3" iconType="solid" size={20} color="A8FF53" /> Choose the `insert` event.
+<Icon icon="circle-3" /> Choose the `insert` event.
 
-<img src="https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/supabase-create-webhook-2.png?fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=9e7e86e98234a3bb4a852e7c1f429381" alt="How to create a new webhook 2" data-og-width="1624" width="1624" data-og-height="924" height="924" data-path="images/supabase-create-webhook-2.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/supabase-create-webhook-2.png?w=280&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=ca6621f024688dd564ad99e0fdb0ffb7 280w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/supabase-create-webhook-2.png?w=560&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=0a13a85ad5879e439acbe6dc8b5310c8 560w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/supabase-create-webhook-2.png?w=840&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=2cd3eec702d6b89fbc3f7864244ff903 840w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/supabase-create-webhook-2.png?w=1100&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=062d31b161b8ae0c7e5ecda295da4369 1100w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/supabase-create-webhook-2.png?w=1650&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=3664d62d87ac15550a882d1c223fa9fb 1650w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/supabase-create-webhook-2.png?w=2500&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=4a6e4965d3dce81b2f305cc1e265d172 2500w" />
+<img alt="How to create a new webhook 2" />
 
-<Icon icon="circle-4" iconType="solid" size={20} color="A8FF53" /> Under 'Webhook configuration', select
-'Supabase Edge Functions'{" "}
+<Icon icon="circle-4" /> Under 'Webhook configuration', select
+'Supabase Edge Functions'
 
-<Icon icon="circle-5" iconType="solid" size={20} color="A8FF53" /> Under 'Edge Function', choose `POST`
-and select the Edge Function you have created: `video-processing-handler`.{" "}
+<Icon icon="circle-5" /> Under 'Edge Function', choose `POST`
+and select the Edge Function you have created: `video-processing-handler`.
 
-<Icon icon="circle-6" iconType="solid" size={20} color="A8FF53" /> Under 'HTTP Headers', add a new header with the key `Authorization` and the value `Bearer <your-api-key>` (replace `<your-api-key>` with the `anon` `public` API key you copied earlier).
+<Icon icon="circle-6" /> Under 'HTTP Headers', add a new header with the key `Authorization` and the value `Bearer <your-api-key>` (replace `<your-api-key>` with the `anon` `public` API key you copied earlier).
 
 <Info>
   Supabase Edge Functions require a JSON Web Token [JWT](https://supabase.com/docs/guides/auth/jwts)
@@ -13579,9 +15108,9 @@ and select the Edge Function you have created: `video-processing-handler`.{" "}
   functions.
 </Info>
 
-<Icon icon="circle-7" iconType="solid" size={20} color="A8FF53" /> Click 'Create webhook'.{" "}
+<Icon icon="circle-7" /> Click 'Create webhook'.
 
-<img src="https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/supabase-create-webhook-3.png?fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=ef4b8d91417d1e923063a9f599537f1f" alt="How to create a new webhook 3" data-og-width="1624" width="1624" data-og-height="924" height="924" data-path="images/supabase-create-webhook-3.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/supabase-create-webhook-3.png?w=280&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=d1f574a056c46ecca8e8facc2c7f11d3 280w, https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/supabase-create-webhook-3.png?w=560&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=e141e894768eadb53174d283e8bb7864 560w, https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/supabase-create-webhook-3.png?w=840&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=c38276204880ba27b452b0a9eccf8696 840w, https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/supabase-create-webhook-3.png?w=1100&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=aa04b198f2fb191a288a4f8b37f02e31 1100w, https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/supabase-create-webhook-3.png?w=1650&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=d4dccfa32030a493caecab6383c8a6af 1650w, https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/supabase-create-webhook-3.png?w=2500&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=9afd89ffa262e871ee3b1864bbb8b95e 2500w" />
+<img alt="How to create a new webhook 3" />
 
 Your Database Webhook is now ready to use.
 
@@ -13589,23 +15118,23 @@ Your Database Webhook is now ready to use.
 
 Your `video-processing-handler` Edge Function is now set up to trigger the `videoProcessAndUpdate` task every time a new row is inserted into your `video_transcriptions` table.
 
-To do this, go back to your Supabase project dashboard, click on 'Table Editor' <Icon icon="circle-1" iconType="solid" size={20} color="A8FF53" /> in the left-hand menu, click on the `video_transcriptions` table <Icon icon="circle-2" iconType="solid" size={20} color="A8FF53" /> , and then click 'Insert', 'Insert Row' <Icon icon="circle-3" iconType="solid" size={20} color="A8FF53" />.
+To do this, go back to your Supabase project dashboard, click on 'Table Editor' <Icon icon="circle-1" /> in the left-hand menu, click on the `video_transcriptions` table <Icon icon="circle-2" /> , and then click 'Insert', 'Insert Row' <Icon icon="circle-3" />.
 
-<img src="https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/supabase-new-table-3.png?fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=018a4b143a7e610ef85fe630cb5f3942" alt="How to insert a new row 1" data-og-width="1624" width="1624" data-og-height="924" height="924" data-path="images/supabase-new-table-3.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/supabase-new-table-3.png?w=280&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=fc1cee2d21ace6b3ba5a879a6be235c3 280w, https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/supabase-new-table-3.png?w=560&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=190c3f6352ca9ea4f47dc7122ecf0fc9 560w, https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/supabase-new-table-3.png?w=840&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=20e488fddd2a02db28ef49b3205a3a02 840w, https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/supabase-new-table-3.png?w=1100&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=cdab5cdbb858decd062c5e0d8ba4f13c 1100w, https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/supabase-new-table-3.png?w=1650&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=6dd9a76d09f9a9edd2238ee72b92d98c 1650w, https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/supabase-new-table-3.png?w=2500&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=cb14e79904fdd5dc076fc3ea24816621 2500w" />
+<img alt="How to insert a new row 1" />
 
-Add a new item under `video_url`, with a public video url. <Icon icon="circle-1" iconType="solid" size={20} color="A8FF53" />.
+Add a new item under `video_url`, with a public video url. <Icon icon="circle-1" />.
 
 You can use the following public video URL for testing: `https://content.trigger.dev/Supabase%20Edge%20Functions%20Quickstart.mp4`.
 
-<img src="https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/supabase-new-table-4.png?fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=4f12c856f8e921c287e2d3d45c4db397" alt="How to insert a new row 2" data-og-width="3224" width="3224" data-og-height="1824" height="1824" data-path="images/supabase-new-table-4.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/supabase-new-table-4.png?w=280&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=c5737feb6cf79dd20606c52f9a3733b0 280w, https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/supabase-new-table-4.png?w=560&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=15aa16b5e45cae5189960db92ca6bec4 560w, https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/supabase-new-table-4.png?w=840&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=f115634df16843b498ac988f966494f8 840w, https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/supabase-new-table-4.png?w=1100&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=7733ad6bd8f283a808616182a5a0aee3 1100w, https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/supabase-new-table-4.png?w=1650&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=13987e360ef986d88a454526b834f227 1650w, https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/supabase-new-table-4.png?w=2500&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=d17d016e9c0d2c213839932e56b5d600 2500w" />
+<img alt="How to insert a new row 2" />
 
-Once the new table row has been inserted, check your [cloud.trigger.dev](http://cloud.trigger.dev) project 'Runs' list <Icon icon="circle-1" iconType="solid" size={20} color="A8FF53" /> and you should see a processing `videoProcessAndUpdate` task <Icon icon="circle-2" iconType="solid" size={20} color="A8FF53" /> which has been triggered when you added a new row with the video url to your `video_transcriptions` table.
+Once the new table row has been inserted, check your [cloud.trigger.dev](http://cloud.trigger.dev) project 'Runs' list <Icon icon="circle-1" /> and you should see a processing `videoProcessAndUpdate` task <Icon icon="circle-2" /> which has been triggered when you added a new row with the video url to your `video_transcriptions` table.
 
-<img src="https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/supabase-run-result.png?fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=845a8ec72040ad8cdab18b905cf52096" alt="Supabase successful run" data-og-width="3224" width="3224" data-og-height="1824" height="1824" data-path="images/supabase-run-result.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/supabase-run-result.png?w=280&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=4905e76d9f60762b4b91cd41d6964e44 280w, https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/supabase-run-result.png?w=560&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=e98ab82fe22ea3c04f4907ff673bfbe3 560w, https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/supabase-run-result.png?w=840&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=559ef31d145b622f9881499b74c628c4 840w, https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/supabase-run-result.png?w=1100&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=003369ca97e1241b1ee739b45def2bf5 1100w, https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/supabase-run-result.png?w=1650&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=78039d0ebf7cf5338e0c18846057c191 1650w, https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/supabase-run-result.png?w=2500&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=8373b7a03955d029487eee841aa6fdcd 2500w" />
+<img alt="Supabase successful run" />
 
 Once the run has completed successfully, go back to your Supabase `video_transcriptions` table, and you should see that in the row containing the original video URL, the transcription has now been added to the `transcription` column.
 
-<img src="https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/supabase-table-result.png?fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=9d53cd6ba016677b7a8ad6eea4f9c58e" alt="Supabase successful table update" data-og-width="3224" width="3224" data-og-height="1824" height="1824" data-path="images/supabase-table-result.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/supabase-table-result.png?w=280&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=1719d1347851ea2f54d620c897e9b057 280w, https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/supabase-table-result.png?w=560&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=15a9901f3cccbdf20700dec20638744d 560w, https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/supabase-table-result.png?w=840&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=e900a2cfbfe4544448d048ec34bc107e 840w, https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/supabase-table-result.png?w=1100&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=730b4c94f32134794e13863de70c4e42 1100w, https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/supabase-table-result.png?w=1650&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=6b5616e3a599e1a3e4a983d24beaf37a 1650w, https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/supabase-table-result.png?w=2500&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=146d83c0d05046987d297578ff5f5124 2500w" />
+<img alt="Supabase successful table update" />
 
 **Congratulations! You have completed the full workflow from Supabase to Trigger.dev and back again.**
 
@@ -13613,7 +15142,7 @@ Once the run has completed successfully, go back to your Supabase `video_transcr
 
 ### Full walkthrough guides from development to deployment
 
-<CardGroup cols={1}>
+<CardGroup>
   <Card title="Edge function hello world guide" icon="book" href="/guides/frameworks/supabase-edge-functions-basic">
     Learn how to trigger a task from a Supabase edge function when a URL is visited.
   </Card>
@@ -13630,7 +15159,7 @@ Once the run has completed successfully, go back to your Supabase `video_transcr
 
 ### Task examples with code you can copy and paste
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Supabase database operations" icon="bolt" href="/guides/examples/supabase-database-operations">
     Run basic CRUD operations on a table in a Supabase database using Trigger.dev.
   </Card>
@@ -13650,7 +15179,7 @@ Guides and examples for using Supabase with Trigger.dev.
 
 ### Full walkthrough guides from development to deployment
 
-<CardGroup cols={1}>
+<CardGroup>
   <Card title="Edge function hello world guide" icon="book" href="/guides/frameworks/supabase-edge-functions-basic">
     Learn how to trigger a task from a Supabase edge function when a URL is visited.
   </Card>
@@ -13667,7 +15196,7 @@ Guides and examples for using Supabase with Trigger.dev.
 
 ### Task examples with code you can copy and paste
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Supabase database operations" icon="bolt" href="/guides/examples/supabase-database-operations">
     Run basic CRUD operations on a table in a Supabase database using Trigger.dev.
   </Card>
@@ -13691,7 +15220,7 @@ A webhook handler is code that executes in response to an event. They can be end
 
 ## Webhook guides
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Next.js - triggering tasks using webhooks" icon="N" href="/guides/frameworks/nextjs-webhooks">
     How to create a webhook handler in a Next.js app, and trigger a task from it.
   </Card>
@@ -13718,16 +15247,16 @@ A growing list of guides and examples to get the most out of Trigger.dev.
 
 ## Frameworks
 
-<CardGroup cols={3}>
-  <Card title="Bun" img="https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/logo-bun.png?fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=66ba8e5d8b75666ef2f6bc402cde6200" href="/guides/frameworks/bun" data-og-width="483" width="483" data-og-height="282" height="282" data-path="images/logo-bun.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/logo-bun.png?w=280&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=82015d4b1f1ef4a232755368c33a7f73 280w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/logo-bun.png?w=560&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=b15d2152f74e189b44aa1b96fde5d281 560w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/logo-bun.png?w=840&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=a2fb7961ab6d94b1b0196c2a38a713e0 840w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/logo-bun.png?w=1100&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=1f1c78ec4a10b7ff0c905b45e2d82915 1100w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/logo-bun.png?w=1650&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=ef1cde36b5be1fbd5987555eee5b1636 1650w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/logo-bun.png?w=2500&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=ae5ea69d721d3bcfe2ceb79f510457b4 2500w" />
+<CardGroup>
+  <Card title="Bun" href="/guides/frameworks/bun" />
 
-  <Card title="Next.js" img="https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/logo-nextjs.png?fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=a9f98e3c3948aeb3acb74648ad29cc8f" href="/guides/frameworks/nextjs" data-og-width="483" width="483" data-og-height="282" height="282" data-path="images/logo-nextjs.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/logo-nextjs.png?w=280&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=a194514a9fc67ba3450568f5e7275231 280w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/logo-nextjs.png?w=560&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=e4cf4d8664bea382d6e2ad19d1a3e4a2 560w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/logo-nextjs.png?w=840&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=8e011dac5b19895363c483904a6e4ed0 840w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/logo-nextjs.png?w=1100&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=1989b26e995e0703437f00a839946eb5 1100w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/logo-nextjs.png?w=1650&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=59ad44ef970a051aab37a18358bc8a3c 1650w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/logo-nextjs.png?w=2500&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=e3786a7da1a73b0b58f59c38a49e05f4 2500w" />
+  <Card title="Next.js" href="/guides/frameworks/nextjs" />
 
-  <Card title="Node.js" img="https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/logo-nodejs.png?fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=45e461847bf3377f5a4bb12daabc04c1" href="/guides/frameworks/nodejs" data-og-width="483" width="483" data-og-height="282" height="282" data-path="images/logo-nodejs.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/logo-nodejs.png?w=280&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=ed5332d326f804b5ae1277177250d78c 280w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/logo-nodejs.png?w=560&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=2796537dadb0348e65baad6218f958f3 560w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/logo-nodejs.png?w=840&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=9799dd3aadbc114599963698c0151f6a 840w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/logo-nodejs.png?w=1100&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=9288db090fa58a5137be6b66654bead5 1100w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/logo-nodejs.png?w=1650&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=42d29f55b525c55d6bd6ea7f32e39b28 1650w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/logo-nodejs.png?w=2500&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=b6094d1b1a064915e68de98dde37dee9 2500w" />
+  <Card title="Node.js" href="/guides/frameworks/nodejs" />
 
-  <Card title="Remix" img="https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/logo-remix.png?fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=4b87aae0d212fdbe8d766de947055f6e" href="/guides/frameworks/remix" data-og-width="483" width="483" data-og-height="282" height="282" data-path="images/logo-remix.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/logo-remix.png?w=280&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=414c844373d339d6401419d5637389a0 280w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/logo-remix.png?w=560&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=c732bdea6232e6290ae5d61fe8856d13 560w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/logo-remix.png?w=840&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=407ed0fc36edf9365e0045c02e2622fb 840w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/logo-remix.png?w=1100&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=ebecbd154b93506f650831d2f9b4b494 1100w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/logo-remix.png?w=1650&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=4660677717fd473460a01232376471d7 1650w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/logo-remix.png?w=2500&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=eb158ce25e5b218a5d02b20ba060b137 2500w" />
+  <Card title="Remix" href="/guides/frameworks/remix" />
 
-  <Card title="SvelteKit" img="https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/logo-svelte.png?fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=a0648a3f93ec288a35cf17c9cf8cfdea" href="/guides/community/sveltekit" data-og-width="480" width="480" data-og-height="282" height="282" data-path="images/logo-svelte.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/logo-svelte.png?w=280&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=c337195e80ce92dc8e8a9c8029ef2d91 280w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/logo-svelte.png?w=560&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=38c9b366a9eda7f5e801a3ded8be8a43 560w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/logo-svelte.png?w=840&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=bd078aa2ffbfbc7f9dd90d5528e56ed8 840w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/logo-svelte.png?w=1100&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=db91534920c01eb7c3f541d7511e87c3 1100w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/logo-svelte.png?w=1650&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=06c4f47f541a95c1005ec0b9564021b3 1650w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/logo-svelte.png?w=2500&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=19ab12550b98c9400e2558ef06a75432 2500w" />
+  <Card title="SvelteKit" href="/guides/community/sveltekit" />
 </CardGroup>
 
 ## Guides
@@ -13741,6 +15270,7 @@ Get set up fast using our detailed walk-through guides.
 | [AI Agent: News verification](/guides/ai-agents/verify-news-article)                       | Orchestrate fact checking of news articles                           |
 | [AI Agent: Route questions](/guides/ai-agents/route-question)                              | Route questions to different models based on complexity              |
 | [AI Agent: Translation refinement](/guides/ai-agents/translate-and-refine)                 | Evaluate and refine translations with feedback                       |
+| [Claude Agent SDK](/guides/ai-agents/claude-code-trigger)                                  | Build AI agents that read files, run commands, and edit code         |
 | [Cursor rules](/guides/cursor-rules)                                                       | Use Cursor rules to help write Trigger.dev tasks                     |
 | [Prisma](/guides/frameworks/prisma)                                                        | How to setup Prisma with Trigger.dev                                 |
 | [Python image processing](/guides/python/python-image-processing)                          | Use Python and Pillow to process images                              |
@@ -13756,7 +15286,7 @@ Get set up fast using our detailed walk-through guides.
 
 ## Featured use cases
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Data processing & ETL workflows" icon="database" href="/guides/use-cases/data-processing-etl">
     Build complex data pipelines that process large datasets without timeouts.
   </Card>
@@ -13782,6 +15312,8 @@ Example projects are full projects with example repos you can fork and use. Thes
 | :-------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------- | :-------- | :------------------------------------------------------------------------------------------------------------- |
 | [Anchor Browser web scraper](/guides/example-projects/anchor-browser-web-scraper)                               | Monitor a website and find the cheapest tickets for a show.                                                                            | —         | [View the repo](https://github.com/triggerdotdev/examples/tree/main/anchor-browser-web-scraper)                |
 | [Batch LLM Evaluator](/guides/example-projects/batch-llm-evaluator)                                             | Evaluate multiple LLM models and stream the results to the frontend.                                                                   | Next.js   | [View the repo](https://github.com/triggerdotdev/examples/tree/main/batch-llm-evaluator)                       |
+| [Claude changelog generator](/guides/example-projects/claude-changelog-generator)                               | Automatically generate professional changelogs from git commits using Claude.                                                          | —         | [View the repo](https://github.com/triggerdotdev/examples/tree/main/changelog-generator)                       |
+| [Claude GitHub wiki agent](/guides/example-projects/claude-github-wiki)                                         | Generate and maintain GitHub wiki documentation with Claude-powered analysis.                                                          | —         | [View the repo](https://github.com/triggerdotdev/examples/tree/main/claude-agent-github-wiki)                  |
 | [Claude thinking chatbot](/guides/example-projects/claude-thinking-chatbot)                                     | Use Vercel's AI SDK and Anthropic's Claude 3.7 model to create a thinking chatbot.                                                     | Next.js   | [View the repo](https://github.com/triggerdotdev/examples/tree/main/claude-thinking-chatbot)                   |
 | [Human-in-the-loop workflow](/guides/example-projects/human-in-the-loop-workflow)                               | Create audio summaries of newspaper articles using a human-in-the-loop workflow built with ReactFlow and Trigger.dev waitpoint tokens. | Next.js   | [View the repo](https://github.com/triggerdotdev/examples/tree/main/article-summary-workflow)                  |
 | [Mastra agents with memory](/guides/example-projects/mastra-agents-with-memory)                                 | Use Mastra to create a weather agent that can collect live weather data and generate clothing recommendations.                         | —         | [View the repo](https://github.com/triggerdotdev/examples/tree/main/mastra-agents)                             |
@@ -13791,6 +15323,7 @@ Example projects are full projects with example repos you can fork and use. Thes
 | [Python web crawler](/guides/python/python-crawl4ai)                                                            | Use Python, Crawl4AI and Playwright to create a headless web crawler with Trigger.dev.                                                 | —         | [View the repo](https://github.com/triggerdotdev/examples/tree/main/python-crawl4ai)                           |
 | [Realtime CSV Importer](/guides/example-projects/realtime-csv-importer)                                         | Upload a CSV file and see the progress of the task streamed to the frontend.                                                           | Next.js   | [View the repo](https://github.com/triggerdotdev/examples/tree/main/realtime-csv-importer)                     |
 | [Realtime Fal.ai image generation](/guides/example-projects/realtime-fal-ai)                                    | Generate an image from a prompt using Fal.ai and show the progress of the task on the frontend using Realtime.                         | Next.js   | [View the repo](https://github.com/triggerdotdev/examples/tree/main/realtime-fal-ai-image-generation)          |
+| [Smart Spreadsheet](/guides/example-projects/smart-spreadsheet)                                                 | Enrich company data using Exa search and Claude with real-time streaming results.                                                      | Next.js   | [View the repo](https://github.com/triggerdotdev/examples/tree/main/smart-spreadsheet)                         |
 | [Turborepo monorepo with Prisma](/guides/example-projects/turborepo-monorepo-prisma)                            | Use Prisma in a Turborepo monorepo with Trigger.dev.                                                                                   | Next.js   | [View the repo](https://github.com/triggerdotdev/examples/tree/main/monorepos/turborepo-prisma-tasks-package)  |
 | [Vercel AI SDK image generator](/guides/example-projects/vercel-ai-sdk-image-generator)                         | Use the Vercel AI SDK to generate images from a prompt.                                                                                | Next.js   | [View the repo](https://github.com/triggerdotdev/examples/tree/main/vercel-ai-sdk-image-generator)             |
 | [Vercel AI SDK deep research agent](/guides/example-projects/vercel-ai-sdk-deep-research)                       | Use the Vercel AI SDK to generate comprehensive PDF reports using a deep research agent.                                               | Next.js   | [View the repo](https://github.com/triggerdotdev/examples/tree/main/vercel-ai-sdk-deep-research-agent)         |
@@ -13886,7 +15419,7 @@ Once you have a proxy service, set the following environment variables in your T
 
 After you've initialized your project with Trigger.dev, add these build settings to your `trigger.config.ts` file:
 
-```ts trigger.config.ts theme={null}
+```ts trigger.config.ts theme={"theme":"css-variables"}
 import { defineConfig } from "@trigger.dev/sdk";
 import { pythonExtension } from "@trigger.dev/python/extension";
 import type { BuildContext, BuildExtension } from "@trigger.dev/core/build";
@@ -13949,7 +15482,7 @@ export function installPlaywrightChromium(): BuildExtension {
 
 This task uses the `python.runScript` method to run the `crawl-url.py` script with the given URL as an argument. You can see the original task in our examples repository [here](https://github.com/triggerdotdev/examples/blob/main/python-crawl4ai/src/trigger/pythonTasks.ts).
 
-```ts src/trigger/pythonTasks.ts theme={null}
+```ts src/trigger/pythonTasks.ts theme={"theme":"css-variables"}
 import { logger, schemaTask, task } from "@trigger.dev/sdk";
 import { python } from "@trigger.dev/python";
 import { z } from "zod";
@@ -13983,7 +15516,7 @@ export const convertUrlToMarkdown = schemaTask({
 
 Add the following to your `requirements.txt` file. This is required in Python projects to install the dependencies.
 
-```txt requirements.txt theme={null}
+```txt requirements.txt theme={"theme":"css-variables"}
 crawl4ai
 playwright
 urllib3<2.0.0
@@ -13993,7 +15526,7 @@ urllib3<2.0.0
 
 The Python script is a simple script using Crawl4AI that takes a URL and returns the markdown content of the page. You can see the original script in our examples repository [here](https://github.com/triggerdotdev/examples/blob/main/python-crawl4ai/src/python/crawl-url.py).
 
-```python src/python/crawl-url.py theme={null}
+```python src/python/crawl-url.py theme={"theme":"css-variables"}
 import asyncio
 import sys
 import os
@@ -14095,7 +15628,7 @@ Convert documents to markdown using Microsoft's [MarkItDown](https://github.com/
 
 After you've initialized your project with Trigger.dev, add these build settings to your `trigger.config.ts` file:
 
-```ts trigger.config.ts theme={null}
+```ts trigger.config.ts theme={"theme":"css-variables"}
 import { pythonExtension } from "@trigger.dev/python/extension";
 import { defineConfig } from "@trigger.dev/sdk";
 
@@ -14127,7 +15660,7 @@ export default defineConfig({
 
 This task uses the `python.runScript` method to run the `markdown-converter.py` script with the given document URL as an argument.
 
-```ts src/trigger/convertToMarkdown.ts theme={null}
+```ts src/trigger/convertToMarkdown.ts theme={"theme":"css-variables"}
 import { task } from "@trigger.dev/sdk";
 import { python } from "@trigger.dev/python";
 import * as fs from "fs";
@@ -14184,7 +15717,7 @@ export const convertToMarkdown = task({
 
 Add the following to your `requirements.txt` file. This is required in Python projects to install the dependencies.
 
-```txt requirements.txt theme={null}
+```txt requirements.txt theme={"theme":"css-variables"}
 markitdown[all]
 ```
 
@@ -14192,7 +15725,7 @@ markitdown[all]
 
 The Python script uses MarkItDown to convert documents to Markdown format.
 
-```python src/python/markdown-converter.py theme={null}
+```python src/python/markdown-converter.py theme={"theme":"css-variables"}
 import json
 import sys
 import os
@@ -14316,7 +15849,7 @@ This demo showcases how to use Trigger.dev with Python to process an image using
 
 After you've initialized your project with Trigger.dev, add these build settings to your `trigger.config.ts` file:
 
-```ts trigger.config.ts theme={null}
+```ts trigger.config.ts theme={"theme":"css-variables"}
 import { pythonExtension } from "@trigger.dev/python/extension";
 import { defineConfig } from "@trigger.dev/sdk";
 
@@ -14348,7 +15881,7 @@ export default defineConfig({
 
 This task uses the `python.runScript` method to run the `image-processing.py` script with the given image URL as an argument. You can adjust the image processing parameters in the payload, with options such as height, width, quality, output format, etc.
 
-```ts src/trigger/processImage.ts theme={null}
+```ts src/trigger/processImage.ts theme={"theme":"css-variables"}
 import { schemaTask } from "@trigger.dev/sdk";
 import { z } from "zod";
 import { python } from "@trigger.dev/python";
@@ -14475,7 +16008,7 @@ export const processImage = schemaTask({
 
 Add the following to your `requirements.txt` file. This is required in Python projects to install the dependencies.
 
-```txt requirements.txt theme={null}
+```txt requirements.txt theme={"theme":"css-variables"}
 # Core dependencies
 Pillow==10.2.0            # Image processing library
 python-dotenv==1.0.0      # Environment variable management
@@ -14490,7 +16023,7 @@ opencv-python==4.8.1.78   # For more advanced image processing
 
 The Python script uses Pillow (PIL) to process an image. You can see the original script in our examples repository [here](https://github.com/triggerdotdev/examples/blob/main/python-image-processing/src/python/image-processing.py).
 
-```python src/python/image-processing.py theme={null}
+```python src/python/image-processing.py theme={"theme":"css-variables"}
 from PIL import Image, ImageOps, ImageEnhance
 import io
 from io import BytesIO
@@ -14801,7 +16334,7 @@ if __name__ == "__main__":
 
 These are all optional parameters that can be passed to the `image-processing.py` Python script from the `processImage.ts` task.
 
-```json  theme={null}
+```json theme={"theme":"css-variables"}
 {
   "imageUrl": "<your-image-url>",
   "height": 1200,
@@ -14862,7 +16395,7 @@ This demo showcases how to use Trigger.dev with Python to extract structured for
 
 After you've initialized your project with Trigger.dev, add these build settings to your `trigger.config.ts` file:
 
-```ts trigger.config.ts theme={null}
+```ts trigger.config.ts theme={"theme":"css-variables"}
 import { pythonExtension } from "@trigger.dev/python/extension";
 import { defineConfig } from "@trigger.dev/sdk";
 
@@ -14894,7 +16427,7 @@ export default defineConfig({
 
 This task uses the `python.runScript` method to run the `image-processing.py` script with the given image URL as an argument. You can adjust the image processing parameters in the payload, with options such as height, width, quality, output format, etc.
 
-```ts src/trigger/pythonPdfTask.ts theme={null}
+```ts src/trigger/pythonPdfTask.ts theme={"theme":"css-variables"}
 import { task } from "@trigger.dev/sdk";
 import { python } from "@trigger.dev/python";
 
@@ -14927,7 +16460,7 @@ export const processPdfForm = task({
 
 Add the following to your `requirements.txt` file. This is required in Python projects to install the dependencies.
 
-```txt requirements.txt theme={null}
+```txt requirements.txt theme={"theme":"css-variables"}
 PyMuPDF==1.23.8
 requests==2.31.0
 ```
@@ -14936,7 +16469,7 @@ requests==2.31.0
 
 The Python script uses PyMuPDF to extract form data from a PDF file. You can see the original script in our examples repository [here](https://github.com/triggerdotdev/examples/blob/main/python-pdf-form-extractor/src/python/extract-pdf-form.py).
 
-```python src/python/extract-pdf-form.py theme={null}
+```python src/python/extract-pdf-form.py theme={"theme":"css-variables"}
 import fitz  # PyMuPDF
 import requests
 import os
@@ -15033,7 +16566,7 @@ Build complex data pipelines that process large datasets without timeouts. Handl
 
 ## Featured examples
 
-<CardGroup cols={3}>
+<CardGroup>
   <Card title="Realtime CSV importer" icon="book" href="/guides/example-projects/realtime-csv-importer">
     Import CSV files with progress streamed live to frontend.
   </Card>
@@ -15057,7 +16590,7 @@ Build complex data pipelines that process large datasets without timeouts. Handl
 
 ## Production use cases
 
-<CardGroup cols={1}>
+<CardGroup>
   <Card title="MagicSchool AI customer story" href="https://trigger.dev/customers/magicschool-ai-customer-story">
     Read how MagicSchool AI uses Trigger.dev to generate insights from millions of student interactions.
   </Card>
@@ -15077,8 +16610,8 @@ Build complex data pipelines that process large datasets without timeouts. Handl
   <Tab title="CSV file import">
     Simple CSV import pipeline. Receives file upload, parses CSV rows, validates data, imports to database with progress tracking.
 
-    <div align="center">
-      ```mermaid  theme={null}
+    <div>
+      ```mermaid theme={"theme":"css-variables"}
       graph TB
           A[importCSV] --> B[parseCSVFile]
           B --> C[validateRows]
@@ -15091,8 +16624,8 @@ Build complex data pipelines that process large datasets without timeouts. Handl
   <Tab title="Multi-source ETL pipeline">
     **Coordinator pattern with parallel extraction**. Batch triggers parallel extraction from multiple sources (APIs, databases, S3), transforms and validates data, loads to data warehouse with monitoring.
 
-    <div align="center">
-      ```mermaid  theme={null}
+    <div>
+      ```mermaid theme={"theme":"css-variables"}
       graph TB
           A[runETLPipeline] --> B[coordinateExtraction]
           B --> C[batchTriggerAndWait]
@@ -15114,8 +16647,8 @@ Build complex data pipelines that process large datasets without timeouts. Handl
   <Tab title="Parallel web scraping">
     **Coordinator pattern with browser automation**. Launches headless browsers in parallel to scrape multiple pages, extracts structured data, cleans and normalizes content, stores in database.
 
-    <div align="center">
-      ```mermaid  theme={null}
+    <div>
+      ```mermaid theme={"theme":"css-variables"}
       graph TB
           A[scrapeSite] --> B[coordinateScraping]
           B --> C[batchTriggerAndWait]
@@ -15137,8 +16670,8 @@ Build complex data pipelines that process large datasets without timeouts. Handl
   <Tab title="Batch data enrichment">
     **Coordinator pattern with rate limiting**. Fetches records needing enrichment, batch triggers parallel API calls with configurable concurrency to respect rate limits, validates enriched data, updates database.
 
-    <div align="center">
-      ```mermaid  theme={null}
+    <div>
+      ```mermaid theme={"theme":"css-variables"}
       graph TB
           A[enrichRecords] --> B[fetchRecordsToEnrich]
           B --> C[coordinateEnrichment]
@@ -15160,7 +16693,7 @@ Build complex data pipelines that process large datasets without timeouts. Handl
 
 ## Featured use cases
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Data processing & ETL workflows" icon="database" href="/guides/use-cases/data-processing-etl">
     Build complex data pipelines that process large datasets without timeouts.
   </Card>
@@ -15190,7 +16723,7 @@ Build marketing workflows from email drip sequences to orchestrating full multi-
 
 ## Featured examples
 
-<CardGroup cols={3}>
+<CardGroup>
   <Card title="Email sequences with Resend" icon="book" href="/guides/examples/resend-email-sequence">
     Send multi-day email sequences with wait delays between messages.
   </Card>
@@ -15224,8 +16757,8 @@ Build marketing workflows from email drip sequences to orchestrating full multi-
   <Tab title="Drip email campaign">
     Simple drip campaign. User signs up, waits specified delay, sends personalized email, tracks engagement.
 
-    <div align="center">
-      ```mermaid  theme={null}
+    <div>
+      ```mermaid theme={"theme":"css-variables"}
       graph TB
           A[userCreateAccount] --> B[sendWelcomeEmail]
           B --> C[wait.for 24h]
@@ -15240,8 +16773,8 @@ Build marketing workflows from email drip sequences to orchestrating full multi-
   <Tab title="Multi-channel campaigns">
     **Router pattern with delay orchestration**. User action triggers campaign, router selects channel based on preferences (email/SMS/push), coordinates multi-day sequence with delays between messages, tracks engagement across channels.
 
-    <div align="center">
-      ```mermaid  theme={null}
+    <div>
+      ```mermaid theme={"theme":"css-variables"}
       graph TB
           A[startCampaign] --> B[fetchUserProfile]
           B --> C[selectChannel]
@@ -15264,8 +16797,8 @@ Build marketing workflows from email drip sequences to orchestrating full multi-
   <Tab title="AI content with approval">
     **Supervisor pattern with approval gate**. Generates AI marketing content (images, copy, assets), pauses with wait.forToken for human review, applies revisions if needed, publishes to channels after approval.
 
-    <div align="center">
-      ```mermaid  theme={null}
+    <div>
+      ```mermaid theme={"theme":"css-variables"}
       graph TB
           A[createCampaignAssets] --> B[generateAIContent]
           B --> C[wait.forToken approval]
@@ -15281,8 +16814,8 @@ Build marketing workflows from email drip sequences to orchestrating full multi-
   <Tab title="Survey response enrichment">
     **Coordinator pattern with enrichment**. User completes survey, batch triggers parallel enrichment from CRM/analytics, analyzes and scores responses, updates customer profiles, triggers personalized follow-up campaigns.
 
-    <div align="center">
-      ```mermaid  theme={null}
+    <div>
+      ```mermaid theme={"theme":"css-variables"}
       graph TB
           A[processSurveyResponse] --> B[coordinateEnrichment]
           B --> C[batchTriggerAndWait]
@@ -15304,7 +16837,7 @@ Build marketing workflows from email drip sequences to orchestrating full multi-
 
 ## Featured use cases
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Data processing & ETL workflows" icon="database" href="/guides/use-cases/data-processing-etl">
     Build complex data pipelines that process large datasets without timeouts.
   </Card>
@@ -15334,7 +16867,7 @@ Build AI media generation pipelines that handle unpredictable API latencies and 
 
 ## Featured examples
 
-<CardGroup cols={3}>
+<CardGroup>
   <Card title="Product image generator" icon="book" href="/guides/example-projects/product-image-generator">
     Transform product photos into professional marketing images using Replicate.
   </Card>
@@ -15358,7 +16891,7 @@ Build AI media generation pipelines that handle unpredictable API latencies and 
 
 ## Production use cases
 
-<CardGroup cols={1}>
+<CardGroup>
   <Card title="Icon customer story" href="https://trigger.dev/customers/icon-customer-story">
     Read how Icon uses Trigger.dev to process and generate thousands of videos per month for their AI-driven video creation platform.
   </Card>
@@ -15374,8 +16907,8 @@ Build AI media generation pipelines that handle unpredictable API latencies and 
   <Tab title="AI content with approval">
     **Supervisor pattern with approval gate**. Generates AI content, pauses execution with wait.forToken to allow human review, applies feedback if needed, publishes approved content.
 
-    <div align="center">
-      ```mermaid  theme={null}
+    <div>
+      ```mermaid theme={"theme":"css-variables"}
       graph TB
           A[generateContent] --> B[createWithAI]
           B --> C[wait.forToken approval]
@@ -15391,8 +16924,8 @@ Build AI media generation pipelines that handle unpredictable API latencies and 
   <Tab title="AI image generation">
     Simple AI image generation. Receives prompt and parameters, calls OpenAI DALL·E 3, post-processes result, uploads to storage.
 
-    <div align="center">
-      ```mermaid  theme={null}
+    <div>
+      ```mermaid theme={"theme":"css-variables"}
       graph TB
           A[generateImage] --> B[optimizeImage]
           B --> C[uploadToStorage]
@@ -15404,8 +16937,8 @@ Build AI media generation pipelines that handle unpredictable API latencies and 
   <Tab title="Batch image generation">
     **Coordinator pattern with rate limiting**. Receives batch of generation requests, coordinates parallel processing with configurable concurrency to respect API rate limits, validates outputs, stores results.
 
-    <div align="center">
-      ```mermaid  theme={null}
+    <div>
+      ```mermaid theme={"theme":"css-variables"}
       graph TB
           A[processBatch] --> B[coordinateGeneration]
           B --> C[batchTriggerAndWait]
@@ -15427,8 +16960,8 @@ Build AI media generation pipelines that handle unpredictable API latencies and 
   <Tab title="Multi-step image enhancement">
     **Coordinator pattern with sequential processing**. Generates initial content with AI, applies style transfer or enhancement, upscales resolution, optimizes and compresses for delivery.
 
-    <div align="center">
-      ```mermaid  theme={null}
+    <div>
+      ```mermaid theme={"theme":"css-variables"}
       graph TB
           A[processCreative] --> B[generateWithAI]
           B --> C[applyStyleTransfer]
@@ -15442,7 +16975,7 @@ Build AI media generation pipelines that handle unpredictable API latencies and 
 
 ## Featured use cases
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Data processing & ETL workflows" icon="database" href="/guides/use-cases/data-processing-etl">
     Build complex data pipelines that process large datasets without timeouts.
   </Card>
@@ -15472,7 +17005,7 @@ Build media processing pipelines that handle large files and long-running operat
 
 ## Featured examples
 
-<CardGroup cols={3}>
+<CardGroup>
   <Card title="FFmpeg video processing" icon="book" href="/guides/examples/ffmpeg-video-processing">
     Process videos and upload results to R2 storage using FFmpeg.
   </Card>
@@ -15500,8 +17033,8 @@ Build media processing pipelines that handle large files and long-running operat
   <Tab title="Video transcode">
     Simple video transcoding pipeline. Downloads video from storage, batch triggers parallel transcoding to multiple formats and thumbnail extraction, uploads all results.
 
-    <div align="center">
-      ```mermaid  theme={null}
+    <div>
+      ```mermaid theme={"theme":"css-variables"}
       graph TB
           A[processVideo] --> B[downloadFromStorage]
           B --> C[batchTriggerAndWait]
@@ -15520,8 +17053,8 @@ Build media processing pipelines that handle large files and long-running operat
   <Tab title="Adaptive video processing">
     **Router + Coordinator pattern**. Analyzes video metadata to determine source resolution, routes to appropriate transcoding preset, batch triggers parallel post-processing for thumbnails, preview clips, and chapter detection.
 
-    <div align="center">
-      ```mermaid  theme={null}
+    <div>
+      ```mermaid theme={"theme":"css-variables"}
       graph TB
           A[processVideoUpload] --> B[analyzeMetadata]
           B --> C{Source<br/>Resolution?}
@@ -15551,8 +17084,8 @@ Build media processing pipelines that handle large files and long-running operat
   <Tab title="Smart image optimization">
     **Router + Coordinator pattern**. Analyzes image content to detect type, routes to specialized processing (background removal for products, face detection for portraits, scene analysis for landscapes), upscales with AI, batch triggers parallel variant generation.
 
-    <div align="center">
-      ```mermaid  theme={null}
+    <div>
+      ```mermaid theme={"theme":"css-variables"}
       graph TB
           A[processImageUpload] --> B[analyzeContent]
           B --> C{Content<br/>Type?}
@@ -15580,8 +17113,8 @@ Build media processing pipelines that handle large files and long-running operat
   <Tab title="Podcast production">
     **Coordinator pattern**. Pre-processes raw audio with noise reduction and speaker diarization, batch triggers parallel tasks for transcription (Deepgram), audio enhancement, and chapter detection, aggregates results to generate show notes and publish.
 
-    <div align="center">
-      ```mermaid  theme={null}
+    <div>
+      ```mermaid theme={"theme":"css-variables"}
       graph TB
           A[processAudioUpload] --> B[cleanAudio]
           B --> C[coordinateProcessing]
@@ -15603,8 +17136,8 @@ Build media processing pipelines that handle large files and long-running operat
   <Tab title="Document extraction with approval">
     **Router pattern with human-in-the-loop**. Detects file type and routes to appropriate processor, classifies document with AI to determine type (invoice/contract/receipt), extracts structured data fields, optionally pauses with wait.forToken for human approval.
 
-    <div align="center">
-      ```mermaid  theme={null}
+    <div>
+      ```mermaid theme={"theme":"css-variables"}
       graph TB
           A[processDocumentUpload] --> B[detectFileType]
 
@@ -15634,7 +17167,7 @@ Build media processing pipelines that handle large files and long-running operat
 
 ## Featured use cases
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Data processing & ETL workflows" icon="database" href="/guides/use-cases/data-processing-etl">
     Build complex data pipelines that process large datasets without timeouts.
   </Card>
@@ -15662,7 +17195,7 @@ Trigger.dev handles workflows that traditional platforms struggle with: long-run
 
 ## Featured use cases
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Data processing & ETL workflows" icon="database" href="/guides/use-cases/data-processing-etl">
     Build complex data pipelines that process large datasets without timeouts.
   </Card>
@@ -15694,7 +17227,7 @@ Source: https://trigger.dev/docs/help-slack
 
 
 
-If you have a paid Trigger.dev account, you can request a private Slack Connect channel.
+If you're on the Trigger.dev Pro plan, you can request a private Slack Connect channel.
 
 To do this:
 
@@ -15710,7 +17243,7 @@ Create tasks that are not exported from your trigger files but can still be exec
 
 Hidden tasks are tasks that are not exported from your trigger files but can still be executed. These tasks are only accessible to other tasks within the same file or module where they're defined.
 
-```ts trigger/my-task.ts theme={null}
+```ts trigger/my-task.ts theme={"theme":"css-variables"}
 import { task } from "@trigger.dev/sdk";
 
 // This is a hidden task - not exported
@@ -15724,7 +17257,7 @@ const internalTask = task({
 
 Hidden tasks are useful for creating internal workflows that should only be triggered by other tasks in the same file:
 
-```ts trigger/my-workflow.ts theme={null}
+```ts trigger/my-workflow.ts theme={"theme":"css-variables"}
 import { task } from "@trigger.dev/sdk";
 
 // Hidden task for internal use
@@ -15748,7 +17281,7 @@ export const mainWorkflow = task({
 
 You can also create packages of reusable tasks that can be imported and used without needing to re-export them:
 
-```ts trigger/my-task.ts theme={null}
+```ts trigger/my-task.ts theme={"theme":"css-variables"}
 import { task } from "@trigger.dev/sdk";
 import { sendToSlack } from "@repo/tasks"; // Hidden task from another package
 
@@ -15772,7 +17305,7 @@ Trigger.dev v3 allows you to integrate long-running async tasks into your applic
 
 For example, the below task processes a video with `ffmpeg` and sends the results to an s3 bucket, then updates a database with the results and sends an email to the user.
 
-```ts /trigger/video.ts theme={null}
+```ts /trigger/video.ts theme={"theme":"css-variables"}
 import { logger, task } from "@trigger.dev/sdk";
 import { updateVideoUrl } from "../db.js";
 import ffmpeg from "fluent-ffmpeg";
@@ -15845,7 +17378,7 @@ export const convertVideo = task({
 
 Now in your application, you can trigger this task by calling:
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 import { NextResponse } from "next/server";
 import { tasks } from "@trigger.dev/sdk";
 import type { convertVideo } from "./trigger/video";
@@ -15867,7 +17400,7 @@ This will schedule the task to run in the background and return a handle that yo
 
 Trigger.dev comes with a CLI that allows you to initialize Trigger.dev into your project, deploy your tasks, and run your tasks locally. You can run it via `npx` like so:
 
-```sh  theme={null}
+```sh theme={"theme":"css-variables"}
 npx trigger.dev@latest login # Log in to your Trigger.dev account
 npx trigger.dev@latest init # Initialize Trigger.dev in your project
 npx trigger.dev@latest dev # Run your tasks locally
@@ -15876,7 +17409,7 @@ npx trigger.dev@latest deploy # Deploy your tasks to the Trigger.dev instance
 
 All these commands work with the Trigger.dev cloud and/or your self-hosted instance. It supports multiple profiles so you can easily switch between different accounts or instances.
 
-```sh  theme={null}
+```sh theme={"theme":"css-variables"}
 npx trigger.dev@latest login --profile <profile> -a https://trigger.example.com # Log in to a specific profile into a self-hosted instance
 npx trigger.dev@latest dev --profile <profile> # Initialize Trigger.dev in your project
 npx trigger.dev@latest deploy --profile <profile> # Deploy your tasks to the Trigger.dev instance
@@ -15886,7 +17419,7 @@ npx trigger.dev@latest deploy --profile <profile> # Deploy your tasks to the Tri
 
 Trigger.dev implements a serverless architecture (without timeouts!) that allows you to run your tasks in a scalable and reliable way. When you run `npx trigger.dev@latest deploy`, we build and deploy your task code to your Trigger.dev instance. Then, when you trigger a task from your application, it's run in a secure, isolated environment with the resources you need to complete the task. A simplified diagram for a task execution looks like this:
 
-```mermaid  theme={null}
+```mermaid theme={"theme":"css-variables"}
 sequenceDiagram
   participant App
   participant Trigger.dev
@@ -15926,7 +17459,7 @@ This approach allows Trigger.dev to manage resources efficiently, handle complex
 
 Example of a parent and child task using the Checkpoint-Resume System:
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 import { task, wait } from "@trigger.dev/sdk";
 
 export const parentTask = task({
@@ -15963,7 +17496,7 @@ export const childTask = task({
 
 The diagram below illustrates the flow of the parent and child tasks using the Checkpoint-Resume System:
 
-```mermaid  theme={null}
+```mermaid theme={"theme":"css-variables"}
 sequenceDiagram
     participant App
     participant Trigger.dev
@@ -16009,7 +17542,7 @@ Trigger.dev's Checkpoint-Resume System, combined with idempotency keys, enables 
 Let's rewrite the `convert-video` task above to be more durable:
 
 <CodeGroup>
-  ```ts /trigger/video.ts theme={null}
+  ```ts /trigger/video.ts theme={"theme":"css-variables"}
   import { idempotencyKeys, logger, task } from "@trigger.dev/sdk";
   import { processVideo, sendUserEmail, uploadToS3 } from "./tasks.js";
   import { updateVideoUrl } from "../db.js";
@@ -16047,7 +17580,7 @@ Let's rewrite the `convert-video` task above to be more durable:
   });
   ```
 
-  ```ts /trigger/tasks.ts theme={null}
+  ```ts /trigger/tasks.ts theme={"theme":"css-variables"}
   import { task, logger } from "@trigger.dev/sdk";
   import ffmpeg from "fluent-ffmpeg";
   import { Readable } from "node:stream";
@@ -16134,7 +17667,7 @@ Let's say the email sending fails in our video processing workflow. Here's how t
 
 Here's a sequence diagram illustrating this process:
 
-```mermaid  theme={null}
+```mermaid theme={"theme":"css-variables"}
 sequenceDiagram
   participant Main as Main Task
   participant Process as Process Video
@@ -16190,17 +17723,19 @@ When you run `npx trigger.dev@latest dev`, we run your task code locally on your
 
 ## Staging and production environments
 
-Trigger.dev supports deploying to multiple "deployed" environments, such as staging and production. This allows you to test your tasks in a staging environment before deploying them to production. You can deploy to a new environment by running `npx trigger.dev@latest deploy --env <env>`, where `<env>` is the name of the environment you want to deploy to. Each environment has its own API Key, which you can use to trigger tasks in that environment.
+Trigger.dev supports deploying to `prod` and `staging` environments. This allows you to test your tasks in a staging environment before deploying them to production. You can deploy to a different environment by running `npx trigger.dev@latest deploy --env <env>`, where `<env>` is either `prod` or `staging`. Each environment has its own API Key, which you can use to trigger tasks in that environment.
+
+For additional isolated environments, you can use [preview branches](/deployment/preview-branches), which allow you to create separate environments for each branch of your code.
 
 ## OpenTelemetry
 
 The Trigger.dev logging and task dashboard is powered by OpenTelemetry traces and logs, which allows you to trace your tasks and auto-instrument your code. We also auto-correlate logs from subtasks and parent tasks, making it easy view the entire trace of a task execution. A single run of the video processing task above looks like this in the dashboard:
 
-<img src="https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/opentelemetry-trace.png?fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=ebea352695140cd16747daf0c02fc49d" alt="OpenTelemetry trace" data-og-width="3680" width="3680" data-og-height="2382" height="2382" data-path="images/opentelemetry-trace.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/opentelemetry-trace.png?w=280&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=c8ff0aabe7e1daa0b4f1766d2a965ae3 280w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/opentelemetry-trace.png?w=560&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=000644a0bd32f77210f1042cc14404aa 560w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/opentelemetry-trace.png?w=840&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=7b554aaaf552b319acc56550f900b3d1 840w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/opentelemetry-trace.png?w=1100&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=0c5c3083a6228e307d970b6d407f4584 1100w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/opentelemetry-trace.png?w=1650&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=c1548c787cec380d3e5234e0e3ea4879 1650w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/opentelemetry-trace.png?w=2500&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=d22d7242dbe210b3a6a78c19d6554b36 2500w" />
+<img alt="OpenTelemetry trace" />
 
 Because we use standard OpenTelemetry, you can instrument your code and OpenTelemetry compatible libraries to get detailed traces and logs of your tasks. The above trace instruments both Prisma and the AWS SDK:
 
-```ts trigger.config.ts theme={null}
+```ts trigger.config.ts theme={"theme":"css-variables"}
 import { defineConfig } from "@trigger.dev/sdk";
 import { PrismaInstrumentation } from "@prisma/instrumentation";
 import { AwsInstrumentation } from "@opentelemetry/instrumentation-aws-sdk";
@@ -16226,7 +17761,7 @@ Monitor your usage dashboard to understand your spending patterns. You can see:
 * Number of runs by task
 * Spikes in your daily usage
 
-<img src="https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/usage-dashboard.png?fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=0117c432cfbb809afbcc5698314dc97d" alt="Usage dashboard" data-og-width="1586" width="1586" data-og-height="1068" height="1068" data-path="images/usage-dashboard.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/usage-dashboard.png?w=280&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=8bfe7c067705696a1d1c4185cb42e0b4 280w, https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/usage-dashboard.png?w=560&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=b9059cd16ffc6ecce13077378646f956 560w, https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/usage-dashboard.png?w=840&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=aa9acbd91ba5192e66f7718c16b3dbdd 840w, https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/usage-dashboard.png?w=1100&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=0922aa95ad5d3a175c560700a869f4e2 1100w, https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/usage-dashboard.png?w=1650&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=4d6c19d83cbf2a21928c9c1393b01749 1650w, https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/usage-dashboard.png?w=2500&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=e98f6e2d5bfd4e6350b622b3ade51afe 2500w" />
+<img alt="Usage dashboard" />
 
 You can view your usage page by clicking the "Organization" menu in the top left of the dashboard and then clicking "Usage".
 
@@ -16237,7 +17772,12 @@ Configure billing alerts in your dashboard to get notified when you approach spe
 * Catch unexpected cost increases early
 * Identify runaway tasks before they become expensive
 
-<img src="https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/billing-alerts-ui.png?fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=cc2a66d8aab0d8941f81dd70bc7fb61f" alt="Billing alerts" data-og-width="925" width="925" data-og-height="757" height="757" data-path="images/billing-alerts-ui.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/billing-alerts-ui.png?w=280&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=1239c92296178c20b1fa90beb3a516f2 280w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/billing-alerts-ui.png?w=560&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=bbadf36f5ec87cac2007f8f6075974ca 560w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/billing-alerts-ui.png?w=840&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=c741c8297876d7cfadedba38ed28853f 840w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/billing-alerts-ui.png?w=1100&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=594b1eec851cd8d5199d47a6b35a6b40 1100w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/billing-alerts-ui.png?w=1650&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=692aebc1193500cc97c275f0bd5ddb0c 1650w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/billing-alerts-ui.png?w=2500&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=813b55e61d9c1bffd376f06acd7f7d3f 2500w" />
+The billing alerts page includes two types of alerts:
+
+* **Standard alerts**: Get notified at 75%, 90%, 100%, 200%, and 500% of your monthly budget
+* **Spike alerts**: Catch runaway usage from bugs or errors with alerts at 10x (1000%), 20x (2000%), 50x (5000%), and 100x (10000%) of your monthly budget. We recommend keeping these enabled as a safety net.
+
+<img alt="Billing alerts" />
 
 You can view your billing alerts page by clicking the "Organization" menu in the top left of the dashboard and then clicking "Settings".
 
@@ -16247,7 +17787,7 @@ The larger the machine, the more it costs per second. [View the machine pricing]
 
 Start with the smallest machine that works, then scale up only if needed:
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 // Default: small-1x (0.5 vCPU, 0.5 GB RAM)
 export const lightTask = task({
   id: "light-task",
@@ -16275,7 +17815,7 @@ Idempotency keys prevent expensive duplicate work by ensuring the same operation
 
 When you use an idempotency key, Trigger.dev remembers the result and skips re-execution, saving you compute costs:
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 export const expensiveApiCall = task({
   id: "expensive-api-call",
   run: async (payload: { userId: string }) => {
@@ -16296,7 +17836,7 @@ export const expensiveApiCall = task({
 
 You can use idempotency keys with various wait functions:
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 // Skip waits during retries
 const token = await wait.createToken({
   idempotencyKey: `daily-report-${new Date().toDateString()}`,
@@ -16319,7 +17859,7 @@ The `idempotencyKeyTTL` controls how long the result is cached. Use shorter TTLs
 
 Sometimes it's more efficient to do more work in a single task than split across many. This is particularly true when you're doing lots of async work such as API calls – most of the time is spent waiting, so it's an ideal candidate for doing calls in parallel inside the same task.
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 export const processItems = task({
   id: "process-items",
   run: async (payload: { items: string[] }) => {
@@ -16337,7 +17877,7 @@ When an error is thrown in a task, your run will be automatically reattempted ba
 
 Try setting lower `maxAttempts` for less critical tasks:
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 export const apiTask = task({
   id: "api-task",
   retry: {
@@ -16351,7 +17891,7 @@ export const apiTask = task({
 
 This is very useful for intermittent errors, but if there's a permanent error you don't want to retry because you will just keep failing and waste compute. Use [AbortTaskRunError](/errors-retrying#using-aborttaskrunerror) to prevent a retry:
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 import { task, AbortTaskRunError } from "@trigger.dev/sdk";
 
 export const someTask = task({
@@ -16373,7 +17913,7 @@ export const someTask = task({
 
 Set realistic maxDurations to prevent runs from executing for too long:
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 export const boundedTask = task({
   id: "bounded-task",
   maxDuration: 300, // 5 minutes max
@@ -16383,19 +17923,92 @@ export const boundedTask = task({
 });
 ```
 
+## Use waitpoints instead of polling
+
+Waits longer than 5 seconds automatically checkpoint your task, meaning you don't pay for compute while waiting. Use `wait.for()`, `wait.until()`, or `triggerAndWait()` instead of polling loops.
+
+```ts theme={"theme":"css-variables"}
+import { task, wait } from "@trigger.dev/sdk";
+
+export const waitpointTask = task({
+  id: "waitpoint-task",
+  run: async (payload) => {
+    // This wait is free - your task is checkpointed
+    await wait.for({ minutes: 5 });
+
+    // Parent is also checkpointed while waiting for child tasks
+    const result = await childTask.triggerAndWait({ data: payload });
+    return result;
+  },
+});
+```
+
+[Read more about waitpoints](/wait-for).
+
+## Use debounce to consolidate multiple triggers
+
+When a task might be triggered multiple times in quick succession, use debounce to consolidate them into a single run. This is useful for document indexing, webhook aggregation, cache invalidation, and real-time sync scenarios.
+
+```ts theme={"theme":"css-variables"}
+// Multiple rapid triggers consolidate into 1 run
+await updateIndex.trigger(
+  { docId: "doc-123" },
+  { debounce: { key: "doc-123", delay: "5s" } }
+);
+
+// Use trailing mode to process the most recent payload
+await processUpdate.trigger(
+  { version: 2 },
+  { debounce: { key: "update-123", delay: "10s", mode: "trailing" } }
+);
+```
+
+[Read more about debounce](/triggering#debounce).
+
 
 # Idempotency
 Source: https://trigger.dev/docs/idempotency
 
-An API call or operation is “idempotent” if it has the same result when called more than once.
+An API call or operation is idempotent if it has the same result when called more than once.
 
-We currently support idempotency at the task level, meaning that if you trigger a task with the same `idempotencyKey` twice, the second request will not create a new task run.
+We currently support idempotency at the task level, meaning that if you trigger a task with the same `idempotencyKey` twice, the second request will not create a new task run. Instead, the original run's handle is returned, allowing you to track the existing run's progress.
+
+## Why use idempotency keys?
+
+The most common use case is **preventing duplicate child tasks when a parent task retries**. Without idempotency keys, each retry of the parent would trigger a new child task run:
+
+```mermaid theme={"theme":"css-variables"}
+sequenceDiagram
+    participant Parent as Parent Task
+    participant SDK as Trigger.dev
+    participant Child as Child Task
+
+    Note over Parent: Attempt 1
+    Parent->>SDK: trigger(childTask, {idempotencyKey})
+    SDK->>Child: Creates child run
+    Child-->>SDK: Running...
+    Parent->>Parent: Fails, will retry
+
+    Note over Parent: Attempt 2 (retry)
+    Parent->>SDK: trigger(childTask, {idempotencyKey})
+    Note over SDK: Same key, returns existing run
+    SDK-->>Parent: Returns original child run
+    
+    Note over Child: Child task only runs once
+```
+
+Other common use cases include:
+
+* **Preventing duplicate emails** - Ensure a confirmation email is only sent once, even if the parent task retries
+* **Avoiding double-charging customers** - Prevent duplicate payment processing during retries
+* **One-time setup tasks** - Ensure initialization or migration tasks only run once
+* **Deduplicating webhook processing** - Handle the same webhook event only once, even if it's delivered multiple times
 
 ## `idempotencyKey` option
 
-You can provide an `idempotencyKey` to ensure that a task is only triggered once with the same key. This is useful if you are triggering a task within another task that might be retried:
+You can provide an `idempotencyKey` when triggering a task:
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 import { idempotencyKeys, task } from "@trigger.dev/sdk";
 
 export const myTask = task({
@@ -16420,7 +18033,7 @@ You can use the `idempotencyKeys.create` SDK function to create an idempotency k
 
 We automatically inject the run ID when generating the idempotency key when running inside a task by default. You can turn it off by passing the `scope` option to `idempotencyKeys.create`:
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 import { idempotencyKeys, task } from "@trigger.dev/sdk";
 
 export const myTask = task({
@@ -16440,7 +18053,7 @@ export const myTask = task({
 
 If you are triggering a task from your backend code, you can use the `idempotencyKeys.create` SDK function to create an idempotency key.
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 import { idempotencyKeys, tasks } from "@trigger.dev/sdk";
 
 // You can also pass an array of strings to create a idempotency key
@@ -16450,18 +18063,22 @@ await tasks.trigger("my-task", { some: "data" }, { idempotencyKey });
 
 You can also pass a string to the `idempotencyKey` option, without first creating it with `idempotencyKeys.create`.
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 import { myTask } from "./trigger/myTasks";
 
 // You can also pass an array of strings to create a idempotency key
 await myTask.trigger({ some: "data" }, { idempotencyKey: myUser.id });
 ```
 
+<Note>
+  When you pass a raw string, it defaults to `"run"` scope (scoped to the parent run). See [Default behavior](#default-behavior) for details on how scopes work and how to use global scope instead.
+</Note>
+
 <Note>Make sure you provide sufficiently unique keys to avoid collisions.</Note>
 
 You can pass the `idempotencyKey` when calling `batchTrigger` as well:
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 import { tasks } from "@trigger.dev/sdk";
 
 await tasks.batchTrigger("my-task", [
@@ -16472,6 +18089,149 @@ await tasks.batchTrigger("my-task", [
 ]);
 ```
 
+## Understanding scopes
+
+The `scope` option determines how your idempotency key is processed. When you provide a key, it gets hashed together with additional context based on the scope. This means the same key string can produce different idempotency behaviors depending on the scope you choose.
+
+### Available scopes
+
+| Scope       | What gets hashed                    | Description                                               | Use case                                                |
+| ----------- | ----------------------------------- | --------------------------------------------------------- | ------------------------------------------------------- |
+| `"run"`     | `key + parentRunId`                 | Key is combined with the parent run ID                    | Prevent duplicates within a single parent run (default) |
+| `"attempt"` | `key + parentRunId + attemptNumber` | Key is combined with the parent run ID and attempt number | Allow child tasks to re-run on each retry of the parent |
+| `"global"`  | `key`                               | Key is used as-is, no context added                       | Ensure a task only runs once ever, regardless of parent |
+
+### `run` scope (default)
+
+The `run` scope makes the idempotency key unique to the current parent task run. This is the default behavior for both raw strings and `idempotencyKeys.create()`.
+
+```ts theme={"theme":"css-variables"}
+import { idempotencyKeys, task } from "@trigger.dev/sdk";
+
+export const processOrder = task({
+  id: "process-order",
+  retry: { maxAttempts: 3 },
+  run: async (payload: { orderId: string; email: string }) => {
+    // This key is scoped to this specific run of processOrder
+    // If processOrder retries, the same key still refers to the same child run
+    const idempotencyKey = await idempotencyKeys.create(`send-confirmation-${payload.orderId}`);
+
+    // sendEmail will only be triggered once, even if processOrder retries multiple times
+    await sendEmail.trigger(
+      { to: payload.email, subject: "Order confirmed" },
+      { idempotencyKey }
+    );
+
+    // ... more processing that might fail and cause a retry
+  },
+});
+```
+
+With `run` scope, if you trigger `processOrder` twice with different run IDs, both will send emails because the idempotency keys are different (they include different parent run IDs).
+
+### `attempt` scope
+
+The `attempt` scope makes the idempotency key unique to each attempt of the parent task. Use this when you want child tasks to re-execute on each retry.
+
+```ts theme={"theme":"css-variables"}
+import { idempotencyKeys, task } from "@trigger.dev/sdk";
+
+export const syncData = task({
+  id: "sync-data",
+  retry: { maxAttempts: 3 },
+  run: async (payload: { userId: string }) => {
+    // This key changes on each retry attempt
+    const idempotencyKey = await idempotencyKeys.create(`fetch-${payload.userId}`, {
+      scope: "attempt",
+    });
+
+    // fetchLatestData will run again on each retry, getting fresh data
+    const result = await fetchLatestData.triggerAndWait(
+      { userId: payload.userId },
+      { idempotencyKey }
+    );
+
+    // Process the fresh data...
+  },
+});
+```
+
+### `global` scope
+
+The `global` scope makes the idempotency key truly global across all runs. Use this when you want to ensure a task only runs once ever (until the TTL expires), regardless of which parent task triggered it.
+
+```ts theme={"theme":"css-variables"}
+import { idempotencyKeys, task } from "@trigger.dev/sdk";
+
+export const onboardUser = task({
+  id: "onboard-user",
+  run: async (payload: { userId: string; email: string }) => {
+    // This key is global - the welcome email will only be sent once per user,
+    // even if onboardUser is triggered multiple times from different places
+    const idempotencyKey = await idempotencyKeys.create(`welcome-email-${payload.userId}`, {
+      scope: "global",
+    });
+
+    await sendWelcomeEmail.trigger(
+      { to: payload.email },
+      { idempotencyKey, idempotencyKeyTTL: "7d" }
+    );
+  },
+});
+```
+
+<Note>
+  Even with `global` scope, idempotency keys are still isolated to the specific task and environment. Using the same key to trigger *different* tasks will not deduplicate - both tasks will run. See [Environment and task scoping](#environment-and-task-scoping) for more details.
+</Note>
+
+## Default behavior
+
+Understanding the default behavior is important to avoid unexpected results:
+
+### Passing a raw string
+
+When you pass a raw string directly to the `idempotencyKey` option, it is automatically processed with `run` scope:
+
+```ts theme={"theme":"css-variables"}
+// These two are equivalent when called inside a task:
+await childTask.trigger(payload, { idempotencyKey: "my-key" });
+await childTask.trigger(payload, { idempotencyKey: await idempotencyKeys.create("my-key") });
+```
+
+<Warning>
+  **Breaking change in v4.3.1:** In v4.3.0 and earlier, raw strings defaulted to `global` scope. Starting in v4.3.1, raw strings now default to `run` scope. If you're upgrading and relied on the previous global behavior, you must now explicitly use `idempotencyKeys.create("key", { scope: "global" })`.
+</Warning>
+
+This means raw strings are scoped to the parent run by default. If you want global behavior, you must explicitly create the key with `scope: "global"`:
+
+```ts theme={"theme":"css-variables"}
+// For global idempotency, you must use idempotencyKeys.create with scope: "global"
+const idempotencyKey = await idempotencyKeys.create("my-key", { scope: "global" });
+await childTask.trigger(payload, { idempotencyKey });
+```
+
+### Triggering from backend code
+
+When triggering tasks from your backend code (outside of a task), there is no parent run context. In this case, `run` and `attempt` scopes behave the same as `global` since there's no run ID or attempt number to inject:
+
+```ts theme={"theme":"css-variables"}
+// In your backend code (e.g., an API route)
+import { idempotencyKeys, tasks } from "@trigger.dev/sdk";
+
+// All three of these behave the same when called outside a task:
+await tasks.trigger("my-task", payload, { idempotencyKey: "my-key" });
+await tasks.trigger("my-task", payload, {
+  idempotencyKey: await idempotencyKeys.create("my-key", { scope: "run" }),
+});
+await tasks.trigger("my-task", payload, {
+  idempotencyKey: await idempotencyKeys.create("my-key", { scope: "global" }),
+});
+```
+
+<Note>
+  When triggering from backend code, the scope doesn't matter since there's no task context. All scopes effectively behave as global.
+</Note>
+
 ## `idempotencyKeyTTL` option
 
 The `idempotencyKeyTTL` option defines a time window during which a task with the same idempotency key will only run once. Here's how it works:
@@ -16480,11 +18240,11 @@ The `idempotencyKeyTTL` option defines a time window during which a task with th
 2. During this window, any subsequent triggers with the same idempotency key will return the original task run instead of creating a new one.
 3. Once the TTL window expires, the next trigger with that idempotency key will create a new task run and start a new time window.
 
-<img src="https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/idempotency-key-ttl.png?fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=ed13a5a2782dceb10e62483dd0ad6417" alt="idempotency-key-ttl" data-og-width="939" width="939" data-og-height="924" height="924" data-path="images/idempotency-key-ttl.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/idempotency-key-ttl.png?w=280&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=5e9e71c9b27dbd12ce2d427b6a381976 280w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/idempotency-key-ttl.png?w=560&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=27c5b4751d25d9dd76a109487b926d10 560w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/idempotency-key-ttl.png?w=840&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=28adb87d5c934a925e3a9494c23c983a 840w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/idempotency-key-ttl.png?w=1100&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=234d6cc345f7e86c88627eca77503d1a 1100w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/idempotency-key-ttl.png?w=1650&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=fb417bbcbc46cd9ad684783313b9a91f 1650w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/idempotency-key-ttl.png?w=2500&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=d701231ed25ac6e732be10529e46e017 2500w" />
+<img alt="idempotency-key-ttl" />
 
 By default idempotency keys are stored for 30 days. You can change this by passing the `idempotencyKeyTTL` option when triggering a task:
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 import { idempotencyKeys, task, wait } from "@trigger.dev/sdk";
 
 export const myTask = task({
@@ -16516,11 +18276,37 @@ You can use the following units for the `idempotencyKeyTTL` option:
 * `h` for hours (e.g. `2h`)
 * `d` for days (e.g. `3d`)
 
+## Failed runs and idempotency
+
+When a run with an idempotency key **fails**, the key is automatically cleared. This means triggering the same task with the same idempotency key will create a new run. However, **successful** and **canceled** runs keep their idempotency key. If you need to re-trigger after a successful or canceled run, you can:
+
+1. **Reset the idempotency key** using `idempotencyKeys.reset()`:
+
+```ts theme={"theme":"css-variables"}
+import { idempotencyKeys } from "@trigger.dev/sdk";
+
+// Clear the idempotency key to allow re-triggering
+await idempotencyKeys.reset("my-task", "my-idempotency-key");
+
+// Now you can trigger the task again
+await myTask.trigger(payload, { idempotencyKey: "my-idempotency-key" });
+```
+
+2. **Use a shorter TTL** so the key expires automatically:
+
+```ts theme={"theme":"css-variables"}
+// Key expires after 5 minutes
+await myTask.trigger(payload, { 
+  idempotencyKey: "my-key", 
+  idempotencyKeyTTL: "5m" 
+});
+```
+
 ## Payload-based idempotency
 
 We don't currently support payload-based idempotency, but you can implement it yourself by hashing the payload and using the hash as the idempotency key.
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 import { idempotencyKeys, task } from "@trigger.dev/sdk";
 import { createHash } from "node:crypto";
 
@@ -16538,11 +18324,142 @@ function hash(payload: any): string {
 }
 ```
 
+## Resetting idempotency keys
+
+You can reset an idempotency key to clear it from all associated runs. This is useful if you need to allow a task to be triggered again with the same idempotency key.
+
+When you reset an idempotency key, it will be cleared for all runs that match both the task identifier and the idempotency key in the current environment. This allows you to trigger the task again with the same key.
+
+### API signature
+
+```ts theme={"theme":"css-variables"}
+idempotencyKeys.reset(
+  taskIdentifier: string,
+  idempotencyKey: string,
+  requestOptions?: ZodFetchOptions
+): Promise<{ id: string }>
+```
+
+| Parameter        | Description                                                      |
+| ---------------- | ---------------------------------------------------------------- |
+| `taskIdentifier` | The identifier of the task (e.g., `"my-task"`)                   |
+| `idempotencyKey` | The idempotency key hash to reset (the 64-character hash string) |
+| `requestOptions` | Optional fetch options for the API request                       |
+
+### Resetting keys created with `idempotencyKeys.create()`
+
+When you pass an `IdempotencyKey` created with `idempotencyKeys.create()`, the scope and original key are automatically extracted, making it easy to reset:
+
+```ts theme={"theme":"css-variables"}
+import { idempotencyKeys, task } from "@trigger.dev/sdk";
+
+export const parentTask = task({
+  id: "parent-task",
+  run: async (payload) => {
+    const key = await idempotencyKeys.create("my-key", { scope: "global" });
+    await childTask.trigger(payload, { idempotencyKey: key });
+
+    // Later in the same task, reset it - options extracted automatically
+    await idempotencyKeys.reset("child-task", key);
+  },
+});
+```
+
+### Resetting global keys
+
+Global keys are the simplest to reset since they don't require any run context:
+
+```ts theme={"theme":"css-variables"}
+import { idempotencyKeys } from "@trigger.dev/sdk";
+
+// From anywhere - inside a task or from your backend code
+await idempotencyKeys.reset("my-task", "my-key", { scope: "global" });
+```
+
+### Resetting run-scoped keys
+
+Keys created with `"run"` scope (the default) include the parent run ID in the hash. When resetting from inside the same task, the run ID is automatically available:
+
+```ts theme={"theme":"css-variables"}
+import { idempotencyKeys, task } from "@trigger.dev/sdk";
+
+export const parentTask = task({
+  id: "parent-task",
+  run: async (payload) => {
+    // Create a run-scoped key (default)
+    const key = await idempotencyKeys.create("my-key");
+    await childTask.trigger(payload, { idempotencyKey: key });
+
+    // Reset works automatically inside the task - run ID is available from context
+    await idempotencyKeys.reset("child-task", key);
+  },
+});
+```
+
+When resetting from outside a task (e.g., from your backend code), you must provide the `parentRunId`:
+
+```ts theme={"theme":"css-variables"}
+import { idempotencyKeys } from "@trigger.dev/sdk";
+
+// From your backend code - you need to know the parent run ID
+await idempotencyKeys.reset("my-task", "my-key", {
+  scope: "run",
+  parentRunId: "run_abc123"
+});
+```
+
+### Resetting attempt-scoped keys
+
+Keys created with `"attempt"` scope include both the parent run ID and attempt number. When resetting from outside a task, you must provide both:
+
+```ts theme={"theme":"css-variables"}
+import { idempotencyKeys } from "@trigger.dev/sdk";
+
+// From your backend code
+await idempotencyKeys.reset("my-task", "my-key", {
+  scope: "attempt",
+  parentRunId: "run_abc123",
+  attemptNumber: 1
+});
+```
+
+<Warning>
+  If you try to reset a `"run"` or `"attempt"` scoped key from outside a task without providing the required `parentRunId` (and `attemptNumber` for attempt scope), it will throw an error.
+</Warning>
+
+### Resetting from the dashboard
+
+You can also reset idempotency keys directly from the Trigger.dev dashboard:
+
+1. Navigate to the run that has the idempotency key you want to reset
+2. In the run details panel, find the "Idempotency key" section
+3. Click the "Reset" button
+
+This is useful when you need to manually allow a task to be re-triggered without writing code.
+
+<img alt="Idempotency section in the run details pane showing the key, scope, and expiration time" />
+
+<Note>
+  Resetting an idempotency key only affects runs in the current environment. The reset is scoped to the specific task identifier and idempotency key combination.
+</Note>
+
 ## Important notes
+
+### Environment and task scoping
 
 Idempotency keys, even the ones scoped globally, are actually scoped to the task and the environment. This means that you cannot collide with keys from other environments (e.g. dev will never collide with prod), or to other projects and orgs.
 
 If you use the same idempotency key for triggering different tasks, the tasks will not be idempotent, and both tasks will be triggered. There's currently no way to make multiple tasks idempotent with the same key.
+
+### How scopes affect the key
+
+The scope determines what gets hashed alongside your key:
+
+* Same key + `"run"` scope in different parent runs = different hashes = both tasks run
+* Same key + `"global"` scope in different parent runs = same hash = only first task runs
+* Same key + different scopes = different hashes = both tasks run
+
+This is why understanding scopes is crucial: the same string key can produce different idempotency behavior depending on the scope and context.
 
 
 # Welcome to the Trigger.dev docs
@@ -16550,20 +18467,20 @@ Source: https://trigger.dev/docs/introduction
 
 Find all the resources and guides you need to get started
 
-<CardGroup cols={2}>
-  <Card title="Quick start" img="https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/intro-quickstart.jpg?fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=3daa6c1f067453c49af4221cb7dae812" href="/quick-start" data-og-width="480" width="480" data-og-height="280" height="280" data-path="images/intro-quickstart.jpg" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/intro-quickstart.jpg?w=280&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=f007fba3d74040ab1bf5792a0b25fb94 280w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/intro-quickstart.jpg?w=560&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=efab6d38781d8435bb4b37baac2e8b99 560w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/intro-quickstart.jpg?w=840&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=756260cad7e8a96f2ef4438197f9cea6 840w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/intro-quickstart.jpg?w=1100&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=efbb722cebc3f79afd7e80375042e45a 1100w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/intro-quickstart.jpg?w=1650&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=9bd7639a9277dd5ac7c9b7bf37f59b15 1650w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/intro-quickstart.jpg?w=2500&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=c04bc953621d99ddf8d647a4c8ac2518 2500w">
+<CardGroup>
+  <Card title="Quick start" href="/quick-start">
     Get started with Trigger.dev and run your first task in 3 minutes
   </Card>
 
-  <Card title="Guides, frameworks & examples" img="https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/intro-examples.jpg?fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=a0d04795e0949c204f31dba612d3f351" href="/guides/introduction#example-tasks" data-og-width="480" width="480" data-og-height="280" height="280" data-path="images/intro-examples.jpg" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/intro-examples.jpg?w=280&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=98d8ee9833e36a5d7d99831c5582fee0 280w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/intro-examples.jpg?w=560&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=bd202420893e3f9c4a5c649a3362497a 560w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/intro-examples.jpg?w=840&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=43d5c5eb74c6c1d9950c3149fd65875f 840w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/intro-examples.jpg?w=1100&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=ad7aa47a74372c1abe8187c57827bcb9 1100w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/intro-examples.jpg?w=1650&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=792d568625d46c6736a144d81b0772b5 1650w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/intro-examples.jpg?w=2500&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=5db47fb7f73728553b5bac2eadee572b 2500w">
+  <Card title="Guides, frameworks & examples" href="/guides/introduction#example-tasks">
     Browse our wide range of guides, frameworks and example projects
   </Card>
 
-  <Card title="MCP Server" img="https://mintcdn.com/trigger/O9QeT-PFPY5Njogw/images/intro-mcp.jpg?fit=max&auto=format&n=O9QeT-PFPY5Njogw&q=85&s=0b1535467cdc23f489dc300c71e784bb" href="/mcp-introduction" data-og-width="480" width="480" data-og-height="280" height="280" data-path="images/intro-mcp.jpg" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/trigger/O9QeT-PFPY5Njogw/images/intro-mcp.jpg?w=280&fit=max&auto=format&n=O9QeT-PFPY5Njogw&q=85&s=e828f87118521030e1d4f006c53d3b53 280w, https://mintcdn.com/trigger/O9QeT-PFPY5Njogw/images/intro-mcp.jpg?w=560&fit=max&auto=format&n=O9QeT-PFPY5Njogw&q=85&s=60156c7a7e97c0178cb5a631a8515302 560w, https://mintcdn.com/trigger/O9QeT-PFPY5Njogw/images/intro-mcp.jpg?w=840&fit=max&auto=format&n=O9QeT-PFPY5Njogw&q=85&s=c01a8c054c96dc5940a48547a0727941 840w, https://mintcdn.com/trigger/O9QeT-PFPY5Njogw/images/intro-mcp.jpg?w=1100&fit=max&auto=format&n=O9QeT-PFPY5Njogw&q=85&s=0157e86ef0c2218cd19206affd15cc5c 1100w, https://mintcdn.com/trigger/O9QeT-PFPY5Njogw/images/intro-mcp.jpg?w=1650&fit=max&auto=format&n=O9QeT-PFPY5Njogw&q=85&s=4311def68cd35fd8cfe617cfbcf60de3 1650w, https://mintcdn.com/trigger/O9QeT-PFPY5Njogw/images/intro-mcp.jpg?w=2500&fit=max&auto=format&n=O9QeT-PFPY5Njogw&q=85&s=ff386b0658d0002f7ac83049d6aeebb0 2500w">
-    Learn how to install and configure the Trigger.dev MCP Server
+  <Card title="Building with AI" href="/building-with-ai">
+    Learn how to build Trigger.dev projects using AI coding assistants
   </Card>
 
-  <Card title="Video walkthrough" img="https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/intro-video.jpg?fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=3a34fcac5370ad06e3c5d317719a8acc" href="/video-walkthrough" data-og-width="480" width="480" data-og-height="280" height="280" data-path="images/intro-video.jpg" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/intro-video.jpg?w=280&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=09d5ec6d1cd85243d920ab1ed5b4b6a5 280w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/intro-video.jpg?w=560&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=28179e87cee604339ec921de45ea0008 560w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/intro-video.jpg?w=840&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=c38cdd9228eb8bbad04e8a5ea28f02a5 840w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/intro-video.jpg?w=1100&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=f37e8622b472fced9035a30d7e036e9f 1100w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/intro-video.jpg?w=1650&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=09c16d181df9ad822424c4ce9d2c75d4 1650w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/intro-video.jpg?w=2500&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=012be02b3d348512fa5613d1b58bcb28 2500w">
+  <Card title="Video walkthrough" href="/video-walkthrough">
     Watch an end-to-end demo of Trigger.dev in 10 minutes
   </Card>
 </CardGroup>
@@ -16576,20 +18493,20 @@ We provide everything you need to build and manage background tasks: a CLI and S
 
 ## Learn the concepts
 
-<CardGroup cols={2}>
-  <Card title="Writing tasks" icon="wand-magic-sparkles" href="/tasks/overview" color="#3B82F6">
+<CardGroup>
+  <Card title="Writing tasks" icon="wand-magic-sparkles" href="/tasks/overview">
     Tasks are the core of Trigger.dev. Learn what they are and how to write them.
   </Card>
 
-  <Card title="Triggering tasks" icon="bullseye-pointer" href="/triggering" color="#fbbf24">
+  <Card title="Triggering tasks" icon="bullseye-pointer" href="/triggering">
     Learn how to trigger tasks from your codebase.
   </Card>
 
-  <Card title="Runs" icon="person-running" href="/runs" color="#EA189E">
+  <Card title="Runs" icon="person-running" href="/runs">
     Runs are the instances of tasks that are executed. Learn how they work.
   </Card>
 
-  <Card title="API keys" icon="key" href="/apikeys" color="#EAEA08">
+  <Card title="API keys" icon="key" href="/apikeys">
     API keys are used to authenticate requests to the Trigger.dev API. Learn how to create and use
     them.
   </Card>
@@ -16598,35 +18515,35 @@ We provide everything you need to build and manage background tasks: a CLI and S
 ## Explore by feature
 
 <CardGroup>
-  <Card title="Scheduled tasks (cron)" icon="clock" href="/tasks/scheduled" color="#EAEA08">
+  <Card title="Scheduled tasks (cron)" icon="clock" href="/tasks/scheduled">
     Scheduled tasks are a type of task that is scheduled to run at a specific time.
   </Card>
 
-  <Card title="Realtime API" icon="loader" href="/realtime" color="#22C55E">
+  <Card title="Realtime API" icon="loader" href="/realtime">
     The Realtime API allows you to trigger tasks and get the status of runs.
   </Card>
 
-  <Card title="React hooks" icon="react" href="/realtime/react-hooks" color="#3B82F6">
+  <Card title="React hooks" icon="react" href="/realtime/react-hooks">
     React hooks are a way to show task status in your frontend.
   </Card>
 
-  <Card title="Waits" icon="calendar-clock" href="/wait" color="#F59E0B">
+  <Card title="Waits" icon="calendar-clock" href="/wait">
     Waits are a way to wait for a task to finish before continuing.
   </Card>
 
-  <Card title="Errors and retries" icon="message-exclamation" href="/errors-retrying" color="#F43F5E">
+  <Card title="Errors and retries" icon="message-exclamation" href="/errors-retrying">
     Learn how to handle errors and retries.
   </Card>
 
-  <Card title="Concurrency & Queues" icon="line-height" href="/queue-concurrency" color="#D946EF">
+  <Card title="Concurrency & Queues" icon="line-height" href="/queue-concurrency">
     Configure what you want to happen when there is more than one run at a time.
   </Card>
 
-  <Card title="Wait for token (human-in-the-loop)" icon="hand" href="/wait-for-token" color="#EAEA08">
+  <Card title="Wait for token (human-in-the-loop)" icon="hand" href="/wait-for-token">
     Pause runs until a token is completed via an approval workflow.
   </Card>
 
-  <Card title="Build extensions" icon="gear" href="/config/extensions/overview" color="#22C55E">
+  <Card title="Build extensions" icon="gear" href="/config/extensions/overview">
     Customize the build process or the resulting bundle and container image.
   </Card>
 </CardGroup>
@@ -16651,36 +18568,36 @@ We provide everything you need to build and manage background tasks: a CLI and S
 
 ## Explore by example
 
-<CardGroup cols={3}>
-  <Card title="FFmpeg" img="https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/intro-ffmpeg.jpg?fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=308ca975004d564b951b5247fa42e1ba" href="/guides/examples/ffmpeg-video-processing" data-og-width="300" width="300" data-og-height="160" height="160" data-path="images/intro-ffmpeg.jpg" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/intro-ffmpeg.jpg?w=280&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=50b20cc1ce3b013390374b650c160a8a 280w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/intro-ffmpeg.jpg?w=560&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=4efedf86cefcb2b4071c08dcd1fd9634 560w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/intro-ffmpeg.jpg?w=840&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=1a1009efa595d46490efaf848e13c2cd 840w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/intro-ffmpeg.jpg?w=1100&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=e2f6b59884b95dd976f2a3570ddc8714 1100w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/intro-ffmpeg.jpg?w=1650&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=284de6e4c3eedbd6663b0fd7a66a3a6b 1650w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/intro-ffmpeg.jpg?w=2500&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=ee2e35399d23ea25110516b541d699eb 2500w" />
+<CardGroup>
+  <Card title="FFmpeg" href="/guides/examples/ffmpeg-video-processing" />
 
-  <Card title="Fal.ai" img="https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/intro-fal.jpg?fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=553e3f821fb8ee2776783e992e69063e" href="/guides/examples/fal-ai-image-to-cartoon" data-og-width="300" width="300" data-og-height="160" height="160" data-path="images/intro-fal.jpg" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/intro-fal.jpg?w=280&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=30bea8d94d5486b3bce3c17c21f03bea 280w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/intro-fal.jpg?w=560&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=6c0b6596344ad2f1001cef7eecd5d564 560w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/intro-fal.jpg?w=840&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=66fe4f5d5564792add7c14d03c614409 840w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/intro-fal.jpg?w=1100&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=306e732afbc891ae91b132835bf89632 1100w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/intro-fal.jpg?w=1650&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=74e49a6ecab024a0843169b85478d91a 1650w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/intro-fal.jpg?w=2500&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=fc1da0a07093e461f1ae95e867e6b562 2500w" />
+  <Card title="Fal.ai" href="/guides/examples/fal-ai-image-to-cartoon" />
 
-  <Card title="Puppeteer" img="https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/intro-puppeteer.jpg?fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=d87baa6ed5eb42a9f44c3f192675353f" href="/guides/examples/puppeteer" data-og-width="300" width="300" data-og-height="160" height="160" data-path="images/intro-puppeteer.jpg" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/intro-puppeteer.jpg?w=280&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=b3ac0a433d872bf5b57335d162dcce4c 280w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/intro-puppeteer.jpg?w=560&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=35df7b5bfc747dc97f45b8c3f9f45478 560w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/intro-puppeteer.jpg?w=840&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=4ff92ad8a2dcac1db0d6614a3513e97e 840w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/intro-puppeteer.jpg?w=1100&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=3c067ac24018cacddfc38076d7cb704b 1100w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/intro-puppeteer.jpg?w=1650&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=a36ffdf53cb05d1a48d6a5cacea6f9dd 1650w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/intro-puppeteer.jpg?w=2500&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=6e5c6e5774c0e7bcff7a20b4f4b8cdb4 2500w" />
+  <Card title="Puppeteer" href="/guides/examples/puppeteer" />
 
-  <Card title="LibreOffice" img="https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/intro-libreoffice.jpg?fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=ef98f3b2a4289ded93b40f454a570ff8" href="/guides/examples/libreoffice-pdf-conversion" data-og-width="300" width="300" data-og-height="160" height="160" data-path="images/intro-libreoffice.jpg" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/intro-libreoffice.jpg?w=280&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=187fe896ab79b2d257b79fdbae1084f9 280w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/intro-libreoffice.jpg?w=560&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=9e22f338d2789e3d0d15f9a10008dd49 560w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/intro-libreoffice.jpg?w=840&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=4377131d4951b67eef44d23cce0adc74 840w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/intro-libreoffice.jpg?w=1100&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=f15e4c04279cdf4cbba42335083c758b 1100w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/intro-libreoffice.jpg?w=1650&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=306c50f36bf9df92613a60bbda204c65 1650w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/intro-libreoffice.jpg?w=2500&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=19cf8150a75754a50dd530cc479b8734 2500w" />
+  <Card title="LibreOffice" href="/guides/examples/libreoffice-pdf-conversion" />
 
-  <Card title="OpenAI" img="https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/intro-openai.jpg?fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=bb55c727721a1d192f05bfbd4b2aedd0" href="/guides/examples/open-ai-with-retrying" data-og-width="300" width="300" data-og-height="160" height="160" data-path="images/intro-openai.jpg" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/intro-openai.jpg?w=280&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=804ed1edf44a880f92166720ac152b41 280w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/intro-openai.jpg?w=560&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=400560d4d5dbd0997ec59676de140336 560w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/intro-openai.jpg?w=840&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=702d5edd4e4b2c64f5c236135fe23f09 840w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/intro-openai.jpg?w=1100&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=ac46d3e8215b7883e50fb0dd570be4a4 1100w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/intro-openai.jpg?w=1650&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=de2b9c512de8ad08a58bc56bd01f2cd3 1650w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/intro-openai.jpg?w=2500&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=41f2edcb4f467f64616ea98076850367 2500w" />
+  <Card title="OpenAI" href="/guides/examples/open-ai-with-retrying" />
 
-  <Card title="Browserbase" img="https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/intro-browserbase.jpg?fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=352fb95a185e61f6eb76b829465f5760" href="/guides/examples/scrape-hacker-news" data-og-width="300" width="300" data-og-height="160" height="160" data-path="images/intro-browserbase.jpg" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/intro-browserbase.jpg?w=280&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=6b8953fe0f084bd45609935db71775b3 280w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/intro-browserbase.jpg?w=560&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=b50a1920addcdc16183af1fac0d4ffb6 560w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/intro-browserbase.jpg?w=840&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=9755604b742f51965ac16fe6c0620c36 840w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/intro-browserbase.jpg?w=1100&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=6d8a2b3eac6e6ea30573597042db02f3 1100w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/intro-browserbase.jpg?w=1650&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=32fec71af786bf4f485f547c72b94392 1650w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/intro-browserbase.jpg?w=2500&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=e81273b45fa13a05bdf4db434be06c7e 2500w" />
+  <Card title="Browserbase" href="/guides/examples/scrape-hacker-news" />
 
-  <Card title="Sentry" img="https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/intro-sentry.jpg?fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=984402dfeeff094b78af3f511ae110d6" href="/guides/examples/sentry-error-tracking" data-og-width="300" width="300" data-og-height="160" height="160" data-path="images/intro-sentry.jpg" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/intro-sentry.jpg?w=280&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=ca4c36a0bd998047218376e1a6ad9cdd 280w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/intro-sentry.jpg?w=560&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=3038004a3cebc85adccbf6a5df69410e 560w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/intro-sentry.jpg?w=840&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=9359664068ff677d69c6a689b653d66f 840w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/intro-sentry.jpg?w=1100&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=cbf973d9fce1245f5f44bb3104e6fc22 1100w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/intro-sentry.jpg?w=1650&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=279ea6752575b58c363f4f8e0e5e6f1b 1650w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/intro-sentry.jpg?w=2500&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=e2e14007ef4ede97b3e172a3a51e295e 2500w" />
+  <Card title="Sentry" href="/guides/examples/sentry-error-tracking" />
 
-  <Card title="Resend" img="https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/intro-resend.jpg?fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=1132b85155953b871bcc310e2d0791ca" href="/guides/examples/resend-email-sequence" data-og-width="300" width="300" data-og-height="160" height="160" data-path="images/intro-resend.jpg" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/intro-resend.jpg?w=280&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=fcdb1621b2af47568d9f2e8757c60524 280w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/intro-resend.jpg?w=560&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=4a973d71db540048191aaadfd7ada258 560w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/intro-resend.jpg?w=840&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=02f8ed472d2f1a4232d36faaffa90496 840w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/intro-resend.jpg?w=1100&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=95a6ebda32b42caa135ce0e520c4cc33 1100w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/intro-resend.jpg?w=1650&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=7ce7a62b7dcd3fbbc88191fe9d4bcb12 1650w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/intro-resend.jpg?w=2500&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=47ad461fe5624b5aadb9de23b4089ef4 2500w" />
+  <Card title="Resend" href="/guides/examples/resend-email-sequence" />
 
-  <Card title="Vercel AI SDK" img="https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/intro-vercel.jpg?fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=9509bd7265563f221aa2c883a6636604" href="/guides/examples/vercel-ai-sdk" data-og-width="300" width="300" data-og-height="160" height="160" data-path="images/intro-vercel.jpg" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/intro-vercel.jpg?w=280&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=dcf1c80803fe78806c742dd5a8a40a05 280w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/intro-vercel.jpg?w=560&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=3fbfab53ebdd9e827b9714fa0db976fe 560w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/intro-vercel.jpg?w=840&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=25985533ac75665a57f5766dfd536c0d 840w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/intro-vercel.jpg?w=1100&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=ed0558226346e611c1e1b57b5cc9f9fb 1100w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/intro-vercel.jpg?w=1650&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=cf90b10c302ff4e67a2179dbc0fb9908 1650w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/intro-vercel.jpg?w=2500&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=2c0676c8fbf7aadccac1c7369c5614e7 2500w" />
+  <Card title="Vercel AI SDK" href="/guides/examples/vercel-ai-sdk" />
 
-  <Card title="Sharp" img="https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/intro-sharp.jpg?fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=dc7f8fee7e41659bc26c3f82465bcad9" href="/guides/examples/sharp-image-processing" data-og-width="300" width="300" data-og-height="160" height="160" data-path="images/intro-sharp.jpg" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/intro-sharp.jpg?w=280&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=bc1cecbe48567ff501d58bbbe5f9b546 280w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/intro-sharp.jpg?w=560&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=711a7d34171b069a15f4a138b958230a 560w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/intro-sharp.jpg?w=840&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=0d6a85390203f5b559c9c748df389bf7 840w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/intro-sharp.jpg?w=1100&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=fa01bba7583a9d0f1d11631862dec0b3 1100w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/intro-sharp.jpg?w=1650&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=ce0059c974fe529af51c6f0ea5c9ee65 1650w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/intro-sharp.jpg?w=2500&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=03322f9ac91591a47f67479355e97625 2500w" />
+  <Card title="Sharp" href="/guides/examples/sharp-image-processing" />
 
-  <Card title="Deepgram" img="https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/intro-deepgram.jpg?fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=feb9e540b0c7f9164afe5f490d1e7f15" href="/guides/examples/deepgram-transcribe-audio" data-og-width="300" width="300" data-og-height="160" height="160" data-path="images/intro-deepgram.jpg" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/intro-deepgram.jpg?w=280&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=dd0b19a52aa86daf35aedb41e03237eb 280w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/intro-deepgram.jpg?w=560&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=2278887e1305326123cf2b940b480b76 560w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/intro-deepgram.jpg?w=840&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=9d130f5e0ddd091ef7fcfbf4834a5974 840w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/intro-deepgram.jpg?w=1100&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=106d584ce33ea29d305be0e65d8ad4b1 1100w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/intro-deepgram.jpg?w=1650&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=a4ed91bcf5b47fce740d9598d6a7b1c2 1650w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/intro-deepgram.jpg?w=2500&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=ff29802a9e84279c2ab0d3263eb38ae1 2500w" />
+  <Card title="Deepgram" href="/guides/examples/deepgram-transcribe-audio" />
 
-  <Card title="Supabase" img="https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/intro-supabase.jpg?fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=e12aee521d12d2b5002e9ffe63fd1c43" href="/guides/examples/supabase-database-operations" data-og-width="300" width="300" data-og-height="160" height="160" data-path="images/intro-supabase.jpg" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/intro-supabase.jpg?w=280&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=378114042ed64925968eda7afb41a4dd 280w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/intro-supabase.jpg?w=560&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=92c281c515d77722fe11a440dc0e4d8c 560w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/intro-supabase.jpg?w=840&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=0f47163542864a0cb09afbab5183690e 840w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/intro-supabase.jpg?w=1100&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=c8f8a045c1895ad6ab849a9984ce81f8 1100w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/intro-supabase.jpg?w=1650&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=17b8aa806fe6590159bff079152a6910 1650w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/intro-supabase.jpg?w=2500&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=85c9b5c2531480e66aa75723953afbab 2500w" />
+  <Card title="Supabase" href="/guides/examples/supabase-database-operations" />
 
-  <Card title="DALL•E" img="https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/intro-openai.jpg?fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=bb55c727721a1d192f05bfbd4b2aedd0" href="/guides/examples/dall-e3-generate-image" data-og-width="300" width="300" data-og-height="160" height="160" data-path="images/intro-openai.jpg" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/intro-openai.jpg?w=280&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=804ed1edf44a880f92166720ac152b41 280w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/intro-openai.jpg?w=560&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=400560d4d5dbd0997ec59676de140336 560w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/intro-openai.jpg?w=840&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=702d5edd4e4b2c64f5c236135fe23f09 840w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/intro-openai.jpg?w=1100&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=ac46d3e8215b7883e50fb0dd570be4a4 1100w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/intro-openai.jpg?w=1650&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=de2b9c512de8ad08a58bc56bd01f2cd3 1650w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/intro-openai.jpg?w=2500&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=41f2edcb4f467f64616ea98076850367 2500w" />
+  <Card title="DALL•E" href="/guides/examples/dall-e3-generate-image" />
 
-  <Card title="Firecrawl" img="https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/intro-firecrawl.jpg?fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=c992f70dfa2e7324a5a6c23fdfb5f1ce" href="/guides/examples/firecrawl-url-crawl" data-og-width="300" width="300" data-og-height="160" height="160" data-path="images/intro-firecrawl.jpg" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/intro-firecrawl.jpg?w=280&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=a70817b40350fc2f0e4f3d80b70b8cd9 280w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/intro-firecrawl.jpg?w=560&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=dc8f447d095336ad25d0ffde813a5bd0 560w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/intro-firecrawl.jpg?w=840&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=c3839edafb3fe9afa9a691857d7c920d 840w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/intro-firecrawl.jpg?w=1100&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=2267747bd997ec4dc84c018f2468eb51 1100w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/intro-firecrawl.jpg?w=1650&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=be5edf52ca41b6685da8495c05661f15 1650w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/intro-firecrawl.jpg?w=2500&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=213f79f8cc8eac5d672750c9f1669c1e 2500w" />
+  <Card title="Firecrawl" href="/guides/examples/firecrawl-url-crawl" />
 
-  <Card title="Lightpanda" img="https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/intro-lightpanda.jpg?fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=f0d242338bf995c2872da2aac5cefd7b" href="/guides/examples/lightpanda" data-og-width="300" width="300" data-og-height="160" height="160" data-path="images/intro-lightpanda.jpg" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/intro-lightpanda.jpg?w=280&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=8f1038a9f7aa12ca4b0691d889ff5af3 280w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/intro-lightpanda.jpg?w=560&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=55778ec1b01b144e3a910491d316c5f0 560w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/intro-lightpanda.jpg?w=840&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=d13f6e47f07a9e789d489b583f10347a 840w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/intro-lightpanda.jpg?w=1100&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=4622ebbf10b29fdc28a5fd6ec08f7fe7 1100w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/intro-lightpanda.jpg?w=1650&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=df90e0d88e401591cc007b09fe9e15fe 1650w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/intro-lightpanda.jpg?w=2500&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=9a61b99beb043406e40fcf27d9027860 2500w" />
+  <Card title="Lightpanda" href="/guides/examples/lightpanda" />
 </CardGroup>
 
 ## Getting help
@@ -16688,28 +18605,27 @@ We provide everything you need to build and manage background tasks: a CLI and S
 We'd love to hear from you or give you a hand getting started. Here are some ways to get in touch with us.
 
 <CardGroup>
-  <Card title="Join our Discord server" icon="discord" href="https://discord.gg/kA47vcd8P6" color="#5865F2">
+  <Card title="Join our Discord server" icon="discord" href="https://discord.gg/kA47vcd8P6">
     Our Discord is the best place to get help with any questions about Trigger.dev.
   </Card>
 
   <Card
     title="Follow us on X (Twitter)"
     icon={
-    <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 0 512 512">
-      <path d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z" />
-    </svg>
-  }
+  <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 0 512 512">
+    <path d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z" />
+  </svg>
+}
     href="https://twitter.com/triggerdotdev"
-    color="#1DA1F2"
   >
     Follow us to get the latest updates and news.
   </Card>
 
-  <Card title="Schedule a call" icon="phone" iconType="solid" color="#22C55E" href="https://cal.com/team/triggerdotdev/founders-call">
+  <Card title="Schedule a call" icon="phone" href="https://cal.com/team/triggerdotdev/founders-call">
     Arrange a call with one of the founders to get help with any questions.
   </Card>
 
-  <Card title="Give us a star on GitHub" icon="star" iconType="solid" href="https://github.com/triggerdotdev/trigger.dev" color="#fbbf24">
+  <Card title="Give us a star on GitHub" icon="star" href="https://github.com/triggerdotdev/trigger.dev">
     Check us out our GitHub repo and give us a star if you like what we're doing.
   </Card>
 </CardGroup>
@@ -16720,6 +18636,8 @@ Source: https://trigger.dev/docs/limits
 
 There are some hard and soft limits that you might hit.
 
+You can view your current limits, quotas, and rate limit usage in real-time by visiting the **Limits** page in the dashboard (accessible from the left sidebar). This page shows current rate limit token availability, quota usage, and plan features for your organization.
+
 ## Concurrency limits
 
 | Pricing tier | Limit                |
@@ -16728,7 +18646,7 @@ There are some hard and soft limits that you might hit.
 | Hobby        | 25 concurrent runs   |
 | Pro          | 100+ concurrent runs |
 
-Additional bundles above the Pro tier are available for \$50/month per 50 concurrent runs. Contact us via [email](https://trigger.dev/contact) or [Discord](https://trigger.dev/discord) to request more.
+Extra concurrency above the Pro tier limit is available via the dashboard. Click the "Concurrency" page from the left sidebar when on the Pro plan to purchase more.
 
 ## Rate limits
 
@@ -16740,7 +18658,7 @@ Generally speaking each SDK call is an API call.
 
 You can request a higher rate limit from us if you're on a paid plan.
 
-The most common cause of hitting the API rate limit is if you’re calling `trigger()` on a task in a loop, instead of doing this use `batchTrigger()` which will trigger multiple tasks in a single API call. You can have up to 500 tasks in a single batch trigger call.
+The most common cause of hitting the API rate limit is if you're calling `trigger()` on a task in a loop, instead of doing this use `batchTrigger()` which will trigger multiple tasks in a single API call. You can have up to 1,000 tasks in a single batch trigger call with SDK 4.3.1+ (500 in prior versions).
 
 ## Queued tasks
 
@@ -16790,19 +18708,47 @@ Additional bundles are available for \$10/month per 100 concurrent connections. 
 
 ## Task payloads and outputs
 
-| Limit                  | Details                                       |
-| :--------------------- | :-------------------------------------------- |
-| Single trigger payload | Must not exceed 3MB                           |
-| Batch trigger payload  | The total of all payloads must not exceed 5MB |
-| Task outputs           | Must not exceed 10MB                          |
+| Limit                  | Details                                                            |
+| :--------------------- | :----------------------------------------------------------------- |
+| Single trigger payload | Must not exceed 3MB                                                |
+| Batch trigger payload  | Each item can be up to 3MB (SDK 4.3.1+). Prior: 1MB total combined |
+| Task outputs           | Must not exceed 10MB                                               |
 
 Payloads and outputs that exceed 512KB will be offloaded to object storage and a presigned URL will be provided to download the data when calling `runs.retrieve`. You don't need to do anything to handle this in your tasks however, as we will transparently upload/download these during operation.
 
 ## Batch size
 
-A single batch can have a maximum of 500 items.
+A single batch can have a maximum of 1,000 items with SDK 4.3.1+. Prior versions are limited to 500 items.
 
 <SoftLimit />
+
+## Batch trigger rate limits
+
+Batch triggering uses a token bucket algorithm to rate limit the number of runs you can trigger per environment. Each run in a batch consumes one token.
+
+| Pricing tier | Bucket size | Refill rate           |
+| :----------- | :---------- | :-------------------- |
+| Free         | 1,200 runs  | 100 runs every 10 sec |
+| Hobby        | 5,000 runs  | 500 runs every 5 sec  |
+| Pro          | 5,000 runs  | 500 runs every 5 sec  |
+
+**How it works**: You can burst up to your bucket size, then tokens refill at the specified rate. For example, a Free user can trigger 1,200 runs immediately, then must wait for tokens to refill (100 runs become available every 10 seconds).
+
+<Note>
+  When you hit batch rate limits, the SDK throws a `BatchTriggerError` with `isRateLimited: true`. See [Handling batch trigger errors](/triggering#handling-batch-trigger-errors) for how to detect and react to rate limits in your code.
+</Note>
+
+## Batch processing concurrency
+
+The number of batches that can be processed concurrently per environment.
+
+| Pricing tier | Limit                 |
+| :----------- | :-------------------- |
+| Free         | 1 concurrent batch    |
+| Hobby        | 10 concurrent batches |
+| Pro          | 10 concurrent batches |
+
+This limits how many batches can have their items actively being processed into runs at the same time.
 
 ## Log retention
 
@@ -16883,7 +18829,7 @@ Source: https://trigger.dev/docs/logging
 
 How to use the built-in logging and tracing system.
 
-<img src="https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/run-log.png?fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=595580c7a9e3e5dcc0e3297f0f6fec68" alt="The run log" data-og-width="1600" width="1600" data-og-height="900" height="900" data-path="images/run-log.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/run-log.png?w=280&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=8e387330e0f9ff8717932fae4d604ecf 280w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/run-log.png?w=560&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=fd0e82f755dd03d33b64384d10bd5969 560w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/run-log.png?w=840&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=6dfa64d17a661cf7715799d82ed898ca 840w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/run-log.png?w=1100&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=7ddf07bfae2ad13b921b2051002f4ad5 1100w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/run-log.png?w=1650&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=541fa551d5361702d92e41b0dad28b50 1650w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/run-log.png?w=2500&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=cd7e639daec0374eb8c2cb6c5017f89b 2500w" />
+<img alt="The run log" />
 
 The run log shows you exactly what happened in every run of your tasks. It is comprised of logs, traces and spans.
 
@@ -16895,7 +18841,7 @@ You can use `console.log()`, `console.error()`, etc as normal and they will be s
 
 We recommend that you use our `logger` object which creates structured logs. Structured logs will make it easier for you to search the logs to quickly find runs.
 
-```ts /trigger/logging.ts theme={null}
+```ts /trigger/logging.ts theme={"theme":"css-variables"}
 import { task, logger } from "@trigger.dev/sdk";
 
 export const loggingExample = task({
@@ -16925,7 +18871,7 @@ Trigger.dev uses OpenTelemetry tracing under the hood. With automatic tracing fo
 
 ### Adding instrumentations
 
-<img src="https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/auto-instrumentation.png?fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=c23b7b3b9b853d52af2850b732e576d7" alt="The run log" data-og-width="1442" width="1442" data-og-height="521" height="521" data-path="images/auto-instrumentation.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/auto-instrumentation.png?w=280&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=d087748854dbe051414c3f842f183af8 280w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/auto-instrumentation.png?w=560&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=c86e6cc078f69e7585836db0561eae15 560w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/auto-instrumentation.png?w=840&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=c03cb732f67e320ac58efc3fd6001a66 840w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/auto-instrumentation.png?w=1100&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=f91182e7070b80515e916f1401c40212 1100w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/auto-instrumentation.png?w=1650&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=6182199af22c75f77a02bdfb9a8d42d5 1650w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/auto-instrumentation.png?w=2500&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=b161da0f8c3c970e234e7574c0042951 2500w" />
+<img alt="The run log" />
 
 You can [add instrumentations](/config/config-file#instrumentations). The Prisma one above will automatically trace all Prisma queries.
 
@@ -16933,7 +18879,7 @@ You can [add instrumentations](/config/config-file#instrumentations). The Prisma
 
 If you want to add custom traces to your code, you can use the `logger.trace` function. It will create a new OTEL trace and you can set attributes on it.
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 import { logger, task } from "@trigger.dev/sdk";
 
 export const customTrace = task({
@@ -16966,7 +18912,7 @@ Configure the number of vCPUs and GBs of RAM you want the task to use.
 
 The `machine` configuration is optional. Using higher spec machines will increase the cost of running the task but can also improve the performance of the task if it is CPU or memory bound.
 
-```ts /trigger/heavy-task.ts theme={null}
+```ts /trigger/heavy-task.ts theme={"theme":"css-variables"}
 import { task } from "@trigger.dev/sdk";
 
 export const heavyTask = task({
@@ -16980,7 +18926,7 @@ export const heavyTask = task({
 
 The default machine is `small-1x` which has 0.5 vCPU and 0.5 GB of RAM. You can change the default machine in your `trigger.config.ts` file:
 
-```ts trigger.config.ts theme={null}
+```ts trigger.config.ts theme={"theme":"css-variables"}
 import type { TriggerConfig } from "@trigger.dev/sdk";
 
 export const config: TriggerConfig = {
@@ -17007,7 +18953,7 @@ You can view the Trigger.dev cloud pricing for these machines [here](https://tri
 
 You can also override the task machine when you [trigger](/triggering) it:
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 await tasks.trigger<typeof heavyTask>(
   "heavy-task",
   { message: "hello world" },
@@ -17036,7 +18982,7 @@ To better understand why an OOM error occurred, we've published a helper class t
 First, add this `ResourceMonitor` class to your project:
 
 <Accordion title="View ResourceMonitor class">
-  ```ts /src/resourceMonitor.ts theme={null}
+  ```ts /src/resourceMonitor.ts theme={"theme":"css-variables"}
   import { promisify } from "node:util";
   import { exec } from "node:child_process";
   import os from "node:os";
@@ -17809,7 +19755,7 @@ First, add this `ResourceMonitor` class to your project:
 
 Then, in your task, you can create an instance of the `ResourceMonitor` class and start monitoring memory, disk, and CPU usage:
 
-```ts /src/trigger/example.ts theme={null}
+```ts /src/trigger/example.ts theme={"theme":"css-variables"}
 import { task, logger, wait } from "@trigger.dev/sdk";
 import { ResourceMonitor } from "../resourceMonitor.js";
 
@@ -17847,11 +19793,11 @@ export const resourceMonitorTest = task({
 
 This will produce logs that look like this:
 
-<img src="https://mintcdn.com/trigger/TySlE0a_RvppyBcX/images/machines-resource-monitor-logs.png?fit=max&auto=format&n=TySlE0a_RvppyBcX&q=85&s=3a64b733bd0da3afa0586b4927021655" alt="Resource monitor logs" data-og-width="3680" width="3680" data-og-height="2382" height="2382" data-path="images/machines-resource-monitor-logs.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/trigger/TySlE0a_RvppyBcX/images/machines-resource-monitor-logs.png?w=280&fit=max&auto=format&n=TySlE0a_RvppyBcX&q=85&s=0a96fa6cbe4be566eb6fcc1372d22ba0 280w, https://mintcdn.com/trigger/TySlE0a_RvppyBcX/images/machines-resource-monitor-logs.png?w=560&fit=max&auto=format&n=TySlE0a_RvppyBcX&q=85&s=93d9d1599c03b63a0b9c9409c73aedf6 560w, https://mintcdn.com/trigger/TySlE0a_RvppyBcX/images/machines-resource-monitor-logs.png?w=840&fit=max&auto=format&n=TySlE0a_RvppyBcX&q=85&s=452c9301db3e604f01c9c95e92f02897 840w, https://mintcdn.com/trigger/TySlE0a_RvppyBcX/images/machines-resource-monitor-logs.png?w=1100&fit=max&auto=format&n=TySlE0a_RvppyBcX&q=85&s=d0e3899942fa65289681ae353b2d0c2b 1100w, https://mintcdn.com/trigger/TySlE0a_RvppyBcX/images/machines-resource-monitor-logs.png?w=1650&fit=max&auto=format&n=TySlE0a_RvppyBcX&q=85&s=8cf2b9e6b5ecf3b71530696e004d23f0 1650w, https://mintcdn.com/trigger/TySlE0a_RvppyBcX/images/machines-resource-monitor-logs.png?w=2500&fit=max&auto=format&n=TySlE0a_RvppyBcX&q=85&s=b565ef6b5295ce0d44fa6feba31ff143 2500w" />
+<img alt="Resource monitor logs" />
 
 If you are spawning a child process and you want to monitor its memory usage, you can pass the `processName` option to the `ResourceMonitor` class:
 
-```ts /src/trigger/example.ts theme={null}
+```ts /src/trigger/example.ts theme={"theme":"css-variables"}
 const resourceMonitor = new ResourceMonitor({
   ctx,
   processName: "ffmpeg",
@@ -17860,13 +19806,13 @@ const resourceMonitor = new ResourceMonitor({
 
 This will produce logs that includes the memory and CPU usage of the `ffmpeg` process:
 
-<img src="https://mintcdn.com/trigger/TySlE0a_RvppyBcX/images/machines-resource-monitor-ffmpeg.png?fit=max&auto=format&n=TySlE0a_RvppyBcX&q=85&s=c89a4f855cd01efc4a6576a6e9b0924b" alt="Resource monitor logs" data-og-width="3680" width="3680" data-og-height="2382" height="2382" data-path="images/machines-resource-monitor-ffmpeg.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/trigger/TySlE0a_RvppyBcX/images/machines-resource-monitor-ffmpeg.png?w=280&fit=max&auto=format&n=TySlE0a_RvppyBcX&q=85&s=240ae6d3a7bb4590777ee9f7e7385571 280w, https://mintcdn.com/trigger/TySlE0a_RvppyBcX/images/machines-resource-monitor-ffmpeg.png?w=560&fit=max&auto=format&n=TySlE0a_RvppyBcX&q=85&s=5446bdac18860b6f49b4fef3c42c4e93 560w, https://mintcdn.com/trigger/TySlE0a_RvppyBcX/images/machines-resource-monitor-ffmpeg.png?w=840&fit=max&auto=format&n=TySlE0a_RvppyBcX&q=85&s=55e1f132b35dfe02908e827e27c1043e 840w, https://mintcdn.com/trigger/TySlE0a_RvppyBcX/images/machines-resource-monitor-ffmpeg.png?w=1100&fit=max&auto=format&n=TySlE0a_RvppyBcX&q=85&s=9ac56d77bc3dffb83c47702e58f2ad6c 1100w, https://mintcdn.com/trigger/TySlE0a_RvppyBcX/images/machines-resource-monitor-ffmpeg.png?w=1650&fit=max&auto=format&n=TySlE0a_RvppyBcX&q=85&s=e4adac801ecd3acab797f22213fdfa48 1650w, https://mintcdn.com/trigger/TySlE0a_RvppyBcX/images/machines-resource-monitor-ffmpeg.png?w=2500&fit=max&auto=format&n=TySlE0a_RvppyBcX&q=85&s=d1a412cdf3a968599f08fb27deaf4007 2500w" />
+<img alt="Resource monitor logs" />
 
 ### Explicit OOM errors
 
 You can explicitly throw an Out Of Memory error in your task. This can be useful if you use a native package that detects it's going to run out of memory and then stops before it runs out. If you can detect this, you can then throw this error.
 
-```ts /trigger/heavy-task.ts theme={null}
+```ts /trigger/heavy-task.ts theme={"theme":"css-variables"}
 import { task } from "@trigger.dev/sdk";
 import { OutOfMemoryError } from "@trigger.dev/sdk";
 
@@ -17887,7 +19833,7 @@ If OOM errors happen regularly you need to either optimize the memory-efficiency
 
 If you are seeing rare OOM errors, it might make sense to add a setting to your task to retry with a large machine when an OOM happens:
 
-```ts /trigger/heavy-task.ts theme={null}
+```ts /trigger/heavy-task.ts theme={"theme":"css-variables"}
 import { task } from "@trigger.dev/sdk";
 
 export const yourTask = task({
@@ -17920,7 +19866,7 @@ Advanced usage of the Trigger.dev management API
 
 All API methods return a `Promise` subclass `ApiPromise` that includes helpers for accessing the underlying HTTP response:
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 import { runs } from "@trigger.dev/sdk";
 
 async function main() {
@@ -17952,7 +19898,7 @@ There are two methods of authenticating with the management API: using a secret 
 
 Certain API functions work with both authentication methods, but require different arguments depending on the method used. For example, the `runs.list` function can be called using either a `secretKey` or a `personalAccessToken`, but the `projectRef` argument is required when using a `personalAccessToken`:
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 import { configure, runs } from "@trigger.dev/sdk";
 
 // Using secretKey authentication
@@ -18018,7 +19964,7 @@ A PAT is a token associated with a specific user, and gives access to all the or
 
 For example, when uploading environment variables using a PAT, you must provide the `projectRef` and `environment` arguments:
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 import { configure, envvars } from "@trigger.dev/sdk";
 
 configure({
@@ -18041,7 +19987,7 @@ When working with preview branches, you may need to target a specific branch whe
   <Tab title="SDK">
     To target a specific preview branch, include the `previewBranch` option in your SDK configuration:
 
-    ```ts  theme={null}
+    ```ts theme={"theme":"css-variables"}
     import { configure, envvars } from "@trigger.dev/sdk";
 
     configure({
@@ -18058,7 +20004,7 @@ When working with preview branches, you may need to target a specific branch whe
   <Tab title="cURL">
     To target a specific preview branch, include the `x-trigger-branch` header in your API requests with the branch name as the value:
 
-    ```bash  theme={null}
+    ```bash theme={"theme":"css-variables"}
     curl --request PUT \
       --url https://api.trigger.dev/api/v1/projects/{projectRef}/envvars/preview/DATABASE_URL \
       --header 'Authorization: Bearer <token>' \
@@ -18075,7 +20021,7 @@ This will set the `DATABASE_URL` environment variable specifically for the `feat
 
 <Note>
   The `x-trigger-branch` header is only relevant when working with the `preview` environment (`{env}
-    ` parameter set to `preview`). It has no effect when working with `dev`, `staging`, or `prod`
+      ` parameter set to `preview`). It has no effect when working with `dev`, `staging`, or `prod`
   environments.
 </Note>
 
@@ -18083,7 +20029,7 @@ This will set the `DATABASE_URL` environment variable specifically for the `feat
 
 When using the SDK to manage preview branch environment variables, the branch targeting is handled automatically when you're running in a preview environment with the `TRIGGER_PREVIEW_BRANCH` environment variable set. However, you can also specify the branch explicitly:
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 import { configure, envvars } from "@trigger.dev/sdk";
 
 configure({
@@ -18105,7 +20051,7 @@ Using auto-pagination with the Trigger.dev management API
 All list endpoints in the management API support auto-pagination.
 You can use `for await … of` syntax to iterate through items across all pages:
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 import { runs } from "@trigger.dev/sdk";
 
 async function fetchAllRuns() {
@@ -18121,7 +20067,7 @@ async function fetchAllRuns() {
 
 You can also use helpers on the return value from any `list` method to get the next/previous page of results:
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 import { runs } from "@trigger.dev/sdk";
 
 async function main() {
@@ -18137,6 +20083,52 @@ async function main() {
   }
 }
 ```
+
+
+# Create batch
+Source: https://trigger.dev/docs/management/batches/create
+
+openapi POST /api/v3/batches
+Phase 1 of 2-phase batch API. Creates a batch record and optionally blocks the parent run for batchTriggerAndWait.
+After creating a batch, stream items via POST /api/v3/batches/{batchId}/items.
+
+
+
+
+# Stream batch items
+Source: https://trigger.dev/docs/management/batches/stream-items
+
+openapi POST /api/v3/batches/{batchId}/items
+Phase 2 of 2-phase batch API. Accepts an NDJSON stream of batch items and enqueues them.
+Each line in the body should be a valid BatchItemNDJSON object.
+The stream is processed with backpressure - items are enqueued as they arrive.
+The batch is sealed when the stream completes successfully.
+
+
+
+
+# Get latest deployment
+Source: https://trigger.dev/docs/management/deployments/get-latest
+
+v3-openapi GET /api/v1/deployments/latest
+Retrieve information about the latest unmanaged deployment for the authenticated project.
+
+
+
+# Promote deployment
+Source: https://trigger.dev/docs/management/deployments/promote
+
+v3-openapi POST /api/v1/deployments/{version}/promote
+Promote a previously deployed version to be the current version for the environment. This makes the specified version active for new task runs.
+
+
+
+# Get deployment
+Source: https://trigger.dev/docs/management/deployments/retrieve
+
+v3-openapi GET /api/v1/deployments/{deploymentId}
+Retrieve information about a specific deployment by its ID.
+
 
 
 # Create Env Var
@@ -18196,7 +20188,7 @@ Handling errors and retries with the Trigger.dev management API
 
 When the SDK method is unable to connect to the API server, or the API server returns a non-successful response, the SDK will throw an `ApiError` that you can catch and handle:
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 import { runs, APIError } from "@trigger.dev/sdk";
 
 async function main() {
@@ -18218,7 +20210,7 @@ The SDK will automatically retry requests that fail due to network errors or ser
 
 You can customize the retry behavior by passing a `requestOptions` option to the `configure` function:
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 import { configure } from "@trigger.dev/sdk";
 
 configure({
@@ -18236,7 +20228,7 @@ configure({
 
 All SDK functions also take a `requestOptions` parameter as the last argument, which can be used to customize the request options. You can use this to disable retries for a specific request:
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 import { runs } from "@trigger.dev/sdk";
 
 async function main() {
@@ -18264,15 +20256,15 @@ Using the Trigger.dev management API
 The management API is available through the same `@trigger.dev/sdk` package used in defining and triggering tasks. If you have already installed the package in your project, you can skip this step.
 
 <CodeGroup>
-  ```bash npm theme={null}
+  ```bash npm theme={"theme":"css-variables"}
   npm i @trigger.dev/sdk@latest
   ```
 
-  ```bash pnpm theme={null}
+  ```bash pnpm theme={"theme":"css-variables"}
   pnpm add @trigger.dev/sdk@latest
   ```
 
-  ```bash yarn theme={null}
+  ```bash yarn theme={"theme":"css-variables"}
   yarn add @trigger.dev/sdk@latest
   ```
 </CodeGroup>
@@ -18281,7 +20273,7 @@ The management API is available through the same `@trigger.dev/sdk` package used
 
 All `v3` functionality is provided through the `@trigger.dev/sdk` module. You can import the entire module or individual resources as needed.
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 import { configure, runs } from "@trigger.dev/sdk";
 
 configure({
@@ -18417,7 +20409,7 @@ Update a schedule by its ID. This will only work on `IMPERATIVE` schedules that 
 Source: https://trigger.dev/docs/management/tasks/batch-trigger
 
 v3-openapi POST /api/v1/tasks/batch
-Batch trigger tasks with up to 500 payloads.
+Batch trigger tasks with up to 1,000 payloads with SDK 4.3.1+ (500 in prior versions).
 
 
 
@@ -18446,7 +20438,7 @@ This guide covers how to manually set up Trigger.dev in your project, including 
 
 Before setting up your project, you need to authenticate the CLI with Trigger.dev:
 
-```bash  theme={null}
+```bash theme={"theme":"css-variables"}
 # Login to Trigger.dev
 npx trigger.dev@latest login
 
@@ -18461,22 +20453,22 @@ This will open your browser to authenticate. Once authenticated, you'll need to 
 Install the required packages based on your package manager:
 
 <CodeGroup>
-  ```bash npm theme={null}
+  ```bash npm theme={"theme":"css-variables"}
   npm add @trigger.dev/sdk@latest
   npm add --save-dev @trigger.dev/build@latest
   ```
 
-  ```bash pnpm theme={null}
+  ```bash pnpm theme={"theme":"css-variables"}
   pnpm add @trigger.dev/sdk@latest
   pnpm add -D @trigger.dev/build@latest
   ```
 
-  ```bash yarn theme={null}
+  ```bash yarn theme={"theme":"css-variables"}
   yarn add @trigger.dev/sdk@latest
   yarn add -D @trigger.dev/build@latest
   ```
 
-  ```bash bun theme={null}
+  ```bash bun theme={"theme":"css-variables"}
   bun add @trigger.dev/sdk@latest
   bun add -D @trigger.dev/build@latest
   ```
@@ -18491,7 +20483,7 @@ For local development, you need to set up the `TRIGGER_SECRET_KEY` environment v
 3. Copy the **DEV** secret key
 4. Add it to your local environment file:
 
-```bash  theme={null}
+```bash theme={"theme":"css-variables"}
 TRIGGER_SECRET_KEY=tr_dev_xxxxxxxxxx
 ```
 
@@ -18499,7 +20491,7 @@ TRIGGER_SECRET_KEY=tr_dev_xxxxxxxxxx
 
 If you're using a self-hosted Trigger.dev instance, also set:
 
-```bash  theme={null}
+```bash theme={"theme":"css-variables"}
 TRIGGER_API_URL=https://your-trigger-instance.com
 ```
 
@@ -18509,7 +20501,7 @@ You can run the Trigger.dev CLI in two ways:
 
 ### Option 1: Using npx/pnpm dlx/yarn dlx
 
-```bash  theme={null}
+```bash theme={"theme":"css-variables"}
 # npm
 npx trigger.dev@latest dev
 
@@ -18524,7 +20516,7 @@ yarn dlx trigger.dev@latest dev
 
 Add the CLI to your `package.json`:
 
-```json  theme={null}
+```json theme={"theme":"css-variables"}
 {
   "devDependencies": {
     "trigger.dev": "^4.0.0"
@@ -18534,7 +20526,7 @@ Add the CLI to your `package.json`:
 
 Then add scripts to your `package.json`:
 
-```json  theme={null}
+```json theme={"theme":"css-variables"}
 {
   "scripts": {
     "dev:trigger": "trigger dev",
@@ -18547,7 +20539,7 @@ Then add scripts to your `package.json`:
 
 Make sure to pin the version of the CLI to the same version as the SDK that you are using:
 
-```json  theme={null}
+```json theme={"theme":"css-variables"}
 "devDependencies": {
   "trigger.dev": "^4.0.0",
   "@trigger.dev/build": "^4.0.0"
@@ -18563,7 +20555,7 @@ While running the CLI `dev` or `deploy` commands, the CLI will automatically det
 
 Create a `trigger.config.ts` file in your project root (or `trigger.config.mjs` for JavaScript projects):
 
-```typescript  theme={null}
+```typescript theme={"theme":"css-variables"}
 import { defineConfig } from "@trigger.dev/sdk";
 
 export default defineConfig({
@@ -18599,7 +20591,7 @@ export default defineConfig({
 
 By default, Trigger.dev will use the Node.js runtime. If you're using Bun, you can specify the runtime:
 
-```typescript  theme={null}
+```typescript theme={"theme":"css-variables"}
 import { defineConfig } from "@trigger.dev/sdk";
 
 export default defineConfig({
@@ -18615,7 +20607,7 @@ See our [Bun runtime documentation](/guides/frameworks/bun) for more information
 
 Create a `trigger` directory (matching the `dirs` in your config) and add an example task:
 
-```typescript src/trigger/example.ts theme={null}
+```typescript src/trigger/example.ts theme={"theme":"css-variables"}
 import { task } from "@trigger.dev/sdk";
 
 export const helloWorld = task({
@@ -18637,7 +20629,7 @@ See our [Tasks](/tasks/overview) docs for more information on how to create task
 
 If you're using TypeScript, add `trigger.config.ts` to your `tsconfig.json` include array:
 
-```json  theme={null}
+```json theme={"theme":"css-variables"}
 {
   "compilerOptions": {
     // ... your existing options
@@ -18653,7 +20645,7 @@ If you're using TypeScript, add `trigger.config.ts` to your `tsconfig.json` incl
 
 Add `.trigger` to your `.gitignore` file to exclude Trigger.dev's local development files:
 
-```bash  theme={null}
+```bash theme={"theme":"css-variables"}
 # Trigger.dev
 .trigger
 ```
@@ -18666,7 +20658,7 @@ If you're building a React frontend application and want to display task status 
 
 ### Installation
 
-```bash  theme={null}
+```bash theme={"theme":"css-variables"}
 # npm
 npm install @trigger.dev/react-hooks@latest
 
@@ -18684,7 +20676,7 @@ bun add @trigger.dev/react-hooks@latest
 
 1. **Generate a Public Access Token** in your backend:
 
-```typescript  theme={null}
+```typescript theme={"theme":"css-variables"}
 import { auth } from "@trigger.dev/sdk";
 
 // In your backend API
@@ -18699,7 +20691,7 @@ export async function getPublicAccessToken() {
 
 2. **Use hooks to monitor tasks**:
 
-```tsx  theme={null}
+```tsx theme={"theme":"css-variables"}
 import { useRealtimeRun } from "@trigger.dev/react-hooks";
 
 export function TaskStatus({
@@ -18733,7 +20725,7 @@ Build extensions allow you to customize the build process. Ensure you have the `
 
 Now you can use any of the built-in extensions:
 
-```typescript  theme={null}
+```typescript theme={"theme":"css-variables"}
 import { defineConfig } from "@trigger.dev/sdk";
 import { prismaExtension } from "@trigger.dev/build/extensions/prisma";
 
@@ -18742,6 +20734,7 @@ export default defineConfig({
   build: {
     extensions: [
       prismaExtension({
+        mode: "legacy",
         schema: "prisma/schema.prisma",
         migrate: true, // Run migrations on deploy
       }),
@@ -18769,7 +20762,7 @@ This approach creates a dedicated tasks package that can be consumed by multiple
 
 **Root `package.json`**:
 
-```json  theme={null}
+```json theme={"theme":"css-variables"}
 {
   "name": "my-monorepo",
   "private": true,
@@ -18788,7 +20781,7 @@ This approach creates a dedicated tasks package that can be consumed by multiple
 
 **`pnpm-workspace.yaml`**:
 
-```yaml  theme={null}
+```yaml theme={"theme":"css-variables"}
 packages:
   - "apps/*"
   - "packages/*"
@@ -18796,7 +20789,7 @@ packages:
 
 **`turbo.json`**:
 
-```json  theme={null}
+```json theme={"theme":"css-variables"}
 {
   "$schema": "https://turbo.build/schema.json",
   "ui": "tui",
@@ -18820,7 +20813,7 @@ packages:
 
 **`packages/tasks/package.json`**:
 
-```json  theme={null}
+```json theme={"theme":"css-variables"}
 {
   "name": "@repo/tasks",
   "version": "0.0.0",
@@ -18839,7 +20832,7 @@ packages:
 
 **`packages/tasks/trigger.config.ts`**:
 
-```typescript  theme={null}
+```typescript theme={"theme":"css-variables"}
 import { defineConfig } from "@trigger.dev/sdk";
 
 export default defineConfig({
@@ -18861,20 +20854,20 @@ export default defineConfig({
 
 **`packages/tasks/src/index.ts`**:
 
-```typescript  theme={null}
+```typescript theme={"theme":"css-variables"}
 export * from "@trigger.dev/sdk"; // Export values and types from the Trigger.dev sdk
 ```
 
 **`packages/tasks/src/trigger/index.ts`**:
 
-```typescript  theme={null}
+```typescript theme={"theme":"css-variables"}
 // Export tasks
 export * from "./example";
 ```
 
 **`packages/tasks/src/trigger/example.ts`**:
 
-```typescript  theme={null}
+```typescript theme={"theme":"css-variables"}
 import { task } from "@trigger.dev/sdk";
 
 export const helloWorld = task({
@@ -18896,7 +20889,7 @@ See our [turborepo-prisma-tasks-package example](https://github.com/triggerdotde
 
 **`apps/web/package.json`**:
 
-```json  theme={null}
+```json theme={"theme":"css-variables"}
 {
   "name": "web",
   "dependencies": {
@@ -18910,7 +20903,7 @@ See our [turborepo-prisma-tasks-package example](https://github.com/triggerdotde
 
 **`apps/web/app/api/actions.ts`**:
 
-```typescript  theme={null}
+```typescript theme={"theme":"css-variables"}
 "use server";
 
 import { tasks } from "@repo/tasks/trigger";
@@ -18935,7 +20928,7 @@ export async function triggerHelloWorld(name: string) {
 
 Run the development server for the tasks package:
 
-```bash  theme={null}
+```bash theme={"theme":"css-variables"}
 # From the root of your monorepo
 cd packages/tasks
 npx trigger.dev@latest dev
@@ -18952,7 +20945,7 @@ This approach installs Trigger.dev directly in individual apps that need backgro
 
 **`apps/web/package.json`**:
 
-```json  theme={null}
+```json theme={"theme":"css-variables"}
 {
   "name": "web",
   "dependencies": {
@@ -18971,7 +20964,7 @@ This approach installs Trigger.dev directly in individual apps that need backgro
 
 **`apps/web/trigger.config.ts`**:
 
-```typescript  theme={null}
+```typescript theme={"theme":"css-variables"}
 import { defineConfig } from "@trigger.dev/sdk";
 
 export default defineConfig({
@@ -18995,7 +20988,7 @@ export default defineConfig({
 
 **`apps/web/src/trigger/example.ts`**:
 
-```typescript  theme={null}
+```typescript theme={"theme":"css-variables"}
 import { task } from "@trigger.dev/sdk";
 
 export const helloWorld = task({
@@ -19015,7 +21008,7 @@ export const helloWorld = task({
 
 **`apps/web/app/api/actions.ts`**:
 
-```typescript  theme={null}
+```typescript theme={"theme":"css-variables"}
 "use server";
 
 import { tasks } from "@trigger.dev/sdk";
@@ -19038,7 +21031,7 @@ export async function triggerHelloWorld(name: string) {
 
 #### 5. Development workflow
 
-```bash  theme={null}
+```bash theme={"theme":"css-variables"}
 # From the app directory
 cd apps/web
 npx trigger.dev@latest dev
@@ -19073,7 +21066,7 @@ Trigger.dev agent rules are comprehensive instruction sets that guide AI assista
 
 Install the agent rules with the following command:
 
-```bash  theme={null}
+```bash theme={"theme":"css-variables"}
 npx trigger.dev@latest install-rules
 ```
 
@@ -19097,13 +21090,13 @@ For Claude Code users, we provide a subagent called `trigger-dev-expert` that's 
 
 The subagent is available as an option when running the rules installation command. Select "Claude Code" as your client and choose to include the subagent when prompted.
 
-<img src="https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/claude-code-subagent.png?fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=b7f4183abcbb79c59c90c237785698e6" alt="Claude Code subagent installation" data-og-width="1266" width="1266" data-og-height="453" height="453" data-path="images/claude-code-subagent.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/claude-code-subagent.png?w=280&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=12592c023c19a48eee359bd1183224f4 280w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/claude-code-subagent.png?w=560&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=2795072f21c5476d692131c412f96e63 560w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/claude-code-subagent.png?w=840&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=fc4edc5a38551eb12ee4a648532789a2 840w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/claude-code-subagent.png?w=1100&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=84c3a2320c38582ddf77c63f0dfe0436 1100w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/claude-code-subagent.png?w=1650&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=26e679c491757b7752fd5a32829d5c04 1650w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/claude-code-subagent.png?w=2500&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=9f3a4c7f02920316780502de6b643449 2500w" />
+<img alt="Claude Code subagent installation" />
 
 ### Usage
 
 Activate the subagent in your prompts by requesting it explicitly:
 
-```markdown  theme={null}
+```markdown theme={"theme":"css-variables"}
 use the trigger-dev-expert subagent to create a trigger.dev job that accepts a video url, processes it with ffmpeg to extract the audio, runs the audio through a text-to-speech API like openai, and then uploads both the transcription and the audio to s3
 ```
 
@@ -19146,7 +21139,7 @@ When running `npx trigger.dev@latest dev`, you'll receive notifications when new
 
 Update rules anytime with:
 
-```bash  theme={null}
+```bash theme={"theme":"css-variables"}
 npx trigger.dev@latest install-rules
 ```
 
@@ -19163,7 +21156,7 @@ The update process replaces existing rules without creating duplicates, keeping 
 
 1. Install the rules:
 
-```bash  theme={null}
+```bash theme={"theme":"css-variables"}
 npx trigger.dev@latest install-rules
 ```
 
@@ -19195,156 +21188,343 @@ The Trigger.dev MCP (Model Context Protocol) Server enables AI assistants to int
 
 ## Installation
 
-### Automatic Installation (Recommended)
+The quickest way to get set up is the interactive installer:
 
-The easiest way to install the Trigger.dev MCP Server is using the interactive installation wizard:
-
-```bash  theme={null}
+```bash theme={"theme":"css-variables"}
 npx trigger.dev@latest install-mcp
 ```
 
-This command will guide you through:
+It will detect your installed clients and configure them automatically. You can also copy-paste the config for your client below.
 
-1. Selecting which MCP clients to configure
-2. Choosing installation scope (user, project, or local)
-3. Automatically configuring the selected clients
+## Client Configuration
 
-## Command Line Options
+Each client has a slightly different config format. Copy the snippet for your client into the appropriate file.
 
-The `install-mcp` command supports the following options:
+<Tabs>
+  <Tab title="Claude Code">
+    Install using the command line:
 
-### Core Options
+    ```bash theme={"theme":"css-variables"}
+    npx trigger.dev@latest install-mcp --client claude-code
+    ```
 
-* `-p, --project-ref <project ref>` - Scope the MCP server to a specific Trigger.dev project by providing its project ref
-* `-t, --tag <package tag>` - The version of the trigger.dev CLI package to use for the MCP server (default: latest or v4-beta)
-* `--dev-only` - Restrict the MCP server to the dev environment only
-* `--yolo` - Install the MCP server into all supported clients automatically
-* `--scope <scope>` - Choose the scope of the MCP server: `user`, `project`, or `local`
-* `--client <clients...>` - Choose specific client(s) to install into
+    Or add this configuration to `~/.claude.json` (user) or `.mcp.json` (project):
 
-### Configuration Options
+    ```json theme={"theme":"css-variables"}
+    {
+      "mcpServers": {
+        "trigger": {
+          "command": "npx",
+          "args": ["trigger.dev@latest", "mcp"]
+        }
+      }
+    }
+    ```
 
-* `--log-file <log file>` - Configure the MCP server to write logs to a file
-* `-a, --api-url <value>` - Configure a custom Trigger.dev API URL
-* `-l, --log-level <level>` - Set CLI log level (debug, info, log, warn, error, none)
+    [View Claude Code MCP docs ↗](https://code.claude.com/docs/en/mcp)
+  </Tab>
+
+  <Tab title="Cursor">
+    Install using the command line:
+
+    ```bash theme={"theme":"css-variables"}
+    npx trigger.dev@latest install-mcp --client cursor
+    ```
+
+    Or add this configuration to `~/.cursor/mcp.json` (user) or `.cursor/mcp.json` (project):
+
+    ```json theme={"theme":"css-variables"}
+    {
+      "mcpServers": {
+        "trigger": {
+          "command": "npx",
+          "args": ["trigger.dev@latest", "mcp"]
+        }
+      }
+    }
+    ```
+
+    [View Cursor MCP docs ↗](https://cursor.com/docs/context/mcp)
+  </Tab>
+
+  <Tab title="Windsurf">
+    Install using the command line:
+
+    ```bash theme={"theme":"css-variables"}
+    npx trigger.dev@latest install-mcp --client windsurf
+    ```
+
+    Or add this configuration to `~/.codeium/windsurf/mcp_config.json`:
+
+    ```json theme={"theme":"css-variables"}
+    {
+      "mcpServers": {
+        "trigger": {
+          "command": "npx",
+          "args": ["trigger.dev@latest", "mcp"]
+        }
+      }
+    }
+    ```
+
+    [View Windsurf MCP docs ↗](https://docs.windsurf.com/windsurf/cascade/mcp)
+  </Tab>
+
+  <Tab title="VS Code">
+    Install using the command line:
+
+    ```bash theme={"theme":"css-variables"}
+    npx trigger.dev@latest install-mcp --client vscode
+    ```
+
+    Or add this configuration to `.vscode/mcp.json` (project) or `~/Library/Application Support/Code/User/mcp.json` (user, macOS):
+
+    ```json theme={"theme":"css-variables"}
+    {
+      "servers": {
+        "trigger": {
+          "command": "npx",
+          "args": ["trigger.dev@latest", "mcp"]
+        }
+      }
+    }
+    ```
+
+    <Note>VS Code uses `servers` instead of `mcpServers`.</Note>
+
+    [View VS Code MCP docs ↗](https://code.visualstudio.com/docs/copilot/chat/mcp-servers)
+  </Tab>
+
+  <Tab title="Zed">
+    Install using the command line:
+
+    ```bash theme={"theme":"css-variables"}
+    npx trigger.dev@latest install-mcp --client zed
+    ```
+
+    Or add this configuration to `~/.config/zed/settings.json`:
+
+    ```json theme={"theme":"css-variables"}
+    {
+      "context_servers": {
+        "trigger": {
+          "source": "custom",
+          "command": "npx",
+          "args": ["trigger.dev@latest", "mcp"]
+        }
+      }
+    }
+    ```
+
+    [View Zed context servers docs ↗](https://zed.dev/docs/ai/mcp)
+  </Tab>
+
+  <Tab title="Cline">
+    Install using the command line:
+
+    ```bash theme={"theme":"css-variables"}
+    npx trigger.dev@latest install-mcp --client cline
+    ```
+
+    Or add this configuration to `~/Library/Application Support/Code/User/globalStorage/saoudrizwan.claude-dev/settings/cline_mcp_settings.json`:
+
+    ```json theme={"theme":"css-variables"}
+    {
+      "mcpServers": {
+        "trigger": {
+          "command": "npx",
+          "args": ["trigger.dev@latest", "mcp"]
+        }
+      }
+    }
+    ```
+
+    [View Cline MCP docs ↗](https://docs.cline.bot/mcp/configuring-mcp-servers)
+  </Tab>
+
+  <Tab title="Gemini CLI">
+    Install using the command line:
+
+    ```bash theme={"theme":"css-variables"}
+    npx trigger.dev@latest install-mcp --client gemini-cli
+    ```
+
+    Or add this configuration to `~/.gemini/settings.json` (user) or `.gemini/settings.json` (project):
+
+    ```json theme={"theme":"css-variables"}
+    {
+      "mcpServers": {
+        "trigger": {
+          "command": "npx",
+          "args": ["trigger.dev@latest", "mcp"]
+        }
+      }
+    }
+    ```
+  </Tab>
+
+  <Tab title="AMP">
+    Install using the command line:
+
+    ```bash theme={"theme":"css-variables"}
+    npx trigger.dev@latest install-mcp --client amp
+    ```
+
+    Or add this configuration to `~/.config/amp/settings.json`:
+
+    ```json theme={"theme":"css-variables"}
+    {
+      "amp.mcpServers": {
+        "trigger": {
+          "command": "npx",
+          "args": ["trigger.dev@latest", "mcp"]
+        }
+      }
+    }
+    ```
+
+    [View Sourcegraph AMP MCP docs ↗](https://ampcode.com/manual#mcp)
+  </Tab>
+
+  <Tab title="Codex CLI">
+    Install using the command line:
+
+    ```bash theme={"theme":"css-variables"}
+    npx trigger.dev@latest install-mcp --client openai-codex
+    ```
+
+    Or add this configuration to `~/.codex/config.toml`:
+
+    ```toml theme={"theme":"css-variables"}
+    [mcp_servers.trigger]
+    command = "npx"
+    args = ["trigger.dev@latest", "mcp"]
+    ```
+  </Tab>
+
+  <Tab title="Crush">
+    Install using the command line:
+
+    ```bash theme={"theme":"css-variables"}
+    npx trigger.dev@latest install-mcp --client crush
+    ```
+
+    Or add this configuration to `.crush.json` (project), `crush.json`, or `~/.config/crush/crush.json` (user). Files are loaded in priority order: `.crush.json` → `crush.json` → `$HOME/.config/crush/crush.json`.
+
+    ```json theme={"theme":"css-variables"}
+    {
+      "mcp": {
+        "trigger": {
+          "type": "stdio",
+          "command": "npx",
+          "args": ["trigger.dev@latest", "mcp"]
+        }
+      }
+    }
+    ```
+
+    [View Charm MCP docs ↗](https://github.com/charmbracelet/crush)
+  </Tab>
+
+  <Tab title="opencode">
+    Install using the command line:
+
+    ```bash theme={"theme":"css-variables"}
+    npx trigger.dev@latest install-mcp --client opencode
+    ```
+
+    Or add this configuration to `~/.config/opencode/opencode.json` (user) or `./opencode.json` (project):
+
+    ```json theme={"theme":"css-variables"}
+    {
+      "mcp": {
+        "trigger": {
+          "type": "local",
+          "command": ["npx", "trigger.dev@latest", "mcp"],
+          "enabled": true
+        }
+      }
+    }
+    ```
+
+    [View opencode MCP docs ↗](https://opencode.ai/docs/mcp-servers/)
+  </Tab>
+
+  <Tab title="Ruler">
+    Install using the command line:
+
+    ```bash theme={"theme":"css-variables"}
+    npx trigger.dev@latest install-mcp --client ruler
+    ```
+
+    Or add this configuration to `.ruler/mcp.json`:
+
+    ```json theme={"theme":"css-variables"}
+    {
+      "mcpServers": {
+        "trigger": {
+          "type": "stdio",
+          "command": "npx",
+          "args": ["trigger.dev@latest", "mcp"]
+        }
+      }
+    }
+    ```
+  </Tab>
+</Tabs>
+
+After adding the config, restart your client. You should see a server named **trigger** connect automatically.
 
 ## Authentication
 
-You can use the MCP server without authentication with the `search_docs` tool, but for any other tool call you will need to authenticate the MCP server via the same method as the [Trigger.dev CLI](/cli-login-commands).The first time you attempt to use a tool that requires authentication, you will be prompted to authenticate the MCP server via the MCP client.
+The `search_docs` tool works without authentication. All other tools require you to be logged in via the [Trigger.dev CLI](/cli-login-commands). The first time you use an authenticated tool, your MCP client will prompt you to log in.
 
-### Examples
+<Accordion title="CLI Options">
+  The `install-mcp` command supports these options:
 
-Install for all supported clients:
+  **Core Options**
 
-```bash  theme={null}
-npx trigger.dev@latest install-mcp --yolo
-```
+  * `-p, --project-ref <project ref>` — Scope the MCP server to a specific project
+  * `-t, --tag <package tag>` — CLI package version to use (default: latest)
+  * `--dev-only` — Restrict to the dev environment only
+  * `--yolo` — Install into all supported clients automatically
+  * `--scope <scope>` — `user`, `project`, or `local`
+  * `--client <clients...>` — Install into specific client(s)
 
-Install for specific clients:
+  **Configuration Options**
 
-```bash  theme={null}
-npx trigger.dev@latest install-mcp --client claude-code cursor --scope user
-```
+  * `--log-file <log file>` — Write logs to a file
+  * `-a, --api-url <value>` — Custom Trigger.dev API URL
+  * `-l, --log-level <level>` — Log level (debug, info, log, warn, error, none)
 
-Install with development environment restriction:
+  **Examples**
 
-```bash  theme={null}
-npx trigger.dev@latest install-mcp --dev-only --project-ref proj_abc123
-```
+  Install for all supported clients:
 
-## Supported MCP Clients
+  ```bash theme={"theme":"css-variables"}
+  npx trigger.dev@latest install-mcp --yolo
+  ```
 
-The Trigger.dev MCP Server supports the following clients:
+  Install for specific clients:
 
-| Client               | Scope Options        | Configuration File                                                                                              | Documentation                                                                                                                                    |
-| -------------------- | -------------------- | --------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ |
-| **Claude Code**      | user, project, local | `~/.claude.json` or `./.mcp.json` (project/local scope)                                                         | [Claude Code MCP Docs](https://docs.anthropic.com/en/docs/claude-code/mcp)                                                                       |
-| **Cursor**           | user, project        | `~/.cursor/mcp.json` (user) or `./.cursor/mcp.json` (project)                                                   | [Cursor MCP Docs](https://docs.cursor.com/features/mcp)                                                                                          |
-| **VSCode**           | user, project        | `~/Library/Application Support/Code/User/mcp.json` (user) or `./.vscode/mcp.json` (project)                     | [VSCode MCP Docs](https://code.visualstudio.com/docs/copilot/chat/mcp-servers)                                                                   |
-| **Zed**              | user                 | `~/.config/zed/settings.json`                                                                                   | [Zed Context Servers Docs](https://zed.dev/docs/context-servers)                                                                                 |
-| **Windsurf**         | user                 | `~/.codeium/windsurf/mcp_config.json`                                                                           | [Windsurf MCP Docs](https://docs.codeium.com/windsurf/mcp)                                                                                       |
-| **Gemini CLI**       | user, project        | `~/.gemini/settings.json` (user) or `./.gemini/settings.json` (project)                                         | [Gemini CLI MCP Tutorial](https://medium.com/@joe.njenga/gemini-cli-mcp-tutorial-setup-commands-practical-use-step-by-step-example-b57f55db5f4a) |
-| **Charm Crush**      | user, project, local | `~/.config/crush/crush.json` (user), `./crush.json` (project), or `./.crush.json` (local)                       | [Charm MCP Docs](https://github.com/charmbracelet/mcp)                                                                                           |
-| **Cline**            | user                 | `~/Library/Application Support/Code/User/globalStorage/saoudrizwan.claude-dev/settings/cline_mcp_settings.json` | [Cline MCP Docs](https://github.com/saoudrizwan/claude-dev#mcp)                                                                                  |
-| **OpenAI Codex CLI** | user                 | `~/.codex/config.toml`                                                                                          | See OpenAI Codex CLI documentation for MCP configuration                                                                                         |
-| **Sourcegraph AMP**  | user                 | `~/.config/amp/settings.json`                                                                                   | [Sourcegraph AMP MCP Docs](https://docs.sourcegraph.com/amp/mcp)                                                                                 |
-| **opencode**         | user, project        | `~/.config/opencode/opencode.json` (user) or `./opencode.json` (project)                                        | [opencode MCP Docs](https://opencode.ai/docs/mcp-servers/)                                                                                       |
+  ```bash theme={"theme":"css-variables"}
+  npx trigger.dev@latest install-mcp --client claude-code cursor --scope user
+  ```
 
-## Manual Configuration
+  Restrict to dev environment for a specific project:
 
-If your client isn't directly supported by the installer, you can configure it manually. The MCP server uses the following configuration:
+  ```bash theme={"theme":"css-variables"}
+  npx trigger.dev@latest install-mcp --dev-only --project-ref proj_abc123
+  ```
 
-**Server Name:** `trigger`
+  To add these options to a manual config, append them to the `args` array:
 
-**Command:** `npx`
-
-**Arguments:** `["trigger.dev@latest", "mcp"]`
-
-### Example JSON Configuration
-
-```json  theme={null}
-{
-  "mcpServers": {
-    "trigger": {
-      "command": "npx",
-      "args": ["trigger.dev@latest", "mcp"]
-    }
+  ```json theme={"theme":"css-variables"}
+  {
+    "args": ["trigger.dev@latest", "mcp", "--dev-only", "--project-ref", "proj_abc123"]
   }
-}
-```
-
-### Example TOML Configuration (for Codex CLI)
-
-```toml  theme={null}
-[mcp_servers.trigger]
-command = "npx"
-args = ["trigger.dev@latest", "mcp"]
-```
-
-### Additional Options
-
-You can add these optional arguments to customize the server behavior:
-
-* `--log-file <path>` - Log to a specific file
-* `--api-url <url>` - Use a custom Trigger.dev API URL
-* `--dev-only` - Restrict to dev environment only
-* `--project-ref <ref>` - Scope to a specific project
-
-## Environment-Specific Configuration
-
-### Development Only
-
-To restrict the MCP server to only work with the development environment:
-
-```json  theme={null}
-{
-  "mcpServers": {
-    "trigger": {
-      "command": "npx",
-      "args": ["trigger.dev@latest", "mcp", "--dev-only"]
-    }
-  }
-}
-```
-
-### Project-Scoped
-
-To scope the server to a specific project:
-
-```json  theme={null}
-{
-  "mcpServers": {
-    "trigger": {
-      "command": "npx",
-      "args": ["trigger.dev@latest", "mcp", "--project-ref", "proj_your_project_ref"]
-    }
-  }
-}
-```
-
-## Verification
-
-After installation, restart your MCP client and look for a server named "trigger". The server should connect automatically and provide access to all Trigger.dev tools.
+  ```
+</Accordion>
 
 ## Getting Started
 
@@ -19367,535 +21547,148 @@ Once installed, you can start using the MCP server by asking your AI assistant q
 # MCP Tools
 Source: https://trigger.dev/docs/mcp-tools
 
-Learn about the tools available in the Trigger.dev MCP Server
-
-The Trigger.dev MCP Server provides a comprehensive set of tools that enable AI assistants to interact with your Trigger.dev projects. These tools cover everything from project management to task execution and monitoring.
+Learn about how to use the tools available in the Trigger.dev MCP Server
 
 ## Documentation and Search Tools
 
 ### search\_docs
 
-Search across the Trigger.dev documentation to find relevant information, code examples, API references, and guides.
+Search the Trigger.dev documentation for guides, examples, and API references.
 
-<ParamField query="query" type="string" required>
-  The search query to find information in the Trigger.dev documentation
-</ParamField>
+**Example usage:**
 
-**Usage Examples:**
-
-* "How do I create a scheduled task?"
-* "webhook examples"
-* "deployment configuration"
-* "error handling patterns"
-
-<CodeGroup>
-  ```json Example Usage theme={null}
-  {
-    "tool": "search_docs",
-    "arguments": {
-      "query": "webhook examples"
-    }
-  }
-  ```
-</CodeGroup>
+* *"How do I create a scheduled task?"*
+* *"Show me webhook examples"*
+* *"What are the deployment options?"*
 
 ## Project Management Tools
-
-### list\_projects
-
-List all projects in your Trigger.dev account.
-
-**No parameters required**
-
-<ResponseField name="projects" type="array">
-  Array of project objects containing project details, IDs, and metadata
-</ResponseField>
-
-<CodeGroup>
-  ```json Example Response theme={null}
-  {
-    "projects": [
-      {
-        "id": "proj_abc123",
-        "name": "My App",
-        "slug": "my-app",
-        "organizationId": "org_xyz789"
-      }
-    ]
-  }
-  ```
-</CodeGroup>
 
 ### list\_orgs
 
 List all organizations you have access to.
 
-**No parameters required**
+**Example usage:**
 
-<ResponseField name="orgs" type="array">
-  Array of organization objects containing organization details and metadata
-</ResponseField>
+* *"What organizations do I have?"*
+* *"Show me my orgs"*
+
+### list\_projects
+
+List all projects in your Trigger.dev account.
+
+**Example usage:**
+
+* *"What projects do I have?"*
+* *"List my Trigger.dev projects"*
 
 ### create\_project\_in\_org
 
 Create a new project in an organization.
 
-<ParamField query="orgParam" type="string" required>
-  The organization to create the project in, can either be the organization slug or the ID. Use the
-  `list_orgs` tool to get a list of organizations and ask the user to select one.
-</ParamField>
+**Example usage:**
 
-<ParamField query="name" type="string" required>
-  The name of the project to create
-</ParamField>
-
-<CodeGroup>
-  ```json Example Usage theme={null}
-  {
-    "tool": "create_project_in_org",
-    "arguments": {
-      "orgParam": "my-org",
-      "name": "New Project"
-    }
-  }
-  ```
-</CodeGroup>
+* *"Create a new project called 'my-app'"*
+* *"Set up a new Trigger.dev project"*
 
 ### initialize\_project
 
 Initialize Trigger.dev in your project with automatic setup and configuration.
 
-<ParamField query="orgParam" type="string" required>
-  The organization to create the project in, can either be the organization slug or the ID. Use the
-  `list_orgs` tool to get a list of organizations and ask the user to select one.
-</ParamField>
+**Example usage:**
 
-<ParamField query="projectRef" type="string" optional>
-  The trigger.dev project ref, starts with `proj_`. We will attempt to automatically detect the
-  project ref if running inside a directory that includes a trigger.config.ts file.
-</ParamField>
-
-<ParamField query="projectName" type="string" required>
-  The name of the project to create. If projectRef is not provided, we will use this name to create
-  a new project in the organization you select.
-</ParamField>
-
-<ParamField query="cwd" type="string" required>
-  The current working directory of the project
-</ParamField>
+* *"Set up Trigger.dev in this project"*
+* *"Add Trigger.dev to my app"*
 
 ## Task Management Tools
 
-### get\_tasks
+### get\_current\_worker
 
-Get all tasks in a project.
+Get the current worker for a project, including the worker version, SDK version, and registered tasks with their payload schemas.
 
-<ParamField query="projectRef" type="string" optional>
-  The trigger.dev project ref, starts with `proj_`. We will attempt to automatically detect the
-  project ref if running inside a directory that includes a trigger.config.ts file.
-</ParamField>
+**Example usage:**
 
-<ParamField query="configPath" type="string" optional>
-  The path to the trigger.config.ts file. Only used when the trigger.config.ts file is not at the
-  root dir (like in a monorepo setup). If not provided, we will try to find the config file in the
-  current working directory.
-</ParamField>
-
-<ParamField query="environment" type="string" default="dev">
-  The environment to get tasks for. Options: `dev`, `staging`, `prod`, `preview`
-</ParamField>
-
-<ParamField query="branch" type="string" optional>
-  The branch to get tasks for, only used for preview environments
-</ParamField>
-
-<CodeGroup>
-  ```json Example Usage theme={null}
-  {
-    "tool": "get_tasks",
-    "arguments": {
-      "projectRef": "proj_abc123",
-      "environment": "dev"
-    }
-  }
-  ```
-</CodeGroup>
+* *"What tasks are available?"*
+* *"Show me the tasks in dev"*
 
 ### trigger\_task
 
-Trigger a task to run.
+Trigger a task to run with a specific payload. You can add a delay, set tags, configure retries, choose a machine size, set a TTL, or use an idempotency key.
 
-<ParamField query="projectRef" type="string" optional>
-  The trigger.dev project ref, starts with `proj_`. We will attempt to automatically detect the
-  project ref if running inside a directory that includes a trigger.config.ts file.
-</ParamField>
+**Example usage:**
 
-<ParamField query="configPath" type="string" optional>
-  The path to the trigger.config.ts file. Only used when the trigger.config.ts file is not at the
-  root dir (like in a monorepo setup).
-</ParamField>
-
-<ParamField query="environment" type="string" default="dev">
-  The environment to trigger the task in. Options: `dev`, `staging`, `prod`, `preview`
-</ParamField>
-
-<ParamField query="branch" type="string" optional>
-  The branch to trigger the task in, only used for preview environments
-</ParamField>
-
-<ParamField query="taskId" type="string" required>
-  The ID/slug of the task to trigger. Use the `get_tasks` tool to get a list of tasks and ask the
-  user to select one if it's not clear which one to use.
-</ParamField>
-
-<ParamField query="payload" type="string" required>
-  The payload to trigger the task with, must be a valid JSON string
-</ParamField>
-
-<ParamField query="options" type="object" optional>
-  Additional options for the task run
-
-  <Expandable title="options properties">
-    <ParamField query="queue.name" type="string" optional>
-      The name of the queue to trigger the task in, by default will use the queue configured in the
-      task
-    </ParamField>
-
-    <ParamField query="delay" type="string | datetime" optional>
-      The delay before the task run is executed
-    </ParamField>
-
-    <ParamField query="idempotencyKey" type="string" optional>
-      The idempotency key to use for the task run
-    </ParamField>
-
-    <ParamField query="machine" type="string" optional>
-      The machine preset to use for the task run. Options: `micro`, `small-1x`, `small-2x`,
-      `medium-1x`, `medium-2x`, `large-1x`, `large-2x`
-    </ParamField>
-
-    <ParamField query="maxAttempts" type="integer" optional>
-      The maximum number of attempts to retry the task run
-    </ParamField>
-
-    <ParamField query="maxDuration" type="number" optional>
-      The maximum duration in seconds of the task run
-    </ParamField>
-
-    <ParamField query="tags" type="array" optional>
-      Tags to add to the task run. Must be less than 128 characters and cannot have more than 5
-    </ParamField>
-
-    <ParamField query="ttl" type="string | integer" default="10m">
-      The time to live of the task run. If the run doesn't start executing within this time, it will
-      be automatically cancelled.
-    </ParamField>
-  </Expandable>
-</ParamField>
-
-<CodeGroup>
-  ```json Example Usage theme={null}
-  {
-    "tool": "trigger_task",
-    "arguments": {
-      "projectRef": "proj_abc123",
-      "taskId": "email-notification",
-      "payload": "{\"email\": \"user@example.com\", \"subject\": \"Hello World\"}",
-      "options": {
-        "tags": ["urgent"],
-        "maxAttempts": 3
-      }
-    }
-  }
-  ```
-</CodeGroup>
+* *"Run the email-notification task"*
+* *"Trigger my-task with userId 123"*
+* *"Execute the sync task in production"*
 
 ## Run Monitoring Tools
 
 ### get\_run\_details
 
-Get the details of a specific task run.
+Get detailed information about a specific task run, including logs and status. Enable debug mode to get the full trace with all logs and spans.
 
-<ParamField query="projectRef" type="string" optional>
-  The trigger.dev project ref, starts with `proj_`. We will attempt to automatically detect the
-  project ref if running inside a directory that includes a trigger.config.ts file.
-</ParamField>
+**Example usage:**
 
-<ParamField query="configPath" type="string" optional>
-  The path to the trigger.config.ts file. Only used when the trigger.config.ts file is not at the
-  root dir (like in a monorepo setup).
-</ParamField>
-
-<ParamField query="environment" type="string" default="dev">
-  The environment to get the run details from. Options: `dev`, `staging`, `prod`, `preview`
-</ParamField>
-
-<ParamField query="branch" type="string" optional>
-  The branch to get the run details from, only used for preview environments
-</ParamField>
-
-<ParamField query="runId" type="string" required>
-  The ID of the run to get the details of, starts with `run_`
-</ParamField>
-
-<ParamField query="debugMode" type="boolean" optional>
-  Enable debug mode to get more detailed information about the run, including the entire trace (all logs and spans for the run and any child run). Set this to true if prompted to debug a run.
-</ParamField>
-
-### cancel\_run
-
-Cancel a running task.
-
-<ParamField query="runId" type="string" required>
-  The ID of the run to cancel, starts with `run_`
-</ParamField>
-
-<ParamField query="projectRef" type="string" optional>
-  The trigger.dev project ref, starts with `proj_`. We will attempt to automatically detect the
-  project ref if running inside a directory that includes a trigger.config.ts file.
-</ParamField>
-
-<ParamField query="configPath" type="string" optional>
-  The path to the trigger.config.ts file. Only used when the trigger.config.ts file is not at the
-  root dir (like in a monorepo setup).
-</ParamField>
-
-<ParamField query="environment" type="string" default="dev">
-  The environment to cancel the run in. Options: `dev`, `staging`, `prod`, `preview`
-</ParamField>
-
-<ParamField query="branch" type="string" optional>
-  The branch to cancel the run in, only used for preview environments
-</ParamField>
-
-<CodeGroup>
-  ```json Example Usage theme={null}
-  {
-    "tool": "cancel_run",
-    "arguments": {
-      "runId": "run_abc123",
-      "projectRef": "proj_abc123"
-    }
-  }
-  ```
-</CodeGroup>
+* *"Show me details for run run\_abc123"*
+* *"Why did this run fail?"*
 
 ### list\_runs
 
-List all runs for a project with comprehensive filtering options.
+List runs for a project. Filter by status, task, tags, version, machine size, or time period.
 
-<ParamField query="projectRef" type="string" optional>
-  The trigger.dev project ref, starts with `proj_`. We will attempt to automatically detect the
-  project ref if running inside a directory that includes a trigger.config.ts file.
-</ParamField>
+**Example usage:**
 
-<ParamField query="configPath" type="string" optional>
-  The path to the trigger.config.ts file. Only used when the trigger.config.ts file is not at the
-  root dir (like in a monorepo setup).
-</ParamField>
+* *"Show me recent runs"*
+* *"List failed runs from the last 7 days"*
+* *"What runs are currently executing?"*
 
-<ParamField query="environment" type="string" default="dev">
-  The environment to list runs from. Options: `dev`, `staging`, `prod`, `preview`
-</ParamField>
+### wait\_for\_run\_to\_complete
 
-<ParamField query="branch" type="string" optional>
-  The branch to list runs from, only used for preview environments
-</ParamField>
+Wait for a specific run to finish and return the result.
 
-<ParamField query="cursor" type="string" optional>
-  The cursor to use for pagination, starts with `run_`
-</ParamField>
+**Example usage:**
 
-<ParamField query="limit" type="integer" optional>
-  The number of runs to list in a single page. Up to 100
-</ParamField>
+* *"Wait for run run\_abc123 to complete"*
 
-<ParamField query="status" type="string" optional>
-  Filter for runs with this run status. Options: `PENDING_VERSION`, `QUEUED`, `DEQUEUED`,
-  `EXECUTING`, `WAITING`, `COMPLETED`, `CANCELED`, `FAILED`, `CRASHED`, `SYSTEM_FAILURE`, `DELAYED`,
-  `EXPIRED`, `TIMED_OUT`
-</ParamField>
+### cancel\_run
 
-<ParamField query="taskIdentifier" type="string" optional>
-  Filter for runs that match this task identifier
-</ParamField>
+Cancel a running or queued run.
 
-<ParamField query="version" type="string" optional>
-  Filter for runs that match this version, e.g. `20250808.3`
-</ParamField>
+**Example usage:**
 
-<ParamField query="tag" type="string" optional>
-  Filter for runs that include this tag
-</ParamField>
-
-<ParamField query="from" type="string" optional>
-  Filter for runs created after this ISO 8601 timestamp
-</ParamField>
-
-<ParamField query="to" type="string" optional>
-  Filter for runs created before this ISO 8601 timestamp
-</ParamField>
-
-<ParamField query="period" type="string" optional>
-  Filter for runs created in the last N time period. Examples: `7d`, `30d`, `365d`
-</ParamField>
-
-<ParamField query="machine" type="string" optional>
-  Filter for runs that match this machine preset. Options: `micro`, `small-1x`, `small-2x`,
-  `medium-1x`, `medium-2x`, `large-1x`, `large-2x`
-</ParamField>
-
-<CodeGroup>
-  ```json Example Usage theme={null}
-  {
-    "tool": "list_runs",
-    "arguments": {
-      "projectRef": "proj_abc123",
-      "status": "COMPLETED",
-      "limit": 10,
-      "period": "7d"
-    }
-  }
-  ```
-</CodeGroup>
+* *"Cancel run run\_abc123"*
+* *"Stop that task"*
 
 ## Deployment Tools
 
 ### deploy
 
-Deploy a project to staging or production environments.
+Deploy your project to staging or production.
 
-<ParamField query="projectRef" type="string" optional>
-  The trigger.dev project ref, starts with `proj_`. We will attempt to automatically detect the
-  project ref if running inside a directory that includes a trigger.config.ts file.
-</ParamField>
+**Example usage:**
 
-<ParamField query="configPath" type="string" optional>
-  The path to the trigger.config.ts file. Only used when the trigger.config.ts file is not at the
-  root dir (like in a monorepo setup).
-</ParamField>
+* *"Deploy to production"*
+* *"Deploy to staging"*
 
-<ParamField query="environment" type="string" default="prod">
-  The environment to deploy to. Options: `staging`, `prod`, `preview`
-</ParamField>
+### list\_deploys
 
-<ParamField query="branch" type="string" optional>
-  The branch to deploy, only used for preview environments
-</ParamField>
+List deployments for a project. Filter by status or time period.
 
-<ParamField query="skipPromotion" type="boolean" optional>
-  Skip promoting the deployment to the current deployment for the environment
-</ParamField>
+**Example usage:**
 
-<ParamField query="skipSyncEnvVars" type="boolean" optional>
-  Skip syncing environment variables when using the syncEnvVars extension
-</ParamField>
-
-<ParamField query="skipUpdateCheck" type="boolean" optional>
-  Skip checking for @trigger.dev package updates
-</ParamField>
-
-<CodeGroup>
-  ```json Example Usage theme={null}
-  {
-    "tool": "deploy",
-    "arguments": {
-      "projectRef": "proj_abc123",
-      "environment": "prod",
-      "skipUpdateCheck": true
-    }
-  }
-  ```
-</CodeGroup>
-
-### list\_deployments
-
-List deployments for a project with comprehensive filtering options.
-
-<ParamField query="projectRef" type="string" optional>
-  The trigger.dev project ref, starts with `proj_`. We will attempt to automatically detect the
-  project ref if running inside a directory that includes a trigger.config.ts file.
-</ParamField>
-
-<ParamField query="configPath" type="string" optional>
-  The path to the trigger.config.ts file. Only used when the trigger.config.ts file is not at the
-  root dir (like in a monorepo setup).
-</ParamField>
-
-<ParamField query="environment" type="string" default="prod">
-  The environment to list deployments for. Options: `staging`, `prod`, `preview`
-</ParamField>
-
-<ParamField query="branch" type="string" optional>
-  The branch to list deployments from, only used for preview environments
-</ParamField>
-
-<ParamField query="cursor" type="string" optional>
-  The deployment ID to start the search from, to get the next page
-</ParamField>
-
-<ParamField query="limit" type="number" optional>
-  The number of deployments to return, defaults to 20 (max 100)
-</ParamField>
-
-<ParamField query="status" type="string" optional>
-  Filter deployments that are in this status. Options: `PENDING`, `BUILDING`, `DEPLOYING`, `DEPLOYED`, `FAILED`, `CANCELED`, `TIMED_OUT`
-</ParamField>
-
-<ParamField query="from" type="string" optional>
-  The date to start the search from, in ISO 8601 format
-</ParamField>
-
-<ParamField query="to" type="string" optional>
-  The date to end the search, in ISO 8601 format
-</ParamField>
-
-<ParamField query="period" type="string" optional>
-  The period to search within. Examples: `1d`, `7d`, `3h`
-</ParamField>
-
-<CodeGroup>
-  ```json Example Usage theme={null}
-  {
-    "tool": "list_deployments",
-    "arguments": {
-      "projectRef": "proj_abc123",
-      "environment": "prod",
-      "status": "DEPLOYED",
-      "limit": 10
-    }
-  }
-  ```
-</CodeGroup>
+* *"Show me recent deployments"*
+* *"What's deployed to production?"*
 
 ### list\_preview\_branches
 
 List all preview branches in the project.
 
-<ParamField query="projectRef" type="string" optional>
-  The trigger.dev project ref, starts with `proj_`. We will attempt to automatically detect the
-  project ref if running inside a directory that includes a trigger.config.ts file.
-</ParamField>
+**Example usage:**
 
-<ParamField query="configPath" type="string" optional>
-  The path to the trigger.config.ts file. Only used when the trigger.config.ts file is not at the
-  root dir (like in a monorepo setup). If not provided, we will try to find the config file in the
-  current working directory.
-</ParamField>
-
-<CodeGroup>
-  ```json Example Usage theme={null}
-  {
-    "tool": "list_preview_branches",
-    "arguments": {
-      "projectRef": "proj_abc123"
-    }
-  }
-  ```
-</CodeGroup>
+* *"What preview branches exist?"*
+* *"Show me preview deployments"*
 
 <Callout type="warning">
-  The deploy tool and list\_preview\_branches tool are not available when the MCP server is running with the `--dev-only` flag.
+  The deploy and list\_preview\_branches tools are not available when the MCP server is running with the `--dev-only` flag.
 </Callout>
 
 
@@ -19932,11 +21725,11 @@ Trigger.dev runs your tasks on specific Node.js versions:
 
 * Node.js `21.7.3` (default)
 * Node.js `22.16.0` (`node-22`)
-* Bun `1.2.20` (`bun`)
+* Bun `1.3.3` (`bun`)
 
 You can change the runtime by setting the `runtime` field in your `trigger.config.ts` file.
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 import { defineConfig } from "@trigger.dev/sdk";
 
 export default defineConfig({
@@ -19973,7 +21766,7 @@ Note that between steps 4 and 5, runs triggered with the v4 package will continu
 Use the prompt in the accordion below to help you migrate your v3 tasks to v4. The prompt gives good results when using Claude 4 Sonnet. You’ll need a relatively large token limit.
 
 <Accordion title="Copy paste this prompt in full" icon="sparkles">
-  ```md  theme={null}
+  ```md theme={"theme":"css-variables"}
 
   I would like you to help me migrate my v3 task code to v4. Here are the important differences:
 
@@ -20187,15 +21980,15 @@ Use the prompt in the accordion below to help you migrate your v3 tasks to v4. T
 To opt-in to using v4, you will need to update your dependencies to the latest version:
 
 <CodeGroup>
-  ```bash npx theme={null}
+  ```bash npx theme={"theme":"css-variables"}
   npx trigger.dev@latest update
   ```
 
-  ```bash yarn theme={null}
+  ```bash yarn theme={"theme":"css-variables"}
   yarn dlx trigger.dev@latest update
   ```
 
-  ```bash pnpm theme={null}
+  ```bash pnpm theme={"theme":"css-variables"}
   pnpm dlx trigger.dev@latest update
   ```
 </CodeGroup>
@@ -20210,7 +22003,7 @@ We've deprecated the following APIs:
 
 We've deprecated the `@trigger.dev/sdk/v3` import path and moved to a new path:
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 // This still works, but will be removed in a future version
 import { task } from "@trigger.dev/sdk/v3";
 
@@ -20224,7 +22017,7 @@ We've renamed the `handleError` hook to `catchError` to better reflect that it c
 
 `init` was previously used to initialize data used in the run function:
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 import { task } from "@trigger.dev/sdk";
 
 const myTask = task({
@@ -20246,7 +22039,7 @@ This has now been deprecated in favor of the `locals` API and middleware. See th
 
 We've deprecated the `toolTask` function, which created both a Trigger.dev task and a tool compatible with the Vercel [AI SDK](https://vercel.com/docs/ai-sdk):
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 import { toolTask, schemaTask } from "@trigger.dev/sdk";
 import { z } from "zod";
 import { generateText } from "ai";
@@ -20281,13 +22074,13 @@ We've replaced the `toolTask` function with the `ai.tool` function, which create
 
 Previously, it was possible to specify a queue name of a queue that did not exist, along with a concurrency limit. The queue would then be created "on-demand" with the specified concurrency limit. If the queue did exist, the concurrency limit of the queue would be updated to the specified value:
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 await myTask.trigger({ foo: "bar" }, { queue: { name: "my-queue", concurrencyLimit: 10 } });
 ```
 
 This is no longer possible, and queues must now be defined ahead of time using the `queue` function:
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 import { queue } from "@trigger.dev/sdk";
 
 const myQueue = queue({
@@ -20298,13 +22091,13 @@ const myQueue = queue({
 
 Now when you trigger a task, you can only specify the queue by name:
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 await myTask.trigger({ foo: "bar" }, { queue: "my-queue" });
 ```
 
 Or you can set the queue on the task:
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 import { queue, task } from "@trigger.dev/sdk";
 
 const myQueue = queue({
@@ -20331,14 +22124,14 @@ export const myTask2 = task({
 
 Now you can trigger these tasks without having to specify the queue name in the trigger options:
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 await myTask.trigger({ foo: "bar" }); // Will use the queue defined on the task
 await myTask2.trigger({ foo: "bar" }); // Will use the queue defined on the task
 ```
 
 If you're using `concurrencyKey` you can specify the `queue` and `concurrencyKey` like this:
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 const handle = await generatePullRequest.trigger(data, {
   queue: "paid-users",
   concurrencyKey: data.userId,
@@ -20353,7 +22146,7 @@ We've changed the function signatures of the lifecycle hooks to be more consiste
 
 Previously, hooks received a payload as the first argument and then an additional object as the second argument:
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 import { task } from "@trigger.dev/sdk";
 
 export const myTask = task({
@@ -20365,7 +22158,7 @@ export const myTask = task({
 
 Now, all the parameters are passed in a single object:
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 import { task } from "@trigger.dev/sdk";
 
 export const myTask = task({
@@ -20378,7 +22171,7 @@ export const myTask = task({
 
 This is true for all the lifecycle hooks:
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 import { task } from "@trigger.dev/sdk";
 
 export const myTask = task({
@@ -20405,7 +22198,7 @@ We've made a few small changes to the `ctx` object:
 
 The `batchTrigger` function no longer returns a `runs` list directly. In v3, you could access the runs directly from the batch handle:
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 // In v3
 const batchHandle = await tasks.batchTrigger([
   [myTask, { foo: "bar" }],
@@ -20418,7 +22211,7 @@ console.log(batchHandle.runs);
 
 In v4, you now need to use the `batch.retrieve()` method to get the batch with its runs:
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 // In v4
 const batchHandle = await tasks.batchTrigger([
   [myTask, { foo: "bar" }],
@@ -20464,7 +22257,7 @@ Mergent is being absorbed into Resend, so if you’re running background jobs or
 2. **Create an organization and a project.**
 3. **Install the CLI** and run the local dev server:
 
-```bash  theme={null}
+```bash theme={"theme":"css-variables"}
 npx trigger.dev@latest init
 npx trigger.dev@latest dev
 ```
@@ -20477,7 +22270,7 @@ You’ll get a local server that behaves just like production, and you’ll see 
 
 Here’s a simple Mergent task that processes an image:
 
-```ts processVideo.ts theme={null}
+```ts processVideo.ts theme={"theme":"css-variables"}
 export async function processVideoTask(req: { body: { videoUrl: string } }) {
   const { videoUrl } = req.body;
   // Do some video processing
@@ -20490,7 +22283,7 @@ This is typically called by Mergent via HTTP POST, and you’d register the endp
 
 #### The same task in Trigger.dev
 
-```ts trigger/processVideo.ts theme={null}
+```ts trigger/processVideo.ts theme={"theme":"css-variables"}
 import { task } from "@trigger.dev/sdk";
 
 export const processVideoTask = task({
@@ -20517,7 +22310,7 @@ export const processVideoTask = task({
 
 You’d set up a schedule in the Mergent dashboard to hit your HTTP endpoint on a cron.
 
-```ts dailyReport.ts theme={null}
+```ts dailyReport.ts theme={"theme":"css-variables"}
 export async function dailyReportTask(req) {
   await sendDailyReport();
 }
@@ -20525,7 +22318,7 @@ export async function dailyReportTask(req) {
 
 **Trigger.dev scheduled task:**
 
-```ts trigger/dailyReport.ts theme={null}
+```ts trigger/dailyReport.ts theme={"theme":"css-variables"}
 import { schedules } from "@trigger.dev/sdk";
 
 export const dailyReportTask = schedules.task({
@@ -20544,7 +22337,7 @@ export const dailyReportTask = schedules.task({
 
 **Mergent:** You’d trigger a task by calling the Mergent API, specifying the URL and payload.
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 const Mergent = require("mergent");
 const mergent = new Mergent("API_KEY");
 
@@ -20560,7 +22353,7 @@ mergent.tasks.create({
 
 **Trigger.dev:** You trigger a task directly from your codebase, no HTTP endpoint needed.
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 import { processImageTask } from "@/trigger/processImage";
 
 await processImageTask.trigger({
@@ -20614,7 +22407,7 @@ Self-host Trigger.dev on your own infrastructure using Docker.
 ## Overview
 
 <Frame>
-  <img src="https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/self-hosting.png?fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=a0735cf11099c554fc16fbc1b49721e2" alt="Self-hosting architecture" data-og-width="1862" width="1862" data-og-height="1018" height="1018" data-path="images/self-hosting.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/self-hosting.png?w=280&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=c248d1eef681ff4ef201b8f87644a795 280w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/self-hosting.png?w=560&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=c1747b95e39b05b281de308d6c1c7cd5 560w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/self-hosting.png?w=840&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=978ef7e35a8202c64f7a1a09f023c31d 840w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/self-hosting.png?w=1100&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=34072a757d06ab1653e481e95b44df77 1100w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/self-hosting.png?w=1650&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=de8a2a20758e1d26e6b8b4d9729561e4 1650w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/self-hosting.png?w=2500&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=86b4df1644f0d2ab7226937dffcf5c36 2500w" />
+  <img alt="Self-hosting architecture" />
 </Frame>
 
 The self-hosting guide covers two alternative setups. The first option uses a simple setup where you run everything on one server. With the second option, the webapp and worker components are split on two separate machines.
@@ -20665,7 +22458,7 @@ Some very basic steps to get started:
 3. [Install Ngrok](https://ngrok.com/download)
 
 <Accordion title="On a Debian server, you can run these commands">
-  ```bash  theme={null}
+  ```bash theme={"theme":"css-variables"}
   # add ngrok repo
   curl -s https://ngrok-agent.s3.amazonaws.com/ngrok.asc | \
       sudo tee /etc/apt/trusted.gpg.d/ngrok.asc >/dev/null && \
@@ -20693,14 +22486,14 @@ Some very basic steps to get started:
 
 1. Clone the [Trigger.dev docker repository](https://github.com/triggerdotdev/docker)
 
-```bash  theme={null}
+```bash theme={"theme":"css-variables"}
 git clone https://github.com/triggerdotdev/docker
 cd docker
 ```
 
 2. Run the start script and follow the prompts
 
-```bash  theme={null}
+```bash theme={"theme":"css-variables"}
 ./start.sh # hint: you can append -d to run in detached mode
 ```
 
@@ -20710,13 +22503,13 @@ Alternatively, you can follow these manual steps after cloning the docker repo:
 
 1. Create the `.env` file
 
-```bash  theme={null}
+```bash theme={"theme":"css-variables"}
 cp .env.example .env
 ```
 
 2. Generate the required secrets
 
-```bash  theme={null}
+```bash theme={"theme":"css-variables"}
 echo MAGIC_LINK_SECRET=$(openssl rand -hex 16)
 echo SESSION_SECRET=$(openssl rand -hex 16)
 echo ENCRYPTION_KEY=$(openssl rand -hex 16)
@@ -20728,7 +22521,7 @@ echo COORDINATOR_SECRET=$(openssl rand -hex 32)
 
 4. Run docker compose to start the services
 
-```bash  theme={null}
+```bash theme={"theme":"css-variables"}
 . lib.sh # source the helper function
 docker_compose -p=trigger up
 ```
@@ -20739,7 +22532,7 @@ You will need to expose the webapp to the internet. You can use Ngrok for this. 
 
 1. Start Ngrok. You may get prompted to sign up - it's free.
 
-```bash  theme={null}
+```bash theme={"theme":"css-variables"}
 ./tunnel.sh
 ```
 
@@ -20747,14 +22540,14 @@ You will need to expose the webapp to the internet. You can use Ngrok for this. 
 
 3. Uncomment the `TRIGGER_PROTOCOL` and `TRIGGER_DOMAIN` lines in the `.env` file. Set it to the domain you copied.
 
-```bash  theme={null}
+```bash theme={"theme":"css-variables"}
 TRIGGER_PROTOCOL=https
 TRIGGER_DOMAIN=1234-42-42-42-42.ngrok-free.app
 ```
 
 4. Quit the start script and launch it again, or run this:
 
-```bash  theme={null}
+```bash theme={"theme":"css-variables"}
 ./stop.sh && ./start.sh
 ```
 
@@ -20766,20 +22559,20 @@ If you want to deploy v3 projects, you will need access to a Docker registry. Th
 
 2. Edit the `.env` file and add the registry details
 
-```bash  theme={null}
+```bash theme={"theme":"css-variables"}
 DEPLOY_REGISTRY_HOST=docker.io
 DEPLOY_REGISTRY_NAMESPACE=<your_dockerhub_username>
 ```
 
 3. Log in to Docker Hub both locally and your server. For the split setup, this will be the worker machine. You may want to create an [access token](https://hub.docker.com/settings/security) for this.
 
-```bash  theme={null}
+```bash theme={"theme":"css-variables"}
 docker login -u <your_dockerhub_username> docker.io
 ```
 
 4. Required on some systems: Run the login command inside the `docker-provider` container so it can pull deployment images to run your tasks.
 
-```bash  theme={null}
+```bash theme={"theme":"css-variables"}
 docker exec -ti \
   trigger-docker-provider-1 \
   docker login -u <your_dockerhub_username> docker.io
@@ -20787,7 +22580,7 @@ docker exec -ti \
 
 5. Restart the services
 
-```bash  theme={null}
+```bash theme={"theme":"css-variables"}
 ./stop.sh && ./start.sh
 ```
 
@@ -20807,7 +22600,7 @@ All steps are the same as for a single server, except for the following:
 
 1. **Startup.** Run the start script with the `webapp` argument
 
-```bash  theme={null}
+```bash theme={"theme":"css-variables"}
 ./start.sh webapp
 ```
 
@@ -20817,14 +22610,14 @@ All steps are the same as for a single server, except for the following:
 
 1. **Environment variables.** Copy your `.env` file from the webapp to the worker machine:
 
-```bash  theme={null}
+```bash theme={"theme":"css-variables"}
 # an example using scp
 scp -3 root@<webapp_machine>:docker/.env root@<worker_machine>:docker/.env
 ```
 
 2. **Startup.** Run the start script with the `worker` argument
 
-```bash  theme={null}
+```bash theme={"theme":"css-variables"}
 ./start.sh worker
 ```
 
@@ -20832,7 +22625,7 @@ scp -3 root@<webapp_machine>:docker/.env root@<worker_machine>:docker/.env
 
 4. **Registry setup.** Follow the [registry setup](/open-source-self-hosting#registry-setup) section but run the last command on the worker machine - note the container name is different:
 
-```bash  theme={null}
+```bash theme={"theme":"css-variables"}
 docker exec -ti \
   trigger-worker-docker-provider-1 \
   docker login -u <your_dockerhub_username> docker.io
@@ -20846,7 +22639,7 @@ By default, payloads over 512KB will be offloaded to S3-compatible storage. If y
 
 For example, using Cloudflare R2:
 
-```bash  theme={null}
+```bash theme={"theme":"css-variables"}
 OBJECT_STORE_BASE_URL="https://<bucket>.<account>.r2.cloudflarestorage.com"
 OBJECT_STORE_ACCESS_KEY_ID="<r2 access key with read/write access to bucket>"
 OBJECT_STORE_SECRET_ACCESS_KEY="<r2 secret key>"
@@ -20854,7 +22647,7 @@ OBJECT_STORE_SECRET_ACCESS_KEY="<r2 secret key>"
 
 Alternatively, you can increase the threshold:
 
-```bash  theme={null}
+```bash theme={"theme":"css-variables"}
 # size in bytes, example with 5MB threshold
 TASK_PAYLOAD_OFFLOAD_THRESHOLD=5242880
 ```
@@ -20868,7 +22661,7 @@ There are several reasons to lock the version of your Docker images:
 
 By default, the images will point at the latest versioned release via the `v3` tag. You can override this by specifying a different tag in your `.env` file. For example:
 
-```bash  theme={null}
+```bash theme={"theme":"css-variables"}
 TRIGGER_IMAGE_TAG=v3.0.4
 ```
 
@@ -20880,7 +22673,7 @@ Depending on your choice of mail provider/transport, you will want to configure 
 
 ##### Resend:
 
-```bash  theme={null}
+```bash theme={"theme":"css-variables"}
 EMAIL_TRANSPORT=resend
 FROM_EMAIL=
 REPLY_TO_EMAIL=
@@ -20893,7 +22686,7 @@ Note that setting `SMTP_SECURE=false` does *not* mean the email is sent insecure
 This simply means that the connection is secured using the modern STARTTLS protocol command instead of implicit TLS.
 You should only set this to true when the SMTP server host directs you to do so (generally when using port 465)
 
-```bash  theme={null}
+```bash theme={"theme":"css-variables"}
 EMAIL_TRANSPORT=smtp
 FROM_EMAIL=
 REPLY_TO_EMAIL=
@@ -20909,7 +22702,7 @@ SMTP_PASSWORD=<your_smtp_password>
 Credentials are to be supplied as with any other program using the AWS SDK.
 In this scenario, you would likely either supply the additional environment variables `AWS_REGION`, `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY` or, when running on AWS, use credentials supplied by the EC2 IMDS.
 
-```bash  theme={null}
+```bash theme={"theme":"css-variables"}
 EMAIL_TRANSPORT=aws-ses
 FROM_EMAIL=
 REPLY_TO_EMAIL=
@@ -20917,9 +22710,9 @@ REPLY_TO_EMAIL=
 
 All email addresses can sign up and log in this way. If you would like to restrict this, you can use the `WHITELISTED_EMAILS` env var. For example:
 
-```bash  theme={null}
+```bash theme={"theme":"css-variables"}
 # every email that does not match this regex will be rejected
-WHITELISTED_EMAILS="authorized@yahoo\.com|authorized@gmail\.com"
+WHITELISTED_EMAILS="^(authorized@yahoo\.com|authorized@gmail\.com)$"
 ```
 
 It's currently impossible to restrict GitHub OAuth logins by account name or email like above, so this method is *not recommended* for self-hosted instances. It's also very easy to lock yourself out of your own instance.
@@ -20928,7 +22721,7 @@ It's currently impossible to restrict GitHub OAuth logins by account name or ema
 
 Your GitHub OAuth app needs a callback URL `https://<your_domain>/auth/github/callback` and you will have to set the following env vars:
 
-```bash  theme={null}
+```bash theme={"theme":"css-variables"}
 AUTH_GITHUB_CLIENT_ID=<your_client_id>
 AUTH_GITHUB_CLIENT_SECRET=<your_client_secret>
 ```
@@ -20956,14 +22749,14 @@ Underneath the hood this uses Checkpoint and Restore in Userspace, or [CRIU](htt
 
 1. Install CRIU
 
-```bash  theme={null}
+```bash theme={"theme":"css-variables"}
 sudo apt-get update
 sudo apt-get install criu
 ```
 
 2. Tweak the config so we can successfully checkpoint our workloads
 
-```bash  theme={null}
+```bash theme={"theme":"css-variables"}
 mkdir -p /etc/criu
 
 cat << EOF >/etc/criu/runc.conf
@@ -20973,13 +22766,13 @@ EOF
 
 3. Make sure everything works
 
-```bash  theme={null}
+```bash theme={"theme":"css-variables"}
 sudo criu check
 ```
 
 3. Enable Docker experimental features, by adding the following to `/etc/docker/daemon.json`
 
-```json  theme={null}
+```json theme={"theme":"css-variables"}
 {
   "experimental": true
 }
@@ -20987,19 +22780,19 @@ sudo criu check
 
 4. Restart the Docker daemon
 
-```bash  theme={null}
+```bash theme={"theme":"css-variables"}
 sudo systemctl restart docker
 ```
 
 5. Uncomment `FORCE_CHECKPOINT_SIMULATION=0` in your `.env` file. Alternatively, run this:
 
-```bash  theme={null}
+```bash theme={"theme":"css-variables"}
 echo "FORCE_CHECKPOINT_SIMULATION=0" >> .env
 ```
 
 6. Restart the services
 
-```bash  theme={null}
+```bash theme={"theme":"css-variables"}
 # if you're running everything on the same machine
 ./stop.sh && ./start.sh
 
@@ -21011,14 +22804,14 @@ echo "FORCE_CHECKPOINT_SIMULATION=0" >> .env
 
 Once you have everything set up, you will periodically want to update your Docker images. You can easily do this by running the update script and restarting your services:
 
-```bash  theme={null}
+```bash theme={"theme":"css-variables"}
 ./update.sh
 ./stop.sh && ./start.sh
 ```
 
 Sometimes, we will make more extensive changes that require pulling updated compose files, scripts, etc from our docker repo:
 
-```bash  theme={null}
+```bash theme={"theme":"css-variables"}
 git pull
 ./stop.sh && ./start.sh
 ```
@@ -21038,7 +22831,7 @@ If you're coming from the beta CLI package images, you will need to:
 
 In summary, run this wherever you cloned the docker repo:
 
-```bash  theme={null}
+```bash theme={"theme":"css-variables"}
 # if you made changes
 git stash
 
@@ -21058,7 +22851,7 @@ git stash pop
 
 * **Deployment fails at the push step.** The machine running `deploy` needs registry access:
 
-```bash  theme={null}
+```bash theme={"theme":"css-variables"}
 docker login -u <username> <registry>
 # this should now succeed
 npx trigger.dev@latest deploy --self-hosted --push
@@ -21066,7 +22859,7 @@ npx trigger.dev@latest deploy --self-hosted --push
 
 * **Prod runs fail to start.** The `docker-provider` needs registry access:
 
-```bash  theme={null}
+```bash theme={"theme":"css-variables"}
 # single server? run this:
 docker exec -ti \
   trigger-docker-provider-1 \
@@ -21086,7 +22879,7 @@ This section highlights some of the CLI commands and options that are useful whe
 
 To avoid being redirected to the [Trigger.dev Cloud](https://cloud.trigger.dev) login page when using the CLI, you can specify the URL of your self-hosted instance with the `--api-url` or `-a` flag. For example:
 
-```bash  theme={null}
+```bash theme={"theme":"css-variables"}
 npx trigger.dev@latest login -a http://trigger.example.com
 ```
 
@@ -21116,7 +22909,7 @@ npx trigger.dev@latest list-profiles
 
 It can be useful to check you have successfully logged in to the correct instance. You can do this with the `whoami` command, which will also show the API URL:
 
-```bash  theme={null}
+```bash theme={"theme":"css-variables"}
 npx trigger.dev@latest whoami
 
 # with a custom profile
@@ -21142,7 +22935,7 @@ For more detailed instructions, see the [GitHub Actions guide](/github-actions).
 
 By default, the Trigger.dev webapp sends telemetry data to our servers. This data is used to improve the product and is not shared with third parties. If you would like to opt-out of this, you can set the `TRIGGER_TELEMETRY_DISABLED` environment variable in your `.env` file. The value doesn't matter, it just can't be empty. For example:
 
-```bash  theme={null}
+```bash theme={"theme":"css-variables"}
 TRIGGER_TELEMETRY_DISABLED=1
 ```
 
@@ -21176,7 +22969,7 @@ By default, all tasks have an unbounded concurrency limit, limited only by the o
 
 You can set the concurrency limit for a task by setting the `concurrencyLimit` property on the task's queue. This limits the number of runs that can be executing at any one time:
 
-```ts /trigger/one-at-a-time.ts theme={null}
+```ts /trigger/one-at-a-time.ts theme={"theme":"css-variables"}
 // This task will only run one at a time
 export const oneAtATime = task({
   id: "one-at-a-time",
@@ -21195,7 +22988,7 @@ This is useful if you need to control access to a shared resource, like a databa
 
 As well as putting queue settings directly on a task, you can define a queue and reuse it across multiple tasks. This allows you to share the same concurrency limit:
 
-```ts /trigger/queue.ts theme={null}
+```ts /trigger/queue.ts theme={"theme":"css-variables"}
 export const myQueue = queue({
   name: "my-queue",
   concurrencyLimit: 1,
@@ -21226,7 +23019,7 @@ When you trigger a task you can override the default queue. This is really usefu
 
 The task and queue definition:
 
-```ts /trigger/override-concurrency.ts theme={null}
+```ts /trigger/override-concurrency.ts theme={"theme":"css-variables"}
 const paidQueue = queue({
   name: "paid-users",
   concurrencyLimit: 10,
@@ -21246,7 +23039,7 @@ export const generatePullRequest = task({
 
 Triggering from your backend and overriding the queue:
 
-```ts app/api/push/route.ts theme={null}
+```ts app/api/push/route.ts theme={"theme":"css-variables"}
 import { generatePullRequest } from "~/trigger/override-concurrency";
 
 export async function POST(request: Request) {
@@ -21276,7 +23069,7 @@ You can do this by using `concurrencyKey`. It creates a copy of the queue for ea
 
 Your backend code:
 
-```ts app/api/pr/route.ts theme={null}
+```ts app/api/pr/route.ts theme={"theme":"css-variables"}
 import { generatePullRequest } from "~/trigger/override-concurrency";
 
 export async function POST(request: Request) {
@@ -21310,7 +23103,7 @@ export async function POST(request: Request) {
 
 When you trigger a task that has subtasks, the subtasks will not inherit the queue from the parent task. Unless otherwise specified, subtasks will run on their own queue
 
-```ts /trigger/subtasks.ts theme={null}
+```ts /trigger/subtasks.ts theme={"theme":"css-variables"}
 export const parentTask = task({
   id: "parent-task",
   run: async (payload) => {
@@ -21352,7 +23145,7 @@ For example, if you have a queue with a `concurrencyLimit` of 1:
 
 When a parent task triggers and waits for a subtask on a different queue, the parent task will checkpoint and release its concurrency slot once it reaches the wait point. This prevents environment deadlocks where all concurrency slots would be occupied by waiting tasks.
 
-```ts /trigger/waiting.ts theme={null}
+```ts /trigger/waiting.ts theme={"theme":"css-variables"}
 export const parentTask = task({
   id: "parent-task",
   queue: {
@@ -21382,25 +23175,9 @@ Source: https://trigger.dev/docs/quick-start
 
 How to get started in 3 minutes using the CLI and SDK.
 
-In this guide we will:
-
-1. Create a `trigger.config.ts` file and a `/trigger` directory with an example task.
-2. Get you to run the task using the CLI.
-3. Show you how to view the run logs for that task.
-
-<Steps titleSize="h3">
+<Steps>
   <Step title="Create a Trigger.dev account">
-    You can either:
-
-    * Use the [Trigger.dev Cloud](https://cloud.trigger.dev).
-    * Or [self-host](/open-source-self-hosting) the service.
-  </Step>
-
-  <Step title="Create your first project">
-    Once you've created an account, follow the steps in the app to:
-
-    1. Complete your account details.
-    2. Create your first Organization and Project.
+    Sign up at [Trigger.dev Cloud](https://cloud.trigger.dev) (or [self-host](/open-source-self-hosting)). The onboarding flow will guide you through creating your first organization and project.
   </Step>
 
   <Step title="Run the CLI `init` command">
@@ -21409,25 +23186,31 @@ In this guide we will:
     Run this command in the root of your project to get started:
 
     <CodeGroup>
-      ```bash npm theme={null}
+      ```bash npm theme={"theme":"css-variables"}
       npx trigger.dev@latest init
       ```
 
-      ```bash pnpm theme={null}
+      ```bash pnpm theme={"theme":"css-variables"}
       pnpm dlx trigger.dev@latest init
       ```
 
-      ```bash yarn theme={null}
+      ```bash yarn theme={"theme":"css-variables"}
       yarn dlx trigger.dev@latest init
       ```
     </CodeGroup>
 
     It will do a few things:
 
-    1. Log you into the CLI if you're not already logged in.
-    2. Create a `trigger.config.ts` file in the root of your project.
-    3. Ask where you'd like to create the `/trigger` directory.
-    4. Create the `/trigger` directory with an example task, `/trigger/example.[ts/js]`.
+    <Tip title="MCP Server">
+      Our [Trigger.dev MCP server](/mcp-introduction) gives your AI assistant direct access to Trigger.dev tools; search docs, trigger tasks, deploy projects, and monitor runs. We recommend installing it for the best developer experience.
+    </Tip>
+
+    1. Ask if you want to install the [Trigger.dev MCP server](/mcp-introduction) for your AI assistant.
+    2. Log you into the CLI if you're not already logged in.
+    3. Ask you to select your project.
+    4. Install the required SDK packages.
+    5. Ask where you'd like to create the `/trigger` directory and create it with an example task.
+    6. Create a `trigger.config.ts` file in the root of your project.
 
     Install the "Hello World" example task when prompted. We'll use this task to test the setup.
   </Step>
@@ -21438,15 +23221,15 @@ In this guide we will:
     It can also update your `@trigger.dev/*` packages to prevent version mismatches and failed deploys. You will always be prompted first.
 
     <CodeGroup>
-      ```bash npm theme={null}
+      ```bash npm theme={"theme":"css-variables"}
       npx trigger.dev@latest dev
       ```
 
-      ```bash pnpm theme={null}
+      ```bash pnpm theme={"theme":"css-variables"}
       pnpm dlx trigger.dev@latest dev
       ```
 
-      ```bash yarn theme={null}
+      ```bash yarn theme={"theme":"css-variables"}
       yarn dlx trigger.dev@latest dev
       ```
     </CodeGroup>
@@ -21455,35 +23238,43 @@ In this guide we will:
   <Step title="Perform a test run using the dashboard">
     The CLI `dev` command spits out various useful URLs. Right now we want to visit the Test page.
 
-    You should see our Example task in the list <Icon icon="circle-1" iconType="solid" size={20} color="F43F47" />, select it. Most tasks have a "payload" which you enter in the JSON editor <Icon icon="circle-2" iconType="solid" size={20} color="F43F47" />, but our example task doesn't need any input.
+    You should see our Example task in the list <Icon icon="circle-1" />, select it. Most tasks have a "payload" which you enter in the JSON editor <Icon icon="circle-2" />, but our example task doesn't need any input.
 
-    You can configure options on the run <Icon icon="circle-3" iconType="solid" size={20} color="F43F47" />, view recent payloads <Icon icon="circle-4" iconType="solid" size={20} color="F43F47" />, and create run templates <Icon icon="circle-5" iconType="solid" size={20} color="F43F47" />.
+    You can configure options on the run <Icon icon="circle-3" />, view recent payloads <Icon icon="circle-4" />, and create run templates <Icon icon="circle-5" />.
 
-    Press the "Run test" button <Icon icon="circle-6" iconType="solid" size={20} color="F43F47" />.
+    Press the "Run test" button <Icon icon="circle-6" />.
 
-        <img src="https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/test-dashboard.png?fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=92c810690f961d0033dd94d758c6bbfb" alt="Test page" data-og-width="2254" width="2254" data-og-height="1367" height="1367" data-path="images/test-dashboard.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/test-dashboard.png?w=280&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=970cc3e2d58a06fbf197fce5d6d0664b 280w, https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/test-dashboard.png?w=560&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=10d36ffd64e1f455f45a20d5e39f7bca 560w, https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/test-dashboard.png?w=840&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=62b4ec2301d11e645d3ebe45b2e3adc2 840w, https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/test-dashboard.png?w=1100&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=2db30f2ebfe494c81f5965a014e4fc6e 1100w, https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/test-dashboard.png?w=1650&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=67b24a2d00bde47226c4db88c4f7ac51 1650w, https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/test-dashboard.png?w=2500&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=e44fddf5357449c582b92cd3d434e43d 2500w" />
+    <img alt="Test page" />
   </Step>
 
   <Step title="View your run">
     Congratulations, you should see the run page which will live reload showing you the current state of the run.
 
-        <img src="https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/run-page.png?fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=4b0bb5f9b181499cf324cdb8d5d673a8" alt="Run page" data-og-width="2978" width="2978" data-og-height="2110" height="2110" data-path="images/run-page.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/run-page.png?w=280&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=d7f419295b621c779c6a9a10b9152958 280w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/run-page.png?w=560&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=c66995702aace3888813ee1a66d33f97 560w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/run-page.png?w=840&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=c6c36408dc85f156d15a333ddb849d26 840w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/run-page.png?w=1100&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=2c1d7275465749eeae32196698f4a1b5 1100w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/run-page.png?w=1650&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=6965f3e2263296fb6529384021ce362a 1650w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/run-page.png?w=2500&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=7d890c5d199be7feaddc9162435bcc17 2500w" />
+    <img alt="Run page" />
 
     If you go back to your terminal you'll see that the dev command also shows the task status and links to the run log.
 
-        <img src="https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/terminal-completed-run.png?fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=a9284c5228343b72d798c6e36f5acb24" alt="Terminal showing completed run" data-og-width="955" width="955" data-og-height="197" height="197" data-path="images/terminal-completed-run.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/terminal-completed-run.png?w=280&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=62826752155594bd580ae51582870cce 280w, https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/terminal-completed-run.png?w=560&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=5270d0e823346fe8517fcc356cc5d20c 560w, https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/terminal-completed-run.png?w=840&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=8ae13acb781c5d08e2351af3c2cbb70a 840w, https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/terminal-completed-run.png?w=1100&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=da9e9f485055786210b6d7ce3812b9cf 1100w, https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/terminal-completed-run.png?w=1650&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=dd59fd38559b7b7ca865a015d029e0de 1650w, https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/terminal-completed-run.png?w=2500&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=4de391f21eb74db6e3f7c174d86b4b71 2500w" />
+    <img alt="Terminal showing completed run" />
   </Step>
 </Steps>
 
 ## Next steps
 
 <CardGroup>
+  <Card title="Building with AI" icon="brain" href="/building-with-ai">
+    Learn how to build Trigger.dev projects using AI coding assistants
+  </Card>
+
   <Card title="How to trigger your tasks" icon="bolt" href="/triggering">
     Learn how to trigger tasks from your code.
   </Card>
 
   <Card title="Writing tasks" icon="wand-magic-sparkles" href="/tasks/overview">
     Tasks are the core of Trigger.dev. Learn what they are and how to write them.
+  </Card>
+
+  <Card title="Guides and example projects" icon="books" href="/guides/introduction">
+    Guides and examples for triggering tasks from your code.
   </Card>
 </CardGroup>
 
@@ -21510,7 +23301,7 @@ Use Public Access Tokens to subscribe to runs and receive real-time updates in y
 
 You can create a Public Access Token using the `auth.createPublicToken` function in your **backend** code:
 
-```tsx  theme={null}
+```tsx theme={"theme":"css-variables"}
 // Somewhere in your backend code
 import { auth } from "@trigger.dev/sdk";
 
@@ -21521,7 +23312,7 @@ const publicToken = await auth.createPublicToken(); // 👈 this public access t
 
 By default a Public Access Token has no permissions. You must specify the scopes you need when creating a Public Access Token:
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 import { auth } from "@trigger.dev/sdk";
 
 const publicToken = await auth.createPublicToken({
@@ -21535,7 +23326,7 @@ const publicToken = await auth.createPublicToken({
 
 This will allow the token to read all runs, which is probably not what you want. You can specify only certain runs by passing an array of run IDs:
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 import { auth } from "@trigger.dev/sdk";
 
 const publicToken = await auth.createPublicToken({
@@ -21549,7 +23340,7 @@ const publicToken = await auth.createPublicToken({
 
 You can scope the token to only read certain tasks:
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 import { auth } from "@trigger.dev/sdk";
 
 const publicToken = await auth.createPublicToken({
@@ -21563,7 +23354,7 @@ const publicToken = await auth.createPublicToken({
 
 Or tags:
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 import { auth } from "@trigger.dev/sdk";
 
 const publicToken = await auth.createPublicToken({
@@ -21577,7 +23368,7 @@ const publicToken = await auth.createPublicToken({
 
 Or a specific batch of runs:
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 import { auth } from "@trigger.dev/sdk";
 
 const publicToken = await auth.createPublicToken({
@@ -21591,7 +23382,7 @@ const publicToken = await auth.createPublicToken({
 
 You can also combine scopes. For example, to read runs with specific tags and for specific tasks:
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 import { auth } from "@trigger.dev/sdk";
 
 const publicToken = await auth.createPublicToken({
@@ -21608,7 +23399,7 @@ const publicToken = await auth.createPublicToken({
 
 By default, Public Access Token's expire after 15 minutes. You can specify a different expiration time when creating a Public Access Token:
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 import { auth } from "@trigger.dev/sdk";
 
 const publicToken = await auth.createPublicToken({
@@ -21644,7 +23435,7 @@ For triggering tasks from your frontend, you need special "trigger" tokens. Thes
 
 ### Creating Trigger Tokens
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 import { auth } from "@trigger.dev/sdk";
 
 // Somewhere in your backend code
@@ -21655,7 +23446,7 @@ const triggerToken = await auth.createTriggerPublicToken("my-task");
 
 You can pass multiple tasks to create a token that can trigger multiple tasks:
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 import { auth } from "@trigger.dev/sdk";
 
 // Somewhere in your backend code
@@ -21666,7 +23457,7 @@ const triggerToken = await auth.createTriggerPublicToken(["my-task-1", "my-task-
 
 You can also create tokens that can be used multiple times:
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 import { auth } from "@trigger.dev/sdk";
 
 // Somewhere in your backend code
@@ -21679,7 +23470,7 @@ const triggerToken = await auth.createTriggerPublicToken("my-task", {
 
 These tokens also expire, with the default expiration time being 15 minutes. You can specify a custom expiration time:
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 import { auth } from "@trigger.dev/sdk";
 
 // Somewhere in your backend code
@@ -21725,7 +23516,7 @@ See our [authentication guide](/realtime/auth) for detailed information on creat
 
 Subscribe to a run:
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 import { runs, tasks } from "@trigger.dev/sdk";
 
 // Trigger a task
@@ -21755,7 +23546,7 @@ The Streams API allows you to read streaming data from your Trigger.dev tasks in
 
 The recommended approach is to use [defined streams](/tasks/streams#defining-typed-streams-recommended) for full type safety:
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 import { streams } from "@trigger.dev/sdk";
 import { aiStream } from "./trigger/streams";
 
@@ -21778,7 +23569,7 @@ async function consumeStream(runId: string) {
 
 If you prefer not to use defined streams, you can read directly by specifying the stream key:
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 import { streams } from "@trigger.dev/sdk";
 
 async function consumeStream(runId: string) {
@@ -21795,7 +23586,7 @@ async function consumeStream(runId: string) {
 
 Every run has a default stream, so you can omit the stream key:
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 import { streams } from "@trigger.dev/sdk";
 
 async function consumeDefaultStream(runId: string) {
@@ -21816,7 +23607,7 @@ The `read()` method accepts several options for controlling stream behavior:
 
 Set a timeout to stop reading if no data is received within a specified time:
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 import { streams } from "@trigger.dev/sdk";
 import { aiStream } from "./trigger/streams";
 
@@ -21841,7 +23632,7 @@ async function consumeWithTimeout(runId: string) {
 
 Resume reading from a specific chunk index (useful for reconnection scenarios):
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 import { streams } from "@trigger.dev/sdk";
 import { aiStream } from "./trigger/streams";
 
@@ -21861,7 +23652,7 @@ async function resumeStream(runId: string, lastChunkIndex: number) {
 
 Use an `AbortSignal` to cancel stream reading:
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 import { streams } from "@trigger.dev/sdk";
 import { aiStream } from "./trigger/streams";
 
@@ -21896,7 +23687,7 @@ async function consumeWithCancellation(runId: string) {
 
 You can combine multiple options:
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 import { streams } from "@trigger.dev/sdk";
 import { aiStream } from "./trigger/streams";
 
@@ -21931,7 +23722,7 @@ async function advancedStreamConsumption(runId: string) {
 
 Here's a complete example of consuming an AI stream from your backend:
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 import { streams } from "@trigger.dev/sdk";
 import { aiStream } from "./trigger/streams";
 
@@ -21966,7 +23757,7 @@ async function consumeAIStream(runId: string) {
 
 If a task emits multiple streams, you can read them concurrently or sequentially:
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 import { streams } from "@trigger.dev/sdk";
 import { aiStream, progressStream } from "./trigger/streams";
 
@@ -21999,7 +23790,7 @@ async function consumeStream<T>(
 
 You can pipe streams directly to HTTP responses for server-sent events (SSE):
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 import { streams } from "@trigger.dev/sdk";
 import { aiStream } from "./trigger/streams";
 import type { NextRequest } from "next/server";
@@ -22046,7 +23837,7 @@ export async function GET(request: NextRequest) {
 
 Handle transient errors with retry logic:
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 import { streams } from "@trigger.dev/sdk";
 import { aiStream } from "./trigger/streams";
 
@@ -22094,7 +23885,7 @@ async function consumeStreamWithRetry(
 
 Process streams in batches for efficiency:
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 import { streams } from "@trigger.dev/sdk";
 import { aiStream } from "./trigger/streams";
 
@@ -22130,7 +23921,7 @@ async function processBatch(chunks: string[]) {
 
 For more advanced use cases where you need both the run status and streams, you can use the `runs.subscribeToRun()` method with `.withStreams()`:
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 import { runs } from "@trigger.dev/sdk";
 import type { myTask } from "./trigger/myTask";
 
@@ -22164,7 +23955,7 @@ These functions allow you to subscribe to run updates from your backend code. Ea
 
 Subscribes to all changes to a specific run.
 
-```ts Example theme={null}
+```ts Example theme={"theme":"css-variables"}
 import { runs } from "@trigger.dev/sdk";
 
 for await (const run of runs.subscribeToRun("run_1234")) {
@@ -22182,7 +23973,7 @@ This function subscribes to all changes to a run. It returns an async iterator t
 
 Subscribes to all changes to runs with a specific tag.
 
-```ts Example theme={null}
+```ts Example theme={"theme":"css-variables"}
 import { runs } from "@trigger.dev/sdk";
 
 for await (const run of runs.subscribeToRunsWithTag("user:1234")) {
@@ -22200,7 +23991,7 @@ This function subscribes to all changes to runs with a specific tag. It returns 
 
 Subscribes to all changes for runs in a batch.
 
-```ts Example theme={null}
+```ts Example theme={"theme":"css-variables"}
 import { runs } from "@trigger.dev/sdk";
 
 for await (const run of runs.subscribeToBatch("batch_1234")) {
@@ -22218,7 +24009,7 @@ This function subscribes to all changes for runs in a batch. It returns an async
 
 You can infer the types of the run's payload and output by passing the type of the task to the subscribe functions:
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 import { runs, tasks } from "@trigger.dev/sdk";
 import type { myTask } from "./trigger/my-task";
 
@@ -22238,7 +24029,7 @@ async function myBackend() {
 
 When using `subscribeToRunsWithTag`, you can pass a union of task types:
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 import { runs } from "@trigger.dev/sdk";
 import type { myTask, myOtherTask } from "./trigger/my-task";
 
@@ -22282,7 +24073,7 @@ Use the metadata API within your task to update metadata in real-time. In this b
 
 This example task updates the progress of a task as it processes items.
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 // Your task code
 import { task, metadata } from "@trigger.dev/sdk";
 
@@ -22317,7 +24108,7 @@ async function processItem(item: string) {
 
 We can now subscribe to the runs and receive real-time metadata updates.
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 // Somewhere in your backend code
 import { runs } from "@trigger.dev/sdk";
 import type { progressTask } from "./trigger/progress-task";
@@ -22352,7 +24143,7 @@ For more information on how to write tasks that use the metadata API, as well as
 
 You can get type safety for your metadata by defining types:
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 import { runs } from "@trigger.dev/sdk";
 import type { progressTask } from "./trigger/progress-task";
 
@@ -22404,7 +24195,7 @@ The run object returned by Realtime subscriptions is optimized for streaming upd
 
 After you trigger a task, you can subscribe to the run using the `runs.subscribeToRun` function. This function returns an async iterator that you can use to get updates on the run status.
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 import { runs, tasks } from "@trigger.dev/sdk";
 
 // Somewhere in your backend code
@@ -22422,7 +24213,7 @@ Every time the run changes, the async iterator will yield the updated run. You c
 
 Alternatively, you can subscribe to changes to any run that includes a specific tag (or tags) using the `runs.subscribeToRunsWithTag` function.
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 import { runs } from "@trigger.dev/sdk";
 
 // Somewhere in your backend code
@@ -22434,7 +24225,7 @@ for await (const run of runs.subscribeToRunsWithTag("user:1234")) {
 
 If you've used `batchTrigger` to trigger multiple runs, you can also subscribe to changes to all the runs triggered in the batch using the `runs.subscribeToBatch` function.
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 import { runs } from "@trigger.dev/sdk";
 
 // Somewhere in your backend code
@@ -22524,15 +24315,15 @@ Our React hooks package provides a set of hooks that make it easy to interact wi
 Install the `@trigger.dev/react-hooks` package in your project:
 
 <CodeGroup>
-  ```bash npm theme={null}
+  ```bash npm theme={"theme":"css-variables"}
   npm add @trigger.dev/react-hooks
   ```
 
-  ```bash pnpm theme={null}
+  ```bash pnpm theme={"theme":"css-variables"}
   pnpm add @trigger.dev/react-hooks
   ```
 
-  ```bash yarn theme={null}
+  ```bash yarn theme={"theme":"css-variables"}
   yarn install @trigger.dev/react-hooks
   ```
 </CodeGroup>
@@ -22541,7 +24332,7 @@ Install the `@trigger.dev/react-hooks` package in your project:
 
 All hooks require authentication with a Public Access Token. Pass the token via the `accessToken` option:
 
-```tsx  theme={null}
+```tsx theme={"theme":"css-variables"}
 import { useRealtimeRun } from "@trigger.dev/react-hooks";
 
 export function MyComponent({
@@ -22605,7 +24396,7 @@ The `useRealtimeStream` hook allows you to subscribe to a specific stream by its
 
 ### Basic Usage
 
-```tsx  theme={null}
+```tsx theme={"theme":"css-variables"}
 "use client";
 
 import { useRealtimeStream } from "@trigger.dev/react-hooks";
@@ -22638,7 +24429,7 @@ export function StreamViewer({
 
 The recommended approach is to use defined streams for full type safety:
 
-```tsx  theme={null}
+```tsx theme={"theme":"css-variables"}
 "use client";
 
 import { useRealtimeStream } from "@trigger.dev/react-hooks";
@@ -22677,7 +24468,7 @@ export function StreamViewer({
 
 Here's a complete example showing how to display streaming AI responses:
 
-```tsx  theme={null}
+```tsx theme={"theme":"css-variables"}
 "use client";
 
 import { useRealtimeStream } from "@trigger.dev/react-hooks";
@@ -22713,7 +24504,7 @@ export function AIStreamViewer({
 
 The `useRealtimeStream` hook accepts the following options:
 
-```tsx  theme={null}
+```tsx theme={"theme":"css-variables"}
 const { parts, error } = useRealtimeStream(streamOrRunId, streamKeyOrOptions, {
   accessToken: "pk_...", // Required: Public access token
   baseURL: "https://api.trigger.dev", // Optional: Custom API URL
@@ -22728,7 +24519,7 @@ const { parts, error } = useRealtimeStream(streamOrRunId, streamKeyOrOptions, {
 
 You can omit the stream key to use the default stream:
 
-```tsx  theme={null}
+```tsx theme={"theme":"css-variables"}
 const { parts, error } = useRealtimeStream<string>(runId, {
   accessToken: publicAccessToken,
 });
@@ -22746,7 +24537,7 @@ For more information on defining and using streams, see the [Realtime Streams v2
 
 The `useRealtimeRunWithStreams` hook allows you to subscribe to a run by its ID and also receive any streams that are emitted by the task. This is useful when you need to access both the run metadata and multiple streams simultaneously.
 
-```tsx  theme={null}
+```tsx theme={"theme":"css-variables"}
 "use client"; // This is needed for Next.js App Router or other RSC frameworks
 
 import { useRealtimeRunWithStreams } from "@trigger.dev/react-hooks";
@@ -22779,7 +24570,7 @@ export function MyComponent({
 
 You can also provide the type of the streams to the `useRealtimeRunWithStreams` hook to get type-safety:
 
-```tsx  theme={null}
+```tsx theme={"theme":"css-variables"}
 import { useRealtimeRunWithStreams } from "@trigger.dev/react-hooks";
 import type { myTask } from "@/trigger/myTask";
 
@@ -22813,7 +24604,7 @@ export function MyComponent({
 
 As you can see above, each stream is an array of the type you provided, keyed by the stream name. If instead of a pure text stream you have a stream of objects, you can provide the type of the object:
 
-```tsx  theme={null}
+```tsx theme={"theme":"css-variables"}
 import type { TextStreamPart } from "ai";
 import type { myTask } from "@/trigger/myTask";
 
@@ -22850,7 +24641,7 @@ export function MyComponent({
 
 Here's an example showing how to display streaming OpenAI responses using `useRealtimeRunWithStreams`:
 
-```tsx  theme={null}
+```tsx theme={"theme":"css-variables"}
 import { useRealtimeRunWithStreams } from "@trigger.dev/react-hooks";
 import type { aiStreaming, STREAMS } from "./trigger/ai-streaming";
 
@@ -22878,7 +24669,7 @@ function MyComponent({ runId, publicAccessToken }: { runId: string; publicAccess
 
 When using the AI SDK with tools with `useRealtimeRunWithStreams`, you can access tool calls and results:
 
-```tsx  theme={null}
+```tsx theme={"theme":"css-variables"}
 import { useRealtimeRunWithStreams } from "@trigger.dev/react-hooks";
 import type { aiStreamingWithTools, STREAMS } from "./trigger/ai-streaming";
 
@@ -22921,7 +24712,7 @@ function MyComponent({ runId, publicAccessToken }: { runId: string; publicAccess
 
 The `useRealtimeRunWithStreams` hook accepts an `experimental_throttleInMs` option to throttle the updates from the server. This can be useful if you are getting too many updates and want to reduce the number of updates.
 
-```tsx  theme={null}
+```tsx theme={"theme":"css-variables"}
 import { useRealtimeRunWithStreams } from "@trigger.dev/react-hooks";
 
 export function MyComponent({
@@ -22974,7 +24765,7 @@ For triggering tasks and immediately subscribing to their runs, we provide combo
 
 The `useRealtimeRun` hook allows you to subscribe to a run by its ID.
 
-```tsx  theme={null}
+```tsx theme={"theme":"css-variables"}
 "use client"; // This is needed for Next.js App Router or other RSC frameworks
 
 import { useRealtimeRun } from "@trigger.dev/react-hooks";
@@ -22998,7 +24789,7 @@ export function MyComponent({
 
 To correctly type the run's payload and output, you can provide the type of your task to the `useRealtimeRun` hook:
 
-```tsx  theme={null}
+```tsx theme={"theme":"css-variables"}
 import { useRealtimeRun } from "@trigger.dev/react-hooks";
 import type { myTask } from "@/trigger/myTask";
 
@@ -23023,7 +24814,7 @@ export function MyComponent({
 
 You can supply an `onComplete` callback to the `useRealtimeRun` hook to be called when the run is completed or errored. This is useful if you want to perform some action when the run is completed, like navigating to a different page or showing a notification.
 
-```tsx  theme={null}
+```tsx theme={"theme":"css-variables"}
 import { useRealtimeRun } from "@trigger.dev/react-hooks";
 
 export function MyComponent({
@@ -23052,7 +24843,7 @@ See our [run object reference](/realtime/run-object) for the complete schema and
 
 The `useRealtimeRunsWithTag` hook allows you to subscribe to multiple runs with a specific tag.
 
-```tsx  theme={null}
+```tsx theme={"theme":"css-variables"}
 "use client"; // This is needed for Next.js App Router or other RSC frameworks
 
 import { useRealtimeRunsWithTag } from "@trigger.dev/react-hooks";
@@ -23074,7 +24865,7 @@ export function MyComponent({ tag }: { tag: string }) {
 
 To correctly type the runs payload and output, you can provide the type of your task to the `useRealtimeRunsWithTag` hook:
 
-```tsx  theme={null}
+```tsx theme={"theme":"css-variables"}
 import { useRealtimeRunsWithTag } from "@trigger.dev/react-hooks";
 import type { myTask } from "@/trigger/myTask";
 
@@ -23097,7 +24888,7 @@ export function MyComponent({ tag }: { tag: string }) {
 
 If `useRealtimeRunsWithTag` could return multiple different types of tasks, you can pass a union of all the task types to the hook:
 
-```tsx  theme={null}
+```tsx theme={"theme":"css-variables"}
 import { useRealtimeRunsWithTag } from "@trigger.dev/react-hooks";
 import type { myTask1, myTask2 } from "@/trigger/myTasks";
 
@@ -23129,7 +24920,7 @@ export function MyComponent({ tag }: { tag: string }) {
 
 The `useRealtimeBatch` hook allows you to subscribe to a batch of runs by its the batch ID.
 
-```tsx  theme={null}
+```tsx theme={"theme":"css-variables"}
 "use client"; // This is needed for Next.js App Router or other RSC frameworks
 
 import { useRealtimeBatch } from "@trigger.dev/react-hooks";
@@ -23161,7 +24952,7 @@ All realtime hooks automatically include metadata updates. Whenever your task up
 
 This example demonstrates how to create a progress monitor component that can be used to display the progress of a run:
 
-```tsx  theme={null}
+```tsx theme={"theme":"css-variables"}
 "use client"; // This is needed for Next.js App Router or other RSC frameworks
 
 import { useRealtimeRun } from "@trigger.dev/react-hooks";
@@ -23223,7 +25014,7 @@ export function ProgressMonitor({
 
 This example demonstrates how to create a reusable progress bar component that can be used to display the percentage progress of a run:
 
-```tsx  theme={null}
+```tsx theme={"theme":"css-variables"}
 "use client";
 
 import { useRealtimeRun } from "@trigger.dev/react-hooks";
@@ -23286,7 +25077,7 @@ export function ProgressBar({ runId, publicAccessToken, title }: ProgressBarProp
 
 This example demonstrates how to create a status indicator component that can be used to display the status of a run, and also logs that are emitted by the task:
 
-```tsx  theme={null}
+```tsx theme={"theme":"css-variables"}
 "use client";
 
 import { useRealtimeRun } from "@trigger.dev/react-hooks";
@@ -23347,7 +25138,7 @@ export function StatusIndicator({ runId, publicAccessToken }: StatusIndicatorPro
 
 This example demonstrates how to create a multi-stage deployment monitor component that can be used to display the progress of a deployment:
 
-```tsx  theme={null}
+```tsx theme={"theme":"css-variables"}
 "use client";
 
 import { useRealtimeRun } from "@trigger.dev/react-hooks";
@@ -23444,7 +25235,7 @@ export function DeploymentMonitor({ runId, publicAccessToken }: DeploymentMonito
 
 Define TypeScript interfaces for your metadata to get full type safety:
 
-```tsx  theme={null}
+```tsx theme={"theme":"css-variables"}
 "use client";
 
 import { useRealtimeRun } from "@trigger.dev/react-hooks";
@@ -23500,7 +25291,7 @@ export function TypedMetadataComponent({
 
 You can pass the `accessToken` option to the Realtime hooks to authenticate the subscription.
 
-```tsx  theme={null}
+```tsx theme={"theme":"css-variables"}
 import { useRealtimeRun } from "@trigger.dev/react-hooks";
 
 export function MyComponent({
@@ -23525,7 +25316,7 @@ export function MyComponent({
 
 You can pass the `enabled` option to the Realtime hooks to enable or disable the subscription.
 
-```tsx  theme={null}
+```tsx theme={"theme":"css-variables"}
 import { useRealtimeRun } from "@trigger.dev/react-hooks";
 
 export function MyComponent({
@@ -23554,7 +25345,7 @@ This allows you to conditionally disable using the hook based on some state.
 
 You can pass the `id` option to the Realtime hooks to change the ID of the subscription.
 
-```tsx  theme={null}
+```tsx theme={"theme":"css-variables"}
 import { useRealtimeRun } from "@trigger.dev/react-hooks";
 
 export function MyComponent({
@@ -23600,7 +25391,7 @@ SWR hooks use the [swr](https://swr.vercel.app/) library to fetch data once and 
 
 The `useRun` hook allows you to fetch a run by its ID.
 
-```tsx  theme={null}
+```tsx theme={"theme":"css-variables"}
 "use client"; // This is needed for Next.js App Router or other RSC frameworks
 
 import { useRun } from "@trigger.dev/react-hooks";
@@ -23617,7 +25408,7 @@ export function MyComponent({ runId }: { runId: string }) {
 
 The `run` object returned is the same as the [run object](/management/runs/retrieve) returned by the Trigger.dev API. To correctly type the run's payload and output, you can provide the type of your task to the `useRun` hook:
 
-```tsx  theme={null}
+```tsx theme={"theme":"css-variables"}
 import { useRun } from "@trigger.dev/react-hooks";
 import type { myTask } from "@/trigger/myTask";
 
@@ -23639,15 +25430,15 @@ export function MyComponent({ runId }: { runId: string }) {
 
 You can pass the following options to the all SWR hooks:
 
-<ParamField path="revalidateOnFocus" type="boolean">
+<ParamField type="boolean">
   Revalidate the data when the window regains focus.
 </ParamField>
 
-<ParamField path="revalidateOnReconnect" type="boolean">
+<ParamField type="boolean">
   Revalidate the data when the browser regains a network connection.
 </ParamField>
 
-<ParamField path="refreshInterval" type="number">
+<ParamField type="number">
   Poll for updates at the specified interval (in milliseconds). Polling is not recommended for most
   use-cases. Use the Realtime hooks instead.
 </ParamField>
@@ -23669,8 +25460,6 @@ You can pass the following options to the all SWR hooks:
 <ResponseField name="isError" type="boolean">
   A boolean indicating if an error occurred while fetching the data.
 </ResponseField>
-
-{" "}
 
 
 # Trigger hooks
@@ -23699,7 +25488,7 @@ We provide three hooks for triggering tasks from your frontend application:
 
 The `useTaskTrigger` hook allows you to trigger a task from your frontend application.
 
-```tsx  theme={null}
+```tsx theme={"theme":"css-variables"}
 "use client"; // This is needed for Next.js App Router or other RSC frameworks
 
 import { useTaskTrigger } from "@trigger.dev/react-hooks";
@@ -23737,7 +25526,7 @@ export function MyComponent({ publicAccessToken }: { publicAccessToken: string }
 
 The `submit` function triggers the task with the specified payload. You can additionally pass an optional [options](/triggering#options) argument to the `submit` function:
 
-```tsx  theme={null}
+```tsx theme={"theme":"css-variables"}
 submit({ foo: "bar" }, { tags: ["tag1", "tag2"] });
 ```
 
@@ -23745,7 +25534,7 @@ submit({ foo: "bar" }, { tags: ["tag1", "tag2"] });
 
 You can use the `handle` object to initiate a subsequent [Realtime hook](/realtime/react-hooks/subscribe#userealtimerun) to subscribe to the run.
 
-```tsx  theme={null}
+```tsx theme={"theme":"css-variables"}
 "use client"; // This is needed for Next.js App Router or other RSC frameworks
 
 import { useTaskTrigger, useRealtimeRun } from "@trigger.dev/react-hooks";
@@ -23794,7 +25583,7 @@ We've also created some additional hooks that allow you to trigger tasks and sub
 
 The `useRealtimeTaskTrigger` hook allows you to trigger a task from your frontend application and then subscribe to the run in using Realtime:
 
-```tsx  theme={null}
+```tsx theme={"theme":"css-variables"}
 "use client"; // This is needed for Next.js App Router or other RSC frameworks
 
 import { useRealtimeTaskTrigger } from "@trigger.dev/react-hooks";
@@ -23826,7 +25615,7 @@ export function MyComponent({ publicAccessToken }: { publicAccessToken: string }
 
 The `useRealtimeTaskTriggerWithStreams` hook allows you to trigger a task from your frontend application and then subscribe to the run in using Realtime, and also receive any streams that are emitted by the task.
 
-```tsx  theme={null}
+```tsx theme={"theme":"css-variables"}
 "use client"; // This is needed for Next.js App Router or other RSC frameworks
 
 import { useRealtimeTaskTriggerWithStreams } from "@trigger.dev/react-hooks";
@@ -23875,7 +25664,7 @@ Use the useWaitToken hook to complete a wait token from a React component
 
 We've added a new `useWaitToken` react hook that allows you to complete a wait token from a React component, using a Public Access Token.
 
-```ts backend.ts theme={null}
+```ts backend.ts theme={"theme":"css-variables"}
 import { wait } from "@trigger.dev/sdk";
 
 // Somewhere in your code, you'll need to create the token and then pass the token ID and the public token to the frontend
@@ -23891,7 +25680,7 @@ return {
 
 Now you can use the `useWaitToken` hook in your frontend code:
 
-```tsx frontend.tsx theme={null}
+```tsx frontend.tsx theme={"theme":"css-variables"}
 import { useWaitToken } from "@trigger.dev/react-hooks";
 
 export function MyComponent({ publicToken, tokenId }: { publicToken: string; tokenId: string }) {
@@ -23917,35 +25706,35 @@ Type-safety is supported for the run object, so you can infer the types of the r
 
 ### Properties
 
-<ParamField path="id" type="string" required>
+<ParamField type="string">
   The run ID.
 </ParamField>
 
-<ParamField path="taskIdentifier" type="string" required>
+<ParamField type="string">
   The task identifier.
 </ParamField>
 
-<ParamField path="payload" type="object" required>
+<ParamField type="object">
   The input payload for the run.
 </ParamField>
 
-<ParamField path="output" type="object">
+<ParamField type="object">
   The output result of the run.
 </ParamField>
 
-<ParamField path="createdAt" type="Date" required>
+<ParamField type="Date">
   Timestamp when the run was created.
 </ParamField>
 
-<ParamField path="updatedAt" type="Date" required>
+<ParamField type="Date">
   Timestamp when the run was last updated.
 </ParamField>
 
-<ParamField path="number" type="number" required>
+<ParamField type="number">
   Sequential number assigned to the run.
 </ParamField>
 
-<ParamField path="status" type="RunStatus" required>
+<ParamField type="RunStatus">
   Current status of the run.
 
   <Accordion title="RunStatus enum">
@@ -23968,59 +25757,59 @@ Type-safety is supported for the run object, so you can infer the types of the r
   </Accordion>
 </ParamField>
 
-<ParamField path="durationMs" type="number" required>
+<ParamField type="number">
   Duration of the run in milliseconds.
 </ParamField>
 
-<ParamField path="costInCents" type="number" required>
+<ParamField type="number">
   Total cost of the run in cents.
 </ParamField>
 
-<ParamField path="baseCostInCents" type="number" required>
+<ParamField type="number">
   Base cost of the run in cents before any additional charges.
 </ParamField>
 
-<ParamField path="tags" type="string[]" required>
+<ParamField type="string[]">
   Array of tags associated with the run.
 </ParamField>
 
-<ParamField path="idempotencyKey" type="string">
+<ParamField type="string">
   Key used to ensure idempotent execution.
 </ParamField>
 
-<ParamField path="expiredAt" type="Date">
+<ParamField type="Date">
   Timestamp when the run expired.
 </ParamField>
 
-<ParamField path="ttl" type="string">
+<ParamField type="string">
   Time-to-live duration for the run.
 </ParamField>
 
-<ParamField path="finishedAt" type="Date">
+<ParamField type="Date">
   Timestamp when the run finished.
 </ParamField>
 
-<ParamField path="startedAt" type="Date">
+<ParamField type="Date">
   Timestamp when the run started.
 </ParamField>
 
-<ParamField path="delayedUntil" type="Date">
+<ParamField type="Date">
   Timestamp until which the run is delayed.
 </ParamField>
 
-<ParamField path="queuedAt" type="Date">
+<ParamField type="Date">
   Timestamp when the run was queued.
 </ParamField>
 
-<ParamField path="metadata" type="Record<string, DeserializedJson>">
+<ParamField type="Record<string, DeserializedJson>">
   Additional metadata associated with the run.
 </ParamField>
 
-<ParamField path="error" type="SerializedError">
+<ParamField type="SerializedError">
   Error information if the run failed.
 </ParamField>
 
-<ParamField path="isTest" type="boolean" required>
+<ParamField type="boolean">
   Indicates whether this is a test run.
 </ParamField>
 
@@ -24028,7 +25817,7 @@ Type-safety is supported for the run object, so you can infer the types of the r
 
 You can infer the types of the run's payload and output by passing the type of the task to the `subscribeToRun` function. This will give you type-safe access to the run's payload and output.
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 import { runs, tasks } from "@trigger.dev/sdk";
 import type { myTask } from "./trigger/my-task";
 
@@ -24050,7 +25839,7 @@ async function myBackend() {
 
 When using `subscribeToRunsWithTag`, you can pass a union of task types for all the possible tasks that can have the tag.
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 import { runs } from "@trigger.dev/sdk";
 import type { myTask, myOtherTask } from "./trigger/my-task";
 
@@ -24088,37 +25877,19 @@ A replay is a copy of a run with the same payload but against the latest version
   <Tab title="From a run">
     <Steps>
       <Step title="Click the Replay button in the top right">
-                <img
-                  src="https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/replay-run-action.png?fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=64e19da4dca5b249adee459a1eeb62e1"
-                  alt="Select a task, then in the bottom right
-        click &#x22;Replay&#x22;"
-                  data-og-width="1600"
-                  width="1600"
-                  data-og-height="1119"
-                  height="1119"
-                  data-path="images/replay-run-action.png"
-                  data-optimize="true"
-                  data-opv="3"
-                  srcset="https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/replay-run-action.png?w=280&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=79d76f07ffc53d8ca2e0f9d476916a6c 280w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/replay-run-action.png?w=560&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=f7c001e785f946cfa10509bd5bdf10fe 560w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/replay-run-action.png?w=840&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=93b7290ab8123c1791c07213bd372962 840w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/replay-run-action.png?w=1100&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=84ee5b71497a635461e2c19aea572c50 1100w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/replay-run-action.png?w=1650&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=38d6e4c8e61a571835e9d2f87bacf235 1650w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/replay-run-action.png?w=2500&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=baf3c7d6f105cc3208d5e9f34957ee33 2500w"
-                />
+        <img
+          alt="Select a task, then in the bottom right
+click &#x22;Replay&#x22;"
+        />
       </Step>
 
       <Step title="Confirm replay settings">
-        You can edit the payload <Icon icon="circle-1" iconType="solid" size={20} color="F43F47" /> (if available) and choose the environment <Icon icon="circle-2" iconType="solid" size={20} color="F43F47" /> to replay the run in.
+        You can edit the payload <Icon icon="circle-1" /> (if available) and choose the environment <Icon icon="circle-2" /> to replay the run in.
 
-                <img
-                  src="https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/replay-run-modal.png?fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=9891cc5d05792c57d3e58a06171113f4"
-                  alt="Select a task, then in the bottom right
-        click &#x22;Replay&#x22;"
-                  data-og-width="1600"
-                  width="1600"
-                  data-og-height="1291"
-                  height="1291"
-                  data-path="images/replay-run-modal.png"
-                  data-optimize="true"
-                  data-opv="3"
-                  srcset="https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/replay-run-modal.png?w=280&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=ed05fc9706ae81cf14f68927d22b8f73 280w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/replay-run-modal.png?w=560&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=21442bda61813c50bb4314681440cfa7 560w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/replay-run-modal.png?w=840&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=7c569aa440d06fb02a3f9159693e52d3 840w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/replay-run-modal.png?w=1100&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=6b25d98591108c1fd2912dee60156ffa 1100w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/replay-run-modal.png?w=1650&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=f60049686106e4efc377ae6eaf306cb6 1650w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/replay-run-modal.png?w=2500&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=39aa7ae272cbfb43d480db2e186ed885 2500w"
-                />
+        <img
+          alt="Select a task, then in the bottom right
+click &#x22;Replay&#x22;"
+        />
       </Step>
     </Steps>
   </Tab>
@@ -24126,10 +25897,12 @@ A replay is a copy of a run with the same payload but against the latest version
   <Tab title="Runs list">
     <Steps>
       <Step title="Click the action button on a run">
-                <img src="https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/replay-runs-list.png?fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=a9dc0c82c7053753ab620237be1fc63d" alt="On the runs page, press the triple dot button" data-og-width="1600" width="1600" data-og-height="900" height="900" data-path="images/replay-runs-list.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/replay-runs-list.png?w=280&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=3a536d96cc682dc2c30d5199eb5cab7f 280w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/replay-runs-list.png?w=560&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=debd27af5b2f2740fbcf9f8b2dd55c81 560w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/replay-runs-list.png?w=840&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=5367f46371c0cc1b002f0922ffb318ce 840w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/replay-runs-list.png?w=1100&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=e5950600d946e5ae7a86a804fe31a823 1100w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/replay-runs-list.png?w=1650&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=f04257d4a23c3d09cc824cefb8e58024 1650w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/replay-runs-list.png?w=2500&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=49aaa6bfaa1c1a3e2f7a37d0c8c0ccac 2500w" />
+        <img alt="On the runs page, press the triple dot button" />
       </Step>
 
-      <Step title="Click replay">      <img src="https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/replay-runs-list-popover.png?fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=41ea417523f3a85b6dfbe0946911ee98" alt="Click replay" data-og-width="1600" width="1600" data-og-height="900" height="900" data-path="images/replay-runs-list-popover.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/replay-runs-list-popover.png?w=280&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=a209714c65dd764887340b4e74982e31 280w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/replay-runs-list-popover.png?w=560&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=4878f0b2ef8a6f0454c5de06fa93afae 560w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/replay-runs-list-popover.png?w=840&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=8ae5e94682543b0635843fa4a53cb78f 840w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/replay-runs-list-popover.png?w=1100&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=01dccbbc607bfce636f9741b0fcd2a60 1100w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/replay-runs-list-popover.png?w=1650&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=82675f2f8ab5c55decf4820ceae8bb2e 1650w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/replay-runs-list-popover.png?w=2500&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=f3a61382a15ee4515bd4cfaf35a397d2 2500w" /></Step>
+      <Step title="Click replay">
+        <img alt="Click replay" />
+      </Step>
     </Steps>
   </Tab>
 </Tabs>
@@ -24138,7 +25911,7 @@ A replay is a copy of a run with the same payload but against the latest version
 
 You can replay a run using the SDK:
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 const replayedRun = await runs.replay(run.id);
 ```
 
@@ -24146,7 +25919,7 @@ When you call `trigger()` or `batchTrigger()` on a task you receive back a run h
 
 You can also access the run id from inside a run. You could write this to your database and then replay it later.
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 export const simpleChildTask = task({
   id: "simple-child-task",
   run: async (payload, { ctx }) => {
@@ -24184,19 +25957,19 @@ You can use the dashboard to run a test of your tasks.
 
 From the "Test" page in the side menu of the dashboard you can run a test for any of your tasks from any environment.
 
-<img src="https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/test-dashboard.png?fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=92c810690f961d0033dd94d758c6bbfb" alt="Select an environment" data-og-width="2254" width="2254" data-og-height="1367" height="1367" data-path="images/test-dashboard.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/test-dashboard.png?w=280&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=970cc3e2d58a06fbf197fce5d6d0664b 280w, https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/test-dashboard.png?w=560&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=10d36ffd64e1f455f45a20d5e39f7bca 560w, https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/test-dashboard.png?w=840&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=62b4ec2301d11e645d3ebe45b2e3adc2 840w, https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/test-dashboard.png?w=1100&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=2db30f2ebfe494c81f5965a014e4fc6e 1100w, https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/test-dashboard.png?w=1650&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=67b24a2d00bde47226c4db88c4f7ac51 1650w, https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/test-dashboard.png?w=2500&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=e44fddf5357449c582b92cd3d434e43d 2500w" />
+<img alt="Select an environment" />
 
-<Icon icon="circle-1" iconType="solid" color="#FF2D6B" size="20" /> Select a task to test
+<Icon icon="circle-1" /> Select a task to test
 
-<Icon icon="circle-2" iconType="solid" color="#FF2D6B" size="20" /> Include a payload or metadata
+<Icon icon="circle-2" /> Include a payload or metadata
 
-<Icon icon="circle-3" iconType="solid" color="#FF2D6B" size="20" /> Configure any additional options like the machine size, queue or delay
+<Icon icon="circle-3" /> Configure any additional options like the machine size, queue or delay
 
-<Icon icon="circle-4" iconType="solid" color="#FF2D6B" size="20" /> Select from previous test runs
+<Icon icon="circle-4" /> Select from previous test runs
 
-<Icon icon="circle-5" iconType="solid" color="#FF2D6B" size="20" /> Save the current test configuration as a template for later
+<Icon icon="circle-5" /> Save the current test configuration as a template for later
 
-<Icon icon="circle-6" iconType="solid" color="#FF2D6B" size="20" /> Run the test
+<Icon icon="circle-6" /> Run the test
 
 
 # Usage
@@ -24208,7 +25981,7 @@ Get compute duration and cost from inside a run, or for a specific block of code
 
 You can get the cost and duration of the current including retries of the same run.
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 export const heavyTask = task({
   id: "heavy-task",
   machine: {
@@ -24263,7 +26036,7 @@ export const heavyTask = task({
 
 You can use [runs.retrieve()](/management/runs/retrieve) to get a single run or [runs.list()](/management/runs/list) to get a list of runs. The response will include `costInCents` `baseCostInCents` and `durationMs` fields.
 
-```ts single run theme={null}
+```ts single run theme={"theme":"css-variables"}
 import { runs } from "@trigger.dev/sdk";
 
 const run = await runs.retrieve("run-id");
@@ -24271,7 +26044,7 @@ console.log(run.costInCents, run.baseCostInCents, run.durationMs);
 const totalCost = run.costInCents + run.baseCostInCents;
 ```
 
-```ts multiple runs theme={null}
+```ts multiple runs theme={"theme":"css-variables"}
 import { runs } from "@trigger.dev/sdk";
 
 let totalCost = 0;
@@ -24287,7 +26060,7 @@ console.log("Total cost", totalCost);
 
 You can also wrap code with `usage.measure` to get the cost and duration of that block of code:
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 // Inside a task run function, or inside a function that's called from there.
 const { result, compute } = await usage.measure(async () => {
   //...Do something for 1 second
@@ -24330,52 +26103,52 @@ A run is created when you trigger a task (e.g. calling `yourTask.trigger({ foo: 
 
 A run can go through **various** states during its lifecycle. The following diagram illustrates a typical state transition where a single run is triggered and completes successfully:
 
-<img src="https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/run-lifecycle.png?fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=a8936884740688be9f52dd5d7356fb44" alt="Run Lifecycle" data-og-width="1430" width="1430" data-og-height="549" height="549" data-path="images/run-lifecycle.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/run-lifecycle.png?w=280&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=3af5089f036381cbacc1749c212eb0f4 280w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/run-lifecycle.png?w=560&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=cace40b5bbab66d38031fed3e28a9182 560w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/run-lifecycle.png?w=840&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=f177c420bee7020b3a0e0e4ff73a1ee0 840w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/run-lifecycle.png?w=1100&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=cba5c92e5b76a9651c89376826b1b34c 1100w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/run-lifecycle.png?w=1650&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=74a0627ced1962111e7b78debaa3bcb8 1650w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/run-lifecycle.png?w=2500&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=7850d8f28313b615293b27dc6d4bf428 2500w" />
+<img alt="Run Lifecycle" />
 
 Runs can also find themselves in lots of other states depending on what's happening at any given time. The following sections describe all the possible states in more detail.
 
 ### Initial states
 
-<Icon icon="rectangle-history" iconType="solid" color="#FBBF24" size={17} /> **Pending version**:
+<Icon icon="rectangle-history" /> **Pending version**:
 The task is waiting for a version update because it cannot execute without additional information (task, queue, etc.).
 
-<Icon icon="clock" iconType="solid" color="#878C99" size={17} /> **Delayed**: When a run is triggered
+<Icon icon="clock" /> **Delayed**: When a run is triggered
 with a delay, it enters this state until the specified delay period has passed.
 
-<Icon icon="rectangle-history" iconType="solid" color="#878C99" size={17} /> **Queued**: The run is ready
+<Icon icon="rectangle-history" /> **Queued**: The run is ready
 to be executed and is waiting in the queue.
 
-<Icon icon="rectangle-history" iconType="solid" color="#878C99" size={17} /> **Dequeued**: The task has been dequeued and is being sent to a worker to start executing.
+<Icon icon="rectangle-history" /> **Dequeued**: The task has been dequeued and is being sent to a worker to start executing.
 
 ### Execution states
 
-<Icon icon="spinner-third" iconType="duotone" color="#3B82F6" size={17} /> **Executing**: The task is
+<Icon icon="spinner-third" /> **Executing**: The task is
 currently being executed by a worker.
 
-<Icon icon="hourglass" iconType="solid" color="#878C99" size={17} /> **Waiting**: You have used a
+<Icon icon="hourglass" /> **Waiting**: You have used a
 [triggerAndWait()](/triggering#yourtask-triggerandwait), [batchTriggerAndWait()](/triggering#yourtask-batchtriggerandwait) or a [wait function](/wait). When the wait is complete, the task will resume execution.
 
 ### Final states
 
-<Icon icon="circle-check" iconType="solid" color="#28BF5C" size={17} /> **Completed**: The task has successfully
+<Icon icon="circle-check" /> **Completed**: The task has successfully
 finished execution.
 
-<Icon icon="ban" iconType="solid" color="#878C99" size={17} /> **Canceled**: The run was manually canceled
+<Icon icon="ban" /> **Canceled**: The run was manually canceled
 by the user.
 
-<Icon icon="circle-xmark" iconType="solid" color="#E11D48" size={17} /> **Failed**: The task has failed
+<Icon icon="circle-xmark" /> **Failed**: The task has failed
 to complete successfully due to an error in the task code.
 
-<Icon icon="alarm-exclamation" iconType="solid" color="#E11D48" size={17} /> **Timed out**: Task has
+<Icon icon="alarm-exclamation" /> **Timed out**: Task has
 failed because it exceeded its `maxDuration`.
 
-<Icon icon="fire" iconType="solid" color="#E11D48" size={17} /> **Crashed**: The worker process crashed
+<Icon icon="fire" /> **Crashed**: The worker process crashed
 during execution (likely due to an Out of Memory error) and won’t be retried.
 
-<Icon icon="bug" iconType="solid" color="#E11D48" size={17} /> **System failure**: An unrecoverable system
+<Icon icon="bug" /> **System failure**: An unrecoverable system
 error has occurred.
 
-<Icon icon="trash-can" iconType="solid" color="#878C99" size={17} /> **Expired**: The run's [Time-to-Live](#time-to-live-ttl)
+<Icon icon="trash-can" /> **Expired**: The run's [Time-to-Live](#time-to-live-ttl)
 (TTL) has passed before it could start executing.
 
 ## Attempts
@@ -24388,7 +26161,7 @@ An attempt represents a single execution of a task within a run. A run can have 
 
 When a task fails, it will be retried according to its retry settings, creating new attempts until it either succeeds or reaches the retry limit.
 
-<img src="https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/run-with-retries.png?fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=520a05470d031b8117b2780405964153" alt="Run with retries" data-og-width="1430" width="1430" data-og-height="585" height="585" data-path="images/run-with-retries.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/run-with-retries.png?w=280&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=f9d43bd7b37a9fffaa342cc4d05bb89a 280w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/run-with-retries.png?w=560&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=ace34edfe0154bcff7c2555e6ae3bf83 560w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/run-with-retries.png?w=840&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=a3a7478cfd71ede3194dd2ae2226ac12 840w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/run-with-retries.png?w=1100&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=2dd91c524cf54fe9c6b3960afb7e3ad6 1100w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/run-with-retries.png?w=1650&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=8a2680c03a1515e3f25ac1f36bc25377 1650w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/run-with-retries.png?w=2500&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=6c0a8c1b610d5befaf82b583e2adcedf 2500w" />
+<img alt="Run with retries" />
 
 ## Run completion
 
@@ -24403,7 +26176,7 @@ At this point, the run will have either an output (if successful) or an error (i
 
 Run objects returned from the API and Realtime include convenient boolean helper methods to check the run's status:
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 import { runs } from "@trigger.dev/sdk";
 
 const run = await runs.retrieve("run_1234");
@@ -24423,7 +26196,7 @@ if (run.isCompleted) {
 
 These helpers are also available when subscribing to Realtime run updates:
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 import { runs } from "@trigger.dev/sdk";
 
 for await (const run of runs.subscribeToRun("run_1234")) {
@@ -24440,7 +26213,7 @@ for await (const run of runs.subscribeToRun("run_1234")) {
 
 When triggering a task, you can provide an idempotency key to ensure the task is executed only once, even if triggered multiple times. This is useful for preventing duplicate executions in distributed systems.
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 await yourTask.trigger({ foo: "bar" }, { idempotencyKey: "unique-key" });
 ```
 
@@ -24453,7 +26226,7 @@ See our [Idempotency docs](/idempotency) for more information.
 
 You can cancel an in-progress run using the API or the dashboard:
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 await runs.cancel(runId);
 ```
 
@@ -24471,7 +26244,7 @@ When a run is canceled:
 
 TTL is a time-to-live setting that defines the maximum duration a run can remain in a queued state before being automatically expired. You can set a TTL when triggering a run:
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 await yourTask.trigger({ foo: "bar" }, { ttl: "10m" });
 ```
 
@@ -24479,25 +26252,25 @@ If the run hasn't started within the specified TTL, it will automatically expire
 
 Note that dev runs automatically have a 10-minute TTL. In Staging and Production environments, no TTL is set by default.
 
-<img src="https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/run-with-ttl.png?fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=2a3663f4cf4d7c4249c5c82f54859a76" alt="Run with TTL" data-og-width="1406" width="1406" data-og-height="453" height="453" data-path="images/run-with-ttl.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/run-with-ttl.png?w=280&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=c596effb593c6533723019ba62d72cf9 280w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/run-with-ttl.png?w=560&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=fd441b76d258f5d8ad83b17a42dfeb1c 560w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/run-with-ttl.png?w=840&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=a1ba26b44a1b1fb0822eb7142aaf69ef 840w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/run-with-ttl.png?w=1100&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=477990ac794bc64d536becff619cdd81 1100w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/run-with-ttl.png?w=1650&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=56720e4a594907f52dabc475dd663b03 1650w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/run-with-ttl.png?w=2500&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=f3c577f8ef1ee2bcb22bf66259d88869 2500w" />
+<img alt="Run with TTL" />
 
 ### Delayed runs
 
 You can schedule a run to start after a specified delay:
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 await yourTask.trigger({ foo: "bar" }, { delay: "1h" });
 ```
 
 This is useful for tasks that need to be executed at a specific time in the future.
 
-<img src="https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/run-with-delay.png?fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=fe68bf64bab17c12f0c1c532bdb48ab4" alt="Run with delay" data-og-width="1430" width="1430" data-og-height="581" height="581" data-path="images/run-with-delay.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/run-with-delay.png?w=280&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=e185434d9cd2a26155dee5ac5e94f370 280w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/run-with-delay.png?w=560&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=829277bb21bc824019d68fc8f755ce2c 560w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/run-with-delay.png?w=840&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=7e88e6325a8559caca3c76a573f5523c 840w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/run-with-delay.png?w=1100&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=ce7e12e3199088a1c7316918bb6fb3a7 1100w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/run-with-delay.png?w=1650&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=0cf1c7ecc525f8f8f5c4550cdd463df3 1650w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/run-with-delay.png?w=2500&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=03fc83ca451c8b58faf1c79c34bdface 2500w" />
+<img alt="Run with delay" />
 
 ### Replaying runs
 
 You can create a new run with the same payload as a previous run:
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 await runs.replay(runId);
 ```
 
@@ -24511,13 +26284,13 @@ You can also replay runs from the dashboard using the same or different payload.
 
 The `triggerAndWait()` function triggers a task and then lets you wait for the result before continuing. [Learn more about triggerAndWait()](/triggering#yourtask-triggerandwait).
 
-<img src="https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/run-with-triggerAndWait().png?fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=b7175cd727983b76dc998fa76cdc7279" alt="Run with triggerAndWait" data-og-width="1617" width="1617" data-og-height="735" height="735" data-path="images/run-with-triggerAndWait().png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/run-with-triggerAndWait().png?w=280&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=b6c6add3e9f09f52eb4b63e1e723175a 280w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/run-with-triggerAndWait().png?w=560&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=6d78b248fdc52ef7833f4ba71713b3f0 560w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/run-with-triggerAndWait().png?w=840&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=0f69ee104ab1e7afb9fde3d69b9b6d7a 840w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/run-with-triggerAndWait().png?w=1100&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=292ec187be08fefd76f30c3a768b7449 1100w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/run-with-triggerAndWait().png?w=1650&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=c3cedaa32be6515ab9738df67c87276a 1650w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/run-with-triggerAndWait().png?w=2500&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=c8e309d749162c08006a9baca616ef74 2500w" />
+<img alt="Run with triggerAndWait" />
 
 #### batchTriggerAndWait()
 
 Similar to `triggerAndWait()`, the `batchTriggerAndWait()` function lets you batch trigger a task and wait for all the results [Learn more about batchTriggerAndWait()](/triggering#yourtask-batchtriggerandwait).
 
-<img src="https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/run-with-batchTriggerAndWait().png?fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=26974085e23f5dd55ea301234b477655" alt="Run with batchTriggerAndWait" data-og-width="1617" width="1617" data-og-height="940" height="940" data-path="images/run-with-batchTriggerAndWait().png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/run-with-batchTriggerAndWait().png?w=280&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=96d696e99dec5085efd8327dce107618 280w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/run-with-batchTriggerAndWait().png?w=560&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=8c926544b58cd261021928eeda461bf4 560w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/run-with-batchTriggerAndWait().png?w=840&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=8f412df861d962ccaba445a95971daca 840w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/run-with-batchTriggerAndWait().png?w=1100&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=e590ab7550353f53a6e3b62972c38771 1100w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/run-with-batchTriggerAndWait().png?w=1650&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=cc03c2493a62ae36b30ecad5ce3889ab 1650w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/run-with-batchTriggerAndWait().png?w=2500&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=7863f7505ba010ae2b1f0f998f57cf35 2500w" />
+<img alt="Run with batchTriggerAndWait" />
 
 ### Runs API
 
@@ -24525,7 +26298,7 @@ Similar to `triggerAndWait()`, the `batchTriggerAndWait()` function lets you bat
 
 List runs in a specific environment. You can filter the runs by status, created at, task identifier, version, and more:
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 import { runs } from "@trigger.dev/sdk";
 
 // Get the first page of runs, returning up to 20 runs
@@ -24544,7 +26317,7 @@ while (page.hasNextPage()) {
 
 You can also use an Async Iterator to get all runs:
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 import { runs } from "@trigger.dev/sdk";
 
 for await (const run of runs.list({ limit: 20 })) {
@@ -24554,7 +26327,7 @@ for await (const run of runs.list({ limit: 20 })) {
 
 You can provide multiple filters to the `list()` function to narrow down the results:
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 import { runs } from "@trigger.dev/sdk";
 
 const response = await runs.list({
@@ -24573,7 +26346,7 @@ const response = await runs.list({
 
 Fetch a single run by it's ID:
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 import { runs } from "@trigger.dev/sdk";
 
 const run = await runs.retrieve(runId);
@@ -24581,7 +26354,7 @@ const run = await runs.retrieve(runId);
 
 You can provide the type of the task to correctly type the `run.payload` and `run.output`:
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 import { runs } from "@trigger.dev/sdk";
 import type { myTask } from "./trigger/myTask";
 
@@ -24593,7 +26366,7 @@ console.log(run.output.bar); // string
 
 If you have just triggered a run, you can pass the entire response object to `retrieve()` and the response will already be typed:
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 import { runs, tasks } from "@trigger.dev/sdk";
 import type { myTask } from "./trigger/myTask";
 
@@ -24608,7 +26381,7 @@ console.log(run.output.bar); // string
 
 Cancel a run:
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 import { runs } from "@trigger.dev/sdk";
 
 await runs.cancel(runId);
@@ -24618,7 +26391,7 @@ await runs.cancel(runId);
 
 Replay a run:
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 import { runs } from "@trigger.dev/sdk";
 
 await runs.replay(runId);
@@ -24628,7 +26401,7 @@ await runs.replay(runId);
 
 Updates a delayed run with a new delay. Only valid when the run is in the DELAYED state.
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 import { runs } from "@trigger.dev/sdk";
 
 await runs.reschedule(runId, { delay: "1h" });
@@ -24638,7 +26411,7 @@ await runs.reschedule(runId, { delay: "1h" });
 
 Subscribe to changes to a specific run in real-time:
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 import { runs } from "@trigger.dev/sdk";
 
 for await (const run of runs.subscribeToRun(runId)) {
@@ -24648,7 +26421,7 @@ for await (const run of runs.subscribeToRun(runId)) {
 
 Similar to `runs.retrieve()`, you can provide the type of the task to correctly type the `run.payload` and `run.output`:
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 import { runs } from "@trigger.dev/sdk";
 import type { myTask } from "./trigger/myTask";
 
@@ -24675,7 +26448,7 @@ The `maxDuration` parameter sets a maximum compute time limit for tasks. When a 
 
 You must set a default maxDuration in your `trigger.config.ts` file, which will apply to all tasks unless overridden:
 
-```ts /config/trigger.config.ts theme={null}
+```ts /config/trigger.config.ts theme={"theme":"css-variables"}
 import { defineConfig } from "@trigger.dev/sdk";
 
 export default defineConfig({
@@ -24704,7 +26477,7 @@ The `maxDuration` is set in seconds, and is compared to the CPU time elapsed sin
 
 You can inspect the CPU time of a task inside the run function with our `usage` utility:
 
-```ts /trigger/max-duration.ts theme={null}
+```ts /trigger/max-duration.ts theme={"theme":"css-variables"}
 import { task, usage } from "@trigger.dev/sdk";
 
 export const maxDurationTask = task({
@@ -24720,13 +26493,13 @@ export const maxDurationTask = task({
 
 The above value will be compared to the `maxDuration` you set. If the task exceeds the `maxDuration`, it will be stopped with the following error:
 
-<img src="https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/runs/max-duration-error.png?fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=fb10afcfe6aae4eff9556065464a32c7" alt="Max duration error" data-og-width="924" width="924" data-og-height="316" height="316" data-path="runs/max-duration-error.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/runs/max-duration-error.png?w=280&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=3771ebf9e1f4eeb6a91a83deddea89a8 280w, https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/runs/max-duration-error.png?w=560&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=8d994f357524f61a993ac1313cd923fc 560w, https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/runs/max-duration-error.png?w=840&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=bbde11e079e057cb0ce80660c865df75 840w, https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/runs/max-duration-error.png?w=1100&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=68ff4023f21611a3157356341efe9759 1100w, https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/runs/max-duration-error.png?w=1650&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=9dba8f836e6c38da8d8425a775b13d14 1650w, https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/runs/max-duration-error.png?w=2500&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=67a18c013e6fe596764caea1ef7d9cf6 2500w" />
+<img alt="Max duration error" />
 
 ## Configuring for a task
 
 You can set a `maxDuration` on a specific task:
 
-```ts /trigger/max-duration-task.ts theme={null}
+```ts /trigger/max-duration-task.ts theme={"theme":"css-variables"}
 import { task } from "@trigger.dev/sdk";
 
 export const maxDurationTask = task({
@@ -24742,7 +26515,7 @@ This will override the default `maxDuration` set in the config file. If you have
 
 You can "turn off" the Max duration set in your config file for a specific task like so:
 
-```ts /trigger/max-duration-task.ts theme={null}
+```ts /trigger/max-duration-task.ts theme={"theme":"css-variables"}
 import { task, timeout } from "@trigger.dev/sdk";
 
 export const maxDurationTask = task({
@@ -24758,7 +26531,7 @@ export const maxDurationTask = task({
 
 You can set a `maxDuration` on a specific run when you trigger a task:
 
-```ts /trigger/max-duration.ts theme={null}
+```ts /trigger/max-duration.ts theme={"theme":"css-variables"}
 import { maxDurationTask } from "./trigger/max-duration-task";
 
 // Trigger the task with a maxDuration of 300 seconds
@@ -24772,7 +26545,7 @@ const run = await maxDurationTask.trigger(
 
 You can also set the `maxDuration` to `timeout.None` to turn off the max duration for a specific run:
 
-```ts /trigger/max-duration.ts theme={null}
+```ts /trigger/max-duration.ts theme={"theme":"css-variables"}
 import { maxDurationTask } from "./trigger/max-duration-task";
 import { timeout } from "@trigger.dev/sdk";
 
@@ -24789,7 +26562,7 @@ const run = await maxDurationTask.trigger(
 
 You can access the `maxDuration` set for a run in the run context:
 
-```ts /trigger/max-duration-task.ts theme={null}
+```ts /trigger/max-duration-task.ts theme={"theme":"css-variables"}
 import { task } from "@trigger.dev/sdk";
 
 export const maxDurationTask = task({
@@ -24817,7 +26590,7 @@ You can attach up to 256KB of metadata to a run, which you can then access from 
 
 Add metadata to a run when triggering by passing it as an object to the `trigger` function:
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 const handle = await myTask.trigger(
   { message: "hello world" },
   { metadata: { user: { name: "Eric", id: "user_1234" } } }
@@ -24826,7 +26599,7 @@ const handle = await myTask.trigger(
 
 You can get the current metadata at any time by calling `metadata.get()` or `metadata.current()` (only inside a run):
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 import { task, metadata } from "@trigger.dev/sdk";
 
 export const myTask = task({
@@ -24845,7 +26618,7 @@ export const myTask = task({
 
 Any of these methods can be called anywhere "inside" the run function, or a function called from the run function:
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 import { task, metadata } from "@trigger.dev/sdk";
 
 export const myTask = task({
@@ -24863,7 +26636,7 @@ async function doSomeWork() {
 
 If you call any of the metadata methods outside of the run function, they will have no effect:
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 import { metadata } from "@trigger.dev/sdk";
 
 // Somewhere outside of the run function
@@ -24882,7 +26655,7 @@ This means it's safe to call these methods anywhere in your code, and they will 
 These methods also work inside any task lifecycle hook, either attached to the specific task or the global hooks defined in your `trigger.config.ts` file.
 
 <CodeGroup>
-  ```ts myTasks.ts theme={null}
+  ```ts myTasks.ts theme={"theme":"css-variables"}
   import { task, metadata } from "@trigger.dev/sdk";
 
   export const myTask = task({
@@ -24899,7 +26672,7 @@ These methods also work inside any task lifecycle hook, either attached to the s
   });
   ```
 
-  ```ts trigger.config.ts theme={null}
+  ```ts trigger.config.ts theme={"theme":"css-variables"}
   import { defineConfig, metadata } from "@trigger.dev/sdk";
 
   export default defineConfig({
@@ -24921,7 +26694,7 @@ All metadata update methods (accept for `flush` and `stream`) are synchronous an
 
 Set the value of a key in the metadata object:
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 import { task, metadata } from "@trigger.dev/sdk";
 
 export const myTask = task({
@@ -24943,7 +26716,7 @@ export const myTask = task({
 
 Delete a key from the metadata object:
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 import { task, metadata } from "@trigger.dev/sdk";
 
 export const myTask = task({
@@ -24965,7 +26738,7 @@ export const myTask = task({
 
 Replace the entire metadata object with a new object:
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 import { task, metadata } from "@trigger.dev/sdk";
 
 export const myTask = task({
@@ -24984,7 +26757,7 @@ export const myTask = task({
 
 Append a value to an array in the metadata object:
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 import { task, metadata } from "@trigger.dev/sdk";
 
 export const myTask = task({
@@ -25005,7 +26778,7 @@ export const myTask = task({
 
 Remove a value from an array in the metadata object:
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 import { task, metadata } from "@trigger.dev/sdk";
 
 export const myTask = task({
@@ -25029,7 +26802,7 @@ export const myTask = task({
 
 Increment a numeric value in the metadata object:
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 import { task, metadata } from "@trigger.dev/sdk";
 
 export const myTask = task({
@@ -25050,7 +26823,7 @@ export const myTask = task({
 
 Decrement a numeric value in the metadata object:
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 import { task, metadata } from "@trigger.dev/sdk";
 
 export const myTask = task({
@@ -25078,7 +26851,7 @@ export const myTask = task({
 
 Capture a stream of values and make the stream available when using Realtime. See our [Realtime Streams v2](/tasks/streams) documentation for the recommended approach.
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 import { task, metadata } from "@trigger.dev/sdk";
 
 export const myTask = task({
@@ -25106,7 +26879,7 @@ export const myTask = task({
 
 `metadata.stream` accepts any `AsyncIterable` or `ReadableStream` object. The stream will be captured and made available in the Realtime API. So for example, you could pass the body of a fetch response to `metadata.stream` to capture the response body and make it available in Realtime:
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 import { task, metadata } from "@trigger.dev/sdk";
 
 export const myTask = task({
@@ -25140,7 +26913,7 @@ export const myTask = task({
 
 Or the results of a streaming call to the OpenAI SDK:
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 import { task, metadata } from "@trigger.dev/sdk";
 import OpenAI from "openai";
 
@@ -25176,7 +26949,7 @@ export const myTask = task({
 
 Flush the metadata to the database. The SDK will automatically flush the metadata periodically, so you don't need to call this method unless you need to ensure that the metadata is persisted immediately.
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 import { task, metadata } from "@trigger.dev/sdk";
 
 export const myTask = task({
@@ -25195,7 +26968,7 @@ export const myTask = task({
 
 All of the update methods can be chained together in a fluent API:
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 import { task, metadata } from "@trigger.dev/sdk";
 
 export const myTask = task({
@@ -25216,7 +26989,7 @@ Tasks that have been triggered by a parent task (a.k.a. a "child task") can upda
 
 To update the parent task's metadata, use the `metadata.parent` accessor:
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 import { task, metadata } from "@trigger.dev/sdk";
 
 export const myParentTask = task({
@@ -25241,7 +27014,7 @@ export const childTask = task({
 
 All of the update methods are available on `metadata.parent` and `metadata.root`:
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 metadata.parent.set("progress", 0.5);
 metadata.parent.append("logs", "Step 1 complete");
 metadata.parent.remove("logs", "Step 1 complete");
@@ -25259,7 +27032,7 @@ metadata.root.stream("llm", readableStream); // Use streams.pipe() instead (v4.1
 
 You can also chain the update methods together:
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 metadata.parent
   .set("progress", 0.1)
   .append("logs", "Step 1 complete")
@@ -25271,7 +27044,7 @@ metadata.parent
 
 An example of where you might use parent and root updates is in a task that triggers multiple child tasks in parallel. You could use the parent metadata to track the progress of the child tasks and update the parent task's progress as each child task completes:
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 import { CSVRow, UploadedFileData, parseCSVFromUrl } from "@/utils";
 import { batch, logger, metadata, schemaTask } from "@trigger.dev/sdk";
 
@@ -25315,7 +27088,7 @@ export const handleCSVUpload = schemaTask({
 
 Combined with [Realtime](/realtime), you could use this to show a live progress bar of the CSV processing in your frontend, like this:
 
-<video src="https://content.trigger.dev/csv-upload-realtime.mp4" preload="auto" controls={true} loop muted autoPlay={true} width="100%" height="100%" />
+<video />
 
 ## More metadata task examples
 
@@ -25325,7 +27098,7 @@ Using metadata updates in conjunction with our [Realtime React hooks](/realtime/
 
 Track progress with percentage and current step:
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 import { task, metadata } from "@trigger.dev/sdk";
 
 export const batchProcessingTask = task({
@@ -25352,7 +27125,7 @@ export const batchProcessingTask = task({
 
 Append log entries while maintaining status:
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 import { task, metadata } from "@trigger.dev/sdk";
 
 export const deploymentTask = task({
@@ -25386,7 +27159,7 @@ export const deploymentTask = task({
 
 Store user information and notification preferences:
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 import { task, metadata } from "@trigger.dev/sdk";
 
 export const userTask = task({
@@ -25419,7 +27192,7 @@ export const userTask = task({
 
 Metadata is NOT propagated to child tasks. If you want to pass metadata to a child task, you must do so explicitly:
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 import { task, metadata } from "@trigger.dev/sdk";
 
 export const myTask = task({
@@ -25435,7 +27208,7 @@ export const myTask = task({
 
 The metadata APIs are currently loosely typed, accepting any object that is JSON-serializable:
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 // ❌ You can't pass a top-level array
 const handle = await myTask.trigger(
   { message: "hello world" },
@@ -25470,7 +27243,7 @@ const handle = await myTask.trigger(
 
 We recommend wrapping the metadata API in a [Zod](https://zod.dev) schema (or your validator library of choice) to provide type safety:
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 import { task, metadata } from "@trigger.dev/sdk";
 import { z } from "zod";
 
@@ -25507,13 +27280,13 @@ export const myTask = task({
 
 You can view the metadata for a run in the Trigger.dev dashboard. The metadata will be displayed in the run details view:
 
-<img src="https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/run-metadata.png?fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=0757a26d7412cfb5601e0d453bf3a8f1" alt="View run metadata dashboard" data-og-width="5344" width="5344" data-og-height="3054" height="3054" data-path="images/run-metadata.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/run-metadata.png?w=280&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=2ae28f6184036b57d8fee2756bd06696 280w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/run-metadata.png?w=560&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=a3b6dbc7975cd49a9549288acd1d92e4 560w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/run-metadata.png?w=840&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=b5b871c055ec8e1bac8aa77448bd8fa2 840w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/run-metadata.png?w=1100&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=2f841aeba8a44c815d7f8e01792b0635 1100w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/run-metadata.png?w=1650&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=4ea3487ad669414e26fd8b2a0c37bf94 1650w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/run-metadata.png?w=2500&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=c3a80b27fecbba819ef452436df571ff 2500w" />
+<img alt="View run metadata dashboard" />
 
 ### API
 
 You can use the `runs.retrieve()` SDK function to get the metadata for a run:
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 import { runs } from "@trigger.dev/sdk";
 
 const run = await runs.retrieve("run_1234");
@@ -25540,11 +27313,11 @@ You can set a priority when you trigger a run. This allows you to prioritize som
 
 The value for priority is a time offset in seconds that determines the order of dequeuing.
 
-<img src="https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/priority-runs.png?fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=36b348760cb05a1c7af1b8625beddf24" alt="Priority runs" data-og-width="1243" width="1243" data-og-height="1333" height="1333" data-path="images/priority-runs.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/priority-runs.png?w=280&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=98dd1c09b0da112db56fed9c27fb1dde 280w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/priority-runs.png?w=560&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=bd9ed1ea970f1cfa642f7c1d1c9c01ba 560w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/priority-runs.png?w=840&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=69b0bd28f1825e9fbfc3337e60355276 840w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/priority-runs.png?w=1100&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=9f5fe734ac451bde5a6187f856515d30 1100w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/priority-runs.png?w=1650&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=756b8d9cd6835143ca95f7fefbc7f609 1650w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/priority-runs.png?w=2500&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=c1003b28761e476969bb0b226e589ec9 2500w" />
+<img alt="Priority runs" />
 
 If you specify a priority of `10` the run will dequeue before runs that were triggered with no priority 8 seconds ago, like in this example:
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 // no priority = 0
 await myTask.trigger({ foo: "bar" });
 
@@ -25633,39 +27406,39 @@ You may need to spin up multiple workers to handle peak concurrency. The good ne
 
 1. Clone the repository
 
-```bash  theme={null}
+```bash theme={"theme":"css-variables"}
 git clone --depth=1 https://github.com/triggerdotdev/trigger.dev
 cd trigger.dev/hosting/docker
 ```
 
 2. Create a `.env` file
 
-```bash  theme={null}
+```bash theme={"theme":"css-variables"}
 cp .env.example .env
 ```
 
 3. Start the webapp
 
-```bash  theme={null}
+```bash theme={"theme":"css-variables"}
 cd webapp
 docker compose up -d
 ```
 
 4. Configure the webapp using the [environment variables](/self-hosting/env/webapp) in your `.env` file, then apply the changes:
 
-```bash  theme={null}
+```bash theme={"theme":"css-variables"}
 docker compose up -d
 ```
 
 5. You should now be able to access the webapp at `http://localhost:8030`. When logging in, check the container logs for the magic link:
 
-```bash  theme={null}
+```bash theme={"theme":"css-variables"}
 docker compose logs -f webapp
 ```
 
 6. (optional) To initialize a new project, run the following command:
 
-```bash  theme={null}
+```bash theme={"theme":"css-variables"}
 npx trigger.dev@latest init -p <project-ref> -a http://localhost:8030
 ```
 
@@ -25673,20 +27446,20 @@ npx trigger.dev@latest init -p <project-ref> -a http://localhost:8030
 
 1. Clone the repository
 
-```bash  theme={null}
+```bash theme={"theme":"css-variables"}
 git clone --depth=1 https://github.com/triggerdotdev/trigger.dev
 cd trigger.dev/hosting/docker
 ```
 
 2. Create a `.env` file
 
-```bash  theme={null}
+```bash theme={"theme":"css-variables"}
 cp .env.example .env
 ```
 
 3. Start the worker
 
-```bash  theme={null}
+```bash theme={"theme":"css-variables"}
 cd worker
 docker compose up -d
 ```
@@ -25695,7 +27468,7 @@ docker compose up -d
 
 5. Apply the changes:
 
-```bash  theme={null}
+```bash theme={"theme":"css-variables"}
 docker compose up -d
 ```
 
@@ -25705,7 +27478,7 @@ docker compose up -d
 
 If you want to run the webapp and worker on the same machine, just replace the `up` command with the following:
 
-```bash  theme={null}
+```bash theme={"theme":"css-variables"}
 # Run this from the /hosting/docker directory
 docker compose -f webapp/docker-compose.yml -f worker/docker-compose.yml up -d
 ```
@@ -25716,7 +27489,7 @@ When running the combined stack, worker bootstrap is handled automatically. When
 
 On the first run, the webapp will generate a worker token and store it in a shared volume. It will also print the token to the console. It should look something like this:
 
-```bash  theme={null}
+```bash theme={"theme":"css-variables"}
 ==========================
 Trigger.dev Bootstrap - Worker Token
 
@@ -25741,11 +27514,36 @@ You can then uncomment and set the `TRIGGER_WORKER_TOKEN` environment variable i
 
 Don't forget to restart the worker container for the changes to take effect:
 
-```bash  theme={null}
+```bash theme={"theme":"css-variables"}
 # Run this from the /hosting/docker/worker directory
 docker compose down
 docker compose up -d
 ```
+
+### Creating additional worker groups
+
+To create additional worker groups beyond the bootstrap group, use the admin API endpoint. This requires admin privileges.
+
+**Making a user admin:**
+
+* **New users**: Set `ADMIN_EMAILS` environment variable (regex pattern) before user creation.
+* **Existing users**: Set `admin = true` in the `user` table in your database.
+
+**Creating a worker group:**
+
+```bash theme={"theme":"css-variables"}
+api_url=http://localhost:8030
+wg_name=my-worker
+admin_pat=tr_pat_...
+
+curl -X POST \
+  "$api_url/admin/api/v1/workers" \
+  -H "Authorization: Bearer $admin_pat" \
+  -H "Content-Type: application/json" \
+  -d "{\"name\": \"$wg_name\"}"
+```
+
+The response includes a `token` field if the worker group is newly created.
 
 ## Registry setup
 
@@ -25769,7 +27567,7 @@ You should change these before deploying to production, especially the password.
 
 When self-hosting, builds run locally. You will have to login to the registry on every machine that runs the `deploy` command. You should only have to do this once:
 
-```bash  theme={null}
+```bash theme={"theme":"css-variables"}
 docker login -u <username> <registry>
 ```
 
@@ -25811,7 +27609,7 @@ By default, magic link auth is the only login option. If the `EMAIL_TRANSPORT` e
 
 #### Resend
 
-```bash  theme={null}
+```bash theme={"theme":"css-variables"}
 EMAIL_TRANSPORT=resend
 FROM_EMAIL=
 REPLY_TO_EMAIL=
@@ -25824,7 +27622,7 @@ Note that setting `SMTP_SECURE=false` does *not* mean the email is sent insecure
 This simply means that the connection is secured using the modern STARTTLS protocol command instead of implicit TLS.
 You should only set this to true when the SMTP server host directs you to do so (generally when using port 465)
 
-```bash  theme={null}
+```bash theme={"theme":"css-variables"}
 EMAIL_TRANSPORT=smtp
 FROM_EMAIL=
 REPLY_TO_EMAIL=
@@ -25841,7 +27639,7 @@ Credentials are to be supplied as with any other program using the AWS SDK.
 
 In this scenario, you would likely either supply the additional environment variables `AWS_REGION`, `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY` or, when running on AWS, use credentials supplied by the EC2 IMDS.
 
-```bash  theme={null}
+```bash theme={"theme":"css-variables"}
 EMAIL_TRANSPORT=aws-ses
 FROM_EMAIL=
 REPLY_TO_EMAIL=
@@ -25851,7 +27649,7 @@ REPLY_TO_EMAIL=
 
 To authenticate with GitHub, you will need to set up a GitHub OAuth app. It needs a callback URL `https://<your_webapp_domain>/auth/github/callback` and you will have to set the following env vars:
 
-```bash  theme={null}
+```bash theme={"theme":"css-variables"}
 AUTH_GITHUB_CLIENT_ID=<your_client_id>
 AUTH_GITHUB_CLIENT_SECRET=<your_client_secret>
 ```
@@ -25860,9 +27658,9 @@ AUTH_GITHUB_CLIENT_SECRET=<your_client_secret>
 
 All email addresses can sign up and log in this way. If you would like to restrict this, you can use the `WHITELISTED_EMAILS` env var. For example:
 
-```bash  theme={null}
+```bash theme={"theme":"css-variables"}
 # every email that does not match this regex will be rejected
-WHITELISTED_EMAILS="authorized@yahoo\.com|authorized@gmail\.com"
+WHITELISTED_EMAILS="^(authorized@yahoo\.com|authorized@gmail\.com)$"
 ```
 
 This will apply to all auth methods including magic link and GitHub OAuth.
@@ -25876,7 +27674,7 @@ There are several reasons to lock the version of your Docker images:
 
 By default, the images will point at the latest versioned release via the `latest` tag. You can override this by specifying a different tag in your `.env` file. For example:
 
-```bash  theme={null}
+```bash theme={"theme":"css-variables"}
 TRIGGER_IMAGE_TAG=v4.0.0
 ```
 
@@ -25888,7 +27686,7 @@ TRIGGER_IMAGE_TAG=v4.0.0
 
   You should check the logs of the webapp container to see the magic link:
 
-  ```bash  theme={null}
+  ```bash theme={"theme":"css-variables"}
   # Run this from the /hosting/docker/webapp directory
   docker compose logs -f webapp
   ```
@@ -25901,7 +27699,7 @@ This section highlights some of the CLI commands and options that are useful whe
 
 To avoid being redirected to [Trigger.dev Cloud](https://cloud.trigger.dev) when using the CLI, you need to specify the URL of your self-hosted instance with the `--api-url` or `-a` flag. For example:
 
-```bash  theme={null}
+```bash theme={"theme":"css-variables"}
 npx trigger.dev@latest login -a http://trigger.example.com
 ```
 
@@ -25911,7 +27709,7 @@ Once you've logged in, you shouldn't have to specify the URL again with other co
 
 You can specify a profile when logging in. This allows you to easily use the CLI with multiple instances of Trigger.dev. For example:
 
-```bash  theme={null}
+```bash theme={"theme":"css-variables"}
 npx trigger.dev@latest login -a http://trigger.example.com \
     --profile self-hosted
 ```
@@ -25920,25 +27718,25 @@ Logging in with a new profile will also make it the new default profile.
 
 To use a specific profile, you can use the `--profile` flag with other commands:
 
-```bash  theme={null}
+```bash theme={"theme":"css-variables"}
 npx trigger.dev@latest dev --profile self-hosted
 ```
 
 To list all your profiles, use the `list-profiles` command:
 
-```bash  theme={null}
+```bash theme={"theme":"css-variables"}
 npx trigger.dev@latest list-profiles
 ```
 
 To remove a profile, use the `logout` command:
 
-```bash  theme={null}
+```bash theme={"theme":"css-variables"}
 npx trigger.dev@latest logout --profile self-hosted
 ```
 
 To switch to a different profile, use the `switch` command:
 
-```bash  theme={null}
+```bash theme={"theme":"css-variables"}
 # To run interactively
 npx trigger.dev@latest switch
 
@@ -25950,7 +27748,7 @@ npx trigger.dev@latest switch self-hosted
 
 It can be useful to check you are logged into the correct instance. Running this will also show the API URL:
 
-```bash  theme={null}
+```bash theme={"theme":"css-variables"}
 npx trigger.dev@latest whoami
 ```
 
@@ -25965,7 +27763,7 @@ For more detailed instructions, see the [GitHub Actions guide](/github-actions).
 
 By default, the Trigger.dev webapp sends telemetry data to our servers. This data is used to improve the product and is not shared with third parties. If you would like to opt-out of this, you can set the `TRIGGER_TELEMETRY_DISABLED` environment variable on the webapp container. The value doesn't matter, it just can't be empty. For example:
 
-```yaml  theme={null}
+```yaml theme={"theme":"css-variables"}
 services:
   webapp:
     ...
@@ -26149,7 +27947,9 @@ Environment variables for the webapp container.
 | `TASK_PAYLOAD_MAXIMUM_SIZE`                      | No       | 3145728 (3MB)                                  | Max task payload size.                                                                                    |
 | `BATCH_TASK_PAYLOAD_MAXIMUM_SIZE`                | No       | 1000000 (1MB)                                  | Max batch payload size.                                                                                   |
 | `TASK_RUN_METADATA_MAXIMUM_SIZE`                 | No       | 262144 (256KB)                                 | Max metadata size.                                                                                        |
-| `MAX_BATCH_V2_TRIGGER_ITEMS`                     | No       | 500                                            | Max batch size.                                                                                           |
+| `MAX_BATCH_V2_TRIGGER_ITEMS`                     | No       | 500                                            | Max batch size (legacy v2 API).                                                                           |
+| `STREAMING_BATCH_MAX_ITEMS`                      | No       | 1000                                           | Max items in streaming batch (v3 API, requires SDK 4.3.1+).                                               |
+| `STREAMING_BATCH_ITEM_MAXIMUM_SIZE`              | No       | 3145728 (3MB)                                  | Max size per item in streaming batch.                                                                     |
 | `MAXIMUM_DEV_QUEUE_SIZE`                         | No       | —                                              | Max dev queue size.                                                                                       |
 | `MAXIMUM_DEPLOYED_QUEUE_SIZE`                    | No       | —                                              | Max deployed queue size.                                                                                  |
 | **OTel limits**                                  |          |                                                |                                                                                                           |
@@ -26188,7 +27988,7 @@ Environment variables for the webapp container.
 | `OPENAI_API_KEY`                                 | No       | —                                              | OpenAI API key.                                                                                           |
 | `MACHINE_PRESETS_OVERRIDE_PATH`                  | No       | —                                              | Path to machine presets override file. See [machine overrides](/self-hosting/overview#machine-overrides). |
 | `APP_ENV`                                        | No       | `NODE_ENV`                                     | App environment. Used for things like the title tag.                                                      |
-| `ADMIN_EMAILS`                                   | No       | —                                              | Regex of user emails to automatically promote to admin.                                                   |
+| `ADMIN_EMAILS`                                   | No       | —                                              | Regex of user emails to automatically promote to admin on signup. Does not apply to existing users.       |
 | `EVENT_LOOP_MONITOR_ENABLED`                     | No       | 1                                              | Node.js event loop lag monitor.                                                                           |
 
 
@@ -26235,7 +28035,7 @@ The following are minimum requirements for running the entire stack on Kubernete
 
 These requirements scale based on your task concurrency and can be adjusted via the `resources` section in your `values.yaml`. For example:
 
-```yaml  theme={null}
+```yaml theme={"theme":"css-variables"}
 webapp:
   resources:
     requests:
@@ -26252,16 +28052,16 @@ webapp:
 
 1. Install with default values (for testing only):
 
-```bash  theme={null}
+```bash theme={"theme":"css-variables"}
 helm upgrade -n trigger --install trigger \
   oci://ghcr.io/triggerdotdev/charts/trigger \
-  --version "~4.0.0-beta" \
+  --version "~4.0.0" \
   --create-namespace
 ```
 
 2. Access the webapp:
 
-```bash  theme={null}
+```bash theme={"theme":"css-variables"}
 kubectl port-forward svc/trigger-webapp 3040:3030 -n trigger
 ```
 
@@ -26269,7 +28069,7 @@ kubectl port-forward svc/trigger-webapp 3040:3030 -n trigger
 
 4. Login with the magic link:
 
-```bash  theme={null}
+```bash theme={"theme":"css-variables"}
 # Check the webapp logs
 kubectl logs -n trigger deployment/trigger-webapp | grep -A1 "magic link"
 ```
@@ -26285,7 +28085,7 @@ Most values map directly to the environment variables documented in the [webapp]
 
 **Example mapping:**
 
-```bash  theme={null}
+```bash theme={"theme":"css-variables"}
 # Environment variable
 APP_ORIGIN=https://trigger.example.com
 
@@ -26298,14 +28098,14 @@ config:
 
 The following commands will display the default values:
 
-```bash  theme={null}
+```bash theme={"theme":"css-variables"}
 # Specific version
 helm show values oci://ghcr.io/triggerdotdev/charts/trigger \
-  --version "4.0.0-beta.5"
+  --version "4.0.5"
 
-# Latest v4 beta
+# Latest v4
 helm show values oci://ghcr.io/triggerdotdev/charts/trigger \
-  --version "~4.0.0-beta"
+  --version "~4.0.0"
 ```
 
 ### Custom values
@@ -26314,7 +28114,7 @@ The default values are insecure and are only suitable for testing. You will need
 
 Create a `values-custom.yaml` file to override the defaults. For example:
 
-```yaml  theme={null}
+```yaml theme={"theme":"css-variables"}
 # Generate new secrets with `openssl rand -hex 16`
 # WARNING: You should probably use an existingSecret instead
 secrets:
@@ -26362,10 +28162,10 @@ supervisor:
 
 Deploy with your custom values:
 
-```bash  theme={null}
+```bash theme={"theme":"css-variables"}
 helm upgrade -n trigger --install trigger \
   oci://ghcr.io/triggerdotdev/charts/trigger \
-  --version "~4.0.0-beta" \
+  --version "~4.0.0" \
   --create-namespace \
   -f values-custom.yaml
 ```
@@ -26374,7 +28174,7 @@ helm upgrade -n trigger --install trigger \
 
 You can set extra environment variables on all services. For example:
 
-```yaml  theme={null}
+```yaml theme={"theme":"css-variables"}
 webapp:
   extraEnvVars:
     - name: EXTRA_ENV_VAR
@@ -26385,7 +28185,7 @@ webapp:
 
 You can set extra annotations on all services. For example:
 
-```yaml  theme={null}
+```yaml theme={"theme":"css-variables"}
 webapp:
   podAnnotations:
     "my-annotation": "my-value"
@@ -26399,7 +28199,7 @@ You can disable the built-in services and use external services instead. The cha
 
 **Direct configuration:**
 
-```yaml  theme={null}
+```yaml theme={"theme":"css-variables"}
 postgres:
   deploy: false
   external:
@@ -26409,7 +28209,7 @@ postgres:
 
 **Using existing secrets (recommended):**
 
-```yaml  theme={null}
+```yaml theme={"theme":"css-variables"}
 postgres:
   deploy: false
   external:
@@ -26424,7 +28224,7 @@ postgres:
 
 **Direct configuration:**
 
-```yaml  theme={null}
+```yaml theme={"theme":"css-variables"}
 redis:
   deploy: false
   external:
@@ -26437,7 +28237,7 @@ redis:
 
 **Using existing secrets (recommended):**
 
-```yaml  theme={null}
+```yaml theme={"theme":"css-variables"}
 redis:
   deploy: false
   external:
@@ -26453,7 +28253,7 @@ redis:
 
 **Direct configuration:**
 
-```yaml  theme={null}
+```yaml theme={"theme":"css-variables"}
 clickhouse:
   deploy: false
   external:
@@ -26465,7 +28265,7 @@ clickhouse:
 
 **Using existing secrets (recommended):**
 
-```yaml  theme={null}
+```yaml theme={"theme":"css-variables"}
 clickhouse:
   deploy: false
   external:
@@ -26480,7 +28280,7 @@ clickhouse:
 
 **Direct configuration:**
 
-```yaml  theme={null}
+```yaml theme={"theme":"css-variables"}
 minio:
   deploy: false
 s3:
@@ -26492,7 +28292,7 @@ s3:
 
 **Using existing secrets (recommended):**
 
-```yaml  theme={null}
+```yaml theme={"theme":"css-variables"}
 minio:
   deploy: false
 s3:
@@ -26509,7 +28309,7 @@ s3:
 
 When connecting to PostgreSQL instances that require custom CA certificates (such as AWS RDS with SSL verification), you can mount the CA certificate as a volume and configure the webapp to use it:
 
-```yaml  theme={null}
+```yaml theme={"theme":"css-variables"}
 postgres:
   deploy: false
   external:
@@ -26554,7 +28354,7 @@ When using the default bootstrap configuration, worker creation and authenticati
 
 ### Bootstrap (default)
 
-```yaml  theme={null}
+```yaml theme={"theme":"css-variables"}
 webapp:
   bootstrap:
     enabled: true
@@ -26567,13 +28367,13 @@ If you need to set up workers separately or use a custom token:
 
 1. Get the worker token from the webapp logs:
 
-```bash  theme={null}
+```bash theme={"theme":"css-variables"}
 kubectl logs deployment/trigger-webapp -n trigger | grep -A15 "Worker Token"
 ```
 
 2. Create a secret with the token:
 
-```bash  theme={null}
+```bash theme={"theme":"css-variables"}
 kubectl create secret generic worker-token \
   --from-literal=token=tr_wgt_your_token_here \
   -n trigger
@@ -26581,7 +28381,7 @@ kubectl create secret generic worker-token \
 
 3. Configure the supervisor to use the secret:
 
-```yaml  theme={null}
+```yaml theme={"theme":"css-variables"}
 supervisor:
   bootstrap:
     enabled: false
@@ -26595,7 +28395,7 @@ supervisor:
 
 See the [Docker registry setup](/self-hosting/docker#registry-setup) for conceptual information. The configuration is specified in your `values.yaml`:
 
-```yaml  theme={null}
+```yaml theme={"theme":"css-variables"}
 # Use external registry (recommended)
 registry:
   deploy: false
@@ -26619,7 +28419,7 @@ registry:
 
 See the [Docker object storage setup](/self-hosting/docker#object-storage) for conceptual information. The defaults will use built-in MinIO, but you can use an external S3-compatible storage. The configuration is specified in your `values.yaml`:
 
-```yaml  theme={null}
+```yaml theme={"theme":"css-variables"}
 # Use external S3-compatible storage
 minio:
   deploy: false
@@ -26640,7 +28440,7 @@ Authentication options are identical to the [Docker-based installation](/self-ho
 
 **GitHub OAuth:**
 
-```yaml  theme={null}
+```yaml theme={"theme":"css-variables"}
 webapp:
   extraEnvVars:
     - name: AUTH_GITHUB_CLIENT_ID
@@ -26651,7 +28451,7 @@ webapp:
 
 **Email authentication (Resend):**
 
-```yaml  theme={null}
+```yaml theme={"theme":"css-variables"}
 webapp:
   extraEnvVars:
     - name: EMAIL_TRANSPORT
@@ -26666,11 +28466,11 @@ webapp:
 
 **Restricting access:**
 
-```yaml  theme={null}
+```yaml theme={"theme":"css-variables"}
 webapp:
   extraEnvVars:
     - name: WHITELISTED_EMAILS
-      value: "user1@company\\.com|user2@company\\.com"
+      value: "^(user1@company\\.com|user2@company\\.com)$"
 ```
 
 ## Version locking
@@ -26679,23 +28479,23 @@ You can lock versions in two ways:
 
 **Helm chart version (recommended):**
 
-```bash  theme={null}
+```bash theme={"theme":"css-variables"}
 # Pin to a specific version for production
 helm upgrade -n trigger --install trigger \
   oci://ghcr.io/triggerdotdev/charts/trigger \
-  --version "4.0.0-beta.5"
+  --version "4.0.5"
 
 # The app version will be different from the chart version
 # This is the version of the Trigger.dev webapp and supervisor
 # ..and should always match your Trigger.dev CLI version
 helm show chart \
   oci://ghcr.io/triggerdotdev/charts/trigger \
-  --version "4.0.0-beta.5" | grep appVersion
+  --version "4.0.5" | grep appVersion
 ```
 
 **Specific image tags:**
 
-```yaml  theme={null}
+```yaml theme={"theme":"css-variables"}
 webapp:
   image:
     tag: "v4.0.0"
@@ -26711,7 +28511,7 @@ The chart version's `appVersion` field determines the default image tags. Newer 
 
 **Check logs:**
 
-```bash  theme={null}
+```bash theme={"theme":"css-variables"}
 # Webapp logs
 kubectl logs deployment/trigger-webapp -n trigger -f
 
@@ -26724,14 +28524,14 @@ kubectl logs -l app.kubernetes.io/instance=trigger -n trigger -f
 
 **Check pod status:**
 
-```bash  theme={null}
+```bash theme={"theme":"css-variables"}
 kubectl get pods -n trigger
 kubectl describe pod <pod-name> -n trigger
 ```
 
 **Start from scratch:**
 
-```bash  theme={null}
+```bash theme={"theme":"css-variables"}
 # Delete the release
 helm uninstall trigger -n trigger
 
@@ -26767,7 +28567,7 @@ For more detailed instructions, see the [GitHub Actions guide](/github-actions).
 
 By default, the Trigger.dev webapp sends telemetry data to our servers. This data is used to improve the product and is not shared with third parties. To disable telemetry, set in your `values.yaml`:
 
-```yaml  theme={null}
+```yaml theme={"theme":"css-variables"}
 telemetry:
   enabled: false
 ```
@@ -26801,7 +28601,7 @@ The self-hosted version is a set of containers running on your own infrastructur
 * **Webapp**: includes the dashboard and other services like Redis and Postgres.
 * **Worker**: includes the supervisor and the runners that execute your tasks.
 
-<img src="https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/self-hosting/architecture.png?fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=360a56141f8d28bc92c8e1a490771b05" alt="Self-hosting architecture" data-og-width="1444" width="1444" data-og-height="755" height="755" data-path="self-hosting/architecture.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/self-hosting/architecture.png?w=280&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=fac12c9c72c410958e51076185299a9d 280w, https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/self-hosting/architecture.png?w=560&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=56f369633a4108ebf60faa6a76db6802 560w, https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/self-hosting/architecture.png?w=840&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=e6900b0544d65e7f3ef3a2c14cfdf36f 840w, https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/self-hosting/architecture.png?w=1100&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=3b063474bdaed77fbb1c8b56295ca6ed 1100w, https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/self-hosting/architecture.png?w=1650&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=d25f4fae5e8acdd8899a849d2ec6036d 1650w, https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/self-hosting/architecture.png?w=2500&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=ab59087b3ca60ad307e63882dba44756 2500w" />
+<img alt="Self-hosting architecture" />
 
 ## Feature comparison
 
@@ -26843,7 +28643,7 @@ Most of the [limits](/limits) are configurable when self-hosting, with some hard
 
 You can override the machine type for a task by setting the `MACHINE_PRESETS_OVERRIDE_PATH` environment variable to a JSON file with the following structure.
 
-```json  theme={null}
+```json theme={"theme":"css-variables"}
 {
   "defaultMachine": "small-1x",
   "machines": {
@@ -26857,7 +28657,7 @@ You can override the machine type for a task by setting the `MACHINE_PRESETS_OVE
 
 All fields are optional. Partial overrides are supported:
 
-```json  theme={null}
+```json theme={"theme":"css-variables"}
 {
   "defaultMachine": "small-2x",
   "machines": {
@@ -26873,12 +28673,96 @@ It's dangerous to go alone! Join the self-hosting channel on our [Discord server
 ## Next steps
 
 <CardGroup>
-  <Card title="Docker compose" color="#2496ED" icon="docker" href="/self-hosting/docker">
+  <Card title="Docker compose" icon="docker" href="/self-hosting/docker">
     Learn how to self-host Trigger.dev with Docker compose.
   </Card>
 
-  <Card title="Kubernetes" color="#326CE5" icon="dharmachakra" href="/self-hosting/kubernetes">
+  <Card title="Kubernetes" icon="dharmachakra" href="/self-hosting/kubernetes">
     Learn how to self-host Trigger.dev with Kubernetes.
+  </Card>
+</CardGroup>
+
+
+# Skills
+Source: https://trigger.dev/docs/skills
+
+Install Trigger.dev skills to teach any AI coding assistant best practices for writing tasks, agents, and workflows.
+
+## What are agent skills?
+
+Skills are portable instruction sets that teach AI coding assistants how to use Trigger.dev effectively. Unlike vendor-specific config files (`.cursor/rules`, `CLAUDE.md`), skills use an open standard that works across all major AI assistants. For example, Cursor users and Claude Code users can get the same knowledge from a single install.
+
+Skills are installed as directories containing a `SKILL.md` file. Each `SKILL.md` includes YAML frontmatter (name, description) and markdown instructions with patterns, examples, and best practices that AI assistants automatically discover and follow.
+
+## Installation
+
+When you run `npx skills add triggerdotdev/skills`, the CLI detects your installed AI tools and copies the appropriate files to each tool's expected location. For example, `.claude/skills/`, `.cursor/skills/`, `.github/skills/`, etc.
+
+```bash theme={"theme":"css-variables"}
+npx skills add triggerdotdev/skills
+```
+
+<Note>`skills` is an open-source CLI by Vercel. Learn more at [skills.sh](https://skills.sh).</Note>
+
+The result: your AI assistant understands Trigger.dev's specific patterns for exports, schema validation, error handling, retries, and more.
+
+## Available skills
+
+Install all skills at once, or pick the ones relevant to your current work:
+
+```bash theme={"theme":"css-variables"}
+# Install all Trigger.dev skills
+npx skills add triggerdotdev/skills
+
+# Or install individual skills
+npx skills add triggerdotdev/skills --skill trigger-tasks
+npx skills add triggerdotdev/skills --skill trigger-agents
+npx skills add triggerdotdev/skills --skill trigger-config
+npx skills add triggerdotdev/skills --skill trigger-realtime
+npx skills add triggerdotdev/skills --skill trigger-setup
+```
+
+| Skill              | Use for                                                    | Covers                                                       |
+| ------------------ | ---------------------------------------------------------- | ------------------------------------------------------------ |
+| `trigger-setup`    | First time setup, new projects                             | SDK install, `npx trigger init`, project structure           |
+| `trigger-tasks`    | Writing background tasks, async workflows, scheduled tasks | Triggering, waits, queues, retries, cron, metadata           |
+| `trigger-agents`   | LLM workflows, orchestration, multi-step AI agents         | Prompt chaining, routing, parallelization, human-in-the-loop |
+| `trigger-realtime` | Live updates, progress indicators, streaming               | React hooks, progress bars, streaming AI responses           |
+| `trigger-config`   | Project setup, build configuration                         | `trigger.config.ts`, extensions (Prisma, FFmpeg, Playwright) |
+
+Not sure which skill to install? Install `trigger-tasks`; it covers the most common patterns for writing Trigger.dev tasks.
+
+## Supported AI assistants
+
+Skills work with any AI coding assistant that supports the [Agent Skills standard](https://agentskills.io), including:
+
+* [Claude Code](https://docs.anthropic.com/en/docs/claude-code)
+* [Cursor](https://cursor.com)
+* [Windsurf](https://codeium.com/windsurf)
+* [GitHub Copilot](https://github.com/features/copilot)
+* [Cline](https://github.com/cline/cline)
+* [Codex CLI](https://github.com/openai/codex)
+* [Gemini CLI](https://github.com/google-gemini/gemini-cli)
+* [OpenCode](https://opencode.ai)
+* [View all →](https://skills.sh)
+
+## Next steps
+
+<CardGroup>
+  <Card title="MCP Server" icon="sparkles" href="/mcp-introduction">
+    Give your AI assistant direct access to Trigger.dev tools and APIs.
+  </Card>
+
+  <Card title="Writing tasks" icon="code" href="/tasks/overview">
+    Learn the task patterns that skills teach your AI assistant.
+  </Card>
+
+  <Card title="Building AI agents" icon="brain" href="/guides/ai-agents/overview">
+    Build durable AI workflows with prompt chaining and human-in-the-loop.
+  </Card>
+
+  <Card title="skills.sh" icon="box" href="https://skills.sh">
+    Browse the full Agent Skills ecosystem.
   </Card>
 </CardGroup>
 
@@ -26913,14 +28797,14 @@ There are two ways to add tags to a run:
 You can add tags when triggering a run using the `tags` option. All the different [trigger](/triggering) methods support this.
 
 <CodeGroup>
-  ```ts trigger theme={null}
+  ```ts trigger theme={"theme":"css-variables"}
   const handle = await myTask.trigger(
     { message: "hello world" },
     { tags: ["user_123456", "org_abcdefg"] }
   );
   ```
 
-  ```ts batchTrigger theme={null}
+  ```ts batchTrigger theme={"theme":"css-variables"}
   const batch = await myTask.batchTrigger([
     {
       payload: { message: "foo" },
@@ -26936,13 +28820,13 @@ You can add tags when triggering a run using the `tags` option. All the differen
 
 This will create a run with the tags `user_123456` and `org_abcdefg`. They look like this in the runs table:
 
-<img src="https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/tags-org-user.png?fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=95300055e21df2ac777716ee826b14a2" alt="How tags appear in the dashboard" data-og-width="500" width="500" data-og-height="213" height="213" data-path="images/tags-org-user.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/tags-org-user.png?w=280&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=4ee5ab06962f5838750401973f4b7fd4 280w, https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/tags-org-user.png?w=560&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=934bb9dbccef3a395b8fc2b67b6bb627 560w, https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/tags-org-user.png?w=840&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=b9f05a20db53d7f1ac1528fd24691440 840w, https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/tags-org-user.png?w=1100&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=aa50ecbbe7a15241f30cbcfc46a86fca 1100w, https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/tags-org-user.png?w=1650&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=05e1b709d6f044b5fdd41060fc6429a6 1650w, https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/tags-org-user.png?w=2500&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=a1103011e76a5348c37d7ad32d38b4f1 2500w" />
+<img alt="How tags appear in the dashboard" />
 
 ### 2. Adding tags inside the `run` function
 
 Use the `tags.add()` function to add tags to a run from inside the `run` function. This will add the tag `product_1234567` to the run:
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 import { task, tags } from "@trigger.dev/sdk";
 
 export const myTask = task({
@@ -26966,7 +28850,7 @@ Tags do not propagate to child runs automatically. By default runs have no tags 
 
 It's easy to propagate tags if you want:
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 export const myTask = task({
   id: "my-task",
   run: async (payload: Payload, { ctx }) => {
@@ -26987,13 +28871,13 @@ You can filter runs by tags in the dashboard and in the SDK.
 
 On the Runs page open the filter menu, choose "Tags" and then start typing in the name of the tag you want to filter by. You can select it and it will restrict the results to only runs with that tag. You can add multiple tags to filter by more than one.
 
-<img src="https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/tags-filtering.png?fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=100b923c8d382ca830344a29cccd30ae" alt="Filter by tags" data-og-width="3162" width="3162" data-og-height="1874" height="1874" data-path="images/tags-filtering.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/tags-filtering.png?w=280&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=cf5c3088aa5f5d500830a95352e2a613 280w, https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/tags-filtering.png?w=560&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=5ad94f3537cf19214750398d8da82761 560w, https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/tags-filtering.png?w=840&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=31f469bf812eeb4fe3e4255db8159702 840w, https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/tags-filtering.png?w=1100&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=bbb2f501b0fde07252bbc1756251cf18 1100w, https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/tags-filtering.png?w=1650&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=f56770191e9f191911d61a041b052413 1650w, https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/tags-filtering.png?w=2500&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=ac42f439de4fb4d28c09e68185c21f8b 2500w" />
+<img alt="Filter by tags" />
 
 ### Using `runs.list()`
 
 You can provide filters to the `runs.list` SDK function, including an array of tags.
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 import { runs } from "@trigger.dev/sdk";
 
 // Loop through all runs with the tag "user_123456" that have completed
@@ -27014,7 +28898,7 @@ There are different types of tasks including regular tasks and [scheduled tasks]
 
 Here's an incredibly simple task:
 
-```ts /trigger/hello-world.ts theme={null}
+```ts /trigger/hello-world.ts theme={"theme":"css-variables"}
 import { task } from "@trigger.dev/sdk";
 
 const helloWorld = task({
@@ -27035,7 +28919,7 @@ You can trigger this in two ways:
 
 Here's how to trigger a single run from elsewhere in your code:
 
-```ts Your backend code theme={null}
+```ts Your backend code theme={"theme":"css-variables"}
 import { helloWorld } from "./trigger/hello-world";
 
 async function triggerHelloWorld() {
@@ -27072,7 +28956,7 @@ A task is retried if an error is thrown, by default we retry 3 times.
 
 You can set the number of retries and the delay between retries in the `retry` field:
 
-```ts /trigger/retry.ts theme={null}
+```ts /trigger/retry.ts theme={"theme":"css-variables"}
 export const taskWithRetries = task({
   id: "task-with-retries",
   retry: {
@@ -27096,7 +28980,7 @@ It's also worth mentioning that you can [retry a block of code](/errors-retrying
 
 Queues allow you to control the concurrency of your tasks. This allows you to have one-at-a-time execution and parallel executions. There are also more advanced techniques like having different concurrencies for different sets of your users. For more information read [the concurrency & queues guide](/queue-concurrency).
 
-```ts /trigger/one-at-a-time.ts theme={null}
+```ts /trigger/one-at-a-time.ts theme={"theme":"css-variables"}
 export const oneAtATime = task({
   id: "one-at-a-time",
   queue: {
@@ -27112,7 +28996,7 @@ export const oneAtATime = task({
 
 Some tasks require more vCPUs or GBs of RAM. You can specify these requirements in the `machine` field. For more information read [the machines guide](/machines).
 
-```ts /trigger/heavy-task.ts theme={null}
+```ts /trigger/heavy-task.ts theme={"theme":"css-variables"}
 export const heavyTask = task({
   id: "heavy-task",
   machine: {
@@ -27128,7 +29012,7 @@ export const heavyTask = task({
 
 By default tasks can execute indefinitely, which can be great! But you also might want to set a `maxDuration` to prevent a task from running too long. You can set the `maxDuration` on a task, and all runs of that task will be stopped if they exceed the duration.
 
-```ts /trigger/long-task.ts theme={null}
+```ts /trigger/long-task.ts theme={"theme":"css-variables"}
 export const longTask = task({
   id: "long-task",
   maxDuration: 300, // 300 seconds or 5 minutes
@@ -27146,7 +29030,7 @@ See our [maxDuration guide](/runs/max-duration) for more information.
 
 You can register global lifecycle hooks that are executed for all runs, regardless of the task. While you can still define these in the `trigger.config.ts` file, you can also register them anywhere in your codebase:
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 import { tasks } from "@trigger.dev/sdk";
 
 tasks.onStart(({ ctx, payload, task }) => {
@@ -27166,7 +29050,7 @@ tasks.onFailure(({ ctx, error }) => {
 
 If you create a `init.ts` file at the root of your trigger directory, it will be automatically loaded when a task is executed. This is useful if you want to register global lifecycle hooks, or initialize a database connection, etc.
 
-```ts init.ts theme={null}
+```ts init.ts theme={"theme":"css-variables"}
 import { tasks } from "@trigger.dev/sdk";
 
 tasks.onStart(({ ctx, payload, task }) => {
@@ -27176,7 +29060,7 @@ tasks.onStart(({ ctx, payload, task }) => {
 
 ## Lifecycle functions
 
-<img src="https://mintcdn.com/trigger/GRVvL72gYSoZFvP1/images/lifecycle-functions.png?fit=max&auto=format&n=GRVvL72gYSoZFvP1&q=85&s=6196168935d136c5440fea7793918591" alt="Lifecycle functions" data-og-width="1428" width="1428" data-og-height="1239" height="1239" data-path="images/lifecycle-functions.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/trigger/GRVvL72gYSoZFvP1/images/lifecycle-functions.png?w=280&fit=max&auto=format&n=GRVvL72gYSoZFvP1&q=85&s=6ecf6b07768a33e17d335136564ccd54 280w, https://mintcdn.com/trigger/GRVvL72gYSoZFvP1/images/lifecycle-functions.png?w=560&fit=max&auto=format&n=GRVvL72gYSoZFvP1&q=85&s=80ed26958dfbbde07cb48612c37f0bc6 560w, https://mintcdn.com/trigger/GRVvL72gYSoZFvP1/images/lifecycle-functions.png?w=840&fit=max&auto=format&n=GRVvL72gYSoZFvP1&q=85&s=32495b4b321f9f790a4e6b3bfb99e550 840w, https://mintcdn.com/trigger/GRVvL72gYSoZFvP1/images/lifecycle-functions.png?w=1100&fit=max&auto=format&n=GRVvL72gYSoZFvP1&q=85&s=bb3d9791a3052a6c82ce6fc6c8194cdb 1100w, https://mintcdn.com/trigger/GRVvL72gYSoZFvP1/images/lifecycle-functions.png?w=1650&fit=max&auto=format&n=GRVvL72gYSoZFvP1&q=85&s=15e76db685781a56fe68c8e787a593b6 1650w, https://mintcdn.com/trigger/GRVvL72gYSoZFvP1/images/lifecycle-functions.png?w=2500&fit=max&auto=format&n=GRVvL72gYSoZFvP1&q=85&s=123bad89f02dae694d741c0ad186de64 2500w" />
+<img alt="Lifecycle functions" />
 
 ### `middleware` and `locals` functions
 
@@ -27190,7 +29074,7 @@ Our task middleware system runs at the top level, executing before and after all
 
 The `locals` API allows you to share data between middleware and hooks.
 
-```ts db.ts theme={null}
+```ts db.ts theme={"theme":"css-variables"}
 import { locals } from "@trigger.dev/sdk";
 import { logger, tasks } from "@trigger.dev/sdk";
 
@@ -27240,7 +29124,7 @@ tasks.onResume("db", async ({ ctx, payload, task }) => {
 
 You can access the database client using `getDb()` in your tasks `run` function and all your hooks (global or task specific):
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 import { getDb } from "./db";
 
 export const myTask = task({
@@ -27257,7 +29141,7 @@ export const myTask = task({
 
 Before a task run attempt starts, the `onStartAttempt` function is called. It's useful for sending notifications, logging, and other side effects.
 
-```ts /trigger/on-start.ts theme={null}
+```ts /trigger/on-start.ts theme={"theme":"css-variables"}
 export const taskWithOnStartAttempt = task({
   id: "task-with-on-start-attempt",
   onStartAttempt: async ({ payload, ctx }) => {
@@ -27271,7 +29155,7 @@ export const taskWithOnStartAttempt = task({
 
 You can also define a global `onStartAttempt` function using `tasks.onStartAttempt()`.
 
-```ts init.ts theme={null}
+```ts init.ts theme={"theme":"css-variables"}
 import { tasks } from "@trigger.dev/sdk";
 
 tasks.onStartAttempt(({ ctx, payload, task }) => {
@@ -27286,7 +29170,7 @@ tasks.onStartAttempt(({ ctx, payload, task }) => {
 
 If you want to execute code before just the first attempt, you can use the `onStartAttempt` function and check `ctx.run.attempt.number === 1`:
 
-```ts /trigger/on-start-attempt.ts theme={null}
+```ts /trigger/on-start-attempt.ts theme={"theme":"css-variables"}
 export const taskWithOnStartAttempt = task({
   id: "task-with-on-start-attempt",
   onStartAttempt: async ({ payload, ctx }) => {
@@ -27301,7 +29185,7 @@ export const taskWithOnStartAttempt = task({
 
 These lifecycle hooks allow you to run code when a run is paused or resumed because of a wait:
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 export const myTask = task({
   id: "my-task",
   onWait: async ({ wait }) => {
@@ -27322,7 +29206,7 @@ export const myTask = task({
 
 You can also define global `onWait` and `onResume` functions using `tasks.onWait()` and `tasks.onResume()`:
 
-```ts init.ts theme={null}
+```ts init.ts theme={"theme":"css-variables"}
 import { tasks } from "@trigger.dev/sdk";
 
 tasks.onWait(({ ctx, payload, wait, task }) => {
@@ -27338,7 +29222,7 @@ tasks.onResume(({ ctx, payload, wait, task }) => {
 
 When a task run succeeds, the `onSuccess` function is called. It's useful for sending notifications, logging, syncing state to your database, or other side effects.
 
-```ts /trigger/on-success.ts theme={null}
+```ts /trigger/on-success.ts theme={"theme":"css-variables"}
 export const taskWithOnSuccess = task({
   id: "task-with-on-success",
   onSuccess: async ({ payload, output, ctx }) => {
@@ -27352,7 +29236,7 @@ export const taskWithOnSuccess = task({
 
 You can also define a global `onSuccess` function using `tasks.onSuccess()`.
 
-```ts init.ts theme={null}
+```ts init.ts theme={"theme":"css-variables"}
 import { tasks } from "@trigger.dev/sdk";
 
 tasks.onSuccess(({ ctx, payload, output }) => {
@@ -27369,7 +29253,7 @@ tasks.onSuccess(({ ctx, payload, output }) => {
 
 This hook is executed when a run completes, regardless of whether it succeeded or failed:
 
-```ts /trigger/on-complete.ts theme={null}
+```ts /trigger/on-complete.ts theme={"theme":"css-variables"}
 export const taskWithOnComplete = task({
   id: "task-with-on-complete",
   onComplete: async ({ payload, output, ctx }) => {
@@ -27383,7 +29267,7 @@ export const taskWithOnComplete = task({
 
 You can also define a global `onComplete` function using `tasks.onComplete()`.
 
-```ts init.ts theme={null}
+```ts init.ts theme={"theme":"css-variables"}
 import { tasks } from "@trigger.dev/sdk";
 
 tasks.onComplete(({ ctx, payload, output }) => {
@@ -27400,7 +29284,7 @@ tasks.onComplete(({ ctx, payload, output }) => {
 
 When a task run fails, the `onFailure` function is called. It's useful for sending notifications, logging, or other side effects. It will only be executed once the task run has exhausted all its retries.
 
-```ts /trigger/on-failure.ts theme={null}
+```ts /trigger/on-failure.ts theme={"theme":"css-variables"}
 export const taskWithOnFailure = task({
   id: "task-with-on-failure",
   onFailure: async ({ payload, error, ctx }) => {
@@ -27414,7 +29298,7 @@ export const taskWithOnFailure = task({
 
 You can also define a global `onFailure` function using `tasks.onFailure()`.
 
-```ts init.ts theme={null}
+```ts init.ts theme={"theme":"css-variables"}
 import { tasks } from "@trigger.dev/sdk";
 
 tasks.onFailure(({ ctx, payload, error }) => {
@@ -27444,7 +29328,7 @@ Read more about `catchError` in our [Errors and Retrying guide](/errors-retrying
 
 You can define an `onCancel` hook that is called when a run is cancelled. This is useful if you want to clean up any resources that were allocated for the run.
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 tasks.onCancel(({ ctx, signal }) => {
   console.log("Run cancelled", signal);
 });
@@ -27452,7 +29336,7 @@ tasks.onCancel(({ ctx, signal }) => {
 
 You can use the `onCancel` hook along with the `signal` passed into the run function to interrupt a call to an external service, for example using the [streamText](https://ai-sdk.dev/docs/reference/ai-sdk-core/stream-text) function from the AI SDK:
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 import { logger, tasks, schemaTask } from "@trigger.dev/sdk";
 import { streamText } from "ai";
 import { z } from "zod";
@@ -27506,7 +29390,7 @@ export const interruptibleChat = schemaTask({
 
 The `onCancel` hook can optionally wait for the `run` function to finish, and access the output of the run:
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 import { logger, task } from "@trigger.dev/sdk";
 import { setTimeout } from "node:timers/promises";
 
@@ -27550,7 +29434,7 @@ When a task run starts, the `onStart` function is called. It's useful for sendin
   each attempt, use a middleware function or the `onStartAttempt` function.
 </Warning>
 
-```ts /trigger/on-start.ts theme={null}
+```ts /trigger/on-start.ts theme={"theme":"css-variables"}
 export const taskWithOnStart = task({
   id: "task-with-on-start",
   onStart: async ({ payload, ctx }) => {
@@ -27564,7 +29448,7 @@ export const taskWithOnStart = task({
 
 You can also define a global `onStart` function using `tasks.onStart()`.
 
-```ts init.ts theme={null}
+```ts init.ts theme={"theme":"css-variables"}
 import { tasks } from "@trigger.dev/sdk";
 
 tasks.onStart(({ ctx, payload, task }) => {
@@ -27583,7 +29467,7 @@ tasks.onStart(({ ctx, payload, task }) => {
 
 This function is called before a run attempt:
 
-```ts /trigger/init.ts theme={null}
+```ts /trigger/init.ts theme={"theme":"css-variables"}
 export const taskWithInit = task({
   id: "task-with-init",
   init: async ({ payload, ctx }) => {
@@ -27597,7 +29481,7 @@ export const taskWithInit = task({
 
 You can also return data from the `init` function that will be available in the params of the `run`, `cleanup`, `onSuccess`, and `onFailure` functions.
 
-```ts /trigger/init-return.ts theme={null}
+```ts /trigger/init-return.ts theme={"theme":"css-variables"}
 export const taskWithInitReturn = task({
   id: "task-with-init-return",
   init: async ({ payload, ctx }) => {
@@ -27620,7 +29504,7 @@ export const taskWithInitReturn = task({
 
 This function is called after the `run` function is executed, regardless of whether the run was successful or not. It's useful for cleaning up resources, logging, or other side effects.
 
-```ts /trigger/cleanup.ts theme={null}
+```ts /trigger/cleanup.ts theme={"theme":"css-variables"}
 export const taskWithCleanup = task({
   id: "task-with-cleanup",
   cleanup: async ({ payload, ctx }) => {
@@ -27661,7 +29545,7 @@ A task that is triggered on a recurring schedule using cron syntax.
 
 This task will run when any of the attached schedules trigger. They have a predefined payload with some useful properties:
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 import { schedules } from "@trigger.dev/sdk";
 
 export const firstScheduledTask = schedules.task({
@@ -27736,7 +29620,7 @@ These sync when you run the [dev](/cli-dev) or [deploy](/cli-deploy) commands.
 
 To create them you add the `cron` property to your `schedules.task()`. This property is optional and is only used if you want to add a declarative schedule to your task:
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 export const firstScheduledTask = schedules.task({
   id: "first-scheduled-task",
   //every two hours (UTC timezone)
@@ -27749,7 +29633,7 @@ export const firstScheduledTask = schedules.task({
 
 If you use a string it will be in UTC. Alternatively, you can specify a timezone like this:
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 export const secondScheduledTask = schedules.task({
   id: "second-scheduled-task",
   cron: {
@@ -27808,13 +29692,13 @@ You need to attach a schedule to a task before it will run on a schedule. You ca
 <Steps>
   <Step title="Go to the Schedules page">
     In the sidebar select the "Schedules" page, then press the "New schedule" button. Or you can
-    follow the onboarding and press the create in dashboard button. <img src="https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/schedules-blank.png?fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=43eb999c7adffee996282649787537ac" alt="Blank schedules
-    page" data-og-width="1600" width="1600" data-og-height="900" height="900" data-path="images/schedules-blank.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/schedules-blank.png?w=280&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=fe91c092419f97fabd87bc978b02ef70 280w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/schedules-blank.png?w=560&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=80f88b80434b611ce1c3d496563c6986 560w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/schedules-blank.png?w=840&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=366e55c6afcfd9a36a16d94ef5bb7453 840w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/schedules-blank.png?w=1100&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=d3cc50242dbdd1bb6f035caeb20c91c6 1100w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/schedules-blank.png?w=1650&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=8b38dec234ab37de05949645ac5bd3e6 1650w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/schedules-blank.png?w=2500&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=bc86e5670d9c0b0c85cb3db0cde6bfbe 2500w" />
+    follow the onboarding and press the create in dashboard button. <img alt="Blank schedules
+    page" />
   </Step>
 
   <Step title="Create your schedule">
-    Fill in the form and press "Create schedule" when you're done. <img src="https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/schedules-create.png?fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=c958b2628029237508df655d4e893d1e" alt="Environment variables
-    page" data-og-width="1600" width="1600" data-og-height="901" height="901" data-path="images/schedules-create.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/schedules-create.png?w=280&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=5ebfd52f0aa7804335db8b6cc77dd13f 280w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/schedules-create.png?w=560&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=a0bddf8862294445a0c3b6d2140ddffd 560w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/schedules-create.png?w=840&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=04fa4d04c0490f38d0b243f2588e00f3 840w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/schedules-create.png?w=1100&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=0895d4a4306bbd55f91173c4b365c6e2 1100w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/schedules-create.png?w=1650&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=21b3fc532d0bdce094542b94a20e915c 1650w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/schedules-create.png?w=2500&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=06ce41644450d0f6bc12745c26e8859b 2500w" />
+    Fill in the form and press "Create schedule" when you're done. <img alt="Environment variables
+    page" />
 
     These are the options when creating a schedule:
 
@@ -27833,7 +29717,7 @@ You need to attach a schedule to a task before it will run on a schedule. You ca
 
 You call `schedules.create()` to create a schedule from your code. Here's the simplest possible example:
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 const createdSchedule = await schedules.create({
   //The id of the scheduled task you want to attach to.
   task: firstScheduledTask.id,
@@ -27850,7 +29734,7 @@ You can create many schedules with the same `task`, `cron`, and `externalId` but
 
 This means you can have thousands of schedules attached to a single task, but only one schedule per `deduplicationKey`. Here's an example with all the options:
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 const createdSchedule = await schedules.create({
   //The id of the scheduled task you want to attach to.
   task: firstScheduledTask.id,
@@ -27878,7 +29762,7 @@ By using the `externalId` you can have schedules for your users. This is useful 
 
 A reminder task:
 
-```ts /trigger/reminder.ts theme={null}
+```ts /trigger/reminder.ts theme={"theme":"css-variables"}
 import { schedules } from "@trigger.dev/sdk";
 
 //this task will run when any of the attached schedules trigger
@@ -27900,7 +29784,7 @@ export const reminderTask = schedules.task({
 
 Then in your backend code, you can create a schedule for each user:
 
-```ts Next.js API route theme={null}
+```ts Next.js API route theme={"theme":"css-variables"}
 import { reminderTask } from "~/trigger/reminder";
 
 //app/reminders/route.ts
@@ -27935,12 +29819,12 @@ You can test a scheduled task in the dashboard. Note that the `scheduleId` will 
 <Steps>
   <Step title="Go to the Test page">
     In the sidebar select the "Test" page, then select a scheduled task from the list (they have a
-    clock icon on them) <img src="https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/schedules-test.png?fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=6591163dd3e4af384746705dffef6c92" alt="Test page" data-og-width="1600" width="1600" data-og-height="900" height="900" data-path="images/schedules-test.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/schedules-test.png?w=280&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=ec7027a656655d186e0ee7b8d4d858ad 280w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/schedules-test.png?w=560&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=7616d494747c8f9038be012668f3a238 560w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/schedules-test.png?w=840&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=23eb128eee342e40a3826b05c006c029 840w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/schedules-test.png?w=1100&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=f7fdc2ee3775b41361ae411022a37f53 1100w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/schedules-test.png?w=1650&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=4261839b6f2f2c8f1c2c360108c16f33 1650w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/schedules-test.png?w=2500&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=82ac96f5c94674e853545cb60285b38a 2500w" />
+    clock icon on them) <img alt="Test page" />
   </Step>
 
   <Step title="Create your schedule">
     Fill in the form \[1]. You can select from a recent run \[2] to pre-populate the fields. Press "Run
-    test" when you're ready <img src="https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/schedules-test-form.png?fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=0b2a0947db2701825addb703f92748a1" alt="Schedule test form" data-og-width="1600" width="1600" data-og-height="900" height="900" data-path="images/schedules-test-form.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/schedules-test-form.png?w=280&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=3031563444d48852d76c67b95a4f5139 280w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/schedules-test-form.png?w=560&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=1455997fee472ae6934f5d96ba2e1a2e 560w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/schedules-test-form.png?w=840&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=5be53628561e1c9ae50228cef28ffac6 840w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/schedules-test-form.png?w=1100&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=aa2f6a789d838b7afb13ad77f6305143 1100w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/schedules-test-form.png?w=1650&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=f833cb1540671e10b2a9aebda6fd0b9c 1650w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/schedules-test-form.png?w=2500&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=8878736225374e8cc8ddd0d8227a596a 2500w" />
+    test" when you're ready <img alt="Schedule test form" />
   </Step>
 </Steps>
 
@@ -27948,7 +29832,7 @@ You can test a scheduled task in the dashboard. Note that the `scheduleId` will 
 
 ### Retrieving an existing schedule
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 const retrievedSchedule = await schedules.retrieve(scheduleId);
 ```
 
@@ -27956,7 +29840,7 @@ See [the SDK reference](/management/schedules/retrieve) for full details.
 
 ### Listing schedules
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 const allSchedules = await schedules.list();
 ```
 
@@ -27964,7 +29848,7 @@ See [the SDK reference](/management/schedules/list) for full details.
 
 ### Updating a schedule
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 const updatedSchedule = await schedules.update(scheduleId, {
   task: firstScheduledTask.id,
   cron: "0 0 1 * *",
@@ -27977,7 +29861,7 @@ See [the SDK reference](/management/schedules/update) for full details.
 
 ### Deactivating a schedule
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 const deactivatedSchedule = await schedules.deactivate(scheduleId);
 ```
 
@@ -27985,7 +29869,7 @@ See [the SDK reference](/management/schedules/deactivate) for full details.
 
 ### Activating a schedule
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 const activatedSchedule = await schedules.activate(scheduleId);
 ```
 
@@ -27993,7 +29877,7 @@ See [the SDK reference](/management/schedules/activate) for full details.
 
 ### Deleting a schedule
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 const deletedSchedule = await schedules.del(scheduleId);
 ```
 
@@ -28003,7 +29887,7 @@ See [the SDK reference](/management/schedules/delete) for full details.
 
 You might want to show a dropdown menu in your UI so your users can select their timezone. You can get a list of all possible timezones using the SDK:
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 const timezones = await schedules.timezones();
 ```
 
@@ -28019,7 +29903,7 @@ The `schemaTask` function allows you to define a task with a runtime payload sch
 
 ## Usage
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 import { schemaTask } from "@trigger.dev/sdk";
 import { z } from "zod";
 
@@ -28044,7 +29928,7 @@ const myTask = schemaTask({
 
 When you trigger the task directly, the payload will be validated against the schema before the [run](/runs) is created:
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 import { tasks } from "@trigger.dev/sdk";
 import { myTask } from "./trigger/myTasks";
 
@@ -28063,7 +29947,7 @@ We will also validate the payload every time before the task is run, so you can 
 
 Certain schema libraries, like Zod, split their type inference into "schema in" and "schema out". This means that you can define a single schema that will produce different types when triggering the task and when running the task. For example, you can define a schema that has a default value for a field, or a string coerced into a date:
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 import { schemaTask } from "@trigger.dev/sdk";
 import { z } from "zod";
 
@@ -28082,7 +29966,7 @@ const myTask = schemaTask({
 
 In this case, the trigger payload type is `{ name?: string, age: number; dob: string }`, but the run payload type is `{ name: string, age: number; dob: Date }`. So you can trigger the task with a payload like this:
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 await myTask.trigger({ age: 30, dob: "2020-01-01" }); // this is valid
 await myTask.trigger({ name: "Alice", age: 30, dob: "2020-01-01" }); // this is also valid
 ```
@@ -28091,7 +29975,7 @@ await myTask.trigger({ name: "Alice", age: 30, dob: "2020-01-01" }); // this is 
 
 The `ai.tool` function allows you to create an AI tool from an existing `schemaTask` to use with the Vercel [AI SDK](https://vercel.com/docs/ai-sdk):
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 import { ai } from "@trigger.dev/sdk/ai";
 import { schemaTask } from "@trigger.dev/sdk";
 import { z } from "zod";
@@ -28126,7 +30010,7 @@ export const myAiTask = schemaTask({
 
 You can also pass the `experimental_toToolResultContent` option to the `ai.tool` function to customize the content of the tool result:
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 import { openai } from "@ai-sdk/openai";
 import { Sandbox } from "@e2b/code-interpreter";
 import { ai } from "@trigger.dev/sdk/ai";
@@ -28193,7 +30077,7 @@ export const chartTool = ai.tool(chartTask, {
 
 You can access the current tool execution options inside the task run function using the `ai.currentToolOptions()` function:
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 import { ai } from "@trigger.dev/sdk/ai";
 import { schemaTask } from "@trigger.dev/sdk";
 import { z } from "zod";
@@ -28225,7 +30109,7 @@ See the [AI SDK tool execution options docs](https://sdk.vercel.ai/docs/ai-sdk-c
 
 You can use the [Zod](https://zod.dev) schema library to define your schema. The schema will be validated using Zod's `parse` function.
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 import { schemaTask } from "@trigger.dev/sdk";
 import { z } from "zod";
 
@@ -28243,7 +30127,7 @@ export const zodTask = schemaTask({
 
 ### Yup
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 import { schemaTask } from "@trigger.dev/sdk";
 import * as yup from "yup";
 
@@ -28261,7 +30145,7 @@ export const yupTask = schemaTask({
 
 ### Superstruct
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 import { schemaTask } from "@trigger.dev/sdk";
 import { object, string } from "superstruct";
 
@@ -28279,7 +30163,7 @@ export const superstructTask = schemaTask({
 
 ### ArkType
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 import { schemaTask } from "@trigger.dev/sdk";
 import { type } from "arktype";
 
@@ -28297,7 +30181,7 @@ export const arktypeTask = schemaTask({
 
 ### @effect/schema
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 import { schemaTask } from "@trigger.dev/sdk";
 import * as Schema from "@effect/schema/Schema";
 
@@ -28317,7 +30201,7 @@ export const effectTask = schemaTask({
 
 ### runtypes
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 import { schemaTask } from "@trigger.dev/sdk";
 import * as T from "runtypes";
 
@@ -28335,7 +30219,7 @@ export const runtypesTask = schemaTask({
 
 ### valibot
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 import { schemaTask } from "@trigger.dev/sdk";
 
 import * as v from "valibot";
@@ -28359,7 +30243,7 @@ export const valibotTask = schemaTask({
 
 ### typebox
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 import { schemaTask } from "@trigger.dev/sdk";
 import { Type } from "@sinclair/typebox";
 import { wrap } from "@typeschema/typebox";
@@ -28382,7 +30266,7 @@ export const typeboxTask = schemaTask({
 
 You can also define a custom parser function that will be called with the payload before the task is run. The parser function should return the parsed payload or throw an error if the payload is invalid.
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 import { schemaTask } from "@trigger.dev/sdk";
 
 export const customParserTask = schemaTask({
@@ -28436,7 +30320,7 @@ If you'd like to **opt-out** of the v2 streams, you can see so in one of the fol
 
 ### Option 1: Configure the SDK
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 import { auth } from "@trigger.dev/sdk";
 
 auth.configure({
@@ -28478,7 +30362,7 @@ The recommended way to work with streams is to define them once with `streams.de
 
 Define your streams in a shared location (like `app/streams.ts` or `trigger/streams.ts`):
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 import { streams, InferStreamType } from "@trigger.dev/sdk";
 
 // Define a stream with a specific type
@@ -28492,7 +30376,7 @@ export type AIStreamPart = InferStreamType<typeof aiStream>;
 
 You can define streams for any JSON-serializable type:
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 import { streams, InferStreamType } from "@trigger.dev/sdk";
 import { UIMessageChunk } from "ai";
 
@@ -28521,7 +30405,7 @@ export type LogStreamPart = InferStreamType<typeof logStream>;
 
 Once defined, you can use all stream methods on your defined stream:
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 import { task } from "@trigger.dev/sdk";
 import { aiStream } from "./streams";
 
@@ -28551,7 +30435,7 @@ export const streamTask = task({
 
 Use the defined stream's `read()` method to consume data from anywhere (frontend, backend, or another task):
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 import { aiStream } from "./streams";
 
 const stream = await aiStream.read(runId);
@@ -28563,7 +30447,7 @@ for await (const chunk of stream) {
 
 With options:
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 const stream = await aiStream.read(runId, {
   timeoutInSeconds: 60, // Stop if no data for 60 seconds
   startIndex: 10, // Start from the 10th chunk
@@ -28574,7 +30458,7 @@ const stream = await aiStream.read(runId, {
 
 Use the defined stream's `append()` method to add a single chunk:
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 import { task } from "@trigger.dev/sdk";
 import { aiStream, progressStream, logStream } from "./streams";
 
@@ -28602,7 +30486,7 @@ export const appendTask = task({
 
 Use the defined stream's `writer()` method for more complex stream writing:
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 import { task } from "@trigger.dev/sdk";
 import { logStream } from "./streams";
 
@@ -28630,7 +30514,7 @@ export const writerTask = task({
 
 Defined streams work seamlessly with the `useRealtimeStream` hook:
 
-```tsx  theme={null}
+```tsx theme={"theme":"css-variables"}
 "use client";
 
 import { useRealtimeStream } from "@trigger.dev/react-hooks";
@@ -28667,7 +30551,7 @@ If you have a specific reason to avoid defined streams, you can use stream metho
 
 ### Direct Piping
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 import { streams, task } from "@trigger.dev/sdk";
 
 export const directStreamTask = task({
@@ -28685,7 +30569,7 @@ export const directStreamTask = task({
 
 ### Direct Reading
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 import { streams } from "@trigger.dev/sdk";
 
 // Specify the stream key when reading
@@ -28698,7 +30582,7 @@ for await (const chunk of stream) {
 
 ### Direct Appending
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 import { streams, task } from "@trigger.dev/sdk";
 
 export const directAppendTask = task({
@@ -28714,7 +30598,7 @@ export const directAppendTask = task({
 
 ### Direct Writing
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 import { streams, task } from "@trigger.dev/sdk";
 
 export const directWriterTask = task({
@@ -28738,7 +30622,7 @@ Every run has a "default" stream, allowing you to skip the stream key entirely. 
 
 Using direct methods:
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 import { streams, task } from "@trigger.dev/sdk";
 
 export const defaultStreamTask = task({
@@ -28763,7 +30647,7 @@ You can pipe streams to parent, root, or any other run using the `target` option
 
 ### With Defined Streams
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 import { task } from "@trigger.dev/sdk";
 import { logStream } from "./streams";
 
@@ -28789,7 +30673,7 @@ export const childTask = task({
 
 ### With Direct Methods
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 import { streams, task } from "@trigger.dev/sdk";
 
 export const childTask = task({
@@ -28813,7 +30697,7 @@ export const childTask = task({
 
 If you specify a `target` run ID, you can pipe streams from anywhere (like a Next.js API route):
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 import { streams } from "@trigger.dev/sdk";
 import { openai } from "@ai-sdk/openai";
 import { streamText } from "ai";
@@ -28843,7 +30727,7 @@ Use the `useRealtimeStream` hook to subscribe to streams in your React component
 
 ### With Defined Streams (Recommended)
 
-```tsx  theme={null}
+```tsx theme={"theme":"css-variables"}
 "use client";
 
 import { useRealtimeStream } from "@trigger.dev/react-hooks";
@@ -28876,7 +30760,7 @@ export function StreamViewer({ accessToken, runId }: { accessToken: string; runI
 
 If you prefer not to use defined streams, you can specify the stream key directly:
 
-```tsx  theme={null}
+```tsx theme={"theme":"css-variables"}
 "use client";
 
 import { useRealtimeStream } from "@trigger.dev/react-hooks";
@@ -28902,7 +30786,7 @@ export function StreamViewer({ accessToken, runId }: { accessToken: string; runI
 
 ### Using Default Stream
 
-```tsx  theme={null}
+```tsx theme={"theme":"css-variables"}
 // Omit stream key to use the default stream
 const { parts, error } = useRealtimeStream<string>(runId, {
   accessToken,
@@ -28911,7 +30795,7 @@ const { parts, error } = useRealtimeStream<string>(runId, {
 
 ### Hook Options
 
-```tsx  theme={null}
+```tsx theme={"theme":"css-variables"}
 const { parts, error } = useRealtimeStream(streamDef, runId, {
   accessToken: "pk_...", // Required: Public access token
   baseURL: "https://api.trigger.dev", // Optional: Custom API URL
@@ -28926,7 +30810,7 @@ const { parts, error } = useRealtimeStream(streamDef, runId, {
 
 ### Define the stream
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 // app/streams.ts
 import { streams, InferStreamType } from "@trigger.dev/sdk";
 import { UIMessageChunk } from "ai";
@@ -28940,7 +30824,7 @@ export type AIStreamPart = InferStreamType<typeof aiStream>;
 
 ### Create the task
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 // trigger/ai-task.ts
 import { task } from "@trigger.dev/sdk";
 import { openai } from "@ai-sdk/openai";
@@ -28966,7 +30850,7 @@ export const generateAI = task({
 
 ### Frontend component
 
-```tsx  theme={null}
+```tsx theme={"theme":"css-variables"}
 // components/ai-stream.tsx
 "use client";
 
@@ -29000,7 +30884,7 @@ If you're using the old `metadata.stream()` API, here's how to migrate to the re
 
 Create a shared streams definition file:
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 // app/streams.ts or trigger/streams.ts
 import { streams, InferStreamType } from "@trigger.dev/sdk";
 
@@ -29015,7 +30899,7 @@ export type MyStreamPart = InferStreamType<typeof myStream>;
 
 Replace `metadata.stream()` with the defined stream's `pipe()` method:
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 // Before (v1)
 import { metadata, task } from "@trigger.dev/sdk";
 
@@ -29028,7 +30912,7 @@ export const myTask = task({
 });
 ```
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 // After (v2 - Recommended)
 import { task } from "@trigger.dev/sdk";
 import { myStream } from "./streams";
@@ -29051,14 +30935,14 @@ export const myTask = task({
 
 Use the defined stream with `useRealtimeStream`:
 
-```tsx  theme={null}
+```tsx theme={"theme":"css-variables"}
 // Before
 const { parts, error } = useRealtimeStream<string>(runId, "my-stream", {
   accessToken,
 });
 ```
 
-```tsx  theme={null}
+```tsx theme={"theme":"css-variables"}
 // After
 import { myStream } from "@/app/streams";
 
@@ -29071,7 +30955,7 @@ const { parts, error } = useRealtimeStream(myStream, runId, {
 
 If you prefer not to use defined streams, you can use direct methods:
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 import { streams, task } from "@trigger.dev/sdk";
 
 export const myTask = task({
@@ -29102,7 +30986,7 @@ Streams are now visible in the Trigger.dev dashboard, allowing you to:
 * Inspect historical stream data for completed runs
 * Debug streaming issues with full visibility into chunk delivery
 
-<video src="https://content.trigger.dev/streams-v2-dashboard.mp4" controls muted autoPlay loop />
+<video />
 
 ## Best Practices
 
@@ -29181,7 +31065,7 @@ Triggers a single run of a task with the payload you pass in, and any options yo
   application.
 </Note>
 
-```ts Your backend theme={null}
+```ts Your backend theme={"theme":"css-variables"}
 import { tasks } from "@trigger.dev/sdk";
 import type { emailSequence } from "~/trigger/emails";
 //     👆 **type-only** import
@@ -29204,7 +31088,7 @@ export async function POST(request: Request) {
 
 You can pass in options to the task using the third argument:
 
-```ts Your backend theme={null}
+```ts Your backend theme={"theme":"css-variables"}
 import { tasks } from "@trigger.dev/sdk";
 import type { emailSequence } from "~/trigger/emails";
 
@@ -29232,7 +31116,7 @@ export async function POST(request: Request) {
 
 Triggers multiple runs of a single task with the payloads you pass in, and any options you specify, without needing to import the task.
 
-```ts Your backend theme={null}
+```ts Your backend theme={"theme":"css-variables"}
 import { tasks } from "@trigger.dev/sdk";
 import type { emailSequence } from "~/trigger/emails";
 //     👆 **type-only** import
@@ -29255,7 +31139,7 @@ export async function POST(request: Request) {
 
 You can pass in options to the `batchTrigger` function using the third argument:
 
-```ts Your backend theme={null}
+```ts Your backend theme={"theme":"css-variables"}
 import { tasks } from "@trigger.dev/sdk";
 import type { emailSequence } from "~/trigger/emails";
 
@@ -29278,7 +31162,7 @@ export async function POST(request: Request) {
 
 You can also pass in options for each run in the batch:
 
-```ts Your backend theme={null}
+```ts Your backend theme={"theme":"css-variables"}
 import { tasks } from "@trigger.dev/sdk";
 import type { emailSequence } from "~/trigger/emails";
 
@@ -29302,7 +31186,7 @@ export async function POST(request: Request) {
 
 Triggers multiple runs of different tasks with the payloads you pass in, and any options you specify. This is useful when you need to trigger multiple tasks at once.
 
-```ts Your backend theme={null}
+```ts Your backend theme={"theme":"css-variables"}
 import { batch } from "@trigger.dev/sdk";
 import type { myTask1, myTask2 } from "~/trigger/myTasks";
 
@@ -29335,11 +31219,11 @@ Triggers a single run of a task with the payload you pass in, and any options yo
 
 <Note>
   If you need to call `trigger()` on a task in a loop, use
-  [`batchTrigger()`](#yourTask-batchtrigger) instead which will trigger up to 500 runs in a single
-  call.
+  [`batchTrigger()`](#yourTask-batchtrigger) instead which will trigger up to 1,000 runs in a single
+  call with SDK 4.3.1+ (500 runs in prior versions).
 </Note>
 
-```ts ./trigger/my-task.ts theme={null}
+```ts ./trigger/my-task.ts theme={"theme":"css-variables"}
 import { runs } from "@trigger.dev/sdk";
 import { myOtherTask } from "~/trigger/my-other-task";
 
@@ -29356,7 +31240,7 @@ export const myTask = task({
 
 To pass options to the triggered task, you can use the second argument:
 
-```ts ./trigger/my-task.ts theme={null}
+```ts ./trigger/my-task.ts theme={"theme":"css-variables"}
 import { runs } from "@trigger.dev/sdk";
 import { myOtherTask } from "~/trigger/my-other-task";
 
@@ -29375,7 +31259,7 @@ export const myTask = task({
 
 Triggers multiple runs of a single task with the payloads you pass in, and any options you specify.
 
-```ts /trigger/my-task.ts theme={null}
+```ts /trigger/my-task.ts theme={"theme":"css-variables"}
 import { batch } from "@trigger.dev/sdk";
 import { myOtherTask } from "~/trigger/my-other-task";
 
@@ -29392,7 +31276,7 @@ export const myTask = task({
 
 If you need to pass options to `batchTrigger`, you can use the second argument:
 
-```ts /trigger/my-task.ts theme={null}
+```ts /trigger/my-task.ts theme={"theme":"css-variables"}
 import { batch } from "@trigger.dev/sdk";
 import { myOtherTask } from "~/trigger/my-other-task";
 
@@ -29411,7 +31295,7 @@ export const myTask = task({
 
 You can also pass in options for each run in the batch:
 
-```ts /trigger/my-task.ts theme={null}
+```ts /trigger/my-task.ts theme={"theme":"css-variables"}
 import { batch } from "@trigger.dev/sdk";
 import { myOtherTask } from "~/trigger/my-other-task";
 
@@ -29438,7 +31322,7 @@ This is where it gets interesting. You can trigger a task and then wait for the 
   To control concurrency using batch triggers, you can set `queue.concurrencyLimit` on the child task.
 
   <CodeGroup>
-    ```ts /trigger/batch.ts theme={null}
+    ```ts /trigger/batch.ts theme={"theme":"css-variables"}
     export const batchTask = task({
       id: "batch-task",
       run: async (payload: string) => {
@@ -29453,7 +31337,7 @@ This is where it gets interesting. You can trigger a task and then wait for the 
     });
     ```
 
-    ```ts /trigger/loop.ts theme={null}
+    ```ts /trigger/loop.ts theme={"theme":"css-variables"}
     export const loopTask = task({
       id: "loop-task",
       run: async (payload: string) => {
@@ -29471,7 +31355,7 @@ This is where it gets interesting. You can trigger a task and then wait for the 
   </CodeGroup>
 </Accordion>
 
-```ts /trigger/parent.ts theme={null}
+```ts /trigger/parent.ts theme={"theme":"css-variables"}
 export const parentTask = task({
   id: "parent-task",
   run: async (payload: string) => {
@@ -29485,7 +31369,7 @@ export const parentTask = task({
 
 The `result` object is a "Result" type that needs to be checked to see if the child task run was successful:
 
-```ts /trigger/parent.ts theme={null}
+```ts /trigger/parent.ts theme={"theme":"css-variables"}
 export const parentTask = task({
   id: "parent-task",
   run: async (payload: string) => {
@@ -29502,7 +31386,7 @@ export const parentTask = task({
 
 If instead you just want to get the output of the child task, and throw an error if the child task failed, you can use the `unwrap` method:
 
-```ts /trigger/parent.ts theme={null}
+```ts /trigger/parent.ts theme={"theme":"css-variables"}
 export const parentTask = task({
   id: "parent-task",
   run: async (payload: string) => {
@@ -29514,7 +31398,7 @@ export const parentTask = task({
 
 You can also catch the error if the child task fails and get more information about the error:
 
-```ts /trigger/parent.ts theme={null}
+```ts /trigger/parent.ts theme={"theme":"css-variables"}
 import { task, SubtaskUnwrapError } from "@trigger.dev/sdk";
 export const parentTask = task({
   id: "parent-task",
@@ -29550,7 +31434,7 @@ You can batch trigger a task and wait for all the results. This is useful for th
   To control concurrency, you can set `queue.concurrencyLimit` on the child task.
 
   <CodeGroup>
-    ```ts /trigger/batch.ts theme={null}
+    ```ts /trigger/batch.ts theme={"theme":"css-variables"}
     export const batchTask = task({
       id: "batch-task",
       run: async (payload: string) => {
@@ -29565,7 +31449,7 @@ You can batch trigger a task and wait for all the results. This is useful for th
     });
     ```
 
-    ```ts /trigger/loop.ts theme={null}
+    ```ts /trigger/loop.ts theme={"theme":"css-variables"}
     export const loopTask = task({
       id: "loop-task",
       run: async (payload: string) => {
@@ -29605,7 +31489,7 @@ You can batch trigger a task and wait for all the results. This is useful for th
   Here's an example of how you might handle run failures:
 
   <CodeGroup>
-    ```ts /trigger/batchTriggerAndWait.ts theme={null}
+    ```ts /trigger/batchTriggerAndWait.ts theme={"theme":"css-variables"}
     const result = await batchChildTask.batchTriggerAndWait([
       { payload: "item1" },
       { payload: "item2" },
@@ -29631,7 +31515,7 @@ You can batch trigger a task and wait for all the results. This is useful for th
   </CodeGroup>
 </Accordion>
 
-```ts /trigger/nested.ts theme={null}
+```ts /trigger/nested.ts theme={"theme":"css-variables"}
 export const batchParentTask = task({
   id: "parent-task",
   run: async (payload: string) => {
@@ -29656,7 +31540,7 @@ export const batchParentTask = task({
 
 You can batch trigger multiple different tasks and wait for all the results:
 
-```ts /trigger/batch.ts theme={null}
+```ts /trigger/batch.ts theme={"theme":"css-variables"}
 import { batch, task } from "@trigger.dev/sdk";
 
 export const parentTask = task({
@@ -29705,7 +31589,7 @@ export const childTask2 = task({
 
 You can batch trigger multiple different tasks by passing in the task instances. This function is especially useful when you have a static set of tasks you want to trigger:
 
-```ts /trigger/batch.ts theme={null}
+```ts /trigger/batch.ts theme={"theme":"css-variables"}
 import { batch, task, runs } from "@trigger.dev/sdk";
 
 export const parentTask = task({
@@ -29741,7 +31625,7 @@ export const childTask2 = task({
 
 You can batch trigger multiple different tasks by passing in the task instances, and wait for all the results. This function is especially useful when you have a static set of tasks you want to trigger:
 
-```ts /trigger/batch.ts theme={null}
+```ts /trigger/batch.ts theme={"theme":"css-variables"}
 import { batch, task, runs } from "@trigger.dev/sdk";
 
 export const parentTask = task({
@@ -29802,7 +31686,7 @@ hooks](/realtime/react-hooks/triggering).
 
 All of the above functions accept an options object:
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 await myTask.trigger({ some: "data" }, { delay: "1h", ttl: "1h" });
 await myTask.batchTrigger([{ payload: { some: "data" }, options: { delay: "1h" } }]);
 ```
@@ -29813,7 +31697,7 @@ The following options are available:
 
 When you want to trigger a task now, but have it run at a later time, you can use the `delay` option:
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 // Delay the task run by 1 hour
 await myTask.trigger({ some: "data" }, { delay: "1h" });
 // Delay the task run by 88 seconds
@@ -29830,16 +31714,17 @@ await myTask.trigger({ some: "data" }, { delay: new Date("2024-07-23T11:50:00+02
 
 Runs that are delayed and have not been enqueued yet will display in the dashboard with a "Delayed" status:
 
-<img src="https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/delayed-runs.png?fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=38620549a2c6e61c37b4a8101b89f5d7" alt="Delayed run in the dashboard" data-og-width="1134" width="1134" data-og-height="200" height="200" data-path="images/delayed-runs.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/delayed-runs.png?w=280&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=79400cc072f698650aa953a6e049c94a 280w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/delayed-runs.png?w=560&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=363695b013020cc0028c73247861ded3 560w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/delayed-runs.png?w=840&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=366cf60b4ed03a71917fd46df9a381e5 840w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/delayed-runs.png?w=1100&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=0216d073946e5282d84650d81f07e8ac 1100w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/delayed-runs.png?w=1650&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=6d77990fce1c4bdcb6444530f24ca7e8 1650w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/delayed-runs.png?w=2500&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=8a0e272b23ace6a933949758994b9fad 2500w" />
+<img alt="Delayed run in the dashboard" />
 
 <Note>
   Delayed runs will be enqueued at the time specified, and will run as soon as possible after that
-  time, just as a normally triggered run would.
+  time, just as a normally triggered run would. They execute on the currently deployed version when
+  they start, not the version that was active when they were enqueued.
 </Note>
 
 You can cancel a delayed run using the `runs.cancel` SDK function:
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 import { runs } from "@trigger.dev/sdk";
 
 await runs.cancel("run_1234");
@@ -29847,7 +31732,7 @@ await runs.cancel("run_1234");
 
 You can also reschedule a delayed run using the `runs.reschedule` SDK function:
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 import { runs } from "@trigger.dev/sdk";
 
 // The delay option here takes the same format as the trigger delay option
@@ -29856,9 +31741,15 @@ await runs.reschedule("run_1234", { delay: "1h" });
 
 The `delay` option is also available when using `batchTrigger`:
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 await myTask.batchTrigger([{ payload: { some: "data" }, options: { delay: "1h" } }]);
 ```
+
+<Note>
+  If your payload contains Date objects, pass them directly rather than manually stringifying with
+  `JSON.stringify()`. The SDK handles Date serialization automatically. If you need to stringify
+  manually, convert Dates to ISO strings first (e.g., `date.toISOString()`).
+</Note>
 
 ### `ttl`
 
@@ -29869,7 +31760,7 @@ You can set a TTL (time to live) when triggering a task, which will automaticall
   `ttl` option.
 </Note>
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 import { myTask } from "./trigger/myTasks";
 
 // Expire the run if it hasn't started within 1 hour
@@ -29881,13 +31772,13 @@ await myTask.trigger({ some: "data" }, { ttl: 3600 }); // 1 hour
 
 When a run is expired, it will be marked as "Expired" in the dashboard:
 
-<img src="https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/expired-runs.png?fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=d984afe341eaacbe47b698dade27e445" alt="Expired runs in the dashboard" data-og-width="1364" width="1364" data-og-height="316" height="316" data-path="images/expired-runs.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/expired-runs.png?w=280&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=33cefd04968f559f47ccb1fff85813fe 280w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/expired-runs.png?w=560&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=08409ef7f1fe02dc5aef3d13a8ce0fda 560w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/expired-runs.png?w=840&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=9694db79f948a51792ac50d781e251a0 840w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/expired-runs.png?w=1100&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=899a2f4e90e3f0dbde8c1e3e42cfe42f 1100w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/expired-runs.png?w=1650&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=9d493a433aaf988c62e58bd036b2f802 1650w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/expired-runs.png?w=2500&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=eb0e94a36fdb1d7d8e1adba0a0b2fd33 2500w" />
+<img alt="Expired runs in the dashboard" />
 
 When you use both `delay` and `ttl`, the TTL will start counting down from the time the run is enqueued, not from the time the run is triggered.
 
 So for example, when using the following code:
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 await myTask.trigger({ some: "data" }, { delay: "10m", ttl: "1h" });
 ```
 
@@ -29904,7 +31795,7 @@ For this reason, the `ttl` option only accepts durations and not absolute timest
 
 You can provide an `idempotencyKey` to ensure that a task is only triggered once with the same key. This is useful if you are triggering a task within another task that might be retried:
 
-```typescript  theme={null}
+```typescript theme={"theme":"css-variables"}
 import { idempotencyKeys, task } from "@trigger.dev/sdk";
 
 export const myTask = task({
@@ -29936,7 +31827,7 @@ For more information, see our [Idempotency](/idempotency) documentation.
 
 Idempotency keys automatically expire after 30 days, but you can set a custom TTL for an idempotency key when triggering a task:
 
-```typescript  theme={null}
+```typescript theme={"theme":"css-variables"}
 import { idempotencyKeys, task } from "@trigger.dev/sdk";
 
 export const myTask = task({
@@ -29958,13 +31849,104 @@ export const myTask = task({
 
 For more information, see our [Idempotency](/idempotency) documentation.
 
+### `debounce`
+
+You can debounce task triggers to consolidate multiple trigger calls into a single delayed run. When a run with the same debounce key already exists in the delayed state, subsequent triggers "push" the existing run's execution time later rather than creating new runs.
+
+This is useful for scenarios like:
+
+* Real-time document indexing where you want to wait for the user to finish typing
+* Aggregating webhook events from the same source
+* Rate limiting expensive operations while still processing the final request
+
+```ts theme={"theme":"css-variables"}
+// First trigger creates a new run, delayed by 5 seconds
+await myTask.trigger({ some: "data" }, { debounce: { key: "user-123", delay: "5s" } });
+
+// If triggered again within 5 seconds, the existing run is pushed later
+await myTask.trigger({ updated: "data" }, { debounce: { key: "user-123", delay: "5s" } });
+
+// The run only executes after 5 seconds of no new triggers
+// Note: The first payload is used (first trigger wins)
+```
+
+<Note>
+  Debounce keys are scoped to the task identifier, so different tasks can use the same key without
+  conflicts.
+</Note>
+
+The `debounce` option accepts:
+
+* `key` - A unique string to identify the debounce group (scoped to the task)
+* `delay` - Duration string specifying how long to delay (e.g., "5s", "1m", "30s")
+* `mode` - Optional. Controls which trigger's data is used: `"leading"` (default) or `"trailing"`
+
+**How it works:**
+
+1. First trigger with a debounce key creates a new delayed run
+2. Subsequent triggers with the same key (while the run is still delayed) push the execution time further
+3. Once no new triggers occur within the delay duration, the run executes
+4. After the run starts executing, a new trigger with the same key will create a new run
+
+**Leading vs Trailing mode:**
+
+By default, debounce uses **leading mode** - the run executes with data from the **first** trigger.
+
+With **trailing mode**, each subsequent trigger updates the run's data (payload, metadata, tags, maxAttempts, maxDuration, and machine), so the run executes with data from the **last** trigger:
+
+```ts theme={"theme":"css-variables"}
+// Leading mode (default): runs with first payload
+await myTask.trigger({ count: 1 }, { debounce: { key: "user-123", delay: "5s" } });
+await myTask.trigger({ count: 2 }, { debounce: { key: "user-123", delay: "5s" } });
+// After 5 seconds, runs with { count: 1 }
+
+// Trailing mode: runs with last payload
+await myTask.trigger(
+  { count: 1 },
+  { debounce: { key: "user-123", delay: "5s", mode: "trailing" } }
+);
+await myTask.trigger(
+  { count: 2 },
+  { debounce: { key: "user-123", delay: "5s", mode: "trailing" } }
+);
+// After 5 seconds, runs with { count: 2 }
+```
+
+Use **trailing mode** when you want to process the most recent data, such as:
+
+* Saving the latest version of a document after edits stop
+* Processing the final state after a series of rapid updates
+
+**With `triggerAndWait`:**
+
+When using `triggerAndWait` with debounce, the parent run blocks on the existing debounced run if one exists:
+
+```ts theme={"theme":"css-variables"}
+export const parentTask = task({
+  id: "parent-task",
+  run: async (payload: string) => {
+    // Both will wait for the same run
+    const result = await childTask.triggerAndWait(
+      { data: payload },
+      { debounce: { key: "shared-key", delay: "3s" } }
+    );
+    return result;
+  },
+});
+```
+
+<Note>
+  Idempotency keys take precedence over debounce keys. If both are provided and an idempotency match
+  is found, it wins.
+</Note>
+
 ### `queue`
 
 When you trigger a task you can override the concurrency limit. This is really useful if you sometimes have high priority runs.
 
 The task:
 
-```ts /trigger/override-concurrency.ts theme={null}
+```ts /trigger/override-concurrency.ts theme={"theme":"css-variables"}
 const generatePullRequest = task({
   id: "generate-pull-request",
   queue: {
@@ -29979,7 +31961,7 @@ const generatePullRequest = task({
 
 Triggering from your backend and overriding the concurrency:
 
-```ts app/api/push/route.ts theme={null}
+```ts app/api/push/route.ts theme={"theme":"css-variables"}
 import { generatePullRequest } from "~/trigger/override-concurrency";
 
 export async function POST(request: Request) {
@@ -30013,7 +31995,7 @@ You can do this by using `concurrencyKey`. It creates a separate queue for each 
 
 Your backend code:
 
-```ts app/api/pr/route.ts theme={null}
+```ts app/api/pr/route.ts theme={"theme":"css-variables"}
 import { generatePullRequest } from "~/trigger/override-concurrency";
 
 export async function POST(request: Request) {
@@ -30053,7 +32035,7 @@ export async function POST(request: Request) {
 
 You can set the maximum number of attempts for a task run. If the run fails, it will be retried up to the number of attempts you specify.
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 await myTask.trigger({ some: "data" }, { maxAttempts: 3 });
 await myTask.trigger({ some: "data" }, { maxAttempts: 1 }); // no retries
 ```
@@ -30080,11 +32062,11 @@ View our [priority doc](/runs/priority) for more information.
 
 You can override the default region when you trigger a run:
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 await yourTask.trigger(payload, { region: "eu-central-1" });
 ```
 
-If you don't specify a region it will use the default for your project. Go to the "Regions" page in the dashboard to see available regions or switch your default.
+If you don't specify a region it will use the default for your project. Go to the "Regions" page in the dashboard to see available regions or switch your default. Static IP addresses are also available on the Regions page for paid plans.
 
 The region is where your runs are executed, it does not change where the run payload, output, tags, logs, or are any other data is stored.
 
@@ -30092,11 +32074,131 @@ The region is where your runs are executed, it does not change where the run pay
 
 You can override the default machine preset when you trigger a run:
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 await yourTask.trigger(payload, { machine: "large-1x" });
 ```
 
 If you don't specify a machine it will use the machine preset for your task (or the default for your project). For more information read [the machines guide](/machines).
+
+## Streaming batch triggering
+
+<Note>This feature is only available with SDK 4.3.1+</Note>
+
+For large batches, you can pass an `AsyncIterable` or `ReadableStream` instead of an array. This allows you to generate items on-demand without loading them all into memory upfront.
+
+```ts /trigger/my-task.ts theme={"theme":"css-variables"}
+import { task } from "@trigger.dev/sdk";
+import { myOtherTask } from "~/trigger/my-other-task";
+
+export const myTask = task({
+  id: "my-task",
+  run: async (payload: { userIds: string[] }) => {
+    // Use an async generator to stream items
+    async function* generateItems() {
+      for (const userId of payload.userIds) {
+        yield { payload: { userId } };
+      }
+    }
+
+    const batchHandle = await myOtherTask.batchTrigger(generateItems());
+
+    return { batchId: batchHandle.batchId };
+  },
+});
+```
+
+This works with all batch trigger methods:
+
+* `yourTask.batchTrigger()`
+* `yourTask.batchTriggerAndWait()`
+* `batch.triggerByTask()`
+* `batch.triggerByTaskAndWait()`
+* `tasks.batchTrigger()`
+
+Streaming is especially useful when generating batches from database queries, API pagination, or
+file processing where you don't want to load all items into memory at once.
+
+## Handling batch trigger errors
+
+When batch triggering fails, the SDK throws a `BatchTriggerError` with properties that help you understand what went wrong and how to react:
+
+| Property        | Type                   | Description                                     |
+| :-------------- | :--------------------- | :---------------------------------------------- |
+| `isRateLimited` | `boolean`              | `true` if the error was caused by rate limiting |
+| `retryAfterMs`  | `number \| undefined`  | Milliseconds until the rate limit resets        |
+| `phase`         | `"create" \| "stream"` | Which phase of batch creation failed            |
+| `batchId`       | `string \| undefined`  | The batch ID if it was created before failure   |
+| `itemCount`     | `number`               | Number of items attempted in the batch          |
+| `cause`         | `unknown`              | The underlying error                            |
+
+### Detecting and handling rate limits
+
+When you hit [batch trigger rate limits](/limits#batch-trigger-rate-limits), you can detect this and implement retry logic:
+
+```ts Your backend theme={"theme":"css-variables"}
+import { tasks, BatchTriggerError } from "@trigger.dev/sdk";
+import type { myTask } from "~/trigger/myTask";
+
+async function triggerBatchWithRetry(items: { payload: { userId: string } }[], maxRetries = 3) {
+  for (let attempt = 0; attempt < maxRetries; attempt++) {
+    try {
+      return await tasks.batchTrigger<typeof myTask>("my-task", items);
+    } catch (error) {
+      if (error instanceof BatchTriggerError && error.isRateLimited) {
+        // Rate limited - wait and retry
+        const waitMs = error.retryAfterMs ?? 10000;
+        console.log(`Rate limited. Waiting ${waitMs}ms before retry ${attempt + 1}/${maxRetries}`);
+        await new Promise((resolve) => setTimeout(resolve, waitMs));
+        continue;
+      }
+      // Not a rate limit error - rethrow
+      throw error;
+    }
+  }
+  throw new Error("Max retries exceeded");
+}
+```
+
+### Handling errors inside tasks
+
+When calling `batchTrigger` from inside another task, you can handle errors similarly:
+
+```ts /trigger/parent-task.ts theme={"theme":"css-variables"}
+import { task, BatchTriggerError } from "@trigger.dev/sdk";
+import { childTask } from "./child-task";
+
+export const parentTask = task({
+  id: "parent-task",
+  run: async (payload: { userIds: string[] }) => {
+    const items = payload.userIds.map((userId) => ({ payload: { userId } }));
+
+    try {
+      const batchHandle = await childTask.batchTrigger(items);
+      return { batchId: batchHandle.batchId };
+    } catch (error) {
+      if (error instanceof BatchTriggerError) {
+        // Log details about the failure
+        console.error("Batch trigger failed", {
+          message: error.message,
+          phase: error.phase,
+          itemCount: error.itemCount,
+          isRateLimited: error.isRateLimited,
+        });
+
+        if (error.isRateLimited) {
+          // You might want to re-throw to let the task retry naturally
+          throw error;
+        }
+      }
+      throw error;
+    }
+  },
+});
+```
+
+<Note>
+  For rate limit values and how the token bucket algorithm works, see [Batch trigger rate limits](/limits#batch-trigger-rate-limits).
+</Note>
 
 ## Large Payloads
 
@@ -30106,7 +32208,7 @@ If your payload size is larger than 512KB, instead of saving the payload to the 
 
 When your task runs, we automatically download the payload from the object store and pass it to your task function. We also will return to you a `payloadPresignedUrl` from the `runs.retrieve` SDK function so you can download the payload if needed:
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 import { runs } from "@trigger.dev/sdk";
 
 const run = await runs.retrieve(handle);
@@ -30127,7 +32229,7 @@ if (run.payloadPresignedUrl) {
 If you need to pass larger payloads, you'll need to upload the payload to your own storage and pass a URL to the file in the payload instead. For example, uploading to S3 and then sending a presigned URL that expires in URL:
 
 <CodeGroup>
-  ```ts /yourServer.ts theme={null}
+  ```ts /yourServer.ts theme={"theme":"css-variables"}
   import { myTask } from "./trigger/myTasks";
   import { s3Client, getSignedUrl, PutObjectCommand, GetObjectCommand } from "./s3";
   import { createReadStream } from "node:fs";
@@ -30159,7 +32261,7 @@ If you need to pass larger payloads, you'll need to upload the payload to your o
   });
   ```
 
-  ```ts /trigger/myTasks.ts theme={null}
+  ```ts /trigger/myTasks.ts theme={"theme":"css-variables"}
   import { task } from "@trigger.dev/sdk";
 
   export const myTask = task({
@@ -30174,10 +32276,6 @@ If you need to pass larger payloads, you'll need to upload the payload to your o
   });
   ```
 </CodeGroup>
-
-### Batch Triggering
-
-When using triggering a batch, the total size of all payloads cannot exceed 1MB. This means if you are doing a batch of 100 runs, each payload should be less than 100KB. The max batch size is 500 runs.
 
 
 # Common problems
@@ -30197,13 +32295,13 @@ If you see this error:
 
 First, clear the npm cache:
 
-```sh  theme={null}
+```sh theme={"theme":"css-variables"}
 npm cache clean --force
 ```
 
 Then change the permissions of the npm folder (if 1 doesn't work):
 
-```sh  theme={null}
+```sh theme={"theme":"css-variables"}
 sudo chown -R $(whoami) ~/.npm
 ```
 
@@ -30254,7 +32352,7 @@ Usually there will be some useful guidance below this message. If you can't figu
 
 This happens because `.node` files are native code and can't be bundled like other packages. To fix this, add your package to [`build.external`](/config/config-file#external) in the `trigger.config.ts` file like this:
 
-```ts trigger.config.ts theme={null}
+```ts trigger.config.ts theme={"theme":"css-variables"}
 import { defineConfig } from "@trigger.dev/sdk";
 
 export default defineConfig({
@@ -30281,7 +32379,7 @@ TypeError: reactDOMServer.renderToPipeableStream is not a function
 
 This happens because react-email packages have bundling conflicts with our build process. To fix this, add the react-email packages to your `external` build settings in your `trigger.config.ts` file:
 
-```ts trigger.config.ts theme={null}
+```ts trigger.config.ts theme={"theme":"css-variables"}
 import { defineConfig } from "@trigger.dev/sdk";
 
 export default defineConfig({
@@ -30357,7 +32455,7 @@ Make sure that you always use `await` when you call `trigger`, `triggerAndWait`,
 
 ### Rate limit exceeded
 
-The most common cause of hitting the API rate limit is if you’re calling `trigger()` on a task in a loop, instead of doing this use `batchTrigger()` which will trigger multiple tasks in a single API call. You can have up to 500 tasks in a single batch trigger call.
+The most common cause of hitting the API rate limit is if you're calling `trigger()` on a task in a loop, instead of doing this use `batchTrigger()` which will trigger multiple tasks in a single API call. You can have up to 1,000 tasks in a single batch trigger call with SDK 4.3.1+ (500 in prior versions).
 
 View the [rate limits](/limits) page for more information.
 
@@ -30377,7 +32475,7 @@ These errors can happen when code inside your task is blocking the event loop fo
 
 If you are doing a continuous CPU-heavy task, then we recommend you try using our `heartbeats.yield` function to automatically yield to the event loop periodically:
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 import { heartbeats } from "@trigger.dev/sdk";
 
 // code inside your task
@@ -30399,7 +32497,7 @@ If the above doesn't work, then we recommend you try increasing the machine size
 
 If you're using NestJS and you add code like this into your tasks you will prevent any errors from being surfaced:
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 export const simplestTask = task({
   id: "nestjs-example",
   run: async (payload) => {
@@ -30424,13 +32522,13 @@ Worker failed to start ReferenceError: React is not defined
 
 Either add this to your file:
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 import React from "react";
 ```
 
 Or change the tsconfig jsx setting:
 
-```json  theme={null}
+```json theme={"theme":"css-variables"}
 {
   "compilerOptions": {
     //...
@@ -30443,7 +32541,7 @@ Or change the tsconfig jsx setting:
 
 This issue occurs during the Next.js app build process on GitHub CI where the Trigger.dev SDK is expecting the TRIGGER\_SECRET\_KEY environment variable to be set at build time. Next.js attempts to compile routes and creates static pages, which can cause issues with SDKs that require runtime environment variables. The solution is to mark the relevant pages as dynamic to prevent Next.js from trying to make them static. You can do this by adding the following line to the route file:
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 export const dynamic = "force-dynamic";
 ```
 
@@ -30453,13 +32551,13 @@ An issue can sometimes arise when you try to pass a function directly to the `on
 
 This works:
 
-```tsx  theme={null}
+```tsx theme={"theme":"css-variables"}
 <Button onClick={() => myTask()}>Trigger my task</Button>
 ```
 
 Whereas this does not work:
 
-```tsx  theme={null}
+```tsx theme={"theme":"css-variables"}
 <Button onClick={myTask}>Trigger my task</Button>
 ```
 
@@ -30480,7 +32578,8 @@ We support receiving alerts for the following events:
 <Steps>
   <Step title="Create a new alert">
     Click on "Alerts" in the left hand side menu, then click on "New alert" to open the new alert modal.
-    <img src="https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/troubleshooting-alerts-blank.png?fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=66c28b50c37b92057afb4100948a6636" alt="Email alerts" data-og-width="1600" width="1600" data-og-height="900" height="900" data-path="images/troubleshooting-alerts-blank.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/troubleshooting-alerts-blank.png?w=280&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=4b176aea4b6f3e15ffafca6e6929fa2d 280w, https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/troubleshooting-alerts-blank.png?w=560&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=7af7993456f897b29380e66137621443 560w, https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/troubleshooting-alerts-blank.png?w=840&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=095859343aefb995f836a40ecf8d637c 840w, https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/troubleshooting-alerts-blank.png?w=1100&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=90f54ae0228df8ab27f24c1d0e2f5565 1100w, https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/troubleshooting-alerts-blank.png?w=1650&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=e1e789dd4b16aa5fc5e40572c68878c5 1650w, https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/troubleshooting-alerts-blank.png?w=2500&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=6a45670b1c9e59da3cf3bfa6264af742 2500w" />
+
+    <img alt="Email alerts" />
   </Step>
 
   <Step title="Choose your alert method">
@@ -30490,13 +32589,13 @@ We support receiving alerts for the following events:
     * a deployment fails
     * a deployment succeeds
 
-      <img src="https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/troubleshooting-alerts-modal.png?fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=69b2a564572a6b1fb1c5e3ee77d68c4a" alt="Email alerts" data-og-width="1600" width="1600" data-og-height="900" height="900" data-path="images/troubleshooting-alerts-modal.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/troubleshooting-alerts-modal.png?w=280&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=3aaa12fe0241588d4f157848c12c60a9 280w, https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/troubleshooting-alerts-modal.png?w=560&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=d019d5515cecb2e093eff24458c9b18c 560w, https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/troubleshooting-alerts-modal.png?w=840&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=c2a0eefbce2ea17136c9ac531f2db3be 840w, https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/troubleshooting-alerts-modal.png?w=1100&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=8bcfd8fcb725b464a6f26bd468c7907d 1100w, https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/troubleshooting-alerts-modal.png?w=1650&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=08cbccd0804107670b39370c6acaa828 1650w, https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/troubleshooting-alerts-modal.png?w=2500&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=f6289e4f7dde170ab8b5ad4dab7b3fd0 2500w" />
+      <img alt="Email alerts" />
   </Step>
 
   <Step title="Delete or disable alerts">
     Click on the triple dot menu on the right side of the table row and select "Disable" or "Delete".
 
-        <img src="https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/troubleshooting-alerts-disable-delete.png?fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=f3455ed01b0d4c7a66c855a3b7d0cc53" alt="Disable and delete alerts" data-og-width="1600" width="1600" data-og-height="900" height="900" data-path="images/troubleshooting-alerts-disable-delete.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/troubleshooting-alerts-disable-delete.png?w=280&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=4a113eb9f70076a7e01425611f730ac4 280w, https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/troubleshooting-alerts-disable-delete.png?w=560&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=c0b37bb579300563f46764736b233bf2 560w, https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/troubleshooting-alerts-disable-delete.png?w=840&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=7651daf08e2fbaec97c7e31794814803 840w, https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/troubleshooting-alerts-disable-delete.png?w=1100&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=0db4fa3993c9ef5bd1e4b853e1a2f07e 1100w, https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/troubleshooting-alerts-disable-delete.png?w=1650&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=f1d0e716322507096dc7f4ffed03d3fe 1650w, https://mintcdn.com/trigger/0bD0UfsjaINxS6Tw/images/troubleshooting-alerts-disable-delete.png?w=2500&fit=max&auto=format&n=0bD0UfsjaINxS6Tw&q=85&s=ee5bf9572279a5a571b6cc33fc2d2a59 2500w" />
+    <img alt="Disable and delete alerts" />
   </Step>
 </Steps>
 
@@ -30504,7 +32603,7 @@ We support receiving alerts for the following events:
 
 For the alert webhooks you can use the SDK to parse them. Here is an example of how to parse the webhook payload in Remix:
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 import { ActionFunctionArgs, json } from "@remix-run/server-runtime";
 import { webhooks, WebhookError } from "@trigger.dev/sdk";
 
@@ -30563,19 +32662,19 @@ export async function action({ request }: ActionFunctionArgs) {
 
 When you create a webhook alert, you'll receive different payloads depending on the type of alert. All webhooks share some common properties:
 
-<ParamField path="id" type="string">
+<ParamField type="string">
   A unique identifier for this webhook event
 </ParamField>
 
-<ParamField path="created" type="datetime">
+<ParamField type="datetime">
   When this webhook event was created
 </ParamField>
 
-<ParamField path="webhookVersion" type="string">
+<ParamField type="string">
   The version of the webhook payload format
 </ParamField>
 
-<ParamField path="type" type="string">
+<ParamField type="string">
   The type of alert webhook. One of: `alert.run.failed`, `alert.deployment.success`, or `alert.deployment.failed`
 </ParamField>
 
@@ -30583,119 +32682,119 @@ When you create a webhook alert, you'll receive different payloads depending on 
 
 This webhook is sent when a run fails. The payload is available on the `object` property:
 
-<ParamField path="object.task.id" type="string">
+<ParamField type="string">
   Unique identifier for the task
 </ParamField>
 
-<ParamField path="object.task.filePath" type="string">
+<ParamField type="string">
   File path where the task is defined
 </ParamField>
 
-<ParamField path="object.task.exportName" type="string">
+<ParamField type="string">
   Name of the exported task function
 </ParamField>
 
-<ParamField path="object.task.version" type="string">
+<ParamField type="string">
   Version of the task
 </ParamField>
 
-<ParamField path="object.task.sdkVersion" type="string">
+<ParamField type="string">
   Version of the SDK used
 </ParamField>
 
-<ParamField path="object.task.cliVersion" type="string">
+<ParamField type="string">
   Version of the CLI used
 </ParamField>
 
-<ParamField path="object.run.id" type="string">
+<ParamField type="string">
   Unique identifier for the run
 </ParamField>
 
-<ParamField path="object.run.number" type="number">
+<ParamField type="number">
   Run number
 </ParamField>
 
-<ParamField path="object.run.status" type="string">
+<ParamField type="string">
   Current status of the run
 </ParamField>
 
-<ParamField path="object.run.createdAt" type="datetime">
+<ParamField type="datetime">
   When the run was created
 </ParamField>
 
-<ParamField path="object.run.startedAt" type="datetime">
+<ParamField type="datetime">
   When the run started executing
 </ParamField>
 
-<ParamField path="object.run.completedAt" type="datetime">
+<ParamField type="datetime">
   When the run finished executing
 </ParamField>
 
-<ParamField path="object.run.isTest" type="boolean">
+<ParamField type="boolean">
   Whether this is a test run
 </ParamField>
 
-<ParamField path="object.run.idempotencyKey" type="string">
+<ParamField type="string">
   Idempotency key for the run
 </ParamField>
 
-<ParamField path="object.run.tags" type="string[]">
+<ParamField type="string[]">
   Associated tags
 </ParamField>
 
-<ParamField path="object.run.error" type="object">
+<ParamField type="object">
   Error information
 </ParamField>
 
-<ParamField path="object.run.isOutOfMemoryError" type="boolean">
+<ParamField type="boolean">
   Whether the run was an out-of-memory error
 </ParamField>
 
-<ParamField path="object.run.machine" type="string">
+<ParamField type="string">
   Machine preset used for the run
 </ParamField>
 
-<ParamField path="object.run.dashboardUrl" type="string">
+<ParamField type="string">
   URL to view the run in the dashboard
 </ParamField>
 
-<ParamField path="object.environment.id" type="string">
+<ParamField type="string">
   Environment ID
 </ParamField>
 
-<ParamField path="object.environment.type" type="string">
+<ParamField type="string">
   Environment type (STAGING or PRODUCTION)
 </ParamField>
 
-<ParamField path="object.environment.slug" type="string">
+<ParamField type="string">
   Environment slug
 </ParamField>
 
-<ParamField path="object.organization.id" type="string">
+<ParamField type="string">
   Organization ID
 </ParamField>
 
-<ParamField path="object.organization.slug" type="string">
+<ParamField type="string">
   Organization slug
 </ParamField>
 
-<ParamField path="object.organization.name" type="string">
+<ParamField type="string">
   Organization name
 </ParamField>
 
-<ParamField path="object.project.id" type="string">
+<ParamField type="string">
   Project ID
 </ParamField>
 
-<ParamField path="object.project.ref" type="string">
+<ParamField type="string">
   Project reference
 </ParamField>
 
-<ParamField path="object.project.slug" type="string">
+<ParamField type="string">
   Project slug
 </ParamField>
 
-<ParamField path="object.project.name" type="string">
+<ParamField type="string">
   Project name
 </ParamField>
 
@@ -30703,67 +32802,67 @@ This webhook is sent when a run fails. The payload is available on the `object` 
 
 This webhook is sent when a deployment succeeds. The payload is available on the `object` property:
 
-<ParamField path="object.deployment.id" type="string">
+<ParamField type="string">
   Deployment ID
 </ParamField>
 
-<ParamField path="object.deployment.status" type="string">
+<ParamField type="string">
   Deployment status
 </ParamField>
 
-<ParamField path="object.deployment.version" type="string">
+<ParamField type="string">
   Deployment version
 </ParamField>
 
-<ParamField path="object.deployment.shortCode" type="string">
+<ParamField type="string">
   Short code identifier
 </ParamField>
 
-<ParamField path="object.deployment.deployedAt" type="datetime">
+<ParamField type="datetime">
   When the deployment completed
 </ParamField>
 
-<ParamField path="object.tasks" type="array">
+<ParamField type="array">
   Array of deployed tasks with properties: id, filePath, exportName, and triggerSource
 </ParamField>
 
-<ParamField path="object.environment.id" type="string">
+<ParamField type="string">
   Environment ID
 </ParamField>
 
-<ParamField path="object.environment.type" type="string">
+<ParamField type="string">
   Environment type (STAGING or PRODUCTION)
 </ParamField>
 
-<ParamField path="object.environment.slug" type="string">
+<ParamField type="string">
   Environment slug
 </ParamField>
 
-<ParamField path="object.organization.id" type="string">
+<ParamField type="string">
   Organization ID
 </ParamField>
 
-<ParamField path="object.organization.slug" type="string">
+<ParamField type="string">
   Organization slug
 </ParamField>
 
-<ParamField path="object.organization.name" type="string">
+<ParamField type="string">
   Organization name
 </ParamField>
 
-<ParamField path="object.project.id" type="string">
+<ParamField type="string">
   Project ID
 </ParamField>
 
-<ParamField path="object.project.ref" type="string">
+<ParamField type="string">
   Project reference
 </ParamField>
 
-<ParamField path="object.project.slug" type="string">
+<ParamField type="string">
   Project slug
 </ParamField>
 
-<ParamField path="object.project.name" type="string">
+<ParamField type="string">
   Project name
 </ParamField>
 
@@ -30771,79 +32870,79 @@ This webhook is sent when a deployment succeeds. The payload is available on the
 
 This webhook is sent when a deployment fails. The payload is available on the `object` property:
 
-<ParamField path="object.deployment.id" type="string">
+<ParamField type="string">
   Deployment ID
 </ParamField>
 
-<ParamField path="object.deployment.status" type="string">
+<ParamField type="string">
   Deployment status
 </ParamField>
 
-<ParamField path="object.deployment.version" type="string">
+<ParamField type="string">
   Deployment version
 </ParamField>
 
-<ParamField path="object.deployment.shortCode" type="string">
+<ParamField type="string">
   Short code identifier
 </ParamField>
 
-<ParamField path="object.deployment.failedAt" type="datetime">
+<ParamField type="datetime">
   When the deployment failed
 </ParamField>
 
-<ParamField path="object.error.name" type="string">
+<ParamField type="string">
   Error name
 </ParamField>
 
-<ParamField path="object.error.message" type="string">
+<ParamField type="string">
   Error message
 </ParamField>
 
-<ParamField path="object.error.stack" type="string">
+<ParamField type="string">
   Error stack trace (optional)
 </ParamField>
 
-<ParamField path="object.error.stderr" type="string">
+<ParamField type="string">
   Standard error output (optional)
 </ParamField>
 
-<ParamField path="object.environment.id" type="string">
+<ParamField type="string">
   Environment ID
 </ParamField>
 
-<ParamField path="object.environment.type" type="string">
+<ParamField type="string">
   Environment type (STAGING or PRODUCTION)
 </ParamField>
 
-<ParamField path="object.environment.slug" type="string">
+<ParamField type="string">
   Environment slug
 </ParamField>
 
-<ParamField path="object.organization.id" type="string">
+<ParamField type="string">
   Organization ID
 </ParamField>
 
-<ParamField path="object.organization.slug" type="string">
+<ParamField type="string">
   Organization slug
 </ParamField>
 
-<ParamField path="object.organization.name" type="string">
+<ParamField type="string">
   Organization name
 </ParamField>
 
-<ParamField path="object.project.id" type="string">
+<ParamField type="string">
   Project ID
 </ParamField>
 
-<ParamField path="object.project.ref" type="string">
+<ParamField type="string">
   Project reference
 </ParamField>
 
-<ParamField path="object.project.slug" type="string">
+<ParamField type="string">
   Project slug
 </ParamField>
 
-<ParamField path="object.project.name" type="string">
+<ParamField type="string">
   Project name
 </ParamField>
 
@@ -30855,7 +32954,7 @@ Source: https://trigger.dev/docs/troubleshooting-debugging-in-vscode
 
 Debugging your task code in `dev` is supported via VS Code, without having to pass in any additional flags. Create a launch configuration in `.vscode/launch.json`:
 
-```json launch.json theme={null}
+```json launch.json theme={"theme":"css-variables"}
 {
   "version": "0.2.0",
   "configurations": [
@@ -30902,7 +33001,7 @@ When we release fixes and new features we recommend you upgrade your Trigger.dev
 
 Run this command in your project:
 
-```sh  theme={null}
+```sh theme={"theme":"css-variables"}
 npx trigger.dev@latest update
 ```
 
@@ -30912,11 +33011,11 @@ This will update all of the Trigger.dev packages in your project to the latest v
 
 When you run the CLI locally use the latest version for the `dev` and `deploy` commands:
 
-```sh  theme={null}
+```sh theme={"theme":"css-variables"}
 npx trigger.dev@latest dev
 ```
 
-```sh  theme={null}
+```sh theme={"theme":"css-variables"}
 npx trigger.dev@latest deploy
 ```
 
@@ -30949,7 +33048,7 @@ Instead of using `npx`, `pnpm dlx` or `yarn dlx` you can add the Trigger.dev CLI
 
 For example:
 
-```json  theme={null}
+```json theme={"theme":"css-variables"}
 {
   "devDependencies": {
     "trigger.dev": "3.0.0"
@@ -30963,7 +33062,7 @@ Once you have added the `trigger.dev` package to your `devDependencies`, you can
 
 But we recommend adding your dev and deploy commands to the `scripts` section of your `package.json` file:
 
-```json  theme={null}
+```json theme={"theme":"css-variables"}
 {
   "scripts": {
     "dev:trigger": "trigger dev",
@@ -31009,6 +33108,8 @@ Versions numbers are incremented each time a new version is created for that dat
 
 When a task run starts it is locked to the latest version of the code (for that environment). Once locked it won't change versions, even if you deploy new versions. This is to ensure that a task run is not affected by changes to the code.
 
+Delayed runs are locked to the version that's active when they begin executing, not when they're enqueued.
+
 ### Child tasks and version locking
 
 Trigger and wait functions version lock child task runs to the parent task run version. This ensures the results from child runs match what the parent task is expecting. If you don't wait then version locking doesn't apply.
@@ -31044,9 +33145,7 @@ Source: https://trigger.dev/docs/video-walkthrough
 
 Go from zero to a working task in your Next.js app in 10 minutes.
 
-{" "}
-
-<iframe width="100%" height="315" src="https://www.youtube.com/embed/YH_4c0K7fGM?si=5JzZmZseuqI5aciM" title="Trigger.dev walkthrough" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen />
+<iframe title="Trigger.dev walkthrough" />
 
 ### In this video we cover the following topics:
 
@@ -31083,7 +33182,7 @@ Wait for a period of time, then continue execution.
 
 Inside your tasks you can wait for a period of time before you want execution to continue.
 
-```ts /trigger/long-task.ts theme={null}
+```ts /trigger/long-task.ts theme={"theme":"css-variables"}
 export const veryLongTask = task({
   id: "very-long-task",
   run: async (payload) => {
@@ -31115,7 +33214,7 @@ When triggering and waiting for subtasks, the parent is checkpointed and while w
 
 You can pass an idempotency key to any wait function, allowing you to skip waits if the same idempotency key is used again. This can be useful if you want to skip waits when retrying a task, for example:
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 // Specify the idempotency key and TTL when waiting for a duration:
 await wait.for({ seconds: 10 }, { idempotencyKey: "my-idempotency-key", idempotencyKeyTTL: "1h" });
 ```
@@ -31134,7 +33233,7 @@ You can complete a token using the SDK or by making a POST request to the token'
 
 To get started using wait tokens, you need to first create a token using the `wait.createToken` function:
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 import { wait } from "@trigger.dev/sdk";
 
 // This can be called anywhere in your codebase, either in a task or in your backend code
@@ -31145,7 +33244,7 @@ const token = await wait.createToken({
 
 Once you have a token, you can wait for it to be completed using the `wait.forToken` function:
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 import { wait } from "@trigger.dev/sdk";
 
 type ApprovalToken = {
@@ -31164,7 +33263,7 @@ if (result.ok) {
 
 To complete a token, you can use the `wait.completeToken` function:
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 import { wait } from "@trigger.dev/sdk";
 // This can be called anywhere in your codebase, or from an external service,
 // passing in the token ID and the output of the token
@@ -31175,7 +33274,7 @@ await wait.completeToken<ApprovalToken>(tokenId, {
 
 Or you can make an HTTP POST request to the `url` it returns. This is an HTTP callback:
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 import { wait } from "@trigger.dev/sdk";
 
 const token = await wait.createToken({
@@ -31204,20 +33303,20 @@ Create a waitpoint token.
 
 The `createToken` function accepts an object with the following properties:
 
-<ParamField query="timeout" type="string" optional>
+<ParamField type="string">
   The maximum amount of time to wait for the token to be completed. Defaults to "10m".
 </ParamField>
 
-<ParamField query="idempotencyKey" type="string" optional>
+<ParamField type="string">
   An idempotency key for the token. If provided, the token will be completed with the same payload
   if the same idempotency key is used again.
 </ParamField>
 
-<ParamField query="idempotencyKeyTTL" type="string" optional>
+<ParamField type="string">
   The time to live for the idempotency key. Defaults to "1h".
 </ParamField>
 
-<ParamField query="tags" type="string[]" optional>
+<ParamField type="string[]">
   Tags to attach to the token. Tags can be used to filter waitpoints in the dashboard.
 </ParamField>
 
@@ -31225,29 +33324,29 @@ The `createToken` function accepts an object with the following properties:
 
 The `createToken` function returns a token object with the following properties:
 
-<ParamField query="id" type="string">
+<ParamField type="string">
   The ID of the token. Starts with `waitpoint_`.
 </ParamField>
 
-<ParamField query="url" type="string">
+<ParamField type="string">
   The URL of the token. This is the URL you can make a POST request to in order to complete the token.
 
   The JSON body of the POST request will be used as the output of the token. If there's no body the output will be an empty object `{}`.
 </ParamField>
 
-<ParamField query="isCached" type="boolean">
+<ParamField type="boolean">
   Whether the token is cached. Will return true if the token was created with an idempotency key and
   the same idempotency key was used again.
 </ParamField>
 
-<ParamField query="publicAccessToken" type="string">
+<ParamField type="string">
   A Public Access Token that can be used to complete the token from a client-side application (or
   another backend). See our [Realtime docs](/realtime/auth) for more details.
 </ParamField>
 
 ### Example
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 import { wait } from "@trigger.dev/sdk";
 
 const token = await wait.createToken({
@@ -31263,11 +33362,11 @@ Complete a waitpoint token.
 
 ### parameters
 
-<ParamField query="id" type="string">
+<ParamField type="string">
   The ID of the token to complete.
 </ParamField>
 
-<ParamField query="output" type="any">
+<ParamField type="any">
   The data to complete the token with.
 </ParamField>
 
@@ -31275,13 +33374,13 @@ Complete a waitpoint token.
 
 The `completeToken` function returns an object with the following properties:
 
-<ParamField query="success" type="boolean">
+<ParamField type="boolean">
   Whether the token was completed successfully.
 </ParamField>
 
 ### Example
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 import { wait } from "@trigger.dev/sdk";
 
 await wait.completeToken<ApprovalToken>(tokenId, {
@@ -31294,24 +33393,24 @@ await wait.completeToken<ApprovalToken>(tokenId, {
 You can complete a token using a raw HTTP request or from another language.
 
 <CodeGroup>
-  ```bash curl theme={null}
+  ```bash curl theme={"theme":"css-variables"}
   curl -X POST "https://api.trigger.dev/api/v1/waitpoints/tokens/{tokenId}/complete" \
     -H "Authorization: Bearer {token}" \
     -H "Content-Type: application/json" \
-    -d '{"output": { "status": "approved"}}'
+    -d '{"data": { "status": "approved"}}'
   ```
 
-  ```python python theme={null}
+  ```python python theme={"theme":"css-variables"}
   import requests
 
   response = requests.post(
     "https://api.trigger.dev/api/v1/waitpoints/tokens/{tokenId}/complete",
     headers={"Authorization": f"Bearer {token}"},
-    json={"output": { "status": "approved"}}
+    json={"data": { "status": "approved"}}
   )
   ```
 
-  ```ruby ruby theme={null}
+  ```ruby ruby theme={"theme":"css-variables"}
   require "net/http"
 
   uri = URI("https://api.trigger.dev/api/v1/waitpoints/tokens/{tokenId}/complete")
@@ -31320,12 +33419,12 @@ You can complete a token using a raw HTTP request or from another language.
   request = Net::HTTP::Post.new(uri)
   request["Authorization"] = "Bearer {token}"
   request["Content-Type"] = "application/json"
-  request.body = JSON.generate({ output: { status: "approved" } })
+  request.body = JSON.generate({ data: { status: "approved" } })
 
   response = http.request(request)
   ```
 
-  ```go go theme={null}
+  ```go go theme={"theme":"css-variables"}
   package main
 
   import (
@@ -31339,7 +33438,7 @@ You can complete a token using a raw HTTP request or from another language.
   	url := "https://api.trigger.dev/api/v1/waitpoints/tokens/{tokenId}/complete"
 
   	payload := map[string]interface{}{
-  		"output": map[string]interface{}{
+  		"data": map[string]interface{}{
   			"status": "approved",
   		},
   	}
@@ -31379,7 +33478,7 @@ Wait for a token to be completed.
 
 ### parameters
 
-<ParamField query="token" type="string | { id: string }">
+<ParamField type="string | { id: string }">
   The token to wait for.
 </ParamField>
 
@@ -31387,15 +33486,15 @@ Wait for a token to be completed.
 
 The `forToken` function returns a result object with the following properties:
 
-<ParamField query="ok" type="boolean">
+<ParamField type="boolean">
   Whether the token was completed successfully.
 </ParamField>
 
-<ParamField query="output" type="any">
+<ParamField type="any">
   If `ok` is `true`, this will be the output of the token.
 </ParamField>
 
-<ParamField query="error" type="Error">
+<ParamField type="Error">
   If `ok` is `false`, this will be the error that occurred. The only error that can occur is a
   timeout error.
 </ParamField>
@@ -31404,7 +33503,7 @@ The `forToken` function returns a result object with the following properties:
 
 We provide a handy `.unwrap()` method that will throw an error if the result is not ok. This means your happy path is a lot cleaner.
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 const approval = await wait.forToken<ApprovalToken>(tokenId).unwrap();
 // unwrap means an error will throw if the waitpoint times out 👆
 
@@ -31414,7 +33513,7 @@ console.log("Approval", approval);
 
 ### Example
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 import { wait } from "@trigger.dev/sdk";
 
 const result = await wait.forToken<ApprovalToken>(tokenId);
@@ -31434,27 +33533,27 @@ List all tokens for an environment.
 
 The `listTokens` function accepts an object with the following properties:
 
-<ParamField query="status" type="string | string[]" optional>
+<ParamField type="string | string[]">
   Statuses to filter by. Can be one or more of: `WAITING`, `COMPLETED`, `TIMED_OUT`.
 </ParamField>
 
-<ParamField query="idempotencyKey" type="string" optional>
+<ParamField type="string">
   The idempotency key to filter by.
 </ParamField>
 
-<ParamField query="tags" type="string | string[]" optional>
+<ParamField type="string | string[]">
   Tags to filter by.
 </ParamField>
 
-<ParamField query="period" type="string" optional>
+<ParamField type="string">
   The period to filter by. Can be one of: `1h`, `1d`, `7d`, `30d`.
 </ParamField>
 
-<ParamField query="from" type="Date | number" optional>
+<ParamField type="Date | number">
   The start date to filter by.
 </ParamField>
 
-<ParamField query="to" type="Date | number" optional>
+<ParamField type="Date | number">
   The end date to filter by.
 </ParamField>
 
@@ -31464,41 +33563,41 @@ The `listTokens` function returns a list of tokens that can be iterated over usi
 
 Each token is an object with the following properties:
 
-<ParamField query="id" type="string">
+<ParamField type="string">
   The ID of the token.
 </ParamField>
 
-<ParamField query="url" type="string">
+<ParamField type="string">
   The URL of the token. This is the URL you can make a POST request to in order to complete the token.
 
   The JSON body of the POST request will be used as the output of the token. If there's no body the output will be an empty object `{}`.
 </ParamField>
 
-<ParamField query="status" type="string">
+<ParamField type="string">
   The status of the token.
 </ParamField>
 
-<ParamField query="completedAt" type="Date">
+<ParamField type="Date">
   The date and time the token was completed.
 </ParamField>
 
-<ParamField query="timeoutAt" type="Date">
+<ParamField type="Date">
   The date and time the token will timeout.
 </ParamField>
 
-<ParamField query="idempotencyKey" type="string">
+<ParamField type="string">
   The idempotency key of the token.
 </ParamField>
 
-<ParamField query="idempotencyKeyExpiresAt" type="Date">
+<ParamField type="Date">
   The date and time the idempotency key will expire.
 </ParamField>
 
-<ParamField query="tags" type="string[]">
+<ParamField type="string[]">
   The tags of the token.
 </ParamField>
 
-<ParamField query="createdAt" type="Date">
+<ParamField type="Date">
   The date and time the token was created.
 </ParamField>
 
@@ -31509,7 +33608,7 @@ Each token is an object with the following properties:
 
 ### Example
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 import { wait } from "@trigger.dev/sdk";
 
 const tokens = await wait.listTokens({
@@ -31528,7 +33627,7 @@ Retrieve a token by ID.
 
 ### parameters
 
-<ParamField query="id" type="string">
+<ParamField type="string">
   The ID of the token to retrieve.
 </ParamField>
 
@@ -31536,55 +33635,55 @@ Retrieve a token by ID.
 
 The `retrieveToken` function returns a token object with the following properties:
 
-<ParamField query="id" type="string">
+<ParamField type="string">
   The ID of the token.
 </ParamField>
 
-<ParamField query="url" type="string">
+<ParamField type="string">
   The URL of the token. This is the URL you can make a POST request to in order to complete the token.
 
   The JSON body of the POST request will be used as the output of the token. If there's no body the output will be an empty object `{}`.
 </ParamField>
 
-<ParamField query="status" type="string">
+<ParamField type="string">
   The status of the token.
 </ParamField>
 
-<ParamField query="completedAt" type="Date">
+<ParamField type="Date">
   The date and time the token was completed.
 </ParamField>
 
-<ParamField query="timeoutAt" type="Date">
+<ParamField type="Date">
   The date and time the token will timeout.
 </ParamField>
 
-<ParamField query="idempotencyKey" type="string">
+<ParamField type="string">
   The idempotency key of the token.
 </ParamField>
 
-<ParamField query="idempotencyKeyExpiresAt" type="Date">
+<ParamField type="Date">
   The date and time the idempotency key will expire.
 </ParamField>
 
-<ParamField query="tags" type="string[]">
+<ParamField type="string[]">
   The tags of the token.
 </ParamField>
 
-<ParamField query="createdAt" type="Date">
+<ParamField type="Date">
   The date and time the token was created.
 </ParamField>
 
-<ParamField query="output" type="any">
+<ParamField type="any">
   The output of the token.
 </ParamField>
 
-<ParamField query="error" type="Error">
+<ParamField type="Error">
   The error that occurred.
 </ParamField>
 
 ### Example
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 import { wait } from "@trigger.dev/sdk";
 
 const token = await wait.retrieveToken(tokenId);
@@ -31596,7 +33695,7 @@ console.log(token);
 
 You can pass an idempotency key to any wait function, allowing you to skip waits if the same idempotency key is used again. This can be useful if you want to skip waits when retrying a task, for example:
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 // Specify the idempotency key and TTL when creating a wait token
 const token = await wait.createToken({
   idempotencyKey: "my-idempotency-key",
@@ -31612,7 +33711,7 @@ Wait until a date, then continue execution.
 
 This example sends a reminder email to a user at the specified datetime.
 
-```ts /trigger/reminder-email.ts theme={null}
+```ts /trigger/reminder-email.ts theme={"theme":"css-variables"}
 export const sendReminderEmail = task({
   id: "send-reminder-email",
   run: async (payload: { to: string; name: string; date: string }) => {
@@ -31641,7 +33740,7 @@ When triggering and waiting for subtasks, the parent is checkpointed and while w
 
 You can optionally throw an error if the date is already in the past when the function is called:
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 await wait.until({ date: new Date(date), throwIfInThePast: true });
 ```
 
@@ -31651,7 +33750,7 @@ You can of course use try/catch if you want to do something special in this case
 
 You can pass an idempotency key to any wait function, allowing you to skip waits if the same idempotency key is used again. This can be useful if you want to skip waits when retrying a task, for example:
 
-```ts  theme={null}
+```ts theme={"theme":"css-variables"}
 // Specify the idempotency key and TTL when waiting until a date:
 await wait.until({
   date: futureDate,
@@ -31692,7 +33791,7 @@ Before digging deeper into the details of writing tasks, you should read the [fu
 
 ## Our library of examples, guides and projects
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Walkthrough guides" icon="book" href="/guides/introduction">
     Detailed guides for setting up Trigger.dev with popular frameworks and services, including
     Next.js, Remix, Supabase, Stripe and more.

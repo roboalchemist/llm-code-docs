@@ -1,5 +1,9 @@
 # Source: https://docs.unstructured.io/examplecode/tools/langflow.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.unstructured.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Langflow
 
 [Langflow](https://www.langflow.org/) is a visual framework for building multi-agent and RAG applications.
@@ -56,8 +60,8 @@ in real time with a PDF document that is processed by Unstructured and has its p
       but the number of dimensions that are generated does not match the existing collection's embedding settings, the run will fail.
       You must change your Unstructured embedding settings or your existing collection's embedding settings to match, and try the run again.
     * If a collection name is not specified, Unstructured creates a new collection in your keyspace. If Unstructured generates embeddings,
-      the new collections's name will be `u<short-workflow-id>_<short-embedding-model-name>_<number-of-dimensions>`.
-      If Unstructured does not generate embeddings, the new collections's name will be `u<short-workflow-id`.
+      the new collection's name will be `u<short-workflow-id>_<short-embedding-model-name>_<number-of-dimensions>`.
+      If Unstructured does not generate embeddings, the new collection's name will be `u<short-workflow-id`.
 
   For [Unstructured Ingest](/open-source/ingestion/overview):
 
@@ -66,7 +70,7 @@ in real time with a PDF document that is processed by Unstructured and has its p
 
     * If an existing collection name is specified, and Unstructured generates embeddings,
       but the number of dimensions that are generated does not match the existing collection's embedding settings, the run will fail.
-      You must change your Unstructured embedding settings or your existing collections's embedding settings to match, and try the run again.
+      You must change your Unstructured embedding settings or your existing collection's embedding settings to match, and try the run again.
     * If a collection name is not specified, Unstructured creates a new collection in your keyspace. The new collection's name will be `unstructuredautocreated`.
 
   To create a collection yourself:
@@ -76,8 +80,8 @@ in real time with a PDF document that is processed by Unstructured and has its p
   c. In the **Collections** list, select **Create collection**.<br />
   d. Enter some **Collection name**.<br />
   e. Turn on **Vector-enabled collection**, if it is not already turned on.<br />
-  f. For **Embedding generation method**, select **Bring my own**.<br />
-  g. For **Dimensions**, enter the number of dimensions for the embedding model that you plan to use.<br />
+  f. Choose a mode for **Embedding generation method**. See [Astra DB generated embeddings](#astra-db-generated-embeddings).<br />
+  g. If you chose **Bring my own**, enter the number of dimensions for the embedding model that you plan to use.<br />
   h. For **Similarity metric**, select **Cosine**.<br />
   i. Click **Create collection**.<br />
 
@@ -126,7 +130,7 @@ Also:
   </Step>
 
   <Step title="Add the Unstructured component">
-    In this step, you add a component that instructs the Unstructured Partition Endpoint to process a local file that you specify.
+    In this step, you add a component that instructs the legacy Unstructured Partition Endpoint to process a local file that you specify.
 
     1. On the sidebar, expand **Experimental (Beta)**, and then expand **Loaders**.
 

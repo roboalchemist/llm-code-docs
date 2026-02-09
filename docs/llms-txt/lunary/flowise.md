@@ -1,5 +1,9 @@
 # Source: https://docs.lunary.ai/docs/integrations/flowise.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.lunary.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Flowise Integration
 
 Flowise is an open-source & no-code AI Chatbot builder.
@@ -31,8 +35,3 @@ Lunary's Flowise integration allows you to connect your Flowise chatbot and trac
     Data from your conversations should now be visible in your dashboard.
   </Step>
 </Steps>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.lunary.ai/llms.txt

@@ -1,5 +1,9 @@
 # Source: https://dev.writer.com/agent-builder/agent-architecture.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://dev.writer.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Understand agent architecture
 
 > Understand how Agent Builder agents work. Learn about UI components, blueprints, state management, and how they connect to create functional agents.

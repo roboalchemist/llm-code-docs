@@ -1,5 +1,9 @@
 # Source: https://docs.oxla.com/sql-reference/sql-data-types/numeric-type/numeric-data-type-aliases.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.oxla.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Numeric Data Type - Aliases
 
 We allow aliases that can be used interchangeably with the primary data types. However, while these aliases can be used, they will be mapped to their corresponding primary data types during data processing.

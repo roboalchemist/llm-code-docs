@@ -1,5 +1,9 @@
 # Source: https://docs.replit.com/replit-workspace/workspace-features/user-settings.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.replit.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # User Settings
 
 > User Settings let you personalize your workspace across all apps. These settings help you create your ideal development environment.
@@ -80,7 +84,6 @@ Manage the following notification settings:
 
 * **Agent audio notification**: Play sounds when Agent requests feedback
 * **Agent push notification**: Receive mobile push notifications when Agent requests feedback
-* **Assistant push notification**: Receive mobile push notifications when Assistant requests feedback
 
 ### Accessibility
 

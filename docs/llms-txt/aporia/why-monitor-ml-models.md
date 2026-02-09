@@ -2,10 +2,6 @@
 
 # Source: https://docs.aporia.com/v1/core-concepts/why-monitor-ml-models.md
 
-# Source: https://docs.aporia.com/core-concepts/why-monitor-ml-models.md
-
-# Source: https://docs.aporia.com/v1/core-concepts/why-monitor-ml-models.md
-
 # Why Monitor ML Models?
 
 You spent *months* working on a sophisticated model, and finally deployed it to production.

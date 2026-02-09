@@ -735,11 +735,8 @@ const paymentIntent = await stripe.paymentIntents.capture(
 // Set your secret key. Remember to switch to your live secret key in production.
 // See your keys here: https://dashboard.stripe.com/apikeys
 sc := stripe.NewClient("<<YOUR_SECRET_KEY>>")
-params := &stripe.PaymentIntentCaptureParams{
-  AmountToCapture: stripe.Int64(750),
-  Intent: stripe.String("pi_123"),
-}
-result, err := sc.V1PaymentIntents.Capture(context.TODO(), params)
+params := &stripe.PaymentIntentCaptureParams{AmountToCapture: stripe.Int64(750)}
+result, err := sc.V1PaymentIntents.Capture(context.TODO(), "pi_123", params)
 ```
 
 ```dotnet
@@ -761,7 +758,7 @@ Additionally, when a customer completes the payment process on a PaymentIntent w
 
 If you need to cancel an authorization, you can [cancel the PaymentIntent](https://docs.stripe.com/refunds.md#cancel-payment).
 
-## Capture payment before authorization expires (Public preview)
+## Capture payment before authorization expires (Private preview)
 
 You can instruct Stripe to automatically capture before authorization expires instead of manually triggering capture for card payment methods. Use automatic delayed capture to ensure you don’t miss capturing authorized payments. You can also specify a custom delay period from authorization to capture.
 
@@ -889,12 +886,12 @@ var options = new PaymentIntentCreateOptions
     PaymentMethodTypes = new List<string> { "card" },
     PaymentMethodOptions = new PaymentIntentPaymentMethodOptionsOptions
     {
-        Card = new PaymentIntentPaymentMethodOptionsCardOptions
-        {
-            CaptureMethod = "automatic_delayed",
-        },
+        Card = new PaymentIntentPaymentMethodOptionsCardOptions(),
     },
 };
+options.AddExtraParam(
+    "payment_method_options[card][capture_method]",
+    "automatic_delayed");
 var client = new StripeClient("<<YOUR_SECRET_KEY>>");
 var service = client.V1.PaymentIntents;
 PaymentIntent paymentIntent = service.Create(options);
@@ -1043,12 +1040,12 @@ var options = new PaymentIntentCreateOptions
     PaymentMethodTypes = new List<string> { "card" },
     PaymentMethodOptions = new PaymentIntentPaymentMethodOptionsOptions
     {
-        Card = new PaymentIntentPaymentMethodOptionsCardOptions
-        {
-            CaptureMethod = "automatic_delayed",
-        },
+        Card = new PaymentIntentPaymentMethodOptionsCardOptions(),
     },
 };
+options.AddExtraParam(
+    "payment_method_options[card][capture_method]",
+    "automatic_delayed");
 options.AddExtraParam("payment_method_options[card][capture_delay_days]", 3);
 var client = new StripeClient("<<YOUR_SECRET_KEY>>");
 var service = client.V1.PaymentIntents;
@@ -1061,5 +1058,5 @@ In this example, Stripe automatically captures the PaymentIntent 3 days after su
 
 ## See also
 
-- [Separate authorization and capture with Checkout](https://docs.stripe.com/payments/accept-a-payment.md?platform=web&ui=stripe-hosted#auth-and-capture)
+- [Separate authorization and capture with Checkout](https://docs.stripe.com/payments/accept-a-payment.md?payment-ui=checkout&ui=stripe-hosted#auth-and-capture)
 - [Place an extended hold on an online card payment](https://docs.stripe.com/payments/extended-authorization.md)

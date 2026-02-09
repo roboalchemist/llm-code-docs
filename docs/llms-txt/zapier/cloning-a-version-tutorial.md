@@ -1,5 +1,9 @@
 # Source: https://docs.zapier.com/platform/reference/cloning-a-version-tutorial.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.zapier.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Cloning a version
 
 > Cloning allows you to duplicate an existing version of your integration. This is particularly useful when you want to introduce new features or fixes without altering the original integration. When a previous version of your integration has more than 5 active users, you will need to clone that version to make modifications.

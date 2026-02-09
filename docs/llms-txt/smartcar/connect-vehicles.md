@@ -1,5 +1,9 @@
 # Source: https://smartcar.com/docs/getting-started/connect-vehicles.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://smartcar.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Connect Vehicles
 
 > Learn how to connect vehicles to your Smartcar application using Smartcar Connect.
@@ -49,6 +53,10 @@ Before you begin, make sure you have [configured](/getting-started/configure-app
     * The `access_token` expires after two hours. You will need to use the `refresh_token` to obtain new access tokens when needed. The `refresh_token` expires after 60 days. If the `refresh_token` expires, the user will need to reauthorize your application.
   </Step>
 </Steps>
+
+<Info>
+  Vehicle owners may occasionally need to re-authenticate due to OEM platform migrations, credential changes, or permission updates. Build your integration to handle these scenarios gracefully. See [Handle Re-authentication](/connect/re-auth/oem-migrations) for implementation guidance.
+</Info>
 
 ## What’s Next
 

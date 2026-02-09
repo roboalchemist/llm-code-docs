@@ -68,7 +68,7 @@ Once enabled, only Linear issues that were created from or previously linked to 
 
 ### Internal notes
 
-Automatically notify your team in Salesforce when an issue linked to a case changes to any status. Changes will be added to the _All updates_ section of a case.
+Automatically notify your team in Salesforce when an issue linked to a case has been completed to cancelled. Changes will be added to the _All updates_ section of a case.
 
 ### Automatic case reopening
 

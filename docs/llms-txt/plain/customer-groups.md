@@ -1,5 +1,9 @@
 # Source: https://www.plain.com/docs/graphql/customers/customer-groups.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.plain.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Customer groups
 
 Customer groups can be used to group and segment your customers. For example you could organise your customers by their tier "Free", "Growth, "Enterprise" or make use of groups to keep track of customers trialing beta features.

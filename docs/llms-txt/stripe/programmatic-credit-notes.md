@@ -22,7 +22,7 @@ We recommend discounting invoice line items when possible, since it associates e
 
 When you create a custom line item on a credit note for an `open` invoice, the `amount_due` on the invoice decreases based on the `custom_line_items` in the credit note. This is in addition to any adjustments you make to existing `invoice_line_items`. For example, if the amount due on an `open` invoice is 100 USD and you create a `custom_line_item` with `quantity=1` and `unit_amount=2000`, the new amount due on the invoice is 80 USD.
 
-On an invoice, credit notes appear as items after applying discounts and taxes—so they’re a post-tax adjusted amount.  We calculate the invoice amount due using the following order:
+On an invoice, credit notes appear as items after applying discounts and taxes, making them a post-tax adjusted amount. We calculate the invoice amount due using the following order:
 
 1. Sum of invoice line items
 1. Discounts
@@ -894,8 +894,9 @@ const creditNote = await stripe.creditNotes.voidCreditNote('{{CREDIT_NOTE_ID}}')
 // Set your secret key. Remember to switch to your live secret key in production.
 // See your keys here: https://dashboard.stripe.com/apikeys
 sc := stripe.NewClient("<<YOUR_SECRET_KEY>>")
-params := &stripe.CreditNoteVoidCreditNoteParams{ID: stripe.String("{{CREDIT_NOTE_ID}}")}
-result, err := sc.V1CreditNotes.VoidCreditNote(context.TODO(), params)
+params := &stripe.CreditNoteVoidCreditNoteParams{}
+result, err := sc.V1CreditNotes.VoidCreditNote(
+  context.TODO(), "{{CREDIT_NOTE_ID}}", params)
 ```
 
 ```dotnet

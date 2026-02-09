@@ -10,7 +10,7 @@ To do so, you can open the [Command Palette](https://docs.warp.dev/terminal/comm
 
 Select **iTerm2 Profile: Default** to import your settings.
 
-<figure><img src="https://2297236823-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-MbqIgTw17KQvq_DQuRr%2Fuploads%2Fgit-blob-355fb38a9eca18812a736fe79f11c7ee142ec30f%2Fmigrate-to-warp.png?alt=media" alt=""><figcaption><p>Select a settings profile to import</p></figcaption></figure>
+<figure><img src="https://4009768362-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FPsjNxoJ0NFCXW6rRdHH3%2Fuploads%2Fgit-blob-355fb38a9eca18812a736fe79f11c7ee142ec30f%2Fmigrate-to-warp.png?alt=media" alt=""><figcaption><p>Select a settings profile to import</p></figcaption></figure>
 
 Warp will only import settings associated with the Default profile.
 

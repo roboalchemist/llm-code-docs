@@ -99,7 +99,7 @@ An authentication standard used to prevent email spoofing.
 
 ### List keys for all domains
 
- - [GET /v1/dkim/keys](https://documentation.mailgun.com/docs/mailgun/api-reference/send/mailgun/domain-keys/get-v1-dkim-keys.md): List domain keys, and optionally filter by signing domain or selector. The page & limit data is only required when paging through the data.
+ - [GET /v1/dkim/keys](https://documentation.mailgun.com/docs/mailgun/api-reference/send/mailgun/domain-keys/get-v1-dkim-keys.md): List domain keys, and optionally filter by signing domain or selector. Results are paginated - use the 'limit' parameter to control page size (default 10, max 100). Use the 'page' parameter from the paging response URLs to navigate through pages.
 
 ### Create a domain key
 
@@ -199,17 +199,198 @@ Webhooks API manages domain's webhooks. You can create, access and delete webhoo
 
  - [DELETE /v3/domains/{domain_name}/webhooks/{webhook_name}](https://documentation.mailgun.com/docs/mailgun/api-reference/send/mailgun/webhooks/delete-v3-domains--domain-name--webhooks--webhook-name-.md): Remove all url(s) for a specified webhook type.
 
+### Update domain webhooks (v4)
+
+ - [PUT /v4/domains/{domain}/webhooks](https://documentation.mailgun.com/docs/mailgun/api-reference/send/mailgun/webhooks/put-v4-domains--domain--webhooks.md): Update webhook URL to associate it with different event types. This replaces the existing event type associations for the given URL.
+
+### Create domain webhooks (v4)
+
+ - [POST /v4/domains/{domain}/webhooks](https://documentation.mailgun.com/docs/mailgun/api-reference/send/mailgun/webhooks/post-v4-domains--domain--webhooks.md): Create webhook URLs for multiple event types in a single operation. This v4 endpoint allows associating one URL with multiple webhook event types.
+
+### Delete domain webhooks (v4)
+
+ - [DELETE /v4/domains/{domain}/webhooks](https://documentation.mailgun.com/docs/mailgun/api-reference/send/mailgun/webhooks/delete-v4-domains--domain--webhooks.md): Delete webhook URLs from all event types they are associated with. Supports deleting multiple URLs at once by providing a comma-separated list.
+
 ## Metrics
 
-Mailgun collects many different events and generates event metrics which are available in your Control Panel. This data is also available via our analytics metrics API endpoint.
+The Mailgun Metrics API provides programmatic access to detailed analytics data about your email sending activity. This API allows you to query, filter, and analyze email performance metrics to gain insights into deliverability, engagement, and overall sending health.
 
-### Post query to get account metrics
+## Metrics vs. Stats API
 
- - [POST /v1/analytics/metrics](https://documentation.mailgun.com/docs/mailgun/api-reference/send/mailgun/metrics/post-v1-analytics-metrics.md): Gets filtered metrics for an account
+The Metrics API is the modern replacement for the deprecated Stats API:
 
-### Post query to get account usage metrics
+| Feature | Stats API (Deprecated) | Metrics API (Current) |
+|---------|----------------------|---------------------|
+| Flexibility | Limited filtering | Advanced filtering with logical operators |
+| Dimensions | Fixed groupings | Flexible dimension combinations |
+| Metrics | Basic counts | Comprehensive metrics including rates |
+| Performance | Slower | Optimized for large datasets |
+| Future Support | None | Active development |
 
- - [POST /v1/analytics/usage/metrics](https://documentation.mailgun.com/docs/mailgun/api-reference/send/mailgun/metrics/post-v1-analytics-usage-metrics.md): Gets filtered usage metrics for an account
+**Migration:** If you're using the Stats API, plan to migrate to the Metrics API for continued support and new features.
+
+## What Are Metrics?
+
+Metrics are quantitative measurements of your email activity. The Mailgun platform collects event data in real-time and aggregates it into meaningful metrics that help you understand how your emails are performing.
+
+## Types of Metrics
+
+Mailgun provides two categories of metrics:
+
+### Sending Metrics (via `/v1/analytics/metrics`)
+
+These metrics track the lifecycle and performance of your outbound emails:
+
+- **Volume Metrics**: Messages accepted, delivered, failed, queued
+- **Engagement Metrics**: Opens, clicks, unsubscribes
+- **Deliverability Metrics**: Bounces (permanent and temporary), complaints (spam reports)
+- **Rate Metrics**: Delivered rate, open rate, click rate, bounce rate
+- **ESP-Specific Metrics**: Performance broken down by email service provider
+
+See [metric definitions](https://documentation.mailgun.com/docs/mailgun/user-manual/reporting/metric-definitions) for a complete list of available metrics.
+
+### Usage Metrics (via `/v1/analytics/usage/metrics`)
+
+These metrics track your consumption of Mailgun services and features:
+
+- **Email Validation**: Single validations, bulk validations, API calls
+- **Email Preview**: Preview generation counts and failures
+- **Blocklist Monitoring**: Domain and IP blocklist checks
+- **Accessibility Checks**: Accessibility validation counts
+- **Seed Testing**: Seed test campaigns sent
+
+## Core Concepts
+
+### Dimensions
+
+Dimensions are the attributes by which you can slice and group your metrics data. Think of them as the "categories" or "labels" for your data.
+
+**Available Dimensions:**
+
+See [dimensions](https://documentation.mailgun.com/docs/mailgun/user-manual/reporting/dimensions) for a complete list of available dimensions.
+
+**Example:** If you query with dimensions `["time", "domain"]`, your results will be grouped by time period for each sending domain.
+
+### Resolution
+
+Resolution determines the time granularity of your results:
+
+- **hour**: Data grouped by hour (useful for real-time monitoring)
+- **day**: Data grouped by day (most common for daily reports)
+- **month**: Data grouped by month (useful for trend analysis)
+
+The resolution you choose affects how the `time` dimension groups your data.
+
+### Time Range Selection
+
+You have flexible options for specifying the time range:
+
+**Option 1: Start and End Dates**
+```json
+{
+"start": "Mon, 13 Nov 2023 00:00:00 -0600",
+"end": "Mon, 20 Nov 2023 23:59:59 -0600"
+}
+```
+
+**Option 2: Duration**
+```json
+{
+"duration": "7d"
+}
+```
+
+This calculates the start date and end date automatically (7 days before the today).
+
+**Date Format:** RFC 2822 format with timezone support
+
+### Filters
+
+Filters allow you to narrow down your data to specific criteria. The filter system uses a logical structure:
+
+```json
+{
+"filter": {
+  "AND": [
+    {
+      "attribute": "domain",
+      "comparator": "=",
+      "values": [
+        {"value": "example.com"}
+      ]
+    },
+    {
+      "attribute": "tag",
+      "comparator": "=",
+      "values": [
+        {"value": "newsletter"}
+      ]
+    }
+  ]
+}
+}
+```
+
+**Note:** Filters only support the "AND" operator. "OR" is not supported.  In the example above, only data where the sending domain equals `example.com` and the tag equals `newsletter` will be returned.
+
+**Filter Components:**
+- **attribute**: The field to filter on (domain, tag, subaccount)
+- **comparator**: The comparison operator (=, !=, contains, not contains)
+- **values**: Array of values to match against
+
+### Aggregates
+
+When `include_aggregates` is set to `true`, the API returns top-level summary statistics across all your queried data. This gives you totals and averages without having to sum the individual items yourself.
+
+### Subaccounts
+
+If you use Mailgun's subaccount feature, you can:
+- Query metrics for a specific subaccount using filters
+- Include all subaccounts' data with `include_subaccounts: true`
+- View aggregated data across all subaccounts
+
+## Data Retention
+
+Mailgun retains metrics data for different durations based on resolution:
+- **Hourly**: 60 days
+- **Daily**: 1 year
+- **Monthly**: Indefinitely 
+
+## Pagination
+
+For queries that return large result sets, the API uses offset-based pagination with `skip` and `limit` request attributes.
+
+- `skip` specifies how many items to offset (skip) from the beginning of the result set.
+- `limit` specifies the maximum number of items to return in a single request.
+
+Defaults and limits:
+- Default page size varies by dimension. Default for time dimension is 1500 items. All other dimensions default to 10 items.
+- Maximum `limit` is 1500 for the time dimension and 1000 for all other dimensions.
+
+How pagination works:
+- Start with `skip=0` and a desired `limit` (for example, `limit=1000`).
+- Retrieve the next page by increasing `skip` by the value of `limit`:
+- First page: `skip=0`, `limit=1000`
+- Second page: `skip=1000`, `limit=1000`
+- Third page: `skip=2000`, `limit=1000`
+- Continue paging until fewer items than the specified `limit` are returned.
+
+Additional details:
+- The response includes a `pagination` object containing the total number of available items.
+- Results can be sorted using the `sort` parameter, for example `time:asc` or `time:desc`. 
+For consistent pagination, use a deterministic sort order.
+
+## Rate Limits and Quotas
+
+- API calls are subject to a rate limit of 500 requests every 10 seconds
+
+### Query account metrics
+
+ - [POST /v1/analytics/metrics](https://documentation.mailgun.com/docs/mailgun/api-reference/send/mailgun/metrics/post-v1-analytics-metrics.md): Queries filtered metrics for an account
+
+### Query account usage metrics
+
+ - [POST /v1/analytics/usage/metrics](https://documentation.mailgun.com/docs/mailgun/api-reference/send/mailgun/metrics/post-v1-analytics-usage-metrics.md): Queries filtered usage metrics for an account
 
 ## Logs
 
@@ -243,7 +424,7 @@ Mailgun keeps track of every inbound and outbound message event and stores this 
 
 ### List Bounce Logs (deprecated)
 
- - [GET /v1/bounce-classification/domains/{domain}/events](https://documentation.mailgun.com/docs/mailgun/api-reference/send/mailgun/bounce-classification/get-v1-bounce-classification-domains--domain--events.md): Deprecated: use POST /v1/analytics/logs - https://documentation.mailgun.com/docs/mailgun/api-reference/openapi-final/tag/Logs/
+ - [GET /v1/bounce-classification/domains/{domain}/events](https://documentation.mailgun.com/docs/mailgun/api-reference/send/mailgun/bounce-classification/get-v1-bounce-classification-domains--domain--events.md): Deprecated: use POST /v1/analytics/logs - https://documentation.mailgun.com/docs/mailgun/api-reference/send/mailgun/logs
 
 ### List entities (deprecated)
 
@@ -275,39 +456,39 @@ Mailgun allows you to tag your email with unique identifiers. Tags are visible v
 
 ## Stats
 
-Mailgun collects many different events and generates event statistics which are available in your Control Panel. This data is also available via our stats API endpoint.<br><br>WARNING:<i> This API is deprecated in favor of our [Metrics](https://documentation.mailgun.com/docs/mailgun/api-reference/openapi-final/tag/Metrics/) API. </i>
+Mailgun collects many different events and generates event statistics which are available in your Control Panel. This data is also available via our stats API endpoint.<br><br>WARNING:<i> This API is deprecated in favor of our [Metrics](https://documentation.mailgun.com/docs/mailgun/api-reference/send/mailgun/metrics) API. </i>
 
-### Totals for entire account
+### Totals for entire account (deprecated)
 
  - [GET /v3/stats/total](https://documentation.mailgun.com/docs/mailgun/api-reference/send/mailgun/stats/get-v3-stats-total.md): Gets stat totals for an entire account
 
-### Totals for entire domain
+### Totals for entire domain (deprecated)
 
  - [GET /v3/{domain}/stats/total](https://documentation.mailgun.com/docs/mailgun/api-reference/send/mailgun/stats/get-v3--domain--stats-total.md): Gets stat totals for an entire domain
 
-### Totals for account domains for a single time resolution
+### Totals for account domains for a single time resolution (deprecated)
 
  - [GET /v3/stats/total/domains](https://documentation.mailgun.com/docs/mailgun/api-reference/send/mailgun/stats/get-v3-stats-total-domains.md): Gets stat  totals for domains in an account for a single time resolution
 
-### Filtered/grouped totals for entire account
+### Filtered/grouped totals for entire account (deprecated)
 
  - [GET /v3/stats/filter](https://documentation.mailgun.com/docs/mailgun/api-reference/send/mailgun/stats/get-v3-stats-filter.md): Gets filtered and group stat totals for an entire account
 
-### Aggregate counts by ESP
+### Aggregate counts by ESP (deprecated)
 
  - [GET /v3/{domain}/aggregates/providers](https://documentation.mailgun.com/docs/mailgun/api-reference/send/mailgun/stats/get-v3--domain--aggregates-providers.md): Gets aggregate counts by email service provider
 
-### Aggregate counts by devices triggering events 
+### Aggregate counts by devices triggering events  (deprecated)
 
  - [GET /v3/{domain}/aggregates/devices](https://documentation.mailgun.com/docs/mailgun/api-reference/send/mailgun/stats/get-v3--domain--aggregates-devices.md): Gets  aggregate counts on devices that triggered events ('tablet', 'phone', 'pc', etcâ¦)
 
-### Aggregate counts by country
+### Aggregate counts by country (deprecated)
 
  - [GET /v3/{domain}/aggregates/countries](https://documentation.mailgun.com/docs/mailgun/api-reference/send/mailgun/stats/get-v3--domain--aggregates-countries.md): Gets aggregate counts by country (USA, RUS, etcâ¦)
 
 ## Tags
 
-Mailgun lets you tag each outgoing message with a custom value. When you access stats on your messages, they will be aggregated by these tags.<br><br>WARNING:<i> This API is deprecated in favor of our new [Tags](https://documentation.mailgun.com/docs/mailgun/api-reference/openapi-final/tag/Tags-New/) API. </i>
+Mailgun lets you tag each outgoing message with a custom value. When you access stats on your messages, they will be aggregated by these tags.<br><br>WARNING:<i> This API is deprecated in favor of our new [Tags](https://documentation.mailgun.com/docs/mailgun/api-reference/send/mailgun/tags-new) API. </i>
 
 ### List all tags (deprecated)
 
@@ -339,7 +520,7 @@ Mailgun lets you tag each outgoing message with a custom value. When you access 
 
 ## Events
 
-Mailgun keeps track of every inbound and outbound message event and stores this data for at least 3 days.<br><br>WARNING:<i> This API is deprecated in favor of our [Logs](https://documentation.mailgun.com/docs/mailgun/api-reference/openapi-final/tag/Logs/) API. </i>
+Mailgun keeps track of every inbound and outbound message event and stores this data for at least 3 days.<br><br>WARNING:<i> This API is deprecated in favor of our [Logs](https://documentation.mailgun.com/docs/mailgun/api-reference/send/mailgun/logs) API. </i>
 
 ### Retrieves a paginated list of events
 
@@ -381,27 +562,27 @@ Unsubscribe list stores email addresses of recipients who unsubscribed from your
 
 ### Import unsubscribe list
 
- - [POST /v3/{domainID}/unsubscribes/import](https://documentation.mailgun.com/docs/mailgun/api-reference/send/mailgun/unsubscribe/post-v3--domainid--unsubscribes-import.md): Import a CSV file containing a list of addresses to add to the unsubscribe list. The CSV file must be 25MB or under and can contain the following column headers: address, tags, created_at. address is a valid email address (required). tags is tag to unsubscribe from, use ). created_at is timestamp of unsubscribe event in RFC2822 format (optional, default: current time)
+ - [POST /v3/{domain_name}/unsubscribes/import](https://documentation.mailgun.com/docs/mailgun/api-reference/send/mailgun/unsubscribe/post-v3--domainid--unsubscribes-import.md): Import a CSV file containing a list of addresses to add to the unsubscribe list. The CSV file must be 25MB or under and can contain the following column headers: address, tags, created_at. address is a valid email address (required). tags is tag to unsubscribe from, use ). created_at is timestamp of unsubscribe event in RFC2822 format (optional, default: current time)
 
 ### Lookup unsubscribe record
 
- - [GET /v3/{domainID}/unsubscribes/{address}](https://documentation.mailgun.com/docs/mailgun/api-reference/send/mailgun/unsubscribe/get-v3--domainid--unsubscribes--address-.md): Fetch a single unsubscribe record to check if a given address is present in a list of unsubscribed users.
+ - [GET /v3/{domain_name}/unsubscribes/{address}](https://documentation.mailgun.com/docs/mailgun/api-reference/send/mailgun/unsubscribe/get-v3--domainid--unsubscribes--address-.md): Fetch a single unsubscribe record to check if a given address is present in a list of unsubscribed users.
 
 ### Remove unsubscribe
 
- - [DELETE /v3/{domainID}/unsubscribes/{address}](https://documentation.mailgun.com/docs/mailgun/api-reference/send/mailgun/unsubscribe/delete-v3--domainid--unsubscribes--address-.md): Delivery to the deleted email address resumes until it unsubscribes again.
+ - [DELETE /v3/{domain_name}/unsubscribes/{address}](https://documentation.mailgun.com/docs/mailgun/api-reference/send/mailgun/unsubscribe/delete-v3--domainid--unsubscribes--address-.md): Delivery to the deleted email address resumes until it unsubscribes again.
 
 ### List all unsubscribes
 
- - [GET /v3/{domainID}/unsubscribes](https://documentation.mailgun.com/docs/mailgun/api-reference/send/mailgun/unsubscribe/get-v3--domainid--unsubscribes.md): Paginate over a list of unsubscribes for domain.
+ - [GET /v3/{domain_name}/unsubscribes](https://documentation.mailgun.com/docs/mailgun/api-reference/send/mailgun/unsubscribe/get-v3--domainid--unsubscribes.md): Paginate over a list of unsubscribes for domain.
 
 ### Add unsubscribes
 
- - [POST /v3/{domainID}/unsubscribes](https://documentation.mailgun.com/docs/mailgun/api-reference/send/mailgun/unsubscribe/post-v3--domainid--unsubscribes.md): Request body is expected to be a valid JSON encoded sting containing up to 1000 unsubscribe records or a single unsubscribe record as application/form-data
+ - [POST /v3/{domain_name}/unsubscribes](https://documentation.mailgun.com/docs/mailgun/api-reference/send/mailgun/unsubscribe/post-v3--domainid--unsubscribes.md): Request body is expected to be a valid JSON encoded sting containing up to 1000 unsubscribe records or a single unsubscribe record as application/form-data
 
 ### Clear all unsubscribes
 
- - [DELETE /v3/{domainID}/unsubscribes](https://documentation.mailgun.com/docs/mailgun/api-reference/send/mailgun/unsubscribe/delete-v3--domainid--unsubscribes.md): Clear all unsubscribe email addresses for the domain. Delivery to the deleted email addresses will no longer be suppressed.
+ - [DELETE /v3/{domain_name}/unsubscribes](https://documentation.mailgun.com/docs/mailgun/api-reference/send/mailgun/unsubscribe/delete-v3--domainid--unsubscribes.md): Clear all unsubscribe email addresses for the domain. Delivery to the deleted email addresses will no longer be suppressed.
 
 ## Complaints
 
@@ -409,27 +590,27 @@ Email addresses of recipients who marked your messages as a spam (for ESPs that 
 
 ### Import complaint list
 
- - [POST /v3/{domainID}/complaints/import](https://documentation.mailgun.com/docs/mailgun/api-reference/send/mailgun/complaints/post-v3--domainid--complaints-import.md): Import a CSV file containing a list of addresses to add to the complaint list. The CSV file must be 25MB or under and can contain the following column headers: address, created_at. address is a valid email address (required). created_at is timestamp of complaint event in RFC2822 format (optional, default: current time)
+ - [POST /v3/{domain_name}/complaints/import](https://documentation.mailgun.com/docs/mailgun/api-reference/send/mailgun/complaints/post-v3--domainid--complaints-import.md): Import a CSV file containing a list of addresses to add to the complaint list. The CSV file must be 25MB or under and can contain the following column headers: address, created_at. address is a valid email address (required). created_at is timestamp of complaint event in RFC2822 format (optional, default: current time)
 
 ### Lookup complaint record
 
- - [GET /v3/{domainID}/complaints/{address}](https://documentation.mailgun.com/docs/mailgun/api-reference/send/mailgun/complaints/get-v3--domainid--complaints--address-.md): Fetch a single complaint records to check if a given address is present in the list of complaints.
+ - [GET /v3/{domain_name}/complaints/{address}](https://documentation.mailgun.com/docs/mailgun/api-reference/send/mailgun/complaints/get-v3--domainid--complaints--address-.md): Fetch a single complaint records to check if a given address is present in the list of complaints.
 
 ### Remove complaint
 
- - [DELETE /v3/{domainID}/complaints/{address}](https://documentation.mailgun.com/docs/mailgun/api-reference/send/mailgun/complaints/delete-v3--domainid--complaints--address-.md): Delivery to the deleted email address resumes until there is another complaint.
+ - [DELETE /v3/{domain_name}/complaints/{address}](https://documentation.mailgun.com/docs/mailgun/api-reference/send/mailgun/complaints/delete-v3--domainid--complaints--address-.md): Delivery to the deleted email address resumes until there is another complaint.
 
 ### List all complaints
 
- - [GET /v3/{domainID}/complaints](https://documentation.mailgun.com/docs/mailgun/api-reference/send/mailgun/complaints/get-v3--domainid--complaints.md): Paginate a list of complaints for the domain.
+ - [GET /v3/{domain_name}/complaints](https://documentation.mailgun.com/docs/mailgun/api-reference/send/mailgun/complaints/get-v3--domainid--complaints.md): Paginate a list of complaints for the domain.
 
 ### Add complaints
 
- - [POST /v3/{domainID}/complaints](https://documentation.mailgun.com/docs/mailgun/api-reference/send/mailgun/complaints/post-v3--domainid--complaints.md): Request body is expected to be a valid JSON encoded sting containing up to 1000 complaint records or a single complaint record as application/form-data
+ - [POST /v3/{domain_name}/complaints](https://documentation.mailgun.com/docs/mailgun/api-reference/send/mailgun/complaints/post-v3--domainid--complaints.md): Request body is expected to be a valid JSON encoded sting containing up to 1000 complaint records or a single complaint record as application/form-data
 
 ### Clear all complaints
 
- - [DELETE /v3/{domainID}/complaints](https://documentation.mailgun.com/docs/mailgun/api-reference/send/mailgun/complaints/delete-v3--domainid--complaints.md): Clears all email addresses with complaints from the domain. Delivery to the deleted email addresses will longer be suppressed.
+ - [DELETE /v3/{domain_name}/complaints](https://documentation.mailgun.com/docs/mailgun/api-reference/send/mailgun/complaints/delete-v3--domainid--complaints.md): Clears all email addresses with complaints from the domain. Delivery to the deleted email addresses will longer be suppressed.
 
 ## Bounces
 
@@ -437,27 +618,27 @@ Bounces - Bounce list stores events of delivery failures due to permanent recipi
 
 ### Import list of bounces
 
- - [POST /v3/{domainID}/bounces/import](https://documentation.mailgun.com/docs/mailgun/api-reference/send/mailgun/bounces/post-v3--domainid--bounces-import.md): Import a CSV file containing a list of addresses to add to the bounce list. The CSV file must be 25MB or under and must contain the following column headers: address, code, error, created_at. address is a valid email address. code is error code (optional, default: 550). error is error description (optional, default: empty string). created_at is timestamp of bounce event in RFC2822 format (optional, default: current time)
+ - [POST /v3/{domain_name}/bounces/import](https://documentation.mailgun.com/docs/mailgun/api-reference/send/mailgun/bounces/post-v3--domainid--bounces-import.md): Import a CSV file containing a list of addresses to add to the bounce list. The CSV file must be 25MB or under and must contain the following column headers: address, code, error, created_at. address is a valid email address. code is error code (optional, default: 550). error is error description (optional, default: empty string). created_at is timestamp of bounce event in RFC2822 format (optional, default: current time)
 
 ### Lookup bounce record
 
- - [GET /v3/{domainID}/bounces/{address}](https://documentation.mailgun.com/docs/mailgun/api-reference/send/mailgun/bounces/get-v3--domainid--bounces--address-.md): Fetch a single bounce event by a given email address.
+ - [GET /v3/{domain_name}/bounces/{address}](https://documentation.mailgun.com/docs/mailgun/api-reference/send/mailgun/bounces/get-v3--domainid--bounces--address-.md): Fetch a single bounce event by a given email address.
 
 ### Remove bounce
 
- - [DELETE /v3/{domainID}/bounces/{address}](https://documentation.mailgun.com/docs/mailgun/api-reference/send/mailgun/bounces/delete-v3--domainid--bounces--address-.md): Delivery to the deleted email address resumes until it bounces again.
+ - [DELETE /v3/{domain_name}/bounces/{address}](https://documentation.mailgun.com/docs/mailgun/api-reference/send/mailgun/bounces/delete-v3--domainid--bounces--address-.md): Delivery to the deleted email address resumes until it bounces again.
 
 ### List all bounces
 
- - [GET /v3/{domainID}/bounces](https://documentation.mailgun.com/docs/mailgun/api-reference/send/mailgun/bounces/get-v3--domainid--bounces.md): Paginate over a list of bounces for a domain.
+ - [GET /v3/{domain_name}/bounces](https://documentation.mailgun.com/docs/mailgun/api-reference/send/mailgun/bounces/get-v3--domainid--bounces.md): Paginate over a list of bounces for a domain.
 
 ### Add bounces
 
- - [POST /v3/{domainID}/bounces](https://documentation.mailgun.com/docs/mailgun/api-reference/send/mailgun/bounces/post-v3--domainid--bounces.md): Request body is expected to be a valid JSON encoded sting containing up to 1000 bounce records or a single bounce record as application/form-data
+ - [POST /v3/{domain_name}/bounces](https://documentation.mailgun.com/docs/mailgun/api-reference/send/mailgun/bounces/post-v3--domainid--bounces.md): Request body is expected to be a valid JSON encoded sting containing up to 1000 bounce records or a single bounce record as application/form-data
 
 ### Clear all bounces
 
- - [DELETE /v3/{domainID}/bounces](https://documentation.mailgun.com/docs/mailgun/api-reference/send/mailgun/bounces/delete-v3--domainid--bounces.md): Clears all email addresses with bounces from the domain. Delivery to the deleted email addresses will longer be suppressed.
+ - [DELETE /v3/{domain_name}/bounces](https://documentation.mailgun.com/docs/mailgun/api-reference/send/mailgun/bounces/delete-v3--domainid--bounces.md): Clears all email addresses with bounces from the domain. Delivery to the deleted email addresses will longer be suppressed.
 
 ## Allowlist
 
@@ -465,27 +646,27 @@ The allowlist API provides the ability to allowlist specific addresses from bein
 
 ### Import allowlist
 
- - [POST /v3/{domainID}/whitelists/import](https://documentation.mailgun.com/docs/mailgun/api-reference/send/mailgun/allowlist/post-v3--domainid--whitelists-import.md): Import a CSV file containing a list of addresses and/or domains to add to the allowlist. The CSV file must be 25MB or under and must contain the following column headers: address, domain. For each row provide either an address or a domain, but not both - choose one, keep the other blank.
+ - [POST /v3/{domain_name}/whitelists/import](https://documentation.mailgun.com/docs/mailgun/api-reference/send/mailgun/allowlist/post-v3--domainid--whitelists-import.md): Import a CSV file containing a list of addresses and/or domains to add to the allowlist. The CSV file must be 25MB or under and must contain the following column headers: address, domain. For each row provide either an address or a domain, but not both - choose one, keep the other blank.
 
 ### Lookup allowlist record
 
- - [GET /v3/{domainID}/whitelists/{value}](https://documentation.mailgun.com/docs/mailgun/api-reference/send/mailgun/allowlist/get-v3--domainid--whitelists--value-.md): Fetch a single allowlist record to check if a given address or domain is present.
+ - [GET /v3/{domain_name}/whitelists/{value}](https://documentation.mailgun.com/docs/mailgun/api-reference/send/mailgun/allowlist/get-v3--domainid--whitelists--value-.md): Fetch a single allowlist record to check if a given address or domain is present.
 
 ### Remove entry from allowlist
 
- - [DELETE /v3/{domainID}/whitelists/{value}](https://documentation.mailgun.com/docs/mailgun/api-reference/send/mailgun/allowlist/delete-v3--domainid--whitelists--value-.md): Remove a single entry from the allowlist
+ - [DELETE /v3/{domain_name}/whitelists/{value}](https://documentation.mailgun.com/docs/mailgun/api-reference/send/mailgun/allowlist/delete-v3--domainid--whitelists--value-.md): Remove a single entry from the allowlist
 
 ### List allowlist records for domain
 
- - [GET /v3/{domainID}/whitelists](https://documentation.mailgun.com/docs/mailgun/api-reference/send/mailgun/allowlist/get-v3--domainid--whitelists.md): Paginate over  all allowlist records for a domain.
+ - [GET /v3/{domain_name}/whitelists](https://documentation.mailgun.com/docs/mailgun/api-reference/send/mailgun/allowlist/get-v3--domainid--whitelists.md): Paginate over  all allowlist records for a domain.
 
 ### Add allowlist record
 
- - [POST /v3/{domainID}/whitelists](https://documentation.mailgun.com/docs/mailgun/api-reference/send/mailgun/allowlist/post-v3--domainid--whitelists.md): Add an address or domain to the allowlist table
+ - [POST /v3/{domain_name}/whitelists](https://documentation.mailgun.com/docs/mailgun/api-reference/send/mailgun/allowlist/post-v3--domainid--whitelists.md): Add an address or domain to the allowlist table
 
 ### Clear allowlist
 
- - [DELETE /v3/{domainID}/whitelists](https://documentation.mailgun.com/docs/mailgun/api-reference/send/mailgun/allowlist/delete-v3--domainid--whitelists.md): Delete an entire allowlist for a domain
+ - [DELETE /v3/{domain_name}/whitelists](https://documentation.mailgun.com/docs/mailgun/api-reference/send/mailgun/allowlist/delete-v3--domainid--whitelists.md): Delete an entire allowlist for a domain
 
 ## Routes
 
@@ -603,7 +784,7 @@ This API allows you to store predefined templates and use them to send messages 
 
 ### Get template
 
- - [GET /v3/{domain_name}/templates/{template_name}](https://documentation.mailgun.com/docs/mailgun/api-reference/send/mailgun/templates/get-v3--domain-name--templates--template-name-.md): Returns metadata information about the stored template specified in the url. If the active flag is provided, the content of the active version of the template is returned.
+ - [GET /v3/{domain_name}/templates/{template_name}](https://documentation.mailgun.com/docs/mailgun/api-reference/send/mailgun/templates/get-v3--domain-name--templates--template-name-.md): Returns metadata information about the stored template specified in the url. If the active flag is provided, the content of the active version of the template is returned. If the version_name flag is provided, version information will be included as well. By default: the  field is not provided. To see available versions other than the active version, use the  API instead
 
 ### Update template
 
@@ -1199,23 +1380,23 @@ Perform account-level CRUD operations.
 
 ## Keys
 
-The Keys API lets you view and manage api keys.
+The Keys API lets you view and manage API keys.
 
 ### List Mailgun API keys
 
- - [GET /v1/keys](https://documentation.mailgun.com/docs/mailgun/api-reference/send/mailgun/keys/api.(*keysapi).listkeys-fm-6.md): List Mailgun API keys
+ - [GET /v1/keys](https://documentation.mailgun.com/docs/mailgun/api-reference/send/mailgun/keys/get-v1-keys.md): List Mailgun API keys
 
 ### Create Mailgun API key
 
- - [POST /v1/keys](https://documentation.mailgun.com/docs/mailgun/api-reference/send/mailgun/keys/api.(*keysapi).createkey-fm-7.md): Create Mailgun API key
+ - [POST /v1/keys](https://documentation.mailgun.com/docs/mailgun/api-reference/send/mailgun/keys/post-v1-keys.md): Create Mailgun API key
 
 ### Delete Mailgun API key
 
- - [DELETE /v1/keys/{key_id}](https://documentation.mailgun.com/docs/mailgun/api-reference/send/mailgun/keys/api.(*keysapi).deletekey-fm-8.md): Delete Mailgun API key
+ - [DELETE /v1/keys/{key_id}](https://documentation.mailgun.com/docs/mailgun/api-reference/send/mailgun/keys/delete-v1-keys--key-id-.md): Delete Mailgun API key
 
 ### Regenerate Mailgun Public API key
 
- - [POST /v1/keys/public](https://documentation.mailgun.com/docs/mailgun/api-reference/send/mailgun/keys/api.(*keysapi).regeneratepublickey-fm-9.md): Regenerate Mailgun Public API key
+ - [POST /v1/keys/public](https://documentation.mailgun.com/docs/mailgun/api-reference/send/mailgun/keys/post-v1-keys-public.md): Regenerate Mailgun Public API key
 
 ## Credentials
 
@@ -1223,47 +1404,43 @@ The Credentials API lets you view and manage SMTP credentials.
 
 ### List Mailgun SMTP credential metadata for a given domain
 
- - [GET /v3/domains/{domain_name}/credentials](https://documentation.mailgun.com/docs/mailgun/api-reference/send/mailgun/credentials/api.(*credsapi).listcreds-fm-12.md): List Mailgun SMTP credential metadata for a given domain
+ - [GET /v3/domains/{domain_name}/credentials](https://documentation.mailgun.com/docs/mailgun/api-reference/send/mailgun/credentials/get-v3-domains--domain-name--credentials.md): List Mailgun SMTP credential metadata for a given domain
 
 ### Create Mailgun SMTP credentials for a given domain
 
- - [POST /v3/domains/{domain_name}/credentials](https://documentation.mailgun.com/docs/mailgun/api-reference/send/mailgun/credentials/api.(*credsapi).createcreds-fm-13.md): Create Mailgun SMTP credentials for a given domain
+ - [POST /v3/domains/{domain_name}/credentials](https://documentation.mailgun.com/docs/mailgun/api-reference/send/mailgun/credentials/post-v3-domains--domain-name--credentials.md): Create Mailgun SMTP credentials for a given domain
 
 ### Delete all Mailgun SMTP credentials for a domain
 
- - [DELETE /v3/domains/{domain_name}/credentials](https://documentation.mailgun.com/docs/mailgun/api-reference/send/mailgun/credentials/api.(*credsapi).deletedomaincreds-fm-16.md): Delete Mailgun SMTP credentials for a given domain
+ - [DELETE /v3/domains/{domain_name}/credentials](https://documentation.mailgun.com/docs/mailgun/api-reference/send/mailgun/credentials/delete-v3-domains--domain-name--credentials.md): Delete Mailgun SMTP credentials for a given domain
 
 ### Update Mailgun SMTP credentials
 
- - [PUT /v3/domains/{domain_name}/credentials/{spec}](https://documentation.mailgun.com/docs/mailgun/api-reference/send/mailgun/credentials/api.(*credsapi).updatecreds-fm-14.md): Update Mailgun SMTP credentials for a given domain and SMTP user
+ - [PUT /v3/domains/{domain_name}/credentials/{spec}](https://documentation.mailgun.com/docs/mailgun/api-reference/send/mailgun/credentials/put-v3-domains--domain-name--credentials--spec-.md): Update Mailgun SMTP credentials for a given domain and SMTP user
 
 ### Delete Mailgun SMTP credentials
 
- - [DELETE /v3/domains/{domain_name}/credentials/{spec}](https://documentation.mailgun.com/docs/mailgun/api-reference/send/mailgun/credentials/api.(*credsapi).deletecreds-fm-17.md): Delete Mailgun SMTP credentials for a given domain and SMTP user
-
-### Update Mailgun SMTP credentials
-
- - [PUT /v3/{domain_name}/mailboxes/{spec}](https://documentation.mailgun.com/docs/mailgun/api-reference/send/mailgun/credentials/api.(*credsapi).updatecreds-fm-15.md): Update Mailgun SMTP credentials for a given domain and SMTP user
+ - [DELETE /v3/domains/{domain_name}/credentials/{spec}](https://documentation.mailgun.com/docs/mailgun/api-reference/send/mailgun/credentials/delete-v3-domains--domain-name--credentials--spec-.md): Delete Mailgun SMTP credentials for a given domain and SMTP user
 
 ## IP Allowlist
 
-The IP Allowlist API lets you view and manage allowlisted IP addresses to which api key and SMTP credential usage is restricted.
+The IP Allowlist API lets you view and manage allowlisted IP addresses to which API key and SMTP credential usage is restricted.
 
 ### List Mailgun account IP allowlist entries
 
- - [GET /v2/ip_whitelist](https://documentation.mailgun.com/docs/mailgun/api-reference/send/mailgun/ip-allowlist/api.(*whitelistapi).listwhitelistv2-fm-21.md): List Mailgun account IP allowlist entries
+ - [GET /v2/ip_whitelist](https://documentation.mailgun.com/docs/mailgun/api-reference/send/mailgun/ip-allowlist/get-v2-ip-whitelist.md): List Mailgun account IP allowlist entries
 
 ### Update individual Mailgun account IP allowlist entry's description
 
- - [PUT /v2/ip_whitelist](https://documentation.mailgun.com/docs/mailgun/api-reference/send/mailgun/ip-allowlist/api.(*whitelistapi).updatewhitelistv2-fm-23.md): Update individual Mailgun account IP allowlist entry's description
+ - [PUT /v2/ip_whitelist](https://documentation.mailgun.com/docs/mailgun/api-reference/send/mailgun/ip-allowlist/put-v2-ip-whitelist.md): Update individual Mailgun account IP allowlist entry's description
 
 ### Add Mailgun account IP allowlist entry
 
- - [POST /v2/ip_whitelist](https://documentation.mailgun.com/docs/mailgun/api-reference/send/mailgun/ip-allowlist/api.(*whitelistapi).addwhitelistv2-fm-22.md): Add Mailgun account IP allowlist entry
+ - [POST /v2/ip_whitelist](https://documentation.mailgun.com/docs/mailgun/api-reference/send/mailgun/ip-allowlist/post-v2-ip-whitelist.md): Add Mailgun account IP allowlist entry
 
 ### Delete Mailgun account IP allowlist entry
 
- - [DELETE /v2/ip_whitelist](https://documentation.mailgun.com/docs/mailgun/api-reference/send/mailgun/ip-allowlist/api.(*whitelistapi).deletewhitelistv2-fm-24.md): Delete Mailgun account IP allowlist entry
+ - [DELETE /v2/ip_whitelist](https://documentation.mailgun.com/docs/mailgun/api-reference/send/mailgun/ip-allowlist/delete-v2-ip-whitelist.md): Delete Mailgun account IP allowlist entry
 
 ## Users
 
@@ -1279,5 +1456,5 @@ Mailgun API supports viewing user entities.
 
 ### Get one's own user details
 
- - [GET /v5/users/me](https://documentation.mailgun.com/docs/mailgun/api-reference/send/mailgun/users/get-v5-users-me.md): Get one's own user details, requires use of api key of 'user' kind
+ - [GET /v5/users/me](https://documentation.mailgun.com/docs/mailgun/api-reference/send/mailgun/users/get-v5-users-me.md): Get one's own user details, requires use of an API key with a  saved on it, typically of 'web' kind
 

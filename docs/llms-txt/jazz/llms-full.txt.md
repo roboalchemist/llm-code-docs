@@ -18,26 +18,6 @@
 
 # Source: https://jazz.tools/react/llms-full.txt
 
-# Source: https://jazz.tools/vanilla/llms-full.txt
-
-# Source: https://jazz.tools/react-native-expo/llms-full.txt
-
-# Source: https://jazz.tools/react-native/llms-full.txt
-
-# Source: https://jazz.tools/svelte/llms-full.txt
-
-# Source: https://jazz.tools/react/llms-full.txt
-
-# Source: https://jazz.tools/vanilla/llms-full.txt
-
-# Source: https://jazz.tools/react-native-expo/llms-full.txt
-
-# Source: https://jazz.tools/react-native/llms-full.txt
-
-# Source: https://jazz.tools/svelte/llms-full.txt
-
-# Source: https://jazz.tools/react/llms-full.txt
-
 # Jazz (react)
 
 ## Getting started
@@ -362,7 +342,9 @@ NEXT_PUBLIC_JAZZ_API_KEY="you@example.com" # or your API key
 
 Jazz uses Zod for more simple data types (like strings, numbers, booleans), and its own schemas to create collaborative data structures known as CoValues. CoValues are automatically persisted across your devices and the cloud and synced in real-time. Here we're defining a schema made up of both Zod types and CoValues.
 
-Adding a `root` to the user's account gives us a container that can be used to keep a track of all the data a user might need to use the app. The migration runs when the user logs in, and ensures the account is properly set up before we try to use it.
+Adding a `root` to the user's account gives us a container that can be used to keep a track of all the data a user might need to use the app.
+
+The migration runs when the user logs in, and ensures the account is properly set up before we try to use it.
 
 **File name: app/schema.ts**
 
@@ -394,7 +376,7 @@ export const JazzFestAccount = co
 
 ```
 
-## Add the Jazz Provider
+## Add the Jazz Provider \[!framework=react,svelte\]
 
 Wrap your app with a provider so components can use Jazz.
 
@@ -428,17 +410,17 @@ export function JazzWrapper({ children }: { children: React.ReactNode }) {
 import { JazzWrapper } from "@/app/components/JazzWrapper";
 
 export default function RootLayout({
-children,
+  children,
 }: {
-children: React.ReactNode;
+  children: React.ReactNode;
 }) {
-return (
-  <html lang="en">
-    <body>
-      <JazzWrapper>{children}</JazzWrapper>
-    </body>
-  </html>
-);
+  return (
+    <html lang="en">
+      <body>
+        <JazzWrapper>{children}</JazzWrapper>
+      </body>
+    </html>
+  );
 }
 
 ```
@@ -596,17 +578,17 @@ import { JazzReactProvider } from "jazz-tools/react";
 import { MyAppAccount } from "./schema";
 
 export function MyApp({ children }: { children: React.ReactNode }) {
-return (
-  <JazzReactProvider
-    sync={{
-      peer: `wss://cloud.jazz.tools/?key=${apiKey}`,
-      when: "always", // When to sync: "always", "never", or "signedUp"
-    }}
-    AccountSchema={MyAppAccount}
-  >
-    {children}
-  </JazzReactProvider>
-);
+  return (
+    <JazzReactProvider
+      sync={{
+        peer: `wss://cloud.jazz.tools/?key=${apiKey}`,
+        when: "always", // When to sync: "always", "never", or "signedUp"
+      }}
+      AccountSchema={MyAppAccount}
+    >
+      {children}
+    </JazzReactProvider>
+  );
 }
 
 ```
@@ -632,11 +614,11 @@ The `sync` property configures how your application connects to the Jazz network
 import { type SyncConfig } from "jazz-tools";
 
 export const syncConfig: SyncConfig = {
-// Connection to Jazz Cloud or your own sync server
-peer: `wss://cloud.jazz.tools/?key=${apiKey}`,
+  // Connection to Jazz Cloud or your own sync server
+  peer: `wss://cloud.jazz.tools/?key=${apiKey}`,
 
-// When to sync: "always" (default), "never", or "signedUp"
-when: "always",
+  // When to sync: "always" (default), "never", or "signedUp"
+  when: "always",
 };
 
 ```
@@ -673,31 +655,31 @@ The provider accepts these additional options:
 
 ```tsx
 export function MyApp({ children }: { children: React.ReactNode }) {
-return (
-  <JazzReactProvider
-    sync={syncConfig}
-    // Enable guest mode for account-less access
-    guestMode={false}
-    // Enable SSR mode
-    enableSSR={false}
-    // Set default name for new user profiles
-    defaultProfileName="New User"
-    // Override the default storage key
-    authSecretStorageKey="jazz-logged-in-secret"
-    // Handle user logout
-    onLogOut={() => {
-      console.log("User logged out");
-    }}
-    // Handle anonymous account data when user logs in to existing account
-    onAnonymousAccountDiscarded={(account) => {
-      console.log("Anonymous account discarded", account.$jazz.id);
-      // Migrate data here
-      return Promise.resolve();
-    }}
-  >
-    {children}
-  </JazzReactProvider>
-);
+  return (
+    <JazzReactProvider
+      sync={syncConfig}
+      // Enable guest mode for account-less access
+      guestMode={false}
+      // Enable SSR mode
+      enableSSR={false}
+      // Set default name for new user profiles
+      defaultProfileName="New User"
+      // Override the default storage key
+      authSecretStorageKey="jazz-logged-in-secret"
+      // Handle user logout
+      onLogOut={() => {
+        console.log("User logged out");
+      }}
+      // Handle anonymous account data when user logs in to existing account
+      onAnonymousAccountDiscarded={(account) => {
+        console.log("Anonymous account discarded", account.$jazz.id);
+        // Migrate data here
+        return Promise.resolve();
+      }}
+    >
+      {children}
+    </JazzReactProvider>
+  );
 }
 
 ```
@@ -711,6 +693,622 @@ The Jazz Provider works with various authentication methods to enable users to a
 ## Need Help?
 
 If you have questions about configuring the Jazz Provider for your specific use case, [join our Discord community](https://discord.gg/utDMjHYg42) for help.
+
+
+### API Reference
+# CoValues API Reference
+
+Understanding how to work with CoValues is critical to building apps with Jazz. This reference guide is intended to help you get up and running by quickly demonstrating the most common use cases. For more in depth detail, you should review the linked dedicated pages.
+
+If you have any questions, we'd be happy to chat on our [Discord server](https://discord.gg/utDMjHYg42)!
+
+| TypeScript Type            | Corresponding CoValue      | Usage                                                   |
+| -------------------------- | -------------------------- | ------------------------------------------------------- |
+| object                     | **CoMap**                  | Key-value stores with pre-defined keys (struct-like)    |
+| Record<string, T>          | **CoRecord**               | Key-value stores with arbitrary string keys (dict-like) |
+| T\[\]                      | **CoList**                 | Lists                                                   |
+| T\[\] (append-only)        | **CoFeed**                 | Session-based append-only lists                         |
+| string                     | **CoPlainText/CoRichText** | Collaborative text                                      |
+| Blob \| File               | **FileStream**             | Files                                                   |
+| Blob \| File (image)       | **ImageDefinition**        | Images                                                  |
+| number\[\] \| Float32Array | **CoVector**               | Embeddings                                              |
+| T \| U (discriminated)     | **DiscriminatedUnion**     | Lists of different types of items                       |
+
+## Defining Schemas
+
+CoValues are defined using schemas which combine CoValue types with Zod schemas. You can find out more about schemas in the [schemas](/core-concepts/covalues/overview#start-your-app-with-a-schema) section of the overview guide.
+
+**File name: schema.ts**
+
+```ts
+// 1. CoMaps: Object-like with fixed keys
+const ToDo = co.map({
+  task: z.string(),
+  completed: z.boolean(),
+  dueDate: z.date().optional(),
+});
+
+// 2. CoRecords: Object-like with arbitrary string keys
+const PhoneBook = co.record(z.string(), z.string()); // co.record(keyType, valueType)
+
+// 3. CoLists: Array-like ordered list
+const ToDoList = co.list(ToDo); // co.list(itemType)
+
+// 4. CoFeeds: Array-like append-only list
+const Message = co.map({ text: z.string() });
+const ChatMessages = co.feed(Message); // co.feed(itemType)
+
+// 5. CoPlainTexts/CoRichTexts: String-like
+const Description = co.plainText(); // or co.richText();
+
+// 6. FileStreams: Blob-like
+const UploadedPDF = co.fileStream();
+
+// 7. ImageDefinitions: Blob-like
+const UploadedImage = co.image();
+
+// 8. CoVectors: Array-like list of numbers/Float32Array
+const Embedding = co.vector(384); // co.vector(dimensions)
+
+// 9. DiscriminatedUnions: Union of different types of items
+const ThisSchema = co.map({
+  type: z.literal("this"),
+  thisProperty: z.string(),
+});
+const ThatSchema = co.map({
+  type: z.literal("that"),
+  thatProperty: z.string(),
+});
+const MyThisOrThat = co.discriminatedUnion("type", [ThisSchema, ThatSchema]); // co.discriminatedUnion(discriminatorKey, arrayOfSchemas)
+
+```
+
+You can use the following Zod types to describe primitive data types:
+
+| Type               | Usage    | Comment                                                           |
+| ------------------ | -------- | ----------------------------------------------------------------- |
+| z.string()         | string   | For simple strings which don't need character-level collaboration |
+| z.number()         | number   |                                                                   |
+| z.boolean()        | boolean  |                                                                   |
+| z.date()           | Date     |                                                                   |
+| z.literal()        | literal  | For enums — pass possible values as an array                      |
+| z.object()         | object   | An immutable, **non-collaborative** object                        |
+| z.tuple()          | tuple    | An immutable, **non-collaborative** array                         |
+| z.optional(schema) | optional | Pass a Zod schema for an optional property with that schema type  |
+
+**Info: Tip** 
+
+You can also use the `.optional()` method on both CoValue and Zod schemas to mark them as optional.
+
+There are three additional purpose-specific variants of the `CoMap` type you are likely to need while building Jazz applications.
+
+* `co.account()` — a Jazz account
+* `co.profile()` — a user profile
+* `co.group()` — a group of users
+
+## Creating CoValues
+
+### Explicit Creation
+
+Once you have a schema, you can create new CoValue instances using that schema using the `.create()` static method. You should pass an initial value as the first argument to this method.
+
+| CoValue Type               | Example                                                                                                                                                     |
+| -------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **CoMap**                  | Task.create({ task: "Check out Jazz", completed: false })                                                                                                   |
+| **CoRecord**               | PhoneBook.create({ "Jenny": "867-5309" })                                                                                                                   |
+| **CoList**                 | TaskList.create(\[task1, task2\])                                                                                                                           |
+| **CoPlainText/CoRichText** | Description.create("Hello World")                                                                                                                           |
+| **CoFeed**                 | ChatMessages.create(\[{ message: "Hello world!" }\])                                                                                                        |
+| **FileStream**             | UploadedPDF.createFromBlob(myFile)                                                                                                                          |
+| **ImageDefinition**        | createImage(myFile) _note that [using the helper](/docs/core-concepts/covalues/imagedef#creating-images) is the preferred way to create an ImageDefinition_ |
+| **CoVector**               | Embedding.create(\[0.1, 0.2, ...\])                                                                                                                         |
+| **DiscriminatedUnion**     | MyThis.create({ type: "this", ... })_note that you can only instantiate one of the schemas in the union_                                                    |
+
+**Info: create vs. createFromBlob** 
+
+`FileStream` CoValues _can_ be created using the `.create()` method. This will create an empty `FileStream` for you to push chunks into (useful for advanced streaming cases). However, in many cases, using `.createFromBlob(blobOrFile)` to create a `FileStream` directly from a `File` or `Blob` will be more convenient.
+
+### Inline Creation
+
+Where a schema has references, you can create nested CoValues one by one and attach them, but Jazz also allows you to create them inline by specifying their initial values.
+
+```ts
+const Task = co.map({
+  title: z.string(),
+  completed: z.boolean(),
+});
+
+const TaskList = co.list(Task);
+const taskList = TaskList.create([
+  { title: "Task 1", completed: false }, // These will create new Task CoValues
+  { title: "Task 2", completed: false }, // both will be inserted into the TaskList
+]);
+
+```
+
+### Permissions
+
+When creating any CoValue, the `.create` method accepts an optional options object as the second argument, which allows you to specify the `owner` of the CoValue.
+
+```ts
+const group = co.group().create();
+const task = Task.create(
+  { title: "Buy milk", completed: false },
+  { owner: group },
+);
+
+```
+
+If you don't pass an `options` object, or if `owner` is omitted, Jazz will check if there are [permissions configured at a schema level](/docs/permissions-and-sharing/overview#defining-permissions-at-the-schema-level).
+
+If no permissions are set at a schema level when creating CoValues inline, a new group will be created extending the **containing CoValue's ownership group**. In the "Inline Creation" example above, a new group would be created for each task, each extending the ownership group of the `taskList` CoList.
+
+It is a good idea to read through the [permissions](/docs/permissions-and-sharing/overview) section to understand how to manage permissions on CoValues, as unlike in other databases, permissions are fundamental to how Jazz works at a low level, rather than a supporting feature.
+
+## Loading and Reading CoValues
+
+In order to read data, you need to [load a CoValue instance](/docs/core-concepts/subscription-and-loading). There are several ways to do this. We recommend using Jazz with a framework, as this allows you to create reactive subscriptions to CoValues easily, but it is also possible to load a CoValue instance using the `.load()` static method on the schema.
+
+Once you have a loaded CoValue instance, you can normally read it similarly to the corresponding TypeScript type.
+
+### CoMap (and the CoRecord sub-type)
+
+Behaves like a TypeScript object **when reading**.
+
+```ts
+// CoMap: Access fixed keys
+console.log(user.name); // "Alice"
+
+// CoRecord: Access arbitrary keys
+const phone = phoneBook["Jenny"];
+
+// Iteration works as with a TypeScript object
+for (const [name, number] of Object.entries(phoneBook)) {
+  console.log(name, number);
+}
+
+```
+
+[Read more →](/docs/core-concepts/covalues/comaps)
+
+### CoList
+
+Behaves like a TypeScript array **when reading**.
+
+```ts
+const firstTask = taskList[0];
+const length = taskList.length;
+
+// Iteration works as with a TypeScript array
+taskList.map((task) => console.log(task.title));
+for (const task of taskList) {
+  // Do something
+}
+
+```
+
+[Read more →](/docs/core-concepts/covalues/colists)
+
+### CoPlainText/CoRichText
+
+Behaves like a TypeScript string **when reading**.
+
+```ts
+// String operations
+const summary = description.substring(0, 100);
+
+```
+
+[Read more →](/docs/core-concepts/covalues/cotexts)
+
+**Note**: Although CoPlainTexts/CoRichTexts behave the same as strings in most circumstances, they are not strings. If you need an actual string type, you can use the `toString()` method.
+
+### CoFeed
+
+CoFeeds do not correspond neatly to a TypeScript type. They are collaborative streams of entries split by session/account, and so there are various ways to access the underlying data.
+
+```ts
+// Get the feed for a specific session (e.g. this browser tab)
+const thisSessionsFeed = chatMessages.perSession[thisSessionId]; // or .inCurrentSession as shorthand
+const latestMessageFromThisSession = thisSessionsFeed.value;
+const allMessagesFromThisSession = thisSessionsFeed.all;
+
+// Get the feed for a specific account
+const accountFeed = chatMessages.perAccount[accountId];
+const latestMessageFromThisAccount = accountFeed.value;
+const allMessagesFromThisAccount = accountFeed.all;
+
+// Get the feed for my account
+const myFeed = chatMessages.byMe; // shorthand for chatMessages.perAccount[myAccountId]
+const latestMessageFromMyAccount = myFeed?.value;
+const allMessagesFromMyAccount = myFeed?.all;
+
+// Iterate over all entries in a CoFeed
+for (const userId of Object.keys(chatMessages.perAccount)) {
+  const accountFeed = chatMessages.perAccount[userId];
+  for (const entry of accountFeed.all) {
+    if (entry.value.$isLoaded) {
+      console.log(entry.value);
+    }
+  }
+}
+
+```
+
+The `.all` property allows you to iterate over all entries in a per-session or per-account feed. If you need to convert a feed to an array, you can use `Array.from()` or the spread operator.
+
+[Read more →](/docs/core-concepts/covalues/cofeeds)
+
+CoFeed Structure
+
+```text
+┌────────┐
+│ CoFeed └────────────────────────────────────────────────────────────┐ 
+│ ┌────────┐                                                          │
+│ │ userA  └────────────────────────────────────────────────────────┐ │
+│ │ ┌───────────┐                                                   │ │
+│ │ │ Session 1 └─────────────────────────────────────────────────┐ │ │
+│ │ │ ┌────────────────┐  ┌─────────────────┐ ┌─────────────────┐ │ │ │
+│ │ │ │ value: someVal │  │ value: someVal2 │ │ value: someVal3 │ │ │ │
+│ │ │ │ by: userA      │  │ by: userA       │ │ by: userA       │ │ │ │
+│ │ │ │ madeAt: 10:00  │  │ madeAt: 10:01   │ │ madeAt: 10:02   │ │ │ │
+│ │ │ └────────────────┘  └─────────────────┘ └─────────────────┘ │ │ │
+│ │ └─────────────────────────────────────────────────────────────┘ │ │
+│ │ ┌───────────┐                                                   │ │
+│ │ │ Session 2 └─────────────────────────────────────────────────┐ │ │
+│ │ │ ┌─────────────────┐                                         │ │ │
+│ │ │ │ value: someVal3 │                                         │ │ │
+│ │ │ │ by: userA       │                                         │ │ │
+│ │ │ │ madeAt: 12:00   │                                         │ │ │
+│ │ │ └─────────────────┘                                         │ │ │
+│ │ └─────────────────────────────────────────────────────────────┘ │ │
+│ └─────────────────────────────────────────────────────────────────┘ │
+│ ┌───────┐                                                           │
+│ │ userB └─────────────────────────────────────────────────────────┐ │
+│ │ ┌───────────┐                                                   │ │
+│ │ │ Session 1 └─────────────────────────────────────────────────┐ │ │
+│ │ │ ┌─────────────────┐                                         │ │ │
+│ │ │ │ value: someVal4 │                                         │ │ │
+│ │ │ │ by: userB       │                                         │ │ │
+│ │ │ │ madeAt: 10:05   │                                         │ │ │
+│ │ │ └─────────────────┘                                         │ │ │
+│ │ └─────────────────────────────────────────────────────────────┘ │ │
+│ └─────────────────────────────────────────────────────────────────┘ │
+└─────────────────────────────────────────────────────────────────────┘
+
+```
+
+### FileStream
+
+FileStreams can be converted to `Blob` types or read as binary chunks.
+
+```ts
+// Get raw data chunks and metadata.
+// Optionally pass { allowUnfinished: true } to get chunks of a FileStream which is not yet fully synced.
+const fileData = fileStream.getChunks({ allowUnfinished: true });
+
+// Convert to a Blob for use in a <a> tag or <iframe>
+const fileBlob = fileStream.toBlob();
+const fileUrl = fileBlob && URL.createObjectURL(fileBlob);
+
+```
+
+[Read more →](/docs/core-concepts/covalues/filestreams)
+
+### ImageDefinition
+
+Although you can read an `ImageDefinition` as a CoMap, Jazz provides an `<Image />` component for front-end frameworks which vastly simplifies their use.
+
+If you want to use the `ImageDefinition` type without a framework, or you need access to the image itself you can use the `loadImageBySize` helper.
+
+```tsx
+// Component-based usage (recommended)
+<Image image={productImage} width = {300} />
+
+```
+
+```ts
+// Imperative usage: Access the highest available resolution
+import { loadImageBySize } from "jazz-tools/media";
+
+// Not guaranteed to exist if no variant exists that fulfills your constraints
+const imageDef = await loadImageBySize(productImage, 300, 400); // Takes either an ImageDefinition or an ID, and returns a FileStream.
+
+```
+
+Once you have a loaded image, you can convert it to a blob with the `.toBlob()` method, as you would with any other FileStream. You can then use this to create a URL to use as an `<img>` source.
+
+```ts
+const blob = imageDef && imageDef.image.toBlob();
+const url = blob && URL.createObjectURL(blob); // Don't forget to clean this up when you're done!
+myImg.src = url ?? "";
+
+```
+
+[Read more →](/docs/core-concepts/covalues/imagedef)
+
+### CoVector
+
+You can read a `CoVector` in the same way as you'd read an array, but in most cases, you'll want to use the `cosineSimilarity` helper.
+
+```ts
+// Calculate similarity between two vectors
+const similarity = myEmbedding.$jazz.cosineSimilarity(targetVector);
+
+```
+
+[Read more →](/docs/core-concepts/covalues/covectors)
+
+### DiscriminatedUnion
+
+After loading a `DiscriminatedUnion`, you will be able to read any property that is common to all members, otherwise, you will need to narrow the type to be able to access properties which are only on some subset of members of the union.
+
+```ts
+// Use the discriminator to check the type
+if (item.type === "task") {
+  console.log(item.title);
+} else if (item.type === "note") {
+  console.log(item.content);
+}
+
+```
+
+[Read more →](/docs/core-concepts/schemas/schemaunions)
+
+## Updating CoValues
+
+Most CoValues are updated using mutation methods in the `.$jazz` namespace. Some CoValues, such as `CoPlainText` and `CoRichText`, have methods available directly on the instance itself.
+
+### Updating CoMaps (and the CoRecord sub-type)
+
+CoRecords will allow you to arbitrarily set and delete keys, while CoMaps will only allow you to set and delete keys defined in the schema.
+
+* **`.$jazz.set(key, value): void`**
+* **`.$jazz.delete(key): void`**
+* **`.$jazz.applyDiff(diff): void`**
+
+```ts
+// Set or update a property
+todo.$jazz.set("task", "Try out Jazz");
+
+// Delete an optional property
+todo.$jazz.delete("dueDate");
+
+// Update multiple properties at once
+todo.$jazz.applyDiff({
+  task: "Apply a diff to update a task",
+  completed: true,
+});
+
+```
+
+[Read more →](/docs/core-concepts/covalues/comaps)
+
+### Updating CoLists
+
+CoLists implement most of the usual array mutation methods under the `.$jazz` namespace (except `sort` and `reverse`).
+
+* **`.$jazz.push(...items: T[]): number`**
+* **`.$jazz.unshift(...items: T[]): number`**
+* **`.$jazz.pop(): T | undefined`**
+* **`.$jazz.shift(): T | undefined`**
+* **`.$jazz.remove(...indexes: number[]): T[]`**
+* **`.$jazz.remove(predicate: (item: T, index: number, coList: L) => boolean): T[]`**  
+   * Removes elements by index(es) or predicate. Returns the removed elements.
+* **`.$jazz.retain(predicate: (item: T, index: number, coList: L) => boolean): T[]`**  
+   * Retains only elements matching the predicate. Returns the removed elements.
+* **`.$jazz.splice(start: number, deleteCount: number, ...items: T[]): T[]`**
+* **`.$jazz.applyDiff(result: T[]): L`**  
+   * Updates the list to match another list, efficiently calculated
+
+```ts
+// Add items
+tasks.$jazz.push(newTask);
+tasks.$jazz.unshift(importantTask);
+
+// Remove items
+const removed = tasks.$jazz.remove(0); // Remove by index, returns removed items
+tasks.$jazz.remove((task) => task.completed); // Remove by predicate
+const lastTask = tasks.$jazz.pop(); // Remove and return last item
+const task1 = tasks.$jazz.shift(); // Remove and return first item
+
+// Retain only matching items
+tasks.$jazz.retain((task) => !task.completed); // Keep only incomplete tasks
+
+// Replace/Move
+tasks.$jazz.splice(1, 1, replacementTask);
+
+if (!task1?.$isLoaded) throw new Error(); // [!code hide]
+// Efficiently update to match another list
+tasks.$jazz.applyDiff([task1, task2, task3]); // Updates list to match exactly
+
+```
+
+[Read more →](/docs/core-concepts/covalues/colists)
+
+### Updating CoPlainTexts/CoRichTexts
+
+CoPlainText and CoRichText methods are mostly available directly on the instance.
+
+* **`insertAfter(after: number, text: string): void`**
+* **`insertBefore(before: number, text: string): void`**
+* **`deleteRange(range: { from: number, to: number }): void`**
+* **`.$jazz.applyDiff(newText: string): void`**
+
+```ts
+const message = co.plainText().create("Hello world!"); // Hello world
+message.insertAfter(4, ","); // Hello, world!
+message.insertBefore(7, "everybody in the "); // Hello, everybody in the world!
+message.deleteRange({ from: 16, to: 29 }); // Hello, everybody!
+
+// Update efficiently
+message.$jazz.applyDiff("Hello, my Jazzy friends!"); // 'Hello, ' has not changed and will not be updated
+
+```
+
+```tsx
+// Use directly with templating languages (e.g. React, Svelte)
+<span>{message}</span>
+
+```
+
+[Read more →](/docs/core-concepts/covalues/cotexts)
+
+### Updating CoFeeds
+
+CoFeeds are append-only. The only mutation you can perform is `push()` (in the `.$jazz` namespace), which adds a new entry to the feed.
+
+```ts
+feed.$jazz.push(newMessage);
+
+```
+
+[Read more →](/docs/core-concepts/covalues/cofeeds)
+
+### Updating FileStreams
+
+If you wish to push binary data into an existing `FileStream`, you can `start` it with metadata, then `push` chunks of data, and finally `end` it.
+
+* **`start(metadata: { mimeType: string; fileName?: string; totalSizeBytes?: number; }): void`**
+* **`push(chunk: Uint8Array): void`**
+* **`end(): void`**
+
+```ts
+const myUploadedPDF = UploadedPDF.create(); // Advanced usage: manual chunk streaming
+myUploadedPDF.start({ mimeType: "application/pdf" });
+myUploadedPDF.push(chunks); // Uint8Array
+myUploadedPDF.end();
+
+```
+
+[Read more →](/docs/core-concepts/covalues/filestreams)
+
+### Updating ImageDefinitions
+
+If you would like to update an `ImageDefinition`, you will need to create a new `FileStream` and set it on the `ImageDefinition`. The `ImageDefinition` behaves like a `CoRecord` with keys for each image resolution as `<width>x<height>`, and the values are `FileStream` instances. You can replace resolutions or add new ones.
+
+```ts
+const w = 800;
+const h = 600;
+const imageFile = await co.fileStream().createFromBlob(some800x600Blob);
+myUploadedImage.$jazz.set(`${w}x${h}`, imageFile);
+
+```
+
+[Read more →](/docs/core-concepts/covalues/imagedef)
+
+### Updating CoVectors
+
+CoVectors are immutable. You cannot update them. You should create a new CoVector to replace the old one.
+
+[Read more →](/docs/core-concepts/covalues/covectors)
+
+### Updating DiscriminatedUnions
+
+When updating a discriminated union, you should first narrow the type using the discriminator. After that, you'll be able to update it using the `$jazz.set`, `$jazz.applyDiff`, or `$jazz.delete` methods.
+
+```ts
+const myLoadedThisOrThat = await MyThisOrThat.load("co_z...");
+
+if (myLoadedThisOrThat.$isLoaded && myLoadedThisOrThat.type === "this") {
+  myLoadedThisOrThat.$jazz.set("thisProperty", "Only available on 'this'!");
+} else if (myLoadedThisOrThat.$isLoaded && myLoadedThisOrThat.type === "that") {
+  myLoadedThisOrThat.$jazz.set("thatProperty", "Only available on 'that'!");
+}
+
+```
+
+[Read more →](/docs/core-concepts/schemas/schemaunions)
+
+## Shared Properties and Methods
+
+### Universal CoValue Interface
+
+These properties and methods are available directly on every CoValue instance.
+
+| Feature        | Property/Method | Description                                             |
+| -------------- | --------------- | ------------------------------------------------------- |
+| **Loading**    | $isLoaded       | Check if the CoValue is fully loaded and ready to read. |
+| **Inspection** | .toJSON()       | Get a plain JS representation of the CoValue.           |
+
+### Common `$jazz` Interface
+
+Every CoValue instance has a `.$jazz` namespace with the following common utilities (some are only available on specific CoValue types).
+
+| Feature             | Property/Method                           | Description                                                                          |
+| ------------------- | ----------------------------------------- | ------------------------------------------------------------------------------------ |
+| **Basics**          | id, owner                                 | Key metadata.                                                                        |
+| **Life-cycle**      | createdAt, lastUpdatedAt, createdBy       | Audit trails and creation timestamps.                                                |
+| **Reactivity**      | subscribe(), waitForSync()                | Listen for changes or wait for network persistence.                                  |
+| **Loading**         | loadingState, ensureLoaded()              | Check loading state or load a copy of the CoValue with a different resolution depth. |
+| **Inspection**      | refs, has                                 | Available on CoMaps, check for the existence of references/specific keys.            |
+| **Version Control** | isBranched, branchName, unstable\_merge() | Utilities for local branching and merging.                                           |
+
+### Metadata
+
+* **`.$jazz.id`**: `ID<CoValue>`  
+   * The definitive, globally unique ID (e.g., `co_zXy...`).
+* **`.$jazz.owner`**: `Group`  
+   * The `group` that this CoValue is owned by.
+* **`.$jazz.createdAt`**: `number`  
+   * The time that this CoValue was created (in milliseconds since the Unix epoch).
+* **`.$jazz.createdBy`**: `ID<Account> | undefined`  
+   * The ID of the account that originally created this CoValue (`undefined` for accounts themselves).
+* **`.$jazz.lastUpdatedAt`**: `number`  
+   * The time that this CoValue was last updated (in milliseconds since the Unix epoch).
+* **`.$jazz.refs`**: `Record<key, Ref> | undefined` (CoMap/CoRecord only)  
+   * Access nested CoValues as references (with IDs) without loading them. Useful for checking if a reference exists or getting its ID without triggering a network fetch.  
+```ts  
+// Check if a reference exists without loading it  
+if (person.$jazz.refs.pet) {  
+  console.log("Pet ID:", person.$jazz.refs.pet.id);  
+}  
+```
+* **`.$jazz.has(key): boolean`** (CoMap/CoRecord only)  
+   * Checks if a key exists in the CoValue.
+
+### Loading
+
+* **`$isLoaded`**: `boolean`  
+   * True if the CoValue is fully loaded and ready to read.
+* **`.$jazz.loadingState`**: `"loading" | "loaded" | "unavailable" | "unauthorized"`  
+   * Current state of the CoValue. See [Loading States](/docs/core-concepts/subscription-and-loading#loading-states) for details on handling each case.
+* **`.$jazz.ensureLoaded<T>(resolveQuery: { resolve: ResolveQuery<T> }): Promise<Resolved<T>>`**  
+   * Waits for nested references to load to the specified depth.  
+   * **Returns**: A **new** typed instance `Resolved<T>` where specified properties are guaranteed to be fully loaded.  
+```ts  
+const profile = await shallowProfile.$jazz.ensureLoaded({  
+  resolve: {  
+    avatar: true,  
+  },  
+});  
+console.log(profile.avatar); // Safe to access  
+```  
+**Note:** When calling `.$jazz.ensureLoaded()` on a discriminated union, you must first narrow the type using the discriminator property. If any nested reference cannot be loaded, the entire operation may fail (see [Loading Errors](/docs/core-concepts/subscription-and-loading#loading-errors)).  
+**Info: Mental Model** `ensureLoaded` returns a copy of the CoValue where the specific fields you requested in the resolve query are guaranteed to be present and non-null.
+
+### Subscription & Sync
+
+* **`.$jazz.subscribe(listener: (updated: this) => void): () => void`**  
+   * Listen for any changes to this CoValue. Only needed if you are manually handling your subscriptions.  
+   * Returns an `unsubscribe` function for manual teardown.  
+   * For error handling in manual subscriptions, see [Manual Subscriptions](/docs/core-concepts/subscription-and-loading#error-handling-for-manual-subscriptions).  
+```ts  
+const unsub = person.$jazz.subscribe((updatedPerson) => {  
+  console.log("Person updated:", updatedPerson);  
+});  
+```
+* **`.$jazz.waitForSync()`**: `Promise<void>`  
+   * Waits until changes are synced to other peers (useful for tests or critical saves).
+
+### Version Control
+
+* **`.$jazz.branchName`**: `string | undefined`  
+   * If this CoValue is branched, the name of the branch, otherwise `undefined`.
+* **`.$jazz.isBranched`**: `boolean`  
+   * Whether this CoValue is branched.
+* **`.$jazz.unstable_merge()`**: `void`  
+   * Merges this branched CoValue back into the main branch. Only works when the CoValue is branched.
 
 
 ### Troubleshooting
@@ -848,10 +1446,13 @@ We're always happy to help! If you're stuck, reachout via [Discord](https://disc
 
 ## Upgrade guides
 
+### 0.20.0 - Full native crypto
+
+
 ### 0.19.0 - Explicit loading states
 
 
-### 0.18.0 - New `$jazz` field in CoValues
+### 0.18.0 - New `$jazz` field
 
 
 ### 0.17.0 - New image APIs
@@ -935,7 +1536,7 @@ const publicProject = TodoProject.create(
 
 **Info:** 
 
-To learn more about how permissions work when creating nested CoValues with plain JSON objects, refer to [Ownership on implicit CoValue creation](/docs/permissions-and-sharing/cascading-permissions#ownership-on-implicit-covalue-creation).
+To learn more about how permissions work when creating nested CoValues with plain JSON objects, refer to [Ownership on inline CoValue creation](/docs/permissions-and-sharing/cascading-permissions#ownership-on-inline-covalue-creation).
 
 ## Types of CoValues
 
@@ -990,7 +1591,7 @@ export const FeedOfTasks = co.feed(Task);
 
 ```
 
-See the corresponding sections for [creating](/docs/core-concepts/covalues/overview#creating-cofeeds),[subscribing/loading](/docs/core-concepts/subscription-and-loading),[reading from](/docs/core-concepts/covalues/cofeeds#reading-from-cofeeds) and[writing to](/docs/core-concepts/covalues/cofeeds#writing-to-cofeeds) CoFeeds.
+See the corresponding sections for [creating](/docs/core-concepts/covalues/cofeeds#creating-cofeeds),[subscribing/loading](/docs/core-concepts/subscription-and-loading),[reading from](/docs/core-concepts/covalues/cofeeds#reading-from-cofeeds) and[writing to](/docs/core-concepts/covalues/cofeeds#writing-to-cofeeds) CoFeeds.
 
 ### `FileStream` (declaration)
 
@@ -1126,7 +1727,7 @@ You can wrap references in getters. This allows you to defer evaluation until th
 const SelfReferencingPerson = co.map({
   name: z.string(),
   get bestFriend() {
-    return Person;
+    return SelfReferencingPerson;
   },
 });
 
@@ -1142,11 +1743,11 @@ const MutuallyRecursivePerson = co.map({
   },
 });
 
-const ListOfFriends = co.list(Person);
+const ListOfFriends = co.list(MutuallyRecursivePerson);
 
 ```
 
-If you try to reference `ListOfPeople` in `Person` without using a getter, you'll run into a `ReferenceError` because of the [temporal dead zone](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/let#temporal%5Fdead%5Fzone%5Ftdz).
+If you try to reference `ListOfFriends` in `MutuallyRecursivePerson` without using a getter, you'll run into a `ReferenceError` because of the [temporal dead zone](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/let#temporal%5Fdead%5Fzone%5Ftdz).
 
 ### Helper methods
 
@@ -1328,12 +1929,11 @@ const ProjectWithTypedGetter = co.map({
   status: z.literal(["planning", "active", "completed"]),
   coordinator: co.optional(Member),
   // [!code ++:3]
-  get subProjects(): co.Optional<co.List<typeof Project>> {
-    return co.optional(co.list(Project));
+  get subProjects(): co.Optional<co.List<typeof ProjectWithTypedGetter>> {
+    return co.optional(co.list(ProjectWithTypedGetter));
   },
 });
-
-export type Project = co.loaded<typeof Project>;
+export type ProjectWithTypedGetter = co.loaded<typeof ProjectWithTypedGetter>;
 
 ```
 
@@ -1431,7 +2031,7 @@ person.$jazz.set("dog", { name: "Fido" });
 
 ```
 
-When providing a JSON object, Jazz will automatically create the CoValues for you. To learn more about how permissions work in this case, refer to[Ownership on implicit CoValue creation](/docs/permissions-and-sharing/cascading-permissions#ownership-on-implicit-covalue-creation).
+When providing a JSON object, Jazz will automatically create the CoValues for you. To learn more about how permissions work in this case, refer to[Ownership on inline CoValue creation](/docs/permissions-and-sharing/cascading-permissions#ownership-on-inline-covalue-creation).
 
 ### Type Safety
 
@@ -1674,22 +2274,22 @@ You can use CoRecords as a way to create set-like collections, by keying the CoR
 
 ```ts
 const Chat = co.map({
-messages: co.list(Message),
-participants: co.record(z.string(), MyAppUser),
+  messages: co.list(Message),
+  participants: co.record(z.string(), MyAppUser),
 });
 
 const chat = await Chat.load(chatId, {
-resolve: {
-  participants: true,
-},
+  resolve: {
+    participants: true,
+  },
 });
 
 let participantList: string[];
 
 // Note that I don't need to load the map deeply to read and set keys
 if (chat.$isLoaded) {
-chat.participants.$jazz.set(me.$jazz.id, me);
-participantList = Object.keys(chat.participants);
+  chat.participants.$jazz.set(me.$jazz.id, me);
+  participantList = Object.keys(chat.participants);
 }
 
 ```
@@ -1698,19 +2298,19 @@ You can choose a loading strategy for the CoRecord. Use $each when you need all 
 
 ```ts
 const { participants } = await chat.$jazz.ensureLoaded({
-resolve: {
-  participants: {
-    $each: {
-      profile: {
-        avatar: true,
+  resolve: {
+    participants: {
+      $each: {
+        profile: {
+          avatar: true,
+        },
       },
     },
   },
-},
 });
 
 const avatarList = Object.values(participants).map(
-(user) => user.profile.avatar,
+  (user) => user.profile.avatar,
 );
 
 ```
@@ -2365,6 +2965,10 @@ When using CoTexts in JSX, you can read the text directly:
 
 ```
 
+**Info: Primitive values** 
+
+`CoTexts` extend the native `String` class, so `typeof description` will return `object`. If you need the primitive string value (e.g. for strict equality checks or 3rd party libraries), use `description.toString()`.
+
 ## Making Edits
 
 Insert and delete text with intuitive methods:
@@ -2859,8 +3463,8 @@ You can create vectors in your Jazz application from an array of numbers, or Flo
 const vectorData = await createEmbedding("Text");
 
 const newDocument = Document.create({
-content: "Text",
-embedding: Embedding.create(vectorData),
+  content: "Text",
+  embedding: Embedding.create(vectorData),
 });
 
 documents.$jazz.push(newDocument);
@@ -3138,6 +3742,7 @@ export type ImageProps = Omit<
   width?: number | "original";
   height?: number | "original";
   placeholder?: string;
+  loading?: "lazy" | "eager";
 };
 
 ```
@@ -3168,7 +3773,7 @@ If the image was generated with progressive loading, the `width` and `height` pr
 
 #### Lazy loading \[!framework=react,svelte\]
 
-The `Image` component supports lazy loading with the \[same options as the native browser `loading` attribute\].(https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/img#loading). It will generate the blob url for the image when the browser's viewport reaches the image.
+The `Image` component supports lazy loading with the [same options as the native browser loading attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/img#loading). It will generate the blob url for the image when the browser's viewport reaches the image.
 
 ```tsx
 <Image imageId="123" width="original" height="original" loading="lazy" />
@@ -3325,7 +3930,6 @@ export const Location = co.map({
 });
 export type Location = co.loaded<typeof Location>;
 
-// co.ref can be used within CoMap fields to point to other CoValues
 const Actor = co.map({
   name: z.string,
   imageURL: z.string,
@@ -3341,7 +3945,7 @@ const Movie = co.map({
 });
 export type Movie = co.loaded<typeof Movie>;
 
-// A User CoMap can maintain a CoFeed of co.ref(Movie) to track their favorite movies
+// A User CoMap can maintain a CoFeed of Movie to track their favorite movies
 const User = co.map({
   username: z.string,
   favoriteMovies: co.feed(Movie), // append-only
@@ -3760,642 +4364,6 @@ Schemas that are not directly supported by Jazz such as `z.instanceof` are not r
 
 
 ### Subscriptions & Deep Loading
-# Subscriptions & Deep Loading
-
-Jazz's Collaborative Values (such as [CoMaps](/docs/core-concepts/covalues/comaps) or [CoLists](/docs/core-concepts/covalues/colists)) are reactive. You can subscribe to them to automatically receive updates whenever they change, either locally or remotely.
-
-You can also use subscriptions to load CoValues _deeply_ by resolving nested values. You can specify exactly how much data you want to resolve and handle loading states and errors.
-
-You can load and subscribe to CoValues in one of two ways:
-
-* **shallowly** — all of the primitive fields are available (such as strings, numbers, dates), but the references to other CoValues are not loaded
-* **deeply** — some or all of the referenced CoValues have been loaded
-
-**Info: Tip** 
-
-Jazz automatically deduplicates loading. If you subscribe to the same CoValue multiple times in your app, Jazz will only fetch it once. That means you don’t need to deeply load a CoValue _just in case_ a child component might need its data, and you don’t have to worry about tracking every possible field your app needs in a top-level query. Instead, pass the CoValue ID to the child component and subscribe there — Jazz will only load what that component actually needs.
-
-## Subscription Hooks
-
-On your front-end, using a subscription hook is the easiest way to manage your subscriptions. The subscription and related clean-up is handled automatically, and you can use your data like any other piece of state in your app.
-
-### Subscribe to CoValues
-
-The `useCoState` hook allows you to reactively subscribe to CoValues in your React components. It will subscribe to updates when the component mounts and unsubscribe when it unmounts, ensuring your UI stays in sync and avoiding memory leaks.
-
-```tsx
-import { useCoState } from "jazz-tools/react";
-
-function ProjectView({ projectId }: { projectId: string }) {
-  // Subscribe to a project and resolve its tasks
-  const project = useCoState(Project, projectId, {
-    resolve: { tasks: { $each: true } }, // Tell Jazz to load each task in the list
-  });
-
-  if (!project.$isLoaded) {
-    switch (project.$jazz.loadingState) {
-      case "unauthorized":
-        return "Project not accessible";
-      case "unavailable":
-        return "Project not found";
-      case "loading":
-        return "Loading project...";
-    }
-  }
-
-  return (
-    <div>
-      <h1>{project.name}</h1>
-      <ul>
-        {project.tasks.map((task) => (
-          <li key={task.$jazz.id}>{task.title}</li>
-        ))}
-      </ul>
-    </div>
-  );
-}
-
-```
-
-**Note:** If you don't need to load a CoValue's references, you can choose to load it _shallowly_ by omitting the resolve query.
-
-### Subscribe to the current user's account
-
-`useAccount` is similar to `useCoState`, but it returns the current user's account. You can use this at the top level of your app to subscribe to the current user's [account profile and root](/docs/core-concepts/schemas/accounts-and-migrations#covalues-as-a-graph-of-data-rooted-in-accounts).
-
-```tsx
-import { useAccount } from "jazz-tools/react";
-import { MyAppAccount } from "./schema";
-
-function ProjectList() {
-  const me = useAccount(MyAppAccount, {
-    resolve: { profile: true },
-  });
-
-  if (!me.$isLoaded) {
-    return "Loading...";
-  }
-
-  return (
-    <div>
-      <h1>{me.profile.name}'s projects</h1>
-    </div>
-  );
-}
-
-```
-
-### Loading States
-
-When you load or subscribe to a CoValue through a hook (or directly), it can be either:
-
-* **Loaded** → The CoValue has been successfully loaded and all its data is available
-* **Not Loaded** → The CoValue is not yet available
-
-You can use the `$isLoaded` field to check whether a CoValue is loaded. For more detailed information about why a CoValue is not loaded, you can check `$jazz.loadingState`:
-
-* `"loading"` → The CoValue is still being fetched
-* `"unauthorized"` → The current user doesn't have permission to access this CoValue
-* `"unavailable"` → The CoValue couldn't be found or an error (e.g. a network timeout) occurred while loading
-
-See the examples above for practical demonstrations of how to handle these three states in your application.
-
-## Deep Loading
-
-When you're working with related CoValues (like tasks in a project), you often need to load nested references as well as the top-level CoValue.
-
-This is particularly the case when working with [CoMaps](/docs/core-concepts/covalues/comaps) that refer to other CoValues or [CoLists](/docs/core-concepts/covalues/colists) of CoValues. You can use `resolve` queries to tell Jazz what data you need to use.
-
-### Using Resolve Queries
-
-A `resolve` query tells Jazz how deeply to load data for your app to use. We can use `true` to tell Jazz to shallowly load the tasks list here. Note that this does _not_ cause the tasks themselves to load, just the CoList that holds the tasks.
-
-```ts
-const Task = co.map({
-  title: z.string(),
-  description: co.plainText(),
-  get subtasks() {
-    return co.list(Task);
-  },
-});
-
-const Project = co.map({
-  name: z.string(),
-  tasks: co.list(Task),
-});
-
-const project = await Project.load(projectId);
-if (!project.$isLoaded) throw new Error("Project not found or not accessible");
-
-// This will be loaded
-project.name; // string
-
-// This *may not be loaded*, and *may not be accessible*
-project.tasks; // MaybeLoaded<ListOfTasks>
-
-const projectWithTasksShallow = await Project.load(projectId, {
-  resolve: {
-    tasks: true,
-  },
-});
-if (!projectWithTasksShallow.$isLoaded)
-  throw new Error("Project not found or not accessible");
-
-// This list of tasks will be shallowly loaded
-projectWithTasksShallow.tasks; // ListOfTasks
-// We can access the properties of the shallowly loaded list
-projectWithTasksShallow.tasks.length; // number
-// This *may not be loaded*, and *may not be accessible*
-projectWithTasksShallow.tasks[0]; // MaybeLoaded<Task>
-
-```
-
-We can use an `$each` expression to tell Jazz to load the items in a list.
-
-```ts
-const projectWithTasks = await Project.load(projectId, {
-  resolve: {
-    tasks: {
-      $each: true,
-    },
-  },
-});
-if (!projectWithTasks.$isLoaded)
-  throw new Error("Project not found or not accessible");
-
-// The task will be loaded
-projectWithTasks.tasks[0]; // Task
-// Primitive fields are always loaded
-projectWithTasks.tasks[0].title; // string
-// References on the Task may not be loaded
-projectWithTasks.tasks[0].subtasks; // MaybeLoaded<ListOfTasks>
-// CoTexts are CoValues too
-projectWithTasks.tasks[0].description; // MaybeLoaded<CoPlainText>
-
-```
-
-We can also build a query that _deeply resolves_ to multiple levels:
-
-```ts
-const projectDeep = await Project.load(projectId, {
-  resolve: {
-    tasks: {
-      $each: {
-        subtasks: {
-          $each: true,
-        },
-        description: true,
-      },
-    },
-  },
-});
-if (!projectDeep.$isLoaded)
-  throw new Error("Project not found or not accessible");
-
-// Primitive fields are always loaded
-projectDeep.tasks[0].subtasks[0].title; // string
-
-// The description will be loaded as well
-projectDeep.tasks[0].description; // CoPlainText
-
-```
-
-**Warning: Always load data explicitly** 
-
-If you access a reference that wasn't included in your `resolve` query, you may find that it is already loaded, potentially because some other part of your app has already loaded it. **You should not rely on this**.
-
-Expecting data to be there which is not explicitly included in your `resolve` query can lead to subtle, hard-to-diagnose bugs. Always include every nested CoValue you need to access in your `resolve` query.
-
-### Where To Use Resolve Queries
-
-The syntax for resolve queries is shared throughout Jazz. As well as using them in `load` and `subscribe` method calls, you can pass a resolve query to a front-end hook.
-
-```tsx
-const projectId = "";
-const projectWithTasksShallow = useCoState(Project, projectId, {
-  resolve: {
-    tasks: true,
-  },
-});
-
-```
-
-You can also specify resolve queries at the schema level, using the `.resolved()` method. These queries will be used when loading CoValues from that schema (if no resolve query is provided by the user) and in types defined with [co.loaded](/docs/core-concepts/subscription-and-loading#type-safety-with-coloaded).
-
-```ts
-const TaskWithDescription = Task.resolved({
-  description: true,
-});
-const ProjectWithTasks = Project.resolved({
-  tasks: {
-    // Use `.resolveQuery` to get the resolve query from a schema and compose it in other queries
-    $each: TaskWithDescription.resolveQuery,
-  }
-});
-
-// .load() will use the resolve query from the schema
-const project = await ProjectWithTasks.load(projectId);
-if (!project.$isLoaded) throw new Error("Project not found or not accessible");
-// Both the tasks and the descriptions are loaded
-project.tasks[0].description; // CoPlainText
-
-```
-
-## Loading Errors
-
-A load operation will be successful **only** if all references requested (both optional and required) could be successfully loaded. If any reference cannot be loaded, the entire load operation will return a not-loaded CoValue to avoid potential inconsistencies.
-
-```ts
-// If permissions on description are restricted:
-const task = await Task.load(taskId, {
-  resolve: { description: true },
-});
-task.$isLoaded; // false
-task.$jazz.loadingState; // "unauthorized"
-
-```
-
-This is also true if **any** element of a list is inaccessible, even if all the others can be loaded.
-
-```ts
-// One task in the list has restricted permissions
-const projectWithUnauthorizedTasks = await Project.load(projectId, {
-  resolve: { tasks: { $each: true } },
-});
-
-project.$isLoaded; // false
-project.$jazz.loadingState; // "unauthorized"
-
-```
-
-Loading will be successful if all requested references are loaded. Non-requested references may or may not be available.
-
-```ts
-// One task in the list has restricted permissions
-const shallowlyLoadedProjectWithUnauthorizedTasks = await Project.load(
-  projectId,
-  {
-    resolve: true,
-  },
-);
-if (!project.$isLoaded) throw new Error("Project not found or not accessible");
-
-// Assuming the user has permissions on the project, this load will succeed, even if the user cannot load one of the tasks in the list
-project.$isLoaded; // true
-// Tasks may not be loaded since we didn't request them
-project.tasks.$isLoaded; // may be false
-
-```
-
-### Catching loading errors
-
-We can use `$onError` to handle cases where some data you have requested is inaccessible, similar to a `try...catch` block in your query.
-
-For example, in case of a `project` (which the user can access) with three `task` items:
-
-| Task | User can access task? | User can access task.description? |
-| ---- | --------------------- | --------------------------------- |
-| 0    | ✅                     | ✅                                 |
-| 1    | ✅                     | ❌                                 |
-| 2    | ❌                     | ❌                                 |
-
-#### Scenario 1: Skip Inaccessible List Items
-
-If some of your list items may not be accessible, you can skip loading them by specifying `$onError: 'catch'`. Inaccessible items will be not-loaded CoValues, while accessible items load properly.
-
-```ts
-// Inaccessible tasks will not be loaded, but the project will
-const projectWithInaccessibleSkipped = await Project.load(projectId, {
-  resolve: { tasks: { $each: { $onError: "catch" } } },
-});
-
-if (!project.$isLoaded) {
-  throw new Error("Project not found or not accessible");
-}
-
-if (!project.tasks.$isLoaded) {
-  throw new Error("Task List not found or not accessible");
-}
-
-project.tasks[0].$isLoaded; // true
-project.tasks[1].$isLoaded; // true
-project.tasks[2].$isLoaded; // false (caught by $onError)
-
-```
-
-#### Scenario 2: Handling Inaccessible Nested References
-
-An `$onError` applies only in the block where it's defined. If you need to handle multiple potential levels of error, you can nest `$onError` handlers.
-
-This load will fail, because the `$onError` is defined only for the `task.description`, not for failures in loading the `task` itself.
-
-```ts
-// Inaccessible tasks will not be loaded, but the project will
-const projectWithNestedInaccessibleSkipped = await Project.load(projectId, {
-  resolve: {
-    tasks: {
-      $each: {
-        description: true,
-        $onError: "catch",
-      },
-    },
-  },
-});
-
-if (!project.$isLoaded) {
-  throw new Error("Project not found or not accessible");
-}
-
-project.tasks[0].$isLoaded; // true
-project.tasks[1].$isLoaded; // true
-project.tasks[2].$isLoaded; // false (caught by $onError)
-
-```
-
-We can fix this by adding handlers at both levels
-
-```ts
-const projectWithMultipleCatches = await Project.load(projectId, {
-  resolve: {
-    tasks: {
-      $each: {
-        description: { $onError: "catch" }, // catch errors loading task descriptions
-        $onError: "catch", // catch errors loading tasks too
-      },
-    },
-  },
-});
-
-project.$isLoaded; // true
-project.tasks[0].$isLoaded; // true
-project.tasks[0].description.$isLoaded; // true
-project.tasks[1].$isLoaded; // true
-project.tasks[1].description.$isLoaded; // false (caught by the inner handler)
-project.tasks[2].$isLoaded; // false (caught by the outer handler)
-
-```
-
-## Type safety with co.loaded
-
-You can tell your application how deeply your data is loaded by using the `co.loaded` type.
-
-The `co.loaded` type is especially useful when passing data between components, because it allows TypeScript to check at compile time whether data your application depends is properly loaded. The second argument lets you pass a `resolve` query to specify how deeply your data is loaded.
-
-```tsx
-import { co } from "jazz-tools";
-import { Project } from "./schema";
-
-type ProjectWithTasks = co.loaded<
-  typeof Project,
-  {
-    tasks: {
-      $each: true;
-    };
-  }
->;
-
-// In case the project prop isn't loaded as required, TypeScript will warn
-function TaskList({ project }: { project: ProjectWithTasks }) {
-  // TypeScript knows tasks are loaded, so this is type-safe
-  return (
-    <ul>
-      {project.tasks.map((task) => (
-        <li key={task.$jazz.id}>{task.title}</li>
-      ))}
-    </ul>
-  );
-}
-
-```
-
-You can pass a `resolve` query of any complexity to `co.loaded`.
-
-## Manual subscriptions
-
-If you have a CoValue's ID, you can subscribe to it anywhere in your code using `CoValue.subscribe()`.
-
-**Note:** Manual subscriptions are best suited for vanilla JavaScript — for example in server-side code or tests. Inside front-end components, we recommend using a subscription hook.
-
-```ts
-// Subscribe by ID
-const unsubscribe = Task.subscribe(taskId, {}, (updatedTask) => {
-  console.log("Updated task:", updatedTask);
-});
-
-// Always clean up when finished
-unsubscribe();
-
-```
-
-You can also subscribe to an existing CoValue instance using the `$jazz.subscribe` method.
-
-```ts
-const myTask = Task.create({
-  title: "My new task",
-});
-
-// Subscribe using $jazz.subscribe
-const unsubscribe = myTask.$jazz.subscribe((updatedTask) => {
-  console.log("Updated task:", updatedTask);
-});
-
-// Always clean up when finished
-unsubscribe();
-
-```
-
-### Error handling for manual subscriptions
-
-You can also pass `onUnauthorized` and `onUnavailable` handlers as options to your subscription which will run reactively whenever the CoValue you're subscribing to is unavailable, or you do not have the appropriate permissions to read it.
-
-```ts
-const unsubscribe = Task.subscribe(taskId, {
-  onUnauthorized: (err) => console.error(err),
-  onUnavailable: (err) => console.error(err)
-}, (updatedTask) => {
-  console.log("Updated task:", updatedTask);
-});
-
-// Always clean up when finished
-unsubscribe();
-
-```
-
-## Selectors \[!framework=react,react-native,react-native-expo\]
-
-Sometimes, you only need to react to changes in specific parts of a CoValue. In those cases, you can provide a `select` function to specify what data you are interested in, and an optional `equalityFn` option to control re-renders.
-
-* `select`: extract the fields you care about
-* `equalityFn`: (optional) control when data should be considered equal
-
-```tsx
-function ProjectViewWithSelector({ projectId }: { projectId: string }) {
-  // Subscribe to a project
-  const project = useCoState(Project, projectId, {
-    resolve: {
-      tasks: true,
-    },
-    select: (project) => {
-      if (!project.$isLoaded) return {
-        loadingState: project.$jazz.loadingState
-      };
-      return {
-        name: project.name,
-        taskCount: project.tasks.length,
-        loadingState: project.$jazz.loadingState
-      };
-    },
-    // Only re-render if the name or the number of tasks change
-    equalityFn: (a, b) => {
-      if (a.loadingState !== 'loaded' || b.loadingState !== 'loaded') return false;
-
-      return a?.name === b?.name && a?.taskCount === b?.taskCount;
-    },
-  });
-
-  switch (project.loadingState) {
-    case "unauthorized":
-      return "Project not accessible";
-    case "unavailable":
-      return "Project not found";
-    case "loading":
-      return "Loading...";
-  }
-
-  return (
-    <div>
-      <h1>{project.name}</h1>
-      <small>{project.taskCount} task(s)</small>
-    </div>
-  );
-}
-
-```
-
-By default, the return values of the select function will be compared using `Object.is`, but you can use the `equalityFn` to add your own logic.
-
-You can also use `useAccount` in the same way, to subscribe to only the changes in a user's account you are interested in.
-
-```tsx
-import { useAccount } from "jazz-tools/react";
-
-function ProfileName() {
-  // Only re-renders when the profile name changes
-  const profileName = useAccount(MyAppAccount, {
-    resolve: {
-      profile: true,
-    },
-    select: (account) =>
-      account.$isLoaded ? account.profile.name : "Loading...",
-  });
-
-  return <div>{profileName}</div>;
-}
-
-```
-
-### Avoiding Expensive Selectors
-
-Selector functions optimise re-renders by only updating React state if the underlying CoValue has changed in a way that you care about.
-
-However, the selector function itself still runs on every CoValue update, even if your `equalityFn` returns `true` and your component does not re-render. Because of this, you should **avoid doing expensive computation inside a selector**.
-
-For expensive operations, use a lightweight selector which only tracks the minimum necessary to identify when the dependencies change, and run the expensive operations separately, wrapped in a `useMemo` hook.
-
-This way, React can [batch state updates efficiently](https://react.dev/learn/queueing-a-series-of-state-updates) and only recompute the expensive memoised operation if the dependencies have changed.
-
-```tsx
-function ProjectViewWithExpensiveOperations({ projectId }: { projectId: string }) {
-  const project = useCoState(Project, projectId, {
-    resolve: {
-      tasks: {
-        $each: true,
-      }
-    },
-    select: (project) => {
-      if (!project.$isLoaded) return {
-        loadingState: project.$jazz.loadingState,
-        tasks: [],
-        taskIds: []
-      };
-      return {
-        name: project.name,
-        tasks: project.tasks,
-        loadingState: project.$jazz.loadingState
-      };
-    },
-    equalityFn: (a, b) => {
-      if (a.loadingState !== 'loaded' || b.loadingState !== 'loaded') return false;
-      if (a.name !== b.name) return false;
-      if (a.tasks.length !== b.tasks.length) return false;
-      const aTaskIds = new Set(a.tasks.map(t => t.$jazz.id));
-      return b.tasks.every(t => aTaskIds.has(t.$jazz.id));
-    },
-  });
-
-  const tasksAfterExpensiveComputations = useMemo(() => {
-    const sortedTasks = project.tasks.slice(0).sort(someExpensiveSortFunction);
-    const groupedTasks = sortedTasks.reduce(someExpensiveReduceFunction, {});
-    return groupedTasks;
-  }, [project.tasks]);
-
-
-  switch (project.loadingState) {
-    case "unauthorized":
-      return "Project not accessible";
-    case "unavailable":
-      return "Project not found";
-    case "loading":
-      return "Loading...";
-  }
-
-
-  return (
-    <div>
-      <h1>{project.name}</h1>
-      <GroupedTaskDisplay tasks={tasksAfterExpensiveComputations} />
-    </div>
-  );
-}
-
-```
-
-## Ensuring data is loaded
-
-In most cases, you'll have specified the depth of data you need in a `resolve` query when you first load or subscribe to a CoValue. However, sometimes you might have a CoValue instance which is not loaded deeply enough, or you're not sure how deeply loaded it is. In this case, you need to make sure data is loaded before proceeding with an operation. The `$jazz.ensureLoaded` method lets you guarantee that a CoValue and its referenced data are loaded to a specific depth (i.e. with nested references resolved):
-
-```ts
-async function completeAllTasks(projectId: string) {
-  // Load the project
-  const project = await Project.load(projectId, { resolve: true });
-  if (!project.$isLoaded) return;
-
-  // Ensure tasks are deeply loaded
-  const loadedProject = await project.$jazz.ensureLoaded({
-    resolve: {
-      tasks: {
-        $each: true,
-      },
-    },
-  });
-
-  // Now we can safely access and modify tasks
-  loadedProject.tasks.forEach((task, i) => {
-    task.$jazz.set("title", `Task ${i}`);
-  });
-}
-
-```
-
-This can be useful if you have a shallowly loaded CoValue instance, and would like to load its references deeply.
-
-## Best practices
-
-* Load exactly what you need. Start shallow and add your nested references with care.
-* Always check `$isLoaded` before accessing CoValue data. Use `$jazz.loadingState` for more detailed information.
-* Use `$onError: 'catch'` at each level of your query that can fail to handle inaccessible data gracefully.
-* Use selectors and an `equalityFn` to prevent unnecessary re-renders.
-* Never rely on data being present unless it is requested in your `resolve` query.
 
 
 ### Sync and storage
@@ -4444,7 +4412,7 @@ Jazz Cloud will
 
 * Jazz Cloud is free during the public alpha, with no strict usage limits
 * We plan to keep a free tier, so you'll always be able to get started with zero setup
-* See [Jazz Cloud pricing](/cloud#pricing) for more details
+* See [Jazz Cloud pricing](/pricing) for more details
 
 ## Self-hosting your sync server
 
@@ -4473,6 +4441,136 @@ Requires at least Node.js v20\. See our [Troubleshooting Guide](/docs/troublesho
 ### Source code
 
 The implementation of this simple sync server is available open-source [on GitHub](https://github.com/garden-co/jazz/blob/main/packages/jazz-run/src/startSyncServer.ts).
+
+
+### Deleting CoValues
+# Deleting CoValues
+
+The `deleteCoValues` function allows you to permanently delete CoValues from Jazz. When a CoValue is deleted, it becomes inaccessible to all users.
+
+**Warning: Irreversible Operation** 
+
+Deletion is permanent and cannot be undone. Once a CoValue is deleted, it cannot be recovered. Make sure you have proper confirmation flows in your application before calling `deleteCoValues`.
+
+**Warning: Admin Permissions Required** 
+
+Only users with admin permissions on a CoValue's group can delete it. Attempting to delete a CoValue without admin access will throw an error.
+
+Deleted values are not deleted from storage immediately, but are marked with a tombstone.
+
+To balance performance considerations, the actual physical deletion of the data from storage is done asynchronously in the background, and is dependent on the sync server's configuration.
+
+Jazz Cloud and `jazz-run sync` have delete enabled by default on a one minute schedule. If you're running a custom self-hosted sync server, you need to enable this feature.
+
+Deleted CoValues stored in Jazz Cloud may persist in back-ups until they are overwritten. These back-ups undergo no additional processing, and will only be restored for disaster recovery purposes.
+
+## Basic Usage
+
+To delete a CoValue, pass the schema and the CoValue's ID to `deleteCoValues`:
+
+```ts
+// Delete the note (requires admin permissions)
+await deleteCoValues(Note, noteId);
+
+// After deletion, loading returns a deleted state
+const deletedNote = await Note.load(noteId, { skipRetry: true });
+deletedNote.$isLoaded; // false
+deletedNote.$jazz.loadingState; // "deleted"
+
+```
+
+After deletion, any attempt to load the CoValue will return a not-loaded state with `loadingState: "deleted"`.
+
+## Deleting Nested CoValues
+
+You can delete a CoValue along with its nested references by providing a `resolve` query. This works the same way as [resolve queries for loading](/docs/core-concepts/subscription-and-loading#using-resolve-queries).
+
+```ts
+// Delete the document along with all attachments and their files
+await deleteCoValues(Document, documentId, {
+  resolve: {
+    attachments: {
+      $each: {
+        file: true,
+      },
+    },
+  },
+});
+
+```
+
+All CoValues specified in the resolve query will be deleted together. This is useful for cleaning up related data, such as deleting a document along with all its attachments and files.
+
+## Handling Inaccessible Data
+
+Jazz validates permissions on all CoValues in the resolve query **before** deleting anything. If any CoValue in the tree cannot be deleted (due to missing admin permissions or inaccessibility), the entire operation fails and no data is deleted.
+
+```ts
+const me = await MusicaAccount.getMe().$jazz.ensureLoaded({
+    resolve: {
+        root: {
+            playlists: {
+                $each: { $onError: "catch" },
+            },
+        },
+    },
+});
+
+// Delete all playlists referenced in the user's root. 
+// This may include shared playlists.
+for (const playlist of me.root.playlists.values()) {
+    // Skip playlists we can't even read
+    if (!playlist.$isLoaded) continue;
+
+    if (me.canAdmin(playlist)) {
+        // Delete all the playlists we own
+        await deleteCoValues(Playlist, playlist.$jazz.id);
+    } else {
+        // Remove ourselves from playlists other users shared with us
+        playlist.$jazz.owner.removeMember(me);
+    }
+}
+
+```
+
+When working with collections that might contain values you don't have admin access to, iterate over the items and check permissions before attempting deletion. This allows you to handle mixed-permission scenarios gracefully rather than having the entire delete operation fail.
+
+## Groups and Accounts
+
+The `deleteCoValues` function skips Account and Group CoValues. Calling `deleteCoValues` on them has no effect:
+
+```ts
+const me = MusicaAccount.getMe();
+const group = Group.create();
+
+// These calls have no effect - Groups and Accounts are silently skipped
+await deleteCoValues(Group, group.$jazz.id);
+await deleteCoValues(MusicaAccount, me.$jazz.id);
+
+// This deletes the account content, but not the account itself
+await deleteCoValues(MusicaAccount, me.$jazz.id, {
+    resolve: {
+      profile: {
+        avatar: {
+          $each: true,
+        },
+      },
+      root: {
+        rootPlaylist: {
+          tracks: {
+            $each: {
+              file: true,
+              waveform: true,
+            },
+          },
+        },
+        // The list content has been deleted previously
+        playlists: true,
+      },
+    },
+});
+
+```
 
 
 ## Key Features
@@ -4520,7 +4618,7 @@ This guide will show you how you can access your data on multiple devices by sig
 
 **Info:** 
 
-If you haven't gone through the [front-end Quickstart](/docs/quickstart), you might find this guide a bit confusing. If you're looking for a quick reference, you might find [this page](/docs/key-features/authentication/overview) or our [Passkey Auth example app](https://github.com/gardencmp/jazz/tree/main/starters/react-passkey-auth) more helpful!
+If you haven't gone through the [front-end Quickstart](/docs/quickstart), you might find this guide a bit confusing, as it continues from there. If you're looking for a quick reference, you might find [this page](/docs/key-features/authentication/overview) or our [Passkey Auth example app](https://github.com/gardencmp/jazz/tree/main/starters/react-passkey-auth) more helpful!
 
 ## Add passkey authentication
 
@@ -4539,20 +4637,20 @@ import { JazzFestAccount } from "@/app/schema";
 const apiKey = process.env.NEXT_PUBLIC_JAZZ_API_KEY;
 
 export function JazzWrapper({ children }: { children: React.ReactNode }) {
-return (
-  <JazzReactProvider
-    sync={{
-      peer: `wss://cloud.jazz.tools/?key=${apiKey}`,
-    }}
-    AccountSchema={JazzFestAccount}
-  >
-    {/* [!code ++:1] */}
-    <PasskeyAuthBasicUI appName="JazzFest">
-      {children}
+  return (
+    <JazzReactProvider
+      sync={{
+        peer: `wss://cloud.jazz.tools/?key=${apiKey}`,
+      }}
+      AccountSchema={JazzFestAccount}
+    >
       {/* [!code ++:1] */}
-    </PasskeyAuthBasicUI>
-  </JazzReactProvider>
-);
+      <PasskeyAuthBasicUI appName="JazzFest">
+        {children}
+        {/* [!code ++:1] */}
+      </PasskeyAuthBasicUI>
+    </JazzReactProvider>
+  );
 }
 
 ```
@@ -4683,19 +4781,19 @@ import { JazzFestAccount } from "@/app/schema";
 const apiKey = process.env.NEXT_PUBLIC_JAZZ_API_KEY;
 
 export function JazzWrapper({ children }: { children: React.ReactNode }) {
-return (
-  <JazzReactProvider
-    sync={{
-      peer: `wss://cloud.jazz.tools/?key=${apiKey}`,
-    }}
-    AccountSchema={JazzFestAccount}
-  >
-    {/* [!code ++:3] */}
-    <Auth>{children}</Auth>
-    {/* [!code --:3] */}
-    <PasskeyAuthBasicUI appName="JazzFest">{children}</PasskeyAuthBasicUI>
-  </JazzReactProvider>
-);
+  return (
+    <JazzReactProvider
+      sync={{
+        peer: `wss://cloud.jazz.tools/?key=${apiKey}`,
+      }}
+      AccountSchema={JazzFestAccount}
+    >
+      {/* [!code ++:3] */}
+      <Auth>{children}</Auth>
+      {/* [!code --:3] */}
+      <PasskeyAuthBasicUI appName="JazzFest">{children}</PasskeyAuthBasicUI>
+    </JazzReactProvider>
+  );
 }
 
 ```
@@ -5032,7 +5130,7 @@ Passkey authentication is based on the [Web Authentication API](https://develope
 * **User-friendly**: Uses familiar biometric verification (FaceID/TouchID)
 * **Cross-device**: Works across devices with the same biometric authentication
 * **No password management**: Users don't need to remember or store anything
-* **Wide support**: Available in most modern browsers
+* **Wide support**: Available in most modern browsers and mobile platforms
 
 ## Implementation
 
@@ -5328,8 +5426,6 @@ export const betterAuthClient = createAuthClient({
 
 ```
 
-Wrap your app with the `AuthProvider`, passing the `betterAuthClient` instance:
-
 ```ts
 "use client";
 
@@ -5349,7 +5445,7 @@ export function App() {
 
 **Warning: Important** 
 
-The AuthProvider component uses the `better-auth/client` package, not `better-auth/react`. To verify the authentication state in your app, see [Authentication states](#authentication-states).
+The AuthProvider component uses the `better-auth/client` package. To verify the authentication state in your app, see [Authentication states](#authentication-states).
 
 ## Authentication methods
 
@@ -5420,7 +5516,7 @@ export const authWithHooks = betterAuth({
 ### Better Auth Database Adapter
 # Jazz database adapter for Better Auth
 
-The package `jazz-tools/better-auth/database-adapter` is a database adapter for Better Auth based on Jazz. Better Auth's data will be stored in CoValues encrypted by [Server Worker](/docs/server-side/setup), synced on our distributed [cloud infrastructure](/cloud).
+The package `jazz-tools/better-auth/database-adapter` is a database adapter for Better Auth based on Jazz. Better Auth's data will be stored in CoValues encrypted by [Server Worker](/docs/server-side/setup), synced on our distributed [cloud infrastructure](https://dashboard.jazz.tools).
 
 ## Getting started
 
@@ -5445,13 +5541,13 @@ import { JazzBetterAuthDatabaseAdapter } from "jazz-tools/better-auth/database-a
 const apiKey = process.env.JAZZ_API_KEY;
 
 const auth = betterAuth({
-database: JazzBetterAuthDatabaseAdapter({
-  syncServer: `wss://cloud.jazz.tools/?key=${apiKey}`,
-  accountID: "auth-worker-account-id",
-  accountSecret: "your-worker-account-secret",
-}),
+  database: JazzBetterAuthDatabaseAdapter({
+    syncServer: `wss://cloud.jazz.tools/?key=${apiKey}`,
+    accountID: "auth-worker-account-id",
+    accountSecret: "your-worker-account-secret",
+  }),
 
-// other Better Auth settings
+  // other Better Auth settings
 });
 
 ```
@@ -6075,8 +6171,6 @@ export function Festival({ id }: { id?: string }) {
 
 ### Update our New Band component
 
-We'll also update our `NewBand` component so that it can take a prop for the festival ID, which will make it reusable on our home page and the new festival page.
-
 **File name: app/components/NewBand.tsx**
 
 ```tsx
@@ -6592,7 +6686,7 @@ const branch = useCoState(Project, projectId, {
 
 ```
 
-You can also include nested CoValues in your branch by using a [resolve query](/docs/core-concepts/subscription-and-loading#resolve-queries).
+You can also include nested CoValues in your branch by using a [resolve query](/docs/core-concepts/subscription-and-loading#using-resolve-queries).
 
 You are in control of how nested CoValues are included in your branch. When you specify the CoValue to branch, any nested CoValues specified in a `resolve` query will also be branched. Nested CoValues _not_ specified in your resolve query will not be branched.
 
@@ -6923,6 +7017,15 @@ console.log(new Date(task.$jazz.lastUpdatedAt));
 
 ```
 
+### Created By
+
+To show who created the value, use the `$jazz.createdBy` getter. This will return the ID of the user who created the value as a string.
+
+```tsx
+console.log(task.$jazz.createdBy);
+
+```
+
 ## Requirements
 
 * CoValues must be loaded to access history (see [Subscription & Loading](/docs/core-concepts/subscription-and-loading))
@@ -6950,14 +7053,14 @@ This quickstart guide will take you from an empty project to a server worker whi
 * You'll get the most out of this guide if you complete [the frontend quickstart guide](/docs/quickstart) first.
 * If you've already completed the frontend quickstart, you can skip straight to [extending your schema](#define-your-schema).
 
-## Create your Next.js App
+## Create Your App
 
 We'll be using Next.js for simplicity, but you can use any framework you like.
 
 You can accept the defaults for all the questions, or customise the project as you like.
 
 ```sh
-npx create-next-app@latest --typescript jazzfest
+npm create-next-app@latest --typescript jazzfest
 cd jazzfest
 
 ```
@@ -7153,21 +7256,21 @@ import { JazzReactProvider } from "jazz-tools/react";
 const apiKey = process.env.NEXT_PUBLIC_JAZZ_API_KEY;
 
 export default function RootLayout({
-children,
+  children,
 }: {
-children: React.ReactNode;
+  children: React.ReactNode;
 }) {
-return (
-  <html lang="en">
-    <body>
-      <JazzReactProvider
-        sync={{ peer: `wss://cloud.jazz.tools/?key=${apiKey}` }}
-      >
-        {children}
-      </JazzReactProvider>
-    </body>
-  </html>
-);
+  return (
+    <html lang="en">
+      <body>
+        <JazzReactProvider
+          sync={{ peer: `wss://cloud.jazz.tools/?key=${apiKey}` }}
+        >
+          {children}
+        </JazzReactProvider>
+      </body>
+    </html>
+  );
 }
 
 ```
@@ -7241,7 +7344,7 @@ Looking forward to seeing what you build!
 ## Next steps
 
 * Complete the [front-end quickstart](/docs/quickstart) to learn more about how to build real-time UIs using Jazz
-* Find out how to [handle errors](/docs/server-side/communicating-with-workers/http-requests#error-handling) gracefully in your server worker
+* Find out how to [handle errors](/docs/server-side/jazz-rpc#error-handling) gracefully in your server worker
 * Learn how to share and [collaborate on data](/docs/permissions-and-sharing/overview) in groups with complex permissions
 
 
@@ -7315,11 +7418,9 @@ Server Worker credentials are typically stored and provided as environment varia
 
 ## Wasm on Edge runtimes
 
-To maximize compatibility, Jazz falls back to a slower, JavaScript crypto implementation if the faster WASM implementation is not available.
+On some edge platforms, such as Cloudflare Workers or Vercel Edge Functions, environment security restrictions may trigger WASM crypto to fail.
 
-On some edge platforms, such as Cloudflare Workers or Vercel Edge Functions, environment security restrictions may trigger this fallback unnecessarily.
-
-You can ensure that Jazz uses the faster WASM implementation by importing the WASM loader before using Jazz. For example:
+To avoid this failure, you can ensure that Jazz uses the WASM implementation by importing the WASM loader before using Jazz. For example:
 
 ```ts
 import "jazz-tools/load-edge-wasm";
@@ -8066,6 +8167,23 @@ export const jazzSSR = createSSRJazzAgent({
 
 ```
 
+If you want to initialize the WASM asynchronously (**Suggested**), you can use the `initWasm` function. Otherwise, the WASM will be initialized synchronously and will block the main thread (**Not Recommended**).
+
+**File name: app/jazzSSR.ts**
+
+```ts
+import { createSSRJazzAgent } from "jazz-tools/ssr";
+import { initWasm } from "jazz-tools/wasm";
+
+// Init WASM asynchronously to avoid blocking the main thread.
+await initWasm();
+
+export const jazzSSR = createSSRJazzAgent({ 
+  peer: "wss://cloud.jazz.tools/",
+});
+
+```
+
 ## Telling Jazz to use the SSR agent
 
 Normally, Jazz expects a logged in user (or an anonymous user) to be accessing data. We can use the `enableSSR` setting to tell Jazz that this may not be the case, and the data on the page may be being accessed by an agent.
@@ -8576,7 +8694,245 @@ For technical details, see our [encryption documentation](/docs/reference/encryp
 
 Jazz uses BLAKE3, XSalsa20, and Ed25519, which are all widely published and publicly reviewed standard cryptographic algorithms.
 
-Although we're not lawyers, and so can't give legal advice, we believe that Jazz does not use 'Non-standard cryptography' as defined in the [BIS requirements](https://www.ecfr.gov/current/title-15/subtitle-B/chapter-VII/subchapter-C/part-772#p-772.1%28Non-standard%20cryptography%29) and therefore the requirements for publishing Jazz apps in the Apple App Store.
+Although we're not lawyers and so can't give legal advice, we believe that Jazz does not use 'Non-standard cryptography' as defined in the [BIS requirements](https://www.ecfr.gov/current/title-15/subtitle-B/chapter-VII/subchapter-C/part-772#p-772.1%28Non-standard%20cryptography%29) and therefore meets the requirements for publishing Jazz apps in the Apple App Store.
+
+
+### Data Modelling
+# Data Modelling and Schema Design in Jazz
+
+To understand how best to model data for your Jazz application, it's helpful to first think about how your data is related.
+
+## Jazz as a Collaborative Graph
+
+In a traditional database, you might model different data types as 'tables' or 'collections'. With Jazz, you model data types as schemas, and data as an explicitly linked graph.
+
+For example, consider the following SQL data model for a simple blog:
+
+```sql
+-- Users table
+CREATE TABLE authors (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(50) NOT NULL
+);
+
+-- Posts table
+CREATE TABLE posts (
+    id SERIAL PRIMARY KEY,
+    title VARCHAR(255) NOT NULL,
+    content TEXT NOT NULL,
+);
+
+```
+
+This data model for a Jazz app is defined in a schema which might look like this:
+
+```ts
+const Author = co.map({
+  name: z.string()
+});
+
+const Post = co.map({
+  title: z.string(),
+  content: co.richText(),
+});
+
+```
+
+What are `z.` and `co.`?
+
+Jazz uses Zod schemas to define primitive data types. `z.string()` indicates that the stored value should be a string.
+
+To define collaborative data types, Jazz provides utilities under the `co` namespace. For example, here, we use `co.richText()`, to indicate a collaborative value.
+
+## Permissions are part of the data model
+
+In traditional databases, permissions are often left to the application layer, or are a more advanced feature of the database that requires additional configuration.
+
+With Jazz, permissions are an integral part of the data model — you need to consider permissions when structuring your data, not just when you're accessing it. Each CoValue has an ownership group, and permissions are defined based on the ownership hierarchy. This is very powerful, as it allows you to easily build cascading permissions hierarchies, but it does mean that you need to ensure each piece of data which needs different permissions to be applied lives in a different container (e.g. a separate `CoMap` or `CoList`). It is not possible to change the group which owns a CoValue. In order to change the permissions applying to a particular CoValue, an admin (or manager) can [make changes to the group membership](/docs/permissions-and-sharing/overview).
+
+You should consider the default permissions you would like a CoValue to have when you are designing your data model. You can [specify these in your schema](/docs/permissions-and-sharing/overview#defining-permissions-at-the-schema-level).
+
+### Permissions Levels
+
+The following main permissions levels exist (with each level including all the permissions from the previous level):
+
+* **none**: can't read the content of CoValue
+* **reader**: can read the content of the CoValue
+* **writer**: can update the content of the CoValue (overwrite values, add/remove items from lists, etc.)
+* **admin**: can grant or revoke permissions for others, as well as writing.
+
+These permissions can be granted to individual users or to groups.
+
+**Warning: Admins** 
+
+By default, **only** the user creating a CoValue is the admin. In contrast to traditional databases, Jazz does not have a concept of an 'application admin', or a 'root' or 'superuser'.
+
+Unless explicitly defined otherwise in your data model, only the creator of the CoValue will be added as an admin. Once a CoValue is created, its permissions can **only** be changed by an admin (or a manager).
+
+If [creating a nested CoValue inline](/docs/permissions-and-sharing/cascading-permissions#ownership-on-inline-covalue-creation), then by default, permissions are inherited from the containing CoValue.
+
+## Choosing your building blocks
+
+Jazz helps you build your app by providing concrete building blocks. Basic types which do not need collaborative editing, such as simple strings, numbers, and other scalar types are defined using Zod.
+
+Most apps will have more complex needs, however, and for this, Jazz provides you with **CoValues**, which are composite data structures which hold references to either these scalar types or other CoValues. Each CoValue is suited to a particular use case.
+
+| TypeScript Type            | Corresponding CoValue      | Usage                                                   |
+| -------------------------- | -------------------------- | ------------------------------------------------------- |
+| object                     | **CoMap**                  | Key-value stores with pre-defined keys (struct-like)    |
+| Record<string, T>          | **CoRecord**               | Key-value stores with arbitrary string keys (dict-like) |
+| T\[\]                      | **CoList**                 | Lists                                                   |
+| T\[\] (append-only)        | **CoFeed**                 | Session-based append-only lists                         |
+| string                     | **CoPlainText/CoRichText** | Collaborative text                                      |
+| Blob \| File               | **FileStream**             | Files                                                   |
+| Blob \| File (image)       | **ImageDefinition**        | Images                                                  |
+| number\[\] \| Float32Array | **CoVector**               | Embeddings                                              |
+| T \| U (discriminated)     | **DiscriminatedUnion**     | Lists of different types of items                       |
+
+In some cases, there are both scalar and collaborative options for the same data type. For example, you can use either `z.string()` or `co.richText()` for a string field. The key difference is that `z.string()` does not support collaborative editing. If you would like to update the string field, you can only do so by replacing the entire field with a new value. `co.richText()` supports collaborative editing, allows multiple users to edit the same string simultaneously.
+
+In our blog example, we used `co.richText()` for the content, to allow multiple users to edit the same post simultaneously, but we preferred `z.string()` for the title, as the title doesn't need to be edited collaboratively.
+
+This same principle applies with other data types too. For example, you can use `z.object()` or `co.map()` for an object field, and `z.tuple()` or `co.list()` for an array field.
+
+As a general rule of thumb: if you expect the whole object to be replaced when you update it, you should use a scalar type. If you expect to make small, surgical edits, or collaborate with others, a CoValue may be a better choice.
+
+Can't I just use CoValues for everything?
+
+Short answer is yes, you can. But you should be aware of the trade-offs. CoValues track their full edit history, and although they are very performant, they cannot achieve the same raw speed as their scalar counterparts for single-writer, full-value replacement updates.
+
+In most real-world applications, the benefits of collaborative editing outweigh the (slight) performance costs.
+
+## Linking them together
+
+In almost every case, you'll want to link your CoValues together somehow. This is because CoValues are only addressable by their unique ID. Discovering CoValues without knowing their ID is only possible by traversing references. In a normal Jazz app, we attach a 'root' to a user's account which serves as the entry point into the graph. In case there is a need to create a 'global root', then a CoValue ID can be hard-coded, or added as an environment variable.
+
+### One directional relationships
+
+Let's extend our example above to attach an `Author` to each `Post`.
+
+```ts
+const Post = co.map({
+  title: z.string(),
+  content: co.richText(),
+  // A single author
+  author: Author
+});
+
+```
+
+Here, `Post.author` is a one-way reference. Jazz stores the ID of the referenced `Author`, and when loading a `Post` you can choose whether to resolve that reference (and if so, how deeply).
+
+The above models a one-to-one relationship: both the `Post` and the `Author` have a single reference you can fill.
+
+If you would like to model a one-to-many relationship, use a `CoList`:
+
+```ts
+const Post = co.map({
+  title: z.string(),
+  content: co.richText(),
+  // Multiple authors collaborating on a single post
+  authors: co.list(Author)
+});
+
+```
+
+Mental model 
+
+ This is similar to a foreign key in a relational database: the reference lives on one side, and Jazz doesn't infer reverse links for you. You explicitly control how references are followed using [resolve queries](/docs/core-concepts/subscription-and-loading#using-resolve-queries).
+
+### Modelling inverse relationships
+
+Jazz relationships are one-way by default: a reference is stored and you can follow the breadcrumbs to resolve the references. If you need to be able to traverse the relationship from both sides, you solve this by adding the reference to both sides of the relationship.
+
+**Info: No inferred relationships** 
+
+You are in full control of the relationships in your app, Jazz will not create inferred inverse relationships for you. It is particularly important to bear this in mind because it is not possible to query CoValues based on references from other CoValues.
+
+### Recursive references
+
+As soon as you start building schemas with inverse (or recursive) relationships, you'll need to defer schema evaluation to avoid TypeScript errors. If we want `Author` to reference `Post` and `Post` to reference `Author`, whichever order we put them in will cause an error.
+
+You can address this by using getters to refer to schemas which are not yet defined:
+
+```ts
+const Author = co.map({
+  name: z.string(),
+  // This allows us to defer the evaluation
+  get posts() {
+    return co.list(Post);
+  }
+});
+
+const Post = co.map({
+  title: z.string(),
+  content: co.richText(),
+  author: Author
+});
+
+```
+
+To model a many-to-many relationship, use a `CoList` at both ends of the relationship — be aware that Jazz does not maintain consistency for you, this should be managed in your application code.
+
+```ts
+const Author = co.map({
+  name: z.string(),
+  // A single author has multiple posts
+  get posts() {
+    return co.list(Post)
+  }
+});
+
+const Post = co.map({
+  title: z.string(),
+  content: co.richText(),
+  // Multiple authors collaborating on a single post
+  authors: co.list(Author)
+});
+
+```
+
+Can I add a unique constraint?
+
+A `CoList` can contain the same item multiple times. There's no built in way to enforce that items in the list are unique, but you can adjust your data model to use a `CoRecord` keyed on the referenced CoValue ID to create a [set-like collection](/docs/core-concepts/covalues/colists#set-like-collections)
+
+```ts
+const Author = co.map({
+  name: z.string(),
+  posts: co.record(z.string(), Post)
+});
+
+// Assuming 'newPost' is a Post we want to link to from the Author
+author.posts.$jazz.set(newPost.$jazz.id, newPost);
+
+```
+
+Note that CoRecords are _always_ keyed on strings. Jazz does not enforce referential integrity here, so validating that these are valid `Post` IDs is an application-level responsibility.
+
+## Changing Your Data Model
+
+Over time, your data model may change. In a traditional app with a single source of truth, you could simply update the data directly in the database. With Jazz, each individual copy of a CoValue is its own authoritative state, and the schema simply tells Jazz how to interpret it.
+
+As a result, it is possible — indeed likely — that your users will end up on different versions of your schema at the same time. As a result, we recommend the following:
+
+* Add a version field to your schema
+* Only add fields, never remove them
+* Do not change the data type for existing fields
+* When adding fields, make them optional (so that you can load older data without these fields set).
+
+You can also use the [withMigration() method](/docs/core-concepts/covalues/comaps#running-migrations-on-comaps) which runs every time a CoValue is loaded (available on `CoMaps` and `Accounts`).
+
+**Warning: Use migrations carefully** 
+
+Migrations run _every_ time a CoValue is loaded. A poorly-written migration could cause a lot of unnecessary work being done, and potentially slow your app down. Exit as early as possible from the migration, and check the update is necessary before updating.
+
+## Further Reading
+
+Looking for a deeper walk through?
+
+* Check out our [Overview of CoValues](/docs/core-concepts/covalues/overview) to learn more about the different building blocks
+* Read about [permissions in detail](/docs/permissions-and-sharing/overview) to understand how permissions govern which users can see what data
+* Learn about [how to connect CoValues](/docs/core-concepts/schemas/connecting-covalues)
 
 
 ### Encryption
@@ -8826,11 +9182,23 @@ You're ready to start writing your own tests for your Jazz apps now. For further
 
 The fastest implementations are (in order):
 
-1. [Node-API crypto](/docs/server-side/setup#node-api) (only available in some Node/Deno environments) or [RNCrypto](/docs/project-setup/providers#react-native-crypto) and [RNQuickCrypto](/docs/react-native/project-setup/providers#quick-crypto) on React Native
+1. [Node-API crypto](/docs/server-side/setup#node-api) (only available in some Node/Deno environments) and RNCrypto on React Native (Default)
 2. [WASM crypto](/docs/server-side/setup#wasm-on-edge-runtimes)
-3. JavaScript fallback (slowest, but most compatible)
 
 Check whether your environment supports Node-API. Some edge runtimes may not enable WASM by default.
+
+## Initialize WASM asynchronously
+
+If you want to initialize the WASM asynchronously (**Suggested**), you can use the `initWasm` function. Otherwise, the WASM will be initialized synchronously and will block the main thread (**Not Recommended**).
+
+```ts
+import { initWasm } from "jazz-tools/wasm";
+
+await initWasm();
+
+// Your code here...
+
+```
 
 ## Minimise group extensions
 
@@ -9604,14 +9972,15 @@ export type MusicaAccountWithPlaylists = co.loaded<
 
 ```tsx
 import { Toaster } from "@/components/ui/toaster";
-import { JazzInspector } from "jazz-tools/inspector";
+import { JazzInspector, enableProfiling } from "jazz-tools/inspector";
 /* eslint-disable react-refresh/only-export-components */
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { RouterProvider, createHashRouter } from "react-router-dom";
-import { HomePage } from "./3_HomePage";
+import { PlaylistPage } from "./3_PlaylistPage";
 import { useMediaPlayer } from "./5_useMediaPlayer";
 import { InvitePage } from "./6_InvitePage";
+import { SettingsPage } from "./7_SettingsPage";
 import { WelcomeScreen } from "./components/WelcomeScreen";
 import { ErrorBoundary } from "./components/ErrorBoundary";
 import "./index.css";
@@ -9623,6 +9992,11 @@ import { JazzReactProvider, useSuspenseAccount } from "jazz-tools/react";
 import { onAnonymousAccountDiscarded } from "./4_actions";
 import { KeyboardListener } from "./components/PlayerControls";
 import { useSetupAppState } from "./lib/useSetupAppState";
+
+// Normally profiling is enabled only in development mode
+// but we enable it for the music player example to show
+// profiling data in the production environment
+enableProfiling();
 
 /**
  * Walkthrough: The top-level provider `<JazzReactProvider/>`
@@ -9655,7 +10029,7 @@ function AppContent({
       path: "/",
       element: (
         <ErrorBoundary>
-          <HomePage mediaPlayer={mediaPlayer} />
+          <PlaylistPage mediaPlayer={mediaPlayer} />
         </ErrorBoundary>
       ),
     },
@@ -9663,7 +10037,15 @@ function AppContent({
       path: "/playlist/:playlistId",
       element: (
         <ErrorBoundary>
-          <HomePage mediaPlayer={mediaPlayer} />
+          <PlaylistPage mediaPlayer={mediaPlayer} />
+        </ErrorBoundary>
+      ),
+    },
+    {
+      path: "/settings",
+      element: (
+        <ErrorBoundary>
+          <SettingsPage mediaPlayer={mediaPlayer} />
         </ErrorBoundary>
       ),
     },
@@ -9687,12 +10069,7 @@ function AppContent({
 function Main() {
   const mediaPlayer = useMediaPlayer();
 
-  return (
-    <SidebarProvider>
-      <AppContent mediaPlayer={mediaPlayer} />
-      <JazzInspector />
-    </SidebarProvider>
-  );
+  return <AppContent mediaPlayer={mediaPlayer} />;
 }
 
 const peer =
@@ -9713,7 +10090,9 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
       onAnonymousAccountDiscarded={onAnonymousAccountDiscarded}
     >
       <SidebarProvider>
-        <Main />
+        <ErrorBoundary>
+          <Main />
+        </ErrorBoundary>
         <JazzInspector />
       </SidebarProvider>
     </JazzReactProvider>
@@ -9722,7 +10101,7 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
 
 ```
 
-### 3_HomePage.tsx
+### 3_PlaylistPage.tsx
 
 ```tsx
 import { useParams } from "react-router";
@@ -9732,9 +10111,8 @@ import { MediaPlayer } from "./5_useMediaPlayer";
 import { FileUploadButton } from "./components/FileUploadButton";
 import { MusicTrackRow } from "./components/MusicTrackRow";
 import { PlayerControls } from "./components/PlayerControls";
-import { EditPlaylistModal } from "./components/EditPlaylistModal";
 import { PlaylistMembers } from "./components/PlaylistMembers";
-import { MemberAccessModal } from "./components/MemberAccessModal";
+import { EditPlaylistDialog } from "./components/EditPlaylistDialog";
 import { AddTracksDialog } from "./components/AddTracksDialog";
 import { PlaylistEmptyState } from "./components/PlaylistEmptyState";
 import { SidePanel } from "./components/SidePanel";
@@ -9743,26 +10121,15 @@ import { SidebarInset, SidebarTrigger } from "./components/ui/sidebar";
 import { usePlayState } from "./lib/audio/usePlayState";
 import { useState } from "react";
 import { useSuspenseAccount, useSuspenseCoState } from "jazz-tools/react-core";
+import { useIsMobile } from "./hooks/use-mobile";
+import { Pencil } from "lucide-react";
 
-export function HomePage({ mediaPlayer }: { mediaPlayer: MediaPlayer }) {
-  const playState = usePlayState();
-  const isPlaying = playState.value === "play";
-  const [isEditModalOpen, setIsEditModalOpen] = useState(false);
-  const [isMembersModalOpen, setIsMembersModalOpen] = useState(false);
-  const [isAddTracksModalOpen, setIsAddTracksModalOpen] = useState(false);
-
-  async function handleFileLoad(files: FileList) {
-    /**
-     * Follow this function definition to see how we update
-     * values in Jazz and manage files!
-     */
-    await uploadMusicTracks(playlist, files);
-  }
-
+export function PlaylistPage({ mediaPlayer }: { mediaPlayer: MediaPlayer }) {
   const params = useParams<{ playlistId: string }>();
   const playlistId = useSuspenseAccount(MusicaAccount, {
     select: (me) => params.playlistId ?? me.root.$jazz.refs.rootPlaylist.id,
   });
+  const isMobile = useIsMobile();
 
   const playlist = useSuspenseCoState(PlaylistWithTracks, playlistId);
 
@@ -9776,17 +10143,20 @@ export function HomePage({ mediaPlayer }: { mediaPlayer: MediaPlayer }) {
     select: (me) => me.canManage(playlist),
   });
 
-  const isActivePlaylist = useSuspenseAccount(MusicaAccount, {
-    select: (me) => playlistId === me.root.activePlaylist?.$jazz.id,
-  });
+  const isPlaying = usePlayState().value === "play";
+  const [currentDialog, setCurrentDialog] = useState<
+    | { name: "playlist"; section: "details" | "members" }
+    | { name: "add-tracks" }
+    | null
+  >(null);
 
-  const handlePlaylistShareClick = () => {
-    setIsMembersModalOpen(true);
-  };
-
-  const handleEditClick = () => {
-    setIsEditModalOpen(true);
-  };
+  async function handleFileLoad(files: FileList) {
+    /**
+     * Follow this function definition to see how we update
+     * values in Jazz and manage files!
+     */
+    await uploadMusicTracks(playlist, files);
+  }
 
   return (
     <SidebarInset className="flex flex-col h-screen text-gray-800">
@@ -9799,13 +10169,50 @@ export function HomePage({ mediaPlayer }: { mediaPlayer: MediaPlayer }) {
             {isRootPlaylist ? (
               <h1 className="text-2xl font-bold text-blue-800">All tracks</h1>
             ) : (
-              <div className="flex items-center space-x-4">
-                <h1 className="text-2xl font-bold text-blue-800">
-                  {playlist.title}
-                </h1>
+              <div className="group flex items-center gap-3">
+                <div className="flex items-center gap-1">
+                  <h1 className="text-2xl font-bold text-blue-800">
+                    {canEdit ? (
+                      <button
+                        type="button"
+                        onClick={() =>
+                          setCurrentDialog({
+                            name: "playlist",
+                            section: "details",
+                          })
+                        }
+                        className="text-left hover:underline focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded-sm"
+                        aria-label="Edit playlist title"
+                      >
+                        {playlist.title}
+                      </button>
+                    ) : (
+                      playlist.title
+                    )}
+                  </h1>
+                  {canEdit && (
+                    <Button
+                      type="button"
+                      variant="ghost"
+                      size="icon"
+                      aria-label="Edit playlist"
+                      onClick={() =>
+                        setCurrentDialog({
+                          name: "playlist",
+                          section: "details",
+                        })
+                      }
+                      className="text-blue-800"
+                    >
+                      <Pencil className="w-4 h-4" />
+                    </Button>
+                  )}
+                </div>
                 <PlaylistMembers
                   memberIds={membersIds}
-                  onClick={() => setIsMembersModalOpen(true)}
+                  onClick={() =>
+                    setCurrentDialog({ name: "playlist", section: "members" })
+                  }
                 />
               </div>
             )}
@@ -9817,26 +10224,28 @@ export function HomePage({ mediaPlayer }: { mediaPlayer: MediaPlayer }) {
                   </FileUploadButton>
                 </>
               ) : (
-                canEdit && (
-                  <>
-                    {canEdit && (
-                      <Button
-                        onClick={() => setIsAddTracksModalOpen(true)}
-                        variant="outline"
-                      >
-                        Add tracks from library
-                      </Button>
-                    )}
-                    {canEdit && (
-                      <Button onClick={handleEditClick} variant="outline">
-                        Edit
-                      </Button>
-                    )}
-                    {canManage && (
-                      <Button onClick={handlePlaylistShareClick}>Share</Button>
-                    )}
-                  </>
-                )
+                <>
+                  {canEdit && (
+                    <Button
+                      onClick={() => setCurrentDialog({ name: "add-tracks" })}
+                      variant="outline"
+                    >
+                      {isMobile ? "Add tracks" : "Add tracks from library"}
+                    </Button>
+                  )}
+                  {canManage && (
+                    <Button
+                      onClick={() =>
+                        setCurrentDialog({
+                          name: "playlist",
+                          section: "members",
+                        })
+                      }
+                    >
+                      Share
+                    </Button>
+                  )}
+                </>
               )}
             </div>
           </div>
@@ -9850,10 +10259,10 @@ export function HomePage({ mediaPlayer }: { mediaPlayer: MediaPlayer }) {
                       key={track.$jazz.id}
                       index={index}
                       isPlaying={
-                        mediaPlayer.activeTrackId === track.$jazz.id &&
-                        isActivePlaylist &&
-                        isPlaying
+                        isPlaying &&
+                        mediaPlayer.activeTrackId === track.$jazz.id
                       }
+                      isLoading={mediaPlayer.loading === track.$jazz.id}
                       onClick={() => {
                         mediaPlayer.setActiveTrack(track, playlist);
                       }}
@@ -9865,7 +10274,7 @@ export function HomePage({ mediaPlayer }: { mediaPlayer: MediaPlayer }) {
             !isRootPlaylist && (
               <PlaylistEmptyState
                 canEdit={canEdit}
-                onAddTracks={() => setIsAddTracksModalOpen(true)}
+                onAddTracks={() => setCurrentDialog({ name: "add-tracks" })}
               />
             )
           )}
@@ -9873,26 +10282,23 @@ export function HomePage({ mediaPlayer }: { mediaPlayer: MediaPlayer }) {
         <PlayerControls mediaPlayer={mediaPlayer} />
       </div>
 
-      {/* Playlist Title Edit Modal */}
-      <EditPlaylistModal
-        playlistId={playlistId}
-        isOpen={isEditModalOpen}
-        onClose={() => setIsEditModalOpen(false)}
-      />
-
-      {/* Members Management Modal */}
-      <MemberAccessModal
-        isOpen={isMembersModalOpen}
-        onOpenChange={setIsMembersModalOpen}
-        playlist={playlist}
-      />
-
+      {/* Playlist Edit / Members Dialog */}
+      {currentDialog?.name === "playlist" && (
+        <EditPlaylistDialog
+          isOpen={true}
+          onOpenChange={(open) => !open && setCurrentDialog(null)}
+          playlistId={playlistId}
+          defaultSection={currentDialog.section}
+        />
+      )}
       {/* Add Tracks from Root Modal */}
-      <AddTracksDialog
-        isOpen={isAddTracksModalOpen}
-        onOpenChange={setIsAddTracksModalOpen}
-        playlist={playlist}
-      />
+      {currentDialog?.name === "add-tracks" && (
+        <AddTracksDialog
+          isOpen={true}
+          onOpenChange={(open) => !open && setCurrentDialog(null)}
+          playlist={playlist}
+        />
+      )}
     </SidebarInset>
   );
 }
@@ -9903,7 +10309,7 @@ export function HomePage({ mediaPlayer }: { mediaPlayer: MediaPlayer }) {
 
 ```ts
 import { getAudioFileData } from "@/lib/audio/getAudioFileData";
-import { Group } from "jazz-tools";
+import { Group, deleteCoValues } from "jazz-tools";
 import {
   MusicTrack,
   MusicaAccount,
@@ -10012,10 +10418,11 @@ export async function removeTrackFromPlaylist(
   track.$jazz.owner.removeMember(playlist.$jazz.owner);
 }
 
-export async function removeTrackFromAllPlaylists(track: MusicTrack) {
-  const { root } = await MusicaAccount.getMe().$jazz.ensureLoaded({
+export async function deleteMusicTrack(track: MusicTrack) {
+  const me = await MusicaAccount.getMe().$jazz.ensureLoaded({
     resolve: {
       root: {
+        rootPlaylist: PlaylistWithTracks.resolveQuery,
         playlists: {
           $each: {
             $onError: "catch",
@@ -10026,12 +10433,23 @@ export async function removeTrackFromAllPlaylists(track: MusicTrack) {
     },
   });
 
-  const playlists = root.playlists;
+  const playlists = me.root.playlists;
 
   for (const playlist of playlists.values()) {
     if (!playlist.$isLoaded) continue;
 
     removeTrackFromPlaylist(playlist, track);
+  }
+
+  removeTrackFromPlaylist(me.root.rootPlaylist, track);
+
+  if (me.canAdmin(track)) {
+    await deleteCoValues(MusicTrack, track.$jazz.id, {
+      resolve: {
+        file: true,
+        waveform: true,
+      },
+    });
   }
 }
 
@@ -10096,7 +10514,7 @@ export async function onAnonymousAccountDiscarded(
 }
 
 export async function deletePlaylist(playlistId: string) {
-  const { root } = await MusicaAccount.getMe().$jazz.ensureLoaded({
+  const me = await MusicaAccount.getMe().$jazz.ensureLoaded({
     resolve: {
       root: {
         playlists: true,
@@ -10107,7 +10525,9 @@ export async function deletePlaylist(playlistId: string) {
     },
   });
 
-  const index = root.playlists.findIndex((p) => p?.$jazz.id === playlistId);
+  const root = me.root;
+
+  const index = root.playlists.findIndex((p) => p.$jazz.id === playlistId);
   if (index > -1) {
     root.playlists?.$jazz.splice(index, 1);
   }
@@ -10123,6 +10543,55 @@ export async function deletePlaylist(playlistId: string) {
       root.$jazz.set("activeTrack", undefined);
     }
   }
+
+  const playlist = await Playlist.load(playlistId);
+
+  if (playlist.$isLoaded && me.canAdmin(playlist)) {
+    await deleteCoValues(Playlist, playlist.$jazz.id);
+  }
+}
+
+export async function deleteMyMusicPlayerAccount() {
+  const me = await MusicaAccount.getMe().$jazz.ensureLoaded({
+    resolve: {
+      root: {
+        playlists: {
+          $each: { $onError: "catch" },
+        },
+      },
+    },
+  });
+
+  // Delete all playlists referenced in the user's root. (This may include invited playlists.)
+  for (const playlist of me.root.playlists.values()) {
+    if (!playlist.$isLoaded) continue;
+    if (me.canAdmin(playlist)) {
+      await deleteCoValues(Playlist, playlist.$jazz.id);
+    } else {
+      playlist.$jazz.owner.removeMember(me);
+    }
+  }
+
+  await deleteCoValues(MusicaAccount, me.$jazz.id, {
+    resolve: {
+      profile: {
+        avatar: {
+          $each: true,
+        },
+      },
+      root: {
+        rootPlaylist: {
+          tracks: {
+            $each: {
+              file: true,
+              waveform: true,
+            },
+          },
+        },
+        playlists: true,
+      },
+    },
+  });
 }
 
 ```
@@ -10273,6 +10742,167 @@ export function InvitePage() {
   });
 
   return <p>Accepting invite....</p>;
+}
+
+```
+
+### 7_SettingsPage.tsx
+
+```tsx
+import type { MediaPlayer } from "@/5_useMediaPlayer";
+import { PlayerControls } from "@/components/PlayerControls";
+import { DeleteAccountDialog } from "@/components/DeleteAccountDialog";
+import { ProfileForm } from "@/components/ProfileForm";
+import { SidePanel } from "@/components/SidePanel";
+import { Button } from "@/components/ui/button";
+import { Separator } from "@/components/ui/separator";
+import { Textarea } from "@/components/ui/textarea";
+import { SidebarInset, SidebarTrigger } from "@/components/ui/sidebar";
+import { toast } from "@/hooks/use-toast";
+import { wordlist } from "@/wordlist";
+import { useLogOut, usePassphraseAuth } from "jazz-tools/react";
+import { Copy, Check, ShieldAlert } from "lucide-react";
+import { useState } from "react";
+import { deleteMyMusicPlayerAccount } from "./4_actions";
+
+export function SettingsPage({ mediaPlayer }: { mediaPlayer: MediaPlayer }) {
+  const [isCopied, setIsCopied] = useState(false);
+  const [isDeleteOpen, setIsDeleteOpen] = useState(false);
+  const logOut = useLogOut();
+
+  const passphraseAuth = usePassphraseAuth({
+    wordlist,
+  });
+
+  const handleCopyPassphrase = async () => {
+    if (passphraseAuth.passphrase) {
+      await navigator.clipboard.writeText(passphraseAuth.passphrase);
+      setIsCopied(true);
+      toast({
+        title: "Copied",
+        description: "Passphrase copied to clipboard.",
+      });
+      setTimeout(() => setIsCopied(false), 2000);
+    }
+  };
+
+  return (
+    <SidebarInset className="flex flex-col h-screen text-gray-800">
+      <div className="flex flex-1 overflow-hidden">
+        <SidePanel />
+        <main className="flex-1 px-2 py-4 md:px-6 overflow-y-auto overflow-x-hidden relative sm:h-[calc(100vh-80px)] bg-white h-[calc(100vh-165px)]">
+          <SidebarTrigger className="md:hidden" />
+
+          <div className="pl-1 md:pl-10 pr-2 md:pr-0 mt-2 md:mt-0 w-full">
+            <h1 className="text-2xl font-bold text-blue-800">
+              Profile settings
+            </h1>
+            <p className="text-gray-600 mt-2">
+              Update your profile information and manage your account.
+            </p>
+
+            <Separator className="my-6" />
+
+            <div className="max-w-2xl space-y-8">
+              <section className="space-y-3">
+                <h2 className="text-lg font-semibold text-gray-900">Profile</h2>
+                <p className="text-sm text-gray-600">
+                  Update your profile name and avatar.
+                </p>
+
+                <ProfileForm
+                  className="max-w-md"
+                  submitButtonText="Save"
+                  onSubmit={() => {
+                    toast({
+                      title: "Saved",
+                      description: "Your profile has been updated.",
+                    });
+                  }}
+                />
+              </section>
+
+              <Separator />
+
+              <section className="space-y-3">
+                <h2 className="text-lg font-semibold text-gray-900">
+                  Recovery passphrase
+                </h2>
+                <p className="text-sm text-gray-600">
+                  Use this passphrase to log in on other devices or recover your
+                  account.
+                </p>
+
+                <div className="bg-amber-50 border border-amber-200 rounded-lg p-4 flex items-start gap-3">
+                  <ShieldAlert className="size-5 text-amber-600 mt-0.5 shrink-0" />
+                  <div className="text-sm text-amber-800">
+                    <p className="font-medium">Keep this passphrase secret</p>
+                    <p className="mt-1">
+                      Anyone with this passphrase can access your account. Store
+                      it somewhere safe and never share it.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="space-y-3 max-w-md">
+                  <Textarea
+                    readOnly
+                    value={passphraseAuth.passphrase || "Loading..."}
+                    className="font-mono text-sm bg-gray-50"
+                    rows={4}
+                  />
+                  <Button
+                    onClick={handleCopyPassphrase}
+                    variant="outline"
+                    disabled={!passphraseAuth.passphrase}
+                  >
+                    {isCopied ? (
+                      <>
+                        <Check className="size-4 mr-2" />
+                        Copied!
+                      </>
+                    ) : (
+                      <>
+                        <Copy className="size-4 mr-2" />
+                        Copy passphrase
+                      </>
+                    )}
+                  </Button>
+                </div>
+              </section>
+              <section className="space-y-3">
+                <h2 className="text-lg font-semibold text-gray-900">
+                  Danger zone
+                </h2>
+                <p className="text-sm text-gray-600">
+                  Deleting your account will remove your music-player data.
+                </p>
+                <Button
+                  variant="destructive"
+                  onClick={() => setIsDeleteOpen(true)}
+                >
+                  Delete account
+                </Button>
+              </section>
+            </div>
+          </div>
+        </main>
+
+        <PlayerControls mediaPlayer={mediaPlayer} />
+      </div>
+      {isDeleteOpen && (
+        <DeleteAccountDialog
+          isOpen={isDeleteOpen}
+          onOpenChange={setIsDeleteOpen}
+          onConfirm={async () => {
+            await deleteMyMusicPlayerAccount();
+            logOut();
+            window.location.href = "/";
+          }}
+        />
+      )}
+    </SidebarInset>
+  );
 }
 
 ```
@@ -10821,111 +11451,463 @@ export function CreatePlaylistModal({
 
 ```
 
-### components/EditPlaylistModal.tsx
+### components/DeleteAccountDialog.tsx
 
 ```tsx
-import { Playlist } from "@/1_schema";
-import { updatePlaylistTitle } from "@/4_actions";
-import { useCoState } from "jazz-tools/react";
-import { ChangeEvent, useState, useEffect } from "react";
+import { MusicaAccount } from "@/1_schema";
+import { Button } from "@/components/ui/button";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { useSuspenseAccount } from "jazz-tools/react-core";
+import { useEffect, useMemo, useState } from "react";
+
+const CONFIRMATION_PHRASE = "I want to delete my account";
+
+export interface DeleteAccountDialogProps {
+  isOpen: boolean;
+  onOpenChange: (open: boolean) => void;
+  onConfirm?: () => Promise<void> | void;
+}
+
+export function DeleteAccountDialog({
+  isOpen,
+  onOpenChange,
+  onConfirm,
+}: DeleteAccountDialogProps) {
+  const [confirmationText, setConfirmationText] = useState("");
+  const [isPending, setIsPending] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
+  const profileName = useSuspenseAccount(MusicaAccount, {
+    select: (me) => me.profile.name,
+  });
+
+  useEffect(() => {
+    if (!isOpen) {
+      setConfirmationText("");
+      setIsPending(false);
+      setError(null);
+    }
+  }, [isOpen]);
+
+  const isPhraseMatch = useMemo(
+    () => confirmationText === CONFIRMATION_PHRASE,
+    [confirmationText],
+  );
+
+  const canDelete = isPhraseMatch && !isPending;
+
+  async function handleConfirm() {
+    if (!canDelete) return;
+
+    setIsPending(true);
+    setError(null);
+    try {
+      await onConfirm?.();
+    } catch (e) {
+      console.error("Delete account failed:", e);
+      setError("Failed to delete your account. Please try again.");
+      setIsPending(false);
+      return;
+    }
+    onOpenChange(false);
+  }
+
+  return (
+    <Dialog open={isOpen} onOpenChange={onOpenChange}>
+      <DialogContent>
+        <DialogHeader>
+          <DialogTitle>Delete account</DialogTitle>
+          <DialogDescription>
+            This will delete your music-player data and sign you out.
+          </DialogDescription>
+        </DialogHeader>
+
+        <div className="text-sm text-gray-700">
+          You are deleting data for:{" "}
+          <span className="font-medium">{profileName}</span>
+        </div>
+
+        <div className="space-y-2">
+          <Label htmlFor="delete-account-confirmation">
+            Type the phrase to confirm
+          </Label>
+          <div className="text-sm text-gray-600">
+            <span className="font-mono">{CONFIRMATION_PHRASE}</span>
+          </div>
+          <Input
+            id="delete-account-confirmation"
+            value={confirmationText}
+            onChange={(e) => {
+              setConfirmationText(e.target.value);
+              if (error) setError(null);
+            }}
+            disabled={isPending}
+            autoComplete="off"
+            spellCheck={false}
+            autoCapitalize="none"
+            autoCorrect="off"
+            placeholder={CONFIRMATION_PHRASE}
+          />
+          {error && <p className="text-sm text-red-600">{error}</p>}
+        </div>
+
+        <DialogFooter>
+          <Button
+            variant="outline"
+            onClick={() => onOpenChange(false)}
+            disabled={isPending}
+          >
+            Cancel
+          </Button>
+          <Button
+            variant="destructive"
+            onClick={handleConfirm}
+            disabled={!canDelete}
+          >
+            {isPending ? "Deleting…" : "Delete account"}
+          </Button>
+        </DialogFooter>
+      </DialogContent>
+    </Dialog>
+  );
+}
+
+```
+
+### components/EditPlaylistDialog.tsx
+
+```tsx
+import { useState } from "react";
+import { useToast } from "@/hooks/use-toast";
+import { Account, Group } from "jazz-tools";
+import { createInviteLink, useSuspenseCoState } from "jazz-tools/react";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+} from "./ui/dialog";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 import { Label } from "./ui/label";
+import { Crown, Edit, Eye, Link, UserPlus, Users } from "lucide-react";
+import { Playlist } from "@/1_schema";
+import { updatePlaylistTitle } from "@/4_actions";
+import { useMemberChanges } from "@/hooks/useMemberChanges";
+import { EditPlaylistMemberRow } from "./edit-playlist/EditPlaylistMemberRow";
 
-interface EditPlaylistModalProps {
-  playlistId: string | undefined;
+type EditPlaylistDialogSection = "details" | "members";
+type MemberRole = "reader" | "writer" | "manager";
+
+interface EditPlaylistDialogProps {
   isOpen: boolean;
-  onClose: () => void;
+  onOpenChange: (open: boolean) => void;
+  playlistId: string;
+  defaultSection?: EditPlaylistDialogSection;
 }
 
-export function EditPlaylistModal({
-  playlistId,
-  isOpen,
-  onClose,
-}: EditPlaylistModalProps) {
-  const playlist = useCoState(Playlist, playlistId);
-  const [localPlaylistTitle, setLocalPlaylistTitle] = useState("");
+export function EditPlaylistDialog(props: EditPlaylistDialogProps) {
+  const playlist = useSuspenseCoState(Playlist, props.playlistId);
+  const group = useSuspenseCoState(Group, playlist.$jazz.owner.$jazz.id);
 
-  // Reset local title when modal opens or playlist changes
-  useEffect(() => {
-    if (isOpen && playlist.$isLoaded) {
-      setLocalPlaylistTitle(playlist.title);
+  const { toast } = useToast();
+
+  const [activeSection, setActiveSection] = useState<EditPlaylistDialogSection>(
+    props.defaultSection ?? "members",
+  );
+  const [selectedRole, setSelectedRole] = useState<
+    "reader" | "writer" | "manager"
+  >("reader");
+  const [localTitle, setLocalTitle] = useState(playlist.title);
+  const memberChanges = useMemberChanges();
+
+  const members = group.members.map((m) => m.account);
+  const isManager = group.myRole() === "admin" || group.myRole() === "manager";
+
+  const handleRoleChange = (
+    member: Account,
+    currentRole: string | undefined,
+    newRole: MemberRole,
+  ) => {
+    if (!isManager) return;
+    const memberId = member.$jazz.id;
+    memberChanges.stageRoleChange({ memberId, currentRole, newRole });
+  };
+
+  const handleRemoveMemberToggle = (member: Account) => {
+    if (!isManager) return;
+    const memberId = member.$jazz.id;
+    memberChanges.toggleRemove(memberId);
+  };
+
+  const handleGetInviteLink = async () => {
+    if (!isManager) return;
+    const inviteLink = createInviteLink(playlist, selectedRole);
+    await navigator.clipboard.writeText(inviteLink);
+
+    toast({
+      title: "Invite link copied",
+      description: `Invite link for ${selectedRole} role copied to clipboard.`,
+    });
+  };
+
+  const handleSaveTitle = () => {
+    const nextTitle = localTitle.trim();
+    if (!nextTitle) return;
+    updatePlaylistTitle(playlist, nextTitle);
+    props.onOpenChange(false);
+  };
+
+  const handleDiscardMemberChanges = () => {
+    memberChanges.discard();
+  };
+
+  const handleApplyMemberChanges = async () => {
+    if (!isManager || !memberChanges.hasPendingChanges) return;
+    await memberChanges.apply({ group, members });
+    toast({ title: "Member changes applied" });
+  };
+
+  const handleOpenChange = (open: boolean) => {
+    if (!open) {
+      memberChanges.reset();
     }
-  }, [isOpen, playlist]);
-
-  function handleTitleChange(evt: ChangeEvent<HTMLInputElement>) {
-    setLocalPlaylistTitle(evt.target.value);
-  }
-
-  function handleSave() {
-    if (playlist.$isLoaded && localPlaylistTitle.trim()) {
-      updatePlaylistTitle(playlist, localPlaylistTitle.trim());
-      onClose();
-    }
-  }
-
-  function handleCancel() {
-    setLocalPlaylistTitle(playlist.$isLoaded ? playlist.title : "");
-    onClose();
-  }
-
-  function handleKeyDown(evt: React.KeyboardEvent) {
-    if (evt.key === "Enter") {
-      handleSave();
-    } else if (evt.key === "Escape") {
-      handleCancel();
-    }
-  }
-
-  if (!isOpen) return null;
+    props.onOpenChange(open);
+  };
 
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-      <div className="bg-white rounded-lg shadow-xl p-6 w-full max-w-md">
-        <div className="mb-6">
-          <h2 className="text-xl font-semibold text-gray-900 mb-2">
-            Edit Playlist
-          </h2>
-        </div>
+    <Dialog open={props.isOpen} onOpenChange={handleOpenChange}>
+      <DialogContent className="w-[calc(100vw-1rem)] sm:max-w-2xl h-[calc(100vh-2rem)] sm:h-auto max-h-[calc(100vh-2rem)] sm:max-h-[80vh] flex flex-col overflow-hidden">
+        <DialogHeader className="px-6 pt-6">
+          <DialogTitle className="flex items-center gap-2">
+            <Users className="w-5 h-5" />
+            Edit playlist
+          </DialogTitle>
+          <DialogDescription>
+            Update playlist details and manage member access.
+          </DialogDescription>
+        </DialogHeader>
 
-        <div className="space-y-4">
-          <div>
-            <Label
-              htmlFor="playlist-title"
-              className="text-sm font-medium text-gray-700"
-            >
-              Playlist Title
-            </Label>
-            <Input
-              id="playlist-title"
-              value={localPlaylistTitle}
-              onChange={handleTitleChange}
-              onKeyDown={handleKeyDown}
-              placeholder="Enter playlist title"
-              className="mt-1"
-              autoFocus
-            />
-          </div>
-
-          <div className="flex justify-end space-x-3 pt-4">
+        <div className="px-6 pt-4">
+          <div className="flex flex-wrap gap-2">
             <Button
-              variant="outline"
-              onClick={handleCancel}
-              className="px-4 py-2"
+              type="button"
+              size="sm"
+              variant={activeSection === "details" ? "default" : "outline"}
+              onClick={() => setActiveSection("details")}
             >
-              Cancel
+              Details
             </Button>
             <Button
-              onClick={handleSave}
-              disabled={!localPlaylistTitle.trim()}
-              className="px-4 py-2 bg-blue-600 hover:bg-blue-700 disabled:opacity-50"
+              type="button"
+              size="sm"
+              variant={activeSection === "members" ? "default" : "outline"}
+              onClick={() => setActiveSection("members")}
             >
-              Save Changes
+              Members
             </Button>
           </div>
         </div>
-      </div>
-    </div>
+
+        <div className="flex-1 overflow-y-auto min-h-0 px-6 pb-6 pt-4">
+          {activeSection === "details" ? (
+            <section className="space-y-4">
+              <div>
+                <Label htmlFor="playlist-title" className="text-sm font-medium">
+                  Playlist title
+                </Label>
+                <Input
+                  id="playlist-title"
+                  value={localTitle}
+                  onChange={(e) => setLocalTitle(e.target.value)}
+                  placeholder="Enter playlist title"
+                  className="mt-1"
+                  autoFocus
+                  onKeyDown={(evt) => {
+                    if (evt.key === "Enter") handleSaveTitle();
+                    if (evt.key === "Escape") props.onOpenChange(false);
+                  }}
+                />
+              </div>
+            </section>
+          ) : (
+            <div className="space-y-4">
+              {members.length === 0 ? (
+                <div className="text-center py-8 text-gray-500">
+                  No members found in this playlist.
+                </div>
+              ) : (
+                <section className="space-y-3">
+                  {members.map((member) => {
+                    const memberId = member.$jazz.id;
+                    const currentRole = group.getRoleOf(memberId);
+                    const pendingChange =
+                      memberChanges.pendingByMemberId[memberId];
+                    const isPendingRemoval = pendingChange?.type === "remove";
+                    const effectiveRole =
+                      pendingChange?.type === "setRole"
+                        ? pendingChange.role
+                        : currentRole;
+
+                    return (
+                      <EditPlaylistMemberRow
+                        key={memberId}
+                        member={member}
+                        group={group}
+                        effectiveRole={effectiveRole}
+                        isPendingRemoval={isPendingRemoval}
+                        onRoleChange={(newRole) =>
+                          handleRoleChange(member, currentRole, newRole)
+                        }
+                        onToggleRemove={() => handleRemoveMemberToggle(member)}
+                      />
+                    );
+                  })}
+                </section>
+              )}
+
+              {isManager && (
+                <section className="border-2 border-dashed border-gray-300 rounded-lg p-4 sm:p-6 mt-4">
+                  <div className="flex flex-col sm:flex-row sm:items-start gap-4">
+                    <div className="p-3 bg-blue-50 rounded-full w-fit">
+                      <UserPlus className="w-6 h-6 text-blue-600" />
+                    </div>
+                    <div className="flex-1">
+                      <h3 className="font-semibold text-gray-900 mb-1">
+                        Invite new members
+                      </h3>
+                      <p className="text-sm text-gray-600 mb-4">
+                        Generate an invite link to add new members to this
+                        playlist.
+                      </p>
+                      <div className="flex flex-col sm:flex-row sm:items-center gap-3">
+                        <div
+                          className={`grid gap-2 w-full sm:w-auto ${
+                            group.myRole() === "admin"
+                              ? "grid-cols-3"
+                              : "grid-cols-2"
+                          }`}
+                        >
+                          <Button
+                            variant={
+                              selectedRole === "reader" ? "default" : "outline"
+                            }
+                            size="sm"
+                            onClick={() => setSelectedRole("reader")}
+                            className="w-full justify-center"
+                          >
+                            <Eye className="w-4 h-4 mr-1" />
+                            Reader
+                          </Button>
+                          <Button
+                            variant={
+                              selectedRole === "writer" ? "default" : "outline"
+                            }
+                            size="sm"
+                            onClick={() => setSelectedRole("writer")}
+                            className="w-full justify-center"
+                          >
+                            <Edit className="w-4 h-4 mr-1" />
+                            Writer
+                          </Button>
+                          {group.myRole() === "admin" && (
+                            <Button
+                              variant={
+                                selectedRole === "manager"
+                                  ? "default"
+                                  : "outline"
+                              }
+                              size="sm"
+                              onClick={() => setSelectedRole("manager")}
+                              className="w-full justify-center"
+                            >
+                              <Crown className="w-4 h-4 mr-1" />
+                              Manager
+                            </Button>
+                          )}
+                        </div>
+                        <Button
+                          onClick={handleGetInviteLink}
+                          className="gap-2 w-full sm:w-auto"
+                        >
+                          <Link className="w-4 h-4" />
+                          Get Invite Link
+                        </Button>
+                      </div>
+                    </div>
+                  </div>
+                </section>
+              )}
+            </div>
+          )}
+        </div>
+
+        <DialogFooter className="px-6 py-4 border-t flex flex-col sm:flex-row gap-2">
+          {activeSection === "details" ? (
+            <>
+              <Button
+                type="button"
+                variant="outline"
+                onClick={() => props.onOpenChange(false)}
+                className="w-full sm:w-auto"
+              >
+                Cancel
+              </Button>
+              <Button
+                type="button"
+                onClick={handleSaveTitle}
+                disabled={!localTitle.trim()}
+                className="w-full sm:w-auto"
+              >
+                Save
+              </Button>
+            </>
+          ) : (
+            <>
+              {isManager && memberChanges.hasPendingChanges ? (
+                <>
+                  <Button
+                    type="button"
+                    variant="outline"
+                    onClick={handleDiscardMemberChanges}
+                    className="w-full sm:w-auto"
+                  >
+                    Discard
+                  </Button>
+                  <Button
+                    type="button"
+                    onClick={handleApplyMemberChanges}
+                    className="w-full sm:w-auto"
+                  >
+                    Apply changes
+                  </Button>
+                </>
+              ) : (
+                <Button
+                  type="button"
+                  variant="outline"
+                  onClick={() => props.onOpenChange(false)}
+                  className="w-full sm:w-auto"
+                >
+                  Close
+                </Button>
+              )}
+            </>
+          )}
+        </DialogFooter>
+      </DialogContent>
+    </Dialog>
   );
 }
 
@@ -10934,91 +11916,164 @@ export function EditPlaylistModal({
 ### components/ErrorBoundary.tsx
 
 ```tsx
+import { MusicaAccount } from "@/1_schema";
 import React from "react";
+import { useAccount, useLogOut } from "jazz-tools/react";
+import { getJazzErrorType } from "jazz-tools";
+
+function ErrorUI({
+  error,
+  errorType,
+}: {
+  error: Error;
+  errorType: ReturnType<typeof getJazzErrorType>;
+}) {
+  const logOut = useLogOut();
+  const me = useAccount(MusicaAccount, { resolve: { root: true } });
+
+  if (me.$jazz.loadingState === "deleted") {
+    return (
+      <div className="flex min-h-screen items-center justify-center p-8">
+        <div className="max-w-2xl space-y-4">
+          <h1 className="text-2xl font-semibold text-red-600">
+            Your account data has been deleted
+          </h1>
+          <p className="text-muted-foreground">
+            The account data associated with your session no longer exists.
+            Please log out and sign in again to continue.
+          </p>
+          <button
+            onClick={logOut}
+            className="mt-4 rounded-md bg-primary px-4 py-2 text-primary-foreground hover:bg-primary/90"
+          >
+            Log out
+          </button>
+        </div>
+      </div>
+    );
+  }
+
+  if (errorType === "unauthorized") {
+    return (
+      <div className="flex min-h-screen items-center justify-center p-8">
+        <div className="max-w-2xl space-y-4">
+          <h1 className="text-2xl font-semibold text-red-600">
+            You are not authorized to access this page
+          </h1>
+          <button
+            onClick={() => {
+              window.location.href = "/";
+            }}
+            className="mt-4 rounded-md bg-primary px-4 py-2 text-primary-foreground hover:bg-primary/90"
+          >
+            Go to home page
+          </button>
+        </div>
+      </div>
+    );
+  }
+
+  if (errorType === "deleted") {
+    return (
+      <div className="flex min-h-screen items-center justify-center p-8">
+        <div className="max-w-2xl space-y-4">
+          <h1 className="text-2xl font-semibold text-red-600">
+            The page you are trying to access has been deleted
+          </h1>
+          <button
+            onClick={() => {
+              window.location.href = "/";
+            }}
+            className="mt-4 rounded-md bg-primary px-4 py-2 text-primary-foreground hover:bg-primary/90"
+          >
+            Go to home page
+          </button>
+        </div>
+      </div>
+    );
+  }
+
+  if (errorType === "unavailable") {
+    return (
+      <div className="flex min-h-screen items-center justify-center p-8">
+        <div className="max-w-2xl space-y-4">
+          <h1 className="text-2xl font-semibold text-red-600">
+            The page you are trying to access is unavailable
+          </h1>
+          <button
+            onClick={() => {
+              window.location.href = "/";
+            }}
+            className="mt-4 rounded-md bg-primary px-4 py-2 text-primary-foreground hover:bg-primary/90"
+          >
+            Go to home page
+          </button>
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div className="flex min-h-screen items-center justify-center p-8">
+      <div className="max-w-2xl space-y-4">
+        <h1 className="text-2xl font-semibold text-red-600">
+          Something went wrong
+        </h1>
+        <p className="text-muted-foreground">
+          {error.message || "An unexpected error occurred"}
+        </p>
+        {process.env.NODE_ENV === "development" && (
+          <pre className="mt-4 overflow-auto rounded-md bg-muted p-4 text-sm">
+            {error.stack}
+          </pre>
+        )}
+        <button
+          onClick={() => {
+            window.location.reload();
+          }}
+          className="mt-4 rounded-md bg-primary px-4 py-2 text-primary-foreground hover:bg-primary/90"
+        >
+          Reload page
+        </button>
+        <button
+          onClick={logOut}
+          className="mt-4 rounded-md bg-primary px-4 py-2 text-primary-foreground hover:bg-primary/90"
+        >
+          Log out
+        </button>
+      </div>
+    </div>
+  );
+}
 
 interface ErrorBoundaryState {
-  hasError: boolean;
-  isAuthorizationError?: boolean;
   error?: Error;
 }
 
-interface ErrorBoundaryProps {
-  children: React.ReactNode;
-  fallback?: (error: Error) => React.ReactNode;
-}
-
 export class ErrorBoundary extends React.Component<
-  ErrorBoundaryProps,
+  { children: React.ReactNode },
   ErrorBoundaryState
 > {
-  constructor(props: ErrorBoundaryProps) {
+  constructor(props: { children: React.ReactNode }) {
     super(props);
-    this.state = { hasError: false };
+    this.state = { error: undefined };
   }
 
   static getDerivedStateFromError(error: Error): ErrorBoundaryState {
-    if (error.message.includes("Jazz Authorization Error")) {
-      return { hasError: true, isAuthorizationError: true, error };
-    }
-
-    return { hasError: true, error };
+    return { error };
   }
 
   componentDidCatch(error: Error, errorInfo: React.ErrorInfo): void {
-    console.error("Error caught by boundary:", error, errorInfo);
+    console.error("MainErrorBoundary caught error:", error, errorInfo);
   }
 
   render() {
-    if (this.state.hasError && this.state.error) {
-      if (this.props.fallback) {
-        return this.props.fallback(this.state.error);
-      }
-
-      if (this.state.isAuthorizationError) {
-        return (
-          <div className="flex min-h-screen items-center justify-center p-8">
-            <div className="max-w-2xl space-y-4">
-              <h1 className="text-2xl font-semibold text-red-600">
-                You are not authorized to access this page
-              </h1>
-              <button
-                onClick={() => {
-                  window.location.href = "/";
-                }}
-                className="mt-4 rounded-md bg-primary px-4 py-2 text-primary-foreground hover:bg-primary/90"
-              >
-                Go to home page
-              </button>
-            </div>
-          </div>
-        );
-      }
-
+    if (this.state.error) {
       return (
-        <div className="flex min-h-screen items-center justify-center p-8">
-          <div className="max-w-2xl space-y-4">
-            <h1 className="text-2xl font-semibold text-red-600">
-              Something went wrong
-            </h1>
-            <p className="text-muted-foreground">
-              {this.state.error.message || "An unexpected error occurred"}
-            </p>
-            {process.env.NODE_ENV === "development" && (
-              <pre className="mt-4 overflow-auto rounded-md bg-muted p-4 text-sm">
-                {this.state.error.stack}
-              </pre>
-            )}
-            <button
-              onClick={() => {
-                this.setState({ hasError: false, error: undefined });
-                window.location.reload();
-              }}
-              className="mt-4 rounded-md bg-primary px-4 py-2 text-primary-foreground hover:bg-primary/90"
-            >
-              Reload page
-            </button>
-          </div>
-        </div>
+        <ErrorUI
+          error={this.state.error}
+          errorType={getJazzErrorType(this.state.error)}
+        />
       );
     }
 
@@ -11204,325 +12259,6 @@ function getSizePx(size: "sm" | "md" | "lg"): number {
 
 ```
 
-### components/MemberAccessModal.tsx
-
-```tsx
-import { useState } from "react";
-import { useToast } from "@/hooks/use-toast";
-import { Account, Group } from "jazz-tools";
-import { useCoState, createInviteLink } from "jazz-tools/react";
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogFooter,
-  DialogHeader,
-  DialogTitle,
-} from "./ui/dialog";
-import { Button } from "./ui/button";
-import { Badge } from "./ui/badge";
-import {
-  User,
-  Crown,
-  Edit,
-  Eye,
-  Trash2,
-  Users,
-  UserPlus,
-  Link,
-} from "lucide-react";
-import { MusicaAccount, Playlist } from "@/1_schema";
-import { Member } from "./Member";
-
-interface MemberAccessModalProps {
-  isOpen: boolean;
-  onOpenChange: (open: boolean) => void;
-  playlist: Playlist;
-}
-
-export function MemberAccessModal(props: MemberAccessModalProps) {
-  const group = useCoState(Group, props.playlist.$jazz.owner.$jazz.id);
-  const [selectedRole, setSelectedRole] = useState<
-    "reader" | "writer" | "manager"
-  >("reader");
-  const { toast } = useToast();
-
-  if (!group.$isLoaded) return null;
-
-  // Get all members from the group
-  const members = group.members.map((m) => m.account);
-  const currentUser = MusicaAccount.getMe();
-  const isManager = group.myRole() === "admin" || group.myRole() === "manager";
-
-  const handleRoleChange = async (
-    member: Account,
-    newRole: "reader" | "writer" | "manager",
-  ) => {
-    if (!isManager) return;
-
-    group.addMember(member, newRole);
-  };
-
-  const handleRemoveMember = async (member: Account) => {
-    if (!isManager) return;
-
-    group.removeMember(member);
-  };
-
-  const getRoleIcon = (role: string | undefined) => {
-    switch (role) {
-      case "admin":
-        return <Crown className="w-4 h-4 text-yellow-600" />;
-      case "writer":
-        return <Edit className="w-4 h-4 text-blue-600" />;
-      case "reader":
-        return <Eye className="w-4 h-4 text-green-600" />;
-      default:
-        return <User className="w-4 h-4 text-gray-600" />;
-    }
-  };
-
-  const getRoleLabel = (role: string | undefined) => {
-    switch (role) {
-      case "admin":
-        return "Admin";
-      case "manager":
-        return "Manager";
-      case "writer":
-        return "Writer";
-      case "reader":
-        return "Reader";
-      default:
-        return "No Access";
-    }
-  };
-
-  const getRoleColor = (role: string | undefined) => {
-    switch (role) {
-      case "admin":
-        return "bg-yellow-100 text-yellow-800 border-yellow-200";
-      case "manager":
-        return "bg-purple-100 text-purple-800 border-purple-200";
-      case "writer":
-        return "bg-blue-100 text-blue-800 border-blue-200";
-      case "reader":
-        return "bg-green-100 text-green-800 border-green-200";
-      default:
-        return "bg-gray-100 text-gray-800 border-gray-200";
-    }
-  };
-
-  const canModifyMember = (member: Account) => {
-    return (
-      isManager &&
-      (member.$jazz.id === currentUser?.$jazz.id ||
-        !member.canAdmin(props.playlist))
-    );
-  };
-
-  const handleGetInviteLink = async () => {
-    if (!isManager) return;
-
-    const inviteLink = createInviteLink(props.playlist, selectedRole);
-    await navigator.clipboard.writeText(inviteLink);
-
-    toast({
-      title: "Invite link copied",
-      description: `Invite link for ${selectedRole} role copied to clipboard.`,
-    });
-  };
-
-  return (
-    <Dialog open={props.isOpen} onOpenChange={props.onOpenChange}>
-      <DialogContent className="sm:max-w-2xl max-h-[80vh] overflow-y-auto">
-        <DialogHeader>
-          <DialogTitle className="flex items-center gap-2">
-            <Users className="w-5 h-5" />
-            Manage Playlist Members
-          </DialogTitle>
-          <DialogDescription>
-            Manage access levels and remove members from the playlist group.
-          </DialogDescription>
-        </DialogHeader>
-
-        <div className="space-y-4">
-          {members.length === 0 ? (
-            <div className="text-center py-8 text-gray-500">
-              No members found in this playlist.
-            </div>
-          ) : (
-            <section>
-              {members.map((member) => {
-                const memberId = member.$jazz.id;
-                const currentRole = group.getRoleOf(memberId);
-                const isCurrentUser = memberId === currentUser?.$jazz.id;
-                const canModify = canModifyMember(member);
-
-                return (
-                  <div key={memberId} className="border rounded-lg p-4">
-                    <div className="flex items-center justify-between">
-                      {/* Member Info */}
-                      <div className="flex items-center gap-3 flex-1">
-                        <Member
-                          accountId={memberId}
-                          size="sm"
-                          showTooltip={true}
-                        />
-                        <div className="flex-1">
-                          <p className="font-medium text-gray-900">
-                            {isCurrentUser
-                              ? "You"
-                              : member.profile.$isLoaded
-                                ? member.profile.name
-                                : ""}
-                          </p>
-                          <div className="flex items-center gap-2 mt-1">
-                            {getRoleIcon(currentRole)}
-                            <Badge
-                              variant="outline"
-                              className={getRoleColor(currentRole)}
-                            >
-                              {getRoleLabel(currentRole)}
-                            </Badge>
-                          </div>
-                        </div>
-                      </div>
-
-                      {/* Action Buttons */}
-                      {canModify && (
-                        <div className="flex items-center gap-2">
-                          <div className="flex gap-1">
-                            <Button
-                              variant="outline"
-                              size="sm"
-                              aria-label="Grant reader access"
-                              onClick={() => handleRoleChange(member, "reader")}
-                              disabled={currentRole === "reader"}
-                              className="px-2 py-1 text-xs"
-                            >
-                              <Eye className="w-3 h-3 mr-1" />
-                              Reader
-                            </Button>
-                            <Button
-                              variant="outline"
-                              size="sm"
-                              aria-label="Grant writer access"
-                              onClick={() => handleRoleChange(member, "writer")}
-                              disabled={currentRole === "writer"}
-                              className="px-2 py-1 text-xs"
-                            >
-                              <Edit className="w-3 h-3 mr-1" />
-                              Writer
-                            </Button>
-                            {group.myRole() === "admin" && (
-                              <Button
-                                variant="outline"
-                                size="sm"
-                                aria-label="Grant manager access"
-                                onClick={() =>
-                                  handleRoleChange(member, "manager")
-                                }
-                                disabled={currentRole === "manager"}
-                                className="px-2 py-1 text-xs"
-                              >
-                                <Edit className="w-3 h-3 mr-1" />
-                                Manager
-                              </Button>
-                            )}
-                          </div>
-                          <Button
-                            variant="destructive"
-                            size="sm"
-                            aria-label="Remove member"
-                            onClick={() => handleRemoveMember(member)}
-                            className="px-2 py-1 text-xs"
-                          >
-                            <Trash2 className="w-3 h-3 mr-1" />
-                            Remove
-                          </Button>
-                        </div>
-                      )}
-                    </div>
-                  </div>
-                );
-              })}
-            </section>
-          )}
-
-          {isManager && (
-            <section className="border-2 border-dashed border-gray-300 rounded-lg p-6 mt-4">
-              <div className="flex items-start gap-4">
-                <div className="p-3 bg-blue-50 rounded-full">
-                  <UserPlus className="w-6 h-6 text-blue-600" />
-                </div>
-                <div className="flex-1">
-                  <h3 className="font-semibold text-gray-900 mb-1">
-                    Invite new members
-                  </h3>
-                  <p className="text-sm text-gray-600 mb-4">
-                    Generate an invite link to add new members to this playlist.
-                  </p>
-                  <div className="flex items-center gap-3">
-                    <div className="flex gap-2">
-                      <Button
-                        variant={
-                          selectedRole === "reader" ? "default" : "outline"
-                        }
-                        size="sm"
-                        onClick={() => setSelectedRole("reader")}
-                        className="px-3 py-2"
-                      >
-                        <Eye className="w-4 h-4 mr-1" />
-                        Reader
-                      </Button>
-                      <Button
-                        variant={
-                          selectedRole === "writer" ? "default" : "outline"
-                        }
-                        size="sm"
-                        onClick={() => setSelectedRole("writer")}
-                        className="px-3 py-2"
-                      >
-                        <Edit className="w-4 h-4 mr-1" />
-                        Writer
-                      </Button>
-                      {group.myRole() === "admin" && (
-                        <Button
-                          variant={
-                            selectedRole === "manager" ? "default" : "outline"
-                          }
-                          size="sm"
-                          onClick={() => setSelectedRole("manager")}
-                          className="px-3 py-2"
-                        >
-                          <Crown className="w-4 h-4 mr-1" />
-                          Manager
-                        </Button>
-                      )}
-                    </div>
-                    <Button onClick={handleGetInviteLink} className="gap-2">
-                      <Link className="w-4 h-4" />
-                      Get Invite Link
-                    </Button>
-                  </div>
-                </div>
-              </div>
-            </section>
-          )}
-        </div>
-
-        <DialogFooter>
-          <Button variant="outline" onClick={() => props.onOpenChange(false)}>
-            Close
-          </Button>
-        </DialogFooter>
-      </DialogContent>
-    </Dialog>
-  );
-}
-
-```
-
 ### components/MusicTrackRow.tsx
 
 ```tsx
@@ -11534,7 +12270,7 @@ import {
 } from "@/1_schema";
 import {
   addTrackToPlaylist,
-  removeTrackFromAllPlaylists,
+  deleteMusicTrack,
   removeTrackFromPlaylist,
 } from "@/4_actions";
 import {
@@ -11544,7 +12280,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { cn } from "@/lib/utils";
-import { MoreHorizontal, Pause, Play } from "lucide-react";
+import { Loader2, MoreHorizontal, Pause, Play } from "lucide-react";
 import { Fragment, Suspense, useCallback, useState } from "react";
 import { EditTrackDialog } from "./RenameTrackDialog";
 import { Waveform } from "./Waveform";
@@ -11558,11 +12294,13 @@ function isPartOfThePlaylist(trackId: string, playlist: PlaylistWithTracks) {
 export function MusicTrackRow({
   trackId,
   isPlaying,
+  isLoading,
   onClick,
   index,
 }: {
   trackId: string;
   isPlaying: boolean;
+  isLoading?: boolean;
   onClick: (track: MusicTrack) => void;
   index: number;
 }) {
@@ -11592,7 +12330,7 @@ export function MusicTrackRow({
   }
 
   function deleteTrack() {
-    removeTrackFromAllPlaylists(track);
+    deleteMusicTrack(track);
   }
 
   function handleEdit() {
@@ -11629,7 +12367,13 @@ export function MusicTrackRow({
         onClick={handleTrackClick}
         aria-label={`${isPlaying ? "Pause" : "Play"} ${track.title}`}
       >
-        {isPlaying ? (
+        {isLoading ? (
+          <Loader2
+            height={16}
+            width={16}
+            className="animate-spin text-blue-600"
+          />
+        ) : isPlaying ? (
           <Pause height={16} width={16} fill="currentColor" />
         ) : (
           <Play height={16} width={16} fill="currentColor" />
@@ -11800,12 +12544,28 @@ export function MusicTrackTitleInput({
 import { MusicaAccount, MusicTrack } from "@/1_schema";
 import { MediaPlayer } from "@/5_useMediaPlayer";
 import { useMediaEndListener } from "@/lib/audio/useMediaEndListener";
+import { useMediaSession } from "@/lib/audio/useMediaSession";
 import { usePlayState } from "@/lib/audio/usePlayState";
 import { useKeyboardListener } from "@/lib/useKeyboardListener";
 import { useCoState, useSuspenseAccount } from "jazz-tools/react";
-import { Pause, Play, SkipBack, SkipForward } from "lucide-react";
+import {
+  ChevronUp,
+  Loader2,
+  Pause,
+  Play,
+  SkipBack,
+  SkipForward,
+} from "lucide-react";
+import { useState } from "react";
 import WaveformCanvas from "./WaveformCanvas";
 import { Button } from "./ui/button";
+import {
+  Drawer,
+  DrawerContent,
+  DrawerDescription,
+  DrawerTitle,
+  DrawerTrigger,
+} from "./ui/drawer";
 
 export function PlayerControls({ mediaPlayer }: { mediaPlayer: MediaPlayer }) {
   const playState = usePlayState();
@@ -11817,66 +12577,153 @@ export function PlayerControls({ mediaPlayer }: { mediaPlayer: MediaPlayer }) {
         ? (me.root.activePlaylist.title ?? "All tracks")
         : "All tracks",
   });
-
   const activeTrack = useCoState(MusicTrack, mediaPlayer.activeTrackId);
+
+  const [drawerOpen, setDrawerOpen] = useState(false);
+
+  const isLoading = mediaPlayer.loading !== null;
 
   if (!activeTrack.$isLoaded) return null;
 
   const activeTrackTitle = activeTrack.title;
 
   return (
-    <footer className="flex flex-wrap sm:flex-nowrap items-center justify-between pt-4 p-2 sm:p-4 gap-4 sm:gap-4 bg-white border-t border-gray-200 absolute bottom-0 left-0 right-0 w-full z-50">
-      {/* Player Controls - Always on top */}
-      <div className="flex justify-center items-center space-x-1 sm:space-x-2 flex-shrink-0 w-full sm:w-auto order-1 sm:order-none">
-        <div className="flex items-center space-x-2">
-          <Button
-            variant="ghost"
-            size="icon"
-            onClick={mediaPlayer.playPrevTrack}
-            aria-label="Previous track"
-          >
-            <SkipBack className="h-5 w-5" fill="currentColor" />
-          </Button>
-          <Button
-            size="icon"
-            onClick={playState.toggle}
-            className="bg-blue-600 text-white hover:bg-blue-700"
-            aria-label={isPlaying ? "Pause active track" : "Play active track"}
-          >
-            {isPlaying ? (
-              <Pause className="h-5 w-5" fill="currentColor" />
-            ) : (
-              <Play className="h-5 w-5" fill="currentColor" />
-            )}
-          </Button>
-          <Button
-            variant="ghost"
-            size="icon"
-            onClick={mediaPlayer.playNextTrack}
-            aria-label="Next track"
-          >
-            <SkipForward className="h-5 w-5" fill="currentColor" />
-          </Button>
+    <Drawer open={drawerOpen} onOpenChange={setDrawerOpen}>
+      <footer className="flex flex-nowrap items-center justify-between p-4 pb-[max(1rem,env(safe-area-inset-bottom))] gap-4 bg-white border-t border-gray-200 fixed bottom-0 left-0 right-0 w-full z-50">
+        <div className="flex justify-center items-center space-x-1 sm:space-x-2 flex-shrink-0 w-auto order-none">
+          <div className="flex items-center space-x-2">
+            <Button
+              variant="ghost"
+              size="icon"
+              onClick={mediaPlayer.playPrevTrack}
+              aria-label="Previous track"
+            >
+              <SkipBack className="h-5 w-5" fill="currentColor" />
+            </Button>
+            <Button
+              size="icon"
+              onClick={playState.toggle}
+              className="bg-blue-600 text-white hover:bg-blue-700"
+              aria-label={
+                isPlaying ? "Pause active track" : "Play active track"
+              }
+              disabled={isLoading}
+            >
+              {isLoading ? (
+                <Loader2 className="h-5 w-5 animate-spin" />
+              ) : isPlaying ? (
+                <Pause className="h-5 w-5" fill="currentColor" />
+              ) : (
+                <Play className="h-5 w-5" fill="currentColor" />
+              )}
+            </Button>
+            <Button
+              variant="ghost"
+              size="icon"
+              onClick={mediaPlayer.playNextTrack}
+              aria-label="Next track"
+            >
+              <SkipForward className="h-5 w-5" fill="currentColor" />
+            </Button>
+          </div>
         </div>
-      </div>
 
-      {/* Waveform - Below controls on mobile, between controls and info on desktop */}
-      <WaveformCanvas
-        className="order-1 sm:order-none"
-        track={activeTrack}
-        height={50}
-      />
+        <WaveformCanvas
+          className="order-1 sm:order-none hidden sm:block"
+          track={activeTrack}
+          height={50}
+        />
 
-      {/* Track Info - Below waveform on mobile, on the right on desktop */}
-      <div className="flex flex-col gap-1 min-w-fit sm:flex-shrink-0 text-center w-full sm:text-right items-center sm:items-end sm:w-auto order-0 sm:order-none">
-        <h4 className="font-medium text-blue-800 text-base sm:text-base truncate max-w-80 sm:max-w-80">
-          {activeTrackTitle}
-        </h4>
-        <p className="hidden sm:block text-xs sm:text-sm text-gray-600 truncate sm:max-w-80">
-          {activePlaylistTitle || "All tracks"}
-        </p>
-      </div>
-    </footer>
+        {/* Desktop: Static track info */}
+        <div className="hidden sm:flex flex-col gap-1 min-w-fit flex-shrink-0 text-right items-end w-auto">
+          <h4 className="font-medium text-blue-800 text-base truncate max-w-80">
+            {activeTrackTitle}
+          </h4>
+          <div className="flex items-center gap-2">
+            <p className="text-sm text-gray-600 truncate max-w-80">
+              {activePlaylistTitle || "All tracks"}
+            </p>
+          </div>
+        </div>
+
+        {/* Mobile: Tappable track info that opens drawer */}
+        <DrawerTrigger asChild>
+          <button
+            type="button"
+            className="flex flex-row gap-1 sm:hidden text-center items-center cursor-pointer hover:bg-gray-50 rounded-lg p-2 -m-2 transition-colors"
+            aria-label="Open player controls"
+          >
+            <h4 className="font-medium text-blue-800 text-base">
+              {activeTrackTitle}
+            </h4>
+            <ChevronUp className="h-4 w-4 text-gray-400 grow" />
+          </button>
+        </DrawerTrigger>
+      </footer>
+
+      {/* Mobile drawer with waveform */}
+      <DrawerContent className="pb-8">
+        <DrawerTitle className="sr-only">Now Playing</DrawerTitle>
+        <DrawerDescription className="sr-only">
+          Player controls and waveform visualization
+        </DrawerDescription>
+        <div className="flex flex-col gap-6 p-6">
+          {/* Track info */}
+          <div className="text-center">
+            <h3 className="font-semibold text-xl text-blue-800">
+              {activeTrackTitle}
+            </h3>
+            <p className="text-sm text-gray-600 mt-1">
+              {activePlaylistTitle || "All tracks"}
+            </p>
+          </div>
+
+          {/* Waveform */}
+          <div className="w-full">
+            <WaveformCanvas track={activeTrack} height={80} />
+          </div>
+
+          {/* Large controls */}
+          <div className="flex justify-center items-center gap-4">
+            <Button
+              variant="ghost"
+              size="icon"
+              onClick={mediaPlayer.playPrevTrack}
+              aria-label="Previous track"
+              className="h-14 w-14"
+            >
+              <SkipBack className="h-7 w-7" fill="currentColor" />
+            </Button>
+            <Button
+              size="icon"
+              onClick={playState.toggle}
+              className="bg-blue-600 text-white hover:bg-blue-700 h-16 w-16"
+              aria-label={
+                isPlaying ? "Pause active track" : "Play active track"
+              }
+              disabled={isLoading}
+            >
+              {isLoading ? (
+                <Loader2 className="h-8 w-8 animate-spin" />
+              ) : isPlaying ? (
+                <Pause className="h-8 w-8" fill="currentColor" />
+              ) : (
+                <Play className="h-8 w-8" fill="currentColor" />
+              )}
+            </Button>
+            <Button
+              variant="ghost"
+              size="icon"
+              onClick={mediaPlayer.playNextTrack}
+              aria-label="Next track"
+              className="h-14 w-14"
+            >
+              <SkipForward className="h-7 w-7" fill="currentColor" />
+            </Button>
+          </div>
+        </div>
+      </DrawerContent>
+    </Drawer>
   );
 }
 
@@ -11886,6 +12733,20 @@ export function KeyboardListener({
   mediaPlayer: MediaPlayer;
 }) {
   const playState = usePlayState();
+  const activeTrack = useCoState(MusicTrack, mediaPlayer.activeTrackId);
+  const activePlaylistTitle = useSuspenseAccount(MusicaAccount, {
+    select: (me) =>
+      me.root.activePlaylist?.$isLoaded
+        ? (me.root.activePlaylist.title ?? "All tracks")
+        : "All tracks",
+  });
+
+  useMediaSession({
+    trackTitle: activeTrack?.$isLoaded ? activeTrack.title : undefined,
+    playlistTitle: activePlaylistTitle,
+    onPrevTrack: mediaPlayer.playPrevTrack,
+    onNextTrack: mediaPlayer.playNextTrack,
+  });
 
   useMediaEndListener(mediaPlayer.playNextTrack);
   useKeyboardListener("Space", () => {
@@ -11973,9 +12834,6 @@ export function PlaylistMembers({
             />
           ))}
         </div>
-        <span className="text-sm text-gray-600 ml-2">
-          ({memberIds.length} member{memberIds.length !== 1 ? "s" : ""})
-        </span>
       </button>
     </>
   );
@@ -12042,7 +12900,7 @@ export function PlaylistTitleInput({
 ### components/ProfileForm.tsx
 
 ```tsx
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
 import { Image, useSuspenseAccount } from "jazz-tools/react";
 import { createImage } from "jazz-tools/media";
 import { Button } from "./ui/button";
@@ -12075,13 +12933,20 @@ export function ProfileForm({
   cancelButtonText = "Cancel",
   className = "",
 }: ProfileFormProps) {
-  const profile = useSuspenseAccount(MusicaAccount, {
+  const originalProfile = useSuspenseAccount(MusicaAccount, {
     select: (me) => me.profile,
   });
 
-  const [username, setUsername] = useState(profile.name);
+  const profile = useSuspenseAccount(MusicaAccount, {
+    select: (me) => me.profile,
+    // Edit the profile on a private branch
+    unstable_branch: {
+      name: "profile-form",
+      owner: useState(() => Group.create())[0], // Create a new group for the branch
+    },
+  });
+
   const [isUploading, setIsUploading] = useState(false);
-  const fileInputRef = useRef<HTMLInputElement>(null);
 
   if (!profile) return null;
 
@@ -12110,22 +12975,32 @@ export function ProfileForm({
     }
   };
 
+  const currentAvatar = profile.avatar;
+  const isAvatarChanged =
+    currentAvatar?.$jazz.id !== originalProfile.avatar?.$jazz.id;
+  const isNameChanged = profile.name !== originalProfile.name;
+  const isChanged = isAvatarChanged || isNameChanged;
+  const isSubmitEnabled = profile.name.trim() && !isUploading && isChanged;
+
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    if (!username.trim()) return;
+    if (!isSubmitEnabled) return;
 
-    // Update username
-    profile.$jazz.set("name", username.trim());
+    // Trim the name before merging
+    const name = profile.name.trim();
+    if (name !== profile.name) {
+      profile.$jazz.set("name", name);
+    }
+
+    // Merge the branch changes to confirm
+    profile.$jazz.unstable_merge();
 
     // Call custom onSubmit if provided
     if (onSubmit) {
-      onSubmit({ username: username.trim(), avatar: profile.avatar });
+      onSubmit({ username: profile.name, avatar: profile.avatar });
     }
   };
-
-  const currentAvatar = profile.avatar;
-  const canSubmit = username.trim();
 
   return (
     <div className={className}>
@@ -12148,7 +13023,10 @@ export function ProfileForm({
             Profile Picture
           </Label>
 
-          <div className="flex flex-col items-center space-y-3">
+          <label
+            htmlFor="avatar"
+            className="flex flex-col items-center space-y-3"
+          >
             {/* Current Avatar Display */}
             <div className="relative">
               <div className="w-24 h-24 rounded-full overflow-hidden border-4 border-white shadow-lg">
@@ -12170,7 +13048,6 @@ export function ProfileForm({
               {/* Upload Overlay */}
               <button
                 type="button"
-                onClick={() => fileInputRef.current?.click()}
                 disabled={isUploading}
                 className="absolute -bottom-1 -right-1 w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center text-white hover:bg-blue-700 disabled:opacity-50 transition-colors cursor-pointer"
                 title="Change avatar"
@@ -12184,7 +13061,6 @@ export function ProfileForm({
             </div>
 
             <input
-              ref={fileInputRef}
               type="file"
               id="avatar"
               accept="image/*"
@@ -12196,7 +13072,7 @@ export function ProfileForm({
             <p className="text-xs text-gray-500 text-center">
               Click the camera icon to upload a profile picture
             </p>
-          </div>
+          </label>
         </div>
 
         <Separator />
@@ -12213,8 +13089,8 @@ export function ProfileForm({
             id="username"
             type="text"
             placeholder="Enter your username"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
+            value={profile.name}
+            onChange={(e) => profile.$jazz.set("name", e.target.value)}
             className="w-full"
             maxLength={30}
           />
@@ -12238,7 +13114,7 @@ export function ProfileForm({
           )}
           <Button
             type="submit"
-            disabled={!canSubmit}
+            disabled={!isSubmitEnabled}
             className={`${showCancelButton ? "flex-1" : "w-full"} bg-blue-600 hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed`}
             size="lg"
           >
@@ -12383,7 +13259,7 @@ import {
   SidebarMenuItem,
 } from "@/components/ui/sidebar";
 import { useAccount } from "jazz-tools/react";
-import { Home, Music, Plus, Trash2 } from "lucide-react";
+import { Home, Music, Plus, Settings, Trash2 } from "lucide-react";
 import { useNavigate, useParams } from "react-router";
 import { useState } from "react";
 import { AuthButton } from "./AuthButton";
@@ -12402,14 +13278,18 @@ export function SidePanel() {
     navigate(`/`);
   }
 
+  function handleProfileSettingsClick() {
+    navigate(`/settings`);
+  }
+
   function handlePlaylistClick(playlistId: string) {
     navigate(`/playlist/${playlistId}`);
   }
 
   async function handleDeletePlaylist(playlistId: string) {
     if (confirm("Are you sure you want to delete this playlist?")) {
+      navigate(`/`); // We navigate first to avoid that the delete triggers an error boundary on the Router.
       await deletePlaylist(playlistId);
-      navigate(`/`);
     }
   }
 
@@ -12464,6 +13344,12 @@ export function SidePanel() {
                     <span>Go to all tracks</span>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
+                <SidebarMenuItem>
+                  <SidebarMenuButton onClick={handleProfileSettingsClick}>
+                    <Settings className="size-4" />
+                    <span>Profile settings</span>
+                  </SidebarMenuButton>
+                </SidebarMenuItem>
               </SidebarMenu>
             </SidebarGroupContent>
           </SidebarGroup>
@@ -12513,11 +13399,13 @@ export function SidePanel() {
       </Sidebar>
 
       {/* Create Playlist Modal */}
-      <CreatePlaylistModal
-        isOpen={isCreateModalOpen}
-        onClose={() => setIsCreateModalOpen(false)}
-        onPlaylistCreated={handlePlaylistCreated}
-      />
+      {isCreateModalOpen && (
+        <CreatePlaylistModal
+          isOpen={isCreateModalOpen}
+          onClose={() => setIsCreateModalOpen(false)}
+          onPlaylistCreated={handlePlaylistCreated}
+        />
+      )}
     </>
   );
 }
@@ -12880,14 +13768,32 @@ export default function WaveformCanvas({
 ### components/WelcomeScreen.tsx
 
 ```tsx
-import { usePasskeyAuth, useSuspenseAccount } from "jazz-tools/react";
+import {
+  usePasskeyAuth,
+  usePassphraseAuth,
+  useSuspenseAccount,
+} from "jazz-tools/react";
 import { ProfileForm } from "./ProfileForm";
 import { Button } from "./ui/button";
+import { Textarea } from "./ui/textarea";
 import { MusicaAccount } from "@/1_schema";
+import { wordlist } from "@/wordlist";
+import { useState } from "react";
+import { ArrowLeft } from "lucide-react";
+
+type LoginStep = "initial" | "passphrase-input";
 
 export function WelcomeScreen() {
-  const auth = usePasskeyAuth({
+  const [loginStep, setLoginStep] = useState<LoginStep>("initial");
+  const [loginPassphrase, setLoginPassphrase] = useState("");
+  const [error, setError] = useState<string | null>(null);
+
+  const passkeyAuth = usePasskeyAuth({
     appName: "Jazz Music Player",
+  });
+
+  const passphraseAuth = usePassphraseAuth({
+    wordlist,
   });
 
   const { handleCompleteSetup } = useSuspenseAccount(MusicaAccount, {
@@ -12902,8 +13808,29 @@ export function WelcomeScreen() {
 
   if (!handleCompleteSetup) return null;
 
-  const handleLogin = () => {
-    auth.logIn();
+  const handlePasskeyLogin = () => {
+    passkeyAuth.logIn();
+  };
+
+  const handlePassphraseLogin = async () => {
+    try {
+      await passphraseAuth.logIn(loginPassphrase);
+      setLoginStep("initial");
+      setLoginPassphrase("");
+      setError(null);
+    } catch (error) {
+      if (error instanceof Error) {
+        setError(error.message);
+      } else {
+        setError("Unknown error");
+      }
+    }
+  };
+
+  const handleBack = () => {
+    setLoginStep("initial");
+    setLoginPassphrase("");
+    setError(null);
   };
 
   return (
@@ -12919,13 +13846,52 @@ export function WelcomeScreen() {
             headerDescription="Let's set up your profile to get started"
           />
         </div>
-        <div className="lg:hidden pt-4 flex justify-end items-center w-full gap-2">
+
+        {/* Mobile Login Section */}
+        <div className="lg:hidden pt-4 flex flex-col items-center w-full gap-4">
           <div className="text-sm font-semibold text-gray-600">
             Already a user?
           </div>
-          <Button onClick={handleLogin} size="sm">
-            Login
-          </Button>
+          {loginStep === "initial" ? (
+            <div className="flex gap-2 w-full max-w-md">
+              <Button onClick={handlePasskeyLogin} size="sm" className="flex-1">
+                Passkey
+              </Button>
+              <Button
+                onClick={() => setLoginStep("passphrase-input")}
+                size="sm"
+                variant="outline"
+                className="flex-1"
+              >
+                Passphrase
+              </Button>
+            </div>
+          ) : (
+            <div className="w-full max-w-md space-y-3">
+              {error && <div className="text-sm text-red-500">{error}</div>}
+              <Textarea
+                value={loginPassphrase}
+                onChange={(e) => setLoginPassphrase(e.target.value)}
+                placeholder="Enter your passphrase..."
+                className="font-mono text-sm"
+                rows={3}
+              />
+              <div className="flex gap-2">
+                <Button onClick={handleBack} size="sm" variant="ghost">
+                  <ArrowLeft className="size-4 mr-1" />
+                  Back
+                </Button>
+                <Button
+                  onClick={handlePassphraseLogin}
+                  size="sm"
+                  className="flex-1"
+                  disabled={!loginPassphrase.trim()}
+                >
+                  Login
+                </Button>
+              </div>
+            </div>
+          )}
         </div>
 
         {/* Title Section - Hidden on mobile, shown on right side for larger screens */}
@@ -12954,22 +13920,237 @@ export function WelcomeScreen() {
                 </a>
               </div>
 
-              {/* Login Button */}
+              {/* Login Section */}
               <div className="pt-4">
-                <p className="text-sm font-semibold text-gray-600 mb-2">
+                <p className="text-sm font-semibold text-gray-600 mb-3">
                   Already a user?
                 </p>
-                <Button
-                  onClick={handleLogin}
-                  className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 text-lg font-medium rounded-lg shadow-lg hover:shadow-xl transition-all duration-200"
-                  size="lg"
-                >
-                  Login
-                </Button>
+                {loginStep === "initial" ? (
+                  <div className="flex flex-col gap-2">
+                    <Button
+                      onClick={handlePasskeyLogin}
+                      className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 text-lg font-medium rounded-lg shadow-lg hover:shadow-xl transition-all duration-200"
+                      size="lg"
+                    >
+                      Login with passkey
+                    </Button>
+                    <Button
+                      onClick={() => setLoginStep("passphrase-input")}
+                      variant="outline"
+                      size="lg"
+                      className="px-6 py-3 text-lg font-medium rounded-lg"
+                    >
+                      Login with passphrase
+                    </Button>
+                  </div>
+                ) : (
+                  <div className="space-y-3">
+                    {error && (
+                      <div className="text-sm text-red-500">{error}</div>
+                    )}
+                    <Textarea
+                      data-testid="passphrase-input"
+                      value={loginPassphrase}
+                      onChange={(e) => setLoginPassphrase(e.target.value)}
+                      placeholder="Enter your passphrase..."
+                      className="font-mono text-sm bg-white"
+                      rows={4}
+                    />
+                    <div className="flex gap-2">
+                      <Button onClick={handleBack} variant="ghost">
+                        <ArrowLeft className="size-4 mr-2" />
+                        Back
+                      </Button>
+                      <Button
+                        onClick={handlePassphraseLogin}
+                        className="flex-1 bg-blue-600 hover:bg-blue-700"
+                        disabled={!loginPassphrase.trim()}
+                      >
+                        Login
+                      </Button>
+                    </div>
+                  </div>
+                )}
               </div>
             </div>
           </div>
         </div>
+      </div>
+    </div>
+  );
+}
+
+```
+
+### components/edit-playlist/EditPlaylistMemberRow.tsx
+
+```tsx
+import type { Account, Group } from "jazz-tools";
+import type { MemberRole } from "@/hooks/useMemberChanges";
+import type { ReactNode } from "react";
+import { Badge } from "../ui/badge";
+import { Button } from "../ui/button";
+import { Member } from "../Member";
+import { Crown, Edit, Eye, Trash2, User } from "lucide-react";
+import { MusicaAccount } from "@/1_schema";
+import { useSuspenseAccount } from "jazz-tools/react";
+
+interface EditPlaylistMemberRowProps {
+  member: Account;
+  group: Group;
+  effectiveRole: string | MemberRole | undefined;
+  isPendingRemoval: boolean;
+  onRoleChange: (newRole: MemberRole) => void;
+  onToggleRemove: () => void;
+}
+
+function getRoleIcon(role: string | undefined): ReactNode {
+  switch (role) {
+    case "admin":
+      return <Crown className="w-4 h-4 text-yellow-600" />;
+    case "manager":
+      return <Crown className="w-4 h-4 text-purple-600" />;
+    case "writer":
+      return <Edit className="w-4 h-4 text-blue-600" />;
+    case "reader":
+      return <Eye className="w-4 h-4 text-green-600" />;
+    default:
+      return <User className="w-4 h-4 text-gray-600" />;
+  }
+}
+
+function getRoleLabel(role: string | undefined) {
+  switch (role) {
+    case "admin":
+      return "Owner";
+    case "manager":
+      return "Manager";
+    case "writer":
+      return "Writer";
+    case "reader":
+      return "Reader";
+    default:
+      return "No Access";
+  }
+}
+
+function getRoleColor(role: string | undefined) {
+  switch (role) {
+    case "admin":
+      return "bg-yellow-100 text-yellow-800 border-yellow-200";
+    case "manager":
+      return "bg-purple-100 text-purple-800 border-purple-200";
+    case "writer":
+      return "bg-blue-100 text-blue-800 border-blue-200";
+    case "reader":
+      return "bg-green-100 text-green-800 border-green-200";
+    default:
+      return "bg-gray-100 text-gray-800 border-gray-200";
+  }
+}
+
+export function EditPlaylistMemberRow({
+  member,
+  group,
+  effectiveRole,
+  isPendingRemoval,
+  onRoleChange,
+  onToggleRemove,
+}: EditPlaylistMemberRowProps) {
+  const me = useSuspenseAccount(MusicaAccount);
+  const isCurrentUser = member.$jazz.id === me.$jazz.id;
+  const memberId = member.$jazz.id;
+  const isAdmin = group.myRole() === "admin";
+  const isManager = group.myRole() === "manager" || isAdmin;
+
+  const isMemberAdmin = group.getRoleOf(member.$jazz.id) === "admin";
+
+  const canModify = !isMemberAdmin && isManager;
+
+  return (
+    <div className="border rounded-lg p-4">
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+        <div className="flex items-center gap-3 min-w-0">
+          <Member accountId={memberId} size="sm" showTooltip={true} />
+          <div className="min-w-0">
+            <p className="font-medium text-gray-900 truncate">
+              {isCurrentUser
+                ? "You"
+                : member.profile.$isLoaded
+                  ? member.profile.name
+                  : ""}
+            </p>
+            <div className="flex items-center gap-2 mt-1">
+              {isPendingRemoval ? (
+                <Trash2 className="w-4 h-4 text-red-600" />
+              ) : (
+                getRoleIcon(effectiveRole)
+              )}
+              <Badge
+                variant="outline"
+                className={
+                  isPendingRemoval
+                    ? "bg-red-50 text-red-800 border-red-200"
+                    : getRoleColor(effectiveRole)
+                }
+              >
+                {isPendingRemoval ? "Removed" : getRoleLabel(effectiveRole)}
+              </Badge>
+            </div>
+          </div>
+        </div>
+
+        {canModify && (
+          <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:justify-end">
+            <div className="flex flex-wrap gap-2">
+              <Button
+                variant="outline"
+                size="sm"
+                aria-label="Grant reader access"
+                onClick={() => onRoleChange("reader")}
+                disabled={isPendingRemoval || effectiveRole === "reader"}
+                className="px-2 py-1 text-xs w-full sm:w-auto"
+              >
+                <Eye className="w-3 h-3 mr-1" />
+                Reader
+              </Button>
+              <Button
+                variant="outline"
+                size="sm"
+                aria-label="Grant writer access"
+                onClick={() => onRoleChange("writer")}
+                disabled={isPendingRemoval || effectiveRole === "writer"}
+                className="px-2 py-1 text-xs w-full sm:w-auto"
+              >
+                <Edit className="w-3 h-3 mr-1" />
+                Writer
+              </Button>
+              {isAdmin && (
+                <Button
+                  variant="outline"
+                  size="sm"
+                  aria-label="Grant manager access"
+                  onClick={() => onRoleChange("manager")}
+                  disabled={isPendingRemoval || effectiveRole === "manager"}
+                  className="px-2 py-1 text-xs w-full sm:w-auto"
+                >
+                  <Crown className="w-3 h-3 mr-1" />
+                  Manager
+                </Button>
+              )}
+            </div>
+            <Button
+              variant="destructive"
+              size="sm"
+              aria-label="Remove member"
+              onClick={onToggleRemove}
+              className="px-2 py-1 text-xs w-full sm:w-auto"
+            >
+              <Trash2 className="w-3 h-3 mr-1" />
+              {isPendingRemoval ? "Undo" : "Remove"}
+            </Button>
+          </div>
+        )}
       </div>
     </div>
   );
@@ -13203,6 +14384,128 @@ export {
   DialogFooter,
   DialogTitle,
   DialogDescription,
+};
+
+```
+
+### components/ui/drawer.tsx
+
+```tsx
+import * as React from "react";
+import { Drawer as DrawerPrimitive } from "vaul";
+
+import { cn } from "@/lib/utils";
+
+const Drawer = ({
+  shouldScaleBackground = true,
+  ...props
+}: React.ComponentProps<typeof DrawerPrimitive.Root>) => (
+  <DrawerPrimitive.Root
+    shouldScaleBackground={shouldScaleBackground}
+    {...props}
+  />
+);
+Drawer.displayName = "Drawer";
+
+const DrawerTrigger = DrawerPrimitive.Trigger;
+
+const DrawerPortal = DrawerPrimitive.Portal;
+
+const DrawerClose = DrawerPrimitive.Close;
+
+const DrawerOverlay = React.forwardRef<
+  React.ElementRef<typeof DrawerPrimitive.Overlay>,
+  React.ComponentPropsWithoutRef<typeof DrawerPrimitive.Overlay>
+>(({ className, ...props }, ref) => (
+  <DrawerPrimitive.Overlay
+    ref={ref}
+    className={cn("fixed inset-0 z-50 bg-black/80", className)}
+    {...props}
+  />
+));
+DrawerOverlay.displayName = DrawerPrimitive.Overlay.displayName;
+
+const DrawerContent = React.forwardRef<
+  React.ElementRef<typeof DrawerPrimitive.Content>,
+  React.ComponentPropsWithoutRef<typeof DrawerPrimitive.Content>
+>(({ className, children, ...props }, ref) => (
+  <DrawerPortal>
+    <DrawerOverlay />
+    <DrawerPrimitive.Content
+      ref={ref}
+      className={cn(
+        "fixed inset-x-0 bottom-0 z-50 mt-24 flex h-auto flex-col rounded-t-[10px] border bg-background",
+        className,
+      )}
+      {...props}
+    >
+      <div className="mx-auto mt-4 h-2 w-[100px] rounded-full bg-muted" />
+      {children}
+    </DrawerPrimitive.Content>
+  </DrawerPortal>
+));
+DrawerContent.displayName = "DrawerContent";
+
+const DrawerHeader = ({
+  className,
+  ...props
+}: React.HTMLAttributes<HTMLDivElement>) => (
+  <div
+    className={cn("grid gap-1.5 p-4 text-center sm:text-left", className)}
+    {...props}
+  />
+);
+DrawerHeader.displayName = "DrawerHeader";
+
+const DrawerFooter = ({
+  className,
+  ...props
+}: React.HTMLAttributes<HTMLDivElement>) => (
+  <div
+    className={cn("mt-auto flex flex-col gap-2 p-4", className)}
+    {...props}
+  />
+);
+DrawerFooter.displayName = "DrawerFooter";
+
+const DrawerTitle = React.forwardRef<
+  React.ElementRef<typeof DrawerPrimitive.Title>,
+  React.ComponentPropsWithoutRef<typeof DrawerPrimitive.Title>
+>(({ className, ...props }, ref) => (
+  <DrawerPrimitive.Title
+    ref={ref}
+    className={cn(
+      "text-lg font-semibold leading-none tracking-tight",
+      className,
+    )}
+    {...props}
+  />
+));
+DrawerTitle.displayName = DrawerPrimitive.Title.displayName;
+
+const DrawerDescription = React.forwardRef<
+  React.ElementRef<typeof DrawerPrimitive.Description>,
+  React.ComponentPropsWithoutRef<typeof DrawerPrimitive.Description>
+>(({ className, ...props }, ref) => (
+  <DrawerPrimitive.Description
+    ref={ref}
+    className={cn("text-sm text-muted-foreground", className)}
+    {...props}
+  />
+));
+DrawerDescription.displayName = DrawerPrimitive.Description.displayName;
+
+export {
+  Drawer,
+  DrawerPortal,
+  DrawerOverlay,
+  DrawerTrigger,
+  DrawerClose,
+  DrawerContent,
+  DrawerHeader,
+  DrawerFooter,
+  DrawerTitle,
+  DrawerDescription,
 };
 
 ```
@@ -14457,6 +15760,34 @@ export { Skeleton };
 
 ```
 
+### components/ui/textarea.tsx
+
+```tsx
+import * as React from "react";
+
+import { cn } from "@/lib/utils";
+
+const Textarea = React.forwardRef<
+  HTMLTextAreaElement,
+  React.ComponentProps<"textarea">
+>(({ className, ...props }, ref) => {
+  return (
+    <textarea
+      className={cn(
+        "flex min-h-[80px] w-full rounded-md border border-input bg-background px-3 py-2 text-base ring-offset-background placeholder:text-muted-foreground focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 md:text-sm",
+        className,
+      )}
+      ref={ref}
+      {...props}
+    />
+  );
+});
+Textarea.displayName = "Textarea";
+
+export { Textarea };
+
+```
+
 ### components/ui/toast.tsx
 
 ```tsx
@@ -14884,6 +16215,140 @@ export { useToast, toast };
 
 ```
 
+### hooks/useMemberChanges.ts
+
+```ts
+import { useCallback, useReducer } from "react";
+import { produce } from "immer";
+import type { Account, Group } from "jazz-tools";
+
+export type MemberRole = "reader" | "writer" | "manager";
+export type PendingMemberChange =
+  | { type: "setRole"; role: MemberRole }
+  | { type: "remove" };
+
+type State = {
+  pendingByMemberId: Record<string, PendingMemberChange>;
+};
+
+type Action =
+  | {
+      type: "stageRole";
+      memberId: string;
+      currentRole: string | undefined;
+      newRole: MemberRole;
+    }
+  | { type: "toggleRemove"; memberId: string }
+  | { type: "discard" }
+  | { type: "reset" };
+
+const initialState: State = {
+  pendingByMemberId: {},
+};
+
+function reducer(state: State, action: Action): State {
+  return produce(state, (draft) => {
+    switch (action.type) {
+      case "stageRole": {
+        const prev = draft.pendingByMemberId[action.memberId];
+        if (prev?.type === "remove") return;
+
+        // If it matches currentRole, clear any pending role change.
+        if (action.currentRole === action.newRole) {
+          delete draft.pendingByMemberId[action.memberId];
+          return;
+        }
+
+        draft.pendingByMemberId[action.memberId] = {
+          type: "setRole",
+          role: action.newRole,
+        };
+        return;
+      }
+      case "toggleRemove": {
+        const prev = draft.pendingByMemberId[action.memberId];
+        if (prev?.type === "remove") {
+          delete draft.pendingByMemberId[action.memberId];
+          return;
+        }
+        draft.pendingByMemberId[action.memberId] = { type: "remove" };
+        return;
+      }
+      case "discard": {
+        draft.pendingByMemberId = {};
+        return;
+      }
+      case "reset": {
+        return initialState;
+      }
+    }
+  });
+}
+
+export function useMemberChanges() {
+  const [state, dispatch] = useReducer(reducer, initialState);
+
+  const hasPendingChanges = Object.keys(state.pendingByMemberId).length > 0;
+
+  const stageRoleChange = useCallback(
+    (args: {
+      memberId: string;
+      currentRole: string | undefined;
+      newRole: MemberRole;
+    }) => {
+      dispatch({ type: "stageRole", ...args });
+    },
+    [],
+  );
+
+  const toggleRemove = useCallback((memberId: string) => {
+    dispatch({ type: "toggleRemove", memberId });
+  }, []);
+
+  const discard = useCallback(() => {
+    dispatch({ type: "discard" });
+  }, []);
+
+  const reset = useCallback(() => {
+    dispatch({ type: "reset" });
+  }, []);
+
+  const apply = useCallback(
+    async (args: { group: Group; members: Account[] }) => {
+      if (!hasPendingChanges) return;
+
+      const byId = new Map(args.members.map((m) => [m.$jazz.id, m] as const));
+      const toApply = Object.entries(state.pendingByMemberId);
+
+      for (const [memberId, change] of toApply) {
+        const member = byId.get(memberId);
+
+        if (!member) continue;
+        if (change.type === "remove") {
+          args.group.removeMember(member);
+        } else if (change.type === "setRole") {
+          args.group.addMember(member, change.role);
+        }
+      }
+
+      dispatch({ type: "discard" });
+    },
+    [hasPendingChanges, state.pendingByMemberId],
+  );
+
+  return {
+    pendingByMemberId: state.pendingByMemberId,
+    hasPendingChanges,
+    stageRoleChange,
+    toggleRemove,
+    discard,
+    reset,
+    apply,
+  };
+}
+
+```
+
 ### index.css
 
 ```css
@@ -15204,11 +16669,99 @@ export function useMediaEndListener(callback: () => void) {
 
   useEffect(() => {
     audioManager.mediaElement.addEventListener("ended", callback);
-
     return () => {
       audioManager.mediaElement.removeEventListener("ended", callback);
     };
   }, [audioManager, callback]);
+}
+
+```
+
+### lib/audio/useMediaSession.ts
+
+```ts
+import { useEffect } from "react";
+import { useAudioManager } from "./AudioManager";
+import { usePlayState } from "./usePlayState";
+
+interface UseMediaSessionOptions {
+  trackTitle?: string;
+  playlistTitle?: string;
+  onPrevTrack?: () => void;
+  onNextTrack?: () => void;
+}
+
+export function useMediaSession(options: UseMediaSessionOptions) {
+  const audioManager = useAudioManager();
+  const playState = usePlayState();
+
+  // Update metadata when track changes
+  useEffect(() => {
+    if (!options.trackTitle) return;
+
+    navigator.mediaSession.metadata = new MediaMetadata({
+      title: options.trackTitle,
+      artist: options.playlistTitle || "All tracks",
+    });
+  }, [options.trackTitle, options.playlistTitle]);
+
+  // Set up action handlers
+  useEffect(() => {
+    navigator.mediaSession.setActionHandler("play", () => audioManager.play());
+    navigator.mediaSession.setActionHandler("pause", () =>
+      audioManager.pause(),
+    );
+    navigator.mediaSession.setActionHandler(
+      "previoustrack",
+      options.onPrevTrack ?? null,
+    );
+    navigator.mediaSession.setActionHandler(
+      "nexttrack",
+      options.onNextTrack ?? null,
+    );
+
+    return () => {
+      navigator.mediaSession.setActionHandler("play", null);
+      navigator.mediaSession.setActionHandler("pause", null);
+      navigator.mediaSession.setActionHandler("previoustrack", null);
+      navigator.mediaSession.setActionHandler("nexttrack", null);
+    };
+  }, [audioManager, options.onPrevTrack, options.onNextTrack]);
+
+  // Sync playback state
+  useEffect(() => {
+    navigator.mediaSession.playbackState =
+      playState.value === "play" ? "playing" : "paused";
+  }, [playState.value]);
+
+  // Sync position state (time progression)
+  useEffect(() => {
+    const updatePositionState = () => {
+      const audioDuration = audioManager.mediaElement.duration;
+      const audioCurrentTime = audioManager.mediaElement.currentTime;
+
+      if (audioDuration > 0) {
+        navigator.mediaSession.setPositionState({
+          duration: audioDuration,
+          playbackRate: 1,
+          position: audioCurrentTime,
+        });
+      }
+    };
+
+    // Update position on timeupdate events
+    audioManager.mediaElement.addEventListener(
+      "timeupdate",
+      updatePositionState,
+    );
+
+    return () => {
+      audioManager.mediaElement.removeEventListener(
+        "timeupdate",
+        updatePositionState,
+      );
+    };
+  }, [audioManager]);
 }
 
 ```
@@ -15499,5 +17052,2061 @@ export function cn(...inputs: ClassValue[]) {
 
 ```ts
 /// <reference types="vite/client" />
+
+```
+
+### wordlist.ts
+
+```ts
+export const wordlist = [
+  "abandon",
+  "ability",
+  "able",
+  "about",
+  "above",
+  "absent",
+  "absorb",
+  "abstract",
+  "absurd",
+  "abuse",
+  "access",
+  "accident",
+  "account",
+  "accuse",
+  "achieve",
+  "acid",
+  "acoustic",
+  "acquire",
+  "across",
+  "act",
+  "action",
+  "actor",
+  "actress",
+  "actual",
+  "adapt",
+  "add",
+  "addict",
+  "address",
+  "adjust",
+  "admit",
+  "adult",
+  "advance",
+  "advice",
+  "aerobic",
+  "affair",
+  "afford",
+  "afraid",
+  "again",
+  "age",
+  "agent",
+  "agree",
+  "ahead",
+  "aim",
+  "air",
+  "airport",
+  "aisle",
+  "alarm",
+  "album",
+  "alcohol",
+  "alert",
+  "alien",
+  "all",
+  "alley",
+  "allow",
+  "almost",
+  "alone",
+  "alpha",
+  "already",
+  "also",
+  "alter",
+  "always",
+  "amateur",
+  "amazing",
+  "among",
+  "amount",
+  "amused",
+  "analyst",
+  "anchor",
+  "ancient",
+  "anger",
+  "angle",
+  "angry",
+  "animal",
+  "ankle",
+  "announce",
+  "annual",
+  "another",
+  "answer",
+  "antenna",
+  "antique",
+  "anxiety",
+  "any",
+  "apart",
+  "apology",
+  "appear",
+  "apple",
+  "approve",
+  "april",
+  "arch",
+  "arctic",
+  "area",
+  "arena",
+  "argue",
+  "arm",
+  "armed",
+  "armor",
+  "army",
+  "around",
+  "arrange",
+  "arrest",
+  "arrive",
+  "arrow",
+  "art",
+  "artefact",
+  "artist",
+  "artwork",
+  "ask",
+  "aspect",
+  "assault",
+  "asset",
+  "assist",
+  "assume",
+  "asthma",
+  "athlete",
+  "atom",
+  "attack",
+  "attend",
+  "attitude",
+  "attract",
+  "auction",
+  "audit",
+  "august",
+  "aunt",
+  "author",
+  "auto",
+  "autumn",
+  "average",
+  "avocado",
+  "avoid",
+  "awake",
+  "aware",
+  "away",
+  "awesome",
+  "awful",
+  "awkward",
+  "axis",
+  "baby",
+  "bachelor",
+  "bacon",
+  "badge",
+  "bag",
+  "balance",
+  "balcony",
+  "ball",
+  "bamboo",
+  "banana",
+  "banner",
+  "bar",
+  "barely",
+  "bargain",
+  "barrel",
+  "base",
+  "basic",
+  "basket",
+  "battle",
+  "beach",
+  "bean",
+  "beauty",
+  "because",
+  "become",
+  "beef",
+  "before",
+  "begin",
+  "behave",
+  "behind",
+  "believe",
+  "below",
+  "belt",
+  "bench",
+  "benefit",
+  "best",
+  "betray",
+  "better",
+  "between",
+  "beyond",
+  "bicycle",
+  "bid",
+  "bike",
+  "bind",
+  "biology",
+  "bird",
+  "birth",
+  "bitter",
+  "black",
+  "blade",
+  "blame",
+  "blanket",
+  "blast",
+  "bleak",
+  "bless",
+  "blind",
+  "blood",
+  "blossom",
+  "blouse",
+  "blue",
+  "blur",
+  "blush",
+  "board",
+  "boat",
+  "body",
+  "boil",
+  "bomb",
+  "bone",
+  "bonus",
+  "book",
+  "boost",
+  "border",
+  "boring",
+  "borrow",
+  "boss",
+  "bottom",
+  "bounce",
+  "box",
+  "boy",
+  "bracket",
+  "brain",
+  "brand",
+  "brass",
+  "brave",
+  "bread",
+  "breeze",
+  "brick",
+  "bridge",
+  "brief",
+  "bright",
+  "bring",
+  "brisk",
+  "broccoli",
+  "broken",
+  "bronze",
+  "broom",
+  "brother",
+  "brown",
+  "brush",
+  "bubble",
+  "buddy",
+  "budget",
+  "buffalo",
+  "build",
+  "bulb",
+  "bulk",
+  "bullet",
+  "bundle",
+  "bunker",
+  "burden",
+  "burger",
+  "burst",
+  "bus",
+  "business",
+  "busy",
+  "butter",
+  "buyer",
+  "buzz",
+  "cabbage",
+  "cabin",
+  "cable",
+  "cactus",
+  "cage",
+  "cake",
+  "call",
+  "calm",
+  "camera",
+  "camp",
+  "can",
+  "canal",
+  "cancel",
+  "candy",
+  "cannon",
+  "canoe",
+  "canvas",
+  "canyon",
+  "capable",
+  "capital",
+  "captain",
+  "car",
+  "carbon",
+  "card",
+  "cargo",
+  "carpet",
+  "carry",
+  "cart",
+  "case",
+  "cash",
+  "casino",
+  "castle",
+  "casual",
+  "cat",
+  "catalog",
+  "catch",
+  "category",
+  "cattle",
+  "caught",
+  "cause",
+  "caution",
+  "cave",
+  "ceiling",
+  "celery",
+  "cement",
+  "census",
+  "century",
+  "cereal",
+  "certain",
+  "chair",
+  "chalk",
+  "champion",
+  "change",
+  "chaos",
+  "chapter",
+  "charge",
+  "chase",
+  "chat",
+  "cheap",
+  "check",
+  "cheese",
+  "chef",
+  "cherry",
+  "chest",
+  "chicken",
+  "chief",
+  "child",
+  "chimney",
+  "choice",
+  "choose",
+  "chronic",
+  "chuckle",
+  "chunk",
+  "churn",
+  "cigar",
+  "cinnamon",
+  "circle",
+  "citizen",
+  "city",
+  "civil",
+  "claim",
+  "clap",
+  "clarify",
+  "claw",
+  "clay",
+  "clean",
+  "clerk",
+  "clever",
+  "click",
+  "client",
+  "cliff",
+  "climb",
+  "clinic",
+  "clip",
+  "clock",
+  "clog",
+  "close",
+  "cloth",
+  "cloud",
+  "clown",
+  "club",
+  "clump",
+  "cluster",
+  "clutch",
+  "coach",
+  "coast",
+  "coconut",
+  "code",
+  "coffee",
+  "coil",
+  "coin",
+  "collect",
+  "color",
+  "column",
+  "combine",
+  "come",
+  "comfort",
+  "comic",
+  "common",
+  "company",
+  "concert",
+  "conduct",
+  "confirm",
+  "congress",
+  "connect",
+  "consider",
+  "control",
+  "convince",
+  "cook",
+  "cool",
+  "copper",
+  "copy",
+  "coral",
+  "core",
+  "corn",
+  "correct",
+  "cost",
+  "cotton",
+  "couch",
+  "country",
+  "couple",
+  "course",
+  "cousin",
+  "cover",
+  "coyote",
+  "crack",
+  "cradle",
+  "craft",
+  "cram",
+  "crane",
+  "crash",
+  "crater",
+  "crawl",
+  "crazy",
+  "cream",
+  "credit",
+  "creek",
+  "crew",
+  "cricket",
+  "crime",
+  "crisp",
+  "critic",
+  "crop",
+  "cross",
+  "crouch",
+  "crowd",
+  "crucial",
+  "cruel",
+  "cruise",
+  "crumble",
+  "crunch",
+  "crush",
+  "cry",
+  "crystal",
+  "cube",
+  "culture",
+  "cup",
+  "cupboard",
+  "curious",
+  "current",
+  "curtain",
+  "curve",
+  "cushion",
+  "custom",
+  "cute",
+  "cycle",
+  "dad",
+  "damage",
+  "damp",
+  "dance",
+  "danger",
+  "daring",
+  "dash",
+  "daughter",
+  "dawn",
+  "day",
+  "deal",
+  "debate",
+  "debris",
+  "decade",
+  "december",
+  "decide",
+  "decline",
+  "decorate",
+  "decrease",
+  "deer",
+  "defense",
+  "define",
+  "defy",
+  "degree",
+  "delay",
+  "deliver",
+  "demand",
+  "demise",
+  "denial",
+  "dentist",
+  "deny",
+  "depart",
+  "depend",
+  "deposit",
+  "depth",
+  "deputy",
+  "derive",
+  "describe",
+  "desert",
+  "design",
+  "desk",
+  "despair",
+  "destroy",
+  "detail",
+  "detect",
+  "develop",
+  "device",
+  "devote",
+  "diagram",
+  "dial",
+  "diamond",
+  "diary",
+  "dice",
+  "diesel",
+  "diet",
+  "differ",
+  "digital",
+  "dignity",
+  "dilemma",
+  "dinner",
+  "dinosaur",
+  "direct",
+  "dirt",
+  "disagree",
+  "discover",
+  "disease",
+  "dish",
+  "dismiss",
+  "disorder",
+  "display",
+  "distance",
+  "divert",
+  "divide",
+  "divorce",
+  "dizzy",
+  "doctor",
+  "document",
+  "dog",
+  "doll",
+  "dolphin",
+  "domain",
+  "donate",
+  "donkey",
+  "donor",
+  "door",
+  "dose",
+  "double",
+  "dove",
+  "draft",
+  "dragon",
+  "drama",
+  "drastic",
+  "draw",
+  "dream",
+  "dress",
+  "drift",
+  "drill",
+  "drink",
+  "drip",
+  "drive",
+  "drop",
+  "drum",
+  "dry",
+  "duck",
+  "dumb",
+  "dune",
+  "during",
+  "dust",
+  "dutch",
+  "duty",
+  "dwarf",
+  "dynamic",
+  "eager",
+  "eagle",
+  "early",
+  "earn",
+  "earth",
+  "easily",
+  "east",
+  "easy",
+  "echo",
+  "ecology",
+  "economy",
+  "edge",
+  "edit",
+  "educate",
+  "effort",
+  "egg",
+  "eight",
+  "either",
+  "elbow",
+  "elder",
+  "electric",
+  "elegant",
+  "element",
+  "elephant",
+  "elevator",
+  "elite",
+  "else",
+  "embark",
+  "embody",
+  "embrace",
+  "emerge",
+  "emotion",
+  "employ",
+  "empower",
+  "empty",
+  "enable",
+  "enact",
+  "end",
+  "endless",
+  "endorse",
+  "enemy",
+  "energy",
+  "enforce",
+  "engage",
+  "engine",
+  "enhance",
+  "enjoy",
+  "enlist",
+  "enough",
+  "enrich",
+  "enroll",
+  "ensure",
+  "enter",
+  "entire",
+  "entry",
+  "envelope",
+  "episode",
+  "equal",
+  "equip",
+  "era",
+  "erase",
+  "erode",
+  "erosion",
+  "error",
+  "erupt",
+  "escape",
+  "essay",
+  "essence",
+  "estate",
+  "eternal",
+  "ethics",
+  "evidence",
+  "evil",
+  "evoke",
+  "evolve",
+  "exact",
+  "example",
+  "excess",
+  "exchange",
+  "excite",
+  "exclude",
+  "excuse",
+  "execute",
+  "exercise",
+  "exhaust",
+  "exhibit",
+  "exile",
+  "exist",
+  "exit",
+  "exotic",
+  "expand",
+  "expect",
+  "expire",
+  "explain",
+  "expose",
+  "express",
+  "extend",
+  "extra",
+  "eye",
+  "eyebrow",
+  "fabric",
+  "face",
+  "faculty",
+  "fade",
+  "faint",
+  "faith",
+  "fall",
+  "false",
+  "fame",
+  "family",
+  "famous",
+  "fan",
+  "fancy",
+  "fantasy",
+  "farm",
+  "fashion",
+  "fat",
+  "fatal",
+  "father",
+  "fatigue",
+  "fault",
+  "favorite",
+  "feature",
+  "february",
+  "federal",
+  "fee",
+  "feed",
+  "feel",
+  "female",
+  "fence",
+  "festival",
+  "fetch",
+  "fever",
+  "few",
+  "fiber",
+  "fiction",
+  "field",
+  "figure",
+  "file",
+  "film",
+  "filter",
+  "final",
+  "find",
+  "fine",
+  "finger",
+  "finish",
+  "fire",
+  "firm",
+  "first",
+  "fiscal",
+  "fish",
+  "fit",
+  "fitness",
+  "fix",
+  "flag",
+  "flame",
+  "flash",
+  "flat",
+  "flavor",
+  "flee",
+  "flight",
+  "flip",
+  "float",
+  "flock",
+  "floor",
+  "flower",
+  "fluid",
+  "flush",
+  "fly",
+  "foam",
+  "focus",
+  "fog",
+  "foil",
+  "fold",
+  "follow",
+  "food",
+  "foot",
+  "force",
+  "forest",
+  "forget",
+  "fork",
+  "fortune",
+  "forum",
+  "forward",
+  "fossil",
+  "foster",
+  "found",
+  "fox",
+  "fragile",
+  "frame",
+  "frequent",
+  "fresh",
+  "friend",
+  "fringe",
+  "frog",
+  "front",
+  "frost",
+  "frown",
+  "frozen",
+  "fruit",
+  "fuel",
+  "fun",
+  "funny",
+  "furnace",
+  "fury",
+  "future",
+  "gadget",
+  "gain",
+  "galaxy",
+  "gallery",
+  "game",
+  "gap",
+  "garage",
+  "garbage",
+  "garden",
+  "garlic",
+  "garment",
+  "gas",
+  "gasp",
+  "gate",
+  "gather",
+  "gauge",
+  "gaze",
+  "general",
+  "genius",
+  "genre",
+  "gentle",
+  "genuine",
+  "gesture",
+  "ghost",
+  "giant",
+  "gift",
+  "giggle",
+  "ginger",
+  "giraffe",
+  "girl",
+  "give",
+  "glad",
+  "glance",
+  "glare",
+  "glass",
+  "glide",
+  "glimpse",
+  "globe",
+  "gloom",
+  "glory",
+  "glove",
+  "glow",
+  "glue",
+  "goat",
+  "goddess",
+  "gold",
+  "good",
+  "goose",
+  "gorilla",
+  "gospel",
+  "gossip",
+  "govern",
+  "gown",
+  "grab",
+  "grace",
+  "grain",
+  "grant",
+  "grape",
+  "grass",
+  "gravity",
+  "great",
+  "green",
+  "grid",
+  "grief",
+  "grit",
+  "grocery",
+  "group",
+  "grow",
+  "grunt",
+  "guard",
+  "guess",
+  "guide",
+  "guilt",
+  "guitar",
+  "gun",
+  "gym",
+  "habit",
+  "hair",
+  "half",
+  "hammer",
+  "hamster",
+  "hand",
+  "happy",
+  "harbor",
+  "hard",
+  "harsh",
+  "harvest",
+  "hat",
+  "have",
+  "hawk",
+  "hazard",
+  "head",
+  "health",
+  "heart",
+  "heavy",
+  "hedgehog",
+  "height",
+  "hello",
+  "helmet",
+  "help",
+  "hen",
+  "hero",
+  "hidden",
+  "high",
+  "hill",
+  "hint",
+  "hip",
+  "hire",
+  "history",
+  "hobby",
+  "hockey",
+  "hold",
+  "hole",
+  "holiday",
+  "hollow",
+  "home",
+  "honey",
+  "hood",
+  "hope",
+  "horn",
+  "horror",
+  "horse",
+  "hospital",
+  "host",
+  "hotel",
+  "hour",
+  "hover",
+  "hub",
+  "huge",
+  "human",
+  "humble",
+  "humor",
+  "hundred",
+  "hungry",
+  "hunt",
+  "hurdle",
+  "hurry",
+  "hurt",
+  "husband",
+  "hybrid",
+  "ice",
+  "icon",
+  "idea",
+  "identify",
+  "idle",
+  "ignore",
+  "ill",
+  "illegal",
+  "illness",
+  "image",
+  "imitate",
+  "immense",
+  "immune",
+  "impact",
+  "impose",
+  "improve",
+  "impulse",
+  "inch",
+  "include",
+  "income",
+  "increase",
+  "index",
+  "indicate",
+  "indoor",
+  "industry",
+  "infant",
+  "inflict",
+  "inform",
+  "inhale",
+  "inherit",
+  "initial",
+  "inject",
+  "injury",
+  "inmate",
+  "inner",
+  "innocent",
+  "input",
+  "inquiry",
+  "insane",
+  "insect",
+  "inside",
+  "inspire",
+  "install",
+  "intact",
+  "interest",
+  "into",
+  "invest",
+  "invite",
+  "involve",
+  "iron",
+  "island",
+  "isolate",
+  "issue",
+  "item",
+  "ivory",
+  "jacket",
+  "jaguar",
+  "jar",
+  "jazz",
+  "jealous",
+  "jeans",
+  "jelly",
+  "jewel",
+  "job",
+  "join",
+  "joke",
+  "journey",
+  "joy",
+  "judge",
+  "juice",
+  "jump",
+  "jungle",
+  "junior",
+  "junk",
+  "just",
+  "kangaroo",
+  "keen",
+  "keep",
+  "ketchup",
+  "key",
+  "kick",
+  "kid",
+  "kidney",
+  "kind",
+  "kingdom",
+  "kiss",
+  "kit",
+  "kitchen",
+  "kite",
+  "kitten",
+  "kiwi",
+  "knee",
+  "knife",
+  "knock",
+  "know",
+  "lab",
+  "label",
+  "labor",
+  "ladder",
+  "lady",
+  "lake",
+  "lamp",
+  "language",
+  "laptop",
+  "large",
+  "later",
+  "latin",
+  "laugh",
+  "laundry",
+  "lava",
+  "law",
+  "lawn",
+  "lawsuit",
+  "layer",
+  "lazy",
+  "leader",
+  "leaf",
+  "learn",
+  "leave",
+  "lecture",
+  "left",
+  "leg",
+  "legal",
+  "legend",
+  "leisure",
+  "lemon",
+  "lend",
+  "length",
+  "lens",
+  "leopard",
+  "lesson",
+  "letter",
+  "level",
+  "liar",
+  "liberty",
+  "library",
+  "license",
+  "life",
+  "lift",
+  "light",
+  "like",
+  "limb",
+  "limit",
+  "link",
+  "lion",
+  "liquid",
+  "list",
+  "little",
+  "live",
+  "lizard",
+  "load",
+  "loan",
+  "lobster",
+  "local",
+  "lock",
+  "logic",
+  "lonely",
+  "long",
+  "loop",
+  "lottery",
+  "loud",
+  "lounge",
+  "love",
+  "loyal",
+  "lucky",
+  "luggage",
+  "lumber",
+  "lunar",
+  "lunch",
+  "luxury",
+  "lyrics",
+  "machine",
+  "mad",
+  "magic",
+  "magnet",
+  "maid",
+  "mail",
+  "main",
+  "major",
+  "make",
+  "mammal",
+  "man",
+  "manage",
+  "mandate",
+  "mango",
+  "mansion",
+  "manual",
+  "maple",
+  "marble",
+  "march",
+  "margin",
+  "marine",
+  "market",
+  "marriage",
+  "mask",
+  "mass",
+  "master",
+  "match",
+  "material",
+  "math",
+  "matrix",
+  "matter",
+  "maximum",
+  "maze",
+  "meadow",
+  "mean",
+  "measure",
+  "meat",
+  "mechanic",
+  "medal",
+  "media",
+  "melody",
+  "melt",
+  "member",
+  "memory",
+  "mention",
+  "menu",
+  "mercy",
+  "merge",
+  "merit",
+  "merry",
+  "mesh",
+  "message",
+  "metal",
+  "method",
+  "middle",
+  "midnight",
+  "milk",
+  "million",
+  "mimic",
+  "mind",
+  "minimum",
+  "minor",
+  "minute",
+  "miracle",
+  "mirror",
+  "misery",
+  "miss",
+  "mistake",
+  "mix",
+  "mixed",
+  "mixture",
+  "mobile",
+  "model",
+  "modify",
+  "mom",
+  "moment",
+  "monitor",
+  "monkey",
+  "monster",
+  "month",
+  "moon",
+  "moral",
+  "more",
+  "morning",
+  "mosquito",
+  "mother",
+  "motion",
+  "motor",
+  "mountain",
+  "mouse",
+  "move",
+  "movie",
+  "much",
+  "muffin",
+  "mule",
+  "multiply",
+  "muscle",
+  "museum",
+  "mushroom",
+  "music",
+  "must",
+  "mutual",
+  "myself",
+  "mystery",
+  "myth",
+  "naive",
+  "name",
+  "napkin",
+  "narrow",
+  "nasty",
+  "nation",
+  "nature",
+  "near",
+  "neck",
+  "need",
+  "negative",
+  "neglect",
+  "neither",
+  "nephew",
+  "nerve",
+  "nest",
+  "net",
+  "network",
+  "neutral",
+  "never",
+  "news",
+  "next",
+  "nice",
+  "night",
+  "noble",
+  "noise",
+  "nominee",
+  "noodle",
+  "normal",
+  "north",
+  "nose",
+  "notable",
+  "note",
+  "nothing",
+  "notice",
+  "novel",
+  "now",
+  "nuclear",
+  "number",
+  "nurse",
+  "nut",
+  "oak",
+  "obey",
+  "object",
+  "oblige",
+  "obscure",
+  "observe",
+  "obtain",
+  "obvious",
+  "occur",
+  "ocean",
+  "october",
+  "odor",
+  "off",
+  "offer",
+  "office",
+  "often",
+  "oil",
+  "okay",
+  "old",
+  "olive",
+  "olympic",
+  "omit",
+  "once",
+  "one",
+  "onion",
+  "online",
+  "only",
+  "open",
+  "opera",
+  "opinion",
+  "oppose",
+  "option",
+  "orange",
+  "orbit",
+  "orchard",
+  "order",
+  "ordinary",
+  "organ",
+  "orient",
+  "original",
+  "orphan",
+  "ostrich",
+  "other",
+  "outdoor",
+  "outer",
+  "output",
+  "outside",
+  "oval",
+  "oven",
+  "over",
+  "own",
+  "owner",
+  "oxygen",
+  "oyster",
+  "ozone",
+  "pact",
+  "paddle",
+  "page",
+  "pair",
+  "palace",
+  "palm",
+  "panda",
+  "panel",
+  "panic",
+  "panther",
+  "paper",
+  "parade",
+  "parent",
+  "park",
+  "parrot",
+  "party",
+  "pass",
+  "patch",
+  "path",
+  "patient",
+  "patrol",
+  "pattern",
+  "pause",
+  "pave",
+  "payment",
+  "peace",
+  "peanut",
+  "pear",
+  "peasant",
+  "pelican",
+  "pen",
+  "penalty",
+  "pencil",
+  "people",
+  "pepper",
+  "perfect",
+  "permit",
+  "person",
+  "pet",
+  "phone",
+  "photo",
+  "phrase",
+  "physical",
+  "piano",
+  "picnic",
+  "picture",
+  "piece",
+  "pig",
+  "pigeon",
+  "pill",
+  "pilot",
+  "pink",
+  "pioneer",
+  "pipe",
+  "pistol",
+  "pitch",
+  "pizza",
+  "place",
+  "planet",
+  "plastic",
+  "plate",
+  "play",
+  "please",
+  "pledge",
+  "pluck",
+  "plug",
+  "plunge",
+  "poem",
+  "poet",
+  "point",
+  "polar",
+  "pole",
+  "police",
+  "pond",
+  "pony",
+  "pool",
+  "popular",
+  "portion",
+  "position",
+  "possible",
+  "post",
+  "potato",
+  "pottery",
+  "poverty",
+  "powder",
+  "power",
+  "practice",
+  "praise",
+  "predict",
+  "prefer",
+  "prepare",
+  "present",
+  "pretty",
+  "prevent",
+  "price",
+  "pride",
+  "primary",
+  "print",
+  "priority",
+  "prison",
+  "private",
+  "prize",
+  "problem",
+  "process",
+  "produce",
+  "profit",
+  "program",
+  "project",
+  "promote",
+  "proof",
+  "property",
+  "prosper",
+  "protect",
+  "proud",
+  "provide",
+  "public",
+  "pudding",
+  "pull",
+  "pulp",
+  "pulse",
+  "pumpkin",
+  "punch",
+  "pupil",
+  "puppy",
+  "purchase",
+  "purity",
+  "purpose",
+  "purse",
+  "push",
+  "put",
+  "puzzle",
+  "pyramid",
+  "quality",
+  "quantum",
+  "quarter",
+  "question",
+  "quick",
+  "quit",
+  "quiz",
+  "quote",
+  "rabbit",
+  "raccoon",
+  "race",
+  "rack",
+  "radar",
+  "radio",
+  "rail",
+  "rain",
+  "raise",
+  "rally",
+  "ramp",
+  "ranch",
+  "random",
+  "range",
+  "rapid",
+  "rare",
+  "rate",
+  "rather",
+  "raven",
+  "raw",
+  "razor",
+  "ready",
+  "real",
+  "reason",
+  "rebel",
+  "rebuild",
+  "recall",
+  "receive",
+  "recipe",
+  "record",
+  "recycle",
+  "reduce",
+  "reflect",
+  "reform",
+  "refuse",
+  "region",
+  "regret",
+  "regular",
+  "reject",
+  "relax",
+  "release",
+  "relief",
+  "rely",
+  "remain",
+  "remember",
+  "remind",
+  "remove",
+  "render",
+  "renew",
+  "rent",
+  "reopen",
+  "repair",
+  "repeat",
+  "replace",
+  "report",
+  "require",
+  "rescue",
+  "resemble",
+  "resist",
+  "resource",
+  "response",
+  "result",
+  "retire",
+  "retreat",
+  "return",
+  "reunion",
+  "reveal",
+  "review",
+  "reward",
+  "rhythm",
+  "rib",
+  "ribbon",
+  "rice",
+  "rich",
+  "ride",
+  "ridge",
+  "rifle",
+  "right",
+  "rigid",
+  "ring",
+  "riot",
+  "ripple",
+  "risk",
+  "ritual",
+  "rival",
+  "river",
+  "road",
+  "roast",
+  "robot",
+  "robust",
+  "rocket",
+  "romance",
+  "roof",
+  "rookie",
+  "room",
+  "rose",
+  "rotate",
+  "rough",
+  "round",
+  "route",
+  "royal",
+  "rubber",
+  "rude",
+  "rug",
+  "rule",
+  "run",
+  "runway",
+  "rural",
+  "sad",
+  "saddle",
+  "sadness",
+  "safe",
+  "sail",
+  "salad",
+  "salmon",
+  "salon",
+  "salt",
+  "salute",
+  "same",
+  "sample",
+  "sand",
+  "satisfy",
+  "satoshi",
+  "sauce",
+  "sausage",
+  "save",
+  "say",
+  "scale",
+  "scan",
+  "scare",
+  "scatter",
+  "scene",
+  "scheme",
+  "school",
+  "science",
+  "scissors",
+  "scorpion",
+  "scout",
+  "scrap",
+  "screen",
+  "script",
+  "scrub",
+  "sea",
+  "search",
+  "season",
+  "seat",
+  "second",
+  "secret",
+  "section",
+  "security",
+  "seed",
+  "seek",
+  "segment",
+  "select",
+  "sell",
+  "seminar",
+  "senior",
+  "sense",
+  "sentence",
+  "series",
+  "service",
+  "session",
+  "settle",
+  "setup",
+  "seven",
+  "shadow",
+  "shaft",
+  "shallow",
+  "share",
+  "shed",
+  "shell",
+  "sheriff",
+  "shield",
+  "shift",
+  "shine",
+  "ship",
+  "shiver",
+  "shock",
+  "shoe",
+  "shoot",
+  "shop",
+  "short",
+  "shoulder",
+  "shove",
+  "shrimp",
+  "shrug",
+  "shuffle",
+  "shy",
+  "sibling",
+  "sick",
+  "side",
+  "siege",
+  "sight",
+  "sign",
+  "silent",
+  "silk",
+  "silly",
+  "silver",
+  "similar",
+  "simple",
+  "since",
+  "sing",
+  "siren",
+  "sister",
+  "situate",
+  "six",
+  "size",
+  "skate",
+  "sketch",
+  "ski",
+  "skill",
+  "skin",
+  "skirt",
+  "skull",
+  "slab",
+  "slam",
+  "sleep",
+  "slender",
+  "slice",
+  "slide",
+  "slight",
+  "slim",
+  "slogan",
+  "slot",
+  "slow",
+  "slush",
+  "small",
+  "smart",
+  "smile",
+  "smoke",
+  "smooth",
+  "snack",
+  "snake",
+  "snap",
+  "sniff",
+  "snow",
+  "soap",
+  "soccer",
+  "social",
+  "sock",
+  "soda",
+  "soft",
+  "solar",
+  "soldier",
+  "solid",
+  "solution",
+  "solve",
+  "someone",
+  "song",
+  "soon",
+  "sorry",
+  "sort",
+  "soul",
+  "sound",
+  "soup",
+  "source",
+  "south",
+  "space",
+  "spare",
+  "spatial",
+  "spawn",
+  "speak",
+  "special",
+  "speed",
+  "spell",
+  "spend",
+  "sphere",
+  "spice",
+  "spider",
+  "spike",
+  "spin",
+  "spirit",
+  "split",
+  "spoil",
+  "sponsor",
+  "spoon",
+  "sport",
+  "spot",
+  "spray",
+  "spread",
+  "spring",
+  "spy",
+  "square",
+  "squeeze",
+  "squirrel",
+  "stable",
+  "stadium",
+  "staff",
+  "stage",
+  "stairs",
+  "stamp",
+  "stand",
+  "start",
+  "state",
+  "stay",
+  "steak",
+  "steel",
+  "stem",
+  "step",
+  "stereo",
+  "stick",
+  "still",
+  "sting",
+  "stock",
+  "stomach",
+  "stone",
+  "stool",
+  "story",
+  "stove",
+  "strategy",
+  "street",
+  "strike",
+  "strong",
+  "struggle",
+  "student",
+  "stuff",
+  "stumble",
+  "style",
+  "subject",
+  "submit",
+  "subway",
+  "success",
+  "such",
+  "sudden",
+  "suffer",
+  "sugar",
+  "suggest",
+  "suit",
+  "summer",
+  "sun",
+  "sunny",
+  "sunset",
+  "super",
+  "supply",
+  "supreme",
+  "sure",
+  "surface",
+  "surge",
+  "surprise",
+  "surround",
+  "survey",
+  "suspect",
+  "sustain",
+  "swallow",
+  "swamp",
+  "swap",
+  "swarm",
+  "swear",
+  "sweet",
+  "swift",
+  "swim",
+  "swing",
+  "switch",
+  "sword",
+  "symbol",
+  "symptom",
+  "syrup",
+  "system",
+  "table",
+  "tackle",
+  "tag",
+  "tail",
+  "talent",
+  "talk",
+  "tank",
+  "tape",
+  "target",
+  "task",
+  "taste",
+  "tattoo",
+  "taxi",
+  "teach",
+  "team",
+  "tell",
+  "ten",
+  "tenant",
+  "tennis",
+  "tent",
+  "term",
+  "test",
+  "text",
+  "thank",
+  "that",
+  "theme",
+  "then",
+  "theory",
+  "there",
+  "they",
+  "thing",
+  "this",
+  "thought",
+  "three",
+  "thrive",
+  "throw",
+  "thumb",
+  "thunder",
+  "ticket",
+  "tide",
+  "tiger",
+  "tilt",
+  "timber",
+  "time",
+  "tiny",
+  "tip",
+  "tired",
+  "tissue",
+  "title",
+  "toast",
+  "tobacco",
+  "today",
+  "toddler",
+  "toe",
+  "together",
+  "toilet",
+  "token",
+  "tomato",
+  "tomorrow",
+  "tone",
+  "tongue",
+  "tonight",
+  "tool",
+  "tooth",
+  "top",
+  "topic",
+  "topple",
+  "torch",
+  "tornado",
+  "tortoise",
+  "toss",
+  "total",
+  "tourist",
+  "toward",
+  "tower",
+  "town",
+  "toy",
+  "track",
+  "trade",
+  "traffic",
+  "tragic",
+  "train",
+  "transfer",
+  "trap",
+  "trash",
+  "travel",
+  "tray",
+  "treat",
+  "tree",
+  "trend",
+  "trial",
+  "tribe",
+  "trick",
+  "trigger",
+  "trim",
+  "trip",
+  "trophy",
+  "trouble",
+  "truck",
+  "true",
+  "truly",
+  "trumpet",
+  "trust",
+  "truth",
+  "try",
+  "tube",
+  "tuition",
+  "tumble",
+  "tuna",
+  "tunnel",
+  "turkey",
+  "turn",
+  "turtle",
+  "twelve",
+  "twenty",
+  "twice",
+  "twin",
+  "twist",
+  "two",
+  "type",
+  "typical",
+  "ugly",
+  "umbrella",
+  "unable",
+  "unaware",
+  "uncle",
+  "uncover",
+  "under",
+  "undo",
+  "unfair",
+  "unfold",
+  "unhappy",
+  "uniform",
+  "unique",
+  "unit",
+  "universe",
+  "unknown",
+  "unlock",
+  "until",
+  "unusual",
+  "unveil",
+  "update",
+  "upgrade",
+  "uphold",
+  "upon",
+  "upper",
+  "upset",
+  "urban",
+  "urge",
+  "usage",
+  "use",
+  "used",
+  "useful",
+  "useless",
+  "usual",
+  "utility",
+  "vacant",
+  "vacuum",
+  "vague",
+  "valid",
+  "valley",
+  "valve",
+  "van",
+  "vanish",
+  "vapor",
+  "various",
+  "vast",
+  "vault",
+  "vehicle",
+  "velvet",
+  "vendor",
+  "venture",
+  "venue",
+  "verb",
+  "verify",
+  "version",
+  "very",
+  "vessel",
+  "veteran",
+  "viable",
+  "vibrant",
+  "vicious",
+  "victory",
+  "video",
+  "view",
+  "village",
+  "vintage",
+  "violin",
+  "virtual",
+  "virus",
+  "visa",
+  "visit",
+  "visual",
+  "vital",
+  "vivid",
+  "vocal",
+  "voice",
+  "void",
+  "volcano",
+  "volume",
+  "vote",
+  "voyage",
+  "wage",
+  "wagon",
+  "wait",
+  "walk",
+  "wall",
+  "walnut",
+  "want",
+  "warfare",
+  "warm",
+  "warrior",
+  "wash",
+  "wasp",
+  "waste",
+  "water",
+  "wave",
+  "way",
+  "wealth",
+  "weapon",
+  "wear",
+  "weasel",
+  "weather",
+  "web",
+  "wedding",
+  "weekend",
+  "weird",
+  "welcome",
+  "west",
+  "wet",
+  "whale",
+  "what",
+  "wheat",
+  "wheel",
+  "when",
+  "where",
+  "whip",
+  "whisper",
+  "wide",
+  "width",
+  "wife",
+  "wild",
+  "will",
+  "win",
+  "window",
+  "wine",
+  "wing",
+  "wink",
+  "winner",
+  "winter",
+  "wire",
+  "wisdom",
+  "wise",
+  "wish",
+  "witness",
+  "wolf",
+  "woman",
+  "wonder",
+  "wood",
+  "wool",
+  "word",
+  "work",
+  "world",
+  "worry",
+  "worth",
+  "wrap",
+  "wreck",
+  "wrestle",
+  "wrist",
+  "write",
+  "wrong",
+  "yard",
+  "year",
+  "yellow",
+  "you",
+  "young",
+  "youth",
+  "zebra",
+  "zero",
+  "zone",
+  "zoo",
+];
 
 ```

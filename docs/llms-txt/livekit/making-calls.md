@@ -1,66 +1,39 @@
 # Source: https://docs.livekit.io/telephony/making-calls.md
 
-# Source: https://docs.livekit.io/sip/making-calls.md
-
-LiveKit docs › Making calls › Workflow
+LiveKit docs › Making calls › Overview
 
 ---
 
-# Making outbound calls
+# Making calls overview
 
-> Workflow for making outbound calls.
+> An overview of making outbound calls with LiveKit telephony.
 
-## Outbound call workflow
+## Overview
 
-To make an outbound call, you create a [SIP participant](https://docs.livekit.io/sip/sip-participant.md) with the user's phone number. When you execute the [`CreateSIPParticipant`](https://docs.livekit.io/sip/api.md#createsipparticipant) request, LiveKit SIP sends an INVITE request to your SIP provider. If the SIP provider accepts the call, the SIP participant is added to the LiveKit room.
+Make outbound calls from LiveKit rooms to phone numbers using SIP providers. Configure outbound trunks, create SIP participants, and set up workflows to initiate calls and connect participants with external phone numbers.
 
-![LiveKit outbound SIP workflow](/images/sip/outbound-sip-workflow.svg)
+## Making calls components
 
-1. Call the `CreateSIPParticipant` API to create a SIP participant.
-2. LiveKit SIP sends an INVITE request to the SIP trunking provider.
-3. SIP trunking provider validates trunk credentials and accepts the call.
-4. LiveKit server places SIP participant in the LiveKit room specified in the `CreateSIPParticipant` request.
+Set up outbound call handling with trunks, SIP participant creation, and call configuration.
 
-## Setup for making calls
+| Component | Description | Use cases |
+| **Workflow & setup** | Overview of the outbound call workflow, from creating a SIP participant to connecting to external phone numbers and routing to rooms. | Understanding outbound call flow, setting up outbound call handling, and learning how SIP participants initiate calls. |
+| **Outbound trunk** | Configure outbound trunks to make outgoing calls through SIP providers, with authentication credentials and provider endpoints. | Making calls through SIP providers, configuring trunk authentication, and setting up region pinning for outbound calls. |
+| **Outbound calls** | Create SIP participants to make outbound calls, configure call settings, and connect participants to external phone numbers. | Initiating outbound calls, creating SIP participants programmatically, and connecting agents to phone numbers. |
 
-The following sections outline the steps required to make an outbound SIP call.
+## In this section
 
-### SIP trunking provider setup
+Read more about making calls.
 
-1. Purchase a phone number from a SIP Provider.
+- **[Workflow & setup](https://docs.livekit.io/telephony/making-calls/workflow-setup.md)**: Overview of the outbound call workflow and setup process.
 
-For a list of tested providers, see the table in [Using LiveKit SIP](https://docs.livekit.io/sip.md#using-livekit-sip).
-2. Configure the SIP Trunk on the provider to send SIP traffic to accept SIP traffic from the LiveKit SIP service.
+- **[Outbound trunk](https://docs.livekit.io/telephony/making-calls/outbound-trunk.md)**: Create and configure outbound trunks to make outgoing calls.
 
-For instructions for setting up a SIP trunk, see [Configuring a SIP provider trunk](https://docs.livekit.io/sip/quickstarts/configuring-sip-trunk.md).
-
-### LiveKit SIP configuration
-
-Create an [outbound trunk](https://docs.livekit.io/sip/trunk-outbound.md) associated with your SIP provider phone number. This is the number that is used to dial out to the user. Include the authentication credentials required by your SIP trunking provider to make calls.
-
-### Make an outbound call
-
-Create a SIP participant. When the `CreateSIPParticipant` request is executed, a SIP call is initiated:
-
-1. An INVITE request is sent to the SIP trunk provider. The provider checks authentication credentials and returns a response to LiveKit.
-2. If the call is accepted, LiveKit dials the user and creates a SIP participant in the LiveKit room.
-
-If the call is not accepted by the SIP trunk provider, the `CreateSIPParticipant` request fails.
-
-After the call starts ringing, you can check the call status by listening to [participant events](https://docs.livekit.io/home/client/events.md#events):
-
-- If the `sip.callStatus` participant attribute is updated to `active`, the call has connected.
-- If the call fails, the participant is disconnected and leaves the room.
-
-## Next steps
-
-See the following guide to create an AI agent that makes outbound calls.
-
-- **[Voice AI telephony guide](https://docs.livekit.io/agents/start/telephony.md)**: Create an AI agent to make outbound calls.
+- **[Outbound calls](https://docs.livekit.io/telephony/making-calls/outbound-calls.md)**: Create SIP participants to make outbound calls.
 
 ---
 
-This document was rendered at 2025-11-18T23:55:20.840Z.
-For the latest version of this document, see [https://docs.livekit.io/sip/making-calls.md](https://docs.livekit.io/sip/making-calls.md).
+This document was rendered at 2026-02-03T03:25:12.905Z.
+For the latest version of this document, see [https://docs.livekit.io/telephony/making-calls.md](https://docs.livekit.io/telephony/making-calls.md).
 
 To explore all LiveKit documentation, see [llms.txt](https://docs.livekit.io/llms.txt).

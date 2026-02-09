@@ -1,6 +1,12 @@
 # Source: https://docs.windsurf.com/plugins/compatibility.md
 
-# Compatibility
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.windsurf.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# IDE Compatibility
+
+> Supported IDEs and version requirements for Windsurf Plugins including VS Code, JetBrains, Visual Studio, NeoVim, Vim, Emacs, Xcode, Sublime Text, and Eclipse.
 
 Visit our [download page](https://windsurf.com/download) for a list of supported IDEs and installation instructions.
 

@@ -2,18 +2,6 @@
 
 # Source: https://docs.apify.com/academy/scraping-basics-javascript/parsing-html.md
 
-# Source: https://docs.apify.com/academy/scraping-basics-python/parsing-html.md
-
-# Source: https://docs.apify.com/academy/scraping-basics-javascript/parsing-html.md
-
-# Source: https://docs.apify.com/academy/scraping-basics-python/parsing-html.md
-
-# Source: https://docs.apify.com/academy/scraping-basics-javascript/parsing-html.md
-
-# Source: https://docs.apify.com/academy/scraping-basics-python/parsing-html.md
-
-# Source: https://docs.apify.com/academy/scraping-basics-javascript2/parsing-html.md
-
 # Parsing HTML with Node.js
 
 **In this lesson we'll look for products in the downloaded HTML. We'll use Cheerio to turn the HTML into objects which we can work with in our Node.js program.**
@@ -28,18 +16,18 @@ As a first step, let's try counting how many products are on the listing page.
 
 ## Processing HTML
 
-After downloading, the entire HTML is available in our program as a string. We can print it to the screen or save it to a file, but not much more. However, since it's a string, could we use https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String#instance_methods or https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_expressions to count the products?
+After downloading, the entire HTML is available in our program as a string. We can print it to the screen or save it to a file, but not much more. However, since it's a string, could we use [string operations](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String#instance_methods) or [regular expressions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_expressions) to count the products?
 
 While somewhat possible, such an approach is tedious, fragile, and unreliable. To work with HTML, we need a robust tool dedicated to the task: an *HTML parser*. It takes a text with HTML markup and turns it into a tree of JavaScript objects.
 
 Why regex can't parse HTML
 
-While https://stackoverflow.com/a/1732454/325365 is funny, it doesn't go very deep into the reasoning:
+While [Bobince's infamous StackOverflow answer](https://stackoverflow.com/a/1732454/325365) is funny, it doesn't go very deep into the reasoning:
 
-* In **formal language theory**, HTML's hierarchical, nested structure makes it a https://en.wikipedia.org/wiki/Context-free_language. **Regular expressions**, by contrast, match patterns in https://en.wikipedia.org/wiki/Regular_language, which are much simpler.
+* In **formal language theory**, HTML's hierarchical, nested structure makes it a [context-free language](https://en.wikipedia.org/wiki/Context-free_language). **Regular expressions**, by contrast, match patterns in [regular languages](https://en.wikipedia.org/wiki/Regular_language), which are much simpler.
 * Because of this difference, regex alone struggles with HTML's nested tags. On top of that, HTML has **complex syntax rules** and countless **edge cases**, which only add to the difficulty.
 
-We'll choose https://cheerio.js.org/ as our parser, as it's a popular library which can process even non-standard, broken markup. This is useful for scraping, because real-world websites often contain all sorts of errors and discrepancies. In the project directory, we'll run the following to install the Cheerio package:
+We'll choose [Cheerio](https://cheerio.js.org/) as our parser, as it's a popular library which can process even non-standard, broken markup. This is useful for scraping, because real-world websites often contain all sorts of errors and discrepancies. In the project directory, we'll run the following to install the Cheerio package:
 
 
 ```
@@ -52,7 +40,7 @@ added 123 packages, and audited 123 packages in 0s
 
 Installing packages
 
-Being comfortable around installing Node.js packages is a prerequisite of this course, but if you wouldn't say no to a recap, we recommend https://nodejs.org/en/learn/getting-started/an-introduction-to-the-npm-package-manager tutorial from the official Node.js documentation.
+Being comfortable around installing Node.js packages is a prerequisite of this course, but if you wouldn't say no to a recap, we recommend [An introduction to the npm package manager](https://nodejs.org/en/learn/getting-started/an-introduction-to-the-npm-package-manager) tutorial from the official Node.js documentation.
 
 Now let's import the package and use it for parsing the HTML. The `cheerio` module allows us to work with the HTML elements in a structured way. As a demonstration, we'll first get the `<h1>` element, which represents the main heading of the page.
 
@@ -135,13 +123,13 @@ Sales
 
 Dynamic websites
 
-The Warehouse returns full HTML in its initial response, but many other sites add some content after the page loads or after user interaction. In such cases, what we'd see in DevTools could differ from `await response.text()` in Node.js. Learn how to handle these scenarios in our https://docs.apify.com/academy/api-scraping.md and https://docs.apify.com/academy/puppeteer-playwright.md courses.
+The Warehouse returns full HTML in its initial response, but many other sites add some content after the page loads or after user interaction. In such cases, what we'd see in DevTools could differ from `await response.text()` in Node.js. Learn how to handle these scenarios in our [API Scraping](https://docs.apify.com/academy/api-scraping.md) and [Puppeteer & Playwright](https://docs.apify.com/academy/puppeteer-playwright.md) courses.
 
 ## Using CSS selectors
 
 Cheerio's `$()` method runs a *CSS selector* against a parsed HTML document and returns all the matching elements. It's like calling `document.querySelectorAll()` in browser DevTools.
 
-Scanning through https://cheerio.js.org/docs/basics/selecting will help us to figure out code for counting the product cards:
+Scanning through [usage examples](https://cheerio.js.org/docs/basics/selecting) will help us to figure out code for counting the product cards:
 
 
 ```
@@ -185,7 +173,7 @@ These challenges are here to help you test what you’ve learned in this lesson.
 
 Real world
 
-You're about to touch the real web, which is practical and exciting! But websites change, so some exercises might break. If you run into any issues, please leave a comment below or https://github.com/apify/apify-docs/issues.
+You're about to touch the real web, which is practical and exciting! But websites change, so some exercises might break. If you run into any issues, please leave a comment below or [file a GitHub Issue](https://github.com/apify/apify-docs/issues).
 
 ### Scrape F1 Academy teams
 
@@ -203,13 +191,13 @@ Solution
 ```
 import * as cheerio from 'cheerio';
 
-const url = "https://www.f1academy.com/Racing-Series/Teams";
+const url = 'https://www.f1academy.com/Racing-Series/Teams';
 const response = await fetch(url);
 
 if (response.ok) {
   const html = await response.text();
   const $ = cheerio.load(html);
-  console.log($(".teams-driver-item").length);
+  console.log($('.teams-driver-item').length);
 } else {
   throw new Error(`HTTP ${response.status}`);
 }
@@ -226,14 +214,15 @@ Solution
 ```
 import * as cheerio from 'cheerio';
 
-const url = "https://www.f1academy.com/Racing-Series/Teams";
+const url = 'https://www.f1academy.com/Racing-Series/Teams';
 const response = await fetch(url);
 
-if (response.ok) {
-  const html = await response.text();
-  const $ = cheerio.load(html);
-  console.log($(".driver").length);
-} else {
+if (!response.ok) {
   throw new Error(`HTTP ${response.status}`);
 }
+
+const html = await response.text();
+const $ = cheerio.load(html);
+
+console.log($('.driver').length);
 ```

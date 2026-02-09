@@ -3,7 +3,6 @@
 ---
 url: /docs/guide/usage/linter/rules/jest/prefer-called-with.md
 ---
-# jest/prefer-called-with&#x20;
 
 ### What it does
 

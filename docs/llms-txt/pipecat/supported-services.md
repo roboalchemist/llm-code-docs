@@ -1,5 +1,9 @@
 # Source: https://docs.pipecat.ai/server/services/supported-services.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pipecat.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Supported Services
 
 > AI services integrated with Pipecat and their setup requirements
@@ -12,6 +16,7 @@ Transports exchange audio and video streams between the user and bot.
 | ------------------------------------------------------------------------- | ------------------------------------- |
 | [DailyTransport](/server/services/transport/daily)                        | `pip install "pipecat-ai[daily]"`     |
 | [FastAPIWebSocketTransport](/server/services/transport/fastapi-websocket) | `pip install "pipecat-ai[websocket]"` |
+| [HeyGenTransport](/server/services/transport/heygen)                      | `pip install "pipecat-ai[heygen]"`    |
 | [LiveKitTransport](/server/services/transport/livekit)                    | `pip install "pipecat-ai[livekit]"`   |
 | [SmallWebRTCTransport](/server/services/transport/small-webrtc)           | `pip install "pipecat-ai[webrtc]"`    |
 | [TavusTransport](/server/services/transport/tavus)                        | `pip install "pipecat-ai[tavus]"`     |
@@ -28,6 +33,7 @@ Serializers convert between frames and media streams, enabling real-time communi
 | [Plivo](/server/services/serializers/plivo)   | No dependencies required |
 | [Telnyx](/server/services/serializers/telnyx) | No dependencies required |
 | [Twilio](/server/services/serializers/twilio) | No dependencies required |
+| [Vonage](/server/services/serializers/vonage) | No dependencies required |
 
 ## Speech-to-Text
 
@@ -46,13 +52,13 @@ Speech-to-Text services receive and audio input and output transcriptions.
 | [Google](/server/services/stt/google)                 | `pip install "pipecat-ai[google]"`       |
 | [Gradium](/server/services/stt/gradium)               | `pip install "pipecat-ai[gradium]"`      |
 | [Groq (Whisper)](/server/services/stt/groq)           | `pip install "pipecat-ai[groq]"`         |
+| [Hathora](/server/services/stt/hathora)               | `pip install "pipecat-ai[hathora]"`      |
 | [NVIDIA Riva](/server/services/stt/riva)              | `pip install "pipecat-ai[nvidia]"`       |
 | [OpenAI (Whisper)](/server/services/stt/openai)       | `pip install "pipecat-ai[openai]"`       |
 | [SambaNova (Whisper)](/server/services/stt/sambanova) | `pip install "pipecat-ai[sambanova]"`    |
 | [Sarvam](/server/services/stt/sarvam)                 | `pip install "pipecat-ai[sarvam]"`       |
 | [Soniox](/server/services/stt/soniox)                 | `pip install "pipecat-ai[soniox]"`       |
 | [Speechmatics](/server/services/stt/speechmatics)     | `pip install "pipecat-ai[speechmatics]"` |
-| [Ultravox](/server/services/stt/ultravox)             | `pip install "pipecat-ai[ultravox]"`     |
 | [Whisper](/server/services/stt/whisper)               | `pip install "pipecat-ai[whisper]"`      |
 
 ## Large Language Models
@@ -90,6 +96,7 @@ Text-to-Speech services receive text input and output audio streams or chunks.
 | [Async](/server/services/tts/asyncai)             | `pip install "pipecat-ai[asyncai]"`      |
 | [AWS Polly](/server/services/tts/aws)             | `pip install "pipecat-ai[aws]"`          |
 | [Azure](/server/services/tts/azure)               | `pip install "pipecat-ai[azure]"`        |
+| [Camb AI](/server/services/tts/camb)              | `pip install "pipecat-ai[camb]"`         |
 | [Cartesia](/server/services/tts/cartesia)         | `pip install "pipecat-ai[cartesia]"`     |
 | [Deepgram](/server/services/tts/deepgram)         | `pip install "pipecat-ai[deepgram]"`     |
 | [ElevenLabs](/server/services/tts/elevenlabs)     | `pip install "pipecat-ai[elevenlabs]"`   |
@@ -97,6 +104,8 @@ Text-to-Speech services receive text input and output audio streams or chunks.
 | [Google](/server/services/tts/google)             | `pip install "pipecat-ai[google]"`       |
 | [Gradium](/server/services/tts/gradium)           | `pip install "pipecat-ai[gradium]"`      |
 | [Groq](/server/services/tts/groq)                 | `pip install "pipecat-ai[groq]"`         |
+| [Hathora](/server/services/tts/hathora)           | `pip install "pipecat-ai[hathora]"`      |
+| [Hume](/server/services/tts/hume)                 | `pip install "pipecat-ai[hume]"`         |
 | [Inworld](/server/services/tts/inworld)           | No dependencies required                 |
 | [LMNT](/server/services/tts/lmnt)                 | `pip install "pipecat-ai[lmnt]"`         |
 | [MiniMax](/server/services/tts/minimax)           | No dependencies required                 |
@@ -105,6 +114,7 @@ Text-to-Speech services receive text input and output audio streams or chunks.
 | [OpenAI](/server/services/tts/openai)             | `pip install "pipecat-ai[openai]"`       |
 | [Piper](/server/services/tts/piper)               | No dependencies required                 |
 | [PlayHT](/server/services/tts/playht)             | `pip install "pipecat-ai[playht]"`       |
+| [Resemble](/server/services/tts/resemble)         | `pip install "pipecat-ai[resemble]"`     |
 | [Rime](/server/services/tts/rime)                 | `pip install "pipecat-ai[rime]"`         |
 | [Sarvam](/server/services/tts/sarvam)             | No dependencies required                 |
 | [Speechmatics](/server/services/tts/speechmatics) | `pip install "pipecat-ai[speechmatics]"` |
@@ -119,7 +129,9 @@ Speech-to-Speech services are multi-modal LLM services that take in audio, video
 | [AWS Nova Sonic](/server/services/s2s/aws)                       | `pip install "pipecat-ai[aws-nova-sonic]"` |
 | [Gemini Multimodal Live](/server/services/s2s/gemini-live)       | `pip install "pipecat-ai[google]"`         |
 | [Gemini Live Vertex AI](/server/services/s2s/gemini-live-vertex) | `pip install "pipecat-ai[google]"`         |
+| [Grok Voice Agent](/server/services/s2s/grok)                    | `pip install "pipecat-ai[grok]"`           |
 | [OpenAI Realtime](/server/services/s2s/openai)                   | `pip install "pipecat-ai[openai]"`         |
+| [Ultravox](/server/services/s2s/ultravox)                        | `pip install "pipecat-ai[ultravox]"`       |
 
 ## Image Generation
 
@@ -164,8 +176,3 @@ Analytics services help you better understand how your service operates.
 | Service                                     | Setup                              |
 | ------------------------------------------- | ---------------------------------- |
 | [Sentry](/server/services/analytics/sentry) | `pip install "pipecat-ai[sentry]"` |
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.pipecat.ai/llms.txt

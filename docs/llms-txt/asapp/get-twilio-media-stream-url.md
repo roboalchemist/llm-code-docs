@@ -2,77 +2,70 @@
 
 # Source: https://docs.asapp.com/apis/autotranscribe-media-gateway/get-twilio-media-stream-url.md
 
-# Source: https://docs.asapp.com/apis/genagent-media-gateway/get-twilio-media-stream-url.md
-
-# Source: https://docs.asapp.com/apis/autotranscribe-media-gateway/get-twilio-media-stream-url.md
-
-# Source: https://docs.asapp.com/apis/genagent-media-gateway/get-twilio-media-stream-url.md
-
-# Source: https://docs.asapp.com/apis/autotranscribe-media-gateway/get-twilio-media-stream-url.md
-
-# Source: https://docs.asapp.com/apis/genagent-media-gateway/get-twilio-media-stream-url.md
-
-# Source: https://docs.asapp.com/apis/autotranscribe-media-gateway/get-twilio-media-stream-url.md
-
-# Source: https://docs.asapp.com/apis/genagent-media-gateway/get-twilio-media-stream-url.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.asapp.com/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Get Twilio media stream url
 
-> Returns url where Twilio media stream should be sent to.
+> Returns url where [Twilio media stream](/autotranscribe/deploying-autotranscribe-for-twilio) should be sent to.
+
+
 
 ## OpenAPI
 
-````yaml api-specs/mg-genagent.yaml get /mg-genagent/v1/twilio-media-stream-url
+````yaml api-specs/mg-autotranscribe.yaml get /mg-autotranscribe/v1/twilio-media-stream-url
+openapi: 3.0.0
+info:
+  title: MG Autotranscribe API Router
+  description: Router service for controlling MG transcription
+  version: '1'
+servers:
+  - url: https://api.sandbox.asapp.com
+security:
+  - API-ID: []
+    API-Secret: []
+tags:
+  - name: AutoTranscribe Media Gateway
+    description: >-
+      Operations for controlling AutoTranscribe Media Gateway transcription and
+      streaming
 paths:
-  path: /mg-genagent/v1/twilio-media-stream-url
-  method: get
-  servers:
-    - url: https://api.sandbox.asapp.com
-  request:
-    security:
-      - title: API ID & API Secret
-        parameters:
-          query: {}
-          header:
-            asapp-api-id:
-              type: apiKey
-            asapp-api-secret:
-              type: apiKey
-          cookie: {}
-    parameters:
-      path: {}
-      query: {}
-      header: {}
-      cookie: {}
-    body: {}
-  response:
-    '200':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              streamingUrl:
-                allOf:
-                  - description: >-
+  /mg-autotranscribe/v1/twilio-media-stream-url:
+    get:
+      tags:
+        - AutoTranscribe Media Gateway
+      summary: Get Twilio media stream url
+      description: >-
+        Returns url where [Twilio media
+        stream](/autotranscribe/deploying-autotranscribe-for-twilio) should be
+        sent to.
+      operationId: getTwilioMediaStreams
+      responses:
+        '200':
+          description: OK - Twilio media stream url in the response body
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  streamingUrl:
+                    description: >-
                       The websocket URL you provide to Twilio for media
                       streaming.
                     type: string
                     example: >-
-                      wss://localhost/mg-twilio-genagent/twilio-media/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c
-        examples:
-          example:
-            value:
-              streamingUrl: >-
-                wss://localhost/mg-twilio-genagent/twilio-media/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c
-        description: OK - Twilio media stream url in the response body
-    '401':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              error:
-                allOf:
-                  - example:
+                      wss://localhost/mg-twilio-autotranscribe/twilio-media/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c
+        '401':
+          description: 401 - Unauthorized
+          content:
+            application/json:
+              schema:
+                description: Unauthorized response
+                type: object
+                properties:
+                  error:
+                    example:
                       requestId: 8e033668-9f1a-11ec-b909-0242ac120002
                       code: 401-01
                       message: Unauthorized
@@ -91,23 +84,16 @@ paths:
                     required:
                       - requestId
                       - message
-            description: Unauthorized response
-        examples:
-          example:
-            value:
-              error:
-                requestId: 8e033668-9f1a-11ec-b909-0242ac120002
-                code: 401-01
-                message: Unauthorized
-        description: 401 - Unauthorized
-    '403':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              error:
-                allOf:
-                  - example:
+        '403':
+          description: 403 - Forbidden
+          content:
+            application/json:
+              schema:
+                description: Forbidden response
+                type: object
+                properties:
+                  error:
+                    example:
                       requestId: 8e033668-9f1a-11ec-b909-0242ac120002
                       code: 403-01
                       message: Forbidden Response
@@ -126,23 +112,16 @@ paths:
                     required:
                       - requestId
                       - message
-            description: Forbidden response
-        examples:
-          example:
-            value:
-              error:
-                requestId: 8e033668-9f1a-11ec-b909-0242ac120002
-                code: 403-01
-                message: Forbidden Response
-        description: 403 - Forbidden
-    '404':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              error:
-                allOf:
-                  - example:
+        '404':
+          description: 404 - Not Found
+          content:
+            application/json:
+              schema:
+                description: Not Found response
+                type: object
+                properties:
+                  error:
+                    example:
                       requestId: 8e033668-9f1a-11ec-b909-0242ac120002
                       code: 404-01
                       message: Not Found
@@ -161,23 +140,16 @@ paths:
                     required:
                       - requestId
                       - message
-            description: Not Found response
-        examples:
-          example:
-            value:
-              error:
-                requestId: 8e033668-9f1a-11ec-b909-0242ac120002
-                code: 404-01
-                message: Not Found
-        description: 404 - Not Found
-    '429':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              error:
-                allOf:
-                  - example:
+        '429':
+          description: 429 - Too Many Requests
+          content:
+            application/json:
+              schema:
+                description: Too Many Requests response
+                type: object
+                properties:
+                  error:
+                    example:
                       requestId: 8e033668-9f1a-11ec-b909-0242ac120002
                       code: 429-01
                       message: Too Many Requests
@@ -196,23 +168,16 @@ paths:
                     required:
                       - requestId
                       - message
-            description: Too Many Requests response
-        examples:
-          example:
-            value:
-              error:
-                requestId: 8e033668-9f1a-11ec-b909-0242ac120002
-                code: 429-01
-                message: Too Many Requests
-        description: 429 - Too Many Requests
-    '503':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              error:
-                allOf:
-                  - example:
+        '503':
+          description: 503 - Service Unavailable
+          content:
+            application/json:
+              schema:
+                description: Service Unavailable response
+                type: object
+                properties:
+                  error:
+                    example:
                       requestId: 8e033668-9f1a-11ec-b909-0242ac120002
                       code: 503-01
                       message: Service Unavailable
@@ -231,23 +196,16 @@ paths:
                     required:
                       - requestId
                       - message
-            description: Service Unavailable response
-        examples:
-          example:
-            value:
-              error:
-                requestId: 8e033668-9f1a-11ec-b909-0242ac120002
-                code: 503-01
-                message: Service Unavailable
-        description: 503 - Service Unavailable
-    default:
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              error:
-                allOf:
-                  - example:
+        default:
+          description: 500 - Internal Server Error
+          content:
+            application/json:
+              schema:
+                description: Default error response
+                type: object
+                properties:
+                  error:
+                    example:
                       requestId: 8e033668-9f1a-11ec-b909-0242ac120002
                       code: 500-01
                       message: Internal server error
@@ -266,18 +224,15 @@ paths:
                     required:
                       - requestId
                       - message
-            description: Default error response
-        examples:
-          example:
-            value:
-              error:
-                requestId: 8e033668-9f1a-11ec-b909-0242ac120002
-                code: 500-01
-                message: Internal server error
-        description: 500 - Internal Server Error
-  deprecated: false
-  type: path
 components:
-  schemas: {}
+  securitySchemes:
+    API-ID:
+      type: apiKey
+      in: header
+      name: asapp-api-id
+    API-Secret:
+      type: apiKey
+      in: header
+      name: asapp-api-secret
 
 ````

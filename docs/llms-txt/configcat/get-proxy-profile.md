@@ -2,10 +2,7 @@
 
 # Get Proxy Profile
 
-```
-GET 
-/v1/proxy-profiles/:proxyProfileId
-```
+Copy page
 
 This endpoint returns a Proxy Profile identified by the `proxyProfileId`.
 

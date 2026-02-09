@@ -1,5 +1,9 @@
 # Source: https://docs.zapier.com/platform/build-cli/hydration.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.zapier.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Hydration
 
 > The best answer to this lives in our [CLI docs](https://docs.zapier.com/platform/reference/cli-docs#dehydration):

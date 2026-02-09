@@ -43,8 +43,10 @@ Here's a video walking through those steps as well:
 
 {% embed url="<https://www.loom.com/share/187128fe3b9c4334b5904d4c4de48dbf?sid=477d7023-fb18-4218-accd-fbd0775fee88>" %}
 
-### Post-Purchase Page for Theme Tests
+### Post-Purchase Page for Theme Tests (Legacy Checkout Only)
 
-If you are planning to run a theme test, you should also add our script to the Additional Scripts section for the Post-purchase page. This will hide the theme preview bar from showing up on your thank you page. You can get to the Additional Scripts section pictured below by going to Settings -> Checkout -> Scroll about halfway down to "Post-purchase page".
+**Note:** *This step only applies if your store still has access to the legacy Shopify checkout (`checkout.liquid`). Most stores have been migrated to Checkout Extensibility and will not see this section in their Shopify admin. If you don't see a "Post-purchase page" section under Settings → Checkout, you can skip this step—the preview bar will be hidden automatically.*
+
+If you are planning to run a theme test and still have access to the Additional Scripts section for the Post-purchase page, you should add our script there. This will hide the theme preview bar from showing up on your thank you page.
 
 <figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2Fgit-blob-0e043169cb168eea43b0239be9661bf1a7a840b0%2FScreenshot%202024-07-31%20at%2012.22.21%20PM.png?alt=media" alt=""><figcaption></figcaption></figure>

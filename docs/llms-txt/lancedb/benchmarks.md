@@ -1,5 +1,9 @@
 # Source: https://docs.lancedb.com/enterprise/benchmarks.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.lancedb.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Benchmarks
 
 > See numbers from LanceDB Enterprise's performance scalability and latency benchmarks.
@@ -72,8 +76,3 @@ The query performance using complex filters, e.g., "find Sci-fi movies since 190
 <Check>
   Our benchmarks are designed to provide consistent and reproducible performance evaluations of LanceDB. We regularly update and re-run these benchmarks to ensure the data remains accurate and relevant.
 </Check>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.lancedb.com/llms.txt

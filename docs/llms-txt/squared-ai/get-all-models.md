@@ -1,51 +1,52 @@
 # Source: https://docs.squared.ai/api-reference/models/get-all-models.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.squared.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Get Models
+
+
 
 ## OpenAPI
 
 ````yaml GET /api/v1/models
+openapi: 3.0.1
+info:
+  title: AI Squared API
+  version: 1.0.0
+servers:
+  - url: https://api.squared.ai
+security: []
 paths:
-  path: /api/v1/models
-  method: get
-  servers:
-    - url: https://api.squared.ai
-  request:
-    security:
-      - title: bearerAuth
-        parameters:
-          query: {}
-          header:
-            Authorization:
-              type: http
-              scheme: bearer
-          cookie: {}
-    parameters:
-      path: {}
-      query:
-        query_type:
+  /api/v1/models:
+    get:
+      tags:
+        - Models
+      summary: Lists all models
+      parameters:
+        - name: query_type
+          in: query
+          required: true
           schema:
-            - type: enum<string>
-              enum:
-                - data
-                - ai_ml
-                - raw_sql
-                - dbt soql
-                - table_selector
-              required: true
-              description: query type
-      header: {}
-      cookie: {}
-    body: {}
-  response:
-    '200':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              data:
-                allOf:
-                  - type: array
+            type: string
+            enum:
+              - data
+              - ai_ml
+              - raw_sql
+              - dbt soql
+              - table_selector
+          description: query type
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
                     items:
                       type: object
                       properties:
@@ -76,9 +77,8 @@ paths:
                             updated_at:
                               type: string
                               format: date-time
-              links:
-                allOf:
-                  - type: object
+                  links:
+                    type: object
                     properties:
                       self:
                         type: string
@@ -90,32 +90,13 @@ paths:
                         type: string
                       last:
                         type: string
-        examples:
-          example:
-            value:
-              data:
-                - id: <string>
-                  type: <string>
-                  attributes:
-                    name: <string>
-                    description: <string>
-                    query: <string>
-                    query_type: <string>
-                    configuration: {}
-                    primary_key: <string>
-                    connector_id: 123
-                    created_at: '2023-11-07T05:31:56Z'
-                    updated_at: '2023-11-07T05:31:56Z'
-              links:
-                self: <string>
-                first: <string>
-                prev: <string>
-                next: <string>
-                last: <string>
-        description: Successful operation
-  deprecated: false
-  type: path
+      security:
+        - bearerAuth: []
 components:
-  schemas: {}
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
 
 ````

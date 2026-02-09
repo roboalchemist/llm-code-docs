@@ -11,7 +11,7 @@ There are several ways to use the URI scheme:
 * Open Launch Configuration `warp://launch/<launch_configuration_path>`
 
 {% hint style="info" %}
-[Warp Preview](https://docs.warp.dev/community/warp-preview-and-alpha-program) uri scheme begins with `warppreview://`
+[Warp Preview](https://docs.warp.dev/support-and-community/community/warp-preview-and-alpha-program) URI scheme begins with `warppreview://`
 {% endhint %}
 
 ## How it works

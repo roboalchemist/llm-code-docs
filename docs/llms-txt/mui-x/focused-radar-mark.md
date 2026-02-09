@@ -1,0 +1,29 @@
+# Source: https://mui.com/x/api/charts/focused-radar-mark.md
+
+# FocusedRadarMark API
+
+## Demos
+
+For examples and details on the usage of this React component, visit the component demo pages:
+
+- [Charts - Radar](/x/react-charts/radar/)
+
+## Import
+
+```jsx
+import { FocusedRadarMark } from '@mui/x-charts/RadarChart';
+// or
+import { FocusedRadarMark } from '@mui/x-charts';
+// or
+import { FocusedRadarMark } from '@mui/x-charts-pro';
+// or
+import { FocusedRadarMark } from '@mui/x-charts-premium';
+```
+
+> **Note**: The `ref` is forwarded to the root element.
+
+## Source code
+
+If you did not find the information on this page, consider having a look at the implementation of the component for more detail.
+
+- [/packages/x-charts/src/RadarChart/FocusedRadarMark.tsx](https://github.com/mui/material-ui/tree/HEAD/packages/x-charts/src/RadarChart/FocusedRadarMark.tsx)

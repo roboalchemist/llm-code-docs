@@ -1,5 +1,9 @@
 # Source: https://docs.replit.com/category/replit-apps.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.replit.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Replit Apps
 
 > Replit Apps help you transform your ideas into apps anyone can access, anywhere.
@@ -33,21 +37,10 @@ You can create, run, and publish them from a secure, isolated environment.
 Replit Apps integrate with the following tools in your Replit workspace to provide
 a seamless development experience:
 
-* **AI-powered tools**: Use Agent and Assistant to create, debug, and explain your code.
+* **AI-powered tools**: Use Agent to create, debug, and explain your code.
 * **Collaboration**: Work with others in real time on the same app.
 * **Publishing**: Publish your app to the cloud with a single click.
 * **Templates**: Start your app quickly using preset configurations for various use cases.
-
-<Note>
-  **Replit App** is the new product name for **Repl**. To learn more about the
-  renaming, see
-
-  <a href="https://blog.replit.com/replit-apps" target="_blank">
-    Repls are now Replit Apps
-  </a>
-
-  .
-</Note>
 
 ## Getting started
 

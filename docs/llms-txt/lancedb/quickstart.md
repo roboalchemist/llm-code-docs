@@ -2,9 +2,9 @@
 
 # Source: https://docs.lancedb.com/embedding/quickstart.md
 
-# Source: https://docs.lancedb.com/quickstart.md
-
-# Source: https://docs.lancedb.com/embedding/quickstart.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.lancedb.com/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Embeddings: Quickstart
 
@@ -147,8 +147,3 @@ Below are some examples of generating and querying embeddings when using the emb
     {TsOpenaiEmbeddings}
   </CodeBlock>
 </CodeGroup>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.lancedb.com/llms.txt

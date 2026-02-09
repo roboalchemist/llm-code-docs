@@ -1,6 +1,11 @@
 # Source: https://graphite-58cc94ce.mintlify.dev/docs/insights-data-missing.md
 
-# Insights Data in Graphite
+## Documentation Index
+
+> Fetch the complete documentation index at: https://graphite-58cc94ce.mintlify.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+## Insights Data in Graphite
 
 > Learn how to ensure Graphite can compute insights for your repositories
 

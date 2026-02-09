@@ -11,11 +11,11 @@ Sometimes, an Actor needs a channel for communication with other systems (or hum
 * An API to receive commands.
 * An HTML page displaying output data.
 
-Running a web server in an Actor is a piece of cake! Each Actor run is available at a unique URL (container URL) which always takes the form `https://CONTAINER-KEY.runs.apify.net`. This URL is available in the https://docs.apify.com/api/v2/actor-run-get.md returned by the Apify API, as well as in the Apify console.
+Running a web server in an Actor is a piece of cake! Each Actor run is available at a unique URL (container URL) which always takes the form `https://CONTAINER-KEY.runs.apify.net`. This URL is available in the [Actor run object](https://docs.apify.com/api/v2/actor-run-get.md) returned by the Apify API, as well as in the Apify console.
 
 If you start a web server on the port defined by the **APIFY\_CONTAINER\_PORT** environment variable (the default value is **4321**), the container URL becomes available and gets displayed in the **Live View** tab in the Actor run console.
 
-For more details, see https://docs.apify.com/platform/actors/development/programming-interface/container-web-server.md.
+For more details, see [the documentation](https://docs.apify.com/platform/actors/development/programming-interface/container-web-server.md).
 
 ## Building the Actor
 
@@ -28,9 +28,9 @@ Let's try to build the following Actor:
 
 To achieve this we will use the following technologies:
 
-* https://expressjs.com framework to create the server
-* https://pptr.dev to grab screenshots.
-* The https://docs.apify.com/sdk/js to access Apify storages to store the screenshots.
+* [Express.js](https://expressjs.com) framework to create the server
+* [Puppeteer](https://pptr.dev) to grab screenshots.
+* The [Apify SDK](https://docs.apify.com/sdk/js) to access Apify storages to store the screenshots.
 
 Our server needs two paths:
 
@@ -244,4 +244,4 @@ When we deploy and run this Actor on the Apify platform, then we can open the **
 
 With that, we're done! And our application works like a charm :)
 
-The complete code of this Actor is available on its Store https://apify.com/apify/example-web-server/source-code. You can run it there or copy it to your account.
+The complete code of this Actor is available on its Store [page](https://apify.com/apify/example-web-server/source-code). You can run it there or copy it to your account.

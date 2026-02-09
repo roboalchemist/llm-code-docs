@@ -2,6 +2,10 @@
 
 # RequestQueueClientBatchRequestsOperationResult<!-- -->
 
+Result of a batch operation on requests.
+
+Contains lists of successfully processed and unprocessed requests.
+
 ## Index[**](#Index)
 
 ### Properties
@@ -11,10 +15,10 @@
 
 ## Properties<!-- -->[**](#Properties)
 
-### [**](#processedRequests)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/request_queue.ts#L700)processedRequests
+### [**](#processedRequests)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/request_queue.ts#L997)processedRequests
 
 **processedRequests: ProcessedRequest\[]
 
-### [**](#unprocessedRequests)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/request_queue.ts#L701)unprocessedRequests
+### [**](#unprocessedRequests)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/request_queue.ts#L998)unprocessedRequests
 
 **unprocessedRequests: UnprocessedRequest\[]

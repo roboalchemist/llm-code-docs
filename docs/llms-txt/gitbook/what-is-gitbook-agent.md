@@ -1,10 +1,20 @@
+# Source: https://gitbook.com/docs/documentation/ja-gitbook-documentation/gitbook-agent/what-is-gitbook-agent.md
+
+# Source: https://gitbook.com/docs/documentation/zh/gitbook-dai-li-agent/what-is-gitbook-agent.md
+
+# Source: https://gitbook.com/docs/documentation/fr/agent-gitbook/what-is-gitbook-agent.md
+
 # Source: https://gitbook.com/docs/gitbook-agent/what-is-gitbook-agent.md
 
 # What is GitBook Agent?
 
-GitBook Agent is an AI teammate that works alongside you, helping you keep your documentation accurate, complete, and current.&#x20;
+GitBook Agent is an AI teammate that works alongside you, helping you keep your documentation accurate, complete, and current.
 
-The Agent is deeply integrated into GitBook, so you don’t need to learn new workflows to take advantage of it — it works alongside you using the processes you already know.
+The Agent is deeply integrated into GitBook, so you don’t need to learn new workflows to take advantage of it — it works alongside you using the processes you already know.
+
+{% hint style="info" %}
+If you’d like to edit your docs in your local environment using an AI assistant, you can use [GitBook's skill.md file](https://gitbook.com/docs/creating-content/ai-coding-assistants-and-skill.md).
+{% endhint %}
 
 ### What can GitBook Agent do?
 
@@ -25,8 +35,7 @@ The Agent can also connect to the same signals your team uses to understand your
 With this context, the Agent can proactively identify gaps, propose updates and generate docs changes automatically. So your docs can evolve with your product, and your users always get the right information when and where they need it.
 
 {% hint style="info" %}
-
-#### Automatic docs suggestions are in early access
+**Automatic docs suggestions are in early access**
 
 Head to **Organization Settings → GitBook Agent** to request access.
 {% endhint %}
@@ -56,7 +65,7 @@ Here’s an example of the kind of custom instructions you could add in GitBook 
 
 <summary>How does GitBook Agent use my data?</summary>
 
-We always follow our data protection practices to keep your data private.&#x20;
+We always follow our data protection practices to keep your data private.
 
 GitBook Agent does not use your data to train AI models. We share the information you add to GitBook Agent with OpenAI for the sole purpose of providing you with GitBook AI’s features. Take a look at OpenAI’s privacy policy for more information.
 

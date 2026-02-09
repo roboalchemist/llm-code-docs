@@ -1,5 +1,9 @@
 # Source: https://docs.datafold.com/datafold-deployment/datafold-deployment-options.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.datafold.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Deployment Options
 
 > Datafold is a web-based application with multiple deployment options, including multi-tenant SaaS and dedicated cloud (either customer- or Datafold-hosted).

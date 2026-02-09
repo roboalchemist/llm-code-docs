@@ -2,349 +2,160 @@
 
 # Source: https://docs.stripe.com/financial-accounts/connect/account-management/financial-accounts.md
 
-# Source: https://docs.stripe.com/financial-accounts/connect/examples/financial-accounts.md
+# Working with financial accounts
 
-# Source: https://docs.stripe.com/financial-accounts/connect/account-management/financial-accounts.md
+Use financial accounts to store, send, and receive funds.
 
-# Source: https://docs.stripe.com/financial-accounts/connect/examples/financial-accounts.md
+> #### Accounts v2 API compatibility
+> 
+> The Accounts v2 API doesn’t support Financial Accounts workflows. If you have accounts created with Accounts v2, you can use Accounts v1 to manage the `treasury` and `card_issuing` capabilities. For details, see [Use Accounts as customers](https://docs.stripe.com/connect/use-accounts-as-customers.md).
 
-# Source: https://docs.stripe.com/financial-accounts/connect/account-management/financial-accounts.md
+After you [gain API access to Financial Accounts for platforms](https://docs.stripe.com/financial-accounts/connect/access.md), Stripe attaches a financial account to your platform account and enables you to provision financial accounts for eligible connected accounts on your platform. Each financial account has its own distinct [balance of funds](https://docs.stripe.com/financial-accounts/connect/account-management/working-with-balances-and-transactions.md), separate from the balance of the account it’s linked to. For example, the owner of a connected account on your platform might have a 100 USD connected account balance and a 200 USD financial account balance. In this scenario, the connected account owner has a sum of 300 USD spread between their financial account and connected account balances. These two balances remain separate, but the API provides the ability to move money from the connected account balance to the financial account balance.
 
-# Source: https://docs.stripe.com/financial-accounts/connect/examples/financial-accounts.md
+In the Stripe API, `FinancialAccount` objects serve as the source and destination of money movement API requests. You request `Features` through the API to assign to `FinancialAccounts` that provide additional functionality for the financial accounts on your platform. For example, to enable payment card features on a specific financial account, you send an API request with the `FinancialAccount` ID for the `card_issuing` feature. See [Financial account features](https://docs.stripe.com/financial-accounts/connect/account-management/financial-account-features.md) for more information on `Feature` objects. See the [Available features](https://docs.stripe.com/financial-accounts/connect/account-management/financial-account-features.md#available-features) section within that guide to check required connected account capabilities for each `Feature`.
 
-# Source: https://docs.stripe.com/financial-accounts/connect/account-management/financial-accounts.md
-
-# Source: https://docs.stripe.com/financial-accounts/connect/examples/financial-accounts.md
-
-# Use Financial Accounts for platforms and Issuing to set up financial accounts and cards
-
-Follow a sample Financial Accounts for platforms and Issuing integration that sets up a financial account and creates cards.
-
-Homebox is a fictitious vertical SaaS that builds software for home-services companies like HVAC technicians, cleaners, and plumbers. Homebox begins its Financial Accounts for platforms integration by setting up a financial account and creating payment cards. To see how Homebox moves money to and from external bank accounts, see the [Using Financial Accounts for platforms to move money](https://docs.stripe.com/financial-accounts/connect/examples/moving-money.md) example integration.
-
-## Platform onboarding
-
-Homebox is already a Stripe platform with [Payments](https://docs.stripe.com/payments.md) and [Connect](https://docs.stripe.com/connect.md) enabled. Homebox uses [Custom connected accounts](https://docs.stripe.com/connect/accounts.md), and those connected accounts already have the `card_payments` capability enabled.
-
-## Add capabilities
-
-To use Financial Accounts for platforms and Issuing services, Homebox needs to request the additional `treasury` and `card_issuing` capabilities for the platform’s connected accounts. Each connected account must then onboard before Stripe can create a financial account for it.
-
-To use ACH transfers with Financial Accounts for platforms, Homebox also needs to request the `us_bank_account_ach_payments` capability.
-
-To request the `treasury`, `card_issuing`, and `us_bank_account_ach_payments` capabilities, Homebox makes a request to the [Accounts API](https://docs.stripe.com/api/accounts.md).
-
-```curl
-curl https://api.stripe.com/v1/accounts/{{CONNECTED_ACCOUNT_ID}} \
-  -u "<<YOUR_SECRET_KEY>>:" \
-  -d "capabilities[treasury][requested]"=true \
-  -d "capabilities[card_issuing][requested]"=true \
-  -d "capabilities[us_bank_account_ach_payments][requested]"=true
-```
-
-```cli
-stripe accounts update {{CONNECTED_ACCOUNT_ID}} \
-  -d "capabilities[treasury][requested]"=true \
-  -d "capabilities[card_issuing][requested]"=true \
-  -d "capabilities[us_bank_account_ach_payments][requested]"=true
-```
-
-```ruby
-# Set your secret key. Remember to switch to your live secret key in production.
-# See your keys here: https://dashboard.stripe.com/apikeys
-client = Stripe::StripeClient.new("<<YOUR_SECRET_KEY>>")
-
-account = client.v1.accounts.update(
-  '{{CONNECTED_ACCOUNT_ID}}',
-  {
-    capabilities: {
-      treasury: {requested: true},
-      card_issuing: {requested: true},
-      us_bank_account_ach_payments: {requested: true},
-    },
-  },
-)
-```
-
-```python
-# Set your secret key. Remember to switch to your live secret key in production.
-# See your keys here: https://dashboard.stripe.com/apikeys
-client = StripeClient("<<YOUR_SECRET_KEY>>")
-
-# For SDK versions 12.4.0 or lower, remove '.v1' from the following line.
-account = client.v1.accounts.update(
-  "{{CONNECTED_ACCOUNT_ID}}",
-  {
-    "capabilities": {
-      "treasury": {"requested": True},
-      "card_issuing": {"requested": True},
-      "us_bank_account_ach_payments": {"requested": True},
-    },
-  },
-)
-```
-
-```php
-// Set your secret key. Remember to switch to your live secret key in production.
-// See your keys here: https://dashboard.stripe.com/apikeys
-$stripe = new \Stripe\StripeClient('<<YOUR_SECRET_KEY>>');
-
-$account = $stripe->accounts->update(
-  '{{CONNECTED_ACCOUNT_ID}}',
-  [
-    'capabilities' => [
-      'treasury' => ['requested' => true],
-      'card_issuing' => ['requested' => true],
-      'us_bank_account_ach_payments' => ['requested' => true],
-    ],
-  ]
-);
-```
-
-```java
-// Set your secret key. Remember to switch to your live secret key in production.
-// See your keys here: https://dashboard.stripe.com/apikeys
-StripeClient client = new StripeClient("<<YOUR_SECRET_KEY>>");
-
-AccountUpdateParams params =
-  AccountUpdateParams.builder()
-    .setCapabilities(
-      AccountUpdateParams.Capabilities.builder()
-        .setCardIssuing(
-          AccountUpdateParams.Capabilities.CardIssuing.builder()
-            .setRequested(true)
-            .build()
-        )
-        .setUsBankAccountAchPayments(
-          AccountUpdateParams.Capabilities.UsBankAccountAchPayments.builder()
-            .setRequested(true)
-            .build()
-        )
-        .build()
-    )
-    .putExtraParam("capabilities[treasury][requested]", true)
-    .build();
-
-// For SDK versions 29.4.0 or lower, remove '.v1()' from the following line.
-Account account = client.v1().accounts().update("{{CONNECTED_ACCOUNT_ID}}", params);
-```
-
-```node
-// Set your secret key. Remember to switch to your live secret key in production.
-// See your keys here: https://dashboard.stripe.com/apikeys
-const stripe = require('stripe')('<<YOUR_SECRET_KEY>>');
-
-const account = await stripe.accounts.update(
-  '{{CONNECTED_ACCOUNT_ID}}',
-  {
-    capabilities: {
-      treasury: {
-        requested: true,
-      },
-      card_issuing: {
-        requested: true,
-      },
-      us_bank_account_ach_payments: {
-        requested: true,
-      },
-    },
-  }
-);
-```
-
-```go
-// Set your secret key. Remember to switch to your live secret key in production.
-// See your keys here: https://dashboard.stripe.com/apikeys
-sc := stripe.NewClient("<<YOUR_SECRET_KEY>>")
-params := &stripe.AccountUpdateParams{
-  Capabilities: &stripe.AccountUpdateCapabilitiesParams{
-    CardIssuing: &stripe.AccountUpdateCapabilitiesCardIssuingParams{
-      Requested: stripe.Bool(true),
-    },
-    USBankAccountACHPayments: &stripe.AccountUpdateCapabilitiesUSBankAccountACHPaymentsParams{
-      Requested: stripe.Bool(true),
-    },
-  },
-  Account: stripe.String("{{CONNECTED_ACCOUNT_ID}}"),
-}
-params.AddExtra("capabilities[treasury][requested]", true)
-result, err := sc.V1Accounts.Update(context.TODO(), params)
-```
-
-```dotnet
-// Set your secret key. Remember to switch to your live secret key in production.
-// See your keys here: https://dashboard.stripe.com/apikeys
-var options = new AccountUpdateOptions
-{
-    Capabilities = new AccountCapabilitiesOptions
-    {
-        Treasury = new AccountCapabilitiesTreasuryOptions { Requested = true },
-        CardIssuing = new AccountCapabilitiesCardIssuingOptions { Requested = true },
-        UsBankAccountAchPayments = new AccountCapabilitiesUsBankAccountAchPaymentsOptions
-        {
-            Requested = true,
-        },
-    },
-};
-var client = new StripeClient("<<YOUR_SECRET_KEY>>");
-var service = client.V1.Accounts;
-Account account = service.Update("{{CONNECTED_ACCOUNT_ID}}", options);
-```
-
-To use Hosted Onboarding, Homebox makes a call to [Account Links](https://docs.stripe.com/api/account_links.md) to retrieve a URL that their connected account can use to submit onboarding information for the financial account.
-
-```curl
-curl https://api.stripe.com/v1/account_links \
-  -u "<<YOUR_SECRET_KEY>>:" \
-  -d account="{{CONNECTEDACCOUNT_ID}}" \
-  --data-urlencode refresh_url="https://example.com/reauth" \
-  --data-urlencode return_url="https://example.com/return" \
-  -d type=account_onboarding
-```
-
-```cli
-stripe account_links create  \
-  --account="{{CONNECTEDACCOUNT_ID}}" \
-  --refresh-url="https://example.com/reauth" \
-  --return-url="https://example.com/return" \
-  --type=account_onboarding
-```
-
-```ruby
-# Set your secret key. Remember to switch to your live secret key in production.
-# See your keys here: https://dashboard.stripe.com/apikeys
-client = Stripe::StripeClient.new("<<YOUR_SECRET_KEY>>")
-
-account_link = client.v1.account_links.create({
-  account: '{{CONNECTEDACCOUNT_ID}}',
-  refresh_url: 'https://example.com/reauth',
-  return_url: 'https://example.com/return',
-  type: 'account_onboarding',
-})
-```
-
-```python
-# Set your secret key. Remember to switch to your live secret key in production.
-# See your keys here: https://dashboard.stripe.com/apikeys
-client = StripeClient("<<YOUR_SECRET_KEY>>")
-
-# For SDK versions 12.4.0 or lower, remove '.v1' from the following line.
-account_link = client.v1.account_links.create({
-  "account": "{{CONNECTEDACCOUNT_ID}}",
-  "refresh_url": "https://example.com/reauth",
-  "return_url": "https://example.com/return",
-  "type": "account_onboarding",
-})
-```
-
-```php
-// Set your secret key. Remember to switch to your live secret key in production.
-// See your keys here: https://dashboard.stripe.com/apikeys
-$stripe = new \Stripe\StripeClient('<<YOUR_SECRET_KEY>>');
-
-$accountLink = $stripe->accountLinks->create([
-  'account' => '{{CONNECTEDACCOUNT_ID}}',
-  'refresh_url' => 'https://example.com/reauth',
-  'return_url' => 'https://example.com/return',
-  'type' => 'account_onboarding',
-]);
-```
-
-```java
-// Set your secret key. Remember to switch to your live secret key in production.
-// See your keys here: https://dashboard.stripe.com/apikeys
-StripeClient client = new StripeClient("<<YOUR_SECRET_KEY>>");
-
-AccountLinkCreateParams params =
-  AccountLinkCreateParams.builder()
-    .setAccount("{{CONNECTEDACCOUNT_ID}}")
-    .setRefreshUrl("https://example.com/reauth")
-    .setReturnUrl("https://example.com/return")
-    .setType(AccountLinkCreateParams.Type.ACCOUNT_ONBOARDING)
-    .build();
-
-// For SDK versions 29.4.0 or lower, remove '.v1()' from the following line.
-AccountLink accountLink = client.v1().accountLinks().create(params);
-```
-
-```node
-// Set your secret key. Remember to switch to your live secret key in production.
-// See your keys here: https://dashboard.stripe.com/apikeys
-const stripe = require('stripe')('<<YOUR_SECRET_KEY>>');
-
-const accountLink = await stripe.accountLinks.create({
-  account: '{{CONNECTEDACCOUNT_ID}}',
-  refresh_url: 'https://example.com/reauth',
-  return_url: 'https://example.com/return',
-  type: 'account_onboarding',
-});
-```
-
-```go
-// Set your secret key. Remember to switch to your live secret key in production.
-// See your keys here: https://dashboard.stripe.com/apikeys
-sc := stripe.NewClient("<<YOUR_SECRET_KEY>>")
-params := &stripe.AccountLinkCreateParams{
-  Account: stripe.String("{{CONNECTEDACCOUNT_ID}}"),
-  RefreshURL: stripe.String("https://example.com/reauth"),
-  ReturnURL: stripe.String("https://example.com/return"),
-  Type: stripe.String("account_onboarding"),
-}
-result, err := sc.V1AccountLinks.Create(context.TODO(), params)
-```
-
-```dotnet
-// Set your secret key. Remember to switch to your live secret key in production.
-// See your keys here: https://dashboard.stripe.com/apikeys
-var options = new AccountLinkCreateOptions
-{
-    Account = "{{CONNECTEDACCOUNT_ID}}",
-    RefreshUrl = "https://example.com/reauth",
-    ReturnUrl = "https://example.com/return",
-    Type = "account_onboarding",
-};
-var client = new StripeClient("<<YOUR_SECRET_KEY>>");
-var service = client.V1.AccountLinks;
-AccountLink accountLink = service.Create(options);
-```
-
-The response includes a URL the connected account uses to access the application, which must be done before the link expires.
-
-```json
-{
-  "object": "account_link",
-  "created": 1612927106,
-  "expires_at": 1612927406,"url": "https://connect.stripe.com/setup/s/iCtLfmYb2tEU"
-}
-```
-
-Homebox listens for the `account.updated` webhook to confirm the following fields and capabilities on the connected account:
-
-```json
-{
-  "object": {
-    "id": "{{CONNECTED_ACCOUNT_ID}}",
-    "object": "account",
-    "capabilities": {
-      "card_payments": "active",
-      "treasury": "active",
-      "card_issuing": "active", // Only appears if requesting the `card_issuing` capability.
-      "us_bank_account_ach_payments": "active", // Only appears if requesting the `us_bank_account_ach_payments` capability.
-    },
-    ...
-  }
-}
-```
+Before you create financial accounts in live mode for your Financial Accounts for platforms integration, we recommend you first create test financial accounts in a *sandbox* (A sandbox is an isolated test environment that allows you to test Stripe functionality in your account without affecting your live integration. Use sandboxes to safely experiment with new features and changes) environment. Test financial accounts can’t receive or send real money, can’t be used in live mode, and don’t generate a live account with real routing and account information, but are otherwise identical in configuration and functionality.
 
 ## Create a FinancialAccount
 
-After Stripe adds the `treasury` capability to an account, Homebox can create the `FinancialAccount` object for the account. To do so, Homebox calls the [Financial Accounts API](https://docs.stripe.com/api/treasury/financial_accounts.md) and requests the `Features` the company wants to provide.
+Use `POST /v1/treasury/financial_accounts` to create `FinancialAccounts`. Include the connected account ID as the value of the `Stripe-Account` header of the call to associate the `FinancialAccount` with a connected account.
+
+Your platform account and connected accounts can have multiple financial accounts associated with them. You can create another financial account on your connected account by providing the connected account ID as the value of the `Stripe-Account` header. You can associate a maximum of 3 financial accounts to a single connected account (closed financial accounts don’t contribute to the limit). The same limit applies to the number of financial accounts attached to the platform account. If you need a higher financial account threshold, contact [treasury-support@stripe.com](mailto:treasury-support@stripe.com).
+
+The following JSON defines the `FinancialAccount` object structure:
+
+#### JSON (commented)
+
+```json
+{
+  "object": "treasury.financial_account",
+  "created": 1612927106,
+  "id": "fa_123",
+  "country": "US",
+  "supported_currencies": ["usd"],
+  // Arrays of active, pending and restricted features summarize the status of all requested features
+  "active_features": ["financial_addresses.aba", "deposit_insurance"],
+  "pending_features": ["inbound_transfers.ach"],
+  "restricted_features": ["intra_stripe_flows", "outbound_payments.ach", "outbound_payments.us_domestic_wire"],
+  "balance": {
+    "cash": {"usd": 9000},
+    "inbound_pending": {"usd": 0},
+    "outbound_pending": {"usd": 1000}
+  },
+  // The FinancialAccount gains a FinancialAddress once the `financial_addresses.aba` feature is active. For more information, see "Activating features"
+  "financial_addresses": [
+    {
+      "type": "aba",
+      "supported_networks": ["ach", "domestic_wire_us"],
+      "aba": {
+        "account_number_last4": "7890",
+        // Use the expand[] parameter to view the `account_number` field hidden by default
+        "account_number": "1234567890",
+        "routing_number": "000000001",
+        "bank_name": "Goldman Sachs"
+      }
+    }
+  ],
+  "livemode": true,
+  // Financial accounts begin in the "open" state, but can be closed
+  // `status_details.closed` is populated once a financial account is closed
+  "status": "open",
+  "status_details": {
+    "closed": {
+      // List of one or more reasons why the FinancialAccount was closed:
+      // - account_rejected
+      // - closed_by_platform
+      // - other
+      "reasons": [],
+    }
+  },
+  // User-defined metadata
+  "metadata": {},
+  "nickname": {},
+  // Restrictions that the platform can apply to the FinancialAccount
+  "platform_restrictions": {
+    "inbound_flows": "unrestricted",
+    "outbound_flows": "restricted"
+  },
+}
+```
+
+#### JSON
+
+```json
+{
+  "object": "treasury.financial_account",
+  "created": 1612927106,
+  "id": "fa_123",
+  "country": "US",
+  "supported_currencies": ["usd"],
+  "active_features": ["financial_addresses.aba", "deposit_insurance"],
+  "pending_features": ["inbound_transfers.ach"],
+  "restricted_features": ["intra_stripe_flows", "outbound_payments.ach", "outbound_payments.us_domestic_wire"],
+  "balance": {
+    "cash": {"usd": 9000},
+    "inbound_pending": {"usd": 0},
+    "outbound_pending": {"usd": 1000}
+  },
+  "financial_addresses": [
+    {
+      "type": "aba",
+      "supported_networks": ["ach", "domestic_wire_us"],
+      "aba": {
+        "account_number_last4": "7890",
+        "account_number": "1234567890",
+        "routing_number": "000000001",
+        "bank_name": "Goldman Sachs"
+      }
+    }
+  ],
+  "livemode": true,
+  "status": "open",
+  "status_details": {
+    "closed": null
+  },
+  "metadata": {},
+  "platform_restrictions": {
+    "inbound_flows": "unrestricted",
+    "outbound_flows": "restricted"
+  },
+}
+```
+
+Typically, you also request [financial account features](https://docs.stripe.com/financial-accounts/connect/account-management/financial-account-features.md) when you make the API request to create the account. Regardless of the `Features` you request, the connected account must have the `treasury` capability enabled. If you’re unsure if the connected account has the capability, use `GET /v1/accounts/{{CONNECTED_ACCOUNT_ID}}` to check. The account’s `capabilities` hash must have a `treasury` value of `active`.
+
+> #### Accounts v2 API compatibility
+> 
+> The Accounts v2 API doesn’t support Financial Accounts workflows. If you have accounts created with Accounts v2, you can use Accounts v1 to manage the `treasury` and `card_issuing` capabilities. For details, see [Use Accounts as customers](https://docs.stripe.com/connect/use-accounts-as-customers.md).
+
+```json
+…
+  "capabilities": {
+    "card_issuing": "active",
+    "card_payments": "active",
+    "transfers": "active","treasury": "active",
+    "us_bank_account_ach_payments": "active"
+  },
+…
+```
+
+If you want to issue cards attached to the financial account balance, your platform’s connected accounts must also have the Issuing (`card_issuing`) capability enabled. The connected account must have this capability before you can request the `card_issuing` feature for its financial account. If the connected account doesn’t have the capability, attempting to create a `FinancialAccount` with a request for the `card_issuing` feature results in an error.
+
+Set the `nickname` field of a `FinancialAccount` object to designate a custom name for the financial account. You can use nicknames to create identifiers, which is useful when working with multiple financial accounts under a single connected account. Valid nicknames must:
+
+- Be a non-blank string
+- Contain less than 250 characters
+
+If you don’t provide a nickname upon account creation, the nickname field will be empty and will return `null`. You can [update](https://docs.stripe.com/financial-accounts/connect/account-management/financial-accounts.md#update-a-financialaccount) nicknames after creating a `FinancialAccount`.
+
+The following request creates a financial account assigned to the connected account with the ID assigned in the `Stripe-Account` header.
 
 ```curl
 curl https://api.stripe.com/v1/treasury/financial_accounts \
   -u "<<YOUR_SECRET_KEY>>:" \
   -H "Stripe-Account: {{CONNECTEDACCOUNT_ID}}" \
   -d "supported_currencies[]"=usd \
+  -d nickname={{OPTIONAL_NICKNAME}} \
   -d "features[card_issuing][requested]"=true \
   -d "features[deposit_insurance][requested]"=true \
   -d "features[financial_addresses][aba][requested]"=true \
@@ -360,6 +171,7 @@ curl https://api.stripe.com/v1/treasury/financial_accounts \
 stripe treasury financial_accounts create  \
   --stripe-account {{CONNECTEDACCOUNT_ID}} \
   -d "supported_currencies[0]"=usd \
+  --nickname={{OPTIONAL_NICKNAME}} \
   -d "features[card_issuing][requested]"=true \
   -d "features[deposit_insurance][requested]"=true \
   -d "features[financial_addresses][aba][requested]"=true \
@@ -379,6 +191,7 @@ client = Stripe::StripeClient.new("<<YOUR_SECRET_KEY>>")
 financial_account = client.v1.treasury.financial_accounts.create(
   {
     supported_currencies: ['usd'],
+    nickname: '{{OPTIONAL_NICKNAME}}',
     features: {
       card_issuing: {requested: true},
       deposit_insurance: {requested: true},
@@ -408,6 +221,7 @@ client = StripeClient("<<YOUR_SECRET_KEY>>")
 financial_account = client.v1.treasury.financial_accounts.create(
   {
     "supported_currencies": ["usd"],
+    "nickname": "{{OPTIONAL_NICKNAME}}",
     "features": {
       "card_issuing": {"requested": True},
       "deposit_insurance": {"requested": True},
@@ -436,6 +250,7 @@ $stripe = new \Stripe\StripeClient('<<YOUR_SECRET_KEY>>');
 $financialAccount = $stripe->treasury->financialAccounts->create(
   [
     'supported_currencies' => ['usd'],
+    'nickname' => '{{OPTIONAL_NICKNAME}}',
     'features' => [
       'card_issuing' => ['requested' => true],
       'deposit_insurance' => ['requested' => true],
@@ -464,6 +279,7 @@ StripeClient client = new StripeClient("<<YOUR_SECRET_KEY>>");
 FinancialAccountCreateParams params =
   FinancialAccountCreateParams.builder()
     .addSupportedCurrency("usd")
+    .setNickname("{{OPTIONAL_NICKNAME}}")
     .setFeatures(
       FinancialAccountCreateParams.Features.builder()
         .setDepositInsurance(
@@ -543,6 +359,7 @@ const stripe = require('stripe')('<<YOUR_SECRET_KEY>>');
 const financialAccount = await stripe.treasury.financialAccounts.create(
   {
     supported_currencies: ['usd'],
+    nickname: '{{OPTIONAL_NICKNAME}}',
     features: {
       card_issuing: {
         requested: true,
@@ -593,6 +410,7 @@ const financialAccount = await stripe.treasury.financialAccounts.create(
 sc := stripe.NewClient("<<YOUR_SECRET_KEY>>")
 params := &stripe.TreasuryFinancialAccountCreateParams{
   SupportedCurrencies: []*string{stripe.String("usd")},
+  Nickname: stripe.String("{{OPTIONAL_NICKNAME}}"),
   Features: &stripe.TreasuryFinancialAccountCreateFeaturesParams{
     DepositInsurance: &stripe.TreasuryFinancialAccountCreateFeaturesDepositInsuranceParams{
       Requested: stripe.Bool(true),
@@ -641,10 +459,6 @@ var options = new Stripe.Treasury.FinancialAccountCreateOptions
     SupportedCurrencies = new List<string> { "usd" },
     Features = new Stripe.Treasury.FinancialAccountFeaturesOptions
     {
-        CardIssuing = new Stripe.Treasury.FinancialAccountFeaturesCardIssuingOptions
-        {
-            Requested = true,
-        },
         DepositInsurance = new Stripe.Treasury.FinancialAccountFeaturesDepositInsuranceOptions
         {
             Requested = true,
@@ -691,6 +505,8 @@ var options = new Stripe.Treasury.FinancialAccountCreateOptions
         },
     },
 };
+options.AddExtraParam("nickname", "{{OPTIONAL_NICKNAME}}");
+options.AddExtraParam("features[card_issuing][requested]", true);
 var requestOptions = new RequestOptions
 {
     StripeAccount = "{{CONNECTEDACCOUNT_ID}}",
@@ -702,7 +518,7 @@ Stripe.Treasury.FinancialAccount financialAccount = service.Create(
     requestOptions);
 ```
 
-The response confirms the account is processing. After processing completes and all relevant features are active, Homebox gets a confirmation from their `treasury.financial_account.features_status_updated` webhook listener.
+The response is a `FinancialAccount` object to confirm financial account creation.
 
 ```json
 {
@@ -711,157 +527,45 @@ The response confirms the account is processing. After processing completes and 
   "id": "{{FINANCIAL_ACCOUNT_ID}}",
   "country": "US",
   "supported_currencies": ["usd"],
-  "financial_addresses": [ // This field is empty until the "financial_addresses.aba" feature becomes active
-    {
-      "type": "aba",
-      "supported_networks": ["ach", "us_domestic_wire"],
-      "aba": {
-        "account_number_last4": "7890",
-        // Use the expand[] parameter to view the `account_number` field hidden by default
-        "account_number": "1234567890",
-        "routing_number": "000000001",
-        "bank_name": "Bank of Earth"
-      }
-    }
+  "active_features": [
+    "card_issuing",
   ],
+  // Features that require activation enter a pending state before activating
+  "pending_features": [
+    "deposit_insurance",
+    "financial_addresses.aba",
+    "inbound_transfers.ach",
+    "intra_stripe_flows",
+    "outbound_payments.ach",
+    "outbound_payments.us_domestic_wire",
+    "outbound_transfers.ach",
+    "outbound_transfers.us_domestic_wire"
+  ],
+  "restricted_features": [],
+  // A FinancialAddress is not added until the financial_addresses.aba feature has been activated
+  "financial_addresses": [],
   "livemode": true,
-
-  // State machine:
-  // open - the account is ready to be used
-  // closed - the account is closed
+  "nickname": "{{ACCOUNT_NICKNAME}}",
   "status": "open",
-  "status_details": {
-    // `closed` is null if financial account is not closed
-    "closed": {
-      // List of one or more reasons why the FinancialAccount was closed:
-      // - account_rejected
-      // - closed_by_platform
-      // - other
-      "reasons": [],
-    }
-  },
-
-  active_features: ["card_issuing"],
-  pending_features: ["deposit_insurance", "financial_addresses.aba", "outbound_payments.ach", "us_domestic_wire", "inbound_transfers.ach", "outbound_transfers.ach", "outbound_transfers.us_domestic_wire"],
-  restricted_features: [],
-
-  "features": {
-    "object": "treasury.financial_account_features",
-    "card_issuing": {
-      "status": "active",
-      "status_details": [],
-      "access": "active",
-    },
-    "deposit_insurance": {
-        "requested": true,
-        "status": "pending", // Becomes "active" after the financial account is set up
-        "status_details": [{"code": "activating", "resolution": nil}],
-    },
-    "financial_addresses": {
-        "aba": {
-            "requested": true,
-            "status": "pending", // Becomes "active" after the financial account is set up
-            "status_details": [{"code": "activating", "resolution": nil}],
-        },
-    },
-    "outbound_payments": {
-        "ach": {
-            "requested": true,
-            "status": "pending", // Becomes "active" after the financial account is set up
-            "status_details": [{"code": "activating", "resolution": nil}],
-        },
-    },
-    "us_domestic_wire": {
-        "requested": true,
-        "status": "pending", // Becomes "active" after the financial account is set up
-        "status_details": [{"code": "activating", "resolution": nil}],
-    },
-    "inbound_transfers": {
-        "ach": {
-            "requested": true,
-            "status": "pending", // Becomes "active" after the financial account is set up
-            "status_details": [{"code": "activating", "resolution": nil}],
-        },
-    },
-    "outbound_transfers": {
-        "ach": {
-            "requested": true,
-            "status": "pending", // Becomes "active" after the financial account is set up
-            "status_details": [{"code": "activating", "resolution": nil}],
-        },
-    },
-    "outbound_payments": {
-        "ach": {
-            "requested": true,
-            "status": "pending", // Becomes "active" after the financial account is set up
-            "status_details": [{"code": "activating", "resolution": nil}],
-        },
-    },
-    "outbound_transfers": {
-        "us_domestic_wire": {
-            "requested": true,
-            "status": "pending", // Becomes "active" once the financial account is set up
-            "status_details": [{"code": "activating", "resolution": nil}],
-        },
-    },
-  "platform_restrictions": {
-    "inbound_flows": "unrestricted",
-    "outbound_flows": "unrestricted"
-  },
- "metadata": {},
   ...
 }
-
 ```
 
-## Create a payment cardholder
+## Update a FinancialAccount
 
-Before Homebox can create cards for financial accounts, it needs to create cardholders. The cardholders in this example are plumbers who use Homebox services and own the connected accounts on the platform.
-
-# Dashboard
-
-> This is a Dashboard for when testing-method is without-code. View the full page at https://docs.stripe.com/financial-accounts/connect/examples/financial-accounts?testing-method=without-code.
-
-1. Visit the [Connected accounts](https://dashboard.stripe.com/test/issuing/cards) page in the Dashboard.
-1. Select the connected account you want to create a cardholder on to expand its details.
-1. Select the **Card issuing** tab.
-1. Click the **+** button next to **Cardholders**.
-1. Fill in the cardholder’s details and click **Create cardholder**.
-
-
-# API
-
-> This is a API for when testing-method is with-code. View the full page at https://docs.stripe.com/financial-accounts/connect/examples/financial-accounts?testing-method=with-code.
+Use `POST /v1/treasury/financial_accounts/{{FINANCIAL_ACCOUNT_ID}}` to update the `FinancialAccount` with the associated ID. Include the connected account ID as the `Stripe-Account` header value. The following example updates the [metadata](https://docs.stripe.com/api/metadata.md) of the FinancialAccount.
 
 ```curl
-curl https://api.stripe.com/v1/issuing/cardholders \
+curl https://api.stripe.com/v1/treasury/financial_accounts/{{TREASURYFINANCIALACCOUNT_ID}} \
   -u "<<YOUR_SECRET_KEY>>:" \
   -H "Stripe-Account: {{CONNECTEDACCOUNT_ID}}" \
-  -d name="Jenny Bath Remodeling" \
-  -d type=company \
-  --data-urlencode email="jenny@example.com" \
-  --data-urlencode phone_number="+18008675309" \
-  -d status=active \
-  -d "billing[address][line1]"="1234 Main Street" \
-  -d "billing[address][city]"="San Francisco" \
-  -d "billing[address][state]"=CA \
-  -d "billing[address][postal_code]"=94111 \
-  -d "billing[address][country]"=US
+  -d "metadata[key]"=value
 ```
 
 ```cli
-stripe issuing cardholders create  \
+stripe treasury financial_accounts update {{TREASURYFINANCIALACCOUNT_ID}} \
   --stripe-account {{CONNECTEDACCOUNT_ID}} \
-  --name="Jenny Bath Remodeling" \
-  --type=company \
-  --email="jenny@example.com" \
-  --phone-number="+18008675309" \
-  --status=active \
-  -d "billing[address][line1]"="1234 Main Street" \
-  -d "billing[address][city]"="San Francisco" \
-  -d "billing[address][state]"=CA \
-  -d "billing[address][postal_code]"=94111 \
-  -d "billing[address][country]"=US
+  -d "metadata[key]"=value
 ```
 
 ```ruby
@@ -869,21 +573,583 @@ stripe issuing cardholders create  \
 # See your keys here: https://dashboard.stripe.com/apikeys
 client = Stripe::StripeClient.new("<<YOUR_SECRET_KEY>>")
 
-cardholder = client.v1.issuing.cardholders.create(
+financial_account = client.v1.treasury.financial_accounts.update(
+  '{{TREASURYFINANCIALACCOUNT_ID}}',
+  {metadata: {key: 'value'}},
+  {stripe_account: '{{CONNECTEDACCOUNT_ID}}'},
+)
+```
+
+```python
+# Set your secret key. Remember to switch to your live secret key in production.
+# See your keys here: https://dashboard.stripe.com/apikeys
+client = StripeClient("<<YOUR_SECRET_KEY>>")
+
+# For SDK versions 12.4.0 or lower, remove '.v1' from the following line.
+financial_account = client.v1.treasury.financial_accounts.update(
+  "{{TREASURYFINANCIALACCOUNT_ID}}",
+  {"metadata": {"key": "value"}},
+  {"stripe_account": "{{CONNECTEDACCOUNT_ID}}"},
+)
+```
+
+```php
+// Set your secret key. Remember to switch to your live secret key in production.
+// See your keys here: https://dashboard.stripe.com/apikeys
+$stripe = new \Stripe\StripeClient('<<YOUR_SECRET_KEY>>');
+
+$financialAccount = $stripe->treasury->financialAccounts->update(
+  '{{TREASURYFINANCIALACCOUNT_ID}}',
+  ['metadata' => ['key' => 'value']],
+  ['stripe_account' => '{{CONNECTEDACCOUNT_ID}}']
+);
+```
+
+```java
+// Set your secret key. Remember to switch to your live secret key in production.
+// See your keys here: https://dashboard.stripe.com/apikeys
+StripeClient client = new StripeClient("<<YOUR_SECRET_KEY>>");
+
+FinancialAccountUpdateParams params =
+  FinancialAccountUpdateParams.builder().putMetadata("key", "value").build();
+
+RequestOptions requestOptions =
+  RequestOptions.builder().setStripeAccount("{{CONNECTEDACCOUNT_ID}}").build();
+// For SDK versions 29.4.0 or lower, remove '.v1()' from the following line.
+
+FinancialAccount financialAccount =
+  client.v1().treasury().financialAccounts().update(
+    "{{TREASURYFINANCIALACCOUNT_ID}}",
+    params,
+    requestOptions
+  );
+```
+
+```node
+// Set your secret key. Remember to switch to your live secret key in production.
+// See your keys here: https://dashboard.stripe.com/apikeys
+const stripe = require('stripe')('<<YOUR_SECRET_KEY>>');
+
+const financialAccount = await stripe.treasury.financialAccounts.update(
+  '{{TREASURYFINANCIALACCOUNT_ID}}',
   {
-    name: 'Jenny Bath Remodeling',
-    type: 'company',
-    email: 'jenny@example.com',
-    phone_number: '+18008675309',
-    status: 'active',
-    billing: {
-      address: {
-        line1: '1234 Main Street',
-        city: 'San Francisco',
-        state: 'CA',
-        postal_code: '94111',
-        country: 'US',
+    metadata: {
+      key: 'value',
+    },
+  },
+  {
+    stripeAccount: '{{CONNECTEDACCOUNT_ID}}',
+  }
+);
+```
+
+```go
+// Set your secret key. Remember to switch to your live secret key in production.
+// See your keys here: https://dashboard.stripe.com/apikeys
+sc := stripe.NewClient("<<YOUR_SECRET_KEY>>")
+params := &stripe.TreasuryFinancialAccountUpdateParams{}
+params.AddMetadata("key", "value")
+params.SetStripeAccount("{{CONNECTEDACCOUNT_ID}}")
+result, err := sc.V1TreasuryFinancialAccounts.Update(
+  context.TODO(), "{{TREASURYFINANCIALACCOUNT_ID}}", params)
+```
+
+```dotnet
+// Set your secret key. Remember to switch to your live secret key in production.
+// See your keys here: https://dashboard.stripe.com/apikeys
+var options = new Stripe.Treasury.FinancialAccountUpdateOptions
+{
+    Metadata = new Dictionary<string, string> { { "key", "value" } },
+};
+var requestOptions = new RequestOptions
+{
+    StripeAccount = "{{CONNECTEDACCOUNT_ID}}",
+};
+var client = new StripeClient("<<YOUR_SECRET_KEY>>");
+var service = client.V1.Treasury.FinancialAccounts;
+Stripe.Treasury.FinancialAccount financialAccount = service.Update(
+    "{{TREASURYFINANCIALACCOUNT_ID}}",
+    options,
+    requestOptions);
+```
+
+## Retrieve a FinancialAccount and account number
+
+Use `GET /v1/treasury/financial_accounts/{{FINANCIALACCOUNT_ID}}` to retrieve the `FinancialAccount` with the associated ID. Include the connected account ID as the `Stripe-Account` header value.
+
+```curl
+curl https://api.stripe.com/v1/treasury/financial_accounts/{{TREASURYFINANCIALACCOUNT_ID}} \
+  -u "<<YOUR_SECRET_KEY>>:" \
+  -H "Stripe-Account: {{CONNECTEDACCOUNT_ID}}"
+```
+
+```cli
+stripe treasury financial_accounts retrieve {{TREASURYFINANCIALACCOUNT_ID}} \
+  --stripe-account {{CONNECTEDACCOUNT_ID}}
+```
+
+```ruby
+# Set your secret key. Remember to switch to your live secret key in production.
+# See your keys here: https://dashboard.stripe.com/apikeys
+client = Stripe::StripeClient.new("<<YOUR_SECRET_KEY>>")
+
+financial_account = client.v1.treasury.financial_accounts.retrieve(
+  '{{TREASURYFINANCIALACCOUNT_ID}}',
+  {},
+  {stripe_account: '{{CONNECTEDACCOUNT_ID}}'},
+)
+```
+
+```python
+# Set your secret key. Remember to switch to your live secret key in production.
+# See your keys here: https://dashboard.stripe.com/apikeys
+client = StripeClient("<<YOUR_SECRET_KEY>>")
+
+# For SDK versions 12.4.0 or lower, remove '.v1' from the following line.
+financial_account = client.v1.treasury.financial_accounts.retrieve(
+  "{{TREASURYFINANCIALACCOUNT_ID}}",
+  options={"stripe_account": "{{CONNECTEDACCOUNT_ID}}"},
+)
+```
+
+```php
+// Set your secret key. Remember to switch to your live secret key in production.
+// See your keys here: https://dashboard.stripe.com/apikeys
+$stripe = new \Stripe\StripeClient('<<YOUR_SECRET_KEY>>');
+
+$financialAccount = $stripe->treasury->financialAccounts->retrieve(
+  '{{TREASURYFINANCIALACCOUNT_ID}}',
+  [],
+  ['stripe_account' => '{{CONNECTEDACCOUNT_ID}}']
+);
+```
+
+```java
+// Set your secret key. Remember to switch to your live secret key in production.
+// See your keys here: https://dashboard.stripe.com/apikeys
+StripeClient client = new StripeClient("<<YOUR_SECRET_KEY>>");
+
+FinancialAccountRetrieveParams params = FinancialAccountRetrieveParams.builder().build();
+
+RequestOptions requestOptions =
+  RequestOptions.builder().setStripeAccount("{{CONNECTEDACCOUNT_ID}}").build();
+// For SDK versions 29.4.0 or lower, remove '.v1()' from the following line.
+
+FinancialAccount financialAccount =
+  client.v1().treasury().financialAccounts().retrieve(
+    "{{TREASURYFINANCIALACCOUNT_ID}}",
+    params,
+    requestOptions
+  );
+```
+
+```node
+// Set your secret key. Remember to switch to your live secret key in production.
+// See your keys here: https://dashboard.stripe.com/apikeys
+const stripe = require('stripe')('<<YOUR_SECRET_KEY>>');
+
+const financialAccount = await stripe.treasury.financialAccounts.retrieve(
+  '{{TREASURYFINANCIALACCOUNT_ID}}',
+  {
+    stripeAccount: '{{CONNECTEDACCOUNT_ID}}',
+  }
+);
+```
+
+```go
+// Set your secret key. Remember to switch to your live secret key in production.
+// See your keys here: https://dashboard.stripe.com/apikeys
+sc := stripe.NewClient("<<YOUR_SECRET_KEY>>")
+params := &stripe.TreasuryFinancialAccountRetrieveParams{}
+params.SetStripeAccount("{{CONNECTEDACCOUNT_ID}}")
+result, err := sc.V1TreasuryFinancialAccounts.Retrieve(
+  context.TODO(), "{{TREASURYFINANCIALACCOUNT_ID}}", params)
+```
+
+```dotnet
+// Set your secret key. Remember to switch to your live secret key in production.
+// See your keys here: https://dashboard.stripe.com/apikeys
+var requestOptions = new RequestOptions
+{
+    StripeAccount = "{{CONNECTEDACCOUNT_ID}}",
+};
+var client = new StripeClient("<<YOUR_SECRET_KEY>>");
+var service = client.V1.Treasury.FinancialAccounts;
+Stripe.Treasury.FinancialAccount financialAccount = service.Get(
+    "{{TREASURYFINANCIALACCOUNT_ID}}",
+    null,
+    requestOptions);
+```
+
+By default, the account number for a financial account isn’t included in the response. To retrieve the account number, include the `financial_addresses.aba.account_number` field in the `expand` array.
+
+```curl
+curl -G https://api.stripe.com/v1/treasury/financial_accounts/{{TREASURYFINANCIALACCOUNT_ID}} \
+  -u "<<YOUR_SECRET_KEY>>:" \
+  -H "Stripe-Account: {{CONNECTEDACCOUNT_ID}}" \
+  -d "expand[]"="financial_addresses.aba.account_number"
+```
+
+```cli
+stripe treasury financial_accounts retrieve {{TREASURYFINANCIALACCOUNT_ID}} \
+  --stripe-account {{CONNECTEDACCOUNT_ID}} \
+  -d "expand[0]"="financial_addresses.aba.account_number"
+```
+
+```ruby
+# Set your secret key. Remember to switch to your live secret key in production.
+# See your keys here: https://dashboard.stripe.com/apikeys
+client = Stripe::StripeClient.new("<<YOUR_SECRET_KEY>>")
+
+financial_account = client.v1.treasury.financial_accounts.retrieve(
+  '{{TREASURYFINANCIALACCOUNT_ID}}',
+  {expand: ['financial_addresses.aba.account_number']},
+  {stripe_account: '{{CONNECTEDACCOUNT_ID}}'},
+)
+```
+
+```python
+# Set your secret key. Remember to switch to your live secret key in production.
+# See your keys here: https://dashboard.stripe.com/apikeys
+client = StripeClient("<<YOUR_SECRET_KEY>>")
+
+# For SDK versions 12.4.0 or lower, remove '.v1' from the following line.
+financial_account = client.v1.treasury.financial_accounts.retrieve(
+  "{{TREASURYFINANCIALACCOUNT_ID}}",
+  {"expand": ["financial_addresses.aba.account_number"]},
+  {"stripe_account": "{{CONNECTEDACCOUNT_ID}}"},
+)
+```
+
+```php
+// Set your secret key. Remember to switch to your live secret key in production.
+// See your keys here: https://dashboard.stripe.com/apikeys
+$stripe = new \Stripe\StripeClient('<<YOUR_SECRET_KEY>>');
+
+$financialAccount = $stripe->treasury->financialAccounts->retrieve(
+  '{{TREASURYFINANCIALACCOUNT_ID}}',
+  ['expand' => ['financial_addresses.aba.account_number']],
+  ['stripe_account' => '{{CONNECTEDACCOUNT_ID}}']
+);
+```
+
+```java
+// Set your secret key. Remember to switch to your live secret key in production.
+// See your keys here: https://dashboard.stripe.com/apikeys
+StripeClient client = new StripeClient("<<YOUR_SECRET_KEY>>");
+
+FinancialAccountRetrieveParams params =
+  FinancialAccountRetrieveParams.builder()
+    .addExpand("financial_addresses.aba.account_number")
+    .build();
+
+RequestOptions requestOptions =
+  RequestOptions.builder().setStripeAccount("{{CONNECTEDACCOUNT_ID}}").build();
+// For SDK versions 29.4.0 or lower, remove '.v1()' from the following line.
+
+FinancialAccount financialAccount =
+  client.v1().treasury().financialAccounts().retrieve(
+    "{{TREASURYFINANCIALACCOUNT_ID}}",
+    params,
+    requestOptions
+  );
+```
+
+```node
+// Set your secret key. Remember to switch to your live secret key in production.
+// See your keys here: https://dashboard.stripe.com/apikeys
+const stripe = require('stripe')('<<YOUR_SECRET_KEY>>');
+
+const financialAccount = await stripe.treasury.financialAccounts.retrieve(
+  '{{TREASURYFINANCIALACCOUNT_ID}}',
+  {
+    expand: ['financial_addresses.aba.account_number'],
+  },
+  {
+    stripeAccount: '{{CONNECTEDACCOUNT_ID}}',
+  }
+);
+```
+
+```go
+// Set your secret key. Remember to switch to your live secret key in production.
+// See your keys here: https://dashboard.stripe.com/apikeys
+sc := stripe.NewClient("<<YOUR_SECRET_KEY>>")
+params := &stripe.TreasuryFinancialAccountRetrieveParams{}
+params.AddExpand("financial_addresses.aba.account_number")
+params.SetStripeAccount("{{CONNECTEDACCOUNT_ID}}")
+result, err := sc.V1TreasuryFinancialAccounts.Retrieve(
+  context.TODO(), "{{TREASURYFINANCIALACCOUNT_ID}}", params)
+```
+
+```dotnet
+// Set your secret key. Remember to switch to your live secret key in production.
+// See your keys here: https://dashboard.stripe.com/apikeys
+var options = new Stripe.Treasury.FinancialAccountGetOptions
+{
+    Expand = new List<string> { "financial_addresses.aba.account_number" },
+};
+var requestOptions = new RequestOptions
+{
+    StripeAccount = "{{CONNECTEDACCOUNT_ID}}",
+};
+var client = new StripeClient("<<YOUR_SECRET_KEY>>");
+var service = client.V1.Treasury.FinancialAccounts;
+Stripe.Treasury.FinancialAccount financialAccount = service.Get(
+    "{{TREASURYFINANCIALACCOUNT_ID}}",
+    options,
+    requestOptions);
+```
+
+If successful, the response returns the `FinancialAccount` object with or without the account number depending on the inclusion of the `expand` array.
+
+#### Response with account expanded
+
+```json
+{
+  "id": {{FINANCIAL_ACCOUNT_ID}},
+  ...
+  "financial_addresses": [
+    {
+      "aba": {
+        "account_holder_name": "jenny",
+        "account_number": "4242424242420239",
+        "account_number_last4": "0239",
+        "bank_name": "Stripe Test Bank",
+        "routing_number": "000000001"
       },
+      ...
+    }
+  ],
+  ...
+}
+```
+
+#### Default response
+
+```json
+{
+  "id": {{FINANCIAL_ACCOUNT_ID}},
+  ...
+  "financial_addresses": [
+    {
+      "aba": {
+        "account_holder_name": "jenny",
+        "account_number_last4": "0239",
+        "bank_name": "Stripe Test Bank",
+        "routing_number": "000000001"
+      },
+      ...
+    }
+  ],
+  ...
+}
+```
+
+For more information on the `expand` parameter, see [expanding responses](https://docs.stripe.com/expand.md).
+
+### Feature summary
+
+The `FinancialAccount` object contains a summary of the state of all its `Features` in three arrays - `active_features`, `pending_features`, and `restricted_features`.
+
+```json
+{
+  "object": "treasury.financial_account",
+  "id": "fa_987",
+  "status": "open",
+  ...
+  "active_features": ["card_issuing"],
+  "pending_features": ["financial_addresses.aba"],
+  "restricted_features": ["outbound_transfers.ach"],
+}
+```
+
+These arrays provide a convenient way to see:
+
+- Inactive features (included in `pending_features` or `restricted_features`)
+- Active features (included in `active_features`)
+- Restricted features that require action (included in `restricted_features`)
+
+See [Financial account features](https://docs.stripe.com/financial-accounts/connect/account-management/financial-account-features.md) for more information.
+
+## Close a FinancialAccount
+
+You can permanently close a financial account if it meets the following conditions:
+
+- There are no pending inbound transfers.
+- All attached Issuing cards are canceled.
+- The account balance is zero and the account has no activity in the past 75 days. Alternatively, you can provide another financial account or [verified external account](https://docs.stripe.com/financial-accounts/connect/examples/moving-money.md#verifying-an-external-bank-account) to [forward](https://docs.stripe.com/financial-accounts/connect/account-management/financial-accounts.md#handling-transactions-on-closed-accounts) incoming debits and credits to.
+
+> You can’t reopen financial accounts after you’ve closed them.
+
+Closing a financial account has no impact on data retention for associated objects, such as `Transactions`.
+
+## FinancialAccount closure using the API
+
+You can use `POST/v1/treasury/financial_accounts/{{FINANCIAL_ACCOUNT_ID}}/close` to close the financial account with the associated ID. Include the associated connected account ID as a header value.
+
+```bash
+curl https://api.stripe.com/v1/treasury/financial_accounts/{{FINANCIAL_ACCOUNT_ID}}/close \
+  -u <<YOUR_SECRET_KEY>>: \
+  -X "POST" \
+  -H "Stripe-Account: {{CONNECTED_STRIPE_ACCOUNT_ID}}"
+```
+
+```curl
+curl -X POST https://api.stripe.com/v1/treasury/financial_accounts/{{TREASURYFINANCIALACCOUNT_ID}}/close \
+  -u "<<YOUR_SECRET_KEY>>:" \
+  -H "Stripe-Account: {{CONNECTEDACCOUNT_ID}}"
+```
+
+```cli
+stripe treasury financial_accounts close {{TREASURYFINANCIALACCOUNT_ID}} \
+  --stripe-account {{CONNECTEDACCOUNT_ID}}
+```
+
+```ruby
+# Set your secret key. Remember to switch to your live secret key in production.
+# See your keys here: https://dashboard.stripe.com/apikeys
+client = Stripe::StripeClient.new("<<YOUR_SECRET_KEY>>")
+
+financial_account = client.v1.treasury.financial_accounts.close(
+  '{{TREASURYFINANCIALACCOUNT_ID}}',
+  {},
+  {stripe_account: '{{CONNECTEDACCOUNT_ID}}'},
+)
+```
+
+```python
+# Set your secret key. Remember to switch to your live secret key in production.
+# See your keys here: https://dashboard.stripe.com/apikeys
+client = StripeClient("<<YOUR_SECRET_KEY>>")
+
+# For SDK versions 12.4.0 or lower, remove '.v1' from the following line.
+financial_account = client.v1.treasury.financial_accounts.close(
+  "{{TREASURYFINANCIALACCOUNT_ID}}",
+  options={"stripe_account": "{{CONNECTEDACCOUNT_ID}}"},
+)
+```
+
+```php
+// Set your secret key. Remember to switch to your live secret key in production.
+// See your keys here: https://dashboard.stripe.com/apikeys
+$stripe = new \Stripe\StripeClient('<<YOUR_SECRET_KEY>>');
+
+$financialAccount = $stripe->treasury->financialAccounts->close(
+  '{{TREASURYFINANCIALACCOUNT_ID}}',
+  [],
+  ['stripe_account' => '{{CONNECTEDACCOUNT_ID}}']
+);
+```
+
+```java
+// Set your secret key. Remember to switch to your live secret key in production.
+// See your keys here: https://dashboard.stripe.com/apikeys
+StripeClient client = new StripeClient("<<YOUR_SECRET_KEY>>");
+
+FinancialAccountCloseParams params = FinancialAccountCloseParams.builder().build();
+
+RequestOptions requestOptions =
+  RequestOptions.builder().setStripeAccount("{{CONNECTEDACCOUNT_ID}}").build();
+// For SDK versions 29.4.0 or lower, remove '.v1()' from the following line.
+
+FinancialAccount financialAccount =
+  client.v1().treasury().financialAccounts().close(
+    "{{TREASURYFINANCIALACCOUNT_ID}}",
+    params,
+    requestOptions
+  );
+```
+
+```node
+// Set your secret key. Remember to switch to your live secret key in production.
+// See your keys here: https://dashboard.stripe.com/apikeys
+const stripe = require('stripe')('<<YOUR_SECRET_KEY>>');
+
+const financialAccount = await stripe.treasury.financialAccounts.close(
+  '{{TREASURYFINANCIALACCOUNT_ID}}',
+  {
+    stripeAccount: '{{CONNECTEDACCOUNT_ID}}',
+  }
+);
+```
+
+```go
+// Set your secret key. Remember to switch to your live secret key in production.
+// See your keys here: https://dashboard.stripe.com/apikeys
+sc := stripe.NewClient("<<YOUR_SECRET_KEY>>")
+params := &stripe.TreasuryFinancialAccountCloseParams{}
+params.SetStripeAccount("{{CONNECTEDACCOUNT_ID}}")
+result, err := sc.V1TreasuryFinancialAccounts.Close(
+  context.TODO(), "{{TREASURYFINANCIALACCOUNT_ID}}", params)
+```
+
+```dotnet
+// Set your secret key. Remember to switch to your live secret key in production.
+// See your keys here: https://dashboard.stripe.com/apikeys
+var requestOptions = new RequestOptions
+{
+    StripeAccount = "{{CONNECTEDACCOUNT_ID}}",
+};
+var client = new StripeClient("<<YOUR_SECRET_KEY>>");
+var service = client.V1.Treasury.FinancialAccounts;
+Stripe.Treasury.FinancialAccount financialAccount = service.Close(
+    "{{TREASURYFINANCIALACCOUNT_ID}}",
+    null,
+    requestOptions);
+```
+
+The response is the `FinancialAccount` object with a `status` of `closed` to confirm the action.
+
+```json
+{
+  "id": "{{FINANCIAL_ACCOUNT_ID}}",
+  "object": "treasury.financial_account",
+  "status": "closed",
+  "status_details": {
+    "closed": {
+      "reasons": ["closed_by_platform"]
+    }
+  },
+  "active_features": [],
+  "pending_features": [],
+  "restricted_features": ["financial_addresses.aba"],
+  ...
+}
+```
+
+### Handling transactions on closed accounts
+
+In rare circumstances, financial accounts might receive credits or debits on closed accounts that Stripe can’t return automatically. As a platform owner, you’re responsible for negative balances incurred after account closure. Stripe support works with you to return any remaining funds owed to the seller or service provider and to remediate closed accounts with a negative balance. By including forwarding settings when closing a financial account, Stripe can automatically forward debits and credits to the selected account.
+
+Provide forwarding settings when you [close](https://docs.stripe.com/api/treasury/financial_accounts/close.md) the financial account. The following example uses an external bank account as the forwarding account.
+
+```curl
+curl https://api.stripe.com/v1/treasury/financial_accounts/{{TREASURYFINANCIALACCOUNT_ID}}/close \
+  -u "<<YOUR_SECRET_KEY>>:" \
+  -H "Stripe-Account: {{CONNECTEDACCOUNT_ID}}" \
+  -d "forwarding_settings[type]"=payment_method \
+  -d "forwarding_settings[payment_method]"="{{PAYMENTMETHOD_ID}}"
+```
+
+```cli
+stripe treasury financial_accounts close {{TREASURYFINANCIALACCOUNT_ID}} \
+  --stripe-account {{CONNECTEDACCOUNT_ID}} \
+  -d "forwarding_settings[type]"=payment_method \
+  -d "forwarding_settings[payment_method]"="{{PAYMENTMETHOD_ID}}"
+```
+
+```ruby
+# Set your secret key. Remember to switch to your live secret key in production.
+# See your keys here: https://dashboard.stripe.com/apikeys
+client = Stripe::StripeClient.new("<<YOUR_SECRET_KEY>>")
+
+financial_account = client.v1.treasury.financial_accounts.close(
+  '{{TREASURYFINANCIALACCOUNT_ID}}',
+  {
+    forwarding_settings: {
+      type: 'payment_method',
+      payment_method: '{{PAYMENTMETHOD_ID}}',
     },
   },
   {stripe_account: '{{CONNECTEDACCOUNT_ID}}'},
@@ -896,21 +1162,12 @@ cardholder = client.v1.issuing.cardholders.create(
 client = StripeClient("<<YOUR_SECRET_KEY>>")
 
 # For SDK versions 12.4.0 or lower, remove '.v1' from the following line.
-cardholder = client.v1.issuing.cardholders.create(
+financial_account = client.v1.treasury.financial_accounts.close(
+  "{{TREASURYFINANCIALACCOUNT_ID}}",
   {
-    "name": "Jenny Bath Remodeling",
-    "type": "company",
-    "email": "jenny@example.com",
-    "phone_number": "+18008675309",
-    "status": "active",
-    "billing": {
-      "address": {
-        "line1": "1234 Main Street",
-        "city": "San Francisco",
-        "state": "CA",
-        "postal_code": "94111",
-        "country": "US",
-      },
+    "forwarding_settings": {
+      "type": "payment_method",
+      "payment_method": "{{PAYMENTMETHOD_ID}}",
     },
   },
   {"stripe_account": "{{CONNECTEDACCOUNT_ID}}"},
@@ -922,21 +1179,12 @@ cardholder = client.v1.issuing.cardholders.create(
 // See your keys here: https://dashboard.stripe.com/apikeys
 $stripe = new \Stripe\StripeClient('<<YOUR_SECRET_KEY>>');
 
-$cardholder = $stripe->issuing->cardholders->create(
+$financialAccount = $stripe->treasury->financialAccounts->close(
+  '{{TREASURYFINANCIALACCOUNT_ID}}',
   [
-    'name' => 'Jenny Bath Remodeling',
-    'type' => 'company',
-    'email' => 'jenny@example.com',
-    'phone_number' => '+18008675309',
-    'status' => 'active',
-    'billing' => [
-      'address' => [
-        'line1' => '1234 Main Street',
-        'city' => 'San Francisco',
-        'state' => 'CA',
-        'postal_code' => '94111',
-        'country' => 'US',
-      ],
+    'forwarding_settings' => [
+      'type' => 'payment_method',
+      'payment_method' => '{{PAYMENTMETHOD_ID}}',
     ],
   ],
   ['stripe_account' => '{{CONNECTEDACCOUNT_ID}}']
@@ -948,24 +1196,12 @@ $cardholder = $stripe->issuing->cardholders->create(
 // See your keys here: https://dashboard.stripe.com/apikeys
 StripeClient client = new StripeClient("<<YOUR_SECRET_KEY>>");
 
-CardholderCreateParams params =
-  CardholderCreateParams.builder()
-    .setName("Jenny Bath Remodeling")
-    .setType(CardholderCreateParams.Type.COMPANY)
-    .setEmail("jenny@example.com")
-    .setPhoneNumber("+18008675309")
-    .setStatus(CardholderCreateParams.Status.ACTIVE)
-    .setBilling(
-      CardholderCreateParams.Billing.builder()
-        .setAddress(
-          CardholderCreateParams.Billing.Address.builder()
-            .setLine1("1234 Main Street")
-            .setCity("San Francisco")
-            .setState("CA")
-            .setPostalCode("94111")
-            .setCountry("US")
-            .build()
-        )
+FinancialAccountCloseParams params =
+  FinancialAccountCloseParams.builder()
+    .setForwardingSettings(
+      FinancialAccountCloseParams.ForwardingSettings.builder()
+        .setType(FinancialAccountCloseParams.ForwardingSettings.Type.PAYMENT_METHOD)
+        .setPaymentMethod("{{PAYMENTMETHOD_ID}}")
         .build()
     )
     .build();
@@ -974,8 +1210,12 @@ RequestOptions requestOptions =
   RequestOptions.builder().setStripeAccount("{{CONNECTEDACCOUNT_ID}}").build();
 // For SDK versions 29.4.0 or lower, remove '.v1()' from the following line.
 
-Cardholder cardholder =
-  client.v1().issuing().cardholders().create(params, requestOptions);
+FinancialAccount financialAccount =
+  client.v1().treasury().financialAccounts().close(
+    "{{TREASURYFINANCIALACCOUNT_ID}}",
+    params,
+    requestOptions
+  );
 ```
 
 ```node
@@ -983,21 +1223,12 @@ Cardholder cardholder =
 // See your keys here: https://dashboard.stripe.com/apikeys
 const stripe = require('stripe')('<<YOUR_SECRET_KEY>>');
 
-const cardholder = await stripe.issuing.cardholders.create(
+const financialAccount = await stripe.treasury.financialAccounts.close(
+  '{{TREASURYFINANCIALACCOUNT_ID}}',
   {
-    name: 'Jenny Bath Remodeling',
-    type: 'company',
-    email: 'jenny@example.com',
-    phone_number: '+18008675309',
-    status: 'active',
-    billing: {
-      address: {
-        line1: '1234 Main Street',
-        city: 'San Francisco',
-        state: 'CA',
-        postal_code: '94111',
-        country: 'US',
-      },
+    forwarding_settings: {
+      type: 'payment_method',
+      payment_method: '{{PAYMENTMETHOD_ID}}',
     },
   },
   {
@@ -1010,46 +1241,26 @@ const cardholder = await stripe.issuing.cardholders.create(
 // Set your secret key. Remember to switch to your live secret key in production.
 // See your keys here: https://dashboard.stripe.com/apikeys
 sc := stripe.NewClient("<<YOUR_SECRET_KEY>>")
-params := &stripe.IssuingCardholderCreateParams{
-  Name: stripe.String("Jenny Bath Remodeling"),
-  Type: stripe.String(stripe.IssuingCardholderTypeCompany),
-  Email: stripe.String("jenny@example.com"),
-  PhoneNumber: stripe.String("+18008675309"),
-  Status: stripe.String(stripe.IssuingCardholderStatusActive),
-  Billing: &stripe.IssuingCardholderCreateBillingParams{
-    Address: &stripe.AddressParams{
-      Line1: stripe.String("1234 Main Street"),
-      City: stripe.String("San Francisco"),
-      State: stripe.String("CA"),
-      PostalCode: stripe.String("94111"),
-      Country: stripe.String("US"),
-    },
+params := &stripe.TreasuryFinancialAccountCloseParams{
+  ForwardingSettings: &stripe.TreasuryFinancialAccountCloseForwardingSettingsParams{
+    Type: stripe.String("payment_method"),
+    PaymentMethod: stripe.String("{{PAYMENTMETHOD_ID}}"),
   },
 }
 params.SetStripeAccount("{{CONNECTEDACCOUNT_ID}}")
-result, err := sc.V1IssuingCardholders.Create(context.TODO(), params)
+result, err := sc.V1TreasuryFinancialAccounts.Close(
+  context.TODO(), "{{TREASURYFINANCIALACCOUNT_ID}}", params)
 ```
 
 ```dotnet
 // Set your secret key. Remember to switch to your live secret key in production.
 // See your keys here: https://dashboard.stripe.com/apikeys
-var options = new Stripe.Issuing.CardholderCreateOptions
+var options = new Stripe.Treasury.FinancialAccountCloseOptions
 {
-    Name = "Jenny Bath Remodeling",
-    Type = "company",
-    Email = "jenny@example.com",
-    PhoneNumber = "+18008675309",
-    Status = "active",
-    Billing = new Stripe.Issuing.CardholderBillingOptions
+    ForwardingSettings = new Stripe.Treasury.FinancialAccountForwardingSettingsOptions
     {
-        Address = new AddressOptions
-        {
-            Line1 = "1234 Main Street",
-            City = "San Francisco",
-            State = "CA",
-            PostalCode = "94111",
-            Country = "US",
-        },
+        Type = "payment_method",
+        PaymentMethod = "{{PAYMENTMETHOD_ID}}",
     },
 };
 var requestOptions = new RequestOptions
@@ -1057,240 +1268,22 @@ var requestOptions = new RequestOptions
     StripeAccount = "{{CONNECTEDACCOUNT_ID}}",
 };
 var client = new StripeClient("<<YOUR_SECRET_KEY>>");
-var service = client.V1.Issuing.Cardholders;
-Stripe.Issuing.Cardholder cardholder = service.Create(options, requestOptions);
+var service = client.V1.Treasury.FinancialAccounts;
+Stripe.Treasury.FinancialAccount financialAccount = service.Close(
+    "{{TREASURYFINANCIALACCOUNT_ID}}",
+    options,
+    requestOptions);
 ```
 
-The response confirms the cardholder is created.
+## Webhooks
 
-```json
-{
-    "id": "{{CARDHOLDER_ID}}",
-    "object": "issuing.cardholder",
-    "billing": {
-        "address": {
-            "city": "\"San Francisco\"",
-            "country": "US",
-            "line1": "\"1234 Main Street\"",
-            "postal_code": "94111",
-            "state": "CA"
-        }
-    },
-    "created": 1623803705,
-    "email": "jenny@example.com",
-    "livemode": false,
-    "metadata": {},
-    "name": "Jenny Bath Remodeling",
-    "phone_number": "+18008675309",
-    "requirements": {
-        "disabled_reason": "under_review",
-        "past_due": []
-    },
-    "spending_controls": {
-        "allowed_categories": [],
-        "blocked_categories": [],
-        "spending_limits": [],
-    },
-    "status": "active",
-    "type": "company"
-}
-```
+You can create financial accounts before fulfilling onboarding requirements. In this case, the financial account opens asynchronously and then triggers a `treasury.financial_account.features_status_updated` [webhook](https://docs.stripe.com/webhooks.md) with an updated view on any features still restricted due to outstanding onboarding requirements.
 
-
-## Create payment cards
-
-Now that the connected account has a `FinancialAccount` object associated with it and an available cardholder, Homebox can create a payment card using the `FinancialAccount` balance as the card’s available balance.
-
-# Dashboard
-
-> This is a Dashboard for when testing-method is without-code. View the full page at https://docs.stripe.com/financial-accounts/connect/examples/financial-accounts?testing-method=without-code.
-
-> You can’t create [Financial accounts](https://docs.stripe.com/financial-accounts/connect/account-management/financial-accounts.md) in the Dashboard. You must use the API to create them.
-
-1. Visit the [Connected accounts](https://dashboard.stripe.com/test/issuing/cards) page in the Dashboard.
-1. Select the connected account you want to create a cardholder on to expand its details.
-1. Select the **Card issuing** tab.
-1. Click the **+** button next to **Cards**.
-1. Select the card type and the financial account that you want to fund the card with and click **Create**.
-
-
-# API
-
-> This is a API for when testing-method is with-code. View the full page at https://docs.stripe.com/financial-accounts/connect/examples/financial-accounts?testing-method=with-code.
-
-```curl
-curl https://api.stripe.com/v1/issuing/cards \
-  -u "<<YOUR_SECRET_KEY>>:" \
-  -H "Stripe-Account: {{CONNECTEDACCOUNT_ID}}" \
-  -d currency=usd \
-  -d type=virtual \
-  -d cardholder="{{ISSUINGCARDHOLDER_ID}}" \
-  -d financial_account="{{TREASURYFINANCIALACCOUNT_ID}}"
-```
-
-```cli
-stripe issuing cards create  \
-  --stripe-account {{CONNECTEDACCOUNT_ID}} \
-  --currency=usd \
-  --type=virtual \
-  --cardholder="{{ISSUINGCARDHOLDER_ID}}" \
-  --financial-account="{{TREASURYFINANCIALACCOUNT_ID}}"
-```
-
-```ruby
-# Set your secret key. Remember to switch to your live secret key in production.
-# See your keys here: https://dashboard.stripe.com/apikeys
-client = Stripe::StripeClient.new("<<YOUR_SECRET_KEY>>")
-
-card = client.v1.issuing.cards.create(
-  {
-    currency: 'usd',
-    type: 'virtual',
-    cardholder: '{{ISSUINGCARDHOLDER_ID}}',
-    financial_account: '{{TREASURYFINANCIALACCOUNT_ID}}',
-  },
-  {stripe_account: '{{CONNECTEDACCOUNT_ID}}'},
-)
-```
-
-```python
-# Set your secret key. Remember to switch to your live secret key in production.
-# See your keys here: https://dashboard.stripe.com/apikeys
-client = StripeClient("<<YOUR_SECRET_KEY>>")
-
-# For SDK versions 12.4.0 or lower, remove '.v1' from the following line.
-card = client.v1.issuing.cards.create(
-  {
-    "currency": "usd",
-    "type": "virtual",
-    "cardholder": "{{ISSUINGCARDHOLDER_ID}}",
-    "financial_account": "{{TREASURYFINANCIALACCOUNT_ID}}",
-  },
-  {"stripe_account": "{{CONNECTEDACCOUNT_ID}}"},
-)
-```
-
-```php
-// Set your secret key. Remember to switch to your live secret key in production.
-// See your keys here: https://dashboard.stripe.com/apikeys
-$stripe = new \Stripe\StripeClient('<<YOUR_SECRET_KEY>>');
-
-$card = $stripe->issuing->cards->create(
-  [
-    'currency' => 'usd',
-    'type' => 'virtual',
-    'cardholder' => '{{ISSUINGCARDHOLDER_ID}}',
-    'financial_account' => '{{TREASURYFINANCIALACCOUNT_ID}}',
-  ],
-  ['stripe_account' => '{{CONNECTEDACCOUNT_ID}}']
-);
-```
-
-```java
-// Set your secret key. Remember to switch to your live secret key in production.
-// See your keys here: https://dashboard.stripe.com/apikeys
-StripeClient client = new StripeClient("<<YOUR_SECRET_KEY>>");
-
-CardCreateParams params =
-  CardCreateParams.builder()
-    .setCurrency("usd")
-    .setType(CardCreateParams.Type.VIRTUAL)
-    .setCardholder("{{ISSUINGCARDHOLDER_ID}}")
-    .setFinancialAccount("{{TREASURYFINANCIALACCOUNT_ID}}")
-    .build();
-
-RequestOptions requestOptions =
-  RequestOptions.builder().setStripeAccount("{{CONNECTEDACCOUNT_ID}}").build();
-// For SDK versions 29.4.0 or lower, remove '.v1()' from the following line.
-
-Card card = client.v1().issuing().cards().create(params, requestOptions);
-```
-
-```node
-// Set your secret key. Remember to switch to your live secret key in production.
-// See your keys here: https://dashboard.stripe.com/apikeys
-const stripe = require('stripe')('<<YOUR_SECRET_KEY>>');
-
-const card = await stripe.issuing.cards.create(
-  {
-    currency: 'usd',
-    type: 'virtual',
-    cardholder: '{{ISSUINGCARDHOLDER_ID}}',
-    financial_account: '{{TREASURYFINANCIALACCOUNT_ID}}',
-  },
-  {
-    stripeAccount: '{{CONNECTEDACCOUNT_ID}}',
-  }
-);
-```
-
-```go
-// Set your secret key. Remember to switch to your live secret key in production.
-// See your keys here: https://dashboard.stripe.com/apikeys
-sc := stripe.NewClient("<<YOUR_SECRET_KEY>>")
-params := &stripe.IssuingCardCreateParams{
-  Currency: stripe.String(stripe.CurrencyUSD),
-  Type: stripe.String(stripe.IssuingCardTypeVirtual),
-  Cardholder: stripe.String("{{ISSUINGCARDHOLDER_ID}}"),
-  FinancialAccount: stripe.String("{{TREASURYFINANCIALACCOUNT_ID}}"),
-}
-params.SetStripeAccount("{{CONNECTEDACCOUNT_ID}}")
-result, err := sc.V1IssuingCards.Create(context.TODO(), params)
-```
-
-```dotnet
-// Set your secret key. Remember to switch to your live secret key in production.
-// See your keys here: https://dashboard.stripe.com/apikeys
-var options = new Stripe.Issuing.CardCreateOptions
-{
-    Currency = "usd",
-    Type = "virtual",
-    Cardholder = "{{ISSUINGCARDHOLDER_ID}}",
-    FinancialAccount = "{{TREASURYFINANCIALACCOUNT_ID}}",
-};
-var requestOptions = new RequestOptions
-{
-    StripeAccount = "{{CONNECTEDACCOUNT_ID}}",
-};
-var client = new StripeClient("<<YOUR_SECRET_KEY>>");
-var service = client.V1.Issuing.Cards;
-Stripe.Issuing.Card card = service.Create(options, requestOptions);
-```
-
-The response confirms the card is issued.
-
-```json
-{
-  "id": "{{CARD_ID}}",
-  "object": "issuing.card",
-  "cardholder": {
-    "id": "{{CARDHOLDER_ID}}",
-    "object": "issuing.cardholder",
-    "billing": {
-      "address": {
-        "city": "San Francisco",
-        "country": "US",
-        "line1": "123 Main Street",
-        "line2": null,
-        "postal_code": "94111",
-        "state": "CA"
-      }
-    },
-    ...
-  },
-  "created": 1643293629,
-  "currency": "usd",
-  "exp_month": 12,
-  "exp_year": 2024,
-  "last4": "0930",
-  "livemode": false,
-  ...
-}
-
-```
-
-
-## See also
-
-- [Using Financial Accounts for platforms to move money](https://docs.stripe.com/financial-accounts/connect/examples/moving-money.md)
-- [API reference](https://docs.stripe.com/api/treasury/financial_accounts.md)
+- `account.updated`
+  - When requesting new Features, the platform might get an `account.updated` webhook prompting that the requirements hash has changed and some new fields are now in `pending_verification`.
+- `treasury.financial_account.created`
+  - Triggered whenever a new FinancialAccount is created.
+- `treasury.financial_account.closed`
+  - Notifies when the status of the top-level FinancialAccount changes to closed.
+- `treasury.financial_account.features_status_updated`
+  - Indicates that one or more Features have changed status. This is reflected in changes to the `active_features, pending_features` or `restricted_features` arrays.

@@ -2,17 +2,24 @@
 
 # DatasetClientListItemOptions<!-- -->
 
+Options for listing items from a dataset.
+
+Provides various filtering, pagination, and transformation options to customize the output format and content of retrieved items.
+
 ### Hierarchy
 
-* *DatasetClientListItemOptions*
+* PaginationOptions
 
-  * [DatasetClientCreateItemsUrlOptions](https://docs.apify.com/api/client/js/api/client/js/reference/interface/DatasetClientCreateItemsUrlOptions.md)
-  * [DatasetClientDownloadItemsOptions](https://docs.apify.com/api/client/js/api/client/js/reference/interface/DatasetClientDownloadItemsOptions.md)
+  * *DatasetClientListItemOptions*
+
+    * [DatasetClientCreateItemsUrlOptions](https://docs.apify.com/api/client/js/api/client/js/reference/interface/DatasetClientCreateItemsUrlOptions.md)
+    * [DatasetClientDownloadItemsOptions](https://docs.apify.com/api/client/js/api/client/js/reference/interface/DatasetClientDownloadItemsOptions.md)
 
 ## Index[**](#Index)
 
 ### Properties
 
+* [**chunkSize](#chunkSize)
 * [**clean](#clean)
 * [**desc](#desc)
 * [**fields](#fields)
@@ -28,7 +35,21 @@
 
 ## Properties<!-- -->[**](#Properties)
 
-### [**](#clean)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/dataset.ts#L266)optionalclean
+### [**](#chunkSize)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/utils.ts#L258)optionalinheritedchunkSize
+
+**chunkSize?
+
+<!-- -->
+
+: number
+
+Inherited from PaginationOptions.chunkSize
+
+Maximum number of items returned in one API response. Relevant in the context of asyncIterator, the iterator will fetch results in chunks of this size from API and yield them one by one. It will stop fetching once the limit is reached or once all items from API have been fetched.
+
+Chunk size is usually limited by API. Minimum of those two limits will be used.
+
+### [**](#clean)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/dataset.ts#L460)optionalclean
 
 **clean?
 
@@ -36,7 +57,7 @@
 
 : boolean
 
-### [**](#desc)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/dataset.ts#L267)optionaldesc
+### [**](#desc)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/dataset.ts#L461)optionaldesc
 
 **desc?
 
@@ -44,7 +65,7 @@
 
 : boolean
 
-### [**](#fields)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/dataset.ts#L269)optionalfields
+### [**](#fields)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/dataset.ts#L463)optionalfields
 
 **fields?
 
@@ -52,7 +73,7 @@
 
 : string\[]
 
-### [**](#flatten)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/dataset.ts#L268)optionalflatten
+### [**](#flatten)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/dataset.ts#L462)optionalflatten
 
 **flatten?
 
@@ -60,7 +81,7 @@
 
 : string\[]
 
-### [**](#limit)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/dataset.ts#L271)optionallimit
+### [**](#limit)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/utils.ts#L251)optionalinheritedlimit
 
 **limit?
 
@@ -68,7 +89,11 @@
 
 : number
 
-### [**](#offset)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/dataset.ts#L272)optionaloffset
+Inherited from PaginationOptions.limit
+
+Maximum number of entries requested.
+
+### [**](#offset)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/utils.ts#L249)optionalinheritedoffset
 
 **offset?
 
@@ -76,7 +101,11 @@
 
 : number
 
-### [**](#omit)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/dataset.ts#L270)optionalomit
+Inherited from PaginationOptions.offset
+
+Position of the first returned entry.
+
+### [**](#omit)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/dataset.ts#L464)optionalomit
 
 **omit?
 
@@ -84,7 +113,7 @@
 
 : string\[]
 
-### [**](#signature)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/dataset.ts#L277)optionalsignature
+### [**](#signature)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/dataset.ts#L469)optionalsignature
 
 **signature?
 
@@ -92,7 +121,7 @@
 
 : string
 
-### [**](#skipEmpty)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/dataset.ts#L273)optionalskipEmpty
+### [**](#skipEmpty)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/dataset.ts#L465)optionalskipEmpty
 
 **skipEmpty?
 
@@ -100,7 +129,7 @@
 
 : boolean
 
-### [**](#skipHidden)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/dataset.ts#L274)optionalskipHidden
+### [**](#skipHidden)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/dataset.ts#L466)optionalskipHidden
 
 **skipHidden?
 
@@ -108,7 +137,7 @@
 
 : boolean
 
-### [**](#unwind)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/dataset.ts#L275)optionalunwind
+### [**](#unwind)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/dataset.ts#L467)optionalunwind
 
 **unwind?
 
@@ -116,7 +145,7 @@
 
 : string | string\[]
 
-### [**](#view)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/dataset.ts#L276)optionalview
+### [**](#view)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/dataset.ts#L468)optionalview
 
 **view?
 

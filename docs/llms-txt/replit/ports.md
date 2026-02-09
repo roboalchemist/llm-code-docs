@@ -1,5 +1,9 @@
 # Source: https://docs.replit.com/replit-workspace/ports.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.replit.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Ports
 
 > Learn how ports work in Replit's cloud environment, including port forwarding, configuration, and troubleshooting for your web applications.

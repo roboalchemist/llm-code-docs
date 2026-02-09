@@ -1,4 +1,8 @@
-# Source: https://mintlify.com/docs/guides/improving-docs.md
+# Source: https://www.mintlify.com/docs/guides/improving-docs.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.mintlify.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Improve your docs
 
@@ -20,7 +24,7 @@ The key is to compare these metrics over time or against a baseline to spot tren
 
 ### Correlate traffic and satisfaction
 
-Use insights to identify patterns:
+Use analytics to identify patterns:
 
 * **High traffic and low feedback scores**: Popular pages with a poor user experience. Prioritize improving these pages.
 * **Low traffic and high feedback scores**: Documentation that is working well, but might not be discoverable. Consider promoting these pages.
@@ -30,7 +34,7 @@ Use insights to identify patterns:
 
 Add context to your quantitative metrics with qualitative information:
 
-* **User feedback**: Use [feedback](/insights/feedback) to capture user sentiment through ratings and open-ended comments, helping you understand what works and where users struggle.
+* **User feedback**: Use [feedback](/optimize/feedback) to capture user sentiment through ratings and open-ended comments, helping you understand what works and where users struggle.
 * **Stakeholder input**: Get regular feedback from teams like support, engineering, and customer success to uncover common issues users face and areas for improvement.
 * **User testing**: Conduct usability tests to validate whether users can find the answers they need and whether your documentation aligns with their expectations. See [Understand your audience](/guides/understand-your-audience) for more on user research.
 
@@ -42,10 +46,30 @@ Measure documentation against broader business objectives:
 * **Onboarding and adoption**: Monitor how well documentation supports new users in getting up to speed, contributing to faster product adoption.
 * **Retention**: Well-maintained, easy-to-follow docs contribute to positive user experiences, helping to reduce churn and improve retention rates.
 
-## Put insights into action
+## Put analytics into action
 
 Use these patterns to prioritize your documentation improvements:
 
 * **Fix high-impact problems first**: Popular pages with poor feedback scores affect the most users.
 * **Respond to user feedback**: Contextual and code snippet feedback can identify specific areas for improvement.
 * **Focus on key user journeys**: Prioritize pages connected to the most important tasks for your product.
+
+## Related pages
+
+<CardGroup cols={2}>
+  <Card title="Analytics overview" icon="chart-line" href="/optimize/analytics">
+    View analytics and track documentation performance.
+  </Card>
+
+  <Card title="Feedback" icon="message-square" href="/optimize/feedback">
+    Collect and analyze user feedback on your docs.
+  </Card>
+
+  <Card title="Understand your audience" icon="users" href="/guides/understand-your-audience">
+    Research and define your documentation audience.
+  </Card>
+
+  <Card title="SEO" icon="search" href="/optimize/seo">
+    Optimize your documentation for search engines.
+  </Card>
+</CardGroup>

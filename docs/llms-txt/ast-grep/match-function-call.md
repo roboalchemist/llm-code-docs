@@ -2,10 +2,6 @@
 
 # Source: https://ast-grep.github.io/catalog/c/match-function-call.md
 
-# Source: https://ast-grep.github.io/catalog/go/match-function-call.md
-
-# Source: https://ast-grep.github.io/catalog/c/match-function-call.md
-
 ---
 url: /catalog/c/match-function-call.md
 ---

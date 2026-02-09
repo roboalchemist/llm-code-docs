@@ -327,7 +327,7 @@ if __name__ == "__main__":
 
 ---
 
-This document was rendered at 2025-12-31T18:29:44.660Z.
+This document was rendered at 2026-02-03T03:25:31.337Z.
 For the latest version of this document, see [https://docs.livekit.io/recipes/metrics_stt.md](https://docs.livekit.io/recipes/metrics_stt.md).
 
 To explore all LiveKit documentation, see [llms.txt](https://docs.livekit.io/llms.txt).

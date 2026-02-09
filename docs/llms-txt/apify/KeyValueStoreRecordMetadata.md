@@ -20,7 +20,7 @@ Model for a key-value store record metadata.
 
 ## Properties<!-- -->[**](#Properties)
 
-### [**](#content_type)[**](https://github.com/apify/crawlee-python/blob/4b41e9719dcea4247ee874e5950c51d60de7e647//src/crawlee/storage_clients/models.py#L89)content\_type
+### [**](#content_type)[**](https://github.com/apify/crawlee-python/blob/3e08b24571bbd21f25523e9aa81bc31ba308628d//src/crawlee/storage_clients/models.py#L89)content\_type
 
 **content\_type: str
 
@@ -28,7 +28,7 @@ The MIME type of the record.
 
 Describe the format and type of data stored in the record, following the MIME specification.
 
-### [**](#key)[**](https://github.com/apify/crawlee-python/blob/4b41e9719dcea4247ee874e5950c51d60de7e647//src/crawlee/storage_clients/models.py#L83)key
+### [**](#key)[**](https://github.com/apify/crawlee-python/blob/3e08b24571bbd21f25523e9aa81bc31ba308628d//src/crawlee/storage_clients/models.py#L83)key
 
 **key: str
 
@@ -36,11 +36,11 @@ The key of the record.
 
 A unique identifier for the record in the key-value store.
 
-### [**](#model_config)[**](https://github.com/apify/crawlee-python/blob/4b41e9719dcea4247ee874e5950c51d60de7e647//src/crawlee/storage_clients/models.py#L81)model\_config
+### [**](#model_config)[**](https://github.com/apify/crawlee-python/blob/3e08b24571bbd21f25523e9aa81bc31ba308628d//src/crawlee/storage_clients/models.py#L81)model\_config
 
 **model\_config: Undefined
 
-### [**](#size)[**](https://github.com/apify/crawlee-python/blob/4b41e9719dcea4247ee874e5950c51d60de7e647//src/crawlee/storage_clients/models.py#L95)size
+### [**](#size)[**](https://github.com/apify/crawlee-python/blob/3e08b24571bbd21f25523e9aa81bc31ba308628d//src/crawlee/storage_clients/models.py#L95)size
 
 **size: int | None
 

@@ -89,7 +89,6 @@ Response code: HTTP 4xx/5xx
 - **invalid_request** — Missing or malformed field; typically returns **400**.
 
   _Example message:_ `”card field is required when payment_method_type=card”`.
-
   - **invalid_card** — Credential failed basic validation (such as length or expiry); returns **400** or **422**.
 
   - **duplicate_request** — Safe duplicate with the same idempotency key.
@@ -106,24 +105,24 @@ Response code: HTTP 4xx/5xx
 
 #### Payment method
 
-| Field | Type | Required | Description | Example | Validation |
-| ----- | :---- | :---- | :---- | ----- | ----- |
-| type | String enum | Yes | The type of payment method used. Currently only `card`.  | card | Must be card |
-| card\_number\_type | String enum | Yes | The type of card number. Network tokens are preferred with fallback to FPAN. See [PCI Scope](/commerce/guides/production#security-and-compliance) for more details. | “fpan” or “network\_token” | Must be “fpan” or “network\_token” |
-| number | String | Yes | Card number. | "4242424242424242" |  |
-| exp\_month | String | No | Expiry month. | "11" | Max. length 2 |
-| exp\_year | String | No | 4 digit expiry year. | "2026" | Max. length 4 |
-| name | String | No | Cardholder name. | "Jane Doe" |  |
-| cvc | String | No | Card CVC number. | "223" | Max. length 4 |
-| cryptogram | String | No | Cryptogram provided with network tokens. | "gXc5UCLnM6ckD7pjM1TdPA==" |  |
-| eci\_value | String | No | Electronic Commerce Indicator / Security Level Indicator provided with network tokens. | "07" |  |
-| checks\_performed | List\<String\> | No | Checks already performed on the card. | \[avs, cvv, ani, auth0\] |  |
-| iin | String | No | Institution Identification Number (aka BIN). The first 6 digits on a card identifying the issuer. | "123456" | Max. length 6 |
-| display\_card\_funding\_type | String enum | Yes | Funding type of the card to display. | “credit” or “debit” or “prepaid” | Must be “credit” or “debit” or “prepaid” |
-| display\_wallet\_type | String | No | If the card came via a digital wallet, what type of wallet. | “wallet” |  |
-| display\_brand | String | No | Brand of the card to display. | “Visa”, “amex”, “discover”  |  |
-| display\_last4 | String | No | In case of non-PAN, this is the original last 4 digits of the card for customer display. | "1234" | Max. length 4 |
-| metadata | Object (map) | Yes | Arbitrary key/value pairs. | Example:`{ “issuing\_bank”: “temp” }` |  |
+| Field                     | Type           | Required | Description                                                                                                                                                         | Example                               | Validation                               |
+| ------------------------- | :------------- | :------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------- | ---------------------------------------- |
+| type                      | String enum    | Yes      | The type of payment method used. Currently only `card`.                                                                                                             | card                                  | Must be card                             |
+| card_number_type          | String enum    | Yes      | The type of card number. Network tokens are preferred with fallback to FPAN. See [PCI Scope](https://developers.openai.com/commerce/guides/production#security-and-compliance) for more details. | “fpan” or “network_token”             | Must be “fpan” or “network_token”        |
+| number                    | String         | Yes      | Card number.                                                                                                                                                        | "4242424242424242"                    |                                          |
+| exp_month                 | String         | No       | Expiry month.                                                                                                                                                       | "11"                                  | Max. length 2                            |
+| exp_year                  | String         | No       | 4 digit expiry year.                                                                                                                                                | "2026"                                | Max. length 4                            |
+| name                      | String         | No       | Cardholder name.                                                                                                                                                    | "Jane Doe"                            |                                          |
+| cvc                       | String         | No       | Card CVC number.                                                                                                                                                    | "223"                                 | Max. length 4                            |
+| cryptogram                | String         | No       | Cryptogram provided with network tokens.                                                                                                                            | "gXc5UCLnM6ckD7pjM1TdPA=="            |                                          |
+| eci_value                 | String         | No       | Electronic Commerce Indicator / Security Level Indicator provided with network tokens.                                                                              | "07"                                  |                                          |
+| checks_performed          | List\<String\> | No       | Checks already performed on the card.                                                                                                                               | \[avs, cvv, ani, auth0\]              |                                          |
+| iin                       | String         | No       | Institution Identification Number (aka BIN). The first 6 digits on a card identifying the issuer.                                                                   | "123456"                              | Max. length 6                            |
+| display_card_funding_type | String enum    | Yes      | Funding type of the card to display.                                                                                                                                | “credit” or “debit” or “prepaid”      | Must be “credit” or “debit” or “prepaid” |
+| display_wallet_type       | String         | No       | If the card came via a digital wallet, what type of wallet.                                                                                                         | “wallet”                              |                                          |
+| display_brand             | String         | No       | Brand of the card to display.                                                                                                                                       | “Visa”, “amex”, “discover”            |                                          |
+| display_last4             | String         | No       | In case of non-PAN, this is the original last 4 digits of the card for customer display.                                                                            | "1234"                                | Max. length 4                            |
+| metadata                  | Object (map)   | Yes      | Arbitrary key/value pairs.                                                                                                                                          | Example:`{ “issuing\_bank”: “temp” }` |                                          |
 
 ### Address
 

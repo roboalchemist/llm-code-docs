@@ -1,5 +1,9 @@
 # Source: https://docs.pipecat.ai/server/services/tts/piper.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pipecat.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Piper
 
 > Text-to-speech service implementation using the Piper TTS server
@@ -53,8 +57,3 @@ Before using PiperTTSService, you need:
   Piper runs entirely locally, providing complete privacy and eliminating API
   key requirements.
 </Tip>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.pipecat.ai/llms.txt

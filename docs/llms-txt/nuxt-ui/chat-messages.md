@@ -20,17 +20,8 @@ The ChatMessages component displays a list of [ChatMessage](/docs/components/cha
 </template>
 ```
 
-<callout icon="i-lucide-rocket">
-
-This component is purpose-built for AI chatbots with features like:
-
-- Initial scroll to the bottom upon loading ([`shouldScrollToBottom`](#should-scroll-to-bottom)).
-- Continuous scrolling down as new messages arrive ([`shouldAutoScroll`](#should-auto-scroll)).
-- An "Auto scroll" button appears when scrolled up, allowing users to jump back to the latest messages ([`autoScroll`](#auto-scroll)).
-- A loading indicator displays while the assistant is processing ([`status`](#status)).
-- Submitted messages are scrolled to the top of the viewport and the height of the last user message is dynamically adjusted.
-
-</callout>
+> [!NOTE]
+> This component is purpose-built for AI chatbots with features like:Initial scroll to the bottom upon loading ([`shouldScrollToBottom`](#should-scroll-to-bottom)).Continuous scrolling down as new messages arrive ([`shouldAutoScroll`](#should-auto-scroll)).An "Auto scroll" button appears when scrolled up, allowing users to jump back to the latest messages ([`autoScroll`](#auto-scroll)).A loading indicator displays while the assistant is processing ([`status`](#status)).Submitted messages are scrolled to the top of the viewport and the height of the last user message is dynamically adjusted.
 
 ### Messages
 
@@ -52,16 +43,8 @@ Use the `status` prop to display a visual indicator when the assistant is proces
 </template>
 ```
 
-<note>
-
-Here's the detail of the different statuses from the AI SDK v5 Chat class:
-
-- `submitted`: The message has been sent to the API and we're awaiting the start of the response stream.
-- `streaming`: The response is actively streaming in from the API, receiving chunks of data.
-- `ready`: The full response has been received and processed; a new user message can be submitted.
-- `error`: An error occurred during the API request, preventing successful completion.
-
-</note>
+> [!NOTE]
+> Here's the detail of the different statuses from the AI SDK v5 Chat class:`submitted`: The message has been sent to the API and we're awaiting the start of the response stream.`streaming`: The response is actively streaming in from the API, receiving chunks of data.`ready`: The full response has been received and processed; a new user message can be submitted.`error`: An error occurred during the API request, preventing successful completion.
 
 ### User
 
@@ -114,23 +97,15 @@ Use the `auto-scroll-icon` prop to customize the auto scroll button [Icon](/docs
 </template>
 ```
 
-<framework-only>
-<template v-slot:nuxt="">
-<tip to="/docs/getting-started/integrations/icons/nuxt#theme">
+**Nuxt:**
+> [!TIP]
+> See: /docs/getting-started/integrations/icons/nuxt#theme
+> You can customize this icon globally in your `app.config.ts` under `ui.icons.arrowDown` key.
 
-You can customize this icon globally in your `app.config.ts` under `ui.icons.arrowDown` key.
-
-</tip>
-</template>
-
-<template v-slot:vue="">
-<tip to="/docs/getting-started/integrations/icons/vue#theme">
-
-You can customize this icon globally in your `vite.config.ts` under `ui.icons.arrowDown` key.
-
-</tip>
-</template>
-</framework-only>
+**Vue:**
+> [!TIP]
+> See: /docs/getting-started/integrations/icons/vue#theme
+> You can customize this icon globally in your `vite.config.ts` under `ui.icons.arrowDown` key.
 
 ### Should Auto Scroll
 
@@ -154,17 +129,51 @@ Use the `should-scroll-to-bottom` prop to enable/disable bottom auto scroll when
 
 ## Examples
 
-<note target="_blank" to="https://ai-sdk.dev/docs/getting-started/nuxt">
+The Chat components are designed to be used with the [Vercel AI SDK](https://ai-sdk.dev/), specifically the [`Chat`](https://ai-sdk.dev/docs/reference/ai-sdk-ui/use-chat) class for managing chat state and streaming responses.
 
-These chat components are designed to be used with the **AI SDK v5** from **Vercel AI SDK**.
+First, install the required dependencies:
 
-</note>
+```bash
+pnpm add ai @ai-sdk/gateway @ai-sdk/vue
 
-<callout icon="i-simple-icons-github" target="_blank" to="https://github.com/nuxt-ui-templates/chat">
+```
 
-Check out the source code of our **AI Chat template** on GitHub for a real-life example.
+```bash
+yarn add ai @ai-sdk/gateway @ai-sdk/vue
 
-</callout>
+```
+
+```bash
+npm install ai @ai-sdk/gateway @ai-sdk/vue
+
+```
+
+```bash
+bun add ai @ai-sdk/gateway @ai-sdk/vue
+
+```
+
+Then, create a server API endpoint to handle chat requests using [`streamText`](https://ai-sdk.dev/docs/reference/ai-sdk-core/stream-text) from the AI SDK. You can use the [Vercel AI Gateway](https://vercel.com/ai-gateway) to access AI models through a centralized endpoint:
+
+```ts [server/api/chat.post.ts]
+import { streamText, convertToModelMessages } from 'ai'
+import { gateway } from '@ai-sdk/gateway'
+
+export default defineEventHandler(async (event) => {
+  const { messages } = await readBody(event)
+
+  return streamText({
+    model: gateway('openai/gpt-4o-mini'),
+    maxOutputTokens: 10000,
+    system: 'You are a helpful assistant.',
+    messages: await convertToModelMessages(messages)
+  }).toUIMessageStreamResponse()
+})
+```
+
+> [!NOTE]
+> See: https://github.com/nuxt-ui-templates/chat
+> Check out the source code of our AI Chat template on GitHub for a real-life example.
 
 ### Within a page
 
@@ -175,7 +184,6 @@ Pass the `messages` prop alongside the `status` prop that will be used for the a
 ```vue [pages/[id].vue]
 <script setup lang="ts">
 import { Chat } from '@ai-sdk/vue'
-import { getTextFromMessage } from '@nuxt/ui/utils/ai'
 
 const input = ref('')
 
@@ -198,7 +206,10 @@ function onSubmit() {
       <UContainer>
         <UChatMessages :messages="chat.messages" :status="chat.status">
           <template #content="{ message }">
-            <MDC :value="getTextFromMessage(message)" :cache-key="message.id" class="*:first:mt-0 *:last:mb-0" />
+            <template v-for="(part, index) in message.parts" :key="`${message.id}-${part.type}-${index}`">
+              <MDC v-if="part.type === 'text' && message.role === 'assistant'" :value="part.text" :cache-key="`${message.id}-${index}`" class="*:first:mt-0 *:last:mb-0" />
+              <p v-else-if="part.type === 'text' && message.role === 'user'" class="whitespace-pre-wrap">{{ part.text }}</p>
+            </template>
           </template>
         </UChatMessages>
       </UContainer>
@@ -207,7 +218,7 @@ function onSubmit() {
     <template #footer>
       <UContainer class="pb-4 sm:pb-6">
         <UChatPrompt v-model="input" :error="chat.error" @submit="onSubmit">
-          <UChatPromptSubmit :status="chat.status" @stop="chat.stop" @reload="chat.regenerate" />
+          <UChatPromptSubmit :status="chat.status" @stop="chat.stop()" @reload="chat.regenerate()" />
         </UChatPrompt>
       </UContainer>
     </template>
@@ -215,11 +226,8 @@ function onSubmit() {
 </template>
 ```
 
-<note>
-
-In this example, we use the `MDC` component from [`@nuxtjs/mdc`](https://github.com/nuxt-modules/mdc) to render the content of the message. The `getTextFromMessage` utility extracts the text content from the AI SDK V5 message parts. As Nuxt UI provides pre-styled prose components, your content will be automatically styled.
-
-</note>
+> [!NOTE]
+> In this example, we use the `MDC` component from [`@nuxtjs/mdc`](https://github.com/nuxt-modules/mdc) to render the assistant messages as markdown. User messages are rendered as plain text to prevent XSS vulnerabilities. As Nuxt UI provides pre-styled prose components, your content will be automatically styled.
 
 ### With indicator slot
 
@@ -283,11 +291,11 @@ interface ChatMessagesProps {
    * `{ size: 'md', color: 'neutral', variant: 'outline' }`{lang="ts-type"}
    * @default "true"
    */
-  autoScroll?: boolean | Partial<ButtonProps> | undefined;
+  autoScroll?: boolean | Omit<ButtonProps, LinkPropsKeys> | undefined;
   /**
    * The icon displayed in the auto scroll button.
    */
-  autoScrollIcon?: string | object | undefined;
+  autoScrollIcon?: any;
   /**
    * The `user` messages props.
    * `{ side: 'right', variant: 'soft' }`{lang="ts-type"}
@@ -328,25 +336,21 @@ interface ChatMessagesSlots {
 }
 ```
 
-<tip>
-
-You can use all the slots of the [`ChatMessage`](/docs/components/chat-message#slots) component inside ChatMessages, they are automatically forwarded allowing you to customize individual messages when using the `messages` prop.
-
-```vue
-<script setup lang="ts">
-import { getTextFromMessage } from '@nuxt/ui/utils/ai'
-</script>
-
-<template>
-  <UChatMessages :messages="messages" :status="status">
-    <template #content="{ message }">
-      <MDC :value="getTextFromMessage(message)" :cache-key="message.id" class="*:first:mt-0 *:last:mb-0" />
-    </template>
-  </UChatMessages>
-</template>
-```
-
-</tip>
+> [!TIP]
+> You can use all the slots of the [`ChatMessage`](/docs/components/chat-message#slots) component inside ChatMessages, they are automatically forwarded allowing you to customize individual messages when using the `messages` prop.
+> ```vue
+> <template>
+>   <UChatMessages :messages="messages" :status="status">
+>     <template #content="{ message }">
+>       <template v-for="(part, index) in message.parts" :key="`${message.id}-${part.type}-${index}`">
+>         <MDC v-if="part.type === 'text' && message.role === 'assistant'" :value="part.text" :cache-key="`${message.id}-${index}`" class="*:first:mt-0 *:last:mb-0" />
+>         <p v-else-if="part.type === 'text' && message.role === 'user'" class="whitespace-pre-wrap">{{ part.text }}</p>
+>       </template>
+>     </template>
+>   </UChatMessages>
+> </template>
+> 
+> ```
 
 ## Theme
 
@@ -373,8 +377,4 @@ export default defineAppConfig({
 
 ## Changelog
 
-<component-changelog>
-
-
-
-</component-changelog>
+See the [releases page](https://github.com/nuxt/ui/releases) for the latest changes.

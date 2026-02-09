@@ -2,10 +2,6 @@
 
 # Source: https://docs.aporia.com/v1/integrations/sso-saml-integration.md
 
-# Source: https://docs.aporia.com/integrations/sso-saml-integration.md
-
-# Source: https://docs.aporia.com/v1/integrations/sso-saml-integration.md
-
 # Single Sign On (SAML)
 
 You can easily give access to Aporia to your team using your favorite SAML Idp.

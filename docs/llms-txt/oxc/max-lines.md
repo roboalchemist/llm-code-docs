@@ -3,7 +3,6 @@
 ---
 url: /docs/guide/usage/linter/rules/eslint/max-lines.md
 ---
-# eslint/max-lines&#x20;
 
 ### What it does
 

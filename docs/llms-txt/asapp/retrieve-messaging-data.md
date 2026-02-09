@@ -1,12 +1,16 @@
 # Source: https://docs.asapp.com/reporting/retrieve-messaging-data.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.asapp.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Retrieving Data for ASAPP Messaging
 
 > Learn how to retrieve data from ASAPP Messaging
 
 ASAPP provides secure access to your messaging application data through SFTP (Secure File Transfer Protocol).
 
-The data exported will need to be [deduplicated](#removing-duplicate-data) before importing into your system.
+You need to deduplicate the exported data before importing it into your system.
 
 <Note>
   If you're retrieving data from ASAPP's AI Services, use [File Exporter](/reporting/file-exporter) instead.
@@ -89,15 +93,15 @@ To download data from ASAPP via SFTP, you need to:
 
     ### Verifying the Data Export is Complete
 
-    New Export files are continuously being generated depending on the feed and the export schedule. You can check the `_SUCCESS` file to verify that the export is complete.
+    ASAPP continuously generates new export files depending on the feed and the export schedule. You can check the `_SUCCESS` file to verify that the export is complete.
 
     Upon completing the generating for a particular partition, ASAPP will create an EMPTY file named `_SUCCESS` to the same path as the export file or files. This `_SUCCESS` file acts as a flag indicating that the generation for the associated partition is complete. A `_SUCCESS` file will be written even if there is no available data selected for export for the partition at hand.
 
-    Until the `_SUCCESS` file is created, ASAPP's export is in progress and you should not import the associated data file. You should check for this file before downloading any data partition.
+    Until ASAPP creates the `_SUCCESS` file, the export is in progress and you should not import the associated data file. You should check for this file before downloading any data partition.
 
     ### General Data Formatting Notes
 
-    All ASAPP exports are formatted as follows:
+    All ASAPP exports follow this format:
 
     * Files are in [JSON Lines format](http://jsonlines.org/).
     * ASAPP export files are UTF-8 encoded.
@@ -112,7 +116,7 @@ ASAPP continuously generates data, which means newer files may contain updated v
 
 To remove duplicates from the feeds, download the latest instance of a feed, and use the **Unique Conditions** as the "primary key" for that feed.
 
-Each table's unique conditions are listed in the relevant [feed schema](/reporting/asapp-messaging-feeds).
+Each table's unique conditions appear in the relevant [feed schema](/reporting/asapp-messaging-feeds).
 
 ### Example
 
@@ -137,7 +141,7 @@ We will occasionally extend the schema of an existing feed to add new columns. Y
 
 We will communicate any changes to the schema via your ASAPP account team.
 
-You can also enable automated schema evolution detection and identify any changes using `export_docs.yaml`, which is generated each day and sent via the S3 feed. By incorporating this into the workflows, you can maintain a proactive stance, ensuring uninterrupted service and a smooth transition in the event of schema adjustments.
+You can also enable automated schema evolution detection and identify any changes using `export_docs.yaml`, which ASAPP generates each day and sends via the S3 feed. By incorporating this into the workflows, you can maintain a proactive stance, ensuring uninterrupted service and a smooth transition in the event of schema adjustments.
 
 ## Export Schema
 

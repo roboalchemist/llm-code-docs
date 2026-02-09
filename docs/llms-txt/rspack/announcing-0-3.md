@@ -1,6 +1,6 @@
 # Source: https://rspack.dev/blog/announcing-0-3.md
 
-*August 24, 2023*
+_August 24, 2023_
 
 # Announcing Rspack 0.3
 
@@ -169,12 +169,12 @@ For more detailed information about Profile, see [Performance Profiling](/guide/
 
 Alignment with More APIs
 
-* `splitChunks.chunks` supports regex.
-* Supports `splitChunk.\{cacheGroup\}.type`.
-* Supports `splitChunk.\{cacheGroup\}.idHint`.
-* Supports `ensureChunkConditionsPlugin`.
-* `rules[].use` supports functions.
-* Supports `configuration.profile`.
+- `splitChunks.chunks` supports regex.
+- Supports `splitChunk.\{cacheGroup\}.type`.
+- Supports `splitChunk.\{cacheGroup\}.idHint`.
+- Supports `ensureChunkConditionsPlugin`.
+- `rules[].use` supports functions.
+- Supports `configuration.profile`.
 
 ### More hook and plugin support
 

@@ -1,6 +1,12 @@
 # Source: https://docs.windsurf.com/plugins/cascade/cascade-overview.md
 
-# Overview
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.windsurf.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Cascade Overview
+
+> Cascade brings agentic AI coding to JetBrains with Write/Chat modes, voice input, tool access, turbo mode, and real-time collaboration.
 
 Windsurf's Cascade brings the best of agentic coding to the JetBrains suite.
 
@@ -33,7 +39,7 @@ To add a message to the queue, simply type in your message while Cascade is work
 
 # Access to Tools
 
-Cascade has a variety of tools at its disposal, such as Search, Analyze, [Web Search](/windsurf/web-search), and the [terminal](/windsurf/terminal).
+Cascade has a variety of tools at its disposal, such as Search, Analyze, [Web Search](/windsurf/cascade/web-search), and the [terminal](/windsurf/terminal).
 
 It can detect which packages and tools that you're using, which ones need to be installed, and even install them for you. Just ask Cascade how to run your project and press Accept.
 
@@ -53,15 +59,23 @@ You have the ability to revert changes that Cascade has made if you want to. Sim
 
 <video autoPlay controls muted loop playsInline className="w-full aspect-video" src="https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf/cascade/cascade-revert.mp4?fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=fe494383062acfc1efe07b23c03607a2" data-path="assets/windsurf/cascade/cascade-revert.mp4" />
 
-# Turbo Mode
+# Auto-Execution Modes
 
-In Turbo mode, Cascade will always execute the command, unless it is in the deny list.
+Cascade supports three levels of command auto-execution in JetBrains: **Off**, **Auto**, and **Turbo**. You can select your preferred level via the Windsurf Settings panel.
 
-You can toggle this via the Windsurf - Settings panel in the bottom right hand corner of the editor.
+| Level     | Description                                                                                                    |
+| --------- | -------------------------------------------------------------------------------------------------------------- |
+| **Off**   | Never auto-execute terminal commands, except those in your allow list.                                         |
+| **Auto**  | Model decides whether to auto-execute commands based on safety assessment. Available with premium models only. |
+| **Turbo** | Always auto-execute terminal commands and browser controls, except those in your deny list.                    |
+
+<Note>For Teams and Enterprise users, administrators can set a maximum allowed auto-execution level. Users can select any level up to that maximum, but cannot exceed it.</Note>
 
 <Frame>
   <img style={{ maxHeight: "500px" }} src="https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf/cascade/cascade-turbo-mode.png?fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=8860ea8311000ae2cc440cef26560620" data-og-width="680" width="680" data-og-height="60" height="60" data-path="assets/windsurf/cascade/cascade-turbo-mode.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf/cascade/cascade-turbo-mode.png?w=280&fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=dbcaa01fab58d7ba1fac05acc91ae12f 280w, https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf/cascade/cascade-turbo-mode.png?w=560&fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=c5dc736ca3cd591d00f0c8b3b4f13f90 560w, https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf/cascade/cascade-turbo-mode.png?w=840&fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=13ee4803cf3edcdaba2b9d76dcf109aa 840w, https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf/cascade/cascade-turbo-mode.png?w=1100&fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=389cfcb06aec368986869bfd15a42553 1100w, https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf/cascade/cascade-turbo-mode.png?w=1650&fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=e9829ad62b78b641213d472b4bca8683 1650w, https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf/cascade/cascade-turbo-mode.png?w=2500&fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=db556ad06ddff8c4fbe5186569bf8334 2500w" />
 </Frame>
+
+For more details on auto-execution levels and allow/deny lists, see the [Terminal documentation](/windsurf/terminal#auto-executed-cascade-commands).
 
 # Real-time collaboration
 

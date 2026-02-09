@@ -59,7 +59,7 @@ dotnet tool install --global x
 Once installed, a new `web` template can be created using:
 
 :::sh
-x new web MyProjectName
+npx create-net web MyProjectName
 :::
 
 ### Mix in a database and AutoQuery
@@ -67,7 +67,7 @@ x new web MyProjectName
 We can use the dotnet `x` tool to `mix` in specific database support and AutoQuery quickly using the command run from the project directory.
 
 :::sh
-x mix sqlite autoquery
+npx add-in sqlite autoquery
 :::
 
 ::: tip
@@ -154,7 +154,7 @@ This empty Request DTO alone is all it takes to create an AutoQuery API that can
 any of the [Implicit Conventions](/autoquery/rdbms#implicit-conventions) registered in the
 `AutoQueryFeature` plugin, e.g:
 
- - https://vue-vite-api.jamstacks.net/api/QueryBookings?Ids=1,2,3
+ - https://vue-spa.web-templates.io/api/QueryBookings?Ids=1,2,3
 
 However, to aid in the discovery of popular Booking table queries and make them easily accessible to all of ServiceStack's
 [Typed Service Clients](/add-servicestack-reference) or [gRPC Clients](/grpc/)
@@ -172,7 +172,7 @@ Where they can also be consumed by every Service Client with an end-to-end Typed
 
 ```csharp
 // C#
-var client = new JsonApiClient("https://vue-vite-api.jamstacks.net");
+var client = new JsonApiClient("https://vue-spa.web-templates.io");
 var api = await client.ApiAsync(new QueryBookings { Ids = new[] { 1,2,3 }));
 ```
 
@@ -180,7 +180,7 @@ TypeScript Example:
 
 ```ts
 // TypeScript
-let client = new JsonServiceClient("https://vue-vite-api.jamstacks.net")
+let client = new JsonServiceClient("https://vue-spa.web-templates.io")
 let api = await client.api(new QueryBookings({ Ids: [1,2,3] }))
 ```
 
@@ -200,7 +200,7 @@ public class QueryBookings : QueryDb<Booking>
 
 To also make the `QueryBookings` API available from the `/bookings` path, e.g:
 
-- https://vue-vite-api.jamstacks.net/bookings?Ids=1,2,3
+- https://vue-spa.web-templates.io/bookings?Ids=1,2,3
 
 ### AutoQuery CRUD APIs
 

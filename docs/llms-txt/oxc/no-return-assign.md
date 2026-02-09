@@ -3,7 +3,6 @@
 ---
 url: /docs/guide/usage/linter/rules/eslint/no-return-assign.md
 ---
-# eslint/no-return-assign&#x20;
 
 ### What it does
 

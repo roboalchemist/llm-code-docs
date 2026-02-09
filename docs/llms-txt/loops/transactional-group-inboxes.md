@@ -1,5 +1,9 @@
 # Source: https://loops.so/docs/deliverability/transactional-group-inboxes.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://loops.so/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Sending transactional emails to group inboxes
 
 > Learn how to ensure transactional emails can be delivered to your group inbox.

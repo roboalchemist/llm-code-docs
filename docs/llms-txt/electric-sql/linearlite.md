@@ -7,7 +7,7 @@ description: Local-first project management app built with Electric and PGlite.
 
 # Linearlite
 
-[Linear](https://linear.app) project management app clone, built using [Electric](/product/electric) and [PGlite](/product/pglite).
+[Linear](https://linear.app) project management app clone, built using [Electric](/products/postgres-sync) and [PGlite](/products/pglite).
 
 ## Linearlite using Electric and PGlite
 

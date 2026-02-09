@@ -84,12 +84,22 @@ Supported models:
 
 ***
 
+* [baidu/ernie-4.5-21b-a3b-thinking](https://docs.aimlapi.com/api-references/text-models-llm/baidu/ernie-4.5-21b-a3b-thinking)
+* [baidu/ernie-5-0-thinking-preview](https://docs.aimlapi.com/api-references/text-models-llm/baidu/ernie-5.0-thinking-preview)
+* [baidu/ernie-5-0-thinking-latest](https://docs.aimlapi.com/api-references/text-models-llm/baidu/ernie-5.0-thinking-latest)
+
+***
+
+* [deepseek/deepseek-v3.2-speciale](https://docs.aimlapi.com/api-references/text-models-llm/deepseek/deepseek-v3.2-speciale)
+
+***
+
 * [minimax/m2](https://docs.aimlapi.com/api-references/text-models-llm/minimax/m2)
 * [minimax/m2-1](https://docs.aimlapi.com/api-references/text-models-llm/minimax/m2-1)
 
 ***
 
-* [vidia/nemotron-nano-9b-v2](https://docs.aimlapi.com/api-references/text-models-llm/nvidia/nemotron-nano-9b-v2)
+* [nvidia/nemotron-nano-9b-v2](https://docs.aimlapi.com/api-references/text-models-llm/nvidia/nemotron-nano-9b-v2)
 * [nvidia/nemotron-nano-12b-v2-vl](https://docs.aimlapi.com/api-references/text-models-llm/nvidia/llama-3.1-nemotron-70b-1)
 
 ***

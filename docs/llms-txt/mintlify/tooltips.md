@@ -1,4 +1,8 @@
-# Source: https://mintlify.com/docs/components/tooltips.md
+# Source: https://www.mintlify.com/docs/components/tooltips.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.mintlify.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Tooltips
 
@@ -6,16 +10,20 @@
 
 Use tooltips to provide additional context or definitions when a user hovers over a string of text. Tooltips can include optional call-to-action links.
 
-**Example**: <Tooltip tip="Application Programming Interface: a set of protocols for software applications to communicate." cta="Read our API guide" href="/api-reference">API</Tooltip> documentation helps developers understand how to integrate with your service.
+**Example**: <Tooltip headline="API" tip="Application Programming Interface: a set of protocols for software applications to communicate." cta="Read our API guide" href="/api-reference">API</Tooltip> documentation helps developers understand how to integrate with your service.
 
 ```mdx Tooltip example wrap theme={null}
-<Tooltip tip="Application Programming Interface: a set of protocols for software applications to communicate." cta="Read our API guide" href="/api-reference">API</Tooltip> documentation helps developers understand how to integrate with your service.
+<Tooltip headline="API" tip="Application Programming Interface: a set of protocols for software applications to communicate." cta="Read our API guide" href="/api-reference">API</Tooltip> documentation helps developers understand how to integrate with your service.
 ```
 
 ## Properties
 
 <ResponseField name="tip" type="string" required>
   The text displayed in the tooltip.
+</ResponseField>
+
+<ResponseField name="headline" type="string">
+  Text displayed above the `tip` text.
 </ResponseField>
 
 <ResponseField name="cta" type="string">

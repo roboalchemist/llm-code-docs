@@ -1,5 +1,9 @@
 # Source: https://docs.helicone.ai/gateway/concepts/reasoning.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.helicone.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Reasoning
 
 > Enable reasoning through a unified API on Helicone's AI Gateway
@@ -304,8 +308,3 @@ The `budget_tokens` parameter sets the maximum number of tokens the model can us
 
 * [Responses API](/gateway/concepts/responses-api) - Alternative API format with reasoning support
 * [Context Editing](/gateway/concepts/context-editing) - Manage context in long reasoning sessions
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.helicone.ai/llms.txt

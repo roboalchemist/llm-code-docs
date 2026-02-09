@@ -1,5 +1,9 @@
 # Source: https://docs.pipecat.ai/deployment/platforms/fly.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pipecat.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Fly.io
 
 > Deploy Pipecat bots to Fly.io machines
@@ -239,8 +243,3 @@ This is really helpful for monitoring the status of your spawned machine, and de
 This example does little in the way of load balancing or app security. Indeed, a user can spawn a new machine on your account simply by sending a `POST` request to the `bot_runner.py`. Be sure to configure a maximum number of instances, or authenticate requests to avoid costs getting out of control.
 
 We also deployed our `bot.py` on a machine with the same image as our `bot_runner.py`. To optimize container file sizes and increase security, consider individual images that only deploy resources they require.
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.pipecat.ai/llms.txt

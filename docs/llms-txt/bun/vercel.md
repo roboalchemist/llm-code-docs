@@ -1,30 +1,10 @@
 # Source: https://bun.com/docs/guides/deployment/vercel.md
 
-# Deploy a Bun application on Vercel
+> ## Documentation Index
+> Fetch the complete documentation index at: https://bun.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
-export const ProductCard = ({img, href, title, description, model, type}) => {
-  return <a href={href} target="_blank" rel="noopener noreferrer" className="group">
-      <div className="flex flex-col gap-4 rounded-xl md:p-1">
-        <div className="w-full h-32 overflow-hidden rounded-xl bg-gray-100 dark:bg-gray-800">
-          <img src={img} className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" alt={title} loading="lazy" />
-        </div>
-        <div className="flex flex-col gap-3 pb-2">
-          <h2 className="text-md font-medium text-gray-900 dark:text-gray-200 group-hover:text-gray-600 dark:group-hover:text-gray-400 transition-colors mb-[-8px]">
-            {title}
-          </h2>
-          <p className="text-gray-500 dark:text-gray-400 text-sm font-medium">{description}</p>
-          <div className="flex gap-2 mt-2 mb-1">
-            <span className="bg-gray-100 dark:bg-[#181817] text-gray-600 dark:text-white rounded-lg px-2 py-1 text-sm font-medium">
-              {model}
-            </span>
-            <span className="bg-primary-light dark:bg-primary-dark text-white dark:text-white rounded-lg px-2 py-1 text-sm font-medium">
-              {type}
-            </span>
-          </div>
-        </div>
-      </div>
-    </a>;
-};
+# Deploy a Bun application on Vercel
 
 [Vercel](https://vercel.com/) is a cloud platform that lets you build, deploy, and scale your apps.
 
@@ -102,7 +82,7 @@ export const ProductCard = ({img, href, title, description, model, type}) => {
     ```
 
     ```txt  theme={"theme":{"light":"github-light","dark":"dracula"}}
-    runtime 1.3.2
+    runtime 1.3.3
     ```
 
     [See the Vercel Bun Runtime documentation for feature support →](https://vercel.com/docs/functions/runtimes/bun#feature-support)

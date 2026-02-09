@@ -1,5 +1,9 @@
 # Source: https://braintrust.dev/docs/cookbook/recipes/SimpleQA.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://braintrust.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Evaluating SimpleQA
 
 <div className="text-sm">[Contributed](https://github.com/braintrustdata/braintrust-cookbook/blob/main/examples/SimpleQA/SimpleQA.ipynb) by [Ankur Goyal](https://twitter.com/ankrgyl), [Ornella Altunyan](https://twitter.com/ornelladotcom) on 2024-12-06</div>
@@ -12,7 +16,7 @@ Before getting started, make sure you have a [Braintrust account](https://www.br
 
 ### Install dependencies
 
-Everything you need to run evals is readily available through Braintrust. We'll use the [AI proxy](https://www.braintrust.dev/docs/guides/proxy) to access multiple AI models without having to write model-specific code. Run the following command to install required libraries.
+Everything you need to run evals is readily available through Braintrust. We'll use the [AI proxy](/deploy/ai-proxy) to access multiple AI models without having to write model-specific code. Run the following command to install required libraries.
 
 ```python  theme={"theme":{"light":"github-light","dark":"github-dark-dimmed"}}
 %pip install autoevals braintrust openai requests
@@ -278,8 +282,3 @@ From here, there are a few different things you could do to improve the score of
 * Run the experiment on a larger dataset
 
 The way we’ve set up the experiment here makes it easy to switch out the LLM and compare results across models, examine your evaluation more thoroughly in the UI, and add more data points to your evaluation dataset. Give it a try!
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://braintrust.dev/docs/llms.txt

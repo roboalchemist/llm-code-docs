@@ -1,52 +1,90 @@
-# Source: https://braintrust.dev/docs/integrations/sdk-integrations/google.md
-
 # Source: https://braintrust.dev/docs/integrations/ai-providers/google.md
 
-# Vertex AI
+# Source: https://braintrust.dev/docs/integrations/agent-frameworks/google.md
 
-> Configure Google Cloud Vertex AI to access Google's foundation models
+> ## Documentation Index
+> Fetch the complete documentation index at: https://braintrust.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
-Configure Google Cloud Vertex AI to access Google's foundation models through Braintrust.
+# Google ADK (Agent Development Kit)
 
-## Authentication
+[Google ADK (Agent Development Kit)](https://github.com/google/adk-python) is Google's framework for building AI agents powered by Gemini models. Braintrust automatically traces ADK agent executions, capturing agent invocations, tool calls, parallel flows, and multi-step reasoning.
 
-Choose between two authentication methods:
+## Setup
 
-* **Access token**: Use a Vertex AI access token for authentication
-* **Service account key**: Use a service account key JSON file for authentication
+Install the Braintrust ADK integration:
 
-## Configuration
+<CodeGroup>
+  ```bash Python theme={"theme":{"light":"github-light","dark":"github-dark-dimmed"}}
+  pip install braintrust-adk
+  ```
+</CodeGroup>
 
-| Field                                                                | Description                                                                                                                                                                                                                     |
-| -------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Project**<br />String                                              | Required. Your [Google Cloud Project ID](https://cloud.google.com/resource-manager/docs/creating-managing-projects) where Vertex AI is enabled.                                                                                 |
-| **Authentication type**<br />`access_token` \| `service_account_key` | Required. Choose between access token or service account key authentication. [Documentation](https://cloud.google.com/vertex-ai/docs/authentication)                                                                            |
-| **Secret**<br />JSON String                                          | Required if using `service_account_key` auth type. The service account key JSON content. [Documentation](https://cloud.google.com/iam/docs/creating-managing-service-account-keys)                                              |
-| **API base**<br />URL String                                         | Optional. Custom API endpoint URL if using a different Vertex AI endpoint. [Documentation](https://cloud.google.com/vertex-ai/docs/reference/rest#service-endpoint). Default is `https://{location}-aiplatform.googleapis.com`. |
+## Trace with Google ADK
 
-## Models
+Call `setup_adk()` to enable automatic tracing for all ADK agent interactions:
 
-Popular Vertex AI models include:
+```python title="trace-adk-braintrust.py" theme={"theme":{"light":"github-light","dark":"github-dark-dimmed"}}
+import asyncio
 
-* Gemini 1.5 Pro (`gemini-1.5-pro`)
-* Gemini 1.5 Flash (`gemini-1.5-flash`)
-* PaLM 2 (`text-bison`)
-* Codey (`code-bison`)
+from braintrust_adk import setup_adk
+from google.adk import Runner
+from google.adk.agents import LlmAgent
+from google.adk.sessions import InMemorySessionService
+from google.genai import types
 
-## Setup requirements
+setup_adk(
+    project_name="my-adk-project",
+)
 
-1. **Enable Vertex AI API**: Ensure the Vertex AI API is enabled in your Google Cloud project
-2. **Service account permissions**: If using service account authentication, ensure the service account has the `AI Platform Developer` role
-3. **Quotas**: Check your project's Vertex AI quotas and limits
+# Create your ADK agent as normal
+def get_weather(city: str) -> dict:
+    """Get weather for a city."""
+    return {"temperature": 72, "condition": "sunny", "city": city}
 
-## Additional resources
+def get_current_time() -> str:
+    """Get the current time."""
+    from datetime import datetime
 
-* [Vertex AI Documentation](https://cloud.google.com/vertex-ai/docs)
-* [Vertex AI Model Garden](https://cloud.google.com/vertex-ai/docs/model-garden/explore-models)
-* [Vertex AI Pricing](https://cloud.google.com/vertex-ai/pricing)
-* [Authentication Guide](https://cloud.google.com/vertex-ai/docs/authentication)
+    return datetime.now().strftime("%I:%M %p")
 
+async def main():
+    # Create the agent
+    agent = LlmAgent(
+        name="weather_time_assistant",
+        tools=[get_weather, get_current_time],
+        model="gemini-2.5-flash",
+        instruction="You are a helpful assistant that can check weather and time.",
+    )
+    # Create a session service and a runner
+    session_service = InMemorySessionService()
+    runner = Runner(app_name="weather_app", agent=agent, session_service=session_service)
+    # Create a fake session
+    user_id = "user123"
+    session_id = "session123"
+    await session_service.create_session(app_name="weather_app", user_id=user_id, session_id=session_id)
+    # Create the message to send
+    new_message = types.Content(
+        parts=[types.Part(text="What's the weather like in New York?")],
+        role="user",
+    )
+    # Run the agent with the query
+    events = runner.run(
+        user_id=user_id,
+        session_id=session_id,
+        new_message=new_message,
+    )
+    # Process the events and print the agent's response
+    for event in events:
+        print(event)
 
----
+if __name__ == "__main__":
+    asyncio.run(main())
+```
 
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://braintrust.dev/docs/llms.txt
+<img src="https://mintcdn.com/braintrust/p0aIuwUs6uEDT4tr/images/integrations/adk.png?fit=max&auto=format&n=p0aIuwUs6uEDT4tr&q=85&s=7e888caf295dd2fc1e4dd263c63a29b6" alt="Example of automatic Google ADK tracing and logs sent to Braintrust" data-og-width="1571" width="1571" data-og-height="1293" height="1293" data-path="images/integrations/adk.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/braintrust/p0aIuwUs6uEDT4tr/images/integrations/adk.png?w=280&fit=max&auto=format&n=p0aIuwUs6uEDT4tr&q=85&s=6368cc82026761691f0f0f1b0b1de0d4 280w, https://mintcdn.com/braintrust/p0aIuwUs6uEDT4tr/images/integrations/adk.png?w=560&fit=max&auto=format&n=p0aIuwUs6uEDT4tr&q=85&s=5f524445f3d7af3ff8b0e152655658bb 560w, https://mintcdn.com/braintrust/p0aIuwUs6uEDT4tr/images/integrations/adk.png?w=840&fit=max&auto=format&n=p0aIuwUs6uEDT4tr&q=85&s=1e3bac859a6a74b39b1bbeba631790d6 840w, https://mintcdn.com/braintrust/p0aIuwUs6uEDT4tr/images/integrations/adk.png?w=1100&fit=max&auto=format&n=p0aIuwUs6uEDT4tr&q=85&s=5cf565c2a90256ac3017ced3a12074ff 1100w, https://mintcdn.com/braintrust/p0aIuwUs6uEDT4tr/images/integrations/adk.png?w=1650&fit=max&auto=format&n=p0aIuwUs6uEDT4tr&q=85&s=869ac44c7a4d184bb7fe5ca3533e46a5 1650w, https://mintcdn.com/braintrust/p0aIuwUs6uEDT4tr/images/integrations/adk.png?w=2500&fit=max&auto=format&n=p0aIuwUs6uEDT4tr&q=85&s=8fa295b9495dad1e1487bd895eb6dcc2 2500w" />
+
+## Resources
+
+* [Google ADK documentation](https://github.com/google/adk-python)
+* [Google Gemini models](https://ai.google.dev/)

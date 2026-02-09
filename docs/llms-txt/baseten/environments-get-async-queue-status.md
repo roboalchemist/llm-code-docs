@@ -1,5 +1,9 @@
 # Source: https://docs.baseten.co/reference/inference-api/status-endpoints/environments-get-async-queue-status.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.baseten.co/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Async environment
 
 > Use this endpoint to get the async queue status for a model associated with the specified environment.

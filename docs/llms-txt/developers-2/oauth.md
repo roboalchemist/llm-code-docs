@@ -2,10 +2,6 @@
 
 # Source: https://developers.raycast.com/api-reference/oauth.md
 
-# Source: https://developers.raycast.com/utilities/oauth.md
-
-# Source: https://developers.raycast.com/api-reference/oauth.md
-
 # OAuth
 
 ## Prerequisites

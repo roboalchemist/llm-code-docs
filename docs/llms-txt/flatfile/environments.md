@@ -1,5 +1,9 @@
 # Source: https://flatfile.com/docs/core-concepts/environments.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://flatfile.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Environments
 
 > Use Environments for testing and authentication
@@ -27,7 +31,7 @@ Your `publishableKey` and `secretKey` are specific to an environment therefore t
 2. Click to Personal Tokens
 3. You can use the key pair in there to create an access token like:
 
-```bash
+```bash  theme={null}
 curl -X POST https://platform.flatfile.com/v1/auth -H 'Content-Type: application/json' -d '{"clientId":"1234-1234", "secret":"1234-1234"}'
 ```
 

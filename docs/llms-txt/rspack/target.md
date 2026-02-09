@@ -1,15 +1,20 @@
 # Source: https://rspack.dev/config/target.md
 
-import WebpackLicense from '@components/WebpackLicense';
+CC 4.0 License> The content of this section is derived from the content of the following links and is subject to the CC BY 4.0 license.
+> 
+> - [https://webpack.js.org/configuration/target/](https://webpack.js.org/configuration/target/)
+> 
+> The following contents can be assumed to be the result of modifications and deletions based on the original contents if not specifically stated.
+> 
+> 
 
-<WebpackLicense from="https://webpack.js.org/configuration/target/" />
 
 # Target
 
 Used to configure the target environment of Rspack output and the ECMAScript version of Rspack runtime code.
 
-* **Type:** `string | string[]`
-* **Default:** `browserslist` if the current project has a browserslist config, otherwise `web`.
+- **Type:** `string | string[]`
+- **Default:** `browserslist` if the current project has a browserslist config, otherwise `web`.
 
 ## string
 
@@ -26,7 +31,7 @@ The following options are now supported:
 | `'electron[[X].Y]-main'`     | Compile for Electron for main process.                                                                                                                                                                                                        |
 | `'electron[[X].Y]-renderer'` | Compile for Electron for renderer process, providing a target using `array-push` as chunkFormat and `jsonp` as chunkLoading for browser environments and `NodeTargetPlugin` and `ExternalsPlugin` for CommonJS and Electron built-in modules. |
 | `'electron[[X].Y]-preload'`  | Compile for Electron for preload script of renderer process                                                                                                                                                                                   |
-| `'nwjs[[X].Y]'`              | Compile as available for NW.js environments                                                                                                                                                                                                   |
+| `'nwjs[[X].Y]'`              | Compile as available for NW\.js environments                                                                                                                                                                                                  |
 | `'node-webkit[[X].Y]'`       | Compile as available for node-webkit environments                                                                                                                                                                                             |
 
 :::warning Scope of esX
@@ -68,8 +73,8 @@ For this case, you can define multiple Rspack configurations for bundling based 
 
 If the current project has a browserslist config, then Rspack will use it for:
 
-* Determinate ES-features that may be used to generate the **Rspack runtime code** (this will not affect the transpilation result of user code).
-* Infer a target environment (e.g: `last 2 node versions` the same as `target: "node"` with some [`output.environment`](/config/output.md#outputenvironment) settings).
+- Determinate ES-features that may be used to generate the **Rspack runtime code** (this will not affect the transpilation result of user code).
+- Infer a target environment (e.g: `last 2 node versions` the same as `target: "node"` with some [`output.environment`](/config/output.md#outputenvironment) settings).
 
 :::tip What is Browserslist
 [Browserslist](https://browsersl.ist/) can specify which browsers your web application can run in, it provides a configuration for specifying browsers range. Browserslist has become a standard in the industry, it is used by libraries such as Autoprefixer, Babel, ESLint, PostCSS, SWC and webpack.
@@ -77,11 +82,11 @@ If the current project has a browserslist config, then Rspack will use it for:
 
 Supported browserslist values:
 
-* `browserslist` - use automatically resolved browserslist config and environment (from the nearest `.browserslistrc` file, `package.json`'s `browserslist` field, or `BROWSERSLIST` environment variable, see [browserslist documentation](https://github.com/browserslist/browserslist#queries) for details)
-* `browserslist:modern` - use `modern` environment from automatically resolved browserslist config
-* `browserslist:last 2 versions` - use an explicit browserslist query (config will be ignored)
-* `browserslist:/path/to/config` - explicitly specify browserslist config
-* `browserslist:/path/to/config:modern` - explicitly specify browserslist config and an environment
+- `browserslist` - use automatically resolved browserslist config and environment (from the nearest `.browserslistrc` file, `package.json`'s `browserslist` field, or `BROWSERSLIST` environment variable, see [browserslist documentation](https://github.com/browserslist/browserslist#queries) for details)
+- `browserslist:modern` - use `modern` environment from automatically resolved browserslist config
+- `browserslist:last 2 versions` - use an explicit browserslist query (config will be ignored)
+- `browserslist:/path/to/config` - explicitly specify browserslist config
+- `browserslist:/path/to/config:modern` - explicitly specify browserslist config and an environment
 
 ### Limitations
 
@@ -89,9 +94,9 @@ Rspack uses [browserslist-rs](https://github.com/browserslist/browserslist-rs), 
 
 Currently unsupported features:
 
-* Baseline queries, such as `baseline widely available`
-* Custom usage queries, such as `> 0.5% in my stats`
-* Coverage-based usage queries, such as `cover 99.5% in my stats`
+- Baseline queries, such as `baseline widely available`
+- Custom usage queries, such as `> 0.5% in my stats`
+- Coverage-based usage queries, such as `cover 99.5% in my stats`
 
 ## Node.js version
 
@@ -104,6 +109,19 @@ export default {
 ```
 
 When Rspack generates runtime code, this helps determine which ES features can be used (all chunks and modules are wrapped by runtime code).
+
+## Default targets for builtin loaders and plugins
+
+Rspack derives default targets from the `target` configuration and provides them to built-in loaders and plugins. If you don't specify targets in the loader/plugin options, the derived targets will be used:
+
+- `builtin:swc-loader` uses the derived targets as default `env.targets` or `jsc.target`
+- `builtin:lightningcss-loader` uses the derived targets as default `targets` (only for browserslist-related targets, since Lightning CSS only supports browser targets)
+- `SwcJsMinimizerRspackPlugin` uses the derived targets as default `ecma` version
+- `LightningCssMinimizerRspackPlugin` uses the derived targets as default `targets` (only for browserslist-related targets)
+
+This means you no longer need to manually configure the same targets in multiple places. For example, if you set `target: 'node18'`, the loaders and plugins will automatically use Node.js 18 compatible settings.
+
+Third-party loaders and plugins can also access `compiler.target` to derive default targets based on Rspack's target configuration. The `compiler.target` object contains `targets` (platform names with versions) and `esVersion` (the ECMAScript version number).
 
 ## target: false
 

@@ -1,20 +1,6 @@
 # Source: https://www.daytona.io/docs/en/typescript-sdk/image.md
 
-# Source: https://www.daytona.io/docs/en/python-sdk/common/image.md
-
-# Source: https://www.daytona.io/docs/en/typescript-sdk/image.md
-
-# Source: https://www.daytona.io/docs/en/python-sdk/common/image.md
-
-# Source: https://www.daytona.io/docs/en/typescript-sdk/image.md
-
-# Source: https://www.daytona.io/docs/en/python-sdk/common/image.md
-
-# Source: https://www.daytona.io/docs/en/typescript-sdk/image.md
-
-# Source: https://www.daytona.io/docs/en/python-sdk/common/image.md
-
-# Source: https://www.daytona.io/docs/en/typescript-sdk/image.md
+# Source: https://www.daytona.io/docs/en/ruby-sdk/image.md
 
 # Source: https://www.daytona.io/docs/en/python-sdk/common/image.md
 
@@ -39,10 +25,10 @@ Returns a generated Dockerfile for the image.
 #### Image.pip\_install
 
 ```python
-def pip_install(*packages: Union[str, list[str]],
-                find_links: Optional[list[str]] = None,
-                index_url: Optional[str] = None,
-                extra_index_urls: Optional[list[str]] = None,
+def pip_install(*packages: str | list[str],
+                find_links: list[str] | None = None,
+                index_url: str | None = None,
+                extra_index_urls: list[str] | None = None,
                 pre: bool = False,
                 extra_options: str = "") -> "Image"
 ```
@@ -52,9 +38,9 @@ Adds commands to install packages using pip.
 **Arguments**:
 
 - `*packages` - The packages to install.
-- `find_links` - Optional[list[str]]: The find-links to use.
-- `index_url` - Optional[str]: The index URL to use.
-- `extra_index_urls` - Optional[list[str]]: The extra index URLs to use.
+- `find_links` - list[str] | None: The find-links to use.
+- `index_url` - str | None: The index URL to use.
+- `extra_index_urls` - list[str] | None: The extra index URLs to use.
 - `pre` - bool = False: Whether to install pre-release packages.
 - `extra_options` - str = "": Additional options to pass to pip. Given string is passed
   directly to the pip install command.
@@ -75,9 +61,9 @@ image = Image.debian_slim("3.12").pip_install("requests", "pandas")
 
 ```python
 def pip_install_from_requirements(requirements_txt: str,
-                                  find_links: Optional[list[str]] = None,
-                                  index_url: Optional[str] = None,
-                                  extra_index_urls: Optional[list[str]] = None,
+                                  find_links: list[str] | None = None,
+                                  index_url: str | None = None,
+                                  extra_index_urls: list[str] | None = None,
                                   pre: bool = False,
                                   extra_options: str = "") -> "Image"
 ```
@@ -87,9 +73,9 @@ Installs dependencies from a requirements.txt file.
 **Arguments**:
 
 - `requirements_txt` - str: The path to the requirements.txt file.
-- `find_links` - Optional[list[str]]: The find-links to use.
-- `index_url` - Optional[str]: The index URL to use.
-- `extra_index_urls` - Optional[list[str]]: The extra index URLs to use.
+- `find_links` - list[str] | None: The find-links to use.
+- `index_url` - str | None: The index URL to use.
+- `extra_index_urls` - list[str] | None: The extra index URLs to use.
 - `pre` - bool = False: Whether to install pre-release packages.
 - `extra_options` - str = "": Additional options to pass to pip.
   
@@ -110,9 +96,9 @@ image = Image.debian_slim("3.12").pip_install_from_requirements("requirements.tx
 ```python
 def pip_install_from_pyproject(pyproject_toml: str,
                                optional_dependencies: list[str],
-                               find_links: Optional[str] = None,
-                               index_url: Optional[str] = None,
-                               extra_index_url: Optional[str] = None,
+                               find_links: str | None = None,
+                               index_url: str | None = None,
+                               extra_index_url: str | None = None,
                                pre: bool = False,
                                extra_options: str = "") -> "Image"
 ```
@@ -123,9 +109,9 @@ Installs dependencies from a pyproject.toml file.
 
 - `pyproject_toml` - str: The path to the pyproject.toml file.
 - `optional_dependencies` - list[str] = []: The optional dependencies to install from the pyproject.toml file.
-- `find_links` - Optional[str] = None: The find-links to use.
-- `index_url` - Optional[str] = None: The index URL to use.
-- `extra_index_url` - Optional[str] = None: The extra index URL to use.
+- `find_links` - str | None = None: The find-links to use.
+- `index_url` - str | None = None: The index URL to use.
+- `extra_index_url` - str | None = None: The extra index URL to use.
 - `pre` - bool = False: Whether to install pre-release packages.
 - `extra_options` - str = "": Additional options to pass to pip. Given string is passed
   directly to the pip install command.
@@ -145,14 +131,14 @@ image = Image.debian_slim("3.12")                 .pip_install_from_pyproject("p
 #### Image.add\_local\_file
 
 ```python
-def add_local_file(local_path: Union[str, Path], remote_path: str) -> "Image"
+def add_local_file(local_path: str | Path, remote_path: str) -> "Image"
 ```
 
 Adds a local file to the image.
 
 **Arguments**:
 
-- `local_path` - Union[str, Path]: The path to the local file.
+- `local_path` - str | Path: The path to the local file.
 - `remote_path` - str: The path to the file in the image.
   
 
@@ -170,14 +156,14 @@ image = Image.debian_slim("3.12").add_local_file("package.json", "/home/daytona/
 #### Image.add\_local\_dir
 
 ```python
-def add_local_dir(local_path: Union[str, Path], remote_path: str) -> "Image"
+def add_local_dir(local_path: str | Path, remote_path: str) -> "Image"
 ```
 
 Adds a local directory to the image.
 
 **Arguments**:
 
-- `local_path` - Union[str, Path]: The path to the local directory.
+- `local_path` - str | Path: The path to the local directory.
 - `remote_path` - str: The path to the directory in the image.
   
 
@@ -195,7 +181,7 @@ image = Image.debian_slim("3.12").add_local_dir("src", "/home/daytona/src")
 #### Image.run\_commands
 
 ```python
-def run_commands(*commands: Union[str, list[str]]) -> "Image"
+def run_commands(*commands: str | list[str]) -> "Image"
 ```
 
 Runs commands in the image.
@@ -246,14 +232,14 @@ image = Image.debian_slim("3.12").env({"PROJECT_ROOT": "/home/daytona"})
 #### Image.workdir
 
 ```python
-def workdir(path: Union[str, Path]) -> "Image"
+def workdir(path: str | Path) -> "Image"
 ```
 
 Sets the working directory in the image.
 
 **Arguments**:
 
-- `path` - Union[str, Path]: The path to the working directory.
+- `path` - str | Path: The path to the working directory.
   
 
 **Returns**:
@@ -318,9 +304,8 @@ image = Image.debian_slim("3.12").cmd(["/bin/bash"])
 #### Image.dockerfile\_commands
 
 ```python
-def dockerfile_commands(
-        dockerfile_commands: list[str],
-        context_dir: Optional[Union[Path, str]] = None) -> "Image"
+def dockerfile_commands(dockerfile_commands: list[str],
+                        context_dir: Path | str | None = None) -> "Image"
 ```
 
 Adds arbitrary Dockerfile-like commands to the image.
@@ -328,7 +313,7 @@ Adds arbitrary Dockerfile-like commands to the image.
 **Arguments**:
 
 - `*dockerfile_commands` - The commands to add to the Dockerfile.
-- `context_dir` - Optional[Union[Path, str]]: The path to the context directory.
+- `context_dir` - Path | str | None: The path to the context directory.
   
 
 **Returns**:
@@ -346,14 +331,14 @@ image = Image.debian_slim("3.12").dockerfile_commands(["RUN echo 'Hello, world!'
 
 ```python
 @staticmethod
-def from_dockerfile(path: Union[str, Path]) -> "Image"
+def from_dockerfile(path: str | Path) -> "Image"
 ```
 
 Creates an Image from an existing Dockerfile.
 
 **Arguments**:
 
-- `path` - Union[str, Path]: The path to the Dockerfile.
+- `path` - str | Path: The path to the Dockerfile.
   
 
 **Returns**:
@@ -397,14 +382,14 @@ image = Image.base("python:3.12-slim-bookworm")
 ```python
 @staticmethod
 def debian_slim(
-        python_version: Optional[SupportedPythonSeries] = None) -> "Image"
+        python_version: SupportedPythonSeries | None = None) -> "Image"
 ```
 
 Creates a Debian slim image based on the official Python Docker image.
 
 **Arguments**:
 
-- `python_version` - Optional[SupportedPythonSeries]: The Python version to use.
+- `python_version` - SupportedPythonSeries | None: The Python version to use.
   
 
 **Returns**:
@@ -430,4 +415,4 @@ Context for an image.
 **Attributes**:
 
 - `source_path` _str_ - The path to the source file or directory.
-- `archive_path` _Optional[str]_ - The path inside the archive file in object storage.
+- `archive_path` _str | None_ - The path inside the archive file in object storage.

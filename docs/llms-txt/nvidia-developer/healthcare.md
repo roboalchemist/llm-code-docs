@@ -2,14 +2,6 @@
 
 # Source: https://developer.nvidia.com/isaac/healthcare.md
 
-# Source: https://developer.nvidia.com/industries/healthcare.md
-
-# Source: https://developer.nvidia.com/isaac/healthcare.md
-
-# Source: https://developer.nvidia.com/industries/healthcare.md
-
-# Source: https://developer.nvidia.com/isaac/healthcare.md
-
 1. [Home  
 ](/)
 

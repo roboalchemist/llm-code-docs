@@ -1,5 +1,9 @@
 # Source: https://docs.zapier.com/platform/build/code-mode.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.zapier.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Use Code Mode to refine your API call
 
 <Frame><img src="https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/1fa2f12c1c41a49f3d7aeff4d2706f7c.webp?fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=9b7cee390540952e249074b3491a152d" alt="" data-og-width="931" width="931" data-og-height="472" height="472" data-path="images/1fa2f12c1c41a49f3d7aeff4d2706f7c.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/1fa2f12c1c41a49f3d7aeff4d2706f7c.webp?w=280&fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=b476565cc36bb5074b8858fc046237f1 280w, https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/1fa2f12c1c41a49f3d7aeff4d2706f7c.webp?w=560&fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=636b7e79d0b016b41158f5a4f55fab6a 560w, https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/1fa2f12c1c41a49f3d7aeff4d2706f7c.webp?w=840&fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=26396bd5d60775e2652bb8951b8739c3 840w, https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/1fa2f12c1c41a49f3d7aeff4d2706f7c.webp?w=1100&fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=28f14c577100092e0a6cefdbf3899150 1100w, https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/1fa2f12c1c41a49f3d7aeff4d2706f7c.webp?w=1650&fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=8d9c3da67b794e1ebd3f361d1dd998c2 1650w, https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/1fa2f12c1c41a49f3d7aeff4d2706f7c.webp?w=2500&fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=b6cafa48352f9982eda88d5cc316b0c1 2500w" /></Frame>

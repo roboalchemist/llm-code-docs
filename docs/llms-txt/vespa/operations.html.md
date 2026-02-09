@@ -2,31 +2,34 @@
 
 # Source: https://docs.vespa.ai/en/operations/enclave/operations.html.md
 
-# Source: https://docs.vespa.ai/en/basics/operations.html.md
+# Source: https://docs.vespa.ai/en/operations/kubernetes/operations.html.md
 
-# Source: https://docs.vespa.ai/en/operations/enclave/operations.html.md
-
-# Source: https://docs.vespa.ai/en/basics/operations.html.md
-
-# Source: https://docs.vespa.ai/en/operations/enclave/operations.html.md
-
-# Operations and Support for Vespa Cloud Enclave
+# Lifecycle Operations for Vespa on Kubernetes
 
  
 
-Vespa Cloud Enclave requires that resources provisioned within the VPC are wholly managed by the Vespa Cloud orchestration services, and must not be manually managed by tenant operations. Changing or removing the resources created by the Configuration Servers will negatively impact your Vespa application and may prevent Vespa Cloud from properly managing the applications as well as Vespa engineers from support it.
+The ConfigServer and Vespa Application Pods have built-in resilience and recovery capabilities; they are automatically recovered during failures and gracefully shut down during maintenance or scaling operations to preserve data integrity.
 
-The Terraform modules might see occasional backwards compatible updates. It is recommended that the tenant applies updates to their system on a regular basis. For more information, see the Terraform documentation on[using Terraform in automation](https://developer.hashicorp.com/terraform/tutorials/automation/automate-terraform).
+### Automatic Recovery
 
-The network access granted to Vespa Hosts must be in place for the Vespa application to operate properly. If network access is restricted the Vespa application might stop working.
+Vespa relies on standard Kubernetes controllers to detect and restart crashed Pods. If a container exits unexpectedly (e.g., OOMKilled or application crash), the kubelet will automatically restart it.
 
-## Quota
+However, the ConfigServers track the health history of every Pod. To prevent a "crash loop" from causing cascading failures or constantly churning resources, the system implements a strict throttling mechanism. The ConfigServers allow a maximum of 2 involuntary Pod disruptions per 24-hour period for a given Vespa Application. If this limit is exceeded, the ConfigServer stops automatically failing these Pods and will require human intervention to investigate the root cause.
 
-Make sure your organization's AWS or GCP quotas are set high enough to support common Vespa Cloud use cases. A common use case is migrating to new instance types, and this causes temporary doubled (or more) resource usage in the data migration transition period. Other use cases with temporary increased resource usage are node replacements.
+### Graceful Shutdown
 
-Best practise is to ensure the quota is 3x of current resource usage, to also cover for capacity expansion.
+To prevent query failures or data loss during termination, a [PreStop Hook](https://kubernetes.io/docs/concepts/containers/container-lifecycle-hooks/) is placed on every ConfigServer and Vespa Application Pod. During a voluntary disruption, this hook ensures that existing traffic is drained and that data is flushed before killing the Pod.
 
-This is not to be confused with the [Vespa Cloud quota](https://cloud.vespa.ai/en/reference/quota).
+Two types of disruptions exist in Kubernetes:
 
- Copyright © 2025 - [Cookie Preferences](#)
+| Type | Scenario | Behavior |
+| --- | --- | --- |
+| **Voluntary Disruption** | Scaling down, rolling upgrades, or node maintenance. | The preStop hook detects a voluntary disruption, stops the Vespa Container cluster from accepting new traffic, flushes in-memory data to disk for Content clusters, and ensures a clean exit before the Pod is deleted. |
+| **Involuntary Disruption** | Node hardware failure, kernel panic, or eviction. | Kubernetes initiates the termination. The preStop hook attempts to run to flush data and close connections. However, if the Pod is lost abruptly. the hook cannot run, and recovery relies on Vespa's data replication. |
+
+### Availability Management (PodDisruptionBudgets)
+
+Defining a `PodDisruptionBudget` (PBD) is not supported for Vespa on Kubernetes. The ConfigServer will override any PBD with its own orchestration policy, such as 2 involuntary Pod disruptions per 24 hours, and enforce it over the PDB.
+
+ Copyright © 2026 - [Cookie Preferences](#)
 

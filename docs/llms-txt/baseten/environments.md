@@ -2,21 +2,9 @@
 
 # Source: https://docs.baseten.co/deployment/environments.md
 
-# Source: https://docs.baseten.co/development/model/environments.md
-
-# Source: https://docs.baseten.co/deployment/environments.md
-
-# Source: https://docs.baseten.co/development/model/environments.md
-
-# Source: https://docs.baseten.co/deployment/environments.md
-
-# Source: https://docs.baseten.co/development/model/environments.md
-
-# Source: https://docs.baseten.co/deployment/environments.md
-
-# Source: https://docs.baseten.co/development/model/environments.md
-
-# Source: https://docs.baseten.co/deployment/environments.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.baseten.co/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Environments
 
@@ -34,7 +22,7 @@ Deployments can be promoted to an environment (e.g., "staging") to validate outp
 
 Environments support **structured validation** before promoting a deployment, including:
 
-* **Automated tests & evaluations**
+* **Automated tests and evaluations**
 * **Manual testing in pre-production**
 * **Gradual traffic shifts with canary deployments**
 * **Shadow serving for real-world analysis**
@@ -44,7 +32,7 @@ Promoting a deployment ensures it inherits **environment-specific scaling and mo
 * **Dedicated API endpoint** → [Predict API Reference](/reference/inference-api/overview#predict-endpoints)
 * **Autoscaling controls** → Scale behavior is managed per environment.
 * **Traffic ramp-up** → Enable [canary rollouts](/deployment/deployments#canary-deployments).
-* **Monitoring & Metrics** → [Export environment metrics](/observability/export-metrics/overview).
+* **Monitoring and metrics** → [Export environment metrics](/observability/export-metrics/overview).
 
 A **production environment** operates like any other environment but has restrictions:
 

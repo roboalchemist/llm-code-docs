@@ -2,13 +2,9 @@
 
 # Source: https://docs.pipecat.ai/client/android/transports/gemini-websocket.md
 
-# Source: https://docs.pipecat.ai/client/ios/transports/gemini-websocket.md
-
-# Source: https://docs.pipecat.ai/client/android/transports/gemini-websocket.md
-
-# Source: https://docs.pipecat.ai/client/ios/transports/gemini-websocket.md
-
-# Source: https://docs.pipecat.ai/client/android/transports/gemini-websocket.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pipecat.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Gemini Live Websocket Transport
 
@@ -79,8 +75,3 @@ client.start().withCallback {
 <Card title="Pipecat Android Client Reference" icon="book-open" href="https://docs-android.rtvi.ai/">
   Complete API documentation for the Pipecat Android client.
 </Card>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.pipecat.ai/llms.txt

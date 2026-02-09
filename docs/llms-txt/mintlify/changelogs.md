@@ -1,4 +1,8 @@
-# Source: https://mintlify.com/docs/create/changelogs.md
+# Source: https://www.mintlify.com/docs/create/changelogs.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.mintlify.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Changelogs
 
@@ -87,11 +91,13 @@ Add `tags` to your `Update` components to replace the table of contents with tag
 
 ### Subscribable changelogs
 
-Using `Update` components creates a subscribable RSS feed at your page URL with `/rss.xml` appended. For example, `mintlify.com/docs/changelog/rss.xml`.
+<Note>RSS feeds are only available on public documentation.</Note>
 
-Entries are added to the RSS feed when new `Update` components are published and when new headings are added inside of existing `<Update>` tags.
+Use `Update` components to create a subscribable RSS feed at your page URL with `/rss.xml` appended. For example, `mintlify.com/docs/changelog/rss.xml`.
 
-The top level headings of `Update` components are used as the titles of RSS feed entries, and the entries link to their heading anchors in your docs.
+The RSS feed publishes entries when you add new `Update` components and when modify headings inside of existing `Update` components.
+
+RSS feed entries contain pure Markdown only. Components, code, and HTML elements are excluded. Use the `rss` property to provide alternative text descriptions for RSS subscribers when your updates include content that is excluded.
 
 ```xml Example RSS feed theme={null}
 <?xml version="1.0" encoding="UTF-8"?>

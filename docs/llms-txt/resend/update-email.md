@@ -1,5 +1,9 @@
 # Source: https://resend.com/docs/api-reference/emails/update-email.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://resend.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Update Email
 
 > Update a scheduled email.
@@ -48,7 +52,7 @@ export const ResendParamField = ({children, body, path, ...props}) => {
 </ResendParamField>
 
 <RequestExample>
-  ```ts Node.js theme={null}
+  ```ts Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
   import { Resend } from 'resend';
 
   const resend = new Resend('re_xxxxxxxxx');
@@ -61,7 +65,7 @@ export const ResendParamField = ({children, body, path, ...props}) => {
   });
   ```
 
-  ```php PHP theme={null}
+  ```php PHP theme={"theme":{"light":"github-light","dark":"vesper"}}
   $resend = Resend::client('re_xxxxxxxxx');
 
   $oneMinuteFromNow = (new DateTime())->modify('+1 minute')->format(DateTime::ISO8601);
@@ -71,7 +75,7 @@ export const ResendParamField = ({children, body, path, ...props}) => {
   ]);
   ```
 
-  ```python Python theme={null}
+  ```python Python theme={"theme":{"light":"github-light","dark":"vesper"}}
   import resend
   from datetime import datetime, timedelta
 
@@ -87,7 +91,7 @@ export const ResendParamField = ({children, body, path, ...props}) => {
   resend.Emails.update(params=update_params)
   ```
 
-  ```ruby Ruby theme={null}
+  ```ruby Ruby theme={"theme":{"light":"github-light","dark":"vesper"}}
   require "resend"
 
   Resend.api_key = "re_xxxxxxxxx"
@@ -102,28 +106,31 @@ export const ResendParamField = ({children, body, path, ...props}) => {
   Resend::Emails.update(update_params)
   ```
 
-  ```go Go theme={null}
-  import "github.com/resend/resend-go/v3"
+  ```go Go theme={"theme":{"light":"github-light","dark":"vesper"}}
+  package main
 
-  client := resend.NewClient("re_xxxxxxxxx")
+  import (
+  	"time"
 
-  oneMinuteFromNow := time.Now().Add(time.Minute * time.Duration(1))
-  oneMinuteFromNowISO := oneMinuteFromNow.Format("2006-01-02T15:04:05-0700")
+  	"github.com/resend/resend-go/v3"
+  )
 
-  updateParams := &resend.UpdateEmailRequest{
-    Id:          "49a3999c-0ce1-4ea6-ab68-afcd6dc2e794",
-    ScheduledAt: oneMinuteFromNowISO
+  func main() {
+  	client := resend.NewClient("re_xxxxxxxxx")
+
+  	oneMinuteFromNow := time.Now().Add(time.Minute * time.Duration(1))
+  	oneMinuteFromNowIso := oneMinuteFromNow.Format("2006-01-02T15:04:05-0700")
+
+  	updateParams := &resend.UpdateEmailRequest{
+  		Id:          "49a3999c-0ce1-4ea6-ab68-afcd6dc2e794",
+  		ScheduledAt: oneMinuteFromNowIso,
+  	}
+
+  	client.Emails.Update(updateParams)
   }
-
-  updatedEmail, err := client.Emails.Update(updateParams)
-
-  if err != nil {
-    panic(err)
-  }
-  fmt.Printf("%v\n", updatedEmail)
   ```
 
-  ```rust Rust theme={null}
+  ```rust Rust theme={"theme":{"light":"github-light","dark":"vesper"}}
   use chrono::{Local, TimeDelta};
   use resend_rs::types::UpdateEmailOptions;
   use resend_rs::{Resend, Result};
@@ -149,7 +156,7 @@ export const ResendParamField = ({children, body, path, ...props}) => {
   }
   ```
 
-  ```java Java theme={null}
+  ```java Java theme={"theme":{"light":"github-light","dark":"vesper"}}
   import com.resend.*;
 
   public class Main {
@@ -170,7 +177,7 @@ export const ResendParamField = ({children, body, path, ...props}) => {
   }
   ```
 
-  ```csharp .NET theme={null}
+  ```csharp .NET theme={"theme":{"light":"github-light","dark":"vesper"}}
   using Resend;
 
   IResend resend = ResendClient.Create( "re_xxxxxxxxx" ); // Or from DI
@@ -180,7 +187,7 @@ export const ResendParamField = ({children, body, path, ...props}) => {
       DateTime.UtcNow.AddMinutes( 1 ) );
   ```
 
-  ```bash cURL theme={null}
+  ```bash cURL theme={"theme":{"light":"github-light","dark":"vesper"}}
   curl -X PATCH 'https://api.resend.com/emails/49a3999c-0ce1-4ea6-ab68-afcd6dc2e794' \
        -H 'Authorization: Bearer re_xxxxxxxxx' \
        -H 'Content-Type: application/json' \
@@ -191,7 +198,7 @@ export const ResendParamField = ({children, body, path, ...props}) => {
 </RequestExample>
 
 <ResponseExample>
-  ```json Response theme={null}
+  ```json Response theme={"theme":{"light":"github-light","dark":"vesper"}}
   {
     "object": "email",
     "id": "49a3999c-0ce1-4ea6-ab68-afcd6dc2e794"

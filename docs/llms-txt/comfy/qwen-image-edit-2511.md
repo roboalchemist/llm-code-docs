@@ -1,5 +1,9 @@
 # Source: https://docs.comfy.org/tutorials/image/qwen/qwen-image-edit-2511.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.comfy.org/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Qwen-Image-Edit-2511 ComfyUI Native Workflow Example
 
 > Qwen-Image-Edit-2511 is an enhanced version of Qwen-Image-Edit, featuring improved character consistency, multi-person editing, integrated LoRA capabilities, and enhanced geometric reasoning.
@@ -95,8 +99,3 @@ After updating ComfyUI, you can find the workflow file from the templates, or dr
 │   └── 📂 vae/
 │          └── qwen_image_vae.safetensors
 ```
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.comfy.org/llms.txt

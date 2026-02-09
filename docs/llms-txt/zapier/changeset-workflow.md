@@ -1,5 +1,9 @@
 # Source: https://docs.zapier.com/platform/manage/changeset-workflow.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.zapier.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Integration CI Pipelines using Changesets and Snapshot Versions
 
 > Use changesets with snapshot versions to set up an automated pipeline for integration version updates.
@@ -260,8 +264,3 @@ The tool creates a markdown file in `.changeset/` with this information.
 * [Changesets CLI Reference](https://github.com/changesets/changesets/blob/main/packages/cli/README.md)
 * [Zapier CLI Documentation](https://github.com/zapier/zapier-platform/blob/main/packages/cli/README.md)
 * [Zapier Labeled Versions](https://docs.zapier.com/platform/manage/labeled-versions)
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.zapier.com/llms.txt

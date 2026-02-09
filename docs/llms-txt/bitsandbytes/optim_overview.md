@@ -1,4 +1,4 @@
-# Source: https://huggingface.co/docs/bitsandbytes/v0.49.0/reference/optim/optim_overview.md
+# Source: https://huggingface.co/docs/bitsandbytes/v0.49.1/reference/optim/optim_overview.md
 
 # Overview
 
@@ -10,9 +10,9 @@ bitsandbytes provides 8-bit optimizers through the base `Optimizer8bit` class, a
 
 #### bitsandbytes.optim.optimizer.Optimizer8bit[[bitsandbytes.optim.optimizer.Optimizer8bit]]
 
-[Source](https://github.com/bitsandbytes-foundation/bitsandbytes/blob/v0.49.0/bitsandbytes/optim/optimizer.py#L113)
+[Source](https://github.com/bitsandbytes-foundation/bitsandbytes/blob/v0.49.1/bitsandbytes/optim/optimizer.py#L113)
 
-__init__bitsandbytes.optim.optimizer.Optimizer8bit.__init__https://github.com/bitsandbytes-foundation/bitsandbytes/blob/v0.49.0/bitsandbytes/optim/optimizer.py#L114[{"name": "params", "val": ""}, {"name": "defaults", "val": ""}, {"name": "optim_bits", "val": " = 32"}, {"name": "is_paged", "val": " = False"}]- **params** (`torch.Tensor`) --
+__init__bitsandbytes.optim.optimizer.Optimizer8bit.__init__https://github.com/bitsandbytes-foundation/bitsandbytes/blob/v0.49.1/bitsandbytes/optim/optimizer.py#L114[{"name": "params", "val": ""}, {"name": "defaults", "val": ""}, {"name": "optim_bits", "val": " = 32"}, {"name": "is_paged", "val": " = False"}]- **params** (`torch.Tensor`) --
   The input parameters to optimize.
 - **optim_bits** (`int`, defaults to 32) --
   The number of bits of the optimizer state.
@@ -33,9 +33,9 @@ is_paged (`bool`, defaults to `False`) : Whether the optimizer is a paged optimi
 
 #### bitsandbytes.optim.optimizer.Optimizer2State[[bitsandbytes.optim.optimizer.Optimizer2State]]
 
-[Source](https://github.com/bitsandbytes-foundation/bitsandbytes/blob/v0.49.0/bitsandbytes/optim/optimizer.py#L347)
+[Source](https://github.com/bitsandbytes-foundation/bitsandbytes/blob/v0.49.1/bitsandbytes/optim/optimizer.py#L347)
 
-__init__bitsandbytes.optim.optimizer.Optimizer2State.__init__https://github.com/bitsandbytes-foundation/bitsandbytes/blob/v0.49.0/bitsandbytes/optim/optimizer.py#L348[{"name": "optimizer_name", "val": ""}, {"name": "params", "val": ""}, {"name": "lr", "val": " = 0.001"}, {"name": "betas", "val": " = (0.9, 0.999)"}, {"name": "eps", "val": " = 1e-08"}, {"name": "weight_decay", "val": " = 0.0"}, {"name": "optim_bits", "val": " = 32"}, {"name": "args", "val": " = None"}, {"name": "min_8bit_size", "val": " = 4096"}, {"name": "percentile_clipping", "val": " = 100"}, {"name": "block_wise", "val": " = True"}, {"name": "max_unorm", "val": " = 0.0"}, {"name": "skip_zeros", "val": " = False"}, {"name": "is_paged", "val": " = False"}, {"name": "alpha", "val": " = 0.0"}, {"name": "t_alpha", "val": ": typing.Optional[int] = None"}, {"name": "t_beta3", "val": ": typing.Optional[int] = None"}]- **optimizer_name** (`str`) --
+__init__bitsandbytes.optim.optimizer.Optimizer2State.__init__https://github.com/bitsandbytes-foundation/bitsandbytes/blob/v0.49.1/bitsandbytes/optim/optimizer.py#L348[{"name": "optimizer_name", "val": ""}, {"name": "params", "val": ""}, {"name": "lr", "val": " = 0.001"}, {"name": "betas", "val": " = (0.9, 0.999)"}, {"name": "eps", "val": " = 1e-08"}, {"name": "weight_decay", "val": " = 0.0"}, {"name": "optim_bits", "val": " = 32"}, {"name": "args", "val": " = None"}, {"name": "min_8bit_size", "val": " = 4096"}, {"name": "percentile_clipping", "val": " = 100"}, {"name": "block_wise", "val": " = True"}, {"name": "max_unorm", "val": " = 0.0"}, {"name": "skip_zeros", "val": " = False"}, {"name": "is_paged", "val": " = False"}, {"name": "alpha", "val": " = 0.0"}, {"name": "t_alpha", "val": ": typing.Optional[int] = None"}, {"name": "t_beta3", "val": ": typing.Optional[int] = None"}]- **optimizer_name** (`str`) --
   The name of the optimizer.
 - **params** (`torch.Tensor`) --
   The input parameters to optimize.
@@ -112,9 +112,9 @@ t_beta3 (`Optional[int]`, defaults to `None`) : Number of iterations for beta sc
 
 #### bitsandbytes.optim.optimizer.Optimizer1State[[bitsandbytes.optim.optimizer.Optimizer1State]]
 
-[Source](https://github.com/bitsandbytes-foundation/bitsandbytes/blob/v0.49.0/bitsandbytes/optim/optimizer.py#L591)
+[Source](https://github.com/bitsandbytes-foundation/bitsandbytes/blob/v0.49.1/bitsandbytes/optim/optimizer.py#L591)
 
-__init__bitsandbytes.optim.optimizer.Optimizer1State.__init__https://github.com/bitsandbytes-foundation/bitsandbytes/blob/v0.49.0/bitsandbytes/optim/optimizer.py#L592[{"name": "optimizer_name", "val": ""}, {"name": "params", "val": ""}, {"name": "lr", "val": " = 0.001"}, {"name": "betas", "val": " = (0.9, 0.0)"}, {"name": "eps", "val": " = 1e-08"}, {"name": "weight_decay", "val": " = 0.0"}, {"name": "optim_bits", "val": " = 32"}, {"name": "args", "val": " = None"}, {"name": "min_8bit_size", "val": " = 4096"}, {"name": "percentile_clipping", "val": " = 100"}, {"name": "block_wise", "val": " = True"}, {"name": "max_unorm", "val": " = 0.0"}, {"name": "skip_zeros", "val": " = False"}, {"name": "is_paged", "val": " = False"}]- **optimizer_name** (`str`) --
+__init__bitsandbytes.optim.optimizer.Optimizer1State.__init__https://github.com/bitsandbytes-foundation/bitsandbytes/blob/v0.49.1/bitsandbytes/optim/optimizer.py#L592[{"name": "optimizer_name", "val": ""}, {"name": "params", "val": ""}, {"name": "lr", "val": " = 0.001"}, {"name": "betas", "val": " = (0.9, 0.0)"}, {"name": "eps", "val": " = 1e-08"}, {"name": "weight_decay", "val": " = 0.0"}, {"name": "optim_bits", "val": " = 32"}, {"name": "args", "val": " = None"}, {"name": "min_8bit_size", "val": " = 4096"}, {"name": "percentile_clipping", "val": " = 100"}, {"name": "block_wise", "val": " = True"}, {"name": "max_unorm", "val": " = 0.0"}, {"name": "skip_zeros", "val": " = False"}, {"name": "is_paged", "val": " = False"}]- **optimizer_name** (`str`) --
   The name of the optimizer.
 - **params** (`torch.Tensor`) --
   The input parameters to optimize.
@@ -179,11 +179,11 @@ is_paged (`bool`, defaults to `False`) : Whether the optimizer is a paged optimi
 
 #### bitsandbytes.optim.GlobalOptimManager[[bitsandbytes.optim.GlobalOptimManager]]
 
-[Source](https://github.com/bitsandbytes-foundation/bitsandbytes/blob/v0.49.0/bitsandbytes/optim/optimizer.py#L22)
+[Source](https://github.com/bitsandbytes-foundation/bitsandbytes/blob/v0.49.1/bitsandbytes/optim/optimizer.py#L22)
 
 A global optimizer manager for enabling custom optimizer configs.
 
-override_configbitsandbytes.optim.GlobalOptimManager.override_confighttps://github.com/bitsandbytes-foundation/bitsandbytes/blob/v0.49.0/bitsandbytes/optim/optimizer.py#L56[{"name": "parameters", "val": ""}, {"name": "key", "val": " = None"}, {"name": "value", "val": " = None"}, {"name": "key_value_dict", "val": " = None"}]- **parameters** (`torch.Tensor` or `list(torch.Tensors)`) --
+override_configbitsandbytes.optim.GlobalOptimManager.override_confighttps://github.com/bitsandbytes-foundation/bitsandbytes/blob/v0.49.1/bitsandbytes/optim/optimizer.py#L56[{"name": "parameters", "val": ""}, {"name": "key", "val": " = None"}, {"name": "value", "val": " = None"}, {"name": "key_value_dict", "val": " = None"}]- **parameters** (`torch.Tensor` or `list(torch.Tensors)`) --
   The input parameters.
 - **key** (`str`) --
   The hyperparameter to override.

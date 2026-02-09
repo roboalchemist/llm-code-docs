@@ -2,10 +2,6 @@
 
 # Source: https://docs.convex.dev/quickstart/bun.md
 
-# Source: https://docs.convex.dev/client/javascript/bun.md
-
-# Source: https://docs.convex.dev/quickstart/bun.md
-
 Learn how to query data from Convex in a Bun project.
 
 For instructions for subscriptions instead of point-in-time queries see [Bun notes](/client/javascript/bun.md).

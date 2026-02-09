@@ -1,5 +1,9 @@
 # Source: https://docs.comfy.org/tutorials/flux/flux-1-fill-dev.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.comfy.org/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # ComfyUI Flux.1 fill dev Example
 
 > This guide demonstrates how to use Flux.1 fill dev to create Inpainting and Outpainting workflows.
@@ -55,6 +59,14 @@ ComfyUI/
 ## Flux.1 Fill dev inpainting workflow
 
 ### 1. Inpainting workflow and asset
+
+<a className="prose" target="_blank" href="https://raw.githubusercontent.com/Comfy-Org/example_workflows/main/flux/inpaint/flux_fill_inpaint.png" style={{ display: 'inline-block', backgroundColor: '#0078D6', color: '#ffffff', padding: '10px 20px', borderRadius: '8px', borderColor: "transparent", textDecoration: 'none', fontWeight: 'bold', marginRight: '10px'}}>
+  <p className="prose" style={{ margin: 0, fontSize: "0.8rem" }}>Download Workflow Image</p>
+</a>
+
+<a className="prose" target="_blank" href="https://cloud.comfy.org/?template=flux_fill_inpaint_example&utm_source=docs" style={{ display: 'inline-block', backgroundColor: '#28a745', color: '#ffffff', padding: '10px 20px', borderRadius: '8px', borderColor: "transparent", textDecoration: 'none', fontWeight: 'bold'}}>
+  <p className="prose" style={{ margin: 0, fontSize: "0.8rem" }}>Run on Comfy Cloud</p>
+</a>
 
 Please download the image below and drag it into ComfyUI to load the corresponding workflow
 ![ComfyUI Flux.1 inpaint](https://raw.githubusercontent.com/Comfy-Org/example_workflows/main/flux/inpaint/flux_fill_inpaint.png)

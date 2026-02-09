@@ -1,5 +1,9 @@
 # Source: https://docs.ultravox.ai/api-reference/calls/calls-post.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.ultravox.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Create Call
 
 > Creates a new call using the specified system prompt and other properties
@@ -72,7 +76,7 @@ components:
           format: float
         model:
           type: string
-          description: The model used for generations. Currently defaults to ultravox-v0.6.
+          description: The model used for generations. Currently defaults to ultravox-v0.7.
         voice:
           type: string
           description: >-
@@ -191,6 +195,14 @@ components:
           allOf:
             - $ref: '#/components/schemas/ultravox.v1.Callbacks'
           description: Callbacks for call lifecycle events.
+        voiceOverrides:
+          allOf:
+            - $ref: '#/components/schemas/ultravox.v1.ExternalVoice'
+          description: >-
+            Overrides for the selected voice. Only valid when `voice` is set
+            (not `external_voice`).
+             Only non-price-affecting fields may be overridden (e.g., speed, style, stability).
+             The provider in the override must match the selected voice's provider.
       description: A request to start a call.
     Call:
       type: object
@@ -235,6 +247,14 @@ components:
             - $ref: '#/components/schemas/NullEnum'
         billedDuration:
           type: string
+          readOnly: true
+          nullable: true
+        billedSideInputTokens:
+          type: integer
+          readOnly: true
+          nullable: true
+        billedSideOutputTokens:
+          type: integer
           readOnly: true
           nullable: true
         billingStatus:
@@ -290,7 +310,7 @@ components:
           nullable: true
         model:
           type: string
-          default: ultravox-v0.6
+          default: ultravox-v0.7
         recordingEnabled:
           type: boolean
           default: false
@@ -311,6 +331,10 @@ components:
           nullable: true
         externalVoice:
           $ref: '#/components/schemas/ultravox.v1.ExternalVoice'
+        voiceOverrides:
+          allOf:
+            - $ref: '#/components/schemas/ultravox.v1.ExternalVoice'
+          description: Overrides for the selected voice.
         transcriptOptional:
           type: boolean
           default: true
@@ -375,6 +399,8 @@ components:
         - agent
         - agentId
         - billedDuration
+        - billedSideInputTokens
+        - billedSideOutputTokens
         - billingStatus
         - callId
         - clientVersion
@@ -414,6 +440,16 @@ components:
           description: |-
             A voice served by Google, using bidirectional streaming.
              (For non-streaming or output-only streaming, use generic.)
+        inworld:
+          allOf:
+            - $ref: '#/components/schemas/ultravox.v1.InworldVoice'
+          description: |-
+            A voice served by Inworld, using bidirectional streaming.
+             (For non-streaming or output-only streaming, use generic.)
+        respeecher:
+          allOf:
+            - $ref: '#/components/schemas/ultravox.v1.RespeecherVoice'
+          description: A voice served by Respeecher, using bidirectional streaming.
         generic:
           allOf:
             - $ref: '#/components/schemas/ultravox.v1.GenericVoice'
@@ -969,6 +1005,97 @@ components:
       description: |-
         Specification for a voice served by Google.
          This implementation uses bidirectional streaming, so voices prior to Chirp3 are not supported.
+    ultravox.v1.InworldVoice:
+      type: object
+      properties:
+        voiceId:
+          type: string
+          description: The ID of the voice in Inworld.
+        modelId:
+          type: string
+          description: >-
+            The ID of the model to use for generations, e.g.
+            "inworld-tts-1-max".
+             See https://docs.inworld.ai/docs/tts/tts-models
+        speakingRate:
+          type: number
+          description: |-
+            The speaking rate. Must be between 0.5 and 1.5. Defaults to 1.
+             See https://docs.inworld.ai/api-reference/ttsAPI/texttospeech/synthesize-speech-stream#body-audio-config-speaking-rate
+          format: float
+        temperature:
+          type: number
+          description: >-
+            How much randomness to use when sampling audio tokens. Must be
+            between 0.0 and 2.0.
+             See https://docs.inworld.ai/api-reference/ttsAPI/texttospeech/synthesize-speech-stream#body-temperature
+          format: float
+        applyTextNormalization:
+          type: boolean
+          description: >-
+            Whether or not to apply text normalization. This should typically
+            only be disabled if the
+             agent is instructed to normalize text directly.
+             See https://docs.inworld.ai/api-reference/ttsAPI/texttospeech/synthesize-speech-stream#body-apply-text-normalization.
+      description: Specification for a voice served by Inworld.
+    ultravox.v1.RespeecherVoice:
+      type: object
+      properties:
+        voiceId:
+          type: string
+          description: The ID of the voice in Respeecher.
+        seed:
+          type: integer
+          description: Random seed for reproducible generation.
+          format: int32
+        temperature:
+          type: number
+          description: >-
+            Controls randomness of the output. Higher values produce more varied
+            speech.
+             If set, must be greater than or equal to 0.0.
+          format: float
+        topK:
+          type: integer
+          description: |-
+            Limits sampling to the top K most likely tokens.
+             If set, must be exactly -1 or greater than 0.
+          format: int32
+        topP:
+          type: number
+          description: >-
+            Limits sampling to tokens with cumulative probability up to this
+            value.
+             If set, must be greater than 0 and less than or equal to 1.0.
+          format: float
+        minP:
+          type: number
+          description: |-
+            Minimum probability threshold for token sampling.
+             If set, must be between 0.0 and 1.0, inclusive.
+          format: float
+        presencePenalty:
+          type: number
+          description: |-
+            Penalty for tokens already present in the context.
+             If set, must be between 0 and 2, inclusive.
+          format: float
+        repetitionPenalty:
+          type: number
+          description: |-
+            Penalty for repeating tokens.
+             If set, must be between 1 and 2, inclusive.
+          format: float
+        frequencyPenalty:
+          type: number
+          description: |-
+            Penalty based on token frequency.
+             If set, must be between 0 and 2, inclusive.
+          format: float
+      description: |-
+        Specification for a voice served by Respeecher.
+         See https://space.respeecher.com/docs/api/tts/sampling-params-guide
+         for parameter guidance.
     ultravox.v1.GenericVoice:
       type: object
       properties:
@@ -1393,6 +1520,12 @@ components:
           description: >-
             The primary emotions are neutral, calm, angry, content, sad, scared.
             For more options, see Prompting Sonic-3.
+        pronunciationDictId:
+          type: string
+          description: |-
+            The ID of a pronunciation dictionary to use for the generation.
+             Pronunciation dictionaries are supported by sonic-3 models and newer.
+             See https://docs.cartesia.ai/build-with-cartesia/capability-guides/specify-custom-pronunciations
       description: Cartesia generation configuration for Sonic-3 and later models.
     ultravox.v1.DynamicParameter:
       type: object
@@ -1719,7 +1852,3 @@ components:
       description: API key
 
 ````
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.ultravox.ai/llms.txt

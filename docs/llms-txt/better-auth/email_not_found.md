@@ -1,14 +1,10 @@
-# Source: https://www.better-auth.com/llms.txt/docs/errors/email_not_found.md
+# Source: https://www.better-auth.com/llms.txt/docs/reference/errors/email_not_found.md
 
-# Email not found
+# email_not_found
 
 The provider did not return an email address.
 
-***
 
-title: Email not found
-description: The provider did not return an email address.
-----------------------------------------------------------
 
 ## What is it?
 

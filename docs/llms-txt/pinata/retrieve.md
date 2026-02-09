@@ -1,5 +1,9 @@
 # Source: https://docs.pinata.cloud/api-reference/endpoint/x402/retrieve.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pinata.cloud/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Retrieve a Private File
 
 > Retrieves a private file from IPFS by its CID
@@ -15,7 +19,7 @@
 If you upload a file as `private` then it will not be accessible on public IPFS, so in order to access it you need to create a temporary access URL. This flow is similar to the previous one, except you would provide the CID that you uploded previously that you would like to access. After a successful payment the server will return a URL you can access the file with.
 
 ```typescript  theme={null}
-import { wrapFetchWithPayment, decodeXPaymentResponse } from "x402-fetch";
+import { wrapFetchWithPayment, decodeXPaymentResponse } from "@x402/fetch";
 import { account } from "./viem";
 
 const fetchWithPayment = wrapFetchWithPayment(fetch, account);
@@ -91,7 +95,3 @@ components:
       description: Base64 encoded x402 payment payload
 
 ````
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.pinata.cloud/llms.txt

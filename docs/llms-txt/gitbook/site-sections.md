@@ -1,12 +1,6 @@
 # Source: https://gitbook.com/docs/developers/gitbook-api/api-reference/docs-sites/site-sections.md
 
-# Source: https://gitbook.com/docs/documentation/zh/publishing-documentation/site-structure/site-sections.md
-
-# Source: https://gitbook.com/docs/documentation/fr/publishing-documentation/site-structure/site-sections.md
-
-# Source: https://gitbook.com/docs/publishing-documentation/site-structure/site-sections.md
-
-# Source: https://gitbook.com/docs/developers/gitbook-api/api-reference/docs-sites/site-sections.md
+# Source: https://gitbook.com/docs/documentation/ja-gitbook-documentation/publishing-documentation/site-structure/site-sections.md
 
 # Source: https://gitbook.com/docs/documentation/zh/publishing-documentation/site-structure/site-sections.md
 
@@ -30,7 +24,7 @@ You can also [group site sections together](#create-a-site-section-group). Doing
 
 {% hint style="info" %}
 
-### Sections or variants?
+#### Sections or variants?
 
 Each site section is a space in GitBook. You can create site sections from any space you like, but we recommend you use sections as semantically different parts of your docs.
 

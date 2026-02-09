@@ -1,8 +1,6 @@
 # Source: https://docs.livekit.io/transport/sdk-platforms/android-compose.md
 
-# Source: https://docs.livekit.io/home/quickstarts/android-compose.md
-
-LiveKit docs › LiveKit SDKs › Platform-specific quickstarts › Android (Compose)
+LiveKit docs › Get Started › SDK platform quickstarts › Android (Compose)
 
 ---
 
@@ -22,7 +20,7 @@ To build your first voice AI app for Android, use the following quickstart and t
 
 This guide uses the Android Components library for the easiest way to get started on Android.
 
-If you are using the traditional view-based system, check out the [Android quickstart](https://docs.livekit.io/home/quickstarts/android.md).
+If you are using the traditional view-based system, check out the [Android quickstart](https://docs.livekit.io/transport/sdk-platforms/android.md).
 
 Otherwise follow this guide to build your first LiveKit app with Android Compose.
 
@@ -147,17 +145,17 @@ class MainActivity : ComponentActivity() {
 
 ```
 
-(For more details, you can reference [the complete quickstart app](https://github.com/livekit-examples/android-components-quickstart).)
+(For more details, you can reference the [Android Components SDK](https://github.com/livekit/components-android) and the [Meet example app](https://github.com/livekit-examples/android-components-meet).)
 
 ## Next steps
 
 The following resources are useful for getting started with LiveKit on Android.
 
-- **[Generating tokens](https://docs.livekit.io/home/server/generating-tokens.md)**: Guide to generating authentication tokens for your users.
+- **[Generating tokens](https://docs.livekit.io/frontends/authentication/tokens/generate.md)**: Guide to generating authentication tokens for your users.
 
-- **[Realtime media](https://docs.livekit.io/home/client/tracks.md)**: Complete documentation for live video and audio tracks.
+- **[Realtime media](https://docs.livekit.io/transport/media.md)**: Complete documentation for live video and audio tracks.
 
-- **[Realtime data](https://docs.livekit.io/home/client/data.md)**: Send and receive realtime data between clients.
+- **[Realtime data](https://docs.livekit.io/transport/data.md)**: Send and receive realtime data between clients.
 
 - **[Android SDK](https://github.com/livekit/client-sdk-android)**: LiveKit Android SDK on GitHub.
 
@@ -169,7 +167,7 @@ The following resources are useful for getting started with LiveKit on Android.
 
 ---
 
-This document was rendered at 2025-11-18T23:54:54.403Z.
-For the latest version of this document, see [https://docs.livekit.io/home/quickstarts/android-compose.md](https://docs.livekit.io/home/quickstarts/android-compose.md).
+This document was rendered at 2026-02-03T03:25:14.780Z.
+For the latest version of this document, see [https://docs.livekit.io/transport/sdk-platforms/android-compose.md](https://docs.livekit.io/transport/sdk-platforms/android-compose.md).
 
 To explore all LiveKit documentation, see [llms.txt](https://docs.livekit.io/llms.txt).

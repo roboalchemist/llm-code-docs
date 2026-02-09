@@ -1,5 +1,9 @@
 # Source: https://docs.lunary.ai/docs/api/runs/delete-a-run.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.lunary.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Delete a run
 
 > Delete a specific run by its ID. This action is irreversible.
@@ -39,7 +43,3 @@ paths:
           description: Run not found
 
 ````
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.lunary.ai/llms.txt

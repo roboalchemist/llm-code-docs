@@ -2,11 +2,18 @@
 
 # triposr
 
+{% columns %}
+{% column width="66.66666666666666%" %}
 {% hint style="info" %}
 This documentation is valid for the following list of our models:
 
 * `triposr`
   {% endhint %}
+  {% endcolumn %}
+
+{% column width="33.33333333333334%" %} <a href="https://aimlapi.com/app/triposr" class="button primary">Try in Playground</a>
+{% endcolumn %}
+{% endcolumns %}
 
 ## Model Overview
 
@@ -23,7 +30,7 @@ If you don’t have an API key for the AI/ML API yet, feel free to use our [Quic
 >
 
 ```json
-{"openapi":"3.0.0","info":{"title":"AI/ML Gateway","version":"1.0"},"servers":[{"url":"https://api.aimlapi.com"}],"security":[{"access-token":[]}],"components":{"securitySchemes":{"access-token":{"scheme":"bearer","bearerFormat":"<YOUR_AIMLAPI_KEY>","type":"http","description":"Bearer key"}},"schemas":{"Image.v1.GenerateImageResponseDTO":{"type":"object","properties":{"status":{"type":"string"},"prompt":{"type":"array","items":{"type":"string"}},"model":{"type":"string"},"model_owner":{"type":"string"},"tags":{"type":"object","additionalProperties":{"nullable":true}},"num_returns":{"type":"number"},"args":{"type":"object","properties":{"model":{"type":"string"},"prompt":{"type":"string"},"n":{"type":"number"},"steps":{"type":"number"},"size":{"type":"string"}},"required":["model","prompt","n","steps","size"]},"subjobs":{"type":"array","items":{"nullable":true}},"output":{"type":"object","properties":{"choices":{"type":"array","items":{"type":"object","properties":{"image_base64":{"type":"string"}},"required":["image_base64"]}}},"required":["choices"]}},"required":["status","prompt","model","model_owner","tags","num_returns","args","subjobs","output"]}}},"paths":{"/v1/images/generations":{"post":{"operationId":"ImageGenerationsController_generateImage_v1","parameters":[],"requestBody":{"required":true,"content":{"application/json":{"schema":{"type":"object","properties":{"model":{"enum":["triposr"]},"image_url":{"type":"string","format":"uri","description":"The URL of the reference image."},"output_format":{"type":"string","enum":["glb","obj"],"default":"glb","description":"The format of the generated image."},"do_remove_background":{"type":"boolean","description":"Enables removing the background from the input image."},"foreground_ratio":{"type":"number","minimum":0.5,"maximum":1,"default":0.9,"description":"Ratio of the foreground image to the original image."},"mc_resolution":{"type":"integer","minimum":32,"maximum":1024,"default":256,"description":"Resolution of the marching cubes. Above 512 is not recommended."}},"required":["model","image_url"]}}}},"responses":{"201":{"description":"Successfully generated image","content":{"application/json":{"schema":{"$ref":"#/components/schemas/Image.v1.GenerateImageResponseDTO"}}}}},"tags":["Images"]}}}}
+{"openapi":"3.0.0","info":{"title":"AIML API","version":"1.0.0"},"servers":[{"url":"https://api.aimlapi.com"}],"paths":{"/v1/images/generations":{"post":{"operationId":"_v1_images_generations","requestBody":{"required":true,"content":{"application/json":{"schema":{"type":"object","properties":{"model":{"type":"string","enum":["triposr"]},"image_url":{"type":"string","format":"uri","description":"The URL of the reference image."},"output_format":{"type":"string","enum":["glb","obj"],"default":"glb","description":"The format of the generated image."},"do_remove_background":{"type":"boolean","description":"Enables removing the background from the input image."},"foreground_ratio":{"type":"number","minimum":0.5,"maximum":1,"default":0.9,"description":"Ratio of the foreground image to the original image."},"mc_resolution":{"type":"integer","minimum":32,"maximum":1024,"default":256,"description":"Resolution of the marching cubes. Above 512 is not recommended."}},"required":["model","image_url"],"title":"triposr"}}}},"responses":{"200":{"content":{"application/json":{"schema":{"type":"object","properties":{"data":{"type":"array","nullable":true,"items":{"type":"object","properties":{"url":{"type":"string","nullable":true,"description":"The URL where the file can be downloaded from."},"b64_json":{"type":"string","nullable":true,"description":"The base64-encoded JSON of the generated image."}}},"description":"The list of generated images."},"meta":{"type":"object","nullable":true,"properties":{"usage":{"type":"object","nullable":true,"properties":{"credits_used":{"type":"number","description":"The number of tokens consumed during generation."}},"required":["credits_used"]}},"description":"Additional details about the generation."}}}}}}}}}}}
 ```
 
 ## Example

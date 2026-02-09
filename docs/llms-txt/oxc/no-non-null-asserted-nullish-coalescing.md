@@ -4,7 +4,6 @@
 url: >-
   /docs/guide/usage/linter/rules/typescript/no-non-null-asserted-nullish-coalescing.md
 ---
-# typescript/no-non-null-asserted-nullish-coalescing&#x20;
 
 ### What it does
 

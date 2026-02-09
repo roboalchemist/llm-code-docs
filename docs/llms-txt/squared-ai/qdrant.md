@@ -2,19 +2,9 @@
 
 # Source: https://docs.squared.ai/activation/vector-search/qdrant.md
 
-# Source: https://docs.squared.ai/guides/destinations/retl-destinations/database/qdrant.md
-
-# Source: https://docs.squared.ai/activation/vector-search/qdrant.md
-
-# Source: https://docs.squared.ai/guides/destinations/retl-destinations/database/qdrant.md
-
-# Source: https://docs.squared.ai/activation/vector-search/qdrant.md
-
-# Source: https://docs.squared.ai/guides/destinations/retl-destinations/database/qdrant.md
-
-# Source: https://docs.squared.ai/activation/vector-search/qdrant.md
-
-# Source: https://docs.squared.ai/guides/destinations/retl-destinations/database/qdrant.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.squared.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Qdrant
 
@@ -24,7 +14,7 @@ This guide will help you configure the Qdrant Connector in AI Squared to access 
 
 ### Prerequisites
 
-Before proceeding, ensure you have your API url and API key.
+Before proceeding, ensure you have your host, API key, and collection name.
 
 ## Step-by-Step Guide to Connect to your Qdrant collection
 
@@ -34,34 +24,15 @@ Start by logging into your Qdrant account.
 
 1. Sign in to your Qdrant account at [Qdrant Account](https://login.cloud.qdrant.io/u/login/identifier?state=hKFo2SB6bDNQQTlydWFFZnpySEc0TXk1QlVWVHJ0Tk9MTDNyeqFur3VuaXZlcnNhbC1sb2dpbqN0aWTZIDVCYm9qV010WXVRSXZvZVFMMkFiLW8wXzl5SkhvZnM4o2NpZNkgckkxd2NPUEhPTWRlSHVUeDR4MWtGMEtGZFE3d25lemc)
 
-<Frame>
-  <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1747594906/Multiwoven/connectors/Qdrant/Qdrant_Login_yi4xve.png" />
-</Frame>
-
 2. Select Clusters from the side bar.
 
 <Frame>
   <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1747594908/Multiwoven/connectors/Qdrant/Qdrant_Get_Started_gdkuuz.png" />
 </Frame>
 
-3. Select your cluster to see more details.
-
-<Frame>
-  <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1747594904/Multiwoven/connectors/Qdrant/Qdrant_Clusters_jbnamw.png" />
-</Frame>
-
 ## Step 2: Locate Qdrant Configuration Details
 
-Once in your Qdrant cluster, you'll find the necessary configuration details:
-
-**API Url:**
-
-* Click on the Overview tab, and scroll down to the Use the API section.
-* Copy the Endpoint URL (API Url).
-
-<Frame>
-  <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1747596094/Multiwoven/connectors/Qdrant/Qdrant_Cluster_Overview_fsw2r1.png" />
-</Frame>
+Once in your selected Qdrant cluster, you'll find the necessary configuration details:
 
 **API Key:**
 
@@ -72,12 +43,23 @@ Once in your Qdrant cluster, you'll find the necessary configuration details:
   <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1747596348/Multiwoven/connectors/Qdrant/Qdrant_Cluster_API_Keys_ai7ptp.png" />
 </Frame>
 
+**Host and Collection name:**
+
+* Click on Cluster UI in you selected Qdrant Cluster.
+* Enter your API key to access your collection.
+* Note down your host, the url address before `/dashboard#/collections`, and the name of the collection.
+
+<Frame>
+  <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1749759834/Multiwoven/connectors/Qdrant/Qdrant_collection_shbztm.png" />
+</Frame>
+
 ## Step 3: Configure qdrant Connector in Your Application
 
 Now that you have gathered all the necessary details, enter the following information in your application:
 
-* **API Key:** The authentication key used to access your Qdrant cluster.
+* **Host:** Qdrant cluster host url.
 * **API Url:** The endpoint where your Qdrant cluster is hosted.
+* **Collection Name:** The selected collections name in your Qdrant cluster.
 
 ## Step 4: Test the Qdrant Connection
 
@@ -85,14 +67,8 @@ After configuring the connector in your application:
 
 1. Save the configuration settings.
 2. Test the connection to Qdrant from your application to ensure everything is set up correctly.
+3. Run a test query or check the connection status to verify successful connectivity.
 
-By following these steps, you've successfully set up a Qdrant destination connector in AI Squared.
+Your Qdrant connector is now configured and ready to query data from your Qdrant cluster.
 
-### Supported sync modes
-
-| Mode             | Supported (Yes/No/Coming soon) |
-| ---------------- | ------------------------------ |
-| Incremental sync | YES                            |
-| Full refresh     | Coming soon                    |
-
-This guide will help you seamlessly connect your AI Squared application to Qdrant, enabling you to leverage your cluster's full potential.
+This guide will help you seamlessly connect your AI Squared application to Qdrant cluster, enabling you to leverage your clusters full potential.

@@ -561,7 +561,7 @@ def binarize_tensor(tensor: torch.Tensor) -> str:
     )
 ```
 
-Multivector example, from[ColPali: Efficient Document Retrieval with Vision Language Models](https://pyvespa.readthedocs.io/en/latest/examples/colpali-document-retrieval-vision-language-models-cloud.html):
+Multivector example, from[ColPali: Efficient Document Retrieval with Vision Language Models](https://vespa-engine.github.io/pyvespa/examples/colpali-document-retrieval-vision-language-models-cloud.html):
 
 ```
 import numpy as np
@@ -592,7 +592,7 @@ def binarize_token_vectors_hex(vectors: List[torch.Tensor]) -> Dict[str, str]:
     return vespa_tensor
 ```
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ### On this page:
 

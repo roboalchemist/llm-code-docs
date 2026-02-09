@@ -3,11 +3,14 @@
 ---
 url: /docs/guide/usage/linter/rules/react/state-in-constructor.md
 ---
-# react/state-in-constructor&#x20;
 
 ### What it does
 
-Enforces the state initialization style to be either in a constructor or with a class property.
+Enforces the state initialization style to be either in a
+constructor or with a class property.
+
+This rule is not relevant for function components, and so can potentially be
+disabled for modern React codebases.
 
 ### Why is this bad?
 
@@ -16,13 +19,7 @@ This rule enforces a consistent pattern across React class components.
 
 ### Examples
 
-This rule has two modes: `"always"` and `"never"`.
-
-#### `"always"` mode
-
-Will enforce the state initialization style to be in a constructor. This is the default mode.
-
-Examples of **incorrect** code for this rule:
+Examples of **incorrect** code for this rule by default, with `"always"` mode:
 
 ```jsx
 class Foo extends React.Component {
@@ -33,7 +30,7 @@ class Foo extends React.Component {
 }
 ```
 
-Examples of **correct** code for this rule:
+Examples of **correct** code for this rule by default, with `"always"` mode:
 
 ```jsx
 class Foo extends React.Component {
@@ -51,7 +48,7 @@ class Foo extends React.Component {
 
 Will enforce the state initialization style to be with a class property.
 
-Examples of **incorrect** code for this rule:
+Examples of **incorrect** code for this rule with `"never"` mode:
 
 ```jsx
 class Foo extends React.Component {
@@ -65,7 +62,7 @@ class Foo extends React.Component {
 }
 ```
 
-Examples of **correct** code for this rule:
+Examples of **correct** code for this rule with `"never"` mode:
 
 ```jsx
 class Foo extends React.Component {
@@ -83,6 +80,7 @@ This rule accepts one of the following string values:
 ### `"always"`
 
 Enforce state initialization in the constructor.
+This is the default mode.
 
 ### `"never"`
 

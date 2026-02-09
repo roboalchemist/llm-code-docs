@@ -143,7 +143,7 @@ In Stock
 [LCD Shield Kit w/ 16x2 Character Display - Only 2 pins used!](https://www.adafruit.com/product/772)
 This new Adafruit shield makes it easy to use a 16x2 Character LCD. We really like the [Blue & White 16x2 LCDs we stock in the shop](http://www.adafruit.com/products/181). Unfortunately, these LCDs do require quite a few digital pins, 6 to control the LCD and then another pin to...
 
-Out of Stock
+In Stock
 [Buy Now](https://www.adafruit.com/product/772)
 [Related Guides to the Product](https://learn.adafruit.com/products/772/guides)
 ### RGB LCD Shield Kit w/ 16x2 Character Display - Only 2 pins used!
@@ -151,7 +151,7 @@ Out of Stock
 [RGB LCD Shield Kit w/ 16x2 Character Display - Only 2 pins used!](https://www.adafruit.com/product/716)
 This new Adafruit shield makes it easy to use a 16x2 Character LCD. We really like the RGB LCDs we stock in the shop both the [RGB negative](http://www.adafruit.com/products/399) and [RGB positive](http://www.adafruit.com/products/398). Unfortunately, these LCDs do...
 
-In Stock
+Out of Stock
 [Buy Now](https://www.adafruit.com/product/716)
 [Related Guides to the Product](https://learn.adafruit.com/products/716/guides)
 ### RGB LCD Shield Kit w/ 16x2 Character Display - Only 2 pins used!
@@ -166,17 +166,17 @@ In Stock
 ## Related Guides
 
 - [Character LCDs](https://learn.adafruit.com/character-lcds.md)
-- [Arduino "Hunt The Wumpus"](https://learn.adafruit.com/arduino-hunt-the-wumpus.md)
-- [Character LCD with Raspberry Pi or BeagleBone Black](https://learn.adafruit.com/character-lcd-with-raspberry-pi-or-beaglebone-black.md)
-- [Trinket RGB Shield Clock](https://learn.adafruit.com/trinket-rgb-shield-clock.md)
 - [Simple Arduino-based USB VID & PID tester](https://learn.adafruit.com/simple-arduino-based-usb-vid-and-pid-tester.md)
+- [Arduino "Hunt The Wumpus"](https://learn.adafruit.com/arduino-hunt-the-wumpus.md)
 - [Sous-vide controller powered by Arduino - The SousViduino!](https://learn.adafruit.com/sous-vide-powered-by-arduino-the-sous-viduino.md)
-- [Trinket Temperature & Humidity LCD Display](https://learn.adafruit.com/trinket-temperature-humidity-lcd-display.md)
 - [Trinket Ultrasonic Rangefinder](https://learn.adafruit.com/trinket-ultrasonic-rangefinder.md)
+- [Trinket RGB Shield Clock](https://learn.adafruit.com/trinket-rgb-shield-clock.md)
 - [Adafruit Capacitive Touch Sensor Breakouts](https://learn.adafruit.com/adafruit-capacitive-touch-sensor-breakouts.md)
-- [Trainable Robotic Arm](https://learn.adafruit.com/trainable-robotic-arm.md)
-- [CircuitPython 101: Functions](https://learn.adafruit.com/circuitpython-101-functions.md)
-- [Submitting Arduino Code to the Adafruit Learning System](https://learn.adafruit.com/submitting-arduino-code-to-the-adafruit-learning-system.md)
-- [Analog Devices ADXL343 Breakout Learning Guide](https://learn.adafruit.com/adxl343-breakout-learning-guide.md)
-- [Adafruit Metro M4 Express featuring ATSAMD51](https://learn.adafruit.com/adafruit-metro-m4-express-featuring-atsamd51.md)
-- [Adafruit RS-232 Full Pinout Level-Shifter Breakout](https://learn.adafruit.com/adafruit-rs-232-full-pinout-level-shifter-breakout.md)
+- [Trinket Temperature & Humidity LCD Display](https://learn.adafruit.com/trinket-temperature-humidity-lcd-display.md)
+- [Character LCD with Raspberry Pi or BeagleBone Black](https://learn.adafruit.com/character-lcd-with-raspberry-pi-or-beaglebone-black.md)
+- [eInk Literature Quotes Clock for MagTag](https://learn.adafruit.com/eink-literary-quotes-clock-for-magtag.md)
+- [Adafruit Feather RP2040 with DVI Output Port](https://learn.adafruit.com/adafruit-feather-rp2040-dvi.md)
+- [Portable Solar Charging Tracker](https://learn.adafruit.com/portable-solar-charging-tracker.md)
+- [Adafruit E-Ink Bonnet for Raspberry Pi](https://learn.adafruit.com/adafruit-e-ink-bonnet-for-raspberry-pi.md)
+- [What’s Fresh Today? In-Season Produce Reminder for Adafruit MagTag](https://learn.adafruit.com/seasonal-produce-for-adafruit-magtag.md)
+- [No-Solder Visualizer Capacitive Touch Controller](https://learn.adafruit.com/no-solder-visualizer-capacitive-touch-controller.md)

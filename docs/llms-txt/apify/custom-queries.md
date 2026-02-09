@@ -85,7 +85,7 @@ export default scrapeAppToken;
 
 With this code, we're doing the same exact thing as we did in the previous lesson to grab this header value, except programmatically.
 
-> To learn more about this method of scraping headers and tokens, refer to the https://docs.apify.com/academy/api-scraping/general-api-scraping/cookies-headers-tokens.md lesson of the **General API scraping** section.
+> To learn more about this method of scraping headers and tokens, refer to the [Cookies, headers, and tokens](https://docs.apify.com/academy/api-scraping/general-api-scraping/cookies-headers-tokens.md) lesson of the **General API scraping** section.
 
 Now, we can import this function into our **index.js** and use it to create a `token` variable which will be passed as our **X-App-Token** header when scraping:
 
@@ -126,7 +126,7 @@ query SearchQuery($query: String!, $max_age: Int!) {
 ```
 
 
-Finally, since Cheddar is using https://relay.dev/graphql/connections.htm#relay-style-cursor-pagination for their API, we must access the data through the **edges** property, where each **node** is a result item:
+Finally, since Cheddar is using [cursor-based relay pagination](https://relay.dev/graphql/connections.htm#relay-style-cursor-pagination) for their API, we must access the data through the **edges** property, where each **node** is a result item:
 
 
 ```
@@ -205,7 +205,7 @@ const GET_LATEST = gql`
 
 Alternatively, if you don't want to write your GraphQL queries right within your JavaScript code, you can write them in files using the **.graphql** format, then read them from the filesystem or import them.
 
-> In order to receive nice GraphQL syntax highlighting in these template literals, download the https://marketplace.visualstudio.com/items?itemName=GraphQL.vscode-graphql
+> In order to receive nice GraphQL syntax highlighting in these template literals, download the [GraphQL VSCode extension](https://marketplace.visualstudio.com/items?itemName=GraphQL.vscode-graphql)
 
 Then, we'll take our input and use it to create a **variables** object which will be used for the request:
 

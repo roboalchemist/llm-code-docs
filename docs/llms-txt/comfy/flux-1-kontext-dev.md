@@ -1,5 +1,9 @@
 # Source: https://docs.comfy.org/tutorials/flux/flux-1-kontext-dev.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.comfy.org/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # ComfyUI Flux Kontext Dev Native Workflow Example
 
 > ComfyUI Flux Kontext Dev Native Workflow Example.
@@ -46,7 +50,7 @@ Currently in ComfyUI, you can use all these versions, where [Pro and Max version
 
     <Tab title="Desktop or Cloud users">
       * The Desktop is base on ComfyUI stable release, it will auto-update when there is a new Desktop stable release available.
-      * [Cloud](https://cloud.comfy.org) will update after ComfyUI stable release, we will update the Cloud after ComfyUI stable release.
+      * [Cloud](https://cloud.comfy.org) will update after ComfyUI stable release.
 
       So, if you find any core node missing in this document, it might be because the new core nodes have not yet been released in the latest stable version. Please wait for the next stable release.
     </Tab>
@@ -89,6 +93,10 @@ Model save location
 ```
 
 ## Flux.1 Kontext Dev Workflow
+
+<a className="prose" target="_blank" href="https://cloud.comfy.org/?template=flux_kontext_dev_basic&utm_source=docs" style={{ display: 'inline-block', backgroundColor: '#28a745', color: '#ffffff', padding: '10px 20px', borderRadius: '8px', borderColor: "transparent", textDecoration: 'none', fontWeight: 'bold'}}>
+  <p className="prose" style={{ margin: 0, fontSize: "0.8rem" }}>Run on Comfy Cloud</p>
+</a>
 
 This workflow uses the `Load Image(from output)` node to load the image to be edited, making it more convenient for you to access the edited image for multiple rounds of editing.
 

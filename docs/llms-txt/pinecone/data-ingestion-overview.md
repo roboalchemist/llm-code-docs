@@ -1,5 +1,9 @@
 # Source: https://docs.pinecone.io/guides/index-data/data-ingestion-overview.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pinecone.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Data ingestion overview
 
 > Learn about the different ways to ingest data into Pinecone.

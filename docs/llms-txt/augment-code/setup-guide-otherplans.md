@@ -1,5 +1,9 @@
 # Source: https://docs.augmentcode.com/codereview/setup-guide-otherplans.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.augmentcode.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Setup Guide for All Other Plans
 
 > Get started with Augment Code Review for Indie, Standard and Max plans.
@@ -85,8 +89,3 @@ If you have questions about Augment Code Review or want to learn more about Ente
 * [Code Review Overview](/codereview/overview) - Learn about Code Review features
 * [Fix with Augment](/codereview/fix-with-augment) - Automatically fix issues in your IDE
 * [Setup Guide for Enterprise](/codereview/setup-guide-enterprise) - Full setup instructions for Enterprise
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.augmentcode.com/llms.txt

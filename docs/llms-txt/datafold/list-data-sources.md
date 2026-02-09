@@ -1,40 +1,69 @@
 # Source: https://docs.datafold.com/api-reference/data-sources/list-data-sources.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.datafold.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # List data sources
+
+> Retrieves all data sources accessible to the authenticated user.
+
+Returns active data sources (not deleted, hidden, or draft) that the user has permission to access.
+For non-admin users, only data sources belonging to their assigned groups are returned.
+
+
 
 ## OpenAPI
 
 ````yaml get /api/v1/data_sources
+openapi: 3.1.0
+info:
+  contact:
+    email: support@datafold.com
+    name: API Support
+  description: >-
+    The Datafold API reference is a guide to our available endpoints and
+    authentication methods.
+
+    If you're just getting started with Datafold, we recommend first checking
+    out our [documentation](https://docs.datafold.com).
+
+
+    :::info
+      To use the Datafold API, you should first create a Datafold API Key,
+      which should be stored as a local environment variable named DATAFOLD_API_KEY.
+      This can be set in your Datafold Cloud's Settings under the Account page.
+    :::
+  title: Datafold API
+  version: latest
+servers:
+  - description: Default server
+    url: https://app.datafold.com
+security:
+  - ApiKeyAuth: []
 paths:
-  path: /api/v1/data_sources
-  method: get
-  servers:
-    - url: https://app.datafold.com
-      description: Default server
-  request:
-    security:
-      - title: ApiKeyAuth
-        parameters:
-          query: {}
-          header:
-            Authorization:
-              type: apiKey
-              description: Use the 'Authorization' header with the format 'Key <api-key>'
-          cookie: {}
-    parameters:
-      path: {}
-      query: {}
-      header: {}
-      cookie: {}
-    body: {}
-  response:
-    '200':
-      application/json:
-        schemaArray:
-          - type: array
-            items:
-              allOf:
-                - discriminator:
+  /api/v1/data_sources:
+    get:
+      tags:
+        - Data sources
+      summary: List data sources
+      description: >-
+        Retrieves all data sources accessible to the authenticated user.
+
+
+        Returns active data sources (not deleted, hidden, or draft) that the
+        user has permission to access.
+
+        For non-admin users, only data sources belonging to their assigned
+        groups are returned.
+      operationId: list_data_sources
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                items:
+                  discriminator:
                     mapping:
                       athena: '#/components/schemas/ApiDataSourceAwsAthena'
                       aws_s3: '#/components/schemas/ApiDataSourceS3'
@@ -90,560 +119,11 @@ paths:
                     - $ref: '#/components/schemas/ApiDataSourceMicrosoftFabric'
                     - $ref: '#/components/schemas/ApiDataSourceVertica'
                     - $ref: '#/components/schemas/ApiDataSourceTrino'
-            title: Response List Data Sources Api V1 Data Sources Get
-        examples:
-          example:
-            value:
-              - catalog_exclude_list: <string>
-                catalog_include_list: <string>
-                created_from: <string>
-                data_retention_days: 123
-                disable_profiling: true
-                disable_schema_indexing: true
-                float_tolerance: 123
-                groups: {}
-                hidden: true
-                id: 123
-                is_paused: true
-                last_test:
-                  results:
-                    - result: <any>
-                      status: needs_confirmation
-                      step: connection
-                  tested_at: '2023-11-07T05:31:56Z'
-                lineage_schedule: <string>
-                max_allowed_connections: 123
-                name: <string>
-                oauth_dwh_active: true
-                options:
-                  extraProjectsToIndex: |-
-                    project1
-                    project2
-                  jsonOAuthKeyFile: <string>
-                  location: US
-                  projectId: <string>
-                  totalMBytesProcessedLimit: 123
-                  useStandardSql: true
-                  userDefinedFunctionResourceUri: gs://bucket/date_utils.js
-                profile_exclude_list: <string>
-                profile_include_list: <string>
-                profile_schedule: <string>
-                queue_name: <string>
-                scheduled_queue_name: <string>
-                schema_indexing_schedule: <string>
-                schema_max_age_s: 123
-                secret_id: 123
-                source: <string>
-                temp_schema: <string>
-                type: <string>
-                view_only: true
-        description: Successful Response
-  deprecated: false
-  type: path
+                title: Response List Data Sources
+                type: array
+          description: Successful Response
 components:
   schemas:
-    AWSS3Config:
-      properties:
-        bucket_name:
-          title: Bucket Name
-          type: string
-        key_id:
-          anyOf:
-            - maxLength: 1024
-              type: string
-            - type: 'null'
-          title: Key Id
-        materialize_max_rows:
-          anyOf:
-            - type: integer
-            - type: 'null'
-          title: Materialize Max Rows
-        materialize_path:
-          anyOf:
-            - type: string
-            - type: 'null'
-          title: Materialize Path
-        region:
-          title: Region
-          type: string
-        secret:
-          anyOf:
-            - format: password
-              type: string
-              writeOnly: true
-            - type: 'null'
-          title: Secret
-      required:
-        - bucket_name
-        - key_id
-        - region
-      title: AWSS3Config
-      type: object
-    ApiDataSourceAwsAthena:
-      properties:
-        catalog_exclude_list:
-          anyOf:
-            - type: string
-            - type: 'null'
-          title: Catalog Exclude List
-        catalog_include_list:
-          anyOf:
-            - type: string
-            - type: 'null'
-          title: Catalog Include List
-        created_from:
-          anyOf:
-            - type: string
-            - type: 'null'
-          title: Created From
-        data_retention_days:
-          anyOf:
-            - type: integer
-            - type: 'null'
-          title: Data Retention Days
-        disable_profiling:
-          anyOf:
-            - type: boolean
-            - type: 'null'
-          default: false
-          title: Disable Profiling
-        disable_schema_indexing:
-          anyOf:
-            - type: boolean
-            - type: 'null'
-          default: false
-          title: Disable Schema Indexing
-        float_tolerance:
-          anyOf:
-            - type: number
-            - type: 'null'
-          default: 0
-          title: Float Tolerance
-        groups:
-          anyOf:
-            - additionalProperties:
-                type: boolean
-              type: object
-            - type: 'null'
-          title: Groups
-        hidden:
-          anyOf:
-            - type: boolean
-            - type: 'null'
-          default: false
-          title: Hidden
-        id:
-          anyOf:
-            - type: integer
-            - type: 'null'
-          title: Id
-        is_paused:
-          anyOf:
-            - type: boolean
-            - type: 'null'
-          default: false
-          title: Is Paused
-        last_test:
-          anyOf:
-            - $ref: '#/components/schemas/ApiDataSourceTestStatus'
-            - type: 'null'
-        lineage_schedule:
-          anyOf:
-            - type: string
-            - type: 'null'
-          title: Lineage Schedule
-        max_allowed_connections:
-          anyOf:
-            - type: integer
-            - type: 'null'
-          title: Max Allowed Connections
-        name:
-          title: Name
-          type: string
-        oauth_dwh_active:
-          anyOf:
-            - type: boolean
-            - type: 'null'
-          title: Oauth Dwh Active
-        options:
-          anyOf:
-            - $ref: '#/components/schemas/AwsAthenaConfig'
-            - type: 'null'
-        profile_exclude_list:
-          anyOf:
-            - type: string
-            - type: 'null'
-          title: Profile Exclude List
-        profile_include_list:
-          anyOf:
-            - type: string
-            - type: 'null'
-          title: Profile Include List
-        profile_schedule:
-          anyOf:
-            - type: string
-            - type: 'null'
-          title: Profile Schedule
-        queue_name:
-          anyOf:
-            - type: string
-            - type: 'null'
-          title: Queue Name
-        scheduled_queue_name:
-          anyOf:
-            - type: string
-            - type: 'null'
-          title: Scheduled Queue Name
-        schema_indexing_schedule:
-          anyOf:
-            - type: string
-            - type: 'null'
-          title: Schema Indexing Schedule
-        schema_max_age_s:
-          anyOf:
-            - type: integer
-            - type: 'null'
-          title: Schema Max Age S
-        secret_id:
-          anyOf:
-            - type: integer
-            - type: 'null'
-          title: Secret Id
-        source:
-          anyOf:
-            - type: string
-            - type: 'null'
-          title: Source
-        temp_schema:
-          anyOf:
-            - type: string
-            - type: 'null'
-          title: Temp Schema
-        type:
-          const: athena
-          title: Type
-          type: string
-        view_only:
-          anyOf:
-            - type: boolean
-            - type: 'null'
-          default: false
-          title: View Only
-      required:
-        - name
-        - type
-      title: ApiDataSourceAwsAthena
-      type: object
-    ApiDataSourceAzureDataLake:
-      properties:
-        catalog_exclude_list:
-          anyOf:
-            - type: string
-            - type: 'null'
-          title: Catalog Exclude List
-        catalog_include_list:
-          anyOf:
-            - type: string
-            - type: 'null'
-          title: Catalog Include List
-        created_from:
-          anyOf:
-            - type: string
-            - type: 'null'
-          title: Created From
-        data_retention_days:
-          anyOf:
-            - type: integer
-            - type: 'null'
-          title: Data Retention Days
-        disable_profiling:
-          anyOf:
-            - type: boolean
-            - type: 'null'
-          default: false
-          title: Disable Profiling
-        disable_schema_indexing:
-          anyOf:
-            - type: boolean
-            - type: 'null'
-          default: false
-          title: Disable Schema Indexing
-        float_tolerance:
-          anyOf:
-            - type: number
-            - type: 'null'
-          default: 0
-          title: Float Tolerance
-        groups:
-          anyOf:
-            - additionalProperties:
-                type: boolean
-              type: object
-            - type: 'null'
-          title: Groups
-        hidden:
-          anyOf:
-            - type: boolean
-            - type: 'null'
-          default: false
-          title: Hidden
-        id:
-          anyOf:
-            - type: integer
-            - type: 'null'
-          title: Id
-        is_paused:
-          anyOf:
-            - type: boolean
-            - type: 'null'
-          default: false
-          title: Is Paused
-        last_test:
-          anyOf:
-            - $ref: '#/components/schemas/ApiDataSourceTestStatus'
-            - type: 'null'
-        lineage_schedule:
-          anyOf:
-            - type: string
-            - type: 'null'
-          title: Lineage Schedule
-        max_allowed_connections:
-          anyOf:
-            - type: integer
-            - type: 'null'
-          title: Max Allowed Connections
-        name:
-          title: Name
-          type: string
-        oauth_dwh_active:
-          anyOf:
-            - type: boolean
-            - type: 'null'
-          title: Oauth Dwh Active
-        options:
-          anyOf:
-            - $ref: '#/components/schemas/AzureDataLakeConfig'
-            - type: 'null'
-        profile_exclude_list:
-          anyOf:
-            - type: string
-            - type: 'null'
-          title: Profile Exclude List
-        profile_include_list:
-          anyOf:
-            - type: string
-            - type: 'null'
-          title: Profile Include List
-        profile_schedule:
-          anyOf:
-            - type: string
-            - type: 'null'
-          title: Profile Schedule
-        queue_name:
-          anyOf:
-            - type: string
-            - type: 'null'
-          title: Queue Name
-        scheduled_queue_name:
-          anyOf:
-            - type: string
-            - type: 'null'
-          title: Scheduled Queue Name
-        schema_indexing_schedule:
-          anyOf:
-            - type: string
-            - type: 'null'
-          title: Schema Indexing Schedule
-        schema_max_age_s:
-          anyOf:
-            - type: integer
-            - type: 'null'
-          title: Schema Max Age S
-        secret_id:
-          anyOf:
-            - type: integer
-            - type: 'null'
-          title: Secret Id
-        source:
-          anyOf:
-            - type: string
-            - type: 'null'
-          title: Source
-        temp_schema:
-          anyOf:
-            - type: string
-            - type: 'null'
-          title: Temp Schema
-        type:
-          const: files_azure_datalake
-          title: Type
-          type: string
-        view_only:
-          anyOf:
-            - type: boolean
-            - type: 'null'
-          default: false
-          title: View Only
-      required:
-        - name
-        - type
-      title: ApiDataSourceAzureDataLake
-      type: object
-    ApiDataSourceAzureSynapse:
-      properties:
-        catalog_exclude_list:
-          anyOf:
-            - type: string
-            - type: 'null'
-          title: Catalog Exclude List
-        catalog_include_list:
-          anyOf:
-            - type: string
-            - type: 'null'
-          title: Catalog Include List
-        created_from:
-          anyOf:
-            - type: string
-            - type: 'null'
-          title: Created From
-        data_retention_days:
-          anyOf:
-            - type: integer
-            - type: 'null'
-          title: Data Retention Days
-        disable_profiling:
-          anyOf:
-            - type: boolean
-            - type: 'null'
-          default: false
-          title: Disable Profiling
-        disable_schema_indexing:
-          anyOf:
-            - type: boolean
-            - type: 'null'
-          default: false
-          title: Disable Schema Indexing
-        float_tolerance:
-          anyOf:
-            - type: number
-            - type: 'null'
-          default: 0
-          title: Float Tolerance
-        groups:
-          anyOf:
-            - additionalProperties:
-                type: boolean
-              type: object
-            - type: 'null'
-          title: Groups
-        hidden:
-          anyOf:
-            - type: boolean
-            - type: 'null'
-          default: false
-          title: Hidden
-        id:
-          anyOf:
-            - type: integer
-            - type: 'null'
-          title: Id
-        is_paused:
-          anyOf:
-            - type: boolean
-            - type: 'null'
-          default: false
-          title: Is Paused
-        last_test:
-          anyOf:
-            - $ref: '#/components/schemas/ApiDataSourceTestStatus'
-            - type: 'null'
-        lineage_schedule:
-          anyOf:
-            - type: string
-            - type: 'null'
-          title: Lineage Schedule
-        max_allowed_connections:
-          anyOf:
-            - type: integer
-            - type: 'null'
-          title: Max Allowed Connections
-        name:
-          title: Name
-          type: string
-        oauth_dwh_active:
-          anyOf:
-            - type: boolean
-            - type: 'null'
-          title: Oauth Dwh Active
-        options:
-          anyOf:
-            - $ref: '#/components/schemas/MSSQLConfig'
-            - type: 'null'
-        profile_exclude_list:
-          anyOf:
-            - type: string
-            - type: 'null'
-          title: Profile Exclude List
-        profile_include_list:
-          anyOf:
-            - type: string
-            - type: 'null'
-          title: Profile Include List
-        profile_schedule:
-          anyOf:
-            - type: string
-            - type: 'null'
-          title: Profile Schedule
-        queue_name:
-          anyOf:
-            - type: string
-            - type: 'null'
-          title: Queue Name
-        scheduled_queue_name:
-          anyOf:
-            - type: string
-            - type: 'null'
-          title: Scheduled Queue Name
-        schema_indexing_schedule:
-          anyOf:
-            - type: string
-            - type: 'null'
-          title: Schema Indexing Schedule
-        schema_max_age_s:
-          anyOf:
-            - type: integer
-            - type: 'null'
-          title: Schema Max Age S
-        secret_id:
-          anyOf:
-            - type: integer
-            - type: 'null'
-          title: Secret Id
-        source:
-          anyOf:
-            - type: string
-            - type: 'null'
-          title: Source
-        temp_schema:
-          anyOf:
-            - type: string
-            - type: 'null'
-          title: Temp Schema
-        type:
-          const: azure_synapse
-          title: Type
-          type: string
-        view_only:
-          anyOf:
-            - type: boolean
-            - type: 'null'
-          default: false
-          title: View Only
-      required:
-        - name
-        - type
-      title: ApiDataSourceAzureSynapse
-      type: object
     ApiDataSourceBigQuery:
       properties:
         catalog_exclude_list:
@@ -954,161 +434,6 @@ components:
         - type
       title: ApiDataSourceDatabricks
       type: object
-    ApiDataSourceDremio:
-      properties:
-        catalog_exclude_list:
-          anyOf:
-            - type: string
-            - type: 'null'
-          title: Catalog Exclude List
-        catalog_include_list:
-          anyOf:
-            - type: string
-            - type: 'null'
-          title: Catalog Include List
-        created_from:
-          anyOf:
-            - type: string
-            - type: 'null'
-          title: Created From
-        data_retention_days:
-          anyOf:
-            - type: integer
-            - type: 'null'
-          title: Data Retention Days
-        disable_profiling:
-          anyOf:
-            - type: boolean
-            - type: 'null'
-          default: false
-          title: Disable Profiling
-        disable_schema_indexing:
-          anyOf:
-            - type: boolean
-            - type: 'null'
-          default: false
-          title: Disable Schema Indexing
-        float_tolerance:
-          anyOf:
-            - type: number
-            - type: 'null'
-          default: 0
-          title: Float Tolerance
-        groups:
-          anyOf:
-            - additionalProperties:
-                type: boolean
-              type: object
-            - type: 'null'
-          title: Groups
-        hidden:
-          anyOf:
-            - type: boolean
-            - type: 'null'
-          default: false
-          title: Hidden
-        id:
-          anyOf:
-            - type: integer
-            - type: 'null'
-          title: Id
-        is_paused:
-          anyOf:
-            - type: boolean
-            - type: 'null'
-          default: false
-          title: Is Paused
-        last_test:
-          anyOf:
-            - $ref: '#/components/schemas/ApiDataSourceTestStatus'
-            - type: 'null'
-        lineage_schedule:
-          anyOf:
-            - type: string
-            - type: 'null'
-          title: Lineage Schedule
-        max_allowed_connections:
-          anyOf:
-            - type: integer
-            - type: 'null'
-          title: Max Allowed Connections
-        name:
-          title: Name
-          type: string
-        oauth_dwh_active:
-          anyOf:
-            - type: boolean
-            - type: 'null'
-          title: Oauth Dwh Active
-        options:
-          anyOf:
-            - $ref: '#/components/schemas/DremioConfig'
-            - type: 'null'
-        profile_exclude_list:
-          anyOf:
-            - type: string
-            - type: 'null'
-          title: Profile Exclude List
-        profile_include_list:
-          anyOf:
-            - type: string
-            - type: 'null'
-          title: Profile Include List
-        profile_schedule:
-          anyOf:
-            - type: string
-            - type: 'null'
-          title: Profile Schedule
-        queue_name:
-          anyOf:
-            - type: string
-            - type: 'null'
-          title: Queue Name
-        scheduled_queue_name:
-          anyOf:
-            - type: string
-            - type: 'null'
-          title: Scheduled Queue Name
-        schema_indexing_schedule:
-          anyOf:
-            - type: string
-            - type: 'null'
-          title: Schema Indexing Schedule
-        schema_max_age_s:
-          anyOf:
-            - type: integer
-            - type: 'null'
-          title: Schema Max Age S
-        secret_id:
-          anyOf:
-            - type: integer
-            - type: 'null'
-          title: Secret Id
-        source:
-          anyOf:
-            - type: string
-            - type: 'null'
-          title: Source
-        temp_schema:
-          anyOf:
-            - type: string
-            - type: 'null'
-          title: Temp Schema
-        type:
-          const: dremio
-          title: Type
-          type: string
-        view_only:
-          anyOf:
-            - type: boolean
-            - type: 'null'
-          default: false
-          title: View Only
-      required:
-        - name
-        - type
-      title: ApiDataSourceDremio
-      type: object
     ApiDataSourceDuckDB:
       properties:
         catalog_exclude_list:
@@ -1263,626 +588,6 @@ components:
         - name
         - type
       title: ApiDataSourceDuckDB
-      type: object
-    ApiDataSourceGCS:
-      properties:
-        catalog_exclude_list:
-          anyOf:
-            - type: string
-            - type: 'null'
-          title: Catalog Exclude List
-        catalog_include_list:
-          anyOf:
-            - type: string
-            - type: 'null'
-          title: Catalog Include List
-        created_from:
-          anyOf:
-            - type: string
-            - type: 'null'
-          title: Created From
-        data_retention_days:
-          anyOf:
-            - type: integer
-            - type: 'null'
-          title: Data Retention Days
-        disable_profiling:
-          anyOf:
-            - type: boolean
-            - type: 'null'
-          default: false
-          title: Disable Profiling
-        disable_schema_indexing:
-          anyOf:
-            - type: boolean
-            - type: 'null'
-          default: false
-          title: Disable Schema Indexing
-        float_tolerance:
-          anyOf:
-            - type: number
-            - type: 'null'
-          default: 0
-          title: Float Tolerance
-        groups:
-          anyOf:
-            - additionalProperties:
-                type: boolean
-              type: object
-            - type: 'null'
-          title: Groups
-        hidden:
-          anyOf:
-            - type: boolean
-            - type: 'null'
-          default: false
-          title: Hidden
-        id:
-          anyOf:
-            - type: integer
-            - type: 'null'
-          title: Id
-        is_paused:
-          anyOf:
-            - type: boolean
-            - type: 'null'
-          default: false
-          title: Is Paused
-        last_test:
-          anyOf:
-            - $ref: '#/components/schemas/ApiDataSourceTestStatus'
-            - type: 'null'
-        lineage_schedule:
-          anyOf:
-            - type: string
-            - type: 'null'
-          title: Lineage Schedule
-        max_allowed_connections:
-          anyOf:
-            - type: integer
-            - type: 'null'
-          title: Max Allowed Connections
-        name:
-          title: Name
-          type: string
-        oauth_dwh_active:
-          anyOf:
-            - type: boolean
-            - type: 'null'
-          title: Oauth Dwh Active
-        options:
-          anyOf:
-            - $ref: '#/components/schemas/GCSConfig'
-            - type: 'null'
-        profile_exclude_list:
-          anyOf:
-            - type: string
-            - type: 'null'
-          title: Profile Exclude List
-        profile_include_list:
-          anyOf:
-            - type: string
-            - type: 'null'
-          title: Profile Include List
-        profile_schedule:
-          anyOf:
-            - type: string
-            - type: 'null'
-          title: Profile Schedule
-        queue_name:
-          anyOf:
-            - type: string
-            - type: 'null'
-          title: Queue Name
-        scheduled_queue_name:
-          anyOf:
-            - type: string
-            - type: 'null'
-          title: Scheduled Queue Name
-        schema_indexing_schedule:
-          anyOf:
-            - type: string
-            - type: 'null'
-          title: Schema Indexing Schedule
-        schema_max_age_s:
-          anyOf:
-            - type: integer
-            - type: 'null'
-          title: Schema Max Age S
-        secret_id:
-          anyOf:
-            - type: integer
-            - type: 'null'
-          title: Secret Id
-        source:
-          anyOf:
-            - type: string
-            - type: 'null'
-          title: Source
-        temp_schema:
-          anyOf:
-            - type: string
-            - type: 'null'
-          title: Temp Schema
-        type:
-          const: google_cloud_storage
-          title: Type
-          type: string
-        view_only:
-          anyOf:
-            - type: boolean
-            - type: 'null'
-          default: false
-          title: View Only
-      required:
-        - name
-        - type
-      title: ApiDataSourceGCS
-      type: object
-    ApiDataSourceMSSQL:
-      properties:
-        catalog_exclude_list:
-          anyOf:
-            - type: string
-            - type: 'null'
-          title: Catalog Exclude List
-        catalog_include_list:
-          anyOf:
-            - type: string
-            - type: 'null'
-          title: Catalog Include List
-        created_from:
-          anyOf:
-            - type: string
-            - type: 'null'
-          title: Created From
-        data_retention_days:
-          anyOf:
-            - type: integer
-            - type: 'null'
-          title: Data Retention Days
-        disable_profiling:
-          anyOf:
-            - type: boolean
-            - type: 'null'
-          default: false
-          title: Disable Profiling
-        disable_schema_indexing:
-          anyOf:
-            - type: boolean
-            - type: 'null'
-          default: false
-          title: Disable Schema Indexing
-        float_tolerance:
-          anyOf:
-            - type: number
-            - type: 'null'
-          default: 0
-          title: Float Tolerance
-        groups:
-          anyOf:
-            - additionalProperties:
-                type: boolean
-              type: object
-            - type: 'null'
-          title: Groups
-        hidden:
-          anyOf:
-            - type: boolean
-            - type: 'null'
-          default: false
-          title: Hidden
-        id:
-          anyOf:
-            - type: integer
-            - type: 'null'
-          title: Id
-        is_paused:
-          anyOf:
-            - type: boolean
-            - type: 'null'
-          default: false
-          title: Is Paused
-        last_test:
-          anyOf:
-            - $ref: '#/components/schemas/ApiDataSourceTestStatus'
-            - type: 'null'
-        lineage_schedule:
-          anyOf:
-            - type: string
-            - type: 'null'
-          title: Lineage Schedule
-        max_allowed_connections:
-          anyOf:
-            - type: integer
-            - type: 'null'
-          title: Max Allowed Connections
-        name:
-          title: Name
-          type: string
-        oauth_dwh_active:
-          anyOf:
-            - type: boolean
-            - type: 'null'
-          title: Oauth Dwh Active
-        options:
-          anyOf:
-            - $ref: '#/components/schemas/MSSQLConfig'
-            - type: 'null'
-        profile_exclude_list:
-          anyOf:
-            - type: string
-            - type: 'null'
-          title: Profile Exclude List
-        profile_include_list:
-          anyOf:
-            - type: string
-            - type: 'null'
-          title: Profile Include List
-        profile_schedule:
-          anyOf:
-            - type: string
-            - type: 'null'
-          title: Profile Schedule
-        queue_name:
-          anyOf:
-            - type: string
-            - type: 'null'
-          title: Queue Name
-        scheduled_queue_name:
-          anyOf:
-            - type: string
-            - type: 'null'
-          title: Scheduled Queue Name
-        schema_indexing_schedule:
-          anyOf:
-            - type: string
-            - type: 'null'
-          title: Schema Indexing Schedule
-        schema_max_age_s:
-          anyOf:
-            - type: integer
-            - type: 'null'
-          title: Schema Max Age S
-        secret_id:
-          anyOf:
-            - type: integer
-            - type: 'null'
-          title: Secret Id
-        source:
-          anyOf:
-            - type: string
-            - type: 'null'
-          title: Source
-        temp_schema:
-          anyOf:
-            - type: string
-            - type: 'null'
-          title: Temp Schema
-        type:
-          const: mssql
-          title: Type
-          type: string
-        view_only:
-          anyOf:
-            - type: boolean
-            - type: 'null'
-          default: false
-          title: View Only
-      required:
-        - name
-        - type
-      title: ApiDataSourceMSSQL
-      type: object
-    ApiDataSourceMariaDB:
-      properties:
-        catalog_exclude_list:
-          anyOf:
-            - type: string
-            - type: 'null'
-          title: Catalog Exclude List
-        catalog_include_list:
-          anyOf:
-            - type: string
-            - type: 'null'
-          title: Catalog Include List
-        created_from:
-          anyOf:
-            - type: string
-            - type: 'null'
-          title: Created From
-        data_retention_days:
-          anyOf:
-            - type: integer
-            - type: 'null'
-          title: Data Retention Days
-        disable_profiling:
-          anyOf:
-            - type: boolean
-            - type: 'null'
-          default: false
-          title: Disable Profiling
-        disable_schema_indexing:
-          anyOf:
-            - type: boolean
-            - type: 'null'
-          default: false
-          title: Disable Schema Indexing
-        float_tolerance:
-          anyOf:
-            - type: number
-            - type: 'null'
-          default: 0
-          title: Float Tolerance
-        groups:
-          anyOf:
-            - additionalProperties:
-                type: boolean
-              type: object
-            - type: 'null'
-          title: Groups
-        hidden:
-          anyOf:
-            - type: boolean
-            - type: 'null'
-          default: false
-          title: Hidden
-        id:
-          anyOf:
-            - type: integer
-            - type: 'null'
-          title: Id
-        is_paused:
-          anyOf:
-            - type: boolean
-            - type: 'null'
-          default: false
-          title: Is Paused
-        last_test:
-          anyOf:
-            - $ref: '#/components/schemas/ApiDataSourceTestStatus'
-            - type: 'null'
-        lineage_schedule:
-          anyOf:
-            - type: string
-            - type: 'null'
-          title: Lineage Schedule
-        max_allowed_connections:
-          anyOf:
-            - type: integer
-            - type: 'null'
-          title: Max Allowed Connections
-        name:
-          title: Name
-          type: string
-        oauth_dwh_active:
-          anyOf:
-            - type: boolean
-            - type: 'null'
-          title: Oauth Dwh Active
-        options:
-          anyOf:
-            - $ref: '#/components/schemas/MariaDBConfig'
-            - type: 'null'
-        profile_exclude_list:
-          anyOf:
-            - type: string
-            - type: 'null'
-          title: Profile Exclude List
-        profile_include_list:
-          anyOf:
-            - type: string
-            - type: 'null'
-          title: Profile Include List
-        profile_schedule:
-          anyOf:
-            - type: string
-            - type: 'null'
-          title: Profile Schedule
-        queue_name:
-          anyOf:
-            - type: string
-            - type: 'null'
-          title: Queue Name
-        scheduled_queue_name:
-          anyOf:
-            - type: string
-            - type: 'null'
-          title: Scheduled Queue Name
-        schema_indexing_schedule:
-          anyOf:
-            - type: string
-            - type: 'null'
-          title: Schema Indexing Schedule
-        schema_max_age_s:
-          anyOf:
-            - type: integer
-            - type: 'null'
-          title: Schema Max Age S
-        secret_id:
-          anyOf:
-            - type: integer
-            - type: 'null'
-          title: Secret Id
-        source:
-          anyOf:
-            - type: string
-            - type: 'null'
-          title: Source
-        temp_schema:
-          anyOf:
-            - type: string
-            - type: 'null'
-          title: Temp Schema
-        type:
-          const: mariadb
-          title: Type
-          type: string
-        view_only:
-          anyOf:
-            - type: boolean
-            - type: 'null'
-          default: false
-          title: View Only
-      required:
-        - name
-        - type
-      title: ApiDataSourceMariaDB
-      type: object
-    ApiDataSourceMicrosoftFabric:
-      properties:
-        catalog_exclude_list:
-          anyOf:
-            - type: string
-            - type: 'null'
-          title: Catalog Exclude List
-        catalog_include_list:
-          anyOf:
-            - type: string
-            - type: 'null'
-          title: Catalog Include List
-        created_from:
-          anyOf:
-            - type: string
-            - type: 'null'
-          title: Created From
-        data_retention_days:
-          anyOf:
-            - type: integer
-            - type: 'null'
-          title: Data Retention Days
-        disable_profiling:
-          anyOf:
-            - type: boolean
-            - type: 'null'
-          default: false
-          title: Disable Profiling
-        disable_schema_indexing:
-          anyOf:
-            - type: boolean
-            - type: 'null'
-          default: false
-          title: Disable Schema Indexing
-        float_tolerance:
-          anyOf:
-            - type: number
-            - type: 'null'
-          default: 0
-          title: Float Tolerance
-        groups:
-          anyOf:
-            - additionalProperties:
-                type: boolean
-              type: object
-            - type: 'null'
-          title: Groups
-        hidden:
-          anyOf:
-            - type: boolean
-            - type: 'null'
-          default: false
-          title: Hidden
-        id:
-          anyOf:
-            - type: integer
-            - type: 'null'
-          title: Id
-        is_paused:
-          anyOf:
-            - type: boolean
-            - type: 'null'
-          default: false
-          title: Is Paused
-        last_test:
-          anyOf:
-            - $ref: '#/components/schemas/ApiDataSourceTestStatus'
-            - type: 'null'
-        lineage_schedule:
-          anyOf:
-            - type: string
-            - type: 'null'
-          title: Lineage Schedule
-        max_allowed_connections:
-          anyOf:
-            - type: integer
-            - type: 'null'
-          title: Max Allowed Connections
-        name:
-          title: Name
-          type: string
-        oauth_dwh_active:
-          anyOf:
-            - type: boolean
-            - type: 'null'
-          title: Oauth Dwh Active
-        options:
-          anyOf:
-            - $ref: '#/components/schemas/MicrosoftFabricConfig'
-            - type: 'null'
-        profile_exclude_list:
-          anyOf:
-            - type: string
-            - type: 'null'
-          title: Profile Exclude List
-        profile_include_list:
-          anyOf:
-            - type: string
-            - type: 'null'
-          title: Profile Include List
-        profile_schedule:
-          anyOf:
-            - type: string
-            - type: 'null'
-          title: Profile Schedule
-        queue_name:
-          anyOf:
-            - type: string
-            - type: 'null'
-          title: Queue Name
-        scheduled_queue_name:
-          anyOf:
-            - type: string
-            - type: 'null'
-          title: Scheduled Queue Name
-        schema_indexing_schedule:
-          anyOf:
-            - type: string
-            - type: 'null'
-          title: Schema Indexing Schedule
-        schema_max_age_s:
-          anyOf:
-            - type: integer
-            - type: 'null'
-          title: Schema Max Age S
-        secret_id:
-          anyOf:
-            - type: integer
-            - type: 'null'
-          title: Secret Id
-        source:
-          anyOf:
-            - type: string
-            - type: 'null'
-          title: Source
-        temp_schema:
-          anyOf:
-            - type: string
-            - type: 'null'
-          title: Temp Schema
-        type:
-          const: microsoft_fabric
-          title: Type
-          type: string
-        view_only:
-          anyOf:
-            - type: boolean
-            - type: 'null'
-          default: false
-          title: View Only
-      required:
-        - name
-        - type
-      title: ApiDataSourceMicrosoftFabric
       type: object
     ApiDataSourceMongoDB:
       properties:
@@ -2194,7 +899,7 @@ components:
         - type
       title: ApiDataSourceMySQL
       type: object
-    ApiDataSourceNetezza:
+    ApiDataSourceMariaDB:
       properties:
         catalog_exclude_list:
           anyOf:
@@ -2282,7 +987,7 @@ components:
           title: Oauth Dwh Active
         options:
           anyOf:
-            - $ref: '#/components/schemas/NetezzaConfig'
+            - $ref: '#/components/schemas/MariaDBConfig'
             - type: 'null'
         profile_exclude_list:
           anyOf:
@@ -2335,7 +1040,7 @@ components:
             - type: 'null'
           title: Temp Schema
         type:
-          const: netezza
+          const: mariadb
           title: Type
           type: string
         view_only:
@@ -2347,7 +1052,162 @@ components:
       required:
         - name
         - type
-      title: ApiDataSourceNetezza
+      title: ApiDataSourceMariaDB
+      type: object
+    ApiDataSourceMSSQL:
+      properties:
+        catalog_exclude_list:
+          anyOf:
+            - type: string
+            - type: 'null'
+          title: Catalog Exclude List
+        catalog_include_list:
+          anyOf:
+            - type: string
+            - type: 'null'
+          title: Catalog Include List
+        created_from:
+          anyOf:
+            - type: string
+            - type: 'null'
+          title: Created From
+        data_retention_days:
+          anyOf:
+            - type: integer
+            - type: 'null'
+          title: Data Retention Days
+        disable_profiling:
+          anyOf:
+            - type: boolean
+            - type: 'null'
+          default: false
+          title: Disable Profiling
+        disable_schema_indexing:
+          anyOf:
+            - type: boolean
+            - type: 'null'
+          default: false
+          title: Disable Schema Indexing
+        float_tolerance:
+          anyOf:
+            - type: number
+            - type: 'null'
+          default: 0
+          title: Float Tolerance
+        groups:
+          anyOf:
+            - additionalProperties:
+                type: boolean
+              type: object
+            - type: 'null'
+          title: Groups
+        hidden:
+          anyOf:
+            - type: boolean
+            - type: 'null'
+          default: false
+          title: Hidden
+        id:
+          anyOf:
+            - type: integer
+            - type: 'null'
+          title: Id
+        is_paused:
+          anyOf:
+            - type: boolean
+            - type: 'null'
+          default: false
+          title: Is Paused
+        last_test:
+          anyOf:
+            - $ref: '#/components/schemas/ApiDataSourceTestStatus'
+            - type: 'null'
+        lineage_schedule:
+          anyOf:
+            - type: string
+            - type: 'null'
+          title: Lineage Schedule
+        max_allowed_connections:
+          anyOf:
+            - type: integer
+            - type: 'null'
+          title: Max Allowed Connections
+        name:
+          title: Name
+          type: string
+        oauth_dwh_active:
+          anyOf:
+            - type: boolean
+            - type: 'null'
+          title: Oauth Dwh Active
+        options:
+          anyOf:
+            - $ref: '#/components/schemas/MSSQLConfig'
+            - type: 'null'
+        profile_exclude_list:
+          anyOf:
+            - type: string
+            - type: 'null'
+          title: Profile Exclude List
+        profile_include_list:
+          anyOf:
+            - type: string
+            - type: 'null'
+          title: Profile Include List
+        profile_schedule:
+          anyOf:
+            - type: string
+            - type: 'null'
+          title: Profile Schedule
+        queue_name:
+          anyOf:
+            - type: string
+            - type: 'null'
+          title: Queue Name
+        scheduled_queue_name:
+          anyOf:
+            - type: string
+            - type: 'null'
+          title: Scheduled Queue Name
+        schema_indexing_schedule:
+          anyOf:
+            - type: string
+            - type: 'null'
+          title: Schema Indexing Schedule
+        schema_max_age_s:
+          anyOf:
+            - type: integer
+            - type: 'null'
+          title: Schema Max Age S
+        secret_id:
+          anyOf:
+            - type: integer
+            - type: 'null'
+          title: Secret Id
+        source:
+          anyOf:
+            - type: string
+            - type: 'null'
+          title: Source
+        temp_schema:
+          anyOf:
+            - type: string
+            - type: 'null'
+          title: Temp Schema
+        type:
+          const: mssql
+          title: Type
+          type: string
+        view_only:
+          anyOf:
+            - type: boolean
+            - type: 'null'
+          default: false
+          title: View Only
+      required:
+        - name
+        - type
+      title: ApiDataSourceMSSQL
       type: object
     ApiDataSourceOracle:
       properties:
@@ -3124,7 +1984,7 @@ components:
         - type
       title: ApiDataSourceRedshift
       type: object
-    ApiDataSourceS3:
+    ApiDataSourceTeradata:
       properties:
         catalog_exclude_list:
           anyOf:
@@ -3212,7 +2072,7 @@ components:
           title: Oauth Dwh Active
         options:
           anyOf:
-            - $ref: '#/components/schemas/AWSS3Config'
+            - $ref: '#/components/schemas/TeradataConfig'
             - type: 'null'
         profile_exclude_list:
           anyOf:
@@ -3265,7 +2125,7 @@ components:
             - type: 'null'
           title: Temp Schema
         type:
-          const: aws_s3
+          const: teradata
           title: Type
           type: string
         view_only:
@@ -3277,7 +2137,7 @@ components:
       required:
         - name
         - type
-      title: ApiDataSourceS3
+      title: ApiDataSourceTeradata
       type: object
     ApiDataSourceSapHana:
       properties:
@@ -3434,6 +2294,161 @@ components:
         - type
       title: ApiDataSourceSapHana
       type: object
+    ApiDataSourceAwsAthena:
+      properties:
+        catalog_exclude_list:
+          anyOf:
+            - type: string
+            - type: 'null'
+          title: Catalog Exclude List
+        catalog_include_list:
+          anyOf:
+            - type: string
+            - type: 'null'
+          title: Catalog Include List
+        created_from:
+          anyOf:
+            - type: string
+            - type: 'null'
+          title: Created From
+        data_retention_days:
+          anyOf:
+            - type: integer
+            - type: 'null'
+          title: Data Retention Days
+        disable_profiling:
+          anyOf:
+            - type: boolean
+            - type: 'null'
+          default: false
+          title: Disable Profiling
+        disable_schema_indexing:
+          anyOf:
+            - type: boolean
+            - type: 'null'
+          default: false
+          title: Disable Schema Indexing
+        float_tolerance:
+          anyOf:
+            - type: number
+            - type: 'null'
+          default: 0
+          title: Float Tolerance
+        groups:
+          anyOf:
+            - additionalProperties:
+                type: boolean
+              type: object
+            - type: 'null'
+          title: Groups
+        hidden:
+          anyOf:
+            - type: boolean
+            - type: 'null'
+          default: false
+          title: Hidden
+        id:
+          anyOf:
+            - type: integer
+            - type: 'null'
+          title: Id
+        is_paused:
+          anyOf:
+            - type: boolean
+            - type: 'null'
+          default: false
+          title: Is Paused
+        last_test:
+          anyOf:
+            - $ref: '#/components/schemas/ApiDataSourceTestStatus'
+            - type: 'null'
+        lineage_schedule:
+          anyOf:
+            - type: string
+            - type: 'null'
+          title: Lineage Schedule
+        max_allowed_connections:
+          anyOf:
+            - type: integer
+            - type: 'null'
+          title: Max Allowed Connections
+        name:
+          title: Name
+          type: string
+        oauth_dwh_active:
+          anyOf:
+            - type: boolean
+            - type: 'null'
+          title: Oauth Dwh Active
+        options:
+          anyOf:
+            - $ref: '#/components/schemas/AwsAthenaConfig'
+            - type: 'null'
+        profile_exclude_list:
+          anyOf:
+            - type: string
+            - type: 'null'
+          title: Profile Exclude List
+        profile_include_list:
+          anyOf:
+            - type: string
+            - type: 'null'
+          title: Profile Include List
+        profile_schedule:
+          anyOf:
+            - type: string
+            - type: 'null'
+          title: Profile Schedule
+        queue_name:
+          anyOf:
+            - type: string
+            - type: 'null'
+          title: Queue Name
+        scheduled_queue_name:
+          anyOf:
+            - type: string
+            - type: 'null'
+          title: Scheduled Queue Name
+        schema_indexing_schedule:
+          anyOf:
+            - type: string
+            - type: 'null'
+          title: Schema Indexing Schedule
+        schema_max_age_s:
+          anyOf:
+            - type: integer
+            - type: 'null'
+          title: Schema Max Age S
+        secret_id:
+          anyOf:
+            - type: integer
+            - type: 'null'
+          title: Secret Id
+        source:
+          anyOf:
+            - type: string
+            - type: 'null'
+          title: Source
+        temp_schema:
+          anyOf:
+            - type: string
+            - type: 'null'
+          title: Temp Schema
+        type:
+          const: athena
+          title: Type
+          type: string
+        view_only:
+          anyOf:
+            - type: boolean
+            - type: 'null'
+          default: false
+          title: View Only
+      required:
+        - name
+        - type
+      title: ApiDataSourceAwsAthena
+      type: object
     ApiDataSourceSnowflake:
       properties:
         catalog_exclude_list:
@@ -3588,6 +2603,161 @@ components:
         - name
         - type
       title: ApiDataSourceSnowflake
+      type: object
+    ApiDataSourceDremio:
+      properties:
+        catalog_exclude_list:
+          anyOf:
+            - type: string
+            - type: 'null'
+          title: Catalog Exclude List
+        catalog_include_list:
+          anyOf:
+            - type: string
+            - type: 'null'
+          title: Catalog Include List
+        created_from:
+          anyOf:
+            - type: string
+            - type: 'null'
+          title: Created From
+        data_retention_days:
+          anyOf:
+            - type: integer
+            - type: 'null'
+          title: Data Retention Days
+        disable_profiling:
+          anyOf:
+            - type: boolean
+            - type: 'null'
+          default: false
+          title: Disable Profiling
+        disable_schema_indexing:
+          anyOf:
+            - type: boolean
+            - type: 'null'
+          default: false
+          title: Disable Schema Indexing
+        float_tolerance:
+          anyOf:
+            - type: number
+            - type: 'null'
+          default: 0
+          title: Float Tolerance
+        groups:
+          anyOf:
+            - additionalProperties:
+                type: boolean
+              type: object
+            - type: 'null'
+          title: Groups
+        hidden:
+          anyOf:
+            - type: boolean
+            - type: 'null'
+          default: false
+          title: Hidden
+        id:
+          anyOf:
+            - type: integer
+            - type: 'null'
+          title: Id
+        is_paused:
+          anyOf:
+            - type: boolean
+            - type: 'null'
+          default: false
+          title: Is Paused
+        last_test:
+          anyOf:
+            - $ref: '#/components/schemas/ApiDataSourceTestStatus'
+            - type: 'null'
+        lineage_schedule:
+          anyOf:
+            - type: string
+            - type: 'null'
+          title: Lineage Schedule
+        max_allowed_connections:
+          anyOf:
+            - type: integer
+            - type: 'null'
+          title: Max Allowed Connections
+        name:
+          title: Name
+          type: string
+        oauth_dwh_active:
+          anyOf:
+            - type: boolean
+            - type: 'null'
+          title: Oauth Dwh Active
+        options:
+          anyOf:
+            - $ref: '#/components/schemas/DremioConfig'
+            - type: 'null'
+        profile_exclude_list:
+          anyOf:
+            - type: string
+            - type: 'null'
+          title: Profile Exclude List
+        profile_include_list:
+          anyOf:
+            - type: string
+            - type: 'null'
+          title: Profile Include List
+        profile_schedule:
+          anyOf:
+            - type: string
+            - type: 'null'
+          title: Profile Schedule
+        queue_name:
+          anyOf:
+            - type: string
+            - type: 'null'
+          title: Queue Name
+        scheduled_queue_name:
+          anyOf:
+            - type: string
+            - type: 'null'
+          title: Scheduled Queue Name
+        schema_indexing_schedule:
+          anyOf:
+            - type: string
+            - type: 'null'
+          title: Schema Indexing Schedule
+        schema_max_age_s:
+          anyOf:
+            - type: integer
+            - type: 'null'
+          title: Schema Max Age S
+        secret_id:
+          anyOf:
+            - type: integer
+            - type: 'null'
+          title: Secret Id
+        source:
+          anyOf:
+            - type: string
+            - type: 'null'
+          title: Source
+        temp_schema:
+          anyOf:
+            - type: string
+            - type: 'null'
+          title: Temp Schema
+        type:
+          const: dremio
+          title: Type
+          type: string
+        view_only:
+          anyOf:
+            - type: boolean
+            - type: 'null'
+          default: false
+          title: View Only
+      required:
+        - name
+        - type
+      title: ApiDataSourceDremio
       type: object
     ApiDataSourceStarburst:
       properties:
@@ -3744,7 +2914,7 @@ components:
         - type
       title: ApiDataSourceStarburst
       type: object
-    ApiDataSourceTeradata:
+    ApiDataSourceNetezza:
       properties:
         catalog_exclude_list:
           anyOf:
@@ -3832,7 +3002,7 @@ components:
           title: Oauth Dwh Active
         options:
           anyOf:
-            - $ref: '#/components/schemas/TeradataConfig'
+            - $ref: '#/components/schemas/NetezzaConfig'
             - type: 'null'
         profile_exclude_list:
           anyOf:
@@ -3885,7 +3055,7 @@ components:
             - type: 'null'
           title: Temp Schema
         type:
-          const: teradata
+          const: netezza
           title: Type
           type: string
         view_only:
@@ -3897,25 +3067,9 @@ components:
       required:
         - name
         - type
-      title: ApiDataSourceTeradata
+      title: ApiDataSourceNetezza
       type: object
-    ApiDataSourceTestStatus:
-      properties:
-        results:
-          items:
-            $ref: '#/components/schemas/TestResultStep'
-          title: Results
-          type: array
-        tested_at:
-          format: date-time
-          title: Tested At
-          type: string
-      required:
-        - tested_at
-        - results
-      title: ApiDataSourceTestStatus
-      type: object
-    ApiDataSourceTrino:
+    ApiDataSourceAzureDataLake:
       properties:
         catalog_exclude_list:
           anyOf:
@@ -4003,7 +3157,7 @@ components:
           title: Oauth Dwh Active
         options:
           anyOf:
-            - $ref: '#/components/schemas/TrinoConfig'
+            - $ref: '#/components/schemas/AzureDataLakeConfig'
             - type: 'null'
         profile_exclude_list:
           anyOf:
@@ -4056,7 +3210,7 @@ components:
             - type: 'null'
           title: Temp Schema
         type:
-          const: trino
+          const: files_azure_datalake
           title: Type
           type: string
         view_only:
@@ -4068,7 +3222,627 @@ components:
       required:
         - name
         - type
-      title: ApiDataSourceTrino
+      title: ApiDataSourceAzureDataLake
+      type: object
+    ApiDataSourceGCS:
+      properties:
+        catalog_exclude_list:
+          anyOf:
+            - type: string
+            - type: 'null'
+          title: Catalog Exclude List
+        catalog_include_list:
+          anyOf:
+            - type: string
+            - type: 'null'
+          title: Catalog Include List
+        created_from:
+          anyOf:
+            - type: string
+            - type: 'null'
+          title: Created From
+        data_retention_days:
+          anyOf:
+            - type: integer
+            - type: 'null'
+          title: Data Retention Days
+        disable_profiling:
+          anyOf:
+            - type: boolean
+            - type: 'null'
+          default: false
+          title: Disable Profiling
+        disable_schema_indexing:
+          anyOf:
+            - type: boolean
+            - type: 'null'
+          default: false
+          title: Disable Schema Indexing
+        float_tolerance:
+          anyOf:
+            - type: number
+            - type: 'null'
+          default: 0
+          title: Float Tolerance
+        groups:
+          anyOf:
+            - additionalProperties:
+                type: boolean
+              type: object
+            - type: 'null'
+          title: Groups
+        hidden:
+          anyOf:
+            - type: boolean
+            - type: 'null'
+          default: false
+          title: Hidden
+        id:
+          anyOf:
+            - type: integer
+            - type: 'null'
+          title: Id
+        is_paused:
+          anyOf:
+            - type: boolean
+            - type: 'null'
+          default: false
+          title: Is Paused
+        last_test:
+          anyOf:
+            - $ref: '#/components/schemas/ApiDataSourceTestStatus'
+            - type: 'null'
+        lineage_schedule:
+          anyOf:
+            - type: string
+            - type: 'null'
+          title: Lineage Schedule
+        max_allowed_connections:
+          anyOf:
+            - type: integer
+            - type: 'null'
+          title: Max Allowed Connections
+        name:
+          title: Name
+          type: string
+        oauth_dwh_active:
+          anyOf:
+            - type: boolean
+            - type: 'null'
+          title: Oauth Dwh Active
+        options:
+          anyOf:
+            - $ref: '#/components/schemas/GCSConfig'
+            - type: 'null'
+        profile_exclude_list:
+          anyOf:
+            - type: string
+            - type: 'null'
+          title: Profile Exclude List
+        profile_include_list:
+          anyOf:
+            - type: string
+            - type: 'null'
+          title: Profile Include List
+        profile_schedule:
+          anyOf:
+            - type: string
+            - type: 'null'
+          title: Profile Schedule
+        queue_name:
+          anyOf:
+            - type: string
+            - type: 'null'
+          title: Queue Name
+        scheduled_queue_name:
+          anyOf:
+            - type: string
+            - type: 'null'
+          title: Scheduled Queue Name
+        schema_indexing_schedule:
+          anyOf:
+            - type: string
+            - type: 'null'
+          title: Schema Indexing Schedule
+        schema_max_age_s:
+          anyOf:
+            - type: integer
+            - type: 'null'
+          title: Schema Max Age S
+        secret_id:
+          anyOf:
+            - type: integer
+            - type: 'null'
+          title: Secret Id
+        source:
+          anyOf:
+            - type: string
+            - type: 'null'
+          title: Source
+        temp_schema:
+          anyOf:
+            - type: string
+            - type: 'null'
+          title: Temp Schema
+        type:
+          const: google_cloud_storage
+          title: Type
+          type: string
+        view_only:
+          anyOf:
+            - type: boolean
+            - type: 'null'
+          default: false
+          title: View Only
+      required:
+        - name
+        - type
+      title: ApiDataSourceGCS
+      type: object
+    ApiDataSourceS3:
+      properties:
+        catalog_exclude_list:
+          anyOf:
+            - type: string
+            - type: 'null'
+          title: Catalog Exclude List
+        catalog_include_list:
+          anyOf:
+            - type: string
+            - type: 'null'
+          title: Catalog Include List
+        created_from:
+          anyOf:
+            - type: string
+            - type: 'null'
+          title: Created From
+        data_retention_days:
+          anyOf:
+            - type: integer
+            - type: 'null'
+          title: Data Retention Days
+        disable_profiling:
+          anyOf:
+            - type: boolean
+            - type: 'null'
+          default: false
+          title: Disable Profiling
+        disable_schema_indexing:
+          anyOf:
+            - type: boolean
+            - type: 'null'
+          default: false
+          title: Disable Schema Indexing
+        float_tolerance:
+          anyOf:
+            - type: number
+            - type: 'null'
+          default: 0
+          title: Float Tolerance
+        groups:
+          anyOf:
+            - additionalProperties:
+                type: boolean
+              type: object
+            - type: 'null'
+          title: Groups
+        hidden:
+          anyOf:
+            - type: boolean
+            - type: 'null'
+          default: false
+          title: Hidden
+        id:
+          anyOf:
+            - type: integer
+            - type: 'null'
+          title: Id
+        is_paused:
+          anyOf:
+            - type: boolean
+            - type: 'null'
+          default: false
+          title: Is Paused
+        last_test:
+          anyOf:
+            - $ref: '#/components/schemas/ApiDataSourceTestStatus'
+            - type: 'null'
+        lineage_schedule:
+          anyOf:
+            - type: string
+            - type: 'null'
+          title: Lineage Schedule
+        max_allowed_connections:
+          anyOf:
+            - type: integer
+            - type: 'null'
+          title: Max Allowed Connections
+        name:
+          title: Name
+          type: string
+        oauth_dwh_active:
+          anyOf:
+            - type: boolean
+            - type: 'null'
+          title: Oauth Dwh Active
+        options:
+          anyOf:
+            - $ref: '#/components/schemas/AWSS3Config'
+            - type: 'null'
+        profile_exclude_list:
+          anyOf:
+            - type: string
+            - type: 'null'
+          title: Profile Exclude List
+        profile_include_list:
+          anyOf:
+            - type: string
+            - type: 'null'
+          title: Profile Include List
+        profile_schedule:
+          anyOf:
+            - type: string
+            - type: 'null'
+          title: Profile Schedule
+        queue_name:
+          anyOf:
+            - type: string
+            - type: 'null'
+          title: Queue Name
+        scheduled_queue_name:
+          anyOf:
+            - type: string
+            - type: 'null'
+          title: Scheduled Queue Name
+        schema_indexing_schedule:
+          anyOf:
+            - type: string
+            - type: 'null'
+          title: Schema Indexing Schedule
+        schema_max_age_s:
+          anyOf:
+            - type: integer
+            - type: 'null'
+          title: Schema Max Age S
+        secret_id:
+          anyOf:
+            - type: integer
+            - type: 'null'
+          title: Secret Id
+        source:
+          anyOf:
+            - type: string
+            - type: 'null'
+          title: Source
+        temp_schema:
+          anyOf:
+            - type: string
+            - type: 'null'
+          title: Temp Schema
+        type:
+          const: aws_s3
+          title: Type
+          type: string
+        view_only:
+          anyOf:
+            - type: boolean
+            - type: 'null'
+          default: false
+          title: View Only
+      required:
+        - name
+        - type
+      title: ApiDataSourceS3
+      type: object
+    ApiDataSourceAzureSynapse:
+      properties:
+        catalog_exclude_list:
+          anyOf:
+            - type: string
+            - type: 'null'
+          title: Catalog Exclude List
+        catalog_include_list:
+          anyOf:
+            - type: string
+            - type: 'null'
+          title: Catalog Include List
+        created_from:
+          anyOf:
+            - type: string
+            - type: 'null'
+          title: Created From
+        data_retention_days:
+          anyOf:
+            - type: integer
+            - type: 'null'
+          title: Data Retention Days
+        disable_profiling:
+          anyOf:
+            - type: boolean
+            - type: 'null'
+          default: false
+          title: Disable Profiling
+        disable_schema_indexing:
+          anyOf:
+            - type: boolean
+            - type: 'null'
+          default: false
+          title: Disable Schema Indexing
+        float_tolerance:
+          anyOf:
+            - type: number
+            - type: 'null'
+          default: 0
+          title: Float Tolerance
+        groups:
+          anyOf:
+            - additionalProperties:
+                type: boolean
+              type: object
+            - type: 'null'
+          title: Groups
+        hidden:
+          anyOf:
+            - type: boolean
+            - type: 'null'
+          default: false
+          title: Hidden
+        id:
+          anyOf:
+            - type: integer
+            - type: 'null'
+          title: Id
+        is_paused:
+          anyOf:
+            - type: boolean
+            - type: 'null'
+          default: false
+          title: Is Paused
+        last_test:
+          anyOf:
+            - $ref: '#/components/schemas/ApiDataSourceTestStatus'
+            - type: 'null'
+        lineage_schedule:
+          anyOf:
+            - type: string
+            - type: 'null'
+          title: Lineage Schedule
+        max_allowed_connections:
+          anyOf:
+            - type: integer
+            - type: 'null'
+          title: Max Allowed Connections
+        name:
+          title: Name
+          type: string
+        oauth_dwh_active:
+          anyOf:
+            - type: boolean
+            - type: 'null'
+          title: Oauth Dwh Active
+        options:
+          anyOf:
+            - $ref: '#/components/schemas/MSSQLConfig'
+            - type: 'null'
+        profile_exclude_list:
+          anyOf:
+            - type: string
+            - type: 'null'
+          title: Profile Exclude List
+        profile_include_list:
+          anyOf:
+            - type: string
+            - type: 'null'
+          title: Profile Include List
+        profile_schedule:
+          anyOf:
+            - type: string
+            - type: 'null'
+          title: Profile Schedule
+        queue_name:
+          anyOf:
+            - type: string
+            - type: 'null'
+          title: Queue Name
+        scheduled_queue_name:
+          anyOf:
+            - type: string
+            - type: 'null'
+          title: Scheduled Queue Name
+        schema_indexing_schedule:
+          anyOf:
+            - type: string
+            - type: 'null'
+          title: Schema Indexing Schedule
+        schema_max_age_s:
+          anyOf:
+            - type: integer
+            - type: 'null'
+          title: Schema Max Age S
+        secret_id:
+          anyOf:
+            - type: integer
+            - type: 'null'
+          title: Secret Id
+        source:
+          anyOf:
+            - type: string
+            - type: 'null'
+          title: Source
+        temp_schema:
+          anyOf:
+            - type: string
+            - type: 'null'
+          title: Temp Schema
+        type:
+          const: azure_synapse
+          title: Type
+          type: string
+        view_only:
+          anyOf:
+            - type: boolean
+            - type: 'null'
+          default: false
+          title: View Only
+      required:
+        - name
+        - type
+      title: ApiDataSourceAzureSynapse
+      type: object
+    ApiDataSourceMicrosoftFabric:
+      properties:
+        catalog_exclude_list:
+          anyOf:
+            - type: string
+            - type: 'null'
+          title: Catalog Exclude List
+        catalog_include_list:
+          anyOf:
+            - type: string
+            - type: 'null'
+          title: Catalog Include List
+        created_from:
+          anyOf:
+            - type: string
+            - type: 'null'
+          title: Created From
+        data_retention_days:
+          anyOf:
+            - type: integer
+            - type: 'null'
+          title: Data Retention Days
+        disable_profiling:
+          anyOf:
+            - type: boolean
+            - type: 'null'
+          default: false
+          title: Disable Profiling
+        disable_schema_indexing:
+          anyOf:
+            - type: boolean
+            - type: 'null'
+          default: false
+          title: Disable Schema Indexing
+        float_tolerance:
+          anyOf:
+            - type: number
+            - type: 'null'
+          default: 0
+          title: Float Tolerance
+        groups:
+          anyOf:
+            - additionalProperties:
+                type: boolean
+              type: object
+            - type: 'null'
+          title: Groups
+        hidden:
+          anyOf:
+            - type: boolean
+            - type: 'null'
+          default: false
+          title: Hidden
+        id:
+          anyOf:
+            - type: integer
+            - type: 'null'
+          title: Id
+        is_paused:
+          anyOf:
+            - type: boolean
+            - type: 'null'
+          default: false
+          title: Is Paused
+        last_test:
+          anyOf:
+            - $ref: '#/components/schemas/ApiDataSourceTestStatus'
+            - type: 'null'
+        lineage_schedule:
+          anyOf:
+            - type: string
+            - type: 'null'
+          title: Lineage Schedule
+        max_allowed_connections:
+          anyOf:
+            - type: integer
+            - type: 'null'
+          title: Max Allowed Connections
+        name:
+          title: Name
+          type: string
+        oauth_dwh_active:
+          anyOf:
+            - type: boolean
+            - type: 'null'
+          title: Oauth Dwh Active
+        options:
+          anyOf:
+            - $ref: '#/components/schemas/MicrosoftFabricConfig'
+            - type: 'null'
+        profile_exclude_list:
+          anyOf:
+            - type: string
+            - type: 'null'
+          title: Profile Exclude List
+        profile_include_list:
+          anyOf:
+            - type: string
+            - type: 'null'
+          title: Profile Include List
+        profile_schedule:
+          anyOf:
+            - type: string
+            - type: 'null'
+          title: Profile Schedule
+        queue_name:
+          anyOf:
+            - type: string
+            - type: 'null'
+          title: Queue Name
+        scheduled_queue_name:
+          anyOf:
+            - type: string
+            - type: 'null'
+          title: Scheduled Queue Name
+        schema_indexing_schedule:
+          anyOf:
+            - type: string
+            - type: 'null'
+          title: Schema Indexing Schedule
+        schema_max_age_s:
+          anyOf:
+            - type: integer
+            - type: 'null'
+          title: Schema Max Age S
+        secret_id:
+          anyOf:
+            - type: integer
+            - type: 'null'
+          title: Secret Id
+        source:
+          anyOf:
+            - type: string
+            - type: 'null'
+          title: Source
+        temp_schema:
+          anyOf:
+            - type: string
+            - type: 'null'
+          title: Temp Schema
+        type:
+          const: microsoft_fabric
+          title: Type
+          type: string
+        view_only:
+          anyOf:
+            - type: boolean
+            - type: 'null'
+          default: false
+          title: View Only
+      required:
+        - name
+        - type
+      title: ApiDataSourceMicrosoftFabric
       type: object
     ApiDataSourceVertica:
       properties:
@@ -4225,78 +3999,176 @@ components:
         - type
       title: ApiDataSourceVertica
       type: object
-    AwsAthenaConfig:
+    ApiDataSourceTrino:
       properties:
-        aws_access_key_id:
-          title: Aws Access Key Id
-          type: string
-        aws_secret_access_key:
-          format: password
-          title: Aws Secret Access Key
-          type: string
-          writeOnly: true
-        catalog:
-          default: awsdatacatalog
-          title: Catalog
-          type: string
-        database:
-          default: default
-          title: Database
-          type: string
-        region:
-          title: Region
-          type: string
-        s3_staging_dir:
-          format: uri
-          minLength: 1
-          title: S3 Staging Dir
-          type: string
-      required:
-        - aws_access_key_id
-        - aws_secret_access_key
-        - s3_staging_dir
-        - region
-      title: AwsAthenaConfig
-      type: object
-    AzureDataLakeConfig:
-      properties:
-        account_name:
-          title: Account Name
-          type: string
-        client_id:
-          anyOf:
-            - maxLength: 1024
-              type: string
-            - type: 'null'
-          title: Client Id
-        client_secret:
-          anyOf:
-            - format: password
-              type: string
-              writeOnly: true
-            - type: 'null'
-          title: Client Secret
-        materialize_max_rows:
-          anyOf:
-            - type: integer
-            - type: 'null'
-          title: Materialize Max Rows
-        materialize_path:
+        catalog_exclude_list:
           anyOf:
             - type: string
             - type: 'null'
-          title: Materialize Path
-        tenant_id:
+          title: Catalog Exclude List
+        catalog_include_list:
           anyOf:
-            - maxLength: 1024
-              type: string
+            - type: string
             - type: 'null'
-          title: Tenant Id
+          title: Catalog Include List
+        created_from:
+          anyOf:
+            - type: string
+            - type: 'null'
+          title: Created From
+        data_retention_days:
+          anyOf:
+            - type: integer
+            - type: 'null'
+          title: Data Retention Days
+        disable_profiling:
+          anyOf:
+            - type: boolean
+            - type: 'null'
+          default: false
+          title: Disable Profiling
+        disable_schema_indexing:
+          anyOf:
+            - type: boolean
+            - type: 'null'
+          default: false
+          title: Disable Schema Indexing
+        float_tolerance:
+          anyOf:
+            - type: number
+            - type: 'null'
+          default: 0
+          title: Float Tolerance
+        groups:
+          anyOf:
+            - additionalProperties:
+                type: boolean
+              type: object
+            - type: 'null'
+          title: Groups
+        hidden:
+          anyOf:
+            - type: boolean
+            - type: 'null'
+          default: false
+          title: Hidden
+        id:
+          anyOf:
+            - type: integer
+            - type: 'null'
+          title: Id
+        is_paused:
+          anyOf:
+            - type: boolean
+            - type: 'null'
+          default: false
+          title: Is Paused
+        last_test:
+          anyOf:
+            - $ref: '#/components/schemas/ApiDataSourceTestStatus'
+            - type: 'null'
+        lineage_schedule:
+          anyOf:
+            - type: string
+            - type: 'null'
+          title: Lineage Schedule
+        max_allowed_connections:
+          anyOf:
+            - type: integer
+            - type: 'null'
+          title: Max Allowed Connections
+        name:
+          title: Name
+          type: string
+        oauth_dwh_active:
+          anyOf:
+            - type: boolean
+            - type: 'null'
+          title: Oauth Dwh Active
+        options:
+          anyOf:
+            - $ref: '#/components/schemas/TrinoConfig'
+            - type: 'null'
+        profile_exclude_list:
+          anyOf:
+            - type: string
+            - type: 'null'
+          title: Profile Exclude List
+        profile_include_list:
+          anyOf:
+            - type: string
+            - type: 'null'
+          title: Profile Include List
+        profile_schedule:
+          anyOf:
+            - type: string
+            - type: 'null'
+          title: Profile Schedule
+        queue_name:
+          anyOf:
+            - type: string
+            - type: 'null'
+          title: Queue Name
+        scheduled_queue_name:
+          anyOf:
+            - type: string
+            - type: 'null'
+          title: Scheduled Queue Name
+        schema_indexing_schedule:
+          anyOf:
+            - type: string
+            - type: 'null'
+          title: Schema Indexing Schedule
+        schema_max_age_s:
+          anyOf:
+            - type: integer
+            - type: 'null'
+          title: Schema Max Age S
+        secret_id:
+          anyOf:
+            - type: integer
+            - type: 'null'
+          title: Secret Id
+        source:
+          anyOf:
+            - type: string
+            - type: 'null'
+          title: Source
+        temp_schema:
+          anyOf:
+            - type: string
+            - type: 'null'
+          title: Temp Schema
+        type:
+          const: trino
+          title: Type
+          type: string
+        view_only:
+          anyOf:
+            - type: boolean
+            - type: 'null'
+          default: false
+          title: View Only
       required:
-        - account_name
-        - tenant_id
-        - client_id
-      title: AzureDataLakeConfig
+        - name
+        - type
+      title: ApiDataSourceTrino
+      type: object
+    ApiDataSourceTestStatus:
+      properties:
+        results:
+          items:
+            $ref: '#/components/schemas/TestResultStep'
+          title: Results
+          type: array
+        tested_at:
+          format: date-time
+          title: Tested At
+          type: string
+      required:
+        - tested_at
+        - results
+      title: ApiDataSourceTestStatus
       type: object
     BigQueryConfig:
       properties:
@@ -4360,21 +4232,6 @@ components:
         - jsonKeyFile
       title: BigQueryConfig
       type: object
-    CertCheck:
-      enum:
-        - disable
-        - dremio-cloud
-        - customcert
-      title: CertCheck
-      type: string
-    ConfigurationCheckStep:
-      enum:
-        - connection
-        - temp_schema
-        - schema_download
-        - lineage_download
-      title: ConfigurationCheckStep
-      type: string
     DatabricksConfig:
       properties:
         database:
@@ -4412,233 +4269,9 @@ components:
         - http_password
       title: DatabricksConfig
       type: object
-    DremioConfig:
-      properties:
-        certcheck:
-          anyOf:
-            - $ref: '#/components/schemas/CertCheck'
-            - type: 'null'
-          default: dremio-cloud
-          title: Certificate check
-        customcert:
-          anyOf:
-            - format: password
-              type: string
-              writeOnly: true
-            - type: 'null'
-          title: Custom certificate
-        host:
-          maxLength: 128
-          title: Host
-          type: string
-        password:
-          anyOf:
-            - format: password
-              type: string
-              writeOnly: true
-            - type: 'null'
-          title: Password
-        port:
-          default: 443
-          title: Port
-          type: integer
-        project_id:
-          anyOf:
-            - type: string
-            - type: 'null'
-          title: Project id
-        role:
-          anyOf:
-            - type: string
-            - type: 'null'
-          title: Role (case sensitive)
-        tls:
-          default: false
-          title: Encryption
-          type: boolean
-        token:
-          anyOf:
-            - format: password
-              type: string
-              writeOnly: true
-            - type: 'null'
-          title: Token
-        username:
-          anyOf:
-            - type: string
-            - type: 'null'
-          title: User ID (optional)
-        view_temp_schema:
-          anyOf:
-            - type: string
-            - type: 'null'
-          title: Temporary schema for views
-      required:
-        - host
-      title: DremioConfig
-      type: object
     DuckDBConfig:
       properties: {}
       title: DuckDBConfig
-      type: object
-    GCSConfig:
-      properties:
-        bucket_name:
-          title: Bucket Name
-          type: string
-        bucket_region:
-          title: Bucket Region
-          type: string
-        jsonKeyFile:
-          format: password
-          section: basic
-          title: JSON Key File
-          type: string
-          writeOnly: true
-        materialize_max_rows:
-          anyOf:
-            - type: integer
-            - type: 'null'
-          title: Materialize Max Rows
-        materialize_path:
-          anyOf:
-            - type: string
-            - type: 'null'
-          title: Materialize Path
-      required:
-        - bucket_name
-        - jsonKeyFile
-        - bucket_region
-      title: GCSConfig
-      type: object
-    JobStatus:
-      enum:
-        - needs_confirmation
-        - needs_authentication
-        - waiting
-        - processing
-        - done
-        - failed
-        - cancelled
-      title: JobStatus
-      type: string
-    MSSQLConfig:
-      properties:
-        dbname:
-          anyOf:
-            - type: string
-            - type: 'null'
-          title: Dbname
-        host:
-          maxLength: 128
-          title: Host
-          type: string
-        password:
-          anyOf:
-            - format: password
-              type: string
-              writeOnly: true
-            - type: 'null'
-          title: Password
-        port:
-          default: 1433
-          title: Port
-          type: integer
-        require_encryption:
-          default: false
-          title: Require Encryption
-          type: boolean
-        session_script:
-          anyOf:
-            - type: string
-            - type: 'null'
-          description: >-
-            The script to execute on connection; e.g. ALTER SESSION SET
-            CONTAINER = ...
-          title: Init script
-        trust_server_certificate:
-          default: false
-          title: Trust Server Certificate
-          type: boolean
-        user:
-          default: DATAFOLD
-          title: User
-          type: string
-      required:
-        - host
-      title: MSSQLConfig
-      type: object
-    MariaDBConfig:
-      description: |-
-        Configuration for MariaDB connections.
-
-        MariaDB is MySQL-compatible, so we reuse the MySQL configuration.
-        Default port is 3306, same as MySQL.
-      properties:
-        db:
-          title: Database name
-          type: string
-        host:
-          maxLength: 128
-          title: Host
-          type: string
-        password:
-          format: password
-          title: Password
-          type: string
-          writeOnly: true
-        port:
-          default: 3306
-          title: Port
-          type: integer
-        user:
-          title: User
-          type: string
-      required:
-        - host
-        - user
-        - password
-        - db
-      title: MariaDBConfig
-      type: object
-    MicrosoftFabricConfig:
-      properties:
-        client_id:
-          description: Microsoft Entra ID Application (Client) ID
-          title: Application (Client) ID
-          type: string
-        client_secret:
-          description: Microsoft Entra ID Application Client Secret
-          format: password
-          title: Client Secret
-          type: string
-          writeOnly: true
-        dbname:
-          title: Dbname
-          type: string
-        host:
-          maxLength: 128
-          title: Host
-          type: string
-        session_script:
-          anyOf:
-            - type: string
-            - type: 'null'
-          description: >-
-            The script to execute on connection; e.g. ALTER SESSION SET
-            CONTAINER = ...
-          title: Init script
-        tenant_id:
-          description: Microsoft Entra ID Tenant ID
-          title: Tenant ID
-          type: string
-      required:
-        - host
-        - dbname
-        - tenant_id
-        - client_id
-        - client_secret
-      title: MicrosoftFabricConfig
       type: object
     MongoDBConfig:
       properties:
@@ -4648,6 +4281,10 @@ components:
             - type: 'null'
           default: admin
           title: Auth Source
+        connect_timeout_ms:
+          default: 60000
+          title: Connect Timeout Ms
+          type: integer
         database:
           title: Database
           type: string
@@ -4663,6 +4300,14 @@ components:
         port:
           default: 27017
           title: Port
+          type: integer
+        server_selection_timeout_ms:
+          default: 60000
+          title: Server Selection Timeout Ms
+          type: integer
+        socket_timeout_ms:
+          default: 300000
+          title: Socket Timeout Ms
           type: integer
         username:
           title: Username
@@ -4702,12 +4347,46 @@ components:
         - db
       title: MySQLConfig
       type: object
-    NetezzaConfig:
+    MariaDBConfig:
+      description: |-
+        Configuration for MariaDB connections.
+
+        MariaDB is MySQL-compatible, so we reuse the MySQL configuration.
+        Default port is 3306, same as MySQL.
       properties:
-        database:
-          maxLength: 128
-          title: Database
+        db:
+          title: Database name
           type: string
+        host:
+          maxLength: 128
+          title: Host
+          type: string
+        password:
+          format: password
+          title: Password
+          type: string
+          writeOnly: true
+        port:
+          default: 3306
+          title: Port
+          type: integer
+        user:
+          title: User
+          type: string
+      required:
+        - host
+        - user
+        - password
+        - db
+      title: MariaDBConfig
+      type: object
+    MSSQLConfig:
+      properties:
+        dbname:
+          anyOf:
+            - type: string
+            - type: 'null'
+          title: Dbname
         host:
           maxLength: 128
           title: Host
@@ -4720,22 +4399,32 @@ components:
             - type: 'null'
           title: Password
         port:
-          default: 5480
+          default: 1433
           title: Port
           type: integer
-        tls:
+        require_encryption:
           default: true
-          title: Encryption
+          title: Require Encryption
           type: boolean
-        username:
+        session_script:
           anyOf:
             - type: string
             - type: 'null'
-          title: User ID (optional)
+          description: >-
+            The script to execute on connection; e.g. ALTER SESSION SET
+            CONTAINER = ...
+          title: Init script
+        trust_server_certificate:
+          default: false
+          title: Trust Server Certificate
+          type: boolean
+        user:
+          default: DATAFOLD
+          title: User
+          type: string
       required:
         - host
-        - database
-      title: NetezzaConfig
+      title: MSSQLConfig
       type: object
     OracleConfig:
       properties:
@@ -4823,6 +4512,51 @@ components:
         - host
       title: OracleConfig
       type: object
+    PostgreSQLConfig:
+      properties:
+        dbname:
+          title: Database Name
+          type: string
+        host:
+          maxLength: 128
+          title: Host
+          type: string
+        password:
+          anyOf:
+            - format: password
+              type: string
+              writeOnly: true
+            - type: 'null'
+          title: Password
+        port:
+          default: 5432
+          title: Port
+          type: integer
+        role:
+          anyOf:
+            - type: string
+            - type: 'null'
+          title: Role (case sensitive)
+        rootcert:
+          anyOf:
+            - format: password
+              type: string
+              writeOnly: true
+            - type: 'null'
+          title: Root certificate
+        sslmode:
+          $ref: '#/components/schemas/SslMode'
+          default: prefer
+          title: SSL Mode
+        user:
+          title: User
+          type: string
+      required:
+        - host
+        - user
+        - dbname
+      title: PostgreSQLConfig
+      type: object
     PostgreSQLAuroraConfig:
       properties:
         aws_access_key_id:
@@ -4895,51 +4629,6 @@ components:
         - dbname
       title: PostgreSQLAuroraConfig
       type: object
-    PostgreSQLConfig:
-      properties:
-        dbname:
-          title: Database Name
-          type: string
-        host:
-          maxLength: 128
-          title: Host
-          type: string
-        password:
-          anyOf:
-            - format: password
-              type: string
-              writeOnly: true
-            - type: 'null'
-          title: Password
-        port:
-          default: 5432
-          title: Port
-          type: integer
-        role:
-          anyOf:
-            - type: string
-            - type: 'null'
-          title: Role (case sensitive)
-        rootcert:
-          anyOf:
-            - format: password
-              type: string
-              writeOnly: true
-            - type: 'null'
-          title: Root certificate
-        sslmode:
-          $ref: '#/components/schemas/SslMode'
-          default: prefer
-          title: SSL Mode
-        user:
-          title: User
-          type: string
-      required:
-        - host
-        - user
-        - dbname
-      title: PostgreSQLConfig
-      type: object
     RedshiftConfig:
       properties:
         adhoc_query_group:
@@ -4995,13 +4684,35 @@ components:
         - dbname
       title: RedshiftConfig
       type: object
-    SSLVerification:
-      enum:
-        - full
-        - none
-        - ca
-      title: SSLVerification
-      type: string
+    TeradataConfig:
+      properties:
+        database:
+          title: Database
+          type: string
+        host:
+          maxLength: 128
+          title: Host
+          type: string
+        password:
+          format: password
+          title: Password
+          type: string
+          writeOnly: true
+        port:
+          anyOf:
+            - type: integer
+            - type: 'null'
+          title: Port
+        user:
+          default: DATAFOLD
+          title: User
+          type: string
+      required:
+        - host
+        - password
+        - database
+      title: TeradataConfig
+      type: object
     SapHanaConfig:
       properties:
         host:
@@ -5025,6 +4736,39 @@ components:
         - host
         - password
       title: SapHanaConfig
+      type: object
+    AwsAthenaConfig:
+      properties:
+        aws_access_key_id:
+          title: Aws Access Key Id
+          type: string
+        aws_secret_access_key:
+          format: password
+          title: Aws Secret Access Key
+          type: string
+          writeOnly: true
+        catalog:
+          default: awsdatacatalog
+          title: Catalog
+          type: string
+        database:
+          default: default
+          title: Database
+          type: string
+        region:
+          title: Region
+          type: string
+        s3_staging_dir:
+          format: uri
+          minLength: 1
+          title: S3 Staging Dir
+          type: string
+      required:
+        - aws_access_key_id
+        - aws_secret_access_key
+        - s3_staging_dir
+        - region
+      title: AwsAthenaConfig
       type: object
     SnowflakeConfig:
       properties:
@@ -5139,14 +4883,71 @@ components:
         - account
       title: SnowflakeConfig
       type: object
-    SslMode:
-      enum:
-        - prefer
-        - require
-        - verify-ca
-        - verify-full
-      title: SslMode
-      type: string
+    DremioConfig:
+      properties:
+        certcheck:
+          anyOf:
+            - $ref: '#/components/schemas/CertCheck'
+            - type: 'null'
+          default: dremio-cloud
+          title: Certificate check
+        customcert:
+          anyOf:
+            - format: password
+              type: string
+              writeOnly: true
+            - type: 'null'
+          title: Custom certificate
+        host:
+          maxLength: 128
+          title: Host
+          type: string
+        password:
+          anyOf:
+            - format: password
+              type: string
+              writeOnly: true
+            - type: 'null'
+          title: Password
+        port:
+          default: 443
+          title: Port
+          type: integer
+        project_id:
+          anyOf:
+            - type: string
+            - type: 'null'
+          title: Project id
+        role:
+          anyOf:
+            - type: string
+            - type: 'null'
+          title: Role (case sensitive)
+        tls:
+          default: false
+          title: Encryption
+          type: boolean
+        token:
+          anyOf:
+            - format: password
+              type: string
+              writeOnly: true
+            - type: 'null'
+          title: Token
+        username:
+          anyOf:
+            - type: string
+            - type: 'null'
+          title: User ID (optional)
+        view_temp_schema:
+          anyOf:
+            - type: string
+            - type: 'null'
+          title: Temporary schema for views
+      required:
+        - host
+      title: DremioConfig
+      type: object
     StarburstConfig:
       properties:
         host:
@@ -5184,9 +4985,10 @@ components:
         - host
       title: StarburstConfig
       type: object
-    TeradataConfig:
+    NetezzaConfig:
       properties:
         database:
+          maxLength: 128
           title: Database
           type: string
         host:
@@ -5194,40 +4996,213 @@ components:
           title: Host
           type: string
         password:
-          format: password
+          anyOf:
+            - format: password
+              type: string
+              writeOnly: true
+            - type: 'null'
           title: Password
-          type: string
-          writeOnly: true
         port:
+          default: 5480
+          title: Port
+          type: integer
+        tls:
+          default: true
+          title: Encryption
+          type: boolean
+        username:
+          anyOf:
+            - type: string
+            - type: 'null'
+          title: User ID (optional)
+      required:
+        - host
+        - database
+      title: NetezzaConfig
+      type: object
+    AzureDataLakeConfig:
+      properties:
+        account_name:
+          title: Account Name
+          type: string
+        client_id:
+          anyOf:
+            - maxLength: 1024
+              type: string
+            - type: 'null'
+          title: Client Id
+        client_secret:
+          anyOf:
+            - format: password
+              type: string
+              writeOnly: true
+            - type: 'null'
+          title: Client Secret
+        materialize_max_rows:
           anyOf:
             - type: integer
             - type: 'null'
+          title: Materialize Max Rows
+        materialize_path:
+          anyOf:
+            - type: string
+            - type: 'null'
+          title: Materialize Path
+        tenant_id:
+          anyOf:
+            - maxLength: 1024
+              type: string
+            - type: 'null'
+          title: Tenant Id
+      required:
+        - account_name
+        - tenant_id
+        - client_id
+      title: AzureDataLakeConfig
+      type: object
+    GCSConfig:
+      properties:
+        bucket_name:
+          title: Bucket Name
+          type: string
+        bucket_region:
+          title: Bucket Region
+          type: string
+        jsonKeyFile:
+          format: password
+          section: basic
+          title: JSON Key File
+          type: string
+          writeOnly: true
+        materialize_max_rows:
+          anyOf:
+            - type: integer
+            - type: 'null'
+          title: Materialize Max Rows
+        materialize_path:
+          anyOf:
+            - type: string
+            - type: 'null'
+          title: Materialize Path
+      required:
+        - bucket_name
+        - jsonKeyFile
+        - bucket_region
+      title: GCSConfig
+      type: object
+    AWSS3Config:
+      properties:
+        bucket_name:
+          title: Bucket Name
+          type: string
+        key_id:
+          anyOf:
+            - maxLength: 1024
+              type: string
+            - type: 'null'
+          title: Key Id
+        materialize_max_rows:
+          anyOf:
+            - type: integer
+            - type: 'null'
+          title: Materialize Max Rows
+        materialize_path:
+          anyOf:
+            - type: string
+            - type: 'null'
+          title: Materialize Path
+        region:
+          title: Region
+          type: string
+        secret:
+          anyOf:
+            - format: password
+              type: string
+              writeOnly: true
+            - type: 'null'
+          title: Secret
+      required:
+        - bucket_name
+        - key_id
+        - region
+      title: AWSS3Config
+      type: object
+    MicrosoftFabricConfig:
+      properties:
+        client_id:
+          description: Microsoft Entra ID Application (Client) ID
+          title: Application (Client) ID
+          type: string
+        client_secret:
+          description: Microsoft Entra ID Application Client Secret
+          format: password
+          title: Client Secret
+          type: string
+          writeOnly: true
+        dbname:
+          title: Dbname
+          type: string
+        host:
+          maxLength: 128
+          title: Host
+          type: string
+        session_script:
+          anyOf:
+            - type: string
+            - type: 'null'
+          description: >-
+            The script to execute on connection; e.g. ALTER SESSION SET
+            CONTAINER = ...
+          title: Init script
+        tenant_id:
+          description: Microsoft Entra ID Tenant ID
+          title: Tenant ID
+          type: string
+      required:
+        - host
+        - dbname
+        - tenant_id
+        - client_id
+        - client_secret
+      title: MicrosoftFabricConfig
+      type: object
+    VerticaConfig:
+      properties:
+        dbname:
+          title: Database Name
+          type: string
+        host:
+          maxLength: 128
+          title: Host
+          type: string
+        password:
+          anyOf:
+            - format: password
+              type: string
+              writeOnly: true
+            - type: 'null'
+          title: Password
+        port:
+          default: 5433
           title: Port
+          type: integer
+        role:
+          anyOf:
+            - type: string
+            - type: 'null'
+          title: Role (case sensitive)
+        sslmode:
+          $ref: '#/components/schemas/SslMode'
+          default: prefer
+          title: SSL Mode
         user:
-          default: DATAFOLD
           title: User
           type: string
       required:
         - host
-        - password
-        - database
-      title: TeradataConfig
-      type: object
-    TestResultStep:
-      properties:
-        result:
-          anyOf:
-            - {}
-            - type: 'null'
-          title: Result
-        status:
-          $ref: '#/components/schemas/JobStatus'
-        step:
-          $ref: '#/components/schemas/ConfigurationCheckStep'
-      required:
-        - step
-        - status
-      title: TestResultStep
+        - user
+        - dbname
+      title: VerticaConfig
       type: object
     TrinoConfig:
       properties:
@@ -5276,43 +5251,71 @@ components:
         - dbname
       title: TrinoConfig
       type: object
-    VerticaConfig:
+    TestResultStep:
       properties:
-        dbname:
-          title: Database Name
-          type: string
-        host:
-          maxLength: 128
-          title: Host
-          type: string
-        password:
+        result:
           anyOf:
-            - format: password
-              type: string
-              writeOnly: true
+            - {}
             - type: 'null'
-          title: Password
-        port:
-          default: 5433
-          title: Port
-          type: integer
-        role:
-          anyOf:
-            - type: string
-            - type: 'null'
-          title: Role (case sensitive)
-        sslmode:
-          $ref: '#/components/schemas/SslMode'
-          default: prefer
-          title: SSL Mode
-        user:
-          title: User
-          type: string
+          title: Result
+        status:
+          $ref: '#/components/schemas/JobStatus'
+        step:
+          $ref: '#/components/schemas/ConfigurationCheckStep'
       required:
-        - host
-        - user
-        - dbname
-      title: VerticaConfig
+        - step
+        - status
+      title: TestResultStep
       type: object
+    SslMode:
+      description: >-
+        SSL mode for database connections (used by PostgreSQL, Vertica,
+        Redshift, etc.)
+      enum:
+        - prefer
+        - require
+        - verify-ca
+        - verify-full
+      title: SslMode
+      type: string
+    CertCheck:
+      enum:
+        - disable
+        - dremio-cloud
+        - customcert
+      title: CertCheck
+      type: string
+    SSLVerification:
+      enum:
+        - full
+        - none
+        - ca
+      title: SSLVerification
+      type: string
+    JobStatus:
+      enum:
+        - needs_confirmation
+        - needs_authentication
+        - waiting
+        - processing
+        - done
+        - failed
+        - cancelled
+      title: JobStatus
+      type: string
+    ConfigurationCheckStep:
+      enum:
+        - connection
+        - temp_schema
+        - schema_download
+        - lineage_download
+      title: ConfigurationCheckStep
+      type: string
+  securitySchemes:
+    ApiKeyAuth:
+      description: Use the 'Authorization' header with the format 'Key <api-key>'
+      in: header
+      name: Authorization
+      type: apiKey
 
 ````

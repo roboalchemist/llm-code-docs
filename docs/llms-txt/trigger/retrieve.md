@@ -4,220 +4,152 @@
 
 # Source: https://trigger.dev/docs/management/envvars/retrieve.md
 
-# Source: https://trigger.dev/docs/management/schedules/retrieve.md
+# Source: https://trigger.dev/docs/management/deployments/retrieve.md
 
-# Source: https://trigger.dev/docs/management/runs/retrieve.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://trigger.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
-# Source: https://trigger.dev/docs/management/envvars/retrieve.md
+# Get deployment
 
-# Source: https://trigger.dev/docs/management/schedules/retrieve.md
+> Retrieve information about a specific deployment by its ID.
 
-# Source: https://trigger.dev/docs/management/runs/retrieve.md
 
-# Source: https://trigger.dev/docs/management/envvars/retrieve.md
-
-# Source: https://trigger.dev/docs/management/schedules/retrieve.md
-
-# Source: https://trigger.dev/docs/management/runs/retrieve.md
-
-# Source: https://trigger.dev/docs/management/envvars/retrieve.md
-
-# Retrieve Env Var
-
-> Retrieve a specific environment variable for a specific project and environment.
 
 ## OpenAPI
 
-````yaml v3-openapi GET /api/v1/projects/{projectRef}/envvars/{env}/{name}
+````yaml v3-openapi GET /api/v1/deployments/{deploymentId}
+openapi: 3.1.0
+info:
+  title: Trigger.dev v3 REST API
+  description: >-
+    The REST API lets you trigger and manage runs on Trigger.dev. You can
+    trigger a run, get the status of a run, and get the results of a run. 
+  version: 2024-04
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0.html
+servers:
+  - url: https://api.trigger.dev
+    description: Trigger.dev API
+security: []
 paths:
-  path: /api/v1/projects/{projectRef}/envvars/{env}/{name}
-  method: get
-  servers:
-    - url: https://api.trigger.dev
-      description: Trigger.dev API
-  request:
-    security:
-      - title: secretKey
-        parameters:
-          query: {}
-          header:
-            Authorization:
-              type: http
-              scheme: bearer
-              description: >
-                Use your project-specific Secret API key. Will start with
-                `tr_dev_`, `tr_prod`, `tr_stg`, etc.
-
-
-                You can find your Secret API key in the API Keys section of your
-                Trigger.dev project dashboard.
-
-
-                Our TypeScript SDK will default to using the value of the
-                `TRIGGER_SECRET_KEY` environment variable if it is set. If you
-                are using the SDK in a different environment, you can set the
-                key using the `configure` function.
-
-
-                ```typescript
-
-                import { configure } from "@trigger.dev/sdk";
-
-
-                configure({ accessToken: "tr_dev_1234" });
-
-                ```
-          cookie: {}
-      - title: personalAccessToken
-        parameters:
-          query: {}
-          header:
-            Authorization:
-              type: http
-              scheme: bearer
-              description: >
-                Use your user-specific Personal Access Token, which you can
-                generate from the Trigger.dev dashboard in your account
-                settings. (It will start with `tr_pat_`.)
-
-
-                Our TypeScript SDK will default to using the value of the
-                `TRIGGER_ACCESS_TOKEN` environment variable if it is set. If you
-                are using the SDK in a different environment, you can set the
-                key using the `configure` function.
-
-
-                ```typescript
-
-                import { configure } from "@trigger.dev/sdk";
-
-
-                configure({ accessToken: "tr_pat_1234" });
-
-                ```
-          cookie: {}
+  /api/v1/deployments/{deploymentId}:
     parameters:
-      path:
-        projectRef:
-          schema:
-            - type: string
-              required: true
-              description: >-
-                The external ref of the project. You can find this in the
-                project settings. Starts with `proj_`.
-        env:
-          schema:
-            - type: enum<string>
-              enum:
-                - dev
-                - staging
-                - prod
-              required: true
-              description: The environment of the project to list variables for.
-        name:
-          schema:
-            - type: string
-              required: true
-              description: The name of the environment variable.
-      query: {}
-      header: {}
-      cookie: {}
-    body: {}
-    codeSamples:
-      - label: Outside of a task
-        lang: typescript
-        source: >-
-          import { envvars } from "@trigger.dev/sdk";
-
-
-          const variable = await envvars.retrieve("proj_yubjwjsfkxnylobaqvqz",
-          "dev", "SLACK_API_KEY");
-
-
-          console.log(`Value: ${variable.value}`);
-      - label: Inside a task
-        lang: typescript
-        source: |-
-          import { envvars, task } from "@trigger.dev/sdk";
-
-          export const myTask = task({
-            id: "my-task",
-            run: async () => {
-              // projectRef and env are automatically inferred from the task context
-              const variable = await envvars.retrieve("SLACK_API_KEY");
-
-              console.log(`Value: ${variable.value}`);
-            }
-          })
-  response:
-    '200':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              value:
-                allOf:
-                  - type: string
-                    example: slack_123456
-            refIdentifier: '#/components/schemas/EnvVarValue'
-            requiredProperties:
-              - value
-        examples:
-          example:
-            value:
-              value: slack_123456
-        description: Successful request
-    '400':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              error:
-                allOf:
-                  - &ref_0
+      - in: path
+        name: deploymentId
+        required: true
+        schema:
+          type: string
+        description: The deployment ID.
+    get:
+      tags:
+        - deployments
+      summary: Get deployment
+      description: Retrieve information about a specific deployment by its ID.
+      operationId: get_deployment_v1
+      responses:
+        '200':
+          description: Successful request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
                     type: string
-                    example: Something went wrong
-            refIdentifier: '#/components/schemas/ErrorResponse'
-            requiredProperties: &ref_1
-              - error
-        examples:
-          example:
-            value:
-              error: Something went wrong
-        description: Invalid request parameters or body
-    '401':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              error:
-                allOf:
-                  - *ref_0
-            refIdentifier: '#/components/schemas/ErrorResponse'
-            requiredProperties: *ref_1
-        examples:
-          example:
-            value:
-              error: Something went wrong
-        description: Unauthorized request
-    '404':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              error:
-                allOf:
-                  - *ref_0
-            refIdentifier: '#/components/schemas/ErrorResponse'
-            requiredProperties: *ref_1
-        examples:
-          example:
-            value:
-              error: Something went wrong
-        description: Resource not found
-  deprecated: false
-  type: path
+                    description: The deployment ID
+                  status:
+                    type: string
+                    enum:
+                      - PENDING
+                      - INSTALLING
+                      - BUILDING
+                      - DEPLOYING
+                      - DEPLOYED
+                      - FAILED
+                      - CANCELED
+                      - TIMED_OUT
+                    description: The current status of the deployment
+                  contentHash:
+                    type: string
+                    description: Hash of the deployment content
+                  shortCode:
+                    type: string
+                    description: The short code for the deployment
+                  version:
+                    type: string
+                    description: The deployment version (e.g., "20250228.1")
+                  imageReference:
+                    type: string
+                    nullable: true
+                    description: Reference to the deployment image
+                  imagePlatform:
+                    type: string
+                    description: Platform of the deployment image
+                  externalBuildData:
+                    type: object
+                    nullable: true
+                    description: External build data if applicable
+                  errorData:
+                    type: object
+                    nullable: true
+                    description: Error data if the deployment failed
+                  worker:
+                    type: object
+                    nullable: true
+                    description: Worker information if available
+                    properties:
+                      id:
+                        type: string
+                      version:
+                        type: string
+                      tasks:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            id:
+                              type: string
+                            slug:
+                              type: string
+                            filePath:
+                              type: string
+                            exportName:
+                              type: string
+        '401':
+          description: Unauthorized - Access token is missing or invalid
+        '404':
+          description: Deployment not found
+      security:
+        - secretKey: []
 components:
-  schemas: {}
+  securitySchemes:
+    secretKey:
+      type: http
+      scheme: bearer
+      description: >
+        Use your project-specific Secret API key. Will start with `tr_dev_`,
+        `tr_prod`, `tr_stg`, etc.
+
+
+        You can find your Secret API key in the API Keys section of your
+        Trigger.dev project dashboard.
+
+
+        Our TypeScript SDK will default to using the value of the
+        `TRIGGER_SECRET_KEY` environment variable if it is set. If you are using
+        the SDK in a different environment, you can set the key using the
+        `configure` function.
+
+
+        ```typescript
+
+        import { configure } from "@trigger.dev/sdk";
+
+
+        configure({ accessToken: "tr_dev_1234" });
+
+        ```
 
 ````

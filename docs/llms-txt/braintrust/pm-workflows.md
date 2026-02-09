@@ -1,5 +1,9 @@
 # Source: https://braintrust.dev/docs/best-practices/pm-workflows.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://braintrust.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Product manager workflows
 
 This guide is for product managers and subject matter experts using Braintrust. It covers best practices, core workflows, and tips to help you quickly become effective. Braintrust is designed to make AI feature development measurable, iterative, and collaborative for both technical and nontechnical teammates.
@@ -21,7 +25,7 @@ Use the following workflow to continuously improve your AI features. Each step i
   <Step title="Spot patterns in production">
     Review [logs](/core/logs) to identify recurring issues, user pain points, or behavioral patterns in your AI system.
 
-    Use [Loop](/core/loop), [filters](/core/loop#generate-and-run-btql-queries), or [deep search](/core/logs/use-deep-search) to surface interesting logs. Each log includes the full [trace](/guides/traces) for additional context.
+    Use [Loop](/observe/loop), [filters](/observe/loop#generate-filters), or [deep search](/observe/deep-search) to surface interesting logs. Each log includes the full [trace](/guides/traces) for additional context.
   </Step>
 
   <Step title="Curate targeted datasets">
@@ -41,7 +45,7 @@ Use the following workflow to continuously improve your AI features. Each step i
   </Step>
 
   <Step title="Apply human review where it matters">
-    Use the [review](/core/human-review) UI for batch review with keyboard shortcuts, sliders, and freeform notes.
+    Use the [review](/core/human-review) UI for batch review with keyboard shortcuts, sliders, and freeform notes. Switch to the [kanban layout](/annotate/human-review#use-kanban-layout) to visualize review progress across backlog, pending, and complete states.
 
     Treat human labels as first-class signals that you can filter, revisit, and use to gate releases.
   </Step>
@@ -97,14 +101,14 @@ Move from idea to tested prototype in hours rather than sprints. Use playgrounds
 
 ## AI-assisted workflows with Loop
 
-Use [Loop](/core/loop) to accelerate common PM tasks:
+Use [Loop](/observe/loop) to accelerate common PM tasks:
 
-* Find patterns in recent failures and generate [BTQL filters from natural language](/core/loop#generate-and-run-btql-queries)
+* Find patterns in recent failures and generate [SQL filters from natural language](/observe/loop#generate-filters)
 * Collect examples of specific issues into new datasets for targeted evaluations
 * Bulk-generate examples that vary user persona and length, or draft expected outputs
 * Summarize which prompts regress on specific criteria or group failures by score
 * Create LLM-judge scorers with custom rubrics and examples
-* Write [BTQL](https://www.braintrust.dev/docs/reference/btql) queries for common analyses like listing top error types
+* Write [SQL](https://www.braintrust.dev/docs/reference/sql) queries for common analyses like listing top error types
 
 <Note>
   If your organization has Loop disabled, ask an admin to enable it in Settings. Hybrid deployments require version v0.0.74+.
@@ -126,8 +130,3 @@ Use [Loop](/core/loop) to accelerate common PM tasks:
 * [Cookbook](/cookbook)
 * [Access control](/guides/access-control)
 * [All guides](/guides)
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://braintrust.dev/docs/llms.txt

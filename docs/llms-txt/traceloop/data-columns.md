@@ -1,5 +1,9 @@
 # Source: https://www.traceloop.com/docs/playgrounds/columns/data-columns.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.traceloop.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Data Columns
 
 Columns are the building blocks of playgrounds, defining what kind of data you can store, process, and analyze.
@@ -72,8 +76,3 @@ When editing a cell, an Edit JSON panel opens with syntax highlighting and forma
 <img className="block dark:hidden" src="https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/playground/play-json-light.png?fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=9a55508b40b99129ad3e1260df4ba323" data-og-width="547" width="547" data-og-height="728" height="728" data-path="img/playground/play-json-light.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/playground/play-json-light.png?w=280&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=c1571e8106eb9f337f207a6c7ee1a2d3 280w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/playground/play-json-light.png?w=560&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=6697bc489b75e13bea9dc915194949c0 560w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/playground/play-json-light.png?w=840&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=23a835dec8dc312daed7540dbbd0bb7a 840w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/playground/play-json-light.png?w=1100&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=a84ed3944143eb51613721238ac7662a 1100w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/playground/play-json-light.png?w=1650&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=0959fd3eb605a5fc3802b1541bcd6e6b 1650w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/playground/play-json-light.png?w=2500&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=008504aeff0983e50b65ecbaf4bfc1f5 2500w" />
 
 <img className="hidden dark:block" src="https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/playground/play-json-dark.png?fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=22f9fe4a02a9b3fc50a84b9f6ca059f2" data-og-width="544" width="544" data-og-height="734" height="734" data-path="img/playground/play-json-dark.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/playground/play-json-dark.png?w=280&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=cc0896c96a97ddd548a56621ebe2c58c 280w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/playground/play-json-dark.png?w=560&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=428e4fa833486e52795d57c8e493a1ba 560w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/playground/play-json-dark.png?w=840&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=2f77f79bb413daa23825cd707470e3c5 840w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/playground/play-json-dark.png?w=1100&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=4d3d2a21f66980451f159159884be762 1100w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/playground/play-json-dark.png?w=1650&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=c38eba15bb2b875fba491626df976b82 1650w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/playground/play-json-dark.png?w=2500&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=5386588488480d6ec6cb3061d1d0f853 2500w" />
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://www.traceloop.com/docs/llms.txt

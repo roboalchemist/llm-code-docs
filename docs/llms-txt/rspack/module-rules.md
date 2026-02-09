@@ -1,15 +1,18 @@
 # Source: https://rspack.dev/config/module-rules.md
 
-import { ApiMeta, Stability } from '../../../components/ApiMeta';
-import PropertyType from '@components/PropertyType';
-import WebpackLicense from '@components/WebpackLicense';
+CC 4.0 License> The content of this section is derived from the content of the following links and is subject to the CC BY 4.0 license.
+> 
+> - [https://webpack.docschina.org/configuration/module/](https://webpack.docschina.org/configuration/module/)
+> 
+> The following contents can be assumed to be the result of modifications and deletions based on the original contents if not specifically stated.
+> 
+> 
 
-<WebpackLicense from="https://webpack.docschina.org/configuration/module/" />
 
 # Module Rules
 
-* **Type:** `(Rule | Falsy)[]`
-* **Default:** `[]`
+- **Type:** `(Rule | Falsy)[]`
+- **Default:** `[]`
 
 `module.rules` defines how Rspack processes different types of modules during the build.
 
@@ -41,8 +44,8 @@ export default {
 
 ### Rule
 
-* **Type:** `Rule`
-* **Default:** `{}`
+- **Type:** `Rule`
+- **Default:** `{}`
 
 Rule defines the conditions for matching a module and the behavior of handling those modules.
 
@@ -50,13 +53,13 @@ Rule defines the conditions for matching a module and the behavior of handling t
 
 Defines the processing behavior of the corresponding matching module, e.g. :
 
-* Apply the list of Loader to these modules (`rules[].use`)
-* Apply the module's type (`rules[].type`)
-* Apply the module's resolve configuration (`rules[].resolve`)
+- Apply the list of Loader to these modules (`rules[].use`)
+- Apply the module's type (`rules[].type`)
+- Apply the module's resolve configuration (`rules[].resolve`)
 
 ### Condition
 
-* **Type:**
+- **Type:**
 
 ```ts
 type Condition =
@@ -79,20 +82,20 @@ Defines a module's match conditions, common matches are [resource](#rulesresourc
 
 Example: app.js imports `./image.png?inline#foo`:
 
-* `resource` is `/path/to/image.png`, and will match against with [rules\[\].resource](#rulesresource) Condition
-* `resourceQuery` is `?inline`, and will match against with [rules\[\].resourceQuery](#rulesresourcequery) Condition
-* `resourceFragment` is `#foo`, and will match against with [rules\[\].resourceFragment](#rulesresourcefragment) Condition
+- `resource` is `/path/to/image.png`, and will match against with [rules\[\].resource](#rulesresource) Condition
+- `resourceQuery` is `?inline`, and will match against with [rules\[\].resourceQuery](#rulesresourcequery) Condition
+- `resourceFragment` is `#foo`, and will match against with [rules\[\].resourceFragment](#rulesresourcefragment) Condition
 
 Condition represents the form of matching a given input, and it supports the following types:
 
-* `String`: Given an input, the match is successful when the input string satisfies startsWith. Note: You can think of it as `input.startsWith(condition)`.
-* `RegExp`: Given an input, the match is successful when the input string satisfies the regular expression. Note: You can think of it as `condition.test(input)`.
-* `Condition[]`: A list of conditions. At least one of the Conditions must match.
-* `LogicalConditions`: All Conditions must match.
-  * `{ and: Condition[] }`: All Conditions must match.
-  * `{ or: Condition[] }`: At least one of the Conditions must match.
-  * `{ not: Condition }`: All Conditions must NOT match.
-* `(value: string) => boolean`: If it's called with the input and return a truthy value, the match is succeeds.
+- `String`: Given an input, the match is successful when the input string satisfies startsWith. Note: You can think of it as `input.startsWith(condition)`.
+- `RegExp`: Given an input, the match is successful when the input string satisfies the regular expression. Note: You can think of it as `condition.test(input)`.
+- `Condition[]`: A list of conditions. At least one of the Conditions must match.
+- `LogicalConditions`: All Conditions must match.
+  - `{ and: Condition[] }`: All Conditions must match.
+  - `{ or: Condition[] }`: At least one of the Conditions must match.
+  - `{ not: Condition }`: All Conditions must NOT match.
+- `(value: string) => boolean`: If it's called with the input and return a truthy value, the match is succeeds.
 
 ### Nested rule
 
@@ -106,8 +109,8 @@ The order of evaluation is as follows:
 
 ## rules\[].exclude
 
-* **Type:** [`Condition`](#condition)
-* **Default:** `undefined`
+- **Type:** [`Condition`](#condition)
+- **Default:** `undefined`
 
 Excludes all modules that match this condition and will match against the absolute path of the resource (without query and fragment). This option cannot be present together with `rules[].resource`.
 
@@ -125,8 +128,8 @@ export default {
 
 ## rules\[].include
 
-* **Type:** [`Condition`](#condition)
-* **Default:** `undefined`
+- **Type:** [`Condition`](#condition)
+- **Default:** `undefined`
 
 Matches all modules that match this condition against the absolute path of the resource (without query and fragment). This option cannot be present together with `rules[].resource`.
 
@@ -144,8 +147,8 @@ export default {
 
 ## rules\[].resource
 
-* **Type:** [`Condition`](#condition)
-* **Default:** `undefined`
+- **Type:** [`Condition`](#condition)
+- **Default:** `undefined`
 
 Matches all modules that match this resource, and will match against Resource (the absolute path without query and fragment). This option cannot be present together with `rules[].test`.
 
@@ -163,8 +166,8 @@ export default {
 
 ## rules\[].resourceQuery
 
-* **Type:** [`Condition`](#condition)
-* **Default:** `undefined`
+- **Type:** [`Condition`](#condition)
+- **Default:** `undefined`
 
 Matches all modules that match this resource against the Resource's query. Note: Containing `?`, when `rules[].resourceQuery` is `?raw`, it will match the resource request of `foo?raw`
 
@@ -184,8 +187,8 @@ export default {
 
 ## rules\[].resourceFragment
 
-* **Type:** [`Condition`](#condition)
-* **Default:** `undefined`
+- **Type:** [`Condition`](#condition)
+- **Default:** `undefined`
 
 Matches all modules that match this resource against the Resource's fragment. Note: Containing `#`, when `rules[].resourceFragment` is `#abc`, it will match the resource request of `foo#abc`
 
@@ -203,8 +206,8 @@ export default {
 
 ## rules\[].test
 
-* **Type:** [`Condition`](#condition)
-* **Default:** `undefined`
+- **Type:** [`Condition`](#condition)
+- **Default:** `undefined`
 
 Matches all modules that match this resource, and will match against Resource (the absolute path without query and fragment). This option cannot be present together with `rules[].resource`.
 
@@ -222,8 +225,8 @@ export default {
 
 ## rules\[].issuer
 
-* **Type:** [`Condition`](#condition)
-* **Default:** `undefined`
+- **Type:** [`Condition`](#condition)
+- **Default:** `undefined`
 
 Matches all modules that match this resource, and will match against Resource (the absolute path without query and fragment) of the module that issued the current module.
 
@@ -241,18 +244,13 @@ export default {
 
 ## rules\[].issuerLayer
 
-<ApiMeta addedVersion="1.0.0-beta.1" />
-
-* **Type:** `string`
-* **Default:** `undefined`
+[Added in v1.0.0-beta.1](https://github.com/web-infra-dev/rspack/releases/tag/v1.0.0-beta.1)
+- **Type:** `string`
+- **Default:** `undefined`
 
 Matches all modules that match this resource, and will match against layer of the module that issued the current module.
 
 For more information about layers, see the [Layer guide](/guide/features/layer.md).
-
-:::warning
-For version before v1.6.0, this configuration will only work if [experiments.layers = true](/config/deprecated-options.md#experimentslayers).
-:::
 
 A basic example:
 
@@ -305,14 +303,14 @@ export default {
 
 ## rules\[].dependency
 
-* **Type:** [`Condition`](#condition)
-* **Default:** `undefined`
+- **Type:** [`Condition`](#condition)
+- **Default:** `undefined`
 
 Matches all modules that match this resource, and will match against the category of the dependency that introduced the current module, for example:
 
-* `esm` for `import` and `import()`
-* `cjs` for `require()`
-* `url` for `new URL()` and `url()`.
+- `esm` for `import` and `import()`
+- `cjs` for `require()`
+- `url` for `new URL()` and `url()`.
 
 For example, match all `.js` files, but exclude `url` type dependencies (such as `new URL('./path/to/foo.js', import.meta.url)`):
 
@@ -331,8 +329,8 @@ export default {
 
 ## rules\[].scheme
 
-* **Type:** [`Condition`](#condition)
-* **Default:** `undefined`
+- **Type:** [`Condition`](#condition)
+- **Default:** `undefined`
 
 Matches all modules that match this resource, and will match against the Resource's scheme.
 
@@ -353,8 +351,8 @@ export default {
 
 ## rules\[].mimetype
 
-* **Type:** [`Condition`](#condition)
-* **Default:** `undefined`
+- **Type:** [`Condition`](#condition)
+- **Default:** `undefined`
 
 Matches modules based on [MIME type](https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/MIME_types) instead of file extension. It's primarily useful for [data URI module](/api/runtime-api/module-methods.md#data-uri-module).
 
@@ -375,8 +373,8 @@ export default {
 
 ## rules\[].descriptionData
 
-* **Type:** `{ [key: string]: Condition }`
-* **Default:** `undefined`
+- **Type:** `{ [key: string]: Condition }`
+- **Default:** `undefined`
 
 `descriptionData` option allows you to match values of properties in the description file, typically `package.json`, to determine which modules a rule should apply to. This is a useful way to apply rules to specific modules based on metadata found in their `package.json`.
 
@@ -403,10 +401,9 @@ export default {
 
 ## rules\[].with
 
-<ApiMeta addedVersion="1.0.0-beta.1" />
-
-* **Type:** `{ [key: string]: Condition }`
-* **Default:** `undefined`
+[Added in v1.0.0-beta.1](https://github.com/web-infra-dev/rspack/releases/tag/v1.0.0-beta.1)
+- **Type:** `{ [key: string]: Condition }`
+- **Default:** `undefined`
 
 `with` can be used in conjunction with [import attributes](https://github.com/tc39/proposal-import-attributes).
 
@@ -473,8 +470,8 @@ export default {
 
 ## rules\[].parser
 
-* **Type:** `Object`
-* **Default:** `{}`
+- **Type:** `Object`
+- **Default:** `{}`
 
 Parser options for the specific modules that matched by the rule conditions, this will override the parser options in `module.parser`.
 
@@ -498,8 +495,8 @@ For specific parser options and the corresponding module type, you can refer to 
 
 ## rules\[].generator
 
-* **Type:** `Object`
-* **Default:** `{}`
+- **Type:** `Object`
+- **Default:** `{}`
 
 Generator options for the specific modules that matched by the rule conditions, this will override the parser options in `module.generator`.
 
@@ -523,7 +520,7 @@ For specific generator options and the corresponding module type, you can refer 
 
 ## rules\[].sideEffects
 
-* **Type:** `boolean`
+- **Type:** `boolean`
 
 Flag the module for side effects, this will affect the result of [Tree Shaking](/guide/optimization/tree-shaking.md).
 
@@ -542,7 +539,8 @@ export default {
 
 ## rules\[].enforce
 
-<PropertyType type="'pre' | 'post'" />
+- Type: `'pre' | 'post'`
+
 
 Specifies the category of the loader. When not specified, it defaults to normal loader.
 
@@ -582,12 +580,12 @@ export default {
 
 There are two phases that all loaders enter one after the other:
 
-* **Pitching phase:** the `pitch` method on loaders is called in the order `post, inline, normal, pre`. See [Pitching Loader](/api/loader-api/writing-loaders.md#pitching-loader) for details.
-* **Normal phase:** the default method on loaders is executed in the order `pre, normal, inline, post`. Transformation on the source code of a module happens in this phase.
+- **Pitching phase:** the `pitch` method on loaders is called in the order `post, inline, normal, pre`. See [Pitching Loader](/api/loader-api/writing-loaders.md#pitching-loader) for details.
+- **Normal phase:** the default method on loaders is executed in the order `pre, normal, inline, post`. Transformation on the source code of a module happens in this phase.
 
 ## rules\[].type
 
-* **Type:**
+- **Type:**
 
 ```ts
 type RuleType =
@@ -605,10 +603,10 @@ Used to mark the type of the matching module, which affects how the module is ha
 
 By default, Rspack will determine the type of the module based on the file extension. For example:
 
-* `.js` files will be treated as `javascript/auto` modules.
-* `.mjs` files, as well as `.js` files in packages with `type="module"` in package.json, will be treated as `javascript/esm` modules.
-* `.json` files will be treated as `json` modules.
-* `.css` files will be treated as `css/auto` modules.
+- `.js` files will be treated as `javascript/auto` modules.
+- `.mjs` files, as well as `.js` files in packages with `type="module"` in package.json, will be treated as `javascript/esm` modules.
+- `.json` files will be treated as `json` modules.
+- `.css` files will be treated as `css/auto` modules.
 
 For example, if you want to load a `.json` file through a custom loader, you'd need to set the type to `javascript/auto` to bypass Rspack's built-in JSON importing.
 
@@ -628,26 +626,21 @@ export default {
 
 The meanings of all `type` options are as follows:
 
-* `'javascript/auto'`: JavaScript modules. Rspack automatically determines the module type based on file content, providing the best compatibility.
-* `'javascript/esm'`: JavaScript modules, treated as strict ES modules.
-* `'javascript/dynamic'`: JavaScript modules, treated as Script.
-* `'json'`: JSON data module, see [JSON](/guide/tech/json.md).
-* `'css' | 'css/module' | 'css/auto'`: CSS module, see [Built-in CSS support](/guide/tech/css.md#built-in-css-support).
-* `'asset' | 'asset/source' | 'asset/resource' | 'asset/inline' | 'asset/bytes'`: Asset module, see [Asset Module](/guide/features/asset-module.md).
+- `'javascript/auto'`: JavaScript modules. Rspack automatically determines the module type based on file content, providing the best compatibility.
+- `'javascript/esm'`: JavaScript modules, treated as strict ES modules.
+- `'javascript/dynamic'`: JavaScript modules, treated as Script.
+- `'json'`: JSON data module, see [JSON](/guide/tech/json.md).
+- `'css' | 'css/module' | 'css/auto'`: CSS module, see [Built-in CSS support](/guide/tech/css.md#built-in-css-support).
+- `'asset' | 'asset/source' | 'asset/resource' | 'asset/inline' | 'asset/bytes'`: Asset module, see [Asset Module](/guide/features/asset-module.md).
 
 ## rules\[].layer
 
-<ApiMeta addedVersion="1.0.0-beta.1" />
-
-* **Type:** `string`
+[Added in v1.0.0-beta.1](https://github.com/web-infra-dev/rspack/releases/tag/v1.0.0-beta.1)
+- **Type:** `string`
 
 Used to mark the layer of the matching module. A group of modules could be united in one layer which could then be used in split chunks, stats or [entry options](/config/entry.md#entrydescriptionlayer).
 
 For more information about layers, see the [Layer guide](/guide/features/layer.md).
-
-:::warning
-For version before v1.6.0, this configuration will only work if [experiments.layers = true](/config/deprecated-options.md#experimentslayers).
-:::
 
 ```js title="rspack.config.mjs"
 export default {
@@ -664,7 +657,7 @@ export default {
 
 ## rules\[].use
 
-* **Type:**
+- **Type:**
 
 ```ts
 type RuleSetUse =
@@ -735,16 +728,15 @@ export default {
 
 ## rules\[].use.parallel
 
-<ApiMeta addedVersion="1.3.1" />
-
-* **Type**: `boolean`
-* **Default:** `false`
+[Added in v1.3.1](https://github.com/web-infra-dev/rspack/releases/tag/v1.3.1)
+- **Type**: `boolean`
+- **Default:** `false`
 
 Controls whether a given loader should run in worker threads for parallel execution. Loaders marked with `parallel` are scheduled across multiple threads, reducing pressure on the main thread and improving overall build performance.
 
-* When set to `true`, the loader runs in a worker. Rspack automatically selects an appropriate number of worker threads.
-* When set to `{ maxWorkers }`, you can explicitly define the maximum number of workers to use.
-* When set to `false` or omitted, the loader runs on the main thread.
+- When set to `true`, the loader runs in a worker. Rspack automatically selects an appropriate number of worker threads.
+- When set to `{ maxWorkers }`, you can explicitly define the maximum number of workers to use.
+- When set to `false` or omitted, the loader runs on the main thread.
 
 For example, enabling parallel execution for `less-loader`:
 
@@ -766,9 +758,6 @@ export default {
       },
     ],
   },
-  experiments: {
-    parallelLoader: true,
-  },
 };
 ```
 
@@ -776,9 +765,8 @@ When multiple loaders within the same rule have `parallel` enabled, Rspack execu
 
 :::tip
 
-* This feature is experimental. It only takes effect when [experiments.parallelLoader](/config/experiments.md#experimentsparallelloader) is enabled.
-* The loader options must comply with the [HTML structured clone algorithm](https://nodejs.org/api/worker_threads.html#portpostmessagevalue-transferlist), otherwise transmission will fail.
-* In worker mode, most methods on `LoaderContext._compilation`, `LoaderContext._compiler`, `LoaderContext._module` are not supported.
+- The loader options must comply with the [HTML structured clone algorithm](https://nodejs.org/api/worker_threads.html#portpostmessagevalue-transferlist), otherwise transmission will fail.
+- In worker mode, most methods on `LoaderContext._compilation`, `LoaderContext._compiler`, `LoaderContext._module` are not supported.
 
 :::
 
@@ -803,8 +791,8 @@ export default {
 
 ## rules\[].rules
 
-* **Type:** <code>[Rule](#rules)\[]</code>
-* **Default:** `undefined`
+- **Type:** <code>[Rule](#rules)\[]</code>
+- **Default:** `undefined`
 
 A kind of [Nested Rule](#nested-rule), an array of Rules that is also used when the parent Rule matches.
 
@@ -837,8 +825,8 @@ export default {
 
 ## rules\[].oneOf
 
-* **Type:** <code>([Rule](#rules) | Falsy)\[]</code>
-* **Default:** `undefined`
+- **Type:** <code>([Rule](#rules) | Falsy)\[]</code>
+- **Default:** `undefined`
 
 A kind of [Nested Rule](#nested-rule), an array of Rules from which only the first matching Rule is used when the parent Rule matches.
 
@@ -867,10 +855,9 @@ export default {
 
 ## rules\[].extractSourceMap
 
-<ApiMeta addedVersion="1.6.0" />
-
-* **Type**: `boolean`
-* **Default:** `false`
+[Added in v1.6.0](https://github.com/web-infra-dev/rspack/releases/tag/v1.6.0)
+- **Type**: `boolean`
+- **Default:** `false`
 
 Extracts existing source map data from files (from their `//# sourceMappingURL` comment), useful for preserving the source maps of third-party libraries.
 

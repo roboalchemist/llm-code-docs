@@ -1,5 +1,9 @@
 # Source: https://docs.livekit.io/recipes/moviefone.md
 
+LiveKit docs › Tool Use › Moviefone
+
+---
+
 # Building a Moviefone-style Theater Assistant
 
 > Create a voice agent that helps users find movie showtimes across Canada.
@@ -191,7 +195,7 @@ For the full example, see the [Moviefone repository](https://github.com/ShayneP/
 
 ---
 
-This document was rendered at 2025-11-18T23:55:23.403Z.
+This document was rendered at 2026-02-03T03:25:29.613Z.
 For the latest version of this document, see [https://docs.livekit.io/recipes/moviefone.md](https://docs.livekit.io/recipes/moviefone.md).
 
 To explore all LiveKit documentation, see [llms.txt](https://docs.livekit.io/llms.txt).

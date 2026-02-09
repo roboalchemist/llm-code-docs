@@ -1,5 +1,9 @@
 # Source: https://docs.meshconnect.com/advanced/configuring-transfer-options.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.meshconnect.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Configuring Transfer Options
 
 The `transferOptions` object is the core of any payment or deposit flow in Mesh. By passing this object in your server-side `POST /api/v1/linktoken` request, you can precisely control the user's experience in the Link UI, from the assets they can transfer to the fees they are charged.

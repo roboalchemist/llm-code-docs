@@ -1,5 +1,9 @@
 # Source: https://loops.so/docs/integrations/auth0.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://loops.so/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Auth0
 
 > Send Auth0 authentication emails with Loops.

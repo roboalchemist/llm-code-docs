@@ -1,5 +1,9 @@
 # Source: https://braintrust.dev/docs/api-reference/organizations/list-organizations.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://braintrust.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # List organizations
 
 > List out all organizations. The organizations are sorted by creation date, with the most recently-created organizations coming first
@@ -192,6 +196,8 @@ components:
           nullable: true
           format: date-time
           description: Date of organization creation
+        image_rendering_mode:
+          $ref: '#/components/schemas/ImageRenderingMode'
       required:
         - id
         - name
@@ -234,6 +240,18 @@ components:
     OrgName:
       type: string
       description: Filter search results to within a particular organization
+    ImageRenderingMode:
+      type: string
+      nullable: true
+      enum:
+        - auto
+        - click_to_load
+        - blocked
+        - null
+      description: >-
+        Controls how images are rendered in the UI: 'auto' loads images
+        automatically, 'click_to_load' shows a placeholder until clicked,
+        'blocked' prevents image loading entirely
   securitySchemes:
     bearerAuth:
       type: http
@@ -246,7 +264,3 @@ components:
         page](https://www.braintrustdata.com/app/settings?subroute=api-keys).
 
 ````
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://braintrust.dev/docs/llms.txt

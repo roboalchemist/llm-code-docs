@@ -2,10 +2,6 @@
 
 # Source: https://mui.com/x/react-charts/scatter.md
 
-# Source: https://mui.com/x/api/charts/scatter.md
-
-# Source: https://mui.com/x/react-charts/scatter.md
-
 ---
 title: React Scatter chart
 productId: x-charts

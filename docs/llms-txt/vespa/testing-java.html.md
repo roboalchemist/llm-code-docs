@@ -54,5 +54,5 @@ Combining Vespa JUnit 5 test suites with unit tests in TestNG is possible. You'l
 ```
 ```
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 

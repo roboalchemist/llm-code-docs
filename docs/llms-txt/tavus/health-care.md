@@ -1,5 +1,9 @@
 # Source: https://docs.tavus.io/sections/conversational-video-interface/conversation/usecases/health-care.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.tavus.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Health Care Consultant
 
 > Engage with the health care consultant persona for basic health concerns.
@@ -40,13 +44,13 @@
                 }
               }
             ],
-            "model": "tavus-llama-4",
+            "model": "tavus-gpt-oss",
             "speculative_inference": true
           },
-          "stt": {
-            "participant_pause_sensitivity": "high",
-            "participant_interrupt_sensitivity": "high",
-            "smart_turn_detection": true
+          "conversational_flow": {
+            "turn_detection_model": "sparrow-1",
+            "turn_taking_patience": "high",
+            "replica_interruptibility": "verylow"
           }
         }
     }
@@ -64,7 +68,7 @@
 
     * **Model Layers**:
 
-      * **LLM Configuration**: Uses the `tavus-llama-4` model with speculative inference. Includes the `get_cures` tool, which accepts a single string parameter (`disease`) and limits AI behavior to relevant function calls only when disease-related queries are detected.
+      * **LLM Configuration**: Uses the `tavus-gpt-oss` model with speculative inference. Includes the `get_cures` tool, which accepts a single string parameter (`disease`) and limits AI behavior to relevant function calls only when disease-related queries are detected.
 
       * **TTS Layer**: Employs the `cartesia` voice engine with emotion control.
 
@@ -104,7 +108,7 @@
               }
             }
           ],
-          "model": "tavus-llama-4",
+          "model": "tavus-gpt-oss",
           "speculative_inference": true
         },
         "perception": {
@@ -157,7 +161,7 @@
 
     * **Model Layers**
 
-      * **LLM Configuration**: Uses the `tavus-llama-4` model with speculative inference. Includes the `get_skin_cures` function, which takes a `disease` input to provide specific treatment guidance.
+      * **LLM Configuration**: Uses the `tavus-gpt-oss` model with speculative inference. Includes the `get_skin_cures` function, which takes a `disease` input to provide specific treatment guidance.
 
       * **Perception Configuration**:
 
@@ -170,7 +174,7 @@
 
       * **TTS Layer**: Employs the `cartesia` voice engine with emotion control.
 
-      - **STT Layer**: Uses `tavus-advanced` engine with smart turn detection for seamless real-time conversations.
+      - **Conversational Flow Layer**: Uses `sparrow-1` turn detection model with high turn-taking patience to avoid interrupting patients and very low replica interruptibility for careful, uninterrupted responses.
   </Tab>
 </Tabs>
 
@@ -216,7 +220,7 @@
                   }
                 }
               ],
-              "model": "tavus-llama-4",
+              "model": "tavus-gpt-oss",
               "speculative_inference": true
             },
             "stt": {
@@ -264,7 +268,7 @@
                   }
                 }
               ],
-              "model": "tavus-llama-4",
+              "model": "tavus-gpt-oss",
               "speculative_inference": true
             },
             "perception": {
@@ -296,10 +300,10 @@
                 }
               ]
             },
-            "stt": {
-              "participant_pause_sensitivity": "high",
-              "participant_interrupt_sensitivity": "high",
-              "smart_turn_detection": true,
+            "conversational_flow": {
+              "turn_detection_model": "sparrow-1",
+              "turn_taking_patience": "high",
+              "replica_interruptibility": "verylow"
             }
           }
         }'

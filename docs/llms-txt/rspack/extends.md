@@ -1,17 +1,20 @@
 # Source: https://rspack.dev/config/extends.md
 
-import WebpackLicense from '@components/WebpackLicense';
-import PropertyType from '../../../components/PropertyType.tsx';
-import { Tabs, Tab } from '@theme';
+CC 4.0 License> The content of this section is derived from the content of the following links and is subject to the CC BY 4.0 license.
+> 
+> - [https://webpack.js.org/configuration/configuration-types/#exporting-multiple-configurations](https://webpack.js.org/configuration/configuration-types/#exporting-multiple-configurations)
+> 
+> The following contents can be assumed to be the result of modifications and deletions based on the original contents if not specifically stated.
+> 
+> 
 
-<WebpackLicense from="https://webpack.js.org/configuration/configuration-types/#exporting-multiple-configurations" />
 
 # Extends
 
 Used to extend configurations from other files or packages. This allows you to create a base configuration and extend it for different environments or use cases.
 
-* **Type:** `string | string[]`
-* **Default:** `undefined`
+- **Type:** `string | string[]`
+- **Default:** `undefined`
 
 :::info
 This option is only supported in [`@rspack/cli`](/api/cli.md).
@@ -23,31 +26,32 @@ If you are using the JavaScript API or other Rspack-based tools, `extends` will 
 
 You can extend a configuration from another file by specifying the path to the file in the `extends` property. The path can be absolute or relative to the configuration file:
 
-<Tabs>
-  <Tab label="ESM">
-    ```js title="rspack.config.mjs"
-    export default {
-      extends: './base.rspack.config.mjs',
-      // Override or add to the base configuration
-      output: {
-        filename: '[name].bundle.js',
-      },
-    };
-    ```
-  </Tab>
 
-  <Tab label="CJS">
-    ```js title="rspack.config.cjs"
-    module.exports = {
-      extends: './base.rspack.config.cjs',
-      // Override or add to the base configuration
-      output: {
-        filename: '[name].bundle.js',
-      },
-    };
-    ```
-  </Tab>
-</Tabs>
+**ESM**
+
+```js title="rspack.config.mjs"
+export default {
+  extends: './base.rspack.config.mjs',
+  // Override or add to the base configuration
+  output: {
+    filename: '[name].bundle.js',
+  },
+};
+```
+
+
+**CJS**
+
+```js title="rspack.config.cjs"
+module.exports = {
+  extends: './base.rspack.config.cjs',
+  // Override or add to the base configuration
+  output: {
+    filename: '[name].bundle.js',
+  },
+};
+```
+
 
 :::tip
 When using relative paths, they are resolved relative to the configuration file that contains the `extends` property.
@@ -55,8 +59,8 @@ When using relative paths, they are resolved relative to the configuration file 
 
 ## Multiple configurations
 
-* **Type:** `string[]`
-* **Default:** `undefined`
+- **Type:** `string[]`
+- **Default:** `undefined`
 
 You can extend multiple configurations by providing an array of paths. Configurations are merged from right to left, meaning that the rightmost configuration will be merged into the leftmost one, and so on:
 
@@ -74,16 +78,16 @@ export default {
 
 When merging configurations:
 
-* Simple values are overwritten
-* Arrays are concatenated
-* Objects are deeply merged
+- Simple values are overwritten
+- Arrays are concatenated
+- Objects are deeply merged
 
 :::
 
 ## Node modules
 
-* **Type:** `string`
-* **Default:** `undefined`
+- **Type:** `string`
+- **Default:** `undefined`
 
 You can also extend configurations from packages installed in your node\_modules. The package should export a valid Rspack configuration:
 

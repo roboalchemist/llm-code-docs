@@ -1,48 +1,62 @@
-# Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/delete-dataset.md
-
 # Source: https://docs.fireworks.ai/api-reference/delete-dataset.md
 
-# Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/delete-dataset.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.fireworks.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
 
-# Source: https://docs.fireworks.ai/api-reference/delete-dataset.md
+# Delete Dataset
 
-# Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/delete-dataset.md
 
-# Source: https://docs.fireworks.ai/api-reference/delete-dataset.md
 
-# Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/delete-dataset.md
+## OpenAPI
 
-# Source: https://docs.fireworks.ai/api-reference/delete-dataset.md
+````yaml delete /v1/accounts/{account_id}/datasets/{dataset_id}
+openapi: 3.1.0
+info:
+  title: Gateway REST API
+  version: 4.21.6
+servers:
+  - url: https://api.fireworks.ai
+security:
+  - BearerAuth: []
+tags:
+  - name: Gateway
+paths:
+  /v1/accounts/{account_id}/datasets/{dataset_id}:
+    delete:
+      tags:
+        - Gateway
+      summary: Delete Dataset
+      operationId: Gateway_DeleteDataset
+      parameters:
+        - name: account_id
+          in: path
+          required: true
+          description: The Account Id
+          schema:
+            type: string
+        - name: dataset_id
+          in: path
+          required: true
+          description: The Dataset Id
+          schema:
+            type: string
+      responses:
+        '200':
+          description: A successful response.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: {}
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      description: >-
+        Bearer authentication using your Fireworks API key. Format: Bearer
+        <API_KEY>
+      bearerFormat: API_KEY
 
-# Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/delete-dataset.md
-
-# firectl delete dataset
-
-> Deletes a dataset.
-
-```
-firectl delete dataset [flags]
-```
-
-### Examples
-
-```
-firectl delete dataset my-dataset
-firectl delete dataset accounts/my-account/datasets/my-dataset
-```
-
-### Flags
-
-```
-  -h, --help                    help for dataset
-      --wait                    Wait until the dataset is deleted.
-      --wait-timeout duration   Maximum time to wait when using --wait flag. (default 30m0s)
-```
-
-### Global flags
-
-```
-  -a, --account-id string   The Fireworks account ID. If not specified, reads account_id from ~/.fireworks/auth.ini.
-      --api-key string      An API key used to authenticate with Fireworks.
-  -p, --profile string      fireworks auth and settings profile to use.
-```
+````

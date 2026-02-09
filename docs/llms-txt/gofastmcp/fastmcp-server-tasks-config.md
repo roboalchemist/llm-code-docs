@@ -1,5 +1,9 @@
 # Source: https://gofastmcp.com/python-sdk/fastmcp-server-tasks-config.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://gofastmcp.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # config
 
 # `fastmcp.server.tasks.config`
@@ -11,7 +15,19 @@ handle task-augmented execution as specified in SEP-1686.
 
 ## Classes
 
-### `TaskConfig` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/server/tasks/config.py#L19" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+### `TaskMeta` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/server/tasks/config.py#L26" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+
+Metadata for task-augmented execution requests.
+
+When passed to call\_tool/read\_resource/get\_prompt, signals that
+the operation should be submitted as a background task.
+
+**Attributes:**
+
+* `ttl`: Client-requested TTL in milliseconds. If None, uses server default.
+* `fn_key`: Docket routing key. Auto-derived from component name if None.
+
+### `TaskConfig` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/server/tasks/config.py#L42" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
 
 Configuration for MCP background task execution (SEP-1686).
 
@@ -26,7 +42,7 @@ Controls how a component handles task-augmented requests:
 
 **Methods:**
 
-#### `from_bool` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/server/tasks/config.py#L51" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+#### `from_bool` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/server/tasks/config.py#L80" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
 
 ```python  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
 from_bool(cls, value: bool) -> TaskConfig
@@ -42,7 +58,19 @@ Convert boolean task flag to TaskConfig.
 
 * TaskConfig with appropriate mode.
 
-#### `validate_function` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/server/tasks/config.py#L62" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+#### `supports_tasks` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/server/tasks/config.py#L91" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+
+```python  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
+supports_tasks(self) -> bool
+```
+
+Check if this component supports task execution.
+
+**Returns:**
+
+* True if mode is "optional" or "required", False if "forbidden".
+
+#### `validate_function` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/server/tasks/config.py#L99" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
 
 ```python  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
 validate_function(self, fn: Callable[..., Any], name: str) -> None
@@ -50,8 +78,13 @@ validate_function(self, fn: Callable[..., Any], name: str) -> None
 
 Validate that function is compatible with this task config.
 
-Task execution requires async functions. Raises ValueError if mode
-is "optional" or "required" but function is synchronous.
+Task execution requires:
+
+1. fastmcp\[tasks] to be installed (pydocket)
+2. Async functions
+
+Raises ImportError if mode is "optional" or "required" but pydocket
+is not installed. Raises ValueError if function is synchronous.
 
 **Args:**
 
@@ -60,9 +93,5 @@ is "optional" or "required" but function is synchronous.
 
 **Raises:**
 
+* `ImportError`: If task execution is enabled but pydocket not installed.
 * `ValueError`: If task execution is enabled but function is sync.
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://gofastmcp.com/llms.txt

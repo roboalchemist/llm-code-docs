@@ -9,13 +9,17 @@ https://api.apify.com/v2/users/me/limits
 ```
 
 
-Updates the account's limits manageable on your account's https://console.apify.com/billing#/limits. Specifically the: `maxMonthlyUsageUsd` and `dataRetentionDays` limits (see request body schema for more details).
+Updates the account's limits manageable on your account's [Limits page](https://console.apify.com/billing#/limits). Specifically the: `maxMonthlyUsageUsd` and `dataRetentionDays` limits (see request body schema for more details).
 
 ## Request
 
 ## Responses
 
 * 201
+* 400
 
 **Response Headers**
 
+
+
+Bad request - invalid input parameters or request body.

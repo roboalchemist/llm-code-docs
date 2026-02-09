@@ -1,4 +1,8 @@
-# Source: https://braintrust.dev/docs/reference/authentication.md
+# Source: https://braintrust.dev/docs/admin/authentication.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://braintrust.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Authentication
 
@@ -29,9 +33,20 @@ inherit their user's permissions, and essentially are another way to authenticat
 API keys are not stored anywhere, and are only displayed to the user once. If you lose an API key, you will need
 to generate a new one (and can deactivate the old one).
 
-You can create an API key on the <a href="https://www.braintrust.dev/app/settings?subroute=api-keys" target="_blank">settings page</a>.
+You can create an API key by going to <Icon icon="settings-2" /> **Settings**, then under **Organization**, select **API keys**.
 
 <FigmaEmbed url="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Ffile%2FYxvgewtB4Vu8fIjbe0YqCH%2FBraintrust-API-Auth-Architecture%3Ftype%3Dwhiteboard%26node-id%3D0%253A1%26t%3Ds4p2mdIsk2uSbFuA-1" />
+
+## MCP authentication
+
+[Model Context Protocol (MCP)](/integrations/developer-tools/mcp) servers use OAuth 2.0 for authentication. When AI tools connect to Braintrust's MCP server, they:
+
+1. Initiate an OAuth authorization flow.
+2. Redirect users to authenticate with their Braintrust account.
+3. Receive access tokens for API requests.
+4. Use refresh tokens to maintain long-lived sessions.
+
+This authentication method inherits your organization's security policies and SSO configuration. MCP OAuth tokens follow the same permission model as your user account, providing access only to projects and resources you can normally access.
 
 ## Configure SSO
 
@@ -54,8 +69,3 @@ Make it easy for your team to access Braintrust with your company's existing log
 * Custom OIDC provider
 
 To get set up, email us at [support@braintrust.dev](mailto:support@braintrust.dev) to exchange the appropriate configuration URLs. Once everything's configured, we'll turn it on for your domain and your team can start signing in using their regular work credentials.
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://braintrust.dev/docs/llms.txt

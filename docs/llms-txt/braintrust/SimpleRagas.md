@@ -1,5 +1,9 @@
 # Source: https://braintrust.dev/docs/cookbook/recipes/SimpleRagas.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://braintrust.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Optimizing Ragas to evaluate a RAG pipeline
 
 <div className="text-sm">[Contributed](https://github.com/braintrustdata/braintrust-cookbook/blob/main/examples/SimpleRagas/SimpleRagas.ipynb) by [Ankur Goyal](https://twitter.com/ankrgyl), [Nelson Auner](https://twitter.com/nelsonauner) on 2024-05-27</div>
@@ -409,8 +413,3 @@ it easy to deeply understand every step of the pipeline, for example, which docu
 <img src="https://mintcdn.com/braintrust/cnpybiCnmDJAdQWI/cookbook/assets/SimpleRagas/missing-docs.gif?s=9c7def7a1708ba7cef51179c884251a8" alt="missing docs" data-og-width="1141" width="1141" data-og-height="697" height="697" data-path="cookbook/assets/SimpleRagas/missing-docs.gif" data-optimize="true" data-opv="3" />
 
 And there you have it! Ragas is a powerful technique, that with the right tools and iteration can lead to really high quality RAG applications. Happy evaling!
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://braintrust.dev/docs/llms.txt

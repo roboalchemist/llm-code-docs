@@ -52,5 +52,5 @@ Objects are exported once generated - access log files are compressed and export
 
 Note: Always set a user project to access the objects - transfer cost is assigned to the requester.
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 

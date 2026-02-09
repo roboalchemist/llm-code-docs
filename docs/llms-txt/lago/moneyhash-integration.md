@@ -1,5 +1,9 @@
 # Source: https://getlago.com/docs/integrations/payments/moneyhash-integration.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://getlago.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Moneyhash
 
 > Moneyhash is a leading payment infrastructure software in Africa and the Middle East.

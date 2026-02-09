@@ -233,6 +233,7 @@ import { DataGridPro } from '@mui/x-data-grid-premium';
 | baseButton | `Button` | - | The custom Button component used in the grid. |
 | baseIconButton | `IconButton` | - | The custom IconButton component used in the grid. |
 | baseInput | `Input` | - | The custom Input component used in the grid. |
+| baseTextarea | `InputBase with multiline` | - | The custom Textarea component used in the grid for multiline text editing. |
 | baseToggleButton | `ToggleButton` | - | The custom ToggleButton component used in the grid. |
 | baseTooltip | `Tooltip` | - | The custom Tooltip component used in the grid. |
 | basePagination | `Pagination` | - | The custom Pagination component used in the grid. |
@@ -243,6 +244,8 @@ import { DataGridPro } from '@mui/x-data-grid-premium';
 | baseTabs | `Tabs` | - | The custom Tabs component used in the grid. |
 | booleanCellTrueIcon | `GridCheckIcon` | - | Icon displayed on the boolean cell to represent the true value. |
 | booleanCellFalseIcon | `GridCloseIcon` | - | Icon displayed on the boolean cell to represent the false value. |
+| undoIcon | `GridUndoIcon` | - | Icon displayed on the undo button in the toolbar. |
+| redoIcon | `GridRedoIcon` | - | Icon displayed on the redo button in the toolbar. |
 | columnMenuIcon | `GridTripleDotsVerticalIcon` | - | Icon displayed on the side of the column header title to display the filter input component. |
 | openFilterButtonIcon | `GridFilterListIcon` | - | Icon displayed on the open filter button present in the toolbar by default. |
 | columnFilteredIcon | `GridFilterAltIcon` | - | Icon displayed on the column header menu to show that a filter has been applied to the column. |
@@ -278,6 +281,8 @@ import { DataGridPro } from '@mui/x-data-grid-premium';
 | loadIcon | `GridLoadIcon` | - | Icon displayed on the input while processing. |
 | columnReorderIcon | `GridDragIcon` | - | Icon displayed on the column reorder button. |
 | menuItemCheckIcon | `GridCheckIcon` | - | Icon displayed to indicate that a menu item is selected. |
+| longTextCellExpandIcon | `GridLongTextCellExpandIcon` | - | Icon displayed on the long text cell to expand the content. |
+| longTextCellCollapseIcon | `GridLongTextCellCollapseIcon` | - | Icon displayed on the long text cell popup to collapse the content. |
 | columnMenuPinLeftIcon | `GridPushPinLeftIcon` | - | Icon displayed in column menu for left pinning |
 | columnMenuPinRightIcon | `GridPushPinRightIcon` | - | Icon displayed in column menu for right pinning |
 
@@ -377,6 +382,11 @@ import { DataGridPro } from '@mui/x-data-grid-premium';
 | - | detailPanelToggleCell--expanded | Styles applied to the detail panel toggle cell element if expanded. |
 | - | editBooleanCell | Styles applied to root of the boolean edit component. |
 | - | editInputCell | Styles applied to the root of the input component. |
+| - | editLongTextCell | Styles applied to the edit long text cell root element. |
+| - | editLongTextCellPopperContent | Styles applied to the edit long text cell popper content. |
+| - | editLongTextCellPopup | Styles applied to the edit long text cell popup. |
+| - | editLongTextCellTextarea | Styles applied to the edit long text cell textarea. |
+| - | editLongTextCellValue | Styles applied to the edit long text cell value element. |
 | - | filterForm | Styles applied to the root of the filter form component. |
 | - | filterFormColumnInput | Styles applied to the column input of the filter form component. |
 | - | filterFormDeleteIcon | Styles applied to the delete icon of the filter form component. |
@@ -391,6 +401,12 @@ import { DataGridPro } from '@mui/x-data-grid-premium';
 | - | headerFilterRow | Styles applied to the column header filter row. |
 | - | iconButtonContainer | Styles applied to the column header icon's container. |
 | - | iconSeparator | Styles applied to the column header separator icon element. |
+| - | longTextCell | Styles applied to the long text cell root element. |
+| - | longTextCellCollapseButton | Styles applied to the long text cell collapse button. |
+| - | longTextCellContent | Styles applied to the long text cell content element. |
+| - | longTextCellExpandButton | Styles applied to the long text cell expand button. |
+| - | longTextCellPopperContent | Styles applied to the long text cell popper content. |
+| - | longTextCellPopup | Styles applied to the long text cell popup. |
 | - | main | Styles applied to the main container element. |
 | - | main--hasPinnedRight | Styles applied to the main container element when it has right pinned columns. |
 | - | mainContent |  |

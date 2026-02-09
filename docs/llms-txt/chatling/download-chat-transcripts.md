@@ -1,5 +1,9 @@
 # Source: https://docs.chatling.ai/web-widget/download-chat-transcripts.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.chatling.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Download transcripts
 
 > A guide to enabling chat transcript downloads for end-users.
@@ -9,8 +13,8 @@ If you'd like your chatbot users to have the option to download chat transcripts
 ## How to allow end-users to download chat transcripts
 
 1. Open your chatbot's dashboard.
-2. Go to `Appearance`.
-3. Click on `Configure` from the sidebar.
+2. Go to the widget designer. To learn how to access it, see [this guide](/web-widget/customize).
+3. Click `Configure` from the sidebar.
 
 <img src="https://chatling-assets.b-cdn.net/open-appearance-configuration-settings.jpg" width="400" alt="Open apperance configuration settings" />
 

@@ -1,6 +1,8 @@
 # Source: https://www.activepieces.com/docs/build-pieces/piece-reference/custom-api-calls.md
 
-# Source: https://www.activepieces.com/docs/developers/piece-reference/custom-api-calls.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.activepieces.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Enable Custom API Calls
 

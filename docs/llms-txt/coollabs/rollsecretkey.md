@@ -1,5 +1,9 @@
 # Source: https://docs.coollabs.io/coolify/v3/rollsecretkey.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.coollabs.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # null
 
 In `v3.12.33` a new feature has been added. You can now roll your secret key.
@@ -24,21 +28,21 @@ If you are just installing Coolify, you do not need to do anything.
 
 If you want to rollback to the old secret key, you need to do the followings:
 
-1.  Login to your Coolify instance via SSH.
-2.  Switch to root user (`sudo su -`) and locate your `~/coolify/.env` file.
-3.  In `~/coolify/.env` file there should be a `COOLIFY_SECRET_KEY` environment variable.
-4.  Create a `COOLIFY_SECRET_KEY_BETTER` with the same value as `COOLIFY_SECRET_KEY`.
-5.  Check your database files with `docker exec coolify ls -l /app/db` command.
-6.  There should be at least on with the name of `prod.db` and a few with `prod.db_<date>`.
-7.  Locate the oldest one. For example:
+1. Login to your Coolify instance via SSH.
+2. Switch to root user (`sudo su -`) and locate your `~/coolify/.env` file.
+3. In `~/coolify/.env` file there should be a `COOLIFY_SECRET_KEY` environment variable.
+4. Create a `COOLIFY_SECRET_KEY_BETTER` with the same value as `COOLIFY_SECRET_KEY`.
+5. Check your database files with `docker exec coolify ls -l /app/db` command.
+6. There should be at least on with the name of `prod.db` and a few with `prod.db_<date>`.
+7. Locate the oldest one. For example:
 
 ```
 -rw-r--r-- 1 root root 7901184 Aug 23 09:30 prod.db
 -rw-r--r-- 1 root root 7901184 Jul 18 10:09 prod.db_1689674942980 <- THIS (date could be different)
 ```
 
-8.  Make a copy of your `prod.db` file: `docker exec coolify cp /app/db/prod.db /app/db/prod.db_$(date +"%Y%m%d%H%M%S")`
-9.  Overwrite `prod.db` with the old database file: `docker exec coolify cp /app/db/prod.db_1689674942980 /app/db/prod.db`
+8. Make a copy of your `prod.db` file: `docker exec coolify cp /app/db/prod.db /app/db/prod.db_$(date +"%Y%m%d%H%M%S")`
+9. Overwrite `prod.db` with the old database file: `docker exec coolify cp /app/db/prod.db_1689674942980 /app/db/prod.db`
 
 <Warning>
   `app/db/prod.db_1689674942980` will be different in your case
@@ -50,11 +54,11 @@ If you have any questions, please [contact us](../contact.md).
 
 ## Force roll secret key
 
-1.  Login to your Coolify instance via SSH.
-2.  Run the following command: `docker exec -ti coolify bash`. Now you are in the Coolify container.
-3.  You will work in the `/app/.env` file. You can edit it with `vi .env`.
-4.  Delete `COOLIFY_SECRET_KEY_BETTER`.
-5.  Login to your Coolify instance on the web interface.
-6.  Go to `Settings` and fill the `Rollback` input field with `3.12.33` (or the latest version - you can check it [here](https://get.coollabs.io/versions.json)) and click on `Rollback`.
+1. Login to your Coolify instance via SSH.
+2. Run the following command: `docker exec -ti coolify bash`. Now you are in the Coolify container.
+3. You will work in the `/app/.env` file. You can edit it with `vi .env`.
+4. Delete `COOLIFY_SECRET_KEY_BETTER`.
+5. Login to your Coolify instance on the web interface.
+6. Go to `Settings` and fill the `Rollback` input field with `3.12.33` (or the latest version - you can check it [here](https://get.coollabs.io/versions.json)) and click on `Rollback`.
 
 If you have any questions, please [contact us](../contact.md).

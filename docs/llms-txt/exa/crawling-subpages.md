@@ -1,4 +1,8 @@
-# Source: https://docs.exa.ai/reference/crawling-subpages.md
+# Source: https://exa.ai/docs/reference/crawling-subpages.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://exa.ai/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Crawling Subpages
 
@@ -51,7 +55,7 @@ This will search through up to 5 subpages of the given website, and prioritize p
 ## Best Practices
 
 1. **Limit Depth**: Start with a smaller `subpages` value (5-10) and increase if needed
-2. **Consider Caching**: Use `livecrawl='always'` only when you need the most recent content
+2. **Prefer Safe Freshness**: Start with `livecrawl='preferred'` plus `livecrawl_timeout` (e.g. `12000`) to get live data while still falling back to cached content. Use `"always"` only if you'd rather the call fail than return cached data.
 3. **Target Specific Sections**: Use `subpage_target` to focus on relevant sections rather than crawling the entire site
 
 ## Combining with LiveCrawl
@@ -65,7 +69,8 @@ For the most up-to-date and comprehensive results, combine subpage crawling with
     -H 'Content-Type: application/json' \
     -d '{
       "ids": ["https://www.apple.com/"],
-      "livecrawl": "always",
+      "livecrawl": "preferred",
+      "livecrawlTimeout": 12000,
       "subpageTarget": ["news", "product"],
       "subpages": 10
     }'
@@ -74,7 +79,8 @@ For the most up-to-date and comprehensive results, combine subpage crawling with
   ```python Python theme={null}
   result = exa.get_contents(
       ["https://www.apple.com/"],
-      livecrawl="always",
+      livecrawl="preferred",
+      livecrawl_timeout=12000,
       subpage_target=["news", "product"],
       subpages=10
   )
@@ -84,7 +90,8 @@ For the most up-to-date and comprehensive results, combine subpage crawling with
   const result = await exa.getContents(
       ["https://www.apple.com/"],
       {
-          livecrawl: "always",
+          livecrawl: "preferred",
+          livecrawlTimeout: 12000,
           subpageTarget: ["news", "product"],
           subpages: 10
       }
@@ -226,7 +233,8 @@ Crawl through a company's news section:
     -H 'Content-Type: application/json' \
     -d '{
       "ids": ["https://www.apple.com/"],
-      "livecrawl": "always",
+      "livecrawl": "preferred",
+      "livecrawlTimeout": 12000,
       "subpageTarget": ["news", "product"],
       "subpages": 10
     }'
@@ -235,7 +243,8 @@ Crawl through a company's news section:
   ```python Python theme={null}
   result = exa.get_contents(
       ["https://www.apple.com/"],
-      livecrawl="always",
+      livecrawl="preferred",
+      livecrawl_timeout=12000,
       subpage_target=["news", "product"],
       subpages=10
   )
@@ -245,7 +254,8 @@ Crawl through a company's news section:
   const result = await exa.getContents(
       ["https://www.apple.com/"],
       {
-          livecrawl: "always",
+          livecrawl: "preferred",
+          livecrawlTimeout: 12000,
           subpageTarget: ["news", "product"],
           subpages: 10
       }
@@ -368,7 +378,8 @@ Gather recent blog posts:
       "ids": ["https://medium.com"],
       "subpages": 5,
       "subpageTarget": ["blog", "articles"],
-      "livecrawl": "always"
+      "livecrawl": "preferred",
+      "livecrawlTimeout": 12000
     }'
   ```
 
@@ -377,7 +388,8 @@ Gather recent blog posts:
       ["https://medium.com"],
       subpages=5,
       subpage_target=["blog", "articles"],
-      livecrawl='always'
+      livecrawl="preferred",
+      livecrawl_timeout=12000
   )
   ```
 
@@ -387,7 +399,8 @@ Gather recent blog posts:
       {
           subpages: 5,
           subpageTarget: ["blog", "articles"],
-          livecrawl: "always"
+          livecrawl: "preferred",
+          livecrawlTimeout: 12000
       }
   );
   ```
@@ -454,8 +467,3 @@ Output:
   "requestId": "20163fc78142a5ff69c6959167417f1f"
 }
 ```
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.exa.ai/llms.txt

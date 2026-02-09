@@ -1,12 +1,16 @@
 # Source: https://trigger.dev/docs/config/extensions/emitDecoratorMetadata.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://trigger.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Emit Decorator Metadata
 
 > Use the emitDecoratorMetadata build extension to enable support for the emitDecoratorMetadata TypeScript compiler option
 
 If you need support for the `emitDecoratorMetadata` typescript compiler option, import the `emitDecoratorMetadata` build extension and use it in your `trigger.config.ts` file:
 
-```ts  theme={null}
+```ts  theme={"theme":"css-variables"}
 import { defineConfig } from "@trigger.dev/sdk";
 import { emitDecoratorMetadata } from "@trigger.dev/build/extensions/typescript";
 

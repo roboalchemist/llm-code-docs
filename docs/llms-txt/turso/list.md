@@ -24,134 +24,64 @@
 
 # Source: https://docs.turso.tech/api-reference/audit-logs/list.md
 
-# Source: https://docs.turso.tech/cli/org/members/list.md
-
-# Source: https://docs.turso.tech/cli/org/list.md
-
-# Source: https://docs.turso.tech/cli/group/list.md
-
-# Source: https://docs.turso.tech/cli/db/list.md
-
-# Source: https://docs.turso.tech/cli/auth/api-tokens/list.md
-
-# Source: https://docs.turso.tech/api-reference/tokens/list.md
-
-# Source: https://docs.turso.tech/api-reference/organizations/members/list.md
-
-# Source: https://docs.turso.tech/api-reference/organizations/list.md
-
-# Source: https://docs.turso.tech/api-reference/organizations/invites/list.md
-
-# Source: https://docs.turso.tech/api-reference/locations/list.md
-
-# Source: https://docs.turso.tech/api-reference/groups/list.md
-
-# Source: https://docs.turso.tech/api-reference/databases/list.md
-
-# Source: https://docs.turso.tech/api-reference/audit-logs/list.md
-
-# Source: https://docs.turso.tech/cli/org/members/list.md
-
-# Source: https://docs.turso.tech/cli/org/list.md
-
-# Source: https://docs.turso.tech/cli/group/list.md
-
-# Source: https://docs.turso.tech/cli/db/list.md
-
-# Source: https://docs.turso.tech/cli/auth/api-tokens/list.md
-
-# Source: https://docs.turso.tech/api-reference/tokens/list.md
-
-# Source: https://docs.turso.tech/api-reference/organizations/members/list.md
-
-# Source: https://docs.turso.tech/api-reference/organizations/list.md
-
-# Source: https://docs.turso.tech/api-reference/organizations/invites/list.md
-
-# Source: https://docs.turso.tech/api-reference/locations/list.md
-
-# Source: https://docs.turso.tech/api-reference/groups/list.md
-
-# Source: https://docs.turso.tech/api-reference/databases/list.md
-
-# Source: https://docs.turso.tech/api-reference/audit-logs/list.md
-
-# Source: https://docs.turso.tech/cli/org/members/list.md
-
-# Source: https://docs.turso.tech/cli/org/list.md
-
-# Source: https://docs.turso.tech/cli/group/list.md
-
-# Source: https://docs.turso.tech/cli/db/list.md
-
-# Source: https://docs.turso.tech/cli/auth/api-tokens/list.md
-
-# Source: https://docs.turso.tech/api-reference/tokens/list.md
-
-# Source: https://docs.turso.tech/api-reference/organizations/members/list.md
-
-# Source: https://docs.turso.tech/api-reference/organizations/list.md
-
-# Source: https://docs.turso.tech/api-reference/organizations/invites/list.md
-
-# Source: https://docs.turso.tech/api-reference/locations/list.md
-
-# Source: https://docs.turso.tech/api-reference/groups/list.md
-
-# Source: https://docs.turso.tech/api-reference/databases/list.md
-
-# Source: https://docs.turso.tech/api-reference/audit-logs/list.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.turso.tech/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # List Audit Logs
 
 > Return the audit logs for the given organization, ordered by the `created_at` field in descending order.
 
+<Warning>Audit Logs are limited to paid plans.</Warning>
+
+<RequestExample>
+  ```bash cURL theme={null}
+  curl -L https://api.turso.tech/v1/organizations/{organizationSlug}/audit-logs \
+    -H 'Authorization: Bearer TOKEN'
+  ```
+</RequestExample>
+
+
 ## OpenAPI
 
 ````yaml GET /v1/organizations/{organizationSlug}/audit-logs
+openapi: 3.0.1
+info:
+  title: Turso Platform API
+  description: API description here
+  license:
+    name: MIT
+  version: 0.1.0
+servers:
+  - url: https://api.turso.tech
+    description: Turso's Platform API
+security: []
 paths:
-  path: /v1/organizations/{organizationSlug}/audit-logs
-  method: get
-  servers:
-    - url: https://api.turso.tech
-      description: Turso's Platform API
-  request:
-    security: []
-    parameters:
-      path:
-        organizationSlug:
-          schema:
-            - type: string
-              required: true
-              description: The slug of the organization or user account.
-      query:
-        page_size:
-          schema:
-            - type: integer
-              required: false
-              description: The limit of items to return per page. Defaults to 100.
-        page:
-          schema:
-            - type: integer
-              required: false
-              description: The page number to return. Defaults to 1.
-      header: {}
-      cookie: {}
-    body: {}
-  response:
-    '200':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              audit_logs:
-                allOf:
-                  - type: array
+  /v1/organizations/{organizationSlug}/audit-logs:
+    get:
+      summary: List Audit Logs
+      description: >-
+        Return the audit logs for the given organization, ordered by the
+        `created_at` field in descending order.
+      operationId: listOrganizationAuditLogs
+      parameters:
+        - $ref: '#/components/parameters/organizationSlug'
+        - $ref: '#/components/parameters/page_size'
+        - $ref: '#/components/parameters/page'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  audit_logs:
+                    type: array
                     items:
                       $ref: '#/components/schemas/AuditLog'
-              pagination:
-                allOf:
-                  - type: object
+                  pagination:
+                    type: object
                     properties:
                       page:
                         type: integer
@@ -169,25 +99,29 @@ paths:
                         type: integer
                         description: The total number of items.
                         example: 1
-        examples:
-          example:
-            value:
-              audit_logs:
-                - code: db-create
-                  message: ''
-                  origin: cli
-                  author: iku
-                  created_at: '2023-12-20T09:46:08Z'
-                  data: {}
-              pagination:
-                page: 1
-                page_size: 10
-                total_pages: 1
-                total_rows: 1
-        description: Successful response
-  deprecated: false
-  type: path
 components:
+  parameters:
+    organizationSlug:
+      in: path
+      name: organizationSlug
+      required: true
+      schema:
+        type: string
+      description: The slug of the organization or user account.
+    page_size:
+      in: query
+      name: page_size
+      required: false
+      schema:
+        type: integer
+      description: The limit of items to return per page. Defaults to 100.
+    page:
+      in: query
+      name: page
+      required: false
+      schema:
+        type: integer
+      description: The page number to return. Defaults to 1.
   schemas:
     AuditLog:
       type: object

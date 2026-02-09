@@ -1,14 +1,18 @@
 # Source: https://docs.baseten.co/examples/sglang.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.baseten.co/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Deploy LLMs with SGLang
 
 > Optimized inference for LLMs with SGLang
 
-Another great option for inference is [SGlang](#), which supports a wide range of models and performance optimizations. Besides TensorRT-LLM it is in many cases the state-of-the-art engine for serving LLMs.
+Another great option for inference is [SGLang](https://docs.sglang.ai/), which supports a wide range of models and performance optimizations. Besides TensorRT-LLM it is in many cases the state-of-the-art engine for serving LLMs.
 
 ## Example: Deploy Qwen 2.5 3B on an L4 via SGLang
 
-This configuration serves [Qwen 2.5 3B](#) with SGLang on an L4 GPU. Running this model is fast and cheap, making it a good example for documentation, but the process of deploying it is very similar to larger models like [Llama 3.3 70B](#).
+This configuration serves [Qwen 2.5 3B](https://huggingface.co/Qwen/Qwen2.5-3B-Instruct) with SGLang on an L4 GPU. Running this model is fast and cheap, making it a good example for documentation, but the process of deploying it is very similar to larger models like [Llama 3.3 70B](/examples/models/llama/llama-3.3-70B-instruct).
 
 ## Setup
 

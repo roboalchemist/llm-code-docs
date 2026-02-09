@@ -2,23 +2,9 @@
 
 # Source: https://upstash.com/docs/redis/sdks/py/commands/set/srandmember.md
 
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/set/srandmember.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/set/srandmember.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/set/srandmember.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/set/srandmember.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/set/srandmember.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/set/srandmember.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/set/srandmember.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/set/srandmember.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/set/srandmember.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # SRANDMEMBER
 
@@ -26,7 +12,7 @@
 
 ## Arguments
 
-<ParamField body="key" type="string" required>
+<ParamField body="key" type="str" required>
   The key of the set.
 </ParamField>
 
@@ -42,15 +28,15 @@
 </ResponseField>
 
 <RequestExample>
-  ```ts Example  theme={"system"}
-  await redis.sadd("set", "a", "b", "c"); 
-  const member = await redis.srandmember("set");
-  console.log(member); // "a"
+  ```py Single theme={"system"}
+  redis.sadd("myset", "one", "two", "three")
+
+  assert redis.srandmember("myset") in {"one", "two", "three"}
   ```
 
-  ```ts With Count  theme={"system"}
-  await redis.sadd("set", "a", "b", "c"); 
-  const members = await redis.srandmember("set", 2);
-  console.log(members); // ["a", "b"]
+  ```py With Count  theme={"system"}
+  redis.sadd("myset", "one", "two", "three")
+
+  assert redis.srandmember("myset", 2) in {"one", "two", "three"}
   ```
 </RequestExample>

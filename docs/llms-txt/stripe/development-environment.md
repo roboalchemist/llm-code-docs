@@ -28,7 +28,7 @@ In this quickstart, you’ll learn:
 
 - How to call Stripe APIs without writing a line of code
 - How to manage third-party dependencies using a bundler with RubyGems
-- How to install the Stripe Ruby SDK v16.0.0
+- How to install the Stripe Ruby SDK v18.3.0
 - How to send your first SDK request
 
 ## Set up the Stripe CLI
@@ -168,7 +168,7 @@ Log in and authenticate your Stripe user [account](https://docs.stripe.com/get-s
   stripe login
 ```
 
-Press the **Enter** key on your keyboard to complete the authentication process in your browser.
+Press **Enter** on your keyboard to complete the authentication process in your browser.
 
 ```bash
 Your pairing code is: enjoy-enough-outwit-win
@@ -276,7 +276,7 @@ If you get `gem: command not found`, [download RubyGems](http://rubygems.org/pag
 
 ## Install the Ruby server-side SDK
 
-The latest version of the Stripe Ruby server-side SDK is v16.0.0. It supports Ruby versions 2.3+.
+The latest version of the Stripe Ruby server-side SDK is v18.3.0. It supports Ruby versions 2.3+.
 
 Check your Ruby version:
 
@@ -390,7 +390,7 @@ In this quickstart, you’ll learn:
 
 - How to call Stripe APIs without writing a line of code
 - How to manage third-party dependencies using a virtual environment and the pip package manager
-- How to install the latest Stripe Python SDK v13.0.0
+- How to install the latest Stripe Python SDK v14.3.0
 - How to send your first SDK request
 
 ## Initial setup
@@ -532,7 +532,7 @@ Log in and authenticate your Stripe user [account](https://docs.stripe.com/get-s
   stripe login
 ```
 
-Press the **Enter** key on your keyboard to complete the authentication process in your browser.
+Press **Enter** on your keyboard to complete the authentication process in your browser.
 
 ```bash
 Your pairing code is: enjoy-enough-outwit-win
@@ -648,7 +648,7 @@ source env/bin/activate
 
 ## Install the Python server-side SDK
 
-The latest version of the Stripe Python server-side SDK is v13.0.0. It supports Python versions 3.6+.
+The latest version of the Stripe Python server-side SDK is v14.3.0. It supports Python versions 3.6+.
 
 Check your Python version:
 
@@ -667,7 +667,7 @@ pip3 install --upgrade stripe
 Next, specify the following version in your requirements.txt file:
 
 ```txt
-stripe>=13.0.0
+stripe>=14.3.0
 ```
 
 ### Installation alternatives
@@ -745,7 +745,7 @@ In this quickstart, you’ll learn:
 
 - How to call Stripe APIs without writing a line of code
 - How to manage third-party dependencies using Go modules
-- How to install the latest Stripe Go SDK v83.0.0
+- How to install the latest Stripe Go SDK v84.3.0
 - How to send your first SDK request
 
 ## Initial setup
@@ -887,7 +887,7 @@ Log in and authenticate your Stripe user [account](https://docs.stripe.com/get-s
   stripe login
 ```
 
-Press the **Enter** key on your keyboard to complete the authentication process in your browser.
+Press **Enter** on your keyboard to complete the authentication process in your browser.
 
 ```bash
 Your pairing code is: enjoy-enough-outwit-win
@@ -995,14 +995,14 @@ go mod init stripe-example
 
 ## Install the Go server-side SDK
 
-The latest version of the Stripe Go server-side SDK is v83.0.0. It supports Go versions 1.15+.
+The latest version of the Stripe Go server-side SDK is v84.3.0. It supports Go versions 1.15+.
 
 ### Install the library
 
 Install the library with [Go modules](https://go.dev/blog/using-go-modules), a package manager for Go:
 
 ```bash
-go get github.com/stripe/stripe-go/v83
+go get github.com/stripe/stripe-go/v84
 ```
 
 After you install the library with Go modules to a *new* project, the library is automatically added as a dependency in your project’s go.mod file. For example:
@@ -1012,7 +1012,7 @@ module stripe-example
 
 go 1.18
 
-require github.com/stripe/stripe-go/v83 83.0.0 // indirect
+require github.com/stripe/stripe-go/v84 84.3.0 // indirect
 ```
 
 ### Synchronize dependencies
@@ -1036,9 +1036,9 @@ package main
 
 import (
   "fmt"
-  "github.com/stripe/stripe-go/v83"
-  "github.com/stripe/stripe-go/v83/product"
-  "github.com/stripe/stripe-go/v83/price"
+  "github.com/stripe/stripe-go/v84"
+  "github.com/stripe/stripe-go/v84/product"
+  "github.com/stripe/stripe-go/v84/price"
 )
 
 func main() {
@@ -1103,7 +1103,7 @@ In this quickstart, you’ll learn:
 
 - How to call Stripe APIs without writing a line of code
 - How to manage third-party dependencies using Maven or Gradle
-- How to install the latest Stripe Java SDK v30.0.0
+- How to install the latest Stripe Java SDK v31.3.0
 - How to send your first SDK request
 
 ## Initial setup
@@ -1245,7 +1245,7 @@ Log in and authenticate your Stripe user [account](https://docs.stripe.com/get-s
   stripe login
 ```
 
-Press the **Enter** key on your keyboard to complete the authentication process in your browser.
+Press **Enter** on your keyboard to complete the authentication process in your browser.
 
 ```bash
 Your pairing code is: enjoy-enough-outwit-win
@@ -1348,7 +1348,7 @@ We recommend managing third-party dependencies using [Maven](https://maven.apach
 
 ## Install the Java server-side SDK
 
-The latest version of the Stripe Java server-side SDK is v30.0.0. It supports Java versions 1.8+.
+The latest version of the Stripe Java server-side SDK is v31.3.0. It supports Java versions 1.8+.
 
 Check your Java version:
 
@@ -1364,14 +1364,14 @@ java -version
 <dependency>
   <groupId>com.stripe</groupId>
   <artifactId>stripe-java</artifactId>
-  <version>30.0.0</version>
+  <version>31.3.0</version>
 </dependency>
 ```
 
 - With **Gradle**, paste the next line inside the dependencies block of your build.gradle file:
 
 ```groovy
-implementation 'com.stripe:stripe-java:30.0.0'
+implementation 'com.stripe:stripe-java:31.3.0'
 ```
 
 ### Installation alternatives
@@ -1467,7 +1467,7 @@ In this quickstart, you’ll learn:
 
 - How to call Stripe APIs without writing a line of code
 - How to manage third-party dependencies using the npm or yarn package manager
-- How to install the latest Stripe Node SDK v19.0.0
+- How to install the latest Stripe Node SDK v20.3.0
 - How to send your first SDK request
 
 ## Initial setup
@@ -1609,7 +1609,7 @@ Log in and authenticate your Stripe user [account](https://docs.stripe.com/get-s
   stripe login
 ```
 
-Press the **Enter** key on your keyboard to complete the authentication process in your browser.
+Press **Enter** on your keyboard to complete the authentication process in your browser.
 
 ```bash
 Your pairing code is: enjoy-enough-outwit-win
@@ -1703,7 +1703,7 @@ If everything worked, the command-line displays the following response.
 
 ## Install the Node.js server-side SDK
 
-The latest version of the Stripe Node.js server-side SDK is v19.0.0. It supports Node.js versions 12+.
+The latest version of the Stripe Node.js server-side SDK is v20.3.0. It supports Node.js versions 12+.
 
 Check your Node version:
 
@@ -1742,7 +1742,7 @@ After you install the library with npm, the library is automatically added as a 
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "stripe": "^19.0.0"
+    "stripe": "^20.3.0"
   }
 }
 ```
@@ -1822,7 +1822,7 @@ In this quickstart, you’ll learn:
 
 - How to call Stripe APIs without writing a line of code
 - How to manage third-party dependencies using Composer
-- How to install the latest Stripe PHP SDK v18.0.0
+- How to install the latest Stripe PHP SDK v19.3.0
 - How to send your first SDK request
 
 ## Initial setup
@@ -1964,7 +1964,7 @@ Log in and authenticate your Stripe user [account](https://docs.stripe.com/get-s
   stripe login
 ```
 
-Press the **Enter** key on your keyboard to complete the authentication process in your browser.
+Press **Enter** on your keyboard to complete the authentication process in your browser.
 
 ```bash
 Your pairing code is: enjoy-enough-outwit-win
@@ -2066,7 +2066,7 @@ From the command line, [download Composer](https://getcomposer.org/download/) us
 
 ## Install the PHP server-side SDK
 
-The latest version of the Stripe PHP server-side SDK is v18.0.0. It supports PHP versions 5.6.0+.
+The latest version of the Stripe PHP server-side SDK is v19.3.0. It supports PHP versions 5.6.0+.
 
 Check your PHP version:
 
@@ -2087,7 +2087,7 @@ After you install the library with Composer, it’s automatically added as a dep
 ```json
 {
     "require": {
-        "stripe/stripe-php": "^18.0.0"
+        "stripe/stripe-php": "^19.3.0"
     }
 }
 ```
@@ -2180,7 +2180,7 @@ In this quickstart, you’ll learn:
 
 - How to call Stripe APIs without writing a line of code
 - How to manage third-party dependencies using the .NET Core CLI, NuGet CLI or the Package Manager Console
-- How to install the latest Stripe .NET SDK v49.0.0
+- How to install the latest Stripe .NET SDK v50.3.0
 - How to send your first SDK request
 
 ## Initial setup
@@ -2322,7 +2322,7 @@ Log in and authenticate your Stripe user [account](https://docs.stripe.com/get-s
   stripe login
 ```
 
-Press the **Enter** key on your keyboard to complete the authentication process in your browser.
+Press **Enter** on your keyboard to complete the authentication process in your browser.
 
 ```bash
 Your pairing code is: enjoy-enough-outwit-win
@@ -2416,7 +2416,7 @@ If everything worked, the command-line displays the following response.
 
 ## Install the .NET server-side SDK
 
-The latest version of the Stripe .NET server-side SDK is v49.0.0. It supports .NET Standard 2.0+, .NET Core 2.0+, and .NET Framework 4.6.1+.
+The latest version of the Stripe .NET server-side SDK is v50.3.0. It supports .NET Standard 2.0+, .NET Core 2.0+, and .NET Framework 4.6.1+.
 
 Check your [.NET SDK](https://docs.microsoft.com/en-us/dotnet/core/install/how-to-detect-installed-versions) version:
 
@@ -2451,7 +2451,7 @@ After you install the library with the CLI, the library is automatically added a
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Stripe.net" Version="49.0.0" />
+    <PackageReference Include="Stripe.net" Version="50.3.0" />
   </ItemGroup>
 
 </Project>

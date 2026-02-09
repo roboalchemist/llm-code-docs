@@ -1,5 +1,9 @@
 # Source: https://infisical.com/docs/documentation/platform/admin-panel/server-admin.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://infisical.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Server Admin Console
 
 > Configure and manage server related features

@@ -122,11 +122,7 @@ server.start();
 
 `lazyCompilationMiddleware` accepts one parameter:
 
-* `compiler`: The current [Compiler](/api/javascript-api/compiler.md) instance, use `lazyCompilation` config from it.
-
-:::tip
-Prior to Rspack 1.7, this middleware was only available via `rspack.experiments.lazyCompilationMiddleware`.
-:::
+- `compiler`: The current [Compiler](/api/javascript-api/compiler.md) instance, use `lazyCompilation` config from it.
 
 ## Customizing lazy compilation endpoint
 

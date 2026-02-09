@@ -10,7 +10,9 @@
 
 # Source: https://nextjs.org/docs/app/api-reference/functions/use-report-web-vitals.md
 
-# Source: https://nextjs.org/docs/pages/api-reference/functions/use-report-web-vitals.md
+# Source: https://nextjs.org/docs/app/api-reference/functions/use-report-web-vitals.md
+
+# Source: https://nextjs.org/docs/app/api-reference/functions/use-report-web-vitals.md
 
 # Source: https://nextjs.org/docs/app/api-reference/functions/use-report-web-vitals.md
 
@@ -18,15 +20,18 @@
 
 # Source: https://nextjs.org/docs/app/api-reference/functions/use-report-web-vitals.md
 
-# useReportWebVitals
+# Source: https://nextjs.org/docs/pages/api-reference/functions/use-report-web-vitals.md
+
+# Source: https://nextjs.org/docs/app/api-reference/functions/use-report-web-vitals.md
+
+## useReportWebVitals
 @doc-version: 16.0.4
-
 
 The `useReportWebVitals` hook allows you to report [Core Web Vitals](https://web.dev/vitals/), and can be used in combination with your analytics service.
 
 New functions passed to `useReportWebVitals` are called with the available metrics up to that point. To prevent reporting duplicated data, ensure that the callback function reference does not change (as shown in the code examples below).
 
-```jsx filename="app/_components/web-vitals.js"
+```jsx filename="app/_components/web-vitals.js">
 'use client'
 
 import { useReportWebVitals } from 'next/web-vitals'
@@ -73,8 +78,7 @@ The `metric` object passed as the hook's argument consists of a number of proper
 
 ## Web Vitals
 
-[Web Vitals](https://web.dev/vitals/) are a set of useful metrics that aim to capture the user
-experience of a web page. The following web vitals are all included:
+[Web Vitals](https://web.dev/vitals/) are a set of useful metrics that aim to capture the user experience of a web page. The following web vitals are all included:
 
 * [Time to First Byte](https://developer.mozilla.org/docs/Glossary/Time_to_first_byte) (TTFB)
 * [First Contentful Paint](https://developer.mozilla.org/docs/Glossary/First_contentful_paint) (FCP)
@@ -133,8 +137,7 @@ export function WebVitals() {
 
 ## Sending results to external systems
 
-You can send results to any endpoint to measure and track
-real user performance on your site. For example:
+You can send results to any endpoint to measure and track real user performance on your site. For example:
 
 ```js
 function postWebVitals(metrics) {
@@ -152,9 +155,7 @@ function postWebVitals(metrics) {
 useReportWebVitals(postWebVitals)
 ```
 
-> **Good to know**: If you use [Google Analytics](https://analytics.google.com/analytics/web/), using the
-> `id` value can allow you to construct metric distributions manually (to calculate percentiles,
-> etc.)
+> **Good to know**: If you use [Google Analytics](https://analytics.google.com/analytics/web/), using the `id` value can allow you to construct metric distributions manually (to calculate percentiles, etc.)
 
 > ```js
 > useReportWebVitals(metric => {

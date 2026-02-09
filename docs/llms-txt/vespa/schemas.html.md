@@ -2,14 +2,6 @@
 
 # Source: https://docs.vespa.ai/en/reference/schemas/schemas.html.md
 
-# Source: https://docs.vespa.ai/en/basics/schemas.html.md
-
-# Source: https://docs.vespa.ai/en/reference/schemas/schemas.html.md
-
-# Source: https://docs.vespa.ai/en/basics/schemas.html.md
-
-# Source: https://docs.vespa.ai/en/reference/schemas/schemas.html.md
-
 # Schema reference
 
  
@@ -44,7 +36,7 @@ A schema file is not sensitive to indentation.
 Elements and structure of a schema file:
 
 ```
-[schema](#schema)[document](#document)[struct](#struct)[field](#field)[match](#match)[field](#field) [array\<type\>](#array)[bool](#bool)[byte](#byte)[double](#double)[float](#float)[int](#int)[long](#long)[map\<key-type,value-type\>](#map)[position](#position)[predicate](#predicate)[raw](#raw)[reference\<document-type\>](#reference)[string](#string)[struct-name](#struct-name)[tensor(dimension-1,...,dimension-N)](#tensor)[uri](#uri)[weightedset\<element-type\>](#weightedset)[weightedset](#weightedset-properties)[alias](#alias)[attribute](#attribute)[distance-metric](#distance-metric)[bolding](#bolding)[dictionary](#dictionary)[id](#id)[index](#index)[hnsw](#index-hnsw)[indexing](#indexing)[match](#match)[normalizing](#normalizing)[query-command](#query-command)[rank](#rank)[rank-type](#rank-type)[sorting](#sorting)[stemming](#stemming)[struct-field](#struct-field)[indexing](#indexing)[match](#match)[query-command](#query-command)[struct-field](#struct-field)…[summary](#summary)[summary-to **DEPRECATED**](#summary-to)[summary](#summary)[summary-to **DEPRECATED**](#summary-to)[weight](#weight)[compression](#compression)[index](#index)[field](#field)[fieldset](#fieldset)[rank-profile](#rank-profile)[diversity](#diversity)[attribute](#diversity-attribute)[min-groups](#diversity-min-groups)[match-phase](#match-phase)[attribute](#match-phase-attribute)[order](#match-phase-order)[max-hits](#match-phase-max-hits)[first-phase](#firstphase-rank)[keep-rank-count](#keep-rank-count)[rank-score-drop-limit](#rank-score-drop-limit)[expression](#expression)[second-phase](#secondphase-rank)[expression](#expression)[rank-score-drop-limit](#secondphase-rank-score-drop-limit)[rerank-count](#secondphase-rerank-count)[global-phase](#globalphase-rank)[expression](#expression)[rerank-count](#globalphase-rerank-count)[rank-score-drop-limit](#globalphase-rank-score-drop-limit)[function [name] ](#function-rank)[inputs](#inputs)[constants](#constants)[onnx-model](#onnx-model)[significance](#significance)[rank-properties](#rank-properties)[match-features](#match-features)[mutate](#mutate)[on-match](#on-match)[on-first-phase](#on-first-phase)[on-second-phase](#on-second-phase)[on-summary](#on-summary)[summary-features](#summary-features)[rank-features](#rank-features)[ignore-default-rank-features](#ignore-default-rank-features)[num-threads-per-search](#num-threads-per-search)[num-search-partitions](#num-search-partitions)[min-hits-per-thread](#min-hits-per-thread)[termwise-limit](#termwise-limit)[post-filter-threshold](#post-filter-threshold)[approximate-threshold](#approximate-threshold)[filter-first-threshold](#filter-first-threshold)[filter-first-exploration](#filter-first-exploration)[exploration-slack](#exploration-slack)[target-hits-max-adjustment-factor](#target-hits-max-adjustment-factor)[filter-threshold](#filter-threshold)[rank](#rank)[filter-threshold](#rank-filter-threshold)[element-gap](#rank-element-gap)[rank-type](#rank-type)[weakand](#weakand)[stopword-limit](#weakand-stopword-limit)[adjust-target](#weakand-adjust-target)[allow-drop-all](#weakand-allow-drop-all)[rank-profile (inner)](#rank-profile)[constant](#constant)[onnx-model](#onnx-model)[stemming](#stemming)[document-summary](#document-summary)[summary](#summary)[import field](#import-field)[raw-as-base64-in-summary](#raw-as-base64-in-summary)
+[schema](#schema)[document](#document)[struct](#struct)[field](#field)[match](#match)[field](#field) [array\<type\>](#array)[bool](#bool)[byte](#byte)[double](#double)[float](#float)[int](#int)[long](#long)[map\<key-type,value-type\>](#map)[position](#position)[predicate](#predicate)[raw](#raw)[reference\<document-type\>](#reference)[string](#string)[struct-name](#struct-name)[tensor(dimension-1,...,dimension-N)](#tensor)[uri](#uri)[weightedset\<element-type\>](#weightedset)[weightedset](#weightedset-properties)[alias](#alias)[attribute](#attribute)[distance-metric](#distance-metric)[bolding](#bolding)[dictionary](#dictionary)[id](#id)[index](#index)[hnsw](#index-hnsw)[indexing](#indexing)[linguistics](#linguistics)[match](#match)[normalizing](#normalizing)[query-command](#query-command)[rank](#rank)[rank-type](#rank-type)[sorting](#sorting)[stemming](#stemming)[struct-field](#struct-field)[indexing](#indexing)[match](#match)[query-command](#query-command)[struct-field](#struct-field)…[summary](#summary)[summary-to **DEPRECATED**](#summary-to)[summary](#summary)[summary-to **DEPRECATED**](#summary-to)[weight](#weight)[compression](#compression)[index](#index)[field](#field)[fieldset](#fieldset)[rank-profile](#rank-profile)[diversity](#diversity)[attribute](#diversity-attribute)[min-groups](#diversity-min-groups)[match-phase](#match-phase)[attribute](#match-phase-attribute)[order](#match-phase-order)[max-hits](#match-phase-max-hits)[first-phase](#firstphase-rank)[keep-rank-count](#keep-rank-count)[rank-score-drop-limit](#rank-score-drop-limit)[expression](#expression)[second-phase](#secondphase-rank)[expression](#expression)[rank-score-drop-limit](#secondphase-rank-score-drop-limit)[rerank-count](#secondphase-rerank-count)[global-phase](#globalphase-rank)[expression](#expression)[rerank-count](#globalphase-rerank-count)[rank-score-drop-limit](#globalphase-rank-score-drop-limit)[function [name] ](#function-rank)[inputs](#inputs)[constants](#constants)[onnx-model](#onnx-model)[significance](#significance)[rank-properties](#rank-properties)[match-features](#match-features)[mutate](#mutate)[on-match](#on-match)[on-first-phase](#on-first-phase)[on-second-phase](#on-second-phase)[on-summary](#on-summary)[summary-features](#summary-features)[rank-features](#rank-features)[ignore-default-rank-features](#ignore-default-rank-features)[num-threads-per-search](#num-threads-per-search)[num-search-partitions](#num-search-partitions)[min-hits-per-thread](#min-hits-per-thread)[termwise-limit](#termwise-limit)[post-filter-threshold](#post-filter-threshold)[approximate-threshold](#approximate-threshold)[filter-first-threshold](#filter-first-threshold)[filter-first-exploration](#filter-first-exploration)[exploration-slack](#exploration-slack)[target-hits-max-adjustment-factor](#target-hits-max-adjustment-factor)[filter-threshold](#filter-threshold)[rank](#rank)[filter-threshold](#rank-filter-threshold)[element-gap](#rank-element-gap)[rank-type](#rank-type)[weakand](#weakand)[stopword-limit](#weakand-stopword-limit)[adjust-target](#weakand-adjust-target)[allow-drop-all](#weakand-allow-drop-all)[rank-profile (inner)](#rank-profile)[constant](#constant)[onnx-model](#onnx-model)[stemming](#stemming)[document-summary](#document-summary)[summary](#summary)[import field](#import-field)[raw-as-base64-in-summary](#raw-as-base64-in-summary)
 ```
 
 ## schema
@@ -843,14 +835,14 @@ This parameter has no effect in [streaming search](../../performance/streaming-s
  |
 | approximate-threshold | Zero or one | 
 
-Threshold value (in the range [0.0, 1.0]) deciding if a query with an approximate [nearestNeighbor](../querying/yql.html#nearestneighbor) operator combined with filters is evaluated by searching the [HNSW](schemas.html#index-hnsw) graph for approximate neighbors with filtering, or performing an [exact nearest neighbor search](../../querying/nearest-neighbor-search) with pre-filtering. The fallback to exact search is chosen when the estimated filter hit ratio of the query is _less_ than this threshold. The default value is 0.05. See [Controlling the filtering behavior with approximate nearest neighbor search](https://blog.vespa.ai/constrained-approximate-nearest-neighbor-search/#controlling-the-filtering-behavior-with-approximate-nearest-neighbor-search) for more details.
+Threshold value (in the range [0.0, 1.0]) deciding if a query with an approximate [nearestNeighbor](../querying/yql.html#nearestneighbor) operator combined with filters is evaluated by searching the [HNSW](schemas.html#index-hnsw) graph for approximate neighbors with filtering, or performing an [exact nearest neighbor search](../../querying/nearest-neighbor-search) with pre-filtering. The fallback to exact search is chosen when the estimated filter hit ratio of the query is _less_ than this threshold. The default value is 0.02. See [Controlling the filtering behavior with approximate nearest neighbor search](https://blog.vespa.ai/constrained-approximate-nearest-neighbor-search/#controlling-the-filtering-behavior-with-approximate-nearest-neighbor-search) for more details.
 
 This parameter has no effect in [streaming search](../../performance/streaming-search.html#differences-in-streaming-search).
 
  |
 | filter-first-threshold | Zero or one | 
 
-Threshold value (in the range [0.0, 1.0]) deciding if the filter is checked before computing a distance (_filter-first heuristic_) while searching the [HNSW](schemas.html#index-hnsw) graph for approximate neighbors with filtering. This improves the response time at low hit ratios but causes a dip in recall. The heuristic is used when the estimated filter hit ratio of the query is _less_ than this threshold. The default value is 0.0.
+Threshold value (in the range [0.0, 1.0]) deciding if the filter is checked before computing a distance (_filter-first heuristic_) while searching the [HNSW](schemas.html#index-hnsw) graph for approximate neighbors with filtering. This improves the response time at low hit ratios but causes a dip in recall. The heuristic is used when the estimated filter hit ratio of the query is _less_ than this threshold. The default value is 0.3.
 
 This parameter has no effect in [streaming search](../../performance/streaming-search.html#differences-in-streaming-search).
 
@@ -1447,7 +1439,7 @@ Use the [summary](../api/query.html#presentation.summary) query parameter to cho
 
 ## stemming
 
-Contained in [field](#field),[schema](#schema) or[index](#index). Sets how to stem a field or an index, or how to stem by default. Read more on [stemming](../../linguistics/linguistics.html#stemming).
+Contained in [field](#field),[schema](#schema) or[index](#index). Sets how to stem a field or an index, or how to stem by default. Typically used with [OpenNLP linguistics](../../linguistics/linguistics-opennlp.html). Read more on [stemming](../../linguistics/linguistics-opennlp.html#stemming).
 
 ```
 stemming: [stemming-type]
@@ -1465,7 +1457,7 @@ The stemming types are:
 
 ## normalizing
 
-Contained in [field](#field). Sets [normalizing](../../linguistics/linguistics.html#normalization) to be done on this field. The default is to normalize.
+Contained in [field](#field). Sets [normalizing](../../linguistics/linguistics-opennlp.html#normalization) to be done on this field. The default is to normalize.
 
 ```
 normalizing: [normalizing-type]
@@ -1556,7 +1548,7 @@ Marks the attribute as a special mutable attribute that can be updated by a [mut
 
 An attribute is [multivalued](../../querying/searching-multivalue-fields)if assigning it multiple values during indexing, by using a multivalued field type like array or map, or by using e.g. [split](../writing/indexing-language.html#split) /[for\_each](../writing/indexing-language.html#for_each)or by letting multiple fields write their value to the attribute field.
 
-Note that [normalizing](#normalizing) and[tokenization](../../linguistics/linguistics.html#tokenization)is not supported for attribute fields.
+Note that [normalizing](#normalizing) and[tokenization](../../linguistics/linguistics-opennlp.html#tokenization)is not supported for attribute fields.
 
 Queries in attribute fields are not normalized, nor stemmed. Use [index](#index) on fields to enable. Both _index_ and _attribute_ can be set on a field.
 
@@ -1738,7 +1730,7 @@ An ID must satisfy these requirements:
 
 Contained in [field](#field) or [schema](#schema). Sets index parameters.
 
-Content in [string](#string)-fields with _index_ is [normalized](#normalizing) and [tokenized](../../linguistics/linguistics.html#tokenization) by default. The field can be single- or multivalued (e.g. `array<string>`).
+Content in [string](#string)-fields with _index_ is [normalized](#normalizing) and [tokenized](../../linguistics/linguistics-opennlp.html#tokenization) by default. The field can be single- or multivalued (e.g. `array<string>`).
 
 For [tensor](#tensor)-typed fields, _index_ creates an [HNSW](#index-hnsw) index for [Approximate Nearest Neighbor](../../querying/nearest-neighbor-search-guide) queries, with a default [euclidean](#euclidean) distance metric. The index is built after a [content node restart](#changes-that-require-restart-but-not-re-feed) (automated on Vespa Cloud).
 
@@ -1860,6 +1852,25 @@ When combining both `index` and `attribute` in the indexing statement for a fiel
 
 Find examples and more details in the [Text Matching](../../querying/text-matching.html) guide.
 
+## linguistics
+
+Sets a linguistics 'profile' deciding how content and searches against this field should be linguistically processed. The profile value is propagated to the [linguistics component](../../linguistics/linguistics.html)which can be configured to do profile-specific processing.
+
+```
+linguistics {
+    profile: myIndexAndSearchProfile
+}
+```
+or
+```
+linguistics {
+    profile {
+        index: myIndexProfile
+        search: mySearchProfile
+    }
+}
+```
+
 ## match
 
 Contained in [field](#field), [fieldset](#fieldset) or[struct-field](#struct-field). Sets the matching method to use for this field to something other than the default token matching.
@@ -1876,7 +1887,7 @@ match {
 }
 ```
 
-Whether the match type is `text`, `word` or `exact`, all term matching will be done after [normalization](../../linguistics/linguistics.html#normalization)and locale-independent lowercasing (in that order).
+Whether the match type is `text`, `word` or `exact`, all term matching will be done after [normalization](../../linguistics/linguistics-opennlp.html#normalization)and locale-independent lowercasing (in that order).
 
 Find examples and more details in the [Text Matching](../../querying/text-matching.html) guide. Also see search using [regular expressions](../querying/yql.html#matches).
 
@@ -1884,7 +1895,7 @@ Find examples and more details in the [Text Matching](../../querying/text-matchi
 | --- | --- | --- |
 | text | index | 
 
-The default for string fields with `index`. Can not be combined with exact matching. The field is matched per [token](../../linguistics/linguistics.html#tokenization).
+The default for string fields with `index`. Can not be combined with exact matching. The field is matched per [token](../../linguistics/linguistics-opennlp.html#tokenization).
 
  |
 | exact | index, attribute | 
@@ -1956,7 +1967,7 @@ Use case-insensitive matching (the default).
  |
 | cased | index, attribute | 
 
-Use case-sensitive matching. Usually only used together with `match: exact` or `match: word` modes. When using `match: text`, note that if you are using a custom [linguistics implementation](../../linguistics/linguistics.html#creating-a-custom-linguistics-implementation), this will only have effect for string index fields if that implementation produces cased tokens.
+Use case-sensitive matching. Usually only used together with `match: exact` or `match: word` modes. When using `match: text`, note that if you are using a custom [linguistics implementation](../../linguistics/linguistics-custom.html), this will only have effect for string index fields if that implementation produces cased tokens.
 
  |
 | max-length | index | 
@@ -1982,7 +1993,7 @@ Configure the max length of tokens that will be indexed for the field. Longer to
 
 This field is matched using n-grams. For example, with the default gram size 2, the string "hi blue" is tokenized to "hi bl lu ue" both in the index and in queries to the index.
 
-N-gram matching is useful mainly as an alternative to [segmentation](../../linguistics/linguistics.html#tokenization) in CJK languages. Typically, it results in increased recall and lower precision. However, as Vespa usually uses proximity in ranking, the precision offset may not be of much importance. Grams consume more resources than other matching methods because both indexes and queries will have more terms, and the terms contain repetition of the same letters. On the other hand, CPU-intensive CJK segmentation is avoided.
+N-gram matching is useful mainly as an alternative to [segmentation](../../linguistics/linguistics-opennlp.html#tokenization) in CJK languages. Typically, it results in increased recall and lower precision. However, as Vespa usually uses proximity in ranking, the precision offset may not be of much importance. Grams consume more resources than other matching methods because both indexes and queries will have more terms, and the terms contain repetition of the same letters. On the other hand, CPU-intensive CJK segmentation is avoided.
 
 It may also be used for substring matching in general.
 
@@ -2567,7 +2578,7 @@ Re-feed document type 'test' in cluster 'mycluster' because:
     1) Document type 'test': Field 'f1' changed: data type: 'string' -> 'int'
 ```
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ### On this page:
 
@@ -2622,6 +2633,7 @@ Re-feed document type 'test' in cluster 'mycluster' because:
 - [index](#index)
 - [hnsw](#index-hnsw)
 - [indexing](#indexing)
+- [linguistics](#linguistics)
 - [match](#match)
 - [rank](#rank)
 - [filter-threshold](#rank-filter-threshold)

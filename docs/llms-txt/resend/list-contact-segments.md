@@ -1,5 +1,9 @@
 # Source: https://resend.com/docs/api-reference/contacts/list-contact-segments.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://resend.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # List Contact Segments
 
 > Retrieve a list of segments that a contact is part of.
@@ -105,7 +109,7 @@ Either `id` or `email` must be provided.
 <QueryParams type="segments" isRequired={false} />
 
 <RequestExample>
-  ```ts Node.js theme={null}
+  ```ts Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
   import { Resend } from 'resend';
 
   const resend = new Resend('re_xxxxxxxxx');
@@ -115,7 +119,7 @@ Either `id` or `email` must be provided.
   });
   ```
 
-  ```php PHP theme={null}
+  ```php PHP theme={"theme":{"light":"github-light","dark":"vesper"}}
   $resend = Resend::client('re_xxxxxxxxx');
 
   $resend->contacts->segments->list(
@@ -123,7 +127,7 @@ Either `id` or `email` must be provided.
   );
   ```
 
-  ```python Python theme={null}
+  ```python Python theme={"theme":{"light":"github-light","dark":"vesper"}}
   import resend
 
   resend.api_key = 're_xxxxxxxxx'
@@ -135,7 +139,7 @@ Either `id` or `email` must be provided.
   segments = resend.Contacts.Segments.list(params)
   ```
 
-  ```ruby Ruby theme={null}
+  ```ruby Ruby theme={"theme":{"light":"github-light","dark":"vesper"}}
   require 'resend'
 
   Resend.api_key = 're_xxxxxxxxx'
@@ -145,35 +149,27 @@ Either `id` or `email` must be provided.
   )
   ```
 
-  ```go Go theme={null}
+  ```go Go theme={"theme":{"light":"github-light","dark":"vesper"}}
   package main
 
   import (
   	"context"
-  	"fmt"
 
   	"github.com/resend/resend-go/v3"
   )
 
   func main() {
-  	ctx := context.TODO()
-  	apiKey := "re_xxxxxxxxx"
-
-  	client := resend.NewClient(apiKey)
+  	client := resend.NewClient("re_xxxxxxxxx")
 
   	listParams := &resend.ListContactSegmentsRequest{
-  		ContactId: "e169aa45-1ecf-4183-9955-b1499d5701d3",
+  		ContactId: "479e3145-dd38-476b-932c-529ceb705947",
   	}
 
-  	segments, err := client.Contacts.Segments.ListWithContext(ctx, listParams)
-  	if err != nil {
-  		panic(err)
-  	}
-  	fmt.Println(segments)
+  	client.Contacts.Segments.List(listParams)
   }
   ```
 
-  ```rust Rust theme={null}
+  ```rust Rust theme={"theme":{"light":"github-light","dark":"vesper"}}
   use resend_rs::{Resend, Result, list_opts::ListOptions};
 
   #[tokio::main]
@@ -192,7 +188,7 @@ Either `id` or `email` must be provided.
   }
   ```
 
-  ```java Java theme={null}
+  ```java Java theme={"theme":{"light":"github-light","dark":"vesper"}}
   import com.resend.*;
 
   public class Main {
@@ -204,7 +200,7 @@ Either `id` or `email` must be provided.
   }
   ```
 
-  ```csharp .NET theme={null}
+  ```csharp .NET theme={"theme":{"light":"github-light","dark":"vesper"}}
   using Resend;
 
   IResend resend = ResendClient.Create( "re_xxxxxxxxx" ); // Or from DI
@@ -213,14 +209,14 @@ Either `id` or `email` must be provided.
   Console.WriteLine( "Nr Segments={0}", resp.Content.Data.Count );
   ```
 
-  ```bash cURL theme={null}
+  ```bash cURL theme={"theme":{"light":"github-light","dark":"vesper"}}
   curl -X GET 'https://api.resend.com/contacts/e169aa45-1ecf-4183-9955-b1499d5701d3/segments' \
        -H 'Authorization: Bearer re_xxxxxxxxx'
   ```
 </RequestExample>
 
 <ResponseExample>
-  ```json Response theme={null}
+  ```json Response theme={"theme":{"light":"github-light","dark":"vesper"}}
   {
     "object": "list",
     "data": [

@@ -1,5 +1,9 @@
 # Source: https://upstash.com/docs/vector/api/get-started.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Getting Started
 
 If you do not have a vector database already, follow [these steps](/vector/overall/getstarted) to create one.

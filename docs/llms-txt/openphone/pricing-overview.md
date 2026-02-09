@@ -1,5 +1,9 @@
 # Source: https://www.quo.com/docs/mdx/pricing-support/pricing-overview.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.quo.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # API Pricing overview
 
 > Welcome to Quo's simple and transparent API pricing structure.
@@ -29,25 +33,48 @@ Our pricing is based on message segments, making it easy to calculate costs:
 
 ## Understanding message segments
 
-A message segment is our basic billing unit. Learn more below:
+A **segment** is the basic unit we use to calculate SMS billing. Every message you send is divided into one or more segments based on two factors:
 
-<AccordionGroup>
-  <Accordion title="Segment length">
-    Each segment can contain up to 160 standard characters (letters, numbers, spaces, basic punctuation)
-  </Accordion>
+1. **Message length** (character count)
+2. **Character type** (standard or special characters)
 
-  <Accordion title="Special characters">
-    Messages with special characters (é, ñ, emoji) have a 70 character limit per segment
-  </Accordion>
+## How character types affect segment size
 
-  <Accordion title="Long messages">
-    Messages longer than one segment are automatically split and billed as multiple segments
-  </Accordion>
+### Standard GSM characters
 
-  <Accordion title="Segment calculator">
-    Use our recommended [Segment Calculator](https://twiliodeved.github.io/message-segment-calculator/) to estimate message costs
-  </Accordion>
-</AccordionGroup>
+Messages using only standard GSM-7 characters fit **up to 160 characters per segment**.
+
+Standard characters include:
+
+* Letters (A-Z, a-z)
+* Numbers (0-9)
+* Spaces
+* Basic punctuation (. , ! ? - etc.)
+
+### Special/Non-GSM characters
+
+<Info>
+  **If your message contains even one special character, the entire message is billed at the 70-character limit** — not just the portion with special characters. This often results in more segments and higher costs than you might expect.
+</Info>
+
+Messages containing **any** special characters fit only **up to 70 characters per segment**.
+
+Special characters include:
+
+* Accented letters (é, ñ, ü)
+* Curly/smart quotes (" " ' ')
+* Emojis (😊, 🚀, ✨)
+* Many international characters
+
+## Tools and optimization
+
+### Segment calculator
+
+Use our [Segment Calculator](https://twiliodeved.github.io/message-segment-calculator/) tool to estimate costs before sending messages. This helps you optimize your message length and content to avoid unexpected charges.
+
+### Smart encoding
+
+The Quo API automatically enables **smart encoding** to minimize segment usage and reduce costs wherever possible. This feature works behind the scenes to choose the most efficient encoding for your messages.
 
 ## API message types
 
@@ -95,4 +122,6 @@ We use a credit-based system for all API messaging charges:
 
 ### Support & assistance
 
-<Info>Need help understanding our pricing or managing your costs? Our team is here to help. Email us at [support+developers@quo.com](mailto:support+developers@quo.com) with any questions. </Info>
+<Info>
+  Need help understanding our pricing or managing your costs? Our team is here to help. Email us at [support+developers@quo.com](mailto:support+developers@quo.com) with any questions.
+</Info>

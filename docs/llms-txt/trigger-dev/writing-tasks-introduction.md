@@ -1,5 +1,9 @@
 # Source: https://trigger.dev/docs/writing-tasks-introduction.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://trigger.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Writing tasks: Overview
 
 > Tasks are the core of Trigger.dev. They are long-running processes that are triggered by events.

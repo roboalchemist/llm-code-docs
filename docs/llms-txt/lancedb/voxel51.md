@@ -1,5 +1,9 @@
 # Source: https://docs.lancedb.com/integrations/data/voxel51.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.lancedb.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Voxel51
 
 export const PyPlatformsVoxel51SortBySimilarity = "# Step 4: Query your data\nquery = dataset.first().id  # query by sample ID\nview = dataset.sort_by_similarity(\n    query,\n    brain_key=\"lancedb_index\",\n    k=10,  # limit to 10 most similar samples\n)\n";
@@ -218,8 +222,3 @@ There are two ways to specify/customize the parameters:
 </CodeBlock>
 
 For a much more in depth walkthrough of the integration, visit the LanceDB x Voxel51 [docs page](https://docs.voxel51.com/integrations/lancedb.html).
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.lancedb.com/llms.txt

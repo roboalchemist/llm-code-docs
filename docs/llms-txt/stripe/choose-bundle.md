@@ -4,7 +4,7 @@
 
 Set up a standard or custom physical bundle.
 
-Stripe helps you set up your physical bundle, which consists of a card, a carrier (the letter sent to cardholders on which the card is affixed), and an envelope. You have different options for both the standard and custom bundles. For [bulk orders](https://docs.stripe.com/issuing/cards/physical/bulk-issuance.md) of multiple cards shipped to a single destination, we don’t include carriers.
+Stripe helps you set up your physical bundle, which consists of a card, a carrier (the letter sent to cardholders on which the card is affixed), and an envelope. You have different options for both the standard and custom bundles. For [bulk orders](https://docs.stripe.com/issuing/cards/physical/ship-cards.md#bulk-issuance) of multiple cards shipped to a single destination, we don’t include carriers.
 
 ## Standard bundle options 
 

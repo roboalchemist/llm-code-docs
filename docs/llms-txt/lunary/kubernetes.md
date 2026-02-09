@@ -1,5 +1,9 @@
 # Source: https://docs.lunary.ai/docs/more/self-hosting/kubernetes.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.lunary.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Kubernetes
 
 Lunary was designed to be surprisingly simple to self-host, through a Helm Chart which includes the frontend, the API, and workers.<br />
@@ -106,8 +110,3 @@ Lunary was designed to be surprisingly simple to self-host, through a Helm Chart
     You can now set up an ingress controller to expose the services.
   </Step>
 </Steps>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.lunary.ai/llms.txt

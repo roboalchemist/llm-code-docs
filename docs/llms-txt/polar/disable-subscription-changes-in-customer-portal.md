@@ -1,5 +1,9 @@
 # Source: https://polar.sh/docs/guides/disable-subscription-changes-in-customer-portal.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://polar.sh/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # How to disable subscription upgrades/downgrades in customer portal
 
 > Learn how to disable the option for customers to upgrade or downgrade subscription plans from the customer portal.

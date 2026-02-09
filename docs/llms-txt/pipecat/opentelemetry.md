@@ -1,5 +1,9 @@
 # Source: https://docs.pipecat.ai/server/utilities/opentelemetry.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pipecat.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # OpenTelemetry Tracing
 
 > Monitor and analyze your Pipecat conversational pipelines using OpenTelemetry
@@ -171,6 +175,14 @@ Many cloud providers offer OpenTelemetry-compatible observability services:
 * **Datadog APM**
 
 Check the OpenTelemetry documentation for specific exporter configurations: [OpenTelemetry Vendors](https://opentelemetry.io/ecosystem/vendors/)
+
+### OpenInference
+
+Arize-ai provides OpenInference instrumentation, compatible with OpenTelemetry.
+
+* [openinference-instrumentation-pipecat](https://github.com/Arize-ai/openinference/tree/main/python/instrumentation/openinference-instrumentation-pipecat)
+
+See [Observability community integrations](https://docs.pipecat.ai/server/services/community-integrations#observability) for more details.
 
 ## Span Attributes
 
@@ -382,7 +394,6 @@ pipeline = Pipeline([
 task = PipelineTask(
     pipeline,
     params=PipelineParams(
-        allow_interruptions=True,
         enable_metrics=True,
         enable_usage_metrics=True,
     ),
@@ -413,8 +424,3 @@ If you're having issues with tracing:
 * [OpenTelemetry Tracing Specification](https://opentelemetry.io/docs/reference/specification/trace/api/)
 * [Jaeger Documentation](https://www.jaegertracing.io/docs/latest/)
 * [Langfuse OpenTelemetry Documentation](https://langfuse.com/docs/opentelemetry/get-started)
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.pipecat.ai/llms.txt

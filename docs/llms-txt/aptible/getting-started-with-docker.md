@@ -1,5 +1,9 @@
 # Source: https://www.aptible.com/docs/how-to-guides/app-guides/getting-started-with-docker.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.aptible.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Getting Started with Docker
 
 On Aptible, we offer two application deployment strategies - [Dockerfile Deploy](/how-to-guides/app-guides/deploy-from-git) and [Direct Docker Image Deploy](/how-to-guides/app-guides/migrate-dockerfile-to-direct-image-deploy). You’ll notice that both options involve Docker, a popular container runtime platform. Aptible uses Docker to help deploy your applications in containers, allowing you to easily scale, manage, and deploy applications in isolation. In this guide, we’ll review the basics of using Docker to deploy on Aptible. 

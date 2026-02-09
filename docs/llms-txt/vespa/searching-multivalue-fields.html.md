@@ -16,7 +16,7 @@ When building a search application we need to think about:
 There is a lot of text matching options we should think about when designing and mapping our document model to a Vespa document schema:
 
 - For string fields we should think about using text style matching or database-style exact matching.
-- For string fields there are also several[linguistic processing](../linguistics/linguistics.html) options like [tokenization](../linguistics/linguistics.html#tokenization), normalization and language dependent [stemming](../linguistics/linguistics.html#stemming).
+- For string fields there are also several[linguistic processing](../linguistics/linguistics.html) options like [tokenization](../linguistics/linguistics-opennlp.html#tokenization), normalization and language dependent [stemming](../linguistics/linguistics-opennlp.html#stemming).
 - String fields which shares the same [match](../reference/schemas/schemas.html#match) and linguistic processing settings can be combined using [fieldsets](../reference/schemas/schemas.html#fieldset).
 
 At query time, we can take the user query and translate it into a valid Vespa query request which implements our matching and retrieval strategy over the designed document schema.
@@ -31,7 +31,15 @@ In the following sections we explore matching and ranking over multivalued strin
 
 **Prerequisites:**
 
-- Linux, macOS or Windows 10 Pro on x86\_64 or arm64, with Podman or [Docker](https://docs.docker.com/engine/install/) installed. See [Docker Containers](/en/operations/self-managed/docker-containers.html) for system limits and other settings. For CPUs older than Haswell (2013), see [CPU Support](/en/cpu-support.html)
+- Linux, macOS or Windows 10 Pro on x86\_64 or arm64, with [Podman Desktop](https://podman.io/) or [Docker Desktop](https://www.docker.com/products/docker-desktop/) installed, with an engine running. 
+  - Alternatively, start the Podman daemon:
+```
+$ podman machine init --memory 6000
+$ podman machine start
+```
+  - See [Docker Containers](/en/operations/self-managed/docker-containers.html) for system limits and other settings.
+
+- For CPUs older than Haswell (2013), see [CPU Support](/en/cpu-support.html).
 - Memory: Minimum 4 GB RAM dedicated to Docker/Podman. [Memory recommendations](/en/operations/self-managed/node-setup.html#memory-settings). 
 - Disk: Avoid `NO_SPACE` - the vespaengine/vespa container image + headroom for data requires disk space. [Read more](/en/writing/feed-block.html). 
 - [Homebrew](https://brew.sh/) to install the [Vespa CLI](/en/clients/vespa-cli.html), or download the Vespa CLI from [Github releases](https://github.com/vespa-engine/vespa/releases). 
@@ -563,7 +571,7 @@ That concludes the matching and ranking experiments. To shut down the container:
 $ docker rm -f vespa
 ```
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ### On this page:
 

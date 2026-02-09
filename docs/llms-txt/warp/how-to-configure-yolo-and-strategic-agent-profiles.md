@@ -10,8 +10,7 @@ This tutorial explains how **Agent Profiles** in Warp influence behavior, autono
 
 {% stepper %}
 {% step %}
-
-### Define the Project
+**Define the Project**
 
 I want to create an app that scrapes **NFL data** from the past decade, processes stats like team scores and player performance, and predicts future wins.
 
@@ -54,8 +53,7 @@ Print a summary table (by season: games, players, weeks) at the end.
 {% endstep %}
 
 {% step %}
-
-### Configure the Strategic Agent
+**Configure the Strategic Agent**
 
 **Base Model:** GPT‑5 (for reasoning)\
 **Planning Model:** Claude 4 Opus (for detailed breakdowns)
@@ -79,8 +77,7 @@ Behavior:
   {% endstep %}
 
 {% step %}
-
-### Configure the YOLO Agent
+**Configure the YOLO Agent**
 
 **Permissions:**
 
@@ -102,9 +99,7 @@ Behavior:
   {% endstep %}
 
 {% step %}
-
-### Compare Outcomes
-
+**Compare Outcomes**
 {% endstep %}
 {% endstepper %}
 

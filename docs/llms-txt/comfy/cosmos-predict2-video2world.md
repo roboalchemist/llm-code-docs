@@ -1,5 +1,9 @@
 # Source: https://docs.comfy.org/tutorials/video/cosmos/cosmos-predict2-video2world.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.comfy.org/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Cosmos Predict2 Video2World  ComfyUI Official Example
 
 > This guide demonstrates how to complete Cosmos-Predict2 Video2World workflows in ComfyUI

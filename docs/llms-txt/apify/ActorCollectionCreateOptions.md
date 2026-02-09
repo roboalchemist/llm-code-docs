@@ -22,7 +22,7 @@
 
 ## Properties<!-- -->[**](#Properties)
 
-### [**](#actorStandby)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/actor_collection.ts#L85)optionalactorStandby
+### [**](#actorStandby)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/actor_collection.ts#L127)optionalactorStandby
 
 **actorStandby?
 
@@ -30,7 +30,7 @@
 
 : [ActorStandby](https://docs.apify.com/api/client/js/api/client/js/reference/interface/ActorStandby.md) & { isEnabled: boolean }
 
-### [**](#categories)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/actor_collection.ts#L72)optionalcategories
+### [**](#categories)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/actor_collection.ts#L114)optionalcategories
 
 **categories?
 
@@ -38,7 +38,7 @@
 
 : string\[]
 
-### [**](#defaultRunOptions)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/actor_collection.ts#L73)optionaldefaultRunOptions
+### [**](#defaultRunOptions)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/actor_collection.ts#L115)optionaldefaultRunOptions
 
 **defaultRunOptions?
 
@@ -46,7 +46,7 @@
 
 : [ActorDefaultRunOptions](https://docs.apify.com/api/client/js/api/client/js/reference/interface/ActorDefaultRunOptions.md)
 
-### [**](#description)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/actor_collection.ts#L74)optionaldescription
+### [**](#description)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/actor_collection.ts#L116)optionaldescription
 
 **description?
 
@@ -54,7 +54,7 @@
 
 : string
 
-### [**](#exampleRunInput)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/actor_collection.ts#L75)optionalexampleRunInput
+### [**](#exampleRunInput)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/actor_collection.ts#L117)optionalexampleRunInput
 
 **exampleRunInput?
 
@@ -62,7 +62,7 @@
 
 : [ActorExampleRunInput](https://docs.apify.com/api/client/js/api/client/js/reference/interface/ActorExampleRunInput.md)
 
-### [**](#isDeprecated)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/actor_collection.ts#L76)optionalisDeprecated
+### [**](#isDeprecated)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/actor_collection.ts#L118)optionalisDeprecated
 
 **isDeprecated?
 
@@ -70,7 +70,7 @@
 
 : boolean
 
-### [**](#isPublic)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/actor_collection.ts#L77)optionalisPublic
+### [**](#isPublic)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/actor_collection.ts#L119)optionalisPublic
 
 **isPublic?
 
@@ -78,7 +78,7 @@
 
 : boolean
 
-### [**](#name)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/actor_collection.ts#L78)optionalname
+### [**](#name)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/actor_collection.ts#L120)optionalname
 
 **name?
 
@@ -86,7 +86,7 @@
 
 : string
 
-### [**](#restartOnError)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/actor_collection.ts#L80)optionalrestartOnError
+### [**](#restartOnError)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/actor_collection.ts#L122)optionalrestartOnError
 
 **restartOnError?
 
@@ -98,7 +98,7 @@
 
   Use defaultRunOptions.restartOnError instead
 
-### [**](#seoDescription)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/actor_collection.ts#L82)optionalseoDescription
+### [**](#seoDescription)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/actor_collection.ts#L124)optionalseoDescription
 
 **seoDescription?
 
@@ -106,7 +106,7 @@
 
 : string
 
-### [**](#seoTitle)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/actor_collection.ts#L81)optionalseoTitle
+### [**](#seoTitle)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/actor_collection.ts#L123)optionalseoTitle
 
 **seoTitle?
 
@@ -114,7 +114,7 @@
 
 : string
 
-### [**](#title)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/actor_collection.ts#L83)optionaltitle
+### [**](#title)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/actor_collection.ts#L125)optionaltitle
 
 **title?
 
@@ -122,7 +122,7 @@
 
 : string
 
-### [**](#versions)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/actor_collection.ts#L84)optionalversions
+### [**](#versions)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/actor_collection.ts#L126)optionalversions
 
 **versions?
 

@@ -2,13 +2,13 @@
 
 # Use Apify via API from PHP
 
-Apify's https://docs.apify.com/api/v2# allows you to use the platform from basically anywhere. Many projects are and will continue to be built using https://www.php.net/. This tutorial enables you to use Apify in these projects in PHP and frameworks built on it.
+Apify's [RESTful API](https://docs.apify.com/api/v2#) allows you to use the platform from basically anywhere. Many projects are and will continue to be built using [PHP](https://www.php.net/). This tutorial enables you to use Apify in these projects in PHP and frameworks built on it.
 
-Apify does not have an official PHP client (yet), so we are going to use https://github.com/guzzle/guzzle, a great library for HTTP requests. By covering a few fundamental endpoints, this tutorial will show you the principles you can use for all Apify API endpoints.
+Apify does not have an official PHP client (yet), so we are going to use [guzzle](https://github.com/guzzle/guzzle), a great library for HTTP requests. By covering a few fundamental endpoints, this tutorial will show you the principles you can use for all Apify API endpoints.
 
 ## Before you start
 
-Make sure you have an Apify account and API token. You will find the token in the https://console.apify.com/account#/integrations section in Apify Console.
+Make sure you have an Apify account and API token. You will find the token in the [Integrations](https://console.apify.com/account#/integrations) section in Apify Console.
 
 If you don't already have guzzle installed in your project (or just want to try out the code examples), run `composer require guzzlehttp/guzzle` to install it in the current directory.
 
@@ -32,7 +32,7 @@ $client = new \GuzzleHttp\Client([
 
 Note that we pass the API token in the header. It can also be passed as a query string `token` parameter, but passing it in the header is preferred and more secure.
 
-To check whether everything works well, we'll try to get information about the https://docs.apify.com/api/v2/users-me-get.md.
+To check whether everything works well, we'll try to get information about the [current user](https://docs.apify.com/api/v2/users-me-get.md).
 
 
 ```
@@ -52,9 +52,9 @@ If, instead of data, you see an error saying `Authentication token is not valid`
 
 ## Running an Actor
 
-Now that we have our guzzle client ready to go, we can run some Actors. Let's try the **Contact Details Scraper** (https://apify.com/vdrmota/contact-info-scraper).
+Now that we have our guzzle client ready to go, we can run some Actors. Let's try the **Contact Details Scraper** ([vdrmota/contact-info-scraper](https://apify.com/vdrmota/contact-info-scraper)).
 
-The https://docs.apify.com/api/v2/act-runs-post.md states that an Actor's input should be passed as JSON in the request body. Other options are passed as query parameters.
+The [API reference](https://docs.apify.com/api/v2/act-runs-post.md) states that an Actor's input should be passed as JSON in the request body. Other options are passed as query parameters.
 
 
 ```
@@ -83,11 +83,11 @@ echo \json_encode($data, JSON_PRETTY_PRINT);
 ```
 
 
-You should see information about the run, including its ID and the ID of its default https://docs.apify.com/platform/storage/dataset.md. Take note of these, we will need them later.
+You should see information about the run, including its ID and the ID of its default [dataset](https://docs.apify.com/platform/storage/dataset.md). Take note of these, we will need them later.
 
 ## Getting the results from dataset
 
-Actors usually store their output in a default dataset. The https://docs.apify.com/api/v2/actor-runs.md lets you get overall info about an Actor run's default dataset.
+Actors usually store their output in a default dataset. The [Actor runs endpoint](https://docs.apify.com/api/v2/actor-runs.md) lets you get overall info about an Actor run's default dataset.
 
 
 ```
@@ -131,11 +131,11 @@ echo \json_encode($parsedResponse, JSON_PRETTY_PRINT);
 ```
 
 
-All the available parameters are described in https://docs.apify.com/api/v2/dataset-items-get.md and work both for all datasets.
+All the available parameters are described in [our API reference](https://docs.apify.com/api/v2/dataset-items-get.md) and work both for all datasets.
 
 ## Getting the results from key-value stores
 
-Datasets are great for structured data, but are not suited for binary files like images or PDFs. In these cases, Actors store their output in https://docs.apify.com/platform/storage/key-value-store.md. One such Actor is the **HTML String To PDF** (https://apify.com/mhamas/html-string-to-pdf) converter. Let's run it.
+Datasets are great for structured data, but are not suited for binary files like images or PDFs. In these cases, Actors store their output in [key-value stores](https://docs.apify.com/platform/storage/key-value-store.md). One such Actor is the **HTML String To PDF** ([mhamas/html-string-to-pdf](https://apify.com/mhamas/html-string-to-pdf)) converter. Let's run it.
 
 
 ```
@@ -192,7 +192,7 @@ file_put_contents(__DIR__ . '/hello-world.pdf', $response->getBody());
 
 If you open the generated `hello-world.pdf` file, you should see... well, "Hello World".
 
-If the Actor stored the data in a key-value store other than the default, we can use the standalone endpoints, `key-value-stores/<STORE_ID>`, `key-value-stores/<STORE_ID>/keys`, and `key-value-stores/<STORE_ID>/records/<KEY>`. They behave the same way as the default endpoints. https://docs.apify.com/api/v2/storage-key-value-stores.md.
+If the Actor stored the data in a key-value store other than the default, we can use the standalone endpoints, `key-value-stores/<STORE_ID>`, `key-value-stores/<STORE_ID>/keys`, and `key-value-stores/<STORE_ID>/records/<KEY>`. They behave the same way as the default endpoints. [See the full docs](https://docs.apify.com/api/v2/storage-key-value-stores.md).
 
 ## When are the data ready
 
@@ -222,7 +222,7 @@ file_put_contents(__DIR__ . '/hi-world.pdf', $response->getBody());
 
 ## Webhooks
 
-For Actors that take longer to run, we can use https://docs.apify.com/platform/integrations/webhooks.md. A webhook is an HTML POST request that is sent to a specified URL when an Actor's status changes. We can use them as a kind of notification that is sent when your run finishes. You can set them up using query parameters. If we used webhooks in the example above, it would look like this:
+For Actors that take longer to run, we can use [webhooks](https://docs.apify.com/platform/integrations/webhooks.md). A webhook is an HTML POST request that is sent to a specified URL when an Actor's status changes. We can use them as a kind of notification that is sent when your run finishes. You can set them up using query parameters. If we used webhooks in the example above, it would look like this:
 
 
 ```
@@ -249,7 +249,7 @@ $response = $client->post('acts/mhamas~html-string-to-pdf/runs', [
 
 ## How to use Apify Proxy
 
-Let's use another important feature: https://docs.apify.com/platform/proxy.md. If you want to make sure that your server's IP address won't get blocked somewhere when making requests, you can use the automatic proxy selection mode.
+Let's use another important feature: [proxy](https://docs.apify.com/platform/proxy.md). If you want to make sure that your server's IP address won't get blocked somewhere when making requests, you can use the automatic proxy selection mode.
 
 
 ```
@@ -284,8 +284,8 @@ echo $response->getBody();
 ```
 
 
-https://docs.apify.com/platform/proxy/usage.md for more details on using specific proxies.
+[See the proxy docs](https://docs.apify.com/platform/proxy/usage.md) for more details on using specific proxies.
 
 ## Feedback
 
-Are you interested in an Apify PHP client or other PHP-related content? Do you have some feedback on this tutorial? https://apify.typeform.com/to/KqhmiJge#source=tutorial_use_apify_from_php!
+Are you interested in an Apify PHP client or other PHP-related content? Do you have some feedback on this tutorial? [Let us know](https://apify.typeform.com/to/KqhmiJge#source=tutorial_use_apify_from_php)!

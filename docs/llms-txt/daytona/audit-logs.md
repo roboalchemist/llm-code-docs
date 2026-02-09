@@ -14,7 +14,7 @@ Contact your organization admin if you cannot access audit logs.
 
 ## Real-Time Updates
 
-Enable the **Real-Time Updates** toggle in the top-right corner of the Audit Logs page to automatically refresh logs as new events occur.
+Enable the **Auto Refresh** toggle in the top-right corner of the Audit Logs page to automatically refresh logs as new events occur.
 
 ## Log Structure
 
@@ -50,7 +50,7 @@ Below is the complete list of actions logged by Daytona:
 
 ```text
 create, read, update, delete, login,
-set_default, update_access, update_quota,
+set_default, update_access, update_quota, update_region_quota,
 suspend, unsuspend, accept, decline,
 link_account, unlink_account, leave_organization,
 regenerate_key_pair, update_scheduling,
@@ -62,6 +62,7 @@ update_network_settings, get_webhook_app_portal_access,
 send_webhook_message, initialize_webhooks,
 update_sandbox_default_limited_network_egress,
 create_ssh_access, revoke_ssh_access,
+regenerate_proxy_api_key,regenerate_ssh_gateway_api_key,regenerate_snapshot_manager_credentials,
 toolbox_delete_file, toolbox_download_file, toolbox_create_folder,
 toolbox_move_file, toolbox_set_file_permissions, toolbox_replace_in_files,
 toolbox_upload_file, toolbox_bulk_upload_files,

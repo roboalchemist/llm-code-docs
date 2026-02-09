@@ -3,7 +3,6 @@
 ---
 url: /docs/guide/usage/linter/rules/eslint/prefer-object-spread.md
 ---
-# eslint/prefer-object-spread&#x20;
 
 ### What it does
 

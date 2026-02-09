@@ -1,5 +1,9 @@
 # Source: https://docs.promptlayer.com/reference/log-request.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.promptlayer.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Log Request
 
 Log a request to the system. This is useful for logging requests from custom LLM providers.
@@ -37,6 +41,72 @@ When logging requests that use structured outputs (JSON schemas), include the sc
 For complete examples with OpenAI, Anthropic, Google Gemini, and detailed implementation guidance, see:
 
 **[Logging Structured Outputs Guide →](/features/prompt-history/structured-output-logging)**
+
+## Using Extended Thinking / Reasoning
+
+When logging requests that use extended thinking (Anthropic), thinking mode (Google), or reasoning (OpenAI), the configuration must be passed inside the `parameters` field using provider-specific formats:
+
+| Provider  | Parameter          | Example                                                                    |
+| --------- | ------------------ | -------------------------------------------------------------------------- |
+| Anthropic | `thinking`         | `{"thinking": {"type": "enabled", "budget_tokens": 10000}}`                |
+| Google    | `thinking_config`  | `{"thinking_config": {"include_thoughts": true, "thinking_budget": 8000}}` |
+| OpenAI    | `reasoning_effort` | `{"reasoning_effort": "high"}`                                             |
+
+For complete examples with thinking content blocks and full code samples, see:
+
+**[Logging Extended Thinking Guide →](/features/prompt-history/custom-logging#logging-extended-thinking-and-reasoning)**
+
+## Error Tracking
+
+You can log failed or problematic requests using the `status`, `error_type`, and `error_message` fields. This is useful for monitoring error rates, debugging issues, and tracking provider reliability.
+
+### Example: Logging a Failed Request
+
+```json  theme={null}
+{
+  "provider": "openai",
+  "model": "gpt-4",
+  "api_type": "chat-completions",
+  "input": {
+    "type": "chat",
+    "messages": [{"role": "user", "content": "Hello"}]
+  },
+  "output": {
+    "type": "chat",
+    "messages": []
+  },
+  "request_start_time": "2024-01-15T10:30:00Z",
+  "request_end_time": "2024-01-15T10:30:30Z",
+  "status": "ERROR",
+  "error_type": "PROVIDER_TIMEOUT",
+  "error_message": "Request timed out after 30 seconds"
+}
+```
+
+### Example: Logging a Warning
+
+Use `WARNING` status for requests that succeeded but had issues (e.g., retries, degraded responses):
+
+```json  theme={null}
+{
+  "provider": "anthropic",
+  "model": "claude-3-sonnet",
+  "api_type": "chat-completions",
+  "input": {
+    "type": "chat",
+    "messages": [{"role": "user", "content": "Summarize this"}]
+  },
+  "output": {
+    "type": "chat",
+    "messages": [{"role": "assistant", "content": "Summary..."}]
+  },
+  "request_start_time": "2024-01-15T10:30:00Z",
+  "request_end_time": "2024-01-15T10:30:05Z",
+  "status": "WARNING",
+  "error_type": "PROVIDER_RATE_LIMIT",
+  "error_message": "Succeeded after 2 retries due to rate limiting"
+}
+```
 
 ## Related Documentation
 
@@ -216,6 +286,81 @@ components:
             - type: 'null'
           default: null
           title: Api Type
+        status:
+          type: string
+          enum:
+            - SUCCESS
+            - WARNING
+            - ERROR
+          default: SUCCESS
+          title: Status
+          description: >-
+            Request status.
+
+
+            | Value | Description |
+
+            |-------|-------------|
+
+            | `SUCCESS` | Request completed successfully (default) |
+
+            | `WARNING` | Request succeeded but had issues (e.g., retries,
+            degraded response) |
+
+            | `ERROR` | Request failed |
+        error_type:
+          anyOf:
+            - type: string
+              enum:
+                - PROVIDER_TIMEOUT
+                - PROVIDER_QUOTA_LIMIT
+                - PROVIDER_RATE_LIMIT
+                - PROVIDER_AUTH_ERROR
+                - PROVIDER_ERROR
+                - TEMPLATE_RENDER_ERROR
+                - VARIABLE_MISSING_OR_EMPTY
+                - UNKNOWN_ERROR
+            - type: 'null'
+          default: null
+          title: Error Type
+          description: >-
+            Categorized error type.
+
+
+            | Value | Description | Allowed Statuses |
+
+            |-------|-------------|------------------|
+
+            | `PROVIDER_RATE_LIMIT` | Rate limit hit on provider API | WARNING,
+            ERROR |
+
+            | `PROVIDER_QUOTA_LIMIT` | Account quota or spending limit exceeded
+            | WARNING, ERROR |
+
+            | `VARIABLE_MISSING_OR_EMPTY` | Required template variable was
+            missing or empty | WARNING |
+
+            | `PROVIDER_TIMEOUT` | Request timed out | ERROR |
+
+            | `PROVIDER_AUTH_ERROR` | Authentication failed with provider |
+            ERROR |
+
+            | `PROVIDER_ERROR` | General provider-side error | ERROR |
+
+            | `TEMPLATE_RENDER_ERROR` | Failed to render prompt template | ERROR
+            |
+
+            | `UNKNOWN_ERROR` | Uncategorized error | WARNING, ERROR |
+        error_message:
+          anyOf:
+            - type: string
+              maxLength: 1024
+            - type: 'null'
+          default: null
+          title: Error Message
+          description: >-
+            Detailed error message describing what went wrong. Maximum 1024
+            characters.
       required:
         - provider
         - model
@@ -232,6 +377,26 @@ components:
           title: Id
         prompt_version:
           $ref: '#/components/schemas/PromptVersion'
+        status:
+          type: string
+          enum:
+            - SUCCESS
+            - WARNING
+            - ERROR
+          title: Status
+          description: Request status indicating success, warning, or error.
+        error_type:
+          anyOf:
+            - type: string
+            - type: 'null'
+          title: Error Type
+          description: Categorized error type if status is WARNING or ERROR.
+        error_message:
+          anyOf:
+            - type: string
+            - type: 'null'
+          title: Error Message
+          description: Detailed error message if status is WARNING or ERROR.
       required:
         - id
         - prompt_version
@@ -976,7 +1141,3 @@ components:
         - name
 
 ````
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.promptlayer.com/llms.txt

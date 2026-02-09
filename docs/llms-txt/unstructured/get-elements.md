@@ -2,19 +2,33 @@
 
 # Source: https://docs.unstructured.io/api-reference/legacy-api/partition/get-elements.md
 
-# Source: https://docs.unstructured.io/open-source/how-to/get-elements.md
-
-# Source: https://docs.unstructured.io/api-reference/legacy-api/partition/get-elements.md
-
-# Source: https://docs.unstructured.io/open-source/how-to/get-elements.md
-
-# Source: https://docs.unstructured.io/api-reference/partition/get-elements.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.unstructured.io/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Get element contents
 
+<Note>
+  The following information applies to the legacy Unstructured Partition Endpoint.
+
+  Unstructured recommends that you use the
+  [on-demand jobs](/api-reference/workflow/overview#run-an-on-demand-job) functionality in the
+  [Unstructured API](/api-reference/overview) instead. Unstructured's on-demand jobs provide
+  many benefits over the legacy Unstructured Partition Endpoint, including support for:
+
+  * Production-level usage.
+  * Multiple local input files in batches.
+  * The latest and highest-performing models.
+  * Post-transform enrichments.
+  * All of Unstructured's chunking strategies.
+  * The generation of vector embeddings.
+
+  The Unstructured API also provides support for processing files and data in remote locations.
+</Note>
+
 ## Task
 
-You want to get, manipulate, and print or save, the contents of the [document elements and metadata](/api-reference/partition/document-elements) from the processed data that Unstructured returns.
+You want to get, manipulate, and print or save, the contents of the [document elements and metadata](/api-reference/legacy-api/partition/document-elements) from the processed data that Unstructured returns.
 
 ## Approach
 
@@ -24,7 +38,7 @@ The programmatic approach you take to get these document elements will depend on
 
 <AccordionGroup>
   <Accordion title="Python SDK">
-    For the [Unstructured Python SDK](/api-reference/partition/sdk-python), calling an `UnstructuredClient` object's `general.partition_async` method returns a `PartitionResponse` object.
+    For the [Unstructured Python SDK](/api-reference/legacy-api/partition/sdk-python), calling an `UnstructuredClient` object's `general.partition_async` method returns a `PartitionResponse` object.
 
     This `PartitionResponse` object's `elements` variable contains a list of key-value dictionaries (`List[Dict[str, Any]]`). For example:
 
@@ -89,7 +103,7 @@ The programmatic approach you take to get these document elements will depend on
   </Accordion>
 
   <Accordion title="JavaScript/TypeScript SDK">
-    For the [Unstructured JavaScript/TypeScript SDK](/api-reference/partition/sdk-jsts), calling an `UnstructuredClient` object's `general.partition` method returns a `Promise<PartitionResponse>` object.
+    For the [Unstructured JavaScript/TypeScript SDK](/api-reference/legacy-api/partition/sdk-jsts), calling an `UnstructuredClient` object's `general.partition` method returns a `Promise<PartitionResponse>` object.
 
     This `PartitionResponse` object's `elements` property contains an `Array` of string-value objects (`{ [k: string]: any; }[]`). For example:
 

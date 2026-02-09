@@ -8,17 +8,15 @@
 
 The PageHero component wraps your content in a [Container](/docs/components/container) while maintaining full-width flexibility making it easy to add background colors, images or patterns. It provides a flexible way to display content with an illustration in the default slot.
 
-<code-preview>
-<u-page-hero description="A Nuxt/Vue-integrated UI library providing a rich set of fully-styled, accessible and highly customizable components for building modern web applications." title="Ultimate Vue UI library">
-<u-page-card className="rounded-lg" variant="subtle">
-<template unwrap="p" v-slot:default="">
-
-![App screenshot](/blocks/image4.png)
-
+```vue
+<template>
+  <u-page-hero description=A Nuxt/Vue-integrated UI library providing a rich set of fully-styled, accessible and highly customizable components for building modern web applications. title=Ultimate Vue UI library>
+  <u-page-card variant=subtle>
+  <template unwrap=p v-slot:default=>
+  <p>
+  <img alt=App screenshot src=/blocks/image4.png /></p></template></u-page-card></u-page-hero>
 </template>
-</u-page-card>
-</u-page-hero>
-</code-preview>
+```
 
 ### Title
 
@@ -55,6 +53,10 @@ Use the `headline` prop to set the headline of the hero.
 Use the `links` prop to display a list of [Button](/docs/components/button) under the description.
 
 ```vue
+<script setup lang="ts">
+import type { ButtonProps } from '@nuxt/ui'
+</script>
+
 <template>
   <UPageHero title="Ultimate Vue UI library" description="A Nuxt/Vue-integrated UI library providing a rich set of fully-styled, accessible and highly customizable components for building modern web applications." />
 </template>
@@ -65,6 +67,10 @@ Use the `links` prop to display a list of [Button](/docs/components/button) unde
 Use the `orientation` prop to change the orientation with the default slot. Defaults to `vertical`.
 
 ```vue
+<script setup lang="ts">
+import type { ButtonProps } from '@nuxt/ui'
+</script>
+
 <template>
   <UPageHero title="Ultimate Vue UI library" description="A Nuxt/Vue-integrated UI library providing a rich set of fully-styled, accessible and highly customizable components for building modern web applications." headline="New release" orientation="horizontal">
     <img src="/blocks/image4.png" alt="App screenshot" class="rounded-lg shadow-2xl ring ring-default" />
@@ -77,6 +83,10 @@ Use the `orientation` prop to change the orientation with the default slot. Defa
 Use the `reverse` prop to reverse the orientation of the default slot.
 
 ```vue
+<script setup lang="ts">
+import type { ButtonProps } from '@nuxt/ui'
+</script>
+
 <template>
   <UPageHero title="Ultimate Vue UI library" description="A Nuxt/Vue-integrated UI library providing a rich set of fully-styled, accessible and highly customizable components for building modern web applications." headline="New release" orientation="horizontal" reverse>
     <img src="/blocks/image4.png" alt="App screenshot" class="rounded-lg shadow-2xl ring ring-default" />
@@ -193,8 +203,4 @@ export default defineAppConfig({
 
 ## Changelog
 
-<component-changelog>
-
-
-
-</component-changelog>
+See the [releases page](https://github.com/nuxt/ui/releases) for the latest changes.

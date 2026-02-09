@@ -1,5 +1,9 @@
 # Source: https://docs.pinecone.io/guides/get-started/database-architecture.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pinecone.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Architecture
 
 > Learn how Pinecone's architecture enables fast, relevant vector search at any scale.

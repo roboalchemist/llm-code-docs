@@ -6,31 +6,13 @@
 
 # Source: https://docs.windsurf.com/autocomplete/overview.md
 
-# Source: https://docs.windsurf.com/tab/overview.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.windsurf.com/llms.txt
+> Use this file to discover all available pages before exploring further.
 
-# Source: https://docs.windsurf.com/context-awareness/overview.md
+# Autocomplete Overview
 
-# Source: https://docs.windsurf.com/chat/overview.md
-
-# Source: https://docs.windsurf.com/autocomplete/overview.md
-
-# Source: https://docs.windsurf.com/tab/overview.md
-
-# Source: https://docs.windsurf.com/context-awareness/overview.md
-
-# Source: https://docs.windsurf.com/chat/overview.md
-
-# Source: https://docs.windsurf.com/autocomplete/overview.md
-
-# Source: https://docs.windsurf.com/tab/overview.md
-
-# Source: https://docs.windsurf.com/context-awareness/overview.md
-
-# Source: https://docs.windsurf.com/chat/overview.md
-
-# Source: https://docs.windsurf.com/autocomplete/overview.md
-
-# Overview
+> AI-powered code autocomplete with single-line and multi-line suggestions, keyboard shortcuts, and customizable speed settings.
 
 **Windsurf Autocomplete** is powered by our own models, trained in-house from scratch to optimize for speed and accuracy.
 

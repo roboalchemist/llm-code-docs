@@ -27,13 +27,13 @@ When applicable, you can specify one or more of the following:
 * **Preconditions**: What must be true before running.
 * **Do not use when**: Explicit exclusions to avoid false triggers.
 
-<img src="https://chatling-assets.b-cdn.net/action-when-to-use-field.jpg" width="450" alt="When to use option" />
+<img alt="When to use option" />
 
 ### `Frequency`
 
 Specify how often the Agent can invoke this action to avoid overusing it, e.g `Once per chat` or `Whenever applicable`.
 
-<img src="https://chatling-assets.b-cdn.net/action-frequency-field.jpg" width="450" alt="Frequency option" />
+<img alt="Frequency option" />
 
 ### `Buttons`
 
@@ -44,7 +44,7 @@ Add the buttons that you want to display in the chat. Buttons can be of two type
 
 To reorder the buttons, click the drag handle next to a button and move it up or down.
 
-<img src="https://chatling-assets.b-cdn.net/button-action-buttons-field.jpg" width="450" alt="Buttons option" />
+<img alt="Buttons option" />
 
 
 # Cal.com Booking Widget
@@ -54,7 +54,7 @@ Source: https://docs.chatling.ai/ai-agent/actions/cal-booking
 
 The Cal.com Booking Widget action embeds your Cal.com scheduler directly inside the chat, so users can view real-time availability and book without leaving the conversation.
 
-<img src="https://chatling-assets.b-cdn.net/cal-com-action-ai-agent.jpg" width="350" alt="Cal.com Booking Widget action" />
+<img alt="Cal.com Booking Widget action" />
 
 ## Configuration
 
@@ -72,13 +72,13 @@ When applicable, you can specify one or more of the following:
 * **Preconditions**: What must be true before running.
 * **Do not use when**: Explicit exclusions to avoid false triggers.
 
-<img src="https://chatling-assets.b-cdn.net/action-when-to-use-field.jpg" width="450" alt="When to use option" />
+<img alt="When to use option" />
 
 ### `Frequency`
 
 Specify how often the Agent can invoke this action to avoid overusing it, e.g `Once per chat` or `Whenever applicable`.
 
-<img src="https://chatling-assets.b-cdn.net/action-frequency-field.jpg" width="450" alt="Frequency option" />
+<img alt="Frequency option" />
 
 ### `Widget`
 
@@ -190,7 +190,7 @@ Collect qualified leads right inside the conversation. The Lead Form action lets
 
 Any contacts saved by the AI agent will be displayed in the `Contacts` page in your dashboard.
 
-<img src="https://chatling-assets.b-cdn.net/lead-form-chat-widget.jpg" width="300" alt="Lead form in chat widget" />
+<img alt="Lead form in chat widget" />
 
 ## Configuration
 
@@ -202,23 +202,23 @@ Determines whether the form submission is mandatory. When enabled, the user will
 
 If the option is disabled, an "X" button will be displayed in the form to allow the user to dismiss the form.
 
-<img src="https://chatling-assets.b-cdn.net/lead-form-dismiss-button.png" width="300" alt="Lead form dismiss button" />
+<img alt="Lead form dismiss button" />
 
 ### `Fields`
 
 Add and configure the fields you want to include in the form. You can add multiple fields and specify whether they must be required.
 
-<img src="https://chatling-assets.b-cdn.net/lead-form-action-field-configuration.jpg" width="400" alt="Add and configure fields" />
+<img alt="Add and configure fields" />
 
 To reorder, grab the drag handle on the left of a field and move it up or down.
 
-<img src="https://chatling-assets.b-cdn.net/lead-form-action-reorder-field.jpg" width="400" alt="Reorder field" />
+<img alt="Reorder field" />
 
 ### `When to Use`
 
 A detailed description of when the AI agent should use this action.
 
-<img src="https://chatling-assets.b-cdn.net/lead-form-action-when-to-use-option.jpg" width="400" alt="When to Use option" />
+<img alt="When to Use option" />
 
 ### `Customize Text`
 
@@ -234,7 +234,7 @@ Source: https://docs.chatling.ai/ai-agent/actions/send-email
 
 The Send Email action allows the AI Agent to send emails to one or more recipients. You can use it to send notifications, follow ups, order confirmations, transactional emails and other types of emails.
 
-<img src="https://chatling-assets.b-cdn.net/send-email-action-sample-chat.jpg" width="350" alt="Send Email action preview" />
+<img alt="Send Email action preview" />
 
 ## Configuration
 
@@ -252,13 +252,13 @@ When applicable, you can specify one or more of the following:
 * **Preconditions**: What must be true before running.
 * **Do not use when**: Explicit exclusions to avoid false triggers.
 
-<img src="https://chatling-assets.b-cdn.net/action-when-to-use-field.jpg" width="450" alt="When to use option" />
+<img alt="When to use option" />
 
 ### `Frequency`
 
 Specify how often the Agent can invoke this action to avoid overusing it, e.g `Once per chat` or `Whenever applicable`.
 
-<img src="https://chatling-assets.b-cdn.net/action-frequency-field.jpg" width="450" alt="Frequency option" />
+<img alt="Frequency option" />
 
 ### `Input parameters`
 
@@ -291,7 +291,7 @@ In this tutorial, you'll build a simple but real-world flow that (1) fetches ord
 
 By the end, your agent will automatically collect the user's email and order number, call your API to verify and fetch the order, and deliver a personalized confirmation email.
 
-<img src="https://chatling-assets.b-cdn.net/send-email-action-sample-chat.jpg" width="350" alt="Send Email action preview" />
+<img alt="Send Email action preview" />
 
 ## Setup Guide
 
@@ -312,17 +312,17 @@ By the end, your agent will automatically collect the user's email and order num
 * `email`: The email address of the order. Save it to a variable, such as "email".
 * `order_number`: The user's order number. Save it to a variable, such as "order\_number".
 
-<img src="https://chatling-assets.b-cdn.net/tutorial-1-http-request-input-parameters.jpg" width="600" alt="input parameters" />
+<img alt="input parameters" />
 
 **Request**: Configure the request by defining the API URL, method, payload, and headers that will be used to fetch the user's order.
 
 For this tutorial, we'll use a dummy API that returns an order. However, in a real app, you'd point the HTTP Request to your own or third-party API, include auth (e.g., Bearer token), and the relevant payload such as the user's email and order number.
 
-<img src="https://chatling-assets.b-cdn.net/tutorial-1-http-request-configuration.jpg" width="450" alt="HTTP Request configuration" />
+<img alt="HTTP Request configuration" />
 
 4. Click the `Test Request` button to verify that the request runs successfully and that the agent receives a valid JSON response.
 
-<img src="https://chatling-assets.b-cdn.net/tutorial-1-test-http-request.jpg" width="450" alt="test http request" />
+<img alt="test http request" />
 
 5. Click `Create action` to save the action.
 6. Go back to the `Actions` page.
@@ -347,7 +347,7 @@ For this tutorial, we'll use a dummy API that returns an order. However, in a re
   * Description: The details of the order that you retrieve from the get\_order action. Format it as HTML with bullet points.
   * Save to variable: order\_details
 
-<img src="https://chatling-assets.b-cdn.net/tutorial-1-send-email-input-parameters.jpg" width="600" alt="input parameters" />
+<img alt="input parameters" />
 
 **Email Setup**: configure the email as follows:
 
@@ -364,7 +364,7 @@ As requested, here is your confirmation for order #​{{order_number}}​:
 ​{{order_details}}​
 ```
 
-<img src="https://chatling-assets.b-cdn.net/tutorial-1-email-setup.jpg" width="600" alt="email setup" />
+<img alt="email setup" />
 
 9. Click the `Create action` button to save the action.
 
@@ -378,7 +378,7 @@ Go to the `Playground` page to start a chat with your agent. Ask the agent to em
 
 Here's an example of how the agent would respond:
 
-<img src="https://chatling-assets.b-cdn.net/send-email-action-sample-chat.jpg" width="350" alt="Send Email action preview" />
+<img alt="Send Email action preview" />
 
 
 # AI settings
@@ -388,7 +388,7 @@ Source: https://docs.chatling.ai/ai-agent/ai-settings
 
 To configure the agent's AI settings, click the `Settings` button in the sidebar and select `AI`.
 
-<img src="https://chatling-assets.b-cdn.net/access-agent-ai-settings.jpg" width="450" alt="Agent AI settings" />
+<img alt="Agent AI settings" />
 
 ## Available settings
 
@@ -446,15 +446,15 @@ What we'll be covering:
 
 1. Go to your account and open the "My agents" page. Click the `+ Create` or `New` button.
 
-<img src="https://chatling-assets.b-cdn.net/create-ai-agent-1.jpg" />
+<img />
 
 2. Select `AI Agent` as the type.
 
-<img src="https://chatling-assets.b-cdn.net/create-ai-agent-2.jpg" />
+<img />
 
 3. Enter a name for your Agent and click `Create agent`.
 
-<img src="https://chatling-assets.b-cdn.net/enter-ai-agent-name.jpg" />
+<img />
 
 ## 2. Configure the AI settings
 
@@ -462,11 +462,11 @@ Once your Agent is created, it's time to configure it's AI settings.
 
 1. From your agent's dashboard, click `Settings` in the sidebar.
 
-<img src="https://chatling-assets.b-cdn.net/open-ai-agent-settings.jpg" />
+<img />
 
 2. Select the `AI` menu.
 
-<img src="https://chatling-assets.b-cdn.net/open-ai-settings-for-agent.jpg" />
+<img />
 
 3. Here you can configure the AI settings, such as:
 
@@ -474,7 +474,7 @@ Once your Agent is created, it's time to configure it's AI settings.
 * **Temperature**: Controls randomness of the agent's responses. A lower temperature will make the outputs more focused and deterministic, whereas a higher temperature will make the responses diverse and creative.
 * **Instructions**: Define the agent's role, goals, guardrails, and style (often called the "system prompt"). There are templates available to help you get started. Click the `Browse templates` button to see the available templates.
 
-<img src="https://chatling-assets.b-cdn.net/configure-ai-settings-for-agent.jpg" />
+<img />
 
 ## 3. Populate the knowledge base
 
@@ -484,11 +484,11 @@ You can add several types of data to the knowledge base, such as websites, docum
 
 When a user asks a question, the Agent queries the knowledge base for relevant information and generates a response based on the data it finds.
 
-<img src="https://chatling-assets.b-cdn.net/knowledge-base.jpg" />
+<img />
 
 To add data to the knowledge base, click the `+ Add data source` button, then select the type of data you want to add.
 
-<img src="https://chatling-assets.b-cdn.net/knowledge-base-data-source-types.jpg" />
+<img />
 
 ## 4. Create AI actions
 
@@ -512,11 +512,11 @@ To open the Playground, click `Playground` from the sidebar menu.
 
 You can tweak core settings—like AI model, enabled actions, temperature, and instructions—then chat with the Agent to see exactly how those changes affect behavior.
 
-<img src="https://chatling-assets.b-cdn.net/open-playground-sidebar.jpg" width="400" alt="Open Playground" />
+<img alt="Open Playground" />
 
 You can also run side-by-side comparisons of up to 5 instances of your Agent, each with different settings, to quickly identify the configuration that performs best.
 
-<img src="https://chatling-assets.b-cdn.net/agent-playground.jpg" width="600" alt="AI Agent Playground" />
+<img alt="AI Agent Playground" />
 
 ## 6. Deploy your Agent
 
@@ -524,7 +524,7 @@ Once you've built your AI Agent, it's time to deploy it to your website, WhatsAp
 
 Click `Deploy` from the sidebar menu. Select the channel you want to deploy your Agent to and follow the on-screen instructions.
 
-<img src="https://chatling-assets.b-cdn.net/deploy-ai-agent.jpg" width="500" alt="Deploy AI Agent" />
+<img alt="Deploy AI Agent" />
 
 
 # AI Agent
@@ -571,25 +571,65 @@ The Playground is your sandbox to experiment with your AI agent in real time. Yo
 
 You can also run side-by-side comparisons of up to 5 instances of your agent, each with different settings, to quickly identify the configuration that performs best.
 
-<img src="https://chatling-assets.b-cdn.net/agent-playground.jpg" width="600" alt="AI Agent Playground" />
+<img alt="AI Agent Playground" />
 
 ## How to compare multiple variations of your agent?
 
 To test with different variations of your agent, click the `Compare` button in the top right corner of the playground. A new instance of your agent will be created with default settings.
 
-<img src="https://chatling-assets.b-cdn.net/compare-agents.jpg" width="600" alt="Compare different variations of your agent" />
+<img alt="Compare different variations of your agent" />
 
 You can then tweak the settings of the new instance and chat with it to see how it performs.
 
-<img src="https://chatling-assets.b-cdn.net/playground-compare-multiple-agents.jpg" width="600" alt="Compare multiple variations of your agent" />
+<img alt="Compare multiple variations of your agent" />
 
 All inputs to agents are synced between the instances, so you can see how the agent behaves with different settings. If you want to disable this, you can toggle the `Sync` button above one of the agents.
 
-<img src="https://chatling-assets.b-cdn.net/playground-sync-agents.jpg" width="600" alt="Sync agents" />
+<img alt="Sync agents" />
 
 To remove an agent, click the `X` button above it.
 
-<img src="https://chatling-assets.b-cdn.net/remove-agent-instance-playground.jpg" width="600" alt="Remove an agent instance" />
+<img alt="Remove an agent instance" />
+
+
+# Adding Quick Replies to AI Agents
+Source: https://docs.chatling.ai/ai-agent/quick-replies
+
+
+
+Quick replies are buttons displayed above the input field that allow users to ask common questions without typing.
+
+<img alt="Quick Replies demo" />
+
+<Note>This guide is for adding quick replies to AI Agents. For AI Chatbots, refer to [this guide](/chatbot/builder/block-options/quick-replies)</Note>
+
+## How to add quick replies to your AI Agent
+
+1. Go to the `Deploy` page of your AI agent.
+
+<img alt="Open Deploy page" />
+
+2. Under the `Website Widget` option, click the brush icon to open the widget editor.
+
+<img alt="Open website widget customization" />
+
+3. Click `Texts` from the sidebar and go to the `Quick Replies` section.
+
+<img alt="Quick replies configuration" />
+
+4. Click the `Add` button to add a new quick reply. Each quick reply will have a label and a message. The label will be displayed on the button and the message will be sent when the user clicks on the button.
+
+<Note>Label is optional, but recommended to keep the button short and descriptive.</Note>
+
+<img alt="Add and configure a quick reply" />
+
+5. You can also add translations for the quick replies, which will be displayed automatically based on the user's language.
+
+6. The `Auto-hide quick replies` option allows you to automatically hide the quick replies after a certain number of messages are sent by the user. This is useful to prevent the quick replies from being displayed at all times.
+
+<img alt="Auto-hide settings for quick replies" />
+
+7. Once you are done, click the `Save` button to save the changes.
 
 
 # AI credits
@@ -634,10 +674,10 @@ The number of credits consumed per response varies based on the AI model you use
 3. Click the `Usage` tab.
 4. The usage will be displayed under the `Monthly usage` section.
 
-<img src="https://chatling-assets.b-cdn.net/ai-credits-usage-page.jpg" alt="AI credits usage page" width="500" />
+<img alt="AI credits usage page" />
 
 
-# Fixing incorrect AI answers
+# Fix incorrect AI answers
 Source: https://docs.chatling.ai/ai/fix-incorrect-answers
 
 Learn how to fix incorrect AI responses using the fine-tuning feature in Chatling.
@@ -652,17 +692,17 @@ When you're viewing a conversation, you'll see a "Fine-tune this answer" button 
 
 1. From the chatbot dashboard, click on the "Conversations" menu.
 
-<img src="https://chatling-assets.b-cdn.net/open-chatbot-conversations.jpg" alt="Open conversations page from chatbot dashboard" width="350" />
+<img alt="Open conversations page from chatbot dashboard" />
 
 2. Find and open a conversation where the AI has responded incorrectly.
 
 3. Click the `Fine-tune this answer` button below the AI response you want to fix.
 
-<img src="https://chatling-assets.b-cdn.net/click-finetune-answer-button.jpg" alt="Click the fine-tune answer button" width="350" />
+<img alt="Click the fine-tune answer button" />
 
 4. A dialog will appear where you can edit the AI's answer or replace it with a correct one.
 
-<img src="https://chatling-assets.b-cdn.net/enter-correct-response-for-finetuning.jpg" alt="Click finetune button" width="350" />
+<img alt="Click finetune button" />
 
 5. Once done, click the `Finetune` button. The new answer will be added to the FAQ sources in the knowledge base and will be queued for processing.
 
@@ -711,39 +751,39 @@ Chat with the AI using the knowledge base as the response source.
 
 ### Path
 
-<ParamField path="chatbotId" type="string" required>
+<ParamField type="string">
   The chatbot ID.
 </ParamField>
 
 ### Body
 
-<ParamField body="message" type="string" required>
+<ParamField type="string">
   The message to send to the AI.
 </ParamField>
 
-<ParamField body="ai_model_id" type="integer" required>
+<ParamField type="integer">
   The ID of the AI model to use for the response. To get a list of available AI models, use the [List AI models](./list-ai-models) endpoint.
 </ParamField>
 
-<ParamField body="conversation_id" type="string">
+<ParamField type="string">
   The ID of the conversation. This allows the AI to remember the context of the conversation.
 
   If left blank, a new conversation will be created.
 </ParamField>
 
-<ParamField body="contact_id" type="string">
+<ParamField type="string">
   The ID of the contact to associate with the conversation.
 </ParamField>
 
-<ParamField body="language_id" type="integer" default="1">
+<ParamField type="integer">
   The ID of the language to use for the AI response. To get a list of available languages, use the [List languages](./list-ai-languages) endpoint.
 </ParamField>
 
-<ParamField body="temperature" type="float" default="0">
+<ParamField type="float">
   The temperature to be used by the AI. The temperature controls the randomness of the response. A lower temperature value, such as 0, will make the outputs more focused and deterministic, whereas a higher temperature, such as 1, will make the responses more diverse and unpredictable.
 </ParamField>
 
-<ParamField body="instructions" type="array">
+<ParamField type="array">
   List of [instructions](/chatbot/ai/instructions) to tailor the AI's response. It can be used to provide additional context to the AI, such as the desired tone or style of the response.
 
   Must be an array of strings.
@@ -818,13 +858,13 @@ Get a list of all the supported AI languages.
 
 ### Path
 
-<ParamField path="chatbotId" type="string" required>
+<ParamField type="string">
   The chatbot ID.
 </ParamField>
 
 ### Query
 
-<ParamField query="page" type="integer" default="1">
+<ParamField type="integer">
   The page number for pagination.
 </ParamField>
 
@@ -954,13 +994,13 @@ Get a list of all the supported AI models.
 
 ### Path
 
-<ParamField path="chatbotId" type="string" required>
+<ParamField type="string">
   The chatbot ID.
 </ParamField>
 
 ### Query
 
-<ParamField query="page" type="integer" default="1">
+<ParamField type="integer">
   The page number for pagination.
 </ParamField>
 
@@ -1101,11 +1141,11 @@ Create a new chatbot using a template or from scratch.
 
 ### Body
 
-<ParamField body="name" type="string" required>
+<ParamField type="string">
   The chatbot name.
 </ParamField>
 
-<ParamField body="template_id" type="integer">
+<ParamField type="integer">
   The ID of the chatbot template to use. You can get the list of available templates using the [List chatbot templates](./list-chatbot-templates) endpoint.
 
   Leave blank to create a chatbot from scratch.
@@ -1142,7 +1182,7 @@ Create a new chatbot using a template or from scratch.
 </ResponseField>
 
 <ResponseExample>
-  ```json  theme={null}
+  ```json theme={null}
   {
       "status": "success",
       "data": {
@@ -1166,7 +1206,7 @@ POST /chatbots/{chatbotId}/duplicate
 
 ### Path
 
-<ParamField path="chatbotId" type="string" required>
+<ParamField type="string">
   The chatbot ID.
 </ParamField>
 
@@ -1185,7 +1225,7 @@ POST /chatbots/{chatbotId}/duplicate
 </ResponseField>
 
 <ResponseExample>
-  ```json  theme={null}
+  ```json theme={null}
   {
       "status": "success",
       "data": {
@@ -1206,7 +1246,7 @@ Get a list of all the available chatbot templates. Can be used to create a new c
 
 ### Query
 
-<ParamField query="page" type="integer" default="1">
+<ParamField type="integer">
   The page number for pagination.
 </ParamField>
 
@@ -1253,7 +1293,7 @@ Get a list of all the available chatbot templates. Can be used to create a new c
 </ResponseField>
 
 <ResponseExample>
-  ```json  theme={null}
+  ```json theme={null}
   {
       "status": "success",
       "data": {
@@ -1290,7 +1330,7 @@ Get a list of all the chatbots in the project.
 
 ### Query
 
-<ParamField query="page" type="integer" default="1">
+<ParamField type="integer">
   The page number for pagination.
 </ParamField>
 
@@ -1379,7 +1419,7 @@ Retrieve a chatbot by its ID.
 
 ### Path
 
-<ParamField path="chatbotId" type="string" required>
+<ParamField type="string">
   The chatbot ID.
 </ParamField>
 
@@ -1414,7 +1454,7 @@ Retrieve a chatbot by its ID.
 </ResponseField>
 
 <ResponseExample>
-  ```json  theme={null}
+  ```json theme={null}
   {
       "status": "success",
       "data": {
@@ -1439,17 +1479,17 @@ Update the settings of a chatbot.
 
 ### Path
 
-<ParamField path="chatbotId" type="string" required>
+<ParamField type="string">
   The chatbot ID.
 </ParamField>
 
 ### Body
 
-<ParamField body="name" type="string">
+<ParamField type="string">
   The chatbot name.
 </ParamField>
 
-<ParamField body="visibility" type="string">
+<ParamField type="string">
   The visibility of the chatbot. Possible values are `public` and `private`.
 </ParamField>
 
@@ -1484,7 +1524,7 @@ Update the settings of a chatbot.
 </ResponseField>
 
 <ResponseExample>
-  ```json  theme={null}
+  ```json theme={null}
   {
       "status": "success",
       "data": {
@@ -1509,41 +1549,41 @@ Create a new contact for the chatbot.
 
 ### Path
 
-<ParamField path="chatbotId" type="string" required>
+<ParamField type="string">
   The chatbot ID.
 </ParamField>
 
 ### Body
 
-<ParamField body="properties" type="object">
+<ParamField type="object">
   At least one of the following properties is required.
 
   <Expandable title="properties">
-    <ParamField body="first_name" type="string" placeholder="John" />
+    <ParamField type="string" placeholder="John" />
 
-    <ParamField body="last_name" type="string" placeholder="Doe" />
+    <ParamField type="string" placeholder="Doe" />
 
-    <ParamField body="email" type="string" placeholder="john.doe@example.com" />
+    <ParamField type="string" placeholder="john.doe@example.com" />
 
-    <ParamField body="phone" type="string" placeholder="1234567890" />
+    <ParamField type="string" placeholder="1234567890" />
 
-    <ParamField body="job_title" type="string" placeholder="Software Engineer" />
+    <ParamField type="string" placeholder="Software Engineer" />
 
-    <ParamField body="company_name" type="string" placeholder="Acme Inc" />
+    <ParamField type="string" placeholder="Acme Inc" />
 
-    <ParamField body="website_url" type="string" placeholder="https://acme.com" />
+    <ParamField type="string" placeholder="https://acme.com" />
 
-    <ParamField body="industry" type="string" placeholder="Technology" />
+    <ParamField type="string" placeholder="Technology" />
 
-    <ParamField body="address" type="string" placeholder="123 Main St" />
+    <ParamField type="string" placeholder="123 Main St" />
 
-    <ParamField body="city" type="string" placeholder="New York" />
+    <ParamField type="string" placeholder="New York" />
 
-    <ParamField body="state" type="string" placeholder="NY" />
+    <ParamField type="string" placeholder="NY" />
 
-    <ParamField body="postal_code" type="string" placeholder="10001" />
+    <ParamField type="string" placeholder="10001" />
 
-    <ParamField body="country" type="string" placeholder="USA" />
+    <ParamField type="string" placeholder="USA" />
   </Expandable>
 </ParamField>
 
@@ -1583,11 +1623,11 @@ Delete a contact by its ID.
 
 ### Path
 
-<ParamField path="chatbotId" type="string" required>
+<ParamField type="string">
   The chatbot ID.
 </ParamField>
 
-<ParamField path="contactId" type="string" required>
+<ParamField type="string">
   The contact ID.
 </ParamField>
 
@@ -1598,7 +1638,7 @@ Delete a contact by its ID.
 </ResponseField>
 
 <ResponseExample>
-  ```json  theme={null}
+  ```json theme={null}
   {
       "status": "success"
   }
@@ -1616,17 +1656,17 @@ Get a list of all the contacts and leads saved by the chatbot.
 
 ### Path
 
-<ParamField path="chatbotId" type="string" required>
+<ParamField type="string">
   The chatbot ID.
 </ParamField>
 
 ### Query
 
-<ParamField query="page" type="integer" default="1">
+<ParamField type="integer">
   The page number for pagination.
 </ParamField>
 
-<ParamField query="sort" type="string" default="date_desc">
+<ParamField type="string">
   The sort order. Possible values:
 
   * `date_desc`: Sort by date in descending order.
@@ -1733,11 +1773,11 @@ Retrieve a contact by its ID.
 
 ### Path
 
-<ParamField path="contactId" type="string" required>
+<ParamField type="string">
   The contact ID.
 </ParamField>
 
-<ParamField path="chatbotId" type="string" required>
+<ParamField type="string">
   The chatbot ID.
 </ParamField>
 
@@ -1784,7 +1824,7 @@ Retrieve a contact by its ID.
 </ResponseField>
 
 <ResponseExample>
-  ```json  theme={null}
+  ```json theme={null}
   {
       "status": "success",
       "data": {
@@ -1812,11 +1852,11 @@ Delete a conversation.
 
 ### Path
 
-<ParamField path="chatbotId" type="string" required>
+<ParamField type="string">
   The chatbot ID.
 </ParamField>
 
-<ParamField path="conversationId" type="string" required>
+<ParamField type="string">
   The conversation ID.
 </ParamField>
 
@@ -1827,7 +1867,7 @@ Delete a conversation.
 </ResponseField>
 
 <ResponseExample>
-  ```json  theme={null}
+  ```json theme={null}
   {
       "status": "success"
   }
@@ -1845,21 +1885,21 @@ Get a list of all the messages for a conversation
 
 ### Path
 
-<ParamField path="chatbotId" type="string" required>
+<ParamField type="string">
   The chatbot ID.
 </ParamField>
 
-<ParamField path="conversationId" type="string" required>
+<ParamField type="string">
   The conversation ID.
 </ParamField>
 
 ### Query
 
-<ParamField query="page" type="integer" default="1">
+<ParamField type="integer">
   The page number for pagination.
 </ParamField>
 
-<ParamField query="sort" type="string" default="date_desc">
+<ParamField type="string">
   The sort order. Possible values:
 
   * `date_desc`: Sort by date in descending order.
@@ -1990,17 +2030,17 @@ Get a list of all the chatbot's conversations with users.
 
 ### Path
 
-<ParamField path="chatbotId" type="string" required>
+<ParamField type="string">
   The chatbot ID.
 </ParamField>
 
 ### Query
 
-<ParamField query="page" type="integer" default="1">
+<ParamField type="integer">
   The page number for pagination.
 </ParamField>
 
-<ParamField query="sort" type="string" default="date_desc">
+<ParamField type="string">
   The sort order. Possible values:
 
   * `date_desc`: Sort by date in descending order.
@@ -2181,21 +2221,21 @@ Use this endpoint to rate an AI answer as helpful or not helpful. You can only r
 
 ### Path
 
-<ParamField path="chatbotId" type="string" required>
+<ParamField type="string">
   The chatbot ID.
 </ParamField>
 
-<ParamField path="conversationId" type="string" required>
+<ParamField type="string">
   The conversation ID.
 </ParamField>
 
-<ParamField path="messageId" type="string" required>
+<ParamField type="string">
   The message ID.
 </ParamField>
 
 ### Body
 
-<ParamField body="rating" type="string" required>
+<ParamField type="string">
   * `0`: Remove rating
   * `1`: Helpful
   * `-1`: Not helpful
@@ -2227,11 +2267,11 @@ Retrieve a conversation by its ID.
 
 ### Path
 
-<ParamField path="chatbotId" type="string" required>
+<ParamField type="string">
   The chatbot ID.
 </ParamField>
 
-<ParamField path="conversationId" type="string" required>
+<ParamField type="string">
   The conversation ID.
 </ParamField>
 
@@ -2306,7 +2346,7 @@ Retrieve a conversation by its ID.
 </ResponseField>
 
 <ResponseExample>
-  ```json  theme={null}
+  ```json theme={null}
   {
       "status": "success",
       "data": {
@@ -2379,11 +2419,11 @@ Update a conversation's properties.
 
 ### Path
 
-<ParamField path="chatbotId" type="string" required>
+<ParamField type="string">
   The chatbot ID.
 </ParamField>
 
-<ParamField path="conversationId" type="string" required>
+<ParamField type="string">
   The conversation ID.
 </ParamField>
 
@@ -2391,15 +2431,15 @@ Update a conversation's properties.
 
 At least one of the following properties is required.
 
-<ParamField body="archive" type="boolean">
+<ParamField type="boolean">
   Whether to archive the conversation.
 </ParamField>
 
-<ParamField body="important" type="boolean">
+<ParamField type="boolean">
   Whether to mark the conversation as important.
 </ParamField>
 
-<ParamField body="contact_id" type="string">
+<ParamField type="string">
   The ID of the contact to associate with the conversation.
 </ParamField>
 
@@ -2472,7 +2512,7 @@ At least one of the following properties is required.
 </ResponseField>
 
 <ResponseExample>
-  ```json  theme={null}
+  ```json theme={null}
   {
       "status": "success",
       "data": {
@@ -2584,21 +2624,21 @@ Add new FAQ data sources to the knowledge base.
 
 ### Path
 
-<ParamField path="chatbotId" type="string" required>
+<ParamField type="string">
   The chatbot ID.
 </ParamField>
 
 ### Body
 
-<ParamField body="faqs" type="array" required>
+<ParamField type="array">
   Array of FAQs to add to the knowledge base.
 
   <Expandable title="properties">
-    <ParamField body="q" type="string" required>
+    <ParamField type="string">
       The question of the FAQ.
     </ParamField>
 
-    <ParamField body="a" type="string" required>
+    <ParamField type="string">
       The answer of the FAQ.
     </ParamField>
   </Expandable>
@@ -2640,33 +2680,33 @@ Add new link data sources to the knowledge base.
 
 ### Path
 
-<ParamField path="chatbotId" type="string" required>
+<ParamField type="string">
   The chatbot ID.
 </ParamField>
 
 ### Body
 
-<ParamField body="links" type="string[]" required>
+<ParamField type="string[]">
   Array of webpage links to add to the knowledge base.
 </ParamField>
 
-<ParamField body="exclude_classes" type="string[]">
+<ParamField type="string[]">
   Exclude sections of webpages based on their HTML class names.
 </ParamField>
 
-<ParamField body="exclude_ids" type="string[]">
+<ParamField type="string[]">
   Exclude sections of webpages based on their HTML IDs.
 </ParamField>
 
-<ParamField body="exclude_header" type="boolean">
+<ParamField type="boolean">
   Exclude `header` tags.
 </ParamField>
 
-<ParamField body="exclude_footer" type="boolean">
+<ParamField type="boolean">
   Exclude `footer` tags.
 </ParamField>
 
-<ParamField body="exclude_nav" type="boolean">
+<ParamField type="boolean">
   Exclude `nav` tags.
 </ParamField>
 
@@ -2711,13 +2751,13 @@ Add new text data sources to the knowledge base.
 
 ### Path
 
-<ParamField path="chatbotId" type="string" required>
+<ParamField type="string">
   The chatbot ID.
 </ParamField>
 
 ### Body
 
-<ParamField body="texts" type="string[]" required>
+<ParamField type="string[]">
   Array of texts to add to the knowledge base.
 </ParamField>
 
@@ -2757,11 +2797,11 @@ Delete a data source from the knowledge base.
 
 ### Path
 
-<ParamField path="chatbotId" type="string" required>
+<ParamField type="string">
   The chatbot ID.
 </ParamField>
 
-<ParamField path="dataSourceId" type="string" required>
+<ParamField type="string">
   The data source ID.
 </ParamField>
 
@@ -2790,24 +2830,24 @@ Get a list of the data sources added to the knowledge base.
 
 ### Path
 
-<ParamField path="chatbotId" type="string" required>
+<ParamField type="string">
   The chatbot ID.
 </ParamField>
 
 ### Query
 
-<ParamField query="page" type="integer" default="1">
+<ParamField type="integer">
   The page number for pagination.
 </ParamField>
 
-<ParamField query="sort" type="string" default="date_desc">
+<ParamField type="string">
   The sort order. Possible values:
 
   * `date_desc`: Sort by date in descending order.
   * `date_asc`: Sort by date in ascending order.
 </ParamField>
 
-<ParamField query="type" type="string">
+<ParamField type="string">
   Filter by the type of the data source. Possible values are `link`, `text`, `faq`, `document`, and `zoho`.
 
   Leave blank to get all types of data sources.
@@ -2918,11 +2958,11 @@ Resync a data source.
 
 ### Path
 
-<ParamField path="chatbotId" type="string" required>
+<ParamField type="string">
   The chatbot ID.
 </ParamField>
 
-<ParamField path="dataSourceId" type="string" required>
+<ParamField type="string">
   The data source ID.
 </ParamField>
 
@@ -2951,7 +2991,7 @@ Get a list of all the members in the project.
 
 ### Query
 
-<ParamField query="page" type="integer" default="1">
+<ParamField type="integer">
   The page number for pagination.
 </ParamField>
 
@@ -3084,7 +3124,7 @@ Update the project settings.
 
 ### Body
 
-<ParamField body="name" type="string" required>
+<ParamField type="string">
   The project name.
 </ParamField>
 
@@ -3134,7 +3174,7 @@ The default rate limit is **300 API calls per minute** for each API key. We may 
 
 When you exceed the rate limit, you will receive a 429 status code with the following response:
 
-```json  theme={null}
+```json theme={null}
 {
     "status": "error",
     "message": "Too many requests"
@@ -3362,15 +3402,15 @@ If you are using the Knowledge Base as the response source, you can add instruct
 
 1. Click on the AI Configuration menu in the sidebar.
 
-<img src="https://chatling-assets.b-cdn.net/open-ai-configuration-menu-from-sidebar.jpg" alt="Open AI Configuration menu from sidebar" width="350" />
+<img alt="Open AI Configuration menu from sidebar" />
 
 2. Go to `Instructions`.
 
-<img src="https://chatling-assets.b-cdn.net/open-instructions-page-kb-ai-configuration-sidebar.jpg" alt="Open Instructions page from AI Configuration sidebar menu" width="350" />
+<img alt="Open Instructions page from AI Configuration sidebar menu" />
 
 3. Click the `Add instruction` button and enter your instruction.
 
-<img src="https://chatling-assets.b-cdn.net/add-new-instruction-kb-ai-configuration-sidebar.jpg" alt="Add new instruction in AI Configuration sidebar menu" width="350" />
+<img alt="Add new instruction in AI Configuration sidebar menu" />
 
 4. To add more instructions, click the `New` button to create a new instruction.
 
@@ -3381,7 +3421,7 @@ If you are using the AI Model as the response source, you can add instructions d
 1. Click the AI Response block on the canvas to open the block editor.
 2. Under the `Instructions` section, you can add all your instructions. You can add multiple instructions in the same field, separated by a new line.
 
-<img src="https://chatling-assets.b-cdn.net/add-instructions-to-ai-model-response-block.jpg" alt="Add instructions for AI Model response source" width="450" />
+<img alt="Add instructions for AI Model response source" />
 
 
 # Setting the AI model
@@ -3405,15 +3445,15 @@ If you are using the Knowledge Base as the response source, you can set the AI m
 
 1. Click on the AI Configuration menu in the sidebar.
 
-<img src="https://chatling-assets.b-cdn.net/open-ai-configuration-menu-from-sidebar.jpg" alt="Open AI Configuration menu from sidebar" width="350" />
+<img alt="Open AI Configuration menu from sidebar" />
 
 2. Go to `Settings`.
 
-<img src="https://chatling-assets.b-cdn.net/ai-configuration-settings-menu-sidebar.jpg" alt="Open Settings page from AI Configuration sidebar menu" width="350" />
+<img alt="Open Settings page from AI Configuration sidebar menu" />
 
 3. Select the AI model you want to use from the dropdown list.
 
-<img src="https://chatling-assets.b-cdn.net/set-ai-model-kb-ai-configuration-sidebar.jpg" alt="Select AI model in AI Configuration settings sidebar menu" width="350" />
+<img alt="Select AI model in AI Configuration settings sidebar menu" />
 
 Once you've selected the AI model, all AI Response blocks that use the Knowledge Base as the response source will use this model to generate responses.
 
@@ -3421,13 +3461,13 @@ Once you've selected the AI model, all AI Response blocks that use the Knowledge
 
 If you want to set the AI model on a per-block basis, you can do so by opening the AI Response block's editor and settings the `Model` option. This will override the default model set in the AI Configuration settings.
 
-<img src="https://chatling-assets.b-cdn.net/override-ai-model-setting-kb-ai-response.jpg" alt="Override AI model setting in AI Response block" width="450" />
+<img alt="Override AI model setting in AI Response block" />
 
 ### 2. Response Source: AI Model
 
 If you are using the "AI Model" as the response source, you can set the AI model from the block's editor using the `Model` option.
 
-<img src="https://chatling-assets.b-cdn.net/set-ai-model-kb-ai-configuration-sidebar.jpeg" alt="Set model in AI Model response block" width="450" />
+<img alt="Set model in AI Model response block" />
 
 
 # Block Editor
@@ -3439,17 +3479,19 @@ The Block Editor is where you can configure the settings of a block in the Build
 
 The editor appears when you click a block that you've added to the canvas. Every block has its own unique settings that you can configure.
 
-<img src="https://chatling-assets.b-cdn.net/opening-the-block-editor.gif" alt="Opening the block editor" width="600" />
+<img alt="Opening the block editor" />
 
 
-# Quick Replies
+# Adding Quick Replies to AI Chatbots
 Source: https://docs.chatling.ai/chatbot/builder/block-options/quick-replies
 
 
 
 Quick replies are messages that will help users respond quickly without having to type out a full response. They are displayed as buttons above the input field and users can click on them to send a message.
 
-<img src="https://chatling-assets.b-cdn.net/quick-reply-demo.gif" alt="Quick Replies demo" width="300" />
+<img alt="Quick Replies demo" />
+
+<Note>This guide is for adding quick replies to AI Chatbots. For AI Agents, refer to [this guide](/ai-agent/quick-replies)</Note>
 
 ## Supported blocks
 
@@ -3467,7 +3509,7 @@ Here's how to add quick replies to a supported block:
 * Open the block editor for a block that supports quick replies.
 * Under the "Quick Replies" section, click `Add` to add a new quick reply.
 
-<img src="https://chatling-assets.b-cdn.net/quick-replies-editor.jpeg" alt="Add a quick reply" width="300" />
+<img alt="Add a quick reply" />
 
 * Enter the label for the quick reply. This is the text that will be displayed on the button.
 * Enter the message that will be sent when the user clicks on the quick reply button.
@@ -3482,7 +3524,7 @@ Allow users to speak to your chatbot using Voice Input.
 
 Voice Input is a speech-to-text feature that allows users to record voice messages and transcribes them into text. Rather than typing their message, users can speak to your chatbot and it will automatically be converted to text.
 
-<img src="https://chatling-assets.b-cdn.net/voice-input-demo.gif" alt="Voice Input demo" width="450" />
+<img alt="Voice Input demo" />
 
 ## Supported blocks
 
@@ -3492,11 +3534,11 @@ Currently, Voice Input is available for the Text input block only.
 
 Open the block editor for a Text input block and toggle on the "Voice Input" option.
 
-<img src="https://chatling-assets.b-cdn.net/enable-voice-input-toggle.jpg" alt="Enable Voice Input" width="300" />
+<img alt="Enable Voice Input" />
 
 The chatbot will then display a microphone icon when the block is displayed. Users can click on the microphone icon to record a voice message.
 
-<img src="https://chatling-assets.b-cdn.net/chatbot-voice-input-icon.jpg" alt="Chatbot Voice Input" width="300" />
+<img alt="Chatbot Voice Input" />
 
 ## What happens when I run out of Speech to Text credits?
 
@@ -3583,7 +3625,7 @@ When sending requests to external APIs, you may need to provide additional optio
 
 To use variables in the request payload, you must enclose the variable's name in double curly braces within quotes. Here's an example:
 
-```json  theme={null}
+```json theme={null}
 {
     "name": "{{contact_name}}",
     "age": 21,
@@ -3611,7 +3653,7 @@ The naming convention for the key is as follows:
 
 Let's take a look at an example. Below is a sample JSON response from an API endpoint:
 
-```json  theme={null}
+```json theme={null}
 {
     "title": "Fantastic Mr Fox",
     "permalink": "/works/OL45804W",
@@ -3635,7 +3677,7 @@ To capture the title, date of publication, and author name from the response, yo
 * **Published date**: `meta.published_at`
 * **Author Name**: `authors[0].author.name`
 
-<img src="https://chatling-assets.b-cdn.net/http-request-capture-response-example.png" alt="HTTP Request capture response example" width="300" />
+<img alt="HTTP Request capture response example" />
 
 
 # Send Email Block
@@ -3672,13 +3714,13 @@ The Set Variable block is used to set the value of one or more variables. With i
    * **Add/Subtract/Multiply/Divide**: Perform a mathematical operation on the variable. You can add, subtract, multiply, or divide the variable by a specific value. The value must be a number.
 4. Enter the value.
 
-<img src="https://chatling-assets.b-cdn.net/set-variable-block-settings.png" alt="Configure Set Variable block" width="350" />
+<img alt="Configure Set Variable block" />
 
 ## Multiple variables
 
 You can set multiple variables at once by clicking on the **Add variable** button. This will add a new row where you can select another variable and set its value.
 
-<img src="https://chatling-assets.b-cdn.net/add-additional-variable-to-set-variable-block.jpg" alt="Add additional variable" width="350" />
+<img alt="Add additional variable" />
 
 ## Example
 
@@ -3686,7 +3728,7 @@ Let's say you're building a lead generation chatbot for a real estate brokerage.
 
 Below is a sample flow that demonstrates how to use the Set Variable block.
 
-<img src="https://chatling-assets.b-cdn.net/set-variable-real-estate-example-chatbot-flow-1.png" alt="Real estate sample chatbot flow using Set Variable block" />
+<img alt="Real estate sample chatbot flow using Set Variable block" />
 
 We're using a variable called `counter` to keep track of the number of questions that have been asked. This variable is incremented by 1 each time the user answers a question.
 
@@ -3724,7 +3766,7 @@ The Response Source determines where the AI will look for answers to user querie
 
 ## Configurations for Knowledge Base Response Source
 
-<img src="https://chatling-assets.b-cdn.net/ai-knowledge-base-response-source-settings.png" alt="AI block knowledge base settings" />
+<img alt="AI block knowledge base settings" />
 
 When you select the "Knowledge Base" as the Response Source, you can configure the following settings:
 
@@ -3769,29 +3811,29 @@ To set up the AI block, follow these steps:
 
 1. Add a Text input block to the canvas. We'll use this block to capture the user's input and store it in a variable so it can be passed to the AI block.
 
-<img src="https://chatling-assets.b-cdn.net/add-text-input-block-to-canvas.gif" alt="Adding text input block to the builder" />
+<img alt="Adding text input block to the builder" />
 
 2. Click on the Text block to open the editor. In the `Store answer in variable` field, enter a variable where the user's input will be stored. In this example, we'll create and use a variable called `user_query`.
 
-<img src="https://chatling-assets.b-cdn.net/create-new-variable.jpg" alt="Storing user input in a variable" width="350" />
+<img alt="Storing user input in a variable" />
 
 3. Next, drag and drop the AI Response block onto the canvas.
 
-<img src="https://chatling-assets.b-cdn.net/setting-up-ai-kb-response.jpg" alt="Setting up AI block for knowledge base response" width="350" />
+<img alt="Setting up AI block for knowledge base response" />
 
 4. Connect the Text input block to the AI block by dragging the connector from the Text block to the AI block.
 
-<img src="https://chatling-assets.b-cdn.net/setting-up-ai-kb-response-1.gif" alt="Connecting text input to AI block" />
+<img alt="Connecting text input to AI block" />
 
 5. Click the AI Response block to open the editor. In the `Question` field, enter the variable where the user's input is stored. In step 2, we used the `user_query` variable, so we'll enter `{user_query}` in the Question field.
 
-<img src="https://chatling-assets.b-cdn.net/setting-up-ai-kb-response-2.jpg" alt="Setting up AI block for knowledge base response" width="350" />
+<img alt="Setting up AI block for knowledge base response" />
 
 6. Set up the global AI settings by going to the `AI Configuration` in the sidebar. You can define settings such as the AI model, instructions, language, and business name.
 
 7. Lastly, set up the block connections accordingly. For example, a setup like below will allow the user to continually ask questions and receive responses from the AI.
 
-<img src="https://chatling-assets.b-cdn.net/setting-up-ai-kb-response-3.png" alt="Setting up AI block for knowledge base response" width="650" />
+<img alt="Setting up AI block for knowledge base response" />
 
 
 # Language
@@ -3805,7 +3847,7 @@ Let's say you want to create a bot that supports English, Spanish, and French la
 
 Below is an example of such a flow. The Else path is a fallback for users whose language is not supported by the bot. In this case, it falls back to the English language.
 
-<img src="https://chatling-assets.b-cdn.net/language-conditional-flow.png" alt="Language conditional flow" width="700" />
+<img alt="Language conditional flow" />
 
 
 # Overview
@@ -3817,7 +3859,7 @@ Condition blocks are used to create conditional logic in your bot. You can use i
 
 Similar to an "if-else" statement in programming, condition blocks evaluate a condition and executes different paths based on whether the condition is true or false.
 
-<img src="https://chatling-assets.b-cdn.net/condition-block.jpeg" alt="Condition block" width="500" />
+<img alt="Condition block" />
 
 ## Types of condition blocks
 
@@ -3833,7 +3875,7 @@ Condition blocks consist of two main parts:
 * **Conditions**: The conditions that the block will evaluate. You can use variables, languages, comparison operators, and logical operators to create complex conditions.
 * **Paths**: The paths that the block will follow based on the result of the conditions. Every condition you add will have a corresponding path that the block will follow if the condition is true.
 
-<img src="https://chatling-assets.b-cdn.net/condition-block-components.jpeg" alt="Condition block components" width="600" />
+<img alt="Condition block components" />
 
 Here's an example of how a condition block works:
 
@@ -3865,7 +3907,7 @@ Conditions support a variety of comparison operators that you can use to compare
 
 Conditions are grouped together to create complex logic using logical operators like "AND" and "OR". Every group contains one or more conditions that are evaluated together.
 
-<img src="https://chatling-assets.b-cdn.net/group-and-child-conditions.jpg" alt="Group and child conditions" />
+<img alt="Group and child conditions" />
 
 Conditions within a group are evaluated together to determine if the group is true or false. You can use logical operators such as "AND" and "OR" to combine conditions within a group.
 
@@ -3904,7 +3946,7 @@ The Variable condition block is used to compare a variable with a value or anoth
 
 ## Components of a variable condition
 
-<img src="https://chatling-assets.b-cdn.net/variable-condition-components.jpg" alt="Components of a variable condition" width="400" />
+<img alt="Components of a variable condition" />
 
 * **Label**: A descriptive label for the condition, which will be displayed in the block on the canvas. This is optional and can be skipped.
 * **Variable**: The variable or value that the block will evaluate. The variable can be a user input, a stored value, or a system variable.
@@ -3924,11 +3966,11 @@ You can create two conditions:
 
 Here's how to set it up in the editor:
 
-<img src="https://chatling-assets.b-cdn.net/real-estate-bot-condition-setup-example.jpeg" alt="Real estate conditions setup example" width="400" />
+<img alt="Real estate conditions setup example" />
 
 Once you have set up the conditions, you can define the paths for each condition. Here's an example:
 
-<img src="https://chatling-assets.b-cdn.net/real-estate-bot-condition-block-example-1.png" alt="Real estate conditions example" />
+<img alt="Real estate conditions example" />
 
 Based on the above, here's how the bot will respond:
 
@@ -3946,11 +3988,11 @@ Let's say a candidate is applying for a job through the bot and you want to qual
 
 You can set up the following conditions:
 
-<img src="https://chatling-assets.b-cdn.net/job-application-condition-setup.png" alt="Job application conditions setup" />
+<img alt="Job application conditions setup" />
 
 Once you have set up the conditions, you can define the paths for each condition. Here's an example:
 
-<img src="https://chatling-assets.b-cdn.net/job-application-condition-block.png" alt="Job application condition block" />
+<img alt="Job application condition block" />
 
 Based on the above, here's how the bot will respond:
 
@@ -4016,7 +4058,7 @@ With this integration, your chatbot can:
 
 This allows your team to capture leads, resolve issues, and enrich CRM data without leaving the chat interface.
 
-<CardGroup cols={3}>
+<CardGroup>
   <Card title="Create Ticket" icon="ticket" href="/chatbot/builder/blocks/hubspot/create-ticket" />
 
   <Card title="Create Contact" icon="user" href="/chatbot/builder/blocks/hubspot/create-contact" />
@@ -4080,7 +4122,7 @@ Learn about the Buttons input block and how to set it up in the Builder.
 
 The Buttons block is used to display a set of buttons that users can click to trigger actions or provide responses. You can use this block to present multiple options to users and guide them through the conversation flow.
 
-<img src="https://chatling-assets.b-cdn.net/input-buttons-block-preview.png" alt="Buttons block preview" width="400" />
+<img alt="Buttons block preview" />
 
 Every button in the block has a connector that allows you to link it to other blocks.
 
@@ -4091,7 +4133,7 @@ Buttons have the following configuration options:
 * **Label**: The text that appears on the button.
 * **Store selected button in variable**: The variable where the selected button's value will be stored. For example, if the user selects the "Yes" button, you can store the value "Yes" in a variable for later use.
 
-<img src="https://chatling-assets.b-cdn.net/input-buttons-block-editor.jpg" alt="Input buttons block editor" />
+<img alt="Input buttons block editor" />
 
 ## Connecting buttons
 
@@ -4101,7 +4143,7 @@ To connect a button, click the connector next to it and drag it to the group you
 
 In the example below, when the user clicks the "Software Development" button, the chatbot will display the "Sure thing! Our team can help..." message and continues the flow from there.
 
-<img src="https://chatling-assets.b-cdn.net/connecting-button-blocks.gif" alt="Connect buttons" />
+<img alt="Connect buttons" />
 
 
 # Date/Time Block
@@ -4124,7 +4166,7 @@ The Date/Time block has the following configuration options:
 * **Min**: The minimum value the user can input.
 * **Max**: The maximum value the user can input.
 
-<img src="https://chatling-assets.b-cdn.net/date-input-block-editor01.png" alt="Input date/time block editor" width="350" />
+<img alt="Input date/time block editor" />
 
 
 # Email Block
@@ -4136,7 +4178,7 @@ The Email block is used to capture a valid email address from the user. You can 
 
 ## Configuration
 
-<img src="https://chatling-assets.b-cdn.net/email-input-block-editor.png" alt="Input email block editor" width="350" />
+<img alt="Input email block editor" />
 
 The Email block has the following configuration options:
 
@@ -4155,7 +4197,7 @@ The Form block is used to collect multiple pieces of information from users in a
 
 You can add multiple fields to the form and configure each field to collect different types of information, such as text, email, phone number, and more.
 
-<img src="https://chatling-assets.b-cdn.net/form-input-block-preview.jpg" alt="Form block preview" width="400" />
+<img alt="Form block preview" />
 
 ## Configuration
 
@@ -4166,7 +4208,7 @@ The Form block has the following configuration options:
   * **Type**: Type of the field, such as Text, Email, Number, etc. This prevents users from entering invalid data.
   * **Store user input in variable**: The variable where the user's response to the field will be stored.
 
-<img src="https://chatling-assets.b-cdn.net/form-input-block-editor.jpeg" alt="Form block editor" width="300" />
+<img alt="Form block editor" />
 
 
 # Number Block
@@ -4189,7 +4231,7 @@ The Number block has the following configuration options:
 * **Max**: The maximum value the user can input.
 * **[Quick replies](/chatbot/builder/block-options/quick-replies)**
 
-<img src="https://chatling-assets.b-cdn.net/number-input-block-editor.png" alt="Input number block editor" width="300" />
+<img alt="Input number block editor" />
 
 
 # Phone Block
@@ -4211,7 +4253,7 @@ The Text block is used to capture user input in the form of text. You can use th
 
 ## Configuration
 
-<img src="https://chatling-assets.b-cdn.net/input-text-block-editor-1.png" alt="Input text block editor" width="300" />
+<img alt="Input text block editor" />
 
 You can configure the following settings for the Text block:
 
@@ -4240,7 +4282,7 @@ The URL block has the following configuration options:
 * **Input required**: Whether the user's input is mandatory. If disabled, a Skip button will appear, allowing users to skip the input.
 * **[Quick replies](/chatbot/builder/block-options/quick-replies)**
 
-<img src="https://chatling-assets.b-cdn.net/url-input-block-editor.png" alt="Input URL block editor" width="350" />
+<img alt="Input URL block editor" />
 
 
 # Blocks
@@ -4252,7 +4294,7 @@ With Blocks, you can build the conversational flow of your chatbot. They define 
 
 You can add blocks to the canvas and connect them to create a flow. Each block performs a specific action, such as sending a message, capturing user input, or integrating with external services.
 
-<img src="https://chatling-assets.b-cdn.net/blocks-menu-chatbot-builder.jpeg" alt="Blocks menu" width="350" />
+<img alt="Blocks menu" />
 
 ## Types of blocks
 
@@ -4271,7 +4313,7 @@ Here are the different categories of blocks that are available:
 
 Blocks can be grouped together for better organization and for creating connections between them. A group is created when you drop a block onto an empty area of the canvas. You can then drag other blocks into the group to organize them.
 
-<img src="https://chatling-assets.b-cdn.net/groups-chatbot-builder.jpeg" alt="Group blocks" />
+<img alt="Group blocks" />
 
 
 # Audio Block
@@ -4285,7 +4327,7 @@ The Audio block allows you to play an audio file to the user in the conversation
 
 To add an audio file, you can either upload an audio file directly or provide a link to a file hosted online. The supported audio formats are `MP3`, `WAV`, and `OGG`.
 
-<img src="https://chatling-assets.b-cdn.net/output-audio-block-editor.png" width="300" alt="Audio block editor" />
+<img alt="Audio block editor" />
 
 You can enable the `Autoplay` option to automatically play the audio file when the block is displayed to the user.
 
@@ -4299,7 +4341,7 @@ The Carousel block allows you to display a carousel of cards to the user. Each c
 
 Carousels are a great way to showcase multiple products, services, or information in a visually appealing format.
 
-<img src="https://chatling-assets.b-cdn.net/carousel-blocks-preview.png" width="350" />
+<img />
 
 ## Adding a carousel
 
@@ -4307,7 +4349,7 @@ To add a carousel, you can create multiple cards within the block editor. For ea
 
 You can add as many cards as you like to the carousel. Users can swipe through the cards to view the content.
 
-<img src="https://chatling-assets.b-cdn.net/output-carousel-block-editor.jpeg" alt="Carousel block editor" />
+<img alt="Carousel block editor" />
 
 
 # Image Block
@@ -4321,7 +4363,7 @@ You can use the Image block to display an image to the user. It can be used for 
 
 You can upload an image or insert its URL. The support image formats are `JPG/JPEG`, `PNG`, `WEBP`, and `GIF`.
 
-<img src="https://chatling-assets.b-cdn.net/output-image-editor.png" alt="Image block editor" width="300" />
+<img alt="Image block editor" />
 
 
 # Text Block
@@ -4335,7 +4377,7 @@ The Text block is used to display a text message to the user. You can use it to 
 
 Once you add a Text block to the canvas, click on it to open the block editor. You can then enter your message in the text editor and apply formatting using the toolbar.
 
-<img src="https://chatling-assets.b-cdn.net/output-text-editor.jpg" alt="Output text block editor" width="300" />
+<img alt="Output text block editor" />
 
 ## Inserting variables
 
@@ -4343,11 +4385,11 @@ You can insert variables into your text message to make it more dynamic and pers
 
 To insert a variable, type `{` and a list of available variables will appear. Select the variable you want to insert and it will be added to the text message.
 
-<img src="https://chatling-assets.b-cdn.net/insert-variable-in-output-text.jpeg" alt="Insert variable" width="300" />
+<img alt="Insert variable" />
 
 For example, if you have captured the user's name earlier in the conversation and stored it in a variable called `contact_name`, you can insert it into the text message by typing `{contact_name}`. When the message is sent to the user, the variable will be replaced with the user's name.
 
-<img src="https://chatling-assets.b-cdn.net/insert-user-name-variable.jpg" alt="output user's name within the text" width="300" />
+<img alt="output user's name within the text" />
 
 
 # URL Button Block
@@ -4357,26 +4399,26 @@ Learn about the URL Button block and how to set it up in the builder
 
 The URL Button block displays buttons that redirect users to other pages.
 
-<img src="https://chatling-assets.b-cdn.net/chatling-web-url-button-block-preview.jpg" width="350" />
+<img />
 
 ## Adding URL buttons
 
 1. Drag and drop the URL Button block on the canvas.
 
-<img src="https://chatling-assets.b-cdn.net/add-url-button-to-chatbot-flow.jpg" width="350" />
+<img />
 
 2. Click on the block to edit it.
 3. Click `Add button` button to add a new button.
 
-<img src="https://chatling-assets.b-cdn.net/add-button-url-button.jpg" width="350" />
+<img />
 
 4. Enter the button label and URL. The label is the text that will be displayed on the button.
 
-<img src="https://chatling-assets.b-cdn.net/fill-url-button-details.jpg" width="350" />
+<img />
 
 5. To add more buttons, click the `+` icon.
 
-<img src="https://chatling-assets.b-cdn.net/add-new-url-button.jpg" width="350" />
+<img />
 
 
 # Video Block
@@ -4388,13 +4430,13 @@ The Video block allows you to display a video to the user in the conversation. Y
 
 For video platforms that support embedding, Chatling will automatically embed the video in the conversation. Here's an example:
 
-<img src="https://chatling-assets.b-cdn.net/output-video-block-preview-1.jpeg" width="300" />
+<img />
 
 ## Adding a video
 
 Adding a video is simple. Just paste the URL to the video in the block editor and the chatbot will automatically embed it in the conversation.
 
-<img src="https://chatling-assets.b-cdn.net/output-video-block-editor.png" width="300" />
+<img />
 
 
 # Triggers
@@ -4476,7 +4518,7 @@ The Builder consists of the following components:
 * **[Sidebar](/chatbot/builder/sidebar)**: Contains menus for adding blocks, managing variables, and configuring the AI and general settings.
 * **Toolbar**: Appears at the top and contains controls for zooming in/out, saving, preview, and publishing the chatbot.
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/tHMy1hV9vTI?si=b0ds4B20bMfPYWbz" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen />
+<iframe title="YouTube video player" />
 
 In the next sections, we'll explore each component of the Builder in detail and learn how to create conversational flows for your chatbot.
 
@@ -4502,7 +4544,7 @@ Learn how to save your changes in the Builder.
 
 Any changes you make to your chatbot's flow in the [Builder](/chatbot/builder/introduction) is saved automatically. You can also save it manually by clicking the `Save` button in the top right side of the screen.
 
-<img src="https://chatling-assets.b-cdn.net/save-your-work.jpg" width="500" alt="Save your work in the Builder" />
+<img alt="Save your work in the Builder" />
 
 When you save your changes, it will be saved as a draft and will not be published. This allows you to work on the chatbot and test it without affecting the live version.
 
@@ -4512,7 +4554,7 @@ Source: https://docs.chatling.ai/chatbot/builder/sidebar
 
 Learn about the Sidebar and its functionalities in the Builder.
 
-<img src="https://chatling-assets.b-cdn.net/Sidebar.jpg" width="300" />
+<img />
 
 The sidebar contains four menus:
 
@@ -4543,7 +4585,7 @@ Here are the different categories of blocks that are available:
 
 Variables are placeholders that store information during the conversation. You can use variables to store user inputs, API responses, and more. These variables can be used to personalize the conversation and make it more dynamic.
 
-<img src="https://chatling-assets.b-cdn.net/variables-sidebar-menu.png" width="350" />
+<img />
 
 There are two types of variables:
 
@@ -4559,7 +4601,7 @@ There are two types of variables:
 
 The AI Configuration menu allows you to configure the default AI settings for your chatbot. These settings are used when the chatbot generates AI responses using the Knowledge Base.
 
-<img src="https://chatling-assets.b-cdn.net/ai-configuration-sidebar-menu.png" width="350" />
+<img />
 
 You can configure the following settings:
 
@@ -4651,11 +4693,11 @@ Variables can be created from the [sidebar](/chatbot/builder/sidebar) in the Bui
 1. Click on the `Variables` menu in the sidebar.
 2. Select `+ New`.
 
-<img src="https://chatling-assets.b-cdn.net/create-new-variable-from-sidebar.jpg" alt="Create variable from sidebar" width="400" />
+<img alt="Create variable from sidebar" />
 
 3. Enter a name for the variable and click `Create`. The name must be alphanumeric and can include underscores, such as `first_name`, `firstName`, or `First Name`.
 
-<img src="https://chatling-assets.b-cdn.net/define-new-variable-name.jpg" alt="Define name for new variable" width="400" />
+<img alt="Define name for new variable" />
 
 Note that variable names are case-sensitive. For example, `first name` and `First Name` are considered different variables.
 
@@ -4673,7 +4715,7 @@ You can store data in variables using the `Store answer in variable` or a simila
 
 Let's take the [Text input block](/chatbot/builder/blocks/inputs/text) as an example. This block allows users to enter text. To store the user's response in a variable, click the dropdown below the `Store answer in variable` option and select a variable.
 
-<img src="https://chatling-assets.b-cdn.net/store-answer-in-variable-option-text-input-block.jpg" alt="Store answer in variable option in Text Input block" width="400" />
+<img alt="Store answer in variable option in Text Input block" />
 
 ## How to display variables in messages
 
@@ -4685,11 +4727,11 @@ As an example, let's you have a variable called `first_name` and you want to gre
 2. Click the block to open the editor.
 3. Type `Hello, {first_name}!` in the message field.
 
-<img src="https://chatling-assets.b-cdn.net/inserting-variable-in-text-block.png" alt="Display variable in message in Text Output block" width="400" />
+<img alt="Display variable in message in Text Output block" />
 
 4. When the chatbot displays this block, it will replace `{first_name}` with the value stored by the variable.
 
-<img src="https://chatling-assets.b-cdn.net/displaying-variables-in-output-text-messages.png" alt="Display variable in message" width="400" />
+<img alt="Display variable in message" />
 
 Note that the values stored are on a per-conversation basis. This means that the value of a variable is unique to each conversation and is not shared across different conversations.
 
@@ -4706,19 +4748,19 @@ Not all system variables are available by default when you create a chatbot. If 
 1. Go to the `Builder` in your chatbot.
 2. Click the `Variables` menu in the sidebar.
 
-<img src="https://chatling-assets.b-cdn.net/import-system-variables-1.jpg" alt="Open variables menu" width="400" />
+<img alt="Open variables menu" />
 
 3. Click `Import system variables`.
 
-<img src="https://chatling-assets.b-cdn.net/import-system-variables-2.jpg" alt="Import system variables button" width="400" />
+<img alt="Import system variables button" />
 
 4. A list is displayed with all the additional system variables that you can import. Select the ones you want to import.
 
-<img src="https://chatling-assets.b-cdn.net/import-system-variables-3.jpg" alt="Import system variables" width="400" />
+<img alt="Import system variables" />
 
 5. Click the `Import` button.
 
-<img src="https://chatling-assets.b-cdn.net/import-system-variables-4.jpg" alt="Import system variables" width="400" />
+<img alt="Import system variables" />
 
 6. The selected system variables are now available to use in your chatbot.
 
@@ -4735,7 +4777,7 @@ Variables in the Builder are of two types:
 
 ## System Variable
 
-<img src="https://chatling-assets.b-cdn.net/system-variables-sidebar-menu.png" alt="System variables" width="400" />
+<img alt="System variables" />
 
 System variables are predefined variables that contain system information or which can be used to perform specific actions. These variables are automatically created by the Builder.
 
@@ -4743,7 +4785,7 @@ To learn what a specific system variable does, you can open it from the Variable
 
 There are also additional system variables that aren't imported by default. To view and import them, go to the Variables menu from the [Sidebar](/chatbot/builder/sidebar) and click the `Import system variables` button.
 
-<img src="https://chatling-assets.b-cdn.net/import-system-variables-page.jpg" alt="Import system variables" width="400" />
+<img alt="Import system variables" />
 
 ## Custom Variable
 
@@ -4757,7 +4799,7 @@ Source: https://docs.chatling.ai/chatbot/builder/variables/what-are-variables
 
 Learn about Variables, the different types, and how to use them
 
-<img src="https://chatling-assets.b-cdn.net/variables-sidebar-builder.png" alt="Variables sidebar menu" width="400" />
+<img alt="Variables sidebar menu" />
 
 Variables are placeholders that store information during the conversation. You can use variables to store user inputs, API responses, and more. These variables can be used to personalize the conversation and make it more dynamic.
 
@@ -4775,7 +4817,7 @@ You can collect user information at any point in your chatbot flow and save it a
 
 The example below shows a flow that collects the user's name, email, and phone number using a form. Once submitted, it is used to create a new contact.
 
-<img src="https://chatling-assets.b-cdn.net/create-new-contact-sample-flow.png" width="600" />
+<img />
 
 All contacts created by the chatbot are displayed in the `Contacts` page in your dashboard.
 
@@ -4793,7 +4835,7 @@ The [Get Contact](/chatbot/builder/blocks/action/get-contact) block can be used 
 
 The example below shows a flow that identifies the user and takes different actions based on whether their contact details exist.
 
-<img src="https://chatling-assets.b-cdn.net/identify-returning-users-sample-flow.png" width="600" />
+<img />
 
 Here's how the above flow works:
 
@@ -4841,15 +4883,15 @@ After you sign up and verify your email, the first step is to create your chatbo
 
 1. From the dashboard, click on the `Create chatbot` button.
 
-<img src="https://chatling-assets.b-cdn.net/create-chatbot.png" />
+<img />
 
 2. You can choose to create a chatbot from scratch or use a template. Templates help you get started quickly with pre-built flows.
 
-<img src="https://chatling-assets.b-cdn.net/create-chatbot-1.png" />
+<img />
 
 3. Give your chatbot a name and click `Create chatbot`.
 
-<img src="https://chatling-assets.b-cdn.net/name%20your%20chatbot.png" />
+<img />
 
 Congrats! You've created your first chatbot. Now you can start building it based on your requirements.
 
@@ -4876,7 +4918,7 @@ On the left sidebar, you'll find the following menus:
   ![Adding blocks](https://chatling-assets.b-cdn.net/Drag%20blocks.gif)
 * **Variables**: These are like containers that store information during the conversation. You can use variables to personalize the conversation and make it more dynamic.
 
-<img src="https://chatling-assets.b-cdn.net/variables-sidebar-menu.png" />
+<img />
 
 * **AI Configuration**: Configure the default AI settings for your chatbot. These settings are used when the chatbot generates AI responses using the Knowledge Base.
 * **Settings**: Configure the general settings for your chatbot.
@@ -4913,13 +4955,13 @@ Any changes you make to the chatbot are saved as drafts until you publish them. 
 
 Once you've built and tested your chatbot, you can publish it to make it live. Click the `Publish` button in the top right corner of the screen to publish your chatbot.
 
-<img src="https://chatling-assets.b-cdn.net/publish-chatbot.jpeg" width="400" alt="Publish your chatbot" />
+<img alt="Publish your chatbot" />
 
 ## 3. Populate the AI knowledge base
 
 The Knowledge Base is where you upload information that the AI uses to generate responses to user queries.  It uses this information to provide accurate and relevant responses to users.
 
-<img src="https://chatling-assets.b-cdn.net/knowledge-base.jpg" width="600" alt="Knowledge base" />
+<img alt="Knowledge base" />
 
 You can add websites, documents, texts, FAQs, and many more data sources to the knowledge base. When a user asks a question, the AI searches the knowledge base for relevant information and generates a response based on the data it finds.
 
@@ -4931,23 +4973,23 @@ Once you've built your chatbot, it's time to customize the widget and deploy it 
 
 1. First, make sure that you've published your chatbot. You can publish it from the Builder page.
 
-<img src="https://chatling-assets.b-cdn.net/publish-chatbot.jpeg" width="400" alt="Publish your chatbot" />
+<img alt="Publish your chatbot" />
 
 2. Go back to the dashboard and click the `Deploy` button in the sidebar menu.
 
-<img src="https://chatling-assets.b-cdn.net/deploy-ai-agent.jpg" width="500" alt="Open Deploy page" />
+<img alt="Open Deploy page" />
 
 3. Click the `Manage` button under the `Website Widget` option.
 
-<img src="https://chatling-assets.b-cdn.net/manage-website-widget-chatbot.jpg" width="600" alt="Manage website widget" />
+<img alt="Manage website widget" />
 
 4. Design the appearance of the widget by clicking the `Open widget designer` button.
 
-<img src="https://chatling-assets.b-cdn.net/open-website-widget-designer.jpg" width="500" alt="Open website widget designer" />
+<img alt="Open website widget designer" />
 
 5. Select the display mode for your chatbot, such as "Floating Chat", "Inline", or "Fullscreen".
 
-<img src="https://chatling-assets.b-cdn.net/configure-website-widget-display-type.jpg" width="500" alt="Configure website widget display type" />
+<img alt="Configure website widget display type" />
 
 6. Copy the chatbot widget code.
 7. Paste the code into the `head` or `body` section of your website's HTML.
@@ -4962,7 +5004,7 @@ Source: https://docs.chatling.ai/chatbot/intents/introduction
 
 Learn about intents and how they work in Chatling
 
-<img src="https://chatling-assets.b-cdn.net/intents-page.jpg" alt="Intents page" width="600" />
+<img alt="Intents page" />
 
 ## What are Intents?
 
@@ -4993,14 +5035,14 @@ The Intents page is located inside your chatbot's builder. To access it:
 1. Open the Builder.
 2. Click on the `Intents` button in the top left.
 
-<img src="https://chatling-assets.b-cdn.net/accessing-intents-page.jpg" alt="Accessing the Intents page" width="400" />
+<img alt="Accessing the Intents page" />
 
 ## Creating an intent
 
 1. Open the Intents page.
 2. Click the `New` button.
 
-<img src="https://chatling-assets.b-cdn.net/new-intent-button.jpg" alt="Creating an intent" width="600" />
+<img alt="Creating an intent" />
 
 3. Enter the details for the intent.
 
@@ -5008,7 +5050,7 @@ The Intents page is located inside your chatbot's builder. To access it:
 * **Description**: Explains the user's goal or purpose this intent represents.
 * **Sample phrases**: Examples of user messages that should trigger this intent. This helps the chatbot understand and match the intent.
 
-<img src="https://chatling-assets.b-cdn.net/enter-intent-details.jpg" alt="Enter intent details" width="400" />
+<img alt="Enter intent details" />
 
 4. Click the `Create intent` button.
 
@@ -5018,7 +5060,7 @@ The Intents page is located inside your chatbot's builder. To access it:
 2. Find and click on the intent you want to edit.
 3. Make changes to the intent's details, such as name, description, and sample phrases.
 
-<img src="https://chatling-assets.b-cdn.net/edit-intent.jpg" alt="Edit intent details" width="400" />
+<img alt="Edit intent details" />
 
 4. Click the `Save` button to save your changes.
 
@@ -5027,11 +5069,11 @@ The Intents page is located inside your chatbot's builder. To access it:
 1. Open the Intents page to view all the existing intents.
 2. Click the checkbox next to one or more intents you want to delete.
 
-<img src="https://chatling-assets.b-cdn.net/select-intents-in-bulk.jpg" alt="Select intents in bulk" width="600" />
+<img alt="Select intents in bulk" />
 
 3. Click the `Delete` button in the top left.
 
-<img src="https://chatling-assets.b-cdn.net/delete-intents.jpg" alt="Delete intents" width="400" />
+<img alt="Delete intents" />
 
 
 # Using intents
@@ -5055,11 +5097,11 @@ When users send messages using the Text block, you can configure whether these m
 1. Open the editor for a text block.
 2. Next to the `Match intent` option, click the `+` button.
 
-<img src="https://chatling-assets.b-cdn.net/match_intent_block_option.jpg" alt="Match intent option" width="400" />
+<img alt="Match intent option" />
 
 3. Select the intents you want user messages to be checked against.
 
-<img src="https://chatling-assets.b-cdn.net/add-intents-to-intent-matcher-block-option.jpg" alt="Select intents for intent matcher" width="400" />
+<img alt="Select intents for intent matcher" />
 
 When a user sends a message, the chatbot will check if the message matches any of the selected intents and trigger the appropriate flow. If there are no matches, the flow will continue normally.
 
@@ -5086,21 +5128,21 @@ This provides a consistent response when users ask about order tracking anywhere
 
 1. Open `Blocks` from the sidebar.
 
-<img src="https://chatling-assets.b-cdn.net/open-blocks-menu-builder-sidebar.jpg" alt="Open Blocks menu" width="400" />
+<img alt="Open Blocks menu" />
 
 2. Under the `Triggers` section, drag and drop the `Intent` block onto the canvas.
 
-<img src="https://chatling-assets.b-cdn.net/intent-trigger-block-sidebar.jpg" alt="Drag and drop Intent trigger" width="400" />
+<img alt="Drag and drop Intent trigger" />
 
 3. Click on the block to open the editor.
 
 4. Select an intent this trigger belongs to.
 
-<img src="https://chatling-assets.b-cdn.net/select-intent-in-intent-trigger.jpg" alt="Select intent for trigger" width="600" />
+<img alt="Select intent for trigger" />
 
 5. Define the flow to run when the intent is triggered.
 
-<img src="https://chatling-assets.b-cdn.net/intent-trigger-sales-sample-flow.jpg" alt="Define flow for intent trigger" width="450" />
+<img alt="Define flow for intent trigger" />
 
 ### Local trigger
 
@@ -5109,11 +5151,11 @@ Sometimes you want different flows for the same intent depending on where in the
 * Open the block where you want to enable local trigger for an intent.
 * Find the intent under the `Match intent` option and click the `Local trigger` icon as shown below. For example, we will enable local trigger for the `Order status` intent.
 
-<img src="https://chatling-assets.b-cdn.net/local-trigger-order-status-intent.jpg" alt="Enable local trigger for intent" width="350" />
+<img alt="Enable local trigger for intent" />
 
 * Define the specific flow for this intent. For example, we will ask the user for their order number before fetching the order status. As such, whenever the input in this block matches the `Order status` intent, the flow defined here will be executed instead of the global trigger.
 
-<img src="https://chatling-assets.b-cdn.net/order-status-local-flow-example.jpg" alt="Define flow for local trigger" width="500" />
+<img alt="Define flow for local trigger" />
 
 Note that the local trigger takes precedence over the global trigger when enabled.
 
@@ -5146,7 +5188,7 @@ Unlike [AI Agents](/ai-agent/introduction) (which plan actions autonomously), Ch
 
 Chatbots also come with built-in AI capabilities, which means you can use AI to generate responses to user's questions.
 
-<img src="https://chatling-assets.b-cdn.net/chatbot-visual-builder.jpg" alt="Chatbot visual builder" width="600" />
+<img alt="Chatbot visual builder" />
 
 ## Key features
 
@@ -5162,264 +5204,6 @@ Chatbots also come with built-in AI capabilities, which means you can use AI to 
 * **AI model choice**: Use OpenAI, Anthropic, Gemini, and more.
 
 
-# Change language
-Source: https://docs.chatling.ai/chatbot/whatsapp/change-language
-
-A guide to change the language of system and other messages in your WhatsApp chatbot.
-
-You can set the language that your chatbot will use for system messages, errors, and various other messages.
-
-1. From your chatbot's dashboard, click the `Settings` button under the Chatbot menu.
-
-<img src="https://chatling-assets.b-cdn.net/change-whatsapp-language.jpg" width="300" />
-
-2. Under the `General` tab, you will see the `Language` setting. Select the language you want to use.
-
-<img src="https://chatling-assets.b-cdn.net/change-whatsapp-language-2.jpg" width="500" />
-
-3. Click `Save` to save the changes.
-
-
-# Create a WhatsApp Chatbot
-Source: https://docs.chatling.ai/chatbot/whatsapp/create
-
-Learn how to create a WhatsApp chatbot in Chatling.
-
-To create a WhatsApp chatbot, follow these steps:
-
-1. Login to your [Chatling account](https://app.chatling.ai).
-2. From the "My chatbots" page, click on the `Create chatbot` button.
-
-<img src="https://chatling-assets.b-cdn.net/how-to-create-whatsapp-chatbot-1.jpg" width="500" />
-
-3. Select `WhatsApp` as the platform.
-
-<img src="https://chatling-assets.b-cdn.net/how-to-create-whatsapp-chatbot-2.jpg" width="500" />
-
-4. Choose a template or start from scratch.
-
-<img src="https://chatling-assets.b-cdn.net/how-to-create-whatsapp-chatbot-3.jpg" width="500" />
-
-5. Enter a name for your chatbot and click on the `Create chatbot` button.
-
-<img src="https://chatling-assets.b-cdn.net/how-to-create-whatsapp-chatbot-4.jpg" width="500" />
-
-Your WhatsApp chatbot is now created, but there's a few more steps to complete before it's ready to use.
-
-Read the next section to learn how to connect your WhatsApp Business account to Chatling.
-
-
-# Customize profile
-Source: https://docs.chatling.ai/chatbot/whatsapp/customize-profile
-
-Learn how to change your profile picture, name, bio, and more.
-
-You can visit the [WhatsApp Manager](https://business.facebook.com/latest/whatsapp_manager) on Facebook to change your profile picture, display name, and business details such as description, address, email, and website.
-
-## How to customize your WhatsApp Business profile
-
-1. Go to the [WhatsApp Manager](https://business.facebook.com/latest/whatsapp_manager) on Facebook.
-2. From the sidebar, click on the `Phone numbers` tab.
-
-<img src="https://chatling-assets.b-cdn.net/whatsapp-manager-open-phone-numbers.jpg" width="400" />
-
-3. Find your phone number from the list and click on the settings icon next to it.
-
-<img src="https://chatling-assets.b-cdn.net/whatsapp-manager-open-phone-number.jpg" width="600" />
-
-4. From here, you can update the profile information for your WhatsApp Business account.
-
-<img src="https://chatling-assets.b-cdn.net/edit-whatsapp-business-profile.jpg" width="600" />
-
-
-# Disconnect WhatsApp account
-Source: https://docs.chatling.ai/chatbot/whatsapp/disconnect-account
-
-Learn how to disconnect your WhatsApp account from your chatbot in Chatling.
-
-1. From your chatbot's dashboard, click the `Settings` button under the Chatbot menu.
-
-<img src="https://chatling-assets.b-cdn.net/change-whatsapp-language.jpg" width="300" />
-
-2. Go to the `WhatsApp` tab.
-
-<img src="https://chatling-assets.b-cdn.net/open-whatsapp-tab.jpg" width="500" />
-
-3. Click the `Disconnect` button.
-
-<img src="https://chatling-assets.b-cdn.net/disconnect-whatsapp.jpg" width="500" />
-
-<Warning>Disconnecting your WhatsApp account will prevent your chatbot from sending and receiving messages from WhatsApp. To restore this functionality, you must reconnect your WhatsApp account.</Warning>
-
-
-# Display name approval
-Source: https://docs.chatling.ai/chatbot/whatsapp/display-name-approval
-
-Learn how to fix issues related to the display name approval for your WhatsApp account.
-
-If you get an error message stating `WhatsApp provided number needs display name approval before messages can be sent`, it means you cannot use the WhatsApp bot until Facebook approves your display name.
-
-This normally happens when you use the free WhatsApp number provided by Facebook when you first connect your WhatsApp account to Chatling.
-
-To fix this issue, you must verify your business in Facebook before they approve your display name.
-
-## How to verify your business in Facebook
-
-1. Go to the [Security Center](https://business.facebook.com/latest/settings/security_center) in your Facebook Business Manager.
-2. Under the `Business Verification` section, set the verification use case to `Setting up a WhatsApp Business account`.
-
-<img src="https://chatling-assets.b-cdn.net/select-verification-use-case-whatsapp-business-verification.jpg" width="600" />
-
-3. Click the `Start verification` button.
-
-<img src="https://chatling-assets.b-cdn.net/start-verification-facebook-business-manager.jpg" width="400" />
-
-4. Follow the on-screen instructions to verify your business.
-5. Once you complete the process, your business will either be verified immediately or placed under review.
-6. After your business is verified, Facebook will begin reviewing your display name. To view the status of the review:
-
-* Go to [WhatsApp Manager](https://business.facebook.com/latest/whatsapp_manager/overview).
-* Click `Phone numbers` in the left sidebar.
-* You will see the status of the review under the display name as shown below.
-
-<img src="https://chatling-assets.b-cdn.net/whatsapp-display-name-review-status.jpg" width="600" />
-
-7. Once the review is complete, you'll receive an email notification from Facebook and you can begin using your WhatsApp bot to send and receive messages.
-
-
-# WhatsApp Integration
-Source: https://docs.chatling.ai/chatbot/whatsapp/overview
-
-Learn how to create chatbots for WhatsApp.
-
-With the WhatsApp integration, you can create and deploy AI-powered chatbots directly on WhatsApp.
-
-This integration helps businesses automate customer support, handle inquiries, and engage with leads on one of the world's most popular messaging platforms.
-
-<CardGroup cols={2}>
-  <Card title="How to create a WhatsApp chatbot" icon="plus" href="/chatbot/whatsapp/create" />
-
-  <Card title="Connect your WhatsApp Business account" icon="plug" href="/chatbot/whatsapp/setup" />
-
-  <Card title="Display name approval" icon="badge-check" href="/chatbot/whatsapp/display-name-approval" />
-
-  <Card title="Change language" icon="language" href="/chatbot/whatsapp/change-language" />
-
-  <Card title="Customize profile" icon="user" href="/chatbot/whatsapp/customize-profile" />
-
-  <Card title="Disconnect account" icon="plug-circle-xmark" href="/chatbot/whatsapp/disconnect-account" />
-
-  <Card title="Re-connect account" icon="repeat" href="/chatbot/whatsapp/reconnect-account" />
-</CardGroup>
-
-
-# Reconnect WhatsApp account
-Source: https://docs.chatling.ai/chatbot/whatsapp/reconnect-account
-
-Learn how to reconnect your WhatsApp account to your chatbot in Chatling.
-
-If you want to restart the connection between your WhatsApp account and your chatbot, you can disconnect and reconnect your account.
-
-1. From your chatbot's dashboard, click the `Settings` button under the Chatbot menu.
-
-<img src="https://chatling-assets.b-cdn.net/change-whatsapp-language.jpg" width="300" />
-
-2. Go to the `WhatsApp` tab.
-
-<img src="https://chatling-assets.b-cdn.net/open-whatsapp-tab.jpg" width="500" />
-
-3. Click the `Disconnect` button.
-
-<img src="https://chatling-assets.b-cdn.net/disconnect-whatsapp.jpg" width="500" />
-
-4. An onboarding will be displayed to reconnect your account. Follow the on-screen instructions to reconnect your account. You can also check [this guide](/chatbot/whatsapp/setup) for the steps to connect your account.
-
-
-# How to connect your WhatsApp Business account
-Source: https://docs.chatling.ai/chatbot/whatsapp/setup
-
-
-
-When you create a WhatsApp chatbot, an onboarding is displayed to guide you through the process of connecting your WhatsApp Business account to Chatling. We'll walk you through the steps below.
-
-## Before you start
-
-The phone number you connect must not be in use by a WhatsApp account. If it's in use, you must delete the account from WhatsApp before continuing.
-
-Here's how to delete a WhatsApp account:
-
-1. Open the WhatsApp app.
-2. Go to `Settings` > `Account` > `Delete my account`.
-3. Type in your phone number for confirmation and tap on `Delete my account`.
-
-Once deleted, the phone number can be used to connect a new WhatsApp Business account.
-
-## How to connect your WhatsApp Business account
-
-1. Click the `Login with Facebook` button.
-
-<img src="https://chatling-assets.b-cdn.net/connect-whatsapp-to-chatling-1.jpg" width="400" />
-
-2. A Facebook authentication window will open. Click the `Continue` button.
-
-<img src="https://chatling-assets.b-cdn.net/connect-whatsapp-to-chatling-2.jpg" width="400" />
-
-3. Select `Get started` to continue.
-
-<img src="https://chatling-assets.b-cdn.net/connect-whatsapp-to-chatling-3.jpg" width="400" />
-
-4. Select a business profile or create a new one.
-
-<img src="https://chatling-assets.b-cdn.net/connect-whatsapp-to-chatling-4.jpg" width="400" />
-
-5. Choose or create a new WhatsApp Business account and profile.
-
-<img src="https://chatling-assets.b-cdn.net/connect-whatsapp-to-chatling-5.jpg" width="400" />
-
-6. Enter the required information to create a new business profile.
-
-* *Skip this step if you selected an existing business profile.*
-
-7. Add and verify your phone number.
-
-* *Skip this step if you selected an existing business profile.*
-
-<img src="https://chatling-assets.b-cdn.net/connect-whatsapp-to-chatling-6.jpg" width="400" />
-
-8. Click the `Continue` button.
-
-<img src="https://chatling-assets.b-cdn.net/connect-whatsapp-to-chatling-7.jpg" width="400" />
-
-9. Facebook begins verifying the information you provided. Once it's completed successfully, you should see a message similar to below. Click the `Finish` button.
-
-<img src="https://chatling-assets.b-cdn.net/connect-whatsapp-to-chatling-8.jpg" width="400" />
-
-10. Go back to Chatling and a message will be displayed that your authentication is being processed. If successful, you should see a message similar to below.
-
-<img src="https://chatling-assets.b-cdn.net/connect-whatsapp-to-chatling-9.jpg" width="500" />
-
-11. Next, you must enter a six digit code for two-factor authentication so that your phone number can be registered with WhatsApp. If the number already has 2FA enabled, enter the same code you had set up.
-
-<img src="https://chatling-assets.b-cdn.net/connect-whatsapp-to-chatling-10.jpg" width="400" />
-
-12. Once the phone number is registered successfully, you're all set and your WhatsApp Business account is connected to Chatling. Click the `Open Dashboard` button to continue.
-
-<img src="https://chatling-assets.b-cdn.net/connect-whatsapp-to-chatling-11.jpg" width="400" />
-
-<Warning>WhatsApp provides 1,000 free conversations per month. If you reach this limit, you must add a payment method in your Facebook Business Manager to continue sending and receiving messages.</Warning>
-
-
-# What's the difference between AI Agents and AI Chatbots?
-Source: https://docs.chatling.ai/faq/difference-between-ai-agents-and-ai-chatbots
-
-
-
-The main difference between an agent and a chatbot is how they handle conversations and tasks:
-
-* **Chatbots** rely on prebuilt flows. This means their responses and actions follow a set, predefined path that you design in advance. They are great for handling straightforward, repetitive tasks where the conversation can be mapped out step by step.
-* **AI Agents**, on the other hand, plan steps dynamically based on the context of the conversation and the instructions and actions you set. They do not require a rigid flow design. Instead, they can decide which tasks to carry out while interacting with users, making them more flexible and adaptive to complex or changing situations.
-
-
 # How to hide the chatbot on specific pages
 Source: https://docs.chatling.ai/faq/hide-chatbot-on-specific-pages
 
@@ -5431,7 +5215,7 @@ Sometimes you may want to hide your chatbot on specific pages of your website. T
 
 1. From the chatbot dashboard, go to `Settings`.
 
-<img src="https://chatling-assets.b-cdn.net/open-chatbot-settings.jpg" width="300" alt="Open chatbot settings" />
+<img alt="Open chatbot settings" />
 
 2. Click the `Visibility` tab.
 3. In the `Hide chatbot on specific pages` section, type the URL of the page where you want to hide the chatbot and press the Enter key.
@@ -5452,15 +5236,15 @@ If you want to disable this so that the chat is reset on page load, you can do s
 
 1. From your chatbot dashboard, go to `Builder`.
 
-<img src="https://chatling-assets.b-cdn.net/open-builder-from-sidebar.jpg" alt="Open builder from sidebar" width="350" />
+<img alt="Open builder from sidebar" />
 
 2. Click the settings icon in the sidebar.
 
-<img src="https://chatling-assets.b-cdn.net/open-builder-settings.jpg" alt="Open builder settings from sidebar" width="350" />
+<img alt="Open builder settings from sidebar" />
 
 3. Enable the the `Reset chat on page load` option.
 
-<img src="https://chatling-assets.b-cdn.net/enable-reset-chat-on-page-load-option.jpg" alt="Toggle reset chat on page load" width="350" />
+<img alt="Toggle reset chat on page load" />
 
 
 # What happens when AI credits are exhausted?
@@ -5487,19 +5271,19 @@ You can use a custom subdomain for the chatbot widget and sharing link rather th
 1. Open the chatbot you want to set a custom subdomain for.
 2. From the menu, click on `Settings` under the `Chatbot` section.
 
-<img src="https://chatling-assets.b-cdn.net/open-chatbot-settings.jpg" width="300" alt="Open chatbot settings" />
+<img alt="Open chatbot settings" />
 
 3. Go to the `Custom Domain` tab.
 
-<img src="https://chatling-assets.b-cdn.net/open-custom-domain-settings.jpg" width="450" alt="Open custom domain settings" />
+<img alt="Open custom domain settings" />
 
 4. Enter the custom domain you want to use for the chatbot, such as `sample.domain.com`, and click the `Save` button.
 
-<img src="https://chatling-assets.b-cdn.net/enter-custom-domain.jpg" width="600" alt="Enter custom domain" />
+<img alt="Enter custom domain" />
 
 5. Add the DNS records displayed on the page to your domain provider to activate the custom domain.
 
-<img src="https://chatling-assets.b-cdn.net/custom-domain-dns-configuration-1.jpg" width="600" alt="DNS configuration" />
+<img alt="DNS configuration" />
 
 6. Once you add the DNS records, it may take up to 24 hours for the changes to propagate. You can click the `Verify` button to check if the records are active.
 
@@ -5520,19 +5304,19 @@ Deleting a chatbot will permanently remove it from your account, and you won't b
 1. Open the chatbot you want to delete.
 2. From the menu, click on `Settings` under the `Chatbot` section.
 
-<img src="https://chatling-assets.b-cdn.net/open-chatbot-settings.jpg" width="300" alt="Open chatbot settings" />
+<img alt="Open chatbot settings" />
 
 3. Go to the `Delete` tab.
 
-<img src="https://chatling-assets.b-cdn.net/click-delete-tab-in-chatbot-settings.jpg" width="400" alt="Click delete tab in chatbot settings" />
+<img alt="Click delete tab in chatbot settings" />
 
 4. Click the `Delete` button.
 
-<img src="https://chatling-assets.b-cdn.net/click-delete-chatbot-button.jpg" width="400" alt="Click delete button" />
+<img alt="Click delete button" />
 
 5. Confirm the deletion by typing `delete permanently` in the text box and click \`Delete\`\`
 
-<img src="https://chatling-assets.b-cdn.net/chatbot-deletion-confirmation.jpg" width="400" alt="Confirm delete chatbot" />
+<img alt="Confirm delete chatbot" />
 
 
 # How to duplicate a chatbot or agent
@@ -5548,15 +5332,15 @@ By duplicating a chatbot or agent, all its settings, appearance, and builder con
 
 1. Go to your project's dashboard where you can view all your chatbots and agents.
 
-<img src="https://chatling-assets.b-cdn.net/duplicate-chatbot-guide-list-chatbots.jpg" alt="Chatbots list" width="400" />
+<img alt="Chatbots list" />
 
 2. Click on the ellipsis `...` icon next to the chatbot or agent you want to duplicate.
 
-<img src="https://chatling-assets.b-cdn.net/chatbot-more-actions-menu.jpg" alt="Chatbot more actions menu" width="400" />
+<img alt="Chatbot more actions menu" />
 
 3. Select the `Duplicate` option from the dropdown menu.
 
-<img src="https://chatling-assets.b-cdn.net/duplicate-chatbot.jpg" alt="Duplicate chatbot" width="400" />
+<img alt="Duplicate chatbot" />
 
 
 # Rate limit
@@ -5571,7 +5355,7 @@ Rate limiting allows you to limit the number of messages a user can send to your
 1. Open your chatbot's dashboard.
 2. Go to chatbot settings.
 
-<img src="https://chatling-assets.b-cdn.net/open-chatbot-settings.jpg" width="300" alt="Open chatbot settings" />
+<img alt="Open chatbot settings" />
 
 3. Click the `Security` tab.
 4. Under the `Rate limiting` section, add a rate limit, e.g. 10 messages per minute. You can add multiple rate limits for different periods of time, such as per minute, per hour, or per day.
@@ -5592,15 +5376,15 @@ You can generate a unique link for your chatbot or agent, and share it with othe
 
 1. From the dashboard, click `Share`.
 
-<img src="https://chatling-assets.b-cdn.net/click-share-sidebar-menu.jpg" width="300" alt="Click share sidebar menu" />
+<img alt="Click share sidebar menu" />
 
 2. Click `Generate Link`.
 
-<img src="https://chatling-assets.b-cdn.net/create-share-link.jpg" width="450" alt="Click create share link" />
+<img alt="Click create share link" />
 
 3. To password protect the link, enable `Require password` and type in a password.
 
-<img src="https://chatling-assets.b-cdn.net/set-password-for-sharing.jpg" width="450" alt="Require password" />
+<img alt="Require password" />
 
 4. Copy the link and share it with others.
 
@@ -5616,32 +5400,11 @@ You can set the visibility of your chatbot to be public or private. Setting to P
 
 1. From the chatbot dashboard, go to `Settings`.
 
-<img src="https://chatling-assets.b-cdn.net/open-chatbot-settings.jpg" width="300" alt="Open chatbot settings" />
+<img alt="Open chatbot settings" />
 
 2. Click the `Visibility` tab.
 3. Set the visibility to `Public` or `Private`.
 4. Click `Save` to apply the changes.
-
-
-# Whitelist domains
-Source: https://docs.chatling.ai/general-settings/whitelist-domains
-
-Learn how to whitelist domains for your chatbot to prevent it from being added to unauthorized websites.
-
-If you want to prevent your chatbot from being added to unauthorized websites, you can whitelist domains.
-
-By adding whitelisted domains, the chatbot will only appear on websites that match the whitelisted domains.
-
-## How to whitelist domains
-
-1. Open your chatbot's dashboard.
-2. Go to chatbot settings.
-
-<img src="https://chatling-assets.b-cdn.net/open-chatbot-settings.jpg" width="300" alt="Open chatbot settings" />
-
-3. Click the `Security` tab.
-4. Under the `Whitelist domains` section, type in a domain you want to whitelist and click the `+ Add` button. You can add multiple domains.
-5. Click `Save`.
 
 
 # Introduction
@@ -5669,11 +5432,33 @@ Outcome-driven assistants that understand intent and act autonomously. Agents fo
 
 Flow-based bots you design with a visual builder. Define steps, branches, and messages to create predictable, guided experiences (menus, FAQs, forms) with optional AI answers—ideal where tight control and consistency matter.
 
+## Difference between AI Agents and AI Chatbots
+
+The main difference between AI agents and chatbots is how they handle conversations and tasks.
+
+### Chatbots
+
+Chatbots operate using prebuilt flows—structured, step-by-step conversation paths that you design ahead of time in the visual builder.
+
+When a user interacts with a chatbot, it follows a predetermined script: if the user says X, the bot responds with Y, then moves to the next predefined step. This flow-based approach makes chatbots ideal for repetitive, predictable scenarios like FAQ responses, appointment booking, or lead qualification where you know exactly what questions to ask and in what order.
+
+The trade-off is that chatbots struggle with unexpected inputs or complex conversations that deviate from the designed flow.
+
+### AI Agents
+
+AI Agents work fundamentally differently—they don't follow rigid flows. Instead, they plan and execute actions dynamically based on the conversation context, the instructions you provide, and the tools/actions you've configured.
+
+When a user makes a request, an AI Agent interprets the intent, determines what needs to be done, and decides which sequence of actions to take in real-time.
+
+For example, if a user asks to "check my order and update the shipping address," an AI Agent can autonomously decide to first query the order database, then update the address in your CRM, without you having to map out this specific flow in advance. This makes AI Agents significantly more flexible and capable of handling complex, multi-step interactions that would be impractical to predefine.
+
+A major advantage of AI Agents is their multi-channel capability. You can connect multiple platforms—such as Web, WhatsApp, and Instagram—to a single agent. This allows you to maintain one unified system that handles conversations consistently across all channels, rather than building and maintaining separate chatbots for each platform. Updates to the agent's knowledge, instructions, or capabilities instantly apply everywhere.
+
 ## Documentation
 
 To get started, explore the documentation for the product you're interested in.
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="AI Agents" icon="sparkles" href="/ai-agent/introduction" />
 
   <Card title="AI Chatbots" icon="message-bot" href="/chatbot/introduction" />
@@ -5685,7 +5470,7 @@ Source: https://docs.chatling.ai/knowledge-base/add-data-source
 
 A guide on adding data sources to the Knowledge Base.
 
-<img src="https://chatling-assets.b-cdn.net/new-data-source-knowledge-base.jpg" alt="Add data sources to the Knowledge Base" width="500" />
+<img alt="Add data sources to the Knowledge Base" />
 
 ## How to add data to the knowledge base
 
@@ -5693,21 +5478,21 @@ To add data to the Knowledge Base, follow these steps:
 
 1. From the dashboard, go to `Knowledge Base`.
 
-<img src="https://chatling-assets.b-cdn.net/knowledge-base-menu.jpg" width="350" />
+<img />
 
 2. Click on the `Add new` or `New Data Source` button.
 
-<img src="https://chatling-assets.b-cdn.net/add-data-to-new-knowledge-base.jpg" />
+<img />
 
 3. Select the type of data source you want to add.
 
-<img src="https://chatling-assets.b-cdn.net/select-data-source-type-knowledge-base.jpg" />
+<img />
 
 4. Follow the on-screen instructions to add the data source to the knowledge base.
 
 Once added, it will take a few minutes for the data to be processed. The status of the data source will be displayed in the Knowledge Base page and will change to "Processed" once the AI has extracted the information.
 
-<img src="https://chatling-assets.b-cdn.net/data-source-status-knowledge-base.jpg" />
+<img />
 
 
 # Auto-sync data sources
@@ -5722,15 +5507,15 @@ Auto-syncing allows you to automatically sync your knowledge base sources at spe
 1. Go to the `Knowledge Base` page.
 2. From the `Auto-sync` column, you can select an interval for each data source.
 
-<img src="https://chatling-assets.b-cdn.net/knowledge-base-auto-sync-column.jpg" width="600" />
+<img />
 
 3. Click on the auto-sync value for a specific source and choose an interval.
 
-<img src="https://chatling-assets.b-cdn.net/change-auto-sync-for-single-source.gif" width="600" />
+<img />
 
 4. If you want to enable auto-syncing for multiple sources, you can select the sources and click the `Change auto-sync frequency` button to update all selected sources at once.
 
-<img src="https://chatling-assets.b-cdn.net/change-knowledge-base-auto-sync-bulk.gif" width="600" />
+<img />
 
 
 # Types of data sources
@@ -5765,13 +5550,13 @@ If you no longer need a data source or want to prevent the AI from using it, you
 1. Go to the `Knowledge Base`.
 2. Next to every data source is a delete icon, as shown below. Click on the icon to delete the data source.
 
-<img src="https://chatling-assets.b-cdn.net/delete-data-sources.jpg" width="600" alt="Delete data sources in the Knowledge Base" />
+<img alt="Delete data sources in the Knowledge Base" />
 
 ## How to delete data sources in bulk
 
 To delete multiple data sources at once, click on the checkbox next to the data sources you want to delete. Then, click the `Bulk action` dropdown and select `Delete`.
 
-<img src="https://chatling-assets.b-cdn.net/delete-data-sources-in-bulk.jpeg" width="600" alt="Delete data sources in bulk in the Knowledge Base" />
+<img alt="Delete data sources in bulk in the Knowledge Base" />
 
 
 # Exclude webpage sections
@@ -5788,18 +5573,18 @@ This can be useful for removing irrelevant information as well as preventing unn
 1. Go to the `Knowledge Base`.
 2. Click the `New Data Source` or `Add new` button.
 
-<img src="https://chatling-assets.b-cdn.net/add-data-to-new-knowledge-base.jpg" />
+<img />
 
 3. Select `Website`, `Sitemap`, or `URL list` as the data source type.
 4. Click the `Advanced Settings` button.
 
-<img src="https://chatling-assets.b-cdn.net/new-website-data-source-advanced-settings.jpg" width="500" />
+<img />
 
 5. You can exclude sections by entering the HTML classes or IDs of the elements you want to exclude. You must press Enter after each class or ID to add it to the list.
 
 You can also select the HTML tags you want to remove, such as `header` or `footer`.
 
-<img src="https://chatling-assets.b-cdn.net/new-website-data-source-advanced-settings-1.png" width="500" />
+<img />
 
 You can now go ahead with entering the website, sitemap, or list of URLs that you want to add to the knowledge base. The crawler will exclude the sections you specified.
 
@@ -5809,7 +5594,7 @@ Source: https://docs.chatling.ai/knowledge-base/overview
 
 Learn about the Knowledge Base and how it works.
 
-<img src="https://chatling-assets.b-cdn.net/knowledge-base.png" />
+<img />
 
 The Knowledge Base is where you upload information that the AI uses to generate responses to user queries. You can add [data sources](/knowledge-base/data-source-types) such as websites, webpages, documents, texts, and FAQs to the knowledge base.
 
@@ -5837,13 +5622,13 @@ To re-sync data sources in the Knowledge Base, follow these steps:
 * Click on the `Link` tab to view all the links you have added.
 * Next to every link is a re-sync icon, as shown below. Click on the icon to queue the link for re-syncing.
 
-<img src="https://chatling-assets.b-cdn.net/re-sync-data-sources.jpg" width="600" alt="Re-sync data sources in the Knowledge Base" />
+<img alt="Re-sync data sources in the Knowledge Base" />
 
 ## Re-sync data sources in bulk
 
 To re-sync multiple data sources at once, click on the checkbox next to the links you want to re-sync. Then, click on the `Bulk action` dropdown and select `Re-sync links`.
 
-<img src="https://chatling-assets.b-cdn.net/re-sync-in-bulk.jpeg" width="600" alt="Re-sync multiple data sources in the Knowledge Base" />
+<img alt="Re-sync multiple data sources in the Knowledge Base" />
 
 
 # Got other questions?
@@ -5865,15 +5650,15 @@ You can invite team members to your project if you are an Owner or Admin. Here's
 
 1. From the Project menu, go to **Members**.
 
-<img src="https://chatling-assets.b-cdn.net/open-members-from-sidebar-menu.jpg" alt="Go to Members" width="300" />
+<img alt="Go to Members" />
 
 2. Click the **Invite** button.
 
-<img src="https://chatling-assets.b-cdn.net/invite-team-members-button.jpg" alt="Click Invite button" width="500" />
+<img alt="Click Invite button" />
 
 3. Enter the email address of the member you want to invite and select one or more roles to assign to them.
 
-<img src="https://chatling-assets.b-cdn.net/enter-email-and-roles-for-team-member-invitation.jpg" alt="Enter member email and select roles" width="500" />
+<img alt="Enter member email and select roles" />
 
 4. Click **Send invite**.
 
@@ -5903,11 +5688,11 @@ To remove team members from your project:
 
 1. From the Project menu, go to **Members**.
 
-<img src="https://chatling-assets.b-cdn.net/open-members-from-sidebar-menu.jpg" alt="Go to Members" width="300" />
+<img alt="Go to Members" />
 
 2. Find the member you want to remove and click the ellipsis icon next to them.
 
-<img src="https://chatling-assets.b-cdn.net/open-team-member-action-menu.jpg" alt="Open team member action menu" width="500" />
+<img alt="Open team member action menu" />
 
 3. Click **Remove member**.
 
@@ -5990,23 +5775,27 @@ Source: https://docs.chatling.ai/web-widget/add-footer-text
 
 Learn how to display custom text in the chatbot's footer.
 
-<img src="https://chatling-assets.b-cdn.net/footer-custom-text.jpg" width="400" alt="Custom footer text" />
+<img alt="Custom footer text" />
 
 Often times, you may want to display a text in the chatbot's footer, such as a disclaimer, privacy notice, or any other text. Here's how you can do that.
 
-1. Open the `Appearance` settings.
+1. Open the `Deploy` page.
 
-<img src="https://chatling-assets.b-cdn.net/open-appearance-settings.jpg" width="200" alt="Open chatbot appearancesettings" />
+<img alt="Open Deploy page" />
 
-2. Click on `Texts` from the sidebar.
+2. Under the `Website Widget` option, click the brush icon to open the widget editor.
 
-<img src="https://chatling-assets.b-cdn.net/open-text-editor-appearance-settings.jpg" width="500" alt="Open texts settings" />
+<img alt="Open website widget customization" />
 
-3. Under the `Footer` section, you can enter the text you want to display.
+3. Click on `Texts` from the sidebar.
 
-<img src="https://chatling-assets.b-cdn.net/edit-chatbot-footer-text.jpg" width="500" alt="Add footer text" />
+<img alt="Open texts settings" />
 
-4. Click `Save` to apply the changes.
+4. Under the `Footer` section, you can enter the text you want to display.
+
+<img alt="Add footer text" />
+
+5. Click `Save` to apply the changes.
 
 
 # Design your chatbot widget
@@ -6023,11 +5812,11 @@ You can customize the appearance of your website chat widget to match your brand
 1. Go to your chatbot or AI agent's dashboard.
 2. Click the `Deploy` button in the sidebar menu.
 
-<img src="https://chatling-assets.b-cdn.net/deploy-ai-agent.jpg" width="500" alt="Open Deploy page" />
+<img alt="Open Deploy page" />
 
 3. Under the `Website Widget` option, click the brush icon to open the widget editor.
 
-<img src="https://chatling-assets.b-cdn.net/open-website-widget-customization-1.jpg" width="500" alt="Open website widget customization" />
+<img alt="Open website widget customization" />
 
 # Customization options
 
@@ -6054,21 +5843,19 @@ Source: https://docs.chatling.ai/web-widget/display-sources
 
 Learn how to enable sources for AI responses.
 
-1. From your chatbot's dashboard, click on the `Appearance` menu.
-
-<img src="https://chatling-assets.b-cdn.net/click-appearance-menu.jpg" alt="Appearance menu" width="250" />
+1. Open the widget designer. To learn how to access it, see [this guide](/web-widget/customize#how-to-customize-the-widget).
 
 2. Go to `Configure`.
 
-<img src="https://chatling-assets.b-cdn.net/click-configure-icon.jpg" alt="Configure menu" width="350" />
+<img alt="Configure menu" />
 
 3. Enable the `Show Sources for AI Response` option. You can customize it by selecting the number and type of sources to display.
 
-<img src="https://chatling-assets.b-cdn.net/enable-ai-response-sources.jpg" alt="Enable Show Sources for AI Response" width="500" />
+<img alt="Enable Show Sources for AI Response" />
 
 Here's how it appears in the chatbot:
 
-<img src="https://chatling-assets.b-cdn.net/ai-response-sources-preview.jpg" alt="AI response sources" width="350" />
+<img alt="AI response sources" />
 
 
 # Download transcripts
@@ -6081,14 +5868,14 @@ If you'd like your chatbot users to have the option to download chat transcripts
 ## How to allow end-users to download chat transcripts
 
 1. Open your chatbot's dashboard.
-2. Go to `Appearance`.
-3. Click on `Configure` from the sidebar.
+2. Go to the widget designer. To learn how to access it, see [this guide](/web-widget/customize).
+3. Click `Configure` from the sidebar.
 
-<img src="https://chatling-assets.b-cdn.net/open-appearance-configuration-settings.jpg" width="400" alt="Open apperance configuration settings" />
+<img alt="Open apperance configuration settings" />
 
 4. Enable `Allow users to download chat transcripts`.
 
-<img src="https://chatling-assets.b-cdn.net/enable-chat-transcript-download.jpg" width="600" alt="Enable chat transcript download" />
+<img alt="Enable chat transcript download" />
 
 5. Click `Save`.
 
@@ -6101,45 +5888,45 @@ Learn how to add Chatling to your Bubble website
 1. Go to your dashboard.
 2. Click `Deploy` button in the sidebar menu.
 
-<img src="https://chatling-assets.b-cdn.net/deploy-ai-agent.jpg" width="500" alt="Open Deploy page" />
+<img alt="Open Deploy page" />
 
 3. Click the `Manage` button under the `Website Widget` option.
 
-<img src="https://chatling-assets.b-cdn.net/manage-website-widget-chatbot.jpg" width="600" alt="Manage website widget" />
+<img alt="Manage website widget" />
 
 4. Design the appearance of the widget by clicking the `Open widget designer` button.
 
-<img src="https://chatling-assets.b-cdn.net/open-website-widget-designer.jpg" width="500" alt="Open website widget designer" />
+<img alt="Open website widget designer" />
 
 5. Select the display mode for your chatbot, such as "Floating Chat", "Inline", or "Fullscreen".
 
-<img src="https://chatling-assets.b-cdn.net/configure-website-widget-display-type.jpg" width="500" alt="Configure website widget display type" />
+<img alt="Configure website widget display type" />
 
 6. Copy the widget code.
 
-<img src="https://chatling-assets.b-cdn.net/website-widget-code.jpg" width="500" alt="Copy widget code" />
+<img alt="Copy widget code" />
 
 7. Go to your Bubble account and open the app/website where you want to add the widget.
 
-<img src="https://chatling-assets.b-cdn.net/ZhBX8hrFxhpPBV9M.jpg" alt="Bubble dashboard" width="600" />
+<img alt="Bubble dashboard" />
 
 8. On the side, click the gear icon to open Settings.
 
-<img src="https://chatling-assets.b-cdn.net/ZhBYHRrFxhpPBV9P.jpg" alt="Open Bubble app settings" width="350" />
+<img alt="Open Bubble app settings" />
 
 9. Go to `SEO / metatags`.
 
-<img src="https://chatling-assets.b-cdn.net/ZhBX8xrFxhpPBV9N.jpg" alt="Bubble SEO / metatags" width="600" />
+<img alt="Bubble SEO / metatags" />
 
 10. Under the `SEO settings` section, paste the widget code in the header or body textbox.
 
-<img src="https://chatling-assets.b-cdn.net/ZhBX8BrFxhpPBV9K.jpg" alt="Add chatbot code to Bubble header or body" width="600" />
+<img alt="Add chatbot code to Bubble header or body" />
 
 11. The settings will be saved automatically. Click the Preview icon to confirm that the widget has been added.
 
 * Note that this method only works on paid plans. If you're on a free account, Bubble doesn't load the widget.
 
-<img src="https://chatling-assets.b-cdn.net/ZhBX8RrFxhpPBV9L.jpg" alt="Bubble chatbot" width="600" />
+<img alt="Bubble chatbot" />
 
 
 # Custom Website
@@ -6152,23 +5939,23 @@ You can easily add Chatling to your website by pasting the widget code to your w
 1. Go to your dashboard.
 2. Click `Deploy` button in the sidebar menu.
 
-<img src="https://chatling-assets.b-cdn.net/deploy-ai-agent.jpg" width="500" alt="Open Deploy page" />
+<img alt="Open Deploy page" />
 
 3. Click the `Manage` button under the `Website Widget` option.
 
-<img src="https://chatling-assets.b-cdn.net/manage-website-widget-chatbot.jpg" width="600" alt="Manage website widget" />
+<img alt="Manage website widget" />
 
 4. Design the appearance of the widget by clicking the `Open widget designer` button.
 
-<img src="https://chatling-assets.b-cdn.net/open-website-widget-designer.jpg" width="500" alt="Open website widget designer" />
+<img alt="Open website widget designer" />
 
 5. Select the display mode for your chatbot, such as "Floating Chat", "Inline", or "Fullscreen".
 
-<img src="https://chatling-assets.b-cdn.net/configure-website-widget-display-type.jpg" width="500" alt="Configure website widget display type" />
+<img alt="Configure website widget display type" />
 
 6. Copy the widget code.
 
-<img src="https://chatling-assets.b-cdn.net/website-widget-code.jpg" width="500" alt="Copy widget code" />
+<img alt="Copy widget code" />
 
 7. Paste the code into the `head` or `body` section of your website's HTML.
 
@@ -6183,56 +5970,56 @@ Learn how to add Chatling to your website using Google Tag Manager
 1. Go to your dashboard.
 2. Click `Deploy` button in the sidebar menu.
 
-<img src="https://chatling-assets.b-cdn.net/deploy-ai-agent.jpg" width="500" alt="Open Deploy page" />
+<img alt="Open Deploy page" />
 
 3. Click the `Manage` button under the `Website Widget` option.
 
-<img src="https://chatling-assets.b-cdn.net/manage-website-widget-chatbot.jpg" width="600" alt="Manage website widget" />
+<img alt="Manage website widget" />
 
 4. Design the appearance of the widget by clicking the `Open widget designer` button.
 
-<img src="https://chatling-assets.b-cdn.net/open-website-widget-designer.jpg" width="500" alt="Open website widget designer" />
+<img alt="Open website widget designer" />
 
 5. Select the display mode for your chatbot, such as "Floating Chat", "Inline", or "Fullscreen".
 
-<img src="https://chatling-assets.b-cdn.net/configure-website-widget-display-type.jpg" width="500" alt="Configure website widget display type" />
+<img alt="Configure website widget display type" />
 
 6. Copy the widget code.
 
-<img src="https://chatling-assets.b-cdn.net/website-widget-code.jpg" width="500" alt="Copy widget code" />
+<img alt="Copy widget code" />
 
 7. Go to Google Tag Manager and open your website's container.
 8. Click on `Add a new tag`.
 
-<img src="https://chatling-assets.b-cdn.net/new-tag-gtm.jpg" alt="Add new tag" width="450" />
+<img alt="Add new tag" />
 
 9. Enter a name for the tag, such as `Chatling`.
 
-<img src="https://chatling-assets.b-cdn.net/rename-tag-gtm.jpg" alt="Rename tag" width="450" />
+<img alt="Rename tag" />
 
 10. Click on `Tag Configuration`.
 
-<img src="https://chatling-assets.b-cdn.net/click-tag-configuration-gtm.jpg" alt="Open tag configuration" width="450" />
+<img alt="Open tag configuration" />
 
 11. Select `Custom HTML`.
 
-<img src="https://chatling-assets.b-cdn.net/choose-custom-html-tag-gtm.jpg" alt="Select custom HTML" width="600" />
+<img alt="Select custom HTML" />
 
 12. Paste the widget code into the `HTML` field.
 
-<img src="https://chatling-assets.b-cdn.net/paste-code-gtm-tag.jpg" alt="Paste code in HTML tag" width="550" />
+<img alt="Paste code in HTML tag" />
 
 13. Click on `Triggering`.
 
-<img src="https://chatling-assets.b-cdn.net/click-triggering-gtm-tag.jpg" alt="Open triggering" width="550" />
+<img alt="Open triggering" />
 
 14. Select `All Pages`.
 
-<img src="https://chatling-assets.b-cdn.net/trigger-all-pages-gtm.jpg" alt="Trigger all pages" width="600" />
+<img alt="Trigger all pages" />
 
 15. Click `Save`.
 
-<img src="https://chatling-assets.b-cdn.net/save-gtm-tag.jpg" alt="Save tag" width="600" />
+<img alt="Save tag" />
 
 
 # Overview
@@ -6246,7 +6033,7 @@ Simply copy the widget code from your chatbot's dashboard and add it to your web
 
 Below are guides on adding Chatling to your custom websites and CMS platforms.
 
-<CardGroup cols={3}>
+<CardGroup>
   <Card title="Custom Website" icon="globe" href="/web-widget/installation/custom-website" />
 
   <Card title="WordPress" icon="wordpress" href="/web-widget/installation/wordpress" />
@@ -6275,59 +6062,59 @@ Learn how to add Chatling to your PrestaShop website
 1. Go to your dashboard.
 2. Click `Deploy` button in the sidebar menu.
 
-<img src="https://chatling-assets.b-cdn.net/deploy-ai-agent.jpg" width="500" alt="Open Deploy page" />
+<img alt="Open Deploy page" />
 
 3. Click the `Manage` button under the `Website Widget` option.
 
-<img src="https://chatling-assets.b-cdn.net/manage-website-widget-chatbot.jpg" width="600" alt="Manage website widget" />
+<img alt="Manage website widget" />
 
 4. Design the appearance of the widget by clicking the `Open widget designer` button.
 
-<img src="https://chatling-assets.b-cdn.net/open-website-widget-designer.jpg" width="500" alt="Open website widget designer" />
+<img alt="Open website widget designer" />
 
 5. Select the display mode for your chatbot, such as "Floating Chat", "Inline", or "Fullscreen".
 
-<img src="https://chatling-assets.b-cdn.net/configure-website-widget-display-type.jpg" width="500" alt="Configure website widget display type" />
+<img alt="Configure website widget display type" />
 
 6. Copy the widget code.
 
-<img src="https://chatling-assets.b-cdn.net/website-widget-code.jpg" width="500" alt="Copy chatbot widget code" />
+<img alt="Copy chatbot widget code" />
 
 7. Download our [PrestaShop module](https://static.chatling.ai/files/chatling-prestashop-v1-0.zip).
 
 8. Extract the zip file and open the `chatling` folder.
 
-<img src="https://images.prismic.io/chatling-integrations/c8d45397-07e2-4b48-b6f7-8cc15669c7fa_open-chatling-prestashop-module-folder.jpg?auto=compress,format" alt="Extract chatling prestashop module" width="400" />
+<img alt="Extract chatling prestashop module" />
 
 9. Inside the folder, open the `chatling.php` file using a text editor of your choice, such as Notepad on Windows or TextEdit on macOS.
 
-<img src="https://images.prismic.io/chatling-integrations/a057d205-8de5-4979-bff7-5be6d80625d4_open-chatling-php-file.jpg?auto=compress,format" alt="Open chatling.php file" width="400" />
+<img alt="Open chatling.php file" />
 
 10. Go to the bottom of the file and find the line that says `Paste code snippet here`.
 
-<img src="https://images.prismic.io/chatling-integrations/64936930-0814-4471-820f-1a90bf6ece2f_chatling-prestashop-module-hook-header.jpg?auto=compress,format" alt="Open chatling.php file" width="500" />
+<img alt="Open chatling.php file" />
 
 Replace it with the code snippet you copied in step #2, as shown below.
 
-<img src="https://images.prismic.io/chatling-integrations/b53ab266-e04d-40e6-af27-8f29197878bf_chatling-prestashop-module-chatbot-code-snippet.jpg?auto=compress,format" alt="Replace code snippet" width="500" />
+<img alt="Replace code snippet" />
 
 11. Save the file and close it.
 
 12. Zip the `chatling` folder. Do not rename the folder to anything else otherwise the module won't work.
 
-<img src="https://images.prismic.io/chatling-integrations/c8d45397-07e2-4b48-b6f7-8cc15669c7fa_open-chatling-prestashop-module-folder.jpg?auto=compress,format" alt="Zip chatling folder" width="400" />
+<img alt="Zip chatling folder" />
 
 13. Go to your PrestaShop admin panel. From the sidebar menu, click `Module` > `Module Manager`.
 
-<img src="https://images.prismic.io/chatling-integrations/57c0980c-234b-49bc-a233-d3f1ff8ed6b9_prestashop-module-manager.jpg?auto=compress,format" alt="PrestaShop module manager" width="400" />
+<img alt="PrestaShop module manager" />
 
 14. Click the `Upload a module` button in the top right. Browse and select the module's zip file.
 
-<img src="https://images.prismic.io/chatling-integrations/5173a45d-3e6d-4f3b-b60b-d4895b277c88_upload-module-prestashop.jpg?auto=compress,format" alt="Upload chatling prestashop module" width="600" />
+<img alt="Upload chatling prestashop module" />
 
 15. Once the module is uploaded, the widget will be live on your website.
 
-<img src="https://images.prismic.io/chatling-integrations/9615570b-de7b-4872-84b8-e19ac2f6d988_prestashop-chatbot.jpg?auto=compress,format" alt="PrestaShop chatbot live" width="400" />
+<img alt="PrestaShop chatbot live" />
 
 
 # Shopify
@@ -6340,45 +6127,45 @@ Learn how to add Chatling to your Shopify store
 1. Go to your dashboard.
 2. Click `Deploy` button in the sidebar menu.
 
-<img src="https://chatling-assets.b-cdn.net/deploy-ai-agent.jpg" width="500" alt="Open Deploy page" />
+<img alt="Open Deploy page" />
 
 3. Click the `Manage` button under the `Website Widget` option.
 
-<img src="https://chatling-assets.b-cdn.net/manage-website-widget-chatbot.jpg" width="600" alt="Manage website widget" />
+<img alt="Manage website widget" />
 
 4. Design the appearance of the widget by clicking the `Open widget designer` button.
 
-<img src="https://chatling-assets.b-cdn.net/open-website-widget-designer.jpg" width="500" alt="Open website widget designer" />
+<img alt="Open website widget designer" />
 
 5. Select the display mode for your chatbot, such as "Floating Chat", "Inline", or "Fullscreen".
 
-<img src="https://chatling-assets.b-cdn.net/configure-website-widget-display-type.jpg" width="500" alt="Configure website widget display type" />
+<img alt="Configure website widget display type" />
 
 6. Copy the widget code.
 
-<img src="https://chatling-assets.b-cdn.net/website-widget-code.jpg" width="500" alt="Copy widget code" />
+<img alt="Copy widget code" />
 
 7. Go to your Shopify dashboard and click on `Online Store` from the sidebar.
 
-<img src="https://chatling-assets.b-cdn.net/8b3114ad-4b34-49c1-b24f.jpg" width="350" />
+<img />
 
 8. Edit your theme by clicking the ellipsis icon next to your current theme and choosing `Edit code`.
 
-<img src="https://chatling-assets.b-cdn.net/3e16b15a-6bc5-45c3-bf8e.jpg" width="600" />
+<img />
 
 9. Find and open the `theme.liquid` file From the sidebar where the list of files is displayed.
 
-<img src="https://chatling-assets.b-cdn.net/48cde0d8-f309-4c73-97aa.jpg" width="250" />
+<img />
 
 10. Paste the widget code in the `<head>` section. You can paste it anywhere between the opening `<head>` tag and the closing `</head>` tag.
 
-<img src="https://chatling-assets.b-cdn.net/12378539-03e7-4e2a-88ca.jpg" width="600" />
+<img />
 
 11. Click the Save button.
 
 The chatbot will be live on your website and should appear across all your store's pages.
 
-<img src="https://chatling-assets.b-cdn.net/70e38199-d0e9-4d6b-a77e.jpg" width="600" />
+<img />
 
 ## Method 2: Using Customization
 
@@ -6386,29 +6173,29 @@ The chatbot will be live on your website and should appear across all your store
 
 2. From your Shopify dashboard, click on `Online Store` and go to `Themes`.
 
-<img src="https://chatling-assets.b-cdn.net/open-themes-shopify.jpg" width="350" />
+<img />
 
 3. Click on the `Customize` button next to your current theme.
 
-<img src="https://chatling-assets.b-cdn.net/click-customize-theme-shopify.jpg" width="600" />
+<img />
 
 4. Under the `Header` section, choose `Add section`. Search for `Custom liquid` and add it.
 
-<img src="https://chatling-assets.b-cdn.net/add-custom-liquid-shopify.jpg" width="500" />
+<img />
 
 5. Open the `Custom liquid` editor and paste your widget code into the `Liquid code` field.
 
-<img src="https://chatling-assets.b-cdn.net/add-chatling-widget-code-to-custom-liquid.jpg" width="350" />
+<img />
 
 6. Set the `Top padding` and `Bottom padding` to `0` so the section doesn't create a blank space in your site's header.
 
-<img src="https://chatling-assets.b-cdn.net/set-padding-to-zero-shopify-custom-liquid.jpg" width="350" />
+<img />
 
 7. Click the `Save` button.
 
 The widget will be live on your website and should appear across all your store's pages.
 
-<img src="https://chatling-assets.b-cdn.net/shopify-chatbot-preview-using-custom-liquid.jpg" width="600" />
+<img />
 
 
 # Squarespace
@@ -6419,49 +6206,49 @@ Learn how to add Chatling to your Squarespace website
 1. Go to your dashboard.
 2. Click `Deploy` button in the sidebar menu.
 
-<img src="https://chatling-assets.b-cdn.net/deploy-ai-agent.jpg" width="500" alt="Open Deploy page" />
+<img alt="Open Deploy page" />
 
 3. Click the `Manage` button under the `Website Widget` option.
 
-<img src="https://chatling-assets.b-cdn.net/manage-website-widget-chatbot.jpg" width="600" alt="Manage website widget" />
+<img alt="Manage website widget" />
 
 4. Design the appearance of the widget by clicking the `Open widget designer` button.
 
-<img src="https://chatling-assets.b-cdn.net/open-website-widget-designer.jpg" width="500" alt="Open website widget designer" />
+<img alt="Open website widget designer" />
 
 5. Select the display mode for your chatbot, such as "Floating Chat", "Inline", or "Fullscreen".
 
-<img src="https://chatling-assets.b-cdn.net/configure-website-widget-display-type.jpg" width="500" alt="Configure website widget display type" />
+<img alt="Configure website widget display type" />
 
 6. Copy the widget code.
 
-<img src="https://chatling-assets.b-cdn.net/website-widget-code.jpg" width="500" alt="Copy widget code" />
+<img alt="Copy widget code" />
 
 7. Sign in to your Squarespace account and open the website where you want to add the widget.
 
-<img src="https://chatling-assets.b-cdn.net/c1975a05-a92c-4c1a-9850.jpg" width="600" />
+<img />
 
 8. From the sidebar menu, select `Website`.
 
-<img src="https://chatling-assets.b-cdn.net/1121c29b-0232-40aa-ae21.jpg" width="350" />
+<img />
 
 9. Scroll to the bottom of the sidebar menu and choose `Website Tools`.
 
-<img src="https://chatling-assets.b-cdn.net/943e67d4-c20d-4960.jpg" width="350" />
+<img />
 
 10. Open `Code Injection`.
 
 * If you're on an older version of Squarespace, such as v7.0, code injection is located in `Settings` > `Developer Tools` > `Code Injection`.
 
-<img src="https://chatling-assets.b-cdn.net/23f10f77-2990-4c72-941c.jpg" width="350" />
+<img />
 
 11. Paste the widget code in the `Header` section, and click `Save`.
 
-<img src="https://chatling-assets.b-cdn.net/e973c9e8-beba-4135-be95.jpg" width="600" />
+<img />
 
 12. The widget is now live on your website, and visitors can interact with it.
 
-<img src="https://chatling-assets.b-cdn.net/47011305-450d-48e7-bae3.jpg" width="500" />
+<img />
 
 
 # Webflow
@@ -6472,43 +6259,43 @@ Learn how to add Chatling to your Webflow website
 1. Go to your dashboard.
 2. Click `Deploy` button in the sidebar menu.
 
-<img src="https://chatling-assets.b-cdn.net/deploy-ai-agent.jpg" width="500" alt="Open Deploy page" />
+<img alt="Open Deploy page" />
 
 3. Click the `Manage` button under the `Website Widget` option.
 
-<img src="https://chatling-assets.b-cdn.net/manage-website-widget-chatbot.jpg" width="600" alt="Manage website widget" />
+<img alt="Manage website widget" />
 
 4. Design the appearance of the widget by clicking the `Open widget designer` button.
 
-<img src="https://chatling-assets.b-cdn.net/open-website-widget-designer.jpg" width="500" alt="Open website widget designer" />
+<img alt="Open website widget designer" />
 
 5. Select the display mode for your chatbot, such as "Floating Chat", "Inline", or "Fullscreen".
 
-<img src="https://chatling-assets.b-cdn.net/configure-website-widget-display-type.jpg" width="500" alt="Configure website widget display type" />
+<img alt="Configure website widget display type" />
 
 6. Copy the widget code.
 
-<img src="https://chatling-assets.b-cdn.net/website-widget-code.jpg" width="500" alt="Copy widget code" />
+<img alt="Copy widget code" />
 
 7. Go to your Webflow dashboard and open the website where you want to add the widget.
 
-<img src="https://chatling-assets.b-cdn.net/ZhF7YRrFxhpPBWb3.jpg" width="600" />
+<img />
 
 8. Click the webflow icon in the top left and select `Site settings`.
 
-<img src="https://chatling-assets.b-cdn.net/ZhF7YhrFxhpPBWb4.jpg" width="350" />
+<img />
 
 9. Click on `Custom code` from the sidebar.
 
-<img src="https://chatling-assets.b-cdn.net/ZhF7XxrFxhpPBWb1.jpg" width="450" />
+<img />
 
 10. Paste the widget code in the `Head code` textbox and click `Save`.
 
-<img src="https://chatling-assets.b-cdn.net/ZhF7XRrFxhpPBWbz.jpg" width="600" />
+<img />
 
 11. Publish the website. The widget will now be appear on your Webflow website.
 
-<img src="https://chatling-assets.b-cdn.net/ZhF8fRrFxhpPBWb.jpeg" width="600" />
+<img />
 
 
 # Wix
@@ -6519,43 +6306,43 @@ Learn how to add Chatling to your Wix website
 1. Go to your dashboard.
 2. Click `Deploy` button in the sidebar menu.
 
-<img src="https://chatling-assets.b-cdn.net/deploy-ai-agent.jpg" width="500" alt="Open Deploy page" />
+<img alt="Open Deploy page" />
 
 3. Click the `Manage` button under the `Website Widget` option.
 
-<img src="https://chatling-assets.b-cdn.net/manage-website-widget-chatbot.jpg" width="600" alt="Manage website widget" />
+<img alt="Manage website widget" />
 
 4. Design the appearance of the widget by clicking the `Open widget designer` button.
 
-<img src="https://chatling-assets.b-cdn.net/open-website-widget-designer.jpg" width="500" alt="Open website widget designer" />
+<img alt="Open website widget designer" />
 
 5. Select the display mode for your chatbot, such as "Floating Chat", "Inline", or "Fullscreen".
 
-<img src="https://chatling-assets.b-cdn.net/configure-website-widget-display-type.jpg" width="500" alt="Configure website widget display type" />
+<img alt="Configure website widget display type" />
 
 6. Copy the widget code.
 
-<img src="https://chatling-assets.b-cdn.net/website-widget-code.jpg" width="500" alt="Copy widget code" />
+<img alt="Copy widget code" />
 
 7. Go to your Wix dashboard and click `Settings` from the sidebar menu.
 
-<img src="https://chatling-assets.b-cdn.net/4f1ac71d-1ead-4971-8bbc.jpg" width="400" />
+<img />
 
 8. Scroll down to the Advanced section and click `Custom code`.
 
-<img src="https://chatling-assets.b-cdn.net/29731083-c794-447c-b622.jpg" width="600" />
+<img />
 
 9. Under the Head section, click `Add Code`.
 
-<img src="https://chatling-assets.b-cdn.net/3593eedc-6702-4a18-8da1.jpg" width="600" />
+<img />
 
 10. Paste the widget code into the text box that appears and click `Apply`.
 
-<img src="https://chatling-assets.b-cdn.net/3782601d-5476-474c-9508.jpg" width="600" />
+<img />
 
 11. The widget is now live on your Wix website and visitors can interact with it.
 
-<img src="https://chatling-assets.b-cdn.net/c41af4fb-5539-41b9-ae56.jpg" width="600" />
+<img />
 
 
 # WordPress
@@ -6568,41 +6355,41 @@ Learn how to add Chatling to your WordPress website
 1. Go to your dashboard.
 2. Click `Deploy` button in the sidebar menu.
 
-<img src="https://chatling-assets.b-cdn.net/deploy-ai-agent.jpg" width="500" alt="Open Deploy page" />
+<img alt="Open Deploy page" />
 
 3. Click the `Manage` button under the `Website Widget` option.
 
-<img src="https://chatling-assets.b-cdn.net/manage-website-widget-chatbot.jpg" width="600" alt="Manage website widget" />
+<img alt="Manage website widget" />
 
 4. Design the appearance of the widget by clicking the `Open widget designer` button.
 
-<img src="https://chatling-assets.b-cdn.net/open-website-widget-designer.jpg" width="500" alt="Open website widget designer" />
+<img alt="Open website widget designer" />
 
 5. Select the display mode for your chatbot, such as "Floating Chat", "Inline", or "Fullscreen".
 
-<img src="https://chatling-assets.b-cdn.net/configure-website-widget-display-type.jpg" width="500" alt="Configure website widget display type" />
+<img alt="Configure website widget display type" />
 
 6. Copy the widget code.
 
-<img src="https://chatling-assets.b-cdn.net/website-widget-code.jpg" width="500" alt="Copy widget code" />
+<img alt="Copy widget code" />
 
 7. In your WordPress dashboard, go to `Plugins` > `Add new plugin`.
 
-<img src="https://chatling-assets.b-cdn.net/add-new-plugin-wordpress.jpg" width="300" alt="Add new plugin" />
+<img alt="Add new plugin" />
 
 8. Search for the `Insert Headers And Footers` plugin and install the one by WPBrigade.
 
-<img src="https://chatling-assets.b-cdn.net/install-insert-header-footer-plugin-wordpress.jpg" width="500" alt="Insert Headers And Footers plugin" />
+<img alt="Insert Headers And Footers plugin" />
 
 9. Once installed, activate the plugin.
 
 10. Go to `Settings` > `WP Headers and Footers` from the sidebar.
 
-<img src="https://chatling-assets.b-cdn.net/open-wp-headers-footers-settings.jpg" width="300" alt="Open WP Headers and Footers settings" />
+<img alt="Open WP Headers and Footers settings" />
 
 11. Paste the chatbot widget code in the header section.
 
-<img src="https://chatling-assets.b-cdn.net/paste-widget-code-in-wp-headers-footers.jpg" width="400" alt="Add chatbot widget code in the header section" />
+<img alt="Add chatbot widget code in the header section" />
 
 12. Click `Save Changes`.
 
@@ -6614,15 +6401,15 @@ Learn how to add Chatling to your WordPress website
 
 3. From the sidebar menu, select `Appearance` > `Theme File Editor`.
 
-<img src="https://chatling-assets.b-cdn.net/open-wordpress-theme-file-editor.jpg" width="300" alt="Open theme file editor" />
+<img alt="Open theme file editor" />
 
 4. Under the `Theme Files` section (right side of the screen), search and open the `header.php` file.
 
-<img src="https://chatling-assets.b-cdn.net/open-theme-header-editor-wordpress.jpg" width="300" alt="Edit theme header" />
+<img alt="Edit theme header" />
 
 5. Paste the widget code before the closing `</head>` tag.
 
-<img src="https://chatling-assets.b-cdn.net/paste-widget-code-in-theme-header-file.jpg" width="500" alt="Embed code in header" />
+<img alt="Embed code in header" />
 
 6. Click `Update File` to save.
 
@@ -6638,19 +6425,14 @@ By default, the language is set to `Auto`. This means that the chatbot will auto
 
 ## Set the language
 
-1. From your chatbot's dashboard, go to **Appearance**.
+1. Open the widget designer. To learn how to access it, see [this guide](/web-widget/customize).
 
-<img src="https://chatling-assets.b-cdn.net/open-chatbot-appearance-settings.jpg" alt="Open chatbot appearance settings" width="300" />
-
-2. Click `Configure` from the sidebar.
-
-<img src="https://chatling-assets.b-cdn.net/click-configure-appearance.jpg" alt="Go to Configure" width="450px" />
-
-3. Use the `Interface language` dropdown to select the language of your chatbot.
+2) Click `Interface` from the sidebar.
+3) Use the `Widget language` dropdown to select the language of your chatbot.
 
 Note: If you set the language to `Auto`, the chatbot will automatically detect the user's language based on their browser settings.
 
-<img src="https://chatling-assets.b-cdn.net/set-chatbot-language.jpg" alt="Set chatbot language" width="450px" />
+<img alt="Set chatbot language" />
 
 4. Click `Save`.
 
@@ -6668,21 +6450,21 @@ When outside of the operating hours, your chatbot will be automatically hidden, 
 
 1. From your chatbot's dashboard, go to the **Settings** page.
 
-<img src="https://chatling-assets.b-cdn.net/open-chatbot-settings.jpg" alt="Open chatbot settings" width="300" />
+<img alt="Open chatbot settings" />
 
 2. Click the `Visibility` tab.
 
-<img src="https://chatling-assets.b-cdn.net/open-chatbot-visibility.jpg" alt="Open chatbot visibility settings" width="450px" />
+<img alt="Open chatbot visibility settings" />
 
 3. Under the `Operating hours` section, click the `Set operating hours` button.
 
-<img src="https://chatling-assets.b-cdn.net/set-chatbot-operating-hours.jpg" alt="Set chatbot operating hours" width="450px" />
+<img alt="Set chatbot operating hours" />
 
 4. Select the days and times when the chatbot should be visible. **Note that the timezone is UTC.**
 
 To keep the chatbot visible throughout the day, leave the start and end times empty.
 
-<img src="https://chatling-assets.b-cdn.net/define-chatbot-operating-hours.jpg" alt="Define chatbot operating hours" width="450px" />
+<img alt="Define chatbot operating hours" />
 
 5. Click the `Add` button to add the schedule.
 6. Click the `Save` button to save the changes.
@@ -6710,7 +6492,7 @@ With the widget's code snippet, you can pass any data to the chatbot. This is us
 
 When you [install the chatbot](/web-widget/installation/overview) on your website, you get a code snippet similar to this:
 
-```html  theme={null}
+```html theme={null}
 <script> 
 window.chtlConfig = { 
     chatbotId: "<WIDGET_ID>" 
@@ -6722,7 +6504,7 @@ window.chtlConfig = {
 
 You can pass custom data during launch by adding the `variables` property to the `chtlConfig` object, and listing the variable names and their values.
 
-```javascript  theme={null}
+```javascript theme={null}
 window.chtlConfig = { 
     chatbotId: "<WIDGET_ID>",
     variables: {
@@ -6737,11 +6519,11 @@ window.chtlConfig = {
 
 Let's say you want to pass the user's name, email and age to the chatbot. First, you need to [create variables](/chatbot/builder/variables/how-to-create-variables) for them in the builder.
 
-<img src="https://chatling-assets.b-cdn.net/variables-for-storing-custom-data-from-widget.jpg" width="350" />
+<img />
 
 Next, add the variable values to your widget's code snippet. You must make sure that the variable names match exactly as they are in the builder.
 
-```javascript  theme={null}
+```javascript theme={null}
 window.chtlConfig = { 
     chatbotId: "<WIDGET_ID>",
     variables: {
@@ -6754,13 +6536,13 @@ window.chtlConfig = {
 
 Now if you use the variables in your chatbot's flow, they will have the values you passed during launch.
 
-<img src="https://chatling-assets.b-cdn.net/pass-custom-data-during-launch-example-3.jpg" width="400" />
+<img />
 
 ## Pass custom data after launch
 
 If at any point after launching the chatbot, you want to pass some data to it, you can do so by calling the `window.Chatling.setVariables` function.
 
-```javascript  theme={null}
+```javascript theme={null}
 window.Chatling.setVariables({
     "contact_name": "Rick Astley",
     "contact_email": "rick.astley@example.com",
@@ -6780,6 +6562,28 @@ window.Chatling.setVariables({
 - This will overwrite any existing values for the variables.
 
 
+# Remove "Powered by Chatling" branding
+Source: https://docs.chatling.ai/web-widget/remove-powered-by-chatling-branding
+
+Learn how to remove the Chatling branding from your chatbot widget.
+
+## Which plans can remove the branding?
+
+The branding can be removed if you're on the **Ultimate** plan or by purchasing the [Remove "Powered by Chatling" branding add-on](https://chatling.com/pricing).
+
+## How to remove the branding
+
+1. Open the widget designer. To learn how to access it, see [this guide](/web-widget/customize#how-to-customize-the-widget).
+
+2. Go to `Configure`.
+
+<img alt="Configure menu" />
+
+3. Enable the `Hide "Powered by Chatling"` option.
+
+4. Click the `Save` button to apply the changes.
+
+
 # Satisfaction survey
 Source: https://docs.chatling.ai/web-widget/satisfaction-survey
 
@@ -6791,29 +6595,50 @@ You can collect feedback from users at the end of their chat by displaying a sat
 
 1. From the chatbot dashboard, go to `Settings`.
 
-<img src="https://chatling-assets.b-cdn.net/open-chatbot-settings.jpg" width="250" alt="Open chatbot settings" />
+<img alt="Open chatbot settings" />
 
 2. Click the `Satisfaction Survey` tab.
 
-<img src="https://chatling-assets.b-cdn.net/click-satisfaction-survey-tab-in-chatbot-settings.jpg" width="450" alt="Click satisfaction survey tab in chatbot settings" />
+<img alt="Click satisfaction survey tab in chatbot settings" />
 
 3. Toggle on the `Show survey` option.
 
-<img src="https://chatling-assets.b-cdn.net/enable-chatbot-satisfaction-survey.jpg" width="600" alt="Enable chatbot satisfaction survey" />
+<img alt="Enable chatbot satisfaction survey" />
 
 4. Customize the survey by selecting the rating type, questions to display, and more.
 
-<img src="https://chatling-assets.b-cdn.net/customize-chatbot-satisfaction-survey.jpg" width="600" alt="Customize satisfaction survey" />
+<img alt="Customize satisfaction survey" />
 
 5. Click `Save` to apply the changes.
 
-<img src="https://chatling-assets.b-cdn.net/save-chatbot-satisfaction-survey-settings.jpg" width="600" alt="Save satisfaction survey settings" />
+<img alt="Save satisfaction survey settings" />
 
 ## View survey responses
 
 You can view survey responses from the `Conversations` page of your chatbot dashboard. If a conversation has a survey response, the result will appear within the conversation thread as well as on the `Details` section in the sidebar.
 
-<img src="https://chatling-assets.b-cdn.net/view-conversation-satisfaction-survey-response.jpg" width="600" alt="View satisfaction survey responses" />
+<img alt="View satisfaction survey responses" />
+
+
+# Whitelist domains
+Source: https://docs.chatling.ai/web-widget/whitelist-domains
+
+Learn how to whitelist domains for your chatbot to prevent it from being added to unauthorized websites.
+
+If you want to prevent your widget from being added to unauthorized websites, you can whitelist domains.
+
+By adding whitelisted domains, the widget will only appear on websites that match the whitelisted domains.
+
+## How to whitelist domains
+
+1. Open your chatbot's dashboard.
+2. Go to Settings.
+
+<img alt="Open chatbot settings" />
+
+3. Click the `Security` tab.
+4. Under the `Whitelist domains` section, type in a domain you want to whitelist and click the `+ Add` button. You can add multiple domains.
+5. Click `Save`.
 
 
 # Widget SDK
@@ -6825,7 +6650,7 @@ Source: https://docs.chatling.ai/web-widget/widget-sdk
 
 You can configure the widget during launch by setting the `window.chtlConfig` object, as shown below.
 
-```javascript  theme={null}
+```javascript theme={null}
 window.chtlConfig = {
     // Configuration options
 };
@@ -6840,7 +6665,7 @@ Whether to display the chat icon (open and close buttons).
 * Possible values: `true`, `false`
 * Default: `true`
 
-```javascript  theme={null}
+```javascript theme={null}
 window.chtlConfig = {
     chatIconVisible: true,
     // ... other config options
@@ -6854,7 +6679,7 @@ The type of widget to display.
 * Possible values: `floating`, `fullscreen`, `page_inline`
 * Default: `floating`
 
-```javascript  theme={null}
+```javascript theme={null}
 window.chtlConfig = {
     displayType: 'floating',
     // ... other config options
@@ -6867,7 +6692,7 @@ The language of the widget in ISO 639-1 format. This will override the language 
 
 * Possible values: `en`, `ar`, `az`, `bg`, `bn`, `bs`, `ca`, `cs`, `da`, `de`, `el`, `en`, `es`, `et`, `fa`, `fi`, `fr`, `he`, `hi`, `hr`, `hu`, `hy`, `id`, `it`, `ja`, `ko`, `lt`, `lv`, `mn`, `ms`, `nl`, `no`, `pl`, `pt`, `pt-br`, `ro`, `ru`, `sk`, `sl`, `sq`, `sr`, `sv`, `th`, `tr`, `uk`, `ur`, `vi`, `zh-cn`, `zh-tw`
 
-```javascript  theme={null}
+```javascript theme={null}
 window.chtlConfig = {
     language: 'en',
     // ... other config options
@@ -6884,7 +6709,7 @@ Below are the SDK methods you can call to interact with the widget.
 
 Opens the chatbot, similar to when a user clicks the chat icon.
 
-```javascript  theme={null}
+```javascript theme={null}
 window.Chatling.open();
 ```
 
@@ -6892,7 +6717,7 @@ window.Chatling.open();
 
 Minimizes the chatbot, similar to when a user clicks the minimize button in the widget.
 
-```javascript  theme={null}
+```javascript theme={null}
 window.Chatling.minimize();
 ```
 
@@ -6900,7 +6725,7 @@ window.Chatling.minimize();
 
 Hides the chat icon.
 
-```javascript  theme={null}
+```javascript theme={null}
 window.Chatling.hideChatIcon();
 ```
 
@@ -6908,7 +6733,7 @@ window.Chatling.hideChatIcon();
 
 Shows the chat icon.
 
-```javascript  theme={null}
+```javascript theme={null}
 window.Chatling.showChatIcon();
 ```
 
@@ -6920,7 +6745,7 @@ The method takes an object containing the variable names and values. You must ma
 
 <Note>To pass custom data during launch, read [this guide](/web-widget/pass-custom-data#pass-custom-data-during-launch).</Note>
 
-```javascript  theme={null}
+```javascript theme={null}
 window.Chatling.setVariables({
     "contact_name": "Rick Astley",
     "contact_email": "rick.astley@example.com",
@@ -6936,8 +6761,360 @@ window.Chatling.setVariables({
 
 Permanently removes the chatbot from the page.
 
-```javascript  theme={null}
+```javascript theme={null}
 window.Chatling.destroy();
 ```
+
+
+# Change language
+Source: https://docs.chatling.ai/whatsapp/change-language
+
+A guide to change the language of system and error messages in your WhatsApp chatbot.
+
+You can set the language that your chatbot or AI agent will use for system messages, errors, and various other messages.
+
+The steps differ for AI Agents and Chatbots. We've created separate guides for each below.
+
+## How to change the WhatsApp language for a Chatbot
+
+1. From your chatbot's dashboard, click the `Settings` button under the Chatbot menu.
+
+<img />
+
+2. Under the `General` tab, you will see the `Language` setting. Select the language you want to use.
+
+<img />
+
+3. Click `Save` to save the changes.
+
+## How to change the WhatsApp language for an AI Agent
+
+1. From your agent's dashboard, click the `Deploy` button in the sidebar.
+
+<img alt="Deploy" />
+
+2. Click the settings icon for `WhatsApp`.
+
+<img />
+
+3. You will see the `Language` settings. Select the language you want to use.
+
+<img />
+
+4. Click `Save` to save the changes.
+
+
+# Create a WhatsApp AI Agent
+Source: https://docs.chatling.ai/whatsapp/create-ai-agent
+
+Learn how to create a WhatsApp AI agent in Chatling.
+
+The steps below will guide you through the process of creating and connecting your WhatsApp to your **AI Agent** in Chatling.
+
+1. Login to your [Chatling account](https://app.chatling.ai).
+2. From the "My agents" page, click the `Create` button.
+
+<img />
+
+3. Choose `AI Agent` as the type.
+
+<Note>To learn the difference between AI Agents and Chatbots, refer to [this page](/introduction#difference-between-ai-agents-and-ai-chatbots).</Note>
+
+<img />
+
+4. Enter a name for your Agent and click the `Create agent` button.
+
+<img />
+
+5. From your Agent's dashboard, click the `Deploy` button in the sidebar.
+
+<img alt="Deploy" />
+
+6. Click the `Setup` button under the `WhatsApp` option.
+
+<img alt="Setup WhatsApp for AI Agent" />
+
+7. A popup will appear to guide you through the process of connecting your WhatsApp Business account to Chatling.
+
+<Warning>
+  Before continuing, note that the phone number you connect must not be in use by a WhatsApp account. If it's in use, you must delete the account from WhatsApp before continuing.
+
+  Here's how to delete a WhatsApp account:
+
+  1. Open the WhatsApp app.
+  2. Go to `Settings` > `Account` > `Delete my account`.
+  3. Type in your phone number for confirmation and tap on `Delete my account`.
+
+  Once deleted, the phone number can be used to create a WhatsApp Business account.
+</Warning>
+
+8. Click the `Login with Facebook` button to continue.
+
+<img alt="Click Login with Facebook button" />
+
+9. The Facebook authentication window will open. Sign in to your Facebook account and click the `Continue` button.
+
+<img />
+
+10. Select `Get started`.
+
+<img />
+
+11. Choose or create a new business profile.
+
+<img />
+
+12. Choose or create a new WhatsApp Business account and profile.
+
+<img />
+
+13. If you chose to create a new profile:
+
+* Enter the required information for the profile.
+* When prompted to add a phone number, select `Add a new phone number`. Do not select `Get a free WhatsApp number` as it will not work with Chatling.
+
+<img />
+
+14. Facebook will display the permissions required by Chatling. Review and click the `Continue` or `Confirm` button.
+
+<img />
+
+15. Facebook begins verifying the information you provided. Once it's completed successfully, you should see a message similar to below. Click the `Finish` button.
+
+<img />
+
+16. Go back to Chatling and a message will be displayed that your authentication is being processed. If successful, you should see a message similar to below.
+
+<img />
+
+17. Next, you must enter a 6-digit code for two-factor authentication so your phone number can be registered with WhatsApp.
+
+    If the number already has 2FA enabled, enter the same code you had set up.
+
+<img />
+
+18. Once the phone number is registered successfully, you're all set and your WhatsApp Business account is connected to Chatling. Click the `Close` button to finish the setup process.
+
+<Warning>WhatsApp provides 1,000 free conversations per month. If you reach this limit, you must add a payment method in your Facebook Business Manager to continue sending and receiving messages.</Warning>
+
+
+# Create a WhatsApp AI Chatbot
+Source: https://docs.chatling.ai/whatsapp/create-ai-chatbot
+
+Learn how to create a WhatsApp AI chatbot in Chatling.
+
+The steps below will guide you through the process of creating and connecting your WhatsApp to your **AI Chatbot** in Chatling.
+
+1. Login to your [Chatling account](https://app.chatling.ai).
+2. From the "My agents" page, click the `Create` button.
+
+<img />
+
+3. Choose `AI Chatbot` as the type.
+
+<Note>To learn the difference between AI Agents and Chatbots, refer to [this page](/introduction#difference-between-ai-agents-and-ai-chatbots).</Note>
+
+<img />
+
+4. Select `WhatsApp` as the platform.
+
+<img />
+
+5. You can choose to create a chatbot from scratch or use a template. Templates help you get started quickly with pre-built flows.
+
+6. Enter a name for your chatbot and click the `Create chatbot` button.
+
+<img />
+
+7. A setup wizard will open to guide you through connecting your WhatsApp Business account.
+
+<Warning>
+  Before continuing, note that the phone number you connect must not be in use by a WhatsApp account. If it's in use, you must delete the account from WhatsApp before continuing.
+
+  Here's how to delete a WhatsApp account:
+
+  1. Open the WhatsApp app.
+  2. Go to `Settings` > `Account` > `Delete my account`.
+  3. Type in your phone number for confirmation and tap on `Delete my account`.
+
+  Once deleted, the phone number can be used to create a WhatsApp Business account.
+</Warning>
+
+8. Click the `Login with Facebook` button to continue.
+
+<img alt="Click Login with Facebook button" />
+
+9. The Facebook authentication window will open. Sign in to your Facebook account and click the `Continue` button.
+
+<img />
+
+10. Select `Get started`.
+
+<img />
+
+11. Choose or create a new business profile.
+
+<img />
+
+12. Choose or create a new WhatsApp Business account and profile.
+
+<img />
+
+13. If you chose to create a new profile:
+
+* Enter the required information for the profile.
+* When prompted to add a phone number, select `Add a new phone number`. Do not select `Get a free WhatsApp number` as it will not work with Chatling.
+
+<img />
+
+14. Facebook will display the permissions required by Chatling. Review and click the `Continue` or `Confirm` button.
+
+<img />
+
+15. Facebook begins verifying the information you provided. Once it's completed successfully, you should see a message similar to below. Click the `Finish` button.
+
+<img />
+
+16. Go back to Chatling and a message will be displayed that your authentication is being processed. If successful, you should see a message similar to below.
+
+<img />
+
+17. Next, you must enter a 6-digit code for two-factor authentication so your phone number can be registered with WhatsApp.
+
+    If the number already has 2FA enabled, enter the same code you had set up.
+
+<img />
+
+18. Once the phone number is registered successfully, you're all set and your WhatsApp Business account is connected to Chatling. Click the `Open Dashboard` button to continue.
+
+<Warning>WhatsApp provides 1,000 free conversations per month. If you reach this limit, you must add a payment method in your Facebook Business Manager to continue sending and receiving messages.</Warning>
+
+<img />
+
+
+# Customize profile
+Source: https://docs.chatling.ai/whatsapp/customize-profile
+
+Learn how to change your profile picture, name, bio, and more.
+
+You can visit the [WhatsApp Manager](https://business.facebook.com/latest/whatsapp_manager) on Facebook to change your profile picture, display name, and business details such as description, address, email, and website.
+
+## How to customize your WhatsApp Business profile
+
+1. Go to the [WhatsApp Manager](https://business.facebook.com/latest/whatsapp_manager) on Facebook.
+2. From the sidebar, click on the `Phone numbers` tab.
+
+<img />
+
+3. Find your phone number from the list and click on the settings icon next to it.
+
+<img />
+
+4. From here, you can update the profile information for your WhatsApp Business account.
+
+<img />
+
+
+# Disconnect WhatsApp account
+Source: https://docs.chatling.ai/whatsapp/disconnect-account
+
+Learn how to disconnect your WhatsApp account in Chatling.
+
+The guide below will walk you through the process of disconnecting your WhatsApp account from your chatbot or AI agent in Chatling.
+
+The steps differ for chatbots and AI agents. We've created separate guides for each below.
+
+<Warning>Disconnecting your WhatsApp account will prevent Chatling from sending and receiving messages from WhatsApp. To restore this functionality, you must reconnect your WhatsApp account.</Warning>
+
+## How to disconnect WhatsApp from your chatbot
+
+1. From your chatbot's dashboard, click the `Settings` button under the Chatbot menu.
+
+<img />
+
+2. Go to the `WhatsApp` tab.
+
+<img />
+
+3. Click the `Disconnect` button.
+
+<img />
+
+## How to disconnect WhatsApp from your AI Agent
+
+1. From your agent's dashboard, click the `Deploy` button in the sidebar.
+
+<img alt="Deploy" />
+
+2. Click the settings icon for `WhatsApp`.
+
+<img />
+
+3. Click the `Disconnect` button.
+
+<img />
+
+
+# Display name approval
+Source: https://docs.chatling.ai/whatsapp/display-name-approval
+
+Learn how to fix issues related to the display name approval for your WhatsApp account.
+
+If you get an error message stating `WhatsApp provided number needs display name approval before messages can be sent`, it means you cannot use the WhatsApp bot until Facebook approves your display name.
+
+This normally happens when you use the free WhatsApp number provided by Facebook when you first connect your WhatsApp account to Chatling.
+
+To fix this issue, you must verify your business in Facebook before they approve your display name.
+
+## How to verify your business in Facebook
+
+1. Go to the [Security Center](https://business.facebook.com/latest/settings/security_center) in your Facebook Business Manager.
+2. Under the `Business Verification` section, set the verification use case to `Setting up a WhatsApp Business account`.
+
+<img />
+
+3. Click the `Start verification` button.
+
+<img />
+
+4. Follow the on-screen instructions to verify your business.
+5. Once you complete the process, your business will either be verified immediately or placed under review.
+6. After your business is verified, Facebook will begin reviewing your display name. To view the status of the review:
+
+* Go to [WhatsApp Manager](https://business.facebook.com/latest/whatsapp_manager/overview).
+* Click `Phone numbers` in the left sidebar.
+* You will see the status of the review under the display name as shown below.
+
+<img />
+
+7. Once the review is complete, you'll receive an email notification from Facebook and you can begin using your WhatsApp bot to send and receive messages.
+
+
+# WhatsApp Integration
+Source: https://docs.chatling.ai/whatsapp/overview
+
+Learn how to connect integrate your WhatsApp account with Chatling.
+
+The WhatsApp integration enables you to deploy AI assistance directly on WhatsApp, allowing you to automate conversations, handle inquiries, and engage with customers on one of the world's most popular messaging platforms.
+
+The integration is available for both AI Agents and AI Chatbots. The steps differ for both and we have created separate guides for each, as listed below.
+
+<Note>To learn the difference between AI Agents and Chatbots, refer to [this page](/introduction#difference-between-ai-agents-and-ai-chatbots).</Note>
+
+<CardGroup>
+  <Card title="Create AI Agent for WhatsApp" icon="plus" href="/whatsapp/create-ai-agent" />
+
+  <Card title="Create AI Chatbot for WhatsApp" icon="plus" href="/whatsapp/create-ai-chatbot" />
+
+  <Card title="Display name approval" icon="badge-check" href="/whatsapp/display-name-approval" />
+
+  <Card title="Change language" icon="language" href="/whatsapp/change-language" />
+
+  <Card title="Customize profile" icon="user" href="/whatsapp/customize-profile" />
+
+  <Card title="Disconnect account" icon="plug-circle-xmark" href="/whatsapp/disconnect-account" />
+
+  <Card title="Re-connect account" icon="repeat" href="/whatsapp/reconnect-account" />
+</CardGroup>
 
 

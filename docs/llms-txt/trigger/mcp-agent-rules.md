@@ -1,5 +1,9 @@
 # Source: https://trigger.dev/docs/mcp-agent-rules.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://trigger.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Agent rules
 
 > Learn how to use the Trigger.dev agent rules with the MCP server
@@ -12,7 +16,7 @@ Trigger.dev agent rules are comprehensive instruction sets that guide AI assista
 
 Install the agent rules with the following command:
 
-```bash  theme={null}
+```bash  theme={"theme":"css-variables"}
 npx trigger.dev@latest install-rules
 ```
 
@@ -42,7 +46,7 @@ The subagent is available as an option when running the rules installation comma
 
 Activate the subagent in your prompts by requesting it explicitly:
 
-```markdown  theme={null}
+```markdown  theme={"theme":"css-variables"}
 use the trigger-dev-expert subagent to create a trigger.dev job that accepts a video url, processes it with ffmpeg to extract the audio, runs the audio through a text-to-speech API like openai, and then uploads both the transcription and the audio to s3
 ```
 
@@ -85,7 +89,7 @@ When running `npx trigger.dev@latest dev`, you'll receive notifications when new
 
 Update rules anytime with:
 
-```bash  theme={null}
+```bash  theme={"theme":"css-variables"}
 npx trigger.dev@latest install-rules
 ```
 
@@ -102,7 +106,7 @@ The update process replaces existing rules without creating duplicates, keeping 
 
 1. Install the rules:
 
-```bash  theme={null}
+```bash  theme={"theme":"css-variables"}
 npx trigger.dev@latest install-rules
 ```
 

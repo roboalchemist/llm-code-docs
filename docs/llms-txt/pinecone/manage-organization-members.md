@@ -2,21 +2,9 @@
 
 # Source: https://docs.pinecone.io/guides/assistant/admin/manage-organization-members.md
 
-# Source: https://docs.pinecone.io/guides/organizations/manage-organization-members.md
-
-# Source: https://docs.pinecone.io/guides/assistant/admin/manage-organization-members.md
-
-# Source: https://docs.pinecone.io/guides/organizations/manage-organization-members.md
-
-# Source: https://docs.pinecone.io/guides/assistant/admin/manage-organization-members.md
-
-# Source: https://docs.pinecone.io/guides/organizations/manage-organization-members.md
-
-# Source: https://docs.pinecone.io/guides/assistant/admin/manage-organization-members.md
-
-# Source: https://docs.pinecone.io/guides/organizations/manage-organization-members.md
-
-# Source: https://docs.pinecone.io/guides/assistant/admin/manage-organization-members.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pinecone.io/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Manage organization members
 

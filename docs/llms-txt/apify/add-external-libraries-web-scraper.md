@@ -2,7 +2,7 @@
 
 # How to add external libraries to Web Scraper
 
-Sometimes you need to use some extra JavaScript in your https://apify.com/apify/web-scraper page functions. Whether it is to work with dates and times using https://momentjs.com/, or to manipulate the DOM using https://jquery.com/, libraries save precious time and make your code more concise and readable. Web Scraper already provides a way to add jQuery to your page functions. All you need to do is to check the Inject jQuery input option. There's also the option to Inject Underscore, a popular helper function library.
+Sometimes you need to use some extra JavaScript in your [Web Scraper](https://apify.com/apify/web-scraper) page functions. Whether it is to work with dates and times using [Moment.js](https://momentjs.com/), or to manipulate the DOM using [jQuery](https://jquery.com/), libraries save precious time and make your code more concise and readable. Web Scraper already provides a way to add jQuery to your page functions. All you need to do is to check the Inject jQuery input option. There's also the option to Inject Underscore, a popular helper function library.
 
 In this tutorial, we'll learn how to inject any JavaScript library into your page functions, with the only limitation being that the library needs to be available somewhere on the internet as a downloadable file (typically a CDN).
 
@@ -10,9 +10,9 @@ In this tutorial, we'll learn how to inject any JavaScript library into your pag
 
 Moment.js is a very popular library for working with date and time. It helps you with the parsing, manipulation, and formatting of datetime values in multiple locales and has become the de-facto standard for this kind of work in JavaScript.
 
-To inject Moment.js into our page function (or any other library using the same method), we first need to find a link to download it from. We can find it in https://momentjs.com/docs/#/use-it/browser/ under the CDN links.
+To inject Moment.js into our page function (or any other library using the same method), we first need to find a link to download it from. We can find it in [Moment.js' documentation](https://momentjs.com/docs/#/use-it/browser/) under the CDN links.
 
-> https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js
+> [https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js](https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js)
 
 Now we have two options. Inject the library using plain JavaScript, or if you prefer working with jQuery, use a jQuery helper.
 

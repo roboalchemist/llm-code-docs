@@ -4,23 +4,9 @@
 
 # Source: https://docs.turso.tech/api-reference/authentication.md
 
-# Source: https://docs.turso.tech/sdk/authentication.md
-
-# Source: https://docs.turso.tech/cli/authentication.md
-
-# Source: https://docs.turso.tech/api-reference/authentication.md
-
-# Source: https://docs.turso.tech/sdk/authentication.md
-
-# Source: https://docs.turso.tech/cli/authentication.md
-
-# Source: https://docs.turso.tech/api-reference/authentication.md
-
-# Source: https://docs.turso.tech/sdk/authentication.md
-
-# Source: https://docs.turso.tech/cli/authentication.md
-
-# Source: https://docs.turso.tech/api-reference/authentication.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.turso.tech/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Authentication
 

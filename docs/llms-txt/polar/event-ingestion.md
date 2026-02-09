@@ -1,5 +1,9 @@
 # Source: https://polar.sh/docs/features/usage-based-billing/event-ingestion.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://polar.sh/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Event Ingestion
 
 > Ingest events from your application

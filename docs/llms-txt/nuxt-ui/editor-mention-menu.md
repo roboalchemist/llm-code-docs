@@ -8,17 +8,11 @@
 
 The EditorMentionMenu component displays a menu of user suggestions when typing the `@` character in the editor and inserts the selected mention using the `@tiptap/extension-mention` package.
 
-<note>
+> [!NOTE]
+> It uses the `useEditorMenu` composable built on top of TipTap's [Suggestion](https://tiptap.dev/docs/editor/api/utilities/suggestion) utility to filter items as you type and support keyboard navigation (arrow keys, enter to select, escape to close).
 
-It uses the `useEditorMenu` composable built on top of TipTap's [Suggestion](https://tiptap.dev/docs/editor/api/utilities/suggestion) utility to filter items as you type and support keyboard navigation (arrow keys, enter to select, escape to close).
-
-</note>
-
-<caution>
-
-It must be used inside an [Editor](/docs/components/editor) component's default slot to have access to the editor instance.
-
-</caution>
+> [!CAUTION]
+> It must be used inside an [Editor](/docs/components/editor) component's default slot to have access to the editor instance.
 
 ```vue [EditorMentionMenuExample.vue]
 <script setup lang="ts">
@@ -67,11 +61,9 @@ const appendToBody = false ? () => document.body : undefined
 </template>
 ```
 
-<callout icon="i-custom-tiptap" target="_blank" to="https://tiptap.dev/docs/editor/extensions/nodes/mention">
-
-Learn more about the Mention extension in the TipTap documentation.
-
-</callout>
+> [!NOTE]
+> See: https://tiptap.dev/docs/editor/extensions/nodes/mention
+> Learn more about the Mention extension in the TipTap documentation.
 
 ### Items
 
@@ -128,11 +120,8 @@ const items: EditorMentionMenuItem[] = [{
 </template>
 ```
 
-<note>
-
-You can also pass an array of arrays to the `items` prop to create separated groups of items.
-
-</note>
+> [!NOTE]
+> You can also pass an array of arrays to the `items` prop to create separated groups of items.
 
 ### Char
 
@@ -165,6 +154,57 @@ Use the `options` prop to customize the positioning behavior using [Floating UI 
 </template>
 ```
 
+## Examples
+
+### With ignore filter `4.4+`
+
+You can set the `ignore-filter` prop to `true` to disable the internal search and use your own search logic. Use `v-model:search-term` to access the current search term and fetch items from an API.
+
+```vue [EditorMentionMenuIgnoreFilterExample.vue]
+<script setup lang="ts">
+import { refDebounced } from '@vueuse/core'
+
+const value = ref(`# Async Mention Menu
+
+Type @ to mention someone. Results are fetched from an API as you type.`)
+
+const searchTerm = ref('')
+const searchTermDebounced = refDebounced(searchTerm, 200)
+
+const { data: items } = await useFetch('https://dummyjson.com/users/search?limit=10', {
+  params: { q: searchTermDebounced },
+  transform: (data: { users: { id: number, firstName: string, lastName: string, image: string }[] }) => {
+    return data.users?.map(user => ({ id: user.id, label: `${user.firstName} ${user.lastName}`, avatar: { src: user.image } })) || []
+  },
+  lazy: true
+})
+
+// SSR-safe function to append menus to body (avoids z-index issues in docs)
+const appendToBody = false ? () => document.body : undefined
+</script>
+
+<template>
+  <UEditor
+    v-slot="{ editor }"
+    v-model="value"
+    content-type="markdown"
+    placeholder="Type @ to mention someone..."
+    class="w-full min-h-21"
+  >
+    <UEditorMentionMenu
+      v-model:search-term="searchTerm"
+      :editor="editor"
+      :items="items"
+      :append-to="appendToBody"
+      ignore-filter
+    />
+  </UEditor>
+</template>
+```
+
+> [!NOTE]
+> This example uses [`refDebounced`](https://vueuse.org/shared/refDebounced/) to debounce the API calls.
+
 ## API
 
 ### Props
@@ -174,7 +214,8 @@ Use the `options` prop to customize the positioning behavior using [Floating UI 
  * Props for the EditorMentionMenu component
  */
 interface EditorMentionMenuProps {
-  items?: EditorMentionMenuItem[] | EditorMentionMenuItem[][] | undefined;
+  size?: "xs" | "md" | "sm" | "lg" | "xl" | undefined;
+  items?: T[] | T[][] | undefined;
   ui?: { content?: ClassNameValue; viewport?: ClassNameValue; group?: ClassNameValue; label?: ClassNameValue; separator?: ClassNameValue; item?: ClassNameValue; itemLeadingIcon?: ClassNameValue; itemLeadingAvatar?: ClassNameValue; itemLeadingAvatarSize?: ClassNameValue; itemWrapper?: ClassNameValue; itemLabel?: ClassNameValue; itemDescription?: ClassNameValue; itemLabelExternalIcon?: ClassNameValue; } | undefined;
   editor?: Editor;
   /**
@@ -205,6 +246,15 @@ interface EditorMentionMenuProps {
    * Sometimes the menu needs to be appended to a different DOM context due to accessibility, clipping, or z-index issues.
    */
   appendTo?: HTMLElement | (() => HTMLElement) | undefined;
+  /**
+   * Whether to ignore the default filtering.
+   * When `true`, items will not be filtered which is useful for custom filtering (useAsyncData, useFetch, etc.).
+   */
+  ignoreFilter?: boolean | undefined;
+  /**
+   * @default "\"\""
+   */
+  searchTerm?: string | undefined;
 }
 ```
 
@@ -218,18 +268,50 @@ export default defineAppConfig({
         content: 'min-w-48 max-w-60 max-h-96 bg-default shadow-lg rounded-md ring ring-default overflow-hidden data-[state=open]:animate-[scale-in_100ms_ease-out] data-[state=closed]:animate-[scale-out_100ms_ease-in] origin-(--reka-dropdown-menu-content-transform-origin) flex flex-col',
         viewport: 'relative divide-y divide-default scroll-py-1 overflow-y-auto flex-1',
         group: 'p-1 isolate',
-        label: 'w-full flex items-center font-semibold text-highlighted p-1.5 text-xs gap-1.5',
+        label: 'w-full flex items-center font-semibold text-highlighted',
         separator: '-mx-1 my-1 h-px bg-border',
-        item: 'group relative w-full flex items-start select-none outline-none before:absolute before:z-[-1] before:inset-px before:rounded-md data-disabled:cursor-not-allowed data-disabled:opacity-75 p-1.5 text-sm gap-1.5',
-        itemLeadingIcon: 'shrink-0 size-5 flex items-center justify-center text-base',
+        item: 'group relative w-full flex items-start select-none outline-none before:absolute before:z-[-1] before:inset-px before:rounded-md data-disabled:cursor-not-allowed data-disabled:opacity-75',
+        itemLeadingIcon: 'shrink-0 flex items-center justify-center',
         itemLeadingAvatar: 'shrink-0',
-        itemLeadingAvatarSize: '2xs',
+        itemLeadingAvatarSize: '',
         itemWrapper: 'flex-1 flex flex-col text-start min-w-0',
         itemLabel: 'truncate',
         itemDescription: 'truncate text-muted',
         itemLabelExternalIcon: 'inline-block size-3 align-top text-dimmed'
       },
       variants: {
+        size: {
+          xs: {
+            label: 'p-1 text-[10px]/3 gap-1',
+            item: 'p-1 text-xs gap-1',
+            itemLeadingIcon: 'size-4 text-sm',
+            itemLeadingAvatarSize: '3xs'
+          },
+          sm: {
+            label: 'p-1.5 text-[10px]/3 gap-1.5',
+            item: 'p-1.5 text-xs gap-1.5',
+            itemLeadingIcon: 'size-4 text-sm',
+            itemLeadingAvatarSize: '3xs'
+          },
+          md: {
+            label: 'p-1.5 text-xs gap-1.5',
+            item: 'p-1.5 text-sm gap-1.5',
+            itemLeadingIcon: 'size-5 text-base',
+            itemLeadingAvatarSize: '2xs'
+          },
+          lg: {
+            label: 'p-2 text-xs gap-2',
+            item: 'p-2 text-sm gap-2',
+            itemLeadingIcon: 'size-5 text-base',
+            itemLeadingAvatarSize: '2xs'
+          },
+          xl: {
+            label: 'p-2 text-sm gap-2',
+            item: 'p-2 text-base gap-2',
+            itemLeadingIcon: 'size-6 text-xl',
+            itemLeadingAvatarSize: 'xs'
+          }
+        },
         active: {
           true: {
             item: 'text-highlighted before:bg-elevated/75',
@@ -246,6 +328,9 @@ export default defineAppConfig({
             ]
           }
         }
+      },
+      defaultVariants: {
+        size: 'md'
       }
     }
   }
@@ -254,8 +339,4 @@ export default defineAppConfig({
 
 ## Changelog
 
-<component-changelog>
-
-
-
-</component-changelog>
+See the [releases page](https://github.com/nuxt/ui/releases) for the latest changes.

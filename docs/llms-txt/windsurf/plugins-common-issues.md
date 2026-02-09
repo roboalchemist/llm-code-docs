@@ -1,6 +1,12 @@
 # Source: https://docs.windsurf.com/troubleshooting/plugins-common-issues.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.windsurf.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # General Issues
+
+> Common Windsurf plugin issues including subscription problems, cancellation, telemetry settings, account deletion, and chat panel troubleshooting.
 
 ### I subscribed to Pro but I'm stuck on the Free tier
 

@@ -6,8 +6,8 @@
 
 Rspack provides two solutions to support Solid:
 
-* **Use Rsbuild**: Rsbuild provides out-of-the-box support for Solid, allowing you to quickly create a Solid project. See [Rsbuild - Solid](https://rsbuild.rs/guide/framework/solid) for details.
-* **Manually configure Rspack**: You can refer to the current document to manually add configurations for Solid.
+- **Use Rsbuild**: Rsbuild provides out-of-the-box support for Solid, allowing you to quickly create a Solid project. See [Rsbuild - Solid](https://rsbuild.rs/guide/framework/solid) for details.
+- **Manually configure Rspack**: You can refer to the current document to manually add configurations for Solid.
 
 ## Configure Solid
 

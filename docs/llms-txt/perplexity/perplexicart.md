@@ -1,4 +1,8 @@
-# Source: https://docs.perplexity.ai/cookbook/showcase/perplexicart.md
+# Source: https://docs.perplexity.ai/docs/cookbook/showcase/perplexicart.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.perplexity.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # PerplexiCart | AI-Powered Value-Aligned Shopping Assistant
 

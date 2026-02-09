@@ -8,13 +8,11 @@
 
 The PricingTable component provides a responsive and customizable way to display pricing plans in a table format, automatically switching between a horizontal table layout on desktop for easy comparison and a vertical card layout on mobile for better readability.
 
-<code-preview>
-<u-pricing-table :sections="[{"title":"Features","features":[{"title":"Number of developers","tiers":{"solo":"1","team":"5","enterprise":"Unlimited"}},{"title":"Projects","tiers":{"solo":true,"team":true,"enterprise":true}},{"title":"GitHub repository access","tiers":{"solo":true,"team":true,"enterprise":true}},{"title":"Updates","tiers":{"solo":"Patch & minor","team":"All updates","enterprise":"All updates"}},{"title":"Support","tiers":{"solo":"Community","team":"Priority","enterprise":"24/7"}}]},{"title":"Security","features":[{"title":"SSO","tiers":{"solo":false,"team":true,"enterprise":true}},{"title":"Audit logs","tiers":{"solo":false,"team":true,"enterprise":true}},{"title":"Custom security review","tiers":{"solo":false,"team":false,"enterprise":true}}]}]" :tiers="[{"id":"solo","title":"Solo","description":"For indie hackers.","price":"$249","billingCycle":"/month","billingPeriod":"billed annually","badge":"Most popular","button":{"label":"Buy now","variant":"subtle"}},{"id":"team","title":"Team","description":"For growing teams.","price":"$499","billingCycle":"/month","billingPeriod":"billed annually","button":{"label":"Buy now"},"highlight":true},{"id":"enterprise","title":"Enterprise","description":"For large organizations.","price":"Custom","button":{"label":"Contact sales","color":"neutral"}}]">
-
-
-
-</u-pricing-table>
-</code-preview>
+```vue
+<template>
+  <u-pricing-table :sections=[{"title":"Features","features":[{"title":"Number of developers","tiers":{"solo":"1","team":"5","enterprise":"Unlimited"}},{"title":"Projects","tiers":{"solo":true,"team":true,"enterprise":true}},{"title":"GitHub repository access","tiers":{"solo":true,"team":true,"enterprise":true}},{"title":"Updates","tiers":{"solo":"Patch & minor","team":"All updates","enterprise":"All updates"}},{"title":"Support","tiers":{"solo":"Community","team":"Priority","enterprise":"24/7"}}]},{"title":"Security","features":[{"title":"SSO","tiers":{"solo":false,"team":true,"enterprise":true}},{"title":"Audit logs","tiers":{"solo":false,"team":true,"enterprise":true}},{"title":"Custom security review","tiers":{"solo":false,"team":false,"enterprise":true}}]}] :tiers=[{"id":"solo","title":"Solo","description":"For indie hackers.","price":"$249","billingCycle":"/month","billingPeriod":"billed annually","badge":"Most popular","button":{"label":"Buy now","variant":"subtle"}},{"id":"team","title":"Team","description":"For growing teams.","price":"$499","billingCycle":"/month","billingPeriod":"billed annually","button":{"label":"Buy now"},"highlight":true},{"id":"enterprise","title":"Enterprise","description":"For large organizations.","price":"Custom","button":{"label":"Contact sales","color":"neutral"}}] />
+</template>
+```
 
 ### Tiers
 
@@ -32,6 +30,10 @@ Use the `tiers` prop as an array of objects to define your pricing plans. Each t
 - `highlight?: boolean` - Whether to visually emphasize this tier as the recommended option
 
 ```vue
+<script setup lang="ts">
+import type { PricingTableTier } from '@nuxt/ui'
+</script>
+
 <template>
   <UPricingTable />
 </template>
@@ -50,6 +52,11 @@ Use the `sections` prop to organize features into logical groups. Each section r
   - Numeric values will be displayed as is (e.g., 10, 100)
 
 ```vue
+<script setup lang="ts">
+import type { PricingTableTier } from '@nuxt/ui'
+import type { PricingTableSection } from '@nuxt/ui'
+</script>
+
 <template>
   <UPricingTable />
 </template>
@@ -281,11 +288,8 @@ The component supports various slot types for maximum customization flexibility:
 </tbody>
 </table>
 
-<note>
-
-When no `id` is provided, the slot name is auto-generated from the title (e.g., "Premium Features!" becomes `#section-premium-features-title`).
-
-</note>
+> [!NOTE]
+> When no `id` is provided, the slot name is auto-generated from the title (e.g., "Premium Features!" becomes `#section-premium-features-title`).
 
 ## API
 
@@ -300,12 +304,12 @@ interface PricingTableProps {
    * The pricing tiers to display in the table.
    * Each tier represents a pricing plan with its own title, description, price, and features.
    */
-  tiers: PricingTableTier[];
+  tiers: T[];
   /**
    * The sections of features to display in the table.
    * Each section contains a title and a list of features with their availability in each tier.
    */
-  sections: PricingTableSection<PricingTableTier>[];
+  sections: PricingTableSection<T>[];
   /**
    * The element or component this component should render as.
    */
@@ -402,8 +406,4 @@ export default defineAppConfig({
 
 ## Changelog
 
-<component-changelog>
-
-
-
-</component-changelog>
+See the [releases page](https://github.com/nuxt/ui/releases) for the latest changes.

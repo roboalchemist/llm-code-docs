@@ -3,7 +3,6 @@
 ---
 url: /docs/guide/usage/linter/rules/eslint/no-undef.md
 ---
-# eslint/no-undef&#x20;
 
 ### What it does
 

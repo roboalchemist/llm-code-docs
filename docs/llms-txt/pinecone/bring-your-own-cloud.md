@@ -1,5 +1,9 @@
 # Source: https://docs.pinecone.io/guides/production/bring-your-own-cloud.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pinecone.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Bring your own cloud
 
 > Deploy Pinecone in your AWS or GCP account
@@ -104,7 +108,7 @@ You use a [private endpoint](#configure-a-private-endpoint) to securely connect 
 
 ## Create an index
 
-Once your BYOC environment is ready, you can create a BYOC index in the [Pinecone console](https://app.pinecone.io/organizations/-/projects/-/indexes) or via Pinecone API or [Python SDK](/reference/python-sdk).
+Once your BYOC environment is ready, you can create a BYOC index in the [Pinecone console](https://app.pinecone.io/organizations/-/projects/-/indexes) or via Pinecone API or [Python SDK](/reference/sdks/python/overview).
 
 To create a BYOC index, set the `spec` parameter to the environment name provided to you during onboarding, for example:
 
@@ -133,7 +137,7 @@ To create a BYOC index, set the `spec` parameter to the environment name provide
     -H "Accept: application/json" \
     -H "Content-Type: application/json" \
     -H "Api-Key: $PINECONE_API_KEY" \
-    -H "X-Pinecone-API-Version: 2025-04" \
+    -H "X-Pinecone-Api-Version: 2025-10" \
     -d '{
           "name": "example-byoc-index",
           "vector_type": "dense",
@@ -225,7 +229,7 @@ You can get the private endpoint URL for an index from the Pinecone console or A
 
       curl -i -X GET "https://api.pinecone.io/indexes/docs-example" \
           -H "Api-Key: YOUR_API_KEY" \
-          -H "X-Pinecone-API-Version: 2025-04"
+          -H "X-Pinecone-Api-Version: 2025-10"
       ```
     </CodeGroup>
 

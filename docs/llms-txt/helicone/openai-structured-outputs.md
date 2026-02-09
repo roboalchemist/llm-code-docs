@@ -1,5 +1,9 @@
 # Source: https://docs.helicone.ai/guides/cookbooks/openai-structured-outputs.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.helicone.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # How to build a chatbot with OpenAI structured outputs
 
 > This step-by-step guide covers function calling, response formatting and monitoring with Helicone.

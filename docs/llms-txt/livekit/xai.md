@@ -8,21 +8,13 @@
 
 # Source: https://docs.livekit.io/agents/models/llm/plugins/xai.md
 
-# Source: https://docs.livekit.io/agents/models/realtime/plugins/xai.md
-
-# Source: https://docs.livekit.io/agents/integrations/xai.md
-
-# Source: https://docs.livekit.io/agents/models/realtime/plugins/xai.md
-
-# Source: https://docs.livekit.io/agents/models/llm/plugins/xai.md
-
-LiveKit docs › Models › Large language models (LLM) › Plugins › xAI
+LiveKit docs › Models › LLM › Plugins › XAI
 
 ---
 
 # xAI LLM plugin guide
 
-> How to use xAI LLM with LiveKit Agents.
+> How to use xAI's Grok models with LiveKit Agents.
 
 Available in:
 - [x] Node.js
@@ -30,7 +22,7 @@ Available in:
 
 ## Overview
 
-This plugin allows you to use [xAI](https://x.ai/) as an LLM provider for your voice agents.
+This plugin allows you to use [xAI](https://x.ai/) as an LLM provider for your voice agents. xAI compatibility is provided by the OpenAI plugin using the xAI Chat Completions API.
 
 ## Usage
 
@@ -39,7 +31,7 @@ Install the OpenAI plugin to add xAI support:
 **Python**:
 
 ```shell
-uv add "livekit-agents[openai]~=1.2"
+uv add "livekit-agents[openai]~=1.3"
 
 ```
 
@@ -68,7 +60,7 @@ from livekit.plugins import openai
 
 session = AgentSession(
     llm=openai.LLM.with_x_ai(
-        model="grok-3-mini",
+        model="grok-4-1-fast-non-reasoning",
     ),
     # ... tts, stt, vad, turn_detection, etc.
 )
@@ -84,7 +76,7 @@ import * as openai from '@livekit/agents-plugin-openai';
 
 const session = new voice.AgentSession({
     llm: openai.LLM.withXAI({
-        model: "grok-3-mini",
+        model: "grok-4-1-fast-non-reasoning",
     }),
     // ... tts, stt, vad, turn_detection, etc.
 });
@@ -113,9 +105,11 @@ The following links provide more information about the xAI Grok LLM integration.
 
 - **[Voice AI quickstart](https://docs.livekit.io/agents/start/voice-ai.md)**: Get started with LiveKit Agents and xAI Grok.
 
+- **[Grok Voice Agent API](https://docs.livekit.io/agents/models/realtime/plugins/xai.md)**: Use Grok Voice Agent API for low-latency voice interactions.
+
 ---
 
-This document was rendered at 2025-11-18T23:55:12.547Z.
+This document was rendered at 2026-02-03T03:25:01.988Z.
 For the latest version of this document, see [https://docs.livekit.io/agents/models/llm/plugins/xai.md](https://docs.livekit.io/agents/models/llm/plugins/xai.md).
 
 To explore all LiveKit documentation, see [llms.txt](https://docs.livekit.io/llms.txt).

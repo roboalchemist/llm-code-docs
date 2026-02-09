@@ -1,5 +1,9 @@
 # Source: https://dev.writer.com/home/inline-citations.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://dev.writer.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Work with inline citations in Knowledge Graph responses
 
 This guide shows you how to work with inline citations in Knowledge Graph responses. Inline citations show which specific sources support each part of the response, enabling you to verify information and trace claims back to their origins.

@@ -1,5 +1,9 @@
 # Source: https://www.activepieces.com/docs/install/configuration/hardware.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.activepieces.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Hardware Requirements
 
 > Specifications for hosting Activepieces
@@ -10,11 +14,11 @@ More information about architecture please visit our [architecture](../architect
 
 Activepieces is designed to be memory-intensive rather than CPU-intensive. A modest instance will suffice for most scenarios, but requirements can vary based on specific use cases.
 
-| Component    | Memory (RAM) | CPU Cores | Notes |
-| ------------ | ------------ | --------- | ----- |
-| PostgreSQL   | 1 GB         | 1         |       |
-| Redis        | 1 GB         | 1         |       |
-| Activepieces | 4 GB         | 1         |       |
+| Component    | Memory (RAM) | CPU Cores | Disk Space | Notes |
+| ------------ | ------------ | --------- | ---------- | ----- |
+| PostgreSQL   | 1 GB         | 1         | -          |       |
+| Redis        | 1 GB         | 1         | -          |       |
+| Activepieces | 4 GB         | 1         | 30 GB      |       |
 
 <Tip>
   The above recommendations are designed to meet the needs of the majority of use cases.

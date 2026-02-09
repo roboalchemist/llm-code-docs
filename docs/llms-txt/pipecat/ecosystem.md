@@ -1,5 +1,9 @@
 # Source: https://docs.pipecat.ai/getting-started/ecosystem.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pipecat.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Ecosystem
 
 > Client SDKs, tools, and AI services in the Pipecat ecosystem
@@ -88,8 +92,3 @@ The framework integrates with 70+ services across:
 <Card title="View All Services" icon="grid" href="/server/services/supported-services">
   Browse the complete list of 70+ supported AI services
 </Card>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.pipecat.ai/llms.txt

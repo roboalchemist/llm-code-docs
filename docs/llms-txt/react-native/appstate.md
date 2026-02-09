@@ -38,9 +38,9 @@ This example will only ever appear to say "Current state is: active" because the
 
 This event is received when the app state has changed. The listener is called with one of [the current app state values](/docs/appstate.md#app-states).
 
-### `memoryWarning`[​](#memorywarning "Direct link to memorywarning")
+### `memoryWarning`iOS[​](#memorywarning-ios "Direct link to memorywarning-ios")
 
-This event is used in the need of throwing memory warning or releasing it.
+Fires when the app receives a memory warning from the operating system.
 
 ### `focus`Android[​](#focus-android "Direct link to focus-android")
 

@@ -1,5 +1,9 @@
 # Source: https://docs.asapp.com/generativeagent/integrate/sip-transfers-headers.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.asapp.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # SIP Headers Transfer
 
 > Use SIP headers to pass context directly in transfers without API calls

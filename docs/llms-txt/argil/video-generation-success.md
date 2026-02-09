@@ -1,5 +1,9 @@
 # Source: https://docs.argil.ai/pages/webhook-events/video-generation-success.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.argil.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Video Generation Success Webhook
 
 > Get notified when an avatar video generation completed successfully

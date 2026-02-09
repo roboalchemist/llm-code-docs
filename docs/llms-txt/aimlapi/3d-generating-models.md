@@ -24,7 +24,6 @@ We currently support only one 3D-generating model. You can find [its ID along wi
 ```python
 import requests
 
-
 def main():
     response = requests.post(
         "https://api.aimlapi.com/v1/images/generations",
@@ -73,4 +72,4 @@ Try to choose reference images where the target object is not obstructed by othe
 
 ## All Available 3D-Generating Models
 
-<table data-full-width="false"><thead><tr><th width="222.4000244140625">Model ID</th><th width="134.39996337890625">Developer</th><th width="95">Context</th><th>Model Card</th></tr></thead><tbody><tr><td><a href="3d-generating-models/stability-ai/triposr">triposr</a></td><td>Tripo AI</td><td></td><td><a href="https://aimlapi.com/models/stable-tripo-sr-api">Stable TripoSR 3D</a></td></tr></tbody></table>
+<table data-full-width="true"><thead><tr><th width="265.4000244140625">Model ID + API Reference link</th><th width="134.39996337890625">Developer</th><th width="104">Context</th><th>Model Card</th></tr></thead><tbody><tr><td><a href="3d-generating-models/stability-ai/triposr">triposr</a></td><td>Tripo AI</td><td></td><td><a href="https://aimlapi.com/models/stable-tripo-sr-api">Stable TripoSR 3D</a></td></tr><tr><td><a href="3d-generating-models/tencent/hunyuan-part">tencent/hunyuan-part</a></td><td>Tencent</td><td></td><td><a href="https://aimlapi.com/models/hunyuan-part">Hunyuan Part</a></td></tr></tbody></table>

@@ -1,5 +1,9 @@
 # Source: https://infisical.com/docs/internals/permissions/project-permissions.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://infisical.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Project Permissions
 
 > Comprehensive guide to Infisical's project-level permissions
@@ -13,7 +17,7 @@ Each permission consists of:
 * **Subject**: The resource the permission applies to (e.g., secrets, members, settings)
 * **Action**: The operation that can be performed (e.g., read, create, edit, delete)
 
-Some project-level resources—specifically `secrets`, `secret-folders`, `secret-imports`, `dynamic-secrets`, and `secret-syncs`, support conditional permissions and permission inversion for more granular access control. Conditions allow you to specify criteria (like environment, secret path, or tags) that must be met for the permission to apply.
+Some project-level resources—specifically `secrets`, `secret-folders`, `secret-imports`, `dynamic-secrets`, `secret-syncs`, and `secret-rotation`, support conditional permissions and permission inversion for more granular access control. Conditions allow you to specify criteria (like environment, secret path, tags, or app connection ID) that must be met for the permission to apply.
 
 ## Available Project Permissions
 
@@ -185,14 +189,14 @@ Supports conditions and permission inversion
 | `edit`   | Modify secret imports |
 | `delete` | Remove secret imports |
 
-#### Subject: `secret-events`
+#### Subject: `secret-event-subscriptions`
 
-| Action                          | Description                                                   |
-| ------------------------------- | ------------------------------------------------------------- |
-| `subscribe-on-created`          | Subscribe to events when secrets are created                  |
-| `subscribe-on-updated`          | Subscribe to events when secrets are updated                  |
-| `subscribe-on-deleted`          | Subscribe to events when secrets are deleted                  |
-| `subscribe-on-import-mutations` | Subscribe to events when secrets are modified through imports |
+| Action                                | Description                                                   |
+| ------------------------------------- | ------------------------------------------------------------- |
+| `subscribe-to-creation-events`        | Subscribe to events when secrets are created                  |
+| `subscribe-to-update-events`          | Subscribe to events when secrets are updated                  |
+| `subscribe-to-deletion-events`        | Subscribe to events when secrets are deleted                  |
+| `subscribe-to-import-mutation-events` | Subscribe to events when secrets are modified through imports |
 
 #### Subject: `secret-rollback`
 
@@ -232,6 +236,12 @@ Supports conditions and permission inversion
 | `rotate-secrets`             | Rotate the generated credentials of a rotation |
 | `delete`                     | Remove secret rotation configurations          |
 
+**Condition Properties:**
+
+* `environment` – Restrict by environment slug
+* `secretPath` – Restrict by secret path
+* `connectionId` – Restrict by app connection ID (e.g. to allow or deny access to rotations tied to a specific org-level app connection)
+
 #### Subject: `secret-syncs`
 
 Supports conditions and permission inversion.
@@ -245,6 +255,12 @@ Supports conditions and permission inversion.
 | `sync-secrets`   | Execute synchronization of secrets between systems |
 | `import-secrets` | Import secrets from sync sources                   |
 | `remove-secrets` | Remove secrets from sync destinations              |
+
+**Condition Properties:**
+
+* `environment` – Restrict by environment slug
+* `secretPath` – Restrict by secret path
+* `connectionId` – Restrict by app connection ID (e.g. to allow or deny access to syncs tied to a specific org-level app connection)
 
 #### Subject: `dynamic-secrets`
 
@@ -268,14 +284,17 @@ Supports conditions and permission inversion
 
 #### Subject: `cmek`
 
-| Action    | Description                           |
-| --------- | ------------------------------------- |
-| `read`    | View Customer-Managed Encryption Keys |
-| `create`  | Add new encryption keys               |
-| `edit`    | Modify key properties                 |
-| `delete`  | Remove encryption keys                |
-| `encrypt` | Use keys for encryption operations    |
-| `decrypt` | Use keys for decryption operations    |
+| Action               | Description                                                                |
+| -------------------- | -------------------------------------------------------------------------- |
+| `read`               | View Customer-Managed Encryption Keys                                      |
+| `create`             | Add new encryption keys                                                    |
+| `edit`               | Modify key properties                                                      |
+| `delete`             | Remove encryption keys                                                     |
+| `encrypt`            | Use keys for encryption operations                                         |
+| `decrypt`            | Use keys for decryption operations                                         |
+| `sign`               | Use keys for signing operations                                            |
+| `verify`             | Use keys for signature verification operations                             |
+| `export-private-key` | Export key material (private key for asymmetric, secret key for symmetric) |
 
 ### Public Key Infrastructure (PKI)
 
@@ -307,14 +326,14 @@ Supports conditions and permission inversion
 | `delete`     | Remove certificate profiles     |
 | `issue-cert` | Issue new certificates          |
 
-#### Subject: `certificate-templates`
+#### Subject: `certificate-policies`
 
-| Action   | Description                      |
-| -------- | -------------------------------- |
-| `read`   | View certificate templates       |
-| `create` | Create new certificate templates |
-| `edit`   | Modify template configurations   |
-| `delete` | Remove certificate templates     |
+| Action   | Description                     |
+| -------- | ------------------------------- |
+| `read`   | View certificate policies       |
+| `create` | Create new certificate policies |
+| `edit`   | Modify policy configurations    |
+| `delete` | Remove certificate policies     |
 
 #### Subject: `pki-alerts`
 
@@ -333,35 +352,6 @@ Supports conditions and permission inversion
 | `create` | Create new collections for organizing PKI resources |
 | `edit`   | Modify collection properties                        |
 | `delete` | Remove PKI collections                              |
-
-### SSH Certificate Management
-
-#### Subject: `ssh-certificate-authorities`
-
-| Action   | Description                            |
-| -------- | -------------------------------------- |
-| `read`   | View SSH certificate authorities       |
-| `create` | Create new SSH certificate authorities |
-| `edit`   | Modify SSH CA configurations           |
-| `delete` | Remove SSH certificate authorities     |
-
-#### Subject: `ssh-certificates`
-
-| Action   | Description                       |
-| -------- | --------------------------------- |
-| `read`   | View SSH certificates             |
-| `create` | Issue new SSH certificates        |
-| `edit`   | Modify SSH certificate properties |
-| `delete` | Revoke or remove SSH certificates |
-
-#### Subject: `ssh-certificate-templates`
-
-| Action   | Description                          |
-| -------- | ------------------------------------ |
-| `read`   | View SSH certificate templates       |
-| `create` | Create new SSH certificate templates |
-| `edit`   | Modify SSH template configurations   |
-| `delete` | Remove SSH certificate templates     |
 
 ### Secret Scanning
 
@@ -390,3 +380,21 @@ Supports conditions and permission inversion
 | ---------------- | -------------------------------------------- |
 | `read-configs`   | View Secret Scanning Project Configuration   |
 | `update-configs` | Update Secret Scanning Project Configuration |
+
+### Agent Sentinel
+
+#### Subject: `mcp-endpoints`
+
+Supports conditions and permission inversion.
+
+| Action    | Description                         |
+| --------- | ----------------------------------- |
+| `read`    | View MCP endpoints                  |
+| `create`  | Create new MCP endpoints            |
+| `edit`    | Modify MCP endpoint configurations  |
+| `delete`  | Remove MCP endpoints                |
+| `connect` | Connect AI clients to MCP endpoints |
+
+**Condition Properties:**
+
+* `name`: Control access based on endpoint name

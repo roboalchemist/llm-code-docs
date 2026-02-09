@@ -2,23 +2,9 @@
 
 # Source: https://upstash.com/docs/redis/sdks/py/commands/generic/persist.md
 
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/generic/persist.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/generic/persist.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/generic/persist.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/generic/persist.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/generic/persist.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/generic/persist.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/generic/persist.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/generic/persist.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/generic/persist.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # PERSIST
 
@@ -26,18 +12,25 @@
 
 ## Arguments
 
-<ParamField body="key" type="string" required>
+<ParamField body="key" type="str" required>
   The key to persist
 </ParamField>
 
 ## Response
 
-<ResponseField type="integer" required>
-  `1` if the timeout was removed, `0` if `key` does not exist or does not have an associated timeout.
+<ResponseField type="bool">
+  `True` if the timeout was set
 </ResponseField>
 
 <RequestExample>
-  ```ts Example theme={"system"}
-  await redis.persist(key);
+  ```py Example theme={"system"}
+  redis.set("key1", "Hello")
+  redis.expire("key1", 10)
+
+  assert redis.ttl("key1") == 10
+
+  redis.persist("key1")
+
+  assert redis.ttl("key1") == -1
   ```
 </RequestExample>

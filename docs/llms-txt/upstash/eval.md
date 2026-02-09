@@ -2,23 +2,9 @@
 
 # Source: https://upstash.com/docs/redis/sdks/py/commands/scripts/eval.md
 
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/scripts/eval.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/scripts/eval.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/scripts/eval.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/scripts/eval.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/scripts/eval.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/scripts/eval.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/scripts/eval.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/scripts/eval.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/scripts/eval.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # EVAL
 
@@ -26,11 +12,11 @@
 
 ## Arguments
 
-<ParamField body="script" type="string" required>
+<ParamField body="script" type="str" required>
   The lua script to run.
 </ParamField>
 
-<ParamField body="keys" type="string[]" required>
+<ParamField body="keys" type="List[str]" required>
   All of the keys accessed in the script
 </ParamField>
 
@@ -40,17 +26,23 @@
 
 ## Response
 
-<ResponseField type="any" required>
+<ResponseField type="Any" required>
   The result of the script.
 </ResponseField>
 
 <RequestExample>
-  ```ts Example theme={"system"}
-  const script = `
-      return ARGV[1]
-  `
-  const result = await redis.eval(script, [], ["hello"]);
-  console.log(result) // "hello"
+  ```py Example theme={"system"}
+  script = """
+  local value = redis.call("GET", KEYS[1])
+  return value
+  """
 
+  redis.set("mykey", "Hello")
+
+  assert redis.eval(script, keys=["mykey"]) == "Hello"
+  ```
+
+  ```py Accepting arguments theme={"system"}
+  assert redis.eval("return ARGV[1]", args=["Hello"]) == "Hello"
   ```
 </RequestExample>

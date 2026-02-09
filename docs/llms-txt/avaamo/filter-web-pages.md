@@ -2,10 +2,6 @@
 
 # Source: https://docs.avaamo.com/user-guide/skills/knowledge-skill/add-content-to-knowledge-skill/website/step-2-configure-content-source-and-ingest-content/filter-web-pages.md
 
-# Source: https://docs.avaamo.com/user-guide/datasync-ai/content-sources/website/step-2-configure-content-source-and-ingest-content/filter-web-pages.md
-
-# Source: https://docs.avaamo.com/user-guide/skills/knowledge-skill/add-content-to-knowledge-skill/website/step-2-configure-content-source-and-ingest-content/filter-web-pages.md
-
 # Filter web pages
 
 It displays all the URLs of the articles in the knowledge base or CSV file, enabling you to select multiple items by checking the boxes next to them in the `Select Sites` section. Click `Next`.

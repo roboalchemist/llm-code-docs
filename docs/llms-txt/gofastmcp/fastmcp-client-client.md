@@ -1,19 +1,27 @@
 # Source: https://gofastmcp.com/python-sdk/fastmcp-client-client.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://gofastmcp.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # client
 
 # `fastmcp.client.client`
 
 ## Classes
 
-### `ClientSessionState` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/client/client.py#L91" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+### `ClientSessionState` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/client/client.py#L95" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
 
 Holds all session-related state for a Client instance.
 
 This allows clean separation of configuration (which is copied) from
 session state (which should be fresh for each new client instance).
 
-### `Client` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/client/client.py#L107" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+### `CallToolResult` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/client/client.py#L112" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+
+Parsed result from a tool call.
+
+### `Client` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/client/client.py#L122" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
 
 MCP client that delegates connection management to a Transport instance.
 
@@ -75,7 +83,7 @@ async with client:
 
 **Methods:**
 
-#### `session` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/client/client.py#L291" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+#### `session` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/client/client.py#L343" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
 
 ```python  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
 session(self) -> ClientSession
@@ -83,7 +91,7 @@ session(self) -> ClientSession
 
 Get the current active session. Raises RuntimeError if not connected.
 
-#### `initialize_result` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/client/client.py#L301" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+#### `initialize_result` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/client/client.py#L353" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
 
 ```python  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
 initialize_result(self) -> mcp.types.InitializeResult | None
@@ -91,7 +99,7 @@ initialize_result(self) -> mcp.types.InitializeResult | None
 
 Get the result of the initialization request.
 
-#### `set_roots` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/client/client.py#L305" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+#### `set_roots` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/client/client.py#L357" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
 
 ```python  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
 set_roots(self, roots: RootsList | RootsHandler) -> None
@@ -99,15 +107,15 @@ set_roots(self, roots: RootsList | RootsHandler) -> None
 
 Set the roots for the client. This does not automatically call `send_roots_list_changed`.
 
-#### `set_sampling_callback` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/client/client.py#L309" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+#### `set_sampling_callback` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/client/client.py#L361" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
 
 ```python  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
-set_sampling_callback(self, sampling_callback: ClientSamplingHandler) -> None
+set_sampling_callback(self, sampling_callback: SamplingHandler, sampling_capabilities: mcp.types.SamplingCapability | None = None) -> None
 ```
 
 Set the sampling callback for the client.
 
-#### `set_elicitation_callback` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/client/client.py#L315" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+#### `set_elicitation_callback` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/client/client.py#L377" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
 
 ```python  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
 set_elicitation_callback(self, elicitation_callback: ElicitationHandler) -> None
@@ -115,7 +123,7 @@ set_elicitation_callback(self, elicitation_callback: ElicitationHandler) -> None
 
 Set the elicitation callback for the client.
 
-#### `is_connected` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/client/client.py#L323" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+#### `is_connected` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/client/client.py#L385" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
 
 ```python  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
 is_connected(self) -> bool
@@ -123,7 +131,7 @@ is_connected(self) -> bool
 
 Check if the client is currently connected.
 
-#### `new` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/client/client.py#L327" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+#### `new` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/client/client.py#L389" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
 
 ```python  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
 new(self) -> Client[ClientTransportT]
@@ -139,13 +147,7 @@ share state with the original client.
 
 * A new Client instance with the same configuration but disconnected state.
 
-#### `close` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/client/client.py#L490" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
-
-```python  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
-close(self)
-```
-
-#### `initialize` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/client/client.py#L496" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+#### `initialize` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/client/client.py#L434" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
 
 ```python  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
 initialize(self, timeout: datetime.timedelta | float | int | None = None) -> mcp.types.InitializeResult
@@ -175,7 +177,13 @@ Manual calls to this method are only needed when auto-initialization is disabled
 
 * `RuntimeError`: If the client is not connected or initialization times out.
 
-#### `ping` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/client/client.py#L545" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+#### `close` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/client/client.py#L735" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+
+```python  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
+close(self)
+```
+
+#### `ping` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/client/client.py#L741" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
 
 ```python  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
 ping(self) -> bool
@@ -183,7 +191,7 @@ ping(self) -> bool
 
 Send a ping request.
 
-#### `cancel` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/client/client.py#L550" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+#### `cancel` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/client/client.py#L746" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
 
 ```python  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
 cancel(self, request_id: str | int, reason: str | None = None) -> None
@@ -191,7 +199,7 @@ cancel(self, request_id: str | int, reason: str | None = None) -> None
 
 Send a cancellation notification for an in-progress request.
 
-#### `progress` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/client/client.py#L567" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+#### `progress` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/client/client.py#L763" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
 
 ```python  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
 progress(self, progress_token: str | int, progress: float, total: float | None = None, message: str | None = None) -> None
@@ -199,7 +207,7 @@ progress(self, progress_token: str | int, progress: float, total: float | None =
 
 Send a progress notification.
 
-#### `set_logging_level` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/client/client.py#L579" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+#### `set_logging_level` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/client/client.py#L775" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
 
 ```python  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
 set_logging_level(self, level: mcp.types.LoggingLevel) -> None
@@ -207,7 +215,7 @@ set_logging_level(self, level: mcp.types.LoggingLevel) -> None
 
 Send a logging/setLevel request.
 
-#### `send_roots_list_changed` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/client/client.py#L583" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+#### `send_roots_list_changed` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/client/client.py#L779" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
 
 ```python  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
 send_roots_list_changed(self) -> None
@@ -215,192 +223,7 @@ send_roots_list_changed(self) -> None
 
 Send a roots/list\_changed notification.
 
-#### `list_resources_mcp` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/client/client.py#L589" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
-
-```python  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
-list_resources_mcp(self) -> mcp.types.ListResourcesResult
-```
-
-Send a resources/list request and return the complete MCP protocol result.
-
-**Returns:**
-
-* mcp.types.ListResourcesResult: The complete response object from the protocol,
-  containing the list of resources and any additional metadata.
-
-**Raises:**
-
-* `RuntimeError`: If called while the client is not connected.
-
-#### `list_resources` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/client/client.py#L604" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
-
-```python  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
-list_resources(self) -> list[mcp.types.Resource]
-```
-
-Retrieve a list of resources available on the server.
-
-**Returns:**
-
-* list\[mcp.types.Resource]: A list of Resource objects.
-
-**Raises:**
-
-* `RuntimeError`: If called while the client is not connected.
-
-#### `list_resource_templates_mcp` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/client/client.py#L616" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
-
-```python  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
-list_resource_templates_mcp(self) -> mcp.types.ListResourceTemplatesResult
-```
-
-Send a resources/listResourceTemplates request and return the complete MCP protocol result.
-
-**Returns:**
-
-* mcp.types.ListResourceTemplatesResult: The complete response object from the protocol,
-  containing the list of resource templates and any additional metadata.
-
-**Raises:**
-
-* `RuntimeError`: If called while the client is not connected.
-
-#### `list_resource_templates` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/client/client.py#L633" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
-
-```python  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
-list_resource_templates(self) -> list[mcp.types.ResourceTemplate]
-```
-
-Retrieve a list of resource templates available on the server.
-
-**Returns:**
-
-* list\[mcp.types.ResourceTemplate]: A list of ResourceTemplate objects.
-
-**Raises:**
-
-* `RuntimeError`: If called while the client is not connected.
-
-#### `read_resource_mcp` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/client/client.py#L647" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
-
-```python  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
-read_resource_mcp(self, uri: AnyUrl | str) -> mcp.types.ReadResourceResult
-```
-
-Send a resources/read request and return the complete MCP protocol result.
-
-**Args:**
-
-* `uri`: The URI of the resource to read. Can be a string or an AnyUrl object.
-
-**Returns:**
-
-* mcp.types.ReadResourceResult: The complete response object from the protocol,
-  containing the resource contents and any additional metadata.
-
-**Raises:**
-
-* `RuntimeError`: If called while the client is not connected.
-
-#### `read_resource` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/client/client.py#L669" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
-
-```python  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
-read_resource(self, uri: AnyUrl | str) -> list[mcp.types.TextResourceContents | mcp.types.BlobResourceContents]
-```
-
-Read the contents of a resource or resolved template.
-
-**Args:**
-
-* `uri`: The URI of the resource to read. Can be a string or an AnyUrl object.
-
-**Returns:**
-
-* list\[mcp.types.TextResourceContents | mcp.types.BlobResourceContents]: A list of content
-  objects, typically containing either text or binary data.
-
-**Raises:**
-
-* `RuntimeError`: If called while the client is not connected.
-
-#### `list_prompts_mcp` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/client/client.py#L708" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
-
-```python  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
-list_prompts_mcp(self) -> mcp.types.ListPromptsResult
-```
-
-Send a prompts/list request and return the complete MCP protocol result.
-
-**Returns:**
-
-* mcp.types.ListPromptsResult: The complete response object from the protocol,
-  containing the list of prompts and any additional metadata.
-
-**Raises:**
-
-* `RuntimeError`: If called while the client is not connected.
-
-#### `list_prompts` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/client/client.py#L723" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
-
-```python  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
-list_prompts(self) -> list[mcp.types.Prompt]
-```
-
-Retrieve a list of prompts available on the server.
-
-**Returns:**
-
-* list\[mcp.types.Prompt]: A list of Prompt objects.
-
-**Raises:**
-
-* `RuntimeError`: If called while the client is not connected.
-
-#### `get_prompt_mcp` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/client/client.py#L736" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
-
-```python  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
-get_prompt_mcp(self, name: str, arguments: dict[str, Any] | None = None) -> mcp.types.GetPromptResult
-```
-
-Send a prompts/get request and return the complete MCP protocol result.
-
-**Args:**
-
-* `name`: The name of the prompt to retrieve.
-* `arguments`: Arguments to pass to the prompt. Defaults to None.
-
-**Returns:**
-
-* mcp.types.GetPromptResult: The complete response object from the protocol,
-  containing the prompt messages and any additional metadata.
-
-**Raises:**
-
-* `RuntimeError`: If called while the client is not connected.
-
-#### `get_prompt` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/client/client.py#L772" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
-
-```python  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
-get_prompt(self, name: str, arguments: dict[str, Any] | None = None) -> mcp.types.GetPromptResult
-```
-
-Retrieve a rendered prompt message list from the server.
-
-**Args:**
-
-* `name`: The name of the prompt to retrieve.
-* `arguments`: Arguments to pass to the prompt. Defaults to None.
-
-**Returns:**
-
-* mcp.types.GetPromptResult: The complete response object from the protocol,
-  containing the prompt messages and any additional metadata.
-
-**Raises:**
-
-* `RuntimeError`: If called while the client is not connected.
-
-#### `complete_mcp` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/client/client.py#L793" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+#### `complete_mcp` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/client/client.py#L785" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
 
 ```python  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
 complete_mcp(self, ref: mcp.types.ResourceTemplateReference | mcp.types.PromptReference, argument: dict[str, str], context_arguments: dict[str, Any] | None = None) -> mcp.types.CompleteResult
@@ -423,8 +246,9 @@ Send a completion request and return the complete MCP protocol result.
 **Raises:**
 
 * `RuntimeError`: If called while the client is not connected.
+* `McpError`: If the request results in a TimeoutError | JSONRPCError
 
-#### `complete` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/client/client.py#L821" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+#### `complete` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/client/client.py#L816" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
 
 ```python  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
 complete(self, ref: mcp.types.ResourceTemplateReference | mcp.types.PromptReference, argument: dict[str, str], context_arguments: dict[str, Any] | None = None) -> mcp.types.Completion
@@ -446,102 +270,10 @@ Send a completion request to the server.
 **Raises:**
 
 * `RuntimeError`: If called while the client is not connected.
+* `McpError`: If the request results in a TimeoutError | JSONRPCError
 
-#### `list_tools_mcp` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/client/client.py#L848" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
-
-```python  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
-list_tools_mcp(self) -> mcp.types.ListToolsResult
-```
-
-Send a tools/list request and return the complete MCP protocol result.
-
-**Returns:**
-
-* mcp.types.ListToolsResult: The complete response object from the protocol,
-  containing the list of tools and any additional metadata.
-
-**Raises:**
-
-* `RuntimeError`: If called while the client is not connected.
-
-#### `list_tools` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/client/client.py#L863" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
-
-```python  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
-list_tools(self) -> list[mcp.types.Tool]
-```
-
-Retrieve a list of tools available on the server.
-
-**Returns:**
-
-* list\[mcp.types.Tool]: A list of Tool objects.
-
-**Raises:**
-
-* `RuntimeError`: If called while the client is not connected.
-
-#### `call_tool_mcp` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/client/client.py#L877" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
-
-```python  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
-call_tool_mcp(self, name: str, arguments: dict[str, Any], progress_handler: ProgressHandler | None = None, timeout: datetime.timedelta | float | int | None = None) -> mcp.types.CallToolResult
-```
-
-Send a tools/call request and return the complete MCP protocol result.
-
-This method returns the raw CallToolResult object, which includes an isError flag
-and other metadata. It does not raise an exception if the tool call results in an error.
-
-**Args:**
-
-* `name`: The name of the tool to call.
-* `arguments`: Arguments to pass to the tool.
-* `timeout`: The timeout for the tool call. Defaults to None.
-* `progress_handler`: The progress handler to use for the tool call. Defaults to None.
-
-**Returns:**
-
-* mcp.types.CallToolResult: The complete response object from the protocol,
-  containing the tool result and any additional metadata.
-
-**Raises:**
-
-* `RuntimeError`: If called while the client is not connected.
-
-#### `call_tool` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/client/client.py#L915" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
-
-```python  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
-call_tool(self, name: str, arguments: dict[str, Any] | None = None, timeout: datetime.timedelta | float | int | None = None, progress_handler: ProgressHandler | None = None, raise_on_error: bool = True) -> CallToolResult
-```
-
-Call a tool on the server.
-
-Unlike call\_tool\_mcp, this method raises a ToolError if the tool call results in an error.
-
-**Args:**
-
-* `name`: The name of the tool to call.
-* `arguments`: Arguments to pass to the tool. Defaults to None.
-* `timeout`: The timeout for the tool call. Defaults to None.
-* `progress_handler`: The progress handler to use for the tool call. Defaults to None.
-
-## **Returns:**
-
-The content returned by the tool. If the tool returns structured
-outputs, they are returned as a dataclass (if an output schema
-is available) or a dictionary; otherwise, a list of content
-blocks is returned. Note: to receive both structured and
-unstructured outputs, use call\_tool\_mcp instead and access the
-raw result object.
-
-**Raises:**
-
-* `ToolError`: If the tool call results in an error.
-* `RuntimeError`: If called while the client is not connected.
-
-#### `generate_name` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/client/client.py#L987" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+#### `generate_name` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/client/client.py#L843" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
 
 ```python  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
 generate_name(cls, name: str | None = None) -> str
 ```
-
-### `CallToolResult` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/client/client.py#L996" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>

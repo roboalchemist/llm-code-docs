@@ -1,5 +1,9 @@
 # Source: https://www.activepieces.com/docs/flows/passing-data.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.activepieces.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Passing Data
 
 > Using data from previous steps in the current one
@@ -12,7 +16,7 @@ Steps are connected vertically. Data flows from parent steps to the children. Ch
 
 ## Example Steps
 
-<video width="450" autoPlay muted loop playsinline src="https://mintcdn.com/activepieces/j3GVg3kKyC3IS6YV/resources/passing-data-3steps.mp4?fit=max&auto=format&n=j3GVg3kKyC3IS6YV&q=85&s=525e82220343a9d0e119dd469dc998c1" data-path="resources/passing-data-3steps.mp4" />
+<video width="450" autoPlay muted loop playsinline src="https://mintcdn.com/activepieces/ki8mFooo8mAmhMdP/resources/passing-data-3steps.mp4?fit=max&auto=format&n=ki8mFooo8mAmhMdP&q=85&s=987c5bf4dfe4d4c6cdf4a4bcd82614dd" data-path="resources/passing-data-3steps.mp4" />
 
 This flow has 3 steps, they can access data as follows:
 
@@ -26,7 +30,7 @@ This flow has 3 steps, they can access data as follows:
 
 In order to use data from a previous step in your current step, place your cursor in any input, the **Data to Insert** panel will pop up.
 
-<video autoPlay muted loop playsinline src="https://mintcdn.com/activepieces/j3GVg3kKyC3IS6YV/resources/passing-data-data-to-insert-panel.mp4?fit=max&auto=format&n=j3GVg3kKyC3IS6YV&q=85&s=3d46b25cb67d411f95ee083d71fc447c" data-path="resources/passing-data-data-to-insert-panel.mp4" />
+<video autoPlay muted loop playsinline src="https://mintcdn.com/activepieces/ki8mFooo8mAmhMdP/resources/passing-data-data-to-insert-panel.mp4?fit=max&auto=format&n=ki8mFooo8mAmhMdP&q=85&s=388d7cbe391253fbb132c9789e40b503" data-path="resources/passing-data-data-to-insert-panel.mp4" />
 
 This panel shows the accessible steps and their data. You can expand the data items to view their content, and you can click the items to insert them in your current settings input.
 
@@ -34,7 +38,7 @@ If an item in this panel has a caret (⌄) to the right, it means you can click 
 
 When you insert data from this panel, it gets inserted at the cursor's position in the input. This means you can combine static text and dynamic data in any field.
 
-<video autoPlay muted loop playsinline src="https://mintcdn.com/activepieces/j3GVg3kKyC3IS6YV/resources/passing-data-main-insert-data-example.mp4?fit=max&auto=format&n=j3GVg3kKyC3IS6YV&q=85&s=2ae302d3f0edd883c207ffbf1dabee7a" data-path="resources/passing-data-main-insert-data-example.mp4" />
+<video autoPlay muted loop playsinline src="https://mintcdn.com/activepieces/ki8mFooo8mAmhMdP/resources/passing-data-main-insert-data-example.mp4?fit=max&auto=format&n=ki8mFooo8mAmhMdP&q=85&s=31898ce3b6e904e4b802e2cdc83a0d7f" data-path="resources/passing-data-main-insert-data-example.mp4" />
 
 We generally recommend that you expand the items before inserting them to understand the type of data they contain and whether they're the right fit to the input you're filling.
 
@@ -44,7 +48,7 @@ We require you to test steps before accessing their data. This approach protects
 
 If a step is not tested and you try to access its data, you will see the following message:
 
-<img width="350" src="https://mintcdn.com/activepieces/j3GVg3kKyC3IS6YV/resources/passing-data-test-step-first.png?fit=max&auto=format&n=j3GVg3kKyC3IS6YV&q=85&s=3bc8bb574124a5a119ba97ae4995acc8" alt="Test your automation step first" data-og-width="798" data-og-height="988" data-path="resources/passing-data-test-step-first.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/activepieces/j3GVg3kKyC3IS6YV/resources/passing-data-test-step-first.png?w=280&fit=max&auto=format&n=j3GVg3kKyC3IS6YV&q=85&s=cabf8db7e71bab1723dc2799e1de0e29 280w, https://mintcdn.com/activepieces/j3GVg3kKyC3IS6YV/resources/passing-data-test-step-first.png?w=560&fit=max&auto=format&n=j3GVg3kKyC3IS6YV&q=85&s=395766bb57845ebb1d0e6c6aa176ed7f 560w, https://mintcdn.com/activepieces/j3GVg3kKyC3IS6YV/resources/passing-data-test-step-first.png?w=840&fit=max&auto=format&n=j3GVg3kKyC3IS6YV&q=85&s=34a3bce214b6665784158841a0c0598e 840w, https://mintcdn.com/activepieces/j3GVg3kKyC3IS6YV/resources/passing-data-test-step-first.png?w=1100&fit=max&auto=format&n=j3GVg3kKyC3IS6YV&q=85&s=330141a5e22a170def0fedaf1c268def 1100w, https://mintcdn.com/activepieces/j3GVg3kKyC3IS6YV/resources/passing-data-test-step-first.png?w=1650&fit=max&auto=format&n=j3GVg3kKyC3IS6YV&q=85&s=4f2dee5f9d48e411fe12805e063a4ed3 1650w, https://mintcdn.com/activepieces/j3GVg3kKyC3IS6YV/resources/passing-data-test-step-first.png?w=2500&fit=max&auto=format&n=j3GVg3kKyC3IS6YV&q=85&s=04841ffe0b6ca0ba9835947574e951b7 2500w" />
+<img width="350" src="https://mintcdn.com/activepieces/ki8mFooo8mAmhMdP/resources/passing-data-test-step-first.png?fit=max&auto=format&n=ki8mFooo8mAmhMdP&q=85&s=eec44214585e01f0158156548886ed0f" alt="Test your automation step first" data-og-width="798" data-og-height="988" data-path="resources/passing-data-test-step-first.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/activepieces/ki8mFooo8mAmhMdP/resources/passing-data-test-step-first.png?w=280&fit=max&auto=format&n=ki8mFooo8mAmhMdP&q=85&s=c85475c214923608df0d433f5ced697f 280w, https://mintcdn.com/activepieces/ki8mFooo8mAmhMdP/resources/passing-data-test-step-first.png?w=560&fit=max&auto=format&n=ki8mFooo8mAmhMdP&q=85&s=5e976ef34cc276d13e1098750e56229a 560w, https://mintcdn.com/activepieces/ki8mFooo8mAmhMdP/resources/passing-data-test-step-first.png?w=840&fit=max&auto=format&n=ki8mFooo8mAmhMdP&q=85&s=b5400913428a57731c1792b4231f6618 840w, https://mintcdn.com/activepieces/ki8mFooo8mAmhMdP/resources/passing-data-test-step-first.png?w=1100&fit=max&auto=format&n=ki8mFooo8mAmhMdP&q=85&s=af7e2777eb9f50a5370ba286c0f09586 1100w, https://mintcdn.com/activepieces/ki8mFooo8mAmhMdP/resources/passing-data-test-step-first.png?w=1650&fit=max&auto=format&n=ki8mFooo8mAmhMdP&q=85&s=deb8f753ae64d5ea83168a53610f9994 1650w, https://mintcdn.com/activepieces/ki8mFooo8mAmhMdP/resources/passing-data-test-step-first.png?w=2500&fit=max&auto=format&n=ki8mFooo8mAmhMdP&q=85&s=d5fdea437c038655acd7b9976c6309bc 2500w" />
 
 To fix this, go to the step and use the Generate Sample Data panel to test it. Steps use different approaches for testing. These are the common ones:
 
@@ -57,7 +61,7 @@ Follow the instructions in the Generate Sample Data panel to know how your step 
 
 This is an example for generating sample data for a trigger using the **Load Data** button:
 
-<video autoPlay muted loop playsinline src="https://mintcdn.com/activepieces/j3GVg3kKyC3IS6YV/resources/passing-data-load-data.mp4?fit=max&auto=format&n=j3GVg3kKyC3IS6YV&q=85&s=318c97848c527caceb7186d926d50af7" data-path="resources/passing-data-load-data.mp4" />
+<video autoPlay muted loop playsinline src="https://mintcdn.com/activepieces/ki8mFooo8mAmhMdP/resources/passing-data-load-data.mp4?fit=max&auto=format&n=ki8mFooo8mAmhMdP&q=85&s=d08cb703e824eaf59ed4b5cd20b55903" data-path="resources/passing-data-load-data.mp4" />
 
 ## Advanced Tips
 
@@ -65,7 +69,7 @@ This is an example for generating sample data for a trigger using the **Load Dat
 
 Dropdowns and some other input types don't let you select data from previous steps. If you'd like to bypass this and use data from previous steps instead, switch the input into a dynamic one using this button:
 
-<video autoPlay muted loop playsinline src="https://mintcdn.com/activepieces/j3GVg3kKyC3IS6YV/resources/passing-data-dynamic-value.mp4?fit=max&auto=format&n=j3GVg3kKyC3IS6YV&q=85&s=e25b49eb497509a2267dc9bd39cb3240" data-path="resources/passing-data-dynamic-value.mp4" />
+<video autoPlay muted loop playsinline src="https://mintcdn.com/activepieces/ki8mFooo8mAmhMdP/resources/passing-data-dynamic-value.mp4?fit=max&auto=format&n=ki8mFooo8mAmhMdP&q=85&s=6c7c70b81c3e1914c8d33e57ed02eacd" data-path="resources/passing-data-dynamic-value.mp4" />
 
 ### Accessing data by path
 

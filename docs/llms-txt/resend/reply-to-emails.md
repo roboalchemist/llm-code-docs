@@ -1,5 +1,9 @@
 # Source: https://resend.com/docs/dashboard/receiving/reply-to-emails.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://resend.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Reply to Receiving Emails
 
 > Reply to Receiving emails in the same thread.
@@ -10,7 +14,7 @@ If you want to reply to an email, you should add the `In-Reply-To` header set to
 
 Here's an example of replying to an email in a Next.js application:
 
-```ts app/api/events/route.ts theme={null}
+```ts app/api/events/route.ts theme={"theme":{"light":"github-light","dark":"vesper"}}
 import type { NextRequest } from 'next/server';
 import { NextResponse } from 'next/server';
 import { Resend } from 'resend';
@@ -43,7 +47,7 @@ If you're replying multiple times within the same thread, make sure to also appe
 the previous `message_id`s to the `References` header, separated by spaces.
 This helps email clients maintain the correct threading structure.
 
-```js  theme={null}
+```js  theme={"theme":{"light":"github-light","dark":"vesper"}}
 const previousReferences = ['<msg_id1@domain.com>', '<msg_id2@domain.com>'];
 
 const { data, error } = await resend.emails.send({

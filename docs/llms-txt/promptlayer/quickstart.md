@@ -1,5 +1,9 @@
 # Source: https://docs.promptlayer.com/quickstart.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.promptlayer.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Quickstart
 
 PromptLayer is your workbench for AI engineering. Version, test, and monitor every prompt and agent with robust evals and tracing. Empower domain experts to iterate alongside engineers in the visual editor.
@@ -13,7 +17,8 @@ This tutorial walks you through building an AI application that generates cake r
 * View logs and debug issues
 
 <Info>
-  [Create an account](https://dashboard.promptlayer.com/create-account) to follow along.
+  [Create an account](https://dashboard.promptlayer.com/create-account) to
+  follow along.
 </Info>
 
 ## Creating Your First Prompt
@@ -99,11 +104,12 @@ Save your prompt by clicking **Save Template**.
 PromptLayer tracks every change you make to a prompt. Each save creates a new version with a record of what changed, when, and by whom.
 
 <Accordion title="Prompt Writing Tips">
-  * Use headers to structure your prompt (`**Section**:`)
-  * Be specific about output format
-  * Include examples when possible
-
-  PromptLayer supports [Jinja2 templates](/features/prompt-registry/template-variables#jinja2-templates) for more advanced variable logic. For structured outputs, see our guide on [tool calling with LLMs](https://blog.promptlayer.com/tool-calling-with-llms-how-and-when-to-use-it/).
+  * Use headers to structure your prompt (`**Section**:`) - Be specific about
+    output format - Include examples when possible PromptLayer supports [Jinja2
+    templates](/features/prompt-registry/template-variables#jinja2-templates) for
+    more advanced variable logic. For structured outputs, see our guide on [tool
+    calling with
+    LLMs](https://blog.promptlayer.com/tool-calling-with-llms-how-and-when-to-use-it/).
 </Accordion>
 
 ### Editing Prompts
@@ -153,7 +159,9 @@ PromptLayer is model-agnostic. You can switch between OpenAI, Anthropic, Google,
 All prompts work across models, including [function calling and tool use](/features/prompt-registry/tool-calling). You can also connect [private models or custom hosts](/features/custom-providers), and build [fine-tuned models](/why-promptlayer/fine-tuning).
 
 <Note>
-  Any model with a `base_url` can be added as a [custom provider](/features/custom-providers) - including self-hosted models, Azure OpenAI, or any OpenAI-compatible API.
+  Any model with a `base_url` can be added as a [custom
+  provider](/features/custom-providers) - including self-hosted models, Azure
+  OpenAI, or any OpenAI-compatible API.
 </Note>
 
 ## Deploying to Prod
@@ -256,11 +264,12 @@ From the logs table, you can select historical requests and click **Backtest** t
 For agents, [traces](/running-requests/traces) show each step of the workflow as spans. You can see timing, inputs, and outputs for every step. Traces are OpenTelemetry (OTEL) compatible, so you can integrate with your existing observability stack.
 
 <Frame>
-  <img src="https://mintcdn.com/promptlayer/Uwb3ZGD7ch34XkjE/new-quickstart-images/trace-span.png?fit=max&auto=format&n=Uwb3ZGD7ch34XkjE&q=85&s=65fa1452cdaafb7613f3f59d2d3fb005" alt="Trace visualization" data-og-width="2054" width="2054" data-og-height="1030" height="1030" data-path="new-quickstart-images/trace-span.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/promptlayer/Uwb3ZGD7ch34XkjE/new-quickstart-images/trace-span.png?w=280&fit=max&auto=format&n=Uwb3ZGD7ch34XkjE&q=85&s=d2f92dbbf2764414a014c244c1c83346 280w, https://mintcdn.com/promptlayer/Uwb3ZGD7ch34XkjE/new-quickstart-images/trace-span.png?w=560&fit=max&auto=format&n=Uwb3ZGD7ch34XkjE&q=85&s=9b25d876bc73bb5550b8cd25affdcbb6 560w, https://mintcdn.com/promptlayer/Uwb3ZGD7ch34XkjE/new-quickstart-images/trace-span.png?w=840&fit=max&auto=format&n=Uwb3ZGD7ch34XkjE&q=85&s=0c7880460fffe898ad28f9f3056e3918 840w, https://mintcdn.com/promptlayer/Uwb3ZGD7ch34XkjE/new-quickstart-images/trace-span.png?w=1100&fit=max&auto=format&n=Uwb3ZGD7ch34XkjE&q=85&s=6284854738cf566ac873b5552fc65e1e 1100w, https://mintcdn.com/promptlayer/Uwb3ZGD7ch34XkjE/new-quickstart-images/trace-span.png?w=1650&fit=max&auto=format&n=Uwb3ZGD7ch34XkjE&q=85&s=86da688065e832a8ba8bddeea8293930 1650w, https://mintcdn.com/promptlayer/Uwb3ZGD7ch34XkjE/new-quickstart-images/trace-span.png?w=2500&fit=max&auto=format&n=Uwb3ZGD7ch34XkjE&q=85&s=b200a95215511e72dbf93ba8d79dee1e 2500w" />
+  <img src="https://mintcdn.com/promptlayer/Uqlih28KZOpPNhLj/images/new_traces.gif?s=19696dd0eeaa7a137dde6857a8d7bc71" alt="Trace visualization" data-og-width="800" width="800" data-og-height="542" height="542" data-path="images/new_traces.gif" data-optimize="true" data-opv="3" />
 </Frame>
 
 <Tip>
-  Continue to [Quickstart Part 2](/quickstart-part-two) to learn about evaluations, backtests, and connecting PromptLayer to your code.
+  Continue to [Quickstart Part 2](/quickstart-part-two) to learn about
+  evaluations, backtests, and connecting PromptLayer to your code.
 </Tip>
 
 You can also watch our [Tutorial Videos](/tutorial-videos) for guided walkthroughs.
@@ -280,8 +289,3 @@ You can also watch our [Tutorial Videos](/tutorial-videos) for guided walkthroug
 
 * [Migrating Prompts to Open-Source Models](https://blog.promptlayer.com/migrating-prompts-to-open-source-models/) — Switching to Mistral and other open-source LLMs
 * [Migration Guide](/migration) — Moving to PromptLayer from other solutions
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.promptlayer.com/llms.txt

@@ -1,5 +1,9 @@
 # Source: https://docs.galileo.ai/galileo/gen-ai-studio-products/galileo-evaluate/how-to/choose-your-guardrail-metrics.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.galileo.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Choose your Guardrail Metrics
 
 > Select and understand guardrail metrics in Galileo Evaluate to effectively assess your prompts and models, utilizing both industry-standard and proprietary metrics.
@@ -27,25 +31,21 @@ Here's a list of the metrics supported today
 ### RAG Quality Metrics:
 
 * [**Context Adherence**](/galileo/gen-ai-studio-products/galileo-guardrail-metrics/context-adherence) - Measures whether your model's response was purely based on the context provided. This metric is intended for RAG users. We have two options for this metric: *Luna* and *Plus*.
-
   * Context Adherence *Luna* is powered by small language models we've trained. It's free of cost.
 
   * Context Adherence *Plus* includes an explanation or rationale for the rating. These metrics and the explanations are powered by an LLM (e.g. OpenAI GPT3.5) and thus incur additional costs. *Plus* has shown to have better performance.
 
 * [**Completeness**](/galileo/gen-ai-studio-products/galileo-guardrail-metrics/completeness/completeness) - Measures how thoroughly your model's response covered relevant information from the context provided. This metric is intended for RAG use cases and is only available if you [log your retriever's output](/galileo/gen-ai-studio-products/galileo-evaluate/how-to/evaluate-and-optimize-rag-applications). There are two versions available:
-
   * Completeness *Luna* is powered by small language models we've trained. It's free of cost.
 
   * Completeness *Plus* includes an explanation or rationale for the rating. These metrics and the explanations are powered by an LLM (e.g. OpenAI GPT3.5) and thus incur additional costs. *Plus* has shown to have better performance.
 
 * [**Chunk Attribution**](/galileo/gen-ai-studio-products/galileo-guardrail-metrics/chunk-attribution) - Measures which individual chunks retrieved in a RAG workflow influenced your model's response. This metric is intended for RAG use cases and is only available if you [log your retriever's output](/galileo/gen-ai-studio-products/galileo-evaluate/how-to/evaluate-and-optimize-rag-applications). There are two versions available:
-
   * Chunk Attribution *Luna* is powered by small language models we've trained. It's free of cost.
 
   * Chunk Attribution *Plus* is powered by an LLM (e.g. OpenAI GPT3.5) and thus incurs additional costs. *Plus* has shown to have better performance.
 
 * [**Chunk Utilization**](/galileo/gen-ai-studio-products/galileo-guardrail-metrics/chunk-utilization) - For each chunk retrieved in a RAG workflow, measures the fraction of the chunk text that influenced your model's response. This metric is intended for RAG use cases and is only available if you [log your retriever's output](/galileo/gen-ai-studio-products/galileo-evaluate/how-to/evaluate-and-optimize-rag-applications). There are two versions available:
-
   * Chunk Attribution *Luna* is powered by small language models we've trained. It's free of cost.
 
   * Chunk Attribution *Plus* is powered by an LLM (e.g. OpenAI GPT3.5) and thus incurs additional costs. *Plus* has shown to have better performance.

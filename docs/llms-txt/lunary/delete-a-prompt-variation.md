@@ -1,5 +1,9 @@
 # Source: https://docs.lunary.ai/docs/api/datasets/delete-a-prompt-variation.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.lunary.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Delete a prompt variation
 
 
@@ -41,7 +45,3 @@ components:
       scheme: bearer
 
 ````
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.lunary.ai/llms.txt

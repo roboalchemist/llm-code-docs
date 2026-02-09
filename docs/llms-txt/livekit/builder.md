@@ -1,6 +1,6 @@
 # Source: https://docs.livekit.io/agents/start/builder.md
 
-LiveKit docs › Getting started › Agent builder
+LiveKit docs › Get Started › Agent builder
 
 ---
 
@@ -12,9 +12,11 @@ LiveKit docs › Getting started › Agent builder
 
 The LiveKit Agent Builder lets you prototype and deploy simple voice agents through your browser, without writing any code. It's a great way to build a proof-of-concept, explore ideas, or stand up a working prototype quickly.
 
-The agent builder produces best-practice Python code using the LiveKit Agents SDK, and deploys your agents directly to LiveKit Cloud. The result is an agent that is fully compatible with the rest of LiveKit Cloud, including [LiveKit Inference](https://docs.livekit.io/agents/models.md#inference), and [agent insights](https://docs.livekit.io/agents/observability.md), and [agent dispatch](https://docs.livekit.io/agents/server/agent-dispatch.md). You can continue iterating your agent in the builder, or convert it to code at any time to refine its behavior using [SDK-only features](#limitations).
+The agent builder produces best-practice Python code using the LiveKit Agents SDK, and deploys your agents directly to LiveKit Cloud. The result is an agent that is fully compatible with the rest of LiveKit Cloud, including [LiveKit Inference](https://docs.livekit.io/agents/models.md#inference), and [agent insights](https://docs.livekit.io/deploy/observability/insights.md), and [agent dispatch](https://docs.livekit.io/agents/server/agent-dispatch.md). You can continue iterating your agent in the builder, or convert it to code at any time to refine its behavior using [SDK-only features](#limitations).
 
 Access the agent builder by selecting **Deploy new agent** in your project's [Agents dashboard](https://cloud.livekit.io/projects/p_/agents).
+
+[Video: LiveKit Agents Builder](https://www.youtube.com/watch?v=FerHhAVELto)
 
 ## Agent features
 
@@ -26,7 +28,7 @@ The agent name is used for [explicit agent dispatch](https://docs.livekit.io/age
 
 ### Instructions
 
-This is the most important component of any agent. You can write a single prompt for your agent, to control its identity and behavior. See the [prompting guide](https://docs.livekit.io/agents/build/prompting.md) for tips on how to write a good prompt. You can use [variables](#variables) to include dynamic information in your prompt.
+This is the most important component of any agent. You can write a single prompt for your agent, to control its identity and behavior. See the [prompting guide](https://docs.livekit.io/agents/start/prompting.md) for tips on how to write a good prompt. You can use [variables](#variables) to include dynamic information in your prompt.
 
 ### Welcome greeting
 
@@ -38,12 +40,38 @@ Your agents support most of the models available in [LiveKit Inference](https://
 
 ### Actions
 
-Extend your agent's functionality with HTTP tools, which call external APIs and services. HTTP tools support the following features:
+Extend your agent's functionality with tools that allow your agent to interact with external systems and services. The agent builder supports three types of tools:
 
-- HTTP Method: GET, POST, PUT, DELETE, PATCH
+#### HTTP tools
+
+HTTP tools call external APIs and services. HTTP tools support the following features:
+
+- HTTP Method: `GET`, `POST`, `PUT`, `DELETE`, `PATCH`
 - Endpoint URL: The endpoint to call, with optional path parameters using a colon prefix, for example `:user_id`
-- Parameters: Query parameters (GET) or JSON body (POST, PUT, DELETE, PATCH), with optional type and description.
+- Parameters: Query parameters (`GET`) or JSON body (`POST`, `PUT`, `DELETE`, `PATCH`), with optional type and description.
 - Headers: Optional HTTP headers for authentication or other purposes, with support for [secrets](#secrets) and [metadata](#variables).
+- Silent: When enabled, hides the tool call result from the agent and prevents the agent from generating a response. Useful for tools that perform actions without needing acknowledgment.
+
+#### Client tools
+
+Client tools connect your agent to client-side RPC methods to retrieve data or perform actions. This is useful when the data needed to fulfill a function call is only available at the frontend, or when you want to trigger actions or UI updates in a structured way. Client tools support the following features:
+
+- Description: The tool's purpose, outcomes, usage instructions, and examples.
+- Parameters: Arguments passed by the LLM when the tool is called, with optional type and description.
+- Preview response: A sample response returned by the client, used to help the LLM understand the expected return format.
+- Silent: When enabled, hides the tool call result from the agent and prevents the agent from generating a response. Useful for tools that perform actions without needing acknowledgment.
+
+See the [RPC documentation](https://docs.livekit.io/transport/data/rpc.md) for more information on implementing client-side RPC methods.
+
+#### MCP servers
+
+Configure external Model Context Protocol (MCP) servers for your agent to connect and interact with. MCP servers expose tools that your agent can discover and use automatically, and support both streaming HTTP and SSE protocols. MCP servers support the following features:
+
+- Server name: A human-readable name for this MCP server.
+- URL: The endpoint URL of the MCP server.
+- Headers: Optional HTTP headers for authentication or other purposes, with support for [secrets](#secrets) and [metadata](#variables).
+
+See the [tools documentation](https://docs.livekit.io/agents/build/tools.md#external-tools-and-mcp) for more information on MCP integration.
 
 ### Variables and metadata
 
@@ -53,23 +81,33 @@ For instance, you can add a metadata field called `user_name`. When you dispatch
 
 ### Secrets
 
-Secrets are secure variables that can store sensitive information like API keys, database credentials, and authentication tokens. The agent builder uses the same [secrets store](https://docs.livekit.io/agents/ops/deployment/secrets.md) as other LiveKit Cloud agents, and you can manage secrets in the same way.
+Secrets are secure variables that can store sensitive information like API keys, database credentials, and authentication tokens. The agent builder uses the same [secrets store](https://docs.livekit.io/deploy/agents/secrets.md) as other LiveKit Cloud agents, and you can manage secrets in the same way.
 
 Secrets are available as [variables](#variables) inside tool header values.  For instance, if you have set a secret called `ACCESS_TOKEN`, then you can use add a tool header with the name `Authorization` and value `Bearer {{secrets.ACCESS_TOKEN}}`.
+
+### End-of-call summary
+
+Optionally summarize and report outcomes at the end of each call. When enabled, the agent automatically generates a summary of the conversation using the selected large language model (LLM) and sends it to the specified endpoint.
+
+End-of-call summary configuration includes:
+
+- Large language model (LLM): The language model used to generate the end-of-call summary.
+- Summary endpoint URL: The endpoint to which the end-of-call summary will be sent.
+- Headers: Optional HTTP headers for authentication or other purposes, with support for [secrets](#secrets) and [metadata](#variables).
 
 ### Other features
 
 Your agent is built to use the following features, which are recommended for all voice agents built with LiveKit:
 
-- [Background voice cancellation](https://docs.livekit.io/home/cloud/noise-cancellation.md) to improve agent comprehensision and reduce false interruptions.
+- [Background voice cancellation](https://docs.livekit.io/transport/media/enhanced-noise-cancellation.md) to improve agent comprehensision and reduce false interruptions.
 - [Preemptive generation](https://docs.livekit.io/agents/build/speech.md#preemptive-generation) to improve agent responsiveness and reduce latency.
-- [LiveKit turn detector](https://docs.livekit.io/agents/build/turns/turn-detector.md) for best-in-class conversational behavior
+- [LiveKit turn detector](https://docs.livekit.io/agents/logic/turns/turn-detector.md) for best-in-class conversational behavior
 
 ## Agent preview
 
 The agent builder includes a live preview mode to talk to your agent as you work on it. This is a great way to quickly test your agent's behavior and iterate on your prompt or try different models and voices. Changes made in the builder are automatically applied to the preview agent.
 
-Sessions with the preview agent use your own project's LiveKit Inference credits, but do not otherwise count against LiveKit Cloud usage. They also do not appear in [Agent observability](https://docs.livekit.io/agents/observability.md) for your project.
+Sessions with the preview agent use your own project's LiveKit Inference credits, but do not otherwise count against LiveKit Cloud usage. They also do not appear in [Agent observability](https://docs.livekit.io/deploy/observability/insights.md) for your project.
 
 ## Deploying to production
 
@@ -77,37 +115,37 @@ To deploy your agent to production, click the **Deploy agent** button in the top
 
 ## Test frontend
 
-After your agent is deployed to production, you can test it in a frontend built on the LiveKit Cloud [Sandbox](https://docs.livekit.io/home/cloud/sandbox.md) by clicking **Test Agent** in the top right corner of the builder. If you do not have this option, choose **Regenerate test app** from the dropdown menu to make it available.
+After your agent is deployed to production, you can test it in a frontend built on the LiveKit Cloud [Sandbox](https://docs.livekit.io/deploy/admin/sandbox.md) by clicking **Test Agent** in the top right corner of the builder. If you do not have this option, choose **Regenerate test app** from the dropdown menu to make it available.
 
 This test frontend is a public URL that you can share with others to test your agent. More configuration for the test frontend is available in your project's [Sandbox settings](https://cloud.livekit.io/projects/p_/sandbox).
 
 ## Observing production sessions
 
-After deploying your agent, you can observe production sessions in the [Agent insights](https://docs.livekit.io/agents/observability.md) tab in your [project's sessions dashboard](https://cloud.livekit.io/projects/p_/sessions).
+After deploying your agent, you can observe production sessions in the [Agent insights](https://docs.livekit.io/deploy/observability/insights.md) tab in your [project's sessions dashboard](https://cloud.livekit.io/projects/p_/sessions).
 
 ## Convert to code
 
-At any time, you can convert your agent to code by choosing the **Download code** button in the top right corner of the builder. This downloads a ZIP file containing a complete Python agent project, ready to [deploy with the LiveKit CLI](https://docs.livekit.io/agents/ops/deployment.md). Once you have deployed the new agent, you should delete the old agent in the builder so it stops receiving requests.
+At any time, you can convert your agent to code by choosing the **Download code** button in the top right corner of the builder. This downloads a ZIP file containing a complete Python agent project, ready to [deploy with the LiveKit CLI](https://docs.livekit.io/deploy/agents.md). Once you have deployed the new agent, you should delete the old agent in the builder so it stops receiving requests.
 
-The generated project includes a helpful README as well as an AGENTS.md file that includes best-practices and an integration with the [LiveKit Docs MCP Server](https://docs.livekit.io/home/get-started/mcp-server.md) so that you can code in confidence with expert help from the coding assistant of your choice.
+The generated project includes a helpful README as well as an AGENTS.md file that includes best-practices and an integration with the [LiveKit Docs MCP Server](https://docs.livekit.io/intro/mcp-server.md) so that you can code in confidence with expert help from the coding assistant of your choice.
 
 ## Limitations
 
 The agent builder is not intended to replace the LiveKit Agents SDK, but instead to make it easier to get started with voice agents which can be extended with custom code later after a proof-of-concept. The following are some of the agents SDK features that are not currently supported in the builder:
 
-- [Workflows](https://docs.livekit.io/agents/build/workflows.md), including [handoffs](https://docs.livekit.io/agents/build/agents-handoffs.md), and [tasks](https://docs.livekit.io/agents/build/tasks.md)
-- [Virtual avatars](https://docs.livekit.io/agents/models/avatars.md)
+- [Workflows](https://docs.livekit.io/agents/logic/workflows.md), including [handoffs](https://docs.livekit.io/agents/logic/agents-handoffs.md), and [tasks](https://docs.livekit.io/agents/logic/tasks.md)
+- [Virtual avatars](https://docs.livekit.io/agents/models/avatar.md)
 - [Vision](https://docs.livekit.io/agents/build/vision.md)
 - [Realtime models](https://docs.livekit.io/agents/models/realtime.md) and [model plugins](https://docs.livekit.io/agents/models.md#plugins)
-- [Tests](https://docs.livekit.io/agents/build/tests.md)
+- [Tests](https://docs.livekit.io/agents/start/testing.md)
 
 ## Billing and limits
 
-The agent builder is subject to the same [quotas and limits](https://docs.livekit.io/home/cloud/quotas-and-limits.md) as any other agent deployed to LiveKit Cloud. There is no additional cost to use the agent builder.
+The agent builder is subject to the same [quotas and limits](https://docs.livekit.io/deploy/admin/quotas-and-limits.md) as any other agent deployed to LiveKit Cloud. There is no additional cost to use the agent builder.
 
 ---
 
-This document was rendered at 2025-11-18T23:55:01.997Z.
+This document was rendered at 2026-02-03T03:24:54.173Z.
 For the latest version of this document, see [https://docs.livekit.io/agents/start/builder.md](https://docs.livekit.io/agents/start/builder.md).
 
 To explore all LiveKit documentation, see [llms.txt](https://docs.livekit.io/llms.txt).

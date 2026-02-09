@@ -1,4 +1,8 @@
-# Source: https://mintlify.com/docs/ai/slack-bot.md
+# Source: https://www.mintlify.com/docs/ai/slack-bot.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.mintlify.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Slack bot
 
@@ -19,20 +23,20 @@ Each message sent by the bot counts toward your assistant message usage.
 ## Set up the Slack app
 
 <Note>
-  If your Slack Workspace Owner requires admin approval to install apps, ask them to approve the Mintlify Slack app before you add it.
+  You can only install the Slack app once per workspace. If you have multiple Mintlify deployments, you can only connect one deployment at a time to a workspace. You must disconnect the app from one deployment before connecting it to another.
 </Note>
 
-1. Navigate to the [Integrations](https://dashboard.mintlify.com/products/assistant/settings/integrations) tab of the **Assistant Configurations** page in your dashboard.
-2. In the Slack card, click **Connect**. This opens Slack.
+If your Slack Workspace Owner requires admin approval to install apps, ask them to approve the Mintlify Slack app before you add it.
 
-<Frame>
-  <img src="https://mintcdn.com/mintlify/pskY4AQ8UobQvbpU/images/assistant/slack-connect-light.png?fit=max&auto=format&n=pskY4AQ8UobQvbpU&q=85&s=16fd173d82f1e5f8a2ad82e78aaa68b9" alt="The Connect button in the Slack card in light mode." className="block dark:hidden" data-og-width="842" width="842" data-og-height="230" height="230" data-path="images/assistant/slack-connect-light.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/mintlify/pskY4AQ8UobQvbpU/images/assistant/slack-connect-light.png?w=280&fit=max&auto=format&n=pskY4AQ8UobQvbpU&q=85&s=23fe51216da7849b14aca5db3ae8f74d 280w, https://mintcdn.com/mintlify/pskY4AQ8UobQvbpU/images/assistant/slack-connect-light.png?w=560&fit=max&auto=format&n=pskY4AQ8UobQvbpU&q=85&s=9bcf9be6912ca8099655d2cfcf82927c 560w, https://mintcdn.com/mintlify/pskY4AQ8UobQvbpU/images/assistant/slack-connect-light.png?w=840&fit=max&auto=format&n=pskY4AQ8UobQvbpU&q=85&s=73668b838e11aeffc92b8c38893dcb53 840w, https://mintcdn.com/mintlify/pskY4AQ8UobQvbpU/images/assistant/slack-connect-light.png?w=1100&fit=max&auto=format&n=pskY4AQ8UobQvbpU&q=85&s=b1797f5cffc4ed66412e14a103dd74e2 1100w, https://mintcdn.com/mintlify/pskY4AQ8UobQvbpU/images/assistant/slack-connect-light.png?w=1650&fit=max&auto=format&n=pskY4AQ8UobQvbpU&q=85&s=2a695b92a3a14be4156ebe9d2a87793d 1650w, https://mintcdn.com/mintlify/pskY4AQ8UobQvbpU/images/assistant/slack-connect-light.png?w=2500&fit=max&auto=format&n=pskY4AQ8UobQvbpU&q=85&s=1cded7a3b2a3e523d4d15bb4529fe507 2500w" />
+1. Navigate to the [Assistant](https://dashboard.mintlify.com/products/assistant) page in your dashboard.
+2. In the Slack card, click **Configure**. This opens Slack.
+   <Frame>
+     <img src="https://mintcdn.com/mintlify/iWC1DRgIiF7skzGL/images/assistant/connected-apps-light.png?fit=max&auto=format&n=iWC1DRgIiF7skzGL&q=85&s=647b6ec148afcbb3177e536cba7f858e" alt="The connected apps section of the assistant page." className="block dark:hidden" data-og-width="1854" width="1854" data-og-height="470" height="470" data-path="images/assistant/connected-apps-light.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/mintlify/iWC1DRgIiF7skzGL/images/assistant/connected-apps-light.png?w=280&fit=max&auto=format&n=iWC1DRgIiF7skzGL&q=85&s=e9337774ec02cdd6283428e915d417a9 280w, https://mintcdn.com/mintlify/iWC1DRgIiF7skzGL/images/assistant/connected-apps-light.png?w=560&fit=max&auto=format&n=iWC1DRgIiF7skzGL&q=85&s=002e3b6a86986574ce4611a069b896c7 560w, https://mintcdn.com/mintlify/iWC1DRgIiF7skzGL/images/assistant/connected-apps-light.png?w=840&fit=max&auto=format&n=iWC1DRgIiF7skzGL&q=85&s=d054f667a3cb4b1c650728528c367db0 840w, https://mintcdn.com/mintlify/iWC1DRgIiF7skzGL/images/assistant/connected-apps-light.png?w=1100&fit=max&auto=format&n=iWC1DRgIiF7skzGL&q=85&s=6f4cac6d895a64601545887c516f844f 1100w, https://mintcdn.com/mintlify/iWC1DRgIiF7skzGL/images/assistant/connected-apps-light.png?w=1650&fit=max&auto=format&n=iWC1DRgIiF7skzGL&q=85&s=0b00626aa3bc80ec27b30ea90617c440 1650w, https://mintcdn.com/mintlify/iWC1DRgIiF7skzGL/images/assistant/connected-apps-light.png?w=2500&fit=max&auto=format&n=iWC1DRgIiF7skzGL&q=85&s=cb9077db04fd6afce9f657268f4c54bb 2500w" />
 
-  <img src="https://mintcdn.com/mintlify/pskY4AQ8UobQvbpU/images/assistant/slack-connect-dark.png?fit=max&auto=format&n=pskY4AQ8UobQvbpU&q=85&s=b3f0aca4b003fc9055f57b65226be210" alt="The Connect button in the Slack card in dark mode." className="hidden dark:block" data-og-width="842" width="842" data-og-height="230" height="230" data-path="images/assistant/slack-connect-dark.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/mintlify/pskY4AQ8UobQvbpU/images/assistant/slack-connect-dark.png?w=280&fit=max&auto=format&n=pskY4AQ8UobQvbpU&q=85&s=a98dd7e53513a10ed3c51bfb13665ef2 280w, https://mintcdn.com/mintlify/pskY4AQ8UobQvbpU/images/assistant/slack-connect-dark.png?w=560&fit=max&auto=format&n=pskY4AQ8UobQvbpU&q=85&s=918ae3c9a6125250929eca85904a5dcb 560w, https://mintcdn.com/mintlify/pskY4AQ8UobQvbpU/images/assistant/slack-connect-dark.png?w=840&fit=max&auto=format&n=pskY4AQ8UobQvbpU&q=85&s=3e3f16291e2d44d9e283daacaa06589c 840w, https://mintcdn.com/mintlify/pskY4AQ8UobQvbpU/images/assistant/slack-connect-dark.png?w=1100&fit=max&auto=format&n=pskY4AQ8UobQvbpU&q=85&s=c55c6477359451caa747339b13ac2625 1100w, https://mintcdn.com/mintlify/pskY4AQ8UobQvbpU/images/assistant/slack-connect-dark.png?w=1650&fit=max&auto=format&n=pskY4AQ8UobQvbpU&q=85&s=5331c78d26b38747442efb1743f3b90f 1650w, https://mintcdn.com/mintlify/pskY4AQ8UobQvbpU/images/assistant/slack-connect-dark.png?w=2500&fit=max&auto=format&n=pskY4AQ8UobQvbpU&q=85&s=0eaaae4bfc0224f25bda09161699978e 2500w" />
-</Frame>
-
-1. Follow the Slack prompts to add the app to your workspace.
-2. Mention the bot to add it to a channel. The bot's default name is `@mintlify-assistant`.
+     <img src="https://mintcdn.com/mintlify/iWC1DRgIiF7skzGL/images/assistant/connected-apps-dark.png?fit=max&auto=format&n=iWC1DRgIiF7skzGL&q=85&s=cc2ef191b665b1042d1130d28b9346f2" alt="The connected apps section of the assistant page." className="hidden dark:block" data-og-width="1854" width="1854" data-og-height="470" height="470" data-path="images/assistant/connected-apps-dark.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/mintlify/iWC1DRgIiF7skzGL/images/assistant/connected-apps-dark.png?w=280&fit=max&auto=format&n=iWC1DRgIiF7skzGL&q=85&s=0e068244afd690277d45d1d7fc3af0f5 280w, https://mintcdn.com/mintlify/iWC1DRgIiF7skzGL/images/assistant/connected-apps-dark.png?w=560&fit=max&auto=format&n=iWC1DRgIiF7skzGL&q=85&s=67289ab57f5dfe6a2f1e497dc3568181 560w, https://mintcdn.com/mintlify/iWC1DRgIiF7skzGL/images/assistant/connected-apps-dark.png?w=840&fit=max&auto=format&n=iWC1DRgIiF7skzGL&q=85&s=d95c2630a73c17a6626fd831704fdbeb 840w, https://mintcdn.com/mintlify/iWC1DRgIiF7skzGL/images/assistant/connected-apps-dark.png?w=1100&fit=max&auto=format&n=iWC1DRgIiF7skzGL&q=85&s=8bddf2a70a68e65ce9650b7196aac94c 1100w, https://mintcdn.com/mintlify/iWC1DRgIiF7skzGL/images/assistant/connected-apps-dark.png?w=1650&fit=max&auto=format&n=iWC1DRgIiF7skzGL&q=85&s=7faabc681aefdb7d0a3f72cdf11fc9cc 1650w, https://mintcdn.com/mintlify/iWC1DRgIiF7skzGL/images/assistant/connected-apps-dark.png?w=2500&fit=max&auto=format&n=iWC1DRgIiF7skzGL&q=85&s=87a21214500ff312ea6d92eb68205cfb 2500w" />
+   </Frame>
+3. Follow the Slack prompts to add the app to your workspace.
+4. Mention the bot to add it to a channel. The bot's default name is `@mintlify-assistant`.
 
 ## Create an `#ask-ai` channel
 
@@ -51,8 +55,3 @@ If you want the bot to reply to messages in a different channel, select a channe
 After you add the app to your workspace, you can manage or remove the app from the [Integrations](https://dashboard.mintlify.com/products/assistant/settings/integrations) tab.
 
 In the Slack bot configuration menu, customize the bot by changing its avatar or name, and choose which channel it automatically replies to all messages in.
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://mintlify.com/docs/llms.txt

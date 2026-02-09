@@ -2,18 +2,6 @@
 
 # Source: https://docs.apify.com/academy/scraping-basics-javascript/scraping-variants.md
 
-# Source: https://docs.apify.com/academy/scraping-basics-python/scraping-variants.md
-
-# Source: https://docs.apify.com/academy/scraping-basics-javascript/scraping-variants.md
-
-# Source: https://docs.apify.com/academy/scraping-basics-python/scraping-variants.md
-
-# Source: https://docs.apify.com/academy/scraping-basics-javascript/scraping-variants.md
-
-# Source: https://docs.apify.com/academy/scraping-basics-python/scraping-variants.md
-
-# Source: https://docs.apify.com/academy/scraping-basics-javascript2/scraping-variants.md
-
 # Scraping product variants with Node.js
 
 **In this lesson, we'll scrape the product detail pages to represent each product variant as a separate item in our dataset.**
@@ -24,7 +12,7 @@ We'll need to figure out how to extract variants from the product detail page, a
 
 ## Locating variants
 
-First, let's extract information about the variants. If we go to https://warehouse-theme-metal.myshopify.com/products/sony-xbr-65x950g-65-class-64-5-diag-bravia-4k-hdr-ultra-hd-tv and open the DevTools, we can see that the buttons for switching between variants look like this:
+First, let's extract information about the variants. If we go to [Sony XBR-950G BRAVIA](https://warehouse-theme-metal.myshopify.com/products/sony-xbr-65x950g-65-class-64-5-diag-bravia-4k-hdr-ultra-hd-tv) and open the DevTools, we can see that the buttons for switching between variants look like this:
 
 
 ```
@@ -102,7 +90,7 @@ const data = await Promise.all(promises);
 ```
 
 
-The CSS selector `.product-form__option.no-js` targets elements that have both the `product-form__option` and `no-js` classes. We then use the https://developer.mozilla.org/en-US/docs/Web/CSS/Descendant_combinator to match all `option` elements nested within the `.product-form__option.no-js` wrapper.
+The CSS selector `.product-form__option.no-js` targets elements that have both the `product-form__option` and `no-js` classes. We then use the [descendant combinator](https://developer.mozilla.org/en-US/docs/Web/CSS/Descendant_combinator) to match all `option` elements nested within the `.product-form__option.no-js` wrapper.
 
 We loop over the variants using `.map()` method to create an array of item copies for each `variantName`. We now need to pass all these items onward, but the function currently returns just one item per product. And what if there are no variants?
 
@@ -133,7 +121,7 @@ const data = itemLists.flat();
 ```
 
 
-After modifying the loop, we also updated how we collect the items into the `data` array. Since the loop now produces an array of items per product, the result of `await Promise.all()` is an array of arrays. We use https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/flat to merge them into a single, non-nested array.
+After modifying the loop, we also updated how we collect the items into the `data` array. Since the loop now produces an array of items per product, the result of `await Promise.all()` is an array of arrays. We use [.flat()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/flat) to merge them into a single, non-nested array.
 
 If we run the program now, we'll see 34 items in total. Some items don't have variants, so they won't have a variant name. However, they should still have a price set—our scraper should already have that info from the product listing page.
 
@@ -355,11 +343,11 @@ These challenges are here to help you test what you’ve learned in this lesson.
 
 Real world
 
-You're about to touch the real web, which is practical and exciting! But websites change, so some exercises might break. If you run into any issues, please leave a comment below or https://github.com/apify/apify-docs/issues.
+You're about to touch the real web, which is practical and exciting! But websites change, so some exercises might break. If you run into any issues, please leave a comment below or [file a GitHub Issue](https://github.com/apify/apify-docs/issues).
 
 ### Build a scraper for watching npm packages
 
-You can build a scraper now, can't you? Let's build another one! From the registry at https://www.npmjs.com/, scrape information about npm packages that match the following criteria:
+You can build a scraper now, can't you? Let's build another one! From the registry at [npmjs.com](https://www.npmjs.com/), scrape information about npm packages that match the following criteria:
 
 * Have the keyword "LLM" (as in *large language model*)
 * Updated within the last two years ("2 years ago" is okay; "3 years ago" is too old)
@@ -406,19 +394,26 @@ import * as cheerio from 'cheerio';
 
 async function download(url) {
   const response = await fetch(url);
-  if (response.ok) {
-    const html = await response.text();
-    return cheerio.load(html);
-  } else {
+  if (!response.ok) {
     throw new Error(`HTTP ${response.status}`);
   }
+  const html = await response.text();
+  return cheerio.load(html);
 }
 
-const listingURL = "https://www.npmjs.com/search?page=0&q=keywords%3Allm&sortBy=dependent_count";
-const $ = await download(listingURL);
+function parseNumber(text) {
+  return Number.parseInt(text.replace(/[^0-9]/g, ''), 10);
+}
 
-const promises = $("section").toArray().map(async element => {
+const listingUrl = 'https://www.npmjs.com/search?page=0&q=keywords%3Allm&sortBy=dependent_count';
+const $ = await download(listingUrl);
+
+const promises = $('section').toArray().map(async (element) => {
   const $card = $(element);
+  const $link = $card.find('a').first();
+  if (!$link.length) {
+    return null;
+  }
 
   const details = $card
     .children()
@@ -426,45 +421,46 @@ const promises = $("section").toArray().map(async element => {
     .children()
     .last()
     .text()
-    .split("•");
-  const updatedText = details[2].trim();
-  const dependents = parseInt(details[3].replace("dependents", "").trim());
+    .split('•')
+    .map((item) => item.trim());
 
-  if (updatedText.includes("years ago")) {
-    const yearsAgo = parseInt(updatedText.replace("years ago", "").trim());
-    if (yearsAgo > 2) {
+  const updatedText = details[2] ?? '';
+  const dependentsText = details[3] ?? '';
+  const dependents = parseNumber(dependentsText);
+
+  if (updatedText.includes('years ago')) {
+    const yearsAgo = parseNumber(updatedText);
+    if (Number.isFinite(yearsAgo) && yearsAgo > 2) {
       return null;
     }
   }
 
-  const $link = $card.find("a").first();
   const name = $link.text().trim();
-  const url = new URL($link.attr("href"), listingURL).href;
-  const description = $card.find("p").text().trim();
+  const url = new URL($link.attr('href'), listingUrl).href;
+  const description = $card.find('p').text().trim();
 
   const downloadsText = $card
     .children()
     .last()
     .text()
-    .replace(",", "")
     .trim();
-  const downloads = parseInt(downloadsText);
+  const downloads = parseNumber(downloadsText);
 
   return { name, url, description, dependents, downloads };
 });
 
-const data = await Promise.all(promises);
-console.log(data.filter(item => item !== null).splice(0, 5));
+const data = (await Promise.all(promises)).filter((item) => item);
+console.log(data.slice(0, 5));
 ```
 
 
-Since the HTML doesn't contain any descriptive classes, we must rely on its structure. We're using https://cheerio.js.org/docs/api/classes/Cheerio#children to carefully navigate the HTML element tree.
+Since the HTML doesn't contain any descriptive classes, we must rely on its structure. We're using [.children()](https://cheerio.js.org/docs/api/classes/Cheerio#children) to carefully navigate the HTML element tree.
 
-For items older than 2 years, we return `null` instead of an item. Before printing the results, we use https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter to remove these empty values and https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/splice the array down to just 5 items.
+For items older than 2 years, we return `null` instead of an item. Before printing the results, we use [.filter()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter) to remove these empty values and [.splice()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/splice) the array down to just 5 items.
 
 ### Find the shortest CNN article which made it to the Sports homepage
 
-Scrape the https://edition.cnn.com/sport homepage. For each linked article, calculate its length in characters:
+Scrape the [CNN Sports](https://edition.cnn.com/sport) homepage. For each linked article, calculate its length in characters:
 
 * Locate the element that holds the main content of the article.
 * Use `.text()` to extract all the content as plain text.
@@ -472,7 +468,7 @@ Scrape the https://edition.cnn.com/sport homepage. For each linked article, calc
 
 Skip pages without text (like those that only have a video). Sort the results and print the URL of the shortest article that made it to the homepage.
 
-At the time of writing, the shortest article on the CNN Sports homepage is https://edition.cnn.com/2024/10/03/sport/masters-donation-hurricane-helene-relief-spt-intl/, which is just 1,642 characters long.
+At the time of writing, the shortest article on the CNN Sports homepage is [about a donation to the Augusta National Golf Club](https://edition.cnn.com/2024/10/03/sport/masters-donation-hurricane-helene-relief-spt-intl/), which is just 1,642 characters long.
 
 Solution
 
@@ -482,31 +478,40 @@ import * as cheerio from 'cheerio';
 
 async function download(url) {
   const response = await fetch(url);
-  if (response.ok) {
-    const html = await response.text();
-    return cheerio.load(html);
-  } else {
+  if (!response.ok) {
     throw new Error(`HTTP ${response.status}`);
   }
+  const html = await response.text();
+  return cheerio.load(html);
 }
 
-const listingURL = "https://edition.cnn.com/sport";
-const $ = await download(listingURL);
+const listingUrl = 'https://edition.cnn.com/sport';
+const $ = await download(listingUrl);
 
-const promises = $(".layout__main .card").toArray().map(async element => {
-  const $link = $(element).find("a").first();
-  const articleURL = new URL($link.attr("href"), listingURL).href;
+const results = await Promise.all(
+  $('.layout__main .card').toArray().map(async (element) => {
+    const $element = $(element);
+    const $link = $element.find('a').first();
+    if (!$link.length) {
+      return null;
+    }
 
-  const $a = await download(articleURL);
-  const content = $a(".article__content").text().trim();
+    const articleUrl = new URL($link.attr('href'), listingUrl).href;
+    const $article = await download(articleUrl);
+    const content = $article('.article__content').text().trim();
 
-  return { url: articleURL, length: content.length };
-});
+    if (!content) {
+      return null;
+    }
 
-const data = await Promise.all(promises);
-const nonZeroData = data.filter(({ url, length }) => length > 0);
-nonZeroData.sort((a, b) => a.length - b.length);
-const shortestItem = nonZeroData[0];
+    return { url: articleUrl, length: content.length };
+  }),
+);
 
-console.log(shortestItem.url);
+const nonEmpty = results.filter((item) => item && item.length > 0);
+nonEmpty.sort((a, b) => a.length - b.length);
+
+if (nonEmpty.length > 0) {
+  console.log(nonEmpty[0].url);
+}
 ```

@@ -1,5 +1,9 @@
 # Source: https://docs.fireworks.ai/fine-tuning/evaluators.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.fireworks.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Evaluators
 
 > Understand the fundamentals of evaluators and reward functions in reinforcement fine-tuning

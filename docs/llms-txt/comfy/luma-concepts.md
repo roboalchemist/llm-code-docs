@@ -1,5 +1,9 @@
 # Source: https://docs.comfy.org/built-in-nodes/partner-node/video/luma/luma-concepts.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.comfy.org/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Luma Concepts - ComfyUI Native Node Documentation
 
 > A helper node that provides concept guidance for Luma image generation

@@ -16,10 +16,6 @@ When you deploy your app, you always get the latest available patches.
 
    - 7.6
 
-   - 7.3
-
-   - 7.2
-
    - 6.0
 
 ## How it works
@@ -328,7 +324,7 @@ applications:
     source:
       root: "stats"
     # The type of the application to build.
-    type: "python:3.13"
+    type: "python:3.14"
     # Unique relationship _to_ Varnish from 'stats-app', where no relationship
     # is defined _from_ Varnish to the same app, to avoid circular relationships.
     relationships:
@@ -372,6 +368,6 @@ To access the Varnish stats endpoint from the command line:
 
 1. Connect to your stats app [using SSH](https://docs.upsun.com../development/ssh/_index.md): `upsun ssh --app stats-app`
    (replace `stats-app` with the name you gave the app).
-2. Display the [relationships array](https://docs.upsun.com/create-apps/app-reference/single-runtime-image.md#relationships) with `echo $PLATFORM_RELATIONSHIPS | base64 -d | jq .`,
+2. Display the [relationships array](https://docs.upsun.com/create-apps/image-properties/relationships.md) with `echo $PLATFORM_RELATIONSHIPS | base64 -d | jq .`,
 3. Query Varnish with `curl <HOST>:<PORT>/stats`, replacing `<HOST>` and `<PATH>` with the values from Step 2.
 

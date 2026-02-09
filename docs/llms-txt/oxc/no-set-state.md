@@ -3,7 +3,6 @@
 ---
 url: /docs/guide/usage/linter/rules/react/no-set-state.md
 ---
-# react/no-set-state&#x20;
 
 ### What it does
 

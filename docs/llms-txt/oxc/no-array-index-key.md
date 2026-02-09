@@ -3,7 +3,6 @@
 ---
 url: /docs/guide/usage/linter/rules/react/no-array-index-key.md
 ---
-# react/no-array-index-key&#x20;
 
 ### What it does
 

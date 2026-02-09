@@ -1,5 +1,9 @@
 # Source: https://trigger.dev/docs/guides/examples/dall-e3-generate-image.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://trigger.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Generate an image using DALL·E 3
 
 > This example will show you how to generate an image using DALL·E 3 and text using GPT-4o with Trigger.dev.
@@ -10,7 +14,7 @@ This example demonstrates how to use Trigger.dev to make reliable calls to AI AP
 
 ## Task code
 
-```ts trigger/generateContent.ts theme={null}
+```ts trigger/generateContent.ts theme={"theme":"css-variables"}
 import { task } from "@trigger.dev/sdk";
 import OpenAI from "openai";
 
@@ -69,7 +73,7 @@ function generateImagePrompt(theme: string, description: string): any {
 
 To test this task in the dashboard, you can use the following payload:
 
-```json  theme={null}
+```json  theme={"theme":"css-variables"}
 {
   "theme": "A beautiful sunset",
   "description": "A sunset over the ocean with a tiny yacht in the distance."

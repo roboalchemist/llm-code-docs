@@ -1,4 +1,4 @@
-# Source: https://huggingface.co/docs/transformers/v5.0.0rc1/internal/image_processing_utils.md
+# Source: https://huggingface.co/docs/transformers/v5.0.0/internal/image_processing_utils.md
 
 # Utilities for Image Processors
 
@@ -11,7 +11,7 @@ Most of those are only useful if you are studying the code of the image processo
 
 #### transformers.image_transforms.center_crop[[transformers.image_transforms.center_crop]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/image_transforms.py#L445)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/image_transforms.py#L445)
 
 Crops the `image` to the specified `size` using a center crop. Note that if the image is too small to be cropped to
 the size given, it will be padded (so the returned result will always be of size `size`).
@@ -34,7 +34,7 @@ The cropped image.
 
 #### transformers.image_transforms.center_to_corners_format[[transformers.image_transforms.center_to_corners_format]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/image_transforms.py#L550)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/image_transforms.py#L550)
 
 Converts bounding boxes from center format to corners format.
 
@@ -45,7 +45,7 @@ corners format: contains the coordinates for the top-left and bottom-right corne
 
 #### transformers.image_transforms.corners_to_center_format[[transformers.image_transforms.corners_to_center_format]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/image_transforms.py#L593)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/image_transforms.py#L593)
 
 Converts bounding boxes from corners format to center format.
 
@@ -56,13 +56,13 @@ center format: contains the coordinate for the center of the box and its the wid
 
 #### transformers.image_transforms.id_to_rgb[[transformers.image_transforms.id_to_rgb]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/image_transforms.py#L625)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/image_transforms.py#L625)
 
 Converts unique ID to RGB color.
 
 #### transformers.image_transforms.normalize[[transformers.image_transforms.normalize]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/image_transforms.py#L384)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/image_transforms.py#L384)
 
 Normalizes `image` using the mean and standard deviation specified by `mean` and `std`.
 
@@ -82,7 +82,7 @@ input_data_format (`ChannelDimension`, *optional*) : The channel dimension forma
 
 #### transformers.image_transforms.pad[[transformers.image_transforms.pad]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/image_transforms.py#L655)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/image_transforms.py#L655)
 
 Pads the `image` with the specified (height, width) `padding` and `mode`.
 
@@ -108,13 +108,13 @@ The padded image.
 
 #### transformers.image_transforms.rgb_to_id[[transformers.image_transforms.rgb_to_id]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/image_transforms.py#L614)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/image_transforms.py#L614)
 
 Converts RGB color to unique ID.
 
 #### transformers.image_transforms.rescale[[transformers.image_transforms.rescale]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/image_transforms.py#L89)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/image_transforms.py#L89)
 
 Rescales `image` by `scale`.
 
@@ -138,7 +138,7 @@ The rescaled image.
 
 #### transformers.image_transforms.resize[[transformers.image_transforms.resize]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/image_transforms.py#L313)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/image_transforms.py#L313)
 
 Resizes `image` to `(height, width)` specified by `size` using the PIL library.
 
@@ -166,7 +166,7 @@ The resized image.
 
 #### transformers.image_transforms.to_pil_image[[transformers.image_transforms.to_pil_image]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/image_transforms.py#L154)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/image_transforms.py#L154)
 
 Converts `image` to a PIL Image. Optionally rescales it and puts the channel dimension back as the last axis if
 needed.
@@ -191,12 +191,12 @@ The converted image.
 
 #### transformers.ImageProcessingMixin[[transformers.ImageProcessingMixin]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/image_processing_base.py#L61)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/image_processing_base.py#L61)
 
 This is an image processor mixin used to provide saving/loading functionality for sequential and image feature
 extractors.
 
-fetch_imagestransformers.ImageProcessingMixin.fetch_imageshttps://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/image_processing_base.py#L475[{"name": "image_url_or_urls", "val": ": typing.Union[str, list[str], list[list[str]]]"}]
+fetch_imagestransformers.ImageProcessingMixin.fetch_imageshttps://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/image_processing_base.py#L465[{"name": "image_url_or_urls", "val": ": str | list[str] | list[list[str]]"}]
 
 Convert a single or a list of urls into the corresponding `PIL.Image` objects.
 
@@ -204,27 +204,27 @@ If a single url is passed, the return value will be a single object. If a list i
 returned.
 #### from_dict[[transformers.ImageProcessingMixin.from_dict]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/image_processing_base.py#L354)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/image_processing_base.py#L350)
 
-Instantiates a type of [ImageProcessingMixin](/docs/transformers/v5.0.0rc1/en/main_classes/image_processor#transformers.ImageProcessingMixin) from a Python dictionary of parameters.
+Instantiates a type of [ImageProcessingMixin](/docs/transformers/v5.0.0/en/internal/image_processing_utils#transformers.ImageProcessingMixin) from a Python dictionary of parameters.
 
 **Parameters:**
 
-image_processor_dict (`dict[str, Any]`) : Dictionary that will be used to instantiate the image processor object. Such a dictionary can be retrieved from a pretrained checkpoint by leveraging the [to_dict()](/docs/transformers/v5.0.0rc1/en/internal/image_processing_utils#transformers.ImageProcessingMixin.to_dict) method.
+image_processor_dict (`dict[str, Any]`) : Dictionary that will be used to instantiate the image processor object. Such a dictionary can be retrieved from a pretrained checkpoint by leveraging the [to_dict()](/docs/transformers/v5.0.0/en/internal/image_processing_utils#transformers.ImageProcessingMixin.to_dict) method.
 
 kwargs (`dict[str, Any]`) : Additional parameters from which to initialize the image processor object.
 
 **Returns:**
 
-`[ImageProcessingMixin](/docs/transformers/v5.0.0rc1/en/main_classes/image_processor#transformers.ImageProcessingMixin)`
+`[ImageProcessingMixin](/docs/transformers/v5.0.0/en/internal/image_processing_utils#transformers.ImageProcessingMixin)`
 
 The image processor object instantiated from those
 parameters.
 #### from_json_file[[transformers.ImageProcessingMixin.from_json_file]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/image_processing_base.py#L399)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/image_processing_base.py#L395)
 
-Instantiates a image processor of type [ImageProcessingMixin](/docs/transformers/v5.0.0rc1/en/main_classes/image_processor#transformers.ImageProcessingMixin) from the path to a JSON
+Instantiates a image processor of type [ImageProcessingMixin](/docs/transformers/v5.0.0/en/internal/image_processing_utils#transformers.ImageProcessingMixin) from the path to a JSON
 file of parameters.
 
 **Parameters:**
@@ -233,15 +233,15 @@ json_file (`str` or `os.PathLike`) : Path to the JSON file containing the parame
 
 **Returns:**
 
-`A image processor of type [ImageProcessingMixin](/docs/transformers/v5.0.0rc1/en/main_classes/image_processor#transformers.ImageProcessingMixin)`
+`A image processor of type [ImageProcessingMixin](/docs/transformers/v5.0.0/en/internal/image_processing_utils#transformers.ImageProcessingMixin)`
 
 The image_processor object
 instantiated from that JSON file.
 #### from_pretrained[[transformers.ImageProcessingMixin.from_pretrained]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/image_processing_base.py#L88)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/image_processing_base.py#L84)
 
-Instantiate a type of [ImageProcessingMixin](/docs/transformers/v5.0.0rc1/en/main_classes/image_processor#transformers.ImageProcessingMixin) from an image processor.
+Instantiate a type of [ImageProcessingMixin](/docs/transformers/v5.0.0/en/internal/image_processing_utils#transformers.ImageProcessingMixin) from an image processor.
 
 Examples:
 
@@ -268,7 +268,7 @@ assert unused_kwargs == {"foo": False}
 
 **Parameters:**
 
-pretrained_model_name_or_path (`str` or `os.PathLike`) : This can be either:  - a string, the *model id* of a pretrained image_processor hosted inside a model repo on huggingface.co. - a path to a *directory* containing a image processor file saved using the [save_pretrained()](/docs/transformers/v5.0.0rc1/en/main_classes/image_processor#transformers.ImageProcessingMixin.save_pretrained) method, e.g., `./my_model_directory/`. - a path or url to a saved image processor JSON *file*, e.g., `./my_model_directory/preprocessor_config.json`.
+pretrained_model_name_or_path (`str` or `os.PathLike`) : This can be either:  - a string, the *model id* of a pretrained image_processor hosted inside a model repo on huggingface.co. - a path to a *directory* containing a image processor file saved using the [save_pretrained()](/docs/transformers/v5.0.0/en/internal/image_processing_utils#transformers.ImageProcessingMixin.save_pretrained) method, e.g., `./my_model_directory/`. - a path or url to a saved image processor JSON *file*, e.g., `./my_model_directory/preprocessor_config.json`.
 
 cache_dir (`str` or `os.PathLike`, *optional*) : Path to a directory in which a downloaded pretrained model image processor should be cached if the standard cache should not be used.
 
@@ -288,10 +288,10 @@ kwargs (`dict[str, Any]`, *optional*) : The values in kwargs of any keys which a
 
 **Returns:**
 
-A image processor of type [ImageProcessingMixin](/docs/transformers/v5.0.0rc1/en/main_classes/image_processor#transformers.ImageProcessingMixin).
+A image processor of type [ImageProcessingMixin](/docs/transformers/v5.0.0/en/internal/image_processing_utils#transformers.ImageProcessingMixin).
 #### get_image_processor_dict[[transformers.ImageProcessingMixin.get_image_processor_dict]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/image_processing_base.py#L235)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/image_processing_base.py#L231)
 
 From a `pretrained_model_name_or_path`, resolve to a dictionary of parameters, to be used for instantiating a
 image processor of type `~image_processor_utils.ImageProcessingMixin` using `from_dict`.
@@ -311,7 +311,7 @@ image_processor_filename (`str`, *optional*, defaults to `"config.json"`) : The 
 The dictionary(ies) that will be used to instantiate the image processor object.
 #### push_to_hub[[transformers.ImageProcessingMixin.push_to_hub]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/utils/hub.py#L711)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/utils/hub.py#L711)
 
 Upload the image processor file to the 🤗 Model Hub.
 
@@ -350,7 +350,7 @@ max_shard_size (`int` or `str`, *optional*, defaults to `"50GB"`) : Only applica
 tags (`list[str]`, *optional*) : List of tags to push on the Hub.
 #### register_for_auto_class[[transformers.ImageProcessingMixin.register_for_auto_class]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/image_processing_base.py#L453)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/image_processing_base.py#L443)
 
 Register this class with a given auto class. This should only be used for custom image processors as the ones
 in the library are already mapped with `AutoImageProcessor `.
@@ -360,10 +360,10 @@ in the library are already mapped with `AutoImageProcessor `.
 auto_class (`str` or `type`, *optional*, defaults to `"AutoImageProcessor "`) : The auto class to register this new image processor with.
 #### save_pretrained[[transformers.ImageProcessingMixin.save_pretrained]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/image_processing_base.py#L187)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/image_processing_base.py#L183)
 
 Save an image processor object to the directory `save_directory`, so that it can be re-loaded using the
-[from_pretrained()](/docs/transformers/v5.0.0rc1/en/main_classes/image_processor#transformers.ImageProcessingMixin.from_pretrained) class method.
+[from_pretrained()](/docs/transformers/v5.0.0/en/internal/image_processing_utils#transformers.ImageProcessingMixin.from_pretrained) class method.
 
 **Parameters:**
 
@@ -371,10 +371,10 @@ save_directory (`str` or `os.PathLike`) : Directory where the image processor JS
 
 push_to_hub (`bool`, *optional*, defaults to `False`) : Whether or not to push your model to the Hugging Face model hub after saving it. You can specify the repository you want to push to with `repo_id` (will default to the name of `save_directory` in your namespace).
 
-kwargs (`dict[str, Any]`, *optional*) : Additional key word arguments passed along to the [push_to_hub()](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.utils.PushToHubMixin.push_to_hub) method.
+kwargs (`dict[str, Any]`, *optional*) : Additional key word arguments passed along to the [push_to_hub()](/docs/transformers/v5.0.0/en/main_classes/model#transformers.utils.PushToHubMixin.push_to_hub) method.
 #### to_dict[[transformers.ImageProcessingMixin.to_dict]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/image_processing_base.py#L387)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/image_processing_base.py#L383)
 
 Serializes this instance to a Python dictionary.
 
@@ -385,7 +385,7 @@ Serializes this instance to a Python dictionary.
 Dictionary of all the attributes that make up this image processor instance.
 #### to_json_file[[transformers.ImageProcessingMixin.to_json_file]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/image_processing_base.py#L439)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/image_processing_base.py#L429)
 
 Save this instance to a JSON file.
 
@@ -394,7 +394,7 @@ Save this instance to a JSON file.
 json_file_path (`str` or `os.PathLike`) : Path to the JSON file in which this image_processor instance's parameters will be saved.
 #### to_json_string[[transformers.ImageProcessingMixin.to_json_string]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/image_processing_base.py#L418)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/image_processing_base.py#L414)
 
 Serializes this instance to a JSON string.
 

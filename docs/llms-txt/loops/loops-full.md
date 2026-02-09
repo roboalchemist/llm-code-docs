@@ -42,7 +42,7 @@ On the free plan, light branding will be placed at the bottom of your emails.
 
 For more information or any questions, please contact [chris@loops.so](mailto:chris@loops.so).
 
-<img src="https://mintcdn.com/loops/OG31ikb--92jQDlq/images/free-plan.png?fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=7a29e638eb385f7df4601e9a4fa680da" alt="" data-og-width="1000" width="1000" data-og-height="777" height="777" data-path="images/free-plan.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/OG31ikb--92jQDlq/images/free-plan.png?w=280&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=53bb27913e3f7ecc29edecff14d707e9 280w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/free-plan.png?w=560&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=df1f96cae95638453dcac22af84056c6 560w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/free-plan.png?w=840&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=514bb69b4733a6ae78335fd465afd12a 840w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/free-plan.png?w=1100&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=96e1f1e3542160025cc4b63ba9b781b6 1100w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/free-plan.png?w=1650&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=d68f8e0ab885a0c8bc9d173738fdc6d5 1650w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/free-plan.png?w=2500&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=45afb842bea81cc47a1da3dc317c2201 2500w" />
+<img alt="" />
 
 
 # Notifications
@@ -125,7 +125,7 @@ You can create new teams from a single Loops account.
 
 You can also combine existing Loops teams under a single email address so you can easily switch between them instead of having to log out every time.
 
-<img src="https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/team-switcher.png?fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=7af5b46e85f9ee9f51cbe7c21539a27d" alt="Team switcher" data-og-width="2280" width="2280" data-og-height="1079" height="1079" data-path="images/team-switcher.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/team-switcher.png?w=280&fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=7b5653395542039637688e66f41dffa9 280w, https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/team-switcher.png?w=560&fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=2410e9cf4975b2872e5e9c096496b94a 560w, https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/team-switcher.png?w=840&fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=ae24773f80e9f801e0d1ef695296ba93 840w, https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/team-switcher.png?w=1100&fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=7204a96ef3e0aedaa4a001894d6e94a7 1100w, https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/team-switcher.png?w=1650&fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=bf96038a39fbca746d56a4bd0c9edfed 1650w, https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/team-switcher.png?w=2500&fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=c1f78d3ee00555889ef97dae53cc84a4 2500w" />
+<img alt="Team switcher" />
 
 The existing [team member features](/account/team-members) allow you to invite and remove users to and from individual teams.
 
@@ -159,7 +159,7 @@ In this example **Team A** is the main account you want to log in with, and **Te
 
     Refresh the Team settings page and you will see an invite alert appear in the bottom right corner. Click **Accept**.
 
-        <img src="https://mintcdn.com/loops/OG31ikb--92jQDlq/images/invite.png?fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=c24f47b25589a75373fa001352f8f31c" alt="Invitation popover" data-og-width="2280" width="2280" data-og-height="1080" height="1080" data-path="images/invite.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/OG31ikb--92jQDlq/images/invite.png?w=280&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=2c11b1a8d23ff6e03be2e77a9ba74511 280w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/invite.png?w=560&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=35d53feca844eb4eccb4647dcf00060a 560w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/invite.png?w=840&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=ef5164f92cb32ebd49eb5d0ff40b61cd 840w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/invite.png?w=1100&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=57f095c730bc55a1063b7679dd437f6f 1100w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/invite.png?w=1650&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=d13ee159ecb5878a941d7d07e41011ee 1650w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/invite.png?w=2500&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=cbad2d8d385c84675872561346e5cc57 2500w" />
+    <img alt="Invitation popover" />
 
     Accepting the invite will automatically switch you to the Team A account.
   </Step>
@@ -197,11 +197,11 @@ Easily add contacts to Loops by uploading a CSV file.
 
 1. Select **Import** in the top right of the [Audience](https://app.loops.so/audience) page.
 
-   <img src="https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/select-import-users.png?fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=a2258dda1a3f0dfc2cb54f2659baf717" alt="" data-og-width="2280" width="2280" data-og-height="944" height="944" data-path="images/select-import-users.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/select-import-users.png?w=280&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=1bb0e37853c22a71e914fbe1dcd04273 280w, https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/select-import-users.png?w=560&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=b5141dc9f08887c485d55e6cdebdfb9c 560w, https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/select-import-users.png?w=840&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=604a70f75dbc1b5fbc2205eba89201ac 840w, https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/select-import-users.png?w=1100&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=5e4b48325ffac9aaff2baec53da52262 1100w, https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/select-import-users.png?w=1650&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=d6ef329ae992515f1ccc0401664237b3 1650w, https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/select-import-users.png?w=2500&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=e1f45df944c09c63abe3764ace27868f 2500w" />
+   <img alt="" />
 
 2. Hover on **CSV** and click **Upload CSV**. Download the [example formatted CSV](https://app.loops.so/loops_sample.csv) to get an idea of the columns we use. By default, we recommend using at least `Email`, `First Name`, `Last Name`, `User Group` and `Source` columns.
 
-   <img src="https://mintcdn.com/loops/OG31ikb--92jQDlq/images/import-users.png?fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=f68da4c81e81193b87d77ab41ffc9d4e" alt="" data-og-width="1520" width="1520" data-og-height="1247" height="1247" data-path="images/import-users.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/OG31ikb--92jQDlq/images/import-users.png?w=280&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=041fa2852c0355cfe0c18576f35304f6 280w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/import-users.png?w=560&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=82154329482626b7436b8c222c738638 560w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/import-users.png?w=840&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=869f983532cb6f1f79ce14601d5f28ff 840w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/import-users.png?w=1100&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=9bc74f602357362086a1a91646fe94ef 1100w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/import-users.png?w=1650&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=81850b75bfb304519f6cfac51ddeb764 1650w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/import-users.png?w=2500&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=be9406c2e596c03ab7caa57d112e72a9 2500w" />
+   <img alt="" />
 
 3. After uploading the CSV you'll have a chance to review any duplicates or missing information before finishing.
 
@@ -229,7 +229,7 @@ After uploading the CSV, on the Review page select the **Trigger Loops** option.
 
 If you select to add contacts to mailing lists on this same page as well as toggle **Trigger loops** ON, you will also trigger **Contact added to list** loops.
 
-<img src="https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/csv-trigger-loops.png?fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=15a27f0fbfbc0c5308ad9454e8f31d0c" alt="" data-og-width="2280" width="2280" data-og-height="1242" height="1242" data-path="images/csv-trigger-loops.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/csv-trigger-loops.png?w=280&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=571e1e50ac8999b917f4adff5a24ad7d 280w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/csv-trigger-loops.png?w=560&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=bb187f15d0937725397ddc04a8aef8a6 560w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/csv-trigger-loops.png?w=840&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=1c6d569826bac3d811869de7ee55fd89 840w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/csv-trigger-loops.png?w=1100&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=098c752663a672893c03346397572a67 1100w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/csv-trigger-loops.png?w=1650&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=b739497d09dc7853de7a1a6d6c5bfb81 1650w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/csv-trigger-loops.png?w=2500&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=468937d6d073e0d8ae96eef9eff9631b 2500w" />
+<img alt="" />
 
 ## View previous CSV uploads
 
@@ -239,7 +239,7 @@ On the [Audience page](https://app.loops.so/audience) click **Import contacts**,
 
 Clicking on one of your uploads will let you view lists of all new, updated or duplicated contacts plus a list of any errors from the import.
 
-<img src="https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/csv-history.png?fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=b4491c021fc049fa4a280e439692949d" alt="" data-og-width="2280" width="2280" data-og-height="1419" height="1419" data-path="images/csv-history.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/csv-history.png?w=280&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=aad4cea1c8ed2134190b940c13bab8c1 280w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/csv-history.png?w=560&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=39c84097f9b261928c21297754d35e6e 560w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/csv-history.png?w=840&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=960675817e9ae2fe8b12a26ecb4f9125 840w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/csv-history.png?w=1100&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=6874981db9ea7a2861ed5f55a247b204 1100w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/csv-history.png?w=1650&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=afaf8f6540caf2d46603db46c8d34204 1650w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/csv-history.png?w=2500&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=be9ee5cd8c6517d5fb9564cc6667b90b 2500w" />
+<img alt="" />
 
 ## Important notes
 
@@ -270,7 +270,7 @@ With [the Loops API](/api-reference), you can easily manage contacts directly fr
 
 For example, creating a new contact is as easy as sending a `POST` request to `https://app.loops.so/api/v1/contacts/create`.
 
-```json  theme={"dark"}
+```json theme={"dark"}
 {
   "email": "adam@loops.so",
   "firstName": "Adam",
@@ -306,9 +306,9 @@ No parameters.
 
 ### Success
 
-<ResponseField name="success" type="boolean" required />
+<ResponseField name="success" type="boolean" />
 
-<ResponseField name="teamName" type="string" required>
+<ResponseField name="teamName" type="string">
   The name of the team the API key belongs to.
 </ResponseField>
 
@@ -320,13 +320,13 @@ A `401 Forbidden` will be returned if the API key is invalid.
   Deprecated fields will be removed in the future so avoid using them in your code.
 </Info>
 
-<ResponseField name="success" type="boolean" required />
+<ResponseField name="success" type="boolean" />
 
-<ResponseField name="message" type="string" required>
+<ResponseField name="message" type="string">
   "Invalid API key"
 </ResponseField>
 
-<ResponseField name="error" type="string" deprecated>
+<ResponseField name="error" type="string">
   "Invalid API key"
 </ResponseField>
 
@@ -508,45 +508,45 @@ Create a new contact with an email address and any other contact properties.
 
 ### Body
 
-<ParamField body="email" type="string" required>
+<ParamField type="string">
   The contact's email address.
 </ParamField>
 
-<ParamField body="firstName" type="string">
+<ParamField type="string">
   The contact's first name.
 </ParamField>
 
-<ParamField body="lastName" type="string">
+<ParamField type="string">
   The contact's last name.
 </ParamField>
 
-<ParamField body="source" type="string">
+<ParamField type="string">
   A custom source value to replace the default "API". [Read
   more](/contacts/properties#source)
 </ParamField>
 
-<ParamField body="subscribed" type="boolean" default={true}>
+<ParamField type="boolean">
   Whether the contact will receive campaign and loops emails. [Read
   more](/contacts/properties#subscribed)
 </ParamField>
 
-<ParamField body="userGroup" type="string">
+<ParamField type="string">
   You can use groups to segment users when sending emails. Currently, a contact
   can only be in one user group. [Read more](/contacts/properties#user-group)
 </ParamField>
 
-<ParamField body="userId" type="string">
+<ParamField type="string">
   A unique user ID (for example, from an external application). [Read
   more](/contacts/properties#user-id)
 </ParamField>
 
-<ParamField body="mailingLists" type="object">
+<ParamField type="object">
   Manage mailing list subscriptions.\
   Include key-value pairs of mailing list IDs and a `boolean` denoting if the contact
   should be added (`true`) or removed (`false`) from the list. [Read
   more](/contacts/mailing-lists#add-contacts-to-lists-with-the-api)
 
-  ```json  theme={"dark"}
+  ```json theme={"dark"}
   "mailingLists": {
     "cm06f5v0e45nf0ml5754o9cix": true,
     "cm16k73gq014h0mmj5b6jdi9r": false
@@ -560,7 +560,7 @@ You can also include [custom contact properties](/contacts/properties) in your r
 
 Custom properties can be of type `string`, `number`, `boolean` or `date` ([see allowed date formats](/contacts/properties#dates)).
 
-```json  theme={"dark"}
+```json theme={"dark"}
 {
   "email": "hello@gmail.com",
   "plan": "pro" /* Custom property */,
@@ -581,9 +581,9 @@ Custom properties can be of type `string`, `number`, `boolean` or `date` ([see a
 
 ### Success
 
-<ResponseField name="success" type="boolean" required />
+<ResponseField name="success" type="boolean" />
 
-<ResponseField name="id" type="string" required>
+<ResponseField name="id" type="string">
   The ID of the new contact.
 </ResponseField>
 
@@ -591,9 +591,9 @@ Custom properties can be of type `string`, `number`, `boolean` or `date` ([see a
 
 If a matching contact already exists in your audience, a `409 Conflict` error will be returned. All other errors will be `400 Bad Request`.
 
-<ResponseField name="success" type="boolean" required />
+<ResponseField name="success" type="boolean" />
 
-<ResponseField name="message" type="string" required>
+<ResponseField name="message" type="string">
   An error message describing the problem with the request.
 </ResponseField>
 
@@ -624,12 +624,12 @@ Create a new contact property.
 
 ### Body
 
-<ParamField body="name" type="string" required>
+<ParamField type="string">
   The name of the property.\
   This should be in `camelCase`, like `planName` or `favoriteColor`.
 </ParamField>
 
-<ParamField body="type" type="string" required>
+<ParamField type="string">
   The property's value type.
 
   Allowed values:
@@ -649,15 +649,15 @@ Create a new contact property.
 
 ### Success
 
-<ResponseField name="success" type="boolean" required />
+<ResponseField name="success" type="boolean" />
 
 ### Error
 
 Errors will be `400 Bad Request`.
 
-<ResponseField name="success" type="boolean" required />
+<ResponseField name="success" type="boolean" />
 
-<ResponseField name="message" type="string" required>
+<ResponseField name="message" type="string">
   An error message describing the problem with the request.
 </ResponseField>
 
@@ -699,7 +699,7 @@ No parameters.
 
 Returns an array of IP address strings.
 
-<ResponseField name="IP addresses" type="array" required>
+<ResponseField name="IP addresses" type="array">
   IP address (e.g., "1.2.3.4")
 </ResponseField>
 
@@ -709,9 +709,9 @@ If there are no dedicated IP addresses an empty array is returned.
 
 A `405` error will be returned if the wrong HTTP request method is used.
 
-<ResponseField name="success" type="boolean" required />
+<ResponseField name="success" type="boolean" />
 
-<ResponseField name="message" type="string" required>
+<ResponseField name="message" type="string">
   Error message
 </ResponseField>
 
@@ -736,11 +736,11 @@ Delete a contact by email address or user ID.
 
 You can delete a contact by using either their `email` or `userId` value.
 
-<ParamField body="email" type="string">
+<ParamField type="string">
   The contact's email address.
 </ParamField>
 
-<ParamField body="userId" type="string">
+<ParamField type="string">
   The contact's `userId` value.
 </ParamField>
 
@@ -748,9 +748,9 @@ You can delete a contact by using either their `email` or `userId` value.
 
 ### Success
 
-<ResponseField name="success" type="boolean" required />
+<ResponseField name="success" type="boolean" />
 
-<ResponseField name="message" type="string" required>
+<ResponseField name="message" type="string">
   "Contact deleted."
 </ResponseField>
 
@@ -758,9 +758,9 @@ You can delete a contact by using either their `email` or `userId` value.
 
 If a matching contact is not found, a `404 Not Found` will be returned. All other errors will be `400 Bad Request`.
 
-<ResponseField name="success" type="boolean" required />
+<ResponseField name="success" type="boolean" />
 
-<ResponseField name="message" type="string" required>
+<ResponseField name="message" type="string">
   An error message describing the problem with the request.
 </ResponseField>
 
@@ -2063,12 +2063,12 @@ Find a contact by email address or user ID.
 
 Search by email or user ID. Only one parameter is allowed.
 
-<ParamField query="email" type="string">
+<ParamField type="string">
   The contact's email address. Make sure it is
   [URI-encoded](https://en.wikipedia.org/wiki/Percent-encoding).
 </ParamField>
 
-<ParamField query="userId" type="string">
+<ParamField type="string">
   The contact's unique user ID.
 </ParamField>
 
@@ -2079,7 +2079,7 @@ This endpoint will return a list of contact objects containing all default prope
 If no contact is found, an empty list will be returned.
 
 <ResponseField name="Contacts" type="array">
-  <Expandable title="properties" defaultOpen={true}>
+  <Expandable title="properties">
     <ResponseField name="id" type="string">
       The contact's Loops-assigned ID.
     </ResponseField>
@@ -2171,13 +2171,17 @@ update their attributes, and send events to Loops.
 <Accordion title="Authentication Steps">
   To get started, you'll need an API key. Go to [Settings -> API](https://app.loops.so/settings?page=api) in Loops and click **Generate key**.
 
-  <img src="https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/authentication-1.png?fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=d1f3115197ec809cb8713e2ea57ef03f" alt="" data-og-width="1430" width="1430" data-og-height="359" height="359" data-path="images/authentication-1.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/authentication-1.png?w=280&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=b9f12e1e414172597193b11ef978216a 280w, https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/authentication-1.png?w=560&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=949bf24692620558e45aa77b3f5622fb 560w, https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/authentication-1.png?w=840&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=3709da7aedda70097b7a1015da70b5d7 840w, https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/authentication-1.png?w=1100&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=bb27f1cf6104c3eae2ef0c7a290ad29e 1100w, https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/authentication-1.png?w=1650&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=dbcb6fca36c6ba75c1a91ca35fdeb2e8 1650w, https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/authentication-1.png?w=2500&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=d46212c3c28f69666e52dc90faf36f9e 2500w" />
+  <img alt="" />
+
   This creates an API key. You can assign it a human-readable name:
-  <img src="https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/authentication-2.png?fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=7bdd41a72e81e88aecc6c242049e5bd0" alt="" data-og-width="1430" width="1430" data-og-height="242" height="242" data-path="images/authentication-2.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/authentication-2.png?w=280&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=f8ddddea42c7a1620f1bf83180f0c22d 280w, https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/authentication-2.png?w=560&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=7afc921f8ac32166a4de84ecba86dda2 560w, https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/authentication-2.png?w=840&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=cdf71e2417587c5c13ab01e6dc796e68 840w, https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/authentication-2.png?w=1100&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=713c9a1ce7ddd841d27361b75ede9d27 1100w, https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/authentication-2.png?w=1650&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=421a9420ce25aa7e63a2c6de58554487 1650w, https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/authentication-2.png?w=2500&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=656e0cb701d99210a670e9e1df976f12 2500w" />
+
+  <img alt="" />
+
   We suggest using a different API key for different purposes. You can revoke an API key at any time with the trash icon.
 
   When making an API call, add an Authorization header and set the API key as a Bearer token:
-  <img src="https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/authentication-3.png?fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=89b339ef97fd1f1d54a11f4be52e4455" alt="" data-og-width="1430" width="1430" data-og-height="148" height="148" data-path="images/authentication-3.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/authentication-3.png?w=280&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=a4f4efcb2cdfd86e2f39aad94cdf7bc5 280w, https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/authentication-3.png?w=560&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=6155aa3b71bec86a48953724232d8e61 560w, https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/authentication-3.png?w=840&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=5c99f5e829f1f6559d88782cf7577f1e 840w, https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/authentication-3.png?w=1100&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=d2aa615e26a41c59db4e1c33dbc31b4f 1100w, https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/authentication-3.png?w=1650&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=c49732b9252db0f9c3adbfb52e6a45e6 1650w, https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/authentication-3.png?w=2500&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=869f9e89e53b74b5ba62b247150b0219 2500w" />
+
+  <img alt="" />
 
   You can test your API key by making a `GET` request to
 
@@ -2195,7 +2199,7 @@ update their attributes, and send events to Loops.
 
   Here's an example Curl request (replace `d2d561f5ff80136f69b4b5a31b9fb3c9` with your own API key):
 
-  ```bash  theme={"dark"}
+  ```bash theme={"dark"}
   curl https://app.loops.so/api/v1/api-key -H "Accept: application/json" -H "Authorization: Bearer d2d561f5ff80136f69b4b5a31b9fb3c9"
   ```
 </Accordion>
@@ -2212,11 +2216,11 @@ To ensure the quality of service for all users, our API is rate limited. This me
 
   Here is an example of a successful response with rate limit headers:
 
-    <img src="https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/api-successful-response.png?fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=e5a91eaa1ae89d9938439b0ec9fa2c19" alt="" data-og-width="705" width="705" data-og-height="175" height="175" data-path="images/api-successful-response.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/api-successful-response.png?w=280&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=371214bda7bf4ade93c48f4072887a1d 280w, https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/api-successful-response.png?w=560&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=89ff68bbe88ebe1fc9f147975f8d79bd 560w, https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/api-successful-response.png?w=840&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=92e92c82b68049494273b9697b4d0b1a 840w, https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/api-successful-response.png?w=1100&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=c7fa4c8255de81dab213bb6a333e6efc 1100w, https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/api-successful-response.png?w=1650&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=92ef6994e652c11130b307be1a6a7eeb 1650w, https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/api-successful-response.png?w=2500&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=10bb665f9ae21cfd02b9066030b2bb96 2500w" />
+  <img alt="" />
 
   If you exceed this limit, you'll receive a response with HTTP status `429 Too Many Requests`. Here is an example of a failed response with rate limit headers:
 
-    <img src="https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/api-rate-limited.png?fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=9008b344cb25eab08a74e1df468b72e4" alt="" data-og-width="699" width="699" data-og-height="171" height="171" data-path="images/api-rate-limited.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/api-rate-limited.png?w=280&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=5091956297ec524b2c4ec40d749b6f74 280w, https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/api-rate-limited.png?w=560&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=b88a91db05eb2c57cc891534b9203b2e 560w, https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/api-rate-limited.png?w=840&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=2278b37b7db0ffa4bac98319d5267aa5 840w, https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/api-rate-limited.png?w=1100&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=3c5d8e9e42c0c6ac1b063cf6b1f7e9ba 1100w, https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/api-rate-limited.png?w=1650&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=accbbe22ad4f2d7b0114713bcb8c63f9 1650w, https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/api-rate-limited.png?w=2500&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=6c336e2e909b0fc1b2c4544bee821561 2500w" />
+  <img alt="" />
 
   It's important to handle these 429 responses in your application. We recommend implementing retries with an exponential backoff strategy.
 
@@ -2310,7 +2314,7 @@ The base URL for the API is `https://app.loops.so/api`
 
 Manage contacts.
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Create contact" icon="user-plus" href="/api-reference/create-contact" />
 
   <Card title="Update contact" icon="user-pen" href="/api-reference/update-contact" />
@@ -2324,7 +2328,7 @@ Manage contacts.
 
 Manage contact properties.
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Create contact property" icon="address-book" href="/api-reference/create-contact-property" />
 
   <Card title="List contact properties" icon="square-list" href="/api-reference/list-contact-properties" />
@@ -2334,7 +2338,7 @@ Manage contact properties.
 
 View your mailing lists.
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="List mailing lists" icon="list" href="/api-reference/list-mailing-lists" />
 </CardGroup>
 
@@ -2342,7 +2346,7 @@ View your mailing lists.
 
 Send events to trigger emails in loops.
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Send event" icon="bolt" href="/api-reference/send-event" />
 </CardGroup>
 
@@ -2350,7 +2354,7 @@ Send events to trigger emails in loops.
 
 Send a transactional email.
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Send transactional email" icon="envelope" href="/api-reference/send-transactional-email" />
 
   <Card title="List transactional emails" icon="envelopes" href="/api-reference/list-transactional-emails" />
@@ -2364,7 +2368,7 @@ View your account's custom contact properties.
   This endpoint is now deprecated in favor of [List contact properties](/api-reference/list-contact-properties).
 </Warning>
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="List custom fields" icon="square-list" href="/api-reference/list-custom-fields" />
 </CardGroup>
 
@@ -2372,7 +2376,7 @@ View your account's custom contact properties.
 
 Test your API key.
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Test API key" icon="square-terminal" href="/api-reference/api-key" />
 </CardGroup>
 
@@ -2387,7 +2391,7 @@ Retrieve a list of your account's contact properties.
 
 ### Query parameters
 
-<ParamField query="list" type="string">
+<ParamField type="string">
   Use `?list=custom` to only list your team's custom properties.
 </ParamField>
 
@@ -2396,7 +2400,7 @@ Retrieve a list of your account's contact properties.
 This endpoint will return a list of contact property objects.
 
 <ResponseField name="Contact properties" type="array">
-  <Expandable title="properties" defaultOpen={true}>
+  <Expandable title="properties">
     <ResponseField name="key" type="string">
       The property's name key.
     </ResponseField>
@@ -2506,7 +2510,7 @@ This endpoint will return a list of mailing list objects.
 If your account has no mailing lists, an empty list will be returned.
 
 <ResponseField name="Lists" type="array">
-  <Expandable title="properties" defaultOpen={true}>
+  <Expandable title="properties">
     <ResponseField name="id" type="string">
       The ID of the list.
     </ResponseField>
@@ -2555,11 +2559,11 @@ Retrieve a list of your transactional emails.
 
 ### Query parameters
 
-<ParamField query="perPage" type="string" default={20}>
+<ParamField type="string">
   How many results to return in each request. Must be between 10 and 50.
 </ParamField>
 
-<ParamField query="cursor" type="string">
+<ParamField type="string">
   A cursor, to return a specific page of results. Cursors can be found from the `pagination.nextCursor` value in each response.
 </ParamField>
 
@@ -2568,7 +2572,7 @@ Retrieve a list of your transactional emails.
 This endpoint will return a list of all *published* transactional emails in your account.
 
 <ResponseField name="pagination" type="object">
-  <Expandable title="metadata" defaultOpen={false}>
+  <Expandable title="metadata">
     <ResponseField name="totalResults" type="number">
       Total results found.
     </ResponseField>
@@ -2596,7 +2600,7 @@ This endpoint will return a list of all *published* transactional emails in your
 </ResponseField>
 
 <ResponseField name="data" type="array">
-  <Expandable title="properties" defaultOpen={true}>
+  <Expandable title="properties">
     <ResponseField name="id" type="string">
       The transactional email's ID.
     </ResponseField>
@@ -2677,33 +2681,33 @@ Send events to trigger emails in Loops.
   `userId` values.
 </Note>
 
-<ParamField body="email" type="string">
+<ParamField type="string">
   The contact's email address.\
   **Required if `userId` is not provided.**
 </ParamField>
 
-<ParamField body="userId" type="string">
+<ParamField type="string">
   The contact's unique user ID. This must already have been added to your
   contact in Loops.\
   **Required if `email` is not provided.**
 </ParamField>
 
-<ParamField body="eventName" type="string" required>
+<ParamField type="string">
   The name of the event.
 </ParamField>
 
-<ParamField body="eventProperties" type="object">
+<ParamField type="object">
   An object containing event property data for the event. Values can be of type
   `string`, `number`, `boolean` or `date`. [Read more](/events/properties)
 </ParamField>
 
-<ParamField body="mailingLists" type="object">
+<ParamField type="object">
   Manage the contact's mailing list subscriptions.\
   Include key-value pairs of mailing list IDs and a `boolean` denoting if the contact
   should be added (`true`) or removed (`false`) from the list. [Read
   more](/contacts/mailing-lists#add-contacts-to-lists-with-the-api)
 
-  ```json  theme={"dark"}
+  ```json theme={"dark"}
   {
     "mailingLists": {
       "cm06f5v0e45nf0ml5754o9cix": true,
@@ -2719,7 +2723,7 @@ You can also include default and custom [contact properties](/contacts/propertie
 
 Contact properties can be of type `string`, `number`, `boolean` or `date` ([see allowed date formats](/contacts/properties#dates)).
 
-```json  theme={"dark"}
+```json theme={"dark"}
 {
   "email": "hello@gmail.com",
   "eventName": "signup",
@@ -2738,7 +2742,7 @@ Contact properties can be of type `string`, `number`, `boolean` or `date` ([see 
 
 ### Headers
 
-<ParamField header="Idempotency-Key" type="string">
+<ParamField type="string">
   Optionally send an idempotency key to avoid duplicate requests.\
   The value should be a string of up to 100 characters and should be unique for each request. We recommend using V4 UUIDs or some other method with enough guaranteed entropy to avoid collisions during a 24 hour window.\
   The endpoint will return a `409 Conflict` response if the idempotency key has been used in the previous 24 hours.
@@ -2748,7 +2752,7 @@ Contact properties can be of type `string`, `number`, `boolean` or `date` ([see 
 
 ### Success
 
-<ResponseField name="success" type="boolean" required />
+<ResponseField name="success" type="boolean" />
 
 ### Error
 
@@ -2756,9 +2760,9 @@ If you send an idempotency key which has already been used in the previous 24 ho
 
 All other errors will be `400 Bad Request`.
 
-<ResponseField name="success" type="boolean" required />
+<ResponseField name="success" type="boolean" />
 
-<ResponseField name="message" type="string" required>
+<ResponseField name="message" type="string">
   An error message describing the problem with the request.
 </ResponseField>
 
@@ -2788,20 +2792,20 @@ Send a transactional email to a contact.
 
 ### Body
 
-<ParamField body="email" type="string" required>
+<ParamField type="string">
   The email address of the recipient.
 </ParamField>
 
-<ParamField body="transactionalId" type="string" required>
+<ParamField type="string">
   The ID of the transactional email to send.
 </ParamField>
 
-<ParamField body="addToAudience" type="boolean" default={false}>
+<ParamField type="boolean">
   If `true`, a contact will be created in your audience using the `email` value
   (if a matching contact doesn't already exist).
 </ParamField>
 
-<ParamField body="dataVariables" type="object">
+<ParamField type="object">
   An object containing data as defined by the data variables added to the
   transactional email template. Values can be of type `string` or `number`. If
   you have added [optional data
@@ -2809,7 +2813,7 @@ Send a transactional email to a contact.
   exclude them from the `dataVariables` object or set the value to `""`.
 </ParamField>
 
-<ParamField body="attachments" type="object[]">
+<ParamField type="object[]">
   <Note>
     Please [email us](mailto:help@loops.so) to enable attachments on your
     account before using them with the API.
@@ -2818,15 +2822,15 @@ Send a transactional email to a contact.
   An array containing file objects sent along with an email message.
 
   <Expandable>
-    <ParamField body="filename" type="string">
+    <ParamField type="string">
       The name of the file, shown in email clients.
     </ParamField>
 
-    <ParamField body="contentType" type="string">
+    <ParamField type="string">
       The MIME type of the file.
     </ParamField>
 
-    <ParamField body="data" type="string">
+    <ParamField type="string">
       The base64-encoded content of the file.
     </ParamField>
   </Expandable>
@@ -2841,7 +2845,7 @@ Send a transactional email to a contact.
 
 ### Headers
 
-<ParamField header="Idempotency-Key" type="string">
+<ParamField type="string">
   Optionally send an idempotency key to avoid duplicate requests. The value
   should be a string of up to 100 characters and should be unique for each
   request. We recommend using V4 UUIDs or some other method with enough
@@ -2854,7 +2858,7 @@ Send a transactional email to a contact.
 
 ### Success
 
-<ResponseField name="success" type="boolean" required />
+<ResponseField name="success" type="boolean" />
 
 ### Error
 
@@ -2869,15 +2873,15 @@ All other errors will be `400 Bad Request`.
   code.
 </Info>
 
-<ResponseField name="success" type="boolean" required />
+<ResponseField name="success" type="boolean" />
 
-<ResponseField name="message" type="string" required />
+<ResponseField name="message" type="string" />
 
-<ResponseField name="path" type="string" deprecated />
+<ResponseField name="path" type="string" />
 
-<ResponseField name="error" type="object" deprecated />
+<ResponseField name="error" type="object" />
 
-<ResponseField name="transactionalId" type="string" deprecated />
+<ResponseField name="transactionalId" type="string" />
 
 <ResponseExample>
   ```json Response theme={"dark"}
@@ -2966,32 +2970,32 @@ This endpoint will create a contact if a matching contact does not already exist
   `userId` values.
 </Note>
 
-<ParamField body="email" type="string">
+<ParamField type="string">
   The contact's email address. If there is no contact with this email, one will
   be created.\
   **Required if `userId` is not provided.**
 </ParamField>
 
-<ParamField body="userId" type="string">
+<ParamField type="string">
   A unique user ID (for example, from an external application). [Read
   more](/contacts/properties#user-id)
   **Required if `email` is not provided.**
 </ParamField>
 
-<ParamField body="firstName" type="string">
+<ParamField type="string">
   The contact's first name.
 </ParamField>
 
-<ParamField body="lastName" type="string">
+<ParamField type="string">
   The contact's last name.
 </ParamField>
 
-<ParamField body="source" type="string">
+<ParamField type="string">
   A custom source value to replace the default "API". [Read
   more](/contacts/properties#source)
 </ParamField>
 
-<ParamField body="subscribed" type="boolean">
+<ParamField type="boolean">
   Whether the contact will receive campaign and loops emails. [Read
   more](/contacts/properties#subscribed).
 
@@ -3003,17 +3007,17 @@ This endpoint will create a contact if a matching contact does not already exist
   </Warning>
 </ParamField>
 
-<ParamField body="userGroup" type="string">
+<ParamField type="string">
   You can use groups to segment users when sending emails. Currently, a contact
   can only be in one user group. [Read more](/contacts/properties#user-group)
 </ParamField>
 
-<ParamField body="mailingLists" type="object">
+<ParamField type="object">
   Manage mailing list subscriptions.\
   Include key-value pairs of mailing list IDs and a `boolean` denoting if the contact should be added (`true`) or removed (`false`) from the list. [Read
   more](/contacts/mailing-lists#add-contacts-to-lists-with-the-api)
 
-  ```json  theme={"dark"}
+  ```json theme={"dark"}
   "mailingLists": {
     "cm06f5v0e45nf0ml5754o9cix": true,
     "cm16k73gq014h0mmj5b6jdi9r": false
@@ -3027,7 +3031,7 @@ You can also include [custom contact properties](/contacts/properties) in your r
 
 Custom properties can be of type `string`, `number`, `boolean` or `date` ([see allowed date formats](/contacts/properties#dates)).
 
-```json  theme={"dark"}
+```json theme={"dark"}
 {
   "email": "hello@gmail.com",
   "plan": "pro" /* Custom property */,
@@ -3048,9 +3052,9 @@ Custom properties can be of type `string`, `number`, `boolean` or `date` ([see a
 
 ### Success
 
-<ResponseField name="success" type="boolean" required />
+<ResponseField name="success" type="boolean" />
 
-<ResponseField name="id" type="string" required>
+<ResponseField name="id" type="string">
   The ID of the contact.
 </ResponseField>
 
@@ -3058,9 +3062,9 @@ Custom properties can be of type `string`, `number`, `boolean` or `date` ([see a
 
 Errors will be `400 Bad Request`.
 
-<ResponseField name="success" type="boolean" required />
+<ResponseField name="success" type="boolean" />
 
-<ResponseField name="message" type="string" required>
+<ResponseField name="message" type="string">
   An error message describing the problem with the request.
 </ResponseField>
 
@@ -3086,7 +3090,7 @@ Source: https://loops.so/docs/contacts/contact-activity
 
 The contact activity timeline is a great way to see all the activity for a specific contact.
 
-<img src="https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/contact-activity-timeline.png?fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=98ff521969513196648bfa965c4ed839" alt="contact property timeline" data-og-width="2313" width="2313" data-og-height="1542" height="1542" data-path="images/contact-activity-timeline.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/contact-activity-timeline.png?w=280&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=acaa45be21b1e0b2b80a0fec13a83c0f 280w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/contact-activity-timeline.png?w=560&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=526b906a029bbbee58a9f56e1bec05e7 560w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/contact-activity-timeline.png?w=840&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=6dd6085b8dd22165b9da55f0ee7fcc50 840w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/contact-activity-timeline.png?w=1100&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=26547b6be223a60ea254099b26f5f745 1100w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/contact-activity-timeline.png?w=1650&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=049ab056add54a4389050fa92958d896 1650w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/contact-activity-timeline.png?w=2500&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=8b9879d371c94021b7f19baccc942b48 2500w" />
+<img alt="contact property timeline" />
 
 The contact activity timeline provides a chronological view of all the activity for a specific contact. To access the contact activity timeline, click on a contact from inside an audience.
 Email properties that can show on the timeline include:
@@ -3116,7 +3120,7 @@ You can delete contacts from your audience on the [Audience page](https://app.lo
 
 Click the `•••` menu icon on the contact you want to delete and select **Delete**.
 
-<img src="https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/delete-contact.png?fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=ced0bc6159407807c091a018541568d4" alt="Deleting a contact" data-og-width="2280" width="2280" data-og-height="1080" height="1080" data-path="images/delete-contact.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/delete-contact.png?w=280&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=a38326c1e8cea28801983411e25d618d 280w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/delete-contact.png?w=560&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=f7d756cd1f68f9ebb62d2ef2b42179b5 560w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/delete-contact.png?w=840&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=63ccf511bc123e4cebd1491bd6036d5d 840w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/delete-contact.png?w=1100&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=76ae269ced315eb021d6c61a0ece46cc 1100w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/delete-contact.png?w=1650&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=830524ad7b1c6873b204d2024b1e1df3 1650w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/delete-contact.png?w=2500&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=610f52c182c4a8c043115fd9705766c1 2500w" />
+<img alt="Deleting a contact" />
 
 ## Delete groups of contacts
 
@@ -3126,13 +3130,13 @@ Then click the `•••` menu icon in the filter box at the top of the Audienc
 
 This button will delete all contacts listed in the table below, based on the filter(s) you set up.
 
-<img src="https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/delete-contacts.png?fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=6424b46a47d391683bbe514630d3a4d5" alt="Deleting contacts in bulk using filters" data-og-width="2280" width="2280" data-og-height="1080" height="1080" data-path="images/delete-contacts.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/delete-contacts.png?w=280&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=11e319c65d3c553e3214a70b3a140310 280w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/delete-contacts.png?w=560&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=bcb91286edfdde88a2eae5cbeee2ff8b 560w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/delete-contacts.png?w=840&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=a2c0d4b6120b8926589675c7e96d8c23 840w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/delete-contacts.png?w=1100&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=c29e13a36b9a03c7e05b1f1072880b81 1100w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/delete-contacts.png?w=1650&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=e60ee765dea1550429454b60bd74d8e2 1650w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/delete-contacts.png?w=2500&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=8753f4139f40eda5d87a042d69e2e128 2500w" />
+<img alt="Deleting contacts in bulk using filters" />
 
 ## Delete contacts with the API
 
 You can delete single contacts using the API's [Delete contact](/api-reference/delete-contact) endpoint, by email address or `userId` value.
 
-```json  theme={"dark"}
+```json theme={"dark"}
 POST https://app.loops.so/api/v1/contacts/delete
 
 {
@@ -3169,9 +3173,9 @@ When double opt-in is enabled:
         Unsubscribed contacts do not count towards [your plan's
         limits](https://loops.so/pricing).
       </Tip>
-   3. If they don't respond, the contact continues to appear as "Pending".
+   3. If they don't respond, the contact continues to appear as "Pending". Pending contacts are not automatically removed. You can manually delete them if needed.
 
-<img src="https://mintcdn.com/loops/GrzDLwrUithgQO_4/images/opt-in-confirmation.png?fit=max&auto=format&n=GrzDLwrUithgQO_4&q=85&s=54b94d444db42035aa13af3f5dbffc26" alt="Double opt-in confirmation page" data-og-width="2280" width="2280" data-og-height="1673" height="1673" data-path="images/opt-in-confirmation.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/GrzDLwrUithgQO_4/images/opt-in-confirmation.png?w=280&fit=max&auto=format&n=GrzDLwrUithgQO_4&q=85&s=d5b3f634405dc35cf19d6c47bc017883 280w, https://mintcdn.com/loops/GrzDLwrUithgQO_4/images/opt-in-confirmation.png?w=560&fit=max&auto=format&n=GrzDLwrUithgQO_4&q=85&s=c278937923511171c99d3083a50e6eb3 560w, https://mintcdn.com/loops/GrzDLwrUithgQO_4/images/opt-in-confirmation.png?w=840&fit=max&auto=format&n=GrzDLwrUithgQO_4&q=85&s=40c39b411993357bf604d4c85e1957bc 840w, https://mintcdn.com/loops/GrzDLwrUithgQO_4/images/opt-in-confirmation.png?w=1100&fit=max&auto=format&n=GrzDLwrUithgQO_4&q=85&s=72bb954eb750cf66bde3d96653a1af18 1100w, https://mintcdn.com/loops/GrzDLwrUithgQO_4/images/opt-in-confirmation.png?w=1650&fit=max&auto=format&n=GrzDLwrUithgQO_4&q=85&s=55bde662ab49e96796e20f85868fa5f2 1650w, https://mintcdn.com/loops/GrzDLwrUithgQO_4/images/opt-in-confirmation.png?w=2500&fit=max&auto=format&n=GrzDLwrUithgQO_4&q=85&s=c4e7eca538c4803064a0ac6cff24d49b 2500w" />
+<img alt="Double opt-in confirmation page" />
 
 ## Enable double opt-in
 
@@ -3181,7 +3185,7 @@ This creates a special transactional email that is used to confirm the subscript
 
 To disable double opt-in, turn the **Double opt-in** setting off.
 
-<img src="https://mintcdn.com/loops/GrzDLwrUithgQO_4/images/opt-in-settings.png?fit=max&auto=format&n=GrzDLwrUithgQO_4&q=85&s=915d8296c59158f05e874177e205f9cc" alt="Double opt-in settings" data-og-width="2280" width="2280" data-og-height="1314" height="1314" data-path="images/opt-in-settings.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/GrzDLwrUithgQO_4/images/opt-in-settings.png?w=280&fit=max&auto=format&n=GrzDLwrUithgQO_4&q=85&s=005f4479af826dd11e86417dbad5eb17 280w, https://mintcdn.com/loops/GrzDLwrUithgQO_4/images/opt-in-settings.png?w=560&fit=max&auto=format&n=GrzDLwrUithgQO_4&q=85&s=ba80895ab517c802d5e2dfa934c0999c 560w, https://mintcdn.com/loops/GrzDLwrUithgQO_4/images/opt-in-settings.png?w=840&fit=max&auto=format&n=GrzDLwrUithgQO_4&q=85&s=95c2d704145f1e60b3c6e0e0bcee2341 840w, https://mintcdn.com/loops/GrzDLwrUithgQO_4/images/opt-in-settings.png?w=1100&fit=max&auto=format&n=GrzDLwrUithgQO_4&q=85&s=1a36d125aca767d0b189f5c8d02b0721 1100w, https://mintcdn.com/loops/GrzDLwrUithgQO_4/images/opt-in-settings.png?w=1650&fit=max&auto=format&n=GrzDLwrUithgQO_4&q=85&s=ddfbeb0316e7f81e12ef6849db1975e2 1650w, https://mintcdn.com/loops/GrzDLwrUithgQO_4/images/opt-in-settings.png?w=2500&fit=max&auto=format&n=GrzDLwrUithgQO_4&q=85&s=6dbef22174220b1e160ad1e9d30fd3e3 2500w" />
+<img alt="Double opt-in settings" />
 
 ## Customize the confirmation email
 
@@ -3207,7 +3211,7 @@ You can re-send a confirmation email to a contact from their profile page. This 
 
 On a contact's profile page, click the `•••` menu icon and choose **Request opt-in**.
 
-<img src="https://mintcdn.com/loops/GrzDLwrUithgQO_4/images/request-opt-in.png?fit=max&auto=format&n=GrzDLwrUithgQO_4&q=85&s=156f52aa6ddaac9df182b2b55748570a" alt="Request opt-in" data-og-width="2280" width="2280" data-og-height="1248" height="1248" data-path="images/request-opt-in.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/GrzDLwrUithgQO_4/images/request-opt-in.png?w=280&fit=max&auto=format&n=GrzDLwrUithgQO_4&q=85&s=58884914d049f713307e5bda1b3117a2 280w, https://mintcdn.com/loops/GrzDLwrUithgQO_4/images/request-opt-in.png?w=560&fit=max&auto=format&n=GrzDLwrUithgQO_4&q=85&s=3cc3f60f2f559c9e58e2a435129cb015 560w, https://mintcdn.com/loops/GrzDLwrUithgQO_4/images/request-opt-in.png?w=840&fit=max&auto=format&n=GrzDLwrUithgQO_4&q=85&s=af7841901a49fb35b627f8dafdbc7c1f 840w, https://mintcdn.com/loops/GrzDLwrUithgQO_4/images/request-opt-in.png?w=1100&fit=max&auto=format&n=GrzDLwrUithgQO_4&q=85&s=c6e884344895ae916be20dd75f288aaf 1100w, https://mintcdn.com/loops/GrzDLwrUithgQO_4/images/request-opt-in.png?w=1650&fit=max&auto=format&n=GrzDLwrUithgQO_4&q=85&s=67040fc8a2017e4dcf735bcd55a18313 1650w, https://mintcdn.com/loops/GrzDLwrUithgQO_4/images/request-opt-in.png?w=2500&fit=max&auto=format&n=GrzDLwrUithgQO_4&q=85&s=7fc2c0d2f09cdfc42284838a819706a8 2500w" />
+<img alt="Request opt-in" />
 
 ## Webhooks and the API
 
@@ -3249,7 +3253,7 @@ At any point you can download a CSV file of your audience. This can be your whol
 
 To download a CSV of your audience, click the `•••` menu icon in the top right of the filter box and select **Download**.
 
-<img src="https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/download-csv.png?fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=11374661b03b8ff52ae98a1a72aa79a8" alt="Exporting your audience" data-og-width="2280" width="2280" data-og-height="1448" height="1448" data-path="images/download-csv.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/download-csv.png?w=280&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=7cf9ada4e37542b95815029cde284b9e 280w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/download-csv.png?w=560&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=827459535d50a21272afb1f825cc9588 560w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/download-csv.png?w=840&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=40f3b0eec857222ad0298cb5a85ee218 840w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/download-csv.png?w=1100&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=d38bad1e52d9a400f52dd7f6d5c55413 1100w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/download-csv.png?w=1650&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=0bfe03a7be2785d55d9f7e9011406b4b 1650w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/download-csv.png?w=2500&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=4ce1a1f4f9d94c645716e64754483122 2500w" />
+<img alt="Exporting your audience" />
 
 The CSV file will contain columns for each property of your contacts, including [default properties](/contacts/properties#default-contact-properties) plus any [custom properties](/contacts/properties#custom-contact-properties) you've added.
 
@@ -3269,11 +3273,11 @@ You can also combine filters to create more complex exports.
 
 Here's an example of a filter you can use to export all contacts who have opened a specific campaign:
 
-<img src="https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/export-segment.png?fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=7db4f9ba39461bb68dabe86e745ed8e1" alt="Exporting with a filter" data-og-width="2280" width="2280" data-og-height="1133" height="1133" data-path="images/export-segment.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/export-segment.png?w=280&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=fad006b40f4356356091645529ac9c5c 280w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/export-segment.png?w=560&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=dba8cb30c464354cdd4563e9a4e4b2bb 560w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/export-segment.png?w=840&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=4209c74397925e7013cb462a683cb094 840w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/export-segment.png?w=1100&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=e3bdb45785dbfbbff8ca7c23da56898e 1100w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/export-segment.png?w=1650&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=40980f541e64812d8e6a54cc447102e5 1650w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/export-segment.png?w=2500&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=1faac73124fd000b6662324ba4bc2447 2500w" />
+<img alt="Exporting with a filter" />
 
 If you want to save your filters for the future, you can create a [segment](/contacts/filters-segments#audience-segments) by clicking **Save segment**.
 
-<img src="https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/save-segments.png?fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=6c9a9d8e0ae7192730b4a9db93471749" alt="Create a segment" data-og-width="2280" width="2280" data-og-height="1176" height="1176" data-path="images/save-segments.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/save-segments.png?w=280&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=79d2ff50e0cbaa71beb5ff8ae58b083c 280w, https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/save-segments.png?w=560&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=bbb4ea6913282fb53f892528e9ebadac 560w, https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/save-segments.png?w=840&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=293a56b3286cf8fa0b8a333a79e898bc 840w, https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/save-segments.png?w=1100&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=e18497ab551e37508e6907cb2c3f0faf 1100w, https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/save-segments.png?w=1650&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=77aca15dff11bbb18c76c4d3f66f50ff 1650w, https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/save-segments.png?w=2500&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=8e0055e0ccc1b04f4d59b20c8627f033 2500w" />
+<img alt="Create a segment" />
 
 
 # Filters and Segments
@@ -3285,7 +3289,7 @@ After you have added contacts to your audience in Loops, you may want to send lo
 
 You can do this with filters and segments.
 
-<img src="https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/audience-filters.png?fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=4ff9eaae776b3d5d8a49a953aedd5e1b" alt="Loop" data-og-width="2280" width="2280" data-og-height="1707" height="1707" data-path="images/audience-filters.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/audience-filters.png?w=280&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=2309e179afa826d5c41fa027b1d45101 280w, https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/audience-filters.png?w=560&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=bfce6453ebbe7eb235ab25a7353a1b12 560w, https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/audience-filters.png?w=840&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=0e32297b27c04d45bc6c1b0fc031672e 840w, https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/audience-filters.png?w=1100&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=3d314aac4d25f61ac6ff7426b3d1ec96 1100w, https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/audience-filters.png?w=1650&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=faefd8b757e4bfb7874e87d90233a6a8 1650w, https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/audience-filters.png?w=2500&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=d80b5583ca66f7cf88673b754cffb5ba 2500w" />
+<img alt="Loop" />
 
 ## Audience filters
 
@@ -3303,7 +3307,7 @@ For example, you can use filters to build segments like:
 * contacts who were sent a specific campaign
 * contacts who didn't open a specific email within one of your loops
 
-<img src="https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/filter-form.png?fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=3e4819c4c59bf6ed2683fbab78bb41d0" alt="Audience filter form" data-og-width="2280" width="2280" data-og-height="1358" height="1358" data-path="images/filter-form.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/filter-form.png?w=280&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=612c8368ce8575a127945e10fe746cf0 280w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/filter-form.png?w=560&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=5ba36b5c33cbe1f46bb44fc63bbc8bdd 560w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/filter-form.png?w=840&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=eb866cc910fd2a2b35f856fb137ad19f 840w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/filter-form.png?w=1100&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=484f9a3d9e4359ac5011af5ec914b2a2 1100w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/filter-form.png?w=1650&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=ddd49870c175f1bf116f3752af2958b6 1650w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/filter-form.png?w=2500&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=4e7929f817280ccf4384575628d37faa 2500w" />
+<img alt="Audience filter form" />
 
 You can add multiple filters at once, and you can also choose to apply *all filters* ("All of these are true") or *any filter* ("Any of these are true").
 
@@ -3319,13 +3323,13 @@ Segments are just filters that are saved in your Loops account for the future. T
 
 To create a segment, first filter the audience table and then click **Save segment**.
 
-<img src="https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/save-segments.png?fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=6c9a9d8e0ae7192730b4a9db93471749" alt="Create a segment" data-og-width="2280" width="2280" data-og-height="1176" height="1176" data-path="images/save-segments.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/save-segments.png?w=280&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=79d2ff50e0cbaa71beb5ff8ae58b083c 280w, https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/save-segments.png?w=560&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=bbb4ea6913282fb53f892528e9ebadac 560w, https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/save-segments.png?w=840&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=293a56b3286cf8fa0b8a333a79e898bc 840w, https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/save-segments.png?w=1100&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=e18497ab551e37508e6907cb2c3f0faf 1100w, https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/save-segments.png?w=1650&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=77aca15dff11bbb18c76c4d3f66f50ff 1650w, https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/save-segments.png?w=2500&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=8e0055e0ccc1b04f4d59b20c8627f033 2500w" />
+<img alt="Create a segment" />
 
 You will be prompted to add a name for your segment, then click **Finish**.
 
 Your new segment will then be available in a dropdown whenever you filter your audience for campaigns or loops.
 
-<img src="https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/segments.png?fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=6f8a84600745a7b6e674475b887dab2f" alt="List of segments" data-og-width="2280" width="2280" data-og-height="1301" height="1301" data-path="images/segments.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/segments.png?w=280&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=a6e3f12060acbe6a139177112859bf9d 280w, https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/segments.png?w=560&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=1b69c3fd91c7e0f66023cf0381943df2 560w, https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/segments.png?w=840&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=145e1dec8df4d55d6c99f4d5ce2527fc 840w, https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/segments.png?w=1100&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=cd41d470eb494c24d8b1df6643ecc732 1100w, https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/segments.png?w=1650&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=1d8b057836d4bb485e1162c44bac7e0e 1650w, https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/segments.png?w=2500&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=451376ae5a216d400f7a3d65aff1f5ca 2500w" />
+<img alt="List of segments" />
 
 Just like filters, segments are automatically updated when contact data is changed, meaning emails always send to the correct contacts at time the email is sent.
 
@@ -3368,7 +3372,7 @@ You can also sign up new subscribers to public lists with [Forms](/forms).
 
 The Preference Center allows your contacts to manage their own subscription preferences.
 
-<img src="https://mintcdn.com/loops/OG31ikb--92jQDlq/images/mailing-lists/preference-center.png?fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=cf719759d833e3e94d0e0a5a9fd36130" alt="Preference Center" data-og-width="2280" width="2280" data-og-height="1673" height="1673" data-path="images/mailing-lists/preference-center.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/OG31ikb--92jQDlq/images/mailing-lists/preference-center.png?w=280&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=54f84b23175c139e84e220a29ad28f03 280w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/mailing-lists/preference-center.png?w=560&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=8d8d0fd2ca57cbd0004859b28b19fb9d 560w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/mailing-lists/preference-center.png?w=840&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=e62d3bed909ec7e446b91fe3c3dbb133 840w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/mailing-lists/preference-center.png?w=1100&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=00361e18f79c6c4db9690839578a7b5f 1100w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/mailing-lists/preference-center.png?w=1650&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=28c7642f1271c5e5fcbc7d71c757ca94 1650w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/mailing-lists/preference-center.png?w=2500&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=83cc6532f2acc5df75d487ac44f753eb 2500w" />
+<img alt="Preference Center" />
 
 A link to the contact-specific Preference Center is automatically added to each marketing email sent from Loops. You can link to the Preference Center in MJML emails by using the `{unsubscribe_link}` [dynamic tag](/creating-emails/personalizing-emails#dynamic-tag-syntax).
 
@@ -3390,7 +3394,7 @@ Within the Preference Center, contacts will see:
 
 When sending campaigns and loops emails to specific lists, the [email footer](/creating-emails/editor#footer-content) will include the name of the list the email was sent to. This is useful for contacts to see which list the email was sent to, as well as unsubscribe from a certain list.
 
-<img src="https://mintcdn.com/loops/iUrWW0OJWaMuDi53/images/mailing-lists/mailing-list-footer.png?fit=max&auto=format&n=iUrWW0OJWaMuDi53&q=85&s=9b9508a973cb272cf103cf5b42cc0e36" alt="Mailing list in the email footer" data-og-width="2280" width="2280" data-og-height="830" height="830" data-path="images/mailing-lists/mailing-list-footer.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/iUrWW0OJWaMuDi53/images/mailing-lists/mailing-list-footer.png?w=280&fit=max&auto=format&n=iUrWW0OJWaMuDi53&q=85&s=3d54a455106056b445b35a42a4e939dc 280w, https://mintcdn.com/loops/iUrWW0OJWaMuDi53/images/mailing-lists/mailing-list-footer.png?w=560&fit=max&auto=format&n=iUrWW0OJWaMuDi53&q=85&s=2e818ee06e660e2c5bbd10f91d02b6bf 560w, https://mintcdn.com/loops/iUrWW0OJWaMuDi53/images/mailing-lists/mailing-list-footer.png?w=840&fit=max&auto=format&n=iUrWW0OJWaMuDi53&q=85&s=751c99a64acc516b0a17d865c39e8635 840w, https://mintcdn.com/loops/iUrWW0OJWaMuDi53/images/mailing-lists/mailing-list-footer.png?w=1100&fit=max&auto=format&n=iUrWW0OJWaMuDi53&q=85&s=0a103204e915ca08e8ff79ae2b0b01d6 1100w, https://mintcdn.com/loops/iUrWW0OJWaMuDi53/images/mailing-lists/mailing-list-footer.png?w=1650&fit=max&auto=format&n=iUrWW0OJWaMuDi53&q=85&s=2b089933b0195c6ad406ebfd8b76dce5 1650w, https://mintcdn.com/loops/iUrWW0OJWaMuDi53/images/mailing-lists/mailing-list-footer.png?w=2500&fit=max&auto=format&n=iUrWW0OJWaMuDi53&q=85&s=73691d799482d107644b89b46a97466f 2500w" />
+<img alt="Mailing list in the email footer" />
 
 ## Create a list
 
@@ -3400,7 +3404,7 @@ Go to [Settings -> Lists](https://app.loops.so/settings?page=lists).
   <Step title="Create">
     Click on the **Create a list** button.
 
-        <img src="https://mintcdn.com/loops/OG31ikb--92jQDlq/images/mailing-lists/create-list.png?fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=b7952371789ad1a52a4a6fedfc07568d" alt="Create a new list" data-og-width="2280" width="2280" data-og-height="1332" height="1332" data-path="images/mailing-lists/create-list.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/OG31ikb--92jQDlq/images/mailing-lists/create-list.png?w=280&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=12eed83beb5bb0941b4676dc86464fb3 280w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/mailing-lists/create-list.png?w=560&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=f9061adede12e87257c1492a7e691fe4 560w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/mailing-lists/create-list.png?w=840&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=42ac8153b6bdac11311f2a2a862c77b8 840w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/mailing-lists/create-list.png?w=1100&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=bc308c4b7202be509eb8f40ad15e012a 1100w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/mailing-lists/create-list.png?w=1650&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=64f8c1b0f0287390584be51f5163a48b 1650w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/mailing-lists/create-list.png?w=2500&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=cb4124091a90b1f6e916b96375537580 2500w" />
+    <img alt="Create a new list" />
 
     A new mailing list will appear. Enter a name for your list and optionally, a description.
 
@@ -3408,7 +3412,8 @@ Go to [Settings -> Lists](https://app.loops.so/settings?page=lists).
   </Step>
 
   <Step title="Set visibility">
-    <img src="https://mintcdn.com/loops/OG31ikb--92jQDlq/images/mailing-lists/lists-toggle.png?fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=6e8284ce89c7c91a7f5d9460e31f32ad" alt="Visibility toggle" data-og-width="2280" width="2280" data-og-height="1164" height="1164" data-path="images/mailing-lists/lists-toggle.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/OG31ikb--92jQDlq/images/mailing-lists/lists-toggle.png?w=280&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=69937b91710bda3e290297a9d6e5b932 280w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/mailing-lists/lists-toggle.png?w=560&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=2bf89665e64795c1a9fb056da73681dc 560w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/mailing-lists/lists-toggle.png?w=840&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=4e61d93072b68e3fe480ce9967225498 840w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/mailing-lists/lists-toggle.png?w=1100&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=9482d7889fb99612f28a44c817a3fffb 1100w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/mailing-lists/lists-toggle.png?w=1650&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=974096be4984b6310992468a993c9049 1650w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/mailing-lists/lists-toggle.png?w=2500&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=f4a60fa8fcf76668baa23d4ef88a098c 2500w" />
+    <img alt="Visibility toggle" />
+
     Choose between `Private` or `Public` ([see above](#list-types)).
   </Step>
 
@@ -3434,7 +3439,7 @@ Click **Save changes** to apply the changes.
 
 You can delete lists by clicking on a list's `•••` menu icon and selecting **Delete**.
 
-<img src="https://mintcdn.com/loops/OG31ikb--92jQDlq/images/mailing-lists/delete-list.png?fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=47bd285087095cc2b7efed2fc442d997" alt="Delete list" data-og-width="2280" width="2280" data-og-height="1164" height="1164" data-path="images/mailing-lists/delete-list.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/OG31ikb--92jQDlq/images/mailing-lists/delete-list.png?w=280&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=ad629e2ec6200e1f336afc34d6f58dbf 280w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/mailing-lists/delete-list.png?w=560&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=ff6504b6346c6498b88f2505b6ff895b 560w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/mailing-lists/delete-list.png?w=840&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=286e4d2b54a5f113e47e019f3e19eda2 840w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/mailing-lists/delete-list.png?w=1100&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=a494928efb95aa0e0832edde253489ae 1100w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/mailing-lists/delete-list.png?w=1650&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=c4063796b4d983327e863c3c51787e72 1650w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/mailing-lists/delete-list.png?w=2500&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=9230ae14939f032bdfddb9977d96cb63 2500w" />
+<img alt="Delete list" />
 
 You cannot delete a list that:
 
@@ -3461,7 +3466,7 @@ Instead of sending campaigns to your whole audience, you can send emails to a sp
   <Step title="Select the list">
     On the [Audience page](https://app.loops.so/audience), select the list you want to send to.
 
-        <img src="https://mintcdn.com/loops/OG31ikb--92jQDlq/images/mailing-lists/campaign-list.png?fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=1c7b4a93cbfb887681d919d541cb75ac" alt="Select a mailing list" data-og-width="2280" width="2280" data-og-height="822" height="822" data-path="images/mailing-lists/campaign-list.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/OG31ikb--92jQDlq/images/mailing-lists/campaign-list.png?w=280&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=987afc3bb93e5dd4e518923ffbb30335 280w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/mailing-lists/campaign-list.png?w=560&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=82ab7a4d27443098418d27b09b1a05ce 560w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/mailing-lists/campaign-list.png?w=840&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=ddebb97faf8e4060f9981a04d597adbc 840w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/mailing-lists/campaign-list.png?w=1100&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=0dfaee4c6a2f0becb8bbc76b0459cc64 1100w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/mailing-lists/campaign-list.png?w=1650&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=58d1111bf5a8ea84987ff5b0e5422bd2 1650w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/mailing-lists/campaign-list.png?w=2500&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=2ce7720065a2b1c1ab5a22bb9954bedc 2500w" />
+    <img alt="Select a mailing list" />
 
     Users not subscribed to the selected list will not receive the campaign.
   </Step>
@@ -3481,8 +3486,8 @@ You can configure loops to only send to contacts in a specific list (this applie
   </Step>
 
   <Step title="Select the list">
-    Select the list you want to trigger the loop. <img src="https://mintcdn.com/loops/OG31ikb--92jQDlq/images/mailing-lists/select-list.png?fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=de793fd41330f4a5b8f37bc1e1ed7e19" alt="Select the
-    list" data-og-width="2280" width="2280" data-og-height="629" height="629" data-path="images/mailing-lists/select-list.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/OG31ikb--92jQDlq/images/mailing-lists/select-list.png?w=280&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=51e65dc69cc136551244cd1c3969500a 280w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/mailing-lists/select-list.png?w=560&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=003a97ba60189d7c670893da2764df39 560w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/mailing-lists/select-list.png?w=840&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=f783ab9022eadd514438e13043da44f1 840w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/mailing-lists/select-list.png?w=1100&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=5562e3020301284fed6642bdcbe2c28e 1100w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/mailing-lists/select-list.png?w=1650&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=8fa96216dc1ca85d0e559a3c0714d44c 1650w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/mailing-lists/select-list.png?w=2500&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=85fb6e50a8569606b182dab29fefc24e 2500w" />
+    Select the list you want to trigger the loop. <img alt="Select the
+    list" />
   </Step>
 
   <Step title="Start the loop">
@@ -3505,8 +3510,8 @@ This example is a typical use case of sending an email sequence to new contacts 
   </Step>
 
   <Step title="Select the list">
-    Select the list you want to trigger the loop. <img src="https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/mailing-lists/set-trigger.png?fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=c11112f223f7e2d248b78f6a7d5e973d" alt="Select
-    trigger" data-og-width="2280" width="2280" data-og-height="1427" height="1427" data-path="images/mailing-lists/set-trigger.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/mailing-lists/set-trigger.png?w=280&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=91eeb6f2988b4d8f50c4dab868bfeb82 280w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/mailing-lists/set-trigger.png?w=560&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=d710c6c665342ddd650ff7b619d6849a 560w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/mailing-lists/set-trigger.png?w=840&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=faa236e8e66eab033ce1724e5cd35780 840w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/mailing-lists/set-trigger.png?w=1100&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=0eab82562a746c1203ab75c4c017f398 1100w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/mailing-lists/set-trigger.png?w=1650&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=ee92b8fd19caa122da61c6c88883744d 1650w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/mailing-lists/set-trigger.png?w=2500&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=891d92916570cf12062a2b1f11ffbd24 2500w" />
+    Select the list you want to trigger the loop. <img alt="Select
+    trigger" />
   </Step>
 
   <Step title="Start the loop">
@@ -3520,8 +3525,8 @@ This example is a typical use case of sending an email sequence to new contacts 
 How to add existing contacts to your different mailing lists within Loops.
 
 <Warning>
-  You cannot edit the list subscriptions of contacts who have been unsubscribed
-  from your audience. Likewise, if a contact unsubscribes from a list via the
+  You cannot add contacts to mailing lists if they are unsubscribed from your audience.\
+  Likewise, if a contact unsubscribes from a list via the
   Preference Center, they cannot be resubscribed by your team.
 </Warning>
 
@@ -3537,7 +3542,9 @@ How to add existing contacts to your different mailing lists within Loops.
   <Step title="Manage subscriptions">
     In the contact details page, click on **Subscribed** to reveal the mailing
     list dropdown.
-    <img src="https://mintcdn.com/loops/OG31ikb--92jQDlq/images/mailing-lists/manage-contact-subscriptions.png?fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=f4447232b13e743e0208a4b1c34c74af" alt="Manage subscriptions" data-og-width="2280" width="2280" data-og-height="909" height="909" data-path="images/mailing-lists/manage-contact-subscriptions.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/OG31ikb--92jQDlq/images/mailing-lists/manage-contact-subscriptions.png?w=280&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=417595f8d295f80316cb3af197c65d16 280w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/mailing-lists/manage-contact-subscriptions.png?w=560&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=300fd89ccb270adf9a13c76bb29e4590 560w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/mailing-lists/manage-contact-subscriptions.png?w=840&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=3d51ed2f9486fa9a7b03c83b83d807ce 840w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/mailing-lists/manage-contact-subscriptions.png?w=1100&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=ec360ea0c95fc65df23924b0445311a5 1100w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/mailing-lists/manage-contact-subscriptions.png?w=1650&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=ae10029bb8634ad0837c2cc22392a0f9 1650w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/mailing-lists/manage-contact-subscriptions.png?w=2500&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=ab68abf583ffe75eff5f4ded6151ecf4 2500w" />
+
+    <img alt="Manage subscriptions" />
+
     Toggle each list on or off as needed. Click **Save changes** in the top
     right to apply the changes.
   </Step>
@@ -3560,8 +3567,8 @@ You can easily add any filtered group of contacts to a specific list on the Audi
   <Step title="Add contacts to a list">
     Click the `•••` menu icon on the far right-hand side of the audience
     filters, select **Add to mailing list** and then select the list(s) you want
-    to add the contacts to. <img src="https://mintcdn.com/loops/OG31ikb--92jQDlq/images/mailing-lists/bulk-assign-to-lists.png?fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=eec10551d5edc79f977a762bf7d23930" alt="Add to
-    list" data-og-width="2280" width="2280" data-og-height="1080" height="1080" data-path="images/mailing-lists/bulk-assign-to-lists.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/OG31ikb--92jQDlq/images/mailing-lists/bulk-assign-to-lists.png?w=280&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=acd4abdceac46dbc01d8f31d03d81188 280w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/mailing-lists/bulk-assign-to-lists.png?w=560&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=d064c383262a24865d8113d2c04dd829 560w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/mailing-lists/bulk-assign-to-lists.png?w=840&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=9afba87a2a02cf1848dc9f45eae89d37 840w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/mailing-lists/bulk-assign-to-lists.png?w=1100&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=c39d61ecb46de29ed6f78d881d4d5137 1100w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/mailing-lists/bulk-assign-to-lists.png?w=1650&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=0912588dd8abf41b397777368d9421d7 1650w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/mailing-lists/bulk-assign-to-lists.png?w=2500&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=dd068888e6474c03e27e4ed58e548f70 2500w" />
+    to add the contacts to. <img alt="Add to
+    list" />
   </Step>
 </Steps>
 
@@ -3571,17 +3578,23 @@ If you want to import contacts to a list in bulk you can use our [CSV importer](
 
 In the final stage of the form you can select a list, which will add all contacts (new or existing) in the CSV file to that list.
 
-<img src="https://mintcdn.com/loops/OG31ikb--92jQDlq/images/mailing-lists/csv-upload.png?fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=55ae51a5859674615f2f6ba81f3fb40d" alt="" data-og-width="2280" width="2280" data-og-height="1059" height="1059" data-path="images/mailing-lists/csv-upload.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/OG31ikb--92jQDlq/images/mailing-lists/csv-upload.png?w=280&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=a1b8e984c1a785edb32b477ca35d7487 280w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/mailing-lists/csv-upload.png?w=560&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=12ed8d7706956426c1fbc766823741f9 560w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/mailing-lists/csv-upload.png?w=840&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=345a813d2943c0f825300b79d0a578a6 840w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/mailing-lists/csv-upload.png?w=1100&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=72d74ccb6869fa7b57f291e7ccae2dfd 1100w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/mailing-lists/csv-upload.png?w=1650&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=8cfbba1c39838f635a25de76213bbaf5 1650w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/mailing-lists/csv-upload.png?w=2500&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=6a92dc326c32ab7245570f17ad391df0 2500w" />
+<img alt="" />
 
 ### Add contacts to lists with the API
 
 Utilizing the [Loops API](/api-reference) you can programmatically add and remove contacts to and from Lists.
 
+<Warning>
+  You cannot add contacts to mailing lists if they are unsubscribed from your audience.\
+  Likewise, if a contact unsubscribes from a list via the
+  Preference Center, they cannot be resubscribed by your team.
+</Warning>
+
 When [creating a contact](/api-reference/create-contact), [updating a contact](/api-reference/update-contact), or [sending an event](/api-reference/send-event) with the API, you can include a `mailingLists` object in the payload.
 
 This `mailingLists` object is a key-value pair of list IDs and a subscription status. The subscription status can be `true` or `false`.
 
-```json  theme={"dark"}
+```json theme={"dark"}
 {
   "email": "loopy-loop@example.com",
   "mailingLists": {
@@ -3595,7 +3608,7 @@ In this example, the contact would be subscribed to `cm06f5v0e45nf0ml5754o9cix` 
 
 Mailing list IDs can be found [in the app](https://app.loops.so/settings?page=lists) (click the ID to add it to your clipboard) or by using the [API](/api-reference/list-mailing-lists).
 
-<img src="https://mintcdn.com/loops/OG31ikb--92jQDlq/images/mailing-lists/lists-toggle.png?fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=6e8284ce89c7c91a7f5d9460e31f32ad" alt="Visibility toggle" data-og-width="2280" width="2280" data-og-height="1164" height="1164" data-path="images/mailing-lists/lists-toggle.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/OG31ikb--92jQDlq/images/mailing-lists/lists-toggle.png?w=280&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=69937b91710bda3e290297a9d6e5b932 280w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/mailing-lists/lists-toggle.png?w=560&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=2bf89665e64795c1a9fb056da73681dc 560w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/mailing-lists/lists-toggle.png?w=840&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=4e61d93072b68e3fe480ce9967225498 840w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/mailing-lists/lists-toggle.png?w=1100&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=9482d7889fb99612f28a44c817a3fffb 1100w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/mailing-lists/lists-toggle.png?w=1650&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=974096be4984b6310992468a993c9049 1650w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/mailing-lists/lists-toggle.png?w=2500&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=f4a60fa8fcf76668baa23d4ef88a098c 2500w" />
+<img alt="Visibility toggle" />
 
 ### Add contacts to lists with forms
 
@@ -3603,7 +3616,7 @@ If you use a [form](/forms/simple-form) on your website you can subscribe contac
 
 When exporting HTML from the [Forms page](https://app.loops.so/forms) in Loops, choose a list from the **Settings** tab.
 
-<img src="https://mintcdn.com/loops/OG31ikb--92jQDlq/images/mailing-lists/form-settings.png?fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=eeb0bd57ca9ec2627db111c6c9becf13" alt="Select a list from the form settings" data-og-width="2280" width="2280" data-og-height="1118" height="1118" data-path="images/mailing-lists/form-settings.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/OG31ikb--92jQDlq/images/mailing-lists/form-settings.png?w=280&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=1b374aa83397f8b06896fd10b82c8bd5 280w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/mailing-lists/form-settings.png?w=560&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=9a2001cd9c103a9c7f4552b2a55f0578 560w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/mailing-lists/form-settings.png?w=840&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=a5dff6cc70281a41bbd2ba567edb0408 840w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/mailing-lists/form-settings.png?w=1100&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=ee956ffaea247fb28316bbff530f2b04 1100w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/mailing-lists/form-settings.png?w=1650&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=25f67dd16bd1078bafa9041f80309ff7 1650w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/mailing-lists/form-settings.png?w=2500&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=1590b82d032ef3b144faa9af3ff1007d 2500w" />
+<img alt="Select a list from the form settings" />
 
 <Note>
   Adding contacts to a list via a form only works with public lists. The option
@@ -3670,12 +3683,6 @@ The "Subscribed" value determines whether a contact is able to receive **loops a
 
 Contacts can unsubscribe from your emails using an [Unsubscribe link](/creating-emails/editor#footer-content) automatically added to your campaigns and loops.
 
-Some important notes:
-
-* We do not charge for unsubscribed contacts.
-* We suggest you keep unsubscribed contacts in your audience. If you delete and then re-add them in the future somehow, they may end up being "subscribed" even though they have been unsubscribed.
-* You cannot re-subscribe contacts via a [CSV upload](/add-users/csv-upload) or from the Audience page in Loops. You can re-subscribe contacts [with the API](/api-reference/update-contact) and with some of [our integrations](/integrations#manage-contacts).
-
 #### Using `subscribed` in API requests
 
 When you include a `subscribed` value in your API requests, you will manually change the contact's subscribed status. For example, if you send `subscribed: true` when updating a contact, previously unsubscribed contacts will be re-subscribed.
@@ -3683,6 +3690,12 @@ When you include a `subscribed` value in your API requests, you will manually ch
 <Tip>
   We recommend leaving `subscribed` out of your API requests unless you specifically want to unsubscribe or re-subscribe a contact. All new contacts are subscribed by default (`subscribed: true`).
 </Tip>
+
+### Some important notes:
+
+* We do not charge for unsubscribed contacts.
+* We suggest you keep unsubscribed contacts in your audience. If you delete and then re-add them in the future somehow, they may end up being "subscribed" even though they have been unsubscribed.
+* You can re-subscribe unsubscribed contacts [with the API](/api-reference/update-contact) and with some of [our integrations](/integrations#manage-contacts). You cannot re-subscribe contacts via a [CSV upload](/add-users/csv-upload) or from the Audience page in Loops. Unsubscribes from [mailing lists](/contacts/mailing-lists) work differently. You cannot re-subscribe contacts to lists via any method.
 
 ### User Group
 
@@ -3747,21 +3760,21 @@ Note that Loops does not allow the creation of properties with the following res
 
 One way to create custom contact properties is to go to [your Audience](https://app.loops.so/audience) and click on any of the column headers, then select **Add property**.
 
-<img src="https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/option-1.png?fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=dfd54fc9d1617522bd38fb9728c86339" alt="" data-og-width="2280" width="2280" data-og-height="1164" height="1164" data-path="images/option-1.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/option-1.png?w=280&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=bb60c6c7a809e7e1345aec2d96c2c7c5 280w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/option-1.png?w=560&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=30a04aaa869bedf437bac488cf4e4816 560w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/option-1.png?w=840&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=ace204c0693bd6dd55fd31fbc3d053e7 840w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/option-1.png?w=1100&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=4a58fa3d13bb2cdcc9e4dc1e695272ef 1100w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/option-1.png?w=1650&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=1d32cb00afcbf9da7b7e91ad5d2d4ea7 1650w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/option-1.png?w=2500&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=5fb641e0f9fa6a4279899dd1b61a0d9e 2500w" />
+<img alt="" />
 
 Alternatively you can scroll to the end of the Audience table and click the `+` button at the end of the column headers.
 
-<img src="https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/option-2.png?fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=06f5d71eb384b3394aed91d72b190d84" alt="" data-og-width="2280" width="2280" data-og-height="1164" height="1164" data-path="images/option-2.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/option-2.png?w=280&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=c13a851bf6cea6397a0c8ac0906495b2 280w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/option-2.png?w=560&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=806dff1de628fbf4bb31cc247f6afe76 560w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/option-2.png?w=840&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=f111d3274c811fdd8f686b0a75e7df53 840w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/option-2.png?w=1100&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=f1901f4dc9a67335c76cd5dd28902427 1100w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/option-2.png?w=1650&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=7ee27545c925385fa5151238244e3f8e 1650w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/option-2.png?w=2500&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=b0b0fb3cc8dc64e70e8b495a634ee53b 2500w" />
+<img alt="" />
 
 A third way is to go your [API Settings](http://app.loops.so/settings?page=api) page, scroll down to the Contact properties section and click **Add property**.
 
 In each of these cases, you'll see a form asking you for a property name and type.
 
-<img src="https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/add-property-form.png?fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=7d7f6415ba25b44524450e9dd534a867" alt="" data-og-width="2280" width="2280" data-og-height="1418" height="1418" data-path="images/add-property-form.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/add-property-form.png?w=280&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=246b4218146462032b2b9aebf655e28e 280w, https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/add-property-form.png?w=560&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=a14032af7c442bcd6949b95b00be8318 560w, https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/add-property-form.png?w=840&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=e7877cc7c2cc80cfac2cb2aabdca78c8 840w, https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/add-property-form.png?w=1100&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=fad9f62cb34ac9ab0ce493115fd4c533 1100w, https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/add-property-form.png?w=1650&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=e68ef39d22b421a15ffe661c82f91c9f 1650w, https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/add-property-form.png?w=2500&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=f07d15294f78937209b7040e1dcb0907 2500w" />
+<img alt="" />
 
 It's also possible to [create contact properties with the API](/api-reference/create-contact-property).
 
-```json  theme={"dark"}
+```json theme={"dark"}
 POST https://app.loops.so/api/v1/contacts/properties
 
 {
@@ -3774,7 +3787,7 @@ POST https://app.loops.so/api/v1/contacts/properties
 
 You can delete properties on the Audience page by clicking on column headers.
 
-<img src="https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/delete-property-dropdown.png?fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=69c4c0de2c58c54654596903fc2db51e" alt="" data-og-width="2280" width="2280" data-og-height="1217" height="1217" data-path="images/delete-property-dropdown.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/delete-property-dropdown.png?w=280&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=43859e350445d349372519e122c946ef 280w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/delete-property-dropdown.png?w=560&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=1b1a5b27a4e5e800e6cf2368cb7b58bf 560w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/delete-property-dropdown.png?w=840&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=f8ea49501ad9be5d76550c2d643eeba6 840w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/delete-property-dropdown.png?w=1100&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=cc31dc0af7e6e8201fb1ce3b349bebef 1100w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/delete-property-dropdown.png?w=1650&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=ee5a29e45f1809ead75db0a95885d6b8 1650w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/delete-property-dropdown.png?w=2500&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=c829c7a586d4b5b60ed06d320efb1bc8 2500w" />
+<img alt="" />
 
 You can also delete properties from your [API Settings](http://app.loops.so/settings?page=api) page by clicking the trashcan icons.
 
@@ -3794,7 +3807,7 @@ If you receive a “Property in use” warning modal while deleting a contact pr
 * If the listed email inside a Loop:
   * Make sure a draft or running Loop is not using it as part of the Audience filter or as a Trigger
 
-<img src="https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/delete-property.png?fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=03f0aeba3e3e36b18ebca459b3ced831" alt="" data-og-width="1430" width="1430" data-og-height="584" height="584" data-path="images/delete-property.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/delete-property.png?w=280&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=a90302c362686ea0fe10ffc7292277fc 280w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/delete-property.png?w=560&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=e44cea1447454fde3cf8358e4d85645d 560w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/delete-property.png?w=840&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=cc8a93f6304979293d249394c255f510 840w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/delete-property.png?w=1100&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=5061243cc3274030122a9418d7e6efef 1100w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/delete-property.png?w=1650&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=7ff6abcf9c10eec9a92d23b150ac710d 1650w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/delete-property.png?w=2500&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=e7d56527ec8d809a9be3d28f64aa7e65 2500w" />
+<img alt="" />
 
 
 # Components
@@ -3804,7 +3817,7 @@ Create re-usable elements for your emails.
 
 Components are re-usable elements for emails. They help you create frequently-repeated sections of emails once, which you can then easily drop into new emails.
 
-<img src="https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/components-example.png?fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=d39ec821ea9b4473748e425df1524496" alt="Components in an email" data-og-width="2280" width="2280" data-og-height="1314" height="1314" data-path="images/components-example.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/components-example.png?w=280&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=12f79dff5169414c4f3124b97925e207 280w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/components-example.png?w=560&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=9689c02d438f1a120a7d562f4341ce58 560w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/components-example.png?w=840&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=71b55f1c89f9135c6609f60a5da8d6b0 840w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/components-example.png?w=1100&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=18e1bd1eaaf8f8c0c02f0bf67e913985 1100w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/components-example.png?w=1650&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=b018d015048818ed098fb16b04507076 1650w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/components-example.png?w=2500&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=ad84cbc5cc06a689786d2b52e86e875b 2500w" />
+<img alt="Components in an email" />
 
 Changes made to components can be synced to all other instances. You can also choose to make local edits to a single component instance without updating others.
 
@@ -3816,13 +3829,13 @@ Some useful examples of components are logos and social icons. These elements ar
 
 Most of the time you will want your logo to have the same alignment, spacing and size in your emails. Similarly, you will want the same set of social icons readily available to drop into every new email you create.
 
-<img src="https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/example-components.png?fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=c8885b1b2b62fb0e3b19e39ae105301a" alt="Example components" data-og-width="2280" width="2280" data-og-height="1727" height="1727" data-path="images/example-components.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/example-components.png?w=280&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=f1579926de70d52b31d9c0da780d7f51 280w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/example-components.png?w=560&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=24da1c6266602fe65a99214273157586 560w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/example-components.png?w=840&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=e445c302335ad7dba32af8f1bd8e6d0b 840w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/example-components.png?w=1100&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=99ca79b787149f1b0f4904f8e804b532 1100w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/example-components.png?w=1650&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=c3dc0fe656f693f57487e35362828c92 1650w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/example-components.png?w=2500&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=0d037c5af52ddb396943a7aa51a5cbc1 2500w" />
+<img alt="Example components" />
 
 ## Create a component
 
 To create a component, click on an element in your email and then the **Create component** icon in the editor panel.
 
-<img src="https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/create-component.png?fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=fa864e9f3b22b0ae1f10b0d67c86c85e" alt="Create a component" data-og-width="2280" width="2280" data-og-height="1271" height="1271" data-path="images/create-component.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/create-component.png?w=280&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=f46e0208bbe2aed077f86f7dc6897e20 280w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/create-component.png?w=560&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=3a8f53b488533fd5d1c4ff719a15568c 560w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/create-component.png?w=840&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=5406493fa42788d6c82d68d1f5e4f577 840w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/create-component.png?w=1100&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=d2503e72a205a16b89eece105c830703 1100w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/create-component.png?w=1650&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=20f2961dd507cfc5ebd02a638648132a 1650w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/create-component.png?w=2500&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=4f4e13d4a2dfce26af98d7373e972ee3 2500w" />
+<img alt="Create a component" />
 
 A modal will appear where you can name your component. Use a descriptive name so you can easily find your component in the future.
 
@@ -3836,7 +3849,7 @@ Click **Create**. You will see your new component appear in the Components list 
 
 Click on **Components** at the top of the left-hand panel to reveal your components list, then simply click on a component to insert it.
 
-<img src="https://mintcdn.com/loops/OG31ikb--92jQDlq/images/insert-component.png?fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=69921ec0e7ac3682e2d7442f285f137e" alt="Add a component" data-og-width="2280" width="2280" data-og-height="1307" height="1307" data-path="images/insert-component.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/OG31ikb--92jQDlq/images/insert-component.png?w=280&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=d9485949e3ddc6cc336ce20cc3a442ea 280w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/insert-component.png?w=560&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=d6a9ece1087bb7a747db584c9ded8c11 560w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/insert-component.png?w=840&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=8528d91bb64ac8dc2406b67a2f75fee3 840w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/insert-component.png?w=1100&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=937c58257419319afcfbfbe68c6da0d2 1100w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/insert-component.png?w=1650&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=82ccf77c88c400b91d4723d9b522cde5 1650w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/insert-component.png?w=2500&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=3f0de737cd8a091fca4892cb0858cec8 2500w" />
+<img alt="Add a component" />
 
 If you want to change the location of a component in your email, you can drag and drop it within the editor just like other blocks, by using the six dot menu icon.
 
@@ -3854,15 +3867,15 @@ This will create local edits to that single instance; these edits are not synced
 
 If a component has local edits, you will notice the **Push changes** and **Reset changes** icons are now active.
 
-<img src="https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/edited-component.png?fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=3f05a19989fa72ec46fca5e02be5e683" alt="Edited component" data-og-width="2280" width="2280" data-og-height="1248" height="1248" data-path="images/edited-component.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/edited-component.png?w=280&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=2858d601947df61faf72ce9717fee750 280w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/edited-component.png?w=560&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=0f437a7189e61c74e7f884d4d7a0da47 560w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/edited-component.png?w=840&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=7d20b9a690bf7f514e0fa5edbefac3cf 840w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/edited-component.png?w=1100&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=1cd4db2cc5095e6db6c8e88d75262e5b 1100w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/edited-component.png?w=1650&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=97b47a786a22dfa5a40f0b8f7ad871d8 1650w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/edited-component.png?w=2500&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=6c21d671b9f88313f44e183bf84c7116 2500w" />
+<img alt="Edited component" />
 
 If you want to save your changes to all instances of the component, click on the **Push changes to main component** button. Note that any local edits made to the component in other emails will be preserved.
 
-<img src="https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/push-changes.png?fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=0c888ce3ce78a8b0d4c62aae29e7f14a" alt="Push changes to other instances" data-og-width="2280" width="2280" data-og-height="1248" height="1248" data-path="images/push-changes.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/push-changes.png?w=280&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=483b4dd20bfa0ab16b3f49ae0f1dc5d8 280w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/push-changes.png?w=560&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=bef1a4a6de046bc055425011da04b837 560w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/push-changes.png?w=840&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=bdf1df1866eed0bd7ee5627286fb0691 840w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/push-changes.png?w=1100&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=3e55c5daa6f8d7a70792aeb7ae0bd56d 1100w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/push-changes.png?w=1650&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=b46794ed7c4e942f60e54fdfc9923f7c 1650w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/push-changes.png?w=2500&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=8ed0d77e192bf9c704dc1fbdbd4ad60d 2500w" />
+<img alt="Push changes to other instances" />
 
 If you make local edits to a component that you want to revert, click the **Reset component changes** option.
 
-<img src="https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/reset-changes.png?fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=be02d4d41c30eb3ab9d082c1beea6a41" alt="Reset component changes" data-og-width="2280" width="2280" data-og-height="1248" height="1248" data-path="images/reset-changes.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/reset-changes.png?w=280&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=76751f360602a353390450d545e6f9e7 280w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/reset-changes.png?w=560&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=b3e0d8fa1e990b0781dbc924f6570c8e 560w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/reset-changes.png?w=840&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=471769e26e68fc357189a372b64793ed 840w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/reset-changes.png?w=1100&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=f60dc80372e15795dbf60491ad749b3f 1100w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/reset-changes.png?w=1650&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=0006c62738ef98bc7511133c5be968d9 1650w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/reset-changes.png?w=2500&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=eeaffb5d7b94f25478ab1e633e5bee79 2500w" />
+<img alt="Reset component changes" />
 
 ## Rename a component
 
@@ -3877,7 +3890,7 @@ Enter a new name and click **Rename**.
   A deleted component's contents will be retained by any email it was added to.
 </Warning>
 
-In the Components list, find the component you want to rename, then click the `•••` menu icon. Click on **Delete** to show the confirmation modal.
+In the Components list, find the component you want to delete, then click the `•••` menu icon. Click on **Delete** to show the confirmation modal.
 
 Click **Delete** to delete the component.
 
@@ -3899,7 +3912,7 @@ To duplicate an email:
 2. Click the `•••` menu icon and select **Duplicate**.
 3. Edit the new email's subject line, preview text and content as needed.
 
-<img src="https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/duplicating-emails.png?fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=38745151d363c2cd549662db20728712" alt="Duplicating emails" data-og-width="2280" width="2280" data-og-height="1064" height="1064" data-path="images/duplicating-emails.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/duplicating-emails.png?w=280&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=3908144ca2804f4d7b3d34b68a65b63e 280w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/duplicating-emails.png?w=560&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=53b41e192386b3deed8e5b2bcfcc9a23 560w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/duplicating-emails.png?w=840&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=78d1f9a5aa155cc395988f35f44dd1da 840w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/duplicating-emails.png?w=1100&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=cbfa9b2411286bb80d8b4abd7dc52e43 1100w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/duplicating-emails.png?w=1650&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=00fe12a0e222240bcec575fa97d7d4ec 1650w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/duplicating-emails.png?w=2500&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=352f9c0bbe10b71d59af1f78e8512370 2500w" />
+<img alt="Duplicating emails" />
 
 ## Loops
 
@@ -3907,7 +3920,7 @@ With loops, you can duplicate a full Loop (which may contain many emails) using 
 
 However, you may also duplicate emails within a Loop by clicking the **Copy existing email** button after creating a new email node. This will let you copy and insert any email from any of your existing Loops, including the currently opened Loop.
 
-<img src="https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/duplicate-loop-email.png?fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=3912ccc10f8f2a52cb678a3348a888f6" alt="Duplicating emails" data-og-width="2280" width="2280" data-og-height="1940" height="1940" data-path="images/duplicate-loop-email.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/duplicate-loop-email.png?w=280&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=e5f9744676969e7e20f863db4bc799a5 280w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/duplicate-loop-email.png?w=560&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=bf49525f1b6b33ccab39dc612ce12c93 560w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/duplicate-loop-email.png?w=840&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=e163c88ccd3ec1a1cc811965110e96c5 840w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/duplicate-loop-email.png?w=1100&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=adafc4b8ea99b20b728363a679a4a525 1100w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/duplicate-loop-email.png?w=1650&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=250bd4756e9d9e68d87306cdfe075373 1650w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/duplicate-loop-email.png?w=2500&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=7fa960472887f73b7de3aae407b114a0 2500w" />
+<img alt="Duplicating emails" />
 
 
 # Adding content
@@ -3939,13 +3952,13 @@ Here are a few of the editor's stand-out features:
 
 Once you have written content in your email, you will see formatting options appear in the right-hand panel. These options will change depending on the element you have selected in the email.
 
-<img src="https://mintcdn.com/loops/P-o2558l4VIleyke/images/formatting-toolbar.png?fit=max&auto=format&n=P-o2558l4VIleyke&q=85&s=d91ad72aa5d0fb316cf70fb1f53a36cd" alt="" data-og-width="2280" width="2280" data-og-height="1544" height="1544" data-path="images/formatting-toolbar.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/P-o2558l4VIleyke/images/formatting-toolbar.png?w=280&fit=max&auto=format&n=P-o2558l4VIleyke&q=85&s=f90955cbe9f37818b518bdd6722d02ae 280w, https://mintcdn.com/loops/P-o2558l4VIleyke/images/formatting-toolbar.png?w=560&fit=max&auto=format&n=P-o2558l4VIleyke&q=85&s=56eef7532067f073ca392224b01fb093 560w, https://mintcdn.com/loops/P-o2558l4VIleyke/images/formatting-toolbar.png?w=840&fit=max&auto=format&n=P-o2558l4VIleyke&q=85&s=bf59daa8960dacd0212ba017c2270122 840w, https://mintcdn.com/loops/P-o2558l4VIleyke/images/formatting-toolbar.png?w=1100&fit=max&auto=format&n=P-o2558l4VIleyke&q=85&s=0b695e8eaa834e984fad1771fb2519d8 1100w, https://mintcdn.com/loops/P-o2558l4VIleyke/images/formatting-toolbar.png?w=1650&fit=max&auto=format&n=P-o2558l4VIleyke&q=85&s=eaab143f8c4dc70cde5657b3c919faad 1650w, https://mintcdn.com/loops/P-o2558l4VIleyke/images/formatting-toolbar.png?w=2500&fit=max&auto=format&n=P-o2558l4VIleyke&q=85&s=243998b5a46eb77441b5a56a41c8c483 2500w" />
+<img alt="" />
 
 You can choose between different headings, style text **bold**, *italic*, <u>underline</u> as well as add links. You can also change text size and color.
 
 Text can also be easily changed into lists, quotes and inline code blocks.
 
-<img src="https://mintcdn.com/loops/wH4IALIhu63YNt8f/images/editor-text.png?fit=max&auto=format&n=wH4IALIhu63YNt8f&q=85&s=76812ceba2510e69170d4d020c1daac7" alt="" data-og-width="2280" width="2280" data-og-height="1796" height="1796" data-path="images/editor-text.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/wH4IALIhu63YNt8f/images/editor-text.png?w=280&fit=max&auto=format&n=wH4IALIhu63YNt8f&q=85&s=c797f3e78804c68ff0976a9df3627f02 280w, https://mintcdn.com/loops/wH4IALIhu63YNt8f/images/editor-text.png?w=560&fit=max&auto=format&n=wH4IALIhu63YNt8f&q=85&s=49bc3572260c6151ffcf8cd9d58ad147 560w, https://mintcdn.com/loops/wH4IALIhu63YNt8f/images/editor-text.png?w=840&fit=max&auto=format&n=wH4IALIhu63YNt8f&q=85&s=7094308196b52439831e23a1fa8d2f9f 840w, https://mintcdn.com/loops/wH4IALIhu63YNt8f/images/editor-text.png?w=1100&fit=max&auto=format&n=wH4IALIhu63YNt8f&q=85&s=4cd5a4e9f8fc33f8123ca3f530f59409 1100w, https://mintcdn.com/loops/wH4IALIhu63YNt8f/images/editor-text.png?w=1650&fit=max&auto=format&n=wH4IALIhu63YNt8f&q=85&s=77fc948a607f2aa66751f0a2e63dba15 1650w, https://mintcdn.com/loops/wH4IALIhu63YNt8f/images/editor-text.png?w=2500&fit=max&auto=format&n=wH4IALIhu63YNt8f&q=85&s=9d70bc1d5a717d7565b24ae93f2eb6c9 2500w" />
+<img alt="" />
 
 <Note>
   You can also use [keyboard shortcuts](#keyboard-shortcuts) and [Markdown](#markdown-formatting) to format your text.
@@ -3957,11 +3970,11 @@ To focus on writing your email, you can enter Writing mode.
 
 To toggle writing mode, use the switch just above the editor or use the `⌘+/` (Mac) or `Ctrl+/` (Windows) keyboard shortcut.
 
-<img src="https://mintcdn.com/loops/4h4NdelN1SeEp2xg/images/writing-mode.png?fit=max&auto=format&n=4h4NdelN1SeEp2xg&q=85&s=e15a5c4f9a2334d08b5247197bde5385" alt="Writing mode" data-og-width="2280" width="2280" data-og-height="1653" height="1653" data-path="images/writing-mode.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/4h4NdelN1SeEp2xg/images/writing-mode.png?w=280&fit=max&auto=format&n=4h4NdelN1SeEp2xg&q=85&s=f55c2bad93ccfdad66b0317d00e73018 280w, https://mintcdn.com/loops/4h4NdelN1SeEp2xg/images/writing-mode.png?w=560&fit=max&auto=format&n=4h4NdelN1SeEp2xg&q=85&s=f4d2c33c58f1879f157c32154dad3fe7 560w, https://mintcdn.com/loops/4h4NdelN1SeEp2xg/images/writing-mode.png?w=840&fit=max&auto=format&n=4h4NdelN1SeEp2xg&q=85&s=c44d05669d7d23a77260752c3d249f56 840w, https://mintcdn.com/loops/4h4NdelN1SeEp2xg/images/writing-mode.png?w=1100&fit=max&auto=format&n=4h4NdelN1SeEp2xg&q=85&s=3d1c9fe6f6f52d566c83a8e6a7987daf 1100w, https://mintcdn.com/loops/4h4NdelN1SeEp2xg/images/writing-mode.png?w=1650&fit=max&auto=format&n=4h4NdelN1SeEp2xg&q=85&s=89d0b99f3b838153170c218643ff9e70 1650w, https://mintcdn.com/loops/4h4NdelN1SeEp2xg/images/writing-mode.png?w=2500&fit=max&auto=format&n=4h4NdelN1SeEp2xg&q=85&s=30d128508a062613a46cd5da6c21c67d 2500w" />
+<img alt="Writing mode" />
 
 When in Writing mode, you can edit styles by clicking the **Show styles** button that appears above selected elements. This will open a slide-in editor panel on the right
 
-<img src="https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/writing-mode-styles.png?fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=d599bee9ef5a9f080a49c537d60687ca" alt="Writing mode styles" data-og-width="2280" width="2280" data-og-height="1310" height="1310" data-path="images/writing-mode-styles.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/writing-mode-styles.png?w=280&fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=f02b09f921d2beeab237a4a34991e369 280w, https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/writing-mode-styles.png?w=560&fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=cb9f910ac2c6f209f079f3ad0da47fb8 560w, https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/writing-mode-styles.png?w=840&fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=235280de3ce740166197ec09e9f0df12 840w, https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/writing-mode-styles.png?w=1100&fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=94eac310296e22447ed1aa405e6dcef8 1100w, https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/writing-mode-styles.png?w=1650&fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=dcc15eae0cce36917f9c1abc7d12e8d3 1650w, https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/writing-mode-styles.png?w=2500&fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=e424a65112eb95b8b3771e4c0f059a5c 2500w" />
+<img alt="Writing mode styles" />
 
 ## Adding elements
 
@@ -3975,19 +3988,19 @@ Emails can be more than just text. You can add the following elements to your em
 
 You can add elements from the toolbar above the editor, or by hovering over an existing element in your email and clicking the `+` plus icon on the left.
 
-<img src="https://mintcdn.com/loops/wH4IALIhu63YNt8f/images/editor-adding.png?fit=max&auto=format&n=wH4IALIhu63YNt8f&q=85&s=f136594d2fa8c8751a9ad854eb396443" alt="" data-og-width="2280" width="2280" data-og-height="1152" height="1152" data-path="images/editor-adding.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/wH4IALIhu63YNt8f/images/editor-adding.png?w=280&fit=max&auto=format&n=wH4IALIhu63YNt8f&q=85&s=485eb08f1ccaeb1b9a3a91f725d2a9b3 280w, https://mintcdn.com/loops/wH4IALIhu63YNt8f/images/editor-adding.png?w=560&fit=max&auto=format&n=wH4IALIhu63YNt8f&q=85&s=2a4df8be157d1c2318b7b1cb695748de 560w, https://mintcdn.com/loops/wH4IALIhu63YNt8f/images/editor-adding.png?w=840&fit=max&auto=format&n=wH4IALIhu63YNt8f&q=85&s=7b8956432307bfca8e66ceff22a9f5dd 840w, https://mintcdn.com/loops/wH4IALIhu63YNt8f/images/editor-adding.png?w=1100&fit=max&auto=format&n=wH4IALIhu63YNt8f&q=85&s=4663efed098df1f12bd910e495b8cc17 1100w, https://mintcdn.com/loops/wH4IALIhu63YNt8f/images/editor-adding.png?w=1650&fit=max&auto=format&n=wH4IALIhu63YNt8f&q=85&s=60c1357799655b9271b0886505914703 1650w, https://mintcdn.com/loops/wH4IALIhu63YNt8f/images/editor-adding.png?w=2500&fit=max&auto=format&n=wH4IALIhu63YNt8f&q=85&s=779519754421afd7628113013991967d 2500w" />
+<img alt="" />
 
 You can also add elements by typing `/` in the editor:
 
-<img src="https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/slash-menu.png?fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=6d606c1f8b7e0f737099c00ea02ee541" alt="" data-og-width="2280" width="2280" data-og-height="1925" height="1925" data-path="images/slash-menu.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/slash-menu.png?w=280&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=43f406fb8797e182f2766381666552fd 280w, https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/slash-menu.png?w=560&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=4c71fa1fc3b5047e9c510ee6d69749a8 560w, https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/slash-menu.png?w=840&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=44d5d5ffd7541aedc2fed4669cec210c 840w, https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/slash-menu.png?w=1100&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=d45678383a53853b0cd2839a521f2633 1100w, https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/slash-menu.png?w=1650&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=3435c366d838b494d9d0c93975842805 1650w, https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/slash-menu.png?w=2500&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=3fc369902c258afc40b65be5073dd689 2500w" />
+<img alt="" />
 
 If you continue typing, you can narrow down the selections. You can use your arrow keys to select items and pressing Enter will confirm your selection.
 
-<img src="https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/slash-typed.png?fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=b09bfe99479781587e54f9b6118f35ea" alt="" data-og-width="2280" width="2280" data-og-height="1217" height="1217" data-path="images/slash-typed.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/slash-typed.png?w=280&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=d793ace45be3f00c45c6363a5787e86a 280w, https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/slash-typed.png?w=560&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=7e647cdd1eb69cce77e0597f444b977c 560w, https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/slash-typed.png?w=840&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=9277d4e8917d6e05ef132544454349b7 840w, https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/slash-typed.png?w=1100&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=68cb95fd6b0501995e9d5d78f4b47da1 1100w, https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/slash-typed.png?w=1650&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=4ee53be4a88bbdbd63d734a901b22605 1650w, https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/slash-typed.png?w=2500&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=f76eaef9d6502a030f3a155132295933 2500w" />
+<img alt="" />
 
 When adding dynamic content like contact properties to [personalize emails](/creating-emails/personalizing-emails), you can type "\{" to open the dynamic content menu.
 
-<img src="https://mintcdn.com/loops/EgyPhKkeXp9wCnWY/images/brace-menu.png?fit=max&auto=format&n=EgyPhKkeXp9wCnWY&q=85&s=27c73e902ab6b876bc16065bd09134aa" alt="" data-og-width="2280" width="2280" data-og-height="1532" height="1532" data-path="images/brace-menu.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/EgyPhKkeXp9wCnWY/images/brace-menu.png?w=280&fit=max&auto=format&n=EgyPhKkeXp9wCnWY&q=85&s=9326c62f97de7ca37bfb6c4dffc72710 280w, https://mintcdn.com/loops/EgyPhKkeXp9wCnWY/images/brace-menu.png?w=560&fit=max&auto=format&n=EgyPhKkeXp9wCnWY&q=85&s=af2601f9d01a08e404831c2a893c3c12 560w, https://mintcdn.com/loops/EgyPhKkeXp9wCnWY/images/brace-menu.png?w=840&fit=max&auto=format&n=EgyPhKkeXp9wCnWY&q=85&s=0866e9e7523a4a775fc6eda747d79288 840w, https://mintcdn.com/loops/EgyPhKkeXp9wCnWY/images/brace-menu.png?w=1100&fit=max&auto=format&n=EgyPhKkeXp9wCnWY&q=85&s=9234e4574c66ff73ac822d6a99a3affb 1100w, https://mintcdn.com/loops/EgyPhKkeXp9wCnWY/images/brace-menu.png?w=1650&fit=max&auto=format&n=EgyPhKkeXp9wCnWY&q=85&s=f066015663842e0fc26e5bc0e46b5b6f 1650w, https://mintcdn.com/loops/EgyPhKkeXp9wCnWY/images/brace-menu.png?w=2500&fit=max&auto=format&n=EgyPhKkeXp9wCnWY&q=85&s=8f5f1e9f81626bf456c0f5ad49e03d65 2500w" />
+<img alt="" />
 
 <Note>
   You can also use [keyboard shortcuts](#keyboard-shortcuts) and [Markdown](#markdown-formatting) to add certain elements to your email.
@@ -3995,7 +4008,7 @@ When adding dynamic content like contact properties to [personalize emails](/cre
 
 ### Images
 
-As well as adding from the toolbar or the `+` icon, you can drag or paste images into the editor.
+As well as adding from the toolbar or the `+` icon, you can drag or paste images into the editor. Images must be under 4 MB in size.
 
 Add a link to an image by selecting the element and then clicking the `+` button in the **Link** editor panel on the right.
 
@@ -4016,11 +4029,11 @@ Paste in an image URL or add create dynamic URLs by clicking the icon on the rig
 
 For example, you could insert an `imageUrl` data variable in a transactional email, or use an `avatarUrl` custom contact property in a campaign.
 
-<img src="https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/dynamic-image.png?fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=46ffd74b45220efc2f942c7435d70e19" alt="Adding a dynamic image" data-og-width="2280" width="2280" data-og-height="1518" height="1518" data-path="images/dynamic-image.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/dynamic-image.png?w=280&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=0d47e2c33a43e187bdbaeec05bd2b9d9 280w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/dynamic-image.png?w=560&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=192a4c357d54e8470a9a1bf70b5bb6d0 560w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/dynamic-image.png?w=840&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=496d5963af8fd87fc5637bd6358ad2c9 840w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/dynamic-image.png?w=1100&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=ac35c56b3e9ee686cec7d8ab718a5db3 1100w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/dynamic-image.png?w=1650&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=08d7a9a67be42faf40562bf6afb401db 1650w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/dynamic-image.png?w=2500&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=f9c97e9df713fa45c9b5c41a550f8301 2500w" />
+<img alt="Adding a dynamic image" />
 
 You can also create dynamic URLs by combining text and dynamic content inside the image source field.
 
-<img src="https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/dynamic-image-url.png?fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=1ca2550b09d71025e0acd43d204c6b9d" alt="Adding a dynamic image URL" data-og-width="2280" width="2280" data-og-height="1518" height="1518" data-path="images/dynamic-image-url.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/dynamic-image-url.png?w=280&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=4a05102954eaa9a22d7418f1e7dec3e7 280w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/dynamic-image-url.png?w=560&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=43242655ed1f8e47c940f2eca1a99251 560w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/dynamic-image-url.png?w=840&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=1621b37a69e1c48c7b974e1a1332c52a 840w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/dynamic-image-url.png?w=1100&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=1574649e8aac9b8f810cc86a730931c5 1100w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/dynamic-image-url.png?w=1650&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=c531d17d3a2e9e324784ff92768094e5 1650w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/dynamic-image-url.png?w=2500&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=5adbd77251d4691ead22705decad7dcd 2500w" />
+<img alt="Adding a dynamic image URL" />
 
 <Note>
   The placeholder image in the editor will not update when you add a dynamic
@@ -4045,7 +4058,7 @@ You can also use GIFs to add a video-like effect to your email. Just make sure t
 
 You can add links to text, images and buttons. First, select the text or element and click the `+` icon in the **Link** editor panel (or use `⌘+K`).
 
-<img src="https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/add-link.png?fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=80b01e6deb407914f8a921b6b0766679" alt="Add a link" data-og-width="2280" width="2280" data-og-height="1089" height="1089" data-path="images/add-link.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/add-link.png?w=280&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=81f629b815d0fe57695734671e4302a5 280w, https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/add-link.png?w=560&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=23ed01bd3dfd25847796a9294dd819aa 560w, https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/add-link.png?w=840&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=630fb0fc5fb484386d5fdbab4a53b418 840w, https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/add-link.png?w=1100&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=cc6bde956a5b5f45a0370b6aaf8aa574 1100w, https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/add-link.png?w=1650&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=cd32cdf1b373c5788937eabf62a8c84f 1650w, https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/add-link.png?w=2500&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=55235cf672300ee53a840f191544c8ee 2500w" />
+<img alt="Add a link" />
 
 Enter your URL into the field then hit Enter. Helpfully, you can omit the `https://` protocol as it is automatically added to each link.
 
@@ -4055,7 +4068,7 @@ You can create dynamic links using contact and event properties or data variable
 
 When editing a link, click the icon—which will be different depending on the type of email you are creating—on the right of the input, then add the dynamic content you want to use.
 
-<img src="https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/dynamic-link.png?fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=579379966fe64f0381adaf5afadaedd0" alt="Dynamic links" data-og-width="2280" width="2280" data-og-height="1089" height="1089" data-path="images/dynamic-link.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/dynamic-link.png?w=280&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=490421d9dff1deec8aa3dcda04601730 280w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/dynamic-link.png?w=560&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=eb92b40a0f118b8030a23bee591c1a61 560w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/dynamic-link.png?w=840&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=f34c7132793c91e4f7b83d31d41404d5 840w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/dynamic-link.png?w=1100&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=8eb952bdd6eb68aae0826f4077fff67e 1100w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/dynamic-link.png?w=1650&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=ca63bae2f37b01de6789b4f1c3d33125 1650w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/dynamic-link.png?w=2500&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=9d7ed6be621d8f423e46877a3eddb14d 2500w" />
+<img alt="Dynamic links" />
 
 #### Link tracking
 
@@ -4066,11 +4079,15 @@ By default marketing emails (campaigns and loops) have opens and link tracking e
   deliverability.
 </Note>
 
-<img src="https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/tracking.png?fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=c628e2dbdfa1318b4211d6a7f3ebda14" alt="Click and open tracking setting" data-og-width="2280" width="2280" data-og-height="999" height="999" data-path="images/tracking.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/tracking.png?w=280&fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=5fad746a62201397125045dd3219bd09 280w, https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/tracking.png?w=560&fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=c9c8985845e9d70923a04dc14274283d 560w, https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/tracking.png?w=840&fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=1ffc1c3a303c55cde505c010f00c1c3a 840w, https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/tracking.png?w=1100&fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=38ca2d255f677f4ddcacf75519b3d06c 1100w, https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/tracking.png?w=1650&fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=6fd1cb0db5b25b0f9df6f65ff9a46c24 1650w, https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/tracking.png?w=2500&fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=8320423708260bb03778652a058dfbdd 2500w" />
+<img alt="Click and open tracking setting" />
 
 If you want to disable click tracking on individual links in your emails, click the icon in the editor panel.
 
-<img src="https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/disable-tracking.png?fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=1d985f0522dff0337dbb2071dc8a29ac" alt="Disable tracking" data-og-width="2280" width="2280" data-og-height="1089" height="1089" data-path="images/disable-tracking.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/disable-tracking.png?w=280&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=718a08280ba333a4b435e598fef5798f 280w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/disable-tracking.png?w=560&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=6cbd4646172ffb44a802f060d10bc4be 560w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/disable-tracking.png?w=840&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=3ccccb2aa047e185a80a948f1ecf259f 840w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/disable-tracking.png?w=1100&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=8cdeed89188f73fd5ba4b425151de7eb 1100w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/disable-tracking.png?w=1650&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=348a52b77e218ac287892633391601f9 1650w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/disable-tracking.png?w=2500&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=964d6f9ae2b3f921446b3129e482634f 2500w" />
+<img alt="Disable tracking" />
+
+<Warning>
+  We do not support deeplinks prepended with `ms-word:` as they are blocked by Gmail and other inbox providers. We recommend linking to a non-deeplink landing page instead. This may also be the case with other deeplinks in certain situations—you'll know if that's the case as the link will seem unclickable.
+</Warning>
 
 ### Dividers
 
@@ -4080,7 +4097,7 @@ Dividers help separate or group content in your emails. Change spacing around di
 
 You can add a row of social icons to your emails. There are hundreds to choose from.
 
-<img src="https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/add-icons.png?fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=05f8a85813f91936d44e4f2910340f49" alt="Social icons" data-og-width="2280" width="2280" data-og-height="1302" height="1302" data-path="images/add-icons.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/add-icons.png?w=280&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=d73fd7a6d351632b82cc8d03c947d608 280w, https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/add-icons.png?w=560&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=7428179c5bb5d54ad3bef9bf97283fa8 560w, https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/add-icons.png?w=840&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=f1b3a1129682b2e251c6540f50b43a35 840w, https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/add-icons.png?w=1100&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=46aeaca7c81caea9790a972a67d154c2 1100w, https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/add-icons.png?w=1650&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=784fd3d30ab09ba79e58124a47fbf7ba 1650w, https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/add-icons.png?w=2500&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=0a0d931e298ee389743d95f2ddc58136 2500w" />
+<img alt="Social icons" />
 
 You have options for icon size, gap and color (black, grey or white). You can add more icons by clicking the `+` icon in the editor panel.
 
@@ -4104,7 +4121,7 @@ You can add columns to your email in several ways:
 1. **Using the `/` slash menu in the editor**: Type `/` to open the slash menu then start typing "columns" or click on the **Columns** option.
 2. **Using the editor toolbar**: Click on the columns icon to insert a column layout.
 3. **Dragging two blocks together**: Click and hold the block settings icon (six dots) to the left of a block. Drag the block next to another one until you see a vertical gray line on the right, which indicates a new column will be created.
-   <img src="https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/columns-dragging.png?fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=dae31de77bb07cb9df441869dd50b959" alt="Adding columns by dragging blocks together" data-og-width="2280" width="2280" data-og-height="1412" height="1412" data-path="images/columns-dragging.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/columns-dragging.png?w=280&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=f188cdee97906871a5971abf17f7647a 280w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/columns-dragging.png?w=560&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=f5970a2ac978dc0a0bab71e8d5627000 560w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/columns-dragging.png?w=840&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=179dbaefac2d0b104d20303b3dcfeb6e 840w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/columns-dragging.png?w=1100&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=b23bc31b3f0d243e6ac6593659b81559 1100w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/columns-dragging.png?w=1650&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=a249d2fde141c4f5de9b9ba0d2c3cb6d 1650w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/columns-dragging.png?w=2500&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=0eba7a8de98725bbdafb3b30c539bcaa 2500w" />
+   <img alt="Adding columns by dragging blocks together" />
 
 #### Customizing columns
 
@@ -4114,11 +4131,11 @@ Once you've added columns, you can customize their appearance and behavior to su
 
 You can adjust the width of a column by clicking and dragging the gray bar between the columns.
 
-<img src="https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/column-width.png?fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=fdf7971f078124c2eb9c8505ddcfc706" alt="Adjusting column width" data-og-width="2280" width="2280" data-og-height="1074" height="1074" data-path="images/column-width.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/column-width.png?w=280&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=ab713740f7097e5ae243248b879fe748 280w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/column-width.png?w=560&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=67e4a7ba3d45a9fcd02b758b5b3b6b79 560w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/column-width.png?w=840&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=bcdf627799d051768cc639342f2f4694 840w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/column-width.png?w=1100&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=d5c10e23750494ac1eab751e50670da5 1100w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/column-width.png?w=1650&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=5128ccd6f8e691c1113cd2242413d402 1650w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/column-width.png?w=2500&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=8814a303a9642e10fbaac10eff228578 2500w" />
+<img alt="Adjusting column width" />
 
 You can also adjust how much space appears between columns by dragging the green bar between the columns.
 
-<img src="https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/column-spacing.png?fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=e5baf0c24d79fceb04d96b521f57c2dd" alt="Adjusting column spacing" data-og-width="2280" width="2280" data-og-height="1074" height="1074" data-path="images/column-spacing.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/column-spacing.png?w=280&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=1c07c98e7e825e082d433d9c6e0acf14 280w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/column-spacing.png?w=560&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=bb1b85b654e65660cf9f22632a2839da 560w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/column-spacing.png?w=840&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=d2bf7f8e95b8e08b413fd91d26c85faa 840w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/column-spacing.png?w=1100&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=54bf880d3104b4d637301026e18a3a8d 1100w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/column-spacing.png?w=1650&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=13e8c1ce8a597119efc900ac1fda2f15 1650w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/column-spacing.png?w=2500&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=f946322652f1c07981b0fe2b7422f8d0 2500w" />
+<img alt="Adjusting column spacing" />
 
 **Stacking columns on mobile**
 
@@ -4126,7 +4143,7 @@ When emails are viewed on a mobile device (when there is less horizontal space a
 
 In the **Block styles** editor panel you'll find the option to stack columns vertically on mobile (when the viewport is 479px or smaller).
 
-<img src="https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/mobile-stacking.png?fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=6c5a62d43bda0f9ffb80921308e82892" alt="Mobile stacking option" data-og-width="2280" width="2280" data-og-height="1296" height="1296" data-path="images/mobile-stacking.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/mobile-stacking.png?w=280&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=6541b5781469c6b76b179639ff2b6fce 280w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/mobile-stacking.png?w=560&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=54cff6b43b03fc72fd39994ede0e4009 560w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/mobile-stacking.png?w=840&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=3a75ff679291c91a0de35630470551a5 840w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/mobile-stacking.png?w=1100&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=f8b37e13c2efae6dd68519781e05ae42 1100w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/mobile-stacking.png?w=1650&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=52300e91594a473e6101ce0f5a8d6a9a 1650w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/mobile-stacking.png?w=2500&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=6da4e8de8c596f2ccceaa32c77cfc440 2500w" />
+<img alt="Mobile stacking option" />
 
 **Adding and moving content**
 
@@ -4134,7 +4151,7 @@ You can drag elements like text blocks, images, and buttons in and out of your c
 
 To do this, hold down the `⌘` key (Mac) or `Ctrl` key (Windows) while hovering over the element you want to move. Then click and drag the block settings icon (six dots) to move the block to its new position.
 
-<img src="https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/drag-into-column.png?fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=d50f45663921445d609df9888a3528ea" alt="Drag an element into a column" data-og-width="2280" width="2280" data-og-height="1074" height="1074" data-path="images/drag-into-column.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/drag-into-column.png?w=280&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=3127c09f7d81a408da7591ba75239a78 280w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/drag-into-column.png?w=560&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=4040a67812ea31d04b358aef4f32776e 560w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/drag-into-column.png?w=840&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=815f6d405d02453688ed06a9fb2ca35c 840w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/drag-into-column.png?w=1100&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=c5e008e8db94f28b213e3e30cfaf98ff 1100w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/drag-into-column.png?w=1650&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=c0d40bae173ef5d4949ecdca9e562ee3 1650w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/drag-into-column.png?w=2500&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=a94d300927b99a2748ccab787e96c6e2 2500w" />
+<img alt="Drag an element into a column" />
 
 #### Tips
 
@@ -4181,7 +4198,7 @@ When pasting markdown, you can use custom Loops tags to add buttons and columns 
 
 **Columns**
 
-```html  theme={"dark"}
+```html theme={"dark"}
 <loops-columns>
   <loops-column-item>
     ### Column 1 heading
@@ -4196,7 +4213,7 @@ When pasting markdown, you can use custom Loops tags to add buttons and columns 
 
 **Buttons**
 
-```html  theme={"dark"}
+```html theme={"dark"}
 <loops-button href="https://loops.so">Subscribe</loops-button>
 ```
 
@@ -4206,13 +4223,13 @@ These custom tags can be mixed with regular markdown formatting.
 
 If you hover over a block in your email, you'll see a drag-and-drop icon appear on the left. You can drag this icon to re-order elements in your email.
 
-<img src="https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/block-icons.png?fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=e55c94f10c7d81e3f108a365ca291fd1" alt="" data-og-width="2280" width="2280" data-og-height="1104" height="1104" data-path="images/block-icons.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/block-icons.png?w=280&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=a2305326e6c42ad5394ab85a646ff1a8 280w, https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/block-icons.png?w=560&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=dcaa33394b70b447ab582306273baa3c 560w, https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/block-icons.png?w=840&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=a6734470979f5940186dbe5a1364fdce 840w, https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/block-icons.png?w=1100&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=1ba5318240e83b1604288e967b2d611d 1100w, https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/block-icons.png?w=1650&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=010b8cc06fb30928b062abdf74468f01 1650w, https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/block-icons.png?w=2500&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=bff17cd2dffb93ed06091376a848d6ee 2500w" />
+<img alt="" />
 
 ## Footer content
 
 We add an automatic footer into campaign and loops emails, which includes your company name, address and an unsubscribe link.
 
-<img src="https://mintcdn.com/loops/OG31ikb--92jQDlq/images/footer.png?fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=a0c0c267764f6edb2f6728797dd0d0ec" alt="" data-og-width="2280" width="2280" data-og-height="830" height="830" data-path="images/footer.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/OG31ikb--92jQDlq/images/footer.png?w=280&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=2fe4e72c22c266b7019a3b17e359c69a 280w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/footer.png?w=560&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=afc513492aac5ea26d282a684ab868e4 560w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/footer.png?w=840&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=3942a35756830cde54083e9786e4a6de 840w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/footer.png?w=1100&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=63a356b66229d0c78a9b0608330b7c96 1100w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/footer.png?w=1650&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=dd2c110c4876857fe55d7075b753474c 1650w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/footer.png?w=2500&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=2dfa22c2c2e881238589161fc99c1622 2500w" />
+<img alt="" />
 
 Unsubscribe links help prevent your messages from being marked as spam and ensure that your messages are willingly being received by an engaged audience, helping your deliverability.
 
@@ -4295,7 +4312,7 @@ Custom font support via Google Fonts is now available in Loops. You can use any 
 
 To use a custom font, create or enable a Theme, then click **Edit**. You will then be able to apply a custom font in the Text styles.
 
-<img src="https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/custom-font.png?fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=ddb6bc004c6ec496c8b5cdd375c083f2" alt="Apply custom font" data-og-width="2280" width="2280" data-og-height="1257" height="1257" data-path="images/custom-font.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/custom-font.png?w=280&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=7167f12ff5972a2c5d3ab868020e704b 280w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/custom-font.png?w=560&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=c8cfc5cdd83fc76ad812acdd8e9de552 560w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/custom-font.png?w=840&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=521d5f6f0f79ab8aa4afe01a7f460777 840w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/custom-font.png?w=1100&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=f20e214d54d5477a183959ae1a9278a8 1100w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/custom-font.png?w=1650&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=b910089add0797240292e9b3cb7e9c18 1650w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/custom-font.png?w=2500&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=cea08871bc02709923c7eca6426457f6 2500w" />
+<img alt="Apply custom font" />
 
 Please note that not all fonts are supported by all email clients. See the table below for a list of supported email clients.
 
@@ -4330,7 +4347,7 @@ Sending emails protected by Guardian
 
 Guardian checks your emails in real time and flags issues *before* you hit send. It catches misconfigured or missing elements in campaigns, loops, and transactional emails so you ship with confidence.
 
-<img src="https://mintcdn.com/loops/zdY_6OBc_NXTb9Vu/images/guardian.png?fit=max&auto=format&n=zdY_6OBc_NXTb9Vu&q=85&s=d792baa1a0372f7100cc28b6b3e5f9b5" alt="Guardian" data-og-width="2280" width="2280" data-og-height="1700" height="1700" data-path="images/guardian.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/zdY_6OBc_NXTb9Vu/images/guardian.png?w=280&fit=max&auto=format&n=zdY_6OBc_NXTb9Vu&q=85&s=0e28529ab260f53f575d571900b5fb36 280w, https://mintcdn.com/loops/zdY_6OBc_NXTb9Vu/images/guardian.png?w=560&fit=max&auto=format&n=zdY_6OBc_NXTb9Vu&q=85&s=824b277dc349d34658e8620882fee684 560w, https://mintcdn.com/loops/zdY_6OBc_NXTb9Vu/images/guardian.png?w=840&fit=max&auto=format&n=zdY_6OBc_NXTb9Vu&q=85&s=7c6063003bc13396de69579e928a0655 840w, https://mintcdn.com/loops/zdY_6OBc_NXTb9Vu/images/guardian.png?w=1100&fit=max&auto=format&n=zdY_6OBc_NXTb9Vu&q=85&s=a91b78e65b80dd5a74f718b596122152 1100w, https://mintcdn.com/loops/zdY_6OBc_NXTb9Vu/images/guardian.png?w=1650&fit=max&auto=format&n=zdY_6OBc_NXTb9Vu&q=85&s=22241d06e8ef881fff97546b3e0986e3 1650w, https://mintcdn.com/loops/zdY_6OBc_NXTb9Vu/images/guardian.png?w=2500&fit=max&auto=format&n=zdY_6OBc_NXTb9Vu&q=85&s=70f62c448cc1af1646fd66c1aa064151 2500w" />
+<img alt="Guardian" />
 
 ## Guardian checks
 
@@ -4352,7 +4369,7 @@ When using contact and event properties in campaigns and loops, emails will not 
 
 For example, if you have inserted "Hello `First Name`" in your email, and the contact doesn't have a first name value, the loop or campaign email will not be sent. In some cases, that can be desired behavior but we've found most of the time a fallback should be added. We've added it as a warning and now Guardian will alert you when there are missing fallbacks and emails will send as expected.
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Fallback values" icon="crystal-ball" href="/creating-emails/personalizing-emails#fallback-values">
     Learn about using fallback values for your dynamic content.
   </Card>
@@ -4402,12 +4419,13 @@ The three types of dynamic content are:
 
 To add dynamic content to your emails, type "\{" anywhere in the editor or click the `{}` dynamic content icon in the email editor toolbar. Using either of these options will open the dynamic content menu, a filterable list of all available properties you can insert.
 
-<img src="https://mintcdn.com/loops/EgyPhKkeXp9wCnWY/images/brace-menu.png?fit=max&auto=format&n=EgyPhKkeXp9wCnWY&q=85&s=27c73e902ab6b876bc16065bd09134aa" alt="Dynamic content menu appearing after typing the opening brace" data-og-width="2280" width="2280" data-og-height="1532" height="1532" data-path="images/brace-menu.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/EgyPhKkeXp9wCnWY/images/brace-menu.png?w=280&fit=max&auto=format&n=EgyPhKkeXp9wCnWY&q=85&s=9326c62f97de7ca37bfb6c4dffc72710 280w, https://mintcdn.com/loops/EgyPhKkeXp9wCnWY/images/brace-menu.png?w=560&fit=max&auto=format&n=EgyPhKkeXp9wCnWY&q=85&s=af2601f9d01a08e404831c2a893c3c12 560w, https://mintcdn.com/loops/EgyPhKkeXp9wCnWY/images/brace-menu.png?w=840&fit=max&auto=format&n=EgyPhKkeXp9wCnWY&q=85&s=0866e9e7523a4a775fc6eda747d79288 840w, https://mintcdn.com/loops/EgyPhKkeXp9wCnWY/images/brace-menu.png?w=1100&fit=max&auto=format&n=EgyPhKkeXp9wCnWY&q=85&s=9234e4574c66ff73ac822d6a99a3affb 1100w, https://mintcdn.com/loops/EgyPhKkeXp9wCnWY/images/brace-menu.png?w=1650&fit=max&auto=format&n=EgyPhKkeXp9wCnWY&q=85&s=f066015663842e0fc26e5bc0e46b5b6f 1650w, https://mintcdn.com/loops/EgyPhKkeXp9wCnWY/images/brace-menu.png?w=2500&fit=max&auto=format&n=EgyPhKkeXp9wCnWY&q=85&s=8f5f1e9f81626bf456c0f5ad49e03d65 2500w" />
-<img src="https://mintcdn.com/loops/EgyPhKkeXp9wCnWY/images/basic-merge.png?fit=max&auto=format&n=EgyPhKkeXp9wCnWY&q=85&s=50f73381c384e4ff6ed919d81630cbe9" alt="Adding a contact property" data-og-width="2280" width="2280" data-og-height="1035" height="1035" data-path="images/basic-merge.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/EgyPhKkeXp9wCnWY/images/basic-merge.png?w=280&fit=max&auto=format&n=EgyPhKkeXp9wCnWY&q=85&s=18814146da18de5f13e391fa12a20c0e 280w, https://mintcdn.com/loops/EgyPhKkeXp9wCnWY/images/basic-merge.png?w=560&fit=max&auto=format&n=EgyPhKkeXp9wCnWY&q=85&s=11778fb9f17dcc74d2d8cc3862188dd0 560w, https://mintcdn.com/loops/EgyPhKkeXp9wCnWY/images/basic-merge.png?w=840&fit=max&auto=format&n=EgyPhKkeXp9wCnWY&q=85&s=1d9873614099f8e8a8bf03a6737d6784 840w, https://mintcdn.com/loops/EgyPhKkeXp9wCnWY/images/basic-merge.png?w=1100&fit=max&auto=format&n=EgyPhKkeXp9wCnWY&q=85&s=2edecb2194d57f86bc98b4f265381631 1100w, https://mintcdn.com/loops/EgyPhKkeXp9wCnWY/images/basic-merge.png?w=1650&fit=max&auto=format&n=EgyPhKkeXp9wCnWY&q=85&s=f516cbbf3856e25d5583034ff6b9319c 1650w, https://mintcdn.com/loops/EgyPhKkeXp9wCnWY/images/basic-merge.png?w=2500&fit=max&auto=format&n=EgyPhKkeXp9wCnWY&q=85&s=1e7b6b3fcaf7193246b46cbfe703f4d2 2500w" />
+<img alt="Dynamic content menu appearing after typing the opening brace" />
+
+<img alt="Adding a contact property" />
 
 These two options are also available in all of the sending setting fields above the editor. An icon appears on the right when you hover over each field, or you can start typing "\{".
 
-<img src="https://mintcdn.com/loops/Ghb_kmuDWgpv_ZFW/images/sending-setting-dynamic.png?fit=max&auto=format&n=Ghb_kmuDWgpv_ZFW&q=85&s=37b70af55b0d61afc08c872745d1b9e2" alt="Adding a contact property to sending details" data-og-width="2280" width="2280" data-og-height="782" height="782" data-path="images/sending-setting-dynamic.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/Ghb_kmuDWgpv_ZFW/images/sending-setting-dynamic.png?w=280&fit=max&auto=format&n=Ghb_kmuDWgpv_ZFW&q=85&s=6088b36fcf1e713c869e055cf147b33a 280w, https://mintcdn.com/loops/Ghb_kmuDWgpv_ZFW/images/sending-setting-dynamic.png?w=560&fit=max&auto=format&n=Ghb_kmuDWgpv_ZFW&q=85&s=db4539b239ee71d4a106fc64580b4374 560w, https://mintcdn.com/loops/Ghb_kmuDWgpv_ZFW/images/sending-setting-dynamic.png?w=840&fit=max&auto=format&n=Ghb_kmuDWgpv_ZFW&q=85&s=ab4f65f5e9c0533896fc23c99cf74af3 840w, https://mintcdn.com/loops/Ghb_kmuDWgpv_ZFW/images/sending-setting-dynamic.png?w=1100&fit=max&auto=format&n=Ghb_kmuDWgpv_ZFW&q=85&s=4ea5e673494eec2d5f88062da328bdfc 1100w, https://mintcdn.com/loops/Ghb_kmuDWgpv_ZFW/images/sending-setting-dynamic.png?w=1650&fit=max&auto=format&n=Ghb_kmuDWgpv_ZFW&q=85&s=5fa462779d862577d2cc532b8bc1ed90 1650w, https://mintcdn.com/loops/Ghb_kmuDWgpv_ZFW/images/sending-setting-dynamic.png?w=2500&fit=max&auto=format&n=Ghb_kmuDWgpv_ZFW&q=85&s=60fd0559b6f494ad8450565b5ba84459 2500w" />
+<img alt="Adding a contact property to sending details" />
 
 Depending on whether you're editing a campaign, loop or transactional email, the menu shows different content based on your email type (explained above).
 
@@ -4433,7 +4451,7 @@ Fallback values are important for campaign and loop emails. If a contact doesn't
 
 When you insert a contact or event property using the dynamic content menu, you'll be prompted to enter a fallback. This default text ensures your email still sends even when data is missing.
 
-<img src="https://mintcdn.com/loops/EgyPhKkeXp9wCnWY/images/brace-menu-fallback.png?fit=max&auto=format&n=EgyPhKkeXp9wCnWY&q=85&s=14a23c9ea6f430b1403f18ed8cc3d2d8" alt="Fallback input appearing after selecting a property" data-og-width="2280" width="2280" data-og-height="1022" height="1022" data-path="images/brace-menu-fallback.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/EgyPhKkeXp9wCnWY/images/brace-menu-fallback.png?w=280&fit=max&auto=format&n=EgyPhKkeXp9wCnWY&q=85&s=e08b96ac8d5163eeea9af6de694b658a 280w, https://mintcdn.com/loops/EgyPhKkeXp9wCnWY/images/brace-menu-fallback.png?w=560&fit=max&auto=format&n=EgyPhKkeXp9wCnWY&q=85&s=dcd410fc43511f6219516a7a2cf4f272 560w, https://mintcdn.com/loops/EgyPhKkeXp9wCnWY/images/brace-menu-fallback.png?w=840&fit=max&auto=format&n=EgyPhKkeXp9wCnWY&q=85&s=b5712f25c8d4ba12d39f741e69bd8754 840w, https://mintcdn.com/loops/EgyPhKkeXp9wCnWY/images/brace-menu-fallback.png?w=1100&fit=max&auto=format&n=EgyPhKkeXp9wCnWY&q=85&s=21325639147d7e986ce23ab4b3504a44 1100w, https://mintcdn.com/loops/EgyPhKkeXp9wCnWY/images/brace-menu-fallback.png?w=1650&fit=max&auto=format&n=EgyPhKkeXp9wCnWY&q=85&s=79d59203e2c483fdacdc3d465ebe12ad 1650w, https://mintcdn.com/loops/EgyPhKkeXp9wCnWY/images/brace-menu-fallback.png?w=2500&fit=max&auto=format&n=EgyPhKkeXp9wCnWY&q=85&s=8762cb1d91e21721196a2e1e0a3d5bc3 2500w" />
+<img alt="Fallback input appearing after selecting a property" />
 
 Common fallback examples:
 
@@ -4448,13 +4466,13 @@ Your fallback is saved and will auto-fill if you insert the same property again.
 
 You can edit the fallback value later on from the editor panel.
 
-<img src="https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/fallback-variable.png?fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=4b91e6489b2078ab1781baad90f79aac" alt="" data-og-width="2280" width="2280" data-og-height="1206" height="1206" data-path="images/fallback-variable.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/fallback-variable.png?w=280&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=50b412565789d33c35b45d66a86b891b 280w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/fallback-variable.png?w=560&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=3766af743187e7fc8ff71e146c0532b4 560w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/fallback-variable.png?w=840&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=35ddfb6cd9a1f9301f0a5aadd1a6929b 840w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/fallback-variable.png?w=1100&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=779f04210710adbe3a58aaed73e7afff 1100w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/fallback-variable.png?w=1650&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=527451499c851ca38443b73bbda2a21d 1650w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/fallback-variable.png?w=2500&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=a9516ad14f895bc61203394aacc55c61 2500w" />
+<img alt="" />
 
 ## Data variables in transactional emails
 
 In transactional emails, dynamic tags work slightly differently: you can create new data variables in your email as you type.
 
-<img src="https://mintcdn.com/loops/EgyPhKkeXp9wCnWY/images/brace-menu-variables.png?fit=max&auto=format&n=EgyPhKkeXp9wCnWY&q=85&s=88c2687bfef5c47a5aee0a27a5a15e97" alt="Creating a new data variable with the dynamic content menu" data-og-width="2280" width="2280" data-og-height="1217" height="1217" data-path="images/brace-menu-variables.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/EgyPhKkeXp9wCnWY/images/brace-menu-variables.png?w=280&fit=max&auto=format&n=EgyPhKkeXp9wCnWY&q=85&s=58ac79702032bb4f41e97b6dce0b9fd1 280w, https://mintcdn.com/loops/EgyPhKkeXp9wCnWY/images/brace-menu-variables.png?w=560&fit=max&auto=format&n=EgyPhKkeXp9wCnWY&q=85&s=2a8e2868c31996f9fc364103f611c12e 560w, https://mintcdn.com/loops/EgyPhKkeXp9wCnWY/images/brace-menu-variables.png?w=840&fit=max&auto=format&n=EgyPhKkeXp9wCnWY&q=85&s=d200cf3d7528ee3c75e3e1177ff238be 840w, https://mintcdn.com/loops/EgyPhKkeXp9wCnWY/images/brace-menu-variables.png?w=1100&fit=max&auto=format&n=EgyPhKkeXp9wCnWY&q=85&s=d30a28c50dbefd5d8810e7187a217ac7 1100w, https://mintcdn.com/loops/EgyPhKkeXp9wCnWY/images/brace-menu-variables.png?w=1650&fit=max&auto=format&n=EgyPhKkeXp9wCnWY&q=85&s=46e4115ba3039aac4035bdc7b9fe6e4b 1650w, https://mintcdn.com/loops/EgyPhKkeXp9wCnWY/images/brace-menu-variables.png?w=2500&fit=max&auto=format&n=EgyPhKkeXp9wCnWY&q=85&s=987497422bbb9687b0d6a70367e266a4 2500w" />
+<img alt="Creating a new data variable with the dynamic content menu" />
 
 1. Type `{orderTotal` (using a new name that doesn't exist).
 2. Select **Create "orderTotal"** from the menu or press `Enter`.
@@ -4476,11 +4494,11 @@ If you have a custom contact property named `teamName` that you want to add to a
 
 When the email is sent, the `teamName` value for each contact will be added to the email.
 
-<img src="https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/merge-tag-0.png?fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=1362c358de9832b19a7d84d9ba1db93a" alt="" data-og-width="2280" width="2280" data-og-height="830" height="830" data-path="images/merge-tag-0.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/merge-tag-0.png?w=280&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=edf17ec24a1f9739f90d7a4f708709c9 280w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/merge-tag-0.png?w=560&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=b5e5f42dbc475292c399f57c3c2905f8 560w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/merge-tag-0.png?w=840&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=85588ebf9d0eadd50214a0bf164d8a96 840w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/merge-tag-0.png?w=1100&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=810700b1a37df7b0a997163b8007e6b1 1100w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/merge-tag-0.png?w=1650&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=2936ecb81ce7654397c9b79ecabfa7f2 1650w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/merge-tag-0.png?w=2500&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=6ff2cebb9b2be2ca5aa3360da9bfdf5e 2500w" />
+<img alt="" />
 
 For a list of all of your contact properties, visit the [API Settings](https://app.loops.so/settings?page=api) page. The **API Name** is the name you use within the brackets in your email, for example `{firstName}`, `{lastName}`, `{email}`, etc.
 
-<img src="https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/merge-tag.png?fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=c0581243e45c04d5f31d488bdee17632" alt="Contact properties table" data-og-width="2280" width="2280" data-og-height="1661" height="1661" data-path="images/merge-tag.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/merge-tag.png?w=280&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=919fef61dcdf3796ef642d43c97f01f5 280w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/merge-tag.png?w=560&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=b05f90401381a632b776179697eb71e7 560w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/merge-tag.png?w=840&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=e8fb02e7dd793aa68fb0147c00fdfe36 840w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/merge-tag.png?w=1100&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=b5025738d6dc57556ecf70e05022cbca 1100w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/merge-tag.png?w=1650&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=9883ab1e0cd3081bd13c216019b31306 1650w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/merge-tag.png?w=2500&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=6ac25923487f0e604a644280c07812ac 2500w" />
+<img alt="Contact properties table" />
 
 ### Event properties
 
@@ -4518,7 +4536,7 @@ There are a set of fields above the email editor, including **From** and **Reply
 
 Click the `>` button to reveal all of the fields.
 
-<img src="https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/more-button.png?fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=92dabc26cb1afd834bcf0e5033310865" alt="Email sending settings" data-og-width="2280" width="2280" data-og-height="795" height="795" data-path="images/more-button.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/more-button.png?w=280&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=80882dcf7b0f26e5da4f0b6d9682412d 280w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/more-button.png?w=560&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=4711e285743e997f2c6d786dc04d3a08 560w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/more-button.png?w=840&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=8d1ac591b346ed4f2600144d3ec31e02 840w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/more-button.png?w=1100&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=0462910b30873af3f58dd618c708eaee 1100w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/more-button.png?w=1650&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=fc77d4f2c30e0e5e9e000cebc4d1a6bb 1650w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/more-button.png?w=2500&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=3e06c8905876e067e18b171623f46e69 2500w" />
+<img alt="Email sending settings" />
 
 ## Subject and Preview
 
@@ -4534,7 +4552,7 @@ If you do not add a preview to your email, sometimes the beginning of your email
 
 ## Name, From and Reply
 
-<img src="https://mintcdn.com/loops/Ghb_kmuDWgpv_ZFW/images/sending-setting-data.png?fit=max&auto=format&n=Ghb_kmuDWgpv_ZFW&q=85&s=9babb7ae9066f476c0293c6d3ce861b9" alt="Sending settings" data-og-width="2280" width="2280" data-og-height="1086" height="1086" data-path="images/sending-setting-data.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/Ghb_kmuDWgpv_ZFW/images/sending-setting-data.png?w=280&fit=max&auto=format&n=Ghb_kmuDWgpv_ZFW&q=85&s=050df60e3b31f561d23b0bf837e761fb 280w, https://mintcdn.com/loops/Ghb_kmuDWgpv_ZFW/images/sending-setting-data.png?w=560&fit=max&auto=format&n=Ghb_kmuDWgpv_ZFW&q=85&s=cf6ee5add9ca173467defcb2a6d42b15 560w, https://mintcdn.com/loops/Ghb_kmuDWgpv_ZFW/images/sending-setting-data.png?w=840&fit=max&auto=format&n=Ghb_kmuDWgpv_ZFW&q=85&s=a7cefb2898698d37e2a38207a225ba6e 840w, https://mintcdn.com/loops/Ghb_kmuDWgpv_ZFW/images/sending-setting-data.png?w=1100&fit=max&auto=format&n=Ghb_kmuDWgpv_ZFW&q=85&s=46556bf1dcf17deb1eecab47639c5b1e 1100w, https://mintcdn.com/loops/Ghb_kmuDWgpv_ZFW/images/sending-setting-data.png?w=1650&fit=max&auto=format&n=Ghb_kmuDWgpv_ZFW&q=85&s=128b9429c59b9d2775f0beda82355ce2 1650w, https://mintcdn.com/loops/Ghb_kmuDWgpv_ZFW/images/sending-setting-data.png?w=2500&fit=max&auto=format&n=Ghb_kmuDWgpv_ZFW&q=85&s=9638eb8ba32676da9aeabd514dc9b23b 2500w" />
+<img alt="Sending settings" />
 
 These fields are used to populate the **From** and **Reply** fields in email clients. They are information fields, helping recipients know who sent the email.
 
@@ -4554,11 +4572,11 @@ For transactional emails and loops, you have the option to add a single CC and B
 
 Make sure to first enable this option in your [Tracking settings](https://app.loops.so/settings?page=tracking) to enable these fields in the email editor.
 
-<img src="https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/cc-bcc-toggle.png?fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=f1af8a622712b4836d516c9fc5642bab" alt="CC/BCC field setting settings" data-og-width="2280" width="2280" data-og-height="999" height="999" data-path="images/cc-bcc-toggle.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/cc-bcc-toggle.png?w=280&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=105d32f82847579d0ea5579201e250fc 280w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/cc-bcc-toggle.png?w=560&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=78f25af92ef8f5f049e9999e7e991099 560w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/cc-bcc-toggle.png?w=840&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=670d7070665756683ad16a5cf5dff977 840w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/cc-bcc-toggle.png?w=1100&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=09638359c4f4df3d7245cf5eb877970d 1100w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/cc-bcc-toggle.png?w=1650&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=16649306fd22124f7461eae670cbd3b4 1650w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/cc-bcc-toggle.png?w=2500&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=2d0364cc2b134a927fd85efe620fc450 2500w" />
+<img alt="CC/BCC field setting settings" />
 
 You can then add a CC or BCC to loops and transactional emails in your account from the sending settings.
 
-<img src="https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/sending-cc-bcc.png?fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=35f6f24c5af4a6da536b4c50872d3379" alt="CC and BCC fields" data-og-width="2280" width="2280" data-og-height="1140" height="1140" data-path="images/sending-cc-bcc.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/sending-cc-bcc.png?w=280&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=6f595b2cfc5674843a2a0e2d994e36c7 280w, https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/sending-cc-bcc.png?w=560&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=bdd1f1347e7b77e91f44b381a4d172f3 560w, https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/sending-cc-bcc.png?w=840&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=2f6ad783e920d06329f89c61fc732244 840w, https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/sending-cc-bcc.png?w=1100&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=f47a341b90bc5fb46b832e13a678c4d4 1100w, https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/sending-cc-bcc.png?w=1650&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=3e0b2fb502eef3669bfe724c8251ade6 1650w, https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/sending-cc-bcc.png?w=2500&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=e7c7236df9b39b79e3e17f952796a9ae 2500w" />
+<img alt="CC and BCC fields" />
 
 ## Dynamic content
 
@@ -4566,7 +4584,7 @@ You can include [dynamic variables](/creating-emails/personalizing-emails) in ev
 
 Just click the contact property icon (campaigns), event property icon (loops) or data variable icon (transactional emails) that appears when you hover over each field.
 
-<img src="https://mintcdn.com/loops/Ghb_kmuDWgpv_ZFW/images/sending-setting-dynamic.png?fit=max&auto=format&n=Ghb_kmuDWgpv_ZFW&q=85&s=37b70af55b0d61afc08c872745d1b9e2" alt="Adding dynamic data to the sending settings" data-og-width="2280" width="2280" data-og-height="782" height="782" data-path="images/sending-setting-dynamic.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/Ghb_kmuDWgpv_ZFW/images/sending-setting-dynamic.png?w=280&fit=max&auto=format&n=Ghb_kmuDWgpv_ZFW&q=85&s=6088b36fcf1e713c869e055cf147b33a 280w, https://mintcdn.com/loops/Ghb_kmuDWgpv_ZFW/images/sending-setting-dynamic.png?w=560&fit=max&auto=format&n=Ghb_kmuDWgpv_ZFW&q=85&s=db4539b239ee71d4a106fc64580b4374 560w, https://mintcdn.com/loops/Ghb_kmuDWgpv_ZFW/images/sending-setting-dynamic.png?w=840&fit=max&auto=format&n=Ghb_kmuDWgpv_ZFW&q=85&s=ab4f65f5e9c0533896fc23c99cf74af3 840w, https://mintcdn.com/loops/Ghb_kmuDWgpv_ZFW/images/sending-setting-dynamic.png?w=1100&fit=max&auto=format&n=Ghb_kmuDWgpv_ZFW&q=85&s=4ea5e673494eec2d5f88062da328bdfc 1100w, https://mintcdn.com/loops/Ghb_kmuDWgpv_ZFW/images/sending-setting-dynamic.png?w=1650&fit=max&auto=format&n=Ghb_kmuDWgpv_ZFW&q=85&s=5fa462779d862577d2cc532b8bc1ed90 1650w, https://mintcdn.com/loops/Ghb_kmuDWgpv_ZFW/images/sending-setting-dynamic.png?w=2500&fit=max&auto=format&n=Ghb_kmuDWgpv_ZFW&q=85&s=60fd0559b6f494ad8450565b5ba84459 2500w" />
+<img alt="Adding dynamic data to the sending settings" />
 
 ### Loop example
 
@@ -4591,7 +4609,7 @@ Then when sending the event to trigger the loop, include `productName`:
 }
 ```
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Learn about Events" icon="bolt" href="/events">
     Find out more about triggering loops with events.
   </Card>
@@ -4615,7 +4633,7 @@ To send this data over the API, add a `replyTo` attribute to your transactional 
 }
 ```
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Transactional email guide" icon="file-code" href="/transactional">
     Read our guide for sending transactional email with Loops.
   </Card>
@@ -4631,7 +4649,7 @@ Learn how to edit emails in the Loops editor.
 
 Loops offers two different email styling options, Styled and Plain.
 
-<img src="https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/styled-plain.png?fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=c2f8549f8d0ec12dfad37d4e384d9627" alt="" data-og-width="2280" width="2280" data-og-height="1049" height="1049" data-path="images/styled-plain.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/styled-plain.png?w=280&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=e6a697923f6e08330d02490dfbebbffc 280w, https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/styled-plain.png?w=560&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=5f1049a3bbcaf6c3c62bb3bf85b9ceca 560w, https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/styled-plain.png?w=840&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=c6534cd5825b8244f2418a3624f1606e 840w, https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/styled-plain.png?w=1100&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=ebcec428e75adfe137d5d98f8950881b 1100w, https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/styled-plain.png?w=1650&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=55c0e27c23c368b600c57a2c34beaf0a 1650w, https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/styled-plain.png?w=2500&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=db5c00cb3800978dab45a421b7b5bf3b 2500w" />
+<img alt="" />
 
 By default new emails are created as **Styled** emails in the editor. This option offers a range of design options that can be used to design the base theme for your email, like text and background colors, padding and borders.
 
@@ -4647,13 +4665,13 @@ Both Plain and Styled emails will show an editor side panel with formatting opti
 
 This includes all text, headings, links, buttons and dividers in your email, as well as design options for the main email body (padding, background and border).
 
-<img src="https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/message-visual.png?fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=e2c7088ffd4d20ac66b5fee7a1756010" alt="" data-og-width="2280" width="2280" data-og-height="1953" height="1953" data-path="images/message-visual.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/message-visual.png?w=280&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=1566d2f25ff94cd77ce02190627153c6 280w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/message-visual.png?w=560&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=b97a0e4251a474a7649518819d87364b 560w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/message-visual.png?w=840&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=a81c6e2c9f6ac29e31329ada927e038a 840w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/message-visual.png?w=1100&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=adb055873f4fd4c0e917faac0c927983 1100w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/message-visual.png?w=1650&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=5e6346334f27792ff4fab4450fe9c3a9 1650w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/message-visual.png?w=2500&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=738b8ddf5342b807bcfddc6fa07e61c7 2500w" />
+<img alt="" />
 
 The editor panel changes depending on the currently selected element in your email. For example, if you click on a button, the button formatting options are shown.
 
 There are helpful "Reset to default" icons if you ever want to return styling back to the defaults.
 
-<img src="https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/reset-style.png?fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=6626db09d57f8c3572e0b07b448eb243" alt="" data-og-width="2280" width="2280" data-og-height="1257" height="1257" data-path="images/reset-style.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/reset-style.png?w=280&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=ff2b72c4a0053496cd0099c6eb21058a 280w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/reset-style.png?w=560&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=71c74a75a7682125242ec317f6d0731b 560w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/reset-style.png?w=840&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=37ca308d813955046942864be5b6c133 840w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/reset-style.png?w=1100&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=4d5278ffc9d32fad09ba5cf8598999a5 1100w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/reset-style.png?w=1650&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=40cf87207d8fc0735c6c717548563043 1650w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/reset-style.png?w=2500&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=2d15494f38c44e225fecbb049dfdf925 2500w" />
+<img alt="" />
 
 ### Language selector
 
@@ -4667,7 +4685,7 @@ This increases the accessibility of your emails, plus some email clients may use
 
 The language selector does not have a default value. We recommend selecting the correct language for each of your emails.
 
-<img src="https://mintcdn.com/loops/OG31ikb--92jQDlq/images/language-picker.png?fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=293bf61c50c211bee3f574b4e6372253" alt="Language selection menu" data-og-width="2280" width="2280" data-og-height="1715" height="1715" data-path="images/language-picker.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/OG31ikb--92jQDlq/images/language-picker.png?w=280&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=1b5796c5f8133e43289568f2f33732e1 280w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/language-picker.png?w=560&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=490439706658ca7ca8a0eabd8a9ff056 560w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/language-picker.png?w=840&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=98666cf725af196380021cadf9cbb28a 840w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/language-picker.png?w=1100&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=2b0254cacaf306b9ef5c0a9d76653a44 1100w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/language-picker.png?w=1650&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=beabd0fe6d031bd6f83e9abb0e98ff0d 1650w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/language-picker.png?w=2500&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=8efbc1cbee737be33fbd7c4dcec0aa23 2500w" />
+<img alt="Language selection menu" />
 
 If you send campaigns and loops in different languages, we recommend using a [custom contact property](/contacts/properties#custom-contact-properties) to store language information for each contact. Then, when it comes to sending emails, create emails in different languages (using the language switcher to specify the language), and [filter your audience](/contacts/filters-segments#audience-filters) for each email to match the language stored for each contact.
 
@@ -4687,11 +4705,11 @@ Once applied, a theme can be tweaked on each email and changes will also be sync
 
 To create a theme, click the `+` plus icon in the **Theme** editor panel.
 
-<img src="https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/create-style.png?fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=7db5920afd9456c38fbede29963c9171" alt="" data-og-width="2280" width="2280" data-og-height="1049" height="1049" data-path="images/create-style.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/create-style.png?w=280&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=256f93ac59ea300586116bf267ad03fb 280w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/create-style.png?w=560&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=66c348d9b84f443a98d3d7ad212365b5 560w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/create-style.png?w=840&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=8f6386398314308820d916878e6c8148 840w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/create-style.png?w=1100&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=e7ce6a86e0cd43efd71bb4d539a19cf0 1100w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/create-style.png?w=1650&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=4c3c2d5042453a5daad968ebb5f22f1a 1650w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/create-style.png?w=2500&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=8238a7a44b308be75721903796738d86 2500w" />
+<img alt="" />
 
 Give your theme a name and click the `✓` check icon or press Enter. This will create a theme based on the current styling options selected in the style panel and apply it to the current email.
 
-<img src="https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/save-style.png?fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=58dcc3d5c882371c85d53a67b6ec865f" alt="" data-og-width="2280" width="2280" data-og-height="1178" height="1178" data-path="images/save-style.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/save-style.png?w=280&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=c045ef1d37b3b65814a9f4b487d9840b 280w, https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/save-style.png?w=560&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=1b77a198fe4ead056e962dc792901607 560w, https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/save-style.png?w=840&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=e25151ebb101642cece4f3eebb9b1264 840w, https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/save-style.png?w=1100&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=0897e433ba05475867609833b9c23faa 1100w, https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/save-style.png?w=1650&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=9fc443f6ed27403a7a9315e603f9d807 1650w, https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/save-style.png?w=2500&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=e23be765fb6e7b32e84fbacfe77e4376 2500w" />
+<img alt="" />
 
 You can now also add this theme to other emails.
 
@@ -4699,17 +4717,17 @@ You can now also add this theme to other emails.
 
 To add an existing theme to an email, click the **Select** dropdown in the **Theme** editor panel and select your desired theme.
 
-<img src="https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/select-style.png?fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=7478405c5d5d0fbc9ae2ec1565bc0107" alt="" data-og-width="2280" width="2280" data-og-height="1475" height="1475" data-path="images/select-style.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/select-style.png?w=280&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=0a35ac529c88ef052bbbf81120d70e67 280w, https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/select-style.png?w=560&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=f5a60cd6a9906c7becae646e3eb29cc3 560w, https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/select-style.png?w=840&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=0d746a9505c56eb4836f1d81db0803c7 840w, https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/select-style.png?w=1100&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=f7c6193fc2086ca52ccc68594843d77d 1100w, https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/select-style.png?w=1650&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=1f1482a7b6489593ec3d5f9932d80a38 1650w, https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/select-style.png?w=2500&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=7abf9191eaa73c5907a7d306be7f00dd 2500w" />
+<img alt="" />
 
 ### Edit a theme
 
 To edit a theme, first open an email with it applied, or apply it to an email. Then click **Edit** to open the theme editor panel.
 
-<img src="https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/edit-style.png?fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=9923fd1db123f498243f6dc26950045a" alt="" data-og-width="2280" width="2280" data-og-height="1049" height="1049" data-path="images/edit-style.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/edit-style.png?w=280&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=2f9a391aa4a1b85dcfa1cc6e87831f0d 280w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/edit-style.png?w=560&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=ca2e9ae310a9af9019d17c8dbeaf8461 560w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/edit-style.png?w=840&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=ed85abfc1458816c27fada294ea1116e 840w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/edit-style.png?w=1100&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=fe91f64418a2ac3e462e824fbb6ac6f0 1100w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/edit-style.png?w=1650&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=a890b1e1e2a5c0b5f2bb2d690052139b 1650w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/edit-style.png?w=2500&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=129213f143856959460142347df61c2d 2500w" />
+<img alt="" />
 
 When individual styles are changed, you'll notice they are highlighted in purple, which denotes styles that have deviated from the main theme.
 
-<img src="https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/edited-style.png?fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=1204e15de55a46491f309dd83f42c0fd" alt="" data-og-width="2280" width="2280" data-og-height="1683" height="1683" data-path="images/edited-style.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/edited-style.png?w=280&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=c292e8b0d8786eba478545989d1c6e35 280w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/edited-style.png?w=560&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=f0e0b0b58d39bb5397db38597143b22e 560w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/edited-style.png?w=840&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=0be3fd3b4c5b7125fb2e652e903ff256 840w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/edited-style.png?w=1100&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=542f48faa691d965dd20445ce0d210ee 1100w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/edited-style.png?w=1650&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=78be82332bb1fb6f505437ad1a985b67 1650w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/edited-style.png?w=2500&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=ce46f11c9cff1b75437f09a0b48afe55 2500w" />
+<img alt="" />
 
 A purple **Update** button also appears. Clicking this button updates the theme and also *applies the changes to all emails that have the theme applied*. This makes it really easy to change styles across many emails at once.
 
@@ -4729,7 +4747,7 @@ Or if you want to reset all current edits, hover over the **Editing theme** pane
 
 This will re-apply the theme's original design to your email and remove *all* current overrides.
 
-<img src="https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/reset-saved-style.png?fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=ccad71c56a610f6bdbadbe95a6dbab97" alt="" data-og-width="2280" width="2280" data-og-height="1218" height="1218" data-path="images/reset-saved-style.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/reset-saved-style.png?w=280&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=de4d61b11f0f6bd2eefac21d4c57dd74 280w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/reset-saved-style.png?w=560&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=bb1d8dd445cfaa99ddd1d02255079cf3 560w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/reset-saved-style.png?w=840&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=c14cfd8dcaded1e2380d80d20c4dbca2 840w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/reset-saved-style.png?w=1100&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=33e9014d9dddbf81529753d109dbce8e 1100w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/reset-saved-style.png?w=1650&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=63c42003aa41cbfab2bb0f44d09d27cc 1650w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/reset-saved-style.png?w=2500&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=00311b84cd2e19a9abccc54660326a81 2500w" />
+<img alt="" />
 
 ### Remove a theme from an email
 
@@ -4737,13 +4755,13 @@ To remove a theme from an email click on the `–` minus icon in the **Theme** e
 
 This will revert back to any styles directly applied to the email before the theme was applied.
 
-<img src="https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/remove-style.png?fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=1c89d63bfdc1239d3a5843ab154ef049" alt="" data-og-width="2280" width="2280" data-og-height="1049" height="1049" data-path="images/remove-style.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/remove-style.png?w=280&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=9e47c31a1f0a06c2399b24b369a71daa 280w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/remove-style.png?w=560&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=2c0d5a3df974a6adf0d531cffc6ab1fc 560w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/remove-style.png?w=840&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=16de6c750a3dc49f9018f3226fa81afb 840w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/remove-style.png?w=1100&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=67cb31ee112a17fb006239fd1b9edb9f 1100w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/remove-style.png?w=1650&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=73581f220a3e519c1e3d3481cdfc0127 1650w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/remove-style.png?w=2500&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=26c081bfa3f98f5e0c350b92075b1cc9 2500w" />
+<img alt="" />
 
 ### Duplicate a theme
 
 To create a new theme based on the current one, you can duplicate by clicking the `•••` menu icon and selecting **Duplicate**.
 
-<img src="https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/duplicate-style.png?fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=618d17ec58a96f3234ada975d96ec602" alt="" data-og-width="2280" width="2280" data-og-height="1412" height="1412" data-path="images/duplicate-style.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/duplicate-style.png?w=280&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=55c7cfef19769b2cb489b30877206153 280w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/duplicate-style.png?w=560&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=66226a6c0ba13e5cf0ce75aadc7f004c 560w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/duplicate-style.png?w=840&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=9a92dbca69b0edd694c854d0e0adfb0a 840w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/duplicate-style.png?w=1100&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=b51b567945c3abdbab6cdf808d526b1c 1100w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/duplicate-style.png?w=1650&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=e8eb8ad61655165300c35225935a78bf 1650w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/duplicate-style.png?w=2500&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=722748cedacade20c4296dba1a13ffa5 2500w" />
+<img alt="" />
 
 Give your new theme a new name then click the `✓` check icon or press Enter to save.
 
@@ -4763,12 +4781,11 @@ Source: https://loops.so/docs/creating-emails/translating-emails-with-ai
 
 Loops provides an automated way to translate your emails
 
-<Note>
-  Translation is a Beta feature. Please contact the team [via
-  email](mailto:support@loops.so) or live chat for access.
-</Note>
-
 Translation inside of Loops is a simple, single-click method of translating emails from one language to another entirely inside of the platform.
+
+<Note>
+  Enable this feature in [Settings → Sending](https://app.loops.so/settings?page=sending).
+</Note>
 
 1. Create a branch, ensuring it contains at least one email to be translated.
 2. Click the **language icon** above the branch and choose the **output** language you would like to translate the branch into.
@@ -4776,7 +4793,7 @@ Translation inside of Loops is a simple, single-click method of translating emai
 4. While translating, the emails will display a `Pending` label.
 5. When the translation is complete, the emails will display a `Complete` label on the node.
 
-<img src="https://mintcdn.com/loops/u5qNzejTsjudHF7z/images/llm-branch-translation.png?fit=max&auto=format&n=u5qNzejTsjudHF7z&q=85&s=888c59d038da019cc78f6c56eab18eb4" alt="Llm Branch Translation" data-og-width="2280" width="2280" data-og-height="1290" height="1290" data-path="images/llm-branch-translation.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/u5qNzejTsjudHF7z/images/llm-branch-translation.png?w=280&fit=max&auto=format&n=u5qNzejTsjudHF7z&q=85&s=195b329560ccae7fbf5996074677e42b 280w, https://mintcdn.com/loops/u5qNzejTsjudHF7z/images/llm-branch-translation.png?w=560&fit=max&auto=format&n=u5qNzejTsjudHF7z&q=85&s=201cb7f3739e92165a035b7f75f6264c 560w, https://mintcdn.com/loops/u5qNzejTsjudHF7z/images/llm-branch-translation.png?w=840&fit=max&auto=format&n=u5qNzejTsjudHF7z&q=85&s=f14f20ee358b6668969b4fccafa9fa36 840w, https://mintcdn.com/loops/u5qNzejTsjudHF7z/images/llm-branch-translation.png?w=1100&fit=max&auto=format&n=u5qNzejTsjudHF7z&q=85&s=ad1f1101ee020fdd0892a72787a28d6e 1100w, https://mintcdn.com/loops/u5qNzejTsjudHF7z/images/llm-branch-translation.png?w=1650&fit=max&auto=format&n=u5qNzejTsjudHF7z&q=85&s=b5006525386e2d4571c83c9430b8f5d7 1650w, https://mintcdn.com/loops/u5qNzejTsjudHF7z/images/llm-branch-translation.png?w=2500&fit=max&auto=format&n=u5qNzejTsjudHF7z&q=85&s=13783e07ed0d8bcd3ca30b46bfb68bd1 2500w" />
+<img alt="Llm Branch Translation" />
 
 ### Supported elements
 
@@ -4856,7 +4873,7 @@ In your email code, you have to insert an unsubscribe link. This keeps you compl
 
 All you need to do is add a `{unsubscribe_link}` tag into your MJML. When the email is sent, we will insert a contact-specific URL into this tag, which the contact can click to unsubscribe.
 
-```HTML  theme={"dark"}
+```HTML theme={"dark"}
 <a href="{unsubscribe_link}">Unsubscribe</a>
 ```
 
@@ -4896,7 +4913,7 @@ Using Emailify, you can create well-designed emails inside Figma, then easily ex
 
 Download the free [Emailify plugin for Figma](https://www.figma.com/community/plugin/910671699871076601/emailify-html-email-builder) and launch it.
 
-<img src="https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/emailify-plugin.png?fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=e88c0611d17117a13136d0603f731c5b" alt="" data-og-width="2280" width="2280" data-og-height="2061" height="2061" data-path="images/emailify-plugin.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/emailify-plugin.png?w=280&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=d293aa311507944d152a3a4923c5a3ad 280w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/emailify-plugin.png?w=560&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=e1803dc5dac711f14a223ba3787303d0 560w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/emailify-plugin.png?w=840&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=d83558ba1a661702893f74b5a967d513 840w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/emailify-plugin.png?w=1100&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=5616f804010b33dc922fa13dbd68b1d5 1100w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/emailify-plugin.png?w=1650&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=81e9f33a7ac4f239a322221d59601f61 1650w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/emailify-plugin.png?w=2500&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=26c012159bad33c69943c8796ddd2cbe 2500w" />
+<img alt="" />
 
 ### Add blocks to your email
 
@@ -4904,7 +4921,7 @@ To build your email you can drag and drop pre-made blocks provided by Emailify.
 
 Once added you can customize each block.
 
-<img src="https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/emailify-blocks.png?fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=aa2bca6ee9f873bf218108571c30e4fb" alt="" data-og-width="2280" width="2280" data-og-height="1658" height="1658" data-path="images/emailify-blocks.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/emailify-blocks.png?w=280&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=30bbb37b7105891dc15447a9ac23a01d 280w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/emailify-blocks.png?w=560&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=5594d049f7bb0ce015485b492a6d8f44 560w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/emailify-blocks.png?w=840&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=b2c47b9092cd23d13fffba89799a4bb1 840w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/emailify-blocks.png?w=1100&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=a2c7f94d01879545e7f32b225719e853 1100w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/emailify-blocks.png?w=1650&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=e4b4b0780f59c851d7dcb01a68d43430 1650w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/emailify-blocks.png?w=2500&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=5a08e5925ec36e9668bd28ce345c78f2 2500w" />
+<img alt="" />
 
 <Note>
   Loops will automatically host all of your email images so they
@@ -4950,7 +4967,7 @@ To do this manually, add a link with the URL `{unsubscribe_link}`.
 
 Alternatively, Emailify contains a pre-made Loops footer. Click **Footer**, scroll down until you see the Loops logo and click.
 
-<img src="https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/emailify-footer.png?fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=0e295a14d08a7c79e30ef63ceb36c504" alt="" data-og-width="2280" width="2280" data-og-height="2058" height="2058" data-path="images/emailify-footer.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/emailify-footer.png?w=280&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=184cfb0fba21f41685745c483e78a892 280w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/emailify-footer.png?w=560&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=92c10b09342e0bb87646170fbc359e35 560w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/emailify-footer.png?w=840&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=ff1d1366bb8f951fb900d9b5503fc44e 840w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/emailify-footer.png?w=1100&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=3ee6ff2f035af8d21535d0e8644ae2b4 1100w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/emailify-footer.png?w=1650&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=3956592914e1b53137b3ce23e84648ea 1650w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/emailify-footer.png?w=2500&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=e4be71579544bf93f515a5bbc6f536c4 2500w" />
+<img alt="" />
 
 You are then free to edit the text and design of the footer (just leave the link URL value as-is).
 
@@ -4962,13 +4979,13 @@ Then in the dropdown select **Loops**, which will generate Loops-friendly MJML.
 
 You can add a Subject and Preview text in this step, too.
 
-<img src="https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/emailify-export.png?fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=d52c1bb723fd14754e97d84bf1507df1" alt="" data-og-width="2280" width="2280" data-og-height="2051" height="2051" data-path="images/emailify-export.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/emailify-export.png?w=280&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=dd62840d4831f3b104c09dfcab795763 280w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/emailify-export.png?w=560&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=2a53eec3c68e07ad5a34e7487b9de9a1 560w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/emailify-export.png?w=840&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=fdc6fafb72f5e71ed92e1e753c342316 840w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/emailify-export.png?w=1100&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=ec4a48a1a5f0dd266343a3299b2c1196 1100w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/emailify-export.png?w=1650&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=d0751e9284a474dde8a75d015c2471c8 1650w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/emailify-export.png?w=2500&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=c47d9e121578d4d8b60e4fd3789aa691 2500w" />
+<img alt="" />
 
 When you're ready, click the **Export for Loops** button and wait for the code to be generated.
 
 To download your files click on the **Download your .zip file** button.
 
-<img src="https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/emailify-download.png?fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=01b13bff9e22bbdb214ec82375883a9e" alt="" data-og-width="2280" width="2280" data-og-height="1136" height="1136" data-path="images/emailify-download.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/emailify-download.png?w=280&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=e08ebdf81e9a87e8ceea9c415bc9b6d3 280w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/emailify-download.png?w=560&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=93e61f27a9f5b1a51cdd1044e8474446 560w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/emailify-download.png?w=840&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=ef96f0efb68f7cfc23157ac7a28ab36b 840w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/emailify-download.png?w=1100&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=88c8a199b26fa1c3b551714b910e0720 1100w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/emailify-download.png?w=1650&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=5ae19b799527344c1ee7004795f70d11 1650w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/emailify-download.png?w=2500&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=39ac26b9546a25b273a11495c30bade4 2500w" />
+<img alt="" />
 
 ## Email Love
 
@@ -4976,7 +4993,7 @@ Email Love is a Figma Plugin that enables you to design and export responsive an
 
 [Download the Email Love Figma Plugin](https://www.figma.com/community/plugin/1387891288648822744/email-love-html-email-builder)
 
-<img src="https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/emaillove-plugin.png?fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=57bf6dd89db504017428ca31c89c50ff" alt="Email Love Figma plugin" data-og-width="2280" width="2280" data-og-height="1382" height="1382" data-path="images/emaillove-plugin.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/emaillove-plugin.png?w=280&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=4cf8af4b53e7f1f009b17a55bc98328e 280w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/emaillove-plugin.png?w=560&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=52051706405a88fa939a6a680b11c9da 560w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/emaillove-plugin.png?w=840&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=7c8fa7e7198c70933d841ff6d92664f0 840w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/emaillove-plugin.png?w=1100&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=b1a340c3b180fa20d13c59fe51b8f7c4 1100w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/emaillove-plugin.png?w=1650&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=72fc0995de17b58298d550f261b2c9c6 1650w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/emaillove-plugin.png?w=2500&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=1d4dbcb95267e889fba2b95117725e97 2500w" />
+<img alt="Email Love Figma plugin" />
 
 To run the plugin, click the **Actions** menu in the Figma toolbar, then under the **Plugins & Widgets** tab select **Email Love -> HTML Email Builder**.
 
@@ -4986,7 +5003,7 @@ You can now start designing your email template using Email Love’s pre-built c
 
 Select the frame you created in the previous section (where you want components to be added). From the plugin pane select one of the component types and then the component you want to add.
 
-<img src="https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/emaillove-components.png?fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=f2af817c92a63c6360d214dfcce130a4" alt="Adding components" data-og-width="2280" width="2280" data-og-height="1836" height="1836" data-path="images/emaillove-components.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/emaillove-components.png?w=280&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=ef5ef4f682563698ad17554e3cebabc1 280w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/emaillove-components.png?w=560&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=d05bc7e9f3bd458d5e7487f931351c9a 560w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/emaillove-components.png?w=840&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=b04edd85513541e08e4d47febd037603 840w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/emaillove-components.png?w=1100&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=1d18e53dee44dac57d69f9e49444f1b0 1100w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/emaillove-components.png?w=1650&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=13547f746c9bd3bc28468a6ea0925f9f 1650w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/emaillove-components.png?w=2500&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=bfc8a86c300667254a3917510223ac1c 2500w" />
+<img alt="Adding components" />
 
 ### Customize components
 
@@ -5002,7 +5019,7 @@ If you add a **Footer** component Email Love will automatically add a Loops unsu
 
 Alternatively you can code an unsubscribe link manually by adding a link element with the URL `{unsubscribe_link}`.
 
-```HTML  theme={"dark"}
+```HTML theme={"dark"}
 <a href="{unsubscribe_link}">Unsubscribe</a>
 ```
 
@@ -5040,7 +5057,7 @@ Once you have MJML with an unsubscribe link included, you can upload it into Loo
 
 Click the **Code** styling option in the editor panel. This will reveal the file picker, where you can upload your ZIP file.
 
-<img src="https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/upload-email.png?fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=40d7aba1c83c87fa8ea3bc3e6f3f7156" alt="" data-og-width="2280" width="2280" data-og-height="1458" height="1458" data-path="images/upload-email.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/upload-email.png?w=280&fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=38f36f7c0d59dd8459d256aabd07e15d 280w, https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/upload-email.png?w=560&fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=b64ed9588ba1878be0c04606a39aab95 560w, https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/upload-email.png?w=840&fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=f955578365ec5ba0fd34d1dd3d18f34a 840w, https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/upload-email.png?w=1100&fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=0294ed914b39f097a32068b99a2c910f 1100w, https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/upload-email.png?w=1650&fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=3644dead7b1bcdb9e2d9c874bb92f61f 1650w, https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/upload-email.png?w=2500&fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=4076c894ed8e7427930f9f81a6c88d11 2500w" />
+<img alt="" />
 
 If you exported from Emailify, open the ZIP you downloaded. Drag and drop the `.zip` file found inside the **\_zips (For upload to Loops.so)** folder. Then click **Upload**.
 
@@ -5048,7 +5065,50 @@ If you exported from Email Love, upload the generated `.zip` file then click **U
 
 Your email is now uploaded into Loops and can be sent out!
 
-<img src="https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/thats-it.png?fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=0d735481a25e70eeea015f3dcb30f291" alt="" data-og-width="2280" width="2280" data-og-height="1683" height="1683" data-path="images/thats-it.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/thats-it.png?w=280&fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=633ac48e1f1ae2137899b66b8749d2d1 280w, https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/thats-it.png?w=560&fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=fff20c68532210224529cbc2fad39b5b 560w, https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/thats-it.png?w=840&fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=b3712b2042ca4a62d770638c999948d9 840w, https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/thats-it.png?w=1100&fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=38d3016bd17665feeb0827dbecc53db8 1100w, https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/thats-it.png?w=1650&fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=c994b268af6e275084ea76e4ece36adf 1650w, https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/thats-it.png?w=2500&fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=b420a1151fe74d5a5d044251f78f0383 2500w" />
+<img alt="" />
+
+
+# Using templates
+Source: https://loops.so/docs/creating-emails/using-templates
+
+How to draft emails with predefined templates in Loops.
+
+Loops [templates](https://app.loops.so/templates) help you send professionally designed emails fast. Simply replace the placeholder content with your information, and you’re ready to go.
+
+## Template Variations
+
+Loops offers templates across each of the three [email types](https://loops.so/docs/types-of-emails):
+
+### Campaign templates
+
+[Campaigns](https://loops.so/docs/types-of-emails#campaigns) are the right type of email for a one-off send to your audience or a segment of your audience. These emails are a 1-to-many communication, meaning that the same exact email that you craft can (and probably will) be sent and read by a number of recipients or customers.
+
+<img alt="Announcement Template.png" />
+
+## Loops templates
+
+[Loops](https://loops.so/docs/types-of-emails#loops) are emails triggered by an event, a contact being added to your audience, or a contact property update.
+
+<img alt="Loops Template.png" />
+
+## Transactional templates
+
+[Transactional](https://loops.so/docs/types-of-emails#transactional) emails are automated messages triggered by a specific contact action.
+
+<img alt="Transactional Template.png" />
+
+## How to use Loops templates
+
+1. In your Loops account, hit “Templates” in the left-hand sidebar menu.
+2. Browse our selection of `Loops`, `Campaign` and `Transactional` templates.
+3. Select the template that most suits your needs.
+4. Edit the template, replacing all placeholder information, links, and images with your content.
+
+<Warning>
+  Note: Remember to double-check all links (which can be places other than buttons) and link to the general section, as [dynamic content](https://loops.so/docs/creating-emails/personalizing-emails#add-dynamic-content-to-emails) can include data variables as well as other things.
+</Warning>
+
+5. Once your template is ready to test, send a test email to yourself to see how your design renders in the inbox.
 
 
 # Add a sending avatar
@@ -5058,7 +5118,7 @@ Set up your email sending avatar through third-party platforms like Gmail and Ou
 
 Adding an avatar to your emails can improve open rates and brand recall.
 
-<img src="https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/add-a-sending-avatar.png?fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=89f7c1024a6df80e4edb4a104548d6d4" alt="example of email sending avatar" data-og-width="722" width="722" data-og-height="160" height="160" data-path="images/add-a-sending-avatar.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/add-a-sending-avatar.png?w=280&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=4dffeedf02c885e0c8f64867692e18e5 280w, https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/add-a-sending-avatar.png?w=560&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=9f2bfddaa8bb3eccafd1553ee248a04a 560w, https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/add-a-sending-avatar.png?w=840&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=3a4af2764a7af4804e8ac23e5110cb05 840w, https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/add-a-sending-avatar.png?w=1100&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=39a6c40e5984d2488efeb910bddc4369 1100w, https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/add-a-sending-avatar.png?w=1650&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=7b97f8e8ad30b5d0b8e724e03a7679d7 1650w, https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/add-a-sending-avatar.png?w=2500&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=935488096ae019ef6fecbcde17e1ade2 2500w" />
+<img alt="example of email sending avatar" />
 
 ## Basic setup
 
@@ -5125,16 +5185,16 @@ You will need to register your sending domain with Apple through these quick ste
 1. Login to the Apple Developer Console
 
 2. Click **Services** under the category labeled Certificates, Identifiers & Profiles
-   <img src="https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/ePMohygJlAarcRmFAv6GtcE9w.webp?fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=588f1123c801b31aff4e45cc82198ff9" alt="" data-og-width="1234" width="1234" data-og-height="672" height="672" data-path="images/ePMohygJlAarcRmFAv6GtcE9w.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/ePMohygJlAarcRmFAv6GtcE9w.webp?w=280&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=cbfde4b411a0df8658706d04f9c7bcfa 280w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/ePMohygJlAarcRmFAv6GtcE9w.webp?w=560&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=111b036c241866652f9025544744a907 560w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/ePMohygJlAarcRmFAv6GtcE9w.webp?w=840&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=923cfeea2df81c992e8bf55b71732d4e 840w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/ePMohygJlAarcRmFAv6GtcE9w.webp?w=1100&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=c40af6a492a4de33ee8b444cb7189da4 1100w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/ePMohygJlAarcRmFAv6GtcE9w.webp?w=1650&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=98e38fc9dcf2cd94affb96fc41ff2f6f 1650w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/ePMohygJlAarcRmFAv6GtcE9w.webp?w=2500&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=e0ab23961e530a23d01c19284599526f 2500w" />
+   <img alt="" />
 
 3. Click **Configure**
-   <img src="https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/Gr2ItNdb8mCINSZHpBbHOoPhqs.webp?fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=4550b192cc85beeaa59d0c22a3e85fa5" alt="" data-og-width="1236" width="1236" data-og-height="566" height="566" data-path="images/Gr2ItNdb8mCINSZHpBbHOoPhqs.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/Gr2ItNdb8mCINSZHpBbHOoPhqs.webp?w=280&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=bf6c60eb602f32bc8e950dda2d282ed1 280w, https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/Gr2ItNdb8mCINSZHpBbHOoPhqs.webp?w=560&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=1a76f89d1f3b5b84fea81f360b250796 560w, https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/Gr2ItNdb8mCINSZHpBbHOoPhqs.webp?w=840&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=f1a250c19bb528f9d8983533dcd71224 840w, https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/Gr2ItNdb8mCINSZHpBbHOoPhqs.webp?w=1100&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=037a88a3b0d46cff2e6388a9aae32c26 1100w, https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/Gr2ItNdb8mCINSZHpBbHOoPhqs.webp?w=1650&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=bdc29a0cb2ff391169d852afaf1613d9 1650w, https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/Gr2ItNdb8mCINSZHpBbHOoPhqs.webp?w=2500&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=c98ba60ad52602e441f774d1de6e2f37 2500w" />
+   <img alt="" />
 
 4. Click the `+` icon under Email Sources
-   <img src="https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/WGNTKDV9jsOJ1euiPgzoptQsfk.webp?fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=6869f5fed1faa30a576bda9eff0aaac6" alt="" data-og-width="1290" width="1290" data-og-height="422" height="422" data-path="images/WGNTKDV9jsOJ1euiPgzoptQsfk.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/WGNTKDV9jsOJ1euiPgzoptQsfk.webp?w=280&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=73ff7db87b2fb2bee1ae5603ab41f119 280w, https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/WGNTKDV9jsOJ1euiPgzoptQsfk.webp?w=560&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=1e824fe5462586944067cf79775b40af 560w, https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/WGNTKDV9jsOJ1euiPgzoptQsfk.webp?w=840&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=ada4543a7eef8d6dfaa6ec4c4f9ef06d 840w, https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/WGNTKDV9jsOJ1euiPgzoptQsfk.webp?w=1100&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=18352e0735bcf2a22044f6007faa7ab4 1100w, https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/WGNTKDV9jsOJ1euiPgzoptQsfk.webp?w=1650&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=afa5fefa87dbd11df2853d282ce54ed5 1650w, https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/WGNTKDV9jsOJ1euiPgzoptQsfk.webp?w=2500&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=5838f1ecf206796e579bc9565b45ce8e 2500w" />
+   <img alt="" />
 
 5. Verify SPF and Send Test
-   <img src="https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/du5rsZ3IXp1Tec0HRJc5vsxL8.webp?fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=508f1dba9aed92ba0d421c7323c05b08" alt="" data-og-width="1600" width="1600" data-og-height="777" height="777" data-path="images/du5rsZ3IXp1Tec0HRJc5vsxL8.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/du5rsZ3IXp1Tec0HRJc5vsxL8.webp?w=280&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=f9d5f3a7ed51b46828a7d9d60ec74659 280w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/du5rsZ3IXp1Tec0HRJc5vsxL8.webp?w=560&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=36658558bb1f2fc8ed3967b283711753 560w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/du5rsZ3IXp1Tec0HRJc5vsxL8.webp?w=840&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=b2d8e12a5c86e58fa04e6ea93c6408ac 840w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/du5rsZ3IXp1Tec0HRJc5vsxL8.webp?w=1100&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=5f51a22ea4d1afaf331eb148b3c702b3 1100w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/du5rsZ3IXp1Tec0HRJc5vsxL8.webp?w=1650&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=9ab81d592dbabe7d57837225f25077a5 1650w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/du5rsZ3IXp1Tec0HRJc5vsxL8.webp?w=2500&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=dfe82e709bcb667acdb2c036738e3896 2500w" />
+   <img alt="" />
 
 You'll want to register the SPF domain that we provide for you in-app as well as the usual domain.
 
@@ -5201,7 +5261,7 @@ If you have previously used your primary domain for cold emailing, you may need 
 
 ## 5. Send a Welcome Email
 
-[Implement a welcome email with a Loop](/loop-builder) to welcome new users as soon as they join. When a user signs up, they expect a welcome email, so intent is clear and engagement is high. Keeping a steady cadence of emails to all new users will help balance out larger email sends to your entire user base. This is especially important if you're a new sender.
+[Implement a welcome email with a Loop](/guides/onboarding-emails) to welcome new users as soon as they join. When a user signs up, they expect a welcome email, so intent is clear and engagement is high. Keeping a steady cadence of emails to all new users will help balance out larger email sends to your entire user base. This is especially important if you're a new sender.
 
 ## 6. Content of Emails
 
@@ -5229,9 +5289,13 @@ Occasionally, when setting up emails from a new domain that matches your workspa
 
 You can usually confirm this is the case by sending the same email to a different address—for example, a personal account or one on another domain. If the email is delivered normally there, the issue is with how the client is classifying messages from the new domain.
 
-If this happens, simply mark the message as “Not spam” or “Not phishing” in Gmail. The issue should resolve itself shortly.
+If this happens, simply mark the message as "Not spam" or "Not phishing" in Gmail. The issue should resolve itself shortly.
 
-This behavior is not caused by Loops, it’s a built-in protection mechanism that email clients use when learning to trust a new domain.
+This behavior is not caused by Loops, it's a built-in protection mechanism that email clients use when learning to trust a new domain.
+
+## 12. Apple iCloud Private Relay
+
+[iCloud Private Relay](https://support.apple.com/102602) is a privacy feature for iCloud+ subscribers that masks users' IP addresses and encrypts their web traffic. If you're sending to Apple users, ensure your domain is [properly registered with Apple](/deliverability/apple-hide-my-email) to avoid deliverability issues with Apple users.
 
 ## Additional Checks: Blocklists and IP Reputation
 
@@ -5239,7 +5303,7 @@ If you've checked all the above and are still having issues, you may want to che
 
 ## Read more
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Understand email open rates" icon="envelope-open-text" href="/deliverability/understanding-email-open-rates" />
 
   <Card title="Delivery optimization" icon="chart-line" href="/deliverability/optimization" />
@@ -5523,9 +5587,9 @@ If you're not receiving expected emails to a group inbox, check these locations:
 
 * Go to [groups.google.com](https://groups.google.com)
 * Go to **Pending** conversations in the left sidebar.
-  <img src="https://mintcdn.com/loops/OG31ikb--92jQDlq/images/google-group-conversations.png?fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=a948d6ee1539a9baa95a45170cbc0f7b" alt="Pending conversations" data-og-width="2280" width="2280" data-og-height="1079" height="1079" data-path="images/google-group-conversations.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/OG31ikb--92jQDlq/images/google-group-conversations.png?w=280&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=0234b8e3101a5743aced7676b52cc730 280w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/google-group-conversations.png?w=560&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=d856cbb3be54e46a897f218b0f0bd36b 560w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/google-group-conversations.png?w=840&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=6dce0fb77b89a38bbc6934d5a2e6b91f 840w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/google-group-conversations.png?w=1100&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=0f691cea170d0567f74fec7a0bf42398 1100w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/google-group-conversations.png?w=1650&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=bbb04b46c344c7ee75e5cf6c530fc716 1650w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/google-group-conversations.png?w=2500&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=50b07d4530f98668cd52339884de2100 2500w" />
+  <img alt="Pending conversations" />
 * Click the checkmark icon on the right to approve individual messages.
-  <img src="https://mintcdn.com/loops/OG31ikb--92jQDlq/images/google-group-approve.png?fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=0431daaaef0208ede828d2d5368f21ac" alt="Approve message" data-og-width="2280" width="2280" data-og-height="1196" height="1196" data-path="images/google-group-approve.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/OG31ikb--92jQDlq/images/google-group-approve.png?w=280&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=d2d6f7f6681687d4e08e283c79baf7a2 280w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/google-group-approve.png?w=560&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=9fcc8321d66f2cc5d3d2415cab371c9c 560w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/google-group-approve.png?w=840&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=91995fd06af587639b663568c85a337c 840w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/google-group-approve.png?w=1100&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=1ccf33a63ccd298751559c0a529f324c 1100w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/google-group-approve.png?w=1650&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=b62f338afe5318a401cabd5f1ab56b23 1650w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/google-group-approve.png?w=2500&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=82e940bdeb912ca3e887a226ed226833 2500w" />
+  <img alt="Approve message" />
 
 #### Email logs
 
@@ -5543,7 +5607,7 @@ To prevent important emails from being blocked, you can change a setting in Goog
 
 Go to the Group settings in Google Workspace. In the **Posting policies** section, change the **Spam message handling** selection to "Post suspicious messages to the group".
 
-<img src="https://mintcdn.com/loops/OG31ikb--92jQDlq/images/google-group-setting.png?fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=c3bd5f337d4bc3d641496b09a5f34b01" alt="Spam setting" data-og-width="2280" width="2280" data-og-height="1271" height="1271" data-path="images/google-group-setting.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/OG31ikb--92jQDlq/images/google-group-setting.png?w=280&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=82d5a91053baa01a1f76e6c9d8425c25 280w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/google-group-setting.png?w=560&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=b071da7918908fcd8745be5895a76901 560w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/google-group-setting.png?w=840&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=82830cf57ad837efbfd14427d1918354 840w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/google-group-setting.png?w=1100&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=17ff0438c1cf128201ef9afda4ad383a 1100w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/google-group-setting.png?w=1650&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=5d424e488c3faf64764325d587063640 1650w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/google-group-setting.png?w=2500&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=6279d43eeae4900bbcee1875b1069cfe 2500w" />
+<img alt="Spam setting" />
 
 ## Other troubleshooting steps
 
@@ -5605,6 +5669,29 @@ Open rates are just one metric among many that you should be using to measure th
 </CardGroup>
 
 
+# Shortened YouTube links warning
+Source: https://loops.so/docs/deliverability/youtube-links-warning
+
+Information about shortened YouTube links being flagged in Gmail
+
+We are currently flagging shortened YouTube links (youtu.be) in emails because Gmail is incorrectly identifying them as phishing links.
+
+## What's happening
+
+Gmail's spam filters are flagging emails containing shortened YouTube links as potential phishing attempts. To protect your deliverability, our [Guardian](/creating-emails/guardian) feature will warn you if your email contains these links.
+
+## Recommendation
+
+Use full YouTube URLs instead of shortened links:
+
+* **Avoid:** `youtu.be/abc123`
+* **Use:** `youtube.com/watch?v=abc123`
+
+## Status
+
+We are actively monitoring this situation and will retire this warning once Gmail resolves the issue.
+
+
 # Events
 Source: https://loops.so/docs/events
 
@@ -5616,9 +5703,18 @@ Events represent a payload of data that can be used to trigger emails. They can 
 
 Events are used to trigger emails in a [loop](/loop-builder) and can contain [personalized data](/events/properties) for each email.
 
+There are two types of events:
+
+* **Custom events** are events that you create yourself.
+* **Platform events** are events that are triggered by [incoming webhook](/integrations/incoming-webhooks) integrations from Stripe, Clerk, and Supabase. You cannot edit or create platform events.
+
 ## Creating events
 
 Events can be created automatically or manually in several ways. As well as specifying a name, you can also create [event properties](/events/properties) with each of these methods.
+
+<Tip>
+  Custom event names can not contain colon characters (`:`).
+</Tip>
 
 ### Automatically by sending an event
 
@@ -5626,7 +5722,7 @@ You can create an event by sending an event with a new event name.
 
 For example, `creditWarning` here is a new event. This request will create a new event in your account.
 
-```json  theme={"dark"}
+```json theme={"dark"}
 {
   "email": "chris@loops.so",
   "eventName": "creditWarning",
@@ -5642,7 +5738,7 @@ For example, `creditWarning` here is a new event. This request will create a new
 
 Navigate to the [Events page](https://app.loops.so/settings?page=events) to create an event manually.
 
-<img src="https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/create-event-settings.png?fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=55a0309aa89d89c79ecf5db6c131f191" alt="Add an event from Settings" data-og-width="2280" width="2280" data-og-height="1476" height="1476" data-path="images/create-event-settings.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/create-event-settings.png?w=280&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=1eec4d0d120fd3774ec956a782e2c0b6 280w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/create-event-settings.png?w=560&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=d6f0a7c9febb2f94a0e0b65f96de63b5 560w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/create-event-settings.png?w=840&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=414a8b97f85d925292f97911d9314dca 840w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/create-event-settings.png?w=1100&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=6ba2b04eb38d21224dc13ba2bb81c358 1100w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/create-event-settings.png?w=1650&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=bcf4604034611240fe6c4fc41629e49d 1650w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/create-event-settings.png?w=2500&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=fabc0f196b96186c1442d995b4ef3a44 2500w" />
+<img alt="Add an event from Settings" />
 
 ### Manually from an Event trigger node
 
@@ -5656,11 +5752,11 @@ When creating or editing a loop, select **Event received** in the "Trigger Type"
 
 Type in the name of a new event or start typing the name of an existing event, then select from the dropdown.
 
-<img src="https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/create-event-loop.png?fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=c7640e8a45a742defa2a5cce2d204e1e" alt="Add an event from the Loop builder" data-og-width="2280" width="2280" data-og-height="1617" height="1617" data-path="images/create-event-loop.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/create-event-loop.png?w=280&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=decc8ab5d94914802acdc734bb21481f 280w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/create-event-loop.png?w=560&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=597fafb8ee7952304eb3481f94a11079 560w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/create-event-loop.png?w=840&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=4a429a6a25aae353992eb0b6184a824a 840w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/create-event-loop.png?w=1100&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=a05558d9af5f3a123563cdabd76a34ca 1100w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/create-event-loop.png?w=1650&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=7533f02f95e5ea14806fd9c87122c360 1650w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/create-event-loop.png?w=2500&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=8f97ffd5f22f80860da418aea4361f26 2500w" />
+<img alt="Add an event from the Loop builder" />
 
 ## Sending events
 
-Now you have events set up in your Loops account, you can start sending events using the API or integrations.
+Now you have events set up in your Loops account, you can start sending custom events using the API or integrations.
 
 ### Sending events with the API
 
@@ -5672,20 +5768,20 @@ POST https://app.loops.so/api/v1/events/send
 
 All that's required is an `email` or `userId` to identify the contact, plus the `eventName`.
 
-```json  theme={"dark"}
+```json theme={"dark"}
 {
   "email": "sam@loops.so",
   "eventName": "planUpgrade"
 }
 ```
 
-The `eventName` can either be an existing event in your account or a new event name.
+The `eventName` can either be an existing custom event in your account or a new event name.
 
 If a contact is not found with the provided `email` or `userId`, a new contact will be created.
 
 You can include [contact properties](/contacts/properties) in the request, which will be saved onto the contact. These contact properties can be used in emails to your contacts or for [filtering and segmenting your audience](/contacts/filters-segments).
 
-```json  theme={"dark"}
+```json theme={"dark"}
 {
   "email": "sam@loops.so",
   "eventName": "planUpgrade",
@@ -5696,7 +5792,7 @@ You can include [contact properties](/contacts/properties) in the request, which
 
 To provide your emails with event-specific data, include event properties in the request. [Read more about event properties](/events/properties)
 
-```json  theme={"dark"}
+```json theme={"dark"}
 {
   "email": "sam@loops.so",
   "eventName": "planUpgrade",
@@ -5722,11 +5818,11 @@ Many of [our integrations](/integrations#send-email) also support sending events
 
 In your Loops Settings the [Events page](https://app.loops.so/settings?page=events) shows the list of your different events, including how many times they've been sent. Counts are updated hourly.
 
-<img src="https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/events-page.png?fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=61b360ae384ca9fcffdbe2bc193d509a" alt="Events page" data-og-width="2280" width="2280" data-og-height="1520" height="1520" data-path="images/events-page.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/events-page.png?w=280&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=862d8aa9d6f61ad95962c3e5c7f6a08a 280w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/events-page.png?w=560&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=f778c1771683ce6fe72dfc6628e835aa 560w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/events-page.png?w=840&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=26c3a7ecb8f6374640d498b3389508eb 840w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/events-page.png?w=1100&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=167f6583dc35f52bfdca267dde756a12 1100w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/events-page.png?w=1650&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=902a7c9255941900394cdc60ad2019c3 1650w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/events-page.png?w=2500&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=19de67f0a14dbf8d9e12c1de7fcf29ee 2500w" />
+<img alt="Events page" />
 
 To edit event properties, click on an event type. (You can also edit events by selecting "Edit properties" in the Loop builder's event trigger popup.)
 
-<img src="https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/edit-event.png?fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=f33969bee2b8d531d23a8808ec7a99a3" alt="Editing an event" data-og-width="2280" width="2280" data-og-height="1476" height="1476" data-path="images/edit-event.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/edit-event.png?w=280&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=b56ee39e1ed626c98663e4969cd6fa68 280w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/edit-event.png?w=560&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=ae5a6f4b4e174e4d872183d937a87832 560w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/edit-event.png?w=840&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=42080bb6e1c8d29b0e4f4b1d2cdbb45a 840w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/edit-event.png?w=1100&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=7cec9ba050ed6d9acc5d6a48f3353252 1100w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/edit-event.png?w=1650&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=77f2fbae5a92bdb52d974f34a9c7b0db 1650w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/edit-event.png?w=2500&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=33a30fd8d8a58a3a517dc93e42d2a154 2500w" />
+<img alt="Editing an event" />
 
 Events cannot be deleted.
 
@@ -5734,13 +5830,13 @@ Events cannot be deleted.
 
 Below the list of events, you can see the event logs for your account. This includes events sent to us [via the API](/api-reference/send-event) and any of [our integrations](/integrations).
 
-<img src="https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/events-stream.png?fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=dc40c403cbddcb5f6dceca8856589f96" alt="Event stream" data-og-width="2280" width="2280" data-og-height="1355" height="1355" data-path="images/events-stream.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/events-stream.png?w=280&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=3536fb01af10293f32c41f39d706ada3 280w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/events-stream.png?w=560&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=274a0e51ebb0685e147a70f5a1308525 560w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/events-stream.png?w=840&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=e10dccc2e32f04ba798fa1f18929a7d8 840w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/events-stream.png?w=1100&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=774d150e0f4005b006de66191a1c4837 1100w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/events-stream.png?w=1650&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=edb805419f3916819fcaddae2c62c190 1650w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/events-stream.png?w=2500&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=1354f66e265d4e5a42dde16d7e10978d 2500w" />
+<img alt="Event stream" />
 
 You can sort your events either by email, period of time or event name. You can even also drill down to specific events using the filters.
 
 To view a specific event's payload, click on the table row. Here you'll see the incoming event's information, including the original sent event properties and the properties that Loops accepted (based on your event configuration).
 
-<img src="https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/event-details.png?fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=6e2c573bdcb33e67058ba1e5719658f0" alt="Viewing an individual event" data-og-width="2280" width="2280" data-og-height="1358" height="1358" data-path="images/event-details.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/event-details.png?w=280&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=fc957a1d45c7ebbf72de1cc6e3350e57 280w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/event-details.png?w=560&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=8888f65c86adc0b6c8c8c1429ea8f5c7 560w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/event-details.png?w=840&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=a37ed98bdff3fc464961e7b90756921b 840w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/event-details.png?w=1100&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=59109ed900ec676fe3331e253ab100fd 1100w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/event-details.png?w=1650&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=8545e9064ee7013c38cc97380eec4976 1650w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/event-details.png?w=2500&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=bd271ca84992f02bd85705144bf80a83 2500w" />
+<img alt="Viewing an individual event" />
 
 ## Testing events
 
@@ -5766,13 +5862,13 @@ You can add event properties for your events from two places.
 
 Firstly, you can add them from the [Events page](https://app.loops.so/settings?page=events). Click on an event and then **+ Add event property**.
 
-<img src="https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/add-event-property.png?fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=cc649f686e0b1704ab13a7f376325b7b" alt="Adding an event property" data-og-width="2280" width="2280" data-og-height="1476" height="1476" data-path="images/add-event-property.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/add-event-property.png?w=280&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=df5941a6cf3d0020f08c04ed582edfd8 280w, https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/add-event-property.png?w=560&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=72688ab0b7fc2157d7be6eef23939baa 560w, https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/add-event-property.png?w=840&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=1f993727a3d7cf486ca5f1deff4c6c1d 840w, https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/add-event-property.png?w=1100&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=28e41530cd4f99cb1f10a0a39e2431e0 1100w, https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/add-event-property.png?w=1650&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=c707468f62d5d79fdbd4410f4506d6e7 1650w, https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/add-event-property.png?w=2500&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=e0f181a1808d1cd0da6fe87d68a4f9fd 2500w" />
+<img alt="Adding an event property" />
 
 ### Loop builder
 
 Secondly, you add event properties from an **Event received** node in the loop builder by clicking on the **Edit event properties** button.
 
-<img src="https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/add-event-property-loop.png?fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=87ba137c5cf36a6bbad1e57491154ec0" alt="Adding an event property in the loop builder" data-og-width="2280" width="2280" data-og-height="1143" height="1143" data-path="images/add-event-property-loop.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/add-event-property-loop.png?w=280&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=1373f1f2c80b3c0dc1ee7a2bf956cbf2 280w, https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/add-event-property-loop.png?w=560&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=c73751a1935b94596878d5621d892495 560w, https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/add-event-property-loop.png?w=840&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=7a90e9aae724c6f66846625251818f72 840w, https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/add-event-property-loop.png?w=1100&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=e2ea77101fe51b4e0113c10d40e8d442 1100w, https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/add-event-property-loop.png?w=1650&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=d47be76b10df14da0301946fdb644209 1650w, https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/add-event-property-loop.png?w=2500&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=dbfba91f72529b4a95bbde49148c610f 2500w" />
+<img alt="Adding an event property in the loop builder" />
 
 ### Important information about event properties
 
@@ -5789,13 +5885,13 @@ Secondly, you add event properties from an **Event received** node in the loop b
 
 You can add, rename, delete, and change data types for event properties in the event editor popup (either from the [Events page](https://app.loops.so/settings?page=events) or within the loop builder, as above).
 
-<img src="https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/edit-event.png?fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=f33969bee2b8d531d23a8808ec7a99a3" alt="Editing an event" data-og-width="2280" width="2280" data-og-height="1476" height="1476" data-path="images/edit-event.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/edit-event.png?w=280&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=b56ee39e1ed626c98663e4969cd6fa68 280w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/edit-event.png?w=560&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=ae5a6f4b4e174e4d872183d937a87832 560w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/edit-event.png?w=840&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=42080bb6e1c8d29b0e4f4b1d2cdbb45a 840w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/edit-event.png?w=1100&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=7cec9ba050ed6d9acc5d6a48f3353252 1100w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/edit-event.png?w=1650&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=77f2fbae5a92bdb52d974f34a9c7b0db 1650w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/edit-event.png?w=2500&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=33a30fd8d8a58a3a517dc93e42d2a154 2500w" />
+<img alt="Editing an event" />
 
 ## Sending event properties in an event
 
 You can add event properties to your [Send event](/api-reference/send-event) API request using `eventProperties`:
 
-```json  theme={"dark"}
+```json theme={"dark"}
 {
   "email": "sam@loops.so",
   "eventName": "planChange",
@@ -5827,7 +5923,7 @@ Event properties you create become available in emails once Loops has received e
 
 Click on the Event properties icon `⚡️` in the editor toolbar (only available in emails within your loops) and select the property you want to add.
 
-<img src="https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/event-property-icon.png?fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=2569b3cd564fa4eeb4c8c056c72ef795" alt="Add an event property" data-og-width="2280" width="2280" data-og-height="1170" height="1170" data-path="images/event-property-icon.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/event-property-icon.png?w=280&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=500791f4cc46bd46aa2bc5f267e17dfc 280w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/event-property-icon.png?w=560&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=c0f29ba424695137671298524ebe4901 560w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/event-property-icon.png?w=840&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=c38a39b3cec5bc4c7efbce3c15169b8d 840w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/event-property-icon.png?w=1100&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=17f3caa51effa5e70c485bf8236b1ae9 1100w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/event-property-icon.png?w=1650&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=db81ed6c5c1aa583afbafb2259fe86a4 1650w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/event-property-icon.png?w=2500&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=0cbf20517990474d9a4b243be8d99caf 2500w" />
+<img alt="Add an event property" />
 
 
 # Custom form
@@ -5845,7 +5941,7 @@ To submit data to Loops you will need to retrieve the form endpoint URL that's l
 2. Click on the **Settings** tab.
 3. Copy the URL shown in the **Form Endpoint** field.
 
-<img src="https://mintcdn.com/loops/OG31ikb--92jQDlq/images/form-endpoint.png?fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=c44978586df98ffbb59edc5208d5fc39" alt="" data-og-width="2280" width="2280" data-og-height="1389" height="1389" data-path="images/form-endpoint.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/OG31ikb--92jQDlq/images/form-endpoint.png?w=280&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=fa3193dddf8fc5f6fbb03097e90c28ee 280w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/form-endpoint.png?w=560&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=97d23f7cf388dd355a93a3cdf4629320 560w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/form-endpoint.png?w=840&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=48384da872ccdafe15fef4fa521a4748 840w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/form-endpoint.png?w=1100&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=badc4b16efe927447068e6e3610baab6 1100w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/form-endpoint.png?w=1650&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=81888b8b2c46441883d70dbc0f662b25 1650w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/form-endpoint.png?w=2500&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=c04bebe574485c7fef2c7ad5e4b573a8 2500w" />
+<img alt="" />
 
 ## Create a form
 
@@ -5872,11 +5968,11 @@ You can also use any [custom contact properties](/contacts/properties) from your
 
 For each form field use the "API Name" value found from your [API settings page](https://app.loops.so/settings?page=api) as the `name` attribute.
 
-<img src="https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/contact-properties-table.png?fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=7a6b9e7ac436c4165e27627b5dffebe4" alt="" data-og-width="3040" width="3040" data-og-height="2026" height="2026" data-path="images/contact-properties-table.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/contact-properties-table.png?w=280&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=320cc5040458c0ac638d1040914d547b 280w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/contact-properties-table.png?w=560&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=f50762bb3508c4f86a827e069900078f 560w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/contact-properties-table.png?w=840&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=c411dc27f070328066d8c22a42298333 840w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/contact-properties-table.png?w=1100&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=ae0a96a477d8bd95486f8bc4db3c9022 1100w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/contact-properties-table.png?w=1650&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=93f4694ddddc419147e67b0ab378217f 1650w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/contact-properties-table.png?w=2500&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=cf9358d984a9ccc2d59882912a038532 2500w" />
+<img alt="" />
 
 Here's a simple example form that collects name, email address and assigns a custom user group:
 
-```HTML  theme={"dark"}
+```HTML theme={"dark"}
 <form
   method="post"
   action="https://app.loops.so/api/newsletter-form/<YOUR_FORM_ID>"
@@ -5974,7 +6070,7 @@ To do this, make a `POST` request to your form endpoint. Make sure to set the `C
 
 Responses from this form endpoint will be one of the following:
 
-```json  theme={"dark"}
+```json theme={"dark"}
 HTTP 200
 
 {
@@ -5982,7 +6078,7 @@ HTTP 200
 }
 ```
 
-```json  theme={"dark"}
+```json theme={"dark"}
 HTTP 400 or 500
 
 {
@@ -6024,7 +6120,7 @@ Here you will see settings to manage features of your form:
 
 When you're happy with your form, copy the HTML into your website.
 
-<img src="https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/simple-form.png?fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=8f834516f33153454989d49f5110f2dd" alt="" data-og-width="3040" width="3040" data-og-height="2026" height="2026" data-path="images/simple-form.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/simple-form.png?w=280&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=cb6fd923a4d7689f5b370d7e9b10b44d 280w, https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/simple-form.png?w=560&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=a557be73c99d0ca7d57ee5804c3e9474 560w, https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/simple-form.png?w=840&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=2bb003becb3bd1eafbd69f8f8f04f093 840w, https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/simple-form.png?w=1100&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=ba5cd04c08493b8036ce1e83565e896a 1100w, https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/simple-form.png?w=1650&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=f74597e7911cc5876830f523e69d3cde 1650w, https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/simple-form.png?w=2500&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=274b07701a3af14be93ca31f2a7d8329 2500w" />
+<img alt="" />
 
 ## Add more fields to the form
 
@@ -6049,7 +6145,7 @@ When adding fields to a form, use the "API Name" value found from your [API sett
 
 For example, this code would collect a First Name and add the contact to a mailing list (using a hidden field input that doesn't appear in the web page):
 
-```html  theme={"dark"}
+```html theme={"dark"}
 <input type="text" name="firstName" />
 <input type="hidden" name="mailingLists" value="cly2xnjbn002z0mme68uog1wk" />
 ```
@@ -6086,7 +6182,7 @@ Adding Loops sending to Bolt can be boiled down to four steps:
 3. Add your Loops credentials and IDs
 4. Check the code for mistakes
 
-<img src="https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/bolt-new.png?fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=7d3d535fcc138f3646aff6603dcfc9c7" alt="Bolt.new" data-og-width="2280" width="2280" data-og-height="1632" height="1632" data-path="images/bolt-new.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/bolt-new.png?w=280&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=4f3b64d3340b4efee3bfdc611b9a2e1a 280w, https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/bolt-new.png?w=560&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=c5a53fd6fef63f20cf5a2a9fa2d92543 560w, https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/bolt-new.png?w=840&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=31ee5713ab0fdca60178b143854f2c21 840w, https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/bolt-new.png?w=1100&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=f3dcad10532807f94df42fe90097d545 1100w, https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/bolt-new.png?w=1650&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=8795277f8135c7afe3300c5b26670ca2 1650w, https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/bolt-new.png?w=2500&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=b1dcc1f4659c8418bea0efd3cd19b16f 2500w" />
+<img alt="Bolt.new" />
 
 ## 1. Create the app with a prompt
 
@@ -6100,7 +6196,7 @@ For example:
 
 Using this prompt, Bolt added code to my app that spoke to Loops and had everything ready for me to add my Loops credentials, including a Supabase [Edge Function](https://supabase.com/docs/guides/functions) that could be run on a cron job.
 
-<img src="https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/bolt-app.png?fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=d29c16aa47e4a4f94804691528b23853" alt="Example Bolt application" data-og-width="2280" width="2280" data-og-height="1797" height="1797" data-path="images/bolt-app.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/bolt-app.png?w=280&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=82074d19920f7141b28ae0965f1192dc 280w, https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/bolt-app.png?w=560&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=86565a435eb25541435af58e3478225d 560w, https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/bolt-app.png?w=840&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=40e637149c8981acc5ef3e09eb08a9f1 840w, https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/bolt-app.png?w=1100&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=1e7fb33af8d3c15124301bea9c1b0b45 1100w, https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/bolt-app.png?w=1650&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=e5558883cbec5e537f09b11d7c145196 1650w, https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/bolt-app.png?w=2500&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=5c5ace89aeac9432df3c75c7c189b156 2500w" />
+<img alt="Example Bolt application" />
 
 <Info>
   To improve the code that Bolt produces, you can upload our full LLM text
@@ -6116,11 +6212,11 @@ This will be a [transactional email](/transactional) (a 1:1 email for a single r
 
 With Loops' transactional sending, you create the email body in the Loops editor and any dynamic content is added using [data variables](/creating-emails/personalizing-emails). Then, when it comes to sending the email via the API, you include the dynamic content in the API payload.
 
-<img src="https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/bolt-api-call.png?fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=ddc2bb992658455b58a5675a4a08185c" alt="API call to Loops" data-og-width="2280" width="2280" data-og-height="1797" height="1797" data-path="images/bolt-api-call.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/bolt-api-call.png?w=280&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=c28782acedcec7df7ca75b50cc373b5e 280w, https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/bolt-api-call.png?w=560&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=ba32c3734debac1277b741fd528c315d 560w, https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/bolt-api-call.png?w=840&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=400fa2a31281aac29286b7b280f6d8f4 840w, https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/bolt-api-call.png?w=1100&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=45333b00babf70519714175145449781 1100w, https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/bolt-api-call.png?w=1650&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=2157e9f0ef6faf16d1a7319ad0849f61 1650w, https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/bolt-api-call.png?w=2500&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=ec129f9af6d374a2c35cf1e4a8123ed8 2500w" />
+<img alt="API call to Loops" />
 
 In Loops, you'll need to create a new transactional email and write your content. Bolt added two data variables `tasks` and `date` to the code, so in my example I added those data variables to the email.
 
-<img src="https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/bolt-transactional.png?fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=5f0e196ab2fd5c17afbad87d63aa63e7" alt="Creating a transactional email in Loops" data-og-width="2280" width="2280" data-og-height="1257" height="1257" data-path="images/bolt-transactional.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/bolt-transactional.png?w=280&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=c226263fc715908b97daa51841311d9b 280w, https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/bolt-transactional.png?w=560&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=0cb122d0e76a868e8e7e40157349659f 560w, https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/bolt-transactional.png?w=840&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=751761a940555815485ce4b6a3d8b44e 840w, https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/bolt-transactional.png?w=1100&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=8175c2c682de5082c876ba7d11f5d053 1100w, https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/bolt-transactional.png?w=1650&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=242184faa11fea68dc23b782ba7ef892 1650w, https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/bolt-transactional.png?w=2500&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=500bde8d6dee3e44ce1f642a2ca343f3 2500w" />
+<img alt="Creating a transactional email in Loops" />
 
 ## 3. Add Loops credentials
 
@@ -6130,15 +6226,15 @@ To do this, get an API key from your Loops [API Settings](https://app.loops.so/s
 
 For my example app I needed to add my Loops API key into the Edge Function's secrets in Supabase (**Edge functions -> Secrets**). I called mine `LOOPS_API_KEY` to match the name Bolt used in the code.
 
-<img src="https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/bolt-api-key.png?fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=6309173eeca21413ca03c25198ae53bb" alt="Loops API key" data-og-width="2280" width="2280" data-og-height="1365" height="1365" data-path="images/bolt-api-key.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/bolt-api-key.png?w=280&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=bedd74b1029ba33ae3b22d64d4af01b9 280w, https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/bolt-api-key.png?w=560&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=3ed7045c05e220b468fdfdffacaa94f3 560w, https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/bolt-api-key.png?w=840&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=dfa3e887addf2d5279855852a5be8b8c 840w, https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/bolt-api-key.png?w=1100&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=f399809caad4b9cc1acb3dfd3069bbbf 1100w, https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/bolt-api-key.png?w=1650&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=e58be655770e340417bb3b5a39d3e5f3 1650w, https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/bolt-api-key.png?w=2500&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=07c17eeaef95b6cb0eae9d125723fcb8 2500w" />
+<img alt="Loops API key" />
 
-<img src="https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/bolt-supabase-secret.png?fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=6c6ede96f1623f1b07f774f23a6997ab" alt="Supabase secret" data-og-width="2280" width="2280" data-og-height="1797" height="1797" data-path="images/bolt-supabase-secret.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/bolt-supabase-secret.png?w=280&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=820798596d8192710cf68312d6770103 280w, https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/bolt-supabase-secret.png?w=560&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=05eb3711b2380a1b95d4ee4ab0abd004 560w, https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/bolt-supabase-secret.png?w=840&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=95bd54f46f91f1532052fa271f6bb04a 840w, https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/bolt-supabase-secret.png?w=1100&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=596ffaad71817424158bf36ce8cd4e24 1100w, https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/bolt-supabase-secret.png?w=1650&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=8d99b4513284ee0f5fa0539c46eb7b92 1650w, https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/bolt-supabase-secret.png?w=2500&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=138b6f6fd08a5b4eca76a14ef7f8987a 2500w" />
+<img alt="Supabase secret" />
 
 You will also need the ID of the transactional email so that the correct email is sent from your application.
 
 In Loops, from the **Preview** page if your transactional email, copy the transactional ID and paste it into your app's code. This completes the Loops integration in the app.
 
-<img src="https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/bolt-transactional-id.png?fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=d58866ad63317e11987ad199ead403b0" alt="Transactional ID" data-og-width="2280" width="2280" data-og-height="2100" height="2100" data-path="images/bolt-transactional-id.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/bolt-transactional-id.png?w=280&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=4f02aa6f3b3531a2226f20e92dd7908a 280w, https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/bolt-transactional-id.png?w=560&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=b4992a27b6a223bff2aa358bd4904674 560w, https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/bolt-transactional-id.png?w=840&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=49552d20e17c24cc7fa77d725da488a5 840w, https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/bolt-transactional-id.png?w=1100&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=5824ebba95c18efe5505a9c6dc6ee372 1100w, https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/bolt-transactional-id.png?w=1650&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=c9f3af47247fd35cf7778fc7e18044a8 1650w, https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/bolt-transactional-id.png?w=2500&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=651666b1c5c1ac29044916620159f011 2500w" />
+<img alt="Transactional ID" />
 
 ## 4. Fix bugs
 
@@ -6146,13 +6242,13 @@ Now that the app is set up, it's time to see if things are working correctly.
 
 For me, I discovered a few bugs. For example, the original Google sign in that Bolt had added didn't work so I asked Bolt to change to email and password authentication. Overall the app worked as I had prompted. I could sign up and create tasks and the delay feature worked great.
 
-<img src="https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/bolt-tasks-app.png?fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=b0cb1614422b7bc73cf998a78bfe3226" alt="My new to-do app" data-og-width="2280" width="2280" data-og-height="2072" height="2072" data-path="images/bolt-tasks-app.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/bolt-tasks-app.png?w=280&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=61da0888e20f5c3efc1f1d9d0df9e9ff 280w, https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/bolt-tasks-app.png?w=560&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=bf23a4b0baeaceea70318c8b892f8be9 560w, https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/bolt-tasks-app.png?w=840&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=2fa1e6267eab65c86471b44f5fb51077 840w, https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/bolt-tasks-app.png?w=1100&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=4af42a298f1a5b3495fd9214f8b7bf08 1100w, https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/bolt-tasks-app.png?w=1650&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=003260f6c165541963e49e59fce4c6ac 1650w, https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/bolt-tasks-app.png?w=2500&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=ba5b510f1851732dc78f3503b976b592 2500w" />
+<img alt="My new to-do app" />
 
 Next I wanted to make sure the email sending was working. Because this was tied up in an edge function that is to be called with a scheduled cron job, I needed to find a way to test it on demand. Luckily, Supabase offers a simple API call to trigger functions. This can be run in the **Terminal** tab in Bolt.
 
-<img src="https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/bolt-function-invocation.png?fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=753df2573dff1cd0a284b62d81a3669c" alt="Invocation call" data-og-width="2280" width="2280" data-og-height="1430" height="1430" data-path="images/bolt-function-invocation.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/bolt-function-invocation.png?w=280&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=4a425e58c895acf67a3c6147210061e4 280w, https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/bolt-function-invocation.png?w=560&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=44f21ac14242e16b7df92e510a6e67a4 560w, https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/bolt-function-invocation.png?w=840&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=f94ff3c86f0a9ae3f7ddbcf782693ee2 840w, https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/bolt-function-invocation.png?w=1100&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=931a9b7462c619c48c52f7e816021a96 1100w, https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/bolt-function-invocation.png?w=1650&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=acfadff4b81a8945372764d4543e728d 1650w, https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/bolt-function-invocation.png?w=2500&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=18931f5fd78453727778663295f9e14d 2500w" />
+<img alt="Invocation call" />
 
-<img src="https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/bolt-terminal.png?fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=7ec3a16aeb3f0f143a8726a4354cf417" alt="Running a command in Bolt's terminal" data-og-width="2280" width="2280" data-og-height="956" height="956" data-path="images/bolt-terminal.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/bolt-terminal.png?w=280&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=52e7b22583d78c3dd7027531e7c9fac9 280w, https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/bolt-terminal.png?w=560&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=b3585d56a17e7f919a7f179164b64624 560w, https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/bolt-terminal.png?w=840&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=f03c89effa7c269bce53d3bc0462eadd 840w, https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/bolt-terminal.png?w=1100&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=78d7c1bf7883f198d1d2d9ad7ff4de05 1100w, https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/bolt-terminal.png?w=1650&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=8bf687909a89ff4d27fa389fb8b99b92 1650w, https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/bolt-terminal.png?w=2500&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=04c117ecdd3ec76c062c5fc8398b89ba 2500w" />
+<img alt="Running a command in Bolt's terminal" />
 
 Initially, I was seeing errors in the terminal.
 
@@ -6168,15 +6264,15 @@ I realised that Bolt had incorrectly guessed the Loops API endpoint URL. This is
   prompts or chats.
 </Note>
 
-<img src="https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/bolt-api-url.png?fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=0d5ab11a36c59092c7e9ca7cd6033bef" alt="API URL" data-og-width="2280" width="2280" data-og-height="1470" height="1470" data-path="images/bolt-api-url.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/bolt-api-url.png?w=280&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=0ecd67bacf522bd261e80c52f2671e9b 280w, https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/bolt-api-url.png?w=560&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=326490ef7c258eacc377e2c2f2b9c351 560w, https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/bolt-api-url.png?w=840&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=e8d3db0714d72aa971595b35e979e034 840w, https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/bolt-api-url.png?w=1100&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=f4e47d96ac320e54a36b0b9fd44bc824 1100w, https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/bolt-api-url.png?w=1650&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=13c1226165163cef3aa0909443b8ac7e 1650w, https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/bolt-api-url.png?w=2500&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=eb9a01ecbea67ec21f7efc53ade77ef3 2500w" />
+<img alt="API URL" />
 
 Supabase has great visibility of edge function invocations and error messages, which can help figure out when there's a problem.
 
-<img src="https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/bolt-supabase-logs.png?fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=88067f8d070b36da0670e473427b95d1" alt="Supabase logs" data-og-width="2280" width="2280" data-og-height="1499" height="1499" data-path="images/bolt-supabase-logs.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/bolt-supabase-logs.png?w=280&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=62af6d1279f91b1c058d19739525871d 280w, https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/bolt-supabase-logs.png?w=560&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=3d16c1b755b690a0eebca96d0a1b4921 560w, https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/bolt-supabase-logs.png?w=840&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=d5003f902b2272d82c27c452ecb98b70 840w, https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/bolt-supabase-logs.png?w=1100&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=5ccf0b9d102969f854e7731b6eed1d4b 1100w, https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/bolt-supabase-logs.png?w=1650&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=884b2e89ff575af5f7ed69e5c7b9ba5a 1650w, https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/bolt-supabase-logs.png?w=2500&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=c0670932d2c38357957a3ec60af81246 2500w" />
+<img alt="Supabase logs" />
 
 After a few tries, I started seeing succesful invocations of the edge function, and email digests in my inbox!
 
-<img src="https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/bolt-email.png?fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=2f50b1bc28a8d9281276fd3ebf16e77a" alt="Example email in my inbox" data-og-width="2280" width="2280" data-og-height="1499" height="1499" data-path="images/bolt-email.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/bolt-email.png?w=280&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=0d1bec6a39da8498a303a9ece4a7e57a 280w, https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/bolt-email.png?w=560&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=07a072b0be54eb8c0f3c7076365d00c9 560w, https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/bolt-email.png?w=840&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=2501a3566c783de80add301de54a5e4b 840w, https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/bolt-email.png?w=1100&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=736b282844aa7fd16eb930e9904ce8e4 1100w, https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/bolt-email.png?w=1650&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=93a31fa927374ac58979366a0bd25c65 1650w, https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/bolt-email.png?w=2500&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=086cb444515ec832d9d4b35975df96f8 2500w" />
+<img alt="Example email in my inbox" />
 
 Here you can see that the current date and the task I had scheduled for the same day have been passed into the email body, which was handled by the data variables in the API call to Loops.
 
@@ -6219,7 +6315,7 @@ Go to Plugins and click **+ Add plugins**.
 
 Search for "API Connector" and click **Install**.
 
-<img src="https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/bubble-search-plugin.png?fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=d4a70a59229cbecae781e4f4823365db" alt="Search for API Connector" data-og-width="2280" width="2280" data-og-height="1221" height="1221" data-path="images/bubble-search-plugin.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/bubble-search-plugin.png?w=280&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=5635521df2ba8fd1a2b2e7cbbd939551 280w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/bubble-search-plugin.png?w=560&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=e685702562ee0ca4e892cc54c58b808e 560w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/bubble-search-plugin.png?w=840&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=0ba4de412ccf2b4d33f4bdc0edd39f91 840w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/bubble-search-plugin.png?w=1100&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=f9bcc274de5d55bcb70dc3a84c073b80 1100w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/bubble-search-plugin.png?w=1650&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=d7d414c9f1fbd75064ba49b36230943b 1650w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/bubble-search-plugin.png?w=2500&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=1d03d672644c86fad7bb265604ab486d 2500w" />
+<img alt="Search for API Connector" />
 
 ## Add a Loops API connection
 
@@ -6235,7 +6331,7 @@ In Loops, go to your [API Settings page](https://app.loops.so/settings?page=api)
 
 Back in Bubble, in the **Key value** field, write the word `Bearer`, then a space character, then paste your API key, so it looks something like `Bearer YourApiKey`.
 
-<img src="https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/bubble-connect-api.png?fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=7d872c2397207fd27d8930d3c3d1fbb8" alt="Add the Loops API" data-og-width="2280" width="2280" data-og-height="1145" height="1145" data-path="images/bubble-connect-api.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/bubble-connect-api.png?w=280&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=a2156b98838c89be6cd9a00fbb4d8a7a 280w, https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/bubble-connect-api.png?w=560&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=e7a8edb0e9b6f31d6e63478a0ca589e6 560w, https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/bubble-connect-api.png?w=840&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=dde81cf4a33178a77d6045e6c23cd114 840w, https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/bubble-connect-api.png?w=1100&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=ca01c07c55f51d86e73110c10fba293c 1100w, https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/bubble-connect-api.png?w=1650&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=653867ae2264995c1c2846b2986adafd 1650w, https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/bubble-connect-api.png?w=2500&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=6c55dc89992d3eed69664480ac4df182 2500w" />
+<img alt="Add the Loops API" />
 
 ## Add an API call to sync users to Loops
 
@@ -6251,7 +6347,7 @@ In the dropdown where it says "GET", select "POST", and in the subsequent field,
 https://app.loops.so/api/v1/contacts/update
 ```
 
-<img src="https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/bubble-add-api-call.png?fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=895b5df6050341511c75b426647f3a66" alt="Add an API call" data-og-width="2280" width="2280" data-og-height="968" height="968" data-path="images/bubble-add-api-call.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/bubble-add-api-call.png?w=280&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=b7daf5c91e45b966e3c40bd532120de2 280w, https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/bubble-add-api-call.png?w=560&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=8a3d443aef16139f619bfdc1acc540ae 560w, https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/bubble-add-api-call.png?w=840&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=cd899cc25f36f22ce0db30ee13953011 840w, https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/bubble-add-api-call.png?w=1100&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=c1e94de4eaa14fc78b1633b8061f5916 1100w, https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/bubble-add-api-call.png?w=1650&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=859524296512238892c83ba765a7540d 1650w, https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/bubble-add-api-call.png?w=2500&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=2cc0e75aaa2cce0400a56bfd2e43f5fd 2500w" />
+<img alt="Add an API call" />
 
 Now all that's left is to set up the request body, which is the data that's sent to Loops. This will depend on what kind of data points you want to send.
 
@@ -6265,7 +6361,7 @@ To make the request, we have to include an email address (which is required to c
 
 In the **Body** field, paste this:
 
-```json  theme={"dark"}
+```json theme={"dark"}
 {
   "email": "<Email>",
   "userId": "<User_ID>",
@@ -6277,7 +6373,7 @@ If you then click anywhere outside the **Body** field, you'll see two sets of fi
 
 Uncheck the **Private** checkbox for each of these variables, otherwise they won't show up in the Bubble interface when you come to use this API call.
 
-<img src="https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/bubble-body-data.png?fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=96050c8fabd306618d83c812190dcd93" alt="Adding body data" data-og-width="2280" width="2280" data-og-height="968" height="968" data-path="images/bubble-body-data.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/bubble-body-data.png?w=280&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=3f4934b73a82e9cc78e72f8fb67a240b 280w, https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/bubble-body-data.png?w=560&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=11d27eff167c351f31c08b82adcbe2f6 560w, https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/bubble-body-data.png?w=840&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=355d2e46d892a492ee647bffdfd547b0 840w, https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/bubble-body-data.png?w=1100&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=f2f2705c5d41f57ed15eb41e4d79f20d 1100w, https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/bubble-body-data.png?w=1650&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=5a3cdded5df8f425dab38ca26658b454 1650w, https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/bubble-body-data.png?w=2500&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=dea5b33950edd396c4f36952418a8eab 2500w" />
+<img alt="Adding body data" />
 
 The final step is to initialize the call, which will show Bubble that the API call works.
 
@@ -6285,7 +6381,7 @@ To do this, enter some example values in each of the **Value** fields, then clic
 
 If it works, you'll see a success message and a confirmation of the returned values from Loops. Click **Save** to complete setting up the API call.
 
-<img src="https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/bubble-success.png?fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=f8cf486dc60788377fc366d9c66e89a9" alt="Request success" data-og-width="2280" width="2280" data-og-height="1172" height="1172" data-path="images/bubble-success.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/bubble-success.png?w=280&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=66be6a4c98835257e267c0a1a5e6eb6a 280w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/bubble-success.png?w=560&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=d8987326ce78ccdac0bf942bfbd2dbcd 560w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/bubble-success.png?w=840&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=ddf0122d4b144c080c59f4127ca739b4 840w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/bubble-success.png?w=1100&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=2bdcc42a0e27e487bdb3f4f033a38e1b 1100w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/bubble-success.png?w=1650&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=e6bbafd36e2d2a503b56da9e235a412f 1650w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/bubble-success.png?w=2500&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=cb6676592ceb52f9a5db1a792d9a490e 2500w" />
+<img alt="Request success" />
 
 If the request is not successful, you should see a message telling you what went wrong.
 
@@ -6303,13 +6399,13 @@ To do this, click **Click here to add an event...** and select "General > User i
 
 Click **Click here to add an action...**, hover over **Plugins** and select the action you created by the name you gave it (naming is organized by "API name - API call name").
 
-<img src="https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/bubble-select-call.png?fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=0ab801be6192fc3894da11b4aa869be4" alt="Select the API call" data-og-width="2280" width="2280" data-og-height="1893" height="1893" data-path="images/bubble-select-call.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/bubble-select-call.png?w=280&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=32ad12820de786adf4945203a0572b47 280w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/bubble-select-call.png?w=560&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=e2d02d587768e25b29e86d8ce3fbe116 560w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/bubble-select-call.png?w=840&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=d152aa58d381880d8f9d219fc63aec51 840w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/bubble-select-call.png?w=1100&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=511fb63293c6d6b16f81d6106a7835d2 1100w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/bubble-select-call.png?w=1650&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=4b8882ff049902a54ed726cc72463556 1650w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/bubble-select-call.png?w=2500&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=a981b35b2ca6f9a30eda3ff9eb4aaab2 2500w" />
+<img alt="Select the API call" />
 
 This will show a popover containing the fields you added in the previous step, allowing you to insert your data in Bubble into the API call.
 
 Click into a field and then **Insert dynamic data**, then select the data you want to send to Loops. (In my example I searched for "Current User" and then selected `'s email`, `'s unique ID` and `'s plan` to fill out the three fields.)
 
-<img src="https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/bubble-add-data.png?fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=ab4b16f5e7cd87335e7cffdfd19765de" alt="Add data to API call" data-og-width="2280" width="2280" data-og-height="1050" height="1050" data-path="images/bubble-add-data.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/bubble-add-data.png?w=280&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=1eee89cfe2e2d421a631fe617475956f 280w, https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/bubble-add-data.png?w=560&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=0f3a0888d615f57d1934e49a4c832aed 560w, https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/bubble-add-data.png?w=840&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=adad0a9c0afe1bcfd6577ed718f5c1ad 840w, https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/bubble-add-data.png?w=1100&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=663c02c37965f9d271c5e98f8fd8c68f 1100w, https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/bubble-add-data.png?w=1650&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=34d76132ada287de6db33e57bc47707e 1650w, https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/bubble-add-data.png?w=2500&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=f4b3e1e4e1a309656f84795b1f0c9737 2500w" />
+<img alt="Add data to API call" />
 
 Now when the selected event happens, Bubble will make an API call to Loops!
 
@@ -6326,12 +6422,12 @@ There are lots of different ways you can use Bubble's API Connector to send data
 
 ## Learn more
 
-<CardGroup columns="2">
+<CardGroup>
   <Card
     title="Bubble plugin"
     icon={
-    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="17" viewBox="0 0 16 17"><g fill="none" fillRule="nonzero" transform="translate(.5 .111)"><path fill="#FF4A00" d="M9.361 4.277c-1.474 0-2.928.633-4.037 1.877V.016H3.128v10.336a6.077 6.077 0 0 0 12.151 0c0-3.354-2.563-6.075-5.918-6.075Zm-.157 9.81a3.735 3.735 0 1 1 0-7.47 3.735 3.735 0 0 1 0 7.47Z"/><circle cx="1.53" cy="14.925" r="1.503" fill="#FF4A00"/></g></svg>
-  }
+  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="17" viewBox="0 0 16 17"><g fill="none" fillRule="nonzero" transform="translate(.5 .111)"><path fill="#FF4A00" d="M9.361 4.277c-1.474 0-2.928.633-4.037 1.877V.016H3.128v10.336a6.077 6.077 0 0 0 12.151 0c0-3.354-2.563-6.075-5.918-6.075Zm-.157 9.81a3.735 3.735 0 1 1 0-7.47 3.735 3.735 0 0 1 0 7.47Z"/><circle cx="1.53" cy="14.925" r="1.503" fill="#FF4A00"/></g></svg>
+}
     href="/integrations/bubble"
   >
     Manage contacts and send emails with our Bubble plugin.
@@ -6343,324 +6439,6 @@ There are lots of different ways you can use Bubble's API Connector to send data
 
   <Card title="Contact properties" icon="address-book" href="/contacts/properties">
     Learn more about custom contact properties.
-  </Card>
-</CardGroup>
-
-
-# How to set up double opt-in with Loops
-Source: https://loops.so/docs/guides/double-opt-in
-
-A guide for creating a double opt-in flow with Loops using the API and transactional emails.
-
-<Tip>
-  Loops offers [native double opt-in](/contacts/double-opt-in). The following
-  guide is for anyone who wants to roll their own.
-</Tip>
-
-Double opt-in is a process that requires a user to confirm their email address before they are added to a mailing list. This is useful to ensure that the email address is valid, and is an extra step to gain confirmation that the user wants to be subscribed. In some parts of the world, double opt-in is a best practice and in some countries, a legal requirement.
-
-<Info>
-  This guide requires writing code, a system for handling form submissions, and
-  a way to store signups outside Loops before they are verified.
-</Info>
-
-## How it works
-
-Double opt-in works by sending a verification email to the user's email address when they sign up for a mailing list. The user then confirms their subscription typically by clicking a link in the email or entering a code into a web page. Once the subscription is confirmed, the user can then be safely added to the mailing list.
-
-## Setting up double opt-in in Loops
-
-To create a double opt-in flow in Loops, we can use the API and transactional emails together. The actual sign-up form will need to be handled by your own application, then you can use the Loops API to send the verification email and then add the user to your audience once the email is confirmed.
-
-Here are the steps you need to follow:
-
-1. Create a new transactional email in Loops.
-2. Create a form in your application on your website.
-3. When the form is submitted, send the transactional email to the user's email address, including a link to confirm their email address.
-4. Build a page to handle the confirmation step.
-5. When confirmed, add the contact to your audience in Loops.
-
-Let's jump in.
-
-## Create a transactional email
-
-First, let's create a transactional email in Loops. Do this from the [Transactional](https://app.loops.so/transactional) page in the Loops dashboard or you can use a [ready-made template](https://app.loops.so/templates?templateId=clm1oho4b000008jn3exn2yew).
-
-Create a new transactional email containing whatever content you like, and make sure to add a data variable for the confirmation URL, like `verificationUrl`. We will populate this with the unique code when sending the email.
-
-You can add this a text into your email. Or add a link to text or a button by using the **Link** sidebar panel.
-
-<Frame caption="To add a link to your button: Click the data variable icon (1), then click into the link field (2), then add the data variable name (3)">
-    <img
-      src="https://mintcdn.com/loops/55_8RVKh4C4TyT4T/images/double-opt-in-button.png?fit=max&auto=format&n=55_8RVKh4C4TyT4T&q=85&s=932150e277c16db85c2cef2518c1abb6"
-      alt="Adding a dynamic variable in a button's
-  URL"
-      data-og-width="2280"
-      width="2280"
-      data-og-height="1049"
-      height="1049"
-      data-path="images/double-opt-in-button.png"
-      data-optimize="true"
-      data-opv="3"
-      srcset="https://mintcdn.com/loops/55_8RVKh4C4TyT4T/images/double-opt-in-button.png?w=280&fit=max&auto=format&n=55_8RVKh4C4TyT4T&q=85&s=9e0529a39b42299001b48b2505e572ba 280w, https://mintcdn.com/loops/55_8RVKh4C4TyT4T/images/double-opt-in-button.png?w=560&fit=max&auto=format&n=55_8RVKh4C4TyT4T&q=85&s=0f52c6fad3974d04441ae42452b40e9f 560w, https://mintcdn.com/loops/55_8RVKh4C4TyT4T/images/double-opt-in-button.png?w=840&fit=max&auto=format&n=55_8RVKh4C4TyT4T&q=85&s=7e60e716f071323b484ff250534f1dcb 840w, https://mintcdn.com/loops/55_8RVKh4C4TyT4T/images/double-opt-in-button.png?w=1100&fit=max&auto=format&n=55_8RVKh4C4TyT4T&q=85&s=7402f1bcaeab378b85acbf0efd4e2d2e 1100w, https://mintcdn.com/loops/55_8RVKh4C4TyT4T/images/double-opt-in-button.png?w=1650&fit=max&auto=format&n=55_8RVKh4C4TyT4T&q=85&s=a53a09890bbccf3246ee58c8103bcd7b 1650w, https://mintcdn.com/loops/55_8RVKh4C4TyT4T/images/double-opt-in-button.png?w=2500&fit=max&auto=format&n=55_8RVKh4C4TyT4T&q=85&s=22d8fb991cbadce8584ec00848475d07 2500w"
-    />
-</Frame>
-
-## Create a signup form
-
-Next, we need to create a form from which people can sign up for the mailing list. This form should be placed on your own website and you'll need to handle the submission of the form to save the data from it.
-
-The form needs at minimum a field for the user's email address but you can also add any other fields that you want to collect for each signup.
-
-```HTML  theme={"dark"}
-<form action="/signup" method="POST">
-  <input type="email" name="email" placeholder="Email address" />
-  <button type="submit">Sign up</button>
-</form>
-```
-
-<Note>
-  For security and protection against bots and spam signups, you could add a
-  CSRF token or use a honeypot field in the form.
-</Note>
-
-## Handling the form submission and sending the verification email
-
-When the form is submitted, you need to create a unique one-time code and send the transactional email.
-
-Let's first create and endpoint to handle the form submission. Note how we check the database for an existing code before creating a new one, to make sure it's unique every time. The code is then stored in the database so we can check against it when the user clicks the link in the email.
-
-```JavaScript signup.ts theme={"dark"}
-import { NextApiRequest, NextApiResponse } from 'next';
-import { PrismaClient } from '@prisma/client';
-import crypto from 'crypto';
-
-const prisma = new PrismaClient();
-
-export default async function handler(req: NextApiRequest, res: NextApiResponse) {
-  if (req.method !== 'POST') {
-    return res.status(405).json({ error: 'Method not allowed' });
-  }
-
-  try {
-    const { email } = req.body;
-
-    if (!email) {
-      return res.status(400).json({ error: 'Email is required' });
-    }
-
-    // Generate a unique verification code using UUID
-    const code = crypto.randomUUID();
-
-    // Store the email and verification code
-    const signupToken = await prisma.signupToken.create({
-      data: {
-        email,
-        code,
-        expiresAt: new Date(Date.now() + 24 * 60 * 60 * 1000), // 24 hours from now
-      },
-    });
-
-    // TODO: Send the verification email
-
-    return res.status(200).json({
-      success: true,
-      message: 'Signup token created successfully',
-      data: signupToken
-    });
-
-  } catch (error) {
-    console.error('Error creating signup token:', error);
-    return res.status(500).json({ error: 'Internal server error' });
-  }
-}
-```
-
-Now let's add code to send the verification email using the Loops API.
-
-We first need to get the transactional email ID from the **Review** step of your transactional email, and the example payload.
-
-<img src="https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/double-opt-in-payload.png?fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=9fd1e158a1b13a56aaff14b84d1e7b39" alt="Transactional email ID and example payload" data-og-width="2280" width="2280" data-og-height="2100" height="2100" data-path="images/double-opt-in-payload.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/double-opt-in-payload.png?w=280&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=fa72230a6c91b6652a153bbf6f443afd 280w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/double-opt-in-payload.png?w=560&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=ba127e7a432f15ccda7fd0e8626f6fe2 560w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/double-opt-in-payload.png?w=840&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=31c04fac6b633a71f35cf8b0727516a0 840w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/double-opt-in-payload.png?w=1100&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=9cd95c49b4ebcee8880b4e46cc3cfd11 1100w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/double-opt-in-payload.png?w=1650&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=998bf22037163d92599c40e035b174d4 1650w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/double-opt-in-payload.png?w=2500&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=511e0f8d4e1efe7a981af5933bebab7e 2500w" />
-
-Then we can use the Loops API or an SDK to send the email. Here's an example using the Loops [JavaScript SDK](/sdks/javascript). Note that you'll also need to add a Loops API key.
-
-```javascript signup.ts {4,7,34-48} theme={"dark"}
-import { NextApiRequest, NextApiResponse } from "next";
-import { PrismaClient } from "@prisma/client";
-import crypto from "crypto";
-import { LoopsClient, APIError } from "loops";
-
-const prisma = new PrismaClient();
-const loops = new LoopsClient(process.env.LOOPS_API_KEY);
-
-export default async function handler(
-  req: NextApiRequest,
-  res: NextApiResponse
-) {
-  if (req.method !== "POST") {
-    return res.status(405).json({ error: "Method not allowed" });
-  }
-
-  try {
-    const { email } = req.body;
-
-    if (!email) {
-      return res.status(400).json({ error: "Email is required" });
-    }
-
-    // Generate a unique verification code using UUID
-    const code = crypto.randomUUID();
-
-    // Store the email and verification code
-    const signupToken = await prisma.signupToken.create({
-      data: {
-        email,
-        code,
-        expiresAt: new Date(Date.now() + 24 * 60 * 60 * 1000), // 24 hours from now
-      },
-    });
-
-    // Send the verification email
-    try {
-      await loops.sendTransactionalEmail({
-        transactionalId: "<your_email_id>",
-        email: email,
-        dataVariables: {
-          verificationUrl: `https://yourdomain.com/verify?code=${code}&email=${email}`,
-        },
-      });
-    } catch (error) {
-      if (error instanceof APIError) {
-        // API error, details will be in the error.json.message property
-      } else {
-        // Non API error
-      }
-    }
-
-    return res.status(200).json({
-      success: true,
-      message: "Signup token created successfully",
-      data: signupToken,
-    });
-  } catch (error) {
-    console.error("Error creating signup token:", error);
-    return res.status(500).json({ error: "Internal server error" });
-  }
-}
-```
-
-## Build the verification page
-
-The final step is to build a page to handle the confirmation step. This page will be used to verify the email address and add the contact to the audience.
-
-Here's an example of an endpoint, which could be called from the verification page, to check the email address and code from the verification URL.
-
-We use the [`updateContact()` method](/sdks/javascript#updatecontact) from the SDK to add the contact to the audience. This will create the contact if they don't exist yet.
-
-```JavaScript verify.ts theme={"dark"}
-import { NextApiRequest, NextApiResponse } from 'next';
-import { PrismaClient } from '@prisma/client';
-import { LoopsClient, APIError } from "loops";
-
-const prisma = new PrismaClient();
-const loops = new LoopsClient(process.env.LOOPS_API_KEY);
-
-export default async function handler(req: NextApiRequest, res: NextApiResponse) {
-  if (req.method !== 'POST') {
-    return res.status(405).json({ error: 'Method not allowed' });
-  }
-
-  try {
-    const { code, email } = req.body;
-
-    if (!code || !email) {
-      return res.status(400).json({ error: 'Verification code and email are required' });
-    }
-
-    // Find the token in the database
-    const token = await prisma.signupToken.findUnique({
-      where: { code, email },
-    });
-
-    // Check if token exists
-    if (!token) {
-      return res.status(404).json({ error: 'Invalid verification code' });
-    }
-
-    // Check if token has expired
-    if (token.expiresAt < new Date()) {
-      return res.status(400).json({ error: 'Verification code has expired' });
-    }
-
-    // Add the contact to Loops
-    // Instead of using createContact(), updateContact() will
-    //  create the contact if they don't exist yet, and won't
-    //  return an error if the contact already exists
-    try {
-      await loops.updateContact(token.email);
-    } catch (error) {
-      if (error instanceof APIError) {
-        // API error, details will be in the error.json.message property
-        return res.status(500).json({ error: error.json.message });
-      } else {
-        // Non API error
-        return res.status(500).json({ error: 'Internal server error' });
-      }
-    }
-
-    // Delete the used token
-    await prisma.signupToken.delete({
-      where: { id: token.id },
-    });
-
-    return res.status(200).json({
-      success: true,
-      message: 'Email verified successfully',
-      email: token.email
-    });
-
-  } catch (error) {
-    console.error('Error verifying email:', error);
-    return res.status(500).json({ error: 'Internal server error' });
-  }
-}
-```
-
-The call to Loops to add the contact is the most basic option, with just the email address. You can also add other properties to the contact, such as their name or add the contact to a specific [mailing list](/contacts/mailing-lists).
-
-To add contacts to specific mailing lists, modify the call to include the `mailingLists` property:
-
-```javascript  theme={"dark"}
-await loops.updateContact(
-  token.email,
-  {},
-  {
-    "<your_mailing_list_id>": true,
-  }
-);
-```
-
-[API Reference](/api-reference/create-contact)
-
-No you've created working double opt-in flow for making sure every contact in your audience has confirmed their subscription.
-
-## Learn more
-
-<CardGroup columns="2">
-  <Card title="Double opt-in" icon="shield-check" href="/contacts/double-opt-in">
-    Set up Loops' native double opt-in.
-  </Card>
-
-  <Card title="Send transactional email" icon="rectangle-terminal" href="/api-reference/send-transactional-email">
-    Read how to send transactional email with our API.
-  </Card>
-
-  <Card title="Transactional email guide" icon="code" href="/transactional">
-    Learn how to send transactional email with Loops.
-  </Card>
-
-  <Card title="Personalizing emails" icon="crystal-ball" href="/creating-emails/personalizing-emails">
-    Learn how to add dynamic data to your emails.
   </Card>
 </CardGroup>
 
@@ -6694,8 +6472,8 @@ When designing logos for emails, try to use a color that works well in both ligh
 
 Try to avoid dark or black logos that might disappear in dark mode. Make sure to test your emails in dark mode in different email clients to ensure the logo is visible.
 
-<Frame caption="Use grey and colors to make your logo visible in both light and dark modes">
-    <img src="https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/dark-mode-logo.png?fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=cfc45606b8376c04691fa3edeeb1415a" alt="Use grey or colored logos" data-og-width="2280" width="2280" data-og-height="1137" height="1137" data-path="images/dark-mode-logo.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/dark-mode-logo.png?w=280&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=0fe1773d5af967e33f91a68c53eedc21 280w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/dark-mode-logo.png?w=560&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=ce9d1190bef58f285d40a5d21fb5755b 560w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/dark-mode-logo.png?w=840&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=f2d1c6ab62f779e8a7c27095b9202963 840w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/dark-mode-logo.png?w=1100&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=b69f27a256aee90c17584509ea5e462e 1100w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/dark-mode-logo.png?w=1650&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=4d2d0c6cd39383f6707e6d134da146a0 1650w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/dark-mode-logo.png?w=2500&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=dd1bb4f4fb53f09764b950c86f043b3c 2500w" />
+<Frame>
+  <img alt="Use grey or colored logos" />
 </Frame>
 
 Some email clients (like Gmail on Android 14) automatically invert small images under \~50px if they detect poor contrast in dark mode. This behavior varies across clients and versions, so it's crucial to test your specific logo in different clients.
@@ -6713,8 +6491,8 @@ Limitations to this technique:
 * Stroke thickness might be limited by your logo's design
 * Image scaling can affect stroke appearance and visibility
 
-<Frame caption="A stroke or outline will make a dark logo visible in dark mode but may not suit your design or brand guidelines">
-    <img src="https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/dark-mode-stroke.png?fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=4bfaa67b8b0a7cec249f8f6a33172430" alt="Stroked logo" data-og-width="2280" width="2280" data-og-height="726" height="726" data-path="images/dark-mode-stroke.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/dark-mode-stroke.png?w=280&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=77755c12bb8aa88a4f1902a9385c1286 280w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/dark-mode-stroke.png?w=560&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=e7d402d9a48ad76fc13280b32e4d7b40 560w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/dark-mode-stroke.png?w=840&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=207760b43ddac66f10fc049627199e37 840w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/dark-mode-stroke.png?w=1100&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=e75867e22ef86dfd6cc04c6fbd5d718d 1100w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/dark-mode-stroke.png?w=1650&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=1de308b2a376a80baa9a63ba255ec1ba 1650w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/dark-mode-stroke.png?w=2500&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=5dd5357f815ee95fc74c13a8e5a1d7c1 2500w" />
+<Frame>
+  <img alt="Stroked logo" />
 </Frame>
 
 ### CSS
@@ -6731,7 +6509,7 @@ Apple Mail has the best dark mode support so it makes sense to test there first.
 
 Here's a very basic example of how to use this technique:
 
-```html  theme={"dark"}
+```html theme={"dark"}
 <style>
 body {
   color: #000;
@@ -6791,13 +6569,13 @@ The first step is to connect your Ghost site to Loops using Zapier.
 
 Sign up to Zapier and create a new Zap using Ghost's **Member Created** Trigger.
 
-<img src="https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/zapier-ghost-trigger.png?fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=a4065f83654edae063dbf52907024c92" alt="Add Ghost trigger" data-og-width="2280" width="2280" data-og-height="1221" height="1221" data-path="images/zapier-ghost-trigger.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/zapier-ghost-trigger.png?w=280&fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=b756111e90a94d24fda212530c3c6145 280w, https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/zapier-ghost-trigger.png?w=560&fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=71802b8c498076c69b3006ee2d62a7c8 560w, https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/zapier-ghost-trigger.png?w=840&fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=71a70a491d255ba90077f3246d2bd520 840w, https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/zapier-ghost-trigger.png?w=1100&fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=479d9fd9b7329823c78a2af6d1f80711 1100w, https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/zapier-ghost-trigger.png?w=1650&fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=f5bc879ca09959a0a29f715502cb069c 1650w, https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/zapier-ghost-trigger.png?w=2500&fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=a829236ce86db983c76ea68eb5da07e2 2500w" />
+<img alt="Add Ghost trigger" />
 
 This creates an automation that will trigger every time a new member is created in Ghost. Zapier will then send the contact's information over to Loops.
 
 Now connect Ghost from the Trigger by clicking **Account** then **Sign in** and then pasting in your Ghost API key and API URL. To find these, go to Settings in your Ghost admin, search for "Integrations" and click on **Zapier**.
 
-<img src="https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/zapier-sign-in-ghost.png?fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=75eac779a122ec0f687c04ed8fdcc0ac" alt="Sign in to Ghost" data-og-width="2280" width="2280" data-og-height="1164" height="1164" data-path="images/zapier-sign-in-ghost.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/zapier-sign-in-ghost.png?w=280&fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=239cd26ee5846f037e5bd127add1a232 280w, https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/zapier-sign-in-ghost.png?w=560&fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=d82ffede642c0f0d14fe8ea0f5a69c82 560w, https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/zapier-sign-in-ghost.png?w=840&fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=ed05c37406e586b9ad0c4aec1291bf62 840w, https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/zapier-sign-in-ghost.png?w=1100&fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=f35ff9a36753ff6355096b714a1844b6 1100w, https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/zapier-sign-in-ghost.png?w=1650&fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=eadc362bec392651e01ce0cd69030beb 1650w, https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/zapier-sign-in-ghost.png?w=2500&fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=31a1d7e21db37b92ec3acdac5250174b 2500w" />
+<img alt="Sign in to Ghost" />
 
 ## Set up the Zapier Action
 
@@ -6805,7 +6583,7 @@ Next you need to link up Loops as the Action. Click the **Action** node, search 
 
 Click **Continue**, then **Sign in** and paste in your Loops API key (which you can find from your [API Settings page](https://app.loops.so/settings?page=api)).
 
-<img src="https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/zapier-sign-in-loops.png?fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=57d92c4753c574e79e46bb270d02386c" alt="Sign in to Loops" data-og-width="2280" width="2280" data-og-height="1164" height="1164" data-path="images/zapier-sign-in-loops.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/zapier-sign-in-loops.png?w=280&fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=4629ee6674e5fe86dddec4cf02b9d893 280w, https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/zapier-sign-in-loops.png?w=560&fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=98685da373144a21943bd707f9a8e4fa 560w, https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/zapier-sign-in-loops.png?w=840&fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=4a7188fb83a430c35a7201a62b862b2d 840w, https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/zapier-sign-in-loops.png?w=1100&fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=e01eca081bfc93d6573aa9d0e79451bd 1100w, https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/zapier-sign-in-loops.png?w=1650&fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=2837614807c1e00506a74ad1b4ba6b2b 1650w, https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/zapier-sign-in-loops.png?w=2500&fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=31b3c4a2e996f630003494bc21edf2a3 2500w" />
+<img alt="Sign in to Loops" />
 
 <Tip>
   Instead of using an event for the loop trigger, you could also choose to send the loop to every new contact created in your audience.\
@@ -6820,11 +6598,11 @@ In **Email**, select the Email field. In **User ID**, select the ID field.
 
 In the **Event Name** field, write something like `newMember`. This is the name we'll use in Loops to trigger the email sequence. You can use any name, but make it descriptive. You'll need this name in the next step inside Loops.
 
-<img src="https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/zapier-ghost-email.png?fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=ed607ea08137b7a3c70e127f430d5e7a" alt="Adding an event name" data-og-width="2280" width="2280" data-og-height="1604" height="1604" data-path="images/zapier-ghost-email.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/zapier-ghost-email.png?w=280&fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=cc294fd0c083ff471b01df68a651b475 280w, https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/zapier-ghost-email.png?w=560&fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=c72178015bd327b4ba0f3072e7e72e6b 560w, https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/zapier-ghost-email.png?w=840&fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=330a36298c0b20b39703f90727d56112 840w, https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/zapier-ghost-email.png?w=1100&fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=54672a6d616b697ce8c650b8d7d746a1 1100w, https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/zapier-ghost-email.png?w=1650&fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=c9999942e67f66c2af4a4008c48c0641 1650w, https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/zapier-ghost-email.png?w=2500&fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=df921a6d499c1106c8a6d14138eb80ec 2500w" />
+<img alt="Adding an event name" />
 
 If you want to include contact-related information in your emails you can use [event properties](/events/properties). To do this, add more Ghost data in the **Event Properties** field. For example, if you want to include the user's name, subscribed status, member status or your newsletter's name, you can add these properties here. Click the `+` button to add new properties each time.
 
-<img src="https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/zapier-ghost-properties.png?fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=8f6bbb28e56215563b9fe002ade48369" alt="Adding event properties" data-og-width="2280" width="2280" data-og-height="1581" height="1581" data-path="images/zapier-ghost-properties.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/zapier-ghost-properties.png?w=280&fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=33991b6a1ec86e6c32ed97725116bce9 280w, https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/zapier-ghost-properties.png?w=560&fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=7e1c7cc6c6c27556f497f8a871a65960 560w, https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/zapier-ghost-properties.png?w=840&fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=39299f7b5d0c82a4d699389139f3eeca 840w, https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/zapier-ghost-properties.png?w=1100&fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=97e5bcba9dffe3205ca3d19656c1fb42 1100w, https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/zapier-ghost-properties.png?w=1650&fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=375104cac73ba187b013a708a1725b07 1650w, https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/zapier-ghost-properties.png?w=2500&fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=5ad20b197df92338e4a6db7726ae58ea 2500w" />
+<img alt="Adding event properties" />
 
 Click **Continue** to see an overview of the event and its data that you'll send to Loops. Here you can test the action works by clicking **Test Step**. This will send actual data to Loops, which you will see in the Event Log section on the [Events page](https://app.loops.so/settings?page=events).
 
@@ -6846,11 +6624,11 @@ Select the **Event is fired** trigger option.
 
 Click on the **Event received** trigger in the loop builder and enter the name you entered in Zapier in the previous step (in this example, `newMember`).
 
-<img src="https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/member-trigger.png?fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=9095164e936346f76239ffdd0b92ff57" alt="Select the event trigger" data-og-width="2280" width="2280" data-og-height="1893" height="1893" data-path="images/member-trigger.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/member-trigger.png?w=280&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=f30c42c1374a412e82f2ce0494636c0e 280w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/member-trigger.png?w=560&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=5d92a81f9ca5faf23f0f7ec0890a0e34 560w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/member-trigger.png?w=840&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=67e6c9233f740e9e9244ecd38c3011d4 840w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/member-trigger.png?w=1100&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=e0dc26d9e2de1ec4eaae75afd34b261d 1100w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/member-trigger.png?w=1650&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=c45f855b9835900b2e29243686f407e3 1650w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/member-trigger.png?w=2500&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=ec2e14a0936595958f6e0c0e37213d39 2500w" />
+<img alt="Select the event trigger" />
 
 You can edit the **Timer** node if you want to add a delay between the event being received by Loops and the email being sent to your Ghost members.
 
-<img src="https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/timer-3-days.png?fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=df736d0a34d27cfa70bd42a5109cf2d1" alt="Set a timer delay" data-og-width="2280" width="2280" data-og-height="1079" height="1079" data-path="images/timer-3-days.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/timer-3-days.png?w=280&fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=68a68605d04f63bcb471d659c1540509 280w, https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/timer-3-days.png?w=560&fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=aef3495dc1be1601336bc41dd27bcc59 560w, https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/timer-3-days.png?w=840&fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=e78a77a3aeee5c0f213289dbd62e4676 840w, https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/timer-3-days.png?w=1100&fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=9fbf79e8767c796ccdd899f82ae04608 1100w, https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/timer-3-days.png?w=1650&fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=e2f35b63251a0de08b55675627ce9512 1650w, https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/timer-3-days.png?w=2500&fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=fa6f7ee24d417ad3e05a6ed828ed2502 2500w" />
+<img alt="Set a timer delay" />
 
 You can also add a filter to the audience for this loop, if you want to limit sending to a certain sub-group of your members. If you want the loop to send to all new Ghost members, just leave it as "All contacts".
 
@@ -6858,13 +6636,13 @@ Lastly, click the **Send email** node and then **Create email**. You'll see the 
 
 If you opted to send event properties from Zapier, you can add them to your email by clicking the `⚡️` button above the editor (1) and then configuring in the **Event Property** editor panel (2).
 
-<img src="https://mintcdn.com/loops/Ghb_kmuDWgpv_ZFW/images/scheduled-editor.png?fit=max&auto=format&n=Ghb_kmuDWgpv_ZFW&q=85&s=fb1eb41c4043168c67219248413abf68" alt="Adding event properties in the editor" data-og-width="2280" width="2280" data-og-height="1596" height="1596" data-path="images/scheduled-editor.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/Ghb_kmuDWgpv_ZFW/images/scheduled-editor.png?w=280&fit=max&auto=format&n=Ghb_kmuDWgpv_ZFW&q=85&s=1ef06da3b015974424b33b606fcbea9e 280w, https://mintcdn.com/loops/Ghb_kmuDWgpv_ZFW/images/scheduled-editor.png?w=560&fit=max&auto=format&n=Ghb_kmuDWgpv_ZFW&q=85&s=09f2cd64215e8a41434f9eb793ef2763 560w, https://mintcdn.com/loops/Ghb_kmuDWgpv_ZFW/images/scheduled-editor.png?w=840&fit=max&auto=format&n=Ghb_kmuDWgpv_ZFW&q=85&s=5383aa9d6e0f65363495d715799e3203 840w, https://mintcdn.com/loops/Ghb_kmuDWgpv_ZFW/images/scheduled-editor.png?w=1100&fit=max&auto=format&n=Ghb_kmuDWgpv_ZFW&q=85&s=b90362052ff0d7b02bbdf69483e8aa1a 1100w, https://mintcdn.com/loops/Ghb_kmuDWgpv_ZFW/images/scheduled-editor.png?w=1650&fit=max&auto=format&n=Ghb_kmuDWgpv_ZFW&q=85&s=8f8e5fd8e214b51792467e6fd3ab6c73 1650w, https://mintcdn.com/loops/Ghb_kmuDWgpv_ZFW/images/scheduled-editor.png?w=2500&fit=max&auto=format&n=Ghb_kmuDWgpv_ZFW&q=85&s=13502dc0a70bf1a57382741b897e1ede 2500w" />
+<img alt="Adding event properties in the editor" />
 
 Once your first email is complete, you can add more Timer and Email nodes to your loop to complete your email sequence. Just click on the `+` icon between nodes to add new ones.
 
 ## Learn more
 
-<CardGroup columns="2">
+<CardGroup>
   <Card title="Loop Builder" icon="arrows-rotate" href="/loop-builder">
     Read more about triggering emails with events.
   </Card>
@@ -6876,21 +6654,21 @@ Once your first email is complete, you can add more Timer and Email nodes to you
   <Card
     title="Zapier"
     icon={
-    <svg
-      viewBox="0 0 256 256"
-      version="1.1"
-      xmlns="http://www.w3.org/2000/svg"
-      xmlnsXlink="http://www.w3.org/1999/xlink"
-    >
-      <g>
-        <path
-          d="M128.080089,-0.000183105 C135.311053,0.0131003068 142.422517,0.624138494 149.335663,1.77979593 L149.335663,1.77979593 L149.335663,76.2997796 L202.166953,23.6044907 C208.002065,27.7488446 213.460883,32.3582023 218.507811,37.3926715 C223.557281,42.4271407 228.192318,47.8867213 232.346817,53.7047992 L232.346817,53.7047992 L179.512985,106.400063 L254.227854,106.400063 C255.387249,113.29414 256,120.36111 256,127.587243 L256,127.587243 L256,127.759881 C256,134.986013 255.387249,142.066204 254.227854,148.960282 L254.227854,148.960282 L179.500273,148.960282 L232.346817,201.642324 C228.192318,207.460402 223.557281,212.919983 218.523066,217.954452 L218.523066,217.954452 L218.507811,217.954452 C213.460883,222.988921 208.002065,227.6115 202.182208,231.742607 L202.182208,231.742607 L149.335663,179.04709 L149.335663,253.5672 C142.435229,254.723036 135.323765,255.333244 128.092802,255.348499 L128.092802,255.348499 L127.907197,255.348499 C120.673691,255.333244 113.590195,254.723036 106.677048,253.5672 L106.677048,253.5672 L106.677048,179.04709 L53.8457596,231.742607 C42.1780766,223.466917 31.977435,213.278734 23.6658953,201.642324 L23.6658953,201.642324 L76.4997269,148.960282 L1.78485803,148.960282 C0.612750404,142.052729 0,134.946095 0,127.719963 L0,127.719963 L0,127.349037 C0.0121454869,125.473817 0.134939797,123.182933 0.311311815,120.812834 L0.36577283,120.099764 C0.887996182,113.428547 1.78485803,106.400063 1.78485803,106.400063 L1.78485803,106.400063 L76.4997269,106.400063 L23.6658953,53.7047992 C27.8076812,47.8867213 32.4300059,42.4403618 37.4769335,37.4193681 L37.4769335,37.4193681 L37.5023588,37.3926715 C42.5391163,32.3582023 48.0106469,27.7488446 53.8457596,23.6044907 L53.8457596,23.6044907 L106.677048,76.2997796 L106.677048,1.77979593 C113.590195,0.624138494 120.688946,0.0131003068 127.932622,-0.000183105 L127.932622,-0.000183105 L128.080089,-0.000183105 Z M128.067377,95.7600714 L127.945335,95.7600714 C118.436262,95.7600714 109.32891,97.5001809 100.910584,100.661566 C97.7553011,109.043534 96.0085811,118.129275 95.9958684,127.613685 L95.9958684,127.733184 C96.0085811,137.217594 97.7553011,146.303589 100.923296,154.685303 C109.32891,157.846943 118.436262,159.587052 127.945335,159.587052 L128.067377,159.587052 C137.576449,159.587052 146.683802,157.846943 155.089415,154.685303 C158.257411,146.290368 160.004131,137.217594 160.004131,127.733184 L160.004131,127.613685 C160.004131,118.129275 158.257411,109.043534 155.089415,100.661566 C146.683802,97.5001809 137.576449,95.7600714 128.067377,95.7600714 Z"
-          fill="#FF4A00"
-          fillRule="nonzero"
-        ></path>
-      </g>
-    </svg>
-  }
+  <svg
+    viewBox="0 0 256 256"
+    version="1.1"
+    xmlns="http://www.w3.org/2000/svg"
+    xmlnsXlink="http://www.w3.org/1999/xlink"
+  >
+    <g>
+      <path
+        d="M128.080089,-0.000183105 C135.311053,0.0131003068 142.422517,0.624138494 149.335663,1.77979593 L149.335663,1.77979593 L149.335663,76.2997796 L202.166953,23.6044907 C208.002065,27.7488446 213.460883,32.3582023 218.507811,37.3926715 C223.557281,42.4271407 228.192318,47.8867213 232.346817,53.7047992 L232.346817,53.7047992 L179.512985,106.400063 L254.227854,106.400063 C255.387249,113.29414 256,120.36111 256,127.587243 L256,127.587243 L256,127.759881 C256,134.986013 255.387249,142.066204 254.227854,148.960282 L254.227854,148.960282 L179.500273,148.960282 L232.346817,201.642324 C228.192318,207.460402 223.557281,212.919983 218.523066,217.954452 L218.523066,217.954452 L218.507811,217.954452 C213.460883,222.988921 208.002065,227.6115 202.182208,231.742607 L202.182208,231.742607 L149.335663,179.04709 L149.335663,253.5672 C142.435229,254.723036 135.323765,255.333244 128.092802,255.348499 L128.092802,255.348499 L127.907197,255.348499 C120.673691,255.333244 113.590195,254.723036 106.677048,253.5672 L106.677048,253.5672 L106.677048,179.04709 L53.8457596,231.742607 C42.1780766,223.466917 31.977435,213.278734 23.6658953,201.642324 L23.6658953,201.642324 L76.4997269,148.960282 L1.78485803,148.960282 C0.612750404,142.052729 0,134.946095 0,127.719963 L0,127.719963 L0,127.349037 C0.0121454869,125.473817 0.134939797,123.182933 0.311311815,120.812834 L0.36577283,120.099764 C0.887996182,113.428547 1.78485803,106.400063 1.78485803,106.400063 L1.78485803,106.400063 L76.4997269,106.400063 L23.6658953,53.7047992 C27.8076812,47.8867213 32.4300059,42.4403618 37.4769335,37.4193681 L37.4769335,37.4193681 L37.5023588,37.3926715 C42.5391163,32.3582023 48.0106469,27.7488446 53.8457596,23.6044907 L53.8457596,23.6044907 L106.677048,76.2997796 L106.677048,1.77979593 C113.590195,0.624138494 120.688946,0.0131003068 127.932622,-0.000183105 L127.932622,-0.000183105 L128.080089,-0.000183105 Z M128.067377,95.7600714 L127.945335,95.7600714 C118.436262,95.7600714 109.32891,97.5001809 100.910584,100.661566 C97.7553011,109.043534 96.0085811,118.129275 95.9958684,127.613685 L95.9958684,127.733184 C96.0085811,137.217594 97.7553011,146.303589 100.923296,154.685303 C109.32891,157.846943 118.436262,159.587052 127.945335,159.587052 L128.067377,159.587052 C137.576449,159.587052 146.683802,157.846943 155.089415,154.685303 C158.257411,146.290368 160.004131,137.217594 160.004131,127.733184 L160.004131,127.613685 C160.004131,118.129275 158.257411,109.043534 155.089415,100.661566 C146.683802,97.5001809 137.576449,95.7600714 128.067377,95.7600714 Z"
+        fill="#FF4A00"
+        fillRule="nonzero"
+      ></path>
+    </g>
+  </svg>
+}
     href="/integrations/zapier"
   >
     Manage contacts and send emails from thousands of other platforms.
@@ -6990,7 +6768,7 @@ Source: https://loops.so/docs/guides/intro
 
 Start sending email with the best results.
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Onboarding emails" icon="list-ol" href="/guides/onboarding-emails" />
 </CardGroup>
 
@@ -6998,7 +6776,7 @@ Start sending email with the best results.
 
 Improve your email deliverability with these guides.
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Optimization" icon="chart-line" href="/deliverability/optimization" />
 
   <Card title="Improving inbox placement" icon="inbox" href="/deliverability/improving-inbox-placement" />
@@ -7026,27 +6804,27 @@ Improve your email deliverability with these guides.
 
 How-to guides for connecting Loops to other platforms.
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Send emails from Bolt.new" icon="bolt" href="/guides/bolt-emails" />
 
   <Card
     title="Bubble API Connector"
     icon={
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="16"
-      height="17"
-      viewBox="0 0 16 17"
-    >
-      <g fill="none" fillRule="nonzero" transform="translate(.5 .111)">
-        <path
-          fill="#FF4A00"
-          d="M9.361 4.277c-1.474 0-2.928.633-4.037 1.877V.016H3.128v10.336a6.077 6.077 0 0 0 12.151 0c0-3.354-2.563-6.075-5.918-6.075Zm-.157 9.81a3.735 3.735 0 1 1 0-7.47 3.735 3.735 0 0 1 0 7.47Z"
-        />
-        <circle cx="1.53" cy="14.925" r="1.503" fill="#FF4A00" />
-      </g>
-    </svg>
-  }
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="16"
+    height="17"
+    viewBox="0 0 16 17"
+  >
+    <g fill="none" fillRule="nonzero" transform="translate(.5 .111)">
+      <path
+        fill="#FF4A00"
+        d="M9.361 4.277c-1.474 0-2.928.633-4.037 1.877V.016H3.128v10.336a6.077 6.077 0 0 0 12.151 0c0-3.354-2.563-6.075-5.918-6.075Zm-.157 9.81a3.735 3.735 0 1 1 0-7.47 3.735 3.735 0 0 1 0 7.47Z"
+      />
+      <circle cx="1.53" cy="14.925" r="1.503" fill="#FF4A00" />
+    </g>
+  </svg>
+}
     href="/guides/bubble-api-connector"
   />
 
@@ -7055,17 +6833,17 @@ How-to guides for connecting Loops to other platforms.
   <Card
     title="Send email from Next.js with Loops"
     icon={
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      preserveAspectRatio="xMidYMid"
-      viewBox="0 0 256 256"
-    >
-      <path
-        fill="#FF4A00"
-        d="M119.617.069c-.55.05-2.302.225-3.879.35-36.36 3.278-70.419 22.894-91.99 53.044-12.012 16.764-19.694 35.78-22.597 55.922C.125 116.415 0 118.492 0 128.025c0 9.533.125 11.61 1.151 18.64 6.957 48.065 41.165 88.449 87.56 103.411 8.309 2.678 17.067 4.504 27.027 5.605 3.879.425 20.645.425 24.524 0 17.192-1.902 31.756-6.155 46.12-13.486 2.202-1.126 2.628-1.426 2.327-1.677-.2-.15-9.584-12.735-20.845-27.948l-20.47-27.648-25.65-37.956c-14.114-20.868-25.725-37.932-25.825-37.932-.1-.025-.2 16.84-.25 37.431-.076 36.055-.1 37.506-.551 38.357-.65 1.226-1.151 1.727-2.202 2.277-.801.4-1.502.475-5.28.475h-4.33l-1.15-.725a4.679 4.679 0 0 1-1.677-1.827l-.526-1.126.05-50.166.075-50.192.776-.976c.4-.525 1.251-1.2 1.852-1.526 1.026-.5 1.426-.55 5.755-.55 5.105 0 5.956.2 7.282 1.651.376.4 14.264 21.318 30.88 46.514 16.617 25.195 39.34 59.599 50.5 76.488l20.27 30.7 1.026-.675c9.084-5.905 18.693-14.312 26.3-23.07 16.191-18.59 26.626-41.258 30.13-65.428 1.026-7.031 1.151-9.108 1.151-18.64 0-9.534-.125-11.61-1.151-18.641-6.957-48.065-41.165-88.449-87.56-103.411-8.184-2.652-16.892-4.479-26.652-5.58-2.402-.25-18.943-.525-21.02-.325Zm52.401 77.414c1.201.6 2.177 1.752 2.527 2.953.2.65.25 14.562.2 45.913l-.074 44.987-7.933-12.16-7.958-12.16v-32.702c0-21.143.1-33.028.25-33.603.4-1.401 1.277-2.502 2.478-3.153 1.026-.525 1.401-.575 5.33-.575 3.704 0 4.354.05 5.18.5Z"
-      />
-    </svg>
-  }
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    preserveAspectRatio="xMidYMid"
+    viewBox="0 0 256 256"
+  >
+    <path
+      fill="#FF4A00"
+      d="M119.617.069c-.55.05-2.302.225-3.879.35-36.36 3.278-70.419 22.894-91.99 53.044-12.012 16.764-19.694 35.78-22.597 55.922C.125 116.415 0 118.492 0 128.025c0 9.533.125 11.61 1.151 18.64 6.957 48.065 41.165 88.449 87.56 103.411 8.309 2.678 17.067 4.504 27.027 5.605 3.879.425 20.645.425 24.524 0 17.192-1.902 31.756-6.155 46.12-13.486 2.202-1.126 2.628-1.426 2.327-1.677-.2-.15-9.584-12.735-20.845-27.948l-20.47-27.648-25.65-37.956c-14.114-20.868-25.725-37.932-25.825-37.932-.1-.025-.2 16.84-.25 37.431-.076 36.055-.1 37.506-.551 38.357-.65 1.226-1.151 1.727-2.202 2.277-.801.4-1.502.475-5.28.475h-4.33l-1.15-.725a4.679 4.679 0 0 1-1.677-1.827l-.526-1.126.05-50.166.075-50.192.776-.976c.4-.525 1.251-1.2 1.852-1.526 1.026-.5 1.426-.55 5.755-.55 5.105 0 5.956.2 7.282 1.651.376.4 14.264 21.318 30.88 46.514 16.617 25.195 39.34 59.599 50.5 76.488l20.27 30.7 1.026-.675c9.084-5.905 18.693-14.312 26.3-23.07 16.191-18.59 26.626-41.258 30.13-65.428 1.026-7.031 1.151-9.108 1.151-18.64 0-9.534-.125-11.61-1.151-18.641-6.957-48.065-41.165-88.449-87.56-103.411-8.184-2.652-16.892-4.479-26.652-5.58-2.402-.25-18.943-.525-21.02-.325Zm52.401 77.414c1.201.6 2.177 1.752 2.527 2.953.2.65.25 14.562.2 45.913l-.074 44.987-7.933-12.16-7.958-12.16v-32.702c0-21.143.1-33.028.25-33.603.4-1.401 1.277-2.502 2.478-3.153 1.026-.525 1.401-.575 5.33-.575 3.704 0 4.354.05 5.18.5Z"
+    />
+  </svg>
+}
     href="/sdks/javascript/nextjs"
   />
 </CardGroup>
@@ -7074,9 +6852,7 @@ How-to guides for connecting Loops to other platforms.
 
 How to create different kinds of emails in Loops.
 
-<CardGroup cols={2}>
-  <Card title="Create a double opt-in flow" icon="user-check" href="/guides/double-opt-in" />
-
+<CardGroup>
   <Card title="Create a scheduled digest" icon="hourglass-end" href="/guides/scheduled-digest-email" />
 
   <Card title="Create a product update" icon="star" href="/guides/product-updates" />
@@ -7092,7 +6868,7 @@ How to create different kinds of emails in Loops.
 
 Learn more about email.
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="What is DNS?" icon="globe" href="/guides/what-is-dns" />
 
   <Card title="What is BIMI?" icon="circle-user" href="/guides/what-is-bimi" />
@@ -7155,7 +6931,7 @@ Go to the [Loops page](https://app.loops.so/loops) in your account and click **N
 
 Select the **Contact update** option, which will create a new loop using that trigger.
 
-<img src="https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/triggers.png?fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=ba70751cfb0bbded010aa98d2e1d2661" alt="Select trigger" data-og-width="2280" width="2280" data-og-height="1409" height="1409" data-path="images/triggers.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/triggers.png?w=280&fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=5368c3de6799c0594b57fa911cbbdcff 280w, https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/triggers.png?w=560&fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=f0ab68aecfa3ece1267104f2991a11b8 560w, https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/triggers.png?w=840&fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=f7461ac943339a6a86562ac48c428709 840w, https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/triggers.png?w=1100&fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=79e61483ec59bfb9d5424ec6ff217fdd 1100w, https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/triggers.png?w=1650&fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=f328b6128aa6debed2e39d789c5d0456 1650w, https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/triggers.png?w=2500&fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=6acb4ae62a947e27d85396e443f82dad 2500w" />
+<img alt="Select trigger" />
 
 You will enter the [loop builder](/loop-builder). Click on the **Contact updated** node to set up the loop trigger.
 
@@ -7163,7 +6939,7 @@ You will enter the [loop builder](/loop-builder). Click on the **Contact updated
 
 1. Select the "Subscription Status" property from the **When** dropdown.
 2. The **Changes from** dropdown should have "Any value" selected.
-3. Netx you need to specify wheat value Loops should look out for to enter users into the loop.
+3. Next you need to specify what value Loops should look out for to enter users into the loop.
    For example, for onboarding emails, you can choose "is empty" from the **To** dropdown. For re-activation emails select "Equals" from the **To** dropdown and enter a relevant value like "Canceled".
 4. **Trigger time** should be set to "Every time"; this will make sure users are entered into the loop every time that the Subscription Status value matches.
 
@@ -7175,11 +6951,11 @@ You can add as many emails as you like into each loop, separated with timers. If
 
 We have a range of [email templates](https://app.loops.so/templates) available, which you can use as a base for all of your subscription emails.
 
-<img src="https://mintcdn.com/loops/OG31ikb--92jQDlq/images/getting-started.png?fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=3ca8868a9bddc666b8293dc9ed17977f" alt="Templates" data-og-width="2280" width="2280" data-og-height="1284" height="1284" data-path="images/getting-started.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/OG31ikb--92jQDlq/images/getting-started.png?w=280&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=5a506352291ae9d058114929ca283502 280w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/getting-started.png?w=560&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=f2b5821b771981420f36232316f9cc18 560w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/getting-started.png?w=840&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=4a949d33a3098407f8344113d1ca5490 840w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/getting-started.png?w=1100&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=2adb957e405ce648e593a0414190c58f 1100w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/getting-started.png?w=1650&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=f2cd45877711b775b264c09ad18f9be2 1650w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/getting-started.png?w=2500&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=cde9e90bc02db67c684e5204272261d5 2500w" />
+<img alt="Templates" />
 
 If you want to use cohesive branding in your emails, make use of [themes](/creating-emails/editor#themes) in the editor.
 
-<img src="https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/message-visual.png?fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=e2c7088ffd4d20ac66b5fee7a1756010" alt="Editor panel" data-og-width="2280" width="2280" data-og-height="1953" height="1953" data-path="images/message-visual.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/message-visual.png?w=280&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=1566d2f25ff94cd77ce02190627153c6 280w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/message-visual.png?w=560&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=b97a0e4251a474a7649518819d87364b 560w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/message-visual.png?w=840&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=a81c6e2c9f6ac29e31329ada927e038a 840w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/message-visual.png?w=1100&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=adb055873f4fd4c0e917faac0c927983 1100w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/message-visual.png?w=1650&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=5e6346334f27792ff4fab4450fe9c3a9 1650w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/message-visual.png?w=2500&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=738b8ddf5342b807bcfddc6fa07e61c7 2500w" />
+<img alt="Editor panel" />
 
 ## Update the Subscription status value
 
@@ -7196,7 +6972,7 @@ Using the API you can make a simple `PUT` call to the [Update contact endpoint](
   Loops using the provided email address.
 </Note>
 
-```json  theme={"dark"}
+```json theme={"dark"}
 {
   "email": "canceleduser@gmail.com",
   "subscriptionStatus": "Canceled"
@@ -7263,7 +7039,7 @@ For example, new users who sign up could expect a welcome email from you, welcom
 
 Here is an example of the email we at Loops send out to new users:
 
-<img src="https://mintcdn.com/loops/OG31ikb--92jQDlq/images/loops-welcome-email.png?fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=d040d1fec19fee4f9d921a4848a571d5" alt="Loops' own welcome email" data-og-width="2280" width="2280" data-og-height="1613" height="1613" data-path="images/loops-welcome-email.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/OG31ikb--92jQDlq/images/loops-welcome-email.png?w=280&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=0c006a12ea631e4ae09fd2c0c1053417 280w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/loops-welcome-email.png?w=560&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=da8e983294ff96dbe01334acae86dc26 560w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/loops-welcome-email.png?w=840&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=3a28a60a8f74857465fe12f6cd70f038 840w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/loops-welcome-email.png?w=1100&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=0fc63d67ecb36d086390fd0292996a43 1100w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/loops-welcome-email.png?w=1650&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=efb019a4988b2460144d8e65c0f03b99 1650w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/loops-welcome-email.png?w=2500&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=46b25b5fe743e4665cb0cf94a76c3ca9 2500w" />
+<img alt="Loops' own welcome email" />
 
 <CardGroup>
   <Card href="https://app.loops.so/templates?category=loops" title="Loop templates" icon="folder-closed">
@@ -7277,7 +7053,7 @@ Get started by [creating loops](/loop-builder), which are email automations used
 
 ### Creating a welcome loop in Loops
 
-<img src="https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/onboarding-loop.png?fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=4d302090135bc255608bf93beb116507" alt="A simple welcome loop" data-og-width="2280" width="2280" data-og-height="1964" height="1964" data-path="images/onboarding-loop.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/onboarding-loop.png?w=280&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=2ad7953c65198241a9878b9a180518ab 280w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/onboarding-loop.png?w=560&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=f76d89aea68b1987be87f91440973633 560w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/onboarding-loop.png?w=840&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=08db4b38ffaafacd096cdae3c47b1003 840w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/onboarding-loop.png?w=1100&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=90c1d6b270cab2380eb55e10dca75bd3 1100w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/onboarding-loop.png?w=1650&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=0f7ed11f8a5e5b7dfef10344acb58e8c 1650w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/onboarding-loop.png?w=2500&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=a11c1fa9387da1fef330ee1843bf2994 2500w" />
+<img alt="A simple welcome loop" />
 
 <Steps>
   <Step title="Create a loop">
@@ -7306,7 +7082,7 @@ Transactional emails are by definition emails that are sent to users because of 
 
 These types of emails have high engagement rates since users actively request them, which helps build your sender reputation.
 
-<img src="https://mintcdn.com/loops/4h4NdelN1SeEp2xg/images/transactional-example.png?fit=max&auto=format&n=4h4NdelN1SeEp2xg&q=85&s=6d4f8855f2bb71dbf528ab8da2c4aacb" alt="Password reset email example" data-og-width="2280" width="2280" data-og-height="1355" height="1355" data-path="images/transactional-example.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/4h4NdelN1SeEp2xg/images/transactional-example.png?w=280&fit=max&auto=format&n=4h4NdelN1SeEp2xg&q=85&s=9e8df0d409a4bf917d37a08295dc8455 280w, https://mintcdn.com/loops/4h4NdelN1SeEp2xg/images/transactional-example.png?w=560&fit=max&auto=format&n=4h4NdelN1SeEp2xg&q=85&s=15b343e6210f4aa163570a8709f68152 560w, https://mintcdn.com/loops/4h4NdelN1SeEp2xg/images/transactional-example.png?w=840&fit=max&auto=format&n=4h4NdelN1SeEp2xg&q=85&s=5bdb62280bb095794d570da750a13c0e 840w, https://mintcdn.com/loops/4h4NdelN1SeEp2xg/images/transactional-example.png?w=1100&fit=max&auto=format&n=4h4NdelN1SeEp2xg&q=85&s=c7a97149078a5e2ac87cbd3c41d270a2 1100w, https://mintcdn.com/loops/4h4NdelN1SeEp2xg/images/transactional-example.png?w=1650&fit=max&auto=format&n=4h4NdelN1SeEp2xg&q=85&s=60cebc6a82938cb12f70af9f60ecbd21 1650w, https://mintcdn.com/loops/4h4NdelN1SeEp2xg/images/transactional-example.png?w=2500&fit=max&auto=format&n=4h4NdelN1SeEp2xg&q=85&s=fcb440735577b734aaf52a2a68f1a9f5 2500w" />
+<img alt="Password reset email example" />
 
 <CardGroup>
   <Card href="https://app.loops.so/templates?category=transactional" title="Transactional templates" icon="folder-closed">
@@ -7343,7 +7119,7 @@ Loops helps to mitigate deliverability issues by sending campaign emails in batc
 
     For example, you could use the name `lastActive` and choose the "Date" field type. Then whenever the user does a major action in your application, update the contact with a new `lastActive` value:
 
-    ```javascript  theme={"dark"}
+    ```javascript theme={"dark"}
     POST /v1/contacts/update
     {
       "userId": user.id,
@@ -7357,7 +7133,7 @@ Loops helps to mitigate deliverability issues by sending campaign emails in batc
 
     In the "Audience" tab, choose "Last Active" (or "Created At"), then "After" and then pick the date three days ago from the date field.
 
-        <img src="https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/active-audience.png?fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=b515b1248a047295d16e6aaa23149160" alt="Selecting an active audience" data-og-width="2280" width="2280" data-og-height="1367" height="1367" data-path="images/active-audience.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/active-audience.png?w=280&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=ce0c69d202542a5afdd8bbf41316c276 280w, https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/active-audience.png?w=560&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=0aa20e6acf52611d5ff67a238a82c097 560w, https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/active-audience.png?w=840&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=45d0c28c404c1103662e9ef47864b2f1 840w, https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/active-audience.png?w=1100&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=ba5a10f6cbeb02a6a1165c80dad657ae 1100w, https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/active-audience.png?w=1650&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=99bafa2a560cfdc50267ed13067a90dd 1650w, https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/active-audience.png?w=2500&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=0aad9c4d362ffe8223b98e5f2774d335 2500w" />
+    <img alt="Selecting an active audience" />
   </Step>
 </Steps>
 
@@ -7491,8 +7267,8 @@ Things to keep in mind:
 
 ## How to craft a product update email:
 
-<Frame caption="Example of a product update email sent from Loops">
-  <img src="https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/product-updates.png?fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=ccb380f8c5efe02b058a39adda101efc" alt="Example of a product update email sent from Loops" data-og-width="1280" width="1280" data-og-height="805" height="805" data-path="images/product-updates.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/product-updates.png?w=280&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=a463787d404f22eb4a03d096bcb090e1 280w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/product-updates.png?w=560&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=f7b627a7a20ab84e7d1aa2b7be328cc5 560w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/product-updates.png?w=840&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=d88b38f61ec68ff59cf088edc8f40a62 840w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/product-updates.png?w=1100&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=f1e33c9c28b1b2273af34529c1d300f2 1100w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/product-updates.png?w=1650&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=76d9c2eda0f5c525bd52e7a6bb901079 1650w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/product-updates.png?w=2500&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=69bfbc46d74e4ef566273b664fce7772 2500w" />
+<Frame>
+  <img alt="Example of a product update email sent from Loops" />
 </Frame>
 
 1. [Create a new email Campaign](/creating-emails/editor)
@@ -7526,7 +7302,7 @@ If you have an existing list but haven't sent product updates before:
   Learn how to create targeted segments for your product updates.
 </Card>
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Creating emails" icon="envelope" href="/sending-first-email">
     Learn how to create and send your first email in Loops.
   </Card>
@@ -7556,12 +7332,12 @@ Backfill contacts into a loop.
   native backfill so we can prioritize it.
 </Warning>
 
-### When to use this
+## When to use this
 
 * You have an existing loop that should have run for some contacts but didn’t.
 * You’re comfortable exporting and re-importing a contact list.
 
-### What you’ll do (high level)
+## What you’ll do (high level)
 
 1. Duplicate the original loop.
 2. Create a one-off contact property (e.g., `backfill_welcome_sep2025`).
@@ -7571,53 +7347,62 @@ Backfill contacts into a loop.
 6. Add the property to the CSV for those contacts.
 7. Re-import the CSV to update contacts and trigger the loop.
 
-***
+## Step-by-step
 
-### Step-by-step
+<Steps>
+  <Step title="Duplicate the loop">
+    Open the loop you want to retroactively trigger.
 
-1. Duplicate the loop
+    Use **Duplicate** to create a copy. Rename it clearly (e.g., “Welcome Backfill (Sep 2025)”).
+  </Step>
 
-* Open the loop you want to retroactively trigger.
-* Use Duplicate to create a copy. Rename it clearly (e.g., “Welcome Backfill (Sep 2025)”).
+  <Step title="Create a one-off contact property">
+    Add a new contact property to use exclusively for this backfill.
 
-2. Create a one-off contact property
+    **Example:**\
+    Boolean: `backfill_welcome_sep2025` (true/false)
 
-* Add a new contact property to use exclusively for this backfill. Example:
-  * Boolean: `backfill_welcome_sep2025` (true/false)
-* Use a name that avoids collisions with any existing logic.
+    Use a name that avoids collisions with any existing logic.
+  </Step>
 
-3. Change the duplicate loop’s trigger
+  <Step title="Change the duplicate loop’s trigger">
+    Select “Contact updated” as the trigger.
 
-* Set Trigger to “Contact updated”.
-* Set the criteria to:
-  * was any
-  * is equal to `true`
+    Set the criteria to:
 
-<Tip>
-  For one-off backfills, set Trigger frequency to <strong>One time</strong> so a
-  contact only enters once.
-</Tip>
+    * was any
+    * is equal to `true`
 
-4. Start the duplicated loop.
+    <Tip>
+      For one-off backfills, set Trigger frequency to <strong>One time</strong> so a
+      contact only enters once.
+    </Tip>
+  </Step>
 
-5. Export the intended audience from the original loop
+  <Step title="Export the intended audience from the original loop">
+    From the main audience table, [export the contacts](/contacts/export-contacts) who should be backfilled.
+  </Step>
 
-* From the main audience table, [export the contacts](/contacts/export-contacts) who should be backfilled.
+  <Step title="Prepare the CSV for re-import">
+    Open the CSV and add a new column with the property key you created.
 
-6. Prepare the CSV for re-import
+    Populate that column with `true` for every row you want to trigger.
 
-* Open the CSV and add a new column with the property key you created.
-* Populate that column with `true` for every row you want to trigger.
-* Ensure the CSV still includes the primary identifier (either `email` or `userId`).
+    Ensure the CSV still includes the primary identifier (either `email` or `userId`).
+  </Step>
 
-7. Re-import to update contacts and trigger
+  <Step title="Re-import to update contacts and trigger">
+    Import the CSV from the **Import** button on the [Audience page](https://app.loops.so/audience).
 
-* Import the CSV.
-* Confirm the column mapping so your backfill property maps 1:1 to the new contact property.
-* Set the CSV to trigger loops (see [trigger loops via CSV](/add-users/csv-upload#trigger-loops-via-csv)).
-* Start the import.
+    Confirm the column mapping so your backfill property maps 1:1 to the new contact property.
 
-Your backfilled loop will begin triggering immediately.
+    Set the CSV import to [trigger loops](/add-users/csv-upload#trigger-loops-via-csv) using the **Trigger Loops** toggle.
+
+    Start the import.
+
+    Your backfilled loop will begin triggering immediately.
+  </Step>
+</Steps>
 
 <Warning>
   After the backfill completes, consider removing or resetting the temporary
@@ -7648,13 +7433,13 @@ Click on the **Event received** node and type the name of your event. You can re
 
 For example, you can use a name like `sendDigest` and then click **+ Create new event**.
 
-<img src="https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/scheduled-trigger.png?fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=0ed8f39465deb0ef2786cafaec05edd2" alt="Creating a trigger node" data-og-width="2280" width="2280" data-og-height="1893" height="1893" data-path="images/scheduled-trigger.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/scheduled-trigger.png?w=280&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=1bdeced8e856aded10138075e1bb7355 280w, https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/scheduled-trigger.png?w=560&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=17293e59e001dd643be3feb04f2ed7c6 560w, https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/scheduled-trigger.png?w=840&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=aaca904d3ab8bd57bc6d915bd1b204d1 840w, https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/scheduled-trigger.png?w=1100&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=0a7609e747d6e103d120a9604339371e 1100w, https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/scheduled-trigger.png?w=1650&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=ecf7d444858270434be78cfb0c393089 1650w, https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/scheduled-trigger.png?w=2500&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=ce9f54298b6e572ef2b33f082f08901a 2500w" />
+<img alt="Creating a trigger node" />
 
 Next, click on the **Edit event properties** button to add [properties](/events/properties) to your event. Properties are extra pieces of data that you can attach to each event. This data is then made available in every email you send.
 
 In the event editor overlay, click **+ Add event property** and add any properties you want to include in your digest email.
 
-<img src="https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/scheduled-event-properties.png?fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=ae2556a066c606f85579976b068f0d41" alt="Adding event properties" data-og-width="2280" width="2280" data-og-height="1652" height="1652" data-path="images/scheduled-event-properties.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/scheduled-event-properties.png?w=280&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=a7cbf6430bda3ae08d3f949099647ec4 280w, https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/scheduled-event-properties.png?w=560&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=1b72dc2eb427fda2cc2b53fd630eb18a 560w, https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/scheduled-event-properties.png?w=840&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=217892e1413daece337c47940b2b5e51 840w, https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/scheduled-event-properties.png?w=1100&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=3d53b6c33d397b1570787c1d59ff69bc 1100w, https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/scheduled-event-properties.png?w=1650&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=4b8a8502ab2336b6b016f02ef60b4ade 1650w, https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/scheduled-event-properties.png?w=2500&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=dce6f2d12a2c650eadc062efcd59640a 2500w" />
+<img alt="Adding event properties" />
 
 Make sure the "Trigger frequency" dropdown in the **Event received** node has **One time** selected, as we only want to email each user once per event.
 
@@ -7666,7 +7451,7 @@ Click on the **Send email** node and then **Create email**. This will open the e
 
 When you want to add the event properties you created in the previous step, click the `⚡️` button above the editor (1) and then configure in the **Event Property** editor panel (2).
 
-<img src="https://mintcdn.com/loops/Ghb_kmuDWgpv_ZFW/images/scheduled-editor.png?fit=max&auto=format&n=Ghb_kmuDWgpv_ZFW&q=85&s=fb1eb41c4043168c67219248413abf68" alt="Adding event properties in the editor" data-og-width="2280" width="2280" data-og-height="1596" height="1596" data-path="images/scheduled-editor.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/Ghb_kmuDWgpv_ZFW/images/scheduled-editor.png?w=280&fit=max&auto=format&n=Ghb_kmuDWgpv_ZFW&q=85&s=1ef06da3b015974424b33b606fcbea9e 280w, https://mintcdn.com/loops/Ghb_kmuDWgpv_ZFW/images/scheduled-editor.png?w=560&fit=max&auto=format&n=Ghb_kmuDWgpv_ZFW&q=85&s=09f2cd64215e8a41434f9eb793ef2763 560w, https://mintcdn.com/loops/Ghb_kmuDWgpv_ZFW/images/scheduled-editor.png?w=840&fit=max&auto=format&n=Ghb_kmuDWgpv_ZFW&q=85&s=5383aa9d6e0f65363495d715799e3203 840w, https://mintcdn.com/loops/Ghb_kmuDWgpv_ZFW/images/scheduled-editor.png?w=1100&fit=max&auto=format&n=Ghb_kmuDWgpv_ZFW&q=85&s=b90362052ff0d7b02bbdf69483e8aa1a 1100w, https://mintcdn.com/loops/Ghb_kmuDWgpv_ZFW/images/scheduled-editor.png?w=1650&fit=max&auto=format&n=Ghb_kmuDWgpv_ZFW&q=85&s=8f8e5fd8e214b51792467e6fd3ab6c73 1650w, https://mintcdn.com/loops/Ghb_kmuDWgpv_ZFW/images/scheduled-editor.png?w=2500&fit=max&auto=format&n=Ghb_kmuDWgpv_ZFW&q=85&s=13502dc0a70bf1a57382741b897e1ede 2500w" />
+<img alt="Adding event properties in the editor" />
 
 In the right-hand panel, you will see a list allowing you to insert available event properties [into your email](/creating-emails/personalizing-emails).
 
@@ -7680,7 +7465,7 @@ To send events to Loops you can use an [integration](/integrations), an [SDK](/s
 
 With the API, it's just a case of making a request to the [Send event endpoint](/api-reference/send-event) containing the contact's details, the event name and your event properties.
 
-```json  theme={"dark"}
+```json theme={"dark"}
 {
   "eventName": "sendDigest",
   "email": "user1@gmail.com",
@@ -7692,7 +7477,7 @@ With the API, it's just a case of making a request to the [Send event endpoint](
 
 ## Learn more
 
-<CardGroup columns="2">
+<CardGroup>
   <Card title="Loop Builder" icon="arrows-rotate" href="/loop-builder">
     Learn about creating email sequences in our loop builder.
   </Card>
@@ -7726,7 +7511,7 @@ The first step is to duplicate the campaign so that you can send it out again.
 
 To do this, go to the Campaigns page and click on the `•••` menu icon, then select **Duplicate**.
 
-<img src="https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/duplicating-emails.png?fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=38745151d363c2cd549662db20728712" alt="Duplicating emails" data-og-width="2280" width="2280" data-og-height="1064" height="1064" data-path="images/duplicating-emails.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/duplicating-emails.png?w=280&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=3908144ca2804f4d7b3d34b68a65b63e 280w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/duplicating-emails.png?w=560&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=53b41e192386b3deed8e5b2bcfcc9a23 560w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/duplicating-emails.png?w=840&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=78d1f9a5aa155cc395988f35f44dd1da 840w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/duplicating-emails.png?w=1100&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=cbfa9b2411286bb80d8b4abd7dc52e43 1100w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/duplicating-emails.png?w=1650&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=00fe12a0e222240bcec575fa97d7d4ec 1650w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/duplicating-emails.png?w=2500&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=352f9c0bbe10b71d59af1f78e8512370 2500w" />
+<img alt="Duplicating emails" />
 
 ## Send to your new contacts
 
@@ -7734,7 +7519,7 @@ When you're ready to send the email, it's important that it only gets sent to co
 
 To do this, on the **Audience** page of the sending flow, select "Not Sent" from the first dropdown and then the *original* campaign from the third dropdown.
 
-<img src="https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/campaign-filter-resend.png?fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=11fd278b3b64477c05a48d835ee76e38" alt="Filter audience by sent campaign" data-og-width="2280" width="2280" data-og-height="1326" height="1326" data-path="images/campaign-filter-resend.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/campaign-filter-resend.png?w=280&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=66f727f6f42baeac5e1ec1034728ca8f 280w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/campaign-filter-resend.png?w=560&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=c1d1036710d7ace1a72896b1c2374c4b 560w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/campaign-filter-resend.png?w=840&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=8b75c83a25c44ae96753e0135c271d57 840w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/campaign-filter-resend.png?w=1100&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=cf5cd2dde5d047947a89766ce28697c3 1100w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/campaign-filter-resend.png?w=1650&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=890be3f95967b166a72c25d436f05c99 1650w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/campaign-filter-resend.png?w=2500&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=c340f3a444070015f41947d0e1632a7c 2500w" />
+<img alt="Filter audience by sent campaign" />
 
 This will update the total contacts and the table below, which will show contacts that were not sent the original campaign.
 
@@ -7773,7 +7558,8 @@ A growing number of email provider’s are currently supporting BIMI with many m
 
 Here is the full breakdown of who does and doesn’t support BIMI as of right now:
 
-<img src="https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/R3P9DzvgnutHbbSomXep6ZOEOQ.webp?fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=ce6f070e7111e6c31d2eba8077b35a10" alt="" data-og-width="565" width="565" data-og-height="640" height="640" data-path="images/R3P9DzvgnutHbbSomXep6ZOEOQ.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/R3P9DzvgnutHbbSomXep6ZOEOQ.webp?w=280&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=0770acdc87b225241979a4b81abacce8 280w, https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/R3P9DzvgnutHbbSomXep6ZOEOQ.webp?w=560&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=790f1207ccac0d33e4ca0c189a46101b 560w, https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/R3P9DzvgnutHbbSomXep6ZOEOQ.webp?w=840&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=e7a2a5aee17203c9fe489088f2500c47 840w, https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/R3P9DzvgnutHbbSomXep6ZOEOQ.webp?w=1100&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=b50f4bd3beace8980cb2ba6c24fd5010 1100w, https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/R3P9DzvgnutHbbSomXep6ZOEOQ.webp?w=1650&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=a4dce68690f624187957398d0d5e6ff4 1650w, https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/R3P9DzvgnutHbbSomXep6ZOEOQ.webp?w=2500&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=cf406126f482910d9f874aa30d2858a3 2500w" />
+<img alt="" />
+
 <small>Image via [BIMI Group](https://bimigroup.org/bimi-infographic/)</small>
 
 ## How does BIMI actually work?
@@ -7906,7 +7692,7 @@ Loops integrates with thousands of other platforms so you can sync contacts and 
 
 ## Featured integrations
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Stripe" icon="stripe-s" href="/integrations/stripe">
     Sync customers to your audience and send automated emails.
   </Card>
@@ -7914,52 +7700,52 @@ Loops integrates with thousands of other platforms so you can sync contacts and 
   <Card
     title="Supabase"
     icon={
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      fill="none"
-      viewBox="0 0 109 113"
-    >
-      <path
-        fill="url(#a)"
-        d="M63.708 110.284c-2.86 3.601-8.658 1.628-8.727-2.97l-1.007-67.251h45.22c8.19 0 12.758 9.46 7.665 15.874l-43.151 54.347Z"
-      />
-      <path
-        fill="url(#b)"
-        fillOpacity=".2"
-        d="M63.708 110.284c-2.86 3.601-8.658 1.628-8.727-2.97l-1.007-67.251h45.22c8.19 0 12.758 9.46 7.665 15.874l-43.151 54.347Z"
-      />
-      <path
-        fill="#ffbca6"
-        d="M45.317 2.071c2.86-3.601 8.657-1.628 8.726 2.97l.442 67.251H9.83c-8.19 0-12.759-9.46-7.665-15.875L45.317 2.072Z"
-      />
-      <defs>
-        <linearGradient
-          id="a"
-          x1="53.974"
-          x2="94.163"
-          y1="54.974"
-          y2="71.829"
-          gradientUnits="userSpaceOnUse"
-        >
-          <stop stopColor="#FF4A00" />
-          <stop offset="1" stopColor="#ffbca6" />
-        </linearGradient>
-        <linearGradient
-          id="b"
-          x1="36.156"
-          x2="54.484"
-          y1="30.578"
-          y2="65.081"
-          gradientUnits="userSpaceOnUse"
-        >
-          <stop />
-          <stop offset="1" stopOpacity="0" />
-        </linearGradient>
-      </defs>
-    </svg>
-  }
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="24"
+    height="24"
+    fill="none"
+    viewBox="0 0 109 113"
+  >
+    <path
+      fill="url(#a)"
+      d="M63.708 110.284c-2.86 3.601-8.658 1.628-8.727-2.97l-1.007-67.251h45.22c8.19 0 12.758 9.46 7.665 15.874l-43.151 54.347Z"
+    />
+    <path
+      fill="url(#b)"
+      fillOpacity=".2"
+      d="M63.708 110.284c-2.86 3.601-8.658 1.628-8.727-2.97l-1.007-67.251h45.22c8.19 0 12.758 9.46 7.665 15.874l-43.151 54.347Z"
+    />
+    <path
+      fill="#ffbca6"
+      d="M45.317 2.071c2.86-3.601 8.657-1.628 8.726 2.97l.442 67.251H9.83c-8.19 0-12.759-9.46-7.665-15.875L45.317 2.072Z"
+    />
+    <defs>
+      <linearGradient
+        id="a"
+        x1="53.974"
+        x2="94.163"
+        y1="54.974"
+        y2="71.829"
+        gradientUnits="userSpaceOnUse"
+      >
+        <stop stopColor="#FF4A00" />
+        <stop offset="1" stopColor="#ffbca6" />
+      </linearGradient>
+      <linearGradient
+        id="b"
+        x1="36.156"
+        x2="54.484"
+        y1="30.578"
+        y2="65.081"
+        gradientUnits="userSpaceOnUse"
+      >
+        <stop />
+        <stop offset="1" stopOpacity="0" />
+      </linearGradient>
+    </defs>
+  </svg>
+}
     href="/integrations/supabase"
   >
     Send Supabase authentication emails with Loops.
@@ -7968,7 +7754,7 @@ Loops integrates with thousands of other platforms so you can sync contacts and 
 
 ## Manage contacts
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Attio" icon={<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30" fill="none"><path fill="#FF4A00" d="m29.754 22.362-2.512-4.02s-.009-.017-.015-.024l-.198-.316a2.03 2.03 0 0 0-1.726-.96l-4.046-.014-.282.453-4.835 7.736-.267.428L17.9 28.88c.374.602 1.02.961 1.732.961h5.67c.699 0 1.36-.368 1.73-.959l.2-.32s.008-.008.01-.012l2.515-4.025a2.045 2.045 0 0 0 0-2.164h-.002Zm-.766 1.683-2.516 4.025c-.01.02-.024.034-.035.05a.34.34 0 0 1-.544-.05l-2.515-4.027a1.116 1.116 0 0 1-.13-.29 1.127 1.127 0 0 1 .127-.908l2.512-4.02.006-.01c.06-.09.135-.131.2-.144.026-.008.049-.01.067-.013h.028c.058 0 .202.018.292.164l2.511 4.02c.23.366.23.837 0 1.203h-.003ZM22.322 12.636a2.053 2.053 0 0 0 0-2.164l-2.512-4.02-.21-.338a2.031 2.031 0 0 0-1.732-.959h-5.67c-.707 0-1.354.36-1.731.96L.314 22.366a2.03 2.03 0 0 0-.002 2.162l2.723 4.359a2.026 2.026 0 0 0 1.73.959h5.67c.712 0 1.358-.36 1.732-.96l.208-.33v-.004l.003-.007 2.024-3.237 5.999-9.6 1.917-3.07.004-.001Zm-.593-1.082c0 .207-.058.416-.175.601l-9.946 15.918a.34.34 0 0 1-.291.16.342.342 0 0 1-.292-.16l-2.513-4.027a1.141 1.141 0 0 1 0-1.202l9.945-15.913a.339.339 0 0 1 .292-.163c.058 0 .202.017.293.164l2.512 4.02c.117.185.175.394.175.602Z"></path></svg>} href="/integrations/auto-bcc">
     Sync outgoing mail and contacts to Attio.
   </Card>
@@ -7976,8 +7762,8 @@ Loops integrates with thousands of other platforms so you can sync contacts and 
   <Card
     title="Bubble"
     icon={
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 17"><g fill="none" fillRule="nonzero" transform="translate(.5 .111)"><path fill="#FF4A00" d="M9.361 4.277c-1.474 0-2.928.633-4.037 1.877V.016H3.128v10.336a6.077 6.077 0 0 0 12.151 0c0-3.354-2.563-6.075-5.918-6.075Zm-.157 9.81a3.735 3.735 0 1 1 0-7.47 3.735 3.735 0 0 1 0 7.47Z"/><circle cx="1.53" cy="14.925" r="1.503" fill="#FF4A00"/></g></svg>
-  }
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 17"><g fill="none" fillRule="nonzero" transform="translate(.5 .111)"><path fill="#FF4A00" d="M9.361 4.277c-1.474 0-2.928.633-4.037 1.877V.016H3.128v10.336a6.077 6.077 0 0 0 12.151 0c0-3.354-2.563-6.075-5.918-6.075Zm-.157 9.81a3.735 3.735 0 1 1 0-7.47 3.735 3.735 0 0 1 0 7.47Z"/><circle cx="1.53" cy="14.925" r="1.503" fill="#FF4A00"/></g></svg>
+}
     href="/integrations/bubble"
   >
     Manage contacts and send emails from your Bubble app.
@@ -7986,32 +7772,32 @@ Loops integrates with thousands of other platforms so you can sync contacts and 
   <Card
     title="Census"
     icon={
-    <svg
-      version="1.0"
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 101.4422 106.000000"
+  <svg
+    version="1.0"
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 101.4422 106.000000"
+  >
+    <g
+      transform="translate(0.000000,106.000000) scale(0.100000,-0.100000)"
+      fill="#FF4A00"
+      stroke="none"
     >
-      <g
-        transform="translate(0.000000,106.000000) scale(0.100000,-0.100000)"
-        fill="#FF4A00"
-        stroke="none"
-      >
-        <path
-          d="M390 960 c0 -5 -6 -10 -13 -10 -14 0 -40 -27 -50 -53 -6 -16 12 -17
-    237 -17 187 0 245 -3 249 -12 4 -13 -38 -86 -58 -100 -5 -4 -122 -8 -260 -8
-    l-250 0 -17 -31 c-10 -17 -18 -35 -18 -40 0 -5 103 -9 245 -9 163 0 245 -3
-    245 -10 0 -17 -37 -85 -53 -98 -9 -8 -93 -12 -268 -14 l-254 -3 0 -35 0 -35
-    261 -3 261 -2 28 -51 c22 -42 25 -53 14 -60 -8 -5 -117 -9 -242 -8 -126 0
-    -231 -2 -233 -4 -3 -3 3 -21 13 -41 l18 -36 254 1 253 1 23 -28 c23 -28 40
-    -72 32 -81 -3 -2 -113 -5 -246 -6 -132 -1 -241 -4 -241 -5 0 -18 40 -64 63
-    -72 37 -13 427 -13 460 -1 15 6 43 39 71 86 25 41 46 78 46 81 0 4 27 51 60
-    106 33 54 60 103 60 107 0 5 7 14 15 21 23 19 19 33 -30 113 -25 41 -45 79
-    -45 85 0 6 -4 12 -8 14 -8 3 -49 73 -95 162 -11 21 -36 54 -54 72 l-34 34
-    -219 0 c-140 0 -220 -4 -220 -10z"
-        />
-      </g>
-    </svg>
-  }
+      <path
+        d="M390 960 c0 -5 -6 -10 -13 -10 -14 0 -40 -27 -50 -53 -6 -16 12 -17
+  237 -17 187 0 245 -3 249 -12 4 -13 -38 -86 -58 -100 -5 -4 -122 -8 -260 -8
+  l-250 0 -17 -31 c-10 -17 -18 -35 -18 -40 0 -5 103 -9 245 -9 163 0 245 -3
+  245 -10 0 -17 -37 -85 -53 -98 -9 -8 -93 -12 -268 -14 l-254 -3 0 -35 0 -35
+  261 -3 261 -2 28 -51 c22 -42 25 -53 14 -60 -8 -5 -117 -9 -242 -8 -126 0
+  -231 -2 -233 -4 -3 -3 3 -21 13 -41 l18 -36 254 1 253 1 23 -28 c23 -28 40
+  -72 32 -81 -3 -2 -113 -5 -246 -6 -132 -1 -241 -4 -241 -5 0 -18 40 -64 63
+  -72 37 -13 427 -13 460 -1 15 6 43 39 71 86 25 41 46 78 46 81 0 4 27 51 60
+  106 33 54 60 103 60 107 0 5 7 14 15 21 23 19 19 33 -30 113 -25 41 -45 79
+  -45 85 0 6 -4 12 -8 14 -8 3 -49 73 -95 162 -11 21 -36 54 -54 72 l-34 34
+  -219 0 c-140 0 -220 -4 -220 -10z"
+      />
+    </g>
+  </svg>
+}
     href="/integrations/census"
   >
     Add contacts and contact properties from Census.
@@ -8024,8 +7810,8 @@ Loops integrates with thousands of other platforms so you can sync contacts and 
   <Card
     title="Clerk"
     icon={
-    <svg viewBox="0 0 18 18" fill="none" aria-hidden="true"><ellipse cx="8.99999" cy="9" rx="2.81249" ry="2.8125" fill="#FF4A00"></ellipse><path fill="#FF4A00" d="M14.0674 15.6591C14.3067 15.8984 14.2827 16.2945 14.0015 16.4829C12.571 17.4411 10.8504 17.9999 8.9993 17.9999C7.14818 17.9999 5.42758 17.4411 3.99704 16.4829C3.71589 16.2945 3.69186 15.8984 3.93115 15.6591L5.98648 13.6037C6.17225 13.418 6.46042 13.3886 6.69424 13.5084C7.3856 13.8626 8.16911 14.0624 8.9993 14.0624C9.82948 14.0624 10.613 13.8626 11.3044 13.5084C11.5382 13.3886 11.8263 13.418 12.0121 13.6037L14.0674 15.6591Z"></path><path fill="#FF4A00" d="M14.0022 1.51706C14.2834 1.70539 14.3074 2.10155 14.0681 2.34084L12.0128 4.39619C11.827 4.58195 11.5388 4.61129 11.305 4.49151C10.6136 4.13733 9.83014 3.9375 8.99996 3.9375C6.20403 3.9375 3.93748 6.20406 3.93748 9C3.93748 9.83018 4.13731 10.6137 4.49149 11.3051C4.61127 11.5389 4.58193 11.827 4.39617 12.0128L2.34083 14.0682C2.10154 14.3074 1.70538 14.2834 1.51705 14.0023C0.558857 12.5717 0 10.8511 0 9C0 4.02944 4.02942 0 8.99996 0C10.8511 0 12.5717 0.55886 14.0022 1.51706Z" fillOpacity="0.5"></path></svg>
-  }
+  <svg viewBox="0 0 18 18" fill="none" aria-hidden="true"><ellipse cx="8.99999" cy="9" rx="2.81249" ry="2.8125" fill="#FF4A00"></ellipse><path fill="#FF4A00" d="M14.0674 15.6591C14.3067 15.8984 14.2827 16.2945 14.0015 16.4829C12.571 17.4411 10.8504 17.9999 8.9993 17.9999C7.14818 17.9999 5.42758 17.4411 3.99704 16.4829C3.71589 16.2945 3.69186 15.8984 3.93115 15.6591L5.98648 13.6037C6.17225 13.418 6.46042 13.3886 6.69424 13.5084C7.3856 13.8626 8.16911 14.0624 8.9993 14.0624C9.82948 14.0624 10.613 13.8626 11.3044 13.5084C11.5382 13.3886 11.8263 13.418 12.0121 13.6037L14.0674 15.6591Z"></path><path fill="#FF4A00" d="M14.0022 1.51706C14.2834 1.70539 14.3074 2.10155 14.0681 2.34084L12.0128 4.39619C11.827 4.58195 11.5388 4.61129 11.305 4.49151C10.6136 4.13733 9.83014 3.9375 8.99996 3.9375C6.20403 3.9375 3.93748 6.20406 3.93748 9C3.93748 9.83018 4.13731 10.6137 4.49149 11.3051C4.61127 11.5389 4.58193 11.827 4.39617 12.0128L2.34083 14.0682C2.10154 14.3074 1.70538 14.2834 1.51705 14.0023C0.558857 12.5717 0 10.8511 0 9C0 4.02944 4.02942 0 8.99996 0C10.8511 0 12.5717 0.55886 14.0022 1.51706Z" fillOpacity="0.5"></path></svg>
+}
     href="/integrations/clerk"
   >
     Sync users to your audience and send automated emails.
@@ -8034,23 +7820,23 @@ Loops integrates with thousands of other platforms so you can sync contacts and 
   <Card
     title="Framer"
     icon={
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      xmlnsXlink="http://www.w3.org/1999/xlink"
-      width="24"
-      height="24"
-      viewBox="0 0 98 148"
-    >
-      <path
-        d="M 93.852 94.49 C 95.387 96.036 94.292 98.667 92.113 98.667 L 51.45 98.667 C 50.097 98.667 49 99.764 49 101.117 L 49 142.057 C 49 144.243 46.353 145.335 44.812 143.783 L 0.949 99.622 C 0.341 99.01 0 98.183 0 97.32 L 0 51.783 C 0 50.43 1.097 49.333 2.45 49.333 L 49 49.333 Z"
-        fill="#FF4A00"
-      ></path>
-      <path
-        d="M 49 49.333 L 4.148 4.177 C 2.613 2.631 3.708 0 5.887 0 L 95.55 0 C 96.903 0 98 1.097 98 2.45 L 98 46.883 C 98 48.236 96.903 49.333 95.55 49.333 Z"
-        fill="#FF4A00"
-      ></path>
-    </svg>
-  }
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    xmlnsXlink="http://www.w3.org/1999/xlink"
+    width="24"
+    height="24"
+    viewBox="0 0 98 148"
+  >
+    <path
+      d="M 93.852 94.49 C 95.387 96.036 94.292 98.667 92.113 98.667 L 51.45 98.667 C 50.097 98.667 49 99.764 49 101.117 L 49 142.057 C 49 144.243 46.353 145.335 44.812 143.783 L 0.949 99.622 C 0.341 99.01 0 98.183 0 97.32 L 0 51.783 C 0 50.43 1.097 49.333 2.45 49.333 L 49 49.333 Z"
+      fill="#FF4A00"
+    ></path>
+    <path
+      d="M 49 49.333 L 4.148 4.177 C 2.613 2.631 3.708 0 5.887 0 L 95.55 0 C 96.903 0 98 1.097 98 2.45 L 98 46.883 C 98 48.236 96.903 49.333 95.55 49.333 Z"
+      fill="#FF4A00"
+    ></path>
+  </svg>
+}
     href="/integrations/framer"
   >
     Add a Loops signup form to your Framer site.
@@ -8063,10 +7849,10 @@ Loops integrates with thousands of other platforms so you can sync contacts and 
   <Card
     title="Integrately"
     icon={
-    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 512 512">
-      <path fill="#FF4A00" fillRule="evenodd" d="M256.379 20.676c-129.891 0-235.703 105.401-235.703 235.025 0 128.924 106.059 235.024 235.703 235.024 128.924 0 234.992-105.854 234.992-235.024 0-128.939-106.073-235.025-234.992-235.025ZM5 255.701C5 117.371 117.878 5 256.379 5c137.578 0 250.668 113.106 250.668 250.701 0 137.836-113.095 250.701-250.668 250.701C118.105 506.402 5 393.31 5 255.701Z" clipRule="evenodd"/><path fill="#FF4A00" d="M374.48 314.879c-9.467 48.288-52.542 86.398-102.244 89.475-51.833 3.551-100.825-23.671-119.522-75.036-5.68-15.15-7.1-31.009-7.1-47.579v-46.868c0-14.439 4.97-19.41 19.407-19.41h81.417v-.71h79.997c12.307 0 24.614.71 36.684.71 7.101 0 13.728 4.971 13.728 12.309.473 30.062 3.55 58.94-2.367 87.109ZM212.356 201.021c17.278.71 22.958-1.42 23.668-12.309.71-19.41.71-38.11 0-57.757 0-7.101-5.68-12.308-12.307-12.308H211.41c-7.811 0-13.018 5.681-13.728 13.729v55.626c.947 7.811 6.154 12.309 14.674 13.019ZM302.53 201.021c16.568 0 22.958-2.84 22.958-13.019v-57.757c0-7.101-5.68-11.598-13.017-12.308h-11.597c-8.757 0-13.728 4.971-13.728 13.729V187.292c.947 8.522 5.917 13.729 15.384 13.729Z"/>
-    </svg>
-  }
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 512 512">
+    <path fill="#FF4A00" fillRule="evenodd" d="M256.379 20.676c-129.891 0-235.703 105.401-235.703 235.025 0 128.924 106.059 235.024 235.703 235.024 128.924 0 234.992-105.854 234.992-235.024 0-128.939-106.073-235.025-234.992-235.025ZM5 255.701C5 117.371 117.878 5 256.379 5c137.578 0 250.668 113.106 250.668 250.701 0 137.836-113.095 250.701-250.668 250.701C118.105 506.402 5 393.31 5 255.701Z" clipRule="evenodd"/><path fill="#FF4A00" d="M374.48 314.879c-9.467 48.288-52.542 86.398-102.244 89.475-51.833 3.551-100.825-23.671-119.522-75.036-5.68-15.15-7.1-31.009-7.1-47.579v-46.868c0-14.439 4.97-19.41 19.407-19.41h81.417v-.71h79.997c12.307 0 24.614.71 36.684.71 7.101 0 13.728 4.971 13.728 12.309.473 30.062 3.55 58.94-2.367 87.109ZM212.356 201.021c17.278.71 22.958-1.42 23.668-12.309.71-19.41.71-38.11 0-57.757 0-7.101-5.68-12.308-12.307-12.308H211.41c-7.811 0-13.018 5.681-13.728 13.729v55.626c.947 7.811 6.154 12.309 14.674 13.019ZM302.53 201.021c16.568 0 22.958-2.84 22.958-13.019v-57.757c0-7.101-5.68-11.598-13.017-12.308h-11.597c-8.757 0-13.728 4.971-13.728 13.729V187.292c.947 8.522 5.917 13.729 15.384 13.729Z"/>
+  </svg>
+}
     href="/integrations/integrately"
   >
     Manage contacts and send emails from over a thousand other platforms.
@@ -8075,29 +7861,29 @@ Loops integrates with thousands of other platforms so you can sync contacts and 
   <Card
     title="Make"
     icon={
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 512 512"
-    >
-      <g transform="translate(3757 -1767)">
-        <circle
-          cx="256"
-          cy="256"
-          r="256"
-          fill="#FF4A00"
-          data-name="Ellipse 10"
-          transform="translate(-3757 1767)"
-        />
-        <path
-          fill="#fff"
-          d="M-3431.576 1919.969a7.187 7.187 0 0 0-7.186 7.192v192.191a7.19 7.19 0 0 0 7.186 7.192h52.063a7.187 7.187 0 0 0 7.186-7.192v-192.191a7.183 7.183 0 0 0-7.186-7.192Zm-152.714 2.539-86.296 171.712a7.191 7.191 0 0 0 3.192 9.654l46.514 23.379a7.184 7.184 0 0 0 9.654-3.2l86.3-171.711a7.184 7.184 0 0 0-3.2-9.654l-46.511-23.377a7.2 7.2 0 0 0-9.654 3.2m72.592.614-36.926 187.176a7.189 7.189 0 0 0 5.632 8.442l51.028 10.306a7.2 7.2 0 0 0 8.481-5.665l36.928-187.173a7.19 7.19 0 0 0-5.637-8.442l-51.03-10.306a7.391 7.391 0 0 0-1.427-.144 7.194 7.194 0 0 0-7.048 5.8"
-          data-name="Path 141560"
-        />
-      </g>
-    </svg>
-  }
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="24"
+    height="24"
+    viewBox="0 0 512 512"
+  >
+    <g transform="translate(3757 -1767)">
+      <circle
+        cx="256"
+        cy="256"
+        r="256"
+        fill="#FF4A00"
+        data-name="Ellipse 10"
+        transform="translate(-3757 1767)"
+      />
+      <path
+        fill="#fff"
+        d="M-3431.576 1919.969a7.187 7.187 0 0 0-7.186 7.192v192.191a7.19 7.19 0 0 0 7.186 7.192h52.063a7.187 7.187 0 0 0 7.186-7.192v-192.191a7.183 7.183 0 0 0-7.186-7.192Zm-152.714 2.539-86.296 171.712a7.191 7.191 0 0 0 3.192 9.654l46.514 23.379a7.184 7.184 0 0 0 9.654-3.2l86.3-171.711a7.184 7.184 0 0 0-3.2-9.654l-46.511-23.377a7.2 7.2 0 0 0-9.654 3.2m72.592.614-36.926 187.176a7.189 7.189 0 0 0 5.632 8.442l51.028 10.306a7.2 7.2 0 0 0 8.481-5.665l36.928-187.173a7.19 7.19 0 0 0-5.637-8.442l-51.03-10.306a7.391 7.391 0 0 0-1.427-.144 7.194 7.194 0 0 0-7.048 5.8"
+        data-name="Path 141560"
+      />
+    </g>
+  </svg>
+}
     href="/integrations/make"
   >
     Manage contacts and send emails from thousands of other platforms.
@@ -8106,8 +7892,8 @@ Loops integrates with thousands of other platforms so you can sync contacts and 
   <Card
     title="RudderStack"
     icon={
-    <svg width="140" height="30" viewBox="0 0 857 140" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 6.66667C0 2.98478 2.98477.0 6.66667.0H136c2.209.0 4 1.79086 4 4V133.333C140 137.015 137.015 140 133.333 140 59.6954 140 0 80.3046.0 6.66667z" fill="#FF4A00"></path></svg>
-  }
+  <svg width="140" height="30" viewBox="0 0 857 140" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 6.66667C0 2.98478 2.98477.0 6.66667.0H136c2.209.0 4 1.79086 4 4V133.333C140 137.015 137.015 140 133.333 140 59.6954 140 0 80.3046.0 6.66667z" fill="#FF4A00"></path></svg>
+}
     href="/integrations/rudderstack"
   >
     Manage contacts and trigger loops from hundreds of other platforms.
@@ -8124,38 +7910,38 @@ Loops integrates with thousands of other platforms so you can sync contacts and 
   <Card
     title="Segment"
     icon={
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 85.574 89.423">
-      <g fill="#FF4A00" data-name="Layer 1">
-        <rect
-          width="52.25"
-          height="9.064"
-          x="32.817"
-          y="28.854"
-          rx="1.685"
-        />
-        <rect
-          width="52.25"
-          height="9.064"
-          x=".488"
-          y="51.505"
-          rx="1.685"
-        />
-        <path
-          d="M6.761 35.058a1.7 1.7 0 0 0 2.053-1.154A35.66 35.66 0 0 1 50.482 9.903a1.671 1.671 0 0 0 1.958-1.216l1.475-5.504a1.695 1.695 0 0 0-1.282-2.087 44.726 44.726 0 0 0-52.56 30.39 1.677 1.677 0 0 0 1.185 2.097ZM78.813 54.364a1.699 1.699 0 0 0-2.053 1.155A35.659 35.659 0 0 1 35.092 79.52a1.671 1.671 0 0 0-1.958 1.216l-1.474 5.503a1.695 1.695 0 0 0 1.282 2.088 44.726 44.726 0 0 0 52.56-30.39 1.677 1.677 0 0 0-1.185-2.097Z"
-        />
-        <circle
-          cx="68.613"
-          cy="13.932"
-          r="4.97"
-        />
-        <circle
-          cx="16.959"
-          cy="75.491"
-          r="4.97"
-        />
-      </g>
-    </svg>
-  }
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 85.574 89.423">
+    <g fill="#FF4A00" data-name="Layer 1">
+      <rect
+        width="52.25"
+        height="9.064"
+        x="32.817"
+        y="28.854"
+        rx="1.685"
+      />
+      <rect
+        width="52.25"
+        height="9.064"
+        x=".488"
+        y="51.505"
+        rx="1.685"
+      />
+      <path
+        d="M6.761 35.058a1.7 1.7 0 0 0 2.053-1.154A35.66 35.66 0 0 1 50.482 9.903a1.671 1.671 0 0 0 1.958-1.216l1.475-5.504a1.695 1.695 0 0 0-1.282-2.087 44.726 44.726 0 0 0-52.56 30.39 1.677 1.677 0 0 0 1.185 2.097ZM78.813 54.364a1.699 1.699 0 0 0-2.053 1.155A35.659 35.659 0 0 1 35.092 79.52a1.671 1.671 0 0 0-1.958 1.216l-1.474 5.503a1.695 1.695 0 0 0 1.282 2.088 44.726 44.726 0 0 0 52.56-30.39 1.677 1.677 0 0 0-1.185-2.097Z"
+      />
+      <circle
+        cx="68.613"
+        cy="13.932"
+        r="4.97"
+      />
+      <circle
+        cx="16.959"
+        cy="75.491"
+        r="4.97"
+      />
+    </g>
+  </svg>
+}
     href="/integrations/segment"
   >
     Manage contacts and trigger loops from thousands of other platforms.
@@ -8168,19 +7954,19 @@ Loops integrates with thousands of other platforms so you can sync contacts and 
   <Card
     title="Webflow"
     icon={
-    <svg
-      viewBox="0 0 16 16"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <path
-        fillRule="evenodd"
-        clipRule="evenodd"
-        d="M15.3334 4L11.2916 12H7.49528L9.18675 8.68446H9.11086C7.7154 10.5186 5.63335 11.726 2.66675 12V8.73034C2.66675 8.73034 4.56456 8.61685 5.68023 7.42922H2.66675V4.00006H6.05357V6.8205L6.12959 6.82018L7.51356 4.00006H10.0749V6.80261L10.151 6.80249L11.5869 4H15.3334Z"
-        fill="#FF4A00"
-      ></path>
-    </svg>
-  }
+  <svg
+    viewBox="0 0 16 16"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      fillRule="evenodd"
+      clipRule="evenodd"
+      d="M15.3334 4L11.2916 12H7.49528L9.18675 8.68446H9.11086C7.7154 10.5186 5.63335 11.726 2.66675 12V8.73034C2.66675 8.73034 4.56456 8.61685 5.68023 7.42922H2.66675V4.00006H6.05357V6.8205L6.12959 6.82018L7.51356 4.00006H10.0749V6.80261L10.151 6.80249L11.5869 4H15.3334Z"
+      fill="#FF4A00"
+    ></path>
+  </svg>
+}
     href="/integrations/webflow"
   >
     Add a Loops signup form to your Webflow site.
@@ -8189,21 +7975,21 @@ Loops integrates with thousands of other platforms so you can sync contacts and 
   <Card
     title="Zapier"
     icon={
-    <svg
-      viewBox="0 0 256 256"
-      version="1.1"
-      xmlns="http://www.w3.org/2000/svg"
-      xmlnsXlink="http://www.w3.org/1999/xlink"
-    >
-      <g>
-        <path
-          d="M128.080089,-0.000183105 C135.311053,0.0131003068 142.422517,0.624138494 149.335663,1.77979593 L149.335663,1.77979593 L149.335663,76.2997796 L202.166953,23.6044907 C208.002065,27.7488446 213.460883,32.3582023 218.507811,37.3926715 C223.557281,42.4271407 228.192318,47.8867213 232.346817,53.7047992 L232.346817,53.7047992 L179.512985,106.400063 L254.227854,106.400063 C255.387249,113.29414 256,120.36111 256,127.587243 L256,127.587243 L256,127.759881 C256,134.986013 255.387249,142.066204 254.227854,148.960282 L254.227854,148.960282 L179.500273,148.960282 L232.346817,201.642324 C228.192318,207.460402 223.557281,212.919983 218.523066,217.954452 L218.523066,217.954452 L218.507811,217.954452 C213.460883,222.988921 208.002065,227.6115 202.182208,231.742607 L202.182208,231.742607 L149.335663,179.04709 L149.335663,253.5672 C142.435229,254.723036 135.323765,255.333244 128.092802,255.348499 L128.092802,255.348499 L127.907197,255.348499 C120.673691,255.333244 113.590195,254.723036 106.677048,253.5672 L106.677048,253.5672 L106.677048,179.04709 L53.8457596,231.742607 C42.1780766,223.466917 31.977435,213.278734 23.6658953,201.642324 L23.6658953,201.642324 L76.4997269,148.960282 L1.78485803,148.960282 C0.612750404,142.052729 0,134.946095 0,127.719963 L0,127.719963 L0,127.349037 C0.0121454869,125.473817 0.134939797,123.182933 0.311311815,120.812834 L0.36577283,120.099764 C0.887996182,113.428547 1.78485803,106.400063 1.78485803,106.400063 L1.78485803,106.400063 L76.4997269,106.400063 L23.6658953,53.7047992 C27.8076812,47.8867213 32.4300059,42.4403618 37.4769335,37.4193681 L37.4769335,37.4193681 L37.5023588,37.3926715 C42.5391163,32.3582023 48.0106469,27.7488446 53.8457596,23.6044907 L53.8457596,23.6044907 L106.677048,76.2997796 L106.677048,1.77979593 C113.590195,0.624138494 120.688946,0.0131003068 127.932622,-0.000183105 L127.932622,-0.000183105 L128.080089,-0.000183105 Z M128.067377,95.7600714 L127.945335,95.7600714 C118.436262,95.7600714 109.32891,97.5001809 100.910584,100.661566 C97.7553011,109.043534 96.0085811,118.129275 95.9958684,127.613685 L95.9958684,127.733184 C96.0085811,137.217594 97.7553011,146.303589 100.923296,154.685303 C109.32891,157.846943 118.436262,159.587052 127.945335,159.587052 L128.067377,159.587052 C137.576449,159.587052 146.683802,157.846943 155.089415,154.685303 C158.257411,146.290368 160.004131,137.217594 160.004131,127.733184 L160.004131,127.613685 C160.004131,118.129275 158.257411,109.043534 155.089415,100.661566 C146.683802,97.5001809 137.576449,95.7600714 128.067377,95.7600714 Z"
-          fill="#FF4A00"
-          fillRule="nonzero"
-        ></path>
-      </g>
-    </svg>
-  }
+  <svg
+    viewBox="0 0 256 256"
+    version="1.1"
+    xmlns="http://www.w3.org/2000/svg"
+    xmlnsXlink="http://www.w3.org/1999/xlink"
+  >
+    <g>
+      <path
+        d="M128.080089,-0.000183105 C135.311053,0.0131003068 142.422517,0.624138494 149.335663,1.77979593 L149.335663,1.77979593 L149.335663,76.2997796 L202.166953,23.6044907 C208.002065,27.7488446 213.460883,32.3582023 218.507811,37.3926715 C223.557281,42.4271407 228.192318,47.8867213 232.346817,53.7047992 L232.346817,53.7047992 L179.512985,106.400063 L254.227854,106.400063 C255.387249,113.29414 256,120.36111 256,127.587243 L256,127.587243 L256,127.759881 C256,134.986013 255.387249,142.066204 254.227854,148.960282 L254.227854,148.960282 L179.500273,148.960282 L232.346817,201.642324 C228.192318,207.460402 223.557281,212.919983 218.523066,217.954452 L218.523066,217.954452 L218.507811,217.954452 C213.460883,222.988921 208.002065,227.6115 202.182208,231.742607 L202.182208,231.742607 L149.335663,179.04709 L149.335663,253.5672 C142.435229,254.723036 135.323765,255.333244 128.092802,255.348499 L128.092802,255.348499 L127.907197,255.348499 C120.673691,255.333244 113.590195,254.723036 106.677048,253.5672 L106.677048,253.5672 L106.677048,179.04709 L53.8457596,231.742607 C42.1780766,223.466917 31.977435,213.278734 23.6658953,201.642324 L23.6658953,201.642324 L76.4997269,148.960282 L1.78485803,148.960282 C0.612750404,142.052729 0,134.946095 0,127.719963 L0,127.719963 L0,127.349037 C0.0121454869,125.473817 0.134939797,123.182933 0.311311815,120.812834 L0.36577283,120.099764 C0.887996182,113.428547 1.78485803,106.400063 1.78485803,106.400063 L1.78485803,106.400063 L76.4997269,106.400063 L23.6658953,53.7047992 C27.8076812,47.8867213 32.4300059,42.4403618 37.4769335,37.4193681 L37.4769335,37.4193681 L37.5023588,37.3926715 C42.5391163,32.3582023 48.0106469,27.7488446 53.8457596,23.6044907 L53.8457596,23.6044907 L106.677048,76.2997796 L106.677048,1.77979593 C113.590195,0.624138494 120.688946,0.0131003068 127.932622,-0.000183105 L127.932622,-0.000183105 L128.080089,-0.000183105 Z M128.067377,95.7600714 L127.945335,95.7600714 C118.436262,95.7600714 109.32891,97.5001809 100.910584,100.661566 C97.7553011,109.043534 96.0085811,118.129275 95.9958684,127.613685 L95.9958684,127.733184 C96.0085811,137.217594 97.7553011,146.303589 100.923296,154.685303 C109.32891,157.846943 118.436262,159.587052 127.945335,159.587052 L128.067377,159.587052 C137.576449,159.587052 146.683802,157.846943 155.089415,154.685303 C158.257411,146.290368 160.004131,137.217594 160.004131,127.733184 L160.004131,127.613685 C160.004131,118.129275 158.257411,109.043534 155.089415,100.661566 C146.683802,97.5001809 137.576449,95.7600714 128.067377,95.7600714 Z"
+        fill="#FF4A00"
+        fillRule="nonzero"
+      ></path>
+    </g>
+  </svg>
+}
     href="/integrations/zapier"
   >
     Manage contacts and send emails from thousands of other platforms.
@@ -8212,12 +7998,12 @@ Loops integrates with thousands of other platforms so you can sync contacts and 
 
 ## Send email
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card
     title="Auth0"
     icon={
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 256 285"><path fill="#FF4A00" d="M220.412 0h-92.415l28.562 89.006h92.416l-74.77 53.077 28.57 89.511c48.128-35.06 63.854-88.12 46.208-142.588L220.413 0ZM7.018 89.006h92.416L127.997 0H35.589L7.019 89.006c-17.655 54.468-1.92 107.529 46.207 142.588l28.563-89.51-74.77-53.078Zm46.208 142.588 74.77 52.97 74.77-52.97-74.77-53.847-74.77 53.847Z"/></svg>
-  }
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 256 285"><path fill="#FF4A00" d="M220.412 0h-92.415l28.562 89.006h92.416l-74.77 53.077 28.57 89.511c48.128-35.06 63.854-88.12 46.208-142.588L220.413 0ZM7.018 89.006h92.416L127.997 0H35.589L7.019 89.006c-17.655 54.468-1.92 107.529 46.207 142.588l28.563-89.51-74.77-53.078Zm46.208 142.588 74.77 52.97 74.77-52.97-74.77-53.847-74.77 53.847Z"/></svg>
+}
     href="/integrations/auth0"
   >
     Send Auth0 authentication emails with Loops.
@@ -8230,8 +8016,8 @@ Loops integrates with thousands of other platforms so you can sync contacts and 
   <Card
     title="Bubble"
     icon={
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 17"><g fill="none" fillRule="nonzero" transform="translate(.5 .111)"><path fill="#FF4A00" d="M9.361 4.277c-1.474 0-2.928.633-4.037 1.877V.016H3.128v10.336a6.077 6.077 0 0 0 12.151 0c0-3.354-2.563-6.075-5.918-6.075Zm-.157 9.81a3.735 3.735 0 1 1 0-7.47 3.735 3.735 0 0 1 0 7.47Z"/><circle cx="1.53" cy="14.925" r="1.503" fill="#FF4A00"/></g></svg>
-  }
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 17"><g fill="none" fillRule="nonzero" transform="translate(.5 .111)"><path fill="#FF4A00" d="M9.361 4.277c-1.474 0-2.928.633-4.037 1.877V.016H3.128v10.336a6.077 6.077 0 0 0 12.151 0c0-3.354-2.563-6.075-5.918-6.075Zm-.157 9.81a3.735 3.735 0 1 1 0-7.47 3.735 3.735 0 0 1 0 7.47Z"/><circle cx="1.53" cy="14.925" r="1.503" fill="#FF4A00"/></g></svg>
+}
     href="/integrations/bubble"
   >
     Manage contacts and send emails from your Bubble app.
@@ -8240,8 +8026,8 @@ Loops integrates with thousands of other platforms so you can sync contacts and 
   <Card
     title="Clerk"
     icon={
-    <svg viewBox="0 0 18 18" fill="none" aria-hidden="true"><ellipse cx="8.99999" cy="9" rx="2.81249" ry="2.8125" fill="#FF4A00"></ellipse><path fill="#FF4A00" d="M14.0674 15.6591C14.3067 15.8984 14.2827 16.2945 14.0015 16.4829C12.571 17.4411 10.8504 17.9999 8.9993 17.9999C7.14818 17.9999 5.42758 17.4411 3.99704 16.4829C3.71589 16.2945 3.69186 15.8984 3.93115 15.6591L5.98648 13.6037C6.17225 13.418 6.46042 13.3886 6.69424 13.5084C7.3856 13.8626 8.16911 14.0624 8.9993 14.0624C9.82948 14.0624 10.613 13.8626 11.3044 13.5084C11.5382 13.3886 11.8263 13.418 12.0121 13.6037L14.0674 15.6591Z"></path><path fill="#FF4A00" d="M14.0022 1.51706C14.2834 1.70539 14.3074 2.10155 14.0681 2.34084L12.0128 4.39619C11.827 4.58195 11.5388 4.61129 11.305 4.49151C10.6136 4.13733 9.83014 3.9375 8.99996 3.9375C6.20403 3.9375 3.93748 6.20406 3.93748 9C3.93748 9.83018 4.13731 10.6137 4.49149 11.3051C4.61127 11.5389 4.58193 11.827 4.39617 12.0128L2.34083 14.0682C2.10154 14.3074 1.70538 14.2834 1.51705 14.0023C0.558857 12.5717 0 10.8511 0 9C0 4.02944 4.02942 0 8.99996 0C10.8511 0 12.5717 0.55886 14.0022 1.51706Z" fillOpacity="0.5"></path></svg>
-  }
+  <svg viewBox="0 0 18 18" fill="none" aria-hidden="true"><ellipse cx="8.99999" cy="9" rx="2.81249" ry="2.8125" fill="#FF4A00"></ellipse><path fill="#FF4A00" d="M14.0674 15.6591C14.3067 15.8984 14.2827 16.2945 14.0015 16.4829C12.571 17.4411 10.8504 17.9999 8.9993 17.9999C7.14818 17.9999 5.42758 17.4411 3.99704 16.4829C3.71589 16.2945 3.69186 15.8984 3.93115 15.6591L5.98648 13.6037C6.17225 13.418 6.46042 13.3886 6.69424 13.5084C7.3856 13.8626 8.16911 14.0624 8.9993 14.0624C9.82948 14.0624 10.613 13.8626 11.3044 13.5084C11.5382 13.3886 11.8263 13.418 12.0121 13.6037L14.0674 15.6591Z"></path><path fill="#FF4A00" d="M14.0022 1.51706C14.2834 1.70539 14.3074 2.10155 14.0681 2.34084L12.0128 4.39619C11.827 4.58195 11.5388 4.61129 11.305 4.49151C10.6136 4.13733 9.83014 3.9375 8.99996 3.9375C6.20403 3.9375 3.93748 6.20406 3.93748 9C3.93748 9.83018 4.13731 10.6137 4.49149 11.3051C4.61127 11.5389 4.58193 11.827 4.39617 12.0128L2.34083 14.0682C2.10154 14.3074 1.70538 14.2834 1.51705 14.0023C0.558857 12.5717 0 10.8511 0 9C0 4.02944 4.02942 0 8.99996 0C10.8511 0 12.5717 0.55886 14.0022 1.51706Z" fillOpacity="0.5"></path></svg>
+}
     href="/integrations/clerk"
   >
     Sync users to your audience and send automated emails.
@@ -8250,10 +8036,10 @@ Loops integrates with thousands of other platforms so you can sync contacts and 
   <Card
     title="Integrately"
     icon={
-    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 512 512">
-      <path fill="#FF4A00" fillRule="evenodd" d="M256.379 20.676c-129.891 0-235.703 105.401-235.703 235.025 0 128.924 106.059 235.024 235.703 235.024 128.924 0 234.992-105.854 234.992-235.024 0-128.939-106.073-235.025-234.992-235.025ZM5 255.701C5 117.371 117.878 5 256.379 5c137.578 0 250.668 113.106 250.668 250.701 0 137.836-113.095 250.701-250.668 250.701C118.105 506.402 5 393.31 5 255.701Z" clipRule="evenodd"/><path fill="#FF4A00" d="M374.48 314.879c-9.467 48.288-52.542 86.398-102.244 89.475-51.833 3.551-100.825-23.671-119.522-75.036-5.68-15.15-7.1-31.009-7.1-47.579v-46.868c0-14.439 4.97-19.41 19.407-19.41h81.417v-.71h79.997c12.307 0 24.614.71 36.684.71 7.101 0 13.728 4.971 13.728 12.309.473 30.062 3.55 58.94-2.367 87.109ZM212.356 201.021c17.278.71 22.958-1.42 23.668-12.309.71-19.41.71-38.11 0-57.757 0-7.101-5.68-12.308-12.307-12.308H211.41c-7.811 0-13.018 5.681-13.728 13.729v55.626c.947 7.811 6.154 12.309 14.674 13.019ZM302.53 201.021c16.568 0 22.958-2.84 22.958-13.019v-57.757c0-7.101-5.68-11.598-13.017-12.308h-11.597c-8.757 0-13.728 4.971-13.728 13.729V187.292c.947 8.522 5.917 13.729 15.384 13.729Z"/>
-    </svg>
-  }
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 512 512">
+    <path fill="#FF4A00" fillRule="evenodd" d="M256.379 20.676c-129.891 0-235.703 105.401-235.703 235.025 0 128.924 106.059 235.024 235.703 235.024 128.924 0 234.992-105.854 234.992-235.024 0-128.939-106.073-235.025-234.992-235.025ZM5 255.701C5 117.371 117.878 5 256.379 5c137.578 0 250.668 113.106 250.668 250.701 0 137.836-113.095 250.701-250.668 250.701C118.105 506.402 5 393.31 5 255.701Z" clipRule="evenodd"/><path fill="#FF4A00" d="M374.48 314.879c-9.467 48.288-52.542 86.398-102.244 89.475-51.833 3.551-100.825-23.671-119.522-75.036-5.68-15.15-7.1-31.009-7.1-47.579v-46.868c0-14.439 4.97-19.41 19.407-19.41h81.417v-.71h79.997c12.307 0 24.614.71 36.684.71 7.101 0 13.728 4.971 13.728 12.309.473 30.062 3.55 58.94-2.367 87.109ZM212.356 201.021c17.278.71 22.958-1.42 23.668-12.309.71-19.41.71-38.11 0-57.757 0-7.101-5.68-12.308-12.307-12.308H211.41c-7.811 0-13.018 5.681-13.728 13.729v55.626c.947 7.811 6.154 12.309 14.674 13.019ZM302.53 201.021c16.568 0 22.958-2.84 22.958-13.019v-57.757c0-7.101-5.68-11.598-13.017-12.308h-11.597c-8.757 0-13.728 4.971-13.728 13.729V187.292c.947 8.522 5.917 13.729 15.384 13.729Z"/>
+  </svg>
+}
     href="/integrations/integrately"
   >
     Manage contacts and send emails from over a thousand other platforms.
@@ -8262,29 +8048,29 @@ Loops integrates with thousands of other platforms so you can sync contacts and 
   <Card
     title="Make"
     icon={
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 512 512"
-    >
-      <g transform="translate(3757 -1767)">
-        <circle
-          cx="256"
-          cy="256"
-          r="256"
-          fill="#FF4A00"
-          data-name="Ellipse 10"
-          transform="translate(-3757 1767)"
-        />
-        <path
-          fill="#fff"
-          d="M-3431.576 1919.969a7.187 7.187 0 0 0-7.186 7.192v192.191a7.19 7.19 0 0 0 7.186 7.192h52.063a7.187 7.187 0 0 0 7.186-7.192v-192.191a7.183 7.183 0 0 0-7.186-7.192Zm-152.714 2.539-86.296 171.712a7.191 7.191 0 0 0 3.192 9.654l46.514 23.379a7.184 7.184 0 0 0 9.654-3.2l86.3-171.711a7.184 7.184 0 0 0-3.2-9.654l-46.511-23.377a7.2 7.2 0 0 0-9.654 3.2m72.592.614-36.926 187.176a7.189 7.189 0 0 0 5.632 8.442l51.028 10.306a7.2 7.2 0 0 0 8.481-5.665l36.928-187.173a7.19 7.19 0 0 0-5.637-8.442l-51.03-10.306a7.391 7.391 0 0 0-1.427-.144 7.194 7.194 0 0 0-7.048 5.8"
-          data-name="Path 141560"
-        />
-      </g>
-    </svg>
-  }
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="24"
+    height="24"
+    viewBox="0 0 512 512"
+  >
+    <g transform="translate(3757 -1767)">
+      <circle
+        cx="256"
+        cy="256"
+        r="256"
+        fill="#FF4A00"
+        data-name="Ellipse 10"
+        transform="translate(-3757 1767)"
+      />
+      <path
+        fill="#fff"
+        d="M-3431.576 1919.969a7.187 7.187 0 0 0-7.186 7.192v192.191a7.19 7.19 0 0 0 7.186 7.192h52.063a7.187 7.187 0 0 0 7.186-7.192v-192.191a7.183 7.183 0 0 0-7.186-7.192Zm-152.714 2.539-86.296 171.712a7.191 7.191 0 0 0 3.192 9.654l46.514 23.379a7.184 7.184 0 0 0 9.654-3.2l86.3-171.711a7.184 7.184 0 0 0-3.2-9.654l-46.511-23.377a7.2 7.2 0 0 0-9.654 3.2m72.592.614-36.926 187.176a7.189 7.189 0 0 0 5.632 8.442l51.028 10.306a7.2 7.2 0 0 0 8.481-5.665l36.928-187.173a7.19 7.19 0 0 0-5.637-8.442l-51.03-10.306a7.391 7.391 0 0 0-1.427-.144 7.194 7.194 0 0 0-7.048 5.8"
+        data-name="Path 141560"
+      />
+    </g>
+  </svg>
+}
     href="/integrations/make"
   >
     Manage contacts and send emails from thousands of other platforms.
@@ -8297,8 +8083,8 @@ Loops integrates with thousands of other platforms so you can sync contacts and 
   <Card
     title="RudderStack"
     icon={
-    <svg width="140" height="30" viewBox="0 0 857 140" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 6.66667C0 2.98478 2.98477.0 6.66667.0H136c2.209.0 4 1.79086 4 4V133.333C140 137.015 137.015 140 133.333 140 59.6954 140 0 80.3046.0 6.66667z" fill="#FF4A00"></path></svg>
-  }
+  <svg width="140" height="30" viewBox="0 0 857 140" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 6.66667C0 2.98478 2.98477.0 6.66667.0H136c2.209.0 4 1.79086 4 4V133.333C140 137.015 137.015 140 133.333 140 59.6954 140 0 80.3046.0 6.66667z" fill="#FF4A00"></path></svg>
+}
     href="/integrations/rudderstack"
   >
     Manage contacts and trigger loops from hundreds of other platforms.
@@ -8307,38 +8093,38 @@ Loops integrates with thousands of other platforms so you can sync contacts and 
   <Card
     title="Segment"
     icon={
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 85.574 89.423">
-      <g fill="#FF4A00" data-name="Layer 1">
-        <rect
-          width="52.25"
-          height="9.064"
-          x="32.817"
-          y="28.854"
-          rx="1.685"
-        />
-        <rect
-          width="52.25"
-          height="9.064"
-          x=".488"
-          y="51.505"
-          rx="1.685"
-        />
-        <path
-          d="M6.761 35.058a1.7 1.7 0 0 0 2.053-1.154A35.66 35.66 0 0 1 50.482 9.903a1.671 1.671 0 0 0 1.958-1.216l1.475-5.504a1.695 1.695 0 0 0-1.282-2.087 44.726 44.726 0 0 0-52.56 30.39 1.677 1.677 0 0 0 1.185 2.097ZM78.813 54.364a1.699 1.699 0 0 0-2.053 1.155A35.659 35.659 0 0 1 35.092 79.52a1.671 1.671 0 0 0-1.958 1.216l-1.474 5.503a1.695 1.695 0 0 0 1.282 2.088 44.726 44.726 0 0 0 52.56-30.39 1.677 1.677 0 0 0-1.185-2.097Z"
-        />
-        <circle
-          cx="68.613"
-          cy="13.932"
-          r="4.97"
-        />
-        <circle
-          cx="16.959"
-          cy="75.491"
-          r="4.97"
-        />
-      </g>
-    </svg>
-  }
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 85.574 89.423">
+    <g fill="#FF4A00" data-name="Layer 1">
+      <rect
+        width="52.25"
+        height="9.064"
+        x="32.817"
+        y="28.854"
+        rx="1.685"
+      />
+      <rect
+        width="52.25"
+        height="9.064"
+        x=".488"
+        y="51.505"
+        rx="1.685"
+      />
+      <path
+        d="M6.761 35.058a1.7 1.7 0 0 0 2.053-1.154A35.66 35.66 0 0 1 50.482 9.903a1.671 1.671 0 0 0 1.958-1.216l1.475-5.504a1.695 1.695 0 0 0-1.282-2.087 44.726 44.726 0 0 0-52.56 30.39 1.677 1.677 0 0 0 1.185 2.097ZM78.813 54.364a1.699 1.699 0 0 0-2.053 1.155A35.659 35.659 0 0 1 35.092 79.52a1.671 1.671 0 0 0-1.958 1.216l-1.474 5.503a1.695 1.695 0 0 0 1.282 2.088 44.726 44.726 0 0 0 52.56-30.39 1.677 1.677 0 0 0-1.185-2.097Z"
+      />
+      <circle
+        cx="68.613"
+        cy="13.932"
+        r="4.97"
+      />
+      <circle
+        cx="16.959"
+        cy="75.491"
+        r="4.97"
+      />
+    </g>
+  </svg>
+}
     href="/integrations/segment"
   >
     Manage contacts and trigger loops from thousands of other platforms.
@@ -8351,52 +8137,52 @@ Loops integrates with thousands of other platforms so you can sync contacts and 
   <Card
     title="Supabase"
     icon={
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      fill="none"
-      viewBox="0 0 109 113"
-    >
-      <path
-        fill="url(#a)"
-        d="M63.708 110.284c-2.86 3.601-8.658 1.628-8.727-2.97l-1.007-67.251h45.22c8.19 0 12.758 9.46 7.665 15.874l-43.151 54.347Z"
-      />
-      <path
-        fill="url(#b)"
-        fillOpacity=".2"
-        d="M63.708 110.284c-2.86 3.601-8.658 1.628-8.727-2.97l-1.007-67.251h45.22c8.19 0 12.758 9.46 7.665 15.874l-43.151 54.347Z"
-      />
-      <path
-        fill="#ffbca6"
-        d="M45.317 2.071c2.86-3.601 8.657-1.628 8.726 2.97l.442 67.251H9.83c-8.19 0-12.759-9.46-7.665-15.875L45.317 2.072Z"
-      />
-      <defs>
-        <linearGradient
-          id="a"
-          x1="53.974"
-          x2="94.163"
-          y1="54.974"
-          y2="71.829"
-          gradientUnits="userSpaceOnUse"
-        >
-          <stop stopColor="#FF4A00" />
-          <stop offset="1" stopColor="#ffbca6" />
-        </linearGradient>
-        <linearGradient
-          id="b"
-          x1="36.156"
-          x2="54.484"
-          y1="30.578"
-          y2="65.081"
-          gradientUnits="userSpaceOnUse"
-        >
-          <stop />
-          <stop offset="1" stopOpacity="0" />
-        </linearGradient>
-      </defs>
-    </svg>
-  }
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="24"
+    height="24"
+    fill="none"
+    viewBox="0 0 109 113"
+  >
+    <path
+      fill="url(#a)"
+      d="M63.708 110.284c-2.86 3.601-8.658 1.628-8.727-2.97l-1.007-67.251h45.22c8.19 0 12.758 9.46 7.665 15.874l-43.151 54.347Z"
+    />
+    <path
+      fill="url(#b)"
+      fillOpacity=".2"
+      d="M63.708 110.284c-2.86 3.601-8.658 1.628-8.727-2.97l-1.007-67.251h45.22c8.19 0 12.758 9.46 7.665 15.874l-43.151 54.347Z"
+    />
+    <path
+      fill="#ffbca6"
+      d="M45.317 2.071c2.86-3.601 8.657-1.628 8.726 2.97l.442 67.251H9.83c-8.19 0-12.759-9.46-7.665-15.875L45.317 2.072Z"
+    />
+    <defs>
+      <linearGradient
+        id="a"
+        x1="53.974"
+        x2="94.163"
+        y1="54.974"
+        y2="71.829"
+        gradientUnits="userSpaceOnUse"
+      >
+        <stop stopColor="#FF4A00" />
+        <stop offset="1" stopColor="#ffbca6" />
+      </linearGradient>
+      <linearGradient
+        id="b"
+        x1="36.156"
+        x2="54.484"
+        y1="30.578"
+        y2="65.081"
+        gradientUnits="userSpaceOnUse"
+      >
+        <stop />
+        <stop offset="1" stopOpacity="0" />
+      </linearGradient>
+    </defs>
+  </svg>
+}
     href="/integrations/supabase"
   >
     Send Supabase authentication emails with Loops.
@@ -8405,21 +8191,21 @@ Loops integrates with thousands of other platforms so you can sync contacts and 
   <Card
     title="Zapier"
     icon={
-    <svg
-      viewBox="0 0 256 256"
-      version="1.1"
-      xmlns="http://www.w3.org/2000/svg"
-      xmlnsXlink="http://www.w3.org/1999/xlink"
-    >
-      <g>
-        <path
-          d="M128.080089,-0.000183105 C135.311053,0.0131003068 142.422517,0.624138494 149.335663,1.77979593 L149.335663,1.77979593 L149.335663,76.2997796 L202.166953,23.6044907 C208.002065,27.7488446 213.460883,32.3582023 218.507811,37.3926715 C223.557281,42.4271407 228.192318,47.8867213 232.346817,53.7047992 L232.346817,53.7047992 L179.512985,106.400063 L254.227854,106.400063 C255.387249,113.29414 256,120.36111 256,127.587243 L256,127.587243 L256,127.759881 C256,134.986013 255.387249,142.066204 254.227854,148.960282 L254.227854,148.960282 L179.500273,148.960282 L232.346817,201.642324 C228.192318,207.460402 223.557281,212.919983 218.523066,217.954452 L218.523066,217.954452 L218.507811,217.954452 C213.460883,222.988921 208.002065,227.6115 202.182208,231.742607 L202.182208,231.742607 L149.335663,179.04709 L149.335663,253.5672 C142.435229,254.723036 135.323765,255.333244 128.092802,255.348499 L128.092802,255.348499 L127.907197,255.348499 C120.673691,255.333244 113.590195,254.723036 106.677048,253.5672 L106.677048,253.5672 L106.677048,179.04709 L53.8457596,231.742607 C42.1780766,223.466917 31.977435,213.278734 23.6658953,201.642324 L23.6658953,201.642324 L76.4997269,148.960282 L1.78485803,148.960282 C0.612750404,142.052729 0,134.946095 0,127.719963 L0,127.719963 L0,127.349037 C0.0121454869,125.473817 0.134939797,123.182933 0.311311815,120.812834 L0.36577283,120.099764 C0.887996182,113.428547 1.78485803,106.400063 1.78485803,106.400063 L1.78485803,106.400063 L76.4997269,106.400063 L23.6658953,53.7047992 C27.8076812,47.8867213 32.4300059,42.4403618 37.4769335,37.4193681 L37.4769335,37.4193681 L37.5023588,37.3926715 C42.5391163,32.3582023 48.0106469,27.7488446 53.8457596,23.6044907 L53.8457596,23.6044907 L106.677048,76.2997796 L106.677048,1.77979593 C113.590195,0.624138494 120.688946,0.0131003068 127.932622,-0.000183105 L127.932622,-0.000183105 L128.080089,-0.000183105 Z M128.067377,95.7600714 L127.945335,95.7600714 C118.436262,95.7600714 109.32891,97.5001809 100.910584,100.661566 C97.7553011,109.043534 96.0085811,118.129275 95.9958684,127.613685 L95.9958684,127.733184 C96.0085811,137.217594 97.7553011,146.303589 100.923296,154.685303 C109.32891,157.846943 118.436262,159.587052 127.945335,159.587052 L128.067377,159.587052 C137.576449,159.587052 146.683802,157.846943 155.089415,154.685303 C158.257411,146.290368 160.004131,137.217594 160.004131,127.733184 L160.004131,127.613685 C160.004131,118.129275 158.257411,109.043534 155.089415,100.661566 C146.683802,97.5001809 137.576449,95.7600714 128.067377,95.7600714 Z"
-          fill="#FF4A00"
-          fillRule="nonzero"
-        ></path>
-      </g>
-    </svg>
-  }
+  <svg
+    viewBox="0 0 256 256"
+    version="1.1"
+    xmlns="http://www.w3.org/2000/svg"
+    xmlnsXlink="http://www.w3.org/1999/xlink"
+  >
+    <g>
+      <path
+        d="M128.080089,-0.000183105 C135.311053,0.0131003068 142.422517,0.624138494 149.335663,1.77979593 L149.335663,1.77979593 L149.335663,76.2997796 L202.166953,23.6044907 C208.002065,27.7488446 213.460883,32.3582023 218.507811,37.3926715 C223.557281,42.4271407 228.192318,47.8867213 232.346817,53.7047992 L232.346817,53.7047992 L179.512985,106.400063 L254.227854,106.400063 C255.387249,113.29414 256,120.36111 256,127.587243 L256,127.587243 L256,127.759881 C256,134.986013 255.387249,142.066204 254.227854,148.960282 L254.227854,148.960282 L179.500273,148.960282 L232.346817,201.642324 C228.192318,207.460402 223.557281,212.919983 218.523066,217.954452 L218.523066,217.954452 L218.507811,217.954452 C213.460883,222.988921 208.002065,227.6115 202.182208,231.742607 L202.182208,231.742607 L149.335663,179.04709 L149.335663,253.5672 C142.435229,254.723036 135.323765,255.333244 128.092802,255.348499 L128.092802,255.348499 L127.907197,255.348499 C120.673691,255.333244 113.590195,254.723036 106.677048,253.5672 L106.677048,253.5672 L106.677048,179.04709 L53.8457596,231.742607 C42.1780766,223.466917 31.977435,213.278734 23.6658953,201.642324 L23.6658953,201.642324 L76.4997269,148.960282 L1.78485803,148.960282 C0.612750404,142.052729 0,134.946095 0,127.719963 L0,127.719963 L0,127.349037 C0.0121454869,125.473817 0.134939797,123.182933 0.311311815,120.812834 L0.36577283,120.099764 C0.887996182,113.428547 1.78485803,106.400063 1.78485803,106.400063 L1.78485803,106.400063 L76.4997269,106.400063 L23.6658953,53.7047992 C27.8076812,47.8867213 32.4300059,42.4403618 37.4769335,37.4193681 L37.4769335,37.4193681 L37.5023588,37.3926715 C42.5391163,32.3582023 48.0106469,27.7488446 53.8457596,23.6044907 L53.8457596,23.6044907 L106.677048,76.2997796 L106.677048,1.77979593 C113.590195,0.624138494 120.688946,0.0131003068 127.932622,-0.000183105 L127.932622,-0.000183105 L128.080089,-0.000183105 Z M128.067377,95.7600714 L127.945335,95.7600714 C118.436262,95.7600714 109.32891,97.5001809 100.910584,100.661566 C97.7553011,109.043534 96.0085811,118.129275 95.9958684,127.613685 L95.9958684,127.733184 C96.0085811,137.217594 97.7553011,146.303589 100.923296,154.685303 C109.32891,157.846943 118.436262,159.587052 127.945335,159.587052 L128.067377,159.587052 C137.576449,159.587052 146.683802,157.846943 155.089415,154.685303 C158.257411,146.290368 160.004131,137.217594 160.004131,127.733184 L160.004131,127.613685 C160.004131,118.129275 158.257411,109.043534 155.089415,100.661566 C146.683802,97.5001809 137.576449,95.7600714 128.067377,95.7600714 Z"
+        fill="#FF4A00"
+        fillRule="nonzero"
+      ></path>
+    </g>
+  </svg>
+}
     href="/integrations/zapier"
   >
     Manage contacts and send emails from thousands of other platforms.
@@ -8428,7 +8214,7 @@ Loops integrates with thousands of other platforms so you can sync contacts and 
 
 ## Create templates
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Emailify" icon="upload" href="/creating-emails/uploading-custom-email#emailify">
     Import custom MJML email templates from Emailify.
   </Card>
@@ -8478,7 +8264,7 @@ In the **SMTP Provider Settings** section enter the following data:
 | Username    | `loops`                                                                                    |
 | Password    | An API key copied from your [API settings](http://app.loops.so/settings?page=api) in Loops |
 
-<img src="https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/auth0-smtp-settings.png?fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=0e9c4040abd71242d76193c93de5b0d9" alt="" data-og-width="2280" width="2280" data-og-height="1982" height="1982" data-path="images/auth0-smtp-settings.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/auth0-smtp-settings.png?w=280&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=e71fadd067ef09ccb3bb07aede4578ea 280w, https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/auth0-smtp-settings.png?w=560&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=25558b44c1609da7c91dc0f331d14e23 560w, https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/auth0-smtp-settings.png?w=840&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=89abcc30c9f0309150f9de1dd86c5822 840w, https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/auth0-smtp-settings.png?w=1100&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=f72aee593f991e4ceb91bb46da01b275 1100w, https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/auth0-smtp-settings.png?w=1650&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=d4a837442cd8c6ca99f1a05820e73ab5 1650w, https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/auth0-smtp-settings.png?w=2500&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=d0d74f21bb3065806376108865abd16c 2500w" />
+<img alt="" />
 
 <Info>
   The **Send Test Email** button here will not work due to how the Loops SMTP
@@ -8491,7 +8277,7 @@ Next, create new transactional emails for the emails you are sending from Auth0.
 
 In Loops, go to the [Transactional page](https://app.loops.so/transactional) and click **New**. Alternatively, you can select one of our many ready-made templates from the [Templates page](https://app.loops.so/templates).
 
-<img src="https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/auth0-template.png?fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=a9a8f86342faca1e1e856db175308419" alt="" data-og-width="2280" width="2280" data-og-height="1328" height="1328" data-path="images/auth0-template.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/auth0-template.png?w=280&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=9096514b285c31ccc0e07ba4b520445e 280w, https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/auth0-template.png?w=560&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=5b54782f56de12e259741a1731679b7a 560w, https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/auth0-template.png?w=840&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=0ec243c92b6ac95ec772674d57978fb4 840w, https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/auth0-template.png?w=1100&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=513decde06d290b3dae9536f491af5ef 1100w, https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/auth0-template.png?w=1650&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=da714792b13ed1a557252b9d54a2295a 1650w, https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/auth0-template.png?w=2500&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=d55b0723adaf7fef99d2bcf25c41ad10 2500w" />
+<img alt="" />
 
 You can then use [the Loops editor](/creating-emails/editor) to create nicely-designed templates or make them as simple as you like.
 
@@ -8503,7 +8289,7 @@ You can check the list of [Common variables](https://auth0.com/docs/customize/em
 
 Once you're done creating the email and adding the data variables, click **Next**. On the next page, click the **Show payload** button to view the API payload for your template. You will need this for the next step.
 
-<img src="https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/auth0-payload.png?fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=63c92241cd4776a87d320451d3099eef" alt="" data-og-width="2280" width="2280" data-og-height="1454" height="1454" data-path="images/auth0-payload.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/auth0-payload.png?w=280&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=d9afa972a55760d973ce1e62286a8ee9 280w, https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/auth0-payload.png?w=560&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=2f9cd94bfa8d0e9c1bcb5766b9516e56 560w, https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/auth0-payload.png?w=840&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=e3f0acef8a871c0932f1f1489a6a6755 840w, https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/auth0-payload.png?w=1100&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=e4a586a2503fe8264368a8f3448a0feb 1100w, https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/auth0-payload.png?w=1650&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=34c7b8870b03aacfdcc1a0b726d19571 1650w, https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/auth0-payload.png?w=2500&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=e779a2265456a050f24d3d875060e811 2500w" />
+<img alt="" />
 
 Make sure to also publish your email! It won't send unless it's published.
 
@@ -8538,7 +8324,7 @@ Once pasted into the **Message** body, you need to add the Auth0 message variabl
 
 Here is an example "Verification Email (using Link)" email template. This payload was copied from the template's Publish page in Loops, then the `{{ user.email }}` and `{{ url }}` Auth0 variables were added.
 
-```json  theme={"dark"}
+```json theme={"dark"}
 {
   "transactionalId": "clvmzp39u035tl50pw7wrl0ri",
   "email": "{{ user.email }}",
@@ -8565,7 +8351,7 @@ If you want to add each Auth0 user to your Loops audience so you can send market
 
 Here's how the template looks in the Auth0 editor:
 
-<img src="https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/auth0-email.png?fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=a8493d476ff113be14647e077db93c60" alt="" data-og-width="2280" width="2280" data-og-height="1407" height="1407" data-path="images/auth0-email.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/auth0-email.png?w=280&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=5d8d3ff219cd9dc72bd8d21e5ebb56f2 280w, https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/auth0-email.png?w=560&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=29f4d36b22c660868002d040ae624c7b 560w, https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/auth0-email.png?w=840&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=cd0fd028ef6fc23b6f71ed214d828f67 840w, https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/auth0-email.png?w=1100&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=d017395fb87350e0f63c5e752eb0f867 1100w, https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/auth0-email.png?w=1650&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=ede8afa9fd3fd7336a01abdc004d6544 1650w, https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/auth0-email.png?w=2500&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=b743650316fe100eef7201889be04263 2500w" />
+<img alt="" />
 
 To test that everything works, click the **Try** button beneath the editor. Insert your email address in the modal that appears, then click **Try** to send the email.
 
@@ -8625,7 +8411,7 @@ You can add data variables as URLs to text, buttons and images. In this example,
   Auth.js uses when sending authentication emails.
 </Warning>
 
-<img src="https://mintcdn.com/loops/sV62RmpVPftRQH5h/images/authjs-magic-link.png?fit=max&auto=format&n=sV62RmpVPftRQH5h&q=85&s=4b19466d5b17ad35ae3131beb597f643" alt="Magic link button" data-og-width="2280" width="2280" data-og-height="1518" height="1518" data-path="images/authjs-magic-link.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/sV62RmpVPftRQH5h/images/authjs-magic-link.png?w=280&fit=max&auto=format&n=sV62RmpVPftRQH5h&q=85&s=60728b41f8c449d259518edd3149d116 280w, https://mintcdn.com/loops/sV62RmpVPftRQH5h/images/authjs-magic-link.png?w=560&fit=max&auto=format&n=sV62RmpVPftRQH5h&q=85&s=e183825ef7239a57972a6688b46edbc6 560w, https://mintcdn.com/loops/sV62RmpVPftRQH5h/images/authjs-magic-link.png?w=840&fit=max&auto=format&n=sV62RmpVPftRQH5h&q=85&s=01f8f5ce5f7801b1c050a201ae58bd2d 840w, https://mintcdn.com/loops/sV62RmpVPftRQH5h/images/authjs-magic-link.png?w=1100&fit=max&auto=format&n=sV62RmpVPftRQH5h&q=85&s=2bd39cd6a93d265e2a60e1ad8110c8a7 1100w, https://mintcdn.com/loops/sV62RmpVPftRQH5h/images/authjs-magic-link.png?w=1650&fit=max&auto=format&n=sV62RmpVPftRQH5h&q=85&s=7cc5f6495cb9e7030a68d6ef0b93d812 1650w, https://mintcdn.com/loops/sV62RmpVPftRQH5h/images/authjs-magic-link.png?w=2500&fit=max&auto=format&n=sV62RmpVPftRQH5h&q=85&s=d31cfa44baa3b8e13f4c2e84e99c25ec 2500w" />
+<img alt="Magic link button" />
 
 When you're done make sure to Save and Publish your email. Unpublished emails will not be sent.
 
@@ -8639,7 +8425,7 @@ When you're done make sure to Save and Publish your email. Unpublished emails wi
 
     The second is the ID of your transactional email. Go to the email in Loops and click on to the **Publish** page. Here you will find the **Transactional ID**.
 
-        <img src="https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/next.png?fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=553cf454d657a3049b9566e2851d1b0b" alt="Publish page with details" data-og-width="2280" width="2280" data-og-height="1682" height="1682" data-path="images/next.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/next.png?w=280&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=60b1e92d098c794c93b8cfb01310586c 280w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/next.png?w=560&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=c8f8c7d1c2918340532861bb8bd52c4c 560w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/next.png?w=840&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=e9569fd50c07b058708c7447fcf4cacf 840w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/next.png?w=1100&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=695b04041f9dfe709a25a3ad36345426 1100w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/next.png?w=1650&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=ea4ba40f8634d64c2905b0cc375c0c43 1650w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/next.png?w=2500&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=2083f0ff2fc32596387a81dcf6e07f17 2500w" />
+    <img alt="Publish page with details" />
 
     Add both values to your environment, for example in an `.env` file:
 
@@ -8698,7 +8484,7 @@ You can add a BCC email address in your [Tracking settings page](https://app.loo
 
 Be aware that BCCing might not be enough by itself. Some platforms may require you to add the sender email address to an allowlist or for the sender to be a user on your account.
 
-<img src="https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/auto-bcc.png?fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=b302481f5bdff7748210ded41cd7c7c8" alt="" data-og-width="2280" width="2280" data-og-height="1356" height="1356" data-path="images/auto-bcc.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/auto-bcc.png?w=280&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=019a016a6945a3609d78765ccbf6ad0d 280w, https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/auto-bcc.png?w=560&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=5729fece72416ae6a91e33f6935f9d30 560w, https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/auto-bcc.png?w=840&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=601da8fe049e8e59b19dbb4172fe7083 840w, https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/auto-bcc.png?w=1100&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=9799768b82722abea51d64b689baba6b 1100w, https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/auto-bcc.png?w=1650&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=f2f8984bfc5ac864609a606132bce448 1650w, https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/auto-bcc.png?w=2500&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=eba02f09e1e869a8d49df6840850144d 2500w" />
+<img alt="" />
 
 ## Syncing with Salesforce
 
@@ -8757,11 +8543,11 @@ Integrate the Loops API into your Bubble app with our plugin.
 
 Go to the [Loops plugin](https://bubble.io/plugin/loops-1704117562175x705056703666192400) and select your app from the "Install in an application..." dropdown.
 
-<img src="https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/bubble-install.png?fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=483997518a64ef37bd317a40e68c40e7" alt="" data-og-width="2280" width="2280" data-og-height="1271" height="1271" data-path="images/bubble-install.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/bubble-install.png?w=280&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=541e07b9f58d506cc0e2a9d594ee0c17 280w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/bubble-install.png?w=560&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=50d82f7b3815f17c76597480be513483 560w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/bubble-install.png?w=840&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=540afd85bda06426aa7ed72fc4db76ca 840w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/bubble-install.png?w=1100&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=d2d8bce009ca63c81f93f7f1e219226e 1100w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/bubble-install.png?w=1650&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=e1dca1511c625d09a231142122f1a2ce 1650w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/bubble-install.png?w=2500&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=22cee607a031a6d2d3428d8da2f27d36 2500w" />
+<img alt="" />
 
 Alternatively, go to the Plugins page in your Bubble admin, click "Add plugins" in the top right, and search for "Loops".
 
-<img src="https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/bubble-search.png?fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=50e241751474a0af4a1043b593ea2908" alt="" data-og-width="2280" width="2280" data-og-height="1191" height="1191" data-path="images/bubble-search.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/bubble-search.png?w=280&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=26d6eabd730e075249e9f45c1e0aec95 280w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/bubble-search.png?w=560&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=e94c5ddccbefc62935f9d2013fd24917 560w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/bubble-search.png?w=840&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=949237141268769bd901b19ed95dcc4a 840w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/bubble-search.png?w=1100&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=1dbf49a8af7bf66e250dc0f1ea4a0dc9 1100w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/bubble-search.png?w=1650&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=fa2e88eef96b96a1f55e3dacf4799bff 1650w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/bubble-search.png?w=2500&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=1524ba7ef557098a039a857fcc6ce0dc 2500w" />
+<img alt="" />
 
 ## Set up the plugin
 
@@ -8771,13 +8557,13 @@ First, go to your [Loops API settings page](https://app.loops.so/settings?page=a
 
 Then go to the the Plugins page in Bubble, select the Loops plugin and paste your API key into the "API key" field, prepended with the word "Bearer" and a space.
 
-<img src="https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/bubble-api-key.png?fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=e9e128029e352898bd5b8a247db9fe9d" alt="" data-og-width="2280" width="2280" data-og-height="1229" height="1229" data-path="images/bubble-api-key.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/bubble-api-key.png?w=280&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=2487cfed8e7c6a506646372bce665d51 280w, https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/bubble-api-key.png?w=560&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=6d22022a7c8067b28540ea0d68baacaf 560w, https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/bubble-api-key.png?w=840&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=6e74b88f6245a0503144c764359381bd 840w, https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/bubble-api-key.png?w=1100&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=117cdcb07686114d95a83aee80ff14c1 1100w, https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/bubble-api-key.png?w=1650&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=4b9d6756d73ea897cc197331e6d0d297 1650w, https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/bubble-api-key.png?w=2500&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=447718f409ba410abefb97be34165a35 2500w" />
+<img alt="" />
 
 ## Using the plugin actions
 
 To use the plugin actions in a workflow, select "Plugins" in the menu and you will see the options show up (prefaced with "Loops - ").
 
-<img src="https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/bubble-action.png?fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=58ebbff82c1eb4c24039222709a842c8" alt="" data-og-width="2280" width="2280" data-og-height="1889" height="1889" data-path="images/bubble-action.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/bubble-action.png?w=280&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=ae0d00d8c76ca940d61d420dbdf6e274 280w, https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/bubble-action.png?w=560&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=8dc29447318fd1f728f4dda5c5b2ba1b 560w, https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/bubble-action.png?w=840&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=f10232d427436b9f5cbee4df65979372 840w, https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/bubble-action.png?w=1100&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=10b33ff3aeb5bb7a70687d9c8d73d8bc 1100w, https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/bubble-action.png?w=1650&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=bee4c75745f8046f5f6080986786ab44 1650w, https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/bubble-action.png?w=2500&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=fcc4c79a0c0346c0d6cf3bea7c059438 2500w" />
+<img alt="" />
 
 Here's a simple example of using the Bubble plugin to add all new users to your Loops audience.
 
@@ -8785,7 +8571,7 @@ After your sign up action, add a new "Loops - Create a contact" action.
 
 In the form, add your user email into the "Email" field and user ID into the "User ID" field.
 
-<img src="https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/bubble-form.png?fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=5672216926ae06edd874fa375dd7a9d0" alt="" data-og-width="2280" width="2280" data-og-height="1529" height="1529" data-path="images/bubble-form.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/bubble-form.png?w=280&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=4a471bbd0b476b9596d931b858832b3e 280w, https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/bubble-form.png?w=560&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=09239df293d8386bcec8b26ff15f9c36 560w, https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/bubble-form.png?w=840&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=a84b13e3cc0154cb8abf049953bc70c4 840w, https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/bubble-form.png?w=1100&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=57f23466474a19c1e123b8bea69fe3c2 1100w, https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/bubble-form.png?w=1650&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=41d576916d18570317f59e0c271179a0 1650w, https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/bubble-form.png?w=2500&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=7de2a22fc10b7f2a5fa1ecebfe712651 2500w" />
+<img alt="" />
 
 And that's it!
 
@@ -8837,7 +8623,7 @@ The send event actions can be used to [trigger Loops](/loop-builder) from your a
 
 For the Send an event action, you need to provide an "Event name" value and the user's ID or email address.
 
-<img src="https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/bubble-form.png?fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=5672216926ae06edd874fa375dd7a9d0" alt="" data-og-width="2280" width="2280" data-og-height="1529" height="1529" data-path="images/bubble-form.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/bubble-form.png?w=280&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=4a471bbd0b476b9596d931b858832b3e 280w, https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/bubble-form.png?w=560&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=09239df293d8386bcec8b26ff15f9c36 560w, https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/bubble-form.png?w=840&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=a84b13e3cc0154cb8abf049953bc70c4 840w, https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/bubble-form.png?w=1100&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=57f23466474a19c1e123b8bea69fe3c2 1100w, https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/bubble-form.png?w=1650&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=41d576916d18570317f59e0c271179a0 1650w, https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/bubble-form.png?w=2500&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=7de2a22fc10b7f2a5fa1ecebfe712651 2500w" />
+<img alt="" />
 
 [API documentation](/api-reference/send-event)
 
@@ -8851,13 +8637,13 @@ Once you have written the email and added data variables, you can click **Next**
 
 Note the names of the `dataVariables` (which you added in the email) because you need these in Bubble.
 
-<img src="https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/bubble-transactional.png?fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=2bff907ec71e15b99f248a27a60f665f" alt="" data-og-width="2280" width="2280" data-og-height="1325" height="1325" data-path="images/bubble-transactional.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/bubble-transactional.png?w=280&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=b8b1e76939da58e6c0da4962dc5356dd 280w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/bubble-transactional.png?w=560&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=95a5dc39a4357477ef7b5291bf96ae9e 560w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/bubble-transactional.png?w=840&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=532e5267bb9205b21c41ba99311ce89c 840w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/bubble-transactional.png?w=1100&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=256b2dc2154d164698e92222efdfbddb 1100w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/bubble-transactional.png?w=1650&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=bb3a3db85abb4cd015b83b58924649c8 1650w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/bubble-transactional.png?w=2500&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=47f63004c2aa5a33abe552ff517af635 2500w" />
+<img alt="" />
 
 Once you create the action in Bubble, you will see the three fields in the form.
 
 Here is an example API payload for the Loops API:
 
-```json  theme={"dark"}
+```json theme={"dark"}
 {
   "transactionalId": "clomzp89u635xl30px7wrl0ri",
   "email": "name@email.com",
@@ -8884,11 +8670,11 @@ Enable sign ups to Loops using a native Carrd form.
 
 ### Add a form to your Carrd site
 
-<img src="https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/carrd.png?fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=8be4a67237a40cd87b091981a5424721" alt="carrd image" data-og-width="1520" width="1520" data-og-height="918" height="918" data-path="images/carrd.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/carrd.png?w=280&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=d1fe0ab24c97aafb16a589d20c93ecff 280w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/carrd.png?w=560&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=cc24ec4e9087888a1fb7591e3086c830 560w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/carrd.png?w=840&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=1f817eb63d4dacef66a3b6990725733e 840w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/carrd.png?w=1100&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=fe2a8c51e94423a6b2eb80182dff35e6 1100w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/carrd.png?w=1650&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=0941dddbd2696df9c8eec86c3ed86de2 1650w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/carrd.png?w=2500&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=5cdf110647088ecb4e19b04f34aa5bf8 2500w" />
+<img alt="carrd image" />
 
 1. Add a form to your site and select the **Custom** option.
 2. Select **Send to URL** and paste in your form endpoint from the [Forms page in Loops](https://app.loops.so/forms).
-   <img src="https://mintcdn.com/loops/OG31ikb--92jQDlq/images/form-endpoint.png?fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=c44978586df98ffbb59edc5208d5fc39" alt="form endpoint" data-og-width="2280" width="2280" data-og-height="1389" height="1389" data-path="images/form-endpoint.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/OG31ikb--92jQDlq/images/form-endpoint.png?w=280&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=fa3193dddf8fc5f6fbb03097e90c28ee 280w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/form-endpoint.png?w=560&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=97d23f7cf388dd355a93a3cdf4629320 560w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/form-endpoint.png?w=840&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=48384da872ccdafe15fef4fa521a4748 840w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/form-endpoint.png?w=1100&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=badc4b16efe927447068e6e3610baab6 1100w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/form-endpoint.png?w=1650&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=81888b8b2c46441883d70dbc0f662b25 1650w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/form-endpoint.png?w=2500&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=c04bebe574485c7fef2c7ad5e4b573a8 2500w" />
+   <img alt="form endpoint" />
 3. Paste the form endpoint you copied from into the **URL** input in Carrd.
 4. Change the **Method** to "AJAX" and the **Format** to "JSON".
 
@@ -8938,21 +8724,21 @@ Within the Census app, go to **Destinations** and click **+ New Destination**.
 
 Select the **Loops** destination.
 
-<img src="https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/census-loops-destination.png?fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=9f98daaada92cb75aa11a676002b5efa" alt="Add Loops destination" data-og-width="2280" width="2280" data-og-height="860" height="860" data-path="images/census-loops-destination.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/census-loops-destination.png?w=280&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=a59676545519fe0a7a1a999aec6dea49 280w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/census-loops-destination.png?w=560&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=b44cec4c0052d109176431829afb5f8e 560w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/census-loops-destination.png?w=840&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=1e0745e884deee56f3ee20db93e59358 840w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/census-loops-destination.png?w=1100&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=689a2086be096384bf8086bb29ecc0fd 1100w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/census-loops-destination.png?w=1650&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=4bf52de5116070beb4ccb05af6353fa6 1650w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/census-loops-destination.png?w=2500&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=0bfb9711f7b614483a95aa19e4872a58 2500w" />
+<img alt="Add Loops destination" />
 
 You will be prompted to enter your Loops API Token, which you can find on your [API settings page](https://app.loops.so/settings?page=api), and to decide if you want to trigger loops when contacts are created or updated.
 
-<img src="https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/census-destination-modal.png?fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=f81896e9b3e936c44aabfef1bc28c001" alt="Create a destination" data-og-width="2280" width="2280" data-og-height="1248" height="1248" data-path="images/census-destination-modal.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/census-destination-modal.png?w=280&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=4350d088df3b5e2a40b9ae37d1da854f 280w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/census-destination-modal.png?w=560&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=a7be431039777b5515ce41919778f17b 560w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/census-destination-modal.png?w=840&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=5b8b70720b44cf2b660667a1019a4e1b 840w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/census-destination-modal.png?w=1100&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=86b34a86caab09f8060e011281ea42ef 1100w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/census-destination-modal.png?w=1650&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=570eaee32287ad91f10a4c772e740e67 1650w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/census-destination-modal.png?w=2500&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=9cc200fc6008b20997e063724c142cfe 2500w" />
+<img alt="Create a destination" />
 
 Click **Connect** and test out your destination.
 
 Loops will now be available as a destination in Census.
 
-<img src="https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/census-destination-loops.png?fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=f53488c47f0b422bc599a0b4e464dc2f" alt="Use the Loops destination" data-og-width="2280" width="2280" data-og-height="1031" height="1031" data-path="images/census-destination-loops.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/census-destination-loops.png?w=280&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=4d4422acdad6d0c6747b41e50d42b828 280w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/census-destination-loops.png?w=560&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=cfe8db1ed01b64cdef717949eae8983f 560w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/census-destination-loops.png?w=840&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=0dedbfa67b97fcfc3d42a025c5ce5af5 840w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/census-destination-loops.png?w=1100&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=8c22653f5016d50e91e52dacd1319c06 1100w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/census-destination-loops.png?w=1650&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=124d389ea65e837e1c48408b5f69331b 1650w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/census-destination-loops.png?w=2500&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=25faedd85044b768c8f6349521e52ce3 2500w" />
+<img alt="Use the Loops destination" />
 
 When choosing a sync behavior, you can choose either **Update or Create** or **Mirror**.
 
-<img src="https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/census-sync-behavior.png?fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=57086c808ce26f993cbae4ff353c28e1" alt="Choose sync behavior" data-og-width="2280" width="2280" data-og-height="890" height="890" data-path="images/census-sync-behavior.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/census-sync-behavior.png?w=280&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=b8dc21dbd62a1f2162f5b9138be31e53 280w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/census-sync-behavior.png?w=560&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=dd2dcdeb98a881e907b8a759cfe36af0 560w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/census-sync-behavior.png?w=840&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=c0fe68cf00ab5dfb3726abed9a9c62c8 840w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/census-sync-behavior.png?w=1100&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=8917d6736d7becc3faa2f941744806c0 1100w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/census-sync-behavior.png?w=1650&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=e4ca7a5f9351a23d32e6af63d182cc54 1650w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/census-sync-behavior.png?w=2500&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=6b3d0a00db324a9c52d43e64a480a1d0 2500w" />
+<img alt="Choose sync behavior" />
 
 
 # Clay
@@ -8970,13 +8756,13 @@ You can send Loops contact data to Clay using Loops [webhooks](/webhooks).
 
 In Clay, add a Webhook source by clicking **More sources...** in the sidebar and selecting **Webhook**.
 
-<img src="https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/clay-create-webhook.png?fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=b00c8ce52a010fb7df4ceb5e9a76b1fa" alt="Add a webhook in Clay" data-og-width="2280" width="2280" data-og-height="1290" height="1290" data-path="images/clay-create-webhook.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/clay-create-webhook.png?w=280&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=85c67ab283cb9eaaeda0292f0ce53967 280w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/clay-create-webhook.png?w=560&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=a760e68a126f7da440fc57e4cec957af 560w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/clay-create-webhook.png?w=840&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=252738a2d587fc00e53b979fbe4a2bb4 840w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/clay-create-webhook.png?w=1100&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=a1c3c5faeaa50d5b3e0c150a236a2fa9 1100w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/clay-create-webhook.png?w=1650&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=53c377f5e48acae47d052465aeedb0b5 1650w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/clay-create-webhook.png?w=2500&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=e1cb75e446a4e7c970470ea68048220e 2500w" />
+<img alt="Add a webhook in Clay" />
 
 This generates a new webhook URL.
 
 Make sure to change the **Send response as** option just below the URL to "JSON" to match the data format sent by Loops.
 
-<img src="https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/clay-webhook-details.png?fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=6b924f5206bff4bc7634626838f76ac8" alt="Webhook setup in Clay" data-og-width="2280" width="2280" data-og-height="1665" height="1665" data-path="images/clay-webhook-details.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/clay-webhook-details.png?w=280&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=e8c244c1241518c818568e7fab8cde8c 280w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/clay-webhook-details.png?w=560&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=0398894df23b55aa3d19d8d50acc4154 560w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/clay-webhook-details.png?w=840&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=3406701f6a549685cec52074d40d459e 840w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/clay-webhook-details.png?w=1100&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=623129335e82dcf4fab0c6b767505a93 1100w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/clay-webhook-details.png?w=1650&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=a7ab9c755826a764f9cdcaf2e0d08f68 1650w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/clay-webhook-details.png?w=2500&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=5c1b472bc912d5337a2d4c4c02c3b53d 2500w" />
+<img alt="Webhook setup in Clay" />
 
 ### Set up the webhook in Loops
 
@@ -8984,7 +8770,7 @@ Copy the URL and paste it into the **Endpoint URL** field on the [Webhooks](http
 
 Activate `contact.created` events. This is the only event that makes sense to sync to Clay because it's only [event type](/webhooks#event-types) that contains a full contact record.
 
-<img src="https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/webhooks-setup.png?fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=a7897e5e44e8ce6065a485d93b129002" alt="Webhook in Loops" data-og-width="2280" width="2280" data-og-height="1854" height="1854" data-path="images/webhooks-setup.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/webhooks-setup.png?w=280&fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=e9822c133796329f92aca93f50d3b669 280w, https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/webhooks-setup.png?w=560&fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=12d491bf879a4d9858749a7b5c4f6ca9 560w, https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/webhooks-setup.png?w=840&fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=41dc9af209e6d8ccd8491bc8d28af6d0 840w, https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/webhooks-setup.png?w=1100&fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=8fbe9ca24d771110f13e679f51126fe1 1100w, https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/webhooks-setup.png?w=1650&fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=feeaa261e99f547d03d48ea128c9b05c 1650w, https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/webhooks-setup.png?w=2500&fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=6989624d615ec1cf641072746c827a93 2500w" />
+<img alt="Webhook in Loops" />
 
 ### Create a data mapping in Clay
 
@@ -8994,13 +8780,13 @@ In your Loops [Audience page](https://app.loops.so/audience) you can create a ne
 
 Once the contact is created, go back to Clay. You should see a webhook record in your table, and there should now be data shown in the **Setup mapping** section on the right.
 
-<img src="https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/clay-event-received.png?fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=88280293428a0211087b17171fcf09aa" alt="Event received in Clay" data-og-width="2280" width="2280" data-og-height="1290" height="1290" data-path="images/clay-event-received.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/clay-event-received.png?w=280&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=d470197851246639172ef35b855ff43d 280w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/clay-event-received.png?w=560&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=7b402ed413c3a2dd5a712dce0ba28145 560w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/clay-event-received.png?w=840&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=5eb448052d19b5a20d58a9defc241c40 840w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/clay-event-received.png?w=1100&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=df74a707979f4cd783e94fb3d5bc7f32 1100w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/clay-event-received.png?w=1650&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=b8f5a0260322a34b32fd951627bdb3bb 1650w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/clay-event-received.png?w=2500&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=f8ae1e0925fc4a89d0e8c4eca00f70c6 2500w" />
+<img alt="Event received in Clay" />
 
 Now you can map data from Loops to columns in Clay. Click on the cell in the **Webhook** column. On the right you can click on attributes and map them to columns. Expand the **Contact** object to view the full record from Loops.
 
 Click on an attribute you want to sync and then **Add as column**. You have the option to map the data to a new or existing column.
 
-<img src="https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/clay-mapping-data.png?fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=5cd7c2f2ed8612d506570bfe2b32ebe9" alt="Mapping data in Clay" data-og-width="2280" width="2280" data-og-height="1449" height="1449" data-path="images/clay-mapping-data.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/clay-mapping-data.png?w=280&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=79ebdcf06e3f3bed536add6df7b7a4d1 280w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/clay-mapping-data.png?w=560&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=ead806e255f257e5ed7e92b3d2687fdf 560w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/clay-mapping-data.png?w=840&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=05009d140f76593c52625aeca806a8a3 840w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/clay-mapping-data.png?w=1100&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=9a7e187bb872fc6fb49fe2aa8edc94c9 1100w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/clay-mapping-data.png?w=1650&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=72c9c51a3c104ed5c001956cdc32720f 1650w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/clay-mapping-data.png?w=2500&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=21df66bd5ebc7e47502c668d61ab28a3 2500w" />
+<img alt="Mapping data in Clay" />
 
 Once you've mapped your desired data to Clay, future webhooks will automatically sync the same Loops data to your Clay table. You can test this by adding another contact to your Loops audience.
 
@@ -9016,7 +8802,7 @@ Add an API connection to your table in Clay by selecting **Add enrichment** and 
 
 In the **Account** section of the sidebar, click **+ Add account** or select an existing connection.
 
-<img src="https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/clay-add-connection.png?fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=84bf6cb0cf929ab387c302f7822b80f3" alt="Add a connection" data-og-width="2280" width="2280" data-og-height="1442" height="1442" data-path="images/clay-add-connection.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/clay-add-connection.png?w=280&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=ae4b0a4391ac56e94bdc249adcb47681 280w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/clay-add-connection.png?w=560&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=65d21d4c56bba77d70b62c2ca74922d3 560w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/clay-add-connection.png?w=840&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=c6949e9edabefb64867ed4d1549d993d 840w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/clay-add-connection.png?w=1100&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=b348eeb4716bcc46d5d2c2deeeb16f8b 1100w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/clay-add-connection.png?w=1650&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=26a932f4c19f2d87a57626a1773398b2 1650w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/clay-add-connection.png?w=2500&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=e1b93067d382c16e01e240fbbb891371 2500w" />
+<img alt="Add a connection" />
 
 If you're adding a new connection, give the connection a name (e.g. "Loops") and then add the two API Request Headers listed below.
 
@@ -9029,7 +8815,7 @@ You'll need to generate or copy an API key from [Settings -> API](https://app.lo
 
 Click **Save** to create the connection.
 
-<img src="https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/clay-api-connection.png?fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=b3515f094f932673c3a09663f104037c" alt="Connection details" data-og-width="2280" width="2280" data-og-height="1770" height="1770" data-path="images/clay-api-connection.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/clay-api-connection.png?w=280&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=f727537ed834d33c99eba46b47876171 280w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/clay-api-connection.png?w=560&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=d364dd600da0e66be661793a88e0dff3 560w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/clay-api-connection.png?w=840&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=eac3cc961e64a10693ff67a646b58b08 840w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/clay-api-connection.png?w=1100&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=7a3317c04e3265c6cfc605319395bf61 1100w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/clay-api-connection.png?w=1650&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=e6cc94f10c73bdc4ab4c8269c1ff1c48 1650w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/clay-api-connection.png?w=2500&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=acd6799cdf83936872fac2927844ef05 2500w" />
+<img alt="Connection details" />
 
 <Tip>
   If you want to edit the connection in the future, you can do so from **Settings -> Connections** in Clay.
@@ -9051,7 +8837,7 @@ In the **Body** field, you can build up the request, using data from your table.
   You must include an `email` in the request body.
 </Warning>
 
-<img src="https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/clay-contact-api-request.png?fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=f90f63ef59a67498cf661ff89611f365" alt="API request body" data-og-width="2280" width="2280" data-og-height="1736" height="1736" data-path="images/clay-contact-api-request.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/clay-contact-api-request.png?w=280&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=274633846816f1211566f90a3eee5a3c 280w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/clay-contact-api-request.png?w=560&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=d14ac3c08076037a754180e99ae9b21c 560w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/clay-contact-api-request.png?w=840&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=f05163d4aa91c9259a7dd36981235f9c 840w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/clay-contact-api-request.png?w=1100&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=43c875e18738edcce50f476383b96e7c 1100w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/clay-contact-api-request.png?w=1650&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=269c2c075d134e7418d7eacbd80a0324 1650w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/clay-contact-api-request.png?w=2500&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=dc15c88879a5c0b25b8fedaad6e91c14 2500w" />
+<img alt="API request body" />
 
 Data will be sent to Loops automatically when a row is created or updated when the **Auto-update** option is enabled. Toggle this off to only sync data manually.
 
@@ -9071,7 +8857,7 @@ To test the connection and request you created, click **Save** and then **Save a
 
 If the sync succeeds, you'll see the cell populate with "200", which means a successful API request was made.
 
-<img src="https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/clay-successful-request.png?fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=288d35fc837631b72776cbec2bded881" alt="200 means success" data-og-width="2280" width="2280" data-og-height="656" height="656" data-path="images/clay-successful-request.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/clay-successful-request.png?w=280&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=6ede67453d714913f9b8c453e0567070 280w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/clay-successful-request.png?w=560&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=6d598a73f1c98f4b0a56c3d5b1fb1d05 560w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/clay-successful-request.png?w=840&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=bc37dcd97c8aab78ccdcd4f232f47b87 840w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/clay-successful-request.png?w=1100&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=699d4ba127d63d8411f2f6f26b4dad83 1100w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/clay-successful-request.png?w=1650&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=b5fb3be8307e1ecfdd8d65bec3dc33e7 1650w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/clay-successful-request.png?w=2500&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=0d4d6ed1b89aa3533bd7e1b9b405bd7b 2500w" />
+<img alt="200 means success" />
 
 If there is an error sending data to Loops, you can click on the cell in the **HTTP API** column to see the error message returned by the API, including the reason for the failure.
 
@@ -9095,13 +8881,13 @@ An [event](/events) allows you to start a loop when something happens in an exte
 
 To define your event, go to [Settings -> Events](https://app.loops.so/settings?page=events) and click **Create**. You can specify [event properties](/events/properties) for the event, which are data about specific events that you can add into your emails to personalize them for each recipient.
 
-<img src="https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/edit-event.png?fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=f33969bee2b8d531d23a8808ec7a99a3" alt="Create an event" data-og-width="2280" width="2280" data-og-height="1476" height="1476" data-path="images/edit-event.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/edit-event.png?w=280&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=b56ee39e1ed626c98663e4969cd6fa68 280w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/edit-event.png?w=560&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=ae5a6f4b4e174e4d872183d937a87832 560w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/edit-event.png?w=840&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=42080bb6e1c8d29b0e4f4b1d2cdbb45a 840w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/edit-event.png?w=1100&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=7cec9ba050ed6d9acc5d6a48f3353252 1100w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/edit-event.png?w=1650&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=77f2fbae5a92bdb52d974f34a9c7b0db 1650w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/edit-event.png?w=2500&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=33a30fd8d8a58a3a517dc93e42d2a154 2500w" />
+<img alt="Create an event" />
 
 When you're done, go to the [Loops page](https://app.loops.so/loops) to create a new loop. Use the "Event received" trigger and select your event from the previous step.
 
 In this loop, add as many emails as you want plus timers to space them out. You can personalize emails by [adding event properties](/events/properties#using-event-properties-in-emails) into your emails body, subject and other sending settings fields.
 
-<img src="https://mintcdn.com/loops/OG31ikb--92jQDlq/images/loop-email.png?fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=d07521dcddc09d27873e6989f4fa401a" alt="Loop email" data-og-width="2280" width="2280" data-og-height="1434" height="1434" data-path="images/loop-email.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/OG31ikb--92jQDlq/images/loop-email.png?w=280&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=6072619c6abe36533c0adfb00f226daf 280w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/loop-email.png?w=560&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=b5512836d5a3db7eab8acdb0330ba636 560w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/loop-email.png?w=840&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=620701d107b3046d5ecc5206c44cdc7d 840w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/loop-email.png?w=1100&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=c5520a47aed0759ffdf1621e2fb38cef 1100w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/loop-email.png?w=1650&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=1b38c387aacccdd760caf73043dbdf0d 1650w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/loop-email.png?w=2500&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=b8258313fb3fc653c98346481effa93d 2500w" />
+<img alt="Loop email" />
 
 ### Create an API request
 
@@ -9121,7 +8907,7 @@ In the **Body** field, you can build up the request, using data from your table.
   You must include an `eventName` and an `email`/`userId` in the request body. [Read more](/api-reference/send-event#body)
 </Warning>
 
-<img src="https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/clay-event-api-request.png?fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=c3b3f108ffa7f3fff9eac48389274ee4" alt="API request body" data-og-width="2280" width="2280" data-og-height="1736" height="1736" data-path="images/clay-event-api-request.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/clay-event-api-request.png?w=280&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=bf0dc103a43659faef3475f0ded12bc1 280w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/clay-event-api-request.png?w=560&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=9060c3d109d37b99bf68c751d00a7a3b 560w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/clay-event-api-request.png?w=840&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=dd494d5aaf7bf305d0088c52bb4595ce 840w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/clay-event-api-request.png?w=1100&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=1842e0b13567cbe92dc1d9f2c730ab9f 1100w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/clay-event-api-request.png?w=1650&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=8cc47d12ee3224c2d14549069658bcc2 1650w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/clay-event-api-request.png?w=2500&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=781259e7bcb98ce9785c88f3344478fa 2500w" />
+<img alt="API request body" />
 
 <Tip>
   You can also update contact information in Loops in the same request by including contact properties alongside `email` in the root of the request body. [More info](/api-reference/send-event#contact-properties)
@@ -9131,7 +8917,7 @@ Events will be sent to Loops automatically when a row is created or updated with
 
 You can use the **Only run if** option to only send events when a certain condition is met.
 
-<img src="https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/clay-conditional-sending.png?fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=fd0c353c20024d3f94797f1712bbeaef" alt="Conditional sending" data-og-width="2280" width="2280" data-og-height="1208" height="1208" data-path="images/clay-conditional-sending.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/clay-conditional-sending.png?w=280&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=cf8b8f27e64b913205fb151a33b47220 280w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/clay-conditional-sending.png?w=560&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=ec4abfc5a899183f13110466bc776db6 560w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/clay-conditional-sending.png?w=840&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=0e929fbc771a4ce1af45e086ecd30b42 840w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/clay-conditional-sending.png?w=1100&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=09f3331d3a3f072899e8322b00554da2 1100w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/clay-conditional-sending.png?w=1650&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=bf53dce20eeeba36e1619f8126887c75 1650w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/clay-conditional-sending.png?w=2500&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=1de3e1979bc9dc5818fcccefd431a837 2500w" />
+<img alt="Conditional sending" />
 
 <Tip>
   To edit the request in the future, click on the **HTTP API** column header and select **Edit column**.
@@ -9209,7 +8995,7 @@ There is no user ID available for waitlist events. When a user graduates from yo
 
 [Follow the instructions here](/integrations/incoming-webhooks#create-webhook-endpoints-in-loops) to create a new webhook endpoint, which will allow you to send webhook events directly to Loops.
 
-<img src="https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/create-endpoint-clerk.png?fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=21c2650c2d23f306f4c9bedf1c04f34d" alt="Endpoint form" data-og-width="2280" width="2280" data-og-height="1556" height="1556" data-path="images/create-endpoint-clerk.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/create-endpoint-clerk.png?w=280&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=f731f551ee6cdaf3bfec87bf5a530067 280w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/create-endpoint-clerk.png?w=560&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=02f5edbb10ae23f238d26dacc3a2b4ae 560w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/create-endpoint-clerk.png?w=840&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=6016e70afb776aac079b2a2e49893e2b 840w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/create-endpoint-clerk.png?w=1100&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=986f5fa3146d7c03fee1833b08a114a7 1100w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/create-endpoint-clerk.png?w=1650&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=481758146e08b3328b93e23a545842ff 1650w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/create-endpoint-clerk.png?w=2500&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=074bf2ce4753211b4951935a34580582 2500w" />
+<img alt="Endpoint form" />
 
 ## Create a webhook in Clerk
 
@@ -9217,13 +9003,13 @@ Next, you need to set up webhooks in Clerk.
 
 Inside a project in Clerk, go to **Configure -> Webhooks** and click **+ Add Endpoint**. Paste in the endpoint URL from Loops, then select the event(s) you want to send (see our [supported events](#supported-events) above).
 
-<img src="https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/clerk-webhook.png?fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=72ff9f5552ea8207c8abe68852d739e8" alt="Adding a webhook in Clerk" data-og-width="2280" width="2280" data-og-height="2658" height="2658" data-path="images/clerk-webhook.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/clerk-webhook.png?w=280&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=d65104dbf1b074eb8c6273a48c04b7c5 280w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/clerk-webhook.png?w=560&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=35990666e84175604f133e25fe654e24 560w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/clerk-webhook.png?w=840&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=6473574282eb19e5558337e0f4ce9f47 840w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/clerk-webhook.png?w=1100&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=0ea75a829087873c35b5ee94084ee430 1100w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/clerk-webhook.png?w=1650&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=2e90c84722f530de3009df436a87dd3a 1650w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/clerk-webhook.png?w=2500&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=4bc2fb2c94445556b774da56fa56606f 2500w" />
+<img alt="Adding a webhook in Clerk" />
 
 Click **Create** to finish.
 
 The last step is to copy the signing secret into Loops. On the webhook page in Clerk, click the eye icon on the right to show the secret in the page. Copy the secret and paste it into the **Signing Secret** field in Loops.
 
-<img src="https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/clerk-secret.png?fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=3bfcb09969cb7717a3b3190baacba8bc" alt="Reveal Clerk secret" data-og-width="2280" width="2280" data-og-height="1076" height="1076" data-path="images/clerk-secret.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/clerk-secret.png?w=280&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=229ec8daf9c2184a3a8a5b6f90198517 280w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/clerk-secret.png?w=560&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=8f6b1fbb8b6fe37abb6f2f0c40920a4f 560w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/clerk-secret.png?w=840&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=81c1cb1f573bd7f021fc48873dd505cf 840w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/clerk-secret.png?w=1100&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=e81396c537449f8846f774b62b4831a6 1100w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/clerk-secret.png?w=1650&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=6010b8de9653689d602d809f3eb2adca 1650w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/clerk-secret.png?w=2500&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=6bd7a20395dbec282dfd15136186b34a 2500w" />
+<img alt="Reveal Clerk secret" />
 
 Now you're all set up.
 
@@ -9318,7 +9104,7 @@ Use [Framer Forms](https://www.framer.com/features/forms/) to easily create a fo
 
 From **Insert -> Forms** drag the **Form builder** component into your page. This will add an example form.
 
-<img src="https://mintcdn.com/loops/OG31ikb--92jQDlq/images/framer-form-component.png?fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=d0426c13908ad170efc970c2ce94017d" alt="Framer Form component" data-og-width="1520" width="1520" data-og-height="1192" height="1192" data-path="images/framer-form-component.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/OG31ikb--92jQDlq/images/framer-form-component.png?w=280&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=a15694dcb6ebf01c5b45c34004287346 280w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/framer-form-component.png?w=560&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=c70c0acb121fdc1a06bfbf87efa81f6e 560w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/framer-form-component.png?w=840&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=a6648586ffc781837c434c7c58d2e201 840w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/framer-form-component.png?w=1100&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=1eceaa5d0015a85192f01f96047f8daa 1100w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/framer-form-component.png?w=1650&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=09d89be07681f8d4cc78768ab041aff2 1650w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/framer-form-component.png?w=2500&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=514116f52b88559731371515da9e500e 2500w" />
+<img alt="Framer Form component" />
 
 ### Edit the form fields
 
@@ -9330,7 +9116,7 @@ You need to edit the **Name** value of each field to match the [contact properti
 
 For example, the **Name** value must be "email" for the email address field.
 
-<img src="https://mintcdn.com/loops/OG31ikb--92jQDlq/images/framer-email-field.png?fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=35e2be920b979df45dd80139b126ee9d" alt="Email form field" data-og-width="2280" width="2280" data-og-height="1356" height="1356" data-path="images/framer-email-field.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/OG31ikb--92jQDlq/images/framer-email-field.png?w=280&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=7efddaf6ac1388ba4dc775cf40d86b65 280w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/framer-email-field.png?w=560&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=edd0f1fc90e02c4f90811c6869cded0d 560w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/framer-email-field.png?w=840&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=13223896ecd8651f73c2e9031702802e 840w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/framer-email-field.png?w=1100&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=f7e866a9e5e6a24b9b5045d87b32b836 1100w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/framer-email-field.png?w=1650&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=70c1f1a688f6ce807a99b9336aa3bcac 1650w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/framer-email-field.png?w=2500&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=c0081f4e57a1d39b53140e15cdb3162c 2500w" />
+<img alt="Email form field" />
 
 You can add hidden fields to populate data like `mailingLists`, `userGroup` and `source` in Loops yet ensure they don't show up in the form.
 
@@ -9344,7 +9130,7 @@ You may have to click the `+` button to show the **Value** and **Hidden** option
   Mailing lists need to be marked **Public** in your [Lists settings](https://app.loops.so/settings?page=lists) in order for them to work in forms.
 </Warning>
 
-<img src="https://mintcdn.com/loops/OG31ikb--92jQDlq/images/framer-form-hidden.png?fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=48c9c39a6c3501490a28ead141aa48c8" alt="Hidden form field" data-og-width="2280" width="2280" data-og-height="1356" height="1356" data-path="images/framer-form-hidden.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/OG31ikb--92jQDlq/images/framer-form-hidden.png?w=280&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=e09e5518a9b0bee8b6d9bfeb0ac786a4 280w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/framer-form-hidden.png?w=560&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=0826a8ddd572b6ca4b0d61b6796a1545 560w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/framer-form-hidden.png?w=840&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=3bb00074f53b5386c8c4082d0eef001e 840w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/framer-form-hidden.png?w=1100&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=c8d4a751136fcd10be8de009d0889310 1100w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/framer-form-hidden.png?w=1650&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=efb4fae4b127380edf58248992abf164 1650w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/framer-form-hidden.png?w=2500&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=efa691cf86bf1330dd6de21f19e8a1e1 2500w" />
+<img alt="Hidden form field" />
 
 ### Configure the form
 
@@ -9353,9 +9139,9 @@ The final step is to set the endpoint to your Loops form URL.
 1. Go to the [Forms page](https://app.loops.so/forms) in your Loops account.
 2. Click on the **Settings** tab.
 3. Copy the **Form Endpoint**.
-   <img src="https://mintcdn.com/loops/OG31ikb--92jQDlq/images/form-endpoint.png?fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=c44978586df98ffbb59edc5208d5fc39" alt="Form endpoint" data-og-width="2280" width="2280" data-og-height="1389" height="1389" data-path="images/form-endpoint.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/OG31ikb--92jQDlq/images/form-endpoint.png?w=280&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=fa3193dddf8fc5f6fbb03097e90c28ee 280w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/form-endpoint.png?w=560&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=97d23f7cf388dd355a93a3cdf4629320 560w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/form-endpoint.png?w=840&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=48384da872ccdafe15fef4fa521a4748 840w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/form-endpoint.png?w=1100&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=badc4b16efe927447068e6e3610baab6 1100w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/form-endpoint.png?w=1650&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=81888b8b2c46441883d70dbc0f662b25 1650w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/form-endpoint.png?w=2500&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=c04bebe574485c7fef2c7ad5e4b573a8 2500w" />
+   <img alt="Form endpoint" />
 4. Back in Framer, select your form. In the **Send To** option, select "Webhook". Then paste the URL from Loops into the **API** field.
-   <img src="https://mintcdn.com/loops/OG31ikb--92jQDlq/images/framer-form-webhook.png?fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=6cb4ce32e76b6d971829df8fde014bcc" alt="Framer form webhook" data-og-width="2280" width="2280" data-og-height="1356" height="1356" data-path="images/framer-form-webhook.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/OG31ikb--92jQDlq/images/framer-form-webhook.png?w=280&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=aebab791f507b1864df88db422af26dd 280w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/framer-form-webhook.png?w=560&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=d80723ea22e99f7a0a9cced67b36b839 560w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/framer-form-webhook.png?w=840&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=41c8335ec5f8a86ff4feaa390b77ed99 840w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/framer-form-webhook.png?w=1100&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=b5e6baf22f067ba99539c3cff3d518b1 1100w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/framer-form-webhook.png?w=1650&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=0364b94da8f69ccd5cb7ca359e2db7a5 1650w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/framer-form-webhook.png?w=2500&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=8a5a448de5e0b97ade6da946491e9c69 2500w" />
+   <img alt="Framer form webhook" />
 
 Now your form is all set up and can start receiving new subscribers.
 
@@ -9373,7 +9159,7 @@ Framer has a built-in Loops option for creating simple signup forms with an emai
 
 From **Insert -> Forms** drag the **Loops** component into your page. This will add an example form.
 
-<img src="https://mintcdn.com/loops/OG31ikb--92jQDlq/images/framer-loops-component.png?fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=8806edaec1877f6bbf9cd73f337d58fb" alt="Framer Loops component" data-og-width="1520" width="1520" data-og-height="1247" height="1247" data-path="images/framer-loops-component.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/OG31ikb--92jQDlq/images/framer-loops-component.png?w=280&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=6fcb0343492abaaf76a1a69e77c3219b 280w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/framer-loops-component.png?w=560&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=3d52c8ecfe2db32d29304bfa5f1dca61 560w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/framer-loops-component.png?w=840&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=13b4c6c1263127920012776d8ca64424 840w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/framer-loops-component.png?w=1100&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=92106aa0dedab50b4dc428f833ba18a5 1100w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/framer-loops-component.png?w=1650&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=7d4676c6892fae13d60e17544bacec18 1650w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/framer-loops-component.png?w=2500&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=4e4198b8bc508cf0b5f0f9dbca38c79b 2500w" />
+<img alt="Framer Loops component" />
 
 ### Configure the form
 
@@ -9382,9 +9168,9 @@ Next, you need to add your Loops form ID to the **ID** field.
 1. Go to the [Forms page](https://app.loops.so/forms) in your Loops account.
 2. Click on the **Settings** tab.
 3. Copy the **Form ID**.
-   <img src="https://mintcdn.com/loops/OG31ikb--92jQDlq/images/form-id.png?fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=0caa3484e77ee805990c12cdf7b62ae9" alt="Form ID" data-og-width="2280" width="2280" data-og-height="1389" height="1389" data-path="images/form-id.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/OG31ikb--92jQDlq/images/form-id.png?w=280&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=4abf62f9a866051c3588e1c21e5d6f0c 280w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/form-id.png?w=560&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=c079526c79a6141101f925e8784b17da 560w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/form-id.png?w=840&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=389b8a262a1740e34280be3eef77a4ac 840w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/form-id.png?w=1100&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=54ada79c91305906e74a292e31ea5864 1100w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/form-id.png?w=1650&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=5d261769a879dd66c220122fa869b37b 1650w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/form-id.png?w=2500&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=b837cd464b542952c37bb8c86b526cdb 2500w" />
+   <img alt="Form ID" />
 4. Paste this ID into the **ID** field in the Framer component.
-   <img src="https://mintcdn.com/loops/OG31ikb--92jQDlq/images/framer-property-panel.png?fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=0ee89de4b2c208ad4a2eb6ee2b65e8b2" alt="Loops form ID" data-og-width="2280" width="2280" data-og-height="1688" height="1688" data-path="images/framer-property-panel.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/OG31ikb--92jQDlq/images/framer-property-panel.png?w=280&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=998d54b7f6d0eeeb7da10532a65987c5 280w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/framer-property-panel.png?w=560&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=9c5bca07392090de3e1fb8b774f1ee38 560w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/framer-property-panel.png?w=840&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=782d5a76781939a9fc570bad1e02ee3e 840w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/framer-property-panel.png?w=1100&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=ba93695aa13b984a9dd2d30c16df5c91 1100w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/framer-property-panel.png?w=1650&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=02b5a4f057b08b67e878ee0adeded5cf 1650w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/framer-property-panel.png?w=2500&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=51fa226002f0d2d76d22dabc38af0773 2500w" />
+   <img alt="Loops form ID" />
 5. Framer offers two extra fields in the component:
    * **User Group** populates the contact's `userGroup` value in Loops.
    * **Mailing list** can be used to subscribe contacts to your [mailing lists](/contacts/mailing-lists). Add here one or more mailing list IDs separated by commas.
@@ -9410,21 +9196,21 @@ This option adds a custom component into your Framer site [using form code](/for
 2. Click on the **Settings** tab.
 3. Select “JSX” from the **Generate Form Code** dropdown (1), then copy the code snippet (2).
 
-   <img src="https://mintcdn.com/loops/OG31ikb--92jQDlq/images/jsx-form.png?fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=e220637047302e7c59969a531b231bff" alt="" data-og-width="2280" width="2280" data-og-height="1440" height="1440" data-path="images/jsx-form.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/OG31ikb--92jQDlq/images/jsx-form.png?w=280&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=df4ed118fa8ee16bd50a317e250c1067 280w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/jsx-form.png?w=560&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=bf0e5d64dc31b8a6adb1981e768fbf03 560w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/jsx-form.png?w=840&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=6b83d745bad2b2b6c3e3587193f78061 840w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/jsx-form.png?w=1100&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=364fc556ce8a233b5fa71139a01283a5 1100w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/jsx-form.png?w=1650&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=9ef00bf3219fd4a353000afbfb8dd4ea 1650w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/jsx-form.png?w=2500&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=87b8b93dec8b3dbd8a66973da4681dc7 2500w" />
+   <img alt="" />
 
 ### Embed the component in Framer
 
 1. Create a new component. Toggle over to **Assets** in the Framer side panel then click the `+` button.
 
-   <img src="https://mintcdn.com/loops/OG31ikb--92jQDlq/images/framer-1.png?fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=dd174a81bd62bfbf14e0f9edd0221b16" alt="" data-og-width="1520" width="1520" data-og-height="607" height="607" data-path="images/framer-1.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/OG31ikb--92jQDlq/images/framer-1.png?w=280&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=572be599bfc1f09c72e3a579f25bfe46 280w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/framer-1.png?w=560&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=3d86fa9f4f93de43d217502a991e3e4c 560w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/framer-1.png?w=840&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=f12407f44d7d6d897002e3856f542b4a 840w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/framer-1.png?w=1100&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=782eeb97705be10c249353552dc04178 1100w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/framer-1.png?w=1650&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=70a7ab0b27eb9bab0bec718e3bbd89ae 1650w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/framer-1.png?w=2500&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=8f90ef835add67df7a0ff99e22414a3a 2500w" />
+   <img alt="" />
 
 2. Give your New Component a title.
 
-   <img src="https://mintcdn.com/loops/OG31ikb--92jQDlq/images/framer-2.png?fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=577c8d23d7013beb94d27eec20ccd0ef" alt="" data-og-width="1520" width="1520" data-og-height="808" height="808" data-path="images/framer-2.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/OG31ikb--92jQDlq/images/framer-2.png?w=280&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=66a11ee58f167102a7ad131fe41489f3 280w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/framer-2.png?w=560&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=406d218f7b02cfac32fd40a6131bc907 560w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/framer-2.png?w=840&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=c7b61d8dc4c4b3df78b0378c0a55a324 840w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/framer-2.png?w=1100&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=889021ddace602cd7d8f039e9024014f 1100w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/framer-2.png?w=1650&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=b362344674abfbb097bde1c09142850a 1650w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/framer-2.png?w=2500&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=42371df26ee6ec9fd6f7be9ff29b1147 2500w" />
+   <img alt="" />
 
 3. Finally, paste the code copied in from Loops into the code editor. You should see the Preview on the right fill in with a preview of your component.
 
-   <img src="https://mintcdn.com/loops/OG31ikb--92jQDlq/images/framer-3.png?fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=e16eb14c62eb830c95fe0deecf3708e7" alt="" data-og-width="1520" width="1520" data-og-height="939" height="939" data-path="images/framer-3.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/OG31ikb--92jQDlq/images/framer-3.png?w=280&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=22f47904ad0bde46c12f050f72cd3ef8 280w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/framer-3.png?w=560&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=408167a2720876706a4c87d4ff98382d 560w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/framer-3.png?w=840&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=9814bab76021b6c7cc8b68d14cd785fc 840w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/framer-3.png?w=1100&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=6041ab89fbd675d377b4fc3ce2927611 1100w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/framer-3.png?w=1650&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=56087f97912139681f9748ee633d50ed 1650w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/framer-3.png?w=2500&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=b54203e1b51b88da6e8a9b9513ae54de 2500w" />
+   <img alt="" />
 
 4. Drag and drop your new asset anywhere on your page to use it :)
 
@@ -9455,13 +9241,15 @@ Note: we only process webhook events listed below for each provider (and which c
 
 We return helpful messages in responses if there is an issue processing a webhook event. Check the webhook logs in your external platforms.
 
-<img src="https://mintcdn.com/loops/zNnVRjXA37FUc8Z0/images/webhook-event-configuration.png?fit=max&auto=format&n=zNnVRjXA37FUc8Z0&q=85&s=3429f5d0095e3c10220f48c1773d5c03" alt="Incoming webhook configuration" data-og-width="2280" width="2280" data-og-height="1541" height="1541" data-path="images/webhook-event-configuration.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/zNnVRjXA37FUc8Z0/images/webhook-event-configuration.png?w=280&fit=max&auto=format&n=zNnVRjXA37FUc8Z0&q=85&s=78bda7d204a6a232bc91f8afe8054267 280w, https://mintcdn.com/loops/zNnVRjXA37FUc8Z0/images/webhook-event-configuration.png?w=560&fit=max&auto=format&n=zNnVRjXA37FUc8Z0&q=85&s=6751d2e8fd127bcf70c633524960e819 560w, https://mintcdn.com/loops/zNnVRjXA37FUc8Z0/images/webhook-event-configuration.png?w=840&fit=max&auto=format&n=zNnVRjXA37FUc8Z0&q=85&s=2aca78ca1261640f30ff6a41323a9e35 840w, https://mintcdn.com/loops/zNnVRjXA37FUc8Z0/images/webhook-event-configuration.png?w=1100&fit=max&auto=format&n=zNnVRjXA37FUc8Z0&q=85&s=8da7e40f142f1196eff6ec26babaf38a 1100w, https://mintcdn.com/loops/zNnVRjXA37FUc8Z0/images/webhook-event-configuration.png?w=1650&fit=max&auto=format&n=zNnVRjXA37FUc8Z0&q=85&s=e86a9d68ff7d05f56fc6398fdd33a04c 1650w, https://mintcdn.com/loops/zNnVRjXA37FUc8Z0/images/webhook-event-configuration.png?w=2500&fit=max&auto=format&n=zNnVRjXA37FUc8Z0&q=85&s=29b055af202615627f7da2ae9c4f0fd3 2500w" />
+<img alt="Incoming webhook configuration" />
 
 ### Syncing contacts
 
 The primary use case for incoming webhooks is to create and update contacts in your Loops audience. When data arrives in Loops, we grab the email address to create and update contacts in your Loops audience. To this end, we only support incoming events that contain an email address.
 
-You can assign a user group value to each new contact, which allows you to create segments from webhook-created contacts.
+You can choose to update first and last name data from the webhook event as well.
+
+Additionally, you can assign a user group value to each new contact, which helps create segments from webhook-created contacts.
 
 Any new contact created via a webhook will have a source like "Stripe webhook" so you know where it originated from.
 
@@ -9473,7 +9261,13 @@ You can subscribe contacts to [mailing lists](/contacts/mailing-lists) when they
 
 ### Sending emails
 
-Incoming webhooks can also trigger loops if you specify an event in the **Trigger an event** section. This can be useful to automatically send emails when something has happened in the external platform, for example a successful payment in Stripe or a new sign up in Clerk.
+Incoming webhooks can trigger emails if you connect events to [loop triggers](/loop-builder/loop-triggers). This can be useful if you want to automatically send emails when something has happened in the external platform, for example a successful payment in Stripe or a new sign up in Clerk.
+
+Just create a loop using the **Event received** trigger and select the event you want to trigger on.
+
+<img alt="Event received trigger" />
+
+You can also trigger custom events from incoming webhooks if you specify an event in the **Trigger an additional custom event** section in the configuration.
 
 ## Create webhook endpoints in Loops
 
@@ -9481,7 +9275,7 @@ To start sending webhook events to Loops, go to your chosen [integration's setti
 
 A webhook endpoint will be created for you. Copy the endpoint URL and paste it into your external platform.
 
-<img src="https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/create-endpoint.png?fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=be75ea5d3e49aaa75248d6d157d5780b" alt="Endpoint form" data-og-width="2280" width="2280" data-og-height="1556" height="1556" data-path="images/create-endpoint.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/create-endpoint.png?w=280&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=9e0e8289abc76ba6a6eb278ed097a779 280w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/create-endpoint.png?w=560&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=1f45e6a6c27d3847f4f37cbd47c3aab6 560w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/create-endpoint.png?w=840&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=b98f9ba7cac487f8e38da5f1fbb328b3 840w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/create-endpoint.png?w=1100&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=2e969b5ad5d478635aa17783cc3b363b 1100w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/create-endpoint.png?w=1650&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=2ec8f95dee66d9ddf4ca52460700d87c 1650w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/create-endpoint.png?w=2500&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=31ff8ef99563162302b0f8a62985cc2d 2500w" />
+<img alt="Endpoint form" />
 
 You may need to copy-paste signing secrets between the platform and Loops for extra security (we will prompt you when this is necessary and give you the steps to do it).
 
@@ -9495,8 +9289,8 @@ For more information about the data we can sync from each platform, plus more de
   <Card
     title="Clerk"
     icon={
-    <svg viewBox="0 0 18 18" fill="none" aria-hidden="true"><ellipse cx="8.99999" cy="9" rx="2.81249" ry="2.8125" fill="#FF4A00"></ellipse><path fill="#FF4A00" d="M14.0674 15.6591C14.3067 15.8984 14.2827 16.2945 14.0015 16.4829C12.571 17.4411 10.8504 17.9999 8.9993 17.9999C7.14818 17.9999 5.42758 17.4411 3.99704 16.4829C3.71589 16.2945 3.69186 15.8984 3.93115 15.6591L5.98648 13.6037C6.17225 13.418 6.46042 13.3886 6.69424 13.5084C7.3856 13.8626 8.16911 14.0624 8.9993 14.0624C9.82948 14.0624 10.613 13.8626 11.3044 13.5084C11.5382 13.3886 11.8263 13.418 12.0121 13.6037L14.0674 15.6591Z"></path><path fill="#FF4A00" d="M14.0022 1.51706C14.2834 1.70539 14.3074 2.10155 14.0681 2.34084L12.0128 4.39619C11.827 4.58195 11.5388 4.61129 11.305 4.49151C10.6136 4.13733 9.83014 3.9375 8.99996 3.9375C6.20403 3.9375 3.93748 6.20406 3.93748 9C3.93748 9.83018 4.13731 10.6137 4.49149 11.3051C4.61127 11.5389 4.58193 11.827 4.39617 12.0128L2.34083 14.0682C2.10154 14.3074 1.70538 14.2834 1.51705 14.0023C0.558857 12.5717 0 10.8511 0 9C0 4.02944 4.02942 0 8.99996 0C10.8511 0 12.5717 0.55886 14.0022 1.51706Z" fillOpacity="0.5"></path></svg>
-  }
+  <svg viewBox="0 0 18 18" fill="none" aria-hidden="true"><ellipse cx="8.99999" cy="9" rx="2.81249" ry="2.8125" fill="#FF4A00"></ellipse><path fill="#FF4A00" d="M14.0674 15.6591C14.3067 15.8984 14.2827 16.2945 14.0015 16.4829C12.571 17.4411 10.8504 17.9999 8.9993 17.9999C7.14818 17.9999 5.42758 17.4411 3.99704 16.4829C3.71589 16.2945 3.69186 15.8984 3.93115 15.6591L5.98648 13.6037C6.17225 13.418 6.46042 13.3886 6.69424 13.5084C7.3856 13.8626 8.16911 14.0624 8.9993 14.0624C9.82948 14.0624 10.613 13.8626 11.3044 13.5084C11.5382 13.3886 11.8263 13.418 12.0121 13.6037L14.0674 15.6591Z"></path><path fill="#FF4A00" d="M14.0022 1.51706C14.2834 1.70539 14.3074 2.10155 14.0681 2.34084L12.0128 4.39619C11.827 4.58195 11.5388 4.61129 11.305 4.49151C10.6136 4.13733 9.83014 3.9375 8.99996 3.9375C6.20403 3.9375 3.93748 6.20406 3.93748 9C3.93748 9.83018 4.13731 10.6137 4.49149 11.3051C4.61127 11.5389 4.58193 11.827 4.39617 12.0128L2.34083 14.0682C2.10154 14.3074 1.70538 14.2834 1.51705 14.0023C0.558857 12.5717 0 10.8511 0 9C0 4.02944 4.02942 0 8.99996 0C10.8511 0 12.5717 0.55886 14.0022 1.51706Z" fillOpacity="0.5"></path></svg>
+}
     href="/integrations/clerk"
   />
 
@@ -9505,52 +9299,52 @@ For more information about the data we can sync from each platform, plus more de
   <Card
     title="Supabase"
     icon={
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      fill="none"
-      viewBox="0 0 109 113"
-    >
-      <path
-        fill="url(#a)"
-        d="M63.708 110.284c-2.86 3.601-8.658 1.628-8.727-2.97l-1.007-67.251h45.22c8.19 0 12.758 9.46 7.665 15.874l-43.151 54.347Z"
-      />
-      <path
-        fill="url(#b)"
-        fillOpacity=".2"
-        d="M63.708 110.284c-2.86 3.601-8.658 1.628-8.727-2.97l-1.007-67.251h45.22c8.19 0 12.758 9.46 7.665 15.874l-43.151 54.347Z"
-      />
-      <path
-        fill="#ffbca6"
-        d="M45.317 2.071c2.86-3.601 8.657-1.628 8.726 2.97l.442 67.251H9.83c-8.19 0-12.759-9.46-7.665-15.875L45.317 2.072Z"
-      />
-      <defs>
-        <linearGradient
-          id="a"
-          x1="53.974"
-          x2="94.163"
-          y1="54.974"
-          y2="71.829"
-          gradientUnits="userSpaceOnUse"
-        >
-          <stop stopColor="#FF4A00" />
-          <stop offset="1" stopColor="#ffbca6" />
-        </linearGradient>
-        <linearGradient
-          id="b"
-          x1="36.156"
-          x2="54.484"
-          y1="30.578"
-          y2="65.081"
-          gradientUnits="userSpaceOnUse"
-        >
-          <stop />
-          <stop offset="1" stopOpacity="0" />
-        </linearGradient>
-      </defs>
-    </svg>
-  }
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="24"
+    height="24"
+    fill="none"
+    viewBox="0 0 109 113"
+  >
+    <path
+      fill="url(#a)"
+      d="M63.708 110.284c-2.86 3.601-8.658 1.628-8.727-2.97l-1.007-67.251h45.22c8.19 0 12.758 9.46 7.665 15.874l-43.151 54.347Z"
+    />
+    <path
+      fill="url(#b)"
+      fillOpacity=".2"
+      d="M63.708 110.284c-2.86 3.601-8.658 1.628-8.727-2.97l-1.007-67.251h45.22c8.19 0 12.758 9.46 7.665 15.874l-43.151 54.347Z"
+    />
+    <path
+      fill="#ffbca6"
+      d="M45.317 2.071c2.86-3.601 8.657-1.628 8.726 2.97l.442 67.251H9.83c-8.19 0-12.759-9.46-7.665-15.875L45.317 2.072Z"
+    />
+    <defs>
+      <linearGradient
+        id="a"
+        x1="53.974"
+        x2="94.163"
+        y1="54.974"
+        y2="71.829"
+        gradientUnits="userSpaceOnUse"
+      >
+        <stop stopColor="#FF4A00" />
+        <stop offset="1" stopColor="#ffbca6" />
+      </linearGradient>
+      <linearGradient
+        id="b"
+        x1="36.156"
+        x2="54.484"
+        y1="30.578"
+        y2="65.081"
+        gradientUnits="userSpaceOnUse"
+      >
+        <stop />
+        <stop offset="1" stopOpacity="0" />
+      </linearGradient>
+    </defs>
+  </svg>
+}
     href="/integrations/supabase"
   />
 </CardGroup>
@@ -9573,11 +9367,11 @@ Connect Loops to over a thousand apps.
 
 In Integrately, create an automation by searching for and selecting the two platforms you want to connect.
 
-<img src="https://mintcdn.com/loops/OG31ikb--92jQDlq/images/integrately-add.png?fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=6d09d15e9188610b4b259b28e5748374" alt="Add an automation in Integrately" data-og-width="2280" width="2280" data-og-height="1418" height="1418" data-path="images/integrately-add.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/OG31ikb--92jQDlq/images/integrately-add.png?w=280&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=0dfbcbf2d67749d30e714a43515bdfcd 280w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/integrately-add.png?w=560&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=be4a4149756f207c009a466be0665a51 560w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/integrately-add.png?w=840&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=3ea995e8b08f44652e29939a164db714 840w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/integrately-add.png?w=1100&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=5c9d7fde800cccf9db79247c071f13d4 1100w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/integrately-add.png?w=1650&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=771c0e192f92bba0d866b37d563fdf75 1650w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/integrately-add.png?w=2500&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=5e89bf6f843aae15d03347d426653586 2500w" />
+<img alt="Add an automation in Integrately" />
 
 You'll need to connect to or sign in to each platform. When it comes to connecting to Loops, you need to create or copy an API key from [your API Settings page](https://app.loops.so/settings?page=api). Paste your API key into Integrately.
 
-<img src="https://mintcdn.com/loops/OG31ikb--92jQDlq/images/integrately-api.png?fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=6d3e772467bac17f3a90e38f9bf623b3" alt="Add Loops API key" data-og-width="2280" width="2280" data-og-height="1967" height="1967" data-path="images/integrately-api.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/OG31ikb--92jQDlq/images/integrately-api.png?w=280&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=f418535d77d85ce29301456d2801ef90 280w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/integrately-api.png?w=560&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=06dd1b571ee700cba92e57c6fe987910 560w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/integrately-api.png?w=840&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=66691da3668bc4d51f392b5f7b4453ce 840w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/integrately-api.png?w=1100&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=00e4231f09237c1f7fb9cd0128c41229 1100w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/integrately-api.png?w=1650&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=6ff0028a2a38427bd9941b80882d5005 1650w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/integrately-api.png?w=2500&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=bd2aefe01cd8160090b7e6e7d58b4a65 2500w" />
+<img alt="Add Loops API key" />
 
 Now you are connected to Loops and can continue setting up the automation.
 
@@ -9587,13 +9381,13 @@ To sync contacts, choose either the "Create contact" or "Create or update contac
 
 You can map data between the two platforms in the automation form. In this example, the "Email" field contains the data from the "Email" column in Google Sheets.
 
-<img src="https://mintcdn.com/loops/OG31ikb--92jQDlq/images/integrately-contact.png?fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=1ab7987225a12eb5aa286095703efd16" alt="Create a contact automation" data-og-width="2280" width="2280" data-og-height="1617" height="1617" data-path="images/integrately-contact.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/OG31ikb--92jQDlq/images/integrately-contact.png?w=280&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=0982e7b5ea31b721ad0612b11dd7348a 280w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/integrately-contact.png?w=560&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=3b138621fb985f3d0a2e84021824aa51 560w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/integrately-contact.png?w=840&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=20764a0a3843c28b51574449059e2258 840w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/integrately-contact.png?w=1100&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=e36ed5d4acb1f0f7f9e806cf9090bbbf 1100w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/integrately-contact.png?w=1650&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=f9fbeb0d44c2c94c6b7e8dd8ca282ca4 1650w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/integrately-contact.png?w=2500&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=d5b383daa05f9476f62e27a87b3fc504 2500w" />
+<img alt="Create a contact automation" />
 
 ## Send event
 
 To send events from Integrately (i.e. to trigger [sending a loop](/loop-builder)), choose the "Send event" action and then map an "Email" and "Event name" in the available fields.
 
-<img src="https://mintcdn.com/loops/OG31ikb--92jQDlq/images/integrately-event.png?fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=219cad97754cc3bee9d3c08ec8d179a7" alt="Send event automation" data-og-width="2280" width="2280" data-og-height="1464" height="1464" data-path="images/integrately-event.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/OG31ikb--92jQDlq/images/integrately-event.png?w=280&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=4d0d9f0f7c371959356560b8f3df25e9 280w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/integrately-event.png?w=560&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=5985d895e9c60d42f74a046b862dd802 560w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/integrately-event.png?w=840&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=969e21eceebac9d245573debee8159a8 840w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/integrately-event.png?w=1100&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=a8fe0dc422c84a952a8805830b279f64 1100w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/integrately-event.png?w=1650&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=24be980e81dfc1c7fa580032a6c93086 1650w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/integrately-event.png?w=2500&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=a3289c11fc33867928c23be45b25219b 2500w" />
+<img alt="Send event automation" />
 
 ## Send transactional email
 
@@ -9603,7 +9397,7 @@ Map the email address you want to send to. Then add the ID of your transactional
 
 Finally, add your email's data variables. You can easily map dynamic variables from the source app or add static text in the form.
 
-<img src="https://mintcdn.com/loops/OG31ikb--92jQDlq/images/integrately-transactional.png?fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=6be0240c82e48fec6326953d952f15a0" alt="Send transactional email automation" data-og-width="2280" width="2280" data-og-height="2000" height="2000" data-path="images/integrately-transactional.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/OG31ikb--92jQDlq/images/integrately-transactional.png?w=280&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=578854b5ddf39b83484399178f360dde 280w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/integrately-transactional.png?w=560&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=a2ea05a7d646efbb68c2fd33bb49206e 560w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/integrately-transactional.png?w=840&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=2e4619f1aa4b5cefa5f272d3dc45b557 840w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/integrately-transactional.png?w=1100&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=e4a708bd660841aa0b1d6d107938717b 1100w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/integrately-transactional.png?w=1650&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=669aa1fd8f08c00680f7b3b4541d889e 1650w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/integrately-transactional.png?w=2500&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=9b801d32b8ebccd25aae34da227506dc 2500w" />
+<img alt="Send transactional email automation" />
 
 
 # Make
@@ -9625,20 +9419,21 @@ Before you get started, head over to the API page and [create a new API key](htt
 
 To get started create a new scenario and select the "Loops" module.
 
-<img src="https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/make-loops.png?fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=9d12f318216e4a396e0a652c47f1f563" alt="Adding loops in Make" data-og-width="2280" width="2280" data-og-height="1382" height="1382" data-path="images/make-loops.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/make-loops.png?w=280&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=69bfdbd84d9a27727217552e71cc331f 280w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/make-loops.png?w=560&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=0e258e084b162097a37404a2366c78e9 560w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/make-loops.png?w=840&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=a755d518efc02f36fed227edbcdd4266 840w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/make-loops.png?w=1100&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=ae7c521ad1b5ea79fbf6a38d2720c354 1100w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/make-loops.png?w=1650&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=4a8b82a5d2cdbaa081e7e6eb297b150a 1650w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/make-loops.png?w=2500&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=fd306ea334356a74910d780f12dc598e 2500w" />
+<img alt="Adding loops in Make" />
 
 Then select the "Create Connection" button and paste in your API key in the following screen.
-<img src="https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/make-add-create-connection.png?fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=1f04b781d430452b4e6d46aee87b392a" alt="Create a connection with Make" data-og-width="1841" width="1841" data-og-height="1227" height="1227" data-path="images/make-add-create-connection.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/make-add-create-connection.png?w=280&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=290695b4ab825fdca9c4138f1fb9927a 280w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/make-add-create-connection.png?w=560&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=7996f6699096836efcca5feed1a5b919 560w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/make-add-create-connection.png?w=840&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=aee30140880ebdd2476c93fbd5440494 840w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/make-add-create-connection.png?w=1100&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=8ed2a2da77396c2e3902e61eab02e007 1100w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/make-add-create-connection.png?w=1650&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=c9427d71b4a12aa7d14d0c216d4aba01 1650w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/make-add-create-connection.png?w=2500&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=548136f7915ffdfbc707494825e10b5f 2500w" />
+
+<img alt="Create a connection with Make" />
 
 After pasting your API key, click the "Save" button.
 
-<img src="https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/make-paste-api-key.png?fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=9d8feeaaee9f191afd427281b248412a" alt="Connect Loops API with Make" data-og-width="2077" width="2077" data-og-height="1384" height="1384" data-path="images/make-paste-api-key.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/make-paste-api-key.png?w=280&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=bca40d2d1040272fa52d2b8c5153eb6e 280w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/make-paste-api-key.png?w=560&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=7bfd7f19f128e8a315f58fa53d1869f9 560w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/make-paste-api-key.png?w=840&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=cfbe4b9a107920ff03a9239bbd39e6da 840w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/make-paste-api-key.png?w=1100&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=a7c7abb7525e6051d6d87387e0403338 1100w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/make-paste-api-key.png?w=1650&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=5f7d8f7059c437f953ab62e9d71b6344 1650w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/make-paste-api-key.png?w=2500&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=601c2396c4a23d288c76aa12250f89bb 2500w" />
+<img alt="Connect Loops API with Make" />
 
 ## Manage contacts and trigger loops
 
 There are a number of actions available to manage contacts and send emails.
 
-<img src="https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/make-add-module.png?fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=48a4e1fc1c670610372a3f2185864824" alt="Adding a module with Make" data-og-width="2307" width="2307" data-og-height="1538" height="1538" data-path="images/make-add-module.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/make-add-module.png?w=280&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=00b7f2310a7113b4dc87349263c7e049 280w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/make-add-module.png?w=560&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=7250533ada99744f86d1496b170c0753 560w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/make-add-module.png?w=840&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=4ce0277161be6809bcc1c7e669a1812b 840w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/make-add-module.png?w=1100&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=12db09b3e66b8c74f9336d5224f421e2 1100w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/make-add-module.png?w=1650&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=fd0811855132f0dddeb25614e32bf2aa 1650w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/make-add-module.png?w=2500&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=3971b446549cd1405821e27118498661 2500w" />
+<img alt="Adding a module with Make" />
 
 ## Send transactional email
 
@@ -9646,7 +9441,7 @@ There is a "Send transactional email" action you can use to send transactional e
 
 Alternatively you can use the "Make an API call" action.
 
-<img src="https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/maketransactional.png?fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=5504b98eae4bf348b655880245a5e7e1" alt="Set up transactional sending in Make" data-og-width="2280" width="2280" data-og-height="2708" height="2708" data-path="images/maketransactional.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/maketransactional.png?w=280&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=52e672e42371774efb3dd69111860a95 280w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/maketransactional.png?w=560&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=74ca1835261690ef7f4e6e4a72380031 560w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/maketransactional.png?w=840&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=a2a1c7644bba8638ac697b90a845aca9 840w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/maketransactional.png?w=1100&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=6a0d4bd952133b65f81da156458d97f6 1100w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/maketransactional.png?w=1650&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=285dcdaa65dfd85a765aa486c8cc7bdf 1650w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/maketransactional.png?w=2500&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=98ee027da640e7fee9ee85204df5c3a4 2500w" />
+<img alt="Set up transactional sending in Make" />
 
 Make sure that the URL is `/v1/transactional` rather than the full endpoint URL.
 
@@ -9664,7 +9459,7 @@ All of Loops' webhook events are available as triggers in Make.
 
 Add the **Watch Events** trigger to your Make scenario and use an existing or new Loops connection ([see above](#create-a-connection)).
 
-<img src="https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/make-webhooks.png?fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=5a1f3c5b0ed769528a590842a7c876cf" alt="Make webhook settings" data-og-width="2280" width="2280" data-og-height="1382" height="1382" data-path="images/make-webhooks.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/make-webhooks.png?w=280&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=22078ca831fd60eaba401fbf745ab14e 280w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/make-webhooks.png?w=560&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=1ea289378cc85d495414d7f36ea2a7a6 560w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/make-webhooks.png?w=840&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=38e4e9379251aafdfc9aec9f7b581f6b 840w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/make-webhooks.png?w=1100&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=10606b7ee178d406f0debd6432ef34f8 1100w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/make-webhooks.png?w=1650&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=4c3e72dd5d2350fe28585d63d9e3e545 1650w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/make-webhooks.png?w=2500&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=75947d096121d1aa4bc2c86afa19a1dc 2500w" />
+<img alt="Make webhook settings" />
 
 You will be prompted to copy the webhook URL provided by Make and [paste it into your Loops webhook settings](/webhooks#set-up-webhooks).
 
@@ -9699,7 +9494,7 @@ You also have to add values to the **From email address** and **Sender name** fi
 
 Click **Create Integration** to finish setup.
 
-<img src="https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/novu-setup.png?fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=1f623a8e2fc5ceae51a8000c59027940" alt="Setting up custom SMTP in Novu" data-og-width="2280" width="2280" data-og-height="3231" height="3231" data-path="images/novu-setup.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/novu-setup.png?w=280&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=28391e5c4567966a21d43977a447ddcd 280w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/novu-setup.png?w=560&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=61349160bfc4ad2868df1e081ef2c79e 560w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/novu-setup.png?w=840&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=07346563228677cd35215257a3fd5e40 840w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/novu-setup.png?w=1100&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=1b4a0f193385ebab921105fff71cc1ba 1100w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/novu-setup.png?w=1650&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=48a9e802fec0c8ef2a561142feddd096 1650w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/novu-setup.png?w=2500&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=b0925bff41e68e0208d7b23ab0f88163 2500w" />
+<img alt="Setting up custom SMTP in Novu" />
 
 ## Create Transactional emails in Loops
 
@@ -9707,7 +9502,7 @@ Next, create new transactional emails for the emails you are sending from Novu.
 
 In Loops, go to the [Transactional page](https://app.loops.so/transactional) and click **New**. Alternatively, you can select one of our many ready-made templates from the [Templates page](https://app.loops.so/templates).
 
-<img src="https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/novu-template.png?fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=9f7d2854940de43c02bf6720b9da6565" alt="" data-og-width="2280" width="2280" data-og-height="1214" height="1214" data-path="images/novu-template.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/novu-template.png?w=280&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=8d99a1f5006d9dba4c7128c7a41e099f 280w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/novu-template.png?w=560&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=f79abe3974dbde7d132bdec6abacb3a1 560w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/novu-template.png?w=840&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=12978dcbc68da1a057cf86d2dee92ab6 840w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/novu-template.png?w=1100&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=dcf181971fbc140e6479e1971d8bbddf 1100w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/novu-template.png?w=1650&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=6bc6feba8c6a5fa5a2fbbf58213d3ba2 1650w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/novu-template.png?w=2500&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=64021d2ce9f93935233f1318cdb0bcaf 2500w" />
+<img alt="" />
 
 You can then use [the Loops editor](/creating-emails/editor) to create nicely-designed templates or make them as simple as you like.
 
@@ -9717,7 +9512,7 @@ For each Loops template you create, you can add [add data variables](/creating-e
 
 Once you're done creating the email and adding the data variables, click **Next**. On the next page, click the **Show payload** button to view the API payload for your template. You will need this for the next step.
 
-<img src="https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/novu-payload.png?fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=fb4f3cb4526e1f3fcdde5a4db51b00aa" alt="" data-og-width="2280" width="2280" data-og-height="1380" height="1380" data-path="images/novu-payload.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/novu-payload.png?w=280&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=8776b026bb3c8bd9d5a35b7e131d2e12 280w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/novu-payload.png?w=560&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=1a6f6574c3792c466415ee520cd23923 560w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/novu-payload.png?w=840&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=8c73cabc9ab05bac8d640da0f14dc594 840w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/novu-payload.png?w=1100&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=ca438f68e9a9fef4be3e79da36e36ebf 1100w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/novu-payload.png?w=1650&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=e9b6823ff06e5840b7f2bdd39ba1e722 1650w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/novu-payload.png?w=2500&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=f5450088c6f5590bffebd0e04ee954f9 2500w" />
+<img alt="" />
 
 Make sure to also publish your email! It won't send unless it's published.
 
@@ -9737,7 +9532,7 @@ In Novu, go to **Workflows** and create a new workflow. Give it a descriptive na
 
 You will enter the workflow UI. Add an **Email** node. In the email body paste the transactional payload from Loops from the previous step.
 
-<img src="https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/novu-email-1.png?fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=34cf1bd578528dbfcbc945ed6a1fd522" alt="Novu template editor" data-og-width="2280" width="2280" data-og-height="1448" height="1448" data-path="images/novu-email-1.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/novu-email-1.png?w=280&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=b0e1e6d91d5f942534d24aa3cdd3c75b 280w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/novu-email-1.png?w=560&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=af57809e49bdaa05b8625e380b40df98 560w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/novu-email-1.png?w=840&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=f47f885f8b96b63a261dba3b77f4ec7b 840w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/novu-email-1.png?w=1100&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=0b160f6f9b3a0f53e6dbb053e66345e7 1100w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/novu-email-1.png?w=1650&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=6bc4c149dcf0a569f8175becdb9f78e5 1650w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/novu-email-1.png?w=2500&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=5c48c6d83578af13fce4bf52ad3061fd 2500w" />
+<img alt="Novu template editor" />
 
 Add a subject, but note that this will be overwritten by the subject you added to your Loops transactional email.
 
@@ -9787,7 +9582,7 @@ Make sure to add fallbacks for all non-required values and add the corresponding
 
 Here's how a template with variables added looks in the Novu editor:
 
-<img src="https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/novu-email-2.png?fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=f0144ef1dce4107a8beb6f3b7fedbc9c" alt="Novu template editor" data-og-width="2280" width="2280" data-og-height="1448" height="1448" data-path="images/novu-email-2.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/novu-email-2.png?w=280&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=05ecb233fa73d2b69bfb64058a2918a8 280w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/novu-email-2.png?w=560&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=c40b9e45a32b19e3ed384795a367d1b1 560w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/novu-email-2.png?w=840&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=45c7f83d28b6d92ee0ef8896c1308cfe 840w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/novu-email-2.png?w=1100&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=1b51476d3b70506b0a5d48f1ac429ad7 1100w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/novu-email-2.png?w=1650&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=5e010bd5a6e8c9089fcb4b3d9186f84e 1650w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/novu-email-2.png?w=2500&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=d1ea7943a92bccf86699c1219736f57a 2500w" />
+<img alt="Novu template editor" />
 
 Now you're all set up to start sending!
 
@@ -9804,7 +9599,7 @@ Using the same example from above, here's the trigger using Novu's Node SDK.
   address.
 </Info>
 
-```javascript  theme={"dark"}
+```javascript theme={"dark"}
 import { Novu } from "@novu/node";
 
 const novu = new Novu("<NOVU_SECRET_KEY>");
@@ -9821,7 +9616,7 @@ await novu.trigger("<WORKFLOW_TRIGGER_IDENTIFIER>", {
 
 Here's the same request using the API:
 
-```json  theme={"dark"}
+```json theme={"dark"}
 POST https://api.novu.co/v1/events/trigger
 
 {
@@ -9852,7 +9647,7 @@ Here you will be able to set different subscriber and payload data and send test
 
 You can also see logs of all emails sent from the [Activity Feed](https://dashboard-v2.novu.co/env/_/activity-feed) page in Novu.
 
-<img src="https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/novu-testing.png?fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=c7d2dee69e9a3b34d688625babdab227" alt="Novu testing" data-og-width="2280" width="2280" data-og-height="1805" height="1805" data-path="images/novu-testing.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/novu-testing.png?w=280&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=22a953367d8fa9e78d4e17cbecfab2e3 280w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/novu-testing.png?w=560&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=a7245ca53f8b77a22d074e9d881625fb 560w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/novu-testing.png?w=840&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=73c20890931a4c805d3d15953167cedd 840w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/novu-testing.png?w=1100&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=f992af019eef5fb51d505bd1517b5105 1100w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/novu-testing.png?w=1650&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=a1fc10b4917b8d1baa16ade7f50e448f 1650w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/novu-testing.png?w=2500&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=553e7cf260aa015f6af84f3972ac26e2 2500w" />
+<img alt="Novu testing" />
 
 ## Important notes
 
@@ -9882,7 +9677,7 @@ You will see two options:
 * Send events to Loops.so (use this to trigger [loops](/loop-builder))
 * Update contacts in Loops.so (this will *create or update* contacts in your Loops audience)
 
-<img src="https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/posthog-search.png?fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=2cf888fbc6283536ce181249800e028a" alt="Search for Loops in PostHog" data-og-width="2280" width="2280" data-og-height="1098" height="1098" data-path="images/posthog-search.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/posthog-search.png?w=280&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=b9144fcf5ab7ca7f3f41c11db40030d5 280w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/posthog-search.png?w=560&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=80e88fecc5040e099f46071df52cfb74 560w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/posthog-search.png?w=840&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=b321eb83feb397b80a8f3836faded6df 840w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/posthog-search.png?w=1100&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=2f89cb969df7eb0bdb77f1a0fe3280ef 1100w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/posthog-search.png?w=1650&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=78481cb8681aa470aabf5f0a7121e609 1650w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/posthog-search.png?w=2500&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=4f504e67b436be228355d393d7d29726 2500w" />
+<img alt="Search for Loops in PostHog" />
 
 Choose the one you want and click **+ Create**.
 
@@ -9894,7 +9689,7 @@ In Loops, go to [Settings -> API](https://app.loops.so/settings?page=api) and ge
 
 Back in PostHog, paste the API key in the **Loops API Key** field.
 
-<img src="https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/posthog-api-key.png?fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=9ec505733ccfb58dd01047f8a392f19b" alt="Add Loops API key" data-og-width="2280" width="2280" data-og-height="1050" height="1050" data-path="images/posthog-api-key.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/posthog-api-key.png?w=280&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=906436dfd084910d8bab5c2860eea25f 280w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/posthog-api-key.png?w=560&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=84d22843b235103ea66cf1ebf40da3d5 560w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/posthog-api-key.png?w=840&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=47fd4066468bb07722b3389001eb49f4 840w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/posthog-api-key.png?w=1100&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=f1fcb313621d74af0f5e0af9bb83dfee 1100w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/posthog-api-key.png?w=1650&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=cff6c922f08d9d9390083041f9b56e96 1650w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/posthog-api-key.png?w=2500&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=c67b41d82cd63042904dc3099bf02cba 2500w" />
+<img alt="Add Loops API key" />
 
 ## Customize the destination
 
@@ -9904,7 +9699,7 @@ There are a few options available to customize the data that is sent to Loops fo
 
 In the **Send event to Loops.so** destination, you can filter which events are sent to Loops from the **Filters** section. The default is "Pageview" (which is sent with the event name "\$pageview" to Loops).
 
-<img src="https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/posthog-event-destination.png?fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=64c419abae18051750d93f01fb174547" alt="Send events destination" data-og-width="2280" width="2280" data-og-height="1875" height="1875" data-path="images/posthog-event-destination.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/posthog-event-destination.png?w=280&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=f7d1c761bad2227e9710765118ac0124 280w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/posthog-event-destination.png?w=560&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=a76e61b926ff9a27bea2fbd520743e2c 560w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/posthog-event-destination.png?w=840&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=82cf1613f135dd9a8c8e51d056e8766b 840w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/posthog-event-destination.png?w=1100&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=081897557b46924fda194881c9fd1234 1100w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/posthog-event-destination.png?w=1650&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=28e25c42afb8c4af36a38c2c3f63e65f 1650w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/posthog-event-destination.png?w=2500&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=a2f2d2cd2f00676e00265d3032cb92b2 2500w" />
+<img alt="Send events destination" />
 
 By default `pathname` is sent with the event as an [event property](/events/properties), making it available in all emails triggered by the event.
 
@@ -9918,7 +9713,7 @@ The **Update contacts in Loops.so** destination lets you sync users to Loops. If
 
 In this destination you can filter which events are sent to Loops from the **Filters** section. The defaults are "Identify" and "Set person properties".
 
-<img src="https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/posthog-contact-destination.png?fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=f33527bd8f9619387b111d8a73c66888" alt="Update contacts destination" data-og-width="2280" width="2280" data-og-height="1991" height="1991" data-path="images/posthog-contact-destination.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/posthog-contact-destination.png?w=280&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=d9518f1ba86562e480e50c31e2de841e 280w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/posthog-contact-destination.png?w=560&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=355a41813612dcf09c65a0172b069a5c 560w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/posthog-contact-destination.png?w=840&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=8b1492bcd56c157d9167e9501fe9db22 840w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/posthog-contact-destination.png?w=1100&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=561876ab390d94ee4a8d0a1dc0bd5865 1100w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/posthog-contact-destination.png?w=1650&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=9462830e71ecfb8a2b48585ea7f6b800 1650w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/posthog-contact-destination.png?w=2500&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=b3a297ab13cb4fb579b3fdca0db7a355 2500w" />
+<img alt="Update contacts destination" />
 
 By default `email`, `userId`, `firstName` and `lastName` are synced to Loops. To add more contact properties you can use the **Property mapping** option, which allows you to map specific person data to contact properties in Loops. You can see all available contact properties in your account from [Settings -> API](https://app.loops.so/settings?page=api). Make sure to use the "API name" when mapping values in PostHog.
 
@@ -9972,7 +9767,7 @@ let payload := {
 
 To test if your configuration is working as expected, expand the **Testing** section at the bottom of the page.
 
-<img src="https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/posthog-testing.png?fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=c3bb8a50e1e155adb1acf206015ca1c6" alt="Testing the integration" data-og-width="2280" width="2280" data-og-height="1854" height="1854" data-path="images/posthog-testing.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/posthog-testing.png?w=280&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=10909e3d49ec02135891458a8809641d 280w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/posthog-testing.png?w=560&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=31c08444aed2af10ad68fb37c1649d50 560w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/posthog-testing.png?w=840&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=d1f428bd2b84d9e30aeae45cd2479102 840w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/posthog-testing.png?w=1100&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=3c2b4cefc74e399aa11f13b5686bc5ba 1100w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/posthog-testing.png?w=1650&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=c3abf8564ed950fc2afde28710660661 1650w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/posthog-testing.png?w=2500&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=9c9b5ec889a153939f0f9ee91a895e87 2500w" />
+<img alt="Testing the integration" />
 
 You can send real test events to Loops by clicking **Test function**. Check [Settings -> Events](https://app.loops.so/settings?page=events) and your [Audience](https://app.loops.so/audience) pages in Loops to see if data is coming across as you expect.
 
@@ -9995,13 +9790,13 @@ Connect Loops to hundreds of apps to manage contacts and send emails.
 
 In RudderStack, go to [Destinations](https://app.rudderstack.com/destinations) and click **New destination**. Search for "Loops" and select it.
 
-<img src="https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/rudderstack-add.png?fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=2ca6bcb528520950b2a699349899c1d3" alt="Adding Loops in RudderStack" data-og-width="2280" width="2280" data-og-height="1520" height="1520" data-path="images/rudderstack-add.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/rudderstack-add.png?w=280&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=ebc09686293424447a348e419158b6ce 280w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/rudderstack-add.png?w=560&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=8f95e3e1556eebd4b320323f9d9bbcac 560w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/rudderstack-add.png?w=840&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=8ca77b65f024b7a334de5d8215e69abb 840w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/rudderstack-add.png?w=1100&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=694a47d2699f266a66aa3405e42b8ebc 1100w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/rudderstack-add.png?w=1650&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=e0d02bbafebbd1c22b7b8afbb5c4c964 1650w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/rudderstack-add.png?w=2500&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=e3b0386c5bce87243d479382ff106315 2500w" />
+<img alt="Adding Loops in RudderStack" />
 
 Select the source you want to connect Loops to.
 
 On the next page you need to add a Loops API key. You can generate a new one on the [Loops API Settings page](https://app.loops.so/settings?page=api) and paste it into the **API Key** field.
 
-<img src="https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/rudderstack-configure.png?fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=ceb627402bd0b4c93a7a93c34f319ab1" alt="Configuring the destination" data-og-width="2280" width="2280" data-og-height="1520" height="1520" data-path="images/rudderstack-configure.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/rudderstack-configure.png?w=280&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=3201dc6e503a1c79710a086b56d6ca1d 280w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/rudderstack-configure.png?w=560&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=c89541ad20f55b7109d549cdce9d8db2 560w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/rudderstack-configure.png?w=840&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=79df9de74771d5b4232d8838c5e70c02 840w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/rudderstack-configure.png?w=1100&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=d20c3934b92552aa4b5b66ee6589db3c 1100w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/rudderstack-configure.png?w=1650&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=660d8e32e3a75a58497e9191254a76a1 1650w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/rudderstack-configure.png?w=2500&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=232da4bd4480fd24358740ee510db11b 2500w" />
+<img alt="Configuring the destination" />
 
 Click **Continue** at the bottom of the page to finish the setup.
 
@@ -10015,7 +9810,7 @@ Identify users with a unique user ID from your source. You can include contact p
   For new contacts, make sure to include an email address, otherwise the call will fail. If the contact has already been sent to Loops with its user ID, you can omit the email address unless you want to update that value. In general, we recommend to always include an email address.
 </Warning>
 
-```javascript  theme={"dark"}
+```javascript theme={"dark"}
 rudderanalytics.identify(userId, {
   email: "test@test.com",
   firstName: "Adrian",
@@ -10025,7 +9820,7 @@ rudderanalytics.identify(userId, {
 
 To manage [mailing list](/contacts/mailing-lists) subscriptions, add a `mailingLists` object to the traits object. The key is the ID of the mailing list and the value is a boolean indicating whether the contact should be subscribed or unsubscribed.
 
-```javascript  theme={"dark"}
+```javascript theme={"dark"}
 rudderanalytics.identify(userId, {
   email: "test@test.com",
   firstName: "Adrian",
@@ -10048,7 +9843,7 @@ The event name in your `track` call must match the name of the event in Loops. D
   Make sure to call `identify` before `track` so the event is associated with a specific contact.
 </Warning>
 
-```javascript  theme={"dark"}
+```javascript theme={"dark"}
 rudderanalytics.track("newUser", {
   plan: "Pro Annual",
   accountType: "Facebook"
@@ -10063,13 +9858,13 @@ RudderStack includes features to help you test your integration.
 
 First of all you can see all `identify` and `track` calls coming in from your sources. Click on a source and select the **Events tab**.
 
-<img src="https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/rudderstack-source.png?fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=d40af9f050e9ee6e98bde724bcaa80e6" alt="Source events chart" data-og-width="2280" width="2280" data-og-height="2547" height="2547" data-path="images/rudderstack-source.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/rudderstack-source.png?w=280&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=1ce68f978fd5219e57e3524dc1d36422 280w, https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/rudderstack-source.png?w=560&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=1c5427fab777413d6992401b6ec1fcb6 560w, https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/rudderstack-source.png?w=840&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=3c9cf92e88047d9f5df18b350de35804 840w, https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/rudderstack-source.png?w=1100&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=3eb4bda719fcc2eac7d10f7d3d9ba4ec 1100w, https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/rudderstack-source.png?w=1650&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=0a06a81e1ce4086ea4ea4128b0f5bcdb 1650w, https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/rudderstack-source.png?w=2500&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=9c16f94f72b976c42230ac9163b7c127 2500w" />
+<img alt="Source events chart" />
 
 Click on the **Live events** button in the top right to view details of events as they come in.
 
 You can also see all of the calls being sent from RudderStack to your destinations. Click on a destination and then the **Events** tab. At the bottom of this page you will see a table showing events. Click on these to see any errors that have occurred when sending data to Loops.
 
-<img src="https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/rudderstack-destination.png?fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=db7e43f2bdf0c2920517e5df3644ecb8" alt="Destination events" data-og-width="2280" width="2280" data-og-height="2154" height="2154" data-path="images/rudderstack-destination.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/rudderstack-destination.png?w=280&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=a705052b9455ad25287b2796bb44cfca 280w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/rudderstack-destination.png?w=560&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=feec44baee3a17dd15ccfb417eb41042 560w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/rudderstack-destination.png?w=840&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=50d3f54d80897b63d77ddd8189888176 840w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/rudderstack-destination.png?w=1100&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=8125fc10614b1fbdd3662c75226a4971 1100w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/rudderstack-destination.png?w=1650&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=0540c644f80078c8a0ffa6f8096c8b90 1650w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/rudderstack-destination.png?w=2500&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=53262e8fd712e91b221fd978e3fa26be 2500w" />
+<img alt="Destination events" />
 
 ### In Loops
 
@@ -10077,7 +9872,7 @@ You can verify contact updates have happened in Loops from the [Audience page](h
 
 Click on individual events in the **Event Log** table to view the payload that Loops processed.
 
-<img src="https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/events-page.png?fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=61b360ae384ca9fcffdbe2bc193d509a" alt="Events page" data-og-width="2280" width="2280" data-og-height="1520" height="1520" data-path="images/events-page.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/events-page.png?w=280&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=862d8aa9d6f61ad95962c3e5c7f6a08a 280w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/events-page.png?w=560&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=f778c1771683ce6fe72dfc6628e835aa 560w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/events-page.png?w=840&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=26c3a7ecb8f6374640d498b3389508eb 840w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/events-page.png?w=1100&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=167f6583dc35f52bfdca267dde756a12 1100w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/events-page.png?w=1650&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=902a7c9255941900394cdc60ad2019c3 1650w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/events-page.png?w=2500&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=19de67f0a14dbf8d9e12c1de7fcf29ee 2500w" />
+<img alt="Events page" />
 
 
 # Segment
@@ -10098,7 +9893,7 @@ Visit our [Segment integration](https://segment.com/catalog/integrations/actions
 
 After opening the link above, click **Configure Loops (Actions)**.
 
-<img src="https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/segment-configure-loops.png?fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=5e5f327e220492cc8291ec29cdd5b32e" alt="Adding Loops in Segment" data-og-width="2280" width="2280" data-og-height="1125" height="1125" data-path="images/segment-configure-loops.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/segment-configure-loops.png?w=280&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=00f46841325b8c4964bc02f05b88ee8c 280w, https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/segment-configure-loops.png?w=560&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=10e0cad92a1bddccd4ba6eb4afc24ac9 560w, https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/segment-configure-loops.png?w=840&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=5673468baad8bba40ca92212368167d4 840w, https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/segment-configure-loops.png?w=1100&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=f361c822fb36b8b1acda60a77bf92916 1100w, https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/segment-configure-loops.png?w=1650&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=13bff59eec45fb7a602ff4ecd8d5bf6e 1650w, https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/segment-configure-loops.png?w=2500&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=05c702d7be6fb2047c8493efcbb25346 2500w" />
+<img alt="Adding Loops in Segment" />
 
 Select your data source, give the destination a name, and click **Create destination**.
 
@@ -10106,7 +9901,7 @@ Next, you’ll need an API key. You can generate a new one for Segment on the [L
 
 Enter the API key on your Segment destination settings:
 
-<img src="https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/segment-api-key.png?fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=60e2cf5103c1d17da42db3cf97827d4f" alt="Add an API key" data-og-width="2280" width="2280" data-og-height="1647" height="1647" data-path="images/segment-api-key.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/segment-api-key.png?w=280&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=18a391ff2737057c5675a748f963ad9e 280w, https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/segment-api-key.png?w=560&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=c20b5d117ad2fe1a8ddf2eca322e6c98 560w, https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/segment-api-key.png?w=840&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=afb471c9ab6314092df80aa5854af609 840w, https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/segment-api-key.png?w=1100&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=b94342acddf3f7b42bf74c22ec6752ca 1100w, https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/segment-api-key.png?w=1650&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=70967bc3287ceeb442e11c9caad93bc6 1650w, https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/segment-api-key.png?w=2500&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=4afd84d7398bede1f6be7b3283c593f5 2500w" />
+<img alt="Add an API key" />
 
 Enable the destination and click **Save Changes**. Note that no data will start flowing until you create specific mappings for Loops.
 
@@ -10118,7 +9913,7 @@ Segment action destinations require that you map specific fields from your sourc
 
 First, select which events to map. Typically for contact creation and updates, the most useful event to map will be "Identify".
 
-<img src="https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/segment-select-events.png?fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=62e7f1763ee87d83d5f3df9fb503b357" alt="Map contact properties" data-og-width="2280" width="2280" data-og-height="947" height="947" data-path="images/segment-select-events.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/segment-select-events.png?w=280&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=8099e92d7a3a6be0eddbb74f5d3a66ae 280w, https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/segment-select-events.png?w=560&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=6c12e0022338bd4ce26ae2812bb4f832 560w, https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/segment-select-events.png?w=840&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=5b13fb1ac2c06f1108181429bdffe147 840w, https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/segment-select-events.png?w=1100&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=1a550744bb798c75d8ffdbe674e6be93 1100w, https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/segment-select-events.png?w=1650&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=c483930d856b1063b3c5eb8bcca6f41b 1650w, https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/segment-select-events.png?w=2500&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=e4281d081884efb1dee5599ab0ab8dbe 2500w" />
+<img alt="Map contact properties" />
 
 The next step is to load a sample event to help you map fields appropriately.
 
@@ -10126,7 +9921,7 @@ Contact properties are found in the `traits` object.
 
 For this example, we’ll be using this test event:
 
-```json  theme={"dark"}
+```json theme={"dark"}
 {
   "messageId": "segment-test-message-gt3ds8",
   "timestamp": "2023-05-24T17:58:30.352Z",
@@ -10147,7 +9942,7 @@ For this example, we’ll be using this test event:
 
 We've provided some defaults for the mappings, which will show up in the third step, but it is important you review them:
 
-<img src="https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/segment-default-mapping.png?fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=deee73f5d70f77a3de8596f9120285e8" alt="Default contact mappings" data-og-width="2280" width="2280" data-og-height="2436" height="2436" data-path="images/segment-default-mapping.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/segment-default-mapping.png?w=280&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=f654fdbf78b0a5907e53b4c530b3f242 280w, https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/segment-default-mapping.png?w=560&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=3dec93e963c5f1f17c0438f533d592a2 560w, https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/segment-default-mapping.png?w=840&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=ab5a2fea99d579c101d14333805eded6 840w, https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/segment-default-mapping.png?w=1100&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=91d6d37daa06f513963a5c9cf624f138 1100w, https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/segment-default-mapping.png?w=1650&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=a64e0c5bd2717f58b2079a4a8e54ecce 1650w, https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/segment-default-mapping.png?w=2500&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=b9db81ba765cb844a3ba1edc8db63261 2500w" />
+<img alt="Default contact mappings" />
 
 #### Custom contact properties
 
@@ -10161,13 +9956,13 @@ You can pass contact properties as a dictionary in the **Custom Contact Attribut
 
 Click **Edit Object** to specify the custom fields you want to send to Loops individually:
 
-<img src="https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/segment-edit-defaults.png?fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=ef6b0be2f2a214f4699c26496563da1d" alt="Mapping custom contact properties" data-og-width="2280" width="2280" data-og-height="858" height="858" data-path="images/segment-edit-defaults.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/segment-edit-defaults.png?w=280&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=bc793f8c6cbb75de1b6c0d6b0a348942 280w, https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/segment-edit-defaults.png?w=560&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=3b86f9872b6ef0e4310f5e2e18dfa4e0 560w, https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/segment-edit-defaults.png?w=840&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=9b6b4ee90c1e640b0659d082c78dfb7d 840w, https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/segment-edit-defaults.png?w=1100&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=f2fe5e211309fb6dbec3beda174b8aba 1100w, https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/segment-edit-defaults.png?w=1650&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=ce09628a202c6f04a3824747f1306465 1650w, https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/segment-edit-defaults.png?w=2500&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=366f98b3cf0541b2528928bbd8ed8bca 2500w" />
+<img alt="Mapping custom contact properties" />
 
 #### Subscribed
 
 In most cases, you want to leave the **Subscribed** field as the default (deselected). Setting this to `true` will re-subscribe contacts who had previously unsubscribed, and setting it to `false` will unsubscribe contacts from receiving email. Leaving it deselected will default new users as subscribed to email and not update the email preference for existing contacts.
 
-<img src="https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/segment-subscribed-field.png?fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=fbe6333a7ba93f350372adaf073d9ded" alt="Subscribed field" data-og-width="2280" width="2280" data-og-height="858" height="858" data-path="images/segment-subscribed-field.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/segment-subscribed-field.png?w=280&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=eb6ee90f79c3436657cc724330a8fb72 280w, https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/segment-subscribed-field.png?w=560&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=f4c6bf60be472a172830e2a1b581765e 560w, https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/segment-subscribed-field.png?w=840&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=f7ad833c1684a2eb2f2a006f1976fb5d 840w, https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/segment-subscribed-field.png?w=1100&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=66be8a2b10cd65b482ac1311f3f963c0 1100w, https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/segment-subscribed-field.png?w=1650&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=93113500240cdfc3c7ee038d4929d244 1650w, https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/segment-subscribed-field.png?w=2500&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=e2d48b15d86e109c652398809fc9df29 2500w" />
+<img alt="Subscribed field" />
 
 #### Mailing lists
 
@@ -10179,11 +9974,11 @@ Click the **Edit Object** option, then the **+ Add Mapping Field** button. In th
 
 You can add multiple lists by clicking on the **+ Add Mapping Field** button again. Make sure the data shown below the fields has the same structure as in the image below.
 
-<img src="https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/segment-mapping-lists.png?fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=13d71019be25d37f92a6dd6060f38025" alt="Adding list IDs in the mapping UI" data-og-width="2280" width="2280" data-og-height="978" height="978" data-path="images/segment-mapping-lists.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/segment-mapping-lists.png?w=280&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=00cfeb409efaccbc81c1239f1098ab7b 280w, https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/segment-mapping-lists.png?w=560&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=e0dad271977e674f96128848769abe2d 560w, https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/segment-mapping-lists.png?w=840&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=ef7f22083a8c3f5f93dd30d91bf55bfc 840w, https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/segment-mapping-lists.png?w=1100&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=f16d405c07ffc730cb9326ba8c093c73 1100w, https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/segment-mapping-lists.png?w=1650&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=0ac4d8cf9ce308094d57867550c6f538 1650w, https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/segment-mapping-lists.png?w=2500&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=11588c459e7719e2cc3675faf8a52353 2500w" />
+<img alt="Adding list IDs in the mapping UI" />
 
 Another option is to add mailing list data to your Identify call, which will let you dd more dynamic data for each contact. You can test this by adding a `mailingLists` object to `traits` in your test event with list IDs as keys and `true` (to subscribe) or `false` (to unsubscribe) as values.
 
-```json  theme={"dark"}
+```json theme={"dark"}
 {
   "messageId": "segment-test-message-gt3ds8",
   "timestamp": "2023-05-24T17:58:30.352Z",
@@ -10204,17 +9999,17 @@ Another option is to add mailing list data to your Identify call, which will let
 
 Then you need to map the data. Click the **Select Object** option, then search for `traits.mailingLists` from the Event Variables options.
 
-<img src="https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/segment-mailinglists-object.png?fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=0bdad2f709ce49e3cedbfb4a2db4dde9" alt="Selecting the mailing list data from traits" data-og-width="2280" width="2280" data-og-height="1098" height="1098" data-path="images/segment-mailinglists-object.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/segment-mailinglists-object.png?w=280&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=bc4f4d1c296686e0a41240250f906784 280w, https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/segment-mailinglists-object.png?w=560&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=c1825a5ed66e718247bd2d35034aeec1 560w, https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/segment-mailinglists-object.png?w=840&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=dc1323eab0a1c95547b8f027870f6227 840w, https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/segment-mailinglists-object.png?w=1100&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=549a0707ef3ac3fa97eca853bc0c4666 1100w, https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/segment-mailinglists-object.png?w=1650&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=a188c4ddfb63d2709a43804419103be3 1650w, https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/segment-mailinglists-object.png?w=2500&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=2e2243376ac4e6e18f403c9ebd5e5c2e 2500w" />
+<img alt="Selecting the mailing list data from traits" />
 
 #### Testing
 
 After the mappings are configured you can preview the data that will be sent.
 
-<img src="https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/segment-test-preview.png?fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=235a79d1658e48758004f91a7ebd461f" alt="Event data preview" data-og-width="2280" width="2280" data-og-height="1653" height="1653" data-path="images/segment-test-preview.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/segment-test-preview.png?w=280&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=62b1972f6b669ae32a033e1ed9276db7 280w, https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/segment-test-preview.png?w=560&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=30171b0d15e8e4ad5cf1318e215b9e56 560w, https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/segment-test-preview.png?w=840&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=57fcf7777837a6b0f4499921ad150a71 840w, https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/segment-test-preview.png?w=1100&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=d2e0b1a56d3cab1845c2bf6bc37659f7 1100w, https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/segment-test-preview.png?w=1650&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=0b67b28e16dab163755b644b2b53cf30 1650w, https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/segment-test-preview.png?w=2500&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=b73d74e5f270590392a59022c83e87ed 2500w" />
+<img alt="Event data preview" />
 
 You can also send a test event to Loops to verify everything is working (this will send actual data to your Loops account). If it works, you will get a successful response:
 
-<img src="https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/segment-test-event.png?fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=6497b1f7b5ecd4328992b4786ad977aa" alt="Successful response" data-og-width="2280" width="2280" data-og-height="1289" height="1289" data-path="images/segment-test-event.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/segment-test-event.png?w=280&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=c0c70abb1f6acf7359134028e8cdb613 280w, https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/segment-test-event.png?w=560&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=407a6f9824b6ea6f3de539b393be4c05 560w, https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/segment-test-event.png?w=840&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=66d301ef702d901c0257231165f4f220 840w, https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/segment-test-event.png?w=1100&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=6d60cfbc86c21b41f92d6e10bc16f2b2 1100w, https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/segment-test-event.png?w=1650&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=08c307e0dde029e58780048d01260fb0 1650w, https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/segment-test-event.png?w=2500&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=90cebc746a267a7534e67eeb7746811d 2500w" />
+<img alt="Successful response" />
 
 Check your [Loops audience page](https://app.loops.so/audience) to ensure the contact was created or updated as intended.
 
@@ -10230,11 +10025,11 @@ First, select which event(s) to map. Typically for sending an event, the most us
 
 We recommend that you filter the events down to only ones that you plan on using within Loops using the **Event Name** filter:
 
-<img src="https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/segment-send-event.png?fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=eb07702265a9c324bbe9f9537e4123e0" alt="Sent event in Segment" data-og-width="2280" width="2280" data-og-height="1002" height="1002" data-path="images/segment-send-event.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/segment-send-event.png?w=280&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=bf24efb32607fdf76daab715a18b16a8 280w, https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/segment-send-event.png?w=560&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=ceb464ff7c5a9e749e5f98d65d55f00e 560w, https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/segment-send-event.png?w=840&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=2942933231e131d7e34c0612959c6267 840w, https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/segment-send-event.png?w=1100&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=163ff5854086168f9266dbc8c3a38a3e 1100w, https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/segment-send-event.png?w=1650&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=d67b16a4ba877f3fd5141919f823278f 1650w, https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/segment-send-event.png?w=2500&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=8b2e039dbad9d16212fa055c1d423d94 2500w" />
+<img alt="Sent event in Segment" />
 
 Then after defining or loading a sample event in step 2, configure the mapping.
 
-<img src="https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/segment-configure-mappings.png?fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=e41dfcd28513825e37576838c31c6f84" alt="Sent event in Segment" data-og-width="2280" width="2280" data-og-height="1511" height="1511" data-path="images/segment-configure-mappings.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/segment-configure-mappings.png?w=280&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=4e6141db050b5030c0b99ef99fa7d84c 280w, https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/segment-configure-mappings.png?w=560&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=cfb7cc71c3500283776f714eb93ba32e 560w, https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/segment-configure-mappings.png?w=840&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=d7e5ae6f2e519a3bf01090caab00b6ad 840w, https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/segment-configure-mappings.png?w=1100&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=93dca6dfd73eeb445a94ab4260effec3 1100w, https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/segment-configure-mappings.png?w=1650&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=9ea2f3fc59e4d8f4dd588c26b1bcccd3 1650w, https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/segment-configure-mappings.png?w=2500&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=a968ef68e60ace87e2a356fd95653f2e 2500w" />
+<img alt="Sent event in Segment" />
 
 #### Required fields
 
@@ -10246,7 +10041,7 @@ If you want to add [event properties](/events/properties), you can pass them as 
 
 You can choose to select the `properties` object to send all data from the track call. Or if you click **Edit Object** you can select individual properties. Make sure to enter the correct contact property name from Loops in the **Enter key name** field.
 
-<img src="https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/segment-event-properties.png?fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=6d55f7bd6e8b9dce0413525e5ea54ed8" alt="Configure event mappings" data-og-width="2280" width="2280" data-og-height="1142" height="1142" data-path="images/segment-event-properties.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/segment-event-properties.png?w=280&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=fd9e4d425ee5492b7fdc534c1660d091 280w, https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/segment-event-properties.png?w=560&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=10582d54c9cb9616d80b61d2dd11fb59 560w, https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/segment-event-properties.png?w=840&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=c670670b0ef31ad3aadadc44cc22cedd 840w, https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/segment-event-properties.png?w=1100&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=5888d70dc8d8ba56d55dd55e4e1585fe 1100w, https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/segment-event-properties.png?w=1650&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=c26762bdc42aac96f6b0b80db15745c3 1650w, https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/segment-event-properties.png?w=2500&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=8ef3cf83728ba93d9fe66e02a034f23a 2500w" />
+<img alt="Configure event mappings" />
 
 #### Contact properties
 
@@ -10254,7 +10049,7 @@ You can update contacts at the same time as sending an event with the **Contact 
 
 Click **Edit Object** and specify the properties and values you want to update on your contacts.
 
-<img src="https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/segment-event-contact-properties.png?fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=db06fb438c39251da7ab9c3845273e0f" alt="Mapping custom contact properties" data-og-width="2280" width="2280" data-og-height="1142" height="1142" data-path="images/segment-event-contact-properties.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/segment-event-contact-properties.png?w=280&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=7cc7bd972a5bc9e758cd9ad005cdaa8e 280w, https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/segment-event-contact-properties.png?w=560&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=7d2d2743adb370fdd6cf42619058e239 560w, https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/segment-event-contact-properties.png?w=840&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=e22083cdb659b4a8fd9649ff0f1e9f33 840w, https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/segment-event-contact-properties.png?w=1100&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=0dc6569640009e3902eee6bbb02c1cdd 1100w, https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/segment-event-contact-properties.png?w=1650&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=30d0fff9a0ec7aa68c97d1d6c1797d17 1650w, https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/segment-event-contact-properties.png?w=2500&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=2d0323c77d3012e9567659c985acf3ef 2500w" />
+<img alt="Mapping custom contact properties" />
 
 <Warning>
   Ensure that the keys and values you provide match the schema you’ve created in your [Contact properties settings](https://app.loops.so/settings?page=api), otherwise some data may not be captured by Loops.
@@ -10266,11 +10061,11 @@ You can choose to add a contact's email address in the **Contact Email** field o
 
 After configuring the mapping, you can send a test event at the bottom of the page (this will send actual data to your Loops account). You can preview the data that will be sent.
 
-<img src="https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/segment-event-preview.png?fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=c0276874863e39d5b5bdd9055a8bf2f0" alt="Send event preview" data-og-width="2280" width="2280" data-og-height="1350" height="1350" data-path="images/segment-event-preview.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/segment-event-preview.png?w=280&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=a09b1615a3366e26e870f77efdd0305e 280w, https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/segment-event-preview.png?w=560&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=61aa355acc2d9afca2eb28a8d5c60c72 560w, https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/segment-event-preview.png?w=840&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=d58518ebe853871c7d1ce4ae0fa2c204 840w, https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/segment-event-preview.png?w=1100&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=7a254deeb0376123fae1d8c9e5149738 1100w, https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/segment-event-preview.png?w=1650&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=36d39daed04ee187567c353c263223f5 1650w, https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/segment-event-preview.png?w=2500&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=00262de2ed9db641620156129fb7f9bd 2500w" />
+<img alt="Send event preview" />
 
 The response should indicate success:
 
-<img src="https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/segment-test-mappings.png?fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=2ad0e04c0c800d4db9c2ccb703c27066" alt="Success message" data-og-width="2280" width="2280" data-og-height="1215" height="1215" data-path="images/segment-test-mappings.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/segment-test-mappings.png?w=280&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=7c78740adcbc9a2a45a5fca0b346c577 280w, https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/segment-test-mappings.png?w=560&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=cdb9c10f81f3fe1c3d4f502aa29722db 560w, https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/segment-test-mappings.png?w=840&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=c4370ab5a41915f4b867212f9108beca 840w, https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/segment-test-mappings.png?w=1100&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=9889063a67cfc68d3285a26067d9a6a8 1100w, https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/segment-test-mappings.png?w=1650&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=7c05c2b72b22baa4f20e66ecbf73d510 1650w, https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/segment-test-mappings.png?w=2500&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=95508db44a80e70e28236ae9822b1222 2500w" />
+<img alt="Success message" />
 
 You can verify the event was received on your [Events page](https://app.loops.so/settings?page=events) in Loops.
 
@@ -10284,7 +10079,7 @@ The examples use Segment's [Analytics.js library](https://segment.com/docs/conne
 
 For this action you should send a `identify()` event. Add contact properties (including any [custom properties](/contacts/properties#custom-contact-properties)) in the traits object:
 
-```javascript  theme={"dark"}
+```javascript theme={"dark"}
 analytics.identify("97980cfea0067", {
   email: "peter@example.com",
   plan: "premium",
@@ -10294,7 +10089,7 @@ analytics.identify("97980cfea0067", {
 
 If you're mapping a `mailingLists` object from `traits` ([read more above](#mailing-lists)) add it like this:
 
-```javascript  theme={"dark"}
+```javascript theme={"dark"}
 analytics.identify("97980cfea0067", {
   email: "peter@example.com",
   plan: "premium",
@@ -10310,7 +10105,7 @@ analytics.identify("97980cfea0067", {
 
 For this action send a `track()` event. Data sent in the properties object will be sent as [event properties](/events/properties) to Loops. Make sure that you have added these event properties in your [Events Settings](https://app.loops.so/settings?page=events) in Loops before sending the event to Segment.
 
-```javascript  theme={"dark"}
+```javascript theme={"dark"}
 analytics.track("User Registered", {
   plan: "Pro Annual",
   accountType: "Facebook",
@@ -10376,7 +10171,7 @@ The `customer.deleted` event can be used to delete or unsubscribe your Stripe cu
 
 [Follow the instructions here](/integrations/incoming-webhooks#create-webhook-endpoints-in-loops) to create a new webhook endpoint, which will allow you to send webhook events directly to Loops.
 
-<img src="https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/create-endpoint.png?fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=be75ea5d3e49aaa75248d6d157d5780b" alt="Endpoint form" data-og-width="2280" width="2280" data-og-height="1556" height="1556" data-path="images/create-endpoint.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/create-endpoint.png?w=280&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=9e0e8289abc76ba6a6eb278ed097a779 280w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/create-endpoint.png?w=560&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=1f45e6a6c27d3847f4f37cbd47c3aab6 560w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/create-endpoint.png?w=840&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=b98f9ba7cac487f8e38da5f1fbb328b3 840w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/create-endpoint.png?w=1100&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=2e969b5ad5d478635aa17783cc3b363b 1100w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/create-endpoint.png?w=1650&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=2ec8f95dee66d9ddf4ca52460700d87c 1650w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/create-endpoint.png?w=2500&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=31ff8ef99563162302b0f8a62985cc2d 2500w" />
+<img alt="Endpoint form" />
 
 ## Create a webhook in Stripe
 
@@ -10386,13 +10181,13 @@ Go to **Developers** and then **[Webhooks](https://dashboard.stripe.com/webhooks
 
 Click **+ Add endpoint**. Paste in the endpoint URL from Loops, then select the event(s) you want to send (see our [supported events](#supported-events) above).
 
-<img src="https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/stripe-webhook.png?fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=13fe0fa4248ca24591b1d656c9bd87ac" alt="Adding a webhook in Stripe" data-og-width="2280" width="2280" data-og-height="1635" height="1635" data-path="images/stripe-webhook.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/stripe-webhook.png?w=280&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=b9e84cff33a9480bd677928a5a350d4b 280w, https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/stripe-webhook.png?w=560&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=4e400d8367b9352c1f541906ac3a0cbd 560w, https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/stripe-webhook.png?w=840&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=85f33d713bb4656340d764ee2163c9c4 840w, https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/stripe-webhook.png?w=1100&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=dbf3e2c20961ed65a5ad50892cc4a278 1100w, https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/stripe-webhook.png?w=1650&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=96fc2a897418cd28fb0a1e8bb72a7678 1650w, https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/stripe-webhook.png?w=2500&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=283dfa270ae0dea7d066bd295e2422ff 2500w" />
+<img alt="Adding a webhook in Stripe" />
 
 Click **Add endpoint** to finish.
 
 The last step is to copy the signing secret into Loops. On the webhook page in Stripe, click **Reveal** to show the secret in the page. Copy the secret and paste it into the **Signing Secret** field in Loops.
 
-<img src="https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/stripe-secret.png?fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=f981626e32de38761616f09628885fb0" alt="Reveal Stripe secret" data-og-width="2280" width="2280" data-og-height="795" height="795" data-path="images/stripe-secret.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/stripe-secret.png?w=280&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=4a7cab352f9cb40111122c1be562b95b 280w, https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/stripe-secret.png?w=560&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=b2c18a2905b74855bbd9a5d992e10635 560w, https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/stripe-secret.png?w=840&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=80eccfcbb6afcb441426fa6de65f2595 840w, https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/stripe-secret.png?w=1100&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=561e76e18336edf4c0554b120d45ab5b 1100w, https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/stripe-secret.png?w=1650&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=5f6a566520154392cc9b51baa40b70b1 1650w, https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/stripe-secret.png?w=2500&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=ff76530e3f5422d86f88cce135d13085 2500w" />
+<img alt="Reveal Stripe secret" />
 
 Now you're all set up.
 
@@ -10483,7 +10278,7 @@ With Supabase, you can keep your user data synced to Loops so you can send email
 
 ## Supported events
 
-We accept the following database events for the "Users" table:
+We accept the following database events for the `auth.users` table:
 
 * `INSERT`
 * `UPDATE`
@@ -10499,8 +10294,26 @@ For `INSERT` and `UPDATE` events, we sync the following Supabase data to your Lo
 
 * User ID
 * Email address
+* First and last name (optional)
 
 We use the IDs of Supabase users to match contacts in your Loops audience. If the user ID is not found in Loops, we will create a new contact.
+
+First and last names are populated from metadata in the `auth.users` table. Key names should be `first_name` and `last_name`.
+
+```javascript theme={"dark"}
+const { data, error } = await supabase.auth.signUp({
+  email: 'test@example.com',
+  password: 'example-password',
+  options: {
+    data: {
+      first_name: 'John',
+      last_name: 'Doe',
+    },
+  },
+})
+```
+
+More information about metadata in Supabase can be found in the [Supabase documentation](https://supabase.com/docs/guides/auth/managing-user-data?queryGroups=language\&language=js#adding-and-retrieving-user-metadata).
 
 `DELETE` events can be used to delete or unsubscribe your Supabase users from your Loops audience.
 
@@ -10508,7 +10321,7 @@ We use the IDs of Supabase users to match contacts in your Loops audience. If th
 
 [Follow the instructions here](/integrations/incoming-webhooks#create-webhook-endpoints-in-loops) to create a new webhook endpoint, which will allow you to send webhook events directly to Loops.
 
-<img src="https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/create-endpoint-supabase.png?fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=d76efd48a5326debecce311b80dde7ce" alt="Endpoint form" data-og-width="2280" width="2280" data-og-height="1556" height="1556" data-path="images/create-endpoint-supabase.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/create-endpoint-supabase.png?w=280&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=7a6a2cb668574fc8673a9a45792400d3 280w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/create-endpoint-supabase.png?w=560&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=85a54d66e359123eff9d1d5ba26fa652 560w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/create-endpoint-supabase.png?w=840&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=6b9f0c5604e601cf026205707f9d8645 840w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/create-endpoint-supabase.png?w=1100&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=df571100daf2c9e497818c60926568fc 1100w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/create-endpoint-supabase.png?w=1650&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=cb773940107dbcdf60df8ab2810ec337 1650w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/create-endpoint-supabase.png?w=2500&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=5fd146b67b2c9de5353a203780ab7105 2500w" />
+<img alt="Endpoint form" />
 
 ## Create a database hook in Supabase
 
@@ -10520,11 +10333,11 @@ Give a name to your webhook, select "auth users" from the **Table** dropdown, an
 
 Make sure **HTTP Request** is selected in the **Webhook configuration** section. In the **HTTP Request** section, paste in the endpoint URL from Loops into the **URL** field.
 
-<img src="https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/supabase-webhook.png?fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=802b4a0498a39577f692fe8fcfae0bb1" alt="Adding a webhook in Supabase" data-og-width="2280" width="2280" data-og-height="2658" height="2658" data-path="images/supabase-webhook.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/supabase-webhook.png?w=280&fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=406b4a3eae3b36f47c86f5a9caad5797 280w, https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/supabase-webhook.png?w=560&fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=547b61e97a54e3e0b81b5410c2c7edd0 560w, https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/supabase-webhook.png?w=840&fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=4f838bf252b5ab877e7000b443ea1968 840w, https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/supabase-webhook.png?w=1100&fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=14aa37bd068d8bb52ceca9d0018f46d7 1100w, https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/supabase-webhook.png?w=1650&fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=ca463579b6d55952f91c2d5012683e0a 1650w, https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/supabase-webhook.png?w=2500&fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=37d82b64b12862a0b30362136dc2fa09 2500w" />
+<img alt="Adding a webhook in Supabase" />
 
 The last step is to secure requests with a header. In the **HTTP Headers** section, click **+ Add a new header**. From the **Secret header** section in Loops, paste in the **Header name** ("Loops-Secret") and **Header value** values into the form.
 
-<img src="https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/supabase-header.png?fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=08a4154f400e6cc28c8dd570d2bed97b" alt="Add header in Supabase" data-og-width="2280" width="2280" data-og-height="1326" height="1326" data-path="images/supabase-header.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/supabase-header.png?w=280&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=21cf2ed556315ad0de67c874209e9727 280w, https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/supabase-header.png?w=560&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=6150696d816a1d21697ab3d4ed461c27 560w, https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/supabase-header.png?w=840&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=ea09ae93bb0c976f6ea89200d3e37688 840w, https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/supabase-header.png?w=1100&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=0f0ac6266dc72982f93a7cb754324a55 1100w, https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/supabase-header.png?w=1650&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=ed0e4ee56773eff5245a3e308a469850 1650w, https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/supabase-header.png?w=2500&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=c0074404ef1679261bd319c446131a08 2500w" />
+<img alt="Add header in Supabase" />
 
 Click **Create webhook** to finish.
 
@@ -10580,7 +10393,7 @@ When you add new fields, make sure the “Name” value in the field's settings 
   import](/add-users/csv-upload) or [using the API](/api-reference).
 </Tip>
 
-<img src="https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/webflow-field.png?fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=c89a5d084758404721dbacb04c2d6ef6" alt="" data-og-width="2280" width="2280" data-og-height="1662" height="1662" data-path="images/webflow-field.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/webflow-field.png?w=280&fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=f9c91f1f4904529976e1a4e6f8e58576 280w, https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/webflow-field.png?w=560&fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=4ded7499455601ff421bc0a1c01f49a2 560w, https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/webflow-field.png?w=840&fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=d5f17f5de2d8725fe12d4d4041d5ac06 840w, https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/webflow-field.png?w=1100&fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=1a3efb3d098075b13738a8a9a341e1f3 1100w, https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/webflow-field.png?w=1650&fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=5f16d0e9ec1ae67078a3413c0276e853 1650w, https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/webflow-field.png?w=2500&fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=13fa3f2c45a03f1c9709fafb0245aead 2500w" />
+<img alt="" />
 
 ### How to add hidden fields
 
@@ -10588,11 +10401,11 @@ You may want to assign a property to all contacts that submit the form (for exam
 
 For this add an "Embed" component *inside your form* on the same level as your input and button elements.
 
-<img src="https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/webflow-hidden-field.png?fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=0947d420946a92c030c643808786b9c4" alt="" data-og-width="2280" width="2280" data-og-height="1662" height="1662" data-path="images/webflow-hidden-field.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/webflow-hidden-field.png?w=280&fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=e3352a43c05d22c3ec71a52f6e19a80b 280w, https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/webflow-hidden-field.png?w=560&fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=a3ea14cf8bf4af0502bd403587f44f40 560w, https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/webflow-hidden-field.png?w=840&fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=3a4853964f841ed5d57f1ea30750c1b4 840w, https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/webflow-hidden-field.png?w=1100&fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=c5cce2cf6da4831dc250988f0d94a17a 1100w, https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/webflow-hidden-field.png?w=1650&fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=07589be3780944edb79ff3efd7c2db9a 1650w, https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/webflow-hidden-field.png?w=2500&fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=198ae135497ab6d291f0ddb5d8b5e00b 2500w" />
+<img alt="" />
 
 In this Embed element add a hidden text field that passes on the custom value to Loops (make sure the `name` values match the "API Name" values in your [API Settings](https://app.loops.so/settings?page=api)).
 
-```html  theme={"dark"}
+```html theme={"dark"}
 <input type="hidden" name="mailingLists" value="cly2xnjbn002z0mme68uog1wk, cly4xnjbn002x0mme28uog1wk" />
 
 <input type="hidden" name="source" value="Webflow" />
@@ -10612,7 +10425,7 @@ In this Embed element add a hidden text field that passes on the custom value to
 
 Here's how it looks in the Webflow editor:
 
-<img src="https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/webflow-embed.png?fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=4f56a8ef8bebe032977da1a09197d361" alt="" data-og-width="2280" width="2280" data-og-height="639" height="639" data-path="images/webflow-embed.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/webflow-embed.png?w=280&fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=3f1c69513f759dd29ee243c57c6c7ae3 280w, https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/webflow-embed.png?w=560&fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=1c704f08e28e80c2fa282d58ed1b9e42 560w, https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/webflow-embed.png?w=840&fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=90e153e8095da2a4789ec83118c20b38 840w, https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/webflow-embed.png?w=1100&fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=85b6898f105457f2393aea57976a3b33 1100w, https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/webflow-embed.png?w=1650&fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=febe16b332b04d65d516c626b4460055 1650w, https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/webflow-embed.png?w=2500&fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=f051b19e7f9a1d1778ea525ec0abf958 2500w" />
+<img alt="" />
 
 ## Add your Loops form endpoint URL
 
@@ -10621,9 +10434,9 @@ The last step is to make sure your form submits data to Loops. You do this by ad
 1. Go to the [Forms page](https://app.loops.so/forms) in your Loops account.
 2. Click on the **Settings** tab.
 3. Copy the URL shown in the **Form Endpoint** field.
-   <img src="https://mintcdn.com/loops/OG31ikb--92jQDlq/images/form-endpoint.png?fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=c44978586df98ffbb59edc5208d5fc39" alt="" data-og-width="2280" width="2280" data-og-height="1389" height="1389" data-path="images/form-endpoint.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/OG31ikb--92jQDlq/images/form-endpoint.png?w=280&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=fa3193dddf8fc5f6fbb03097e90c28ee 280w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/form-endpoint.png?w=560&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=97d23f7cf388dd355a93a3cdf4629320 560w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/form-endpoint.png?w=840&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=48384da872ccdafe15fef4fa521a4748 840w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/form-endpoint.png?w=1100&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=badc4b16efe927447068e6e3610baab6 1100w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/form-endpoint.png?w=1650&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=81888b8b2c46441883d70dbc0f662b25 1650w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/form-endpoint.png?w=2500&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=c04bebe574485c7fef2c7ad5e4b573a8 2500w" />
+   <img alt="" />
 4. In Webflow, click on your Form Block, go to the Settings panel and paste the URL into the **Action** field.
-   <img src="https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/webflow-action.png?fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=585823061a0e327495f131396b83a33b" alt="" data-og-width="2280" width="2280" data-og-height="1662" height="1662" data-path="images/webflow-action.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/webflow-action.png?w=280&fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=bbfa32c7c6642c2a8dcc429d6abc459b 280w, https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/webflow-action.png?w=560&fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=0c66a6e2a7260f2601f1d1cf020e255b 560w, https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/webflow-action.png?w=840&fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=619e03264b2a783f980c0c6c477a2434 840w, https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/webflow-action.png?w=1100&fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=dacd9da75819b9d9cbb656336004a473 1100w, https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/webflow-action.png?w=1650&fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=e73ea557f555979cd1f84802a9f35a01 1650w, https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/webflow-action.png?w=2500&fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=89e06e0f58444313ea2cc1e5801d67de 2500w" />
+   <img alt="" />
 
 <Tip>
   Our form submission endpoint has rate limiting, so you will see an error in
@@ -10654,21 +10467,21 @@ We have created Zapier Actions for managing contacts, sending events and sending
 
 To create a new Zap—for example, to connect Tally and Loops—you can either type out what you want to create.
 
-<img src="https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/zapier-start.png?fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=6e2b8942278cc2422df9f9f512da4842" alt="Create a new Zap" data-og-width="2280" width="2280" data-og-height="1178" height="1178" data-path="images/zapier-start.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/zapier-start.png?w=280&fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=a21b656f03320be8298df4b89218bb87 280w, https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/zapier-start.png?w=560&fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=2fac758f12fc4c33fe415eab05c5cd10 560w, https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/zapier-start.png?w=840&fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=2c0e011ba19b8c7d1b219aaeac5a69b2 840w, https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/zapier-start.png?w=1100&fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=f31b5cb611bdacd14a3701e48db4374f 1100w, https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/zapier-start.png?w=1650&fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=18dd022d57a38c086be7e6b2005cfc13 1650w, https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/zapier-start.png?w=2500&fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=7ee65a745571fa9633c685bb9b57de38 2500w" />
+<img alt="Create a new Zap" />
 
 Alternatively, click the **+ Create** button. Select Tally as the **Trigger** (using the "New Submission" event) and Loops as the **Action** (selecting "Add Contact" as the event). This would send new Tally submissions directly into Loops!
 
-<img src="https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/create-zapier.png?fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=5e44ef05d1c5def2938cb0bdfe13c132" alt="A new Zap" data-og-width="2280" width="2280" data-og-height="1661" height="1661" data-path="images/create-zapier.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/create-zapier.png?w=280&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=18c760d8222c6f7e6550734de12b5f19 280w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/create-zapier.png?w=560&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=128cdcfe3749b4a536d0c231865021f7 560w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/create-zapier.png?w=840&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=c7b49abf73c6b72c0fbdc3c746af84d0 840w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/create-zapier.png?w=1100&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=b7bc9cd41f4a66510707ece29c3512eb 1100w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/create-zapier.png?w=1650&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=7332a4eac0f2bdf3546430930e22b022 1650w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/create-zapier.png?w=2500&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=820fc1399fcd28ce5583f4a7514e1263 2500w" />
+<img alt="A new Zap" />
 
 ### Authentication
 
 To be able to use Loops Actions, you need to connect to your Loops account. From the **Account** tab, click **Sign in**.
 
-<img src="https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/zapier-sign-in-loops.png?fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=57d92c4753c574e79e46bb270d02386c" alt="Sign in to Loops" data-og-width="2280" width="2280" data-og-height="1164" height="1164" data-path="images/zapier-sign-in-loops.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/zapier-sign-in-loops.png?w=280&fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=4629ee6674e5fe86dddec4cf02b9d893 280w, https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/zapier-sign-in-loops.png?w=560&fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=98685da373144a21943bd707f9a8e4fa 560w, https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/zapier-sign-in-loops.png?w=840&fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=4a7188fb83a430c35a7201a62b862b2d 840w, https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/zapier-sign-in-loops.png?w=1100&fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=e01eca081bfc93d6573aa9d0e79451bd 1100w, https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/zapier-sign-in-loops.png?w=1650&fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=2837614807c1e00506a74ad1b4ba6b2b 1650w, https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/zapier-sign-in-loops.png?w=2500&fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=31b3c4a2e996f630003494bc21edf2a3 2500w" />
+<img alt="Sign in to Loops" />
 
 Create or copy an API key from your Loops [API settings page](https://app.loops.so/settings?page=api) and paste it into the **API Key** field.
 
-<img src="https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/zapier-api-key.png?fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=8e02fc5f4ba0f2f46a3b9bf485aca70c" alt="Add API key into Zapier" data-og-width="2280" width="2280" data-og-height="1178" height="1178" data-path="images/zapier-api-key.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/zapier-api-key.png?w=280&fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=8a0cd8c44aca7bf20e8268dee7757974 280w, https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/zapier-api-key.png?w=560&fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=88a303b501e165940509fcb29cdd97be 560w, https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/zapier-api-key.png?w=840&fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=0484b2851498fb28d97949068a76460b 840w, https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/zapier-api-key.png?w=1100&fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=5ecbc9050e3a99d20eea83b583e012cf 1100w, https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/zapier-api-key.png?w=1650&fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=ad0259fe14704241e0e6c4e663313f06 1650w, https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/zapier-api-key.png?w=2500&fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=407243786d2cca2c21dd3e3c2fda99e9 2500w" />
+<img alt="Add API key into Zapier" />
 
 If you want to remove or edit your Zapier connections to Loops, go to [Apps -> Loops](https://zapier.com/app/connections/loops).
 
@@ -10699,7 +10512,7 @@ You can use the `contactIdentity` object to identify the contact that triggered 
 
 For example, the "Contact subscribed to mailing list" trigger will fire when a contact is subscribed to a mailing list and contains the following data:
 
-```json  theme={"dark"}
+```json theme={"dark"}
 {
   "eventName": "contact.mailingList.subscribed",
   "eventTime": 1734425918,
@@ -10728,7 +10541,7 @@ All default [contact properties](/contacts/properties) are available, plus [mail
 
 Only the **Email** field is required. The **Source** field defaults to “Zapier” but you can update this to whatever value you like.
 
-<img src="https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/zapier-add-contact.png?fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=49803fad1943233ad8dfd22801db9dc2" alt="Add a contact" data-og-width="2280" width="2280" data-og-height="2478" height="2478" data-path="images/zapier-add-contact.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/zapier-add-contact.png?w=280&fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=54b182e6db0994d911c500e6683814b3 280w, https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/zapier-add-contact.png?w=560&fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=550bae87e90aa40b24ed98574e0749d3 560w, https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/zapier-add-contact.png?w=840&fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=87f5f70eae516cbd0f4bff7e82386586 840w, https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/zapier-add-contact.png?w=1100&fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=2bcd7501e07aa4c59744e1d3ad27aa67 1100w, https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/zapier-add-contact.png?w=1650&fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=62fce8d4480358de67329a702572488e 1650w, https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/zapier-add-contact.png?w=2500&fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=62f51d2b4d680cad1b12910398ad03e8 2500w" />
+<img alt="Add a contact" />
 
 ### Update a contact
 
@@ -10740,7 +10553,7 @@ This action supports the same fields as "Add a contact".
 
 Only the **Email** field is required.
 
-<img src="https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/zapier-update-contact.png?fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=024de14804f3da533a1e09c4d78896b1" alt="Update a contact" data-og-width="2280" width="2280" data-og-height="2478" height="2478" data-path="images/zapier-update-contact.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/zapier-update-contact.png?w=280&fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=6236c14d00feff94dfb6e1295a7906e2 280w, https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/zapier-update-contact.png?w=560&fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=c1c14ec310648ba6d59cf3c1fed397ed 560w, https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/zapier-update-contact.png?w=840&fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=da9cbb86686b8e8120bfe5d139463569 840w, https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/zapier-update-contact.png?w=1100&fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=41e8c468ba8d7245419dd2c95279977c 1100w, https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/zapier-update-contact.png?w=1650&fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=d9f52d990dbfa33b8f0a7b11aaf6768f 1650w, https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/zapier-update-contact.png?w=2500&fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=09c85bd6584d8dd68106f94fb196ac70 2500w" />
+<img alt="Update a contact" />
 
 ### Find a contact
 
@@ -10748,13 +10561,13 @@ This action supports searching your contact list for a specific email address.
 
 You also have the option to create a new user if one is not found.
 
-<img src="https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/zapier-find-contact.png?fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=ed0d74c12cf8013931baf3510bf9f0ef" alt="Find a contact" data-og-width="2280" width="2280" data-og-height="1670" height="1670" data-path="images/zapier-find-contact.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/zapier-find-contact.png?w=280&fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=9d2062836b91f43f93e6b62e7fb3b289 280w, https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/zapier-find-contact.png?w=560&fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=a579cb036f62e187c735ce1d93bd3693 560w, https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/zapier-find-contact.png?w=840&fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=0e0ac94c53686436d6f2d7b44a57b9c8 840w, https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/zapier-find-contact.png?w=1100&fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=009dc2cd055e1d535bae30deaebf09a5 1100w, https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/zapier-find-contact.png?w=1650&fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=ae07a35085ea734ab8dd1032d003b831 1650w, https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/zapier-find-contact.png?w=2500&fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=19f6589a8f14c13a776587c5fb700725 2500w" />
+<img alt="Find a contact" />
 
 ### Delete a contact
 
 This action will delete a contact by email address.
 
-<img src="https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/zapier-delete-contact.png?fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=f2db5c4e84354cb08c3ffa1eaefed476" alt="Delete a contact" data-og-width="2280" width="2280" data-og-height="1328" height="1328" data-path="images/zapier-delete-contact.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/zapier-delete-contact.png?w=280&fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=5fb2a41d266ed2f24fff69bc50468647 280w, https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/zapier-delete-contact.png?w=560&fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=bc0f4a87f25c01e4945e8d9c0f197d6b 560w, https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/zapier-delete-contact.png?w=840&fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=69aeaf7d90ca2b4d20c86ae1e380cfb2 840w, https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/zapier-delete-contact.png?w=1100&fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=2a8cbc853b2feb0430d252cd7230f58f 1100w, https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/zapier-delete-contact.png?w=1650&fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=1d0acedb03267a5fdbe14598460690bc 1650w, https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/zapier-delete-contact.png?w=2500&fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=d2161dc23bdc08fbf74cdcff2247acb4 2500w" />
+<img alt="Delete a contact" />
 
 ### Send an event
 
@@ -10764,7 +10577,7 @@ The action also supports [event properties](/events/properties) and [mailing lis
 
 The **Email**/**User ID** and **Event Name** fields are required.
 
-<img src="https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/zapier-send-event.png?fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=4ff655321e6d81672d67cf1dd6c36d84" alt="Send an event" data-og-width="2280" width="2280" data-og-height="2478" height="2478" data-path="images/zapier-send-event.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/zapier-send-event.png?w=280&fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=893c311c5d874c6605e18390dc7cf384 280w, https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/zapier-send-event.png?w=560&fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=941b3af7a4ed794ab943ba1b4f5c9d17 560w, https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/zapier-send-event.png?w=840&fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=407a9cc3f5a80181f57fc87e774533b3 840w, https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/zapier-send-event.png?w=1100&fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=b24ac3c1a079402c18f8d2e3d4a5ad9c 1100w, https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/zapier-send-event.png?w=1650&fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=dd1838709fe26fb79b92d6bf39c6352f 1650w, https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/zapier-send-event.png?w=2500&fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=0bee58457424c6c16f667b2ac45e9eb1 2500w" />
+<img alt="Send an event" />
 
 ### Send a transactional email
 
@@ -10772,7 +10585,7 @@ This action sends a transactional email and can optionally add a contact to your
 
 The **Transactional Id**, **Email** and **Data Variables** fields are required.
 
-<img src="https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/zapier-transactional.png?fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=a45b1342c9d148ab245c73dc0809f60a" alt="Send a transactional email" data-og-width="2280" width="2280" data-og-height="2478" height="2478" data-path="images/zapier-transactional.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/zapier-transactional.png?w=280&fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=29e4dfda5d3db6e9c58aef81e401294b 280w, https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/zapier-transactional.png?w=560&fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=f6d8de7e8ff1d896c4567ba860936f92 560w, https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/zapier-transactional.png?w=840&fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=b3af8dbf258eb1db8ce50d5dbbe5d033 840w, https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/zapier-transactional.png?w=1100&fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=c4b8c5f7f9a358397f4e4d57aaee7486 1100w, https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/zapier-transactional.png?w=1650&fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=6931224244ed1314619c765d26d63e00 1650w, https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/zapier-transactional.png?w=2500&fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=021b5ae61c7eb56441f945b408fdc1c2 2500w" />
+<img alt="Send a transactional email" />
 
 
 # Loop builder
@@ -10784,7 +10597,7 @@ Loops let you send emails based on something happening, like a contact property 
 
 To start building your Loop, select a template or start from scratch.
 
-<img src="https://mintcdn.com/loops/OG31ikb--92jQDlq/images/getting-started.png?fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=3ca8868a9bddc666b8293dc9ed17977f" alt="" data-og-width="2280" width="2280" data-og-height="1284" height="1284" data-path="images/getting-started.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/OG31ikb--92jQDlq/images/getting-started.png?w=280&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=5a506352291ae9d058114929ca283502 280w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/getting-started.png?w=560&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=f2b5821b771981420f36232316f9cc18 560w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/getting-started.png?w=840&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=4a949d33a3098407f8344113d1ca5490 840w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/getting-started.png?w=1100&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=2adb957e405ce648e593a0414190c58f 1100w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/getting-started.png?w=1650&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=f2cd45877711b775b264c09ad18f9be2 1650w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/getting-started.png?w=2500&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=cde9e90bc02db67c684e5204272261d5 2500w" />
+<img alt="" />
 
 Templates are added often and we're always open to taking suggestions!
 
@@ -10796,7 +10609,7 @@ You can add new nodes to your loop by hovering over an arrow between nodes and c
 
 More complex loops can be built by [adding branches](/loop-builder/branching-loops).
 
-<img src="https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/building-loop.png?fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=19c5e3492b267d7ba217776daecfb363" alt="" data-og-width="2280" width="2280" data-og-height="2084" height="2084" data-path="images/building-loop.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/building-loop.png?w=280&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=c9222854fb36db1e3538aa1a6965f500 280w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/building-loop.png?w=560&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=4eb8c5584a138580ce104c7a7aaea3e4 560w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/building-loop.png?w=840&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=54afadd407e9e095ee995e0d106e50f3 840w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/building-loop.png?w=1100&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=0b7ba983960b33cd4de013a2675fd40b 1100w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/building-loop.png?w=1650&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=5a834e73735d5b265dca815bf8bbcc4b 1650w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/building-loop.png?w=2500&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=7aed70f56f4fa1cd67b81258c21ea3a7 2500w" />
+<img alt="" />
 
 ## Mailing lists
 
@@ -10804,7 +10617,7 @@ You can make a loop send to a specific mailing list by using the dropdown in the
 
 By selecting lists from this dropdown you can make sure that only contacts from those lists are added to the loop.
 
-<img src="https://mintcdn.com/loops/OG31ikb--92jQDlq/images/loop-mailinglist.png?fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=dbbd23f2b376f434aa6d6fab2e833290" alt="" data-og-width="2280" width="2280" data-og-height="1049" height="1049" data-path="images/loop-mailinglist.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/OG31ikb--92jQDlq/images/loop-mailinglist.png?w=280&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=3552efc8e73c98168f989b09879d980a 280w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/loop-mailinglist.png?w=560&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=237f8f1c07cc74c1719299fee59be629 560w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/loop-mailinglist.png?w=840&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=092810fd4435085d8938e06a5bd7caf3 840w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/loop-mailinglist.png?w=1100&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=da799b0fb9dae7e81012ebed6e22f716 1100w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/loop-mailinglist.png?w=1650&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=866ec2ae32ceb7edb3e54d721ee60ed7 1650w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/loop-mailinglist.png?w=2500&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=13ae5d36ef77baf35f3c5c42146bee7b 2500w" />
+<img alt="" />
 
 <Note>
   When using the **Contact added to list** trigger, this option is removed and you can instead select the list from the trigger node.
@@ -10823,7 +10636,7 @@ There are five types of nodes available in loops:
 
 ### Triggers
 
-<img src="https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/triggers.png?fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=ba70751cfb0bbded010aa98d2e1d2661" alt="" data-og-width="2280" width="2280" data-og-height="1409" height="1409" data-path="images/triggers.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/triggers.png?w=280&fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=5368c3de6799c0594b57fa911cbbdcff 280w, https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/triggers.png?w=560&fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=f0ab68aecfa3ece1267104f2991a11b8 560w, https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/triggers.png?w=840&fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=f7461ac943339a6a86562ac48c428709 840w, https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/triggers.png?w=1100&fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=79e61483ec59bfb9d5424ec6ff217fdd 1100w, https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/triggers.png?w=1650&fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=f328b6128aa6debed2e39d789c5d0456 1650w, https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/triggers.png?w=2500&fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=6acb4ae62a947e27d85396e443f82dad 2500w" />
+<img alt="" />
 
 The first node to add to a loop is the trigger. This is what will send new people into the loop.
 
@@ -10843,7 +10656,7 @@ You can read more about triggers [here](/loop-builder/loop-triggers).
 
 You can add emails at any location inside your loop, giving you flexibility to send mail immediately after the trigger or after a delay. You can also send to specific contacts by adding an audience filter, or by branching your loops.
 
-<img src="https://mintcdn.com/loops/OG31ikb--92jQDlq/images/loop-email.png?fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=d07521dcddc09d27873e6989f4fa401a" alt="" data-og-width="2280" width="2280" data-og-height="1434" height="1434" data-path="images/loop-email.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/OG31ikb--92jQDlq/images/loop-email.png?w=280&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=6072619c6abe36533c0adfb00f226daf 280w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/loop-email.png?w=560&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=b5512836d5a3db7eab8acdb0330ba636 560w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/loop-email.png?w=840&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=620701d107b3046d5ecc5206c44cdc7d 840w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/loop-email.png?w=1100&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=c5520a47aed0759ffdf1621e2fb38cef 1100w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/loop-email.png?w=1650&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=1b38c387aacccdd760caf73043dbdf0d 1650w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/loop-email.png?w=2500&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=b8258313fb3fc653c98346481effa93d 2500w" />
+<img alt="" />
 
 You can add unlimited emails to each loop.
 
@@ -10853,11 +10666,11 @@ When a loop is active, you cannot edit the email. Click **Pause** to pause the l
 
 You can copy emails from other loops by clicking the **Copy existing email** button after creating a new email node. This will bring up a dropdown of emails from other loops that you can insert into your loop.
 
-<img src="https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/duplicate-loop-email.png?fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=3912ccc10f8f2a52cb678a3348a888f6" alt="Duplicating emails" data-og-width="2280" width="2280" data-og-height="1940" height="1940" data-path="images/duplicate-loop-email.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/duplicate-loop-email.png?w=280&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=e5f9744676969e7e20f863db4bc799a5 280w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/duplicate-loop-email.png?w=560&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=bf49525f1b6b33ccab39dc612ce12c93 560w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/duplicate-loop-email.png?w=840&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=e163c88ccd3ec1a1cc811965110e96c5 840w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/duplicate-loop-email.png?w=1100&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=adafc4b8ea99b20b728363a679a4a525 1100w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/duplicate-loop-email.png?w=1650&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=250bd4756e9d9e68d87306cdfe075373 1650w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/duplicate-loop-email.png?w=2500&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=7fa960472887f73b7de3aae407b114a0 2500w" />
+<img alt="Duplicating emails" />
 
 ### Timers
 
-<img src="https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/timer.png?fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=34775e1322a25ce0e96886a26f237fa0" alt="" data-og-width="2280" width="2280" data-og-height="1707" height="1707" data-path="images/timer.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/timer.png?w=280&fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=735ae527b2f6d3f5b5f18895b8264a22 280w, https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/timer.png?w=560&fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=bbf9bc40035b94db622923d61d9cd9f2 560w, https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/timer.png?w=840&fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=696e78459cf4f50069d0e923cfe94bd5 840w, https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/timer.png?w=1100&fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=c4dd966ddf1d7d7b3226035861597006 1100w, https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/timer.png?w=1650&fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=b3f6968e6fca19ca5a6c7ce2c47dd4df 1650w, https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/timer.png?w=2500&fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=511d7a94171b79b7e752596695f8e175 2500w" />
+<img alt="" />
 
 A timer adds a fixed time period between two nodes in the loop.
 
@@ -10869,7 +10682,7 @@ You can add multiple timers to your loops, to add delays in different parts of y
 
 ### Audience filters
 
-<img src="https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/audience-filters.png?fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=4ff9eaae776b3d5d8a49a953aedd5e1b" alt="" data-og-width="2280" width="2280" data-og-height="1707" height="1707" data-path="images/audience-filters.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/audience-filters.png?w=280&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=2309e179afa826d5c41fa027b1d45101 280w, https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/audience-filters.png?w=560&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=bfce6453ebbe7eb235ab25a7353a1b12 560w, https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/audience-filters.png?w=840&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=0e32297b27c04d45bc6c1b0fc031672e 840w, https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/audience-filters.png?w=1100&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=3d314aac4d25f61ac6ff7426b3d1ec96 1100w, https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/audience-filters.png?w=1650&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=faefd8b757e4bfb7874e87d90233a6a8 1650w, https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/audience-filters.png?w=2500&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=d80b5583ca66f7cf88673b754cffb5ba 2500w" />
+<img alt="" />
 
 Audience filters let you create fine-tuned Loops to target specific contacts.
 
@@ -10880,7 +10693,7 @@ There are two options for applying audience filters:
 * **All following nodes**: this will apply the filter when contacts reach every following node. If a contact no longer matches the filter's audience when they reach a following node, they will be removed from the loop.
 * **Next node only**: this will apply your filter before contacts reach the next node. This is a one-time filter and any changes to the contact's value after the filter will not be taken into account.
 
-<CardGroup columns="2">
+<CardGroup>
   <Card title="Brancing loops" icon="code-branch" href="/loop-builder/branching-loops">
     Learn how to branch loops using audience filters.
   </Card>
@@ -10890,11 +10703,11 @@ There are two options for applying audience filters:
 
 Click over to the **Metrics** tab to view simple metrics inline within the builder.
 
-<img src="https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/metrics.png?fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=885f5f8dc42e870f88ff5bbe6aa3e018" alt="" data-og-width="2280" width="2280" data-og-height="1859" height="1859" data-path="images/metrics.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/metrics.png?w=280&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=d59f2e1170479e79330c83e65734e169 280w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/metrics.png?w=560&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=d01963f8170fef13270ece6aba895a0d 560w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/metrics.png?w=840&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=0518602759333493530fc259185e58fd 840w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/metrics.png?w=1100&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=124e9ed59cd552738df28dda1c02e898 1100w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/metrics.png?w=1650&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=1b0f2b322a509f3582dd563f8710f007 1650w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/metrics.png?w=2500&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=bc8b71d95fc0808280c96c4aa122357f 2500w" />
+<img alt="" />
 
 Click **View details** to view detailed metrics for your Loop.
 
-<img src="https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/view-full-metrics.png?fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=daf80a1cc0012a5bd8d29187acfd7cd6" alt="" data-og-width="2280" width="2280" data-og-height="1494" height="1494" data-path="images/view-full-metrics.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/view-full-metrics.png?w=280&fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=7b2a6f881c11666e45fd94452034580e 280w, https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/view-full-metrics.png?w=560&fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=737ef15d0ce550d3820bc4265e1a20f8 560w, https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/view-full-metrics.png?w=840&fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=3269f86c0961a7b9e85ae81ba0bee4c0 840w, https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/view-full-metrics.png?w=1100&fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=3c47c30ee1f9c64f6b5a7a9016fd2d8b 1100w, https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/view-full-metrics.png?w=1650&fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=7661eb8f30a5447f741a4b6f15de0d5e 1650w, https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/view-full-metrics.png?w=2500&fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=c960e8dd7087caf8b3f007b83ebe2a61 2500w" />
+<img alt="" />
 
 ## Testing loops
 
@@ -10918,15 +10731,11 @@ For example, you may want to send a different email to free users versus paid us
 
 You can do this by adding a **Branch** node to your loop.
 
-<img src="https://mintcdn.com/loops/OG31ikb--92jQDlq/images/loop-builder-branching.png?fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=91036180f9de862a99a393e431a80960" alt="Branches in a loop" data-og-width="1707" width="1707" data-og-height="1138" height="1138" data-path="images/loop-builder-branching.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/OG31ikb--92jQDlq/images/loop-builder-branching.png?w=280&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=6b2657a8b28a98eaee91918efca8bca2 280w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/loop-builder-branching.png?w=560&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=de5dd848d22f71843b1a58e6e637eb4d 560w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/loop-builder-branching.png?w=840&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=1539737f6d97ea6f1cac423d7a722c7b 840w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/loop-builder-branching.png?w=1100&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=a216c8a0428be8e01e35dfbe96a2b126 1100w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/loop-builder-branching.png?w=1650&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=936f5a0d8e08ca46eee492c4dd93cb73 1650w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/loop-builder-branching.png?w=2500&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=80825241a83c5021d9b0005179f1b676 2500w" />
-
-<Info>
-  It's not currently possible to converge branches back into a single branch.
-</Info>
+<img alt="Branches in a loop" />
 
 ## Creating a branching loop
 
-<img src="https://mintcdn.com/loops/OG31ikb--92jQDlq/images/loop-builder-branching-add-node.png?fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=8eee5f157d53df682fbcf412e51b0aad" alt="Adding a node to a branch" data-og-width="1545" width="1545" data-og-height="1030" height="1030" data-path="images/loop-builder-branching-add-node.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/OG31ikb--92jQDlq/images/loop-builder-branching-add-node.png?w=280&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=97abc41aa0c6a0c2e6b2573c8659de58 280w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/loop-builder-branching-add-node.png?w=560&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=9fd3d484c1bd630e9be8abdaafd671f6 560w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/loop-builder-branching-add-node.png?w=840&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=e0bc79616e79d75f9aadfa8a589f6b07 840w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/loop-builder-branching-add-node.png?w=1100&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=e620789b8c749c4fe92dfcace1f0ffd8 1100w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/loop-builder-branching-add-node.png?w=1650&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=13cf4227b40f07ae4fc84d78270274b8 1650w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/loop-builder-branching-add-node.png?w=2500&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=9ffd2c9c119fce854ca799e09e01bc75 2500w" />
+<img alt="Adding a node to a branch" />
 
 To create a branching loop, click the `+` icon where you want branching to be added and select the **Branch** node type.
 
@@ -10936,7 +10745,7 @@ You can add as many branches as you like to your loop. Add more branches by clic
 
 Each branch can contain emails, timers, audience filters, more branches, and experiments.
 
-<CardGroup columns="2">
+<CardGroup>
   <Card title="Node types" icon="input-text" href="/loop-builder#nodes">
     Learn about the different node types.
   </Card>
@@ -10969,21 +10778,49 @@ The audience filter nodes created after a branching node can be toggled between 
 * **All following nodes:** The audience filter will apply to *all nodes* downstream of the filter. If a contact stops matching the filter later down the branch, they will be removed from the loop.
 * **Next node only:** The audience filter will only apply when contacts reach the next node in the branch. If a contact stops matching the filter later in the branch, they will remain in the loop.
 
-<CardGroup columns="2">
+<CardGroup>
   <Card title="Audience filters" icon="filter" href="/loop-builder#audience-filters">
     Read more about audience filters.
   </Card>
 </CardGroup>
 
+## Converging branches
+
+A common use case is to have different branches converge back to the same path. For example, you may want to create branches with different filters that lead to different onboarding emails, but have all branches converge on a single timer that waits a week before sending the same follow-up email.
+
+Here's how you can set up converging paths in Loops:
+
+<Steps>
+  <Step title="Reroute a connection">
+    Click **Reroute connection** located below a node.
+
+    <img alt="Click reroute button" />
+  </Step>
+
+  <Step title="Click on a target node">
+    Now select the target node you want to reroute to.
+
+    Since loops do not allow circular paths, only valid target nodes will be visible, and any invalid target nodes will be dimmed.
+
+    <img alt="Click target node" />
+  </Step>
+
+  <Step title="End result">
+    You'll end up with multiple nodes converging on the same target.
+
+    <img alt="Rerouting done" />
+  </Step>
+</Steps>
+
 ## Deleting branches
 
 To delete all branches, select the head Branch node and click the trash icon. This will remove all branches—including all nodes—following it.
 
-<img src="https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/delete-branches.png?fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=ae85ffed07e6a30feaaa52f8dd421da4" alt="Delete branch node" data-og-width="2280" width="2280" data-og-height="1452" height="1452" data-path="images/delete-branches.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/delete-branches.png?w=280&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=b39555e6e1d47bc99aecab3462b207ed 280w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/delete-branches.png?w=560&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=90226a1ef6ce164fc79fe1e4b0628966 560w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/delete-branches.png?w=840&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=6bce2adea5fdc06a398f8393e93b7814 840w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/delete-branches.png?w=1100&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=b4a28f61027eab659a1c944451f2ac0d 1100w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/delete-branches.png?w=1650&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=edbff485001af110a1adc401776c05de 1650w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/delete-branches.png?w=2500&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=88ea86aea59cae257a87cdb146de8494 2500w" />
+<img alt="Delete branch node" />
 
 If you want to delete a single branch, you can do so by deleting each node in the branch you want removed. When the final node is deleted, the branch will be removed.
 
-<img src="https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/delete-single-branch.png?fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=8324e52faaec0e6e39e6126bc1a2b7fa" alt="Delete single branch" data-og-width="2280" width="2280" data-og-height="1572" height="1572" data-path="images/delete-single-branch.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/delete-single-branch.png?w=280&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=784a1d1054450b81af5b8b5ecb1ca7a5 280w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/delete-single-branch.png?w=560&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=8228fdcaf60355065f9e7c1427f52e2f 560w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/delete-single-branch.png?w=840&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=a86ba604c28d9ff0b11c831e33c50460 840w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/delete-single-branch.png?w=1100&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=eea03f2bc94cdbd309403843bc9d56c4 1100w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/delete-single-branch.png?w=1650&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=097cb8f52e2842f6e7a037d31108b11d 1650w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/delete-single-branch.png?w=2500&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=2b364630f6ea633e9b5d215b6975d1f1 2500w" />
+<img alt="Delete single branch" />
 
 
 # Experiments
@@ -10999,13 +10836,13 @@ You can test things like subject lines, preheaders, and content, and specify the
 
 To add an experiment, add a new node by clicking the `+` button in the loop builder and select **Experiment**. You can add an experiment to any loop.
 
-<img src="https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/add-experiment.png?fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=9878f0e7c5450dad2cbe54c4ddd6e69d" alt="Adding an experiment" data-og-width="2280" width="2280" data-og-height="1859" height="1859" data-path="images/add-experiment.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/add-experiment.png?w=280&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=b3b8794926d97a190f591f40ad267173 280w, https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/add-experiment.png?w=560&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=083c18f2157bf18ae74f8e953dfba48b 560w, https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/add-experiment.png?w=840&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=29ec6be0e5ecb9643ca75bfab2cb9133 840w, https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/add-experiment.png?w=1100&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=ba7e00719e4b156e1007f2c51ac6aac6 1100w, https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/add-experiment.png?w=1650&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=9768548ee9a9f43b1bd3f81a053ba00b 1650w, https://mintcdn.com/loops/Vqx-auiVy74YQr9S/images/add-experiment.png?w=2500&fit=max&auto=format&n=Vqx-auiVy74YQr9S&q=85&s=042d30aac4bf18111a5053315ac1c7e7 2500w" />
+<img alt="Adding an experiment" />
 
 You can add multiple experiments to a loop—even within other experiments if you want. Each experiment can contain any number of variants.
 
 Each variant can contain emails, timers and audience filters.
 
-<img src="https://mintcdn.com/loops/OG31ikb--92jQDlq/images/loop-experiment.png?fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=74039905794c1ca9794fcab5db39f54b" alt="Experiment with emails and filters" data-og-width="2280" width="2280" data-og-height="1859" height="1859" data-path="images/loop-experiment.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/OG31ikb--92jQDlq/images/loop-experiment.png?w=280&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=b23d69ed39437fa2dee26b962c924cd8 280w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/loop-experiment.png?w=560&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=f15cac23950d74fea3892858224ca41d 560w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/loop-experiment.png?w=840&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=b51a3f4fdcda02a0bd857ec30a0a33bd 840w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/loop-experiment.png?w=1100&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=3e3ebe150b8c6ae0408df4325308c6ac 1100w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/loop-experiment.png?w=1650&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=8e7a1e61a9ade0df84db50aca7ced121 1650w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/loop-experiment.png?w=2500&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=21ec1346348006dd33a590ccbbfe9261 2500w" />
+<img alt="Experiment with emails and filters" />
 
 ## Variants and controls
 
@@ -11023,17 +10860,17 @@ Experiments are made up of variant and control branches.
 
 You can specify the percentage of contacts who will be sent to control and variant branches by dragging the slider in Experiment nodes.
 
-<img src="https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/experiment-slider.png?fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=3f825e8276129a9e581890fbe442bf35" alt="Changing sample size" data-og-width="2280" width="2280" data-og-height="1757" height="1757" data-path="images/experiment-slider.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/experiment-slider.png?w=280&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=b2bd7887a6787d9999f632ea9fbe7a8e 280w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/experiment-slider.png?w=560&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=c3009af24ee0ed54a220b353e16b0791 560w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/experiment-slider.png?w=840&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=bcd13028df09e60aa95a9d0d7ee20184 840w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/experiment-slider.png?w=1100&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=af1c7ea9d8178b2a0457478253c18295 1100w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/experiment-slider.png?w=1650&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=a3a4fd238e16d02adb5c1f225fcf041e 1650w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/experiment-slider.png?w=2500&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=b1ce2f87b5c1151ee0dbca14c78c03c6 2500w" />
+<img alt="Changing sample size" />
 
 Every variant you add will receive an equal percentage of contacts within the experiment sample. For example, if you set the sample size to 60% and add three variants and a control, 20% of contacts will be sent to each variant branch (60% / 3) and 40% of contacts will be sent to the control branch.
 
 You can change a variant to be the control by clicking on the variant node and toggling the **Use as control** option.
 
-<img src="https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/change-control.png?fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=95aa662d27adf1f0a7030b3b060b829a" alt="Changing the control node" data-og-width="2280" width="2280" data-og-height="1683" height="1683" data-path="images/change-control.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/change-control.png?w=280&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=6828044fa7ffd14f5dd58f56bcbd4bb8 280w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/change-control.png?w=560&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=f7d04f87a4f6c9486059b826325f77ae 560w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/change-control.png?w=840&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=b9a5d279e97eb6eb5b1e5f746a6c208a 840w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/change-control.png?w=1100&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=14f6094c2aa353c06f03d964f4e95c17 1100w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/change-control.png?w=1650&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=7bb5c97821e28d8b7d2fd0509d1b1044 1650w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/change-control.png?w=2500&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=6b84d7170bd0d87e80eedf94bea2e2a0 2500w" />
+<img alt="Changing the control node" />
 
 If you do not add a control branch, only your selected sample size will be sent through the experiment node. For example, if you have three variants and no control and select 60% for your sample size, 40% of contacts entering the loop will exit at the experiment node and not receive any emails.
 
-<img src="https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/experiment-no-control.png?fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=15344c1344deb2d6a4b3a4f1339174ce" alt="Experiment without a control" data-og-width="2280" width="2280" data-og-height="1716" height="1716" data-path="images/experiment-no-control.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/experiment-no-control.png?w=280&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=2f11ebc969c0b646a07e139215444bfc 280w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/experiment-no-control.png?w=560&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=2c27786f7e7b36312f3480f62430fde8 560w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/experiment-no-control.png?w=840&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=86c2a6f0c9fc5011330b190f957e4dcc 840w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/experiment-no-control.png?w=1100&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=93518dc43262c94c822c04beb419e764 1100w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/experiment-no-control.png?w=1650&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=d42ad5c6c183a4b8487a49526bdc6a9a 1650w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/experiment-no-control.png?w=2500&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=86deae06cdac502f5d9e6e164687fcb1 2500w" />
+<img alt="Experiment without a control" />
 
 ## Editing experiments
 
@@ -11056,7 +10893,7 @@ To do this while retaining the metrics for all branches, first change your best-
 
 Then set the Experiment node sample size to 0%. This will change the Control size to 100%, sending all contacts down the new control branch.
 
-<img src="https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/close-experiment-branch.png?fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=4a8ff7a5a5bfdd5a28686575cf0d4699" alt="Close an experiment branch" data-og-width="2280" width="2280" data-og-height="1254" height="1254" data-path="images/close-experiment-branch.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/close-experiment-branch.png?w=280&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=d201248b3a084ea11b96baffde93e50b 280w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/close-experiment-branch.png?w=560&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=3a0e18aa4832a5ded85215f59161553a 560w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/close-experiment-branch.png?w=840&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=8470ae4f33f31543ffce724cdcfa8530 840w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/close-experiment-branch.png?w=1100&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=988dfae4b2dd8da96bf90d948796abe0 1100w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/close-experiment-branch.png?w=1650&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=86a7ac0ee17ea06b6e94b872c76f4d10 1650w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/close-experiment-branch.png?w=2500&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=240d0732a8183a13e4cddeb653aff38b 2500w" />
+<img alt="Close an experiment branch" />
 
 ## Results
 
@@ -11106,7 +10943,7 @@ The **Event received** trigger will start a Loop when a contact receives a speci
 
 You can choose to trigger a Loop just the first time a contact matches the trigger settings or every time the contact matches.
 
-<img src="https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/trigger-frequency.png?fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=8bb968a8827dec66291d8719da07d2ee" alt="Trigger frequency" data-og-width="2280" width="2280" data-og-height="1434" height="1434" data-path="images/trigger-frequency.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/trigger-frequency.png?w=280&fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=34de79e540158d313fa8ed36c516f6be 280w, https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/trigger-frequency.png?w=560&fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=f307232862d8d23edd0d808688dfc341 560w, https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/trigger-frequency.png?w=840&fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=75a131df9db194110b311ba78c740178 840w, https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/trigger-frequency.png?w=1100&fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=aa94f5611dd57651b4e773b801748517 1100w, https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/trigger-frequency.png?w=1650&fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=59050a80c0dbe4895ce2fd10a973ae65 1650w, https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/trigger-frequency.png?w=2500&fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=0679b0405b8792533e4af885e9d969ab 2500w" />
+<img alt="Trigger frequency" />
 
 For example, if you want to send to a contact every time they update their subscription plan, you can choose to trigger the Loop every time the contact is updated (select "Every time").
 
@@ -11185,7 +11022,7 @@ The first step is to set up your domain, so you can send emails through Loops. Y
 
 We send from your domain so your emails appear as if they are coming from you.
 
-<img src="https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/set-up-domain.png?fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=3f6707e1d720d43e2f6b321f795fa220" alt="" data-og-width="2280" width="2280" data-og-height="1418" height="1418" data-path="images/set-up-domain.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/set-up-domain.png?w=280&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=f0e7d42771f9e752c7348e6e0aa4368f 280w, https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/set-up-domain.png?w=560&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=49b5fbc49a52b27388961637be9c019e 560w, https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/set-up-domain.png?w=840&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=d44e4171e9bfd66f95c4b66ac52e2920 840w, https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/set-up-domain.png?w=1100&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=1629ff8c5e124f2a12129dab4dbc1534 1100w, https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/set-up-domain.png?w=1650&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=52d49abe36641c9b608e18bec622ce59 1650w, https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/set-up-domain.png?w=2500&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=eb0a59150c18d9073e43b459eb6b89c0 2500w" />
+<img alt="" />
 
 We choose to send from a `mail.loops.so` subdomain but you can send from your root domain if you'd prefer.
 
@@ -11195,7 +11032,7 @@ Once you've set up your domain records, you'll be able to start sending emails!
 
 You can always send the records to a developer to help you integrate them. Read how to [add a member to your team](/account/team-members).
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Setting up your domain" icon="globe" href="/sending-domain" />
 
   <Card title="Subdomains vs root domains" icon="sitemap" href="/deliverability/sending-from-subdomain" />
@@ -11220,7 +11057,7 @@ You can import contacts via [CSV upload](/add-users/csv-upload), [API](/api-refe
 
 Contacts are unique users in your Loop's audience. We use email and a unique identifier to distinguish contacts. The only required field a contact must have is an email.
 
-<img src="https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/contacts.png?fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=f49de0824fea0b232756877d12270bb6" alt="" data-og-width="2280" width="2280" data-og-height="921" height="921" data-path="images/contacts.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/contacts.png?w=280&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=c476765e03c1ada48640fcf17b5f36dc 280w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/contacts.png?w=560&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=f1fec69b8bf586ed51f765919026207f 560w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/contacts.png?w=840&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=65a7caf3f506a7d5a2d9454f5138e641 840w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/contacts.png?w=1100&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=5ea476efc07966484fc319cf5aac423c 1100w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/contacts.png?w=1650&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=a5ce533a83220e59fb8c783cdd4ddf01 1650w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/contacts.png?w=2500&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=56d23b9842c475c7d757f9210feec488 2500w" />
+<img alt="" />
 
 ### Contact properties
 
@@ -11228,13 +11065,13 @@ Contact properties are additional pieces of information you can associate with a
 
 We provide [default properties](/contacts/properties#default-contact-properties) like name, user group and source, but you are free to add any number of [custom properties](/contacts/properties#custom-contact-properties) to your contacts, too.
 
-<img src="https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/contact-properties.png?fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=467aae52673b379ca2ef950125062d85" alt="" data-og-width="2280" width="2280" data-og-height="504" height="504" data-path="images/contact-properties.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/contact-properties.png?w=280&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=7fd6cf66f211cd36f6f7e5c84567c605 280w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/contact-properties.png?w=560&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=1e720a1de143ebf90dd3074abc2bae20 560w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/contact-properties.png?w=840&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=10a25f094dfebecf6468d848747a8cb8 840w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/contact-properties.png?w=1100&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=33e07092a45850f5d8e5cd5b471b5088 1100w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/contact-properties.png?w=1650&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=0293fe254532a1d2e54ab1999e14d7bd 1650w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/contact-properties.png?w=2500&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=7d9ac4476954a61439e689db28a53fbf 2500w" />
+<img alt="" />
 
 You can use contact properties to [segment your audience](/contacts/filters-segments) and send more targeted emails to specific groups.
 
 For example, you could send a promotional email only to contacts with a certain job title or to those in a specific user group.
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Add with CSV Upload" icon="plus" href="/add-users/csv-upload" />
 
   <Card title="Add via integrations" icon="arrows-turn-right" href="/add-users/integrations" />
@@ -11256,13 +11093,13 @@ You will see a handful of customization options including the form style, placeh
 
 Make as many changes as you need to create a form that matches your brand.
 
-<img src="https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/simple-form.png?fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=8f834516f33153454989d49f5110f2dd" alt="Simple form" data-og-width="3040" width="3040" data-og-height="2026" height="2026" data-path="images/simple-form.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/simple-form.png?w=280&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=cb6fd923a4d7689f5b370d7e9b10b44d 280w, https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/simple-form.png?w=560&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=a557be73c99d0ca7d57ee5804c3e9474 560w, https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/simple-form.png?w=840&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=2bb003becb3bd1eafbd69f8f8f04f093 840w, https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/simple-form.png?w=1100&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=ba5cd04c08493b8036ce1e83565e896a 1100w, https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/simple-form.png?w=1650&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=f74597e7911cc5876830f523e69d3cde 1650w, https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/simple-form.png?w=2500&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=274b07701a3af14be93ca31f2a7d8329 2500w" />
+<img alt="Simple form" />
 
 When you have finished customizing your form, simply copy the HTML or JSX that is automatically generated and paste it into your site.
 
 For more flexibility, you can create custom HTML forms that work with Loops. [Read our full guide about custom forms](/forms/custom-form) or check out our [form-based integrations](/integrations#manage-contacts).
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Simple form" icon="input-pipe" href="/forms/simple-form" />
 
   <Card title="Custom form" icon="table-list" href="/forms/custom-form" />
@@ -11270,44 +11107,44 @@ For more flexibility, you can create custom HTML forms that work with Loops. [Re
   <Card
     title="Add a form to Framer"
     icon={
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      xmlnsXlink="http://www.w3.org/1999/xlink"
-      width="24"
-      height="24"
-      viewBox="0 0 98 148"
-    >
-      <path
-        d="M 93.852 94.49 C 95.387 96.036 94.292 98.667 92.113 98.667 L 51.45 98.667 C 50.097 98.667 49 99.764 49 101.117 L 49 142.057 C 49 144.243 46.353 145.335 44.812 143.783 L 0.949 99.622 C 0.341 99.01 0 98.183 0 97.32 L 0 51.783 C 0 50.43 1.097 49.333 2.45 49.333 L 49 49.333 Z"
-        fill="#FF4A00"
-      ></path>
-      <path
-        d="M 49 49.333 L 4.148 4.177 C 2.613 2.631 3.708 0 5.887 0 L 95.55 0 C 96.903 0 98 1.097 98 2.45 L 98 46.883 C 98 48.236 96.903 49.333 95.55 49.333 Z"
-        fill="#FF4A00"
-      ></path>
-    </svg>
-  }
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    xmlnsXlink="http://www.w3.org/1999/xlink"
+    width="24"
+    height="24"
+    viewBox="0 0 98 148"
+  >
+    <path
+      d="M 93.852 94.49 C 95.387 96.036 94.292 98.667 92.113 98.667 L 51.45 98.667 C 50.097 98.667 49 99.764 49 101.117 L 49 142.057 C 49 144.243 46.353 145.335 44.812 143.783 L 0.949 99.622 C 0.341 99.01 0 98.183 0 97.32 L 0 51.783 C 0 50.43 1.097 49.333 2.45 49.333 L 49 49.333 Z"
+      fill="#FF4A00"
+    ></path>
+    <path
+      d="M 49 49.333 L 4.148 4.177 C 2.613 2.631 3.708 0 5.887 0 L 95.55 0 C 96.903 0 98 1.097 98 2.45 L 98 46.883 C 98 48.236 96.903 49.333 95.55 49.333 Z"
+      fill="#FF4A00"
+    ></path>
+  </svg>
+}
     href="/integrations/framer"
   />
 
   <Card
     title="Add a form to Webflow"
     icon={
-    <svg
-      width="24"
-      height="24"
-      viewBox="0 0 16 16"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <path
-        fillRule="evenodd"
-        clipRule="evenodd"
-        d="M15.3334 4L11.2916 12H7.49528L9.18675 8.68446H9.11086C7.7154 10.5186 5.63335 11.726 2.66675 12V8.73034C2.66675 8.73034 4.56456 8.61685 5.68023 7.42922H2.66675V4.00006H6.05357V6.8205L6.12959 6.82018L7.51356 4.00006H10.0749V6.80261L10.151 6.80249L11.5869 4H15.3334Z"
-        fill="#FF4A00"
-      ></path>
-    </svg>
-  }
+  <svg
+    width="24"
+    height="24"
+    viewBox="0 0 16 16"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      fillRule="evenodd"
+      clipRule="evenodd"
+      d="M15.3334 4L11.2916 12H7.49528L9.18675 8.68446H9.11086C7.7154 10.5186 5.63335 11.726 2.66675 12V8.73034C2.66675 8.73034 4.56456 8.61685 5.68023 7.42922H2.66675V4.00006H6.05357V6.8205L6.12959 6.82018L7.51356 4.00006H10.0749V6.80261L10.151 6.80249L11.5869 4H15.3334Z"
+      fill="#FF4A00"
+    ></path>
+  </svg>
+}
     href="/integrations/webflow"
   />
 </CardGroup>
@@ -11316,7 +11153,7 @@ For more flexibility, you can create custom HTML forms that work with Loops. [Re
 
 To create your first email, first select the type of content you'll be sending. You can send email as a campaign, loop or transactional email. You can also choose to start with a [Template](https://app.loops.so/templates) instead of starting from scratch.
 
-<img src="https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/create-first-email.png?fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=daa962aaa3dd795ed89021acc341a7a6" alt="" data-og-width="2280" width="2280" data-og-height="1134" height="1134" data-path="images/create-first-email.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/create-first-email.png?w=280&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=995db60712ac648e3d14e8fbb7e651e0 280w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/create-first-email.png?w=560&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=e8d3056be93980f525bb84acc8484820 560w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/create-first-email.png?w=840&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=44eb7ade0e2da35e08cd7c968cfe575c 840w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/create-first-email.png?w=1100&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=557b3af625d764ecfff8d3fa6cd6cb56 1100w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/create-first-email.png?w=1650&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=265f7518e2ac38d3ceb42fa3d4863fe5 1650w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/create-first-email.png?w=2500&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=e7546ba6f5bc0275d3c6444fb6878d3d 2500w" />
+<img alt="" />
 
 **Campaigns** are single marketing emails sent to a group (e.g. newsletters, product updates, announcements, investor updates), **Loops** are automated emails sent based on specific triggers or conditions (e.g. onboarding sequences) and **Transactional** emails are one-off emails sent to a single person (e.g. forgot password, two-factor authorization codes, receipts). [Read more](/types-of-emails)
 
@@ -11326,9 +11163,9 @@ To get started, click the **Create** button on the Home screen, followed by **Ca
 
 Then we’re going to personalize by adding [dynamic content](/creating-emails/personalizing-emails) and [style it](/creating-emails/editor) to match our brand.
 
-<img src="https://mintcdn.com/loops/EgyPhKkeXp9wCnWY/images/basic-merge.png?fit=max&auto=format&n=EgyPhKkeXp9wCnWY&q=85&s=50f73381c384e4ff6ed919d81630cbe9" alt="Adding personalization" data-og-width="2280" width="2280" data-og-height="1035" height="1035" data-path="images/basic-merge.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/EgyPhKkeXp9wCnWY/images/basic-merge.png?w=280&fit=max&auto=format&n=EgyPhKkeXp9wCnWY&q=85&s=18814146da18de5f13e391fa12a20c0e 280w, https://mintcdn.com/loops/EgyPhKkeXp9wCnWY/images/basic-merge.png?w=560&fit=max&auto=format&n=EgyPhKkeXp9wCnWY&q=85&s=11778fb9f17dcc74d2d8cc3862188dd0 560w, https://mintcdn.com/loops/EgyPhKkeXp9wCnWY/images/basic-merge.png?w=840&fit=max&auto=format&n=EgyPhKkeXp9wCnWY&q=85&s=1d9873614099f8e8a8bf03a6737d6784 840w, https://mintcdn.com/loops/EgyPhKkeXp9wCnWY/images/basic-merge.png?w=1100&fit=max&auto=format&n=EgyPhKkeXp9wCnWY&q=85&s=2edecb2194d57f86bc98b4f265381631 1100w, https://mintcdn.com/loops/EgyPhKkeXp9wCnWY/images/basic-merge.png?w=1650&fit=max&auto=format&n=EgyPhKkeXp9wCnWY&q=85&s=f516cbbf3856e25d5583034ff6b9319c 1650w, https://mintcdn.com/loops/EgyPhKkeXp9wCnWY/images/basic-merge.png?w=2500&fit=max&auto=format&n=EgyPhKkeXp9wCnWY&q=85&s=1e7b6b3fcaf7193246b46cbfe703f4d2 2500w" />
+<img alt="Adding personalization" />
 
-<img src="https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/message-visual.png?fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=e2c7088ffd4d20ac66b5fee7a1756010" alt="Adding styling" data-og-width="2280" width="2280" data-og-height="1953" height="1953" data-path="images/message-visual.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/message-visual.png?w=280&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=1566d2f25ff94cd77ce02190627153c6 280w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/message-visual.png?w=560&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=b97a0e4251a474a7649518819d87364b 560w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/message-visual.png?w=840&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=a81c6e2c9f6ac29e31329ada927e038a 840w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/message-visual.png?w=1100&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=adb055873f4fd4c0e917faac0c927983 1100w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/message-visual.png?w=1650&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=5e6346334f27792ff4fab4450fe9c3a9 1650w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/message-visual.png?w=2500&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=738b8ddf5342b807bcfddc6fa07e61c7 2500w" />
+<img alt="Adding styling" />
 
 <Tip>
   You can preview your email any time by hitting the paper airplane icon in the
@@ -11343,11 +11180,11 @@ Since we're sending a product update, we want to send it to our entire audience 
 
 If you'd like to segment your audience, just click **Add filter**, which will open the filtering options.
 
-<img src="https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/campaign-filter.png?fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=9672bd5756789f880f53626fe58da5b9" alt="Filter campaign audience" data-og-width="2280" width="2280" data-og-height="1277" height="1277" data-path="images/campaign-filter.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/campaign-filter.png?w=280&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=8352866be9413370786a56d39c3d8732 280w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/campaign-filter.png?w=560&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=75573cf48c2b6e31f4395e017cd906ba 560w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/campaign-filter.png?w=840&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=555a7902a81557f6fc2fa706790ef64b 840w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/campaign-filter.png?w=1100&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=ae762e120ee3cc9365eaee7d0be4112a 1100w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/campaign-filter.png?w=1650&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=023e7b715eb7a8fda39b6e72d1cde341 1650w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/campaign-filter.png?w=2500&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=4f3fe7c700966c8d12b5552886f3efef 2500w" />
+<img alt="Filter campaign audience" />
 
 Click the **Next** button top right and you'll see options to send the email immediately or to schedule it for a time in the future.
 
-<img src="https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/campaign-schedule.png?fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=889f1c27cb43082d324a4b097e8f903e" alt="Schedule a campaign" data-og-width="2280" width="2280" data-og-height="1803" height="1803" data-path="images/campaign-schedule.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/campaign-schedule.png?w=280&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=899ac6f02919d54d2a83499abd10c6e9 280w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/campaign-schedule.png?w=560&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=75fca2a38e1b120cadea94b93fb346fc 560w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/campaign-schedule.png?w=840&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=bf767884784702eb3a1d8cf60a56e8c5 840w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/campaign-schedule.png?w=1100&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=990d75b55db048e1295c6b224d188b49 1100w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/campaign-schedule.png?w=1650&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=d21b907539f15b0b01658fde80097c54 1650w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/campaign-schedule.png?w=2500&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=d6cf4917eea337e6abce1ced52752f48 2500w" />
+<img alt="Schedule a campaign" />
 
 Click **Next** one last time to see a review of your email and settings (you can also see a preview of your email, too). If you're happy with how everything looks, click **Schedule send** on the last page and we're done!
 
@@ -11355,7 +11192,7 @@ The email is now scheduled to go out.
 
 By the way, you can cancel the scheduled send at any time between the send time and now to update it, or you can just send it right away.
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Types of emails" icon="envelopes-bulk" href="/types-of-emails" />
 
   <Card title="Sending your first email" icon="mailbox" href="/sending-first-email" />
@@ -11373,7 +11210,7 @@ You can create an onboarding or welcome sequence using what we call "loops".
 
 A loop looks like this:
 
-<img src="https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/building-loop.png?fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=19c5e3492b267d7ba217776daecfb363" alt="" data-og-width="2280" width="2280" data-og-height="2084" height="2084" data-path="images/building-loop.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/building-loop.png?w=280&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=c9222854fb36db1e3538aa1a6965f500 280w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/building-loop.png?w=560&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=4eb8c5584a138580ce104c7a7aaea3e4 560w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/building-loop.png?w=840&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=54afadd407e9e095ee995e0d106e50f3 840w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/building-loop.png?w=1100&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=0b7ba983960b33cd4de013a2675fd40b 1100w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/building-loop.png?w=1650&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=5a834e73735d5b265dca815bf8bbcc4b 1650w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/building-loop.png?w=2500&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=7aed70f56f4fa1cd67b81258c21ea3a7 2500w" />
+<img alt="" />
 
 Go to the [Loops page](https://app.loops.so/loops) and click **New**.
 
@@ -11383,9 +11220,9 @@ Edit the email and when you're ready to make it live, click **Start**.
 
 You can use [branches](/loop-builder/branching-loops) to create more complex workflows, sending contacts down different branches depending on contact properties or even whether they've interacted with campaigns you've sent from Loops.
 
-<img src="https://mintcdn.com/loops/OG31ikb--92jQDlq/images/loop-builder-branching.png?fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=91036180f9de862a99a393e431a80960" alt="Branches in a loop" data-og-width="1707" width="1707" data-og-height="1138" height="1138" data-path="images/loop-builder-branching.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/OG31ikb--92jQDlq/images/loop-builder-branching.png?w=280&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=6b2657a8b28a98eaee91918efca8bca2 280w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/loop-builder-branching.png?w=560&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=de5dd848d22f71843b1a58e6e637eb4d 560w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/loop-builder-branching.png?w=840&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=1539737f6d97ea6f1cac423d7a722c7b 840w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/loop-builder-branching.png?w=1100&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=a216c8a0428be8e01e35dfbe96a2b126 1100w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/loop-builder-branching.png?w=1650&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=936f5a0d8e08ca46eee492c4dd93cb73 1650w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/loop-builder-branching.png?w=2500&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=80825241a83c5021d9b0005179f1b676 2500w" />
+<img alt="Branches in a loop" />
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Loop builder" icon="arrows-rotate" href="/loop-builder" />
 
   <Card title="Triggering Loops" icon="circle-play" href="/loop-builder/loop-triggers" />
@@ -11413,11 +11250,11 @@ Add copy and styling, and then to add dynamic content click the **Insert data va
 
 These data variables will be populated with real content when you send the email using the API.
 
-<img src="https://mintcdn.com/loops/SqldyWKxvGS7UNL4/images/terminal.png?fit=max&auto=format&n=SqldyWKxvGS7UNL4&q=85&s=d124653cd87536765f40e4de3102c15a" alt="Add data variables" data-og-width="2280" width="2280" data-og-height="1079" height="1079" data-path="images/terminal.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/SqldyWKxvGS7UNL4/images/terminal.png?w=280&fit=max&auto=format&n=SqldyWKxvGS7UNL4&q=85&s=1c1834773261e5a0c8be7a0e1b4191a5 280w, https://mintcdn.com/loops/SqldyWKxvGS7UNL4/images/terminal.png?w=560&fit=max&auto=format&n=SqldyWKxvGS7UNL4&q=85&s=5e9e0bae89a5aded6a9d7448926ff5a8 560w, https://mintcdn.com/loops/SqldyWKxvGS7UNL4/images/terminal.png?w=840&fit=max&auto=format&n=SqldyWKxvGS7UNL4&q=85&s=40030ce29b5df99adb0c950877a84baa 840w, https://mintcdn.com/loops/SqldyWKxvGS7UNL4/images/terminal.png?w=1100&fit=max&auto=format&n=SqldyWKxvGS7UNL4&q=85&s=7712e06a02cfeedd04e43aef5024c6eb 1100w, https://mintcdn.com/loops/SqldyWKxvGS7UNL4/images/terminal.png?w=1650&fit=max&auto=format&n=SqldyWKxvGS7UNL4&q=85&s=cbcbd72414a41dc5717a61b867789fbe 1650w, https://mintcdn.com/loops/SqldyWKxvGS7UNL4/images/terminal.png?w=2500&fit=max&auto=format&n=SqldyWKxvGS7UNL4&q=85&s=3a8450a5d3357e016e9b562574bd68fe 2500w" />
+<img alt="Add data variables" />
 
 Click the **Next** button top right to view the data needed in your API call.
 
-<img src="https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/next.png?fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=553cf454d657a3049b9566e2851d1b0b" alt="View the paylod" data-og-width="2280" width="2280" data-og-height="1682" height="1682" data-path="images/next.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/next.png?w=280&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=60b1e92d098c794c93b8cfb01310586c 280w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/next.png?w=560&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=c8f8c7d1c2918340532861bb8bd52c4c 560w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/next.png?w=840&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=e9569fd50c07b058708c7447fcf4cacf 840w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/next.png?w=1100&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=695b04041f9dfe709a25a3ad36345426 1100w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/next.png?w=1650&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=ea4ba40f8634d64c2905b0cc375c0c43 1650w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/next.png?w=2500&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=2083f0ff2fc32596387a81dcf6e07f17 2500w" />
+<img alt="View the paylod" />
 
 Hit **Publish** to finalize the email. Copy the payload details and the ID; you'll need these to send the email using the API.
 
@@ -11429,7 +11266,7 @@ POST https://app.loops.so/api/v1/transactional
 
 You will need the payload copied from before. Make sure to include values for all of the data variables you added to the email.
 
-```json  theme={"dark"}
+```json theme={"dark"}
 {
   "transactionalId": "clfq6dinn000yl70fgwwyp82l",
   "email": "favorite@example.com",
@@ -11446,7 +11283,7 @@ You will need the payload copied from before. Make sure to include values for al
   [Insomnia](https://insomnia.rest) to make API requests.
 </Tip>
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="About transactional email" icon="envelope" href="/transactional" />
 
   <Card title="Transactional guide" icon="file-code" href="/transactional" />
@@ -11456,7 +11293,7 @@ You will need the payload copied from before. Make sure to include values for al
 
 Loops integrates with thousands of other platforms, making it easy to send email to your audience, users or customers, regardless of where they originate.
 
-<img src="https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/make-add-module.png?fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=48a4e1fc1c670610372a3f2185864824" alt="Create an action in Make" data-og-width="2307" width="2307" data-og-height="1538" height="1538" data-path="images/make-add-module.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/make-add-module.png?w=280&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=00b7f2310a7113b4dc87349263c7e049 280w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/make-add-module.png?w=560&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=7250533ada99744f86d1496b170c0753 560w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/make-add-module.png?w=840&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=4ce0277161be6809bcc1c7e669a1812b 840w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/make-add-module.png?w=1100&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=12db09b3e66b8c74f9336d5224f421e2 1100w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/make-add-module.png?w=1650&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=fd0811855132f0dddeb25614e32bf2aa 1650w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/make-add-module.png?w=2500&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=3971b446549cd1405821e27118498661 2500w" />
+<img alt="Create an action in Make" />
 
 Set up connections to different apps using a tool like [Zapier](/integrations/zapier) or [Make](/integrations/make), or create contacts using events from [Segment](/integrations/segment).
 
@@ -11502,7 +11339,7 @@ These SDKs are produced and maintained by the Loops team.
   </Card>
 </CardGroup>
 
-<div className="mt-4 text-sm">Don't see your favorite language or framework? <Link href="mailto:dan@loops.so">Request an SDK</Link></div>
+<div>Don't see your favorite language or framework? <Link href="mailto:dan@loops.so">Request an SDK</Link></div>
 
 ## Unofficial SDKs
 
@@ -11515,18 +11352,18 @@ The following SDKs are community-submitted and have not been officially reviewed
 * [PHP](https://github.com/plutolinks/loops-php) by PlutoLinks
 * [Ruby on Rails](https://github.com/danielfriis/loops_rails) by Daniel Friis
 
-<div className="mt-4 text-sm"><Link href="mailto:dan@loops.so">Submit an SDK</Link></div>
+<div><Link href="mailto:dan@loops.so">Submit an SDK</Link></div>
 
 ## SMTP integrations
 
 You can also send transactional email using our [SMTP service](/smtp). Check out our guides for popular frameworks.
 
 <CardGroup>
-  <Card href="/smtp/laravel" icon="laravel" horizontal={true} title="Send with SMTP from Laravel" />
+  <Card href="/smtp/laravel" icon="laravel" title="Send with SMTP from Laravel" />
 
-  <Card href="/smtp/django" icon={<svg xmlns="http://www.w3.org/2000/svg" width="32" height="24" viewBox="0 0 32 32"><path fill="#FF4A00" d="M14.859 0h5.234v24.219c-2.682.51-4.656.714-6.797.714-6.385 0-9.714-2.885-9.714-8.427 0-5.333 3.531-8.797 9-8.797.849 0 1.495.068 2.276.271zm0 12.193a5.225 5.225 0 0 0-1.766-.276c-2.651 0-4.177 1.63-4.177 4.49 0 2.786 1.458 4.313 4.146 4.313.578 0 1.052-.031 1.797-.135v-8.396zm13.558-4.115v12.13c0 4.177-.302 6.188-1.219 7.917-.849 1.667-1.974 2.719-4.281 3.875l-4.859-2.313c2.307-1.089 3.432-2.036 4.146-3.5.745-1.495.984-3.229.984-7.781V8.078zM23.188.026h5.229v5.37h-5.229z"/></svg>} horizontal={true} title="Send with SMTP from Django" />
+  <Card href="/smtp/django" icon={<svg xmlns="http://www.w3.org/2000/svg" width="32" height="24" viewBox="0 0 32 32"><path fill="#FF4A00" d="M14.859 0h5.234v24.219c-2.682.51-4.656.714-6.797.714-6.385 0-9.714-2.885-9.714-8.427 0-5.333 3.531-8.797 9-8.797.849 0 1.495.068 2.276.271zm0 12.193a5.225 5.225 0 0 0-1.766-.276c-2.651 0-4.177 1.63-4.177 4.49 0 2.786 1.458 4.313 4.146 4.313.578 0 1.052-.031 1.797-.135v-8.396zm13.558-4.115v12.13c0 4.177-.302 6.188-1.219 7.917-.849 1.667-1.974 2.719-4.281 3.875l-4.859-2.313c2.307-1.089 3.432-2.036 4.146-3.5.745-1.495.984-3.229.984-7.781V8.078zM23.188.026h5.229v5.37h-5.229z"/></svg>} title="Send with SMTP from Django" />
 
-  <Card href="/smtp/rails" icon={<svg xmlns="http://www.w3.org/2000/svg" width="24" height="20" viewBox="0 0 200 122.179"><g fill="#FF4A00" fill-rule="evenodd"><path d="M6.226 122.179h69.646s-13.312-61.028 30.767-85.74c9.61-4.695 40.2-22.233 90.275 14.968 1.587-1.328 3.086-2.391 3.086-2.391s-45.843-45.97-96.887-40.833c-25.655 2.303-57.216 25.775-75.73 56.776C8.87 95.961 6.227 122.18 6.227 122.18Z"/><path d="M6.226 122.179h69.646s-13.312-61.028 30.767-85.74c9.61-4.695 40.2-22.233 90.275 14.968 1.587-1.328 3.086-2.391 3.086-2.391s-45.843-45.97-96.887-40.833c-25.655 2.303-57.216 25.775-75.73 56.776C8.87 95.961 6.227 122.18 6.227 122.18Z"/><path d="M6.226 122.179h69.646S62.56 61.441 106.639 36.846c9.61-4.673 40.2-22.127 90.275 14.898a54.832 54.832 0 0 1 3.086-2.38S154.157 3.61 103.113 8.724C77.37 11.016 45.809 34.377 27.296 65.231 8.782 96.085 6.226 122.18 6.226 122.18Zm145.11-108.518.353-5.906c-.794-.441-2.998-1.499-8.552-3.086l-.352 5.818c2.909.97 5.73 2.028 8.551 3.174Z"/><path d="m143.016 32.845-.352 5.547a49.29 49.29 0 0 1 8.734 1.057l.353-5.46c-3-.616-5.911-.968-8.735-1.144ZM110.372 5.37h.883L109.49 0c-2.735 0-5.558.176-8.47.528l1.677 5.196c2.558-.265 5.117-.353 7.675-.353Zm4.235 32.405 2.03 6.076c2.558-1.233 5.117-2.29 7.675-3.082l-1.94-5.812c-3 .88-5.559 1.85-7.765 2.818ZM74.552 14.617l-3.97-6.076c-2.206 1.145-4.5 2.378-6.882 3.787l4.059 6.164c2.293-1.41 4.5-2.73 6.793-3.875ZM92.64 54.243l4.235 6.34c1.5-2.202 3.264-4.227 5.205-6.252l-3.97-5.988a48.751 48.751 0 0 0-5.47 5.9ZM79.846 82.597l7.146 5.635a70.2 70.2 0 0 1 1.853-10.302l-6.352-5.02c-1.147 3.259-1.941 6.517-2.647 9.687ZM41.202 40.77l-6.264-5.46c-2.294 2.202-4.5 4.403-6.529 6.605l6.794 5.811a89.226 89.226 0 0 1 6-6.956ZM14.558 80.131 4.41 76.433C2.735 80.219.882 84.622 0 86.999l10.146 3.699c1.147-2.994 3-7.309 4.412-10.567Zm63.964 24.832c.177 4.667.618 8.453 1.059 11.095l10.587 3.786c-.794-3.434-1.588-7.308-2.117-11.447l-9.529-3.434Z"/></g></svg>} horizontal={true} title="Send with SMTP from Rails" />
+  <Card href="/smtp/rails" icon={<svg xmlns="http://www.w3.org/2000/svg" width="24" height="20" viewBox="0 0 200 122.179"><g fill="#FF4A00" fill-rule="evenodd"><path d="M6.226 122.179h69.646s-13.312-61.028 30.767-85.74c9.61-4.695 40.2-22.233 90.275 14.968 1.587-1.328 3.086-2.391 3.086-2.391s-45.843-45.97-96.887-40.833c-25.655 2.303-57.216 25.775-75.73 56.776C8.87 95.961 6.227 122.18 6.227 122.18Z"/><path d="M6.226 122.179h69.646s-13.312-61.028 30.767-85.74c9.61-4.695 40.2-22.233 90.275 14.968 1.587-1.328 3.086-2.391 3.086-2.391s-45.843-45.97-96.887-40.833c-25.655 2.303-57.216 25.775-75.73 56.776C8.87 95.961 6.227 122.18 6.227 122.18Z"/><path d="M6.226 122.179h69.646S62.56 61.441 106.639 36.846c9.61-4.673 40.2-22.127 90.275 14.898a54.832 54.832 0 0 1 3.086-2.38S154.157 3.61 103.113 8.724C77.37 11.016 45.809 34.377 27.296 65.231 8.782 96.085 6.226 122.18 6.226 122.18Zm145.11-108.518.353-5.906c-.794-.441-2.998-1.499-8.552-3.086l-.352 5.818c2.909.97 5.73 2.028 8.551 3.174Z"/><path d="m143.016 32.845-.352 5.547a49.29 49.29 0 0 1 8.734 1.057l.353-5.46c-3-.616-5.911-.968-8.735-1.144ZM110.372 5.37h.883L109.49 0c-2.735 0-5.558.176-8.47.528l1.677 5.196c2.558-.265 5.117-.353 7.675-.353Zm4.235 32.405 2.03 6.076c2.558-1.233 5.117-2.29 7.675-3.082l-1.94-5.812c-3 .88-5.559 1.85-7.765 2.818ZM74.552 14.617l-3.97-6.076c-2.206 1.145-4.5 2.378-6.882 3.787l4.059 6.164c2.293-1.41 4.5-2.73 6.793-3.875ZM92.64 54.243l4.235 6.34c1.5-2.202 3.264-4.227 5.205-6.252l-3.97-5.988a48.751 48.751 0 0 0-5.47 5.9ZM79.846 82.597l7.146 5.635a70.2 70.2 0 0 1 1.853-10.302l-6.352-5.02c-1.147 3.259-1.941 6.517-2.647 9.687ZM41.202 40.77l-6.264-5.46c-2.294 2.202-4.5 4.403-6.529 6.605l6.794 5.811a89.226 89.226 0 0 1 6-6.956ZM14.558 80.131 4.41 76.433C2.735 80.219.882 84.622 0 86.999l10.146 3.699c1.147-2.994 3-7.309 4.412-10.567Zm63.964 24.832c.177 4.667.618 8.453 1.059 11.095l10.587 3.786c-.794-3.434-1.588-7.308-2.117-11.447l-9.529-3.434Z"/></g></svg>} title="Send with SMTP from Rails" />
 </CardGroup>
 
 
@@ -11541,7 +11378,7 @@ The official Loops SDK for JavaScript, with full TypeScript support.
 
 You can install the package [from npm](https://www.npmjs.com/package/loops):
 
-```bash  theme={"dark"}
+```bash theme={"dark"}
 npm install loops
 ```
 
@@ -11557,17 +11394,17 @@ Copy this key and save it in your application code (for example as `LOOPS_API_KE
   <Card
     title="Next.js guide"
     icon={
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      preserveAspectRatio="xMidYMid"
-      viewBox="0 0 256 256"
-    >
-      <path
-        fill="#FF4A00"
-        d="M119.617.069c-.55.05-2.302.225-3.879.35-36.36 3.278-70.419 22.894-91.99 53.044-12.012 16.764-19.694 35.78-22.597 55.922C.125 116.415 0 118.492 0 128.025c0 9.533.125 11.61 1.151 18.64 6.957 48.065 41.165 88.449 87.56 103.411 8.309 2.678 17.067 4.504 27.027 5.605 3.879.425 20.645.425 24.524 0 17.192-1.902 31.756-6.155 46.12-13.486 2.202-1.126 2.628-1.426 2.327-1.677-.2-.15-9.584-12.735-20.845-27.948l-20.47-27.648-25.65-37.956c-14.114-20.868-25.725-37.932-25.825-37.932-.1-.025-.2 16.84-.25 37.431-.076 36.055-.1 37.506-.551 38.357-.65 1.226-1.151 1.727-2.202 2.277-.801.4-1.502.475-5.28.475h-4.33l-1.15-.725a4.679 4.679 0 0 1-1.677-1.827l-.526-1.126.05-50.166.075-50.192.776-.976c.4-.525 1.251-1.2 1.852-1.526 1.026-.5 1.426-.55 5.755-.55 5.105 0 5.956.2 7.282 1.651.376.4 14.264 21.318 30.88 46.514 16.617 25.195 39.34 59.599 50.5 76.488l20.27 30.7 1.026-.675c9.084-5.905 18.693-14.312 26.3-23.07 16.191-18.59 26.626-41.258 30.13-65.428 1.026-7.031 1.151-9.108 1.151-18.64 0-9.534-.125-11.61-1.151-18.641-6.957-48.065-41.165-88.449-87.56-103.411-8.184-2.652-16.892-4.479-26.652-5.58-2.402-.25-18.943-.525-21.02-.325Zm52.401 77.414c1.201.6 2.177 1.752 2.527 2.953.2.65.25 14.562.2 45.913l-.074 44.987-7.933-12.16-7.958-12.16v-32.702c0-21.143.1-33.028.25-33.603.4-1.401 1.277-2.502 2.478-3.153 1.026-.525 1.401-.575 5.33-.575 3.704 0 4.354.05 5.18.5Z"
-      />
-    </svg>
-  }
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    preserveAspectRatio="xMidYMid"
+    viewBox="0 0 256 256"
+  >
+    <path
+      fill="#FF4A00"
+      d="M119.617.069c-.55.05-2.302.225-3.879.35-36.36 3.278-70.419 22.894-91.99 53.044-12.012 16.764-19.694 35.78-22.597 55.922C.125 116.415 0 118.492 0 128.025c0 9.533.125 11.61 1.151 18.64 6.957 48.065 41.165 88.449 87.56 103.411 8.309 2.678 17.067 4.504 27.027 5.605 3.879.425 20.645.425 24.524 0 17.192-1.902 31.756-6.155 46.12-13.486 2.202-1.126 2.628-1.426 2.327-1.677-.2-.15-9.584-12.735-20.845-27.948l-20.47-27.648-25.65-37.956c-14.114-20.868-25.725-37.932-25.825-37.932-.1-.025-.2 16.84-.25 37.431-.076 36.055-.1 37.506-.551 38.357-.65 1.226-1.151 1.727-2.202 2.277-.801.4-1.502.475-5.28.475h-4.33l-1.15-.725a4.679 4.679 0 0 1-1.677-1.827l-.526-1.126.05-50.166.075-50.192.776-.976c.4-.525 1.251-1.2 1.852-1.526 1.026-.5 1.426-.55 5.755-.55 5.105 0 5.956.2 7.282 1.651.376.4 14.264 21.318 30.88 46.514 16.617 25.195 39.34 59.599 50.5 76.488l20.27 30.7 1.026-.675c9.084-5.905 18.693-14.312 26.3-23.07 16.191-18.59 26.626-41.258 30.13-65.428 1.026-7.031 1.151-9.108 1.151-18.64 0-9.534-.125-11.61-1.151-18.641-6.957-48.065-41.165-88.449-87.56-103.411-8.184-2.652-16.892-4.479-26.652-5.58-2.402-.25-18.943-.525-21.02-.325Zm52.401 77.414c1.201.6 2.177 1.752 2.527 2.953.2.65.25 14.562.2 45.913l-.074 44.987-7.933-12.16-7.958-12.16v-32.702c0-21.143.1-33.028.25-33.603.4-1.401 1.277-2.502 2.478-3.153 1.026-.525 1.401-.575 5.33-.575 3.704 0 4.354.05 5.18.5Z"
+    />
+  </svg>
+}
     href="/sdks/javascript/nextjs"
   >
     Read our guide for sending email from Next.js projects.
@@ -11576,7 +11413,7 @@ Copy this key and save it in your application code (for example as `LOOPS_API_KE
 
 ## Usage
 
-```javascript  theme={"dark"}
+```javascript theme={"dark"}
 import { LoopsClient, APIError } from "loops";
 
 const loops = new LoopsClient(process.env.LOOPS_API_KEY);
@@ -11602,7 +11439,7 @@ If you import `RateLimitExceededError` you can check for rate limit issues with 
 
 You can access details about the rate limits from the `limit` and `remaining` attributes.
 
-```javascript  theme={"dark"}
+```javascript theme={"dark"}
 import { LoopsClient, APIError, RateLimitExceededError } from "loops";
 
 const loops = new LoopsClient(process.env.LOOPS_API_KEY);
@@ -11665,13 +11502,13 @@ None
 
 #### Example
 
-```javascript  theme={"dark"}
+```javascript theme={"dark"}
 const resp = await loops.testApiKey();
 ```
 
 #### Response
 
-```json  theme={"dark"}
+```json theme={"dark"}
 {
   "success": true,
   "teamName": "My team"
@@ -11680,7 +11517,7 @@ const resp = await loops.testApiKey();
 
 Error handling is done through the `APIError` class, which provides `statusCode` and `json` properties containing the API's error response details. For implementation examples, see the [Usage section](#usage).
 
-```json  theme={"dark"}
+```json theme={"dark"}
 HTTP 401 Unauthorized
 {
   "error": "Invalid API key"
@@ -11705,7 +11542,7 @@ Create a new contact.
 
 #### Examples
 
-```javascript  theme={"dark"}
+```javascript theme={"dark"}
 const resp = await loops.createContact({ email: "hello@gmail.com" });
 
 const contactProperties = {
@@ -11725,7 +11562,7 @@ const resp = await loops.createContact({
 
 #### Response
 
-```json  theme={"dark"}
+```json theme={"dark"}
 {
   "success": true,
   "id": "id_of_contact"
@@ -11734,7 +11571,7 @@ const resp = await loops.createContact({
 
 Error handling is done through the `APIError` class, which provides `statusCode` and `json` properties containing the API's error response details. For implementation examples, see the [Usage section](#usage).
 
-```json  theme={"dark"}
+```json theme={"dark"}
 HTTP 400 Bad Request
 {
   "success": false,
@@ -11763,7 +11600,7 @@ Note: To update a contact's email address, the contact requires a `userId` value
 
 #### Example
 
-```javascript  theme={"dark"}
+```javascript theme={"dark"}
 const resp = await loops.updateContact({
   email: "hello@gmail.com",
   properties: {
@@ -11789,7 +11626,7 @@ const resp = await loops.updateContact({
 
 #### Response
 
-```json  theme={"dark"}
+```json theme={"dark"}
 {
   "success": true,
   "id": "id_of_contact"
@@ -11798,7 +11635,7 @@ const resp = await loops.updateContact({
 
 Error handling is done through the `APIError` class, which provides `statusCode` and `json` properties containing the API's error response details. For implementation examples, see the [Usage section](#usage).
 
-```json  theme={"dark"}
+```json theme={"dark"}
 HTTP 400 Bad Request
 {
   "success": false,
@@ -11825,7 +11662,7 @@ You must use one parameter in the request.
 
 #### Examples
 
-```javascript  theme={"dark"}
+```javascript theme={"dark"}
 const resp = await loops.findContact({ email: "hello@gmail.com" });
 
 const resp = await loops.findContact({ userId: "12345" });
@@ -11837,7 +11674,7 @@ This method will return a list containing a single contact object, which will in
 
 If no contact is found, an empty list will be returned.
 
-```json  theme={"dark"}
+```json theme={"dark"}
 [
   {
     "id": "cll6b3i8901a9jx0oyktl2m4u",
@@ -11876,7 +11713,7 @@ You must use one parameter in the request.
 
 #### Example
 
-```javascript  theme={"dark"}
+```javascript theme={"dark"}
 const resp = await loops.deleteContact({ email: "hello@gmail.com" });
 
 const resp = await loops.deleteContact({ userId: "12345" });
@@ -11884,7 +11721,7 @@ const resp = await loops.deleteContact({ userId: "12345" });
 
 #### Response
 
-```json  theme={"dark"}
+```json theme={"dark"}
 {
   "success": true,
   "message": "Contact deleted."
@@ -11893,7 +11730,7 @@ const resp = await loops.deleteContact({ userId: "12345" });
 
 Error handling is done through the `APIError` class, which provides `statusCode` and `json` properties containing the API's error response details. For implementation examples, see the [Usage section](#usage).
 
-```json  theme={"dark"}
+```json theme={"dark"}
 HTTP 400 Bad Request
 {
   "success": false,
@@ -11901,7 +11738,7 @@ HTTP 400 Bad Request
 }
 ```
 
-```json  theme={"dark"}
+```json theme={"dark"}
 HTTP 404 Not Found
 {
   "success": false,
@@ -11926,13 +11763,13 @@ Create a new contact property.
 
 #### Examples
 
-```javascript  theme={"dark"}
+```javascript theme={"dark"}
 const resp = await loops.createContactProperty("planName", "string");
 ```
 
 #### Response
 
-```json  theme={"dark"}
+```json theme={"dark"}
 {
   "success": true
 }
@@ -11940,7 +11777,7 @@ const resp = await loops.createContactProperty("planName", "string");
 
 Error handling is done through the `APIError` class, which provides `statusCode` and `json` properties containing the API's error response details. For implementation examples, see the [Usage section](#usage).
 
-```json  theme={"dark"}
+```json theme={"dark"}
 HTTP 400 Bad Request
 {
   "success": false,
@@ -11964,7 +11801,7 @@ Get a list of your account's contact properties.
 
 #### Example
 
-```javascript  theme={"dark"}
+```javascript theme={"dark"}
 const resp = await loops.getContactProperties();
 
 const resp = await loops.getContactProperties("custom");
@@ -11974,7 +11811,7 @@ const resp = await loops.getContactProperties("custom");
 
 This method will return a list of contact property objects containing `key`, `label` and `type` attributes.
 
-```json  theme={"dark"}
+```json theme={"dark"}
 [
   {
     "key": "firstName",
@@ -12048,7 +11885,7 @@ None
 
 #### Example
 
-```javascript  theme={"dark"}
+```javascript theme={"dark"}
 const resp = await loops.getMailingLists();
 ```
 
@@ -12058,7 +11895,7 @@ This method will return a list of mailing list objects containing `id`, `name`, 
 
 If your account has no mailing lists, an empty list will be returned.
 
-```json  theme={"dark"}
+```json theme={"dark"}
 [
   {
     "id": "cm06f5v0e45nf0ml5754o9cix",
@@ -12097,7 +11934,7 @@ Send an event to trigger an email in Loops. [Read more about events](/events)
 
 #### Examples
 
-```javascript  theme={"dark"}
+```javascript theme={"dark"}
 const resp = await loops.sendEvent({
   email: "hello@gmail.com",
   eventName: "signup",
@@ -12143,7 +11980,7 @@ const resp = await loops.sendEvent({
 
 #### Response
 
-```json  theme={"dark"}
+```json theme={"dark"}
 {
   "success": true
 }
@@ -12151,7 +11988,7 @@ const resp = await loops.sendEvent({
 
 Error handling is done through the `APIError` class, which provides `statusCode` and `json` properties containing the API's error response details. For implementation examples, see the [Usage section](#usage).
 
-```json  theme={"dark"}
+```json theme={"dark"}
 HTTP 400 Bad Request
 {
   "success": false,
@@ -12183,7 +12020,7 @@ Send a transactional email to a contact. [Learn about sending transactional emai
 
 #### Examples
 
-```javascript  theme={"dark"}
+```javascript theme={"dark"}
 const resp = await loops.sendTransactionalEmail({
   transactionalId: "clfq6dinn000yl70fgwwyp82l",
   email: "hello@gmail.com",
@@ -12223,7 +12060,7 @@ const resp = await loops.sendTransactionalEmail({
 
 #### Response
 
-```json  theme={"dark"}
+```json theme={"dark"}
 {
   "success": true
 }
@@ -12231,7 +12068,7 @@ const resp = await loops.sendTransactionalEmail({
 
 Error handling is done through the `APIError` class, which provides `statusCode` and `json` properties containing the API's error response details. For implementation examples, see the [Usage section](#usage).
 
-```json  theme={"dark"}
+```json theme={"dark"}
 HTTP 400 Bad Request
 {
   "success": false,
@@ -12240,7 +12077,7 @@ HTTP 400 Bad Request
 }
 ```
 
-```json  theme={"dark"}
+```json theme={"dark"}
 HTTP 400 Bad Request
 {
   "success": false,
@@ -12269,7 +12106,7 @@ Get a list of published transactional emails.
 
 #### Example
 
-```javascript  theme={"dark"}
+```javascript theme={"dark"}
 const resp = await loops.getTransactionalEmails();
 
 const resp = await loops.getTransactionalEmails({ perPage: 15 });
@@ -12277,7 +12114,7 @@ const resp = await loops.getTransactionalEmails({ perPage: 15 });
 
 #### Response
 
-```json  theme={"dark"}
+```json theme={"dark"}
 {
   "pagination": {
     "totalResults": 23,
@@ -12374,7 +12211,7 @@ This guide shows how to add Loops to your Next.js project, so you can send trans
 
 The first step is to install the Loops SDK. This is written in TypeScript so you can benefit from strict types when coding.
 
-```bash  theme={"dark"}
+```bash theme={"dark"}
 npm i loops
 ```
 
@@ -12384,7 +12221,7 @@ Save this value in your environment variables as something like `LOOPS_API_KEY`.
 
 Then you can import the Loops SDK client like this:
 
-```javascript  theme={"dark"}
+```javascript theme={"dark"}
 import { LoopsClient } from "loops";
 
 const loops = new LoopsClient(process.env.LOOPS_API_KEY);
@@ -12442,7 +12279,7 @@ To create a transactional email, go to the Transactional page in Loops. Click **
 
 Create the email in [the editor](/creating-emails/editor), which gives you rich formatting options and components.
 
-<img src="https://mintcdn.com/loops/4h4NdelN1SeEp2xg/images/transactional-example.png?fit=max&auto=format&n=4h4NdelN1SeEp2xg&q=85&s=6d4f8855f2bb71dbf528ab8da2c4aacb" alt="Creating a transactional email" data-og-width="2280" width="2280" data-og-height="1355" height="1355" data-path="images/transactional-example.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/4h4NdelN1SeEp2xg/images/transactional-example.png?w=280&fit=max&auto=format&n=4h4NdelN1SeEp2xg&q=85&s=9e8df0d409a4bf917d37a08295dc8455 280w, https://mintcdn.com/loops/4h4NdelN1SeEp2xg/images/transactional-example.png?w=560&fit=max&auto=format&n=4h4NdelN1SeEp2xg&q=85&s=15b343e6210f4aa163570a8709f68152 560w, https://mintcdn.com/loops/4h4NdelN1SeEp2xg/images/transactional-example.png?w=840&fit=max&auto=format&n=4h4NdelN1SeEp2xg&q=85&s=5bdb62280bb095794d570da750a13c0e 840w, https://mintcdn.com/loops/4h4NdelN1SeEp2xg/images/transactional-example.png?w=1100&fit=max&auto=format&n=4h4NdelN1SeEp2xg&q=85&s=c7a97149078a5e2ac87cbd3c41d270a2 1100w, https://mintcdn.com/loops/4h4NdelN1SeEp2xg/images/transactional-example.png?w=1650&fit=max&auto=format&n=4h4NdelN1SeEp2xg&q=85&s=60cebc6a82938cb12f70af9f60ecbd21 1650w, https://mintcdn.com/loops/4h4NdelN1SeEp2xg/images/transactional-example.png?w=2500&fit=max&auto=format&n=4h4NdelN1SeEp2xg&q=85&s=fcb440735577b734aaf52a2a68f1a9f5 2500w" />
+<img alt="Creating a transactional email" />
 
 To add dynamic content (like rest password URLs or user data) you can add [data variables](/transactional#add-data-variables) into the email from the toolbar.
 
@@ -12506,7 +12343,7 @@ In your code, call `sendTransactionalEmail()` and include values for each of the
 
 The response will contain a `success` boolean telling you if the email was sent successfully. If it was not, you'll also receive an error message.
 
-<CardGroup className="mt-8">
+<CardGroup>
   <Card title="sendTransactionalEmail()" href="/sdks/javascript#sendtransactionalemail" icon="code">
     Read more in the SDK docs.
   </Card>
@@ -12574,7 +12411,7 @@ The TypeScript example above shows how to properly type your `contactProperties`
   the system.
 </Tip>
 
-<CardGroup className="mt-8">
+<CardGroup>
   <Card title="updateContact()" href="/sdks/javascript#updatecontact" icon="user">
     Read more in the SDK docs.
   </Card>
@@ -12624,7 +12461,7 @@ Then to trigger this email sequence, send an event to Loops. If your event name 
   ```
 </CodeGroup>
 
-<CardGroup className="mt-8">
+<CardGroup>
   <Card title="sendEvent()" href="/sdks/javascript#sendevent" icon="bolt">
     Read more in the SDK docs.
   </Card>
@@ -12641,7 +12478,7 @@ If you prefer, you can use the [Loops API](/api-reference) directly instead of u
 
 For example, you can send a transactional email like this:
 
-```javascript  theme={"dark"}
+```javascript theme={"dark"}
 const data = {
   email: "user@gmail.com",
   transactionalId: "abcdefg",
@@ -12694,7 +12531,7 @@ This Nuxt module makes it easy to add the Loops [JavaScript SDK](/sdks/javascrip
 
 You can install the package [from npm](https://www.npmjs.com/package/nuxt-loops):
 
-```bash  theme={"dark"}
+```bash theme={"dark"}
 npm install nuxt-loops
 ```
 
@@ -12725,7 +12562,7 @@ To use the module, import `loops` from the request context.
 
 Then call one of the SDK methods. Read through the [JS SDK docs](/sdks/javascript#methods) for more details.
 
-```javascript  theme={"dark"}
+```javascript theme={"dark"}
 export default defineEventHandler(async (event) => {
   const { loops } = event.context;
 
@@ -12770,7 +12607,7 @@ This is the official PHP package for [Loops](https://loops.so), an email platfor
 
 Install the Loops package [using Composer](https://packagist.org/packages/loops-so/loops):
 
-```bash  theme={"dark"}
+```bash theme={"dark"}
 composer require loops-so/loops
 ```
 
@@ -12788,7 +12625,7 @@ To use the package, first initialise the client with your API key, then you can 
 
 API rate limits can be handled with the included `RateLimitExceededError` exception.
 
-```php  theme={"dark"}
+```php theme={"dark"}
 use Loops\LoopsClient;
 
 $loops = new LoopsClient(env('LOOPS_API_KEY'));
@@ -12818,7 +12655,7 @@ You can use the check for rate limit issues with your requests.
 
 You can access details about the rate limits from the `getLimit` and `getRemaining` functions.
 
-```php  theme={"dark"}
+```php theme={"dark"}
 try {
     $result = $loops->contacts->create('user@example.com', [
       'firstName' => 'John'
@@ -12881,7 +12718,7 @@ None
 
 #### Example
 
-```php  theme={"dark"}
+```php theme={"dark"}
 $result = $loops->apiKey->test();
 ```
 
@@ -12889,14 +12726,14 @@ $result = $loops->apiKey->test();
 
 This method will return a success or error message:
 
-```json  theme={"dark"}
+```json theme={"dark"}
 {
   "success": true,
   "teamName": "Company name"
 }
 ```
 
-```json  theme={"dark"}
+```json theme={"dark"}
 {
   "error": "Invalid API key"
 }
@@ -12920,7 +12757,7 @@ Create a new contact.
 
 #### Examples
 
-```php  theme={"dark"}
+```php theme={"dark"}
 $result = $loops->contacts->create("hello@gmail.com");
 
 $contact_properties = [
@@ -12940,7 +12777,7 @@ $result = $loops->contacts->create(
 
 #### Response
 
-```json  theme={"dark"}
+```json theme={"dark"}
 {
   "success": true,
   "id": "id_of_contact"
@@ -12949,7 +12786,7 @@ $result = $loops->contacts->create(
 
 Error handling is done through the `APIError` class, which provides `getStatusCode()` and `getJson()` methods for retrieving the API's error response details. For implementation examples, see the [Usage section](#usage).
 
-```json  theme={"dark"}
+```json theme={"dark"}
 // HTTP 400 Bad Request
 {
   "success": false,
@@ -12978,7 +12815,7 @@ Note: To update a contact's email address, the contact requires a `$user_id` val
 
 #### Example
 
-```php  theme={"dark"}
+```php theme={"dark"}
 $result = $loops->contacts->update(
   email: 'hello@gmail.com',
   properties: [
@@ -13005,7 +12842,7 @@ $result = $loops->contacts->update(
 
 #### Response
 
-```json  theme={"dark"}
+```json theme={"dark"}
 {
   "success": true,
   "id": "id_of_contact"
@@ -13014,7 +12851,7 @@ $result = $loops->contacts->update(
 
 Error handling is done through the `APIError` class, which provides `getStatusCode()` and `getJson()` methods for retrieving the API's error response details. For implementation examples, see the [Usage section](#usage).
 
-```json  theme={"dark"}
+```json theme={"dark"}
 // HTTP 400 Bad Request
 {
   "success": false,
@@ -13041,7 +12878,7 @@ You must use one parameter in the request.
 
 #### Examples
 
-```php  theme={"dark"}
+```php theme={"dark"}
 $result = $loops->contacts->find(email: 'hello@gmail.com');
 
 $result = $loops->contacts->find(user_id: '12345');
@@ -13053,7 +12890,7 @@ This method will return a list containing a single contact object, which will in
 
 If no contact is found, an empty list will be returned.
 
-```json  theme={"dark"}
+```json theme={"dark"}
 [
   {
     "id": "cll6b3i8901a9jx0oyktl2m4u",
@@ -13092,7 +12929,7 @@ You must use one parameter in the request.
 
 #### Example
 
-```php  theme={"dark"}
+```php theme={"dark"}
 $result = $loops->contacts->delete(email: 'hello@gmail.com')
 
 $result = $loops->contacts->delete(user_id: '12345')
@@ -13100,7 +12937,7 @@ $result = $loops->contacts->delete(user_id: '12345')
 
 #### Response
 
-```json  theme={"dark"}
+```json theme={"dark"}
 {
   "success": true,
   "message": "Contact deleted."
@@ -13109,7 +12946,7 @@ $result = $loops->contacts->delete(user_id: '12345')
 
 Error handling is done through the `APIError` class, which provides `getStatusCode()` and `getJson()` methods for retrieving the API's error response details. For implementation examples, see the [Usage section](#usage).
 
-```json  theme={"dark"}
+```json theme={"dark"}
 // HTTP 400 Bad Reuqest
 {
   "success": false,
@@ -13117,7 +12954,7 @@ Error handling is done through the `APIError` class, which provides `getStatusCo
 }
 ```
 
-```json  theme={"dark"}
+```json theme={"dark"}
 // HTTP 404 Not Found
 {
   "success": false,
@@ -13142,13 +12979,13 @@ Create a new contact property.
 
 #### Examples
 
-```php  theme={"dark"}
+```php theme={"dark"}
 $result = $loops->contactProperties->create("planName", "string");
 ```
 
 #### Response
 
-```json  theme={"dark"}
+```json theme={"dark"}
 {
   "success": true
 }
@@ -13156,7 +12993,7 @@ $result = $loops->contactProperties->create("planName", "string");
 
 Error handling is done through the `APIError` class, which provides `getStatusCode()` and `getJson()` methods for retrieving the API's error response details. For implementation examples, see the [Usage section](#usage).
 
-```json  theme={"dark"}
+```json theme={"dark"}
 // HTTP 400 Bad Request
 {
   "success": false,
@@ -13180,7 +13017,7 @@ Get a list of your account's contact properties.
 
 #### Example
 
-```php  theme={"dark"}
+```php theme={"dark"}
 $result = $loops->contactProperties->get();
 
 $result = $loops->contactProperties->get(list: "custom");
@@ -13190,7 +13027,7 @@ $result = $loops->contactProperties->get(list: "custom");
 
 This method will return a list of contact property objects containing `key`, `label` and `type` attributes.
 
-```json  theme={"dark"}
+```json theme={"dark"}
 [
   {
     "key": "firstName",
@@ -13264,7 +13101,7 @@ None
 
 #### Example
 
-```php  theme={"dark"}
+```php theme={"dark"}
 $result = $loops->mailingLists->get();
 ```
 
@@ -13274,7 +13111,7 @@ This method will return a list of mailing list objects containing `id`, `name`, 
 
 If your account has no mailing lists, an empty list will be returned.
 
-```json  theme={"dark"}
+```json theme={"dark"}
 [
   {
     "id": "cm06f5v0e45nf0ml5754o9cix",
@@ -13313,7 +13150,7 @@ Send an event to trigger an email in Loops. [Read more about events](/events)
 
 #### Examples
 
-```php  theme={"dark"}
+```php theme={"dark"}
 $result = $loops->events->send(
   event_name: 'signup',
   email: 'hello@gmail.com'
@@ -13359,7 +13196,7 @@ $result = $loops->events->send(
 
 #### Response
 
-```json  theme={"dark"}
+```json theme={"dark"}
 {
   "success": true
 }
@@ -13367,7 +13204,7 @@ $result = $loops->events->send(
 
 Error handling is done through the `APIError` class, which provides `getStatusCode()` and `getJson()` methods for retrieving the API's error response details. For implementation examples, see the [Usage section](#usage).
 
-```json  theme={"dark"}
+```json theme={"dark"}
 // HTTP 400 Bad Request
 {
   "success": false,
@@ -13399,7 +13236,7 @@ Send a transactional email to a contact. [Learn about sending transactional emai
 
 #### Examples
 
-```php  theme={"dark"}
+```php theme={"dark"}
 $result = $loops->transactional->send(
   transactional_id: 'clfq6dinn000yl70fgwwyp82l',
   email: 'hello@gmail.com',
@@ -13439,7 +13276,7 @@ $result = $loops->transactional->send(
 
 #### Response
 
-```json  theme={"dark"}
+```json theme={"dark"}
 {
   "success": true
 }
@@ -13449,7 +13286,7 @@ Error handling is done through the `APIError` class, which provides `getStatusCo
 
 If there is a problem with the request, a descriptive error message will be returned:
 
-```json  theme={"dark"}
+```json theme={"dark"}
 // HTTP 400 Bad Request
 {
   "success": false,
@@ -13458,7 +13295,7 @@ If there is a problem with the request, a descriptive error message will be retu
 }
 ```
 
-```json  theme={"dark"}
+```json theme={"dark"}
 // HTTP 400 Bad Request
 {
   "success": false,
@@ -13487,7 +13324,7 @@ Get a list of published transactional emails.
 
 #### Example
 
-```php  theme={"dark"}
+```php theme={"dark"}
 $result = $loops->transactional->get();
 
 $result = $loops->transactional->get(per_page: 15);
@@ -13495,7 +13332,7 @@ $result = $loops->transactional->get(per_page: 15);
 
 #### Response
 
-```json  theme={"dark"}
+```json theme={"dark"}
 {
   "pagination": {
     "totalResults": 23,
@@ -13562,13 +13399,13 @@ The official Loops SDK for Ruby.
 
 Install the gem and add it to the application's Gemfile like this:
 
-```bash  theme={"dark"}
+```bash theme={"dark"}
 bundle add loops_sdk
 ```
 
 If bundler is not being used to manage dependencies, you can install the gem like this:
 
-```bash  theme={"dark"}
+```bash theme={"dark"}
 gem install loops_sdk
 ```
 
@@ -13594,7 +13431,7 @@ end
 
 Then you can call methods in your code:
 
-```ruby  theme={"dark"}
+```ruby theme={"dark"}
 begin
   response = LoopsSdk::Transactional.send(
     transactional_id: "closfz8ui02yq......",
@@ -13618,7 +13455,7 @@ You can use the check for rate limit issues with your requests.
 
 You can access details about the rate limits from the `limit` and `remaining` attributes.
 
-```ruby  theme={"dark"}
+```ruby theme={"dark"}
 begin
 
   response = LoopsSdk::Contacts.update(
@@ -13681,7 +13518,7 @@ None
 
 #### Example
 
-```ruby  theme={"dark"}
+```ruby theme={"dark"}
 response LoopsSdk::ApiKey.test
 ```
 
@@ -13689,14 +13526,14 @@ response LoopsSdk::ApiKey.test
 
 This method will return a success or error message:
 
-```json  theme={"dark"}
+```json theme={"dark"}
 {
   "success": true,
   "teamName": "Company name"
 }
 ```
 
-```json  theme={"dark"}
+```json theme={"dark"}
 {
   "error": "Invalid API key"
 }
@@ -13720,7 +13557,7 @@ Create a new contact.
 
 #### Examples
 
-```ruby  theme={"dark"}
+```ruby theme={"dark"}
 response = LoopsSdk::Contacts.create(email: "hello@gmail.com")
 
 contact_properties = {
@@ -13742,14 +13579,14 @@ response = LoopsSdk::Contacts.create(
 
 This method will return a success or error message:
 
-```json  theme={"dark"}
+```json theme={"dark"}
 {
   "success": true,
   "id": "id_of_contact"
 }
 ```
 
-```json  theme={"dark"}
+```json theme={"dark"}
 {
   "success": false,
   "message": "An error message here."
@@ -13777,7 +13614,7 @@ Note: To update a contact's email address, the contact requires a `user_id` valu
 
 #### Example
 
-```ruby  theme={"dark"}
+```ruby theme={"dark"}
 contact_properties = {
   firstName: "Bob" /* Default property */,
   favoriteColor: "Blue" /* Custom property */,
@@ -13806,14 +13643,14 @@ response = LoopsSdk::Contacts.update(
 
 This method will return a success or error message:
 
-```json  theme={"dark"}
+```json theme={"dark"}
 {
   "success": true,
   "id": "id_of_contact"
 }
 ```
 
-```json  theme={"dark"}
+```json theme={"dark"}
 {
   "success": false,
   "message": "An error message here."
@@ -13839,7 +13676,7 @@ You must use one parameter in the request.
 
 #### Examples
 
-```ruby  theme={"dark"}
+```ruby theme={"dark"}
 response = LoopsSdk::Contacts.find(email: "hello@gmail.com")
 
 response = LoopsSdk::Contacts.find(user_id: "12345")
@@ -13851,7 +13688,7 @@ This method will return a list containing a single contact object, which will in
 
 If no contact is found, an empty list will be returned.
 
-```json  theme={"dark"}
+```json theme={"dark"}
 [
   {
     "id": "cll6b3i8901a9jx0oyktl2m4u",
@@ -13890,7 +13727,7 @@ You must use one parameter in the request.
 
 #### Example
 
-```ruby  theme={"dark"}
+```ruby theme={"dark"}
 response = LoopsSdk::Contacts.delete(email: "hello@gmail.com")
 
 response = LoopsSdk::Contacts.delete(user_id: "12345")
@@ -13900,14 +13737,14 @@ response = LoopsSdk::Contacts.delete(user_id: "12345")
 
 This method will return a success or error message:
 
-```json  theme={"dark"}
+```json theme={"dark"}
 {
   "success": true,
   "message": "Contact deleted."
 }
 ```
 
-```json  theme={"dark"}
+```json theme={"dark"}
 {
   "success": false,
   "message": "An error message here."
@@ -13931,7 +13768,7 @@ Create a new contact property.
 
 #### Examples
 
-```ruby  theme={"dark"}
+```ruby theme={"dark"}
 response = LoopsSdk::ContactProperties.create(
   name: "planName",
   type: "string"
@@ -13942,13 +13779,13 @@ response = LoopsSdk::ContactProperties.create(
 
 This method will return a success or error message:
 
-```json  theme={"dark"}
+```json theme={"dark"}
 {
   "success": true
 }
 ```
 
-```json  theme={"dark"}
+```json theme={"dark"}
 {
   "success": false,
   "message": "An error message here."
@@ -13971,7 +13808,7 @@ Get a list of your account's contact properties.
 
 #### Example
 
-```ruby  theme={"dark"}
+```ruby theme={"dark"}
 response = LoopsSdk::ContactProperties.list
 
 response = LoopsSdk::ContactProperties.list(list: "custom")
@@ -13981,7 +13818,7 @@ response = LoopsSdk::ContactProperties.list(list: "custom")
 
 This method will return a list of contact property objects containing `key`, `label` and `type` attributes.
 
-```json  theme={"dark"}
+```json theme={"dark"}
 [
   {
     "key": "firstName",
@@ -14055,7 +13892,7 @@ None
 
 #### Example
 
-```ruby  theme={"dark"}
+```ruby theme={"dark"}
 response = LoopsSdk::MailingLists.list
 ```
 
@@ -14065,7 +13902,7 @@ This method will return a list of mailing list objects containing `id`, `name`, 
 
 If your account has no mailing lists, an empty list will be returned.
 
-```json  theme={"dark"}
+```json theme={"dark"}
 [
   {
     "id": "cm06f5v0e45nf0ml5754o9cix",
@@ -14104,7 +13941,7 @@ Send an event to trigger an email in Loops. [Read more about events](/events)
 
 #### Examples
 
-```ruby  theme={"dark"}
+```ruby theme={"dark"}
 response = LoopsSdk::Events.send(
   event_name: "signup",
   email: "hello@gmail.com"
@@ -14152,13 +13989,13 @@ response = LoopsSdk::Events.send(
 
 This method will return a success or error:
 
-```json  theme={"dark"}
+```json theme={"dark"}
 {
   "success": true
 }
 ```
 
-```json  theme={"dark"}
+```json theme={"dark"}
 {
   "success": false,
   "message": "An error message here."
@@ -14189,7 +14026,7 @@ Send a transactional email to a contact. [Learn about sending transactional emai
 
 #### Examples
 
-```ruby  theme={"dark"}
+```ruby theme={"dark"}
 response = LoopsSdk::Transactional.send(
   transactional_id: "clfq6dinn000yl70fgwwyp82l",
   email: "hello@gmail.com",
@@ -14231,7 +14068,7 @@ response = LoopsSdk::Transactional.send(
 
 This method will return a success or error message.
 
-```json  theme={"dark"}
+```json theme={"dark"}
 {
   "success": true
 }
@@ -14239,7 +14076,7 @@ This method will return a success or error message.
 
 If there is a problem with the request, a descriptive error message will be returned:
 
-```json  theme={"dark"}
+```json theme={"dark"}
 {
   "success": false,
   "path": "dataVariables",
@@ -14247,7 +14084,7 @@ If there is a problem with the request, a descriptive error message will be retu
 }
 ```
 
-```json  theme={"dark"}
+```json theme={"dark"}
 {
   "success": false,
   "error": {
@@ -14275,7 +14112,7 @@ Get a list of published transactional emails.
 
 #### Example
 
-```ruby  theme={"dark"}
+```ruby theme={"dark"}
 response = LoopsSdk::Transactional.list
 
 response = LoopsSdk::Transactional.list(perPage: 15)
@@ -14283,7 +14120,7 @@ response = LoopsSdk::Transactional.list(perPage: 15)
 
 #### Response
 
-```json  theme={"dark"}
+```json theme={"dark"}
 {
   "pagination": {
     "totalResults": 23,
@@ -14361,7 +14198,7 @@ During the sign up flow, you are asked to specify your desired sending domain. Y
 
 We [recommend using a subdomain for this](/deliverability/sending-from-subdomain), e.g. `mail.yourcompany.com`, rather than sending from your root domain `yourcompany.com`.
 
-<img src="https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/signup-domain.png?fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=488ba76f344c60b0c9b5dd6bd7c21ff3" alt="Adding a domain during sign up" data-og-width="2280" width="2280" data-og-height="1967" height="1967" data-path="images/signup-domain.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/signup-domain.png?w=280&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=ec2a74c5ff0f86afeda25d375ab5c26d 280w, https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/signup-domain.png?w=560&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=51fd95cde921614cbe67fed194f36560 560w, https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/signup-domain.png?w=840&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=371346266dff06d4663f932c7467036b 840w, https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/signup-domain.png?w=1100&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=ca82607d060c86ca0f15a121c8fa64bb 1100w, https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/signup-domain.png?w=1650&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=f17618833a8261e2d1dd8dc0d65dc221 1650w, https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/signup-domain.png?w=2500&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=4e49608a5096314ece1bbf4de301b588 2500w" />
+<img alt="Adding a domain during sign up" />
 
 If you have already signed up and want to edit your sending domain, you can do so from **Settings -> Domain**.
 
@@ -14374,7 +14211,7 @@ If you have already signed up and want to edit your sending domain, you can do s
 
 From the **Settings -> Domain** page, click **View records** (or [click this link](https://app.loops.so/sending-domain) to go directly).
 
-<img src="https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/domain-records.png?fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=269363c1164a7eea0dc5b7dcd8bc23e2" alt="" data-og-width="2280" width="2280" data-og-height="876" height="876" data-path="images/domain-records.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/domain-records.png?w=280&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=58eb22e5d8cd7677b4b2d0170ade0b91 280w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/domain-records.png?w=560&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=7b834c498e1adb519bdc0a9aefd30ba9 560w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/domain-records.png?w=840&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=e7d21d43f6dd8f0ba425536cc977e462 840w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/domain-records.png?w=1100&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=8395da22c44ea3b8db4a2a7330f4a2c9 1100w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/domain-records.png?w=1650&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=45b16de765aeb19b10daca6900bf7ed5 1650w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/domain-records.png?w=2500&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=08c700ae39f476592f6ba9024191ab22 2500w" />
+<img alt="" />
 
 On this page, you'll see a few things.
 
@@ -14392,7 +14229,7 @@ This is indicated below by “yourcompany.com”. This will have your domain lis
 
 Once you have copied your records to your registrar, click this button to verify they have been set up correctly.
 
-<img src="https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/set-up-records.png?fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=8e6ea3307b22861a150399f7b99c95e3" alt="" data-og-width="2280" width="2280" data-og-height="2630" height="2630" data-path="images/set-up-records.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/set-up-records.png?w=280&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=be2f8fc7aafc84731138097965f3ecd1 280w, https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/set-up-records.png?w=560&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=872cdb55a8dbeb9571f1a81179719539 560w, https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/set-up-records.png?w=840&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=c45acf4fff2aaaccb7a9fcb6ca6c3e15 840w, https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/set-up-records.png?w=1100&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=375547f4561f366b95099c01eb14551c 1100w, https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/set-up-records.png?w=1650&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=798db9a9094a02926b68e4bbd6de8a78 1650w, https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/set-up-records.png?w=2500&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=9587b503245626056828eaf9befc62a0 2500w" />
+<img alt="" />
 
 ## Step 3: Add your domain records
 
@@ -14417,7 +14254,7 @@ You want to use the **Type** (indicated as TXT, CNAME and MX) in setting up your
 
     Be sure to set the proxy to “DNS Only” for the CNAME records:
 
-        <img src="https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/cloudflare.png?fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=fdb8807679ab016c001fa0e7ba3df89e" alt="" data-og-width="480" width="480" data-og-height="226" height="226" data-path="images/cloudflare.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/cloudflare.png?w=280&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=f71643e0d4f176c9c263464a35dd4f19 280w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/cloudflare.png?w=560&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=d6d53ce5eb1dd296a9936273004bc409 560w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/cloudflare.png?w=840&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=21e37599fae71f362985000fe1b1a301 840w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/cloudflare.png?w=1100&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=d4689ecdc46a6096f69ecb81dcc27fd4 1100w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/cloudflare.png?w=1650&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=ce7311d2341bd89de4423380eb92dea2 1650w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/cloudflare.png?w=2500&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=d57bdf58d22f921a8d856b7e1f9b687e 2500w" />
+    <img alt="" />
   </Accordion>
 
   <Accordion title="Dreamhost">
@@ -14432,9 +14269,9 @@ You want to use the **Type** (indicated as TXT, CNAME and MX) in setting up your
     Google Domains (and potentially other providers) combine the mail server and
     priority inputs into a single line. So if you receive an error like this when
     setting up the domain, make sure to instead type out the input like this: `10
-                feedback-smtp.us-east-1.amazonses.com`
+                    feedback-smtp.us-east-1.amazonses.com`
 
-        <img src="https://mintcdn.com/loops/OG31ikb--92jQDlq/images/google-domains.png?fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=4c026c03bb8213d98399ed9fef9cc098" alt="" data-og-width="1440" width="1440" data-og-height="207" height="207" data-path="images/google-domains.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/OG31ikb--92jQDlq/images/google-domains.png?w=280&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=7103684505d4a140c787b2a5cd06a18b 280w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/google-domains.png?w=560&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=8650abcf15881535281400cc12b431ae 560w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/google-domains.png?w=840&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=f4767f4ba664e892a45c58c120c9dc32 840w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/google-domains.png?w=1100&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=5d782ce442ccc9ceb1bda8117fb6e153 1100w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/google-domains.png?w=1650&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=0f1c425ef717bbadd5e9b18dc93d5523 1650w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/google-domains.png?w=2500&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=fbe6c4af7b7dd81043c6bbb4a4070d1c 2500w" />
+    <img alt="" />
 
     Google domains will also include quotes “ “ around some record names. This is
     expected and will not impact anything.
@@ -14448,11 +14285,11 @@ You want to use the **Type** (indicated as TXT, CNAME and MX) in setting up your
 
     Then you can add Loops' MX records by clicking **Add new record** in the "Mail Settings" section and pasting in the values provided in Loops. Click the `✓` icon to save each record.
 
-        <img src="https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/namecheap-1.png?fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=eeff1ebe96df42d3b1386182f01d831a" alt="" data-og-width="1440" width="1440" data-og-height="457" height="457" data-path="images/namecheap-1.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/namecheap-1.png?w=280&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=9a5cdb351c9a3450b7fb2231b93aad81 280w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/namecheap-1.png?w=560&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=2185ffb63af5699ad9361c5b8ec8d17e 560w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/namecheap-1.png?w=840&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=64097f30a55cb969715ce64a91b2c4a5 840w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/namecheap-1.png?w=1100&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=4c056c259ae37d0443acab3645799337 1100w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/namecheap-1.png?w=1650&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=0985a9b93027af2db8f0a6cf362483c0 1650w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/namecheap-1.png?w=2500&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=651279fd135081cb6edf584e75705fc4 2500w" />
+    <img alt="" />
 
     Add the TXT and CNAME records by clicking **Add new record** in the "Host Records" section.
 
-        <img src="https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/namecheap-2.png?fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=225bf3773e28b2a1165afaa095bfbd4f" alt="" data-og-width="860" width="860" data-og-height="381" height="381" data-path="images/namecheap-2.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/namecheap-2.png?w=280&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=87715c9c078fa62ff3f3dd4101953d3b 280w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/namecheap-2.png?w=560&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=f8daa8a2c45add070eb5630280d8ca14 560w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/namecheap-2.png?w=840&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=f67291e77d8bb01b4457e285373a61c4 840w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/namecheap-2.png?w=1100&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=cf4d3f3fc762888d0834137c8243d156 1100w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/namecheap-2.png?w=1650&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=6ffb063011bd4fe6fd5624b8f22159ac 1650w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/namecheap-2.png?w=2500&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=f546ee50685a12d588a01ae1a993c1d5 2500w" />
+    <img alt="" />
   </Accordion>
 
   <Accordion title="Route 53">
@@ -14494,7 +14331,7 @@ If the domain is set up correctly, you should see a page like the one below. If 
 
 Notice the "Records present" in green next to each record section.
 
-<img src="https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/verified.png?fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=50400ef754d6398f725ccbbcfecdec3c" alt="" data-og-width="2280" width="2280" data-og-height="2475" height="2475" data-path="images/verified.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/verified.png?w=280&fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=a32bef575528c365a08441405bf40441 280w, https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/verified.png?w=560&fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=c92a51db6015047e0020acb44762117e 560w, https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/verified.png?w=840&fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=b204efdc894ae929dfd3ae8c18cc0584 840w, https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/verified.png?w=1100&fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=880774ed221780820237a45078cd2805 1100w, https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/verified.png?w=1650&fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=69d0812d40a255614b57b072e9c47950 1650w, https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/verified.png?w=2500&fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=80efa3690c3a6724c213f93223dacb00 2500w" />
+<img alt="" />
 
 ## Domain already in use
 
@@ -14549,7 +14386,7 @@ First, choose which type of email you want to send: a campaign, a loop or a tran
 
 To send your first email, simply choose a template or start an email from scratch.
 
-<img src="https://mintcdn.com/loops/OG31ikb--92jQDlq/images/getting-started.png?fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=3ca8868a9bddc666b8293dc9ed17977f" alt="" data-og-width="2280" width="2280" data-og-height="1284" height="1284" data-path="images/getting-started.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/OG31ikb--92jQDlq/images/getting-started.png?w=280&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=5a506352291ae9d058114929ca283502 280w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/getting-started.png?w=560&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=f2b5821b771981420f36232316f9cc18 560w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/getting-started.png?w=840&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=4a949d33a3098407f8344113d1ca5490 840w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/getting-started.png?w=1100&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=2adb957e405ce648e593a0414190c58f 1100w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/getting-started.png?w=1650&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=f2cd45877711b775b264c09ad18f9be2 1650w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/getting-started.png?w=2500&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=cde9e90bc02db67c684e5204272261d5 2500w" />
+<img alt="" />
 
 ## Sending settings
 
@@ -14557,11 +14394,11 @@ Along with the email subject, you can determine some of the sending settings, li
 
 By clicking `>` you will reveal a [settings panel](/creating-emails/sending-settings), where you can specify the From email address (which is always tied to your sending domain), Reply to email and the Preview text (typically shown in email clients just beneath the Subject). For loops and transactional emails you can also specify a [CC and BCC address](/creating-emails/sending-settings#cc-and-bcc).
 
-<img src="https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/more-button.png?fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=92dabc26cb1afd834bcf0e5033310865" alt="Email sending settings" data-og-width="2280" width="2280" data-og-height="795" height="795" data-path="images/more-button.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/more-button.png?w=280&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=80882dcf7b0f26e5da4f0b6d9682412d 280w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/more-button.png?w=560&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=4711e285743e997f2c6d786dc04d3a08 560w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/more-button.png?w=840&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=8d1ac591b346ed4f2600144d3ec31e02 840w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/more-button.png?w=1100&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=0462910b30873af3f58dd618c708eaee 1100w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/more-button.png?w=1650&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=fc77d4f2c30e0e5e9e000cebc4d1a6bb 1650w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/more-button.png?w=2500&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=3e06c8905876e067e18b171623f46e69 2500w" />
+<img alt="Email sending settings" />
 
 You can include dynamic variables in these fields, too, making them personalized for each recipient of your campaigns, loops and transactional emails. Just click the contact property, event property or data variable icon next to each field.
 
-<img src="https://mintcdn.com/loops/Ghb_kmuDWgpv_ZFW/images/sending-setting-dynamic.png?fit=max&auto=format&n=Ghb_kmuDWgpv_ZFW&q=85&s=37b70af55b0d61afc08c872745d1b9e2" alt="Adding dynamic data to the sending settings" data-og-width="2280" width="2280" data-og-height="782" height="782" data-path="images/sending-setting-dynamic.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/Ghb_kmuDWgpv_ZFW/images/sending-setting-dynamic.png?w=280&fit=max&auto=format&n=Ghb_kmuDWgpv_ZFW&q=85&s=6088b36fcf1e713c869e055cf147b33a 280w, https://mintcdn.com/loops/Ghb_kmuDWgpv_ZFW/images/sending-setting-dynamic.png?w=560&fit=max&auto=format&n=Ghb_kmuDWgpv_ZFW&q=85&s=db4539b239ee71d4a106fc64580b4374 560w, https://mintcdn.com/loops/Ghb_kmuDWgpv_ZFW/images/sending-setting-dynamic.png?w=840&fit=max&auto=format&n=Ghb_kmuDWgpv_ZFW&q=85&s=ab4f65f5e9c0533896fc23c99cf74af3 840w, https://mintcdn.com/loops/Ghb_kmuDWgpv_ZFW/images/sending-setting-dynamic.png?w=1100&fit=max&auto=format&n=Ghb_kmuDWgpv_ZFW&q=85&s=4ea5e673494eec2d5f88062da328bdfc 1100w, https://mintcdn.com/loops/Ghb_kmuDWgpv_ZFW/images/sending-setting-dynamic.png?w=1650&fit=max&auto=format&n=Ghb_kmuDWgpv_ZFW&q=85&s=5fa462779d862577d2cc532b8bc1ed90 1650w, https://mintcdn.com/loops/Ghb_kmuDWgpv_ZFW/images/sending-setting-dynamic.png?w=2500&fit=max&auto=format&n=Ghb_kmuDWgpv_ZFW&q=85&s=60fd0559b6f494ad8450565b5ba84459 2500w" />
+<img alt="Adding dynamic data to the sending settings" />
 
 [Read more about sending settings](/creating-emails/sending-settings)
 
@@ -14571,7 +14408,7 @@ You may want to add contact data into your emails, for example, a first name or 
 
 [Learn more about personalizing emails](/creating-emails/personalizing-emails)
 
-<img src="https://mintcdn.com/loops/EgyPhKkeXp9wCnWY/images/basic-merge.png?fit=max&auto=format&n=EgyPhKkeXp9wCnWY&q=85&s=50f73381c384e4ff6ed919d81630cbe9" alt="" data-og-width="2280" width="2280" data-og-height="1035" height="1035" data-path="images/basic-merge.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/EgyPhKkeXp9wCnWY/images/basic-merge.png?w=280&fit=max&auto=format&n=EgyPhKkeXp9wCnWY&q=85&s=18814146da18de5f13e391fa12a20c0e 280w, https://mintcdn.com/loops/EgyPhKkeXp9wCnWY/images/basic-merge.png?w=560&fit=max&auto=format&n=EgyPhKkeXp9wCnWY&q=85&s=11778fb9f17dcc74d2d8cc3862188dd0 560w, https://mintcdn.com/loops/EgyPhKkeXp9wCnWY/images/basic-merge.png?w=840&fit=max&auto=format&n=EgyPhKkeXp9wCnWY&q=85&s=1d9873614099f8e8a8bf03a6737d6784 840w, https://mintcdn.com/loops/EgyPhKkeXp9wCnWY/images/basic-merge.png?w=1100&fit=max&auto=format&n=EgyPhKkeXp9wCnWY&q=85&s=2edecb2194d57f86bc98b4f265381631 1100w, https://mintcdn.com/loops/EgyPhKkeXp9wCnWY/images/basic-merge.png?w=1650&fit=max&auto=format&n=EgyPhKkeXp9wCnWY&q=85&s=f516cbbf3856e25d5583034ff6b9319c 1650w, https://mintcdn.com/loops/EgyPhKkeXp9wCnWY/images/basic-merge.png?w=2500&fit=max&auto=format&n=EgyPhKkeXp9wCnWY&q=85&s=1e7b6b3fcaf7193246b46cbfe703f4d2 2500w" />
+<img alt="" />
 
 ## Make your message visual
 
@@ -14583,7 +14420,7 @@ You can also easily add links, lists, buttons and dividers to create more engagi
 
 We also offer a styling panel to customize design elements like font size, text color, background color, borders and spacing.
 
-<img src="https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/message-visual.png?fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=e2c7088ffd4d20ac66b5fee7a1756010" alt="" data-og-width="2280" width="2280" data-og-height="1953" height="1953" data-path="images/message-visual.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/message-visual.png?w=280&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=1566d2f25ff94cd77ce02190627153c6 280w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/message-visual.png?w=560&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=b97a0e4251a474a7649518819d87364b 560w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/message-visual.png?w=840&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=a81c6e2c9f6ac29e31329ada927e038a 840w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/message-visual.png?w=1100&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=adb055873f4fd4c0e917faac0c927983 1100w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/message-visual.png?w=1650&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=5e6346334f27792ff4fab4450fe9c3a9 1650w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/message-visual.png?w=2500&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=738b8ddf5342b807bcfddc6fa07e61c7 2500w" />
+<img alt="" />
 
 [Read more about our editor](/creating-emails/editor)
 
@@ -14593,13 +14430,23 @@ Once you are happy with the design of your email, you can preview it in your ema
 
 Click the **Send a preview** icon in the top right corner of the email editor to send a test email to yourself or anyone on your team from the "Send a Preview Email" modal.
 
-<img src="https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/preview-email.png?fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=683bcbbf3359237aa498b1c3175c9b03" alt="" data-og-width="2280" width="2280" data-og-height="1049" height="1049" data-path="images/preview-email.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/preview-email.png?w=280&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=fcdca66daa7b611aa4a5f980d16e3096 280w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/preview-email.png?w=560&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=957f5e6730161cb23653d0d73c377842 560w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/preview-email.png?w=840&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=c8ef7b841cc0a780c031a05c5899682c 840w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/preview-email.png?w=1100&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=f4c7a21467b189d38f512244a7e3e1fb 1100w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/preview-email.png?w=1650&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=708a6e1d69e168a971c2652b9e335f45 1650w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/preview-email.png?w=2500&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=ee1b0470e3caed561a2463c52334b80e 2500w" />
+<img alt="" />
+
+<img alt="" />
+
+The **Add preview tag** toggle will add a "\[Preview]" to the start of the subject line to easily identify them in your inbox. Toggle this off to see how the email will appear in your recipients' inboxes.
+
+### Dynamic content in previews
+
+When sending preview emails, Loops uses the contact properties and any declared fallbacks of the selected contacts in the preview modal. However, any custom values you enter in the **Dynamic content** tab will override the contact's actual properties.
 
 If you have dynamic content in your email, you can add custom content on the **Dynamic content** tab.
 
-<img src="https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/preview-data.png?fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=67effc257a504293b123ff4971eeeb57" alt="" data-og-width="2280" width="2280" data-og-height="1314" height="1314" data-path="images/preview-data.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/preview-data.png?w=280&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=a64d5b6e5bfbc44b598143e3ecb65bd4 280w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/preview-data.png?w=560&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=30defef96a84bf0a5b62548b862ca570 560w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/preview-data.png?w=840&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=a524711f62d05761ddd43574d5e7a418 840w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/preview-data.png?w=1100&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=5ccf0273386c79a4c09ae5fdde84dffb 1100w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/preview-data.png?w=1650&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=d3984476ab1f919d6dd15b4008a3ce77 1650w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/preview-data.png?w=2500&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=f046de69b68bbf77fe162a4fd389723b 2500w" />
+<img alt="" />
 
-You can also test sending emails by using email addresses with `@example.com` and `@test.com` domains. This will not actually send emails but is a great way to test loops, schedule campaigns, or test transactional emails without affecting your sending domain's reputation.
+### Test without sending emails
+
+You can test email sending by using email addresses with `@example.com` and `@test.com` domains. This will not actually send emails but is a great way to test loops, schedule campaigns, or test transactional emails without affecting your sending domain's reputation.
 
 ## Set up your email sending for the first time
 
@@ -14644,7 +14491,7 @@ The Loops way of sending emails over SMTP is a bit different from other services
 
     Then, when it comes to sending emails, instead of the content of an email, you send an API-like request body like this:
 
-    ```json  theme={"dark"}
+    ```json theme={"dark"}
     {
       "transactionalId": "clomzp89u035xl50px7wrl0ri",
       "email": "dan@loops.so",
@@ -14674,8 +14521,8 @@ Learn how to set up SMTP in platforms and developer tools.
   <Card
     title="Auth0"
     icon={
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 256 285"><path fill="#FF4A00" d="M220.412 0h-92.415l28.562 89.006h92.416l-74.77 53.077 28.57 89.511c48.128-35.06 63.854-88.12 46.208-142.588L220.413 0ZM7.018 89.006h92.416L127.997 0H35.589L7.019 89.006c-17.655 54.468-1.92 107.529 46.207 142.588l28.563-89.51-74.77-53.078Zm46.208 142.588 74.77 52.97 74.77-52.97-74.77-53.847-74.77 53.847Z"/></svg>
-  }
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 256 285"><path fill="#FF4A00" d="M220.412 0h-92.415l28.562 89.006h92.416l-74.77 53.077 28.57 89.511c48.128-35.06 63.854-88.12 46.208-142.588L220.413 0ZM7.018 89.006h92.416L127.997 0H35.589L7.019 89.006c-17.655 54.468-1.92 107.529 46.207 142.588l28.563-89.51-74.77-53.078Zm46.208 142.588 74.77 52.97 74.77-52.97-74.77-53.847-74.77 53.847Z"/></svg>
+}
     href="/integrations/auth0"
   >
     Send Auth0 authentication emails with Loops.
@@ -14684,8 +14531,8 @@ Learn how to set up SMTP in platforms and developer tools.
   <Card
     title="Novu"
     icon={
-    <svg xmlns="http://www.w3.org/2000/svg" fill="none" class="h-6" viewBox="0 0 102 32"><path fill="#FF4A00" fill-rule="evenodd" d="M24.64 12.826c0 .86-1.044 1.286-1.646.671L10.676.907A16 16 0 0 1 16 0c3.183 0 6.148.93 8.64 2.531zm4.48-5.986v5.986c0 4.875-5.919 7.289-9.328 3.804L6.545 3.091C2.576 6.003 0 10.701 0 16c0 3.407 1.065 6.565 2.88 9.16v-5.954c0-4.875 5.919-7.289 9.328-3.804l13.229 13.52A15.976 15.976 0 0 0 32 16c0-3.407-1.065-6.565-2.88-9.16M9.006 18.535 21.301 31.1c-1.659.583-3.443.9-5.301.9-3.182 0-6.148-.93-8.64-2.531V19.206c0-.86 1.045-1.286 1.646-.671" clip-rule="evenodd"/><path fill="#FF4A00" fill-rule="evenodd" d="M24.64 12.826c0 .86-1.044 1.286-1.646.671L10.676.907A16 16 0 0 1 16 0c3.183 0 6.148.93 8.64 2.531zm4.48-5.986v5.986c0 4.875-5.919 7.289-9.328 3.804L6.545 3.091C2.576 6.003 0 10.701 0 16c0 3.407 1.065 6.565 2.88 9.16v-5.954c0-4.875 5.919-7.289 9.328-3.804l13.229 13.52A15.976 15.976 0 0 0 32 16c0-3.407-1.065-6.565-2.88-9.16M9.006 18.535 21.301 31.1c-1.659.583-3.443.9-5.301.9-3.182 0-6.148-.93-8.64-2.531V19.206c0-.86 1.045-1.286 1.646-.671" clip-rule="evenodd"/><path fill="#FF4A00" fill-rule="evenodd" d="M24.64 12.826c0 .86-1.044 1.286-1.646.671L10.676.907A16 16 0 0 1 16 0c3.183 0 6.148.93 8.64 2.531zm4.48-5.986v5.986c0 4.875-5.919 7.289-9.328 3.804L6.545 3.091C2.576 6.003 0 10.701 0 16c0 3.407 1.065 6.565 2.88 9.16v-5.954c0-4.875 5.919-7.289 9.328-3.804l13.229 13.52A15.976 15.976 0 0 0 32 16c0-3.407-1.065-6.565-2.88-9.16M9.006 18.535 21.301 31.1c-1.659.583-3.443.9-5.301.9-3.182 0-6.148-.93-8.64-2.531V19.206c0-.86 1.045-1.286 1.646-.671" clip-rule="evenodd"/></svg>
-  }
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" class="h-6" viewBox="0 0 102 32"><path fill="#FF4A00" fill-rule="evenodd" d="M24.64 12.826c0 .86-1.044 1.286-1.646.671L10.676.907A16 16 0 0 1 16 0c3.183 0 6.148.93 8.64 2.531zm4.48-5.986v5.986c0 4.875-5.919 7.289-9.328 3.804L6.545 3.091C2.576 6.003 0 10.701 0 16c0 3.407 1.065 6.565 2.88 9.16v-5.954c0-4.875 5.919-7.289 9.328-3.804l13.229 13.52A15.976 15.976 0 0 0 32 16c0-3.407-1.065-6.565-2.88-9.16M9.006 18.535 21.301 31.1c-1.659.583-3.443.9-5.301.9-3.182 0-6.148-.93-8.64-2.531V19.206c0-.86 1.045-1.286 1.646-.671" clip-rule="evenodd"/><path fill="#FF4A00" fill-rule="evenodd" d="M24.64 12.826c0 .86-1.044 1.286-1.646.671L10.676.907A16 16 0 0 1 16 0c3.183 0 6.148.93 8.64 2.531zm4.48-5.986v5.986c0 4.875-5.919 7.289-9.328 3.804L6.545 3.091C2.576 6.003 0 10.701 0 16c0 3.407 1.065 6.565 2.88 9.16v-5.954c0-4.875 5.919-7.289 9.328-3.804l13.229 13.52A15.976 15.976 0 0 0 32 16c0-3.407-1.065-6.565-2.88-9.16M9.006 18.535 21.301 31.1c-1.659.583-3.443.9-5.301.9-3.182 0-6.148-.93-8.64-2.531V19.206c0-.86 1.045-1.286 1.646-.671" clip-rule="evenodd"/><path fill="#FF4A00" fill-rule="evenodd" d="M24.64 12.826c0 .86-1.044 1.286-1.646.671L10.676.907A16 16 0 0 1 16 0c3.183 0 6.148.93 8.64 2.531zm4.48-5.986v5.986c0 4.875-5.919 7.289-9.328 3.804L6.545 3.091C2.576 6.003 0 10.701 0 16c0 3.407 1.065 6.565 2.88 9.16v-5.954c0-4.875 5.919-7.289 9.328-3.804l13.229 13.52A15.976 15.976 0 0 0 32 16c0-3.407-1.065-6.565-2.88-9.16M9.006 18.535 21.301 31.1c-1.659.583-3.443.9-5.301.9-3.182 0-6.148-.93-8.64-2.531V19.206c0-.86 1.045-1.286 1.646-.671" clip-rule="evenodd"/></svg>
+}
     href="/integrations/novu"
   >
     Send Novu notification emails with Loops.
@@ -14694,52 +14541,52 @@ Learn how to set up SMTP in platforms and developer tools.
   <Card
     title="Supabase"
     icon={
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      fill="none"
-      viewBox="0 0 109 113"
-    >
-      <path
-        fill="url(#a)"
-        d="M63.708 110.284c-2.86 3.601-8.658 1.628-8.727-2.97l-1.007-67.251h45.22c8.19 0 12.758 9.46 7.665 15.874l-43.151 54.347Z"
-      />
-      <path
-        fill="url(#b)"
-        fillOpacity=".2"
-        d="M63.708 110.284c-2.86 3.601-8.658 1.628-8.727-2.97l-1.007-67.251h45.22c8.19 0 12.758 9.46 7.665 15.874l-43.151 54.347Z"
-      />
-      <path
-        fill="#ffbca6"
-        d="M45.317 2.071c2.86-3.601 8.657-1.628 8.726 2.97l.442 67.251H9.83c-8.19 0-12.759-9.46-7.665-15.875L45.317 2.072Z"
-      />
-      <defs>
-        <linearGradient
-          id="a"
-          x1="53.974"
-          x2="94.163"
-          y1="54.974"
-          y2="71.829"
-          gradientUnits="userSpaceOnUse"
-        >
-          <stop stopColor="#FF4A00" />
-          <stop offset="1" stopColor="#ffbca6" />
-        </linearGradient>
-        <linearGradient
-          id="b"
-          x1="36.156"
-          x2="54.484"
-          y1="30.578"
-          y2="65.081"
-          gradientUnits="userSpaceOnUse"
-        >
-          <stop />
-          <stop offset="1" stopOpacity="0" />
-        </linearGradient>
-      </defs>
-    </svg>
-  }
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="24"
+    height="24"
+    fill="none"
+    viewBox="0 0 109 113"
+  >
+    <path
+      fill="url(#a)"
+      d="M63.708 110.284c-2.86 3.601-8.658 1.628-8.727-2.97l-1.007-67.251h45.22c8.19 0 12.758 9.46 7.665 15.874l-43.151 54.347Z"
+    />
+    <path
+      fill="url(#b)"
+      fillOpacity=".2"
+      d="M63.708 110.284c-2.86 3.601-8.658 1.628-8.727-2.97l-1.007-67.251h45.22c8.19 0 12.758 9.46 7.665 15.874l-43.151 54.347Z"
+    />
+    <path
+      fill="#ffbca6"
+      d="M45.317 2.071c2.86-3.601 8.657-1.628 8.726 2.97l.442 67.251H9.83c-8.19 0-12.759-9.46-7.665-15.875L45.317 2.072Z"
+    />
+    <defs>
+      <linearGradient
+        id="a"
+        x1="53.974"
+        x2="94.163"
+        y1="54.974"
+        y2="71.829"
+        gradientUnits="userSpaceOnUse"
+      >
+        <stop stopColor="#FF4A00" />
+        <stop offset="1" stopColor="#ffbca6" />
+      </linearGradient>
+      <linearGradient
+        id="b"
+        x1="36.156"
+        x2="54.484"
+        y1="30.578"
+        y2="65.081"
+        gradientUnits="userSpaceOnUse"
+      >
+        <stop />
+        <stop offset="1" stopOpacity="0" />
+      </linearGradient>
+    </defs>
+  </svg>
+}
     href="/smtp/supabase"
   >
     Send Supabase authentication emails with Loops.
@@ -14792,7 +14639,7 @@ Add these settings to your project (e.g. in an `.env` file).
   Every email sent from Django over Loops SMTP requires a transactional email to be set up in your Loops account. Note the `transactionalId` value in the email payload.
 </Warning>
 
-```python  theme={"dark"}
+```python theme={"dark"}
 from django.core.mail import send_mail, get_connection
 import json
 import os
@@ -14856,7 +14703,7 @@ Here's how you can set up transactional emails with Loops SMTP in Laravel:
 
     Add [data variables](/transactional#add-data-variables) to your emails for any dynamic content you want to send from your Laravel application.
 
-        <img src="https://mintcdn.com/loops/SqldyWKxvGS7UNL4/images/terminal.png?fit=max&auto=format&n=SqldyWKxvGS7UNL4&q=85&s=d124653cd87536765f40e4de3102c15a" alt="Add a data variable" data-og-width="2280" width="2280" data-og-height="1079" height="1079" data-path="images/terminal.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/SqldyWKxvGS7UNL4/images/terminal.png?w=280&fit=max&auto=format&n=SqldyWKxvGS7UNL4&q=85&s=1c1834773261e5a0c8be7a0e1b4191a5 280w, https://mintcdn.com/loops/SqldyWKxvGS7UNL4/images/terminal.png?w=560&fit=max&auto=format&n=SqldyWKxvGS7UNL4&q=85&s=5e9e0bae89a5aded6a9d7448926ff5a8 560w, https://mintcdn.com/loops/SqldyWKxvGS7UNL4/images/terminal.png?w=840&fit=max&auto=format&n=SqldyWKxvGS7UNL4&q=85&s=40030ce29b5df99adb0c950877a84baa 840w, https://mintcdn.com/loops/SqldyWKxvGS7UNL4/images/terminal.png?w=1100&fit=max&auto=format&n=SqldyWKxvGS7UNL4&q=85&s=7712e06a02cfeedd04e43aef5024c6eb 1100w, https://mintcdn.com/loops/SqldyWKxvGS7UNL4/images/terminal.png?w=1650&fit=max&auto=format&n=SqldyWKxvGS7UNL4&q=85&s=cbcbd72414a41dc5717a61b867789fbe 1650w, https://mintcdn.com/loops/SqldyWKxvGS7UNL4/images/terminal.png?w=2500&fit=max&auto=format&n=SqldyWKxvGS7UNL4&q=85&s=3a8450a5d3357e016e9b562574bd68fe 2500w" />
+    <img alt="Add a data variable" />
   </Step>
 
   <Step title="Add SMTP variables">
@@ -14881,7 +14728,7 @@ Here's how you can set up transactional emails with Loops SMTP in Laravel:
 
     If you haven't already, create a mailable class, for example `AuthEmail`:
 
-    ```bash  theme={"dark"}
+    ```bash theme={"dark"}
     php artisan make:mail AuthEmail
     ```
 
@@ -14939,7 +14786,7 @@ Here's how you can set up transactional emails with Loops SMTP in Laravel:
 
     Now you can send transactional emails.
 
-    ```php  theme={"dark"}
+    ```php theme={"dark"}
     use \App\Mail\AuthEmail;
 
     Mail::to('anything.here@mail.com')->send(new AuthEmail($user));
@@ -14951,7 +14798,7 @@ Here's how you can set up transactional emails with Loops SMTP in Laravel:
   </Step>
 </Steps>
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Send transactional email" icon="rectangle-terminal" href="/api-reference/send-transactional-email">
     Read how to send transactional email with our API.
   </Card>
@@ -14989,7 +14836,7 @@ Here's how you can set up transactional emails with Loops SMTP in Rails:
 
     Add [data variables](/transactional#add-data-variables) to your emails for any dynamic content you want to send from your Rails application.
 
-        <img src="https://mintcdn.com/loops/SqldyWKxvGS7UNL4/images/terminal.png?fit=max&auto=format&n=SqldyWKxvGS7UNL4&q=85&s=d124653cd87536765f40e4de3102c15a" alt="Add a data variable" data-og-width="2280" width="2280" data-og-height="1079" height="1079" data-path="images/terminal.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/SqldyWKxvGS7UNL4/images/terminal.png?w=280&fit=max&auto=format&n=SqldyWKxvGS7UNL4&q=85&s=1c1834773261e5a0c8be7a0e1b4191a5 280w, https://mintcdn.com/loops/SqldyWKxvGS7UNL4/images/terminal.png?w=560&fit=max&auto=format&n=SqldyWKxvGS7UNL4&q=85&s=5e9e0bae89a5aded6a9d7448926ff5a8 560w, https://mintcdn.com/loops/SqldyWKxvGS7UNL4/images/terminal.png?w=840&fit=max&auto=format&n=SqldyWKxvGS7UNL4&q=85&s=40030ce29b5df99adb0c950877a84baa 840w, https://mintcdn.com/loops/SqldyWKxvGS7UNL4/images/terminal.png?w=1100&fit=max&auto=format&n=SqldyWKxvGS7UNL4&q=85&s=7712e06a02cfeedd04e43aef5024c6eb 1100w, https://mintcdn.com/loops/SqldyWKxvGS7UNL4/images/terminal.png?w=1650&fit=max&auto=format&n=SqldyWKxvGS7UNL4&q=85&s=cbcbd72414a41dc5717a61b867789fbe 1650w, https://mintcdn.com/loops/SqldyWKxvGS7UNL4/images/terminal.png?w=2500&fit=max&auto=format&n=SqldyWKxvGS7UNL4&q=85&s=3a8450a5d3357e016e9b562574bd68fe 2500w" />
+    <img alt="Add a data variable" />
   </Step>
 
   <Step title="Configure Action Mailer">
@@ -15052,7 +14899,7 @@ Here's how you can set up transactional emails with Loops SMTP in Rails:
   </Step>
 </Steps>
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Send transactional email" icon="rectangle-terminal" href="/api-reference/send-transactional-email">
     Read how to send transactional email with our API.
   </Card>
@@ -15096,7 +14943,7 @@ You can set up Loops SMTP in Supabase with just a few clicks.
 
 Go to [Settings -> Supabase](https://app.loops.so/settings?page=supabase) and click **Connect Supabase** in the **SMTP** section.
 
-<img src="https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/supabase-smtp-setup.png?fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=484de2928fcc3c690a519f95ddfc3f71" alt="Supabase SMTP settings" data-og-width="2280" width="2280" data-og-height="1560" height="1560" data-path="images/supabase-smtp-setup.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/supabase-smtp-setup.png?w=280&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=021a2d818300e31abb8546ec07813956 280w, https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/supabase-smtp-setup.png?w=560&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=43e7adbec91910d666cff33712886021 560w, https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/supabase-smtp-setup.png?w=840&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=ad95ff5be5fdbfdb7c95e921c9f8f161 840w, https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/supabase-smtp-setup.png?w=1100&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=6ac6d2d26fc8e02c593c2a244aed87bd 1100w, https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/supabase-smtp-setup.png?w=1650&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=4c4ef1741b7768fb8d4c6f5a8d1d6b9c 1650w, https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/supabase-smtp-setup.png?w=2500&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=dc26008e6ad25c38cc43c1963d7ccba5 2500w" />
+<img alt="Supabase SMTP settings" />
 
 When prompted by Supabase, select your organization and authorize access.
 
@@ -15127,13 +14974,13 @@ Note that if a Supabase user has not previously confirmed their email, they will
 
 To create new transactional emails, go to the [Transactional page](https://app.loops.so/transactional) in Loops and click **New**. Alternatively, you can select one of our many ready-made templates from the [Templates page](https://app.loops.so/templates).
 
-<img src="https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/supabase-template.png?fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=4caabccc27e821cc8c63cf978b8492ef" alt="Supabase template in the editor" data-og-width="2280" width="2280" data-og-height="1328" height="1328" data-path="images/supabase-template.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/supabase-template.png?w=280&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=4ed669d8b2844da4ce8f74dabedfe263 280w, https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/supabase-template.png?w=560&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=757933aa11d893b752e9450815fbe67a 560w, https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/supabase-template.png?w=840&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=22a73ef458afb775daa1ab648ad01185 840w, https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/supabase-template.png?w=1100&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=d25ba1e700cd057086daa7c61162897c 1100w, https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/supabase-template.png?w=1650&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=6d2b0327221b3ce252d501cc49152cf8 1650w, https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/supabase-template.png?w=2500&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=b878d4554046be8a153f2958a8e2506c 2500w" />
+<img alt="Supabase template in the editor" />
 
 You can then use [the Loops editor](/creating-emails/editor) to create nicely-designed templates or make them as simple as you like.
 
 You can even create [themes](/creating-emails/styles#themes) to apply consistent design and branding to all of your emails.
 
-<img src="https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/supabase-editor.png?fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=bc38681cce126cb5ee92c87af66a0205" alt="Saved styles" data-og-width="2280" width="2280" data-og-height="1686" height="1686" data-path="images/supabase-editor.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/supabase-editor.png?w=280&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=ccaf3ba2e4b11fe72d48e089db34e080 280w, https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/supabase-editor.png?w=560&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=8df1a3e4a0670bcd79418bc9d4565d09 560w, https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/supabase-editor.png?w=840&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=d0dd6e299cecde09cf5d863d22c19fc9 840w, https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/supabase-editor.png?w=1100&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=f08e2499dc0dbdbd3d6f3d0ddb913256 1100w, https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/supabase-editor.png?w=1650&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=fd152472bfcfddea310f6113bb209133 1650w, https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/supabase-editor.png?w=2500&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=6fabbbf99e65e7543b42e7010d63934c 2500w" />
+<img alt="Saved styles" />
 
 For each Loops template you create, you need to [add data variables](/creating-emails/personalizing-emails#add-dynamic-content-to-emails), which allow data from Supabase to be inserted into each email.
 
@@ -15141,11 +14988,11 @@ For example, you could add a `confirmationUrl` data variable that you can map to
 
 You can also build URLs by including values like `{{ .SiteUrl }}` or add in a confirmation code using `{{ .Token }}`.
 
-<img src="https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/supabase-values.png?fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=6139222e9523d91d3a029bb47c678199" alt="Supabase values" data-og-width="2280" width="2280" data-og-height="1118" height="1118" data-path="images/supabase-values.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/supabase-values.png?w=280&fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=410e541c37532ef1847bb971d9d47bf7 280w, https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/supabase-values.png?w=560&fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=4834d7b4a0e2fd206ca2e72848f1f1cf 560w, https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/supabase-values.png?w=840&fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=d96d75cd5ed2b63c03f5767f5ea94986 840w, https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/supabase-values.png?w=1100&fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=e05a280b7f072c22dbc628220c929bbe 1100w, https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/supabase-values.png?w=1650&fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=34bfb6f9c4c7842bb4772af8bd822c91 1650w, https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/supabase-values.png?w=2500&fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=41e665fbb9b2702dab5a9febd9363daa 2500w" />
+<img alt="Supabase values" />
 
 Once you're done creating the email and adding data variables, click **Review** in the left panel. Here you can see the API payload for your template. You will need this for the next step.
 
-<img src="https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/supabase-payload.png?fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=2692928288edb62548d6fb2968fd1dfc" alt="Email payload" data-og-width="2280" width="2280" data-og-height="1722" height="1722" data-path="images/supabase-payload.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/supabase-payload.png?w=280&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=8f9b610423ddd100a4fa5ea2c4213105 280w, https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/supabase-payload.png?w=560&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=047db3f1ebecbf7658ad9aeadab2bd41 560w, https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/supabase-payload.png?w=840&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=bf8a8fd43641495e775068b7bec2f539 840w, https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/supabase-payload.png?w=1100&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=ca14ac2b3668bc3e728fb1852e1cd51f 1100w, https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/supabase-payload.png?w=1650&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=e2d1ca9aa9d2251bf1402c2663853675 1650w, https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/supabase-payload.png?w=2500&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=430b7b698f1dd9e2b310ff2dc98802bc 2500w" />
+<img alt="Email payload" />
 
 Make sure to also publish your email! It won't send unless it's published.
 
@@ -15175,7 +15022,7 @@ Once pasted into the Message body, you need to add the Supabase message variable
 
 Here is an example **Confirm signup** email template. This payload was copied from the template's Publish page in Loops, then the `{{ .Email }}` and `{{ .ConfirmationURL }}` Supabase variables were added.
 
-```json  theme={"dark"}
+```json theme={"dark"}
 {
   "transactionalId": "clvmzp39u035tl50pw7wrl0ri",
   "email": "{{ .Email }}",
@@ -15187,7 +15034,7 @@ Here is an example **Confirm signup** email template. This payload was copied fr
 
 If you want to add each Supabase user to your Loops audience so you can send marketing email to them, add the `addToAudience` flag to your template as below. This will create a contact in Loops using the `{{ .Email }}` value.
 
-```json  theme={"dark"}
+```json theme={"dark"}
 {
   "transactionalId": "clvmzp39u035tl50pw7wrl0ri",
   "email": "{{ .Email }}",
@@ -15200,7 +15047,7 @@ If you want to add each Supabase user to your Loops audience so you can send mar
 
 Here's how the template looks in the Supabase editor:
 
-<img src="https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/supabase-email.png?fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=e0171a1e53acc8bb21987903a44e09a7" alt="Supabase editor" data-og-width="2280" width="2280" data-og-height="1766" height="1766" data-path="images/supabase-email.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/supabase-email.png?w=280&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=a8634701978d07d6a667a6c4c7c36ba7 280w, https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/supabase-email.png?w=560&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=d3f20ce2d5b18c9ac700a2e875b35c84 560w, https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/supabase-email.png?w=840&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=ac9919f49e1b49f7d7e72657b0aebe08 840w, https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/supabase-email.png?w=1100&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=dd55e0f13b8db146923e85916bcff95a 1100w, https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/supabase-email.png?w=1650&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=7e308b931fec3e01f734ba58c85e28d7 1650w, https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/supabase-email.png?w=2500&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=3dfb3736b166b051dd564a9a53b1b339 2500w" />
+<img alt="Supabase editor" />
 
 With the integration now all set up, your Supabase authentication emails will be sent via Loops, giving you more visibility on your email sends and the great addition of being able to build beautiful and easy-to-update emails in the Loops editor.
 
@@ -15225,7 +15072,7 @@ Supabase offers a detailed view of authentication logs where you can look for is
 
 Go to [Logs -> Auth](https://supabase.com/dashboard/project/_/logs/auth-logs). To narrow down your search you can look for logs like "magiclink" or "invite".
 
-<img src="https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/supabase-debug.png?fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=2875f975779ec05129d6221e92805c59" alt="Supabase logs" data-og-width="2280" width="2280" data-og-height="1709" height="1709" data-path="images/supabase-debug.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/supabase-debug.png?w=280&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=cca6f7dcd607134db42ca97ccac356f8 280w, https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/supabase-debug.png?w=560&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=598825d05c6c498056862ac945750029 560w, https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/supabase-debug.png?w=840&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=8d4cc91d53bd2a5998f84dee574f72da 840w, https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/supabase-debug.png?w=1100&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=85201e1b4947d35df210f1d1d292724a 1100w, https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/supabase-debug.png?w=1650&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=00ba3fec57f1200c998d96a19b9a0045 1650w, https://mintcdn.com/loops/Z7viZoAUCPxaqCl2/images/supabase-debug.png?w=2500&fit=max&auto=format&n=Z7viZoAUCPxaqCl2&q=85&s=e45d058dd9d612bd3ffe026de8ba7f84 2500w" />
+<img alt="Supabase logs" />
 
 ## Important notes
 
@@ -15244,7 +15091,7 @@ Transactional emails are automated, API-triggered emails that are sent to indivi
 
 Examples include **confirmation emails**, **password reset emails**, and **purchase confirmations**.
 
-<CardGroup columns="2">
+<CardGroup>
   <Card title="Loops API - Send transactional email" icon="envelope" href="/api-reference/send-transactional-email">
     Read how to send transactional email with our API.
   </Card>
@@ -15278,7 +15125,7 @@ There are two ways to create emails in Loops: using our editor or import an MJML
 
 You can [create emails in the editor](/creating-emails/editor), letting you easily add formatting, images and buttons.
 
-<img src="https://mintcdn.com/loops/4h4NdelN1SeEp2xg/images/transactional-example.png?fit=max&auto=format&n=4h4NdelN1SeEp2xg&q=85&s=6d4f8855f2bb71dbf528ab8da2c4aacb" alt="" data-og-width="2280" width="2280" data-og-height="1355" height="1355" data-path="images/transactional-example.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/4h4NdelN1SeEp2xg/images/transactional-example.png?w=280&fit=max&auto=format&n=4h4NdelN1SeEp2xg&q=85&s=9e8df0d409a4bf917d37a08295dc8455 280w, https://mintcdn.com/loops/4h4NdelN1SeEp2xg/images/transactional-example.png?w=560&fit=max&auto=format&n=4h4NdelN1SeEp2xg&q=85&s=15b343e6210f4aa163570a8709f68152 560w, https://mintcdn.com/loops/4h4NdelN1SeEp2xg/images/transactional-example.png?w=840&fit=max&auto=format&n=4h4NdelN1SeEp2xg&q=85&s=5bdb62280bb095794d570da750a13c0e 840w, https://mintcdn.com/loops/4h4NdelN1SeEp2xg/images/transactional-example.png?w=1100&fit=max&auto=format&n=4h4NdelN1SeEp2xg&q=85&s=c7a97149078a5e2ac87cbd3c41d270a2 1100w, https://mintcdn.com/loops/4h4NdelN1SeEp2xg/images/transactional-example.png?w=1650&fit=max&auto=format&n=4h4NdelN1SeEp2xg&q=85&s=60cebc6a82938cb12f70af9f60ecbd21 1650w, https://mintcdn.com/loops/4h4NdelN1SeEp2xg/images/transactional-example.png?w=2500&fit=max&auto=format&n=4h4NdelN1SeEp2xg&q=85&s=fcb440735577b734aaf52a2a68f1a9f5 2500w" />
+<img alt="" />
 
 You can add dynamic data into your emails by using data variables (like `name` in the example above). Read on for more information about data variables.
 
@@ -15288,7 +15135,7 @@ You can also [upload your own MJML code](/creating-emails/uploading-custom-email
 
 Like emails created in our editor, you can add data variables to MJML templates. To add a data variable called `passwordResetLink`, you can use it in your MJML like this:
 
-```html  theme={"dark"}
+```html theme={"dark"}
 <mj-text>{DATA_VARIABLE:passwordResetLink}</mj-text>
 ```
 
@@ -15310,11 +15157,11 @@ You can insert data variables into the text of the email in three ways:
 * type variables directly into the editor, like `{planName}`
 * use the `/` slash menu (select "Data variable" from the menu).
 
-<img src="https://mintcdn.com/loops/SqldyWKxvGS7UNL4/images/terminal.png?fit=max&auto=format&n=SqldyWKxvGS7UNL4&q=85&s=d124653cd87536765f40e4de3102c15a" alt="" data-og-width="2280" width="2280" data-og-height="1079" height="1079" data-path="images/terminal.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/SqldyWKxvGS7UNL4/images/terminal.png?w=280&fit=max&auto=format&n=SqldyWKxvGS7UNL4&q=85&s=1c1834773261e5a0c8be7a0e1b4191a5 280w, https://mintcdn.com/loops/SqldyWKxvGS7UNL4/images/terminal.png?w=560&fit=max&auto=format&n=SqldyWKxvGS7UNL4&q=85&s=5e9e0bae89a5aded6a9d7448926ff5a8 560w, https://mintcdn.com/loops/SqldyWKxvGS7UNL4/images/terminal.png?w=840&fit=max&auto=format&n=SqldyWKxvGS7UNL4&q=85&s=40030ce29b5df99adb0c950877a84baa 840w, https://mintcdn.com/loops/SqldyWKxvGS7UNL4/images/terminal.png?w=1100&fit=max&auto=format&n=SqldyWKxvGS7UNL4&q=85&s=7712e06a02cfeedd04e43aef5024c6eb 1100w, https://mintcdn.com/loops/SqldyWKxvGS7UNL4/images/terminal.png?w=1650&fit=max&auto=format&n=SqldyWKxvGS7UNL4&q=85&s=cbcbd72414a41dc5717a61b867789fbe 1650w, https://mintcdn.com/loops/SqldyWKxvGS7UNL4/images/terminal.png?w=2500&fit=max&auto=format&n=SqldyWKxvGS7UNL4&q=85&s=3a8450a5d3357e016e9b562574bd68fe 2500w" />
+<img alt="" />
 
 You can also add data variables as links (on text, images and buttons). To add the `resetUrl` as the button's link, click on the data variable icon (1), click the data variable (2) and then enter your data variable name into the **Variable name** field (3).
 
-<img src="https://mintcdn.com/loops/pXWwePlas8rhYOD8/images/passwordresetlink.png?fit=max&auto=format&n=pXWwePlas8rhYOD8&q=85&s=d16b1fcc5dbad1b0253b46e975c045c4" alt="" data-og-width="2280" width="2280" data-og-height="1049" height="1049" data-path="images/passwordresetlink.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/pXWwePlas8rhYOD8/images/passwordresetlink.png?w=280&fit=max&auto=format&n=pXWwePlas8rhYOD8&q=85&s=6be0ac1dc4fefc6122be98beebec72f7 280w, https://mintcdn.com/loops/pXWwePlas8rhYOD8/images/passwordresetlink.png?w=560&fit=max&auto=format&n=pXWwePlas8rhYOD8&q=85&s=db23368453e456524c620643793f920c 560w, https://mintcdn.com/loops/pXWwePlas8rhYOD8/images/passwordresetlink.png?w=840&fit=max&auto=format&n=pXWwePlas8rhYOD8&q=85&s=9391b1b06bf416f0e1d404b288c7bf51 840w, https://mintcdn.com/loops/pXWwePlas8rhYOD8/images/passwordresetlink.png?w=1100&fit=max&auto=format&n=pXWwePlas8rhYOD8&q=85&s=74385eae46b5a8f23764dcc0979e1184 1100w, https://mintcdn.com/loops/pXWwePlas8rhYOD8/images/passwordresetlink.png?w=1650&fit=max&auto=format&n=pXWwePlas8rhYOD8&q=85&s=1bde5d992c1d97db42a60200ee867338 1650w, https://mintcdn.com/loops/pXWwePlas8rhYOD8/images/passwordresetlink.png?w=2500&fit=max&auto=format&n=pXWwePlas8rhYOD8&q=85&s=698c31f35cbc4bfd90fe7eac851a419a 2500w" />
+<img alt="" />
 
 If you want to write the tags manually in your content or [in HTML emails](/creating-emails/uploading-custom-email), you can use our [dynamic tag syntax](/creating-emails/personalizing-emails#dynamic-tag-syntax). To add a reset URL you can write a tag like this:
 
@@ -15330,7 +15177,7 @@ Click the `>` button to view all fields and then click the data variable icon. U
 
 To send data to these fields, simply include the data variables in your API call as normal ([see below](#send-your-email)).
 
-<img src="https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/data-variables-in-settings.png?fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=7226f894ff9b3663974fa1383b4e3a01" alt="Adding a data variable in the Subject field" data-og-width="2280" width="2280" data-og-height="1140" height="1140" data-path="images/data-variables-in-settings.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/data-variables-in-settings.png?w=280&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=c699a0363ab7f8382b5e10394ec1be3f 280w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/data-variables-in-settings.png?w=560&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=7e79a5d62e16b21dfc53b134bf9733ea 560w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/data-variables-in-settings.png?w=840&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=ff9b2ae162d8fe95921210740a7d22dd 840w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/data-variables-in-settings.png?w=1100&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=2c836c5b413c8094180a51e09ed39697 1100w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/data-variables-in-settings.png?w=1650&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=a6d2afbaed9d450fcbbf61038f23cf1c 1650w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/data-variables-in-settings.png?w=2500&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=1d3f7818970bf466e718cc1bb06a3a10 2500w" />
+<img alt="Adding a data variable in the Subject field" />
 
 ### Optional data variables
 
@@ -15338,9 +15185,9 @@ Data variables can be optional, by selecting "Optional" from the selector just b
 
 If a data variable is optional, you can omit the key from the API request entirely, or include the key and send an empty string `""` (sending `null` will not work).
 
-<img src="https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/optional-data-variables.png?fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=4f5d86b975c522904fdede6a43ed626f" alt="Optional data variables" data-og-width="2280" width="2280" data-og-height="1140" height="1140" data-path="images/optional-data-variables.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/optional-data-variables.png?w=280&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=dc0fb78face7b11d1c59326b49f61926 280w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/optional-data-variables.png?w=560&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=e949e5592781010fc3ceb3b2f05d5b8f 560w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/optional-data-variables.png?w=840&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=c4401a31741aa12b4bed575138d4b66c 840w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/optional-data-variables.png?w=1100&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=60b45b85d3af38564e3a3db17c98a478 1100w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/optional-data-variables.png?w=1650&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=7a7d3ef4aec37ef57dd9ea81c8d5b342 1650w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/optional-data-variables.png?w=2500&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=0bbd0fbbc057dee460689ee96cc51684 2500w" />
+<img alt="Optional data variables" />
 
-<CardGroup columns="2">
+<CardGroup>
   <Card title="Personalizing emails" icon="crystal-ball" href="/creating-emails/personalizing-emails">
     Read more about adding dynamic content into your emails.
   </Card>
@@ -15365,7 +15212,7 @@ If a data variable is optional, you can omit the key from the API request entire
 
 On the next page, after clicking **Next**, you'll see the API Details section. This contains the data variables used in the email as well as a sample payload for reference. The “Transactional ID” lets you distinguish between different transactional emails when calling the API and is required.
 
-<img src="https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/next.png?fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=553cf454d657a3049b9566e2851d1b0b" alt="" data-og-width="2280" width="2280" data-og-height="1682" height="1682" data-path="images/next.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/next.png?w=280&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=60b1e92d098c794c93b8cfb01310586c 280w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/next.png?w=560&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=c8f8c7d1c2918340532861bb8bd52c4c 560w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/next.png?w=840&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=e9569fd50c07b058708c7447fcf4cacf 840w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/next.png?w=1100&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=695b04041f9dfe709a25a3ad36345426 1100w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/next.png?w=1650&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=ea4ba40f8634d64c2905b0cc375c0c43 1650w, https://mintcdn.com/loops/W7EWSDUW0GR-XWrp/images/next.png?w=2500&fit=max&auto=format&n=W7EWSDUW0GR-XWrp&q=85&s=2083f0ff2fc32596387a81dcf6e07f17 2500w" />
+<img alt="" />
 
 ## Publish the email
 
@@ -15387,7 +15234,7 @@ https://app.loops.so/api/v1/transactional
 
 You can copy an email's example payload from its Publish page in Loops by clicking the **Show payload** button.
 
-```json  theme={"dark"}
+```json theme={"dark"}
 {
   "transactionalId": "clfq6dinn000yl70fgwwyp82l",
   "email": "favorite@example.com",
@@ -15401,7 +15248,7 @@ You can copy an email's example payload from its Publish page in Loops by clicki
 
 You can add contacts to your audience from this call by adding `"addToAudience": true` to your payload.
 
-<CardGroup columns="2">
+<CardGroup>
   <Card title="Loops API - Send transactional email" icon="envelope" href="/api-reference/send-transactional-email">
     Read how to send transactional email with our API.
   </Card>
@@ -15415,13 +15262,13 @@ You can add contacts to your audience from this call by adding `"addToAudience":
 
 To edit the email, click **Edit Draft** on the Compose page.
 
-<img src="https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/duplicate.png?fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=d0722987bdb55333b7a630f32df19a6f" alt="" data-og-width="2280" width="2280" data-og-height="1058" height="1058" data-path="images/duplicate.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/duplicate.png?w=280&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=23829ad96cfe8eece509bf2c058c9112 280w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/duplicate.png?w=560&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=e99b9584aadc2380cd7b44858c14f4b3 560w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/duplicate.png?w=840&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=8056e89a2e06b4eaf89880193d99533f 840w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/duplicate.png?w=1100&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=87794cfed2796331f07d42e62f5fe06f 1100w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/duplicate.png?w=1650&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=3d41f03a085fcdd28992ab63e05b19cf 1650w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/duplicate.png?w=2500&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=c044b70bfde0253163ac1c2c774621a8 2500w" />
+<img alt="" />
 
 The previous published version of the email will remain, and will continue sending until you republish the email. This means you can make changes to transactional emails without disrupting ongoing email sending.
 
 When you have a draft, we retain both versions and you can switch between your draft and the published version using the toggles in the top right.
 
-<img src="https://mintcdn.com/loops/SqldyWKxvGS7UNL4/images/view-draft.png?fit=max&auto=format&n=SqldyWKxvGS7UNL4&q=85&s=82ae4a335444a0a469056a501ba39aae" alt="" data-og-width="2280" width="2280" data-og-height="1058" height="1058" data-path="images/view-draft.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/SqldyWKxvGS7UNL4/images/view-draft.png?w=280&fit=max&auto=format&n=SqldyWKxvGS7UNL4&q=85&s=6d80ed67511413636bc22be7bacb7b68 280w, https://mintcdn.com/loops/SqldyWKxvGS7UNL4/images/view-draft.png?w=560&fit=max&auto=format&n=SqldyWKxvGS7UNL4&q=85&s=9f625a110f267a2d56df898baacb6a2e 560w, https://mintcdn.com/loops/SqldyWKxvGS7UNL4/images/view-draft.png?w=840&fit=max&auto=format&n=SqldyWKxvGS7UNL4&q=85&s=5d3e788d9786d738cb418aa2bdd90fd1 840w, https://mintcdn.com/loops/SqldyWKxvGS7UNL4/images/view-draft.png?w=1100&fit=max&auto=format&n=SqldyWKxvGS7UNL4&q=85&s=cf8a29535f024fea6911fb6bc60bb424 1100w, https://mintcdn.com/loops/SqldyWKxvGS7UNL4/images/view-draft.png?w=1650&fit=max&auto=format&n=SqldyWKxvGS7UNL4&q=85&s=9d37d949adcd2d894672c90803c1f73f 1650w, https://mintcdn.com/loops/SqldyWKxvGS7UNL4/images/view-draft.png?w=2500&fit=max&auto=format&n=SqldyWKxvGS7UNL4&q=85&s=ab6a8b24582e7d7fbf84d664fc1f97f7 2500w" />
+<img alt="" />
 
 To publish your changes, simply click **Republish** and click the confirmation. Your draft will seamlessly become the published version.
 
@@ -15480,7 +15327,7 @@ To attach a file to a transactional message, you'll need to add a `attachments` 
 
 Here's an example of a transactional email payload with [this ICS file](https://gist.github.com/phil-loops/c0cb5d84d502a3949651934252d306af) attached:
 
-```json  theme={"dark"}
+```json theme={"dark"}
 {
   "transactionalId": "*********",
   "email": "phil+attachments@loops.so",
@@ -15496,7 +15343,7 @@ Here's an example of a transactional email payload with [this ICS file](https://
 
 When you send this payload, the recipient will receive an email with the ICS file attached:
 
-<img src="https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/transactional-attachment-send.png?fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=fbe99c3fd0d1a1d15fda1bdf78755c51" alt="An email with an ICS file attached" data-og-width="1748" width="1748" data-og-height="516" height="516" data-path="images/transactional-attachment-send.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/transactional-attachment-send.png?w=280&fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=f2a9ba5bc0faa966709c8f1e38d1a346 280w, https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/transactional-attachment-send.png?w=560&fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=74943762dba4c02e4e688da6f705fdcb 560w, https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/transactional-attachment-send.png?w=840&fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=e46a8de2a0670344ab4a43b4f90c1f00 840w, https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/transactional-attachment-send.png?w=1100&fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=57f933f5e88b00ee817092bae88c7609 1100w, https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/transactional-attachment-send.png?w=1650&fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=7b6e0b335bfd4a246b9dcb9dab9406fd 1650w, https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/transactional-attachment-send.png?w=2500&fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=f5a8ee3b23f37828cbbae62031f9f691 2500w" />
+<img alt="An email with an ICS file attached" />
 
 <Info>
   All the usual [transactional API email
@@ -15506,7 +15353,7 @@ When you send this payload, the recipient will receive an email with the ICS fil
 
 ## Limitations
 
-* The total size of the payload must be less than 4MB
+* The total size of the JSON request body must be less than 4 MB. Keep in mind that attachments are base64 encoded, which increases file size by \~33%.
 * Attachments are not generally available. Please [contact us](mailto:help@loops.so) if you need this feature enabled on your account.
 
 
@@ -15515,7 +15362,7 @@ Source: https://loops.so/docs/types-of-emails
 
 Learn about the three types of emails that you can send with Loops: Campaigns, Loops, and Transactional.
 
-<img src="https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/create-first-email.png?fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=daa962aaa3dd795ed89021acc341a7a6" alt="" data-og-width="2280" width="2280" data-og-height="1134" height="1134" data-path="images/create-first-email.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/create-first-email.png?w=280&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=995db60712ac648e3d14e8fbb7e651e0 280w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/create-first-email.png?w=560&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=e8d3056be93980f525bb84acc8484820 560w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/create-first-email.png?w=840&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=44eb7ade0e2da35e08cd7c968cfe575c 840w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/create-first-email.png?w=1100&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=557b3af625d764ecfff8d3fa6cd6cb56 1100w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/create-first-email.png?w=1650&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=265f7518e2ac38d3ceb42fa3d4863fe5 1650w, https://mintcdn.com/loops/K9TRANbphBauR0pJ/images/create-first-email.png?w=2500&fit=max&auto=format&n=K9TRANbphBauR0pJ&q=85&s=e7546ba6f5bc0275d3c6444fb6878d3d 2500w" />
+<img alt="" />
 
 ## Campaigns
 
@@ -15596,7 +15443,7 @@ Currently you can only set up one webhook endpoint per Loops account.
 
 Subscribe to the events you want to receive using the toggles. Click the group names to view all events in each.
 
-<img src="https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/webhooks-setup.png?fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=a7897e5e44e8ce6065a485d93b129002" alt="Webhooks settings" data-og-width="2280" width="2280" data-og-height="1854" height="1854" data-path="images/webhooks-setup.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/webhooks-setup.png?w=280&fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=e9822c133796329f92aca93f50d3b669 280w, https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/webhooks-setup.png?w=560&fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=12d491bf879a4d9858749a7b5c4f6ca9 560w, https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/webhooks-setup.png?w=840&fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=41dc9af209e6d8ccd8491bc8d28af6d0 840w, https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/webhooks-setup.png?w=1100&fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=8fbe9ca24d771110f13e679f51126fe1 1100w, https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/webhooks-setup.png?w=1650&fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=feeaa261e99f547d03d48ea128c9b05c 1650w, https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/webhooks-setup.png?w=2500&fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=6989624d615ec1cf641072746c827a93 2500w" />
+<img alt="Webhooks settings" />
 
 <Tip>
   When toggling your endpoint on and off there may be a small delay before this
@@ -15748,7 +15595,7 @@ Clicking on an event in the table will reveal the response from your endpoint, w
 
 We retain 30 days of event history.
 
-<img src="https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/webhooks-history.png?fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=9cc28ff8f2e3dfaf2fb548f90e67070e" alt="Viewing webhook event history" data-og-width="2280" width="2280" data-og-height="1368" height="1368" data-path="images/webhooks-history.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/webhooks-history.png?w=280&fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=27bed898297a3d11632b8775110f7405 280w, https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/webhooks-history.png?w=560&fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=331ed62d5f182ba5bebc55e811b12b24 560w, https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/webhooks-history.png?w=840&fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=441ae6982f74999303574c96f2894329 840w, https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/webhooks-history.png?w=1100&fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=00aa7e6e69a9ae98e6d82b1f4293242e 1100w, https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/webhooks-history.png?w=1650&fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=0ffd1054d26f569df9358419ee236b82 1650w, https://mintcdn.com/loops/1DdZd7QTRR4Srm-l/images/webhooks-history.png?w=2500&fit=max&auto=format&n=1DdZd7QTRR4Srm-l&q=85&s=57e7c6ee0a564b791ff954743d854c30 2500w" />
+<img alt="Viewing webhook event history" />
 
 ## Event data
 
@@ -15786,7 +15633,6 @@ Contains:
 * `userId` (nullable string)
 * `mailingLists` (object with mailing list IDs as keys and `true` as the value; these are the mailing lists the contact is subscribed to)
 * `optInStatus` (nullable string, `"accepted"` or `null`)
-  {" "}
   <Note>
     This will be `null` for contacts unless they are created via a form and
     [double opt-in](/contacts/double-opt-in) is enabled. `contact.created`
@@ -15870,7 +15716,7 @@ Contains a `contactIdentity` object plus a full `contact` object, which includes
   `contact.mailingList.subscribed`) will also only fire after confirmation.
 </Tip>
 
-```json  theme={"dark"}
+```json theme={"dark"}
 {
   "eventName": "contact.created",
   "eventTime": 1734425918,
@@ -15913,7 +15759,7 @@ Sent when
 
 Contains a `contactIdentity` object.
 
-```json  theme={"dark"}
+```json theme={"dark"}
 {
   "eventName": "contact.unsubscribed",
   "eventTime": 1734425918,
@@ -15932,7 +15778,7 @@ Sent when a contact is deleted from your audience.
 
 Contains a `contactIdentity` object.
 
-```json  theme={"dark"}
+```json theme={"dark"}
 {
   "eventName": "contact.deleted",
   "eventTime": 1734425918,
@@ -15951,7 +15797,7 @@ Sent when a contact is subscribed to a mailing list.
 
 Contains `contactIdentity` and `mailingList` objects.
 
-```json  theme={"dark"}
+```json theme={"dark"}
 {
   "eventName": "contact.mailingList.subscribed",
   "eventTime": 1734425918,
@@ -15981,7 +15827,7 @@ Sent when a contact is unsubscribed from a mailing list.
 
 Contains `contactIdentity` and `mailingList` objects.
 
-```json  theme={"dark"}
+```json theme={"dark"}
 {
   "eventName": "contact.mailingList.unsubscribed",
   "eventTime": 1734425918,
@@ -16015,7 +15861,7 @@ Contains a `campaignId` value plus `contactIdentity` and `email` objects.
 
 If the campaign was sent to one or more mailing lists, a `mailingLists` list will also be included.
 
-```json  theme={"dark"}
+```json theme={"dark"}
 {
   "eventName": "campaign.email.sent",
   "eventTime": 1734425918,
@@ -16055,7 +15901,7 @@ Contains a `loopId` value plus `contactIdentity` and `email` objects.
 
 If the loop was sent to one or more mailing lists, a `mailingLists` list will also be included.
 
-```json  theme={"dark"}
+```json theme={"dark"}
 {
   "eventName": "loop.email.sent",
   "eventTime": 1734425918,
@@ -16088,7 +15934,7 @@ Sent when a transactional email is sent.
 
 Contains a `transactionalId` value plus `contactIdentity` and `email` objects.
 
-```json  theme={"dark"}
+```json theme={"dark"}
 {
   "eventName": "transactional.email.sent",
   "eventTime": 1734425918,
@@ -16115,7 +15961,7 @@ Sent when an email is delivered to its recipient.
 
 Contains a `sourceType` and a related `campaignId` / `transactionalId` / `loopId` value, plus `contactIdentity` and `email` objects.
 
-```json  theme={"dark"}
+```json theme={"dark"}
 {
   "eventName": "email.delivered",
   "eventTime": 1734425918,
@@ -16147,7 +15993,7 @@ Sent when an email soft bounces.
 
 Contains a `sourceType` and a related `campaignId` / `transactionalId` / `loopId` value, plus `contactIdentity` and `email` objects.
 
-```json  theme={"dark"}
+```json theme={"dark"}
 {
   "eventName": "email.softBounced",
   "eventTime": 1734425918,
@@ -16180,7 +16026,7 @@ In Loops, a hard bounce results in a contact being unsubscribed from your audien
 
 Contains a `sourceType` and a related `campaignId` / `transactionalId` / `loopId` value, plus `contactIdentity` and `email` objects.
 
-```json  theme={"dark"}
+```json theme={"dark"}
 {
   "eventName": "email.hardBounced",
   "eventTime": 1734425918,
@@ -16211,7 +16057,7 @@ Contains a `sourceType` and a related `campaignId` or `loopId` value, plus `cont
   [not tracked](/transactional#tracking) for transactional emails.
 </Info>
 
-```json  theme={"dark"}
+```json theme={"dark"}
 {
   "eventName": "email.opened",
   "eventTime": 1734425918,
@@ -16242,7 +16088,7 @@ Contains a `sourceType` and a related `campaignId` or `loopId` value, plus `cont
   [not tracked](/transactional#tracking) in transactional emails.
 </Info>
 
-```json  theme={"dark"}
+```json theme={"dark"}
 {
   "eventName": "email.clicked",
   "eventTime": 1734425918,
@@ -16276,7 +16122,7 @@ Contains a `sourceType` and a related `campaignId` or `loopId` value, plus `cont
   transactional emails.
 </Info>
 
-```json  theme={"dark"}
+```json theme={"dark"}
 {
   "eventName": "email.unsubscribed",
   "eventTime": 1734425918,
@@ -16308,7 +16154,7 @@ Contains a `sourceType` and a related `campaignId` or `loopId` value, plus `cont
   transactional emails.
 </Info>
 
-```json  theme={"dark"}
+```json theme={"dark"}
 {
   "eventName": "email.resubscribed",
   "eventTime": 1734425918,
@@ -16334,7 +16180,7 @@ Sent when a recipient reports your email as spam.
 
 Contains a `sourceType` and a related `campaignId` / `transactionalId` / `loopId` value, plus `contactIdentity` and `email` objects.
 
-```json  theme={"dark"}
+```json theme={"dark"}
 {
   "eventName": "email.spamReported",
   "eventTime": 1734425918,
@@ -16360,7 +16206,7 @@ Contains a `sourceType` and a related `campaignId` / `transactionalId` / `loopId
 
 This is a test event that can be triggered at any time from the [Webhooks settings page](https://app.loops.so/settings?page=webhooks) in Loops.
 
-```json  theme={"dark"}
+```json theme={"dark"}
 {
   "eventName": "testing.testEvent",
   "eventTime": 1734425918,

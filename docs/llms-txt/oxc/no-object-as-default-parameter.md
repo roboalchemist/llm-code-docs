@@ -3,7 +3,6 @@
 ---
 url: /docs/guide/usage/linter/rules/unicorn/no-object-as-default-parameter.md
 ---
-# unicorn/no-object-as-default-parameter&#x20;
 
 ### What it does
 

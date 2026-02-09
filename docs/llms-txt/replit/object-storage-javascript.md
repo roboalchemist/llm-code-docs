@@ -1,5 +1,9 @@
 # Source: https://docs.replit.com/getting-started/quickstarts/object-storage-javascript.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.replit.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Manage App Storage in JavaScript
 
 > Learn how to use the JavaScript App Storage client library to manage files from your Replit App.

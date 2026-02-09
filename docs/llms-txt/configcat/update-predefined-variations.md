@@ -2,10 +2,7 @@
 
 # Update predefined variations (Beta)
 
-```
-PUT 
-/v1/settings/:settingId/predefined-variations
-```
+Copy page
 
 This endpoint updates the predefined variations for a Feature Flag or Setting identified by the `settingId` parameter.
 

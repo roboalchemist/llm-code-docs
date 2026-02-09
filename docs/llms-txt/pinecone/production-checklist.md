@@ -1,5 +1,9 @@
 # Source: https://docs.pinecone.io/guides/production/production-checklist.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pinecone.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Production checklist
 
 > Prepare your indexes for production with best practices.
@@ -47,6 +51,10 @@ Architect your application to work within Pinecone's [database limits](/referenc
 * **Size limits**: Be aware of constraints on vector dimensionality, metadata size per record, record ID length, maximum `top_k` values, and query result sizes. Design your [data model](/guides/index-data/data-modeling) accordingly.
 * **Index limits**: Plan for index capacity based on your [plan tier](https://www.pinecone.io/pricing/). Use [namespaces](/guides/index-data/implement-multitenancy) to partition data within indexes rather than creating multiple indexes.
 * **Plan limits**: Starter plans have monthly read/write unit limits. Upgrade to Standard or Enterprise for unlimited read/write units and higher throughput needs.
+
+<Note>
+  Indexes built on [Dedicated Read Nodes](/guides/index-data/dedicated-read-nodes) are not subject to read unit limits for query, fetch, and list operations. For sizing and capacity planning guidance, see the [Dedicated Read Nodes](/guides/index-data/dedicated-read-nodes) guide.
+</Note>
 
 ## Test your query results
 

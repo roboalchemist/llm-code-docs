@@ -1,12 +1,6 @@
-# Source: https://docs.pinata.cloud/sdk/keys/list.md
+# Source: https://docs.pinata.cloud/sdk/x402/payment-instructions/list.md
 
-# Source: https://docs.pinata.cloud/sdk/groups/public/list.md
-
-# Source: https://docs.pinata.cloud/sdk/groups/private/list.md
-
-# Source: https://docs.pinata.cloud/sdk/files/public/list.md
-
-# Source: https://docs.pinata.cloud/sdk/files/private/list.md
+# Source: https://docs.pinata.cloud/sdk/x402/cids/list.md
 
 # Source: https://docs.pinata.cloud/sdk/keys/list.md
 
@@ -18,15 +12,9 @@
 
 # Source: https://docs.pinata.cloud/sdk/files/private/list.md
 
-# Source: https://docs.pinata.cloud/sdk/keys/list.md
-
-# Source: https://docs.pinata.cloud/sdk/groups/public/list.md
-
-# Source: https://docs.pinata.cloud/sdk/groups/private/list.md
-
-# Source: https://docs.pinata.cloud/sdk/files/public/list.md
-
-# Source: https://docs.pinata.cloud/sdk/files/private/list.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pinata.cloud/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # list
 

@@ -1,5 +1,9 @@
 # Source: https://dev.writer.com/agent-builder/tool-calling-intro.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://dev.writer.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Understand tool calling
 
 > Learn how tool calling enables dynamic agent workflows. Understand ReAct patterns and why tool calling matters for intelligent agent orchestration.

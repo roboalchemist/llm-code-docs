@@ -44,7 +44,7 @@ No Longer Stocked
 [Cool White LED Weatherproof Flexi-Strip 60 LED - 5m](https://www.adafruit.com/product/887)
 These LED strips are ultra bright, fun and glowy. There are **60** cool white LEDs per meter, and you can control the entire strip at once with any microcontroller and [a power transistor](http://www.adafruit.com/products/355). The way they are wired, you will need a 9-12VDC...
 
-In Stock
+No Longer Stocked
 [Buy Now](https://www.adafruit.com/product/887)
 [Related Guides to the Product](https://learn.adafruit.com/products/887/guides)
 ### Waterproof DC Power Cable Set - 5.5/2.1mm
@@ -74,18 +74,18 @@ In Stock
 
 ## Related Guides
 
-- [CircuitPython LED Animations](https://learn.adafruit.com/circuitpython-led-animations.md)
-- [NeoPixels with MakeCode](https://learn.adafruit.com/neopixels-with-makecode.md)
-- [Dotstar + CircuitPython Digital Sand](https://learn.adafruit.com/digital-sand-dotstar-circuitpython-edition.md)
-- [3D Printed Battery Adapter for Camera-Mount LED Panel](https://learn.adafruit.com/3d-printed-battery-adapter-for-camera-mount-led-panel.md)
-- [Overwatch Prop Gun: Lucio's Blaster Pt. 2](https://learn.adafruit.com/overwatch-lucio-gun-pt-2.md)
-- [Adafruit NeoDriver - I2C to NeoPixel Driver](https://learn.adafruit.com/adafruit-neodriver-i2c-to-neopixel-driver.md)
-- [Snow Globe with Circuit Playground Bluefruit](https://learn.adafruit.com/snow-globe-bluefruit-cpb.md)
-- [Circuit Playground Seashell Pendant](https://learn.adafruit.com/circuit-playground-seashell-pendant.md)
-- [nOOds LED CV Signal Visualizers](https://learn.adafruit.com/noods-led-synth-cv-visualizers.md)
-- [3D Printed Light-Up Kaleidoscope](https://learn.adafruit.com/3d-printed-light-up-kaleidoscope.md)
-- [Meeting Time Keeper Stick](https://learn.adafruit.com/meeting-time-keeper-stick-with-cpx.md)
+- [Mystery Box: Crypto Countdown Case](https://learn.adafruit.com/mystery-box-crypto-countdown-case.md)
 - [Bedazzler](https://learn.adafruit.com/bedazzler.md)
-- [ISS Pin](https://learn.adafruit.com/iss-pin.md)
-- [Wireless LED Juggling Balls with ESP-NOW](https://learn.adafruit.com/wireless-juggling-balls-esp-now.md)
-- [LOVE Light](https://learn.adafruit.com/love-light.md)
+- [CircuitPython LED Animations](https://learn.adafruit.com/circuitpython-led-animations.md)
+- [Blahaj Alarm and Lamp](https://learn.adafruit.com/blahaj-alarm.md)
+- [Arduino Lesson 4. Eight LEDs and a Shift Register](https://learn.adafruit.com/adafruit-arduino-lesson-4-eight-leds.md)
+- [LED Emerald with Circuit Playground Bluefruit](https://learn.adafruit.com/led-emerald-with-circuit-playground.md)
+- [Talking HAL 9000 with RP2040 Prop Maker Feather](https://learn.adafruit.com/hal-9000-rp2040-prop-maker.md)
+- [Adafruit NeoPXL8 FeatherWing and Library](https://learn.adafruit.com/adafruit-neopxl8-featherwing-and-library.md)
+- [Color Remote with Circuit Playground Bluefruit](https://learn.adafruit.com/color-remote-with-circuit-playground-bluefruit.md)
+- [Guardian Shield+ Zelda Breath of the Wild](https://learn.adafruit.com/guardian-shield-zelda-breath-of-the-wild.md)
+- [Mad Science Test Tube Rack](https://learn.adafruit.com/mad-science-test-tube-rack.md)
+- [Making Wearable Badge Art with Printed Circuit Boards](https://learn.adafruit.com/making-wearable-badge-art-with-printed-circuit-boards.md)
+- [Tiny TARDIS Pendant](https://learn.adafruit.com/tiny-tardis-pendant.md)
+- [Party Parrot Zoetrope](https://learn.adafruit.com/party-parrot-zoetrope.md)
+- [LED Noodle Shop Sign](https://learn.adafruit.com/led-noodle-shop-sign.md)

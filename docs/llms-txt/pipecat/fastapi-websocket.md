@@ -1,5 +1,9 @@
 # Source: https://docs.pipecat.ai/server/services/transport/fastapi-websocket.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pipecat.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # FastAPIWebsocketTransport
 
 > WebSocket transport implementation for FastAPI web applications with telephony integration
@@ -75,8 +79,3 @@ See the [complete example](https://github.com/pipecat-ai/pipecat-examples/tree/m
 * Telephony provider integration setup
 * Frame serializer configuration
 * Audio processing pipeline integration
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.pipecat.ai/llms.txt

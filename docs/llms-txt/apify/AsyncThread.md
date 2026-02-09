@@ -16,13 +16,13 @@ This allows running asynchronous coroutines from synchronous code by executingth
 
 ## Methods<!-- -->[**](#Methods)
 
-### [**](#__init__)[**](https://github.com/apify/apify-sdk-python/blob/f050b2684cf6d5e88bafe381599a3653d220ec14//src/apify/scrapy/_async_thread.py#L23)\_\_init\_\_
+### [**](#__init__)[**](https://github.com/apify/apify-sdk-python/blob/a01870a180ed391b8b6cad8d1894f12bcc879136//src/apify/scrapy/_async_thread.py#L23)\_\_init\_\_
 
 * ****\_\_init\_\_**(): None
 
 - #### Returns None
 
-### [**](#close)[**](https://github.com/apify/apify-sdk-python/blob/f050b2684cf6d5e88bafe381599a3653d220ec14//src/apify/scrapy/_async_thread.py#L70)close
+### [**](#close)[**](https://github.com/apify/apify-sdk-python/blob/a01870a180ed391b8b6cad8d1894f12bcc879136//src/apify/scrapy/_async_thread.py#L70)close
 
 * ****close**(timeout): None
 
@@ -40,7 +40,7 @@ This allows running asynchronous coroutines from synchronous code by executingth
 
   #### Returns None
 
-### [**](#run_coro)[**](https://github.com/apify/apify-sdk-python/blob/f050b2684cf6d5e88bafe381599a3653d220ec14//src/apify/scrapy/_async_thread.py#L33)run\_coro
+### [**](#run_coro)[**](https://github.com/apify/apify-sdk-python/blob/a01870a180ed391b8b6cad8d1894f12bcc879136//src/apify/scrapy/_async_thread.py#L33)run\_coro
 
 * ****run\_coro**(coro, timeout): Any
 

@@ -2,14 +2,6 @@
 
 # Source: https://react-spectrum.adobe.com/index.md
 
-# Source: https://react-spectrum.adobe.com/releases/index.md
-
-# Source: https://react-spectrum.adobe.com/index.md
-
-# Source: https://react-spectrum.adobe.com/releases/index.md
-
-# Source: https://react-spectrum.adobe.com/index.md
-
 <RouterWrapperServer currentPage={props.currentPage}>
   <Provider
     elementType="html"

@@ -1,5 +1,9 @@
 # Source: https://docs.promptlayer.com/features/prompt-registry/snippets.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.promptlayer.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Snippets
 
 Snippets allow you to modularize and reuse pieces of your prompt templates, much like using building blocks to create a larger structure. This feature enables you to compose complex templates by referencing other prompt templates within a parent template.
@@ -59,8 +63,3 @@ When you open a prompt template from the Registry, you'll see it as a clickable 
 ## Why snippets?
 
 By leveraging snippets, you can create a more maintainable and scalable prompt management system, allowing for greater flexibility and efficiency in your prompt template creation process.
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.promptlayer.com/llms.txt

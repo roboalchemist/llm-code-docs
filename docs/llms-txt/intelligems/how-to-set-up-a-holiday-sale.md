@@ -1,13 +1,13 @@
-# Source: https://docs.intelligems.io/offer-experiences/offers-library/how-to-set-up-a-holiday-sale.md
+# Source: https://docs.intelligems.io/offer-personalizations/offers-library/how-to-set-up-a-holiday-sale.md
 
 # How to Set Up a Holiday Sale
 
 ## Holiday Sale
 
-You can use Offers to power your holiday sales. Whether you're running the offer to 100% of traffic, or a segment in Klaviyo, Intelligems makes it easy to create, schedule, and automate your offer. Our customers user Offers to power their holiday sales like Valentine's Day, Mother's Day, 4th of July, Black Friday, etc.
+You can use Offer Personalizations to power your holiday sales. Whether you're running the offer to 100% of traffic, or a segment in Klaviyo, Intelligems makes it easy to create, schedule, and automate your offer. Our customers user Offers to power their holiday sales like Valentine's Day, Mother's Day, 4th of July, Black Friday, etc.
 
 {% hint style="info" %}
-Offer Experiences are available on Core, Plus, and Blue Plans. Testing your Offers against each other is only available on Plus and Blue.
+Offer Personalizations are available on Core, Plus, and Blue Plans. Testing your Offers against each other is only available on Plus and Blue.
 {% endhint %}
 
 **Goal:** Increase revenue, move through inventory, make money!
@@ -45,7 +45,7 @@ Offer Experiences are available on Core, Plus, and Blue Plans. Testing your Offe
 
 {% embed url="<https://www.loom.com/share/0b78f3282d864f6281da6ae9766c36bc?sid=805939c9-cf3d-46a2-a425-e1501d8df3b9>" %}
 
-1. Go to Experiences > **Offers**
+1. Go to Personalizations > **Offers**
 2. Select **Amount off Order**
 3. Add an Offer name (internal name)
 4. Add a Discount name that matches the sale. This will be shown to shoppers in their cart and at checkout.
@@ -76,6 +76,6 @@ We recommend setting up a Sale collection in Shopify and then select that collec
     1. If you're running a specific offer to a smaller group of your shoppers, you can select your audience in the Targeting tab
 15. **Save** your Offer
 16. **Preview** your Offer on desktop and mobile
-17. When everything looks good, **Schedule Your Experience** or **Activate** to go live
+17. When everything looks good, **Schedule Your Personalization** or **Activate** to go live
     1. You can select a Start time and Stop time when Scheduling
 18. Double-check everything else on your list to make sure you're supporting this sale like email, sms, and other marketing channels.

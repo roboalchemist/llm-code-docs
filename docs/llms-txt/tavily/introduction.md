@@ -1,11 +1,16 @@
 # Source: https://docs.tavily.com/documentation/api-reference/introduction.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.tavily.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Introduction
 
 > Easily integrate our APIs with your services.
 
 <Tip>
-  Looking for the Python or JavaScript SDK Reference? Head to our [SDKs](/sdk) page to see how to natively integrate Tavily in your project.
+  Looking for the Python or JavaScript SDK Reference? Head to our [SDKs](/sdk)
+  page to see how to natively integrate Tavily in your project.
 </Tip>
 
 ## Base URL
@@ -30,14 +35,14 @@ curl -X POST https://api.tavily.com/search \
 
 ## Endpoints
 
-<CardGroup cols={3}>
-  <Card icon="magnifying-glass" horizontal href="/api-reference/endpoint/search">
+<CardGroup cols={2}>
+  <Card icon="magnifying-glass" horizontal href="/documentation/api-reference/endpoint/search">
     **`/search`**
 
     Tavily's powerful web search API.
   </Card>
 
-  <Card icon="file-lines" horizontal href="/api-reference/endpoint/extract">
+  <Card icon="file-lines" horizontal href="/documentation/api-reference/endpoint/extract">
     **`/extract`**
 
     Tavily's powerful content extraction API.
@@ -48,9 +53,34 @@ curl -X POST https://api.tavily.com/search \
 
     Tavily's intelligent sitegraph navigation and extraction tools.
   </Card>
+
+  <Card icon="book" horizontal href="/documentation/api-reference/endpoint/research">
+    **`/research`**
+
+    Tavily's comprehensive research API for in-depth analysis.
+  </Card>
 </CardGroup>
 
+## Project Tracking
 
----
+You can optionally attach a Project ID to your API requests to organize and track usage by project. This is useful when a single API key is used across multiple projects or applications.
 
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.tavily.com/llms.txt
+To attach a project to your request, add the `X-Project-ID` header:
+
+```bash  theme={null}
+curl -X POST https://api.tavily.com/search \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer tvly-YOUR_API_KEY" \
+  -H "X-Project-ID: your-project-id" \
+  -d '{"query": "Who is Leo Messi?"}'
+```
+
+**Key features:**
+
+* An API key can be associated with multiple projects
+* Filter requests by project in the [/logs endpoint](/documentation/api-reference/endpoint/usage) and platform usage dashboard
+* Helps organize and track where requests originate from
+
+<Note>
+  When using the SDKs, you can specify a project using the `project_id` parameter when instantiating the client, or by setting the `TAVILY_PROJECT` environment variable.
+</Note>

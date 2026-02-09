@@ -1,5 +1,9 @@
 # Source: https://docs.unifygtm.com/best-practices/plays.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.unifygtm.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Best Practices: Plays to Book You Meetings
 
 ## Section 1: Best Practices
@@ -8,7 +12,7 @@ Unify is a sales engagement platform designed to help you generate pipeline. To 
 
 * **Act Quickly:** Act on intent signals within 24-48 hours to catch prospects before they make their decision. Intent gets stale quickly.
 * **Engage with Every Lead:** Once you define your ICP in Unify, avoid selective outreach. Avoid introducing bias into how you prospect.
-* **Multiple Touchpoints:** If you’ve found that a channel works best for your team, use Unify to lean into that. Unify excels at email - if that’s your preferred channel, great. If not, use email in addition to LinkedIn or phone outreach. See section 4 below to see our recommendations for email and LinkedIn outreach.
+* **Multiple Touchpoints:** If you’ve found that a channel works best for your team, use Unify to lean into that. Unify excels at email - if that’s your preferred channel, great. If not, use email in addition to social or phone outreach. See section 4 below to see our recommendations for email and social outreach.
 
 ## Section 2: Actioning on Intent
 
@@ -35,14 +39,13 @@ Intent signals are indicators that there’s an opportunity to sell your product
 3. **[Inbound Form Submissions](https://www.unifygtm.com/plays/outbound-to-website-form-submitters):** A form submission is one of the strongest signs of intent. Convert those leads immediately by automating outreach as soon as they submit.
 4. **[New Hires](https://www.unifygtm.com/plays/outbound-to-people-who-have-started-jobs-at-a-new-company):** People are more likely to purchase new tools in their first few months on a job. Targeting your ICPs that have just changed jobs can convert better.
 5. **[Support Docs](https://www.unifygtm.com/plays/outbound-to-contacts-viewing-your-technical-docs):** Interest in support docs (e.g., integration details), suggests prospects are trying to understand how your product works and if it would work for them.
-6. **[Social Content Engagement](https://www.unifygtm.com/plays/automate-outbound-to-linkedin-likers-commenters)**: Liking or commenting on your social posts signals that a prospect is interested in your company.
-7. **[Product Tour Visits](https://www.unifygtm.com/plays/outbound-to-people-who-view-your-product-demo):** Interest in demo videos or product tours indicates a desire to understand specific product offerings in more granularity.
-8. **[Retarget Paid Traffic](https://www.unifygtm.com/plays/retarget-paid-traffic):** Get more out of your spend on paid traffic by retargeting people based on UTM filters.
-9. **[Closed-Lost Opportunities](https://www.unifygtm.com/plays/retarget-closed-lost-opportunities-when-they-revisit-website):** A revisit to your site by a closed-lost opportunities signals the prospect might be interested in re-engaging.
+6. **[Product Tour Visits](https://www.unifygtm.com/plays/outbound-to-people-who-view-your-product-demo):** Interest in demo videos or product tours indicates a desire to understand specific product offerings in more granularity.
+7. **[Retarget Paid Traffic](https://www.unifygtm.com/plays/retarget-paid-traffic):** Get more out of your spend on paid traffic by retargeting people based on UTM filters.
+8. **[Closed-Lost Opportunities](https://www.unifygtm.com/plays/retarget-closed-lost-opportunities-when-they-revisit-website):** A revisit to your site by a closed-lost opportunities signals the prospect might be interested in re-engaging.
 
-## Section 4: Section 4: Nailing Email or Linkedin Outreach
+## Section 4: Section 4: Nailing Email or Social Outreach
 
-Nailing email and LinkedIn messages is key to booking the most possible meetings from Unify. A few guiding principles:
+Nailing email and social messages is key to booking the most possible meetings from Unify. A few guiding principles:
 
 1. **Use Soft Messaging:** Use your judgement, but we typically recommend against direct mentions of website activity. Instead, tailor messages to address the pain points related to the product or service they showed interest in.
 2. **Keep It Short:** Many senior leaders at your target accounts read emails on their phones, concise messages under 100 words are more likely to be read and understood. Remember that people are skimming emails.

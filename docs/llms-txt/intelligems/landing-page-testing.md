@@ -33,9 +33,11 @@ To set up a Split URL landing page test:
 
 4. **Enter the URLs of the two landing pages** in the test setup. A "Simple" redirect should work for our purposes, since we just want to split between two known URLs. "Advanced" redirects are for when you'd like to match or replace wildcard text.\
    \
-   Choose "Redirect Every Time" if a visitor who's assigned to test page should be redirected sent to it any time they reach the Control. Choose "Redirect One Time" if they should be redirected only the first time. In our case, since we're testing fully replacing the control page with the test page, we'll choose "Redirect Every Time."\\
+   Choose "Redirect Every Time" if a visitor who's assigned to test page should be redirected sent to it any time they reach the Control. Choose "Redirect One Time" if they should be redirected only the first time. In our case, since we're testing fully replacing the control page with the test page, we'll choose "Redirect Every Time."
 
    <figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2Fgit-blob-ba6982237bb435ab137730d1e43639ff4fc43342%2Fimage.png?alt=media" alt="" width="563"><figcaption></figcaption></figure>
+
+   **Multi-domain brands:** If you operate multiple domains (e.g., yourbrand.com and yourbrand.co.uk), make sure all domains are registered in **Settings → Domain Settings**. You can then set up separate Split URL tests for landing pages on each domain.
 5. **Save and preview your experiment**. You can refer to our [QA guide](https://docs.intelligems.io/content-testing/content-test-qa-checklist#page-redirect-tests) for tips on what to look for when testing.
 6. **Launch!**
 

@@ -1,5 +1,9 @@
 # Source: https://flatfile.com/docs/reference/cli.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://flatfile.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # CLI Reference
 
 > Command line interface for developing, deploying, and managing Flatfile Agents
@@ -13,7 +17,7 @@ The Flatfile Command Line Interface (CLI) provides tools to develop, deploy, and
 
 ## Installation
 
-```bash
+```bash  theme={null}
 npx flatfile@latest <command>
 ```
 
@@ -33,7 +37,7 @@ The CLI requires your Flatfile API key and Environment ID, provided either in En
 
 Create a `.env` file in your project root:
 
-```bash
+```bash  theme={null}
 # .env file
 FLATFILE_API_KEY="your_api_key_here"
 FLATFILE_ENVIRONMENT_ID=your_environment_id_here
@@ -45,7 +49,7 @@ This approach keeps credentials out of your command history and makes it easy to
 
 For one-off commands or CI/CD environments:
 
-```bash
+```bash  theme={null}
 npx flatfile develop --token YOUR_API_KEY --env YOUR_ENV_ID
 ```
 
@@ -63,7 +67,7 @@ For improved performance and compliance, Flatfile supports regional deployments:
 
 Set your regional URL in `.env`:
 
-```bash
+```bash  theme={null}
 FLATFILE_API_URL=platform.eu.flatfile.com/api
 ```
 
@@ -98,7 +102,7 @@ FLATFILE_API_URL=platform.eu.flatfile.com/api
 
 Run your listener locally with automatic file watching and live reloading.
 
-```bash
+```bash  theme={null}
 npx flatfile develop [file-path]
 ```
 
@@ -119,7 +123,7 @@ npx flatfile develop [file-path]
 
 **Example output**
 
-```bash
+```bash  theme={null}
 > npx flatfile develop
 ✔ 1 environment(s) found for these credentials
 ✔ Environment "development" selected
@@ -140,7 +144,7 @@ ncc: Compiling file index.js into CJS
 
 Deploy your listener as a Flatfile Agent.
 
-```bash
+```bash  theme={null}
 npx flatfile deploy [file-path] [options]
 ```
 
@@ -163,7 +167,7 @@ npx flatfile deploy [file-path] [options]
 
 **Examples**
 
-```bash
+```bash  theme={null}
 # Basic deployment
 npx flatfile deploy
 
@@ -178,7 +182,7 @@ npx flatfile deploy ./src/listener.ts --ci
 
 Deploy multiple agents to the same environment using unique slugs:
 
-```bash
+```bash  theme={null}
 npx flatfile deploy --slug agent-one
 npx flatfile deploy --slug agent-two
 ```
@@ -194,7 +198,7 @@ npx flatfile deploy --slug agent-two
 
 Display all deployed agents in your environment.
 
-```bash
+```bash  theme={null}
 npx flatfile agents list
 ```
 
@@ -211,7 +215,7 @@ Shows each agent's:
 
 Download a deployed agent's source code.
 
-```bash
+```bash  theme={null}
 npx flatfile agents download <slug>
 ```
 
@@ -230,7 +234,7 @@ npx flatfile agents download <slug>
 
 Remove a deployed agent.
 
-```bash
+```bash  theme={null}
 npx flatfile agents delete <slug>
 ```
 

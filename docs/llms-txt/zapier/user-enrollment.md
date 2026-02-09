@@ -1,5 +1,9 @@
 # Source: https://docs.zapier.com/powered-by-zapier/sponsor-user-automation/user-enrollment.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.zapier.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # User Enrollment
 
 > Seamlessly enroll users in promotions to unlock exclusive benefits with a single API call.

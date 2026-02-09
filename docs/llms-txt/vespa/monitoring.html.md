@@ -1,12 +1,6 @@
 # Source: https://docs.vespa.ai/en/operations/monitoring.html.md
 
-# Source: https://docs.vespa.ai/en/operations/self-managed/monitoring.html.md
-
-# Source: https://docs.vespa.ai/en/operations/monitoring.html.md
-
-# Source: https://docs.vespa.ai/en/operations/self-managed/monitoring.html.md
-
-# Source: https://docs.vespa.ai/en/operations/monitoring.html.md
+# Source: https://docs.vespa.ai/en/operations/kubernetes/monitoring.html.md
 
 # Source: https://docs.vespa.ai/en/operations/self-managed/monitoring.html.md
 
@@ -310,7 +304,7 @@ Follow these steps to set up monitoring with Grafana for a Vespa instance. This 
 
 ## Histograms
 
-Metric histograms is supported for [Gauge](https://javadoc.io/doc/com.yahoo.vespa/container-core/latest/com/yahoo/metrics/simple/Gauge.html) metrics. Create the metric like in [album-recommendation-java](https://github.com/vespa-engine/sample-apps/tree/master/album-recommendation-java), adding the histogram:
+Metric histograms is supported for [Gauge](https://javadoc.io/doc/com.yahoo.vespa/container-disc/latest/com/yahoo/metrics/simple/Gauge.html) metrics. Create the metric like in [album-recommendation-java](https://github.com/vespa-engine/sample-apps/tree/master/album-recommendation-java), adding the histogram:
 
 ```
 public HitCountSearcher(MetricReceiver receiver) {
@@ -344,7 +338,7 @@ The histograms for the last five minutes of logged data are available as CSV per
 # end of metric totalhits_per_query, dimensions: { "chain": "metalchain" }
 ```
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ### On this page:
 

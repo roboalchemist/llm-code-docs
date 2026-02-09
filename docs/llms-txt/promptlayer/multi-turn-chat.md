@@ -1,5 +1,9 @@
 # Source: https://docs.promptlayer.com/why-promptlayer/multi-turn-chat.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.promptlayer.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Multi-Turn Chat
 
 Building reliable conversational AI systems requires careful management of state and conversation history. This guide explains how to implement multi-turn chat using PromptLayer's stateless approach, which enhances reliability and makes your agents easier to test and debug.
@@ -309,8 +313,3 @@ Learn more about setting up comprehensive evaluations in our [Evaluation and Ran
 * Learn about [Agent development](/why-promptlayer/agents) for complex workflows
 * Read our guide on [Tool Calling](/features/prompt-registry/tool-calling) for implementing tool-enabled assistants
 * Check out [Structured Outputs](/features/prompt-registry/structured-outputs) for formatted responses
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.promptlayer.com/llms.txt

@@ -1,5 +1,9 @@
 # Source: https://docs.zapier.com/powered-by-zapier/embedding-zapier-mcp/guides/getting-embed-code.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.zapier.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Getting Embed Code
 
 > Generate embed code snippets for integrating Zapier MCP into your application.

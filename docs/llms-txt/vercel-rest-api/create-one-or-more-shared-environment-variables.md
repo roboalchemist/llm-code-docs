@@ -1,180 +1,132 @@
 # Source: https://vercel.mintlify-docs-rest-api-reference.com/docs/rest-api/reference/endpoints/environment/create-one-or-more-shared-environment-variables.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://vercel.mintlify.app/docs/rest-api/reference/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Create one or more shared environment variables
 
 > Creates shared environment variable(s) for a team.
 
+
+
 ## OpenAPI
 
 ````yaml https://spec.speakeasy.com/vercel/vercel-docs/vercel-oas-with-code-samples post /v1/env
+openapi: 3.0.3
+info:
+  title: Vercel REST API & SDK
+  description: >-
+    The [`@vercel/sdk`](https://www.npmjs.com/package/@vercel/sdk) is a
+    type-safe Typescript SDK that allows you to access the resources and methods
+    of the Vercel REST API. Learn how to [install
+    it](https://vercel.com/docs/rest-api/sdk#installing-vercel-sdk) and
+    [authenticate](https://vercel.com/docs/rest-api/sdk#authentication) with a
+    Vercel access token.
+  contact:
+    email: support@vercel.com
+    name: Vercel Support
+    url: https://vercel.com/support
+  version: 0.0.1
+servers:
+  - url: https://api.vercel.com
+    description: Production API
+security: []
 paths:
-  path: /v1/env
-  method: post
-  servers:
-    - url: https://api.vercel.com
-      description: Production API
-  request:
-    security:
-      - title: bearerToken
-        parameters:
-          query: {}
-          header:
-            Authorization:
-              type: http
-              scheme: bearer
-              description: Default authentication mechanism
-          cookie: {}
-    parameters:
-      path: {}
-      query:
-        teamId:
+  /v1/env:
+    post:
+      tags:
+        - environment
+      summary: Create one or more shared environment variables
+      description: Creates shared environment variable(s) for a team.
+      operationId: createSharedEnvVariable
+      parameters:
+        - description: The Team identifier to perform the request on behalf of.
+          in: query
+          name: teamId
           schema:
-            - type: string
-              description: The Team identifier to perform the request on behalf of.
-              example: team_1a2b3c4d5e6f7g8h9i0j1k2l
-        slug:
+            type: string
+            example: team_1a2b3c4d5e6f7g8h9i0j1k2l
+        - description: The Team slug to perform the request on behalf of.
+          in: query
+          name: slug
           schema:
-            - type: string
-              description: The Team slug to perform the request on behalf of.
-              example: my-team-url-slug
-      header: {}
-      cookie: {}
-    body:
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              evs:
-                allOf:
-                  - &ref_0
-                    type: array
-                    maximum: 50
-                    minimum: 1
-                    items:
-                      type: object
-                      required:
-                        - key
-                        - value
-                      properties:
-                        key:
-                          description: The name of the Shared Environment Variable
-                          type: string
-                          example: API_URL
-                        value:
-                          description: The value of the Shared Environment Variable
-                          type: string
-                          example: https://api.vercel.com
-                        comment:
-                          type: string
-                          description: >-
-                            A comment to add context on what this Shared
-                            Environment Variable is for
-                          example: database connection string for production
-                          maxLength: 500
-              type:
-                allOf:
-                  - &ref_1
-                    description: The type of environment variable
-                    type: string
+            type: string
+            example: my-team-url-slug
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - evs
+              anyOf:
+                - required:
+                    - target
+                - required:
+                    - applyToAllCustomEnvironments
+              properties:
+                evs:
+                  type: array
+                  maximum: 50
+                  minimum: 1
+                  items:
+                    type: object
+                    required:
+                      - key
+                      - value
+                    properties:
+                      key:
+                        description: The name of the Shared Environment Variable
+                        type: string
+                        example: API_URL
+                      value:
+                        description: The value of the Shared Environment Variable
+                        type: string
+                        example: https://api.vercel.com
+                      comment:
+                        type: string
+                        description: >-
+                          A comment to add context on what this Shared
+                          Environment Variable is for
+                        example: database connection string for production
+                        maxLength: 500
+                type:
+                  description: The type of environment variable
+                  type: string
+                  enum:
+                    - encrypted
+                    - sensitive
+                  example: encrypted
+                target:
+                  description: The target environment of the Shared Environment Variable
+                  type: array
+                  items:
                     enum:
-                      - encrypted
-                      - sensitive
-                    example: encrypted
-              target:
-                allOf:
-                  - &ref_2
-                    description: The target environment of the Shared Environment Variable
-                    type: array
-                    items:
-                      enum:
-                        - production
-                        - preview
-                        - development
-                    example:
                       - production
                       - preview
-              projectId:
-                allOf:
-                  - &ref_3
-                    description: Associate a Shared Environment Variable to projects.
-                    type: array
+                      - development
+                  example:
+                    - production
+                    - preview
+                projectId:
+                  description: Associate a Shared Environment Variable to projects.
+                  type: array
+                  items:
+                    type: string
+                  example:
+                    - prj_2WjyKQmM8ZnGcJsPWMrHRHrE
+                    - prj_2WjyKQmM8ZnGcJsPWMrHRCRV
+                  deprecated: true
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                properties:
+                  created:
                     items:
-                      type: string
-                    example:
-                      - prj_2WjyKQmM8ZnGcJsPWMrHRHrE
-                      - prj_2WjyKQmM8ZnGcJsPWMrHRCRV
-                    deprecated: true
-            requiredProperties:
-              - evs
-              - target
-          - type: object
-            properties:
-              evs:
-                allOf:
-                  - *ref_0
-              type:
-                allOf:
-                  - *ref_1
-              target:
-                allOf:
-                  - *ref_2
-              projectId:
-                allOf:
-                  - *ref_3
-            requiredProperties:
-              - evs
-              - applyToAllCustomEnvironments
-        examples:
-          example:
-            value:
-              evs:
-                - key: API_URL
-                  value: https://api.vercel.com
-                  comment: database connection string for production
-              type: encrypted
-              target:
-                - production
-                - preview
-              projectId:
-                - prj_2WjyKQmM8ZnGcJsPWMrHRHrE
-                - prj_2WjyKQmM8ZnGcJsPWMrHRCRV
-    codeSamples:
-      - label: createSharedEnvVariable
-        lang: typescript
-        source: |-
-          import { Vercel } from "@vercel/sdk";
-
-          const vercel = new Vercel({
-            bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
-          });
-
-          async function run() {
-            const result = await vercel.environment.createSharedEnvVariable({
-              teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
-              slug: "my-team-url-slug",
-              requestBody: {
-                evs: [],
-                type: "encrypted",
-                target: [
-                  "production",
-                  "preview",
-                ],
-              },
-            });
-
-            console.log(result);
-          }
-
-          run();
-  response:
-    '201':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              created:
-                allOf:
-                  - items:
                       properties:
                         created:
                           type: string
@@ -264,18 +216,24 @@ paths:
                               - production
                               - preview
                               - development
-                            description: environments this env variable targets
                             example: production
+                            description: environments this env variable targets
                           type: array
                           description: environments this env variable targets
                           example: production
                         applyToAllCustomEnvironments:
                           type: boolean
+                          enum:
+                            - false
+                            - true
                           description: >-
                             whether or not this env varible applies to custom
                             environments
                         decrypted:
                           type: boolean
+                          enum:
+                            - false
+                            - true
                           description: whether or not this env variable is decrypted
                         comment:
                           type: string
@@ -287,9 +245,8 @@ paths:
                           description: The last editor full name or username.
                       type: object
                     type: array
-              failed:
-                allOf:
-                  - items:
+                  failed:
+                    items:
                       properties:
                         error:
                           properties:
@@ -349,83 +306,27 @@ paths:
                         - error
                       type: object
                     type: array
-            requiredProperties:
-              - created
-              - failed
-        examples:
-          example:
-            value:
-              created:
-                - created: '2021-02-10T13:11:49.180Z'
-                  key: my-api-key
-                  ownerId: team_LLHUOMOoDlqOp8wPE4kFo9pE
-                  id: env_XCG7t7AIHuO2SBA8667zNUiM
-                  createdBy: 2qDDuGFTWXBLDNnqZfWPDp1A
-                  deletedBy: 2qDDuGFTWXBLDNnqZfWPDp1A
-                  updatedBy: 2qDDuGFTWXBLDNnqZfWPDp1A
-                  createdAt: 1609492210000
-                  deletedAt: 1609492210000
-                  updatedAt: 1609492210000
-                  value: <string>
-                  projectId:
-                    - prj_2WjyKQmM8ZnGcJsPWMrHRHrE
-                    - prj_2WjyKQmM8ZnGcJsPWMrasEFg
-                  type: encrypted
-                  target: production
-                  applyToAllCustomEnvironments: true
-                  decrypted: true
-                  comment: <string>
-                  lastEditedByDisplayName: <string>
-              failed:
-                - error:
-                    code: <string>
-                    message: <string>
-                    key: <string>
-                    envVarId: <string>
-                    envVarKey: <string>
-                    action: <string>
-                    link: <string>
-                    value: <string>
-                    gitBranch: <string>
-                    target:
-                      - production
-                    project: <string>
-        description: ''
-    '400':
-      _mintlify/placeholder:
-        schemaArray:
-          - type: any
-            description: One of the provided values in the request body is invalid.
-        examples: {}
-        description: One of the provided values in the request body is invalid.
-    '401':
-      _mintlify/placeholder:
-        schemaArray:
-          - type: any
-            description: The request is not authorized.
-        examples: {}
-        description: The request is not authorized.
-    '402':
-      _mintlify/placeholder:
-        schemaArray:
-          - type: any
-            description: |-
-              The account was soft-blocked for an unhandled reason.
-              The account is missing a payment so payment method must be updated
-        examples: {}
-        description: |-
-          The account was soft-blocked for an unhandled reason.
-          The account is missing a payment so payment method must be updated
-    '403':
-      _mintlify/placeholder:
-        schemaArray:
-          - type: any
-            description: You do not have permission to access this resource.
-        examples: {}
-        description: You do not have permission to access this resource.
-  deprecated: false
-  type: path
+                required:
+                  - created
+                  - failed
+                type: object
+        '400':
+          description: One of the provided values in the request body is invalid.
+        '401':
+          description: The request is not authorized.
+        '402':
+          description: |-
+            The account was soft-blocked for an unhandled reason.
+            The account is missing a payment so payment method must be updated
+        '403':
+          description: You do not have permission to access this resource.
+      security:
+        - bearerToken: []
 components:
-  schemas: {}
+  securitySchemes:
+    bearerToken:
+      type: http
+      description: Default authentication mechanism
+      scheme: bearer
 
 ````

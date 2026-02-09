@@ -52,15 +52,13 @@ Once defined, Warp automatically follows these instructions when a schema file i
 
 {% stepper %}
 {% step %}
-
-### When the schema updates — update server types
+**When the schema updates — update server types**
 
 `cd` into the server repository and run the appropriate commands to regenerate/update server-side types based on the changed schema.
 {% endstep %}
 
 {% step %}
-
-### When the schema updates — update client types
+**When the schema updates — update client types**
 
 `cd` into the client repository and run the appropriate commands to regenerate/update client-side types so the client stays in sync with the schema changes.
 {% endstep %}

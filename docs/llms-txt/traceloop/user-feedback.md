@@ -1,5 +1,9 @@
 # Source: https://www.traceloop.com/docs/openllmetry/tracing/user-feedback.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.traceloop.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Tracking User Feedback
 
 When building LLM applications, it quickly becomes highly useful and important to track user feedback on the result of your LLM workflow.
@@ -47,8 +51,3 @@ For example, to implement thumbs-up/thumbs-down feedback, create an annotation t
   });
   ```
 </CodeGroup>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://www.traceloop.com/docs/llms.txt

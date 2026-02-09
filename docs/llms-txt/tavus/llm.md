@@ -1,5 +1,9 @@
 # Source: https://docs.tavus.io/sections/conversational-video-interface/persona/llm.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.tavus.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Large Language Model (LLM)
 
 > Learn how to use Tavus-optimized LLMs or integrate your own custom LLM.
@@ -12,11 +16,7 @@ The **LLM Layer** in Tavus enables your persona to generate intelligent, context
 
 Select one of the available models:
 
-<Note>
-  `tavus-llama-4` is the default model and runs an optimized variant of **Llama-4-17B**.
-</Note>
-
-* `tavus-llama-4` (Recommended)
+* `tavus-gpt-oss` (Recommended)
 * `tavus-gpt-4o`
 * `tavus-gpt-4o-mini`
 
@@ -30,7 +30,7 @@ Select one of the available models:
 </Note>
 
 ```json  theme={null}
-"model": "tavus-llama-4"
+"model": "tavus-gpt-oss"
 ```
 
 ### 2. `tools`
@@ -53,6 +53,21 @@ When set to `true`, the LLM begins processing speech transcriptions before user 
   This is field is optional, but recommended for better performance.
 </Note>
 
+### 4. `extra_body`
+
+Add parameters to customize the LLM request. For Tavus-hosted models, you can pass `temperature` and `top_p`:
+
+```json  theme={null}
+"extra_body": {
+  "temperature": 0.7,
+  "top_p": 0.9
+}
+```
+
+<Note>
+  This field is optional.
+</Note>
+
 ### Example Configuration
 
 ```json  theme={null}
@@ -65,7 +80,11 @@ When set to `true`, the LLM begins processing speech transcriptions before user 
   "layers": {
     "llm": {
       "model": "tavus-gpt-4o",
-      "speculative_inference": true
+      "speculative_inference": true,
+      "extra_body": {
+        "temperature": 0.7,
+        "top_p": 0.9
+      }
     }
   }
 }
@@ -154,16 +173,32 @@ Optional headers for authenticating with your LLM.
 
 ### 7. `extra_body`
 
-Add parameters to customize the LLM request, such as temperature.
+Add parameters to customize the LLM request. You can pass any parameters that your LLM provider supports:
 
 ```json  theme={null}
 "extra_body": {
-  "temperature": 0.5
+  "temperature": 0.5,
+  "top_p": 0.9,
+  "frequency_penalty": 0.5
 }
 ```
 
 <Note>
-  This is field is optional.
+  This field is optional.
+</Note>
+
+### 8. `default_query`
+
+Add default query parameters that get appended to the base URL when making requests to the `/chat/completions` endpoint.
+
+```json  theme={null}
+"default_query": {
+  "api-version": "2024-02-15-preview"
+}
+```
+
+<Note>
+  This field is optional. Useful for LLM providers that require query parameters for authentication or versioning.
 </Note>
 
 ### Example Configuration
@@ -177,10 +212,13 @@ Add parameters to customize the LLM request, such as temperature.
   "default_replica_id": "r665388ec672",
   "layers": {
     "llm": {
-      "model": "gpt-3.5-turbo",
-      "base_url": "https://api.openai.com/v1",
+      "model": "gpt-4o",
+      "base_url": "https://your-azure-openai.openai.azure.com/openai/deployments/gpt-4o",
       "api_key": "your-api-key",
-      "speculative_inference": true
+      "speculative_inference": true,
+      "default_query": {
+        "api-version": "2024-02-15-preview"
+      }
     }
   }
 }

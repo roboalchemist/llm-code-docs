@@ -14,7 +14,7 @@ We'll be covering both of these cases in this brief lesson.
 
 Sometimes, you need your custom code to run before any other code is run on the page. Perhaps you need to modify an object's prototype, or even re-define certain global variables before they are used by the page's native scripts.
 
-Luckily, Puppeteer and Playwright both have functions for this. In Puppeteer, we use the https://pptr.dev/api/puppeteer.page.evaluateonnewdocument function, while in Playwright we use https://playwright.dev/docs/api/class-page#page-add-init-script. We'll use these functions to override the native `addEventListener` function, setting it to a function that does nothing. This will prevent event listeners from being added to elements.
+Luckily, Puppeteer and Playwright both have functions for this. In Puppeteer, we use the [page.evaluateOnNewDocument()](https://pptr.dev/api/puppeteer.page.evaluateonnewdocument) function, while in Playwright we use [page.addInitScript()](https://playwright.dev/docs/api/class-page#page-add-init-script). We'll use these functions to override the native `addEventListener` function, setting it to a function that does nothing. This will prevent event listeners from being added to elements.
 
 * Playwright
 * Puppeteer
@@ -69,7 +69,7 @@ const returnMessage = () => 'Apify academy!';
 ```
 
 
-We want to **expose** this function to our loaded page so that it can be later executed there, which can be done with https://playwright.dev/docs/api/class-page#page-expose-function. This will make `returnMessage()` available when running scripts not only inside of `page.evaluate()`, but also directly from DevTools.
+We want to **expose** this function to our loaded page so that it can be later executed there, which can be done with [page.exposeFunction()](https://playwright.dev/docs/api/class-page#page-expose-function). This will make `returnMessage()` available when running scripts not only inside of `page.evaluate()`, but also directly from DevTools.
 
 * Playwright
 * Puppeteer
@@ -118,4 +118,4 @@ await browser.close();
 
 ## Next up
 
-Next, we'll be learning a bit about how to extract data using Playwright/Puppeteer. You can use one of the two main ways to do this, so https://docs.apify.com/academy/puppeteer-playwright/executing-scripts/collecting-data.md will be about both of them!
+Next, we'll be learning a bit about how to extract data using Playwright/Puppeteer. You can use one of the two main ways to do this, so [the next exciting lesson](https://docs.apify.com/academy/puppeteer-playwright/executing-scripts/collecting-data.md) will be about both of them!

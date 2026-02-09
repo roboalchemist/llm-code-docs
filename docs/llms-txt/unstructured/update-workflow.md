@@ -1,289 +1,210 @@
 # Source: https://docs.unstructured.io/api-reference/workflows/update-workflow.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.unstructured.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Update Workflow
 
 > Update an existing workflow's name, connectors, schedule, or workflow type.
 
+
+
 ## OpenAPI
 
 ````yaml https://platform.unstructuredapp.io/openapi.json put /api/v1/workflows/{workflow_id}
+openapi: 3.1.0
+info:
+  title: Platform API
+  version: 3.1.0
+servers:
+  - url: https://platform.unstructuredapp.io/
+    description: Unstructured Platform API
+    x-speakeasy-server-id: platform-api
+security: []
 paths:
-  path: /api/v1/workflows/{workflow_id}
-  method: put
-  servers:
-    - url: https://platform.unstructuredapp.io/
-      description: Unstructured Platform API
-  request:
-    security:
-      - title: HTTPBearer
-        parameters:
-          query: {}
-          header:
-            Authorization:
-              type: http
-              scheme: bearer
-          cookie: {}
-    parameters:
-      path:
-        workflow_id:
+  /api/v1/workflows/{workflow_id}:
+    put:
+      tags:
+        - workflows
+      summary: Update Workflow
+      description: >-
+        Update an existing workflow's name, connectors, schedule, or workflow
+        type.
+      operationId: update_workflow
+      parameters:
+        - name: workflow_id
+          in: path
+          required: true
           schema:
-            - type: string
-              required: true
-              title: Workflow Id
-              format: uuid
-      query: {}
-      header:
-        unstructured-api-key:
+            type: string
+            format: uuid
+            title: Workflow Id
+        - name: unstructured-api-key
+          in: header
+          required: false
           schema:
-            - type: string
-              required: false
-              title: Unstructured-Api-Key
-            - type: 'null'
-              required: false
-              title: Unstructured-Api-Key
-      cookie: {}
-    body:
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              name:
-                allOf:
-                  - anyOf:
-                      - type: string
-                      - type: 'null'
-                    title: Name
-              source_id:
-                allOf:
-                  - anyOf:
-                      - type: string
-                        format: uuid
-                      - type: 'null'
-                    title: Source Id
-              destination_id:
-                allOf:
-                  - anyOf:
-                      - type: string
-                        format: uuid
-                      - type: 'null'
-                    title: Destination Id
-              workflow_type:
-                allOf:
-                  - anyOf:
-                      - $ref: '#/components/schemas/WorkflowType'
-                      - type: 'null'
-              workflow_nodes:
-                allOf:
-                  - anyOf:
-                      - items:
-                          $ref: '#/components/schemas/WorkflowNode'
-                        type: array
-                      - type: 'null'
-                    title: Workflow Nodes
-              template_id:
-                allOf:
-                  - anyOf:
-                      - type: string
-                      - type: 'null'
-                    title: Template Id
-              schedule:
-                allOf:
-                  - anyOf:
-                      - type: string
-                        enum:
-                          - every 15 minutes
-                          - every hour
-                          - every 2 hours
-                          - every 4 hours
-                          - every 6 hours
-                          - every 8 hours
-                          - every 10 hours
-                          - every 12 hours
-                          - daily
-                          - weekly
-                          - monthly
-                      - type: 'null'
-                    title: Schedule
-              reprocess_all:
-                allOf:
-                  - anyOf:
-                      - type: boolean
-                      - type: 'null'
-                    title: Reprocess All
-            required: true
-            title: UpdateWorkflow
-            refIdentifier: '#/components/schemas/UpdateWorkflow'
-        examples:
-          example:
-            value:
-              name: <string>
-              source_id: 3c90c3cc-0d44-4b50-8888-8dd25736052a
-              destination_id: 3c90c3cc-0d44-4b50-8888-8dd25736052a
-              workflow_type: basic
-              workflow_nodes:
-                - id: 3c90c3cc-0d44-4b50-8888-8dd25736052a
-                  name: <string>
-                  type: <string>
-                  subtype: <string>
-                  settings: {}
-              template_id: <string>
-              schedule: every 15 minutes
-              reprocess_all: true
-  response:
-    '200':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              id:
-                allOf:
-                  - type: string
-                    format: uuid
-                    title: Id
-              name:
-                allOf:
-                  - type: string
-                    title: Name
-              sources:
-                allOf:
-                  - items:
-                      type: string
-                      format: uuid
-                    type: array
-                    title: Sources
-              destinations:
-                allOf:
-                  - items:
-                      type: string
-                      format: uuid
-                    type: array
-                    title: Destinations
-              workflow_type:
-                allOf:
-                  - anyOf:
-                      - $ref: '#/components/schemas/WorkflowType'
-                      - type: 'null'
-              workflow_nodes:
-                allOf:
-                  - items:
-                      $ref: '#/components/schemas/WorkflowNode'
-                    type: array
-                    title: Workflow Nodes
-              schedule:
-                allOf:
-                  - anyOf:
-                      - $ref: '#/components/schemas/WorkflowSchedule'
-                      - type: 'null'
-              status:
-                allOf:
-                  - $ref: '#/components/schemas/WorkflowState'
-              created_at:
-                allOf:
-                  - type: string
-                    format: date-time
-                    title: Created At
-              updated_at:
-                allOf:
-                  - anyOf:
-                      - type: string
-                        format: date-time
-                      - type: 'null'
-                    title: Updated At
-              reprocess_all:
-                allOf:
-                  - type: boolean
-                    title: Reprocess All
-                    default: false
-            title: WorkflowInformation
-            refIdentifier: '#/components/schemas/WorkflowInformation'
-            requiredProperties:
-              - id
-              - name
-              - sources
-              - destinations
-              - workflow_nodes
-              - status
-              - created_at
-        examples:
-          example:
-            value:
-              id: 3c90c3cc-0d44-4b50-8888-8dd25736052a
-              name: <string>
-              sources:
-                - 3c90c3cc-0d44-4b50-8888-8dd25736052a
-              destinations:
-                - 3c90c3cc-0d44-4b50-8888-8dd25736052a
-              workflow_type: basic
-              workflow_nodes:
-                - id: 3c90c3cc-0d44-4b50-8888-8dd25736052a
-                  name: <string>
-                  type: <string>
-                  subtype: <string>
-                  settings: {}
-              schedule:
-                crontab_entries:
-                  - cron_expression: 0 0 * * *
-              status: active
-              created_at: '2023-11-07T05:31:56Z'
-              updated_at: '2023-11-07T05:31:56Z'
-              reprocess_all: false
-        description: Successful Response
-    '422':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              detail:
-                allOf:
-                  - items:
-                      $ref: '#/components/schemas/ValidationError'
-                    type: array
-                    title: Detail
-            title: HTTPValidationError
-            refIdentifier: '#/components/schemas/HTTPValidationError'
-        examples:
-          example:
-            value:
-              detail:
-                - loc:
-                    - <string>
-                  msg: <string>
-                  type: <string>
-        description: Validation Error
-  deprecated: false
-  type: path
-components:
-  schemas:
-    CronTabEntry:
-      properties:
-        cron_expression:
-          type: string
-          title: Cron Expression
-      type: object
-      required:
-        - cron_expression
-      title: CronTabEntry
-    ValidationError:
-      properties:
-        loc:
-          items:
             anyOf:
               - type: string
-              - type: integer
+              - type: 'null'
+            title: Unstructured-Api-Key
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateWorkflow'
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WorkflowInformation'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+components:
+  schemas:
+    UpdateWorkflow:
+      properties:
+        name:
+          anyOf:
+            - type: string
+            - type: 'null'
+          title: Name
+        source_id:
+          anyOf:
+            - type: string
+              format: uuid
+            - type: 'null'
+          title: Source Id
+        destination_id:
+          anyOf:
+            - type: string
+              format: uuid
+            - type: 'null'
+          title: Destination Id
+        workflow_type:
+          anyOf:
+            - $ref: '#/components/schemas/WorkflowType'
+            - type: 'null'
+        workflow_nodes:
+          anyOf:
+            - items:
+                $ref: '#/components/schemas/WorkflowNode'
+              type: array
+            - type: 'null'
+          title: Workflow Nodes
+        template_id:
+          anyOf:
+            - type: string
+            - type: 'null'
+          title: Template Id
+        schedule:
+          anyOf:
+            - type: string
+              enum:
+                - every 15 minutes
+                - every hour
+                - every 2 hours
+                - every 4 hours
+                - every 6 hours
+                - every 8 hours
+                - every 10 hours
+                - every 12 hours
+                - daily
+                - weekly
+                - monthly
+            - type: 'null'
+          title: Schedule
+        reprocess_all:
+          anyOf:
+            - type: boolean
+            - type: 'null'
+          title: Reprocess All
+      type: object
+      title: UpdateWorkflow
+    WorkflowInformation:
+      properties:
+        id:
+          type: string
+          format: uuid
+          title: Id
+        name:
+          type: string
+          title: Name
+        sources:
+          items:
+            type: string
+            format: uuid
           type: array
-          title: Location
-        msg:
+          title: Sources
+        destinations:
+          items:
+            type: string
+            format: uuid
+          type: array
+          title: Destinations
+        workflow_type:
+          anyOf:
+            - $ref: '#/components/schemas/WorkflowType'
+            - type: 'null'
+        workflow_nodes:
+          items:
+            $ref: '#/components/schemas/WorkflowNode'
+          type: array
+          title: Workflow Nodes
+        schedule:
+          anyOf:
+            - $ref: '#/components/schemas/WorkflowSchedule'
+            - type: 'null'
+        status:
+          $ref: '#/components/schemas/WorkflowState'
+        created_at:
           type: string
-          title: Message
-        type:
-          type: string
-          title: Error Type
+          format: date-time
+          title: Created At
+        updated_at:
+          anyOf:
+            - type: string
+              format: date-time
+            - type: 'null'
+          title: Updated At
+        reprocess_all:
+          type: boolean
+          title: Reprocess All
+          default: false
       type: object
       required:
-        - loc
-        - msg
-        - type
-      title: ValidationError
+        - id
+        - name
+        - sources
+        - destinations
+        - workflow_nodes
+        - status
+        - created_at
+      title: WorkflowInformation
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
+    WorkflowType:
+      type: string
+      enum:
+        - basic
+        - advanced
+        - platinum
+        - custom
+      title: WorkflowType
     WorkflowNode:
       properties:
         id:
@@ -333,14 +254,35 @@ components:
         - active
         - inactive
       title: WorkflowState
-    WorkflowType:
-      type: string
-      enum:
-        - basic
-        - advanced
-        - platinum
-        - custom
-        - template
-      title: WorkflowType
+    ValidationError:
+      properties:
+        loc:
+          items:
+            anyOf:
+              - type: string
+              - type: integer
+          type: array
+          title: Location
+        msg:
+          type: string
+          title: Message
+        type:
+          type: string
+          title: Error Type
+      type: object
+      required:
+        - loc
+        - msg
+        - type
+      title: ValidationError
+    CronTabEntry:
+      properties:
+        cron_expression:
+          type: string
+          title: Cron Expression
+      type: object
+      required:
+        - cron_expression
+      title: CronTabEntry
 
 ````

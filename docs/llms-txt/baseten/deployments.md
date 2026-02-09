@@ -2,13 +2,9 @@
 
 # Source: https://docs.baseten.co/deployment/deployments.md
 
-# Source: https://docs.baseten.co/troubleshooting/deployments.md
-
-# Source: https://docs.baseten.co/deployment/deployments.md
-
-# Source: https://docs.baseten.co/troubleshooting/deployments.md
-
-# Source: https://docs.baseten.co/deployment/deployments.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.baseten.co/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Deployments
 
@@ -49,7 +45,7 @@ Once promoted, the development deployment transitions to a **deployment** and ca
 
 ***
 
-# Environments & Promotion
+# Environments and promotion
 
 Environments provide **logical isolation** for managing deployments but are **not required** for a deployment to function. A deployment can be executed independently or promoted to an environment for controlled traffic allocation and scaling.
 

@@ -1,5 +1,9 @@
 # Source: https://docs.pipecat.ai/guides/fundamentals/recording-audio.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pipecat.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Recording Conversation Audio
 
 > Learn how to record and save audio from conversations between users and your bot
@@ -38,9 +42,13 @@ The `AudioBufferProcessor` captures audio by:
 The `AudioBufferProcessor` offers several configuration options:
 
 * **Composite recording**: Combined audio from both user and bot
+  * `on_audio_data` event handler
 * **Track-level recording**: Separate audio files for user and bot
+  * `on_track_audio_data` event handler
 * **Turn-based recording**: Individual audio clips for each speaking turn
+  * `on_user_turn_audio_data` and `on_bot_turn_audio_data` event handlers
 * **Mono or stereo output**: Single channel mixing or two-channel separation
+  * `num_channels=1` for mono; `num_channels=2` for stereo
 
 ## Basic Implementation
 
@@ -129,7 +137,8 @@ For conversations that last a few minutes, it may be sufficient to just buffer t
 1. **Memory Usage**: Long recordings can consume significant memory, leading to potential crashes or performance issues.
 2. **Conversation Loss**: If the application crashes or the connection drops, you may lose all recorded audio.
 
-Instead, consider using a chunked approach to record audio in manageable segments. This allows you to periodically save audio data to disk or upload it to cloud storage, reducing memory usage and ensuring data persistence.
+Instead, use the `buffer_size` parameter to record audio in manageable segments. This allows you to periodically save audio data to disk or upload it to cloud storage, reducing memory usage and ensuring data persistence.
+See an example of how to upload chunked audio to AWS cloud storage [here]().
 
 ### Chunked Recording
 
@@ -159,14 +168,16 @@ async def on_chunk_ready(buffer, user_audio, bot_audio, sample_rate, num_channel
 
 ### Multipart Upload Strategy
 
-For cloud storage, consider using multipart uploads to stream audio chunks:
+For cloud storage, use multipart uploads to stream audio chunks. For example AWS cloud storage, use the [s3 multipart upload API](https://docs.aws.amazon.com/AmazonS3/latest/userguide/mpuoverview.html).
+
+If you are rolling your own multipart upload code, consider the following:
 
 **Conceptual Approach:**
 
 1. **Initialize multipart upload** when recording starts
 2. **Upload chunks as parts** when buffers fill (every \~30 seconds)
 3. **Complete multipart upload** when recording ends
-4. **Post-process** to create final WAV file(s)
+4. **Post-process** to create final WAV file(s), concatenate audio chunks
 
 **Benefits:**
 
@@ -175,9 +186,10 @@ For cloud storage, consider using multipart uploads to stream audio chunks:
 * Enables real-time processing and analysis
 * Parallel upload of multiple tracks
 
-### Post-Processing Pipeline
+### \[Optional] Post-Processing Pipeline
 
-After uploading chunks, create final audio files using tools like FFmpeg:
+If not using a managed multipart upload framework like AWS s3 multipart upload, concatenate audio chunks together to create final audio files.
+This can be done with tools like FFmpeg:
 
 **Concatenating Audio Files:**
 
@@ -215,8 +227,3 @@ ffmpeg -f concat -safe 0 -i filelist.txt -c copy final_recording.wav
 </CardGroup>
 
 Consider implementing audio recording in your application for quality assurance, training data collection, or creating conversation archives. The recorded audio can be stored locally, uploaded to cloud storage, or processed in real-time for further analysis.
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.pipecat.ai/llms.txt

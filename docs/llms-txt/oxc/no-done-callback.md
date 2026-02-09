@@ -3,7 +3,6 @@
 ---
 url: /docs/guide/usage/linter/rules/jest/no-done-callback.md
 ---
-# jest/no-done-callback&#x20;
 
 ### What it does
 

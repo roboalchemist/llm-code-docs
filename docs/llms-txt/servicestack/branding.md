@@ -64,9 +64,9 @@ const Brand = {
 export default Brand
 ```
 
-To render its [custom App Brand component](https://vue-vite-api.jamstacks.net/ui):
+To render its [custom App Brand component](https://vue-spa.web-templates.io/ui):
 
-[![](/img/pages/locode/custom-brand.png)](https://vue-vite-api.jamstacks.net/ui)
+[![](/img/pages/locode/custom-brand.png)](https://vue-spa.web-templates.io/ui)
 
 ## Custom Table Icons
 
@@ -169,6 +169,7 @@ We can add the `[Tag]` attribute to all our Database-First Request DTOs using [A
 
 ```cs
 GenerateCrudServices = new GenerateCrudServices {
+    DbFactory = dbFactory,
     AutoRegister = true,
     ServiceFilter = (op, req) => {
         // Annotate all Auto generated Request DTOs with [Tag("Northwind")] attribute

@@ -25,7 +25,7 @@ This enables:
 *   A smooth dev loop, from prototype to deployment
 *   A unique way to build, debug, and validate smart contract logic and frontend behavior â all in one place
 
-![A screenshot of the DEV Console UI login screen](/assets/images/login-c6e898b09eac53a54e6f2d2e2b27e03e.webp)
+![A screenshot of the DEV Console UI login screen](/assets/images/login-22bd49b1624f8c4c89c5c1e33b2fc70c.png)
 
 ---
 
@@ -133,8 +133,8 @@ Likewise, not all services are mounted by default - but they can be turned on (o
 | ICP Index | â   | â   |
 | NNS Governance | â   | â   |
 | Cycles Minting (CMC) | â   | â   |
-| Cycles Ledger | â   | â   |
-| Cycles Index | â   | â   |
+| Cycles Ledger | â   | â   |
+| Cycles Index | â   | â   |
 | Registry | â   | â   |
 | SNS | â   | â   |
 | NNS-dapp | â   | â   |
@@ -204,16 +204,16 @@ await initSatellite({  satelliteId: "aaaaa-bbbbb-ccccc-ddddd-cai",  container: f
 
 The admin server running on port `5999` provides a variety of internal management. Below are some tips and example scripts to make use of this little server.
 
-### Get ICP
+### Get Cycles
 
-If you're using the full environment, the Console UI includes a "Get ICP" button in the wallet. It's a quick way to get ICP out of the box.
+If you're using the full environment, the Console UI includes a "Get Cycles" button in the wallet. It's a quick way to get Cycles out of the box.
 
-![A screenshot of the wallet with the Get ICP call to action of Console UI in dev mode](/assets/images/wallet-45c84f1968e0c6a2749b439aace1b0c1.webp)
+![A screenshot of the wallet with the Get Cycles call to action of Console UI in dev mode](/assets/images/wallet-2337251849c790b75db91656c65e61d5.png)
 
-You might want to transfer some ICP from the ledger to a specified principal, which can be particularly useful when you're just getting started developing your app and no users currently own ICP. This can be achieved by querying:
+You might want to transfer some Cycles from the ledger to a specified principal, which can be particularly useful when you're just getting started developing your app and no users currently own Cycles. This can be achieved by querying:
 
 ```
-http://localhost:5999/ledger/transfer/?to=$PRINCIPAL
+http://localhost:5999/ledger/transfer/?to=$PRINCIPAL&ledgerId=um5iw-rqaaa-aaaaq-qaaba-cai&amount330000000000000
 ```
 
 For example, you can use the following script:

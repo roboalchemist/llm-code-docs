@@ -1,5 +1,9 @@
 # Source: https://docs.tavus.io/sections/integrations/embedding-cvi.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.tavus.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Embed Conversational Video Interface
 
 > Learn how to embed Tavus's Conversational Video Interface (CVI) into your site or app.

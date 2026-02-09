@@ -1,5 +1,9 @@
 # Source: https://docs.argil.ai/pages/get-started/credentials.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.argil.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # API Credentials
 
 > Create, manage and safely store your Argil's credentials

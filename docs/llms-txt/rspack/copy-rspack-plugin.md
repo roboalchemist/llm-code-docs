@@ -1,15 +1,17 @@
 # Source: https://rspack.dev/plugins/rspack/copy-rspack-plugin.md
 
-import { Table } from '@builtIns';
-import WebpackLicense from '@components/WebpackLicense';
-import { ApiMeta } from '@components/ApiMeta.tsx';
+CC 4.0 License> The content of this section is derived from the content of the following links and is subject to the CC BY 4.0 license.
+> 
+> - [https://webpack.js.org/plugins/copy-webpack-plugin/#root](https://webpack.js.org/plugins/copy-webpack-plugin/#root)
+> 
+> The following contents can be assumed to be the result of modifications and deletions based on the original contents if not specifically stated.
+> 
+> 
 
-<WebpackLicense from="https://webpack.js.org/plugins/copy-webpack-plugin/#root" />
 
 # CopyRspackPlugin
 
-<ApiMeta specific={['Rspack']} />
-
+Rspack only
 Copies individual files or entire directories, which already exist, to the build directory.
 
 ```js
@@ -18,7 +20,7 @@ new rspack.CopyRspackPlugin(options);
 
 ## Examples
 
-* Copy a single file. If the file does not exist, the plugin will throw an error.
+- Copy a single file. If the file does not exist, the plugin will throw an error.
 
 ```ts title="rspack.config.mjs"
 import { rspack } from '@rspack/core';
@@ -34,7 +36,7 @@ export default {
 };
 ```
 
-* `patterns` can be a string, or an array of objects.
+- `patterns` can be a string, or an array of objects.
 
 ```ts title="rspack.config.mjs"
 import { rspack } from '@rspack/core';
@@ -50,7 +52,7 @@ export default {
 };
 ```
 
-* Copy a directory. If there are no files in the directory, the plugin will throw an error.
+- Copy a directory. If there are no files in the directory, the plugin will throw an error.
 
 ```ts title="rspack.config.mjs"
 import { rspack } from '@rspack/core';
@@ -67,7 +69,7 @@ export default {
 };
 ```
 
-* Use glob pattern to match and copy files.
+- Use glob pattern to match and copy files.
 
 ```ts title="rspack.config.mjs"
 import { rspack } from '@rspack/core';
@@ -93,7 +95,7 @@ export default {
 };
 ```
 
-* Use `to` to specify the destination path.
+- Use `to` to specify the destination path.
 
 ```ts title="rspack.config.mjs"
 import { rspack } from '@rspack/core';
@@ -114,8 +116,8 @@ export default {
 
 ### from
 
-* **Type:** `string`
-* **Default:** `undefined`
+- **Type:** `string`
+- **Default:** `undefined`
 
 The source path of the copy operation, which can be an absolute path, a relative path, or a glob pattern.
 
@@ -156,7 +158,7 @@ export default {
 
 ### to
 
-* **Type:**
+- **Type:**
 
 ```ts
 type To =
@@ -164,7 +166,7 @@ type To =
   | ((pathData: { context: string; absoluteFilename?: string }) => string);
 ```
 
-* **Default:** [output.path](/config/output.md#outputpath)
+- **Default:** [output.path](/config/output.md#outputpath)
 
 The destination path of the copy operation, which can be an absolute path, a relative path, or a template string. If not specified, it is equal to Rspack's [output.path](/config/output.md#outputpath).
 
@@ -193,8 +195,8 @@ export default {
 
 ### context
 
-* **Type:** `string`
-* **Default:** [context](/config/context.md)
+- **Type:** `string`
+- **Default:** [context](/config/context.md)
 
 `context` is a path to be prepended to `from` and removed from the start of the result paths.
 
@@ -219,25 +221,25 @@ export default {
 
 `context` should be explicitly set only when `from` contains a glob. Otherwise, `context` is automatically set based on whether `from` is a file or a directory:
 
-* If `from` is a file, then `context` is its directory. The result path will be the filename alone.
-* If `from` is a directory, then `context` equals `from`. The result paths will be the paths of the directory's contents (including nested contents), relative to the directory.
+- If `from` is a file, then `context` is its directory. The result path will be the filename alone.
+- If `from` is a directory, then `context` equals `from`. The result paths will be the paths of the directory's contents (including nested contents), relative to the directory.
 
 ### toType
 
-* **Type:** `'dir' | 'file' | 'template'`
-* **Default:** `undefined`
+- **Type:** `'dir' | 'file' | 'template'`
+- **Default:** `undefined`
 
 Specify the type of [to](#to), which can be a directory, a file, or a template name in Rspack. If not specified, it will be automatically inferred.
 
 The automatic inference rules are as follows:
 
-* `dir`: If `to` has no extension, or ends on `/`.
-* `file`: If `to` is not a directory and is not a template.
-* `template`: If `to` contains a template pattern.
+- `dir`: If `to` has no extension, or ends on `/`.
+- `file`: If `to` is not a directory and is not a template.
+- `template`: If `to` contains a template pattern.
 
 Examples:
 
-* `dir`:
+- `dir`:
 
 ```js title="rspack.config.mjs"
 export default {
@@ -255,7 +257,7 @@ export default {
 };
 ```
 
-* `file`:
+- `file`:
 
 ```js title="rspack.config.mjs"
 export default {
@@ -273,7 +275,7 @@ export default {
 };
 ```
 
-* `template`:
+- `template`:
 
 ```js title="rspack.config.mjs"
 export default {
@@ -293,8 +295,8 @@ export default {
 
 ### noErrorOnMissing
 
-* **Type:** `boolean`
-* **Default:** `false`
+- **Type:** `boolean`
+- **Default:** `false`
 
 Whether to ignore the error if there are missing files or directories.
 
@@ -315,8 +317,8 @@ export default {
 
 ### force
 
-* **Type:** `boolean`
-* **Default:** `false`
+- **Type:** `boolean`
+- **Default:** `false`
 
 Whether to overwrite the asset if it already exists.
 
@@ -332,8 +334,8 @@ export default {
 
 ### priority
 
-* **Type:** `number`
-* **Default:** `0`
+- **Type:** `number`
+- **Default:** `0`
 
 Allows to specify the priority of copying files with the same destination name.
 
@@ -365,7 +367,7 @@ export default {
 
 ### globOptions
 
-* **Type:**
+- **Type:**
 
 ```ts
 type GlobOptions = {
@@ -381,7 +383,7 @@ type GlobOptions = {
 };
 ```
 
-* **Default:** `undefined`
+- **Default:** `undefined`
 
 Set the glob options for the copy operation.
 
@@ -406,7 +408,7 @@ export default {
 
 ### transform
 
-* **Type:**
+- **Type:**
 
 ```ts
 type transform =
@@ -422,7 +424,7 @@ type transform =
     ) => string | Buffer | Promise<string> | Promise<Buffer>);
 ```
 
-* **Default:** `undefined`
+- **Default:** `undefined`
 
 Allows to modify the file contents.
 
@@ -448,8 +450,8 @@ export default {
 
 ### copyPermissions
 
-* **Type:** `boolean`
-* **Default:** `false`
+- **Type:** `boolean`
+- **Default:** `false`
 
 Whether to copy the file permissions from the source to the destination.
 
@@ -472,7 +474,7 @@ This is particularly useful when copying executable files, scripts, or any files
 
 ### info
 
-* **Type:**
+- **Type:**
 
 ```ts
 type Info = {
@@ -491,7 +493,7 @@ type Info = {
 };
 ```
 
-* **Default:** `undefined`
+- **Default:** `undefined`
 
 Allows to add some assets info to the copied files, which may affect some behaviors in the build process.
 

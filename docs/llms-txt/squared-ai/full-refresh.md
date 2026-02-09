@@ -1,5 +1,9 @@
 # Source: https://docs.squared.ai/guides/data-modelling/sync-modes/full-refresh.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.squared.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Full Refresh
 
 > Full Refresh syncs replace existing data with new data.

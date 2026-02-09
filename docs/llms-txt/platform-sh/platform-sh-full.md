@@ -2002,7 +2002,7 @@ Once the app has gone through all of the build steps, it can connect to services
    The committed build hook runs in the build container.
    During this time, commands have write access to the file system, but there aren't connections to other containers (services and other apps).
 
-   For automated builds, you can use the [`CI` environment variable](https://fixed.docs.upsun.com/development/variables/use-variables.md#use-provided-variables) in build scripts and tooling to modify build behavior (for example, to disable attempts to connect to other containers during the build phase, or to disable interactivity). These modifications can help to prevent build failures. 
+   For automated builds, you can use the [`CI` environment variable](https://fixed.docs.upsun.com/development/variables/use-variables.md#use-provided-variables) in build scripts and tooling to modify build behavior (for example, to disable attempts to connect to other containers during the build phase, or to disable interactivity). These modifications can help to prevent build failures.
    You can also manually [cancel deployments stuck on the build hook](https://fixed.docs.upsun.com/environments/cancel-activity.md).
 
 6. **Freeze app container**:
@@ -2028,7 +2028,7 @@ but the file system is read-only.
 1. **Expose services**:
    Networking connections are opened between any containers specified in your app and services configurations.
 1. **Run (pre-) start commands**:
-   The [commands](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#web-commands) necessary to start your app are run.
+   The [commands](https://fixed.docs.upsun.com/create-apps/image-properties/web.md#web-commands) necessary to start your app are run.
    Often this stage will only include a start command, which is restarted if ever terminated going forward.
    You may also, however, define a `pre_start` command, when you need to run _per-instance_ actions.
    In this case, as you might expect, the `pre_start` command is run, then the `start` command.
@@ -2069,7 +2069,7 @@ Manual deployment is available for **development**, **staging** and **production
 
 ###### Change deployment type
 
-You can adjust deployment behavior in your environment. 
+You can adjust deployment behavior in your environment.
 
 The output should look similar to the example below:
 
@@ -2098,10 +2098,10 @@ Deploying staged changes:
 +---------------+---------------------------+-----------------------------------------------------------+---------+
 | ID            | Created                   | Description                                               | Result  |
 +---------------+---------------------------+-----------------------------------------------------------+---------+
-| 5uh3xwmkh5boq | 2024-11-22T14:01:10+00:00 | Patrick pushed to main                                    | failure |
-| fno2qiodq7e3c | 2024-11-22T13:06:18+00:00 | Arseni updated resource allocation on main                | success |
-| xzvcazrtoafeu | 2024-11-22T13:01:10+00:00 | Pilar added variable HELLO_WORLD to main                  | success |
-| fq73u53ruwloq | 2024-11-22T12:06:17+00:00 | Pilar pushed to main                                      | success |
+| 5uh3xwmkh5boq | 2026-11-22T14:01:10+00:00 | Patrick pushed to main                                    | failure |
+| fno2qiodq7e3c | 2026-11-22T13:06:18+00:00 | Arseni updated resource allocation on main                | success |
+| xzvcazrtoafeu | 2026-11-22T13:01:10+00:00 | Pilar added variable HELLO_WORLD to main                  | success |
+| fq73u53ruwloq | 2026-11-22T12:06:17+00:00 | Pilar pushed to main                                      | success |
 +---------------+---------------------------+-----------------------------------------------------------+---------+
 ```
 
@@ -2650,7 +2650,7 @@ For any potential more details, see the [specific service](https://fixed.docs.up
 ##### 6. Import files
 
 Your app may include content files, meaning files that aren't intended to be part of your codebase so aren't in Git.
-You can upload such files to [mounts you created](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#mounts).
+You can upload such files to [mounts you created](https://fixed.docs.upsun.com/create-apps/image-properties/mounts.md).
 Upload to each mount separately.
 
 Suppose for instance you have the following file mounts defined:
@@ -2731,7 +2731,7 @@ git clone abcdefgh1234567@git.eu.platform.sh:abcdefgh1234567.git project-name
 ##### 2. Download your files
 
 Some files might not be stored in Git,
-such as data your app writes [in mounts](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#mounts).
+such as data your app writes [in mounts](https://fixed.docs.upsun.com/create-apps/image-properties/mounts.md).
 
 You can download your files [using the CLI](https://fixed.docs.upsun.com/development/file-transfer.md#transfer-files-using-the-cli) or [using SSH](https://fixed.docs.upsun.com/development/file-transfer.md#transfer-files-using-an-ssh-client).
 
@@ -2908,7 +2908,7 @@ You can have services that are only exposed to another service as well as servic
 In a clustered application, you can have one of the following configurations:
 
 - Multiple [`.platform.app.yaml` files](https://fixed.docs.upsun.com/create-apps/multi-app.md) in different directories, with separate code bases that deploy separately
-- A single app that spawns one or more [worker instances](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#workers) that run background processes
+- A single app that spawns one or more [worker instances](https://fixed.docs.upsun.com/create-apps/image-properties/workers.md) that run background processes
 
 **Note**: 
 
@@ -2998,7 +2998,7 @@ platform integration:update --project <PROJECT_ID> <SOURCE_INTEGRATION_ID> --pru
 Keeping too many files, especially large binary files, in your Git repository can cause performance and stability issues.
 Therefore, Upsun Fixed recommends that you only commit your source code in Git.
 
-To upload any other files to your app, [create mounts](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#mounts)
+To upload any other files to your app, [create mounts](https://fixed.docs.upsun.com/create-apps/image-properties/mounts.md)
 and [transfer your files directly to them](https://fixed.docs.upsun.com/development/file-transfer.md#transfer-a-file-to-a-mount).
 
 **Note**: 
@@ -3829,7 +3829,7 @@ so you can test with your complete dataset without impacting production.
 The example Django app used in this guide can be migrated solely by importing data into the database.
 Other forms of data, such as user uploads, also need to be migrated in the way described above.
 
-To see how to define directories that are writable at runtime, see the [mounts reference](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#mounts).
+To see how to define directories that are writable at runtime, see the [mounts reference](https://fixed.docs.upsun.com/create-apps/image-properties/mounts.md).
 Then adjust the previous commands to upload files to them.
 
 Go forth and Deploy (even on Friday)!
@@ -5560,11 +5560,11 @@ relationships:
 
 You can define ``<SERVICE_NAME>`` as you like, so long as it’s unique between all defined services
 and matches in both the application and services configuration.
-The example above leverages [default endpoint](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#relationships) configuration for relationships.
-That is, it uses default endpoints behind-the-scenes, providing a [relationship](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#relationships)
+The example above leverages [default endpoint](https://fixed.docs.upsun.com/create-apps/image-properties/relationships.md) configuration for relationships.
+That is, it uses default endpoints behind the scenes, providing a [relationship](https://fixed.docs.upsun.com/create-apps/image-properties/relationships.md)
 (the network address a service is accessible from) that is identical to the name of that service.
 Depending on your needs, instead of default endpoint configuration,
-you can use [explicit endpoint configuration](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#relationships).
+you can use [explicit endpoint configuration](https://fixed.docs.upsun.com/create-apps/image-properties/relationships.md).
 With the above definition, the application container now has [access to the service](https://fixed.docs.upsun.com/add-services/elasticsearch.md#2-define-the-relationship) via the relationship ``<SERVICE_NAME>`` and its corresponding [PLATFORM_RELATIONSHIPS](https://fixed.docs.upsun.com/development/variables/use-variables.md#use-provided-variables).
 
     .platform.app.yaml
@@ -5583,9 +5583,9 @@ relationships:
 
 You can define ``<SERVICE_NAME>`` and ``<RELATIONSHIP_NAME>`` as you like, so long as it’s unique between all defined services and relationships
 and matches in both the application and services configuration.
-The example above leverages [explicit endpoint](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#relationships) configuration for relationships.
+The example above leverages [explicit endpoint](https://fixed.docs.upsun.com/create-apps/image-properties/relationships.md) configuration for relationships.
 Depending on your needs, instead of explicit endpoint configuration,
-you can use [default endpoint configuration](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#relationships).
+you can use [default endpoint configuration](https://fixed.docs.upsun.com/create-apps/image-properties/relationships.md).
 With the above definition, the application container now has [access to the service](#2-define-the-relationship) via the relationship ``<RELATIONSHIP_NAME>`` and its corresponding [PLATFORM_RELATIONSHIPS](https://fixed.docs.upsun.com/development/variables/use-variables.md#use-provided-variables).
 
 ###### Example configuration
@@ -5595,7 +5595,7 @@ With the above definition, the application container now has [access to the serv
 ```yaml  {location=".platform/services.yaml"}
 # The name of the service container. Must be unique within a project.
 elasticsearch:
-  type: elasticsearch:8.5
+  type: elasticsearch:7.10
   disk: 256
 ```
 
@@ -5720,11 +5720,11 @@ relationships:
 
 You can define ``<SERVICE_NAME>`` as you like, so long as it’s unique between all defined services
 and matches in both the application and services configuration.
-The example above leverages [default endpoint](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#relationships) configuration for relationships.
-That is, it uses default endpoints behind-the-scenes, providing a [relationship](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#relationships)
+The example above leverages [default endpoint](https://fixed.docs.upsun.com/create-apps/image-properties/relationships.md) configuration for relationships.
+That is, it uses default endpoints behind the scenes, providing a [relationship](https://fixed.docs.upsun.com/create-apps/image-properties/relationships.md)
 (the network address a service is accessible from) that is identical to the name of that service.
 Depending on your needs, instead of default endpoint configuration,
-you can use [explicit endpoint configuration](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#relationships).
+you can use [explicit endpoint configuration](https://fixed.docs.upsun.com/create-apps/image-properties/relationships.md).
 With the above definition, the application container now has access to the service via the relationship ``<SERVICE_NAME>`` and its corresponding [PLATFORM_RELATIONSHIPS](https://fixed.docs.upsun.com/development/variables/use-variables.md#use-provided-variables).
 
     .platform.app.yaml
@@ -5743,9 +5743,9 @@ relationships:
 
 You can define ``<SERVICE_NAME>`` and ``<RELATIONSHIP_NAME>`` as you like, so long as it’s unique between all defined services and relationships
 and matches in both the application and services configuration.
-The example above leverages [explicit endpoint](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#relationships) configuration for relationships.
+The example above leverages [explicit endpoint](https://fixed.docs.upsun.com/create-apps/image-properties/relationships.md) configuration for relationships.
 Depending on your needs, instead of explicit endpoint configuration,
-you can use [default endpoint configuration](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#relationships).
+you can use [default endpoint configuration](https://fixed.docs.upsun.com/create-apps/image-properties/relationships.md).
 With the above definition, the application container now has [access to the service](#app-configuration) via the relationship ``<RELATIONSHIP_NAME>`` and its corresponding [PLATFORM_RELATIONSHIPS](https://fixed.docs.upsun.com/development/variables/use-variables.md#use-provided-variables).
 
 For PHP, enable the [extension](https://fixed.docs.upsun.com/languages/php/extensions.md) for the service:
@@ -5998,8 +5998,8 @@ relationships:
 ```
 
 You can define ``<SERVICE_NAME>`` as you like, so long as it’s unique between all defined services and matches in both the application and services configuration.
-The example above leverages [default endpoint](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#relationships) configuration for relationships. That is, it uses default endpoints behind-the-scenes, providing a [relationship](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#relationships) (the network address a service is accessible from) that is identical to the name of that service.
-Depending on your needs, instead of default endpoint configuration, you can use [explicit endpoint configuration](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#relationships).
+The example above leverages [default endpoint](https://fixed.docs.upsun.com/create-apps/image-properties/relationships.md) configuration for relationships. That is, it uses default endpoints behind the scenes, providing a [relationship](https://fixed.docs.upsun.com/create-apps/image-properties/relationships.md) (the network address a service is accessible from) that is identical to the name of that service.
+Depending on your needs, instead of default endpoint configuration, you can use [explicit endpoint configuration](https://fixed.docs.upsun.com/create-apps/image-properties/relationships.md).
 With the above definition, the application container now has access to the service via the relationship ``<SERVICE_NAME>`` and its corresponding [PLATFORM_RELATIONSHIPS](https://fixed.docs.upsun.com/development/variables/use-variables.md#use-provided-variables).
 
     .platform.app.yaml
@@ -6018,9 +6018,9 @@ relationships:
 
 You can define ``<SERVICE_NAME>`` and ``<RELATIONSHIP_NAME>`` as you like, so long as it’s unique between all defined services and relationships
 and matches in both the application and services configuration.
-The example above leverages [explicit endpoint](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#relationships) configuration for relationships.
+The example above leverages [explicit endpoint](https://fixed.docs.upsun.com/create-apps/image-properties/relationships.md) configuration for relationships.
 Depending on your needs, instead of explicit endpoint configuration,
-you can use [default endpoint configuration](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#relationships).
+you can use [default endpoint configuration](https://fixed.docs.upsun.com/create-apps/image-properties/relationships.md).
 With the above definition, the application container now has [access to the service](#2-define-the-relationship) via the relationship ``<RELATIONSHIP_NAME>`` and its corresponding [PLATFORM_RELATIONSHIPS](https://fixed.docs.upsun.com/development/variables/use-variables.md#use-provided-variables).
 
 For PHP, enable the [extension](https://fixed.docs.upsun.com/languages/php/extensions.md) for the service:
@@ -6199,8 +6199,8 @@ relationships:
 ```
 
 You can define ``<SERVICE_NAME>`` as you like, so long as it’s unique between all defined services and matches in both the application and services configuration.
-The example above leverages [default endpoint](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#relationships) configuration for relationships. That is, it uses default endpoints behind-the-scenes, providing a [relationship](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#relationships) (the network address a service is accessible from) that is identical to the name of that service.
-Depending on your needs, instead of default endpoint configuration, you can use [explicit endpoint configuration](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#relationships).
+The example above leverages [default endpoint](https://fixed.docs.upsun.com/create-apps/image-properties/relationships.md) configuration for relationships. That is, it uses default endpoints behind the scenes, providing a [relationship](https://fixed.docs.upsun.com/create-apps/image-properties/relationships.md) (the network address a service is accessible from) that is identical to the name of that service.
+Depending on your needs, instead of default endpoint configuration, you can use [explicit endpoint configuration](https://fixed.docs.upsun.com/create-apps/image-properties/relationships.md).
 With the above definition, the application container now has access to the service via the relationship ``<SERVICE_NAME>`` and its corresponding [PLATFORM_RELATIONSHIPS](https://fixed.docs.upsun.com/development/variables/use-variables.md#use-provided-variables).
 
     .platform.app.yaml
@@ -6219,9 +6219,9 @@ relationships:
 
 You can define ``<SERVICE_NAME>`` and ``<RELATIONSHIP_NAME>`` as you like, so long as it’s unique between all defined services and relationships
 and matches in both the application and services configuration.
-The example above leverages [explicit endpoint](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#relationships) configuration for relationships.
+The example above leverages [explicit endpoint](https://fixed.docs.upsun.com/create-apps/image-properties/relationships.md) configuration for relationships.
 Depending on your needs, instead of explicit endpoint configuration,
-you can use [default endpoint configuration](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#relationships).
+you can use [default endpoint configuration](https://fixed.docs.upsun.com/create-apps/image-properties/relationships.md).
 With the above definition, the application container now has access to the service via the relationship ``<RELATIONSHIP_NAME>`` and its corresponding [PLATFORM_RELATIONSHIPS](https://fixed.docs.upsun.com/development/variables/use-variables.md#use-provided-variables).
 
 For PHP, enable the [extension](https://fixed.docs.upsun.com/languages/php/extensions) for the service:
@@ -6546,7 +6546,7 @@ For Drupal sites, the name of the session cookie is based on a hash of the domai
 If you see a bare "File not found" error when accessing your Drupal site with a browser,
 you've pushed your code as a vanilla project but no `index.php` has been found.
 
-Make sure your repository contains an `index.php` file in the [web location root](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#locations).
+Make sure your repository contains an `index.php` file in the [web location root](https://fixed.docs.upsun.com/create-apps/image-properties/web.md#locations).
 
 ### Deploy Ibexa DXP on Upsun Fixed
 
@@ -6570,19 +6570,19 @@ Ibexa DXP is a “commercial extended” version of Ibexa OSS that includes, amo
 
 ##### Remove Varnish configuration
 
-In Ibexa DXP, Varnish is enabled by default when deploying on Upsun Fixed
+In Ibexa DXP, Varnish is enabled by default when deploying on Upsun Fixed.  
 To use Fastly, Varnish must be disabled:
 
-- Remove environment variable `TRUSTED_PROXIES: "REMOTE_ADDR"` in [`.platform.app.yaml](https://github.com/ezsystems/ezplatform/blob/master/.platform.app.yaml)
-- Remove the Varnish service in [`.platform/services.yaml`](https://github.com/ezsystems/ezplatform/blob/master/.platform/services.yaml)
-- In [`.platform/routes.yaml`](https://github.com/ezsystems/ezplatform/blob/master/.platform/routes.yaml),
+- Remove environment variable `TRUSTED_PROXIES: "REMOTE_ADDR"` in [`.platform.app.yaml`](https://github.com/ibexa/post-install/blob/4.6/resources/platformsh/ibexa-commerce/4.6/.platform.app.yaml#L66)
+- Remove the Varnish service in [`.platform/services.yaml`](https://github.com/ibexa/post-install/blob/4.6/resources/platformsh/common/4.6/.platform/services.yaml#L80-L87)
+- In [`.platform/routes.yaml`](https://github.com/ibexa/post-install/blob/4.6/resources/platformsh/common/4.6/.platform/routes.yaml#L3),
    change routes to use `myapp` instead of the `varnish` service you removed in previous step:
 
 ```diff {no-copy="true"}
  "https://{default}/":
      type: upstream
 -     upstream: "varnish:http"
-+     upstream: "myapp:http"
++     upstream: "app:http"
 ```
 
 ##### Setting up Ibexa DXP to use Fastly
@@ -6600,9 +6600,9 @@ Using the CLI, run the following commands to set the configuration on your produ
 (Note that they inherit to all other environments by default unless overridden.)
 
 ```bash
-platform variable:create -e main --level environment env:HTTPCACHE_PURGE_TYPE --value 'fastly'
-platform variable:create -e main --level environment env:FASTLY_SERVICE_ID --value 'YOUR_ID_HERE'
-platform variable:create -e main --level environment env:FASTLY_KEY --value 'YOUR_TOKEN_HERE'
+ibexa_cloud variable:create -e main --level environment env:HTTPCACHE_PURGE_TYPE --value 'fastly'
+ibexa_cloud variable:create -e main --level environment env:FASTLY_SERVICE_ID --value 'YOUR_ID_HERE'
+ibexa_cloud variable:create -e main --level environment env:FASTLY_KEY --value 'YOUR_TOKEN_HERE'
 ```
 
 Replacing `YOUR_ID_HERE` with the Fastly Service ID and Key obtained from Fastly.
@@ -6610,9 +6610,9 @@ Replacing `YOUR_ID_HERE` with the Fastly Service ID and Key obtained from Fastly
 Note: On a Dedicated Gen 2 cluster, set those values on the `production` branch:
 
 ```bash
-platform variable:set -e production env:HTTPCACHE_PURGE_TYPE fastly
-platform variable:set -e production env:FASTLY_SERVICE_ID YOUR_ID_HERE
-platform variable:set -e production env:FASTLY_KEY YOUR_TOKEN_HERE
+ibexa_cloud variable:set -e production env:HTTPCACHE_PURGE_TYPE fastly
+ibexa_cloud variable:set -e production env:FASTLY_SERVICE_ID YOUR_ID_HERE
+ibexa_cloud variable:set -e production env:FASTLY_KEY YOUR_TOKEN_HERE
 ```
 
 ##### Setup the correct VCL files
@@ -7259,7 +7259,7 @@ symfony ssh -- symfony var:export --multiline
 ```
 
 Each exposed environment variable is prefixed by the relationship name.
-For example, if you have the following [relationships](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#relationships) in your configuration:
+For example, if you have the following [relationships](https://fixed.docs.upsun.com/create-apps/image-properties/relationships.md) in your configuration:
 
 ```yaml
 relationships:
@@ -7471,7 +7471,7 @@ The ``commands.start`` key is required.
 It specifies the command you can use to launch the application worker.
 If the command specified by the ``start`` key terminates, it's restarted automatically.
 
-For more information, see [Workers](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#workers).
+For more information, see [Workers](https://fixed.docs.upsun.com/create-apps/image-properties/workers.md).
 
 **Warning**: 
 
@@ -7681,7 +7681,7 @@ Note that the environment variables are available in the deploy hook.
 To display the application log file (`/var/log/app.log` file), run the following command:
 
 ```bash
-symfony log app --tail
+symfony env:log app --tail
 ```
 
 All the log messages generated by your app are sent to this `app.log` file.
@@ -7728,11 +7728,12 @@ To fix this issue, search your application logs.
 They likely contain an error message describing the root cause:
 
 ```bash
-symfony logs all
-  [app] [14-Aug-2020 10:52:27 UTC] [critical] Uncaught PHP Exception Exception: [...]
-  [app]
-  [php.access] 2020-08-14T10:52:27Z GET 500 2.386 ms 2048 kB 419.11% /
-  [access] 78.247.136.119 - - [14/Aug/2020:10:52:27 +0000] "GET / HTTP/1.1" 500 843 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.125 Safari/537.36"
+symfony env:log app
+  Reading log file azertyuiop-test-error-azerty--app@ssh.eu-5.platform.sh:/var/log/app.log
+  [12-Jan-2026 11:22:08] NOTICE: fpm is running, pid 146
+  [12-Jan-2026 11:22:08] NOTICE: ready to handle connections
+  [12-Jan-2026 11:27:31] PHP Fatal error:  Uncaught Exception: [...]
+  Stack trace: [...]
 ```
 
 If the error occurs on a preview environment,
@@ -8180,7 +8181,7 @@ Laravel offers a very convenient and flexible way of scheduling tasks. A large s
 
 Once the scheduled tasks are defined, they need to be effectively executed at the right time and pace.
 The recommended way is a cron configuration entry running the `artisan schedule:run` command schedule for every minute.
-However, on Upsun Fixed the [minimum time between cron jobs](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#cron-job-timing)
+However, on Upsun Fixed the [minimum time between cron jobs](https://fixed.docs.upsun.com/create-apps/image-properties/crons.md#cron-job-timing)
 depends on your plan. Task scheduling may then be contradicted by the cron minimum frequency. Schedules outside the
 specified cron frequency are ignored and the related tasks aren't triggered.
 
@@ -9500,7 +9501,7 @@ Your app configuration in a  `.platform.app.yaml` file is allows you to configur
 For all of the options, see a [complete reference](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md).
 The following example shows a complete configuration with comments to explain the various settings.
 
-Notice that the build ``flavor`` is set to ``composer``, which will automatically download WordPress core, as well as your plugins, themes, and dependencies during the build step as defined in your ``composer.json`` file. Since WordPress’s caching and uploads require write access at runtime, they’ve been given corresponding [mounts](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#mounts) defined for them at the bottom of the file. MariaDB is accessible to WordPress internally at ``database.internal`` thanks to the relationship definition ``database``. The [WordPress CLI](https://packagist.org/packages/wp-cli/wp-cli) is added as a build dependency, but we will still need to add some additional dependencies in the next step so that it can be used by the application and via SSH.
+Notice that the build ``flavor`` is set to ``composer``, which will automatically download WordPress core, as well as your plugins, themes, and dependencies during the build step as defined in your ``composer.json`` file. Since WordPress’s caching and uploads require write access at runtime, they’ve been given corresponding [mounts](https://fixed.docs.upsun.com/create-apps/image-properties/mounts.md) defined for them at the bottom of the file. MariaDB is accessible to WordPress internally at ``database.internal`` thanks to the relationship definition ``database``. The [WordPress CLI](https://packagist.org/packages/wp-cli/wp-cli) is added as a build dependency, but we will still need to add some additional dependencies in the next step so that it can be used by the application and via SSH.
 
 ```yaml  {location=".platform.app.yaml"}
 # Complete list of all available properties: https://docs.upsun.com/anchors/fixed/app/reference/
@@ -10049,7 +10050,7 @@ hooks:
 Here, you can commit plugins to the repository in a `plugins` subdirectory,
 which are placed into the WordPress installation during the build.
 It's assumed that these packages stick to best practices and don't write to the file system at runtime and when enabling them.
-You can get around this issue by defining a [mount](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#mounts) where a plugin requires write access,
+You can get around this issue by defining a [mount](https://fixed.docs.upsun.com/create-apps/image-properties/mounts.md) where a plugin requires write access,
 but you need to remember that the contents at that mount location are wiped when deployment begins,
 so you need to copy and re-copy accordingly.
 
@@ -11142,7 +11143,7 @@ Then commit the resulting changes to your `composer.json` and `composer.lock` fi
 
 To enable the Redis cache to work with WordPress,
 the `object-cache.php` file needs to be copied from the plugin's directory to the `wp-content` directory.
-Add the following line to the bottom of your `build` hook in your [app configuration](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#hooks),
+Add the following line to the bottom of your `build` hook in your [app configuration](https://fixed.docs.upsun.com/create-apps/image-properties/hooks.md),
 adjusting the paths based on where your plugins are located:
 
 ```yaml {}
@@ -11850,7 +11851,7 @@ In particular, notice:
 
 - `relationships`
 
-  Access to another service or app container in the cluster is given through [`relationships`](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image#relationships).
+  Access to another service or app container in the cluster is given through [`relationships`](https://fixed.docs.upsun.com/create-apps/image-properties/relationships.md).
   In this case, one has been defined to the backend Drupal container using it's `name`.
 
 - `post_deploy`
@@ -11869,7 +11870,7 @@ In particular, notice:
 
   There are consequences to postponing the Gatsby build,
   as you don't generally have write access to the container this late in the pipeline.
-  To allow Gatsby to write to `public`, that directory has been defined as a [mount](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image#mounts).
+  To allow Gatsby to write to `public`, that directory has been defined as a [mount](https://fixed.docs.upsun.com/create-apps/image-properties/mounts.md).
 
 Additionally, there has been a change to Gatsby’s start command,``web.commands.start``. In the generic Gatsby template, the static files in ``public`` are served via the [web.locations](https://github.com/platformsh-templates/gatsby/blob/c764ed717752eacc3c3f3322b7e5415e276d02df/.platform.app.yaml#L29), but that attribute is removed in the file below. Instead, two separate start commands are defined depending on which branch you are developing on. This has been included to support [Live Preview and Incremental Builds](https://www.drupal.org/project/gatsby). It isn’t required, but you can consult the [section below](#live-preview-and-incremental-builds) for more information about enabling it.
 You can then modify [gatsby-config.js](https://www.gatsbyjs.com/docs/reference/config-files/gatsby-config/) to read from the backend Drupal container through the ``drupal`` relationship defined above to configure the ``baseUrl`` attribute for ``gatsby-source-drupal``.
@@ -12087,7 +12088,7 @@ In particular, notice:
 
 - `relationships`
 
-  Access to another service or app container in the cluster is given through [`relationships`](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image#relationships).
+  Access to another service or app container in the cluster is given through [`relationships`](https://fixed.docs.upsun.com/create-apps/image-properties/relationships.md).
   In this case, one has been defined to the backend Strapi container using it's `name`.
 
 - `post_deploy`
@@ -12106,7 +12107,7 @@ In particular, notice:
 
   There are consequences to postponing the Gatsby build,
   as you don't generally have write access to the container this late in the pipeline.
-  To allow Gatsby to write to `public`, that directory has been defined as a [mount](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image#mounts).
+  To allow Gatsby to write to `public`, that directory has been defined as a [mount](https://fixed.docs.upsun.com/create-apps/image-properties/mounts.md).
 
 You can then modify [gatsby-config.js](https://www.gatsbyjs.com/docs/reference/config-files/gatsby-config/)
 to read from the backend Strapi container through the ``strapi`` relationship defined above
@@ -12322,7 +12323,7 @@ In particular, notice:
 
 - `relationships`
 
-  Access to another service or app container in the cluster is given through [`relationships`](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image#relationships).
+  Access to another service or app container in the cluster is given through [`relationships`](https://fixed.docs.upsun.com/create-apps/image-properties/relationships.md).
   In this case, one has been defined to the backend WordPress container using it's `name`.
 
 - `post_deploy`
@@ -12341,7 +12342,7 @@ In particular, notice:
 
   There are consequences to postponing the Gatsby build,
   as you don't generally have write access to the container this late in the pipeline.
-  To allow Gatsby to write to `public`, that directory has been defined as a [mount](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image#mounts).
+  To allow Gatsby to write to `public`, that directory has been defined as a [mount](https://fixed.docs.upsun.com/create-apps/image-properties/mounts.md).
 
 You can then modify [gatsby-config.js](https://www.gatsbyjs.com/docs/reference/config-files/gatsby-config/)
 to read from the backend WordPress container through the ``wordpress`` relationship defined above
@@ -12740,7 +12741,7 @@ db:
 
 # Uncomment the line below to use a MySQL database
 # dbmysql:
-#   type: oracle-mysql:8.0
+#   type: oracle-mysql:8.4
 #   disk: 256
 ```
 
@@ -13064,7 +13065,7 @@ To configure a MySQL database for Strapi on Upsun Fixed, follow these steps.
 
    ```yaml  {location=".platform/services.yaml"}
    mysql:
-     type: oracle-mysql:8.0
+     type: oracle-mysql:8.4
      disk: 256
    ```
 
@@ -13459,7 +13460,7 @@ To run your Strapi v4 app locally with all of its services, follow these steps:
        // The Oracle MySQL configuration assumes the following in your .platform/services.yaml file:
        //
        // dbmysql:
-       //    type: oracle-mysql:8.0
+       //    type: oracle-mysql:8.4
        //    disk: 256
        //
        // And a relationship defined in your .platform.app.yamlfile as follows:
@@ -13761,7 +13762,7 @@ In particular, notice:
 
 - `relationships`
 
-  Access to another service or app container in the cluster is given through [`relationships`](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image#relationships).
+  Access to another service or app container in the cluster is given through [`relationships`](https://fixed.docs.upsun.com/create-apps/image-properties/relationships.md).
   In this case, one has been defined to the backend Strapi container using it's `name`.
 
 - `post_deploy`
@@ -13780,7 +13781,7 @@ In particular, notice:
 
   There are consequences to postponing the Gatsby build,
   as you don't generally have write access to the container this late in the pipeline.
-  To allow Gatsby to write to `public`, that directory has been defined as a [mount](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image#mounts).
+  To allow Gatsby to write to `public`, that directory has been defined as a [mount](https://fixed.docs.upsun.com/create-apps/image-properties/mounts.md).
 
 You can then modify [gatsby-config.js](https://www.gatsbyjs.com/docs/reference/config-files/gatsby-config/) to read from the backend Strapi container through the ``strapi`` relationship defined above to configure the ``apiURL`` attribute for ``gatsby-source-strapi``. Notice that the source plugin requires that you explicitly define the ``contentTypes`` you would like to retrieve from Strapi. At this point you have not built out the API, and the Content Types ``article`` and ``category`` are included to support the [post-install instructions](https://github.com/platformsh-templates/gatsby-strapi#user-content-post-install) outlined in the template’s README. Adjust these values to fit your current API if your are planning on migrating an existing Strapi repository.
 
@@ -14780,7 +14781,7 @@ In your [service configuration](https://fixed.docs.upsun.com/add-services.md), i
 
         ```yaml {}
 elasticsearch:
-    type: elasticsearch:8.5
+    type: elasticsearch:7.10
     disk: 256
 ```
 
@@ -14835,7 +14836,7 @@ postgresql:
 
 ##### 2. Grant access to the service through a relationship
 
-To access the new service, set a `relationship` in your [app configuration](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#relationships).
+To access the new service, set a `relationship` in your [app configuration](https://fixed.docs.upsun.com/create-apps/image-properties/relationships.md).
 
       .platform.app.yaml
 
@@ -14986,7 +14987,7 @@ postgresql:
 
 ##### 2. Grant access to the service through a relationship
 
-To access the new service, set a `relationship` in your [app configuration](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#relationships).
+To access the new service, set a `relationship` in your [app configuration](https://fixed.docs.upsun.com/create-apps/image-properties/relationships.md).
 
       .platform.app.yaml
 
@@ -15427,7 +15428,7 @@ In your [service configuration](https://fixed.docs.upsun.com/add-services.md), i
 
         ```yaml {}
 elasticsearch:
-    type: elasticsearch:8.5
+    type: elasticsearch:7.10
     disk: 256
 ```
 
@@ -15483,7 +15484,7 @@ postgresql:
 
 ##### 2. Grant access to the service through a relationship
 
-To access the new service, set a `relationship` in your [app configuration](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#relationships).
+To access the new service, set a `relationship` in your [app configuration](https://fixed.docs.upsun.com/create-apps/image-properties/relationships.md).
 
       .platform.app.yaml
 
@@ -15590,7 +15591,7 @@ postgresql:
 
 ##### 2. Grant access to the service through a relationship
 
-To access the new service, set a `relationship` in your [app configuration](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#relationships).
+To access the new service, set a `relationship` in your [app configuration](https://fixed.docs.upsun.com/create-apps/image-properties/relationships.md).
 
       .platform.app.yaml
 
@@ -16212,7 +16213,7 @@ In your [service configuration](https://fixed.docs.upsun.com/add-services.md), i
 
         ```yaml {}
 elasticsearch:
-    type: elasticsearch:8.5
+    type: elasticsearch:7.10
     disk: 256
 ```
 
@@ -16268,7 +16269,7 @@ postgresql:
 
 ##### 2. Grant access to the service through a relationship
 
-To access the new service, set a `relationship` in your [app configuration](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#relationships).
+To access the new service, set a `relationship` in your [app configuration](https://fixed.docs.upsun.com/create-apps/image-properties/relationships.md).
 
       .platform.app.yaml
 
@@ -16466,74 +16467,89 @@ public class RedisConfig {
 ```
 
 ## Reference
-### App reference
+### Choose an image type
 
-To define your app, you can either use one of Upsun Fixed's [single-runtime image](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md)
-or its [composable image (BETA)](https://fixed.docs.upsun.com/create-apps/app-reference/composable-image.md).
+An _image_ represents the configuration of the container that contains the application (or service) that you want to deploy. 
 
-##### Single-runtime image
+Choosing the image type for the container that best suits your application is the first and most important decision in configuring how your application is deployed.
 
-Upsun Fixed provides and maintains a list of single-runtime images you can use for each of your application containers. 
-See [all of the options you can use](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md) to define your app using a single-runtime image.
+You can choose either Upsun Fixed's [single-runtime image](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md)
+or its [composable image](https://fixed.docs.upsun.com/create-apps/app-reference/composable-image.md). **The key difference between them is the type of flexibility that they offer**. 
 
-##### Composable image (BETA)
+For both image types, the image is defined in the `.platform.app.yaml` file. 
 
-The Upsun Fixed composable image provides more flexibility than single-runtime images.
-When using a composable image, you can define a stack (or group of packages) for your application container to use.
+##### Which image type should you choose? {#which-image-type}
 
-There are over 80,000 packages available from the [Nix Packages collection](https://search.nixos.org/) that you can add to your stack.
-You can add as many packages to your application container as you need.
+| **Criteria / Use‑case**                               | **Single‑runtime image**                                                                                                                                                                                       | **Composable image**                                                                                                                                                     |
+| ----------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| **When it’s best used (typical use case)**            | Good for simple applications that need only one runtime.                                                                                                                | Best for applications needing custom secondary runtimes, static assets, or custom binaries/tools.                                  |
+| **# of runtimes per container**                       | One — a single runtime per container.                                                                                                                                    | Zero or more — you can define multiple runtimes (or none) per container.                                                           |
+| **Packages permitted / how dependencies are managed** | Only the base runtime and its extensions are permitted directly. To add non-runtime packages, you must use build-phase installation via hooks or dependencies. See [Keys used](#keys-used-in-each-image-type) below.      | Supports multiple runtimes, extensions, packages and services. You define everything in the `stack` key (runtimes + Nix packages). See [Keys used](#keys-used-in-each-image-type) below.           |
+| **Manual configuration / setup burden**               | Lower: using a supported runtime means less manual setup; adding downloads, dependencies, and packages might require use of build hooks, which might complicate configuration.                                          | Higher: you manually define the composition of the container or  `stack` (runtimes + packages) of Nix packages. More flexible but requires more setup.  |
+| **Maintenance & updates (patches, upgrades)**         | Upsun handles image updates (minor and patch updates; security patches) automatically on deployment                                                                      | You need to redeploy often to apply Nix package updates; update cadence depends on package maintainers.<BR>Your team must be comfortable with upgrading, testing, and refactoring images promptly when Nix a channel becomes deprecated (every six months).                          |
+| **Flexibility (versions, custom binaries, tools)**    | Limited to supported runtimes + permitted extensions. If you require combinations not supported by Upsun, you may hit limits (e.g. certain PHP + Node.js/Python combos).  | High — you can mix runtimes, pick specific package versions, and include custom binaries/tools via Nix.                            |
+| **When to reconsider / migrate**                      | If you need many packages (beyond runtime extensions), complex dependencies, multiple runtimes, or custom tools, consider migrating to composable.          | If you don’t need the complexity (just a simple runtime and minimal packages), composable may be unnecessary overhead.                                                   |
 
-**Note**: 
+##### Keys used in each image type {#keys-used-in-each-image-type}
 
-Upsun Fixed guarantees optimal user experience with the specific [set of packages](https://fixed.docs.upsun.com/create-apps/app-reference/composable-image.md#supported-nix-packages) it supports.
-You can use any other package available from the [Nix Packages collection](https://search.nixos.org/),
-but NixOs is responsible for their support.
+Both image types use many of the same keys. Differences in syntax or meaning are noted as needed - see the [Image properties](https://fixed.docs.upsun.com/create-apps/image-properties.md) section for the topics that describe each key.
 
-See [all of the options you can use](https://fixed.docs.upsun.com/create-apps/app-reference/composable-image.md) to define your app using the composable image.
+Defining your app's tech stack depends on the image type you choose:
+- Single-runtime image: Use the
+[``build``](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#build), [``dependencies``](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#dependencies), and [``runtime``](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#runtime) keys 
+- Composable image: Use the [``stack.runtimes`` and ``stack.packages``](https://fixed.docs.upsun.com/create-apps/app-reference/composable-image.md#stack) keys
+
+##### Multi-app projects
+In a multiple application context, you can use a mix of single-runtime images and composable images. See the examples in the [single-runtime image](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#combine-single-runtime-and-composable-images) topic and [composable image](https://fixed.docs.upsun.com/create-apps/app-reference/composable-image.md#combine-single-runtime-and-composable-images) topic.
+
 #### Single-runtime image
 
 
 See all of the options for controlling your apps and how they’re built and deployed on Upsun Fixed.
 
-For single-app projects, the configuration is all done in a `.platform.app.yaml` file,
-usually located at the root of your app folder in your Git repository.
-[Multi-app projects](https://fixed.docs.upsun.com/create-apps/multi-app.md) can be set up in various ways.
+For single-app projects, use the `.platform.app.yaml` file,
+which is typically located at the root of your Git repository, to configure the apps in your single-runtime image.
 
-See a [comprehensive example](https://fixed.docs.upsun.com/create-apps.md#comprehensive-example) of a configuration in a `.platform.app.yaml` file.
+See a [comprehensive example](https://fixed.docs.upsun.com/create-apps.md#comprehensive-example) of a configuration in
+a `.platform.app.yaml` file.
+
+[Multi-app projects](https://fixed.docs.upsun.com/create-apps/multi-app.md) can be set up in various ways.
 
 For reference, see a [log of changes to app configuration](https://fixed.docs.upsun.com/create-apps/upgrading.md).
 
 ###### Top-level properties
 
-The following table presents all properties available at the top level of the YAML for the app.
+The following table lists all properties available at the top level of the YAML for the app.
 
-The column _Set in instance?_ defines whether the given property can be overridden within a `web` or `workers` instance.
+The **Set in instance** column defines whether the given property can be overridden within a `web` or `workers` instance.
 To override any part of a property, you have to provide the entire property.
+
+**Note**: 
+
+The ``build``, ``dependencies``, and ``runtime`` properties are unique to this image type and are described later in this topic. All other properties are available in both single-runtime and composable images — click a property name to view its details in a separate topic.
 
 | Name               | Type                                                                     | Required | Set in instance? | Description                                                                                                                                                                                                                                                                |
 |--------------------|--------------------------------------------------------------------------|----------|------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `name`             | `string`                                                                 | Yes      | No               | A unique name for the app. Must be lowercase alphanumeric characters. Changing the name destroys data associated with the app.                                                                                                                                             |
-| `type`             | A [type](#types)                                                         | Yes      | No               | The base image to use with a specific app language. Format: `runtime:version`.                                                                                                                                                                                             |
-| `size`             | A [size](#sizes)                                                         |          | Yes              | How much resources to devote to the app. Defaults to `AUTO` in production environments.                                                                                                                                                                                    |
-| `relationships`    | A dictionary of [relationships](#relationships)                          |          | Yes              | Connections to other services and apps.                                                                                                                                                                                                                                    |
-| `disk`             | `integer` or `null`                                                      |          | Yes              | The size of the disk space for the app in [MB](https://fixed.docs.upsun.com/glossary.md#mb). Minimum value is `128`. Defaults to `null`, meaning no disk is available. See [note on available space](#available-disk-space)                                                                     |
-| `mounts`           | A dictionary of [mounts](#mounts)                                        |          | Yes              | Directories that are writable even after the app is built. If set as a local source, `disk` is required.                                                                                                                                                                   |
-| `web`              | A [web instance](#web)                                                   |          | N/A              | How the web application is served.                                                                                                                                                                                                                                         |
-| `workers`          | A [worker instance](#workers)                                            |          | N/A              | Alternate copies of the application to run as background processes.                                                                                                                                                                                                        |
-| `timezone`         | `string`                                                                 |          | No               | The timezone for crons to run. Format: a [TZ database name](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones). Defaults to `UTC`, which is the timezone used for all logs no matter the value here. See also [app runtime timezones](https://fixed.docs.upsun.com/create-apps/timezone.md) |
-| `access`           | An [access dictionary](#access)                                          |          | Yes              | Access control for roles accessing app environments.                                                                                                                                                                                                                       |
-| `variables`        | A [variables dictionary](#variables)                                     |          | Yes              | Variables to control the environment.                                                                                                                                                                                                                                      |
-| `firewall`         | A [firewall dictionary](#firewall)                                       |          | Yes              | Outbound firewall rules for the application.                                                                                                                                                                                                                               |
-| `build`            | A [build dictionary](#build)                                             |          | No               | What happens when the app is built.                                                                                                                                                                                                                                        |
-| `dependencies`     | A [dependencies dictionary](#dependencies)                               |          | No               | What global dependencies to install before the `build` hook is run.                                                                                                                                                                                                        |
-| `hooks`            | A [hooks dictionary](#hooks)                                             |          | No               | What commands run at different stages in the build and deploy process.                                                                                                                                                                                                     |
-| `crons`            | A [cron dictionary](#crons)                                              |          | No               | Scheduled tasks for the app.                                                                                                                                                                                                                                               |
-| `source`           | A [source dictionary](#source)                                           |          | No               | Information on the app's source code and operations that can be run on it.                                                                                                                                                                                                 |
-| `runtime`          | A [runtime dictionary](#runtime)                                         |          | No               | Customizations to your PHP runtime.                                                                                                                                                                                                                                        |
-| `additional_hosts` | An [additional hosts dictionary](#additional-hosts)                      |          | Yes              | Maps of hostnames to IP addresses.                                                                                                                                                                                                                                         |
-| `operations`       | A [dictionary of Runtime operations](https://fixed.docs.upsun.com/create-apps/runtime-operations.md) |          | No               | Runtime operations for the application.                                                                                                                                                                                                                                    |
-
+| `name`             | `string`                                                                 | Yes      | No               | A unique name for the app. Must be lowercase alphanumeric characters. **Changing the name destroys data associated with the app.**                                                                                                                                             |
+| [`type`](#types)             | A type                                                         | Yes      | No               | The base image to use with a specific app language. Format: `runtime:version`.                                                                                                                                                                                             |
+| [`size`](https://fixed.docs.upsun.com/create-apps/image-properties/size.md)            | A size                                                        |          | Yes              | Amount of resources to allocate to the app; defaults to `AUTO` in production environments. Examples: `S`, `M`,`4XL`.                                                                                                                                                                                    |
+| [`relationships`](https://fixed.docs.upsun.com/create-apps/image-properties/relationships.md)    | A dictionary of relationships                          |          | Yes              | Connections to other services and apps.                                                                                                                                                                                                                                    |
+| [`disk`](https://fixed.docs.upsun.com/create-apps/image-properties/disk.md)             | `integer` or `null`                                                      |          | Yes              | The size of the disk space for the app in [MB](https://fixed.docs.upsun.com/glossary.md#mb). Minimum value is `128`. Defaults to `null`, meaning no disk is available. See the [`disk`](https://fixed.docs.upsun.com/create-apps/image-properties/disk.md) property details.                                                                     |
+| [`mounts`](https://fixed.docs.upsun.com/create-apps/image-properties/mounts.md)           | A dictionary of mounts                                        |          | Yes              | Directories that are writable even after the app is built. If set as a local source, `disk` is required.                                                                                                                                                                   |
+| [`web`](https://fixed.docs.upsun.com/create-apps/image-properties/web.md)              | A web instance                                                   |          | N/A              | How the web application is served.                                                                                                                                                                                                                                         |
+| [`workers`](https://fixed.docs.upsun.com/create-apps/image-properties/workers.md)          | A worker instance                                            |          | N/A              | Alternate copies of the application to run as background processes.                                                                                                                                                                                                        |
+| [`timezone`](https://fixed.docs.upsun.com/create-apps/timezone.md)      | `string`                                                                 |          | No               | The timezone for crons to run. Format: a [TZ database name](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones). Defaults to `UTC`, which is the timezone used for all logs no matter the value here. See also [app runtime timezones](https://fixed.docs.upsun.com/create-apps/timezone.md) |
+| [`access`](https://fixed.docs.upsun.com/create-apps/image-properties/access.md)           | An access dictionary                                          |          | Yes              | Access control for roles accessing app environments.                                                                                                                                                                                                                       |
+| [`variables`](https://fixed.docs.upsun.com/create-apps/image-properties/variables.md)        | A variables dictionary                                     |          | Yes              | Variables to control the environment.                                                                                                                                                                                                                                      |
+| [`firewall`](https://fixed.docs.upsun.com/create-apps/image-properties/firewall.md)         | A [firewall dictionary                                       |          | Yes              | Outbound firewall rules for the application.                                                                                                                                                                                                                               |
+| [`build`](#build)              | A build dictionary                                           |          | No               | What happens when the app is built.                                                                                                                                                                                                                                        |
+| [`dependencies`](#dependencies)     | A dependencies dictionary                               |          | No               | What global dependencies to install before the `build` hook is run.                                                                                                                                                                                                        |
+| [`hooks`](https://fixed.docs.upsun.com/create-apps/image-properties/hooks.md)            | A hooks dictionary                                             |          | No               | Specifies commands and/or scripts to run in the `build`, `deploy`, and `post_deploy` phases.                                                                                                                                                                                                      |
+| [`crons`](https://fixed.docs.upsun.com/create-apps/image-properties/crons.md)            | A cron dictionary                                              |          | No               | Scheduled tasks for the app.                                                                                                                                                                                                                                               |
+| [`source`](https://fixed.docs.upsun.com/create-apps/image-properties/source.md)           | A source dictionary                                           |          | No               | Information on the app's source code and operations that can be run on it.                                                                                                                                                                                                 |
+| [`runtime`](#runtime)          | A runtime dictionary                                         |          | No               | Customizations to your PHP runtime.                                                                                                                                                                                                                                |
+| [`additional_hosts`](https://fixed.docs.upsun.com/create-apps/image-properties/additional_hosts.md) | An additional hosts dictionary                      |          | Yes              | Maps of hostnames to IP addresses.                                                                                                                                                                                                                                         |
+| [`operations`](https://fixed.docs.upsun.com/create-apps/runtime-operations.md)       | A dictionary of Runtime operations |          | No               | Runtime operations for the application.                                                                                                                                                                                                                                    |
 ###### Root directory
 
 Some of the properties you can define are relative to your app's root directory.
@@ -16542,13 +16558,13 @@ The root defaults to the location of your `.platform.app.yaml` file.
 That is, if a custom value for `source.root` is not provided in your configuration, the default behavior is equivalent to the above.
 
 To specify another directory, for example for a [multi-app project](https://fixed.docs.upsun.com/create-apps/multi-app.md),
-use the [`source.root` property](#source).
+use the [`source.root` property](https://fixed.docs.upsun.com/create-apps/image-properties/source.md).
 
-###### Types
+###### `type` {#types}
 
 **Note**: 
 
-You can now use the Upsun Fixed composable image (BETA) to install runtimes and tools in your application container.
+You can now use the Upsun Fixed [composable image](https://fixed.docs.upsun.com/create-apps/app-reference/composable-image.md) to install runtimes and tools in your application container.
 If you’ve reached this section from another page, you may be interested in supported ``stacks`` where ``type`` was referenced.
 See [supported Nix packages for the ](https://fixed.docs.upsun.com/create-apps/app-reference/composable-image.md#supported-nix-packages) for more information.
 
@@ -16560,14 +16576,14 @@ Security and other patches are taken care of for you automatically.
 Available languages and their supported versions:
 
 | **Language** | **``runtime``** | **Supported ``version``** |
-| [C#/.Net Core](https://fixed.docs.upsun.com/languages/dotnet.md) | ``dotnet`` | 7.0, 6.0, 8.0 |
-| [Elixir](https://fixed.docs.upsun.com/languages/elixir.md) | ``elixir`` | 1.18, 1.15, 1.14 |
-| [Go](https://fixed.docs.upsun.com/languages/go.md) | ``golang`` | 1.25, 1.24, 1.23, 1.22, 1.21, 1.20 |
-| [Java](https://fixed.docs.upsun.com/languages/java.md) | ``java`` | 21, 19, 18, 17, 11, 8 |
+| [C#/.Net Core](https://fixed.docs.upsun.com/languages/dotnet.md) | ``dotnet`` | 10.0, 8.0 |
+| [Elixir](https://fixed.docs.upsun.com/languages/elixir.md) | ``elixir`` | 1.18, 1.15 |
+| [Go](https://fixed.docs.upsun.com/languages/go.md) | ``golang`` | 1.25, 1.24 |
+| [Java](https://fixed.docs.upsun.com/languages/java.md) | ``java`` | 21, 17 |
 | [JavaScript/Node.js](https://fixed.docs.upsun.com/languages/nodejs.md) | ``nodejs`` | 24, 22, 20 |
-| [PHP](https://fixed.docs.upsun.com/languages/php.md) | ``php`` | 8.5, 8.4, 8.3, 8.2, 8.1 |
-| [Python](https://fixed.docs.upsun.com/languages/python.md) | ``python`` | 3.13, 3.12, 3.11, 3.10, 3.9, 3.8 |
-| [Ruby](https://fixed.docs.upsun.com/languages/ruby.md) | ``ruby`` | 3.4, 3.3, 3.2, 3.1, 3.0 |
+| [PHP](https://fixed.docs.upsun.com/languages/php.md) | ``php`` | 8.5, 8.4, 8.3, 8.2 |
+| [Python](https://fixed.docs.upsun.com/languages/python.md) | ``python`` | 3.14, 3.13, 3.12, 3.11, 3.10 |
+| [Ruby](https://fixed.docs.upsun.com/languages/ruby.md) | ``ruby`` | 4.0, 3.4, 3.3, 3.2 |
 | [Rust](https://fixed.docs.upsun.com/languages/rust.md) | ``rust`` | 1 |
 
 ####### Example configuration
@@ -16578,7 +16594,1426 @@ These are used in the format `runtime:version`:
 type: 'php:8.5'
 ```
 
-###### Sizes
+###### `build` {#build}
+
+The only property of the `build` dictionary is `flavor`, which specifies a default set of build tasks to run.
+Flavors are language-specific.
+
+See what the build flavor is for your language:
+
+- [Node.js](https://fixed.docs.upsun.com/languages/nodejs.md#dependencies)
+- [PHP](https://fixed.docs.upsun.com/languages/php.md#dependencies)
+
+In all languages, you can also specify a flavor of `none` to take no action at all
+(which is the default for any language other than PHP and Node.js).
+
+```yaml  {location=".platform.app.yaml"}
+build:
+  flavor: none
+```
+###### `dependencies` {#dependencies}
+
+Installs global dependencies as part of the build process.
+They're independent of your app's dependencies
+and are available in the `PATH` during the build process and in the runtime environment.
+They're installed before the `build` hook runs using a package manager for the language.
+
+| Language | Key name              | Package manager                                                                                                    |
+|----------|-----------------------|--------------------------------------------------------------------------------------------------------------------|
+| PHP      | `php`                 | [Composer](https://getcomposer.org/)                                                                               |
+| Python 2 | `python` or `python2` | [Pip 2](https://packaging.python.org/tutorials/installing-packages/)                                               |
+| Python 3 | `python3`             | [Pip 3](https://packaging.python.org/tutorials/installing-packages/)                                               |
+| Ruby     | `ruby`                | [Bundler](https://bundler.io/)                                                                                     |
+| Node.js  | `nodejs`              | [npm](https://www.npmjs.com/) (see [how to use yarn](https://fixed.docs.upsun.com/languages/nodejs.md#use-yarn-as-a-package-manager))   |
+
+The format for package names and version constraints are defined by the specific package manager.
+
+An example of dependencies in multiple languages:
+
+```yaml  {location=".platform.app.yaml"}
+applications:
+  <APP_NAME>:
+    type: 'nodejs:24'
+    source:
+      root: "/"
+    dependencies:
+      php: # Specify one Composer package per line.
+        drush/drush: '8.0.0'
+        composer/composer: '^2'
+      python2: # Specify one Python 2 package per line.
+        behave: '*'
+        requests: '*'
+      python3: # Specify one Python 3 package per line.
+        numpy: '*'
+      ruby: # Specify one Bundler package per line.
+        sass: '3.4.7'
+      nodejs: # Specify one NPM package per line.
+        pm2: '^4.5.0'
+```
+
+###### `runtime` {#runtime}
+
+The following table presents the various possible modifications to your PHP runtime:
+
+| Name                        | Type                                                       | Language | Description                                                                                             |
+|-----------------------------|------------------------------------------------------------|----------|---------------------------------------------------------------------------------------------------------|
+| `extensions`                | List of `string`s OR [extensions definitions](#extensions) | PHP      | [PHP extensions](https://fixed.docs.upsun.com/languages/php/extensions.md) to enable.                                               |
+| `disabled_extensions`       | List of `string`s                                          | PHP      | [PHP extensions](https://fixed.docs.upsun.com/languages/php/extensions.md) to disable.                                              |
+| `request_terminate_timeout` | `integer`                                                  | PHP      | The timeout (in seconds) for serving a single request after which the PHP-FPM worker process is killed. |
+| `sizing_hints`              | A [sizing hints definition](#sizing-hints)                 | PHP      | The assumptions for setting the number of workers in your PHP-FPM runtime.                              |
+| `xdebug`                    | An Xdebug definition                                       | PHP      | The setting to turn on [Xdebug](https://fixed.docs.upsun.com/languages/php/xdebug.md).                                              |
+
+You can also set your [app's runtime timezone](https://fixed.docs.upsun.com/create-apps/timezone.md).
+
+####### Extensions
+
+**Note**: 
+
+You can now use the Upsun Fixed [composable image](https://fixed.docs.upsun.com/create-apps/app-reference/composable-image.md) to install runtimes and tools in your application container.
+If you’ve reached this section from another page and are using the composable image, enabling/disabling extensions should be placed under the ``stack`` key instead of what is listed below.
+See [how to configure extensions with the composable image](https://fixed.docs.upsun.com/create-apps/app-reference/composable-image.md#top-level-properties).
+
+You can enable [PHP extensions](https://fixed.docs.upsun.com/languages/php/extensions.md) just with a list of extensions:
+
+```yaml  {location=".platform.app.yaml"}
+applications:
+  <APP_NAME>:
+    type: 'php:8.5'
+    source:
+      root: "/"
+    runtime:
+      extensions:
+        - geoip
+        - tidy
+```
+
+Alternatively, if you need to include configuration options, use a dictionary for that extension:
+
+```yaml  {location=".platform.app.yaml"}
+applications:
+  <APP_NAME>:
+    type: 'php:8.5'
+    source:
+      root: "/"
+    runtime:
+      extensions:
+        - geoip
+        - name: blackfire
+          configuration:
+            server_id: foo
+            server_token: bar
+```
+
+In this case, the `name` property is required.
+
+####### Sizing hints
+
+The following table shows the properties that can be set in `sizing_hints`:
+
+| Name              | Type      | Default | Minimum | Description                                    |
+|-------------------|-----------|---------|---------|------------------------------------------------|
+| `request_memory`  | `integer` | 45      | 10      | The average memory consumed per request in MB. |
+| `reserved_memory` | `integer` | 70      | 70      | The amount of memory reserved in MB.           |
+
+See more about [PHP-FPM workers and sizing](https://fixed.docs.upsun.com/languages/php/fpm.md).
+
+###### Combine single-runtime and composable images {#combine-single-runtime-and-composable-images}
+
+In a [multiple application context](https://fixed.docs.upsun.com/create-apps/multi-app.md),
+you can use a mix of single-runtime images and [composable images](https://fixed.docs.upsun.com/create-apps/app-reference/composable-image.md).
+
+The following sample configuration includes two applications:
+- ``frontend`` – uses a single-runtime image
+- ``backend`` – uses a composable image
+  In this app, PHP is the primary runtime and is started automatically (PHP-FPM also starts automatically when PHP is the primary runtime). For details, see the [PHP as a primary runtime](https://fixed.docs.upsun.com/create-apps/app-reference/composable-image.md#php-as-a-primary-runtime) section in the Composable image topic.
+
+```yaml  {location=".platform.app.yaml"}
+applications:
+  frontend:
+    # this app uses the single-runtime image with a specific node.js runtime
+    type: 'nodejs:24'
+  backend:
+    # this app uses the composable image and specifies two runtimes
+    type: "composable:8.4"
+    stack:
+      runtimes:
+        - "php@8.4":
+            extensions:
+              - apcu
+              - sodium
+              - xsl
+              - pdo_sqlite
+        - "python@3.13"
+      packages:
+        - "python313Packages.yq" # python package specific
+```
+#### Composable image
+
+The Upsun Fixed composable image provides enhanced flexibility when defining your app.
+It allows you to install several runtimes and tools in your application container,
+in a **"one image to rule them all"** approach.
+
+The composable image is built on [Nix](https://nix.dev), which offers the following benefits:
+
+- You can add as many packages to your application container as you need,
+  choosing from over 120,000 packages from [the Nixpkgs collection](https://search.nixos.org/packages).
+- The packages you add are built in total isolation, so you can install different versions of the same package.
+- With [Nix](https://nix.dev/reference/glossary#term-Nix), there are no undeclared dependencies in your source code.
+  What works on your local machine is guaranteed to work on any other machine.
+
+This page introduces all the settings available to configure your composable image from your `.platform.app.yaml` file
+(usually located at the root of your Git repository). 
+Note that multi-app projects can be [set in various ways](https://fixed.docs.upsun.com/create-apps/multi-app.md).
+
+You can also skip directly to this [comprehensive example](https://fixed.docs.upsun.com/create-apps.md#comprehensive-example) of a composable image configuration on the "Configure apps" page. This example includes all of the top-level properties listed in the table in the next section.
+
+###### Top-level properties
+
+All application configuration takes place in a `.platform.app.yaml` file, with each application configured under a unique key beneath the top-level `applications` key.
+
+The following table presents all of the properties available to each unique application `name`.
+
+The **Set in instance** column defines whether the given property can be overridden within a `web` or `workers` instance.
+To override any part of a property, you must provide the entire property.
+
+**Note**: 
+
+ - The ``type`` and ``stack`` properties are unique to the composable image type and are described later in this topic. All other properties are available in both single-runtime and composable images — click a property name to view its details in a separate topic.
+ - The ``stack`` key replaces the ``build``, ``dependencies``, and ``runtime`` keys that are available in the [single-runtime image](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md).
+
+| Name               | Type                                                                     | Required | Set in instance? | Description                                                                                                                                                                                                                                                                |
+|--------------------|--------------------------------------------------------------------------|----------|------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `name`             | `string`                                                                 | Yes      | No               | A unique name for the app. Must be lowercase alphanumeric characters. **Changing the name destroys data associated with the app**.                                                                                                                                             |
+| [`type`](#type)             | A type                                                         | Yes      | No               | [Defines the version of the Nix channel](#supported-nix-channels). Mandatory in each application that uses the composable image. Example: `type: "composable:25.11"`.                                                                                                                                                                                      |
+| [`stack`](#stack)              |  `runtimes` and/or  `packages` arrays                                                     | Yes      | No               | Specifies [Upsun Fixed-supported `runtimes`](#supported-nix-packages) and extra [Nixpkgs `packages`](https://search.nixos.org/packages) beyond those in the `type` channel.                                                                                            |
+| [`size`](https://fixed.docs.upsun.com/create-apps/image-properties/size.md)             | A container size                                                         |          | Yes              | Amount of resources to allocate to the app; defaults to `AUTO` in production environments. Examples: `S`, `M`,`4XL`.                                                                                                                                                           |
+| [`relationships`](https://fixed.docs.upsun.com/create-apps/image-properties/relationships.md)    | A dictionary of relationships                          |          | Yes              | Connections to other services and apps.                                                                                                                                                                                                                                    |
+| [`disk`](https://fixed.docs.upsun.com/create-apps/image-properties/disk.md)             | `integer` or `null`                                                      |          | Yes              | The size of the disk space for the app in [MB](https://fixed.docs.upsun.com/glossary.md#mb). Minimum value is `128`. Defaults to `null`, meaning no disk is available.                                                                      |
+| [`mounts`](https://fixed.docs.upsun.com/create-apps/image-properties/mounts.md)           | A dictionary of mounts                                        |          | Yes              | Directories that are writable even after the app is built. If set as a local source, `disk` is required.                                                                                                                                                                   |
+| [`web`](https://fixed.docs.upsun.com/create-apps/image-properties/web.md)              | A web instance                                                   |          | N/A              | How the web application is served.                                                                                                                                                                                                                                         |
+| [`workers`](https://fixed.docs.upsun.com/create-apps/image-properties/workers.md)          | A worker instance                                            |          | N/A              | Alternate copies of the application to run as background processes.                                                                                                                                                                                                        |
+| `timezone`         | `string`                                                                 |          | No               | The timezone for crons to run. Format: a [TZ database name](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones). Defaults to `UTC`, which is the timezone used for all logs no matter the value here. See also [app runtime timezones](https://fixed.docs.upsun.com/create-apps/timezone.md). |
+| [`access`](https://fixed.docs.upsun.com/create-apps/image-properties/access.md)           | An access dictionary                                          |          | Yes              | Access control for roles accessing app environments.                                                                                                                                                                                                                       |
+| [`variables`](https://fixed.docs.upsun.com/create-apps/image-properties/variables.md)        | A variables dictionary                                     |          | Yes              | Variables to control the environment.                                                                                                                                                                                                                                      |
+| [`firewall`](https://fixed.docs.upsun.com/create-apps/image-properties/firewall.md)         | A firewall dictionary                                       |          | Yes              | Outbound firewall rules for the application.                                                                                                                                                                                                                               |
+| [`hooks`](https://fixed.docs.upsun.com/create-apps/image-properties/hooks.md)            | A hooks dictionary                                             |          | No               | Specifies commands and/or scripts to run in the `build`, `deploy`, and `post_deploy` phases.                                                                                                                                                                                                      |
+| [`crons`](https://fixed.docs.upsun.com/create-apps/image-properties/crons.md)            | A cron dictionary                                              |          | No               | Scheduled tasks for the app.                                                                                                                                                                                                                                               |
+| [`source`](https://fixed.docs.upsun.com/create-apps/image-properties/source.md)           | A source dictionary                                           |          | No               | Details about the app’s source code and available operations.                                                                                                                                                                                                 |
+| [`additional_hosts`](https://fixed.docs.upsun.com/create-apps/image-properties/additional_hosts.md) | An additional hosts dictionary                      |          | Yes              | Mappings of hostnames to IP addresses.                                                                                                                                                                                                                                         |
+| [`operations`](https://fixed.docs.upsun.com/create-apps/runtime-operations.md)       | A dictionary of runtime operations |          | No               | Runtime operations for the application.                                                                                                                                                                                                                                    |
+
+###### `type` {#type}
+
+Required for all applications that use the composable image. Defines the version of the Nix channel that application uses.
+
+For example, to specify the Nix channel `25.11` for `<APP_NAME>`, use the following syntax:
+
+```yaml  {location=".platform/applications.yaml"}
+applications:
+  <APP_NAME>:
+      type: "composable:25.11"
+```
+
+####### Supported Nix channels
+
+Upsun supports the following Nix channel versions:
+
+- `25.11`
+
+View the list of [supported Nix runtimes](#supported-nix-packages) in the `stack` section below.
+
+###### `stack` {#stack}
+
+You must define the `stack` element by using distinct `runtimes` and `packages` keys, as described in the following table.
+
+See the [example `stack` configuration](#example-stack-configuration) that follows this table.
+
+| Name            | Type                | Required | Additional keys | Description                                                       |
+|-----------------|---------------------|------------------| ----------|-------------------------------------------------------------------|
+| `runtimes` | array     |  No        | `extensions`, `disabled_extensions`, and related subkeys | An array of 1+ language runtimes specified as `""` or ``.<BR>The first declared runtime (or _[primary runtime](#multiple-runtimes-primary-runtime)_) is started automatically.<BR>See the complete list of [supported runtimes](#supported-nix-packages) below. |
+| `packages`      | array |  No        | `package`, `channel`, additional keys to demonstrate passthrough flexibility | Additional Nix tools/libraries, using the channel from `type` unless overridden locally by specifying the `package` and its `channel`. Format: ``   |
+
+**Runtimes extensions or packages?**: 
+
+Be sure you understand where to specify a runtime’s additional components. For example:
+
+ - **PHP**: Manage extensions by using the ``stack.runtimes.extensions`` and ``stack.runtimes.disabled_extensions`` keys.
+
+ - Note: In some scenarios, you might [add PHP settings](https://fixed.docs.upsun.com/languages/php.md#customize-php-settings) via environment variables or ``php.ini``.
+
+ - **Python**: Install extra packages via the ``stack.packages`` key.
+
+See the [example ](#example-stack-configuration) below.
+For other runtimes, see the [Languages](https://fixed.docs.upsun.com/languages.md) section.
+
+####### Example: `stack` configuration {#example-stack-configuration}
+
+The `.platform.app.yaml` file excerpt below shows the following `stack` configuration:
+- **Primary runtime:** `php@8.4` with additional extensions and one disabled extension
+- **Secondary runtimes:** `nodejs@24` and `python@3.14`
+- **Nix packages:**
+  - `yarn` and `python313Packages.yq` from the channel defined in `type`
+  - `python313Packages.jupyterlab` (with config) and `wkhtmltopdf` from the `unstable` channel
+
+```yaml  {location=".platform.app.yaml"}
+applications:
+  <APP_NAME>:
+    type: "composable:25.11"
+    stack:
+      runtimes:
+        - "php@8.4":
+            extensions:
+              - apcu
+              - pdo_sqlite
+              - facedetect
+              - sodium
+              - xsl
+              - name: blackfire   # php@8.4 extension
+                configuration:    # extension subkeys
+                    server_id: <SERVER_ID>
+                    server_token: <SERVER_TOKEN>
+            disabled_extensions:
+              - gd
+        - "nodejs@24"
+        - "python@3.14"
+      packages:
+        - yarn                      # Package manager
+        - python313Packages.yq      # Python package
+        - package: python313Packages.jupyterlab
+          channel: unstable
+        - package: wkhtmltopdf      # Conversion tool
+          channel: unstable
+```
+
+**Warning**: 
+
+Although ``nix`` commands are available during the build phase, they are not supported at runtime because the final image is read-only.
+
+When you use the Upsun Fixed composable image, you don’t need ``nix`` commands.
+Anything you declare under the ``stack`` key is automatically installed and the binaries are included in your ``$PATH``, making them immediately available to use.
+For example, to [start a secondary runtime](#multiple-runtimes-primary-runtime),
+you can run it directly in your [start](https://fixed.docs.upsun.com/create-apps/image-properties/web.md#web-commands) without using ``nix run``.
+
+####### Working with multiple runtimes: primary runtime {#multiple-runtimes-primary-runtime}
+
+If you add multiple runtimes to your application container,
+the first declared runtime becomes the primary runtime.
+The primary runtime is the one that is automatically started.
+
+To start other declared runtimes (or _secondary_ runtimes), you need to start them manually by using [web commands](https://fixed.docs.upsun.com/create-apps/image-properties/web.md#web-commands).
+To find out which start command to use, go to the [Languages](https://fixed.docs.upsun.com/languages.md) section
+and visit the documentation page dedicated to your runtime.
+
+Containers that define multiple runtimes typically require some resource sizing adjustments. For details, see the [Resources](#resources) section of this topic.
+
+See the [`stack` configuration example](#example-stack-configuration) above, which declares multiple runtimes.
+
+####### PHP as a primary runtime {#php-as-a-primary-runtime}
+
+If a PHP runtime is the first declared (or _primary_) runtime in the app:
+  - The PHP-FPM service starts automatically.
+  - You can configure the PHP-FPMP service by using `request_terminate_timeout` and `sizing_hints` keys in the app's `stack.runtimes` key.
+
+    The [`stack` configuration example](#example-stack-configuration) above declares PHP as a primary runtime but does not show these additional keys.
+
+For the complete list of PHP extension keys and PHP-FPM sizing hints, see [Modify your PHP runtime when using the composable image](https://fixed.docs.upsun.com/languages/php.md#modify-your-php-runtime-when-using-a-composable-image) section in the "PHP" topic.
+
+Related resource: [When php-fpm runs out of workers: a 502 error field guide](https://devcenter.upsun.com/posts/when-php-fpm-runs-out-of-workers-a-502-error-field-guide/) (Dev Center article)
+
+####### Upsun-supported Nix runtimes {#supported-nix-packages}
+
+**Note**: 
+
+Upsun officially supports the Nix runtimes listed below. To use them in your container, add them to the ``stack.runtimes`` array. 
+Runtimes **not** listed below are supported only by Nix as Nixpkgs packages, not as Upsun Fixed runtimes. In those cases, add them to ``stack.packages``.  For example, if your app requires the [FrankenPHP](https://search.nixos.org/packages?channel=unstable&show=frankenphp&from=0&size=50&sort=relevance&type=packages&query=frankenphp) runtime from the ``unstable`` channel, you would add ``frankenphp`` to ``stack.packages``. See the [stack](#example-stack-configuration) above for a similar addition.
+
+For some runtimes (such as Clojure), you can specify only a major version.
+
+For other runtimes (such as Elixir), you can specify a major or a major.minor version.
+Security and other patches are applied automatically.
+
+| **Language**                                 | **Nix package** | **Supported version(s)**                        |
+|----------------------------------------------|-----------------|-------------------------------------------------|
+| [Clojure](https://clojure.org/)              | `clojure`       | 1                                               |
+| [Elixir](https://fixed.docs.upsun.com/languages/elixir.md)             | `elixir`        | 1.191.181.17                          |
+| [Go](https://fixed.docs.upsun.com/languages/go.md)                     | `golang`        | 1.251.24                                   |
+| [Java](https://fixed.docs.upsun.com/languages/java.md)                 | `java`          | 25                                       |
+| [Javascript/Bun](https://bun.sh/)            | `bun`           | 1                                               |
+| [JavaScript/Node.js](https://fixed.docs.upsun.com/languages/nodejs.md) | `nodejs`        | 242220                         |
+| [Perl](https://www.perl.org/)                | `perl`          | 5                                               |
+| [PHP](https://fixed.docs.upsun.com/languages/php.md)                   | `php`           | 8.48.38.2                     |
+| [Python](https://fixed.docs.upsun.com/languages/python.md)             | `python`        | 3.133.123.11 |
+| [Ruby](https://fixed.docs.upsun.com/languages/ruby.md)                 | `ruby`          | 3.43.3                     |
+
+####### PHP extensions and Python packages {#php-extensions-and-python-packages}
+
+To discover which PHP extensions and Python packages are available for these runtimes:
+
+1. Go to the [NixOS search](https://search.nixos.org/).
+1. Enter a runtime and click **Search**.
+1. In the **Package sets** side bar, select the right set of extensions/packages for your runtime version. 
+   You can choose the desired extensions/packages from the filtered results.
+
+![Screenshot of the Nix package sets selection for PHP@8.3](https://fixed.docs.upsun.com/images/nixos/nixos-packages.png "0.5")
+
+  **Note: PHP extension names**: 
+
+To help you find PHP extension names,
+some maintainers provide a ``PHP upstream extension`` value in the [NixOS search engine](https://search.nixos.org/packages?channel=unstable&show=php82Extensions.gd).
+
+      ![Screenshot of an upstream extension value shown in the NixOS search](https://fixed.docs.upsun.com/images/nixos/nixossearch-upstream-value.png)
+
+If this information is not provided, copy the ``<EXTENSION-NAME>`` extension name from the appropriate ``<PHP><VERSION>Extensions.<EXTENSION-NAME>`` search result and add it to ``stack.runtimes.extensions`` as shown in the [stack](#example-stack-configuration) above.
+
+4. Add extensions to `stack.runtimes.extensions` and packages to `stack.packages` as described in the [`stack`](#stack) section above.
+
+###### Resources (CPU, memory, disk space) {#resources}
+
+By default, Upsun Fixed assigns a container profile and container size to each application and service on the first deployment of a project. 
+
+The container _profile_ defines and enforces a specific CPU-to-memory ratio. The default container profile for an app or service in a composable image is ``HIGH_CPU``.
+
+To change the container _size_, which is a **vertical‑scaling** action, you must [change your plan size](https://fixed.docs.upsun.com/administration/pricing.md#plans). When you redeploy, the container runs with the CPU‑to‑memory ratio defined by its profile, so it enforces the size you specified.
+
+If you define **multiple runtimes** in an application's `.applications..stack.runtimes` key, you must [change your plan size](https://fixed.docs.upsun.com/administration/pricing.md#plans) to Medium (`M`) or larger.
+
+####### Downsize a disk
+
+You can reduce the target disk size of an app. Keep in mind:
+- Backups created before the downsize are incompatible and cannot be used; you must [create new backups](https://fixed.docs.upsun.com/environments/backup.md).
+- The downsize will fail if the disk contains more data than the target size.
+
+###### Combine single-runtime and composable images {#combine-single-runtime-and-composable-images}
+
+In a [multiple application context](https://fixed.docs.upsun.com/create-apps/multi-app.md),
+you can use a mix of [single-runtime images](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md)
+and composable images.
+
+The following sample configuration includes two applications:
+- ``frontend`` – uses a single-runtime image
+- ``backend`` – uses a composable image
+  In this app, PHP is the primary runtime and is started automatically (PHP-FPM also starts automatically when PHP is the primary runtime). For details, see the [PHP as a primary runtime](#php-as-a-primary-runtime) section in this topic.
+
+```yaml  {location=".platform.app.yaml"}
+applications:
+  frontend:
+    # this app uses the single-runtime image with a specific node.js runtime
+    type: 'nodejs:24'
+  backend:
+    # this app uses the composable image and specifies two runtimes
+    type: "composable:25.11"
+    stack:
+      runtimes:
+        - "php@8.4":
+            extensions:
+              - apcu
+              - sodium
+              - xsl
+              - pdo_sqlite
+        - "python@3.13"
+      packages:
+        - "python313Packages.yq" # python package specific
+```
+
+### Image properties
+
+**Note:** The properties below are available in **both** [single-runtime image](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#) and [composable image](https://fixed.docs.upsun.com/create-apps/app-reference/composable-image.md#) types. 
+
+For most of these properties, the syntax and details are the same for both image types. Differences in meaning and syntax are noted as needed for each property.
+
+To learn about the properties that are **unique to each image type**, refer to the top-level properties described in the [single-runtime image](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#) topic or the primary application properties described in the [composable image](https://fixed.docs.upsun.com/create-apps/app-reference/composable-image.md#) topic.
+#### access
+
+
+An access dictionary that defines the access control for roles accessing app environments.
+
+Optional in [single-runtime](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#top-level-properties) and [composable](https://fixed.docs.upsun.com/create-apps/app-reference/composable-image.md#top-level-properties) images.
+
+The `access` dictionary has one allowed key:
+
+| Name  | Allowed values                      | Default       | Description                                                           |
+|-------|-------------------------------------|---------------|-----------------------------------------------------------------------|
+| `ssh` | `admin`, `contributor`, or `viewer` | `contributor` | Defines the minimum role required to access app environments via SSH. |
+
+In the following example, only users with `admin` permissions for the
+given [environment type](https://fixed.docs.upsun.com/administration/users.md#environment-type-roles)
+can access the deployed environment via SSH:
+
+```yaml {}
+applications:
+  <APP_NAME>:
+    type: "python:3.14"
+    source:
+      root: "/"
+    access:
+      ssh: admin
+```
+
+    .platform.app.yaml
+
+```yaml {}
+applications:
+  <APP_NAME>:
+    type: "composable:25.11"
+    source:
+      root: "/"
+    stack: 
+      runtimes: [ "python@3.14" ]
+    access:
+      ssh: admin
+```
+
+#### additional_hosts
+
+
+An additional hosts dictionary that maps hostnames to IP addresses.
+
+Optional in [single-runtime](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#top-level-properties) and [composable](https://fixed.docs.upsun.com/create-apps/app-reference/composable-image.md#top-level-properties) images.
+
+If you use a private network and have specific IP addresses to connect to,
+consider mapping those addresses to hostnames to better remember and organize them.
+In such cases, you can add a map of those IP addresses to hostnames of your choice.
+Then, when your app tries to access the hostname, the app is directed to the proper IP address.
+
+For example, if your app attempts to access `api.example.com`, it is directed to `192.0.2.23`.
+
+```yaml {}
+applications:
+  <APP_NAME>:
+    type: 'nodejs:24'
+    source:
+      root: "/"
+    additional_hosts:
+      api.example.com: "192.0.2.23"
+      web.example.com: "203.0.113.42"
+```
+
+    .platform.app.yaml
+
+```yaml {}
+applications:
+  <APP_NAME>:
+    type: "composable:25.11"
+    source:
+      root: "/"
+    stack: 
+      runtimes: [ "nodejs@24" ]
+    additional_hosts:
+      api.example.com: "192.0.2.23"
+      web.example.com: "203.0.113.42"
+```
+
+This is equivalent to adding the mapping to the `/etc/hosts` file for the container.
+
+#### crons
+
+
+A cron dictionary that defines scheduled tasks for the app.
+
+Optional in [single-runtime](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#top-level-properties) and [composable](https://fixed.docs.upsun.com/create-apps/app-reference/composable-image.md#top-level-properties) images.
+
+The keys of the `crons` definition are the names of the cron jobs.
+The names must be unique.
+
+If an application defines both a `web` instance and `worker` instances, cron jobs run only on the `web` instance.
+
+See how to [get cron logs](https://fixed.docs.upsun.com/increase-observability/logs/access-logs.md#container-logs).
+
+The following table shows the properties for each job:
+
+| Name               | Type                                         | Required | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
+| ------------------ | -------------------------------------------- | -------- |---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `spec`             | `string`                                     | Yes      | The [cron specification](https://en.wikipedia.org/wiki/Cron#Cron_expression). To prevent competition for resources that might hurt performance, on **Grid** projects use `H` in definitions to indicate an unspecified but invariant time. For example, instead of using `0 * * * *` to indicate the cron job runs at the start of every hour, you can use `H * * * *` to indicate it runs every hour, but not necessarily at the start. This prevents multiple cron jobs from trying to start at the same time. **The `H` syntax is available on Grid projects only, and not on Dedicated Gen 2 projects.** |
+| `commands`         | A [cron commands dictionary](#cron-commands) | Yes      | A definition of what commands to run when starting and stopping the cron job.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
+| `shutdown_timeout` | `integer`                                    | No       | When a cron is canceled, this represents the number of seconds after which a `SIGKILL` signal is sent to the process to force terminate it. The default is `10` seconds.                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
+| `timeout`          | `integer`                                    | No       | The maximum amount of time a cron can run before it's terminated. Defaults to the maximum allowed value of `86400` seconds (24 hours).
+
+Note that you can [cancel pending or running crons](https://fixed.docs.upsun.com/environments/cancel-activity.md).
+
+**Note**: 
+
+The use of the ``cmd`` key is now deprecated in favor of the ``commands``key. 
+Make sure you set your new cron jobs using the ``commands`` key,
+and update your existing cron jobs to ensure continuity.
+
+####### Cron commands
+
+| Name               | Type      | Required | Description |
+| ------------------ | --------- | -------- | ----------- |
+| `start`            | `string`  | Yes      | The command that's run. It's run in [Dash](https://en.wikipedia.org/wiki/Almquist_shell). |
+| `stop`             | `string`  | No       | The command that's issued to give the cron command a chance to shutdown gracefully, such as to finish an active item in a list of tasks. Issued when a cron task is interrupted by a user through the CLI or Console. If not specified, a `SIGTERM` signal is sent to the process. |
+
+```yaml {}
+applications:
+  <APP_NAME>:
+    type: 'nodejs:24'  
+    source:
+      root: "/"
+    crons:
+      mycommand:
+        spec: 'H * * * *'
+        commands:
+          start: sleep 60 && echo sleep-60-finished && date
+          stop: killall sleep
+        shutdown_timeout: 18
+```
+
+    .platform.app.yaml
+
+```yaml {}
+applications:
+  <APP_NAME>:
+    type: "composable:25.11"
+    source:
+      root: "/"
+    stack:
+      runtimes: [ 'nodejs:24' ]
+    crons:
+      mycommand:
+        spec: 'H * * * *'
+        commands:
+          start: sleep 60 && echo sleep-60-finished && date
+          stop: killall sleep
+        shutdown_timeout: 18
+```
+
+In this example configuration, the crons `spec` key uses the `H` syntax.
+
+Note that this syntax is only supported on Grid projects.
+On Dedicated Gen 2 projects, use the [standard cron syntax](https://en.wikipedia.org/wiki/Cron#Cron_expression).
+
+####### Single-runtime image: Example cron jobs
+
+```yaml {}
+type: 'php:8.5'
+crons:
+  # Run Drupal's cron tasks every 19 minutes.
+  drupal:
+    spec: '*/19 * * * *'
+    commands:
+      start: 'cd web ; drush core-cron'
+  # But also run pending queue tasks every 7 minutes.
+  # Use an odd number to avoid running at the same time as the `drupal` cron.
+  drush-queue:
+    spec: '*/7 * * * *'
+    commands:
+      start: 'cd web ; drush queue-run aggregator_feeds'
+```
+
+    .platform.app.yaml
+
+```yaml {}
+type: 'ruby:4.0'
+crons:
+  # Execute a rake script every 19 minutes.
+  ruby:
+    spec: '*/19 * * * *'
+    commands:
+      start: 'bundle exec rake some:task'
+```
+
+    .platform.app.yaml
+
+```yaml {}
+type: 'php:8.5'
+crons:
+  # Run Laravel's scheduler every 5 minutes.
+  scheduler:
+    spec: '*/5 * * * *'
+    commands:
+      start: 'php artisan schedule:run'
+```
+
+    .platform.app.yaml
+
+```yaml {}
+type: 'php:8.5'
+crons:
+  # Take a backup of the environment every day at 5:00 AM.
+  snapshot:
+    spec: 0 5 * * *
+    commands:
+      start: |
+        # Only run for the production environment, aka main branch
+        if [ "$PLATFORM_ENVIRONMENT_TYPE" = "production" ]; then
+            croncape symfony ...
+        fi        
+```
+
+####### Composable image: Example cron jobs
+
+```yaml {}
+type: "composable:25.11"
+stack: 
+  runtimes: [ "php@8.5" ]
+crons:
+  # Run Drupal's cron tasks every 19 minutes.
+  drupal:
+    spec: '*/19 * * * *'
+    commands:
+      start: 'cd web ; drush core-cron'
+  # But also run pending queue tasks every 7 minutes.
+  # Use an odd number to avoid running at the same time as the `drupal` cron.
+  drush-queue:
+    spec: '*/7 * * * *'
+    commands:
+      start: 'cd web ; drush queue-run aggregator_feeds'
+```
+
+    .platform.app.yaml
+
+```yaml {}
+type: "composable:25.11"
+stack:
+  runtimes: [ "ruby@4.0" ]
+crons:
+  # Execute a rake script every 19 minutes.
+  ruby:
+    spec: '*/19 * * * *'
+    commands:
+      start: 'bundle exec rake some:task'
+```
+
+    .platform.app.yaml
+
+```yaml {}
+type: "composable:25.11"
+stack:
+  runtimes: [ "php@8.5" ]
+crons:
+  # Run Laravel's scheduler every 5 minutes.
+  scheduler:
+    spec: '*/5 * * * *'
+    commands:
+      start: 'php artisan schedule:run'
+```
+
+    .platform.app.yaml
+
+```yaml {}
+type: "composable:25.11"
+stack:
+  runtimes: [ "php@8.5" ]
+crons:
+  # Take a backup of the environment every day at 5:00 AM.
+  snapshot:
+    spec: 0 5 * * *
+    commands:
+      start: |
+        # Only run for the production environment, aka main branch
+        if [ "$PLATFORM_ENVIRONMENT_TYPE" = "production" ]; then
+            croncape symfony ...
+        fi        
+```
+
+####### Conditional crons
+
+If you want to set up customized cron schedules depending on the environment type,
+define conditional crons.
+To do so, use a configuration similar to the following:
+
+```yaml {}
+applications:
+  myapp:
+    source:
+      root: "/"
+    type: 'php:8.5'
+    crons:
+      update:
+        spec: '0 0 * * *'
+        commands:
+          start: |
+            if [ "$PLATFORM_ENVIRONMENT_TYPE" = production ]; then
+              platform backup:create --yes --no-wait
+              platform source-operation:run update --no-wait --yes
+            fi            
+```
+
+    .platform.app.yaml
+
+```yaml {}
+applications:
+  myapp:
+    source:
+      root: "/"
+    type: "composable:25.11"
+    stack: 
+      runtimes: [ "php@8.5" ]
+    crons:
+      update:
+        spec: '0 0 * * *'
+        commands:
+          start: |
+            if [ "$PLATFORM_ENVIRONMENT_TYPE" = production ]; then
+              platform backup:create --yes --no-wait
+              platform source-operation:run update --no-wait --yes
+            fi            
+```
+
+####### Cron job timing
+
+Minimum time between cron jobs being triggered:
+
+| Plan                | Time      |
+|-------------------- | --------- |
+| Professional        | 5 minutes |
+| Elite or Enterprise | 1 minute  |
+
+For each app container, only one cron job can run at a time.
+If a new job is triggered while another is running, the new job is paused until the other completes.
+
+To minimize conflicts, a random offset is applied to all triggers.
+The offset is a random number of seconds up to 20 minutes or the cron frequency, whichever is smaller.
+
+Crons are also paused while activities such as [backups](https://fixed.docs.upsun.com/environments/backup.md) are running.
+The crons are queued to run after the other activity finishes.
+
+To run cron jobs in a timezone other than UTC, set the `timezone` property as described for the image type ([single-runtime image](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#top-level-properties) or 
+[composable image](https://fixed.docs.upsun.com/create-apps/app-reference/composable-image.md#top-level-properties)).
+
+####### Paused crons
+
+[Preview environments](https://fixed.docs.upsun.com/glossary.md#preview-environment) are often used for a limited time and then abandoned.
+While it's useful for environments under active development to have scheduled tasks,
+unused environments don't need to run cron jobs.
+To minimize unnecessary resource use,
+crons on environments with no deployments are paused.
+
+This affects all environments that aren't live environments.
+This means all environments on Development plans
+and all preview environments on higher plans.
+
+Such environments with deployments within 14 days have crons with the status `running`.
+If there haven't been any deployments within 14 days, the status is `paused`.
+
+You can see the status in the Console
+or using the CLI by running `platform environment:info` and looking under `deployment_state`.
+
+######## Restarting paused crons
+
+If the crons on your preview environment are paused but you're still using them,
+you can push changes to the environment or redeploy it.
+
+To restart crons without changing anything:
+
+Run the following command:
+
+```bash {}
+platform redeploy
+```
+
+#### disk
+
+
+An ``integer`` (or ``null``) that defines the disk space allocated (in MB) to an app.
+
+Optional in [single-runtime](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#top-level-properties) and [composable](https://fixed.docs.upsun.com/create-apps/app-reference/composable-image.md#top-level-properties) images. 
+
+The maximum total space available to all apps and services is set by the storage in your plan settings.
+When deploying your project, the sum of all `disk` keys defined in app and service configurations
+cannot exceed the available storage in your plan.
+
+So if your *plan storage size* is 5 GB, you can, for example, assign it in one of the following ways:
+
+- 2 GB to your app, 3 GB to your database
+- 1 GB to your app, 4 GB to your database
+- 1 GB to your app, 1 GB to your database, 3 GB to your OpenSearch service
+
+If you exceed the total space available, you receive an error on pushing your code.
+You need to either increase your plan's storage or decrease the `disk` values you've assigned.
+
+You configure the disk size in [MB](https://fixed.docs.upsun.com/glossary.md#mb). Your actual available disk space is slightly smaller with some space used for formatting and the filesystem journal. When checking available space, note whether it’s reported in MB or MiB.
+
+If you need more storage to fit the sum of all `disk` keys, it is necessary to [switch plans](https://fixed.docs.upsun.com/administration/pricing.md#switch-plans). This can only be done by people with the [manage plans permission](https://fixed.docs.upsun.com/administration/users.md#organization-permissions).
+
+####### Backups and altering `disk` values
+
+It's a best practice to [back up your environment](https://fixed.docs.upsun.com/environments/backup.md) **before and after** you increase **or** decrease the `disk` value (the amount of allocated storage space) of an app or service.
+
+You can decrease the size of an existing disk for an app. If you do so, be aware that:
+- Downsizing fails if the amount of  data exceeds the configured `disk` value. 
+- Backups completed before the downsizing a disk are incompatible  and can no longer be used to restore applications. You need to [create new backups](https://fixed.docs.upsun.com/environments/backup.md).
+#### firewall
+
+
+  **Tier availability**
+  This feature is available for
+  **Elite and Enterprise** customers. [Compare the  tiers](https://upsun.com/fixed-pricing/) on our pricing page, or [contact our sales team](https://upsun.com/contact-us/
+  ) for more information.
+
+A firewall dictionary that defines the outbound firewall rules for the application.
+
+Optional in [single-runtime](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#top-level-properties) and [composable](https://fixed.docs.upsun.com/create-apps/app-reference/composable-image.md#top-level-properties) images. 
+
+This property enables you to set limits in outbound traffic from your app with no impact on inbound requests.
+
+The `outbound` key is required and contains one or more rules.
+The rules define what traffic is allowed; anything unspecified is blocked.
+
+Each rule has the following properties where at least one is required and `ips` and `domains` can't be specified together:
+
+| Name      | Type                | Default         | Description                                                                                                                                                                                                             |
+| --------- |---------------------|-----------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `ips`     | `string` array | `["0.0.0.0/0"]` | IP addresses in [CIDR notation](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing). See a [CIDR format converter](https://www.ipaddressguide.com/cidr).                                                      |
+| `domains` | `string` array  |                 | [Fully qualified domain names](https://en.wikipedia.org/wiki/Fully_qualified_domain_name) to specify specific destinations by hostname.                                                                                 |
+| `ports`   | `integer` array |                 | Ports from 1 to 65535 that are allowed. If any ports are specified, all unspecified ports are blocked. If no ports are specified, all ports are allowed. Port `25`, the SMTP port for sending email, is always blocked. |
+
+The default settings would look like this:
+
+```yaml {}
+applications:
+  <APP_NAME>:
+    type: 'python:3.14'
+    source:
+      root: "/"
+    firewall:
+      outbound:
+        - ips: [ "0.0.0.0/0" ]
+```
+
+    .platform.app.yaml
+
+```yaml {}
+applications:
+  <APP_NAME>:
+    type: "composable:25.11"
+    source:
+      root: "/"
+    stack: 
+      runtimes: [ "python@3.14" ]
+    firewall:
+      outbound:
+        - ips: [ "0.0.0.0/0" ]
+```
+
+####### Support for rules
+
+Where outbound rules for firewalls are supported in all environments.
+For Dedicated Gen 2 projects, contact support for configuration.
+
+####### Multiple rules
+
+Multiple firewall rules can be specified.
+In such cases, a given outbound request is allowed if it matches _any_ of the defined rules.
+
+So in the following example requests to any IP on port 80 are allowed
+and requests to 1.2.3.4 on either port 80 or 443 are allowed:
+
+```yaml {}
+applications:
+  <APP_NAME>:
+    type: 'python:3.14'
+    source:
+      root: "/"
+    firewall:
+      outbound:
+        - ips: [ "1.2.3.4/32" ]
+          ports: [ 443 ]
+        - ports: [ 80 ]
+```
+
+    .platform.app.yaml
+
+```yaml {}
+applications:
+  <APP_NAME>:
+    type: "composable:25.11"
+    source:
+      root: "/"
+    stack: 
+      runtimes: [ "python@3.14" ]
+    firewall:
+      outbound:
+        - ips: [ "1.2.3.4/32" ]
+          ports: [ 443 ]
+        - ports: [ 80 ]
+```
+
+####### Outbound traffic to CDNs
+
+Be aware that many services are behind a content delivery network (CDN).
+For most CDNs, routing is done via domain name, not IP address,
+so thousands of domain names may share the same public IP addresses at the CDN.
+If you allow the IP address of a CDN, you are usually allowing many or all of the other customers hosted behind that
+CDN.
+
+####### Outbound traffic by domain
+
+You can filter outbound traffic by domain.
+Using domains in your rules rather than IP addresses is generally more specific and secure.
+For example, if you use an IP address for a service with a CDN,
+you have to allow the IP address for the CDN.
+This means that you allow potentially hundreds or thousands of other servers also using the CDN.
+
+An example rule filtering by domain:
+
+```yaml {}
+applications:
+  <APP_NAME>:
+    type: 'python:3.14'
+    source:
+      root: "/"
+    firewall:
+      outbound:
+        - protocol: tcp
+          domains: [ "api.stripe.com", "api.twilio.com" ]
+          ports: [ 80, 443 ]
+        - protocol: tcp
+          ips: [ "1.2.3.4/29","2.3.4.5" ]
+          ports: [ 22 ]
+```
+
+    .platform.app.yaml
+
+```yaml {}
+applications:
+  <APP_NAME>:
+    type: "composable:25.11"
+    source:
+      root: "/"
+    stack: 
+      runtimes: [ "python@3.14" ]
+    firewall:
+      outbound:
+        - protocol: tcp
+          domains: [ "api.stripe.com", "api.twilio.com" ]
+          ports: [ 80, 443 ]
+        - protocol: tcp
+          ips: [ "1.2.3.4/29","2.3.4.5" ]
+          ports: [ 22 ]
+```
+
+######## Determine which domains to allow
+
+To determine which domains to include in your filtering rules,
+find the domains your site has requested the DNS to resolve.
+Run the following command to parse your server’s `dns.log` file
+and display all Fully Qualified Domain Names that have been requested:
+
+```bash
+awk '/query\[[^P]\]/ { print $6 | "sort -u" }' /var/log/dns.log
+```
+
+The output includes all DNS requests that were made, including those blocked by your filtering rules.
+It doesn't include any requests made using an IP address.
+
+Example output:
+
+```bash
+facebook.com
+fastly.com
+platform.sh
+www.google.com
+www.platform.sh
+```
+
+#### hooks
+
+
+A hooks dictionary that defines which commands run at different stages in the build and deploy process.
+
+Optional in [single-runtime](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#top-level-properties) and [composable](https://fixed.docs.upsun.com/create-apps/app-reference/composable-image.md#top-level-properties) images. 
+
+There are three different hooks that run as part of the process of building and deploying your app.
+These are places where you can run custom scripts.
+They are: the `build` hook, the `deploy` hook, and the `post_deploy` hook.
+Only the `build` hook is run for [worker instances](https://fixed.docs.upsun.com/create-apps/image-properties/workers.md), while [web instances](https://fixed.docs.upsun.com/create-apps/image-properties/web.md) run all three.
+
+The process is ordered as:
+
+ - Variables accessible at build time become available.
+ - The ``build`` hook is run.
+ - The file system is changed to read only, except for any [mounts](https://fixed.docs.upsun.com/create-apps/image-properties/mounts.md).
+ - The app container starts. Variables accessible at runtime and services become available.
+ - The ``deploy`` hook is run.
+ - The app container begins accepting requests.
+ - The ``post_deploy`` hook is run.
+
+Note that if an environment changes by no code changes, only the last step is run.
+If you want the entire process to run, see how
+to [manually trigger builds](https://fixed.docs.upsun.com/development/troubleshoot.md#manually-trigger-builds).
+
+####### Writable directories during build
+
+During the `build` hook, there are three writeable directories:
+
+- `PLATFORM_APP_DIR`:
+  Where your code is checked out and the working directory when the `build` hook starts.
+  Becomes the app that gets deployed.
+- `PLATFORM_CACHE_DIR`:
+  Persists between builds, but isn't deployed.
+  Shared by all builds on all branches.
+- `/tmp`:
+  Isn't deployed and is wiped between each build.
+  Note that `PLATFORM_CACHE_DIR` is mapped to `/tmp`
+  and together they offer about 8GB of free space.
+
+####### Hook failure
+
+Each hook is executed as a single script, so they're considered to have failed only if the final command in them fails.
+To cause them to fail on the first failed command, add `set -e` to the beginning of the hook.
+
+If a `build` hook fails for any reason, the build is aborted and the deploy doesn't happen.
+Note that this only works for `build` hooks --
+if other hooks fail, the app is still deployed.
+
+######## Automated testing
+
+It’s preferable that you set up and run automated tests in a dedicated CI/CD tool.
+Relying on Upsun Fixed hooks for such tasks can prove difficult.
+
+During the `build` hook, you can halt the deployment on a test failure but the following limitations apply:
+
+- Access to services such as databases, Redis, Vault KMS, and even writable mounts is disabled.
+  So any testing that relies on it is sure to fail.
+- If you haven’t made changes to your app, an existing build image is reused and the build hook isn’t run.
+- Test results are written into your app container, so they might get exposed to a third party.
+
+During the `deploy` hook, you can access services but **you can’t halt the deployment based on a test failure**.
+Note that there are other downsides:
+
+- Your app container is read-only during the deploy hook,
+  so if your tests need to write reports and other information, you need to create a file mount for them.
+- Your app can only be deployed once the deploy hook has been completed.
+  Therefore, running automated testing via the deploy hook generates slower deployments.
+- Your environment isn’t available externally during the deploy hook.
+  Unit and integration testing might work without the environment being available,
+  but you can’t typically perform end-to-end testing until after the environment is up and available.
+
+#### mounts
+
+
+Defines the directories that are writable even after the app is built.
+
+ If set as a local source, disk is required.
+
+Optional in [single-runtime](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#top-level-properties) and [composable](https://fixed.docs.upsun.com/create-apps/app-reference/composable-image.md#top-level-properties) images.
+
+After your app is built, its file system is read-only.
+To make changes to your app's code, you need to use Git.
+
+For enhanced flexibility, Upsun Fixed allows you to define and use writable directories called "mounts".
+Mounts give you write access to files generated by your app (such as cache and log files)
+and uploaded files without going through Git.
+
+When you define a mount, you are mounting an external directory to your app container,
+much like you would plug a hard drive into your computer to transfer data.
+
+**Note**: 
+
+ - Mounts aren’t available during the build
+ - When you [back up an environment](https://fixed.docs.upsun.com/environments/backup.md), the mounts on that environment are backed up too
+
+####### Define a mount
+
+To define a mount, use the following configuration:
+
+```yaml  {location=".platform.app.yaml"}
+mounts:
+  '<MOUNT_PATH>':
+    source: <MOUNT_TYPE>
+    source_path: <SOURCE_PATH_LOCATION>
+```
+
+<MOUNT_PATH> is the path to your mount **within the app container** (relative to the app's root).
+If you already have a directory with that name, you get a warning that it isn't accessible after the build.
+See how to [troubleshoot the warning](https://fixed.docs.upsun.com/create-apps/troubleshoot-mounts.md#overlapping-folders).
+
+| Name          | Type                          | Required | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
+| ------------- |-------------------------------| -------- |----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `source`      | `local`, `service`, or `tmp`  | Yes      | Specifies the type of the mount: - `local` mounts are unique to your app. They can be useful to store files that remain local to the app instance, such as application logs.  `local` mounts require disk space. To successfully set up a local mount, set the `disk` key in your app configuration. - `service` mounts point to [Network Storage](https://fixed.docs.upsun.com/add-services/network-storage.md) services that can be shared between several apps. - `tmp` mounts are local ephemeral mounts, where an external directory is mounted to the `/tmp` directory of your app.  The content of a `tmp` mount **may be removed during infrastructure maintenance operations**. Therefore, `tmp` mounts allow you to **store files that you’re not afraid to lose**, such as your application cache that can be seamlessly rebuilt.  Note that the `/tmp` directory has **a maximum allocation of 8 GB**. |
+| `source_path` | `string`                      | No    | Specifies where the mount points **inside the external directory**. - If you explicitly set a `source_path`, your mount points to a specific subdirectory in the external directory.   - If the `source_path` is an empty string (`""`), your mount points to the entire external directory. - If you don't define a `source_path`, Upsun Fixed uses the <MOUNT_PATH> as default value, without leading or trailing slashes. For example, if your mount lives in the `/web/uploads/` directory in your app container, it will point to a directory named `web/uploads` in the external directory.     **WARNING:** Changing the name of your mount affects the `source_path` when it's undefined. See [how to ensure continuity](#change-name) and maintain access to your files.                       |
+| `service`     | `string`                      |       | Only for `service` mounts: the name of the [Network Storage service](https://fixed.docs.upsun.com/add-services/network-storage.md).                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
+
+The accessibility to the web of a mounted directory depends on the [`web.locations` configuration](https://fixed.docs.upsun.com/create-apps/image-properties/web.md).
+Files can be all public, all private, or with different rules for different paths and file types.
+
+Note that when you remove a `local` mount from your `.platform.app.yaml` file,
+the mounted directory isn't deleted.
+The files still exist on disk until manually removed
+(or until the app container is moved to another host during a maintenance operation in the case of a `tmp` mount).
+
+####### Example configuration
+
+```yaml  {location=".platform.app.yaml"}
+mounts:
+  'web/uploads':
+    source: local
+    source_path: uploads
+  '/.tmp_platformsh':
+    source: tmp
+    source_path: files/.tmp_platformsh
+  '/build':
+    source: local
+    source_path: files/build
+  '/.cache':
+    source: tmp
+    source_path: files/.cache
+  '/node_modules/.cache':
+    source: tmp
+    source_path: files/node_modules/.cache
+```
+
+For examples of how to set up a `service` mount, see the dedicated [Network Storage page](https://fixed.docs.upsun.com/add-services/network-storage.md).
+
+####### Ensure continuity when changing the name of your mount {#change-name}
+
+Changing the name of your mount affects the default `source_path`.
+
+Say you have a `/my/cache/` mount with an undefined `source_path`:
+
+```yaml  {location=".platform.app.yaml"}
+mounts:
+  '/my/cache/':
+    source: tmp
+```
+
+If you rename the mount to `/cache/files/`, it will point to a new, empty `/cache/files/` directory.
+
+To ensure continuity, you need to explicitly define the `source_path` as the previous name of the mount, without leading or trailing slashes:
+
+ ```yaml  {location=".platform.app.yaml"}
+mounts:
+  '/cache/files/':
+    source: tmp
+    source_path: my/cache
+```
+
+The `/cache/files/` mount will point to the original `/my/cache/` directory, maintaining access to all your existing files in that directory.
+
+####### Overlapping mounts
+
+The locations of mounts as they are visible to application containers can overlap somewhat.
+For example:
+
+```yaml  {location=".platform/applications.yaml"}
+applications:
+  myapp:
+    # ...
+    mounts:
+      'var/cache_a':
+        source: service
+        service: ns_service
+        source_path: cacheA
+      'var/cache_b':
+        source: tmp
+        source_path: cacheB
+      'var/cache_c':
+        source: local
+        source_path: cacheC
+```
+
+In this case, it does not matter that each mount is of a different `source` type.
+Each mount is restricted to a subfolder within `var`, and all is well.
+
+The following, however, is not allowed and will result in a failure:
+
+```yaml  {location=".platform/applications.yaml"}
+applications:
+  myapp:
+    # ...
+    mounts:
+      'var/':
+        source: service
+        service: ns_service
+        source_path: cacheA
+      'var/cache_b':
+        source: tmp
+        source_path: cacheB
+      'var/cache_c':
+        source: local
+        source_path: cacheC
+```
+
+The `service` mount type specifically exists to share data between instances of the same application, whereas `tmp` and `instance` are meant to restrict data to build time and runtime of a single application instance, respectively.
+These allowances are not compatible, and will result in an error if pushed.
+
+#### relationships
+
+
+A dictionary of relationships that defines the connections to other services and apps.
+
+Optional in [single-runtime](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#top-level-properties) and [composable](https://fixed.docs.upsun.com/create-apps/app-reference/composable-image.md#top-level-properties) images.
+
+To allow containers in your project to communicate with one another,
+you need to define relationships between them.
+You can define a relationship between an app and a service, or [between two apps](https://fixed.docs.upsun.com/create-apps/multi-app/relationships.md).
+
+The quickest way to define a relationship between your app and a service
+is to use the service's default endpoint. 
+However, some services allow you to define multiple databases, cores, and/or permissions.
+In these cases, you can't rely on default endpoints.
+Instead, you can explicitly define multiple endpoints when setting up your relationships.
+
+**Note**: 
+
+App containers don’t have a default endpoint like services.
+To connect your app to another app in your project,
+you need to explicitly define the ``http`` endpoint as the endpoint to connect both apps. 
+For more information, see how to [define relationships between your apps](https://fixed.docs.upsun.com/create-apps/multi-app/relationships.md).
+
+**Availability**: 
+
+New syntax (default and explicit endpoints) described below is supported by most, but not all, image types
+(``Relationship 'SERVICE_NAME' of application 'myapp' ... targets a service without a valid default endpoint configuration.``).
+This syntax is currently being rolled out for all images.
+If you encounter this error, use the “legacy” Upsun Fixed configuration noted at the bottom of this section.
+
+To define a relationship between your app and a service:
+
+```yaml {}
+relationships:
+  <SERVICE_NAME>:
+```
+
+The ``SERVICE_NAME`` is the name of the service as defined in its [configuration](https://fixed.docs.upsun.com/add-services.md).
+It is used as the relationship name, and associated with a ``null`` value.
+This instructs Upsun Fixed to use the service’s default endpoint to connect your app to the service.
+For example, if you define the following configuration:
+
+    .platform.app.yaml
+
+```yaml {}
+relationships:
+  mariadb:
+```
+
+Upsun Fixed looks for a service named ``mariadb`` in your ``.platform/services.yaml`` file,
+and connects your app to it through the service’s default endpoint.
+For reference, the equivalent configuration using explicit endpoints would be the following:
+
+    .platform.app.yaml
+
+```yaml {}
+relationships:
+  mariadb:
+    service: mariadb
+    endpoint: mysql
+```
+
+You can define any number of relationships in this way:
+
+    .platform.app.yaml
+
+```yaml {}
+relationships:
+  mariadb:
+  redis:
+  elasticsearch:
+```
+
+**Tip**: 
+
+An even quicker way to define many relationships is to use the following single-line configuration:
+
+    .platform.app.yaml
+
+```yaml {}
+relationships: {<SERVICE_NAME_A>, <SERVICE_NAME_B>, <SERVICE_NAME_C>}
+```
+
+where
+
+    .platform/services.yaml
+
+```yaml {}
+<SERVICE_NAME_A>:
+  type: mariadb:11.8
+  disk: 256
+<SERVICE_NAME_B>:
+  type: redis:8.0
+  disk: 256
+<SERVICE_NAME_C>:
+  type: elasticsearch:7.10
+  disk: 256
+```
+
+Use the following configuration:
+
+    .platform.app.yaml
+
+```yaml {}
+relationships:
+  <RELATIONSHIP_NAME>:
+    service: <SERVICE_NAME>
+    endpoint: <ENDPOINT_NAME>
+```
+
+ - ``RELATIONSHIP_NAME`` is the name you want to give to the relationship.
+ - ``SERVICE_NAME`` is the name of the service as defined in its [configuration](https://fixed.docs.upsun.com/add-services.md).
+ - ``ENDPOINT_NAME`` is the endpoint your app will use to connect to the service (refer to the service reference to know which value to use).
+
+For example, to define a relationship named ``database`` that connects your app to a service called ``mariadb`` through the ``db1`` endpoint,
+use the following configuration:
+
+    .platform.app.yaml
+
+```yaml {}
+relationships:
+  database: # The name of the relationship.
+    service: mariadb
+    endpoint: db1
+```
+
+For more information on how to handle multiple databases, multiple cores,
+and/or different permissions with services that support such features,
+see each service’s dedicated page:
+
+ - [MariaDB/MySQL](https://fixed.docs.upsun.com/add-services/mysql.md#multiple-databases) (multiple databases and permissions)
+ - [PostgreSQL](https://fixed.docs.upsun.com/add-services/postgresql.md#multiple-databases) (multiple databases and permissions)
+ - [Redis](https://fixed.docs.upsun.com/add-services/redis.md#multiple-databases) (multiple databases)
+ - [Solr](https://fixed.docs.upsun.com/add-services/solr.md#solr-6-and-later) (multiple cores)
+ - [Vault KMS](https://fixed.docs.upsun.com/add-services/vault.md#multiple-endpoints-configuration) (multiple permissions)
+
+You can add as many relationships as you want to your app configuration,
+using both default and explicit endpoints according to your needs:
+
+    .platform.app.yaml
+
+```yaml {}
+relationships:
+  database1:
+    service: mariadb
+    endpoint: admin
+  database2:
+    service: mariadb
+    endpoint: legacy
+  cache:
+    service: redis
+  search:
+    service: elasticsearch
+```
+
+**Legacy**: 
+
+The following legacy syntax for specifying relationships is still supported by Upsun Fixed:
+
+    .platform.app.yaml
+
+```yaml {}
+relationships:
+  <RELATIONSHIP_NAME>: "<SERVICE_NAME>:<ENDPOINT_NAME>"
+```
+
+For example:
+
+    .platform.app.yaml
+
+```yaml {}
+relationships:
+  database: "mariadb:mysql"
+```
+
+Feel free to use this until the default and explicit endpoint syntax is supported on all images.
+
+#### size
+
+
+Defines the amount of resources to dedicate to the app.
+
+ Defaults to `AUTO` in production environments.
+
+Optional in [single-runtime](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#top-level-properties) and [composable](https://fixed.docs.upsun.com/create-apps/app-reference/composable-image.md#top-level-properties) images.
 
 Resources are distributed across all containers in an environment from the total available from your [plan size](https://fixed.docs.upsun.com/administration/pricing.md).
 So if you have more than just a single app, it doesn't get all of the resources available.
@@ -16588,6 +18023,7 @@ By default, resource sizes (CPU and memory) are chosen automatically for an app
 based on the plan size and the number of other containers in the cluster.
 Most of the time, this automatic sizing is enough.
 
+####### Container sizes {#sizes}
 You can set sizing suggestions for production environments when you know a given container has specific needs.
 Such as a worker that doesn't need much and can free up resources for other apps.
 To do so, set `size` to one of the following values:
@@ -16599,7 +18035,7 @@ To do so, set `size` to one of the following values:
 - `2XL`
 - `4XL`
 
-The total resources allocated across all apps and services can't exceed what's in your plan.
+The total resources allocated across all apps and services cannnot exceed what's in your plan.
 
 ####### Container profiles: CPU and memory
 
@@ -16689,549 +18125,25 @@ Containers in preview environments don't follow the `size` specification.
 Application containers are set based on the plan's setting for **Environments application size**.
 The default is size **S**, but you can increase it by editing your plan.
 (Service containers in preview environments are always set to size **S**.)
+#### source
 
-###### Relationships
 
-To allow containers in your project to communicate with one another,
-you need to define relationships between them.
-You can define a relationship between an app and a service, or [between two apps](https://fixed.docs.upsun.com/create-apps/multi-app/relationships.md).
+Contains information about the app’s source code and operations that can be run on it.
 
-The quickest way to define a relationship between your app and a service
-is to use the service's default endpoint. 
-However, some services allow you to define multiple databases, cores, and/or permissions.
-In these cases, you can't rely on default endpoints.
-Instead, you can explicitly define multiple endpoints when setting up your relationships.
+Optional in [single-runtime](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#top-level-properties) and [composable](https://fixed.docs.upsun.com/create-apps/app-reference/composable-image.md#top-level-properties) images.
 
-**Note**: 
+The following table shows the properties that can be set in `source`:
 
-App containers don’t have a default endpoint like services.
-To connect your app to another app in your project,
-you need to explicitly define the ``http`` endpoint as the endpoint to connect both apps. 
-For more information, see how to [define relationships between your apps](https://fixed.docs.upsun.com/create-apps/multi-app/relationships.md).
+| Name         | Type                     | Required | Description                                                                                                                                                      |
+| ------------ | ------------------------ | -------- |------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `operations` | An operations dictionary |          | Operations that can be applied to the source code. See [source operations](https://fixed.docs.upsun.com/create-apps/source-operations.md).                                                              |
+| `root`       | `string`                 |          | The path where the app code lives. Useful when you have [multiple apps in a single project](https://fixed.docs.upsun.com/create-apps/multi-app.md). <BR>**Single-runtime image**: Defaults to the directory of the `.platform.app.yaml` file. <BR>**Composable image**: Defaults to the root project directory. |
+#### variables
 
-**Availability**: 
 
-New syntax (default and explicit endpoints) described below is supported by most, but not all, image types
-(``Relationship 'SERVICE_NAME' of application 'myapp' ... targets a service without a valid default endpoint configuration.``).
-This syntax is currently being rolled out for all images.
-If you encounter this error, use the “legacy” Upsun Fixed configuration noted at the bottom of this section.
+A variables dictionary that defines variables to control the environment.
 
-To define a relationship between your app and a service:
-
-```yaml {}
-relationships:
-  <SERVICE_NAME>:
-```
-
-The ``SERVICE_NAME`` is the name of the service as defined in its [configuration](https://fixed.docs.upsun.com/add-services.md).
-It is used as the relationship name, and associated with a ``null`` value.
-This instructs Upsun Fixed to use the service’s default endpoint to connect your app to the service.
-For example, if you define the following configuration:
-
-    .platform.app.yaml
-
-```yaml {}
-relationships:
-  mariadb:
-```
-
-Upsun Fixed looks for a service named ``mariadb`` in your ``.platform/services.yaml`` file,
-and connects your app to it through the service’s default endpoint.
-For reference, the equivalent configuration using explicit endpoints would be the following:
-
-    .platform.app.yaml
-
-```yaml {}
-relationships:
-  mariadb:
-    service: mariadb
-    endpoint: mysql
-```
-
-You can define any number of relationships in this way:
-
-    .platform.app.yaml
-
-```yaml {}
-relationships:
-  mariadb:
-  redis:
-  elasticsearch:
-```
-
-**Tip**: 
-
-An even quicker way to define many relationships is to use the following single-line configuration:
-
-    .platform.app.yaml
-
-```yaml {}
-relationships: {<SERVICE_NAME_A>, <SERVICE_NAME_B>, <SERVICE_NAME_C>}
-```
-
-where
-
-    .platform/services.yaml
-
-```yaml {}
-<SERVICE_NAME_A>:
-  type: mariadb:11.8
-  disk: 256
-<SERVICE_NAME_B>:
-  type: redis:8.0
-  disk: 256
-<SERVICE_NAME_C>:
-  type: elasticsearch:8.5
-  disk: 256
-```
-
-Use the following configuration:
-
-    .platform.app.yaml
-
-```yaml {}
-relationships:
-  <RELATIONSHIP_NAME>:
-    service: <SERVICE_NAME>
-    endpoint: <ENDPOINT_NAME>
-```
-
- - ``RELATIONSHIP_NAME`` is the name you want to give to the relationship.
- - ``SERVICE_NAME`` is the name of the service as defined in its [configuration](https://fixed.docs.upsun.com/add-services.md).
- - ``ENDPOINT_NAME`` is the endpoint your app will use to connect to the service (refer to the service reference to know which value to use).
-
-For example, to define a relationship named ``database`` that connects your app to a service called ``mariadb`` through the ``db1`` endpoint,
-use the following configuration:
-
-    .platform.app.yaml
-
-```yaml {}
-relationships:
-  database: # The name of the relationship.
-    service: mariadb
-    endpoint: db1
-```
-
-For more information on how to handle multiple databases, multiple cores,
-and/or different permissions with services that support such features,
-see each service’s dedicated page:
-
- - [MariaDB/MySQL](https://fixed.docs.upsun.com/add-services/mysql.md#multiple-databases) (multiple databases and permissions)
- - [PostgreSQL](https://fixed.docs.upsun.com/add-services/postgresql.md#multiple-databases) (multiple databases and permissions)
- - [Redis](https://fixed.docs.upsun.com/add-services/redis.md#multiple-databases) (multiple databases)
- - [Solr](https://fixed.docs.upsun.com/add-services/solr.md#solr-6-and-later) (multiple cores)
- - [Vault KMS](https://fixed.docs.upsun.com/add-services/vault.md#multiple-endpoints-configuration) (multiple permissions)
-
-You can add as many relationships as you want to your app configuration,
-using both default and explicit endpoints according to your needs:
-
-    .platform.app.yaml
-
-```yaml {}
-relationships:
-  database1:
-    service: mariadb
-    endpoint: admin
-  database2:
-    service: mariadb
-    endpoint: legacy
-  cache:
-    service: redis
-  search:
-    service: elasticsearch
-```
-
-**Legacy**: 
-
-The following legacy syntax for specifying relationships is still supported by Upsun Fixed:
-
-    .platform.app.yaml
-
-```yaml {}
-relationships:
-  <RELATIONSHIP_NAME>: "<SERVICE_NAME>:<ENDPOINT_NAME>"
-```
-
-For example:
-
-    .platform.app.yaml
-
-```yaml {}
-relationships:
-  database: "mariadb:mysql"
-```
-
-Feel free to use this until the default and explicit endpoint syntax is supported on all images.
-
-###### Available disk space
-
-The maximum total space available to all apps and services is set by the storage in your plan settings.
-When deploying your project, the sum of all `disk` keys defined in app and service configurations
-must be *equal or less* than the plan storage size.
-
-So if your *plan storage size* is 5 GB, you can, for example, assign it in one of the following ways:
-
-- 2 GB to your app, 3 GB to your database
-- 1 GB to your app, 4 GB to your database
-- 1 GB to your app, 1 GB to your database, 3 GB to your OpenSearch service
-
-If you exceed the total space available, you receive an error on pushing your code.
-You need to either increase your plan's storage or decrease the `disk` values you've assigned.
-
-You configure the disk size in [MB](https://fixed.docs.upsun.com/glossary.md#mb). Your actual available disk space is slightly smaller with some space used for formatting and the filesystem journal. When checking available space, note whether it’s reported in MB or MiB.
-
-####### Downsize a disk
-
-You can decrease the size of an existing disk for an app. If you do so, be aware that:
-
-- Backups from before the downsize are incompatible and can no longer be used. You need to [create new backups](https://fixed.docs.upsun.com/environments/backup.md).
-- The downsize fails if there’s more data on the disk than the desired size.
-
-###### Mounts
-
-After your app is built, its file system is read-only.
-To make changes to your app's code, you need to use Git.
-
-For enhanced flexibility, Upsun Fixed allows you to define and use writable directories called "mounts".
-Mounts give you write access to files generated by your app (such as cache and log files)
-and uploaded files without going through Git.
-
-When you define a mount, you are mounting an external directory to your app container,
-much like you would plug a hard drive into your computer to transfer data.
-
-**Note**: 
-
- - Mounts aren’t available during the build
- - When you [back up an environment](https://fixed.docs.upsun.com/environments/backup.md), the mounts on that environment are backed up too
-
-####### Define a mount
-
-To define a mount, use the following configuration:
-
-```yaml  {location=".platform.app.yaml"}
-mounts:
-  '<MOUNT_PATH>':
-    source: <MOUNT_TYPE>
-    source_path: <SOURCE_PATH_LOCATION>
-```
-
-<MOUNT_PATH> is the path to your mount **within the app container** (relative to the app's root).
-If you already have a directory with that name, you get a warning that it isn't accessible after the build.
-See how to [troubleshoot the warning](https://fixed.docs.upsun.com/create-apps/troubleshoot-mounts.md#overlapping-folders).
-
-| Name          | Type                          | Required | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
-| ------------- |-------------------------------| -------- |----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `source`      | `local`, `service`, or `tmp`  | Yes      | Specifies the type of the mount: - `local` mounts are unique to your app. They can be useful to store files that remain local to the app instance, such as application logs.  `local` mounts require disk space. To successfully set up a local mount, set the `disk` key in your app configuration. - `service` mounts point to [Network Storage](https://fixed.docs.upsun.com/add-services/network-storage.md) services that can be shared between several apps. - `tmp` mounts are local ephemeral mounts, where an external directory is mounted to the `/tmp` directory of your app.  The content of a `tmp` mount **may be removed during infrastructure maintenance operations**. Therefore, `tmp` mounts allow you to **store files that you’re not afraid to lose**, such as your application cache that can be seamlessly rebuilt.  Note that the `/tmp` directory has **a maximum allocation of 8 GB**. |
-| `source_path` | `string`                      | No    | Specifies where the mount points **inside the [external directory](#mounts)**. - If you explicitly set a `source_path`, your mount points to a specific subdirectory in the external directory.   - If the `source_path` is an empty string (`""`), your mount points to the entire external directory. - If you don't define a `source_path`, Upsun Fixed uses the <MOUNT_PATH> as default value, without leading or trailing slashes. For example, if your mount lives in the `/web/uploads/` directory in your app container, it will point to a directory named `web/uploads` in the external directory.     **WARNING:** Changing the name of your mount affects the `source_path` when it's undefined. See [how to ensure continuity](#ensure-continuity-when-changing-the-name-of-your-mount) and maintain access to your files.                       |
-| `service`     | `string`                      |       | Only for `service` mounts: the name of the [Network Storage service](https://fixed.docs.upsun.com/add-services/network-storage.md).                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
-
-The accessibility to the web of a mounted directory depends on the [`web.locations` configuration](#web).
-Files can be all public, all private, or with different rules for different paths and file types.
-
-Note that when you remove a `local` mount from your `.platform.app.yaml` file,
-the mounted directory isn't deleted.
-The files still exist on disk until manually removed
-(or until the app container is moved to another host during a maintenance operation in the case of a `tmp` mount).
-
-####### Example configuration
-
-```yaml  {location=".platform.app.yaml"}
-mounts:
-  'web/uploads':
-    source: local
-    source_path: uploads
-  '/.tmp_platformsh':
-    source: tmp
-    source_path: files/.tmp_platformsh
-  '/build':
-    source: local
-    source_path: files/build
-  '/.cache':
-    source: tmp
-    source_path: files/.cache
-  '/node_modules/.cache':
-    source: tmp
-    source_path: files/node_modules/.cache
-```
-
-For examples of how to set up a `service` mount, see the dedicated [Network Storage page](https://fixed.docs.upsun.com/add-services/network-storage.md).
-
-####### Ensure continuity when changing the name of your mount
-
-Changing the name of your mount affects the default `source_path`.
-
-Say you have a `/my/cache/` mount with an undefined `source_path`:
-
-```yaml  {location=".platform.app.yaml"}
-mounts:
-  '/my/cache/':
-    source: tmp
-```
-
-If you rename the mount to `/cache/files/`, it will point to a new, empty `/cache/files/` directory.
-
-To ensure continuity, you need to explicitly define the `source_path` as the previous name of the mount, without leading or trailing slashes:
-
- ```yaml  {location=".platform.app.yaml"}
-mounts:
-  '/cache/files/':
-    source: tmp
-    source_path: my/cache
-```
-
-The `/cache/files/` mount will point to the original `/my/cache/` directory, maintaining access to all your existing files in that directory.
-
-####### Overlapping mounts
-
-The locations of mounts as they are visible to application containers can overlap somewhat.
-For example:
-
-```yaml  {location=".platform/applications.yaml"}
-applications:
-  myapp:
-    # ...
-    mounts:
-      'var/cache_a':
-        source: service
-        service: ns_service
-        source_path: cacheA
-      'var/cache_b':
-        source: tmp
-        source_path: cacheB
-      'var/cache_c':
-        source: local
-        source_path: cacheC
-```
-
-In this case, it does not matter that each mount is of a different `source` type.
-Each mount is restricted to a subfolder within `var`, and all is well.
-
-The following, however, is not allowed and will result in a failure:
-
-```yaml  {location=".platform/applications.yaml"}
-applications:
-  myapp:
-    # ...
-    mounts:
-      'var/':
-        source: service
-        service: ns_service
-        source_path: cacheA
-      'var/cache_b':
-        source: tmp
-        source_path: cacheB
-      'var/cache_c':
-        source: local
-        source_path: cacheC
-```
-
-The `service` mount type specifically exists to share data between instances of the same application, whereas `tmp` and `instance` are meant to restrict data to build time and runtime of a single application instance, respectively.
-These allowances are not compatible, and will result in an error if pushed.
-
-###### Web
-
-Use the `web` key to configure the web server running in front of your app.
-Defaults may vary with a different [image `type`](#types).
-
-| Name        | Type                                       | Required                      | Description                                          |
-|-------------|--------------------------------------------|-------------------------------|------------------------------------------------------|
-| `commands`  | A [web commands dictionary](#web-commands) | See [note](#required-command) | The command to launch your app.                      |
-| `upstream`  | An [upstream dictionary](#upstream)        |                               | How the front server connects to your app.           |
-| `locations` | A [locations dictionary](#locations)       |                               | How the app container responds to incoming requests. |
-
-See some [examples of how to configure what's served](https://fixed.docs.upsun.com/create-apps/web.md).
-
-####### Web commands
-
-| Name         | Type     | Required                      | Description                                                                                         |
-|--------------|----------|-------------------------------|-----------------------------------------------------------------------------------------------------|
-| `pre_start`  | `string` |                               | Command run just prior to `start`, which can be useful when you need to run _per-instance_ actions. |
-| `start`      | `string` | See [note](#required-command) | The command to launch your app. If it terminates, it's restarted immediately.                       |
-| `post_start` | `string` |                               | Command runs **before** adding the container to the router and **after** the `start` command.       |
-
-**Note**: 
-
-The ``pre_start`` feature is **not blocking**, which means the ``deploy`` hook may start running **before** the ``pre_start`` command finishes.
-This can lead to unexpected behavior if ``pre_start`` performs setup tasks that ``deploy`` depends on.
-To avoid issues, make sure any critical initialization in ``pre_start`` is either quick or safe to run concurrently with ``deploy``.
-
-The ``post_start`` feature is experimental and may change. Please share your feedback in the
-Upsun [Discord](https://discord.gg/upsun).
-
-Example:
-
-```yaml  {location=".platform.app.yaml"}
-web:
-  commands:
-    start: 'uwsgi --ini conf/server.ini'
-```
-
-This command runs every time your app is restarted, regardless of whether or not new code is deployed.
-
-**Note**: 
-
-Never “background” a start process using ``&``.
-That’s interpreted as the command terminating and the supervisor process starts a second copy,
-creating an infinite loop until the container crashes.
-Just run it as normal and allow the Upsun Fixed supervisor to manage it.
-
-######## Required command
-
-On all containers other than PHP, the value for `start` should be treated as required.
-
-On PHP containers, it's optional and defaults to starting PHP-FPM (`/usr/bin/start-php-app`).
-It can also be set explicitly on a PHP container to run a dedicated process,
-such as [React PHP](https://github.com/platformsh-examples/platformsh-example-reactphp)
-or [Amp](https://github.com/platformsh-examples/platformsh-example-amphp).
-See how to set up [alternate start commands on PHP](https://fixed.docs.upsun.com/languages/php.md#alternate-start-commands).
-
-####### Upstream
-
-| Name            | Type                | Required | Description                                                       | Default                                                                                                |
-|-----------------|---------------------|----------|-------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------|
-| `socket_family` | `tcp` or `unix`     |          | Whether your app listens on a Unix or TCP socket.                 | Defaults to `tcp` for all [image types](#types) except PHP; for PHP image types the default is `unix`. |
-| `protocol`      | `http` or `fastcgi` |          | Whether your app receives incoming requests over HTTP or FastCGI. | Default varies based on [image `type`](#types).                                                        |
-
-For PHP, the defaults are configured for PHP-FPM and shouldn't need adjustment.
-For all other containers, the default for `protocol` is `http`.
-
-The following example is the default on non-PHP containers:
-
-```yaml  {location=".platform.app.yaml"}
-web:
-  upstream:
-    socket_family: tcp
-    protocol: http
-```
-######## Where to listen
-
-Where to listen depends on your setting for `web.upstream.socket_family` (defaults to `tcp`).
-
-| `socket_family`  | Where to listen                                                                                                                       |
-|------------------|---------------------------------------------------------------------------------------------------------------------------------------|
-| `tcp`            | The port specified by the [`PORT` environment variable](https://fixed.docs.upsun.com/development/variables/use-variables.md#use-provided-variables)               |
-| `unix`           | The Unix socket file specified by the [`SOCKET` environment variable](https://fixed.docs.upsun.com/development/variables/use-variables.md#use-provided-variables) |
-
-If your application isn't listening at the same place that the runtime is sending requests,
-you see `502 Bad Gateway` errors when you try to connect to your website.
-
-####### Locations
-
-Each key in the `locations` dictionary is a path on your site with a leading `/`.
-For `example.com`, a `/` matches `example.com/` and `/admin` matches `example.com/admin`.
-When multiple keys match an incoming request, the most-specific applies.
-
-The following table presents possible properties for each location:
-
-| Name                | Type                                                 | Default   | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
-|---------------------|------------------------------------------------------|-----------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `root`              | `string`                                             |           | The directory to serve static assets for this location relative to the [app's root directory](#root-directory). Must be an actual directory inside the root directory.                                                                                                                                                                                                                                                                                                                                                          |
-| `passthru`          | `boolean` or  `string`                               | `false`   | Whether to forward disallowed and missing resources from this location to the app. A string is a path with a leading `/` to the controller, such as `/index.php`. <BR> <BR> If your app is in PHP, when setting `passthru` to `true`, you might want to set `scripts` to `false` for enhanced security. This prevents PHP scripts from being executed from the specified location. You might also want to set `allow` to `false` so that not only PHP scripts can't be executed, but their source code also can't be delivered. |
-| `index`             | Array of `string`s or `null`                         |           | Files to consider when serving a request for a directory. When set, requires access to the files through the `allow` or `rules` keys.                                                                                                                                                                                                                                                                                                                                                                                           |
-| `expires`           | `string`                                             | `-1`      | How long static assets are cached. The default means no caching. Setting it to a value enables the `Cache-Control` and `Expires` headers. Times can be suffixed with `ms` = milliseconds, `s` = seconds, `m` = minutes, `h` = hours, `d` = days, `w` = weeks, `M` = months/30d, or `y` = years/365d. If a `Cache-Control` appears on the `headers` configuration, `expires`, if set, will be ignored. Thus, make sure to set the `Cache-Control`'s `max-age` value when specifying a the header.                                |
-| `allow`             | `boolean`                                            | `true`    | Whether to allow serving files which don't match a rule.                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
-| `scripts`           | `boolean`                                            |           | Whether to allow scripts to run. Doesn't apply to paths specified in `passthru`. Meaningful only on PHP containers.                                                                                                                                                                                                                                                                                                                                                                                                             |
-| `headers`           | A headers dictionary                                 |           | Any additional headers to apply to static assets, mapping header names to values (see [Set custom headers on static content](https://fixed.docs.upsun.com/create-apps/web/custom-headers.md)). Responses from the app aren't affected.                                                                                                                                                                                                                                                                                                                    |
-| `request_buffering` | A [request buffering dictionary](#request-buffering) | See below | Handling for chunked requests.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
-| `rules`             | A [rules dictionary](#rules)                         |           | Specific overrides for specific locations.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
-
-######## Rules
-
-The rules dictionary can override most other keys according to a regular expression.
-The key of each item is a regular expression to match paths exactly.
-If an incoming request matches the rule, it's handled by the properties under the rule,
-overriding any conflicting rules from the rest of the `locations` dictionary.
-
-Under `rules`, you can set all the other possible [`locations` properties](#locations)
-except `root`, `index`, `rules` and `request_buffering`.
-
-In the following example, the `allow` key disallows requests for static files anywhere in the site.
-This is overridden by a rule that explicitly allows common image file formats.
-
-```yaml  {location=".platform.app.yaml"}
-web:
-  locations:
-    '/':
-      # Handle dynamic requests
-      root: 'public'
-      passthru: '/index.php'
-      # Disallow static files
-      allow: false
-      rules:
-        # Allow common image files only.
-        '\.(jpe?g|png|gif|svgz?|css|js|map|ico|bmp|eot|woff2?|otf|ttf)$':
-          allow: true
-```
-######## Request buffering
-
-Request buffering is enabled by default to handle chunked requests as most app servers don't support them.
-The following table shows the keys in the `request_buffering` dictionary:
-
-| Name               | Type      | Required | Default | Description                               |
-|--------------------|-----------|----------|---------|-------------------------------------------|
-| `enabled`          | `boolean` | Yes      | `true`  | Whether request buffering is enabled.     |
-| `max_request_size` | `string`  |          | `250m`  | The maximum size to allow in one request. |
-
-The default configuration would look like this:
-
-```yaml  {location=".platform.app.yaml"}
-web:
-  locations:
-    '/':
-      passthru: true
-      request_buffering:
-        enabled: true
-        max_request_size: 250m
-```
-###### Workers
-
-Workers are exact copies of the code and compilation output as a `web` instance after a [`build` hook](#hooks).
-They use the same container image.
-
-Workers can't accept public requests and so are suitable only for background tasks.
-If they exit, they're automatically restarted.
-
-The keys of the `workers` definition are the names of the workers.
-You can then define how each worker differs from the `web` instance using
-the [top-level properties](#top-level-properties).
-
-Each worker can differ from the `web` instance in all properties _except_ for:
-
-- `build` and `dependencies` properties, which must be the same
-- `crons` as cron jobs don't run on workers
-- `hooks` as the `build` hook must be the same
-  and the `deploy` and `post_deploy` hooks don't run on workers.
-
-A worker named `queue` that was small and had a different start command could look like this:
-
-```yaml  {location=".platform.app.yaml"}
-workers:
-  queue:
-    size: S
-  commands:
-    start: |
-      ./worker.sh
-```
-
-For resource allocation, using workers in your project requires a [Medium
- plan or larger](https://upsun.com/fixed-pricing/).
-
-###### Access
-
-The `access` dictionary has one allowed key:
-
-| Name  | Allowed values                      | Default       | Description                                                           |
-|-------|-------------------------------------|---------------|-----------------------------------------------------------------------|
-| `ssh` | `admin`, `contributor`, or `viewer` | `contributor` | Defines the minimum role required to access app environments via SSH. |
-
-In the following example, only users with `admin` permissions for the given [environment type](https://fixed.docs.upsun.com/administration/users.md#environment-type-roles)
-can access the deployed environment via SSH:
-
-```yaml  {location=".platform.app.yaml"}
-access:
-  ssh: admin
-```
-###### Variables
+Optional in [single-runtime](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#top-level-properties) and [composable](https://fixed.docs.upsun.com/create-apps/app-reference/composable-image.md#top-level-properties) images.
 
 Upsun Fixed provides a number of ways to set [variables](https://fixed.docs.upsun.com/development/variables.md).
 Variables set in your app configuration have the lowest precedence,
@@ -17249,1298 +18161,166 @@ The following example sets two variables:
 - A variable named `d8config:system.site:name` with the value `My site rocks`
   that's available in the `PLATFORM_VARIABLES` environment variable
 
-```yaml  {location=".platform.app.yaml"}
-variables:
-  env:
-    AUTHOR: 'Juan'
-  d8config:
-    "system.site:name": 'My site rocks'
+```yaml {}
+applications:
+  myapp:
+    type: 'python:3.14'
+    source:
+      root: "/"
+    variables:
+      env:
+        AUTHOR: 'Juan'
+      d8config:
+        "system.site:name": 'My site rocks'
+```
+
+    .platform.app.yaml
+
+```yaml {}
+applications:
+  myapp:
+    type: "composable:25.11"
+    source:
+      root: "/"
+    stack: 
+      runtimes: [ "python@3.14" ]
+    variables:
+      env:
+        AUTHOR: 'Juan'
+      d8config:
+        "system.site:name": 'My site rocks'
 ```
 
 You can also define and access more [complex values](https://fixed.docs.upsun.com/development/variables/use-variables.md#access-complex-values).
 
-###### Firewall
+#### web
 
-  **Tier availability**
-  This feature is available for
-  **Elite and Enterprise** customers. [Compare the  tiers](https://upsun.com/fixed-pricing/) on our pricing page, or [contact our sales team](https://upsun.com/contact-us/
-  ) for more information.
 
-Set limits in outbound traffic from your app with no impact on inbound requests.
+A web instance that defines how the web application is served.
 
-The `outbound` key is required and contains one or more rules.
-The rules define what traffic is allowed; anything unspecified is blocked.
-
-Each rule has the following properties where at least one is required and `ips` and `domains` can't be specified together:
-
-| Name      | Type                | Default         | Description                                                                                                                                                                                                             |
-|-----------|---------------------|-----------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `ips`     | Array of `string`s  | `["0.0.0.0/0"]` | IP addresses in [CIDR notation](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing). See a [CIDR format converter](https://www.ipaddressguide.com/cidr).                                                      |
-| `domains` | Array of `string`s  |                 | [Fully qualified domain names](https://en.wikipedia.org/wiki/Fully_qualified_domain_name) to specify specific destinations by hostname.                                                                                 |
-| `ports`   | Array of `integer`s |                 | Ports from 1 to 65535 that are allowed. If any ports are specified, all unspecified ports are blocked. If no ports are specified, all ports are allowed. Port `25`, the SMTP port for sending email, is always blocked. |
-
-The default settings would look like this:
-
-```yaml  {location=".platform.app.yaml"}
-firewall:
-  outbound:
-    - ips: ["0.0.0.0/0"]
-```
-
-####### Support for rules
-
-Where outbound rules for firewalls are supported in all environments.
-For Dedicated Gen 2 projects, contact support for configuration.
-
-####### Multiple rules
-
-Multiple firewall rules can be specified.
-In such cases, a given outbound request is allowed if it matches _any_ of the defined rules.
-
-So in the following example requests to any IP on port 80 are allowed
-and requests to 1.2.3.4 on either port 80 or 443 are allowed:
-
-```yaml  {location=".platform.app.yaml"}
-firewall:
-  outbound:
-    - ips: ["1.2.3.4/32"]
-      ports: [443]
-    - ports: [80]
-```
-
-####### Outbound traffic to CDNs
-
-Be aware that many services are behind a content delivery network (CDN).
-For most CDNs, routing is done via domain name, not IP address,
-so thousands of domain names may share the same public IP addresses at the CDN.
-If you allow the IP address of a CDN, you are usually allowing many or all of the other customers hosted behind that
-CDN.
-
-####### Outbound traffic by domain
-
-You can filter outbound traffic by domain.
-Using domains in your rules rather than IP addresses is generally more specific and secure.
-For example, if you use an IP address for a service with a CDN,
-you have to allow the IP address for the CDN.
-This means that you allow potentially hundreds or thousands of other servers also using the CDN.
-
-An example rule filtering by domain:
-
-```yaml  {location=".platform.app.yaml"}
-firewall:
-  outbound:
-    - protocol: tcp
-      domains: ["api.stripe.com", "api.twilio.com"]
-      ports: [80, 443]
-    - protocol: tcp
-      ips: ["1.2.3.4/29","2.3.4.5"]
-      ports: [22]
-```
-######## Determine which domains to allow
-
-To determine which domains to include in your filtering rules,
-find the domains your site has requested the DNS to resolve.
-Run the following command to parse your server’s `dns.log` file
-and display all Fully Qualified Domain Names that have been requested:
-
-```bash
-awk '/query\[[^P]\]/ { print $6 | "sort -u" }' /var/log/dns.log
-```
-
-The output includes all DNS requests that were made, including those blocked by your filtering rules.
-It doesn't include any requests made using an IP address.
-
-Example output:
-
-```bash
-facebook.com
-fastly.com
-upsun.com
-www.google.com
-www.upsun.com
-```
-
-###### Build
-
-The only property of the `build` dictionary is `flavor`, which specifies a default set of build tasks to run.
-Flavors are language-specific.
-
-See what the build flavor is for your language:
-
-- [Node.js](https://fixed.docs.upsun.com/languages/nodejs.md#dependencies)
-- [PHP](https://fixed.docs.upsun.com/languages/php.md#dependencies)
-
-In all languages, you can also specify a flavor of `none` to take no action at all
-(which is the default for any language other than PHP and Node.js).
-
-```yaml  {location=".platform.app.yaml"}
-build:
-  flavor: none
-```
-###### Dependencies
-
-Installs global dependencies as part of the build process.
-They're independent of your app's dependencies
-and are available in the `PATH` during the build process and in the runtime environment.
-They're installed before the `build` hook runs using a package manager for the language.
-
-| Language | Key name              | Package manager                                                                                                    |
-|----------|-----------------------|--------------------------------------------------------------------------------------------------------------------|
-| PHP      | `php`                 | [Composer](https://getcomposer.org/)                                                                               |
-| Python 2 | `python` or `python2` | [Pip 2](https://packaging.python.org/tutorials/installing-packages/)                                               |
-| Python 3 | `python3`             | [Pip 3](https://packaging.python.org/tutorials/installing-packages/)                                               |
-| Ruby     | `ruby`                | [Bundler](https://bundler.io/)                                                                                     |
-| Node.js  | `nodejs`              | [npm](https://www.npmjs.com/) (see [how to use yarn](https://fixed.docs.upsun.com/languages/nodejs.md#use-yarn-as-a-package-manager))   |
-
-The format for package names and version constraints are defined by the specific package manager.
-
-An example of dependencies in multiple languages:
-
-```yaml  {location=".platform.app.yaml"}
-dependencies:
-  php: # Specify one Composer package per line.
-    drush/drush: '8.0.0'
-    composer/composer: '^2'
-  python2: # Specify one Python 2 package per line.
-    behave: '*'
-    requests: '*'
-  python3: # Specify one Python 3 package per line.
-    numpy: '*'
-  ruby: # Specify one Bundler package per line.
-    sass: '3.4.7'
-  nodejs: # Specify one NPM package per line.
-    pm2: '^4.5.0'
-```
-
-###### Hooks
-
-There are three different hooks that run as part of the process of building and deploying your app.
-These are places where you can run custom scripts.
-They are: the `build` hook, the `deploy` hook, and the `post_deploy` hook.
-Only the `build` hook is run for [worker instances](#workers), while [web instances](#web) run all three.
-
-The process is ordered as:
-
-1. Variables accessible at build time become available.
-1. [Build flavor](#build) runs if applicable.
-1. Any [dependencies](#dependencies) are installed.
-1. The `build` hook is run.
-1. The file system is changed to read only (except for any [mounts](#mounts)).
-1. The app container starts. Variables accessible at runtime and services become available.
-1. The `deploy` hook is run.
-1. The app container begins accepting requests.
-1. The `post_deploy` hook is run.
-
-Note that if an environment changes by no code changes, only the last step is run.
-If you want the entire process to run, see how
-to [manually trigger builds](https://fixed.docs.upsun.com/development/troubleshoot.md#manually-trigger-builds).
-
-####### Writable directories during build
-
-During the `build` hook, there are three writeable directories:
-
-- `PLATFORM_APP_DIR`:
-  Where your code is checked out and the working directory when the `build` hook starts.
-  Becomes the app that gets deployed.
-- `PLATFORM_CACHE_DIR`:
-  Persists between builds, but isn't deployed.
-  Shared by all builds on all branches.
-- `/tmp`:
-  Isn't deployed and is wiped between each build.
-  Note that `PLATFORM_CACHE_DIR` is mapped to `/tmp`
-  and together they offer about 8GB of free space.
-
-####### Hook failure
-
-Each hook is executed as a single script, so they're considered to have failed only if the final command in them fails.
-To cause them to fail on the first failed command, add `set -e` to the beginning of the hook.
-
-If a `build` hook fails for any reason, the build is aborted and the deploy doesn't happen.
-Note that this only works for `build` hooks --
-if other hooks fail, the app is still deployed.
-
-######## Automated testing
-
-It’s preferable that you set up and run automated tests in a dedicated CI/CD tool.
-Relying on Upsun Fixed hooks for such tasks can prove difficult.
-
-During the `build` hook, you can halt the deployment on a test failure but the following limitations apply:
-
-- Access to services such as databases, Redis, Vault KMS, and even writable mounts is disabled.
-  So any testing that relies on it is sure to fail.
-- If you haven’t made changes to your app, an existing build image is reused and the build hook isn’t run.
-- Test results are written into your app container, so they might get exposed to a third party.
-
-During the `deploy` hook, you can access services but **you can’t halt the deployment based on a test failure**.
-Note that there are other downsides:
-
-- Your app container is read-only during the deploy hook,
-  so if your tests need to write reports and other information, you need to create a file mount for them.
-- Your app can only be deployed once the deploy hook has been completed.
-  Therefore, running automated testing via the deploy hook generates slower deployments.
-- Your environment isn’t available externally during the deploy hook.
-  Unit and integration testing might work without the environment being available,
-  but you can’t typically perform end-to-end testing until after the environment is up and available.
-
-###### Crons
-
-The keys of the `crons` definition are the names of the cron jobs.
-The names must be unique.
-
-If an application defines both a `web` instance and `worker` instances, cron jobs run only on the `web` instance.
-
-See how to [get cron logs](https://fixed.docs.upsun.com/increase-observability/logs/access-logs.md#container-logs).
-
-The following table shows the properties for each job:
-
-| Name               | Type                                         | Required | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
-|--------------------|----------------------------------------------|----------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `spec`             | `string`                                     | Yes      | The [cron specification](https://en.wikipedia.org/wiki/Cron#Cron_expression). To prevent competition for resources that might hurt performance on **Grid** projects use `H` in definitions to indicate an unspecified but invariant time. For example, instead of using `0 * * * *` to indicate the cron job runs at the start of every hour, you can use `H * * * *` to indicate it runs every hour, but not necessarily at the start. This prevents multiple cron jobs from trying to start at the same time. **The `H` syntax isn't available on Dedicated Gen 2 projects.** |
-| `commands`         | A [cron commands dictionary](#cron-commands) | Yes      | A definition of what commands to run when starting and stopping the cron job.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
-| `shutdown_timeout` | `integer`                                    | No       | When a cron is canceled, this represents the number of seconds after which a `SIGKILL` signal is sent to the process to force terminate it. The default is `10` seconds.                                                                                                                                                                                                                                                                                                                                                                                                                      |
-| `timeout`          | `integer`                                    | No       | The maximum amount of time a cron can run before it's terminated. Defaults to the maximum allowed value of `86400` seconds (24 hours).                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
-
-Note that you can [cancel pending or running crons](https://fixed.docs.upsun.com/environments/cancel-activity.md).
-
-**Note**: 
-
-The use of the ``cmd`` key is now deprecated in favor of the ``commands``key. 
-Make sure you set your new cron jobs using the ``commands`` key,
-and update your existing cron jobs to ensure continuity.
-
-####### Cron commands
-
-| Name    | Type     | Required | Description                                                                                                                                                                                                                                                                        |
-|---------|----------|----------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `start` | `string` | Yes      | The command that's run. It's run in [Dash](https://en.wikipedia.org/wiki/Almquist_shell).                                                                                                                                                                                          |
-| `stop`  | `string` | No       | The command that's issued to give the cron command a chance to shutdown gracefully, such as to finish an active item in a list of tasks. Issued when a cron task is interrupted by a user through the CLI or Console. If not specified, a `SIGTERM` signal is sent to the process. |
-
-```yaml  {location=".platform.app.yaml"}
-crons:
-  mycommand:
-    spec: 'H * * * *'
-    commands:
-      start: sleep 60 && echo sleep-60-finished && date
-      stop: killall sleep
-    shutdown_timeout: 18
-```
-In this example configuration, the [cron specification](#crons) uses the `H` syntax.
-
-Note that this syntax is only supported on Grid projects.
-On Dedicated Gen 2 projects, use the [standard cron syntax](https://en.wikipedia.org/wiki/Cron#Cron_expression).
-
-####### Example cron jobs
-
-```yaml {}
-type: 'php:8.5'
-crons:
-  # Run Drupal's cron tasks every 19 minutes.
-  drupal:
-    spec: '*/19 * * * *'
-    commands:
-      start: 'cd web ; drush core-cron'
-  # But also run pending queue tasks every 7 minutes.
-  # Use an odd number to avoid running at the same time as the `drupal` cron.
-  drush-queue:
-    spec: '*/7 * * * *'
-    commands:
-      start: 'cd web ; drush queue-run aggregator_feeds'
-```
-
-    .platform.app.yaml
-
-```yaml {}
-type: 'ruby:3.4'
-crons:
-  # Execute a rake script every 19 minutes.
-  ruby:
-    spec: '*/19 * * * *'
-    commands:
-      start: 'bundle exec rake some:task'
-```
-
-    .platform.app.yaml
-
-```yaml {}
-type: 'php:8.5'
-crons:
-  # Run Laravel's scheduler every 5 minutes.
-  scheduler:
-    spec: '*/5 * * * *'
-    commands:
-      start: 'php artisan schedule:run'
-```
-
-    .platform.app.yaml
-
-```yaml {}
-type: 'php:8.5'
-crons:
-  # Take a backup of the environment every day at 5:00 AM.
-  snapshot:
-    spec: 0 5 * * *
-    commands:
-      start: |
-        # Only run for the production environment, aka main branch
-        if [ "$PLATFORM_ENVIRONMENT_TYPE" = "production" ]; then
-            croncape symfony ...
-        fi        
-```
-
-####### Conditional crons
-
-If you want to set up customized cron schedules depending on the environment type,
-define conditional crons.
-To do so, use a configuration similar to the following:
-
-```yaml  {location=".platform.app.yaml"}
-crons:
-  update:
-    spec: '0 0 * * *'
-    commands:
-      start: |
-        if [ "$PLATFORM_ENVIRONMENT_TYPE" = production ]; then
-          platform backup:create --yes --no-wait
-          platform source-operation:run update --no-wait --yes
-        fi
-```
-####### Cron job timing
-
-Minimum time between cron jobs being triggered:
-
-| Plan                | Time      |
-|---------------------|-----------|
-| Professional        | 5 minutes |
-| Elite or Enterprise | 1 minute  |
-
-For each app container, only one cron job can run at a time.
-If a new job is triggered while another is running, the new job is paused until the other completes.
-
-To minimize conflicts, a random offset is applied to all triggers.
-The offset is a random number of seconds up to 20 minutes or the cron frequency, whichever is smaller.
-
-Crons are also paused while activities such as [backups](https://fixed.docs.upsun.com/environments/backup.md) are running.
-The crons are queued to run after the other activity finishes.
-
-To run cron jobs in a timezone other than UTC, set the [timezone property](#top-level-properties).
-
-####### Paused crons
-
-[Preview environments](https://fixed.docs.upsun.com/glossary.md#preview-environment) are often used for a limited time and then abandoned.
-While it's useful for environments under active development to have scheduled tasks,
-unused environments don't need to run cron jobs.
-To minimize unnecessary resource use,
-crons on environments with no deployments are paused.
-
-This affects all environments that aren't live environments.
-This means all environments on Development plans
-and all preview environments on higher plans.
-
-Such environments with deployments within 14 days have crons with the status `running`.
-If there haven't been any deployments within 14 days, the status is `paused`.
-
-You can see the status in the Console
-or using the CLI by running `platform environment:info` and looking under `deployment_state`.
-
-######## Restarting paused crons
-
-If the crons on your preview environment are paused but you're still using them,
-you can push changes to the environment or redeploy it.
-
-To restart crons without changing anything:
-
-Run the following command:
-
-```bash {}
-platform redeploy
-```
-
-###### Runtime
-
-The following table presents the various possible modifications to your PHP runtime:
-
-| Name                        | Type                                                       | Language | Description                                                                                             |
-|-----------------------------|------------------------------------------------------------|----------|---------------------------------------------------------------------------------------------------------|
-| `extensions`                | List of `string`s OR [extensions definitions](#extensions) | PHP      | [PHP extensions](https://fixed.docs.upsun.com/languages/php/extensions.md) to enable.                                               |
-| `disabled_extensions`       | List of `string`s                                          | PHP      | [PHP extensions](https://fixed.docs.upsun.com/languages/php/extensions.md) to disable.                                              |
-| `request_terminate_timeout` | `integer`                                                  | PHP      | The timeout (in seconds) for serving a single request after which the PHP-FPM worker process is killed. |
-| `sizing_hints`              | A [sizing hints definition](#sizing-hints)                 | PHP      | The assumptions for setting the number of workers in your PHP-FPM runtime.                              |
-| `xdebug`                    | An Xdebug definition                                       | PHP      | The setting to turn on [Xdebug](https://fixed.docs.upsun.com/languages/php/xdebug.md).                                              |
-
-You can also set your [app's runtime timezone](https://fixed.docs.upsun.com/create-apps/timezone.md).
-
-####### Extensions
-
-**Note**: 
-
-You can now use the Upsun Fixed composable image (BETA) to install runtimes and tools in your application container.
-If you’ve reached this section from another page and are using the composable image, enabling/disabling extensions should be placed under the ``stack`` key instead of what is listed below.
-See [how to configure extensions with the composable image](https://fixed.docs.upsun.com/create-apps/app-reference/composable-image.md#top-level-properties).
-
-You can enable [PHP extensions](https://fixed.docs.upsun.com/languages/php/extensions.md) just with a list of extensions:
-
-```yaml  {location=".platform.app.yaml"}
-runtime:
-  extensions:
-    - geoip
-    - tidy
-```
-
-Alternatively, if you need to include configuration options, use a dictionary for that extension:
-
-```yaml  {location=".platform.app.yaml"}
-runtime:
-  extensions:
-    - geoip
-    - name: blackfire
-      configuration:
-        server_id: foo
-        server_token: bar
-```
-
-In this case, the `name` property is required.
-
-####### Sizing hints
-
-The following table shows the properties that can be set in `sizing_hints`:
-
-| Name              | Type      | Default | Minimum | Description                                    |
-|-------------------|-----------|---------|---------|------------------------------------------------|
-| `request_memory`  | `integer` | 45      | 10      | The average memory consumed per request in MB. |
-| `reserved_memory` | `integer` | 70      | 70      | The amount of memory reserved in MB.           |
-
-See more about [PHP-FPM workers and sizing](https://fixed.docs.upsun.com/languages/php/fpm.md).
-
-###### Source
-
-The following table shows the properties that can be set in `source`:
-
-| Name         | Type                     | Required | Description                                                                                                                                                                  |
-|--------------|--------------------------|----------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `operations` | An operations dictionary |          | Operations that can be applied to the source code. See [source operations](https://fixed.docs.upsun.com/create-apps/source-operations.md)                                                                |
-| `root`       | `string`                 |          | The path where the app code lives. Defaults to the directory of the `.platform.app.yaml` file. Useful for [multi-app setups](https://fixed.docs.upsun.com/create-apps/multi-app.md). |
-
-###### Additional hosts
-
-If you're using a private network with specific IP addresses you need to connect to,
-you might want to map those addresses to hostnames to better remember and organize them.
-In such cases, you can add a map of those IP addresses to whatever hostnames you like.
-Then when your app tries to access the hostname, it's sent to the proper IP address.
-
-So in the following example, if your app tries to access `api.example.com`, it's sent to `192.0.2.23`.
-
-```yaml  {location=".platform.app.yaml"}
-additional_hosts:
-  api.example.com: "192.0.2.23"
-  web.example.com: "203.0.113.42"
-```
-
-This is equivalent to adding the mapping to the `/etc/hosts` file for the container.
-#### Composable image
-
-The Upsun Fixed composable image provides enhanced flexibility when defining your app.
-It allows you to install several runtimes and tools in your application container,
-in a **"one image to rule them all"** approach.
-
-The composable image is built on [Nix](https://nix.dev), which offers the following benefits:
-
-- You can add as many packages to your application container as you need,
-  choosing from over 120,000 packages from [the Nixpkgs collection](https://search.nixos.org/packages).
-- The packages you add are built in total isolation, so you can install different versions of the same package.
-- With [Nix](https://nix.dev/reference/glossary#term-Nix), there are no undeclared dependencies in your source code.
-  What works on your local machine is guaranteed to work on any other machine.
-
-This page introduces all the settings available to configure your composable image from your `.platform.app.yaml` file
-(usually located at the root of your Git repository). 
-Note that multi-app projects can be [set in various ways](https://fixed.docs.upsun.com/create-apps/multi-app.md).
-
-If you're pressed for time, jump to this comprehensive [configuration example](https://fixed.docs.upsun.com/create-apps.md#comprehensive-example).
-
-###### Top-level properties
-
-The following table presents all the properties you can use at the top level of your app's YAML configuration file.
-
-The column _Set in instance?_ defines whether the given property can be overridden within a `web` or `workers` instance.
-To override any part of a property, you have to provide the entire property.
-
-| Name               | Type                                                                     | Required | Set in instance? | Description                                                                                                                                                                                                                                                                 |
-|--------------------|--------------------------------------------------------------------------|----------|------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `name`             | `string`                                                                 | Yes      | No               | A unique name for the app. Must be lowercase alphanumeric characters. Changing the name destroys data associated with the app.                                                                                                                                              |
-| `type`             | A type                                                                   | Yes      | No               | [Defines the version of the Nix channel](#supported-nix-channels). Example: `type: "composable:25.05"`                                                                                                                                                  |
-| `stack`            | An array of [Nix packages](#stack)                                       | Yes      | No               | A list of packages from the Upsun Fixed collection of [supported runtimes](#supported-nix-packages) and/or from [Nixpkgs](https://search.nixos.org/packages).                                                                                                       |
-| `size`             | A [size](#sizes)                                                         |          | Yes              | How much resources to devote to the app. Defaults to `AUTO` in production environments.                                                                                                                                                                                     |
-| `relationships`    | A dictionary of [relationships](#relationships)                          |          | Yes              | Connections to other services and apps.                                                                                                                                                                                                                                     |
-| `disk`             | `integer` or `null`                                                      |          | Yes              | The size of the disk space for the app in [MB](https://fixed.docs.upsun.com/glossary.md#mb). Minimum value is `128`. Defaults to `null`, meaning no disk is available. See [note on available space](#available-disk-space).                                                                     |
-| `mounts`           | A dictionary of [mounts](#mounts)                                        |          | Yes              | Directories that are writable even after the app is built. If set as a local source, `disk` is required.                                                                                                                                                                    |
-| `web`              | A [web instance](#web)                                                   |          | N/A              | How the web application is served.                                                                                                                                                                                                                                          |
-| `workers`          | A [worker instance](#workers)                                            |          | N/A              | Alternate copies of the application to run as background processes.                                                                                                                                                                                                         |
-| `timezone`         | `string`                                                                 |          | No               | The timezone for crons to run. Format: a [TZ database name](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones). Defaults to `UTC`, which is the timezone used for all logs no matter the value here. See also [app runtime timezones](https://fixed.docs.upsun.com/create-apps/timezone.md). |
-| `access`           | An [access dictionary](#access)                                          |          | Yes              | Access control for roles accessing app environments.                                                                                                                                                                                                                        |
-| `variables`        | A [variables dictionary](#variables)                                     |          | Yes              | Variables to control the environment.                                                                                                                                                                                                                                       |
-| `firewall`         | A [firewall dictionary](#firewall)                                       |          | Yes              | Outbound firewall rules for the application.                                                                                                                                                                                                                                |
-| `hooks`            | A [hooks dictionary](#hooks)                                             |          | No               | What commands run at different stages in the build and deploy process.                                                                                                                                                                                                      |
-| `crons`            | A [cron dictionary](#crons)                                              |          | No               | Scheduled tasks for the app.                                                                                                                                                                                                                                                |
-| `source`           | A [source dictionary](#source)                                           |          | No               | Information on the app's source code and operations that can be run on it.                                                                                                                                                                                                  |
-| `additional_hosts` | An [additional hosts dictionary](#additional-hosts)                      |          | Yes              | Maps of hostnames to IP addresses.                                                                                                                                                                                                                                          |
-| `operations`       | A [dictionary of Runtime operations](https://fixed.docs.upsun.com/create-apps/runtime-operations.md) |          | No               | Runtime operations for the application.                                                                                                                                                                                                                                     |
-
-**Note**: 
-
-The ``build``, ``dependencies``, and ``runtime`` keys are only supported when using a [single-runtime image](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md).
-They are **not** supported when using the composable image.
-They are replaced by the ``stack`` key.
-
-###### Stack
-
-Use the ``stack`` key to define which runtimes and binaries you want to install in your application container.
-Define them as a YAML array as follows:
-
-```yaml  {location=".platform/applications.yaml"}
-myapp:
-  stack: [ "@" ]
-  # OR
-  stack:
-    - "@"
-```
-
-To add a language to your stack, use the `@` format. 
-To add a tool to your stack, use the `` format, as no version is needed.
-
-**Warning**: 
-
-While technically available during the build phase, ``nix`` commands aren’t supported at runtime as the image becomes read-only.
-
-When using the Upsun Fixed composable image, you don’t need ``nix`` commands.
-Everything you install using the ``stack`` key is readily available to you as the binaries are linked and included in ``$PATH``.
-For instance, to [start a secondary runtime](#primary-runtime),
-just issue the command (e.g. in the [start](https://fixed.docs.upsun.com/create-apps/app-reference/composable-image.md#web-commands)) instead of the ``nix run`` command.
-
-######## Primary runtime
-
-If you add multiple runtimes to your application container,
-the first declared runtime becomes the primary runtime.
-The primary runtime is the one that is automatically started.
-
-To start other declared runtimes, you need to start them manually, using [web commands](#web-commands).
-To find out which start command to use, go to the [Languages](https://fixed.docs.upsun.com/languages.md) section,
-and visit the documentation page dedicated to your runtime.
-
-**Note**: 
-
-If you use PHP, note that PHP-FPM is only started automatically if PHP is defined as the primary runtime.
-
-####### Supported Nix channels
-
-A Nix channel represents a curated, tested snapshot of the Nixpkgs repository, which contains a collection of Nix expressions (code for building packages and configuring systems).
-
-Using the latest stable Nix channel ensures that you get stable, verified packages (not all `git` commits are heavily tested before being merged into the `master` branch).
-
-The following channels are supported:
-
-   - [25.05](https://nixos.org/manual/nixos/stable/release-notes#sec-release-25.05)
-
-####### Deprecated Nix channels
-
-The following channels are available but no longer supported.
-They're available, but they no longer receive security updates from the Nix community and aren't guaranteed to work.
-They'll be removed in the future – consider migrating to a [supported Nix channel](#supported-nix-channels).
-
-   - [24.05](https://nixos.org/manual/nixos/stable/release-notes#sec-release-24.05)
-
-####### Configure Nix channels
-
-The Nix channel can be configured with the [top-level property `type`](#top-level-properties).
-
-For example, to use the Nix channel `25.05`, you would use the following syntax:
-
-```yaml  {location=".platform/applications.yaml"}
-type: "composable:25.05"
-```
-
-####### Supported Nix packages
-
-**Note**: 
-
-The Nix packages listed in the following table are officially supported by Upsun Fixed to provide optimal user experience. 
-However, you can add any other packages from [the Nixpkgs collection](https://search.nixos.org/) to your ``stack``. 
-While available for you to install, packages that aren’t listed in the following table are supported by Nix itself, not Upsun Fixed.
-
-Depending on the Nix package, you can select only the major runtime version,
-or the major and minor runtime versions as shown in the table.
-Security and other patches are applied automatically.
-
-| **Language**                                 | **Nix package** | **Supported version(s)**                        |
-|----------------------------------------------|-----------------|-------------------------------------------------|
-| [Clojure](https://clojure.org/)              | `clojure`       | 1                                               |
-| [Elixir](https://fixed.docs.upsun.com/languages/elixir.md)             | `elixir`        | 1.181.151.14                          |
-| [Go](https://fixed.docs.upsun.com/languages/go.md)                     | `golang`        | 1.221.21                                   |
-| [Java](https://fixed.docs.upsun.com/languages/java.md)                 | `java`          | 2221                                       |
-| [Javascript/Bun](https://bun.sh/)            | `bun`           | 1                                               |
-| [JavaScript/Node.js](https://fixed.docs.upsun.com/languages/nodejs.md) | `nodejs`        | 24222018                         |
-| [Perl](https://www.perl.org/)                | `perl`          | 5                                               |
-| [PHP](https://fixed.docs.upsun.com/languages/php.md)                   | `php`           | 8.48.38.28.1                     |
-| [Python](https://fixed.docs.upsun.com/languages/python.md)             | `python`        | 3.133.123.113.103.92.7 |
-| [Ruby](https://fixed.docs.upsun.com/languages/ruby.md)                 | `ruby`          | 3.43.33.23.1                     |
-
-**Example:**
-
-You want to add PHP version 8.5 and ``facedetect`` to your application container.
-To do so, use the following configuration:
-
-```yaml  {location=".platform/applications.yaml"}
-myapp:
-  stack: [ "php@8.5", "facedetect" ]
-  # OR
-  stack:
-    - "php@8.5"
-    - "facedetect"
-```
-
-####### PHP extensions and Python packages
-
-When you add PHP or Python to your application container,
-you can define which extensions (for PHP) or packages (for Python) you also want to add to your stack.
-
-To find out which extensions you can install with your runtime,
-follow these steps:
-
-1. Go to the [NixOS search](https://search.nixos.org/).
-2. Enter a runtime and click **Search**.
-3. In the **Package sets** side bar, select the right set of extensions/packages for your runtime version. 
-   You can choose the desired extensions/packages from the filtered results.
-
-![Screenshot of the Nix package sets selection for PHP@8.3](https://fixed.docs.upsun.com/images/nixos/nixos-packages.png "0.5")
-
-######## Install PHP extensions
-
-To enable [PHP extensions](https://fixed.docs.upsun.com/languages/php/extensions.md),
-specify a list of `extensions` below the language definition. 
-To disable [PHP extensions](https://fixed.docs.upsun.com/languages/php/extensions.md),
-specify a list of `disabled_extensions` below the language definition. 
-For instance:
-
-```yaml  {location=".platform/applications.yaml"}
-myapp:
-  source:
-    root: "/"
-  stack:
-    - "php@8.5":
-        extensions:
-          - apcu
-          - sodium
-          - xsl
-          - pdo_sqlite
-        disabled_extensions:
-          - gd
-```
-
-**Note**: 
-
-To help you find out the name of the PHP package you want to use,
-some maintainers provide a ``PHP upstream extension`` value in the [NixOS search engine](https://search.nixos.org/packages?channel=unstable&show=php82Extensions.gd).
-
-      ![Screenshot of an upstream extension value shown in the NixOS search](https://fixed.docs.upsun.com/images/nixos/nixossearch-upstream-value.png)
-
-If this information is not provided, note that PHP package names on NixOS always respect the ``<PHP><VERSION>Extensions.<EXTENSION-NAME>`` format. 
-Therefore, you can copy the ``<EXTENSION-NAME>`` as shown in the NixOS search results, and use it in your configuration.
-
-Note that you can use environment variables or your `php.ini` file to [include further configuration options](https://fixed.docs.upsun.com/languages/php.md#customize-php-settings) for your PHP extensions.
-
-######## Install Python packages
-
-To install Python packages, add them to your stack as new packages.
-To do so, use the full name of the package.
-
-For instance, to install [``python313Packages.yq``](https://search.nixos.org/packages?channel=unstable&show=python313Packages.yq),
-use the following configuration:
-
-```yaml  {location=".platform/applications.yaml"}
-myapp:
-  stack:
-    - "python@3.13"
-    - "python313Packages.yq" # python package specific
-```
-
-Alternatively, if you need to include configuration options for your extensions, use either your ``php.ini`` file or [environment variables](https://fixed.docs.upsun.com/development/variables/set-variables.md).
-
-####### Example configuration
-
-Here is a full composable image configuration example. Note the use of the `@` format.
-
-```yaml  {location=".platform/applications.yaml"}
-myapp:
-  stack:
-    - "php@8.5":
-        extensions:
-          - apcu
-          - sodium
-          - xsl
-          - pdo_sqlite
-    - "python@3.13"
-    - "python313Packages.yq" # python package specific
-    - "yq"                   # tool
-```
-
-####### Combine single-runtime and composable images
-
-In a [multiple application context](https://fixed.docs.upsun.com/create-apps/multi-app.md),
-you can use a mix of [single-runtime images](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md)
-and [composable images](https://fixed.docs.upsun.com/create-apps/app-reference/composable-image.md).
-Here is an example configuration including a ``frontend`` app and a ``backend`` app:
-
-```yaml  {location=".platform/applications.yaml"}
-backend:
-    stack:
-      - "php@8.5":
-          extensions:
-            - apcu
-            - sodium
-            - xsl
-            - pdo_sqlite
-      - "python@3.13"
-      - "python313Packages.yq" # python package specific
-frontend:
-    type: 'nodejs:24
-```
-
-**Note**: 
-
-If you add multiple runtimes to your application container,
-the first declared runtime becomes the primary runtime.
-The primary runtime is the one that is automatically started.
-
-To start other declared runtimes, you need to start them manually, using [web commands](#web-commands).
-To find out which start command to use, go to the [Languages](https://fixed.docs.upsun.com/languages.md) section,
-and visit the documentation page dedicated to your language.
-If you use PHP, note that PHP-FPM is only started automatically if PHP is defined as the primary runtime.
-
-###### Sizes
-
-Resources are distributed across all containers in an environment from the total available from your [plan size](https://fixed.docs.upsun.com/administration/pricing.md).
-So if you have more than just a single app, it doesn't get all of the resources available.
-Each environment has its own resources and there are different [sizing rules for preview environments](#sizes-in-preview-environments).
-
-By default, resource sizes (CPU and memory) are chosen automatically for an app
-based on the plan size and the number of other containers in the cluster.
-Most of the time, this automatic sizing is enough.
-
-You can set sizing suggestions for production environments when you know a given container has specific needs.
-Such as a worker that doesn't need much and can free up resources for other apps.
-To do so, set `size` to one of the following values:
-
-- `S`
-- `M`
-- `L`
-- `XL`
-- `2XL`
-- `4XL`
-
-The total resources allocated across all apps and services can't exceed what's in your plan.
-
-####### Container profiles: CPU and memory
-
-By default, Upsun Fixed allocates a container profile to each app and service depending on:
-
-- The range of resources it’s expected to need
-- Your [plan size](https://fixed.docs.upsun.com/administration/pricing.md), as resources are distributed across containers.
-  Ideally you want to give databases the biggest part of your memory, and apps the biggest part of your CPU.
-
-The container profile and the [size of the container](#sizes) determine
-how much CPU and memory (in [MB](https://fixed.docs.upsun.com/glossary.md#mb)) the container gets.
-
-There are three container profiles available: ``HIGH_CPU``, ``BALANCED``, and ``HIGH_MEMORY``.
-
-######## ``HIGH_CPU`` container profile
-
-| Size | CPU   | MEMORY  |
-|------|-------|---------|
-| S    | 0.40  | 128 MB  |
-| M    | 0.40  | 128 MB  |
-| L    | 1.20  | 256 MB  |
-| XL   | 2.50  | 384 MB  |
-| 2XL  | 5.00  | 768 MB  |
-| 4XL  | 10.00 | 1536 MB |
-
-######## `BALANCED` container profile
-
-| Size | CPU  | MEMORY  |
-|------|------|---------|
-| S    | 0.05 | 32 MB   |
-| M    | 0.05 | 64 MB   |
-| L    | 0.08 | 256 MB  |
-| XL   | 0.10 | 512 MB  |
-| 2XL  | 0.20 | 1024 MB |
-| 4XL  | 0.40 | 2048 MB |
-
-######## `HIGH_MEMORY` container profile
-
-| Size | CPU  | MEMORY   |
-|------|------|----------|
-| S    | 0.25 | 128 MB   |
-| M    | 0.25 | 288 MB   |
-| L    | 0.40 | 1280 MB  |
-| XL   | 0.75 | 2624 MB  |
-| 2XL  | 1.50 | 5248 MB  |
-| 4XL  | 3.00 | 10496 MB |
-
-######## Container profile reference
-
-The following table shows which container profiles Upsun Fixed applies when deploying your project.
-
-| Container               | Profile       |
-|-------------------------|---------------|
-| Chrome Headless         | HIGH_CPU      |
-| .NET                    | HIGH_CPU      |
-| Elasticsearch           | HIGH_MEMORY   |
-| Elasticsearch Premium   | HIGH_MEMORY   |
-| Elixir                  | HIGH_CPU      |
-| Go                      | HIGH_CPU      |
-| Gotenberg               | HIGH_MEMORY   |
-| InfluxDB                | HIGH_MEMORY   |
-| Java                    | HIGH_MEMORY   |
-| Kafka                   | HIGH_MEMORY   |
-| Lisp                    | HIGH_CPU      |
-| MariaDB                 | HIGH_MEMORY   |
-| Memcached               | BALANCED      |
-| MongoDB                 | HIGH_MEMORY   |
-| MongoDB Premium         | HIGH_MEMORY   |
-| Network Storage         | HIGH_MEMORY   |
-| Node.js                 | HIGH_CPU      |
-| OpenSearch              | HIGH_MEMORY   |
-| Oracle MySQL            | HIGH_MEMORY   |
-| PHP                     | HIGH_CPU      |
-| PostgreSQL              | HIGH_MEMORY   |
-| Python                  | HIGH_CPU      |
-| RabbitMQ                | HIGH_MEMORY   |
-| Redis ephemeral         | BALANCED      |
-| Redis persistent        | BALANCED      |
-| Ruby                    | HIGH_CPU      |
-| Rust                    | HIGH_CPU      |
-| Solr                    | HIGH_MEMORY   |
-| Varnish                 | HIGH_MEMORY   |
-| Vault KMS               | HIGH_MEMORY   |
-
-####### Sizes in preview environments
-
-Containers in preview environments don't follow the `size` specification.
-Application containers are set based on the plan's setting for **Environments application size**.
-The default is size **S**, but you can increase it by editing your plan.
-(Service containers in preview environments are always set to size **S**.)
-
-###### Relationships
-
-To allow containers in your project to communicate with one another,
-you need to define relationships between them.
-You can define a relationship between an app and a service, or [between two apps](https://fixed.docs.upsun.com/create-apps/multi-app/relationships.md).
-
-The quickest way to define a relationship between your app and a service
-is to use the service's default endpoint. 
-However, some services allow you to define multiple databases, cores, and/or permissions.
-In these cases, you can't rely on default endpoints.
-Instead, you can explicitly define multiple endpoints when setting up your relationships.
-
-**Note**: 
-
-App containers don’t have a default endpoint like services.
-To connect your app to another app in your project,
-you need to explicitly define the ``http`` endpoint as the endpoint to connect both apps. 
-For more information, see how to [define relationships between your apps](https://fixed.docs.upsun.com/create-apps/multi-app/relationships.md).
-
-**Availability**: 
-
-New syntax (default and explicit endpoints) described below is supported by most, but not all, image types
-(``Relationship 'SERVICE_NAME' of application 'myapp' ... targets a service without a valid default endpoint configuration.``).
-This syntax is currently being rolled out for all images.
-If you encounter this error, use the “legacy” Upsun Fixed configuration noted at the bottom of this section.
-
-To define a relationship between your app and a service:
-
-```yaml {}
-relationships:
-  <SERVICE_NAME>:
-```
-
-The ``SERVICE_NAME`` is the name of the service as defined in its [configuration](https://fixed.docs.upsun.com/add-services.md).
-It is used as the relationship name, and associated with a ``null`` value.
-This instructs Upsun Fixed to use the service’s default endpoint to connect your app to the service.
-For example, if you define the following configuration:
-
-    .platform.app.yaml
-
-```yaml {}
-relationships:
-  mariadb:
-```
-
-Upsun Fixed looks for a service named ``mariadb`` in your ``.platform/services.yaml`` file,
-and connects your app to it through the service’s default endpoint.
-For reference, the equivalent configuration using explicit endpoints would be the following:
-
-    .platform.app.yaml
-
-```yaml {}
-relationships:
-  mariadb:
-    service: mariadb
-    endpoint: mysql
-```
-
-You can define any number of relationships in this way:
-
-    .platform.app.yaml
-
-```yaml {}
-relationships:
-  mariadb:
-  redis:
-  elasticsearch:
-```
-
-**Tip**: 
-
-An even quicker way to define many relationships is to use the following single-line configuration:
-
-    .platform.app.yaml
-
-```yaml {}
-relationships: {<SERVICE_NAME_A>, <SERVICE_NAME_B>, <SERVICE_NAME_C>}
-```
-
-where
-
-    .platform/services.yaml
-
-```yaml {}
-<SERVICE_NAME_A>:
-  type: mariadb:11.8
-  disk: 256
-<SERVICE_NAME_B>:
-  type: redis:8.0
-  disk: 256
-<SERVICE_NAME_C>:
-  type: elasticsearch:8.5
-  disk: 256
-```
-
-Use the following configuration:
-
-    .platform.app.yaml
-
-```yaml {}
-relationships:
-  <RELATIONSHIP_NAME>:
-    service: <SERVICE_NAME>
-    endpoint: <ENDPOINT_NAME>
-```
-
- - ``RELATIONSHIP_NAME`` is the name you want to give to the relationship.
- - ``SERVICE_NAME`` is the name of the service as defined in its [configuration](https://fixed.docs.upsun.com/add-services.md).
- - ``ENDPOINT_NAME`` is the endpoint your app will use to connect to the service (refer to the service reference to know which value to use).
-
-For example, to define a relationship named ``database`` that connects your app to a service called ``mariadb`` through the ``db1`` endpoint,
-use the following configuration:
-
-    .platform.app.yaml
-
-```yaml {}
-relationships:
-  database: # The name of the relationship.
-    service: mariadb
-    endpoint: db1
-```
-
-For more information on how to handle multiple databases, multiple cores,
-and/or different permissions with services that support such features,
-see each service’s dedicated page:
-
- - [MariaDB/MySQL](https://fixed.docs.upsun.com/add-services/mysql.md#multiple-databases) (multiple databases and permissions)
- - [PostgreSQL](https://fixed.docs.upsun.com/add-services/postgresql.md#multiple-databases) (multiple databases and permissions)
- - [Redis](https://fixed.docs.upsun.com/add-services/redis.md#multiple-databases) (multiple databases)
- - [Solr](https://fixed.docs.upsun.com/add-services/solr.md#solr-6-and-later) (multiple cores)
- - [Vault KMS](https://fixed.docs.upsun.com/add-services/vault.md#multiple-endpoints-configuration) (multiple permissions)
-
-You can add as many relationships as you want to your app configuration,
-using both default and explicit endpoints according to your needs:
-
-    .platform.app.yaml
-
-```yaml {}
-relationships:
-  database1:
-    service: mariadb
-    endpoint: admin
-  database2:
-    service: mariadb
-    endpoint: legacy
-  cache:
-    service: redis
-  search:
-    service: elasticsearch
-```
-
-**Legacy**: 
-
-The following legacy syntax for specifying relationships is still supported by Upsun Fixed:
-
-    .platform.app.yaml
-
-```yaml {}
-relationships:
-  <RELATIONSHIP_NAME>: "<SERVICE_NAME>:<ENDPOINT_NAME>"
-```
-
-For example:
-
-    .platform.app.yaml
-
-```yaml {}
-relationships:
-  database: "mariadb:mysql"
-```
-
-Feel free to use this until the default and explicit endpoint syntax is supported on all images.
-
-###### Available disk space
-
-The maximum total space available to all apps and services is set by the storage in your plan settings.
-When deploying your project, the sum of all `disk` keys defined in app and service configurations
-must be *equal or less* than the plan storage size.
-
-So if your *plan storage size* is 5 GB, you can, for example, assign it in one of the following ways:
-
-- 2 GB to your app, 3 GB to your database
-- 1 GB to your app, 4 GB to your database
-- 1 GB to your app, 1 GB to your database, 3 GB to your OpenSearch service
-
-If you exceed the total space available, you receive an error on pushing your code.
-You need to either increase your plan's storage or decrease the `disk` values you've assigned.
-
-You configure the disk size in [MB](https://fixed.docs.upsun.com/glossary.md#mb). Your actual available disk space is slightly smaller with some space used for formatting and the filesystem journal. When checking available space, note whether it’s reported in MB or MiB.
-
-####### Downsize a disk
-
-You can decrease the size of an existing disk for an app. If you do so, be aware that:
-
-- The downsize fails if there's more data on the disk than the desired size.
-- Backups from before the downsize can still be restored.
-
-###### Mounts
-
-After your app is built, its file system is read-only.
-To make changes to your app's code, you need to use Git.
-
-For enhanced flexibility, Upsun Fixed allows you to define and use writable directories called "mounts".
-Mounts give you write access to files generated by your app (such as cache and log files)
-and uploaded files without going through Git.
-
-When you define a mount, you are mounting an external directory to your app container,
-much like you would plug a hard drive into your computer to transfer data.
-
-**Note**: 
-
- - Mounts aren’t available during the build
- - When you [back up an environment](https://fixed.docs.upsun.com/environments/backup.md), the mounts on that environment are backed up too
-
-####### Define a mount
-
-To define a mount, use the following configuration:
-
-```yaml  {location=".platform.app.yaml"}
-mounts:
-  '<MOUNT_PATH>':
-    source: <MOUNT_TYPE>
-    source_path: <SOURCE_PATH_LOCATION>
-```
-
-<MOUNT_PATH> is the path to your mount **within the app container** (relative to the app's root).
-If you already have a directory with that name, you get a warning that it isn't accessible after the build.
-See how to [troubleshoot the warning](https://fixed.docs.upsun.com/create-apps/troubleshoot-mounts.md#overlapping-folders).
-
-| Name          | Type                         | Required | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
-|---------------|------------------------------|----------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `source`      | `local`, `service`, or `tmp` | Yes      | Specifies the type of the mount: - `local` mounts are unique to your app. They can be useful to store files that remain local to the app instance, such as application logs.  `local` mounts require disk space. To successfully set up a local mount, set the `disk` key in your app configuration. - `service` mounts point to [Network Storage](https://fixed.docs.upsun.com/add-services/network-storage.md) services that can be shared between several apps. - `tmp` mounts are local ephemeral mounts, where an external directory is mounted to the `/tmp` directory of your app.  The content of a `tmp` mount **may be removed during infrastructure maintenance operations**. Therefore, `tmp` mounts allow you to **store files that you’re not afraid to lose**, such as your application cache that can be seamlessly rebuilt.  Note that the `/tmp` directory has **a maximum allocation of 8 GB**. |
-| `source_path` | `string`                     | No       | Specifies where the mount points **inside the [external directory](#mounts)**. - If you explicitly set a `source_path`, your mount points to a specific subdirectory in the external directory.   - If the `source_path` is an empty string (`""`), your mount points to the entire external directory. - If you don't define a `source_path`, Upsun Fixed uses the <MOUNT_PATH> as default value, without leading or trailing slashes. For example, if your mount lives in the `/web/uploads/` directory in your app container, it will point to a directory named `web/uploads` in the external directory.     **WARNING:** Changing the name of your mount affects the `source_path` when it's undefined. See [how to ensure continuity](#ensure-continuity-when-changing-the-name-of-your-mount) and maintain access to your files.                       |
-| `service`     | `string`                     |          | Only for `service` mounts: the name of the [Network Storage service](https://fixed.docs.upsun.com/add-services/network-storage.md).                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
-
-The accessibility to the web of a mounted directory depends on the [`web.locations` configuration](#web).
-Files can be all public, all private, or with different rules for different paths and file types.
-
-Note that when you remove a `local` mount from your `.platform.app.yaml` file,
-the mounted directory isn't deleted.
-The files still exist on disk until manually removed
-(or until the app container is moved to another host during a maintenance operation in the case of a `tmp` mount).
-
-####### Example configuration
-
-```yaml  {location=".platform.app.yaml"}
-mounts:
-  'web/uploads':
-    source: local
-    source_path: uploads
-  '/.tmp_platformsh':
-    source: tmp
-    source_path: files/.tmp_platformsh
-  '/build':
-    source: local
-    source_path: files/build
-  '/.cache':
-    source: tmp
-    source_path: files/.cache
-  '/node_modules/.cache':
-    source: tmp
-    source_path: files/node_modules/.cache
-```
-
-For examples of how to set up a `service` mount, see the dedicated [Network Storage page](https://fixed.docs.upsun.com/add-services/network-storage.md).
-
-####### Ensure continuity when changing the name of your mount
-
-Changing the name of your mount affects the default `source_path`.
-
-Say you have a `/my/cache/` mount with an undefined `source_path`:
-
-```yaml  {location=".platform.app.yaml"}
-mounts:
-  '/my/cache/':
-    source: tmp
-```
-
-If you rename the mount to `/cache/files/`, it will point to a new, empty `/cache/files/` directory.
-
-To ensure continuity, you need to explicitly define the `source_path` as the previous name of the mount, without leading or trailing slashes:
-
- ```yaml  {location=".platform.app.yaml"}
-mounts:
-  '/cache/files/':
-    source: tmp
-    source_path: my/cache
-```
-
-The `/cache/files/` mount will point to the original `/my/cache/` directory, maintaining access to all your existing files in that directory.
-
-####### Overlapping mounts
-
-The locations of mounts as they are visible to application containers can overlap somewhat.
-For example:
-
-```yaml  {location=".platform/applications.yaml"}
-applications:
-  myapp:
-    # ...
-    mounts:
-      'var/cache_a':
-        source: service
-        service: ns_service
-        source_path: cacheA
-      'var/cache_b':
-        source: tmp
-        source_path: cacheB
-      'var/cache_c':
-        source: local
-        source_path: cacheC
-```
-
-In this case, it does not matter that each mount is of a different `source` type.
-Each mount is restricted to a subfolder within `var`, and all is well.
-
-The following, however, is not allowed and will result in a failure:
-
-```yaml  {location=".platform/applications.yaml"}
-applications:
-  myapp:
-    # ...
-    mounts:
-      'var/':
-        source: service
-        service: ns_service
-        source_path: cacheA
-      'var/cache_b':
-        source: tmp
-        source_path: cacheB
-      'var/cache_c':
-        source: local
-        source_path: cacheC
-```
-
-The `service` mount type specifically exists to share data between instances of the same application, whereas `tmp` and `instance` are meant to restrict data to build time and runtime of a single application instance, respectively.
-These allowances are not compatible, and will result in an error if pushed.
-
-###### Web
+Optional in [single-runtime](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#top-level-properties) and [composable](https://fixed.docs.upsun.com/create-apps/app-reference/composable-image.md#top-level-properties) images.
 
 Use the `web` key to configure the web server running in front of your app.
 
+For **single-runtime images**, default values might vary based on the image [`type`](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#types), which defines the base container used to run the application.
+
 | Name        | Type                                       | Required                      | Description                                          |
 |-------------|--------------------------------------------|-------------------------------|------------------------------------------------------|
-| `commands`  | A [web commands dictionary](#web-commands) | See [note](#required-command) | The command to launch your app.                      |
-| `upstream`  | An [upstream dictionary](#upstream)        |                               | How the front server connects to your app.           |
-| `locations` | A [locations dictionary](#locations)       |                               | How the app container responds to incoming requests. |
+| [`commands`](#web-commands)  | A web commands dictionary | Typically, except for PHP. See [`start`](#start). | The command to launch your app.                      |
+| [`upstream`](#upstream)  | An upstream dictionary        |                               | How the front server connects to your app.           |
+| [`locations`](#locations) | A locations dictionary       |                               | How the app container responds to incoming requests. |
 
 See some [examples of how to configure what's served](https://fixed.docs.upsun.com/create-apps/web.md).
 
-####### Web commands
+###### `commands` (web commands) {#web-commands}
 
-| Name         | Type     | Required                      | Description                                                                                          |
-|--------------|----------|-------------------------------|------------------------------------------------------------------------------------------------------|
-| `pre_start`  | `string` |                               | Command runs just prior to `start`, which can be useful when you need to run _per-instance_ actions. |
-| `start`      | `string` | See [note](#required-command) | The command to launch your app. If it terminates, it's restarted immediately.                        |
-| `post_start` | `string` |                               | Command runs **before** adding the container to the router and **after** the `start` command.        |
+| Name         | Type     | Required                      | Description                                                                                         |
+|--------------|----------|-------------------------------|-----------------------------------------------------------------------------------------------------|
+| [`pre_start`](#pre_start)  | `string` |                               | Command run just prior to `start`, which can be useful when you need to run _per-instance_ actions. Non-blocking. |
+| [`start`](#start)      | `string` | Typically, except for PHP; see [`start`](#start). | The command to launch your app. If it terminates, it's restarted immediately.                       |
+| [`post_start`](#post_start) | `string` |                               | Command runs **after** the `start` command and **before** adding the container to the router. Can be used to ensure app is active before routing traffic to it.       |
 
-**Note**: 
+####### `pre_start` command {#pre_start}
+The `pre_start` command is **not blocking**, which means the `deploy` hook may start running **before** the `pre_start` command finishes. This can lead to unexpected behavior if `pre_start` performs setup tasks that `deploy` depends on.
+To avoid issues, make sure any critical initialization in `pre_start` can complete quickly or is safe to run concurrently with `deploy`.
 
-The ``pre_start`` feature is **not blocking**, which means the ``deploy`` hook may start running **before** the ``pre_start`` command finishes.
-This can lead to unexpected behavior if ``pre_start`` performs setup tasks that ``deploy`` depends on.
-To avoid issues, make sure any critical initialization in ``pre_start`` is either quick or safe to run concurrently with ``deploy``.
+####### `start` command {#start}
+On all containers other than PHP, it's a best practice to include a `start` command. This command runs every time your app is restarted, regardless of whether new code is deployed.
 
-The ``post_start`` feature is experimental and may change. Please share your feedback in the
-[Discord](https://discord.gg/upsun).
-
-Example:
-
-```yaml  {location=".platform.app.yaml"}
-web:
-  commands:
-    start: 'uwsgi --ini conf/server.ini'
-```
-
-This command runs every time your app is restarted, regardless of whether or not new code is deployed.
-
-**Note**: 
-
-Never “background” a start process using ``&``.
-That’s interpreted as the command terminating and the supervisor process starts a second copy,
-creating an infinite loop until the container crashes.
-Just run it as normal and allow the Upsun Fixed supervisor to manage it.
-
-######## Required command
-
-On all containers other than PHP, the value for `start` should be treated as required.
-
-On PHP containers, it's optional and defaults to starting PHP-FPM (`/usr/bin/start-php-app`).
-It can also be set explicitly on a PHP container to run a dedicated process,
+On PHP containers, `start` is optional and defaults to starting PHP-FPM (`/usr/bin/start-php-app`).
+You can set it explicitly on a PHP container to run a dedicated process,
 such as [React PHP](https://github.com/platformsh-examples/platformsh-example-reactphp)
 or [Amp](https://github.com/platformsh-examples/platformsh-example-amphp).
-See how to set up [alternate start commands on PHP](https://fixed.docs.upsun.com/languages/php.md#alternate-start-commands).
+See [Alternate start commands](https://fixed.docs.upsun.com/languages/php.md#alternate-start-commands) in the PHP topic.
 
-####### Upstream
+**Note**: 
 
-| Name            | Type                | Required | Description                                                       | Default                                                                                                   |
-|-----------------|---------------------|----------|-------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------|
-| `socket_family` | `tcp` or `unix`     |          | Whether your app listens on a Unix or TCP socket.                 | Defaults to `tcp` for all [primary runtimes](#primary-runtime) except PHP; for PHP the default is `unix`. |
-| `protocol`      | `http` or `fastcgi` |          | Whether your app receives incoming requests over HTTP or FastCGI. | Default varies based on the [primary runtimes](#primary-runtime).                                         |
+Do not run a ``start`` process in the background by using ``&`` syntax.
+The Upsun Fixed supervisor interprets that syntax as the command terminating and starts another copy, creating a loop that continues until the container crashes.
+Run the command as usual and allow the Upsun Fixed supervisor to manage it.
 
-For PHP, the defaults are configured for PHP-FPM and shouldn't need adjustment.
-For all other containers, the default for `protocol` is `http`.
+####### `post_start` command {#post_start}
+You can use the `post_start` command to ensure your app is fully active before traffic is routed to it. This command can perform checks or wait until your application starts listening on the expected port. 
 
-The following example is the default on non-PHP containers:
+For example, if your framework needs several seconds to initialize (for example, to build caches or establish database connections), `post_start` can help coordinate the handover to ensure that the app receives traffic only after it is initialized.
 
-```yaml  {location=".platform.app.yaml"}
-web:
-  upstream:
-    socket_family: tcp
-    protocol: http
+######## Example:
+
+This example contains two web commands:
+
+- A `start` command that starts the application every time, whether or not new code is deployed. 
+- A `post_start` command that repeatedly checks whether a service on `localhost` is responding.
+
+```yaml {}
+applications:
+  <APP_NAME>:
+    type: "python:3.14"
+    source:
+      root: "/"
+    web:
+      commands:
+        start: 'uwsgi --ini conf/server.ini'
+        post_start: |
+        date
+        curl -sS --retry 20 --retry-delay 1 --retry-connrefused localhost -o /dev/null        
 ```
 
-######## Where to listen
+    .platform.app.yaml
+
+```yaml {}
+applications:
+  <APP_NAME>:
+    type: "composable:25.11"
+    source:
+      root: "/"
+    stack: 
+      runtimes: [ "python3.14" ]
+    web:
+      commands:
+        start: 'uwsgi --ini conf/server.ini'
+        post_start: |
+        date
+        curl -sS --retry 20 --retry-delay 1 --retry-connrefused localhost -o /dev/null        
+```
+
+###### `upstream` {#upstream}
+
+```yaml {}
+applications:
+  myapp:
+    type: 'python:3.14'
+    source:
+      root: "/"
+    web:
+      upstream:
+        socket_family: tcp
+        protocol: http
+```
+
+| Name | Type | Required | Description | Default |
+| ``socket_family`` | ``tcp`` or ``unix`` |  | Whether your app listens on a Unix or TCP socket. | Defaults to ``tcp`` for all [primary runtimes](https://fixed.docs.upsun.com/create-apps/app-reference/composable-image.md#multiple-runtimes-primary-runtime) except PHP; for PHP the default is ``unix``. |
+| ``protocol`` | ``http`` or ``fastcgi`` |  | Whether your app receives incoming requests over HTTP or FastCGI. | Default varies based on the [primary runtimes](https://fixed.docs.upsun.com/create-apps/app-reference/composable-image.md#multiple-runtimes-primary-runtime). |
+For PHP, the defaults are configured for PHP-FPM and shouldn’t need adjustment.
+For all other containers, the default for ``protocol`` is ``http``.
+The following example is the default on non-PHP containers:
+
+    .platform.app.yaml
+
+```yaml {}
+applications:
+  myapp:
+    type: "composable:25.11"
+    source:
+      root: "/"
+    stack: 
+      runtimes: [ "python@3.14" ]
+    web:
+      upstream:
+        socket_family: tcp
+        protocol: http
+```
+
+####### Where to listen
 
 Where to listen depends on your setting for `web.upstream.socket_family` (defaults to `tcp`).
 
@@ -18552,7 +18332,7 @@ Where to listen depends on your setting for `web.upstream.socket_family` (defaul
 If your application isn't listening at the same place that the runtime is sending requests,
 you see `502 Bad Gateway` errors when you try to connect to your website.
 
-####### Locations
+###### `locations`
 
 Each key in the `locations` dictionary is a path on your site with a leading `/`.
 For `example.com`, a `/` matches `example.com/` and `/admin` matches `example.com/admin`.
@@ -18560,17 +18340,16 @@ When multiple keys match an incoming request, the most-specific applies.
 
 The following table presents possible properties for each location:
 
-| Name                | Type                                                 | Default   | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
-|---------------------|------------------------------------------------------|-----------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `root`              | `string`                                             |           | The directory to serve static assets for this location relative to the app's root directory ([see `source.root`](#source)). Must be an actual directory inside the root directory.                                                                                                                                                                                                                                                                                                                                              |
-| `passthru`          | `boolean` or  `string`                               | `false`   | Whether to forward disallowed and missing resources from this location to the app. A string is a path with a leading `/` to the controller, such as `/index.php`. <BR> <BR> If your app is in PHP, when setting `passthru` to `true`, you might want to set `scripts` to `false` for enhanced security. This prevents PHP scripts from being executed from the specified location. You might also want to set `allow` to `false` so that not only PHP scripts can't be executed, but their source code also can't be delivered. |
-| `index`             | Array of `string`s or `null`                         |           | Files to consider when serving a request for a directory. When set, requires access to the files through the `allow` or `rules` keys.                                                                                                                                                                                                                                                                                                                                                                                           |
-| `expires`           | `string`                                             | `-1`      | How long static assets are cached. The default means no caching. Setting it to a value enables the `Cache-Control` and `Expires` headers. Times can be suffixed with `ms` = milliseconds, `s` = seconds, `m` = minutes, `h` = hours, `d` = days, `w` = weeks, `M` = months/30d, or `y` = years/365d.                                                                                                                                                                                                                            |
-| `allow`             | `boolean`                                            | `true`    | Whether to allow serving files which don't match a rule.                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
-| `scripts`           | `boolean`                                            |           | Whether to allow scripts to run. Doesn't apply to paths specified in `passthru`. Meaningful only on PHP containers.                                                                                                                                                                                                                                                                                                                                                                                                             |
-| `headers`           | A headers dictionary                                 |           | Any additional headers to apply to static assets, mapping header names to values (see [Set custom headers on static content](https://fixed.docs.upsun.com/create-apps/web/custom-headers.md)). Responses from the app aren't affected.                                                                                                                                                                                                                                                                                                                    |
-| `request_buffering` | A [request buffering dictionary](#request-buffering) | See below | Handling for chunked requests.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
-| `rules`             | A [rules dictionary](#rules)                         |           | Specific overrides for specific locations.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
+| Name | Type | Default | Description |
+| ``root`` | ``string`` |  | The directory to serve static assets for this location relative to the app’s root directory ([see ](https://fixed.docs.upsun.com/create-apps/image-properties/source.md)). Must be an actual directory inside the root directory. |
+| ``passthru`` | ``boolean`` or  ``string`` | ``false`` | Whether to forward disallowed and missing resources from this location to the app. A string is a path with a leading ``/`` to the controller, such as ``/index.php``. <BR> <BR> If your app is in PHP, when setting ``passthru`` to ``true``, you might want to set ``scripts`` to ``false`` for enhanced security. This prevents PHP scripts from being executed from the specified location. You might also want to set ``allow`` to ``false`` so that not only PHP scripts can’t be executed, but their source code also can’t be delivered. |
+| ``index`` | ``string`` array or ``null`` |  | Files to consider when serving a request for a directory. When set, requires access to the files through the ``allow`` or ``rules`` keys. |
+| ``expires`` | ``string`` | ``-1`` | How long static assets are cached. The default means no caching. Setting it to a value enables the ``Cache-Control`` and ``Expires`` headers. Times can be suffixed with ``ms`` = milliseconds, ``s`` = seconds, ``m`` = minutes, ``h`` = hours, ``d`` = days, ``w`` = weeks, ``M`` = months/30d, or ``y`` = years/365d. |
+| ``allow`` | ``boolean`` | ``true`` | Whether to allow serving files which don’t match a rule. |
+| ``scripts`` | ``boolean`` |  | Whether to allow scripts to run. Doesn’t apply to paths specified in ``passthru``. Meaningful only on PHP containers. |
+| ``headers`` | A headers dictionary |  | Any additional headers to apply to static assets, mapping header names to values (see [Set custom headers on static content](https://fixed.docs.upsun.com/create-apps/web/custom-headers.md)). Responses from the app aren’t affected. |
+| [request_buffering](#request-buffering) | A request buffering dictionary | See below | Handling for chunked requests. |
+| [rules](#rules) | A rules dictionary |  | Specific overrides for specific locations. |
 
 ######## Rules
 
@@ -18585,19 +18364,48 @@ except `root`, `index`, `rules` and `request_buffering`.
 In the following example, the `allow` key disallows requests for static files anywhere in the site.
 This is overridden by a rule that explicitly allows common image file formats.
 
-```yaml  {location=".platform.app.yaml"}
-web:
-  locations:
-    '/':
-      # Handle dynamic requests
-      root: 'public'
-      passthru: '/index.php'
-      # Disallow static files
-      allow: false
-      rules:
-        # Allow common image files only.
-        '\.(jpe?g|png|gif|svgz?|css|js|map|ico|bmp|eot|woff2?|otf|ttf)$':
-          allow: true
+```yaml {}
+applications:
+  myapp:
+    type: 'python:3.14'
+    source:
+      root: "/"
+    web:
+      locations:
+        '/':
+          # Handle dynamic requests
+          root: 'public'
+          passthru: '/index.php'
+          # Disallow static files
+          allow: false
+          rules:
+            # Allow common image files only.
+            '\.(jpe?g|png|gif|svgz?|css|js|map|ico|bmp|eot|woff2?|otf|ttf)$':
+              allow: true
+```
+
+    .platform.app.yaml
+
+```yaml {}
+applications:
+  myapp:
+    type: "composable:25.11"
+    source:
+      root: "/"
+    stack: 
+      runtimes: [ "python@3.14" ]
+    web:
+      locations:
+        '/':
+          # Handle dynamic requests
+          root: 'public'
+          passthru: '/index.php'
+          # Disallow static files
+          allow: false
+          rules:
+            # Allow common image files only.
+            '\.(jpe?g|png|gif|svgz?|css|js|map|ico|bmp|eot|woff2?|otf|ttf)$':
+              allow: true
 ```
 
 ######## Request buffering
@@ -18612,475 +18420,99 @@ The following table shows the keys in the `request_buffering` dictionary:
 
 The default configuration would look like this:
 
-```yaml  {location=".platform.app.yaml"}
-web:
-  locations:
-    '/':
-      passthru: true
-      request_buffering:
-        enabled: true
-        max_request_size: 250m
+```yaml {}
+applications:
+  myapp:
+    type: 'python:3.14'
+    source:
+      root: "/"
+    web:
+      locations:
+        '/':
+          passthru: true
+          request_buffering:
+            enabled: true
+            max_request_size: 250m
 ```
 
-###### Workers
+    .platform.app.yaml
 
-Workers are exact copies of the code and compilation output as a `web` instance after a [`build` hook](#hooks).
+```yaml {}
+applications:
+  myapp:
+    type: "composable:25.11"
+    source:
+      root: "/"
+    stack: 
+      runtimes: [ "python@3.14" ]
+    web:
+      locations:
+        '/':
+          passthru: true
+          request_buffering:
+            enabled: true
+            max_request_size: 250m
+```
+
+#### workers
+
+
+Defines the list of worker names, which are alternate copies of the application to run as background processes.
+
+Optional in [single-runtime](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#top-level-properties) and [composable](https://fixed.docs.upsun.com/create-apps/app-reference/composable-image.md#top-level-properties) images. 
+
+Using workers in your project requires a [Medium
+ plan or larger](https://platform.sh/pricing/) to ensure adequate resource allocation.
+
+Workers are exact copies of the code and compilation output as a `web` instance after a [`build` hook](https://fixed.docs.upsun.com/create-apps/image-properties/hooks.md).
 They use the same container image.
 
 Workers can't accept public requests and so are suitable only for background tasks.
 If they exit, they're automatically restarted.
 
-The keys of the `workers` definition are the names of the workers.
-You can then define how each worker differs from the `web` instance using
-the [top-level properties](#top-level-properties).
-
-Each worker can differ from the `web` instance in all properties _except_ for:
-
-- `crons` as cron jobs don't run on workers
-- `hooks` as the `build` hook must be the same
-  and the `deploy` and `post_deploy` hooks don't run on workers.
-
-A worker named `queue` that was small and had a different start command could look like this:
-
-```yaml  {location=".platform.app.yaml"}
-workers:
-  queue:
-    size: S
-    commands:
-      start: |
-        ./worker.sh
-```
-
-For resource allocation, using workers in your project requires a [Medium
- plan or larger](https://upsun.com/fixed-pricing/).
-
-###### Access
-
-The `access` dictionary has one allowed key:
-
-| Name  | Allowed values                      | Default       | Description                                                           |
-|-------|-------------------------------------|---------------|-----------------------------------------------------------------------|
-| `ssh` | `admin`, `contributor`, or `viewer` | `contributor` | Defines the minimum role required to access app environments via SSH. |
-
-In the following example, only users with `admin` permissions for the
-given [environment type](https://fixed.docs.upsun.com/administration/users.md#environment-type-roles)
-can access the deployed environment via SSH:
-
-```yaml  {location=".platform.app.yaml"}
-access:
-  ssh: admin
-```
-
-###### Variables
-
-Upsun Fixed provides a number of ways to set [variables](https://fixed.docs.upsun.com/development/variables.md).
-Variables set in your app configuration have the lowest precedence,
-meaning they're overridden by any conflicting values provided elsewhere.
-
-All variables set in your app configuration must have a prefix.
-Some [prefixes have specific meanings](https://fixed.docs.upsun.com/development/variables.md#variable-prefixes).
-
-Variables with the prefix `env` are available as a separate environment variable.
-All other variables are available in
-the [`PLATFORM_VARIABLES` environment variable](https://fixed.docs.upsun.com/development/variables/use-variables.md#use-provided-variables).
-
-The following example sets two variables:
-
-- A variable named `env:AUTHOR` with the value `Juan` that's available in the environment as `AUTHOR`
-- A variable named `d8config:system.site:name` with the value `My site rocks`
-  that's available in the `PLATFORM_VARIABLES` environment variable
-
-```yaml  {location=".platform.app.yaml"}
-variables:
-  env:
-    AUTHOR: 'Juan'
-  d8config:
-    "system.site:name": 'My site rocks'
-```
-
-You can also define and access more [complex values](https://fixed.docs.upsun.com/development/variables/use-variables.md#access-complex-values).
-
-###### Firewall
-
-  **Tier availability**
-  This feature is available for
-  **Elite and Enterprise** customers. [Compare the  tiers](https://upsun.com/fixed-pricing/) on our pricing page, or [contact our sales team](https://upsun.com/contact-us/
-  ) for more information.
-
-Set limits in outbound traffic from your app with no impact on inbound requests.
-
-The `outbound` key is required and contains one or more rules.
-The rules define what traffic is allowed; anything unspecified is blocked.
-
-Each rule has the following properties where at least one is required and `ips` and `domains` can't be specified
-together:
-
-| Name      | Type                | Default         | Description                                                                                                                                                                                                             |
-|-----------|---------------------|-----------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `ips`     | Array of `string`s  | `["0.0.0.0/0"]` | IP addresses in [CIDR notation](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing). See a [CIDR format converter](https://www.ipaddressguide.com/cidr).                                                      |
-| `domains` | Array of `string`s  |                 | [Fully qualified domain names](https://en.wikipedia.org/wiki/Fully_qualified_domain_name) to specify specific destinations by hostname.                                                                                 |
-| `ports`   | Array of `integer`s |                 | Ports from 1 to 65535 that are allowed. If any ports are specified, all unspecified ports are blocked. If no ports are specified, all ports are allowed. Port `25`, the SMTP port for sending email, is always blocked. |
-
-The default settings would look like this:
-
-```yaml  {location=".platform.app.yaml"}
-firewall:
-  outbound:
-    - ips: [ "0.0.0.0/0" ]
-```
-
-####### Support for rules
-
-Where outbound rules for firewalls are supported in all environments.
-For Dedicated Gen 2 projects, contact support for configuration.
-
-####### Multiple rules
-
-Multiple firewall rules can be specified.
-In such cases, a given outbound request is allowed if it matches _any_ of the defined rules.
-
-So in the following example requests to any IP on port 80 are allowed
-and requests to 1.2.3.4 on either port 80 or 443 are allowed:
-
-```yaml  {location=".platform.app.yaml"}
-firewall:
-  outbound:
-    - ips: [ "1.2.3.4/32" ]
-      ports: [ 443 ]
-    - ports: [ 80 ]
-```
-
-####### Outbound traffic to CDNs
-
-Be aware that many services are behind a content delivery network (CDN).
-For most CDNs, routing is done via domain name, not IP address,
-so thousands of domain names may share the same public IP addresses at the CDN.
-If you allow the IP address of a CDN, you are usually allowing many or all of the other customers hosted behind that
-CDN.
-
-####### Outbound traffic by domain
-
-You can filter outbound traffic by domain.
-Using domains in your rules rather than IP addresses is generally more specific and secure.
-For example, if you use an IP address for a service with a CDN,
-you have to allow the IP address for the CDN.
-This means that you allow potentially hundreds or thousands of other servers also using the CDN.
-
-An example rule filtering by domain:
-
-```yaml  {location=".platform.app.yaml"}
-firewall:
-  outbound:
-    - protocol: tcp
-      domains: ["api.stripe.com", "api.twilio.com"]
-      ports: [80, 443]
-    - protocol: tcp
-      ips: ["1.2.3.4/29","2.3.4.5"]
-      ports: [22]
-```
-
-######## Determine which domains to allow
-
-To determine which domains to include in your filtering rules,
-find the domains your site has requested the DNS to resolve.
-Run the following command to parse your server’s `dns.log` file
-and display all Fully Qualified Domain Names that have been requested:
-
-```bash
-awk '/query\[[^P]\]/ { print $6 | "sort -u" }' /var/log/dns.log
-```
-
-The output includes all DNS requests that were made, including those blocked by your filtering rules.
-It doesn't include any requests made using an IP address.
-
-Example output:
-
-```bash
-facebook.com
-fastly.com
-upsun.com
-www.google.com
-www.upsun.com
-```
-
-###### Hooks
-
-There are three different hooks that run as part of the process of building and deploying your app.
-These are places where you can run custom scripts.
-They are: the `build` hook, the `deploy` hook, and the `post_deploy` hook.
-Only the `build` hook is run for [worker instances](#workers), while [web instances](#web) run all three.
-
-The process is ordered as:
-
-1. Variables accessible at build time become available.
-1. The `build` hook is run.
-1. The file system is changed to read only (except for any [mounts](#mounts)).
-1. The app container starts. Variables accessible at runtime and services become available.
-1. The `deploy` hook is run.
-1. The app container begins accepting requests.
-1. The `post_deploy` hook is run.
-
-Note that if an environment changes by no code changes, only the last step is run.
-If you want the entire process to run, see how to [manually trigger builds](https://fixed.docs.upsun.com/development/troubleshoot.md#manually-trigger-builds).
-
-####### Writable directories during build
-
-During the `build` hook, there are three writeable directories:
-
-- `PLATFORM_APP_DIR`:
-  Where your code is checked out and the working directory when the `build` hook starts.
-  Becomes the app that gets deployed.
-- `PLATFORM_CACHE_DIR`:
-  Persists between builds, but isn't deployed.
-  Shared by all builds on all branches.
-- `/tmp`:
-  Isn't deployed and is wiped between each build.
-  Note that `PLATFORM_CACHE_DIR` is mapped to `/tmp`
-  and together they offer about 8GB of free space.
-
-####### Hook failure
-
-Each hook is executed as a single script, so they're considered to have failed only if the final command in them fails.
-To cause them to fail on the first failed command, add `set -e` to the beginning of the hook.
-
-If a `build` hook fails for any reason, the build is aborted and the deploy doesn't happen.
-Note that this only works for `build` hooks --
-if other hooks fail, the app is still deployed.
-
-######## Automated testing
-
-It’s preferable that you set up and run automated tests in a dedicated CI/CD tool.
-Relying on Upsun Fixed hooks for such tasks can prove difficult.
-
-During the `build` hook, you can halt the deployment on a test failure but the following limitations apply:
-
-- Access to services such as databases, Redis, Vault KMS, and even writable mounts is disabled.
-  So any testing that relies on it is sure to fail.
-- If you haven’t made changes to your app, an existing build image is reused and the build hook isn’t run.
-- Test results are written into your app container, so they might get exposed to a third party.
-
-During the `deploy` hook, you can access services but **you can’t halt the deployment based on a test failure**.
-Note that there are other downsides:
-
-- Your app container is read-only during the deploy hook,
-  so if your tests need to write reports and other information, you need to create a file mount for them.
-- Your app can only be deployed once the deploy hook has been completed.
-  Therefore, running automated testing via the deploy hook generates slower deployments.
-- Your environment isn’t available externally during the deploy hook.
-  Unit and integration testing might work without the environment being available,
-  but you can’t typically perform end-to-end testing until after the environment is up and available.
-
-###### Crons
-
-The keys of the `crons` definition are the names of the cron jobs.
-The names must be unique.
-
-If an application defines both a `web` instance and `worker` instances, cron jobs run only on the `web` instance.
-
-See how to [get cron logs](https://fixed.docs.upsun.com/increase-observability/logs/access-logs.md#container-logs).
-
-The following table shows the properties for each job:
-
-| Name               | Type                                         | Required | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
-|--------------------|----------------------------------------------|----------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `spec`             | `string`                                     | Yes      | The [cron specification](https://en.wikipedia.org/wiki/Cron#Cron_expression). To prevent competition for resources that might hurt performance, use `H` in definitions to indicate an unspecified but invariant time. For example, instead of using `0 * * * *` to indicate the cron job runs at the start of every hour, you can use `H * * * *` to indicate it runs every hour, but not necessarily at the start. This prevents multiple cron jobs from trying to start at the same time. |
-| `commands`         | A [cron commands dictionary](#cron-commands) | Yes      | A definition of what commands to run when starting and stopping the cron job.                                                                                                                                                                                                                                                                                                                                                                                                               |
-| `shutdown_timeout` | `integer`                                    | No       | When a cron is canceled, this represents the number of seconds after which a `SIGKILL` signal is sent to the process to force terminate it. The default is `10` seconds.                                                                                                                                                                                                                                                                                                                    |
-| `timeout`          | `integer`                                    | No       | The maximum amount of time a cron can run before it's terminated. Defaults to the maximum allowed value of `86400` seconds (24 hours).                                                                                                                                                                                                                                                                                                                                                      |
-
-Note that you can [cancel pending or running crons](https://fixed.docs.upsun.com/environments/cancel-activity.md).
-
-**Note**: 
-
-The use of the ``cmd`` key is now deprecated in favor of the ``commands``key. 
-Make sure you set your new cron jobs using the ``commands`` key,
-and update your existing cron jobs to ensure continuity.
-
-####### Cron commands
-
-| Name    | Type     | Required | Description                                                                                                                                                                                                                                                                        |
-|---------|----------|----------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `start` | `string` | Yes      | The command that's run. It's run in [Dash](https://en.wikipedia.org/wiki/Almquist_shell).                                                                                                                                                                                          |
-| `stop`  | `string` | No       | The command that's issued to give the cron command a chance to shutdown gracefully, such as to finish an active item in a list of tasks. Issued when a cron task is interrupted by a user through the CLI or Console. If not specified, a `SIGTERM` signal is sent to the process. |
-
-```yaml  {location=".platform.app.yaml"}
-crons:
-  mycommand:
-    spec: 'H * * * *'
-    commands:
-      start: sleep 60 && echo sleep-60-finished && date
-      stop: killall sleep
-    shutdown_timeout: 18
-```
-
-In this example configuration, the [cron specification](#crons) uses the `H` syntax.
-
-Note that this syntax is only supported on Grid projects.
-On Dedicated Gen 2 projects, use the [standard cron syntax](https://en.wikipedia.org/wiki/Cron#Cron_expression).
-
-####### Example cron jobs
-
 ```yaml {}
-stack: [ "php@8.5" ]
-crons:
-  # Run Drupal's cron tasks every 19 minutes.
-  drupal:
-    spec: '*/19 * * * *'
-    commands:
-      start: 'cd web ; drush core-cron'
-  # But also run pending queue tasks every 7 minutes.
-  # Use an odd number to avoid running at the same time as the `drupal` cron.
-  drush-queue:
-    spec: '*/7 * * * *'
-    commands:
-      start: 'cd web ; drush queue-run aggregator_feeds'
+applications:
+  <APP_NAME>:
+    type: 'python:3.14'
+    source:
+      root: "/"
+    workers:
+      queue:
+        size: S
+        commands:
+          start: |
+            ./worker.sh                    
 ```
+
+The keys of the ``workers`` definition are the names of the workers.
+You can then define how each worker differs from the ``web`` instance using
+the [top-level properties](https://fixed.docs.upsun.com/create-apps/app-reference/composable-image.md#top-level-properties).
+Each worker can differ from the ``web`` instance in all properties except for:
+
+ - ``crons`` as cron jobs don’t run on workers
+ - ``hooks`` as the ``build`` hook must be the same
+and the ``deploy`` and ``post_deploy`` hooks don’t run on workers.
+
+A worker named ``queue`` that was small and had a different start command could look like this:
 
     .platform.app.yaml
 
 ```yaml {}
-stack: [ "ruby@3.4" ]
-crons:
-  # Execute a rake script every 19 minutes.
-  ruby:
-    spec: '*/19 * * * *'
-    commands:
-      start: 'bundle exec rake some:task'
+applications:
+  <APP_NAME>:
+    type: "composable:25.11"
+    source:
+      root: "/"
+    stack: 
+      runtimes: [ "python@3.14" ]
+    workers:
+      queue:
+        size: S
+        commands:
+          start: |
+            ./worker.sh                    
 ```
 
-    .platform.app.yaml
-
-```yaml {}
-stack: [ "php@8.5" ]
-crons:
-  # Run Laravel's scheduler every 5 minutes.
-  scheduler:
-    spec: '*/5 * * * *'
-    commands:
-      start: 'php artisan schedule:run'
-```
-
-    .platform.app.yaml
-
-```yaml {}
-stack: [ "php@8.5" ]
-crons:
-  # Take a backup of the environment every day at 5:00 AM.
-  snapshot:
-    spec: 0 5 * * *
-    commands:
-      start: |
-        # Only run for the production environment, aka main branch
-        if [ "$PLATFORM_ENVIRONMENT_TYPE" = "production" ]; then
-            croncape symfony ...
-        fi        
-```
-
-####### Conditional crons
-
-If you want to set up customized cron schedules depending on the environment type,
-define conditional crons.
-To do so, use a configuration similar to the following:
-
-```yaml  {location=".platform.app.yaml"}
-crons:
-  update:
-    spec: '0 0 * * *'
-    commands:
-      start: |
-        if [ "$PLATFORM_ENVIRONMENT_TYPE" = production ]; then
-          platform backup:create --yes --no-wait
-          platform source-operation:run update --no-wait --yes
-        fi
-```
-
-####### Cron job timing
-
-Minimum time between cron jobs being triggered:
-
-| Plan                | Time      |
-|---------------------|-----------|
-| Professional        | 5 minutes |
-| Elite or Enterprise | 1 minute  |
-
-For each app container, only one cron job can run at a time.
-If a new job is triggered while another is running, the new job is paused until the other completes.
-
-To minimize conflicts, a random offset is applied to all triggers.
-The offset is a random number of seconds up to 20 minutes or the cron frequency, whichever is smaller.
-
-Crons are also paused while activities such as [backups](https://fixed.docs.upsun.com/environments/backup.md) are running.
-The crons are queued to run after the other activity finishes.
-
-To run cron jobs in a timezone other than UTC, set the [timezone property](#top-level-properties).
-
-####### Paused crons
-
-[Preview environments](https://fixed.docs.upsun.com/glossary.md#preview-environment) are often used for a limited time and then abandoned.
-While it's useful for environments under active development to have scheduled tasks,
-unused environments don't need to run cron jobs.
-To minimize unnecessary resource use,
-crons on environments with no deployments are paused.
-
-This affects all environments that aren't live environments.
-This means all environments on Development plans
-and all preview environments on higher plans.
-
-Such environments with deployments within 14 days have crons with the status `running`.
-If there haven't been any deployments within 14 days, the status is `paused`.
-
-You can see the status in the Console
-or using the CLI by running `platform environment:info` and looking under `deployment_state`.
-
-######## Restarting paused crons
-
-If the crons on your preview environment are paused but you're still using them,
-you can push changes to the environment or redeploy it.
-
-To restart crons without changing anything:
-
-Run the following command:
-
-```bash {}
-platform redeploy
-```
-
-####### Sizing hints
-
-The following table shows the properties that can be set in `sizing_hints`:
-
-| Name              | Type      | Default | Minimum | Description                                    |
-|-------------------|-----------|---------|---------|------------------------------------------------|
-| `request_memory`  | `integer` | 45      | 10      | The average memory consumed per request in MB. |
-| `reserved_memory` | `integer` | 70      | 70      | The amount of memory reserved in MB.           |
-
-See more about [PHP-FPM workers and sizing](https://fixed.docs.upsun.com/languages/php/fpm.md).
-
-###### Source
-
-The following table shows the properties that can be set in `source`:
-
-| Name         | Type                     | Required | Description                                                                                                                                 |
-|--------------|--------------------------|----------|---------------------------------------------------------------------------------------------------------------------------------------------|
-| `operations` | An operations dictionary |          | Operations that can be applied to the source code. See [source operations](https://fixed.docs.upsun.com/create-apps/source-operations.md)                               |
-| `root`       | `string`                 |          | The path where the app code lives. Defaults to the root project directory. Useful for [multi-app setups](https://fixed.docs.upsun.com/create-apps/multi-app.md). |
-
-###### Additional hosts
-
-If you're using a private network with specific IP addresses you need to connect to,
-you might want to map those addresses to hostnames to better remember and organize them.
-In such cases, you can add a map of those IP addresses to whatever hostnames you like.
-Then when your app tries to access the hostname, it's sent to the proper IP address.
-
-So in the following example, if your app tries to access `api.example.com`, it's sent to `192.0.2.23`.
-
-```yaml  {location=".platform.app.yaml"}
-additional_hosts:
-  api.example.com: "192.0.2.23"
-  web.example.com: "203.0.113.42"
-```
-
-This is equivalent to adding the mapping to the `/etc/hosts` file for the container.
 ### Source operations
 
 On Upsun Fixed, you can run automated code updates through a feature called **source operations**.
@@ -19094,7 +18526,7 @@ or [revert to the last commit](#revert-to-the-last-commit) pushed to your Git re
 To run your source operations, you can use the [Upsun Fixed CLI](https://fixed.docs.upsun.com/administration/cli.md) or the [Console](https://console.upsun.com).
 
 If you want to run your source operations and update your code automatically,
-you can also define [cron jobs](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#crons).
+you can also define [cron jobs](https://fixed.docs.upsun.com/create-apps/image-properties/crons.md).
 
 ##### How source operations work
 
@@ -19123,7 +18555,7 @@ When you trigger a source operation, the following happens in order:
 A source operation requires two things:
 
 - A name that must be unique within the application.
-  The name is the key of the block defined under `source.operations` in your [app configuration](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#source).
+  The name is the key of the block defined under `source.operations` in your [app configuration](https://fixed.docs.upsun.com/create-apps/image-properties/source.md).
 
 - A `command` that defines what's run when the operation is triggered.
 
@@ -19395,7 +18827,7 @@ Now every time you run the `rebuild` operation, it updates the Git submodules.
 ### Runtime operations
 
 Runtime operations allow you to trigger one-off commands or scripts on your project.
-Similar to [crons](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#crons), they run in the app container but not on a specific schedule.
+Similar to [crons](https://fixed.docs.upsun.com/create-apps/image-properties/crons.md), they run in the app container but not on a specific schedule.
 You can [define runtime operations](#define-a-runtime-operation) in your [app configuration](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md)
 and [trigger them](#run-a-runtime-operation) at any time through the Upsun Fixed CLI.
 
@@ -19495,7 +18927,7 @@ but want to avoid going through the whole Upsun Fixed [build and deploy processe
 The following examples assume that the frontend and backend containers are included in the same environment.
 This isn’t necessary for the commands to run successfully.<BR>
 What is necessary is that the build destination for your frontend **is  writable at runtime**
-(meaning, you must [define a mount](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#mounts) for it).
+(meaning, you must [define a mount](https://fixed.docs.upsun.com/create-apps/image-properties/mounts.md) for it).
 If you don’t want to include a build within a mount (especially if your data source **isn’t** on Upsun Fixed),
 you can use [source operations](https://fixed.docs.upsun.com/create-apps/source-operations.md) to achieve a similar effect,
 but through generating a new commit.
@@ -19607,7 +19039,7 @@ To do so, define a runtime operation similar to the following:
 ```yaml  {location=".platform.app.yaml"}
 name: myapp
 
-type: python:3.13
+type: python:3.14
 
 operations:
   manual-migration:
@@ -19623,11 +19055,11 @@ platform operation:run manual-migration --project <PROJECT_ID> --environment <EN
 ### Configure what's served
 
 How you should configure your web server depends a lot on what you want to serve.
-The following examples show how in specific scenarios you might define [your web server](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#web).
+The following examples show how in specific scenarios you might define [your web server](https://fixed.docs.upsun.com/create-apps/image-properties/web.md).
 #### Create a basic PHP app with a front controller
 
 To handle dynamic requests to your PHP app, you might want to use a [front controller](https://en.wikipedia.org/wiki/Front_controller).
-The following example shows how for such an app you might start defining [your web server](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#web).
+The following example shows how for such an app you might start defining [your web server](https://fixed.docs.upsun.com/create-apps/image-properties/web.md).
 
 ###### Define a document root
 
@@ -19758,7 +19190,7 @@ For example, you might want to make URLs seem semantic to users without having t
 
 In such a case, you might want requests to `/shoes/great-shoe/` to be served
 as if they were requests to `/?category=shoes&product=great-shoe`.
-If so, add a [rule](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#rules) similar to the following:
+If so, add a [rule](https://fixed.docs.upsun.com/create-apps/image-properties/web.md#rules) similar to the following:
 
 ```yaml  {location=".platform.app.yaml"}
 web:
@@ -19814,7 +19246,7 @@ And your build process might build the documentation with an output folder such 
 
 If so, you can serve all requests by your app code except for those that start with `/docs`,
 which you serve with your generated docs.
-Use a [`web` configuration](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#web) similar to the following:
+Use a [`web` configuration](https://fixed.docs.upsun.com/create-apps/image-properties/web.md) similar to the following:
 
 ```yaml  {location=".platform.app.yaml"}
 web:
@@ -19870,8 +19302,8 @@ web:
 
 See more information on the required minimal settings:
 - [Top-level properties](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#top-level-properties).
-- [`web` property](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#web).
-- [`locations` properties](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#locations).
+- [`web` property](https://fixed.docs.upsun.com/create-apps/image-properties/web.md).
+- [`locations` properties](https://fixed.docs.upsun.com/create-apps/image-properties/web.md#locations).
 
 ###### Add more features
 
@@ -19892,7 +19324,7 @@ web:
       allow: true
 ```
 
-See more information on [`locations` properties](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#locations).
+See more information on [`locations` properties](https://fixed.docs.upsun.com/create-apps/image-properties/web.md#locations).
 
 ####### Create cache rules
 
@@ -19974,7 +19406,7 @@ web:
 #### Set custom headers on static content
 
 When your app responds to dynamic requests, it can generate headers on the fly.
-To set headers for static content, add them in [your `web` configuration](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#web).
+To set headers for static content, add them in [your `web` configuration](https://fixed.docs.upsun.com/create-apps/image-properties/web.md).
 
 You might want to do so to add custom content-type headers, limit what other sites can embed your content,
 or allow cross origin requests.
@@ -19999,7 +19431,7 @@ web:
 This sets the `X-Frame-Options` header to `SAMEORIGIN` for all static files.
 Now your files can only be embedded within your site.
 
-Now set up an exception for Markdown (`*.md`) files using a [rule](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#rules):
+Now set up an exception for Markdown (`*.md`) files using a [rule](https://fixed.docs.upsun.com/create-apps/image-properties/web.md#rules):
 
 ```yaml  {location=".platform.app.yaml"}
 web:
@@ -20441,7 +19873,7 @@ You don’t need to define a route for each app in the repository.
 If an app isn’t specified, then it isn’t accessible to the web.
 One good example of defining an app with no route is when you [use Git submodules](https://fixed.docs.upsun.com/create-apps/multi-app/project-structure.md#split-your-code-source-into-multiple-git-submodule-repositories) and want to [use a source operation to update your submodules](https://fixed.docs.upsun.com/development/submodules.md#update-submodules).
 
-You can also achieve the same thing by defining the app as a [worker](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#workers).
+You can also achieve the same thing by defining the app as a [worker](https://fixed.docs.upsun.com/create-apps/image-properties/workers.md).
 
 Depending on your needs, you could configure the router container
 [using subdomains](#define-routes-using-subdomains) or using [subdirectories](#define-routes-using-subdirectories).
@@ -20621,7 +20053,7 @@ Error: Resources exceeding plan limit; disk: 8192.00MB > 5120.00MB; try removing
 To fix the error, do one of the following:
 
 * Lower the `disk` parameters to a value within your plan's storage limits.
-  Note the [limits to downsizing disks](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#downsize-a-disk).
+  Note the [limits to downsizing disks](https://fixed.docs.upsun.com/create-apps/image-properties/disk.md).
 * Increase your plan's storage limits.
   This can only be done by people with the [manage plans permission](https://fixed.docs.upsun.com/administration/users.md#organization-permissions).
 
@@ -20722,7 +20154,7 @@ You can then put the mount back in place.
 ##### Mounted files not publicly accessible
 
 If you've set up mounts to handle files like user uploads, you want to make sure the files are accessible.
-Do so by managing their [location](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#locations).
+Do so by managing their [location](https://fixed.docs.upsun.com/create-apps/image-properties/web.md#locations).
 
 This example defines two mounts, one named `private` and one `upload`:
 
@@ -20812,7 +20244,7 @@ Checking disk usage for all mounts on abcdefg123456-main-abcd123--app@ssh.eu.pla
   ```
 
   The new syntax offers greater flexibility and configuration.
-  For more details, see the [full specification for cron jobs](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#crons).
+  For more details, see the [full specification for cron jobs](https://fixed.docs.upsun.com/create-apps/image-properties/crons.md).
 
 ##### Changes in version 2019.05
 
@@ -20844,7 +20276,7 @@ For example, the following `.platform/services.yaml` snippet:
     ```
 
 * The syntax for the `mounts` key in `.platform.app.yaml` has changed.
-Rather than a parsed string, the value of each mount is a [multi-key definition](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#mounts).
+Rather than a parsed string, the value of each mount is a [multi-key definition](https://fixed.docs.upsun.com/create-apps/image-properties/mounts.md).
 That is, the following example:
 
     ```yaml  {location=".platform.app.yaml"}
@@ -21201,7 +20633,7 @@ All of this configuration and preparation can be handled in a bash script.
    Note that hooks are executed using the dash shell, not the bash shell used by SSH logins.
 2. Copy the [Drush configuration script from the template](https://github.com/platformsh-templates/nextjs-drupal/blob/master/api/drush/platformsh_generate_drush_yml.php)
    into a `drush/platformsh_generate_drush_yml.php` file.
-3. Set a [mount](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#mounts).
+3. Set a [mount](https://fixed.docs.upsun.com/create-apps/image-properties/mounts.md).
    Unlike in the `build` hook, in the `deploy` hook the system is generally read-only.
    So create a mount where you can write the Drush configuration:
 
@@ -21249,7 +20681,7 @@ So you don't have to rebuild Drupal but you still get fresh content.
        endpoint: 'http'
    ```
 
-2. Set [mounts](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#mounts).
+2. Set [mounts](https://fixed.docs.upsun.com/create-apps/image-properties/mounts.md).
    Like the [`deploy` hook](#configure-drush-and-drupal), the `post_deploy` hook has a read-only file system.
    Create mounts for your Next.js files:
 
@@ -21426,11 +20858,11 @@ hooks:
 
 The following table presents the main differences among the three available hooks:
 
-| Hook name     | Failures stop build | Variables available | Services available | Timeout | Run on `worker` instances | Writable directories | Blocks requests | Runs on all redeploys\* |
-| ------------- | ------------------- |-------------------- | ------------------ | ------- | ------------------------- | -------------------- | --------------- | --------------- |
-| `build`       | Yes                 | Build variables     | No                 | 1 hour  | Yes                       | `$PLATFORM_APP_DIR`, `$PLATFORM_CACHE_DIR`, and `/tmp` | No  | No  |
-| `deploy`      | No                  | Runtime variables   | Yes                | None    | No                        | [Mounts](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#mounts)                   | Yes | No  |
-| `post_deploy` | No                  | Runtime variables   | Yes                | None    | No                        | [Mounts](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#mounts)                   | No  | Yes |
+| Hook name     | Failures stop build | Variables available | Services available | Timeout | Run on `worker` instances | Writable directories                                   | Blocks requests | Runs on all redeploys\* |
+|---------------|---------------------|---------------------|--------------------|---------|---------------------------|--------------------------------------------------------|-----------------|-------------------------|
+| `build`       | Yes                 | Build variables     | No                 | 1 hour  | Yes                       | `$PLATFORM_APP_DIR`, `$PLATFORM_CACHE_DIR`, and `/tmp` | No              | No                      |
+| `deploy`      | No                  | Runtime variables   | Yes                | None    | No                        | [Mounts](https://fixed.docs.upsun.com/create-apps/image-properties/mounts.md)      | Yes             | No                      |
+| `post_deploy` | No                  | Runtime variables   | Yes                | None    | No                        | [Mounts](https://fixed.docs.upsun.com/create-apps/image-properties/mounts.md)      | No              | Yes                     |
 
 \* All of the hooks run with changes to the code or environment.
 This column indicates which hooks run on a redeploy without any code changes.
@@ -21441,9 +20873,9 @@ The `build` hook is run after any [build flavor](https://fixed.docs.upsun.com/cr
 During this hook, no services (such as a database) or any persistent file mounts are available
 as the application hasn't yet been deployed.
 
-The `build` hook can access only the variables that are available at build time: 
-  - Variables provided by Upsun Fixed, as listed in [this table](https://fixed.docs.upsun.com../../development/variables/use-variables.md#use-provided-variables) (see the **Build** column) 
-  - User-defined project-level or environment-specific build-time variables (**Available during buildtime** is set in the console or the `--visible-build=true` option was set by using the CLI)  
+The `build` hook can access only the variables that are available at build time:
+  - Variables provided by Upsun Fixed, as listed in [this table](https://fixed.docs.upsun.com../../development/variables/use-variables.md#use-provided-variables) (see the **Build** column)
+  - User-defined project-level or environment-specific build-time variables (**Available during buildtime** is set in the console or the `--visible-build=true` option was set by using the CLI)
 
 During the `build` hook, there are three writeable directories:
 
@@ -21485,8 +20917,8 @@ So if you accidentally add an unbroken loop, it gets cut off and you can continu
 ###### Deploy hook
 
 The `deploy` hook is run after the app container has been started but before it has started accepting requests.
-Note that the deploy hook only runs on [`web` instances](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#web),
-not [`worker` instances](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#workers).
+Note that the deploy hook only runs on [`web` instances](https://fixed.docs.upsun.com/create-apps/image-properties/web.md),
+not [`worker` instances](https://fixed.docs.upsun.com/create-apps/image-properties/workers.md).
 
 You can access other services at this stage (such as MySQL, Solr, Redis).
 The disk where the application lives is read-only at this point.
@@ -21494,8 +20926,7 @@ The disk where the application lives is read-only at this point.
 This hook should be used when something needs to run once when new code is deployed.
 It isn't run when a host is restarted (such as during region maintenance),
 so anything that needs to run each time an instance of an app starts (regardless of whether there's new code)
-should go in the `pre_start` key in [your `web` configuration](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#web-commands).
-For example, clearing the cache.
+should go in the `pre_start` key in [your `web` configuration](https://fixed.docs.upsun.com/create-apps/image-properties/web.md#web-commands). For example, clearing the cache.
 
 Be aware: The deploy hook blocks the site accepting new requests.
 If your `deploy` hook is only a few seconds,
@@ -21511,7 +20942,7 @@ the execution of the `deploy` hook is logged in the [deploy log](https://fixed.d
 For example:
 
 ```bash
-[2022-03-01 08:27:25.495579] Launching command 'bash export-config.sh'.
+[2026-01-01 08:27:25.495579] Launching command 'bash export-config.sh'.
 
 🔥 Successfully cleared configuration
 🚀 Added new configuration details
@@ -21535,7 +20966,9 @@ Often times content imports, some types of cache warmups, and other such tasks a
 
 In addition to the activity log, the `post_deploy` hook logs to the [post-deploy log](https://fixed.docs.upsun.com/increase-observability/logs/access-logs.md#container-logs).
 
-The `post_deploy` hook is the only hook that runs during a redeploy.
+The `post_deploy` hook is the only hook that runs during a redeploy. 
+**Make sure the scripts in your `post_deploy` hook are written to be idempotent** (safe to run multiple times) or have checks against duplication.
+
 #### Use hooks with dependencies
 
 If you use a specific package in a hook, you may want to manage dependencies for it.
@@ -21570,7 +21003,7 @@ hooks:
 
 Workers are instances of your code that aren't open to connections from other apps or services or the outside world.
 They're good for handling background tasks.
-See how to [configure a worker](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#workers) for your app.
+See how to [configure a worker](https://fixed.docs.upsun.com/create-apps/image-properties/workers.md) for your app.
 
 Note that to have enough resources to support a worker and a service, you need at least a [Medium
  plan](https://fixed.docs.upsun.com/administration/pricing.md#multiple-apps-in-a-single-project).
@@ -21638,20 +21071,20 @@ The `start` key specifies the command to use to launch your worker application.
 It may be any valid shell command, although most often it runs a command in your application in the language of your application.
 If the command specified by the `start` key terminates, it's restarted automatically.
 
-Note that [`deploy` and `post_deploy` hooks](https://fixed.docs.upsun.com/create-apps/hooks.md) as well as [`cron` commands](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#crons)
-run only on the [`web`](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#web) container, not on workers.
+Note that [`deploy` and `post_deploy` hooks](https://fixed.docs.upsun.com/create-apps/hooks.md) as well as [`cron` commands](https://fixed.docs.upsun.com/create-apps/image-properties/crons.md)
+run only on the [`web`](https://fixed.docs.upsun.com/create-apps/image-properties/web.md) container, not on workers.
 
 ##### Inheritance
 
-Any top-level definitions for [`size`](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#sizes), [`relationships`](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#relationships),
-[`access`](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#access), [`disk`](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md), [`mount`](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#mounts), and [`variables`](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#variables)
+Any top-level definitions for [`size`](https://fixed.docs.upsun.com/create-apps/image-properties/size.md), [`relationships`](https://fixed.docs.upsun.com/create-apps/image-properties/relationships.md),
+[`access`](https://fixed.docs.upsun.com/create-apps/image-properties/access.md), [`disk`](https://fixed.docs.upsun.com/create-apps/image-properties/disk.md), [`mount`](https://fixed.docs.upsun.com/create-apps/image-properties/mounts.md), and [`variables`](https://fixed.docs.upsun.com/create-apps/image-properties/variables.md)
 are inherited by every worker, unless overridden explicitly.
 
 That means, for example, that the following two `.platform.app.yaml` definitions produce identical workers.
 
 ```yaml  {location=".platform.app.yaml"}
 name: myapp
-type: python:3.13
+type: python:3.14
 disk: 256
 mounts:
   test:
@@ -21671,7 +21104,7 @@ workers:
 ```
 ```yaml  {location=".platform.app.yaml"}
 name: myapp
-type: python:3.13
+type: python:3.14
 workers:
   queue:
     commands:
@@ -21720,7 +21153,7 @@ rabbitmq:
 ```
 ```yaml  {location=".platform.app.yaml"}
 name: myapp
-type: "python:3.13"
+type: "python:3.14"
 disk: 2048
 hooks:
   build: |
@@ -21780,9 +21213,9 @@ workers:
 ```
 
 There's a lot going on here, but it's all reasonably straightforward.
-The configuration in `.platform.app.yaml` takes a single Python 3.13 code base from your repository,
+The configuration in `.platform.app.yaml` takes a single Python 3.14 code base from your repository,
 downloads all dependencies in `requirements.txt`, and then installs Gunicorn.
-That artifact (your code plus the downloaded dependencies) is deployed as three separate container instances, all running Python 3.13.
+That artifact (your code plus the downloaded dependencies) is deployed as three separate container instances, all running Python 3.14.
 
 The `web` instance starts a Gunicorn process to serve a web application.
 
@@ -21839,83 +21272,55 @@ If you use one of the following frameworks, follow its guide:
 
 Elasticsearch versions 7.11 or later are no longer included in any Upsun Fixed plan.
 You need to add it separately at an additional cost.
-To add Elasticsearch, [contact Sales](https://upsun.com/contact-us).
+To add Elasticsearch Enterprise,, [contact Sales](https://upsun.com/contact-us).
 
 The following premium versions are supported:
 
+| Grid  | Dedicated Gen 2 |
+|-------|----------------|
+| 7.10  | 7.2            |
+|       | 7.5            |
+|       | 7.6            |
+|       | 7.7            |
+|       | 7.9            |
+|       | 7.10           |
+|       | 7.17           |
+|       | 8.5            |
+|       | 8.8            |
+|       | 8.19           |
+
+<!-- 
+
 | Grid | Dedicated Gen 2 |
 | 
 
-   - 8.5
-
    - 7.17
 
-   - 7.2
+   - 8.5
 
-   - 7.5
-
-   - 7.6
-
-   - 7.7
-
-   - 7.9
-
-   - 7.10
+   - 8.19
 
    - 7.17
 
    - 8.5
 
-   - 8.8
+   - 8.19
 
-You can select the major and minor version.
-
-Patch versions are applied periodically for bug fixes and the like.
-When you deploy your app, you always get the latest available patches.
+-->
 
 ##### Deprecated versions
 
-The following versions are still available in your projects for free,
-but they're at their end of life and are no longer receiving security updates from upstream.
+The following versions are still available in your projects for free, but they’re at their end of life and are no longer receiving security updates from upstream.
 
 | Grid | Dedicated Gen 2 |
-| 
-
-   - 7.10
-
-   - 7.9
-
-   - 7.7
-
-   - 7.5
-
-   - 7.2
-
-   - 6.8
-
-   - 6.5
-
-   - 5.4
-
-   - 5.2
-
-   - 2.4
-
-   - 1.7
-
-   - 1.4
-
-   - 6.8
-
-   - 6.5
-
-   - 5.6
-
-   - 5.2
-
-   - 2.4
-
-   - 1.7
+|------|----------------|
+| 7.9  | 6.8            |
+| 7.7  | 6.5            |
+| 7.6  | 5.6            |
+| 7.5  | 5.2            |
+| 7.2  | 2.4            |
+| 6.8  | 1.7            |
+| 6.5  |                |
 
 To ensure your project remains stable in the future,
 switch to [a premium version](#supported-versions).
@@ -21945,7 +21350,7 @@ Note that the information about the relationship can change when an app is redep
   "path": null,
   "query": [],
   "password": "ChangeMe",
-  "type": "elasticsearch:8.5",
+  "type": "elasticsearch:8.19",
   "public": false,
   "host_mapped": false
 }
@@ -21987,11 +21392,11 @@ relationships:
 
 You can define ``<SERVICE_NAME>`` as you like, so long as it’s unique between all defined services
 and matches in both the application and services configuration.
-The example above leverages [default endpoint](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#relationships) configuration for relationships.
-That is, it uses default endpoints behind-the-scenes, providing a [relationship](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#relationships)
+The example above leverages [default endpoint](https://fixed.docs.upsun.com/create-apps/image-properties/relationships.md) configuration for relationships.
+That is, it uses default endpoints behind the scenes, providing a [relationship](https://fixed.docs.upsun.com/create-apps/image-properties/relationships.md)
 (the network address a service is accessible from) that is identical to the name of that service.
 Depending on your needs, instead of default endpoint configuration,
-you can use [explicit endpoint configuration](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#relationships).
+you can use [explicit endpoint configuration](https://fixed.docs.upsun.com/create-apps/image-properties/relationships.md).
 With the above definition, the application container now has [access to the service](#use-in-app) via the relationship ``<SERVICE_NAME>`` and its corresponding [PLATFORM_RELATIONSHIPS](https://fixed.docs.upsun.com/development/variables/use-variables.md#use-provided-variables).
 
     .platform.app.yaml
@@ -22011,9 +21416,9 @@ relationships:
 
 You can define ``<SERVICE_NAME>`` and ``<RELATIONSHIP_NAME>`` as you like, so long as it’s unique between all defined services and relationships
 and matches in both the application and services configuration.
-The example above leverages [explicit endpoint](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#relationships) configuration for relationships.
+The example above leverages [explicit endpoint](https://fixed.docs.upsun.com/create-apps/image-properties/relationships.md) configuration for relationships.
 Depending on your needs, instead of explicit endpoint configuration,
-you can use [default endpoint configuration](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#relationships).
+you can use [default endpoint configuration](https://fixed.docs.upsun.com/create-apps/image-properties/relationships.md).
 With the above definition, the application container now has [access to the service](#use-in-app) via the relationship ``<RELATIONSHIP_NAME>`` and its corresponding [PLATFORM_RELATIONSHIPS](https://fixed.docs.upsun.com/development/variables/use-variables.md#use-provided-variables).
 
 ###### Example configuration
@@ -22023,7 +21428,7 @@ With the above definition, the application container now has [access to the serv
 ```yaml  {location=".platform/services.yaml"}
 # The name of the service container. Must be unique within a project.
 elasticsearch:
-  type: elasticsearch:8.5
+  type: elasticsearch:8.19
   disk: 256
 ```
 
@@ -22326,7 +21731,7 @@ To do so, include the following in your `.platform/services.yaml` configuration:
 ```yaml  {location=".platform/services.yaml"}
 # The name of the service container. Must be unique within a project.
 elasticsearch:
-  type: elasticsearch:8.5
+  type: elasticsearch:8.19
   disk: 2048
   configuration:
     authentication:
@@ -22363,7 +21768,7 @@ To enable them, list them under the `configuration.plugins` key in your `.platfo
 ```yaml  {location=".platform/services.yaml"}
 # The name of the service container. Must be unique within a project.
 elasticsearch:
-  type: elasticsearch:8.5
+  type: elasticsearch:8.19
   disk: 1024
   configuration:
     plugins:
@@ -22492,7 +21897,7 @@ For more information, see the [Gotenberg documentation](https://gotenberg.dev/do
 
 ##### Supported versions
 
-- 8
+   - 8
 
 You can select the major version. But the latest compatible minor version is applied automatically and can’t be overridden.
 
@@ -22560,7 +21965,7 @@ relationships:
 
 You can define ``<SERVICE_NAME>`` as you like, so long as it’s unique between all defined services and matches in both the application and services configuration.
 With the above definition, Upsun Fixed uses the ``http`` endpoint,
-providing a [relationship](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#relationships) (the network address a service is accessible from) that is identical to the name of the service.
+providing a [relationship](https://fixed.docs.upsun.com/create-apps/image-properties/relationships.md) (the network address a service is accessible from) that is identical to the name of the service.
 The application has access to the service via this relationship and its corresponding ``PLATFORM_RELATIONSHIPS`` [environment variable](https://fixed.docs.upsun.com/development/variables/use-variables.md#use-provided-variables).
 
     .platform.app.yaml
@@ -22580,9 +21985,9 @@ relationships:
 
 You can define ``<SERVICE_NAME>`` and ``<RELATIONSHIP_NAME>`` as you like, so long as it’s unique between all defined services and relationships
 and matches in both the application and services configuration.
-The example above leverages [explicit endpoint](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#relationships) configuration for relationships.
+The example above leverages [explicit endpoint](https://fixed.docs.upsun.com/create-apps/image-properties/relationships.md) configuration for relationships.
 Depending on your needs, instead of explicit endpoint configuration,
-you can use [default endpoint configuration](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#relationships).
+you can use [default endpoint configuration](https://fixed.docs.upsun.com/create-apps/image-properties/relationships.md).
 With the above definition, the application container now has access to the service via the relationship ``<RELATIONSHIP_NAME>`` and its corresponding [PLATFORM_RELATIONSHIPS](https://fixed.docs.upsun.com/development/variables/use-variables.md#use-provided-variables).
 
 The `http` endpoint uses port `3000` by default.
@@ -22654,12 +22059,6 @@ When you deploy your app, you always get the latest available patches.
 
    - 120
 
-   - 113
-
-   - 95
-
-   - 91
-
   None available
 
 ##### Deprecated versions
@@ -22667,17 +22066,23 @@ When you deploy your app, you always get the latest available patches.
 The following versions are still available in your projects,
 but they're at their end of life and are no longer receiving security updates from upstream.
 
-   - 73
+   - 113
 
-   - 80
+   - 95
 
-   - 81
+   - 91
 
-   - 83
+   - 86
 
    - 84
 
-   - 86
+   - 83
+
+   - 81
+
+   - 80
+
+   - 73
 
 To ensure your project remains stable in the future,
 switch to a [supported version](#supported-versions).
@@ -22742,11 +22147,11 @@ relationships:
 
 You can define ``<SERVICE_NAME>`` as you like, so long as it’s unique between all defined services
 and matches in both the application and services configuration.
-The example above leverages [default endpoint](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#relationships) configuration for relationships.
-That is, it uses default endpoints behind-the-scenes, providing a [relationship](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#relationships)
+The example above leverages [default endpoint](https://fixed.docs.upsun.com/create-apps/image-properties/relationships.md) configuration for relationships.
+That is, it uses default endpoints behind the scenes, providing a [relationship](https://fixed.docs.upsun.com/create-apps/image-properties/relationships.md)
 (the network address a service is accessible from) that is identical to the name of that service.
 Depending on your needs, instead of default endpoint configuration,
-you can use [explicit endpoint configuration](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#relationships).
+you can use [explicit endpoint configuration](https://fixed.docs.upsun.com/create-apps/image-properties/relationships.md).
 With the above definition, the application container now has [access to the service](#use-in-app) via the relationship ``<SERVICE_NAME>`` and its corresponding [PLATFORM_RELATIONSHIPS](https://fixed.docs.upsun.com/development/variables/use-variables.md#use-provided-variables).
 
     .platform.app.yaml
@@ -22766,9 +22171,9 @@ relationships:
 
 You can define ``<SERVICE_NAME>`` and ``<RELATIONSHIP_NAME>`` as you like, so long as it’s unique between all defined services and relationships
 and matches in both the application and services configuration.
-The example above leverages [explicit endpoint](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#relationships) configuration for relationships.
+The example above leverages [explicit endpoint](https://fixed.docs.upsun.com/create-apps/image-properties/relationships.md) configuration for relationships.
 Depending on your needs, instead of explicit endpoint configuration,
-you can use [default endpoint configuration](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#relationships).
+you can use [default endpoint configuration](https://fixed.docs.upsun.com/create-apps/image-properties/relationships.md).
 With the above definition, the application container now has [access to the service](#use-in-app) via the relationship ``<RELATIONSHIP_NAME>`` and its corresponding [PLATFORM_RELATIONSHIPS](https://fixed.docs.upsun.com/development/variables/use-variables.md#use-provided-variables).
 
 ###### Example configuration
@@ -22887,6 +22292,10 @@ but they're at their end of life and are no longer receiving security updates fr
 
    - 2.2
 
+   - 2.1
+
+   - 2.0
+
    - 1.8
 
    - 1.7
@@ -22969,11 +22378,11 @@ relationships:
 
 You can define ``<SERVICE_NAME>`` as you like, so long as it’s unique between all defined services
 and matches in both the application and services configuration.
-The example above leverages [default endpoint](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#relationships) configuration for relationships.
-That is, it uses default endpoints behind-the-scenes, providing a [relationship](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#relationships)
+The example above leverages [default endpoint](https://fixed.docs.upsun.com/create-apps/image-properties/relationships.md) configuration for relationships.
+That is, it uses default endpoints behind the scenes, providing a [relationship](https://fixed.docs.upsun.com/create-apps/image-properties/relationships.md)
 (the network address a service is accessible from) that is identical to the name of that service.
 Depending on your needs, instead of default endpoint configuration,
-you can use [explicit endpoint configuration](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#relationships).
+you can use [explicit endpoint configuration](https://fixed.docs.upsun.com/create-apps/image-properties/relationships.md).
 With the above definition, the application container now has [access to the service](#use-in-app) via the relationship ``<SERVICE_NAME>`` and its corresponding [PLATFORM_RELATIONSHIPS](https://fixed.docs.upsun.com/development/variables/use-variables.md#use-provided-variables).
 
     .platform.app.yaml
@@ -22993,9 +22402,9 @@ relationships:
 
 You can define ``<SERVICE_NAME>`` and ``<RELATIONSHIP_NAME>`` as you like, so long as it’s unique between all defined services and relationships
 and matches in both the application and services configuration.
-The example above leverages [explicit endpoint](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#relationships) configuration for relationships.
+The example above leverages [explicit endpoint](https://fixed.docs.upsun.com/create-apps/image-properties/relationships.md) configuration for relationships.
 Depending on your needs, instead of explicit endpoint configuration,
-you can use [default endpoint configuration](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#relationships).
+you can use [default endpoint configuration](https://fixed.docs.upsun.com/create-apps/image-properties/relationships.md).
 With the above definition, the application container now has [access to the service](#use-in-app) via the relationship ``<RELATIONSHIP_NAME>`` and its corresponding [PLATFORM_RELATIONSHIPS](https://fixed.docs.upsun.com/development/variables/use-variables.md#use-provided-variables).
 
 ###### Example configuration
@@ -23077,7 +22486,7 @@ influxdb:
 
 This configuration defines a single application (`myapp`), whose source code exists in the `<PROJECT_ROOT>/myapp` directory. 
 `myapp` has access to the `influxdb` service, via a relationship whose name is [identical to the service name](#2-define-the-relationship)
-(as per [default endpoint](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#relationships) configuration for relationships).
+(as per [default endpoint](https://fixed.docs.upsun.com/create-apps/image-properties/relationships.md) configuration for relationships).
 
 From this, `myapp` can retrieve access credentials to the service through the environment variable `PLATFORM_RELATIONSHIPS`. That variable is a base64-encoded JSON object, but can be decoded at runtime (using the built-in tool `jq`) to provide more accessible environment variables to use within the application itself:
 
@@ -23202,12 +22611,6 @@ Patch versions are applied periodically for bug fixes and the like. When you dep
 
    - 3.7
 
-   - 3.6
-
-   - 3.4
-
-   - 3.2
-
   None available
 
 Example information available through the [`PLATFORM_RELATIONSHIPS` environment variable](https://fixed.docs.upsun.com/development/variables/use-variables.md#use-provided-variables)
@@ -23262,11 +22665,11 @@ relationships:
 
 You can define ``<SERVICE_NAME>`` as you like, so long as it’s unique between all defined services
 and matches in both the application and services configuration.
-The example above leverages [default endpoint](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#relationships) configuration for relationships.
-That is, it uses default endpoints behind-the-scenes, providing a [relationship](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#relationships)
+The example above leverages [default endpoint](https://fixed.docs.upsun.com/create-apps/image-properties/relationships.md) configuration for relationships.
+That is, it uses default endpoints behind the scenes, providing a [relationship](https://fixed.docs.upsun.com/create-apps/image-properties/relationships.md)
 (the network address a service is accessible from) that is identical to the name of that service.
 Depending on your needs, instead of default endpoint configuration,
-you can use [explicit endpoint configuration](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#relationships).
+you can use [explicit endpoint configuration](https://fixed.docs.upsun.com/create-apps/image-properties/relationships.md).
 With the above definition, the application container now has [access to the service](#use-in-app) via the relationship ``<SERVICE_NAME>`` and its corresponding [PLATFORM_RELATIONSHIPS](https://fixed.docs.upsun.com/development/variables/use-variables.md#use-provided-variables).
 
     .platform.app.yaml
@@ -23286,9 +22689,9 @@ relationships:
 
 You can define ``<SERVICE_NAME>`` and ``<RELATIONSHIP_NAME>`` as you like, so long as it’s unique between all defined services and relationships
 and matches in both the application and services configuration.
-The example above leverages [explicit endpoint](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#relationships) configuration for relationships.
+The example above leverages [explicit endpoint](https://fixed.docs.upsun.com/create-apps/image-properties/relationships.md) configuration for relationships.
 Depending on your needs, instead of explicit endpoint configuration,
-you can use [default endpoint configuration](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#relationships).
+you can use [default endpoint configuration](https://fixed.docs.upsun.com/create-apps/image-properties/relationships.md).
 With the above definition, the application container now has [access to the service](#use-in-app) via the relationship ``<RELATIONSHIP_NAME>`` and its corresponding [PLATFORM_RELATIONSHIPS](https://fixed.docs.upsun.com/development/variables/use-variables.md#use-provided-variables).
 
 ###### Example configuration
@@ -23427,8 +22830,8 @@ Patch versions are applied periodically for bug fixes and the like. When you dep
 
 **Note**: 
 
- - The service types ``mariadb`` and ``mysql`` both refer to MariaDB.
-Aside from their ``type`` value, MySQL and MariaDB have the same behavior and information on this page applies to both of them.
+ - Both ``mariadb`` and ``mysql`` service types use MariaDB.
+They behave identically, so the information on this page applies to both of them.
  - The service type ``oracle-mysql`` refers to MySQL as released by Oracle, Inc.
 
 | **`mariadb` / `mysql`** | **`oracle-mysql`** |
@@ -23445,9 +22848,9 @@ Aside from their ``type`` value, MySQL and MariaDB have the same behavior and in
 
  | 
 
-   - 8.0
+   - 8.4
 
-   - 5.7
+   - 8.0
 
  |
 
@@ -23505,41 +22908,29 @@ They'll be removed in the future – consider migrating to a [supported version]
 
  | 
 
+   - 5.7
+
  |
 
-###### Upgrade
+###### Upgrade, change, or downgrade a service
 
-When upgrading your service, skipping versions may result in data loss.
-Upgrade sequentially from one supported version to another (10.6 -> 10.11 -> 11.4),
-and check that each upgrade commit translates into an actual deployment.
+**Caution**: 
 
-To upgrade, update the service version in your [service configuration](https://fixed.docs.upsun.com/add-services.md).
+Upgrading and downgrading a service version or changing a service type are destructive processes that delete the existing service and its data.
 
-###### Change the service type
+A best practice is to first back up your environment and export the data.
 
-To change the service type:
+To prevent data loss after completing either of these actions, follow these steps:
 
-1. [Export your data](#exporting-data).
-   **Note**: 
-
-Changing the service type, especially when done repeatedly, may result in data loss.
-Backing up your data is therefore crucial.
-
-2. Remove the old service from your [service configuration](https://fixed.docs.upsun.com/add-services.md).
-3. Specify a new service type.
-4. [Import your data](#importing-data) into the new service.
-
-###### Downgrade
-
-You can't downgrade to a previous version and retain your data.
-To downgrade your database, follow these steps:
-
-1. [Export your data](#exporting-data).
-1. Remove the old service from your [service configuration](https://fixed.docs.upsun.com/add-services.md).
-1. Add a new service with a different name and your desired version.
+1. [Back up your environment](https://fixed.docs.upsun.com/environments/backup.md#create-a-manual-backup). If you accidentally delete the wrong service (or make an error in your configuration files) and need to revert your entire environment, the backup enables you to do so. 
+1. [Export the data](#exporting-data). Exporting the data to a portable file enables you to import it later. You cannot import data directly from a backup of your environment.  
+1. Change the service type in your [service configuration](https://fixed.docs.upsun.com/add-services/_index.md):
+    - **Upgrade:** Upgrade sequentially from one supported version to another (10.6 -> 10.11 -> 11.4),
+and check that each upgrade commit translates into an actual deployment.   
+    - **Change or downgrade:** Specify the new service type and the desired version.
 1. [Import your data](#importing-data) into the new service.
 
-##### Usage example
+##### Example
 
 Configure your service with at least 256 MB in disk space.
 
@@ -23554,8 +22945,7 @@ To define the service, use the `mariadb` or `mysql` type for MariaDB or the `ora
   disk: 256
 ```
 
-Note that changing the name of the service replaces it with a brand new service and all existing data is lost.
-Back up your data before changing the service.
+Remember to back up your environment and export your data before changing the service. 
 
 ###### 2. Define the relationship
 
@@ -23572,11 +22962,11 @@ relationships:
 
 You can define ``<SERVICE_NAME>`` as you like, so long as it’s unique between all defined services
 and matches in both the application and services configuration.
-The example above leverages [default endpoint](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#relationships) configuration for relationships.
-That is, it uses default endpoints behind-the-scenes, providing a [relationship](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#relationships)
+The example above leverages [default endpoint](https://fixed.docs.upsun.com/create-apps/image-properties/relationships.md) configuration for relationships.
+That is, it uses default endpoints behind the scenes, providing a [relationship](https://fixed.docs.upsun.com/create-apps/image-properties/relationships.md)
 (the network address a service is accessible from) that is identical to the name of that service.
 Depending on your needs, instead of default endpoint configuration,
-you can use [explicit endpoint configuration](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#relationships).
+you can use [explicit endpoint configuration](https://fixed.docs.upsun.com/create-apps/image-properties/relationships.md).
 With the above definition, the application container now has [access to the service](#use-in-app) via the relationship ``<SERVICE_NAME>`` and its corresponding [PLATFORM_RELATIONSHIPS](https://fixed.docs.upsun.com/development/variables/use-variables.md#use-provided-variables).
 
     .platform.app.yaml
@@ -23595,9 +22985,9 @@ relationships:
 
 You can define ``<SERVICE_NAME>`` and ``<RELATIONSHIP_NAME>`` as you like, so long as it’s unique between all defined services and relationships
 and matches in both the application and services configuration.
-The example above leverages [explicit endpoint](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#relationships) configuration for relationships.
+The example above leverages [explicit endpoint](https://fixed.docs.upsun.com/create-apps/image-properties/relationships.md) configuration for relationships.
 Depending on your needs, instead of explicit endpoint configuration,
-you can use [default endpoint configuration](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#relationships).
+you can use [default endpoint configuration](https://fixed.docs.upsun.com/create-apps/image-properties/relationships.md).
 With the above definition, the application container now has [access to the service](#use-in-app) via the relationship ``<RELATIONSHIP_NAME>`` and its corresponding [PLATFORM_RELATIONSHIPS](https://fixed.docs.upsun.com/development/variables/use-variables.md#use-provided-variables).
 
 ###### MariaDB example
@@ -23647,7 +23037,7 @@ relationships:
 ```yaml  {location=".platform/services.yaml"}
 # The name of the service container. Must be unique within a project.
 oraclemysql:
-  type: oracle-mysql:8.0
+  type: oracle-mysql:8.4
   disk: 256
 ```
 
@@ -23968,18 +23358,17 @@ platform relationships
 The result is the complete [information for all relationships](#relationship-reference) with an additional `url` property.
 Use the `url` property as your connection.
 
-Note that the information about the relationship can change when an app is redeployed or restarted or the relationship is changed.
-So your apps should only rely on the `PLATFORM_RELATIONSHIPS` environment variable directly rather than hard coding any values.
+Service connection details can change whenever your app restarts or redeploys. **To keep your connection stable, use the [`PLATFORM_RELATIONSHIPS` environment variable](https://fixed.docs.upsun.com/development/variables/use-variables.md#use-provided-variables) rather than hard-coding values.**
 
 You can also see a guide on how to [convert the `PLATFORM_RELATIONSHIPS` environment variable to a different form](https://support.platform.sh/hc/en-us/community/posts/16439596373010).
 
-##### Configuration options
+##### Configuration options {#configuration-options}
 
 You can configure your MySQL service in the [services configuration](https://fixed.docs.upsun.com/add-services.md) with the following options:
 
 | Name               | Type                       | Version                            | Description |
 | ------------------ | -------------------------- | ---------------------------------- | ----------- |
-| `schemas`          | An array of `string`s      | 10.0+                              | All databases to be created. Defaults to a single `main` database. |
+| `schemas`          | `string` array      | 10.0+                              | All databases to be created. Defaults to a single `main` database. |
 | `endpoints`        | An endpoints dictionary    | 10.0+                              | Endpoints with their permissions. See [multiple databases](#multiple-databases). |
 | `properties`       | A properties dictionary    | MariaDB: 10.1+; Oracle MySQL: 8.0+ | Additional properties for the database. Equivalent to using a `my.cnf` file. See [property options](#configure-the-database). |
 | `rotate_passwords` | A boolean                  | 10.3+                              | Defaults to `true`. When set to `false`, [password rotation](#password-rotation) is disabled. |
@@ -24008,7 +23397,7 @@ mariadb:
 Example information available through the [`PLATFORM_RELATIONSHIPS` environment variable](https://fixed.docs.upsun.com/development/variables/use-variables.md#use-provided-variables)
 or by running `platform relationships`.
 
-Note that the information about the relationship can change when an app is redeployed or restarted or the relationship is changed. So your apps should only rely on the `PLATFORM_RELATIONSHIPS` environment variable directly rather than hard coding any values.
+Service connection details can change whenever your app restarts or redeploys. **To keep your connection stable, use the [`PLATFORM_RELATIONSHIPS` service environment variable](https://fixed.docs.upsun.com/development/variables/use-variables.md#use-provided-variables) rather than hard-coding values.**
 
 ###### MariaDB reference
 
@@ -24054,7 +23443,7 @@ Note that the information about the relationship can change when an app is redep
     "is_master": true
   },
   "password": "",
-  "type": "oracle-mysql:8.0",
+  "type": "oracle-mysql:8.4",
   "public": false,
   "host_mapped": false
 }
@@ -24119,7 +23508,7 @@ For security reasons, you can grant your app access to a replica instead of your
 To do so, when defining the relationship between your app and database,
 make sure you do the following:
 
-1. Use the [explicit endpoint syntax](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#relationships).
+1. Use the [explicit endpoint syntax](https://fixed.docs.upsun.com/create-apps/image-properties/relationships.md).
 2. Add the `-replica` suffix to the name of the endpoint you want to use.
 
 This results in the following configuration:
@@ -24185,7 +23574,7 @@ You may want to grant access to both your main database and its replicas.
 To do so, when defining the relationship between your app and database,
 make sure you do the following:
 
-1. Use the [explicit endpoint syntax](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#relationships).
+1. Use the [explicit endpoint syntax](https://fixed.docs.upsun.com/create-apps/image-properties/relationships.md).
 2. Add the `-all` suffix to the name of the endpoint you want to use.
 
 This results in the following configuration,
@@ -24383,35 +23772,36 @@ MariaDB configuration properties like [max_connections](https://mariadb.com/docs
 They can, however, be set indirectly, which can be useful for solving ``Too many connection`` errors.
 See [the troubleshooting documentation](https://fixed.docs.upsun.com/add-services/mysql/troubleshoot.md#too-many-connections) for more details.
 
-##### Password generation
+##### Password generation {#password-generation}
 
-When you connect your app to a database,
-an empty password is generated for the database by default.
-This can cause issues with your app.
+If your YAML file does not specify a `schema` and `endpoint` for the MariaDB or MySQL service, no password is generated. 
 
-To generate real passwords for your database,
-define custom endpoints in your [service configuration](#1-configure-the-service).
-For each custom endpoint you create,
-you get an automatically generated password,
-similarly to when you create [multiple databases](#multiple-databases).
-You cannot customize these generated passwords.
+Because the database container is strictly isolated, it remains invisible to any resource until you [define an explicit relationship](https://fixed.docs.upsun.com/add-services/mysql.md#2-define-the-relationship) between it and other apps or workers. The container's "walls" ensure that only authorized applications and workers can reach the data, while all other processes are blocked at the network level.
+
+If you prefer to have Upsun generate a password, you must define [`schemas` and custom `endpoints`](#1-configure-the-service) in the `services` configuration – see the example in the [multiple databases](#multiple-databases) section of this topic.
+For each custom endpoint that you define, Upsun generates a password. Note that you cannot customize these generated passwords.
+
+**Note**: 
+
+Make sure you don’t change ``services.<SERVICE_NAME>``. **Changing the service name creates a new service,
+which removes existing data from your database.**
 
 After your custom endpoints are exposed as relationships in your [app configuration](https://fixed.docs.upsun.com../../create-apps.md),
 you can retrieve the password for each endpoint
 through the `PLATFORM_RELATIONSHIPS` [environment variable](https://fixed.docs.upsun.com../../development/variables/use-variables.md#use-provided-variables)
- within your [application containers](https://fixed.docs.upsun.com/development/variables/use-variables.md#access-variables-in-your-app). 
+ within your [application containers](https://fixed.docs.upsun.com/development/variables/use-variables.md#access-variables-in-your-app).
 
-Using this method to retrieve password credentials is considered a best practice: passwords change automatically (or [_rotate_](#password-rotation)) over time, and using incorrect passwords results in application downtime. **Avoid using hard-coded passwords in your application (and code base), which can cause security issues.** 
-
-When you switch from the default configuration with an empty password to custom endpoints,
-make sure your service name remains unchanged.
-**Changing the service name creates a new service,
-which removes any existing data from your database.**
+Using this method to retrieve password credentials is considered a best practice: passwords change automatically (or [_rotate_](#password-rotation)) over time, and using incorrect passwords results in application downtime. **Avoid using hard-coded passwords in your application (and code base), which can cause security issues.**
 
 ##### Password rotation {#password-rotation}
-By default, password rotation is enabled (`rotate_passwords=true`), enabling Upsun Fixed to automatically change (or _rotate_) MariaDB passwords each time it updates the MariaDB image. Password rotation also occurs as defined by any password lifetime settings in MariaDB. 
 
-Specific scenarios might warrant disabling password rotation (` rotate_passwords=false`): for example, choosing to accommodate users who access a database via an SSH tunnel and provide a password in their request because they cannot retrieve the database credentials stored in the [service or `$PLATFORM_RELATIONSHIPS` MariaDB environment variables](#mariadb-reference). 
+**Note**: 
+
+For rotation to occur, you must define a ``schema`` and ``endpoint`` in your service configuration (see [Password generation](#password-generation) above); otherwise, no password is generated to be rotated.
+
+By default, password rotation is enabled (`rotate_passwords: true`), which enables Upsun Fixed to automatically rotate MariaDB passwords during image updates or as defined by MariaDB lifetime settings. 
+
+Specific scenarios might warrant disabling password rotation by [setting `rotate_passwords=false`](https://fixed.docs.upsun.com/add-services/mysql.md#configuration-options): for example, choosing to accommodate users who access a database via an SSH tunnel and provide a password in their request because they cannot retrieve the database credentials stored in the [service or `$PLATFORM_RELATIONSHIPS` MariaDB environment variables](#mariadb-reference). 
 
 Passwords do **not** rotate automatically when you reset this value to `true`. 
 
@@ -25010,9 +24400,9 @@ Behind the scenes, `max_connections` (for Professional and DG3 projects) is calc
           max_allowed_packet: 16
     ```
 
-    The memory for a given container from its `size` depends on its [container profile***](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#container-profiles-cpu-and-memory).
+    The memory for a given container from its `size` depends on its [container profile](https://fixed.docs.upsun.com/create-apps/image-properties/size.md#container-profiles-cpu-and-memory).
 
-    For example, [MariaDB](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#container-profile-reference) has a `HIGH_MEMORY` [container profile](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#high_memory-container-profile).
+    For example, [MariaDB](https://fixed.docs.upsun.com/create-apps/image-properties/size.md#container-profile-reference) has a [`HIGH_MEMORY` container profile](https://fixed.docs.upsun.com/create-apps/image-properties/size.md#container-profiles-cpu-and-memory).
     For `size: L`, it means 0.40 CPU and 1280 MB of memory.
 
 If we assume the configuration above, where:
@@ -25124,10 +24514,6 @@ Patch versions are applied periodically for bug fixes and the like. When you dep
 
    - 1.4
 
-   - 1.5
-
-   - 1.4
-
 \* No High-Availability on Dedicated Gen 2.
 
 ##### Relationship reference
@@ -25180,11 +24566,11 @@ relationships:
 
 You can define ``<SERVICE_NAME>`` as you like, so long as it’s unique between all defined services
 and matches in both the application and services configuration.
-The example above leverages [default endpoint](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#relationships) configuration for relationships.
-That is, it uses default endpoints behind-the-scenes, providing a [relationship](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#relationships)
+The example above leverages [default endpoint](https://fixed.docs.upsun.com/create-apps/image-properties/relationships.md) configuration for relationships.
+That is, it uses default endpoints behind the scenes, providing a [relationship](https://fixed.docs.upsun.com/create-apps/image-properties/relationships.md)
 (the network address a service is accessible from) that is identical to the name of that service.
 Depending on your needs, instead of default endpoint configuration,
-you can use [explicit endpoint configuration](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#relationships).
+you can use [explicit endpoint configuration](https://fixed.docs.upsun.com/create-apps/image-properties/relationships.md).
 With the above definition, the application container now has [access to the service](#use-in-app) via the relationship ``<SERVICE_NAME>`` and its corresponding [PLATFORM_RELATIONSHIPS](https://fixed.docs.upsun.com/development/variables/use-variables.md#use-provided-variables).
 
     .platform.app.yaml
@@ -25204,9 +24590,9 @@ relationships:
 
 You can define ``<SERVICE_NAME>`` and ``<RELATIONSHIP_NAME>`` as you like, so long as it’s unique between all defined services and relationships
 and matches in both the application and services configuration.
-The example above leverages [explicit endpoint](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#relationships) configuration for relationships.
+The example above leverages [explicit endpoint](https://fixed.docs.upsun.com/create-apps/image-properties/relationships.md) configuration for relationships.
 Depending on your needs, instead of explicit endpoint configuration,
-you can use [default endpoint configuration](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#relationships).
+you can use [default endpoint configuration](https://fixed.docs.upsun.com/create-apps/image-properties/relationships.md).
 With the above definition, the application container now has [access to the service](#use-in-app) via the relationship ``<RELATIONSHIP_NAME>`` and its corresponding [PLATFORM_RELATIONSHIPS](https://fixed.docs.upsun.com/development/variables/use-variables.md#use-provided-variables).
 
 ###### Example configuration
@@ -25401,7 +24787,245 @@ netcat memcached.internal 11211
 ```
 
 Note that the information about the relationship can change when an app is redeployed or restarted or the relationship is changed. So your apps should only rely on the `PLATFORM_RELATIONSHIPS` environment variable directly rather than hard coding any values.
-### MongoDB (Database service)
+### Mercure
+
+[Mercure](https://mercure.rocks/) is a real-time communication protocol and hub designed for modern web apps. It allows servers to instantly push updates to browsers, mobile clients, and backend workers through Server-Sent Events (SSE).
+
+Built for simplicity and performance, Mercure is widely used in the Symfony ecosystem and beyond for reactive UIs, real-time notifications, and live data streaming.
+
+##### Supported versions
+
+You can select the major version. The latest compatible minor version is applied automatically and can’t be overridden.
+
+Patch versions are applied periodically for bug fixes and the like.
+When you deploy your app, you always get the latest available patches.
+
+   - 0
+
+<!-- 
+##### Deprecated versions
+
+The following versions are still available in your projects,
+but they're at their end of life and are no longer receiving security updates from upstream.
+
+To ensure your project remains stable in the future,
+switch to a [supported version](#supported-versions).
+-->
+
+##### JWT Token Secret
+
+The service generates the JSON Web Token (JWT) token secret. It's available in the `password` field of the Mercure relationship in the `PLATFORM_RELATIONSHIPS` environment variable.
+
+##### Relationship reference
+
+Relationship and configuration information (see the example below) is available through the [`PLATFORM_RELATIONSHIPS` environment variable](https://fixed.docs.upsun.com/development/variables/use-variables.md#use-provided-variables)
+or by running `platform relationships`.
+
+Relationship information can change when an app is redeployed or restarted, or the relationship is changed.
+Avoid hard-coding; use the `PLATFORM_RELATIONSHIPS` environment variable to handle dynamic relationship changes.
+
+```json
+{
+  "mercure": [
+    {
+      "username": null,
+      "fragment": null,
+      "ip": "123.456.78.90",
+      "cluster": "sample-cluster-id-12345",
+      "host": "mercure.internal",
+      "path": null,
+      "query": {},
+      "relationships_env_var_extra": {},
+      "port": 3000,
+      "host_mapped": false,
+      "password": "ChangeMe",
+      "service": "mercure",
+      "hostname": "sample-hostname.mercure.service.platformsh.site",
+      "epoch": 0,
+      "instance_ips": [
+        "123.456.789.001"
+      ],
+      "rel": "mercure",
+      "scheme": "http",
+      "type": "mercure:0",
+      "public": false
+    }
+  ]
+}
+```
+
+##### Usage example
+
+###### 1. Configure the service
+
+To define the service, use the `mercure` type:
+
+```yaml  {location=".platform/services.yaml"}
+# The name of the service container. Must be unique within a project.
+<SERVICE_NAME>:
+  type: mercure:0
+  disk: 256
+```
+
+Note that changing the name of the service replaces it with a brand new service and all existing data is lost. Back up your data before changing the service.
+
+###### 2. Define the route
+
+Include an entry in your `.platform/routes.yaml` file as shown below, replacing <APP_NAME> with the name of your Mercure app:
+
+```yaml  {location=".platform/routes.yaml"}
+"https://mercure.{default}/":
+   type: upstream
+   upstream: "<APP_NAME>:mercure"
+```
+
+###### 3. Define the relationship 
+
+Define the relationship to the app, as shown below: 
+
+```yaml {}
+applications:
+  # The name of the app container. Must be unique within a project.
+  <APP_NAME>:
+    # Relationships enable access from this app to a given service.
+    # The example below shows simplified configuration leveraging a default service
+    # (identified from the relationship name) and a default endpoint.
+    # See the Application reference for all options for defining relationships and endpoints.
+    relationships:
+      <SERVICE_NAME>: 
+```
+
+You can define ``<SERVICE_NAME>`` as you like, so long as it’s unique between all defined services
+and matches in both the application and services configuration.
+The example above leverages [default endpoint](https://fixed.docs.upsun.com/create-apps/image-properties/relationships.md) configuration for relationships.
+That is, it uses default endpoints behind the scenes, providing a [relationship](https://fixed.docs.upsun.com/create-apps/image-properties/relationships.md)
+(the network address a service is accessible from) that is identical to the name of that service.
+Depending on your needs, instead of default endpoint configuration,
+you can use [explicit endpoint configuration](https://fixed.docs.upsun.com/create-apps/image-properties/relationships.md).
+With the above definition, the application container now has [access to the service](#use-in-app) via the relationship ``<SERVICE_NAME>`` and its corresponding [PLATFORM_RELATIONSHIPS](https://fixed.docs.upsun.com/development/variables/use-variables.md#use-provided-variables).
+
+    .platform.app.yaml
+
+```yaml {}
+applications:
+  # The name of the app container. Must be unique within a project.
+  <APP_NAME>:
+    # Relationships enable access from this app to a given service.
+    # The example below shows configuration with an explicitly set service name and endpoint.
+    # See the Application reference for all options for defining relationships and endpoints.
+    relationships:
+      <RELATIONSHIP_NAME>:
+        service: <SERVICE_NAME>
+        endpoint: mercure
+```
+
+You can define ``<SERVICE_NAME>`` and ``<RELATIONSHIP_NAME>`` as you like, so long as it’s unique between all defined services and relationships
+and matches in both the application and services configuration.
+The example above leverages [explicit endpoint](https://fixed.docs.upsun.com/create-apps/image-properties/relationships.md) configuration for relationships.
+Depending on your needs, instead of explicit endpoint configuration,
+you can use [default endpoint configuration](https://fixed.docs.upsun.com/create-apps/image-properties/relationships.md).
+With the above definition, the application container now has [access to the service](#use-in-app) via the relationship ``<RELATIONSHIP_NAME>`` and its corresponding [PLATFORM_RELATIONSHIPS](https://fixed.docs.upsun.com/development/variables/use-variables.md#use-provided-variables).
+
+###### Example configuration
+
+###### [Service definition](https://fixed.docs.upsun.com/add-services.md)
+
+```yaml  {location=".platform/services.yaml"}
+# The name of the service container. Must be unique within a project.
+mercure:
+  type: mercure:0
+  disk: 256
+```
+####### [Route definition](https://fixed.docs.upsun.com/define-routes.md)
+
+```yaml  {location=".platform/routes.yaml"}
+"https://mercure.{default}/":
+   type: upstream
+   upstream: "<APP_NAME>:mercure"
+```
+
+####### [App configuration](https://fixed.docs.upsun.com/create-apps.md)
+
+```yaml {}
+# Relationships enable access from this app to a given service.
+# The example below shows simplified configuration leveraging a default service
+# (identified from the relationship name) and a default endpoint.
+# See the Application reference for all options for defining relationships and endpoints.
+relationships:
+  mercure:
+```
+
+    .platform.app.yaml
+
+```yaml {}
+# Relationships enable access from this app to a given service.
+# The example below shows configuration with an explicitly set service name and endpoint.
+# See the Application reference for all options for defining relationships and endpoints.
+# Note that legacy definition of the relationship is still supported.
+# More information: https://docs.upsun.com/anchors/fixed/app/reference/relationships/
+relationships:
+  mercure:
+    service: mercure
+    endpoint: mercure
+```
+
+###### Use in app
+
+To use the configured service in your app, add a configuration file similar to the following to your project.
+
+```yaml {}
+name: myapp
+
+[...]
+
+relationships:
+  mercure:
+```
+
+    .platform.app.yaml
+
+```yaml {}
+name: myapp
+
+[...]
+
+# Relationships enable access from this app to a given service.
+# The example below shows configuration with an explicitly set service name and endpoint.
+# See the Application reference for all options for defining relationships and endpoints.
+# Note that legacy definition of the relationship is still supported.
+# More information: https://docs.upsun.com/anchors/fixed/app/reference/relationships/
+relationships:
+  mercure:
+    service: mercure
+    endpoint: mercure
+```
+
+```yaml  {location=".platform/services.yaml"}
+mercure:
+  type: mercure:0
+```
+
+This configuration defines a single application (`myapp`), whose source code exists in the `<PROJECT_ROOT>/myapp` directory. 
+`myapp` has access to the `mercure` service via a relationship whose name is [identical to the service name](#3-define-the-relationship)
+(as per [default endpoint](https://fixed.docs.upsun.com/create-apps/image-properties/relationships.md) configuration for relationships).
+
+From this, `myapp` can retrieve access credentials to the service through the environment variable `PLATFORM_RELATIONSHIPS`. That variable is a base64-encoded JSON object, but can be decoded at runtime (using the built-in tool `jq`) to provide more accessible environment variables to use within the application itself:
+
+```bash  {location="myapp/.environment"}
+# Decode the built-in credentials object variable.
+export RELATIONSHIPS_JSON=$(echo $PLATFORM_RELATIONSHIPS | base64 --decode)
+
+# Set environment variables for common Mercure credentials.
+export MERCURE_USER=$(echo $RELATIONSHIPS_JSON | jq -r ".mercure[0].username")
+export MERCURE_HOST=$(echo $RELATIONSHIPS_JSON | jq -r ".mercure[0].host")
+export MERCURE_ORG=$(echo $RELATIONSHIPS_JSON | jq -r ".mercure[0].query")
+```
+
+The `.environment` file (shown above) in the `myapp` directory is automatically sourced by Upsun Fixed into the runtime environment, so that the variable `MERCURE_HOST` can be used within the application to connect to the service.
+
+Note that `MERCURE_HOST` and all Upsun Fixed-provided environment variables like `PLATFORM_RELATIONSHIPS`, are environment-dependent. Unlike the build produced for a given commit, they can't be reused across environments and only allow your app to connect to a single service instance on a single environment.
+
+A file very similar to this is generated automatically for you when using the `platform project:init` [command](https://fixed.docs.upsun.com/administration/cli/reference.md#projectinit) to migrate a codebase to Upsun Fixed.### MongoDB (Database service)
 
 MongoDB is a cross-platform, document-oriented database.
 
@@ -25435,12 +25059,6 @@ To add MongoDB Enterprise, [contact Sales](https://upsun.com/contact-us/).
 
    - 7.0
 
-   - 6.0
-
-   - 5.0
-
-   - 4.4
-
    - 7.0
 
    - 6.0
@@ -25458,6 +25076,12 @@ so migrate to one of the [supported versions](#supported-versions).
 
 | Grid | Dedicated Gen 2 |
 | 
+
+   - 6.0
+
+   - 5.0
+
+   - 4.4
 
    - 4.2
 
@@ -25485,8 +25109,6 @@ The following versions are [deprecated](https://fixed.docs.upsun.com/glossary.md
 They're available, but they aren't receiving security updates from upstream and aren't guaranteed to work.
 They'll be removed in the future,
 so migrate to one of the [supported versions](#supported-versions).
-
-   - 4.0.3
 
    - 3.6
 
@@ -25558,11 +25180,11 @@ relationships:
 
 You can define ``<SERVICE_NAME>`` as you like, so long as it’s unique between all defined services
 and matches in both the application and services configuration.
-The example above leverages [default endpoint](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#relationships) configuration for relationships.
-That is, it uses default endpoints behind-the-scenes, providing a [relationship](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#relationships)
+The example above leverages [default endpoint](https://fixed.docs.upsun.com/create-apps/image-properties/relationships.md) configuration for relationships.
+That is, it uses default endpoints behind the scenes, providing a [relationship](https://fixed.docs.upsun.com/create-apps/image-properties/relationships.md)
 (the network address a service is accessible from) that is identical to the name of that service.
 Depending on your needs, instead of default endpoint configuration,
-you can use [explicit endpoint configuration](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#relationships).
+you can use [explicit endpoint configuration](https://fixed.docs.upsun.com/create-apps/image-properties/relationships.md).
 With the above definition, the application container now has access to the service via the relationship ``<SERVICE_NAME>`` and its corresponding [PLATFORM_RELATIONSHIPS](https://fixed.docs.upsun.com/development/variables/use-variables.md#use-provided-variables).
 
     .platform.app.yaml
@@ -25582,9 +25204,9 @@ relationships:
 
 You can define ``<SERVICE_NAME>`` and ``<RELATIONSHIP_NAME>`` as you like, so long as it’s unique between all defined services and relationships
 and matches in both the application and services configuration.
-The example above leverages [explicit endpoint](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#relationships) configuration for relationships.
+The example above leverages [explicit endpoint](https://fixed.docs.upsun.com/create-apps/image-properties/relationships.md) configuration for relationships.
 Depending on your needs, instead of explicit endpoint configuration,
-you can use [default endpoint configuration](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#relationships).
+you can use [default endpoint configuration](https://fixed.docs.upsun.com/create-apps/image-properties/relationships.md).
 With the above definition, the application container now has access to the service via the relationship ``<RELATIONSHIP_NAME>`` and its corresponding [PLATFORM_RELATIONSHIPS](https://fixed.docs.upsun.com/development/variables/use-variables.md#use-provided-variables).
 
 For PHP, enable the [extension](https://fixed.docs.upsun.com/languages/php/extensions.md) for the service:
@@ -25667,11 +25289,11 @@ relationships:
 
 You can define ``<SERVICE_NAME>`` as you like, so long as it’s unique between all defined services
 and matches in both the application and services configuration.
-The example above leverages [default endpoint](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#relationships) configuration for relationships.
-That is, it uses default endpoints behind-the-scenes, providing a [relationship](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#relationships)
+The example above leverages [default endpoint](https://fixed.docs.upsun.com/create-apps/image-properties/relationships.md) configuration for relationships.
+That is, it uses default endpoints behind the scenes, providing a [relationship](https://fixed.docs.upsun.com/create-apps/image-properties/relationships.md)
 (the network address a service is accessible from) that is identical to the name of that service.
 Depending on your needs, instead of default endpoint configuration,
-you can use [explicit endpoint configuration](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#relationships).
+you can use [explicit endpoint configuration](https://fixed.docs.upsun.com/create-apps/image-properties/relationships.md).
 With the above definition, the application container now has access to the service via the relationship ``<SERVICE_NAME>`` and its corresponding [PLATFORM_RELATIONSHIPS](https://fixed.docs.upsun.com/development/variables/use-variables.md#use-provided-variables).
 
     .platform.app.yaml
@@ -25691,9 +25313,9 @@ relationships:
 
 You can define ``<SERVICE_NAME>`` and ``<RELATIONSHIP_NAME>`` as you like, so long as it’s unique between all defined services and relationships
 and matches in both the application and services configuration.
-The example above leverages [explicit endpoint](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#relationships) configuration for relationships.
+The example above leverages [explicit endpoint](https://fixed.docs.upsun.com/create-apps/image-properties/relationships.md) configuration for relationships.
 Depending on your needs, instead of explicit endpoint configuration,
-you can use [default endpoint configuration](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#relationships).
+you can use [default endpoint configuration](https://fixed.docs.upsun.com/create-apps/image-properties/relationships.md).
 With the above definition, the application container now has access to the service via the relationship ``<SERVICE_NAME>`` and its corresponding [PLATFORM_RELATIONSHIPS](https://fixed.docs.upsun.com/development/variables/use-variables.md#use-provided-variables).
 
 For PHP, enable the [extension](https://fixed.docs.upsun.com/languages/php/extensions.md) for the service:
@@ -25713,7 +25335,7 @@ runtime:
 ```yaml  {location=".platform/services.yaml"}
 # The name of the service container. Must be unique within a project.
 mongodb:
-    type: mongodb:
+    type: mongodb:4.0
     disk: 512
 ```
 
@@ -26006,7 +25628,7 @@ Downgrading isn't supported. If you want, for whatever reason, to downgrade you 
 
 Upsun Fixed supports internal "storage as a service" to provide a file store that can be shared between different application containers.
 
-The network storage service enables a new kind of [mount](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#mounts)
+The network storage service enables a new kind of [mount](https://fixed.docs.upsun.com/create-apps/image-properties/mounts.md)
 that refers to a shared service rather than to a local directory.
 Your apps can use any combination of `local` and `service` mounts.
 
@@ -26039,6 +25661,7 @@ It isn’t possible to upgrade or downgrade the network storage service version 
 Changing the service version requires that the service be reinitialized.
 Any change to the service version results in existing data becoming inaccessible.
 
+<!-- 
 ###### Deprecated versions
 
 The following versions are [deprecated](https://fixed.docs.upsun.com/glossary.md#deprecated-versions).
@@ -26053,6 +25676,7 @@ so migrate to one of the [supported versions](#supported-versions).
 
   None available
 
+-->
 ##### Usage example
 
 ###### 1. Configure the service
@@ -26187,7 +25811,7 @@ and the `done` mount refers to the same directory as the `web/uploads/done` dire
 
 ##### Worker instances
 
-When defining a [worker](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#workers) instance,
+When defining a [worker](https://fixed.docs.upsun.com/create-apps/image-properties/workers.md) instance,
 keep in mind what mount behavior you want.
 
 `local` mounts are a separate storage area for each instance,
@@ -26441,8 +26065,6 @@ or are no longer the recommended way to configure the service on Upsun Fixed.
 | Grid | Dedicated Gen 2 |
 | 
 
-   - 1.3
-
    - 1.2
 
    - 1.1
@@ -26510,11 +26132,11 @@ relationships:
 
 You can define ``<SERVICE_NAME>`` as you like, so long as it’s unique between all defined services
 and matches in both the application and services configuration.
-The example above leverages [default endpoint](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#relationships) configuration for relationships.
-That is, it uses default endpoints behind-the-scenes, providing a [relationship](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#relationships)
+The example above leverages [default endpoint](https://fixed.docs.upsun.com/create-apps/image-properties/relationships.md) configuration for relationships.
+That is, it uses default endpoints behind the scenes, providing a [relationship](https://fixed.docs.upsun.com/create-apps/image-properties/relationships.md)
 (the network address a service is accessible from) that is identical to the name of that service.
 Depending on your needs, instead of default endpoint configuration,
-you can use [explicit endpoint configuration](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#relationships).
+you can use [explicit endpoint configuration](https://fixed.docs.upsun.com/create-apps/image-properties/relationships.md).
 With the above definition, the application container now has [access to the service](#use-in-app) via the relationship ``<SERVICE_NAME>`` and its corresponding [PLATFORM_RELATIONSHIPS](https://fixed.docs.upsun.com/development/variables/use-variables.md#use-provided-variables).
 
     .platform.app.yaml
@@ -26533,9 +26155,9 @@ relationships:
 
 You can define ``<SERVICE_NAME>`` and ``<RELATIONSHIP_NAME>`` as you like, so long as it’s unique between all defined services and relationships
 and matches in both the application and services configuration.
-The example above leverages [explicit endpoint](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#relationships) configuration for relationships.
+The example above leverages [explicit endpoint](https://fixed.docs.upsun.com/create-apps/image-properties/relationships.md) configuration for relationships.
 Depending on your needs, instead of explicit endpoint configuration,
-you can use [default endpoint configuration](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#relationships).
+you can use [default endpoint configuration](https://fixed.docs.upsun.com/create-apps/image-properties/relationships.md).
 With the above definition, the application container now has [access to the service](#use-in-app) via the relationship ``<RELATIONSHIP_NAME>`` and its corresponding [PLATFORM_RELATIONSHIPS](https://fixed.docs.upsun.com/development/variables/use-variables.md#use-provided-variables).
 
 ###### Example configuration
@@ -26602,7 +26224,7 @@ relationships:
 
 This configuration defines a single application (`myapp`), whose source code exists in the `<PROJECT_ROOT>/myapp` directory. 
 `myapp` has access to the `opensearch` service, via a relationship whose name is [identical to the service name](#2-define-the-relationship)
-(as per [default endpoint](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#relationships) configuration for relationships).
+(as per [default endpoint](https://fixed.docs.upsun.com/create-apps/image-properties/relationships.md) configuration for relationships).
 
 From this, `myapp` can retrieve access credentials to the service through the environment variable `PLATFORM_RELATIONSHIPS`. That variable is a base64-encoded JSON object, but can be decoded at runtime (using the built-in tool `jq`) to provide more accessible environment variables to use within the application itself:
 
@@ -26827,10 +26449,6 @@ If you use one of the following frameworks, follow its guide:
 
    - 14
 
-   - 13
-
-   - 12
-
     None available
 
 \* No High-Availability on Dedicated Gen 2.
@@ -26850,6 +26468,10 @@ so migrate to one of the [supported versions](#supported-versions).
 | Grid | Dedicated Gen 2 |
 | 
 
+   - 13
+
+   - 12
+
    - 11
 
    - 10
@@ -26857,8 +26479,6 @@ so migrate to one of the [supported versions](#supported-versions).
    - 9.6
 
    - 9.5
-
-   - 9.4
 
    - 9.3
 
@@ -26877,8 +26497,7 @@ so migrate to one of the [supported versions](#supported-versions).
 Example information available through the [`PLATFORM_RELATIONSHIPS` environment variable](https://fixed.docs.upsun.com/development/variables/use-variables.md#use-provided-variables)
 or by running `platform relationships`.
 
-Note that the information about the relationship can change when an app is redeployed or restarted or the relationship is changed.
-So your apps should only rely on the `PLATFORM_RELATIONSHIPS` environment variable directly rather than hard coding any values.
+Service connection details can change whenever your app restarts or redeploys. **To keep your connection stable, use [`PLATFORM_RELATIONSHIPS` environment variable](https://fixed.docs.upsun.com/development/variables/use-variables.md#use-provided-variables) rather than hard-coding values.**
 
 ```json
 {
@@ -26938,11 +26557,11 @@ relationships:
 
 You can define ``<SERVICE_NAME>`` as you like, so long as it’s unique between all defined services
 and matches in both the application and services configuration.
-The example above leverages [default endpoint](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#relationships) configuration for relationships.
-That is, it uses default endpoints behind-the-scenes, providing a [relationship](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#relationships)
+The example above leverages [default endpoint](https://fixed.docs.upsun.com/create-apps/image-properties/relationships.md) configuration for relationships.
+That is, it uses default endpoints behind the scenes, providing a [relationship](https://fixed.docs.upsun.com/create-apps/image-properties/relationships.md)
 (the network address a service is accessible from) that is identical to the name of that service.
 Depending on your needs, instead of default endpoint configuration,
-you can use [explicit endpoint configuration](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#relationships).
+you can use [explicit endpoint configuration](https://fixed.docs.upsun.com/create-apps/image-properties/relationships.md).
 With the above definition, the application container now has [access to the service](#use-in-app) via the relationship ``<SERVICE_NAME>`` and its corresponding [PLATFORM_RELATIONSHIPS](https://fixed.docs.upsun.com/development/variables/use-variables.md#use-provided-variables).
 
     .platform.app.yaml
@@ -26961,9 +26580,9 @@ relationships:
 
 You can define ``<SERVICE_NAME>`` and ``<RELATIONSHIP_NAME>`` as you like, so long as it’s unique between all defined services and relationships
 and matches in both the application and services configuration.
-The example above leverages [explicit endpoint](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#relationships) configuration for relationships.
+The example above leverages [explicit endpoint](https://fixed.docs.upsun.com/create-apps/image-properties/relationships.md) configuration for relationships.
 Depending on your needs, instead of explicit endpoint configuration,
-you can use [default endpoint configuration](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#relationships).
+you can use [default endpoint configuration](https://fixed.docs.upsun.com/create-apps/image-properties/relationships.md).
 With the above definition, the application container now has [access to the service](#use-in-app) via the relationship ``<RELATIONSHIP_NAME>`` and its corresponding [PLATFORM_RELATIONSHIPS](https://fixed.docs.upsun.com/development/variables/use-variables.md#use-provided-variables).
 
 For PHP, enable the [extension](https://fixed.docs.upsun.com/languages/php/extensions.md) for the service:
@@ -27312,7 +26931,7 @@ Using the values from the [example](#relationship-reference), that would be:
 psql -U main -h postgresql.internal -p 5432
 ```
 
-Note that the information about the relationship can change when an app is redeployed or restarted or the relationship is changed. So your apps should only rely on the `PLATFORM_RELATIONSHIPS` environment variable directly rather than hard coding any values.
+Service connection details can change whenever your app restarts or redeploys. **To keep your connection stable, use [`PLATFORM_RELATIONSHIPS` environment variable](https://fixed.docs.upsun.com/development/variables/use-variables.md#use-provided-variables) rather than hard-coding values.**
 
 ##### Exporting data
 
@@ -27506,30 +27125,26 @@ postgresql:
         thirddb: admin
 ```
 
-##### Password generation
+##### Password generation {#password-generation}
 
-When you connect your app to a database,
-an empty password is generated for the database by default.
-This can cause issues with your app.
+If your YAML file does not specify a `schema` and `endpoint` for a database service, no password is generated. 
 
-To generate real passwords for your database,
-define custom endpoints in your [service configuration](#1-configure-the-service).
-For each custom endpoint you create,
-you get an automatically generated password,
-similarly to when you create [multiple databases](#multiple-databases).
-Note that you can't customize these automatically generated passwords.
+Because your database is isolated on a private network and cannot be seen from the internet, you can omit a password without compromising security. This simplifies your workflow by removing the need to manage credentials, while container isolation ensures that only your application can access the data.
 
-After your custom endpoints are exposed as relationships in your [app configuration](https://fixed.docs.upsun.com/create-apps.md),
+If you prefer to have Upsun generate a password, you must define [`schemas` and custom `endpoints`](#1-configure-the-service) in the `services` configuration – see the example in the [multiple databases](#multiple-databases) section of this topic.
+For each custom endpoint that you define, Upsun generates a password. Note that you cannot customize these generated passwords.
+
+**Note**: 
+
+Make sure you don’t change ``services.<SERVICE_NAME>``. **Changing the service name creates a new service,
+which removes existing data from your database.**
+
+After your custom endpoints are exposed as relationships in your [app configuration](https://fixed.docs.upsun.com../../create-apps.md),
 you can retrieve the password for each endpoint
-through the `PLATFORM_RELATIONSHIPS` [environment variable](https://fixed.docs.upsun.com/development/variables/use-variables.md#use-provided-variables)
-within your [application containers](https://fixed.docs.upsun.com/development/variables/use-variables.md#access-variables-in-your-app).
-The password value changes automatically over time, to avoid downtime its value has to be read dynamically by your app.
-Globally speaking, having passwords hard-coded into your codebase can cause security issues and should be avoided.
+through the `PLATFORM_RELATIONSHIPS` [environment variable](https://fixed.docs.upsun.com../../development/variables/use-variables.md#use-provided-variables)
+ within your [application containers](https://fixed.docs.upsun.com/development/variables/use-variables.md#access-variables-in-your-app).
 
-When you switch from the default configuration with an empty password to custom endpoints,
-make sure your service name remains unchanged.
-Failure to do so results in the creation of a new service,
-which removes any existing data from your database.
+Using this method to retrieve password credentials is considered a best practice: passwords might change over time, and using incorrect passwords results in application downtime. **Avoid using hard-coded passwords in your application (and code base), which can cause security issues.**
 
 ##### Restrict access to database replicas only
 
@@ -27541,7 +27156,7 @@ For security reasons, you can grant your app access to replicas instead of your 
 To do so, when defining the relationship between your app and database,
 make sure you do the following:
 
-1. Use the [explicit endpoint syntax](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#relationships).
+1. Use the [explicit endpoint syntax](https://fixed.docs.upsun.com/create-apps/image-properties/relationships.md).
 2. Add the `-replica` suffix to the name of the endpoint you want to use.
 
 This results in the following configuration:
@@ -27853,12 +27468,6 @@ Patch versions are applied periodically for bug fixes and the like. When you dep
 
    - 4.1
 
-   - 4.0
-
-   - 3.13
-
-   - 3.12
-
    - 4.1
 
    - 4.0
@@ -27876,6 +27485,12 @@ so migrate to one of the [supported versions](#supported-versions).
 
 | Grid | Dedicated Gen 2 |
 | 
+
+   - 4.0
+
+   - 3.13
+
+   - 3.12
 
    - 3.11
 
@@ -27961,11 +27576,11 @@ relationships:
 
 You can define ``<SERVICE_NAME>`` as you like, so long as it’s unique between all defined services
 and matches in both the application and services configuration.
-The example above leverages [default endpoint](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#relationships) configuration for relationships.
-That is, it uses default endpoints behind-the-scenes, providing a [relationship](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#relationships)
+The example above leverages [default endpoint](https://fixed.docs.upsun.com/create-apps/image-properties/relationships.md) configuration for relationships.
+That is, it uses default endpoints behind the scenes, providing a [relationship](https://fixed.docs.upsun.com/create-apps/image-properties/relationships.md)
 (the network address a service is accessible from) that is identical to the name of that service.
 Depending on your needs, instead of default endpoint configuration,
-you can use [explicit endpoint configuration](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#relationships).
+you can use [explicit endpoint configuration](https://fixed.docs.upsun.com/create-apps/image-properties/relationships.md).
 With the above definition, the application container now has [access to the service](#use-in-app) via the relationship ``<SERVICE_NAME>`` and its corresponding [PLATFORM_RELATIONSHIPS](https://fixed.docs.upsun.com/development/variables/use-variables.md#use-provided-variables).
 
     .platform.app.yaml
@@ -27984,9 +27599,9 @@ relationships:
 
 You can define ``<SERVICE_NAME>`` and ``<RELATIONSHIP_NAME>`` as you like, so long as it’s unique between all defined services and relationships
 and matches in both the application and services configuration.
-The example above leverages [explicit endpoint](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#relationships) configuration for relationships.
+The example above leverages [explicit endpoint](https://fixed.docs.upsun.com/create-apps/image-properties/relationships.md) configuration for relationships.
 Depending on your needs, instead of explicit endpoint configuration,
-you can use [default endpoint configuration](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#relationships).
+you can use [default endpoint configuration](https://fixed.docs.upsun.com/create-apps/image-properties/relationships.md).
 With the above definition, the application container now has [access to the service](#use-in-app) via the relationship ``<RELATIONSHIP_NAME>`` and its corresponding [PLATFORM_RELATIONSHIPS](https://fixed.docs.upsun.com/development/variables/use-variables.md#use-provided-variables).
 
 ###### Example configuration
@@ -28326,14 +27941,6 @@ so migrate to one of the [supported versions](#supported-versions).
 
    - 5.0
 
-   - 4.0
-
-   - 3.2
-
-   - 3.0
-
-   - 2.8
-
    - 7.0
 
    - 6.2
@@ -28440,8 +28047,8 @@ relationships:
 ```
 
 You can define ``<SERVICE_NAME>`` as you like, so long as it’s unique between all defined services and matches in both the application and services configuration.
-The example above leverages [default endpoint](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#relationships) configuration for relationships. That is, it uses default endpoints behind-the-scenes, providing a [relationship](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#relationships) (the network address a service is accessible from) that is identical to the name of that service.
-Depending on your needs, instead of default endpoint configuration, you can use [explicit endpoint configuration](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#relationships).
+The example above leverages [default endpoint](https://fixed.docs.upsun.com/create-apps/image-properties/relationships.md) configuration for relationships. That is, it uses default endpoints behind the scenes, providing a [relationship](https://fixed.docs.upsun.com/create-apps/image-properties/relationships.md) (the network address a service is accessible from) that is identical to the name of that service.
+Depending on your needs, instead of default endpoint configuration, you can use [explicit endpoint configuration](https://fixed.docs.upsun.com/create-apps/image-properties/relationships.md).
 With the above definition, the application container now has access to the service via the relationship ``<SERVICE_NAME>`` and its corresponding [PLATFORM_RELATIONSHIPS](https://fixed.docs.upsun.com/development/variables/use-variables.md#use-provided-variables).
 
     .platform.app.yaml
@@ -28460,9 +28067,9 @@ relationships:
 
 You can define ``<SERVICE_NAME>`` and ``<RELATIONSHIP_NAME>`` as you like, so long as it’s unique between all defined services and relationships
 and matches in both the application and services configuration.
-The example above leverages [explicit endpoint](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#relationships) configuration for relationships.
+The example above leverages [explicit endpoint](https://fixed.docs.upsun.com/create-apps/image-properties/relationships.md) configuration for relationships.
 Depending on your needs, instead of explicit endpoint configuration,
-you can use [default endpoint configuration](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#relationships).
+you can use [default endpoint configuration](https://fixed.docs.upsun.com/create-apps/image-properties/relationships.md).
 With the above definition, the application container now has [access to the service](#use-in-app) via the relationship ``<RELATIONSHIP_NAME>`` and its corresponding [PLATFORM_RELATIONSHIPS](https://fixed.docs.upsun.com/development/variables/use-variables.md#use-provided-variables).
 
 For PHP, enable the [extension](https://fixed.docs.upsun.com/languages/php/extensions.md) for the service:
@@ -28642,8 +28249,8 @@ relationships:
 ```
 
 You can define ``<SERVICE_NAME>`` as you like, so long as it’s unique between all defined services and matches in both the application and services configuration.
-The example above leverages [default endpoint](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#relationships) configuration for relationships. That is, it uses default endpoints behind-the-scenes, providing a [relationship](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#relationships) (the network address a service is accessible from) that is identical to the name of that service.
-Depending on your needs, instead of default endpoint configuration, you can use [explicit endpoint configuration](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#relationships).
+The example above leverages [default endpoint](https://fixed.docs.upsun.com/create-apps/image-properties/relationships.md) configuration for relationships. That is, it uses default endpoints behind the scenes, providing a [relationship](https://fixed.docs.upsun.com/create-apps/image-properties/relationships.md) (the network address a service is accessible from) that is identical to the name of that service.
+Depending on your needs, instead of default endpoint configuration, you can use [explicit endpoint configuration](https://fixed.docs.upsun.com/create-apps/image-properties/relationships.md).
 With the above definition, the application container now has [access to the service](#use-in-app) via the relationship ``<SERVICE_NAME>`` and its corresponding [PLATFORM_RELATIONSHIPS](https://fixed.docs.upsun.com/development/variables/use-variables.md#use-provided-variables).
 
     .platform.app.yaml
@@ -28662,9 +28269,9 @@ relationships:
 
 You can define ``<SERVICE_NAME>`` and ``<RELATIONSHIP_NAME>`` as you like, so long as it’s unique between all defined services and relationships
 and matches in both the application and services configuration.
-The example above leverages [explicit endpoint](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#relationships) configuration for relationships.
+The example above leverages [explicit endpoint](https://fixed.docs.upsun.com/create-apps/image-properties/relationships.md) configuration for relationships.
 Depending on your needs, instead of explicit endpoint configuration,
-you can use [default endpoint configuration](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#relationships).
+you can use [default endpoint configuration](https://fixed.docs.upsun.com/create-apps/image-properties/relationships.md).
 With the above definition, the application container now has [access to the service](#use-in-app) via the relationship ``<RELATIONSHIP_NAME>`` and its corresponding [PLATFORM_RELATIONSHIPS](https://fixed.docs.upsun.com/development/variables/use-variables.md#use-provided-variables).
 
 For PHP, enable the [extension](https://fixed.docs.upsun.com/languages/php/extensions.md) for the service:
@@ -28844,7 +28451,7 @@ For security reasons, you can grant your app access to replicas instead of your 
 To do so, when defining the relationship between your app and database,
 make sure you do the following:
 
-1. Use the [explicit endpoint syntax](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#relationships).
+1. Use the [explicit endpoint syntax](https://fixed.docs.upsun.com/create-apps/image-properties/relationships.md).
 2. Add the `-replica` suffix to the name of the endpoint you want to use.
 
 This results in the following configuration:
@@ -29078,7 +28685,11 @@ Patch versions are applied periodically for bug fixes and the like. When you dep
 | Grid | Dedicated Gen 2 |
 | 
 
+   - 8.1
+
    - 8.0
+
+   - 8.1
 
    - 8.0
 
@@ -29123,7 +28734,7 @@ So your apps should only rely on the `PLATFORM_RELATIONSHIPS` environment variab
   "path": null,
   "query": [],
   "password": null,
-  "type": "valkey:8.0",
+  "type": "valkey:8.1",
   "public": false,
   "host_mapped": false
 }
@@ -29191,8 +28802,8 @@ applications:
 ```
 
 You can define ``<SERVICE_NAME>`` as you like, so long as it’s unique between all defined services and matches in both the application and services configuration.
-The example above leverages [default endpoint](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#relationships) configuration for relationships. That is, it uses default endpoints behind-the-scenes, providing a [relationship](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#relationships) (the network address a service is accessible from) that is identical to the name of that service.
-Depending on your needs, instead of default endpoint configuration, you can use [explicit endpoint configuration](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#relationships).
+The example above leverages [default endpoint](https://fixed.docs.upsun.com/create-apps/image-properties/relationships.md) configuration for relationships. That is, it uses default endpoints behind the scenes, providing a [relationship](https://fixed.docs.upsun.com/create-apps/image-properties/relationships.md) (the network address a service is accessible from) that is identical to the name of that service.
+Depending on your needs, instead of default endpoint configuration, you can use [explicit endpoint configuration](https://fixed.docs.upsun.com/create-apps/image-properties/relationships.md).
 With the above definition, the application container now has access to the service via the relationship ``<SERVICE_NAME>`` and its corresponding [service environment variables](https://fixed.docs.upsun.com/development/variables.md).
 
     .platform/services.yaml
@@ -29212,9 +28823,9 @@ applications:
 
 You can define ``<SERVICE_NAME>`` and ``<RELATIONSHIP_NAME>`` as you like, so long as it’s unique between all defined services and relationships
 and matches in both the application and services configuration.
-The example above leverages [explicit endpoint](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#relationships) configuration for relationships.
+The example above leverages [explicit endpoint](https://fixed.docs.upsun.com/create-apps/image-properties/relationships.md) configuration for relationships.
 Depending on your needs, instead of explicit endpoint configuration,
-you can use [default endpoint configuration](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#relationships).
+you can use [default endpoint configuration](https://fixed.docs.upsun.com/create-apps/image-properties/relationships.md).
 With the above definition, the application container now has access to the service via the relationship ``<RELATIONSHIP_NAME>`` and its corresponding [service environment variables](https://fixed.docs.upsun.com/development/variables.md).
 
 For PHP, enable the [extension](https://fixed.docs.upsun.com/languages/php/extensions) for the service:
@@ -29323,8 +28934,8 @@ relationships:
 ```
 
 You can define ``<SERVICE_NAME>`` as you like, so long as it’s unique between all defined services and matches in both the application and services configuration.
-The example above leverages [default endpoint](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#relationships) configuration for relationships. That is, it uses default endpoints behind-the-scenes, providing a [relationship](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#relationships) (the network address a service is accessible from) that is identical to the name of that service.
-Depending on your needs, instead of default endpoint configuration, you can use [explicit endpoint configuration](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#relationships).
+The example above leverages [default endpoint](https://fixed.docs.upsun.com/create-apps/image-properties/relationships.md) configuration for relationships. That is, it uses default endpoints behind the scenes, providing a [relationship](https://fixed.docs.upsun.com/create-apps/image-properties/relationships.md) (the network address a service is accessible from) that is identical to the name of that service.
+Depending on your needs, instead of default endpoint configuration, you can use [explicit endpoint configuration](https://fixed.docs.upsun.com/create-apps/image-properties/relationships.md).
 With the above definition, the application container now has access to the service via the relationship ``<SERVICE_NAME>`` and its corresponding [PLATFORM_RELATIONSHIPS](https://fixed.docs.upsun.com/development/variables/use-variables.md#use-provided-variables).
 
     .platform.app.yaml
@@ -29343,9 +28954,9 @@ relationships:
 
 You can define ``<SERVICE_NAME>`` and ``<RELATIONSHIP_NAME>`` as you like, so long as it’s unique between all defined services and relationships
 and matches in both the application and services configuration.
-The example above leverages [explicit endpoint](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#relationships) configuration for relationships.
+The example above leverages [explicit endpoint](https://fixed.docs.upsun.com/create-apps/image-properties/relationships.md) configuration for relationships.
 Depending on your needs, instead of explicit endpoint configuration,
-you can use [default endpoint configuration](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#relationships).
+you can use [default endpoint configuration](https://fixed.docs.upsun.com/create-apps/image-properties/relationships.md).
 With the above definition, the application container now has access to the service via the relationship ``<RELATIONSHIP_NAME>`` and its corresponding [PLATFORM_RELATIONSHIPS](https://fixed.docs.upsun.com/development/variables/use-variables.md#use-provided-variables).
 
 For PHP, enable the [extension](https://fixed.docs.upsun.com/languages/php/extensions) for the service:
@@ -29364,7 +28975,7 @@ runtime:
 ```yaml  {location=".platform/services.yaml"}
 # The name of the service container. Must be unique within a project.
 valkey:
-  type: valkey:8.0
+  type: valkey:8.1
   disk: 256
 ```
 
@@ -29394,7 +29005,7 @@ For security reasons, you can grant your app access to replicas instead of your 
 To do so, when defining the relationship between your app and database,
 make sure you do the following:
 
-1. Use the [explicit endpoint syntax](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#relationships).
+1. Use the [explicit endpoint syntax](https://fixed.docs.upsun.com/create-apps/image-properties/relationships.md).
 2. Add the `-replica` suffix to the name of the endpoint you want to use.
 
 This results in the following configuration:
@@ -29410,7 +29021,7 @@ For example, if you define a `valkey-persistent` database as follows:
 
 ```yaml  {location=".platform/services.yaml"}
 postgresql:
-  type: "valkey-persistent:8.0"
+  type: "valkey-persistent:8.1"
   disk: 2048
   configuration:
     databases:
@@ -29458,7 +29069,7 @@ To customize those cache cleanups, set up an eviction policy such as the followi
 services:
   # The name of the service container. Must be unique within a project.
   valkey:
-    type: "valkey:8.0"
+    type: "valkey:8.1"
     configuration:
       maxmemory_policy: allkeys-lfu
 ```
@@ -29555,7 +29166,7 @@ applications:
 services:
   # The name of the service container. Must be unique within a project.
   valkeysession:
-    type: "valkey-persistent:8.0"
+    type: "valkey-persistent:8.1"
 ```
 
     .platform.app.yaml
@@ -29596,7 +29207,7 @@ applications:
 services:
   # The name of the service container. Must be unique within a project.
   valkeysession:
-    type: "valkey-persistent:8.0"
+    type: "valkey-persistent:8.1"
 ```
 
 ##### Migrate from Redis to Valkey
@@ -29613,7 +29224,7 @@ with the following:
 
 ```json
 my_service_name:
-  type: valkey-persistent:8.0
+  type: valkey-persistent:8.1
   disk: 256
 ```
 
@@ -29681,11 +29292,9 @@ so migrate to one of the [supported versions](#supported-versions).
 | Grid | Dedicated Gen 2 |
 | 
 
+   - 9.0
+
    - 8.11
-
-   - 8.6
-
-   - 8.4
 
    - 8.0
 
@@ -29775,11 +29384,11 @@ relationships:
 
 You can define ``<SERVICE_NAME>`` as you like, so long as it’s unique between all defined services
 and matches in both the application and services configuration.
-The example above leverages [default endpoint](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#relationships) configuration for relationships.
-That is, it uses default endpoints behind-the-scenes, providing a [relationship](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#relationships)
+The example above leverages [default endpoint](https://fixed.docs.upsun.com/create-apps/image-properties/relationships.md) configuration for relationships.
+That is, it uses default endpoints behind the scenes, providing a [relationship](https://fixed.docs.upsun.com/create-apps/image-properties/relationships.md)
 (the network address a service is accessible from) that is identical to the name of that service.
 Depending on your needs, instead of default endpoint configuration,
-you can use [explicit endpoint configuration](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#relationships).
+you can use [explicit endpoint configuration](https://fixed.docs.upsun.com/create-apps/image-properties/relationships.md).
 With the above definition, the application container now has [access to the service](#use-in-app) via the relationship ``<SERVICE_NAME>`` and its corresponding [PLATFORM_RELATIONSHIPS](https://fixed.docs.upsun.com/development/variables/use-variables.md#use-provided-variables).
 
     .platform.app.yaml
@@ -29797,9 +29406,9 @@ relationships:
 
 You can define ``<SERVICE_NAME>`` and ``<RELATIONSHIP_NAME>`` as you like, so long as it’s unique between all defined services and relationships
 and matches in both the application and services configuration.
-The example above leverages [explicit endpoint](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#relationships) configuration for relationships.
+The example above leverages [explicit endpoint](https://fixed.docs.upsun.com/create-apps/image-properties/relationships.md) configuration for relationships.
 Depending on your needs, instead of explicit endpoint configuration,
-you can use [default endpoint configuration](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#relationships).
+you can use [default endpoint configuration](https://fixed.docs.upsun.com/create-apps/image-properties/relationships.md).
 With the above definition, the application container now has [access to the service](#use-in-app) via the relationship ``<RELATIONSHIP_NAME>`` and its corresponding [PLATFORM_RELATIONSHIPS](https://fixed.docs.upsun.com/development/variables/use-variables.md#use-provided-variables).
 
 ###### Example configuration
@@ -30302,10 +29911,6 @@ Patch versions are applied periodically for bug fixes and the like. When you dep
 
    - 7.6
 
-   - 7.3
-
-   - 7.2
-
    - 6.0
 
   None available
@@ -30602,7 +30207,7 @@ stats-app:
   source:
     root: "stats"
   # The type of the application to build.
-  type: "python:3.13"
+  type: "python:3.14"
   # Unique relationship _to_ Varnish from 'stats-app', where no relationship
   #   is defined _from_ Varnish to the same app, to avoid circular relationships.
   relationships:
@@ -30645,7 +30250,7 @@ To access the Varnish stats endpoint from the command line:
 
 1. Connect to your stats app [using SSH](https://fixed.docs.upsun.com/development/ssh/_index.md): `platform ssh --app stats-app`
    (replace `stats-app` with the name you gave the app).
-2. Display the [relationships array](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#relationships) with `echo $PLATFORM_RELATIONSHIPS | base64 -d | jq .`,
+2. Display the [relationships array](https://fixed.docs.upsun.com/create-apps/image-properties/relationships.md) with `echo $PLATFORM_RELATIONSHIPS | base64 -d | jq .`,
 3. Query Varnish with `curl <HOST>:<PORT>/stats`, replacing `<HOST>` and `<PATH>` with the values from Step 2.
 ### Vault key management service
 
@@ -30759,7 +30364,7 @@ relationships:
 You can define `<SERVICE_NAME>` as you like, so long as it's unique between all defined services
 and matches in both the application and services configuration.
 
-The example above leverages [explicit endpoint configuration](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#relationships) for relationships.
+The example above leverages [explicit endpoint configuration](https://fixed.docs.upsun.com/create-apps/image-properties/relationships.md) for relationships.
 That is, it utilizes the `endpoint` key to explicitly connect an individually accessible `relationship` to a specific Vault endpoint.
 
 With the above definition, the application container now has access to the service via the relationship `<RELATIONSHIP_NAME>` and its corresponding [`PLATFORM_RELATIONSHIPS` environment variable](https://fixed.docs.upsun.com/development/variables/use-variables.md#use-provided-variables).
@@ -31312,12 +30917,17 @@ is not guaranteed to be the same on each certificate renewal.
 ###### Certificate renewals
 
 When you use the [TLS certificates](#tls-certificates) provided by Upsun Fixed,
-certificate renewals are automatic.
-They trigger a redeployment of your environment.
-During this redeployment, required security and system upgrades are applied to your containers.
-So the duration of the redeployment depends on what needs to be upgraded.
+certificate renewals occur automatically.
+
+These automatic renewals trigger a redeployment, and the following events occur, which can affect the duration of the redeployment: 
+- Any required security and system upgrades are applied to your containers.
+- The `post_deploy` hook is invoked. 
+**Make sure the scripts in your `post_deploy` hook are written to be idempotent** (safe to run multiple times) or have checks against duplication.
 
 ##### Enable HTTPS
+
+**Before adding routes to your Upsun Fixed project, you must configure your DNS records** so that each route’s hostname resolves to the project’s assigned target (for example, via CNAME or appropriate DNS records).
+If DNS doesn’t point to your project, certificate renewal will fail. 
 
 To enable HTTPS, add a routing configuration similar to the following:
 
@@ -31331,9 +30941,7 @@ To enable HTTPS, add a routing configuration similar to the following:
   to: "https://{default}/"
 ```
 
-All traffic to your domain is then sent to your app.
-The `www` subdomain redirects to the [default domain](https://fixed.docs.upsun.com/define-routes.md#default).
-This also includes redirecting requests from HTTP to HTTPS.
+In this example, all traffic to your domain is routed to `myapp`. The `www` subdomain redirects to the [{default} domain](https://fixed.docs.upsun.com/define-routes.md#default), and this includes redirecting requests from HTTP to HTTPS.
 
 For more information, see how to [define routes](https://fixed.docs.upsun.com/define-routes.md).
 
@@ -31909,9 +31517,7 @@ Patch versions are applied periodically for bug fixes and the like. When you dep
 | Grid | Dedicated Gen 2 |
 | 
 
-   - 7.0
-
-   - 6.0
+   - 10.0
 
    - 8.0
 
@@ -31928,7 +31534,7 @@ type: 'dotnet:<VERSION_NUMBER>'
 For example:
 
 ```yaml  {location=".platform.app.yaml"}
-type: 'dotnet:8.0'
+type: 'dotnet:10.0'
 ```
 
 ##### Building the application
@@ -31965,7 +31571,7 @@ Also, should the program terminate for any reason, it's automatically restarted.
 Note that the start command _must_ run in the foreground.
 
 Incoming requests are passed to the application using either a TCP (default) or Unix socket.
-The application must use the [appropriate environment variable](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#where-to-listen) to determine the URI to listen on.
+The application must use the [appropriate environment variable](https://fixed.docs.upsun.com/create-apps/image-properties/variables.md) to determine the URI to listen on.
 For a TCP socket ([recommended](https://go.microsoft.com/fwlink/?linkid=874850)), the application must listen on `http://127.0.0.1`,
 using the `PORT` environment variable.
 
@@ -32023,7 +31629,7 @@ It should help you get a project ready for production.
 p:last-child]:mb-0 [&>h3]:mt-0 rounded-lg" >
 
 ###### Note
-You can now use composable image (BETA) to install runtimes and tools in your application container. To find out more, see the [dedicated documentation page](https://fixed.docs.upsun.com/create-apps/app-reference/composable-image.md).
+You can now use composable image to install runtimes and tools in your application container. To find out more, see the [Composable image](https://fixed.docs.upsun.com/create-apps/app-reference/composable-image.md) topic.
 
 Upsun Fixed supports building and deploying applications written in Elixir. There is no default flavor for the build phase, but you can define it explicitly in your build hook. Upsun Fixed Elixir images support both committed dependencies and download-on-demand. The underlying Erlang version is 22.0.7.
 
@@ -32039,8 +31645,6 @@ Patch versions are applied periodically for bug fixes and the like. When you dep
    - 1.18
 
    - 1.15
-
-   - 1.14
 
   None available
 
@@ -32170,7 +31774,7 @@ See [Config Reader Documentation](https://fixed.docs.upsun.com/development/varia
 
 The services configuration is available in the environment variable `PLATFORM_RELATIONSHIPS`.
 
-Given a [relationship](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#relationships) defined in `.platform.app.yaml`:
+Given a [relationship](https://fixed.docs.upsun.com/create-apps/image-properties/relationships.md) defined in `.platform.app.yaml`:
 
 ```yaml  {location=".platform.app.yaml"}
 # Relationships enable an app container's access to a service.
@@ -32224,7 +31828,7 @@ It decodes service credentials, the correct port, and other information for you.
 p:last-child]:mb-0 [&>h3]:mt-0 rounded-lg" >
 
 ###### Note
-You can now use composable image (BETA) to install runtimes and tools in your application container. To find out more, see the [dedicated documentation page](https://fixed.docs.upsun.com/create-apps/app-reference/composable-image.md).
+You can now use composable image to install runtimes and tools in your application container. To find out more, see the [Composable image](https://fixed.docs.upsun.com/create-apps/app-reference/composable-image.md) topic.
 
 Upsun Fixed supports building and deploying applications written in Go using Go modules. They’re compiled during the Build hook phase, and support both committed dependencies and download-on-demand.
 
@@ -32240,14 +31844,6 @@ Patch versions are applied periodically for bug fixes and the like. When you dep
    - 1.25
 
    - 1.24
-
-   - 1.23
-
-   - 1.22
-
-   - 1.21
-
-   - 1.20
 
   None available
 
@@ -32271,6 +31867,14 @@ The following versions are [deprecated](https://fixed.docs.upsun.com/glossary.md
 They're available, but they don't receive security updates from upstream and aren't guaranteed to work.
 They'll be removed in the future – consider migrating to a [supported version](#supported-versions).
 
+   - 1.23
+
+   - 1.22
+
+   - 1.21
+
+   - 1.20
+
    - 1.19
 
    - 1.18
@@ -32290,10 +31894,6 @@ They'll be removed in the future – consider migrating to a [supported version]
    - 1.11
 
    - 1.10
-
-   - 1.9
-
-   - 1.8
 
 ##### Go toolchain auto download
 
@@ -32839,7 +32439,7 @@ Gin is a lightweight web framework written in Go that emphasizes performance.
 p:last-child]:mb-0 [&>h3]:mt-0 rounded-lg" >
 
 ###### Note
-You can now use composable image (BETA) to install runtimes and tools in your application container. To find out more, see the [dedicated documentation page](https://fixed.docs.upsun.com/create-apps/app-reference/composable-image.md).
+You can now use composable image to install runtimes and tools in your application container. To find out more, see the [Composable image](https://fixed.docs.upsun.com/create-apps/app-reference/composable-image.md) topic.
 
 Java is a general-purpose programming language, and one of the most popular in the world today. Upsun Fixed supports Java runtimes that can be used with build management tools such as Gradle, Maven, and Ant.
 
@@ -32857,15 +32457,7 @@ When you deploy your app, you always get the latest available patches.
 
    - 21
 
-   - 19
-
-   - 18
-
    - 17
-
-   - 11
-
-   - 8
 
    - 17
 
@@ -33437,7 +33029,7 @@ It should help you get a project ready for production.
 p:last-child]:mb-0 [&>h3]:mt-0 rounded-lg" >
 
 ####### Note
-You can now use composable image (BETA) to install runtimes and tools in your application container. To find out more, see the [dedicated documentation page](https://fixed.docs.upsun.com/create-apps/app-reference/composable-image.md).
+You can now use composable image to install runtimes and tools in your application container. To find out more, see the [Composable image](https://fixed.docs.upsun.com/create-apps/app-reference/composable-image.md) topic.
 
 ###### Hibernate
 
@@ -33542,7 +33134,7 @@ So if you want to use Tomcat with Spring, check the [Spring section](#spring).
 p:last-child]:mb-0 [&>h3]:mt-0 rounded-lg" >
 
 ####### Note
-You can now use composable image (BETA) to install runtimes and tools in your application container. To find out more, see the [dedicated documentation page](https://fixed.docs.upsun.com/create-apps/app-reference/composable-image.md).
+You can now use composable image to install runtimes and tools in your application container. To find out more, see the [Composable image](https://fixed.docs.upsun.com/create-apps/app-reference/composable-image.md) topic.
 
 It is common to have a Java application that you want to migrate to Upsun Fixed.
 Upsun Fixed supports several styles of Java application, such as monolith, microservices, stateful, and stateless.
@@ -33586,14 +33178,14 @@ web:
   commands:
     start: [3]
 ```
-1. [A Java version](https://fixed.docs.upsun.com/languages/java.md#supported-versions), e,g.: `java:21`
-2. [Hooks define what happens when building the application](https://fixed.docs.upsun.com/create-apps/hooks.md). This build process typically generates an executable file such as a uber-jar e.g.: `mvn clean package`
-3. [The commands key defines the command to launch the application](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#web-commands). E.g.:  `java -jar file.jar`
-4. In the start's command needs to receive the port where the application will execute thought the `PORT` environment. That's best when your app follows the port bind principle. E.g.: `java -jar jar --port=$PORT`
+1. [A supported Java version](https://fixed.docs.upsun.com/languages/java.md#supported-versions). Example: `java:21`
+2. [Hooks](https://fixed.docs.upsun.com/create-apps/hooks.md) define what occurs when building the application. This build process typically generates an executable file such as an uber-jar. Example: `mvn clean package`
+3. The [`<APP_NAME>.web.commands`](https://fixed.docs.upsun.com/create-apps/image-properties/web.md) property defines the command to launch the application(/create-apps/image-properties/web.md). Example:  `java -jar file.jar`
+4. The [`<APP_NAME>.web.commands.start`](https://fixed.docs.upsun.com/create-apps/image-properties/web.md#start) property indicates the port on which the application runs through the `PORT` environment. Consider including this when your app follows the port bind principle. Example: `java -jar jar --port=$PORT`
 
 **Note**: 
 
-Be aware that after the build, it creates a read-only system. You have the [mount option to create a writable folder](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#mounts).
+Be aware that after the build, it creates a read-only system. Use the [mount](https://fixed.docs.upsun.com/create-apps/image-properties/mounts.md).
 
 ####### Route
 
@@ -33640,9 +33232,9 @@ You can load balance to some or [all applications in the project cluster](https:
 ###### Access to managed services
 
 Upsun Fixed provides [managed services](https://fixed.docs.upsun.com/add-services.md) such as databases, cache and search engines.
-However, you can use a database or any services such as a transition process, just be aware of the [firewall](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#firewall).
+However, you can use a database or any services such as a transition process, just be aware of the [firewall](https://fixed.docs.upsun.com/create-apps/image-properties/firewall.md).
 
-When applications need to access a service, it is important to include the [`relationships` key](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#relationships).
+When applications need to access a service, it is important to include the [`relationships` key](https://fixed.docs.upsun.com/create-apps/image-properties/relationships.md).
 By default an application may not talk to any other container without a `relationship` explicitly allowing access.
 
 To connect to a service from your deployed application, you need to pass the relationships information into your application's configuration.
@@ -33718,7 +33310,7 @@ DataSource dataSource = database.get();
 p:last-child]:mb-0 [&>h3]:mt-0 rounded-lg" >
 
 ####### Note
-You can now use composable image (BETA) to install runtimes and tools in your application container. To find out more, see the [dedicated documentation page](https://fixed.docs.upsun.com/create-apps/app-reference/composable-image.md).
+You can now use composable image to install runtimes and tools in your application container. To find out more, see the [Composable image](https://fixed.docs.upsun.com/create-apps/app-reference/composable-image.md) topic.
 
 There are a number of settings that can be adjusted for each application to optimize its performance on Upsun Fixed.
 
@@ -33820,7 +33412,7 @@ java -jar -Xmx$(jq .info.limits.memory /run/config.json)m -XX:+UseG1GC -XX:+UseS
 p:last-child]:mb-0 [&>h3]:mt-0 rounded-lg" >
 
 ###### Note
-You can now use composable image (BETA) to install runtimes and tools in your application container. To find out more, see the [dedicated documentation page](https://fixed.docs.upsun.com/create-apps/app-reference/composable-image.md).
+You can now use composable image to install runtimes and tools in your application container. To find out more, see the [Composable image](https://fixed.docs.upsun.com/create-apps/app-reference/composable-image.md) topic.
 
 Node.js is a popular asynchronous JavaScript runtime.
 Deploy scalable Node.js apps of all sizes on Upsun Fixed.
@@ -33877,21 +33469,31 @@ They'll be removed in the future – consider migrating to a [supported version]
 
    - 16
 
-   - 14
+   - 8.9
 
-   - 12
+   - 6.10
 
-   - 10
+   - 6.9
 
-   - 8
+   - 6.8
 
-   - 6
+   - 6.6
 
-   - 4.8
+   - 6.3
+
+   - 6.2
 
    - 4.7
 
-   - 0.12
+   - 4.6
+
+   - 4.5
+
+   - 4.4
+
+   - 4.3
+
+   - 4.2
 
    - 18
 
@@ -34532,7 +34134,7 @@ Strapi is a Headless CMS framework written in Node.js.
 p:last-child]:mb-0 [&>h3]:mt-0 rounded-lg" >
 
 ####### Note
-You can now use composable image (BETA) to install runtimes and tools in your application container. To find out more, see the [dedicated documentation page](https://fixed.docs.upsun.com/create-apps/app-reference/composable-image.md).
+You can now use composable image to install runtimes and tools in your application container. To find out more, see the [Composable image](https://fixed.docs.upsun.com/create-apps/app-reference/composable-image.md) topic.
 
 Effectively debugging web apps takes effort,
 especially when an HTTP request goes through multiple layers before reaching your web app.
@@ -34633,7 +34235,7 @@ Instead of using a script, call `pm2 start` directly in your [`start` command](h
 p:last-child]:mb-0 [&>h3]:mt-0 rounded-lg" >
 
 ####### Note
-You can now use composable image (BETA) to install runtimes and tools in your application container. To find out more, see the [dedicated documentation page](https://fixed.docs.upsun.com/create-apps/app-reference/composable-image.md).
+You can now use composable image to install runtimes and tools in your application container. To find out more, see the [Composable image](https://fixed.docs.upsun.com/create-apps/app-reference/composable-image.md) topic.
 
 Each Upsun Fixed container image includes a specific language in a specific version.
 A set of dependencies is also provided based on that language version.
@@ -34720,7 +34322,7 @@ Your final app configuration should look something like this:
 
 ```yaml  {location=".platform.app.yaml"}
 name: myapp
-type: 'python:3.13'
+type: 'python:3.14'
 dependencies:
   nodejs:
     n: "*"
@@ -34835,7 +34437,7 @@ Your final app configuration should look something like the following:
 
 ```yaml  {location=".platform.app.yaml"}
 name: myapp
-type: 'python:3.13'
+type: 'python:3.14'
 variables:
   env:
     # Update these for your desired NVM and Node versions.
@@ -34874,7 +34476,7 @@ hooks:
 
 **Note**: 
 
-You can now use the Upsun Fixed composable image (BETA) to install runtimes and tools in your application container.
+You can now use the Upsun Fixed [composable image](https://fixed.docs.upsun.com/create-apps/app-reference/composable-image.md) to install runtimes and tools in your application container.
 To find out more about this feature, see the [dedicated documentation page](https://fixed.docs.upsun.com/create-apps/app-reference/composable-image.md). 
 Also, see how you can [modify your PHP runtime when using a composable image](#modify-your-php-runtime-when-using-a-composable-image).
 
@@ -34894,8 +34496,6 @@ Patch versions are applied periodically for bug fixes and the like. When you dep
    - 8.3
 
    - 8.2
-
-   - 8.1
 
    - 8.5
 
@@ -34933,6 +34533,8 @@ They'll be removed in the future – consider migrating to a [supported version]
 
 | Grid | Dedicated Gen 2 |
 | 
+
+   - 8.1
 
    - 8.0
 
@@ -34976,7 +34578,7 @@ type: 'php:8.5'
 ```
 ###### 2. Serve your app
 
-To serve your app, define what (and how) content should be served by setting the [`locations` parameter](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#locations).
+To serve your app, define what (and how) content should be served by setting the [`locations` parameter](https://fixed.docs.upsun.com/create-apps/image-properties/web.md#locations).
 
 Usually, it contains the two following (optional) keys:
 
@@ -35114,6 +34716,55 @@ dependencies:
       - type: vcs
         url: "git@github.com:platformsh/platformsh-client-php.git"
 ```
+
+###### Configure security blocking {#configure-security-blocking}
+
+When building a PHP app, Upsun runs `composer install`, which runs the latest available Composer version.
+
+By default, PHP builds fail if a dependency in a project has a known vulnerability. A PHP build might also fail if a dependency is abandoned. 
+
+**The best practice is to upgrade the dependencies** to reduce security risks and to catch issues sooner. However, you can configure the level of security blocking by defining the following keys in the `.dependencies.php.config` section of your `.platform.app.yaml` configuration file. 
+
+| Key                     | Description                                                      |
+| ------------------------| ---------------------------------------------------------------- |
+| `audit.block-insecure`  | Default is `true`. **Important: Upsun recommends keeping this default setting and upgrading affected dependencies to reduce security risks.**                                  | 
+| `audit.block-abandoned` | Default is `false`; set to `true` for even stricter security. Ignored if `audit.block-insecure` is `false`.                  |
+| `audit.ignore`          | Array of specific advisories to ignore; see example below.        | 
+| `audit.ignore-severity` | Ignore vulnerabilities based on their severity rating (`low`/`medium`/`high`). See the example below.<BR>For each rating, include an `apply` key with one of these values: - `all` to ignore everything for this rating -  `block` to ignore this severity level for blocking builds (but still flag findings in audit reports) - `audit` to ignore this severity level in audit reports (but still block builds) |
+
+Examples: 
+```yaml  {location=".platform.app.yaml"}
+applications:
+  # The app's name, which must be unique within the project.
+  myapp:
+    type: 'php:8.5'
+
+    dependencies:
+      php:
+        config:
+          audit:
+            ignore:  # ignore these security advisories
+              - "PKSA-yhcn-xrg3-68b1"
+              - "PKSA-2wrf-1mxk-1pky"
+```
+
+```yaml  {location=".platform.app.yaml"}
+applications:
+  # The app's name, which must be unique within the project.
+  myapp:
+    type: 'php:8.5'
+
+    dependencies:
+      php:
+        config:
+          audit:
+            ignore-severity:
+              low:
+                apply: all   # ignore all low severity findings
+```
+
+Related information: 
+- [Troubleshooting PHP builds that now fail](https://fixed.docs.upsun.com/languages/php/troubleshoot.md#build-failure-security-blocking)
 
 ###### Additional Composer schema properties
 In addition to [alternate repositories](#alternative-repositories), other
@@ -35655,7 +35306,7 @@ Common functions to disable include:
 PHP has two execution modes you can choose from:
 
 - The command line interface mode (PHP-CLI) is the mode used for command line scripts and standalone apps.
-  This is the mode used when you're logged into your container via SSH, for [crons](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#crons),
+  This is the mode used when you're logged into your container via SSH, for [crons](https://fixed.docs.upsun.com/create-apps/image-properties/crons.md),
   and usually also for [alternate start commands](#alternate-start-commands).
   To use PHP-CLI, run your script with `php <PATH_TO_SCRIPT>`,
   where <PATH_TO_SCRIPT> is a file path relative to the [app root](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#root-directory).
@@ -35668,7 +35319,7 @@ PHP has two execution modes you can choose from:
 ##### Alternate start commands
 
 To specify an alternative process to run your code, set a `start` command.
-For more information about the start command, see the [web commands reference](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#web-commands).
+For more information about the start command, see the [web commands reference](https://fixed.docs.upsun.com/create-apps/image-properties/web.md#web-commands).
 
 By default, start commands use PHP-CLI.
 Find out how and when to use each [execution mode](#execution-mode).
@@ -35711,7 +35362,7 @@ web:
 ```
 
 When you listen on a TCP socket, the ``$PORT`` environment variable is automatically set.
-See more options on how to [configure where requests are sent](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#upstream).
+See more options on how to [configure where requests are sent](https://fixed.docs.upsun.com/create-apps/image-properties/web.md#upstream).
 You might have to configure your app to connect via the ``$PORT`` TCP socket,
 especially when using web servers such as [Swoole](https://fixed.docs.upsun.com/languages/php/swoole.md) or [Roadrunner](https://github.com/roadrunner-server/roadrunner).
 
@@ -36003,7 +35654,7 @@ WordPress is a blogging and lightweight CMS written in PHP.
 
 **Note**: 
 
-This section is only relevant when using the Upsun Fixed [composable image (BETA)](https://fixed.docs.upsun.com/create-apps/app-reference/composable-image.md).
+This section is only relevant when using the Upsun Fixed [composable image](https://fixed.docs.upsun.com/create-apps/app-reference/composable-image.md).
 
 The following table presents the possible modifications you can make to your PHP primary runtime using the `stack` key and composable image.
 Each modification should be listed below the stack chosen (i.e. `extensions` are enabled under `.applications.frontend.stack[0]["php@8.3"].extensions` for PHP 8.3).
@@ -36011,11 +35662,24 @@ See the example below for more details.
 
 | Name                        | Type                                                                                                                             | Description                                                                                             |
 |-----------------------------|----------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------|
-| `extensions`                | List of `string`s OR [extensions definitions](https://fixed.docs.upsun.com/create-apps/app-reference/composable-image.md#php-extensions-and-python-packages) | [PHP extensions](https://fixed.docs.upsun.com/languages/php/extensions.md) to enable.                                               |
+| `extensions`                | List of `string`s OR [extensions definitions](https://fixed.docs.upsun.com/create-apps/app-reference/composable-image.md#stack) | [PHP extensions](https://fixed.docs.upsun.com/languages/php/extensions.md) to enable.                                               |
 | `disabled_extensions`       | List of `string`s                                                                                                                | [PHP extensions](https://fixed.docs.upsun.com/languages/php/extensions.md) to disable.                                              |
 | `request_terminate_timeout` | `integer`                                                                                                                        | The timeout (in seconds) for serving a single request after which the PHP-FPM worker process is killed. |
-| `sizing_hints`              | A [sizing hints definition](https://fixed.docs.upsun.com/create-apps/app-reference/composable-image.md#sizing-hints)                                         | The assumptions for setting the number of workers in your PHP-FPM runtime.                              |
+| `sizing_hints`              | A [sizing hints definition](#sizing-hints)                                         | The assumptions for setting the number of workers in your PHP-FPM runtime.                              |
 | `xdebug`                    | An Xdebug definition                                                                                                             | The setting to turn on [Xdebug](https://fixed.docs.upsun.com/languages/php/xdebug.md).                                              |
+
+###### PHP-FPM service sizing hints {#sizing-hints}
+
+The following table shows the properties that can be set in `sizing_hints`:
+
+| Name              | Type      | Default | Minimum | Description                                    |
+|-------------------|-----------|---------|---------|------------------------------------------------|
+| `request_memory`  | `integer` | 45      | 10      | The average memory consumed per request in MB. |
+| `reserved_memory` | `integer` | 70      | 70      | The amount of memory reserved in MB.           |
+
+See more about [PHP-FPM workers and sizing](https://fixed.docs.upsun.com/languages/php/fpm.md).
+
+###### Example PHP configuration {#example-php-configuration}
 
 Here is an example configuration:
 
@@ -36057,7 +35721,7 @@ You can also set your [app’s runtime timezone](https://fixed.docs.upsun.com/cr
 p:last-child]:mb-0 [&>h3]:mt-0 rounded-lg" >
 
 ####### Note
-You can now use composable image (BETA) to install runtimes and tools in your application container. To find out more, see the [dedicated documentation page](https://fixed.docs.upsun.com/create-apps/app-reference/composable-image.md).
+You can now use composable image to install runtimes and tools in your application container. To find out more, see the [Composable image](https://fixed.docs.upsun.com/create-apps/app-reference/composable-image.md) topic.
 
 PHP has a number of [extensions](https://pecl.php.net/) developed by members of the community.
 Some of them are available for Upsun Fixed containers.
@@ -36069,16 +35733,41 @@ See also [PHP extensions on Dedicated Gen 2 plans](https://fixed.docs.upsun.com/
 
 You can define the PHP extensions you want to enable or disable:
 
-```yaml  {location=".platform.app.yaml"}
-runtime:
-  extensions:
-    - raphf
-    - http
-    - igbinary
-    - redis
-  disabled_extensions:
-    - sqlite3
+```yaml {}
+applications:
+  <APP_NAME>:
+    type: 'php:8.5'
+    source:
+      root: "/"
+    runtime:
+      extensions:
+        - raphf
+        - http
+        - igbinary
+        - redis
+      disabled_extensions:
+        - sqlite3
 ```
+
+    .platform.app.yaml
+
+```yaml {}
+applications:
+  <APP_NAME>:
+    type: "composable:25.11"
+    source:
+      root: "/"
+    stack: 
+      runtimes: "php@8.5"
+        extensions:
+          - raphf
+          - http
+          - igbinary
+          - redis
+        disabled_extensions:
+          - sqlite3
+```
+
 You can also [include configuration options](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#extensions) for specific extensions.
 
 The following table shows all extensions that are available (Avail) and on by default (Def).
@@ -36088,6 +35777,8 @@ and turn off those on by default with the `disabled_extensions` key.
 
 | Extension | 5.4 | 5.5 | 5.6 | 7.0 | 7.1 | 7.2 | 7.3 | 7.4 | 8.0 | 8.1 | 8.2 | 8.3 | 8.4 | 8.5 |
 | ``amqp`` |
+
+              Avail
 
               Avail
 
@@ -36185,7 +35876,7 @@ and turn off those on by default with the `disabled_extensions` key.
 
               Def
 
-              Avail
+              Def
 
               Def
 
@@ -36239,7 +35930,7 @@ and turn off those on by default with the `disabled_extensions` key.
 
               Def
 
-              Avail
+              Def
 
               Def
 
@@ -36263,7 +35954,7 @@ and turn off those on by default with the `disabled_extensions` key.
 
               Def
 
-              Avail
+              Def
 
               Def
 
@@ -36287,7 +35978,7 @@ and turn off those on by default with the `disabled_extensions` key.
 
               Def
 
-              Avail
+              Def
 
               Def
 
@@ -36317,17 +36008,15 @@ and turn off those on by default with the `disabled_extensions` key.
 
               Def
 
-              Avail
+              Def
 
               Def
 
-| ``datadog`` |
-
-              Avail
-
-              Avail
-
 | ``datadog-profiling`` |
+
+              Avail
+
+              Avail
 
               Avail
 
@@ -36353,7 +36042,7 @@ and turn off those on by default with the `disabled_extensions` key.
 
               Def
 
-              Avail
+              Def
 
               Def
 
@@ -36377,7 +36066,7 @@ and turn off those on by default with the `disabled_extensions` key.
 
               Def
 
-              Avail
+              Def
 
               Def
 
@@ -36453,7 +36142,7 @@ and turn off those on by default with the `disabled_extensions` key.
 
               Def
 
-              Avail
+              Def
 
               Def
 
@@ -36493,7 +36182,7 @@ and turn off those on by default with the `disabled_extensions` key.
 
               Def
 
-              Avail
+              Def
 
               Def
 
@@ -36517,7 +36206,7 @@ and turn off those on by default with the `disabled_extensions` key.
 
               Def
 
-              Avail
+              Def
 
               Def
 
@@ -36547,7 +36236,7 @@ and turn off those on by default with the `disabled_extensions` key.
 
               Def
 
-              Avail
+              Def
 
               Def
 
@@ -36609,7 +36298,7 @@ and turn off those on by default with the `disabled_extensions` key.
 
               Def
 
-              Avail
+              Def
 
               Def
 
@@ -36648,6 +36337,16 @@ and turn off those on by default with the `disabled_extensions` key.
               Avail
 
               Avail
+
+              Avail
+
+              Avail
+
+              Avail
+
+              Avail
+
+| ``grpc`` |
 
               Avail
 
@@ -36691,7 +36390,7 @@ and turn off those on by default with the `disabled_extensions` key.
 
               Def
 
-              Avail
+              Def
 
               Def
 
@@ -36745,9 +36444,13 @@ and turn off those on by default with the `disabled_extensions` key.
 
               Avail with``webp``
 
-              Avail
+              Avail with``webp``
+
+              Avail with``webp``
 
 | ``imap`` |
+
+              Avail
 
               Avail
 
@@ -36825,7 +36528,7 @@ and turn off those on by default with the `disabled_extensions` key.
 
               Def
 
-              Avail
+              Def
 
               Def
 
@@ -36850,6 +36553,8 @@ and turn off those on by default with the `disabled_extensions` key.
               Avail
 
 | ``json`` |
+
+              Avail
 
               Def
 
@@ -36949,7 +36654,7 @@ and turn off those on by default with the `disabled_extensions` key.
 
               Def
 
-              Avail
+              Def
 
               Def
 
@@ -36974,6 +36679,8 @@ and turn off those on by default with the `disabled_extensions` key.
               Avail
 
 | ``memcached`` |
+
+              Avail
 
               Avail
 
@@ -37031,7 +36738,11 @@ and turn off those on by default with the `disabled_extensions` key.
 
               Avail
 
+              Avail
+
 | ``msgpack`` |
+
+              Avail
 
               Avail
 
@@ -37071,24 +36782,6 @@ and turn off those on by default with the `disabled_extensions` key.
 
               Def
 
-              Avail
-
-              Avail
-
-              Avail
-
-              Avail
-
-              Avail
-
-              Avail
-
-              Avail
-
-              Avail
-
-              Avail
-
 | ``mysqli`` |
 
               Def
@@ -37115,7 +36808,7 @@ and turn off those on by default with the `disabled_extensions` key.
 
               Def
 
-              Avail
+              Def
 
               Def
 
@@ -37145,7 +36838,7 @@ and turn off those on by default with the `disabled_extensions` key.
 
               Def
 
-              Avail
+              Def
 
               Def
 
@@ -37176,6 +36869,8 @@ and turn off those on by default with the `disabled_extensions` key.
               Avail
 
 | ``oauth`` |
+
+              Avail
 
               Avail
 
@@ -37231,29 +36926,31 @@ and turn off those on by default with the `disabled_extensions` key.
 
               Def
 
-              Def
+              *
 
-              Def
+              *
 
-              Def
+              *
 
-              Def
+              *
 
-              Def
+              *
 
-              Def
+              *
 
-              Def
+              *
 
-              Def
+              *
 
-              Def
+              *
 
-              Def
+              *
 
-              Avail
+              *
 
-              Def
+              *
+
+              *
 
 | ``openswoole`` |
 
@@ -37264,6 +36961,8 @@ and turn off those on by default with the `disabled_extensions` key.
               Avail
 
 | ``opentelemetry`` |
+
+              Avail
 
               Avail
 
@@ -37297,7 +36996,7 @@ and turn off those on by default with the `disabled_extensions` key.
 
               Def
 
-              Avail
+              Def
 
               Def
 
@@ -37377,7 +37076,7 @@ and turn off those on by default with the `disabled_extensions` key.
 
               Def
 
-              Avail
+              Def
 
               Def
 
@@ -37467,7 +37166,7 @@ and turn off those on by default with the `disabled_extensions` key.
 
               Def
 
-              Avail
+              Def
 
               Def
 
@@ -37496,6 +37195,8 @@ and turn off those on by default with the `disabled_extensions` key.
               Avail
 
 | ``pecl-http`` |
+
+              Avail
 
               Avail
 
@@ -37549,13 +37250,9 @@ and turn off those on by default with the `disabled_extensions` key.
 
               Def
 
-              Avail
-
               Def
 
-| ``phpdbg`` |
-
-              Avail
+              Def
 
 | ``pinba`` |
 
@@ -37585,7 +37282,7 @@ and turn off those on by default with the `disabled_extensions` key.
 
               Def
 
-              Avail
+              Def
 
               Def
 
@@ -37593,7 +37290,17 @@ and turn off those on by default with the `disabled_extensions` key.
 
               Avail
 
+              Avail
+
+              Avail
+
 | ``protobuf`` |
+
+              Avail
+
+              Avail
+
+              Avail
 
               Avail
 
@@ -37625,12 +37332,6 @@ and turn off those on by default with the `disabled_extensions` key.
 
               Avail
 
-| ``pthreads`` |
-
-              Avail
-
-              Avail
-
 | ``raphf`` |
 
               Avail
@@ -37649,7 +37350,11 @@ and turn off those on by default with the `disabled_extensions` key.
 
               Avail
 
+              Avail
+
 | ``rdkafka`` |
+
+              Avail
 
               Avail
 
@@ -37779,7 +37484,7 @@ and turn off those on by default with the `disabled_extensions` key.
 
               Def
 
-              Avail
+              Def
 
               Def
 
@@ -37833,7 +37538,7 @@ and turn off those on by default with the `disabled_extensions` key.
 
               Def
 
-              Avail
+              Def
 
               Def
 
@@ -37857,7 +37562,7 @@ and turn off those on by default with the `disabled_extensions` key.
 
               Def
 
-              Avail
+              Def
 
               Def
 
@@ -37882,6 +37587,8 @@ and turn off those on by default with the `disabled_extensions` key.
               Avail
 
 | ``sourceguardian`` |
+
+              Avail
 
               Avail
 
@@ -37935,7 +37642,7 @@ and turn off those on by default with the `disabled_extensions` key.
 
               Def
 
-              Avail
+              Def
 
               Def
 
@@ -37960,6 +37667,8 @@ and turn off those on by default with the `disabled_extensions` key.
               Avail
 
 | ``ssh2`` |
+
+              Avail
 
               Avail
 
@@ -38019,12 +37728,6 @@ and turn off those on by default with the `disabled_extensions` key.
 
               Avail
 
-              Avail
-
-              Avail
-
-              Avail
-
 | ``sysvmsg`` |
 
               Def
@@ -38045,7 +37748,7 @@ and turn off those on by default with the `disabled_extensions` key.
 
               Def
 
-              Avail
+              Def
 
               Def
 
@@ -38069,7 +37772,7 @@ and turn off those on by default with the `disabled_extensions` key.
 
               Def
 
-              Avail
+              Def
 
               Def
 
@@ -38093,7 +37796,7 @@ and turn off those on by default with the `disabled_extensions` key.
 
               Def
 
-              Avail
+              Def
 
               Def
 
@@ -38122,6 +37825,10 @@ and turn off those on by default with the `disabled_extensions` key.
               Avail
 
 | ``tideways_xhprof`` |
+
+              Avail
+
+              Avail
 
               Avail
 
@@ -38187,11 +37894,13 @@ and turn off those on by default with the `disabled_extensions` key.
 
               Def
 
-              Avail
+              Def
 
               Def
 
 | ``uuid`` |
+
+              Avail
 
               Avail
 
@@ -38227,8 +37936,6 @@ and turn off those on by default with the `disabled_extensions` key.
 
               Avail
 
-              Avail
-
 | ``xcache`` |
 
               Avail
@@ -38236,6 +37943,8 @@ and turn off those on by default with the `disabled_extensions` key.
               Avail
 
 | ``xdebug`` |
+
+              Avail
 
               Avail
 
@@ -38291,7 +38000,7 @@ and turn off those on by default with the `disabled_extensions` key.
 
               Def
 
-              Avail
+              Def
 
               Def
 
@@ -38315,7 +38024,7 @@ and turn off those on by default with the `disabled_extensions` key.
 
               Def
 
-              Avail
+              Def
 
               Def
 
@@ -38369,7 +38078,7 @@ and turn off those on by default with the `disabled_extensions` key.
 
               Def
 
-              Avail
+              Def
 
               Def
 
@@ -38423,6 +38132,8 @@ and turn off those on by default with the `disabled_extensions` key.
 
               Avail
 
+              Avail
+
 | ``zbarcode`` |
 
               Avail
@@ -38432,36 +38143,6 @@ and turn off those on by default with the `disabled_extensions` key.
               Avail
 
               Avail
-
-| ``zendopcache`` |
-
-              Def
-
-              *
-
-              *
-
-              *
-
-              *
-
-              *
-
-              *
-
-              *
-
-              *
-
-              *
-
-              *
-
-              *
-
-              *
-
-              *
 
 | ``zip`` |
 
@@ -38483,7 +38164,7 @@ and turn off those on by default with the `disabled_extensions` key.
 
               Def
 
-              Avail
+              Def
 
               Def
 
@@ -38534,7 +38215,7 @@ variables:
 p:last-child]:mb-0 [&>h3]:mt-0 rounded-lg" >
 
 ####### Note
-You can now use composable image (BETA) to install runtimes and tools in your application container. To find out more, see the [dedicated documentation page](https://fixed.docs.upsun.com/create-apps/app-reference/composable-image.md).
+You can now use composable image to install runtimes and tools in your application container. To find out more, see the [Composable image](https://fixed.docs.upsun.com/create-apps/app-reference/composable-image.md) topic.
 
 Once your app is up and running it still needs to be kept fast.
 Upsun Fixed offers a wide degree of flexibility in how PHP behaves,
@@ -38738,7 +38419,7 @@ Note that this tool is maintained by a third party, not by Upsun Fixed.
 p:last-child]:mb-0 [&>h3]:mt-0 rounded-lg" >
 
 ####### Note
-You can now use composable image (BETA) to install runtimes and tools in your application container. To find out more, see the [dedicated documentation page](https://fixed.docs.upsun.com/create-apps/app-reference/composable-image.md).
+You can now use composable image to install runtimes and tools in your application container. To find out more, see the [Composable image](https://fixed.docs.upsun.com/create-apps/app-reference/composable-image.md) topic.
 
 PHP-FPM helps improve your app's performance
 by maintaining pools of workers that can process PHP requests.
@@ -38748,7 +38429,7 @@ By default, Upsun Fixed automatically sets a maximum number of PHP-FPM workers f
 This number is calculated based on three parameters:
 
 - The container memory: the amount of memory you can allot for PHP processing
-  depending on [app size](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#sizes).
+  depending on [app size](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#sizing-hints)
 - The request memory: the amount of memory an average PHP request is expected to require.
 - The reserved memory: the amount of memory you need to reserve for tasks that aren't related to requests.
 
@@ -38865,13 +38546,222 @@ You get output similar to the following:
 ```bash
 pm.max_children = 5
 ```
+#### FrankenPHP
+
+[FrankenPHP](https://frankenphp.dev/) is a modern PHP application server designed as a high-performance alternative to traditional PHP-FPM setups. It combines a native PHP runtime with an HTTP server, reducing orchestration overhead while enabling new execution models that can significantly improve performance.
+
+FrankenPHP is particularly well-suited for modern PHP frameworks and applications that want faster request handling, simpler infrastructure, and optional support for long-running workers.
+
+###### Why FrankenPHP?
+
+Traditional PHP deployments rely on multiple moving parts: a web server, PHP-FPM, and external process management. FrankenPHP simplifies this architecture by embedding PHP execution directly into the server. Some key features include:
+
+- Faster startup times and reduced per-request overhead compared to [PHP-FPM](https://fixed.docs.upsun.com/languages/php/fpm.md).
+- A modern architecture that works for contemporary PHP runtimes and frameworks.
+- Fewer services to configure and maintain.
+- Support for a worker-based execution model that avoids re-booting the application on every request.
+
+####### Execution modes
+
+FrankenPHP supports two distinct execution modes. Choosing the right mode depends on your application’s architecture and tolerance for stateful execution.
+
+######## Classic mode
+
+Classic mode behaves similarly to [PHP-FPM](https://fixed.docs.upsun.com/languages/php/fpm.md) and is the recommended default for most applications.
+
+- Each request runs in a clean, isolated environment
+- No application state is shared between requests
+- Lifecycle expectations are identical to PHP-FPM
+- Safe for existing PHP applications without modification
+
+In this mode, FrankenPHP provides performance and architectural improvements while preserving the [stateless](#stateless-execution-php-fpm-and-classic-mode) execution model.
+
+######## Worker mode
+
+Worker mode enables long-running PHP worker processes that handle multiple requests over their lifetime.
+
+- The application is booted once and kept in memory
+- Subsequent requests reuse the already-loaded application
+- Significantly reduced cold-start overhead
+- Higher throughput and faster response times
+
+This mode introduces [stateful](#stateful-execution-worker-mode) execution.
+
+####### Understanding Worker modes
+
+######## Stateless execution (PHP-FPM and Classic mode)
+
+In traditional PHP execution models every request starts from a clean slate, the application boots, handles the request, then shuts down and there are no variables, objects, or internal state persist between requests.
+
+This guarantees isolation and predictability, but it comes with unavoidable overhead as the full boot and teardown cycle happens on every request. 
+
+######## Stateful execution (Worker mode)
+
+With Stateful execution in Worker mode, the application is booted once. It remains in memory and handles many requests and internal state persists unless explicitly reset. This improves performance dramatically, but introduces new risks. For example, in a stateful environment:
+
+- Mutated variables may leak into later requests
+- Static properties and singletons persist
+- Cached data may become stale or invalid
+- Connection pools or services may behave unexpectedly
+
+These issues do not occur in stateless PHP-FPM setups.
+
+**Note**: 
+
+Aplications not explicitly designed for long-running workers may require manual state resets between requests, careful handling of static properties and global variables, explicit cleanup logic and auditing of caching and service lifecycles.
+
+Tools like [Laravel Octane](https://laravel.com/docs/master/octane) or the [Symfony FrankenPHP Runtime](https://github.com/php-runtime/frankenphp-symfony) are designed to manage this environment safely. They often serve clones of the application or reset the container state between requests to prevent variables from leaking.
+
+####### Observability and profiling
+
+FrankenPHP is well supported by [Blackfire](https://fixed.docs.upsun.com/increase-observability/integrate-observability/blackfire.md), making it easy to profile and monitor performance in both Classic and Worker modes.
+
+**Note**: 
+
+See the [Blackfire](https://docs.blackfire.io/php/integrations/frankenphp) documentation for FrankenPHP integration.
+
+###### Configuration
+
+FrankenPHP is available as a package in Upsun Fixed composable stacks.
+
+p:last-child]:mb-0 [&>h3]:mt-0 rounded-lg" >
+
+####### Note
+You can now use composable image to install runtimes and tools in your application container. To find out more, see the [Composable image](https://fixed.docs.upsun.com/create-apps/app-reference/composable-image.md) topic.
+
+####### Classic mode configuration
+
+```yaml  {location=".platform.app.yaml"}
+applications:
+  app:
+    type: "composable:25.11"
+    source:
+      root: "/"
+
+    stack:
+      runtimes:
+        - "php@8.4":
+            extensions:
+              - apcu
+              - blackfire
+              - ctype
+              - iconv
+              - mbstring
+              - pdo_pgsql
+              - sodium
+              - xsl
+        - "nodejs@22"
+      packages:
+        - "frankenphp"
+
+    variables:
+      php:
+        opcache.preload: config/preload.php
+      env:
+        APP_RUNTIME: 'Runtime\\FrankenPhpSymfony\\Runtime'
+        # composer require runtime/frankenphp-symfony
+
+    web:
+      upstream:
+        socket_family: tcp
+        protocol: http
+
+      commands:
+        start: frankenphp php-server --listen=localhost:$PORT --root=$PLATFORM_DOCUMENT_ROOT index.php
+
+      locations:
+        "/":
+          root: "public"
+          expires: 1h
+          passthru: true
+          allow: true
+          scripts: true
+          request_buffering:
+            enabled: false
+
+```
+####### Worker mode configuration
+
+```yaml  {location=".platform.app.yaml"}
+applications:
+  app:
+    type: "composable:25.11"
+    source:
+      root: "/"
+
+    stack:
+      runtimes:
+        - "php@8.4":
+            extensions:
+              - apcu
+              - blackfire
+              - ctype
+              - iconv
+              - mbstring
+              - pdo_pgsql
+              - sodium
+              - xsl
+        - "nodejs@22"
+      packages:
+        - "frankenphp"
+
+    variables:
+      php:
+        opcache.preload: config/preload.php
+      env:
+        APP_RUNTIME: 'Runtime\\FrankenPhpSymfony\\Runtime'
+        # composer require runtime/frankenphp-symfony
+
+    web:
+      upstream:
+        socket_family: tcp
+        protocol: http
+
+      commands:
+        start: frankenphp php-server --worker $PLATFORM_DOCUMENT_ROOT/index.php --listen=localhost:$PORT --root=$PLATFORM_DOCUMENT_ROOT
+
+      locations:
+        "/":
+          root: "public"
+          expires: 1h
+          passthru: true
+          allow: true
+          scripts: true
+          request_buffering:
+            enabled: false
+
+```
+####### Using the latest FrankenPHP version
+
+You can request FrankenPHP from the Nix unstable channel to access the latest available version.
+
+```yaml  {location=".platform.app.yaml"}
+stack:
+  packages:
+    - package: frankenphp
+      channel: unstable
+
+```
+####### Choosing the right mode
+
+- Use [Classic mode](#classic-mode) if you want safety, predictability, and drop-in compatibility with existing PHP applications.
+- Use [Worker mode](#worker-mode) if you need maximum performance and are prepared to manage application state explicitly.
+
+Both modes are fully supported on Upsun Fixed, allowing you to choose the execution model that best fits your application.
+
+###### Related content
+
+- [Blackfire FrankenPHP documentation](https://docs.blackfire.io/php/integrations/frankenphp)
+- [Up(Sun) and running with FrankenPHP](https://upsun.com/blog/upsun-and-running-with-frankenphp/)
+- [How we scaled live connections for 1200 developers at SymfonyCon](https://devcenter.upsun.com/posts/how-we-scaled-live-connections-for-1200-developers-at-symfonycon/#starting-with-frankenphp-the-documentation-gap)
+
 #### Using Xdebug
 
 
 p:last-child]:mb-0 [&>h3]:mt-0 rounded-lg" >
 
 ####### Note
-You can now use composable image (BETA) to install runtimes and tools in your application container. To find out more, see the [dedicated documentation page](https://fixed.docs.upsun.com/create-apps/app-reference/composable-image.md).
+You can now use composable image to install runtimes and tools in your application container. To find out more, see the [Composable image](https://fixed.docs.upsun.com/create-apps/app-reference/composable-image.md) topic.
 
 [Xdebug](https://xdebug.org/) is a real-time debugger extension for PHP.
 While usually used for local development, it can also be helpful for debugging aberrant behavior on the server.
@@ -38890,6 +38780,8 @@ The following table shows the PHP versions where Xdebug is available on Grid env
 
 | 5.4 | 5.5 | 5.6 | 7.0 | 7.1 | 7.2 | 7.3 | 7.4 | 8.0 | 8.1 | 8.2 | 8.3 | 8.4 | 8.5 |
 | 
+
+              Avail
 
               Avail
 
@@ -39010,7 +38902,7 @@ Learn more about how to [set up Xdebug on Dedicated server clusters](https://sup
 p:last-child]:mb-0 [&>h3]:mt-0 rounded-lg" >
 
 ####### Note
-You can now use composable image (BETA) to install runtimes and tools in your application container. To find out more, see the [dedicated documentation page](https://fixed.docs.upsun.com/create-apps/app-reference/composable-image.md).
+You can now use composable image to install runtimes and tools in your application container. To find out more, see the [Composable image](https://fixed.docs.upsun.com/create-apps/app-reference/composable-image.md) topic.
 
 [Redis](https://fixed.docs.upsun.com/add-services/redis.md) is a popular structured key-value service, supported by Upsun Fixed.
 It's frequently used for caching.
@@ -39090,7 +38982,7 @@ So if you run the build hook locally, it has no effect.
 p:last-child]:mb-0 [&>h3]:mt-0 rounded-lg" >
 
 ####### Note
-You can now use composable image (BETA) to install runtimes and tools in your application container. To find out more, see the [dedicated documentation page](https://fixed.docs.upsun.com/create-apps/app-reference/composable-image.md).
+You can now use composable image to install runtimes and tools in your application container. To find out more, see the [Composable image](https://fixed.docs.upsun.com/create-apps/app-reference/composable-image.md) topic.
 
 Swoole is a PHP extension that extends PHP core with a coroutine based asynchronous network application framework designed for building large scale concurrent systems.
 
@@ -39157,7 +39049,7 @@ web:
 p:last-child]:mb-0 [&>h3]:mt-0 rounded-lg" >
 
 ####### Note
-You can now use composable image (BETA) to install runtimes and tools in your application container. To find out more, see the [dedicated documentation page](https://fixed.docs.upsun.com/create-apps/app-reference/composable-image.md).
+You can now use composable image to install runtimes and tools in your application container. To find out more, see the [Composable image](https://fixed.docs.upsun.com/create-apps/app-reference/composable-image.md) topic.
 
 [Packagist](https://packagist.org/) is the primary Composer repository for public PHP packages.
 But you can also have Composer download PHP packages from a private, third-party Composer repository.
@@ -39228,9 +39120,36 @@ make sure your dependencies specify tagged releases.
 p:last-child]:mb-0 [&>h3]:mt-0 rounded-lg" >
 
 ####### Note
-You can now use composable image (BETA) to install runtimes and tools in your application container. To find out more, see the [dedicated documentation page](https://fixed.docs.upsun.com/create-apps/app-reference/composable-image.md).
+You can now use composable image to install runtimes and tools in your application container. To find out more, see the [Composable image](https://fixed.docs.upsun.com/create-apps/app-reference/composable-image.md) topic.
 
 For more general information, see how to [troubleshoot development](https://fixed.docs.upsun.com/development/troubleshoot.md).
+
+###### Previously successful PHP builds now fail {#build-failure-security-blocking}
+
+When building a PHP app, Upsun runs `composer install`, which by default runs the latest available Composer version.
+
+Composer version 2.9 introduces an Automatic Security Blocking feature, which is enabled by default and does the following: 
+- If a dependency in the project has a known vulnerability, Composer fails the installation/update. 
+- If a dependency is abandoned, Composer can optionally fail the installation. 
+
+If advisories were published after the most recent PHP app deployment, the build might fail, even if the PHP dependencies have not changed.
+
+**In this scenario, the best practice is to upgrade the affected dependencies** to maintain a strong security posture and address vulnerabilities. However, you can configure the level of blocking by using the `.dependencies.php.config.audit.*` keys described in the [Configure security blocking](https://fixed.docs.upsun.com/languages/php.md#configure-security-blocking) section of the PHP topic.
+
+**Important: Upsun advises against disabling security blocking.** However, as a last resort, the feature can be disabled as a workaround while you fix issues with dependencies.  
+
+```yaml  {location=".platform.app.yaml"}
+applications:
+# The app's name, which must be unique within the project.
+myapp:
+  type: 'php:8.5'
+
+  dependencies:
+    php:
+      config:
+        audit:
+          block-insecure: false
+```      
 
 ###### Server reached `max_children`
 
@@ -39249,6 +39168,7 @@ You have two ways to increase the number of workers:
 
 - Adjust the [worker sizing hints](https://fixed.docs.upsun.com/languages/php/fpm.md) for your project.
 - Upgrade your Upsun Fixed plan to get more computing resources.
+
 ###### Execution timeout
 
 If your PHP app can't handle the amount of traffic or is slow,
@@ -39281,6 +39201,7 @@ Otherwise, you may check if the following options are applicable:
 - Find the most visited pages and see if they can be cached and/or put behind a CDN.
   Refer to [how caching works](https://fixed.docs.upsun.com/define-routes/cache.md).
 - Upgrade your Upsun Fixed plan to get more computing resources.
+
 ###### Troubleshoot a crashed PHP process
 
 If your PHP process crashed with a segmentation fault,
@@ -39349,7 +39270,7 @@ To address the issue, you can:
 p:last-child]:mb-0 [&>h3]:mt-0 rounded-lg" >
 
 ###### Note
-You can now use composable image (BETA) to install runtimes and tools in your application container. To find out more, see the [dedicated documentation page](https://fixed.docs.upsun.com/create-apps/app-reference/composable-image.md).
+You can now use composable image to install runtimes and tools in your application container. To find out more, see the [Composable image](https://fixed.docs.upsun.com/create-apps/app-reference/composable-image.md) topic.
 
 Python is a general purpose scripting language often used in web development.
 You can deploy Python apps on Upsun Fixed using a server or a project such as [uWSGI](https://uwsgi-docs.readthedocs.io/en/latest/).
@@ -39363,6 +39284,8 @@ Patch versions are applied periodically for bug fixes and the like. When you dep
 | Grid | Dedicated Gen 2 |
 | 
 
+   - 3.14
+
    - 3.13
 
    - 3.12
@@ -39370,10 +39293,6 @@ Patch versions are applied periodically for bug fixes and the like. When you dep
    - 3.11
 
    - 3.10
-
-   - 3.9
-
-   - 3.8
 
   None available
 
@@ -39388,7 +39307,7 @@ type: 'python:<VERSION_NUMBER>'
 For example:
 
 ```yaml  {location=".platform.app.yaml"}
-type: 'python:3.13'
+type: 'python:3.14'
 ```
 
 ###### Deprecated versions
@@ -39397,13 +39316,17 @@ The following versions are [deprecated](https://fixed.docs.upsun.com/glossary.md
 They're available, but they don't receive security updates from upstream and aren't guaranteed to work.
 They'll be removed in the future – consider migrating to a [supported version](#supported-versions).
 
+   - 3.9
+
+   - 3.8
+
    - 3.7
 
    - 3.6
 
    - 3.5
 
-   - 2.7*
+   - 2.7
 
 \* This version doesn't receive any updates at all.
 You are strongly recommended to upgrade to a supported version.
@@ -39417,7 +39340,7 @@ Once you have it configured, add the following configuration to get it running o
 
 1.  Specify one of the [supported versions](#supported-versions):
 ```yaml  {location=".platform.app.yaml"}
-type: 'python:3.13'
+type: 'python:3.14'
 ```
 2.  Install the requirements for your app.
 ```yaml  {location=".platform.app.yaml"}
@@ -39450,7 +39373,7 @@ Follow these steps to get your server started.
 
 1.  Specify one of the [supported versions](#supported-versions):
 ```yaml  {location=".platform.app.yaml"}
-type: 'python:3.13'
+type: 'python:3.14'
 ```
 2.  Define the conditions for your web server:
 
@@ -40092,7 +40015,7 @@ Wagtail is a web CMS built using the Django framework for Python.
 p:last-child]:mb-0 [&>h3]:mt-0 rounded-lg" >
 
 ####### Note
-You can now use composable image (BETA) to install runtimes and tools in your application container. To find out more, see the [dedicated documentation page](https://fixed.docs.upsun.com/create-apps/app-reference/composable-image.md).
+You can now use composable image to install runtimes and tools in your application container. To find out more, see the [Composable image](https://fixed.docs.upsun.com/create-apps/app-reference/composable-image.md) topic.
 
 You can manage Python packages in different ways.
 Python images come with pip installed,
@@ -40125,13 +40048,13 @@ You might want to define a specific version of pip in your deployments to furthe
 To do so, modify your [app configuration](https://fixed.docs.upsun.com/create-apps.md), as in the following examples:
 
 ```yaml {}
-type: 'python:3.13'
+type: 'python:3.14'
 hooks:
   build: |
     # Fail the build if any errors occur
     set -eu
     # Download the latest version of pip
-    python3.13 -m pip install --upgrade pip
+    python3.14 -m pip install --upgrade pip
     # Install dependencies
     pip install -r requirements.txt    
 ```
@@ -40139,7 +40062,7 @@ hooks:
     .platform.app.yaml
 
 ```yaml {}
-type: 'python:3.13'
+type: 'python:3.14'
 variables:
   env:
     PIP_VERSION: '22.3.1'
@@ -40148,7 +40071,7 @@ hooks:
     # Fail the build if any errors occur
     set -eu
     # Download a specific version of pip
-    python3.13 -m pip install pip==$PIP_VERSION
+    python3.14 -m pip install pip==$PIP_VERSION
     # Install dependencies
     pip install -r requirements.txt    
 ```
@@ -40172,7 +40095,7 @@ in your deployments to ensure repeatable builds.
 Because Pipenv depends on pip, you might want to also specify the pip version.
 
 ```yaml {}
-type: 'python:3.13'
+type: 'python:3.14'
 dependencies:
   python3:
     pipenv: '*'
@@ -40181,7 +40104,7 @@ hooks:
     # Fail the build if any errors occur
     set -eu
     # Download the latest version of pip
-    python3.13 -m pip install --upgrade pip
+    python3.14 -m pip install --upgrade pip
     # Install dependencies
     # Include `--deploy` to fail the build if `Pipfile.lock` isn't up to date
     pipenv install --deploy    
@@ -40190,7 +40113,7 @@ hooks:
     .platform.app.yaml
 
 ```yaml {}
-type: 'python:3.13'
+type: 'python:3.14'
 variables:
   env:
     PIP_VERSION: '22.3.1'
@@ -40202,7 +40125,7 @@ hooks:
     # Fail the build if any errors occur
     set -eu
     # Download a specific version of pip
-    python3.13 -m pip install pip==$PIP_VERSION
+    python3.14 -m pip install pip==$PIP_VERSION
     # Install dependencies
     # Include `--deploy` to fail the build if `Pipfile.lock` isn't up to date
     pipenv install --deploy    
@@ -40214,7 +40137,7 @@ hooks:
 manager, written in Rust.
 
 ```yaml  {location=".platform.app.yaml"}
-type: 'python:3.13'
+type: 'python:3.14'
 dependencies:
   python3:
     uv: "*"
@@ -40249,7 +40172,7 @@ variables:
     You can specify the latest or a specific version of Poetry in your deployments to ensure repeatable builds.
 
 ```yaml {}
-type: 'python:3.13'
+type: 'python:3.14'
 dependencies:
   python3:
     poetry: '*'
@@ -40262,7 +40185,7 @@ hooks:
     # Fail the build if any errors occur
     set -eu
     # Download the latest version of pip
-    python3.13 -m pip install --upgrade pip
+    python3.14 -m pip install --upgrade pip
     # Install dependencies
     poetry install    
 ```
@@ -40270,7 +40193,7 @@ hooks:
     .platform.app.yaml
 
 ```yaml {}
-type: 'python:3.13'
+type: 'python:3.14'
 dependencies:
   python3:
     poetry: '>=1.8'
@@ -40284,7 +40207,7 @@ hooks:
     # Fail the build if any errors occur
     set -eu
     # Download the latest version of pip
-    python3.13 -m pip install --upgrade pip
+    python3.14 -m pip install --upgrade pip
     # Install dependencies
     poetry install    
 ```
@@ -40316,7 +40239,7 @@ The following Community resources can help get you started with them:
 p:last-child]:mb-0 [&>h3]:mt-0 rounded-lg" >
 
 ####### Note
-You can now use composable image (BETA) to install runtimes and tools in your application container. To find out more, see the [dedicated documentation page](https://fixed.docs.upsun.com/create-apps/app-reference/composable-image.md).
+You can now use composable image to install runtimes and tools in your application container. To find out more, see the [Composable image](https://fixed.docs.upsun.com/create-apps/app-reference/composable-image.md) topic.
 
 The Python ecosystem offers a number of web servers that can be used to deploy to Upsun Fixed.
 The following examples deploy a Django project named `myapp`.
@@ -40334,12 +40257,12 @@ use one of the following examples to update your [app configuration](https://fix
 
 The examples vary based on both your package manager (Pip, Pipenv, or Poetry)
 and whether your app listens on a TCP (default) or Unix (for running behind a proxy server) socket.
-For more information on upstream sockets and protocols, see the [application reference](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#upstream).
+For more information on upstream sockets and protocols, see the [application reference](https://fixed.docs.upsun.com/create-apps/image-properties/web.md#upstream).
 
 The snippets below assume that Gunicorn has been added as a dependency to your `requirements.txt`, `Pipfile.lock`, or `poetry.lock`.
 
 ```yaml {}
-type: 'python:3.13'
+type: 'python:3.14'
 web:
   commands:
     start: "gunicorn -w 4 -b localhost:$PORT myapp.wsgi:application"
@@ -40355,7 +40278,7 @@ web:
     .platform.app.yaml
 
 ```yaml {}
-type: 'python:3.13'
+type: 'python:3.14'
 web:
     upstream:
         socket_family: unix
@@ -40373,7 +40296,7 @@ web:
     .platform.app.yaml
 
 ```yaml {}
-type: 'python:3.13'
+type: 'python:3.14'
 web:
     commands:
         start: "pipenv run gunicorn -w 4 -b localhost:$PORT myapp.wsgi:application"
@@ -40389,7 +40312,7 @@ web:
     .platform.app.yaml
 
 ```yaml {}
-type: 'python:3.13'
+type: 'python:3.14'
 web:
     upstream:
         socket_family: unix
@@ -40407,7 +40330,7 @@ web:
     .platform.app.yaml
 
 ```yaml {}
-type: 'python:3.13'
+type: 'python:3.14'
 web:
     commands:
         start: "poetry run gunicorn -w 4 -b localhost:$PORT myapp.wsgi:application"
@@ -40423,7 +40346,7 @@ web:
     .platform.app.yaml
 
 ```yaml {}
-type: 'python:3.13'
+type: 'python:3.14'
 web:
     upstream:
         socket_family: unix
@@ -40467,12 +40390,12 @@ use one of the following examples to update your [app configuration](https://fix
 
 The examples vary based on both your package manager (Pip, Pipenv, or Poetry)
 and whether your app listens on a TCP (default) or Unix (for running behind a proxy server) socket.
-For more information on upstream sockets and protocols, see the [application reference](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#upstream).
+For more information on upstream sockets and protocols, see the [application reference](https://fixed.docs.upsun.com/create-apps/image-properties/web.md#upstream).
 
 The snippets below assume that Daphne has been added as a dependency to your `requirements.txt`, `Pipfile.lock`, or `poetry.lock`.
 
 ```yaml {}
-type: 'python:3.13'
+type: 'python:3.14'
 web:
     commands:
         start: "daphne -p $PORT myapp.asgi:application"
@@ -40488,7 +40411,7 @@ web:
     .platform.app.yaml
 
 ```yaml {}
-type: 'python:3.13'
+type: 'python:3.14'
 web:
     upstream:
         socket_family: unix
@@ -40506,7 +40429,7 @@ web:
     .platform.app.yaml
 
 ```yaml {}
-type: 'python:3.13'
+type: 'python:3.14'
 web:
     commands:
         start: "pipenv run daphne -p $PORT myapp.asgi:application"
@@ -40522,7 +40445,7 @@ web:
     .platform.app.yaml
 
 ```yaml {}
-type: 'python:3.13'
+type: 'python:3.14'
 web:
     upstream:
         socket_family: unix
@@ -40540,7 +40463,7 @@ web:
     .platform.app.yaml
 
 ```yaml {}
-type: 'python:3.13'
+type: 'python:3.14'
 web:
     commands:
         start: "poetry run daphne -p $PORT myapp.asgi:application"
@@ -40556,7 +40479,7 @@ web:
     .platform.app.yaml
 
 ```yaml {}
-type: 'python:3.13'
+type: 'python:3.14'
 web:
     upstream:
         socket_family: unix
@@ -40580,12 +40503,12 @@ use one of the following examples to update your [app configuration](https://fix
 
 The examples vary based on both your package manager (Pip, Pipenv, or Poetry)
 and whether your app listens on a TCP (default) or Unix (for running behind a proxy server) socket.
-For more information on upstream sockets and protocols, see the [application reference](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#upstream).
+For more information on upstream sockets and protocols, see the [application reference](https://fixed.docs.upsun.com/create-apps/image-properties/web.md#upstream).
 
 The snippets below assume that Uvicorn has been added as a dependency to your `requirements.txt`, `Pipfile.lock`, or `poetry.lock`.
 
 ```yaml {}
-type: 'python:3.13'
+type: 'python:3.14'
 web:
     commands:
         start: "uvicorn myapp.asgi:application --port $PORT --workers 4"
@@ -40601,7 +40524,7 @@ web:
     .platform.app.yaml
 
 ```yaml {}
-type: 'python:3.13'
+type: 'python:3.14'
 web:
     upstream:
         socket_family: unix
@@ -40619,7 +40542,7 @@ web:
     .platform.app.yaml
 
 ```yaml {}
-type: 'python:3.13'
+type: 'python:3.14'
 web:
     commands:
         start: "pipenv run uvicorn myapp.asgi:application --port $PORT --workers 4"
@@ -40635,7 +40558,7 @@ web:
     .platform.app.yaml
 
 ```yaml {}
-type: 'python:3.13'
+type: 'python:3.14'
 web:
     upstream:
         socket_family: unix
@@ -40653,7 +40576,7 @@ web:
     .platform.app.yaml
 
 ```yaml {}
-type: 'python:3.13'
+type: 'python:3.14'
 web:
     commands:
         start: "poetry run uvicorn myapp.asgi:application --port $PORT --workers 4"
@@ -40669,7 +40592,7 @@ web:
     .platform.app.yaml
 
 ```yaml {}
-type: 'python:3.13'
+type: 'python:3.14'
 web:
     upstream:
         socket_family: unix
@@ -40701,12 +40624,12 @@ use one of the following examples to update your [app configuration](https://fix
 
 The examples vary based on both your package manager (Pip, Pipenv, or Poetry)
 and whether your app listens on a TCP (default) or Unix (for running behind a proxy server) socket.
-For more information on upstream sockets and protocols, see the [application reference](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#upstream).
+For more information on upstream sockets and protocols, see the [application reference](https://fixed.docs.upsun.com/create-apps/image-properties/web.md#upstream).
 
 The snippets below assume that Hypercorn has been added as a dependency to your `requirements.txt`, `Pipfile.lock`, or `poetry.lock`.
 
 ```yaml {}
-type: 'python:3.13'
+type: 'python:3.14'
 web:
     commands:
         start: "hypercorn myapp.asgi:application -b localhost:$PORT -w 4"
@@ -40722,7 +40645,7 @@ web:
     .platform.app.yaml
 
 ```yaml {}
-type: 'python:3.13'
+type: 'python:3.14'
 web:
     upstream:
         socket_family: unix
@@ -40740,7 +40663,7 @@ web:
     .platform.app.yaml
 
 ```yaml {}
-type: 'python:3.13'
+type: 'python:3.14'
 web:
     commands:
         start: "pipenv run hypercorn myapp.asgi:application -b localhost:$PORT -w 4"
@@ -40756,7 +40679,7 @@ web:
     .platform.app.yaml
 
 ```yaml {}
-type: 'python:3.13'
+type: 'python:3.14'
 web:
     upstream:
         socket_family: unix
@@ -40774,7 +40697,7 @@ web:
     .platform.app.yaml
 
 ```yaml {}
-type: 'python:3.13'
+type: 'python:3.14'
 web:
     commands:
         start: "poetry run hypercorn myapp.asgi:application -b localhost:$PORT -w 4"
@@ -40790,7 +40713,7 @@ web:
     .platform.app.yaml
 
 ```yaml {}
-type: 'python:3.13'
+type: 'python:3.14'
 web:
     upstream:
         socket_family: unix
@@ -40829,7 +40752,7 @@ web:
 p:last-child]:mb-0 [&>h3]:mt-0 rounded-lg" >
 
 ####### Note
-You can now use composable image (BETA) to install runtimes and tools in your application container. To find out more, see the [dedicated documentation page](https://fixed.docs.upsun.com/create-apps/app-reference/composable-image.md).
+You can now use composable image to install runtimes and tools in your application container. To find out more, see the [Composable image](https://fixed.docs.upsun.com/create-apps/app-reference/composable-image.md) topic.
 
 You may need to use a specific version of Python that isn't available in an app container for a different language.
 For example, a container might have a long-term support version, while you want the latest version.
@@ -40916,7 +40839,7 @@ to install the specific version you want to use.
 p:last-child]:mb-0 [&>h3]:mt-0 rounded-lg" >
 
 ###### Note
-You can now use composable image (BETA) to install runtimes and tools in your application container. To find out more, see the [dedicated documentation page](https://fixed.docs.upsun.com/create-apps/app-reference/composable-image.md).
+You can now use composable image to install runtimes and tools in your application container. To find out more, see the [Composable image](https://fixed.docs.upsun.com/create-apps/app-reference/composable-image.md) topic.
 
 Upsun Fixed supports deploying any Ruby application. Your application can use any Ruby application server such as Puma or Unicorn and deploying a Rails or a Sinatra app is very straight forward.
 
@@ -40931,15 +40854,13 @@ Patch versions are applied periodically for bug fixes and the like. When you dep
 | Grid | Dedicated Gen 2 |
 | 
 
+   - 4.0
+
    - 3.4
 
    - 3.3
 
    - 3.2
-
-   - 3.1
-
-   - 3.0
 
   None available
 
@@ -40954,7 +40875,7 @@ type: 'ruby:<VERSION_NUMBER>'
 For example:
 
 ```yaml  {location=".platform.app.yaml"}
-type: 'ruby:3.4'
+type: 'ruby:4.0'
 ```
 
 ###### Deprecated versions
@@ -40962,6 +40883,10 @@ type: 'ruby:3.4'
 The following versions are [deprecated](https://fixed.docs.upsun.com/glossary.md#deprecated-versions).
 They're available, but they don't receive security updates from upstream and aren't guaranteed to work.
 They'll be removed in the future – consider migrating to a [supported version](#supported-versions).
+
+   - 3.1
+
+   - 3.0
 
    - 2.7
 
@@ -40984,7 +40909,7 @@ A complete example is included at the end of this section.
 1. Specify the language of your application (available versions are listed above):
 
     ```yaml  {location=".platform.app.yaml"}
-    type: 'ruby:3.4'
+    type: 'ruby:4.0'
     ```
 
 2. Setup environment variables.
@@ -40999,7 +40924,7 @@ A complete example is included at the end of this section.
         PIDFILE: "tmp/server.pid" # Allow to start puma directly even if `tmp/pids` directory is not created
         RAILS_ENV: "production"
         BUNDLE_WITHOUT: 'development:test'
-        TARGET_RUBY_VERSION: '~>3.4' # this will allow to not fail on PATCH update of the image
+        TARGET_RUBY_VERSION: '~>4.0' # this will allow to not fail on PATCH update of the image
     ```
 
    The `SECRET_KEY_BASE` variable is generated automatically based on the
@@ -42911,7 +42836,7 @@ All of the variables can also be [overridden via script](#set-variables-via-scri
 
 ###### Set variables in your app
 
-Set variables [in code](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#variables) using the `.platform.app.yaml` file.
+Set variables [in code](https://fixed.docs.upsun.com/create-apps/image-properties/variables.md) using the `.platform.app.yaml` file.
 These values are the same across all environments and present in the Git repository,
 which makes them a poor fit for API keys and other such secrets.
 
@@ -43257,7 +43182,7 @@ public class App {
 ####### Access complex values
 
 Variables can have nested structures.
-The following example shows nested structures in an [app configuration](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#variables):
+The following example shows nested structures in an [app configuration](https://fixed.docs.upsun.com/create-apps/image-properties/variables.md):
 
 ```yaml  {location=".platform.app.yaml"}
 variables:
@@ -43374,7 +43299,7 @@ and at runtime.
 | Variable name                            | Build | Runtime | Description                                                                                                                                                                                                                                                                                                                                                                                              |
 |------------------------------------------|-------|---------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `CI`      | Yes    | No     | Available for use in build scripts and tooling to modify build behavior (for example, to disable attempts to connect to other containers during the build phase, or to disable interactivity), which can help to reduce build failures.                                                                                                                                                                                                                                                                                                |
-| `PLATFORM_APP_COMMAND`      | No    | Yes     | The contents of the [web start command](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#web-commands).                                                                                                                                                                                                                                                                                                |
+| `PLATFORM_APP_COMMAND`      | No    | Yes     | The contents of the [web start command](https://fixed.docs.upsun.com/create-apps/image-properties/web.md#web-commands).                                                                                                                                                                                                                                                                                                |
 | `PLATFORM_APP_DIR`          | Yes   | Yes     | The absolute path to the app directory.                                                                                                                                                                                                                                                                                                                                                                  |
 | `PLATFORM_APPLICATION`      | Yes   | Yes     | A base64-encoded JSON object that describes the app. It maps certain attributes from your [app configuration](https://fixed.docs.upsun.com/create-apps.md), some with more structure. See [notes](#platform_application).                                                                                                                                                                                                     |
 | `PLATFORM_APPLICATION_NAME` | Yes   | Yes     | The app name as set in your [app configuration](https://fixed.docs.upsun.com/create-apps.md).                                                                                                                                                                                                                                                                                                                                 |
@@ -43384,8 +43309,8 @@ and at runtime.
 | `PLATFORM_ENVIRONMENT`      | No    | Yes     | The name of the Upsun Fixed environment.                                                                                                                                                                                                                                                                                                                                                         |
 | `PLATFORM_ENVIRONMENT_TYPE` | No    | Yes     | The environment type of the Upsun Fixed environment (`development`, `staging`, or `production`).                                                                                                                                                                                                                                                                                                 |
 | `PLATFORM_OUTPUT_DIR`       | Yes   | No      | The output directory for compiled languages at build time. Equivalent to `PLATFORM_APP_DIR` in most cases.                                                                                                                                                                                                                                                                                               |
-| `PLATFORM_POST_APP_COMMAND` | No    | Yes     | The contents of the [web post_start command](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#web-commands).                                                                                                                                                                                                                                                                                           |
-| `PLATFORM_PRE_APP_COMMAND`  | No    | Yes     | The contents of the [web pre_start command](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#web-commands).                                                                                                                                                                                                                                                                                            |
+| `PLATFORM_POST_APP_COMMAND` | No    | Yes     | The contents of the [web post_start command](https://fixed.docs.upsun.com/create-apps/image-properties/web.md#web-commands).                                                                                                                                                                                                                                                                                           |
+| `PLATFORM_PRE_APP_COMMAND`  | No    | Yes     | The contents of the [web pre_start command](https://fixed.docs.upsun.com/create-apps/image-properties/web.md#web-commands).                                                                                                                                                                                                                                                                                            |
 | `PLATFORM_PROJECT`          | Yes   | Yes     | The project ID.                                                                                                                                                                                                                                                                                                                                                                                          |
 | `PLATFORM_PROJECT_ENTROPY`  | Yes   | Yes     | A random, 56-character value created at project creation and then stable throughout the project's life. Can be used for Drupal hash salts, Symfony secrets, and other similar values.                                                                                                                                                                                                                    |
 | `PLATFORM_RELATIONSHIPS`    | No    | Yes     | A base64-encoded JSON object of relationships. The keys are the relationship name and the values are arrays of relationship endpoint definitions. The exact format is defined differently for each [service](https://fixed.docs.upsun.com/add-services.md).                                                                                                                                                                   |
@@ -43395,8 +43320,8 @@ and at runtime.
 | `PLATFORM_TREE_ID`          | Yes   | Yes     | The ID of the tree the application was built from, essentially the SHA hash of the tree in Git. Use when you need a unique ID for each build.                                                                                                                                                                                                                                                            |
 | `PLATFORM_VARIABLES`        | Some  | Some    | A base64-encoded JSON object with all user-defined project and environment variables that don't use a [prefix](https://fixed.docs.upsun.com/development/variables.md#variable-prefixes). The keys are the variable names and the values are the variable values. Availability during builds and at runtime depends on the settings for each variable. See how to [access individual variables](#access-variables-in-a-shell). |
 | `PLATFORM_VENDOR`           | Yes   | No      | Allows you to change the behavior of the build according to the vendor (Upsun Fixed or Upsun).                                                                                                                                                                                                                                                                                                   |
-| `PORT`                                   | No    | Yes     | A `string` representing the port to which requests are sent if the [`web.upstream.socket_family` property](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#upstream) is unset or set to `tcp`.                                                                                                                                                                                                        |
-| `SOCKET`                                 | No    | Yes     | A `string` representing the path to the Unix socket file to use if the [`web.upstream.socket_family` property](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#upstream) is set to `unix`.                                                                                                                                                                                                            |
+| `PORT`                                   | No    | Yes     | A `string` representing the port to which requests are sent if the [`web.upstream.socket_family` property](https://fixed.docs.upsun.com/create-apps/image-properties/web.md#upstream) is unset or set to `tcp`.                                                                                                                                                                                                        |
+| `SOCKET`                                 | No    | Yes     | A `string` representing the path to the Unix socket file to use if the [`web.upstream.socket_family` property](https://fixed.docs.upsun.com/create-apps/image-properties/web.md#upstream) is set to `unix`.                                                                                                                                                                                                            |
 
 ####### Variables on Dedicated Gen 2 environments
 
@@ -43532,7 +43457,7 @@ This means that the only way you can edit your app's code is through Git.
 However, you can transfer files to and from your built app without using Git.
 To do so, you need to configure mounts or use an SSH client.
 
-[Mounts](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#mounts) let you set up directories that remain writable after the build is complete.
+[Mounts](https://fixed.docs.upsun.com/create-apps/image-properties/mounts.md) let you set up directories that remain writable after the build is complete.
 You can then transfer files directly to and from mounts inside your app
 with a single command via the [Upsun Fixed CLI](https://fixed.docs.upsun.com/administration/cli.md).
 
@@ -44278,7 +44203,7 @@ Once you've connected, you get a welcome message detailing which environment you
 
 Now you can interact with the environment as you want.
 Note that your app's file system is read-only,
-except for any [mounts you've defined]/create-apps/app-reference/single-runtime-image.md#mounts).
+except for any [mounts you've defined]/create-apps/image-properties/mounts.md).
 
 ##### Connect to services
 
@@ -45381,7 +45306,7 @@ it indicates your application is crashing or unavailable.
 Typical causes and potential solutions include:
 
 - Your app is listening at the wrong place.
-  - Check your app's [upstream properties](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#upstream).
+  - Check your app's [upstream properties](https://fixed.docs.upsun.com/create-apps/image-properties/web.md#upstream).
   - If your app listening at a port, make sure it's using the [`PORT` environment variable](https://fixed.docs.upsun.com/development/variables/use-variables.md#use-provided-variables).
 - Your `.platform.app.yaml` configuration has an error and a process isn't starting
   or requests can't be forwarded to it correctly.
@@ -45471,8 +45396,8 @@ If you attempt to write to disk outside a `build` hook, you may encounter a `rea
 Except where you define it, the file system is all read-only, with code changes necessary through git.
 This gives you benefits like repeatable deployments, consistent backups, and traceability.
 
-To generate anything you need later, [write to disk during a `build` hook](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#writable-directories-during-build).
-Or [declare mounts](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#mounts),
+To generate anything you need later, [write to disk during a `build` hook](https://fixed.docs.upsun.com/create-apps/image-properties/hooks.md#writable-directories-during-build).
+Or [declare mounts](https://fixed.docs.upsun.com/create-apps/image-properties/mounts.md),
 which are writable even during and after deploy.
 They can be used for your data: file uploads, logs, and temporary files.
 
@@ -45548,7 +45473,7 @@ strace -T <YOUR_HOOK_COMMAND> # Print a system call report
 
 ###### Cron jobs
 
-Containers can't be shutdown while long-running [cron jobs and scheduled tasks](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#crons) are active.
+Containers can't be shutdown while long-running [cron jobs and scheduled tasks](https://fixed.docs.upsun.com/create-apps/image-properties/crons.md) are active.
 That means long-running cron jobs block a container from being shut down to make way for a new deploy.
 
 Make sure your custom cron jobs run quickly and properly.
@@ -45568,7 +45493,7 @@ and [cookie entry](https://fixed.docs.upsun.com/define-routes/cache.md#cookies).
 Because the router cache follows cache headers from your app,
 your app needs to send the correct `cache-control` header.
 
-For static assets, set cache headers using the `expires` key in your [app configuration](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#locations).
+For static assets, set cache headers using the `expires` key in your [app configuration](https://fixed.docs.upsun.com/create-apps/image-properties/web.md#locations).
 
 ##### Language-specific troubleshooting
 
@@ -45965,7 +45890,7 @@ fi
 ```
 
 To sanitize only on the initial deploy and not all future deploys,
-on sanitization create a file on a [mount](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#mounts).
+on sanitization create a file on a [mount](https://fixed.docs.upsun.com/create-apps/image-properties/mounts.md).
 Then add a check for the file as in the following example:
 
     sanitize.sh
@@ -46463,16 +46388,16 @@ follow these steps:
    +---------------+---------------------------+-------------------------------------------------------------+----------+---------+
    | ID            | Created                   | Description                                                 | State    | Result  |
    +---------------+---------------------------+-------------------------------------------------------------+----------+---------+
-   | 6456zmdtoykxa | 2020-04-14T16:38:09-05:00 | Fetching from https://github.com/platformsh/platformsh-docs | complete | success |
-   | wcwp34yjvydgk | 2020-04-14T16:35:22-05:00 | Fetching from https://github.com/platformsh/platformsh-docs | complete | success |
-   | w2bp3oa5xbfoe | 2020-04-14T16:33:13-05:00 | Fetching from https://github.com/platformsh/platformsh-docs | complete | success |
-   | uqqvdyxmcdmsa | 2020-04-14T16:31:45-05:00 | Fetching from https://github.com/platformsh/platformsh-docs | complete | success |
-   | 7x3wefhh4fwqc | 2020-04-14T16:30:36-05:00 | Fetching from https://github.com/platformsh/platformsh-docs | complete | success |
-   | a46aah3ga65gc | 2020-04-14T16:29:46-05:00 | Fetching from https://github.com/platformsh/platformsh-docs | complete | success |
-   | r7erid2jlixgi | 2020-04-14T16:24:50-05:00 | Fetching from https://github.com/platformsh/platformsh-docs | complete | success |
-   | ieufk3vvde5oc | 2020-04-14T16:24:49-05:00 | Fetching from https://github.com/platformsh/platformsh-docs | complete | success |
-   | bc7ghg36ty4ea | 2020-04-14T15:30:17-05:00 | Fetching from https://github.com/platformsh/platformsh-docs | complete | success |
-   | 4qojtv7a6rk2w | 2020-04-14T15:27:26-05:00 | Fetching from https://github.com/platformsh/platformsh-docs | complete | success |
+   | 6456zmdtoykxa | 2026-01-01T16:38:09-05:00 | Fetching from https://github.com/platformsh/platformsh-docs | complete | success |
+   | wcwp34yjvydgk | 2026-01-01T16:35:22-05:00 | Fetching from https://github.com/platformsh/platformsh-docs | complete | success |
+   | w2bp3oa5xbfoe | 2026-01-01T16:33:13-05:00 | Fetching from https://github.com/platformsh/platformsh-docs | complete | success |
+   | uqqvdyxmcdmsa | 2026-01-01T16:31:45-05:00 | Fetching from https://github.com/platformsh/platformsh-docs | complete | success |
+   | 7x3wefhh4fwqc | 2026-01-01T16:30:36-05:00 | Fetching from https://github.com/platformsh/platformsh-docs | complete | success |
+   | a46aah3ga65gc | 2026-01-01T16:29:46-05:00 | Fetching from https://github.com/platformsh/platformsh-docs | complete | success |
+   | r7erid2jlixgi | 2026-01-01T16:24:50-05:00 | Fetching from https://github.com/platformsh/platformsh-docs | complete | success |
+   | ieufk3vvde5oc | 2026-01-01T16:24:49-05:00 | Fetching from https://github.com/platformsh/platformsh-docs | complete | success |
+   | bc7ghg36ty4ea | 2026-01-01T15:30:17-05:00 | Fetching from https://github.com/platformsh/platformsh-docs | complete | success |
+   | 4qojtv7a6rk2w | 2026-01-01T15:27:26-05:00 | Fetching from https://github.com/platformsh/platformsh-docs | complete | success |
    +---------------+---------------------------+-------------------------------------------------------------+----------+---------+
    ```
 
@@ -46502,18 +46427,18 @@ Integration ID: ceopz5tgj3yfc
 Activity ID: 6456zmdtoykxa
 Type: integration.github.fetch
 Description: Fetching from https://github.com/platformsh/platformsh-docs
-Created: 2020-04-15T08:44:07-05:00
+Created: 2026-01-01T08:44:07-05:00
 State: complete
 Log:
-[2020-04-15T13:44:17-05:00] Waiting for other activities to complete
-[2020-04-15T13:46:07-05:00] Fetching from GitHub repository platformsh/platformsh-docs
-[2020-04-15T13:46:09-05:00]   No changes since last fetch
-[2020-04-15T13:46:09-05:00]
-[2020-04-15T13:46:09-05:00] Synchronizing branches
-[2020-04-15T13:46:09-05:00]
-[2020-04-15T13:46:09-05:00] Synchronizing pull requests
-[2020-04-15T13:46:59-05:00]
-[2020-04-15T13:46:59-05:00] W: No changes found, scheduling a retry..
+[2026-01-01T13:44:17-05:00] Waiting for other activities to complete
+[2026-01-01T13:46:07-05:00] Fetching from GitHub repository platformsh/platformsh-docs
+[2026-01-01T13:46:09-05:00]   No changes since last fetch
+[2026-01-01T13:46:09-05:00]
+[2026-01-01T13:46:09-05:00] Synchronizing branches
+[2026-01-01T13:46:09-05:00]
+[2026-01-01T13:46:09-05:00] Synchronizing pull requests
+[2026-01-01T13:46:59-05:00]
+[2026-01-01T13:46:59-05:00] W: No changes found, scheduling a retry..
 ```
 
 That shows the full output of the activity, including timestamps.
@@ -46748,7 +46673,7 @@ An example of this object is below:
 ```json
 {
   "attributes": {},
-  "created_at": "2024-03-15T19:50:09.514267+00:00",
+  "created_at": "2026-01-01T19:50:09.514267+00:00",
   "default_domain": null,
   "description": "",
   "id": "azertyuiopqsdfghjklm",
@@ -46775,7 +46700,7 @@ An example of this object is below:
   },
   "timezone": "Europe/Dublin",
   "title": "Activity script examples",
-  "updated_at": "2020-04-21T17:15:35.526498+00:00"
+  "updated_at": "2026-01-01T17:15:35.526498+00:00"
 }
 ```
 
@@ -46914,7 +46839,7 @@ You can also see [complete examples of responses](#examples).
 {
   "id": "abcdefg123456",
   ...
-  "created_at": "2022-12-16T14:28:17.890467+00:00",
+  "created_at": "2026-01-01T14:28:17.890467+00:00",
   "updated_at": null,
   "type": "environment.synchronize",
   "parameters": {
@@ -46926,8 +46851,8 @@ You can also see [complete examples of responses](#examples).
   ],
   "state": "complete",
   "result": "success",
-  "started_at": "2022-12-16T14:28:18.188888+00:00",
-  "completed_at": "2022-12-16T14:31:48.809068+00:00",
+  "started_at": "2026-01-01T14:28:18.188888+00:00",
+  "completed_at": "2026-01-01T14:31:48.809068+00:00",
   "completion_percent": 100,
   "cancelled_at": null,
   "timings": {
@@ -46942,7 +46867,7 @@ You can also see [complete examples of responses](#examples).
   },
   "description": "Cloé Weber synchronized test's **data** from Main",
   "text": "Cloé Weber synchronized test's **data** from Main",
-  "expires_at": "2023-12-16T14:28:17.890467+00:00"
+  "expires_at": "2026-01-02T14:28:17.890467+00:00"
 }
 ```
 
@@ -47008,7 +46933,7 @@ The following table presents the possible activity types:
 | `environment.backup.delete`          | A user deleted a [backup](https://fixed.docs.upsun.com/environments/backup.md).                                                                                                                                                                              |
 | `environment.branch`                 | A [new branch](https://fixed.docs.upsun.com/environments.md#create-environments) has been created via the CLI, Console, or API. A branch created via Git shows up as `environment.push`.                                                                     |
 | `environment.certificate.renewal`    | An environment's SSL certificate has been [renewed](https://fixed.docs.upsun.com/define-routes/https.md#certificate-renewals).                                                                                                                               |
-| `environment.cron`                   | A [cron job](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#crons) has completed.                                                                                                                                                                 |
+| `environment.cron`                   | A [cron job](https://fixed.docs.upsun.com/create-apps/image-properties/crons.md) has completed.                                                                                                                                                                 |
 | `environment.deactivate`             | An environment has been made [inactive](https://fixed.docs.upsun.com/glossary.md#inactive-environment).                                                                                                                                                      |
 | `environment.delete`                 | An environment's code was deleted through Git.                                                                                                                                                                                   |
 | `environment.domain.create`          | A new [domain](administration/web/configure-project.md#domains) has been associated with the environment.                                                                                                                        |
@@ -47179,7 +47104,7 @@ The following table presents the most notable properties of the deployment:
 |--------------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
 | `payload.deployment.routes`    | All the URLs connected to the environment. The list includes redirects. To exclude redirects, find objects whose `type` is `upstream`. |
 | `payload.deployment.services`  | All the services on your environment.                                                                                                  |
-| `payload.deployment.variables` | All the [variables for the environment](https://fixed.docs.upsun.com/development/variables.md).                                                        |
+| `payload.deployment.variables` | All the [variables for the environment](https://fixed.docs.upsun.com/development/variables.md).                                                             |
 
 The `payload.deployment` property includes the configuration extracted from the following sources:
 
@@ -47215,7 +47140,7 @@ To test responses, [set up a webhook](https://fixed.docs.upsun.com/integrations/
 
 ####### Cron
 
-When a cron job is triggered, the activity contains all the [job's information](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#crons).
+When a cron job is triggered, the activity contains all the [job's information](https://fixed.docs.upsun.com/create-apps/image-properties/crons.md).
 The following example response was triggered by a setting
 where the cron is scheduled to run every five minutes (`5 * * * *`)
 with the command `sleep 60 && echo sleep-60-finished && date` and times out after 86,400 seconds.
@@ -47255,7 +47180,7 @@ The following example shows the full activity response to a cron job:
       "href": "/api/projects/abcdefgh1234567/activities/ypalrypnezbye/log"
     }
   },
-  "created_at": "2022-12-13T16:06:08.081312+00:00",
+  "created_at": "2026-01-01T16:06:08.081312+00:00",
   "updated_at": null,
   "type": "environment.cron",
   "parameters": {
@@ -47280,26 +47205,26 @@ The following example shows the full activity response to a cron job:
   ],
   "state": "complete",
   "result": "success",
-  "started_at": "2022-12-13T16:06:08.258090+00:00",
-  "completed_at": "2022-12-13T16:07:09.658339+00:00",
+  "started_at": "2026-01-01T16:06:08.258090+00:00",
+  "completed_at": "2026-01-01T16:07:09.658339+00:00",
   "completion_percent": 100,
   "cancelled_at": null,
   "timings": {
     "wait": 0,
     "execute": 61.244
   },
-  "log": "hello world\nTue Dec 13 16:07:09 UTC 2022",
+  "log": "hello world\nTue Jan 01 16:07:09 UTC 2026",
   "payload": {
     "user": {
       "id": "admin",
-      "created_at": "2022-12-13T16:06:08.066085+00:00",
+      "created_at": "2026-01-01T16:06:08.066085+00:00",
       "updated_at": null,
       "display_name": "Upsun Fixed Bot"
     },
     "project": {
       "id": "abcdefgh1234567",
-      "created_at": "2022-03-22T15:47:28.739099+00:00",
-      "updated_at": "2022-12-01T09:42:19.860188+00:00",
+      "created_at": "2026-01-01T15:47:28.739099+00:00",
+      "updated_at": "2026-01-01T19:42:19.860188+00:00",
       "attributes": {},
       "title": "php-test",
       "description": "",
@@ -47332,8 +47257,8 @@ The following example shows the full activity response to a cron job:
     },
     "environment": {
       "id": "main",
-      "created_at": "2022-03-22T15:47:43.750880+00:00",
-      "updated_at": "2022-11-29T16:16:37.085719+00:00",
+      "created_at": "2026-01-01T15:47:43.750880+00:00",
+      "updated_at": "2026-01-01T16:16:37.085719+00:00",
       "name": "main",
       "machine_name": "main-abcd123",
       "title": "Main",
@@ -47350,14 +47275,14 @@ The following example shows the full activity response to a cron job:
       "edge_hostname": "main-abcd123-abcdefgh1234567.eu-3.platformsh.site",
       "deployment_state": {
         "last_deployment_successful": true,
-        "last_deployment_at": "2022-11-29T16:16:37.085609+00:00",
+        "last_deployment_at": "2026-01-01T16:16:37.085609+00:00",
         "crons": {
           "enabled": true,
           "status": "running"
         }
       },
       "resources_overrides": {},
-      "last_active_at": "2022-12-13T15:07:10.862854+00:00",
+      "last_active_at": "2026-01-01T15:07:10.862854+00:00",
       "last_backup_at": null,
       "project": "abcdefgh1234567",
       "is_main": true,
@@ -47375,7 +47300,7 @@ The following example shows the full activity response to a cron job:
   },
   "description": "Upsun Fixed Bot ran cron **saybye**",
   "text": "Upsun Fixed Bot ran cron **saybye**",
-  "expires_at": "2023-01-12T16:06:08.081293+00:00"
+  "expires_at": "2026-01-01T16:06:08.081293+00:00"
 }
 ```
 
@@ -47409,8 +47334,8 @@ The `environment` property contains the settings for the environment that was pu
 ...
     "environment": {
       "id": "main",
-      "created_at": "2022-03-22T15:47:43.750880+00:00",
-      "updated_at": "2022-11-29T16:16:37.085719+00:00",
+      "created_at": "2026-01-01T15:47:43.750880+00:00",
+      "updated_at": "2026-01-01T16:16:37.085719+00:00",
       "name": "main",
       "machine_name": "main-abcd123",
       "title": "Main",
@@ -47427,14 +47352,14 @@ The `environment` property contains the settings for the environment that was pu
       "edge_hostname": "main-abcd123-abcdefgh1234567.eu-3.platformsh.site",
       "deployment_state": {
         "last_deployment_successful": true,
-        "last_deployment_at": "2022-11-29T16:16:37.085609+00:00",
+        "last_deployment_at": "2026-01-01T16:16:37.085609+00:00",
         "crons": {
           "enabled": true,
           "status": "sleeping"
         }
       },
       "resources_overrides": {},
-      "last_active_at": "2022-12-13T16:07:09.788910+00:00",
+      "last_active_at": "2026-01-01T16:07:09.788910+00:00",
       "last_backup_at": null,
       "project": "abcdefgh1234567",
       "is_main": true,
@@ -47453,7 +47378,7 @@ The `environment` property contains the settings for the environment that was pu
 
 The `deployment` property contains the settings for the deployment,
 including the [image type](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#types) and
-[resource allocation](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#sizes).
+[resource allocation](https://fixed.docs.upsun.com/create-apps/image-properties/size.md).
 
 The following example shows a shortened excerpt of the `deployment` property:
 
@@ -47461,14 +47386,14 @@ The following example shows a shortened excerpt of the `deployment` property:
 ...
  "deployment": {
       "id": "current",
-      "created_at": "2022-03-22T15:48:05.396979+00:00",
-      "updated_at": "2022-12-14T15:41:57.264813+00:00",
+      "created_at": "2026-01-01T15:48:05.396979+00:00",
+      "updated_at": "2026-01-01T15:41:57.264813+00:00",
       "cluster_name": "abcdefgh1234567-main-abcd123",
       "project_info": {
           "deployment": {
       "id": "current",
-      "created_at": "2022-03-22T15:48:05.396979+00:00",
-      "updated_at": "2022-12-14T15:41:57.264813+00:00",
+      "created_at": "2026-01-01T15:48:05.396979+00:00",
+      "updated_at": "2026-01-01T16:41:57.264813+00:00",
       "cluster_name": "abcdefgh1234567-main-abcd123",
       "project_info": {
         "name": "abcdefgh1234567",
@@ -47533,7 +47458,7 @@ The following example shows the full activity response to a Git push:
       "href": "/api/projects/abcdefgh1234567/activities/a1kz6ffxui7em/log"
     }
   },
-  "created_at": "2022-12-14T15:41:05.821145+00:00",
+  "created_at": "2026-01-01T15:41:05.821145+00:00",
   "updated_at": null,
   "type": "environment.push",
   "parameters": {
@@ -47548,8 +47473,8 @@ The following example shows the full activity response to a Git push:
   ],
   "state": "complete",
   "result": "success",
-  "started_at": "2022-12-14T15:41:05.969872+00:00",
-  "completed_at": "2022-12-14T15:41:57.635442+00:00",
+  "started_at": "2026-01-01T15:41:05.969872+00:00",
+  "completed_at": "2026-01-01T15:41:57.635442+00:00",
   "completion_percent": 100,
   "cancelled_at": null,
   "timings": {
@@ -47559,18 +47484,18 @@ The following example shows the full activity response to a Git push:
     "deploy": 49.954,
     "execute": 51.516
   },
-  "log": "Found 1 new commit\n\nBuilding application 'myapp' (runtime type: php:8.0, tree: 9851a01)\n  Reusing existing build for this tree ID\n\nProvisioning certificates\n  Certificates\n  - certificate 5093946: expiring on 2023-02-23 11:09:20+00:00, covering {,www}.main-abcd123-abcdefgh1234567.eu-3.platformsh.site\n\n\nRedeploying environment main\n  Preparing deployment\n  Closing service myapp\n  Opening application myapp and its relationships\n  Executing deploy hook for application myapp\n    hello world\n\n  Opening environment\n  Environment configuration\n    app (type: php:8.0, size: S, disk: 2048)\n\n  Environment routes\n    http://main-abcd123-abcdefgh1234567.eu-3.platformsh.site/ redirects to https://main-abcd123-abcdefgh1234567.eu-3.platformsh.site/\n    http://www.main-abcd123-abcdefgh1234567.eu-3.platformsh.site/ redirects to https://www.main-abcd123-abcdefgh1234567.eu-3.platformsh.site/\n    https://main-abcd123-abcdefgh1234567.eu-3.platformsh.site/ is served by application `myapp`\n    https://www.main-abcd123-abcdefgh1234567.eu-3.platformsh.site/ redirects to https://main-abcd123-abcdefgh1234567.eu-3.platformsh.site/\n",
+  "log": "Found 1 new commit\n\nBuilding application 'myapp' (runtime type: php:8.0, tree: 9851a01)\n  Reusing existing build for this tree ID\n\nProvisioning certificates\n  Certificates\n  - certificate 5093946: expiring on 2026-01-01 11:09:20+00:00, covering {,www}.main-abcd123-abcdefgh1234567.eu-3.platformsh.site\n\n\nRedeploying environment main\n  Preparing deployment\n  Closing service myapp\n  Opening application myapp and its relationships\n  Executing deploy hook for application myapp\n    hello world\n\n  Opening environment\n  Environment configuration\n    app (type: php:8.0, size: S, disk: 2048)\n\n  Environment routes\n    http://main-abcd123-abcdefgh1234567.eu-3.platformsh.site/ redirects to https://main-abcd123-abcdefgh1234567.eu-3.platformsh.site/\n    http://www.main-abcd123-abcdefgh1234567.eu-3.platformsh.site/ redirects to https://www.main-abcd123-abcdefgh1234567.eu-3.platformsh.site/\n    https://main-abcd123-abcdefgh1234567.eu-3.platformsh.site/ is served by application `myapp`\n    https://www.main-abcd123-abcdefgh1234567.eu-3.platformsh.site/ redirects to https://main-abcd123-abcdefgh1234567.eu-3.platformsh.site/\n",
   "payload": {
     "user": {
       "id": "c9926428-44dc-4b10-be03-a26dd43b44c1",
-      "created_at": "2022-12-14T15:40:16.891889+00:00",
+      "created_at": "2026-01-01T15:40:16.891889+00:00",
       "updated_at": null,
       "display_name": "Cloé Weber"
     },
     "environment": {
       "id": "main",
-      "created_at": "2022-03-22T15:47:43.750880+00:00",
-      "updated_at": "2022-11-29T16:16:37.085719+00:00",
+      "created_at": "2026-01-01T15:47:43.750880+00:00",
+      "updated_at": "2026-01-01T16:16:37.085719+00:00",
       "name": "main",
       "machine_name": "main-abcd123",
       "title": "Main",
@@ -47587,14 +47512,14 @@ The following example shows the full activity response to a Git push:
       "edge_hostname": "main-abcd123-abcdefgh1234567.eu-3.platformsh.site",
       "deployment_state": {
         "last_deployment_successful": true,
-        "last_deployment_at": "2022-11-29T16:16:37.085609+00:00",
+        "last_deployment_at": "2026-01-01T16:16:37.085609+00:00",
         "crons": {
           "enabled": true,
           "status": "sleeping"
         }
       },
       "resources_overrides": {},
-      "last_active_at": "2022-12-13T16:07:09.788910+00:00",
+      "last_active_at": "2026-01-01T16:07:09.788910+00:00",
       "last_backup_at": null,
       "project": "abcdefgh1234567",
       "is_main": true,
@@ -47625,8 +47550,8 @@ The following example shows the full activity response to a Git push:
     "commits_count": 1,
     "deployment": {
       "id": "current",
-      "created_at": "2022-03-22T15:48:05.396979+00:00",
-      "updated_at": "2022-12-14T15:41:57.264813+00:00",
+      "created_at": "2026-01-01T15:48:05.396979+00:00",
+      "updated_at": "2026-01-01T16:41:57.264813+00:00",
       "cluster_name": "abcdefgh1234567-main-abcd123",
       "project_info": {
         "name": "abcdefgh1234567",
@@ -47932,7 +47857,7 @@ The following example shows the full activity response to a Git push:
   },
   "description": "Cloé Weber pushed to Main",
   "text": "Cloé Weber pushed to Main",
-  "expires_at": "2023-12-14T15:41:05.821145+00:00"
+  "expires_at": "2026-01-01T15:41:05.821145+00:00"
 }
 ```
 #### Utility routines
@@ -48531,7 +48456,7 @@ If you're generating a classic personal access token,
 ensure the token has the appropriate scopes based on what you want to do:
 
 | Scope                 | Purpose                                                                |
-| --------------------- | ---------------------------------------------------------------------- |
+|-----------------------|------------------------------------------------------------------------|
 | `admin:repo_hook`     | To create webhooks for events in repositories. Always needed.          |
 | `public_repo`         | To integrate with public repositories.                                 |
 | `repo`                | To integrate with your private repositories.                           |
@@ -48541,13 +48466,13 @@ If you're generating a fine-grained personal access token,
 ensure the token has the right [repository permissions](https://docs.github.com/en/rest/overview/permissions-required-for-fine-grained-personal-access-tokens?apiVersion=2022-11-28)
 for the integration to work:
 
-| Permission        | Access level    |
-| ------------------| ----------------|
-| `Commit statuses` | Read and write  |
-| `Contents`        | Read and write  |
-| `Metadata`        | Read-only       |
-| `Pull request`    | Read and write  |
-| `Webhooks`        | Read and write  |
+| Permission        | Access level   |
+|-------------------|----------------|
+| `Commit statuses` | Read and write |
+| `Contents`        | Read and write |
+| `Metadata`        | Read-only      |
+| `Pull request`    | Read and write |
+| `Webhooks`        | Read and write |
 
 After you've set the needed scopes or permissions,
 generate and copy your token.
@@ -48900,47 +48825,85 @@ grant them the correct access rights for the integrated repository.
 ### Fastly CDN
 
 
-Offers an integrated web interface to manage your Fastly CDN service yourself without having to create individual Upsun Fixed support tickets.
+The Fastly CDN integration provides a centralized interface within the Upsun Console to oversee your edge traffic, manage cache, edit access control lists (ACLs), and tune performance without switching platforms. You can also manage dynamic configuration by using Edge Dictionaries.
 
-- [Click to install directly in the Upsun console](https://console.upsun.com/-/add-plugin?manifest=https%253A%252F%252Ffastsun.plugins.pltfrm.sh%252Fmanifest.json)
-- Plugin manifest URL:
-https://fastsun.plugins.pltfrm.sh/manifest.json
+##### Install the Fastly CDN plugin
 
-The Fastly CDN plugin enables you to:
-- Manage cache (purge all URLs or purge a specific URL)
-- Manage ACLs (add, edit, delete)
-- View real-time statistics and performance metrics
-- View historical statistics and performance metrics
-- View all domains attached to the Fastly service
-- View current VCL version, and version history
-- View service activity, and recent events history
+1. Go to https://console.upsun.com/-/add-plugin and click **Add plugin**.
+1. Enter the plugin manifest URL https://fastsun.plugins.pltfrm.sh/manifest.json and click **Create**.
 
-##### Using the Fastly CDN plugin
-1. In the Upsun [console](https://console.upsun.com), navigate to the project and environment whose metrics you want to view.
+  **Tip:** You can also [click here](https://console.upsun.com/-/add-plugin?manifest=https%253A%252F%252Ffastsun.plugins.pltfrm.sh%252Fmanifest.json) to install directly in the Upsun console. 
+
+##### Manage and monitor your CDN traffic
+
+The Fastly CDN integration provides a centralized interface within the Upsun Console to oversee your edge traffic, manage cache, and tune performance without switching platforms.
+
+###### Access the Fastly dashboard
+1. In the Upsun [console](https://console.upsun.com), navigate to the project and environment you want to monitor.
 
       **Note:** To view summarized monthly _project-level_ traffic, including CDN bandwidth and CDN requests, see the **Traffic this month** section of a project page (make sure no environment is selected).
 
-1. On the **Fastly CDN** tab, log in with your Fastly credentials:
-    - Service ID
-    - API token
+1. On the **Fastly CDN** tab, log in with your Fastly credentials (Service ID and API token).
 
-      If you have a Fastly subscription, you can get your credentials directly from the Fastly interface.
+    - If you have a Fastly subscription, you can retrieve your credentials directly from the Fastly interface.
 
-      If you purchased your Fastly service through Upsun, you can find your credentials in the Upsun project variables or you can get them by [opening a support ticket](https://console.upsun.com/-/users/~/tickets/open).
+    - If you purchased Fastly through Upsun, you can retrieve your credentials by running `upsun ssh "printenv | grep FASTLY"` in your terminal, or by [opening a support ticket](https://console.upsun.com/-/users/~/tickets/open).
 
-      Your Fastly credentials are stored securely within your browser and are never transmitted to Upsun.
+    Your Fastly credentials are stored securely within your browser and are never transmitted to Upsun.
 
-After you log in, you can see a dashboard with the following information for the selected environment:
-- A real-time metrics tab
-- A historical metrics tab, where you can:
-  - View metrics by weeks, months, and years by using the date picker.
-  - Enable/disable chart metrics by clicking them. Disabled metrics are not shown on the graph.
-  - View average, min, and max values for different metrics (when available, these are shown below the historical chart).<BR>
+###### Track real-time and historical performance
 
-    Both the chart and the table presentation are based on the range you select in the date picker.
+The dashboard provides two levels of visibility into how your site is performing at the edge:
 
-The image below shows a sample Fastly CDN historical metrics tab:
-![Image showing the Fastly CDN historical metrics tab in the Upsun console](https://fixed.docs.upsun.com/images/integrations/console-fastly.png "0.75")### Health notifications
+- **Real-time metrics:** Monitor current traffic spikes, request rates, and global delivery status as it happens.
+
+- **Historical metrics:** Use the date picker to analyze trends over weeks or months. You can toggle specific metrics on the graph to isolate data like cache hit ratios, 4xx/5xx error rates, and total bandwidth.
+
+The image below shows a sample historical metrics tab for a selected environment:
+![Image showing the Fastly CDN historical metrics tab in the Upsun console](https://fixed.docs.upsun.com/images/integrations/console-fastly.png "0.75")
+
+##### Manage dynamic configuration with Edge Dictionaries
+Edge Dictionaries allow you to store key-value pairs at the CDN level to control site behavior in real-time. This integration enables you to update configurations (such as feature flags, redirects, or header values) instantly, without a full code redeploy or VCL version change. This can be helpful, for example, to block a bot attack or quickly update a site banner. 
+
+With this integration, you can:
+- **Update instantly:** Add, edit, or delete items via the UI or API for immediate effect.
+- **Secure secrets:** Use write-only dictionaries to store sensitive API keys that are accessible to your logic but hidden from view.
+- **Maintain consistency:** Leverage built-in validation and a management workflow that mirrors Fastly ACLs.
+
+###### Example: Use a Dictionary for a maintenance toggle
+Instead of hard-coding a maintenance mode in your application, you can use an Edge Dictionary (for example, named `site_config`) to toggle a "Maintenance Mode" page at the edge.
+
+1. Define the dictionary: Create a dictionary named `site_config` and add a `maintenance_enabled` key with a value of `true` or `false`.
+
+1. Add the VCL Logic: Add the following snippet to your Fastly configuration to check the dictionary value on every request:
+
+    ```
+    sub vcl_recv {
+      # Check if the 'maintenance_enabled' key is set to 'true' in the dictionary
+      if (table.lookup(site_config, "maintenance_enabled") == "true") {
+        # Send a 503 Service Unavailable response immediately
+        error 601 "Maintenance";
+      }
+    }
+
+    sub vcl_error {
+      if (obj.status == 601) {
+        set obj.status = 503;
+        set obj.response = "Service Unavailable";
+        synthetic {"
+
+              We'll be back soon!
+              Our site is currently undergoing scheduled maintenance.
+
+        "};
+        return(deliver);
+      }
+    }
+    ```
+
+Related information: 
+- [How to create a custom maintenance page in Fastly](https://devcenter.upsun.com/posts/fastly-maintenance/#create-fastly-configuration) - this Upsun Dev Center article also describes how to create a Fastly configuration.
+### Health notifications
 
 
 Upsun Fixed can notify you when various events happen on your project, in any environment. At this time the only notification provided is a low disk space warning, but others may be added in the future.
@@ -49140,7 +49103,7 @@ If the resources are high and hovering close to the 100% threshold,
 you might want to consider:
 
 * [Optimizing your code](https://fixed.docs.upsun.com/increase-observability.md) (if possible)
-* Changing your [app size](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#sizes)
+* Changing your [app size](https://fixed.docs.upsun.com/create-apps/image-properties/size.md)
   or [service size](https://fixed.docs.upsun.com/add-services.md#size)
 * [Increasing your plan](https://fixed.docs.upsun.com/administration/pricing.md)
 
@@ -49366,7 +49329,7 @@ Grid environments consist of:
 
 * App containers: one or more [app containers](https://fixed.docs.upsun.com/create-apps.md)
 * Service containers: zero or more [service containers](https://fixed.docs.upsun.com/add-services.md)
-* Worker containers: zero or more [worker instances](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#workers).
+* Worker containers: zero or more [worker instances](https://fixed.docs.upsun.com/create-apps/image-properties/workers.md).
 
 Infrastructure metrics report CPU, RAM, and disk space for app and worker containers
 and CPU and disk space for service containers. These metrics are available for all of your Grid environments.
@@ -49398,7 +49361,7 @@ So the resources you see for a given container don't equal the total resources f
 
 This reference project has a single app, two services (PostgreSQL and Redis), and two workers.
 The plan size for this project is [Medium](https://upsun.com/fixed-pricing/).
-The appropriate resources have been [allocated automatically](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#sizes) for each container
+The appropriate resources have been [allocated automatically](https://fixed.docs.upsun.com/create-apps/image-properties/size.md) for each container
 based on the number and type of containers for this plan size.
 The graphs show the current average usage in relation to the allocated resources.
 
@@ -49812,7 +49775,7 @@ hovering on the next unselected line gives you the amount of time that passed be
 
 Events that occur within an app container are logged within that container.
 The logs can be written to, but you should do so only with standard logging mechanisms.
-If your app has its own logging mechanism, use it to write to a dedicated logs [mount](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#mounts).
+If your app has its own logging mechanism, use it to write to a dedicated logs [mount](https://fixed.docs.upsun.com/create-apps/image-properties/mounts.md).
 
 To access the logs of various types of events:
 
@@ -49836,7 +49799,7 @@ cd /var/log/platform/<APP_NAME>/
  - Read the desired log, such as by running ``tail access.log``.
 
 All log files are trimmed to 100 MB automatically.
-If you need larger logs, set up a [cron job](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#crons) to upload them to third-party storage.
+If you need larger logs, set up a [cron job](https://fixed.docs.upsun.com/create-apps/image-properties/crons.md) to upload them to third-party storage.
 See an example of [uploading logs to Amazon S3](https://gitlab.com/contextualcode/platformsh-store-logs-at-s3) from Contextual Code.
 
 ####### Types of container logs
@@ -49883,21 +49846,25 @@ without needing to grant them access to each project individually.
 
 In such cases, forward your logs from Upsun Fixed and Blackfire to a third-party service.
 You can use a [service with an integration](#use-a-log-forwarding-integration)
-or any service that supports a [syslog endpoint](#forward-to-a-syslog-endpoint) or [HTTP endpoint](#forward-to-an-http-endpoint).
+or any service that supports a [syslog endpoint](#forward-to-a-syslog-endpoint)
+or [HTTP endpoint](#forward-to-an-http-endpoint).
 
 Log forwarding is available for Grid projects.
-For Dedicated Gen 2 projects, see how to [log remotely with ](https://fixed.docs.upsun.com/dedicated-environments/dedicated-gen-2/overview.md#remote-logging).
+For Dedicated Gen 2 projects, see how
+to [log remotely with ](https://fixed.docs.upsun.com/dedicated-environments/dedicated-gen-2/overview.md#remote-logging).
 To enable log forwarding in a project, you need to be a [project admin](https://fixed.docs.upsun.com../../administration/users.md).
 You also need your project to have the capability for log forwarding.
 To get a price quote, [contact Sales](https://upsun.com/contact-us/).
 
 ####### Which logs are forwarded?
-When log forwarding is enabled, Upsun Fixed forwards logs sent to journald.  
 
-By default, Upsun Fixed sends the following logs to journald: 
+When log forwarding is enabled, Upsun Fixed forwards logs sent to journald.
+
+By default, Upsun Fixed sends the following logs to journald:
+
 - `stdout` and `stderr` logs from your application
-   Note: You can configure your application to use syslog to send these (or additional) messages to journald.
-- MariaDB/MySQL slow query logs 
+  Note: You can configure your application to use syslog to send these (or additional) messages to journald.
+- MariaDB/MySQL slow query logs
 - Redis logs (all except command-level operations and low-level internals)
 
 Logs in files are not forwarded to journald.
@@ -49909,11 +49876,18 @@ If your third-party service isn't supported, you can forward to a [syslog endpoi
 
 ####### Integrated third-party services
 
-Integrations exist for the following third-party services to enable log forwarding:
+Upsun Fixed supports forwarding logs not only to custom remote syslog endpoints but also directly to a set of
+popular third‑party log management and observability services. These integrations allow you to centralize logs from
+applications, services, and infrastructure into your existing monitoring stack:
 
-- [New Relic](https://newrelic.com/)
-- [Splunk](https://www.splunk.com/)
-- [Sumo Logic](https://www.sumologic.com/)
+- **[Sumo Logic](https://www.sumologic.com/)** – Cloud-based log management and analytics.
+- **[New Relic](https://newrelic.com/)** – Unified observability platform with logs and metrics.
+- **[Splunk](https://www.splunk.com/)** – Searchable log platform for monitoring and operational intelligence.
+- **[Datadog](https://www.datadoghq.com/)** – Observability suite with log collection and processing.
+- **[Loggly](https://www.loggly.com/)** – Cloud-native log monitoring, aggregation, and alerting.
+- **[LogDNA (Mezmo)](https://www.mezmo.com/)** – Centralized log management and analysis in real time.
+- **[Papertrail](https://www.papertrail.com/)** – Real-time log aggregation via syslog.
+- **[Logz.io](https://logz.io/)** – ELK-based log analytics and monitoring.
 
 ####### Enable a log forwarding integration
 
@@ -49924,7 +49898,8 @@ follow the steps for your selected service.
 
 View your logs in the **Logs** dashboard.
 
- - In Splunk, get an Event Collector token on [Splunk Platform](https://docs.splunk.com/Documentation/Splunk/latest/Data/UsetheHTTPEventCollector#Create_an_Event_Collector_token_on_Splunk_Cloud_Platform)
+ - In Splunk, get an Event Collector token
+on [Splunk Platform](https://docs.splunk.com/Documentation/Splunk/latest/Data/UsetheHTTPEventCollector#Create_an_Event_Collector_token_on_Splunk_Cloud_Platform)
 or [Splunk Enterprise](https://docs.splunk.com/Documentation/Splunk/latest/Data/UsetheHTTPEventCollector#Create_an_Event_Collector_token_on_Splunk_Enterprise).
 
  - Determine your host, which is the Splunk instance that’s collecting data.
@@ -49940,7 +49915,8 @@ platform integration:add --type splunk --url https://http-inputs.<HOST>.splunkcl
 View your logs in the **Apps->Search & Reporting** dashboard.
 Filter by the index name to find the relevant events.
 
- - In Sumo Logic, [configure an HTTP source](https://www.sumologic.com/help/docs/send-data/hosted-collectors/http-source/logs-metrics/#configure-an-httplogs-and-metrics-source).
+ - In Sumo
+Logic, [configure an HTTP source](https://www.sumologic.com/help/docs/send-data/hosted-collectors/http-source/logs-metrics/#configure-an-httplogs-and-metrics-source).
 Make sure to copy the Source Category and collector URL.
 
  - Create the integration with the following command:
@@ -49987,8 +49963,10 @@ The following table shows the other available properties:
 | ``verify-tls`` | ``boolean`` | ``true`` | Whether to verify Transport Layer Security (TLS) certification when using the TLS protocol. |
 To include a property, add it as a flag, for example ``--protocol tcp``.
 This should let you connect to any service that has syslog endpoints.
-To start forwarding logs, once you’ve added the service [trigger a redeploy](https://fixed.docs.upsun.com/development/troubleshoot.md#force-a-redeploy).
-To enable log forwarding to a syslog endpoint for a specific project using the [Upsun Fixed CLI](https://fixed.docs.upsun.com/administration/cli.md),
+To start forwarding logs, once you’ve added the
+service [trigger a redeploy](https://fixed.docs.upsun.com/development/troubleshoot.md#force-a-redeploy).
+To enable log forwarding to a syslog endpoint for a specific project using
+the [Upsun Fixed CLI](https://fixed.docs.upsun.com/administration/cli.md),
 follow these steps:
 
  - Navigate to your project.
@@ -50004,11 +49982,13 @@ and you can view your logs in the **Activity** section.
 
 ###### Forward to an HTTP endpoint
 
-Some third-party services, such as [Elasticsearch](https://fixed.docs.upsun.com/add-services/elasticsearch.md) and [OpenSearch](https://fixed.docs.upsun.com/add-services/opensearch.md),
+Some third-party services, such as [Elasticsearch](https://fixed.docs.upsun.com/add-services/elasticsearch.md)
+and [OpenSearch](https://fixed.docs.upsun.com/add-services/opensearch.md),
 support ingesting log messages through an HTTP endpoint.
 You can use HTTP forwarding to forward Upsun Fixed and Blackfire logs to such third-party services.
 
-HTTP forwarding makes a `POST` HTTP request with an `application/json` body while forwarding the log messages to the endpoint.
+HTTP forwarding makes a `POST` HTTP request with an `application/json` body while forwarding the log messages to the
+endpoint.
 
 As an example, to forward logs to Elasticsearch using HTTP log forwarding, run the following command:
 
@@ -50144,7 +50124,7 @@ To work with an [inactive environment](https://fixed.docs.upsun.com/glossary.md#
 1. As an [admin user](https://fixed.docs.upsun.com/administration/users.md), you can do a backup of your environment.
    This backup includes the complete data and code of the environment.
    All persistent data from all running [services](https://fixed.docs.upsun.com/add-services.md)
-   and any files stored on [mounts](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#mounts) are included.
+   and any files stored on [mounts](https://fixed.docs.upsun.com/create-apps/image-properties/mounts.md) are included.
    The backup is stored internally on Upsun Fixed.
    That is, the backup can be applied to environments on Upsun Fixed, but it can't be downloaded.
    If you need to download backups, instead [export your mount and service data](https://fixed.docs.upsun.com/learn/tutorials/exporting.md).
@@ -50182,7 +50162,7 @@ For information on how long backups are retained, see the [data retention policy
 
 ##### Backup schedule
 
-Backups for Dedicated environments have a [specific frequency](https://fixed.docs.upsun.com/dedicated-environments/dedicated-gen-2/environment-differences.md#backups).
+Backups for Dedicated environments have a [specific frequency](https://fixed.docs.upsun.com/dedicated-environments/backups-restores.md).
 
 On Grid environments, preview environments can have up to 2 [manual backups](#create-a-manual-backup).
 The number of available backups for Production environments depends on your schedule.
@@ -50267,7 +50247,7 @@ You can create a manual backup using the [CLI](https://fixed.docs.upsun.com/admi
 
 ###### Automate manual backups
 
-You can also automate the process of creating manual backups through [cron jobs](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#crons).
+You can also automate the process of creating manual backups through [cron jobs](https://fixed.docs.upsun.com/create-apps/image-properties/crons.md).
 The cron job uses the CLI command to back up the environment.
 It requires you to [set up the CLI on the environment with an API token](https://fixed.docs.upsun.com/administration/cli/api-tokens.md#authenticate-in-an-environment).
 
@@ -50298,9 +50278,9 @@ Backups on the project My Project (1234567abcdef), environment main (type: produ
 +---------------------------+----------------------------+------------+
 | Created                   | Backup ID                  | Restorable |
 +---------------------------+----------------------------+------------+
-| 2022-08-15T09:48:58+01:00 | 5ouvtgo4v75axijww7sqnftste | true       |
-| 2022-07-09T14:17:17+01:00 | 7jks7dru5xpx5p5id5wtypur2y | true       |
-| 2022-06-22T18:33:29+01:00 | f3jbyxlhtmalco67fmfoxs7n4m | true       |
+| 2026-08-15T09:48:58+01:00 | 5ouvtgo4v75axijww7sqnftste | true       |
+| 2026-07-09T14:17:17+01:00 | 7jks7dru5xpx5p5id5wtypur2y | true       |
+| 2026-06-22T18:33:29+01:00 | f3jbyxlhtmalco67fmfoxs7n4m | true       |
 +---------------------------+----------------------------+------------+
 ```
 
@@ -50701,7 +50681,7 @@ platform environment:delete --delete-branch old
 ```
 ### Scale your live site
 
-Your production environment gets a [pool of resources](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#sizes)
+Your production environment gets a [pool of resources](https://fixed.docs.upsun.com/create-apps/image-properties/size.md)
 based on your [plan size](https://fixed.docs.upsun.com/administration/pricing.md).
 These resources are split up between the apps and services you've defined.
 
@@ -50813,7 +50793,7 @@ It's automatically on for all `platform.site` domains, and it's automatically of
 
 You can also send instructions to search engine indexers using a `robots.txt` file.
 Your app can serve this as a static file from its disk or as a dynamic response from its `passthru`.
-Control either with the [`location` section of your app configuration](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#locations).
+Control either with the [`location` section of your app configuration](https://fixed.docs.upsun.com/create-apps/image-properties/web.md#locations).
 
 If your `robots.txt` file includes instructions to ignore a page,
 search engine indexers may ignore it even if you have configured Upsun Fixed to not send the header.
@@ -50949,7 +50929,7 @@ The project timezone affects [automated backups](https://fixed.docs.upsun.com/en
 The project timezone doesn't affect:
 
 - [App runtime](https://fixed.docs.upsun.com/create-apps/timezone.md).
-- [Cron jobs](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#crons).
+- [Cron jobs](https://fixed.docs.upsun.com/create-apps/image-properties/crons.md).
 - [System logs](https://fixed.docs.upsun.com/increase-observability/logs.md). UTC is the default timezone for all logs.
 
 To change the timezone for a project, follow these steps:
@@ -51746,10 +51726,24 @@ This data is updated daily and will reflect your traffic usage throughout the bi
 
 You can also set up consumption alerts for your resource usage. Click the Alert button in the “Traffic this month” block within [Console](https://console.upsun.com/) to configure usage thresholds. For more information, head to the [Pricing docs page](https://fixed.docs.upsun.com/administration/pricing.md#monthly-traffic-alerts).
 
+###### How Managed Fastly works
+
+Upsun Fixed’s Managed Fastly CDN routes incoming traffic through the Fastly edge network before requests reach your application. This enables global caching, edge logic (VCL), performance optimisation, and optional security features.
+
+The Fastly CDN must be provisioned and managed by Upsun Fixed. Features such as the Upsun Fixed Web Application Firewall (WAF), edge rate limiting, and image optimisation depend on this managed integration and cannot be used with a customer-managed Fastly account.
+
+Once enabled, Fastly operates as the first point of contact for all HTTP requests, allowing requests to be cached, filtered, transformed, or blocked entirely at the edge.
+
+**Feature dependencies**: 
+
+ - The Upsun Fixed WAF requires the Upsun Fixed Managed Fastly CDN.
+ - Customers cannot attach the WAF to an existing third-party Fastly service.
+ - Advanced Fastly features such as virtual patching and per-project logging require a configurable Fastly workspace.
+
 ####### Domain control validation
 
 When you request for a new domain to be added to your Fastly service,
-Upsun Fixed support provides you with a [`CNAME` record](https://fixed.docs.upsun.com/domains/steps/dns.md) for [domain control validation](https://fixed.docs.upsun.com/domains/troubleshoot.md#ownership-verification).
+Upsun Fixed [support](https://fixed.docs.upsun.com/learn/overview/get-support.md) provides you with a [`CNAME` record](https://fixed.docs.upsun.com/domains/steps/dns.md) for [domain control validation](https://fixed.docs.upsun.com/domains/troubleshoot.md#ownership-verification).
 To add this `CNAME` record to your domain settings,
 see how to [configure your DNS provider](https://fixed.docs.upsun.com/domains/steps.md#2-configure-your-dns-provider).
 
@@ -51763,7 +51757,7 @@ If you use a Fastly CDN provided by Upsun Fixed,
 you can provide your own third-party TLS certificates for an additional fee.
 
 To do so, if you don't have one,
-set up a [mount](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#mounts) that isn't accessible to the web.
+set up a [mount](https://fixed.docs.upsun.com/create-apps/image-properties/mounts.md) that isn't accessible to the web.
 Use an environment with access limited to Upsun Fixed support and trusted users.
 [Transfer](https://fixed.docs.upsun.com/development/file-transfer.md) each certificate, its unencrypted private key,
 and the intermediate certificate to the mount.
@@ -51793,7 +51787,46 @@ In this case, the Fastly API token is stored in a text file called ``fastly_toke
 typically located at ``/mnt/shared/fastly_tokens.txt``.
 
 ###### Dynamic ACL and rate limiting
-For details about updating an access control list (ACL) and applying rate limiting, check out the [Working with Upsun Fixed rate-limiting implementation](https://support.platform.sh/hc/en-us/community/posts/26091087795602-Working-with-platform-sh-rate-limiting-implementation-Fastly) article in the Upsun Community.#### Set up your Cloudflare CDN
+
+For details about updating an access control list (ACL) and applying rate limiting, check out the [Working with Upsun Fixed rate-limiting implementation](https://support.platform.sh/hc/en-us/articles/29528777071890-Upsun-Fastly-Rate-Limiting-How-it-works-how-to-tune-it) article in the Upsun Community.
+
+###### Edge-level rate limiting
+
+Upsun Fixed provides edge-level rate limiting through Fastly, allowing you to control how many requests a single IP address or network can make within a given time window.
+
+Rate limiting is applied at the edge, before requests reach your application, helping to reduce load and mitigate abusive traffic patterns.
+
+####### What Edge-level rate limiting can do
+
+- Protect sensitive endpoints such as `/login`, `/admin`, or checkout paths
+- Limit request floods from a single IP or IP range
+- Reduce application load during traffic spikes
+- Enable Upsun Support to better handle attacks or high-traffic events by throttling traffic at the edge
+
+Edge-level rate limiting is:
+- Included with all Upsun Fastly Next-Gen WAF tiers
+- Available as a standalone add-on (without the WAF)
+
+####### Configuration and defaults
+
+There are no default rate-limiting rules applied automatically. Rate limiting is configured during onboarding, or by request via Upsun Fixed [Support](https://fixed.docs.upsun.com/learn/overview/get-support.md).
+
+Rules can be scoped by:
+
+- Request path
+- Request type
+- IP address or network
+- Custom thresholds and actions (block, allow, log)
+
+####### Limitations
+
+Edge-level rate limiting is a rule-based control mechanism, not an automated bot-detection system. It does not:
+
+- Identify bots automatically
+- Present CAPTCHA or JavaScript challenges
+- Provide AI-driven mitigation
+
+For advanced bot and scraper protection, Upsun Fixed offers separate third-party integrations.#### Set up your Cloudflare CDN
 
 You can [use a CDN](https://fixed.docs.upsun.com/domains/cdn.md) to deliver your site's content to users more quickly.
 
@@ -51925,7 +51958,7 @@ Provisioning certificates
 
   E: Error validating domains: urn:ietf:params:acme:error:rejectedIdentifier :: The server will not issue certificates for the identifier :: NewOrder request did not include a SAN short enough to fit in CN
   Unable to validate domains domain a-new-and-really-awesome-feature-abc1234-defghijk56789.eu3.platformsh.site, www.domain a-new-and-really-awesome-feature-abc1234-defghijk56789.eu3.platformsh.site, will retry in the background.
-  (Next refresh will be at 2023-04-28 02:22:50.639301+00:00.)
+  (Next refresh will be at 2026-01-01 02:22:50.639301+00:00.)
 
   E: Error: TLS Certificate provisioning failed
  ```
@@ -52018,9 +52051,9 @@ Provisioning certificates
   W: Failed to verify the challenge at the gateway for the domain 'www.example.com'
   E: Error validating domain www.example.com: Couldn't complete challenge [HTTP01: There was a problem with a DNS query during identifier validation]
   Unable to validate domains www.example.com, will retry in the background.
-  (Next refresh will be at 2023-07-04 17:43:10.259891+00:00.)
+  (Next refresh will be at 2026-03-01 17:43:10.259891+00:00.)
   Certificates
-  - certificate 61bc4c8: expiring on 2023-09-02 01:11:12+00:00, covering sdgs.un.org
+  - certificate 61bc4c8: expiring on 2026-03-02 01:11:12+00:00, covering sdgs.un.org
 
 E: Error: TLS Certificate provisioning failed
 ```
@@ -52251,7 +52284,7 @@ eval $(platform completion)
 
 You can use the Upsun Fixed CLI to run commands on your container.
 You can use any command you've added in [dependencies](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#dependencies)
-or a [hook](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#hooks).
+or a [hook](https://fixed.docs.upsun.com/create-apps/image-properties/hooks.md).
 
 The syntax looks like the following:
 
@@ -52454,7 +52487,7 @@ platform ssh-cert:load --no-interaction
       display: none;
     }
 
-# Upsun CLI (Platform.sh compatibility) 5.7.2
+# Upsun CLI (Platform.sh compatibility) 5.8.0
 
 - [Installation](https://fixed.docs.upsun.com/administration/cli#1-install)
 - [Open an issue](https://github.com/platformsh/cli/issues)
@@ -53745,7 +53778,7 @@ platform auth:verify-phone-number
 
 ###### `autoscaling:get`
 
-View the autoscaling configuration of apps and workers on an environment
+View the autoscaling configuration of apps, workers, and services on an environment
 
 Aliases: `autoscaling`
 
@@ -53792,7 +53825,7 @@ platform autoscaling [-p|--project PROJECT] [-e|--environment ENVIRONMENT] [--fo
 
 ###### `autoscaling:set`
 
-Set the autoscaling configuration of apps or workers in an environment
+Set the autoscaling configuration of apps, workers, or services in an environment
 
 ####### Usage
 
@@ -53800,14 +53833,14 @@ Set the autoscaling configuration of apps or workers in an environment
 platform autoscaling:set [-s|--service SERVICE] [-m|--metric METRIC] [--enabled ENABLED] [--threshold-up THRESHOLD-UP] [--duration-up DURATION-UP] [--cooldown-up COOLDOWN-UP] [--threshold-down THRESHOLD-DOWN] [--duration-down DURATION-DOWN] [--cooldown-down COOLDOWN-DOWN] [--instances-min INSTANCES-MIN] [--instances-max INSTANCES-MAX] [--dry-run] [-p|--project PROJECT] [-e|--environment ENVIRONMENT]
 ```
 
-Configure automatic scaling for apps or workers in an environment.
+Configure automatic scaling for apps, workers, or services in an environment.
 
 You can also configure resources statically by running: platform resources:set
 
 ######## Options
 
 * `--service` (`-s`) (expects a value)
-  Name of the app or worker to configure autoscaling for
+  Name of the app, worker, or service to configure autoscaling for
 
 * `--metric` (`-m`) (expects a value)
   Name of the metric to use for triggering autoscaling
@@ -61981,7 +62014,22 @@ platform organization:info --org acme-corp
 As an organization owner or an organization user with the **Manage billing** permission,
 you can access and download invoices and edit billing information such as the stored credit card and billing address.
 
-##### Create a new organization
+##### Create a Fixed organization
+
+**This option is available only to Upsun Fixed customers under current contracts.** 
+
+For all other customers, all new organization types are Flex organizations, which you can create yourself by using the Console or CLI as described in [Create a Flex organization](#create-flex-organization) below.
+
+To create a Fixed organization, please open a [support ticket](https://fixed.docs.upsun.com/learn/overview/get-support.md), and indicate the following information in your ticket:
+
+- Indicate that you are requesting the creation of a Fixed organization.
+- **Category:** Access  
+- **Priority:** Low / Normal (as required)  
+- **Description:** Make sure to include the **organization name** you would like.
+
+Our Support team will verify your eligibility for a Fixed organization. Once approved, a Fixed organization will be created on your behalf. Support will notify you when the organization is ready, and your ticket will be closed.
+
+##### Create a Flex organization {#create-flex-organization}
 
 You can create new organizations with different payment methods and billing addresses
 and organize your projects as you want.
@@ -62046,9 +62094,6 @@ Ideal for workloads that evolve over time or have dynamic resource requirements.
 
 **Flex:** Users can customize resources per container (per app or service) for **all** environments.
 
-###### What can you do?
-When creating a new organization, users will be able to select the organization type from a drop-down option based on their preference. Once the organization is created, users can manage their organizations like they do today.
-
 ###### Feature differences
 
 ####### Developer experience
@@ -62076,8 +62121,8 @@ When creating a new organization, users will be able to select the organization 
 | Custom backup retention policies | Different packages | Unlimited (pay for storage) |
 | Email SMTP server | Yes | Yes |
 | Email validation (DKIM) | Enterprise and Elite only | Yes |
-| ElasticSearch (Premium containers) | Enterprise and Elite only | No |
-| MongoDB (Premium containers) | Enterprise and Elite only | No |
+| ElasticSearch (Premium containers) | Enterprise and Elite only | Yes |
+| MongoDB (Premium containers) | Enterprise and Elite only | Yes |
 
 ####### Observability tools
 
@@ -62124,7 +62169,7 @@ When creating a new organization, users will be able to select the organization 
 | Privacy regulations | Yes | Yes |
 | SOC 2 | Yes | Yes |
 | PCI DSS Level 1-compatible | Yes | Yes |
-| HIPAA | Enterprise and Elite only in specific regions | Coming soon |
+| HIPAA | Enterprise and Elite only in specific regions | Yes |
 
 ###### Fixed and Flex FAQs
 
@@ -62189,7 +62234,7 @@ There is no limit to the number of teams that can be defined within a single org
 As an organization owner or member with **Manage users** permissions, 
 you can create new teams.
 
-Teams must belong to an organization, so [create one](https://fixed.docs.upsun.com/administration/organizations.md#create-a-new-organization) first.
+Teams must belong to an organization, so [create one](https://fixed.docs.upsun.com/administration/organizations.md) first.
 You can create new organizations with different payment methods and billing addresses
 and organize your projects as you want, but keep in mind that both users and teams are restricted to single organizations.
 
@@ -62408,7 +62453,7 @@ A user can have one of the following roles on an environment type which grants t
 | Contributor | Yes              | No         | Yes       | Yes                | Yes        | No              | No              |
 | Viewer      | Yes              | No         | No        | Yes                | No         | No              | No              |
 
-To customize which roles can use SSH, set [`access` in your app configuration](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#access).
+To customize which roles can use SSH, set [`access` in your app configuration](https://fixed.docs.upsun.com/create-apps/image-properties/access.md).
 
 ###### View a user's permissions across all of the projects in your organization
 
@@ -62793,9 +62838,9 @@ Agencies have access to several partner levels with many perks.
 
   | Discount          | Registered | Bronze | Silver | Gold | Platinum | Diamond |
   |-------------------|------------|--------|--------|------|----------|---------|
-  | User license      | –          | –      | Free   | Free | Free     | Free    |
+  | User license      | Free       | Free   | Free   | Free | Free     | Free    |
   | Development plan  | –          | –      | –      | Free | Free     | Free    |
-  | Professional tier | –          | –      | 10%    | 10%  | 10%      | 10%     |
+  | Professional tier | –          | 10%    | 10%    | 10%  | 10%      | 10%     |
   | Premier tier      | –          | –      | 10%    | 10%  | 10%      | 10%     |
   | Enterprise tier   | –          | –      | 10%    | 18%  | 20%      | 20%     |
   | Elite tier        | –          | –      | –      | –    | 25%      | 30%     |
@@ -62917,14 +62962,11 @@ The **billing cycle** refers to the period between invoices. You will be billed 
 
 ### Server upgrades
 
-Upsun Fixed runs a variety of servers to deliver its services.
-To ensure your projects get the newest features, these servers are occasionally updated.
+To ensure your projects get the latest features, improvements, and bug fixes, Upsun Fixed updates the servers that deliver services. 
 
-You don't have to do anything to get the updates.
-When they're ready for your project, you see an activity about the server being updated in your [activity logs](https://fixed.docs.upsun.com/increase-observability/logs/access-logs.md#activity-logs).
-These activities don't cause downtime for your project.
+No action is needed on your part, and no downtime occurs for your projects. 
 
-The log of the specific activity includes a description of what has changed with the update.
+To view these upgrade events, go to the [activity logs](https://fixed.docs.upsun.com../increase-observability/logs/access-logs.md#activity-logs) for any project or environment and then select **Upgrade** from the **Filter** list.
 
 ##### Affected servers
 
@@ -63316,7 +63358,7 @@ The WAF enforces a file upload limit.
 By default, this limit is set at 250 MB.
 
 You can customize the file upload limit by amending your [app configuration](https://fixed.docs.upsun.com/create-apps.md).
-In the [`web.locations` dictionary](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#locations),
+In the [`web.locations` dictionary](https://fixed.docs.upsun.com/create-apps/image-properties/web.md#locations),
 add your desired value for the `max_request_size` property.
 
 ####### File extension restriction
@@ -63324,8 +63366,8 @@ add your desired value for the `max_request_size` property.
 The WAF enforces any file extension restriction you may have defined in your [app configuration](https://fixed.docs.upsun.com/create-apps.md).
 
 To set up a file extension restriction,
-adjust the [`web.locations` dictionary](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#locations).
-Set up [rules](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#rules) to allow only certain file extensions on a given path.
+adjust the [`web.locations` dictionary](https://fixed.docs.upsun.com/create-apps/image-properties/web.md#locations).
+Set up [rules](https://fixed.docs.upsun.com/create-apps/image-properties/web.md#rules) to allow only certain file extensions on a given path.
 
 ####### Disallowed requests and headers
 
@@ -63371,16 +63413,16 @@ Since Upsun Fixed router services use Nginx processes,
 your projects are protected against such attacks.
 #### Fastly Next-Gen WAF
 
-On top of the [Upsun Fixed Web Application Firewall (WAF)](https://fixed.docs.upsun.com/security/web-application-firewall/waf.md) included in Upsun Fixed Enterprise and Elite plans,
-you can subscribe to the Fastly Next-Gen WAF to further protect your app from security threats.
+On top of the [Upsun Fixed Web Application Firewall (WAF)](https://fixed.docs.upsun.com/security/web-application-firewall/waf.md) included in Upsun Fixed Fixed Enterprise and Elite plans,
+you can subscribe to the Fastly Next-Gen Web Application Firewall (Next-Gen WAF) to further protect your app from security threats.
 
 ###### Available offers
 
 If you want to subscribe to the Fastly Next-Gen WAF through Upsun Fixed,
 you can choose from two offers:
 
-- If you subscribe to the **Basic** offer, your WAF is fully managed by Upsun Fixed
-- If you subscribe to the **Basic configurable** offer, your WAF is fully managed by Upsun Fixed too, but with additional flexibility and visibility provided
+- If you subscribe to the **Basic** offer, your WAF is fully managed by Upsun Fixed.
+- If you subscribe to the **Basic configurable** offer, your WAF is fully managed by Upsun Fixed too, but with additional flexibility and visibility provided.
 
 To view a list of all the features included in each offer, see the following table.
 
@@ -63403,6 +63445,100 @@ Included features may present limitations compared to those advertised by Fastly
 
 To subscribe to a Fastly Next-Gen WAF offer through Upsun Fixed,
 [contact Sales](https://upsun.com/contact-us/).
+
+###### Next-Gen WAF Tier Comparison
+
+######## Basic 
+
+- Block-only mode
+- Default attack and anomaly signals enabled
+- No virtual patching
+- No default dashboards
+- No custom signals, response codes, or API/ATO signals
+
+This tier is best suited for baseline protection with minimal configuration requirements.
+
+######## Basic Configurable 
+
+- Block, not blocking, and off modes
+- Default attack and anomaly signals enabled
+- Virtual patching available in block mode
+- Default dashboards reviewed during quarterly business reviews
+- No custom signals, response codes, or API/ATO signals 
+
+This tier is best for customers needing custom rules, CVE protection, per-project visibility, or log integration.
+
+###### How the Fastly Next-Gen WAF Works
+
+The Fastly Next-Gen WAF evaluates incoming requests using a combination of signals, conditions, actions, and thresholds.
+
+####### Signals
+
+Signals classify and tag requests based on observed patterns, such as:
+
+- SQL injection attempts
+- Cross-site scripting payloads
+- Repeated 404 requests
+- Known attack signatures
+
+Signals are informational and are not inherently “good” or “bad”.
+
+####### Conditions
+
+Conditions define where and when a rule applies. Examples include:
+
+- Specific URL paths
+- Request methods
+- Geographic origin
+- Presence of certain signals
+
+####### Actions
+
+Actions define what happens when a rule matches (allow/log apply to the configurable offer):
+
+- Block the request
+- Allow the request
+- Log the request for analysis
+
+**Note**: 
+
+The Basic Next-Gen WAF offer operates in block-only mode.
+
+####### Thresholds
+
+Thresholds define volume-based triggers. For example, block if more than `N` suspicious requests occur from the same IP within a defined time window to distinguish normal user behaviour from automated probing or attacks.
+
+####### Virtual Patching
+
+Virtual patches are temporary WAF rules provided by Fastly to block known CVEs at the edge. They:
+
+- Protect against specific, identified vulnerabilities
+- Buy time while application dependencies are patched
+- Do not replace proper application updates
+
+**Note**: 
+
+Virtual patching is available only in the Basic Configurable Next-Gen WAF tier.
+
+###### Scope and Limitations
+
+The Fastly Next-Gen WAF mitigates many common web-based attacks, including parts of the OWASP Top 10. However, it does not replace application-level security. The WAF does not automatically protect against:
+
+- Weak authentication or password policies
+- Insecure application design
+- Business-logic flaws
+- All bot or scraper traffic
+- All DDoS attack types
+
+Some attacks are mitigated at the CDN network layer, while others require identifiable patterns that can be enforced via WAF or rate-limiting rules.
+
+**No automatic challenges**: 
+
+Upsun Fixed’s Fastly Next-Gen WAF does not provide automatic CAPTCHA or JavaScript challenges. Traffic is evaluated using rule-based signals, thresholds, and actions configured during onboarding or [via Support](https://fixed.docs.upsun.com/learn/overview/get-support.md).
+
+###### Configuration and enablement
+
+Fastly Next-Gen WAF features are not self-service. Enablement and configuration occur during customer onboarding, or via a [Support request](https://fixed.docs.upsun.com/learn/overview/get-support.md) after purchase.
 
 ### Overview
 
@@ -63484,78 +63620,78 @@ Dedicated Generation 2 consists of two parts: a development environment and a De
 
 ###### Dedicated Generation 2 vs Grid
 
-Much of the tooling used on Grid is used for DG2, but there are still some differences. Please find a list of the similarities and differences between these two environments below: 
+Much of the tooling used on Grid is used for DG2, but there are still some differences. Please find a list of the similarities and differences between these two environments below:
 
-| Feature                                                | Dedicated Generation 2                                                            | Grid                                                                              |
-|--------------------------------------------------------|-----------------------------------------------------------------------------------|-----------------------------------------------------------------------------------|
-| **Source Operations**                                  | Yes                                                                               | Yes                                                                               |
-| **PHP version upgrade**                                | Self-service via YAML config files                                                | Self-service via YAML config files                                                |
-| **Node.js version upgrade**                            | Self-service via YAML config files                                                | Self-service via YAML config files                                                |
-| **Cron management**                                    | Self-service via YAML config files                                                | Self-service via YAML config files                                                |
-| **Web server internal config : locations**             | Self-service via YAML config files                                                | Self-service via YAML config files                                                |
-| **CDN**                                                | Fastly                                                                            | A managed Fastly CDN service can be purchased through Upsun                 |
-| **Dedicated IP**                                       | Yes                                                                               | No                                                                                |
-| **Configuration management**                           | Split responsibility between Upsun and customer                             | only YAML files                                                                   |
-| **Usable regions**                                     | Any region needed                                                                 | Only publicly available                                                           |
-| **Autonomous upsize**                                  | Managed through Upsun Fixed                                                       | Yes                                                                               |
-| **Autoscaling**                                        | Yes                                                                               | No                                                                                |
-| **Upsize or Downsize methods**                         | No downtime - each instance is altered in a rolling fashion                       | Redeploy - possible downtime depending on the hooks                               |
-| **Multi availability zones**                           | Yes                                                                               | No                                                                                |
-| **New Relic**                                          | APM + New Relic infrastructure                                                    | APM Supported only                                                                |
-| **Multi-app support**                                  | Supported through docroots                                                        | Supported natively                                                                |
-| **Routes management**                                  | Self-service                                                                      | Self-service                                                                      |
-| **Environment clone**                                  | Only on development environments                                                  | Yes on all branches                                                               |
-| **Services : Add, remove, upgrade**                    | Managed by Upsun Fixed                                                            | Self-service                                                                      |
-| **Relationships : Add, remove, update**                | Managed by Upsun Fixed                                                            | Self-service                                                                      |
-| **Workers management**                                 | Managed by Upsun Fixed                                                            | Self-service                                                                      |
-| **Web server internal config : domains**               | Managed by Upsun Fixed                                                            | Self-service                                                                      |
-| **Storage allocation between mounts, DB and services** | Managed by Upsun Fixed                                                            | Self-service                                                                      |
-| **Cron tasks interrupted by deploys**                  | Yes: a deploy will terminate a running Cron task                                  | No: a running Cron task will block a deployment until it is complete              |
-| **Log exports**                                        | Managed by Upsun Fixed with Rsyslog exports and Fastly log exports                | Log forwarding feature and Fastly log export also available                       |
-| **Sync and merge functionalities**                     | Only on development environments                                                  | Yes on all branches                                                               |
+| Feature                                                | Dedicated Generation 2                                                                | Grid                                                                                  |
+|--------------------------------------------------------|---------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------|
+| **Source Operations**                                  | Yes                                                                                   | Yes                                                                                   |
+| **PHP version upgrade**                                | Self-service via YAML config files                                                    | Self-service via YAML config files                                                    |
+| **Node.js version upgrade**                            | Self-service via YAML config files                                                    | Self-service via YAML config files                                                    |
+| **Cron management**                                    | Self-service via YAML config files                                                    | Self-service via YAML config files                                                    |
+| **Web server internal config : locations**             | Self-service via YAML config files                                                    | Self-service via YAML config files                                                    |
+| **CDN**                                                | Fastly                                                                                | A managed Fastly CDN service can be purchased through Upsun                           |
+| **Dedicated IP**                                       | Yes                                                                                   | No                                                                                    |
+| **Configuration management**                           | Split responsibility between Upsun and customer                                       | only YAML files                                                                       |
+| **Usable regions**                                     | Any region needed                                                                     | Only publicly available                                                               |
+| **Autonomous upsize**                                  | Managed through Upsun Fixed                                                           | Yes                                                                                   |
+| **Autoscaling**                                        | Yes                                                                                   | No                                                                                    |
+| **Upsize or Downsize methods**                         | No downtime - each instance is altered in a rolling fashion                           | Redeploy - possible downtime depending on the hooks                                   |
+| **Multi availability zones**                           | Yes                                                                                   | No                                                                                    |
+| **New Relic**                                          | APM + New Relic infrastructure                                                        | APM Supported only                                                                    |
+| **Multi-app support**                                  | Supported through docroots                                                            | Supported natively                                                                    |
+| **Routes management**                                  | Self-service                                                                          | Self-service                                                                          |
+| **Environment clone**                                  | Only on development environments                                                      | Yes on all branches                                                                   |
+| **Services : Add, remove, upgrade**                    | Managed by Upsun Fixed                                                                | Self-service                                                                          |
+| **Relationships : Add, remove, update**                | Managed by Upsun Fixed                                                                | Self-service                                                                          |
+| **Workers management**                                 | Managed by Upsun Fixed                                                                | Self-service                                                                          |
+| **Web server internal config : domains**               | Managed by Upsun Fixed                                                                | Self-service                                                                          |
+| **Storage allocation between mounts, DB and services** | Managed by Upsun Fixed                                                                | Self-service                                                                          |
+| **Cron tasks interrupted by deploys**                  | Yes: a deploy will terminate a running Cron task                                      | No: a running Cron task will block a deployment until it is complete                  |
+| **Log exports**                                        | Managed by Upsun Fixed with Rsyslog exports and Fastly log exports                    | Log forwarding feature and Fastly log export also available                           |
+| **Sync and merge functionalities**                     | Only on development environments                                                      | Yes on all branches                                                                   |
 | **SLA**                                                | 99.99% with [Enterprise or Elite](https://upsun.com/fixed-pricing/)                   | 99.9% with [Enterprise or Elite](https://upsun.com/fixed-pricing/)                    |
-| **Infrastructure**                                     | Dedicated 3 node cluster                                                          | Containers with dedicated resources on top of a shared redundant infrastructure   |
-| **Functioning**                                        | 3 nodes are running all applications and services and are replicated              | A single container is deployed per runtimes and per services                      |
-| **Resources allocation**                               | Resources deployed on 3 nodes                                                     | Resources are spread through the container with fixed sizes after deployment      |
-| **MySQL Replication**                                  | Yes: 3 services nodes cluster                                                     | None: standalone service container                                                |
-| **Redis Replication**                                  | Yes: 3 services nodes cluster                                                     | None: standalone service container                                                |
-| **High Availability (HA)**                             | Yes                                                                               | No                                                                                |
-| **Split Architecture**                                 | Yes                                                                               | No                                                                                |
-| **Storage**                                            | Local disks are accessed either locally or via glusterfs                          | 100 GB self service max (can be extended upon request)                            |
-| **Automated backup**                                   | Yes                                                                               | Yes                                                                               |
+| **Infrastructure**                                     | Dedicated 3 node cluster                                                              | Containers with dedicated resources on top of a shared redundant infrastructure       |
+| **Functioning**                                        | 3 nodes are running all applications and services and are replicated                  | A single container is deployed per runtimes and per services                          |
+| **Resources allocation**                               | Resources deployed on 3 nodes                                                         | Resources are spread through the container with fixed sizes after deployment          |
+| **MySQL Replication**                                  | Yes: 3 services nodes cluster                                                         | None: standalone service container                                                    |
+| **Redis Replication**                                  | Yes: 3 services nodes cluster                                                         | None: standalone service container                                                    |
+| **High Availability (HA)**                             | Yes                                                                                   | No                                                                                    |
+| **Split Architecture**                                 | Yes                                                                                   | No                                                                                    |
+| **Storage**                                            | Local disks are accessed either locally or via glusterfs                              | 100 GB self service max (can be extended upon request)                                |
+| **Automated backup**                                   | Yes                                                                                   | Yes                                                                                   |
 | **Custom domains name**                                | On all branches for [Enterprise or Elite](https://upsun.com/fixed-pricing/) customers | On all branches for [Enterprise or Elite](https://upsun.com/fixed-pricing/) customers |
-| **MongoDB**                                            | Yes                                                                               | Standalone service container                                                      |
-| **web.commands.post_start**                            | No                                                                                | Self-service via YAML config files                                                |
+| **MongoDB**                                            | Yes                                                                                   | Standalone service container                                                          |
+| **web.commands.post_start**                            | No                                                                                    | Self-service via YAML config files                                                    |
 
 ####### Optional features
 
-You can enable the following features on your Dedicated Gen 2 projects. To enable an optional feature or get more information on potential fees, [contact Sales](https://upsun.com/contact-us/).
+You can enable the following features on your Dedicated Gen 2 projects. To enable an optional feature or get more information on potential fees, [contact Sales](https://upsun.com/contact-us/).
 
 ######## Multiple applications
 
 You can create multiple apps within a single project so they can share data. This can be useful if you have several apps that are closely related, such as a backend-only CMS and a frontend system for content delivery and display.
 
-For more information, see how to [configure multiple apps in a single project](https://fixed.docs.upsun.com/create-apps/multi-app.md).
+For more information, see how to [configure multiple apps in a single project](https://fixed.docs.upsun.com/create-apps/multi-app.md).
 
-######## Staging environments 
+######## Staging environments
 
 A dedicated single-node staging machine is provisioned for your application with an identical software configuration to your production hardware, but reduced hardware specs. This gives the advantages of isolating the staging load from the production hardware as well as having an identical software configuration to perform UAT, but this option doesn’t provide a bed for performance testing as the physical hardware configuration isn’t the same as production.
 
-######## Additional application servers (Split Architecture)
+######## Additional application servers (Split Architecture)
 
 For especially high-traffic sites we can also add additional application-only servers. These servers contain just the application code; data storage services (such as SQL, Solr, Redis) are limited to the standard three. The cluster begins to look more like a standard N-Tier architecture at this point, with a horizontal line of web application servers in front of a 3 node (N+1) cluster of Galera database servers.
 
 Speak to your sales representative about the costs associated with adding additional application servers. This configuration requires a separate setup from the default so advanced planning is required.
 
-######## SFTP 
+######## SFTP
 
 In addition to SSH accounts, you can create SFTP accounts with a custom user/password that are restricted to certain directories. These directories must be one of the writeable mounts.
 
-There is no cost for this configuration, and you can request it at any time via a [support ticket](https://fixed.docs.upsun.com/learn/overview/get-support.md). SSH public key based authentication is also supported on the SFTP account.
+There is no cost for this configuration, and you can request it at any time via a [support ticket](https://fixed.docs.upsun.com/learn/overview/get-support.md). SSH public key based authentication is also supported on the SFTP account.
 
-See how to [transfer files through sftp](https://fixed.docs.upsun.com/development/file-transfer.md).
+See how to [transfer files through sftp](https://fixed.docs.upsun.com/development/file-transfer.md).
 
-######## Error handling 
+######## Error handling
 
 On Grid projects, incoming requests are held at the edge router temporarily during a deploy. That allows a site to “respond slowly” rather than be offline during a deploy, provided the deploy time is short (a few seconds).
 
@@ -63563,9 +63699,11 @@ On Dedicated Gen 2 projects, incoming requests aren’t held during deploy and r
 
 By default, Upsun Fixed serves generic Upsun-branded error pages for errors generated before a request reaches the application. (5XX errors, some 4XX errors, etc.) Alternatively you may provide a static error page for each desired error code via a ticket for us to configure with the CDN. This file may be any static HTML file but is limited to 64 KB in size.
 
-######## Remote logging 
+######## Remote logging
 
-Dedicated Gen 2 supports sending logs to a remote logging service such as Loggly, Papertrail, or Logz.io using the rsyslog service. This is an optional feature and you can request that it be enabled via a [support ticket](https://fixed.docs.upsun.com/learn/overview/get-support.md). Once enabled and configured your application can direct log output to the system syslog facility and is replicated to the remote service you have configured.
+Dedicated Gen 2 supports sending logs to a remote logging service such as Loggly, Papertrail, or Logz.io using the rsyslog service. This is an optional feature and you can request that it be enabled via a [support ticket](https://fixed.docs.upsun.com/learn/overview/get-support.md). Once enabled and configured your application can direct log output to the system syslog facility and is replicated to the remote service you have configured.
+
+For a broader list of supported third-party destinations and configuration details, see [Third-party log forwarding integrations](https://fixed.docs.upsun.com/increase-observability/logs/forward-logs.md#use-a-log-forwarding-integration).
 
 When contacting support to enable rsyslog, you need:
 
@@ -63575,9 +63713,9 @@ When contacting support to enable rsyslog, you need:
 
 There is no cost for this functionality.
 
-######## IP restrictions 
+######## IP restrictions
 
-Upsun Fixed supports [project-level IP restrictions (allow/deny) and HTTP Basic authentication](https://fixed.docs.upsun.com/environments/http-access-control.md). These may be configured through the development environment and are automatically replicated from the production and staging branches to the production and staging environments, respectively.
+Upsun Fixed supports [project-level IP restrictions (allow/deny) and HTTP Basic authentication](https://fixed.docs.upsun.com/environments/http-access-control.md). These may be configured through the development environment and are automatically replicated from the production and staging branches to the production and staging environments, respectively.
 
 Changing access control triggers a new deployment of the current environment. However, the changes aren’t propagated to child environments until they’re manually redeployed.
 
@@ -63642,7 +63780,7 @@ When deploying to the Dedicated Gen 2 cluster the process is slightly different 
 
 **Note**: 
 
-Note that hooks still run without containers. For example, [commands like ](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#web-commands) and other hooks run directly on the app docroot or worker service.
+Note that hooks still run without containers. For example, [commands like ](https://fixed.docs.upsun.com/create-apps/image-properties/web.md#web-commands) and other hooks run directly on the app docroot or worker service.
 
 The deploy usually takes approximately 30-90 seconds, although that is dependent on how your deploy hook has been configured.
 
@@ -64891,7 +65029,7 @@ On Dedicated Gen 2 Environments, it runs as [SolrCloud](https://solr.apache.org/
 
 ###### Cron tasks interrupted by deploys
 
-How [cron tasks](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#crons) interact with deploys changes based on the environment.
+How [cron tasks](https://fixed.docs.upsun.com/create-apps/image-properties/crons.md) interact with deploys changes based on the environment.
 
 On Grid environments, a running cron task blocks a deploy until the cron is complete.
 On Dedicated Gen 2 environments, a deploy terminates a running cron task.
@@ -64911,14 +65049,14 @@ It's assumed you want the settings the same, unless you state otherwise in the t
 
 The following settings require a [support ticket](https://fixed.docs.upsun.com/learn/overview/get-support.md):
 
-* [Worker instances](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#workers)
+* [Worker instances](https://fixed.docs.upsun.com/create-apps/image-properties/workers.md)
 * [Service configuration](https://fixed.docs.upsun.com/add-services.md)
 * Relationships among services and apps
 * Plan upsizing
 * Increasing storage
 * Allocating storage among mounts and services
 * [PHP extensions](https://fixed.docs.upsun.com/languages/php/extensions.md)
-* Web server configuration (the [`web.locations` section of your app configuration](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#locations))
+* Web server configuration (the [`web.locations` section of your app configuration](https://fixed.docs.upsun.com/create-apps/image-properties/web.md#locations))
 
 ###### Logs
 
@@ -64940,7 +65078,7 @@ All Dedicated clusters are single-tenant. The [three hosts](https://fixed.docs.
 There are no exceptions for this rule, so any incoming web service requests, ETL jobs, or otherwise need to transact over one of these protocols. Outgoing TCP traffic isn’t behind a firewall. Outgoing UDP traffic is disallowed. For containers to be allowed to connect to each other, the following requirement must be met:
 
 -   The containers must live in the same environment
--   You need to define an explicit relationship between the containers in your [app configuration](https://fixed.docs.upsun.com/create-apps/app-reference/single-runtime-image.md#relationships)
+-   You need to define an explicit relationship between the containers in your [app configuration](https://fixed.docs.upsun.com/create-apps/image-properties/relationships.md)
 
 All Dedicated projects are isolated and their data is fully encrypted. Should a security breach occur, Upsun follows a strict security incident handling procedure to deal with the issue as promptly and efficiently as possible.
 

@@ -3,7 +3,6 @@
 ---
 url: /docs/guide/usage/linter/rules/unicorn/no-await-expression-member.md
 ---
-# unicorn/no-await-expression-member&#x20;
 
 ### What it does
 

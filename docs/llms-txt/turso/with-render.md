@@ -1,5 +1,9 @@
 # Source: https://docs.turso.tech/features/embedded-replicas/with-render.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.turso.tech/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Turso + Render
 
 > Deploy a JavaScript app using [Turso embedded replicas](/features/embedded-replicas) to [Render](https://render.com/).

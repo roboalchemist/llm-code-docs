@@ -91,7 +91,7 @@ Product Hunt drives significant traffic and visibility. A successful launch brin
 
 Create a Product Hunt listing for your Actor. Schedule it for a weekday morning (Tuesday through Thursday works best). Prepare assets: logo, screenshots, and demo video.
 
-Learn more in the https://docs.apify.com/academy/actor-marketing-playbook/promote-your-actor/product-hunt.md.
+Learn more in the [Product Hunt guide](https://docs.apify.com/academy/actor-marketing-playbook/promote-your-actor/product-hunt.md).
 
 ### Submit to Hacker News
 
@@ -141,7 +141,7 @@ Developers love reading about other developers' journeys. This positions you as 
 
 Share your development process, challenges you faced, and how you solved them. Post on dev.to, Medium, Hashnode, or your personal blog.
 
-Learn more in the https://docs.apify.com/academy/actor-marketing-playbook/promote-your-actor/blogs-and-blog-resources.md.
+Learn more in the [Blogs and blog resources guide](https://docs.apify.com/academy/actor-marketing-playbook/promote-your-actor/blogs-and-blog-resources.md).
 
 ### Create a "Best X" article for Medium
 

@@ -3,7 +3,6 @@
 ---
 url: /docs/guide/usage/linter/rules/promise/param-names.md
 ---
-# promise/param-names&#x20;
 
 ### What it does
 
@@ -41,14 +40,14 @@ This rule accepts a configuration object with the following properties:
 
 ### rejectPattern
 
-type: `string | null`
+type: `string`
 
 Regex pattern used to validate the `reject` parameter name. If provided, this pattern
 is used instead of the default `^_?reject$` check.
 
 ### resolvePattern
 
-type: `string | null`
+type: `string`
 
 Regex pattern used to validate the `resolve` parameter name. If provided, this pattern
 is used instead of the default `^_?resolve$` check.

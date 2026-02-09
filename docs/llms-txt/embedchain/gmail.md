@@ -1,5 +1,9 @@
 # Source: https://docs.embedchain.ai/components/data-sources/gmail.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.embedchain.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # 📬 Gmail
 
 To use GmailLoader you must install the extra dependencies with `pip install --upgrade embedchain[gmail]`.
@@ -23,7 +27,7 @@ To use this you need to save `credentials.json` in the directory from where you 
 11. When you are done, a modal opens where you can download the details in `json` format.
 12. Put the `.json` file in your current directory and rename it to `credentials.json`
 
-```python
+```python  theme={null}
 from embedchain import App
 
 app = App()

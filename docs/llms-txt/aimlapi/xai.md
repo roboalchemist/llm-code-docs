@@ -2,10 +2,6 @@
 
 # Source: https://docs.aimlapi.com/api-references/text-models-llm/xai.md
 
-# Source: https://docs.aimlapi.com/api-references/image-models/xai.md
-
-# Source: https://docs.aimlapi.com/api-references/text-models-llm/xai.md
-
 # xAI
 
 - [grok-3-beta](/api-references/text-models-llm/xai/grok-3-beta.md)

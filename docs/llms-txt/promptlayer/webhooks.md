@@ -1,5 +1,9 @@
 # Source: https://docs.promptlayer.com/features/prompt-registry/webhooks.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.promptlayer.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Webhooks
 
 Webhooks can be set up to receive notifications about changes to prompt templates. This functionality is particularly useful for storing prompts in cache, allowing for quicker retrieval without slowing down releases.
@@ -32,6 +36,9 @@ We notify you for these events:
 | `prompt_template_label_created`              | When a new release label for a prompt template is created.                                                                                                                                                 | <ul><li>`prompt_template_id` (number)</li><li>`prompt_template_name` (string)</li><li>`prompt_template_version_number` (number)</li><li>`prompt_template_label` (string)</li></ul>                                                       |
 | `prompt_template_label_deleted`              | When a release label for a prompt template is deleted.                                                                                                                                                     | <ul><li>`prompt_template_id` (number)</li><li>`prompt_template_name` (string)</li><li>`prompt_template_version_number` (number)</li><li>`prompt_template_label` (string)</li></ul>                                                       |
 | `prompt_template_label_moved`                | When a release label is moved between prompt template versions.                                                                                                                                            | <ul><li>`prompt_template_id` (number)</li><li>`prompt_template_name` (string)</li><li>`prompt_template_version_number` (number)</li><li>`old_prompt_template_version_number` (number)</li><li>`prompt_template_label` (string)</li></ul> |
+| `prompt_template_label_change_requested`     | When a change to a protected release label is requested and requires approval.                                                                                                                             | <ul><li>`prompt_template_id` (number)</li><li>`prompt_template_name` (string)</li><li>`prompt_template_label` (string)</li><li>`change_type` (string: "move" or "deletion")</li></ul>                                                    |
+| `prompt_template_label_change_approved`      | When a pending change to a protected release label is approved.                                                                                                                                            | <ul><li>`prompt_template_id` (number)</li><li>`prompt_template_name` (string)</li><li>`prompt_template_label` (string)</li><li>`change_type` (string: "move" or "deletion")</li></ul>                                                    |
+| `prompt_template_label_change_denied`        | When a pending change to a protected release label is denied.                                                                                                                                              | <ul><li>`prompt_template_id` (number)</li><li>`prompt_template_name` (string)</li><li>`prompt_template_label` (string)</li><li>`change_type` (string: "move" or "deletion")</li></ul>                                                    |
 | `prompt_template_updated`                    | When a snippet imported in a prompt template is updated.                                                                                                                                                   | <ul><li>`prompt_template_id` (number)</li><li>`prompt_template_name` (string)</li><li>`prompt_template_version_number` (number)</li></ul>                                                                                                |
 | `agent_run_finished`                         | When an agent (workflow) run is completed. <br /><br /> Note: This event may fire multiple times for the same execution and is not triggered for runs from the dashboard, only when called via SDK or API. | <ul><li>`agent_name` (string)</li><li>`agent_id` (number)</li><li>`agent_execution_id` (number)</li></ul>                                                                                                                                |
 | `report_finished`                            | When a evaluation report is completed.                                                                                                                                                                     | <ul><li>`report_id` (number)</li><li>`report_name` (string)</li></ul>                                                                                                                                                                    |
@@ -140,8 +147,3 @@ Here are code examples showing how to verify the signatures:
   console.log("Signature is", isValid ? "valid" : "invalid");
   ```
 </CodeGroup>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.promptlayer.com/llms.txt

@@ -1,47 +1,46 @@
 # Source: https://docs.openpipe.ai/api-reference/get-listModels.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.openpipe.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # List Models
 
 > List all models for a project.
 
+
+
 ## OpenAPI
 
 ````yaml get /models
+openapi: 3.0.3
+info:
+  title: OpenPipe API
+  description: The public API for reporting API calls to OpenPipe
+  version: 0.1.1
+servers:
+  - url: https://api.openpipe.ai/api/v1
+security: []
 paths:
-  path: /models
-  method: get
-  servers:
-    - url: https://api.openpipe.ai/api/v1
-  request:
-    security:
-      - title: Authorization
-        parameters:
-          query: {}
-          header:
-            Authorization:
-              type: http
-              scheme: bearer
-          cookie: {}
-    parameters:
-      path: {}
-      query: {}
-      header: {}
-      cookie: {}
-    body: {}
-  response:
-    '200':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              object:
-                allOf:
-                  - type: string
+  /models:
+    get:
+      description: List all models for a project.
+      operationId: listModels
+      parameters: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  object:
+                    type: string
                     enum:
                       - list
-              data:
-                allOf:
-                  - type: array
+                  data:
+                    type: array
                     items:
                       type: object
                       properties:
@@ -133,73 +132,44 @@ paths:
                         - pricing
                         - owned_by
                       additionalProperties: false
-            requiredProperties:
-              - object
-              - data
-            additionalProperties: false
-        examples:
-          example:
-            value:
-              object: list
-              data:
-                - id: <string>
-                  name: <string>
-                  object: model
-                  description: <string>
-                  created: <string>
-                  updated: <string>
-                  openpipe:
-                    baseModel: <string>
-                    hyperparameters: {}
-                    status: PENDING
-                    datasetId: <string>
-                    errorMessage: <string>
-                  contextWindow: 123
-                  maxCompletionTokens: 123
-                  capabilities:
-                    - chat
-                  pricing:
-                    chatIn: 123
-                    chatOut: 123
-                  owned_by: <string>
-        description: Successful response
-    default:
-      application/json:
-        schemaArray:
-          - type: object
+                required:
+                  - object
+                  - data
+                additionalProperties: false
+        default:
+          $ref: '#/components/responses/error'
+      security:
+        - Authorization: []
+components:
+  responses:
+    error:
+      description: Error response
+      content:
+        application/json:
+          schema:
+            type: object
             properties:
               message:
-                allOf:
-                  - type: string
+                type: string
               code:
-                allOf:
-                  - type: string
+                type: string
               issues:
-                allOf:
-                  - type: array
-                    items:
-                      type: object
-                      properties:
-                        message:
-                          type: string
-                      required:
-                        - message
-                      additionalProperties: false
-            requiredProperties:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    message:
+                      type: string
+                  required:
+                    - message
+                  additionalProperties: false
+            required:
               - message
               - code
             additionalProperties: false
-        examples:
-          example:
-            value:
-              message: <string>
-              code: <string>
-              issues:
-                - message: <string>
-        description: Error response
-  deprecated: false
-  type: path
-components:
-  schemas: {}
+  securitySchemes:
+    Authorization:
+      type: http
+      scheme: bearer
 
 ````

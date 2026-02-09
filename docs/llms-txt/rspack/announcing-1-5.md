@@ -1,6 +1,6 @@
 # Source: https://rspack.dev/blog/announcing-1-5.md
 
-*August 26, 2025*
+_August 26, 2025_
 
 # Announcing Rspack 1.5
 
@@ -12,27 +12,27 @@ We're excited to announce Rspack 1.5!
 
 Notable changes include:
 
-* New features
-  * [Barrel file optimization](#barrel-file-optimization)
-  * [Faster file system watcher](#faster-file-system-watcher)
-  * [Improved browser support](#improved-browser-support)
-  * [Extending Rspack with Rust](#extending-rspack-with-rust)
-  * [Const inline optimization](#const-inline-optimization)
-  * [Type re-export analysis](#type-re-export-analysis)
-  * [Built-in virtual modules plugin](#built-in-virtual-modules-plugin)
-  * [Module Federation runtime hoisting](#module-federation-runtime-hoisting)
-  * [Installation size optimization](#installation-size-optimization)
-  * [Seal phase performance optimization](#seal-phase-performance-optimization)
-* Misc
-  * [Drop support for Node.js 16](#drop-support-for-nodejs-16)
-  * [Resolver JavaScript API](#resolver-javascript-api)
-* Rstack progress
-  * [Rslint released](#rslint-released)
-  * [Rsbuild 1.5](#rsbuild-15)
-  * [Rslib 0.12](#rslib-012)
-  * [Rspress 2.0 beta](#rspress-20-beta)
-  * [Rsdoctor 1.2](#rsdoctor-12)
-  * [Rstest 0.2](#rstest-02)
+- New features
+  - [Barrel file optimization](#barrel-file-optimization)
+  - [Faster file system watcher](#faster-file-system-watcher)
+  - [Improved browser support](#improved-browser-support)
+  - [Extending Rspack with Rust](#extending-rspack-with-rust)
+  - [Const inline optimization](#const-inline-optimization)
+  - [Type re-export analysis](#type-re-export-analysis)
+  - [Built-in virtual modules plugin](#built-in-virtual-modules-plugin)
+  - [Module Federation runtime hoisting](#module-federation-runtime-hoisting)
+  - [Installation size optimization](#installation-size-optimization)
+  - [Seal phase performance optimization](#seal-phase-performance-optimization)
+- Misc
+  - [Drop support for Node.js 16](#drop-support-for-nodejs-16)
+  - [Resolver JavaScript API](#resolver-javascript-api)
+- Rstack progress
+  - [Rslint released](#rslint-released)
+  - [Rsbuild 1.5](#rsbuild-15)
+  - [Rslib 0.12](#rslib-012)
+  - [Rspress 2.0 beta](#rspress-20-beta)
+  - [Rsdoctor 1.2](#rsdoctor-12)
+  - [Rstest 0.2](#rstest-02)
 
 ## New features
 
@@ -62,7 +62,7 @@ export default {
 
 Real-world benchmarks show that barrel file optimization delivers substantial performance gains across applications at different scales:
 
-* [Benchmark](https://github.com/rstackjs/build-tools-performance/tree/main/cases/ui-components):
+- [Benchmark](https://github.com/rstackjs/build-tools-performance/tree/main/cases/ui-components):
 
 | Metric             | Before |  After | Improvement |
 | ------------------ | -----: | -----: | ----------: |
@@ -70,7 +70,7 @@ Real-world benchmarks show that barrel file optimization delivers substantial pe
 | Module Resolutions | 39,675 | 20,071 |      `-49%` |
 | Module Builds      |  9,358 |  5,062 |      `-46%` |
 
-* An application from ByteDance:
+- An application from ByteDance:
 
 | Metric             |  Before |   After | Improvement |
 | ------------------ | ------: | ------: | ----------: |
@@ -88,9 +88,9 @@ Previously, Rspack relied on the [watchpack](https://github.com/webpack/watchpac
 
 To address this, we built a native file system watcher in Rust, offering the following benefits:
 
-* **High performance**: HMR performance improvements of up to 50%
-* **Incremental updates**: Only processes files that actually change
-* **Persistent runtime**: Runs continuously throughout development without reinitialization
+- **High performance**: HMR performance improvements of up to 50%
+- **Incremental updates**: Only processes files that actually change
+- **Persistent runtime**: Runs continuously throughout development without reinitialization
 
 You can try out the new watcher by enabling [experiments.nativeWatcher](/config/experiments.md#experimentsnativewatcher):
 
@@ -147,9 +147,9 @@ This approach is particularly suitable for replacing hooks that frequently inter
 
 Key benefits:
 
-* **Native performance** — Extensions written in Rust run with the same native performance as the Rspack Rust core.
-* **Full compatibility** — Retains all existing JavaScript APIs without requiring changes to your project.
-* **Developer-friendly** — The official template includes a complete development environment and publishing workflow.
+- **Native performance** — Extensions written in Rust run with the same native performance as the Rspack Rust core.
+- **Full compatibility** — Retains all existing JavaScript APIs without requiring changes to your project.
+- **Developer-friendly** — The official template includes a complete development environment and publishing workflow.
 
 You can get started quickly with the [official template](https://github.com/rstackjs/rspack-binding-template). For more details, see the [design rationale](https://rstackjs.github.io/rspack-rust-book/custom-binding/getting-started/rationale.html). Note that this approach introduces additional maintenance costs and is recommended only when extreme performance optimization is required.
 
@@ -292,10 +292,10 @@ Since v1.4, we have delivered several key optimizations to reduce Rspack's insta
 
 Some of the most impactful optimizations include:
 
-* **5 MB reduction** through [compiler parameter adjustments](https://github.com/web-infra-dev/rspack/pull/11077)
-* **3 MB reduction** by optimizing upstream dependencies ([wasmer](https://github.com/wasmerio/wasmer/pull/5621/files), [SWC](https://github.com/swc-project/swc/pull/10638))
-* **2 MB reduction** via [feature flag optimization](https://github.com/web-infra-dev/rspack/pull/10965)
-* **2 MB reduction** through [browserslist-rs](https://github.com/browserslist/browserslist-rs/pull/32) data structure improvements
+- **5 MB reduction** through [compiler parameter adjustments](https://github.com/web-infra-dev/rspack/pull/11077)
+- **3 MB reduction** by optimizing upstream dependencies ([wasmer](https://github.com/wasmerio/wasmer/pull/5621/files), [SWC](https://github.com/swc-project/swc/pull/10638))
+- **2 MB reduction** via [feature flag optimization](https://github.com/web-infra-dev/rspack/pull/10965)
+- **2 MB reduction** through [browserslist-rs](https://github.com/browserslist/browserslist-rs/pull/32) data structure improvements
 
 To further optimize installation size, we have integrated [automated size checks](https://github.com/web-infra-dev/rspack/blob/main/.github/actions/binary-limit/action.yml) into our daily workflow to continuously monitor changes in this metric.
 
@@ -384,11 +384,11 @@ It originates from [tsgolint](https://github.com/typescript-eslint/tsgolint), cr
 
 Key features of Rslint include:
 
-* **ESLint-style configuration and directives**: almost seamless adoption
-* **IDE support**: VS Code extension available, with support for Cursor, Trae, and more
-* **Auto-fix**: resolve issues instantly with `rslint --fix`
-* **Rule support**: 50+ `@typescript-eslint` rules already implemented
-* **Test validation**: runs the original `typescript-eslint` test suite to ensure rule correctness
+- **ESLint-style configuration and directives**: almost seamless adoption
+- **IDE support**: VS Code extension available, with support for Cursor, Trae, and more
+- **Auto-fix**: resolve issues instantly with `rslint --fix`
+- **Rule support**: 50+ `@typescript-eslint` rules already implemented
+- **Test validation**: runs the original `typescript-eslint` test suite to ensure rule correctness
 
 Rslint is still in its early stage of development, and we are actively working on expanding its feature set and rule support.
 
@@ -398,10 +398,10 @@ We encourage you to try it out and provide feedback to help us improve Rslint to
 
 Providing an out-of-the-box experience has always been a core design principle of Rsbuild. In Rsbuild 1.5, we have enabled several of Rspack's latest features by default, delivering improved build performance, including:
 
-* Enabled [lazyCompilation](/config/lazy-compilation.md) to compile dynamically imported modules on demand, improving development server startup speed.
-* Enabled [lazyBarrel](/config/experiments.md#experimentslazybarrel) to optimize the build performance of barrel files and reduce unnecessary module resolution.
-* Enabled [inlineEnum](/config/experiments.md#experimentsinlineenum) to inline TypeScript enums, reducing the bundle size after compilation.
-* Enabled [typeReexportsPresence](/config/experiments.md#experimentsinlineenum) to correctly detect TypeScript type re-exports, improving type handling accuracy.
+- Enabled [lazyCompilation](/config/lazy-compilation.md) to compile dynamically imported modules on demand, improving development server startup speed.
+- Enabled [lazyBarrel](/config/experiments.md#experimentslazybarrel) to optimize the build performance of barrel files and reduce unnecessary module resolution.
+- Enabled [inlineEnum](/config/experiments.md#experimentsinlineenum) to inline TypeScript enums, reducing the bundle size after compilation.
+- Enabled [typeReexportsPresence](/config/experiments.md#experimentsinlineenum) to correctly detect TypeScript type re-exports, improving type handling accuracy.
 
 > Once you upgrade to the latest version of Rsbuild, these features are enabled by default with no additional configuration required.
 
@@ -446,8 +446,8 @@ Read more in the [Rsdoctor 1.2 release blog](https://rsdoctor.rs/blog/release/re
 
 After two months of continuous iteration and over 10 rounds of optimization, Rstest 0.2 delivers substantial improvements in both functionality and stability. This release introduces the following key enhancements:
 
-* **Mock API**: Rstest now includes a comprehensive [mock API](https://rstest.rs/api/rstest/mockModules), enabling developers to replace actual module implementations in test environments, with full support for mocking ES modules.
-* **Enhanced Watch Mode**: Watch mode now supports incremental re-runs. When a test file or its dependencies change, Rstest intelligently re-executes only the affected tests, significantly improving testing efficiency.
-* **CLI Shortcuts**: Watch mode also introduces keyboard shortcuts, allowing developers to perform common actions more quickly and seamlessly.
+- **Mock API**: Rstest now includes a comprehensive [mock API](https://rstest.rs/api/rstest/mockModules), enabling developers to replace actual module implementations in test environments, with full support for mocking ES modules.
+- **Enhanced Watch Mode**: Watch mode now supports incremental re-runs. When a test file or its dependencies change, Rstest intelligently re-executes only the affected tests, significantly improving testing efficiency.
+- **CLI Shortcuts**: Watch mode also introduces keyboard shortcuts, allowing developers to perform common actions more quickly and seamlessly.
 
 ![Rstest Shortcuts](https://assets.rspack.rs/rspack/assets/rspack-v1-5-rstest-cli-shortcuts.png)

@@ -145,7 +145,7 @@ Escapes - see the [FAQ](../learn/faq#how-does-backslash-escapes-work):
 $ vespa query -v 'select * from music where artist matches "M.ta\\.\\.ica"'
 ```
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ### On this page:
 

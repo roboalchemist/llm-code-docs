@@ -1,5 +1,9 @@
 # Source: https://docs.coollabs.io/coolify/v3/requirements.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.coollabs.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # null
 
 ## Supported Architectures
@@ -17,9 +21,9 @@ have other, please consider
 
 Minimum required resources for Coolify:
 
-*   2 CPUs
-*   2 GBs memory
-*   30+ GB of storage for the images.
+* 2 CPUs
+* 2 GBs memory
+* 30+ GB of storage for the images.
 
 ## Additional Resources
 
@@ -30,20 +34,20 @@ Self-hosting could be heavy if you would like to run a lot of things.
 
 For example, I'm hosting most of my production stuffs on a server with:
 
-*   8GB of memory (average usage 3.5GB)
-*   4 CPUs (average usage \~20-30%)
-*   150GB disk (usage 40GB)
+* 8GB of memory (average usage 3.5GB)
+* 4 CPUs (average usage \~20-30%)
+* 150GB disk (usage 40GB)
 
 Hosting the following things:
 
-*   3 NodeJS apps
-*   4 Static sites
-*   Plausible Analytics (for visitor analytics)
-*   Fider (feedback tool)
-*   UptimeKuma (uptime monitoring)
-*   Ghost (my newsletters)
-*   3 Redis databases
-*   2 PostgreSQL databases
+* 3 NodeJS apps
+* 4 Static sites
+* Plausible Analytics (for visitor analytics)
+* Fider (feedback tool)
+* UptimeKuma (uptime monitoring)
+* Ghost (my newsletters)
+* 3 Redis databases
+* 2 PostgreSQL databases
 
 > All static sites and one of the NodeJS applications are cached on
 > [BunnyCDN](https://bunny.net), so the usage is super low on my server.
@@ -52,10 +56,10 @@ Hosting the following things:
 
 Coolify builds images in two places.
 
-*   `Local server` with Local Docker Engine (the server you installed Coolify on).
+* `Local server` with Local Docker Engine (the server you installed Coolify on).
 
-*   `Remote Server` with Remote Docker Engine (the server you added as a
-    Destination).
+* `Remote Server` with Remote Docker Engine (the server you added as a
+  Destination).
 
 These servers have higher CPU usage on build time, so if you have 1 CPU, it will
 be a bottleneck!

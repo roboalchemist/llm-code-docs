@@ -1,5 +1,9 @@
 # Source: https://docs.ultravox.ai/tools/custom/http-vs-client-tools.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.ultravox.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # HTTP vs. Client Tools
 
 > Choose the right tool implementation for your use case.
@@ -244,8 +248,3 @@ Data connection tools are ideal for:
 **Client Tools**: No built-in authentication - handle security in your client application.
 
 **Data Connection Tools**: Authentication handled via websocket connection setup.
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.ultravox.ai/llms.txt

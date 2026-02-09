@@ -3,7 +3,6 @@
 ---
 url: /docs/guide/usage/linter/rules/eslint/no-useless-computed-key.md
 ---
-# eslint/no-useless-computed-key&#x20;
 
 ### What it does
 

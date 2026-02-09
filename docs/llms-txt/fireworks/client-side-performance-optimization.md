@@ -1,85 +1,134 @@
 # Source: https://docs.fireworks.ai/deployments/client-side-performance-optimization.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.fireworks.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Client-side performance optimization
 
 > Optimize your client code for maximum performance with dedicated deployments
 
-When using a dedicated deployment, it is important to optimize the client-side
-HTTP connection pooling for maximum performance. We recommend using our [Python
-SDK](/tools-sdks/python-client/sdk-introduction) as it has good defaults for
-connection pooling and utilizes
-[aiohttp](https://docs.aiohttp.org/en/stable/index.html) for optimal performance
-with Python's `asyncio` library. It also includes retry logic for handling `429`
-errors that Fireworks returns when the server is overloaded. We have run
-benchmarks that demonstrate the performance benefits.
+When using a dedicated deployment, it is important to optimize the client-side HTTP connection pooling for maximum performance. We recommend using our [Python SDK](/tools-sdks/python-sdk) as it has good defaults for connection pooling and utilizes [httpx](https://www.python-httpx.org/) for optimal performance with Python's `asyncio` library. It also includes retry logic for handling `429` errors that Fireworks returns when the server is overloaded.
 
 ## General optimization recommendations
 
 Based on our benchmarks, we recommend the following:
 
-1. Use a client library optimized for high concurrency, such as
-   [aiohttp](https://docs.aiohttp.org/en/stable/index.html) in Python or
-   [http.Agent](https://nodejs.org/api/http.html#class-httpagent) in Node.js.
-2. Keep the [`connection pool size`](https://docs.aiohttp.org/en/stable/client_advanced.html#limiting-connection-pool-size) high (1000+).
+1. Use a client library optimized for high concurrency, such as [httpx](https://www.python-httpx.org/) in Python or [http.Agent](https://nodejs.org/api/http.html#class-httpagent) in Node.js.
+2. Use the `AsyncFireworks` client for high-concurrency workloads.
 3. Increase concurrency until performance stops improving or you observe too many `429` errors.
 4. Use [direct routing](/deployments/direct-routing) to avoid the global API load balancer and route requests directly to your deployment.
 
 ## Code example: Optimal concurrent requests (Python)
 
-Here's how to implement optimal concurrent requests using `asyncio` and the `LLM` class:
+Install the [Fireworks Python SDK](/tools-sdks/python-sdk):
+
+<Note>
+  The SDK is currently in alpha. Use the `--pre` flag when installing to get the latest version.
+</Note>
+
+<CodeGroup>
+  ```bash pip theme={null}
+  pip install --pre fireworks-ai
+  ```
+
+  ```bash poetry theme={null}
+  poetry add --pre fireworks-ai
+  ```
+
+  ```bash uv theme={null}
+  uv add --pre fireworks-ai
+  ```
+</CodeGroup>
+
+Here's how to implement optimal concurrent requests using `asyncio` and the `AsyncFireworks` client:
 
 ```python main.py theme={null}
 import asyncio
-from fireworks import LLM
+import time
+import statistics
+from fireworks import AsyncFireworks
+
 
 async def make_concurrent_requests(
     messages: list[str],
+    model: str,
     max_workers: int = 1000,
-    max_connections: int = 1000, # this is the default value in the SDK
 ):
     """Make concurrent requests with optimized connection pooling"""
-    
-    llm = LLM(
-        model="your-model-name",
-        deployment_type="on-demand", 
-        id="your-deployment-id",
-        max_connections=max_connections
+
+    client = AsyncFireworks(
+        base_url="https://my-account-abcd1234.eu-iceland-2.direct.fireworks.ai",
+        api_key="MY_DIRECT_ROUTE_API_KEY",
+        max_retries=5,
     )
-    
-    # Apply deployment configuration to Fireworks
-    llm.apply()
-    
+
     # Semaphore to limit concurrent requests
     semaphore = asyncio.Semaphore(max_workers)
-    
+    latencies = []
+
     async def single_request(message: str):
         """Make a single request with semaphore control"""
         async with semaphore:
-            response = await llm.chat.completions.acreate(
+            start_time = time.perf_counter()
+            response = await client.chat.completions.create(
+                model=model,
                 messages=[{"role": "user", "content": message}],
-                max_tokens=100
+                max_tokens=100,
             )
+            latency = time.perf_counter() - start_time
+            latencies.append(latency)
             return response.choices[0].message.content
-    
+
     # Create all request tasks
-    tasks = [
-        single_request(message) 
-        for message in messages
-    ]
-    
+    tasks = [single_request(message) for message in messages]
+
     # Execute all requests concurrently
     results = await asyncio.gather(*tasks)
-    return results
+    return results, latencies
+
 
 # Usage example
 async def main():
     messages = ["Hello!"] * 1000  # 1000 requests
-    
-    results = await make_concurrent_requests(
+
+    model = "accounts/fireworks/models/qwen3-0p6b"
+
+    start_time = time.perf_counter()
+    results, latencies = await make_concurrent_requests(
         messages=messages,
+        model=model,
     )
-    
-    print(f"Completed {len(results)} requests")
+    total_time = time.perf_counter() - start_time
+
+    # Calculate performance metrics
+    num_requests = len(results)
+    requests_per_second = num_requests / total_time
+
+    # Latency statistics (in milliseconds)
+    latencies_ms = [lat * 1000 for lat in latencies]
+    avg_latency = statistics.mean(latencies_ms)
+    min_latency = min(latencies_ms)
+    max_latency = max(latencies_ms)
+    p50_latency = statistics.median(latencies_ms)
+    p95_latency = statistics.quantiles(latencies_ms, n=20)[18]  # 95th percentile
+    p99_latency = statistics.quantiles(latencies_ms, n=100)[98]  # 99th percentile
+
+    print("\n" + "=" * 50)
+    print("Performance Results")
+    print("=" * 50)
+    print(f"Total requests:      {num_requests}")
+    print(f"Total time:          {total_time:.2f} seconds")
+    print(f"Throughput:          {requests_per_second:.2f} requests/second")
+    print("\nLatency Statistics (ms):")
+    print(f"  Min:               {min_latency:.2f}")
+    print(f"  Max:               {max_latency:.2f}")
+    print(f"  Avg:               {avg_latency:.2f}")
+    print(f"  P50 (median):      {p50_latency:.2f}")
+    print(f"  P95:               {p95_latency:.2f}")
+    print(f"  P99:               {p99_latency:.2f}")
+    print("=" * 50)
+
 
 if __name__ == "__main__":
     asyncio.run(main())
@@ -87,5 +136,6 @@ if __name__ == "__main__":
 
 This implementation:
 
+* Uses `AsyncFireworks` for non-blocking async requests with optimized connection pooling
 * Uses `asyncio.Semaphore` to control concurrency to avoid overwhelming the server
-* Allows configuration of the maximum number of concurrent connections to the Fireworks API
+* Targets a dedicated deployment with [direct routing](/deployments/direct-routing)

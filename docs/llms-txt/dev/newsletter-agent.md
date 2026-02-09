@@ -1,5 +1,9 @@
 # Source: https://dev.writer.com/no-code/newsletter-agent.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://dev.writer.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Create a newsletter generation agent
 
 Newsletters need to easy-to-understand and jargon-free, and can take hours to write—especially if you're sending them weekly. Creating an agent can help you get these newsletters out faster and written in a way that your customers can understand.

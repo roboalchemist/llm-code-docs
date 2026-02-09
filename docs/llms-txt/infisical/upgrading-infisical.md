@@ -1,5 +1,9 @@
 # Source: https://infisical.com/docs/self-hosting/guides/upgrading-infisical.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://infisical.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Upgrade Infisical Instance
 
 > How to upgrade Infisical self-hosted instance

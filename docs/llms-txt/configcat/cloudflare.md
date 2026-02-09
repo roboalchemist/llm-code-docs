@@ -2,6 +2,8 @@
 
 # Cloudflare Zero Trust
 
+Copy page
+
 Connect ConfigCat with Cloudflare Zero Trust via SAML.
 
 ## Introduction[​](#introduction "Direct link to Introduction")
@@ -86,7 +88,7 @@ To let users authenticate via SAML, you need to assign groups to the Cloudflare 
 
 ## 5. Sign In[​](#5-sign-in "Direct link to 5. Sign In")
 
-* Go to the [ConfigCat Log In](https://app.configcat.com/auth/login) page, and click `COMPANY ACCOUNT - SAML`.
+* Go to the [ConfigCat Log In](https://app.configcat.com) page, and click `COMPANY ACCOUNT - SAML`.
 
   ![ConfigCat SAML login](/docs/assets/saml/dashboard/saml_login.png)
 
@@ -100,4 +102,4 @@ To let users authenticate via SAML, you need to assign groups to the Cloudflare 
 
 ## 6. Next Steps[​](#6-next-steps "Direct link to 6. Next Steps")
 
-* Configure the [auto-assignment of users](https://configcat.com/docs/docs/advanced/team-management/auto-assign-users/.md).
+* Configure the [auto-assignment of users](https://configcat.com/docs/advanced/team-management/auto-assign-users.md).

@@ -1,4 +1,4 @@
-# Source: https://huggingface.co/docs/transformers/v5.0.0rc1/model_doc/bert-japanese.md
+# Source: https://huggingface.co/docs/transformers/v5.0.0/model_doc/bert-japanese.md
 
 # BertJapanese
 
@@ -62,14 +62,14 @@ API reference information.
 
 #### transformers.BertJapaneseTokenizer[[transformers.BertJapaneseTokenizer]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/bert_japanese/tokenization_bert_japanese.py#L59)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/bert_japanese/tokenization_bert_japanese.py#L58)
 
 Construct a BERT tokenizer for Japanese text.
 
-This tokenizer inherits from [PreTrainedTokenizer](/docs/transformers/v5.0.0rc1/en/main_classes/tokenizer#transformers.PythonBackend) which contains most of the main methods. Users should refer
+This tokenizer inherits from [PreTrainedTokenizer](/docs/transformers/v5.0.0/en/main_classes/tokenizer#transformers.PythonBackend) which contains most of the main methods. Users should refer
 to: this superclass for more information regarding those methods.
 
-convert_tokens_to_stringtransformers.BertJapaneseTokenizer.convert_tokens_to_stringhttps://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/bert_japanese/tokenization_bert_japanese.py#L257[{"name": "tokens", "val": ""}]
+convert_tokens_to_stringtransformers.BertJapaneseTokenizer.convert_tokens_to_stringhttps://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/bert_japanese/tokenization_bert_japanese.py#L256[{"name": "tokens", "val": ""}]
 Converts a sequence of tokens (string) in a single string.
 
 **Parameters:**

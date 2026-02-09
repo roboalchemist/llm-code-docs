@@ -1,5 +1,9 @@
 # Source: https://docs.unstructured.io/open-source/ingestion/ingest-dependencies.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.unstructured.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Ingest dependencies
 
 When you install the [Unstructured Ingest CLI](/open-source/ingestion/ingest-cli) and the
@@ -83,6 +87,7 @@ To add support for additional connectors, run the following:
 | `pip install "unstructured-ingest[snowflake]"`          | Snowflake            |
 | `pip install "unstructured-ingest[sftp]"`               | SFTP                 |
 | `pip install "unstructured-ingest[slack]"`              | Slack                |
+| `pip install "unstructured-ingest[teradata]"`           | Teradata             |
 | `pip install "unstructured-ingest[vectara]"`            | Vectara              |
 | `pip install "unstructured-ingest[weaviate]"`           | Weaviate             |
 

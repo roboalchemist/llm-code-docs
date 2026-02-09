@@ -2,69 +2,70 @@
 
 # Source: https://upstash.com/docs/workflow/basics/context/sleep.md
 
-# Source: https://upstash.com/docs/workflow/features/sleep.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
-# Source: https://upstash.com/docs/workflow/basics/context/sleep.md
+# context.sleep
 
-# Source: https://upstash.com/docs/workflow/features/sleep.md
+`context.sleep()` pauses workflow execution for a specified duration.
 
-# Source: https://upstash.com/docs/workflow/basics/context/sleep.md
+When a workflow is paused, the current request completes and a new one is automatically scheduled to resume after the delay.
+This ensures no compute resources are consumed during the sleep period.
 
-# Source: https://upstash.com/docs/workflow/features/sleep.md
+<Note>Always `await` a `sleep` step to properly pause execution.</Note>
 
-# Source: https://upstash.com/docs/workflow/basics/context/sleep.md
+## Arguments
 
-# Source: https://upstash.com/docs/workflow/features/sleep.md
+<ParamField body="stepName" type="string">
+  A unique identifier for the step.
+</ParamField>
 
-# Source: https://upstash.com/docs/workflow/basics/context/sleep.md
+<ParamField body="duration" type="number|string">
+  The duration to pause workflow execution.
 
-# Source: https://upstash.com/docs/workflow/features/sleep.md
+  * **Human-readable string format:**
 
-# Sleep
+  | Input   | Duration   |
+  | ------- | ---------- |
+  | `"10s"` | 10 seconds |
+  | `"1m"`  | 1 minute   |
+  | `"30m"` | 30 minutes |
+  | `"2h"`  | 2 hours    |
+  | `"1d"`  | 1 day      |
+  | `"1w"`  | 1 week     |
+  | `"1mo"` | 1 month    |
+  | `"1y"`  | 1 year     |
 
-Upstash Workflow provides a **Sleep** feature that allows you to pause workflow execution for specified durations without consuming compute resources.
+  * **Numeric format (seconds):**
 
-This feature enables you to build time-based workflows, implement delays between steps, and create scheduled operations without the limitations of traditional serverless timeouts.
+  | Input   | Duration              |
+  | ------- | --------------------- |
+  | `60`    | 60 seconds (1 minute) |
+  | `3600`  | 3600 seconds (1 hour) |
+  | `86400` | 86400 seconds (1 day) |
+</ParamField>
 
-## How Sleep Works
-
-When you use `context.sleep` or `context.sleepUntil` in your workflow, Upstash Workflow automatically pauses execution and schedules the next step to run after the specified delay.
-This happens without keeping your serverless function running, making it cost-effective and reliable for long delays.
-
-<Note>
-  **Important:** Sleep durations have limits based on your pricing plan:
-
-  * **Free**: Maximum delay of 7 days
-  * **Pay-as-you-go**: Maximum delay of 1 year
-  * **Fixed pricing**: Custom delays (no limit)
-</Note>
-
-## Sleep Methods
-
-Upstash Workflow provides two methods for implementing delays in your workflows:
-
-### 1. context.sleep
-
-Pauses workflow execution for a specified duration relative to the current time.
+## Usage
 
 <CodeGroup>
-  ```typescript TypeScript theme={"system"}
+  ```typescript TypeScript highlight={12-13} theme={"system"}
   import { serve } from "@upstash/workflow/nextjs";
+  import { signIn, sendEmail } from "@/utils/onboarding-utils";
 
-  export const { POST } = serve<string>(async (context) => {
-    const { userId } = context.requestPayload;
+  export const { POST } = serve<User>(async (context) => {
+    const userData = context.requestPayload;
 
-    // Send welcome email immediately
-    await context.run("send-welcome-email", async () => {
-      return await sendWelcomeEmail(userId);
+    const user = await context.run("sign-in", async () => {
+      const signedInUser = await signIn(userData);
+      return signedInUser;
     });
 
-    // Wait for 3 days before sending follow-up
-    await context.sleep("wait-for-follow-up", "3d");
+    // 👇 Wait for one day (in seconds)
+    await context.sleep("wait-until-welcome-email", "1d");
 
-    // Send follow-up email
-    await context.run("send-follow-up-email", async () => {
-      return await sendFollowUpEmail(userId);
+    await context.run("send-welcome-email", async () => {
+      return sendEmail(user.name, user.email);
     });
   });
   ```
@@ -73,110 +74,28 @@ Pauses workflow execution for a specified duration relative to the current time.
   from fastapi import FastAPI
   from upstash_workflow.fastapi import Serve
   from upstash_workflow import AsyncWorkflowContext
+  from onboarding_utils import sign_in, send_email
 
   app = FastAPI()
   serve = Serve(app)
+
 
   @serve.post("/api/onboarding")
-  async def onboarding(context: AsyncWorkflowContext[str]) -> None:
-      user_id = context.request_payload["user_id"]
-      
-      # Send welcome email immediately
-      async def _send_welcome_email():
-          return await send_welcome_email(user_id)
-      
-      await context.run("send-welcome-email", _send_welcome_email)
-      
-      # Wait for 3 days before sending follow-up
-      await context.sleep("wait-for-follow-up", "3d")
-      
-      # Send follow-up email
-      async def _send_follow_up_email():
-          return await send_follow_up_email(user_id)
-      
-      await context.run("send-follow-up-email", _send_follow_up_email)
+  async def onboarding(context: AsyncWorkflowContext[User]) -> None:
+      user_data = context.request_payload
+
+      async def _sign_in():
+          return await sign_in(user_data)
+
+      user = await context.run("sign-in", _sign_in)
+
+      # 👇 Wait for one day (in seconds)
+      await context.sleep("wait-until-welcome-email", "1d")
+
+      async def _send_email():
+          return await send_email(user.name, user.email)
+
+      await context.run("send-welcome-email", _send_email)
+
   ```
 </CodeGroup>
-
-You can specify durations using human-readable strings:
-
-* `"10s"` = 10 seconds
-* `"1m"` = 1 minute
-* `"30m"` = 30 minutes
-* `"2h"` = 2 hours
-* `"1d"` = 1 day
-* `"1w"` = 1 week
-* `"1mo"` = 1 month
-* `"1y"` = 1 year
-
-You can also use numeric values in seconds:
-
-* `60` = 60 seconds (1 minute)
-* `3600` = 3600 seconds (1 hour)
-* `86400` = 86400 seconds (1 day)
-
-### 2. context.sleepUntil
-
-Pauses workflow execution until a specific timestamp in the future.
-
-<CodeGroup>
-  ```typescript TypeScript theme={"system"}
-  import { serve } from "@upstash/workflow/nextjs";
-
-  export const { POST } = serve<string>(async (context) => {
-    const { userId, scheduledTime } = context.requestPayload;
-
-    // Calculate the scheduled time
-    const scheduledDate = new Date(scheduledTime);
-
-    // Wait until the scheduled time
-    await context.sleepUntil("wait-until-scheduled", scheduledDate);
-
-    // Execute the scheduled task
-    await context.run("execute-scheduled-task", async () => {
-      return await executeTask(userId);
-    });
-  });
-  ```
-
-  ```python Python theme={"system"}
-  from fastapi import FastAPI
-  from upstash_workflow.fastapi import Serve
-  from upstash_workflow import AsyncWorkflowContext
-  from datetime import datetime
-
-  app = FastAPI()
-  serve = Serve(app)
-
-  @serve.post("/api/scheduled-task")
-  async def scheduled_task(context: AsyncWorkflowContext[str]) -> None:
-      user_id = context.request_payload["user_id"]
-      scheduled_time = context.request_payload["scheduled_time"]
-      
-      # Calculate the scheduled time
-      scheduled_date = datetime.fromisoformat(scheduled_time)
-      
-      # Wait until the scheduled time
-      await context.sleep_until("wait-until-scheduled", scheduled_date)
-      
-      # Execute the scheduled task
-      async def _execute_task():
-          return await execute_task(user_id)
-      
-      await context.run("execute-scheduled-task", _execute_task)
-  ```
-</CodeGroup>
-
-For `context.sleepUntil`, you can use:
-
-* `Date` objects (JavaScript/TypeScript)
-* Unix timestamps (Python)
-* ISO string dates
-
-<Tip>
-  Sleep operations have a precision of approximately 1 second. Very short delays (less than 1 second) may not be exact.
-</Tip>
-
-The sleep feature in Upstash Workflow provides a powerful way to create time-based, reliable workflows without the limitations of traditional serverless timeouts.
-
-By leveraging this feature, you can build sophisticated business logic that spans hours, days, or even months while maintaining cost efficiency and reliability.

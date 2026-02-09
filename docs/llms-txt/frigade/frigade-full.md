@@ -28,7 +28,7 @@ This key should be kept secret and is used to access the private API endpoints. 
 The key should be passed in the `Authorization: Bearer <key>` header.
 For example, to access the list of available flows in your account, you would make the following request:
 
-```bash
+```bash  theme={"system"}
 curl -i -X GET \
    -H "Authorization:Bearer api_public_J3FNG3dJASDKLW98SN4KLOJHNTYUFGNVSK" \
  'https://api.frigade.com/v1/public/flows'
@@ -159,7 +159,7 @@ You can use webhooks to receive notifications about your users when they start a
 To add a new webhook, open the **Developer** page from the left sidebar, pick the **Webhooks** tab and click the "New webhook" button.
 
 <Frame>
-  <img src="https://mintlify.s3.us-west-1.amazonaws.com/frigade-docs/images/platform/webhooks.png" />
+  <img src="https://mintcdn.com/frigade-docs/vb0YqHQGpTytLgI7/images/platform/webhooks.png?fit=max&auto=format&n=vb0YqHQGpTytLgI7&q=85&s=f8b3b7e5dbf1d0b133c3e0a0787309bc" data-og-width="1399" width="1399" data-og-height="835" height="835" data-path="images/platform/webhooks.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/frigade-docs/vb0YqHQGpTytLgI7/images/platform/webhooks.png?w=280&fit=max&auto=format&n=vb0YqHQGpTytLgI7&q=85&s=38e3d45ef2decfaadf6f40a618f5ed46 280w, https://mintcdn.com/frigade-docs/vb0YqHQGpTytLgI7/images/platform/webhooks.png?w=560&fit=max&auto=format&n=vb0YqHQGpTytLgI7&q=85&s=daf73ded7c324f9ce557f4debdb1f7aa 560w, https://mintcdn.com/frigade-docs/vb0YqHQGpTytLgI7/images/platform/webhooks.png?w=840&fit=max&auto=format&n=vb0YqHQGpTytLgI7&q=85&s=8b7811f8060afe7d32b07efc5fc9b5c6 840w, https://mintcdn.com/frigade-docs/vb0YqHQGpTytLgI7/images/platform/webhooks.png?w=1100&fit=max&auto=format&n=vb0YqHQGpTytLgI7&q=85&s=a12a11b1e1a9250ad50daea4978f758d 1100w, https://mintcdn.com/frigade-docs/vb0YqHQGpTytLgI7/images/platform/webhooks.png?w=1650&fit=max&auto=format&n=vb0YqHQGpTytLgI7&q=85&s=b106460424f04cb8976ada82addcaff5 1650w, https://mintcdn.com/frigade-docs/vb0YqHQGpTytLgI7/images/platform/webhooks.png?w=2500&fit=max&auto=format&n=vb0YqHQGpTytLgI7&q=85&s=c1f68f6715a84281bc1953bce373c776 2500w" />
 </Frame>
 
 ## Supported events
@@ -181,7 +181,7 @@ The payload can be a different object depending on the event type.
 
 ### Schema
 
-```typescript
+```typescript  theme={"system"}
 {
   // Event type identifier
   type: string;  // e.g. "flowResponse.completedFlow"
@@ -259,7 +259,7 @@ The payload can be a different object depending on the event type.
 
 The below example shows the payload for a `flowResponse.completedFlow` event for the [NPS Survey](/component/survey/nps) component with flattened data fields:
 
-```json
+```json  theme={"system"}
 {
   "timeout": 1000,
   "data__nps-feedback-page__nps-feedback-text": "I love the service!",
@@ -326,7 +326,7 @@ Note that when JSON-encoding the `data` field it needs to match the order of the
 
 For example, in Node.js, you can do it like this:
 
-```ts
+```ts  theme={"system"}
 const crypto = require('crypto');
 
 const payload = '{"type":"flowResponse.completedStep",....}}'
@@ -371,10 +371,18 @@ Communicate information or drive action via modal-based announcements
 
 <Frame className="h-96 items-center px-4">
   <img
-    src="https://mintlify.s3.us-west-1.amazonaws.com/frigade-docs/images/components/announcement.svg"
+    src="https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/components/announcement.svg?fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=1feb6c3c3162ad5dcfb671cee05b2720"
     style={{
     width: "350px",
   }}
+    data-og-width="470"
+    width="470"
+    data-og-height="533"
+    height="533"
+    data-path="images/components/announcement.svg"
+    data-optimize="true"
+    data-opv="3"
+    srcset="https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/components/announcement.svg?w=280&fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=fa0489f75065c31f350c1bae87fb694d 280w, https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/components/announcement.svg?w=560&fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=9c312391ce3bead7af2a56d8091fba32 560w, https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/components/announcement.svg?w=840&fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=160d89e44ac348fcd7acda99c3c72fd1 840w, https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/components/announcement.svg?w=1100&fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=aecd9e5384c9c04f4d4088a4e118c861 1100w, https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/components/announcement.svg?w=1650&fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=1d46eb5279067aa5749f69eca67d26e7 1650w, https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/components/announcement.svg?w=2500&fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=d2621dab38c40ab54856d4019ca57730 2500w"
   />
 </Frame>
 
@@ -414,7 +422,7 @@ The `Announcement` component is a flexible communication tool that’s perfect f
 
 <Tabs>
   <Tab title="Code">
-    ```tsx
+    ```tsx  theme={"system"}
     import * as Frigade from '@frigade/react';
 
     const App = () => {
@@ -649,10 +657,18 @@ Communicate information or drive action via in-line banners
 
 <Frame className="h-96 items-center px-4">
   <img
-    src="https://mintlify.s3.us-west-1.amazonaws.com/frigade-docs/images/components/banner.svg"
+    src="https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/components/banner.svg?fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=85007c7bf1c50af98cb76411ff1256e3"
     style={{
     height: "auto",
   }}
+    data-og-width="1000"
+    width="1000"
+    data-og-height="100"
+    height="100"
+    data-path="images/components/banner.svg"
+    data-optimize="true"
+    data-opv="3"
+    srcset="https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/components/banner.svg?w=280&fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=28087310105f6277a14b4ef167423363 280w, https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/components/banner.svg?w=560&fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=b02de011f0cd469ccf6a2eb7304f7f8f 560w, https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/components/banner.svg?w=840&fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=b77009cb787e78dfdaad5f49c0f31b21 840w, https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/components/banner.svg?w=1100&fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=691706e4786fb88c6539c6f2b734ce62 1100w, https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/components/banner.svg?w=1650&fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=4e5781f625009647b9da7edfab7f40bc 1650w, https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/components/banner.svg?w=2500&fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=01e0b610a723d20c9b46e130fe01da0e 2500w"
   />
 </Frame>
 
@@ -690,7 +706,7 @@ The `Banner` component is a versatile, persistent UI component that typically sp
 
 <Tabs>
   <Tab title="Code">
-    ```tsx
+    ```tsx  theme={"system"}
     import * as Frigade from '@frigade/react';
 
     const App = () => {
@@ -894,7 +910,7 @@ Source: https://docs.frigade.com/component/checklist/carousel
 A carousel checklist component to drive set up and activation
 
 <Frame className="h-96 items-center">
-  <img src="https://mintlify.s3.us-west-1.amazonaws.com/frigade-docs/images/components/carousel.png" style={{ maxWidth: "500px" }} />
+  <img src="https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/components/carousel.png?fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=2c69f824b91721872a6b30049c74a211" style={{ maxWidth: "500px" }} data-og-width="1120" width="1120" data-og-height="457" height="457" data-path="images/components/carousel.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/components/carousel.png?w=280&fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=8e2941d443ba516af0485df0dad35e50 280w, https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/components/carousel.png?w=560&fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=2f131d0a29fdfac56ebba97bc391e40e 560w, https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/components/carousel.png?w=840&fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=2764535aacc1e418dd889818b7b37e51 840w, https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/components/carousel.png?w=1100&fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=37dea889e948ffd22b663de455618f78 1100w, https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/components/carousel.png?w=1650&fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=494a483dc72fabe5ca32888966c2d980 1650w, https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/components/carousel.png?w=2500&fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=b0662747758ba7d4e6d724f40e0e283b 2500w" />
 </Frame>
 
 ## About this component
@@ -934,7 +950,7 @@ The `Checklist` component is one of Frigade’s most popular tools, especially f
 
 <Tabs>
   <Tab title="Code">
-    ```tsx
+    ```tsx  theme={"system"}
     import * as Frigade from '@frigade/react';
 
     const App = () => {
@@ -1150,10 +1166,18 @@ A condensed checklist component that can be used inline or in a modal
 
 <Frame className="h-120 items-center px-4">
   <img
-    src="https://mintlify.s3.us-west-1.amazonaws.com/frigade-docs/images/components/collapsible.svg"
+    src="https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/components/collapsible.svg?fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=06f4d1092cd12b7d2c1d515c67a18562"
     style={{
     width: "350px",
   }}
+    data-og-width="540"
+    width="540"
+    data-og-height="825"
+    height="825"
+    data-path="images/components/collapsible.svg"
+    data-optimize="true"
+    data-opv="3"
+    srcset="https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/components/collapsible.svg?w=280&fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=acf8c16ec6af5c259834016167f85680 280w, https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/components/collapsible.svg?w=560&fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=1600ecd0eb31341dfe2ac87ed69be884 560w, https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/components/collapsible.svg?w=840&fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=e40640c171b27daa749085b0cef825e2 840w, https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/components/collapsible.svg?w=1100&fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=60b2cb6f5848c4425646d62e80ae657e 1100w, https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/components/collapsible.svg?w=1650&fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=41ae7d2ace378d3721a587f4299db909 1650w, https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/components/collapsible.svg?w=2500&fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=94a1ea62d1af4114d43118ac00bddb74 2500w"
   />
 </Frame>
 
@@ -1194,7 +1218,7 @@ The `Checklist` component is one of Frigade’s most popular tools, especially f
 
 <Tabs>
   <Tab title="Code">
-    ```tsx
+    ```tsx  theme={"system"}
     import * as Frigade from '@frigade/react';
 
     const App = () => {
@@ -1422,7 +1446,7 @@ Source: https://docs.frigade.com/component/form
 Collect user information via forms in modals or embedded in your UI
 
 <Frame>
-  <img src="https://mintlify.s3.us-west-1.amazonaws.com/frigade-docs/images/forms-modal.png" style={{ width: "350px" }} />
+  <img src="https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/forms-modal.png?fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=c8f7d424a24f984f0aa6e582909a2f5d" style={{ width: "350px" }} data-og-width="888" width="888" data-og-height="1644" height="1644" data-path="images/forms-modal.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/forms-modal.png?w=280&fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=61d54441deeb533c44b1f2ed7fb4e2cc 280w, https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/forms-modal.png?w=560&fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=709ba0bf8d422dc45a469e99adf3276f 560w, https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/forms-modal.png?w=840&fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=0cb6bd6470bc35ec8ae7d3c5e67c44a4 840w, https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/forms-modal.png?w=1100&fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=8b1221dace25f39042c234fa99c3079d 1100w, https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/forms-modal.png?w=1650&fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=fe36dd52abac76dc4eeb4f930be6161a 1650w, https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/forms-modal.png?w=2500&fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=c89ee13767cd132c0da128f5cb915ee5 2500w" />
 </Frame>
 
 ## About this component
@@ -1469,13 +1493,13 @@ The following section includes ready-made examples and code for various form use
 <Tabs>
   <Tab title="Component">
     <Frame>
-      <img src="https://mintlify.s3.us-west-1.amazonaws.com/frigade-docs/images/components/forms/simple-modal.png" style={{ width: "350px" }} />
+      <img src="https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/components/forms/simple-modal.png?fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=4993d78d77987a0a956294a703c3cf82" style={{ width: "350px" }} data-og-width="920" width="920" data-og-height="1161" height="1161" data-path="images/components/forms/simple-modal.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/components/forms/simple-modal.png?w=280&fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=32589ba7fd89c6a36f9e3dc633f331ae 280w, https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/components/forms/simple-modal.png?w=560&fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=bd888c96dae62fe618f0bb8158978f3b 560w, https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/components/forms/simple-modal.png?w=840&fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=04a522e73807dd65c8c56a6a5afeb9e5 840w, https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/components/forms/simple-modal.png?w=1100&fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=1d8d9db32f56ca8c49200a4084a06b86 1100w, https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/components/forms/simple-modal.png?w=1650&fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=941a3da5589c851c725660bb166ac349 1650w, https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/components/forms/simple-modal.png?w=2500&fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=8e3d10fb04d793bff83ed15f837f9fab 2500w" />
     </Frame>
   </Tab>
 
   <Tab title="Configuration and Code">
     <CodeGroup>
-      ```Typescript App.tsx
+      ```Typescript App.tsx theme={"system"}
       import * as Frigade from '@frigade/react';
 
       const App = () => {
@@ -1491,7 +1515,7 @@ The following section includes ready-made examples and code for various form use
 
       ```
 
-      ```yaml Configuration
+      ```yaml Configuration theme={"system"}
       steps:
         - id: waitlist-page
           title: Join the waitlist
@@ -1531,13 +1555,13 @@ The following section includes ready-made examples and code for various form use
 <Tabs>
   <Tab title="Component">
     <Frame>
-      <img src="https://mintlify.s3.us-west-1.amazonaws.com/frigade-docs/images/components/forms/churn-survey.png" style={{ width: "350px" }} />
+      <img src="https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/components/forms/churn-survey.png?fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=2c3d2956ea15ea89dd052851a349a9ec" style={{ width: "350px" }} data-og-width="1321" width="1321" data-og-height="1781" height="1781" data-path="images/components/forms/churn-survey.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/components/forms/churn-survey.png?w=280&fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=87042547988472169d02b72bdaf74dc5 280w, https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/components/forms/churn-survey.png?w=560&fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=d96a9770574d7f60350b1b3bdb0564df 560w, https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/components/forms/churn-survey.png?w=840&fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=6f16948e473ed6e8cdad72f6ff2ac57d 840w, https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/components/forms/churn-survey.png?w=1100&fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=0bcb9a578d722cd4b4aaeb1fb24471ac 1100w, https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/components/forms/churn-survey.png?w=1650&fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=318065b0ae87fb461292852facbe0c8a 1650w, https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/components/forms/churn-survey.png?w=2500&fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=ac10d4ed7c4762120dcf3347aa95afd7 2500w" />
     </Frame>
   </Tab>
 
   <Tab title="Configuration and Code">
     <CodeGroup>
-      ```Typescript App.tsx
+      ```Typescript App.tsx theme={"system"}
       import * as Frigade from '@frigade/react';
 
       const App = () => {
@@ -1547,7 +1571,7 @@ The following section includes ready-made examples and code for various form use
 
       ```
 
-      ```yaml Configuration
+      ```yaml Configuration theme={"system"}
       steps:
         - id: collect-intend
           title: We are sorry to see you go
@@ -1584,7 +1608,7 @@ The following section includes ready-made examples and code for various form use
 <Tabs>
   <Tab title="Component">
     <Frame>
-      <img src="https://mintlify.s3.us-west-1.amazonaws.com/frigade-docs/images/components/forms/dynamic-fields.png" style={{ width: "350px" }} />
+      <img src="https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/components/forms/dynamic-fields.png?fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=c1b0625e7cf356a709bccbac2f139bb5" style={{ width: "350px" }} data-og-width="919" width="919" data-og-height="782" height="782" data-path="images/components/forms/dynamic-fields.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/components/forms/dynamic-fields.png?w=280&fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=4106290d7004f7aea09a03a09f493760 280w, https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/components/forms/dynamic-fields.png?w=560&fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=dfde548b1a0019d2f82012614b129aa7 560w, https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/components/forms/dynamic-fields.png?w=840&fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=53bc6bb77dd6d59e7af1180f48eb12a2 840w, https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/components/forms/dynamic-fields.png?w=1100&fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=612134eeacae6da1efb44d19d67c41b1 1100w, https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/components/forms/dynamic-fields.png?w=1650&fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=92eb1a281891c640dfe3a4551ec73c4f 1650w, https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/components/forms/dynamic-fields.png?w=2500&fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=8789b16bab688d0b12ddd760f4b5b502 2500w" />
     </Frame>
 
     Sometimes you may want to conditionally render a dynamic field based on the value of another field. The example above dynamically changes the second dropdown based on the value of the first dropdown.
@@ -1596,7 +1620,7 @@ The following section includes ready-made examples and code for various form use
     The options of the `follow-up` dropdown depends on the value of `food`. If the user selects `pizza`, the `follow-up` dropdown will show options for pizza toppings. If the user selects `pasta`, the `follow-up` dropdown will show options for pasta sauces.
 
     <CodeGroup>
-      ```Typescript App.tsx
+      ```Typescript App.tsx theme={"system"}
       import { Form, type FormFieldProps, SelectField } from "@frigade/react";
 
       const App = () => {
@@ -1631,7 +1655,7 @@ The following section includes ready-made examples and code for various form use
 
       ```
 
-      ```yaml Configuration
+      ```yaml Configuration theme={"system"}
       steps:
         - id: collect-intend
           title: Tell us about your favorites
@@ -1677,7 +1701,7 @@ The following section includes ready-made examples and code for various form use
 <Tabs>
   <Tab title="Component">
     <Frame>
-      <img src="https://mintlify.s3.us-west-1.amazonaws.com/frigade-docs/images/components/forms/branching.png" style={{ width: "350px" }} />
+      <img src="https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/components/forms/branching.png?fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=d54d1420b56feb62de58e88697fccfe4" style={{ width: "350px" }} data-og-width="1319" width="1319" data-og-height="910" height="910" data-path="images/components/forms/branching.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/components/forms/branching.png?w=280&fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=0ef2b92f69f9b07c341a9c7b3146ab96 280w, https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/components/forms/branching.png?w=560&fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=d404e5bf75bfce969bd5a34f64ceae19 560w, https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/components/forms/branching.png?w=840&fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=166f40e8444babb6847fa81b7b2de55b 840w, https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/components/forms/branching.png?w=1100&fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=cd1e9f35dfa0c1d8d578d11d84033708 1100w, https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/components/forms/branching.png?w=1650&fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=2eff11b0bc3bfca2748fc80b8d57432a 1650w, https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/components/forms/branching.png?w=2500&fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=47500fba0fe6b050f587ae9296939c06 2500w" />
     </Frame>
 
     This example shows how to implement branching in a form based on the user's choice in the first step.
@@ -1688,7 +1712,7 @@ The following section includes ready-made examples and code for various form use
     For instance, the example below will jump directly to page 3 if the user picks a specific option on the first page/step:
 
     <CodeGroup>
-      ```Typescript App.tsx
+      ```Typescript App.tsx theme={"system"}
       import * as Frigade from '@frigade/react';
 
       const App = () => {
@@ -1699,7 +1723,7 @@ The following section includes ready-made examples and code for various form use
 
       ```
 
-      ```yaml Configuration
+      ```yaml Configuration theme={"system"}
       steps:
         - id: page-1
           title: This is page 1
@@ -1762,7 +1786,7 @@ The component supports the following builtin field types that correspond to thei
 You can override or add any attribute for a field by using the `props` property in the field configuration.
 For instance, this is useful if you want to use the `text` field type, but override the `type` to `email` or `tel`. It can also be used to add any attribute such as a css class, data, or styling.
 
-```yaml
+```yaml  theme={"system"}
 steps:
   - id: step-1
     title: This is page 1
@@ -1782,7 +1806,7 @@ steps:
 The Form SDK is built on top of [react-hook-form](https://react-hook-form.com/), which means you can use the majority of its features in your forms. You can define your own custom field types using the `fieldTypes` [prop](#fieldtypes).
 For instance, you can implement a simple calendar datepicker field type as such:
 
-```tsx
+```tsx  theme={"system"}
 import { FormFieldProps } from "@frigade/react";
 import * as Frigade from "@frigade/react";
 
@@ -1802,7 +1826,7 @@ function CalendarField({ field, submit }: FormFieldProps) {
 It is also possible to conditionally render a field based on the value of another field by using the [formContext](https://react-hook-form.com/docs/useformcontext) provided by react-hook-form.
 For instance, if you want a custom field called `company-size` to show up when a user selects `company` in the `customer-type` field:
 
-```tsx
+```tsx  theme={"system"}
 import { type FormFieldProps, SelectField } from "@frigade/react";
 import * as Frigade from "@frigade/react";
 
@@ -1826,7 +1850,7 @@ import * as Frigade from "@frigade/react";
 
 The component supports client-side and server-side validation out of the box. You can define validation rules for each field in the form configuration using the `pattern` property with a regular expression. The example below shows how to validate an email field:
 
-```yaml
+```yaml  theme={"system"}
 steps:
   - id: collect-intend
     fields:
@@ -1842,7 +1866,7 @@ steps:
 
 You can perform server-side validation by returning a Promise from the `onPrimary` event handler. If the promise resolves to `false`, the current step in the form will not be marked as completed. The `onPrimary` event handler also contains all form data collected in the session, which allows you to send the data to your server for validation or storage.
 
-```tsx
+```tsx  theme={"system"}
 import { StepHandlerProp } from "@frigade/react";
 import * as Frigade from "@frigade/react";
 
@@ -1874,7 +1898,7 @@ You can implement browser navigation (back/forward) with your Frigade forms usin
 
 Here's an example of how to implement this:
 
-```jsx
+```jsx  theme={"system"}
 import { useFlow } from '@frigade/react';
 import { useEffect, useRef } from 'react';
 
@@ -1937,7 +1961,7 @@ When users click the browser's back button, they'll be taken to the previous ste
 Forms can be prefilled by using [Dynamic Variables](/platform/dynamic-variables) by linking the `value` of a `field` to the `variables` prop of the Form component. The example below shows how to prefill a form with the user's name:
 
 <CodeGroup>
-  ```Typescript App.tsx
+  ```Typescript App.tsx theme={"system"}
   import * as Frigade from '@frigade/react';
 
   const App = () => {
@@ -1953,7 +1977,7 @@ Forms can be prefilled by using [Dynamic Variables](/platform/dynamic-variables)
 
   ```
 
-  ```yaml Configuration
+  ```yaml Configuration theme={"system"}
   steps:
     - id: collect-intend
       fields:
@@ -2003,7 +2027,7 @@ To learn about how to customize Frigade components, see the [customization docum
 
       For example, if you want to use a custom field type called `calendar`:
 
-      ```tsx
+      ```tsx  theme={"system"}
       import { Form, FormFieldProps } from '@frigade/react'
 
       function CalendarField({ field, submit }: FormFieldProps) {
@@ -2244,10 +2268,18 @@ Hints are a great way to subtly call attention to specific parts of your UI
 
 <Frame>
   <img
-    src="https://mintlify.s3.us-west-1.amazonaws.com/frigade-docs/images/components/hint.svg"
+    src="https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/components/hint.svg?fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=2da7d591eb61dcb9cec7eb90e6b6a9a4"
     style={{
     width: "350px",
   }}
+    data-og-width="390"
+    width="390"
+    data-og-height="440"
+    height="440"
+    data-path="images/components/hint.svg"
+    data-optimize="true"
+    data-opv="3"
+    srcset="https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/components/hint.svg?w=280&fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=49177bd51b9a24bb32c8d707eac66332 280w, https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/components/hint.svg?w=560&fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=9b5c06a32647218ad936be59da8b6305 560w, https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/components/hint.svg?w=840&fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=74b6f27baa0bfe0471addc1145af6f22 840w, https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/components/hint.svg?w=1100&fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=8afbb6903463f6587367da28e3e200a1 1100w, https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/components/hint.svg?w=1650&fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=719ae4f59f847c0ed1a6d29f35c7451f 1650w, https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/components/hint.svg?w=2500&fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=86626bebb6613e9f1f49fc0b98ea4577 2500w"
   />
 </Frame>
 
@@ -2275,7 +2307,7 @@ The `Hint` component provides users with contextual guidance without interruptin
 
 <Tabs>
   <Tab title="Code">
-    ```tsx App.tsx
+    ```tsx App.tsx theme={"system"}
     import * as Frigade from '@frigade/react';
 
     const App = () => {
@@ -2310,7 +2342,7 @@ Source: https://docs.frigade.com/component/inline-card
 Communicate information or drive action via in-line content cards
 
 <Frame className="h-96 items-center">
-  <img src="https://mintlify.s3.us-west-1.amazonaws.com/frigade-docs/images/components/inline-card.svg" style={{ maxWidth: "300px" }} />
+  <img src="https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/components/inline-card.svg?fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=abfab3323d2170b86b6ee639e15944dd" style={{ maxWidth: "300px" }} data-og-width="360" width="360" data-og-height="165" height="165" data-path="images/components/inline-card.svg" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/components/inline-card.svg?w=280&fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=6abc6d7c71151f904a656b78283f5616 280w, https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/components/inline-card.svg?w=560&fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=92d84811248e1db170f274ede35174d4 560w, https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/components/inline-card.svg?w=840&fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=f69788ea49c6d800fa5777dab22bb7ea 840w, https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/components/inline-card.svg?w=1100&fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=9b4f485d6b364775deea9388f28772ca 1100w, https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/components/inline-card.svg?w=1650&fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=a7ccd2699537edf8410ee3df11409dd0 1650w, https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/components/inline-card.svg?w=2500&fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=4db6b8e14ca67696eefbbf9faa2e9d0b 2500w" />
 </Frame>
 
 ## About this component
@@ -2347,7 +2379,7 @@ The `Card` component is a handy little UI element that’s great for showing off
 
 <Tabs>
   <Tab title="Code">
-    ```tsx
+    ```tsx  theme={"system"}
     import * as Frigade from '@frigade/react';
 
     const App = () => {
@@ -2616,10 +2648,18 @@ Display a user's progress through a Flow
 
 <Frame className="h-96 items-center">
   <img
-    src="https://mintlify.s3.us-west-1.amazonaws.com/frigade-docs/images/components/progress-badge.svg"
+    src="https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/components/progress-badge.svg?fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=268f826aae66c1096fecfe00d390a6b7"
     style={{
     width: "220px",
   }}
+    data-og-width="220"
+    width="220"
+    data-og-height="67"
+    height="67"
+    data-path="images/components/progress-badge.svg"
+    data-optimize="true"
+    data-opv="3"
+    srcset="https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/components/progress-badge.svg?w=280&fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=acb64175dce30c206a90c60f5e01b08c 280w, https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/components/progress-badge.svg?w=560&fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=9a2c2e23719d8b3c8a62bf37ede988e0 560w, https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/components/progress-badge.svg?w=840&fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=43dc825fb2c9d094734dfd26cd638e9c 840w, https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/components/progress-badge.svg?w=1100&fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=16642606f3d70aa01c10705d125de11c 1100w, https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/components/progress-badge.svg?w=1650&fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=684d3caa16a43f910ab4be5fc7464b39 1650w, https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/components/progress-badge.svg?w=2500&fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=d573a6396b82c5c7e50f2c7e6b91e30c 2500w"
   />
 </Frame>
 
@@ -2635,7 +2675,7 @@ The Progress Badge component is unlike other components in that it doesn't have 
 
 <Tabs>
   <Tab title="Code">
-    ```tsx
+    ```tsx  theme={"system"}
     import * as Frigade from '@frigade/react';
 
     const App = () => {
@@ -2660,7 +2700,7 @@ Source: https://docs.frigade.com/component/survey/nps
 Collect structured and freeform feedback from your users
 
 <Frame className="h-96 items-center px-4">
-  <img src="https://mintlify.s3.us-west-1.amazonaws.com/frigade-docs/images/components/nps.svg" />
+  <img src="https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/components/nps.svg?fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=06e1d731f5cbff52fc864cc189bf9aca" data-og-width="622" width="622" data-og-height="188" height="188" data-path="images/components/nps.svg" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/components/nps.svg?w=280&fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=dac77d4284c82a7c6d27cb2f043e3f7d 280w, https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/components/nps.svg?w=560&fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=60dad2c62b5ca6d98251758dca56769e 560w, https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/components/nps.svg?w=840&fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=26b83e9eabceddf2360f25d7e6be0665 840w, https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/components/nps.svg?w=1100&fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=c0d804bd6aa655b0aeab86302e462218 1100w, https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/components/nps.svg?w=1650&fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=29169f8264a873974fe2613729603348 1650w, https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/components/nps.svg?w=2500&fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=ebe3f53154d3f611ae2ce715950c459c 2500w" />
 </Frame>
 
 ## About this component
@@ -2699,18 +2739,26 @@ The component comes with a default NPS scale of 0-10. You can also use a custom 
   <Tab title="Emoji Survey">
     <Frame style={{ paddingTop: "64px", paddingBottom: "64px" }}>
       <img
-        src="https://mintlify.s3.us-west-1.amazonaws.com/frigade-docs/images/components/surveys/emoji.png"
+        src="https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/components/surveys/emoji.png?fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=5547c82d295589ed2566ddb41cddb2f2"
         style={{
         width: "340px",
         height: "auto",
       }}
+        data-og-width="1034"
+        width="1034"
+        data-og-height="517"
+        height="517"
+        data-path="images/components/surveys/emoji.png"
+        data-optimize="true"
+        data-opv="3"
+        srcset="https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/components/surveys/emoji.png?w=280&fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=47bbf71587c609176319b500027ca119 280w, https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/components/surveys/emoji.png?w=560&fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=dba2cd173dce5976b02905b8d8e16b21 560w, https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/components/surveys/emoji.png?w=840&fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=b2a373b7efa8ed69cf7ebe7ed1e4077f 840w, https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/components/surveys/emoji.png?w=1100&fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=8bffb090eeccb7ae16b93c570951569c 1100w, https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/components/surveys/emoji.png?w=1650&fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=7742054ee55a372f735cd0abd6cfde88 1650w, https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/components/surveys/emoji.png?w=2500&fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=0a651c4968ddaa7d52a54005cabc0633 2500w"
       />
     </Frame>
   </Tab>
 
   <Tab title="Code">
     <CodeGroup>
-      ```Typescript App.tsx
+      ```Typescript App.tsx theme={"system"}
         import * as Frigade from '@frigade/react';
         
         const App = () => {
@@ -2741,7 +2789,7 @@ The component comes with a default NPS scale of 0-10. You can also use a custom 
 
 <Tabs>
   <Tab title="Code">
-    ```tsx
+    ```tsx  theme={"system"}
     import * as Frigade from '@frigade/react';
 
     const App = () => {
@@ -2796,7 +2844,7 @@ To learn about how to customize Frigade components, see the [customization docum
 
       For example, if you want to use a custom field type called `calendar`:
 
-      ```tsx
+      ```tsx  theme={"system"}
       import { Form, FormFieldProps } from "@frigade/react";
 
       function CalendarField({ field, submit }: FormFieldProps) {
@@ -3048,10 +3096,18 @@ Guide users through a specific product flow or feature
 
 <Frame>
   <img
-    src="https://mintlify.s3.us-west-1.amazonaws.com/frigade-docs/images/components/tour.svg"
+    src="https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/components/tour.svg?fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=0fddc17d2f8f39376b145d04b2fd5a65"
     style={{
     width: "350px",
   }}
+    data-og-width="424"
+    width="424"
+    data-og-height="474"
+    height="474"
+    data-path="images/components/tour.svg"
+    data-optimize="true"
+    data-opv="3"
+    srcset="https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/components/tour.svg?w=280&fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=19698c121504d03cb0087d27569c094a 280w, https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/components/tour.svg?w=560&fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=10a84940d932fddb1d2057272c4ae76c 560w, https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/components/tour.svg?w=840&fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=55e95fb2d752d6577c57a9c4734ce3d7 840w, https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/components/tour.svg?w=1100&fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=c34245df4477cf0e4b0bc42b233ff9b4 1100w, https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/components/tour.svg?w=1650&fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=5f4075c13d7a0859543ef464dc728a3c 1650w, https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/components/tour.svg?w=2500&fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=1a0b7a870cde45e653cbc2fcfee27ef3 2500w"
   />
 </Frame>
 
@@ -3086,7 +3142,7 @@ The `Tour` component is a sequential walkthrough designed to guide users through
 
 <Tabs>
   <Tab title="Code">
-    ```tsx
+    ```tsx  theme={"system"}
     import * as Frigade from "@frigade/react";
 
     const App = () => {
@@ -3347,10 +3403,18 @@ Source: https://docs.frigade.com/guides/announcements
 
 <Frame className="h-96 items-center px-4">
   <img
-    src="https://mintlify.s3.us-west-1.amazonaws.com/frigade-docs/images/components/announcement.svg"
+    src="https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/components/announcement.svg?fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=1feb6c3c3162ad5dcfb671cee05b2720"
     style={{
                                                     width: '350px',
                                                     }}
+    data-og-width="470"
+    width="470"
+    data-og-height="533"
+    height="533"
+    data-path="images/components/announcement.svg"
+    data-optimize="true"
+    data-opv="3"
+    srcset="https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/components/announcement.svg?w=280&fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=fa0489f75065c31f350c1bae87fb694d 280w, https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/components/announcement.svg?w=560&fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=9c312391ce3bead7af2a56d8091fba32 560w, https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/components/announcement.svg?w=840&fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=160d89e44ac348fcd7acda99c3c72fd1 840w, https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/components/announcement.svg?w=1100&fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=aecd9e5384c9c04f4d4088a4e118c861 1100w, https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/components/announcement.svg?w=1650&fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=1d46eb5279067aa5749f69eca67d26e7 1650w, https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/components/announcement.svg?w=2500&fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=d2621dab38c40ab54856d4019ca57730 2500w"
   />
 </Frame>
 
@@ -3368,7 +3432,7 @@ We recommend using the [Dialogs Collection](/platform/collections) to launch new
 You may want to launch another Flow when a user clicks on the primary button of a different Flow. For example, you can launch a tour Flow when a user clicks on the primary button of an announcement. You can achieve this my modifying the [Targeting](/platform/targeting) of the tour Flow directly in the Frigade dashboard, locating the given announcement under **Flows** and selecting **Completed** (typically initiated by the primary button) or **Dismissed** (if the user clicks the X button in the announcement).
 
 <Frame>
-  <img src="https://mintlify.s3.us-west-1.amazonaws.com/frigade-docs/images/guides/announcement/announcement-launch-tour.png" />
+  <img src="https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/guides/announcement/announcement-launch-tour.png?fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=0ed035d90662d8aa9f2d1949d08c6fc3" data-og-width="1051" width="1051" data-og-height="610" height="610" data-path="images/guides/announcement/announcement-launch-tour.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/guides/announcement/announcement-launch-tour.png?w=280&fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=a5d00c1de983ab24674affc473944955 280w, https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/guides/announcement/announcement-launch-tour.png?w=560&fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=80735621f0800fe1958ef45b6c781a5f 560w, https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/guides/announcement/announcement-launch-tour.png?w=840&fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=b06efb5a4f391087cc1b152062e3a93c 840w, https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/guides/announcement/announcement-launch-tour.png?w=1100&fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=ffe1eb01da8245cd28bbc9e590bd1cbc 1100w, https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/guides/announcement/announcement-launch-tour.png?w=1650&fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=abe7033b8f1317666a7fc81de3c8a35b 1650w, https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/guides/announcement/announcement-launch-tour.png?w=2500&fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=1b2e9fea09f8df95e1e59b3d446f1d73 2500w" />
 </Frame>
 
 
@@ -3405,7 +3469,7 @@ To start, let's get a Collection set up with a Custom Flow in it:
     2. Use the three dot menu to rename your flow to "The Rug"
     3. In the Advanced Flow editor, replace the default YAML with the following:
 
-    ```yaml
+    ```yaml  theme={"system"}
     type: macguffin
     title: The Rug
     subtitle: It really ties the room together.
@@ -3434,7 +3498,7 @@ Let's fix that by wiring up a new `<Macguffin>` Component and registering it wit
   <Step title="Create a Macguffin Component">
     Paste the following code into `Macguffin.tsx`
 
-    ```jsx
+    ```jsx  theme={"system"}
     import { Flow, type FlowProps } from '@frigade/react';
 
     export function Macguffin(props: FlowProps) {
@@ -3454,7 +3518,7 @@ Let's fix that by wiring up a new `<Macguffin>` Component and registering it wit
   <Step title="Pass your Component into the Provider">
     Add the `flowTypes` prop to `<Frigade.Provider>` to map your new `<Macguffin>` Component to the `macguffin` Flow type
 
-    ```jsx
+    ```jsx  theme={"system"}
     import * as Frigade from '@frigade/react';
 
     import { Macguffin } from 'Macguffin.tsx'
@@ -3487,7 +3551,7 @@ In this example, we will build a custom announcement component with an open sour
 The final result looks like this:
 
 <Frame>
-  <img src="https://mintlify.s3.us-west-1.amazonaws.com/frigade-docs/images/guides/custom/sanity-announcement.png" style={{maxWidth: '700px'}} />
+  <img src="https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/guides/custom/sanity-announcement.png?fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=29f4e0062593b174af3534d393efb510" style={{maxWidth: '700px'}} data-og-width="2716" width="2716" data-og-height="1527" height="1527" data-path="images/guides/custom/sanity-announcement.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/guides/custom/sanity-announcement.png?w=280&fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=e03a17d57d8f684842ac66b9b8fc8393 280w, https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/guides/custom/sanity-announcement.png?w=560&fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=b77bf00b5db29d4c85fd940aad744e25 560w, https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/guides/custom/sanity-announcement.png?w=840&fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=1b2cfd65376cb6331f7087b5a02eeb4f 840w, https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/guides/custom/sanity-announcement.png?w=1100&fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=4415757676733008a0beecae3f61ba5f 1100w, https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/guides/custom/sanity-announcement.png?w=1650&fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=5af6ae32caeb1b1e969f19942d927885 1650w, https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/guides/custom/sanity-announcement.png?w=2500&fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=a8ef2dd0b39d0d431cfbdbf94e36993f 2500w" />
 </Frame>
 
 <Steps>
@@ -3498,7 +3562,7 @@ The final result looks like this:
   <Step title="Update the Flow YAML">
     Next, we can update the YAML to include our desired announcement content. Here's an example we can start with:
 
-    ```yaml
+    ```yaml  theme={"system"}
     steps:
       - id: announcement-page-one
         title: First page title
@@ -3526,7 +3590,7 @@ The final result looks like this:
 
     We will import some components from `@frigade/react` and `@sanity/ui` to build the UI. Here are our imports:
 
-    ```jsx
+    ```jsx  theme={"system"}
     "use client";
     import { Button, Card, Dialog, Flex, ThemeProvider } from "@sanity/ui";
     import { buildTheme } from "@sanity/ui/theme";
@@ -3538,7 +3602,7 @@ The final result looks like this:
     We are using the Sanity UI `Dialog`, `Button`, `Card`, and `Flex` components to build the UI. Sanity doesn't have a component for progress, so we can import the `Progress` component from `@frigade/react` to render optional progress indicators for the current page.
     \`
 
-    ```jsx
+    ```jsx  theme={"system"}
     export function AnnouncementWithFrigade({
       flowId,
       ...props
@@ -3621,7 +3685,7 @@ The final result looks like this:
   <Step title="Place the component in your product">
     Now, if you've already installed Frigade via the [quick start guide](/quickstart), you can simply place the `AnnouncementWithFrigade` component in your product where you'd like the announcement to appear with the `Flow ID` we generated in the first step. Here's an example of how you might do that:
 
-    ```jsx
+    ```jsx  theme={"system"}
     "use client";
     import { AnnouncementWithFrigade } from "@/components/Sanity/Announcement";
 
@@ -3642,7 +3706,7 @@ The final result looks like this:
   </Step>
 
   <Step title="You're done!">
-    That's it! You've built a custom announcement component using the Frigade React SDK and Sanity UI. If you visit the page you should now see your announcement in the product.
+    That's it! You've built a custom announcement component using the Frigade Engage React SDK and Sanity UI. If you visit the page you should now see your announcement in the product.
 
     As you interact with the Flow, you will see a user profile generated in the Frigade dashboard. You can delete the user or reset this specific Flow in the user profile page in order to see it again after completing it.
 
@@ -3659,7 +3723,7 @@ Source: https://docs.frigade.com/guides/custom/js-sdk
 You can build components entirely headless using the [Frigade JS SDK](/sdk/js). For instance, to build a simple Checklist component, you can use the `Flow` and `Step` classes to get the data and build the UI. Here's an example of how to do just that:
 
 <CodeGroup>
-  ```js app.js
+  ```js app.js theme={"system"}
   import { Flow, Step } from '@frigade/js';
 
   const flowId = 'flow_RgilNasCrSBQmrVM'; // Replace this with the Flow ID found in the Frigade dashboard
@@ -3712,7 +3776,7 @@ You can build components entirely headless using the [Frigade JS SDK](/sdk/js). 
   });
   ```
 
-  ```html index.html
+  ```html index.html theme={"system"}
   <div id="checklist"></div>
   ```
 </CodeGroup>
@@ -3733,14 +3797,14 @@ Additionally, we'll leverage a series of prebuilt Frigade component primitives s
 The final result looks like this:
 
 <Frame caption="A custom built progress badge">
-  <img src="https://mintlify.s3.us-west-1.amazonaws.com/frigade-docs/images/guides/custom/custom-progress-badge.png" style={{maxWidth: '400px'}} />
+  <img src="https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/guides/custom/custom-progress-badge.png?fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=9db56ca86dd2bd80c270248acceb3b6f" style={{maxWidth: '400px'}} data-og-width="700" width="700" data-og-height="350" height="350" data-path="images/guides/custom/custom-progress-badge.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/guides/custom/custom-progress-badge.png?w=280&fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=a1c94bd4415bbad009f37e70ce372d4e 280w, https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/guides/custom/custom-progress-badge.png?w=560&fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=e39ecc540c1f4a3f7e2bec87d626e781 560w, https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/guides/custom/custom-progress-badge.png?w=840&fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=88811d8bf9c7224d4f69889fc4d54b2f 840w, https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/guides/custom/custom-progress-badge.png?w=1100&fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=4e5b634471ad031429613b18b7d7ac7e 1100w, https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/guides/custom/custom-progress-badge.png?w=1650&fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=b91842a120890f3a7f716c8aace60a02 1650w, https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/guides/custom/custom-progress-badge.png?w=2500&fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=b1a7f358bd45ea049003447218d9efa2 2500w" />
 </Frame>
 
 First, create a new Flow in the Frigade Dashboard by navigating to the **Flows** tab and clicking **Create Flow**. Select **Custom Flow** as the Flow type.
 
 You can use any code you wish for the YAML configuration, however, we recommend starting with the following example:
 
-```yaml
+```yaml  theme={"system"}
 steps:
     # Only the id field is required per step.
   - id: unique-step-id-1
@@ -3757,7 +3821,7 @@ steps:
 
 We're now ready to wire in the frontend code. Start by simply importing the `useFlow` hook. We'll then use the hook to get the flow data and calculate the number of steps completed and the total number of steps:
 
-```jsx
+```jsx  theme={"system"}
 import { useFlow } from '@frigade/react';
 
 export function ProgressBadge() {
@@ -3770,9 +3834,9 @@ export function ProgressBadge() {
 
 To see the full list of methods and fields in the `flow` object, see the [Flow API Reference](/sdk/js/flow).
 
-Now, all we have left to do is to build the UI. We'll use the `Box` and `Text` components from the Frigade React SDK to build the UI. We'll also use the `IconRender` component to render the ChevronRight icon from the `lucide-react` package:
+Now, all we have left to do is to build the UI. We'll use the `Box` and `Text` components from the Frigade Engage React SDK to build the UI. We'll also use the `IconRender` component to render the ChevronRight icon from the `lucide-react` package:
 
-```jsx
+```jsx  theme={"system"}
 import { Box, Text, useFlow } from '@frigade/react';
 import { ChevronRight } from 'lucide-react';
 
@@ -3870,7 +3934,7 @@ export function ProgressBadge() {
 }
 ```
 
-That's it! You've built a custom component using the Frigade React SDK.
+That's it! You've built a custom component using the Frigade Engage React SDK.
 
 
 # Guide: Building Slack-Integrated Forms
@@ -3917,7 +3981,7 @@ There are several ways to approach this, but we'll cover one of the most straigh
   <Step title="Write sign up dates to Frigade user properties">
     First, we'll want begin passing user signup or account created dates to Frigade. You can do this by sending the property to Frigade with the SDK. The documentation on [User Hook](/sdk/hooks/user) has more details, but below is a code snippet with an example.
 
-    ```tsx
+    ```tsx  theme={"system"}
     import { useUser } from '@frigade/react';
 
     const { addProperties } = useUser();
@@ -3930,7 +3994,7 @@ There are several ways to approach this, but we'll cover one of the most straigh
 
     Once a property is written to Frigade, it will begin to show up in the user properties section of the user detail page and you'll be able to access it for Frigade targeting and dynamic variables.
 
-    <img src="https://mintlify.s3.us-west-1.amazonaws.com/frigade-docs/images/guides/targeting/user-properties.png" className="rounded-md" style={{border: '1px solid #E8EBF0',}} />
+    <img src="https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/guides/targeting/user-properties.png?fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=70d3ab7238176d7b7bee44c2d47b4b9f" className="rounded-md" style={{border: '1px solid #E8EBF0',}} data-og-width="1262" width="1262" data-og-height="830" height="830" data-path="images/guides/targeting/user-properties.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/guides/targeting/user-properties.png?w=280&fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=96b3ecb80b417e9a9b70c90edec0872e 280w, https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/guides/targeting/user-properties.png?w=560&fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=dbafc7b4523c4b552e23bf4cdea360e3 560w, https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/guides/targeting/user-properties.png?w=840&fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=1f900f6cdfa0722484e3395d7724c830 840w, https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/guides/targeting/user-properties.png?w=1100&fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=8dec08c9c7485d10493779b4c381e72f 1100w, https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/guides/targeting/user-properties.png?w=1650&fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=d04228b21bf0e0ae0e84bbdcb8446d80 1650w, https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/guides/targeting/user-properties.png?w=2500&fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=7db1a9b33f4cecf8738daa91ee5f2de9 2500w" />
   </Step>
 
   <Step title="Add targeting to your Flow">
@@ -3940,7 +4004,7 @@ There are several ways to approach this, but we'll cover one of the most straigh
 
     You can of course adjust and combine the properties and periods to further refine your targeting (e.g. isEnterprise, completedSetup, etc.).
 
-    <img src="https://mintlify.s3.us-west-1.amazonaws.com/frigade-docs/images/guides/targeting/audience-targeting.png" alt="User detail page" className="rounded-md" style={{border: '1px solid #E8EBF0',}} />
+    <img src="https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/guides/targeting/audience-targeting.png?fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=18a1ba27a4a2c0648a809537554b071d" alt="User detail page" className="rounded-md" style={{border: '1px solid #E8EBF0',}} data-og-width="1380" width="1380" data-og-height="802" height="802" data-path="images/guides/targeting/audience-targeting.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/guides/targeting/audience-targeting.png?w=280&fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=b07aa401a1bfe3c39fdf8982e01c21f6 280w, https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/guides/targeting/audience-targeting.png?w=560&fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=fb1fe0fc047edc93a9301790fcc082af 560w, https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/guides/targeting/audience-targeting.png?w=840&fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=703e4eb660d9e672095c0a631dd3f319 840w, https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/guides/targeting/audience-targeting.png?w=1100&fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=bb8340884bca79dc515d54be9f1d0c90 1100w, https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/guides/targeting/audience-targeting.png?w=1650&fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=e2ae69dbc192a06ac17f8a11c5a03ed0 1650w, https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/guides/targeting/audience-targeting.png?w=2500&fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=12d78458757e707a0ff69ff8ee00032a 2500w" />
 
     And that's it! Now your Flow will only be shown to users who signed up in the period you specified. If you already have audiences set up with another analytics tool, be sure to check out our [Integrations](/integrations) to connect and use them in Frigade.
   </Step>
@@ -3953,7 +4017,7 @@ Source: https://docs.frigade.com/guides/tours
 
 
 <Frame caption="An example of a <Frigade.Tour/>">
-  <img src="https://mintlify.s3.us-west-1.amazonaws.com/frigade-docs/images/tours-tooltip-basic.png" className="h-96" />
+  <img src="https://mintcdn.com/frigade-docs/vb0YqHQGpTytLgI7/images/tours-tooltip-basic.png?fit=max&auto=format&n=vb0YqHQGpTytLgI7&q=85&s=f155b1d2d3b4965cd228c8a2c127c48a" className="h-96" data-og-width="1980" width="1980" data-og-height="2010" height="2010" data-path="images/tours-tooltip-basic.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/frigade-docs/vb0YqHQGpTytLgI7/images/tours-tooltip-basic.png?w=280&fit=max&auto=format&n=vb0YqHQGpTytLgI7&q=85&s=77320f2da88bea5507059f72c476e6c8 280w, https://mintcdn.com/frigade-docs/vb0YqHQGpTytLgI7/images/tours-tooltip-basic.png?w=560&fit=max&auto=format&n=vb0YqHQGpTytLgI7&q=85&s=3f9c18d20127c192c926be55153a57e8 560w, https://mintcdn.com/frigade-docs/vb0YqHQGpTytLgI7/images/tours-tooltip-basic.png?w=840&fit=max&auto=format&n=vb0YqHQGpTytLgI7&q=85&s=5f0c74b38d9d16bd58e7e8887af25e8d 840w, https://mintcdn.com/frigade-docs/vb0YqHQGpTytLgI7/images/tours-tooltip-basic.png?w=1100&fit=max&auto=format&n=vb0YqHQGpTytLgI7&q=85&s=512cdff16492459bab879079990ffe43 1100w, https://mintcdn.com/frigade-docs/vb0YqHQGpTytLgI7/images/tours-tooltip-basic.png?w=1650&fit=max&auto=format&n=vb0YqHQGpTytLgI7&q=85&s=ec95265aa1f3458ac8b90c81b2ad280e 1650w, https://mintcdn.com/frigade-docs/vb0YqHQGpTytLgI7/images/tours-tooltip-basic.png?w=2500&fit=max&auto=format&n=vb0YqHQGpTytLgI7&q=85&s=aad9484870af39b58cfcca4b21881127 2500w" />
 </Frame>
 
 ## In this guide
@@ -3974,7 +4038,7 @@ Source: https://docs.frigade.com/guides/tours
 
     <Info>Each Step in a Tour uses a [CSS Selector](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_selectors) to attach itself to the element in your page that you want to highlight. We recommend adding a unique `id` to your element to ensure that Frigade can find it.</Info>
 
-    ```tsx
+    ```tsx  theme={"system"}
     <span id="my-element">
       This is the element that we're going to attach a Tour Step to.
     </span>
@@ -3984,7 +4048,7 @@ Source: https://docs.frigade.com/guides/tours
   <Step title="Configure your Flow">
     In the Frigade Dashboard, use the `selector` property in each step of your Tour to highlight the desired element in your application:
 
-    ```yaml
+    ```yaml  theme={"system"}
     steps:
       - title: "Welcome to Frigade!"
         description: "This is a tour of the Frigade platform."
@@ -3995,7 +4059,7 @@ Source: https://docs.frigade.com/guides/tours
   <Step title="Embed the Tour Component">
     Add the [Tour](/component/tour) Component to your application with its corresponding Flow ID.
 
-    ```tsx
+    ```tsx  theme={"system"}
     <Frigade.Tour flowId="flow_Bkh43aEjXcrna2lO" />
     ```
   </Step>
@@ -4013,7 +4077,7 @@ Source: https://docs.frigade.com/guides/tours
 
     <Info>Each Hint uses a [CSS Selector](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_selectors) to attach itself to the element in your page that you want to highlight. We recommend adding a unique `id` to your element to ensure that Frigade can find it.</Info>
 
-    ```tsx
+    ```tsx  theme={"system"}
     <span id="my-element">
       This is the element that we're going to attach a Hint to.
     </span>
@@ -4023,7 +4087,7 @@ Source: https://docs.frigade.com/guides/tours
   <Step title="Configure your Flow">
     In the Frigade Dashboard, use the `selector` property in each Hint to highlight the desired element in your application.
 
-    ```yaml
+    ```yaml  theme={"system"}
     steps:
       - title: "Welcome to Frigade!"
         description: "This is a tour of the Frigade platform."
@@ -4034,7 +4098,7 @@ Source: https://docs.frigade.com/guides/tours
   <Step title="Embed the Tour Component">
     No, that's not a typo, Hints are actually a specially configured `<Frigade.Tour>`!
 
-    ```tsx
+    ```tsx  theme={"system"}
     <Frigade.Tour
       flowId='flow_Bkh43aEjXcrna2lO'
       sequential={false} // Show all Steps at once
@@ -4055,7 +4119,7 @@ One of the benefits of Frigade is that it can tap into your existing router to n
 If a Step in a Tour is not appearing when you expect it to, you can enable debugging by enabling Verbose logging in your browser. To enable this in Chrome Devtools, simply click the three dot menu in the console as shown below:
 
 <Frame caption="Enabling verbose logging in Chrome Devtools">
-  <img src="https://mintlify.s3.us-west-1.amazonaws.com/frigade-docs/images/guides/tours/debug.png" className="h-96" />
+  <img src="https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/guides/tours/debug.png?fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=2cb121c8d0f6d50b0ef13854c4e88cc5" className="h-96" data-og-width="747" width="747" data-og-height="518" height="518" data-path="images/guides/tours/debug.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/guides/tours/debug.png?w=280&fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=87a7d41c953e184c6a6516a3f5e885d6 280w, https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/guides/tours/debug.png?w=560&fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=4abbb3951dc9331370a6f6b4b617277c 560w, https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/guides/tours/debug.png?w=840&fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=3a0001bebc5a08f2775d501d9f74eafe 840w, https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/guides/tours/debug.png?w=1100&fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=689d603f223b048760769c4add41fa1b 1100w, https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/guides/tours/debug.png?w=1650&fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=4436c048e73e7919f760018e1ee60405 1650w, https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/guides/tours/debug.png?w=2500&fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=5791ff4778ba19a1c93463807329259f 2500w" />
 </Frame>
 
 This will log if a selector is not found on the current page.
@@ -4064,13 +4128,13 @@ This will log if a selector is not found on the current page.
 
 By default, Steps are rendered with a z-index of 9999. To change this, you can use the `zIndex` prop on a Tour:
 
-```tsx
+```tsx  theme={"system"}
 <Frigade.Tour flowId="my-flow-id" zIndex={100} />
 ```
 
 Or alternatively, you can override the z-index for a specific Step directly in the YAML config using the `zIndex` property:
 
-```yaml
+```yaml  theme={"system"}
 steps:
   - id: my-tour-step
     title: My title
@@ -4087,7 +4151,7 @@ steps:
 If you want to force a specific Step to show up on the left or right side of the targeted element, you can use the `align` and `side` properties in Config YAML to override the default positioning.
 It follows the same syntax as the [align and side props](/component/tour#align) on the `Tour` component.
 
-```yaml
+```yaml  theme={"system"}
 steps:
   - id: my-tour-step
     title: My title
@@ -4105,7 +4169,7 @@ steps:
 You can add a custom offset to the x and y positioning of each Step in a Tour using the `sideOffset` and `alignOffset` properties (see [Tour component documentation](/component/tour)).
 Alternatively, you can override the offset for a specific Step directly in the YAML config by leveraging the `props` field:
 
-```yaml
+```yaml  theme={"system"}
 steps:
   - id: my-tour-step
     title: My title
@@ -4122,7 +4186,7 @@ steps:
 
 Sometimes you may want to hide the CTA button on a single Step for a user to take an action in your application rather than simply continuing the tour on every button click. To do this, simply omit the `primaryButton.title` property in the YAML config:
 
-```yaml
+```yaml  theme={"system"}
 steps:
   - id: my-tour-step
     title: My title
@@ -4154,19 +4218,19 @@ The event types and data schema is identical to the events sent in [Frigade Webh
   <Step title="Copy your Amplitude API Key">
     Log in to your Amplitude account, open the settings menu, and select **Organization settings**. Select the **Projects** tab and copy the API Key for the project you want to send events to. Do not copy the secret API key as only the public API key is required.
 
-    <img src="https://mintlify.s3.us-west-1.amazonaws.com/frigade-docs/images/amplitude-1.png" className="rounded" />
+    <img src="https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/amplitude-1.png?fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=cb793dc1cd31739ad093c80fb904e809" className="rounded" data-og-width="1471" width="1471" data-og-height="1188" height="1188" data-path="images/amplitude-1.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/amplitude-1.png?w=280&fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=188cd96f97dbd480e37763dd769562ab 280w, https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/amplitude-1.png?w=560&fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=17dc33c9387d94ade461614082be54f0 560w, https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/amplitude-1.png?w=840&fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=b84c99f6ca0a01c9088792c56ffd72ef 840w, https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/amplitude-1.png?w=1100&fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=39b08cd005223ababfea581840b6a77f 1100w, https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/amplitude-1.png?w=1650&fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=5ea895c4dc166728929ee1074b36b937 1650w, https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/amplitude-1.png?w=2500&fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=af4c59c2c03eaaafc5b3fc297a180753 2500w" />
   </Step>
 
   <Step title="Add Amplitude as an integration in Frigade">
     Open the **Integrations** page in Frigade and select **Amplitude**. Paste the API key you copied in step 1 and click **Save**. If the integration is enabled, events will start streaming to Amplitude immediately.
 
-    <img src="https://mintlify.s3.us-west-1.amazonaws.com/frigade-docs/images/integrations/amplitude.png" className="rounded" />
+    <img src="https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/integrations/amplitude.png?fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=0bd8ef8b05ba31ea930921b461acd737" className="rounded" data-og-width="3248" width="3248" data-og-height="2124" height="2124" data-path="images/integrations/amplitude.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/integrations/amplitude.png?w=280&fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=daa2446ce8fa7ae54eff1bab412d5304 280w, https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/integrations/amplitude.png?w=560&fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=e47eb5d33eb86b9eb65c94237a8a4a69 560w, https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/integrations/amplitude.png?w=840&fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=df9716537176a4e0baa4e23b9b197516 840w, https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/integrations/amplitude.png?w=1100&fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=8aaaff68c0189795afedf8b79ca03302 1100w, https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/integrations/amplitude.png?w=1650&fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=f2b2788b9c828c5527f03739725979ca 1650w, https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/integrations/amplitude.png?w=2500&fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=2453f5c43d3171bebb49fa719978d261 2500w" />
   </Step>
 
   <Step title="See data in Amplitude">
     Open the dashboard for the project you selected in step 1 and take some action in any given Frigade Flow such as completing a step. You should see events starting to stream from Frigade in the **Realtime event stream** widget:
 
-    <img src="https://mintlify.s3.us-west-1.amazonaws.com/frigade-docs/images/amplitude-2.png" className="rounded" />
+    <img src="https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/amplitude-2.png?fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=888e39d259276c646c97490422f590b3" className="rounded" data-og-width="1471" width="1471" data-og-height="1188" height="1188" data-path="images/amplitude-2.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/amplitude-2.png?w=280&fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=caa38c6fd57a33c77d59c2d615cbbab8 280w, https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/amplitude-2.png?w=560&fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=72d137ccaa11791b98b11c1efae15578 560w, https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/amplitude-2.png?w=840&fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=e386123d83186fa12d7b06b9cb3e6205 840w, https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/amplitude-2.png?w=1100&fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=562d2795e3011a55c86a104b4b833ed0 1100w, https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/amplitude-2.png?w=1650&fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=55506b07f06caa7b300803e1019659f4 1650w, https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/amplitude-2.png?w=2500&fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=5db397e5c09e318c73cc0b6abbaf357d 2500w" />
   </Step>
 </Steps>
 
@@ -4191,13 +4255,13 @@ The following steps will help you send data from Frigade to Heap. For instance, 
     From the Heap dashboard, navigate to **Settings** and open **Projects**.
     Click the appropriate project and environment and copy the numeric **Environment ID**.
 
-    <img src="https://mintlify.s3.us-west-1.amazonaws.com/frigade-docs/images/integrations/heap/1.png" className="rounded" />
+    <img src="https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/integrations/heap/1.png?fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=c9aaf64c9e9d33f7ee678558d91ef958" className="rounded" data-og-width="1493" width="1493" data-og-height="875" height="875" data-path="images/integrations/heap/1.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/integrations/heap/1.png?w=280&fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=9a8954b0fc9aceac40c834c4b694b02a 280w, https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/integrations/heap/1.png?w=560&fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=50b597f97779b8f87c156b3805901071 560w, https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/integrations/heap/1.png?w=840&fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=fb36214f35cec377737735bca99c3721 840w, https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/integrations/heap/1.png?w=1100&fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=19b91f54245e189366973a1d59f85c89 1100w, https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/integrations/heap/1.png?w=1650&fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=6535c18c36c879714861e0d17ab09f5f 1650w, https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/integrations/heap/1.png?w=2500&fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=a81aaffc595f4dc4e820d9f0ab641c0d 2500w" />
   </Step>
 
   <Step title="Add Heap in Frigade">
     Next, go to your Frigade dashboard and select **Integrations**. Click **Add Integration** and select **Heap**.
 
-    <img src="https://mintlify.s3.us-west-1.amazonaws.com/frigade-docs/images/integrations/heap/2.png" className="rounded" />
+    <img src="https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/integrations/heap/2.png?fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=6bcc9086b2808f9d596ddaed04bb449d" className="rounded" data-og-width="1395" width="1395" data-og-height="825" height="825" data-path="images/integrations/heap/2.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/integrations/heap/2.png?w=280&fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=7c05651a411f06d612188cc9541becfc 280w, https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/integrations/heap/2.png?w=560&fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=75aa5121e93c01f767dc8e1971062d93 560w, https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/integrations/heap/2.png?w=840&fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=5eab8efc716d0cc25c1c3e9c868ad0d4 840w, https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/integrations/heap/2.png?w=1100&fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=83eb8ed9df03c08be2fe24b218e8e04e 1100w, https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/integrations/heap/2.png?w=1650&fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=97165363154e329c233d6a314e5c2307 1650w, https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/integrations/heap/2.png?w=2500&fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=1b4060a4e52646d0ec8f58b59edb48c5 2500w" />
 
     You will be asked to enter your Heap Environment ID. Click **Connect** to save and activate the integration. Shortly after, events will start streaming from Frigade in real-time.
   </Step>
@@ -4205,7 +4269,7 @@ The following steps will help you send data from Frigade to Heap. For instance, 
   <Step title="See Frigade events in Heap">
     You should now see events from Frigade in your Heap dashboard. You can test the integration by completing a Flow and checking the **Live data feed** page in Heap:
 
-    <img src="https://mintlify.s3.us-west-1.amazonaws.com/frigade-docs/images/integrations/heap/3.png" className="rounded" />
+    <img src="https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/integrations/heap/3.png?fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=ca238de01f7f28293ffb7f95c2a2edbb" className="rounded" data-og-width="1380" width="1380" data-og-height="812" height="812" data-path="images/integrations/heap/3.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/integrations/heap/3.png?w=280&fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=6e2fded11031ee5879b1f029fb7264dc 280w, https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/integrations/heap/3.png?w=560&fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=df5336e86ec739e01384c3e2b66203be 560w, https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/integrations/heap/3.png?w=840&fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=cb616c9898e02d0f5fa57e0d64d638f8 840w, https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/integrations/heap/3.png?w=1100&fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=45a3454dd05a44db6208e0821407d2a6 1100w, https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/integrations/heap/3.png?w=1650&fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=3e5ab8a811fc3c7a13cd3828c7bc1386 1650w, https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/integrations/heap/3.png?w=2500&fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=3ddaeec8d7a8593b426dd9eac505f1f2 2500w" />
   </Step>
 </Steps>
 
@@ -4232,28 +4296,28 @@ For instance, when a User completes a Survey or a step in a Checklist, Frigade w
   <Step title="Create a Hubspot API Token">
     To get started, you will need to create a Hubspot API token by setting up a Private App in your Hubspot account.
     You can do this by navigating to the **Settings** > **Integrations** > **Private Apps** page as seen below:
-    ![Hubspot Integrations](https://mintlify.s3.us-west-1.amazonaws.com/frigade-docs/images/integrations/hubspot/settings.png)
+    <img src="https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/integrations/hubspot/settings.png?fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=07c6859475a52f65a4aaba50e3d524f6" alt="Hubspot Integrations" data-og-width="3680" width="3680" data-og-height="2196" height="2196" data-path="images/integrations/hubspot/settings.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/integrations/hubspot/settings.png?w=280&fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=a14c093d2560b7cca0f5981b2c6b6b4b 280w, https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/integrations/hubspot/settings.png?w=560&fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=f0a60c4dd4516841d083410c4f43f9ea 560w, https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/integrations/hubspot/settings.png?w=840&fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=59da4914ec4e6f23f589528470bfe357 840w, https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/integrations/hubspot/settings.png?w=1100&fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=2ddae539a7fbdfa5c6bf03bb6278b3a2 1100w, https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/integrations/hubspot/settings.png?w=1650&fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=4991712290c491780866e8714d9d9edf 1650w, https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/integrations/hubspot/settings.png?w=2500&fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=bc21d89a19f90e1f3f30e69d51e23657 2500w" />
   </Step>
 
   <Step title="Create a new App">
     Click on the **Create a private app** button to create a new app. Type in "Frigade" as the app name. Leave description and logo blank.
-    ![Create App](https://mintlify.s3.us-west-1.amazonaws.com/frigade-docs/images/integrations/hubspot/create-app.png)
+    <img src="https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/integrations/hubspot/create-app.png?fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=ac5b0ddfda5ac87eb0ac98101296a5f5" alt="Create App" data-og-width="3680" width="3680" data-og-height="2196" height="2196" data-path="images/integrations/hubspot/create-app.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/integrations/hubspot/create-app.png?w=280&fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=1e8ec611475a7bb4eb371fa5bd32766e 280w, https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/integrations/hubspot/create-app.png?w=560&fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=2099187dfb23755b91d7e9c1edfb9225 560w, https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/integrations/hubspot/create-app.png?w=840&fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=80e34c7758ae0938236807a07c853c4b 840w, https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/integrations/hubspot/create-app.png?w=1100&fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=e9fb817d41d7d7020f931600f72677b9 1100w, https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/integrations/hubspot/create-app.png?w=1650&fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=9feb350d2f5beb0ae122f8f6a88dcd68 1650w, https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/integrations/hubspot/create-app.png?w=2500&fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=8180baf64102155196a8b7995d302ba6 2500w" />
   </Step>
 
   <Step title="Set App Scopes">
     Click on the **Scopes** tab and select the scopes which you would like Frigade to have access to. As a minimum, `contact.objects.contacts` is required for reading and writing.
-    ![Set Permissions](https://mintlify.s3.us-west-1.amazonaws.com/frigade-docs/images/integrations/hubspot/app-permissions.png)
+    <img src="https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/integrations/hubspot/app-permissions.png?fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=7b5069080bfdb2fd6e630a2ca16d4f52" alt="Set Permissions" data-og-width="3680" width="3680" data-og-height="2196" height="2196" data-path="images/integrations/hubspot/app-permissions.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/integrations/hubspot/app-permissions.png?w=280&fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=49c79c73ec78f3139c19382e83cfda8f 280w, https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/integrations/hubspot/app-permissions.png?w=560&fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=a888c8b5a705e780899895fb6a665d65 560w, https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/integrations/hubspot/app-permissions.png?w=840&fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=4c5d7d8637a83041d757fe2892a534dd 840w, https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/integrations/hubspot/app-permissions.png?w=1100&fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=90f16e1d83bc4da6298785badcb6672f 1100w, https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/integrations/hubspot/app-permissions.png?w=1650&fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=a7a5b2c007a0382a359c24f8e995f999 1650w, https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/integrations/hubspot/app-permissions.png?w=2500&fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=7ee293d9d0ca455163c3ded2fb472741 2500w" />
     Once you have set the permissions, click on the **Create app** button.
   </Step>
 
   <Step title="Get API Key">
     Once the app is created, you will be presented with the API token. Copy this token.
-    ![Get API Key](https://mintlify.s3.us-west-1.amazonaws.com/frigade-docs/images/integrations/hubspot/app-key.png)
+    <img src="https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/integrations/hubspot/app-key.png?fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=26c876e442236acda0a2d166d7a338bf" alt="Get API Key" data-og-width="3680" width="3680" data-og-height="2196" height="2196" data-path="images/integrations/hubspot/app-key.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/integrations/hubspot/app-key.png?w=280&fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=5f58a306e11dce0456e12fd1dcaab0c3 280w, https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/integrations/hubspot/app-key.png?w=560&fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=e069bbafe0b693416224176b0db707ba 560w, https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/integrations/hubspot/app-key.png?w=840&fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=3e81835fdbbde6cae21cc6205b56974a 840w, https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/integrations/hubspot/app-key.png?w=1100&fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=fc2f6b43733b1921e9421f800fe5367c 1100w, https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/integrations/hubspot/app-key.png?w=1650&fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=38834f97016fa8d68577e8746a2341cd 1650w, https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/integrations/hubspot/app-key.png?w=2500&fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=2ca6a90b674afeb501599fa3e044cb30 2500w" />
   </Step>
 
   <Step title="Add Token to Frigade">
     In the Frigade dashboard, navigate to the **Integrations** page and click on the **Hubspot** integration. Paste the API token into the input field and click **Save**.
-    ![Add token to Frigade](https://mintlify.s3.us-west-1.amazonaws.com/frigade-docs/images/integrations/hubspot/frigade-connect.png)
+    <img src="https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/integrations/hubspot/frigade-connect.png?fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=e2d8b5be62e2d4165a7124594f7792e9" alt="Add token to Frigade" data-og-width="3680" width="3680" data-og-height="2196" height="2196" data-path="images/integrations/hubspot/frigade-connect.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/integrations/hubspot/frigade-connect.png?w=280&fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=f6cae782b6e2d3e4f23ecc09b1b6e692 280w, https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/integrations/hubspot/frigade-connect.png?w=560&fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=922147edc2a3e268954eceb54c762f0f 560w, https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/integrations/hubspot/frigade-connect.png?w=840&fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=69c745af7cf68921665aa9d5341a65c7 840w, https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/integrations/hubspot/frigade-connect.png?w=1100&fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=ac2b4f5ef314e7bb771d7da59b862ac6 1100w, https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/integrations/hubspot/frigade-connect.png?w=1650&fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=3b5858a379089e8a444bfe24a7658ec9 1650w, https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/integrations/hubspot/frigade-connect.png?w=2500&fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=61957cc28373f41479b708a3ff28241f 2500w" />
 
     <Info>
       As soon as you save the token, Frigade will start sending data to Hubspot.
@@ -4265,7 +4329,7 @@ For instance, when a User completes a Survey or a step in a Checklist, Frigade w
 
     You can test the integration by completing a Flow and checking the data in Hubspot for the corresponding contact.
     All data is added as Notes to the contact in Hubspot as seen below:
-    ![Hubspot Data](https://mintlify.s3.us-west-1.amazonaws.com/frigade-docs/images/integrations/hubspot/frigade-hubspot.png)
+    <img src="https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/integrations/hubspot/frigade-hubspot.png?fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=791aacea8840297353cee31e88ee30dd" alt="Hubspot Data" data-og-width="3680" width="3680" data-og-height="2196" height="2196" data-path="images/integrations/hubspot/frigade-hubspot.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/integrations/hubspot/frigade-hubspot.png?w=280&fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=00c4a78f802cc61bf5ffd85188a5a458 280w, https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/integrations/hubspot/frigade-hubspot.png?w=560&fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=ff2053c258b9dcb14fb532572bd11ff0 560w, https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/integrations/hubspot/frigade-hubspot.png?w=840&fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=7e9b6893ebbc88c1bcc6125ed8b9f29f 840w, https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/integrations/hubspot/frigade-hubspot.png?w=1100&fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=223089f75ea333e28691df278a7061ee 1100w, https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/integrations/hubspot/frigade-hubspot.png?w=1650&fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=5afcad78da5a9eb79a5897e934d2e6bc 1650w, https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/integrations/hubspot/frigade-hubspot.png?w=2500&fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=64d7477b3eab0803105bcfb4dd577576 2500w" />
   </Step>
 </Steps>
 
@@ -4295,13 +4359,13 @@ Sending Mixpanel data via Webhooks allows you to send real-time data to Frigade 
     * **Username:** `frigade`
     * **Password:** Your <i>private</i> Frigade API key (found on the **Developer** page in the Frigade dashboard)
 
-    <img src="https://mintlify.s3.us-west-1.amazonaws.com/frigade-docs/images/integrations/mixpanel/webhook-1.png" className="rounded" />
+    <img src="https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/integrations/mixpanel/webhook-1.png?fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=ed5a954894da7024871e313c1913e57e" className="rounded" data-og-width="2800" width="2800" data-og-height="1996" height="1996" data-path="images/integrations/mixpanel/webhook-1.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/integrations/mixpanel/webhook-1.png?w=280&fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=d039dac8383c04c7c36350afb464b488 280w, https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/integrations/mixpanel/webhook-1.png?w=560&fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=6096cf4e27e69943eb36f24703e6b1e6 560w, https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/integrations/mixpanel/webhook-1.png?w=840&fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=2cde3c53e0925cc016d48a21114f1604 840w, https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/integrations/mixpanel/webhook-1.png?w=1100&fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=eff3d9d445606dfdb0aa99a6e2d25bd2 1100w, https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/integrations/mixpanel/webhook-1.png?w=1650&fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=3f98671eaa9d60343fa362b2e7af17fc 1650w, https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/integrations/mixpanel/webhook-1.png?w=2500&fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=02a3f106b94f7bddba9f8a7731a2acac 2500w" />
   </Step>
 
   <Step title="View cohort data in Frigade">
     After setting up the Webhook, you will see the cohort data in the Frigade dashboard. Note that it may take up to 30 minutes the first time before all data is synced.
 
-    <img src="https://mintlify.s3.us-west-1.amazonaws.com/frigade-docs/images/integrations/mixpanel/webhook-2.png" className="rounded" />
+    <img src="https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/integrations/mixpanel/webhook-2.png?fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=c5718e6927779a1f29f4591fd46697b7" className="rounded" data-og-width="2902" width="2902" data-og-height="1992" height="1992" data-path="images/integrations/mixpanel/webhook-2.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/integrations/mixpanel/webhook-2.png?w=280&fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=96afcbd6c22fac3f4370f1c9b1fbba34 280w, https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/integrations/mixpanel/webhook-2.png?w=560&fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=26a2e749fa11e3084c0751e8c7666e16 560w, https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/integrations/mixpanel/webhook-2.png?w=840&fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=063d8c3308f11e1dfe7daaa2da72c3e9 840w, https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/integrations/mixpanel/webhook-2.png?w=1100&fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=4e9dd8c8d7dc108cbcaf615524870bff 1100w, https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/integrations/mixpanel/webhook-2.png?w=1650&fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=cbe69ca912b4eb3da56806e25536ae8b 1650w, https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/integrations/mixpanel/webhook-2.png?w=2500&fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=d05a4a45a6ababb48804fc8d72f4d8ca 2500w" />
   </Step>
 </Steps>
 
@@ -4313,7 +4377,7 @@ To send your Cohorts to Frigade, you will need to create a service account in Mi
   <Step title=" Create a Mixpanel Service Account for Frigade">
     To create a service account for Frigade, open your Mixpanel project, then click **Project Settings** and select the **Service Accounts** tab. Then click **Add Service Account** and select **Analyst** as the role.
 
-    <img src="https://mintlify.s3.us-west-1.amazonaws.com/frigade-docs/images/mixpanel-1.png" className="rounded" />
+    <img src="https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/mixpanel-1.png?fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=7604297781f5dc49f0550957fb74ecc3" className="rounded" data-og-width="1540" width="1540" data-og-height="1121" height="1121" data-path="images/mixpanel-1.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/mixpanel-1.png?w=280&fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=62e9cb7070d57bd1b87c1e58d04f36d6 280w, https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/mixpanel-1.png?w=560&fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=e821d9a42308858c3ccda2ecd127ead6 560w, https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/mixpanel-1.png?w=840&fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=7aa21e8b4c638c05620fb97adff42eb5 840w, https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/mixpanel-1.png?w=1100&fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=594a1d4969d572ce7bc7cb431d3eb83e 1100w, https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/mixpanel-1.png?w=1650&fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=8debd8b0001dc46d0af280fb143f205e 1650w, https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/mixpanel-1.png?w=2500&fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=c0b1d5a4f544f1d77a302c6cf35aaafe 2500w" />
   </Step>
 
   <Step title="Add the Mixpanel Service Account keys to Frigade">
@@ -4321,13 +4385,13 @@ To send your Cohorts to Frigade, you will need to create a service account in Mi
 
     Then, copy the **Project ID** from Mixpanel that you wish to sync cohorts from. You can find the Project ID on the Project Settings page in Mixpanel:
 
-    <img src="https://mintlify.s3.us-west-1.amazonaws.com/frigade-docs/images/mixpanel-2.png" className="rounded" />
+    <img src="https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/mixpanel-2.png?fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=f471191ddfc81704dbfb891775d06136" className="rounded" data-og-width="1540" width="1540" data-og-height="1121" height="1121" data-path="images/mixpanel-2.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/mixpanel-2.png?w=280&fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=750e18a1cbd6d06f85c99d5cc41eeb43 280w, https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/mixpanel-2.png?w=560&fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=2ae6650eaa4dcdc23b3069beb147f33a 560w, https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/mixpanel-2.png?w=840&fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=0338d22c3080805e35322ee79d2324d0 840w, https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/mixpanel-2.png?w=1100&fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=788c855bfb471e13a925d84376b3b05e 1100w, https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/mixpanel-2.png?w=1650&fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=0af007772aa3c6d76b5af8bb1503b8b4 1650w, https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/mixpanel-2.png?w=2500&fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=dc11d8bfa29d9cfd4fecbc6d99280bba 2500w" />
   </Step>
 
   <Step title="See your Mixpanel Cohorts in Frigade">
     Your Mixpanel cohorts appear as properties on your users in Frigade. Each cohort is prefixed with `mixpanel_cohort_` and the name of the cohort. For example, if you have a cohort named `NewUsers`, you will see a property named `mixpanel_cohort_NewUsers` on your users in Frigade.
 
-    <img src="https://mintlify.s3.us-west-1.amazonaws.com/frigade-docs/images/mixpanel-3.png" className="rounded" />
+    <img src="https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/mixpanel-3.png?fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=58d6d81abb9bbf50c23d2bafcea6e24c" className="rounded" data-og-width="2980" width="2980" data-og-height="2136" height="2136" data-path="images/mixpanel-3.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/mixpanel-3.png?w=280&fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=cdcfd968617f0cddad59d87863dc8dfa 280w, https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/mixpanel-3.png?w=560&fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=8b00d23a23f7f44d31a2c4f50f6d074e 560w, https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/mixpanel-3.png?w=840&fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=f8f03a7aed9fee357d8a23e3fe011707 840w, https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/mixpanel-3.png?w=1100&fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=f585743a19993fa122481d15fee6b61f 1100w, https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/mixpanel-3.png?w=1650&fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=8bc27427a16e6476af2f4cb0773425ab 1650w, https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/mixpanel-3.png?w=2500&fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=61a9e7e6c76218673e7601942b324049 2500w" />
   </Step>
 </Steps>
 
@@ -4335,7 +4399,7 @@ To send your Cohorts to Frigade, you will need to create a service account in Mi
 
 You can target users based on these properties in the [Targeting](/platform/targeting) section of the Frigade dashboard. For instance, to target users in the `NewUsers` cohort, you can use the following targeting rule:
 
-```js
+```js  theme={"system"}
 user.property('mixpanel_cohort_NewUsers') == true
 ```
 
@@ -4509,7 +4573,7 @@ Frigade can read and write data to most modern analytics and CDP platforms. To c
 You will need your Posthog API key, which you can find in your [Posthog settings](https://app.posthog.com/project/settings) as well as your Posthog instance URL.
 
 <Frame>
-  <img src="https://mintlify.s3.us-west-1.amazonaws.com/frigade-docs/images/integrations/overview.png" />
+  <img src="https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/integrations/overview.png?fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=9cfdcb084ead8cf77cb44421b03cfe38" data-og-width="3106" width="3106" data-og-height="1776" height="1776" data-path="images/integrations/overview.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/integrations/overview.png?w=280&fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=7ab1f96ac1e4c54dc18ae33bf8d0f88c 280w, https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/integrations/overview.png?w=560&fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=50be02071b773e204d8a6ea58a3b6e39 560w, https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/integrations/overview.png?w=840&fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=4defa9a2e689018355b64671129b49cc 840w, https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/integrations/overview.png?w=1100&fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=3fffb24e60feff80877f0c7beae82304 1100w, https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/integrations/overview.png?w=1650&fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=f63e2f3404243e8ef32d55a369d8a72e 1650w, https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/integrations/overview.png?w=2500&fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=63ae0fb4d2e02604ff6d7c923064f7b4 2500w" />
 </Frame>
 
 
@@ -4530,7 +4594,7 @@ Frigade supports syncing data with Salesforce. For instance, when a User complet
   <Step title="Connect Salesforce to Frigade">
     To get started, open teh Frigade Dashboard and navigate to the **Integrations**. Click **Connect** on the Salesforce integration.
     This will prompt you to connect your Salesforce account to Frigade using OAuth.
-    ![Salesforce Connect](https://mintlify.s3.us-west-1.amazonaws.com/frigade-docs/images/integrations/salesforce/connect.png)
+    <img src="https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/integrations/salesforce/connect.png?fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=64c4a27586506203b6660272f7d5bc02" alt="Salesforce Connect" data-og-width="1541" width="1541" data-og-height="1111" height="1111" data-path="images/integrations/salesforce/connect.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/integrations/salesforce/connect.png?w=280&fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=a9e1a7907b65616a490cb950366cbd97 280w, https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/integrations/salesforce/connect.png?w=560&fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=e8c031b93a3e23a4b93fdebbfe4c2c7e 560w, https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/integrations/salesforce/connect.png?w=840&fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=ac705328a2ad529d2bbc47ee51b17a02 840w, https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/integrations/salesforce/connect.png?w=1100&fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=73232bf2e64e514fb5186b2d565615a8 1100w, https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/integrations/salesforce/connect.png?w=1650&fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=9acdfde30d0ac9b4ba7ee3b347b7eb07 1650w, https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/integrations/salesforce/connect.png?w=2500&fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=e0c1e6629aaeb1a3fef86fb072174eed 2500w" />
   </Step>
 
   <Step title="Specify data to sync">
@@ -4541,7 +4605,7 @@ Frigade supports syncing data with Salesforce. For instance, when a User complet
   <Step title="Test the integration">
     You can test the integration by completing a Flow or a Step in a Flow. Once the Flow is completed, you can check Salesforce to see if the data has been synced.
     In the example below, a contact completed and NPS Survey and the data was synced to Salesforce:
-    ![Salesforce Data](https://mintlify.s3.us-west-1.amazonaws.com/frigade-docs/images/integrations/salesforce/data.png)
+    <img src="https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/integrations/salesforce/data.png?fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=0169375f028c93cbe83de9dfc869f5c8" alt="Salesforce Data" data-og-width="1541" width="1541" data-og-height="1111" height="1111" data-path="images/integrations/salesforce/data.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/integrations/salesforce/data.png?w=280&fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=b60ba677bd6e37eb6762fd6689fb8085 280w, https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/integrations/salesforce/data.png?w=560&fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=6530779f7c9c6748b33272203e4e58a5 560w, https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/integrations/salesforce/data.png?w=840&fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=7ad5e26ccad567ec298854a3ae997f49 840w, https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/integrations/salesforce/data.png?w=1100&fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=eb8dac2c8bfe83b4d26b22bdb58f3f60 1100w, https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/integrations/salesforce/data.png?w=1650&fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=28cfdd7dd882fa0db300bf14e99d72b1 1650w, https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/integrations/salesforce/data.png?w=2500&fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=5d852e6570bace6a27dfac1bd6a0a8ca 2500w" />
   </Step>
 </Steps>
 
@@ -4561,19 +4625,19 @@ You can set up Frigade as a destination for Segment identify, group, and track c
   <Step title="Add webhook destination">
     Log in to your Segment account, open workspace, and select source. Click on **Add Destination** and search and select **Webhooks**.
 
-    <img src="https://mintlify.s3.us-west-1.amazonaws.com/frigade-docs/images/segment-1.png" className="rounded" />
+    <img src="https://mintcdn.com/frigade-docs/vb0YqHQGpTytLgI7/images/segment-1.png?fit=max&auto=format&n=vb0YqHQGpTytLgI7&q=85&s=6c5d04e248ea13e47275a49a41d29b99" className="rounded" data-og-width="1684" width="1684" data-og-height="1255" height="1255" data-path="images/segment-1.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/frigade-docs/vb0YqHQGpTytLgI7/images/segment-1.png?w=280&fit=max&auto=format&n=vb0YqHQGpTytLgI7&q=85&s=1809bc76e0407eca23b3fc89d23f9bba 280w, https://mintcdn.com/frigade-docs/vb0YqHQGpTytLgI7/images/segment-1.png?w=560&fit=max&auto=format&n=vb0YqHQGpTytLgI7&q=85&s=e5cedf6f3d7a1fa47f679c768187ab11 560w, https://mintcdn.com/frigade-docs/vb0YqHQGpTytLgI7/images/segment-1.png?w=840&fit=max&auto=format&n=vb0YqHQGpTytLgI7&q=85&s=f92f058339b662308b2fc1eeae887477 840w, https://mintcdn.com/frigade-docs/vb0YqHQGpTytLgI7/images/segment-1.png?w=1100&fit=max&auto=format&n=vb0YqHQGpTytLgI7&q=85&s=5e92d1218c6d1f7f7377063d32916b94 1100w, https://mintcdn.com/frigade-docs/vb0YqHQGpTytLgI7/images/segment-1.png?w=1650&fit=max&auto=format&n=vb0YqHQGpTytLgI7&q=85&s=a876572c6528a045de75b9e97d76ba77 1650w, https://mintcdn.com/frigade-docs/vb0YqHQGpTytLgI7/images/segment-1.png?w=2500&fit=max&auto=format&n=vb0YqHQGpTytLgI7&q=85&s=fb053803703463dd26ebd6232369df61 2500w" />
   </Step>
 
   <Step title="Create mapping">
     Next after creating the destination, click the **Mappings** tab and add a new mapping:
 
-    <img src="https://mintlify.s3.us-west-1.amazonaws.com/frigade-docs/images/segment-2.png" className="rounded" />
+    <img src="https://mintcdn.com/frigade-docs/vb0YqHQGpTytLgI7/images/segment-2.png?fit=max&auto=format&n=vb0YqHQGpTytLgI7&q=85&s=37908f8bb79f582c9e09cf06ee257573" className="rounded" data-og-width="1684" width="1684" data-og-height="1255" height="1255" data-path="images/segment-2.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/frigade-docs/vb0YqHQGpTytLgI7/images/segment-2.png?w=280&fit=max&auto=format&n=vb0YqHQGpTytLgI7&q=85&s=fdbe0c9849b0bb87c413ff69c2f7113c 280w, https://mintcdn.com/frigade-docs/vb0YqHQGpTytLgI7/images/segment-2.png?w=560&fit=max&auto=format&n=vb0YqHQGpTytLgI7&q=85&s=140fc5f0d2a17cca32d2636a9f53eb61 560w, https://mintcdn.com/frigade-docs/vb0YqHQGpTytLgI7/images/segment-2.png?w=840&fit=max&auto=format&n=vb0YqHQGpTytLgI7&q=85&s=79b87d5c14113ccfd3cbe2a0f1c514c0 840w, https://mintcdn.com/frigade-docs/vb0YqHQGpTytLgI7/images/segment-2.png?w=1100&fit=max&auto=format&n=vb0YqHQGpTytLgI7&q=85&s=8b2d1b25ba3c476fb2e7e528de875422 1100w, https://mintcdn.com/frigade-docs/vb0YqHQGpTytLgI7/images/segment-2.png?w=1650&fit=max&auto=format&n=vb0YqHQGpTytLgI7&q=85&s=1f7e8a2a6f829efa815a8ba014e4982d 1650w, https://mintcdn.com/frigade-docs/vb0YqHQGpTytLgI7/images/segment-2.png?w=2500&fit=max&auto=format&n=vb0YqHQGpTytLgI7&q=85&s=bb0c2606c3750e1215ccf9566ad1b790 2500w" />
   </Step>
 
   <Step title="Select event types to send to Frigade">
     Select the event types you want to send to Frigade. In this example we select identify, group, and track, but you can select any event type you want to send to Frigade.
 
-    <img src="https://mintlify.s3.us-west-1.amazonaws.com/frigade-docs/images/segment-3.png" className="rounded" />
+    <img src="https://mintcdn.com/frigade-docs/vb0YqHQGpTytLgI7/images/segment-3.png?fit=max&auto=format&n=vb0YqHQGpTytLgI7&q=85&s=8f7a0d6cbeec26ee36566068af74cdcd" className="rounded" data-og-width="1684" width="1684" data-og-height="1255" height="1255" data-path="images/segment-3.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/frigade-docs/vb0YqHQGpTytLgI7/images/segment-3.png?w=280&fit=max&auto=format&n=vb0YqHQGpTytLgI7&q=85&s=737ff2bc8a46d8b326f38aebf09eba03 280w, https://mintcdn.com/frigade-docs/vb0YqHQGpTytLgI7/images/segment-3.png?w=560&fit=max&auto=format&n=vb0YqHQGpTytLgI7&q=85&s=091c97443415b8686caf731536872b8e 560w, https://mintcdn.com/frigade-docs/vb0YqHQGpTytLgI7/images/segment-3.png?w=840&fit=max&auto=format&n=vb0YqHQGpTytLgI7&q=85&s=38e705746f29870c376ad8bbe0ceeea8 840w, https://mintcdn.com/frigade-docs/vb0YqHQGpTytLgI7/images/segment-3.png?w=1100&fit=max&auto=format&n=vb0YqHQGpTytLgI7&q=85&s=b31e9bdc9e3bda73861deb8bae47f888 1100w, https://mintcdn.com/frigade-docs/vb0YqHQGpTytLgI7/images/segment-3.png?w=1650&fit=max&auto=format&n=vb0YqHQGpTytLgI7&q=85&s=7168293f36ca38d1b9597a8d2bed660a 1650w, https://mintcdn.com/frigade-docs/vb0YqHQGpTytLgI7/images/segment-3.png?w=2500&fit=max&auto=format&n=vb0YqHQGpTytLgI7&q=85&s=e6be6b484bf9752db845ac18c858d920 2500w" />
   </Step>
 
   <Step title="Add Frigade Webhook URL">
@@ -4585,7 +4649,7 @@ You can set up Frigade as a destination for Segment identify, group, and track c
     * Your secret Frigade API key (it will be the one prefixed with `api_private`). This key can be found in the dashboard under [API Keys](https://app.frigade.com/developer). Make sure to prefix it with `Bearer` as shown in the screenshot below.
     * `Authorization` as the key
 
-    <img src="https://mintlify.s3.us-west-1.amazonaws.com/frigade-docs/images/segment-4.png" className="rounded" />
+    <img src="https://mintcdn.com/frigade-docs/vb0YqHQGpTytLgI7/images/segment-4.png?fit=max&auto=format&n=vb0YqHQGpTytLgI7&q=85&s=dc4edba3b13ba6b5c78facb695706ac5" className="rounded" data-og-width="1684" width="1684" data-og-height="1255" height="1255" data-path="images/segment-4.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/frigade-docs/vb0YqHQGpTytLgI7/images/segment-4.png?w=280&fit=max&auto=format&n=vb0YqHQGpTytLgI7&q=85&s=74c8ef7d60b93c3a77e2a8e72e57c768 280w, https://mintcdn.com/frigade-docs/vb0YqHQGpTytLgI7/images/segment-4.png?w=560&fit=max&auto=format&n=vb0YqHQGpTytLgI7&q=85&s=c752865c5f981c719b6fcd8358301150 560w, https://mintcdn.com/frigade-docs/vb0YqHQGpTytLgI7/images/segment-4.png?w=840&fit=max&auto=format&n=vb0YqHQGpTytLgI7&q=85&s=e355f97b587b1ee887105712ace02e36 840w, https://mintcdn.com/frigade-docs/vb0YqHQGpTytLgI7/images/segment-4.png?w=1100&fit=max&auto=format&n=vb0YqHQGpTytLgI7&q=85&s=313bfb747eccb7239f0a9b0ca324ffdb 1100w, https://mintcdn.com/frigade-docs/vb0YqHQGpTytLgI7/images/segment-4.png?w=1650&fit=max&auto=format&n=vb0YqHQGpTytLgI7&q=85&s=3731190ba1ab9fb5e5bef057d8fdbc16 1650w, https://mintcdn.com/frigade-docs/vb0YqHQGpTytLgI7/images/segment-4.png?w=2500&fit=max&auto=format&n=vb0YqHQGpTytLgI7&q=85&s=a328960feef324359131c4894139c1ba 2500w" />
 
     Finally, set **Enable Batching?** to **Yes**. Optionally, you can send a test event to verify that the webhook is working. Click **Save** to save the webhook.
   </Step>
@@ -4593,7 +4657,7 @@ You can set up Frigade as a destination for Segment identify, group, and track c
   <Step title="Turn on the webhook">
     Finally, turn on the webhook by turning on the mapping you just created. Then, open the **Settings** tab and enable the Destination.
 
-    <img src="https://mintlify.s3.us-west-1.amazonaws.com/frigade-docs/images/segment-5.png" className="rounded" />
+    <img src="https://mintcdn.com/frigade-docs/vb0YqHQGpTytLgI7/images/segment-5.png?fit=max&auto=format&n=vb0YqHQGpTytLgI7&q=85&s=1f8e9228b06b13d248042ad2d3064ca1" className="rounded" data-og-width="1684" width="1684" data-og-height="1255" height="1255" data-path="images/segment-5.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/frigade-docs/vb0YqHQGpTytLgI7/images/segment-5.png?w=280&fit=max&auto=format&n=vb0YqHQGpTytLgI7&q=85&s=4d4e3aded498252853a59f92ca437269 280w, https://mintcdn.com/frigade-docs/vb0YqHQGpTytLgI7/images/segment-5.png?w=560&fit=max&auto=format&n=vb0YqHQGpTytLgI7&q=85&s=9ef86f56b3385aaba37429d2615a5967 560w, https://mintcdn.com/frigade-docs/vb0YqHQGpTytLgI7/images/segment-5.png?w=840&fit=max&auto=format&n=vb0YqHQGpTytLgI7&q=85&s=86604375a57fe8b11099a243ce1db124 840w, https://mintcdn.com/frigade-docs/vb0YqHQGpTytLgI7/images/segment-5.png?w=1100&fit=max&auto=format&n=vb0YqHQGpTytLgI7&q=85&s=7c2c1e857ba5620c295b5c7549d6f29c 1100w, https://mintcdn.com/frigade-docs/vb0YqHQGpTytLgI7/images/segment-5.png?w=1650&fit=max&auto=format&n=vb0YqHQGpTytLgI7&q=85&s=6e8d62ed25f1d4c4800355861a6b40f2 1650w, https://mintcdn.com/frigade-docs/vb0YqHQGpTytLgI7/images/segment-5.png?w=2500&fit=max&auto=format&n=vb0YqHQGpTytLgI7&q=85&s=1a3151c991056b55895ae3dc409dab08 2500w" />
 
     Congratulations! You have successfully set up Frigade as a destination for Segment. You can now use Frigade's [Targeting](/platform/targeting) with your Segment data to create personalized experiences for your users.
   </Step>
@@ -4607,13 +4671,13 @@ Frigade also supports sending user and organization events from Frigade Flows to
   <Step title="Add your Segment write key">
     To send events to your Segment instance, select **Add Source** and then **HTTP API**. Then, copy your Segment write key.
 
-    <img src="https://mintlify.s3.us-west-1.amazonaws.com/frigade-docs/images/segment-write.png" className="rounded" />
+    <img src="https://mintcdn.com/frigade-docs/vb0YqHQGpTytLgI7/images/segment-write.png?fit=max&auto=format&n=vb0YqHQGpTytLgI7&q=85&s=c6d0bb8874625bae5100bbbcd37596c7" className="rounded" data-og-width="3976" width="3976" data-og-height="2282" height="2282" data-path="images/segment-write.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/frigade-docs/vb0YqHQGpTytLgI7/images/segment-write.png?w=280&fit=max&auto=format&n=vb0YqHQGpTytLgI7&q=85&s=478cc2c4994e76c9879a4b2123c84e1f 280w, https://mintcdn.com/frigade-docs/vb0YqHQGpTytLgI7/images/segment-write.png?w=560&fit=max&auto=format&n=vb0YqHQGpTytLgI7&q=85&s=7124659f327b2de8af844101e1593afb 560w, https://mintcdn.com/frigade-docs/vb0YqHQGpTytLgI7/images/segment-write.png?w=840&fit=max&auto=format&n=vb0YqHQGpTytLgI7&q=85&s=e9a846fa67a615b34254c6cc6fc06912 840w, https://mintcdn.com/frigade-docs/vb0YqHQGpTytLgI7/images/segment-write.png?w=1100&fit=max&auto=format&n=vb0YqHQGpTytLgI7&q=85&s=7ee00f7a5c677aabc22a60bf39be3681 1100w, https://mintcdn.com/frigade-docs/vb0YqHQGpTytLgI7/images/segment-write.png?w=1650&fit=max&auto=format&n=vb0YqHQGpTytLgI7&q=85&s=73821ba39d63f4a511f571c3f6353ac4 1650w, https://mintcdn.com/frigade-docs/vb0YqHQGpTytLgI7/images/segment-write.png?w=2500&fit=max&auto=format&n=vb0YqHQGpTytLgI7&q=85&s=0a1b0fafef7df29475bfbd44efcd06a3 2500w" />
   </Step>
 
   <Step title="Add Segment in Frigade">
     Next, go to your Frigade dashboard and select **Integrations**. Click **Add Integration** and select **Segment**.
 
-    <img src="https://mintlify.s3.us-west-1.amazonaws.com/frigade-docs/images/integrations/segment.png" />
+    <img src="https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/integrations/segment.png?fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=15a5d94a542b9074e18bf200613df52c" data-og-width="3160" width="3160" data-og-height="2036" height="2036" data-path="images/integrations/segment.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/integrations/segment.png?w=280&fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=b372f84acf63933f73b99946fd5c60d1 280w, https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/integrations/segment.png?w=560&fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=60e74e8a80fbd827ec58e9522c5c3f45 560w, https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/integrations/segment.png?w=840&fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=7e1ef4f3354da4f62617489b4585047e 840w, https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/integrations/segment.png?w=1100&fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=ac150e42e3b3a0361afb8d1829804b00 1100w, https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/integrations/segment.png?w=1650&fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=6357afa214216430b3ef6c1b043f1d9c 1650w, https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/integrations/segment.png?w=2500&fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=3f1c04a320032462800ced06002a1bdd 2500w" />
 
     You will be asked to enter your Segment write key. Click **Connect** to save the integration. Shortly after, events will start streaming from Frigade in real-time.
   </Step>
@@ -4629,17 +4693,17 @@ Easily send messages to a Slack channel when users take actions in your Flows
   <Step title="Create a Slack Workflow">
     In Slack, open the Workflow page by searching for **Workflows** in the search bar and click the **Create a Workflow** button. Then, choose the **From a webhook** option:
 
-    <img src="https://mintlify.s3.us-west-1.amazonaws.com/frigade-docs/images/integrations/slack/slack-1.png" className="rounded" />
+    <img src="https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/integrations/slack/slack-1.png?fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=444b970032ad05b7f12e1732751e7b32" className="rounded" data-og-width="1527" width="1527" data-og-height="991" height="991" data-path="images/integrations/slack/slack-1.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/integrations/slack/slack-1.png?w=280&fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=d729bb593121dfc4f5a55df84be7d93b 280w, https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/integrations/slack/slack-1.png?w=560&fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=8e9d4a579e3395c0b040078ac68d3efb 560w, https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/integrations/slack/slack-1.png?w=840&fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=8529485aea7b994eae2c640c28620825 840w, https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/integrations/slack/slack-1.png?w=1100&fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=96aa4f3920c1668218f234ca8a2406ae 1100w, https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/integrations/slack/slack-1.png?w=1650&fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=b816132834b53d43cfc6819c70429699 1650w, https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/integrations/slack/slack-1.png?w=2500&fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=6922ad09e7f333019d753bacad64c946 2500w" />
   </Step>
 
   <Step title="Create a webhook in Frigade">
     Copy the **Webhook request URL** from Slack. Then press **X**.
 
-    <img src="https://mintlify.s3.us-west-1.amazonaws.com/frigade-docs/images/integrations/slack/slack-2.png" className="rounded" />
+    <img src="https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/integrations/slack/slack-2.png?fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=4639bf93ecd7922928b3a16b12b2253e" className="rounded" data-og-width="1527" width="1527" data-og-height="991" height="991" data-path="images/integrations/slack/slack-2.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/integrations/slack/slack-2.png?w=280&fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=7907ecbe0ed61f88636102ee1edc9c29 280w, https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/integrations/slack/slack-2.png?w=560&fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=dc33ab6d9e8bc512e98a5d7c0ecbd152 560w, https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/integrations/slack/slack-2.png?w=840&fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=92512e6bb215e55069b284c266b4764d 840w, https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/integrations/slack/slack-2.png?w=1100&fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=8225c4a03a425504a36cab67d76a5aa4 1100w, https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/integrations/slack/slack-2.png?w=1650&fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=08dc5dfaab9b41f0a92c589537cb7b85 1650w, https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/integrations/slack/slack-2.png?w=2500&fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=352505861be56530fddf553e586861d2 2500w" />
 
     In the Frigade dashboard, navigate to the **Developer** section and click on **Webhooks**. Click the **New webhook** button and fill in the details as shown below with your Flow of choice. In this example, we use a simple [Form Flow](/component/form):
 
-    <img src="https://mintlify.s3.us-west-1.amazonaws.com/frigade-docs/images/integrations/slack/slack-3.png" className="rounded" />
+    <img src="https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/integrations/slack/slack-3.png?fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=764dd1db37fc89d5f4637c8d584d79de" className="rounded" data-og-width="1527" width="1527" data-og-height="989" height="989" data-path="images/integrations/slack/slack-3.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/integrations/slack/slack-3.png?w=280&fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=8363b342921a539056096f0faed479a3 280w, https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/integrations/slack/slack-3.png?w=560&fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=5e4feb5ce3796f9bc71038251e1ad162 560w, https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/integrations/slack/slack-3.png?w=840&fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=859aa2f1d252e3c4140de770ac2bb920 840w, https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/integrations/slack/slack-3.png?w=1100&fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=54a3d0ae0dfb1c937a7c39d80bb157cb 1100w, https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/integrations/slack/slack-3.png?w=1650&fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=ec00b9b7b05f2e24fd9fca4a0c9c4489 1650w, https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/integrations/slack/slack-3.png?w=2500&fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=b3dd1a3b1df2d4b4b05a665d83ca7011 2500w" />
 
     <Tip>You can use a free service such as [Webhook.site](https://webhook.site/) to test your webhook.</Tip>
   </Step>
@@ -4647,7 +4711,7 @@ Easily send messages to a Slack channel when users take actions in your Flows
   <Step title="Set up data variables in Slack">
     In the Slack Workflow, click the **Starts with a webhook** card at the top and add the variables you'd like to send in your Slack message as seen below:
 
-    <img src="https://mintlify.s3.us-west-1.amazonaws.com/frigade-docs/images/integrations/slack/slack-4.png" className="rounded" />
+    <img src="https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/integrations/slack/slack-4.png?fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=98dec1e271f438a948e44e1fe2041430" className="rounded" data-og-width="1527" width="1527" data-og-height="991" height="991" data-path="images/integrations/slack/slack-4.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/integrations/slack/slack-4.png?w=280&fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=88fc089d9017f45f8b962ef6e53687bc 280w, https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/integrations/slack/slack-4.png?w=560&fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=80b4350bf3afaaf3843a38511f3029f5 560w, https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/integrations/slack/slack-4.png?w=840&fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=293ee4c14eb31a124502fa91e3483fd6 840w, https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/integrations/slack/slack-4.png?w=1100&fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=54588c4adc5febd042221c99bdae923b 1100w, https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/integrations/slack/slack-4.png?w=1650&fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=98b5ce32b4df544de7ff49310a18c1c2 1650w, https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/integrations/slack/slack-4.png?w=2500&fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=b78056f6181ad0292d848ecf04519d2b 2500w" />
 
     By default Frigade sends `user__email` and `user__name` for the given user if the data has been [provided in the SDK](/sdk/hooks/user). In this case, we also want to send the value of the `message` field from the Form Flow. To do this, we add a new variable `data__data__message` to map it to the field. You can target any field in a Frigade Form by prefixing the variable name with `data__data__`.
     <Tip>Select and radio form inputs will include both the label and the value in the webhook.  Therefore, if your field is named `industry` you should use `data__data__industry__label` to get the label or `data__data__industry__value` to get the value.</Tip>
@@ -4656,7 +4720,7 @@ Easily send messages to a Slack channel when users take actions in your Flows
   <Step title="Send a message to a Slack channel">
     Add a new step to the Slack Workflow by clicking the **Messages** link in the right menu. Then pick your channel of choice and add the variables you'd like to send in your Slack message as seen below:
 
-    <img src="https://mintlify.s3.us-west-1.amazonaws.com/frigade-docs/images/integrations/slack/slack-5.png" className="rounded" />
+    <img src="https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/integrations/slack/slack-5.png?fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=45412088fcf18852d58fd4db68a191f8" className="rounded" data-og-width="1395" width="1395" data-og-height="928" height="928" data-path="images/integrations/slack/slack-5.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/integrations/slack/slack-5.png?w=280&fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=f3bd76dc02e793a179e7b3ca73dbb15e 280w, https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/integrations/slack/slack-5.png?w=560&fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=3bb825b8427d71b0e2c370ea892f05f1 560w, https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/integrations/slack/slack-5.png?w=840&fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=4d57412dd190836ceb6395822386fe4b 840w, https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/integrations/slack/slack-5.png?w=1100&fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=b4a4b3ef72c79f18509f0eebcf51d941 1100w, https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/integrations/slack/slack-5.png?w=1650&fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=01cd392315bb5ce28b4a09793a2b6cf0 1650w, https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/integrations/slack/slack-5.png?w=2500&fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=e59a6a63c56900cc57608c534538dbfb 2500w" />
 
     Finally, hit the **Publish** button in the top right corner to make your Slack Workflow live.
   </Step>
@@ -4664,11 +4728,11 @@ Easily send messages to a Slack channel when users take actions in your Flows
   <Step title="Test your Slack integration">
     You're now all set to test your Slack integration. In your application, complete the Flow you've set up the webhook for. In this case, we'll submit the Form Flow:
 
-    <img src="https://mintlify.s3.us-west-1.amazonaws.com/frigade-docs/images/integrations/slack/slack-6.png" className="rounded" />
+    <img src="https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/integrations/slack/slack-6.png?fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=e0321d0946bd2e98db4bdef6501e2ed7" className="rounded" data-og-width="1527" width="1527" data-og-height="989" height="989" data-path="images/integrations/slack/slack-6.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/integrations/slack/slack-6.png?w=280&fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=d01c65a5d3b5149f275eb00589041147 280w, https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/integrations/slack/slack-6.png?w=560&fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=3fe983e115c0ceca3a1b84b848078b70 560w, https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/integrations/slack/slack-6.png?w=840&fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=b2cc8317d0d3bf064b35131ce39cb309 840w, https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/integrations/slack/slack-6.png?w=1100&fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=fd0fd635b1e95f4ae35b2d55cab88411 1100w, https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/integrations/slack/slack-6.png?w=1650&fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=6141cde5fca85748b9d071df692b8b14 1650w, https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/integrations/slack/slack-6.png?w=2500&fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=d51b2c9843f55174f84d2e4557760a12 2500w" />
 
     After completing a step in the Frigade Flow, you should now see the following show up in your Slack channel:
 
-    <img src="https://mintlify.s3.us-west-1.amazonaws.com/frigade-docs/images/integrations/slack/slack-7.png" className="rounded" />
+    <img src="https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/integrations/slack/slack-7.png?fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=20a317d919e06793f1185fdbdc75ab55" className="rounded" data-og-width="1396" width="1396" data-og-height="926" height="926" data-path="images/integrations/slack/slack-7.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/integrations/slack/slack-7.png?w=280&fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=fcf51fb4276ec45379126976516003c9 280w, https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/integrations/slack/slack-7.png?w=560&fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=5ac7ae9f4b728a491a8930645e62d7a8 560w, https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/integrations/slack/slack-7.png?w=840&fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=52238002dc08e042d3ea9aeadcbc34c5 840w, https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/integrations/slack/slack-7.png?w=1100&fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=636685666c2a5366d19a30f58cd3ab42 1100w, https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/integrations/slack/slack-7.png?w=1650&fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=4f4e2632fd2a35995ede4d949af19f13 1650w, https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/integrations/slack/slack-7.png?w=2500&fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=650491572d525b4f85cf63cf75a14193 2500w" />
   </Step>
 </Steps>
 
@@ -4685,20 +4749,20 @@ If you want a new Slack message when a user provides an NPS score in a Frigade F
 5. Craft a message and pick a channel to send the data to.
 
 
-# Frigade Documentation
+# Frigade Engage Documentation
 Source: https://docs.frigade.com/overview
 
 Product growth and onboarding for modern software companies
 
 <Note>
-  You're currently viewing the documentation for the Frigade React SDK. The docs for Frigade AI are currently in closed beta. Head over to <a href="https://frigade.ai" className="font-bold">frigade.ai</a> to learn more.
+  You're currently viewing the documentation for Frigade Engage. The documenatation for the Frigade Assistant is not yet publicly available. Head over to <a href="https://frigade.com" className="font-bold">frigade.com</a> to learn more.
 </Note>
 
-[Frigade](https://frigade.com) helps teams build better user onboarding experiences. Use Frigade to guide users through your product, educate them about its features, and drive them toward key actions.
+[Frigade Engage](https://frigade.com/engage) helps teams build better user onboarding experiences. Use Frigade to guide users through your product, educate them about its features, and drive them toward key actions.
 
 <video autoPlay muted controls loop playsInline className="w-full aspect-video" src="https://cdn.frigade.com/59e1ae3b-54f6-430f-9dec-7ab0d308924b.mp4" />
 
-## Why Frigade?
+## Why Frigade Engage?
 
 ***
 
@@ -4731,7 +4795,7 @@ Product growth and onboarding for modern software companies
 
 ### Flows
 
-[Flows](/platform/flows) are the main building blocks of Frigade. Flows can power product announcements, set up guides, product tours, or even custom flows. Flows have built-in state management, versioning, analytics, and validation to make it easy to build and collaborate.
+[Flows](/platform/flows) are the main building blocks of Frigade Engage. Flows can power product announcements, set up guides, product tours, or even custom flows. Flows have built-in state management, versioning, analytics, and validation to make it easy to build and collaborate.
 
 ### Components
 
@@ -4756,7 +4820,7 @@ Frigade provides analytics and connects to external analytics platforms
 Frigade provides built-in funnel analysis to help you understand the performance of your Flows. Frigade will automatically track how many users have interacted with a Flow and how many have completed it. You can also see how many users have dismissed or quit a Flow.
 
 <Frame>
-  <img src="https://mintlify.s3.us-west-1.amazonaws.com/frigade-docs/images/platform/analytics.png" alt="Analytics" />
+  <img src="https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/platform/analytics.png?fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=f632aa1260d214f0364db81a4566f739" alt="Analytics" data-og-width="3106" width="3106" data-og-height="1776" height="1776" data-path="images/platform/analytics.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/platform/analytics.png?w=280&fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=72d6dc8a6477300becc5350f3e5e7ce0 280w, https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/platform/analytics.png?w=560&fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=da579b6f77d2c7d1fd7f2811ff551df8 560w, https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/platform/analytics.png?w=840&fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=fbd93eac453fa2084d86b9c93f7a0a46 840w, https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/platform/analytics.png?w=1100&fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=4566eb22a43927ab822444ce9880d93b 1100w, https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/platform/analytics.png?w=1650&fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=8915b788cbdaa7d148e5968e2154f453 1650w, https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/platform/analytics.png?w=2500&fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=65a9008f491bdeb74916b03e2ca902cb 2500w" />
 </Frame>
 
 ### Flow cohorts
@@ -4782,7 +4846,7 @@ You can send Frigade tracking events to an external analytics platform for dashb
 Additionally, you can always connect Frigade to the analytics platform of your choice using webhooks. See the [webhooks](/api-reference/webhooks) documentation for more information.
 
 <Frame>
-  <img src="https://mintlify.s3.us-west-1.amazonaws.com/frigade-docs/images/integrations/overview.png" alt="Groups" />
+  <img src="https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/integrations/overview.png?fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=9cfdcb084ead8cf77cb44421b03cfe38" alt="Groups" data-og-width="3106" width="3106" data-og-height="1776" height="1776" data-path="images/integrations/overview.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/integrations/overview.png?w=280&fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=7ab1f96ac1e4c54dc18ae33bf8d0f88c 280w, https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/integrations/overview.png?w=560&fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=50be02071b773e204d8a6ea58a3b6e39 560w, https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/integrations/overview.png?w=840&fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=4defa9a2e689018355b64671129b49cc 840w, https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/integrations/overview.png?w=1100&fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=3fffb24e60feff80877f0c7beae82304 1100w, https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/integrations/overview.png?w=1650&fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=f63e2f3404243e8ef32d55a369d8a72e 1650w, https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/integrations/overview.png?w=2500&fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=63ae0fb4d2e02604ff6d7c923064f7b4 2500w" />
 </Frame>
 
 
@@ -4807,7 +4871,7 @@ Frigade comes with a default Collection called <strong>Dialogs</strong>. The Dia
   <Step title="Install the Frigade SDK">
     To add a new dialog-based component to your product, first make sure the Frigade Provider is properly installed in your product. This is also where you can add custom CSS for your dialog components.
 
-    ```jsx
+    ```jsx  theme={"system"}
     import * as Frigade from "@frigade/react";
 
     const FRIGADE_API_KEY = "api_public_abcd1234";
@@ -4837,7 +4901,7 @@ Frigade comes with a default Collection called <strong>Dialogs</strong>. The Dia
     Finally, add the Flow you just created to the Collection via the <strong>Add Flows</strong> button in the Collection detail page. From here, you can also control the cool-off and priority of included Flows.
 
     <Frame>
-      <img src="https://mintlify.s3.us-west-1.amazonaws.com/frigade-docs/images/platform/collections-detail.png" alt="Collections" />
+      <img src="https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/platform/collections-detail.png?fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=3277ae76b92069f088827ce590f63160" alt="Collections" data-og-width="3456" width="3456" data-og-height="1996" height="1996" data-path="images/platform/collections-detail.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/platform/collections-detail.png?w=280&fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=1215ff0be09816f92104d8905983d57a 280w, https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/platform/collections-detail.png?w=560&fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=5a9563a2a781491765f2a81e94b6f910 560w, https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/platform/collections-detail.png?w=840&fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=7d6a899dc8627bf803c595234b20d968 840w, https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/platform/collections-detail.png?w=1100&fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=7a64f6f5a8829b7fb7562c4cd1c7aa7a 1100w, https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/platform/collections-detail.png?w=1650&fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=064139fe2c821ab63df81a9c2697f172 1650w, https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/platform/collections-detail.png?w=2500&fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=95c2c42c7e6898efb5ba926af2a71906 2500w" />
     </Frame>
 
     <Note>A Flow can display for eligible users immediately after being added to a Collection in Production</Note>
@@ -4860,7 +4924,7 @@ You can also use Collections to launch new Flows that are embedded directly into
   <Step title="Embed and Style the Collection">
     Next, grab the install snippet for the Collection and place it in your product codebase where you want the in-app channel to live. You can also style the Collection with custom CSS.
 
-    ```jsx
+    ```jsx  theme={"system"}
     import * as Frigade from '@frigade/react';
 
     const App = () => {
@@ -4881,7 +4945,7 @@ You can also use Collections to launch new Flows that are embedded directly into
 To create a Collection, visit the Collections page in the Frigade dashboard and click on the **New Collection** button. You will be prompted to enter a name and description for the Collection. Once created, you can access the embed snippet, set the display logic, and add Flows to the Collection.
 
 <Frame>
-  <img src="https://mintlify.s3.us-west-1.amazonaws.com/frigade-docs/images/platform/collections.png" alt="Collections" />
+  <img src="https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/platform/collections.png?fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=d58510929dba831e648753a6b5c46768" alt="Collections" data-og-width="3456" width="3456" data-og-height="1996" height="1996" data-path="images/platform/collections.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/platform/collections.png?w=280&fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=be7a3307c6de574c26ef2c4430fe494e 280w, https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/platform/collections.png?w=560&fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=0c23a69c27ec192e04971a0446f67a6c 560w, https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/platform/collections.png?w=840&fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=2592ec8ad58825b82627a6bb46f06ee9 840w, https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/platform/collections.png?w=1100&fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=92f637d84b18327f3fd26b13f6f35329 1100w, https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/platform/collections.png?w=1650&fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=3655309736ebc8c81e8706351530eeab 1650w, https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/platform/collections.png?w=2500&fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=d8ac77e143847a6b89dfe9ae90c5e5b9 2500w" />
 </Frame>
 
 ## Ordering Flows
@@ -4901,7 +4965,7 @@ You can specify the priority of Flows within the Collection by dragging and drop
 </Accordion>
 
 <Frame>
-  <img src="https://mintlify.s3.us-west-1.amazonaws.com/frigade-docs/images/platform/collections-reorder.png" alt="Collections" />
+  <img src="https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/platform/collections-reorder.png?fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=dbd7e8c7357ca7bcfa3aa330c22f3119" alt="Collections" data-og-width="3456" width="3456" data-og-height="1996" height="1996" data-path="images/platform/collections-reorder.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/platform/collections-reorder.png?w=280&fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=479be407899b2d7f64e810c57be8b208 280w, https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/platform/collections-reorder.png?w=560&fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=6a9a7a9f76188438fca817ab8f0b8039 560w, https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/platform/collections-reorder.png?w=840&fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=80b074cf5ae284fbbdfc64a2c9290985 840w, https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/platform/collections-reorder.png?w=1100&fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=9b2b24ed01f140f77fffa8ea1cbf42de 1100w, https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/platform/collections-reorder.png?w=1650&fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=f3ffd0f7e917e0661b754f96002d4552 1650w, https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/platform/collections-reorder.png?w=2500&fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=80004779930245c491caf3d6c116b7b8 2500w" />
 </Frame>
 
 ## Ordering Collections
@@ -4970,7 +5034,7 @@ Sometimes you want to use a dynamic piece of content within your Flow such as an
 Flows support setting custom variables anywhere in the data defined from the Frigade dashboard with the `${variable}` pattern. For instance,
 your Flow might look like this:
 
-```yml
+```yml  theme={"system"}
 steps:
   - id: "announcement-page-1"
   - title: "Welcome to Acme, ${firstName}!"
@@ -4978,7 +5042,7 @@ steps:
 
 Then using your React component of choice, you can set the `firstName` variable like so:
 
-```tsx
+```tsx  theme={"system"}
 <Frigade.Announcement
   ...
   variables={{
@@ -4990,7 +5054,7 @@ Then using your React component of choice, you can set the `firstName` variable 
 Variables can also be added at the global level via the `<Frigade.Provider />`. This will make them accessible in all Flows and [Collections](/platform/collections).
 To pass in variables globally, simply pass the `variables` object to the provider:
 
-```tsx
+```tsx  theme={"system"}
 <Frigade.Provider
   ...
   variables={{
@@ -5014,7 +5078,7 @@ Frigade supports development and production environments
 Frigade environments allow you to manage your Flows across **Development** and **Production**. You can access each environment from the dropdown in the top of the left sidebar.
 
 <Frame>
-  <img src="https://mintlify.s3.us-west-1.amazonaws.com/frigade-docs/images/platform/environments.png" alt="Environments" className="rounded-md" style={{}} />
+  <img src="https://mintcdn.com/frigade-docs/vb0YqHQGpTytLgI7/images/platform/environments.png?fit=max&auto=format&n=vb0YqHQGpTytLgI7&q=85&s=f14c54cdaac6dae0eac5f02b303a40ce" alt="Environments" className="rounded-md" style={{}} data-og-width="1948" width="1948" data-og-height="1146" height="1146" data-path="images/platform/environments.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/frigade-docs/vb0YqHQGpTytLgI7/images/platform/environments.png?w=280&fit=max&auto=format&n=vb0YqHQGpTytLgI7&q=85&s=f881bf64f226e8efacf3cfb51d160911 280w, https://mintcdn.com/frigade-docs/vb0YqHQGpTytLgI7/images/platform/environments.png?w=560&fit=max&auto=format&n=vb0YqHQGpTytLgI7&q=85&s=9799667369329a055882e8a60e7a5423 560w, https://mintcdn.com/frigade-docs/vb0YqHQGpTytLgI7/images/platform/environments.png?w=840&fit=max&auto=format&n=vb0YqHQGpTytLgI7&q=85&s=8cddac12f537d178e0d214de3a6d4e8d 840w, https://mintcdn.com/frigade-docs/vb0YqHQGpTytLgI7/images/platform/environments.png?w=1100&fit=max&auto=format&n=vb0YqHQGpTytLgI7&q=85&s=227251f64c402168824e8675987f6ae0 1100w, https://mintcdn.com/frigade-docs/vb0YqHQGpTytLgI7/images/platform/environments.png?w=1650&fit=max&auto=format&n=vb0YqHQGpTytLgI7&q=85&s=89e07a8bb7e3a6937b1d3240666d4273 1650w, https://mintcdn.com/frigade-docs/vb0YqHQGpTytLgI7/images/platform/environments.png?w=2500&fit=max&auto=format&n=vb0YqHQGpTytLgI7&q=85&s=806219d10f2bc79fd5737bb35eaabc00 2500w" />
 </Frame>
 
 ## Manage Flow across environments
@@ -5030,7 +5094,7 @@ When you are ready to move a Flow from Development to Production, you can simply
 If the Flow ID already exists in Production, then **Sync to Production** will give you the choice to overwrite the Flow or create a new draft version with your changes.
 
 <Frame>
-  <img src="https://mintlify.s3.us-west-1.amazonaws.com/frigade-docs/images/platform/copy-to-production.png" alt="Environments" className="rounded-md" style={{}} />
+  <img src="https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/platform/copy-to-production.png?fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=45ed40403c8282d9fec457578984a053" alt="Environments" className="rounded-md" style={{}} data-og-width="1713" width="1713" data-og-height="962" height="962" data-path="images/platform/copy-to-production.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/platform/copy-to-production.png?w=280&fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=7d31333fe606711b48f53f14cbd48413 280w, https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/platform/copy-to-production.png?w=560&fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=b2f0d374f8b9a5be3c91bc51b9a6f931 560w, https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/platform/copy-to-production.png?w=840&fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=94b483b5f39333f93fc7371529559dff 840w, https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/platform/copy-to-production.png?w=1100&fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=3fb9dfc1129dfdc0876f1324cb99370c 1100w, https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/platform/copy-to-production.png?w=1650&fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=db8e9a53aa8bb1f24b2ebdff46808efd 1650w, https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/platform/copy-to-production.png?w=2500&fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=e8d86da86c6a3efe441d13bf87993eab 2500w" />
 </Frame>
 
 
@@ -5050,7 +5114,7 @@ Flows comes with built-in content management, version control, and analytics to 
 Users have their own state for each Flow (e.g. started, dismissed, completed), and it is automatically tracked by Frigade. Flows can also track Steps across groups of users, such as companies or teams.
 
 <Frame>
-  <img src="https://mintlify.s3.us-west-1.amazonaws.com/frigade-docs/images/platform/flow-detail-editor.png" />
+  <img src="https://mintcdn.com/frigade-docs/vb0YqHQGpTytLgI7/images/platform/flow-detail-editor.png?fit=max&auto=format&n=vb0YqHQGpTytLgI7&q=85&s=55e8bc703b8ab4b7eb2ab88744f0a7f6" data-og-width="3696" width="3696" data-og-height="2244" height="2244" data-path="images/platform/flow-detail-editor.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/frigade-docs/vb0YqHQGpTytLgI7/images/platform/flow-detail-editor.png?w=280&fit=max&auto=format&n=vb0YqHQGpTytLgI7&q=85&s=2cabf0b9b2df7e673f82283d3f8a5438 280w, https://mintcdn.com/frigade-docs/vb0YqHQGpTytLgI7/images/platform/flow-detail-editor.png?w=560&fit=max&auto=format&n=vb0YqHQGpTytLgI7&q=85&s=a6be6a39ea113270cefe299fc4939ff3 560w, https://mintcdn.com/frigade-docs/vb0YqHQGpTytLgI7/images/platform/flow-detail-editor.png?w=840&fit=max&auto=format&n=vb0YqHQGpTytLgI7&q=85&s=7635b4aba7fd32d96fb07a50cee8b829 840w, https://mintcdn.com/frigade-docs/vb0YqHQGpTytLgI7/images/platform/flow-detail-editor.png?w=1100&fit=max&auto=format&n=vb0YqHQGpTytLgI7&q=85&s=0e027ab9110a817c968646ec1eda944a 1100w, https://mintcdn.com/frigade-docs/vb0YqHQGpTytLgI7/images/platform/flow-detail-editor.png?w=1650&fit=max&auto=format&n=vb0YqHQGpTytLgI7&q=85&s=f7beeb294fba262b914a894c934e3047 1650w, https://mintcdn.com/frigade-docs/vb0YqHQGpTytLgI7/images/platform/flow-detail-editor.png?w=2500&fit=max&auto=format&n=vb0YqHQGpTytLgI7&q=85&s=937924267315fd24fa96258d85494640 2500w" />
 </Frame>
 
 ## User Lifecycle
@@ -5102,7 +5166,7 @@ Once a Flow is completed or dismissed, it will remain in this state for the user
     If you'd like, you can use targeting to only show it to teammates while building, and you can reset users in the **Users** tab to go through the Flow multiple times.
 
     <Frame caption="Preview your Flow in real-time in Frigade">
-      <img src="https://mintlify.s3.us-west-1.amazonaws.com/frigade-docs/images/platform/editor.png" />
+      <img src="https://mintcdn.com/frigade-docs/vb0YqHQGpTytLgI7/images/platform/editor.png?fit=max&auto=format&n=vb0YqHQGpTytLgI7&q=85&s=fc40523ed27e6c6ced0882293f0e7ecc" data-og-width="4598" width="4598" data-og-height="2410" height="2410" data-path="images/platform/editor.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/frigade-docs/vb0YqHQGpTytLgI7/images/platform/editor.png?w=280&fit=max&auto=format&n=vb0YqHQGpTytLgI7&q=85&s=e10b2892db864e36792081193d199be0 280w, https://mintcdn.com/frigade-docs/vb0YqHQGpTytLgI7/images/platform/editor.png?w=560&fit=max&auto=format&n=vb0YqHQGpTytLgI7&q=85&s=7985c658200915d98ff903edbd812c34 560w, https://mintcdn.com/frigade-docs/vb0YqHQGpTytLgI7/images/platform/editor.png?w=840&fit=max&auto=format&n=vb0YqHQGpTytLgI7&q=85&s=7bcbeebc8e05529ab0d9ebbf7e6ab55b 840w, https://mintcdn.com/frigade-docs/vb0YqHQGpTytLgI7/images/platform/editor.png?w=1100&fit=max&auto=format&n=vb0YqHQGpTytLgI7&q=85&s=8a02113fd5d1826db7f4f39444871c2b 1100w, https://mintcdn.com/frigade-docs/vb0YqHQGpTytLgI7/images/platform/editor.png?w=1650&fit=max&auto=format&n=vb0YqHQGpTytLgI7&q=85&s=b8567865f7d8035a3d1b63fc83ffeffe 1650w, https://mintcdn.com/frigade-docs/vb0YqHQGpTytLgI7/images/platform/editor.png?w=2500&fit=max&auto=format&n=vb0YqHQGpTytLgI7&q=85&s=0884c324dc8a5a18b4d586b8fd93ebfc 2500w" />
     </Frame>
 
     <Note>The preview it will not reflect any custom styling you define in your own codebase.</Note>
@@ -5148,7 +5212,7 @@ The `style` and `class` attributes can be used to style all of the above element
 
 ## Example
 
-```yaml
+```yaml  theme={"system"}
 title: This title is <b>really</b> important
 ```
 
@@ -5169,7 +5233,7 @@ Easily manage your product onboarding from the admin dashboard
 The admin dashboard is where you create and manage your organization's onboarding. It includes our UI component library, Flow management, and analytics on all onboarding activity. The following sections highlight some of the key functionality of the platform.
 
 <Frame>
-  <img src="https://mintlify.s3.us-west-1.amazonaws.com/frigade-docs/images/platform/flows.png" />
+  <img src="https://mintcdn.com/frigade-docs/vb0YqHQGpTytLgI7/images/platform/flows.png?fit=max&auto=format&n=vb0YqHQGpTytLgI7&q=85&s=ba9c75b4c2777312bc9fa396f3534523" data-og-width="3508" width="3508" data-og-height="2150" height="2150" data-path="images/platform/flows.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/frigade-docs/vb0YqHQGpTytLgI7/images/platform/flows.png?w=280&fit=max&auto=format&n=vb0YqHQGpTytLgI7&q=85&s=bf791869795af435f205f57d87e1a42f 280w, https://mintcdn.com/frigade-docs/vb0YqHQGpTytLgI7/images/platform/flows.png?w=560&fit=max&auto=format&n=vb0YqHQGpTytLgI7&q=85&s=a5c4fe312b5c268fd5c589adc3447ca9 560w, https://mintcdn.com/frigade-docs/vb0YqHQGpTytLgI7/images/platform/flows.png?w=840&fit=max&auto=format&n=vb0YqHQGpTytLgI7&q=85&s=838c6c4b13aeede92a1b6fe3900175a2 840w, https://mintcdn.com/frigade-docs/vb0YqHQGpTytLgI7/images/platform/flows.png?w=1100&fit=max&auto=format&n=vb0YqHQGpTytLgI7&q=85&s=b6792d3c68220579edb7b7d46e54ac8b 1100w, https://mintcdn.com/frigade-docs/vb0YqHQGpTytLgI7/images/platform/flows.png?w=1650&fit=max&auto=format&n=vb0YqHQGpTytLgI7&q=85&s=211bd01982e6202d4dc1937b79456da6 1650w, https://mintcdn.com/frigade-docs/vb0YqHQGpTytLgI7/images/platform/flows.png?w=2500&fit=max&auto=format&n=vb0YqHQGpTytLgI7&q=85&s=a26f88a27d10bc4bde597301fae827da 2500w" />
 </Frame>
 
 
@@ -5187,7 +5251,7 @@ Use targeting to personalize Flows to different cohorts of users, seamlessly lin
 You can optionally add targeting to every Flow you create. You can view and edit this targeting logic on the **Targeting** tab of the Flow detail page. The Flow targeting logic is used to determine who should see the Flow.
 
 <Frame>
-  <img src="https://mintlify.s3.us-west-1.amazonaws.com/frigade-docs/images/platform/flow-detail-audience.png" alt="Flow Targeting" />
+  <img src="https://mintcdn.com/frigade-docs/vb0YqHQGpTytLgI7/images/platform/flow-detail-audience.png?fit=max&auto=format&n=vb0YqHQGpTytLgI7&q=85&s=3ff629c1598a46737aad2579fcd342b1" alt="Flow Targeting" data-og-width="3456" width="3456" data-og-height="1926" height="1926" data-path="images/platform/flow-detail-audience.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/frigade-docs/vb0YqHQGpTytLgI7/images/platform/flow-detail-audience.png?w=280&fit=max&auto=format&n=vb0YqHQGpTytLgI7&q=85&s=6be15fee4c76d9da2cd14014ff762843 280w, https://mintcdn.com/frigade-docs/vb0YqHQGpTytLgI7/images/platform/flow-detail-audience.png?w=560&fit=max&auto=format&n=vb0YqHQGpTytLgI7&q=85&s=59a1aeb9087ce79ce5e731351740b43f 560w, https://mintcdn.com/frigade-docs/vb0YqHQGpTytLgI7/images/platform/flow-detail-audience.png?w=840&fit=max&auto=format&n=vb0YqHQGpTytLgI7&q=85&s=6430d0069d4fb14ef1a4271bdee6c85f 840w, https://mintcdn.com/frigade-docs/vb0YqHQGpTytLgI7/images/platform/flow-detail-audience.png?w=1100&fit=max&auto=format&n=vb0YqHQGpTytLgI7&q=85&s=25d1e7ec6bd9d9ffc8fd030b1a05a7f6 1100w, https://mintcdn.com/frigade-docs/vb0YqHQGpTytLgI7/images/platform/flow-detail-audience.png?w=1650&fit=max&auto=format&n=vb0YqHQGpTytLgI7&q=85&s=5ad647ada4e6bf57add11f123df68e43 1650w, https://mintcdn.com/frigade-docs/vb0YqHQGpTytLgI7/images/platform/flow-detail-audience.png?w=2500&fit=max&auto=format&n=vb0YqHQGpTytLgI7&q=85&s=d05ba711ef7422ebb937b35ea9b75ad6 2500w" />
 </Frame>
 
 ### Example use cases
@@ -5209,7 +5273,7 @@ Here are some common ways we see developers using Flow targeting:
 You can also leverage targeting logic within the Steps of a Flow by using the Advanced Editor.
 
 <Frame>
-  <img src="https://mintlify.s3.us-west-1.amazonaws.com/frigade-docs/images/platform/flow-detail-yaml-step-visibility.png" alt="Step visibility" className="rounded-lg" style={{border: '1px solid #D3D3D3',}} />
+  <img src="https://mintcdn.com/frigade-docs/vb0YqHQGpTytLgI7/images/platform/flow-detail-yaml-step-visibility.png?fit=max&auto=format&n=vb0YqHQGpTytLgI7&q=85&s=614526d567e2202cecc1458859c34581" alt="Step visibility" className="rounded-lg" style={{border: '1px solid #D3D3D3',}} data-og-width="1639" width="1639" data-og-height="596" height="596" data-path="images/platform/flow-detail-yaml-step-visibility.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/frigade-docs/vb0YqHQGpTytLgI7/images/platform/flow-detail-yaml-step-visibility.png?w=280&fit=max&auto=format&n=vb0YqHQGpTytLgI7&q=85&s=7fffa9c7035df77c5c64670f32af26b9 280w, https://mintcdn.com/frigade-docs/vb0YqHQGpTytLgI7/images/platform/flow-detail-yaml-step-visibility.png?w=560&fit=max&auto=format&n=vb0YqHQGpTytLgI7&q=85&s=22ae0823c1ba68267b53f43d5c40c23b 560w, https://mintcdn.com/frigade-docs/vb0YqHQGpTytLgI7/images/platform/flow-detail-yaml-step-visibility.png?w=840&fit=max&auto=format&n=vb0YqHQGpTytLgI7&q=85&s=9723d7b4190517b5666fca65fa66e056 840w, https://mintcdn.com/frigade-docs/vb0YqHQGpTytLgI7/images/platform/flow-detail-yaml-step-visibility.png?w=1100&fit=max&auto=format&n=vb0YqHQGpTytLgI7&q=85&s=081169fc1a9b8a70c4717383eaf3f50c 1100w, https://mintcdn.com/frigade-docs/vb0YqHQGpTytLgI7/images/platform/flow-detail-yaml-step-visibility.png?w=1650&fit=max&auto=format&n=vb0YqHQGpTytLgI7&q=85&s=1b8e6f3daa1da0d9742c54e19fd5a090 1650w, https://mintcdn.com/frigade-docs/vb0YqHQGpTytLgI7/images/platform/flow-detail-yaml-step-visibility.png?w=2500&fit=max&auto=format&n=vb0YqHQGpTytLgI7&q=85&s=f801f71c7bbdc48acaa50c03b59f96b0 2500w" />
 </Frame>
 
 ### Example use cases
@@ -5260,19 +5324,19 @@ Here are some examples of some of the most popular targeting logic we see develo
 You can use relative dates in your targeting logic similar to how this is handled in [plain Javascript](https://stackoverflow.com/questions/7763327/how-to-calculate-date-difference-in-javascript).
 For example, you can target users who are younger than at least 30 days:
 
-```javascript
+```javascript  theme={"system"}
 user.property('accountCreatedDate') within 30d
 ```
 
 Or target users who are older than 30 days:
 
-```javascript
+```javascript  theme={"system"}
 user.property('accountCreatedDate') !within 30d
 ```
 
 This behavior also works for targeting users who have completed a Flow within as certain time frame:
 
-```javascript
+```javascript  theme={"system"}
 user.flow('flow_i6kH7DjcbE6tiaQd') !within 4w
 ```
 
@@ -5280,7 +5344,7 @@ user.flow('flow_i6kH7DjcbE6tiaQd') !within 4w
 
 Target a Flow to a user who has connected their bank account:
 
-```javascript
+```javascript  theme={"system"}
 user.property('bankAccountConnected') == true
 ```
 
@@ -5288,7 +5352,7 @@ user.property('bankAccountConnected') == true
 
 Target a Flow to a user who has a job title:
 
-```javascript
+```javascript  theme={"system"}
 user.property('jobTitle') != null
 ```
 
@@ -5296,7 +5360,7 @@ user.property('jobTitle') != null
 
 Target a Flow only for users signed up after a certain date:
 
-```javascript
+```javascript  theme={"system"}
 user.property('accountCreatedDate') > '2023-03-01 00:00:00'
 ```
 
@@ -5304,19 +5368,19 @@ user.property('accountCreatedDate') > '2023-03-01 00:00:00'
 
 Target a Flow to a user who has completed another onboarding Flow already and has connected a bank account:
 
-```javascript
+```javascript  theme={"system"}
 user.flow('flow_i6kH7DjcbE6tiaQd') == 'COMPLETED_FLOW' && user.property('bankAccountConnected') == true`
 ```
 
 Target a Flow when a Step in another Flow is completed:
 
-```javascript
+```javascript  theme={"system"}
 user.flowStep('flow_i6kH7DjcbE6tiaQd', 'my-step-id') == 'COMPLETED_STEP'
 ```
 
 Target the output of a previous step in the same Flow:
 
-```javascript
+```javascript  theme={"system"}
 user.flowStepData('flow_i6kH7DjcbE6tiaQd', 'my-step-id', 'my-field-id') == 'some-value'
 ```
 
@@ -5324,13 +5388,13 @@ user.flowStepData('flow_i6kH7DjcbE6tiaQd', 'my-step-id', 'my-field-id') == 'some
 
 If the event properties do not matter and you simply wish to see if a user has triggered an event, you can use the following expression:
 
-```javascript
+```javascript  theme={"system"}
 user.event('pageView').count > 0
 ```
 
 Automatically trigger when a group/organization sends a specific event:
 
-```javascript
+```javascript  theme={"system"}
 group.event('connectedBankAccount').count > 0
 ```
 
@@ -5338,13 +5402,13 @@ group.event('connectedBankAccount').count > 0
 
 Target based on the current URL contains a specific string:
 
-```javascript
+```javascript  theme={"system"}
 user.currentUrl() contains 'example.com'
 ```
 
 Target based on the current URL ends with a specific string:
 
-```javascript
+```javascript  theme={"system"}
 user.currentUrl() endsWith '?myParam=123'
 ```
 
@@ -5379,7 +5443,7 @@ When sending user properties to Frigade, the platform will automatically decorat
 * `profilePicture`
 
 <Frame>
-  <img src="https://mintlify.s3.us-west-1.amazonaws.com/frigade-docs/images/platform/users.png" alt="Users" />
+  <img src="https://mintcdn.com/frigade-docs/vb0YqHQGpTytLgI7/images/platform/users.png?fit=max&auto=format&n=vb0YqHQGpTytLgI7&q=85&s=7a218d9c17ffbcb2d6f67c0a842f6565" alt="Users" data-og-width="3456" width="3456" data-og-height="1994" height="1994" data-path="images/platform/users.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/frigade-docs/vb0YqHQGpTytLgI7/images/platform/users.png?w=280&fit=max&auto=format&n=vb0YqHQGpTytLgI7&q=85&s=517ef6bc15d92776657a8953a4af2a66 280w, https://mintcdn.com/frigade-docs/vb0YqHQGpTytLgI7/images/platform/users.png?w=560&fit=max&auto=format&n=vb0YqHQGpTytLgI7&q=85&s=97bde8fb87ea0c0082a6afea0d884a21 560w, https://mintcdn.com/frigade-docs/vb0YqHQGpTytLgI7/images/platform/users.png?w=840&fit=max&auto=format&n=vb0YqHQGpTytLgI7&q=85&s=227aa3ff5152e2dc650dbc05dc53079e 840w, https://mintcdn.com/frigade-docs/vb0YqHQGpTytLgI7/images/platform/users.png?w=1100&fit=max&auto=format&n=vb0YqHQGpTytLgI7&q=85&s=773cdc62a48d84bb5b769ad63c2d6caa 1100w, https://mintcdn.com/frigade-docs/vb0YqHQGpTytLgI7/images/platform/users.png?w=1650&fit=max&auto=format&n=vb0YqHQGpTytLgI7&q=85&s=efaf9617808beb2a0bce5e864157638e 1650w, https://mintcdn.com/frigade-docs/vb0YqHQGpTytLgI7/images/platform/users.png?w=2500&fit=max&auto=format&n=vb0YqHQGpTytLgI7&q=85&s=400db77cda1008ae1662e33138f08fc8 2500w" />
 </Frame>
 
 ## Group Management
@@ -5402,7 +5466,7 @@ When sending group properties to Frigade, the platform will automatically decora
 * `website`
 
 <Frame>
-  <img src="https://mintlify.s3.us-west-1.amazonaws.com/frigade-docs/images/platform/groups.png" alt="Groups" />
+  <img src="https://mintcdn.com/frigade-docs/vb0YqHQGpTytLgI7/images/platform/groups.png?fit=max&auto=format&n=vb0YqHQGpTytLgI7&q=85&s=957acdd5f519204940f3b7f198b4ea68" alt="Groups" data-og-width="3456" width="3456" data-og-height="1994" height="1994" data-path="images/platform/groups.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/frigade-docs/vb0YqHQGpTytLgI7/images/platform/groups.png?w=280&fit=max&auto=format&n=vb0YqHQGpTytLgI7&q=85&s=7a4fb43d40363ff5644375702bb6479f 280w, https://mintcdn.com/frigade-docs/vb0YqHQGpTytLgI7/images/platform/groups.png?w=560&fit=max&auto=format&n=vb0YqHQGpTytLgI7&q=85&s=e0c1512862f2a766aa80652411ec2580 560w, https://mintcdn.com/frigade-docs/vb0YqHQGpTytLgI7/images/platform/groups.png?w=840&fit=max&auto=format&n=vb0YqHQGpTytLgI7&q=85&s=73f10d589c4c75568125a705875b2386 840w, https://mintcdn.com/frigade-docs/vb0YqHQGpTytLgI7/images/platform/groups.png?w=1100&fit=max&auto=format&n=vb0YqHQGpTytLgI7&q=85&s=cec457cf4b9558359c3a44d8d2ee2054 1100w, https://mintcdn.com/frigade-docs/vb0YqHQGpTytLgI7/images/platform/groups.png?w=1650&fit=max&auto=format&n=vb0YqHQGpTytLgI7&q=85&s=7e10e3ce61a5fc4a8f6b1c9eb11257b1 1650w, https://mintcdn.com/frigade-docs/vb0YqHQGpTytLgI7/images/platform/groups.png?w=2500&fit=max&auto=format&n=vb0YqHQGpTytLgI7&q=85&s=c3faa8ccd79a8fd33e5ae8e8588ee008 2500w" />
 </Frame>
 
 
@@ -5419,7 +5483,7 @@ To create a new version of your Flow, open the versions panel on the Flow detail
 The new version will remain a draft until you activate it. Frigade supports one draft version at a time. Tap **View** on a version to view and make changes.
 
 <Frame>
-  <img src="https://mintlify.s3.us-west-1.amazonaws.com/frigade-docs/images/platform/flow-detail-versions.png" alt="Versioning" />
+  <img src="https://mintcdn.com/frigade-docs/vb0YqHQGpTytLgI7/images/platform/flow-detail-versions.png?fit=max&auto=format&n=vb0YqHQGpTytLgI7&q=85&s=1e70232b5fd3e693c31acfcc1b2eb902" alt="Versioning" data-og-width="3013" width="3013" data-og-height="1718" height="1718" data-path="images/platform/flow-detail-versions.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/frigade-docs/vb0YqHQGpTytLgI7/images/platform/flow-detail-versions.png?w=280&fit=max&auto=format&n=vb0YqHQGpTytLgI7&q=85&s=cd6a3874acbf230f0c4d0d328998165e 280w, https://mintcdn.com/frigade-docs/vb0YqHQGpTytLgI7/images/platform/flow-detail-versions.png?w=560&fit=max&auto=format&n=vb0YqHQGpTytLgI7&q=85&s=89387955b4eb9246e1f8e89d23819957 560w, https://mintcdn.com/frigade-docs/vb0YqHQGpTytLgI7/images/platform/flow-detail-versions.png?w=840&fit=max&auto=format&n=vb0YqHQGpTytLgI7&q=85&s=8bf42358bf316a4fccb578e08ab09733 840w, https://mintcdn.com/frigade-docs/vb0YqHQGpTytLgI7/images/platform/flow-detail-versions.png?w=1100&fit=max&auto=format&n=vb0YqHQGpTytLgI7&q=85&s=ba60cbb46bde545cb678cbb02779c108 1100w, https://mintcdn.com/frigade-docs/vb0YqHQGpTytLgI7/images/platform/flow-detail-versions.png?w=1650&fit=max&auto=format&n=vb0YqHQGpTytLgI7&q=85&s=355d0db45c96ab5b35ccc5da6220178d 1650w, https://mintcdn.com/frigade-docs/vb0YqHQGpTytLgI7/images/platform/flow-detail-versions.png?w=2500&fit=max&auto=format&n=vb0YqHQGpTytLgI7&q=85&s=9ae2120c68617a60bbb9aae764a57656 2500w" />
 </Frame>
 
 ## Activating a draft version
@@ -5443,7 +5507,7 @@ Once your draft version is ready to go live, click **Activate** to publish it. I
 </AccordionGroup>
 
 <Frame>
-  <img src="https://mintlify.s3.us-west-1.amazonaws.com/frigade-docs/images/platform/flow-detail-versions-restart.png" alt="Transitioning users" />
+  <img src="https://mintcdn.com/frigade-docs/vb0YqHQGpTytLgI7/images/platform/flow-detail-versions-restart.png?fit=max&auto=format&n=vb0YqHQGpTytLgI7&q=85&s=4fc4bcf053d618a4a9081b632eb6ff61" alt="Transitioning users" data-og-width="3008" width="3008" data-og-height="1720" height="1720" data-path="images/platform/flow-detail-versions-restart.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/frigade-docs/vb0YqHQGpTytLgI7/images/platform/flow-detail-versions-restart.png?w=280&fit=max&auto=format&n=vb0YqHQGpTytLgI7&q=85&s=22dbfec271757a01f1a787d7776f654a 280w, https://mintcdn.com/frigade-docs/vb0YqHQGpTytLgI7/images/platform/flow-detail-versions-restart.png?w=560&fit=max&auto=format&n=vb0YqHQGpTytLgI7&q=85&s=603451fb860f5c7c8390233e5ba664cc 560w, https://mintcdn.com/frigade-docs/vb0YqHQGpTytLgI7/images/platform/flow-detail-versions-restart.png?w=840&fit=max&auto=format&n=vb0YqHQGpTytLgI7&q=85&s=a4ecc2e2ea5a5e6f212eec48182a004c 840w, https://mintcdn.com/frigade-docs/vb0YqHQGpTytLgI7/images/platform/flow-detail-versions-restart.png?w=1100&fit=max&auto=format&n=vb0YqHQGpTytLgI7&q=85&s=edecfd836828cd03a0b5a28586c20e50 1100w, https://mintcdn.com/frigade-docs/vb0YqHQGpTytLgI7/images/platform/flow-detail-versions-restart.png?w=1650&fit=max&auto=format&n=vb0YqHQGpTytLgI7&q=85&s=47b966a865868bf6060915c49a4e7b31 1650w, https://mintcdn.com/frigade-docs/vb0YqHQGpTytLgI7/images/platform/flow-detail-versions-restart.png?w=2500&fit=max&auto=format&n=vb0YqHQGpTytLgI7&q=85&s=ea237dfc003622a5c43f759285069aa2 2500w" />
 </Frame>
 
 ## Old versions
@@ -5453,12 +5517,12 @@ Once your draft version is ready to go live, click **Activate** to publish it. I
 Once a draft has been activated, old versions of the Flow become read-only. Analytics for old versions will be preserved and can be viewed by clicking the **View** button on an old version.
 
 
-# Quickstart Guide
+# Frigade Engage Quickstart Guide
 Source: https://docs.frigade.com/quickstart
 
-Get set up with Frigade in less than 15 minutes
+Get set up with Frigade Engage in less than 15 minutes
 
-<img src="https://mintlify.s3.us-west-1.amazonaws.com/frigade-docs/images/welcome.png" className="rounded pointer-events-none" />
+<img src="https://mintcdn.com/frigade-docs/vb0YqHQGpTytLgI7/images/welcome.png?fit=max&auto=format&n=vb0YqHQGpTytLgI7&q=85&s=c09c3a4cb253ff4c9dcd772251ddb095" className="rounded pointer-events-none" data-og-width="2171" width="2171" data-og-height="944" height="944" data-path="images/welcome.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/frigade-docs/vb0YqHQGpTytLgI7/images/welcome.png?w=280&fit=max&auto=format&n=vb0YqHQGpTytLgI7&q=85&s=5d7f6759b7f82b258948a7283b73e94c 280w, https://mintcdn.com/frigade-docs/vb0YqHQGpTytLgI7/images/welcome.png?w=560&fit=max&auto=format&n=vb0YqHQGpTytLgI7&q=85&s=37420c9445b969bbba94e12b262d6a92 560w, https://mintcdn.com/frigade-docs/vb0YqHQGpTytLgI7/images/welcome.png?w=840&fit=max&auto=format&n=vb0YqHQGpTytLgI7&q=85&s=c48be5b63b0165f1023f2aa58d39abef 840w, https://mintcdn.com/frigade-docs/vb0YqHQGpTytLgI7/images/welcome.png?w=1100&fit=max&auto=format&n=vb0YqHQGpTytLgI7&q=85&s=f1515e30ee2abd4aacc10edfb9eac742 1100w, https://mintcdn.com/frigade-docs/vb0YqHQGpTytLgI7/images/welcome.png?w=1650&fit=max&auto=format&n=vb0YqHQGpTytLgI7&q=85&s=f7827da35206c38e1ad7d9f85fb995ec 1650w, https://mintcdn.com/frigade-docs/vb0YqHQGpTytLgI7/images/welcome.png?w=2500&fit=max&auto=format&n=vb0YqHQGpTytLgI7&q=85&s=2c56365efaebc0a0e0f41c3ee548d632 2500w" />
 
 <Steps>
   <Step title="Sign up and install">
@@ -5467,7 +5531,7 @@ Get set up with Frigade in less than 15 minutes
         The first thing to do is sign up for a Frigade account at [frigade.com](https://app.frigade.com/sign-up). Then, locate your Frigade public API key in the [Developer](https://app.frigade.com/developer) tab of the dashboard.
 
         <Frame>
-          <img src="https://mintlify.s3.us-west-1.amazonaws.com/frigade-docs/images/platform/developer.png" />
+          <img src="https://mintcdn.com/frigade-docs/vb0YqHQGpTytLgI7/images/platform/developer.png?fit=max&auto=format&n=vb0YqHQGpTytLgI7&q=85&s=5e6542db65e287c2a4be1e72267acfaa" data-og-width="1408" width="1408" data-og-height="526" height="526" data-path="images/platform/developer.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/frigade-docs/vb0YqHQGpTytLgI7/images/platform/developer.png?w=280&fit=max&auto=format&n=vb0YqHQGpTytLgI7&q=85&s=87c8f99108fb020261cb82887b94b02f 280w, https://mintcdn.com/frigade-docs/vb0YqHQGpTytLgI7/images/platform/developer.png?w=560&fit=max&auto=format&n=vb0YqHQGpTytLgI7&q=85&s=80566e99244aba45a6433d99d4f78e10 560w, https://mintcdn.com/frigade-docs/vb0YqHQGpTytLgI7/images/platform/developer.png?w=840&fit=max&auto=format&n=vb0YqHQGpTytLgI7&q=85&s=3f5ef5a43f1507d88f4a988dff376c90 840w, https://mintcdn.com/frigade-docs/vb0YqHQGpTytLgI7/images/platform/developer.png?w=1100&fit=max&auto=format&n=vb0YqHQGpTytLgI7&q=85&s=dbc6918b6d9a8056bcf95d850cf2691b 1100w, https://mintcdn.com/frigade-docs/vb0YqHQGpTytLgI7/images/platform/developer.png?w=1650&fit=max&auto=format&n=vb0YqHQGpTytLgI7&q=85&s=1dd626800e1591de19efba8aa8476b86 1650w, https://mintcdn.com/frigade-docs/vb0YqHQGpTytLgI7/images/platform/developer.png?w=2500&fit=max&auto=format&n=vb0YqHQGpTytLgI7&q=85&s=911ce393220071c4f9640362a0b10327 2500w" />
         </Frame>
       </Accordion>
 
@@ -5475,15 +5539,15 @@ Get set up with Frigade in less than 15 minutes
         Install <a href="https://www.npmjs.com/package/@frigade/react" target="_blank" rel="noreferrer">@frigade/react</a> with your package manager.
 
         <CodeGroup>
-          ```txt npm
+          ```txt npm theme={"system"}
           npm install @frigade/react
           ```
 
-          ```txt pnpm
+          ```txt pnpm theme={"system"}
           pnpm install @frigade/react
           ```
 
-          ```txt yarn
+          ```txt yarn theme={"system"}
           yarn add @frigade/react
           ```
         </CodeGroup>
@@ -5492,7 +5556,7 @@ Get set up with Frigade in less than 15 minutes
         Below are examples for how to install the Provider in popular React frameworks.
 
         <CodeGroup>
-          ```tsx React
+          ```tsx React theme={"system"}
           // Add this to your main application file, e.g., App.tsx or index.tsx
           import * as Frigade from "@frigade/react";
 
@@ -5516,7 +5580,7 @@ Get set up with Frigade in less than 15 minutes
           };
           ```
 
-          ```tsx Next.js (App router)
+          ```tsx Next.js (App router) theme={"system"}
           // frigade-provider-wrapper.tsx
           "use client";
           import * as Frigade from "@frigade/react";
@@ -5555,7 +5619,7 @@ Get set up with Frigade in less than 15 minutes
           }
           ```
 
-          ```tsx Next.js (Pages router)
+          ```tsx Next.js (Pages router) theme={"system"}
           // Add this to your _app.tsx file
           import * as Frigade from "@frigade/react";
           import { AppProps } from 'next/app';
@@ -5599,7 +5663,7 @@ Get set up with Frigade in less than 15 minutes
         2. On the Flow detail page, click the **Deploy** button. Copy the code snippet to your clipboard.
         3. Next, place the `<Frigade.Banner />` component in your application. Make sure to do this in a subcomponent of the `<Frigade.Provider />` component.
 
-        ```tsx
+        ```tsx  theme={"system"}
         import * as Frigade from "@frigade/react";
 
         export const MyComponent = () => {
@@ -5611,13 +5675,13 @@ Get set up with Frigade in less than 15 minutes
 
         Tada! You should now see a shiny `Frigade Banner` where you placed it.
 
-        <img src="https://mintlify.s3.us-west-1.amazonaws.com/frigade-docs/images/platform/banner.png" />
+        <img src="https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/platform/banner.png?fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=1b065e68687f91cfec0edcd7a47f003f" data-og-width="1710" width="1710" data-og-height="401" height="401" data-path="images/platform/banner.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/platform/banner.png?w=280&fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=23ebc8245b0210617488ac27208c526c 280w, https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/platform/banner.png?w=560&fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=6f9f99e204a5f18153d85e213e4f3a73 560w, https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/platform/banner.png?w=840&fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=d17c648c9aa128313e66a8ab75ba5ca1 840w, https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/platform/banner.png?w=1100&fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=a61e06b1f39289419b29e83e6f19cd2f 1100w, https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/platform/banner.png?w=1650&fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=7916813a184b39e22f03adb76b3d3ed2 1650w, https://mintcdn.com/frigade-docs/2ELnoUYc9O4Ydjzw/images/platform/banner.png?w=2500&fit=max&auto=format&n=2ELnoUYc9O4Ydjzw&q=85&s=72e736a9754a0f0a77da00d02777bf3c 2500w" />
 
         **See users in the Flow**
 
         Once you interact with the Flow in your application, you should see your user appear in the users tab of the Flow detail page. You can reset a user's progress in the Flow from here, which is especially useful for testing.
 
-        <img src="https://mintlify.s3.us-west-1.amazonaws.com/frigade-docs/images/platform/reset-user.png" />
+        <img src="https://mintcdn.com/frigade-docs/vb0YqHQGpTytLgI7/images/platform/reset-user.png?fit=max&auto=format&n=vb0YqHQGpTytLgI7&q=85&s=2f0eb06f64cfd58dcb5b9558e538b2f4" data-og-width="2987" width="2987" data-og-height="521" height="521" data-path="images/platform/reset-user.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/frigade-docs/vb0YqHQGpTytLgI7/images/platform/reset-user.png?w=280&fit=max&auto=format&n=vb0YqHQGpTytLgI7&q=85&s=6aa273b976f50bde5547e6c2cad6ee34 280w, https://mintcdn.com/frigade-docs/vb0YqHQGpTytLgI7/images/platform/reset-user.png?w=560&fit=max&auto=format&n=vb0YqHQGpTytLgI7&q=85&s=90f28649e5d111df07d360bfc39426d6 560w, https://mintcdn.com/frigade-docs/vb0YqHQGpTytLgI7/images/platform/reset-user.png?w=840&fit=max&auto=format&n=vb0YqHQGpTytLgI7&q=85&s=7e1575f9fbe510e617578aefcc9c6027 840w, https://mintcdn.com/frigade-docs/vb0YqHQGpTytLgI7/images/platform/reset-user.png?w=1100&fit=max&auto=format&n=vb0YqHQGpTytLgI7&q=85&s=27d5352ee8c1b2eef593d4f094e470b4 1100w, https://mintcdn.com/frigade-docs/vb0YqHQGpTytLgI7/images/platform/reset-user.png?w=1650&fit=max&auto=format&n=vb0YqHQGpTytLgI7&q=85&s=238e08f31e49911e3410a6e83a17f4ba 1650w, https://mintcdn.com/frigade-docs/vb0YqHQGpTytLgI7/images/platform/reset-user.png?w=2500&fit=max&auto=format&n=vb0YqHQGpTytLgI7&q=85&s=242c5e83883be71a665f3c7ca49a78ce 2500w" />
       </Accordion>
 
       <Accordion title="Updating Flows">
@@ -5630,7 +5694,7 @@ Get set up with Frigade in less than 15 minutes
         Check out the documentation for each component to see all the configuration options. Check out the [Banner](/component/banner) component for this quickstart demo.
 
         <Frame>
-          <img src="https://mintlify.s3.us-west-1.amazonaws.com/frigade-docs/images/platform/editor.png" />
+          <img src="https://mintcdn.com/frigade-docs/vb0YqHQGpTytLgI7/images/platform/editor.png?fit=max&auto=format&n=vb0YqHQGpTytLgI7&q=85&s=fc40523ed27e6c6ced0882293f0e7ecc" data-og-width="4598" width="4598" data-og-height="2410" height="2410" data-path="images/platform/editor.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/frigade-docs/vb0YqHQGpTytLgI7/images/platform/editor.png?w=280&fit=max&auto=format&n=vb0YqHQGpTytLgI7&q=85&s=e10b2892db864e36792081193d199be0 280w, https://mintcdn.com/frigade-docs/vb0YqHQGpTytLgI7/images/platform/editor.png?w=560&fit=max&auto=format&n=vb0YqHQGpTytLgI7&q=85&s=7985c658200915d98ff903edbd812c34 560w, https://mintcdn.com/frigade-docs/vb0YqHQGpTytLgI7/images/platform/editor.png?w=840&fit=max&auto=format&n=vb0YqHQGpTytLgI7&q=85&s=7bcbeebc8e05529ab0d9ebbf7e6ab55b 840w, https://mintcdn.com/frigade-docs/vb0YqHQGpTytLgI7/images/platform/editor.png?w=1100&fit=max&auto=format&n=vb0YqHQGpTytLgI7&q=85&s=8a02113fd5d1826db7f4f39444871c2b 1100w, https://mintcdn.com/frigade-docs/vb0YqHQGpTytLgI7/images/platform/editor.png?w=1650&fit=max&auto=format&n=vb0YqHQGpTytLgI7&q=85&s=b8567865f7d8035a3d1b63fc83ffeffe 1650w, https://mintcdn.com/frigade-docs/vb0YqHQGpTytLgI7/images/platform/editor.png?w=2500&fit=max&auto=format&n=vb0YqHQGpTytLgI7&q=85&s=0884c324dc8a5a18b4d586b8fd93ebfc 2500w" />
         </Frame>
 
         <Note>If you plan to make major changes to a Flow, we recommend [version control](/platform/versioning).</Note>
@@ -5646,7 +5710,7 @@ Get set up with Frigade in less than 15 minutes
         Check out [integrations](/integrations) to connect other platforms and import existing user segments for targeting.
 
         <Frame>
-          <img src="https://mintlify.s3.us-west-1.amazonaws.com/frigade-docs/images/platform/flow-detail-audience.png" />
+          <img src="https://mintcdn.com/frigade-docs/vb0YqHQGpTytLgI7/images/platform/flow-detail-audience.png?fit=max&auto=format&n=vb0YqHQGpTytLgI7&q=85&s=3ff629c1598a46737aad2579fcd342b1" data-og-width="3456" width="3456" data-og-height="1926" height="1926" data-path="images/platform/flow-detail-audience.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/frigade-docs/vb0YqHQGpTytLgI7/images/platform/flow-detail-audience.png?w=280&fit=max&auto=format&n=vb0YqHQGpTytLgI7&q=85&s=6be15fee4c76d9da2cd14014ff762843 280w, https://mintcdn.com/frigade-docs/vb0YqHQGpTytLgI7/images/platform/flow-detail-audience.png?w=560&fit=max&auto=format&n=vb0YqHQGpTytLgI7&q=85&s=59a1aeb9087ce79ce5e731351740b43f 560w, https://mintcdn.com/frigade-docs/vb0YqHQGpTytLgI7/images/platform/flow-detail-audience.png?w=840&fit=max&auto=format&n=vb0YqHQGpTytLgI7&q=85&s=6430d0069d4fb14ef1a4271bdee6c85f 840w, https://mintcdn.com/frigade-docs/vb0YqHQGpTytLgI7/images/platform/flow-detail-audience.png?w=1100&fit=max&auto=format&n=vb0YqHQGpTytLgI7&q=85&s=25d1e7ec6bd9d9ffc8fd030b1a05a7f6 1100w, https://mintcdn.com/frigade-docs/vb0YqHQGpTytLgI7/images/platform/flow-detail-audience.png?w=1650&fit=max&auto=format&n=vb0YqHQGpTytLgI7&q=85&s=5ad647ada4e6bf57add11f123df68e43 1650w, https://mintcdn.com/frigade-docs/vb0YqHQGpTytLgI7/images/platform/flow-detail-audience.png?w=2500&fit=max&auto=format&n=vb0YqHQGpTytLgI7&q=85&s=d05ba711ef7422ebb937b35ea9b75ad6 2500w" />
         </Frame>
       </Accordion>
 
@@ -5681,7 +5745,7 @@ For most components, steps in Flows are marked as completed when a user clicks t
 
 Call the `complete` method from the [useFlow hook](/sdk/hooks/flow) in the [React SDK](/sdk/quickstart) or via the [JS SDK](/sdk/js/flow). In the example below, we're calling the `complete` method from the React SDK:
 
-```javascript
+```javascript  theme={"system"}
 import { useFlow } from '@frigade/react';
 
 const { flow } = useFlow("my-flow-id");
@@ -5693,7 +5757,7 @@ await flow.steps.get('my-step-id').complete();
 
 Use the `completionCriteria` property on a step to automatically mark the step as completed when a user meets the criteria. See [Targeting](/platform/targeting) for more examples of how to write targeting queries.
 
-```yaml
+```yaml  theme={"system"}
 steps:
   - id: my-step-id
     ...
@@ -5705,7 +5769,7 @@ steps:
 In built-in Flow components, a step is marked as complete when the primary button is clicked. To prevent this, select **No action** in the editor under the **Primary button** property:
 
 <Frame>
-  <img src="https://mintlify.s3.us-west-1.amazonaws.com/frigade-docs/images/sdk/no-action.png" />
+  <img src="https://mintcdn.com/frigade-docs/vb0YqHQGpTytLgI7/images/sdk/no-action.png?fit=max&auto=format&n=vb0YqHQGpTytLgI7&q=85&s=37f4d1e7ccf0a41ffac913d6c8a01130" data-og-width="1842" width="1842" data-og-height="1027" height="1027" data-path="images/sdk/no-action.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/frigade-docs/vb0YqHQGpTytLgI7/images/sdk/no-action.png?w=280&fit=max&auto=format&n=vb0YqHQGpTytLgI7&q=85&s=7e941d97545749a9a679bf68e4e49848 280w, https://mintcdn.com/frigade-docs/vb0YqHQGpTytLgI7/images/sdk/no-action.png?w=560&fit=max&auto=format&n=vb0YqHQGpTytLgI7&q=85&s=8e493b96aa2399a875646562bdcf85a7 560w, https://mintcdn.com/frigade-docs/vb0YqHQGpTytLgI7/images/sdk/no-action.png?w=840&fit=max&auto=format&n=vb0YqHQGpTytLgI7&q=85&s=9173016be52c5144d283dae29d948243 840w, https://mintcdn.com/frigade-docs/vb0YqHQGpTytLgI7/images/sdk/no-action.png?w=1100&fit=max&auto=format&n=vb0YqHQGpTytLgI7&q=85&s=96e27308262ae1777c0a22c7e62bd044 1100w, https://mintcdn.com/frigade-docs/vb0YqHQGpTytLgI7/images/sdk/no-action.png?w=1650&fit=max&auto=format&n=vb0YqHQGpTytLgI7&q=85&s=ef86e0b2b1d391ba67477c39d522de11 1650w, https://mintcdn.com/frigade-docs/vb0YqHQGpTytLgI7/images/sdk/no-action.png?w=2500&fit=max&auto=format&n=vb0YqHQGpTytLgI7&q=85&s=e4d598be5d5b582fd2f62e78b3b97a73 2500w" />
 </Frame>
 
 ## API Methods
@@ -5727,7 +5791,7 @@ You can do this by calling the [Users API endpoint](/api-reference/users/overvie
 
 To do this in Javascript, you can use the `fetch` API:
 
-```jsx
+```jsx  theme={"system"}
 const options = {
   method: 'POST',
   headers: { Authorization: 'Bearer <FRIGADE_PUBLIC_API_KEY>',
@@ -5755,7 +5819,7 @@ Then, when instantiating Frigade in your application with the `<Frigade.Provider
 
 For a more in depth guide on how to set up a reverse proxy, check out [this guide](https://posthog.com/docs/advanced/proxy) from Posthog.
 
-```jsx
+```jsx  theme={"system"}
 import * as Frigade from '@frigade/react';
 
 const App = () => (
@@ -5781,7 +5845,7 @@ Unlike no-code tools, Frigade allows you to easily write automated tests for you
 
     Before running your tests, you will likely want to reset this user in Frigade. This can be done by making the following API request using your private API key in the Developer environment (see [API docs](/api-reference/users/users-delete) for more information):
 
-    ```javascript
+    ```javascript  theme={"system"}
     function resetTestUser() {
       fetch('https://api.frigade.com/v1/users?foreignId=my-test-user-id', {
         method: 'DELETE',
@@ -5795,7 +5859,7 @@ Unlike no-code tools, Frigade allows you to easily write automated tests for you
 
     With this in hand, you can add a `beforeAll` to reset the test user before and after running your tests.
 
-    ```javascript
+    ```javascript  theme={"system"}
     beforeAll(() => {
       resetTestUser();
     });
@@ -5807,7 +5871,7 @@ Unlike no-code tools, Frigade allows you to easily write automated tests for you
 
     In this example, we will use Playwright. This test presses the primary button with the text "Got it" in a `Frigade.Announcement` and ensures that the modal is closed.
 
-    ```javascript
+    ```javascript  theme={"system"}
     const { test, expect } = require('@playwright/test');
 
     test('close announcement', async ({ page }) => {
@@ -5823,7 +5887,7 @@ Unlike no-code tools, Frigade allows you to easily write automated tests for you
 
     Methods such as `flow.complete()` or `step.complete()` support an optional `createdAt` parameter that can simulate the time of completion, too.
 
-    ```javascript
+    ```javascript  theme={"system"}
     import { Frigade } from '@frigade/js'
 
     test('Flow is visible after completing other Flow', async () => {
@@ -5856,7 +5920,7 @@ This guide outlines some of the biggest changes you need to make to upgrade from
 
 In V2, we have a [fully-fledged theming system](/sdk/styling/theming) that allows you to customize every token in our design system. If you used V1's theme colors, you can convert them to V2 like so:
 
-```jsx
+```jsx  theme={"system"}
 // V1
 <FrigadeProvider
   config={{
@@ -5909,7 +5973,7 @@ We now recommend that you author global styles using your existing CSS workflow.
 
 We use [Emotion's CSS prop](/sdk/styling/css-overrides) in V2, so you can write any CSS that Emotion supports directly on any component:
 
-```jsx
+```jsx  theme={"system"}
 // V1
 <FrigadeAnnouncement
   appearance={{
@@ -5939,7 +6003,7 @@ We use [Emotion's CSS prop](/sdk/styling/css-overrides) in V2, so you can write 
 
 The V2 `css` prop accepts a style object, which means that if you're using V1's `styleOverrides` prop to pass Tailwind classNames through to sub-components, you'll need to update your code to pass Tailwind's [arbitrary variants](https://tailwindcss.com/docs/hover-focus-and-other-states#using-arbitrary-variants), e.g.:
 
-```jsx
+```jsx  theme={"system"}
 // V1
 <FrigadeAnnouncement
   appearance={{
@@ -5959,7 +6023,7 @@ The V2 `css` prop accepts a style object, which means that if you're using V1's 
 
 The `navigate` prop is now a top-level prop on Provider, it is no longer nested inside `config`:
 
-```jsx
+```jsx  theme={"system"}
 // V1
 <FrigadeProvider
   config={{
@@ -6005,7 +6069,7 @@ If you already have a V1 implementation and aren't ready to fully upgrade yet, y
 
 <Steps>
   <Step title="First, install V2 using a package alias:">
-    ```json
+    ```json  theme={"system"}
     "dependencies": [
     "@frigade/react": "1.x",
     "@frigade/reactv2": "npm:@frigade/react@2.x",
@@ -6014,7 +6078,7 @@ If you already have a V1 implementation and aren't ready to fully upgrade yet, y
   </Step>
 
   <Step title="Then add the V2 `Provider` above the V1 `FrigadeProvider`:">
-    ```tsx
+    ```tsx  theme={"system"}
     import { FrigadeProvider } from "@frigade/react";
     import * as Frigade from "@frigade/reactv2";
 
@@ -6045,39 +6109,47 @@ Source: https://docs.frigade.com/sdk/common-issues
 
 Find solutions to common issues with the Frigade SDK.
 
----
+***
 
 ## Flows not showing up
+
 If your Frigade components are not rendering in your product as expected, below are some of thhe most common issues and solutions to help you troubleshoot.
 
 <AccordionGroup>
-    <Accordion title="Developer console">
-        Open the developer console in your browser and look for any error messages.
-    </Accordion>
-    <Accordion title="API key">
-        Make sure you have the correct API key in your `<Frigade.Provider />` component. You can find your API key in the [Frigade dashboard](https://app.frigade.com/developer).
-    </Accordion>
-    <Accordion title="Flow status">
-        Make sure your Flows are properly installed in your app and that they are active in the Frigade dashboard. If you have not published your Flows, or if you have turned them off, they will not be available in your app.
-    </Accordion>
-    <Accordion title="Flow targeting">
-        Make sure any targeting you've set in the **Targeting** tab of your Flow is correct. If the targeting is too restrictive, your Flows may not show up for the intended users.
-    </Accordion>
-    <Accordion title="Environment">
-        Make sure you are using the correct environment in your `<Frigade.Provider />` component. Each environment has its own API key and Flows. If you are using the wrong environment, your Flows will not show up in your app.
-    </Accordion>
-    <Accordion title="Debug mode">
-        If you are still having issues, you can enable debug mode in Chrome Devtools ([see guide](/guides/tours#debugging-tooltips)).
-    </Accordion>
-    <Accordion title="Ensure zIndex is set correctly">
-        If your Flows are not showing up, it may be because they are being rendered behind other elements on the page. You can fix this by setting the `zIndex` on components such as `Frigade.Tour` or `Frigade.Announcement` to a higher value.
-    </Accordion>
-    <Accordion title="Rules">
-        If you've created a rule in the **Rules** tab of Frigade that includes the Flow then that could affect its visibility. Make sure you've configured the rule correctly and that your Flow is actually expected to show.
-    </Accordion>
+  <Accordion title="Developer console">
+    Open the developer console in your browser and look for any error messages.
+  </Accordion>
+
+  <Accordion title="API key">
+    Make sure you have the correct API key in your `<Frigade.Provider />` component. You can find your API key in the [Frigade dashboard](https://app.frigade.com/developer).
+  </Accordion>
+
+  <Accordion title="Flow status">
+    Make sure your Flows are properly installed in your app and that they are active in the Frigade dashboard. If you have not published your Flows, or if you have turned them off, they will not be available in your app.
+  </Accordion>
+
+  <Accordion title="Flow targeting">
+    Make sure any targeting you've set in the **Targeting** tab of your Flow is correct. If the targeting is too restrictive, your Flows may not show up for the intended users.
+  </Accordion>
+
+  <Accordion title="Environment">
+    Make sure you are using the correct environment in your `<Frigade.Provider />` component. Each environment has its own API key and Flows. If you are using the wrong environment, your Flows will not show up in your app.
+  </Accordion>
+
+  <Accordion title="Debug mode">
+    If you are still having issues, you can enable debug mode in Chrome Devtools ([see guide](/guides/tours#debugging-tooltips)).
+  </Accordion>
+
+  <Accordion title="Ensure zIndex is set correctly">
+    If your Flows are not showing up, it may be because they are being rendered behind other elements on the page. You can fix this by setting the `zIndex` on components such as `Frigade.Tour` or `Frigade.Announcement` to a higher value.
+  </Accordion>
+
+  <Accordion title="Rules">
+    If you've created a rule in the **Rules** tab of Frigade that includes the Flow then that could affect its visibility. Make sure you've configured the rule correctly and that your Flow is actually expected to show.
+  </Accordion>
 </AccordionGroup>
 
----
+***
 
 ## Guest users in my dashboard
 
@@ -6085,7 +6157,7 @@ If a `userId` is not available when Frigade is initialized via the `<Frigade.Pro
 
 To prevent Frigade from automatically generating guest user IDs, you can pass a flag to the `<Frigade.Provider />` as shown below:
 
-```jsx
+```jsx  theme={"system"}
 <Frigade.Provider generateGuestId={false} />
 ```
 
@@ -6098,7 +6170,7 @@ There are two ways to fix this issue:
 1. Upgrade to the latest version of create-react-app (you need to be on version 5.0.0 or higher of `react-scripts`).
 2. Eject your app from create-react-app (if not already done) and manually configure your webpack to support ESM. Do this by adding the following to your webpack config:
 
-```javascript
+```javascript  theme={"system"}
 module.exports = {
   //...
   resolve: {
@@ -6141,7 +6213,7 @@ The `useFlow` hook is especially useful if you want to build a highly custom exp
 
 ### Example usage:
 
-```tsx
+```tsx  theme={"system"}
 import { useFlow } from "@frigade/react";
 
 function MyComponent() {
@@ -6179,7 +6251,7 @@ It should rarely be used as the provided [useFlow](./flow), [useUser](./user), a
 
 ### Example usage:
 
-```tsx
+```tsx  theme={"system"}
 import { useFrigade } from "@frigade/react";
 
 function MyComponent() {
@@ -6221,7 +6293,7 @@ The hook contains the following methods:
 
 ### Example usage:
 
-```tsx
+```tsx  theme={"system"}
 import { useGroup } from '@frigade/react';
 
 function MyComponent() {
@@ -6271,7 +6343,7 @@ The hook contains the following methods:
 
 ### Tracking events example
 
-```tsx
+```tsx  theme={"system"}
 import { useUser } from "@frigade/react";
 
 function MyComponent() {
@@ -6287,7 +6359,7 @@ function MyComponent() {
 
 ### Adding properties example
 
-```tsx
+```tsx  theme={"system"}
 import { useUser } from "@frigade/react";
 
 function MyComponent() {
@@ -6306,7 +6378,7 @@ function MyComponent() {
 
 Properties can also be added to the `userProperties` object via the `Frigade.Provider` component:
 
-```tsx
+```tsx  theme={"system"}
 <Frigade.Provider 
   apiKey="YOUR_API_KEY"
   userID="1234567890"
@@ -6859,15 +6931,15 @@ your own components powered by Frigade with any Javascript framework or library.
 <Steps>
   <Step title="Install the JS SDK">
     <CodeGroup>
-      ```txt npm
+      ```txt npm theme={"system"}
       npm install @frigade/js
       ```
 
-      ```txt yarn
+      ```txt yarn theme={"system"}
       yarn add @frigade/js
       ```
 
-      ```txt pnpm
+      ```txt pnpm theme={"system"}
       pnpm install @frigade/js
       ```
     </CodeGroup>
@@ -6876,7 +6948,7 @@ your own components powered by Frigade with any Javascript framework or library.
   <Step title="Initialize the SDK">
     Simply `import { Frigade }  from '@frigade/js'` and initialize the SDK with your **public API key** from the **Developer** page of the dashboard.
 
-    ```js
+    ```js  theme={"system"}
     import { Frigade } from '@frigade/js'
 
     const frigade = new Frigade('FRIGADE_API_KEY')
@@ -6897,7 +6969,7 @@ your own components powered by Frigade with any Javascript framework or library.
   <Step title="Start building with Frigade">
     That's pretty much it! You can now use the Frigade JS SDK. Here's how to get a Flow:
 
-    ```js
+    ```js  theme={"system"}
       const flow = await frigade.getFlow('FLOW_ID')
       console.log('Flow status:', flow.isCompleted)
 
@@ -7338,7 +7410,7 @@ Overriding the default navigation handler is different depending on your React f
 
 ## Next.js App and Pages Router
 
-```jsx
+```jsx  theme={"system"}
 import * as Frigade from '@frigade/react';
 import { useRouter } from 'next/navigation'; // or 'next/router' if using Pages Router
 
@@ -7363,7 +7435,7 @@ const App = () => {
 
 ## React Router
 
-```jsx
+```jsx  theme={"system"}
 import * as Frigade from '@frigade/react';
 import { useHistory } from 'react-router-dom';
 
@@ -7390,9 +7462,9 @@ const App = () => {
 # React SDK Overview
 Source: https://docs.frigade.com/sdk/overview
 
-Frigade React SDK and JavaScript SDK
+Frigade Engage React SDK and JavaScript SDK
 
-<img src="https://mintlify.s3.us-west-1.amazonaws.com/frigade-docs/images/sdk/npm.png" />
+<img src="https://mintcdn.com/frigade-docs/vb0YqHQGpTytLgI7/images/sdk/npm.png?fit=max&auto=format&n=vb0YqHQGpTytLgI7&q=85&s=666c7b7a590df77cedc4d9f58547629d" data-og-width="2692" width="2692" data-og-height="1784" height="1784" data-path="images/sdk/npm.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/frigade-docs/vb0YqHQGpTytLgI7/images/sdk/npm.png?w=280&fit=max&auto=format&n=vb0YqHQGpTytLgI7&q=85&s=93aab391c0b1634687aec87dd3d809f2 280w, https://mintcdn.com/frigade-docs/vb0YqHQGpTytLgI7/images/sdk/npm.png?w=560&fit=max&auto=format&n=vb0YqHQGpTytLgI7&q=85&s=e6c9803eaab4658e46ac04c828c5751f 560w, https://mintcdn.com/frigade-docs/vb0YqHQGpTytLgI7/images/sdk/npm.png?w=840&fit=max&auto=format&n=vb0YqHQGpTytLgI7&q=85&s=afe59d3d657684ca01984d41ea62b75f 840w, https://mintcdn.com/frigade-docs/vb0YqHQGpTytLgI7/images/sdk/npm.png?w=1100&fit=max&auto=format&n=vb0YqHQGpTytLgI7&q=85&s=0038d260715b95ace14147a36a8604be 1100w, https://mintcdn.com/frigade-docs/vb0YqHQGpTytLgI7/images/sdk/npm.png?w=1650&fit=max&auto=format&n=vb0YqHQGpTytLgI7&q=85&s=f8f4554ae3950fd78b3cab7607dc42a5 1650w, https://mintcdn.com/frigade-docs/vb0YqHQGpTytLgI7/images/sdk/npm.png?w=2500&fit=max&auto=format&n=vb0YqHQGpTytLgI7&q=85&s=450053346a75ab887c461e59b6ae83aa 2500w" />
 
 ## Getting Started
 
@@ -7400,7 +7472,7 @@ Check out the [SDK Quickstart](/sdk/quickstart) for instructions on installing t
 
 ## Components
 
-The Frigade React SDK includes a [library](/component/overview) of highly customizable onboarding components that you can use to build your app.
+The Frigade Engage React SDK includes a [library](/component/overview) of highly customizable onboarding components that you can use to build your app.
 
 ## JavaScript SDK
 
@@ -7410,7 +7482,7 @@ Our [JavaScript SDK](/sdk/js/quickstart) is a lightweight, headless library you 
 
 All types used in the Javascript SDK are exported from the `@frigade/react` package under the `FrigadeJS` namespace. You can import them like so:
 
-```javascript
+```javascript  theme={"system"}
 import { FrigadeJS } from "@frigade/react";
 ```
 
@@ -7555,7 +7627,7 @@ Global variables to apply to all Flows, including Collections.
 If the individual Collection or Flow has its own variables, the two objects will be merged, with the Flow/Collection having high priority.
 Example:
 
-```tsx
+```tsx  theme={"system"}
 variables={{
   name: "Bobby Nerves",
   occupation: "Vocalist",
@@ -7575,15 +7647,15 @@ How to set up Frigade in your React app
 <Steps>
   <Step title="Install the React SDK">
     <CodeGroup>
-      ```txt npm
+      ```txt npm theme={"system"}
       npm install @frigade/react
       ```
 
-      ```txt yarn
+      ```txt yarn theme={"system"}
       yarn add @frigade/react
       ```
 
-      ```txt pnpm
+      ```txt pnpm theme={"system"}
       pnpm install @frigade/react
       ```
     </CodeGroup>
@@ -7593,7 +7665,7 @@ How to set up Frigade in your React app
     Add the Frigade `Provider` component to your app. Make sure to paste in your **public** API key and user ID.
     Optionally, you can pass in user properties like `firstName`, `lastName`, and `email` to decorate the user profile in Frigade.
 
-    ```jsx
+    ```jsx  theme={"system"}
     import * as Frigade from "@frigade/react";
 
     const FRIGADE_API_KEY = "api_public_abcd1234";
@@ -7623,7 +7695,7 @@ How to set up Frigade in your React app
   <Step title="Use your first component">
     That's pretty much it! You can now use the SDK. Here's an example of how to use the `Announcement` component:
 
-    ```tsx
+    ```tsx  theme={"system"}
     import * as Frigade from "@frigade/react";
 
     export const DemoComponent = () => {
@@ -7652,7 +7724,7 @@ We use [Emotion's css prop](https://emotion.sh/docs/css-prop#use-the-css-prop) u
 
 Since the `css` prop is scoped to each component, you can treat it as though it were a `style` prop with added functionality. For example:
 
-```tsx
+```tsx  theme={"system"}
 // This CSS will be compiled at runtime by Emotion and applied to
 // the `.fr-card` wrapper at the top level of the Card component
 
@@ -7667,7 +7739,7 @@ Since the `css` prop is scoped to each component, you can treat it as though it 
 
 We also assign stable class names to each internal part of each component, to make style overrides as easy as:
 
-```tsx
+```tsx  theme={"system"}
 <Frigade.Tour
   css={{
     ".fr-tooltip-content .fr-tooltip-close": {
@@ -7693,7 +7765,7 @@ If you want to style every instance of a Frigade component (or write any other g
 
 Since every Frigade Component has its own stable classname, you can override every `<Button.Primary />` simply by writing CSS in object syntax:
 
-```tsx
+```tsx  theme={"system"}
 <Frigade.Provider
   css={{
     ".fr-button-primary": {
@@ -7711,7 +7783,7 @@ Since every Frigade Component has its own stable classname, you can override eve
 
 To override the styles for every Frigade Button, use a [wildcard attribute selector](https://developer.mozilla.org/en-US/docs/Web/CSS/Attribute_selectors):
 
-```tsx
+```tsx  theme={"system"}
 <Frigade.Provider
   css={{
     "[class*='fr-button']": {
@@ -7731,7 +7803,7 @@ To override the styles for every Frigade Button, use a [wildcard attribute selec
 
 You can override the `css` prop or any other attribute from the Flow editor by providing the `props` field in the Advanced YAML editor:
 
-```yaml
+```yaml  theme={"system"}
 props:
   css:
     backgroundColor: "blue"
@@ -7742,7 +7814,7 @@ steps: ...
 
 You can also override the styling on specific Steps by providing the `props` field on the given Step. This will override the styling for that specific Step only:
 
-```yaml
+```yaml  theme={"system"}
 steps:
   - id: step-1
     props:
@@ -7755,11 +7827,11 @@ steps:
 
 If you prefer to use your own CSS workflow, any old CSS will work. You can provide a top-level `className` prop to a component via a static stylesheet, CSS Modules, etc. then scope your styles to that:
 
-```jsx
+```jsx  theme={"system"}
 <Frigade.Tour className="my-scoped-component" {...} />
 ```
 
-```css
+```css  theme={"system"}
 .my-scoped-component {
   & .fr-button-primary {
     backgroundcolor: "chartreuse";
@@ -7771,7 +7843,7 @@ Note: If you use external CSS to target `.fr-` classnames, your CSS must be sour
 
 If you don't have control over source-ordering in your app, you can increase the specificity of your selectors instead:
 
-```css
+```css  theme={"system"}
 body :is(.fr-title) {
   font-size: 42px;
 }
@@ -7781,7 +7853,7 @@ body :is(.fr-title) {
 
 You can use Tailwind's [arbitrary variants](https://tailwindcss.com/docs/hover-focus-and-other-states#using-arbitrary-variants) to style the inner sub-components of a Frigade component:
 
-```jsx
+```jsx  theme={"system"}
 <Frigade.Banner className="[&_.fr-title]:text-fuchsia-500" {...} />
 ```
 
@@ -7797,7 +7869,7 @@ The base theme covers common style properties like colors, typography, spacing, 
 
 To override the base theme, pass the properties you want to change into the `theme` prop of the `Provider` component. In the example below we override the default blue primary color to be `#000000`:
 
-```tsx
+```tsx  theme={"system"}
 <Frigade.Provider
   apiKey="..."
   theme={{
@@ -7816,7 +7888,7 @@ To override the base theme, pass the properties you want to change into the `the
 
 If you're using Tailwind CSS with Shadcn, you can use the `theme` mappings below to automatically match your existing theme.
 
-```tsx
+```tsx  theme={"system"}
 <Frigade.Provider
   apiKey="..."
   theme={{
@@ -7870,7 +7942,7 @@ Our theme runs on a set of [CSS custom properties](https://developer.mozilla.org
 
 This is especially useful in conjunction with the `css` prop, as it allows you to create temporary sub-themes that apply only to one Component, e.g.:
 
-```tsx
+```tsx  theme={"system"}
 <Frigade.Tour
   css={{
     // Change primary elements (i.e. buttons) in this Tour to be black
@@ -7885,7 +7957,7 @@ The full list of CSS variables used in our theme can be found [here](/sdk/stylin
 
 You can use your browser's developer tools to inspect the CSS properties of any Frigade component. For instance, to find the theme variable for the secondary text in the [Form](/component/form) component, you can inspect the element and look for the `color` property:
 
-<img src="https://mintlify.s3.us-west-1.amazonaws.com/frigade-docs/images/sdk/finding-colors.png" className="rounded-md" style={{border: '1px solid #E8EBF0',}} />
+<img src="https://mintcdn.com/frigade-docs/vb0YqHQGpTytLgI7/images/sdk/finding-colors.png?fit=max&auto=format&n=vb0YqHQGpTytLgI7&q=85&s=671d8130f0dbf45d51e3cd346e236b76" className="rounded-md" style={{border: '1px solid #E8EBF0',}} data-og-width="3470" width="3470" data-og-height="1820" height="1820" data-path="images/sdk/finding-colors.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/frigade-docs/vb0YqHQGpTytLgI7/images/sdk/finding-colors.png?w=280&fit=max&auto=format&n=vb0YqHQGpTytLgI7&q=85&s=93ac6afd9a803410844c5ae0a0cc79b8 280w, https://mintcdn.com/frigade-docs/vb0YqHQGpTytLgI7/images/sdk/finding-colors.png?w=560&fit=max&auto=format&n=vb0YqHQGpTytLgI7&q=85&s=229f456f304729452c5d8aaea0aa2879 560w, https://mintcdn.com/frigade-docs/vb0YqHQGpTytLgI7/images/sdk/finding-colors.png?w=840&fit=max&auto=format&n=vb0YqHQGpTytLgI7&q=85&s=bddcc50287f03dd21b7d7530668aa68e 840w, https://mintcdn.com/frigade-docs/vb0YqHQGpTytLgI7/images/sdk/finding-colors.png?w=1100&fit=max&auto=format&n=vb0YqHQGpTytLgI7&q=85&s=b19566c57594d7e99c6a262ecad618fe 1100w, https://mintcdn.com/frigade-docs/vb0YqHQGpTytLgI7/images/sdk/finding-colors.png?w=1650&fit=max&auto=format&n=vb0YqHQGpTytLgI7&q=85&s=d058e4558bc17d4efc054f2967442ea2 1650w, https://mintcdn.com/frigade-docs/vb0YqHQGpTytLgI7/images/sdk/finding-colors.png?w=2500&fit=max&auto=format&n=vb0YqHQGpTytLgI7&q=85&s=9fd77f23cca4b81d9530d3cb922f7de3 2500w" />
 
 In the above example, we see that the theme variable is `--fr-colors-neutral-400`, which also corresponds to `colors.neutral.400` in the theme object.
 

@@ -1,5 +1,9 @@
 # Source: https://docs.pipecat.ai/deployment/pipecat-cloud/fundamentals/logging.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pipecat.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Logging and Observability
 
 > Obtaining logs and metrics from your agents and sessions
@@ -8,6 +12,20 @@
   This section of the documentation is currently work in progress. Please check
   back soon for updates.
 </Warning>
+
+## Configuring log level
+
+You can control the Pipecat logging level for your deployed agents using the `PIPECAT_LOG_LEVEL` environment variable. This can be set as a [secret](/deployment/pipecat-cloud/fundamentals/secrets) or directly in your deployment configuration.
+
+Available log levels:
+
+| Level     | Description                                                          |
+| --------- | -------------------------------------------------------------------- |
+| `TRACE`   | The most detailed information for debugging (includes Frame logging) |
+| `DEBUG`   | Verbose output for debugging (default)                               |
+| `INFO`    | General operational information                                      |
+| `WARNING` | Warning messages for potential issues                                |
+| `ERROR`   | Error messages only                                                  |
 
 ## Agent logs
 
@@ -48,7 +66,20 @@ async def bot(args: PipecatRunnerArguments):
   more additional SessionArgument types.
 </Note>
 
+## CPU and memory metrics
 
----
+Pipecat Cloud tracks CPU and memory usage for each session, which can be helpful for troubleshooting performance issues. You can view these metrics in two ways:
 
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.pipecat.ai/llms.txt
+### Dashboard
+
+Navigate to your agent in the Pipecat Cloud dashboard, then go to **Sessions** and click on a specific **Session ID** to view CPU and memory usage graphs.
+
+### CLI
+
+Use the `sessions` command with a specific session ID to see CPU and memory usage with sparkline visualizations and percentile summaries:
+
+```bash  theme={null}
+pipecat cloud agent sessions my-agent --id <session-id>
+```
+
+See the [CLI reference](/cli/cloud/agent#sessions) for more details.

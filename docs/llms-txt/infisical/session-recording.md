@@ -1,60 +1,63 @@
 # Source: https://infisical.com/docs/documentation/platform/pam/product-reference/session-recording.md
 
-# Source: https://infisical.com/docs/documentation/platform/pam/session-recording.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://infisical.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Session Recording
 
 > Learn how Infisical records and stores session activity for auditing and monitoring.
 
-Infisical's Privileged Access Management (PAM) provides robust session recording capabilities to help you audit and monitor user activity across your infrastructure.
+Infisical PAM provides robust session recording capabilities to help you audit and monitor user activity across your infrastructure.
 
 ## How It Works
 
-When a user initiates a session through the Infisical Gateway, a recording of the session begins. The gateway securely caches all recording data in temporary encrypted files on its local system.
+When a user initiates a session by accessing an account, a recording of the session begins. The Gateway securely caches all recording data in temporary encrypted files on its local system.
 
-Once the session concludes, the gateway transmits the complete recording to the Infisical platform for long-term, centralized storage. This asynchronous process ensures that sessions remain operational even if the connection to the Infisical platform is temporarily lost. After the upload is complete, administrators can search and review the session logs in the Infisical UI.
+Once the session concludes, the gateway transmits the complete recording to the Infisical platform for long-term, centralized storage. This asynchronous process ensures that sessions remain operational even if the connection to the Infisical platform is temporarily lost. After the upload is complete, administrators can search and review the session logs on the Infisical platform.
 
 ## What's Captured
 
 The content captured during a session depends on the type of resource being accessed.
 
-### Database Sessions
+<AccordionGroup>
+  <Accordion title="Database Sessions">
+    Infisical captures all queries executed and their corresponding responses, including timestamps for each action.
+  </Accordion>
 
-For database connections, Infisical captures all queries executed and their corresponding responses.
-
-<Note>
-  Support for additional resource types like SSH, RDP, Kubernetes, and MCP is coming soon.
-</Note>
+  <Accordion title="SSH Sessions">
+    Infisical captures all commands executed and their corresponding responses, including timestamps for each action.
+  </Accordion>
+</AccordionGroup>
 
 ## Viewing Recordings
 
 To review session recordings:
 
-1. Navigate to the **PAM Sessions** page in your project.
+1. Navigate to the **Sessions** page in your PAM project.
 2. Click on a session from the list to view its details.
 
-<img src="https://mintlify.s3.us-west-1.amazonaws.com/infisical/images/pam/session-recording/sessions-page.png" alt="PAM Sessions" />
+<img src="https://mintlify.s3.us-west-1.amazonaws.com/infisical/images/pam/product-reference/session-recording/sessions-page.png" alt="PAM Sessions" />
 
 The session details page provides key information, including the complete session logs, connection status, the user who initiated it, and more.
 
-<img src="https://mintlify.s3.us-west-1.amazonaws.com/infisical/images/pam/session-recording/individual-session-page.png" alt="PAM Individual Session" />
+<img src="https://mintlify.s3.us-west-1.amazonaws.com/infisical/images/pam/product-reference/session-recording/individual-session-page.png" alt="PAM Individual Session" />
 
 ### Searching Logs
 
 You can use the search bar to quickly find relevant information:
 
-* **On the main Sessions page:** Search across all session logs to locate specific queries or outputs.
-* **On an individual session page:** Search within that specific session's logs to pinpoint activity.
+**Sessions page:** Search across all session logs to locate specific queries or outputs.
+<img src="https://mintlify.s3.us-west-1.amazonaws.com/infisical/images/pam/product-reference/session-recording/sessions-page-search.png" alt="PAM Sessions Search" />
 
-<img src="https://mintlify.s3.us-west-1.amazonaws.com/infisical/images/pam/session-recording/sessions-page-search.png" alt="PAM Sessions Search" />
-
-<img src="https://mintlify.s3.us-west-1.amazonaws.com/infisical/images/pam/session-recording/individual-session-page-search.png" alt="PAM Individual Session Search" />
+**Individual session page:** Search within that specific session's logs to pinpoint activity.
+<img src="https://mintlify.s3.us-west-1.amazonaws.com/infisical/images/pam/product-reference/session-recording/individual-session-page-search.png" alt="PAM Individual Session Search" />
 
 ## FAQ
 
 <AccordionGroup>
   <Accordion title="Are session recordings encrypted?">
-    Yes. All session recordings are encrypted at rest by default, ensuring your audit data is always secure.
+    Yes. All session recordings are encrypted at rest by default, ensuring your data is always secure.
   </Accordion>
 
   <Accordion title="Why aren't recordings streamed in real-time?">

@@ -1,5 +1,9 @@
 # Source: https://docs.ultravox.ai/agents/building-and-editing-agents.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.ultravox.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Building & Editing Agents
 
 > Create and manage reusable voice assistant templates for consistent experiences.
@@ -257,8 +261,3 @@ const getAgentCalls = async (agentId) => {
     Learn how to use inline instructions for complex workflows.
   </Card>
 </CardGroup>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.ultravox.ai/llms.txt

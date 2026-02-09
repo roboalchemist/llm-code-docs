@@ -1,5 +1,9 @@
 # Source: https://docs.comfy.org/manager/legacy-ui.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.comfy.org/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Managing custom nodes with ComfyUI-Manager (legacy UI)
 
 > Install, update, and manage custom nodes with ComfyUI-Manager using the legacy interface
@@ -112,8 +116,3 @@ To restore: Open the Snapshot Manager, select a snapshot, and press **Restore**.
 <Note>
   Restoration takes effect on the next ComfyUI startup. For custom nodes not managed by Git, snapshot support is incomplete.
 </Note>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.comfy.org/llms.txt

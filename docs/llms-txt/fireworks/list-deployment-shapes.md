@@ -1,5 +1,9 @@
 # Source: https://docs.fireworks.ai/api-reference/list-deployment-shapes.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.fireworks.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # List Deployment Shapes
 
 
@@ -10,7 +14,7 @@
 openapi: 3.1.0
 info:
   title: Gateway REST API
-  version: 4.15.25
+  version: 4.21.6
 servers:
   - url: https://api.fireworks.ai
 security:
@@ -228,6 +232,14 @@ components:
           type: integer
           format: int32
           title: How many LORA adapters to keep on GPU side for caching
+        maxContextLength:
+          type: integer
+          format: int32
+          description: >-
+            The maximum context length supported by the model (context window).
+
+            If set to 0 or not specified, the model's default maximum context
+            length will be used.
         presetType:
           $ref: '#/components/schemas/DeploymentShapePresetType'
           description: Type of deployment shape for different deployment configurations.
@@ -304,7 +316,3 @@ components:
       bearerFormat: API_KEY
 
 ````
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.fireworks.ai/llms.txt

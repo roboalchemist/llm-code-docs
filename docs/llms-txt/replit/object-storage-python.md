@@ -1,5 +1,9 @@
 # Source: https://docs.replit.com/getting-started/quickstarts/object-storage-python.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.replit.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Manage App Storage in Python
 
 > Learn how to use the Python App Storage client library to manage files from your Replit App.

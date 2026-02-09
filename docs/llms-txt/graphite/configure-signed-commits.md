@@ -1,6 +1,11 @@
 # Source: https://graphite-58cc94ce.mintlify.dev/docs/configure-signed-commits.md
 
-# Enable Signed Commits
+> ## Documentation Index
+>
+> Fetch the complete documentation index at: https://graphite-58cc94ce.mintlify.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+## Enable Signed Commits
 
 > Learn how to enable commit signing in Graphite.
 

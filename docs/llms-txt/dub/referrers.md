@@ -1,5 +1,9 @@
 # Source: https://dub.co/docs/concepts/analytics/referrers.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://dub.co/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Referrers data
 
 <Note>

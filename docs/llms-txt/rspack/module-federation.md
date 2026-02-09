@@ -10,16 +10,16 @@ The Rspack team works closely with the Module Federation development team and pr
 
 Module Federation has several typical use cases, including:
 
-* Allowing independent applications (called "micro-frontends" in micro-frontend architecture) to share modules without recompiling the entire application.
-* Different teams working on different parts of the same application without needing to recompile the entire application.
-* Dynamic code loading and sharing between applications at runtime.
+- Allowing independent applications (called "micro-frontends" in micro-frontend architecture) to share modules without recompiling the entire application.
+- Different teams working on different parts of the same application without needing to recompile the entire application.
+- Dynamic code loading and sharing between applications at runtime.
 
 Module Federation can help you:
 
-* Reduce code duplication
-* Improve code maintainability
-* Reduce the overall size of applications
-* Improve application performance
+- Reduce code duplication
+- Improve code maintainability
+- Reduce the overall size of applications
+- Improve application performance
 
 ## How to use
 

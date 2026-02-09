@@ -4,31 +4,9 @@
 
 # Source: https://upstash.com/docs/qstash/integrations/prometheus.md
 
-# Source: https://upstash.com/docs/workflow/integrations/prometheus.md
-
-# Source: https://upstash.com/docs/redis/integrations/prometheus.md
-
-# Source: https://upstash.com/docs/qstash/integrations/prometheus.md
-
-# Source: https://upstash.com/docs/workflow/integrations/prometheus.md
-
-# Source: https://upstash.com/docs/redis/integrations/prometheus.md
-
-# Source: https://upstash.com/docs/qstash/integrations/prometheus.md
-
-# Source: https://upstash.com/docs/workflow/integrations/prometheus.md
-
-# Source: https://upstash.com/docs/redis/integrations/prometheus.md
-
-# Source: https://upstash.com/docs/qstash/integrations/prometheus.md
-
-# Source: https://upstash.com/docs/workflow/integrations/prometheus.md
-
-# Source: https://upstash.com/docs/redis/integrations/prometheus.md
-
-# Source: https://upstash.com/docs/qstash/integrations/prometheus.md
-
-# Source: https://upstash.com/docs/workflow/integrations/prometheus.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Prometheus - Upstash QStash Integration
 

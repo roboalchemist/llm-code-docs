@@ -3,7 +3,6 @@
 ---
 url: /docs/guide/usage/linter/rules/unicorn/no-length-as-slice-end.md
 ---
-# unicorn/no-length-as-slice-end&#x20;
 
 ### What it does
 

@@ -1,5 +1,9 @@
 # Source: https://docs.replit.com/legal-and-security-info/account-inactivity.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.replit.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Account Inactivity
 
 > Learn about Replit's account inactivity policy, when accounts may be terminated, and how paid subscriptions affect account status.

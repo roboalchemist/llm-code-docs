@@ -1,8 +1,4 @@
-# Source: https://gitbook.com/docs/documentation/zh/collaboration/share.md
-
-# Source: https://gitbook.com/docs/documentation/fr/collaboration/share.md
-
-# Source: https://gitbook.com/docs/collaboration/share.md
+# Source: https://gitbook.com/docs/documentation/ja-gitbook-documentation/collaboration/share.md
 
 # Source: https://gitbook.com/docs/documentation/zh/collaboration/share.md
 

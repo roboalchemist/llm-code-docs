@@ -8,7 +8,7 @@
 
 ***
 
-Automated testing is crucial for maintaining the reliability and performance of your Actors over time. This guide will help you set up automated tests using the https://apify.com/pocesar/actor-testing.
+Automated testing is crucial for maintaining the reliability and performance of your Actors over time. This guide will help you set up automated tests using the [Actor Testing Actor](https://apify.com/pocesar/actor-testing).
 
 ## Set up automated tests
 
@@ -30,7 +30,7 @@ When creating test tasks:
 
 ## Configure the Actor Testing Actor
 
-Follow the https://apify.com/pocesar/actor-testing in the Actor's README.
+Follow the [setup guide](https://apify.com/pocesar/actor-testing) in the Actor's README.
 
 Here are some recommended test scenarios:
 

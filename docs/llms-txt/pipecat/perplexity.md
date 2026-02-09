@@ -1,5 +1,9 @@
 # Source: https://docs.pipecat.ai/server/services/llm/perplexity.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pipecat.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Perplexity
 
 > LLM service implementation using Perplexity's API with OpenAI-compatible interface
@@ -53,8 +57,3 @@ Before using Perplexity LLM services, you need:
   Instead, they offer native internet search built in without requiring special
   function calls.
 </Note>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.pipecat.ai/llms.txt

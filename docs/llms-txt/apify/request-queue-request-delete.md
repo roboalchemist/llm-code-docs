@@ -9,13 +9,17 @@ https://api.apify.com/v2/request-queues/:queueId/requests/:requestId
 ```
 
 
-Clientshttps://docs.apify.com/api/client/js/reference/class/RequestQueueClient#deleteDeletes given request from queue.
+Deletes given request from queue.
 
 ## Request
 
 ## Responses
 
 * 204
+* 400
 
 **Response Headers**
 
+
+
+Bad request - invalid input parameters or request body.

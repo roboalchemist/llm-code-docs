@@ -2,10 +2,7 @@
 
 # Replace Group
 
-```
-PUT 
-/v2/:organizationId/Groups/:groupId
-```
+Copy page
 
 This endpoint updates an existing group by replacing all attributes present in the request.
 

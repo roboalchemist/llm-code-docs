@@ -49,7 +49,7 @@ $ vespa auth login
 
 - [vespa auth](vespa_auth.html) - Manage Vespa Cloud credentials
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ### On this page:
 

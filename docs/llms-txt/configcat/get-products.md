@@ -2,14 +2,11 @@
 
 # List Products
 
-```
-GET 
-/v1/products
-```
+Copy page
 
 This endpoint returns the list of the Products that belongs to the user.
 
-## Responses[â€‹](#responses "Direct link to Responses")
+## Responses[​](#responses "Direct link to Responses")
 
 * 200
 * 429

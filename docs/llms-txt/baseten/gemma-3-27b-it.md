@@ -1,5 +1,9 @@
 # Source: https://docs.baseten.co/examples/models/gemma/gemma-3-27b-it.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.baseten.co/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Gemma 3 27B IT
 
 > Instruct-tuned open model by Google with excellent ELO/size tradeoff and vision capabilities

@@ -2,21 +2,9 @@
 
 # Source: https://docs.unifygtm.com/getting-started/welcome.md
 
-# Source: https://docs.unifygtm.com/tutorials/welcome.md
-
-# Source: https://docs.unifygtm.com/getting-started/welcome.md
-
-# Source: https://docs.unifygtm.com/tutorials/welcome.md
-
-# Source: https://docs.unifygtm.com/getting-started/welcome.md
-
-# Source: https://docs.unifygtm.com/tutorials/welcome.md
-
-# Source: https://docs.unifygtm.com/getting-started/welcome.md
-
-# Source: https://docs.unifygtm.com/tutorials/welcome.md
-
-# Source: https://docs.unifygtm.com/getting-started/welcome.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.unifygtm.com/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Welcome to Unify
 

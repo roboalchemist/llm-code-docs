@@ -1,6 +1,6 @@
 # Source: https://docs.livekit.io/agents/models/stt/plugins/speechmatics.md
 
-LiveKit docs › Models › Speech-to-text (STT) › Plugins › Speechmatics
+LiveKit docs › Models › STT › Plugins › Speechmatics
 
 ---
 
@@ -25,7 +25,7 @@ This section includes a basic usage example and some reference material. For lin
 Install the plugin from PyPI:
 
 ```shell
-uv add "livekit-agents[speechmatics]~=1.2"
+uv add "livekit-agents[speechmatics]~=1.3"
 
 ```
 
@@ -123,7 +123,7 @@ The following resources provide more information about using Speechmatics with L
 
 ---
 
-This document was rendered at 2025-11-18T23:55:09.306Z.
+This document was rendered at 2026-02-03T03:25:04.223Z.
 For the latest version of this document, see [https://docs.livekit.io/agents/models/stt/plugins/speechmatics.md](https://docs.livekit.io/agents/models/stt/plugins/speechmatics.md).
 
 To explore all LiveKit documentation, see [llms.txt](https://docs.livekit.io/llms.txt).

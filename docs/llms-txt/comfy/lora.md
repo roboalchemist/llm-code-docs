@@ -1,5 +1,9 @@
 # Source: https://docs.comfy.org/tutorials/basic/lora.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.comfy.org/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # ComfyUI LoRA Example
 
 > This guide will help you understand and use a single LoRA model

@@ -1,14 +1,46 @@
 # Source: https://polar.sh/docs/integrate/sdk/adapters/nuxt.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://polar.sh/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Nuxt
 
 > Payments and Checkouts made dead simple with Nuxt
 
+## Examples
+
+* [With Nuxt](https://github.com/polarsource/examples/tree/main/with-nuxt)
+
 ## Installation
 
-Choose your preferred package manager to install the module:
+Install the required Polar packages using the following command:
 
-`pnpm add @polar-sh/nuxt`
+<Tabs>
+  <Tab title="npm">
+    ```bash Terminal theme={null}
+    npm install zod @polar-sh/nuxt
+    ```
+  </Tab>
+
+  <Tab title="yarn">
+    ```bash Terminal theme={null}
+    yarn add zod @polar-sh/nuxt
+    ```
+  </Tab>
+
+  <Tab title="pnpm">
+    ```bash Terminal theme={null}
+    pnpm add zod @polar-sh/nuxt
+    ```
+  </Tab>
+
+  <Tab title="bun">
+    ```bash Terminal theme={null}
+    bun add zod @polar-sh/nuxt
+    ```
+  </Tab>
+</Tabs>
 
 ### Register the module
 
@@ -24,8 +56,7 @@ export default defineNuxtConfig({
 
 Create a Checkout handler which takes care of redirections.
 
-```typescript  theme={null}
-// server/routes/api/checkout.post.ts
+```typescript icon="square-js" server/routes/api/checkout.post.ts theme={null}
 export default defineEventHandler((event) => {
   const {
     private: { polarAccessToken, polarCheckoutSuccessUrl, polarServer },
@@ -58,8 +89,7 @@ Pass query params to this route.
 
 Create a customer portal where your customer can view orders and subscriptions.
 
-```typescript  theme={null}
-// server/routes/api/portal.get.ts
+```typescript icon="square-js" server/routes/api/portal.get.ts theme={null}
 export default defineEventHandler((event) => {
   const {
     private: { polarAccessToken, polarCheckoutSuccessUrl, polarServer },
@@ -83,8 +113,7 @@ export default defineEventHandler((event) => {
 
 A simple utility which resolves incoming webhook payloads by signing the webhook secret properly.
 
-```typescript  theme={null}
-// server/routes/webhook/polar.post.ts
+```typescript icon="square-js" server/routes/webhook/polar.post.ts theme={null}
 export default defineEventHandler((event) => {
   const {
     private: { polarWebhookSecret },

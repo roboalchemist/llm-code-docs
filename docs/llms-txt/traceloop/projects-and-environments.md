@@ -1,5 +1,9 @@
 # Source: https://www.traceloop.com/docs/settings/projects-and-environments.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.traceloop.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Projects and Environments
 
 > Organize your applications and deployment stages with Projects and Environments
@@ -490,8 +494,3 @@ Projects:
     Manage prompts within projects and deploy to environments
   </Card>
 </CardGroup>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://www.traceloop.com/docs/llms.txt

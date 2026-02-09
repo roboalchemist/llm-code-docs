@@ -1,12 +1,10 @@
 # Source: https://docs.livekit.io/transport/media/ingress-egress/egress/composite-recording.md
 
-# Source: https://docs.livekit.io/home/egress/composite-recording.md
-
-LiveKit docs › Recording & export › Composite & web recordings
+LiveKit docs › Media › Stream export & import › Egress › RoomComposite & web egress
 
 ---
 
-# Composite and web recordings
+# RoomComposite & web egress
 
 > LiveKit web-based recorder gives you flexible compositing options.
 
@@ -14,22 +12,22 @@ LiveKit docs › Recording & export › Composite & web recordings
 
 Composite recordings use a web-based recorder to capture a composited view of a room, including all participants, interactions, and any customized UI elements from the application.
 
-We provide two options for composite recording:
+There are two options for composite recording:
 
-- **RoomComposite**: A composite recording that is tied to a room's lifecycle. When all of the participants leave the room, the recording would stop automatically.
-- **Web**: A standalone composite recording can be started and stopped independently of a room’s lifecycle. Web Egress can be used to record any web-based content, even if it’s not part of a LiveKit room.
+- **RoomComposite**: A composite recording tied to a room's lifecycle. When all of the participants leave the room, the recording would stop automatically.
+- **Web**: A standalone composite recording can be started and stopped independently of a room's lifecycle. Web Egress can be used to record any web-based content, even if it's not part of a LiveKit room.
 
-## RoomComposite Egress
+## RoomComposite egress
 
-One common requirement when recording a room is to capture all of the participants and interactions that take place. This can be challenging in a multi-user application, where different users may be joining, leaving, or turning their cameras on and off. It may also be desirable for the recording to look as close to the actual application experience as possible, capturing the richness and interactivity of your application.
+One common requirement when recording a room is to capture all of the participants and interactions that take place. This can be challenging in a multi-user application, where different users may be joining, leaving, or turning their cameras on and off. You may also want the recording to look as close to the actual application experience as possible, capturing the richness and interactivity of your application.
 
-A `RoomComposite` Egress uses a web app to create the composited view, rendering the output with an instance of headless Chromium. In most cases, your existing LiveKit application can be used as a compositing template with few modifications.
+A RoomComposite egress uses a web app to create the composited view, rendering the output with an instance of headless Chromium. In most cases, your existing LiveKit application can be used as a compositing template with few modifications.
 
 ### Default layouts
 
 We provide a few default compositing layouts that works out of the box. They'll be used by default if a custom template URL is not passed in. These templates are deployed alongside and served by the Egress service ([source](https://github.com/livekit/egress/tree/main/template-default)).
 
-While it's a great starting point, you can easily [create your own layout](https://docs.livekit.io/home/egress/custom-template.md) using standard web technologies that you are already familiar with.
+While it's a great starting point, you can easily [create your own layout]/transport/media/ingress-egress/egress/custom-template/) using standard web technologies that you are already familiar with.
 
 | Layout | Preview |
 | **grid** | ![undefined]() |
@@ -40,23 +38,25 @@ Additionally, you can use a `-light` suffix to change background color to white.
 
 ### Output options
 
-Composite recordings can output to a wide variety of formats and destinations. The options are described in detail in [Output options](https://docs.livekit.io/home/egress/outputs.md).
+Composite recordings can output to a wide variety of formats and destinations. The options are described in detail in [Output options](https://docs.livekit.io/transport/media/ingress-egress/egress/outputs.md).
 
 ### Audio-only composite
 
 If your application is audio-only, you can export a mixed audio file containing audio from all participants in the room. To start an audio-only composite, pass `audio_only=true` when starting an Egress.
 
-## Web Egress
+When `audio_only` is true, you can also specify the [audio mixing mode](https://docs.livekit.io/reference/other/egress/api.md#audiomixing) to use. Use dual channel recording to separate the agent's audio from the other participants' audio, or alternate dual channel recording to alternate between left and right channels for each new audio track. By default, all users are mixed together.
 
-Web egress allows you to record or stream any website. Similar to room composite egress, it uses headless Chromium to render output. Unlike room composite egress, you can supply any url, and the lifecycle of web egress is not attached to a LiveKit room.
+## Web egress
+
+Web egress allows you to record or stream any website. Similar to RoomComposite egress, it uses headless Chromium to render output. Unlike RoomComposite egress, you can supply any URL, and the lifecycle of web egress is not attached to a LiveKit room.
 
 ## Examples
 
-For examples on using composite recordings, see [Egress examples](https://docs.livekit.io/home/egress/examples.md).
+For examples on using composite recordings, see [Egress examples](https://docs.livekit.io/reference/other/egress/examples.md).
 
 ---
 
-This document was rendered at 2025-11-18T23:54:56.881Z.
-For the latest version of this document, see [https://docs.livekit.io/home/egress/composite-recording.md](https://docs.livekit.io/home/egress/composite-recording.md).
+This document was rendered at 2026-02-03T03:25:17.170Z.
+For the latest version of this document, see [https://docs.livekit.io/transport/media/ingress-egress/egress/composite-recording.md](https://docs.livekit.io/transport/media/ingress-egress/egress/composite-recording.md).
 
 To explore all LiveKit documentation, see [llms.txt](https://docs.livekit.io/llms.txt).

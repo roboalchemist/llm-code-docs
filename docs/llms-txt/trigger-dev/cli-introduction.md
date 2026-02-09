@@ -1,5 +1,9 @@
 # Source: https://trigger.dev/docs/cli-introduction.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://trigger.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Introduction
 
 > The Trigger.dev CLI has a number of options and commands to help you develop locally, self host, and deploy your tasks.

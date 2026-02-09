@@ -1,5 +1,9 @@
 # Source: https://agentclientprotocol.com/rfds/acp-agent-registry.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://agentclientprotocol.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # ACP Agent Registry
 
 **Author:** [@ignatov](https://github.com/ignatov)
@@ -124,8 +128,3 @@ Example skeleton:
 
 * 2025-11-28: Initial draft.
 * 2025-12-16: Minors.
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://agentclientprotocol.com/llms.txt

@@ -1,5 +1,9 @@
 # Source: https://dev.writer.com/home/integrations-overview.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://dev.writer.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Explore integrations
 
 This guide provides an overview of Writer's integrations with popular AI frameworks and platforms. After reading this guide, you can choose the right integration for your specific use case and development needs.

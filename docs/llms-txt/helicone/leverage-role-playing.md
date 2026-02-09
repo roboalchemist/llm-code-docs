@@ -1,5 +1,9 @@
 # Source: https://docs.helicone.ai/guides/prompt-engineering/leverage-role-playing.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.helicone.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Leverage role-playing
 
 > Assign a specific role or persona to the model as a system prompt to set the style, tone, and content of the output.

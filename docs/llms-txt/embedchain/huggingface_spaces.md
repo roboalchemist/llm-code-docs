@@ -1,5 +1,9 @@
 # Source: https://docs.embedchain.ai/deployment/huggingface_spaces.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.embedchain.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Huggingface.co
 
 > Deploy your RAG application to huggingface.co platform
@@ -24,7 +28,7 @@ We support two types of deployment to huggingface spaces:
 
 Create a new RAG app using the following command:
 
-```bash
+```bash  theme={null}
 mkdir my-rag-app
 ec create --template=hf/streamlit.io # inside my-rag-app directory
 ```
@@ -33,7 +37,7 @@ When you run this for the first time, you'll be asked to login to huggingface.co
 
 This will also create an `embedchain.json` file in your app directory. Add a `name` key into the `embedchain.json` file. This will be the "repo-name" of your app in huggingface spaces.
 
-```json embedchain.json
+```json embedchain.json theme={null}
 {
     "name": "my-rag-app",
     "provider": "hf/streamlit.io"
@@ -44,14 +48,14 @@ This will also create an `embedchain.json` file in your app directory. Add a `na
 
 You can run the app locally by simply doing:
 
-```bash Run locally
+```bash Run locally theme={null}
 pip install -r requirements.txt
 ec dev
 ```
 
 ### Step-3: Deploy to huggingface spaces
 
-```bash Deploy to huggingface spaces
+```bash Deploy to huggingface spaces theme={null}
 ec deploy
 ```
 
@@ -65,7 +69,7 @@ Similar to streamlit.io, you can deploy your app to gradio.app in just three ste
 
 Create a new RAG app using the following command:
 
-```bash
+```bash  theme={null}
 mkdir my-rag-app
 ec create --template=hf/gradio.app # inside my-rag-app directory
 ```
@@ -74,7 +78,7 @@ When you run this for the first time, you'll be asked to login to huggingface.co
 
 This will also create an `embedchain.json` file in your app directory. Add a `name` key into the `embedchain.json` file. This will be the "repo-name" of your app in huggingface spaces.
 
-```json embedchain.json
+```json embedchain.json theme={null}
 {
     "name": "my-rag-app",
     "provider": "hf/gradio.app"
@@ -85,14 +89,14 @@ This will also create an `embedchain.json` file in your app directory. Add a `na
 
 You can run the app locally by simply doing:
 
-```bash Run locally
+```bash Run locally theme={null}
 pip install -r requirements.txt
 ec dev
 ```
 
 ### Step-3: Deploy to huggingface spaces
 
-```bash Deploy to huggingface spaces
+```bash Deploy to huggingface spaces theme={null}
 ec deploy
 ```
 

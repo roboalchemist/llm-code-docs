@@ -25,6 +25,10 @@ The ChangelogVersions component provides a flexible layout to display a list of 
 Use the `versions` prop as an array of objects with the properties of the [ChangelogVersion](/docs/components/changelog-version#props) component.
 
 ```vue
+<script setup lang="ts">
+import type { ChangelogVersionProps } from '@nuxt/ui'
+</script>
+
 <template>
   <UChangelogVersions />
 </template>
@@ -35,6 +39,10 @@ Use the `versions` prop as an array of objects with the properties of the [Chang
 Use the `indicator` prop to hide the indicator bar on the left. Defaults to `true`.
 
 ```vue
+<script setup lang="ts">
+import type { ChangelogVersionProps } from '@nuxt/ui'
+</script>
+
 <template>
   <UChangelogVersions :indicator="false" />
 </template>
@@ -45,6 +53,10 @@ Use the `indicator` prop to hide the indicator bar on the left. Defaults to `tru
 Use the `indicator-motion` prop to customize or hide the motion effect on the indicator bar. Defaults to `true` with `{ damping: 30, restDelta: 0.001 }` [spring transition options](https://motion.dev/docs/vue-transitions#spring).
 
 ```vue
+<script setup lang="ts">
+import type { ChangelogVersionProps } from '@nuxt/ui'
+</script>
+
 <template>
   <UChangelogVersions indicator-motion />
 </template>
@@ -52,11 +64,8 @@ Use the `indicator-motion` prop to customize or hide the motion effect on the in
 
 ## Examples
 
-<note>
-
-While these examples use [Nuxt Content](https://content.nuxt.com), the components can be integrated with any content management system.
-
-</note>
+> [!NOTE]
+> While these examples use [Nuxt Content](https://content.nuxt.com), the components can be integrated with any content management system.
 
 ### Within a page
 
@@ -85,17 +94,11 @@ const { data: versions } = await useAsyncData('versions', () => queryCollection(
 </template>
 ```
 
-<note>
+> [!NOTE]
+> In this example, the `versions` are fetched using `queryCollection` from the `@nuxt/content` module.
 
-In this example, the `versions` are fetched using `queryCollection` from the `@nuxt/content` module.
-
-</note>
-
-<tip>
-
-The `to` prop is overridden here since `@nuxt/content` uses the `path` property.
-
-</tip>
+> [!TIP]
+> The `to` prop is overridden here since `@nuxt/content` uses the `path` property.
 
 ### With sticky indicator
 
@@ -180,6 +183,25 @@ const versions = [{
 </template>
 ```
 
+### With scroll container `4.4+`
+
+Pass an object to the `indicator` prop to configure the scroll container. By default, the indicator tracks the window/page scroll ([https://motion.dev/docs/vue-use-scroll#page-scroll](https://motion.dev/docs/vue-use-scroll#page-scroll)).
+
+```vue
+<script setup lang="ts">
+const scrollContainer = ref<HTMLElement>()
+</script>
+
+<template>
+  <div ref="scrollContainer" class="max-h-96 overflow-y-auto">
+    <UChangelogVersions v-if="scrollContainer" :indicator="{ container: scrollContainer }" />
+  </div>
+</template>
+```
+
+> [!WARNING]
+> When using a custom `container`, make sure the container element is mounted before `UChangelogVersions`.
+
 ## API
 
 ### Props
@@ -193,12 +215,13 @@ interface ChangelogVersionsProps {
    * The element or component this component should render as.
    */
   as?: any;
-  versions?: ChangelogVersionProps[] | undefined;
+  versions?: T[] | undefined;
   /**
    * Display an indicator bar on the left.
+   * By default, the indicator will track the scroll of the page. (https://motion.dev/docs/vue-use-scroll#page-scroll)
    * @default "true"
    */
-  indicator?: boolean | undefined;
+  indicator?: boolean | UseScrollOptions | undefined;
   /**
    * Enable scrolling motion effect on the indicator bar.
    * `{ damping: 30, restDelta: 0.001 }`{lang="ts-type"}
@@ -231,21 +254,18 @@ interface ChangelogVersionsSlots {
 }
 ```
 
-<tip>
-
-You can use all the slots of the [`ChangelogVersion`](/docs/components/changelog-version#slots) component inside ChangelogVersions, they are automatically forwarded allowing you to customize individual versions when using the `versions` prop.
-
-```vue
-<template>
-  <UChangelogVersions :versions="versions">
-    <template #body="{ version }">
-      <MDC v-if="version.content" :value="version.content" />
-    </template>
-  </UChangelogVersions>
-</template>
-```
-
-</tip>
+> [!TIP]
+> You can use all the slots of the [`ChangelogVersion`](/docs/components/changelog-version#slots) component inside ChangelogVersions, they are automatically forwarded allowing you to customize individual versions when using the `versions` prop.
+> ```vue
+> <template>
+>   <UChangelogVersions :versions="versions">
+>     <template #body="{ version }">
+>       <MDC v-if="version.content" :value="version.content" />
+>     </template>
+>   </UChangelogVersions>
+> </template>
+> 
+> ```
 
 ## Theme
 
@@ -266,8 +286,4 @@ export default defineAppConfig({
 
 ## Changelog
 
-<component-changelog>
-
-
-
-</component-changelog>
+See the [releases page](https://github.com/nuxt/ui/releases) for the latest changes.

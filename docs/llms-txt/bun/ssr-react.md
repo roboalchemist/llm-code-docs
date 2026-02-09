@@ -1,5 +1,9 @@
 # Source: https://bun.com/docs/guides/ecosystem/ssr-react.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://bun.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Server-side render (SSR) a React component
 
 To get started, install `react` & `react-dom`:

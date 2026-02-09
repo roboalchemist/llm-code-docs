@@ -2,6 +2,8 @@
 
 # What Is a Staging Environment?
 
+Copy page
+
 When you’re in the process of deploying new code, the possibility that bad code could throw off your rollout and render the whole project a failure may always be at the forefront of your mind.
 
 A staging environment is a natural solution to this problem, allowing you to ensure your code is in tip-top shape before it is deployed.

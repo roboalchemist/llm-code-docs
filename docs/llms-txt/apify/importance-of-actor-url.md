@@ -18,7 +18,7 @@ This part of the manual is only applicable to new Actors. *Once set, existing Ac
 
 ## How to choose a URL
 
-The right naming can propel or hinder the success of the Actor on Google Search. Just as naming your Actor is important, so is choosing its URL. The only difference is, once set, the URL is intended to be permanent (more on this https://docs.apify.com/academy/actor-marketing-playbook/actor-basics/importance-of-actor-url.md). What's the formula for the best Actor URL?
+The right naming can propel or hinder the success of the Actor on Google Search. Just as naming your Actor is important, so is choosing its URL. The only difference is, once set, the URL is intended to be permanent (more on this [later](https://docs.apify.com/academy/actor-marketing-playbook/actor-basics/importance-of-actor-url.md)). What's the formula for the best Actor URL?
 
 ### Brainstorming
 
@@ -32,7 +32,7 @@ The easiest way is to make sure the Actor name and the technical name match. As 
 
 The name should reflect not only what Actor does (or what website it targets), but also what words people use when they search for it. This is why it's also important to do SEO research to see which keywords work best for the topic. Ideally, the URL should include a keyword that has low complexity (low competition) but high traffic (high demand).
 
-Learn more about SEO research and the best tools for it here: https://docs.apify.com/academy/actor-marketing-playbook/promote-your-actor/seo.md
+Learn more about SEO research and the best tools for it here: [SEO](https://docs.apify.com/academy/actor-marketing-playbook/promote-your-actor/seo.md)
 
 ### Inspiration in Apify Store
 

@@ -14,7 +14,7 @@ Keep active
 
 🕑 On the web, your average 🕑 **Response time** is calculated and shown in your Actor Metrics. The purpose of this metric is to make it easy for potential users to see how active you are and how well-maintained the Actor is.
 
-You can view all the issues related to your Actors by going to **Actors** > https://console.apify.com/actors?tab=issues in Apify Console. Users can get automatic updates on their reported issues or subscribe to issues they are interested in, so they stay informed about any responses. When users report an issue, they’re encouraged to share their run, which helps you get the full context and solve the problem more efficiently. Note that shared runs aren’t visible on the public Actor page.
+You can view all the issues related to your Actors by going to **Actors** > [Issues](https://console.apify.com/actors?tab=issues) in Apify Console. Users can get automatic updates on their reported issues or subscribe to issues they are interested in, so they stay informed about any responses. When users report an issue, they’re encouraged to share their run, which helps you get the full context and solve the problem more efficiently. Note that shared runs aren’t visible on the public Actor page.
 
 ## What is the Issues tab for?
 
@@ -39,7 +39,7 @@ Now that the Issues tab is public and on the web, it also serves other goals:
 
 ## Example of a well-managed Issues tab
 
-Check out how the team behind the **Apollo.io leads scraper** manages their https://apify.com/curious_coder/apollo-io-scraper/issues/open for a great example of professional responses and quick problem-solving.
+Check out how the team behind the **Apollo.io leads scraper** manages their [Issues tab](https://apify.com/curious_coder/apollo-io-scraper/issues/open) for a great example of professional responses and quick problem-solving.
 
 Note that this Actor is a rental, so users expect a high-quality service.
 
@@ -85,4 +85,4 @@ When we made the tab public, we took inspiration from StackOverflow’s SEO stra
 
    Politeness goes a long way! Make sure your responses are respectful and straight to the point. It helps to keep things professional, even if the issue seems minor.
 
-https://rewind.com/blog/best-practices-for-using-github-issues/
+[https://rewind.com/blog/best-practices-for-using-github-issues/](https://rewind.com/blog/best-practices-for-using-github-issues/)

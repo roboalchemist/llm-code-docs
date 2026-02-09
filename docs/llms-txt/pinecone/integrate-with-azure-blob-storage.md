@@ -1,5 +1,9 @@
 # Source: https://docs.pinecone.io/guides/operations/integrations/integrate-with-azure-blob-storage.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pinecone.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Integrate with Azure Blob Storage
 
 > Set up Azure Blob Storage integration for data import.

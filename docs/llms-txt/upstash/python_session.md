@@ -1,5 +1,9 @@
 # Source: https://upstash.com/docs/redis/tutorials/python_session.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Manage Sessions in Python with Serverless Redis
 
 In this tutorial, we’ll see how to implement session management in a FastAPI application using Upstash Redis. We’ll use cookies to store session IDs, while session data is maintained in Redis for its speed and expiration features.

@@ -1,5 +1,9 @@
 # Source: https://resend.com/docs/api-reference/webhooks/update-webhook.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://resend.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Update Webhook
 
 > Update an existing webhook configuration.
@@ -51,7 +55,7 @@ export const ResendParamField = ({children, body, path, ...props}) => {
 
   <span />
 
-  See [event types](/dashboard/webhooks/event-types) for available options.
+  See [event types](/webhooks/event-types) for available options.
 </ParamField>
 
 <ParamField body="status" type="string">
@@ -59,7 +63,7 @@ export const ResendParamField = ({children, body, path, ...props}) => {
 </ParamField>
 
 <RequestExample>
-  ```ts Node.js theme={null}
+  ```ts Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
   import { Resend } from 'resend';
 
   const resend = new Resend('re_xxxxxxxxx');
@@ -74,7 +78,7 @@ export const ResendParamField = ({children, body, path, ...props}) => {
   );
   ```
 
-  ```php PHP theme={null}
+  ```php PHP theme={"theme":{"light":"github-light","dark":"vesper"}}
   $resend = Resend::client('re_xxxxxxxxx');
 
   $resend->webhooks->update('430eed87-632a-4ea6-90db-0aace67ec228', [
@@ -84,7 +88,7 @@ export const ResendParamField = ({children, body, path, ...props}) => {
   ]);
   ```
 
-  ```python Python theme={null}
+  ```python Python theme={"theme":{"light":"github-light","dark":"vesper"}}
   import resend
 
   resend.api_key = 're_xxxxxxxxx'
@@ -99,7 +103,7 @@ export const ResendParamField = ({children, body, path, ...props}) => {
   webhook = resend.Webhooks.update(params)
   ```
 
-  ```ruby Ruby theme={null}
+  ```ruby Ruby theme={"theme":{"light":"github-light","dark":"vesper"}}
   require 'resend'
 
   Resend.api_key = 're_xxxxxxxxx'
@@ -114,23 +118,27 @@ export const ResendParamField = ({children, body, path, ...props}) => {
   webhook = Resend::Webhooks.update(params)
   ```
 
-  ```go Go theme={null}
+  ```go Go theme={"theme":{"light":"github-light","dark":"vesper"}}
+  package main
+
   import "github.com/resend/resend-go/v3"
 
-  client := resend.NewClient("re_xxxxxxxxx")
+  func main() {
+  	client := resend.NewClient("re_xxxxxxxxx")
 
-  endpoint := "https://new-webhook.example.com/handler"
-  status := "enabled"
-  params := &resend.UpdateWebhookRequest{
-    Endpoint: &endpoint,
-    Events:   []string{"email.sent", "email.delivered"},
-    Status:   &status,
+  	endpoint := "https://new-webhook.example.com/handler"
+  	status := "enabled"
+  	params := &resend.UpdateWebhookRequest{
+  		Endpoint: &endpoint,
+  		Events:   []string{"email.sent", "email.delivered"},
+  		Status:   &status,
+  	}
+
+  	client.Webhooks.Update("430eed87-632a-4ea6-90db-0aace67ec228", params)
   }
-
-  webhook, err := client.Webhooks.Update("430eed87-632a-4ea6-90db-0aace67ec228", params)
   ```
 
-  ```rust Rust theme={null}
+  ```rust Rust theme={"theme":{"light":"github-light","dark":"vesper"}}
   use resend_rs::{
     events::EmailEventType::{EmailDelivered, EmailSent},
     types::{UpdateWebhookOptions, WebhookStatus},
@@ -156,7 +164,7 @@ export const ResendParamField = ({children, body, path, ...props}) => {
   }
   ```
 
-  ```java Java theme={null}
+  ```java Java theme={"theme":{"light":"github-light","dark":"vesper"}}
   import com.resend.*;
   import static com.resend.services.webhooks.model.WebhookEvent.*;
 
@@ -176,7 +184,7 @@ export const ResendParamField = ({children, body, path, ...props}) => {
   }
   ```
 
-  ```csharp .NET theme={null}
+  ```csharp .NET theme={"theme":{"light":"github-light","dark":"vesper"}}
   using Resend;
 
   IResend resend = ResendClient.Create( "re_xxxxxxxxx" ); // Or from DI
@@ -192,7 +200,7 @@ export const ResendParamField = ({children, body, path, ...props}) => {
   );
   ```
 
-  ```bash cURL theme={null}
+  ```bash cURL theme={"theme":{"light":"github-light","dark":"vesper"}}
   curl -X PATCH 'https://api.resend.com/webhooks/430eed87-632a-4ea6-90db-0aace67ec228' \
        -H 'Authorization: Bearer re_xxxxxxxxx' \
        -H 'Content-Type: application/json' \
@@ -205,7 +213,7 @@ export const ResendParamField = ({children, body, path, ...props}) => {
 </RequestExample>
 
 <ResponseExample>
-  ```json Response theme={null}
+  ```json Response theme={"theme":{"light":"github-light","dark":"vesper"}}
   {
     "object": "webhook",
     "id": "430eed87-632a-4ea6-90db-0aace67ec228"

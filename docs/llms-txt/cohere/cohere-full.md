@@ -1,11 +1,5 @@
 # Cohere Documentation
 
-Source: https://docs.cohere.com/llms-full.txt
-
----
-
-# Cohere Documentation
-
 > Cohere's API documentation helps developers easily integrate natural language processing and generation into their products.
 
 export const LandingPageCard = ({ href, title, imgSrc, description }) => (
@@ -211,7 +205,7 @@ There’s a clear need for more intelligent tools that better understand languag
 
 A recent breakthrough in artificial intelligence (AI) is the introduction of language processing technologies that enable us to build more intelligent systems with a richer understanding of language than ever before. Large pre-trained Transformer language models, or simply large language models, vastly extend the capabilities of what systems are able to do with text.
 
-<img src="file:aeb328d6-c2a8-4837-b042-cec89dd387f4" alt="systems." />
+<img src="https://files.buildwithfern.com/cohere.docs.buildwithfern.com/ca07104b80c3d75d04f09f75d4c37cb7c6b158a1ddd8f991800ac225e3bcfc2d/assets/images/edb518d-IntroToLLM_Visual_1.png" alt="systems." />
 
 Consider this: adding language models to empower Google Search was <a href="https://blog.google/products/search/search-language-understanding-bert/" target="_blank">noted</a> as “representing the biggest leap forward in the past five years, and one of the biggest leaps forward in the history of Search“. Microsoft also <a href="https://azure.microsoft.com/en-us/blog/bing-delivers-its-largest-improvement-in-search-experience-using-azure-gpus/" target="_blank">uses</a> such models for every query in the Bing search engine.
 
@@ -227,7 +221,7 @@ The Command family of models includes [Command A](https://docs.cohere.com/docs/c
 
 [Embed](https://cohere.com/models/embed) improves the accuracy of search, classification, clustering, and RAG results. It also powers the [Embed](/reference/embed) and [Classify](/reference/classify) endpoints.
 
-<img src="file:3a030600-f56f-44d5-b2b3-9944222747a4" />
+<img src="https://files.buildwithfern.com/cohere.docs.buildwithfern.com/5cc8d1eafe6c105f11adc72e487a6728be79107c63b73fe1692a2890e840d9c2/assets/images/b483350-Visual_1.png" />
 
 [Click here](/docs/foundation-models) to learn more about Cohere foundation models.
 
@@ -235,11 +229,11 @@ The Command family of models includes [Command A](https://docs.cohere.com/docs/c
 
 Try [the playground](https://dashboard.cohere.com/playground) to see what an LLM-powered conversational agent can look like. It is able to converse, summarize text, and write emails and articles.
 
-<img src="file:c2e38ae5-aa12-4263-a5e5-7e08f0688c26" />
+<img src="https://files.buildwithfern.com/cohere.docs.buildwithfern.com/74a17aec71d28f042a7fb0e39b71afb8bb9fa752f7d945b10eb4ab630d465c13/assets/images/ebb82f9-Screenshot_2024-07-10_at_9.27.11_AM.png" />
 
 Our goal, however, is to enable you to build your own LLM-powered applications. The [Chat endpoint](/docs/chat-api), for example, can be used to build a conversational agent powered by the Command family of models.
 
-<img src="file:621a7c93-06e2-449e-916d-9868ae27ce97" alt="A diagram of a conversational agent." />
+<img src="https://files.buildwithfern.com/cohere.docs.buildwithfern.com/a915e585102ad000c92f3af72aab2ef3bbef7a3585fdaa549d430be1fec9bd8a/assets/images/f4a351b-Visual_3.png" alt="A diagram of a conversational agent." />
 
 ### Retrieval-Augmented Generation (RAG)
 
@@ -247,11 +241,11 @@ Our goal, however, is to enable you to build your own LLM-powered applications. 
 
 Chat is being used with grounding enabled in the screenshot below, and you can see how accurate and information-dense its reply is.
 
-<img src="file:ac19c89b-154c-4928-9de0-e44da04b1ecc" />
+<img src="https://files.buildwithfern.com/cohere.docs.buildwithfern.com/b61b529b0662974f9327722bf1f3c81695080b9d2671cd71f00d7cfd761564ee/assets/images/04315e6-Screenshot_2024-07-10_at_9.29.25_AM.png" />
 
 What’s more, advanced RAG capabilities allow you to see what underlying query the model generates when completing its tasks, and its output includes [citations](/docs/documents-and-citations) pointing you to where it found the information it uses. Both the query and the citations can be leveraged alongside the Cohere Embed and Rerank models to build a remarkably powerful RAG system, such as the one found in [this guide](https://cohere.com/llmu/rag-chatbot).
 
-<img src="file:3f6eb714-798e-4ec5-93c8-a2c49b911cc8" />
+<img src="https://files.buildwithfern.com/cohere.docs.buildwithfern.com/ef41d2b072c796fef0c97b05678c90fec09ab01b41959bb430b01d1d4ac59e28/assets/images/545e35e-Visual_5.png" />
 
 [Click here](/docs/serving-platform) to learn more about the Cohere serving platform.
 
@@ -259,7 +253,7 @@ What’s more, advanced RAG capabilities allow you to see what underlying query 
 
 Embeddings enable you to search based on what a phrase *means* rather than simply what keywords it *contains*, leading to search systems that incorporate context and user intent better than anything that has come before.
 
-<img src="file:0e262f70-4007-4cc2-9e65-324374fc4e68" alt="How a query returns results." />
+<img src="https://files.buildwithfern.com/cohere.docs.buildwithfern.com/8c4e96aa854d7b81c5244290231d3fd3d6bec336b4e8bc1f885eaf69cf7c6fff/assets/images/04fe094-Visual_6.png" alt="How a query returns results." />
 
 Learn more about semantic search [here](https://cohere.com/llmu/what-is-semantic-search).
 
@@ -267,7 +261,7 @@ Learn more about semantic search [here](https://cohere.com/llmu/what-is-semantic
 
 To [create a fine-tuned model](/docs/fine-tuning), simply upload a dataset and hold on while we train a custom model and then deploy it for you. Fine-tuning can be done with [generative models](/docs/generate-fine-tuning), [multi-label classification models](/docs/classify-fine-tuning), [rerank models](/docs/rerank-fine-tuning), and [chat models](/docs/chat-fine-tuning).
 
-<img src="file:456ce1a0-9ecb-4d1f-af6a-713d71fc77c5" alt="A diagram of fine-tuning." />
+<img src="https://files.buildwithfern.com/cohere.docs.buildwithfern.com/b836de84b5e73e63d4efd48ffec4e05c61f8f24d507252389f4418e7ca6efbe9/assets/images/980660f-Visual_7.png" alt="A diagram of fine-tuning." />
 
 ## Accessing Cohere Models
 
@@ -277,7 +271,7 @@ Depending on your privacy/security requirements there are a number of ways to ac
 * Cloud AI platforms: this option offers a balance of ease-of-use and security. you can access Cohere on various cloud AI platforms such as [Oracle's GenAI Service](https://www.oracle.com/uk/artificial-intelligence/generative-ai/large-language-models/), AWS' [Bedrock](https://aws.amazon.com/bedrock/cohere-command-embed/) and [Sagemaker](https://aws.amazon.com/blogs/machine-learning/cohere-brings-language-ai-to-amazon-sagemaker/) platforms, [Google Cloud](https://console.cloud.google.com/marketplace/product/cohere-id-public/cohere-public?ref=txt.cohere.com), and [Azure's AML service](https://cohere.com/blog/coheres-enterprise-ai-models-coming-soon-to-microsoft-azure-ai-as-a-managed-service/).
 * Private cloud deploy deployments: Cohere's models can be deployed privately in most virtual private cloud (VPC) environments, offering enhanced security and highest degree of customization. Please [contact sales](emailto:team@cohere.com) for information.
 
-<img src="file:7b04431e-79f7-4dfe-8c72-fbdfa8dc2aa2" alt="The major cloud providers." />
+<img src="https://files.buildwithfern.com/cohere.docs.buildwithfern.com/afaf27e6ddf781530a6a04573fcb60d943cab99e66c132aed4e5c563e7c24253/assets/images/2ce36b1-Visual_8.png" alt="The major cloud providers." />
 
 ### On-Premise and Air Gapped Solutions
 
@@ -1333,13 +1327,7 @@ This quickstart guide shows you how to utilize tool use with the Chat endpoint.
       )
 
       if response.message.tool_calls:
-          messages.append(
-              {
-                  "role": "assistant",
-                  "tool_calls": response.message.tool_calls,
-                  "tool_plan": response.message.tool_plan,
-              }
-          )
+          messages.append(response.message)
           print(response.message.tool_calls)
       ```
     </Tab>
@@ -1917,7 +1905,7 @@ This quickstart guide shows you how to perform reranking with the Rerank endpoin
 
       # Rerank the documents
       results = co.rerank(
-          model="rerank-v3.5", query=query, documents=documents, top_n=2
+          model="rerank-v4.0-pro", query=query, documents=documents, top_n=2
       )
 
       for result in results.results:
@@ -1932,7 +1920,7 @@ This quickstart guide shows you how to perform reranking with the Rerank endpoin
 
       # Rerank the documents
       results = co.rerank(
-          model="rerank-v3.5", query=query, documents=documents, top_n=2
+          model="rerank-v4.0-pro", query=query, documents=documents, top_n=2
       )
 
       for result in results.results:
@@ -2024,7 +2012,7 @@ In the next few sections, we'll walk through how to interact with both supported
 
 The [Chat endpoint](https://docs.cohere.com/reference/chat) provides a response (i.e. language or code) to a prompt. You can use the Chat Playground to generate text or code, answer a question, or create content. It looks like this:
 
-<img src="file:fa4f81fc-d334-461b-9fec-6bb3a58a84e5" />
+<img src="https://files.buildwithfern.com/cohere.docs.buildwithfern.com/3477ecde64418fff9af355184c5556a3ecb5eb705dfefd98e930be4f82ef9bf4/assets/images/chat-pg-basic.png" />
 
 Your message goes in the `Message...` box at the bottom, and you can pass a message by hitting `Enter` or by clicking the `Send` button.
 
@@ -2032,7 +2020,7 @@ You can customize the model's behavior with the `System message`, which is a pro
 
 To customize further *within* the Playground, you can use the panel on the right:
 
-<img src="file:10f95f43-f724-4670-84c7-f87aebc2adb8" />
+<img src="https://files.buildwithfern.com/cohere.docs.buildwithfern.com/a0c5265b187ca5bbf90430edb36d0f1164a231c1265dfcf79bb42bf2f36592fa/assets/images/chat-pg-panel.png" />
 
 Here's what's available:
 
@@ -2046,13 +2034,13 @@ Here's what's available:
 
 The [Embed](https://docs.cohere.com/reference/embed) model enables users to create numerical representations for strings, which comes in handy for semantic search, topic modeling, classification tasks, and many other workflows. You can use the Embed Playground to test this functionality, and it looks like this:
 
-<img src="file:a37d2223-5813-4115-8f3a-e511267b93fb" />
+<img src="https://files.buildwithfern.com/cohere.docs.buildwithfern.com/9a1174e20c052355404e1b27ff60896735ee5f650b9df2f5d2b55626773551f1/assets/images/embed-pg-basic.png" />
 
 To create embeddings through the Playground, you can either use `Add input` to feed the model your own strings, or you can use `Upload a file`. If you select `Run`, you'll see the two-dimensional visualization of the strings in the `OUTPUT` box.
 
 As with Chat, the Playground's Embed model interface offers a side panel where you can further customize the model:
 
-<img src="file:bdde7b1a-887e-40b8-ae5d-82868133c885" />
+<img src="https://files.buildwithfern.com/cohere.docs.buildwithfern.com/b86f104fa869fda19298b48e07ac845ca60db4dfa422a927216eb65050006b07/assets/images/embed-pg-panel.png" />
 
 Here's what's available:
 
@@ -2573,11 +2561,13 @@ In this table, we provide some important context for using Cohere Embed models o
 
 The Rerank model can improve created models by re-organizing their results based on certain parameters. This can be used to improve search algorithms.
 
-| Model Name                 | Description                                                                                                                                                                           | Modalities | Context Length | Endpoints                   |
-| -------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------- | -------------- | --------------------------- |
-| `rerank-v3.5`              | A model that allows for re-ranking English Language documents and semi-structured data (JSON). This model has a context length of 4096 tokens.                                        | Text       | 4k             | [Rerank](/reference/rerank) |
-| `rerank-english-v3.0`      | A model that allows for re-ranking English Language documents and semi-structured data (JSON). This model has a context length of 4096 tokens.                                        | Text       | 4k             | [Rerank](/reference/rerank) |
-| `rerank-multilingual-v3.0` | A model for documents and semi-structure data (JSON) that are not in English. Supports the same languages as embed-multilingual-v3.0. This model has a context length of 4096 tokens. | Text       | 4k             | [Rerank](/reference/rerank) |
+| Model Name                 | Description                                                                                                                                                                                                                                                        | Modalities | Context Length | Endpoints                   |
+| -------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------- | -------------- | --------------------------- |
+| `rerank-v4.0-pro`          | A multilingual model that allows for re-ranking English and non-english documents and semi-structured data (JSON). This model is better suited for state-of-the-art quality and complex use-cases than its `fast` variant.                                         | Text       | 32k            | [Rerank](/reference/rerank) |
+| `rerank-v4.0-fast`         | A light version of `rerank-v4.0-pro`, this is a multilingual model that allows for re-ranking English and non-english documents and semi-structured data (JSON). This model is better suited for low latency and high throughput use-cases than its `pro` variant. | Text       | 32k            | [Rerank](/reference/rerank) |
+| `rerank-v3.5`              | A model that allows for re-ranking English Language documents and semi-structured data (JSON). This model has a context length of 4096 tokens.                                                                                                                     | Text       | 4k             | [Rerank](/reference/rerank) |
+| `rerank-english-v3.0`      | A model that allows for re-ranking English Language documents and semi-structured data (JSON). This model has a context length of 4096 tokens.                                                                                                                     | Text       | 4k             | [Rerank](/reference/rerank) |
+| `rerank-multilingual-v3.0` | A model for documents and semi-structure data (JSON) that are not in English. Supports the same languages as `embed-multilingual-v3.0`. This model has a context length of 4096 tokens.                                                                            | Text       | 4k             | [Rerank](/reference/rerank) |
 
 ### Using Rerank Models on Different Platforms
 
@@ -2585,6 +2575,8 @@ In this table, we provide some important context for using Cohere Rerank models 
 
 | Model Name                 | Amazon Bedrock Model ID | Amazon SageMaker      | Azure AI Foundry                | Oracle OCI Generative AI Service |
 | :------------------------- | :---------------------- | :-------------------- | :------------------------------ | :------------------------------- |
+| `rerank-v4.0-pro`          | N/A                     | Unique per deployment | `cohere-rerank-v4-pro`          | N/A                              |
+| `rerank-v4.0-fast`         | N/A                     | Unique per deployment | `cohere-rerank-v4-fast`         | N/A                              |
 | `rerank-v3.5`              | `cohere.rerank-v3-5:0`  | Unique per deployment | `Cohere-rerank-v3.5`            | `cohere.rerank.3-5`              |
 | `rerank-english-v3.0`      | N/A                     | Unique per deployment | `Cohere-rerank-v3-english`      | N/A                              |
 | `rerank-multilingual-v3.0` | N/A                     | Unique per deployment | `Cohere-rerank-v3-multilingual` | N/A                              |
@@ -2599,7 +2591,7 @@ In this table, we provide some important context for using Cohere Rerank models 
 
 [Aya](https://cohere.com/research/aya) is a family of multilingual large language models designed to expand the number of languages covered by generative AI for purposes of research and to better-serve minority linguistic communities.
 
-Its 8-billion and 32-billion parameter “Expanse” offerings are optimized to perform well in these 23 languages: Arabic, Chinese (simplified & traditional), Czech, Dutch, English, French, German, Greek, Hebrew, Hebrew, Hindi, Indonesian, Italian, Japanese, Korean, Persian, Polish, Portuguese, Romanian, Russian, Spanish, Turkish, Ukrainian, and Vietnamese.
+Its 8-billion and 32-billion parameter "Expanse" offerings are optimized to perform well in these 23 languages: Arabic, Chinese (simplified & traditional), Czech, Dutch, English, French, German, Greek, Hebrew, Hebrew, Hindi, Indonesian, Italian, Japanese, Korean, Persian, Polish, Portuguese, Romanian, Russian, Spanish, Turkish, Ukrainian, and Vietnamese.
 
 Its 8-billion and 32-billion parameter "Vision" models are state-of-the-art multimodal models excelling at a variety of critical benchmarks for language, text, and image capabilities.
 
@@ -2694,12 +2686,13 @@ By default, the model is interactive and optimized for conversation, meaning it 
     Endpoint.ChatV2,
     Endpoint.ChatCompletions,
   ],
+  usageMessage: <p>Command A Reasoning can be used in production through Cohere's <a href="https://docs.cohere.com/docs/model-vault" target="_blank" rel="noopener noreferrer">Model Vault</a>.</p>
 }}
 />
 
 ## Description
 
-Command A Reasoning is Cohere's first reasoning model to date, excelling at real world enterprise tasks including tool use, retrieval augmented generation (RAG), agents, and multilingual use cases. At 111B parameters, Command A has a context length of 256K, and can run on one or two GPUs (A100s / H100s).
+Command A Reasoning is Cohere's first reasoning model to date, excelling at real world enterprise tasks including tool use, retrieval augmented generation (RAG), agents, and multilingual use cases. At 111B parameters, Command A has a context length of 256K. Command-a-Reasoning (CAR) is optimized to run on 4x H100 GPUs for production workloads. For non-production tasks such as tryouts and evaluations, it can also run on 4x A100 GPUs.
 
 ## What Can Command A Reasoning Be Used For?
 
@@ -2843,7 +2836,6 @@ For more detailed breakdowns of these and other applications, check out [our coo
   name: 'Command R7B',
   id: 'command-r7b-12-2024',
   capabilities: [
-    Capability.Reasoning,
     Capability.Multilingual,
     Capability.ToolUse,
     Capability.Citation,
@@ -2890,7 +2882,6 @@ Command R7B is excellent for:
   name: 'Command R+',
   id: 'command-r-plus-08-2024',
   capabilities: [
-    Capability.Reasoning,
     Capability.SafetyModes,
     Capability.Citations,
     Capability.ToolUse,
@@ -3001,7 +2992,6 @@ Congrats on reaching the end of this page! Get an extra \$1 API credit by enteri
   name: 'Command R',
   id: 'command-r-08-2024',
   capabilities: [
-    Capability.Reasoning,
     Capability.SafetyModes,
     Capability.Citations,
     Capability.ToolUse,
@@ -3238,11 +3228,13 @@ You can find the context length for various Cohere embeddings models in the tabl
 
 Rerank models sort text inputs by semantic relevance to a specified query. They are often used to sort search results  returned from an existing search solution. Learn more about using Rerank in the [best practices guide](/docs/reranking-best-practices).
 
-| Latest Model               | Description                                                                                                                                                                                                                      | Modality | Endpoints                   |
-| -------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | --------------------------- |
-| `rerank-v3.5`              | A model for documents and semi-structured data (JSON). State-of-the-art performance in English and non-English languages; supports the same languages as embed-multilingual-v3.0. This model has a context length of 4096 tokens | Text     | [Rerank](/reference/rerank) |
-| `rerank-english-v3.0`      | A model that allows for re-ranking English Language documents and semi-structured data (JSON). This model has a context length of 4096 tokens.                                                                                   | Text     | [Rerank](/reference/rerank) |
-| `rerank-multilingual-v3.0` | A model for documents and semi-structure data (JSON) that are not in English. Supports the same languages as `embed-multilingual-v3.0`. This model has a context length of 4096 tokens.                                          | Text     | [Rerank](/reference/rerank) |
+| Latest Model               | Description                                                                                                                                                                                                                                                        | Modality | Endpoints                   |
+| -------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | -------- | --------------------------- |
+| `rerank-v4.0-pro`          | A multilingual model that allows for re-ranking English and non-english documents and semi-structured data (JSON). This is better suited for state-of-the-art quality and complex use-cases than its `fast` variant.                                               | Text     | [Rerank](/reference/rerank) |
+| `rerank-v4.0-fast`         | A light version of `rerank-v4.0-pro`, this is a multilingual model that allows for re-ranking English and non-english documents and semi-structured data (JSON). This model is better suited for low latency and high throughput use-cases than its `pro` variant. | Text     | [Rerank](/reference/rerank) |
+| `rerank-v3.5`              | A model for documents and semi-structured data (JSON). Performs well in English and non-English languages; supports the same languages as embed-multilingual-v3.0. This model has a context length of 4096 tokens                                                  | Text     | [Rerank](/reference/rerank) |
+| `rerank-english-v3.0`      | A model that allows for re-ranking English Language documents and semi-structured data (JSON). This model has a context length of 4096 tokens.                                                                                                                     | Text     | [Rerank](/reference/rerank) |
+| `rerank-multilingual-v3.0` | A model for documents and semi-structure data (JSON) that are not in English. Supports the same languages as `embed-multilingual-v3.0`. This model has a context length of 4096 tokens.                                                                            | Text     | [Rerank](/reference/rerank) |
 
 <Note>
   For each document included in a request, Rerank combines the tokens from the query with the tokens from the document and the combined total counts toward the context limit for a single document. If the combined number of tokens from the query and a given document exceeds the model’s context length for a single document, the document will automatically get chunked and processed in multiple inferences. See our [best practice guide](/docs/reranking-best-practices) for more info about formatting documents for the Rerank endpoint.
@@ -3332,7 +3324,7 @@ def generate_text(image_path, message):
 ```
 
 Here's an image we might feed to Aya Vision:
-![A guitar-focused room](file:113824ed-8e45-40b0-a756-6ad3f6e940f5)
+![A guitar-focused room](https://files.buildwithfern.com/cohere.docs.buildwithfern.com/f102d8166d0793f86e98a5c55473d49d88db9e1732ca5cc1f2729e6d9f8dab44/assets/images/guitar_room.png)
 
 And here’s an example output we might get when we run `generate_text(image_path, "What items are in the wall of this room?")`
 
@@ -3460,7 +3452,7 @@ In addition to the above, you also have the option of talking to Aya Expanse thr
 
 Use [this link](https://wa.me/14313028498) to open a WhatsApp chatbox with Aya Expanse. If you don't have WhatsApp downloaded on your machine you might need to do that, or, if you have it on your phone, you can follow the on-screen instructions to link your phone and WhatsApp Web. By the end, you should see a text window that looks something like this, which you can use to chat with the model:
 
-<img src="file:a1dd5abb-37c4-425f-9a43-e9b269143974" />
+<img src="https://files.buildwithfern.com/cohere.docs.buildwithfern.com/a4cc52077b7ce463e6873f10d6a23c12698135dfb0bc3e9d20f3ceb11433d52a/assets/images/aya_expanse_whatsapp.png" />
 
 #### Will I Get Charged for Talking to Aya?
 
@@ -3488,11 +3480,11 @@ Yes! To use Aya Vision with WhatsApp, follow exactly the same procedure outlined
 
 Here's what that looks like:
 
-![Uploading an Aya Vision image to WhatsApp](file:4e896ea1-e5c1-403e-9a62-c2389217bca2)
+![Uploading an Aya Vision image to WhatsApp](https://files.buildwithfern.com/cohere.docs.buildwithfern.com/95e0f5cf23e9e3e050d3b45f33ad275deb19af0fc1fbbc3505091e104d239f9d/assets/images/model_performances-query.png)
 
 And here's a sample output:
 
-![Aya Vision output](file:fb77bfbf-a37f-4240-9d59-7ac0d671ed30)
+![Aya Vision output](https://files.buildwithfern.com/cohere.docs.buildwithfern.com/13a953a0eb3516c4869b2c6c651d034070daa067a8dec4bef8dbfbabbb6ebb98/assets/images/aya-vision-output.png)
 
 We have a dedicated document for Aya Vision, which you can find [here](/docs/aya-multimodal).
 
@@ -3945,7 +3937,7 @@ For more detailed breakdowns of these and other applications, check out [our coo
 
 These models are designed to work through an interface and API structure that looks almost exactly like all of our other Command models, making it easy to get started with our image-processing functionality. Take this image, for example, which contains a graph of earnings for various waste management companies:
 
-![](file:3d925a7d-286c-484e-a242-9e3d0daa7de8)
+![](https://files.buildwithfern.com/cohere.docs.buildwithfern.com/0bb8eb8ecde575ef1a589573446b3ee4e2e57841bb2123772ff405734f138786/assets/images/waste-management-request.png)
 
 We can have Command A Vision analyze this image for us with the following:
 
@@ -3996,7 +3988,7 @@ We can have Command A Vision analyze this image for us with the following:
 
 And you should get something like this:
 
-![](file:a0906f33-323c-402a-a2a9-e4c5320a055e)
+![](https://files.buildwithfern.com/cohere.docs.buildwithfern.com/5843de84a66f8ac6c9caa700a9660af994b65aee2af0319a61eec77a95d3d52f/assets/images/waste-management-response.png)
 
 The rest of this document fleshes out Cohere's models work with image inputs, including information on limitations, token calculations, and more.
 
@@ -5491,7 +5483,7 @@ A lower temperature means less randomness; a temperature of `0` will always yiel
 
 High temperature means more randomness and less grounding. This can help the model give more creative outputs, but if you're using [retrieval augmented generation](/v2/docs/retrieval-augmented-generation-rag), it can also mean that it doesn't correctly use the context you provide. If the model starts going off topic, giving nonsensical outputs, or failing to ground properly, this is a sign that the temperature is too high.
 
-<img src="file:1e0ac44d-eabe-4148-a573-221138e6d533" alt="setting" />
+<img src="https://files.buildwithfern.com/cohere.docs.buildwithfern.com/03d44fe9fc401d8ee1cab20835b6c672c1f2a461d289c5299ed6748c6867ad97/assets/images/775d949-Temperature_Visual_1.png" alt="setting" />
 
 Temperature can be tuned for different problems, but most people will find that a temperature of `.3` or `.5` is a good starting point.
 
@@ -5511,13 +5503,13 @@ The method you use to pick output tokens is an important part of successfully ge
 Let’s look at the example where the input to the model is the prompt `The name of that country is the`:
 
 <Frame caption="Example output of a generation language model.">
-  <img src="file:7ba7b80c-65ed-487a-9294-fdefdfadb947" alt="model." />
+  <img src="https://files.buildwithfern.com/cohere.docs.buildwithfern.com/bd5529cc7b8b1a0f06639c038777ef614a867e4a5ef912422f79f471bd055f97/assets/images/d3311c2-Top-KTop-P_Visual_1.png" alt="model." />
 </Frame>
 
 The output token in this case, `United`, was picked in the last step of processing -- after the language model has processed the input and calculated a likelihood score for every token in its vocabulary. This score indicates the likelihood that it will be the next token in the sentence (based on all the text the model was trained on).
 
 <Frame caption="The model calculates a likelihood for each token in its vocabulary. The decoding strategy then picks one as the output.">
-  <img src="file:fa53facb-941d-464d-ab65-cf357393557b" alt="output." />
+  <img src="https://files.buildwithfern.com/cohere.docs.buildwithfern.com/2cbfe2f91371ab979e4822c67937aa4cd4c89d6fe1ca3b77e412c27047d9725d/assets/images/61259d5-Top-KTop-P_Visual_2.png" alt="output." />
 </Frame>
 
 ### 1. Pick the top token: greedy decoding
@@ -5525,7 +5517,7 @@ The output token in this case, `United`, was picked in the last step of processi
 You can see in this example that we picked the token with the highest likelihood, `United`.
 
 <Frame caption="Always picking the highest scoring token is called 'Greedy Decoding'. It's useful but has some drawbacks.">
-  <img src="file:831a684f-3537-45fd-9b3c-58679fc73bb7" alt="drawbacks." />
+  <img src="https://files.buildwithfern.com/cohere.docs.buildwithfern.com/6d74153ddeeb80b424735206bc3eecceb70a2de2556d5ec3e35fdbc40b4a8d23/assets/images/2a0cc2f-Top-KTop-P_Visual_3.png" alt="drawbacks." />
 </Frame>
 
 Greedy decoding is a reasonable strategy, but has some drawbacks; outputs can get stuck in repetitive loops, for example. Think of the suggestions in your smartphone's auto-suggest. When you continually pick the highest suggested word, it may devolve into repeated sentences.
@@ -5535,13 +5527,13 @@ Greedy decoding is a reasonable strategy, but has some drawbacks; outputs can ge
 Another commonly-used strategy is to sample from a shortlist of the top three tokens. This approach allows the other high-scoring tokens a chance of being picked. The randomness introduced by this sampling helps the quality of generation in a lot of scenarios.
 
 <Frame caption="Adding some randomness helps make output text more natural. In top-3 decoding, we first shortlist three tokens then sample one of them by considering their likelihood scores.">
-  <img src="file:8789e622-0b24-4d51-81d2-949e6f909e1b" alt="scores." />
+  <img src="https://files.buildwithfern.com/cohere.docs.buildwithfern.com/87ca0e8fc1a0b75f08de9b5fb7f2805af01a59a3eb624d26343057fc1811f297/assets/images/8beb940-Top-KTop-P_Visual_4.png" alt="scores." />
 </Frame>
 
 More broadly, choosing the top three tokens means setting the [top-k parameter](https://docs.cohere.com/reference/chat#request.body.k) to `3` (it defaults to `0`) with `k=3`. Changing the top-k parameter sets the size of the shortlist the model samples from as it outputs each token. Setting top-k to `1` gives us greedy decoding.
 
 <Frame caption="Adjusting to the top-k setting.">
-  <img src="file:fb20fc32-c709-4f20-98a3-fa4a25ecfce4" alt="setting." class="light-bg" />
+  <img src="https://files.buildwithfern.com/cohere.docs.buildwithfern.com/f13afed336e51568f89ab6f9a132e9e1954fed813015c43bf917aa7977c54884/assets/images/1810654-Top-KTop-P_Visual_5.png" alt="setting." class="light-bg" />
 </Frame>
 
 Note that when `k` is set to `0`, the model disables k sampling and uses p instead.
@@ -5551,7 +5543,7 @@ Note that when `k` is set to `0`, the model disables k sampling and uses p inste
 The difficulty of selecting the best top-k value opens the door for a popular decoding strategy that dynamically sets the size of the shortlist of tokens. This method, called *Nucleus Sampling*, creates the shortlist by selecting the top tokens whose sum of likelihoods does not exceed a certain value. A toy example with a [top-p value](https://docs.cohere.com/reference/chat#request.body.p) of `0.15` (it defaults to `0.75`) would look like this:
 
 <Frame caption="In top-p, the size of the shortlist is dynamically selected based on the sum of likelihood scores reaching some threshold.">
-  <img src="file:e5027e85-fc3f-44ce-812e-db52d5f9eff7" alt="threshold." class="light-bg" />
+  <img src="https://files.buildwithfern.com/cohere.docs.buildwithfern.com/09507811be09cfe66e1a9e5abf1734806e1a46eb06a54ce28c2bb9c4e82c7ec1/assets/images/fb9c5f9-Top-KTop-P_Visual_6.png" alt="threshold." class="light-bg" />
 </Frame>
 
 Top-p is usually set to a high value (`p=0.75`, it's maximum value is `0.99`) with the purpose of limiting the long tail of low-probability tokens that may be sampled. We can use both top-k and top-p together. If both `k` and `p` are enabled, `p` acts after `k`. Here's a code snippet showing how this works:
@@ -5723,7 +5715,7 @@ Citation(start=61,
 
 The response also includes **inline citations**  that reference the first two documents, since they hold the answers.
 
-![](file:5bb7cb9d-013d-4c56-b3a1-02acbc4a4d16)
+![](https://files.buildwithfern.com/cohere.docs.buildwithfern.com/7406b5490417118076e1a8683ad3627f8ab2917046e6354bf8bc0c60421e27d9/assets/images/0062bc8-image.png)
 
 <Note>
   Read more about using and customizing [RAG citations here](https://docs.cohere.com/v2/docs/rag-citations)
@@ -6383,7 +6375,7 @@ Here we select `top_n` to be 2, which will be the documents we will pass next fo
   ```python PYTHON
   # Rerank the documents
   results = co.rerank(
-      model="rerank-v3.5",
+      model="rerank-v4.0-pro",
       query=search_queries[0],
       documents=[doc["data"]["text"] for doc in retrieved_documents],
       top_n=2,
@@ -6407,7 +6399,7 @@ Here we select `top_n` to be 2, which will be the documents we will pass next fo
     --header 'content-type: application/json' \
     --header "Authorization: bearer $CO_API_KEY" \
     --data '{
-    "model": "rerank-v3.5",
+    "model": "rerank-v4.0-pro",
     "query": "how to get to know your teammates",
     "top_n": 2,
     "documents": [
@@ -7273,7 +7265,7 @@ This opens up a richer set of behaviors by leveraging tools to access external d
 
 The Chat endpoint comes with built-in tool use capabilities such as function calling, multi-step reasoning, and citation generation.
 
-<img src="file:c1560b0f-e2ea-4529-a2bc-5aa39aba5e76" alt="Tool use overview" />
+<img src="https://files.buildwithfern.com/cohere.docs.buildwithfern.com/63fff7c1fb0c96359f0305b141d91359852c539c4f55fe0c5546185b23589697/assets/images/tool-use-overview.jpg" alt="Tool use overview" />
 
 ## Setup
 
@@ -7311,7 +7303,7 @@ The pre-requisite, or Step 0, before we can run a tool use workflow, is to defin
 * Creating the tool
 * Defining the tool schema
 
-<img src="file:a87e6258-9834-40f8-b3e0-f32bc349589d" alt="Tool definition" />
+<img src="https://files.buildwithfern.com/cohere.docs.buildwithfern.com/16d42540f72804ba50ae12a3fe6aa38199e5eef3298b77c0bc4bd1eb6f9a3f6e/assets/images/tool-setup.jpg" alt="Tool definition" />
 
 ### Creating the tool
 
@@ -7407,7 +7399,7 @@ At its most basic, these four components interact in a workflow through four ste
 * Step 3: **Get tool results**: The application executes the tools, and the results are sent to the LLM.
 * Step 4: **Generate response and citations**: The LLM generates the response and citations back to the user.
 
-<img src="file:9f898016-9327-4906-bfb7-2e3480ae248c" alt="Tool use workflow" />
+<img src="https://files.buildwithfern.com/cohere.docs.buildwithfern.com/b812dea735ecfc773b5f1ba8b1af2931d82cd525c8debc6e70ef9fa2e00f2b07/assets/images/tool-use-workflow.jpg" alt="Tool use workflow" />
 
 As an example, a weather search workflow might looks like the following:
 
@@ -7467,13 +7459,7 @@ We then append these to the `messages` list with the `role` set to `assistant`.
   )
 
   if response.message.tool_calls:
-      messages.append(
-          {
-              "role": "assistant",
-              "tool_plan": response.message.tool_plan,
-              "tool_calls": response.message.tool_calls,
-          }
-      )
+      messages.append(response.message)
       print(response.message.tool_plan, "\n")
       print(response.message.tool_calls)
   ```
@@ -7934,13 +7920,7 @@ In the example below, the user asks for the weather in Toronto and New York. Thi
   )
 
   if response.message.tool_calls:
-      messages.append(
-          {
-              "role": "assistant",
-              "tool_plan": response.message.tool_plan,
-              "tool_calls": response.message.tool_calls,
-          }
-      )
+      messages.append(response.message)
       print(response.message.tool_plan, "\n")
       print(response.message.tool_calls)
   ```
@@ -8258,13 +8238,7 @@ while response.message.tool_calls:
         )
     print("=" * 50)
 
-    messages.append(
-        {
-            "role": "assistant",
-            "tool_plan": response.message.tool_plan,
-            "tool_calls": response.message.tool_calls,
-        }
-    )
+    messages.append(response.message)
 
     # Step 3: Get tool results
     print("TOOL RESULT:")
@@ -8509,13 +8483,7 @@ Then, in the second turn, when provided with a rather vague follow-up user messa
   )
 
   if response.message.tool_calls:
-      messages.append(
-          {
-              "role": "assistant",
-              "tool_plan": response.message.tool_plan,
-              "tool_calls": response.message.tool_calls,
-          }
-      )
+      messages.append(response.message)
       print(response.message.tool_plan, "\n")
       print(response.message.tool_calls)
   ```
@@ -9567,13 +9535,7 @@ Before streaming the response, first run through the tool calling and execution 
   )
 
   if response.message.tool_calls:
-      messages.append(
-          {
-              "role": "assistant",
-              "tool_plan": response.message.tool_plan,
-              "tool_calls": response.message.tool_calls,
-          }
-      )
+      messages.append(response.message)
       print(response.message.tool_plan, "\n")
       print(response.message.tool_calls)
 
@@ -9874,13 +9836,7 @@ Next, run the tool calling and execution steps.
   )
 
   if response.message.tool_calls:
-      messages.append(
-          {
-              "role": "assistant",
-              "tool_plan": response.message.tool_plan,
-              "tool_calls": response.message.tool_calls,
-          }
-      )
+      messages.append(response.message)
 
       for tc in response.message.tool_calls:
           tool_result = functions_map[tc.function.name](
@@ -11202,7 +11158,7 @@ print(response.text)
 
 > Embeddings transform text into numerical data, enabling language-agnostic similarity searches and efficient storage with compression.
 
-<img src="file:814e8326-4ebf-4266-802e-8ef82c9f6048" alt="embeddings." />
+<img src="https://files.buildwithfern.com/cohere.docs.buildwithfern.com/8b7edf88cdfe83a756d674bbb4bd35933670f0c7b6f7ca9e8c93d99af74877cf/assets/images/multi-modal-guide-header.png" alt="embeddings." />
 
 Embeddings are a way to represent the meaning of texts, images, or information as a list of numbers. Using a simple comparison function, we can then calculate a similarity score for two embeddings to figure out whether two pieces of information are about similar things. Common use-cases for embeddings include semantic search, clustering, and classification.
 
@@ -11416,7 +11372,7 @@ res.embeddings.float
 
 Here's a code sample illustrating how `embed-v4.0` could be used to work with fused images and texts like the following:
 
-![Fused image and texts](file:c66e3e16-4aa2-4a05-9c0b-e0a7aaf16874)
+![Fused image and texts](https://files.buildwithfern.com/cohere.docs.buildwithfern.com/1a26de6644f37ee087eea67ee42637555498346ad54c00340dff98924bec3096/assets/images/embed-cat.png)
 
 ```python PYTHON
 import cohere
@@ -11979,7 +11935,7 @@ print(results["ids"][0][0])
 
 The top-ranked page is shown below:
 
-<img src="file:d2e28a71-208c-4a1f-8705-8567da886f8b" />
+<img src="https://files.buildwithfern.com/cohere.docs.buildwithfern.com/afce30be6c16fbd12e6f5c57e14b7c8f71c7b1ad80d89c417f2a552b449478e8/assets/images/multimodal-pdf-search-example-1.png" />
 
 <Note>
   For a more complete example of multimodal PDF search, see [the cookbook version](https://github.com/cohere-ai/cohere-developer-experience/blob/main/notebooks/guides/embed-v4-pdf-search/embed-v4-pdf-search.ipynb).
@@ -11990,7 +11946,7 @@ The top-ranked page is shown below:
 
 > Multimodal embeddings convert text and images into embeddings for search and classification (API v2).
 
-<img src="file:814e8326-4ebf-4266-802e-8ef82c9f6048" alt="embeddings." />
+<img src="https://files.buildwithfern.com/cohere.docs.buildwithfern.com/8b7edf88cdfe83a756d674bbb4bd35933670f0c7b6f7ca9e8c93d99af74877cf/assets/images/multi-modal-guide-header.png" alt="embeddings." />
 
 <Note title="This Guide Uses the Embed API.">
   You can find the API reference for the api [here](/reference/embed)
@@ -12130,7 +12086,7 @@ The Embed Jobs API was designed for users who want to leverage the power of retr
 
 The Embed Jobs API works in conjunction with the Embed API; in production use-cases, Embed Jobs is used to stage large periodic updates to your corpus and Embed handles real-time queries and smaller real-time updates.
 
-![](file:478019a7-4927-4007-ab71-c3ddbf04e8c7)
+![](https://files.buildwithfern.com/cohere.docs.buildwithfern.com/7aff80e3c7c51ad7ad772a179ab24902b381abb5af53f4cd10798c7d84292206/assets/images/0826a69-image.png)
 
 ### Constructing a Dataset for Embed Jobs
 
@@ -12355,7 +12311,7 @@ In the example below, we use the [Rerank API endpoint](/reference/rerank-1) to i
 
 **Request**
 
-In this example, the documents being passed in are a list of strings:
+In this example, the documents are being passed in as a list of strings:
 
 <CodeBlocks>
   ```python PYTHON
@@ -12373,7 +12329,7 @@ In this example, the documents being passed in are a list of strings:
   ]
 
   results = co.rerank(
-      model="rerank-v3.5", query=query, documents=docs, top_n=5
+      model="rerank-v4.0-pro", query=query, documents=docs, top_n=5
   )
   ```
 
@@ -12384,7 +12340,7 @@ In this example, the documents being passed in are a list of strings:
     --header 'content-type: application/json' \
     --header "Authorization: bearer $CO_API_KEY" \
     --data '{
-      "model": "rerank-v3.5",
+      "model": "rerank-v4.0-pro",
       "query": "What is the capital of the United States?",
       "documents": [
         "Carson City is the capital city of the American state of Nevada. At the 2010 United States Census, Carson City had a population of 55,274.",
@@ -12398,43 +12354,47 @@ In this example, the documents being passed in are a list of strings:
   ```
 </CodeBlocks>
 
-**Response**
+We'll get back a `V2RerankResponse` object that will look like this:
 
-```jsx
-{
-  "id": "97813271-fe74-465d-b9d5-577e77079253",
-  "results": [
-    {
-      "index": 3, // "Washington, D.C. (also known as simply Washington or D.C., and officially as the District of Columbia) ..."
-      "relevance_score": 0.9990564
-    },
-    {
-      "index": 4, // "Capital punishment has existed in the United States since before the United States was a country. As of 2017 ..."
-      "relevance_score": 0.7516481
-    },
-    {
-      "index": 1, // "The Commonwealth of the Northern Mariana Islands is a group of islands in the Pacific Ocean that are a political division ..."
-      "relevance_score": 0.08882029
-    },
-    {
-      "index": 0, // "Carson City is the capital city of the American state of Nevada. At the 2010 United States Census, Carson City had a ..."
-      "relevance_score": 0.058238626
-    },
-    {
-      "index": 2, // ""Charlotte Amalie is the capital and largest city of the United States Virgin Islands. It has about 20,000 people ..."
-      "relevance_score": 0.019946935
-    }
-  ],
-  "meta": {
-    "api_version": {
-      "version": "2"
-    },
-    "billed_units": {
-      "search_units": 1
-    }
-  }
-}
+```python
+V2RerankResponse(
+    id="2104ccd0-74b5-4951-9bb1-cc543b26720f",
+    results=[
+        V2RerankResponseResultsItem(
+            index=3, relevance_score=0.943264
+        ),
+        V2RerankResponseResultsItem(
+            index=2, relevance_score=0.62209207
+        ),
+        V2RerankResponseResultsItem(
+            index=1, relevance_score=0.6054258
+        ),
+        V2RerankResponseResultsItem(
+            index=0, relevance_score=0.59040135
+        ),
+        V2RerankResponseResultsItem(
+            index=4, relevance_score=0.4664567
+        ),
+    ],
+    meta=ApiMeta(
+        api_version=ApiMetaApiVersion(
+            version="2", is_deprecated=None, is_experimental=None
+        ),
+        billed_units=ApiMetaBilledUnits(
+            images=None,
+            input_tokens=None,
+            output_tokens=None,
+            search_units=1.0,
+            classifications=None,
+        ),
+        tokens=None,
+        cached_tokens=None,
+        warnings=None,
+    ),
+)
 ```
+
+Note that the `index` works as it does in Python, with `index=0` being the first document. Also, the `V2RerankResponse` object will be more compact, the example above was reformatted to make reading easier.
 
 ### Example with Structured Data:
 
@@ -12476,7 +12436,10 @@ If your documents contain structured data, for best performance we recommend for
   yaml_docs = [yaml.dump(doc, sort_keys=False) for doc in docs]
 
   results = co.rerank(
-      model="rerank-v3.5", query=query, documents=yaml_docs, top_n=5
+      model="rerank-v4.0-pro",
+      query=query,
+      documents=yaml_docs,
+      top_n=5,
   )
   ```
 
@@ -12487,7 +12450,7 @@ If your documents contain structured data, for best performance we recommend for
     --header 'content-type: application/json' \
     --header "Authorization: bearer $CO_API_KEY" \
     --data '{
-      "model": "rerank-v3.5",
+      "model": "rerank-v4.0-pro",
       "query": "What is the capital of the United States?",
       "documents": [
         "Title: Facts about Carson City\nContent: Carson City is the capital city of the American state of Nevada. At the 2010 United States Census, Carson City had a population of 55,274.\n",
@@ -12503,43 +12466,44 @@ If your documents contain structured data, for best performance we recommend for
 
 In the `documents` parameter, we are passing in a list YAML strings, representing the structured data.
 
-**Response**
+As before, we get back a `V2RerankResponse` object that will look like this:
 
-```jsx
-{
-	"id": "75a94aa7-6761-4a64-a2ae-4bc0a62bc601",
-	"results": [
-		{
-			"index": 3,
-			"relevance_score": 0.9987405
-		},
-		{
-			"index": 4,
-			"relevance_score": 0.5011778
-		},
-		{
-			"index": 2,
-			"relevance_score": 0.10070161
-		},
-		{
-			"index": 1,
-			"relevance_score": 0.03197956
-		},
-		{
-			"index": 0,
-			"relevance_score": 0.019456575
-		}
-	],
-	"meta": {
-		"api_version": {
-			"version": "2022-12-06"
-		},
-		"billed_units": {
-			"search_units": 1
-		}
-	}
-}
-
+```python
+V2RerankResponse(
+    id="df4d8720-8265-4868-a8f5-0bcee7a35bd0",
+    results=[
+        V2RerankResponseResultsItem(
+            index=3, relevance_score=0.9497813
+        ),
+        V2RerankResponseResultsItem(
+            index=2, relevance_score=0.69064254
+        ),
+        V2RerankResponseResultsItem(
+            index=0, relevance_score=0.57901955
+        ),
+        V2RerankResponseResultsItem(
+            index=1, relevance_score=0.5482865
+        ),
+        V2RerankResponseResultsItem(
+            index=4, relevance_score=0.49375027
+        ),
+    ],
+    meta=ApiMeta(
+        api_version=ApiMetaApiVersion(
+            version="2", is_deprecated=None, is_experimental=None
+        ),
+        billed_units=ApiMetaBilledUnits(
+            images=None,
+            input_tokens=None,
+            output_tokens=None,
+            search_units=1.0,
+            classifications=None,
+        ),
+        tokens=None,
+        cached_tokens=None,
+        warnings=None,
+    ),
+)
 ```
 
 ## Multilingual Reranking
@@ -12548,8 +12512,9 @@ Cohere's Rerank models have been trained for performance across 100+ languages.
 
 When choosing the model, please note the following language support:
 
-* **Rerank 3.0**: Separate English-only and multilingual models (`rerank-english-v3.0` and `rerank-multilingual-v3.0`)
+* **Rerank 4.0** (both 'fast' and 'pro'): A single multilingual model (`rerank-v4.0-pro` and `rerank-v4.0-fast`)
 * **Rerank 3.5**: A single multilingual model (`rerank-v3.5`)
+* **Rerank 3.0**: Separate English-only and multilingual models (`rerank-english-v3.0` and `rerank-multilingual-v3.0`)
 
 The following table provides the list of languages supported by the Rerank models. Please note that performance may vary across languages.
 
@@ -12670,42 +12635,60 @@ The following table provides the list of languages supported by the Rerank model
 
 > Tips for optimal endpoint performance, including constraints on the number of documents, tokens per document, and tokens per query.
 
+## Optimizing Performance
+
+In the following tables, you'll find recommendations for getting the best performance out of Rerank v4.0, v3.5, and v3.0.
+
+| Constraint                    | Minimum | Maximum                                                                           | Default Value |
+| ----------------------------- | ------- | --------------------------------------------------------------------------------- | :------------ |
+| Number of Documents           | 1       | 10,000                                                                            | N/A           |
+| Max Number of Chunks          | 1       | N/A                                                                               | 1             |
+| Number of Tokens per Document | 1       | N/A (see [below ](/docs/reranking-best-practices#document-chunking)for more info) | N/A           |
+| Number of Tokens per Query    | 1       | 2048                                                                              | N/A           |
+
 ## Document Chunking
 
-Under the hood, the Rerank API turns user input into text chunks. Every chunk will include the `query` and a portion of the document text. Chunk size depends on the model.
+Cohere's Rerank models follow a particular procedure to chunk documents, which will look something like this:
 
-For example, if
+* Take the context window;
+* Subtract the reserved tokens (the number of reserved tokens changes per model)
 
-* the selected model is `rerank-v3.5`, which has context length (aka max chunk size) of 4096 tokens
-* the query is 100 tokens
-* there is one document and it is 10,000 tokens long
-* document truncation is disabled by setting `max_tokens_per_doc` parameter to 10,000 tokens
+For `rerank-v4.0` (both 'pro' and 'fast'), the model breaks documents into 32,764-token chunks (this is the context length of 32,768 minus four special, reserved tokens.) For example, if your query is 100 tokens and your document is 100,000 tokens, your document will be broken into the following chunks:
 
-Then the document will be broken into the following three chunks:
+1. `relevance_score_1 = <padding_tokens, query[0,99], document[0,32663]>`
+2. `relevance_score_2 = <padding_tokens, query[0,99], document[32664,65327]>`
+3. `relevance_score_3 = <padding_tokens, query[0,99], document[65328,97990]>`
+4. `relevance_score_4 = <padding_tokens, query[0,99], document[97991,99999]>`
+5. `relevance_score = max(relevance_score_1, relevance_score_2, relevance_score_3, relevance_score_4)`
 
-```
-relevance_score_1 = <padding_tokens, query[0,99], document[0,3992]>
-relevance_score_2 = <padding_tokens, query[0,99], document[3993,7985]>
-relevance_score_3 = <padding_tokens, query[0,99], document[7986,9999]>
-```
+<Note>
+  A context length of 32,768 corresponds to about \~48-50 pages, so it is longer than most documents you'll upload. This means that the `rerank-v4.0` models will be looking at entire documents as it chooses its rankings.
+</Note>
 
-And the final relevance score for that document will be computed as the highest score among those chunks:
+For `rerank-v3.5` and `rerank-v3.0`, the process is the same except the models break documents into 4093 token chunks; if your query is 100 tokens and your document is 10,000 tokens, for example, it will be broken into the following chunks:
 
-```python
-relevance_score = max(
-    relevance_score_1, relevance_score_2, relevance_score_3
-)
-```
+1. `relevance_score_1 = <padding_tokens, query[0,99], document[0,3992]>`
+2. `relevance_score_2 = <padding_tokens, query[0,99], document[3993,7985]>`
+3. `relevance_score_3 = <padding_tokens, query[0,99], document[7986,9999]>`
+4. `relevance_score = max(relevance_score_1, relevance_score_2, relevance_score_3)`
 
 If you would like more control over how chunking is done, we recommend that you chunk your documents yourself.
 
+## Max Number of Documents
+
+When using rerank-v4.0-pro, rerank-v4.0-fast, rerank-v3.5 and rerank-v3.0 models, the endpoint will throw an error if the user attempts to pass more than 10,000 documents at a time. The maximum number of documents that can be passed to the endpoint is calculated with the following inequality: Number of documents \* max\_chunks\_per\_doc >10,000.
+
+If Number of documents \* max\_chunks\_per\_doc exceeds 10,000, the endpoint will return an error. By default, the max\_chunks\_per\_doc is set to 1 for rerank models.
+
 ## Queries
 
-Our `rerank-v3.5` and `rerank-v3.0` models are trained with a context length of 4096 tokens. The model takes both the *query* and the *document* into account when calculating against this limit, and the query can account for up to half of the full context length. If your query is larger than 2048 tokens, in other words, it will be truncated to the first 2048 tokens (leaving the other 2048 for the document(s)).
+Our `rerank-v4.0` models (both 'pro' and 'fast') are trained with a context length of 32,768 tokens. The model takes both the *query* and the *document* into account when calculating against this limit, and the query can account for up to half of the full context length. If your query is larger than 16,384 tokens, in other words, it will be truncated to the first 16,384 tokens (leaving the other 16,384 for the document(s)).
+
+Our `rerank-v3.5` and `rerank-v3.0` models, are trained with a context length of 4096 tokens, so the process is the same while the math is different. If your query is larger than 2048 token, it will be truncated to the first 2048 tokens (leaving the other 2048 for the document(s)).
 
 ## Structured Data Support
 
-Our Rerank models support reranking structured data formatted as a list of YAML strings. Note that since long document strings get truncated, the order of the keys is especially important. When constructing the YAML string from a dictionary, make sure to maintain the order. In Python that is done by setting `sort_keys=False` when using `yaml.dump`.
+Our `rerank-v4.0-pro`, `rerank-v4.0-fast`, `rerank-v3.5` and `rerank-v3.0` models support reranking structured data formatted as a list of YAML strings. Note that since long document strings get truncated, the order of the keys is especially important. When constructing the YAML string from a dictionary, make sure to maintain the order. In Python that is done by setting `sort_keys=False` when using `yaml.dump`.
 
 Example:
 
@@ -12731,17 +12714,11 @@ yaml_docs = [yaml.dump(doc, sort_keys=False) for doc in docs]
 
 ## Interpreting Results
 
-The most important output from the [Rerank API endpoint](/reference/rerank-1) is the absolute rank exposed in the response object. The score is query dependent, and could be higher or lower depending on the query and passages sent in. In the example below, what matters is that Ottawa is more relevant than Toronto, but the user should not assume that Ottawa is two times more relevant than Ontario.
+The most important output from the [Rerank API endpoint](/reference/rerank-1) is the absolute rank exposed in the response object. The score is query dependent, and could be higher or lower depending on the query and passages sent in.
 
-```
-[
-	RerankResult<text: Ottawa, index: 1, relevance_score: 0.9109375>,
-	RerankResult<text: Toronto, index: 2, relevance_score: 0.7128906>,
-	RerankResult<text: Ontario, index: 3, relevance_score: 0.04421997>
-]
-```
+Relevance scores are normalized to be in the range `[0, 1]`. Scores close to `1` indicate a high relevance to the query, and scores closer to `0` indicate low relevance. This is used for *ranking* purposes, but be careful about how you interepret the actual numbers--you can't assume that a document with a relevance score of `0.9109375` is *twice* as relevant as one with a relevance score of `0.04421997`.
 
-Relevance scores are normalized to be in the range `[0, 1]`. Scores close to `1` indicate a high relevance to the query, and scores closer to `0` indicate low relevance. To find a threshold on the scores to determine whether a document is relevant or not, we recommend going through the following process:
+To find a threshold on the scores to determine whether a document is relevant or not, we recommend going through the following process:
 
 * Select a set of 30-50 representative queries `Q=[q_0, … q_n]` from your domain.
 * For each query provide a document that is considered borderline relevant to the query for your specific use case, and create a list of (query, document) pairs: `sample_inputs=[(q_0, d_0), …, (q_n, d_n)]` .
@@ -12756,22 +12733,40 @@ The average of `sample_scores` can then be used as a reference when deciding a t
 
 Cohere offers two kinds of API keys: evaluation keys (free but limited in usage), and production keys (paid and much less limited in usage). You can create a trial or production key on [the API keys page](https://dashboard.cohere.com/api-keys). For more details on pricing please see our [pricing docs](https://docs.cohere.com/v2/docs/how-does-cohere-pricing-work).
 
-The table below shows the rate limits for each endpoint, expressed in requests per minute (20/min means 20 requests per minute).
+<Warning>
+  Prod keys work like trial keys for newer model variants such as Command A Reasoning. Please contact 
 
-| Endpoint                                   | Trial rate limit | Production rate limit |
-| ------------------------------------------ | ---------------- | --------------------- |
-| [Chat](/reference/chat)                    | 10/min           | 500/min               |
-| [Embed](/reference/embed)                  | 100/min          | 2,000/min             |
-| [Embed (Images)](/reference/embed)         | 5/min            | 400/min               |
-| [Rerank](/reference/rerank)                | 10/min           | 1,000/min             |
-| [Tokenize](/reference/tokenize)            | 100/min          | 2,000/min             |
-| [Classify](/reference/classify)            | 100/min          | 1000/min              |
-| [EmbedJob](/reference/embed-jobs)          | 5/min            | 50/min                |
-| [Summarize (legacy)](/reference/summarize) | 5/min            | 500/min               |
-| [Generate (legacy)](/reference/generate)   | 5/min            | 500/min               |
-| Default (anything not covered above)       | 500/min          | 500/min               |
+  [sales@cohere.com](mailto:sales@cohere.com)
 
-In addition, all endpoints are limited to 1,000 calls **per month** with a **trial** key.
+   if you intend to use those models in production.
+</Warning>
+
+<Note>
+  Trial keys (and prod keys on newer Chat model variants) are limited to 1,000 API calls a month.
+</Note>
+
+## Chat API (per model)
+
+| Model               | Trial rate limit | Production rate limit                               |
+| ------------------- | ---------------- | --------------------------------------------------- |
+| Command A Reasoning | 20 req / min     | Contact [sales@cohere.com](mailto:sales@cohere.com) |
+| Command A Translate | 20 req / min     | Contact [sales@cohere.com](mailto:sales@cohere.com) |
+| Command A Vision    | 20 req / min     | Contact [sales@cohere.com](mailto:sales@cohere.com) |
+| Command A           | 20 req / min     | 500 req / min                                       |
+| Command R+          | 20 req / min     | 500 req / min                                       |
+| Command R           | 20 req / min     | 500 req / min                                       |
+| Command R7B         | 20 req / min     | 500 req / min                                       |
+
+## Other API Endpoints
+
+| Endpoint                             | Trial rate limit   | Production rate limit |
+| ------------------------------------ | ------------------ | --------------------- |
+| [Embed](/reference/embed)            | 2,000 inputs / min | 2,000 inputs / min    |
+| [Embed (Images)](/reference/embed)   | 5 inputs / min     | 400 inputs / min      |
+| [Rerank](/reference/rerank)          | 10 req / min       | 1,000 req / min       |
+| [Tokenize](/reference/tokenize)      | 100 req / min      | 2,000 req / min       |
+| [EmbedJob](/reference/embed-jobs)    | 5 req / min        | 50 req / min          |
+| Default (anything not covered above) | 500 req / min      | 500 req / min         |
 
 If you have any questions or want to speak about getting a rate limit increase, reach out to [support@cohere.com](mailto:support@cohere.com).
 
@@ -12949,7 +12944,7 @@ Cohere supports integrations with a variety of powerful external platforms, whic
 
 > Learn how to create a semantic search pipeline with Elasticsearch and Cohere's generative AI capabilities.
 
-<img src="file:d183f322-347c-4eea-8965-8da1f2d5b232" width="200px" height="auto" class="light-bg" />
+<img src="https://files.buildwithfern.com/cohere.docs.buildwithfern.com/aa0a262c093f26386cd8e891d8a789e1e028d22220d792ff2942f879621c9dee/assets/images/17b17dc-elastic-search-logo.png" width="200px" height="auto" class="light-bg" />
 
 [Elasticsearch](https://www.elastic.co/search-labs/blog/elasticsearch-cohere-embeddings-support) has all the tools developers need to build next generation search experiences with generative AI, and it supports native integration with [Cohere](https://www.elastic.co/search-labs/blog/elasticsearch-cohere-embeddings-support) through their [inference API](https://www.elastic.co/guide/en/elasticsearch/reference/current/semantic-search-inference.html).
 
@@ -13349,7 +13344,7 @@ And there you have it! A quick and easy implementation of hybrid search and RAG 
 
 > Build semantic search and RAG systems using Cohere and MongoDB Atlas Vector Search.
 
-<img src="file:ed5a38ad-5c27-4be8-b317-aa00c71ce72f" width="200px" height="auto" class="light-bg" />
+<img src="https://files.buildwithfern.com/cohere.docs.buildwithfern.com/efabd5effbab706d3c0017470fe1fbc4f83cce9d27e574e7b516acfa9935c681/assets/images/f9726ea-mongo-db-logo.svg" width="200px" height="auto" class="light-bg" />
 
 MongoDB Atlas Vector Search is a fully managed vector search platform from MongoDB. It can be used with Cohere's Embed and Rerank models to easily build semantic search or retrieval-augmented generation (RAG) systems with your data from MongoDB.
 
@@ -13360,7 +13355,7 @@ MongoDB Atlas Vector Search is a fully managed vector search platform from Mongo
 
 > Learn how to integrate Cohere with Redis for similarity searches on text data with this step-by-step guide.
 
-<img src="file:1aceabb7-2dac-4e9b-8d1a-b3455b1ac7dd" width="200px" height="auto" class="light-bg" />
+<img src="https://files.buildwithfern.com/cohere.docs.buildwithfern.com/780758fb35db747ca29d6f68fe9080fbe997327b3c87faa7d354a35636268458/assets/images/5ae9bbd-redis-logo.png" width="200px" height="auto" class="light-bg" />
 
 [RedisVL](https://www.redisvl.com/) provides a powerful, dedicated Python client library for using Redis as a Vector Database. This walks through how to integrate [Cohere embeddings](/docs/embeddings) with Redis using a dataset of Wikipedia articles to set up a pipeline for semantic search. It will cover:
 
@@ -13530,7 +13525,7 @@ Index Fields:
 You can also visit: <a target="_blank" href="http://localhost:8001/redis-stack/browser" rel="nofollow noopener noreferrer">Localhost Redis GUI</a>. The Redis GUI will show you the index in realtime.
 
 <Frame caption="Redis GUI">
-  <img src="file:c2e18acf-8f7d-4196-8a2c-b7a26ad9b367" alt="GUI" />
+  <img src="https://files.buildwithfern.com/cohere.docs.buildwithfern.com/2d7674234a0772068a42c1998fcd41a8274bb6b7994699cca41feed5e835950c/assets/images/a346870-image.png" alt="GUI" />
 </Frame>
 
 ## Loading your Documents and Embedding them into Redis:
@@ -13690,7 +13685,7 @@ Another feature of Redis is the ability to initialize a query with a set of filt
 
 > Build custom LLM applications with Haystack, now integrated with Cohere for embedding, generation, chat, and retrieval.
 
-<img src="file:604be594-fcaa-4286-951c-f28a1e7ce558" width="200px" height="auto" class="light-bg" />
+<img src="https://files.buildwithfern.com/cohere.docs.buildwithfern.com/71d786e4b0826157c485452240cfb03fe6d9d47c896ffca557f4fde8acd73b21/assets/images/d82df2c-haystack-logo.png" width="200px" height="auto" class="light-bg" />
 
 [Haystack](https://github.com/deepset-ai/haystack) is an open source LLM framework in Python by [deepset](https://www.deepset.ai/) for building customizable, production-ready LLM applications. You can use Cohere's `/embed`, `/generate`, `/chat`, and `/rerank` models with Haystack.
 
@@ -13989,7 +13984,7 @@ print(result["retriever"]["documents"][0])
 
 > This page describes how to integrate Cohere with the Pinecone vector database.
 
-<img src="file:4c30c018-535f-4060-ba19-2e6551c0d170" width="200px" height="auto" class="light-bg" />
+<img src="https://files.buildwithfern.com/cohere.docs.buildwithfern.com/60dc8f849ba7696c824d66b7249dbecb5a3d6556277714339e88aead8c3fed03/assets/images/4a1ad91-pinecone-logo.svg" width="200px" height="auto" class="light-bg" />
 
 The [Pinecone](https://www.pinecone.io/) vector database makes it easy to build high-performance vector search applications. Use Cohere to generate language embeddings, then store them in Pinecone and use them for Semantic Search.
 
@@ -14000,7 +13995,7 @@ You can learn more by following this [step-by-step guide](https://docs.pinecone.
 
 > This page describes how to integrate Cohere with the Weaviate database.
 
-<img src="file:54eafab4-aa45-4470-aff7-a245b1f7aab3" width="200px" height="auto" class="light-bg" />
+<img src="https://files.buildwithfern.com/cohere.docs.buildwithfern.com/9edbf0b31bb02c014d41757668199da5943a593b011e299205df68904a9aaebc/assets/images/970c76b-weaviate-logo.svg" width="200px" height="auto" class="light-bg" />
 
 [Weaviate](https://weaviate.io/) is an open source vector search engine that stores both objects and vectors, allowing for combining vector search with structured filtering. Here, we'll create a Weaviate Cluster to index your data with Cohere Embed, and process it with Rerank and Command.
 
@@ -14549,7 +14544,7 @@ The flexibility of this integration allows you to adapt it to various use cases 
 
 > Unlock the power of search and analytics with OpenSearch, enhanced by ML connectors like Cohere and Amazon Bedrock.
 
-<img src="file:a5915846-6667-48fb-ba05-569bb3bd5a3d" width="200px" height="auto" class="light-bg" />
+<img src="https://files.buildwithfern.com/cohere.docs.buildwithfern.com/26d7b849747ad2102a0893732fc47950878daf50c67c06ca993738a0e935cc41/assets/images/d6bc303-open-search-logo.svg" width="200px" height="auto" class="light-bg" />
 
 [OpenSearch](https://opensearch.org/platform/search/vector-database.html) is an open-source, distributed search and analytics engine platform that allows users to search, analyze, and visualize large volumes of data in real time. When it comes to text search, OpenSearch is well-known for powering keyword-based (also called lexical) search methods. OpenSearch supports Vector Search and integrates with Cohere through [3rd-Party ML Connectors](https://opensearch.org/docs/latest/ml-commons-plugin/remote-models/connectors/) as well as Amazon Bedrock.
 
@@ -14558,7 +14553,7 @@ The flexibility of this integration allows you to adapt it to various use cases 
 
 > This page describes how to integrate Cohere with the Vespa database.
 
-<img src="file:2e7a310b-75bf-4b7d-a5c4-7b1ca2f42406" width="200px" height="auto" class="light-bg" />
+<img src="https://files.buildwithfern.com/cohere.docs.buildwithfern.com/4ca6605bc5d625928916f0b22085dfbec4b439c2a5108302829554526ab5dd42/assets/images/912a0a4-vespa-logo.svg" width="200px" height="auto" class="light-bg" />
 
 [Vespa](https://vespa.ai/) is a fully featured search engine and vector database. It supports vector search (ANN), lexical search, and search in structured data, all in the same query. Integrated machine-learned model inference allows you to apply AI to make sense of your data in real time.
 
@@ -14569,7 +14564,7 @@ Check out [this post](https://blog.vespa.ai/scaling-large-vector-datasets-with-c
 
 > This page describes how to integrate Cohere with the Qdrant vector database.
 
-<img src="file:70e922b5-3f88-428e-815e-7811836c929f" width="200px" height="auto" class="light-bg" />
+<img src="https://files.buildwithfern.com/cohere.docs.buildwithfern.com/96873680a95b1b74e875f249aa5c6ce45e4634aacadd9366ae91869cf9ac31fb/assets/images/7c00c49-qdrant-logo.png" width="200px" height="auto" class="light-bg" />
 
 [Qdrant](https://qdrant.tech/) is an open-source vector similarity search engine and vector database. It provides a production-ready service with a convenient API to store, search, and manage points - vectors with an additional payload. Qdrant is tailored to extended filtering support. It makes it useful for all sorts of neural-network or semantic-based matching, faceted search, and other applications.
 
@@ -14582,7 +14577,7 @@ To learn more about how to work with Cohere's embeddings on Qdrant, [read this g
 
 > This page describes integrating Cohere with the Milvus vector database.
 
-<img src="file:54776924-5157-4454-aa69-00b2a8fcb8d6" width="200px" height="auto" class="light-bg" />
+<img src="https://files.buildwithfern.com/cohere.docs.buildwithfern.com/6874ac14e59e2a86b01635e710098c3445f76f609e5c04becfb58363185b609a/assets/images/92a8592-milvus-logo.png" width="200px" height="auto" class="light-bg" />
 
 [Milvus](https://milvus.io/) is a highly flexible, reliable, and blazing-fast cloud-native, open-source vector database. It powers embedding similarity search and AI applications and strives to make vector databases accessible to every organization. Milvus is a graduated-stage project of the LF AI & Data Foundation.
 
@@ -14593,7 +14588,7 @@ The following [guide](https://milvus.io/docs/integrate_with_cohere.md) walks thr
 
 > This page describes how to integrate Cohere with the Zilliz database.
 
-<img src="file:33c32e95-51c7-4720-884d-5cdfa13119a6" width="200px" height="auto" class="light-bg" />
+<img src="https://files.buildwithfern.com/cohere.docs.buildwithfern.com/9abbbdc195970652dfed49656a6dab642f4ae1057e1c7cd1ee1c8eccff315b04/assets/images/3cb9160-zilliz-logo.png" width="200px" height="auto" class="light-bg" />
 
 [Zilliz Cloud](https://zilliz.com/cloud) is a cloud-native vector database that stores, indexes, and searches for billions of embedding vectors to power enterprise-grade similarity search, recommender systems, anomaly detection, and more. Zilliz Cloud provides a fully-managed Milvus service, made by the creators of Milvus that allows for easy integration with vectorizers from Cohere and other popular models. Purpose-built to solve the challenge of managing billions of embeddings, Zilliz Cloud makes it easy to build applications for scale.
 
@@ -14604,7 +14599,7 @@ The following [guide](https://docs.zilliz.com/docs/question-answering-using-zill
 
 > This page describes how to integrate Cohere and Chroma.
 
-<img src="file:b0d335a1-1745-491d-afe7-c9806d88712e" width="200px" height="auto" class="light-bg" />
+<img src="https://files.buildwithfern.com/cohere.docs.buildwithfern.com/9f18aea1c42349638482e70d071557724380d526e8faead63e5c65a61874cebd/assets/images/2d0a48f-chroma-logo.png" width="200px" height="auto" class="light-bg" />
 
 Chroma is an open-source vector search engine that's quick to install and start building with using Python or Javascript.
 
@@ -14615,7 +14610,19 @@ You can get started with [Chroma here](https://trychroma.com).
 
 > Integrate Cohere with LangChain for advanced chat features, RAG, embeddings, and reranking; this guide includes code examples for each feature.
 
-Cohere [has first class support for LangChain](https://python.langchain.com/docs/integrations/providers/cohere), a framework which enables you to quickly create LLM powered applications. This doc will guide you through how to leverage different Cohere features with LangChain.
+Cohere [has support for LangChain](https://python.langchain.com/docs/integrations/providers/cohere), a framework which enables you to quickly create LLM powered applications.  This guide outlines how to use features from supported Cohere models with LangChain.
+
+### Supported Models
+
+The LangChain-Cohere integration currently supports:
+
+* Command (e.g., `command-r-08-2024`)
+* Embed (e.g., `embed-english-v3.0`, `embed-multilingual-v3.0`)
+* Rerank (e.g., `rerank-english-v3.0`, `rerank-multilingual-v3.0`)
+
+### Not Yet Supported
+
+Newer models like Command A Reasoning (`command-a-reasoning-08-2025`) and Command A Vision (`command-a-vision-07-2025`) are not supported in LangChain.
 
 ### Prerequisite
 
@@ -17094,15 +17101,15 @@ First, launch an EC2 instance with the following specifications:
 * Instance Type - g5.2xlarge - 8vCPU
 * Storage - 512 GB - root volume
 
-<img src="file:cb06b248-91a1-424e-8445-625c6138dee7" />
+<img src="https://files.buildwithfern.com/cohere.docs.buildwithfern.com/2439ca60d3d929aefb39b3451967a782c373bfbfd3ead956c778b4b3b03b5fe4/assets/images/aws-private-dep-0.png" />
 
-<img src="file:805fc2ba-f77b-48cd-b143-2817fd4e087f" />
+<img src="https://files.buildwithfern.com/cohere.docs.buildwithfern.com/3a09366d6757a7cee23640f1adc0b71337c97bd5f99119828e09b728b468eb6e/assets/images/aws-private-dep-1.png" />
 
 ### SSH to the EC2 instance using AWS console - ‘EC2 Instance Connect’ option.
 
 Next, connect to your EC2 instance using the “EC2 Instance Connect” option. This allows you to access the instance through a browser-based client using the default username “ubuntu.” Ensure your instance has a public IPv4 address for successful connection.
 
-<img src="file:5dce4865-8f49-43e0-93ce-10b78f70f55d" />
+<img src="https://files.buildwithfern.com/cohere.docs.buildwithfern.com/a7f54ebc8b5f2847dc9c23c114abf184999c227aaaf82d8807fa77c375a5c17c/assets/images/aws-private-dep-2.png" />
 
 ### Install Nvidia drivers
 
@@ -17144,7 +17151,7 @@ Next, install the NVIDIA drivers on your EC2 instance to enable GPU support. Use
   nvidia-smi
   ```
 
-<img src="file:041eb38f-b1c1-40e6-8d9b-af6ace9f3d0e" />
+<img src="https://files.buildwithfern.com/cohere.docs.buildwithfern.com/24ded5502935e3b36d535a4b24826c541366d9ca50efc729b989e0306285ea65/assets/images/aws-private-dep-3.png" />
 
 ### **Install docker on the instance**
 
@@ -17193,7 +17200,7 @@ Then, verify that the image has been pulled successfully:
 sudo docker images
 ```
 
-<img src="file:d553da10-8865-4aaf-8f52-d6e981cd0488" />
+<img src="https://files.buildwithfern.com/cohere.docs.buildwithfern.com/507e72c48864a027c200f979bef50a32a90ef07eb483211cefe58efe3f42b6a9/assets/images/aws-private-dep-4.png" />
 
 ### **Start container**
 
@@ -17205,7 +17212,7 @@ sudo docker run -d --rm --name embed-english --gpus=1 --net=host proxy.replicate
 sudo docker ps
 ```
 
-<img src="file:8aca4ae8-c9bc-4bc2-ab1d-42f02167ca07" />
+<img src="https://files.buildwithfern.com/cohere.docs.buildwithfern.com/53662b15c27a3843e526569ac4ad569a0b38cb9c0997b0bc6b90a65d0865cc76/assets/images/aws-private-dep-5.png" />
 
 ### **Call the model**
 
@@ -17234,11 +17241,11 @@ The steps in summary:
   * Instance Type - g5.2xlarge - 8vCPU
   * Storage - 512 GB
 
-<img src="file:012a0361-0baf-40dd-85b3-cd37378c56a7" />
+<img src="https://files.buildwithfern.com/cohere.docs.buildwithfern.com/f7dc1cc723df510c4badb984d9d91d0f6b1049f9ed8304a6fed35207cd2aae1d/assets/images/aws-private-dep-6.png" />
 
 You can then view the cluster information in the AWS console.
 
-<img src="file:d80c502f-aa60-4a7b-9690-c9ccf9e1b8ad" />
+<img src="https://files.buildwithfern.com/cohere.docs.buildwithfern.com/4d28c6e81c2eeba80f10beff574ee6c0e9b8241c3c85d532e8c9fe02907cba3b/assets/images/aws-private-dep-7.png" />
 
 ### **Define environment variables**
 
@@ -17397,9 +17404,7 @@ The latest pricing for Cohere models can all be viewed directly from from the li
   The code examples in this section use the Cohere v1 API. The v2 API is not yet supported for cloud deployments and will be coming soon.
 </Note>
 
-In an effort to make our language-model capabilities more widely available, we've partnered with a few major platforms to create hosted versions of our offerings.
-
-Here, you'll learn how to use Amazon Bedrock to deploy both the Cohere Command and the Cohere Embed models on the AWS cloud computing platform. The following models are available on Bedrock:
+In this guide, you’ll learn how to use Amazon Bedrock to deploy the Cohere Command, Embed, and Rerank models on the AWS cloud computing platform. The following models are available on Bedrock:
 
 * Command R
 * Command R+
@@ -17407,6 +17412,7 @@ Here, you'll learn how to use Amazon Bedrock to deploy both the Cohere Command a
 * Command
 * Embed - English
 * Embed - Multilingual
+* Rerank v3.5
 
 Note that the code snippets below are in Python, but you can find the equivalent code for other languages (if they're supported) [here](https://docs.cohere.com/docs/cohere-works-everywhere)
 
@@ -17416,8 +17422,6 @@ Here are the steps you'll need to get set up in advance of running Cohere models
 
 * Subscribe to Cohere's models on Amazon Bedrock. For more details, [see here](https://docs.aws.amazon.com/bedrock/latest/userguide/model-access.html).
 * You'll also have to configure your authentication credentials for AWS. This [document](https://boto3.amazonaws.com/v1/documentation/api/latest/guide/quickstart.html#configuration) has more information.
-
-## Embeddings
 
 ## Embeddings
 
@@ -17526,8 +17530,6 @@ print(response)
   The code examples in this section use the Cohere v1 API. The v2 API is not yet supported for cloud deployments and will be coming soon.
 </Note>
 
-In an effort to make our language-model capabilities more widely available, we've partnered with a few major platforms to create hosted versions of our offerings.
-
 This document will guide you through enabling development teams to access [Cohere’s offerings on Amazon SageMaker](https://aws.amazon.com/marketplace/seller-profile?id=87af0c85-6cf9-4ed8-bee0-b40ce65167e0).
 
 ## Prerequisites
@@ -17553,22 +17555,10 @@ Next, explore the tools on the **Product Detail** page to evaluate how you want 
 * Configuration: The primary goal of this section is to retrieve the [Amazon Resource Name (ARN)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html) for the product you have subscribed to.
 
 <Warning>
-  For any Cohere 
-
-  *software*
-
-   version after 1.0.5 (or 
-
-  *model*
-
-   version after 3.0.5), the parameter 
-
-  `InferenceAmiVersion=al2-ami-sagemaker-inference-gpu-2`
-
-   must be specified during endpoint configuration (as a variant option) to avoid deployment errors.
+  For any Cohere *software* version after 1.0.5 (or *model* version after 3.0.5), the parameter `InferenceAmiVersion=al2-ami-sagemaker-inference-gpu-2` must be specified during endpoint configuration (as a variant option) to avoid deployment errors.
 </Warning>
 
-## Embeddings
+### Embeddings
 
 You can use this code to invoke Cohere's embed model on Amazon SageMaker:
 
@@ -17614,7 +17604,7 @@ print(result)
 
 Note that we've released multimodal embeddings models that are able to handle images in addition to text. Find [more information here](https://docs.cohere.com/docs/multimodal-embeddings).
 
-## Text Generation
+### Text Generation
 
 You can use this code to invoke Cohere's Command models on Amazon SageMaker:
 
@@ -17631,6 +17621,38 @@ co = cohere.SagemakerClient(
 # Invoke the model and print the response
 result = co.chat(message="Write a LinkedIn post about starting a career in tech:",
                  model="<YOUR ENDPOINT NAME>") # On SageMaker, you create a model name that you'll pass here. 
+
+print(result)
+```
+
+### Reranking
+
+You can use this code to invoke Cohere's Rerank v4.0 model on Amazon SageMaker:
+
+```python PYTHON 
+import cohere
+
+co = cohere.SagemakerClient(
+    aws_region="us-east-1",
+    aws_access_key="...",
+    aws_secret_key="...",
+    aws_session_token="...",
+)
+
+# Set up your documents and query
+query = "YOUR QUERY"
+docs = [
+    "String 1",
+    "String 2"
+]
+
+# Invoke the model and print the response
+results = co.rerank(
+    model="<YOUR RERANK-V4.0 ENDPOINT NAME>", # On SageMaker, you create a model name that you'll pass here.
+    query=query,
+    documents=docs,
+    top_n=2,
+)
 
 print(result)
 ```
@@ -17902,9 +17924,7 @@ Here's how you do that:
 
 > This page describes how to work with Cohere models on Microsoft Azure.
 
-In an effort to make our language-model capabilities more widely available, we've partnered with a few major platforms to create hosted versions of our offerings.
-
-In this article, you learn how to use [Azure AI Foundry](https://ai.azure.com/) to deploy both the Cohere Command models and the Cohere Embed models on Microsoft's Azure cloud computing platform. You can read more about Azure AI Foundry in its documentation[here](https://learn.microsoft.com/en-us/azure/ai-foundry/what-is-azure-ai-foundry).
+In this document, you learn how to use [Azure AI Foundry](https://ai.azure.com/) to deploy the Cohere Command, Emebbing, and Rerank models on Microsoft's Azure cloud computing platform. You can read more about Azure AI Foundry in its documentation[here](https://learn.microsoft.com/en-us/azure/ai-foundry/what-is-azure-ai-foundry).
 
 The following models are available through Azure AI Foundry with pay-as-you-go, token-based billing:
 
@@ -17912,13 +17932,15 @@ The following models are available through Azure AI Foundry with pay-as-you-go, 
 * Embed v4
 * Embed v3 - English
 * Embed v3 - Multilingual
+* Cohere Rerank V4.0 Pro
+* Cohere Rerank V4.0 Fast
 * Cohere Rerank V3.5
 * Cohere Rerank V3 (English)
 * Cohere Rerank V3 (multilingual)
 
 ## Prerequisites
 
-Whether you're using Command or Embed, the initial set up is the same. You'll need:
+Whether you're using Command, Embed, or Rerank, the initial set up is the same. You'll need:
 
 * An Azure subscription with a valid payment method. Free or trial Azure subscriptions won't work. If you don't have an Azure subscription, create a [paid Azure account](https://azure.microsoft.com/pricing/purchase-options/pay-as-you-go) to begin.
 * An [Azure AI hub resource](https://learn.microsoft.com/en-us/azure/ai-studio/how-to/create-azure-ai-resource). Note: for Cohere models, the pay-as-you-go deployment offering is only available with AI hubs created in the `East US`, `East US 2`, `North Central US`, `South Central US`, `Sweden Central`, `West US` or `West US 3` regions.
@@ -18039,13 +18061,13 @@ except urllib.error.HTTPError as error:
 
 ## Rerank
 
-We currently exposes the `v1/rerank` endpoint for inference with both Rerank 3 - English and Rerank 3 - Multilingual. For more information on using the APIs, see the [reference](https://learn.microsoft.com/en-us/azure/ai-studio/how-to/deploy-models-cohere-rerank#rerank-api-reference-for-cohere-rerank-models-deployed-as-a-service) section.
+We currently exposes the `v1/rerank` endpoint for inference with Rerank v4.0 Pro, Rerank v4.0 Fast, Rerank v3.5, Rerank v3 English, and Rerank 3 Multilingual. For more information on using the APIs, see the [reference](https://learn.microsoft.com/en-us/azure/ai-studio/how-to/deploy-models-cohere-rerank#rerank-api-reference-for-cohere-rerank-models-deployed-as-a-service) section.
 
 ```python PYTHON
 import cohere
 
 co = cohere.Client(
-    base_url="https://<endpoint>.<region>.inference.ai.azure.com/v1",
+    base_url="https://<endpoint>.<region>.inference.ai.azure.com/v1/rerank",
     api_key="<key>",
 )
 
@@ -18091,6 +18113,7 @@ documents = [
 response = co.rerank(
     documents=documents,
     query="What emails have been about returning items?",
+    model="rerank-v4.0-pro",
     rank_fields=["Title", "Content"],
     top_n=5,
 )
@@ -18124,7 +18147,7 @@ co_embed = cohere.Client(
 # For Rerank models
 co_rerank = cohere.Client(
     api_key="AZURE_INFERENCE_CREDENTIAL",
-    base_url="AZURE_MODEL_ENDPOINT",  # Example - https://cohere-rerank-v3-multilingual-xyz.eastus.models.ai.azure.com/
+    base_url="AZURE_MODEL_ENDPOINT",  # Example - https://cohere-rerank-v4-pro-xyz.eastus.models.ai.azure.com/
 )
 ```
 
@@ -18192,7 +18215,7 @@ results = co_rerank.rerank(
     query=query,
     documents=faqs_short,
     top_n=2,
-    model="rerank-english-v3.0",
+    model="rerank-v4.0-pro",
 )
 ```
 
@@ -18209,13 +18232,21 @@ In an effort to make our language-model capabilities more widely available, we'v
 
 Here, you'll learn how to use Oracle Cloud Infrastructure (OCI) to deploy both the Cohere Command and the Cohere Embed models on the AWS cloud computing platform. The following models are available on OCI:
 
-* Command R+
-* Command R
+* Command A Reasoning
+* Command A Vision
+* Command A
+* Command R+ 08-2024
+* Command R 08-2024
+* Command R+ (retired)
+* Command R (retired)
+* Command (deprecated)
+* Command light (deprecated)
+* Embed v4
 * Embed English v3
 * Embed English v3 light
 * Embed Multilingual v3
 * Embed Multilingual v3 light
-* Cohere Rerank 3.5
+* Rerank v3.5
 
 We also support fine-tuning for Command R (`command-r-04-2024` and `command-r-08-2024`) on OCI.
 
@@ -18237,31 +18268,159 @@ In the sections that follow, we'll briefly outline how to use each, and link out
 
 OCI offers a console through which you can perform many generative AI tasks. It allows you to select your region and the model you wish to use, then pass a prompt to the underlying model, configuring parameters as you wish.
 
-![](file:b8a1c5f5-3720-49cc-946a-72c9cfde7d75)
+![](https://files.buildwithfern.com/cohere.docs.buildwithfern.com/9aa2a794b51f000832d20fe9bc0619fca2bd2ad26b0983a540d976787d36b558/assets/images/oracle-cloud-infrastructure-oci-1.png)
 
 If you want to use the console for [chat](https://docs.oracle.com/en-us/iaas/Content/generative-ai/use-playground-chat.htm), [text generation](https://docs.oracle.com/en-us/iaas/Content/generative-ai/use-playground-generate.htm#playground-generate), [summarization](https://docs.oracle.com/en-us/iaas/Content/generative-ai/use-playground-summarize.htm#playground-summarize), and [embeddings](https://docs.oracle.com/en-us/iaas/Content/generative-ai/use-playground-embed.htm#playground-embed), visit those links and select "console."
 
-![](file:f98430f1-e6cd-48fc-abc5-9168f6eaadbe)
+![](https://files.buildwithfern.com/cohere.docs.buildwithfern.com/121e70d45610e7a1461d59cf071523d4580b319fe38d0868b2731e89de68efe7/assets/images/oracle-cloud-infrastructure-oci-2.png)
 
 ### The CLI
 
 With OCI's command line interface (CLI), it's possible to use Cohere models to generate text, get embeddings, or extract information.
 
-![](file:65e35790-e7d4-4b3d-8f34-e3b0ebad1b68)
+![](https://files.buildwithfern.com/cohere.docs.buildwithfern.com/7e85610c9157b08ce77670bee90995c3d86e13e4f54859dbf0a77b944f82c423/assets/images/oracle-cloud-infrastructure-oci-3.png)
 
 If you want to use the console for [text generation](https://docs.oracle.com/en-us/iaas/Content/generative-ai/use-playground-generate.htm#playground-generate), [summarization](https://docs.oracle.com/en-us/iaas/Content/generative-ai/use-playground-summarize.htm#playground-summarize), and [embeddings](https://docs.oracle.com/en-us/iaas/Content/generative-ai/use-playground-embed.htm#playground-embed), visit those links and select "CLI."
 
-![](file:2bb055a0-78b5-4f4f-94d7-d0f1a478a792)
+![](https://files.buildwithfern.com/cohere.docs.buildwithfern.com/b7b63049d41e533c4bd2e3628a01a2c4a1f98e18d5bf0b311a3f7dc09081c07e/assets/images/oracle-cloud-infrastructure-oci-4.png)
 
 ### The API
 
 If you're trying to use Cohere models on OCI programmatically -- i.e. as part of software development, or while building an application -- you'll likely want to use the API.
 
-![](file:3bf99a64-0987-4af6-b4e9-f918b85f7eb6)
+![](https://files.buildwithfern.com/cohere.docs.buildwithfern.com/73b388b30af68734650780290ffe70f806f3e21057e4497988f667a1b7e672e3/assets/images/oracle-cloud-infrastructure-oci-5.png)
 
 If you want to use the console for [text generation](https://docs.oracle.com/en-us/iaas/Content/generative-ai/use-playground-generate.htm#playground-generate), [summarization](https://docs.oracle.com/en-us/iaas/Content/generative-ai/use-playground-summarize.htm#playground-summarize), and [embeddings](https://docs.oracle.com/en-us/iaas/Content/generative-ai/use-playground-embed.htm#playground-embed), visit those links and select "API."
 
-![](file:834a5384-2cac-4aca-9f92-b0af67f75e8b)
+![](https://files.buildwithfern.com/cohere.docs.buildwithfern.com/0267471ffc16090af14581883b17a61eebabdce4cef3b37b508267e21efd46c4/assets/images/oracle-cloud-infrastructure-oci-6.png)
+
+
+# Model Vault
+
+> This document provides a guide for using Cohere's new Model Vault functionality.
+
+Model Vault is a Cohere-managed inference environment for deploying and serving Cohere models in an isolated, single-tenant setup. This deployment option provides dedicated infrastructure with full control over model selection, scaling, and performance monitoring.
+
+Here are some of the advantages of using Model Vault:
+
+* Deploy models in a dedicated inference environment, from the Cohere dashboard, without operating the underlying serving infrastructure.
+* Use metrics on request patterns, latency, and resource utilization to tune capacity.
+* Targets 99.9%+ availability SLOs.
+* For each model, you can choose various performance tiers, which are denoted with different sizes:
+  * Small (S)
+  * Medium (M)
+  * Large (L)
+  * Extra Large (XL)
+
+These are Model Vault's core architectural components:
+
+* **Logically isolated**: Isolates all infrastructure components, including the network load balancer, reverse proxy, serving middleware, inference servers, and GPU accelerators.
+* **Minimal shared components**: Shared infrastructure is limited to authentication and underlying Kubernetes/compute resources (nodes, CPU, and memory).
+* **Cohere-managed operations**: Cohere handles maintenance, deployments, updates, and scaling.
+
+<Warning>
+  When Zero Data Retention (ZDR) is enabled for a Model Vault (Standalone) deployment, Cohere processes inputs and outputs for inference but does not retain any prompts or responses.
+</Warning>
+
+**Supported Models**
+
+| Model Name          | Type of Model                  | Supported | Self-Serve Ability     |
+| ------------------- | ------------------------------ | --------- | ---------------------- |
+| Embed v4            | Embeddings                     | Yes       | Yes                    |
+| Rerank-v3.5         | Reranker                       | Yes       | Yes                    |
+| Rerank-v4.0         | Reranker                       | Yes       | Yes                    |
+| Command-A           | Generative                     | Yes       | No - Behind a Waitlist |
+| Command-A Vision    | Generative                     | Yes       | No - Behind a Waitlist |
+| Command-A Reasoning | Generative                     | Yes       | No - Behind a Waitlist |
+| Command-A Translate | Generative                     | Yes       | No - Behind a Waitlist |
+| North Bundle        | Generative + Compass Bundle    | Yes       | No - Behind a Waitlist |
+| Compass Bundle      | Embed + Rerank + Vision Parser | Yes       | No - Behind a Waitlist |
+
+## Setting up a Model Vault in the Dashboard
+
+Navigate to [https://dashboard.cohere.com/](https://dashboard.cohere.com/) and select 'Vaults' from the left-hand menu.
+
+This opens the 'Model Vaults' page, where you can:
+
+* View and manage existing Vaults
+* Create new Vaults
+
+<img src="https://files.buildwithfern.com/cohere.docs.buildwithfern.com/6a6ac592a95e794a9687d8b04a055f13aa443e660366438a991a08cc167173ce/assets/images/model-vault/model-vault-home.png" />
+
+Each Vault will have a status tag with one of the following values:
+
+* Pending
+* Deploying
+* Ready
+* Degraded
+
+### Creating a new Vault
+
+To create a new Vault, click `New Vault +` in the top-right corner. That will open up the following Vault configuration panel:
+
+<img src="https://files.buildwithfern.com/cohere.docs.buildwithfern.com/d759b712c7ecb82c96e260d046a0e952b087c61a89209428289771d85d9394ae/assets/images/model-vault/model-vault-create-public.png" />
+
+Here, you can:
+
+* Name your Vault
+* Select a model type and a specific model:
+  * Chat
+    * Command A 03 2025 - L
+    * Command A 03 2025 - XL
+    * Etc.
+  * Embed
+    * Embed English v3 - M
+    * Embed English v3 - S
+    * Etc.
+  * Rerank
+    * Rerank v3.5 - M
+    * Etc.
+* Set the minimum and maximum number of replicas:
+  * Each can be configured from 1-25
+
+When you're done, click `Create Vault ->` in the bottom-right corner.
+
+<Warning>
+  There is currently a limit of **three** Vaults per organization. Reach out to your Cohere representative to request an increase.
+</Warning>
+
+### Interacting with Your Existing Vaults in the Dashboard
+
+Clicking into any of the Vaults opens up a summary page like this:
+
+<img src="https://files.buildwithfern.com/cohere.docs.buildwithfern.com/7db7fbbc218722f149e912a1e96e072068748bd95e11ef81f76773c7cf7b5e41/assets/images/model-vault/model-vault-summary.png" />
+
+You can see the URL (which you'll need to interact with this Vault over an API), the Vault's status, when it was last updated, which models it contains, and the configuration details for each.
+
+For each row, there is a gear icon under the `Actions` column. Clicking it opens a pop-up model card with model-specific information:
+
+<img src="https://files.buildwithfern.com/cohere.docs.buildwithfern.com/cecbeb2484aa8d5697910dde444f18d3333f489a0b5e2fe35f34af9d127962ae/assets/images/model-vault/model-vault-actions.png" />
+
+Here, you can:
+
+* Copy various pieces of technical information (the API endpoint for this Vault, the model name, etc.)
+* Edit the model configuration (changing the minimum and maximum replicas)
+* Pause/resume the model (CAUTION: this will turn down the model and halt all ongoing traffic)
+* Delete the model
+
+### Monitoring a Model
+
+If you click into a Vault, you will see a `Monitoring` button in the top-right corner. Clicking it opens a Grafana dashboard which offers various analytics into the performance of this particular Vault, such as:
+
+* First Token Latency
+* Queuing Latency
+* Average GPU Duty Cycle
+* Etc.
+
+<img src="https://files.buildwithfern.com/cohere.docs.buildwithfern.com/d396b458af124efd7cf0aa98282de5303e8728e77f9292ccda2a9888828cd7f9/assets/images/model-vault/model-vault-grafana-dashboard.png" />
+
+This let's you gather analytics related to specific models, modify the time range over which your analytics are gathered, inspect various on-page graphs, or export and share your data.
+
+You can change the model with the `Model` dropdown in the top-left corner, use the 'Search' bar at the top of the screen to find particular pieces of information quickly and easily, and refresh your data by clicking 'Refresh' at the top of the screen.
+
+### Interacting with a Vault over the API
+
+Once your Vault is set up in the dashboard, use the Vault endpoint URL and model name shown in the model card in API calls.
 
 
 # Cohere Cookbooks: Build AI Agents and Solutions
@@ -18298,7 +18457,7 @@ Here are some of the ones we think are most exciting!
 > LLM University (LLMU) offers in-depth, practical NLP and LLM training. Ideal for all skill levels. Learn, build, and deploy Language AI with Cohere.
 
 <a target="_blank" href="https://cohere.com/llmu?_gl=1*1ofvam2*_gcl_au*MTQ4NTk2Mzc4Mi4xNzE5OTMzNjE3*_ga*NDY1MzI1MTIxLjE3MTk5MzM2MTc.*_ga_CRGS116RZS*MTcyMzQwMDg1OC4zMi4xLjE3MjM0MDA5MDUuMTMuMC4w">
-  <img src="file:658bc457-7373-4e6c-8ef6-401199d6ed6c" />
+  <img src="https://files.buildwithfern.com/cohere.docs.buildwithfern.com/a0e29a50281354a2c4962620aeccee4d04932fe9f169d54684c085e66823eedd/assets/images/60c937f-small-LLMUni_Docs_Banner.png" />
 </a>
 
 #### Welcome to LLM University by Cohere!
@@ -19240,7 +19399,7 @@ query = "Are there fitness-related perks?"
 
 # Rerank the documents
 results = co.rerank(
-    model="rerank-v3.5",
+    model="rerank-v4.0-pro",
     query=query,
     documents=faqs,
     top_n=1,
@@ -19329,7 +19488,7 @@ query = "Any email about check ins?"
 
 # Rerank the documents
 results = co.rerank(
-    model="rerank-v3.5",
+    model="rerank-v4.0-pro",
     query=query,
     documents=yaml_docs,
     top_n=2,
@@ -19392,7 +19551,7 @@ query = "Any full-time product designers who joined recently?"
 
 # Rerank the documents
 results = co.rerank(
-    model="rerank-v3.5",
+    model="rerank-v4.0-pro",
     query=query,
     documents=yaml_docs,
     top_n=1,
@@ -19408,9 +19567,9 @@ Document: {'name': 'Emma Williams', 'role': 'Product Designer', 'join_date': '20
 
 ## Multilingual reranking
 
-The Rerank models (`rerank-v3.5` and `rerank-multilingual-v3.0`) support 100+ languages. This means you can perform semantic search on texts in different languages.
+The Rerank models (`rerank-v4.0-pro`, `rerank-v4.0-fast`, `rerank-v3.5` and `rerank-multilingual-v3.0`) support 100+ languages. This means you can perform semantic search on texts in different languages.
 
-In the example below, we repeat the steps of performing reranking with one difference – changing the model type to a multilingual one. Here, we use the `rerank-v3.5` model. Here, we are reranking the FAQ list using an Arabic query.
+In the example below, we repeat the steps of performing reranking with one difference – changing the model type to a multilingual one. Here, we use the `rerank-v4.0` model. Here, we are reranking the FAQ list using an Arabic query.
 
 ```python PYTHON
 # Define the query
@@ -19418,7 +19577,7 @@ query = "هل هناك مزايا تتعلق باللياقة البدنية؟" 
 
 # Rerank the documents
 results = co.rerank(
-    model="rerank-v3.5",
+    model="rerank-v4.0-pro",
     query=query,
     documents=faqs,
     top_n=1,
@@ -20126,13 +20285,7 @@ if response.message.tool_calls:
         )
 
     # Append tool calling details to the chat history
-    messages.append(
-        {
-            "role": "assistant",
-            "tool_calls": response.message.tool_calls,
-            "tool_plan": response.message.tool_plan,
-        }
-    )
+    messages.append(response.message)
 ```
 
 ```
@@ -20260,13 +20413,7 @@ def run_assistant(query, messages=None):
             )
         print("=" * 50)
 
-        messages.append(
-            {
-                "role": "assistant",
-                "tool_calls": response.message.tool_calls,
-                "tool_plan": response.message.tool_plan,
-            }
-        )
+        messages.append(response.message)
 
         # Step 3: Get tool results
         for idx, tc in enumerate(response.message.tool_calls):
@@ -20381,7 +20528,7 @@ To continue your learning, check out:
 
 > Hands-on tutorials on building agentic RAG applications with Cohere
 
-<img src="file:a3a7dc26-0173-4d66-8df5-99459e87f1a3" alt="agentic rag" />
+<img src="https://files.buildwithfern.com/cohere.docs.buildwithfern.com/007e991f4748ac9b9b0f4475c686f84ef34e3f1a595d4130eb89b335c280a8d5/assets/images/agentic-rag.png" alt="agentic rag" />
 
 Welcome to the tutorial on Agentic RAG with Cohere!
 
@@ -20593,13 +20740,7 @@ def run_agent(query, messages=None):
             )
         print("=" * 50)
 
-        messages.append(
-            {
-                "role": "assistant",
-                "tool_calls": response.message.tool_calls,
-                "tool_plan": response.message.tool_plan,
-            }
-        )
+        messages.append(response.message)
 
         # Step 3: Get tool results
         for tc in response.message.tool_calls:
@@ -21017,13 +21158,7 @@ def run_agent(query, messages=None):
             )
         print("=" * 50)
 
-        messages.append(
-            {
-                "role": "assistant",
-                "tool_calls": response.message.tool_calls,
-                "tool_plan": response.message.tool_plan,
-            }
-        )
+        messages.append(response.message)
 
         # Step 3: Get tool results
         for tc in response.message.tool_calls:
@@ -21421,13 +21556,7 @@ def run_agent(query, messages=None):
             )
         print("=" * 50)
 
-        messages.append(
-            {
-                "role": "assistant",
-                "tool_calls": response.message.tool_calls,
-                "tool_plan": response.message.tool_plan,
-            }
-        )
+        messages.append(response.message)
 
         # Step 3: Get tool results
         for tc in response.message.tool_calls:
@@ -21834,13 +21963,7 @@ def run_agent(query, messages=None):
             )
         print("=" * 50)
 
-        messages.append(
-            {
-                "role": "assistant",
-                "tool_calls": response.message.tool_calls,
-                "tool_plan": response.message.tool_plan,
-            }
-        )
+        messages.append(response.message)
 
         # Step 3: Get tool results
         for tc in response.message.tool_calls:
@@ -22448,13 +22571,7 @@ def run_agent(query, messages=None):
                 )
         print("=" * 50)
 
-        messages.append(
-            {
-                "role": "assistant",
-                "tool_calls": response.message.tool_calls,
-                "tool_plan": response.message.tool_plan,
-            }
-        )
+        messages.append(response.message)
 
         # Step 3: Get tool results
         for tc in response.message.tool_calls:
@@ -22462,12 +22579,10 @@ def run_agent(query, messages=None):
                 **json.loads(tc.function.arguments)
             )
             tool_content = [
-                (
-                    {
-                        "type": "document",
-                        "document": {"data": json.dumps(tool_result)},
-                    }
-                )
+                {
+                    "type": "document",
+                    "document": {"data": json.dumps(tool_result)},
+                }
             ]
 
             messages.append(
@@ -22972,13 +23087,7 @@ def run_agent(query, messages=None):
                 )
         print("=" * 50)
 
-        messages.append(
-            {
-                "role": "assistant",
-                "tool_calls": response.message.tool_calls,
-                "tool_plan": response.message.tool_plan,
-            }
-        )
+        messages.append(response.message)
 
         # Step 3: Get tool results
         for tc in response.message.tool_calls:
@@ -22986,12 +23095,10 @@ def run_agent(query, messages=None):
                 **json.loads(tc.function.arguments)
             )
             tool_content = [
-                (
-                    {
-                        "type": "document",
-                        "document": {"data": json.dumps(tool_result)},
-                    }
-                )
+                {
+                    "type": "document",
+                    "document": {"data": json.dumps(tool_result)},
+                }
             ]
 
             messages.append(
@@ -24730,13 +24837,7 @@ def run_assistant(query, messages=None):
             )
         print("=" * 50)
 
-        messages.append(
-            {
-                "role": "assistant",
-                "tool_calls": response.message.tool_calls,
-                "tool_plan": response.message.tool_plan,
-            }
-        )
+        messages.append(response.message)
 
         # Step 3: Get tool results
         for idx, tc in enumerate(response.message.tool_calls):
@@ -24892,7 +24993,7 @@ Overall, both models show a lack of bias, with generations that are very rarely 
 
 Below, we report differences in privileged vs. minoritised groups for gender, race, and religion.
 
-![](file:dd8c6d69-cce9-4aad-a2e8-d4cb0a6d0243)
+![](https://files.buildwithfern.com/cohere.docs.buildwithfern.com/3cd5b378c71a6deec8ee5712990876a4433f758e918853030709ae4775146503/assets/images/responsible_use_1.png)
 
 ## Intended Use Cases
 
@@ -24994,7 +25095,7 @@ The pre-built components fall into two big categories: front-end and back end.
 
 Here's an image that shows how these different components work together:
 
-<img src="file:d5852615-df93-4479-a74a-7183194685a9" />
+<img src="https://files.buildwithfern.com/cohere.docs.buildwithfern.com/dc6eb5655751a832ec4b4a77e4eef6143c531a349d084190e043d1b5ed6922ad/assets/images/63101b4-toolkit_graphic.png" />
 
 ## Cohere Toolkit Quick Start
 
@@ -25021,7 +25122,7 @@ Following the links in this document or [read the full repository](https://githu
 
 The Cohere platform allows you to upload and manage datasets that can be used in  batch embedding with [Embedding Jobs](/docs/embed-jobs-api). Datasets can be managed [in the Dashboard](https://dashboard.cohere.com/datasets) or programmatically using the [Datasets API](/reference/create-dataset).
 
-![](file:a043b62f-0243-4072-9bc1-9c6ef1dbb194)
+![](https://files.buildwithfern.com/cohere.docs.buildwithfern.com/5dc5d80c480088c204e9b8092f5bea0087f7610318c3729f8004438eb81334a7/assets/images/c3343f3-image.png)
 
 <br />
 
@@ -25353,13 +25454,13 @@ Working in Teams in the Cohere platform enables users to share API keys and cust
 
 If you sign up with Cohere without being invited to a Team, you automatically become the “Owner” of a Team. To invite others to your team, navigate to the Cohere Dashboard, then click on the “Team” page in the sidebar.
 
-![](file:ffb22f70-ca1f-493e-94cd-c16cc11f41ad)
+![](https://files.buildwithfern.com/cohere.docs.buildwithfern.com/d407472675a57679eeafdf3ed26163d6ddcfbcb05ef60516ef50949fe4a7d47e/assets/images/0f6ea93-Teams_and_Roles_1.png)
 
 ### If your teammates do not have existing Cohere accounts
 
 Clicking “+ Invite Teammates” will open a modal where you can send email invites and specify the role that best suits your teammates.
 
-![](file:369c0fba-8cc9-480e-be02-2e12a486128d)
+![](https://files.buildwithfern.com/cohere.docs.buildwithfern.com/8830c76ad39e4e0e4cf05bc563538404e0e2bf8bc606cdf989bc423a3fbbc57a/assets/images/f1e9553-Teams_and_Roles_2.png)
 
 ### If your teammates have existing Cohere accounts
 
@@ -25983,13 +26084,7 @@ while response.message.tool_calls:
         )
     print("=" * 50)
 
-    messages.append(
-        {
-            "role": "assistant",
-            "tool_calls": response.message.tool_calls,
-            "tool_plan": response.message.tool_plan,
-        }
-    )
+    messages.append(response.message)
 
     # Step 3: Get tool results
     for idx, tc in enumerate(response.message.tool_calls):
@@ -26200,13 +26295,7 @@ res_v2 = co_v2.chat(
 )
 
 if res_v2.message.tool_calls:
-    messages.append(
-        {
-            "role": "assistant",
-            "tool_calls": res_v2.message.tool_calls,
-            "tool_plan": res_v2.message.tool_plan,
-        }
-    )
+    messages.append(res_v2.message)
 
     print(res_v2.message.tool_calls)
 ```
@@ -27426,21 +27515,55 @@ paths:
                   enum:
                     - type: booleanLiteral
                       value: false
+                  description: >
+                    Defaults to `false`.
+
+
+                    When `true`, the response will be a SSE stream of events.
+
+
+                    Streaming is beneficial for user interfaces that render the
+                    contents of the response piece by piece, as it gets
+                    generated.
                 model:
                   type: string
+                  description: >-
+                    The name of a compatible [Cohere
+                    model](https://docs.cohere.com/v2/docs/models).
                 messages:
                   $ref: '#/components/schemas/ChatMessages'
                 tools:
                   type: array
                   items:
                     $ref: '#/components/schemas/ToolV2'
+                  description: >
+                    A list of tools (functions) available to the model. The
+                    model response may contain 'tool_calls' to the specified
+                    tools.
+
+
+                    Learn more in the [Tool Use
+                    guide](https://docs.cohere.com/docs/tools).
                 strict_tools:
                   type: boolean
+                  description: >
+                    When set to `true`, tool calls in the Assistant message will
+                    be forced to follow the tool definition strictly. Learn more
+                    in the [Structured Outputs (Tools)
+                    guide](https://docs.cohere.com/docs/structured-outputs-json#structured-outputs-tools).
+
+
+                    **Note**: The first few requests with a new set of tools
+                    will take longer to process.
                 documents:
                   type: array
                   items:
                     $ref: >-
                       #/components/schemas/V2ChatPostRequestBodyContentApplicationJsonSchemaDocumentsItems
+                  description: >
+                    A list of relevant documents that the model can cite to
+                    generate a more accurate reply. Each document is either a
+                    string or document object with content and metadata.
                 citation_options:
                   $ref: '#/components/schemas/CitationOptions'
                 response_format:
@@ -27448,37 +27571,159 @@ paths:
                 safety_mode:
                   $ref: >-
                     #/components/schemas/V2ChatPostRequestBodyContentApplicationJsonSchemaSafetyMode
+                  description: >
+                    Used to select the [safety
+                    instruction](https://docs.cohere.com/v2/docs/safety-modes)
+                    inserted into the prompt. Defaults to `CONTEXTUAL`.
+
+                    When `OFF` is specified, the safety instruction will be
+                    omitted.
+
+
+                    Safety modes are not yet configurable in combination with
+                    `tools` and `documents` parameters.
+
+
+                    **Note**: This parameter is only compatible newer Cohere
+                    models, starting with [Command R
+                    08-2024](https://docs.cohere.com/docs/command-r#august-2024-release)
+                    and [Command R+
+                    08-2024](https://docs.cohere.com/docs/command-r-plus#august-2024-release).
+
+
+                    **Note**: `command-r7b-12-2024` and newer models only
+                    support `"CONTEXTUAL"` and `"STRICT"` modes.
                 max_tokens:
                   type: integer
+                  description: >
+                    The maximum number of output tokens the model will generate
+                    in the response. If not set, `max_tokens` defaults to the
+                    model's maximum output token limit. You can find the maximum
+                    output token limits for each model in the [model
+                    documentation](https://docs.cohere.com/docs/models).
+
+
+                    **Note**: Setting a low value may result in incomplete
+                    generations. In such cases, the `finish_reason` field in the
+                    response will be set to `"MAX_TOKENS"`.
+
+
+                    **Note**: If `max_tokens` is set higher than the model's
+                    maximum output token limit, the generation will be capped at
+                    that model-specific maximum limit.
                 stop_sequences:
                   type: array
                   items:
                     type: string
+                  description: >
+                    A list of up to 5 strings that the model will use to stop
+                    generation. If the model generates a string that matches any
+                    of the strings in the list, it will stop generating tokens
+                    and return the generated text up to that point not including
+                    the stop sequence.
                 temperature:
                   type: number
                   format: double
+                  description: >
+                    Defaults to `0.3`.
+
+
+                    A non-negative float that tunes the degree of randomness in
+                    generation. Lower temperatures mean less random generations,
+                    and higher temperatures mean more random generations.
+
+
+                    Randomness can be further maximized by increasing the  value
+                    of the `p` parameter.
                 seed:
                   type: integer
+                  description: >
+                    If specified, the backend will make a best effort to sample
+                    tokens
+
+                    deterministically, such that repeated requests with the same
+
+                    seed and parameters should return the same result. However,
+
+                    determinism cannot be totally guaranteed.
                 frequency_penalty:
                   type: number
                   format: double
+                  description: >
+                    Defaults to `0.0`, min value of `0.0`, max value of `1.0`.
+
+                    Used to reduce repetitiveness of generated tokens. The
+                    higher the value, the stronger a penalty is applied to
+                    previously present tokens, proportional to how many times
+                    they have already appeared in the prompt or prior
+                    generation.
                 presence_penalty:
                   type: number
                   format: double
+                  description: >
+                    Defaults to `0.0`, min value of `0.0`, max value of `1.0`.
+
+                    Used to reduce repetitiveness of generated tokens. Similar
+                    to `frequency_penalty`, except that this penalty is applied
+                    equally to all tokens that have already appeared, regardless
+                    of their exact frequencies.
                 k:
                   type: integer
+                  default: 0
+                  description: >
+                    Ensures that only the top `k` most likely tokens are
+                    considered for generation at each step. When `k` is set to
+                    `0`, k-sampling is disabled.
+
+                    Defaults to `0`, min value of `0`, max value of `500`.
                 p:
                   type: number
                   format: double
+                  description: >
+                    Ensures that only the most likely tokens, with total
+                    probability mass of `p`, are considered for generation at
+                    each step. If both `k` and `p` are enabled, `p` acts after
+                    `k`.
+
+                    Defaults to `0.75`. min value of `0.01`, max value of
+                    `0.99`.
                 logprobs:
                   type: boolean
+                  description: >
+                    Defaults to `false`. When set to `true`, the log
+                    probabilities of the generated tokens will be included in
+                    the response.
                 tool_choice:
                   $ref: >-
                     #/components/schemas/V2ChatPostRequestBodyContentApplicationJsonSchemaToolChoice
+                  description: >
+                    Used to control whether or not the model will be forced to
+                    use a tool when answering. When `REQUIRED` is specified, the
+                    model will be forced to use at least one of the user-defined
+                    tools, and the `tools` parameter must be passed in the
+                    request.
+
+                    When `NONE` is specified, the model will be forced **not**
+                    to use one of the specified tools, and give a direct
+                    response.
+
+                    If tool_choice isn't specified, then the model is free to
+                    choose whether to use the specified tools or not.
+
+
+                    **Note**: This parameter is only compatible with models
+                    [Command-r7b](https://docs.cohere.com/v2/docs/command-r7b)
+                    and newer.
                 thinking:
                   $ref: '#/components/schemas/Thinking'
                 priority:
                   type: integer
+                  default: 0
+                  description: >-
+                    Controls how early the request is handled. Lower numbers
+                    indicate higher priority (default: 0, the highest). When the
+                    system is under load, higher-priority requests are processed
+                    first and are the least likely to be dropped.
               required:
                 - stream
                 - model
@@ -27519,8 +27764,15 @@ components:
       properties:
         url:
           type: string
+          description: |
+            URL of an image. Can be either a base64 data URI or a web URL.
         detail:
           $ref: '#/components/schemas/ImageUrlDetail'
+          description: >
+            Controls the level of detail in image processing. `"auto"` is the
+            default and lets the system choose, `"low"` is faster but less
+            detailed, and `"high"` preserves maximum detail. You can save tokens
+            and speed up responses by using detail: `"low"`.
       required:
         - url
     ImageContent:
@@ -27552,6 +27804,11 @@ components:
           $ref: '#/components/schemas/UserMessageV2Role'
         content:
           $ref: '#/components/schemas/UserMessageV2Content'
+          description: >
+            The content of the message. This can be a string or a list of
+            content blocks.
+
+            If a string is provided, it will be treated as a text content block.
       required:
         - role
         - content
@@ -27619,6 +27876,7 @@ components:
               description: 'Discriminator value: tool'
             id:
               type: string
+              description: The unique identifier of the document
             tool_output:
               type: object
               additionalProperties:
@@ -27635,6 +27893,7 @@ components:
               description: 'Discriminator value: document'
             id:
               type: string
+              description: The unique identifier of the document
             document:
               type: object
               additionalProperties:
@@ -27655,16 +27914,20 @@ components:
       properties:
         start:
           type: integer
+          description: Start index of the cited snippet in the original source text.
         end:
           type: integer
+          description: End index of the cited snippet in the original source text.
         text:
           type: string
+          description: Text snippet that is being cited.
         sources:
           type: array
           items:
             $ref: '#/components/schemas/Source'
         content_index:
           type: integer
+          description: Index of the content block in which this citation appears.
         type:
           $ref: '#/components/schemas/CitationType'
     AssistantMessageV2:
@@ -27678,6 +27941,9 @@ components:
             $ref: '#/components/schemas/ToolCallV2'
         tool_plan:
           type: string
+          description: >-
+            A chain-of-thought style reflection and plan that the model
+            generates when working with Tools.
         content:
           $ref: '#/components/schemas/AssistantMessageV2Content'
         citations:
@@ -27727,8 +27993,14 @@ components:
       properties:
         data:
           $ref: '#/components/schemas/Document-qmvpd9'
+          description: >
+            A relevant document that the model can cite to generate a more
+            accurate reply. Each document is a string-any dictionary.
         id:
           type: string
+          description: >-
+            Unique identifier for this document which will be referenced in
+            citations. If not provided an ID will be automatically generated.
       required:
         - data
     DocumentContent:
@@ -27760,8 +28032,14 @@ components:
           $ref: '#/components/schemas/ToolMessageV2Role'
         tool_call_id:
           type: string
+          description: >-
+            The id of the associated tool call that has provided the given
+            content
         content:
           $ref: '#/components/schemas/ToolMessageV2Content'
+          description: >-
+            Outputs from a tool. The content should formatted as a JSON object
+            string, or a list of tool content blocks
       required:
         - role
         - tool_call_id
@@ -27788,10 +28066,13 @@ components:
       properties:
         name:
           type: string
+          description: The name of the function.
         description:
           type: string
+          description: The description of the function.
         parameters:
           $ref: '#/components/schemas/ToolV2-6eoehf'
+          description: The parameters of the function as a JSON schema.
       required:
         - name
         - parameters
@@ -27802,6 +28083,7 @@ components:
           $ref: '#/components/schemas/ToolV2Type'
         function:
           $ref: '#/components/schemas/ToolV2Function'
+          description: The function to be executed.
       required:
         - type
     V2ChatPostRequestBodyContentApplicationJsonSchemaDocumentsItems:
@@ -27821,6 +28103,11 @@ components:
       properties:
         mode:
           $ref: '#/components/schemas/CitationOptionsMode'
+          description: >
+            Defaults to `"enabled"`.
+
+            Citations are enabled by default for models that support it, but can
+            be turned off by setting `"type": "disabled"`.
     ResponseFormatTypeV2:
       type: string
       enum:
@@ -27843,6 +28130,31 @@ components:
           $ref: '#/components/schemas/ResponseFormatTypeV2'
         json_schema:
           $ref: '#/components/schemas/JsonResponseFormatV2-uu9wid'
+          description: >
+            A [JSON schema](https://json-schema.org/overview/what-is-jsonschema)
+            object that the output will adhere to. There are some restrictions
+            we have on the schema, refer to [our
+            guide](https://docs.cohere.com/docs/structured-outputs-json#schema-constraints)
+            for more information.
+
+            Example (required name and age object):
+
+            ```json
+
+            {
+              "type": "object",
+              "properties": {
+                "name": {"type": "string"},
+                "age": {"type": "integer"}
+              },
+              "required": ["name", "age"]
+            }
+
+            ```
+
+
+            **Note**: This field must not be specified when the `type` is set to
+            `"text"`.
       required:
         - type
     ResponseFormatV2:
@@ -27870,8 +28182,17 @@ components:
       properties:
         type:
           $ref: '#/components/schemas/ThinkingType'
+          description: >
+            Reasoning is enabled by default for models that support it, but can
+            be turned off by setting `"type": "disabled"`.
         token_budget:
           type: integer
+          description: >
+            The maximum number of tokens the model can use for thinking, which
+            must be set to a positive integer.
+
+            The model will stop thinking if it reaches the thinking token budget
+            and will proceed with the response.
       required:
         - type
     ChatFinishReason:
@@ -27902,6 +28223,9 @@ components:
             $ref: '#/components/schemas/ToolCallV2'
         tool_plan:
           type: string
+          description: >-
+            A chain-of-thought style reflection and plan that the model
+            generates when working with Tools.
         content:
           type: array
           items:
@@ -27918,24 +28242,36 @@ components:
         input_tokens:
           type: number
           format: double
+          description: |
+            The number of billed input tokens.
         output_tokens:
           type: number
           format: double
+          description: |
+            The number of billed output tokens.
         search_units:
           type: number
           format: double
+          description: |
+            The number of billed search units.
         classifications:
           type: number
           format: double
+          description: |
+            The number of billed classifications units.
     UsageTokens:
       type: object
       properties:
         input_tokens:
           type: number
           format: double
+          description: |
+            The number of tokens used as input to the model.
         output_tokens:
           type: number
           format: double
+          description: |
+            The number of tokens produced by the model.
     Usage:
       type: object
       properties:
@@ -27946,20 +28282,25 @@ components:
         cached_tokens:
           type: number
           format: double
+          description: |
+            The number of prompt tokens that hit the inference cache.
     LogprobItem:
       type: object
       properties:
         text:
           type: string
+          description: The text chunk for which the log probabilities was calculated.
         token_ids:
           type: array
           items:
             type: integer
+          description: The token ids of each token used to construct the text chunk.
         logprobs:
           type: array
           items:
             type: number
             format: double
+          description: The log probability of each token used to construct the text chunk.
       required:
         - token_ids
     v2_chat_Response_stream:
@@ -27967,6 +28308,9 @@ components:
       properties:
         id:
           type: string
+          description: >-
+            Unique identifier for the generated reply. Useful for submitting
+            feedback.
         finish_reason:
           $ref: '#/components/schemas/ChatFinishReason'
         message:
@@ -29551,21 +29895,55 @@ paths:
                   enum:
                     - type: booleanLiteral
                       value: true
+                  description: >
+                    Defaults to `false`.
+
+
+                    When `true`, the response will be a SSE stream of events.
+
+
+                    Streaming is beneficial for user interfaces that render the
+                    contents of the response piece by piece, as it gets
+                    generated.
                 model:
                   type: string
+                  description: >-
+                    The name of a compatible [Cohere
+                    model](https://docs.cohere.com/v2/docs/models).
                 messages:
                   $ref: '#/components/schemas/ChatMessages'
                 tools:
                   type: array
                   items:
                     $ref: '#/components/schemas/ToolV2'
+                  description: >
+                    A list of tools (functions) available to the model. The
+                    model response may contain 'tool_calls' to the specified
+                    tools.
+
+
+                    Learn more in the [Tool Use
+                    guide](https://docs.cohere.com/docs/tools).
                 strict_tools:
                   type: boolean
+                  description: >
+                    When set to `true`, tool calls in the Assistant message will
+                    be forced to follow the tool definition strictly. Learn more
+                    in the [Structured Outputs (Tools)
+                    guide](https://docs.cohere.com/docs/structured-outputs-json#structured-outputs-tools).
+
+
+                    **Note**: The first few requests with a new set of tools
+                    will take longer to process.
                 documents:
                   type: array
                   items:
                     $ref: >-
                       #/components/schemas/V2ChatPostRequestBodyContentApplicationJsonSchemaDocumentsItems
+                  description: >
+                    A list of relevant documents that the model can cite to
+                    generate a more accurate reply. Each document is either a
+                    string or document object with content and metadata.
                 citation_options:
                   $ref: '#/components/schemas/CitationOptions'
                 response_format:
@@ -29573,37 +29951,159 @@ paths:
                 safety_mode:
                   $ref: >-
                     #/components/schemas/V2ChatPostRequestBodyContentApplicationJsonSchemaSafetyMode
+                  description: >
+                    Used to select the [safety
+                    instruction](https://docs.cohere.com/v2/docs/safety-modes)
+                    inserted into the prompt. Defaults to `CONTEXTUAL`.
+
+                    When `OFF` is specified, the safety instruction will be
+                    omitted.
+
+
+                    Safety modes are not yet configurable in combination with
+                    `tools` and `documents` parameters.
+
+
+                    **Note**: This parameter is only compatible newer Cohere
+                    models, starting with [Command R
+                    08-2024](https://docs.cohere.com/docs/command-r#august-2024-release)
+                    and [Command R+
+                    08-2024](https://docs.cohere.com/docs/command-r-plus#august-2024-release).
+
+
+                    **Note**: `command-r7b-12-2024` and newer models only
+                    support `"CONTEXTUAL"` and `"STRICT"` modes.
                 max_tokens:
                   type: integer
+                  description: >
+                    The maximum number of output tokens the model will generate
+                    in the response. If not set, `max_tokens` defaults to the
+                    model's maximum output token limit. You can find the maximum
+                    output token limits for each model in the [model
+                    documentation](https://docs.cohere.com/docs/models).
+
+
+                    **Note**: Setting a low value may result in incomplete
+                    generations. In such cases, the `finish_reason` field in the
+                    response will be set to `"MAX_TOKENS"`.
+
+
+                    **Note**: If `max_tokens` is set higher than the model's
+                    maximum output token limit, the generation will be capped at
+                    that model-specific maximum limit.
                 stop_sequences:
                   type: array
                   items:
                     type: string
+                  description: >
+                    A list of up to 5 strings that the model will use to stop
+                    generation. If the model generates a string that matches any
+                    of the strings in the list, it will stop generating tokens
+                    and return the generated text up to that point not including
+                    the stop sequence.
                 temperature:
                   type: number
                   format: double
+                  description: >
+                    Defaults to `0.3`.
+
+
+                    A non-negative float that tunes the degree of randomness in
+                    generation. Lower temperatures mean less random generations,
+                    and higher temperatures mean more random generations.
+
+
+                    Randomness can be further maximized by increasing the  value
+                    of the `p` parameter.
                 seed:
                   type: integer
+                  description: >
+                    If specified, the backend will make a best effort to sample
+                    tokens
+
+                    deterministically, such that repeated requests with the same
+
+                    seed and parameters should return the same result. However,
+
+                    determinism cannot be totally guaranteed.
                 frequency_penalty:
                   type: number
                   format: double
+                  description: >
+                    Defaults to `0.0`, min value of `0.0`, max value of `1.0`.
+
+                    Used to reduce repetitiveness of generated tokens. The
+                    higher the value, the stronger a penalty is applied to
+                    previously present tokens, proportional to how many times
+                    they have already appeared in the prompt or prior
+                    generation.
                 presence_penalty:
                   type: number
                   format: double
+                  description: >
+                    Defaults to `0.0`, min value of `0.0`, max value of `1.0`.
+
+                    Used to reduce repetitiveness of generated tokens. Similar
+                    to `frequency_penalty`, except that this penalty is applied
+                    equally to all tokens that have already appeared, regardless
+                    of their exact frequencies.
                 k:
                   type: integer
+                  default: 0
+                  description: >
+                    Ensures that only the top `k` most likely tokens are
+                    considered for generation at each step. When `k` is set to
+                    `0`, k-sampling is disabled.
+
+                    Defaults to `0`, min value of `0`, max value of `500`.
                 p:
                   type: number
                   format: double
+                  description: >
+                    Ensures that only the most likely tokens, with total
+                    probability mass of `p`, are considered for generation at
+                    each step. If both `k` and `p` are enabled, `p` acts after
+                    `k`.
+
+                    Defaults to `0.75`. min value of `0.01`, max value of
+                    `0.99`.
                 logprobs:
                   type: boolean
+                  description: >
+                    Defaults to `false`. When set to `true`, the log
+                    probabilities of the generated tokens will be included in
+                    the response.
                 tool_choice:
                   $ref: >-
                     #/components/schemas/V2ChatPostRequestBodyContentApplicationJsonSchemaToolChoice
+                  description: >
+                    Used to control whether or not the model will be forced to
+                    use a tool when answering. When `REQUIRED` is specified, the
+                    model will be forced to use at least one of the user-defined
+                    tools, and the `tools` parameter must be passed in the
+                    request.
+
+                    When `NONE` is specified, the model will be forced **not**
+                    to use one of the specified tools, and give a direct
+                    response.
+
+                    If tool_choice isn't specified, then the model is free to
+                    choose whether to use the specified tools or not.
+
+
+                    **Note**: This parameter is only compatible with models
+                    [Command-r7b](https://docs.cohere.com/v2/docs/command-r7b)
+                    and newer.
                 thinking:
                   $ref: '#/components/schemas/Thinking'
                 priority:
                   type: integer
+                  default: 0
+                  description: >-
+                    Controls how early the request is handled. Lower numbers
+                    indicate higher priority (default: 0, the highest). When the
+                    system is under load, higher-priority requests are processed
+                    first and are the least likely to be dropped.
               required:
                 - stream
                 - model
@@ -29644,8 +30144,15 @@ components:
       properties:
         url:
           type: string
+          description: |
+            URL of an image. Can be either a base64 data URI or a web URL.
         detail:
           $ref: '#/components/schemas/ImageUrlDetail'
+          description: >
+            Controls the level of detail in image processing. `"auto"` is the
+            default and lets the system choose, `"low"` is faster but less
+            detailed, and `"high"` preserves maximum detail. You can save tokens
+            and speed up responses by using detail: `"low"`.
       required:
         - url
     ImageContent:
@@ -29677,6 +30184,11 @@ components:
           $ref: '#/components/schemas/UserMessageV2Role'
         content:
           $ref: '#/components/schemas/UserMessageV2Content'
+          description: >
+            The content of the message. This can be a string or a list of
+            content blocks.
+
+            If a string is provided, it will be treated as a text content block.
       required:
         - role
         - content
@@ -29744,6 +30256,7 @@ components:
               description: 'Discriminator value: tool'
             id:
               type: string
+              description: The unique identifier of the document
             tool_output:
               type: object
               additionalProperties:
@@ -29760,6 +30273,7 @@ components:
               description: 'Discriminator value: document'
             id:
               type: string
+              description: The unique identifier of the document
             document:
               type: object
               additionalProperties:
@@ -29780,16 +30294,20 @@ components:
       properties:
         start:
           type: integer
+          description: Start index of the cited snippet in the original source text.
         end:
           type: integer
+          description: End index of the cited snippet in the original source text.
         text:
           type: string
+          description: Text snippet that is being cited.
         sources:
           type: array
           items:
             $ref: '#/components/schemas/Source'
         content_index:
           type: integer
+          description: Index of the content block in which this citation appears.
         type:
           $ref: '#/components/schemas/CitationType'
     AssistantMessageV2:
@@ -29803,6 +30321,9 @@ components:
             $ref: '#/components/schemas/ToolCallV2'
         tool_plan:
           type: string
+          description: >-
+            A chain-of-thought style reflection and plan that the model
+            generates when working with Tools.
         content:
           $ref: '#/components/schemas/AssistantMessageV2Content'
         citations:
@@ -29852,8 +30373,14 @@ components:
       properties:
         data:
           $ref: '#/components/schemas/Document-qmvpd9'
+          description: >
+            A relevant document that the model can cite to generate a more
+            accurate reply. Each document is a string-any dictionary.
         id:
           type: string
+          description: >-
+            Unique identifier for this document which will be referenced in
+            citations. If not provided an ID will be automatically generated.
       required:
         - data
     DocumentContent:
@@ -29885,8 +30412,14 @@ components:
           $ref: '#/components/schemas/ToolMessageV2Role'
         tool_call_id:
           type: string
+          description: >-
+            The id of the associated tool call that has provided the given
+            content
         content:
           $ref: '#/components/schemas/ToolMessageV2Content'
+          description: >-
+            Outputs from a tool. The content should formatted as a JSON object
+            string, or a list of tool content blocks
       required:
         - role
         - tool_call_id
@@ -29913,10 +30446,13 @@ components:
       properties:
         name:
           type: string
+          description: The name of the function.
         description:
           type: string
+          description: The description of the function.
         parameters:
           $ref: '#/components/schemas/ToolV2-6eoehf'
+          description: The parameters of the function as a JSON schema.
       required:
         - name
         - parameters
@@ -29927,6 +30463,7 @@ components:
           $ref: '#/components/schemas/ToolV2Type'
         function:
           $ref: '#/components/schemas/ToolV2Function'
+          description: The function to be executed.
       required:
         - type
     V2ChatPostRequestBodyContentApplicationJsonSchemaDocumentsItems:
@@ -29946,6 +30483,11 @@ components:
       properties:
         mode:
           $ref: '#/components/schemas/CitationOptionsMode'
+          description: >
+            Defaults to `"enabled"`.
+
+            Citations are enabled by default for models that support it, but can
+            be turned off by setting `"type": "disabled"`.
     ResponseFormatTypeV2:
       type: string
       enum:
@@ -29968,6 +30510,31 @@ components:
           $ref: '#/components/schemas/ResponseFormatTypeV2'
         json_schema:
           $ref: '#/components/schemas/JsonResponseFormatV2-uu9wid'
+          description: >
+            A [JSON schema](https://json-schema.org/overview/what-is-jsonschema)
+            object that the output will adhere to. There are some restrictions
+            we have on the schema, refer to [our
+            guide](https://docs.cohere.com/docs/structured-outputs-json#schema-constraints)
+            for more information.
+
+            Example (required name and age object):
+
+            ```json
+
+            {
+              "type": "object",
+              "properties": {
+                "name": {"type": "string"},
+                "age": {"type": "integer"}
+              },
+              "required": ["name", "age"]
+            }
+
+            ```
+
+
+            **Note**: This field must not be specified when the `type` is set to
+            `"text"`.
       required:
         - type
     ResponseFormatV2:
@@ -29995,8 +30562,17 @@ components:
       properties:
         type:
           $ref: '#/components/schemas/ThinkingType'
+          description: >
+            Reasoning is enabled by default for models that support it, but can
+            be turned off by setting `"type": "disabled"`.
         token_budget:
           type: integer
+          description: >
+            The maximum number of tokens the model can use for thinking, which
+            must be set to a positive integer.
+
+            The model will stop thinking if it reaches the thinking token budget
+            and will proceed with the response.
       required:
         - type
     ChatStreamEventTypeType:
@@ -30022,6 +30598,7 @@ components:
       properties:
         role:
           $ref: '#/components/schemas/ChatMessageStartEventDeltaMessageRole'
+          description: The role of the message.
     ChatMessageStartEventDelta:
       type: object
       properties:
@@ -30073,15 +30650,18 @@ components:
       properties:
         text:
           type: string
+          description: The text chunk for which the log probabilities was calculated.
         token_ids:
           type: array
           items:
             type: integer
+          description: The token ids of each token used to construct the text chunk.
         logprobs:
           type: array
           items:
             type: number
             format: double
+          description: The log probability of each token used to construct the text chunk.
       required:
         - token_ids
     ChatToolPlanDeltaEventDeltaMessage:
@@ -30150,24 +30730,36 @@ components:
         input_tokens:
           type: number
           format: double
+          description: |
+            The number of billed input tokens.
         output_tokens:
           type: number
           format: double
+          description: |
+            The number of billed output tokens.
         search_units:
           type: number
           format: double
+          description: |
+            The number of billed search units.
         classifications:
           type: number
           format: double
+          description: |
+            The number of billed classifications units.
     UsageTokens:
       type: object
       properties:
         input_tokens:
           type: number
           format: double
+          description: |
+            The number of tokens used as input to the model.
         output_tokens:
           type: number
           format: double
+          description: |
+            The number of tokens produced by the model.
     Usage:
       type: object
       properties:
@@ -30178,11 +30770,15 @@ components:
         cached_tokens:
           type: number
           format: double
+          description: |
+            The number of prompt tokens that hit the inference cache.
     ChatMessageEndEventDelta:
       type: object
       properties:
         error:
           type: string
+          description: |
+            An error message if an error occurred during the generation.
         finish_reason:
           $ref: '#/components/schemas/ChatFinishReason'
         usage:
@@ -30205,6 +30801,7 @@ components:
               $ref: '#/components/schemas/ChatStreamEventTypeType'
             id:
               type: string
+              description: Unique identifier for the generated reply.
             delta:
               $ref: '#/components/schemas/ChatMessageStartEventDelta'
           required:
@@ -31891,18 +32488,46 @@ paths:
               properties:
                 model:
                   type: string
+                  description: The identifier of the model to use, eg `rerank-v3.5`.
                 query:
                   type: string
+                  description: The search query
                 documents:
                   type: array
                   items:
                     type: string
+                  description: >-
+                    A list of texts that will be compared to the `query`.
+
+                    For optimal performance we recommend against sending more
+                    than 1,000 documents in a single request.
+
+
+                    **Note**: long documents will automatically be truncated to
+                    the value of `max_tokens_per_doc`.
+
+
+                    **Note**: structured data should be formatted as YAML
+                    strings for best performance.
                 top_n:
                   type: integer
+                  description: >-
+                    Limits the number of returned rerank results to the
+                    specified value. If not passed, all the rerank results will
+                    be returned.
                 max_tokens_per_doc:
                   type: integer
+                  description: >-
+                    Defaults to `4096`. Long documents will be automatically
+                    truncated to the specified number of tokens.
                 priority:
                   type: integer
+                  default: 0
+                  description: >-
+                    Controls how early the request is handled. Lower numbers
+                    indicate higher priority (default: 0, the highest). When the
+                    system is under load, higher-priority requests are processed
+                    first and are the least likely to be dropped.
               required:
                 - model
                 - query
@@ -31914,9 +32539,21 @@ components:
       properties:
         index:
           type: integer
+          description: >-
+            Corresponds to the index in the original list of documents to which
+            the ranked document belongs. (i.e. if the first value in the
+            `results` object has an `index` value of 3, it means in the list of
+            documents passed in, the document at `index=3` had the highest
+            relevance)
         relevance_score:
           type: number
           format: double
+          description: >-
+            Relevance scores are normalized to be in the range `[0, 1]`. Scores
+            close to `1` indicate a high relevance to the query, and scores
+            closer to `0` indicate low relevance. It is not accurate to assume a
+            score of 0.9 means the document is 2x more relevant than a document
+            with a score of 0.45
       required:
         - index
         - relevance_score
@@ -31937,27 +32574,46 @@ components:
         images:
           type: number
           format: double
+          description: |
+            The number of billed images.
         input_tokens:
           type: number
           format: double
+          description: |
+            The number of billed input tokens.
+        image_tokens:
+          type: number
+          format: double
+          description: |
+            The number of billed image tokens.
         output_tokens:
           type: number
           format: double
+          description: |
+            The number of billed output tokens.
         search_units:
           type: number
           format: double
+          description: |
+            The number of billed search units.
         classifications:
           type: number
           format: double
+          description: |
+            The number of billed classifications units.
     ApiMetaTokens:
       type: object
       properties:
         input_tokens:
           type: number
           format: double
+          description: |
+            The number of tokens used as input to the model.
         output_tokens:
           type: number
           format: double
+          description: |
+            The number of tokens produced by the model.
     ApiMeta:
       type: object
       properties:
@@ -31970,6 +32626,8 @@ components:
         cached_tokens:
           type: number
           format: double
+          description: |
+            The number of prompt tokens that hit the inference cache.
         warnings:
           type: array
           items:
@@ -31984,6 +32642,7 @@ components:
           items:
             $ref: >-
               #/components/schemas/V2RerankPostResponsesContentApplicationJsonSchemaResultsItems
+          description: An ordered list of ranked documents
         meta:
           $ref: '#/components/schemas/ApiMeta'
       required:
@@ -32009,7 +32668,7 @@ const cohere = new CohereClient({});
     ],
     query: 'What is the capital of the United States?',
     topN: 3,
-    model: 'rerank-v3.5',
+    model: 'rerank-v4.0-pro',
   });
 
   console.log(rerank);
@@ -32031,7 +32690,7 @@ docs = [
 ]
 
 response = co.rerank(
-    model="rerank-v3.5",
+    model="rerank-v4.0-pro",
     query="What is the capital of the United States?",
     documents=docs,
     top_n=3,
@@ -32048,7 +32707,7 @@ co = cohere.AsyncClientV2()
 
 async def main():
     response = await co.rerank(
-        model="rerank-v3.5",
+        model="rerank-v4.0-pro",
         query="What is the capital of the United States?",
         documents=[
             "Carson City is the capital city of the American state of Nevada.",
@@ -32082,7 +32741,7 @@ public class RerankV2Post {
             .v2()
             .rerank(
                 V2RerankRequest.builder()
-                    .model("rerank-v3.5")
+                    .model("rerank-v4.0-pro")
                     .query("What is the capital of the United States?")
                     .documents(
                         List.of(
@@ -32121,7 +32780,7 @@ func main() {
 
 	url := "https://api.cohere.com/v2/rerank"
 
-	payload := strings.NewReader("{\n  \"model\": \"rerank-v3.5\",\n  \"query\": \"What is the capital of the United States?\",\n  \"documents\": [\n    \"Carson City is the capital city of the American state of Nevada.\",\n    \"The Commonwealth of the Northern Mariana Islands is a group of islands in the Pacific Ocean. Its capital is Saipan.\",\n    \"Capitalization or capitalisation in English grammar is the use of a capital letter at the start of a word. English usage varies from capitalization in other languages.\",\n    \"Washington, D.C. (also known as simply Washington or D.C., and officially as the District of Columbia) is the capital of the United States. It is a federal district.\",\n    \"Capital punishment has existed in the United States since beforethe United States was a country. As of 2017, capital punishment is legal in 30 of the 50 states.\"\n  ],\n  \"top_n\": 3\n}")
+	payload := strings.NewReader("{\n  \"model\": \"rerank-v4.0-pro\",\n  \"query\": \"What is the capital of the United States?\",\n  \"documents\": [\n    \"Carson City is the capital city of the American state of Nevada.\",\n    \"The Commonwealth of the Northern Mariana Islands is a group of islands in the Pacific Ocean. Its capital is Saipan.\",\n    \"Capitalization or capitalisation in English grammar is the use of a capital letter at the start of a word. English usage varies from capitalization in other languages.\",\n    \"Washington, D.C. (also known as simply Washington or D.C., and officially as the District of Columbia) is the capital of the United States. It is a federal district.\",\n    \"Capital punishment has existed in the United States since beforethe United States was a country. As of 2017, capital punishment is legal in 30 of the 50 states.\"\n  ],\n  \"top_n\": 3\n}")
 
 	req, _ := http.NewRequest("POST", url, payload)
 
@@ -32151,7 +32810,7 @@ http.use_ssl = true
 request = Net::HTTP::Post.new(url)
 request["Authorization"] = 'Bearer <token>'
 request["Content-Type"] = 'application/json'
-request.body = "{\n  \"model\": \"rerank-v3.5\",\n  \"query\": \"What is the capital of the United States?\",\n  \"documents\": [\n    \"Carson City is the capital city of the American state of Nevada.\",\n    \"The Commonwealth of the Northern Mariana Islands is a group of islands in the Pacific Ocean. Its capital is Saipan.\",\n    \"Capitalization or capitalisation in English grammar is the use of a capital letter at the start of a word. English usage varies from capitalization in other languages.\",\n    \"Washington, D.C. (also known as simply Washington or D.C., and officially as the District of Columbia) is the capital of the United States. It is a federal district.\",\n    \"Capital punishment has existed in the United States since beforethe United States was a country. As of 2017, capital punishment is legal in 30 of the 50 states.\"\n  ],\n  \"top_n\": 3\n}"
+request.body = "{\n  \"model\": \"rerank-v4.0-pro\",\n  \"query\": \"What is the capital of the United States?\",\n  \"documents\": [\n    \"Carson City is the capital city of the American state of Nevada.\",\n    \"The Commonwealth of the Northern Mariana Islands is a group of islands in the Pacific Ocean. Its capital is Saipan.\",\n    \"Capitalization or capitalisation in English grammar is the use of a capital letter at the start of a word. English usage varies from capitalization in other languages.\",\n    \"Washington, D.C. (also known as simply Washington or D.C., and officially as the District of Columbia) is the capital of the United States. It is a federal district.\",\n    \"Capital punishment has existed in the United States since beforethe United States was a country. As of 2017, capital punishment is legal in 30 of the 50 states.\"\n  ],\n  \"top_n\": 3\n}"
 
 response = http.request(request)
 puts response.read_body
@@ -32164,7 +32823,7 @@ $client = new \GuzzleHttp\Client();
 
 $response = $client->request('POST', 'https://api.cohere.com/v2/rerank', [
   'body' => '{
-  "model": "rerank-v3.5",
+  "model": "rerank-v4.0-pro",
   "query": "What is the capital of the United States?",
   "documents": [
     "Carson City is the capital city of the American state of Nevada.",
@@ -32189,7 +32848,7 @@ var client = new RestClient("https://api.cohere.com/v2/rerank");
 var request = new RestRequest(Method.POST);
 request.AddHeader("Authorization", "Bearer <token>");
 request.AddHeader("Content-Type", "application/json");
-request.AddParameter("application/json", "{\n  \"model\": \"rerank-v3.5\",\n  \"query\": \"What is the capital of the United States?\",\n  \"documents\": [\n    \"Carson City is the capital city of the American state of Nevada.\",\n    \"The Commonwealth of the Northern Mariana Islands is a group of islands in the Pacific Ocean. Its capital is Saipan.\",\n    \"Capitalization or capitalisation in English grammar is the use of a capital letter at the start of a word. English usage varies from capitalization in other languages.\",\n    \"Washington, D.C. (also known as simply Washington or D.C., and officially as the District of Columbia) is the capital of the United States. It is a federal district.\",\n    \"Capital punishment has existed in the United States since beforethe United States was a country. As of 2017, capital punishment is legal in 30 of the 50 states.\"\n  ],\n  \"top_n\": 3\n}", ParameterType.RequestBody);
+request.AddParameter("application/json", "{\n  \"model\": \"rerank-v4.0-pro\",\n  \"query\": \"What is the capital of the United States?\",\n  \"documents\": [\n    \"Carson City is the capital city of the American state of Nevada.\",\n    \"The Commonwealth of the Northern Mariana Islands is a group of islands in the Pacific Ocean. Its capital is Saipan.\",\n    \"Capitalization or capitalisation in English grammar is the use of a capital letter at the start of a word. English usage varies from capitalization in other languages.\",\n    \"Washington, D.C. (also known as simply Washington or D.C., and officially as the District of Columbia) is the capital of the United States. It is a federal district.\",\n    \"Capital punishment has existed in the United States since beforethe United States was a country. As of 2017, capital punishment is legal in 30 of the 50 states.\"\n  ],\n  \"top_n\": 3\n}", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
 ```
 
@@ -32201,7 +32860,7 @@ let headers = [
   "Content-Type": "application/json"
 ]
 let parameters = [
-  "model": "rerank-v3.5",
+  "model": "rerank-v4.0-pro",
   "query": "What is the capital of the United States?",
   "documents": ["Carson City is the capital city of the American state of Nevada.", "The Commonwealth of the Northern Mariana Islands is a group of islands in the Pacific Ocean. Its capital is Saipan.", "Capitalization or capitalisation in English grammar is the use of a capital letter at the start of a word. English usage varies from capitalization in other languages.", "Washington, D.C. (also known as simply Washington or D.C., and officially as the District of Columbia) is the capital of the United States. It is a federal district.", "Capital punishment has existed in the United States since beforethe United States was a country. As of 2017, capital punishment is legal in 30 of the 50 states."],
   "top_n": 3
@@ -32374,31 +33033,111 @@ paths:
                   type: array
                   items:
                     type: string
+                  description: >-
+                    An array of strings for the model to embed. Maximum number
+                    of texts per call is `96`.
                 images:
                   type: array
                   items:
                     type: string
+                  description: >-
+                    An array of image data URIs for the model to embed. Maximum
+                    number of images per call is `1`.
+
+
+                    The image must be a valid [data
+                    URI](https://developer.mozilla.org/en-US/docs/Web/URI/Schemes/data).
+                    The image must be in either `image/jpeg`, `image/png`,
+                    `image/webp`, or `image/gif` format and has a maximum size
+                    of 5MB.
+
+
+                    Image embeddings are supported with Embed v3.0 and newer
+                    models.
                 model:
                   type: string
+                  description: >-
+                    ID of one of the available [Embedding
+                    models](https://docs.cohere.com/docs/cohere-embed).
                 input_type:
                   $ref: '#/components/schemas/EmbedInputType'
                 inputs:
                   type: array
                   items:
                     $ref: '#/components/schemas/EmbedInput'
+                  description: >-
+                    An array of inputs for the model to embed. Maximum number of
+                    inputs per call is `96`. An input can contain a mix of text
+                    and image components.
                 max_tokens:
                   type: integer
+                  description: >-
+                    The maximum number of tokens to embed per input. If the
+                    input text is longer than this, it will be truncated
+                    according to the `truncate` parameter.
                 output_dimension:
                   type: integer
+                  description: >-
+                    The number of dimensions of the output embedding. This is
+                    only available for `embed-v4` and newer models.
+
+                    Possible values are `256`, `512`, `1024`, and `1536`. The
+                    default is `1536`.
                 embedding_types:
                   type: array
                   items:
                     $ref: '#/components/schemas/EmbeddingType'
+                  description: >-
+                    Specifies the types of embeddings you want to get back. Can
+                    be one or more of the following types.
+
+
+                    * `"float"`: Use this when you want to get back the default
+                    float embeddings. Supported with all Embed models.
+
+                    * `"int8"`: Use this when you want to get back signed int8
+                    embeddings. Supported with Embed v3.0 and newer Embed
+                    models.
+
+                    * `"uint8"`: Use this when you want to get back unsigned
+                    int8 embeddings. Supported with Embed v3.0 and newer Embed
+                    models.
+
+                    * `"binary"`: Use this when you want to get back signed
+                    binary embeddings. Supported with Embed v3.0 and newer Embed
+                    models.
+
+                    * `"ubinary"`: Use this when you want to get back unsigned
+                    binary embeddings. Supported with Embed v3.0 and newer Embed
+                    models.
+
+                    * `"base64"`: Use this when you want to get back base64
+                    embeddings. Supported with Embed v3.0 and newer Embed
+                    models.
                 truncate:
                   $ref: >-
                     #/components/schemas/V2EmbedPostRequestBodyContentApplicationJsonSchemaTruncate
+                  description: >-
+                    One of `NONE|START|END` to specify how the API will handle
+                    inputs longer than the maximum token length.
+
+
+                    Passing `START` will discard the start of the input. `END`
+                    will discard the end of the input. In both cases, input is
+                    discarded until the remaining input is exactly the maximum
+                    input token length for the model.
+
+
+                    If `NONE` is selected, when the input exceeds the maximum
+                    input token length an error will be returned.
                 priority:
                   type: integer
+                  default: 0
+                  description: >-
+                    Controls how early the request is handled. Lower numbers
+                    indicate higher priority (default: 0, the highest). When the
+                    system is under load, higher-priority requests are processed
+                    first and are the least likely to be dropped.
               required:
                 - model
                 - input_type
@@ -32449,6 +33188,9 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/EmbedContent'
+          description: >-
+            An array of objects containing the input data for the model to
+            embed.
       required:
         - content
     EmbeddingType:
@@ -32466,6 +33208,7 @@ components:
         - value: NONE
         - value: START
         - value: END
+      default: END
     EmbedByTypeResponseResponseType:
       type: string
       enum:
@@ -32481,48 +33224,71 @@ components:
             items:
               type: number
               format: double
+          description: An array of float embeddings.
         int8:
           type: array
           items:
             type: array
             items:
               type: integer
+          description: >-
+            An array of signed int8 embeddings. Each value is between -128 and
+            127.
         uint8:
           type: array
           items:
             type: array
             items:
               type: integer
+          description: >-
+            An array of unsigned int8 embeddings. Each value is between 0 and
+            255.
         binary:
           type: array
           items:
             type: array
             items:
               type: integer
+          description: >-
+            An array of packed signed binary embeddings. The length of each
+            binary embedding is 1/8 the length of the float embeddings of the
+            provided model. Each value is between -128 and 127.
         ubinary:
           type: array
           items:
             type: array
             items:
               type: integer
+          description: >-
+            An array of packed unsigned binary embeddings. The length of each
+            binary embedding is 1/8 the length of the float embeddings of the
+            provided model. Each value is between 0 and 255.
         base64:
           type: array
           items:
             type: string
+          description: >-
+            An array of base64 embeddings. Each string is the result of
+            appending the float embedding bytes together and base64 encoding
+            that.
     Image:
       type: object
       properties:
         width:
           type: integer
           format: int64
+          description: Width of the image in pixels
         height:
           type: integer
           format: int64
+          description: Height of the image in pixels
         format:
           type: string
+          description: Format of the image
         bit_depth:
           type: integer
           format: int64
+          description: Bit depth of the image
       required:
         - width
         - height
@@ -32545,27 +33311,46 @@ components:
         images:
           type: number
           format: double
+          description: |
+            The number of billed images.
         input_tokens:
           type: number
           format: double
+          description: |
+            The number of billed input tokens.
+        image_tokens:
+          type: number
+          format: double
+          description: |
+            The number of billed image tokens.
         output_tokens:
           type: number
           format: double
+          description: |
+            The number of billed output tokens.
         search_units:
           type: number
           format: double
+          description: |
+            The number of billed search units.
         classifications:
           type: number
           format: double
+          description: |
+            The number of billed classifications units.
     ApiMetaTokens:
       type: object
       properties:
         input_tokens:
           type: number
           format: double
+          description: |
+            The number of tokens used as input to the model.
         output_tokens:
           type: number
           format: double
+          description: |
+            The number of tokens produced by the model.
     ApiMeta:
       type: object
       properties:
@@ -32578,6 +33363,8 @@ components:
         cached_tokens:
           type: number
           format: double
+          description: |
+            The number of prompt tokens that hit the inference cache.
         warnings:
           type: array
           items:
@@ -32591,14 +33378,20 @@ components:
           type: string
         embeddings:
           $ref: '#/components/schemas/EmbedByTypeResponseEmbeddings'
+          description: >-
+            An object with different embedding types. The length of each
+            embedding type array will be the same as the length of the original
+            `texts` array.
         texts:
           type: array
           items:
             type: string
+          description: The text entries for which embeddings were returned.
         images:
           type: array
           items:
             $ref: '#/components/schemas/Image'
+          description: The image entries for which embeddings were returned.
         meta:
           $ref: '#/components/schemas/ApiMeta'
       required:
@@ -33235,24 +34028,68 @@ components:
       enum:
         - value: START
         - value: END
+      default: END
     CreateEmbedJobRequest:
       type: object
       properties:
         model:
           type: string
           format: string
+          description: |
+            ID of the embedding model.
+
+            Available models and corresponding embedding dimensions:
+
+            - `embed-english-v3.0` : 1024
+            - `embed-multilingual-v3.0` : 1024
+            - `embed-english-light-v3.0` : 384
+            - `embed-multilingual-light-v3.0` : 384
         dataset_id:
           type: string
+          description: >-
+            ID of a [Dataset](https://docs.cohere.com/docs/datasets). The
+            Dataset must be of type `embed-input` and must have a validation
+            status `Validated`
         input_type:
           $ref: '#/components/schemas/EmbedInputType'
         name:
           type: string
+          description: The name of the embed job.
         embedding_types:
           type: array
           items:
             $ref: '#/components/schemas/EmbeddingType'
+          description: >-
+            Specifies the types of embeddings you want to get back. Not required
+            and default is None, which returns the Embed Floats response type.
+            Can be one or more of the following types.
+
+
+            * `"float"`: Use this when you want to get back the default float
+            embeddings. Valid for all models.
+
+            * `"int8"`: Use this when you want to get back signed int8
+            embeddings. Valid for v3 and newer model versions.
+
+            * `"uint8"`: Use this when you want to get back unsigned int8
+            embeddings. Valid for v3 and newer model versions.
+
+            * `"binary"`: Use this when you want to get back signed binary
+            embeddings. Valid for v3 and newer model versions.
+
+            * `"ubinary"`: Use this when you want to get back unsigned binary
+            embeddings. Valid for v3 and newer model versions.
         truncate:
           $ref: '#/components/schemas/CreateEmbedJobRequestTruncate'
+          description: >
+            One of `START|END` to specify how the API will handle inputs longer
+            than the maximum token length.
+
+
+            Passing `START` will discard the start of the input. `END` will
+            discard the end of the input. In both cases, input is discarded
+            until the remaining input is exactly the maximum input token length
+            for the model.
       required:
         - model
         - dataset_id
@@ -33274,27 +34111,46 @@ components:
         images:
           type: number
           format: double
+          description: |
+            The number of billed images.
         input_tokens:
           type: number
           format: double
+          description: |
+            The number of billed input tokens.
+        image_tokens:
+          type: number
+          format: double
+          description: |
+            The number of billed image tokens.
         output_tokens:
           type: number
           format: double
+          description: |
+            The number of billed output tokens.
         search_units:
           type: number
           format: double
+          description: |
+            The number of billed search units.
         classifications:
           type: number
           format: double
+          description: |
+            The number of billed classifications units.
     ApiMetaTokens:
       type: object
       properties:
         input_tokens:
           type: number
           format: double
+          description: |
+            The number of tokens used as input to the model.
         output_tokens:
           type: number
           format: double
+          description: |
+            The number of tokens produced by the model.
     ApiMeta:
       type: object
       properties:
@@ -33307,6 +34163,8 @@ components:
         cached_tokens:
           type: number
           format: double
+          description: |
+            The number of prompt tokens that hit the inference cache.
         warnings:
           type: array
           items:
@@ -33457,7 +34315,7 @@ request = Net::HTTP::Post.new(url)
 request["X-Client-Name"] = 'my-cool-project'
 request["Authorization"] = 'Bearer <token>'
 request["Content-Type"] = 'application/json'
-request.body = "{\n  \"model\": \"string\",\n  \"dataset_id\": \"string\",\n  \"input_type\": \"search_document\"\n}"
+request.body = "{\n  \"model\": \"embed-english-v3.0\",\n  \"dataset_id\": \"dataset-12345\",\n  \"input_type\": \"search_document\"\n}"
 
 response = http.request(request)
 puts response.read_body
@@ -33470,8 +34328,8 @@ $client = new \GuzzleHttp\Client();
 
 $response = $client->request('POST', 'https://api.cohere.com/v1/embed-jobs', [
   'body' => '{
-  "model": "string",
-  "dataset_id": "string",
+  "model": "embed-english-v3.0",
+  "dataset_id": "dataset-12345",
   "input_type": "search_document"
 }',
   'headers' => [
@@ -33490,7 +34348,7 @@ var request = new RestRequest(Method.POST);
 request.AddHeader("X-Client-Name", "my-cool-project");
 request.AddHeader("Authorization", "Bearer <token>");
 request.AddHeader("Content-Type", "application/json");
-request.AddParameter("application/json", "{\n  \"model\": \"string\",\n  \"dataset_id\": \"string\",\n  \"input_type\": \"search_document\"\n}", ParameterType.RequestBody);
+request.AddParameter("application/json", "{\n  \"model\": \"embed-english-v3.0\",\n  \"dataset_id\": \"dataset-12345\",\n  \"input_type\": \"search_document\"\n}", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
 ```
 
@@ -33503,8 +34361,8 @@ let headers = [
   "Content-Type": "application/json"
 ]
 let parameters = [
-  "model": "string",
-  "dataset_id": "string",
+  "model": "embed-english-v3.0",
+  "dataset_id": "dataset-12345",
   "input_type": "search_document"
 ] as [String : Any]
 
@@ -33681,27 +34539,46 @@ components:
         images:
           type: number
           format: double
+          description: |
+            The number of billed images.
         input_tokens:
           type: number
           format: double
+          description: |
+            The number of billed input tokens.
+        image_tokens:
+          type: number
+          format: double
+          description: |
+            The number of billed image tokens.
         output_tokens:
           type: number
           format: double
+          description: |
+            The number of billed output tokens.
         search_units:
           type: number
           format: double
+          description: |
+            The number of billed search units.
         classifications:
           type: number
           format: double
+          description: |
+            The number of billed classifications units.
     ApiMetaTokens:
       type: object
       properties:
         input_tokens:
           type: number
           format: double
+          description: |
+            The number of tokens used as input to the model.
         output_tokens:
           type: number
           format: double
+          description: |
+            The number of tokens produced by the model.
     ApiMeta:
       type: object
       properties:
@@ -33714,6 +34591,8 @@ components:
         cached_tokens:
           type: number
           format: double
+          description: |
+            The number of prompt tokens that hit the inference cache.
         warnings:
           type: array
           items:
@@ -33723,21 +34602,29 @@ components:
       properties:
         job_id:
           type: string
+          description: ID of the embed job
         name:
           type: string
+          description: The name of the embed job
         status:
           $ref: '#/components/schemas/EmbedJobStatus'
+          description: The status of the embed job
         created_at:
           type: string
           format: date-time
+          description: The creation date of the embed job
         input_dataset_id:
           type: string
+          description: ID of the input dataset
         output_dataset_id:
           type: string
+          description: ID of the resulting output dataset
         model:
           type: string
+          description: ID of the model used to embed
         truncate:
           $ref: '#/components/schemas/EmbedJobTruncate'
+          description: The truncation option used
         meta:
           $ref: '#/components/schemas/ApiMeta'
       required:
@@ -33855,6 +34742,8 @@ http.use_ssl = true
 request = Net::HTTP::Get.new(url)
 request["X-Client-Name"] = 'my-cool-project'
 request["Authorization"] = 'Bearer <token>'
+request["Content-Type"] = 'application/json'
+request.body = "{}"
 
 response = http.request(request)
 puts response.read_body
@@ -33866,8 +34755,10 @@ puts response.read_body
 $client = new \GuzzleHttp\Client();
 
 $response = $client->request('GET', 'https://api.cohere.com/v1/embed-jobs', [
+  'body' => '{}',
   'headers' => [
     'Authorization' => 'Bearer <token>',
+    'Content-Type' => 'application/json',
     'X-Client-Name' => 'my-cool-project',
   ],
 ]);
@@ -33880,6 +34771,8 @@ var client = new RestClient("https://api.cohere.com/v1/embed-jobs");
 var request = new RestRequest(Method.GET);
 request.AddHeader("X-Client-Name", "my-cool-project");
 request.AddHeader("Authorization", "Bearer <token>");
+request.AddHeader("Content-Type", "application/json");
+request.AddParameter("application/json", "{}", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
 ```
 
@@ -33888,14 +34781,19 @@ import Foundation
 
 let headers = [
   "X-Client-Name": "my-cool-project",
-  "Authorization": "Bearer <token>"
+  "Authorization": "Bearer <token>",
+  "Content-Type": "application/json"
 ]
+let parameters = [] as [String : Any]
+
+let postData = JSONSerialization.data(withJSONObject: parameters, options: [])
 
 let request = NSMutableURLRequest(url: NSURL(string: "https://api.cohere.com/v1/embed-jobs")! as URL,
                                         cachePolicy: .useProtocolCachePolicy,
                                     timeoutInterval: 10.0)
 request.httpMethod = "GET"
 request.allHTTPHeaderFields = headers
+request.httpBody = postData as Data
 
 let session = URLSession.shared
 let dataTask = session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) -> Void in
@@ -34067,27 +34965,46 @@ components:
         images:
           type: number
           format: double
+          description: |
+            The number of billed images.
         input_tokens:
           type: number
           format: double
+          description: |
+            The number of billed input tokens.
+        image_tokens:
+          type: number
+          format: double
+          description: |
+            The number of billed image tokens.
         output_tokens:
           type: number
           format: double
+          description: |
+            The number of billed output tokens.
         search_units:
           type: number
           format: double
+          description: |
+            The number of billed search units.
         classifications:
           type: number
           format: double
+          description: |
+            The number of billed classifications units.
     ApiMetaTokens:
       type: object
       properties:
         input_tokens:
           type: number
           format: double
+          description: |
+            The number of tokens used as input to the model.
         output_tokens:
           type: number
           format: double
+          description: |
+            The number of tokens produced by the model.
     ApiMeta:
       type: object
       properties:
@@ -34100,6 +35017,8 @@ components:
         cached_tokens:
           type: number
           format: double
+          description: |
+            The number of prompt tokens that hit the inference cache.
         warnings:
           type: array
           items:
@@ -34109,21 +35028,29 @@ components:
       properties:
         job_id:
           type: string
+          description: ID of the embed job
         name:
           type: string
+          description: The name of the embed job
         status:
           $ref: '#/components/schemas/EmbedJobStatus'
+          description: The status of the embed job
         created_at:
           type: string
           format: date-time
+          description: The creation date of the embed job
         input_dataset_id:
           type: string
+          description: ID of the input dataset
         output_dataset_id:
           type: string
+          description: ID of the resulting output dataset
         model:
           type: string
+          description: ID of the model used to embed
         truncate:
           $ref: '#/components/schemas/EmbedJobTruncate'
+          description: The truncation option used
         meta:
           $ref: '#/components/schemas/ApiMeta'
       required:
@@ -34234,6 +35161,8 @@ http.use_ssl = true
 request = Net::HTTP::Get.new(url)
 request["X-Client-Name"] = 'my-cool-project'
 request["Authorization"] = 'Bearer <token>'
+request["Content-Type"] = 'application/json'
+request.body = "{}"
 
 response = http.request(request)
 puts response.read_body
@@ -34245,8 +35174,10 @@ puts response.read_body
 $client = new \GuzzleHttp\Client();
 
 $response = $client->request('GET', 'https://api.cohere.com/v1/embed-jobs/id', [
+  'body' => '{}',
   'headers' => [
     'Authorization' => 'Bearer <token>',
+    'Content-Type' => 'application/json',
     'X-Client-Name' => 'my-cool-project',
   ],
 ]);
@@ -34259,6 +35190,8 @@ var client = new RestClient("https://api.cohere.com/v1/embed-jobs/id");
 var request = new RestRequest(Method.GET);
 request.AddHeader("X-Client-Name", "my-cool-project");
 request.AddHeader("Authorization", "Bearer <token>");
+request.AddHeader("Content-Type", "application/json");
+request.AddParameter("application/json", "{}", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
 ```
 
@@ -34267,14 +35200,19 @@ import Foundation
 
 let headers = [
   "X-Client-Name": "my-cool-project",
-  "Authorization": "Bearer <token>"
+  "Authorization": "Bearer <token>",
+  "Content-Type": "application/json"
 ]
+let parameters = [] as [String : Any]
+
+let postData = JSONSerialization.data(withJSONObject: parameters, options: [])
 
 let request = NSMutableURLRequest(url: NSURL(string: "https://api.cohere.com/v1/embed-jobs/id")! as URL,
                                         cachePolicy: .useProtocolCachePolicy,
                                     timeoutInterval: 10.0)
 request.httpMethod = "GET"
 request.allHTTPHeaderFields = headers
+request.httpBody = postData as Data
 
 let session = URLSession.shared
 let dataTask = session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) -> Void in
@@ -34512,6 +35450,8 @@ http.use_ssl = true
 request = Net::HTTP::Post.new(url)
 request["X-Client-Name"] = 'my-cool-project'
 request["Authorization"] = 'Bearer <token>'
+request["Content-Type"] = 'application/json'
+request.body = "{}"
 
 response = http.request(request)
 puts response.read_body
@@ -34523,8 +35463,10 @@ puts response.read_body
 $client = new \GuzzleHttp\Client();
 
 $response = $client->request('POST', 'https://api.cohere.com/v1/embed-jobs/id/cancel', [
+  'body' => '{}',
   'headers' => [
     'Authorization' => 'Bearer <token>',
+    'Content-Type' => 'application/json',
     'X-Client-Name' => 'my-cool-project',
   ],
 ]);
@@ -34537,6 +35479,8 @@ var client = new RestClient("https://api.cohere.com/v1/embed-jobs/id/cancel");
 var request = new RestRequest(Method.POST);
 request.AddHeader("X-Client-Name", "my-cool-project");
 request.AddHeader("Authorization", "Bearer <token>");
+request.AddHeader("Content-Type", "application/json");
+request.AddParameter("application/json", "{}", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
 ```
 
@@ -34545,14 +35489,19 @@ import Foundation
 
 let headers = [
   "X-Client-Name": "my-cool-project",
-  "Authorization": "Bearer <token>"
+  "Authorization": "Bearer <token>",
+  "Content-Type": "application/json"
 ]
+let parameters = [] as [String : Any]
+
+let postData = JSONSerialization.data(withJSONObject: parameters, options: [])
 
 let request = NSMutableURLRequest(url: NSURL(string: "https://api.cohere.com/v1/embed-jobs/id/cancel")! as URL,
                                         cachePolicy: .useProtocolCachePolicy,
                                     timeoutInterval: 10.0)
 request.httpMethod = "POST"
 request.allHTTPHeaderFields = headers
+request.httpBody = postData as Data
 
 let session = URLSession.shared
 let dataTask = session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) -> Void in
@@ -34768,7 +35717,17 @@ paths:
           multipart/form-data:
             schema:
               type: object
-              properties: {}
+              properties:
+                data:
+                  type: string
+                  format: binary
+                  description: The file to upload
+                eval_data:
+                  type: string
+                  format: binary
+                  description: An optional evaluation file to upload
+              required:
+                - data
 components:
   schemas:
     DatasetType:
@@ -34791,6 +35750,7 @@ components:
       properties:
         id:
           type: string
+          description: The dataset ID
 
 ```
 
@@ -34944,7 +35904,7 @@ request = Net::HTTP::Post.new(url)
 request["X-Client-Name"] = 'my-cool-project'
 request["Authorization"] = 'Bearer <token>'
 request["Content-Type"] = 'multipart/form-data; boundary=---011000010111000001101001'
-request.body = "-----011000010111000001101001\r\nContent-Disposition: form-data; name=\"data\"; filename=\"string\"\r\nContent-Type: application/octet-stream\r\n\r\n\r\n-----011000010111000001101001\r\nContent-Disposition: form-data; name=\"eval_data\"; filename=\"<file1>\"\r\nContent-Type: application/octet-stream\r\n\r\n\r\n-----011000010111000001101001--\r\n"
+request.body = "-----011000010111000001101001\r\nContent-Disposition: form-data; name=\"data\"; filename=\"embed_dataset.jsonl\"\r\nContent-Type: application/octet-stream\r\n\r\n\r\n-----011000010111000001101001\r\nContent-Disposition: form-data; name=\"eval_data\"; filename=\"eval_dataset.jsonl\"\r\nContent-Type: application/octet-stream\r\n\r\n\r\n-----011000010111000001101001--\r\n"
 
 response = http.request(request)
 puts response.read_body
@@ -34959,12 +35919,12 @@ $response = $client->request('POST', 'https://api.cohere.com/v1/datasets?name=na
   'multipart' => [
     [
         'name' => 'data',
-        'filename' => 'string',
+        'filename' => 'embed_dataset.jsonl',
         'contents' => null
     ],
     [
         'name' => 'eval_data',
-        'filename' => '<file1>',
+        'filename' => 'eval_dataset.jsonl',
         'contents' => null
     ]
   ]
@@ -34982,7 +35942,7 @@ var client = new RestClient("https://api.cohere.com/v1/datasets?name=name&type=e
 var request = new RestRequest(Method.POST);
 request.AddHeader("X-Client-Name", "my-cool-project");
 request.AddHeader("Authorization", "Bearer <token>");
-request.AddParameter("multipart/form-data; boundary=---011000010111000001101001", "-----011000010111000001101001\r\nContent-Disposition: form-data; name=\"data\"; filename=\"string\"\r\nContent-Type: application/octet-stream\r\n\r\n\r\n-----011000010111000001101001\r\nContent-Disposition: form-data; name=\"eval_data\"; filename=\"<file1>\"\r\nContent-Type: application/octet-stream\r\n\r\n\r\n-----011000010111000001101001--\r\n", ParameterType.RequestBody);
+request.AddParameter("multipart/form-data; boundary=---011000010111000001101001", "-----011000010111000001101001\r\nContent-Disposition: form-data; name=\"data\"; filename=\"embed_dataset.jsonl\"\r\nContent-Type: application/octet-stream\r\n\r\n\r\n-----011000010111000001101001\r\nContent-Disposition: form-data; name=\"eval_data\"; filename=\"eval_dataset.jsonl\"\r\nContent-Type: application/octet-stream\r\n\r\n\r\n-----011000010111000001101001--\r\n", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
 ```
 
@@ -34997,11 +35957,11 @@ let headers = [
 let parameters = [
   [
     "name": "data",
-    "fileName": "string"
+    "fileName": "embed_dataset.jsonl"
   ],
   [
     "name": "eval_data",
-    "fileName": "<file1>"
+    "fileName": "eval_dataset.jsonl"
   ]
 ]
 
@@ -35235,22 +36195,30 @@ components:
       properties:
         id:
           type: string
+          description: The dataset part ID
         name:
           type: string
+          description: The name of the dataset part
         url:
           type: string
+          description: The download url of the file
         index:
           type: integer
+          description: The index of the file
         size_bytes:
           type: integer
+          description: The size of the file in bytes
         num_rows:
           type: integer
+          description: The number of rows in the file
         original_url:
           type: string
+          description: The download url of the original file
         samples:
           type: array
           items:
             type: string
+          description: The first few rows of the parsed file
       required:
         - id
         - name
@@ -35267,44 +36235,56 @@ components:
         num_train_queries:
           type: integer
           format: int64
+          description: The number of training queries.
         num_train_relevant_passages:
           type: integer
           format: int64
+          description: The sum of all relevant passages of valid training examples.
         num_train_hard_negatives:
           type: integer
           format: int64
+          description: The sum of all hard negatives of valid training examples.
         num_eval_queries:
           type: integer
           format: int64
+          description: The number of evaluation queries.
         num_eval_relevant_passages:
           type: integer
           format: int64
+          description: The sum of all relevant passages of valid eval examples.
         num_eval_hard_negatives:
           type: integer
           format: int64
+          description: The sum of all hard negatives of valid eval examples.
     ChatDataMetrics:
       type: object
       properties:
         num_train_turns:
           type: integer
           format: int64
+          description: The sum of all turns of valid train examples.
         num_eval_turns:
           type: integer
           format: int64
+          description: The sum of all turns of valid eval examples.
         preamble:
           type: string
+          description: The preamble of this dataset.
     LabelMetric:
       type: object
       properties:
         total_examples:
           type: integer
           format: int64
+          description: Total number of examples for this label
         label:
           type: string
+          description: value of the label
         samples:
           type: array
           items:
             type: string
+          description: samples for this label
     ClassifyDataMetrics:
       type: object
       properties:
@@ -35318,21 +36298,29 @@ components:
         trainable_token_count:
           type: integer
           format: int64
+          description: >-
+            The number of tokens of valid examples that can be used for
+            training.
         total_examples:
           type: integer
           format: int64
+          description: The overall number of examples.
         train_examples:
           type: integer
           format: int64
+          description: The number of training examples.
         train_size_bytes:
           type: integer
           format: int64
+          description: The size in bytes of all training examples.
         eval_examples:
           type: integer
           format: int64
+          description: Number of evaluation examples.
         eval_size_bytes:
           type: integer
           format: int64
+          description: The size in bytes of all eval examples.
         reranker_data_metrics:
           $ref: '#/components/schemas/RerankerDataMetrics'
         chat_data_metrics:
@@ -35349,22 +36337,28 @@ components:
       properties:
         id:
           type: string
+          description: The dataset ID
         name:
           type: string
+          description: The name of the dataset
         created_at:
           type: string
           format: date-time
+          description: The creation date
         updated_at:
           type: string
           format: date-time
+          description: The last update date
         dataset_type:
           $ref: '#/components/schemas/DatasetType'
         validation_status:
           $ref: '#/components/schemas/DatasetValidationStatus'
         validation_error:
           type: string
+          description: Errors found during validation
         schema:
           type: string
+          description: the avro schema of the dataset
         required_fields:
           type: array
           items:
@@ -35377,10 +36371,12 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/DatasetPart'
+          description: the underlying files that make up the dataset
         validation_warnings:
           type: array
           items:
             type: string
+          description: warnings found during validation
         parse_info:
           $ref: '#/components/schemas/ParseInfo'
         metrics:
@@ -35503,6 +36499,8 @@ http.use_ssl = true
 request = Net::HTTP::Get.new(url)
 request["X-Client-Name"] = 'my-cool-project'
 request["Authorization"] = 'Bearer <token>'
+request["Content-Type"] = 'application/json'
+request.body = "{}"
 
 response = http.request(request)
 puts response.read_body
@@ -35514,8 +36512,10 @@ puts response.read_body
 $client = new \GuzzleHttp\Client();
 
 $response = $client->request('GET', 'https://api.cohere.com/v1/datasets', [
+  'body' => '{}',
   'headers' => [
     'Authorization' => 'Bearer <token>',
+    'Content-Type' => 'application/json',
     'X-Client-Name' => 'my-cool-project',
   ],
 ]);
@@ -35528,6 +36528,8 @@ var client = new RestClient("https://api.cohere.com/v1/datasets");
 var request = new RestRequest(Method.GET);
 request.AddHeader("X-Client-Name", "my-cool-project");
 request.AddHeader("Authorization", "Bearer <token>");
+request.AddHeader("Content-Type", "application/json");
+request.AddParameter("application/json", "{}", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
 ```
 
@@ -35536,14 +36538,19 @@ import Foundation
 
 let headers = [
   "X-Client-Name": "my-cool-project",
-  "Authorization": "Bearer <token>"
+  "Authorization": "Bearer <token>",
+  "Content-Type": "application/json"
 ]
+let parameters = [] as [String : Any]
+
+let postData = JSONSerialization.data(withJSONObject: parameters, options: [])
 
 let request = NSMutableURLRequest(url: NSURL(string: "https://api.cohere.com/v1/datasets")! as URL,
                                         cachePolicy: .useProtocolCachePolicy,
                                     timeoutInterval: 10.0)
 request.httpMethod = "GET"
 request.allHTTPHeaderFields = headers
+request.httpBody = postData as Data
 
 let session = URLSession.shared
 let dataTask = session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) -> Void in
@@ -35685,6 +36692,7 @@ components:
         organization_usage:
           type: integer
           format: int64
+          description: The total number of bytes used by the organization.
 
 ```
 
@@ -35786,6 +36794,8 @@ http.use_ssl = true
 request = Net::HTTP::Get.new(url)
 request["X-Client-Name"] = 'my-cool-project'
 request["Authorization"] = 'Bearer <token>'
+request["Content-Type"] = 'application/json'
+request.body = "{}"
 
 response = http.request(request)
 puts response.read_body
@@ -35797,8 +36807,10 @@ puts response.read_body
 $client = new \GuzzleHttp\Client();
 
 $response = $client->request('GET', 'https://api.cohere.com/v1/datasets/usage', [
+  'body' => '{}',
   'headers' => [
     'Authorization' => 'Bearer <token>',
+    'Content-Type' => 'application/json',
     'X-Client-Name' => 'my-cool-project',
   ],
 ]);
@@ -35811,6 +36823,8 @@ var client = new RestClient("https://api.cohere.com/v1/datasets/usage");
 var request = new RestRequest(Method.GET);
 request.AddHeader("X-Client-Name", "my-cool-project");
 request.AddHeader("Authorization", "Bearer <token>");
+request.AddHeader("Content-Type", "application/json");
+request.AddParameter("application/json", "{}", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
 ```
 
@@ -35819,14 +36833,19 @@ import Foundation
 
 let headers = [
   "X-Client-Name": "my-cool-project",
-  "Authorization": "Bearer <token>"
+  "Authorization": "Bearer <token>",
+  "Content-Type": "application/json"
 ]
+let parameters = [] as [String : Any]
+
+let postData = JSONSerialization.data(withJSONObject: parameters, options: [])
 
 let request = NSMutableURLRequest(url: NSURL(string: "https://api.cohere.com/v1/datasets/usage")! as URL,
                                         cachePolicy: .useProtocolCachePolicy,
                                     timeoutInterval: 10.0)
 request.httpMethod = "GET"
 request.allHTTPHeaderFields = headers
+request.httpBody = postData as Data
 
 let session = URLSession.shared
 let dataTask = session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) -> Void in
@@ -35997,22 +37016,30 @@ components:
       properties:
         id:
           type: string
+          description: The dataset part ID
         name:
           type: string
+          description: The name of the dataset part
         url:
           type: string
+          description: The download url of the file
         index:
           type: integer
+          description: The index of the file
         size_bytes:
           type: integer
+          description: The size of the file in bytes
         num_rows:
           type: integer
+          description: The number of rows in the file
         original_url:
           type: string
+          description: The download url of the original file
         samples:
           type: array
           items:
             type: string
+          description: The first few rows of the parsed file
       required:
         - id
         - name
@@ -36029,44 +37056,56 @@ components:
         num_train_queries:
           type: integer
           format: int64
+          description: The number of training queries.
         num_train_relevant_passages:
           type: integer
           format: int64
+          description: The sum of all relevant passages of valid training examples.
         num_train_hard_negatives:
           type: integer
           format: int64
+          description: The sum of all hard negatives of valid training examples.
         num_eval_queries:
           type: integer
           format: int64
+          description: The number of evaluation queries.
         num_eval_relevant_passages:
           type: integer
           format: int64
+          description: The sum of all relevant passages of valid eval examples.
         num_eval_hard_negatives:
           type: integer
           format: int64
+          description: The sum of all hard negatives of valid eval examples.
     ChatDataMetrics:
       type: object
       properties:
         num_train_turns:
           type: integer
           format: int64
+          description: The sum of all turns of valid train examples.
         num_eval_turns:
           type: integer
           format: int64
+          description: The sum of all turns of valid eval examples.
         preamble:
           type: string
+          description: The preamble of this dataset.
     LabelMetric:
       type: object
       properties:
         total_examples:
           type: integer
           format: int64
+          description: Total number of examples for this label
         label:
           type: string
+          description: value of the label
         samples:
           type: array
           items:
             type: string
+          description: samples for this label
     ClassifyDataMetrics:
       type: object
       properties:
@@ -36080,21 +37119,29 @@ components:
         trainable_token_count:
           type: integer
           format: int64
+          description: >-
+            The number of tokens of valid examples that can be used for
+            training.
         total_examples:
           type: integer
           format: int64
+          description: The overall number of examples.
         train_examples:
           type: integer
           format: int64
+          description: The number of training examples.
         train_size_bytes:
           type: integer
           format: int64
+          description: The size in bytes of all training examples.
         eval_examples:
           type: integer
           format: int64
+          description: Number of evaluation examples.
         eval_size_bytes:
           type: integer
           format: int64
+          description: The size in bytes of all eval examples.
         reranker_data_metrics:
           $ref: '#/components/schemas/RerankerDataMetrics'
         chat_data_metrics:
@@ -36111,22 +37158,28 @@ components:
       properties:
         id:
           type: string
+          description: The dataset ID
         name:
           type: string
+          description: The name of the dataset
         created_at:
           type: string
           format: date-time
+          description: The creation date
         updated_at:
           type: string
           format: date-time
+          description: The last update date
         dataset_type:
           $ref: '#/components/schemas/DatasetType'
         validation_status:
           $ref: '#/components/schemas/DatasetValidationStatus'
         validation_error:
           type: string
+          description: Errors found during validation
         schema:
           type: string
+          description: the avro schema of the dataset
         required_fields:
           type: array
           items:
@@ -36139,10 +37192,12 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/DatasetPart'
+          description: the underlying files that make up the dataset
         validation_warnings:
           type: array
           items:
             type: string
+          description: warnings found during validation
         parse_info:
           $ref: '#/components/schemas/ParseInfo'
         metrics:
@@ -36262,6 +37317,8 @@ http.use_ssl = true
 request = Net::HTTP::Get.new(url)
 request["X-Client-Name"] = 'my-cool-project'
 request["Authorization"] = 'Bearer <token>'
+request["Content-Type"] = 'application/json'
+request.body = "{}"
 
 response = http.request(request)
 puts response.read_body
@@ -36273,8 +37330,10 @@ puts response.read_body
 $client = new \GuzzleHttp\Client();
 
 $response = $client->request('GET', 'https://api.cohere.com/v1/datasets/id', [
+  'body' => '{}',
   'headers' => [
     'Authorization' => 'Bearer <token>',
+    'Content-Type' => 'application/json',
     'X-Client-Name' => 'my-cool-project',
   ],
 ]);
@@ -36287,6 +37346,8 @@ var client = new RestClient("https://api.cohere.com/v1/datasets/id");
 var request = new RestRequest(Method.GET);
 request.AddHeader("X-Client-Name", "my-cool-project");
 request.AddHeader("Authorization", "Bearer <token>");
+request.AddHeader("Content-Type", "application/json");
+request.AddParameter("application/json", "{}", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
 ```
 
@@ -36295,14 +37356,19 @@ import Foundation
 
 let headers = [
   "X-Client-Name": "my-cool-project",
-  "Authorization": "Bearer <token>"
+  "Authorization": "Bearer <token>",
+  "Content-Type": "application/json"
 ]
+let parameters = [] as [String : Any]
+
+let postData = JSONSerialization.data(withJSONObject: parameters, options: [])
 
 let request = NSMutableURLRequest(url: NSURL(string: "https://api.cohere.com/v1/datasets/id")! as URL,
                                         cachePolicy: .useProtocolCachePolicy,
                                     timeoutInterval: 10.0)
 request.httpMethod = "GET"
 request.allHTTPHeaderFields = headers
+request.httpBody = postData as Data
 
 let session = URLSession.shared
 let dataTask = session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) -> Void in
@@ -36526,7 +37592,7 @@ await client.datasets.delete("id");
 require 'uri'
 require 'net/http'
 
-url = URI("https://api.cohere.com/v1/datasets/id")
+url = URI("https://api.cohere.com/v1/datasets/dataset_9f8b7c6d5a4e3f2b1c0d")
 
 http = Net::HTTP.new(url.host, url.port)
 http.use_ssl = true
@@ -36534,6 +37600,8 @@ http.use_ssl = true
 request = Net::HTTP::Delete.new(url)
 request["X-Client-Name"] = 'my-cool-project'
 request["Authorization"] = 'Bearer <token>'
+request["Content-Type"] = 'application/json'
+request.body = "{}"
 
 response = http.request(request)
 puts response.read_body
@@ -36544,9 +37612,11 @@ puts response.read_body
 
 $client = new \GuzzleHttp\Client();
 
-$response = $client->request('DELETE', 'https://api.cohere.com/v1/datasets/id', [
+$response = $client->request('DELETE', 'https://api.cohere.com/v1/datasets/dataset_9f8b7c6d5a4e3f2b1c0d', [
+  'body' => '{}',
   'headers' => [
     'Authorization' => 'Bearer <token>',
+    'Content-Type' => 'application/json',
     'X-Client-Name' => 'my-cool-project',
   ],
 ]);
@@ -36555,10 +37625,12 @@ echo $response->getBody();
 ```
 
 ```csharp
-var client = new RestClient("https://api.cohere.com/v1/datasets/id");
+var client = new RestClient("https://api.cohere.com/v1/datasets/dataset_9f8b7c6d5a4e3f2b1c0d");
 var request = new RestRequest(Method.DELETE);
 request.AddHeader("X-Client-Name", "my-cool-project");
 request.AddHeader("Authorization", "Bearer <token>");
+request.AddHeader("Content-Type", "application/json");
+request.AddParameter("application/json", "{}", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
 ```
 
@@ -36567,14 +37639,19 @@ import Foundation
 
 let headers = [
   "X-Client-Name": "my-cool-project",
-  "Authorization": "Bearer <token>"
+  "Authorization": "Bearer <token>",
+  "Content-Type": "application/json"
 ]
+let parameters = [] as [String : Any]
 
-let request = NSMutableURLRequest(url: NSURL(string: "https://api.cohere.com/v1/datasets/id")! as URL,
+let postData = JSONSerialization.data(withJSONObject: parameters, options: [])
+
+let request = NSMutableURLRequest(url: NSURL(string: "https://api.cohere.com/v1/datasets/dataset_9f8b7c6d5a4e3f2b1c0d")! as URL,
                                         cachePolicy: .useProtocolCachePolicy,
                                     timeoutInterval: 10.0)
 request.httpMethod = "DELETE"
 request.allHTTPHeaderFields = headers
+request.httpBody = postData as Data
 
 let session = URLSession.shared
 let dataTask = session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) -> Void in
@@ -36719,8 +37796,14 @@ paths:
               properties:
                 text:
                   type: string
+                  description: >-
+                    The string to be tokenized, the minimum text length is 1
+                    character, and the maximum text length is 65536 characters.
                 model:
                   type: string
+                  description: >-
+                    The input will be tokenized by the tokenizer that is used by
+                    this model.
               required:
                 - text
                 - model
@@ -36743,27 +37826,46 @@ components:
         images:
           type: number
           format: double
+          description: |
+            The number of billed images.
         input_tokens:
           type: number
           format: double
+          description: |
+            The number of billed input tokens.
+        image_tokens:
+          type: number
+          format: double
+          description: |
+            The number of billed image tokens.
         output_tokens:
           type: number
           format: double
+          description: |
+            The number of billed output tokens.
         search_units:
           type: number
           format: double
+          description: |
+            The number of billed search units.
         classifications:
           type: number
           format: double
+          description: |
+            The number of billed classifications units.
     ApiMetaTokens:
       type: object
       properties:
         input_tokens:
           type: number
           format: double
+          description: |
+            The number of tokens used as input to the model.
         output_tokens:
           type: number
           format: double
+          description: |
+            The number of tokens produced by the model.
     ApiMeta:
       type: object
       properties:
@@ -36776,6 +37878,8 @@ components:
         cached_tokens:
           type: number
           format: double
+          description: |
+            The number of prompt tokens that hit the inference cache.
         warnings:
           type: array
           items:
@@ -36787,6 +37891,7 @@ components:
           type: array
           items:
             type: integer
+          description: An array of tokens, where each token is an integer.
         token_strings:
           type: array
           items:
@@ -37125,8 +38230,13 @@ paths:
                   type: array
                   items:
                     type: integer
+                  description: The list of tokens to be detokenized.
                 model:
                   type: string
+                  description: >-
+                    An optional parameter to provide the model name. This will
+                    ensure that the detokenization is done by the tokenizer used
+                    by that model.
               required:
                 - tokens
                 - model
@@ -37149,27 +38259,46 @@ components:
         images:
           type: number
           format: double
+          description: |
+            The number of billed images.
         input_tokens:
           type: number
           format: double
+          description: |
+            The number of billed input tokens.
+        image_tokens:
+          type: number
+          format: double
+          description: |
+            The number of billed image tokens.
         output_tokens:
           type: number
           format: double
+          description: |
+            The number of billed output tokens.
         search_units:
           type: number
           format: double
+          description: |
+            The number of billed search units.
         classifications:
           type: number
           format: double
+          description: |
+            The number of billed classifications units.
     ApiMetaTokens:
       type: object
       properties:
         input_tokens:
           type: number
           format: double
+          description: |
+            The number of tokens used as input to the model.
         output_tokens:
           type: number
           format: double
+          description: |
+            The number of tokens produced by the model.
     ApiMeta:
       type: object
       properties:
@@ -37182,6 +38311,8 @@ components:
         cached_tokens:
           type: number
           format: double
+          description: |
+            The number of prompt tokens that hit the inference cache.
         warnings:
           type: array
           items:
@@ -37191,6 +38322,7 @@ components:
       properties:
         text:
           type: string
+          description: A string representing the list of tokens.
         meta:
           $ref: '#/components/schemas/ApiMeta'
       required:
@@ -37528,27 +38660,40 @@ components:
       properties:
         name:
           type: string
+          description: >-
+            Specify this name in the `model` parameter of API requests to use
+            your chosen model.
         is_deprecated:
           type: boolean
+          description: Whether the model is deprecated or not.
         endpoints:
           type: array
           items:
             $ref: '#/components/schemas/CompatibleEndpoint'
+          description: The API endpoints that the model is compatible with.
         finetuned:
           type: boolean
+          description: Whether the model has been fine-tuned or not.
         context_length:
           type: number
           format: double
+          description: >-
+            The maximum number of tokens that the model can process in a single
+            request. Note that not all of these tokens are always available due
+            to special tokens and preambles that Cohere has added by default.
         tokenizer_url:
           type: string
+          description: Public URL to the tokenizer's configuration file.
         default_endpoints:
           type: array
           items:
             $ref: '#/components/schemas/CompatibleEndpoint'
+          description: The API endpoints that the model is default to.
         features:
           type: array
           items:
             type: string
+          description: The features that the model supports.
 
 ```
 
@@ -37649,6 +38794,8 @@ http.use_ssl = true
 request = Net::HTTP::Get.new(url)
 request["X-Client-Name"] = 'my-cool-project'
 request["Authorization"] = 'Bearer <token>'
+request["Content-Type"] = 'application/json'
+request.body = "{}"
 
 response = http.request(request)
 puts response.read_body
@@ -37660,8 +38807,10 @@ puts response.read_body
 $client = new \GuzzleHttp\Client();
 
 $response = $client->request('GET', 'https://api.cohere.com/v1/models/command-a-03-2025', [
+  'body' => '{}',
   'headers' => [
     'Authorization' => 'Bearer <token>',
+    'Content-Type' => 'application/json',
     'X-Client-Name' => 'my-cool-project',
   ],
 ]);
@@ -37674,6 +38823,8 @@ var client = new RestClient("https://api.cohere.com/v1/models/command-a-03-2025"
 var request = new RestRequest(Method.GET);
 request.AddHeader("X-Client-Name", "my-cool-project");
 request.AddHeader("Authorization", "Bearer <token>");
+request.AddHeader("Content-Type", "application/json");
+request.AddParameter("application/json", "{}", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
 ```
 
@@ -37682,14 +38833,19 @@ import Foundation
 
 let headers = [
   "X-Client-Name": "my-cool-project",
-  "Authorization": "Bearer <token>"
+  "Authorization": "Bearer <token>",
+  "Content-Type": "application/json"
 ]
+let parameters = [] as [String : Any]
+
+let postData = JSONSerialization.data(withJSONObject: parameters, options: [])
 
 let request = NSMutableURLRequest(url: NSURL(string: "https://api.cohere.com/v1/models/command-a-03-2025")! as URL,
                                         cachePolicy: .useProtocolCachePolicy,
                                     timeoutInterval: 10.0)
 request.httpMethod = "GET"
 request.allHTTPHeaderFields = headers
+request.httpBody = postData as Data
 
 let session = URLSession.shared
 let dataTask = session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) -> Void in
@@ -37865,27 +39021,40 @@ components:
       properties:
         name:
           type: string
+          description: >-
+            Specify this name in the `model` parameter of API requests to use
+            your chosen model.
         is_deprecated:
           type: boolean
+          description: Whether the model is deprecated or not.
         endpoints:
           type: array
           items:
             $ref: '#/components/schemas/CompatibleEndpoint'
+          description: The API endpoints that the model is compatible with.
         finetuned:
           type: boolean
+          description: Whether the model has been fine-tuned or not.
         context_length:
           type: number
           format: double
+          description: >-
+            The maximum number of tokens that the model can process in a single
+            request. Note that not all of these tokens are always available due
+            to special tokens and preambles that Cohere has added by default.
         tokenizer_url:
           type: string
+          description: Public URL to the tokenizer's configuration file.
         default_endpoints:
           type: array
           items:
             $ref: '#/components/schemas/CompatibleEndpoint'
+          description: The API endpoints that the model is default to.
         features:
           type: array
           items:
             type: string
+          description: The features that the model supports.
     ListModelsResponse:
       type: object
       properties:
@@ -37895,6 +39064,9 @@ components:
             $ref: '#/components/schemas/GetModelResponse'
         next_page_token:
           type: string
+          description: >-
+            A token to retrieve the next page of results. Provide in the
+            page_token parameter of the next request.
       required:
         - models
 
@@ -37994,6 +39166,8 @@ http.use_ssl = true
 
 request = Net::HTTP::Get.new(url)
 request["Authorization"] = 'Bearer <token>'
+request["Content-Type"] = 'application/json'
+request.body = "{}"
 
 response = http.request(request)
 puts response.read_body
@@ -38005,8 +39179,10 @@ puts response.read_body
 $client = new \GuzzleHttp\Client();
 
 $response = $client->request('GET', 'https://api.cohere.com/v1/models', [
+  'body' => '{}',
   'headers' => [
     'Authorization' => 'Bearer <token>',
+    'Content-Type' => 'application/json',
   ],
 ]);
 
@@ -38017,19 +39193,28 @@ echo $response->getBody();
 var client = new RestClient("https://api.cohere.com/v1/models");
 var request = new RestRequest(Method.GET);
 request.AddHeader("Authorization", "Bearer <token>");
+request.AddHeader("Content-Type", "application/json");
+request.AddParameter("application/json", "{}", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
 ```
 
 ```swift
 import Foundation
 
-let headers = ["Authorization": "Bearer <token>"]
+let headers = [
+  "Authorization": "Bearer <token>",
+  "Content-Type": "application/json"
+]
+let parameters = [] as [String : Any]
+
+let postData = JSONSerialization.data(withJSONObject: parameters, options: [])
 
 let request = NSMutableURLRequest(url: NSURL(string: "https://api.cohere.com/v1/models")! as URL,
                                         cachePolicy: .useProtocolCachePolicy,
                                     timeoutInterval: 10.0)
 request.httpMethod = "GET"
 request.allHTTPHeaderFields = headers
+request.httpBody = postData as Data
 
 let session = URLSession.shared
 let dataTask = session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) -> Void in
@@ -38182,17 +39367,68 @@ paths:
                   type: array
                   items:
                     type: string
+                  description: >-
+                    A list of up to 96 texts to be classified. Each one must be
+                    a non-empty string.
+
+                    There is, however, no consistent, universal limit to the
+                    length a particular input can be. We perform classification
+                    on the first `x` tokens of each input, and `x` varies
+                    depending on which underlying model is powering
+                    classification. The maximum token length for each model is
+                    listed in the "max tokens" column
+                    [here](https://docs.cohere.com/docs/models).
+
+                    Note: by default the `truncate` parameter is set to `END`,
+                    so tokens exceeding the limit will be automatically dropped.
+                    This behavior can be disabled by setting `truncate` to
+                    `NONE`, which will result in validation errors for longer
+                    texts.
                 examples:
                   type: array
                   items:
                     $ref: '#/components/schemas/ClassifyExample'
+                  description: >-
+                    An array of examples to provide context to the model. Each
+                    example is a text string and its associated label/class.
+                    Each unique label requires at least 2 examples associated
+                    with it; the maximum number of examples is 2500, and each
+                    example has a maximum length of 512 tokens. The values
+                    should be structured as `{text: "...",label: "..."}`.
+
+                    Note: [Fine-tuned
+                    Models](https://docs.cohere.com/docs/classify-fine-tuning)
+                    trained on classification examples don't require the
+                    `examples` parameter to be passed in explicitly.
                 model:
                   type: string
+                  description: >-
+                    ID of a
+                    [Fine-tuned](https://docs.cohere.com/v2/docs/classify-starting-the-training)
+                    Classify model
                 preset:
                   type: string
+                  description: >-
+                    The ID of a custom playground preset. You can create presets
+                    in the
+                    [playground](https://dashboard.cohere.com/playground). If
+                    you use a preset, all other parameters become optional, and
+                    any included parameters will override the preset's
+                    parameters.
                 truncate:
                   $ref: >-
                     #/components/schemas/V1ClassifyPostRequestBodyContentApplicationJsonSchemaTruncate
+                  description: >-
+                    One of `NONE|START|END` to specify how the API will handle
+                    inputs longer than the maximum token length.
+
+                    Passing `START` will discard the start of the input. `END`
+                    will discard the end of the input. In both cases, input is
+                    discarded until the remaining input is exactly the maximum
+                    input token length for the model.
+
+                    If `NONE` is selected, when the input exceeds the maximum
+                    input token length an error will be returned.
               required:
                 - inputs
 components:
@@ -38210,6 +39446,7 @@ components:
         - value: NONE
         - value: START
         - value: END
+      default: END
     V1ClassifyPostResponsesContentApplicationJsonSchemaClassificationsItemsLabels:
       type: object
       properties:
@@ -38228,28 +39465,48 @@ components:
           type: string
         input:
           type: string
+          description: The input text that was classified
         prediction:
           type: string
+          description: >-
+            The predicted label for the associated query (only filled for
+            single-label models)
         predictions:
           type: array
           items:
             type: string
+          description: >-
+            An array containing the predicted labels for the associated query
+            (only filled for single-label classification)
         confidence:
           type: number
           format: double
+          description: >-
+            The confidence score for the top predicted class (only filled for
+            single-label classification)
         confidences:
           type: array
           items:
             type: number
             format: double
+          description: >-
+            An array containing the confidence scores of all the predictions in
+            the same order
         labels:
           type: object
           additionalProperties:
             $ref: >-
               #/components/schemas/V1ClassifyPostResponsesContentApplicationJsonSchemaClassificationsItemsLabels
+          description: >-
+            A map containing each label and its confidence score according to
+            the classifier. All the confidence scores add up to 1 for
+            single-label classification. For multi-label classification the
+            label confidences are independent of each other, so they don't have
+            to sum up to 1.
         classification_type:
           $ref: >-
             #/components/schemas/V1ClassifyPostResponsesContentApplicationJsonSchemaClassificationsItemsClassificationType
+          description: The type of classification performed
       required:
         - id
         - predictions
@@ -38273,27 +39530,46 @@ components:
         images:
           type: number
           format: double
+          description: |
+            The number of billed images.
         input_tokens:
           type: number
           format: double
+          description: |
+            The number of billed input tokens.
+        image_tokens:
+          type: number
+          format: double
+          description: |
+            The number of billed image tokens.
         output_tokens:
           type: number
           format: double
+          description: |
+            The number of billed output tokens.
         search_units:
           type: number
           format: double
+          description: |
+            The number of billed search units.
         classifications:
           type: number
           format: double
+          description: |
+            The number of billed classifications units.
     ApiMetaTokens:
       type: object
       properties:
         input_tokens:
           type: number
           format: double
+          description: |
+            The number of tokens used as input to the model.
         output_tokens:
           type: number
           format: double
+          description: |
+            The number of tokens produced by the model.
     ApiMeta:
       type: object
       properties:
@@ -38306,6 +39582,8 @@ components:
         cached_tokens:
           type: number
           format: double
+          description: |
+            The number of prompt tokens that hit the inference cache.
         warnings:
           type: array
           items:
@@ -38742,6 +40020,7 @@ paths:
           schema:
             type: number
             format: double
+            default: 30
         - name: offset
           in: query
           description: Number of connectors to skip before returning results [0, inf].
@@ -38749,6 +40028,7 @@ paths:
           schema:
             type: number
             format: double
+            default: 0
         - name: Authorization
           in: header
           description: >-
@@ -38849,14 +40129,25 @@ components:
       properties:
         client_id:
           type: string
+          description: The OAuth 2.0 client ID. This field is encrypted at rest.
         client_secret:
           type: string
+          description: >-
+            The OAuth 2.0 client Secret. This field is encrypted at rest and
+            never returned in a response.
         authorize_url:
           type: string
+          description: >-
+            The OAuth 2.0 /authorize endpoint to use when users authorize the
+            connector.
         token_url:
           type: string
+          description: >-
+            The OAuth 2.0 /token endpoint to use when users authorize the
+            connector.
         scope:
           type: string
+          description: The OAuth scopes to request when users authorize the connector.
       required:
         - authorize_url
         - token_url
@@ -38870,35 +40161,66 @@ components:
       properties:
         id:
           type: string
+          description: >-
+            The unique identifier of the connector (used in both `/connectors` &
+            `/chat` endpoints).
+
+            This is automatically created from the name of the connector upon
+            registration.
         organization_id:
           type: string
+          description: >-
+            The organization to which this connector belongs. This is
+            automatically set to
+
+            the organization of the user who created the connector.
         name:
           type: string
+          description: A human-readable name for the connector.
         description:
           type: string
+          description: A description of the connector.
         url:
           type: string
+          description: The URL of the connector that will be used to search for documents.
         created_at:
           type: string
           format: date-time
+          description: The UTC time at which the connector was created.
         updated_at:
           type: string
           format: date-time
+          description: The UTC time at which the connector was last updated.
         excludes:
           type: array
           items:
             type: string
+          description: >-
+            A list of fields to exclude from the prompt (fields remain in the
+            document).
         auth_type:
           type: string
           format: enum
+          description: >-
+            The type of authentication/authorization used by the connector.
+            Possible values: [oauth, service_auth]
         oauth:
           $ref: '#/components/schemas/ConnectorOAuth'
+          description: The OAuth 2.0 configuration for the connector.
         auth_status:
           $ref: '#/components/schemas/ConnectorAuthStatus'
+          description: >-
+            The OAuth status for the user making the request. One of ["valid",
+            "expired", ""]. Empty string (field is omitted) means the user has
+            not authorized the connector yet.
         active:
           type: boolean
+          description: Whether the connector is active or not.
         continue_on_failure:
           type: boolean
+          description: >-
+            Whether a chat request should continue or not if the request to this
+            connector fails.
       required:
         - id
         - name
@@ -38914,6 +40236,7 @@ components:
         total_count:
           type: number
           format: double
+          description: Total number of connectors.
       required:
         - connectors
 
@@ -39016,6 +40339,8 @@ http.use_ssl = true
 request = Net::HTTP::Get.new(url)
 request["X-Client-Name"] = 'my-cool-project'
 request["Authorization"] = 'Bearer <token>'
+request["Content-Type"] = 'application/json'
+request.body = "{}"
 
 response = http.request(request)
 puts response.read_body
@@ -39027,8 +40352,10 @@ puts response.read_body
 $client = new \GuzzleHttp\Client();
 
 $response = $client->request('GET', 'https://api.cohere.com/v1/connectors', [
+  'body' => '{}',
   'headers' => [
     'Authorization' => 'Bearer <token>',
+    'Content-Type' => 'application/json',
     'X-Client-Name' => 'my-cool-project',
   ],
 ]);
@@ -39041,6 +40368,8 @@ var client = new RestClient("https://api.cohere.com/v1/connectors");
 var request = new RestRequest(Method.GET);
 request.AddHeader("X-Client-Name", "my-cool-project");
 request.AddHeader("Authorization", "Bearer <token>");
+request.AddHeader("Content-Type", "application/json");
+request.AddParameter("application/json", "{}", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
 ```
 
@@ -39049,14 +40378,19 @@ import Foundation
 
 let headers = [
   "X-Client-Name": "my-cool-project",
-  "Authorization": "Bearer <token>"
+  "Authorization": "Bearer <token>",
+  "Content-Type": "application/json"
 ]
+let parameters = [] as [String : Any]
+
+let postData = JSONSerialization.data(withJSONObject: parameters, options: [])
 
 let request = NSMutableURLRequest(url: NSURL(string: "https://api.cohere.com/v1/connectors")! as URL,
                                         cachePolicy: .useProtocolCachePolicy,
                                     timeoutInterval: 10.0)
 request.httpMethod = "GET"
 request.allHTTPHeaderFields = headers
+request.httpBody = postData as Data
 
 let session = URLSession.shared
 let dataTask = session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) -> Void in
@@ -39206,20 +40540,32 @@ components:
       properties:
         client_id:
           type: string
+          description: The OAuth 2.0 client ID. This fields is encrypted at rest.
         client_secret:
           type: string
+          description: >-
+            The OAuth 2.0 client Secret. This field is encrypted at rest and
+            never returned in a response.
         authorize_url:
           type: string
+          description: >-
+            The OAuth 2.0 /authorize endpoint to use when users authorize the
+            connector.
         token_url:
           type: string
+          description: >-
+            The OAuth 2.0 /token endpoint to use when users authorize the
+            connector.
         scope:
           type: string
+          description: The OAuth scopes to request when users authorize the connector.
     AuthTokenType:
       type: string
       enum:
         - value: bearer
         - value: basic
         - value: noscheme
+      default: noscheme
     CreateConnectorServiceAuth:
       type: object
       properties:
@@ -39227,6 +40573,10 @@ components:
           $ref: '#/components/schemas/AuthTokenType'
         token:
           type: string
+          description: >-
+            The token that will be used in the HTTP Authorization header when
+            making requests to the connector. This field is encrypted at rest
+            and never returned in a response.
       required:
         - type
         - token
@@ -39235,22 +40585,40 @@ components:
       properties:
         name:
           type: string
+          description: A human-readable name for the connector.
         description:
           type: string
+          description: A description of the connector.
         url:
           type: string
+          description: The URL of the connector that will be used to search for documents.
         excludes:
           type: array
           items:
             type: string
+          description: >-
+            A list of fields to exclude from the prompt (fields remain in the
+            document).
         oauth:
           $ref: '#/components/schemas/CreateConnectorOAuth'
+          description: >-
+            The OAuth 2.0 configuration for the connector. Cannot be specified
+            if service_auth is specified.
         active:
           type: boolean
+          default: true
+          description: Whether the connector is active or not.
         continue_on_failure:
           type: boolean
+          default: false
+          description: >-
+            Whether a chat request should continue or not if the request to this
+            connector fails.
         service_auth:
           $ref: '#/components/schemas/CreateConnectorServiceAuth'
+          description: >-
+            The service to service authentication configuration for the
+            connector. Cannot be specified if oauth is specified.
       required:
         - name
         - url
@@ -39259,14 +40627,25 @@ components:
       properties:
         client_id:
           type: string
+          description: The OAuth 2.0 client ID. This field is encrypted at rest.
         client_secret:
           type: string
+          description: >-
+            The OAuth 2.0 client Secret. This field is encrypted at rest and
+            never returned in a response.
         authorize_url:
           type: string
+          description: >-
+            The OAuth 2.0 /authorize endpoint to use when users authorize the
+            connector.
         token_url:
           type: string
+          description: >-
+            The OAuth 2.0 /token endpoint to use when users authorize the
+            connector.
         scope:
           type: string
+          description: The OAuth scopes to request when users authorize the connector.
       required:
         - authorize_url
         - token_url
@@ -39280,35 +40659,66 @@ components:
       properties:
         id:
           type: string
+          description: >-
+            The unique identifier of the connector (used in both `/connectors` &
+            `/chat` endpoints).
+
+            This is automatically created from the name of the connector upon
+            registration.
         organization_id:
           type: string
+          description: >-
+            The organization to which this connector belongs. This is
+            automatically set to
+
+            the organization of the user who created the connector.
         name:
           type: string
+          description: A human-readable name for the connector.
         description:
           type: string
+          description: A description of the connector.
         url:
           type: string
+          description: The URL of the connector that will be used to search for documents.
         created_at:
           type: string
           format: date-time
+          description: The UTC time at which the connector was created.
         updated_at:
           type: string
           format: date-time
+          description: The UTC time at which the connector was last updated.
         excludes:
           type: array
           items:
             type: string
+          description: >-
+            A list of fields to exclude from the prompt (fields remain in the
+            document).
         auth_type:
           type: string
           format: enum
+          description: >-
+            The type of authentication/authorization used by the connector.
+            Possible values: [oauth, service_auth]
         oauth:
           $ref: '#/components/schemas/ConnectorOAuth'
+          description: The OAuth 2.0 configuration for the connector.
         auth_status:
           $ref: '#/components/schemas/ConnectorAuthStatus'
+          description: >-
+            The OAuth status for the user making the request. One of ["valid",
+            "expired", ""]. Empty string (field is omitted) means the user has
+            not authorized the connector yet.
         active:
           type: boolean
+          description: Whether the connector is active or not.
         continue_on_failure:
           type: boolean
+          description: >-
+            Whether a chat request should continue or not if the request to this
+            connector fails.
       required:
         - id
         - name
@@ -39448,7 +40858,7 @@ request = Net::HTTP::Post.new(url)
 request["X-Client-Name"] = 'my-cool-project'
 request["Authorization"] = 'Bearer <token>'
 request["Content-Type"] = 'application/json'
-request.body = "{\n  \"name\": \"string\",\n  \"url\": \"string\"\n}"
+request.body = "{\n  \"name\": \"Salesforce CRM Connector\",\n  \"url\": \"https://api.salesforce.com/v1/search\"\n}"
 
 response = http.request(request)
 puts response.read_body
@@ -39461,8 +40871,8 @@ $client = new \GuzzleHttp\Client();
 
 $response = $client->request('POST', 'https://api.cohere.com/v1/connectors', [
   'body' => '{
-  "name": "string",
-  "url": "string"
+  "name": "Salesforce CRM Connector",
+  "url": "https://api.salesforce.com/v1/search"
 }',
   'headers' => [
     'Authorization' => 'Bearer <token>',
@@ -39480,7 +40890,7 @@ var request = new RestRequest(Method.POST);
 request.AddHeader("X-Client-Name", "my-cool-project");
 request.AddHeader("Authorization", "Bearer <token>");
 request.AddHeader("Content-Type", "application/json");
-request.AddParameter("application/json", "{\n  \"name\": \"string\",\n  \"url\": \"string\"\n}", ParameterType.RequestBody);
+request.AddParameter("application/json", "{\n  \"name\": \"Salesforce CRM Connector\",\n  \"url\": \"https://api.salesforce.com/v1/search\"\n}", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
 ```
 
@@ -39493,8 +40903,8 @@ let headers = [
   "Content-Type": "application/json"
 ]
 let parameters = [
-  "name": "string",
-  "url": "string"
+  "name": "Salesforce CRM Connector",
+  "url": "https://api.salesforce.com/v1/search"
 ] as [String : Any]
 
 let postData = JSONSerialization.data(withJSONObject: parameters, options: [])
@@ -39652,14 +41062,25 @@ components:
       properties:
         client_id:
           type: string
+          description: The OAuth 2.0 client ID. This field is encrypted at rest.
         client_secret:
           type: string
+          description: >-
+            The OAuth 2.0 client Secret. This field is encrypted at rest and
+            never returned in a response.
         authorize_url:
           type: string
+          description: >-
+            The OAuth 2.0 /authorize endpoint to use when users authorize the
+            connector.
         token_url:
           type: string
+          description: >-
+            The OAuth 2.0 /token endpoint to use when users authorize the
+            connector.
         scope:
           type: string
+          description: The OAuth scopes to request when users authorize the connector.
       required:
         - authorize_url
         - token_url
@@ -39673,35 +41094,66 @@ components:
       properties:
         id:
           type: string
+          description: >-
+            The unique identifier of the connector (used in both `/connectors` &
+            `/chat` endpoints).
+
+            This is automatically created from the name of the connector upon
+            registration.
         organization_id:
           type: string
+          description: >-
+            The organization to which this connector belongs. This is
+            automatically set to
+
+            the organization of the user who created the connector.
         name:
           type: string
+          description: A human-readable name for the connector.
         description:
           type: string
+          description: A description of the connector.
         url:
           type: string
+          description: The URL of the connector that will be used to search for documents.
         created_at:
           type: string
           format: date-time
+          description: The UTC time at which the connector was created.
         updated_at:
           type: string
           format: date-time
+          description: The UTC time at which the connector was last updated.
         excludes:
           type: array
           items:
             type: string
+          description: >-
+            A list of fields to exclude from the prompt (fields remain in the
+            document).
         auth_type:
           type: string
           format: enum
+          description: >-
+            The type of authentication/authorization used by the connector.
+            Possible values: [oauth, service_auth]
         oauth:
           $ref: '#/components/schemas/ConnectorOAuth'
+          description: The OAuth 2.0 configuration for the connector.
         auth_status:
           $ref: '#/components/schemas/ConnectorAuthStatus'
+          description: >-
+            The OAuth status for the user making the request. One of ["valid",
+            "expired", ""]. Empty string (field is omitted) means the user has
+            not authorized the connector yet.
         active:
           type: boolean
+          description: Whether the connector is active or not.
         continue_on_failure:
           type: boolean
+          description: >-
+            Whether a chat request should continue or not if the request to this
+            connector fails.
       required:
         - id
         - name
@@ -39811,6 +41263,8 @@ http.use_ssl = true
 request = Net::HTTP::Get.new(url)
 request["X-Client-Name"] = 'my-cool-project'
 request["Authorization"] = 'Bearer <token>'
+request["Content-Type"] = 'application/json'
+request.body = "{}"
 
 response = http.request(request)
 puts response.read_body
@@ -39822,8 +41276,10 @@ puts response.read_body
 $client = new \GuzzleHttp\Client();
 
 $response = $client->request('GET', 'https://api.cohere.com/v1/connectors/id', [
+  'body' => '{}',
   'headers' => [
     'Authorization' => 'Bearer <token>',
+    'Content-Type' => 'application/json',
     'X-Client-Name' => 'my-cool-project',
   ],
 ]);
@@ -39836,6 +41292,8 @@ var client = new RestClient("https://api.cohere.com/v1/connectors/id");
 var request = new RestRequest(Method.GET);
 request.AddHeader("X-Client-Name", "my-cool-project");
 request.AddHeader("Authorization", "Bearer <token>");
+request.AddHeader("Content-Type", "application/json");
+request.AddParameter("application/json", "{}", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
 ```
 
@@ -39844,14 +41302,19 @@ import Foundation
 
 let headers = [
   "X-Client-Name": "my-cool-project",
-  "Authorization": "Bearer <token>"
+  "Authorization": "Bearer <token>",
+  "Content-Type": "application/json"
 ]
+let parameters = [] as [String : Any]
+
+let postData = JSONSerialization.data(withJSONObject: parameters, options: [])
 
 let request = NSMutableURLRequest(url: NSURL(string: "https://api.cohere.com/v1/connectors/id")! as URL,
                                         cachePolicy: .useProtocolCachePolicy,
                                     timeoutInterval: 10.0)
 request.httpMethod = "GET"
 request.allHTTPHeaderFields = headers
+request.httpBody = postData as Data
 
 let session = URLSession.shared
 let dataTask = session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) -> Void in
@@ -40006,20 +41469,32 @@ components:
       properties:
         client_id:
           type: string
+          description: The OAuth 2.0 client ID. This fields is encrypted at rest.
         client_secret:
           type: string
+          description: >-
+            The OAuth 2.0 client Secret. This field is encrypted at rest and
+            never returned in a response.
         authorize_url:
           type: string
+          description: >-
+            The OAuth 2.0 /authorize endpoint to use when users authorize the
+            connector.
         token_url:
           type: string
+          description: >-
+            The OAuth 2.0 /token endpoint to use when users authorize the
+            connector.
         scope:
           type: string
+          description: The OAuth scopes to request when users authorize the connector.
     AuthTokenType:
       type: string
       enum:
         - value: bearer
         - value: basic
         - value: noscheme
+      default: noscheme
     CreateConnectorServiceAuth:
       type: object
       properties:
@@ -40027,6 +41502,10 @@ components:
           $ref: '#/components/schemas/AuthTokenType'
         token:
           type: string
+          description: >-
+            The token that will be used in the HTTP Authorization header when
+            making requests to the connector. This field is encrypted at rest
+            and never returned in a response.
       required:
         - type
         - token
@@ -40035,33 +41514,57 @@ components:
       properties:
         name:
           type: string
+          description: A human-readable name for the connector.
         url:
           type: string
+          description: The URL of the connector that will be used to search for documents.
         excludes:
           type: array
           items:
             type: string
+          description: >-
+            A list of fields to exclude from the prompt (fields remain in the
+            document).
         oauth:
           $ref: '#/components/schemas/CreateConnectorOAuth'
+          description: >-
+            The OAuth 2.0 configuration for the connector. Cannot be specified
+            if service_auth is specified.
         active:
           type: boolean
+          default: true
         continue_on_failure:
           type: boolean
+          default: false
         service_auth:
           $ref: '#/components/schemas/CreateConnectorServiceAuth'
+          description: >-
+            The service to service authentication configuration for the
+            connector. Cannot be specified if oauth is specified.
     ConnectorOAuth:
       type: object
       properties:
         client_id:
           type: string
+          description: The OAuth 2.0 client ID. This field is encrypted at rest.
         client_secret:
           type: string
+          description: >-
+            The OAuth 2.0 client Secret. This field is encrypted at rest and
+            never returned in a response.
         authorize_url:
           type: string
+          description: >-
+            The OAuth 2.0 /authorize endpoint to use when users authorize the
+            connector.
         token_url:
           type: string
+          description: >-
+            The OAuth 2.0 /token endpoint to use when users authorize the
+            connector.
         scope:
           type: string
+          description: The OAuth scopes to request when users authorize the connector.
       required:
         - authorize_url
         - token_url
@@ -40075,35 +41578,66 @@ components:
       properties:
         id:
           type: string
+          description: >-
+            The unique identifier of the connector (used in both `/connectors` &
+            `/chat` endpoints).
+
+            This is automatically created from the name of the connector upon
+            registration.
         organization_id:
           type: string
+          description: >-
+            The organization to which this connector belongs. This is
+            automatically set to
+
+            the organization of the user who created the connector.
         name:
           type: string
+          description: A human-readable name for the connector.
         description:
           type: string
+          description: A description of the connector.
         url:
           type: string
+          description: The URL of the connector that will be used to search for documents.
         created_at:
           type: string
           format: date-time
+          description: The UTC time at which the connector was created.
         updated_at:
           type: string
           format: date-time
+          description: The UTC time at which the connector was last updated.
         excludes:
           type: array
           items:
             type: string
+          description: >-
+            A list of fields to exclude from the prompt (fields remain in the
+            document).
         auth_type:
           type: string
           format: enum
+          description: >-
+            The type of authentication/authorization used by the connector.
+            Possible values: [oauth, service_auth]
         oauth:
           $ref: '#/components/schemas/ConnectorOAuth'
+          description: The OAuth 2.0 configuration for the connector.
         auth_status:
           $ref: '#/components/schemas/ConnectorAuthStatus'
+          description: >-
+            The OAuth status for the user making the request. One of ["valid",
+            "expired", ""]. Empty string (field is omitted) means the user has
+            not authorized the connector yet.
         active:
           type: boolean
+          description: Whether the connector is active or not.
         continue_on_failure:
           type: boolean
+          description: >-
+            Whether a chat request should continue or not if the request to this
+            connector fails.
       required:
         - id
         - name
@@ -40519,6 +42053,8 @@ http.use_ssl = true
 request = Net::HTTP::Delete.new(url)
 request["X-Client-Name"] = 'my-cool-project'
 request["Authorization"] = 'Bearer <token>'
+request["Content-Type"] = 'application/json'
+request.body = "{}"
 
 response = http.request(request)
 puts response.read_body
@@ -40530,8 +42066,10 @@ puts response.read_body
 $client = new \GuzzleHttp\Client();
 
 $response = $client->request('DELETE', 'https://api.cohere.com/v1/connectors/id', [
+  'body' => '{}',
   'headers' => [
     'Authorization' => 'Bearer <token>',
+    'Content-Type' => 'application/json',
     'X-Client-Name' => 'my-cool-project',
   ],
 ]);
@@ -40544,6 +42082,8 @@ var client = new RestClient("https://api.cohere.com/v1/connectors/id");
 var request = new RestRequest(Method.DELETE);
 request.AddHeader("X-Client-Name", "my-cool-project");
 request.AddHeader("Authorization", "Bearer <token>");
+request.AddHeader("Content-Type", "application/json");
+request.AddParameter("application/json", "{}", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
 ```
 
@@ -40552,14 +42092,19 @@ import Foundation
 
 let headers = [
   "X-Client-Name": "my-cool-project",
-  "Authorization": "Bearer <token>"
+  "Authorization": "Bearer <token>",
+  "Content-Type": "application/json"
 ]
+let parameters = [] as [String : Any]
+
+let postData = JSONSerialization.data(withJSONObject: parameters, options: [])
 
 let request = NSMutableURLRequest(url: NSURL(string: "https://api.cohere.com/v1/connectors/id")! as URL,
                                         cachePolicy: .useProtocolCachePolicy,
                                     timeoutInterval: 10.0)
 request.httpMethod = "DELETE"
 request.allHTTPHeaderFields = headers
+request.httpBody = postData as Data
 
 let session = URLSession.shared
 let dataTask = session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) -> Void in
@@ -40714,6 +42259,9 @@ components:
       properties:
         redirect_url:
           type: string
+          description: >-
+            The OAuth 2.0 redirect url. Redirect the user to this url to
+            authorize the connector.
 
 ```
 
@@ -40832,6 +42380,8 @@ http.use_ssl = true
 request = Net::HTTP::Post.new(url)
 request["X-Client-Name"] = 'my-cool-project'
 request["Authorization"] = 'Bearer <token>'
+request["Content-Type"] = 'application/json'
+request.body = "{}"
 
 response = http.request(request)
 puts response.read_body
@@ -40843,8 +42393,10 @@ puts response.read_body
 $client = new \GuzzleHttp\Client();
 
 $response = $client->request('POST', 'https://api.cohere.com/v1/connectors/id/oauth/authorize', [
+  'body' => '{}',
   'headers' => [
     'Authorization' => 'Bearer <token>',
+    'Content-Type' => 'application/json',
     'X-Client-Name' => 'my-cool-project',
   ],
 ]);
@@ -40857,6 +42409,8 @@ var client = new RestClient("https://api.cohere.com/v1/connectors/id/oauth/autho
 var request = new RestRequest(Method.POST);
 request.AddHeader("X-Client-Name", "my-cool-project");
 request.AddHeader("Authorization", "Bearer <token>");
+request.AddHeader("Content-Type", "application/json");
+request.AddParameter("application/json", "{}", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
 ```
 
@@ -40865,14 +42419,19 @@ import Foundation
 
 let headers = [
   "X-Client-Name": "my-cool-project",
-  "Authorization": "Bearer <token>"
+  "Authorization": "Bearer <token>",
+  "Content-Type": "application/json"
 ]
+let parameters = [] as [String : Any]
+
+let postData = JSONSerialization.data(withJSONObject: parameters, options: [])
 
 let request = NSMutableURLRequest(url: NSURL(string: "https://api.cohere.com/v1/connectors/id/oauth/authorize")! as URL,
                                         cachePolicy: .useProtocolCachePolicy,
                                     timeoutInterval: 10.0)
 request.httpMethod = "POST"
 request.allHTTPHeaderFields = headers
+request.httpBody = postData as Data
 
 let session = URLSession.shared
 let dataTask = session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) -> Void in
@@ -40994,23 +42553,29 @@ components:
         - value: BASE_TYPE_CLASSIFICATION
         - value: BASE_TYPE_RERANK
         - value: BASE_TYPE_CHAT
+      default: BASE_TYPE_UNSPECIFIED
     Strategy:
       type: string
       enum:
         - value: STRATEGY_UNSPECIFIED
         - value: STRATEGY_VANILLA
         - value: STRATEGY_TFEW
+      default: STRATEGY_UNSPECIFIED
     BaseModel:
       type: object
       properties:
         name:
           type: string
+          description: The name of the base model.
         version:
           type: string
+          description: read-only. The version of the base model.
         base_type:
           $ref: '#/components/schemas/BaseType'
+          description: The type of the base model.
         strategy:
           $ref: '#/components/schemas/Strategy'
+          description: 'Deprecated: The fine-tuning strategy.'
       required:
         - base_type
     LoraTargetModules:
@@ -41020,36 +42585,62 @@ components:
         - value: LORA_TARGET_MODULES_QV
         - value: LORA_TARGET_MODULES_QKVO
         - value: LORA_TARGET_MODULES_QKVO_FFN
+      default: LORA_TARGET_MODULES_UNSPECIFIED
     Hyperparameters:
       type: object
       properties:
         early_stopping_patience:
           type: integer
+          description: >-
+            Stops training if the loss metric does not improve beyond the value
+            of
+
+            `early_stopping_threshold` after this many times of evaluation.
         early_stopping_threshold:
           type: number
           format: double
+          description: How much the loss must improve to prevent early stopping.
         train_batch_size:
           type: integer
+          description: >-
+            The batch size is the number of training examples included in a
+            single
+
+            training pass.
         train_epochs:
           type: integer
+          description: The number of epochs to train for.
         learning_rate:
           type: number
           format: double
+          description: The learning rate to be used during training.
         lora_alpha:
           type: integer
+          description: |-
+            Controls the scaling factor for LoRA updates. Higher values make the
+            updates more impactful.
         lora_rank:
           type: integer
+          description: >-
+            Specifies the rank for low-rank matrices. Lower ranks reduce
+            parameters
+
+            but may limit model flexibility.
         lora_target_modules:
           $ref: '#/components/schemas/LoraTargetModules'
+          description: The combination of LoRA modules to target.
     WandbConfig:
       type: object
       properties:
         project:
           type: string
+          description: The WandB project name to be used during training.
         api_key:
           type: string
+          description: The WandB API key to be used during training.
         entity:
           type: string
+          description: The WandB entity name to be used during training.
       required:
         - project
         - api_key
@@ -41058,14 +42649,21 @@ components:
       properties:
         base_model:
           $ref: '#/components/schemas/BaseModel'
+          description: The base model to fine-tune.
         dataset_id:
           type: string
+          description: The data used for training and evaluating the fine-tuned model.
         hyperparameters:
           $ref: '#/components/schemas/Hyperparameters'
+          description: Fine-tuning hyper-parameters.
         multi_label:
           type: boolean
+          description: >-
+            read-only. Whether the model is single-label or multi-label (only
+            for classification).
         wandb:
           $ref: '#/components/schemas/WandbConfig'
+          description: The Weights & Biases configuration (Chat fine-tuning only).
       required:
         - base_model
         - dataset_id
@@ -41081,33 +42679,46 @@ components:
         - value: STATUS_TEMPORARILY_OFFLINE
         - value: STATUS_PAUSED
         - value: STATUS_QUEUED
+      default: STATUS_UNSPECIFIED
     FinetunedModel:
       type: object
       properties:
         id:
           type: string
+          description: read-only. FinetunedModel ID.
         name:
           type: string
+          description: FinetunedModel name (e.g. `foobar`).
         creator_id:
           type: string
+          description: read-only. User ID of the creator.
         organization_id:
           type: string
+          description: read-only. Organization ID.
         settings:
           $ref: '#/components/schemas/Settings'
+          description: FinetunedModel settings such as dataset, hyperparameters...
         status:
           $ref: '#/components/schemas/Status'
+          description: read-only. Current stage in the life-cycle of the fine-tuned model.
         created_at:
           type: string
           format: date-time
+          description: read-only. Creation timestamp.
         updated_at:
           type: string
           format: date-time
+          description: read-only. Latest update timestamp.
         completed_at:
           type: string
           format: date-time
+          description: read-only. Timestamp for the completed fine-tuning.
         last_used:
           type: string
           format: date-time
+          description: >-
+            read-only. Deprecated: Timestamp for the latest request to this
+            fine-tuned model.
       required:
         - name
         - settings
@@ -41118,10 +42729,17 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/FinetunedModel'
+          description: List of fine-tuned models matching the request.
         next_page_token:
           type: string
+          description: >-
+            Pagination token to retrieve the next page of results. If the value
+            is "",
+
+            it means no further results for the request.
         total_size:
           type: integer
+          description: Total count of results.
 
 ```
 
@@ -41210,7 +42828,7 @@ asyncio.run(main())
 
 ```
 
-```ruby
+```ruby /finetuning_ListFinetunedModels_example
 require 'uri'
 require 'net/http'
 
@@ -41227,7 +42845,7 @@ response = http.request(request)
 puts response.read_body
 ```
 
-```php
+```php /finetuning_ListFinetunedModels_example
 <?php
 
 $client = new \GuzzleHttp\Client();
@@ -41242,7 +42860,7 @@ $response = $client->request('GET', 'https://api.cohere.com/v1/finetuning/finetu
 echo $response->getBody();
 ```
 
-```csharp
+```csharp /finetuning_ListFinetunedModels_example
 var client = new RestClient("https://api.cohere.com/v1/finetuning/finetuned-models");
 var request = new RestRequest(Method.GET);
 request.AddHeader("X-Client-Name", "my-cool-project");
@@ -41250,7 +42868,7 @@ request.AddHeader("Authorization", "Bearer <token>");
 IRestResponse response = client.Execute(request);
 ```
 
-```swift
+```swift /finetuning_ListFinetunedModels_example
 import Foundation
 
 let headers = [
@@ -41363,23 +42981,29 @@ components:
         - value: BASE_TYPE_CLASSIFICATION
         - value: BASE_TYPE_RERANK
         - value: BASE_TYPE_CHAT
+      default: BASE_TYPE_UNSPECIFIED
     Strategy:
       type: string
       enum:
         - value: STRATEGY_UNSPECIFIED
         - value: STRATEGY_VANILLA
         - value: STRATEGY_TFEW
+      default: STRATEGY_UNSPECIFIED
     BaseModel:
       type: object
       properties:
         name:
           type: string
+          description: The name of the base model.
         version:
           type: string
+          description: read-only. The version of the base model.
         base_type:
           $ref: '#/components/schemas/BaseType'
+          description: The type of the base model.
         strategy:
           $ref: '#/components/schemas/Strategy'
+          description: 'Deprecated: The fine-tuning strategy.'
       required:
         - base_type
     LoraTargetModules:
@@ -41389,36 +43013,62 @@ components:
         - value: LORA_TARGET_MODULES_QV
         - value: LORA_TARGET_MODULES_QKVO
         - value: LORA_TARGET_MODULES_QKVO_FFN
+      default: LORA_TARGET_MODULES_UNSPECIFIED
     Hyperparameters:
       type: object
       properties:
         early_stopping_patience:
           type: integer
+          description: >-
+            Stops training if the loss metric does not improve beyond the value
+            of
+
+            `early_stopping_threshold` after this many times of evaluation.
         early_stopping_threshold:
           type: number
           format: double
+          description: How much the loss must improve to prevent early stopping.
         train_batch_size:
           type: integer
+          description: >-
+            The batch size is the number of training examples included in a
+            single
+
+            training pass.
         train_epochs:
           type: integer
+          description: The number of epochs to train for.
         learning_rate:
           type: number
           format: double
+          description: The learning rate to be used during training.
         lora_alpha:
           type: integer
+          description: |-
+            Controls the scaling factor for LoRA updates. Higher values make the
+            updates more impactful.
         lora_rank:
           type: integer
+          description: >-
+            Specifies the rank for low-rank matrices. Lower ranks reduce
+            parameters
+
+            but may limit model flexibility.
         lora_target_modules:
           $ref: '#/components/schemas/LoraTargetModules'
+          description: The combination of LoRA modules to target.
     WandbConfig:
       type: object
       properties:
         project:
           type: string
+          description: The WandB project name to be used during training.
         api_key:
           type: string
+          description: The WandB API key to be used during training.
         entity:
           type: string
+          description: The WandB entity name to be used during training.
       required:
         - project
         - api_key
@@ -41427,14 +43077,21 @@ components:
       properties:
         base_model:
           $ref: '#/components/schemas/BaseModel'
+          description: The base model to fine-tune.
         dataset_id:
           type: string
+          description: The data used for training and evaluating the fine-tuned model.
         hyperparameters:
           $ref: '#/components/schemas/Hyperparameters'
+          description: Fine-tuning hyper-parameters.
         multi_label:
           type: boolean
+          description: >-
+            read-only. Whether the model is single-label or multi-label (only
+            for classification).
         wandb:
           $ref: '#/components/schemas/WandbConfig'
+          description: The Weights & Biases configuration (Chat fine-tuning only).
       required:
         - base_model
         - dataset_id
@@ -41450,33 +43107,46 @@ components:
         - value: STATUS_TEMPORARILY_OFFLINE
         - value: STATUS_PAUSED
         - value: STATUS_QUEUED
+      default: STATUS_UNSPECIFIED
     FinetunedModel:
       type: object
       properties:
         id:
           type: string
+          description: read-only. FinetunedModel ID.
         name:
           type: string
+          description: FinetunedModel name (e.g. `foobar`).
         creator_id:
           type: string
+          description: read-only. User ID of the creator.
         organization_id:
           type: string
+          description: read-only. Organization ID.
         settings:
           $ref: '#/components/schemas/Settings'
+          description: FinetunedModel settings such as dataset, hyperparameters...
         status:
           $ref: '#/components/schemas/Status'
+          description: read-only. Current stage in the life-cycle of the fine-tuned model.
         created_at:
           type: string
           format: date-time
+          description: read-only. Creation timestamp.
         updated_at:
           type: string
           format: date-time
+          description: read-only. Latest update timestamp.
         completed_at:
           type: string
           format: date-time
+          description: read-only. Timestamp for the completed fine-tuning.
         last_used:
           type: string
           format: date-time
+          description: >-
+            read-only. Deprecated: Timestamp for the latest request to this
+            fine-tuned model.
       required:
         - name
         - settings
@@ -41485,6 +43155,7 @@ components:
       properties:
         finetuned_model:
           $ref: '#/components/schemas/FinetunedModel'
+          description: Information about the fine-tuned model.
 
 ```
 
@@ -41664,7 +43335,7 @@ request = Net::HTTP::Post.new(url)
 request["X-Client-Name"] = 'my-cool-project'
 request["Authorization"] = 'Bearer <token>'
 request["Content-Type"] = 'application/json'
-request.body = "{\n  \"name\": \"string\",\n  \"settings\": {\n    \"base_model\": {\n      \"base_type\": \"BASE_TYPE_UNSPECIFIED\"\n    },\n    \"dataset_id\": \"string\"\n  }\n}"
+request.body = "{\n  \"name\": \"customer-support-chatbot-v1\",\n  \"settings\": {\n    \"base_model\": {\n      \"base_type\": \"BASE_TYPE_CHAT\"\n    },\n    \"dataset_id\": \"customer-support-dataset-2024\"\n  }\n}"
 
 response = http.request(request)
 puts response.read_body
@@ -41677,12 +43348,12 @@ $client = new \GuzzleHttp\Client();
 
 $response = $client->request('POST', 'https://api.cohere.com/v1/finetuning/finetuned-models', [
   'body' => '{
-  "name": "string",
+  "name": "customer-support-chatbot-v1",
   "settings": {
     "base_model": {
-      "base_type": "BASE_TYPE_UNSPECIFIED"
+      "base_type": "BASE_TYPE_CHAT"
     },
-    "dataset_id": "string"
+    "dataset_id": "customer-support-dataset-2024"
   }
 }',
   'headers' => [
@@ -41701,7 +43372,7 @@ var request = new RestRequest(Method.POST);
 request.AddHeader("X-Client-Name", "my-cool-project");
 request.AddHeader("Authorization", "Bearer <token>");
 request.AddHeader("Content-Type", "application/json");
-request.AddParameter("application/json", "{\n  \"name\": \"string\",\n  \"settings\": {\n    \"base_model\": {\n      \"base_type\": \"BASE_TYPE_UNSPECIFIED\"\n    },\n    \"dataset_id\": \"string\"\n  }\n}", ParameterType.RequestBody);
+request.AddParameter("application/json", "{\n  \"name\": \"customer-support-chatbot-v1\",\n  \"settings\": {\n    \"base_model\": {\n      \"base_type\": \"BASE_TYPE_CHAT\"\n    },\n    \"dataset_id\": \"customer-support-dataset-2024\"\n  }\n}", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
 ```
 
@@ -41714,10 +43385,10 @@ let headers = [
   "Content-Type": "application/json"
 ]
 let parameters = [
-  "name": "string",
+  "name": "customer-support-chatbot-v1",
   "settings": [
-    "base_model": ["base_type": "BASE_TYPE_UNSPECIFIED"],
-    "dataset_id": "string"
+    "base_model": ["base_type": "BASE_TYPE_CHAT"],
+    "dataset_id": "customer-support-dataset-2024"
   ]
 ] as [String : Any]
 
@@ -41827,26 +43498,37 @@ paths:
               properties:
                 name:
                   type: string
+                  description: FinetunedModel name (e.g. `foobar`).
                 creator_id:
                   type: string
+                  description: User ID of the creator.
                 organization_id:
                   type: string
+                  description: Organization ID.
                 settings:
                   $ref: '#/components/schemas/Settings'
+                  description: FinetunedModel settings such as dataset, hyperparameters...
                 status:
                   $ref: '#/components/schemas/Status'
+                  description: Current stage in the life-cycle of the fine-tuned model.
                 created_at:
                   type: string
                   format: date-time
+                  description: Creation timestamp.
                 updated_at:
                   type: string
                   format: date-time
+                  description: Latest update timestamp.
                 completed_at:
                   type: string
                   format: date-time
+                  description: Timestamp for the completed fine-tuning.
                 last_used:
                   type: string
                   format: date-time
+                  description: >-
+                    Deprecated: Timestamp for the latest request to this
+                    fine-tuned model.
               required:
                 - name
                 - settings
@@ -41860,23 +43542,29 @@ components:
         - value: BASE_TYPE_CLASSIFICATION
         - value: BASE_TYPE_RERANK
         - value: BASE_TYPE_CHAT
+      default: BASE_TYPE_UNSPECIFIED
     Strategy:
       type: string
       enum:
         - value: STRATEGY_UNSPECIFIED
         - value: STRATEGY_VANILLA
         - value: STRATEGY_TFEW
+      default: STRATEGY_UNSPECIFIED
     BaseModel:
       type: object
       properties:
         name:
           type: string
+          description: The name of the base model.
         version:
           type: string
+          description: read-only. The version of the base model.
         base_type:
           $ref: '#/components/schemas/BaseType'
+          description: The type of the base model.
         strategy:
           $ref: '#/components/schemas/Strategy'
+          description: 'Deprecated: The fine-tuning strategy.'
       required:
         - base_type
     LoraTargetModules:
@@ -41886,36 +43574,62 @@ components:
         - value: LORA_TARGET_MODULES_QV
         - value: LORA_TARGET_MODULES_QKVO
         - value: LORA_TARGET_MODULES_QKVO_FFN
+      default: LORA_TARGET_MODULES_UNSPECIFIED
     Hyperparameters:
       type: object
       properties:
         early_stopping_patience:
           type: integer
+          description: >-
+            Stops training if the loss metric does not improve beyond the value
+            of
+
+            `early_stopping_threshold` after this many times of evaluation.
         early_stopping_threshold:
           type: number
           format: double
+          description: How much the loss must improve to prevent early stopping.
         train_batch_size:
           type: integer
+          description: >-
+            The batch size is the number of training examples included in a
+            single
+
+            training pass.
         train_epochs:
           type: integer
+          description: The number of epochs to train for.
         learning_rate:
           type: number
           format: double
+          description: The learning rate to be used during training.
         lora_alpha:
           type: integer
+          description: |-
+            Controls the scaling factor for LoRA updates. Higher values make the
+            updates more impactful.
         lora_rank:
           type: integer
+          description: >-
+            Specifies the rank for low-rank matrices. Lower ranks reduce
+            parameters
+
+            but may limit model flexibility.
         lora_target_modules:
           $ref: '#/components/schemas/LoraTargetModules'
+          description: The combination of LoRA modules to target.
     WandbConfig:
       type: object
       properties:
         project:
           type: string
+          description: The WandB project name to be used during training.
         api_key:
           type: string
+          description: The WandB API key to be used during training.
         entity:
           type: string
+          description: The WandB entity name to be used during training.
       required:
         - project
         - api_key
@@ -41924,14 +43638,21 @@ components:
       properties:
         base_model:
           $ref: '#/components/schemas/BaseModel'
+          description: The base model to fine-tune.
         dataset_id:
           type: string
+          description: The data used for training and evaluating the fine-tuned model.
         hyperparameters:
           $ref: '#/components/schemas/Hyperparameters'
+          description: Fine-tuning hyper-parameters.
         multi_label:
           type: boolean
+          description: >-
+            read-only. Whether the model is single-label or multi-label (only
+            for classification).
         wandb:
           $ref: '#/components/schemas/WandbConfig'
+          description: The Weights & Biases configuration (Chat fine-tuning only).
       required:
         - base_model
         - dataset_id
@@ -41947,33 +43668,46 @@ components:
         - value: STATUS_TEMPORARILY_OFFLINE
         - value: STATUS_PAUSED
         - value: STATUS_QUEUED
+      default: STATUS_UNSPECIFIED
     FinetunedModel:
       type: object
       properties:
         id:
           type: string
+          description: read-only. FinetunedModel ID.
         name:
           type: string
+          description: FinetunedModel name (e.g. `foobar`).
         creator_id:
           type: string
+          description: read-only. User ID of the creator.
         organization_id:
           type: string
+          description: read-only. Organization ID.
         settings:
           $ref: '#/components/schemas/Settings'
+          description: FinetunedModel settings such as dataset, hyperparameters...
         status:
           $ref: '#/components/schemas/Status'
+          description: read-only. Current stage in the life-cycle of the fine-tuned model.
         created_at:
           type: string
           format: date-time
+          description: read-only. Creation timestamp.
         updated_at:
           type: string
           format: date-time
+          description: read-only. Latest update timestamp.
         completed_at:
           type: string
           format: date-time
+          description: read-only. Timestamp for the completed fine-tuning.
         last_used:
           type: string
           format: date-time
+          description: >-
+            read-only. Deprecated: Timestamp for the latest request to this
+            fine-tuned model.
       required:
         - name
         - settings
@@ -41982,6 +43716,7 @@ components:
       properties:
         finetuned_model:
           $ref: '#/components/schemas/FinetunedModel'
+          description: Information about the fine-tuned model.
 
 ```
 
@@ -42123,7 +43858,7 @@ request = Net::HTTP::Patch.new(url)
 request["X-Client-Name"] = 'my-cool-project'
 request["Authorization"] = 'Bearer <token>'
 request["Content-Type"] = 'application/json'
-request.body = "{\n  \"name\": \"string\",\n  \"settings\": {\n    \"base_model\": {\n      \"base_type\": \"BASE_TYPE_UNSPECIFIED\"\n    },\n    \"dataset_id\": \"string\"\n  }\n}"
+request.body = "{\n  \"name\": \"Customer Support Chatbot\",\n  \"settings\": {\n    \"base_model\": {\n      \"base_type\": \"BASE_TYPE_CHAT\"\n    },\n    \"dataset_id\": \"customer-support-dataset-2024\"\n  }\n}"
 
 response = http.request(request)
 puts response.read_body
@@ -42136,12 +43871,12 @@ $client = new \GuzzleHttp\Client();
 
 $response = $client->request('PATCH', 'https://api.cohere.com/v1/finetuning/finetuned-models/id', [
   'body' => '{
-  "name": "string",
+  "name": "Customer Support Chatbot",
   "settings": {
     "base_model": {
-      "base_type": "BASE_TYPE_UNSPECIFIED"
+      "base_type": "BASE_TYPE_CHAT"
     },
-    "dataset_id": "string"
+    "dataset_id": "customer-support-dataset-2024"
   }
 }',
   'headers' => [
@@ -42160,7 +43895,7 @@ var request = new RestRequest(Method.PATCH);
 request.AddHeader("X-Client-Name", "my-cool-project");
 request.AddHeader("Authorization", "Bearer <token>");
 request.AddHeader("Content-Type", "application/json");
-request.AddParameter("application/json", "{\n  \"name\": \"string\",\n  \"settings\": {\n    \"base_model\": {\n      \"base_type\": \"BASE_TYPE_UNSPECIFIED\"\n    },\n    \"dataset_id\": \"string\"\n  }\n}", ParameterType.RequestBody);
+request.AddParameter("application/json", "{\n  \"name\": \"Customer Support Chatbot\",\n  \"settings\": {\n    \"base_model\": {\n      \"base_type\": \"BASE_TYPE_CHAT\"\n    },\n    \"dataset_id\": \"customer-support-dataset-2024\"\n  }\n}", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
 ```
 
@@ -42173,10 +43908,10 @@ let headers = [
   "Content-Type": "application/json"
 ]
 let parameters = [
-  "name": "string",
+  "name": "Customer Support Chatbot",
   "settings": [
-    "base_model": ["base_type": "BASE_TYPE_UNSPECIFIED"],
-    "dataset_id": "string"
+    "base_model": ["base_type": "BASE_TYPE_CHAT"],
+    "dataset_id": "customer-support-dataset-2024"
   ]
 ] as [String : Any]
 
@@ -42282,23 +44017,29 @@ components:
         - value: BASE_TYPE_CLASSIFICATION
         - value: BASE_TYPE_RERANK
         - value: BASE_TYPE_CHAT
+      default: BASE_TYPE_UNSPECIFIED
     Strategy:
       type: string
       enum:
         - value: STRATEGY_UNSPECIFIED
         - value: STRATEGY_VANILLA
         - value: STRATEGY_TFEW
+      default: STRATEGY_UNSPECIFIED
     BaseModel:
       type: object
       properties:
         name:
           type: string
+          description: The name of the base model.
         version:
           type: string
+          description: read-only. The version of the base model.
         base_type:
           $ref: '#/components/schemas/BaseType'
+          description: The type of the base model.
         strategy:
           $ref: '#/components/schemas/Strategy'
+          description: 'Deprecated: The fine-tuning strategy.'
       required:
         - base_type
     LoraTargetModules:
@@ -42308,36 +44049,62 @@ components:
         - value: LORA_TARGET_MODULES_QV
         - value: LORA_TARGET_MODULES_QKVO
         - value: LORA_TARGET_MODULES_QKVO_FFN
+      default: LORA_TARGET_MODULES_UNSPECIFIED
     Hyperparameters:
       type: object
       properties:
         early_stopping_patience:
           type: integer
+          description: >-
+            Stops training if the loss metric does not improve beyond the value
+            of
+
+            `early_stopping_threshold` after this many times of evaluation.
         early_stopping_threshold:
           type: number
           format: double
+          description: How much the loss must improve to prevent early stopping.
         train_batch_size:
           type: integer
+          description: >-
+            The batch size is the number of training examples included in a
+            single
+
+            training pass.
         train_epochs:
           type: integer
+          description: The number of epochs to train for.
         learning_rate:
           type: number
           format: double
+          description: The learning rate to be used during training.
         lora_alpha:
           type: integer
+          description: |-
+            Controls the scaling factor for LoRA updates. Higher values make the
+            updates more impactful.
         lora_rank:
           type: integer
+          description: >-
+            Specifies the rank for low-rank matrices. Lower ranks reduce
+            parameters
+
+            but may limit model flexibility.
         lora_target_modules:
           $ref: '#/components/schemas/LoraTargetModules'
+          description: The combination of LoRA modules to target.
     WandbConfig:
       type: object
       properties:
         project:
           type: string
+          description: The WandB project name to be used during training.
         api_key:
           type: string
+          description: The WandB API key to be used during training.
         entity:
           type: string
+          description: The WandB entity name to be used during training.
       required:
         - project
         - api_key
@@ -42346,14 +44113,21 @@ components:
       properties:
         base_model:
           $ref: '#/components/schemas/BaseModel'
+          description: The base model to fine-tune.
         dataset_id:
           type: string
+          description: The data used for training and evaluating the fine-tuned model.
         hyperparameters:
           $ref: '#/components/schemas/Hyperparameters'
+          description: Fine-tuning hyper-parameters.
         multi_label:
           type: boolean
+          description: >-
+            read-only. Whether the model is single-label or multi-label (only
+            for classification).
         wandb:
           $ref: '#/components/schemas/WandbConfig'
+          description: The Weights & Biases configuration (Chat fine-tuning only).
       required:
         - base_model
         - dataset_id
@@ -42369,33 +44143,46 @@ components:
         - value: STATUS_TEMPORARILY_OFFLINE
         - value: STATUS_PAUSED
         - value: STATUS_QUEUED
+      default: STATUS_UNSPECIFIED
     FinetunedModel:
       type: object
       properties:
         id:
           type: string
+          description: read-only. FinetunedModel ID.
         name:
           type: string
+          description: FinetunedModel name (e.g. `foobar`).
         creator_id:
           type: string
+          description: read-only. User ID of the creator.
         organization_id:
           type: string
+          description: read-only. Organization ID.
         settings:
           $ref: '#/components/schemas/Settings'
+          description: FinetunedModel settings such as dataset, hyperparameters...
         status:
           $ref: '#/components/schemas/Status'
+          description: read-only. Current stage in the life-cycle of the fine-tuned model.
         created_at:
           type: string
           format: date-time
+          description: read-only. Creation timestamp.
         updated_at:
           type: string
           format: date-time
+          description: read-only. Latest update timestamp.
         completed_at:
           type: string
           format: date-time
+          description: read-only. Timestamp for the completed fine-tuning.
         last_used:
           type: string
           format: date-time
+          description: >-
+            read-only. Deprecated: Timestamp for the latest request to this
+            fine-tuned model.
       required:
         - name
         - settings
@@ -42404,6 +44191,7 @@ components:
       properties:
         finetuned_model:
           $ref: '#/components/schemas/FinetunedModel'
+          description: Information about the fine-tuned model.
 
 ```
 
@@ -42492,7 +44280,7 @@ asyncio.run(main())
 
 ```
 
-```ruby
+```ruby /finetuning_GetFinetunedModel_example
 require 'uri'
 require 'net/http'
 
@@ -42509,7 +44297,7 @@ response = http.request(request)
 puts response.read_body
 ```
 
-```php
+```php /finetuning_GetFinetunedModel_example
 <?php
 
 $client = new \GuzzleHttp\Client();
@@ -42524,7 +44312,7 @@ $response = $client->request('GET', 'https://api.cohere.com/v1/finetuning/finetu
 echo $response->getBody();
 ```
 
-```csharp
+```csharp /finetuning_GetFinetunedModel_example
 var client = new RestClient("https://api.cohere.com/v1/finetuning/finetuned-models/id");
 var request = new RestRequest(Method.GET);
 request.AddHeader("X-Client-Name", "my-cool-project");
@@ -42532,7 +44320,7 @@ request.AddHeader("Authorization", "Bearer <token>");
 IRestResponse response = client.Execute(request);
 ```
 
-```swift
+```swift /finetuning_GetFinetunedModel_example
 import Foundation
 
 let headers = [
@@ -42730,6 +44518,8 @@ http.use_ssl = true
 request = Net::HTTP::Delete.new(url)
 request["X-Client-Name"] = 'my-cool-project'
 request["Authorization"] = 'Bearer <token>'
+request["Content-Type"] = 'application/json'
+request.body = "{}"
 
 response = http.request(request)
 puts response.read_body
@@ -42741,8 +44531,10 @@ puts response.read_body
 $client = new \GuzzleHttp\Client();
 
 $response = $client->request('DELETE', 'https://api.cohere.com/v1/finetuning/finetuned-models/id', [
+  'body' => '{}',
   'headers' => [
     'Authorization' => 'Bearer <token>',
+    'Content-Type' => 'application/json',
     'X-Client-Name' => 'my-cool-project',
   ],
 ]);
@@ -42755,6 +44547,8 @@ var client = new RestClient("https://api.cohere.com/v1/finetuning/finetuned-mode
 var request = new RestRequest(Method.DELETE);
 request.AddHeader("X-Client-Name", "my-cool-project");
 request.AddHeader("Authorization", "Bearer <token>");
+request.AddHeader("Content-Type", "application/json");
+request.AddParameter("application/json", "{}", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
 ```
 
@@ -42763,14 +44557,19 @@ import Foundation
 
 let headers = [
   "X-Client-Name": "my-cool-project",
-  "Authorization": "Bearer <token>"
+  "Authorization": "Bearer <token>",
+  "Content-Type": "application/json"
 ]
+let parameters = [] as [String : Any]
+
+let postData = JSONSerialization.data(withJSONObject: parameters, options: [])
 
 let request = NSMutableURLRequest(url: NSURL(string: "https://api.cohere.com/v1/finetuning/finetuned-models/id")! as URL,
                                         cachePolicy: .useProtocolCachePolicy,
                                     timeoutInterval: 10.0)
 request.httpMethod = "DELETE"
 request.allHTTPHeaderFields = headers
+request.httpBody = postData as Data
 
 let session = URLSession.shared
 let dataTask = session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) -> Void in
@@ -42911,16 +44710,22 @@ components:
         - value: STATUS_TEMPORARILY_OFFLINE
         - value: STATUS_PAUSED
         - value: STATUS_QUEUED
+      default: STATUS_UNSPECIFIED
     Event:
       type: object
       properties:
         user_id:
           type: string
+          description: >-
+            ID of the user who initiated the event. Empty if initiated by the
+            system.
         status:
           $ref: '#/components/schemas/Status'
+          description: Status of the fine-tuned model.
         created_at:
           type: string
           format: date-time
+          description: Timestamp when the event happened.
     ListEventsResponse:
       type: object
       properties:
@@ -42928,10 +44733,17 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Event'
+          description: List of events for the fine-tuned model.
         next_page_token:
           type: string
+          description: >-
+            Pagination token to retrieve the next page of results. If the value
+            is "",
+
+            it means no further results for the request.
         total_size:
           type: integer
+          description: Total count of results.
 
 ```
 
@@ -43024,7 +44836,7 @@ asyncio.run(main())
 
 ```
 
-```ruby
+```ruby /finetuning_ListEvents_example
 require 'uri'
 require 'net/http'
 
@@ -43041,7 +44853,7 @@ response = http.request(request)
 puts response.read_body
 ```
 
-```php
+```php /finetuning_ListEvents_example
 <?php
 
 $client = new \GuzzleHttp\Client();
@@ -43056,7 +44868,7 @@ $response = $client->request('GET', 'https://api.cohere.com/v1/finetuning/finetu
 echo $response->getBody();
 ```
 
-```csharp
+```csharp /finetuning_ListEvents_example
 var client = new RestClient("https://api.cohere.com/v1/finetuning/finetuned-models/finetuned_model_id/events");
 var request = new RestRequest(Method.GET);
 request.AddHeader("X-Client-Name", "my-cool-project");
@@ -43064,7 +44876,7 @@ request.AddHeader("Authorization", "Bearer <token>");
 IRestResponse response = client.Execute(request);
 ```
 
-```swift
+```swift /finetuning_ListEvents_example
 import Foundation
 
 let headers = [
@@ -43193,13 +45005,16 @@ components:
         created_at:
           type: string
           format: date-time
+          description: Creation timestamp.
         step_number:
           type: integer
+          description: Step number.
         metrics:
           type: object
           additionalProperties:
             type: number
             format: double
+          description: Map of names and values for each evaluation metrics.
     ListTrainingStepMetricsResponse:
       type: object
       properties:
@@ -43207,8 +45022,14 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/TrainingStepMetrics'
+          description: The metrics for each step the evaluation was run on.
         next_page_token:
           type: string
+          description: >-
+            Pagination token to retrieve the next page of results. If the value
+            is "",
+
+            it means no further results for the request.
 
 ```
 
@@ -43306,7 +45127,7 @@ asyncio.run(main())
 
 ```
 
-```ruby
+```ruby /finetuning_ListTrainingStepMetrics_example
 require 'uri'
 require 'net/http'
 
@@ -43323,7 +45144,7 @@ response = http.request(request)
 puts response.read_body
 ```
 
-```php
+```php /finetuning_ListTrainingStepMetrics_example
 <?php
 
 $client = new \GuzzleHttp\Client();
@@ -43338,7 +45159,7 @@ $response = $client->request('GET', 'https://api.cohere.com/v1/finetuning/finetu
 echo $response->getBody();
 ```
 
-```csharp
+```csharp /finetuning_ListTrainingStepMetrics_example
 var client = new RestClient("https://api.cohere.com/v1/finetuning/finetuned-models/finetuned_model_id/training-step-metrics");
 var request = new RestRequest(Method.GET);
 request.AddHeader("X-Client-Name", "my-cool-project");
@@ -43346,7 +45167,7 @@ request.AddHeader("Authorization", "Bearer <token>");
 IRestResponse response = client.Execute(request);
 ```
 
-```swift
+```swift /finetuning_ListTrainingStepMetrics_example
 import Foundation
 
 let headers = [
@@ -43375,6 +45196,43 @@ dataTask.resume()
 
 # Release Notes
 
+
+
+# Cohere's Rerank v4.0 Model is Here!
+
+> Release announcment for Rerank 4.0 - our new state of the art model for ranking.
+
+We're pleased to announce the release of [Rerank 4.0](/docs/rerank) our newest and most performant foundational model for ranking.
+
+## Technical Details
+
+* **Two model variants available:**
+  * `rerank-v4.0-pro`: Optimized for state-of-the-art quality and complex use-cases
+  * `rerank-v4.0-fast`: Optimized for low latency and high throughput use-cases
+* **Multilingual support**: Re-rank both English and non-English documents
+* **Semi-structured data support**: Re-rank JSON documents
+* **Extended context length**: 32k token context window
+
+## Example Query
+
+```python PYTHON
+import cohere
+
+co = cohere.ClientV2()
+
+query = "What is the capital of the United States?"
+docs = [
+    "Carson City is the capital city of the American state of Nevada. At the 2010 United States Census, Carson City had a population of 55,274.",
+    "The Commonwealth of the Northern Mariana Islands is a group of islands in the Pacific Ocean that are a political division controlled by the United States. Its capital is Saipan.",
+    "Charlotte Amalie is the capital and largest city of the United States Virgin Islands. It has about 20,000 people. The city is on the island of Saint Thomas.",
+    "Washington, D.C. (also known as simply Washington or D.C., and officially as the District of Columbia) is the capital of the United States. It is a federal district. The President of the USA and many major national government offices are in the territory. This makes it the political center of the United States of America.",
+    "Capital punishment has existed in the United States since before the United States was a country. As of 2017, capital punishment is legal in 30 of the 50 states. The federal government (including the United States military) also uses capital punishment.",
+]
+
+results = co.rerank(
+    model="rerank-v4.0-pro", query=query, documents=docs, top_n=5
+)
+```
 
 
 # Announcing Major Command Deprecations
@@ -49931,7 +51789,7 @@ In this example, we'll use a recent piece of text, that wasn't in the training d
 In practice, you would typically do RAG on much longer text, that doesn't fit in the context window of the model.
 
 ```python PYTHON
-%pip install "cohere<5" --quiet
+%pip install cohere --quiet
 ```
 
 ```txt title="Output"
@@ -49942,12 +51800,14 @@ In practice, you would typically do RAG on much longer text, that doesn't fit in
 
 ```python PYTHON
 import cohere
-API_KEY = "..." # fill in your Cohere API key here
-co = cohere.Client(API_KEY)
+
+co = cohere.ClientV2(api_key="YOUR_COHERE_API_KEY") # Get your free API key: https://dashboard.cohere.com/api-keys
 ```
 
 ```python PYTHON
-!pip install wikipedia --quiet
+# we'll get some wikipedia data
+# ! pip install wikipedia -qq
+
 import wikipedia
 ```
 
@@ -49957,13 +51817,14 @@ Building wheel for wikipedia (setup.py) ... [?25l[?25hdone
 ```
 
 ```python PYTHON
+# let's get the wikipedia article about Dune Part Two
 article = wikipedia.page('Dune Part Two')
 text = article.content
 print(f"The text has roughly {len(text.split())} words.")
 ```
 
 ```txt title="Output"
-The text has roughly 5323 words.
+The text has roughly 6265 words.
 ```
 
 ## Step 1 - Indexing and given a user query, retrieve the relevant chunks from the index
@@ -49973,7 +51834,9 @@ We index the document in a vector database. This requires getting the documents,
 ### We split the document into chunks of roughly 512 words
 
 ```python PYTHON
-%pip install -qU langchain-text-splitters --quiet
+# For chunking let's use langchain to help us split the text
+! pip install -qU langchain-text-splitters -qq
+
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 ```
 
@@ -49998,7 +51861,7 @@ print(f"The text has been broken down in {len(chunks)} chunks.")
 ```
 
 ```txt title="Output"
-The text has been broken down in 91 chunks.
+The text has been broken down in 115 chunks.
 ```
 
 ### Embed every text chunk
@@ -50006,19 +51869,28 @@ The text has been broken down in 91 chunks.
 Cohere embeddings are state-of-the-art.
 
 ```python PYTHON
-model="embed-v4.0"
-response = co.embed(
-    texts= chunks,
-    model=model,
-    input_type="search_document",
-    embedding_types=['float']
-)
-embeddings = response.embeddings.float
+# Because the texts being embedded are the chunks we are searching over, we set the input type as search_doc
+model = "embed-v4.0"
+
+def batch_embed(texts, batch_size=96):
+    all_embeddings = []
+    for i in range(0, len(texts), batch_size):
+        batch = texts[i:i+batch_size]
+        response = co.embed(
+            texts=batch,
+            model=model,
+            input_type="search_document",
+            embedding_types=['float']
+        )
+        all_embeddings.extend(response.embeddings.float)
+    return all_embeddings
+
+embeddings = batch_embed(chunks)
 print(f"We just computed {len(embeddings)} embeddings.")
 ```
 
 ```txt title="Output"
-We just computed 91 embeddings.
+We just computed 115 embeddings.
 ```
 
 ### Store the embeddings in a vector database
@@ -50032,6 +51904,7 @@ We use the simplest vector database ever: a python dictionary using `np.array()`
 ```python PYTHON
 import numpy as np
 vector_database = {i: np.array(embedding) for i, embedding in enumerate(embeddings)}
+# { 0: array([...]), 1: array([...]), 2: array([...]), ..., 10: array([...]) }
 ```
 
 ## Given a user query, retrieve the relevant chunks from the vector database
@@ -50041,6 +51914,8 @@ vector_database = {i: np.array(embedding) for i, embedding in enumerate(embeddin
 ```python PYTHON
 query = "Name everyone involved in writing the script, directing, and producing 'Dune: Part Two'?"
 
+# Note: the relevant passage in the wikipedia page we're looking for is:
+# "[...] Dune: Part Two was originally scheduled to be released on October 20, 2023, but was delayed to November 17, 2023, before moving forward two weeks to November 3, 2023, to adjust to changes in release schedules from other studios. It was later postponed by over four months to March 15, 2024, due to the 2023 Hollywood labor disputes. After the strikes were resolved, the film moved once more up two weeks to March 1, 2024. [...]"
 ```
 
 ### Embed the user question
@@ -50048,6 +51923,7 @@ query = "Name everyone involved in writing the script, directing, and producing 
 Cohere embeddings are state-of-the-art.
 
 ```python PYTHON
+# Because the text being embedded is the search query, we set the input type as search_query
 response = co.embed(
     texts=[query],
     model=model,
@@ -50055,7 +51931,7 @@ response = co.embed(
     embedding_types=['float']
 )
 query_embedding = response.embeddings.float[0]
-print("query_embedding: ", query_embedding)
+print("query_embedding: ", query_embedding[:10] + ["..."])
 ```
 
 ```txt title="Output"
@@ -50070,14 +51946,18 @@ We use cosine similarity to find the most similar chunks
 def cosine_similarity(a, b):
     return np.dot(a, b) / (np.linalg.norm(a) * np.linalg.norm(b))
 
+# Calculate similarity between the user question & each chunk
 similarities = [cosine_similarity(query_embedding, chunk) for chunk in embeddings]
 print("similarity scores: ", similarities)
 
+# Get indices of the top 10 most similar chunks
 sorted_indices = np.argsort(similarities)[::-1]
 
+# Keep only the top 10 indices
 top_indices = sorted_indices[:10]
 print("Here are the indices of the top 10 chunks after retrieval: ", top_indices)
 
+# Retrieve the top 10 most similar chunks
 top_chunks_after_retrieval = [chunks[i] for i in top_indices]
 print("Here are the top 10 chunks after retrieval: ")
 for t in top_chunks_after_retrieval:
@@ -50111,10 +51991,13 @@ response = co.rerank(
     query=query,
     documents=top_chunks_after_retrieval,
     top_n=3,
-    model="rerank-english-v2.0",
+    model="rerank-english-v3.0",
 )
 
-top_chunks_after_rerank = [result.document['text'] for result in response]
+# top_chunks_after_rerank = [result.document['text'] for result in response]
+
+top_chunks_after_rerank = [top_chunks_after_retrieval[result.index] for result in response.results]
+
 print("Here are the top 3 chunks after rerank: ")
 for t in top_chunks_after_rerank:
     print("== " + t)
@@ -50130,8 +52013,9 @@ Here are the top 3 chunks after rerank:
 ## Step 3 - Generate the model final answer, given the retrieved and reranked chunks
 
 ```python PYTHON
+# preamble containing instructions about the task and the desired style for the output.
 preamble = """
-## Task &amp; Context
+## Task & Context
 You help people answer their questions and other requests interactively. You will be asked a very wide array of requests on all kinds of topics. You will be equipped with a wide range of search engines or similar tools to help you, which you use to research your answer. You should focus on serving the user's needs as best you can, which will be wide-ranging.
 
 ## Style Guide
@@ -50140,40 +52024,31 @@ Unless the user asks for a different style of answer, you should answer in full 
 ```
 
 ```python PYTHON
+# retrieved documents
 documents = [
-    {"title": "chunk 0", "snippet": top_chunks_after_rerank[0]},
-    {"title": "chunk 1", "snippet": top_chunks_after_rerank[1]},
-    {"title": "chunk 2", "snippet": top_chunks_after_rerank[2]},
+    {"data": {"title": "chunk 0", "snippet": top_chunks_after_rerank[0]}},
+    {"data": {"title": "chunk 1", "snippet": top_chunks_after_rerank[1]}},
+    {"data": {"title": "chunk 2", "snippet": top_chunks_after_rerank[2]}},
   ]
 
+# get model response
 response = co.chat(
-  message=query,
-  documents=documents,
-  preamble=preamble,
-  model="command-r",
+  model="command-r-08-2024",
+  messages=[{"role" : "system", "content" : preamble},
+            {"role" : "user", "content" : query}],
+  documents=documents,  
   temperature=0.3
 )
 
 print("Final answer:")
-print(response.text)
+print(response.message.content[0].text)
 ```
 
 ```txt title="Output"
 Final answer:
-Here are the key crew members involved in 'Dune: Part Two':
+The script for *Dune: Part Two* was co-written by Denis Villeneuve and Jon Spaihts. The film is directed by Denis Villeneuve and produced by Villeneuve, Mary Parent, and Cale Boyter.
 
-- Denis Villeneuve: director and producer
-- Jon Spaihts: co-writer of the screenplay
-- Mary Parent and Cale Boyter: producers
-- Tanya Lapointe, Brian Herbert, Byron Merritt, Kim Herbert, Thomas Tull, Richard P. Rubinstein, John Harrison, Herbert W. Gain and Kevin J. Anderson: executive producers
-- Joe Walker: editor
-- Brad Riker: supervising art director
-- Patrice Vermette: production designer
-- Paul Lambert: visual effects supervisor
-- Gerd Nefzer: special effects supervisor
-- Thomas Struthers: stunt coordinator.
-
-A number of crew members from the first film returned for the sequel, which is set to be released in 2024.
+Tanya Lapointe, Brian Herbert, Byron Merritt, Kim Herbert, Thomas Tull, Richard P. Rubinstein, John Harrison, Herbert W. Gain, and Kevin J. Anderson also served as executive producers.
 ```
 
 Note: this is indeed the answer you'd expect, and here was the passage of text in wikipedia explaining it!
@@ -50190,8 +52065,8 @@ These citations are optional — you can decide to ignore them.
 
 ```python PYTHON
 print("Citations that support the final answer:")
-for cite in response.citations:
-  print(cite)
+for cite in response.message.citations:
+    print(cite)
 ```
 
 ```txt title="Output"
@@ -50229,65 +52104,51 @@ Citations that support the final answer:
 ```
 
 ```python PYTHON
-def insert_citations_in_order(text, citations):
-    """
-    A helper function to pretty print citations.
-    """
-    offset = 0
-    document_id_to_number = {}
-    citation_number = 0
-    modified_citations = []
+def insert_inline_citations(text, citations, field='text'):
+    sorted_citations = sorted(citations, key=lambda c: c.start, reverse=True)
+    
+    for citation in sorted_citations:
+        source_ids = [source.id.split(':')[-1] for source in citation.sources]
+        citation_text = f"[{','.join(source_ids)}]"
+        text = text[:citation.end] + citation_text + text[citation.end:]
+    
+    return text
 
-    # Process citations, assigning numbers based on unique document_ids
+def list_sources(citations, fields=['text']):
+    unique_sources = set()
     for citation in citations:
-        citation_numbers = []
-        for document_id in sorted(citation["document_ids"]):
-            if document_id not in document_id_to_number:
-                citation_number += 1  # Increment for a new document_id
-                document_id_to_number[document_id] = citation_number
-            citation_numbers.append(document_id_to_number[document_id])
+        for source in citation.sources:
+            source_data = tuple((field, source.document[field]) for field in fields if field in source.document)
+            unique_sources.add((source.id.split(':')[-1], source_data))
+    
+    footnotes = []
+    for source_id, source_data in sorted(unique_sources):
+        footnote = f"[{source_id}] " + ", ".join(f"{key}: {value}" for key, value in source_data)
+        footnotes.append(footnote)
+    
+    return "\n".join(footnotes)
 
-        # Adjust start/end with offset
-        start, end = citation['start'] + offset, citation['end'] + offset
-        placeholder = ''.join([f'[{number}]' for number in citation_numbers])
-        # Bold the cited text and append the placeholder
-        modification = f'**{text[start:end]}**{placeholder}'
-        # Replace the cited text with its bolded version + placeholder
-        text = text[:start] + modification + text[end:]
-        # Update the offset for subsequent replacements
-        offset += len(modification) - (end - start)
+# Use the functions
+cited_text = insert_inline_citations(response.message.content[0].text, response.message.citations)
 
-    # Prepare citations for listing at the bottom, ensuring unique document_ids are listed once
-    unique_citations = {number: doc_id for doc_id, number in document_id_to_number.items()}
-    citation_list = '\n'.join([f'[{doc_id}] source: "{documents[doc_id - 1]["snippet"]}"' for doc_id, number in sorted(unique_citations.items(), key=lambda item: item[1])])
-    text_with_citations = f'{text}\n\n{citation_list}'
+# Print the result with inline citations
+print(cited_text)
 
-    return text_with_citations
-
-
-print(insert_citations_in_order(response.text, response.citations))
-
+# Print footnotes
+if response.message.citations:
+    print("\nSource documents:")
+    print(list_sources(response.message.citations, fields=['title','snippet']))
 ```
 
-```markdown title="Output"
-Here are the key crew members involved in 'Dune: Part Two':
+```txt title="Output"
+The script for *Dune: Part Two* was co-written by Denis Villeneuve and Jon Spaihts.[1] The film is directed by Denis Villeneuve[1,2] and produced by Villeneuve, Mary Parent, and Cale Boyter.[0]
 
-- **Denis Villeneuve**[1]: **director and producer**[1]
-- **Jon Spaihts**[1]: **co-writer of the screenplay**[1]
-- **Mary Parent**[2] and **Cale Boyter**[2]: **producers**[2]
-- **Tanya Lapointe**[2], **Brian Herbert**[2], **Byron Merritt**[2], **Kim Herbert**[2], **Thomas Tull**[2], **Richard P. Rubinstein**[2], **John Harrison**[2], **Herbert W. Gain**[2] and **Kevin J. Anderson**[2]: **executive producers**[2]
-- **Joe Walker**[3]: **editor**[3]
-- **Brad Riker**[3]: **supervising art director**[3]
-- **Patrice Vermette**[3]: **production designer**[3]
-- **Paul Lambert**[3]: **visual effects supervisor**[3]
-- **Gerd Nefzer**[3]: **special effects supervisor**[3]
-- **Thomas Struthers**[3]: **stunt coordinator.**[3]
+Tanya Lapointe[0], Brian Herbert[0], Byron Merritt[0], Kim Herbert[0], Thomas Tull[0], Richard P. Rubinstein[0], John Harrison[0], Herbert W. Gain[0], and Kevin J. Anderson[0] also served as executive producers.[0]
 
-A number of crew members from the first film returned for the sequel, which is set to be released in **2024.**[1]
-
-[1] source: "Dune: Part Two is a 2024 American epic science fiction film directed and produced by Denis Villeneuve, who co-wrote the screenplay with Jon Spaihts. The sequel to Dune (2021) adapts the 1965 novel Dune by Frank Herbert and follows Paul Atreides as he unites with the Fremen people of the desert planet Arrakis to wage war against House Harkonnen. Timothée Chalamet, Rebecca Ferguson, Josh Brolin, Stellan Skarsgård, Dave Bautista, Zendaya, Charlotte Rampling, and Javier Bardem reprise their roles from the first"
-[2] source: "stunt coordinator. Dune: Part Two was produced by Villeneuve, Mary Parent, and Cale Boyter, with Tanya Lapointe, Brian Herbert, Byron Merritt, Kim Herbert, Thomas Tull, Jon Spaihts, Richard P. Rubinstein, John Harrison, and Herbert W. Gain serving as executive producers and Kevin J. Anderson as creative consultant. Legendary CEO Joshua Grode confirmed in April 2019 that they plan to make a sequel, adding that "there's a logical place to stop the [first] movie before the book is over".In December 2020,"
-[3] source: "series. Villeneuve ultimately secured a two-film deal with Warner Bros. Pictures, in the same style as the two-part adaption of Stephen King's It in 2017 and 2019. In January 2019, Joe Walker was confirmed to be serving as the film's editor. Other crew included Brad Riker as supervising art director, Patrice Vermette as production designer, Paul Lambert as visual effects supervisor, Gerd Nefzer as special effects supervisor, and Thomas Struthers as stunt coordinator. Dune: Part Two was produced by"
+Source documents:
+[0] title: chunk 0, snippet: Dune: Part Two was produced by Villeneuve, Mary Parent, and Cale Boyter, with Tanya Lapointe, Brian Herbert, Byron Merritt, Kim Herbert, Thomas Tull, Jon Spaihts, Richard P. Rubinstein, John Harrison, and Herbert W. Gain serving as executive producers and Kevin J. Anderson as creative consultant. Legendary CEO Joshua Grode confirmed in April 2019 that they plan to make a sequel, adding that "there's a logical place to stop the [first] movie before the book is over".
+[1] title: chunk 1, snippet: Dune: Part Two is a 2024 American epic space opera film directed by Denis Villeneuve, who co-wrote the screenplay with Jon Spaihts. The sequel to Dune (2021), it is the second of a two-part adaptation of the 1965 novel Dune by Frank Herbert, and the second installment of Villeneuve's Dune film trilogy. It follows Paul Atreides as he unites with the Fremen people of the desert planet Arrakis to wage war against House Harkonnen. Timothée Chalamet, Zendaya, Rebecca Ferguson, Josh Brolin, Stellan Skarsgård,
+[2] title: chunk 2, snippet: On October 26, 2021, Legendary officially greenlit Dune: Part Two, with a spokesperson for the company stating, "We would not have gotten to this point without the extraordinary vision of Denis and the amazing work of his talented crew, the writers, our stellar cast, our partners at Warner Bros., and of course the fans! Here's to more Dune". Production work had occurred back-to-back with the first film, as Villeneuve and his wife Lapointe immediately took a flight to Budapest in order to begin
 ```
 
 
@@ -51158,7 +53019,7 @@ response = co.chat(
     message=message,
     tools=tools,
     preamble=preamble,
-    model="command-r"
+    model="command-a-03-2025",
 )
 
 
@@ -51168,16 +53029,8 @@ print("\n".join(str(tool_call) for tool_call in response.tool_calls))
 
 ```
 The model recommends doing the following tool calls:
-cohere.ToolCall {
-	name: query_daily_sales_report
-	parameters: {'day': '2023-09-29'}
-	generation_id: eaf955e3-623d-4796-bf51-23b07c66ed2c
-}
-cohere.ToolCall {
-	name: query_product_catalog
-	parameters: {'category': 'Electronics'}
-	generation_id: eaf955e3-623d-4796-bf51-23b07c66ed2c
-}
+name='query_daily_sales_report' parameters={'day': '2023-09-29'}
+name='query_product_catalog' parameters={'category': 'Electronics'}
 ```
 
 ## Step 3 – The tool calls are executed
@@ -51201,7 +53054,9 @@ for tool_call in response.tool_calls:
     })
 
 print("Tool results that will be fed back to the model in step 4:")
-print(json.dumps(tool_results, indent=4))
+
+serializable_results = [{"call": {"name": r["call"].name, "parameters": r["call"].parameters}, "outputs": r["outputs"]} for r in tool_results]
+print(json.dumps(serializable_results, indent=4))
 ```
 
 ```
@@ -51216,8 +53071,7 @@ Tool results that will be fed back to the model in step 4:
             "name": "query_daily_sales_report",
             "parameters": {
                 "day": "2023-09-29"
-            },
-            "generation_id": "eaf955e3-623d-4796-bf51-23b07c66ed2c"
+            }
         },
         "outputs": [
             {
@@ -51231,8 +53085,7 @@ Tool results that will be fed back to the model in step 4:
             "name": "query_product_catalog",
             "parameters": {
                 "category": "Electronics"
-            },
-            "generation_id": "eaf955e3-623d-4796-bf51-23b07c66ed2c"
+            }
         },
         "outputs": [
             {
@@ -51273,8 +53126,9 @@ response = co.chat(
     tools=tools,
     tool_results=tool_results,
     preamble=preamble,
-    model="command-r",
-    temperature=0.3
+    model="command-a-03-2025",
+    temperature=0.3,
+    force_single_step=True
 )
 ```
 
@@ -51285,17 +53139,15 @@ print(response.text)
 
 ```
 Final answer:
-On the 29th of September 2023, there were 10,000 sales with 250 units sold.
+On the 29th September 2023, the total sales amount was 10,000 and the total units sold was 250.
 
-The Electronics category contains three products. There are details below:
+Here are the details of the products in the 'Electronics' category:
 
-| Product Name | Price | Stock Level |
-| ------------ | ----- | ----------- |
-| Smartphone | 500 | 20 |
-| Laptop | 1000 | 15 |
-| Tablet | 300 | 25 |
-
-The total stock level for Electronics items is 50.
+| Product Name | Price | Product ID | Stock Level |
+|---|---|---|---|
+| Smartphone | 500 | E1001 | 20 |
+| Laptop | 1000 | E1002 | 15 |
+| Tablet | 300 | E1003 | 25 |
 ```
 
 ## Bonus: Citations come for free with Cohere! 🎉
@@ -51314,18 +53166,25 @@ for cite in response.citations:
 
 ```
 Citations that support the final answer:
-{'start': 7, 'end': 29, 'text': '29th of September 2023', 'document_ids': ['query_daily_sales_report:0:0']}
-{'start': 42, 'end': 75, 'text': '10,000 sales with 250 units sold.', 'document_ids': ['query_daily_sales_report:0:0']}
-{'start': 112, 'end': 127, 'text': 'three products.', 'document_ids': ['query_product_catalog:1:0']}
-{'start': 234, 'end': 244, 'text': 'Smartphone', 'document_ids': ['query_product_catalog:1:0']}
-{'start': 247, 'end': 250, 'text': '500', 'document_ids': ['query_product_catalog:1:0']}
-{'start': 253, 'end': 255, 'text': '20', 'document_ids': ['query_product_catalog:1:0']}
-{'start': 260, 'end': 266, 'text': 'Laptop', 'document_ids': ['query_product_catalog:1:0']}
-{'start': 269, 'end': 273, 'text': '1000', 'document_ids': ['query_product_catalog:1:0']}
-{'start': 276, 'end': 278, 'text': '15', 'document_ids': ['query_product_catalog:1:0']}
-{'start': 283, 'end': 289, 'text': 'Tablet', 'document_ids': ['query_product_catalog:1:0']}
-{'start': 292, 'end': 295, 'text': '300', 'document_ids': ['query_product_catalog:1:0']}
-{'start': 298, 'end': 300, 'text': '25', 'document_ids': ['query_product_catalog:1:0']}
+{'start': 7, 'end': 26, 'text': '29th September 2023', 'document_ids': ['query_daily_sales_report:0:0']}
+{'start': 32, 'end': 61, 'text': 'total sales amount was 10,000', 'document_ids': ['query_daily_sales_report:0:0']}
+{'start': 70, 'end': 95, 'text': 'total units sold was 250.', 'document_ids': ['query_daily_sales_report:0:0']}
+{'start': 168, 'end': 180, 'text': 'Product Name', 'document_ids': ['query_product_catalog:1:0']}
+{'start': 183, 'end': 188, 'text': 'Price', 'document_ids': ['query_product_catalog:1:0']}
+{'start': 191, 'end': 201, 'text': 'Product ID', 'document_ids': ['query_product_catalog:1:0']}
+{'start': 204, 'end': 215, 'text': 'Stock Level', 'document_ids': ['query_product_catalog:1:0']}
+{'start': 238, 'end': 248, 'text': 'Smartphone', 'document_ids': ['query_product_catalog:1:0']}
+{'start': 251, 'end': 254, 'text': '500', 'document_ids': ['query_product_catalog:1:0']}
+{'start': 257, 'end': 262, 'text': 'E1001', 'document_ids': ['query_product_catalog:1:0']}
+{'start': 265, 'end': 267, 'text': '20', 'document_ids': ['query_product_catalog:1:0']}
+{'start': 272, 'end': 278, 'text': 'Laptop', 'document_ids': ['query_product_catalog:1:0']}
+{'start': 281, 'end': 285, 'text': '1000', 'document_ids': ['query_product_catalog:1:0']}
+{'start': 288, 'end': 293, 'text': 'E1002', 'document_ids': ['query_product_catalog:1:0']}
+{'start': 296, 'end': 298, 'text': '15', 'document_ids': ['query_product_catalog:1:0']}
+{'start': 303, 'end': 309, 'text': 'Tablet', 'document_ids': ['query_product_catalog:1:0']}
+{'start': 312, 'end': 315, 'text': '300', 'document_ids': ['query_product_catalog:1:0']}
+{'start': 318, 'end': 323, 'text': 'E1003', 'document_ids': ['query_product_catalog:1:0']}
+{'start': 326, 'end': 328, 'text': '25', 'document_ids': ['query_product_catalog:1:0']}
 ```
 
 ```python PYTHON
@@ -51370,22 +53229,20 @@ print(insert_citations_in_order(response.text, response.citations))
 ```
 
 ```
-On the **29th of September 2023**[1], there were **10,000 sales with 250 units sold.**[1]
+On the **29th September 2023**[1], the **total sales amount was 10,000**[1] and the **total units sold was 250.**[1]
 
-The Electronics category contains **three products.**[2] There are details below:
+Here are the details of the products in the 'Electronics' category:
 
-| Product Name | Price | Stock Level |
-| ------------ | ----- | ----------- |
-| **Smartphone**[2] | **500**[2] | **20**[2] |
-| **Laptop**[2] | **1000**[2] | **15**[2] |
-| **Tablet**[2] | **300**[2] | **25**[2] |
-
-The total stock level for Electronics items is 50.
+| **Product Name**[2] | **Price**[2] | **Product ID**[2] | **Stock Level**[2] |
+|---|---|---|---|
+| **Smartphone**[2] | **500**[2] | **E1001**[2] | **20**[2] |
+| **Laptop**[2] | **1000**[2] | **E1002**[2] | **15**[2] |
+| **Tablet**[2] | **300**[2] | **E1003**[2] | **25**[2] |
 
 [1] source: [{'date': '2023-09-29', 'summary': 'Total Sales Amount: 10000, Total Units Sold: 250'}]
-    based on tool call: {'name': 'query_daily_sales_report', 'parameters': {'day': '2023-09-29'}, 'generation_id': 'eaf955e3-623d-4796-bf51-23b07c66ed2c'}
+    based on tool call: {'name': 'query_daily_sales_report', 'parameters': {'day': '2023-09-29'}}
 [2] source: [{'category': 'Electronics', 'products': [{'product_id': 'E1001', 'name': 'Smartphone', 'price': 500, 'stock_level': 20}, {'product_id': 'E1002', 'name': 'Laptop', 'price': 1000, 'stock_level': 15}, {'product_id': 'E1003', 'name': 'Tablet', 'price': 300, 'stock_level': 25}]}]
-    based on tool call: {'name': 'query_product_catalog', 'parameters': {'category': 'Electronics'}, 'generation_id': 'eaf955e3-623d-4796-bf51-23b07c66ed2c'}
+    based on tool call: {'name': 'query_product_catalog', 'parameters': {'category': 'Electronics'}}
 ```
 
 Now, you've used Cohere for Tool Use. Tool use opens up a wide range of new use cases. Here are a few examples:
@@ -51571,7 +53428,7 @@ from llama_index.core import VectorStoreIndex, ServiceContext
 ```
 
 ```python PYTHON
-co_model = 'command-r'
+co_model = 'command-a-03-2025'
 co_api_key = getpass("Enter Cohere API key: ")
 co = cohere.Client(api_key=co_api_key)
 ```
@@ -51621,9 +53478,13 @@ Designing a robust chunking strategy is as much a science as an art. There are n
 ## Utils
 
 ```python PYTHON
-def set_css():
+def set_css(*args, **kwargs):
   display(HTML('''
-
+  <style>
+    pre {
+        white-space: pre-wrap;
+    }
+  </style>
   '''))
 get_ipython().events.register('pre_run_cell', set_css)
 
@@ -51639,8 +53500,8 @@ def insert_citations(text: str, citations: List[dict]):
     # Process citations in the order they were provided
     for citation in citations:
         # Adjust start/end with offset
-        start, end = citation['start'] + offset, citation['end'] + offset
-        placeholder = "[" + ", ".join(doc[4:] for doc in citation["document_ids"]) + "]"
+        start, end = citation.start + offset, citation.end + offset
+        placeholder = "[" + ", ".join(doc[4:] for doc in citation.document_ids) + "]"
         # ^ doc[4:] removes the 'doc_' prefix, and leaves the quoted document
         modification = f'{text[start:end]} {placeholder}'
         # Replace the cited text with its bolded version + placeholder
@@ -51650,7 +53511,7 @@ def insert_citations(text: str, citations: List[dict]):
 
     return text
 
-def build_retriever(documents, top_n=5):
+def build_retreiver(documents, top_n=5):
   # Create the embedding model
   embed_model = CohereEmbedding(
       cohere_api_key=co_api_key,
@@ -51747,7 +53608,7 @@ Subsequently, we implement the standard RAG pipeline. We feed the chunks into a 
 chunk_size = 500
 chunk_overlap = 0
 documents = get_chunks(text, chunk_size, chunk_overlap)
-retriever = build_retriever(documents)
+retriever = build_retreiver(documents)
 
 source_nodes = retriever.retrieve(question)
 print('Number of docuemnts: ',len(source_nodes))
@@ -51765,7 +53626,7 @@ print(response.text)
 
 ```txt title="Output"
 Number of docuemnts:  5
-An unknown speaker mentions Jonathan Nolan in a conversation about the creators of Westworld. They mention that Jonathan Nolan and Lisa Joy Nolan are friends of theirs, and that they have invited them to visit the lab.
+Elon Musk mentions Jonathan Nolan.
 ```
 
 A notable feature of [`co.chat`](https://docs.cohere.com/reference/chat) is its ability to ground the model's answer within the context. This means we can identify which chunks were used to generate the answer. Below, we show the previous output of the model together with the citation reference, where `[num]` represents the index of the chunk.
@@ -51775,7 +53636,7 @@ print(insert_citations(response.text, response.citations))
 ```
 
 ```txt title="Output"
-An unknown speaker [0] mentions Jonathan Nolan in a conversation about the creators of Westworld. [0] They mention that Jonathan Nolan and Lisa Joy Nolan [0] are friends [0] of theirs, and that they have invited them to visit the lab. [0]
+Elon Musk [0] mentions Jonathan Nolan.
 ```
 
 Indeed, by printing the cited chunk, we can validate that the text was divided so that the generation model could not provide the correct response. Notably, the speaker's name is not included in the context, which is why the model refes to an `unknown speaker`.
@@ -51798,7 +53659,7 @@ Therefore, this time to mitigate this issue, we **allow for overlap between cons
 chunk_size = 500
 chunk_overlap = 100
 documents = get_chunks(text,chunk_size, chunk_overlap)
-retriever = build_retriever(documents)
+retriever = build_retreiver(documents)
 
 source_nodes = retriever.retrieve(question)
 print('Number of docuemnts: ',len(source_nodes))
@@ -51816,7 +53677,7 @@ print(response.text)
 
 ```txt title="Output"
 Number of docuemnts:  5
-Elon Musk mentions Jonathan Nolan. Musk is the CEO and Product Architect of the lab that resembles the set of Westworld, a show created by Jonathan Nolan and Lisa Joy Nolan.
+Elon Musk mentions Jonathan Nolan.
 ```
 
 Again, we can print the text along with the citations.
@@ -51826,7 +53687,7 @@ print(insert_citations(response.text, response.citations))
 ```
 
 ```txt title="Output"
-Elon Musk [0] mentions Jonathan Nolan. Musk is the CEO and Product Architect [0] of the lab [0] that resembles the set of Westworld [0], a show created by Jonathan Nolan [0] and Lisa Joy Nolan. [0]
+Elon Musk [0] mentions Jonathan Nolan.
 ```
 
 And investigate the chunks which were used as context to answer the query.
@@ -51901,7 +53762,7 @@ text_splitter = CharacterTextSplitter(
 documents = text_splitter.create_documents([text_custom])
 documents = [Document(text=doc.page_content) for doc in documents]
 
-retriever = build_retriever(documents)
+retriever = build_retreiver(documents)
 
 source_nodes = retriever.retrieve(question)
 print('Number of docuemnts: ',len(source_nodes))
@@ -51917,20 +53778,18 @@ print(response.text)
 ```
 
 ```txt title="Output"
-WARNING:langchain_text_splitters.base:Created a chunk of size 5946, which is longer than the specified 1000
-WARNING:langchain_text_splitters.base:Created a chunk of size 4092, which is longer than the specified 1000
-WARNING:langchain_text_splitters.base:Created a chunk of size 1782, which is longer than the specified 1000
-WARNING:langchain_text_splitters.base:Created a chunk of size 1392, which is longer than the specified 1000
-WARNING:langchain_text_splitters.base:Created a chunk of size 2046, which is longer than the specified 1000
-WARNING:langchain_text_splitters.base:Created a chunk of size 1152, which is longer than the specified 1000
-WARNING:langchain_text_splitters.base:Created a chunk of size 1304, which is longer than the specified 1000
-WARNING:langchain_text_splitters.base:Created a chunk of size 1295, which is longer than the specified 1000
-WARNING:langchain_text_splitters.base:Created a chunk of size 2090, which is longer than the specified 1000
-WARNING:langchain_text_splitters.base:Created a chunk of size 1251, which is longer than the specified 1000
-
-
+Created a chunk of size 5946, which is longer than the specified 1000
+Created a chunk of size 4092, which is longer than the specified 1000
+Created a chunk of size 1782, which is longer than the specified 1000
+Created a chunk of size 1392, which is longer than the specified 1000
+Created a chunk of size 2046, which is longer than the specified 1000
+Created a chunk of size 1152, which is longer than the specified 1000
+Created a chunk of size 1304, which is longer than the specified 1000
+Created a chunk of size 1295, which is longer than the specified 1000
+Created a chunk of size 2090, which is longer than the specified 1000
+Created a chunk of size 1251, which is longer than the specified 1000
 Number of docuemnts:  5
-Elon Musk mentions Jonathan Nolan. Musk is friends with the creators of Westworld, Jonathan Nolan and Lisa Joy Nolan.
+Elon Musk mentions Jonathan Nolan.
 ```
 
 Below we validate the answer using citations.
@@ -51940,7 +53799,7 @@ print(insert_citations(response.text, response.citations))
 ```
 
 ```txt title="Output"
-Elon Musk [0] mentions Jonathan Nolan. [0] Musk is friends [0] with the creators of Westworld [0], Jonathan Nolan [0] and Lisa Joy Nolan. [0]
+Elon Musk [0] mentions Jonathan Nolan.
 ```
 
 ```python PYTHON
@@ -56852,11 +58711,11 @@ for topic, name in topic_name_mapping.items():
     print(f"Topic {topic}: {name}")
 ```
 
-```
-Topic 0: Remote Team Management
-Topic 1: Remote Team Tools and Tips
-Topic 2: Remote Team Resources
-Topic 3: Remote Team Fun
+```txt title="Output"
+Topic 0: **Effective Leadership and Management of Remote Teams**
+Topic 1: **Essential Tools and Software for Remote Team Collaboration and Productivity**
+Topic 2: **Remote Team Engagement and Team Building Activities**
+Topic 3: **Remote Team Engagement Games**
 ```
 
 Now that we have the keywords nicely grouped into topics, we can proceed to generate the content ideas.
@@ -56885,15 +58744,8 @@ for topic, group in top_keywords.groupby('topic'):
 content_by_topic
 ```
 
-```
-{0: {'topic_name': 'Remote Team Management',
-  'keywords': 'managing remote teams, how to manage remote teams, leading remote teams, managing remote teams best practices, remote teams best practices, best practices for managing remote teams, manage remote teams, building culture in remote teams, culture building for remote teams, managing remote teams training'},
- 1: {'topic_name': 'Remote Team Tools and Tips',
-  'keywords': 'remote teams, collaboration tools for remote teams, team building for remote teams, scrum remote teams, tools for remote teams, zapier remote teams, working agreements for remote teams, working with remote teams, free collaboration tools for remote teams, free retrospective tools for remote teams'},
- 2: {'topic_name': 'Remote Team Resources',
-  'keywords': 'best collaboration tools for remote teams, slack best practices for remote teams, best communication tools for remote teams, best tools for remote teams, always on video for remote teams, best apps for remote teams, best free collaboration tools for remote teams, best games for remote teams, best gifts for remote teams, best ice breaker questions for remote teams'},
- 3: {'topic_name': 'Remote Team Fun',
-  'keywords': 'online games for remote teams, team building activities for remote teams, games for remote teams, retrospective ideas for remote teams, team building ideas for remote teams, fun retrospective ideas for remote teams, retro ideas for remote teams, team building exercises for remote teams, trust building exercises for remote teams, activities for remote teams'}}
+```txt title="Output"
+{0: {'topic_name': '**Effective Leadership and Management of Remote Teams**', 'keywords': 'managing remote teams, remote teams, how to manage remote teams, leading remote teams, managing remote teams best practices, remote teams best practices, scrum remote teams, best practices for managing remote teams, manage remote teams, slack best practices for remote teams'}, 1: {'topic_name': '**Essential Tools and Software for Remote Team Collaboration and Productivity**', 'keywords': 'collaboration tools for remote teams, best collaboration tools for remote teams, tools for remote teams, zapier remote teams, best communication tools for remote teams, free collaboration tools for remote teams, free retrospective tools for remote teams, project management tools for remote teams, best tools for remote teams, collaboration tool for remote teams'}, 2: {'topic_name': '**Remote Team Engagement and Team Building Activities**', 'keywords': 'team building activities for remote teams, team building for remote teams, retrospective ideas for remote teams, team building ideas for remote teams, fun retrospective ideas for remote teams, retro ideas for remote teams, team building exercises for remote teams, trust building exercises for remote teams, activities for remote teams, communication exercises for remote teams'}, 3: {'topic_name': '**Remote Team Engagement Games**', 'keywords': 'online games for remote teams, games for remote teams, retrospective games for remote teams, virtual games for remote teams, agile games for remote teams, fun games for remote teams, icebreaker games for remote teams, best games for remote teams, best online games for remote teams, bingo for remote teams'}}
 ```
 
 ### Create a Prompt with These Keywords
@@ -56910,7 +58762,7 @@ Blog title: <text>
 Abstract: <text>"""
 
   response = co.chat(
-    model='command-r',
+    model='command-a-03-2025',
     message = prompt)
   return response.text
 
@@ -56932,65 +58784,61 @@ for key,value in content_by_topic.items():
   print("-"*50)
 ```
 
-```
-Topic Name: Remote Team Management
+```txt title="Output"
+Topic Name: **Effective Leadership and Management of Remote Teams**
 
-Top Keywords: managing remote teams, how to manage remote teams, leading remote teams, managing remote teams best practices, remote teams best practices, best practices for managing remote teams, manage remote teams, building culture in remote teams, culture building for remote teams, managing remote teams training
+Top Keywords: managing remote teams, remote teams, how to manage remote teams, leading remote teams, managing remote teams best practices, remote teams best practices, scrum remote teams, best practices for managing remote teams, manage remote teams, slack best practices for remote teams
 
-Blog Post Ideas: Here are three blog post ideas:
+Blog Post Ideas: **Blog Title: Mastering Remote Team Management: Best Practices for Leaders**  
+**Abstract:** Leading a remote team comes with unique challenges, from communication barriers to maintaining team cohesion. This blog post dives into the essential best practices for managing remote teams effectively, including setting clear expectations, leveraging the right tools, and fostering a culture of trust and accountability. Whether you're new to remote leadership or looking to refine your approach, these actionable strategies will help you build a productive and engaged remote workforce.
 
-1. Blog title: "Leading Remote Teams: Strategies for Effective Management"
-   Abstract: Effective management of remote teams is crucial for success, but it comes with unique challenges. This blog will explore practical strategies for leading dispersed employees, focusing on building a cohesive and productive virtual workforce. It will cover topics such as establishing clear communication protocols, fostering a collaborative environment, and the importance of trusting and empowering your remote employees for enhanced performance.
+**Blog Title: Scrum for Remote Teams: Adapting Agile Practices for Virtual Collaboration**  
+**Abstract:** Agile methodologies like Scrum are powerful frameworks for project management, but how do they translate to remote teams? This post explores how to adapt Scrum practices for virtual environments, focusing on tools like Slack, Zoom, and Jira to facilitate daily stand-ups, sprint planning, and retrospectives. Learn how to overcome common challenges, such as time zone differences and reduced face-to-face interaction, while maintaining the agility and efficiency Scrum is known for.
 
-2. Blog title: "Remote Teams' Best Practices: Creating a Vibrant and Engaging Culture"
-   Abstract: Building a rich culture in a remote team setting is essential for employee engagement and retention. The blog will delve into creative ways to foster a sense of community and connection among team members who may be scattered across the globe. It will offer practical tips on creating virtual rituals, fostering open communication, and harnessing the power of technology for cultural development, ensuring remote employees feel valued and engaged.
-
-3. Blog title: "Managing Remote Teams: A Comprehensive Guide to Training and Development"
-   Abstract: Training and developing remote teams present specific challenges and opportunities. This comprehensive guide will arm managers with techniques to enhance their remote team's skills and knowledge. It will explore the latest tools and methodologies for remote training, including virtual workshops, e-learning platforms, and performance coaching. Additionally, the blog will discuss the significance of ongoing development and how to create an environment that encourages self-improvement and learning.
-
-Each of these topics explores a specific aspect of managing remote teams, providing valuable insights and practical guidance for leaders and managers in the evolving remote work landscape.
+**Blog Title: Slack Best Practices for Remote Teams: Boosting Communication and Productivity**  
+**Abstract:** Slack has become a cornerstone of remote team communication, but without the right strategies, it can lead to overwhelm and inefficiency. This blog post outlines the best practices for using Slack in remote teams, including channel organization, etiquette guidelines, and integration with other tools. Discover how to create a streamlined communication workflow that keeps your team aligned, reduces noise, and enhances productivity in a remote work setting.
 
 --------------------------------------------------
-Topic Name: Remote Team Tools and Tips
+Topic Name: **Essential Tools and Software for Remote Team Collaboration and Productivity**
 
-Top Keywords: remote teams, collaboration tools for remote teams, team building for remote teams, scrum remote teams, tools for remote teams, zapier remote teams, working agreements for remote teams, working with remote teams, free collaboration tools for remote teams, free retrospective tools for remote teams
+Top Keywords: collaboration tools for remote teams, best collaboration tools for remote teams, tools for remote teams, zapier remote teams, best communication tools for remote teams, free collaboration tools for remote teams, free retrospective tools for remote teams, project management tools for remote teams, best tools for remote teams, collaboration tool for remote teams
 
-Blog Post Ideas: 1. Blog title: "The Ultimate Guide to Building Effective Remote Teams"
-   Abstract: Building a cohesive and productive remote team can be challenging. This blog will serve as a comprehensive guide, offering practical tips and insights on how to create a united and successful virtual workforce. It will cover essential topics such as building a strong team culture, utilizing collaboration tools, and fostering effective communication strategies, ensuring remote teams can thrive and achieve their full potential.
+Blog Post Ideas: **Blog Title: The Ultimate Guide to the Best Collaboration Tools for Remote Teams in 2023**  
+**Abstract:** As remote work continues to rise, finding the right collaboration tools is essential for maintaining productivity and team cohesion. This comprehensive guide explores the top collaboration tools for remote teams, including project management platforms, communication apps, and automation tools like Zapier. Whether you're a small startup or a large enterprise, this post will help you identify the best tools to streamline workflows, enhance communication, and ensure your team stays aligned, regardless of their location.  
 
-2. Blog title: "The Best Collaboration Tools for Remote Teams: A Comprehensive Review"
-   Abstract: With the rapid rise of remote work, collaboration tools have become essential for teams' productivity and efficiency. This blog aims to review and compare the most popular collaboration tools, providing an in-depth analysis of their features, ease of use, and benefits. It will offer insights into choosing the right tools for remote collaboration, helping teams streamline their workflows and enhance their overall performance.
+**Blog Title: 10 Free Collaboration Tools Every Remote Team Should Be Using**  
+**Abstract:** Budget constraints shouldn't hinder your remote team's ability to collaborate effectively. This blog post highlights 10 free collaboration tools that cater to various needs, from project management and communication to retrospectives and file sharing. Discover how tools like Trello, Slack, and Miro can empower your team without breaking the bank, and learn tips for maximizing their features to foster seamless remote collaboration.  
 
-3. Blog title: "Remote Retrospective: A Guide to Reflect and Grow as a Remote Team"
-   Abstract: Conducting effective retrospectives is crucial for remote teams to reflect on their experiences, learn from the past, and chart a course for the future. This blog will focus on remote retrospectives, exploring different formats, techniques, and free tools that teams can use to foster continuous improvement. It will also provide tips on creating a safe and inclusive environment, encouraging honest feedback and productive discussions.
-
---------------------------------------------------
-Topic Name: Remote Team Resources
-
-Top Keywords: best collaboration tools for remote teams, slack best practices for remote teams, best communication tools for remote teams, best tools for remote teams, always on video for remote teams, best apps for remote teams, best free collaboration tools for remote teams, best games for remote teams, best gifts for remote teams, best ice breaker questions for remote teams
-
-Blog Post Ideas: 1. Blog title: "The Ultimate Guide to Remote Team Collaboration Tools"
-   Abstract: With the rise of remote work, choosing the right collaboration tools can be crucial to a team's success and productivity. This blog aims to be an comprehensive guide, outlining the various types of tools available, from communication platforms like Slack to project management software and online collaboration tools. It will offer best practices and guidelines for selecting and utilizing these tools, ensuring remote teams can work seamlessly together and maximize their output.
-
-2. Blog title: "Remote Team Management: Tips for Leading a Successful Virtual Workforce"
-   Abstract: Managing a remote team comes with its own set of challenges. This blog will provide an in-depth exploration of best practices for leading and motivating virtual teams. Covering topics such as effective communication strategies, performance evaluation, and maintaining a cohesive team culture, it will offer practical tips for managers and leaders to ensure their remote teams are engaged, productive, and well-managed.
-
-3. Blog title: "The Fun Side of Remote Work: Games, Icebreakers, and Team Building Activities"
-   Abstract: Remote work can be isolating, and this blog aims to provide some fun and creative solutions. It will offer a comprehensive guide to the best online games, icebreaker questions, and virtual team building activities that remote teams can use to connect and bond. From virtual escape rooms to interactive games and thought-provoking icebreakers, these ideas will help enhance team spirit, foster collaboration, and create a enjoyable remote work experience.
+**Blog Title: How to Choose the Right Project Management Tool for Your Remote Team**  
+**Abstract:** With countless project management tools available, selecting the perfect one for your remote team can be overwhelming. This post breaks down the key factors to consider, such as team size, project complexity, and integration capabilities, to help you make an informed decision. From Asana and Monday.com to ClickUp and Notion, explore the pros and cons of popular tools and find the one that best aligns with your team's unique needs and workflows.
 
 --------------------------------------------------
-Topic Name: Remote Team Fun
+Topic Name: **Remote Team Engagement and Team Building Activities**
 
-Top Keywords: online games for remote teams, team building activities for remote teams, games for remote teams, retrospective ideas for remote teams, team building ideas for remote teams, fun retrospective ideas for remote teams, retro ideas for remote teams, team building exercises for remote teams, trust building exercises for remote teams, activities for remote teams
+Top Keywords: team building activities for remote teams, team building for remote teams, retrospective ideas for remote teams, team building ideas for remote teams, fun retrospective ideas for remote teams, retro ideas for remote teams, team building exercises for remote teams, trust building exercises for remote teams, activities for remote teams, communication exercises for remote teams
 
-Blog Post Ideas: 1. Blog title: "The Great Remote Retro: Fun Games and Activities for Your Team"
-   Abstract: Remote work can make team building challenging. This blog post will be a fun guide to hosting interactive retro games and activities that bring your remote team together. From online escape rooms to virtual scavenger hunts, we'll explore the best ways to engage and unite your team, fostering collaboration and camaraderie. Virtual icebreakers and retrospective ideas will also be included to make your remote meetings more interactive and enjoyable.
+Blog Post Ideas: **Blog Title: 10 Fun and Engaging Team Building Activities for Remote Teams**  
+Abstract: Remote work can sometimes make team bonding challenging, but with the right activities, you can foster connection and collaboration. This blog post explores 10 creative and interactive team building ideas tailored for remote teams, from virtual escape rooms to online trivia nights. Each activity is designed to strengthen relationships, improve communication, and boost morale, ensuring your team stays connected and motivated, no matter the distance.  
 
-2. Blog title: "Trust Falls: Building Trust Among Remote Teams"
-   Abstract: Trust is the foundation of every successful team, but how do you build it when everyone is scattered across different locations? This blog will focus on trust-building exercises and activities designed specifically for remote teams. From virtual trust falls to transparent communication practices, we'll discover innovative ways to strengthen team bonds and foster a culture of trust. You'll learn how to create an environment where your remote team can thrive and collaborate effectively.
+**Blog Title: Retro Reimagined: 7 Fun Retrospective Ideas for Remote Teams**  
+Abstract: Retrospectives are essential for remote teams to reflect, learn, and grow, but they don't have to be boring. This post introduces 7 fun and effective retrospective ideas that go beyond the standard meeting format. From "Virtual Appreciation Boards" to "Future Visioning" exercises, these ideas encourage open communication, celebrate successes, and identify areas for improvement in an engaging and interactive way.  
 
-3. Blog title: "Game Night for Remote Teams: A Guide to Online Games and Activities"
-   Abstract: Miss the old office game nights? This blog will bring the fun back with a guide to hosting online game nights and activities that are perfect for remote teams. From trivia games to virtual board games and even remote-friendly outdoor adventures, we'll keep your team engaged and entertained. With tips on setting up online tournaments and ideas for encouraging participation, your virtual game nights will be the highlight of your team's week. Keep your remote team spirit high!
+**Blog Title: Building Trust and Communication: 5 Essential Exercises for Remote Teams**  
+Abstract: Trust and communication are the cornerstones of successful remote teams, but they require intentional effort to develop. This blog post highlights 5 powerful exercises designed to strengthen trust and enhance communication among remote team members. From "Virtual Coffee Chats" to "Pair Programming" and "Empathy Mapping," these activities create safe spaces for vulnerability, foster understanding, and ensure everyone feels heard and valued in the remote workspace.
+
+--------------------------------------------------
+Topic Name: **Remote Team Engagement Games**
+
+Top Keywords: online games for remote teams, games for remote teams, retrospective games for remote teams, virtual games for remote teams, agile games for remote teams, fun games for remote teams, icebreaker games for remote teams, best games for remote teams, best online games for remote teams, bingo for remote teams
+
+Blog Post Ideas: **Blog Title: 10 Best Online Games to Boost Team Bonding and Productivity for Remote Teams**  
+Abstract: Remote work can sometimes feel isolating, but the right online games can transform virtual interactions into engaging, team-building experiences. This blog post explores the top 10 online games specifically designed to enhance collaboration, communication, and morale among remote teams. From icebreakers like virtual escape rooms to strategic games like Codenames, discover how these activities can foster a sense of unity while keeping your team productive and entertained.  
+
+**Blog Title: Agile Retrospective Games for Remote Teams: Making Remote Sprints More Effective and Fun**  
+Abstract: Retrospectives are a cornerstone of Agile methodology, but conducting them remotely can be challenging. This post introduces a collection of virtual retrospective games tailored for remote teams, such as "Start, Stop, Continue" and "Sailboat," to make these sessions more interactive and insightful. Learn how these games can help your team reflect on past sprints, identify areas for improvement, and plan for future success in a fun and engaging way.  
+
+**Blog Title: Virtual Icebreaker Games for Remote Teams: Breaking the Awkward Silence in Minutes**  
+Abstract: Starting meetings with remote teams can often feel awkward, but icebreaker games are the perfect solution to ease tension and encourage participation. This blog post highlights creative and easy-to-implement virtual icebreakers, such as "Two Truths and a Lie" and "Virtual Scavenger Hunt," that can quickly warm up your team. Whether you're onboarding new members or just looking to spice up daily stand-ups, these games will help your remote team connect on a personal level and build stronger relationships.
 
 --------------------------------------------------
 ```
@@ -57860,7 +59708,7 @@ result
 
 <CookbookHeader href="https://github.com/cohere-ai/cohere-developer-experience/blob/main/notebooks/guides/Long_form_General_Strategies.ipynb" />
 
-Large Language Models (LLMs) are becoming increasingly capable of comprehending text, among others excelling in document analysis. The new Cohere model, [Command-R](https://huggingface.co/CohereForAI/c4ai-command-r-v01), boasts a context length of 128k, which makes it particularly effective for such tasks. Nevertheless, even with the extended context window, some documents might be too lengthy to accommodate in full.
+Large Language Models (LLMs) are becoming increasingly capable of comprehending text, among others excelling in document analysis. The new Cohere model, [Command A](https://huggingface.co/CohereLabs/c4ai-command-a-03-2025), boasts a context length of 256k, which makes it particularly effective for such tasks. Nevertheless, even with the extended context window, some documents might be too lengthy to accommodate in full.
 
 In this cookbook, we'll explore techniques to address cases when relevant information doesn't fit in the model context window.
 
@@ -57908,7 +59756,6 @@ from nltk.tokenize import sent_tokenize
 
 import networkx as nx
 from getpass import getpass
-from IPython.display import HTML, display
 ```
 
 ```txt title="Output"
@@ -57919,7 +59766,7 @@ from IPython.display import HTML, display
 
 ```python PYTHON
 # Set up Cohere client
-co_model = 'command-r'
+co_model = 'command-a-03-2025'
 co_api_key = getpass("Enter your Cohere API key: ")
 co = cohere.Client(api_key=co_api_key)
 ```
@@ -58003,8 +59850,7 @@ def generate_response(message, max_tokens=300, temperature=0.2, k=0):
     model = co_model,
     message=message,
     max_tokens=max_tokens,
-    temperature=temperature,
-    return_prompt=True
+    temperature=temperature
     )
   return response.text
 ```
@@ -58131,9 +59977,9 @@ print('Example passage:', np.random.choice(np.asarray(passages), size=1, replace
 ```
 
 ```txt title="Output"
-Example sentence: ['4.']
+Example sentence: ['The European Data Protection Supervisor may also establish an AI regulatory sandbox for  the EU institutions, bodies and agencies and exercise the roles and the tasks of national  competent authorities in accordance with this chapter.']
 
-Example passage: ['T echnical robustness and safety means that AI systems are developed  and used in a way that allows robustness in case of problems and resilience against  attempts to alter the use or performance of the AI system so as to allow unlawful use by  third parties, a nd minimise unintended harm. Privacy and data governance means that AI  systems are developed and used in compliance with existing privacy and data protection  rules, while processing data that meets high standards in terms of quality and integrity. Transpar ency means that AI systems are developed and used in a way that allows  appropriate traceability and explainability, while making humans aware that they  communicate or interact with an AI system, as well as duly informing deployers of the  capabilities and l imitations of that AI system and affected persons about their rights. Diversity, non - discrimination and fairness means that AI systems are developed and used  in a way that includes diverse actors and promotes equal access, gender equality and  cultural dive rsity, while avoiding discriminatory impacts and unfair biases that are  prohibited by Union or national law. Social and environmental well - being means that AI  systems are developed and used in a sustainable and environmentally friendly manner as  well as in   a way to benefit all human beings, while monitoring and assessing the long - term  impacts on the individual, society and democracy. ']
+Example passage: ['This flexibility could mean, for example a decision  by the provider to integrate a part of the necessary testing and reporting processes,  information and documentation required under this Regulation into already existing  documentation and procedu res required under the existing Union harmonisation legislation  listed in Annex II, Section A. This however should not in any way undermine the  obligation of the provider to comply with all the applicable requirements. (42a)   The risk management system shou ld consist of a continuous, iterative process that is  planned and run throughout the entire lifecycle of a high - risk AI system. This process  should be aimed at identifying and mitigating the relevant risks of artificial intelligence  systems on health, safe ty and fundamental rights. The risk management system should be  regularly reviewed and updated to ensure its continuing effectiveness, as well as  justification and documentation of any significant decisions and actions taken subject to  this Regulation. ']
 ```
 
 ```python PYTHON
@@ -58212,9 +60058,22 @@ print(generate_response(message=prompt, max_tokens=300))
 ```
 
 ```txt title="Output"
-The report discusses the restrictions on the use of biometric identification by law enforcement in publicly accessible spaces. According to the document, real-time biometric identification is prohibited unless in exceptional cases where its use is strictly necessary and proportionate to achieving a substantial public interest. The use of post-remote biometric identification systems is also mentioned, noting the requirements for authorization and limitations on its use.
+The report outlines several key points regarding biometric identification within the context of the proposed Artificial Intelligence Act:
 
-The report also highlights the classification of certain AI systems as high-risk, including biometric identification systems, emotion recognition systems, and biometric categorisation systems, with the exception of systems used for biometric verification. High-risk AI systems are subject to specific requirements and obligations.
+1. **Prohibition of Real-Time Biometric Identification in Public Spaces**: The report proposes a ban on real-time biometric identification by law enforcement authorities in publicly accessible spaces, with specific exceptions. These exceptions are detailed in Article 5(1)(d) and are subject to safeguards, including monitoring, oversight, and limited reporting obligations at the EU level.
+
+2. **Exceptions to the Prohibition**: The exceptions to the ban on real-time biometric identification include:
+   - Search for victims of specific crimes (e.g., abduction, trafficking, sexual exploitation).
+   - Prevention of imminent threats to life or physical safety, including terrorist attacks.
+   - Localization or identification of suspects for serious criminal offenses (as defined in Annex IIa) punishable by a custodial sentence of at least four years.
+
+3. **Safeguards and Conditions**: The use of real-time biometric identification systems in these exceptional cases must comply with specific safeguards and conditions, including:
+   - A fundamental rights impact assessment.
+   - Registration of the system in a database.
+   - Prior authorization by a judicial or independent administrative authority, except in urgent situations where authorization can be sought within 24 hours.
+   - Limitation to what is strictly necessary in terms of time, geography, and personal scope.
+
+4. **Post-Remote Biometric Identification**: The use of post-remote biometric identification
 ```
 
 ## Approach 3: Text rank \[#approach-3]
@@ -58301,7 +60160,7 @@ print(generate_response(message=prompt, max_tokens=600))
 ```
 
 ```txt title="Output"
-The document outlines the requirements and obligations for developing and deploying AI systems in the European Union. It aims to establish a regulatory framework to foster innovation while ensuring the protection of fundamental rights and public interests. The regulation applies to providers and deployers of AI systems, including those established outside the EU. High-risk AI systems are subject to specific requirements, such as risk management, data governance, and transparency. Providers must ensure compliance and keep records, and deployers must use AI systems responsibly. The regulation also establishes an AI Office, advisory bodies, and a database for high-risk AI systems. Additionally, it addresses issues like testing, codes of conduct, and cooperation with third countries. Fines and penalties are proposed for non-compliance.
+The document outlines the European Union's regulatory framework for artificial intelligence (AI) systems, focusing on high-risk AI applications. It establishes rules for placing AI systems on the market, including prohibitions on certain practices, requirements for high-risk systems, and transparency obligations. The regulation defines high-risk AI systems based on their intended use and potential risks to health, safety, and fundamental rights. Providers of high-risk AI systems must comply with specific requirements, such as risk management, data governance, and human oversight. The regulation also mandates conformity assessments, registration in an EU database, and post-market monitoring. It emphasizes the importance of AI literacy, prohibits manipulative or exploitative AI practices, and ensures compliance through market surveillance and enforcement mechanisms. Additionally, the regulation addresses general-purpose AI models, requiring providers to meet specific obligations, especially for models with systemic risks. The framework aims to promote trustworthy AI while safeguarding public interests and supporting innovation.
 ```
 
 ## Summary
@@ -58309,17 +60168,17 @@ The document outlines the requirements and obligations for developing and deploy
 In this notebook we present three useful methods to over come the limitations of context window size. In the following [blog post](https://docs.cohere.com/page/chunking-strategies), we talk more about how these methods can be evaluated.
 
 
-# Migrating Monolithic Prompts to Command-R with RAG
+# Migrating Monolithic Prompts to Command A with RAG
 
 > This page contains a discussion of how to automatically migrating monolothic prompts.
 
 <CookbookHeader href="https://github.com/cohere-ai/cohere-developer-experience/blob/main/notebooks/guides/Migrating_Monolithic_Prompts_to_Command_R_with_RAG.ipynb" />
 
-Command-R is a powerful LLM optimized for long context tasks such as retrieval augmented generation (RAG). Migrating a monolithic task such as question-answering or query-focused summarization to RAG can improve the quality of responses due to reduced hallucination and improved conciseness through grounding.
+Command A is a powerful LLM optimized for long context tasks such as retrieval augmented generation (RAG). Migrating a monolithic task such as question-answering or query-focused summarization to RAG can improve the quality of responses due to reduced hallucination and improved conciseness through grounding.
 
 Previously, migrating an existing use case to RAG involved a lot of manual work around indexing documents, implementing at least a basic search strategy, extensive post-processing to introduce proper grounding through citations, and of course fine-tuning an LLM to work well in the RAG paradigm.
 
-This cookbook demonstrates automatic migration of monolithic prompts through two diverse use cases where an original prompt is broken down into two parts: (1) context; and (2) instructions. The former can be done automatically or through simple chunking, while the latter is done automatically by Command-R through single shot prompt optimization.
+This cookbook demonstrates automatic migration of monolithic prompts through two diverse use cases where an original prompt is broken down into two parts: (1) context; and (2) instructions. The former can be done automatically or through simple chunking, while the latter is done automatically by Command A through single shot prompt optimization.
 
 The two use cases demonstrated here are:
 
@@ -58374,7 +60233,7 @@ Write the summary in first person.'''
 ```python PYTHON
 response = co.chat(
     message=original_prompt,
-    model='command-r',
+    model='command-a-03-2025',
 )
 ```
 
@@ -58386,7 +60245,7 @@ print(response.text)
     I'm a Senior Software Engineer at GlobalSolTech, with over 15 years of experience in AI and machine learning. My expertise lies in developing innovative algorithms for natural language processing, computer vision, and recommendation systems. I hold a B.Sc. in Physics and a Ph.D. in Statistics and enjoy hiking, free diving, and collecting vintage watches in my spare time. I'm passionate about using my skills to contribute to cutting-edge AI research and development. At GlobalSolTech, I'm proud to be part of a dynamic team driving technological advancement.
 ```
 
-Using Command-R, we can automatically upgrade the original prompt to a RAG-style prompt to get more faithful adherence to the instructions, a clearer and more concise prompt, and in-line citations for free. Consider the following meta-prompt:
+Using Command A, we can automatically upgrade the original prompt to a RAG-style prompt to get more faithful adherence to the instructions, a clearer and more concise prompt, and in-line citations for free. Consider the following meta-prompt:
 
 ```python PYTHON
 meta_prompt = f'''Below is a task for an LLM delimited with ## Original Task. Your task is to split that task into two parts: (1) the context; and (2) the instructions.
@@ -58437,12 +60296,12 @@ The length of the text should be no more than 100 words.
 Write the summary in first person.
 ```
 
-Command-R returns with the following:
+Command A returns with the following:
 
 ```python PYTHON
 upgraded_prompt = co.chat(
     message=meta_prompt,
-    model='command-r',
+    model='command-a-03-2025',
 )
 ```
 
@@ -58517,12 +60376,12 @@ new_prompt, docs
     'snippet': 'I work at GlobalSolTech in the AI Research and Development department as a senior software engineer.'}])
 ```
 
-As we can see above, the new prompt is much more concise and gets right to the point. The context has been split into 4 "documents" that Command-R can ground the information to. Now let's run the same task with the new prompt while leveraging the `documents=` parameter. Note that the `docs` variable is a list of dict objects with `title` describing the contents of a text and `snippet` containing the text itself:
+As we can see above, the new prompt is much more concise and gets right to the point. The context has been split into 4 "documents" that Command A can ground the information to. Now let's run the same task with the new prompt while leveraging the `documents=` parameter. Note that the `docs` variable is a list of dict objects with `title` describing the contents of a text and `snippet` containing the text itself:
 
 ```python PYTHON
 response = co.chat(
     message=new_prompt,
-    model='command-r',
+    model='command-a-03-2025',
     documents=docs,
 )
 ```
@@ -58578,14 +60437,14 @@ Now let's move on to an arguably more difficult problem.
 
 ## Legal Question Answering
 
-On March 21st, the DOJ announced that it is [suing Apple](https://www.theverge.com/2024/3/21/24107659/apple-doj-lawsuit-antitrust-documents-suing) for anti-competitive practices. The [complaint](https://www.justice.gov/opa/media/1344546/dl) is 88 pages long and consists of about 230 paragraphs of text. To understand what the suit alleges, a common use case would be to ask for a summary. Because Command-R has a context window of 128K, even an 88-page legal complaint fits comfortably within the window.
+On March 21st, the DOJ announced that it is [suing Apple](https://www.theverge.com/2024/3/21/24107659/apple-doj-lawsuit-antitrust-documents-suing) for anti-competitive practices. The [complaint](https://www.justice.gov/opa/media/1344546/dl) is 88 pages long and consists of about 230 paragraphs of text. To understand what the suit alleges, a common use case would be to ask for a summary. Because Command A has a context window of 256K, even an 88-page legal complaint fits comfortably within the window.
 
 ```python PYTHON
 apple = open('data/apple_mod.txt').read()
 ```
 
 ```python PYTHON
-tokens = co.tokenize(text=apple, model='command-r')
+tokens = co.tokenize(text=apple, model='command-a-03-2025')
 len(tokens.tokens)
 ```
 
@@ -58611,7 +60470,7 @@ rendered_prompt = prompt_template.format(legal_text=apple, question=question)
 ```python PYTHON
 response = co.chat(
     message=rendered_prompt,
-    model='command-r',
+    model='command-a-03-2025',
     temperature=0.3,
 )
 ```
@@ -58634,7 +60493,7 @@ rendered_prompt = prompt_template.format(legal_text=apple, question=question)
 ```python PYTHON
 response = co.chat(
     message=rendered_prompt,
-    model='command-r',
+    model='command-a-03-2025',
 )
 ```
 
@@ -58648,7 +60507,7 @@ Yes, the DOJ alleges that Apple could allow iPhone users to send encrypted messa
 
 This is a very interesting allegation that at first glance suggests that the model could be hallucinating. Because RAG has been shown to help reduce hallucinations and grounds its responses in the input text, we should convert this prompt to the RAG style paradigm to gain confidence in its response.
 
-While previously we asked Command-R to chunk the text for us, the legal complaint is highly structured with numbered paragraphs so we can use the following function to break the complaint into input docs ready for RAG:
+While previously we asked Command A to chunk the text for us, the legal complaint is highly structured with numbered paragraphs so we can use the following function to break the complaint into input docs ready for RAG:
 
 ```python PYTHON
 def chunk_doc(input_doc: str) -> list:
@@ -58685,12 +60544,12 @@ print(chunks[18])
     {'title': '18', 'snippet': '\nProtecting competition and the innovation that competition inevitably ushers in\nfor consumers, developers, publishers, content creators, and device manufacturers is why\nPlaintiffs bring this lawsuit under Section 2 of the Sherman Act to challenge Apple’s\nmaintenance of its monopoly over smartphone markets, which affect hundreds of millions of\nAmericans every day. Plaintiffs bring this case to rid smartphone markets of Apple’s\nmonopolization and exclusionary conduct and to ensure that the next generation of innovators\ncan upend the technological world as we know it with new and transformative technologies.\n\n\nII.\n\nDefendant Apple\n\n'}
 ```
 
-We can now try the same question but ask it directly to Command-R with the chunks as grounding information.
+We can now try the same question but ask it directly to Command A with the chunks as grounding information.
 
 ```python PYTHON
 response = co.chat(
     message='''Does the DOJ allege that Apple could encrypt text messages sent to Android phones?''',
-    model='command-r',
+    model='command-a-03-2025',
     documents=chunks,
 )
 ```
@@ -58743,7 +60602,7 @@ ii.
 
 Paragraph 144 indeed contains the important allegation: **If Apple wanted to, Apple could allow iPhone users to send encrypted messages to Android users**.
 
-In this cookbook we have shown how one can easily take an existing monolithic prompt and migrate it to the RAG paradigm to get less hallucination, grounded information, and in-line citations. We also demonstrated Command-R's ability to re-write an instruction prompt in a single shot to make it more concise and potentially lead to higher quality completions.
+In this cookbook we have shown how one can easily take an existing monolithic prompt and migrate it to the RAG paradigm to get less hallucination, grounded information, and in-line citations. We also demonstrated Command A's ability to re-write an instruction prompt in a single shot to make it more concise and potentially lead to higher quality completions.
 
 
 # Multilingual Search with Cohere and Langchain
@@ -62857,7 +64716,7 @@ generate_chart(df_clust,'0','1',lbl='off',color='cluster',title=f'Clustering wit
 ```
 
 Your chart will look different, but it should be similar to this one:
-![Topic modeling chart](file:ffb5659b-d477-49ad-99c1-a80dab0ee965)
+![Topic modeling chart](https://files.buildwithfern.com/cohere.docs.buildwithfern.com/af29fc23139083695c9664aef50759d5a6c94ba83bc59c194f851c91d792d8f2/assets/images/topic_modeling_chart.png)
 
 Congratulations! You have created the word embeddings and visualized them using a scatter plot, showing the overall structure of these papers.
 
@@ -62914,7 +64773,7 @@ for idx,sim in similarity:
 
 You should see something like this:
 
-![Similar papers](file:c0a9cdfa-24ee-4b57-b81b-3ef7c5a8bf6b)
+![Similar papers](https://files.buildwithfern.com/cohere.docs.buildwithfern.com/7f7fe22a2a6a3b130976d10afb31d06cd88e3696fa66fd454ade5b3372ee2b89/assets/images/similar_papers.png)
 
 ## Conclusion
 
@@ -63187,15 +65046,15 @@ This shows the top three passages that are relevant to the query. We can retriev
 
 ### What is Cohere?
 
-![](file:590b7fe6-3b0f-4c38-be84-05099567a105)
+![](https://files.buildwithfern.com/cohere.docs.buildwithfern.com/4306e31c733aa1fcad3442bcfbc6572876502ed6973f3bf4bce90428d7c2e910/assets/images/rag-cohere-mongodb-1.png)
 
 ### What is MongoDB?
 
-![](file:00918d13-495f-4af4-8b07-90a6365f2ec8)
+![](https://files.buildwithfern.com/cohere.docs.buildwithfern.com/d8636cc5150ec52d5b18a914c3d100856c74ea2fb59f225840b4a2f666c57d83/assets/images/rag-cohere-mongodb-2.png)
 
 ### What exactly are we showing today?
 
-![](file:2e7bb66b-48b4-4a63-b208-ce4a42de9f12)
+![](https://files.buildwithfern.com/cohere.docs.buildwithfern.com/673005bd1923e2a6514a7a7858df85e7142637e043c828075e8035a84e4ef647/assets/images/rag-cohere-mongodb-3.png)
 
 ## Step 1: Install libaries and Set Environment Variables
 
@@ -63972,7 +65831,7 @@ MongoDB's Document model and its compatibility with Python dictionaries offer se
   * The similarity between Python dictionaries and MongoDB documents allows for direct ingestion without complex transformations.
   * This leads to faster data insertion and reduced processing overhead.
 
-![](file:84816d72-9c9e-4c26-b9c1-65ec60053d18)
+![](https://files.buildwithfern.com/cohere.docs.buildwithfern.com/71df7983b662ecd6c9b374492f10b9d8fd3c451d62b9f0c56eb25901d21faca8/assets/images/rag-cohere-mongodb-4.png)
 
 ```python
 documents = dataset_df.to_dict("records")
@@ -64008,7 +65867,7 @@ Common stages include:
 * `$unwind`: Deconstructs array fields
 * `$lookup`: Performs left outer joins with other collections
 
-![](file:255bca89-fac1-4d40-bed6-20bc7cb07b9c)
+![](https://files.buildwithfern.com/cohere.docs.buildwithfern.com/a047d301a9d4c8a7849ed421df6678bc5c92c39a75f8e98f76569a742780d1ad/assets/images/rag-cohere-mongodb-5.png)
 
 ```python
 def vector_search(user_query, collection):
@@ -64069,7 +65928,7 @@ def vector_search(user_query, collection):
 
 Cohere rerank functions as a second stage search that can improve the precision of your first stage search results
 
-![](file:5860f7a0-6dde-429b-aa5f-44ae5546de57)
+![](https://files.buildwithfern.com/cohere.docs.buildwithfern.com/53dba5826ab9f86b921f08e72f67efee195ef84cc91bce31119c6ffc5f849293/assets/images/rag-cohere-mongodb-6.png)
 
 ```python
 def rerank_documents(query: str, documents, top_n: int = 3):

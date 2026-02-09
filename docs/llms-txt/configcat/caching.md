@@ -2,6 +2,8 @@
 
 # Polling modes & Caching
 
+Copy page
+
 There are 3 different ways (polling modes) to control caching.
 
 ## Auto polling (default)[​](#auto-polling-default "Direct link to Auto polling (default)")
@@ -26,7 +28,7 @@ The main reason for caching is to accelerate serving feature flag evaluation req
 
 info
 
-See the [SDK specific docs](https://configcat.com/docs/docs/sdk-reference/overview/.md) for your desired platform to learn how to use custom cache implementations.
+See the [SDK specific docs](https://configcat.com/docs/sdk-reference/overview.md) for your desired platform to learn how to use custom cache implementations.
 
 ### Offline mode[​](#offline-mode "Direct link to Offline mode")
 
@@ -36,7 +38,7 @@ This allows you to set up a centralized cache that only one online ConfigCat SDK
 
 info
 
-See the [SDK specific docs](https://configcat.com/docs/docs/sdk-reference/overview/.md) for your desired platform to learn how to enable offline mode.
+See the [SDK specific docs](https://configcat.com/docs/sdk-reference/overview.md) for your desired platform to learn how to enable offline mode.
 
 ### Shared cache[​](#shared-cache "Direct link to Shared cache")
 

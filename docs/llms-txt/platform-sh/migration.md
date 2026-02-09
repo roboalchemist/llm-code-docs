@@ -6,7 +6,7 @@
 p:last-child]:mb-0 [&>h3]:mt-0 rounded-lg" >
 
 ### Note
-You can now use composable image (BETA) to install runtimes and tools in your application container. To find out more, see the [dedicated documentation page](https://docs.upsun.com/create-apps/app-reference/composable-image.md).
+You can now use composable image to install runtimes and tools in your application container. To find out more, see the [Composable image](https://docs.upsun.com/create-apps/app-reference/composable-image.md) topic.
 
 It is common to have a Java application that you want to migrate to Upsun.
 Upsun supports several styles of Java application, such as monolith, microservices, stateful, and stateless.
@@ -53,12 +53,12 @@ applications:
 ```
 1. [A Java version](https://docs.upsun.com/languages/java.md#supported-versions), e,g.: `java:21`
 2. [Hooks define what happens when building the application](https://docs.upsun.com../../create-apps/hooks.md). This build process typically generates an executable file such as a uber-jar. For example, `mvn clean package`.
-3. [The commands key defines the command to launch the application](https://docs.upsun.com/create-apps/app-reference/single-runtime-image.md#web-commands). For example,  `java -jar file.jar`.
+3. [The commands key defines the command to launch the application](create-apps/image-properties/web.md#web-commands). For example,  `java -jar file.jar`.
 4. In the start's command needs to receive the port where the application will execute thought the `PORT` environment. That's best when your app follows the port bind principle. For example, `java -jar jar --port=$PORT`.
 
 **Note**: 
 
-Be aware that after the build, it creates a read-only system. You have the [mount option to create a writable folder](https://docs.upsun.com/create-apps/app-reference/single-runtime-image.md#mounts).
+Be aware that after the build, it creates a read-only system. You have the [mount option to create a writable folder](https://docs.upsun.com/create-apps/image-properties/mounts.md).
 
 ### Route
 
@@ -118,9 +118,9 @@ While the table above shows examples for Upsun Fixed rather than for Upsun Flex,
 ## Access to managed services
 
 Upsun provides [managed services](https://docs.upsun.com/add-services.md) such as databases, cache and search engines.
-However, you can use a database or any services such as a transition process, just be aware of the [firewall](https://docs.upsun.com/create-apps/app-reference/single-runtime-image.md#firewall).
+However, you can use a database or any services such as a transition process, just be aware of the [firewall](https://docs.upsun.com/create-apps/image-properties/firewall.md).
 
-When applications need to access a service, it is important to include the [`relationships` key](https://docs.upsun.com/create-apps/app-reference/single-runtime-image.md#relationships).
+When applications need to access a service, it is important to include the [`relationships` key](https://docs.upsun.com/create-apps/image-properties/relationships.md).
 By default an application may not talk to any other container without a `relationship` explicitly allowing access.
 
 To connect to a service from your deployed application, you need to pass the relationships information into your application's configuration.

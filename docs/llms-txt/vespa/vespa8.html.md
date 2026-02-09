@@ -4,7 +4,7 @@
 
  
 
-This document lists the changes between Vespa major versions 7 and 8. As documented in [Vespa versions](https://vespa.ai/releases#versions), new functionality in Vespa is introduced in minor versions, while major versions are used to mark releases breaking compatibility. As Vespa 8 does not introduce any new functionality, it is as safe and mature as the versions of Vespa 7 preceding it. No further releases will be made of Vespa 7, except possible critical security fixes.
+This document lists the changes between Vespa major versions 7 and 8. As documented in [Vespa versions](../../learn/releases.html#versions), new functionality in Vespa is introduced in minor versions, while major versions are used to mark releases breaking compatibility. As Vespa 8 does not introduce any new functionality, it is as safe and mature as the versions of Vespa 7 preceding it. No further releases will be made of Vespa 7, except possible critical security fixes.
 
 ## Overview
 
@@ -477,7 +477,7 @@ $ vespa-configproxy-cmd -m setmode memorycache
 $[vespa deploy](/en/clients/vespa-cli.html#deployment)
 ```
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ### On this page:
 

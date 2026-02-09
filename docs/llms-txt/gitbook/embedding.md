@@ -1,8 +1,4 @@
-# Source: https://gitbook.com/docs/documentation/zh/publishing-documentation/embedding.md
-
-# Source: https://gitbook.com/docs/documentation/fr/publishing-documentation/embedding.md
-
-# Source: https://gitbook.com/docs/publishing-documentation/embedding.md
+# Source: https://gitbook.com/docs/documentation/ja-gitbook-documentation/publishing-documentation/embedding.md
 
 # Source: https://gitbook.com/docs/documentation/zh/publishing-documentation/embedding.md
 
@@ -29,8 +25,7 @@ You can customize and override the default configuration with custom actions, to
 
 {% stepper %}
 {% step %}
-
-#### Prerequisites
+**Prerequisites**
 
 Before embedding your docs, ensure:
 
@@ -43,12 +38,11 @@ If you want to use the Assistant tab, [GitBook Assistant must be enabled](https:
 {% endstep %}
 
 {% step %}
-
-#### Implementation
+**Implementation**
 
 Pick the approach that matches your setup:
 
-<table data-view="cards"><thead><tr><th></th><th></th><th></th><th data-hidden data-card-target data-type="content-ref"></th></tr></thead><tbody><tr><td><h3><i class="fa-code">:code:</i></h3></td><td><strong>Standalone script tag</strong></td><td>Drop in a &#x3C;script> tag for the fastest setup, then customize its appearance</td><td><a href="embedding/implementation/script">script</a></td></tr><tr><td><h3><i class="fa-box">:box:</i></h3></td><td><strong>Node.js/NPM</strong></td><td>Install via NPM for server-side rendering or build-time control</td><td><a href="embedding/implementation/nodejs">nodejs</a></td></tr><tr><td><h3><i class="fa-react">:react:</i></h3></td><td><strong>React component</strong></td><td>Use prebuilt React components for seamless integration</td><td><a href="embedding/implementation/react">react</a></td></tr></tbody></table>
+<table data-view="cards"><thead><tr><th></th><th></th><th></th><th data-hidden data-card-target data-type="content-ref"></th></tr></thead><tbody><tr><td><h4><i class="fa-code">:code:</i></h4></td><td><strong>Standalone script tag</strong></td><td>Drop in a &#x3C;script> tag for the fastest setup, then customize its appearance</td><td><a href="embedding/implementation/script">script</a></td></tr><tr><td><h4><i class="fa-box">:box:</i></h4></td><td><strong>Node.js/NPM</strong></td><td>Install via NPM for server-side rendering or build-time control</td><td><a href="embedding/implementation/nodejs">nodejs</a></td></tr><tr><td><h4><i class="fa-react">:react:</i></h4></td><td><strong>React component</strong></td><td>Use prebuilt React components for seamless integration</td><td><a href="embedding/implementation/react">react</a></td></tr></tbody></table>
 
 {% hint style="info" %}
 If your docs use [Authenticated Access](https://gitbook.com/docs/publishing-documentation/authenticated-access), follow the steps in [how to set up the embed with authenticated docs](https://gitbook.com/docs/publishing-documentation/embedding/using-with-authenticated-docs).
@@ -56,8 +50,7 @@ If your docs use [Authenticated Access](https://gitbook.com/docs/publishing-docu
 {% endstep %}
 
 {% step %}
-
-#### Configuration
+**Configuration**
 
 * [Customizing the Embed](https://gitbook.com/docs/publishing-documentation/embedding/configuration/customizing-docs-embed) – Add welcome messages, custom actions, and suggestions
 * [Creating custom tools](https://gitbook.com/docs/publishing-documentation/embedding/configuration/creating-custom-tools) – Connect Assistant to your product APIs

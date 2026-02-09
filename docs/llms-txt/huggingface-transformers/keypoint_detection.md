@@ -1,6 +1,4 @@
-# Source: https://huggingface.co/docs/transformers/v5.0.0rc1/tasks/keypoint_detection.md
-
-# Source: https://huggingface.co/docs/transformers/v4.57.3/tasks/keypoint_detection.md
+# Source: https://huggingface.co/docs/transformers/v5.0.0/tasks/keypoint_detection.md
 
 # Keypoint Detection
 

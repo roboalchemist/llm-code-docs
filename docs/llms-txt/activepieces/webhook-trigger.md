@@ -1,6 +1,8 @@
 # Source: https://www.activepieces.com/docs/build-pieces/piece-reference/triggers/webhook-trigger.md
 
-# Source: https://www.activepieces.com/docs/developers/piece-reference/triggers/webhook-trigger.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.activepieces.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Webhook Trigger
 
@@ -34,6 +36,7 @@ To test the trigger, publish the flow, perform the event. Then check the flow ru
   1. Install ngrok.
   2. Run the command `ngrok http 4200`.
   3. Replace the `AP_FRONTEND_URL` environment variable in `packages/server/api/.env` with the ngrok URL.
+  4. Go to /packages/react-ui/vite.config.ts, uncomment allowedHosts and set the value to what ngrok gives you.
 
   Once you have completed these configurations, you are good to go!
 </Warning>

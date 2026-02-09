@@ -1,5 +1,9 @@
 # Source: https://docs.tavily.com/documentation/integrations/google-adk.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.tavily.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Google ADK
 
 > Connect your Google ADK agent to Tavily's AI-focused search, extraction, and crawling platform for real-time web intelligence.
@@ -185,8 +189,3 @@ Traverses websites like a graph and can explore hundreds of paths in parallel wi
 ### tavily-crawl
 
 Traversal tool that can explore hundreds of paths in parallel with built-in extraction and intelligent discovery.
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.tavily.com/llms.txt

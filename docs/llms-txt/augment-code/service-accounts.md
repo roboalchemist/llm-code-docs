@@ -1,5 +1,9 @@
 # Source: https://docs.augmentcode.com/cli/automation/service-accounts.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.augmentcode.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Service Accounts
 
 ## About

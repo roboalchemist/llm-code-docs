@@ -1,5 +1,9 @@
 # Source: https://docs.comfy.org/registry/standards.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.comfy.org/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Standards
 
 > Security and other standards for publishing to the Registry

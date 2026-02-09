@@ -1,5 +1,9 @@
 # Source: https://smartcar.com/docs/getting-started/tutorials/ios.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://smartcar.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # iOS Tutorial
 
 > In this tutorial, we will use the iOS SDK to integrate Connect into your application.

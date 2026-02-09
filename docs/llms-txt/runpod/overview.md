@@ -1,0 +1,159 @@
+# Source: https://docs.runpod.io/tutorials/migrations/openai/overview.md
+
+# Source: https://docs.runpod.io/tutorials/migrations/cog/overview.md
+
+# Source: https://docs.runpod.io/tutorials/introduction/overview.md
+
+# Source: https://docs.runpod.io/serverless/workers/overview.md
+
+# Source: https://docs.runpod.io/serverless/vllm/overview.md
+
+# Source: https://docs.runpod.io/serverless/storage/overview.md
+
+# Source: https://docs.runpod.io/serverless/overview.md
+
+# Source: https://docs.runpod.io/serverless/load-balancing/overview.md
+
+# Source: https://docs.runpod.io/serverless/endpoints/overview.md
+
+# Source: https://docs.runpod.io/sdks/python/overview.md
+
+# Source: https://docs.runpod.io/sdks/javascript/overview.md
+
+# Source: https://docs.runpod.io/sdks/go/overview.md
+
+# Source: https://docs.runpod.io/runpodctl/overview.md
+
+# Source: https://docs.runpod.io/pods/templates/overview.md
+
+# Source: https://docs.runpod.io/pods/overview.md
+
+# Source: https://docs.runpod.io/overview.md
+
+# Source: https://docs.runpod.io/hub/overview.md
+
+# Source: https://docs.runpod.io/hosting/overview.md
+
+# Source: https://docs.runpod.io/community-solutions/ssh-password-migration/overview.md
+
+# Source: https://docs.runpod.io/community-solutions/overview.md
+
+# Source: https://docs.runpod.io/community-solutions/ohmyrunpod/overview.md
+
+# Source: https://docs.runpod.io/community-solutions/copyparty-file-manager/overview.md
+
+# Source: https://docs.runpod.io/community-solutions/comfyui-to-api/overview.md
+
+# Source: https://docs.runpod.io/api-reference/overview.md
+
+# Source: https://docs.runpod.io/tutorials/migrations/openai/overview.md
+
+# Source: https://docs.runpod.io/tutorials/migrations/cog/overview.md
+
+# Source: https://docs.runpod.io/tutorials/introduction/overview.md
+
+# Source: https://docs.runpod.io/serverless/workers/overview.md
+
+# Source: https://docs.runpod.io/serverless/vllm/overview.md
+
+# Source: https://docs.runpod.io/serverless/storage/overview.md
+
+# Source: https://docs.runpod.io/serverless/overview.md
+
+# Source: https://docs.runpod.io/serverless/load-balancing/overview.md
+
+# Source: https://docs.runpod.io/serverless/endpoints/overview.md
+
+# Source: https://docs.runpod.io/sdks/python/overview.md
+
+# Source: https://docs.runpod.io/sdks/javascript/overview.md
+
+# Source: https://docs.runpod.io/sdks/go/overview.md
+
+# Source: https://docs.runpod.io/runpodctl/overview.md
+
+# Source: https://docs.runpod.io/pods/templates/overview.md
+
+# Source: https://docs.runpod.io/pods/overview.md
+
+# Source: https://docs.runpod.io/overview.md
+
+# Source: https://docs.runpod.io/hub/overview.md
+
+# Source: https://docs.runpod.io/hosting/overview.md
+
+# Source: https://docs.runpod.io/community-solutions/ssh-password-migration/overview.md
+
+# Source: https://docs.runpod.io/community-solutions/overview.md
+
+# Source: https://docs.runpod.io/community-solutions/ohmyrunpod/overview.md
+
+# Source: https://docs.runpod.io/community-solutions/copyparty-file-manager/overview.md
+
+# Source: https://docs.runpod.io/community-solutions/comfyui-to-api/overview.md
+
+# Source: https://docs.runpod.io/api-reference/overview.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.runpod.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Overview
+
+> Use the Runpod API to programmatically manage your compute resources.
+
+The Runpod API provides programmatic access to all of Runpod's cloud compute resources. It enables you to integrate GPU infrastructure directly into your applications, workflows, and automation systems.
+
+Use the Runpod API to:
+
+* Create, monitor, and manage Pods for persistent workloads.
+* Deploy and scale Serverless endpoints for AI inference.
+* Configure network volumes for data persistence.
+* Integrate Runpod's GPU computing power into your existing applications and CI/CD pipelines.
+
+The API follows REST principles and returns JSON responses, making it compatible with virtually any programming language or automation tool. Whether you're building a machine learning platform, automating model deployments, or creating custom dashboards for resource management, the Runpod API provides a foundation for seamless integration.
+
+## Available resources
+
+The Runpod API provides complete access to Runpod's core resources:
+
+* **Pods**: Create and manage persistent GPU instances for development, training, and long-running workloads. Control Pod lifecycles, configure hardware specifications, and manage SSH access programmatically.
+* **Serverless endpoints**: Deploy and scale containerized applications for AI inference and batch processing. Configure autoscaling parameters, manage worker pools, and monitor job execution in real-time.
+* **Network volumes**: Create persistent storage that can be attached to multiple resources. Manage data persistence across Pod restarts and share datasets between different compute instances.
+* **Templates**: Save and reuse Pod and endpoint configurations to standardize deployments across projects and teams.
+* **Container registry authentication**: Securely connect to private Docker registries to deploy custom containers and models.
+* **Billing and usage**: Access detailed billing information and resource usage metrics to optimize costs and monitor spending across projects.
+
+## Getting started
+
+To use the REST API, you'll need a [Runpod API key](/get-started/api-keys) with appropriate permissions for the resources you want to manage. API keys can be generated and managed through your account settings in the Runpod console.
+
+All API requests require authentication using your API key in the request headers. The API uses standard HTTP methods (GET, POST, PATCH, DELETE) and returns JSON responses with detailed error information when needed.
+
+## Retrieve the OpenAPI schema
+
+You can get the complete OpenAPI specification for the Runpod API using the `/openapi.json` endpoint. Use this to generate client libraries, validate requests, or integrate the API specification into your development tools.
+
+The schema includes all available endpoints, request and response formats, authentication requirements, and data models.
+
+<CodeGroup>
+  ```bash cURL theme={"theme":{"light":"github-light","dark":"github-dark"}}
+  curl --request GET \
+    --url https://rest.runpod.io/v1/openapi.json \
+    --header 'Authorization: Bearer RUNPOD_API_KEY'
+  ```
+
+  ```python Python theme={"theme":{"light":"github-light","dark":"github-dark"}}
+  import requests
+
+  url = "https://rest.runpod.io/v1/openapi.json"
+  headers = {"Authorization": "Bearer RUNPOD_API_KEY"}
+  response = requests.get(url, headers=headers)
+  print(response.json())
+  ```
+
+</CodeGroup>
+
+The endpoint returns the OpenAPI 3.0 specification in JSON format. You can use it with tools like Swagger UI, Postman, or code generation utilities.
+
+For detailed endpoint documentation, request/response schemas, and code examples, explore the sections in the sidebar to the left.

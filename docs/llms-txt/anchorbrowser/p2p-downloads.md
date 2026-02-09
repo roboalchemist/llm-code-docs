@@ -1,5 +1,9 @@
 # Source: https://docs.anchorbrowser.io/advanced/p2p-downloads.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.anchorbrowser.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # P2P Download
 
 > Capture files directly in the browser without cloud storage

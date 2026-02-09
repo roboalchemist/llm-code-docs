@@ -1,5 +1,9 @@
 # Source: https://polar.sh/docs/guides/grant-meter-credits-after-purchase.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://polar.sh/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # How to Grant Meter Credits After Purchase
 
 > Learn how to automatically grant meter credits to users after purchase using the Meter Credits benefits or Webhooks.
@@ -278,8 +282,3 @@ if (!hasGrantedCredits) {
   await recordCreditGrant(order.id);
 }
 ```
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://polar.sh/docs/llms.txt

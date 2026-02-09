@@ -2,10 +2,7 @@
 
 # Get predefined variations (Beta)
 
-```
-GET 
-/v1/settings/:settingId/predefined-variations
-```
+Copy page
 
 This endpoint returns the predefined variations along with their usages in the Environments for a Feature Flag or Setting identified by the `settingId` parameter.
 

@@ -1,8 +1,4 @@
-# Source: https://gitbook.com/docs/documentation/zh/publishing-documentation/authenticated-access/setting-up-a-custom-backend.md
-
-# Source: https://gitbook.com/docs/documentation/fr/publishing-documentation/authenticated-access/setting-up-a-custom-backend.md
-
-# Source: https://gitbook.com/docs/publishing-documentation/authenticated-access/setting-up-a-custom-backend.md
+# Source: https://gitbook.com/docs/documentation/ja-gitbook-documentation/publishing-documentation/authenticated-access/setting-up-a-custom-backend.md
 
 # Source: https://gitbook.com/docs/documentation/zh/publishing-documentation/authenticated-access/setting-up-a-custom-backend.md
 
@@ -190,12 +186,6 @@ res.redirect(redirectURL);
 ```
 
 ### 5. Configure your backend for adaptive content (optional)
-
-{% hint style="warning" %}
-This feature is still under development and coming soon to the [Ultimate site plan](https://www.gitbook.com/pricing).&#x20;
-
-Please sign up for the waitlist at <https://www.gitbook.com/#alpha-waitlist>
-{% endhint %}
 
 To leverage the Adaptive Content capability in your authenticated access setup, you can include additional user attributes (claims) in the payload of the JWT that your custom backend generates and include in the URL when redirecting the user to the site.
 

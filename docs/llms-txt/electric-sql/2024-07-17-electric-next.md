@@ -19,7 +19,7 @@ The new approach provides an [HTTP API](/docs/api/http) for syncing [Shapes](/do
 
 ## Why build a new system?
 
-Electric has its [heritage](https://electric-sql.com/about/team#advisors) in [distributed database research](https://electric-sql.com/docs/reference/literature). When we started, our plan was to use this research to build a next-generation distributed database. Cockroach for the AP side of the CAP theorem. However, the adoption dynamics for creating a new database from scratch are tough. So we pivoted to building a replication layer for existing databases.
+Electric has its [heritage](https://electric-sql.com/about/team#advisors) in [distributed database research](/docs/reference/literature). When we started, our plan was to use this research to build a next-generation distributed database. Cockroach for the AP side of the CAP theorem. However, the adoption dynamics for creating a new database from scratch are tough. So we pivoted to building a replication layer for existing databases.
 
 This allowed us to do active-active replication between multiple Postgres instances, in the cloud or at the edge. However, rather than stopping at the edge, we kept seeing that it was more optimal to take the database-grade replication guarantees all the way into the client.
 
@@ -61,17 +61,17 @@ Gabriel contrasts "Worse is Better" with a make the "Right Thing" approach that 
 
 #### The motivation for Electric Next
 
-So, hopefully now our motivation is clear. We needed to find a way to simplify Electric and make it more loosely coupled. To pare it back to it's core and iterate on solid foundations.
+So, hopefully now our motivation is clear. We needed to find a way to simplify Electric and make it more loosely coupled. To pare it back to its core and iterate on solid foundations.
 
 ## What's changed?
 
-Electric Next is a [sync engine](/product/electric), not a local-first software platform.
+Electric Next is a [sync engine](/products/postgres-sync), not a local-first software platform.
 
-It can be used for a wide range of [use cases](/use-cases/data-sync), syncing data into apps, workers, services, agents and environments. These include but are not limited to local-first software development.
+It can be used for a wide range of [use cases](/sync), syncing data into apps, workers, services, agents and environments. These include but are not limited to local-first software development.
 
 ### Sync engine
 
-When we look at our stack, the part that we see as most core is the [sync engine](/product/electric).
+When we look at our stack, the part that we see as most core is the [sync engine](/products/postgres-sync).
 
 This is the component of Electric that syncs data between Postgres and local clients. Consuming Postgres logical replication, managing partial replication using Shapes and syncing data to and from clients over a replication protocol. It’s where there’s the most complexity. Where we can add the most value and is hardest to develop yourself.
 
@@ -79,7 +79,7 @@ This is the component of Electric that syncs data between Postgres and local cli
 
 We now see Electric as a sync engine that does partial replication on top of Postgres. We've pushed other, non-core, aspects of the system out of scope, as we pare down to our essential core and then iterate on this to re-build the capabilities of the previous system.
 
-The diagramme above and table below summarise what we see as core and what we've pushed out of scope.
+The diagram above and table below summarise what we see as core and what we've pushed out of scope.
 
 | Aspect                                              | Is it core? | Who should/can provide?                                                                                                                                                                                                                      |
 | --------------------------------------------------- | ----------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -97,9 +97,9 @@ The diagramme above and table below summarise what we see as core and what we've
 
 ### HTTP Protocol
 
-One of the key aspects that has changed in the core sync engine is a switch from the [Satellite web socket replication prototol](https://legacy.electric-sql.com/docs/api/satellite) to an HTTP replication protocol.
+One of the key aspects that has changed in the core sync engine is a switch from the [Satellite web socket replication protocol](https://legacy.electric-sql.com/docs/api/satellite) to an HTTP replication protocol.
 
-Switching to an HTTP protocol may at first seem like a regression or a strange fit. Web sockets are build on top of HTTP specifically to serve the kind of realtime data stream that Electric provides. However, they are also more stateful and harder to cache.
+Switching to an HTTP protocol may at first seem like a regression or a strange fit. Web sockets are built on top of HTTP specifically to serve the kind of realtime data stream that Electric provides. However, they are also more stateful and harder to cache.
 
 By switching to the [new HTTP API](/docs/api/http), the new system:
 
@@ -145,7 +145,7 @@ The core use case for Electric is to sync subsets of data out of Postgres into l
 You can sync data into:
 
 * apps, replacing data fetching with data sync
-* development environments, for example syncing data into [an embedded PGlite](/product/pglite)
+* development environments, for example syncing data into [an embedded PGlite](/products/pglite)
 * edge workers and services, for example maintaining a low-latency [edge data cache](/docs/integrations/redis)
 * local AI systems running RAG, as per the example below
 
@@ -153,7 +153,7 @@ You can sync data into:
 
 ### Previous system
 
-Electric Next has superceded the previous Electric.
+Electric Next has superseded the previous Electric.
 
 * some parts of the old system were cherry-picked and ported over
 * some parts may be cut out into optional libraries, for example the [DDLX implementation](https://github.com/electric-sql/electric/pull/1393)

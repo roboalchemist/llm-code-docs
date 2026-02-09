@@ -4,24 +4,13 @@
 title: API Keys
 ---
 
-As we continue to embrace and natively integrate with ASP.NET Core's .NET 8 platform, we've reimplemented the last 
-major feature missing from ServiceStack Auth - support for API Keys that's available from **ServiceStack v8.3**.
-
-:::warning API Key Feature Vulnerability
-**ServiceStack v8.7+** resolves a vulnerability we've discovered in the management APIs of this API Keys feature, if using API Keys please upgrade as soon as possible.
-:::
-
-### What are API Keys?
-
-API Keys are a simple and effective way to authenticate and authorize access to your APIs, which are typically used 
-for machine-to-machine communication, where a client application needs to access an API without user intervention. 
+API Keys are a simple and effective way to authenticate and authorize access to your APIs, which are typically used for machine-to-machine communication, where a client application needs to access an API without user intervention. 
 API Keys are often used to control access to specific resources or features in your API, providing a simple way 
 to manage access control.
 
 ### Redesigning API Keys
 
-Building on our experience with API Keys in previous versions of ServiceStack, we've taken the opportunity to redesign
-how API Keys work to provide a more flexible and powerful way to manage access control for your APIs.
+Building on our experience with API Keys in previous versions of ServiceStack, we've taken the opportunity to redesign how API Keys work to provide a more flexible and powerful way to manage access control for your APIs.
 
 The existing [API Key Auth Provider](https://docs.servicestack.net/auth/api-key-authprovider) was implemented as 
 another Auth Provider that provided another way to authenticate a single user. The consequences of this was:
@@ -32,12 +21,12 @@ another Auth Provider that provided another way to authenticate a single user. T
 
 Given the primary use-case for API Keys is for machine-to-machine communication where the client is not a User,
 nor do they want systems they give out their API Keys to, to have access to their User Account, we've changed
-how API Keys work in .NET 8.
+how API Keys work in .NET 10.
 
-## .NET 8 API Keys Feature
+## .NET 10 API Keys Feature
 
 :::youtube U4vqOIHOs_Q
-New .NET 8 API Keys Feature with Built-In UIs!
+New .NET 10 API Keys Feature with Built-In UIs!
 :::
 
 The first design decision to overcome the above issues was to separate API Keys from Users and Authentication itself,
@@ -45,7 +34,7 @@ where the new `ApiKeysFeature` is now just a plugin instead of an Auth Provider,
 Auth Apps with:
 
 :::sh
-x mix apikeys
+npx add-in apikeys
 :::
 
 Which will add the API Keys [Modular Startup](https://docs.servicestack.net/modular-startup) to your Host project, a minimal example of which looks like:
@@ -93,8 +82,7 @@ if (feature.ApiKeyCount(db) == 0)
 
 ### Basic Usage
 
-With the plugin registered, you can now use the `ValidateApiKey` attribute to limit APIs to only be accessible with a 
-valid API Key, e.g:
+With the plugin registered, you can now use the `ValidateApiKey` attribute to limit APIs to only be accessible with a valid API Key, e.g:
 
 ```csharp
 [ValidateApiKey]
@@ -103,15 +91,11 @@ public class MyRequest {}
 
 ### Use API Keys with our without Users and Authentication
 
-API Keys can optionally be associated with a User, but they don't have to be, nor do they run in the context of a User
-or are able to invoke any Authenticated APIs on their own. Users who create them can also limit their scope to only
-call APIs they have access to, which can be done with user-defined scopes:
+API Keys can optionally be associated with a User, but they don't have to be, nor do they run in the context of a User or are able to invoke any Authenticated APIs on their own. Users who create them can also limit their scope to only call APIs they have access to, which can be done with user-defined scopes:
 
 ### Scopes
 
-Scopes are user-defined strings that can be used to limit APIs from only being accessible with API Keys that have the 
-required scope. For example, we could create generate API Keys that have **read only**, **write only** or **read/write** 
-access to APIs by assigning them different scopes, e.g: 
+Scopes are user-defined strings that can be used to limit APIs from only being accessible with API Keys that have the required scope. For example, we could create generate API Keys that have **read only**, **write only** or **read/write** access to APIs by assigning them different scopes, e.g: 
 
 ```csharp
 public static class Scopes
@@ -382,19 +366,10 @@ In addition to the built-in Admin UIs to manage API Keys, all Identity Auth Tail
 to include support for managing API Keys in their User Account pages:
 
 <div class="not-prose mt-8 grid grid-cols-2 gap-4">
-    <a class="block group border dark:border-gray-800 hover:border-indigo-700 dark:hover:border-indigo-700 flex flex-col justify-between" href="https://blazor.web-templates.io">
-        <img class="p-2" src="https://raw.githubusercontent.com/ServiceStack/Assets/master/csharp-templates/blazor.png">
-        <div class="bg-gray-50 dark:bg-gray-800 text-gray-600 dark:text-gray-300 font-semibold group-hover:bg-indigo-700 group-hover:text-white text-center py-2">blazor.web-templates.io</div>
-    </a>
     <a class="block group border dark:border-gray-800 hover:border-indigo-700 dark:hover:border-indigo-700" href="https://blazor-vue.web-templates.io">
         <div style="max-height:350px;overflow:hidden">
         <img class="p-2" src="https://raw.githubusercontent.com/ServiceStack/Assets/master/csharp-templates/blazor-vue.png"></div>
         <div class="bg-gray-50 dark:bg-gray-800 text-gray-600 dark:text-gray-300 font-semibold group-hover:bg-indigo-700 group-hover:text-white text-center py-2">blazor-vue.web-templates.io</div>
-    </a>
-    <a class="block group border dark:border-gray-800 hover:border-indigo-700 dark:hover:border-indigo-700" href="https://blazor-wasm.web-templates.io">
-        <div style="max-height:350px;overflow:hidden">
-        <img class="p-2" src="https://raw.githubusercontent.com/ServiceStack/Assets/master/csharp-templates/blazor-wasm.png"></div>
-        <div class="bg-gray-50 dark:bg-gray-800 text-gray-600 dark:text-gray-300 font-semibold group-hover:bg-indigo-700 group-hover:text-white text-center py-2">blazor-wasm.web-templates.io</div>
     </a>
     <a class="block group border dark:border-gray-800 hover:border-indigo-700 dark:hover:border-indigo-700" href="https://razor.web-templates.io">
         <div style="max-height:350px;overflow:hidden">
@@ -416,7 +391,7 @@ selecting the **API Keys** feature on the [Start Page](/start):
 Or by mixing the `apikeys` project in your host project:
 
 :::sh
-x mix apikeys
+npx add-in apikeys
 :::
 
 Which add the `Configure.ApiKeys.cs` modular startup to your Host project, which registers the `ApiKeysFeature` plugin

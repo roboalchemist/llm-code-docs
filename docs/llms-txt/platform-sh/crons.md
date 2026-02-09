@@ -1,9 +1,5 @@
 # Source: https://docs.upsun.com/create-apps/image-properties/crons.md
 
-# Source: https://docs.upsun.com/guides/symfony/crons.md
-
-# Source: https://docs.upsun.com/create-apps/image-properties/crons.md
-
 # crons
 
 

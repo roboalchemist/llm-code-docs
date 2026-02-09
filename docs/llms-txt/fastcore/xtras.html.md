@@ -12,218 +12,144 @@ Utilities (other than extensions to Pathlib.Path) for dealing with IO.
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/xtras.py#L35"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/xtras.py#L36"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### walk
 
->  walk (path:pathlib.Path|str, symlinks:bool=True, keep_file:<built-
->            infunctioncallable>=<function ret_true>, keep_folder:<built-
->            infunctioncallable>=<function ret_true>, skip_folder:<built-
->            infunctioncallable>=<function ret_false>, func:<built-
->            infunctioncallable>=<function join>, ret_folders:bool=False,
->            sort:bool=True)
+``` python
+
+def walk(
+    path:Path | str, # path to start searching
+    symlinks:bool=True, # follow symlinks?
+    keep_file:callable=ret_true, # function that returns True for wanted files
+    keep_folder:callable=ret_true, # function that returns True for folders to enter
+    skip_folder:callable=ret_false, # function that returns True for folders to skip
+    func:callable=join, # function to apply to each matched file
+    ret_folders:bool=False, # return folders, not just files
+    sort:bool=True, # sort files by name within each folder
+):
+
+```
 
 *Generator version of `os.walk`, using functions to filter files and
 folders*
 
-<table>
-<colgroup>
-<col style="width: 6%" />
-<col style="width: 25%" />
-<col style="width: 34%" />
-<col style="width: 34%" />
-</colgroup>
-<thead>
-<tr>
-<th></th>
-<th><strong>Type</strong></th>
-<th><strong>Default</strong></th>
-<th><strong>Details</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>path</td>
-<td>pathlib.Path | str</td>
-<td></td>
-<td>path to start searching</td>
-</tr>
-<tr>
-<td>symlinks</td>
-<td>bool</td>
-<td>True</td>
-<td>follow symlinks?</td>
-</tr>
-<tr>
-<td>keep_file</td>
-<td>callable</td>
-<td>ret_true</td>
-<td>function that returns True for wanted files</td>
-</tr>
-<tr>
-<td>keep_folder</td>
-<td>callable</td>
-<td>ret_true</td>
-<td>function that returns True for folders to enter</td>
-</tr>
-<tr>
-<td>skip_folder</td>
-<td>callable</td>
-<td>ret_false</td>
-<td>function that returns True for folders to skip</td>
-</tr>
-<tr>
-<td>func</td>
-<td>callable</td>
-<td>join</td>
-<td>function to apply to each matched file</td>
-</tr>
-<tr>
-<td>ret_folders</td>
-<td>bool</td>
-<td>False</td>
-<td>return folders, not just files</td>
-</tr>
-<tr>
-<td>sort</td>
-<td>bool</td>
-<td>True</td>
-<td>sort files by name within each folder</td>
-</tr>
-</tbody>
-</table>
+------------------------------------------------------------------------
+
+<a
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/xtras.py#L72"
+target="_blank" style="float:right; font-size:smaller">source</a>
+
+### exttypes
+
+``` python
+
+def exttypes(
+    types
+):
+
+```
+
+*Get exts for comma-separated or list `typ`; if not found in list,
+return list with just `types`.* Supported: py, js, java, c, cpp, rb, r,
+ex, sh, web, doc, cfg
+
+``` python
+print(exttypes('py,doc'))
+print(exttypes('zig,txt'))
+```
+
+    ['ipynb', 'py', 'md', 'rst']
+    ['zig', 'txt']
 
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/xtras.py#L56"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/xtras.py#L79"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### globtastic
 
->  globtastic (path:pathlib.Path|str, recursive:bool=True,
->                  symlinks:bool=True, file_glob:str=None, file_re:str=None,
->                  folder_re:str=None, skip_file_glob:str=None,
->                  skip_file_re:str=None, skip_folder_re:str=None, func:<built-
->                  infunctioncallable>=<function join>, ret_folders:bool=False,
->                  sort:bool=True)
+``` python
+
+def globtastic(
+    path:Path | str='.', # path to start searching
+    recursive:bool=True, # search subfolders
+    symlinks:bool=True, # follow symlinks?
+    file_glob:str=None, # Only include files matching glob
+    file_re:str=None, # Only include files matching regex
+    folder_re:str=None, # Only enter folders matching regex
+    skip_file_glob:str=None, # Skip files matching glob
+    skip_file_re:str=None, # Skip files matching regex
+    skip_folder_re:str=None, # Skip folders matching regex,
+    func:callable=join, # function to apply to each matched file
+    ret_folders:bool=False, # return folders, not just files
+    sort:bool=True, # sort files by name within each folder
+    types:str | list=None, # list or comma-separated str of ext types from: py, js, java, c, cpp, rb, r, ex, sh, web, doc, cfg
+    exts:str | list=None, # list or comma-separated str of exts to include
+)->L: # Paths to matched files
+
+```
 
 *A more powerful `glob`, including regex matches, symlink handling, and
 skip parameters*
-
-<table>
-<thead>
-<tr>
-<th></th>
-<th><strong>Type</strong></th>
-<th><strong>Default</strong></th>
-<th><strong>Details</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>path</td>
-<td>pathlib.Path | str</td>
-<td></td>
-<td>path to start searching</td>
-</tr>
-<tr>
-<td>recursive</td>
-<td>bool</td>
-<td>True</td>
-<td>search subfolders</td>
-</tr>
-<tr>
-<td>symlinks</td>
-<td>bool</td>
-<td>True</td>
-<td>follow symlinks?</td>
-</tr>
-<tr>
-<td>file_glob</td>
-<td>str</td>
-<td>None</td>
-<td>Only include files matching glob</td>
-</tr>
-<tr>
-<td>file_re</td>
-<td>str</td>
-<td>None</td>
-<td>Only include files matching regex</td>
-</tr>
-<tr>
-<td>folder_re</td>
-<td>str</td>
-<td>None</td>
-<td>Only enter folders matching regex</td>
-</tr>
-<tr>
-<td>skip_file_glob</td>
-<td>str</td>
-<td>None</td>
-<td>Skip files matching glob</td>
-</tr>
-<tr>
-<td>skip_file_re</td>
-<td>str</td>
-<td>None</td>
-<td>Skip files matching regex</td>
-</tr>
-<tr>
-<td>skip_folder_re</td>
-<td>str</td>
-<td>None</td>
-<td>Skip folders matching regex,</td>
-</tr>
-<tr>
-<td>func</td>
-<td>callable</td>
-<td>join</td>
-<td>function to apply to each matched file</td>
-</tr>
-<tr>
-<td>ret_folders</td>
-<td>bool</td>
-<td>False</td>
-<td>return folders, not just files</td>
-</tr>
-<tr>
-<td>sort</td>
-<td>bool</td>
-<td>True</td>
-<td>sort files by name within each folder</td>
-</tr>
-<tr>
-<td><strong>Returns</strong></td>
-<td><strong>L</strong></td>
-<td></td>
-<td><strong>Paths to matched files</strong></td>
-</tr>
-</tbody>
-</table>
 
 ``` python
 globtastic('.', skip_folder_re='^[_.]', folder_re='core', file_glob='*.*py*', file_re='c')
 ```
 
-    (#5) ['./fastcore/basics.py','./fastcore/dispatch.py','./fastcore/docments.py','./fastcore/docscrape.py','./fastcore/script.py']
+    ['./fastcore/basics.py', './fastcore/dispatch.py', './fastcore/docments.py', './fastcore/docscrape.py', './fastcore/script.py']
 
 ``` python
-globtastic('.', skip_folder_re='^[_.]', folder_re='core', file_glob='*.*py*', file_re='c', sort=True)
+globtastic(skip_folder_re='^[_.]', folder_re='core', types='py', file_re='c', skip_file_re='^_', sort=True)
 ```
 
-    (#5) ['./fastcore/basics.py','./fastcore/dispatch.py','./fastcore/docments.py','./fastcore/docscrape.py','./fastcore/script.py']
+    ['./fastcore/all.py', './fastcore/ansi.py', './fastcore/basics.py', './fastcore/dispatch.py', './fastcore/docments.py', './fastcore/docscrape.py', './fastcore/foundation.py', './fastcore/imghdr.py', './fastcore/imports.py', './fastcore/meta.py', './fastcore/nb_imports.py', './fastcore/net.py', './fastcore/parallel.py', './fastcore/py2pyi.py', './fastcore/script.py', './fastcore/shutil.py', './fastcore/style.py', './fastcore/test.py', './fastcore/tools.py', './fastcore/transform.py', './fastcore/utils.py', './fastcore/xdg.py', './fastcore/xml.py', './fastcore/xtras.py']
 
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/xtras.py#L89"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/xtras.py#L119"
+target="_blank" style="float:right; font-size:smaller">source</a>
+
+### pglob
+
+``` python
+
+def pglob(
+    path:Path | str='.', # path to start searching
+    func:callable=Path, # function to apply to each matched file
+    recursive:bool=True, symlinks:bool=True, file_glob:str=None, file_re:str=None, folder_re:str=None,
+    skip_file_glob:str=None, skip_file_re:str=None, skip_folder_re:str=None, ret_folders:bool=False, sort:bool=True,
+    types:str | list=None, exts:str | list=None
+)->L: # Paths to matched files
+
+```
+
+*Shortcut for `globtastic(..., call=Path)`*
+
+``` python
+pglob('..', skip_folder_re='^[_.]', types='doc', skip_file_re='^_')[:6]
+```
+
+    [Path('../CHANGELOG.md'), Path('../CODE_OF_CONDUCT.md'), Path('../CONTRIBUTING.md'), Path('../README.md')]
+
+------------------------------------------------------------------------
+
+<a
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/xtras.py#L129"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### maybe_open
 
->  maybe_open (f, mode='r', **kwargs)
+``` python
+
+def maybe_open(
+    f, mode:str='r', kwargs:VAR_KEYWORD
+):
+
+```
 
 *Context manager: open `f` if it is a path (and close on exit)*
 
@@ -313,12 +239,18 @@ with open(fname,'rb') as f: test_eq(what(None, h=f.read(32)), 'jpeg')
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/xtras.py#L96"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/xtras.py#L136"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### mkdir
 
->  mkdir (path, exist_ok=False, parents=False, overwrite=False, **kwargs)
+``` python
+
+def mkdir(
+    path, exist_ok:bool=False, parents:bool=False, overwrite:bool=False, kwargs:VAR_KEYWORD
+):
+
+```
 
 *Creates and returns a directory defined by `path`, optionally removing
 previous existing directory if `overwrite` is `True`*
@@ -340,12 +272,18 @@ with tempfile.TemporaryDirectory() as d:
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/xtras.py#L105"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/xtras.py#L145"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### image_size
 
->  image_size (fn)
+``` python
+
+def image_size(
+    fn
+):
+
+```
 
 *Tuple of (w,h) for png, gif, or jpg; `None` otherwise*
 
@@ -353,15 +291,85 @@ target="_blank" style="float:right; font-size:smaller">source</a>
 test_eq(image_size(fname), (1200,803))
 ```
 
+``` python
+from PIL import Image
+from IPython.display import Image as IPImage
+```
+
+``` python
+img = Image.new('RGB', (50, 50), color='red')
+img
+```
+
+![](03_xtras_files/figure-commonmark/cell-24-output-1.png)
+
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/xtras.py#L130"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/xtras.py#L170"
+target="_blank" style="float:right; font-size:smaller">source</a>
+
+### img_bytes
+
+``` python
+
+def img_bytes(
+    img, fmt:str='PNG'
+):
+
+```
+
+``` python
+ib = img_bytes(img)
+IPImage(ib)
+```
+
+![](03_xtras_files/figure-commonmark/cell-26-output-1.png)
+
+------------------------------------------------------------------------
+
+<a
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/xtras.py#L194"
+target="_blank" style="float:right; font-size:smaller">source</a>
+
+### detect_mime
+
+``` python
+
+def detect_mime(
+    data
+):
+
+```
+
+*Get the MIME type for bytes `data`, covering common PDF, audio, video,
+and image types*
+
+``` python
+detect_mime(ib)
+```
+
+    'image/png'
+
+``` python
+test_is(detect_mime('this is a non-byte string'),None)
+```
+
+------------------------------------------------------------------------
+
+<a
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/xtras.py#L204"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### bunzip
 
->  bunzip (fn)
+``` python
+
+def bunzip(
+    fn
+):
+
+```
 
 *bunzip `fn`, raising exception if output already exists*
 
@@ -378,24 +386,36 @@ f.unlink()
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/xtras.py#L141"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/xtras.py#L215"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### loads
 
->  loads (s, **kw)
+``` python
+
+def loads(
+    s, kw:VAR_KEYWORD
+):
+
+```
 
 *Same as `json.loads`, but handles `None`*
 
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/xtras.py#L149"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/xtras.py#L223"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### loads_multi
 
->  loads_multi (s:str)
+``` python
+
+def loads_multi(
+    s:str
+):
+
+```
 
 *Generator of \>=0 decoded json dicts, possibly with non-json ignored
 text at start and end*
@@ -416,24 +436,36 @@ test_eq(list(loads_multi(tst)), [{'a': 1}, {'b': 2}])
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/xtras.py#L161"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/xtras.py#L235"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### dumps
 
->  dumps (obj, **kw)
+``` python
+
+def dumps(
+    obj, kw:VAR_KEYWORD
+):
+
+```
 
 *Same as `json.dumps`, but uses `ujson` if available*
 
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/xtras.py#L176"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/xtras.py#L250"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### untar_dir
 
->  untar_dir (fname, dest, rename=False, overwrite=False)
+``` python
+
+def untar_dir(
+    fname, dest, rename:bool=False, overwrite:bool=False
+):
+
+```
 
 *untar `file` into `dest`, creating a directory if the root contains
 more than one item*
@@ -476,12 +508,18 @@ test_untar('a', root_dir='images')
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/xtras.py#L195"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/xtras.py#L269"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### repo_details
 
->  repo_details (url)
+``` python
+
+def repo_details(
+    url
+):
+
+```
 
 *Tuple of `owner,name` from ssh or https git repo `url`*
 
@@ -493,49 +531,72 @@ test_eq(repo_details('git@github.com:fastai/nbdev.git\n'), ['fastai', 'nbdev'])
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/xtras.py#L202"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/xtras.py#L276"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### shell
 
->  shell (*args, **kwargs)
+``` python
+
+def shell(
+    args:VAR_POSITIONAL, kwargs:VAR_KEYWORD
+):
+
+```
 
 *Shortcut for `subprocess.run(shell=True)`*
 
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/xtras.py#L208"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/xtras.py#L282"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### ssh
 
->  ssh (host, args='', user='ubuntu', sock=None)
+``` python
+
+def ssh(
+    host, args:str='', user:str='ubuntu', sock:NoneType=None
+):
+
+```
 
 *Run SSH command with given arguments*
 
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/xtras.py#L214"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/xtras.py#L288"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### rsync_multi
 
->  rsync_multi (ip, files, user='ubuntu', persist='5m')
+``` python
+
+def rsync_multi(
+    ip, files, user:str='ubuntu', persist:str='5m'
+):
+
+```
 
 *Transfer multiple files with rename using persistent SSH connection*
 
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/xtras.py#L221"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/xtras.py#L295"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### run
 
->  run (cmd, *rest, same_in_win=False, ignore_ex=False, as_bytes=False,
->           stderr=False)
+``` python
+
+def run(
+    cmd, rest:VAR_POSITIONAL, same_in_win:bool=False, ignore_ex:bool=False, as_bytes:bool=False, stderr:bool=True
+):
+
+```
 
 *Pass `cmd` (splitting with `shlex` if string) to `subprocess.run`;
 return `stdout`; raise `IOError` if fails*
@@ -549,7 +610,7 @@ run('pip', '--version', same_in_win=True)
 run(['pip', '--version'], same_in_win=True)
 ```
 
-    'pip 25.2 from /Users/jhoward/aai-ws/.venv/lib/python3.12/site-packages/pip (python 3.12)'
+    'pip 25.3 from /Users/rensdimmendaal/git/.venv/lib/python3.12/site-packages/pip (python 3.12)'
 
 ``` python
 if sys.platform == 'win32':
@@ -585,36 +646,54 @@ else:
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/xtras.py#L245"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/xtras.py#L319"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### open_file
 
->  open_file (fn, mode='r', **kwargs)
+``` python
+
+def open_file(
+    fn, mode:str='r', kwargs:VAR_KEYWORD
+):
+
+```
 
 *Open a file, with optional compression if gz or bz2 suffix*
 
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/xtras.py#L256"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/xtras.py#L330"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### save_pickle
 
->  save_pickle (fn, o)
+``` python
+
+def save_pickle(
+    fn, o
+):
+
+```
 
 *Save a pickle file, to a file name or opened file*
 
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/xtras.py#L262"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/xtras.py#L336"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### load_pickle
 
->  load_pickle (fn)
+``` python
+
+def load_pickle(
+    fn
+):
+
+```
 
 *Load a pickle file from a file name or opened file*
 
@@ -633,12 +712,18 @@ for suf in '.pkl','.bz2','.gz':
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/xtras.py#L268"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/xtras.py#L342"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### parse_env
 
->  parse_env (s:str=None, fn:Union[str,pathlib.Path]=None)
+``` python
+
+def parse_env(
+    s:str=None, fn:Union[str, Path]=None
+)->dict:
+
+```
 
 *Parse a shell-style environment string or file*
 
@@ -660,12 +745,18 @@ test_eq(parse_env(testf),  exp)
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/xtras.py#L279"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/xtras.py#L353"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### expand_wildcards
 
->  expand_wildcards (code)
+``` python
+
+def expand_wildcards(
+    code
+):
+
+```
 
 *Expand all wildcard imports in the given code string.*
 
@@ -706,13 +797,18 @@ test_eq(expand_wildcards(inp), exp)
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/xtras.py#L313"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/xtras.py#L387"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### dict2obj
 
->  dict2obj (d, list_func=<class 'fastcore.foundation.L'>, dict_func=<class
->                'fastcore.basics.AttrDict'>)
+``` python
+
+def dict2obj(
+    d:NoneType=None, list_func:_L_Meta=L, dict_func:type=AttrDict, kwargs:VAR_KEYWORD
+):
+
+```
 
 *Convert (possibly nested) dicts (or lists of dicts) to
 [`AttrDict`](https://fastcore.fast.ai/basics.html#attrdict)*
@@ -727,6 +823,14 @@ test_eq(d2.b.c, 2)
 test_eq(d2.b['c'], 2)
 ```
 
+kwargs can also be used:
+
+``` python
+d3 = dict2obj(a=1, b=dict(c=2,d=3))
+test_eq(d3.b.c, 2)
+test_eq(d3.b['c'], 2)
+```
+
 It can also be used on lists of dicts.
 
 ``` python
@@ -738,12 +842,18 @@ test_eq(ds[0].b.c, 2)
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/xtras.py#L320"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/xtras.py#L395"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### obj2dict
 
->  obj2dict (d)
+``` python
+
+def obj2dict(
+    d
+):
+
+```
 
 *Convert (possibly nested) AttrDicts (or lists of AttrDicts) to `dict`*
 
@@ -759,12 +869,18 @@ test_eq(obj2dict(ds), _list_of_dicts)
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/xtras.py#L335"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/xtras.py#L410"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### repr_dict
 
->  repr_dict (d)
+``` python
+
+def repr_dict(
+    d
+):
+
+```
 
 *Print nested dicts and lists, such as returned by
 [`dict2obj`](https://fastcore.fast.ai/xtras.html#dict2obj)*
@@ -781,12 +897,18 @@ print(repr_dict(d2))
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/xtras.py#L340"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/xtras.py#L415"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### is_listy
 
->  is_listy (x)
+``` python
+
+def is_listy(
+    x
+):
+
+```
 
 *`isinstance(x, (tuple,list,L,slice,Generator))`*
 
@@ -801,12 +923,18 @@ assert not is_listy(array([1]))
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/xtras.py#L345"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/xtras.py#L420"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### mapped
 
->  mapped (f, it)
+``` python
+
+def mapped(
+    f, it
+):
+
+```
 
 *map `f` over `it`, unless it’s not listy, in which case return `f(it)`*
 
@@ -826,24 +954,36 @@ The following methods are added to the standard python libary
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/xtras.py#L351"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/xtras.py#L426"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### Path.readlines
 
->  Path.readlines (hint=-1, encoding='utf8')
+``` python
+
+def readlines(
+    hint:int=-1, encoding:str='utf8'
+):
+
+```
 
 *Read the content of `self`*
 
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/xtras.py#L357"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/xtras.py#L432"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### Path.read_json
 
->  Path.read_json (encoding=None, errors=None)
+``` python
+
+def read_json(
+    encoding:NoneType=None, errors:NoneType=None
+):
+
+```
 
 *Same as `read_text` followed by
 [`loads`](https://fastcore.fast.ai/xtras.html#loads)*
@@ -851,26 +991,36 @@ target="_blank" style="float:right; font-size:smaller">source</a>
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/xtras.py#L363"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/xtras.py#L438"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### Path.mk_write
 
->  Path.mk_write (data, encoding=None, errors=None, mode=511, uid=-1,
->                     gid=-1)
+``` python
+
+def mk_write(
+    data, encoding:NoneType=None, errors:NoneType=None, mode:int=511, uid:int=-1, gid:int=-1
+):
+
+```
 
 *Make all parent dirs of `self`, and write `data`*
 
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/xtras.py#L371"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/xtras.py#L446"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### Path.write_json
 
->  Path.write_json (data, encoding=None, errors=None, mode=511, uid=-1,
->                       gid=-1, **kw)
+``` python
+
+def write_json(
+    data, encoding:NoneType=None, errors:NoneType=None, mode:int=511, uid:int=-1, gid:int=-1, kw:VAR_KEYWORD
+):
+
+```
 
 *Same as [`dumps`](https://fastcore.fast.ai/xtras.html#dumps)followed by
 `mk_write`*
@@ -878,12 +1028,18 @@ target="_blank" style="float:right; font-size:smaller">source</a>
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/xtras.py#L377"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/xtras.py#L452"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### Path.relpath
 
->  Path.relpath (start=None)
+``` python
+
+def relpath(
+    start:NoneType=None
+):
+
+```
 
 *Same as `os.path.relpath`, but returns a `Path`, and resolves symlinks*
 
@@ -892,7 +1048,7 @@ p = Path('../fastcore/').resolve()
 p
 ```
 
-    Path('/Users/jhoward/aai-ws/fastcore/fastcore')
+    Path('/Users/rensdimmendaal/git/repos/fastcore/fastcore')
 
 ``` python
 p.relpath(Path.cwd())
@@ -903,12 +1059,18 @@ p.relpath(Path.cwd())
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/xtras.py#L383"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/xtras.py#L458"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### Path.ls
 
->  Path.ls (n_max=None, file_type=None, file_exts=None)
+``` python
+
+def ls(
+    n_max:NoneType=None, file_type:NoneType=None, file_exts:NoneType=None
+):
+
+```
 
 *Contents of path as a list*
 
@@ -946,12 +1108,46 @@ txt_files[0],ipy_files[0]
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/xtras.py#L395"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/xtras.py#L470"
+target="_blank" style="float:right; font-size:smaller">source</a>
+
+### Path.normpath
+
+``` python
+
+def normpath(
+    
+):
+
+```
+
+*Normalize path, eliminating double slashes, etc.*
+
+`normpath` normalizes a path by collapsing redundant separators and
+up-level references (e.g., `..`).
+
+``` python
+p = Path('foo//bar/../baz')
+p.normpath()
+```
+
+    Path('foo/baz')
+
+------------------------------------------------------------------------
+
+<a
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/xtras.py#L476"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### Path.\_\_repr\_\_
 
->  Path.__repr__ ()
+``` python
+
+def __repr__(
+    
+):
+
+```
 
 *Return repr(self).*
 
@@ -970,12 +1166,18 @@ finally: Path.BASE_PATH = None
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/xtras.py#L404"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/xtras.py#L485"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### Path.delete
 
->  Path.delete ()
+``` python
+
+def delete(
+    
+):
+
+```
 
 *Delete a file, symlink, or directory tree*
 
@@ -984,12 +1186,18 @@ target="_blank" style="float:right; font-size:smaller">source</a>
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/xtras.py#L419"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/xtras.py#L500"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 #### ReindexCollection
 
->  ReindexCollection (coll, idxs=None, cache=None, tfm=<function noop>)
+``` python
+
+def ReindexCollection(
+    coll, idxs:NoneType=None, cache:NoneType=None, tfm:function=noop
+):
+
+```
 
 *Reindexes collection `coll` with indices `idxs` and optional LRU cache
 of size `cache`*
@@ -1016,12 +1224,18 @@ Alternatively, you can use the `reindex` method:
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/xtras.py#L430"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/xtras.py#L511"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ###### ReindexCollection.reindex
 
->  ReindexCollection.reindex (idxs)
+``` python
+
+def reindex(
+    idxs
+):
+
+```
 
 *Replace `self.idxs` with idxs*
 
@@ -1054,12 +1268,18 @@ method:
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/xtras.py#L434"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/xtras.py#L515"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ##### ReindexCollection.cache_clear
 
->  ReindexCollection.cache_clear ()
+``` python
+
+def cache_clear(
+    
+):
+
+```
 
 *Clear LRU cache*
 
@@ -1078,12 +1298,18 @@ t._get.cache_info()
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/xtras.py#L431"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/xtras.py#L512"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ##### ReindexCollection.shuffle
 
->  ReindexCollection.shuffle ()
+``` python
+
+def shuffle(
+    
+):
+
+```
 
 *Randomly shuffle indices*
 
@@ -1096,7 +1322,7 @@ rc.shuffle()
 list(rc)
 ```
 
-    ['c', 'b', 'e', 'a', 'd', 'h', 'g', 'f']
+    ['a', 'g', 'h', 'c', 'd', 'b', 'f', 'e']
 
 ``` python
 sz = 50
@@ -1138,12 +1364,18 @@ values = list(example_generator())  # [0, 1, 2]
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/xtras.py#L443"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/xtras.py#L524"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### SaveReturn
 
->  SaveReturn (its)
+``` python
+
+def SaveReturn(
+    its
+):
+
+```
 
 *Wrap an iterator such that the generator function’s return value is
 stored in `.value`*
@@ -1194,12 +1426,18 @@ version of `wraps` that removes leading parameters:
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/xtras.py#L451"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/xtras.py#L532"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### trim_wraps
 
->  trim_wraps (f, n=1)
+``` python
+
+def trim_wraps(
+    f, n:int=1
+):
+
+```
 
 *Like wraps, but removes the first n parameters from the signature*
 
@@ -1226,12 +1464,18 @@ print(f"{add_10.__name__}{inspect.signature(add_10)}")
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/xtras.py#L468"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/xtras.py#L549"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### save_iter
 
->  save_iter (g)
+``` python
+
+def save_iter(
+    g
+):
+
+```
 
 *Decorator that allows a generator function to store values in the
 returned iterator object*
@@ -1276,12 +1520,18 @@ print(f"Sum stored: {sr.value}")
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/xtras.py#L475"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/xtras.py#L556"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### asave_iter
 
->  asave_iter (g)
+``` python
+
+def asave_iter(
+    g
+):
+
+```
 
 *Like [`save_iter`](https://fastcore.fast.ai/xtras.html#save_iter), but
 for async iterators*
@@ -1316,12 +1566,97 @@ print(f"Sum stored: {asr.value}")
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/xtras.py#L482"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/xtras.py#L563"
+target="_blank" style="float:right; font-size:smaller">source</a>
+
+### unqid
+
+``` python
+
+def unqid(
+    seeded:bool=False
+):
+
+```
+
+*Generate a unique id suitable for use as a Python identifier*
+
+[`unqid`](https://fastcore.fast.ai/xtras.html#unqid) generates a random
+unique identifier that is safe to use as a Python variable name (starts
+with `_`, uses only alphanumeric characters and underscores). It’s based
+on UUID4, encoded in URL-safe base64.
+
+If `seeded=True`, uses `random.getrandbits` which respects
+`random.seed()`, making it reproducible. Otherwise uses `uuid4()` which
+is always random.
+
+``` python
+unqid()
+```
+
+    '_xNpj56ekTqyk9MsVDYRnnA'
+
+With seeding for reproducibility:
+
+``` python
+random.seed(42)
+a = unqid(seeded=True)
+random.seed(42)
+b = unqid(seeded=True)
+test_eq(a, b)
+```
+
+Without seeding - always unique:
+
+``` python
+test_ne(unqid(), unqid())
+```
+
+------------------------------------------------------------------------
+
+<a
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/xtras.py#L572"
+target="_blank" style="float:right; font-size:smaller">source</a>
+
+### rtoken_hex
+
+``` python
+
+def rtoken_hex(
+    nbytes:int=16, # Number of bytes to generate
+)->str: # hex string of length nbytes*2
+
+```
+
+*Generate a random hex string using Python’s random module.*
+
+This is the same as `secrets.token_hex`, but is reproducible/seedable.
+
+``` python
+import secrets
+```
+
+``` python
+secrets.token_hex(4),rtoken_hex(4)
+```
+
+    ('0100dd53', '8c7d7247')
+
+------------------------------------------------------------------------
+
+<a
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/xtras.py#L580"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### friendly_name
 
->  friendly_name (levels=3, suffix=4)
+``` python
+
+def friendly_name(
+    levels:int=3, suffix:int=4
+):
+
+```
 
 *Generate a random human-readable name with customizable word levels and
 suffix length*
@@ -1336,7 +1671,7 @@ user-friendly resource names.
 friendly_name()  # Default: 3 word levels + 4-char suffix
 ```
 
-    'tender-otter-sprints-p753'
+    'objective-forest-builds-0y6d'
 
 Names are hyphen-separated and follow the pattern
 `adjective-noun-verb-adverb`, randomly chosen from lists of size 102,
@@ -1347,7 +1682,7 @@ the names to include:
 friendly_name(2)  # 2 words + 4-char suffix
 ```
 
-    'kind-sunrise-9bib'
+    'lavender-hummingbird-divu'
 
 `suffix` sets the length of the random alphanumeric ending. Each suffix
 item is taken from the 36 options of lowercase letters plus digits.
@@ -1356,17 +1691,23 @@ item is taken from the 36 options of lowercase letters plus digits.
 friendly_name(4, 6)  # All 4 word types + 6-char suffix
 ```
 
-    'sweet-signal-goes-loudly-wk347d'
+    'elated-koala-begins-softly-zpqk51'
 
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/xtras.py#L494"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/xtras.py#L592"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### n_friendly_names
 
->  n_friendly_names (levels=3, suffix=4)
+``` python
+
+def n_friendly_names(
+    levels:int=3, suffix:int=4
+):
+
+```
 
 *Number of possible combos for \`friendly_names*
 
@@ -1389,46 +1730,23 @@ print(f'{n_friendly_names():,}')
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/xtras.py#L500"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/xtras.py#L598"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### exec_eval
 
->  exec_eval (code, g=None, l=None)
+``` python
+
+def exec_eval(
+    code, # Code to exec/eval
+    g:NoneType=None, # Globals namespace dict
+    l:NoneType=None, # Locals namespace dict
+):
+
+```
 
 *Evaluate `code` in `g` (defaults to `globals()`) and `l` (defaults to
 `locals()`)*
-
-<table>
-<thead>
-<tr>
-<th></th>
-<th><strong>Type</strong></th>
-<th><strong>Default</strong></th>
-<th><strong>Details</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>code</td>
-<td></td>
-<td></td>
-<td>Code to exec/eval</td>
-</tr>
-<tr>
-<td>g</td>
-<td>NoneType</td>
-<td>None</td>
-<td>Globals namespace dict</td>
-</tr>
-<tr>
-<td>l</td>
-<td>NoneType</td>
-<td>None</td>
-<td>Locals namespace dict</td>
-</tr>
-</tbody>
-</table>
 
 This is a combination of `eval` and `exec`, which behaves like ipython
 and Jupyter. If the last line is an expression, it is evaluated and the
@@ -1479,12 +1797,18 @@ test_eq(_unwrapped_type_dispatch_func(df), f1)
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/xtras.py#L534"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/xtras.py#L632"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### get_source_link
 
->  get_source_link (func)
+``` python
+
+def get_source_link(
+    func
+):
+
+```
 
 *Return link to `func` in source code*
 
@@ -1505,43 +1829,27 @@ from fastcore.test import test_eq
 
 ``` python
 assert 'fastcore/test.py' in get_source_link(test_eq)
-assert get_source_link(test_eq).startswith('https://github.com/fastai/fastcore')
+assert get_source_link(test_eq).startswith('https://github.com/AnswerDotAI/fastcore')
 get_source_link(test_eq)
 ```
 
-    'https://github.com/fastai/fastcore/tree/master/fastcore/test.py#L38'
+    'https://github.com/AnswerDotAI/fastcore/fastcore/test.py#L38'
 
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/xtras.py#L548"
-target="_blank" style="float:right; font-size:smaller">source</a>
-
-### truncstr
-
->  truncstr (s:str, maxlen:int, suf:str='…', space='')
-
-*Truncate `s` to length `maxlen`, adding suffix `suf` if truncated*
-
-``` python
-w = 'abacadabra'
-test_eq(truncstr(w, 10), w)
-test_eq(truncstr(w, 5), 'abac…')
-test_eq(truncstr(w, 5, suf=''), 'abaca')
-test_eq(truncstr(w, 11, space='_'), w+"_")
-test_eq(truncstr(w, 10, space='_'), w[:-1]+'…')
-test_eq(truncstr(w, 5, suf='!!'), 'aba!!')
-```
-
-------------------------------------------------------------------------
-
-<a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/xtras.py#L565"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/xtras.py#L659"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### sparkline
 
->  sparkline (data, mn=None, mx=None, empty_zero=False)
+``` python
+
+def sparkline(
+    data, mn:NoneType=None, mx:NoneType=None, empty_zero:bool=False
+):
+
+```
 
 *Sparkline for `data`, with `None`s (and zero, if `empty_zero`) shown as
 empty column*
@@ -1567,51 +1875,22 @@ sparkline([1,2,3,400], mn=0, mx=3)
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/xtras.py#L574"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/xtras.py#L668"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### modify_exception
 
->  modify_exception (e:Exception, msg:str=None, replace:bool=False)
+``` python
+
+def modify_exception(
+    e:Exception, # An exception
+    msg:str=None, # A custom message
+    replace:bool=False, # Whether to replace e.args with [msg]
+)->Exception:
+
+```
 
 *Modifies `e` with a custom message attached*
-
-<table>
-<thead>
-<tr>
-<th></th>
-<th><strong>Type</strong></th>
-<th><strong>Default</strong></th>
-<th><strong>Details</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>e</td>
-<td>Exception</td>
-<td></td>
-<td>An exception</td>
-</tr>
-<tr>
-<td>msg</td>
-<td>str</td>
-<td>None</td>
-<td>A custom message</td>
-</tr>
-<tr>
-<td>replace</td>
-<td>bool</td>
-<td>False</td>
-<td>Whether to replace e.args with [msg]</td>
-</tr>
-<tr>
-<td><strong>Returns</strong></td>
-<td><strong>Exception</strong></td>
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table>
 
 ``` python
 msg = "This is my custom message!"
@@ -1625,12 +1904,18 @@ test_fail(lambda: (_ for _ in ()).throw(modify_exception(Exception("The first me
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/xtras.py#L584"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/xtras.py#L678"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### round_multiple
 
->  round_multiple (x, mult, round_down=False)
+``` python
+
+def round_multiple(
+    x, mult, round_down:bool=False
+):
+
+```
 
 *Round `x` to nearest multiple of `mult`*
 
@@ -1646,12 +1931,18 @@ test_eq(round_multiple((63,40),32), (64,32))
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/xtras.py#L591"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/xtras.py#L685"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### set_num_threads
 
->  set_num_threads (nt)
+``` python
+
+def set_num_threads(
+    nt
+):
+
+```
 
 *Get numpy (and others) to use `nt` threads*
 
@@ -1664,12 +1955,18 @@ This sets the number of threads consistently for many tools, by:
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/xtras.py#L602"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/xtras.py#L696"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### join_path_file
 
->  join_path_file (file, path, ext='')
+``` python
+
+def join_path_file(
+    file, path, ext:str=''
+):
+
+```
 
 *Return `path/file` if file is a string or a `Path`, file otherwise*
 
@@ -1685,24 +1982,36 @@ shutil.rmtree(Path.cwd()/'_tmp')
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/xtras.py#L609"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/xtras.py#L703"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### autostart
 
->  autostart (g)
+``` python
+
+def autostart(
+    g
+):
+
+```
 
 *Decorator that automatically starts a generator*
 
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/xtras.py#L619"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/xtras.py#L713"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 #### EventTimer
 
->  EventTimer (store=5, span=60)
+``` python
+
+def EventTimer(
+    store:int=5, span:int=60
+):
+
+```
 
 *An event timer with history of `store` items of time `span`*
 
@@ -1719,18 +2028,24 @@ print(f'Num Events: {c.events}, Freq/sec: {c.freq:.01f}')
 print('Most recent: ', sparkline(c.hist), *L(c.hist).map('{:.01f}'))
 ```
 
-    Num Events: 2, Freq/sec: 74.1
-    Most recent:  ▁▁▂▇▅ 24.6 24.5 47.3 90.9 65.5
+    Num Events: 9, Freq/sec: 346.2
+    Most recent:  ▅▃▇▁▇ 263.7 256.6 278.3 235.1 276.9
 
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/xtras.py#L646"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/xtras.py#L740"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### stringfmt_names
 
->  stringfmt_names (s:str)
+``` python
+
+def stringfmt_names(
+    s:str
+)->list:
+
+```
 
 *Unique brace-delimited names in `s`*
 
@@ -1742,12 +2057,18 @@ test_eq(stringfmt_names(s), ['pull_number','review_id'])
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/xtras.py#L651"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/xtras.py#L745"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 #### PartialFormatter
 
->  PartialFormatter ()
+``` python
+
+def PartialFormatter(
+    
+):
+
+```
 
 *A `string.Formatter` that doesn’t error on missing fields, and tracks
 missing fields and unused args*
@@ -1755,12 +2076,18 @@ missing fields and unused args*
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/xtras.py#L667"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/xtras.py#L761"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### partial_format
 
->  partial_format (s:str, **kwargs)
+``` python
+
+def partial_format(
+    s:str, kwargs:VAR_KEYWORD
+):
+
+```
 
 *string format `s`, ignoring missing field errors, returning missing and
 extra fields*
@@ -1778,12 +2105,56 @@ test_eq(xtra, {'foo':2})
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/xtras.py#L674"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/xtras.py#L768"
+target="_blank" style="float:right; font-size:smaller">source</a>
+
+### truncstr
+
+``` python
+
+def truncstr(
+    s:str, maxlen:int, suf:str='…', space:str='', sizevar:str=None
+)->str:
+
+```
+
+*Truncate `s` to length `maxlen`, adding suffix `suf` if truncated*
+
+``` python
+w = 'abacadabra'
+test_eq(truncstr(w, 10), w)
+test_eq(truncstr(w, 5), 'abac…')
+test_eq(truncstr(w, 5, suf=''), 'abaca')
+test_eq(truncstr(w, 11, space='_'), w+"_")
+test_eq(truncstr(w, 10, space='_'), w[:-1]+'…')
+test_eq(truncstr(w, 5, suf='!!'), 'aba!!')
+```
+
+`sizevar` lets you include the original string length in your suffix.
+E.g when you set `sizevar='_n_'`, any `{_n_}` in your suffix gets
+replaced with the actual length of the string before truncation. For
+instance, here the `(11)` tells you the original string was 11
+characters long:
+
+``` python
+test_eq(truncstr('hello world', 8, suf='…({_n_})', sizevar='_n_'), 'hel…(11)')
+```
+
+------------------------------------------------------------------------
+
+<a
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/xtras.py#L774"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### utc2local
 
->  utc2local (dt:datetime.datetime)
+``` python
+
+def utc2local(
+    dt:datetime
+)->datetime:
+
+```
 
 *Convert `dt` from UTC to local time*
 
@@ -1792,17 +2163,23 @@ dt = datetime(2000,1,1,12)
 print(f'{dt} UTC is {utc2local(dt)} local time')
 ```
 
-    2000-01-01 12:00:00 UTC is 2000-01-01 22:00:00+10:00 local time
+    2000-01-01 12:00:00 UTC is 2000-01-01 13:00:00+01:00 local time
 
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/xtras.py#L679"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/xtras.py#L779"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### local2utc
 
->  local2utc (dt:datetime.datetime)
+``` python
+
+def local2utc(
+    dt:datetime
+)->datetime:
+
+```
 
 *Convert `dt` from local to UTC time*
 
@@ -1810,17 +2187,23 @@ target="_blank" style="float:right; font-size:smaller">source</a>
 print(f'{dt} local is {local2utc(dt)} UTC time')
 ```
 
-    2000-01-01 12:00:00 local is 2000-01-01 02:00:00+00:00 UTC time
+    2000-01-01 12:00:00 local is 2000-01-01 11:00:00+00:00 UTC time
 
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/xtras.py#L684"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/xtras.py#L784"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### trace
 
->  trace (f)
+``` python
+
+def trace(
+    f
+):
+
+```
 
 *Add `set_trace` to an existing function `f`*
 
@@ -1838,12 +2221,18 @@ function that is being traced.
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/xtras.py#L696"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/xtras.py#L796"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### modified_env
 
->  modified_env (*delete, **replace)
+``` python
+
+def modified_env(
+    delete:VAR_POSITIONAL, replace:VAR_KEYWORD
+):
+
+```
 
 *Context manager temporarily modifying `os.environ` by deleting `delete`
 and replacing `replace`*
@@ -1865,12 +2254,18 @@ test_eq(os.environ[env_test], oldusr)
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/xtras.py#L708"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/xtras.py#L808"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 #### ContextManagers
 
->  ContextManagers (mgrs)
+``` python
+
+def ContextManagers(
+    mgrs
+):
+
+```
 
 *Wrapper for `contextlib.ExitStack` which enters a collection of context
 managers*
@@ -1878,12 +2273,18 @@ managers*
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/xtras.py#L715"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/xtras.py#L815"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### shufflish
 
->  shufflish (x, pct=0.04)
+``` python
+
+def shufflish(
+    x, pct:float=0.04
+):
+
+```
 
 *Randomly relocate items of `x` up to `pct` of `len(x)` from their
 starting location*
@@ -1891,41 +2292,36 @@ starting location*
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/xtras.py#L722"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/xtras.py#L822"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### console_help
 
->  console_help (libname:str)
+``` python
+
+def console_help(
+    libname:str
+):
+
+```
 
 *Show help for all console scripts from `libname`*
-
-<table>
-<thead>
-<tr>
-<th></th>
-<th><strong>Type</strong></th>
-<th><strong>Details</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>libname</td>
-<td>str</td>
-<td>name of library for console script listing</td>
-</tr>
-</tbody>
-</table>
 
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/xtras.py#L734"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/xtras.py#L832"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### hl_md
 
->  hl_md (s, lang='xml', show=True)
+``` python
+
+def hl_md(
+    s, lang:str='html', show:bool=True
+):
+
+```
 
 *Syntax highlight `s` using `lang`.*
 
@@ -1936,19 +2332,25 @@ create a function to simplify that:
 hl_md('<test><xml foo="bar">a child</xml></test>')
 ```
 
-``` xml
+``` html
 <test><xml foo="bar">a child</xml></test>
 ```
 
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/xtras.py#L744"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/xtras.py#L843"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### type2str
 
->  type2str (typ:type)
+``` python
+
+def type2str(
+    typ:type
+)->str:
+
+```
 
 *Stringify `typ`*
 
@@ -1959,12 +2361,18 @@ test_eq(type2str(Optional[float]), 'Union[float, None]')
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/xtras.py#L755"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/xtras.py#L854"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### dataclass_src
 
->  dataclass_src (cls)
+``` python
+
+def dataclass_src(
+    cls
+):
+
+```
 
 ``` python
 DC = make_dataclass('DC', [('x', int), ('y', Optional[float], None), ('z', float, None)])
@@ -1980,24 +2388,64 @@ print(dataclass_src(DC))
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/xtras.py#L763"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/xtras.py#L862"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### Unset
 
->  Unset (value, names=None, module=None, qualname=None, type=None, start=1)
+``` python
 
-*An enumeration.*
+def Unset(
+    args:VAR_POSITIONAL, kwds:VAR_KEYWORD
+):
+
+```
+
+*Create a collection of name/value pairs.*
+
+Example enumeration:
+
+> > > class Color(Enum): … RED = 1 … BLUE = 2 … GREEN = 3
+
+Access them by:
+
+- attribute access:
+
+  > > > Color.RED \<Color.RED: 1\>
+
+- value lookup:
+
+  > > > Color(1) \<Color.RED: 1\>
+
+- name lookup:
+
+  > > > Color\[‘RED’\] \<Color.RED: 1\>
+
+Enumerations can be iterated over, and know how many members they have:
+
+> > > len(Color) 3
+
+> > > list(Color) \[\<Color.RED: 1\>, \<Color.BLUE: 2\>, \<Color.GREEN:
+> > > 3\>\]
+
+Methods can be added to enumerations, and members can have their own
+attributes – see the documentation for details.
 
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/xtras.py#L771"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/xtras.py#L870"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### nullable_dc
 
->  nullable_dc (cls)
+``` python
+
+def nullable_dc(
+    cls
+):
+
+```
 
 *Like `dataclass`, but default of `UNSET` added to fields without
 defaults*
@@ -2013,12 +2461,18 @@ Person(name="Bob")
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/xtras.py#L778"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/xtras.py#L877"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### make_nullable
 
->  make_nullable (clas)
+``` python
+
+def make_nullable(
+    clas
+):
+
+```
 
 ``` python
 @dataclass
@@ -2045,38 +2499,22 @@ Person("Bob", 34)
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/xtras.py#L800"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/xtras.py#L899"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### flexiclass
 
->  flexiclass (cls)
+``` python
+
+def flexiclass(
+    cls, # The class to convert
+)->dataclass:
+
+```
 
 *Convert `cls` into a `dataclass` like
 [`make_nullable`](https://fastcore.fast.ai/xtras.html#make_nullable).
 Converts in place and also returns the result.*
-
-<table>
-<thead>
-<tr>
-<th></th>
-<th><strong>Type</strong></th>
-<th><strong>Details</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>cls</td>
-<td></td>
-<td>The class to convert</td>
-</tr>
-<tr>
-<td><strong>Returns</strong></td>
-<td><strong>dataclass</strong></td>
-<td></td>
-</tr>
-</tbody>
-</table>
 
 This can be used as a decorator…
 
@@ -2116,12 +2554,18 @@ is_dataclass(Person)
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/xtras.py#L811"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/xtras.py#L910"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### asdict
 
->  asdict (o)
+``` python
+
+def asdict(
+    o
+)->dict:
+
+```
 
 *Convert `o` to a `dict`, supporting dataclasses, namedtuples,
 iterables, and `__dict__` attrs.*
@@ -2153,12 +2597,18 @@ To customise dict conversion behavior for a class, implement the
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/xtras.py#L825"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/xtras.py#L924"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### vars_pub
 
->  vars_pub (x)
+``` python
+
+def vars_pub(
+    x
+):
+
+```
 
 *Get public non-skipped vars*
 
@@ -2189,12 +2639,18 @@ test_eq(vars_pub(simple), ['a', 'c'])
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/xtras.py#L831"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/xtras.py#L930"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### is_typeddict
 
->  is_typeddict (cls:type)
+``` python
+
+def is_typeddict(
+    cls:type
+)->bool:
+
+```
 
 *Check if `cls` is a `TypedDict`*
 
@@ -2208,12 +2664,18 @@ assert not is_typeddict({'a':1})
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/xtras.py#L837"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/xtras.py#L936"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### is_namedtuple
 
->  is_namedtuple (cls)
+``` python
+
+def is_namedtuple(
+    cls
+):
+
+```
 
 *`True` if `cls` is a namedtuple type*
 
@@ -2225,12 +2687,18 @@ assert not is_namedtuple(tuple)
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/xtras.py#L842"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/xtras.py#L941"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### CachedIter
 
->  CachedIter (o)
+``` python
+
+def CachedIter(
+    o
+):
+
+```
 
 *Cache the result returned by an iterator*
 
@@ -2251,24 +2719,36 @@ r.value
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/xtras.py#L850"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/xtras.py#L949"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### CachedAwaitable
 
->  CachedAwaitable (o)
+``` python
+
+def CachedAwaitable(
+    o
+):
+
+```
 
 *Cache the result from an awaitable*
 
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/xtras.py#L858"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/xtras.py#L957"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### reawaitable
 
->  reawaitable (func:<built-infunctioncallable>)
+``` python
+
+def reawaitable(
+    func:callable
+):
+
+```
 
 *Wraps the result of an asynchronous function into an object which can
 be awaited more than once*
@@ -2296,12 +2776,18 @@ print(await r)  # "data" (no delay)
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/xtras.py#L865"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/xtras.py#L964"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### flexicache
 
->  flexicache (*funcs, maxsize=128)
+``` python
+
+def flexicache(
+    funcs:VAR_POSITIONAL, maxsize:int=128
+):
+
+```
 
 *Like `lru_cache`, but customisable with policy `funcs`*
 
@@ -2320,12 +2806,18 @@ values.
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/xtras.py#L899"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/xtras.py#L998"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### time_policy
 
->  time_policy (seconds)
+``` python
+
+def time_policy(
+    seconds
+):
+
+```
 
 *A [`flexicache`](https://fastcore.fast.ai/xtras.html#flexicache) policy
 that expires cached items after `seconds` have passed*
@@ -2333,12 +2825,18 @@ that expires cached items after `seconds` have passed*
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/xtras.py#L907"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/xtras.py#L1006"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### mtime_policy
 
->  mtime_policy (filepath)
+``` python
+
+def mtime_policy(
+    filepath
+):
+
+```
 
 *A [`flexicache`](https://fastcore.fast.ai/xtras.html#flexicache) policy
 that expires cached items after `filepath` modified-time changes*
@@ -2367,12 +2865,18 @@ await cached_func(1,2)
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/xtras.py#L915"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/xtras.py#L1014"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### timed_cache
 
->  timed_cache (seconds=60, maxsize=128)
+``` python
+
+def timed_cache(
+    seconds:int=60, maxsize:int=128
+):
+
+```
 
 *Like `lru_cache`, but also with time-based eviction*
 

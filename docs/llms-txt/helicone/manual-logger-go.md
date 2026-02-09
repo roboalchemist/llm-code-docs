@@ -1,5 +1,9 @@
 # Source: https://docs.helicone.ai/getting-started/integration-method/manual-logger-go.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.helicone.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Manual Logger - Go
 
 > Integrate any custom LLM with Helicone using the Go Manual Logger. Step-by-step guide for Go implementation to connect your proprietary or open-source models.

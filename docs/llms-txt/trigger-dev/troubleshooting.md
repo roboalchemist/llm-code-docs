@@ -1,5 +1,9 @@
 # Source: https://trigger.dev/docs/troubleshooting.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://trigger.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Common problems
 
 > Some common problems you might experience and their solutions
@@ -16,13 +20,13 @@ If you see this error:
 
 First, clear the npm cache:
 
-```sh  theme={null}
+```sh  theme={"theme":"css-variables"}
 npm cache clean --force
 ```
 
 Then change the permissions of the npm folder (if 1 doesn't work):
 
-```sh  theme={null}
+```sh  theme={"theme":"css-variables"}
 sudo chown -R $(whoami) ~/.npm
 ```
 
@@ -73,7 +77,7 @@ Usually there will be some useful guidance below this message. If you can't figu
 
 This happens because `.node` files are native code and can't be bundled like other packages. To fix this, add your package to [`build.external`](/config/config-file#external) in the `trigger.config.ts` file like this:
 
-```ts trigger.config.ts theme={null}
+```ts trigger.config.ts theme={"theme":"css-variables"}
 import { defineConfig } from "@trigger.dev/sdk";
 
 export default defineConfig({
@@ -100,7 +104,7 @@ TypeError: reactDOMServer.renderToPipeableStream is not a function
 
 This happens because react-email packages have bundling conflicts with our build process. To fix this, add the react-email packages to your `external` build settings in your `trigger.config.ts` file:
 
-```ts trigger.config.ts theme={null}
+```ts trigger.config.ts theme={"theme":"css-variables"}
 import { defineConfig } from "@trigger.dev/sdk";
 
 export default defineConfig({
@@ -176,7 +180,7 @@ Make sure that you always use `await` when you call `trigger`, `triggerAndWait`,
 
 ### Rate limit exceeded
 
-The most common cause of hitting the API rate limit is if you’re calling `trigger()` on a task in a loop, instead of doing this use `batchTrigger()` which will trigger multiple tasks in a single API call. You can have up to 500 tasks in a single batch trigger call.
+The most common cause of hitting the API rate limit is if you're calling `trigger()` on a task in a loop, instead of doing this use `batchTrigger()` which will trigger multiple tasks in a single API call. You can have up to 1,000 tasks in a single batch trigger call with SDK 4.3.1+ (500 in prior versions).
 
 View the [rate limits](/limits) page for more information.
 
@@ -196,7 +200,7 @@ These errors can happen when code inside your task is blocking the event loop fo
 
 If you are doing a continuous CPU-heavy task, then we recommend you try using our `heartbeats.yield` function to automatically yield to the event loop periodically:
 
-```ts  theme={null}
+```ts  theme={"theme":"css-variables"}
 import { heartbeats } from "@trigger.dev/sdk";
 
 // code inside your task
@@ -218,7 +222,7 @@ If the above doesn't work, then we recommend you try increasing the machine size
 
 If you're using NestJS and you add code like this into your tasks you will prevent any errors from being surfaced:
 
-```ts  theme={null}
+```ts  theme={"theme":"css-variables"}
 export const simplestTask = task({
   id: "nestjs-example",
   run: async (payload) => {
@@ -243,13 +247,13 @@ Worker failed to start ReferenceError: React is not defined
 
 Either add this to your file:
 
-```ts  theme={null}
+```ts  theme={"theme":"css-variables"}
 import React from "react";
 ```
 
 Or change the tsconfig jsx setting:
 
-```json  theme={null}
+```json  theme={"theme":"css-variables"}
 {
   "compilerOptions": {
     //...
@@ -262,7 +266,7 @@ Or change the tsconfig jsx setting:
 
 This issue occurs during the Next.js app build process on GitHub CI where the Trigger.dev SDK is expecting the TRIGGER\_SECRET\_KEY environment variable to be set at build time. Next.js attempts to compile routes and creates static pages, which can cause issues with SDKs that require runtime environment variables. The solution is to mark the relevant pages as dynamic to prevent Next.js from trying to make them static. You can do this by adding the following line to the route file:
 
-```ts  theme={null}
+```ts  theme={"theme":"css-variables"}
 export const dynamic = "force-dynamic";
 ```
 
@@ -272,12 +276,12 @@ An issue can sometimes arise when you try to pass a function directly to the `on
 
 This works:
 
-```tsx  theme={null}
+```tsx  theme={"theme":"css-variables"}
 <Button onClick={() => myTask()}>Trigger my task</Button>
 ```
 
 Whereas this does not work:
 
-```tsx  theme={null}
+```tsx  theme={"theme":"css-variables"}
 <Button onClick={myTask}>Trigger my task</Button>
 ```

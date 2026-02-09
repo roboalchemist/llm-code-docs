@@ -3,7 +3,6 @@
 ---
 url: /docs/guide/usage/linter/rules/react/jsx-fragments.md
 ---
-# react/jsx-fragments&#x20;
 
 ### What it does
 

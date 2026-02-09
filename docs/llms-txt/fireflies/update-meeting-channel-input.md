@@ -1,5 +1,9 @@
 # Source: https://docs.fireflies.ai/schema/input/update-meeting-channel-input.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.fireflies.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # UpdateMeetingChannelInput
 
 > Schema for UpdateMeetingChannelInput

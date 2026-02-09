@@ -1,6 +1,8 @@
 # Source: https://www.activepieces.com/docs/build-pieces/building-pieces/start-building.md
 
-# Source: https://www.activepieces.com/docs/developers/building-pieces/start-building.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.activepieces.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Start Building
 

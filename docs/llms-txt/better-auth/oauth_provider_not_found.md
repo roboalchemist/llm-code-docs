@@ -1,14 +1,10 @@
-# Source: https://www.better-auth.com/llms.txt/docs/errors/oauth_provider_not_found.md
+# Source: https://www.better-auth.com/llms.txt/docs/reference/errors/oauth_provider_not_found.md
 
-# OAuth provider not found
+# oauth_provider_not_found
 
 The OAuth provider was not found.
 
-***
 
-title: OAuth provider not found
-description: The OAuth provider was not found.
-----------------------------------------------
 
 ## What is it?
 

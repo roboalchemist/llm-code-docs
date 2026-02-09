@@ -1,20 +1,6 @@
 # Source: https://www.daytona.io/docs/en/typescript-sdk/sandbox.md
 
-# Source: https://www.daytona.io/docs/en/python-sdk/sync/sandbox.md
-
-# Source: https://www.daytona.io/docs/en/typescript-sdk/sandbox.md
-
-# Source: https://www.daytona.io/docs/en/python-sdk/sync/sandbox.md
-
-# Source: https://www.daytona.io/docs/en/typescript-sdk/sandbox.md
-
-# Source: https://www.daytona.io/docs/en/python-sdk/sync/sandbox.md
-
-# Source: https://www.daytona.io/docs/en/typescript-sdk/sandbox.md
-
-# Source: https://www.daytona.io/docs/en/python-sdk/sync/sandbox.md
-
-# Source: https://www.daytona.io/docs/en/typescript-sdk/sandbox.md
+# Source: https://www.daytona.io/docs/en/ruby-sdk/sandbox.md
 
 # Source: https://www.daytona.io/docs/en/python-sdk/sync/sandbox.md
 
@@ -32,13 +18,15 @@ Represents a Daytona Sandbox.
 - `git` _Git_ - Git operations interface.
 - `process` _Process_ - Process execution interface.
 - `computer_use` _ComputerUse_ - Computer use operations interface for desktop automation.
+- `code_interpreter` _CodeInterpreter_ - Stateful interpreter interface for executing code.
+  Currently supports only Python. For other languages, use the `process.code_run` interface.
 - `id` _str_ - Unique identifier for the Sandbox.
 - `name` _str_ - Name of the Sandbox.
 - `organization_id` _str_ - Organization ID of the Sandbox.
 - `snapshot` _str_ - Daytona snapshot used to create the Sandbox.
 - `user` _str_ - OS user running in the Sandbox.
-- `env` _Dict[str, str]_ - Environment variables set in the Sandbox.
-- `labels` _Dict[str, str]_ - Custom labels attached to the Sandbox.
+- `env` _dict[str, str]_ - Environment variables set in the Sandbox.
+- `labels` _dict[str, str]_ - Custom labels attached to the Sandbox.
 - `public` _bool_ - Whether the Sandbox is publicly accessible.
 - `target` _str_ - Target location of the runner where the Sandbox runs.
 - `cpu` _int_ - Number of CPUs allocated to the Sandbox.
@@ -47,12 +35,13 @@ Represents a Daytona Sandbox.
 - `disk` _int_ - Amount of disk space allocated to the Sandbox in GiB.
 - `state` _SandboxState_ - Current state of the Sandbox (e.g., "started", "stopped").
 - `error_reason` _str_ - Error message if Sandbox is in error state.
+- `recoverable` _bool_ - Whether the Sandbox error is recoverable.
 - `backup_state` _SandboxBackupStateEnum_ - Current state of Sandbox backup.
 - `backup_created_at` _str_ - When the backup was created.
 - `auto_stop_interval` _int_ - Auto-stop interval in minutes.
 - `auto_archive_interval` _int_ - Auto-archive interval in minutes.
 - `auto_delete_interval` _int_ - Auto-delete interval in minutes.
-- `volumes` _List[str]_ - Volumes attached to the Sandbox.
+- `volumes` _list[str]_ - Volumes attached to the Sandbox.
 - `build_info` _str_ - Build information for the Sandbox if it was created from dynamic build.
 - `created_at` _str_ - When the Sandbox was created.
 - `updated_at` _str_ - When the Sandbox was last updated.
@@ -64,7 +53,7 @@ Represents a Daytona Sandbox.
 ```python
 def __init__(sandbox_dto: SandboxDto, toolbox_api: ApiClient,
              sandbox_api: SandboxApi, code_toolbox: SandboxCodeToolbox,
-             get_toolbox_base_url: Callable[[], str])
+             get_toolbox_base_url: Callable[[str, str], str])
 ```
 
 Initialize a new Sandbox instance.
@@ -141,7 +130,7 @@ print(f"Sandbox working directory: {work_dir}")
 #### Sandbox.create\_lsp\_server
 
 ```python
-def create_lsp_server(language_id: LspLanguageId,
+def create_lsp_server(language_id: LspLanguageId | LspLanguageIdLiteral,
                       path_to_project: str) -> LspServer
 ```
 
@@ -152,7 +141,7 @@ diagnostics, and more.
 
 **Arguments**:
 
-- `language_id` _LspLanguageId_ - The language server type (e.g., LspLanguageId.PYTHON).
+- `language_id` _LspLanguageId | LspLanguageIdLiteral_ - The language server type (e.g., LspLanguageId.PYTHON).
 - `path_to_project` _str_ - Path to the project root directory. Relative paths are resolved
   based on the sandbox working directory.
   
@@ -172,7 +161,7 @@ lsp = sandbox.create_lsp_server("python", "workspace/project")
 
 ```python
 @intercept_errors(message_prefix="Failed to set labels: ")
-def set_labels(labels: Dict[str, str]) -> Dict[str, str]
+def set_labels(labels: dict[str, str]) -> dict[str, str]
 ```
 
 Sets labels for the Sandbox.
@@ -181,12 +170,12 @@ Labels are key-value pairs that can be used to organize and identify Sandboxes.
 
 **Arguments**:
 
-- `labels` _Dict[str, str]_ - Dictionary of key-value pairs representing Sandbox labels.
+- `labels` _dict[str, str]_ - Dictionary of key-value pairs representing Sandbox labels.
   
 
 **Returns**:
 
-  Dict[str, str]: Dictionary containing the updated Sandbox labels.
+  dict[str, str]: Dictionary containing the updated Sandbox labels.
   
 
 **Example**:
@@ -205,16 +194,16 @@ print(f"Updated labels: {new_labels}")
 ```python
 @intercept_errors(message_prefix="Failed to start sandbox: ")
 @with_timeout(error_message=lambda self, timeout: (
-    f"Sandbox {self.id} failed to start within the {timeout} seconds timeout period"
+    f"Sandbox {cast('Sandbox', self).id} failed to start within the {timeout} seconds timeout period"
 ))
-def start(timeout: Optional[float] = 60)
+def start(timeout: float | None = 60)
 ```
 
 Starts the Sandbox and waits for it to be ready.
 
 **Arguments**:
 
-- `timeout` _Optional[float]_ - Maximum time to wait in seconds. 0 means no timeout. Default is 60 seconds.
+- `timeout` _float | None_ - Maximum time to wait in seconds. 0 means no timeout. Default is 60 seconds.
   
 
 **Raises**:
@@ -225,9 +214,39 @@ Starts the Sandbox and waits for it to be ready.
 **Example**:
 
 ```python
-sandbox = daytona.get_current_sandbox("my-sandbox")
+sandbox = daytona.get("my-sandbox-id")
 sandbox.start(timeout=40)  # Wait up to 40 seconds
 print("Sandbox started successfully")
+```
+
+#### Sandbox.recover
+
+```python
+@intercept_errors(message_prefix="Failed to recover sandbox: ")
+@with_timeout(error_message=lambda self, timeout: (
+    f"Sandbox {cast('Sandbox', self).id} failed to recover within the {timeout} seconds timeout period"
+))
+def recover(timeout: float | None = 60)
+```
+
+Recovers the Sandbox from a recoverable error and waits for it to be ready.
+
+**Arguments**:
+
+- `timeout` _float | None_ - Maximum time to wait in seconds. 0 means no timeout. Default is 60 seconds.
+  
+
+**Raises**:
+
+- `DaytonaError` - If timeout is negative. If sandbox fails to recover or times out.
+  
+
+**Example**:
+
+```python
+sandbox = daytona.get("my-sandbox-id")
+sandbox.recover(timeout=40)  # Wait up to 40 seconds
+print("Sandbox recovered successfully")
 ```
 
 #### Sandbox.stop
@@ -235,16 +254,16 @@ print("Sandbox started successfully")
 ```python
 @intercept_errors(message_prefix="Failed to stop sandbox: ")
 @with_timeout(error_message=lambda self, timeout: (
-    f"Sandbox {self.id} failed to stop within the {timeout} seconds timeout period"
+    f"Sandbox {cast('Sandbox', self).id} failed to stop within the {timeout} seconds timeout period"
 ))
-def stop(timeout: Optional[float] = 60)
+def stop(timeout: float | None = 60)
 ```
 
 Stops the Sandbox and waits for it to be fully stopped.
 
 **Arguments**:
 
-- `timeout` _Optional[float]_ - Maximum time to wait in seconds. 0 means no timeout. Default is 60 seconds.
+- `timeout` _float | None_ - Maximum time to wait in seconds. 0 means no timeout. Default is 60 seconds.
   
 
 **Raises**:
@@ -255,7 +274,7 @@ Stops the Sandbox and waits for it to be fully stopped.
 **Example**:
 
 ```python
-sandbox = daytona.get_current_sandbox("my-sandbox")
+sandbox = daytona.get("my-sandbox-id")
 sandbox.stop()
 print("Sandbox stopped successfully")
 ```
@@ -264,14 +283,14 @@ print("Sandbox stopped successfully")
 
 ```python
 @intercept_errors(message_prefix="Failed to remove sandbox: ")
-def delete(timeout: Optional[float] = 60) -> None
+def delete(timeout: float | None = 60) -> None
 ```
 
 Deletes the Sandbox.
 
 **Arguments**:
 
-- `timeout` _Optional[float]_ - Timeout (in seconds) for sandbox deletion. 0 means no timeout.
+- `timeout` _float | None_ - Timeout (in seconds) for sandbox deletion. 0 means no timeout.
   Default is 60 seconds.
 
 #### Sandbox.wait\_for\_sandbox\_start
@@ -280,9 +299,9 @@ Deletes the Sandbox.
 @intercept_errors(
     message_prefix="Failure during waiting for sandbox to start: ")
 @with_timeout(error_message=lambda self, timeout: (
-    f"Sandbox {self.id} failed to become ready within the {timeout} seconds timeout period"
+    f"Sandbox {cast('Sandbox', self).id} failed to become ready within the {timeout} seconds timeout period"
 ))
-def wait_for_sandbox_start(timeout: Optional[float] = 60) -> None
+def wait_for_sandbox_start(timeout: float | None = 60) -> None
 ```
 
 Waits for the Sandbox to reach the 'started' state. Polls the Sandbox status until it
@@ -290,7 +309,7 @@ reaches the 'started' state, encounters an error or times out.
 
 **Arguments**:
 
-- `timeout` _Optional[float]_ - Maximum time to wait in seconds. 0 means no timeout. Default is 60 seconds.
+- `timeout` _float | None_ - Maximum time to wait in seconds. 0 means no timeout. Default is 60 seconds.
   
 
 **Raises**:
@@ -303,9 +322,9 @@ reaches the 'started' state, encounters an error or times out.
 @intercept_errors(
     message_prefix="Failure during waiting for sandbox to stop: ")
 @with_timeout(error_message=lambda self, timeout: (
-    f"Sandbox {self.id} failed to become stopped within the {timeout} seconds timeout period"
+    f"Sandbox {cast('Sandbox', self).id} failed to become stopped within the {timeout} seconds timeout period"
 ))
-def wait_for_sandbox_stop(timeout: Optional[float] = 60) -> None
+def wait_for_sandbox_stop(timeout: float | None = 60) -> None
 ```
 
 Waits for the Sandbox to reach the 'stopped' state. Polls the Sandbox status until it
@@ -315,7 +334,7 @@ Treats destroyed as stopped to cover ephemeral sandboxes that are automatically 
 
 **Arguments**:
 
-- `timeout` _Optional[float]_ - Maximum time to wait in seconds. 0 means no timeout. Default is 60 seconds.
+- `timeout` _float | None_ - Maximum time to wait in seconds. 0 means no timeout. Default is 60 seconds.
   
 
 **Raises**:
@@ -445,6 +464,42 @@ print(f"Preview URL: {preview_link.url}")
 print(f"Token: {preview_link.token}")
 ```
 
+#### Sandbox.create\_signed\_preview\_url
+
+```python
+@intercept_errors(message_prefix="Failed to create signed preview url: ")
+def create_signed_preview_url(
+        port: int,
+        expires_in_seconds: int | None = None) -> SignedPortPreviewUrl
+```
+
+Creates a signed preview URL for the sandbox at the specified port.
+
+**Arguments**:
+
+- `port` _int_ - The port to open the preview link on.
+- `expires_in_seconds` _int | None_ - The number of seconds the signed preview
+  url will be valid for. Defaults to 60 seconds.
+  
+
+**Returns**:
+
+- `SignedPortPreviewUrl` - The response object for the signed preview url.
+
+#### Sandbox.expire\_signed\_preview\_url
+
+```python
+@intercept_errors(message_prefix="Failed to expire signed preview url: ")
+def expire_signed_preview_url(port: int, token: str) -> None
+```
+
+Expires a signed preview URL for the sandbox at the specified port.
+
+**Arguments**:
+
+- `port` _int_ - The port to expire the signed preview url on.
+- `token` _str_ - The token to expire the signed preview url on.
+
 #### Sandbox.archive
 
 ```python
@@ -458,19 +513,86 @@ possible to keep sandboxes available for an extended period. The tradeoff betwee
 and stopped states is that starting an archived sandbox takes more time, depending on its size.
 Sandbox must be stopped before archiving.
 
+#### Sandbox.resize
+
+```python
+@intercept_errors(message_prefix="Failed to resize sandbox: ")
+@with_timeout(error_message=lambda self, timeout: (
+    f"Sandbox {cast('Sandbox', self).id} failed to resize within the {timeout} seconds timeout period"
+))
+def resize(resources: Resources, timeout: float | None = 60) -> None
+```
+
+Resizes the Sandbox resources.
+
+Changes the CPU, memory, or disk allocation for the Sandbox. Hot resize (on running
+sandbox) only allows CPU/memory increases. Disk resize requires a stopped sandbox.
+
+**Arguments**:
+
+- `resources` _Resources_ - New resource configuration. Only specified fields will be updated.
+  - cpu: Number of CPU cores (minimum: 1). For hot resize, can only be increased.
+  - memory: Memory in GiB (minimum: 1). For hot resize, can only be increased.
+  - disk: Disk space in GiB (can only be increased, requires stopped sandbox).
+- `timeout` _Optional[float]_ - Timeout (in seconds) for the resize operation. 0 means no timeout.
+  Default is 60 seconds.
+  
+
+**Raises**:
+
+- `DaytonaError` - If hot resize constraints are violated (CPU/memory decrease on running sandbox).
+- `DaytonaError` - If disk resize attempted on running sandbox.
+- `DaytonaError` - If disk size decrease is attempted.
+- `DaytonaError` - If resize operation times out.
+- `DaytonaError` - If no resource changes are specified.
+  
+
+**Example**:
+
+```python
+# Increase CPU/memory on running sandbox (hot resize)
+sandbox.resize(Resources(cpu=4, memory=8))
+
+# Change disk (sandbox must be stopped)
+sandbox.stop()
+sandbox.resize(Resources(cpu=2, memory=4, disk=30))
+```
+
+#### Sandbox.wait\_for\_resize\_complete
+
+```python
+@intercept_errors(
+    message_prefix="Failure during waiting for resize to complete: ")
+@with_timeout(error_message=lambda self, timeout: (
+    f"Sandbox {cast('Sandbox', self).id} resize did not complete within the {timeout} seconds timeout period"
+))
+def wait_for_resize_complete(timeout: float | None = 60) -> None
+```
+
+Waits for the Sandbox resize operation to complete. Polls the Sandbox status until
+the state is no longer 'resizing'.
+
+**Arguments**:
+
+- `timeout` _Optional[float]_ - Maximum time to wait in seconds. 0 means no timeout. Default is 60 seconds.
+  
+
+**Raises**:
+
+- `DaytonaError` - If timeout is negative. If resize operation times out.
+
 #### Sandbox.create\_ssh\_access
 
 ```python
 @intercept_errors(message_prefix="Failed to create SSH access: ")
-def create_ssh_access(
-        expires_in_minutes: Optional[int] = None) -> SshAccessDto
+def create_ssh_access(expires_in_minutes: int | None = None) -> SshAccessDto
 ```
 
 Creates an SSH access token for the sandbox.
 
 **Arguments**:
 
-- `expires_in_minutes` _Optional[int]_ - The number of minutes the SSH access token will be valid for.
+- `expires_in_minutes` _int | None_ - The number of minutes the SSH access token will be valid for.
 
 #### Sandbox.revoke\_ssh\_access
 
@@ -498,6 +620,24 @@ Validates an SSH access token for the sandbox.
 
 - `token` _str_ - The token to validate.
 
+#### Sandbox.refresh\_activity
+
+```python
+@intercept_errors(message_prefix="Failed to refresh sandbox activity: ")
+def refresh_activity() -> None
+```
+
+Refreshes the sandbox activity to reset the timer for automated lifecycle management actions.
+
+This method updates the sandbox's last activity timestamp without changing its state.
+It is useful for keeping long-running sessions alive while there is still user activity.
+
+**Example**:
+
+```python
+sandbox.refresh_activity()
+```
+
 
 ## PaginatedSandboxes
 
@@ -509,10 +649,18 @@ Represents a paginated list of Daytona Sandboxes.
 
 **Attributes**:
 
-- `items` _List[Sandbox]_ - List of Sandbox instances in the current page.
+- `items` _list[Sandbox]_ - List of Sandbox instances in the current page.
 - `total` _int_ - Total number of Sandboxes across all pages.
 - `page` _int_ - Current page number.
 - `total_pages` _int_ - Total number of pages available.
+
+##### items: `list[Sandbox]`
+
+```python
+items = None
+```
+
+pyright: ignore[reportIncompatibleVariableOverride]
 
 ## Resources
 
@@ -525,10 +673,10 @@ Resources configuration for Sandbox.
 
 **Attributes**:
 
-- `cpu` _Optional[int]_ - Number of CPU cores to allocate.
-- `memory` _Optional[int]_ - Amount of memory in GiB to allocate.
-- `disk` _Optional[int]_ - Amount of disk space in GiB to allocate.
-- `gpu` _Optional[int]_ - Number of GPUs to allocate.
+- `cpu` _int | None_ - Number of CPU cores to allocate.
+- `memory` _int | None_ - Amount of memory in GiB to allocate.
+- `disk` _int | None_ - Amount of disk space in GiB to allocate.
+- `gpu` _int | None_ - Number of GPUs to allocate.
   
 
 **Example**:

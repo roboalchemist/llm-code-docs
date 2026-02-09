@@ -3,7 +3,6 @@
 ---
 url: /docs/guide/usage/linter/rules/typescript/no-non-null-assertion.md
 ---
-# typescript/no-non-null-assertion&#x20;
 
 ### What it does
 

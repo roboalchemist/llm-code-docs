@@ -1,5 +1,9 @@
 # Source: https://flatfile.com/docs/plugins/job-handler.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://flatfile.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Job Handler Plugin
 
 > A Flatfile plugin that streamlines the handling of asynchronous Jobs by managing their lifecycle, progress reporting, and completion status.
@@ -12,7 +16,7 @@ Its main purpose is to provide a structured way to manage the lifecycle of a job
 
 Install the plugin using npm:
 
-```bash
+```bash  theme={null}
 npm install @flatfile/plugin-job-handler
 ```
 
@@ -32,7 +36,7 @@ npm install @flatfile/plugin-job-handler
 
 **Function signature:**
 
-```typescript
+```typescript  theme={null}
 (event: FlatfileEvent, tick: TickFunction) => Promise<void | Flatfile.JobCompleteDetails>
 ```
 
@@ -51,7 +55,7 @@ By default, the plugin listens for the specified `job:ready` event. When trigger
 ### Basic Usage
 
 <CodeGroup>
-  ```javascript JavaScript
+  ```javascript JavaScript theme={null}
   import { FlatfileListener } from '@flatfile/listener';
   import { jobHandler } from '@flatfile/plugin-job-handler';
 
@@ -76,7 +80,7 @@ By default, the plugin listens for the specified `job:ready` event. When trigger
   );
   ```
 
-  ```typescript TypeScript
+  ```typescript TypeScript theme={null}
   import { FlatfileListener } from '@flatfile/listener';
   import { jobHandler } from '@flatfile/plugin-job-handler';
   import type { FlatfileEvent } from '@flatfile/listener';
@@ -106,7 +110,7 @@ By default, the plugin listens for the specified `job:ready` event. When trigger
 ### Configuration with Debug
 
 <CodeGroup>
-  ```javascript JavaScript
+  ```javascript JavaScript theme={null}
   import { FlatfileListener } from '@flatfile/listener';
   import { jobHandler } from '@flatfile/plugin-job-handler';
 
@@ -125,7 +129,7 @@ By default, the plugin listens for the specified `job:ready` event. When trigger
   );
   ```
 
-  ```typescript TypeScript
+  ```typescript TypeScript theme={null}
   import { FlatfileListener } from '@flatfile/listener';
   import { jobHandler } from '@flatfile/plugin-job-handler';
   import type { FlatfileEvent } from '@flatfile/listener';
@@ -149,7 +153,7 @@ By default, the plugin listens for the specified `job:ready` event. When trigger
 ### Advanced Usage with Custom Outcomes
 
 <CodeGroup>
-  ```javascript JavaScript
+  ```javascript JavaScript theme={null}
   import { FlatfileListener } from '@flatfile/listener';
   import { jobHandler } from '@flatfile/plugin-job-handler';
 
@@ -177,7 +181,7 @@ By default, the plugin listens for the specified `job:ready` event. When trigger
   );
   ```
 
-  ```typescript TypeScript
+  ```typescript TypeScript theme={null}
   import { FlatfileListener } from '@flatfile/listener';
   import { jobHandler } from '@flatfile/plugin-job-handler';
   import type { FlatfileEvent } from '@flatfile/listener';
@@ -211,7 +215,7 @@ By default, the plugin listens for the specified `job:ready` event. When trigger
 ### Error Handling Example
 
 <CodeGroup>
-  ```javascript JavaScript
+  ```javascript JavaScript theme={null}
   import { FlatfileListener } from '@flatfile/listener';
   import { jobHandler } from '@flatfile/plugin-job-handler';
 
@@ -232,7 +236,7 @@ By default, the plugin listens for the specified `job:ready` event. When trigger
   );
   ```
 
-  ```typescript TypeScript
+  ```typescript TypeScript theme={null}
   import { FlatfileListener } from '@flatfile/listener';
   import { jobHandler } from '@flatfile/plugin-job-handler';
   import type { FlatfileEvent } from '@flatfile/listener';
@@ -271,7 +275,7 @@ The primary error handling pattern is to wrap the logic inside the `handler` fun
 
 ### Function Signatures
 
-```typescript
+```typescript  theme={null}
 function jobHandler(
   job: string | { job: string },
   handler: (event: FlatfileEvent, tick: TickFunction) => Promise<void | Flatfile.JobCompleteDetails>,

@@ -1,5 +1,9 @@
 # Source: https://resend.com/docs/knowledge-base/how-do-i-set-set-up-apple-branded-mail.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://resend.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # How do I set up Apple Branded Mail?
 
 > Learn how to implement Apple Branded Mail to display your logo in Apple Mail clients.
@@ -99,7 +103,7 @@ After you submit all your information, Apple will verify your details. This proc
 
 Once the logo is verified, Apple will send an email notification and note the verified status in Branded Mail. Your logo will start to display in compatible Apple Mail versions.
 
-<img src="https://mintcdn.com/resend/ABWmVTZIHGIFNTFD/images/abm-step-8-verify-with-apple.png?fit=max&auto=format&n=ABWmVTZIHGIFNTFD&q=85&s=be541896283e84398a893013095e7f40" alt="Verified logo" data-og-width="3412" width="3412" data-og-height="1884" height="1884" data-path="images/abm-step-8-verify-with-apple.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/resend/ABWmVTZIHGIFNTFD/images/abm-step-8-verify-with-apple.png?w=280&fit=max&auto=format&n=ABWmVTZIHGIFNTFD&q=85&s=f7a889139327b05a41d28a7f3ca0fd42 280w, https://mintcdn.com/resend/ABWmVTZIHGIFNTFD/images/abm-step-8-verify-with-apple.png?w=560&fit=max&auto=format&n=ABWmVTZIHGIFNTFD&q=85&s=c526f7ef1f4bbd65cf21622d007061ca 560w, https://mintcdn.com/resend/ABWmVTZIHGIFNTFD/images/abm-step-8-verify-with-apple.png?w=840&fit=max&auto=format&n=ABWmVTZIHGIFNTFD&q=85&s=5a147c360b73dd6b15b1698e29aa0306 840w, https://mintcdn.com/resend/ABWmVTZIHGIFNTFD/images/abm-step-8-verify-with-apple.png?w=1100&fit=max&auto=format&n=ABWmVTZIHGIFNTFD&q=85&s=c86ee74b7178690e4c5b22a5ddb9dbc1 1100w, https://mintcdn.com/resend/ABWmVTZIHGIFNTFD/images/abm-step-8-verify-with-apple.png?w=1650&fit=max&auto=format&n=ABWmVTZIHGIFNTFD&q=85&s=7decb3aa50b7fe8821eaef783e6e1bb2 1650w, https://mintcdn.com/resend/ABWmVTZIHGIFNTFD/images/abm-step-8-verify-with-apple.png?w=2500&fit=max&auto=format&n=ABWmVTZIHGIFNTFD&q=85&s=42bbe9553e4577991c8c9e550abd127b 2500w" />
+<img src="https://mintcdn.com/resend/PWWYUiKcsGOVT_Rs/images/abm-step-8-verify-with-apple.png?fit=max&auto=format&n=PWWYUiKcsGOVT_Rs&q=85&s=bbf80629357b9a4df827d9911677b97d" alt="Verified logo" data-og-width="3412" width="3412" data-og-height="1884" height="1884" data-path="images/abm-step-8-verify-with-apple.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/resend/PWWYUiKcsGOVT_Rs/images/abm-step-8-verify-with-apple.png?w=280&fit=max&auto=format&n=PWWYUiKcsGOVT_Rs&q=85&s=a6b03747a148cff249f28c578edfea06 280w, https://mintcdn.com/resend/PWWYUiKcsGOVT_Rs/images/abm-step-8-verify-with-apple.png?w=560&fit=max&auto=format&n=PWWYUiKcsGOVT_Rs&q=85&s=d112e950c0f981c6e1ee7339cf944a05 560w, https://mintcdn.com/resend/PWWYUiKcsGOVT_Rs/images/abm-step-8-verify-with-apple.png?w=840&fit=max&auto=format&n=PWWYUiKcsGOVT_Rs&q=85&s=b440a2537d1255a522bb7ebc318c66ad 840w, https://mintcdn.com/resend/PWWYUiKcsGOVT_Rs/images/abm-step-8-verify-with-apple.png?w=1100&fit=max&auto=format&n=PWWYUiKcsGOVT_Rs&q=85&s=933c653e66604801734cebca3143130e 1100w, https://mintcdn.com/resend/PWWYUiKcsGOVT_Rs/images/abm-step-8-verify-with-apple.png?w=1650&fit=max&auto=format&n=PWWYUiKcsGOVT_Rs&q=85&s=71fc37c54c1c430784d0d0a6949a71d7 1650w, https://mintcdn.com/resend/PWWYUiKcsGOVT_Rs/images/abm-step-8-verify-with-apple.png?w=2500&fit=max&auto=format&n=PWWYUiKcsGOVT_Rs&q=85&s=3be0ba6492442305862e6e9a0879f523 2500w" />
 
 <Tip>
   See Apple's documentation on [Apple Branded

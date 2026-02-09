@@ -90,8 +90,8 @@ The `ft_on_transfer` method always has the same interface; the FT contract will 
     <TabItem value="rust" label="🦀 Rust">
 
         ```
+    #[allow(unused_variables, unused_must_use)]
     pub fn ft_on_transfer(&mut self, sender_id: AccountId, amount: U128, msg: String) -> U128 {
-        require!(
 ```
 
     </TabItem>
@@ -115,9 +115,9 @@ We need to confirm that the user is attaching fungible tokens when calling the m
     <TabItem value="rust" label="🦀 Rust">
 
         ```
+
         let ft = env::predecessor_account_id();
         require!(ft == self.ft_contract, "The token is not supported");
-
 ```
 
     </TabItem>
@@ -143,11 +143,11 @@ The bidder's account ID is now given by the argument `sender_id` and the bid amo
     <TabItem value="rust" label="🦀 Rust">
 
         ```
+        // Update the highest bid
         self.highest_bid = Bid {
             bidder: sender_id,
             bid: amount,
         };
-
 ```
 
     </TabItem>
@@ -188,26 +188,26 @@ When we want to return the funds to the previous bidder we now make a cross-cont
 
         <Language value="rust" language="rust">
             ```
+        // Transfer FTs back to the last bidder
         ft_contract::ext(self.ft_contract.clone())
             .with_attached_deposit(NearToken::from_yoctonear(1))
             .with_static_gas(Gas::from_tgas(30))
             .ft_transfer(last_bidder, last_bid);
-
 ```
             ```
 #[ext_contract(ft_contract)]
+#[allow(dead_code)]
 trait FT {
     fn ft_transfer(&self, receiver_id: AccountId, amount: U128);
 }
-
 ```
         </Language>
 
          We then return 0 because the method uses all the FTs in the call.
 
         ```
+
         U128(0)
-    }
 ```
 
     </TabItem>
@@ -252,6 +252,8 @@ When the auction is complete we need to send the fungible tokens to the auctione
     <TabItem value="rust" label="🦀 Rust">
 
         ```
+        self.claimed = true;
+
         // Transfer FTs to the auctioneer
         ft_contract::ext(self.ft_contract.clone())
             .with_attached_deposit(NearToken::from_yoctonear(1))
@@ -262,8 +264,6 @@ When the auction is complete we need to send the fungible tokens to the auctione
         nft_contract::ext(self.nft_contract.clone())
             .with_static_gas(Gas::from_tgas(30))
             .with_attached_deposit(NearToken::from_yoctonear(1))
-            .nft_transfer(self.highest_bid.bidder.clone(), self.token_id.clone());
-    }
 ```
 
     </TabItem>
@@ -293,21 +293,21 @@ When the contract is deployed it is initialized with `new_default_meta` which se
     <TabItem value="rust" label="🦀 Rust">
 
         ```
-    let ft_wasm = std::fs::read(FT_WASM_FILEPATH)?;
-    let ft_contract = sandbox.dev_deploy(&ft_wasm).await?;
+    let bob = create_subaccount(&sandbox, "bob.sandbox").await?;
+    let auctioneer = create_subaccount(&sandbox, "auctioneer.sandbox").await?;
+    let nft_contract = create_subaccount(&sandbox, "nft-contract.sandbox")
+        .await?
+        .as_contract();
+    let ft_contract = create_subaccount(&sandbox, "ft-contract.sandbox")
+        .await?
+        .as_contract();
+    let contract = create_subaccount(&sandbox, "contract.sandbox")
+        .await?
+        .as_contract();
 
-    // Initialize FT contract
-    let res = ft_contract
-        .call("new_default_meta")
-        .args_json(serde_json::json!({
-            "owner_id": root.id(),
-            "total_supply": U128(1_000_000),
-        }))
-        .transact()
-        .await?;
-
-    assert!(res.is_success());
-
+    // Initialize signer for the contract deployment
+    let signer = near_api::Signer::from_secret_key(
+        near_sandbox::config::DEFAULT_GENESIS_ACCOUNT_PRIVATE_KEY
 ```
 
     </TabItem>
@@ -339,24 +339,24 @@ In our tests, since we are creating a new fungible token and new accounts we wil
     <TabItem value="rust" label="🦀 Rust">
 
         ```
+        "token_metadata": {
+            "title": "LEEROYYYMMMJENKINSSS",
+            "description": "Alright time's up, let's do this.",
+            "media": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.Fhp4lHufCdTzTeGCAblOdgHaF7%26pid%3DApi&f=1"
+        },
+    });
+
+    nft_contract
+        .call_function("nft_mint", request_payload)
+        .transaction()
+        .deposit(NearToken::from_millinear(80))
+        .with_signer(nft_contract.account_id().clone(), signer.clone())
+        .send_to(&sandbox_network)
+        .await?
+        .assert_success();
+
+    // Register accounts
     for account in [
-        alice.clone(),
-        bob.clone(),
-        contract_account.clone(),
-        auctioneer.clone(),
-    ]
-    .iter()
-    {
-        let register = account
-            .call(ft_contract.id(), "storage_deposit")
-            .args_json(serde_json::json!({ "account_id": account.id() }))
-            .deposit(NearToken::from_yoctonear(8000000000000000000000))
-            .transact()
-            .await?;
-
-        assert!(register.is_success());
-    }
-
 ```
 
     </TabItem>
@@ -385,35 +385,35 @@ Then we will transfer the bidders FTs so they can use them to bid. A simple tran
 
         <Language value="rust" language="rust">
             ```
-    let transfer_amount = U128(150_000);
-
-    let root_transfer_alice =
-        ft_transfer(&root, alice.clone(), ft_contract.clone(), transfer_amount).await?;
-    assert!(root_transfer_alice.is_success());
-    let root_transfer_bob =
-        ft_transfer(&root, bob.clone(), ft_contract.clone(), transfer_amount).await?;
-    assert!(root_transfer_bob.is_success());
-
+        bob.clone(),
+        contract.as_account().clone(),
+        auctioneer.clone(),
+    ]
+    .iter()
+    {
+        ft_contract
+            .call_function(
+                "storage_deposit",
 ```
             ```
-async fn ft_transfer(
-    root: &near_workspaces::Account,
-    account: Account,
-    ft_contract: Contract,
-    transfer_amount: U128,
-) -> Result<ExecutionFinalResult, Box<dyn std::error::Error>> {
-    let transfer = root
-        .call(ft_contract.id(), "ft_transfer")
-        .args_json(serde_json::json!({
-            "receiver_id": account.id(),
-            "amount": transfer_amount
-        }))
-        .deposit(NearToken::from_yoctonear(1))
-        .transact()
-        .await?;
-    Ok(transfer)
-}
+        .call_function("claim", ())
+        .transaction()
+        .gas(NearGas::from_tgas(300))
+        .with_signer(auctioneer.account_id().clone(), signer.clone())
+        .send_to(&sandbox_network)
+        .await?
+        .assert_failure();
 
+    // Fast forward 200 blocks
+    let blocks_to_advance = 200;
+    sandbox.fast_forward(blocks_to_advance).await?;
+
+    // Auctioneer claims auction
+    contract
+        .call_function("claim", ())
+        .transaction()
+        .gas(NearGas::from_tgas(300))
+        .with_signer(auctioneer.account_id().clone(), signer.clone())
 ```
         </Language>
 
@@ -445,39 +445,39 @@ As stated previously, to bid on the auction the bidder now calls `ft_transfer_ca
 
         <Language value="rust" language="rust">
             ```
-    let alice_bid = ft_transfer_call(
-        alice.clone(),
-        ft_contract.id(),
-        contract_account.id(),
-        U128(50_000),
-    )
-    .await?;
-
-    assert!(alice_bid.is_success());
-
-    let highest_bid_alice: Bid = contract.view("get_highest_bid").await?.json()?;
-    assert_eq!(highest_bid_alice.bid, U128(50_000));
-    assert_eq!(highest_bid_alice.bidder, *alice.id());
-
+    near_api::Contract::deploy(contract.account_id().clone())
+        .use_code(contract_wasm)
+        .with_init_call(
+            "init",
+            serde_json::json!({
+                "end_time": a_minute_from_now.to_string(),
+                "auctioneer": auctioneer.account_id(),
+                "ft_contract": ft_contract.account_id(),
+                "nft_contract": nft_contract.account_id(),
+                "token_id": "1",
+                "starting_price": starting_price
+            }),
+        )?
+        .with_signer(signer.clone())
 ```
             ```
-async fn ft_transfer_call(
-    account: Account,
-    ft_contract_id: &AccountId,
-    receiver_id: &AccountId,
-    amount: U128,
-) -> Result<ExecutionFinalResult, Box<dyn std::error::Error>> {
-    let transfer = account
-        .call(ft_contract_id, "ft_transfer_call")
-        .args_json(serde_json::json!({
-            "receiver_id": receiver_id, "amount":amount, "msg": "0" }))
-        .deposit(NearToken::from_yoctonear(1))
-        .gas(Gas::from_tgas(300))
-        .transact()
-        .await?;
-    Ok(transfer)
-}
 
+    // Check highest bidder received the NFT
+    let token_info: serde_json::Value = nft_contract
+        .call_function("nft_token", serde_json::json!({"token_id": "1"}))
+        .read_only()
+        .fetch_from(&sandbox_network)
+        .await?
+        .data;
+    let owner_id: String = token_info["owner_id"].as_str().unwrap().to_string();
+
+    assert_eq!(
+        owner_id,
+        bob.account_id().to_string(),
+        "token owner is not the highest bidder"
+    );
+
+    // Auctioneer claims auction back but fails
 ```
         </Language>
 
@@ -509,26 +509,26 @@ Previously, to check a user's $NEAR balance, we pulled the details from their ac
 
         <Language value="rust" language="rust">
             ```
-    let contract_account_balance: U128 = ft_balance_of(&ft_contract, contract_account.id()).await?;
-    assert_eq!(contract_account_balance, U128(50_000));
-    let alice_balance_after_bid: U128 = ft_balance_of(&ft_contract, alice.id()).await?;
-    assert_eq!(alice_balance_after_bid, U128(100_000));
+        .send_to(&sandbox_network)
+        .await?
+        .assert_success();
 
+    // Alice makes bid less than starting price
 ```
             ```
-async fn ft_balance_of(
-    ft_contract: &Contract,
-    account_id: &AccountId,
-) -> Result<U128, Box<dyn std::error::Error>> {
-    let result = ft_contract
-        .view("ft_balance_of")
-        .args_json(json!({"account_id": account_id}))
+        .send_to(&sandbox_network)
         .await?
-        .json()?;
+        .assert_success();
 
-    Ok(result)
-}
+    // Contract balance has been cleared
+    let contract_balance: U128 =
+        ft_balance_of(&ft_contract, contract.account_id(), &sandbox_network).await?;
+    assert_eq!(contract_balance, U128(0));
 
+    // Auctioneer balance has increased
+    let auctioneer_balance: U128 =
+        ft_balance_of(&ft_contract, auctioneer.account_id(), &sandbox_network).await?;
+    assert_eq!(auctioneer_balance, U128(60_000));
 ```
         </Language>
 
@@ -566,24 +566,24 @@ Previous to this, Bob made a bid of 60,000 and Alice was returned her bid bringi
     <TabItem value="rust" label="🦀 Rust">
 
         ```
-    let alice_bid: ExecutionFinalResult = ft_transfer_call(
-        alice.clone(),
-        ft_contract.id(),
-        contract_account.id(),
+        ft_balance_of(&ft_contract, contract.account_id(), &sandbox_network).await?;
+    assert_eq!(contract_balance, U128(0));
+
+    // Alice balance has not changed yet
+    let alice_balance: U128 =
+        ft_balance_of(&ft_contract, alice.account_id(), &sandbox_network).await?;
+    assert_eq!(alice_balance, U128(150_000));
+
+    // Alice makes valid bid
+    ft_transfer_call(
+        &ft_contract,
+        &alice,
+        contract.account_id(),
         U128(50_000),
+        &signer,
+        &sandbox_network,
     )
     .await?;
-
-    assert!(alice_bid.is_success());
-
-    let highest_bid_alice: Bid = contract.view("get_highest_bid").await?.json()?;
-    assert_eq!(highest_bid_alice.bid, U128(60_000));
-    assert_eq!(highest_bid_alice.bidder, *bob.id());
-
-    let contract_account_balance: U128 = ft_balance_of(&ft_contract, contract_account.id()).await?;
-    assert_eq!(contract_account_balance, U128(60_000));
-    let alice_balance_after_bid: U128 = ft_balance_of(&ft_contract, alice.id()).await?;
-    assert_eq!(alice_balance_after_bid, U128(150_000));
 
 ```
 
@@ -602,13 +602,13 @@ When deploying the contract make sure to specify the FT contract `dai.fakes.test
 The auction contract will need to be registered as well, you could do this by sending it an arbitrary amount of $DAI from the faucet or you can just register it since it doesn't need any FTs. You should also register the auctioneer,
 
 ```bash
-near call dai.fakes.testnet storage_deposit '{"account_id": "<auctionContractId>"}' --accountId <accountId> --deposit 0.1
+near call dai.fakes.testnet storage_deposit '{"account_id": "<auctionContractId>"}' --useAccount <accountId> --deposit 0.1
 ```
 
 Now you can go ahead and place a bid. DAI has 18 decimals meaning that 1 $DAI is made up of 10^24 smallest units. To make a bid of 2 $DAI you can use the command:
 
 ```bash
-near call dai.fakes.testnet ft_transfer_call '{"receiver_id": "<auctionContractId>", "amount": "2000000000000000000", "msg": ""}' --accountId <bidderId> --depositYocto 1
+near call dai.fakes.testnet ft_transfer_call '{"receiver_id": "<auctionContractId>", "amount": "2000000000000000000", "msg": ""}' --useAccount <bidderId> --depositYocto 1
 ```
 
 ## Auction architecture 

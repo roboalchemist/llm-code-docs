@@ -2,148 +2,120 @@
 
 # Source: https://infisical.com/docs/api-reference/endpoints/deprecated/projects/get-project-by-slug.md
 
-# Source: https://infisical.com/docs/api-reference/endpoints/projects/get-project-by-slug.md
-
-# Source: https://infisical.com/docs/api-reference/endpoints/deprecated/projects/get-project-by-slug.md
-
-# Source: https://infisical.com/docs/api-reference/endpoints/projects/get-project-by-slug.md
-
-# Source: https://infisical.com/docs/api-reference/endpoints/deprecated/projects/get-project-by-slug.md
-
-# Source: https://infisical.com/docs/api-reference/endpoints/projects/get-project-by-slug.md
-
-# Source: https://infisical.com/docs/api-reference/endpoints/deprecated/projects/get-project-by-slug.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://infisical.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Get Project By Slug
 
 > Get project details by slug
 
+
+
 ## OpenAPI
 
 ````yaml GET /api/v2/workspace/{slug}
+openapi: 3.0.3
+info:
+  title: Infisical API
+  description: List of all available APIs that can be consumed
+  version: 0.0.1
+servers:
+  - url: https://us.infisical.com
+    description: Production server (US)
+  - url: https://eu.infisical.com
+    description: Production server (EU)
+  - url: http://localhost:8080
+    description: Local server
+security: []
 paths:
-  path: /api/v2/workspace/{slug}
-  method: get
-  servers:
-    - url: https://us.infisical.com
-      description: Production server (US)
-    - url: https://eu.infisical.com
-      description: Production server (EU)
-    - url: http://localhost:8080
-      description: Local server
-  request:
-    security:
-      - title: bearerAuth
-        parameters:
-          query: {}
-          header:
-            Authorization:
-              type: http
-              scheme: bearer
-              description: An access token in Infisical
-          cookie: {}
-    parameters:
-      path:
-        slug:
-          schema:
-            - type: string
-              required: true
-              description: The slug of the project to get.
-              maxLength: 64
-              minLength: 1
-      query: {}
-      header: {}
-      cookie: {}
-    body: {}
-  response:
-    '200':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              id:
-                allOf:
-                  - type: string
-              name:
-                allOf:
-                  - type: string
-              description:
-                allOf:
-                  - type: string
+  /api/v2/workspace/{slug}:
+    get:
+      tags:
+        - Projects
+      description: Get project details by slug
+      parameters:
+        - schema:
+            type: string
+            minLength: 1
+            maxLength: 64
+          in: path
+          name: slug
+          required: true
+          description: The slug of the project to get.
+      responses:
+        '200':
+          description: Default Response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                  name:
+                    type: string
+                  description:
+                    type: string
                     nullable: true
-              type:
-                allOf:
-                  - type: string
-              defaultProduct:
-                allOf:
-                  - type: string
+                  type:
+                    type: string
+                  defaultProduct:
+                    type: string
                     nullable: true
-              slug:
-                allOf:
-                  - type: string
-              autoCapitalization:
-                allOf:
-                  - type: boolean
+                  slug:
+                    type: string
+                  autoCapitalization:
+                    type: boolean
                     default: false
                     nullable: true
-              orgId:
-                allOf:
-                  - type: string
+                  orgId:
+                    type: string
                     format: uuid
-              createdAt:
-                allOf:
-                  - type: string
+                  createdAt:
+                    type: string
                     format: date-time
-              updatedAt:
-                allOf:
-                  - type: string
+                  updatedAt:
+                    type: string
                     format: date-time
-              version:
-                allOf:
-                  - type: number
+                  version:
+                    type: number
                     default: 1
-              upgradeStatus:
-                allOf:
-                  - type: string
+                  upgradeStatus:
+                    type: string
                     nullable: true
-              pitVersionLimit:
-                allOf:
-                  - type: number
+                  pitVersionLimit:
+                    type: number
                     default: 10
-              kmsCertificateKeyId:
-                allOf:
-                  - type: string
+                  kmsCertificateKeyId:
+                    type: string
                     format: uuid
                     nullable: true
-              auditLogsRetentionDays:
-                allOf:
-                  - type: number
+                  auditLogsRetentionDays:
+                    type: number
                     nullable: true
-              hasDeleteProtection:
-                allOf:
-                  - type: boolean
+                  hasDeleteProtection:
+                    type: boolean
                     default: false
                     nullable: true
-              secretSharing:
-                allOf:
-                  - type: boolean
+                  secretSharing:
+                    type: boolean
                     default: true
-              showSnapshotsLegacy:
-                allOf:
-                  - type: boolean
+                  showSnapshotsLegacy:
+                    type: boolean
                     default: false
-              secretDetectionIgnoreValues:
-                allOf:
-                  - type: array
+                  secretDetectionIgnoreValues:
+                    type: array
                     items:
                       type: string
                     nullable: true
-              _id:
-                allOf:
-                  - type: string
-              environments:
-                allOf:
-                  - type: array
+                  enforceEncryptedSecretManagerSecretMetadata:
+                    type: boolean
+                    nullable: true
+                  _id:
+                    type: string
+                  environments:
+                    type: array
                     items:
                       type: object
                       properties:
@@ -158,255 +130,166 @@ paths:
                         - slug
                         - id
                       additionalProperties: false
-              kmsSecretManagerKeyId:
-                allOf:
-                  - type: string
+                  kmsSecretManagerKeyId:
+                    type: string
                     nullable: true
-            requiredProperties:
-              - id
-              - name
-              - type
-              - slug
-              - orgId
-              - createdAt
-              - updatedAt
-              - _id
-              - environments
-            additionalProperties: false
-        examples:
-          example:
-            value:
-              id: <string>
-              name: <string>
-              description: <string>
-              type: <string>
-              defaultProduct: <string>
-              slug: <string>
-              autoCapitalization: false
-              orgId: 3c90c3cc-0d44-4b50-8888-8dd25736052a
-              createdAt: '2023-11-07T05:31:56Z'
-              updatedAt: '2023-11-07T05:31:56Z'
-              version: 1
-              upgradeStatus: <string>
-              pitVersionLimit: 10
-              kmsCertificateKeyId: 3c90c3cc-0d44-4b50-8888-8dd25736052a
-              auditLogsRetentionDays: 123
-              hasDeleteProtection: false
-              secretSharing: true
-              showSnapshotsLegacy: false
-              secretDetectionIgnoreValues:
-                - <string>
-              _id: <string>
-              environments:
-                - name: <string>
-                  slug: <string>
-                  id: <string>
-              kmsSecretManagerKeyId: <string>
-        description: Default Response
-    '400':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              reqId:
-                allOf:
-                  - type: string
-              statusCode:
-                allOf:
-                  - type: number
+                required:
+                  - id
+                  - name
+                  - type
+                  - slug
+                  - orgId
+                  - createdAt
+                  - updatedAt
+                  - _id
+                  - environments
+                additionalProperties: false
+        '400':
+          description: Default Response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  reqId:
+                    type: string
+                  statusCode:
+                    type: number
                     enum:
                       - 400
-              message:
-                allOf:
-                  - type: string
-              error:
-                allOf:
-                  - type: string
-            requiredProperties:
-              - reqId
-              - statusCode
-              - message
-              - error
-            additionalProperties: false
-        examples:
-          example:
-            value:
-              reqId: <string>
-              statusCode: 400
-              message: <string>
-              error: <string>
-        description: Default Response
-    '401':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              reqId:
-                allOf:
-                  - type: string
-              statusCode:
-                allOf:
-                  - type: number
+                  message:
+                    type: string
+                  error:
+                    type: string
+                  details: {}
+                required:
+                  - reqId
+                  - statusCode
+                  - message
+                  - error
+                additionalProperties: false
+        '401':
+          description: Default Response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  reqId:
+                    type: string
+                  statusCode:
+                    type: number
                     enum:
                       - 401
-              message:
-                allOf:
-                  - type: string
-              error:
-                allOf:
-                  - type: string
-            requiredProperties:
-              - reqId
-              - statusCode
-              - message
-              - error
-            additionalProperties: false
-        examples:
-          example:
-            value:
-              reqId: <string>
-              statusCode: 401
-              message: <string>
-              error: <string>
-        description: Default Response
-    '403':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              reqId:
-                allOf:
-                  - type: string
-              statusCode:
-                allOf:
-                  - type: number
+                  message:
+                    type: string
+                  error:
+                    type: string
+                required:
+                  - reqId
+                  - statusCode
+                  - message
+                  - error
+                additionalProperties: false
+        '403':
+          description: Default Response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  reqId:
+                    type: string
+                  statusCode:
+                    type: number
                     enum:
                       - 403
-              message:
-                allOf:
-                  - type: string
-              details:
-                allOf:
-                  - {}
-              error:
-                allOf:
-                  - type: string
-            requiredProperties:
-              - reqId
-              - statusCode
-              - message
-              - error
-            additionalProperties: false
-        examples:
-          example:
-            value:
-              reqId: <string>
-              statusCode: 403
-              message: <string>
-              details: <any>
-              error: <string>
-        description: Default Response
-    '404':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              reqId:
-                allOf:
-                  - type: string
-              statusCode:
-                allOf:
-                  - type: number
+                  message:
+                    type: string
+                  details: {}
+                  error:
+                    type: string
+                required:
+                  - reqId
+                  - statusCode
+                  - message
+                  - error
+                additionalProperties: false
+        '404':
+          description: Default Response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  reqId:
+                    type: string
+                  statusCode:
+                    type: number
                     enum:
                       - 404
-              message:
-                allOf:
-                  - type: string
-              error:
-                allOf:
-                  - type: string
-            requiredProperties:
-              - reqId
-              - statusCode
-              - message
-              - error
-            additionalProperties: false
-        examples:
-          example:
-            value:
-              reqId: <string>
-              statusCode: 404
-              message: <string>
-              error: <string>
-        description: Default Response
-    '422':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              reqId:
-                allOf:
-                  - type: string
-              statusCode:
-                allOf:
-                  - type: number
+                  message:
+                    type: string
+                  error:
+                    type: string
+                required:
+                  - reqId
+                  - statusCode
+                  - message
+                  - error
+                additionalProperties: false
+        '422':
+          description: Default Response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  reqId:
+                    type: string
+                  statusCode:
+                    type: number
                     enum:
                       - 422
-              message:
-                allOf:
-                  - {}
-              error:
-                allOf:
-                  - type: string
-            requiredProperties:
-              - reqId
-              - statusCode
-              - error
-            additionalProperties: false
-        examples:
-          example:
-            value:
-              reqId: <string>
-              statusCode: 422
-              message: <any>
-              error: <string>
-        description: Default Response
-    '500':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              reqId:
-                allOf:
-                  - type: string
-              statusCode:
-                allOf:
-                  - type: number
+                  message: {}
+                  error:
+                    type: string
+                required:
+                  - reqId
+                  - statusCode
+                  - error
+                additionalProperties: false
+        '500':
+          description: Default Response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  reqId:
+                    type: string
+                  statusCode:
+                    type: number
                     enum:
                       - 500
-              message:
-                allOf:
-                  - type: string
-              error:
-                allOf:
-                  - type: string
-            requiredProperties:
-              - reqId
-              - statusCode
-              - message
-              - error
-            additionalProperties: false
-        examples:
-          example:
-            value:
-              reqId: <string>
-              statusCode: 500
-              message: <string>
-              error: <string>
-        description: Default Response
-  deprecated: false
-  type: path
+                  message:
+                    type: string
+                  error:
+                    type: string
+                required:
+                  - reqId
+                  - statusCode
+                  - message
+                  - error
+                additionalProperties: false
+      security:
+        - bearerAuth: []
 components:
-  schemas: {}
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: An access token in Infisical
 
 ````

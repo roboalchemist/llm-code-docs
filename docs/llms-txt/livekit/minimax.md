@@ -1,6 +1,6 @@
 # Source: https://docs.livekit.io/agents/models/tts/plugins/minimax.md
 
-LiveKit docs › Models › Text-to-speech (TTS) › Plugins › MiniMax
+LiveKit docs › Models › TTS › Plugins › Minimax
 
 ---
 
@@ -25,7 +25,7 @@ This section includes a brief overview of the MiniMax TTS plugin. For more infor
 Install the plugin from PyPI:
 
 ```bash
-pip install "livekit-agents[minimax]~=1.2"
+pip install "livekit-agents[minimax]~=1.3"
 
 ```
 
@@ -80,7 +80,7 @@ The following resources provide more information about using MiniMax with LiveKi
 
 ---
 
-This document was rendered at 2025-11-18T23:55:14.030Z.
+This document was rendered at 2026-02-03T03:25:05.421Z.
 For the latest version of this document, see [https://docs.livekit.io/agents/models/tts/plugins/minimax.md](https://docs.livekit.io/agents/models/tts/plugins/minimax.md).
 
 To explore all LiveKit documentation, see [llms.txt](https://docs.livekit.io/llms.txt).

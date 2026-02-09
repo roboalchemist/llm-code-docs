@@ -4,13 +4,9 @@
 
 In Juno, we use some terms that may be unfamiliar to some. This page provides a summary of the most commonly used terms.
 
-## Account Identifier
-
-An "Account Identifier" is an address, serving as the textual representation of an account on the Internet Computer (ICP) ledger. It can represent an account owned by an individual or a smart contract.
-
 ## Canister
 
-A canister is the term for a smart contract on the Internet Computer. It includes both logic and state (memory), bundled together and deployed as a WebAssembly (WASM) container.
+A canister is the term for a container on the Internet Computer. It includes both logic and state (memory), bundled together and deployed as a WebAssembly (WASM).
 
 All ([modules](#modules)) in Juno â such as ([satellites](#satellite)), ([mission controls](#mission-control)), and ([orbiters](#orbiter)) â are canisters under the hood.
 
@@ -28,7 +24,7 @@ For current usage and setup, refer to the [Access Keys documentation](/docs/misc
 
 ## Cycles
 
-Cycles are used to pay for [infrastructure](/docs/miscellaneous/infrastructure.md) usage. Your [mission control](/docs/terminology.md#mission-control) or [satellite](/docs/terminology.md#satellite) consumes cycles while it's active.
+Cycles are used to pay for [infrastructure](/docs/miscellaneous/infrastructure.md) usage. Your [satellite](/docs/terminology.md#satellite), [mission control](/docs/terminology.md#mission-control) or [orbiter](/docs/terminology.md#orbiter) consume cycles while they are active.
 
 The amount of cycles available determines whether a module will be active, inactive, or eventually decommissioned (deleted).
 
@@ -41,17 +37,9 @@ Think of cycles like prepaid mobile data:
 *   To keep your modules running smoothly, you need to top up your cycles regularly (manually or automatically).
 *   If you donât top it up, after some time, it will be decommissioned, similar to losing your prepaid number due to prolonged inactivity.
 
-Learn more about [computation and storage costs](https://internetcomputer.org/docs/current/developer-docs/gas-cost).
-
 ## Doc
 
 "doc" is a commonly used shorthand in Juno for a "document of the Datastore". Wherever you see the term "doc" in the codebase or documentation, it refers specifically to a document entity managed by the [Datastore](/docs/build/datastore.md). This abbreviation is used for brevity and consistency throughout the project.
-
-## ICP
-
-The ICP token is the cryptocurrency used to pay for transactions on Juno's [infrastructure](/docs/miscellaneous/infrastructure.md).
-
-It can also be converted into cycles, which are used to pay for computation and storage. Unlike the market price of ICP, the price of cycles remains constant, ensuring predictable costs for infrastructure usage.
 
 ## Internet Identity
 
@@ -61,13 +49,9 @@ It is free and passwordless. It integrates WebAuthn for maximum compatibility an
 
 ## Mission control
 
-Mission control is the command center for your project. It is under your exclusive control, allowing it, for example, to hold ICP and perform various operations such as topping up your modules.
+Mission Control is an optional monitoring service. When enabled, it automatically monitors and tops up your Satellites and Orbiters to keep them running smoothly.
 
-Think of it like the command center for a space mission. Just as NASA's mission control coordinates spacecraft and satellites, your mission control manages all your [satellites](/docs/terminology.md#satellite) or ([orbiters](#orbiter)).
-
-Because it can hold ICP and is only controlled by you, your mission control also functions as your ([wallet](#wallet)).
-
-For a schematic representation, refer to the [Architecture](/docs/miscellaneous/architecture.md) documentation page.
+Think of it like the command center for a space mission. Just as NASA's Mission Control monitors spacecraft and Satellites, your Mission Control watches over all your modules and ensures they have the resources they need.
 
 ## Modules
 
@@ -79,7 +63,7 @@ It acts as a comprehensive entity, encompassing memory, permission checks, and o
 
 ## Orbiter
 
-An orbiter is an optional module you can enable for analytics. It helps you gather valuable, anonymous insights about your users.
+An Orbiter is an optional module you can enable for analytics. It helps you gather valuable, anonymous insights about your users.
 
 ## Principal
 
@@ -91,9 +75,9 @@ Learn more about [principals](https://internetcomputer.org/docs/current/referenc
 
 ## Satellite
 
-A satellite is a container for your application. It holds your projectâs data, storage, application bundle, and assets.
+A Satellite is a container for your application. It holds your projectâs data, storage, application bundle, and assets.
 
-Each satellite is commonly dedicated to a single application.
+Each Satellite is commonly dedicated to a single application.
 
 ## Subnet
 
@@ -111,12 +95,14 @@ By picking the right group (or subnet), everyone can play faster and have more f
 
 ## Wallet
 
-A wallet is your secure repository for managing and storing crypto money. Your wallet is controlled exclusively by you, ensuring that no one, including Juno, can ever access it.
+A wallet is your secure repository for managing and storing resources in Juno.
 
-Think of it like a digital vault:
+Think of it like a prepaid account:
 
-*   It securely stores your ICP tokens.
-*   It acts as your gateway for transactions within the Juno ecosystem.
-*   It allows you to top up your modules with cycles.
+*   It holds your available resources (cycles).
+*   It lets you allocate resources to your projects and modules - e.g. with top-up.
+*   It's automatically created when you sign in to the Console.
 
-Because your wallet is also your ([mission-control](#mission-control)), which requires resources to stay alive, we recommend holding a reasonable amount of tokens. Think of it like a day-to-day wallet for frequent operations rather than one for savings.
+Your wallet is tied to your identity, which is generated when you first log in.
+
+For more information see [Wallet](/docs/miscellaneous/wallet.md) documentation.

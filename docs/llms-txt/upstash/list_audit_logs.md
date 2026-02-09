@@ -1,5 +1,9 @@
 # Source: https://upstash.com/docs/devops/developer-api/account/list_audit_logs.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # List Audit Logs
 
 > This endpoint lists all audit logs of user.
@@ -151,7 +155,3 @@ components:
       scheme: basic
 
 ````
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://upstash.com/docs/llms.txt

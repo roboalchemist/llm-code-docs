@@ -1,16 +1,17 @@
 # Source: https://gofastmcp.com/clients/auth/bearer.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://gofastmcp.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Bearer Token Authentication
 
 > Authenticate your FastMCP client with a Bearer token.
 
 export const VersionBadge = ({version}) => {
-  return <code className="version-badge-container">
-            <p className="version-badge">
-                <span className="version-badge-label">New in version:</span> 
-                <code className="version-badge-version">{version}</code>
-            </p>
-        </code>;
+  return <Badge stroke size="lg" icon="gift" iconType="regular" className="version-badge">
+            New in version <code>{version}</code>
+        </Badge>;
 };
 
 <VersionBadge version="2.6.0" />
@@ -39,7 +40,7 @@ The most straightforward way to use a pre-existing Bearer token is to provide it
 from fastmcp import Client
 
 async with Client(
-    "https://fastmcp.cloud/mcp", 
+    "https://your-server.fastmcp.app/mcp", 
     auth="<your-token>",
 ) as client:
     await client.ping()
@@ -52,7 +53,7 @@ from fastmcp import Client
 from fastmcp.client.transports import StreamableHttpTransport
 
 transport = StreamableHttpTransport(
-    "http://fastmcp.cloud/mcp", 
+    "http://your-server.fastmcp.app/mcp", 
     auth="<your-token>",
 )
 
@@ -69,7 +70,7 @@ from fastmcp import Client
 from fastmcp.client.auth import BearerAuth
 
 async with Client(
-    "https://fastmcp.cloud/mcp", 
+    "https://your-server.fastmcp.app/mcp", 
     auth=BearerAuth(token="<your-token>"),
 ) as client:
     await client.ping()
@@ -85,7 +86,7 @@ from fastmcp.client.transports import StreamableHttpTransport
 
 async with Client(
     transport=StreamableHttpTransport(
-        "https://fastmcp.cloud/mcp", 
+        "https://your-server.fastmcp.app/mcp", 
         headers={"X-API-Key": "<your-token>"},
     ),
 ) as client:

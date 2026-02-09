@@ -12,6 +12,10 @@
 
 # Source: https://www.traceloop.com/docs/api-reference/introduction.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.traceloop.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Introduction
 
 The following is a list of publicly available APIs you can use with the [Traceloop platform](https://app.traceloop.com).
@@ -40,8 +44,3 @@ Authorization: Bearer YOUR_API_KEY
 
   [Detailed instructions →](/settings/managing-api-keys)
 </Note>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://www.traceloop.com/docs/llms.txt

@@ -1,4 +1,4 @@
-# Source: https://docs.intelligems.io/offer-experiences/offers-integrating-widgets.md
+# Source: https://docs.intelligems.io/offer-personalizations/offers-integrating-widgets.md
 
 # Integrating Components with Offers
 
@@ -20,7 +20,7 @@ No installation required. This component is automatically available to be added 
 
 ### Step 1: Add the shipping progress bar to your Shopify theme
 
-Paste the following code snippet into your Shopify theme code, in the theme file that renders your cart in order to add a Shipping Progress Bar to a Test or Experience. This file may be called something like `cart.liquid`, `slideout-cart.liquid`, etc. We recommend adding this code snippet at the top of the section that relates to your cart:
+Paste the following code snippet into your Shopify theme code, in the theme file that renders your cart in order to add a Shipping Progress Bar to a Test or Personalization. This file may be called something like `cart.liquid`, `slideout-cart.liquid`, etc. We recommend adding this code snippet at the top of the section that relates to your cart:
 
 ```html
 <ig-shipping-progress-container></ig-shipping-progress-container>
@@ -87,14 +87,14 @@ Note that quantity buttons will only reflect your store's default currency, so i
 3. Add `window.igCurrencyFn` into the **Currency Function** field and click **Save Configurations**\\
 
 {% hint style="danger" %}
-The quantity buttons are a layer over top of your store's quantity buttons and only available when added to a a Offer Experience or Offer Test. To change the default quantity selected in an offer, you'll need to change the default quantity within Shopify.
+The quantity buttons are a layer over top of your store's quantity buttons and only available when added to an Offer Personalization or Offer Test. To change the default quantity selected in an offer, you'll need to change the default quantity within Shopify.
 {% endhint %}
 
 ## Offer Progress Bar
 
 ### Step 1: Add the progress bar to your Shopify theme
 
-Paste the following code snippet into your Shopify theme code, in the theme file that renders your cart in order to add an Offer Progress Bar to an Offer Experience or Offer Test. This file may be called something like `cart.liquid`, `slideout-cart.liquid`, `cart-template.liquid`, etc. We recommend adding this near to the top of the cart in most instances.
+Paste the following code snippet into your Shopify theme code, in the theme file that renders your cart in order to add an Offer Progress Bar to an Offer Personalization or Offer Test. This file may be called something like `cart.liquid`, `slideout-cart.liquid`, `cart-template.liquid`, etc. We recommend adding this near to the top of the cart in most instances.
 
 ```markup
 <ig-volume-progress-bar-widget></ig-volume-progress-bar-widget>

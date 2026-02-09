@@ -146,7 +146,7 @@ This way, one can upload the read-only certificate to a Cloudflare worker to lim
 
 See [Data plane access control permissions](guide#permissions).
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ### On this page:
 

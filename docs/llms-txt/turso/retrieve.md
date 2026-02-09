@@ -6,113 +6,84 @@
 
 # Source: https://docs.turso.tech/api-reference/databases/retrieve.md
 
-# Source: https://docs.turso.tech/api-reference/organizations/retrieve.md
-
-# Source: https://docs.turso.tech/api-reference/organizations/members/retrieve.md
-
-# Source: https://docs.turso.tech/api-reference/groups/retrieve.md
-
-# Source: https://docs.turso.tech/api-reference/databases/retrieve.md
-
-# Source: https://docs.turso.tech/api-reference/organizations/retrieve.md
-
-# Source: https://docs.turso.tech/api-reference/organizations/members/retrieve.md
-
-# Source: https://docs.turso.tech/api-reference/groups/retrieve.md
-
-# Source: https://docs.turso.tech/api-reference/databases/retrieve.md
-
-# Source: https://docs.turso.tech/api-reference/organizations/retrieve.md
-
-# Source: https://docs.turso.tech/api-reference/organizations/members/retrieve.md
-
-# Source: https://docs.turso.tech/api-reference/groups/retrieve.md
-
-# Source: https://docs.turso.tech/api-reference/databases/retrieve.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.turso.tech/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Retrieve Database
 
 > Returns a database belonging to the organization or user.
 
+<RequestExample>
+  ```bash cURL theme={null}
+  curl -L 'https://api.turso.tech/v1/organizations/{organizationSlug}/databases/{databaseName}' \
+  -H 'Authorization: Bearer TOKEN'
+  ```
+
+  ```ts Node.js theme={null}
+  import { createClient } from "@tursodatabase/api";
+
+  const turso = createClient({
+    org: "...",
+    token: "",
+  });
+
+  const database = await turso.databases.retrieve("my-db");
+  ```
+</RequestExample>
+
+
 ## OpenAPI
 
 ````yaml GET /v1/organizations/{organizationSlug}/databases/{databaseName}
+openapi: 3.0.1
+info:
+  title: Turso Platform API
+  description: API description here
+  license:
+    name: MIT
+  version: 0.1.0
+servers:
+  - url: https://api.turso.tech
+    description: Turso's Platform API
+security: []
 paths:
-  path: /v1/organizations/{organizationSlug}/databases/{databaseName}
-  method: get
-  servers:
-    - url: https://api.turso.tech
-      description: Turso's Platform API
-  request:
-    security: []
-    parameters:
-      path:
-        organizationSlug:
-          schema:
-            - type: string
-              required: true
-              description: The slug of the organization or user account.
-        databaseName:
-          schema:
-            - type: string
-              required: true
-              description: The name of the database.
-      query: {}
-      header: {}
-      cookie: {}
-    body: {}
-  response:
-    '200':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              database:
-                allOf:
-                  - $ref: '#/components/schemas/Database'
-        examples:
-          example:
-            value:
-              database:
-                Name: my-db
-                DbId: 0eb771dd-6906-11ee-8553-eaa7715aeaf2
-                Hostname: '[databaseName]-[organizationSlug].turso.io'
-                block_reads: false
-                block_writes: false
-                regions:
-                  - lhr
-                  - bos
-                  - nrt
-                primaryRegion: lhr
-                group: default
-                delete_protection: false
-                parent:
-                  id: <string>
-                  name: <string>
-                  branched_at: '2025-04-15T13:14:34.468213117Z'
-        description: Successful response
-    '404':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              error:
-                allOf:
-                  - type: string
-                    description: The error message
-                    example: >-
-                      could not find database with name [databaseName]: record
-                      not found
-        examples:
-          example:
-            value:
-              error: >-
-                could not find database with name [databaseName]: record not
-                found
-        description: Database not found
-  deprecated: false
-  type: path
+  /v1/organizations/{organizationSlug}/databases/{databaseName}:
+    get:
+      summary: Retrieve Database
+      description: Returns a database belonging to the organization or user.
+      operationId: getDatabase
+      parameters:
+        - $ref: '#/components/parameters/organizationSlug'
+        - $ref: '#/components/parameters/databaseName'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  database:
+                    $ref: '#/components/schemas/Database'
+        '404':
+          $ref: '#/components/responses/DatabaseNotFoundResponse'
 components:
+  parameters:
+    organizationSlug:
+      in: path
+      name: organizationSlug
+      required: true
+      schema:
+        type: string
+      description: The slug of the organization or user account.
+    databaseName:
+      name: databaseName
+      in: path
+      required: true
+      schema:
+        type: string
+      description: The name of the database.
   schemas:
     Database:
       type: object
@@ -176,5 +147,19 @@ components:
               format: date-time
               description: The timestamp when the database was branched from the parent.
               example: '2025-04-15T13:14:34.468213117Z'
+  responses:
+    DatabaseNotFoundResponse:
+      description: Database not found
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: string
+                description: The error message
+                example: >-
+                  could not find database with name [databaseName]: record not
+                  found
 
 ````

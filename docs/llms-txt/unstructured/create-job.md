@@ -1,5 +1,9 @@
 # Source: https://docs.unstructured.io/api-reference/jobs/create-job.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.unstructured.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Create Job
 
 > Create a new on-demand job using either a template (with persistent job optimization) or custom DAG.
@@ -12,7 +16,7 @@
 openapi: 3.1.0
 info:
   title: Platform API
-  version: 3.0.5
+  version: 3.1.0
 servers:
   - url: https://platform.unstructuredapp.io/
     description: Unstructured Platform API
@@ -196,7 +200,3 @@ components:
       title: ValidationError
 
 ````
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.unstructured.io/llms.txt

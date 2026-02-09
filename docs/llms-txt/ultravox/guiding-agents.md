@@ -1,5 +1,9 @@
 # Source: https://docs.ultravox.ai/agents/guiding-agents.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.ultravox.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Guiding Agents
 
 > A guide to steering your agent toward good experiences
@@ -178,8 +182,3 @@ Keeping your AI agent "on rails" is a balance between control and natural conver
 As you develop your Ultravox application, start with the simplest approach that meets your needs, and gradually increase complexity as required. Remember that the most effective voice experiences feel natural while still accomplishing their goals reliably.
 
 By leveraging building blocks like deferred messages, tool state, and targeted tool response messages, you can create sophisticated conversational flows that guide users through complex processes while maintaining the natural feel of human conversation.
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.ultravox.ai/llms.txt

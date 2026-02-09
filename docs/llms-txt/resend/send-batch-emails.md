@@ -1,5 +1,9 @@
 # Source: https://resend.com/docs/api-reference/emails/send-batch-emails.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://resend.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Send Batch Emails
 
 > Trigger up to 100 batch emails at once.
@@ -93,7 +97,7 @@ Instead of sending one email per HTTP request, we provide a batching endpoint th
   The topic ID to receive the email.
 
   * If the recipient is a contact and has opted-in to the topic, the email is sent.
-  * If the recipient is a contact and has opted-out of the topic, the email is not sent and an error is returned.
+  * If the recipient is a contact and has opted-out of the topic, the email is not sent and will be marked as failed.
   * If the recipient is not a contact, the email is sent if the topic default subscription value is set to `opt-in`.
 
   <Note>Each email address (to, cc, bcc) is checked and handled separately.</Note>
@@ -104,7 +108,7 @@ Instead of sending one email per HTTP request, we provide a batching endpoint th
 
   [See examples](/dashboard/emails/tags).
 
-  <Expandable defaultOpen="true" title="properties">
+  <Expandable defaultOpen title="properties">
     <ParamField body="name" type="string" required>
       The name of the email tag.
 
@@ -127,7 +131,7 @@ Instead of sending one email per HTTP request, we provide a batching endpoint th
   To send using a template, provide a `template` object with:
 
   * `id`: the id *or* the alias of the published template
-  * `variables`: array of variable objects (if applicable)
+  * `variables`: an object with a key for each variable (if applicable)
 
   <Info>
     If a `template` is provided, you cannot send `html`, `text`, or `react` in the payload, otherwise the API will return a validation error.
@@ -143,7 +147,7 @@ Instead of sending one email per HTTP request, we provide a batching endpoint th
 <ParamField body="variables" type="object">
   Template variables object with key/value pairs.
 
-  ```ts  theme={null}
+  ```ts  theme={"theme":{"light":"github-light","dark":"vesper"}}
   variables: {
   	CTA: 'Sign up now',
   	CTA_LINK: 'https://example.com/signup'
@@ -154,7 +158,7 @@ Instead of sending one email per HTTP request, we provide a batching endpoint th
 
   See the [errors reference](/api-reference/errors) for more details or [learn more about templates](/dashboard/templates/introduction).
 
-  <Expandable defaultOpen="true" title="properties">
+  <Expandable defaultOpen title="properties">
     <ParamField body="key" type="string" required>
       The key of the variable.
 
@@ -163,12 +167,12 @@ Instead of sending one email per HTTP request, we provide a batching endpoint th
       It can contain no more than 50 characters.
     </ParamField>
 
-    <ParamField body="value" value="string | number" required>
+    <ParamField body="value" type="string | number" required>
       The value of the variable.
 
       Observe these technical limitations:
 
-      * `string`: maximum length of 50 characters
+      * `string`: maximum length of 2,000 characters
       * `number`: not greater than 2^53 - 1
     </ParamField>
   </Expandable>
@@ -186,23 +190,12 @@ Instead of sending one email per HTTP request, we provide a batching endpoint th
   [Learn more about idempotency keys →](/dashboard/emails/idempotency-keys)
 </ParamField>
 
-<ParamField header="x-batch-validation" type="strict | permissive" default="strict">
-  Batch validation modes control how emails are validated in batch sending.
-
-  Choose between two modes:
-
-  * **Strict mode (default)**: sends the batch only if all emails in the request are valid.
-  * **Permissive mode**: processes all emails, allowing for partial success and returning validation errors if present.
-
-  [Learn more about batch validation →](/dashboard/emails/batch-validation-modes)
-</ParamField>
-
 ## Limitations
 
 The `attachments` and `scheduled_at` fields are not supported yet.
 
 <RequestExample>
-  ```ts Node.js theme={null}
+  ```ts Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
   import { Resend } from 'resend';
 
   const resend = new Resend('re_xxxxxxxxx');
@@ -223,7 +216,7 @@ The `attachments` and `scheduled_at` fields are not supported yet.
   ]);
   ```
 
-  ```php PHP theme={null}
+  ```php PHP theme={"theme":{"light":"github-light","dark":"vesper"}}
   $resend = Resend::client('re_xxxxxxxxx');
 
   $resend->batch->send([
@@ -242,7 +235,7 @@ The `attachments` and `scheduled_at` fields are not supported yet.
   ]);
   ```
 
-  ```py Python theme={null}
+  ```py Python theme={"theme":{"light":"github-light","dark":"vesper"}}
   import resend
   from typing import List
 
@@ -266,7 +259,7 @@ The `attachments` and `scheduled_at` fields are not supported yet.
   resend.Batch.send(params)
   ```
 
-  ```rb Ruby theme={null}
+  ```rb Ruby theme={"theme":{"light":"github-light","dark":"vesper"}}
   require "resend"
 
   Resend.api_key = 're_xxxxxxxxx'
@@ -289,8 +282,8 @@ The `attachments` and `scheduled_at` fields are not supported yet.
   Resend::Batch.send(params)
   ```
 
-  ```go Go theme={null}
-  package examples
+  ```go Go theme={"theme":{"light":"github-light","dark":"vesper"}}
+  package main
 
   import (
   	"fmt"
@@ -329,7 +322,7 @@ The `attachments` and `scheduled_at` fields are not supported yet.
   }
   ```
 
-  ```rust Rust theme={null}
+  ```rust Rust theme={"theme":{"light":"github-light","dark":"vesper"}}
   use resend_rs::types::CreateEmailBaseOptions;
   use resend_rs::{Resend, Result};
 
@@ -358,7 +351,7 @@ The `attachments` and `scheduled_at` fields are not supported yet.
   }
   ```
 
-  ```java Java theme={null}
+  ```java Java theme={"theme":{"light":"github-light","dark":"vesper"}}
   import com.resend.*;
 
   public class Main {
@@ -386,7 +379,7 @@ The `attachments` and `scheduled_at` fields are not supported yet.
   }
   ```
 
-  ```csharp .NET theme={null}
+  ```csharp .NET theme={"theme":{"light":"github-light","dark":"vesper"}}
   using Resend;
 
   IResend resend = ResendClient.Create( "re_xxxxxxxxx" ); // Or from DI
@@ -411,7 +404,7 @@ The `attachments` and `scheduled_at` fields are not supported yet.
   Console.WriteLine( "Nr Emails={0}", resp.Content.Count );
   ```
 
-  ```bash cURL theme={null}
+  ```bash cURL theme={"theme":{"light":"github-light","dark":"vesper"}}
   curl -X POST 'https://api.resend.com/emails/batch' \
        -H 'Authorization: Bearer re_xxxxxxxxx' \
        -H 'Content-Type: application/json' \
@@ -433,7 +426,7 @@ The `attachments` and `scheduled_at` fields are not supported yet.
 </RequestExample>
 
 <ResponseExample>
-  ```json Response theme={null}
+  ```json Response theme={"theme":{"light":"github-light","dark":"vesper"}}
   {
     "data": [
       {
@@ -441,13 +434,6 @@ The `attachments` and `scheduled_at` fields are not supported yet.
       },
       {
         "id": "faccb7a5-8a28-4e9a-ac64-8da1cc3bc1cb"
-      }
-    ],
-    // the `errors` array is only present in permissive batch validation mode
-    "errors": [
-      {
-        "index": 2, // 0-indexed (first item is index 0)
-        "message": "The `to` field is missing."
       }
     ]
   }

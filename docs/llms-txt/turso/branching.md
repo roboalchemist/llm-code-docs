@@ -1,5 +1,9 @@
 # Source: https://docs.turso.tech/features/branching.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.turso.tech/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Branching
 
 A branch is a separate database instance that is created from an existing database. You can also create a branch from a [point-in-time](/features/point-in-time-recovery) snapshot of a database. Branches are useful for development and testing, because they allow you to make changes to the database without affecting the original database.

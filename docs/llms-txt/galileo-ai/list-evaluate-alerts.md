@@ -1,147 +1,71 @@
 # Source: https://docs.galileo.ai/api-reference/evaluate-alerts/list-evaluate-alerts.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.galileo.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # List Evaluate Alerts
+
+
 
 ## OpenAPI
 
-````yaml https://api.acme.rungalileo.io/public/v1/openapi.json get /v1/projects/{project_id}/runs/{run_id}/prompts/alerts
+````yaml https://api.staging.galileo.ai/public/v1/openapi.json get /v1/projects/{project_id}/runs/{run_id}/prompts/alerts
+openapi: 3.1.0
+info:
+  title: FastAPI
+  version: 0.1.0
+servers:
+  - url: https://api.staging.galileo.ai
+    description: Galileo Public APIs - staging
+security: []
 paths:
-  path: /v1/projects/{project_id}/runs/{run_id}/prompts/alerts
-  method: get
-  servers:
-    - url: https://api.acme.rungalileo.io
-      description: Galileo Public APIs - acme
-  request:
-    security:
-      - title: APIKeyHeader
-        parameters:
-          query: {}
-          header:
-            Galileo-API-Key:
-              type: apiKey
-          cookie: {}
-      - title: OAuth2PasswordBearer
-        parameters:
-          query: {}
-          header:
-            Authorization:
-              type: oauth2
-          cookie: {}
-      - title: HTTPBasic
-        parameters:
-          query: {}
-          header:
-            Authorization:
-              type: http
-              scheme: basic
-          cookie: {}
-    parameters:
-      path:
-        run_id:
+  /v1/projects/{project_id}/runs/{run_id}/prompts/alerts:
+    get:
+      tags:
+        - evaluate-alerts
+      summary: List Evaluate Alerts
+      operationId: >-
+        list_evaluate_alerts_v1_projects__project_id__runs__run_id__prompts_alerts_get
+      parameters:
+        - name: run_id
+          in: path
+          required: true
           schema:
-            - type: string
-              required: true
-              title: Run Id
-              format: uuid4
-        project_id:
+            type: string
+            format: uuid4
+            title: Run Id
+        - name: project_id
+          in: path
+          required: true
           schema:
-            - type: string
-              required: true
-              title: Project Id
-              format: uuid4
-      query: {}
-      header: {}
-      cookie: {}
-    body: {}
-  response:
-    '200':
-      application/json:
-        schemaArray:
-          - type: array
-            items:
-              allOf:
-                - $ref: '#/components/schemas/EvaluateAlertDB'
-            title: >-
-              Response List Evaluate Alerts V1 Projects  Project Id  Runs  Run
-              Id  Prompts Alerts Get
-        examples:
-          example:
-            value:
-              - project_id: <string>
-                run_id: <string>
-                alert_name: <string>
-                filter:
-                  column: <string>
-                  filter_type: <string>
-                  low: 123
-                  high: 123
-                field_name: <string>
-                description: <string>
-                extra: {}
-                id: <string>
-                created_at: '2023-11-07T05:31:56Z'
-                updated_at: '2023-11-07T05:31:56Z'
-        description: Successful Response
-    '422':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              detail:
-                allOf:
-                  - items:
-                      $ref: '#/components/schemas/ValidationError'
-                    type: array
-                    title: Detail
-            title: HTTPValidationError
-            refIdentifier: '#/components/schemas/HTTPValidationError'
-        examples:
-          example:
-            value:
-              detail:
-                - loc:
-                    - <string>
-                  msg: <string>
-                  type: <string>
-        description: Validation Error
-  deprecated: false
-  type: path
+            type: string
+            format: uuid4
+            title: Project Id
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/EvaluateAlertDB'
+                title: >-
+                  Response List Evaluate Alerts V1 Projects  Project Id  Runs 
+                  Run Id  Prompts Alerts Get
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+        - APIKeyHeader: []
+        - OAuth2PasswordBearer: []
+        - HTTPBasic: []
 components:
   schemas:
-    CategoricalPromptFilterParam:
-      properties:
-        column:
-          type: string
-          title: Column
-        filter_type:
-          type: string
-          const: category
-          title: Filter Type
-        categories:
-          items:
-            type: string
-          type: array
-          title: Categories
-        operator:
-          $ref: '#/components/schemas/CategoryFilterOperator'
-          description: >-
-            Operator to use when checking if the value is in the categories. If
-            None, we default to 'or'.
-          default: any
-      type: object
-      required:
-        - column
-        - filter_type
-        - categories
-      title: CategoricalPromptFilterParam
-    CategoryFilterOperator:
-      type: string
-      enum:
-        - any
-        - all
-        - exact
-        - none
-      title: CategoryFilterOperator
     EvaluateAlertDB:
       properties:
         project_id:
@@ -203,22 +127,15 @@ components:
         - created_at
         - updated_at
       title: EvaluateAlertDB
-    Operator:
-      type: string
-      enum:
-        - eq
-        - ne
-        - gt
-        - gte
-        - lt
-        - lte
-        - in
-        - not_in
-        - contains
-        - has_all
-        - between
-        - like
-      title: Operator
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
     RangePromptFilterParam:
       properties:
         column:
@@ -241,27 +158,6 @@ components:
         - low
         - high
       title: RangePromptFilterParam
-    ValidationError:
-      properties:
-        loc:
-          items:
-            anyOf:
-              - type: string
-              - type: integer
-          type: array
-          title: Location
-        msg:
-          type: string
-          title: Message
-        type:
-          type: string
-          title: Error Type
-      type: object
-      required:
-        - loc
-        - msg
-        - type
-      title: ValidationError
     ValuePromptFilterParam:
       properties:
         column:
@@ -287,5 +183,90 @@ components:
         - value
         - relation
       title: ValuePromptFilterParam
+    CategoricalPromptFilterParam:
+      properties:
+        column:
+          type: string
+          title: Column
+        filter_type:
+          type: string
+          const: category
+          title: Filter Type
+        categories:
+          items:
+            type: string
+          type: array
+          title: Categories
+        operator:
+          $ref: '#/components/schemas/CategoryFilterOperator'
+          description: >-
+            Operator to use when checking if the value is in the categories. If
+            None, we default to 'or'.
+          default: any
+      type: object
+      required:
+        - column
+        - filter_type
+        - categories
+      title: CategoricalPromptFilterParam
+    ValidationError:
+      properties:
+        loc:
+          items:
+            anyOf:
+              - type: string
+              - type: integer
+          type: array
+          title: Location
+        msg:
+          type: string
+          title: Message
+        type:
+          type: string
+          title: Error Type
+      type: object
+      required:
+        - loc
+        - msg
+        - type
+      title: ValidationError
+    Operator:
+      type: string
+      enum:
+        - eq
+        - ne
+        - gt
+        - gte
+        - lt
+        - lte
+        - in
+        - not_in
+        - contains
+        - has_all
+        - between
+        - like
+      title: Operator
+    CategoryFilterOperator:
+      type: string
+      enum:
+        - any
+        - all
+        - exact
+        - none
+      title: CategoryFilterOperator
+  securitySchemes:
+    APIKeyHeader:
+      type: apiKey
+      in: header
+      name: Galileo-API-Key
+    OAuth2PasswordBearer:
+      type: oauth2
+      flows:
+        password:
+          scopes: {}
+          tokenUrl: https://api.staging.galileo.ai/login
+    HTTPBasic:
+      type: http
+      scheme: basic
 
 ````

@@ -1,5 +1,9 @@
 # Source: https://resend.com/docs/api-reference/broadcasts/get-broadcast.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://resend.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Retrieve Broadcast
 
 > Retrieve a single broadcast.
@@ -48,7 +52,7 @@ You can retrieve broadcasts created via both this API and the Resend dashboard.
 </Info>
 
 <RequestExample>
-  ```ts Node.js theme={null}
+  ```ts Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
   import { Resend } from 'resend';
 
   const resend = new Resend('re_xxxxxxxxx');
@@ -58,13 +62,13 @@ You can retrieve broadcasts created via both this API and the Resend dashboard.
   );
   ```
 
-  ```php PHP theme={null}
+  ```php PHP theme={"theme":{"light":"github-light","dark":"vesper"}}
   $resend = Resend::client('re_xxxxxxxxx');
 
   $resend->broadcasts->get('559ac32e-9ef5-46fb-82a1-b76b840c0f7b');
   ```
 
-  ```py Python theme={null}
+  ```py Python theme={"theme":{"light":"github-light","dark":"vesper"}}
   import resend
 
   resend.api_key = "re_xxxxxxxxx"
@@ -72,7 +76,7 @@ You can retrieve broadcasts created via both this API and the Resend dashboard.
   resend.Broadcasts.get(id="559ac32e-9ef5-46fb-82a1-b76b840c0f7b")
   ```
 
-  ```ruby Ruby theme={null}
+  ```ruby Ruby theme={"theme":{"light":"github-light","dark":"vesper"}}
   require "resend"
 
   Resend.api_key = "re_xxxxxxxxx"
@@ -80,15 +84,19 @@ You can retrieve broadcasts created via both this API and the Resend dashboard.
   Resend::Broadcasts.get("559ac32e-9ef5-46fb-82a1-b76b840c0f7b")
   ```
 
-  ```go Go theme={null}
-  import 	"github.com/resend/resend-go/v3"
+  ```go Go theme={"theme":{"light":"github-light","dark":"vesper"}}
+  package main
 
-  client := resend.NewClient("re_xxxxxxxxx")
+  import "github.com/resend/resend-go/v3"
 
-  broadcast, _ := client.Broadcasts.Get("559ac32e-9ef5-46fb-82a1-b76b840c0f7b")
+  func main() {
+  	client := resend.NewClient("re_xxxxxxxxx")
+
+  	client.Broadcasts.Get("559ac32e-9ef5-46fb-82a1-b76b840c0f7b")
+  }
   ```
 
-  ```rust Rust theme={null}
+  ```rust Rust theme={"theme":{"light":"github-light","dark":"vesper"}}
   use resend_rs::{Resend, Result};
 
   #[tokio::main]
@@ -104,13 +112,13 @@ You can retrieve broadcasts created via both this API and the Resend dashboard.
   }
   ```
 
-  ```java Java theme={null}
+  ```java Java theme={"theme":{"light":"github-light","dark":"vesper"}}
   Resend resend = new Resend("re_xxxxxxxxx");
 
   GetBroadcastResponseSuccess data = resend.broadcasts().get("559ac32e-9ef5-46fb-82a1-b76b840c0f7b");
   ```
 
-  ```csharp .NET theme={null}
+  ```csharp .NET theme={"theme":{"light":"github-light","dark":"vesper"}}
   using Resend;
 
   IResend resend = ResendClient.Create( "re_xxxxxxxxx" ); // Or from DI
@@ -119,14 +127,14 @@ You can retrieve broadcasts created via both this API and the Resend dashboard.
   Console.WriteLine( "Broadcast name={0}", resp.Content.DisplayName );
   ```
 
-  ```bash cURL theme={null}
+  ```bash cURL theme={"theme":{"light":"github-light","dark":"vesper"}}
   curl -X GET 'https://api.resend.com/broadcasts/559ac32e-9ef5-46fb-82a1-b76b840c0f7b' \
        -H 'Authorization: Bearer re_xxxxxxxxx'
   ```
 </RequestExample>
 
 <ResponseExample>
-  ```json Response theme={null}
+  ```json Response theme={"theme":{"light":"github-light","dark":"vesper"}}
   {
     "object": "broadcast",
     "id": "559ac32e-9ef5-46fb-82a1-b76b840c0f7b",

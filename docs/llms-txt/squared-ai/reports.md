@@ -1,5 +1,9 @@
 # Source: https://docs.squared.ai/activation/data-apps/visualizations/reports.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.squared.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Data Apps Reports
 
 > Understand how to monitor and analyze user engagement and model effectiveness with Data Apps.

@@ -1,5 +1,9 @@
 # Source: https://bun.com/docs/guides/util/base64.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://bun.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Encode and decode base64 strings
 
 Bun implements the Web-standard [`atob`](https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/atob) and [`btoa`](https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/btoa) functions for encoding and decoding base64 strings.
@@ -12,4 +16,4 @@ const decoded = atob(encoded); // => "hello world"
 
 ***
 
-See [Docs > Web APIs](https://bun.com/docs/runtime/web-apis) for a complete breakdown of the Web APIs implemented in Bun.
+See [Docs > Web APIs](/runtime/web-apis) for a complete breakdown of the Web APIs implemented in Bun.

@@ -1,5 +1,9 @@
 # Source: https://upstash.com/docs/common/account/auditlogs.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Audit Logs
 
 Audit logs give you a chronological set of activity records that have affected

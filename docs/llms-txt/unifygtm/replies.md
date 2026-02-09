@@ -1,5 +1,9 @@
 # Source: https://docs.unifygtm.com/reference/sequences/replies.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.unifygtm.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Sequence Replies
 
 > View and manage replies from prospects in your Sequences.

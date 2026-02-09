@@ -1,5 +1,9 @@
 # Source: https://docs.promptlayer.com/reference/create-dataset-version-from-filter-params.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.promptlayer.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Create Dataset Version from Request History
 
 Create a new dataset version by filtering existing request logs. The dataset is populated asynchronously based on the provided filter parameters.
@@ -170,7 +174,3 @@ components:
       description: Error response format.
 
 ````
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.promptlayer.com/llms.txt

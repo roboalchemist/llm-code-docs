@@ -221,7 +221,7 @@ Track changes to your prompts to understand how they evolve over time.
 - Get started with different [evaluation methods](/docs/evaluation/overview): LLM-as-a-judge, user feedback, manual labeling, or custom
 - Identify issues early by running evaluations on production traces
 - Create and manage [Datasets](/docs/evaluation/features/datasets) for systematic testing in development that ensure your application performs reliably across different scenarios
-- Run [Experiments](/docs/evaluation/experiments/overview) to systematically test your LLM application
+- Run [Experiments](/docs/evaluation/core-concepts#experiments) to systematically test your LLM application
 
 <Callout type="info" emoji="🎥">
 

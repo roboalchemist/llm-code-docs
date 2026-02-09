@@ -1,5 +1,9 @@
 # Source: https://docs.coollabs.io/coolify/v3/faq.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.coollabs.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # null
 
 ## Run Coolify with existing Traefik instance
@@ -10,7 +14,7 @@ Here is a [detailed blog](https://beaussan.io/blog/coolify-into-existing-traefik
 
 You can always roll back to a specific Coolify version (for example 3.11.1) with the following command:
 
-```bash
+```bash  theme={null}
 wget -q https://get.coollabs.io/coolify/install.sh -O install.sh; sudo bash ./install.sh -fx 3.11.1 
 ```
 
@@ -26,6 +30,6 @@ login.
 
 > If expires, just execute this script again.
 
-```bash
+```bash  theme={null}
 docker exec coolify bash -c "sqlite3 /app/db/prod.db 'update User set password=\"RESETME\", updatedAt=`date +%s%N|cut -b1-13` where id=0'"
 ```

@@ -2,13 +2,9 @@
 
 # Source: https://docs.pipecat.ai/deployment/pipecat-cloud/sdk-reference/examples.md
 
-# Source: https://docs.pipecat.ai/examples.md
-
-# Source: https://docs.pipecat.ai/deployment/pipecat-cloud/sdk-reference/examples.md
-
-# Source: https://docs.pipecat.ai/examples.md
-
-# Source: https://docs.pipecat.ai/deployment/pipecat-cloud/sdk-reference/examples.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pipecat.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Examples
 
@@ -103,8 +99,3 @@ async def bot(args: WebSocketRunnerArguments):
         logger.exception(f"Error in WebSocket bot process: {str(e)}")
         raise
 ```
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.pipecat.ai/llms.txt

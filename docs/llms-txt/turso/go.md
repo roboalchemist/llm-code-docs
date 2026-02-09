@@ -1,5 +1,9 @@
 # Source: https://docs.turso.tech/connect/go.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.turso.tech/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Connect to Turso using Go
 
 <Steps>

@@ -1,4 +1,4 @@
-# Source: https://docs.warp.dev/ambient-agents/managing-ambient-agents/scheduled-agents.md
+# Source: https://docs.warp.dev/agent-platform/ambient-agents/managing-ambient-agents/scheduled-agents.md
 
 # Scheduled Agents
 
@@ -12,7 +12,7 @@ Scheduled Agents run in the background on Warp’s infrastructure. Each run star
 
 ### What are Scheduled Agents?
 
-A Scheduled Agent is an [Ambient Agent](https://docs.warp.dev/ambient-agents) that runs on a cron-based schedule.
+A Scheduled Agent is an [Ambient Agent](https://docs.warp.dev/agent-platform/ambient-agents/ambient-agents-overview) that runs on a cron-based schedule.
 
 **Key characteristics:**
 
@@ -48,7 +48,7 @@ All scheduling operations require the Warp CLI and an authenticated session
 
 #### Creating a Schedule
 
-Use `warp schedule create` to define a new Scheduled Agent.
+Use `warp schedule create` (with required flags) to define a new Scheduled Agent.
 
 **Each schedule requires:**
 
@@ -56,8 +56,8 @@ Use `warp schedule create` to define a new Scheduled Agent.
 * A cron schedule.
 * A prompt that the agent will execute.
 * An optional environment in which the agent will run.
-* An optional [model selection](https://docs.warp.dev/platform/cli#using-agent-profiles).
-* [Optional MCP server configuration](https://docs.warp.dev/ambient-agents/mcp-servers-for-agents).
+* An optional [model selection](https://docs.warp.dev/reference/cli/README#using-agent-profiles).
+* [Optional MCP server configuration](https://docs.warp.dev/agent-platform/ambient-agents/mcp-servers-for-agents).
 
 ```bash
 warp schedule create \
@@ -66,6 +66,10 @@ warp schedule create \
   --prompt=PROMPT \
   [--environment=ENVIRONMENT_ID]
 ```
+
+{% hint style="info" %}
+Currently, environments are never required - if you don't specify one, the scheduled agent runs in a barebones sandbox.
+{% endhint %}
 
 **Example**
 
@@ -76,12 +80,12 @@ warp schedule create \
   --name "Feature Flag Cleanup" \
   --cron "0 10 */4 * *" \
   --prompt "Scan the repository for stale feature flags and remove any that are no longer referenced. Open a PR with the changes and include a summary." \
-  --environment "env_123"
+  --environment "KB1ndNMQAs5kjPdX2jatA8"
 ```
 
 Once created, the agent will automatically run at the specified times without further action.
 
-Scheduled Agents support the same [model selection](https://docs.warp.dev/platform/cli) and [MCP server configuration](https://docs.warp.dev/ambient-agents/mcp-servers-for-agents) as other Ambient Agent triggers. This allows you to control which model is used for scheduled runs and to equip agents with external tools via MCP, such as issue trackers, CI systems, or internal services.
+Scheduled Agents support the same [model selection](https://docs.warp.dev/reference/cli/) and [MCP server configuration](https://docs.warp.dev/agent-platform/ambient-agents/mcp-servers-for-agents) as other Ambient Agent triggers. This allows you to control which model is used for scheduled runs and to equip agents with external tools via MCP, such as issue trackers, CI systems, or internal services.
 
 #### Cron Schedule Format
 

@@ -1,5 +1,9 @@
 # Source: https://modelcontextprotocol.io/docs/develop/build-client.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://modelcontextprotocol.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Build an MCP client
 
 > Get started building your own client that can integrate with all MCP servers.
@@ -433,7 +437,7 @@ Before you begin, it helps to have gone through our [Build an MCP Server](/docs/
     * `Timeout error`: Consider increasing the timeout in your client configuration
   </Tab>
 
-  <Tab title="Node">
+  <Tab title="TypeScript">
     [You can find the complete code for this tutorial here.](https://github.com/modelcontextprotocol/quickstart-resources/tree/main/mcp-client-typescript)
 
     ## System Requirements
@@ -726,6 +730,10 @@ Before you begin, it helps to have gone through our [Build an MCP Server](/docs/
       try {
         await mcpClient.connectToServer(process.argv[2]);
         await mcpClient.chatLoop();
+      } catch (e) {
+        console.error("Error:", e);
+        await mcpClient.cleanup();
+        process.exit(1);
       } finally {
         await mcpClient.cleanup();
         process.exit(0);
@@ -828,6 +836,7 @@ Before you begin, it helps to have gone through our [Build an MCP Server](/docs/
     * `Tool execution failed`: Verify the tool's required environment variables are set
     * `ANTHROPIC_API_KEY is not set`: Check your .env file and environment variables
     * `TypeError`: Ensure you're using the correct types for tool arguments
+    * `BadRequestError`: Ensure you have enough credits to access the Anthropic API
   </Tab>
 
   <Tab title="Java">
@@ -1088,13 +1097,13 @@ Before you begin, it helps to have gone through our [Build an MCP Server](/docs/
     <CodeGroup>
       ```kotlin build.gradle.kts theme={null}
       plugins {
-          id("com.github.johnrengelman.shadow") version "8.1.1"
+          id("com.gradleup.shadow") version "8.3.9"
       }
       ```
 
       ```groovy build.gradle theme={null}
       plugins {
-          id 'com.github.johnrengelman.shadow' version '8.1.1'
+          id 'com.gradleup.shadow' version '8.3.9'
       }
       ```
     </CodeGroup>
@@ -1110,7 +1119,7 @@ Before you begin, it helps to have gone through our [Build an MCP Server](/docs/
     ```
 
     <Warning>
-      Make sure your keep your `ANTHROPIC_API_KEY` secure!
+      Make sure you keep your `ANTHROPIC_API_KEY` secure!
     </Warning>
 
     ## Creating the Client
@@ -1491,7 +1500,7 @@ Before you begin, it helps to have gone through our [Build an MCP Server](/docs/
         Arguments = arguments,
     });
 
-    await using var mcpClient = await McpClientFactory.CreateAsync(clientTransport);
+    await using var mcpClient = await McpClient.CreateAsync(clientTransport);
 
     var tools = await mcpClient.ListToolsAsync();
     foreach (var tool in tools)
@@ -1570,7 +1579,7 @@ Before you begin, it helps to have gone through our [Build an MCP Server](/docs/
 
     ### 1. Client Initialization
 
-    * The client is initialized using `McpClientFactory.CreateAsync()`, which sets up the transport type and command to run the server.
+    * The client is initialized using `McpClient.CreateAsync()`, which sets up the transport type and command to run the server.
 
     ### 2. Server Connection
 
@@ -1611,7 +1620,7 @@ Before you begin, it helps to have gone through our [Build an MCP Server](/docs/
        * Get responses from Claude
     4. Exit the session when done
 
-    Here's an example of what it should look like it connected to a weather server quickstart:
+    Here's an example of what it should look like if connected to the weather server quickstart:
 
     <Frame>
       <img src="https://mintcdn.com/mcp/4ZXF1PrDkEaJvXpn/images/quickstart-dotnet-client.png?fit=max&auto=format&n=4ZXF1PrDkEaJvXpn&q=85&s=fcf28dde150d6db879402ad8150c6b23" data-og-width="1115" width="1115" data-og-height="666" height="666" data-path="images/quickstart-dotnet-client.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/mcp/4ZXF1PrDkEaJvXpn/images/quickstart-dotnet-client.png?w=280&fit=max&auto=format&n=4ZXF1PrDkEaJvXpn&q=85&s=0c82cdfe1350b4a924a44d7beaa39f70 280w, https://mintcdn.com/mcp/4ZXF1PrDkEaJvXpn/images/quickstart-dotnet-client.png?w=560&fit=max&auto=format&n=4ZXF1PrDkEaJvXpn&q=85&s=4fd6f3ed867741b44ae12940788be646 560w, https://mintcdn.com/mcp/4ZXF1PrDkEaJvXpn/images/quickstart-dotnet-client.png?w=840&fit=max&auto=format&n=4ZXF1PrDkEaJvXpn&q=85&s=1b5fcfaf8b63b9ea71bf36aa20388a28 840w, https://mintcdn.com/mcp/4ZXF1PrDkEaJvXpn/images/quickstart-dotnet-client.png?w=1100&fit=max&auto=format&n=4ZXF1PrDkEaJvXpn&q=85&s=cb969889d05ec8771c12b887f2940c7d 1100w, https://mintcdn.com/mcp/4ZXF1PrDkEaJvXpn/images/quickstart-dotnet-client.png?w=1650&fit=max&auto=format&n=4ZXF1PrDkEaJvXpn&q=85&s=81b2cb62f60a9f3afb2d66cf3ee3df79 1650w, https://mintcdn.com/mcp/4ZXF1PrDkEaJvXpn/images/quickstart-dotnet-client.png?w=2500&fit=max&auto=format&n=4ZXF1PrDkEaJvXpn&q=85&s=ac9271a3dd0d7b424bb390ad0c31e14e 2500w" />

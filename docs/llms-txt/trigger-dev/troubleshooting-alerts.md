@@ -1,5 +1,9 @@
 # Source: https://trigger.dev/docs/troubleshooting-alerts.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://trigger.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Alerts
 
 > Get alerted when runs or deployments fail, or when deployments succeed.
@@ -39,7 +43,7 @@ We support receiving alerts for the following events:
 
 For the alert webhooks you can use the SDK to parse them. Here is an example of how to parse the webhook payload in Remix:
 
-```ts  theme={null}
+```ts  theme={"theme":"css-variables"}
 import { ActionFunctionArgs, json } from "@remix-run/server-runtime";
 import { webhooks, WebhookError } from "@trigger.dev/sdk";
 

@@ -1,5 +1,9 @@
 # Source: https://smartcar.com/docs/getting-started/how-to/get-an-access-token.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://smartcar.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # How to Get an API Access Token
 
 > Learn how to obtain your first Smartcar API access token by exchanging an authorization code.

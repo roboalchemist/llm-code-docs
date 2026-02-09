@@ -121,5 +121,5 @@ Responses are in JSON format, with the following fields:
 | --- | --- |
 | message | An info/error message. |
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 

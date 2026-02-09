@@ -1,5 +1,9 @@
 # Source: https://www.aptible.com/docs/core-concepts/scaling/database-scaling.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.aptible.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Database Scaling
 
 > Learn about scaling Databases CPU, RAM, IOPS and throughput

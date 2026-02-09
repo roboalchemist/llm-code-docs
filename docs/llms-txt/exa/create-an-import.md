@@ -1,4 +1,8 @@
-# Source: https://docs.exa.ai/websets/api/imports/create-an-import.md
+# Source: https://exa.ai/docs/websets/api/imports/create-an-import.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://exa.ai/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Create an Import
 
@@ -10,310 +14,252 @@
 
 Once the import is created, you can upload your data to the returned `uploadUrl` until `uploadValidUntil` (by default 1 hour).
 
+
+
 ## OpenAPI
 
 ````yaml post /v0/imports
+openapi: 3.1.0
+info:
+  title: Websets
+  description: ''
+  version: '0'
+  contact: {}
+servers:
+  - url: https://api.exa.ai/websets/
+    description: Production
+security: []
+tags: []
 paths:
-  path: /v0/imports
-  method: post
-  servers:
-    - url: https://api.exa.ai/websets/
-      description: Production
-  request:
-    security:
-      - title: api key
-        parameters:
-          query: {}
-          header:
-            x-api-key:
-              type: apiKey
-              description: Your Exa API key
-          cookie: {}
-    parameters:
-      path: {}
-      query: {}
-      header: {}
-      cookie: {}
-    body:
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              size:
-                allOf:
-                  - type:
-                      - number
-                    maximum: 50000000
-                    description: The size of the file in bytes. Maximum size is 50 MB.
-              count:
-                allOf:
-                  - type:
-                      - number
-                    description: The number of records to import
-              title:
-                allOf:
-                  - type:
-                      - string
-                    description: The title of the import
-              format:
-                allOf:
-                  - type:
-                      - string
-                    enum:
-                      - csv
-                    description: >-
-                      When the import is in CSV format, we expect a column
-                      containing the key identifier for the entity - for now
-                      URL. If not provided, import will fail to be processed.
-              metadata:
-                allOf:
-                  - description: >-
-                      Set of key-value pairs you want to associate with this
-                      object.
-                    type:
-                      - object
-                    additionalProperties:
-                      type:
-                        - string
-                      maxLength: 1000
-              entity:
-                allOf:
-                  - oneOf:
-                      - type:
-                          - object
-                        $ref: '#/components/schemas/CompanyEntity'
-                      - type:
-                          - object
-                        $ref: '#/components/schemas/PersonEntity'
-                      - type:
-                          - object
-                        $ref: '#/components/schemas/ArticleEntity'
-                      - type:
-                          - object
-                        $ref: '#/components/schemas/ResearchPaperEntity'
-                      - type:
-                          - object
-                        $ref: '#/components/schemas/CustomEntity'
-                    description: >-
-                      What type of entity the import contains (e.g. People,
-                      Companies, etc.), and thus should be attempted to be
-                      resolved as.
-              csv:
-                allOf:
-                  - type:
-                      - object
-                    properties:
-                      identifier:
-                        type:
-                          - integer
-                        minimum: 0
-                        description: >-
-                          Column containing the key identifier for the entity
-                          (e.g. URL, Name, etc.). If not provided, we will try
-                          to infer it from the file.
-                    description: >-
-                      When format is `csv`, these are the specific import
-                      parameters.
-            required: true
-            refIdentifier: '#/components/schemas/CreateImportParameters'
-            requiredProperties:
-              - size
-              - count
-              - format
-              - entity
-        examples:
-          example:
-            value:
-              size: 123
-              count: 123
-              title: <string>
-              format: csv
-              metadata: {}
-              entity:
-                type: company
-              csv:
-                identifier: 1
-    codeSamples:
-      - label: JavaScript
-        lang: javascript
-        source: |-
-          // npm install exa-js
-          import Exa from 'exa-js';
-          const exa = new Exa('YOUR_EXA_API_KEY');
+  /v0/imports:
+    post:
+      tags:
+        - Imports
+      summary: Create an Import
+      description: >-
+        Creates a new import to upload your data into Websets. Imports can be
+        used to:
 
-          const importJob = await exa.websets.imports.create('webset_id', {
-            source: {
-              type: 'csv',
-              url: 'https://example.com/companies.csv'
-            }
-          });
 
-          console.log(`Created import: ${importJob.id}`);
-      - label: Python
-        lang: python
-        source: |-
-          # pip install exa-py
-          from exa_py import Exa
-          exa = Exa('YOUR_EXA_API_KEY')
+        - **Enrich**: Enhance your data with additional information using our
+        AI-powered enrichment engine
 
-          import_job = exa.websets.imports.create('webset_id', params={
-              'source': {
-                  'type': 'csv',
-                  'url': 'https://example.com/companies.csv'
-              }
-          })
+        - **Search**: Query your data using Websets' agentic search with natural
+        language filters
 
-          print(f'Created import: {import_job.id}')
-  response:
-    '201':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              id:
-                allOf:
-                  - type:
-                      - string
-                    description: The unique identifier for the Import
-              object:
-                allOf:
-                  - type:
-                      - string
-                    enum:
-                      - import
-                    description: The type of object
-              status:
-                allOf:
-                  - type:
-                      - string
-                    enum:
-                      - pending
-                      - processing
-                      - completed
-                      - failed
-                    description: The status of the Import
-              format:
-                allOf:
-                  - type:
-                      - string
-                    enum:
-                      - csv
-                      - webset
-                    description: The format of the import.
-              entity:
-                allOf:
-                  - $ref: '#/components/schemas/Entity'
-                    description: The type of entity the import contains.
-                    nullable: true
-              title:
-                allOf:
-                  - type:
-                      - string
-                    description: The title of the import
-              count:
-                allOf:
-                  - type:
-                      - number
-                    description: The number of entities in the import
-              metadata:
-                allOf:
-                  - description: >-
-                      Set of key-value pairs you want to associate with this
-                      object.
-                    type:
-                      - object
-                    additionalProperties:
-                      type:
-                        - string
-                      maxLength: 1000
-              failedReason:
-                allOf:
-                  - type: string
-                    enum:
-                      - invalid_format
-                      - invalid_file_content
-                      - missing_identifier
-                    description: The reason the import failed
-                    nullable: true
-              failedAt:
-                allOf:
-                  - type: string
-                    format: date-time
-                    description: When the import failed
-                    nullable: true
-              failedMessage:
-                allOf:
-                  - type: string
-                    description: A human readable message of the import failure
-                    nullable: true
-              createdAt:
-                allOf:
-                  - type:
-                      - string
-                    format: date-time
-                    description: When the import was created
-              updatedAt:
-                allOf:
-                  - type:
-                      - string
-                    format: date-time
-                    description: When the import was last updated
-              uploadUrl:
-                allOf:
-                  - type:
-                      - string
-                    description: The URL to upload the file to
-              uploadValidUntil:
-                allOf:
-                  - type:
-                      - string
-                    description: >-
-                      The date and time until the upload URL is valid. The
-                      upload URL will be valid for 1 hour.
-            description: >-
-              The response to a successful import. Includes the upload URL and
-              the upload valid until date.
-            refIdentifier: '#/components/schemas/CreateImportResponse'
-            requiredProperties:
-              - id
-              - object
-              - status
-              - format
-              - entity
-              - title
-              - count
-              - metadata
-              - failedReason
-              - failedAt
-              - failedMessage
-              - createdAt
-              - updatedAt
-              - uploadUrl
-              - uploadValidUntil
-        examples:
-          example:
-            value:
-              id: <string>
-              object: import
-              status: pending
-              format: csv
-              entity:
-                type: company
-              title: <string>
-              count: 123
-              metadata: {}
-              failedReason: invalid_format
-              failedAt: '2023-11-07T05:31:56Z'
-              failedMessage: <string>
-              createdAt: '2023-11-07T05:31:56Z'
-              updatedAt: '2023-11-07T05:31:56Z'
-              uploadUrl: <string>
-              uploadValidUntil: <string>
-        description: Import created successfully
-  deprecated: false
-  type: path
+        - **Exclude**: Prevent duplicate or already known results from appearing
+        in your searches
+
+
+        Once the import is created, you can upload your data to the returned
+        `uploadUrl` until `uploadValidUntil` (by default 1 hour).
+      operationId: imports-create
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateImportParameters'
+      responses:
+        '201':
+          description: Import created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateImportResponse'
+          headers:
+            X-Request-Id:
+              schema:
+                type: string
+              description: Unique identifier for the request.
+              example: req_N6SsgoiaOQOPqsYKKiw5
+              required: true
+      security:
+        - api_key: []
 components:
   schemas:
+    CreateImportParameters:
+      discriminator:
+        propertyName: format
+      oneOf:
+        - type:
+            - object
+          properties:
+            size:
+              type:
+                - number
+              maximum: 50000000
+              description: The size of the file in bytes. Maximum size is 50 MB.
+            count:
+              type:
+                - number
+              description: The number of records to import
+            title:
+              type:
+                - string
+              description: The title of the import
+            format:
+              type:
+                - string
+              enum:
+                - csv
+              description: >-
+                When the import is in CSV format, we expect a column containing
+                the key identifier for the entity - for now URL. If not
+                provided, import will fail to be processed.
+            metadata:
+              description: Set of key-value pairs you want to associate with this object.
+              type:
+                - object
+              additionalProperties:
+                type:
+                  - string
+                maxLength: 1000
+            entity:
+              oneOf:
+                - $ref: '#/components/schemas/CompanyEntity'
+                  type:
+                    - object
+                - $ref: '#/components/schemas/PersonEntity'
+                  type:
+                    - object
+                - $ref: '#/components/schemas/ArticleEntity'
+                  type:
+                    - object
+                - $ref: '#/components/schemas/ResearchPaperEntity'
+                  type:
+                    - object
+                - $ref: '#/components/schemas/CustomEntity'
+                  type:
+                    - object
+              description: >-
+                What type of entity the import contains (e.g. People, Companies,
+                etc.), and thus should be attempted to be resolved as.
+            csv:
+              type:
+                - object
+              properties:
+                identifier:
+                  type:
+                    - integer
+                  minimum: 0
+                  description: >-
+                    Column containing the key identifier for the entity (e.g.
+                    URL, Name, etc.). If not provided, we will try to infer it
+                    from the file.
+              description: When format is `csv`, these are the specific import parameters.
+          required:
+            - size
+            - count
+            - format
+            - entity
+    CreateImportResponse:
+      type:
+        - object
+      properties:
+        id:
+          type:
+            - string
+          description: The unique identifier for the Import
+        object:
+          type:
+            - string
+          enum:
+            - import
+          description: The type of object
+        status:
+          type:
+            - string
+          enum:
+            - pending
+            - processing
+            - completed
+            - failed
+          description: The status of the Import
+        format:
+          type:
+            - string
+          enum:
+            - csv
+            - webset
+          description: The format of the import.
+        entity:
+          $ref: '#/components/schemas/Entity'
+          description: The type of entity the import contains.
+          nullable: true
+        title:
+          type:
+            - string
+          description: The title of the import
+        count:
+          type:
+            - number
+          description: The number of entities in the import
+        metadata:
+          description: Set of key-value pairs you want to associate with this object.
+          type:
+            - object
+          additionalProperties:
+            type:
+              - string
+            maxLength: 1000
+        failedReason:
+          type: string
+          enum:
+            - invalid_format
+            - invalid_file_content
+            - missing_identifier
+          description: The reason the import failed
+          nullable: true
+        failedAt:
+          type: string
+          format: date-time
+          description: When the import failed
+          nullable: true
+        failedMessage:
+          type: string
+          description: A human readable message of the import failure
+          nullable: true
+        createdAt:
+          type:
+            - string
+          format: date-time
+          description: When the import was created
+        updatedAt:
+          type:
+            - string
+          format: date-time
+          description: When the import was last updated
+        uploadUrl:
+          type:
+            - string
+          description: The URL to upload the file to
+        uploadValidUntil:
+          type:
+            - string
+          description: >-
+            The date and time until the upload URL is valid. The upload URL will
+            be valid for 1 hour.
+      required:
+        - id
+        - object
+        - status
+        - format
+        - entity
+        - title
+        - count
+        - metadata
+        - failedReason
+        - failedAt
+        - failedMessage
+        - createdAt
+        - updatedAt
+        - uploadUrl
+        - uploadValidUntil
+      description: >-
+        The response to a successful import. Includes the upload URL and the
+        upload valid until date.
     CompanyEntity:
       type:
         - object
@@ -377,24 +323,26 @@ components:
       title: Custom
     Entity:
       oneOf:
-        - type:
+        - $ref: '#/components/schemas/CompanyEntity'
+          type:
             - object
-          $ref: '#/components/schemas/CompanyEntity'
-        - type:
+        - $ref: '#/components/schemas/PersonEntity'
+          type:
             - object
-          $ref: '#/components/schemas/PersonEntity'
-        - type:
+        - $ref: '#/components/schemas/ArticleEntity'
+          type:
             - object
-          $ref: '#/components/schemas/ArticleEntity'
-        - type:
+        - $ref: '#/components/schemas/ResearchPaperEntity'
+          type:
             - object
-          $ref: '#/components/schemas/ResearchPaperEntity'
-        - type:
+        - $ref: '#/components/schemas/CustomEntity'
+          type:
             - object
-          $ref: '#/components/schemas/CustomEntity'
+  securitySchemes:
+    api_key:
+      type: apiKey
+      in: header
+      name: x-api-key
+      description: Your Exa API key
 
 ````
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.exa.ai/llms.txt

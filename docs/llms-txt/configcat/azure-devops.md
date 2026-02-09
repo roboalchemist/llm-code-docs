@@ -2,19 +2,21 @@
 
 # Azure DevOps - Scan your source code for feature flags
 
-This section describes how to use the [ConfigCat CLI](https://configcat.com/docs/docs/advanced/cli/.md) in [Azure DevOps Pipelines](https://docs.microsoft.com/en-us/azure/devops/pipelines/?view=azure-devops) to automatically scan your source code for feature flag and setting usages and upload the found code references to ConfigCat.
+Copy page
 
-## Setup[â€‹](#setup "Direct link to Setup")
+This section describes how to use the [ConfigCat CLI](https://configcat.com/docs/advanced/cli.md) in [Azure DevOps Pipelines](https://docs.microsoft.com/en-us/azure/devops/pipelines/?view=azure-devops) to automatically scan your source code for feature flag and setting usages and upload the found code references to ConfigCat.
+
+## Setup[​](#setup "Direct link to Setup")
 
 1. Create a new [ConfigCat Management API credential](https://app.configcat.com/my-account/public-api-credentials) and store its values in Azure DevOps [Pipeline Variables](https://docs.microsoft.com/en-us/azure/devops/pipelines/process/variables) with the following names: `CONFIGCAT_API_USER`, `CONFIGCAT_API_PASS`.
 
    ![Azure secrets](/docs/assets/cli/scan/azure_secrets.png)
 
-2. Get your selected [Config's ID](https://configcat.com/docs/docs/advanced/code-references/overview/.md#config-id).
+2. Get your selected [Config's ID](https://configcat.com/docs/advanced/code-references/overview.md#config-id).
 
 3. Create a new or open your existing `azure-pipelines.yml` file, and add the following [job](https://docs.microsoft.com/en-us/azure/devops/pipelines/yaml-schema#job) to your `jobs` definition. Don't forget to replace the `PASTE-YOUR-CONFIG-ID-HERE` value with your actual Config ID.
 
-   ```
+   ```yaml
    - job: configcat_scan_and_upload
      container: configcat/cli:azure-devops-2.4.2
      pool:
@@ -35,6 +37,7 @@ This section describes how to use the [ConfigCat CLI](https://configcat.com/docs
          env:
            CONFIGCAT_API_PASS: $(CONFIGCAT_API_PASS)
            CONFIGCAT_API_USER: $(CONFIGCAT_API_USER)
+
    ```
 
 info

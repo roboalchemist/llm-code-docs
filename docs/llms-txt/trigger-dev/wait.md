@@ -1,5 +1,9 @@
 # Source: https://trigger.dev/docs/wait.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://trigger.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Wait: Overview
 
 > During your run you can wait for a period of time or for something to happen.

@@ -1,4 +1,8 @@
-# Source: https://docs.exa.ai/examples/demo-hallucination-detector.md
+# Source: https://exa.ai/docs/examples/demo-hallucination-detector.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://exa.ai/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Hallucination Detector
 
@@ -119,8 +123,3 @@ This document explains the functions behind the three steps of the fact-checker:
 </Steps>
 
 Using LLMs to extract claims and verify them against Exa search sources is a simple way to detect hallucinations in content. If you'd like to recreate it, the full documentation for the script is [here](/examples/identifying-hallucinations-with-exa) and the github repo is [here](https://github.com/exa-labs/exa-hallucination-detector).
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.exa.ai/llms.txt

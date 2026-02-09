@@ -1,5 +1,9 @@
 # Source: https://smartcar.com/docs/integrations/webhooks/best-practices/testing.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://smartcar.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Testing
 
 > Test your webhook integration before going to production
@@ -66,8 +70,3 @@ Once testing is complete, prepare for production deployment:
     Understand production retry and timeout policies
   </Card>
 </CardGroup>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://smartcar.com/docs/llms.txt

@@ -3,7 +3,6 @@
 ---
 url: /docs/guide/usage/linter/rules/react/forward-ref-uses-ref.md
 ---
-# react/forward-ref-uses-ref&#x20;
 
 ### What it does
 

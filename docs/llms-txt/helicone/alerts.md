@@ -1,5 +1,9 @@
 # Source: https://docs.helicone.ai/features/alerts.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.helicone.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Alerts
 
 > Get notified when your LLM applications hit error thresholds or cost limits

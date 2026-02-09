@@ -1,12 +1,16 @@
 # Source: https://trigger.dev/docs/wait-until.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://trigger.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Wait until
 
 > Wait until a date, then continue execution.
 
 This example sends a reminder email to a user at the specified datetime.
 
-```ts /trigger/reminder-email.ts theme={null}
+```ts /trigger/reminder-email.ts theme={"theme":"css-variables"}
 export const sendReminderEmail = task({
   id: "send-reminder-email",
   run: async (payload: { to: string; name: string; date: string }) => {
@@ -35,7 +39,7 @@ When triggering and waiting for subtasks, the parent is checkpointed and while w
 
 You can optionally throw an error if the date is already in the past when the function is called:
 
-```ts  theme={null}
+```ts  theme={"theme":"css-variables"}
 await wait.until({ date: new Date(date), throwIfInThePast: true });
 ```
 
@@ -45,7 +49,7 @@ You can of course use try/catch if you want to do something special in this case
 
 You can pass an idempotency key to any wait function, allowing you to skip waits if the same idempotency key is used again. This can be useful if you want to skip waits when retrying a task, for example:
 
-```ts  theme={null}
+```ts  theme={"theme":"css-variables"}
 // Specify the idempotency key and TTL when waiting until a date:
 await wait.until({
   date: futureDate,

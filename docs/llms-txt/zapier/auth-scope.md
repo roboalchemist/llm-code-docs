@@ -1,5 +1,9 @@
 # Source: https://docs.zapier.com/platform/manage/auth-scope.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.zapier.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Change OAuth scope
 
 > How to add or remove OAuth scopes.

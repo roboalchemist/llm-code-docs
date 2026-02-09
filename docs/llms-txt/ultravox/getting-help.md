@@ -1,5 +1,9 @@
 # Source: https://docs.ultravox.ai/gettingstarted/getting-help.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.ultravox.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Getting Help
 
 > Connect with our community and get support for building voice AI agents
@@ -38,8 +42,3 @@ To help us assist you more effectively, please include:
 4. **Steps to reproduce**: details of the steps used to reproduce the issue (if applicable)
 
 Whether you reach out on Discord or via email, we're here to help you build amazing voice AI experiences with Ultravox!
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.ultravox.ai/llms.txt

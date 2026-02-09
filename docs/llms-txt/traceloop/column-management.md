@@ -1,5 +1,9 @@
 # Source: https://www.traceloop.com/docs/playgrounds/columns/column-management.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.traceloop.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Column Management
 
 > Learn all columns general functionalities
@@ -38,8 +42,3 @@ Each column has a menu that lets you manage and customize it. From this menu, yo
 <img className="block dark:hidden" src="https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/playground/play-column-options-light.png?fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=1a19a1e8585460a04904e3667214f36d" style={{maxWidth: '350px'}} data-og-width="592" width="592" data-og-height="538" height="538" data-path="img/playground/play-column-options-light.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/playground/play-column-options-light.png?w=280&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=20ae0534eccc81369490f5fe7725c2db 280w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/playground/play-column-options-light.png?w=560&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=5fbdf0ae14a8320a0c7c535e8647a439 560w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/playground/play-column-options-light.png?w=840&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=a29a1cde52e8ffec7f49a54f689442e2 840w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/playground/play-column-options-light.png?w=1100&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=49b385570d64ada5e023a170bf38a3ff 1100w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/playground/play-column-options-light.png?w=1650&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=fee31b863fac5e32d818e943b4e03a51 1650w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/playground/play-column-options-light.png?w=2500&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=2c0aa3789bded43897e046fc9e63679c 2500w" />
 
 <img className="hidden dark:block" src="https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/playground/play-column-options-dark.png?fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=021e28c139eac31215e334d731b9131a" style={{maxWidth: '350px'}} data-og-width="602" width="602" data-og-height="538" height="538" data-path="img/playground/play-column-options-dark.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/playground/play-column-options-dark.png?w=280&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=456edf74fad3cd5e9625825c2d47ccfc 280w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/playground/play-column-options-dark.png?w=560&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=d469a7ee2ebb5456052394e231183e78 560w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/playground/play-column-options-dark.png?w=840&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=a31ed204f6020141b4977ffc2bcc46d5 840w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/playground/play-column-options-dark.png?w=1100&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=c133742b0eabf5eab0deb0b37088e728 1100w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/playground/play-column-options-dark.png?w=1650&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=ed6695dc393ab3ed924bf7d70167904f 1650w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/playground/play-column-options-dark.png?w=2500&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=55712c75d40cfb473c613a8137fcf66d 2500w" />
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://www.traceloop.com/docs/llms.txt

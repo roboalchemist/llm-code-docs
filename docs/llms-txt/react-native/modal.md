@@ -18,7 +18,7 @@ Inherits [View Props](/docs/view.md#props).
 
 ***
 
-### `animated`[​](#animated "Direct link to animated")
+### 🗑️ `animated`[​](#️-animated "Direct link to ️-animated")
 
 Deprecated
 

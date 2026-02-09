@@ -4,16 +4,16 @@
 
 Better Auth Plugin for Payment and Subscriptions using Creem
 
-***
 
-title: Creem
-description: Better Auth Plugin for Payment and Subscriptions using Creem
--------------------------------------------------------------------------
 
 [Creem](https://creem.io) is a financial OS that enables teams and individuals selling software globally to split revenue and collaborate on financial workflows without any tax compliance headaches. This plugin integrates Creem with Better Auth, bringing payment processing and subscription management directly into your authentication layer.
 
+<Callout>
+  This plugin is maintained by the Creem team. For bugs, issues or feature requests,
+  please visit the [Creem GitHub repo](https://github.com/armitage-labs/creem-betterauth).
+</Callout>
+
 <Card href="https://discord.gg/q3GKZs92Av" title="Get support on Creem Discord or in our in-app live-chat">
-  This plugin is maintained by the Creem team.<br />
   Need help? Reach out to our team anytime on Discord.
 </Card>
 
@@ -36,7 +36,7 @@ description: Better Auth Plugin for Payment and Subscriptions using Creem
   <Step>
     ### Install the plugin
 
-    <CodeBlockTabs defaultValue="npm">
+    <CodeBlockTabs defaultValue="npm" groupId="persist-install" persist>
       <CodeBlockTabsList>
         <CodeBlockTabsTrigger value="npm">
           npm
@@ -168,7 +168,7 @@ If you're using database persistence (`persistSubscriptions: true`), generate an
 
 <Tabs items={["migrate", "generate"]}>
   <Tab value="migrate">
-    <CodeBlockTabs defaultValue="npm">
+    <CodeBlockTabs defaultValue="npm" groupId="persist-install" persist>
       <CodeBlockTabsList>
         <CodeBlockTabsTrigger value="npm">
           npm
@@ -214,7 +214,7 @@ If you're using database persistence (`persistSubscriptions: true`), generate an
   </Tab>
 
   <Tab value="generate">
-    <CodeBlockTabs defaultValue="npm">
+    <CodeBlockTabs defaultValue="npm" groupId="persist-install" persist>
       <CodeBlockTabsList>
         <CodeBlockTabsTrigger value="npm">
           npm

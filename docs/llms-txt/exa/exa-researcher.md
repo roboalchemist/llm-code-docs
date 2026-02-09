@@ -1,4 +1,8 @@
-# Source: https://docs.exa.ai/examples/exa-researcher.md
+# Source: https://exa.ai/docs/examples/exa-researcher.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://exa.ai/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Exa Researcher - JavaScript
 
@@ -167,8 +171,3 @@ researcher("llama antibodies").then(console.log);
 ```
 
 For a link to a complete, cleaned up version of this project that you can execute in your NodeJS environment, check out the [alternative JS-only version](https://github.com/exa-labs/exa-js/tree/master/examples/researcher/researcher.mjs).
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.exa.ai/llms.txt

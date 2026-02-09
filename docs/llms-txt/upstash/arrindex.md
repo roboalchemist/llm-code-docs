@@ -2,23 +2,9 @@
 
 # Source: https://upstash.com/docs/redis/sdks/py/commands/json/arrindex.md
 
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/json/arrindex.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/json/arrindex.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/json/arrindex.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/json/arrindex.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/json/arrindex.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/json/arrindex.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/json/arrindex.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/json/arrindex.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/json/arrindex.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # JSON.ARRINDEX
 
@@ -26,11 +12,11 @@
 
 ## Arguments
 
-<ParamField body="key" type="string" required>
+<ParamField body="key" type="str" required>
   The key of the json entry.
 </ParamField>
 
-<ParamField body="path" type="string" default="$">
+<ParamField body="path" type="str" required>
   The path of the array.
 </ParamField>
 
@@ -38,22 +24,22 @@
   The value to search for.
 </ParamField>
 
-<ParamField body="start" type="integer" default={0}>
+<ParamField body="start" type="int" default={0}>
   The start index.
 </ParamField>
 
-<ParamField body="stop" type="integer" default={0}>
+<ParamField body="stop" type="int" default={0}>
   The stop index.
 </ParamField>
 
 ## Response
 
-<ResponseField type="integer[]" required>
+<ResponseField type="List[int]" required>
   The index of the first occurrence of the value in the array, or -1 if not found.
 </ResponseField>
 
 <RequestExample>
-  ```ts Example theme={"system"}
-  const index = await redis.json.arrindex("key", "$.path.to.array", "a");
+  ```py Example theme={"system"}
+  index = redis.json.arrindex("key", "$.path.to.array", "a")
   ```
 </RequestExample>

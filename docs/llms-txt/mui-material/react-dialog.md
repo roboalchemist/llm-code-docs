@@ -795,7 +795,11 @@ function ConfirmationDialogRaw(props: ConfirmationDialogRawProps) {
     <Dialog
       sx={{ '& .MuiDialog-paper': { width: '80%', maxHeight: 435 } }}
       maxWidth="xs"
-      TransitionProps={{ onEntering: handleEntering }}
+      slotProps={{
+        transition: {
+          onEntering: handleEntering,
+        },
+      }}
       open={open}
       {...other}
     >
@@ -1241,7 +1245,7 @@ You can use `MuiDialog` to change the default props of this component with the t
 [Follow this guide](/material-ui/transitions/#transitioncomponent-prop) to learn more about the requirements for this component. |
 | paper | `Paper` | `.MuiDialog-paper` | The component that renders the paper. |
 | container | `undefined` | `.MuiDialog-container` | The component that renders the container. |
-| backdrop | `undefined` | - | The component that renders the backdrop. |
+| backdrop | `undefined` | `.MuiDialog-backdrop` | The component that renders the backdrop. |
 | root | `undefined` | `.MuiDialog-root` | The component that renders the root. |
 
 ## CSS

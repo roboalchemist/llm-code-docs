@@ -1,5 +1,9 @@
 # Source: https://docs.replit.com/replit-workspace/workspace-features/shell.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.replit.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Shell
 
 > Shell is a command-line tool that lets you run commands in your Replit App's workspace.
@@ -31,7 +35,6 @@ Shell provides the following capabilities:
 
 * **Run multiple shells**: Open multiple shell instances to work on different tasks simultaneously
 * **Search for text**: Find specific text in the shell output
-* **Generate commands using AI**: Use Assistant to help create commands from natural language descriptions
 
 ## Usage
 
@@ -56,23 +59,6 @@ The following steps describe how to access and use the text search tool:
 3. Use **Previous** to go back to prior matches.
 4. Select **Exit** or click outside the dialog to exit the text search.
 
-### AI suggestions
-
-To get assistance composing your command from Assistant, follow the steps below:
-
-1. Right-click anywhere in the Shell and select **Generate command** from the contextual menu.
-2. Describe the task you want to accomplish in plain language and press `Enter` to submit your request.
-3. Assistant generates a command and shows a preview in gray text.
-4. Select **Accept** to run it or **Reject** to cancel.
-
-For example, if you enter "list all files in the current directory," Assistant might suggest the `ls` command.
-
-To request help with resolving an issue reported in the output, follow the steps below:
-
-1. Select the relevant text and right-click on the selection.
-2. Select **Ask Assistant** in the contextual menu.
-3. The **Assistant** tab automatically opens and submits the selected text to Assistant for analysis.
-
 ### Multiple shells
 
 To create a new shell, select the menu at the top left of the **Shell** tab arrow and select **New Shell** as shown below:
@@ -93,4 +79,3 @@ Use the same menu to switch between shells. The workspace labels each shell with
 To learn more about related Workspace tools see the following resources:
 
 * [Console](/replit-workspace/workspace-features/console/): Learn how to use Console to monitor your Replit App workflows.
-* [Assistant](/replitai/assistant/): Learn about Assistant for code help and error resolution

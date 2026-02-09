@@ -1,5 +1,9 @@
 # Source: https://loops.so/docs/creating-emails/duplicating-emails.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://loops.so/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Duplicating emails
 
 > Re-use basic elements of an email or create email templates.

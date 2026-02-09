@@ -43,7 +43,7 @@ Benchmark code can be found [here](https://github.com/alacritty/vtebench) with t
 | scrolling\_top\_small\_region    | 114.64        | 205.59                | 1216.33   | 21.91         | 663.44      |
 | unicode                          | 66.47         | 34.45                 | 93.01     | 16.78         | 1279.25     |
 
-![VTEbench average results (logarithmic scale )](https://2297236823-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-MbqIgTw17KQvq_DQuRr%2Fuploads%2Fgit-blob-4fd6246c4ec142bffccc1c34655a39f5c89114d4%2Fvtebench_avg.png?alt=media\&token=612ac808-70d3-4022-bbd2-17e400a89769)
+![VTEbench average results (logarithmic scale )](https://4009768362-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FPsjNxoJ0NFCXW6rRdHH3%2Fuploads%2Fgit-blob-4fd6246c4ec142bffccc1c34655a39f5c89114d4%2Fvtebench_avg.png?alt=media)
 
 ### P90 of the results
 
@@ -58,7 +58,7 @@ Benchmark code can be found [here](https://github.com/alacritty/vtebench) with t
 | scrolling\_top\_small\_region    | 167      | 222              | 1314      | 30            | 666         |
 | unicode                          | 77       | 39               | 90        | 20            | 3883        |
 
-![VTEbench p90 results (logarithmic scale )](https://2297236823-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-MbqIgTw17KQvq_DQuRr%2Fuploads%2Fgit-blob-2ff8b633d0763421572f9dc4ef9351c6a060108d%2Fvtebench_p90.png?alt=media\&token=c1f66a9f-4de9-43a7-8305-c5e2d9056ce6)
+![VTEbench p90 results (logarithmic scale )](https://4009768362-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FPsjNxoJ0NFCXW6rRdHH3%2Fuploads%2Fgit-blob-2ff8b633d0763421572f9dc4ef9351c6a060108d%2Fvtebench_p90.png?alt=media)
 
 ## Termbench
 
@@ -76,7 +76,7 @@ Below you'll find results for small and regular test sizes. Note that Terminal.a
 | FGBGPerChar    | 2.8403         | 908.894                | 4.5881          | 0.5931          | 0.7283        |
 | overall result | 20.0006        | 1367.209               | 25.0413         | 2.943           | 21.7793       |
 
-![Termbench small results (logarithmic scale )](https://2297236823-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-MbqIgTw17KQvq_DQuRr%2Fuploads%2Fgit-blob-f9dfb0234c73af1b47538533968399d9c21ec150%2Ftermbench_small.png?alt=media\&token=7ac7be41-ad10-4b9d-91e5-326b6ec2b29a)
+![Termbench small results (logarithmic scale )](https://4009768362-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FPsjNxoJ0NFCXW6rRdHH3%2Fuploads%2Fgit-blob-f9dfb0234c73af1b47538533968399d9c21ec150%2Ftermbench_small.png?alt=media)
 
 ### Regular test size
 
@@ -88,4 +88,4 @@ Below you'll find results for small and regular test sizes. Note that Terminal.a
 | FGBGPerChar    | 46.312           | 50.5369           | 8.418                 | 13.5142         |
 | overall result | 337.0585         | 349.1258          | 45.3767               | 381.1229        |
 
-![Termbench results (logarithmic scale)](https://2297236823-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-MbqIgTw17KQvq_DQuRr%2Fuploads%2Fgit-blob-fed348f024a20663fe457c7e217090d1b8722764%2Ftermbench_regular.png?alt=media\&token=1a63f27f-6e28-4c5f-b413-88a114af044b)
+![Termbench results (logarithmic scale)](https://4009768362-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FPsjNxoJ0NFCXW6rRdHH3%2Fuploads%2Fgit-blob-fed348f024a20663fe457c7e217090d1b8722764%2Ftermbench_regular.png?alt=media)

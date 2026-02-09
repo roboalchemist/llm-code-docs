@@ -1,24 +1,20 @@
-# Source: https://docs.perplexity.ai/guides/returning-images.md
+# Source: https://docs.perplexity.ai/docs/grounded-llm/chat-completions/media/returning-images.md
 
-# Returning Images with Sonar
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.perplexity.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Returning Images
 
 > Control image results with domain and format filters using Sonar models
 
 ## Overview
 
-Sonar models can return images as part of their responses to enhance the information provided. You can control which images are returned using domain and format filters, giving you fine-grained control over the sources and file types of image results.
+Grounded LLMs can return images as part of their responses to enhance the information provided. You can control which images are returned using domain and format filters, giving you fine-grained control over the sources and file types of image results. The `image_domain_filter` and `image_format_filter` parameters allow you to control the sources and file types of image results returned by Grounded LLMs. You can include a maximum of 10 entries in each of the filter lists, and these filters apply only when `"return_images": true` is set in your request.
 
-<Note>
-  **SDK Installation Required**: Install the official SDK first - `pip install perplexityai` for Python or `npm install @perplexity-ai/perplexity_ai` for TypeScript/JavaScript.
-</Note>
-
-<Note>
-  The `image_domain_filter` and `image_format_filter` parameters allow you to control the sources and file types of image results returned by the Sonar models.
-</Note>
-
-<Warning>
-  You can include a maximum of 10 entries in each of the filter lists. These filters currently apply only when `"return_images": true` is set in your request.
-</Warning>
+<Info>
+  The `return_images` feature is currently only available in the Chat Completions API.
+</Info>
 
 ## Filter Types
 
@@ -472,6 +468,7 @@ image_domain_filter = ["-lowres.com", "-thumbnail.com"]  # Exclude low-quality s
 ## Limitations
 
 <Warning>
+  * Maximum of 30 images can be returned per response
   * Maximum of 10 entries in each filter list
   * Filters only apply when `"return_images": true` is set
   * Some domains may not be filterable due to CDN usage

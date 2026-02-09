@@ -1,15 +1,19 @@
 # Source: https://turbo.build/guides/tools/shadcn-ui.md
 
 # shadcn/ui
-Description: Learn how to use shadcn/ui in a Turborepo.
 
-import { Tabs, Tab } from 'fumadocs-ui/components/tabs';
+<CopyPrompt
+  title="Set up shadcn/ui in a Turborepo"
+  prompt={
+  "Set up shadcn/ui in this Turborepo.\n1) Initialize shadcn/ui for monorepos\n2) Add components to the UI package\n3) Use components in applications\n\nWalk me through each step."
+}
+/>
 
 [shadcn/ui](https://ui.shadcn.com/docs/monorepo) is an open-source set of beautifully designed components made with Tailwind CSS that you can copy and paste into your apps.
 
 To get started with shadcn/ui in a new monorepo, run:
 
-<Tabs groupId="package-manager" items={['pnpm', 'yarn', 'npm', 'bun']} persist>
+<PackageManagerTabs>
   <Tab value="pnpm">
     ```bash title="Terminal"
     pnpm dlx shadcn@canary init
@@ -33,13 +37,13 @@ To get started with shadcn/ui in a new monorepo, run:
     bunx shadcn@canary init
     ```
   </Tab>
-</Tabs>
+</PackageManagerTabs>
 
 When prompted, select the option for monorepos.
 
 To add a component, run:
 
-<Tabs groupId="package-manager" items={['pnpm', 'yarn', 'npm', 'bun']} persist>
+<PackageManagerTabs>
   <Tab value="pnpm">
     ```bash title="Terminal"
     pnpm dlx shadcn@canary add [COMPONENT]
@@ -63,8 +67,12 @@ To add a component, run:
     bunx shadcn@canary add [COMPONENT]
     ```
   </Tab>
-</Tabs>
+</PackageManagerTabs>
 
 ## More information
 
 To learn more about using shadcn/ui in Turborepo, [visit the docs for shadcn/ui](https://ui.shadcn.com/docs/monorepo).
+
+---
+
+[View full sitemap](/sitemap.md)

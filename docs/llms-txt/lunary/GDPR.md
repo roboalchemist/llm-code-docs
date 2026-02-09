@@ -1,5 +1,9 @@
 # Source: https://docs.lunary.ai/docs/more/security/GDPR.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.lunary.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # GDPR compliance guide
 
 The [General Data Protection Regulation (GDPR)](https://gdpr.eu/) represents a set of regulations on privacy and security, established and enacted by the European Union (EU). It mandates responsibilities for organizations globally, provided they process or gather data concerning individuals within the EU.
@@ -112,8 +116,3 @@ You can remove a user from a Lunary instance via the Lunary user interface. To d
 * Select "Users" from the sidebar menu
 * Search and click on the concerned user
 * Click "Delete" to remove them and all their associated data from Lunary.
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.lunary.ai/llms.txt

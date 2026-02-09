@@ -1,5 +1,9 @@
 # Source: https://getlago.com/docs/guide/plans/charges/charge-models/volume.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://getlago.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Volume
 
 Select the volume charge model if you want to define several price tiers but

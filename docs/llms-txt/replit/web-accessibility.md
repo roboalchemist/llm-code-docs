@@ -1,5 +1,9 @@
 # Source: https://docs.replit.com/legal-and-security-info/web-accessibility.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.replit.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Replit web accessibility statement
 
 > Learn about Replit's commitment to web accessibility, WCAG 2.1 compliance goals, current accessibility status, and how to provide feedback about accessibility features.

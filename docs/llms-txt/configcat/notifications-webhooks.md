@@ -2,6 +2,8 @@
 
 # Notifications - Webhooks
 
+Copy page
+
 ConfigCat Webhooks can notify your applications when a feature flag or other Setting changes by calling a public HTTP endpoint on your end. This allows your applications to react almost immediately to updates. Webhooks add the speed of near real-time updates to the reliability of Polling, giving your applications a fast and robust way to stay in sync. To enable Webhooks, simply tell us which HTTP endpoint to call. ConfigCat will send a request to that URL whenever a change occurs.
 
 ## Adding a Webhook[​](#adding-a-webhook "Direct link to Adding a Webhook")
@@ -31,7 +33,7 @@ You can customize the request body that will be sent with each Webhook call. Con
 
 The ##ChangeDetails## variable is replaced with a JSON array in the following format:
 
-```
+```text
 [
   {
     "settingKey":"myAwesomeFeature1",
@@ -44,6 +46,7 @@ The ##ChangeDetails## variable is replaced with a JSON array in the following fo
     "details":"\r\nmyAwesomeFeature2:\r\n  Rollout percentage items changed:\r\n    + 20% true\r\n    + 80% false"
   }
 ]
+
 ```
 
 ## Testing your Webhook[​](#testing-your-webhook "Direct link to Testing your Webhook")
@@ -75,20 +78,22 @@ Currently, the latest (and the only) signature header version is `V1`. If the si
 
 Example request:
 
-```
+```text
 POST /path HTTP/1.1
 Host: <your-host>
 X-ConfigCat-Webhook-ID: b616ca659d154a5fb907dd8475792eeb
 X-ConfigCat-Webhook-Timestamp: 1669580020
 X-ConfigCat-Webhook-Signature-V1: RoO/UMvSRqzJ0OolMMuhHBbM8/Vjn+nTh+SKyLcQf0M=,heIrGPw6aylAZEX6xmSLrxIWVif5injeBCxWQ+0+b2U=
+
 ```
 
 ### Content to sign[​](#content-to-sign "Direct link to Content to sign")
 
 The signature is calculated from the content constructed by concatenating the webhook's `id`, `timestamp`, and raw `body` together.
 
-```
+```js
 const contentToSign = `${webhookId}${timestamp}${body}`;
+
 ```
 
 | Content part | Description                                                                                                  |
@@ -111,8 +116,9 @@ info
 
 For **key rotation** purposes, you can generate a secondary signing key. In this case ConfigCat sends two signatures (one signed with the *primary* and one signed with the *secondary* key) in the `X-ConfigCat-Webhook-Signature-V1` header separated by a comma (`,`):
 
-```
+```text
 X-ConfigCat-Webhook-Signature-V1: RoO/UMvSRqzJ0OolMMuhHBbM8/Vjn+nTh+SKyLcQf0M=,heIrGPw6aylAZEX6xmSLrxIWVif5injeBCxWQ+0+b2U=
+
 ```
 
 * Node.js
@@ -123,7 +129,7 @@ X-ConfigCat-Webhook-Signature-V1: RoO/UMvSRqzJ0OolMMuhHBbM8/Vjn+nTh+SKyLcQf0M=,h
 * .NET
 * Java
 
-```
+```js
 const crypto = require('crypto');
 
 // retrieved from the ConfigCat Dashboard
@@ -150,9 +156,10 @@ const calculatedSignature = crypto
   .digest('base64');
 
 console.log(calculatedSignature == receivedSignature); // must be true
-```
 
 ```
+
+```python
 import hmac
 import base64
 
@@ -177,9 +184,10 @@ signing_key_bytes = bytes(signing_key, 'utf-8')
 calculated_signature = base64.b64encode(hmac.new(signing_key_bytes, bytes(content_to_sign, 'utf-8'), 'sha256').digest())
 
 print(calculated_signature.decode() == received_signature) # must be true
-```
 
 ```
+
+```ruby
 require 'openssl'
 require 'base64'
 
@@ -203,9 +211,10 @@ content_to_sign = "#{request_id}#{timestamp}#{body}"
 calculated_signature = Base64.strict_encode64(OpenSSL::HMAC.digest("sha256", signing_key, content_to_sign))
 
 puts calculated_signature == received_signature # must be true
-```
 
 ```
+
+```php
 <?php
 
 // retrieved from the ConfigCat Dashboard
@@ -228,9 +237,10 @@ $content_to_sign = "{$request_id}{$timestamp}{$body}";
 $calculated_signature = base64_encode(hash_hmac("sha256", $content_to_sign, $signing_key, true));
 
 echo hash_equals($calculated_signature, $received_signature); // must be true
-```
 
 ```
+
+```go
 package main
 
 import (
@@ -265,9 +275,10 @@ func main() {
 
   fmt.Println(calculatedSignature == receivedSignature) // must be true
 }
-```
 
 ```
+
+```csharp
 using System;
 using System.Security.Cryptography;
 using System.Text;
@@ -295,9 +306,10 @@ using (var hmac = new HMACSHA256(Encoding.UTF8.GetBytes(signingKey)))
 
 	Console.WriteLine(calculatedSignature == receivedSignature); // must be true
 }
-```
 
 ```
+
+```java
 import javax.crypto.Mac;
 import javax.crypto.spec.SecretKeySpec;
 import java.util.Base64;
@@ -332,6 +344,7 @@ public class Main {
     System.out.println(calculatedSignature.equals(receivedSignature)); // must be true
   }
 }
+
 ```
 
 ### Timestamp validation[​](#timestamp-validation "Direct link to Timestamp validation")
@@ -354,10 +367,11 @@ A few steps to set up Slack and get a message when a setting changes:
 4. Select **POST** as the **HTTP METHOD**.
 5. Add the following request body:
 
-```
+```text
 {
   "text": "<##URL##|##ConfigName## - ##EnvironmentName##> changed in ConfigCat: \n\n##ChangeDetailsSlack##"
 }
+
 ```
 
 ## Connecting to Microsoft Teams[​](#connecting-to-microsoft-teams "Direct link to Connecting to Microsoft Teams")
@@ -370,7 +384,7 @@ A few steps to set up Microsoft Teams and get a message when a setting changes:
 4. Select **POST** as the **HTTP METHOD**.
 5. Add the following request body:
 
-```
+```text
 {
   "@context": "https://schema.org/extensions",
   "@type": "MessageCard",
@@ -387,4 +401,5 @@ A few steps to set up Microsoft Teams and get a message when a setting changes:
     }
   ]
 }
+
 ```

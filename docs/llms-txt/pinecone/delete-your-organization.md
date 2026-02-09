@@ -1,5 +1,9 @@
 # Source: https://docs.pinecone.io/troubleshooting/delete-your-organization.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pinecone.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Delete your organization
 
 If you want to delete your Pinecone organization entirely, you'll need to delete all projects, which first requires deleting all indexes and collections, and downgrade to the Starter plan.

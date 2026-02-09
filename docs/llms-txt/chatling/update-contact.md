@@ -2,32 +2,17 @@
 
 # Source: https://docs.chatling.ai/chatbot/builder/blocks/action/update-contact.md
 
-# Source: https://docs.chatling.ai/chatbot/builder/blocks/hubspot/update-contact.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.chatling.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
 
-# Source: https://docs.chatling.ai/chatbot/builder/blocks/action/update-contact.md
+# Update Contact Block
 
-# Source: https://docs.chatling.ai/chatbot/builder/blocks/hubspot/update-contact.md
+> Learn about the Update Contact block and how to set it up in the Builder.
 
-# Source: https://docs.chatling.ai/chatbot/builder/blocks/action/update-contact.md
+The `Update Contact` block can be used to update an existing contact.
 
-# Source: https://docs.chatling.ai/chatbot/builder/blocks/hubspot/update-contact.md
+The block consists of the following components:
 
-# Source: https://docs.chatling.ai/chatbot/builder/blocks/action/update-contact.md
-
-# Source: https://docs.chatling.ai/chatbot/builder/blocks/hubspot/update-contact.md
-
-# Source: https://docs.chatling.ai/chatbot/builder/blocks/action/update-contact.md
-
-# Source: https://docs.chatling.ai/chatbot/builder/blocks/hubspot/update-contact.md
-
-# Update Contact
-
-> Update contacts in HubSpot from your chatbot.
-
-With this block, you can update contacts in HubSpot from your chatbot, for example to enrich your CRM data.
-
-## Configuration
-
-1. Click the `Connect account` button under the Account field to connect your HubSpot account to Chatling or select an existing connection.
-2. The `Search method` determines how the contact is found in HubSpot. You can either search by the contact's ID or email address.
-3. Add the properties you want to update for the contact. You can enter variables in certain fields to make the contact dynamic.
+* **Search**: Specify the field and value to use to look up the contact. You can enter a variable to search dynamically.
+* **Contact details**: Define the properties you want to update.

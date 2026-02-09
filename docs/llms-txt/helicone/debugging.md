@@ -1,5 +1,9 @@
 # Source: https://docs.helicone.ai/guides/cookbooks/debugging.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.helicone.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Debugging LLM Applications
 
 > Helicone provides an efficient platform for identifying and rectifying errors in your LLM applications, offering insights into their occurrence.

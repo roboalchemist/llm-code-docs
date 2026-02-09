@@ -1,7 +1,5 @@
 # Source: https://docs.livekit.io/telephony/features/secure-trunking.md
 
-# Source: https://docs.livekit.io/sip/secure-trunking.md
-
 LiveKit docs › Features › Secure trunking
 
 ---
@@ -24,7 +22,7 @@ To secure calls you must complete all of the following steps:
 
 ## Prerequisites
 
-The following instructions assume you have already configured trunking with your SIP provider. If you haven't, see the [SIP trunk setup](https://docs.livekit.io/sip/quickstarts/configuring-sip-trunk.md) quickstart or select your provider-specific instructions from the navigation menu.
+The following instructions assume you have already configured trunking with your SIP provider. If you haven't, see the [SIP trunk setup](https://docs.livekit.io/telephony/start/sip-trunk-setup.md) quickstart or select your provider-specific instructions from the navigation menu.
 
 ## Step 1: Enable secure trunking with your SIP trunking provider
 
@@ -115,14 +113,14 @@ Set the `media_encryption` parameter for your inbound or outbound trunks to eith
 - `SIP_MEDIA_ENCRYPT_ALLOW`: Use media encryption if available.
 - `SIP_MEDIA_ENCRYPT_REQUIRE`: Require media encryption.
 
-By default, media encryption is turned off. To see all options, see the [API reference](https://docs.livekit.io/sip/api.md#sipmediaencryption).
+By default, media encryption is turned off. To see all options, see the [API reference](https://docs.livekit.io/reference/telephony/sip-api.md#sipmediaencryption).
 
 ### Create an inbound trunk
 
 Create an inbound trunk with media encryption enabled. To edit a trunk instead, see [Edit an existing trunk](#edit-trunk).
 
-1. Sign in to your [Telephony configuration](https://cloud.livekit.io/projects/p_/telephony/config) dashboard.
-2. Select **Create new** → **Trunk**.
+1. Sign in to your [Telephony → SIP trunks](https://cloud.livekit.io/projects/p_/telephony/trunks) dashboard.
+2. Select **Create new trunk**.
 3. Select the **JSON editor** tab and copy and paste the following contents. Replace the phone number with the one purchased from your SIP trunking provider.
 
 ```json
@@ -140,14 +138,14 @@ Create an inbound trunk with media encryption enabled. To edit a trunk instead, 
 
 ### Create an outbound trunk
 
-For outbound calls, create an outbound trunk with media encryption enabled and [transport](https://docs.livekit.io/sip/api.md#siptransport) protocol set to `SIP_TRANSPORT_TLS`. All calls made using this trunk use TLS and SRTP.
+For outbound calls, create an outbound trunk with media encryption enabled and [transport](https://docs.livekit.io/reference/telephony/sip-api.md#siptransport) protocol set to `SIP_TRANSPORT_TLS`. All calls made using this trunk use TLS and SRTP.
 
 You can also enable media encryption on a [call-by-call basis](#per-call-encryption) by setting the `media_encryption` parameter in the `CreateSIPParticipant` request. However, you should still enable TLS for calls on the outbound trunk.
 
 Use the following instructions to create a new wildcard outbound trunk with SRTP and TLSenabled. The wildcard allows all calls to be routed to the same trunk. To edit a trunk instead, see [Edit an existing trunk](#edit-trunk).
 
-1. Sign in to your [Telephony configuration](https://cloud.livekit.io/projects/p_/telephony/config) dashboard.
-2. Select **Create new** → **Trunk**.
+1. Sign in to your [Telephony → SIP trunks](https://cloud.livekit.io/projects/p_/telephony/trunks) dashboard.
+2. Select **Create new trunk**.
 3. Select the **JSON editor** → select **Outbound** for **Trunk direction**.
 4. Copy and paste the following contents. Replace the SIP trunking provider endpoint, and username and password for authentication.
 
@@ -171,7 +169,7 @@ Use the following instructions to create a new wildcard outbound trunk with SRTP
 
 Edit an existing inbound or outbound trunk to enable media encryption using the LiveKit Cloud dashboard.
 
-- Sign in to your [Telephony configuration](https://cloud.livekit.io/projects/p_/telephony/config) dashboard.
+- Sign in to your [Telephony → SIP trunks](https://cloud.livekit.io/projects/p_/telephony/trunks) dashboard.
 - Navigate to the **Inbound** or **Outbound** section on the page.
 - Select the more menu (**⋮**) next to the trunk you want to edit → **Configure trunk**.
 - For _outbound_ trunks, for **Transport** select **TLS**.
@@ -213,7 +211,7 @@ lk sip participant create sip-participant.json
 
 ---
 
-This document was rendered at 2025-11-18T23:55:22.114Z.
-For the latest version of this document, see [https://docs.livekit.io/sip/secure-trunking.md](https://docs.livekit.io/sip/secure-trunking.md).
+This document was rendered at 2026-02-03T03:25:11.949Z.
+For the latest version of this document, see [https://docs.livekit.io/telephony/features/secure-trunking.md](https://docs.livekit.io/telephony/features/secure-trunking.md).
 
 To explore all LiveKit documentation, see [llms.txt](https://docs.livekit.io/llms.txt).

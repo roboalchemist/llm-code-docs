@@ -1,5 +1,9 @@
 # Source: https://smartcar.com/docs/getting-started/dashboard/simulator.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://smartcar.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Vehicle Simulator
 
 Before launching your integration, we recommend using Smartcar’s Vehicle Simulator to test your application on a simulated vehicle. With the Simulator, you can choose the vehicle's region, make, model and year as well as the vehicle state to test with. Watch your simulated vehicle travel in real-time from the Smartcar Dashboard as you test API requests from your application with realistic vehicle data responses.

@@ -1,5 +1,9 @@
 # Source: https://dev.writer.com/home/external-models.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://dev.writer.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Add external models
 
 > Configure external AI models from providers like AWS Bedrock to use alongside Palmyra models in AI Studio
@@ -319,8 +323,3 @@ External models use the same Writer API as Palmyra models. Use the [List models]
 * [Configure AWS Bedrock](/providers/aws-bedrock): Set up AWS credentials and add Bedrock models
 * [Choose a model](/home/models-overview): Compare Palmyra models with external provider models
 * [Palmyra models](/home/models): Explore Writer's Palmyra model capabilities
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://dev.writer.com/llms.txt

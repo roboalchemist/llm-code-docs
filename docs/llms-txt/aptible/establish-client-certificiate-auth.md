@@ -1,5 +1,9 @@
 # Source: https://www.aptible.com/docs/how-to-guides/app-guides/establish-client-certificiate-auth.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.aptible.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # How to establish client certificate authentication
 
 > Client certificate authentication, also known as two-way SSL authentication, is a form of mutual Transport Layer Security(TLS) authentication that involves both the server and the client in the authentication process. Users and the third party they are working with need to establish, own, and manage this type of authentication.

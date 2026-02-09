@@ -112,7 +112,7 @@ Example scenario (for simplicity—but without loss of generality—assuming red
 
 Since the write at `t=200` _happens-after_ the write at `t=100`, returning the version at`t=100` violates linearizability.
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ### On this page:
 

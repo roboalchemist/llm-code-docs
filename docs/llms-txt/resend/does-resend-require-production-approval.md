@@ -1,5 +1,9 @@
 # Source: https://resend.com/docs/knowledge-base/does-resend-require-production-approval.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://resend.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Does Resend require production approval?
 
 > Learn about production access and account limitations on Resend.
@@ -34,8 +38,3 @@ To start sending emails with Resend:
 4. Start sending emails immediately
 
 If you're having trouble with domain verification or DNS records, see our [domain verification troubleshooting guide](/knowledge-base/what-if-my-domain-is-not-verifying) or check our [DNS setup guides](/knowledge-base/introduction) for your specific DNS provider.
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://resend.com/docs/llms.txt

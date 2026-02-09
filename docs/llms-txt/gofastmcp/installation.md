@@ -1,28 +1,40 @@
 # Source: https://gofastmcp.com/getting-started/installation.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://gofastmcp.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Installation
+
+> Install FastMCP and verify your setup
 
 ## Install FastMCP
 
 We recommend using [uv](https://docs.astral.sh/uv/getting-started/installation/) to install and manage FastMCP.
 
-If you plan to use FastMCP in your project, you can add it as a dependency with:
+<Note>
+  FastMCP 3.0 is currently in beta. Package managers won't install beta versions by default—you must explicitly request one (e.g., `>=3.0.0b1`).
+</Note>
 
 ```bash  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
-uv add fastmcp
+pip install "fastmcp>=3.0.0b1"
 ```
 
-Alternatively, you can install it directly with `pip` or `uv pip`:
+Or with uv:
 
-<CodeGroup>
-  ```bash uv theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
-  uv pip install fastmcp
-  ```
+```bash  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
+uv add "fastmcp>=3.0.0b1"
+```
 
-  ```bash pip theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
-  pip install fastmcp
-  ```
-</CodeGroup>
+### Optional Dependencies
+
+FastMCP provides optional extras for specific features. For example, to install the background tasks extra:
+
+```bash  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
+pip install "fastmcp[tasks]==3.0.0b1"
+```
+
+See [Background Tasks](/servers/tasks) for details on the task system.
 
 ### Verify Installation
 
@@ -37,8 +49,8 @@ You should see output like the following:
 ```bash  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
 $ fastmcp version
 
-FastMCP version:                           2.11.3
-MCP version:                               1.12.4
+FastMCP version:                           3.0.0
+MCP version:                               1.25.0
 Python version:                            3.12.2
 Platform:            macOS-15.3.1-arm64-arm-64bit
 FastMCP root path:            ~/Developer/fastmcp
@@ -58,9 +70,15 @@ FastMCP root path:            ~/Developer/fastmcp
   Alternatively, wait for the stable v5 release. See [this issue](https://github.com/BrianPugh/cyclopts/issues/672) for details.
 </Info>
 
-## Upgrading from the Official MCP SDK
+## Upgrading
 
-Upgrading from the official MCP SDK's FastMCP 1.0 to FastMCP 2.0 is generally straightforward. The core server API is highly compatible, and in many cases, changing your import statement from `from mcp.server.fastmcp import FastMCP` to `from fastmcp import FastMCP` will be sufficient.
+### From FastMCP 2.x
+
+See the [Upgrade Guide](/development/upgrade-guide) for a complete list of breaking changes and migration steps.
+
+### From the Official MCP SDK
+
+Upgrading from the official MCP SDK's FastMCP 1.0 to FastMCP 3.0 is generally straightforward. The core server API is highly compatible, and in many cases, changing your import statement from `from mcp.server.fastmcp import FastMCP` to `from fastmcp import FastMCP` will be sufficient.
 
 ```python {5} theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
 # Before
@@ -73,7 +91,7 @@ mcp = FastMCP("My MCP Server")
 ```
 
 <Warning>
-  Prior to `fastmcp==2.3.0` and `mcp==1.8.0`, the 2.x API always mirrored the official 1.0 API. However, as the projects diverge, this can not be guaranteed. You may see deprecation warnings if you attempt to use 1.0 APIs in FastMCP 2.x. Please refer to this documentation for details on new capabilities.
+  Prior to `fastmcp==2.3.0` and `mcp==1.8.0`, the 2.x API always mirrored the official 1.0 API. However, as the projects diverge, this can not be guaranteed. You may see deprecation warnings if you attempt to use 1.0 APIs in FastMCP 3.x. Please refer to this documentation for details on new capabilities.
 </Warning>
 
 ## Versioning Policy
@@ -83,11 +101,23 @@ FastMCP follows semantic versioning with pragmatic adaptations for the rapidly e
 For production use, always pin to exact versions:
 
 ```
-fastmcp==2.11.0  # Good
-fastmcp>=2.11.0  # Bad - will install breaking changes
+fastmcp==3.0.0  # Good
+fastmcp>=3.0.0  # Bad - may install breaking changes
 ```
 
 See the full [versioning and release policy](/development/releases#versioning-policy) for details on our public API, deprecation practices, and breaking change philosophy.
+
+### Looking Ahead: FastMCP 4.0
+
+The MCP Python SDK v2 is expected in early 2026 and will include breaking changes. When released, FastMCP will incorporate these upstream changes in a new major version (FastMCP 4.0).
+
+To avoid unexpected breaking changes, we recommend pinning your dependency with an upper bound:
+
+```
+fastmcp>=3.0,<4
+```
+
+We'll provide migration guidance when FastMCP 4.0 is released.
 
 ## Contributing to FastMCP
 

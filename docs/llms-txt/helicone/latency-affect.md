@@ -1,5 +1,9 @@
 # Source: https://docs.helicone.ai/references/latency-affect.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.helicone.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Latency Impact
 
 > Helicone minimizes latency for your LLM applications using Cloudflare's global network. Detailed benchmarking results and performance metrics included.

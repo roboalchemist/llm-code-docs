@@ -1,5 +1,9 @@
 # Source: https://upstash.com/docs/redis/tutorials/job_processing.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Job Processing and Event Queue with Serverless Redis
 
 > This tutorial shows how to use Upstash Redis for job/task processing.

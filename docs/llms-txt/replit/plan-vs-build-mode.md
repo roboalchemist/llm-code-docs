@@ -1,5 +1,9 @@
 # Source: https://docs.replit.com/tutorials/plan-vs-build-mode.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.replit.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Plan vs. Build Mode
 
 > Learn the difference between Plan and Build modes in Replit, and how to combine them for more effective development.
@@ -135,8 +139,3 @@ Use Build Mode when you're ready to:
     Write better prompts for Agent
   </Card>
 </CardGroup>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.replit.com/llms.txt

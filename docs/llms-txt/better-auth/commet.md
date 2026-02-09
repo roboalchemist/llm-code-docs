@@ -4,13 +4,14 @@
 
 Better Auth Plugin for Billing and Subscriptions using Commet
 
-***
 
-title: Commet
-description: Better Auth Plugin for Billing and Subscriptions using Commet
---------------------------------------------------------------------------
 
 [Commet](https://commet.co) is the billing and payments solution for SaaS and AI products. As a Merchant of Record, Commet handles subscriptions, usage-based billing, tax compliance, and global paymentsâso you can start monetizing in minutes.
+
+<Callout>
+  This plugin is maintained by the Commet team. For bugs, issues or feature requests,
+  please contact [Commet support](https://commet.co).
+</Callout>
 
 ## Features
 

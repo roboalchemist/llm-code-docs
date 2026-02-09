@@ -1,10 +1,101 @@
 # Source: https://docs.zapier.com/platform/news/single-page.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.zapier.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Platform News (Single Page)
 
 > Recent changelogs and tips on a single page
 
 {/* To add an entry here, write a post in platform/news/<year> and run `pnpm run render-news` */}
+
+## What's changed in v18.1.1
+
+*Released: 2026-01-29*
+
+Main change introduced here is fixing missing HTTP error logs that were prematurely lost during a Lambda invocation.
+
+**cli**
+
+None!
+
+**core**
+
+* 🐛 Restore missing HTTP error logs ([#1227](https://github.com/zapier/zapier-platform/pull/1227))
+
+**schema**
+
+None!
+
+**misc**
+
+* 🔨 Bump lodash from 4.17.21 to 4.17.23 across the board ([#1228](https://github.com/zapier/zapier-platform/pull/1228), [#1229](https://github.com/zapier/zapier-platform/pull/1229), [#1230](https://github.com/zapier/zapier-platform/pull/1230), [#1231](https://github.com/zapier/zapier-platform/pull/1231), [#1233](https://github.com/zapier/zapier-platform/pull/1233), [#1234](https://github.com/zapier/zapier-platform/pull/1234), [#1235](https://github.com/zapier/zapier-platform/pull/1235))
+
+***
+
+## What's changed in v18.1.0
+
+*Released: 2026-01-19*
+
+The `zapier-platform invoke` command now supports a **remote mode**. By adding a `--remote` (`-r` for short) flag to the `invoke` command, such as:
+
+```
+zapier-platform invoke -r
+```
+
+... all invocations, including trigger/action invocation itself, input field definitions, and dynamic dropdown choices, will be executed remotely by the Zapier production environment. This means:
+
+* The integration version you want to test has to be deployed first.
+* The invocation results and the bundle payload passed to your integration code will match what you see in live production, which is great for testing.
+* Remote mode is slower than local mode (without the `-r` flag).
+
+Read more about the three different modes in the [`zapier-platform invoke --help`](https://github.com/zapier/zapier-platform/blob/main/packages/cli/docs/cli.md#invoke) documentation.
+
+We also fixed an issue where the `build` and `test` commands were not correctly detecting package managers (like npm, yarn, pnpm, or bun) when your integration was part of a monorepo. Now, the CLI doesn't just look in the current directory for package manager indicators (like `package-lock.json` for npm), but also checks parent directories up to four levels up.
+
+**cli**
+
+* 🎉 Add `--remote` flag to `invoke` command ([#1220](https://github.com/zapier/zapier-platform/pull/1220))
+* 🐛 Fix package manager detection in `build` and `test` commands to include parent directories ([#1225](https://github.com/zapier/zapier-platform/pull/1225))
+
+**core**
+
+None!
+
+**schema**
+
+None!
+
+**misc**
+
+* 📜 Improve internal development docs ([#1221](https://github.com/zapier/zapier-platform/pull/1221))
+
+***
+
+## What's changed in v18.0.7
+
+*Released: 2026-01-07*
+
+In response to the previous [Shai-Hulud incident](/platform/build-cli/inc-547), we're changing our package publishing process to improve security. This release also includes a schema extension that allows `outputFields` to have a `sample` field. Lastly, we've refactored the `invoke` command to make upcoming enhancements easier.
+
+**cli**
+
+* 🔨 Refactor `invoke` command ([#1217](https://github.com/zapier/zapier-platform/pull/1217))
+
+**core**
+
+None!
+
+**schema**
+
+* 🎉 Allow a `sample` field to be provided for dynamic `outputFields` ([#1211](https://github.com/zapier/zapier-platform/pull/1211))
+
+**misc**
+
+* 🔨 Add publish job in CI ([#1212](https://github.com/zapier/zapier-platform/pull/1212), [#1223](https://github.com/zapier/zapier-platform/pull/1223))
+
+***
 
 ## What's changed in v18.0.6
 
@@ -454,87 +545,4 @@ None!
 
 ***
 
-## What's changed in v17.4.0
-
-*Released: 2025-07-23*
-
-**cli**
-
-* 🐛 Fix regression bugs with `zapier build`, where it can fail with "'The "path" argument must be of type string'" when [dirent.parentPath](https://nodejs.org/docs/latest/api/fs.html#direntparentpath) property is missing ([#1087](https://github.com/zapier/zapier-platform/pull/1087))
-* 🐛 Fixes a regression where `zapier build --skip-npm-install` fails when an app has a linked dependencies in its `node_modules` ([#1089](https://github.com/zapier/zapier-platform/pull/1089))
-* 🐛 Remove empty array at the end of `zapier versions -f json` ([#1086](https://github.com/zapier/zapier-platform/pull/1086))
-* 💅 Add additional Typescript auth options to `zapier init` ([#1067](https://github.com/zapier/zapier-platform/pull/1067))
-
-**core**
-
-* 💅 Support compression when stashing large input bundles ([#1085](https://github.com/zapier/zapier-platform/pull/1085))
-
-**schema**
-
-None!
-
-***
-
-## What's changed in v17.3.1
-
-*Released: 2025-07-17*
-
-**cli**
-
-* 🐛 Fix regression bugs with `zapier build --skip-npm-install`, where:
-  * it can miss local packages files when building in a Lerna monorepo ([#1068](https://github.com/zapier/zapier-platform/pull/1068))
-  * it can fail with "Configuration property ... is not defined" when [config](https://www.npmjs.com/package/config) package is used ([#1071](https://github.com/zapier/zapier-platform/pull/1071))
-* 💅 Improve some error messages in `zapier build` ([#1070](https://github.com/zapier/zapier-platform/pull/1070))
-
-**core**
-
-* 💅 Improve the error message when the app module fails to import ([#1070](https://github.com/zapier/zapier-platform/pull/1070))
-
-**schema**
-
-None!
-
-***
-
-## What's changed in v17.3.0
-
-*Released: 2025-07-01*
-
-This release introduces two major improvements: `zapier build` and input field grouping.
-
-The `zapier build` command has been revamped to:
-
-* Better support npm/yarn/pnpm workspaces
-* Run faster when the `--skip-npm-install` flag is enabled
-* Test the build.zip file to verify all load-time dependencies are included (not applicable on Windows)
-
-Input Field Grouping:
-
-* Grouping support, intended for visual purpose in products, has been added to the input fields.
-
-**cli**
-
-* 💅 `zapier build` supports npm/yarn/pnpm workspaces and runs faster ([#1052](https://github.com/zapier/zapier-platform/pull/1052))
-* 🐛 Fix a bug where `zapier build` can select the wrong entry point of a dependency ([#1052](https://github.com/zapier/zapier-platform/pull/1052) - [c004298](https://github.com/zapier/zapier-platform/pull/1052/commits/c004298a1b61b7de777f3c8222949c7d38d8826f))
-* :scroll: Update docs for new days before deprecation and sending emails ([#1056](https://github.com/zapier/zapier-platform/pull/1056))
-
-**core**
-
-* 🐛 Fix a bug where Fetch logger crashes when response doesn't have content-type ([#1062](https://github.com/zapier/zapier-platform/pull/1062))
-* 🐛 Fix a bug where `text/xml` response content should be logged ([#1058](https://github.com/zapier/zapier-platform/pull/1058))
-* 💅 Typing update: allow overriding `id` requirement in polling triggers ([#1059](https://github.com/zapier/zapier-platform/pull/1059))
-* 💅 Typing update: allow test bundles to be recursively partial ([#1057](https://github.com/zapier/zapier-platform/pull/1057))
-* 🔨 Bump fernet from 0.4.0 to 0.3.3 (latest) ([#1055](https://github.com/zapier/zapier-platform/pull/1055))
-
-**schema**
-
-* 🎉 Input fields now support visual grouping through the "group" property of the `/PlainInputFieldSchema` and the new `/InputFieldGroupsSchema` ([#1061](https://github.com/zapier/zapier-platform/pull/1061))
-
-***
-
-Looking for older news? [2025](/platform/news/2025), and [old changelogs prior to v17](https://github.com/zapier/zapier-platform/tree/main/changelog)
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.zapier.com/llms.txt
+Looking for older news? [2026](/platform/news/2026), [2025](/platform/news/2025), and [old changelogs prior to v17](https://github.com/zapier/zapier-platform/tree/main/changelog)

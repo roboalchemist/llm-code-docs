@@ -1,5 +1,9 @@
 # Source: https://loops.so/docs/loop-builder/experiments.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://loops.so/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Experiments
 
 > Learn how to use experiments to test different versions of your emails.

@@ -1,5 +1,9 @@
 # Source: https://bun.com/docs/guides/process/argv.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://bun.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Parse command-line arguments
 
 The *argument vector* is the list of arguments passed to the program when it is run. It is available as `Bun.argv`.

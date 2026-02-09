@@ -6,19 +6,7 @@
 
 <summary>Is a shipping threshold based on a pre or post discount subtotal?</summary>
 
-The shipping threshold is based on the pre-discount subtotal.
-
-When Shopify is providing shipping rates, they use a visitor's post-discount subtotal to determine whether that visitor qualifies for free shipping. However, Shopify only provides the pre-discount subtotal to the Third Party Rate Carrier, which is what Intelligems uses to run shipping tests. Because of this, while running a shipping test with Intelligems, we will use a visitor's pre-discount subtotal to determine whether they qualify for free shipping. This is a limitation of Shopify's Third Party Rate Carrier feature.
-
-</details>
-
-<details>
-
-<summary>I have more than one ship-from location! Can I test my shipping prices?</summary>
-
-Shipping from multiple locations can cause issues with shipping tests due to Shopify's Third Party Rate Carrier feature. This feature treats products from different locations as separate carts, leading to multiple shipping charges if a customer buys products from different locations.
-
-To determine if this setup will affect your shipping tests, consider whether customers often buy products from different locations simultaneously. If they do, your current setup may not work well for shipping tests. If they don't, your setup should be fine, but be aware that some customers might have questions.
+The shipping threshold is based on the post-discount subtotal. This matches how Shopify provides shipping rates when set up directly within Shopify.&#x20;
 
 </details>
 

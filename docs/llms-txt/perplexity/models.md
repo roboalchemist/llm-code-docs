@@ -1,4 +1,10 @@
-# Source: https://docs.perplexity.ai/getting-started/models.md
+# Source: https://docs.perplexity.ai/docs/grounded-llm/responses/models.md
+
+# Source: https://docs.perplexity.ai/docs/getting-started/models.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.perplexity.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # null
 
@@ -30,10 +36,10 @@ export const ModelOverviewCards = () => <div className="mt-8 mb-12">
       </div>
 
       <div className="space-y-6 mt-10">
-        <a href="../getting-started/models/models/sonar" className="bg-card border border-border rounded-lg p-4 flex items-center gap-4 transition-all duration-300 hover:border-primary hover:bg-card hover:scale-[1.02] cursor-pointer">
+        <a href="/docs/getting-started/models/models/sonar" className="bg-card border border-border rounded-lg p-4 flex items-center gap-4 transition-all duration-300 hover:border-primary hover:bg-card hover:scale-[1.02] cursor-pointer">
           <div className="w-28 h-28 bg-card border border-border rounded-lg flex items-center justify-center flex-shrink-0" style={{
   backgroundImage: `var(--sonar-sq)`,
-  backgroundColor: '#77774D'
+  backgroundColor: '#22808C'
 }}>
             <span className="text-foreground text-xs font-medium">sonar</span>
           </div>
@@ -45,10 +51,10 @@ export const ModelOverviewCards = () => <div className="mt-8 mb-12">
           </div>
         </a>
 
-        <a href="../getting-started/models/models/sonar-pro" className="bg-card border border-border rounded-lg p-4 flex items-center gap-4 transition-all duration-300 hover:border-primary hover:bg-card hover:scale-[1.02] cursor-pointer">
+        <a href="/docs/getting-started/models/models/sonar-pro" className="bg-card border border-border rounded-lg p-4 flex items-center gap-4 transition-all duration-300 hover:border-primary hover:bg-card hover:scale-[1.02] cursor-pointer">
           <div className="w-28 h-28 bg-card border border-border rounded-lg flex items-center justify-center flex-shrink-0" style={{
   backgroundImage: `var(--sonar-pro-sq)`,
-  backgroundColor: '#77774D'
+  backgroundColor: '#22808C'
 }}>
             <span className="text-foreground text-xs font-medium">sonar pro</span>
           </div>
@@ -90,22 +96,7 @@ export const ModelOverviewCards = () => <div className="mt-8 mb-12">
       </div>
 
       <div className="space-y-6 mt-10">
-        <a href="../getting-started/models/models/sonar-reasoning" className="bg-card border border-border rounded-lg p-4 flex items-center gap-4 transition-all duration-300 hover:border-primary hover:bg-card hover:scale-[1.02] cursor-pointer">
-          <div className="w-28 h-28 bg-card border border-border rounded-lg flex items-center justify-center flex-shrink-0" style={{
-  backgroundImage: `var(--reasoning-sq)`,
-  backgroundColor: '#21808D'
-}}>
-            <span className="text-foreground text-xs font-medium">sonar reasoning</span>
-          </div>
-          <div className="flex flex-col">
-            <div className="font-semibold text-foreground text-m mb-2">Sonar Reasoning</div>
-            <div className="text-xs text-[#B8C4B0] leading-relaxed">
-              Fast, real-time reasoning model designed for more problem-solving with search.
-            </div>
-          </div>
-        </a>
-
-        <a href="../getting-started/models/models/sonar-reasoning-pro" className="bg-card border border-border rounded-lg p-4 flex items-center gap-4 transition-all duration-300 hover:border-primary hover:bg-card hover:scale-[1.02] cursor-pointer">
+        <a href="/docs/getting-started/models/models/sonar-reasoning-pro" className="bg-card border border-border rounded-lg p-4 flex items-center gap-4 transition-all duration-300 hover:border-primary hover:bg-card hover:scale-[1.02] cursor-pointer">
           <div className="w-28 h-28 bg-card border border-border rounded-lg flex items-center justify-center flex-shrink-0" style={{
   backgroundImage: `var(--reasoning-pro-sq)`,
   backgroundColor: '#21808D'
@@ -115,7 +106,7 @@ export const ModelOverviewCards = () => <div className="mt-8 mb-12">
           <div className="flex-grow">
             <div className="font-semibold text-foreground text-m mb-2">Sonar Reasoning Pro</div>
             <div className="text-xs text-[#B8C4B0] leading-relaxed">
-              Precise reasoning offering powered by DeepSeek-R1 with Chain of Thought (CoT).
+              Precise reasoning offering with Chain of Thought (CoT).
             </div>
           </div>
         </a>
@@ -145,7 +136,7 @@ export const ModelOverviewCards = () => <div className="mt-8 mb-12">
       </div>
 
       <div className="space-y-6 mt-10">
-        <a href="../getting-started/models/models/sonar-deep-research" className="bg-card border border-border rounded-lg p-4 flex items-center gap-4 transition-all duration-300 hover:border-primary hover:bg-card hover:scale-[1.02] cursor-pointer">
+        <a href="/docs/getting-started/models/models/sonar-deep-research" className="bg-card border border-border rounded-lg p-4 flex items-center gap-4 transition-all duration-300 hover:border-primary hover:bg-card hover:scale-[1.02] cursor-pointer">
           <div className="w-28 h-28 bg-card border border-border rounded-lg flex items-center justify-center flex-shrink-0" style={{
   backgroundImage: `var(--deep-sq)`,
   backgroundColor: '#9C452B'
@@ -180,14 +171,6 @@ export const SonarLogo = () => {
 
       <h1 className="text-2xl font-bold text-foreground"><span className="font-thin">Models</span></h1>
     </div>
-
-    <div className="mt-4 md:mt-0">
-      <button className="bg-primary text-foreground px-4 py-2 rounded-lg text-sm font-medium hover:bg-primary/90 transition-colors duration-200" type="button">
-        <a href="https://labs.perplexity.ai/" target="_blank" rel="noopener noreferrer" className="block w-full h-full" tabIndex={-1}>
-          Play
-        </a>
-      </button>
-    </div>
   </div>
 
   <div className="flex flex-col md:flex-row justify-between items-start md:items-center mt-8 mb-8">
@@ -197,7 +180,7 @@ export const SonarLogo = () => {
   </div>
 
   <Frame>
-    <img src="https://mintcdn.com/perplexity/l9g7Fas5bu7d8tY5/models/assets/modelgraph.png?fit=max&auto=format&n=l9g7Fas5bu7d8tY5&q=85&s=98da92ec8cfc7052d6d007f8c8f6a1bd" alt="Sonar Range" className="mx-auto" data-og-width="1880" width="1880" data-og-height="972" height="972" data-path="models/assets/modelgraph.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/perplexity/l9g7Fas5bu7d8tY5/models/assets/modelgraph.png?w=280&fit=max&auto=format&n=l9g7Fas5bu7d8tY5&q=85&s=8c85b601a30a1976791716e56d16c047 280w, https://mintcdn.com/perplexity/l9g7Fas5bu7d8tY5/models/assets/modelgraph.png?w=560&fit=max&auto=format&n=l9g7Fas5bu7d8tY5&q=85&s=551709a20a0adee8700d0670c6b79622 560w, https://mintcdn.com/perplexity/l9g7Fas5bu7d8tY5/models/assets/modelgraph.png?w=840&fit=max&auto=format&n=l9g7Fas5bu7d8tY5&q=85&s=98f36929ade0c9a2f9e70d6cb7398480 840w, https://mintcdn.com/perplexity/l9g7Fas5bu7d8tY5/models/assets/modelgraph.png?w=1100&fit=max&auto=format&n=l9g7Fas5bu7d8tY5&q=85&s=63d16889a2b37f452c21551cf30929bc 1100w, https://mintcdn.com/perplexity/l9g7Fas5bu7d8tY5/models/assets/modelgraph.png?w=1650&fit=max&auto=format&n=l9g7Fas5bu7d8tY5&q=85&s=1d71695065714b090eee70bf1eedda0a 1650w, https://mintcdn.com/perplexity/l9g7Fas5bu7d8tY5/models/assets/modelgraph.png?w=2500&fit=max&auto=format&n=l9g7Fas5bu7d8tY5&q=85&s=0ff75f9ce351ca3b8822438329d75a4a 2500w" />
+    <img src="https://mintcdn.com/perplexity/qLnd99sJyTqU60Ni/docs/assets/models/modelgraph.png?fit=max&auto=format&n=qLnd99sJyTqU60Ni&q=85&s=7783c052f9684bfd9edf7026b49aee26" alt="Sonar Range" className="mx-auto" data-og-width="1880" width="1880" data-og-height="972" height="972" data-path="docs/assets/models/modelgraph.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/perplexity/qLnd99sJyTqU60Ni/docs/assets/models/modelgraph.png?w=280&fit=max&auto=format&n=qLnd99sJyTqU60Ni&q=85&s=74c0423c35c93047a81ce4e170c3fdb8 280w, https://mintcdn.com/perplexity/qLnd99sJyTqU60Ni/docs/assets/models/modelgraph.png?w=560&fit=max&auto=format&n=qLnd99sJyTqU60Ni&q=85&s=b40d0ca2c37c0f37945bcb876024d5de 560w, https://mintcdn.com/perplexity/qLnd99sJyTqU60Ni/docs/assets/models/modelgraph.png?w=840&fit=max&auto=format&n=qLnd99sJyTqU60Ni&q=85&s=1efbfdce0a6a7532bff267ee70fbb2f1 840w, https://mintcdn.com/perplexity/qLnd99sJyTqU60Ni/docs/assets/models/modelgraph.png?w=1100&fit=max&auto=format&n=qLnd99sJyTqU60Ni&q=85&s=f536486217d8501e05a16ad2bf6d916d 1100w, https://mintcdn.com/perplexity/qLnd99sJyTqU60Ni/docs/assets/models/modelgraph.png?w=1650&fit=max&auto=format&n=qLnd99sJyTqU60Ni&q=85&s=fddedf27cb7ce937d6eea91f3e5f7a7a 1650w, https://mintcdn.com/perplexity/qLnd99sJyTqU60Ni/docs/assets/models/modelgraph.png?w=2500&fit=max&auto=format&n=qLnd99sJyTqU60Ni&q=85&s=99f5f60e928b832b9457aeccfa8b3926 2500w" />
   </Frame>
 
   <ModelOverviewCards />

@@ -31,7 +31,7 @@ Some additional features of agent servers include the following:
 
 ---
 
-This document was rendered at 2025-12-31T18:29:33.345Z.
+This document was rendered at 2026-02-03T03:24:57.824Z.
 For the latest version of this document, see [https://docs.livekit.io/agents/server/lifecycle.md](https://docs.livekit.io/agents/server/lifecycle.md).
 
 To explore all LiveKit documentation, see [llms.txt](https://docs.livekit.io/llms.txt).

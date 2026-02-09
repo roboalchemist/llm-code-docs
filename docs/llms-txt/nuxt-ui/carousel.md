@@ -8,7 +8,7 @@
 
 Use the Carousel component to display a list of items in a carousel.
 
-```vue [CarouselItemsExample.vue]
+```vue [CarouselExample.vue]
 <script setup lang="ts">
 const items = [
   'https://picsum.photos/640/640?random=1',
@@ -21,17 +21,29 @@ const items = [
 </script>
 
 <template>
-  <UCarousel v-slot="{ item }" :items="items" class="w-full max-w-xs mx-auto">
-    <img :src="item" width="320" height="320" class="rounded-lg">
+  <UCarousel
+    v-slot="{ item }"
+    loop
+    arrows
+    :autoplay="{ delay: 2000 }"
+    wheel-gestures
+    :prev="{ variant: 'solid' }"
+    :next="{ variant: 'solid' }"
+    :items="items"
+    :ui="{
+      item: 'basis-1/3 ps-0',
+      prev: 'sm:start-8',
+      next: 'sm:end-8',
+      container: 'ms-0'
+    }"
+  >
+    <img :src="item" width="320" height="320">
   </UCarousel>
 </template>
 ```
 
-<note>
-
-Use your mouse to drag the carousel horizontally on desktop.
-
-</note>
+> [!NOTE]
+> Use your mouse to drag the carousel horizontally on desktop.
 
 ### Items
 
@@ -86,11 +98,8 @@ const items = [
 
 Use the `orientation` prop to change the orientation of the Progress. Defaults to `horizontal`.
 
-<note>
-
-Use your mouse to drag the carousel vertically on desktop.
-
-</note>
+> [!NOTE]
+> Use your mouse to drag the carousel vertically on desktop.
 
 ```vue [CarouselOrientationExample.vue]
 <script setup lang="ts">
@@ -117,11 +126,8 @@ const items = [
 </template>
 ```
 
-<caution>
-
-You need to specify a `height` on the container in vertical orientation.
-
-</caution>
+> [!CAUTION]
+> You need to specify a `height` on the container in vertical orientation.
 
 ### Arrows
 
@@ -211,23 +217,15 @@ const items = [
 </template>
 ```
 
-<framework-only>
-<template v-slot:nuxt="">
-<tip to="/docs/getting-started/integrations/icons/nuxt#theme">
+**Nuxt:**
+> [!TIP]
+> See: /docs/getting-started/integrations/icons/nuxt#theme
+> You can customize these icons globally in your `app.config.ts` under `ui.icons.arrowLeft` / `ui.icons.arrowRight` key.
 
-You can customize these icons globally in your `app.config.ts` under `ui.icons.arrowLeft` / `ui.icons.arrowRight` key.
-
-</tip>
-</template>
-
-<template v-slot:vue="">
-<tip to="/docs/getting-started/integrations/icons/vue#theme">
-
-You can customize these icons globally in your `vite.config.ts` under `ui.icons.arrowLeft` / `ui.icons.arrowRight` key.
-
-</tip>
-</template>
-</framework-only>
+**Vue:**
+> [!TIP]
+> See: /docs/getting-started/integrations/icons/vue#theme
+> You can customize these icons globally in your `vite.config.ts` under `ui.icons.arrowLeft` / `ui.icons.arrowRight` key.
 
 ### Dots
 
@@ -310,11 +308,8 @@ const items = [
 </template>
 ```
 
-<note>
-
-In this example, we're using the `loop` prop for an infinite carousel.
-
-</note>
+> [!NOTE]
+> In this example, we're using the `loop` prop for an infinite carousel.
 
 ### Auto Scroll
 
@@ -349,11 +344,8 @@ const items = [
 </template>
 ```
 
-<note>
-
-In this example, we're using the `loop` prop for an infinite carousel.
-
-</note>
+> [!NOTE]
+> In this example, we're using the `loop` prop for an infinite carousel.
 
 ### Auto Height
 
@@ -393,11 +385,8 @@ const items = [
 </template>
 ```
 
-<note>
-
-In this example, we add the `transition-[height]` class on the container to animate the height change.
-
-</note>
+> [!NOTE]
+> In this example, we add the `transition-[height]` class on the container to animate the height change.
 
 ### Class Names
 
@@ -433,11 +422,8 @@ const items = [
 </template>
 ```
 
-<note>
-
-In this example, we add the `transition-opacity [&:not(.is-snapped)]:opacity-10` classes on the `item` to animate the opacity change.
-
-</note>
+> [!NOTE]
+> In this example, we add the `transition-opacity [&:not(.is-snapped)]:opacity-10` classes on the `item` to animate the opacity change.
 
 ### Fade
 
@@ -477,11 +463,8 @@ This plugin is used to extend Embla Carousel with the ability to **use the mouse
 
 Use the `wheel-gestures` prop as a boolean or an object to configure the [Wheel Gestures plugin](https://www.embla-carousel.com/plugins/wheel-gestures/).
 
-<note>
-
-Use your mouse wheel to scroll the carousel.
-
-</note>
+> [!NOTE]
+> Use your mouse wheel to scroll the carousel.
 
 ```vue [CarouselWheelGesturesExample.vue]
 <script setup lang="ts">
@@ -591,19 +574,19 @@ interface CarouselProps {
   /**
    * Configure the prev button when arrows are enabled.
    */
-  prev?: ButtonProps | undefined;
+  prev?: Omit<ButtonProps, LinkPropsKeys> | undefined;
   /**
    * The icon displayed in the prev button.
    */
-  prevIcon?: string | object | undefined;
+  prevIcon?: any;
   /**
    * Configure the next button when arrows are enabled.
    */
-  next?: ButtonProps | undefined;
+  next?: Omit<ButtonProps, LinkPropsKeys> | undefined;
   /**
    * The icon displayed in the next button.
    */
-  nextIcon?: string | object | undefined;
+  nextIcon?: any;
   /**
    * Display prev and next buttons to scroll the carousel.
    * @default "false"
@@ -619,7 +602,7 @@ interface CarouselProps {
    * @default "\"horizontal\""
    */
   orientation?: "vertical" | "horizontal" | undefined;
-  items?: CarouselItem[] | undefined;
+  items?: T[] | undefined;
   /**
    * Enable Autoplay plugin
    * @default "false"
@@ -867,7 +850,7 @@ export default defineAppConfig({
         next: 'absolute rounded-full',
         dots: 'absolute inset-x-0 -bottom-7 flex flex-wrap items-center justify-center gap-3',
         dot: [
-          'cursor-pointer size-3 bg-accented rounded-full',
+          'cursor-pointer size-3 bg-accented rounded-full focus:outline-none focus-visible:ring-2 focus-visible:ring-primary',
           'transition'
         ]
       },
@@ -899,8 +882,4 @@ export default defineAppConfig({
 
 ## Changelog
 
-<component-changelog>
-
-
-
-</component-changelog>
+See the [releases page](https://github.com/nuxt/ui/releases) for the latest changes.

@@ -1,5 +1,9 @@
 # Source: https://trigger.dev/docs/guides/examples/supabase-database-operations.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://trigger.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Supabase database operations using Trigger.dev
 
 > These examples demonstrate how to run basic CRUD operations on a table in a Supabase database using Trigger.dev.
@@ -22,7 +26,7 @@ This is a basic task which inserts a new row into a table from a Trigger.dev tas
 
 ### Task code
 
-```ts trigger/supabase-database-insert.ts theme={null}
+```ts trigger/supabase-database-insert.ts theme={"theme":"css-variables"}
 import { createClient } from "@supabase/supabase-js";
 import { task } from "@trigger.dev/sdk";
 import jwt from "jsonwebtoken";
@@ -84,7 +88,7 @@ export const supabaseDatabaseInsert = task({
 
 To test this task in the [Trigger.dev dashboard](https://cloud.trigger.dev), you can use the following payload:
 
-```json  theme={null}
+```json  theme={"theme":"css-variables"}
 {
   "userId": "user_12345"
 }
@@ -117,7 +121,7 @@ This type of task is useful for managing user subscriptions, updating user detai
 
 ### Task code
 
-```ts trigger/supabase-update-user-subscription.ts theme={null}
+```ts trigger/supabase-update-user-subscription.ts theme={"theme":"css-variables"}
 import { createClient } from "@supabase/supabase-js";
 import { AbortTaskRunError, task } from "@trigger.dev/sdk";
 // Generate the Typescript types using the Supabase CLI: https://supabase.com/docs/guides/api/rest/generating-types
@@ -198,7 +202,7 @@ export const supabaseUpdateUserSubscription = task({
 
 To test this task in the [Trigger.dev dashboard](https://cloud.trigger.dev), you can use the following payload:
 
-```json  theme={null}
+```json  theme={"theme":"css-variables"}
 {
   "userId": "user_12345",
   "newPlan": "pro"

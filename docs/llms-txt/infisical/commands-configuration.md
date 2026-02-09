@@ -1,5 +1,9 @@
 # Source: https://infisical.com/docs/self-hosting/deployment-options/native/linux-package/commands-configuration.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://infisical.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Configurations
 
 > Learn how to configure and manage the Infisical Linux package

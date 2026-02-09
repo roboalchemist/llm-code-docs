@@ -1,5 +1,9 @@
 # Source: https://docs.baseten.co/examples/models/stable-diffusion/sdxl-lightning.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.baseten.co/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # SDXL Lightning
 
 > A variant of Stable Diffusion XL that generates 1024x1024 px images in 4 UNet steps, enabling near real-time image creation.

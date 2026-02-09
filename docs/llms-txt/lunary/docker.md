@@ -1,5 +1,9 @@
 # Source: https://docs.lunary.ai/docs/more/self-hosting/docker.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.lunary.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Docker
 
 Lunary is designed to be simple to self-host using Docker images for the backend and frontend components.
@@ -106,8 +110,3 @@ docker run -d \
 ### Error: Client network socket disconnected before secure TLS connection was established
 
 This means the database's SSL certificate is not properly set. Either fix the SSL certificate or disable SSL by removing `?sslmode=require` from the `DATABASE_URL` environment variable (not recommended if the database is exposed to the internet).
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.lunary.ai/llms.txt

@@ -6,114 +6,54 @@
 
 # Source: https://upstash.com/docs/redis/sdks/py/commands/json/set.md
 
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/string/set.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/json/set.md
+# JSON.SET
 
-# Source: https://upstash.com/docs/redis/sdks/py/commands/string/set.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/json/set.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/string/set.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/json/set.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/string/set.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/json/set.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/string/set.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/json/set.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/string/set.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/json/set.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/string/set.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/json/set.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/string/set.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/json/set.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/string/set.md
-
-# SET
-
-> Set a key to hold a string value.
+> Set the JSON value at path in key.
 
 ## Arguments
 
-<ParamField body="key" type="string" required>
-  The key
+<ParamField body="key" type="str" required>
+  The key of the json entry.
+</ParamField>
+
+<ParamField body="path" type="str" required>
+  The path of the value to set.
 </ParamField>
 
 <ParamField body="value" type="TValue" required>
-  The value, if this is not a string, we will use `JSON.stringify` to convert it
-  to a string.
+  The value to set.
 </ParamField>
 
-<ParamField body="opts" type="object">
-  You can pass a few options to the command.
+<ParamField body="nx" type="boolean" default="None">
+  Sets the value at path only if it does not exist.
+</ParamField>
 
-  <Expandable>
-    <ParamField body="get" type="boolean">
-      Instead of returning `"OK"`, this will cause the command to return the old
-      value stored at key, or `null` when key did not exist.
-    </ParamField>
-
-    <ParamField body="ex" type="integer">
-      Adds an expiration (in seconds) to the key.
-    </ParamField>
-
-    <ParamField body="px" type="integer">
-      Adds an expiration (in milliseconds) to the key.
-    </ParamField>
-
-    <ParamField body="exat" type="integer">
-      Expires the key after the given timestamp (in seconds).
-    </ParamField>
-
-    <ParamField body="pxat" type="integer">
-      Expires the key after the given timestamp (in milliseconds).
-    </ParamField>
-
-    <ParamField body="keepTtl" type="boolean">
-      Keeps the old expiration if the key already exists.
-    </ParamField>
-
-    <ParamField body="nx" type="boolean">
-      Only set the key if it does not already exist.
-    </ParamField>
-
-    <ParamField body="xx" type="boolean">
-      Only set the key if it already exists.
-    </ParamField>
-  </Expandable>
+<ParamField body="xx" type="boolean" default="None">
+  Sets the value at path only if it does exist.
 </ParamField>
 
 ## Response
 
-<ResponseField required>
-  `"OK"`
+<ResponseField type="true" required>
+  Returns true if the value was set.
 </ResponseField>
 
 <RequestExample>
-  ```ts Basic theme={"system"}
-  await redis.set("my-key", {my: "value"});
+  ```py Example theme={"system"}
+  redis.json.set(key, "$.path", value)
   ```
 
-  ```ts Expire in 60 seconds theme={"system"}
-  await redis.set("my-key", {my: "value"}, {
-    ex: 60
-  });
+  ```py NX theme={"system"}
+  value = ...
+  redis.json.set(key, "$.path", value, nx=true)
   ```
 
-  ```ts Only update theme={"system"}
-  await redis.set("my-key", {my: "value"}, {
-    xx: true
-  });
+  ```py XX theme={"system"}
+  value = ...
+  redis.json.set(key, "$.path", value, xx=true)
   ```
 </RequestExample>

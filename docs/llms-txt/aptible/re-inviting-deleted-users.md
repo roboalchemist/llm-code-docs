@@ -1,5 +1,9 @@
 # Source: https://www.aptible.com/docs/how-to-guides/platform-guides/re-inviting-deleted-users.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.aptible.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # How to Re-invite Deleted Users
 
 Users can be part of multiple organizations in Aptible. If you remove them from your specific organization, they will still exist in Aptible and can be members of other orgs.

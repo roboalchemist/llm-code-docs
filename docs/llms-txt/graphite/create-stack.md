@@ -1,8 +1,17 @@
 # Source: https://graphite-58cc94ce.mintlify.dev/docs/create-stack.md
 
-# Create A Stack
+> ## Documentation Index
+>
+> Fetch the complete documentation index at: https://graphite-58cc94ce.mintlify.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+## Create A Stack
 
 > Learn how to create stacked branches with the Graphite CLI.
+
+<Frame>
+  <iframe width="750" height="360" src="https://www.youtube.com/embed/WgTe0B19slY?si=JhftN6K_coXzHwwy" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen />
+</Frame>
 
 ## Prerequisites
 
@@ -12,7 +21,7 @@ To create a stack of branches with the Graphite CLI, make sure you've:
 
 * [Authenticated with GitHub](/install-the-cli#install-the-cli)
 
-* [Initialized `gt`](/initialize-in-a-repo) in a repo of your choice
+* [Initialized `gt`](/cli-quick-start#initializing-graphite) in a repo of your choice
 
 ## Create your first branch with the CLI
 
@@ -32,7 +41,7 @@ Graphite generally treats branches as if they were commits. This means that some
 
 Here are a few ways to create a branch containing a single commit using `gt create`:
 
-```bash Terminal theme={null}
+```bash
 # navigate to the trunk branch of your repository
 gt trunk
 
@@ -76,7 +85,7 @@ You can configure a prefix for `gt create` to add to all of your auto-generated 
 
 Once you've created a branch with your first set of changes, you can continue to build your stack by issuing more `gt create` commands as you work.
 
-```bash Terminal theme={null}
+```bash
 # * build part 2 of your feature *
 
 

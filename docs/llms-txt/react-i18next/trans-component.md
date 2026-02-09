@@ -2,15 +2,11 @@
 
 # Source: https://react.i18next.com/latest/trans-component.md
 
-# Source: https://react.i18next.com/legacy-v9/trans-component.md
-
-# Source: https://react.i18next.com/latest/trans-component.md
-
 # Trans Component
 
 {% hint style="success" %}
 🎉 Announcing [`i18next-cli`](https://github.com/i18next/i18next-cli):\
-&#x20;       The New Official Toolkit for i18next.\
+The New Official Toolkit for i18next.\
 ⇒ [Learn More](https://www.locize.com/blog/i18next-cli)
 {% endhint %}
 
@@ -162,14 +158,14 @@ In the example below we want our custom link component to have a different `href
   i18nKey="myKey"
   components={{ 
     CustomLink: <MyCustomLinkComponent href="value-to-be-overridden"/> 
-    }}
+  }}
 />
 ```
 
 with the following being our translation message:
 
 ```json
-  "myKey": "This is a <CustomLink href=\"https://example.com/\">link to example.com</CustomLink>."
+"myKey": "This is a <CustomLink href=\"https://example.com/\">link to example.com</CustomLink>."
 ```
 
 This setup will render the following JSX:
@@ -190,7 +186,7 @@ This approach also works with listed components:
 With this then making up our translation message:
 
 ```json
-  "myKey": "This is a <0 href=\"https://example.com/\">link to example.com</0>."
+"myKey": "This is a <0 href=\"https://example.com/\">link to example.com</0>."
 ```
 
 ### Usage with simple HTML elements like \<br /> and others (v10.4.0)
@@ -273,7 +269,7 @@ You can still use `Array.map()` to turn dynamic content into nodes, using an ext
 <Trans i18nKey="list_map">
   My dogs are named:
   <ul i18nIsDynamicList>
-     {['rupert', 'max'].map(dog => (<li>{dog}</li>))}
+    {['rupert', 'max'].map(dog => (<li>{dog}</li>))}
   </ul>
 </Trans>
 // JSON -> "list_map": "My dogs are named: <1></1>"
@@ -316,7 +312,7 @@ Guessing replacement tags *(<0>\</0>)* of your component is rather difficult. Th
 
 ```jsx
 <Trans i18nKey="userMessagesUnread" count={count}>
-    Hello <strong title={t('nameTitle')}>{{name}}</strong>, you have {{count}} unread message. <Link to="/msgs">Go to messages</Link>.
+  Hello <strong title={t('nameTitle')}>{{name}}</strong>, you have {{count}} unread message. <Link to="/msgs">Go to messages</Link>.
 </Trans>
 ```
 
@@ -326,7 +322,7 @@ Guessing replacement tags *(<0>\</0>)* of your component is rather difficult. Th
 
 ```tsx
 <Trans i18nKey="userMessagesUnread" count={count}>
-    Hello <strong title={t($ => $.nameTitle)}>{{name}}</strong>, you have {{count}} unread message. <Link to="/msgs">Go to messages</Link>.
+  Hello <strong title={t($ => $.nameTitle)}>{{name}}</strong>, you have {{count}} unread message. <Link to="/msgs">Go to messages</Link>.
 </Trans>
 ```
 

@@ -2,14 +2,6 @@
 
 # Source: https://docs.vespa.ai/en/reference/ranking/nativerank.html.md
 
-# Source: https://docs.vespa.ai/en/ranking/nativerank.html.md
-
-# Source: https://docs.vespa.ai/en/reference/ranking/nativerank.html.md
-
-# Source: https://docs.vespa.ai/en/ranking/nativerank.html.md
-
-# Source: https://docs.vespa.ai/en/reference/ranking/nativerank.html.md
-
 # nativeRank Reference
 
  
@@ -201,7 +193,7 @@ The nativeRank feature is a pure text match scoring feature. In particular, it d
 - Geographical location of a match correlated to a location associated with the query. Use the _distance_ or _closeness_ feature in a ranking expression to take this into account. 
 - The age of the matching documents. Use the _freshness_ feature in a ranking expression to take this into account. 
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ### On this page:
 

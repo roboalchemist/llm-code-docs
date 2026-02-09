@@ -1,5 +1,9 @@
 # Source: https://docs.anchorbrowser.io/advanced/tasks.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.anchorbrowser.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Automation Tasks
 
 > Create, manage, and execute reusable browser automation tasks
@@ -10,9 +14,9 @@ The Tasks API enables you to **create, version, and execute reusable browser aut
 
 <img className="mx-auto" src="https://mintcdn.com/anchor-b3ec2715/tCZ8ZZdZSDFlzsaC/images/tasks-dashboard.webp?fit=max&auto=format&n=tCZ8ZZdZSDFlzsaC&q=85&s=e09aa109ce8d538f24e6ec9f962aee96" alt="Tasks dashboard showing task management interface" data-og-width="3114" width="3114" data-og-height="990" height="990" data-path="images/tasks-dashboard.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/anchor-b3ec2715/tCZ8ZZdZSDFlzsaC/images/tasks-dashboard.webp?w=280&fit=max&auto=format&n=tCZ8ZZdZSDFlzsaC&q=85&s=402d433a756f4e156b514486f590ef4f 280w, https://mintcdn.com/anchor-b3ec2715/tCZ8ZZdZSDFlzsaC/images/tasks-dashboard.webp?w=560&fit=max&auto=format&n=tCZ8ZZdZSDFlzsaC&q=85&s=2bdebe264cab33f3181ea8365a706842 560w, https://mintcdn.com/anchor-b3ec2715/tCZ8ZZdZSDFlzsaC/images/tasks-dashboard.webp?w=840&fit=max&auto=format&n=tCZ8ZZdZSDFlzsaC&q=85&s=69819a8b4ae6165048f21b31e817f930 840w, https://mintcdn.com/anchor-b3ec2715/tCZ8ZZdZSDFlzsaC/images/tasks-dashboard.webp?w=1100&fit=max&auto=format&n=tCZ8ZZdZSDFlzsaC&q=85&s=9a081e4540b6ec2c02479956bdaed79c 1100w, https://mintcdn.com/anchor-b3ec2715/tCZ8ZZdZSDFlzsaC/images/tasks-dashboard.webp?w=1650&fit=max&auto=format&n=tCZ8ZZdZSDFlzsaC&q=85&s=bf7882bf4eb1281c5aeb9cea27015f2d 1650w, https://mintcdn.com/anchor-b3ec2715/tCZ8ZZdZSDFlzsaC/images/tasks-dashboard.webp?w=2500&fit=max&auto=format&n=tCZ8ZZdZSDFlzsaC&q=85&s=329285515c213c06247e7cd8c2f115cf 2500w" />
 
-<Info>
+<Note>
   Tasks are executed in a secure sandbox environment and can access the full Anchor Browser API for automation capabilities.
-</Info>
+</Note>
 
 ## Creating Your First Task
 
@@ -24,9 +28,9 @@ For reliable execution, **follow these guidelines:**
 * **Export** a single **default async function.**
 * In that function, **return** whatever your workflow requires as **output** (e.g., status, messages, domain data).
 
-<Info>
+<Note>
   Tasks can receive values as inputs. **All input names must be prefixed with `ANCHOR_`**
-</Info>
+</Note>
 
 ### Basic Task Example
 
@@ -163,6 +167,10 @@ Create your task in Anchor:
       ```
     </CodeGroup>
 
+    <Note>
+      By default, the browser session is automatically closed when the task ends. Set `cleanupSessions: false` to keep the session open after task execution.
+    </Note>
+
     <img className="mx-auto" src="https://mintcdn.com/anchor-b3ec2715/tCZ8ZZdZSDFlzsaC/images/tasks-run.webp?fit=max&auto=format&n=tCZ8ZZdZSDFlzsaC&q=85&s=490b5c70ac63d3e3679f00b57ab07a57" alt="Running a task with inputs" data-og-width="3394" width="3394" data-og-height="1860" height="1860" data-path="images/tasks-run.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/anchor-b3ec2715/tCZ8ZZdZSDFlzsaC/images/tasks-run.webp?w=280&fit=max&auto=format&n=tCZ8ZZdZSDFlzsaC&q=85&s=ecd2573a4b04cd5434164c79c29aed51 280w, https://mintcdn.com/anchor-b3ec2715/tCZ8ZZdZSDFlzsaC/images/tasks-run.webp?w=560&fit=max&auto=format&n=tCZ8ZZdZSDFlzsaC&q=85&s=27bf90d63c0a344a98e8e9ac7ea36c28 560w, https://mintcdn.com/anchor-b3ec2715/tCZ8ZZdZSDFlzsaC/images/tasks-run.webp?w=840&fit=max&auto=format&n=tCZ8ZZdZSDFlzsaC&q=85&s=5c0691a4162ef9063a9b124912135c62 840w, https://mintcdn.com/anchor-b3ec2715/tCZ8ZZdZSDFlzsaC/images/tasks-run.webp?w=1100&fit=max&auto=format&n=tCZ8ZZdZSDFlzsaC&q=85&s=b75f0ffee38daef512a7453f72a7e47d 1100w, https://mintcdn.com/anchor-b3ec2715/tCZ8ZZdZSDFlzsaC/images/tasks-run.webp?w=1650&fit=max&auto=format&n=tCZ8ZZdZSDFlzsaC&q=85&s=f5c8df3e1aefb4bd75970063ad871fd8 1650w, https://mintcdn.com/anchor-b3ec2715/tCZ8ZZdZSDFlzsaC/images/tasks-run.webp?w=2500&fit=max&auto=format&n=tCZ8ZZdZSDFlzsaC&q=85&s=4d194a4374e773c0d481515d66c65c31 2500w" />
   </Step>
 
@@ -225,7 +233,7 @@ When you set `async: true`, the API returns immediately with a confirmation that
   execution = client.task.run(
       task_id=task_id,
       version="1",
-      async=True,  # Enable async execution
+      async_=True,  # Enable async execution
       inputs={
           "ANCHOR_TARGET_URL": "https://example.com",
           "ANCHOR_MAX_PAGES": "10"
@@ -385,7 +393,7 @@ For async tasks, you can implement polling to wait for completion:
   execution = client.task.run(
       task_id=task_id,
       version="1",
-      async=True,
+      async_=True,
       inputs={"ANCHOR_TARGET_URL": "https://example.com"}
   )
 

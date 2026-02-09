@@ -1,5 +1,9 @@
 # Source: https://docs.pipecat.ai/guides/learn/pipeline.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pipecat.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Pipeline & Frame Processing
 
 > Learn how Pipecat's pipeline architecture orchestrates frame processing for voice AI applications
@@ -373,8 +377,3 @@ Now that you understand how pipelines orchestrate processing, let's explore the 
 <Card title="Transports" icon="arrow-right" href="/guides/learn/transports">
   Learn about the different ways users can connect to your voice AI pipeline
 </Card>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.pipecat.ai/llms.txt

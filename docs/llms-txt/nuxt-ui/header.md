@@ -8,11 +8,9 @@
 
 The Header component renders a `<header>` element.
 
-<tip to="/docs/getting-started/theme/css-variables#header">
-
-Its height is defined through a `--ui-header-height` CSS variable.
-
-</tip>
+> [!TIP]
+> See: /docs/getting-started/theme/css-variables#header
+> Its height is defined through a `--ui-header-height` CSS variable.
 
 Use the `left`, `default` and `right` slots to customize the header and the `body` or `content` slots to customize the header menu.
 
@@ -67,11 +65,8 @@ const items = computed<NavigationMenuItem[]>(() => [{
 </template>
 ```
 
-<note>
-
-In this example, we use the [NavigationMenu](/docs/components/navigation-menu) component to render the header links in the center.
-
-</note>
+> [!NOTE]
+> In this example, we use the [NavigationMenu](/docs/components/navigation-menu) component to render the header links in the center.
 
 ### Title
 
@@ -85,11 +80,9 @@ Use the `title` prop to change the title of the header. Defaults to `Nuxt UI`.
 
 You can also use the `title` slot to add your own logo.
 
-<tip to="#props">
-
-You should still add the `title` prop to replace the default `aria-label` of the link.
-
-</tip>
+> [!TIP]
+> See: #props
+> You should still add the `title` prop to replace the default `aria-label` of the link.
 
 ```vue
 <template>
@@ -129,11 +122,9 @@ Use the `mode` prop to change the mode of the header menu. Defaults to `modal`.
 
 Use the `body` slot to fill the menu body (under the header) or the `content` slot to fill the entire menu.
 
-<tip to="#props">
-
-You can use the `menu` prop to customize the menu of the header, it will adapt depending on the mode you choose.
-
-</tip>
+> [!TIP]
+> See: #props
+> You can use the `menu` prop to customize the menu of the header, it will adapt depending on the mode you choose.
 
 ```vue [HeaderMenuExample.vue]
 <script setup lang="ts">
@@ -423,17 +414,17 @@ interface HeaderProps {
    * The mode of the header menu.
    * @default "\"modal\" as never"
    */
-  mode?: HeaderMode | undefined;
+  mode?: T | undefined;
   /**
    * The props for the header menu component.
    */
-  menu?: ModalProps | SlideoverProps | DrawerProps | undefined;
+  menu?: HeaderMenu<T> | undefined;
   /**
    * Customize the toggle button to open the header menu displayed when the `content` slot is used.
    * `{ color: 'neutral', variant: 'ghost' }`{lang="ts-type"}
    * @default "true"
    */
-  toggle?: boolean | Partial<ButtonProps> | undefined;
+  toggle?: boolean | Omit<ButtonProps, LinkPropsKeys> | undefined;
   /**
    * The side to render the toggle button on.
    * @default "\"right\""
@@ -513,8 +504,4 @@ export default defineAppConfig({
 
 ## Changelog
 
-<component-changelog>
-
-
-
-</component-changelog>
+See the [releases page](https://github.com/nuxt/ui/releases) for the latest changes.

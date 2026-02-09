@@ -1,5 +1,11 @@
 # Source: https://graphite-58cc94ce.mintlify.dev/docs/pricing-faq.md
 
+## Documentation Index
+
+Fetch the complete documentation index at: https://graphite-58cc94ce.mintlify.dev/docs/llms.txt
+
+Use this file to discover all available pages before exploring further.
+
 # Pricing FAQ
 
 > Your pricing questions, answered.
@@ -43,7 +49,7 @@ You can read more about the Startup plan [here](https://graphite.com/docs/graphi
 
 ### **My project is open source and doesn’t have significant funding. Can I use Graphite for free?**
 
-Reach out to our team at [support@graphite.dev](mailto:support@graphite.dev) to check your eligibility. Please include the link to the GitHub org, link to the website, and a brief description of the project.
+Reach out to our team at [billing@graphite.com](mailto:billing@graphite.com) to check your eligibility. Please include the link to the GitHub org, link to the website, and a brief description of the project.
 
 ### **What payment methods do you accept?**
 
@@ -59,8 +65,8 @@ As you add members to your team, Graphite will automatically calculate the numbe
 
 ### **Who is on my Graphite team?**
 
-Anyone who joins your workspace on Graphite or is reviewed by Graphite's reviewer is considered part of your team.
+Anyone who joins your workspace on Graphite, or whose PR is [reviewed by Graphite Agent](/ai-reviews), is considered a member of your team.
 
 ### **What is “advanced” Merge Queue?**
 
-If you have sophisticated merge queue needs that aren’t met by the Team plan, reach out to our sales team to learn more.
+If you have sophisticated merge queue needs that aren’t met by the Team plan, [reach out to our sales team](https://graphite.com/contact-us) to learn more.

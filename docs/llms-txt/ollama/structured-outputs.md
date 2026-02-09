@@ -1,5 +1,9 @@
 # Source: https://docs.ollama.com/capabilities/structured-outputs.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.ollama.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Structured Outputs
 
 Structured outputs let you enforce a JSON schema on model responses so you can reliably extract structured data, describe images, or keep every reply consistent.

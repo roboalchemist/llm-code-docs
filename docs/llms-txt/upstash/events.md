@@ -2,84 +2,33 @@
 
 # Source: https://upstash.com/docs/qstash/sdks/py/examples/events.md
 
-# Source: https://upstash.com/docs/workflow/howto/events.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
-# Source: https://upstash.com/docs/qstash/sdks/py/examples/events.md
+# Events
 
-# Source: https://upstash.com/docs/workflow/howto/events.md
+<Info>
+  You can run the async code by importing `AsyncQStash` from `qstash`
+  and awaiting the methods.
+</Info>
 
-# Source: https://upstash.com/docs/qstash/sdks/py/examples/events.md
+#### Get all events with pagination using cursor
 
-# Source: https://upstash.com/docs/workflow/howto/events.md
+Since there can be a large number of events, they are paginated.
+You can go through the results using the `cursor`.
 
-# Source: https://upstash.com/docs/qstash/sdks/py/examples/events.md
+```python  theme={"system"}
+from qstash import QStash
 
-# Source: https://upstash.com/docs/workflow/howto/events.md
+client = QStash("<QSTASH-TOKEN>")
 
-# Source: https://upstash.com/docs/qstash/sdks/py/examples/events.md
-
-# Source: https://upstash.com/docs/workflow/howto/events.md
-
-# Waiting for Events
-
-<Note>
-  This feature is not yet available in
-  [workflow-py](https://github.com/upstash/workflow-py). See our
-  [Roadmap](/workflow/roadmap) for feature parity plans and
-  [Changelog](/workflow/changelog) for updates.
-</Note>
-
-You can use `context.waitForEvent` to pause a workflow until a specific event occurs and resume it with event data when the event is received.
-
-<Tip>
-  You can learn more about Workflow events from [our real-world
-  example](/workflow/examples/waitForEvent).
-</Tip>
-
-## `context.waitForEvent`
-
-The [`waitForEvent` method](/workflow/basics/context#context-waitforevent) pauses the execution of a workflow and waits for an external event to occur, identified by an event ID. This is particularly useful in asynchronous workflows that rely on external systems to provide data or signals.
-
-```typescript  theme={"system"}
-const { eventData, timeout } = await context.waitForEvent(
-  "description of event",
-  "event-id",
-  {
-    timeout: timeoutInSeconds,
-  }
-);
-```
-
-Third parameter is the timeout. It is the maximum time (in seconds) to wait for the event. If the event doesn't occur within this time, the workflow will proceed, and the `timeout` variable will be `true`.
-
-Maximum timeout value is equal to [the "Max Delay" value of your QStash plan](https://upstash.com/pricing/workflow). It's 7 days for free users, 1 year for pay as you go users and unlimited for pro users.
-
-## `client.notify`
-
-[The `notify` method](/workflow/basics/client#notify-waiting-workflow) is used to notify a workflow that the expected event has occurred. It notifies all workflows waiting for the given `eventId` and provides the `eventData` to the waiting workflows, allowing them to resume execution.
-
-```typescript  theme={"system"}
-import { Client } from "@upstash/workflow";
-
-const client = new Client({ token: "<QSTASH_TOKEN>" });
-
-await client.notify({
-  eventId: "event-id",
-  eventData: { my: "data" },
-});
-```
-
-`eventData` provided in `client.notify` will be available in the result of `context.waitForEvent` as it is.
-
-## `context.notify`
-
-You can also notify workflows in another workflow using [the `context.notify` method](/workflow/basics/context#context-notify).
-
-```typescript  theme={"system"}
-const { notifyResponse } = await context.notify(
-  "notify step", // notify step name
-  "event-Id", // event id
-  { my: "data" } // event data
-);
-
+all_events = []
+cursor = None
+while True:
+    res = client.event.list(cursor=cursor)
+    all_events.extend(res.events)
+    cursor = res.cursor
+    if cursor is None:
+        break
 ```

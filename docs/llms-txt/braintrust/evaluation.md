@@ -1,411 +1,765 @@
 # Source: https://braintrust.dev/docs/evaluation.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://braintrust.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Evaluation quickstart
 
-> Run evals in Braintrust to measure and improve your AI applications
+> Run your first eval
 
-This quickstart shows you how to set up and run evals in a Braintrust [experiment](/core/experiments) to measure your AI application's effectiveness and iterate continuously using production data. You can create evals with the Braintrust SDK or directly in the Braintrust UI.
+[Evaluations](/evaluate) let you systematically measure AI quality. Compare approaches, catch regressions before deployment, and validate improvements with data instead of intuition.
+
+Each evaluation consists of three components:
+
+* **Data** - A dataset of test cases with inputs and expected outputs
+* **Task** - An AI function you want to test
+* **Scores** - Scoring functions that measure output quality
 
 <Tabs>
   <Tab title="SDK" icon="terminal">
-    Set up your environment and create an eval with the Braintrust SDK. Wrappers are available for [TypeScript](/reference/sdks/typescript), [Python](/reference/sdks/python), and [other languages](/reference/sdks).
+    Set up your environment and [run evals](/evaluate/run-evaluations) with the Braintrust SDK.
 
-    ### 1. Install Braintrust libraries
+    ## 1. Sign up
 
-    Install the Braintrust SDK and autoevals library for your language:
+    If you're new to Braintrust, sign up free at [braintrust.dev](https://www.braintrust.dev).
+
+    ## 2. Get API keys
+
+    Create API keys for:
+
+    * [Braintrust](https://www.braintrust.dev/app/settings?subroute=api-keys)
+    * Your AI provider or framework ([OpenAI](https://platform.openai.com/api-keys), [Anthropic](https://console.anthropic.com/settings/keys), [Gemini](https://aistudio.google.com/app/apikey), [etc.](/integrations))
+
+    Set them as environment variables:
+
+    ```bash  theme={"theme":{"light":"github-light","dark":"github-dark-dimmed"}}
+    export BRAINTRUST_API_KEY="<your-braintrust-api-key>"
+    export OPENAI_API_KEY="<your-openai-api-key>" # or ANTHROPIC_API_KEY, GEMINI_API_KEY, etc.
+    ```
+
+    <Tip>
+      This quickstart uses OpenAI. For other providers, see [Integrations](/integrations).
+    </Tip>
+
+    ## 3. Install SDKs
+
+    Install the Braintrust SDK and required libraries:
 
     <CodeGroup>
-      ```bash Typescript theme={"theme":{"light":"github-light","dark":"github-dark-dimmed"}}
-      # npm
-      npm install braintrust autoevals
+      ```bash TypeScript theme={"theme":{"light":"github-light","dark":"github-dark-dimmed"}}
       # pnpm
-      pnpm add braintrust autoevals
+      pnpm add braintrust openai autoevals ts-node
+      # npm
+      npm install braintrust openai autoevals ts-node
       ```
 
       ```bash Python theme={"theme":{"light":"github-light","dark":"github-dark-dimmed"}}
-      pip install braintrust autoevals
+      pip install braintrust openai autoevals
       ```
 
       ```bash Go theme={"theme":{"light":"github-light","dark":"github-dark-dimmed"}}
       go get github.com/braintrustdata/braintrust-sdk-go
+      go get github.com/openai/openai-go
       ```
 
       ```bash Ruby theme={"theme":{"light":"github-light","dark":"github-dark-dimmed"}}
-      gem install braintrust
+      # Add to your Gemfile
+      gem "braintrust"
+      gem "ruby-openai"
+
+      # Install:
+      bundle install
       ```
 
       ```bash Java theme={"theme":{"light":"github-light","dark":"github-dark-dimmed"}}
-      # add to build.gradle dependencies{} block
+      # Add to build.gradle dependencies{} block
       implementation 'dev.braintrust:braintrust-sdk-java:<version-goes-here>'
+      implementation 'com.openai:openai-java-sdk:<version-goes-here>'
       ```
 
       ```bash C# theme={"theme":{"light":"github-light","dark":"github-dark-dimmed"}}
-      # add to .csproj file
+      # Add to .csproj file
       dotnet add package Braintrust.Sdk
+      dotnet add package OpenAI
       ```
     </CodeGroup>
 
-    ### 2. Configure an API key
+    ## 4. Run an eval
 
-    You need a Braintrust API key to authenticate your evaluation.
+    Build an evaluation that identifies movies from plot descriptions. You'll define a [dataset](/annotate/datasets) with movie plot descriptions as inputs and expected titles as outputs, write a task function with a [prompt](/evaluate/write-prompts) to identify movies, and use a [scorer](/evaluate/scorers) to measure accuracy.
 
-    Create an API key in the [Braintrust UI](https://www.braintrust.dev/app/settings?subroute=api-keys) and then add the key to your environment:
+    <Steps>
+      <Step title="Set your project">
+        Set your project name as an environment variable:
 
-    ```bash  theme={"theme":{"light":"github-light","dark":"github-dark-dimmed"}}
-    export BRAINTRUST_API_KEY="YOUR_API_KEY"
-    ```
+        ```bash  theme={"theme":{"light":"github-light","dark":"github-dark-dimmed"}}
+        export BRAINTRUST_DEFAULT_PROJECT_NAME="Evaluation quickstart"
+        ```
+      </Step>
 
-    ### 3. Run an evaluation
+      <Step title="Write your evaluation">
+        Create an evaluation that defines your dataset, task, and scorer (built-in `ExactMatch` scorer for Python and TypeScript, equivalent code-based scorer for other languages):
 
-    A Braintrust [evaluation](/core/experiments) is a simple function composed of a dataset of user inputs, a task, and a set of scorers.
+        <CodeGroup dropdown>
+          ```typescript movie-matcher.eval.ts theme={"theme":{"light":"github-light","dark":"github-dark-dimmed"}}
+          import { Eval } from "braintrust";
+          import { ExactMatch } from "autoevals";
+          import OpenAI from "openai";
 
-    <Note>
-      In addition to adding each data point inline when you call the `Eval()` function, you can also [pass an existing or new dataset directly](/core/datasets#use-a-dataset-in-an-evaluation).
-    </Note>
+          const client = new OpenAI();
 
-    Create an evaluation script:
-
-    <CodeGroup dropdown>
-      ```typescript tutorial.eval.ts theme={"theme":{"light":"github-light","dark":"github-dark-dimmed"}}
-      import { Eval } from "braintrust";
-      import { Levenshtein } from "autoevals";
-
-      Eval(
-        "Say Hi Bot", // Replace with your project name
-        {
-          data: () => {
-            return [
+          Eval("Movie matcher", {
+            // Data: Test cases with inputs and expected outputs
+            data: [
               {
-                input: "Foo",
-                expected: "Hi Foo",
+                input: "A detective investigates a series of murders based on the seven deadly sins.",
+                expected: "Se7en",
               },
               {
-                input: "Bar",
-                expected: "Hello Bar",
-              },
-            ]; // Replace with your eval dataset
-          },
-          task: async (input) => {
-            return "Hi " + input; // Replace with your LLM call
-          },
-          scores: [Levenshtein],
-        },
-      );
-      ```
-
-      ```python eval_tutorial.py theme={"theme":{"light":"github-light","dark":"github-dark-dimmed"}}
-      from autoevals import Levenshtein
-      from braintrust import Eval
-
-      Eval(
-          "Say Hi Bot",  # Replace with your project name
-          data=lambda: [
-              {
-                  "input": "Foo",
-                  "expected": "Hi Foo",
+                input: "A thief who steals corporate secrets through the use of dream-sharing technology is given the inverse task of planting an idea into the mind of a C.E.O.",
+                expected: "Inception",
               },
               {
-                  "input": "Bar",
-                  "expected": "Hello Bar",
+                input: "A computer hacker learns from mysterious rebels about the true nature of his reality and his role in the war against its controllers.",
+                expected: "The Matrix",
               },
-          ],  # Replace with your eval dataset
-          task=lambda input: "Hi " + input,  # Replace with your LLM call
-          scores=[Levenshtein],
-      )
-      ```
+              {
+                input: "A cowboy doll is profoundly threatened and jealous when a new spaceman figure supplants him as top toy in a boy's room.",
+                expected: "Toy Story",
+              },
+              {
+                input: "An orphaned boy discovers he's a wizard on his 11th birthday when Hagrid escorts him to magic-teaching Hogwarts School.",
+                expected: "Harry Potter and the Sorcerer's Stone",
+              },
+            ],
 
-      ```go main.go theme={"theme":{"light":"github-light","dark":"github-dark-dimmed"}}
-      package main
+            // Task: The function being evaluated
+            task: async (input) => {
+              const response = await client.responses.create({
+                model: "gpt-5-mini",
+                input: [
+                  {
+                    role: "system",
+                    content: "Based on the following description, identify the movie."
+                  },
+                  { role: "user", content: input }
+                ],
+              });
+              return response.output_text;
+            },
 
-      import (
-      	"context"
-      	"fmt"
-      	"log"
+            // Scores: Metrics to measure quality
+            scores: [ExactMatch],
+          });
+          ```
 
-      	"go.opentelemetry.io/otel"
-      	"go.opentelemetry.io/otel/sdk/trace"
+          ```python movie_matcher.py theme={"theme":{"light":"github-light","dark":"github-dark-dimmed"}}
+          from braintrust import Eval
+          from autoevals import ExactMatch
+          from openai import OpenAI
 
-      	"github.com/braintrustdata/braintrust-sdk-go"
-      	"github.com/braintrustdata/braintrust-sdk-go/eval"
-      )
+          client = OpenAI()
 
-      func main() {
-      	ctx := context.Background()
+          def task(input):
+              response = client.responses.create(
+                  model="gpt-5-mini",
+                  input=[
+                      {
+                          "role": "system",
+                          "content": "Based on the following description, identify the movie."
+                      },
+                      {"role": "user", "content": input}
+                  ],
+              )
+              return response.output_text
 
-      	// Setup OpenTelemetry
-      	tp := trace.NewTracerProvider()
-      	defer tp.Shutdown(ctx)
-      	otel.SetTracerProvider(tp)
+          Eval(
+              "Movie matcher",
+              # Data: Test cases with inputs and expected outputs
+              data=[
+                  {
+                      "input": "A detective investigates a series of murders based on the seven deadly sins.",
+                      "expected": "Se7en",
+                  },
+                  {
+                      "input": "A thief who steals corporate secrets through the use of dream-sharing technology is given the inverse task of planting an idea into the mind of a C.E.O.",
+                      "expected": "Inception",
+                  },
+                  {
+                      "input": "A computer hacker learns from mysterious rebels about the true nature of his reality and his role in the war against its controllers.",
+                      "expected": "The Matrix",
+                  },
+                  {
+                      "input": "A cowboy doll is profoundly threatened and jealous when a new spaceman figure supplants him as top toy in a boy's room.",
+                      "expected": "Toy Story",
+                  },
+                  {
+                      "input": "An orphaned boy discovers he's a wizard on his 11th birthday when Hagrid escorts him to magic-teaching Hogwarts School.",
+                      "expected": "Harry Potter and the Sorcerer's Stone",
+                  },
+              ],
+              # Task: The function being evaluated
+              task=task,
+              # Scores: Metrics to measure quality
+              scores=[ExactMatch],
+          )
+          ```
 
-      	// Initialize Braintrust
-      	client, err := braintrust.New(tp)
-      	if err != nil {
-      		log.Fatal(err)
-      	}
+          ```go movie_matcher.go theme={"theme":{"light":"github-light","dark":"github-dark-dimmed"}}
+          package main
 
-      	// Create evaluator
-      	evaluator := braintrust.NewEvaluator[string, string](client)
+          import (
+          	"context"
+          	"log"
+          	"os"
 
-      	// Run evaluation
-      	_, err = evaluator.Run(ctx, eval.Opts[string, string]{
-      		Experiment: "Say Hi Bot", // Replace with your project name
-      		Dataset: eval.NewDataset([]eval.Case[string, string]{
-      			{Input: "Foo", Expected: "Hi Foo"},
-      			{Input: "Bar", Expected: "Hello Bar"},
-      		}), // Replace with your eval dataset
-      		Task: eval.T(func(ctx context.Context, input string) (string, error) {
-      			return "Hi " + input, nil // Replace with your LLM call
-      		}),
-      		Scorers: []eval.Scorer[string, string]{
-      			eval.NewScorer("exact-match", func(ctx context.Context, r eval.TaskResult[string, string]) (eval.Scores, error) {
-      				score := 0.0
-      				if r.Output == r.Expected {
-      					score = 1.0
-      				}
-      				return eval.S(score), nil
-      			}),
-      		},
-      	})
-      	if err != nil {
-      		log.Fatal(err)
-      	}
+          	"github.com/braintrustdata/braintrust-sdk-go"
+          	"github.com/braintrustdata/braintrust-sdk-go/eval"
+          	traceopenai "github.com/braintrustdata/braintrust-sdk-go/trace/contrib/openai"
+          	"github.com/openai/openai-go"
+          	"github.com/openai/openai-go/option"
+          	"go.opentelemetry.io/otel"
+          	"go.opentelemetry.io/otel/sdk/trace"
+          )
 
-      	fmt.Println("Evaluation complete!")
-      }
-      ```
+          func main() {
+          	ctx := context.Background()
 
-      ```ruby eval_tutorial.rb theme={"theme":{"light":"github-light","dark":"github-dark-dimmed"}}
-      require 'braintrust'
+          	// Setup OpenTelemetry
+          	tp := trace.NewTracerProvider()
+          	defer tp.Shutdown(ctx)
+          	otel.SetTracerProvider(tp)
 
-      Braintrust.init
+          	// Initialize Braintrust
+          	bt, err := braintrust.New(tp,
+          		braintrust.WithAPIKey(os.Getenv("BRAINTRUST_API_KEY")),
+          		braintrust.WithProject(os.Getenv("BRAINTRUST_DEFAULT_PROJECT")),
+          	)
+          	if err != nil {
+          		log.Fatal(err)
+          	}
 
-      Braintrust::Eval.run(
-        project: 'Say Hi Bot', # Replace with your project name
-        experiment: 'tutorial-eval',
-        cases: [
-          { input: 'Foo', expected: 'Hi Foo' },
-          { input: 'Bar', expected: 'Hello Bar' }
-        ], # Replace with your eval dataset
-        task: ->(input) { 'Hi ' + input }, # Replace with your LLM call
-        scorers: [
-          # Exact match scorer
-          Braintrust::Eval.scorer('exact_match') do |_input, expected, output|
-            output == expected ? 1.0 : 0.0
-          end
-        ]
-      )
-      ```
+          	// Create OpenAI client with tracing
+          	openaiClient := openai.NewClient(
+          		option.WithMiddleware(traceopenai.NewMiddleware()),
+          	)
 
-      ```java Tutorial.java theme={"theme":{"light":"github-light","dark":"github-dark-dimmed"}}
-      package dev.braintrust.tutorial;
+          	// Create an evaluator
+          	evaluator := braintrust.NewEvaluator[string, string](bt)
 
-      import dev.braintrust.Braintrust;
-      import dev.braintrust.eval.DatasetCase;
-      import dev.braintrust.eval.Scorer;
-      import java.util.function.Function;
+          	// Run the evaluation
+          	_, err = evaluator.Run(ctx, eval.Opts[string, string]{
+          		Experiment: "Movie matcher",
+          		// Data: Test cases with inputs and expected outputs
+          		Dataset: eval.NewDataset([]eval.Case[string, string]{
+          			{Input: "A detective investigates a series of murders based on the seven deadly sins.", Expected: "Se7en"},
+          			{Input: "A thief who steals corporate secrets through the use of dream-sharing technology is given the inverse task of planting an idea into the mind of a C.E.O.", Expected: "Inception"},
+          			{Input: "A computer hacker learns from mysterious rebels about the true nature of his reality and his role in the war against its controllers.", Expected: "The Matrix"},
+          			{Input: "A cowboy doll is profoundly threatened and jealous when a new spaceman figure supplants him as top toy in a boy's room.", Expected: "Toy Story"},
+          			{Input: "An orphaned boy discovers he's a wizard on his 11th birthday when Hagrid escorts him to magic-teaching Hogwarts School.", Expected: "Harry Potter and the Sorcerer's Stone"},
+          		}),
+          		// Task: The function being evaluated
+          		Task: eval.T(func(ctx context.Context, input string) (string, error) {
+          			response, err := openaiClient.Chat.Completions.New(ctx, openai.ChatCompletionNewParams{
+          				Messages: []openai.ChatCompletionMessageParamUnion{
+          					openai.SystemMessage("Based on the following description, identify the movie."),
+          					openai.UserMessage(input),
+          				},
+          				Model: openai.ChatModelGPT5Mini,
+          			})
+          			if err != nil {
+          				return "", err
+          			}
+          			return response.Choices[0].Message.Content, nil
+          		}),
+          		// Scores: Metrics to measure quality
+          		Scorers: []eval.Scorer[string, string]{
+          			eval.NewScorer("exact_match", func(ctx context.Context, r eval.TaskResult[string, string]) (eval.Scores, error) {
+          				score := 0.0
+          				if r.Expected == r.Output {
+          					score = 1.0
+          				}
+          				return eval.S(score), nil
+          			}),
+          		},
+          	})
+          	if err != nil {
+          		log.Fatal(err)
+          	}
+          }
+          ```
 
-      class Tutorial {
-          public static void main(String[] args) throws Exception {
+          ```ruby movie_matcher.rb theme={"theme":{"light":"github-light","dark":"github-dark-dimmed"}}
+          require 'braintrust'
+          require 'openai'
+
+          Braintrust.init
+
+          client = OpenAI::Client.new(
+              access_token: ENV.fetch('OPENAI_API_KEY', nil)
+          )
+
+          Braintrust::Eval.run(
+            project: 'Evaluation quickstart',
+            experiment: 'Movie matcher',
+            # Data: Test cases with inputs and expected outputs
+            cases: [
+              {input: "A detective investigates a series of murders based on the seven deadly sins.", expected: "Se7en"},
+              {input: "A thief who steals corporate secrets through the use of dream-sharing technology is given the inverse task of planting an idea into the mind of a C.E.O.", expected: "Inception"},
+              {input: "A computer hacker learns from mysterious rebels about the true nature of his reality and his role in the war against its controllers.", expected: "The Matrix"},
+              {input: "A cowboy doll is profoundly threatened and jealous when a new spaceman figure supplants him as top toy in a boy's room.", expected: "Toy Story"},
+              {input: "An orphaned boy discovers he's a wizard on his 11th birthday when Hagrid escorts him to magic-teaching Hogwarts School.", expected: "Harry Potter and the Sorcerer's Stone"},
+            ],
+            # Task: The function being evaluated
+            task: lambda do |input|
+              response = client.chat(
+                parameters: {
+                  model: 'gpt-5-mini',
+                  messages: [
+                    {role: "system", content: "Based on the following description, identify the movie."},
+                    {role: "user", content: input}
+                  ]
+                }
+              )
+              response.dig("choices", 0, "message", "content")
+            end,
+            # Scores: Metrics to measure quality
+            scorers: [
+              Braintrust::Eval.scorer("exact_match") do |input, expected, output, metadata|
+                output == expected ? 1.0 : 0.0
+              end
+            ]
+          )
+
+          OpenTelemetry.tracer_provider.force_flush
+          ```
+
+          ```java MovieMatcher.java theme={"theme":{"light":"github-light","dark":"github-dark-dimmed"}}
+          import com.openai.client.OpenAIClient;
+          import com.openai.client.okhttp.OpenAIOkHttpClient;
+          import com.openai.models.ChatModel;
+          import com.openai.models.chat.completions.ChatCompletionCreateParams;
+          import dev.braintrust.Braintrust;
+          import dev.braintrust.config.BraintrustConfig;
+          import dev.braintrust.eval.DatasetCase;
+          import dev.braintrust.eval.Scorer;
+          import dev.braintrust.instrumentation.openai.BraintrustOpenAI;
+          import java.util.function.Function;
+
+          class MovieMatcher {
+            public static void main(String[] args) {
               var braintrust = Braintrust.get();
               var openTelemetry = braintrust.openTelemetryCreate();
 
-              // Define your task function
-              Function<String, String> task = (String input) -> {
-                  return "Hi " + input; // Replace with your LLM call
+              // Wrap the OpenAI client with Braintrust instrumentation
+              OpenAIClient client = BraintrustOpenAI.wrapOpenAI(openTelemetry, OpenAIOkHttpClient.fromEnv());
+
+              // Task: The function being evaluated
+              Function<String, String> taskFunction = (String input) -> {
+                var response = client.chat().completions().create(
+                  ChatCompletionCreateParams.builder()
+                    .model(ChatModel.GPT_5_MINI)
+                    .addSystemMessage("Based on the following description, identify the movie.")
+                    .addUserMessage(input)
+                    .build()
+                );
+                return response.choices().get(0).message().content().orElse("");
               };
 
-              // Run evaluation
+              // Build and run the evaluation
               var eval = braintrust.<String, String>evalBuilder()
-                  .name("Say Hi Bot") // Replace with your project name
+                  .name("Movie matcher")
+                  // Data: Test cases with inputs and expected outputs
                   .cases(
-                      DatasetCase.of("Foo", "Hi Foo"),
-                      DatasetCase.of("Bar", "Hello Bar")
-                  ) // Replace with your eval dataset
-                  .taskFunction(task)
+                    DatasetCase.of("A detective investigates a series of murders based on the seven deadly sins.", "Se7en"),
+                    DatasetCase.of("A thief who steals corporate secrets through the use of dream-sharing technology is given the inverse task of planting an idea into the mind of a C.E.O.", "Inception"),
+                    DatasetCase.of("A computer hacker learns from mysterious rebels about the true nature of his reality and his role in the war against its controllers.", "The Matrix"),
+                    DatasetCase.of("A cowboy doll is profoundly threatened and jealous when a new spaceman figure supplants him as top toy in a boy's room.", "Toy Story"),
+                    DatasetCase.of("An orphaned boy discovers he's a wizard on his 11th birthday when Hagrid escorts him to magic-teaching Hogwarts School.", "Harry Potter and the Sorcerer's Stone")
+                  )
+                  .taskFunction(taskFunction)
+                  // Scores: Metrics to measure quality
                   .scorers(
-                      Scorer.of("exact-match", (evalCase, output) ->
-                          output.equals(evalCase.expected()) ? 1.0 : 0.0
-                      )
+                    Scorer.of("exact_match", (expected, actual) ->
+                      expected.equals(actual) ? 1.0 : 0.0
+                    )
                   )
                   .build();
 
               var result = eval.run();
-              System.out.println("\n\n" + result.createReportString());
+              System.out.println(result.createReportString());
+            }
           }
-      }
-      ```
+          ```
 
-      ```csharp Tutorial.cs theme={"theme":{"light":"github-light","dark":"github-dark-dimmed"}}
-      using System;
-      using Braintrust.Sdk;
-      using Braintrust.Sdk.Eval;
+          ```csharp MovieMatcher.cs theme={"theme":{"light":"github-light","dark":"github-dark-dimmed"}}
+          using System;
+          using System.Threading.Tasks;
+          using Braintrust.Sdk;
+          using Braintrust.Sdk.Eval;
+          using Braintrust.Sdk.Instrumentation.OpenAI;
+          using OpenAI;
+          using OpenAI.Chat;
 
-      class Tutorial
-      {
-          static void Main(string[] args)
+          class MovieMatcher
           {
-              var braintrust = Braintrust.Sdk.Braintrust.Get();
-
-              // Define the task function
-              string TaskFunction(string input)
+              static async Task Main(string[] args)
               {
-                  return "Hi " + input; // Replace with your LLM call
+                  var braintrust = Braintrust.Sdk.Braintrust.Get();
+                  var activitySource = braintrust.GetActivitySource();
+
+                  var apiKey = Environment.GetEnvironmentVariable("OPENAI_API_KEY");
+                  if (string.IsNullOrEmpty(apiKey))
+                  {
+                      Console.WriteLine("Error: OPENAI_API_KEY environment variable is not set.");
+                      return;
+                  }
+
+                  // Wrap the OpenAI client with Braintrust instrumentation
+                  var client = BraintrustOpenAI.WrapOpenAI(activitySource, apiKey);
+
+                  // Build and run the evaluation
+                  var eval = await braintrust
+                      .EvalBuilder<string, string>()
+                      .Name("Movie matcher")
+                      // Data: Test cases with inputs and expected outputs
+                      .Cases(
+
+                          new DatasetCase<string, string>("A detective investigates a series of murders based on the seven deadly sins.", "Se7en"),
+                          new DatasetCase<string, string>("A thief who steals corporate secrets through the use of dream-sharing technology is given the inverse task of planting an idea into the mind of a C.E.O.", "Inception"),
+                          new DatasetCase<string, string>("A computer hacker learns from mysterious rebels about the true nature of his reality and his role in the war against its controllers.", "The Matrix"),
+                          new DatasetCase<string, string>("A cowboy doll is profoundly threatened and jealous when a new spaceman figure supplants him as top toy in a boy's room.", "Toy Story"),
+                          new DatasetCase<string, string>("An orphaned boy discovers he's a wizard on his 11th birthday when Hagrid escorts him to magic-teaching Hogwarts School.", "Harry Potter and the Sorcerer's Stone")
+                      )
+                      // Task: The function being evaluated
+                      .TaskFunction((string input) =>
+                      {
+                          var chatClient = client.GetChatClient("gpt-5-mini");
+                          var messages = new ChatMessage[]
+                          {
+                              new SystemChatMessage("Based on the following description, identify the movie."),
+                              new UserChatMessage(input)
+                          };
+                          var result = chatClient.CompleteChat(messages);
+                          return result.Value.Content[0].Text;
+                      })
+                      // Scores: Metrics to measure quality
+                      .Scorers(
+                          new FunctionScorer<string, string>("exact_match", (expected, actual) =>
+                              actual == expected ? 1.0 : 0.0)
+                      )
+                      .BuildAsync();
+
+                  var result = await eval.RunAsync();
+                  Console.WriteLine(result.CreateReportString());
               }
-
-              // Create and run the evaluation
-              var eval = braintrust
-                  .EvalBuilder<string, string>()
-                  .Name("Say Hi Bot") // Replace with your project name
-                  .Cases(
-                      DatasetCase<string, string>.Of("Foo", "Hi Foo"),
-                      DatasetCase<string, string>.Of("Bar", "Hello Bar")
-                  ) // Replace with your eval dataset
-                  .TaskFunction(TaskFunction)
-                  .Scorers(
-                      Scorer<string, string>.Of("exact-match", (expected, actual) =>
-                          actual == expected ? 1.0 : 0.0)
-                  )
-                  .Build();
-
-              var result = eval.Run();
-              Console.WriteLine(result.CreateReportString());
           }
-      }
-      ```
-    </CodeGroup>
+          ```
+        </CodeGroup>
+      </Step>
 
-    Run your evaluation:
+      <Step title="Run the evaluation">
+        Run your evaluation:
 
-    <CodeGroup>
-      ```bash Typescript theme={"theme":{"light":"github-light","dark":"github-dark-dimmed"}}
-      npx braintrust eval tutorial.eval.ts
-      ```
+        <CodeGroup>
+          ```bash TypeScript theme={"theme":{"light":"github-light","dark":"github-dark-dimmed"}}
+          npx braintrust eval movie-matcher.eval.ts
+          ```
 
-      ```bash Python theme={"theme":{"light":"github-light","dark":"github-dark-dimmed"}}
-      braintrust eval eval_tutorial.py
-      ```
+          ```bash Python theme={"theme":{"light":"github-light","dark":"github-dark-dimmed"}}
+          braintrust eval movie_matcher.py
+          ```
 
-      ```bash Go theme={"theme":{"light":"github-light","dark":"github-dark-dimmed"}}
-      go run main.go
-      ```
+          ```bash Go theme={"theme":{"light":"github-light","dark":"github-dark-dimmed"}}
+          go run movie_matcher.go
+          ```
 
-      ```bash Ruby theme={"theme":{"light":"github-light","dark":"github-dark-dimmed"}}
-      ruby eval_tutorial.rb
-      ```
+          ```bash Ruby theme={"theme":{"light":"github-light","dark":"github-dark-dimmed"}}
+          ruby movie_matcher.rb
+          ```
 
-      ```bash Java theme={"theme":{"light":"github-light","dark":"github-dark-dimmed"}}
-      java Tutorial.java
-      ```
+          ```bash Java theme={"theme":{"light":"github-light","dark":"github-dark-dimmed"}}
+          javac -cp ".:*" MovieMatcher.java
+          java -cp ".:*" MovieMatcher
+          ```
 
-      ```bash C# theme={"theme":{"light":"github-light","dark":"github-dark-dimmed"}}
-      dotnet run
-      ```
-    </CodeGroup>
+          ```bash C# theme={"theme":{"light":"github-light","dark":"github-dark-dimmed"}}
+          dotnet run
+          ```
+        </CodeGroup>
 
-    This will create an experiment in Braintrust. Once the command runs, you'll see a link to your experiment.
+        This creates an **experiment**, a permanent record of how your task performed on the dataset. Each experiment captures inputs, outputs, scores, and metadata, making it easy to compare different versions of your prompts or models.
+      </Step>
 
-    <Tip>
-      To test your evaluation locally without sending results to Braintrust, add the `--no-send-logs` flag.
-    </Tip>
+      <Step title="View results">
+        You'll see a link to your experiment in the terminal output.
 
-    ### 4. View your results
+        Click the link to view your evaluation results, or go to <Icon icon="beaker" /> **Experiments** in the "Evaluation quickstart" project in the Braintrust UI.
+      </Step>
+    </Steps>
 
-    Congrats, you just ran an eval! You should see a dashboard like this when you load your experiment. This view is called the *experiment view*, and as you use Braintrust, we hope it becomes your trusty companion each time you change your code and want to run an eval.
+    ## 5. Iterate
 
-    The experiment view allows you to look at high level metrics for performance, dig into individual examples, and compare your LLM app's performance over time.
+    You might notice that some scores are 0%. This is because the scorer requires outputs to exactly match the expected value. For example, if the AI returns "The movie is Se7en" instead of "Se7en", or uses the UK title "Harry Potter and the Philosopher's Stone" instead of the expected US title "Harry Potter and the Sorcerer's Stone", the score will be 0% for that case.
 
-        <img src="https://mintcdn.com/braintrust/psQJ0h1WPc2nKmNr/images/first.png?fit=max&auto=format&n=psQJ0h1WPc2nKmNr&q=85&s=c288b83745e7f6d0bcc8256e7a22a3e4" alt="First eval" data-og-width="2474" width="2474" data-og-height="818" height="818" data-path="images/first.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/braintrust/psQJ0h1WPc2nKmNr/images/first.png?w=280&fit=max&auto=format&n=psQJ0h1WPc2nKmNr&q=85&s=6a202cb8bdb6b5e8d7f61e5903f2928f 280w, https://mintcdn.com/braintrust/psQJ0h1WPc2nKmNr/images/first.png?w=560&fit=max&auto=format&n=psQJ0h1WPc2nKmNr&q=85&s=cb615437ae1dddc202574815b9ca06b3 560w, https://mintcdn.com/braintrust/psQJ0h1WPc2nKmNr/images/first.png?w=840&fit=max&auto=format&n=psQJ0h1WPc2nKmNr&q=85&s=6e595252994da0cec82e282517bc4070 840w, https://mintcdn.com/braintrust/psQJ0h1WPc2nKmNr/images/first.png?w=1100&fit=max&auto=format&n=psQJ0h1WPc2nKmNr&q=85&s=dec917a9f119cf560b890f106a2e237b 1100w, https://mintcdn.com/braintrust/psQJ0h1WPc2nKmNr/images/first.png?w=1650&fit=max&auto=format&n=psQJ0h1WPc2nKmNr&q=85&s=74aa5c3ee2db168d168edb3fbb67aaf8 1650w, https://mintcdn.com/braintrust/psQJ0h1WPc2nKmNr/images/first.png?w=2500&fit=max&auto=format&n=psQJ0h1WPc2nKmNr&q=85&s=28a1a79acbe82c3714feb838432199e9 2500w" />
+    Let's improve the prompt to return only US-based movie titles and create a second experiment.
 
-    ### 5. Run another experiment
+    <Steps>
+      <Step title="Update your evaluation">
+        In your eval code, change the prompt to:
 
-    After running your first evaluation, you'll see that we achieved a 77.8% score. Can you adjust the evaluation to improve this score? Make your changes and re-run the evaluation to track your progress.
+        ```text wrap theme={"theme":{"light":"github-light","dark":"github-dark-dimmed"}}
+        Identify the movie from the description. Return only the movie title, with no additional text or explanation. Always use the US-based title.
+        ```
+      </Step>
 
-        <img src="https://mintcdn.com/braintrust/psQJ0h1WPc2nKmNr/images/second.png?fit=max&auto=format&n=psQJ0h1WPc2nKmNr&q=85&s=22656c7185a0dbdc14c6bb7f2cf9b1f7" alt="Second eval" data-og-width="2464" width="2464" data-og-height="798" height="798" data-path="images/second.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/braintrust/psQJ0h1WPc2nKmNr/images/second.png?w=280&fit=max&auto=format&n=psQJ0h1WPc2nKmNr&q=85&s=c8f431414c170bd8aed1df830abc6fe7 280w, https://mintcdn.com/braintrust/psQJ0h1WPc2nKmNr/images/second.png?w=560&fit=max&auto=format&n=psQJ0h1WPc2nKmNr&q=85&s=e74ea7400d828dd1af0623146157333b 560w, https://mintcdn.com/braintrust/psQJ0h1WPc2nKmNr/images/second.png?w=840&fit=max&auto=format&n=psQJ0h1WPc2nKmNr&q=85&s=4eb89c06935cb66d3056023e85b2126a 840w, https://mintcdn.com/braintrust/psQJ0h1WPc2nKmNr/images/second.png?w=1100&fit=max&auto=format&n=psQJ0h1WPc2nKmNr&q=85&s=83af390331feb43ba06c2db6ce6e4f8f 1100w, https://mintcdn.com/braintrust/psQJ0h1WPc2nKmNr/images/second.png?w=1650&fit=max&auto=format&n=psQJ0h1WPc2nKmNr&q=85&s=434c4d6f4d069955e690a97e0d8ace0b 1650w, https://mintcdn.com/braintrust/psQJ0h1WPc2nKmNr/images/second.png?w=2500&fit=max&auto=format&n=psQJ0h1WPc2nKmNr&q=85&s=e5e23dbacc88701f2d609fe167d56e4c 2500w" />
+      <Step title="Run the evaluation">
+        Run the improved evaluation:
+
+        <CodeGroup>
+          ```bash TypeScript theme={"theme":{"light":"github-light","dark":"github-dark-dimmed"}}
+          npx braintrust eval movie-matcher.eval.ts
+          ```
+
+          ```bash Python theme={"theme":{"light":"github-light","dark":"github-dark-dimmed"}}
+          braintrust eval movie_matcher.py
+          ```
+
+          ```bash Go theme={"theme":{"light":"github-light","dark":"github-dark-dimmed"}}
+          go run movie_matcher.go
+          ```
+
+          ```bash Ruby theme={"theme":{"light":"github-light","dark":"github-dark-dimmed"}}
+          ruby movie_matcher.rb
+          ```
+
+          ```bash Java theme={"theme":{"light":"github-light","dark":"github-dark-dimmed"}}
+          javac -cp ".:*" MovieMatcher.java
+          java -cp ".:*" MovieMatcher
+          ```
+
+          ```bash C# theme={"theme":{"light":"github-light","dark":"github-dark-dimmed"}}
+          dotnet run
+          ```
+        </CodeGroup>
+      </Step>
+
+      <Step title="View results">
+        Click the link to your new experiment in the terminal output.
+
+        The improved prompt should have higher scores because it returns just the movie title. In the Braintrust UI, you can [compare this experiment](/evaluate/compare-experiments) with your first one to see the improvement.
+      </Step>
+    </Steps>
+
+    ## Troubleshoot
+
+    <AccordionGroup>
+      <Accordion title="Dataset not found error?">
+        Verify your dataset name matches exactly what you see in the Braintrust UI:
+
+        ```typescript  theme={"theme":{"light":"github-light","dark":"github-dark-dimmed"}}
+        // Make sure this matches your dataset name
+        data: initDataset("Movie matcher", {
+          dataset: "Movie matcher dataset"  // Check this name in the UI
+        })
+        ```
+
+        Go to <Icon icon="database" /> **Datasets** in your Braintrust project and confirm the dataset name.
+      </Accordion>
+
+      <Accordion title="Import errors or missing modules?">
+        Install all required packages:
+
+        <CodeGroup>
+          ```bash TypeScript theme={"theme":{"light":"github-light","dark":"github-dark-dimmed"}}
+          pnpm add braintrust openai autoevals
+          ```
+
+          ```bash Python theme={"theme":{"light":"github-light","dark":"github-dark-dimmed"}}
+          pip install braintrust openai autoevals
+          ```
+        </CodeGroup>
+      </Accordion>
+
+      <Accordion title="API key errors?">
+        Check your environment variables:
+
+        ```bash  theme={"theme":{"light":"github-light","dark":"github-dark-dimmed"}}
+        echo $BRAINTRUST_API_KEY
+        echo $OPENAI_API_KEY
+        ```
+
+        Both should return values. If empty, set them:
+
+        ```bash  theme={"theme":{"light":"github-light","dark":"github-dark-dimmed"}}
+        export BRAINTRUST_API_KEY="your-braintrust-key"
+        export OPENAI_API_KEY="your-openai-key"
+        ```
+
+        Get your Braintrust API key from [Settings > API Keys](https://www.braintrust.dev/app/settings?subroute=api-keys).
+      </Accordion>
+
+      <Accordion title="Not seeing experiments in UI?">
+        Check your terminal output for the experiment link after running `braintrust eval`. Click it to navigate directly to the experiment.
+
+        If you don't see a link:
+
+        * Check for error messages in terminal output
+        * Verify network connectivity
+        * Ensure you're viewing the correct project ("Evaluation quickstart")
+      </Accordion>
+
+      <Accordion title="Need help?">
+        * Join our [Discord](https://discord.gg/6G8s47F44X)
+        * Email us at [support@braintrust.dev](mailto:support@braintrust.dev)
+        * Use the [Loop](/observe/loop) feature in the Braintrust UI
+      </Accordion>
+    </AccordionGroup>
   </Tab>
 
   <Tab title="UI" icon="mouse-pointer-2">
-    Create experiments to run evals directly in the Braintrust UI. This quickstart uses a sample dataset and sample prompts.
+    Build and iterate on evaluations visually in [playgrounds](/evaluate/playgrounds) without writing code.
 
-    ### 1. Configure your API keys
+    ## 1. Sign up
 
-    Navigate to the [AI providers](https://www.braintrust.dev/app/settings?subroute=secrets) page in your settings and configure at least one API key. For this quickstart, be sure to add your OpenAI API key. After completing this initial setup, you can access models from many providers through a single, unified API.
+    If you're new to Braintrust, sign up free at [braintrust.dev](https://www.braintrust.dev).
 
-    ### 2. Create a new project
+    ## 2. Add an AI provider
 
-    For every AI feature your organization is building, the first thing you'll do is create a project.
+    Braintrust lets you call AI providers directly from the UI. For this quickstart, you'll use OpenAI:
 
-    ### 3. Create a new prompt
+    1. Get an OpenAI API key from [platform.openai.com/api-keys](https://platform.openai.com/api-keys).
+    2. Go to <Icon icon="settings-2" /> **Settings** > <Icon icon="sparkle" /> [**AI providers**](https://www.braintrust.dev/app/settings?subroute=secrets).
+    3. Select **OpenAI** from the provider list.
+    4. Enter your OpenAI API key.
+    5. Click **Save**.
 
-    Navigate to **Prompts**. Create a new prompt in your project called "movie matcher". A prompt is the input you provide to the model to generate a response. Choose `GPT 4o` for your model, and type this for your system prompt:
+    <ApiKeyEncryptionNote />
 
-    ```
-    Based on the following description, identify the movie title. In your response, provide the name of the movie.
-    ```
+    ## 3. Run an eval
 
-    Select the **+ Message** button below the system prompt, and enter a user message
+    Build an evaluation that identifies movies from plot descriptions. You'll upload test cases, create prompts, add scoring, and compare results interactively - all in a [playground](/evaluate/playgrounds), a workspace for rapid iteration without writing code. .
 
-    ```
-    {{input}}
-    ```
+    <Steps>
+      <Step title="Create a playground">
+        1. Go to <Icon icon="shapes" /> **Playgrounds**.
+        2. Select **Create empty playground**.
+        3. Enter `Movie matcher` as the name and select **Create**.
+        4. Select the playground in the list.
+      </Step>
 
-    Prompts can use [mustache](https://mustache.github.io/mustache.5.html) templating syntax to refer to variables. In this case, the input corresponds to the movie description given by the user.
+      <Step title="Create a prompt">
+        A [prompt](/evaluate/write-prompts) is the instruction you give to an AI model to complete a task.
 
-        <img src="https://mintcdn.com/braintrust/psQJ0h1WPc2nKmNr/images/movie-matcher-prompt.png?fit=max&auto=format&n=psQJ0h1WPc2nKmNr&q=85&s=34102d9e1486b470919bf83dc4749b16" alt="First prompt" data-og-width="1520" width="1520" data-og-height="1320" height="1320" data-path="images/movie-matcher-prompt.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/braintrust/psQJ0h1WPc2nKmNr/images/movie-matcher-prompt.png?w=280&fit=max&auto=format&n=psQJ0h1WPc2nKmNr&q=85&s=ead21a90455b2f66c4ea2e5efaf8fb56 280w, https://mintcdn.com/braintrust/psQJ0h1WPc2nKmNr/images/movie-matcher-prompt.png?w=560&fit=max&auto=format&n=psQJ0h1WPc2nKmNr&q=85&s=8a400545fb3a1c922b7cd01bf65bc8a6 560w, https://mintcdn.com/braintrust/psQJ0h1WPc2nKmNr/images/movie-matcher-prompt.png?w=840&fit=max&auto=format&n=psQJ0h1WPc2nKmNr&q=85&s=7b5e4c531b0fda7c89d426141e520ffd 840w, https://mintcdn.com/braintrust/psQJ0h1WPc2nKmNr/images/movie-matcher-prompt.png?w=1100&fit=max&auto=format&n=psQJ0h1WPc2nKmNr&q=85&s=1c6f2800b8385feba5bc7dea41c2f095 1100w, https://mintcdn.com/braintrust/psQJ0h1WPc2nKmNr/images/movie-matcher-prompt.png?w=1650&fit=max&auto=format&n=psQJ0h1WPc2nKmNr&q=85&s=36626c8e6527106c059d414787ff277d 1650w, https://mintcdn.com/braintrust/psQJ0h1WPc2nKmNr/images/movie-matcher-prompt.png?w=2500&fit=max&auto=format&n=psQJ0h1WPc2nKmNr&q=85&s=77940beece4a2c3497ea03464457e333 2500w" />
+        1. In the playground, choose `GPT-5 mini` as your model.
+        2. Enter the following system prompt:
 
-    Select **Save as custom prompt** to save your prompt.
+           ```text wrap theme={"theme":{"light":"github-light","dark":"github-dark-dimmed"}}
+           Based on the following description, identify the movie.
+           ```
+        3. Select **+ Message** and enter the following user message:
 
-    ### 4. Explore the prompt playground
+           ```text  theme={"theme":{"light":"github-light","dark":"github-dark-dimmed"}}
+           {{input}}
+           ```
 
-    Scroll to the bottom of the prompt viewer, and select **Create playground with prompt**. This will open the prompt you just created in the [prompt playground](https://www.braintrust.dev/docs/guides/playground), a tool for exploring, comparing, and evaluating prompts. In the prompt playground, you can evaluate prompts with data from your [datasets](https://www.braintrust.dev/docs/guides/datasets).
+           Prompts can use [templating syntax](/evaluate/write-prompts#use-templating) to refer to variables. In this case, the input corresponds to the movie description given by the user.
+      </Step>
 
-        <img src="https://mintcdn.com/braintrust/psQJ0h1WPc2nKmNr/images/prompt-playground.png?fit=max&auto=format&n=psQJ0h1WPc2nKmNr&q=85&s=73bbe5df8b207e1f14b8edf9ee824867" alt="Prompt playground" data-og-width="2326" width="2326" data-og-height="1280" height="1280" data-path="images/prompt-playground.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/braintrust/psQJ0h1WPc2nKmNr/images/prompt-playground.png?w=280&fit=max&auto=format&n=psQJ0h1WPc2nKmNr&q=85&s=61b1da508e2039c7ccdfadf79a56fde0 280w, https://mintcdn.com/braintrust/psQJ0h1WPc2nKmNr/images/prompt-playground.png?w=560&fit=max&auto=format&n=psQJ0h1WPc2nKmNr&q=85&s=ce8257949a792fe72492d6f0f16d1192 560w, https://mintcdn.com/braintrust/psQJ0h1WPc2nKmNr/images/prompt-playground.png?w=840&fit=max&auto=format&n=psQJ0h1WPc2nKmNr&q=85&s=4dd71d18afc006811ff9676e319c5a06 840w, https://mintcdn.com/braintrust/psQJ0h1WPc2nKmNr/images/prompt-playground.png?w=1100&fit=max&auto=format&n=psQJ0h1WPc2nKmNr&q=85&s=fe4bee2e6648629e1923bf6ff1906d3c 1100w, https://mintcdn.com/braintrust/psQJ0h1WPc2nKmNr/images/prompt-playground.png?w=1650&fit=max&auto=format&n=psQJ0h1WPc2nKmNr&q=85&s=1fad0a3b909daeb1c13fc0702c3c9edc 1650w, https://mintcdn.com/braintrust/psQJ0h1WPc2nKmNr/images/prompt-playground.png?w=2500&fit=max&auto=format&n=psQJ0h1WPc2nKmNr&q=85&s=24f7ece02fc18e8e680764406c8ae7d1 2500w" />
+      <Step title="Add a dataset">
+        To evaluate how well your prompt works, you need test data. A [dataset](/annotate/datasets) contains inputs and the outputs you expect from your AI.
 
-    ### 5. Import a dataset
+        1. Download this [sample dataset](/assets/movie-matcher.csv).
+        2. In the playground, select <Icon icon="database" /> **Select a dataset** > <Icon icon="upload" /> **Upload new dataset**.
+        3. Upload your CSV file.
 
-    Open this [sample dataset](https://gist.githubusercontent.com/ornellaaltunyan/28972d2566ddf64bc171922d0f0564e2/raw/838d220eea620a2390427fe1ec35d347f2b798bd/gistfile1.csv), and right-click to select **Save as...** and download it. It is a `.csv` file with two columns, **Movie Title** and **Original Description**. Inside your playground, select **Dataset**, then **Upload dataset**, and upload the CSV file. Using drag and drop, assign the CSV columns to dataset fields. The input column corresponds to Original Description, and the expected column should be Movie Title. Then, select **Import**.
+           Columns automatically map to the input and expected fields. Drag and drop them into different categories as needed:
+        4. Click **Import**.
+      </Step>
 
-        <img src="https://mintcdn.com/braintrust/psQJ0h1WPc2nKmNr/images/upload-dataset.png?fit=max&auto=format&n=psQJ0h1WPc2nKmNr&q=85&s=3ca01dd9ee718b5e7218121ae0088a60" alt="Upload dataset" data-og-width="1680" width="1680" data-og-height="1598" height="1598" data-path="images/upload-dataset.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/braintrust/psQJ0h1WPc2nKmNr/images/upload-dataset.png?w=280&fit=max&auto=format&n=psQJ0h1WPc2nKmNr&q=85&s=4129f3e6d05a02e2365c8a6bb5cbf7b6 280w, https://mintcdn.com/braintrust/psQJ0h1WPc2nKmNr/images/upload-dataset.png?w=560&fit=max&auto=format&n=psQJ0h1WPc2nKmNr&q=85&s=9ba2969c677371e1ad21d2bafee6a96f 560w, https://mintcdn.com/braintrust/psQJ0h1WPc2nKmNr/images/upload-dataset.png?w=840&fit=max&auto=format&n=psQJ0h1WPc2nKmNr&q=85&s=2d6d2640c3e969a0a9f6aa0e25f533b6 840w, https://mintcdn.com/braintrust/psQJ0h1WPc2nKmNr/images/upload-dataset.png?w=1100&fit=max&auto=format&n=psQJ0h1WPc2nKmNr&q=85&s=10ad67a15835e9ba6df837fe9c81e9b3 1100w, https://mintcdn.com/braintrust/psQJ0h1WPc2nKmNr/images/upload-dataset.png?w=1650&fit=max&auto=format&n=psQJ0h1WPc2nKmNr&q=85&s=3a11d8c85972dd5969aae8a2ff63ca82 1650w, https://mintcdn.com/braintrust/psQJ0h1WPc2nKmNr/images/upload-dataset.png?w=2500&fit=max&auto=format&n=psQJ0h1WPc2nKmNr&q=85&s=9e6c2ddd1b53da2426b97e04c1fe5e5b 2500w" />
+      <Step title="Add a scorer">
+        [Scorers](/evaluate/scorers) measure the quality of your AI's outputs using built-in functions, custom code, or LLM judges. For this task, you'll use the **ExactMatch** built-in scorer because movie titles have clear right and wrong answers.
 
-    ### 6. Choose a scorer
+        1. In the playground, select **+ Scorer**.
+        2. Select **AutoEvals** > **ExactMatch**.
+      </Step>
 
-    A scoring function allows you to compare the expected output of a task to the actual output and produce a score between 0 and 1. Inside your playground, select **Scorers** to choose from several types of scoring functions. There are two main types of scoring functions: heuristics are great for well-defined criteria, while LLM-as-a-judge is better for handling more complex, subjective evaluations. You can also create a custom scorer. For this example, since there is a clear correct answer, we can choose **ExactMatch**.
+      <Step title="Run an evaluation">
+        Select <Icon icon="play" /> **Run** at the top of the playground to see how well your prompt performs.
 
-    ### 7. Run your first evaluation
+        The playground will execute your prompt against all rows in your dataset and score the results. You'll see:
 
-    From within the playground, select **+ Experiment** to set up your first evaluation. To run an eval, you need three things:
+        * The AI's response for each movie description
+        * The ExactMatch score (100% for correct, 0% for incorrect)
+      </Step>
+    </Steps>
 
-    * **Data**: a set of examples to test your application on
-    * **Task**: the AI function you want to test (any function that takes in an input and returns an output)
-    * **Scores**: a set of scoring functions that take an input, output, and optional expected value and compute a score
+    ## 4. Iterate
 
-    In this example, the Data is the dataset you uploaded, the Task is the prompt you created, and Scores is the scoring function we selected.
+    You might notice that some ExactMatch scores are 0%. This is because ExactMatch requires outputs to exactly match the expected value. For example, if the AI returns "The movie is Se7en" instead of "Se7en", or uses the UK title "Harry Potter and the Philosopher's Stone" instead of the expected US title "Harry Potter and the Sorcerer's Stone", the score will be 0% for that case.
 
-        <img src="https://mintcdn.com/braintrust/psQJ0h1WPc2nKmNr/images/create-experiment.png?fit=max&auto=format&n=psQJ0h1WPc2nKmNr&q=85&s=dccf4fbedb1d2cb4f48ca34525269e2d" alt="Create experiment" data-og-width="2296" width="2296" data-og-height="1406" height="1406" data-path="images/create-experiment.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/braintrust/psQJ0h1WPc2nKmNr/images/create-experiment.png?w=280&fit=max&auto=format&n=psQJ0h1WPc2nKmNr&q=85&s=f925fc88dcb4100ddf55070938931829 280w, https://mintcdn.com/braintrust/psQJ0h1WPc2nKmNr/images/create-experiment.png?w=560&fit=max&auto=format&n=psQJ0h1WPc2nKmNr&q=85&s=272c3315424b24c7c7322c87110ed401 560w, https://mintcdn.com/braintrust/psQJ0h1WPc2nKmNr/images/create-experiment.png?w=840&fit=max&auto=format&n=psQJ0h1WPc2nKmNr&q=85&s=e614a00c8377a7d523c4d45a3b4dd5f6 840w, https://mintcdn.com/braintrust/psQJ0h1WPc2nKmNr/images/create-experiment.png?w=1100&fit=max&auto=format&n=psQJ0h1WPc2nKmNr&q=85&s=f32419b63ba2744247de57343f316dfc 1100w, https://mintcdn.com/braintrust/psQJ0h1WPc2nKmNr/images/create-experiment.png?w=1650&fit=max&auto=format&n=psQJ0h1WPc2nKmNr&q=85&s=1de1e120c472b2616a9d110ac316981d 1650w, https://mintcdn.com/braintrust/psQJ0h1WPc2nKmNr/images/create-experiment.png?w=2500&fit=max&auto=format&n=psQJ0h1WPc2nKmNr&q=85&s=4d697b512209cda33baac0e6a9fe6a84 2500w" />
+    Let's create an improved prompt that returns only the US-based movie title:
 
-    Creating an experiment from the playground will automatically log your results to Braintrust.
+    1. In the playground, select **+ Task**.
+    2. Select <Icon icon="message-circle" /> **Prompt** > **+ Blank prompt**.
+    3. Add a more specific system message:
 
-    <Note>
-      Experiments run from the UI have a 15-minute timeout, after which the experiment stops executing. For longer-running evaluations, use the [programmatic SDK approach](/core/experiments/run) instead.
-    </Note>
+       ```text wrap theme={"theme":{"light":"github-light","dark":"github-dark-dimmed"}}
+       Identify the movie from the description. Return only the movie title, with no additional text or explanation. Always use the US-based title.
+       ```
+    4. Select **+ Message** and enter the following user message:
 
-    ### 8. Interpret your results
+       ```text  theme={"theme":{"light":"github-light","dark":"github-dark-dimmed"}}
+       {{input}}
+       ```
+    5. Select <Icon icon="message-circle" /> **Save prompt**.
+    6. Select **Run** to compare both prompts side-by-side.
 
-    Navigate to the **Experiments** page to view your evaluation. Examine the exact match scores and other feedback generated by your evals. If you notice that some of your outputs did not match what was expected, you can tweak your prompt directly in the UI until it consistently produces high-quality outputs. If changing the prompt doesn't yield the desired results, consider experimenting with different models.
+    You'll now see results for both prompts in the playground. The improved prompt should have higher ExactMatch scores because it returns just the movie title.
 
-        <img src="https://mintcdn.com/braintrust/psQJ0h1WPc2nKmNr/images/experiment.png?fit=max&auto=format&n=psQJ0h1WPc2nKmNr&q=85&s=0c280908c845f431993bc1930e417728" alt="Experiment" data-og-width="2942" width="2942" data-og-height="1500" height="1500" data-path="images/experiment.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/braintrust/psQJ0h1WPc2nKmNr/images/experiment.png?w=280&fit=max&auto=format&n=psQJ0h1WPc2nKmNr&q=85&s=d5d1dde2ce83a10aa569798c219b3318 280w, https://mintcdn.com/braintrust/psQJ0h1WPc2nKmNr/images/experiment.png?w=560&fit=max&auto=format&n=psQJ0h1WPc2nKmNr&q=85&s=4bd39e4b3a7527dbcc020d78d3b1fc3b 560w, https://mintcdn.com/braintrust/psQJ0h1WPc2nKmNr/images/experiment.png?w=840&fit=max&auto=format&n=psQJ0h1WPc2nKmNr&q=85&s=b0185d0e1555799eb225172086f3bbde 840w, https://mintcdn.com/braintrust/psQJ0h1WPc2nKmNr/images/experiment.png?w=1100&fit=max&auto=format&n=psQJ0h1WPc2nKmNr&q=85&s=7ff0d6f56f223eb31b2ec062bfeb84e5 1100w, https://mintcdn.com/braintrust/psQJ0h1WPc2nKmNr/images/experiment.png?w=1650&fit=max&auto=format&n=psQJ0h1WPc2nKmNr&q=85&s=fa387364536a52289983924976ab8dc1 1650w, https://mintcdn.com/braintrust/psQJ0h1WPc2nKmNr/images/experiment.png?w=2500&fit=max&auto=format&n=psQJ0h1WPc2nKmNr&q=85&s=a51736614fd9be569264c1c7a24b9bf9 2500w" />
+    This comparison view helps you quickly see which prompt performs better. You can add multiple prompt variations to test different approaches.
 
-    As you iterate on your prompt, you can run more experiments and compare results.
+    ## Troubleshoot
+
+    <AccordionGroup>
+      <Accordion title="Playground not running?">
+        **Check your AI provider:**
+        Verify you've added OpenAI in <Icon icon="settings-2" /> **Settings** > <Icon icon="sparkle" /> [**AI providers**](https://www.braintrust.dev/app/settings?subroute=secrets) with a valid API key.
+
+        **Check dataset uploaded:**
+        Go to <Icon icon="database" /> **Datasets** and confirm your CSV imported successfully. You should see all 21 movie examples.
+
+        **Browser issues:**
+        Try refreshing the page or using a different browser. Clear your browser cache if the playground seems stuck.
+      </Accordion>
+
+      <Accordion title="Not seeing results?">
+        **Refresh the page:**
+        The UI updates in real-time, but try refreshing if results don't appear.
+
+        **Check for errors:**
+        Look for error messages in the playground. Common issues:
+
+        * Invalid API key
+        * Model not selected
+        * Empty dataset
+      </Accordion>
+
+      <Accordion title="Need help?">
+        * Join our [Discord](https://discord.gg/6G8s47F44X)
+        * Email us at [support@braintrust.dev](mailto:support@braintrust.dev)
+        * Use the [Loop](/observe/loop) feature in the Braintrust UI
+      </Accordion>
+    </AccordionGroup>
   </Tab>
 </Tabs>
 
 ## Next steps
 
-* Dig into our [experiments guide](/core/experiments) to learn more about how to run evals.
-* Look at our [cookbook](/cookbook) to learn how to evaluate RAG, summarization, text-to-sql, and other popular use cases.
-* Learn how to [log traces](/core/logs/write) to Braintrust.
-* Read about Braintrust's [platform and architecture](/reference/architecture).
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://braintrust.dev/docs/llms.txt
+* Explore the full [Braintrust workflow](/workflow)
+* Go deeper with evaluation:
+  * [Write custom scorers](/evaluate/write-scorers) - Measure what matters for your use case
+  * [Compare experiments](/evaluate/compare-experiments) - Systematically test different approaches
+  * [Build datasets](/annotate/datasets) - Create representative test cases from production data
+  * [Run evaluations in CI/CD](/evaluate/run-evaluations#cicd) - Catch regressions automatically

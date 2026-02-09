@@ -1,5 +1,9 @@
 # Source: https://docs.crewai.com/en/enterprise/guides/salesforce-trigger.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.crewai.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Salesforce Trigger
 
 > Trigger CrewAI crews from Salesforce workflows for CRM automation

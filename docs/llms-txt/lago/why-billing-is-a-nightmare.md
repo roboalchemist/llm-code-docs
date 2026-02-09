@@ -1,5 +1,9 @@
 # Source: https://getlago.com/docs/guide/introduction/why-billing-is-a-nightmare.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://getlago.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Why billing is a nightmare
 
 <Info>

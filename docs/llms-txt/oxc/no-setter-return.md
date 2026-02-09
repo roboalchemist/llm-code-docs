@@ -3,7 +3,6 @@
 ---
 url: /docs/guide/usage/linter/rules/eslint/no-setter-return.md
 ---
-# eslint/no-setter-return&#x20;
 
 ### What it does
 

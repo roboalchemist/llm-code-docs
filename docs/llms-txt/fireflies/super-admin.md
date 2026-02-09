@@ -1,5 +1,9 @@
 # Source: https://docs.fireflies.ai/fundamentals/super-admin.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.fireflies.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Super Admin
 
 > Fireflies Super Admin with advanced capabilities for querying your data

@@ -1,5 +1,9 @@
 # Source: https://docs.replit.com/legal-and-security-info/licensing-info.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.replit.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Licensing information
 
 > Learn how public and private Replit Apps are licensed, including MIT license details and how to specify custom licenses for your projects.

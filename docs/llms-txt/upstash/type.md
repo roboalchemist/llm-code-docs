@@ -6,62 +6,38 @@
 
 # Source: https://upstash.com/docs/redis/sdks/py/commands/generic/type.md
 
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/json/type.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/generic/type.md
+# TYPE
 
-# Source: https://upstash.com/docs/redis/sdks/py/commands/json/type.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/generic/type.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/json/type.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/generic/type.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/json/type.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/generic/type.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/json/type.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/generic/type.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/json/type.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/generic/type.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/json/type.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/generic/type.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/json/type.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/generic/type.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/json/type.md
-
-# JSON.TYPE
-
-> Report the type of JSON value at `path`.
+> Get the type of a key.
 
 ## Arguments
 
-<ParamField body="key" type="string" required>
-  The key of the json entry.
-</ParamField>
-
-<ParamField body="path" type="string" default="$">
-  The path of the value.
+<ParamField body="key" type="str" required>
+  The key to get.
 </ParamField>
 
 ## Response
 
-<ResponseField type="(string | null)[]" required>
-  The type of the value at `path` or `null` if the value does not exist.
+<ResponseField type="str" required>
+  The type of the key.
+
+  One of `string` | `list` | `set` | `zset` | `hash` | `none`
 </ResponseField>
 
 <RequestExample>
-  ```ts Example theme={"system"}
-  const myType = await redis.json.type("key", "$.path.to.value");
+  ```py Example theme={"system"}
+  redis.set("key1", "Hello")
+
+  assert redis.type("key1") == "string"
+
+  redis.lpush("key2", "Hello")
+
+  assert redis.type("key2") == "list"
+
+  assert redis.type("non-existent-key") == "none"
   ```
 </RequestExample>

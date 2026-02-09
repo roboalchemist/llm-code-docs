@@ -44,7 +44,7 @@ app.post('/ephemeral-keys', async (request, response) => {
     nonce: nonce,
     issuing_card: card_id,
   }, {
-    apiVersion: '2025-10-29.clover',
+    apiVersion: '2026-01-28.clover',
   });
 
   response.json({
@@ -72,7 +72,7 @@ post '/ephemeral-keys' do
     issuing_card: params[:card_id],
   },
   {
-    stripe_version: '2025-10-29.clover',
+    stripe_version: '2026-01-28.clover',
   })
 
   json(ephemeralKeySecret: @ephemeral_key.secret)
@@ -132,7 +132,7 @@ def ephemeral_keys():
   ephemeralKey = stripe.EphemeralKey.create(
     nonce=request.args.get('nonce'),
     issuing_card=request.args.get('card_id'),
-    stripe_version='2025-10-29.clover',
+    stripe_version='2026-01-28.clover',
   )
 
   return jsonify(
@@ -211,6 +211,8 @@ element.mount("#my-parent-container");
 | Expiry date  | `issuingCardExpiryDisplay` | Any card           |
 | PIN          | `issuingCardPinDisplay`    | Any card           |
 | Copy button  | `issuingCardCopyButton`    | Any card           |
+
+### Usage 
 
 Each element type has different options and functions. Select which element type you want to learn more about:
 

@@ -1,6 +1,10 @@
 # Source: https://docs.chatling.ai/ai/fix-incorrect-answers.md
 
-# Fixing incorrect AI answers
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.chatling.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Fix incorrect AI answers
 
 > Learn how to fix incorrect AI responses using the fine-tuning feature in Chatling.
 

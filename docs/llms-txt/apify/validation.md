@@ -86,7 +86,7 @@ Dataset schema needs to be a valid JSON schema draft-07, so the `$schema` line i
 
 ## Dataset validation
 
-When you define a schema of your default dataset, the schema is then always used when you insert data into the dataset to perform validation (we use https://ajv.js.org/).
+When you define a schema of your default dataset, the schema is then always used when you insert data into the dataset to perform validation (we use [AJV](https://ajv.js.org/)).
 
 If the validation succeeds, nothing changes from the current behavior, data is stored and an empty response with status code `201` is returned.
 
@@ -109,7 +109,7 @@ If the data you attempt to store in the dataset is *invalid* (meaning any of the
 ```
 
 
-For the complete AJV validation error object type definition, refer to the https://github.com/ajv-validator/ajv/blob/master/lib/types/index.ts#L86.
+For the complete AJV validation error object type definition, refer to the [AJV type definitions on GitHub](https://github.com/ajv-validator/ajv/blob/master/lib/types/index.ts#L86).
 
 If you use the Apify JS client or Apify SDK and call `pushData` function you can access the validation errors in a `try catch` block like this:
 
@@ -250,9 +250,9 @@ Define specific fields, but allow anything else to be added to the item:
 ```
 
 
-See https://json-schema.org/understanding-json-schema/reference for additional options.
+See [json schema reference](https://json-schema.org/understanding-json-schema/reference) for additional options.
 
-You can also use https://www.liquid-technologies.com/online-json-to-schema-converter to convert an existing JSON document into it's JSON schema.
+You can also use [conversion tools](https://www.liquid-technologies.com/online-json-to-schema-converter) to convert an existing JSON document into it's JSON schema.
 
 ## Dataset field statistics
 
@@ -270,4 +270,4 @@ When you configure the dataset fields schema, we generate a field list and measu
   * For objects, this tracks the number of keys
   * For booleans, this tracks whether the boolean was set to true. Minimum is always 0, but maximum can be either 1 or 0 based on whether at least one item in the dataset has the boolean field set to true.
 
-You can use them in https://docs.apify.com/platform/monitoring.md#alert-configuration.
+You can use them in [monitoring](https://docs.apify.com/platform/monitoring.md#alert-configuration).

@@ -41,6 +41,10 @@ info
 
 You can see all of the types you can use in your specification and the native types that are generated in the [Appendix](/docs/appendix.md) documentation.
 
+info
+
+If you want to change the name of your module and the related specs file, make sure to always use 'Native' as prefix (e.g. `NativeStorage` or `NativeUsersDefault`).
+
 Here is an implementation of the `localStorage` specification:
 
 * TypeScript
@@ -718,7 +722,7 @@ package.json
      "test": "jest"
    },
    "codegenConfig": {
-     "name": "AppSpecs",
+     "name": "NativeLocalStorageSpec",
      "type": "modules",
      "jsSrcsDir": "specs",
      "android": {

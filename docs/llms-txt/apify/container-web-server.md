@@ -12,14 +12,14 @@ Each Actor run is assigned a unique URL (e.g. `kmdo7wpzlshygi.runs.apify.net`) t
 
 Using Actors as an API
 
-The container web server provides a way how to connect to one specific Actor run. To enable using your Actor as an API, with a pre-defined hostname, load balancing and autoscaling, check out https://docs.apify.com/platform/actors/development/programming-interface/standby.md.
+The container web server provides a way how to connect to one specific Actor run. To enable using your Actor as an API, with a pre-defined hostname, load balancing and autoscaling, check out [Actor Standby](https://docs.apify.com/platform/actors/development/programming-interface/standby.md).
 
 ## Access the container URL
 
 You can find the container URL in three locations:
 
 * In the web application, on the Actor run details page as the **Container URL** field.
-* In the API as the `containerUrl` property of the https://docs.apify.com/api/v2/actor-run-get.md.
+* In the API as the `containerUrl` property of the [Run object](https://docs.apify.com/api/v2/actor-run-get.md).
 * In the Actor run's container as the `ACTOR_WEB_SERVER_URL` environment variable.
 
 ## Set up the web server
@@ -30,7 +30,7 @@ The web server inside the container must listen on the port specified by the `AC
 
 2. Define the `ACTOR_WEB_SERVER_PORT` environment variable with your desired port number.
 
-Check out https://docs.apify.com/platform/actors/development/programming-interface/environment-variables.md for more details.
+Check out [Custom environment variables](https://docs.apify.com/platform/actors/development/programming-interface/environment-variables.md) for more details.
 
 ## Example: Start a simple web server
 

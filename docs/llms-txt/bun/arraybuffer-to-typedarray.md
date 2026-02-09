@@ -1,5 +1,9 @@
 # Source: https://bun.com/docs/guides/binary/arraybuffer-to-typedarray.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://bun.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Convert an ArrayBuffer to a Uint8Array
 
 A `Uint8Array` is a *typed array*, meaning it is a mechanism for viewing the data in an underlying `ArrayBuffer`.
@@ -36,4 +40,4 @@ const arr = new Uint8Array(buffer, 0, 16); // view first 16 bytes
 
 ***
 
-See [Docs > API > Utils](https://bun.com/docs/api/utils) for more useful utilities.
+See [Docs > API > Utils](/runtime/utils) for more useful utilities.

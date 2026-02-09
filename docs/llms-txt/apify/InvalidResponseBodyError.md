@@ -2,18 +2,6 @@
 
 # Source: https://docs.apify.com/api/client/js/reference/class/InvalidResponseBodyError.md
 
-# Source: https://docs.apify.com/api/client/python/reference/class/InvalidResponseBodyError.md
-
-# Source: https://docs.apify.com/api/client/js/reference/class/InvalidResponseBodyError.md
-
-# Source: https://docs.apify.com/api/client/python/reference/class/InvalidResponseBodyError.md
-
-# Source: https://docs.apify.com/api/client/js/reference/class/InvalidResponseBodyError.md
-
-# Source: https://docs.apify.com/api/client/python/reference/class/InvalidResponseBodyError.md
-
-# Source: https://docs.apify.com/api/client/js/reference/class/InvalidResponseBodyError.md
-
 # InvalidResponseBodyError<!-- -->
 
 This error exists for the quite common situation, where only a partial JSON response is received and an attempt to parse the JSON throws an error. In most cases this can be resolved by retrying the request. We do that by identifying this error in HttpClient.
@@ -48,7 +36,7 @@ The properties mimic AxiosError for easier integration in HttpClient error handl
 
 ## Constructors<!-- -->[**](#Constructors)
 
-### [**](#constructor)[**](https://github.com/apify/apify-client-js/blob/master/src/interceptors.ts#L24)constructor
+### [**](#constructor)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/interceptors.ts#L24)constructor
 
 * ****new InvalidResponseBodyError**(response, cause): [InvalidResponseBodyError](https://docs.apify.com/api/client/js/api/client/js/reference/class/InvalidResponseBodyError.md)
 
@@ -63,33 +51,33 @@ The properties mimic AxiosError for easier integration in HttpClient error handl
 
 ## Properties<!-- -->[**](#Properties)
 
-### [**](#cause)[**](https://github.com/apify/apify-client-js/blob/master/src/interceptors.ts#L22)cause
+### [**](#cause)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/interceptors.ts#L22)cause
 
 **cause: Error
 
 Overrides Error.cause
 
-### [**](#code)[**](https://github.com/apify/apify-client-js/blob/master/src/interceptors.ts#L18)code
+### [**](#code)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/interceptors.ts#L18)code
 
 **code: string
 
-### [**](#message)[**](https://undefined/apify/apify-client-js/blob/master/website/node_modules/typescript/src/lib.es5.d.ts#L1077)externalinheritedmessage
+### [**](#message)[**](https://undefined/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/website/node_modules/typescript/src/lib.es5.d.ts#L1077)externalinheritedmessage
 
 **message: string
 
 Inherited from Error.message
 
-### [**](#name)[**](https://undefined/apify/apify-client-js/blob/master/website/node_modules/typescript/src/lib.es5.d.ts#L1076)externalinheritedname
+### [**](#name)[**](https://undefined/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/website/node_modules/typescript/src/lib.es5.d.ts#L1076)externalinheritedname
 
 **name: string
 
 Inherited from Error.name
 
-### [**](#response)[**](https://github.com/apify/apify-client-js/blob/master/src/interceptors.ts#L20)response
+### [**](#response)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/interceptors.ts#L20)response
 
 **response: AxiosResponse\<any, any, {}>
 
-### [**](#stack)[**](https://undefined/apify/apify-client-js/blob/master/website/node_modules/typescript/src/lib.es5.d.ts#L1078)externaloptionalinheritedstack
+### [**](#stack)[**](https://undefined/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/website/node_modules/typescript/src/lib.es5.d.ts#L1078)externaloptionalinheritedstack
 
 **stack?
 
@@ -99,7 +87,7 @@ Inherited from Error.name
 
 Inherited from Error.stack
 
-### [**](#stackTraceLimit)[**](https://undefined/apify/apify-client-js/blob/master/node_modules/@types/node/globals.d.ts#L68)staticexternalinheritedstackTraceLimit
+### [**](#stackTraceLimit)[**](https://undefined/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/node_modules/@types/node/globals.d.ts#L68)staticexternalinheritedstackTraceLimit
 
 **stackTraceLimit: number
 
@@ -113,7 +101,7 @@ If set to a non-number value, or set to a negative number, stack traces will not
 
 ## Methods<!-- -->[**](#Methods)
 
-### [**](#captureStackTrace)[**](https://undefined/apify/apify-client-js/blob/master/node_modules/@types/node/globals.d.ts#L52)staticexternalinheritedcaptureStackTrace
+### [**](#captureStackTrace)[**](https://undefined/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/node_modules/@types/node/globals.d.ts#L52)staticexternalinheritedcaptureStackTrace
 
 * ****captureStackTrace**(targetObject, constructorOpt): void
 
@@ -166,7 +154,7 @@ If set to a non-number value, or set to a negative number, stack traces will not
 
   #### Returns void
 
-### [**](#prepareStackTrace)[**](https://undefined/apify/apify-client-js/blob/master/node_modules/@types/node/globals.d.ts#L56)staticexternalinheritedprepareStackTrace
+### [**](#prepareStackTrace)[**](https://undefined/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/node_modules/@types/node/globals.d.ts#L56)staticexternalinheritedprepareStackTrace
 
 * ****prepareStackTrace**(err, stackTraces): any
 

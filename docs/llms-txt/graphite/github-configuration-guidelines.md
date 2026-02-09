@@ -1,5 +1,10 @@
 # Source: https://graphite-58cc94ce.mintlify.dev/docs/github-configuration-guidelines.md
 
+## Documentation Index
+
+> Fetch the complete documentation index at: https://graphite-58cc94ce.mintlify.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Configure GitHub Repository Settings
 
 > Learn how to configure your repository settings on GitHub for the best experience stacking with Graphite.
@@ -42,7 +47,7 @@ The following branch protection rule settings are required for Graphite. Without
 
 **Require approval of the most recent reviewable push**: `Disabled`
 
-* As part of the merge process for a stack of PRs, Graphite changes the target branch of PRs before merging. Since this counts as a reviewable push, it can lead to merge failures.
+* As part of the merge process for a stack of PRs, Graphite changes the target branch of PRs before merging. Since this counts as a reviewable push, it can lead to merge failures or dismissed approvals- these can appear as though the Graphite app dismissed them with the message "The base branch was changed".
 
 **Require signed commits**: action needed if `Enabled`
 
@@ -113,3 +118,41 @@ on:
 We do not recommend triggering CI on the pull\_request type `edited`. This action is triggered when metadata about the PR is changed, not the PR itself (that would be `synchronize`). The `edited` event triggers a CI run when the PR below a given PR is merged—as the change of the base branch from the downstack PR to trunk is considered an “edit”.
 
 We also recommend [updating "concurrency" to prevent multiple concurrent CI runs](/troubleshooting#why-are-my-actions-running-twice) on the same pull request.
+
+## IP allowlisting
+
+If you are using GitHub Enterprise's IP allowlisting features, you will need to make sure the Graphite GitHub app's IP addresses are allowlisted. If these IP addresses are not
+allowlisted, Graphite will be unable to communicate with your GitHub organization altogether.
+
+GitHub Enterprise offers IP allowlisting at two levels:
+
+* [Enterprise level IP allowlisting](https://docs.github.com/en/enterprise-cloud@latest/admin/configuring-settings/hardening-security-for-your-enterprise/restricting-network-traffic-to-your-enterprise-with-an-ip-allow-list)
+* [Organization level IP allowlisting](https://docs.github.com/en/enterprise-cloud@latest/organizations/keeping-your-organization-secure/managing-security-settings-for-your-organization/managing-allowed-ip-addresses-for-your-organization)
+
+The Graphite GitHub app's IP addresses must be allowlisted both at the enterprise level *and* at the organization level for any organizations you plan to use with Graphite. The simplest way of making sure
+all the necessary IPs are allowlisted is to enable the "Allowing access by GitHub Apps" option in the allowlist settings for **both the organization *and* enterprise allowlist settings**. This will
+allow the Graphite GitHub app to automatically enable the IP addresses necessary for it to function when it is installed.
+
+The IP addresses that are required to be allowlisted are as follows:
+
+```bash
+35.80.247.239
+34.210.111.72
+52.11.184.182
+44.241.156.90
+35.164.188.136
+34.213.244.255
+54.201.38.224
+52.37.31.16
+35.167.55.232
+44.237.65.108
+52.89.111.21
+44.240.138.209
+35.83.76.28
+54.71.134.117
+44.238.76.52  
+```
+
+If you are using IP allowlisting for your GitHub organization or enterprise and are unable to access your repositories and PRs in Graphite,
+we strongly recommend verifying that the above IP addresses are allowlisted at both the enterprise and organization levels. If issues persist
+after checking the IP allowlists against the above list, reach out to us at [support@graphite.com](mailto:support@graphite.com) and we can help troubleshoot further.

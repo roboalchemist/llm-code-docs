@@ -1,5 +1,9 @@
 # Source: https://braintrust.dev/docs/api-reference/groups/create-or-replace-group.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://braintrust.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Create or replace group
 
 > Create or replace group. If there is an existing group with the same name as the one specified in the request, will replace the existing group with the provided fields
@@ -223,7 +227,3 @@ components:
         page](https://www.braintrustdata.com/app/settings?subroute=api-keys).
 
 ````
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://braintrust.dev/docs/llms.txt

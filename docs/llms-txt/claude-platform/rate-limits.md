@@ -145,10 +145,9 @@ For long context requests (>200K tokens) when using the `context-1m-2025-08-07` 
 | Claude Sonnet 4.x<sup>**</sup>                                                               | 50                                | 30,000                                 | 8,000                                   |
 | Claude Sonnet 3.7 ([deprecated](/docs/en/about-claude/model-deprecations))                   | 50                                | 20,000                                 | 8,000                                   |
 | Claude Haiku 4.5                                                                             | 50                                | 50,000                                 | 10,000                                  |
-| Claude Haiku 3.5                                                                             | 50                                | 50,000<sup>†</sup>                     | 10,000                                  |
+| Claude Haiku 3.5 ([deprecated](/docs/en/about-claude/model-deprecations))                    | 50                                | 50,000<sup>†</sup>                     | 10,000                                  |
 | Claude Haiku 3                                                                               | 50                                | 50,000<sup>†</sup>                     | 10,000                                  |
 | Claude Opus 4.x<sup>*</sup>                                                                  | 50                                | 30,000                                 | 8,000                                   |
-| Claude Opus 3 ([deprecated](/docs/en/about-claude/model-deprecations))                      | 50                                | 20,000<sup>†</sup>                     | 4,000                                   |
 
 </Tab>
 <Tab title="Tier 2">
@@ -157,10 +156,9 @@ For long context requests (>200K tokens) when using the `context-1m-2025-08-07` 
 | Claude Sonnet 4.x<sup>**</sup>                                                               | 1,000                             | 450,000                                | 90,000                                  |
 | Claude Sonnet 3.7 ([deprecated](/docs/en/about-claude/model-deprecations))                   | 1,000                             | 40,000                                 | 16,000                                  |
 | Claude Haiku 4.5                                                                             | 1,000                             | 450,000                                | 90,000                                  |
-| Claude Haiku 3.5                                                                             | 1,000                             | 100,000<sup>†</sup>                    | 20,000                                  |
+| Claude Haiku 3.5 ([deprecated](/docs/en/about-claude/model-deprecations))                    | 1,000                             | 100,000<sup>†</sup>                    | 20,000                                  |
 | Claude Haiku 3                                                                               | 1,000                             | 100,000<sup>†</sup>                    | 20,000                                  |
 | Claude Opus 4.x<sup>*</sup>                                                                  | 1,000                             | 450,000                                | 90,000                                  |
-| Claude Opus 3 ([deprecated](/docs/en/about-claude/model-deprecations))                      | 1,000                             | 40,000<sup>†</sup>                     | 8,000                                   |
 
 </Tab>
 <Tab title="Tier 3">
@@ -169,10 +167,9 @@ For long context requests (>200K tokens) when using the `context-1m-2025-08-07` 
 | Claude Sonnet 4.x<sup>**</sup>                                                               | 2,000                             | 800,000                                | 160,000                                 |
 | Claude Sonnet 3.7 ([deprecated](/docs/en/about-claude/model-deprecations))                   | 2,000                             | 80,000                                 | 32,000                                  |
 | Claude Haiku 4.5                                                                             | 2,000                             | 1,000,000                              | 200,000                                 |
-| Claude Haiku 3.5                                                                             | 2,000                             | 200,000<sup>†</sup>                    | 40,000                                  |
+| Claude Haiku 3.5 ([deprecated](/docs/en/about-claude/model-deprecations))                    | 2,000                             | 200,000<sup>†</sup>                    | 40,000                                  |
 | Claude Haiku 3                                                                               | 2,000                             | 200,000<sup>†</sup>                    | 40,000                                  |
 | Claude Opus 4.x<sup>*</sup>                                                                  | 2,000                             | 800,000                                | 160,000                                 |
-| Claude Opus 3 ([deprecated](/docs/en/about-claude/model-deprecations))                      | 2,000                             | 80,000<sup>†</sup>                     | 16,000                                  |
 
 </Tab>
 <Tab title="Tier 4">
@@ -181,10 +178,9 @@ For long context requests (>200K tokens) when using the `context-1m-2025-08-07` 
 | Claude Sonnet 4.x<sup>**</sup>                                                               | 4,000                             | 2,000,000                              | 400,000                                 |
 | Claude Sonnet 3.7 ([deprecated](/docs/en/about-claude/model-deprecations))                   | 4,000                             | 200,000                                | 80,000                                  |
 | Claude Haiku 4.5                                                                             | 4,000                             | 4,000,000                              | 800,000                                 |
-| Claude Haiku 3.5                                                                             | 4,000                             | 400,000<sup>†</sup>                    | 80,000                                  |
+| Claude Haiku 3.5 ([deprecated](/docs/en/about-claude/model-deprecations))                    | 4,000                             | 400,000<sup>†</sup>                    | 80,000                                  |
 | Claude Haiku 3                                                                               | 4,000                             | 400,000<sup>†</sup>                    | 80,000                                  |
 | Claude Opus 4.x<sup>*</sup>                                                                  | 4,000                             | 2,000,000                              | 400,000                                 |
-| Claude Opus 3 ([deprecated](/docs/en/about-claude/model-deprecations))                      | 4,000                             | 400,000<sup>†</sup>                    | 80,000                                  |
 
 </Tab>
 <Tab title="Custom">
@@ -266,6 +262,8 @@ In addition to providing token and request charts, the Usage page provides two s
   - Your current output tokens per minute rate limit
 
 ## Setting lower limits for Workspaces
+
+For more about workspaces, see [Workspaces](/docs/en/build-with-claude/workspaces).
 
 In order to protect Workspaces in your Organization from potential overuse, you can set custom spend and rate limits per Workspace.
 

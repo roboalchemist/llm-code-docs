@@ -8,10 +8,7 @@
 
 The latest Rspack 0.5.0 introduces the highly anticipated Module Federation along with the new "v1.5" federation APIs. It marks the most substantial revamp of federation since its inception. The v1.5 offers extra capabilities for end users and framework authors, a feat unattainable with the original design.
 
-<div align="center">
-  <img src="https://assets.rspack.rs/rspack/assets/rspack-federation-with-rspack.png" width="50%" height="50%" alt="Rspack with Infinity Gauntlet" />
-</div>
-
+![Rspack with Infinity Gauntlet](https://assets.rspack.rs/rspack/assets/rspack-federation-with-rspack.png)
 ## Webpack federation gets some love!
 
 Federation API has been opened up for users to enrich, expand, or manage the lifecycle. While v1.5 comes with several new capabilities, it doesn't introduce breaking changes to the API regarding the original Module Federation.
@@ -34,9 +31,9 @@ The support of Module Federation in Rspack opens up a several of creative migrat
 
 In a simple comparison, using a module federation [example](https://github.com/module-federation/module-federation-examples/tree/master/comprehensive-demo-react16)
 
-* Apps: 5
-* Webpack: 500-3000ms per build - production
-* Rspack: 130-350ms per build - production
+- Apps: 5
+- Webpack: 500-3000ms per build - production
+- Rspack: 130-350ms per build - production
 
 Generally, we have observed 5-10x gains in build speeds of federated applications, roughly in line with typical performance gains we see with rspack. Most builds in module federation examples. Development builds we have converted typically take less than 150ms to cold start.
 

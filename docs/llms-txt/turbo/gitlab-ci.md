@@ -1,9 +1,13 @@
 # Source: https://turbo.build/guides/ci-vendors/gitlab-ci.md
 
 # GitLab CI
-Description: Learn how to use GitLab CI with Turborepo.
 
-import { Tabs, Tab } from 'fumadocs-ui/components/tabs';
+<CopyPrompt
+  title="Set up GitLab CI for Turborepo"
+  prompt={
+  "Set up GitLab CI for this Turborepo.\n1) Create a .gitlab-ci.yml file\n2) Configure caching for my package manager\n3) Set up Remote Caching with environment variables (optional)\n\nWalk me through each step."
+}
+/>
 
 The following example shows how to use Turborepo with [GitLab CI](https://docs.gitlab.com/ee/ci/).
 
@@ -26,7 +30,7 @@ And a `turbo.json`:
 
 ```json title="./turbo.json"
 {
-  "$schema": "https://turborepo.com/schema.json",
+  "$schema": "https://turborepo.dev/schema.json",
   "tasks": {
     "build": {
       "outputs": [".svelte-kit/**"],
@@ -41,7 +45,7 @@ And a `turbo.json`:
 
 Create a file called `.gitlab-ci.yml` in your repository with the following contents:
 
-<Tabs groupId="package-manager" items={['pnpm', 'yarn', 'npm', 'bun']} persist>
+<PackageManagerTabs>
   <Tab value="pnpm">
     ```yaml title=".gitlab-ci.yml"
     image: node:latest
@@ -120,7 +124,7 @@ Create a file called `.gitlab-ci.yml` in your repository with the following cont
 
     ```
   </Tab>
-</Tabs>
+</PackageManagerTabs>
 
 ## Remote Caching
 
@@ -133,15 +137,19 @@ To use Vercel Remote Caching, you can get the value of these variables in a few 
 
 1. Create a Scoped Access Token to your account in the [Vercel Dashboard](https://vercel.com/account/tokens)
 
-![Vercel Access Tokens](/images/docs/vercel-create-token.png)
+<img alt="Vercel Access Tokens" src={__img0} placeholder="blur" />
 
 Copy the value to a safe place. You'll need it in a moment.
 
 2. Go to your GitLab repository settings and click on the **Settings** and then **CI/CD** tab. Create a new variable called `TURBO_TOKEN` and enter the value of your Scoped Access Token.
 
-![GitLab CI Variables](/images/docs/gitlab-ci-variables.png)
-![GitLab CI Create Variable](/images/docs/gitlab-ci-create-variable.png)
+<img alt="GitLab CI Variables" src={__img1} placeholder="blur" />
+<img alt="GitLab CI Create Variable" src={__img2} placeholder="blur" />
 
 3. Make a second secret called `TURBO_TEAM` and set it to your team slug - the part after `vercel.com/` in [your Team URL](https://vercel.com/d?to=%2F%5Bteam%5D%2F%7E%2Fsettings\&title=Find+Team+URL). For example, the slug for `vercel.com/acme` is `acme`.
 
 Remote Caching will now be operational in your GitLab workflows.
+
+---
+
+[View full sitemap](/sitemap.md)

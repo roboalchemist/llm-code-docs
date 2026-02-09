@@ -1,5 +1,9 @@
 # Source: https://www.aptible.com/docs/how-to-guides/platform-guides/deprovision-resources.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.aptible.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # How to deprovision resources
 
 First, review the [resource-specific restoration options](/how-to-guides/platform-guides/restore-resources) to understand the impact of deprovisioning each type of resource and make any necessary preparations, such as exporting Database data, before proceeding.

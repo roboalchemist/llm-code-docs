@@ -1,5 +1,9 @@
 # Source: https://docs.tavily.com/documentation/integrations/zapier.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.tavily.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Zapier
 
 >  Tavily is now available for no-code integration through Zapier.
@@ -85,8 +89,3 @@ To use Tavily most efficiently in your Zapier workflows, keep the following guid
 * Add the current date to your queries for relevant, updated information.
 * Consider using specific domains to narrow down search results.
 * Use an LLM to generate queries for Tavily to enable a more agentic workflow.
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.tavily.com/llms.txt

@@ -1,5 +1,9 @@
 # Source: https://resend.com/docs/send-with-bun.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://resend.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Send emails with Bun
 
 > Learn how to send your first email using Bun and the Resend Node.js SDK.
@@ -15,7 +19,7 @@ To get the most out of this guide, you'll need to:
 
 Get the Resend Node.js SDK.
 
-```bash  theme={null}
+```bash  theme={"theme":{"light":"github-light","dark":"vesper"}}
 bun install resend
 ```
 
@@ -23,27 +27,25 @@ bun install resend
 
 Start by creating your email template on `email-template.tsx`.
 
-```tsx email-template.tsx theme={null}
+```tsx email-template.tsx theme={"theme":{"light":"github-light","dark":"vesper"}}
 import * as React from 'react';
 
 interface EmailTemplateProps {
   firstName: string;
 }
 
-export function EmailTemplate({ firstName }: EmailTemplateProps) {
-  return (
-    <div>
-      <h1>Welcome, {firstName}!</h1>
-    </div>
-  );
-}
+export const EmailTemplate = ({ firstName }: EmailTemplateProps) => (
+  <div>
+    <h1>Welcome, {firstName}!</h1>
+  </div>
+);
 ```
 
 ## 3. Send email using React
 
 Create a new file `index.tsx` and send your first email.
 
-```tsx index.tsx theme={null}
+```tsx index.tsx theme={"theme":{"light":"github-light","dark":"vesper"}}
 import { Resend } from 'resend';
 import { EmailTemplate } from './email-template';
 
@@ -52,18 +54,14 @@ const resend = new Resend(process.env.RESEND_API_KEY);
 const server = Bun.serve({
   port: 3000,
   async fetch() {
-    const { data, error } = await resend.emails.send({
+    const data = await resend.emails.send({
       from: 'Acme <onboarding@resend.dev>',
       to: ['delivered@resend.dev'],
       subject: 'Hello World',
       react: EmailTemplate({ firstName: 'Vitor' }),
     });
 
-    if (error) {
-      return new Response(JSON.stringify({ error }));
-    }
-
-    return new Response(JSON.stringify({ data }));
+    return new Response(JSON.stringify(data));
   },
 });
 

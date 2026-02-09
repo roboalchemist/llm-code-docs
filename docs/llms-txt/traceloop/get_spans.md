@@ -1,5 +1,9 @@
 # Source: https://www.traceloop.com/docs/api-reference/warehouse/get_spans.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.traceloop.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Get Spans
 
 Retrieve spans from the data warehouse with flexible filtering and pagination options. This endpoint returns spans from the environment associated with your API key. You can filter by time ranges, workflows, attributes, and more.
@@ -270,8 +274,3 @@ curl "https://api.traceloop.com/v2/warehouse/spans?from_timestamp_sec=1702900800
 curl "https://api.traceloop.com/v2/warehouse/spans?from_timestamp_sec=1702900800&limit=50&cursor=1734451200000&filters=%5B%7B%22id%22%3A%22llm.vendor%22%2C%22operator%22%3A%22equals%22%2C%22value%22%3A%22openai%22%7D%5D" \
   -H "Authorization: Bearer YOUR_API_KEY"
 ```
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://www.traceloop.com/docs/llms.txt

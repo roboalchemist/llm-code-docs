@@ -2,10 +2,6 @@
 
 # Source: https://docs.avaamo.com/user-guide/overview-and-concepts/intents.md
 
-# Source: https://docs.avaamo.com/user-guide/ref/avaamo-platform-api-documentation/agent-api/intents.md
-
-# Source: https://docs.avaamo.com/user-guide/overview-and-concepts/intents.md
-
 # Intents and Training Data
 
 An **intent** is an action in the user query that indicates what the user wishes to do.&#x20;

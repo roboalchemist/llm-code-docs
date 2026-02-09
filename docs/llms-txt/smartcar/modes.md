@@ -1,5 +1,9 @@
 # Source: https://smartcar.com/docs/connect/advanced-config/modes.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://smartcar.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Modes
 
 > Connect can be launched in different modes depending on whether you want to interact with real vehicles or test your integration.

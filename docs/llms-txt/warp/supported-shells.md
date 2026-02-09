@@ -11,7 +11,7 @@ Warp tries to load your login shell by default. Currently, Warp supports bash, f
 * On Linux, bash is the the default shell.
 
 {% hint style="info" %}
-If you run into issues configuring your RC files (`~/.bashrc`, `~/.zshrc`, `config.fish`, `Microsoft.PowerShell_profile.ps1`) with Warp, please see [Configuring and debugging your RC files](https://docs.warp.dev/help/known-issues#configuring-and-debugging-your-rc-files).
+If you run into issues configuring your RC files (`~/.bashrc`, `~/.zshrc`, `config.fish`, `Microsoft.PowerShell_profile.ps1`) with Warp, please see [Configuring and debugging your RC files](https://docs.warp.dev/support-and-community/troubleshooting-and-support/known-issues#configuring-and-debugging-your-rc-files).
 {% endhint %}
 
 ### Changing what shell Warp uses
@@ -26,7 +26,7 @@ The changes to your shell will only take effect when you start a new session.
 
 ### Customize Your zsh Shell Environment
 
-Zsh can be customized via the `~/.zshrc` file, which runs whenever a new session starts (window, tab, or pane). Use it to set environment variables, aliases, and customize the [prompt](https://docs.warp.dev/features/prompt).
+Zsh can be customized via the `~/.zshrc` file, which runs whenever a new session starts (window, tab, or pane). Use it to set environment variables, aliases, and customize the [prompt](https://docs.warp.dev/terminal/appearance/prompt).
 
 #### Editing the .zshrc File
 
@@ -42,7 +42,7 @@ Apply changes by running `source ~/.zshrc` or restarting Warp/opening a new sess
 
 ### Customize Your Bash Shell Environment
 
-Bash is pre-installed on macOS and can be customized using `~/.bashrc` (for non-login shells) or `~/.bash_profile` (for login shells). Use these files to set environment variables, aliases, and customize the [prompt](https://docs.warp.dev/features/prompt).
+Bash is pre-installed on macOS and can be customized using `~/.bashrc` (for non-login shells) or `~/.bash_profile` (for login shells). Use these files to set environment variables, aliases, and customize the [prompt](https://docs.warp.dev/terminal/appearance/prompt).
 
 #### Editing the .bashrc File
 

@@ -1,5 +1,9 @@
 # Source: https://docs.pinata.cloud/sdk/gateways/public/convert.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pinata.cloud/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # convert
 
 Convert an IPFS link into one that uses your Dedicated Gateway

@@ -1,5 +1,9 @@
 # Source: https://infisical.com/docs/documentation/platform/identities/token-auth.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://infisical.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Token Auth
 
 > Learn how to authenticate to Infisical from any platform or environment using an access token.

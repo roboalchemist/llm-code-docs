@@ -1,5 +1,9 @@
 # Source: https://upstash.com/docs/redis/sdks/py/commands/stream/xgroup_create.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # XGROUP CREATE
 
 > Create a new consumer group for a Redis stream.
@@ -14,7 +18,7 @@
   The consumer group name.
 </ParamField>
 
-<ParamField body="id" type="str" default="$">
+<ParamField body="id" type="str" required>
   The stream entry ID to start consuming from. Use '\$' to start from the end.
 </ParamField>
 

@@ -1,5 +1,9 @@
 # Source: https://docs.embedchain.ai/integration/openlit.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.embedchain.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # 🔭 OpenLIT
 
 > OpenTelemetry-native Observability and Evals for LLMs & GPUs
@@ -10,7 +14,7 @@ Embedchain now supports integration with [OpenLIT](https://github.com/openlit/op
 
 ### 1. Set environment variables
 
-```bash
+```bash  theme={null}
 # Setting environment variable for OpenTelemetry destination and authetication.
 export OTEL_EXPORTER_OTLP_ENDPOINT = "YOUR_OTEL_ENDPOINT"
 export OTEL_EXPORTER_OTLP_HEADERS = "YOUR_OTEL_ENDPOINT_AUTH"
@@ -20,7 +24,7 @@ export OTEL_EXPORTER_OTLP_HEADERS = "YOUR_OTEL_ENDPOINT_AUTH"
 
 Open your terminal and run:
 
-```shell
+```shell  theme={null}
 pip install openlit
 ```
 
@@ -28,7 +32,7 @@ pip install openlit
 
 Now create an app using Embedchain and initialize OpenTelemetry monitoring
 
-```python
+```python  theme={null}
 from embedchain import App
 import OpenLIT
 

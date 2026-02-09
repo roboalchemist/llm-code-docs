@@ -3,7 +3,6 @@
 ---
 url: /docs/guide/usage/linter/rules/typescript/no-unsafe-unary-minus.md
 ---
-# typescript/no-unsafe-unary-minus&#x20;
 
 ### What it does
 

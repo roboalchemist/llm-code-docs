@@ -1,5 +1,9 @@
 # Source: https://docs.crewai.com/en/tools/database-data/pgsearchtool.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.crewai.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # PG RAG Search
 
 > The `PGSearchTool` is designed to search PostgreSQL databases and return the most relevant results.
@@ -70,10 +74,10 @@ tool = PGSearchTool(
             ),
         ),
         embedder=dict(
-            provider="google", # or openai, ollama, ...
+            provider="google-generativeai", # or openai, ollama, ...
             config=dict(
-                model="models/embedding-001",
-                task_type="retrieval_document",
+                model_name="gemini-embedding-001",
+                task_type="RETRIEVAL_DOCUMENT",
                 # title="Embeddings",
             ),
         ),

@@ -2,23 +2,9 @@
 
 # Source: https://upstash.com/docs/redis/sdks/py/commands/bitmap/bitop.md
 
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/bitmap/bitop.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/bitmap/bitop.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/bitmap/bitop.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/bitmap/bitop.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/bitmap/bitop.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/bitmap/bitop.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/bitmap/bitop.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/bitmap/bitop.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/bitmap/bitop.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # BITOP
 
@@ -29,25 +15,36 @@ The `BITOP` command in Redis is used to perform bitwise operations on multiple k
 ## Arguments
 
 <ParamField body="operation" type="AND | OR | XOR | NOT" required>
-  Specifies the type of bitwise operation to perform, which can be one of the following: `AND`, `OR`, `XOR`, or `NOT`.
+  Specifies the type of bitwise operation to perform, which can be one of the
+  following: `AND`, `OR`, `XOR`, or `NOT`.
 </ParamField>
 
-<ParamField body="destinationKey" type="string" required>
+<ParamField body="destkey" type="str" required>
   The key to store the result of the operation in.
 </ParamField>
 
-<ParamField body="sourceKeys" type="...string[]" required>
+<ParamField body="keys" type="*List[str]" required>
   One or more keys to perform the operation on.
 </ParamField>
 
 ## Response
 
-<ResponseField type="integer" required>
+<ResponseField type="int" required>
   The size of the string stored in the destination key.
 </ResponseField>
 
 <RequestExample>
-  ```ts Example theme={"system"}
-   await redis.bitop("AND", "destKey", "sourceKey1", "sourceKey2");
+  ```py Example theme={"system"}
+  # key1 = 00000001
+  # key2 = 00000010
+  redis.setbit("key1", 0, 1)
+  redis.setbit("key2", 0, 0)
+  redis.setbit("key2", 1, 1)
+
+  assert redis.bitop("AND", "dest", "key1", "key2") == 1
+
+  # result = 00000000
+  assert redis.getbit("dest", 0) == 0
+  assert redis.getbit("dest", 1) == 0
   ```
 </RequestExample>

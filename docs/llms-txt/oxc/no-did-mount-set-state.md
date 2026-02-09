@@ -3,11 +3,13 @@
 ---
 url: /docs/guide/usage/linter/rules/react/no-did-mount-set-state.md
 ---
-# react/no-did-mount-set-state&#x20;
 
 ### What it does
 
 Disallows using `setState` in the `componentDidMount` lifecycle method.
+
+This rule is not relevant for function components, and so can potentially be
+disabled for modern React codebases.
 
 ### Why is this bad?
 
@@ -48,15 +50,15 @@ var Hello = createReactClass({
 });
 ```
 
-### Options
+## Configuration
 
-The rule accepts a string value `"disallow-in-func"`:
+This rule accepts one of the following string values:
 
-```json
-{
-  "react/no-did-mount-set-state": ["error", "disallow-in-func"]
-}
-```
+### `"allowed"`
+
+Allow `setState` calls in nested functions within `componentDidMount`, the default behavior.
+
+### `"disallow-in-func"`
 
 When set, also disallows `setState` calls in nested functions within `componentDidMount`.
 

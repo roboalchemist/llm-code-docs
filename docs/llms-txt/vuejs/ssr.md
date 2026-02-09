@@ -2,10 +2,6 @@
 
 # Source: https://vuejs.org/guide/scaling-up/ssr.md
 
-# Source: https://vuejs.org/api/ssr.md
-
-# Source: https://vuejs.org/guide/scaling-up/ssr.md
-
 ---
 url: /guide/scaling-up/ssr.md
 ---

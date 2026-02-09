@@ -1,13 +1,17 @@
 # Source: https://docs.asapp.com/generativeagent/configuring/connect-apis/mock-apis.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.asapp.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Mock API Users
 
 > Learn how to mock APIs for testing and development.
 
-While you are building your API Connection, you can use Mock Data to test the API Connection and ensure your transformations are working as expected. This Mock data is saved as a Mock User where you can group mock responses for a given scenario.
+While you are building your API Connection, you can use Mock Data to test the API Connection and ensure your transformations are working as expected. This Mock data saves as a Mock User where you can group mock responses for a given scenario.
 
 <Note>
-  The Mock Data is only used when testing the API Connection. Use [Test Users](/generativeagent/configuring/tasks-and-functions/test-users) to test and simulate Tasks and Function responses.
+  The system only uses the Mock Data when testing the API Connection. Use [Test Users](/generativeagent/configuring/tasks-and-functions/test-users) to test and simulate Tasks and Function responses.
 </Note>
 
 ## Mock Users

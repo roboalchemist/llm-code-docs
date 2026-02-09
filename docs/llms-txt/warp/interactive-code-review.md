@@ -10,10 +10,10 @@ You can inspect diffs, leave inline comments, batch feedback, and send all reque
 
 {% embed url="<https://youtu.be/jit_6eevt8w?si=EFKYUSsofvBYUPI->" %}
 
-**Interactive Code Review builds on Warp’s existing** [](https://docs.warp.dev/code/code-review "mention") **panel.** For details on diff views, reverting hunks, opening files, and all available entry points, see the Code Review documentation.
+**Interactive Code Review builds on Warp's existing** [Code Review](https://docs.warp.dev/code/code-review) **panel.** For details on diff views, reverting hunks, opening files, and all available entry points, see the Code Review documentation.
 
 {% hint style="info" %}
-Note that both the [](https://docs.warp.dev/code/code-review "mention") panel and Interactive Code Review require working in a Git-indexed directory.
+Note that both the [Code Review](https://docs.warp.dev/code/code-review) panel and Interactive Code Review require working in a Git-indexed directory.
 {% endhint %}
 
 ***
@@ -28,13 +28,13 @@ This gives you a familiar pull-request style workflow inside Warp without switch
 
 Select any changed line or block and add a comment describing what you want adjusted. Warp anchors each comment to the relevant file and line so the agent understands exactly what to fix.
 
-<figure><img src="https://2297236823-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-MbqIgTw17KQvq_DQuRr%2Fuploads%2Fgit-blob-6d67e7a7945b5f699ea7856311dba5434c67e96a%2Finteractive-code-review-adding-comment.png?alt=media" alt=""><figcaption></figcaption></figure>
+<figure><img src="https://4009768362-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FPsjNxoJ0NFCXW6rRdHH3%2Fuploads%2Fgit-blob-6d67e7a7945b5f699ea7856311dba5434c67e96a%2Finteractive-code-review-adding-comment.png?alt=media" alt=""><figcaption></figcaption></figure>
 
 ### Batch comments and submit once
 
 Add as many comments as you need before submitting them. The agent receives your entire batch of feedback, applies the changes in one iteration, and returns an updated diff for verification.
 
-<figure><img src="https://2297236823-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-MbqIgTw17KQvq_DQuRr%2Fuploads%2Fgit-blob-48389133fc3d7eee365bbfcf9e2434c133839af5%2Finteractive-code-review-batch-comments.png?alt=media" alt=""><figcaption></figcaption></figure>
+<figure><img src="https://4009768362-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FPsjNxoJ0NFCXW6rRdHH3%2Fuploads%2Fgit-blob-48389133fc3d7eee365bbfcf9e2434c133839af5%2Finteractive-code-review-batch-comments.png?alt=media" alt=""><figcaption></figcaption></figure>
 
 ### Example demo
 

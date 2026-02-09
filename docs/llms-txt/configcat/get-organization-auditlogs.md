@@ -2,10 +2,7 @@
 
 # List Audit log items for Organization
 
-```
-GET 
-/v1/organizations/:organizationId/auditlogs
-```
+Copy page
 
 This endpoint returns the list of Audit log items for a given Organization and the result can be optionally filtered by Product and/or Config and/or Environment.
 

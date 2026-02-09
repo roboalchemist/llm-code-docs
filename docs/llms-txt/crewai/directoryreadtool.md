@@ -1,5 +1,9 @@
 # Source: https://docs.crewai.com/en/tools/file-document/directoryreadtool.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.crewai.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Directory Read
 
 > The `DirectoryReadTool` is a powerful utility designed to provide a comprehensive listing of directory contents.

@@ -2,10 +2,6 @@
 
 # Source: https://docs.avaamo.com/user-guide/skills/knowledge-skill/add-content-to-knowledge-skill/testing-and-validation.md
 
-# Source: https://docs.avaamo.com/user-guide/datasync-ai/testing-and-validation.md
-
-# Source: https://docs.avaamo.com/user-guide/skills/knowledge-skill/add-content-to-knowledge-skill/testing-and-validation.md
-
 # Testing and validation
 
 Refer to this article [Test your agent](https://docs.avaamo.com/user-guide/llamb/get-started/step-3-test-your-agent)

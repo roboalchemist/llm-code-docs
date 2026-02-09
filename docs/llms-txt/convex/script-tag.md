@@ -2,10 +2,6 @@
 
 # Source: https://docs.convex.dev/quickstart/script-tag.md
 
-# Source: https://docs.convex.dev/client/javascript/script-tag.md
-
-# Source: https://docs.convex.dev/quickstart/script-tag.md
-
 # Script Tag Quickstart
 
 Learn how to query data from Convex from script tags in HTML.

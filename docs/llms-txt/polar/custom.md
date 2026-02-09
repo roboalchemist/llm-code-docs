@@ -1,5 +1,9 @@
 # Source: https://polar.sh/docs/features/benefits/custom.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://polar.sh/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Custom Benefit
 
 > Create your own Custom benefit

@@ -1,5 +1,9 @@
 # Source: https://bun.com/docs/guides/runtime/import-toml.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://bun.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Import a TOML file
 
 Bun natively supports importing `.toml` files.
@@ -27,4 +31,4 @@ data.author.name; // => "John Dough"
 
 ***
 
-See [Docs > Runtime > TypeScript](https://bun.com/docs/runtime/typescript) for more information on using TypeScript with Bun.
+See [Docs > Runtime > TypeScript](/runtime/typescript) for more information on using TypeScript with Bun.

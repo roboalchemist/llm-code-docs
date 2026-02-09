@@ -1,5 +1,9 @@
 # Source: https://docs.crewai.com/en/tools/file-document/pdf-text-writing-tool.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.crewai.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # PDF Text Writing Tool
 
 > The `PDFTextWritingTool` writes text to specific positions in a PDF, supporting custom fonts.

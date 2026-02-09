@@ -1,5 +1,11 @@
 # Source: https://graphite-58cc94ce.mintlify.dev/docs/onboarding-your-team.md
 
+## Documentation Index
+
+Fetch the complete documentation index at: https://graphite-58cc94ce.mintlify.dev/docs/llms.txt
+
+Use this file to discover all available pages before exploring further.
+
 # Setting Up A Proof Of Concept
 
 > Best practices for teams new to stacking with Graphite.
@@ -34,7 +40,7 @@ Graphite is designed to make engineers more efficient at every turn. Here are a 
 
 * [Merge a stack](/merge-pull-requests): Use Graphite’s automated solution to merge a stack of PRs.
 
-* [PR review capabilities](/review-proposed-changes): Comment on unchanged lines of code, unresolved threads, and suggested edits.
+* [PR review capabilities](/pr-page-overview): Comment on unchanged lines of code, unresolved threads, and suggested edits.
 
 * [PR versions](/pull-request-versions): See and compare versions of a pull request to keep track of the history of a PR.
 

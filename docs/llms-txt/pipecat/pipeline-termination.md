@@ -1,5 +1,9 @@
 # Source: https://docs.pipecat.ai/guides/learn/pipeline-termination.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pipecat.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Pipeline Termination
 
 > Learn how to properly terminate Pipecat pipelines for clean shutdown and resource management
@@ -132,8 +136,6 @@ Pipecat includes automatic idle detection to prevent hanging pipelines. This fea
 ```python  theme={null}
 task = PipelineTask(
     pipeline,
-    params=PipelineParams(
-    ),
     # Configure idle detection timeout
     cancel_on_idle_timeout=True, # Default is True
     idle_timeout_seconds=600,  # Default is 300 seconds
@@ -261,8 +263,3 @@ You now understand how to build, run, and properly terminate voice AI pipelines!
 <Card title="Next Steps" icon="arrow-right" href="/guides/learn/whats-next">
   You've completed the learning guide! Continue to see recommended next steps.
 </Card>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.pipecat.ai/llms.txt

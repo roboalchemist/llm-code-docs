@@ -667,7 +667,6 @@ import { Accordion } from '@mui/material';
 | onChange | `function(event: React.SyntheticEvent, expanded: boolean) => void` | - | No |  |
 | slotProps | `{ heading?: func \| object, region?: func \| object, root?: func \| object, transition?: func \| object }` | `{}` | No |  |
 | slots | `{ heading?: elementType, region?: elementType, root?: elementType, transition?: elementType }` | `{}` | No |  |
-| square | `bool` | `false` | No |  |
 | sx | `Array<func \| object \| bool> \| func \| object` | - | No | The system prop that allows defining system overrides as well as additional CSS styles. |
 | TransitionComponent (deprecated) | `elementType` | - | No | ⚠️ Use `slots.transition` instead. This prop will be removed in a future major release. See [Migrating from deprecated APIs](https://mui.com/material-ui/migration/migrating-from-deprecated-apis/) for more details. |
 | TransitionProps (deprecated) | `object` | - | No | ⚠️ Use `slotProps.transition` instead. This prop will be removed in a future major release. See [Migrating from deprecated APIs](https://mui.com/material-ui/migration/migrating-from-deprecated-apis/) for more details. |

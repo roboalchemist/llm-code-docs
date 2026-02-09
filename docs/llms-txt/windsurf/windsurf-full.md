@@ -4,15 +4,15 @@ Source: https://docs.windsurf.com/llms-full.txt
 
 ---
 
-# Overview
+# Autocomplete Overview
 Source: https://docs.windsurf.com/autocomplete/overview
 
-
+AI-powered code autocomplete with single-line and multi-line suggestions, keyboard shortcuts, and customizable speed settings.
 
 **Windsurf Autocomplete** is powered by our own models, trained in-house from scratch to optimize for speed and accuracy.
 
 <Frame>
-  <img src="https://exafunction.github.io/public/autocomplete/autocomplete-speed-fast.gif" />
+  <img />
 </Frame>
 
 Our autocomplete makes in-line and multi-line suggestions based on the context of your code.
@@ -65,14 +65,14 @@ You can set the speed of the Autocomplete in your settings.
 <Note>Fast Autocomplete is currently only available to our Pro, Teams, and Enterprise Users.</Note>
 
 <Frame>
-  <img src="https://exafunction.github.io/public/autocomplete/autocomplete-speeds-select.png" />
+  <img />
 </Frame>
 
 
-# Tips
+# Autocomplete Tips
 Source: https://docs.windsurf.com/autocomplete/tips
 
-
+Tips for getting the most out of Windsurf Autocomplete including inline comments, Fill In The Middle (FIM), and snooze functionality.
 
 ## Inline Comments
 
@@ -80,7 +80,7 @@ You can instruct autocomplete with the use of comments in your code.
 Windsurf will read these comments and suggest the code to bring the comment to life.
 
 <Frame>
-  <img src="https://exafunction.github.io/public/autocomplete/minimize_boilerplate.gif" />
+  <img />
 </Frame>
 
 This method can get you good mileage, but if you're finding value in writing natural-language instructions and having the AI execute them,
@@ -90,7 +90,7 @@ consider using [Windsurf Command](/command/overview).
 
 Windsurf's Autocomplete can Fill In The Middle (FIM).
 
-<video autoPlay muted loop playsInline className="w-full aspect-video" src="https://exafunction.github.io/public/videos/inline_fim/inline_fim_codeium.mp4" />
+<video />
 
 Read more about in-line FIM on our blog [here](https://windsurf.com/blog/inline-fim-code-suggestions).
 
@@ -103,7 +103,7 @@ either temporarily or until you reenable it.
 # Prompt Engineering
 Source: https://docs.windsurf.com/best-practices/prompt-engineering
 
-
+Best practices for crafting effective prompts to get high-quality code from Windsurf, including clear objectives, context, and constraints.
 
 If you're reading this, you're probably someone that already understands some of the use cases and limitations of LLMs. The better prompt and context that provide to the model, the better the outcome will be.
 
@@ -148,7 +148,7 @@ Similarly with Windsurf, there are best practices for crafting more effective pr
 # Common Use Cases
 Source: https://docs.windsurf.com/best-practices/use-cases
 
-
+Common use cases for Windsurf including code generation, unit test generation, code documentation, API integration, and code refactoring.
 
 Windsurf serves a variety of use cases at a high level. However, we see certain use cases to be more common than others, especially among our enterprise customers within their production codebases.
 
@@ -259,17 +259,17 @@ Windsurf serves a variety of use cases at a high level. However, we see certain 
 </AccordionGroup>
 
 
-# Models
+# Chat Models
 Source: https://docs.windsurf.com/chat/models
 
-
+Available AI models for Windsurf Chat including Base Model, Windsurf Premier, GPT-4o, and Claude 3.5 Sonnet with different access levels.
 
 While we provide and train our own dedicated models for Chat, we also give you the flexibility choose your favorites.
 
 It's worth noting that the Windsurf models are tightly integrated with our reasoning stack, leading to better quality suggestions than external models for coding-specific tasks.
 
 <Frame>
-  <img src="https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/chat_model_selection.png?fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=504caae923d9dab71ddd06ea8aff7484" data-og-width="974" width="974" data-og-height="414" height="414" data-path="assets/chat_model_selection.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/chat_model_selection.png?w=280&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=e2b781bb4aa44d76a83a43d842062560 280w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/chat_model_selection.png?w=560&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=1fa4e50d6fe29cb154954ce18905a1e8 560w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/chat_model_selection.png?w=840&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=9c3d4f42cf9b859d9adc3f83b638f2a7 840w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/chat_model_selection.png?w=1100&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=e766a40ec26ef7e24904f7e7cee80f06 1100w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/chat_model_selection.png?w=1650&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=d241fd6283da8301e2d7c3a6143734be 1650w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/chat_model_selection.png?w=2500&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=ed8da2f18d8975148a20480ecf02fea3 2500w" />
+  <img />
 </Frame>
 
 Model selection can be found directly under the chat.
@@ -297,10 +297,10 @@ This is the **highest-performing model** available for use in Windsurf, due to i
 Windsurf provides access to OpenAI's and Anthropic's flagship models.
 
 
-# Overview
+# Chat Overview
 Source: https://docs.windsurf.com/chat/overview
 
-Converse with a codebase-aware AI
+Chat with your codebase using Windsurf Chat in VS Code and JetBrains. Use @-mentions, persistent context, pinned files, and inline citations.
 
 <Note>
   Chat and its related features are only supported in: VS Code, JetBrains IDEs, Eclipse, X-Code, and Visual Studio.
@@ -316,7 +316,7 @@ It combines built-in context retrieval with optional user guidance to provide ac
     If you wish to move it elsewhere, you can click and drag the Windsurf icon and relocate it as desired.
 
     <Frame>
-      <img src="https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/chat_vscode_where_to_find.png?fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=7834d605c66fe4413718ad0d6e54ba29" data-og-width="1037" width="1037" data-og-height="702" height="702" data-path="assets/chat_vscode_where_to_find.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/chat_vscode_where_to_find.png?w=280&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=7a5d521234f9566acdcffd7b44639054 280w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/chat_vscode_where_to_find.png?w=560&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=6ac39537389f4c36e0e0bcf0c998cc88 560w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/chat_vscode_where_to_find.png?w=840&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=3d1fb062d8f5a0e5ecaedc2ed078a7fb 840w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/chat_vscode_where_to_find.png?w=1100&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=7ca31423b43f8a27ea85b94f0c5ac83e 1100w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/chat_vscode_where_to_find.png?w=1650&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=f9c8f91b37219aa81348ced8e5cdb76f 1650w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/chat_vscode_where_to_find.png?w=2500&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=771b59b1da45de39e55fc8f579b40e9c 2500w" />
+      <img />
     </Frame>
 
     You can use `⌘+⇧+A` on Mac or `Ctrl+⇧+A` on Windows/Linux to open the chat panel and toggle focus between it and the editor.
@@ -328,7 +328,7 @@ It combines built-in context retrieval with optional user guidance to provide ac
     If you wish to move it elsewhere, you can click and drag the Windsurf icon and relocate it as desired.
 
     <Frame>
-      <img src="https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/chat_jetbrains_where_to_find.png?fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=d2679679c30f27acf855984e168e9707" data-og-width="989" width="989" data-og-height="771" height="771" data-path="assets/chat_jetbrains_where_to_find.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/chat_jetbrains_where_to_find.png?w=280&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=936a0dbdc0e9da439451a63238565681 280w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/chat_jetbrains_where_to_find.png?w=560&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=1e4bf489fb2a6f66b3bb63cea143c61e 560w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/chat_jetbrains_where_to_find.png?w=840&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=3649e5197cd42796a64ea9eec82dcad4 840w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/chat_jetbrains_where_to_find.png?w=1100&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=dca7d5401898aef03321bb29680d1d50 1100w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/chat_jetbrains_where_to_find.png?w=1650&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=b510f4cb1b276b4e60c2c2932ae92457 1650w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/chat_jetbrains_where_to_find.png?w=2500&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=4d352422c10737108cd2bfcdbe051153 2500w" />
+      <img />
     </Frame>
 
     You can use `⌘+⇧+L` on Mac or `Ctrl+⇧+L` on Windows/Linux to open the chat panel while you are typing in the editor.
@@ -352,7 +352,7 @@ Context items available to be @-mentioned:
 * The contents of your in-IDE terminal (VS Code only).
 
 <Frame>
-  <img src="https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/at_mentions.png?fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=941c76f7691cd053706a4bc281112cc5" data-og-width="1456" width="1456" data-og-height="814" height="814" data-path="assets/at_mentions.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/at_mentions.png?w=280&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=b17499e00a66c3b95cf3b8df263d5ca3 280w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/at_mentions.png?w=560&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=1298aa3619877ab24155a201a5ad5d6b 560w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/at_mentions.png?w=840&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=5417614970f16b9add22b087b1ab80b1 840w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/at_mentions.png?w=1100&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=441ca49ce613783ab5d358e8a7c2e2db 1100w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/at_mentions.png?w=1650&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=e1438fc87ade47cb3dbcbf6a620c0901 1650w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/at_mentions.png?w=2500&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=7fdd33c52d96e9cccbb8772a0630c30f 2500w" />
+  <img />
 </Frame>
 
 You can also try `@diff`, which lets you chat about your repository's current `git diff` state.
@@ -365,8 +365,8 @@ The `@diff` feature is currently in beta.
 You can instruct the chat model to use certain context throughout a conversation and across different conversations
 by clicking on the `Advanced` tab in the chat panel.
 
-<Frame caption="Chat shows you the context it is considering.">
-  <img src="https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/chat_context.png?fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=414beb483cf5725f5999ae090b01c986" data-og-width="1314" width="1314" data-og-height="624" height="624" data-path="assets/chat_context.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/chat_context.png?w=280&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=121339f0f4c77b54027afa9f94fe3134 280w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/chat_context.png?w=560&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=d654f90f78945825c6b75e805190184a 560w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/chat_context.png?w=840&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=daf01b0d5d17b9ff09d0a2da033f93db 840w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/chat_context.png?w=1100&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=9badbb464a1dd8f48dbf02e80740ae27 1100w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/chat_context.png?w=1650&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=84e13b33be53ce5950d9d89e234eec0a 1650w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/chat_context.png?w=2500&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=998839dcc4a2e446bc52108d2f0c4655 2500w" />
+<Frame>
+  <img />
 </Frame>
 
 In this tab, you can see:
@@ -398,7 +398,7 @@ at your cursor position by clicking the appropriate button atop the code block.
 Chat is aware of code context items, and its responses often contain linked references to snippets of code in your files.
 
 <Frame>
-  <video autoPlay muted loop playsInline src="https://exafunction.github.io/public/videos/chat/inline-citations.mp4" />
+  <video />
 </Frame>
 
 ## Regenerate with Context
@@ -409,7 +409,7 @@ You can force the model to use codebase context by submitting your question with
 For a question that has already received a response, you rerun with context by clicking the sparkle icon.
 
 <Frame>
-  <img src="https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/chat_regenerate_with_context.png?fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=6da54122318e3b654ba4613abe6a68a1" data-og-width="440" width="440" data-og-height="206" height="206" data-path="assets/chat_regenerate_with_context.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/chat_regenerate_with_context.png?w=280&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=2ca70708a90c6e97b389b08eeb60b26c 280w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/chat_regenerate_with_context.png?w=560&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=326e458558a6a57be9b521dc07963b54 560w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/chat_regenerate_with_context.png?w=840&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=ebd00e0f95d8d560400bbb2656fb19f0 840w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/chat_regenerate_with_context.png?w=1100&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=8161fac3aa906991d1510eda1e75082c 1100w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/chat_regenerate_with_context.png?w=1650&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=174d713ca67d151027d309575771f342 1650w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/chat_regenerate_with_context.png?w=2500&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=3f8d542e05683a12054aa6a7e34d0922 2500w" />
+  <img />
 </Frame>
 
 ## Stats for Nerds
@@ -417,7 +417,7 @@ For a question that has already received a response, you rerun with context by c
 Lots of things happen under the hood for every chat message. You can click the stats icon to see these statistics for yourself.
 
 <Frame>
-  <img src="https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/chat_stats_for_nerds.png?fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=048a60359f0330d1281175296804fbcb" data-og-width="1634" width="1634" data-og-height="1180" height="1180" data-path="assets/chat_stats_for_nerds.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/chat_stats_for_nerds.png?w=280&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=d2196e0d69106a2968b1ad74d4a58b24 280w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/chat_stats_for_nerds.png?w=560&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=39ecd5c9e5a8c4e5f2022e620c4e96c7 560w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/chat_stats_for_nerds.png?w=840&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=859c020aae04741595aca4b14c16dd2b 840w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/chat_stats_for_nerds.png?w=1100&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=0abab7be0839b348c23b73bd27961bc0 1100w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/chat_stats_for_nerds.png?w=1650&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=96264b627b032f8ac6bbdafa748bb810 1650w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/chat_stats_for_nerds.png?w=2500&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=5518d27d397fce3c2c4b5d3ebe3a54a7 2500w" />
+  <img />
 </Frame>
 
 ## Chat History
@@ -427,7 +427,7 @@ You can click the `+` to create a new conversation, and
 you can click the `⋮` button to export your conversation. This applies only for the Windsurf Plugins.
 
 <Frame>
-  <img src="https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/chat_history.png?fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=2c18d444db63df1329fa744079e7a05d" data-og-width="828" width="828" data-og-height="210" height="210" data-path="assets/chat_history.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/chat_history.png?w=280&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=5ba6db18a93a757a3543879cf087d2c2 280w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/chat_history.png?w=560&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=ff9fa87e8e4fdeb8ac8bfca0caff3b7d 560w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/chat_history.png?w=840&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=89476debc7aecaf71a3689546f78291d 840w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/chat_history.png?w=1100&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=f8208fecceea890b07205e4f41e5c9de 1100w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/chat_history.png?w=1650&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=cf57079f15d6cb6bc45ade9ff3ecd04f 1650w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/chat_history.png?w=2500&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=a5c87ee97b6eb69739b3f1a03f0b935d 2500w" />
+  <img />
 </Frame>
 
 ## Settings
@@ -435,8 +435,8 @@ you can click the `⋮` button to export your conversation. This applies only fo
 Click on the gear icon to reach the `Settings` tab. Here, you can view settings that are applicable to your account. For example, you can update your theme preferences (light or dark), change autocomplete speed, view current plan, and change font size.
 The settings panel also gives you an option to download diagnostics, which are debug logs that can be helpful for the Windsurf team to debug an issue, should you encounter one.
 
-<Frame caption="On Windsurf Chat, click on the gear icon on the top right corner">
-  <img src="https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/chat_settings.png?fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=d32c713a4055cf8f5c9cb0472671a5f0" data-og-width="1488" width="1488" data-og-height="1536" height="1536" data-path="assets/chat_settings.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/chat_settings.png?w=280&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=0e57e72ba502af91b5cc131a3b1d4477 280w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/chat_settings.png?w=560&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=100a22920312851b534aad48f94390f7 560w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/chat_settings.png?w=840&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=6d3ce9a08bcbe10aafc3ab3c36c4e113 840w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/chat_settings.png?w=1100&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=01081c274077a9c7bea2c18fdd2b25e5 1100w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/chat_settings.png?w=1650&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=5d5999526b4b4daba82b61361ade1776 1650w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/chat_settings.png?w=2500&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=cb0c379dacfca12e912a1a4901e0c587 2500w" />
+<Frame>
+  <img />
 </Frame>
 
 ## Telemetry
@@ -447,21 +447,21 @@ The settings panel also gives you an option to download diagnostics, which are d
   <Tab title="VS Code">
     To enable telemetry, open your VS Code settings and navigate to User > Application > Telemetry. In the following dropdown, select "all".
 
-    <img width="350" src="https://mintcdn.com/codeium/vRt4FQOyBeZpD2Pu/assets/vscode_telemetry_settings.png?fit=max&auto=format&n=vRt4FQOyBeZpD2Pu&q=85&s=0d4cd0b8d2c1dfaf0fa5c3a87e9e639f" data-og-width="634" data-og-height="348" data-path="assets/vscode_telemetry_settings.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/vRt4FQOyBeZpD2Pu/assets/vscode_telemetry_settings.png?w=280&fit=max&auto=format&n=vRt4FQOyBeZpD2Pu&q=85&s=0ed5126c8fb51e98df309a6fc64ea276 280w, https://mintcdn.com/codeium/vRt4FQOyBeZpD2Pu/assets/vscode_telemetry_settings.png?w=560&fit=max&auto=format&n=vRt4FQOyBeZpD2Pu&q=85&s=2216ff691d5675b9c3875598d9e3af9e 560w, https://mintcdn.com/codeium/vRt4FQOyBeZpD2Pu/assets/vscode_telemetry_settings.png?w=840&fit=max&auto=format&n=vRt4FQOyBeZpD2Pu&q=85&s=69cc7901cfb5772f2a923e965a4af186 840w, https://mintcdn.com/codeium/vRt4FQOyBeZpD2Pu/assets/vscode_telemetry_settings.png?w=1100&fit=max&auto=format&n=vRt4FQOyBeZpD2Pu&q=85&s=586d828c16de1d34eadef84cd957c3f4 1100w, https://mintcdn.com/codeium/vRt4FQOyBeZpD2Pu/assets/vscode_telemetry_settings.png?w=1650&fit=max&auto=format&n=vRt4FQOyBeZpD2Pu&q=85&s=237d861b04375c9e4ce5ca223f105d56 1650w, https://mintcdn.com/codeium/vRt4FQOyBeZpD2Pu/assets/vscode_telemetry_settings.png?w=2500&fit=max&auto=format&n=vRt4FQOyBeZpD2Pu&q=85&s=2e4453f2733662eacdb1605243d83c36 2500w" />
+    <img />
   </Tab>
 
   <Tab title="JetBrains">
     To enable telemetry in JetBrains IDEs, open your Settings and navigate to Appearance & Hehavior > System Settings > Data Sharing.
 
-    <img width="350" src="https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_telemetry_settings.png?fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=ded930e34656b692d02371b36b9d612b" data-og-width="922" data-og-height="436" data-path="assets/jetbrains_telemetry_settings.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_telemetry_settings.png?w=280&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=bdc98fc2189716134e1cc2d50b2f30e5 280w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_telemetry_settings.png?w=560&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=c885517091a3049f3dbdcc779a80867d 560w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_telemetry_settings.png?w=840&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=0ad7ed77b6ff507743a3288a381ac092 840w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_telemetry_settings.png?w=1100&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=b8b728bba6045aed81b3a95fbae48ba0 1100w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_telemetry_settings.png?w=1650&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=3fc49a151dfd9d9ae951f8621caf3bb0 1650w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_telemetry_settings.png?w=2500&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=77eb834b6a8abfea4d3d1dfc62de8937 2500w" />
+    <img />
   </Tab>
 </Tabs>
 
 
-# Overview
+# Command Overview
 Source: https://docs.windsurf.com/command/plugins-overview
 
-AI-powered in-line edits
+Use Windsurf Command for AI-powered inline code edits in VS Code and JetBrains. Generate or edit code with natural language prompts using Cmd/Ctrl+I.
 
 **Windsurf Command** generates new or edits existing code via natural language inputs, directly in the editor window.
 
@@ -475,7 +475,7 @@ AI-powered in-line edits
     Otherwise, it will generate code at your cursor's location.
 
     <Frame>
-      <video autoPlay muted loop playsInline src="https://exafunction.github.io/public/videos/codeium_command_vscode.mp4" />
+      <video />
     </Frame>
 
     You can accept, reject, or follow-up a generation by clicking the corresponding code lens above the generated diff,
@@ -496,7 +496,7 @@ AI-powered in-line edits
     Otherwise, it will generate code at your cursor's location.
 
     <Frame>
-      <video autoPlay muted loop playsInline src="https://exafunction.github.io/public/videos/codeium_command_jetbrains.mp4" />
+      <video />
     </Frame>
 
     The Command popup will persist in the editor if you scroll around or focus your cursor elsewhere in the editor.
@@ -534,7 +534,7 @@ Here are some pointers to keep in mind:
 # Refactors, Docstrings, and More
 Source: https://docs.windsurf.com/command/related-features
 
-Features powered by Command
+Use Command-powered features like code lenses for refactoring, docstring generation, and Smart Paste for cross-language code translation.
 
 Command enables streamlined experiences for a few common operations.
 
@@ -552,8 +552,8 @@ The `Refactor` and `Docstring` code lenses in particular will invoke Command.
 * If you click `Docstring`, Windsurf will generate a docstring for you above the function header.
   (In Python, the docstring will be correctly generated *underneath* the function header.)
 
-<Frame caption="Encouraging readable and maintainable code, one docstring at a time.">
-  <video autoPlay muted loop playsInline src="https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_docstrings.mp4?fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=508c5797d57e88cf7b7db1c07a1e45c7" data-path="assets/jetbrains_docstrings.mp4" />
+<Frame>
+  <video />
 </Frame>
 
 ## Smart Paste
@@ -564,7 +564,7 @@ Behind the scenes, Windsurf will detect the language of the destination file and
 Windsurf's context awareness will try to write it to fit in your code, for example by referencing proper variable names.
 
 <Frame>
-  <video autoPlay muted loop playsInline src="https://exafunction.github.io/public/videos/demos/Smart_Paste_Demo_1080p.mp4" />
+  <video />
 </Frame>
 
 Some possible use cases:
@@ -577,7 +577,7 @@ Some possible use cases:
 # Command
 Source: https://docs.windsurf.com/command/windsurf-overview
 
-Cmd/Ctrl + I for in-line code generations and edits
+Use Windsurf Command (Cmd/Ctrl+I) for inline code generation and edits with natural language. No premium credits required.
 
 **Command** generates new or edits existing code via natural language inputs, directly in the editor window.
 
@@ -590,8 +590,8 @@ You can enter a prompt in natural language and hit the Submit button (or `⌘+�
 If you highlight a section of code before invoking Command, then the AI will edit the selection spanned by the highlighted lines.
 Otherwise, it will generate code at your cursor's location.
 
-<Frame style={{ border: 'none', background: 'none' }}>
-  <img src="https://mintcdn.com/codeium/vRt4FQOyBeZpD2Pu/assets/windsurf-command.png?fit=max&auto=format&n=vRt4FQOyBeZpD2Pu&q=85&s=355f106c06d14c5150b8fd6ade2544d8" data-og-width="1786" width="1786" data-og-height="1018" height="1018" data-path="assets/windsurf-command.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/vRt4FQOyBeZpD2Pu/assets/windsurf-command.png?w=280&fit=max&auto=format&n=vRt4FQOyBeZpD2Pu&q=85&s=927da1f69fbaabe5ba9a17e0f88cfefd 280w, https://mintcdn.com/codeium/vRt4FQOyBeZpD2Pu/assets/windsurf-command.png?w=560&fit=max&auto=format&n=vRt4FQOyBeZpD2Pu&q=85&s=b4785a636080ad292d742119776f9538 560w, https://mintcdn.com/codeium/vRt4FQOyBeZpD2Pu/assets/windsurf-command.png?w=840&fit=max&auto=format&n=vRt4FQOyBeZpD2Pu&q=85&s=63f27f54aae36f7c7c48b59ff86a1dc8 840w, https://mintcdn.com/codeium/vRt4FQOyBeZpD2Pu/assets/windsurf-command.png?w=1100&fit=max&auto=format&n=vRt4FQOyBeZpD2Pu&q=85&s=7c67b7a3910176da619cf57b45f2577f 1100w, https://mintcdn.com/codeium/vRt4FQOyBeZpD2Pu/assets/windsurf-command.png?w=1650&fit=max&auto=format&n=vRt4FQOyBeZpD2Pu&q=85&s=8d30a6e68e175618f8b9dcd079cfcfd8 1650w, https://mintcdn.com/codeium/vRt4FQOyBeZpD2Pu/assets/windsurf-command.png?w=2500&fit=max&auto=format&n=vRt4FQOyBeZpD2Pu&q=85&s=c0964663193b983f1b612706b362cd2a 2500w" />
+<Frame>
+  <img />
 </Frame>
 
 You can accept, reject, or follow-up a generation by clicking the corresponding code lens above the generated diff,or by using the appropriate shortcuts (`Cmd/Ctrl+Enter`/`Cmd/Ctrl+Delete`)
@@ -601,7 +601,7 @@ You can accept, reject, or follow-up a generation by clicking the corresponding 
 Command comes with its own set of models that are optimized for current-file edits.
 
 <Frame>
-  <video autoPlay muted loop playsInline src="https://mintcdn.com/codeium/vRt4FQOyBeZpD2Pu/assets/windsurf-command-models.mp4?fit=max&auto=format&n=vRt4FQOyBeZpD2Pu&q=85&s=56ff76bccc777e7bb30af7d4a4991325" data-path="assets/windsurf-command-models.mp4" />
+  <video />
 </Frame>
 
 <Tip> Windsurf Fast is the fastest, most accurate model available.</Tip>
@@ -610,8 +610,8 @@ Command comes with its own set of models that are optimized for current-file edi
 
 You can use Command in the terminal (`Cmd/Ctrl+I`) to generate the proper CLI syntax using prompts in natural language.
 
-<Frame style={{ border: 'none', background: 'none' }}>
-  <img src="https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf-terminal-command.png?fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=b03f1498ac0b7dc344270f975f9a234f" data-og-width="980" width="980" data-og-height="164" height="164" data-path="assets/windsurf-terminal-command.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf-terminal-command.png?w=280&fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=ec94b782cbe3b3d0a3e8d44ce7b27c74 280w, https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf-terminal-command.png?w=560&fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=9e3839c701ba2308cbc754842c8472a4 560w, https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf-terminal-command.png?w=840&fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=25245a6097e94c63ed47cb382097f82b 840w, https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf-terminal-command.png?w=1100&fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=ecfdf898fe06e81255add438d3daff49 1100w, https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf-terminal-command.png?w=1650&fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=c46a449c560b98a2e295e904601a3c51 1650w, https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf-terminal-command.png?w=2500&fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=44ec229230a00b642a4aa61f1d4c571c 2500w" />
+<Frame>
+  <img />
 </Frame>
 
 # Best Practices
@@ -633,14 +633,14 @@ Here are some pointers to keep in mind:
 # Code Lenses
 Source: https://docs.windsurf.com/command/windsurf-related-features
 
-Shortcuts for common operations
+Use Windsurf code lenses for quick Explain, Refactor, and Docstring operations on functions and classes directly in the editor.
 
 ## Explain, Refactor, and Add Docstring
 
 At the top of the text editor, Windsurf gives exposes *code lenses* on functions and classes.
 
 <Frame>
-  <img src="https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/windsurf-code-lenses.png?fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=741eb72a40e5ae8eca97e8e2a493bd28" data-og-width="884" width="884" data-og-height="216" height="216" data-path="assets/windsurf/windsurf-code-lenses.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/windsurf-code-lenses.png?w=280&fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=a5e987745a245a5f5590007017e2e4e0 280w, https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/windsurf-code-lenses.png?w=560&fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=7af9cdcc98aa12db8887762d00b73089 560w, https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/windsurf-code-lenses.png?w=840&fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=40525c3d300b9414df551b4d18be9bf7 840w, https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/windsurf-code-lenses.png?w=1100&fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=fa91fe10929dbe193f549e4cd1165731 1100w, https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/windsurf-code-lenses.png?w=1650&fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=afd8a62eda36eb99b758e5503238be8c 1650w, https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/windsurf-code-lenses.png?w=2500&fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=3f7775b532340787a9a17dcdf8c0e590 2500w" />
+  <img />
 </Frame>
 
 The `Explain` code lens will invoke Cascade, which will simply explain what the function or class does and how it works.
@@ -653,18 +653,18 @@ The `Refactor` and `Docstring` code lenses in particular will invoke Command.
   (In Python, the docstring will be correctly generated *underneath* the function header.)
 
 <Frame>
-  <video autoPlay muted loop playsInline src="https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/windsurf-refactor-code-lens.mp4?fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=484ec31a18bc46297583ca82ebb4a5fd" data-path="assets/windsurf/windsurf-refactor-code-lens.mp4" />
+  <video />
 </Frame>
 
 
 # Fast Context
 Source: https://docs.windsurf.com/context-awareness/fast-context
 
-
+Fast Context is a specialized subagent that retrieves relevant code from your codebase up to 20x faster using SWE-grep models for rapid code retrieval.
 
 Fast Context is a specialized subagent in Windsurf that retrieves relevant code from your codebase up to 20x faster than traditional agentic search. It powers Cascade's ability to quickly understand large codebases while maintaining the intelligence of frontier models.
 
-<video autoPlay controls muted loop playsInline className="w-full aspect-video" src="https://mintcdn.com/codeium/4npKb0dOJvGVxGDm/assets/windsurf/cascade/fastcontext.mp4?fit=max&auto=format&n=4npKb0dOJvGVxGDm&q=85&s=7fa30dffb4eb96df65f8a302fc4cff50" data-path="assets/windsurf/cascade/fastcontext.mp4" />
+<video />
 
 ## Using Fast Context
 
@@ -700,10 +700,10 @@ Both models are trained using reinforcement learning to excel at parallel tool c
 The models use a restricted set of cross-platform compatible tools (grep, read, glob) to ensure consistent performance across different operating systems and development environments.
 
 
-# Overview
+# Context Awareness Overview
 Source: https://docs.windsurf.com/context-awareness/overview
 
-On codebase context and related features
+Windsurf's RAG-based context engine indexes your codebase for intelligent suggestions. Learn about context pinning, knowledge base, and M-Query retrieval.
 
 Windsurf's context engine builds a deep understanding of your codebase, past actions, and next intent.
 
@@ -734,7 +734,7 @@ Out of the box, Windsurf takes multiple relevant sources of context into conside
 
 ## Knowledge Base (Beta)
 
-<Note>Only available for Teams and Enterprise customers. Currently not available to Hybrid customers.</Note>
+<Note>Only available for Teams and Enterprise customers.</Note>
 
 This feature allows teams to pull in Google Docs as shared context or knowledge sources for their entire team.
 
@@ -767,7 +767,7 @@ When conversing with Windsurf Chat, you have various ways of leveraging codebase
 like [@-mentions](/chat/overview/#mentions) or custom guidelines.
 See the [Chat page](/chat/overview) for more information.
 
-<video autoPlay muted loop playsInline className="w-full aspect-video" src="https://exafunction.github.io/public/videos/chat/inline-mention.mp4" />
+<video />
 
 ## Frequently Asked Questions (FAQs)
 
@@ -781,7 +781,7 @@ Indexing performance and features vary based on your workflow and your Windsurf 
 # Remote Indexing
 Source: https://docs.windsurf.com/context-awareness/remote-indexing
 
-
+Index remote repositories from GitHub, GitLab, and BitBucket for enterprise teams without storing code locally.
 
 <Note> This feature is only available in the Windsurf Plugins for Enterprise plans. </Note>
 
@@ -794,7 +794,7 @@ For this use case, organizations on Teams and Enterprise plans can use Windsurf'
 From [https://windsurf.com/indexing](https://windsurf.com/indexing) you can add a repository to index. Currently we support Git repositories from GitHub, GitLab, and BitBucket.
 
 <Frame>
-  <img src="https://mintcdn.com/codeium/vRt4FQOyBeZpD2Pu/assets/remote-indexing-adding-repo.png?fit=max&auto=format&n=vRt4FQOyBeZpD2Pu&q=85&s=2e60f03d5cddbefc397174c35277273c" data-og-width="2016" width="2016" data-og-height="1488" height="1488" data-path="assets/remote-indexing-adding-repo.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/vRt4FQOyBeZpD2Pu/assets/remote-indexing-adding-repo.png?w=280&fit=max&auto=format&n=vRt4FQOyBeZpD2Pu&q=85&s=706990eab03d43fcfe45bbaf17c94d14 280w, https://mintcdn.com/codeium/vRt4FQOyBeZpD2Pu/assets/remote-indexing-adding-repo.png?w=560&fit=max&auto=format&n=vRt4FQOyBeZpD2Pu&q=85&s=50bc0700ffde8ad79dacc1c3e48307c5 560w, https://mintcdn.com/codeium/vRt4FQOyBeZpD2Pu/assets/remote-indexing-adding-repo.png?w=840&fit=max&auto=format&n=vRt4FQOyBeZpD2Pu&q=85&s=d5e1171d6491c0488d5e856b973b9105 840w, https://mintcdn.com/codeium/vRt4FQOyBeZpD2Pu/assets/remote-indexing-adding-repo.png?w=1100&fit=max&auto=format&n=vRt4FQOyBeZpD2Pu&q=85&s=01231efd308a7ead3b878cd9c003b1ab 1100w, https://mintcdn.com/codeium/vRt4FQOyBeZpD2Pu/assets/remote-indexing-adding-repo.png?w=1650&fit=max&auto=format&n=vRt4FQOyBeZpD2Pu&q=85&s=aa6e287b5569982ca33152b253dc6430 1650w, https://mintcdn.com/codeium/vRt4FQOyBeZpD2Pu/assets/remote-indexing-adding-repo.png?w=2500&fit=max&auto=format&n=vRt4FQOyBeZpD2Pu&q=85&s=4844fcf2cc46856e33bce62e451b9b26 2500w" />
+  <img />
 </Frame>
 
 You can choose to index a particular branch and to automatically re-index the repository after some number of days.
@@ -809,7 +809,7 @@ Furthermore, all indexing and embedding is performed on a single-tenant instance
 # Windsurf Ignore
 Source: https://docs.windsurf.com/context-awareness/windsurf-ignore
 
-
+Configure which files and directories Windsurf should ignore during indexing using .codeiumignore files with gitignore-style syntax.
 
 ## WindsurfIgnore
 
@@ -825,7 +825,7 @@ Files included in .gtiignore cannot be edited by Cascade.
 If you want to further configure files that Windsurf Indexing ignores, you can add a `.codeiumignore` file to your repo root, with the same syntax as `.gitignore`
 
 <Frame>
-  <img src="https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/codeiumignore.png?fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=9b6143bd6f701e4f25cf93825ee6fde6" data-og-width="732" width="732" data-og-height="450" height="450" data-path="assets/codeiumignore.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/codeiumignore.png?w=280&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=3a85edaa177c7a7dbcc9da5008c4f10c 280w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/codeiumignore.png?w=560&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=bdb51589e57ab2f816527319cfae67c1 560w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/codeiumignore.png?w=840&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=bcca84dfb2a790c903dc623101a584d6 840w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/codeiumignore.png?w=1100&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=6e9ca44d9d2a0b499caa90b2feedc74a 1100w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/codeiumignore.png?w=1650&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=f428e6545758fbd7ff766a673f004ca9 1650w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/codeiumignore.png?w=2500&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=27c03d11be18e5f83fe22b3491fe7cef 2500w" />
+  <img />
 </Frame>
 
 ### Global .codeiumignore
@@ -841,10 +841,10 @@ When first enabled, Windsurf will consume a fraction of CPU while it indexes the
 The "Max Workspace Size (File Count)" setting determines the largest workspace for which Windsurf Indexing will try to index a particular workspace / module. If your workspace does not appear to be indexed, please try adjusting this number higher. For users with \~10GB of RAM, we recommend setting this no higher than 10,000 files.
 
 
-# Overview
+# Context Awareness for Windsurf
 Source: https://docs.windsurf.com/context-awareness/windsurf-overview
 
-On codebase context and related features
+Windsurf's RAG-based context engine indexes your codebase for intelligent code suggestions. Supports remote repositories for Teams and Enterprise.
 
 Windsurf's context engine builds a deep understanding of your codebase, past actions, and next intent.
 
@@ -879,7 +879,7 @@ When conversing with Windsurf Chat, you have various ways of leveraging codebase
 like [@-mentions](/chat/overview/#mentions) or custom guidelines.
 See the [Chat page](/chat/overview) for more information.
 
-<video autoPlay muted loop playsInline className="w-full aspect-video" src="https://exafunction.github.io/public/videos/chat/inline-mention.mp4" />
+<video />
 
 ## Frequently Asked Questions (FAQs)
 
@@ -893,11 +893,11 @@ Indexing performance and features vary based on your workflow and your Windsurf 
 # Analytics
 Source: https://docs.windsurf.com/plugins/accounts/analytics
 
-
+View individual user analytics, team analytics, usage patterns, and metrics for your Windsurf usage including code completion stats and AI-written code percentage.
 
 ## Individuals
 
-<Card title="User Analytics" horizontal={true} icon="user" href="https://windsurf.com/profile">
+<Card title="User Analytics" icon="user" href="https://windsurf.com/profile">
   User analytics are available for viewing and sharing on your own [profile](https://windsurf.com/profile) page.
 </Card>
 
@@ -905,7 +905,7 @@ See your completion stats, [refer](https://windsurf.com/referral) your friends, 
 
 ## Teams
 
-<Card title="Team Analytics" horizontal={true} icon="users" href="https://windsurf.com/team/analytics">
+<Card title="Team Analytics" icon="users" href="https://windsurf.com/team/analytics">
   Windsurf makes managing your team easy from one dashboard.
 </Card>
 
@@ -916,14 +916,14 @@ See your completion stats, [refer](https://windsurf.com/referral) your friends, 
 Team leads and managers can also see an aggregate of their team members' usage patterns and analytics, including Percent of Code Written (PCW) by AI, total lines of code written, total tool calls, credit consumption, and more.
 
 <Frame>
-  <img src="https://mintcdn.com/codeium/vRt4FQOyBeZpD2Pu/assets/teams/team-analytics-pcw.jpg?fit=max&auto=format&n=vRt4FQOyBeZpD2Pu&q=85&s=55fc677bc12bf29fade2bd8152eb4712" data-og-width="1313" width="1313" data-og-height="985" height="985" data-path="assets/teams/team-analytics-pcw.jpg" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/vRt4FQOyBeZpD2Pu/assets/teams/team-analytics-pcw.jpg?w=280&fit=max&auto=format&n=vRt4FQOyBeZpD2Pu&q=85&s=b5e996e20bbde88e14ff033a56e89c69 280w, https://mintcdn.com/codeium/vRt4FQOyBeZpD2Pu/assets/teams/team-analytics-pcw.jpg?w=560&fit=max&auto=format&n=vRt4FQOyBeZpD2Pu&q=85&s=42db5449e81d53614c0ac600f5625d6b 560w, https://mintcdn.com/codeium/vRt4FQOyBeZpD2Pu/assets/teams/team-analytics-pcw.jpg?w=840&fit=max&auto=format&n=vRt4FQOyBeZpD2Pu&q=85&s=703e903949018491e3db70d5da873233 840w, https://mintcdn.com/codeium/vRt4FQOyBeZpD2Pu/assets/teams/team-analytics-pcw.jpg?w=1100&fit=max&auto=format&n=vRt4FQOyBeZpD2Pu&q=85&s=abc9b188e2fdd9e2f5a395f594d1ba0d 1100w, https://mintcdn.com/codeium/vRt4FQOyBeZpD2Pu/assets/teams/team-analytics-pcw.jpg?w=1650&fit=max&auto=format&n=vRt4FQOyBeZpD2Pu&q=85&s=f9544605eb542dc0c5ecf29836196670 1650w, https://mintcdn.com/codeium/vRt4FQOyBeZpD2Pu/assets/teams/team-analytics-pcw.jpg?w=2500&fit=max&auto=format&n=vRt4FQOyBeZpD2Pu&q=85&s=6f5b57d0857d14a96b33cdb131a72431 2500w" />
+  <img />
 </Frame>
 
 
 # Analytics API
 Source: https://docs.windsurf.com/plugins/accounts/api-reference/analytics-api-introduction
 
-Enterprise analytics API for querying Windsurf usage data
+Enterprise analytics API for querying Windsurf usage data including autocomplete, chat, command, and Cascade metrics.
 
 ## Overview
 
@@ -954,7 +954,7 @@ The Analytics API provides three main endpoints:
 # API Reference
 Source: https://docs.windsurf.com/plugins/accounts/api-reference/api-introduction
 
-Enterprise API for querying Windsurf usage data and managing configurations
+Enterprise API for querying Windsurf usage data and managing configurations with service key authentication.
 
 ## Overview
 
@@ -983,15 +983,22 @@ The Windsurf API uses service keys for authentication. Service keys must be incl
 
 ### Required Permissions
 
-All Analytics API endpoints require "Teams Read-only" permissions.
+Different API endpoints require different permissions. Refer to the individual endpoint documentation for the specific permission required:
 
-All Usage API endpoints require "Billing Write" permissions.
+| Endpoint                                                                                                     | Required Permission |
+| ------------------------------------------------------------------------------------------------------------ | ------------------- |
+| [Custom Analytics](/plugins/accounts/api-reference/custom-analytics) (`/Analytics`)                          | Analytics Read      |
+| [User Page Analytics](/plugins/accounts/api-reference/user-page-analytics) (`/UserPageAnalytics`)            | Teams Read-Only     |
+| [Cascade Analytics](/plugins/accounts/api-reference/cascade-analytics) (`/CascadeAnalytics`)                 | Teams Read-Only     |
+| [Set Usage Configuration](/plugins/accounts/api-reference/usage-config) (`/UsageConfig`)                     | Billing Write       |
+| [Get Usage Configuration](/plugins/accounts/api-reference/get-usage-config) (`/GetUsageConfig`)              | Billing Read        |
+| [Get Team Credit Balance](/plugins/accounts/api-reference/get-team-credit-balance) (`/GetTeamCreditBalance`) | Billing Read        |
 
 ### Using Service Keys
 
 Include your service key in the request body of all API calls:
 
-```json  theme={null}
+```json theme={null}
 {
   "service_key": "your_service_key_here",
   // ... other parameters
@@ -1013,7 +1020,7 @@ For API support and questions, please contact [Windsurf Support](https://windsur
 Source: https://docs.windsurf.com/plugins/accounts/api-reference/cascade-analytics
 
 POST https://server.codeium.com/api/v1/CascadeAnalytics
-Query Cascade-specific usage metrics and data
+Query Cascade-specific usage metrics including lines suggested/accepted, model usage, credit consumption, and tool usage statistics.
 
 ## Overview
 
@@ -1021,27 +1028,27 @@ Retrieve Cascade-specific analytics data including lines suggested/accepted, mod
 
 ## Request
 
-<ParamField body="service_key" type="string" required>
+<ParamField type="string">
   Your service key with "Teams Read-only" permissions
 </ParamField>
 
-<ParamField body="group_name" type="string">
+<ParamField type="string">
   Filter results to users in a specific group. Cannot be used with `emails` parameter.
 </ParamField>
 
-<ParamField body="start_timestamp" type="string">
+<ParamField type="string">
   Start time in RFC 3339 format (e.g., `2023-01-01T00:00:00Z`)
 </ParamField>
 
-<ParamField body="end_timestamp" type="string">
+<ParamField type="string">
   End time in RFC 3339 format (e.g., `2023-12-31T23:59:59Z`)
 </ParamField>
 
-<ParamField body="emails" type="array">
+<ParamField type="array">
   Array of email addresses to filter results. Cannot be used with `group_name` parameter.
 </ParamField>
 
-<ParamField body="ide_types" type="array">
+<ParamField type="array">
   Filter by IDE type. Available options:
 
   * `"editor"` - Windsurf Editor
@@ -1050,7 +1057,7 @@ Retrieve Cascade-specific analytics data including lines suggested/accepted, mod
   If omitted, returns data for both IDEs.
 </ParamField>
 
-<ParamField body="query_requests" type="array" required>
+<ParamField type="array">
   Array of data source queries to execute. Each object should contain one of the supported data sources.
 </ParamField>
 
@@ -1060,7 +1067,7 @@ Retrieve Cascade-specific analytics data including lines suggested/accepted, mod
 
 Query for daily Cascade lines suggested and accepted.
 
-```json  theme={null}
+```json theme={null}
 {
   "cascade_lines": {}
 }
@@ -1076,7 +1083,7 @@ Query for daily Cascade lines suggested and accepted.
 
 Query for model usage, credit consumption, and mode data.
 
-```json  theme={null}
+```json theme={null}
 {
   "cascade_runs": {}
 }
@@ -1102,7 +1109,7 @@ Query for model usage, credit consumption, and mode data.
 
 Query for tool usage statistics (aggregate counts).
 
-```json  theme={null}
+```json theme={null}
 {
   "cascade_tool_usage": {}
 }
@@ -1135,7 +1142,7 @@ Query for tool usage statistics (aggregate counts).
 
 ## Example Request
 
-```bash  theme={null}
+```bash theme={null}
 curl -X POST --header "Content-Type: application/json" \
 --data '{
   "service_key": "your_service_key_here",
@@ -1235,7 +1242,7 @@ https://server.codeium.com/api/v1/CascadeAnalytics
 
 ### Example Response
 
-```json  theme={null}
+```json theme={null}
 {
   "queryResults": [
     {
@@ -1296,7 +1303,7 @@ https://server.codeium.com/api/v1/CascadeAnalytics
 Source: https://docs.windsurf.com/plugins/accounts/api-reference/custom-analytics
 
 POST https://server.codeium.com/api/v1/Analytics
-Flexible analytics querying with custom selections, filters, and aggregations
+Flexible analytics querying with custom selections, filters, and aggregations for autocomplete, chat, command, and PCW data.
 
 ## Overview
 
@@ -1304,69 +1311,113 @@ The Custom Analytics API provides flexible querying capabilities for autocomplet
 
 ## Request
 
-<ParamField body="service_key" type="string" required>
-  Your service key with "Teams Read-only" permissions
+<ParamField type="string">
+  Your service key with "Analytics Read" permissions
 </ParamField>
 
-<ParamField body="group_name" type="string">
+<ParamField type="string">
   Filter results to users in a specific group (optional)
 </ParamField>
 
-<ParamField body="query_requests" type="array" required>
+<ParamField type="array">
   Array of query request objects defining the data to retrieve
+
+  <Expandable title="Query Request Object">
+    <ParamField type="string">
+      Data source to query. Options:
+
+      * `QUERY_DATA_SOURCE_USER_DATA` - Autocomplete data
+      * `QUERY_DATA_SOURCE_CHAT_DATA` - Chat data
+      * `QUERY_DATA_SOURCE_COMMAND_DATA` - Command data
+      * `QUERY_DATA_SOURCE_PCW_DATA` - Percent Code Written data
+    </ParamField>
+
+    <ParamField type="array">
+      Array of field selections to retrieve
+
+      <Expandable title="Selection Object">
+        <ParamField type="string">
+          Field name to select (see Available Fields section)
+        </ParamField>
+
+        <ParamField type="string">
+          Alias for the field. If not specified, defaults to `{aggregation_function}_{field_name}` (lowercase)
+        </ParamField>
+
+        <ParamField type="string">
+          Aggregation function to apply:
+
+          * `QUERY_AGGREGATION_UNSPECIFIED` (default)
+          * `QUERY_AGGREGATION_COUNT`
+          * `QUERY_AGGREGATION_SUM`
+          * `QUERY_AGGREGATION_AVG`
+          * `QUERY_AGGREGATION_MAX`
+          * `QUERY_AGGREGATION_MIN`
+        </ParamField>
+      </Expandable>
+    </ParamField>
+
+    <ParamField type="array">
+      Array of filters to apply
+
+      <Expandable title="Filter Object">
+        <ParamField type="string">
+          Field name to filter on
+        </ParamField>
+
+        <ParamField type="string">
+          Filter operation:
+
+          * `QUERY_FILTER_EQUAL`
+          * `QUERY_FILTER_NOT_EQUAL`
+          * `QUERY_FILTER_GREATER_THAN`
+          * `QUERY_FILTER_LESS_THAN`
+          * `QUERY_FILTER_GE` (greater than or equal)
+          * `QUERY_FILTER_LE` (less than or equal)
+        </ParamField>
+
+        <ParamField type="string">
+          Value to compare against
+        </ParamField>
+      </Expandable>
+    </ParamField>
+
+    <ParamField type="array">
+      Array of aggregations to group by
+
+      <Expandable title="Aggregation Object">
+        <ParamField type="string">
+          Field name to group by
+        </ParamField>
+
+        <ParamField type="string">
+          Alias for the aggregation field
+        </ParamField>
+      </Expandable>
+    </ParamField>
+  </Expandable>
 </ParamField>
 
 ## Query Request Structure
 
 Each query request object contains:
 
-<ParamField body="data_source" type="string" required>
-  Data source to query. Options:
-
-  * `QUERY_DATA_SOURCE_USER_DATA` - Autocomplete data
-  * `QUERY_DATA_SOURCE_CHAT_DATA` - Chat data
-  * `QUERY_DATA_SOURCE_COMMAND_DATA` - Command data
-  * `QUERY_DATA_SOURCE_PCW_DATA` - Percent Code Written data
-</ParamField>
-
-<ParamField body="selections" type="array" required>
-  Array of field selections to retrieve (see Selections section)
-</ParamField>
-
-<ParamField body="filters" type="array">
-  Array of filters to apply (see Filters section)
-</ParamField>
-
-<ParamField body="aggregations" type="array">
-  Array of aggregations to group by (see Aggregations section)
-</ParamField>
+* **data\_source** (required): Data source to query
+* **selections** (required): Array of field selections to retrieve
+* **filters** (optional): Array of filters to apply
+* **aggregations** (optional): Array of aggregations to group by
 
 ## Selections
 
 Selections define which fields to retrieve and how to aggregate them.
 
-<ParamField body="field" type="string" required>
-  Field name to select (see Available Fields section)
-</ParamField>
-
-<ParamField body="name" type="string">
-  Alias for the field. If not specified, defaults to `{aggregation_function}_{field_name}` (lowercase)
-</ParamField>
-
-<ParamField body="aggregation_function" type="string">
-  Aggregation function to apply:
-
-  * `QUERY_AGGREGATION_UNSPECIFIED` (default)
-  * `QUERY_AGGREGATION_COUNT`
-  * `QUERY_AGGREGATION_SUM`
-  * `QUERY_AGGREGATION_AVG`
-  * `QUERY_AGGREGATION_MAX`
-  * `QUERY_AGGREGATION_MIN`
-</ParamField>
+* **field** (required): Field name to select
+* **name** (optional): Alias for the field
+* **aggregation\_function** (optional): Aggregation function to apply
 
 ### Selection Example
 
-```json  theme={null}
+```json theme={null}
 {
   "field": "num_acceptances",
   "name": "total_acceptances",
@@ -1378,28 +1429,13 @@ Selections define which fields to retrieve and how to aggregate them.
 
 Filters narrow down data to elements meeting specific criteria.
 
-<ParamField body="name" type="string" required>
-  Field name to filter on
-</ParamField>
-
-<ParamField body="value" type="string" required>
-  Value to compare against
-</ParamField>
-
-<ParamField body="filter" type="string" required>
-  Filter operation:
-
-  * `QUERY_FILTER_EQUAL`
-  * `QUERY_FILTER_NOT_EQUAL`
-  * `QUERY_FILTER_GREATER_THAN`
-  * `QUERY_FILTER_LESS_THAN`
-  * `QUERY_FILTER_GE` (greater than or equal)
-  * `QUERY_FILTER_LE` (less than or equal)
-</ParamField>
+* **name** (required): Field name to filter on
+* **filter** (required): Filter operation
+* **value** (required): Value to compare against
 
 ### Filter Example
 
-```json  theme={null}
+```json theme={null}
 {
   "name": "language",
   "filter": "QUERY_FILTER_EQUAL",
@@ -1411,17 +1447,12 @@ Filters narrow down data to elements meeting specific criteria.
 
 Aggregations group data by specified criteria.
 
-<ParamField body="field" type="string" required>
-  Field name to group by
-</ParamField>
-
-<ParamField body="name" type="string" required>
-  Alias for the aggregation field
-</ParamField>
+* **field** (required): Field name to group by
+* **name** (required): Alias for the aggregation field
 
 ### Aggregation Example
 
-```json  theme={null}
+```json theme={null}
 {
   "field": "ide",
   "name": "ide_type"
@@ -1545,7 +1576,7 @@ For date filtering in PCW queries, use `start_timestamp` and `end_timestamp` in 
 
 ### User Data Example
 
-```bash  theme={null}
+```bash theme={null}
 curl -X POST --header "Content-Type: application/json" \
 --data '{
   "service_key": "your_service_key_here",
@@ -1566,12 +1597,12 @@ curl -X POST --header "Content-Type: application/json" \
       ],
       "filters": [
         {
-          "name": "hour",
+          "name": "date",
           "filter": "QUERY_FILTER_GE",
           "value": "2024-01-01"
         },
         {
-          "name": "hour",
+          "name": "date",
           "filter": "QUERY_FILTER_LE",
           "value": "2024-02-01"
         }
@@ -1584,7 +1615,7 @@ https://server.codeium.com/api/v1/Analytics
 
 ### Chat Data Example
 
-```bash  theme={null}
+```bash theme={null}
 curl -X POST --header "Content-Type: application/json" \
 --data '{
   "service_key": "your_service_key_here",
@@ -1619,7 +1650,7 @@ https://server.codeium.com/api/v1/Analytics
 
 ### Command Data Example
 
-```bash  theme={null}
+```bash theme={null}
 curl -X POST --header "Content-Type: application/json" \
 --data '{
   "service_key": "your_service_key_here",
@@ -1664,7 +1695,7 @@ https://server.codeium.com/api/v1/Analytics
 
 ### PCW Data Example
 
-```bash  theme={null}
+```bash theme={null}
 curl -X POST --header "Content-Type: application/json" \
 --data '{
   "service_key": "your_service_key_here",
@@ -1726,7 +1757,7 @@ https://server.codeium.com/api/v1/Analytics
 
 #### User Data Response
 
-```json  theme={null}
+```json theme={null}
 {
   "queryResults": [
     {
@@ -1745,7 +1776,7 @@ https://server.codeium.com/api/v1/Analytics
 
 #### Chat Data Response
 
-```json  theme={null}
+```json theme={null}
 {
   "queryResults": [
     {
@@ -1770,7 +1801,7 @@ https://server.codeium.com/api/v1/Analytics
 
 #### Command Data Response
 
-```json  theme={null}
+```json theme={null}
 {
   "queryResults": [
     {
@@ -1797,7 +1828,7 @@ https://server.codeium.com/api/v1/Analytics
 
 #### PCW Data Response
 
-```json  theme={null}
+```json theme={null}
 {
   "queryResults": [
     {
@@ -1829,7 +1860,7 @@ https://server.codeium.com/api/v1/Analytics
 # Error Handling
 Source: https://docs.windsurf.com/plugins/accounts/api-reference/errors
 
-Common error messages and debugging tips for the Analytics API
+Common error messages and debugging tips for the Analytics API including authentication, query structure, and rate limiting errors.
 
 ## Overview
 
@@ -1839,7 +1870,7 @@ The Analytics API returns detailed error messages to help debug invalid queries.
 
 When an error occurs, the API returns an error response with a descriptive message:
 
-```json  theme={null}
+```json theme={null}
 {
   "error": "Error message describing what went wrong"
 }
@@ -1865,12 +1896,12 @@ When an error occurs, the API returns an error response with a descriptive messa
   <Accordion title="Insufficient permissions">
     **Error:** `Insufficient permissions`
 
-    **Cause:** The service key doesn't have the required "Teams Read-only" permissions.
+    **Cause:** The service key doesn't have the required permissions for the endpoint you're calling.
 
     **Solution:**
 
     * Update the service key permissions in team settings
-    * Ensure the service key has "Teams Read-only" access
+    * Refer to the [API introduction](/plugins/accounts/api-reference/api-introduction#required-permissions) for the specific permission required by each endpoint
   </Accordion>
 </AccordionGroup>
 
@@ -1884,7 +1915,7 @@ When an error occurs, the API returns an error response with a descriptive messa
 
     **Solution:** Add at least one selection to your query request:
 
-    ```json  theme={null}
+    ```json theme={null}
     "selections": [
       {
         "field": "num_acceptances",
@@ -1916,7 +1947,7 @@ When an error occurs, the API returns an error response with a descriptive messa
 
     **Invalid:**
 
-    ```json  theme={null}
+    ```json theme={null}
     "selections": [
       {
         "field": "num_acceptances",
@@ -1931,7 +1962,7 @@ When an error occurs, the API returns an error response with a descriptive messa
 
     **Valid:**
 
-    ```json  theme={null}
+    ```json theme={null}
     "selections": [
       {
         "field": "num_acceptances",
@@ -1966,7 +1997,7 @@ When an error occurs, the API returns an error response with a descriptive messa
 
     **Invalid:**
 
-    ```json  theme={null}
+    ```json theme={null}
     "aggregations": [
       {
         "field": "distinct_developer_days",
@@ -1977,7 +2008,7 @@ When an error occurs, the API returns an error response with a descriptive messa
 
     **Valid:**
 
-    ```json  theme={null}
+    ```json theme={null}
     "aggregations": [
       {
         "field": "api_key",
@@ -2042,7 +2073,7 @@ When an error occurs, the API returns an error response with a descriptive messa
 
     **Invalid:**
 
-    ```json  theme={null}
+    ```json theme={null}
     {
       "group_name": "engineering",
       "emails": ["user@example.com"]
@@ -2051,7 +2082,7 @@ When an error occurs, the API returns an error response with a descriptive messa
 
     **Valid:**
 
-    ```json  theme={null}
+    ```json theme={null}
     {
       "group_name": "engineering"
     }
@@ -2059,7 +2090,7 @@ When an error occurs, the API returns an error response with a descriptive messa
 
     **Or:**
 
-    ```json  theme={null}
+    ```json theme={null}
     {
       "emails": ["user@example.com", "user2@example.com"]
     }
@@ -2090,7 +2121,7 @@ When an error occurs, the API returns an error response with a descriptive messa
 
 Begin with basic queries and gradually add complexity:
 
-```json  theme={null}
+```json theme={null}
 {
   "service_key": "your_key",
   "query_requests": [
@@ -2136,11 +2167,183 @@ If you continue to experience issues:
 Error handling and validation have been improved in API version 1.10.0 and later. If you're using an older version, consider updating to get more detailed error messages.
 
 
+# Get Team Credit Balance
+Source: https://docs.windsurf.com/plugins/accounts/api-reference/get-team-credit-balance
+
+POST https://server.codeium.com/api/v1/GetTeamCreditBalance
+Retrieve the current credit balance for your team, including prompt credits per seat, add-on credits, and billing cycle information.
+
+## Overview
+
+Retrieve the current credit balance information for your team. This includes prompt credits allocated per seat, the number of seats, add-on credit usage, and billing cycle dates.
+
+## Request
+
+<ParamField type="string">
+  Your service key with "Billing Read" permissions
+</ParamField>
+
+### Example Request
+
+```bash theme={null}
+curl -X POST --header "Content-Type: application/json" \
+--data '{
+  "service_key": "your_service_key_here"
+}' \
+https://server.codeium.com/api/v1/GetTeamCreditBalance
+```
+
+## Response
+
+<ResponseField name="promptCreditsPerSeat" type="integer">
+  Number of prompt credits allocated per seat for the current billing cycle
+</ResponseField>
+
+<ResponseField name="numSeats" type="integer">
+  Number of seats on the team
+</ResponseField>
+
+<ResponseField name="addOnCreditsAvailable" type="integer">
+  Total add-on credits available for the team
+</ResponseField>
+
+<ResponseField name="addOnCreditsUsed" type="integer">
+  Add-on credits consumed so far in the current billing cycle
+</ResponseField>
+
+<ResponseField name="billingCycleStart" type="string">
+  Start of the current billing cycle (ISO 8601 timestamp)
+</ResponseField>
+
+<ResponseField name="billingCycleEnd" type="string">
+  End of the current billing cycle (ISO 8601 timestamp)
+</ResponseField>
+
+### Example Response
+
+```json theme={null}
+{
+  "promptCreditsPerSeat": 500,
+  "numSeats": 50,
+  "addOnCreditsAvailable": 10000,
+  "addOnCreditsUsed": 3500,
+  "billingCycleStart": "2026-01-01T00:00:00Z",
+  "billingCycleEnd": "2026-02-01T00:00:00Z"
+}
+```
+
+## Error Responses
+
+Common error scenarios:
+
+* Invalid service key or insufficient permissions
+* Feature not available for your plan (requires enterprise tier)
+* Rate limit exceeded
+
+
+# Get Usage Configuration
+Source: https://docs.windsurf.com/plugins/accounts/api-reference/get-usage-config
+
+POST https://server.codeium.com/api/v1/GetUsageConfig
+Retrieve add-on credit cap configuration at team, group, or user level for enterprise billing management.
+
+## Overview
+
+Retrieve the current add-on credit cap configuration for your organization. You can query configurations at the team level, for specific groups, or for individual users.
+
+## Request
+
+<ParamField type="string">
+  Your service key with "Billing Read" permissions
+</ParamField>
+
+### Scope Configuration (Choose One)
+
+<ParamField type="boolean">
+  Set to `true` to retrieve the configuration at the team level
+</ParamField>
+
+<ParamField type="string">
+  Retrieve the configuration for a specific group by providing the group ID
+</ParamField>
+
+<ParamField type="string">
+  Retrieve the configuration for a specific user by providing their email address
+</ParamField>
+
+<Info>
+  You must provide one of `team_level`, `group_id`, or `user_email` to define the scope.
+</Info>
+
+### Example Request - Get Team-Level Configuration
+
+```bash theme={null}
+curl -X POST --header "Content-Type: application/json" \
+--data '{
+  "service_key": "your_service_key_here",
+  "team_level": true
+}' \
+https://server.codeium.com/api/v1/GetUsageConfig
+```
+
+### Example Request - Get Group Configuration
+
+```bash theme={null}
+curl -X POST --header "Content-Type: application/json" \
+--data '{
+  "service_key": "your_service_key_here",
+  "group_id": "engineering_team"
+}' \
+https://server.codeium.com/api/v1/GetUsageConfig
+```
+
+### Example Request - Get User Configuration
+
+```bash theme={null}
+curl -X POST --header "Content-Type: application/json" \
+--data '{
+  "service_key": "your_service_key_here",
+  "user_email": "user@example.com"
+}' \
+https://server.codeium.com/api/v1/GetUsageConfig
+```
+
+## Response
+
+<ResponseField name="add_on_credit_cap" type="integer">
+  The configured add-on credit cap value. If this field is not present in the response, there is no cap configured at the requested scope level.
+</ResponseField>
+
+### Example Response - With Cap Configured
+
+```json theme={null}
+{
+  "add_on_credit_cap": 10000
+}
+```
+
+### Example Response - No Cap Configured
+
+```json theme={null}
+{}
+```
+
+## Error Responses
+
+Common error scenarios:
+
+* Invalid service key or insufficient permissions
+* Multiple scope parameters provided
+* No scope parameter provided
+* Invalid group ID or user email
+* Rate limit exceeded
+
+
 # Set Usage Configuration
 Source: https://docs.windsurf.com/plugins/accounts/api-reference/usage-config
 
 POST https://server.codeium.com/api/v1/UsageConfig
-Configure usage caps for add-on credits
+Set or clear add-on credit caps at team, group, or user level for enterprise billing management.
 
 ## Overview
 
@@ -2148,17 +2351,17 @@ Set or clear usage caps on add-on credits for your organization. You can scope t
 
 ## Request
 
-<ParamField body="service_key" type="string" required>
-  Your service key with appropriate permissions
+<ParamField type="string">
+  Your service key with "Billing Write" permissions
 </ParamField>
 
 ### Credit Cap Configuration (Choose One)
 
-<ParamField body="clear_add_on_credit_cap" type="boolean">
+<ParamField type="boolean">
   Set to `true` to clear the existing add-on credit cap
 </ParamField>
 
-<ParamField body="set_add_on_credit_cap" type="integer">
+<ParamField type="integer">
   Set a new add-on credit cap (integer value)
 </ParamField>
 
@@ -2168,15 +2371,15 @@ Set or clear usage caps on add-on credits for your organization. You can scope t
 
 ### Scope Configuration (Choose One)
 
-<ParamField body="team_level" type="boolean">
+<ParamField type="boolean">
   Set to `true` to apply the configuration at the team level
 </ParamField>
 
-<ParamField body="group_id" type="string">
+<ParamField type="string">
   Apply the configuration to a specific group by providing the group ID
 </ParamField>
 
-<ParamField body="user_email" type="string">
+<ParamField type="string">
   Apply the configuration to a specific user by providing their email address
 </ParamField>
 
@@ -2186,7 +2389,7 @@ Set or clear usage caps on add-on credits for your organization. You can scope t
 
 ### Example Request - Set Credit Cap for Team
 
-```bash  theme={null}
+```bash theme={null}
 curl -X POST --header "Content-Type: application/json" \
 --data '{
   "service_key": "your_service_key_here",
@@ -2198,7 +2401,7 @@ https://server.codeium.com/api/v1/UsageConfig
 
 ### Example Request - Set Credit Cap for Group
 
-```bash  theme={null}
+```bash theme={null}
 curl -X POST --header "Content-Type: application/json" \
 --data '{
   "service_key": "your_service_key_here",
@@ -2210,7 +2413,7 @@ https://server.codeium.com/api/v1/UsageConfig
 
 ### Example Request - Set Credit Cap for User
 
-```bash  theme={null}
+```bash theme={null}
 curl -X POST --header "Content-Type: application/json" \
 --data '{
   "service_key": "your_service_key_here",
@@ -2222,7 +2425,7 @@ https://server.codeium.com/api/v1/UsageConfig
 
 ### Example Request - Clear Credit Cap
 
-```bash  theme={null}
+```bash theme={null}
 curl -X POST --header "Content-Type: application/json" \
 --data '{
   "service_key": "your_service_key_here",
@@ -2253,7 +2456,7 @@ Common error scenarios:
 Source: https://docs.windsurf.com/plugins/accounts/api-reference/user-page-analytics
 
 POST https://server.codeium.com/api/v1/UserPageAnalytics
-Retrieve user activity data from the teams page
+Retrieve user activity statistics including names, emails, last activity times, and active days from the teams page.
 
 ## Overview
 
@@ -2261,25 +2464,25 @@ Get user activity statistics that appear on the teams page, including user names
 
 ## Request
 
-<ParamField body="service_key" type="string" required>
+<ParamField type="string">
   Your service key with "Teams Read-only" permissions
 </ParamField>
 
-<ParamField body="group_name" type="string">
+<ParamField type="string">
   Filter results to users in a specific group (optional)
 </ParamField>
 
-<ParamField body="start_timestamp" type="string">
+<ParamField type="string">
   Start time in RFC 3339 format (e.g., `2023-01-01T00:00:00Z`)
 </ParamField>
 
-<ParamField body="end_timestamp" type="string">
+<ParamField type="string">
   End time in RFC 3339 format (e.g., `2023-12-31T23:59:59Z`)
 </ParamField>
 
 ### Example Request
 
-```bash  theme={null}
+```bash theme={null}
 curl -X POST --header "Content-Type: application/json" \
 --data '{
   "service_key": "your_service_key_here",
@@ -2331,12 +2534,16 @@ https://server.codeium.com/api/v1/UserPageAnalytics
     <ResponseField name="lastCommandUsageTime" type="string">
       The most recent timestamp the command modality was used in RFC 3339 format
     </ResponseField>
+
+    <ResponseField name="teamStatus" type="string">
+      The user's team membership status. Possible values: `USER_TEAM_STATUS_UNSPECIFIED`, `USER_TEAM_STATUS_PENDING`, `USER_TEAM_STATUS_APPROVED`, `USER_TEAM_STATUS_REJECTED`. Note that the API returns all users regardless of team status, while the Manage Members UI only shows approved users.
+    </ResponseField>
   </Expandable>
 </ResponseField>
 
 ### Example Response
 
-```json  theme={null}
+```json theme={null}
 {
   "userTableStats": [
     {
@@ -2344,21 +2551,24 @@ https://server.codeium.com/api/v1/UserPageAnalytics
       "email": "alice@windsurf.com",
       "lastUpdateTime": "2024-10-10T22:56:10.771591Z",
       "apiKey": "aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa",
-      "activeDays": 178
+      "activeDays": 178,
+      "teamStatus": "USER_TEAM_STATUS_APPROVED"
     },
     {
       "name": "Bob",
       "email": "bob@windsurf.com",
       "lastUpdateTime": "2024-10-10T18:11:23.980237Z",
       "apiKey": "bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb",
-      "activeDays": 462
+      "activeDays": 462,
+      "teamStatus": "USER_TEAM_STATUS_APPROVED"
     },
     {
       "name": "Charlie",
       "email": "charlie@windsurf.com",
       "lastUpdateTime": "2024-10-10T16:43:46.117870Z",
       "apiKey": "cccccccc-cccc-cccc-cccc-cccccccccccc",
-      "activeDays": 237
+      "activeDays": 237,
+      "teamStatus": "USER_TEAM_STATUS_PENDING"
     }
   ]
 }
@@ -2381,7 +2591,7 @@ Common error scenarios:
 # Role Based Access & Management
 Source: https://docs.windsurf.com/plugins/accounts/rbac-role-management
 
-Configure and manage role-based access controls, permissions, and user management for your Windsurf team
+Configure RBAC permissions, create custom roles, and manage user access for Windsurf Teams and Enterprise plans.
 
 Windsurf's Role-Based Access Control system provides granular, role-based access to enterprise resources, enabling administrators to assign permissions and roles dynamically for secure and efficient access management.
 
@@ -2404,7 +2614,7 @@ The role-based access system integrates seamlessly with Windsurf's existing auth
 
 Roles can be created and managed in the Windsurf admin console via the Settings tab. For Windsurf's SaaS offering, access the Settings tab at:
 
-<Card title="Team Settings" horizontal={true} icon="gear" href="https://windsurf.com/team/settings">
+<Card title="Team Settings" icon="gear" href="https://windsurf.com/team/settings">
   Manage roles, permissions, and team settings from the admin console.
 </Card>
 
@@ -2582,7 +2792,7 @@ These sorting options make it easier to find specific users and understand team 
 # Setting up SSO & SCIM
 Source: https://docs.windsurf.com/plugins/accounts/sso-scim
 
-
+Configure Single Sign-On (SSO) and SCIM provisioning for your organization using Google Workspace, Microsoft Azure AD, Okta, or other SAML identity providers.
 
 This feature is only available to Teams and Enterprise users.
 
@@ -2597,13 +2807,13 @@ This feature is only available to Teams and Enterprise users.
     On the google admin console (admin.google.com) click **Apps -> Web and mobile apps** on the left.
 
     <Frame>
-      <img src="https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/sso-google.png?fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=9d300c86c609da6ee3fb630e91f4de3e" data-og-width="530" width="530" data-og-height="788" height="788" data-path="assets/auth/sso-google.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/sso-google.png?w=280&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=9403af117b9c97981fe559adb9b978fc 280w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/sso-google.png?w=560&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=058d140139f82caca5fee61a7d1f68cf 560w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/sso-google.png?w=840&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=b94d0aaf6b28f8646827af8918d07df8 840w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/sso-google.png?w=1100&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=f3898fed99df69da663658fd214d8676 1100w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/sso-google.png?w=1650&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=7a78f68f99b617431f0df9f765a8bec0 1650w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/sso-google.png?w=2500&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=19da5d516023353f4cc46dba47ce5b25 2500w" />
+      <img />
     </Frame>
 
     Click on **Add app**, and then **Add custom SAML app**.
 
     <Frame>
-      <img src="https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/sso-google2.png?fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=44375b535f269f130aea8c5bd6e736be" data-og-width="514" width="514" data-og-height="534" height="534" data-path="assets/auth/sso-google2.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/sso-google2.png?w=280&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=15b8ea405f2270379d74bfc0f4f2d59b 280w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/sso-google2.png?w=560&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=4a7a6ea30e5b1656dd8e92612494d632 560w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/sso-google2.png?w=840&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=db37dd58c7c32527476d114151bb7b66 840w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/sso-google2.png?w=1100&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=baa8aaa599b97b9c59f45eb0796febb4 1100w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/sso-google2.png?w=1650&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=5c1ae0fe3ac82b2965a2eea3601af438 1650w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/sso-google2.png?w=2500&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=f67c6c78e1ff1bd171532584e4aa7c2f 2500w" />
+      <img />
     </Frame>
 
     Fill out **App name** with `Windsurf`, and click **Next**.
@@ -2632,13 +2842,13 @@ This feature is only available to Teams and Enterprise users.
     * Click **Finish**
 
     <Frame>
-      <img src="https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/sso-google3.png?fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=c29f0ebf5a05dd5fae3a1127c4111d29" data-og-width="2078" width="2078" data-og-height="862" height="862" data-path="assets/auth/sso-google3.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/sso-google3.png?w=280&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=585b8d21d5b284ee28d9bd911c0d4295 280w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/sso-google3.png?w=560&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=1a0dd06112db14e2acabe0750583dd71 560w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/sso-google3.png?w=840&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=c82b1e1f6cf07b54049170ee5ac36eda 840w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/sso-google3.png?w=1100&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=fdac0e1950fd2e618710c99cee1c7656 1100w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/sso-google3.png?w=1650&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=45f58fd68db2619d5e87b3995c7103bf 1650w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/sso-google3.png?w=2500&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=d6ae5462ed098ae48de0aa6b5801cacf 2500w" />
+      <img />
     </Frame>
 
     On Codeium’s settings page, click **Enable Login with SAML**, and then click **Save**. Make sure to click on **Test Login** to make sure login works as expected. All users now will have SSO login enforced.
   </Tab>
 
-  <Tab title="Azure AD SSO">
+  <Tab title="Microsoft Entra ID">
     Windsurf Enterprise now supports sign in with Single Sign-On (SSO) via SAML. If your organization uses Microsoft Entra ID (formerly Azure AD), you will be able to use SSO with Windsurf.
 
     <Note>Windsurf only supports SP-initiated SSO; IDP-initiated SSO is NOT currently supported.</Note>
@@ -2650,19 +2860,19 @@ This feature is only available to Teams and Enterprise users.
     1. In Microsoft Entra ID, click on **Add**, and then **Enterprise Application**.
 
     <Frame>
-      <img src="https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/sso-azure.png?fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=70c1ef27e1870d1f95176d12cd7c9c47" data-og-width="854" width="854" data-og-height="384" height="384" data-path="assets/auth/sso-azure.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/sso-azure.png?w=280&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=1b88d7269fba84433a203348fd8a3920 280w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/sso-azure.png?w=560&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=2f71d980824f058c3a36d499f4f488d6 560w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/sso-azure.png?w=840&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=9bef7d83fd3afa0d42b25b81ab20d8e3 840w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/sso-azure.png?w=1100&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=b9c7eb219d3ff471f38175b0be2cdac8 1100w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/sso-azure.png?w=1650&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=6802d42ea85adeb86d22f32e59ef8a5f 1650w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/sso-azure.png?w=2500&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=0eac589296d06ffcf16e6d2bdc771d0c 2500w" />
+      <img />
     </Frame>
 
     2. Click on **Create your own application**.
 
     <Frame>
-      <img src="https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/sso-azure2.png?fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=d8d3d2b159172edef9033487d1167b52" data-og-width="680" width="680" data-og-height="202" height="202" data-path="assets/auth/sso-azure2.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/sso-azure2.png?w=280&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=66949d79e560dcf2c75bcafdcfb1b54a 280w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/sso-azure2.png?w=560&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=6ad3c318b6e47fa95b3e8677d01846ce 560w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/sso-azure2.png?w=840&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=febe960a9ff782cebaf247868fd22bee 840w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/sso-azure2.png?w=1100&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=f1c804a5b3dd2310840c95327f46241c 1100w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/sso-azure2.png?w=1650&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=7c4186eb8abb76e222579aae95f5b000 1650w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/sso-azure2.png?w=2500&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=1274eed53f279fbe64b0d52294708672 2500w" />
+      <img />
     </Frame>
 
     3. Name your application **Windsurf**, select *Integrate any other application you don't find in the gallery*, and then click **Create**.
 
     <Frame>
-      <img src="https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/sso-azure3.png?fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=38dd3186171705ca16387dfff4a5b24b" data-og-width="968" width="968" data-og-height="342" height="342" data-path="assets/auth/sso-azure3.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/sso-azure3.png?w=280&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=6c9dc6a0601145171999431fb61e0c4d 280w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/sso-azure3.png?w=560&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=87b686e30cea98fa1075ceffc0fa40f1 560w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/sso-azure3.png?w=840&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=b03c9c18b557b0f3d113d86fa8c30577 840w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/sso-azure3.png?w=1100&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=43bd3dc28697ed33fe0342dd456d2d3d 1100w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/sso-azure3.png?w=1650&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=20d19e9d664e7c835253b775229a969f 1650w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/sso-azure3.png?w=2500&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=abebde3954de441e86f120269ac6b092 2500w" />
+      <img />
     </Frame>
 
     ## Part 2: Configure SAML and User Attributes in Microsoft Entra ID
@@ -2713,13 +2923,13 @@ This feature is only available to Teams and Enterprise users.
     Click on Applications on the left sidebar, and then Create App Integration
 
     <Frame>
-      <img src="https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/sso-okta1.png?fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=e3f879d2fa7faeba003aa04e2c5d3a4a" data-og-width="1248" width="1248" data-og-height="962" height="962" data-path="assets/auth/sso-okta1.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/sso-okta1.png?w=280&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=07c6dc86816c5d6cf956401bee450128 280w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/sso-okta1.png?w=560&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=2f2d86ae21cdef97580a0824ca01ffc8 560w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/sso-okta1.png?w=840&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=ec432c4e43c969491df691687b1c8719 840w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/sso-okta1.png?w=1100&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=4f42e54a6f8de42f3fa17349df08394e 1100w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/sso-okta1.png?w=1650&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=9f1cb10571d1c2ea02bf30638a762e9c 1650w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/sso-okta1.png?w=2500&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=5c76f872b9163ec64637213aa646ba30 2500w" />
+      <img />
     </Frame>
 
     Select SAML 2.0 as the sign-in method
 
     <Frame>
-      <img src="https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/sso-okta2.png?fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=df39e8a15a879d8f2798a4284087c567" data-og-width="1600" width="1600" data-og-height="1023" height="1023" data-path="assets/auth/sso-okta2.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/sso-okta2.png?w=280&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=26a63721d0018efa7b8a4800e6f408bb 280w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/sso-okta2.png?w=560&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=c052bfa279c58dc361223b5582a62c80 560w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/sso-okta2.png?w=840&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=00ed32012a519da9011059476f423aa6 840w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/sso-okta2.png?w=1100&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=eb3839e1a82fa9bc1467a456a38a993b 1100w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/sso-okta2.png?w=1650&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=c678d8128c2aa8d5b42eb1ff185d80a8 1650w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/sso-okta2.png?w=2500&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=9586e95f5e7e3cc3f167548bdcec2b48 2500w" />
+      <img />
     </Frame>
 
     Set the app name as Windsurf (or to any other name), and click Next
@@ -2734,7 +2944,7 @@ This feature is only available to Teams and Enterprise users.
     Configure the attribute statements as following, and then click **Next**.
 
     <Frame>
-      <img src="https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/sso-okta3.png?fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=0903972c21dd13147a1adfe8791f1679" data-og-width="1398" width="1398" data-og-height="602" height="602" data-path="assets/auth/sso-okta3.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/sso-okta3.png?w=280&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=f247cb5627519ba2052a1c66bcabac11 280w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/sso-okta3.png?w=560&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=8b0e97b79dbe969605c026e1d42918bf 560w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/sso-okta3.png?w=840&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=2c9e0db1830545f4605ec52128d0c13f 840w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/sso-okta3.png?w=1100&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=f21b1c853cd6e3fb6234eaba4936714a 1100w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/sso-okta3.png?w=1650&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=e207e6d97821d5b568bcb3175aaa877c 1650w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/sso-okta3.png?w=2500&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=5b9415f606224a480a8a21fd39d3c6b7 2500w" />
+      <img />
     </Frame>
 
     In the feedback section, select “This is an internal app that we have created”, and click **Finish**.
@@ -2751,7 +2961,7 @@ This feature is only available to Teams and Enterprise users.
     * Test the login with the Test Login button. You should see a success message:
 
     <Frame>
-      <img src="https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/sso-okta4.png?fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=574e091c869162bc41dc0aa36cd209fa" data-og-width="1046" width="1046" data-og-height="270" height="270" data-path="assets/auth/sso-okta4.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/sso-okta4.png?w=280&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=c0de67fc05d02d94917d0eb38a93bfc7 280w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/sso-okta4.png?w=560&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=8a4532d29bde6a981fcfa56b16d2089c 560w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/sso-okta4.png?w=840&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=b166bddfbf60fd9be17010aedbc5f300 840w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/sso-okta4.png?w=1100&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=4cc97e1ce5cbce8fe4b68f5736943608 1100w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/sso-okta4.png?w=1650&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=10278811dec7a4ace3e27dafafe4dfdf 1650w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/sso-okta4.png?w=2500&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=85583cef85521726dc3daa5307b6d733 2500w" />
+      <img />
     </Frame>
 
     At this point everything should have been configured, and can now add users to the new Windsurf Okta application.
@@ -2759,7 +2969,7 @@ This feature is only available to Teams and Enterprise users.
     You should share your organization's custom Login Portal URL with your users and ask them to sign in via that link.
 
     <Frame>
-      <img src="https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/sso-okta5.png?fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=f3ccced59b0cbc7d0f0b1b6b39f1ee1c" data-og-width="988" width="988" data-og-height="312" height="312" data-path="assets/auth/sso-okta5.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/sso-okta5.png?w=280&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=02f37508edd5db6db866fd78e4a7acb9 280w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/sso-okta5.png?w=560&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=c12ca954c3031664fbcd2ca960b5383b 560w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/sso-okta5.png?w=840&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=75b02544b99c1e0a578234b57a07ea34 840w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/sso-okta5.png?w=1100&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=cb11ec40d15a57198f780ae701029f44 1100w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/sso-okta5.png?w=1650&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=e51d3d2475655aef87f71b8b6105fb55 1650w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/sso-okta5.png?w=2500&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=46ba7597ae1b616f37354006d6c5f907 2500w" />
+      <img />
     </Frame>
 
     Users who login to Windsurf via SSO will be auto-approved into the team.
@@ -2775,7 +2985,7 @@ This feature is only available to Teams and Enterprise users.
     ### Login with SAML config failed: Firebase: Error (auth/operation-not-allowed)
 
     <Frame>
-      <img src="https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/sso-okta6.png?fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=f65534799dfd8f941a68dc9fc72236d4" data-og-width="617" width="617" data-og-height="92" height="92" data-path="assets/auth/sso-okta6.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/sso-okta6.png?w=280&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=4f6a8118ceb9a6511557fb3d5a89cfd8 280w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/sso-okta6.png?w=560&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=0cc4bcb6da5527e085f1e95e7565b2f6 560w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/sso-okta6.png?w=840&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=f1b542a1a5d5f18a6f07ce1fef0099f8 840w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/sso-okta6.png?w=1100&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=5b8cdc47c2f5c742e4bef33ba4eb459a 1100w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/sso-okta6.png?w=1650&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=087c32afb9c9f9850d596b218be3f923 1650w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/sso-okta6.png?w=2500&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=02c760fbfa8d931d9781b596ede9d08d 2500w" />
+      <img />
     </Frame>
 
     This points to your an invalid SSO ID, or your SSO URL being incorrect, make sure it is alphanumeric and has no extra spaces or invalid characters. Please go over the steps in the guide again and make sure you use the correct values.
@@ -2783,7 +2993,7 @@ This feature is only available to Teams and Enterprise users.
     ### Login with SAML config failed: Firebase: SAML Response \<Issuer> mismatch. (auth/invalid-credential)
 
     <Frame>
-      <img src="https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/sso-okta7.png?fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=446c8ad9510b7dcc8e744c7b80862c29" data-og-width="752" width="752" data-og-height="117" height="117" data-path="assets/auth/sso-okta7.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/sso-okta7.png?w=280&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=efd56e3400b53ceb05c2a6f3f16dca44 280w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/sso-okta7.png?w=560&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=f41a12504545c5f78998cb6f152564c9 560w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/sso-okta7.png?w=840&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=21967311e74ec09546b31c6f49dc2dd8 840w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/sso-okta7.png?w=1100&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=2d07267015603fb0e6d4ccd0ba3c1e81 1100w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/sso-okta7.png?w=1650&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=619c0eaf530646e7b6dd294d5cc2712a 1650w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/sso-okta7.png?w=2500&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=a6217bfd37b259f63112cf22c3bb098b 2500w" />
+      <img />
     </Frame>
 
     This points to your IdP entity ID being invalid, please make sure you copy it correctly from the Okta portal, without any extra characters or spaces before or after the string.
@@ -2813,7 +3023,7 @@ This feature is only available to Teams and Enterprise users.
     Go to Microsoft Entra ID on Azure, click on Enterprise applications on the left sidebar, and then click on the existing Windsurf application in the list.
 
     <Frame>
-      <img src="https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/scim-azure.png?fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=c2425d24cadc8997c694a4b8a950169a" data-og-width="1258" width="1258" data-og-height="664" height="664" data-path="assets/auth/scim-azure.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/scim-azure.png?w=280&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=d2a0a5702a29ce1264d133bb5d3545c1 280w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/scim-azure.png?w=560&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=f91fd83f53b34bab00d17c64358ac511 560w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/scim-azure.png?w=840&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=4fc4661fa56013064005d8d923a13547 840w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/scim-azure.png?w=1100&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=196d0489a6a5fdf4200ab92e7f5835d5 1100w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/scim-azure.png?w=1650&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=fb03af9c8d156c0f5c2331ab5289d588 1650w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/scim-azure.png?w=2500&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=58bcf8651ea7dc34d4f7e561b7c6ab34 2500w" />
+      <img />
     </Frame>
 
     ## Step 2: Setup SCIM provisioning
@@ -2821,7 +3031,7 @@ This feature is only available to Teams and Enterprise users.
     Click on Get started under Provision User Accounts in the middle (step 3), and then click on Get started again.
 
     <Frame>
-      <img src="https://mintcdn.com/codeium/s3SYO8XdSvmrABvq/assets/auth/scim-azure2.png?fit=max&auto=format&n=s3SYO8XdSvmrABvq&q=85&s=1e9c8417da7568dc587941955f6d0ace" data-og-width="2582" width="2582" data-og-height="1858" height="1858" data-path="assets/auth/scim-azure2.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/s3SYO8XdSvmrABvq/assets/auth/scim-azure2.png?w=280&fit=max&auto=format&n=s3SYO8XdSvmrABvq&q=85&s=ce2a379d150e9b6383eeb48e52c96a01 280w, https://mintcdn.com/codeium/s3SYO8XdSvmrABvq/assets/auth/scim-azure2.png?w=560&fit=max&auto=format&n=s3SYO8XdSvmrABvq&q=85&s=4f51c287262043282173de0e1efc538c 560w, https://mintcdn.com/codeium/s3SYO8XdSvmrABvq/assets/auth/scim-azure2.png?w=840&fit=max&auto=format&n=s3SYO8XdSvmrABvq&q=85&s=21c65050cb093e453197eecbd348d773 840w, https://mintcdn.com/codeium/s3SYO8XdSvmrABvq/assets/auth/scim-azure2.png?w=1100&fit=max&auto=format&n=s3SYO8XdSvmrABvq&q=85&s=074fcdd9f2ef2e03ad23580185dd48fe 1100w, https://mintcdn.com/codeium/s3SYO8XdSvmrABvq/assets/auth/scim-azure2.png?w=1650&fit=max&auto=format&n=s3SYO8XdSvmrABvq&q=85&s=324c2d04d90956f34ee3c9a8c11ef548 1650w, https://mintcdn.com/codeium/s3SYO8XdSvmrABvq/assets/auth/scim-azure2.png?w=2500&fit=max&auto=format&n=s3SYO8XdSvmrABvq&q=85&s=cd3257cf044253173943f57c3b89a5b6 2500w" />
+      <img />
     </Frame>
 
     Under the Provisioning setup page, select the following options.
@@ -2833,7 +3043,7 @@ This feature is only available to Teams and Enterprise users.
     Leave the Azure provisioning page open, now go to the Windsurf web portal, and click on the profile icon  in the NavBar on the top of the page. Under Team Settings, select Service Key and click on Add Service Key. Enter any key name (such as 'Azure Provisioning Key') and click Create Service Key. Copy the output key, go back to the Azure page, paste it to Secret Token.
 
     <Frame>
-      <img src="https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/scim-azure3.png?fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=80477c2c0d31631e38e217b22e9f42a3" data-og-width="1612" width="1612" data-og-height="1013" height="1013" data-path="assets/auth/scim-azure3.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/scim-azure3.png?w=280&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=c547369cd10d19d77dbdb3586045c027 280w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/scim-azure3.png?w=560&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=e375425a3fe55cc5425f53e78b34f32f 560w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/scim-azure3.png?w=840&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=f15b3e3d387acd4ac3371b882595252a 840w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/scim-azure3.png?w=1100&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=49e6c3e224944aef0dfa88b13b401a74 1100w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/scim-azure3.png?w=1650&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=7dd27466493288c1d49a4327070f9f6f 1650w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/scim-azure3.png?w=2500&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=4f40f4c6d50b15c421ba344a2013a8cc 2500w" />
+      <img />
     </Frame>
 
     (What you should see after creating the key on Windsurf)
@@ -2847,13 +3057,13 @@ This feature is only available to Teams and Enterprise users.
     After clicking on Save, a new option Mappings should have appeared in the Provisioning page. Expand Mappings, and click on Provision Microsoft Entra ID Users
 
     <Frame>
-      <img src="https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/scim-azure4.png?fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=276791b068bd34c2bcbe5321e95abfd6" data-og-width="666" width="666" data-og-height="438" height="438" data-path="assets/auth/scim-azure4.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/scim-azure4.png?w=280&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=6e36e1d72d4db00f49e114fdcc4a25be 280w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/scim-azure4.png?w=560&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=c11c14a5020abebd95bb43a970d88584 560w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/scim-azure4.png?w=840&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=190236b1aaadafb15d6b7b7bc320ade2 840w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/scim-azure4.png?w=1100&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=9d153d92aeb12bfaf4bd7868270d0e17 1100w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/scim-azure4.png?w=1650&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=00ff52c3a669e6dbb4f7346e0831fa23 1650w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/scim-azure4.png?w=2500&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=640997349e4672552c5f07b170e81d22 2500w" />
+      <img />
     </Frame>
 
     Under attribute Mappings, delete all fields under displayName, leaving only the fields userName, active, and displayName.
 
     <Frame>
-      <img src="https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/scim-azure5.png?fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=ddb9440614a4bc04f7c561bbf64a2d5a" data-og-width="1260" width="1260" data-og-height="190" height="190" data-path="assets/auth/scim-azure5.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/scim-azure5.png?w=280&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=394d02238802b10210ff30262a7e669e 280w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/scim-azure5.png?w=560&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=da13a8c0a933b23e30d66c8a25c7509b 560w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/scim-azure5.png?w=840&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=fef036d0c788f16fe95ebca4f360388d 840w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/scim-azure5.png?w=1100&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=b3a2f8ec1b2b3482ec86aa26e3dad431 1100w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/scim-azure5.png?w=1650&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=b4c4b2f43e28978d2c3acafee01a3ed0 1650w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/scim-azure5.png?w=2500&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=3bf1b1e6d6863d74fd5344f25ac07ecc 2500w" />
+      <img />
     </Frame>
 
     For active, now click on Edit. Under Expression, modify the field to
@@ -2867,7 +3077,7 @@ This feature is only available to Teams and Enterprise users.
     Your user attributes should look like
 
     <Frame>
-      <img src="https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/scim-azure6.png?fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=2beab12c979d3272d522293080634811" data-og-width="2826" width="2826" data-og-height="490" height="490" data-path="assets/auth/scim-azure6.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/scim-azure6.png?w=280&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=4a8ee3358e95d0cd9d50bd0d538564a7 280w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/scim-azure6.png?w=560&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=a80cc215059b3780ca14c6ba370a6586 560w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/scim-azure6.png?w=840&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=60057214f7d952812b598371e6c978d3 840w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/scim-azure6.png?w=1100&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=e9bcab8fd1017d0892bea2a169ac02e9 1100w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/scim-azure6.png?w=1650&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=786f7e9bf633dcbd60d8059a61caf106 1650w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/scim-azure6.png?w=2500&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=d4e9a7b532a2f85244bcaa90572ba06a 2500w" />
+      <img />
     </Frame>
 
     In the Attribute Mapping page, click on Save on top, and navigate back to the Provisioning page.
@@ -2875,13 +3085,13 @@ This feature is only available to Teams and Enterprise users.
     Now click on the same page, under Mappings click on Provision Microsoft Entra ID Groups. Now only click delete for externalId, and click Save on top. Navigate back to the Provisioning page.
 
     <Frame>
-      <img src="https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/scim-azure7.png?fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=11e89ce7d057c455ea00e0f469351b61" data-og-width="1258" width="1258" data-og-height="203" height="203" data-path="assets/auth/scim-azure7.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/scim-azure7.png?w=280&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=cd56976ca792e265e725662085b17a19 280w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/scim-azure7.png?w=560&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=bd115677b029f5e93699ab0a03768382 560w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/scim-azure7.png?w=840&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=d4bded4bf9d8689909e28c61ad510ce0 840w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/scim-azure7.png?w=1100&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=d57065b32eff89171254875a8df64498 1100w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/scim-azure7.png?w=1650&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=b6360f57f064b8ef7a10b63de8cfc7ef 1650w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/scim-azure7.png?w=2500&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=51e4b607b0652154956ce119600415ba 2500w" />
+      <img />
     </Frame>
 
     On the Provisioning page at the bottom, there should also be a Provisioning Status toggle. Set that to On to enable SCIM syncing. Now every 40 minutes your users and groups for the Entra ID application will be synced to Windsurf.
 
     <Frame>
-      <img src="https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/scim-azure8.png?fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=1214073ce82bd85a1c2a57834005608f" data-og-width="686" width="686" data-og-height="306" height="306" data-path="assets/auth/scim-azure8.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/scim-azure8.png?w=280&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=53139148e9394f611f436dc2128bcc33 280w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/scim-azure8.png?w=560&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=a227c181354a371f3ae4aa13673a5c89 560w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/scim-azure8.png?w=840&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=b9f85d836d1f06eb19a365d2f0cd9106 840w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/scim-azure8.png?w=1100&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=6dd2cc814ee02f9bd402348e8c202d38 1100w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/scim-azure8.png?w=1650&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=35af8b5f5183e3d4bfda09ec4d7b092b 1650w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/scim-azure8.png?w=2500&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=d69d23c955420b31547dabb0b0950863 2500w" />
+      <img />
     </Frame>
 
     Click on Save to finish, you have now enabled user and group syncing for SCIM. Only users and groups assigned to the application will be synced to Windsurf. Note that removing users only disables them access to Windsurf (and stops them from taking up a seat) rather than deleting users due to Azure's SCIM design.
@@ -3069,13 +3279,13 @@ This feature is only available to Teams and Enterprise users.
     1. Navigate to Applications, and add a Generic SAML service provider
 
     <Frame>
-      <img src="https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/duo-sso-1.png?fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=7e598d7e9a9ee2c3884caa1c60ba68ff" data-og-width="2230" width="2230" data-og-height="920" height="920" data-path="assets/auth/duo-sso-1.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/duo-sso-1.png?w=280&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=3aec1b67ffcd908e98ff8fdc8efb9f13 280w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/duo-sso-1.png?w=560&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=6fae9b15acbd20d00ba1342e29c03566 560w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/duo-sso-1.png?w=840&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=2a92b9bd222d601f17445724a5740c4d 840w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/duo-sso-1.png?w=1100&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=07e9adea00e0cab9016ad608222894f5 1100w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/duo-sso-1.png?w=1650&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=78b9eeb4b38c111b8a305442ecf22038 1650w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/duo-sso-1.png?w=2500&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=f3fae806d80ac44e2feb9be6d623c311 2500w" />
+      <img />
     </Frame>
 
     2. Navigate to SSO in Team Settings
 
     <Frame>
-      <img src="https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/windsurf-sso-team-settings.png?fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=df8dde8b5b66a27532a3f42cdd803a17" data-og-width="1676" width="1676" data-og-height="1444" height="1444" data-path="assets/auth/windsurf-sso-team-settings.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/windsurf-sso-team-settings.png?w=280&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=24e65a0584ca92c5092e7a8b39d29a85 280w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/windsurf-sso-team-settings.png?w=560&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=a1aaf95ae69ecadbb071f972cf209d9a 560w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/windsurf-sso-team-settings.png?w=840&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=8e0faad235bc863532c0cf5e8260d51f 840w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/windsurf-sso-team-settings.png?w=1100&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=c1d83d71116443257b524c595132a21d 1100w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/windsurf-sso-team-settings.png?w=1650&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=ad30f5f9af3dde7f95666544e8a483ef 1650w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/windsurf-sso-team-settings.png?w=2500&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=fcf587e6ef653eff95139a4d550e3e08 2500w" />
+      <img />
     </Frame>
 
     3. When enabling SAML for the first time, you will be required to set up your SSO ID. **You will not be able to change it later.**
@@ -3089,7 +3299,7 @@ This feature is only available to Teams and Enterprise users.
     6. Copy the certificate value from the Duo portal and paste it in the `X509 Certificate` field in the Windsurf portal
 
     <Frame>
-      <img src="https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/duo-sso-3.png?fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=a7594c846a32e958a1bacfc01c5d3ef3" data-og-width="1536" width="1536" data-og-height="290" height="290" data-path="assets/auth/duo-sso-3.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/duo-sso-3.png?w=280&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=953a07d45101a639db53f6d22667c2a0 280w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/duo-sso-3.png?w=560&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=1fbc8e990bebcbad0cd70f9bce288a8b 560w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/duo-sso-3.png?w=840&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=769ba894b06157867cba16e6c7c9858b 840w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/duo-sso-3.png?w=1100&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=0e65532cda4e2039dfe07c02fd55aa52 1100w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/duo-sso-3.png?w=1650&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=9095538c85e97051654d911b3bb10e91 1650w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/duo-sso-3.png?w=2500&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=f907b2efbe7eaabdaa8aa8c6fb350d86 2500w" />
+      <img />
     </Frame>
 
     7. Copy the `SP Identity ID` value from the Windsurf portal and paste it into the `Entity ID` field in the Duo portal.
@@ -3099,7 +3309,7 @@ This feature is only available to Teams and Enterprise users.
     9. In the Duo portal, configure the attribute statements as following:
 
     <Frame>
-      <img src="https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/duo-sso-4.png?fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=bb3b514b94a6b0ebba19aa492c8be4a2" data-og-width="1676" width="1676" data-og-height="290" height="290" data-path="assets/auth/duo-sso-4.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/duo-sso-4.png?w=280&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=a3de0ba0a3a188f34f178c200209cc17 280w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/duo-sso-4.png?w=560&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=88374d6e4f03ce1e45cb3094fe3e98e8 560w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/duo-sso-4.png?w=840&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=d94638ec8d0a22bfa7ec00eb6514ec58 840w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/duo-sso-4.png?w=1100&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=f1c7e2ae138409c19a56dd12287fdaec 1100w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/duo-sso-4.png?w=1650&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=7cfe010d8214ae7e7b655b5b6efba472 1650w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/duo-sso-4.png?w=2500&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=769ae9ad721e322e67f6d84bf139a33d 2500w" />
+      <img />
     </Frame>
 
     10. Enable the SAML login in the Windsurf portal so you can test it.
@@ -3127,13 +3337,13 @@ This feature is only available to Teams and Enterprise users.
     1. Navigate to Applications and add Windsurf as a SAML Application
 
     <Frame>
-      <img src="https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/pingid-1.png?fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=f86f6145e0eac599178ca9d9ee66b776" data-og-width="2258" width="2258" data-og-height="1068" height="1068" data-path="assets/auth/pingid-1.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/pingid-1.png?w=280&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=0ad46a1b2741392e7b9317cb469e55ea 280w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/pingid-1.png?w=560&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=894534973d6592c29d157db78a542b26 560w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/pingid-1.png?w=840&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=cea5d47e23bcff6ef6811358f893533f 840w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/pingid-1.png?w=1100&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=1e2f9e94729c777800b7b9e4dfe32082 1100w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/pingid-1.png?w=1650&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=6b7ab758d275aa2b2e63a9c4e01bea62 1650w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/pingid-1.png?w=2500&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=dfb01b08c5fdd2ebe1d9e80e5052426b 2500w" />
+      <img />
     </Frame>
 
     2. Navigate to SSO in Team Settings
 
     <Frame>
-      <img src="https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/windsurf-sso-team-settings.png?fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=df8dde8b5b66a27532a3f42cdd803a17" data-og-width="1676" width="1676" data-og-height="1444" height="1444" data-path="assets/auth/windsurf-sso-team-settings.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/windsurf-sso-team-settings.png?w=280&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=24e65a0584ca92c5092e7a8b39d29a85 280w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/windsurf-sso-team-settings.png?w=560&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=a1aaf95ae69ecadbb071f972cf209d9a 560w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/windsurf-sso-team-settings.png?w=840&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=8e0faad235bc863532c0cf5e8260d51f 840w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/windsurf-sso-team-settings.png?w=1100&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=c1d83d71116443257b524c595132a21d 1100w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/windsurf-sso-team-settings.png?w=1650&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=ad30f5f9af3dde7f95666544e8a483ef 1650w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/windsurf-sso-team-settings.png?w=2500&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=fcf587e6ef653eff95139a4d550e3e08 2500w" />
+      <img />
     </Frame>
 
     3. When enabling SAML for the first time, you will be required to set up your SSO ID. **You will not be able to change it later.**
@@ -3146,7 +3356,7 @@ This feature is only available to Teams and Enterprise users.
     * Entity ID - this is the `SP Entity ID` from the Windsurf portal.
 
     <Frame>
-      <img src="https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/pingid-3.png?fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=e33dc0b9d021309da0fcdb2ac4f08bbb" data-og-width="974" width="974" data-og-height="672" height="672" data-path="assets/auth/pingid-3.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/pingid-3.png?w=280&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=085f011d0ddf369d9b05502ccbfbb5dc 280w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/pingid-3.png?w=560&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=160eebad525ebc56527d0c9e9945492a 560w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/pingid-3.png?w=840&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=fccab270df675b3608a5e72afdcda1bc 840w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/pingid-3.png?w=1100&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=dcab45be60955341f5e47e1746fd36f4 1100w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/pingid-3.png?w=1650&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=6819f76a0f703860f8f53fc486bf696d 1650w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/pingid-3.png?w=2500&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=4d1dde99a6c5a62b6c1798f1c694e220 2500w" />
+      <img />
     </Frame>
 
     5. Copy the `Issuer ID` from PingID to the `IdP Entity ID` value in the Windsurf portal.
@@ -3164,7 +3374,7 @@ This feature is only available to Teams and Enterprise users.
     * `lastName` - Family Name
 
     <Frame>
-      <img src="https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/pingid-4.png?fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=4ff17f07bfb897072fb68e212ee2ac12" data-og-width="1398" width="1398" data-og-height="780" height="780" data-path="assets/auth/pingid-4.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/pingid-4.png?w=280&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=7af2eb21b83c86fa66ab0a93b744a81a 280w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/pingid-4.png?w=560&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=c817c9e4a5abbe3827baf40050108679 560w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/pingid-4.png?w=840&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=1f4f584e1f6586dadb0632457eb840f1 840w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/pingid-4.png?w=1100&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=062bae9cd58477962da4f51fb5590bc4 1100w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/pingid-4.png?w=1650&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=efa1fb0cc4d775c8695521195d31949e 1650w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/pingid-4.png?w=2500&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=4fe0ba0d6cd6b3eb6796557696e9a08d 2500w" />
+      <img />
     </Frame>
 
     9. Add/edit any other policies and access as required by your setup/organization
@@ -3187,7 +3397,7 @@ This feature is only available to Teams and Enterprise users.
 # Getting started with Teams and Enterprise
 Source: https://docs.windsurf.com/plugins/accounts/teams-getting-started
 
-
+Set up Teams and Enterprise plans with team management, SSO, analytics, user groups, and priority support for your organization.
 
 Windsurf scales from solo projects to large-scale enterprise codebases. Our Teams and Enterprise plans unlock collaboration features such as team management, Single Sign-On (SSO), advanced analytics, and priority support.
 
@@ -3204,12 +3414,12 @@ Windsurf scales from solo projects to large-scale enterprise codebases. Our Team
     Enter the number of users you want to include in the subscription.
 
     <Frame>
-      <img width="500" src="https://mintcdn.com/codeium/vRt4FQOyBeZpD2Pu/assets/teams/teams-select-user-count.jpg?fit=max&auto=format&n=vRt4FQOyBeZpD2Pu&q=85&s=582deab2967a8eb9ff268bebf25f321f" data-og-width="1024" data-og-height="468" data-path="assets/teams/teams-select-user-count.jpg" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/vRt4FQOyBeZpD2Pu/assets/teams/teams-select-user-count.jpg?w=280&fit=max&auto=format&n=vRt4FQOyBeZpD2Pu&q=85&s=8810085f0de14ff2d4d61b29b028b1a5 280w, https://mintcdn.com/codeium/vRt4FQOyBeZpD2Pu/assets/teams/teams-select-user-count.jpg?w=560&fit=max&auto=format&n=vRt4FQOyBeZpD2Pu&q=85&s=07fa89646e4670e6520a37355e175116 560w, https://mintcdn.com/codeium/vRt4FQOyBeZpD2Pu/assets/teams/teams-select-user-count.jpg?w=840&fit=max&auto=format&n=vRt4FQOyBeZpD2Pu&q=85&s=5b712acd037787cf263eeaea34debbfb 840w, https://mintcdn.com/codeium/vRt4FQOyBeZpD2Pu/assets/teams/teams-select-user-count.jpg?w=1100&fit=max&auto=format&n=vRt4FQOyBeZpD2Pu&q=85&s=bccc7371d19f089c749937e66fe43c88 1100w, https://mintcdn.com/codeium/vRt4FQOyBeZpD2Pu/assets/teams/teams-select-user-count.jpg?w=1650&fit=max&auto=format&n=vRt4FQOyBeZpD2Pu&q=85&s=a73c51f360563a55333d6433288d6308 1650w, https://mintcdn.com/codeium/vRt4FQOyBeZpD2Pu/assets/teams/teams-select-user-count.jpg?w=2500&fit=max&auto=format&n=vRt4FQOyBeZpD2Pu&q=85&s=7a235b1dd1a339be26ba718203367a5f 2500w" />
+      <img />
     </Frame>
   </Step>
 
   <Step title="Manage and invite team members">
-    <Card title="Manage Team Members" horizontal={true} icon="users" href="https://windsurf.com/team/manage">
+    <Card title="Manage Team Members" icon="users" href="https://windsurf.com/team/manage">
       Windsurf makes managing your team easy from one dashboard.
     </Card>
 
@@ -3219,7 +3429,7 @@ Windsurf scales from solo projects to large-scale enterprise codebases. Our Team
   </Step>
 
   <Step title="Configure team settings">
-    <Card title="Team Settings" horizontal={true} icon="gear" href="https://windsurf.com/team/settings">
+    <Card title="Team Settings" icon="gear" href="https://windsurf.com/team/settings">
       Configurable settings for your team.
     </Card>
 
@@ -3227,7 +3437,7 @@ Windsurf scales from solo projects to large-scale enterprise codebases. Our Team
   </Step>
 
   <Step title="(Optional) Set up Authentication">
-    <Card title="Authentication" horizontal={true} icon="lock" href="/windsurf/accounts/sso-scim">
+    <Card title="Authentication" icon="lock" href="/windsurf/accounts/sso-scim">
       Set up SSO, SCIM, Duo, or PingID for your team.
     </Card>
   </Step>
@@ -3242,7 +3452,7 @@ To add or remove members from your team, navigate to the [Manage team page](http
 From here, you can invite and view your team, add SSO, update the number of seats in your team, or even cancel or switch your plan.
 
 <Frame>
-  <img width="500" src="https://mintcdn.com/codeium/vRt4FQOyBeZpD2Pu/assets/teams-invite-members.png?fit=max&auto=format&n=vRt4FQOyBeZpD2Pu&q=85&s=67056692b986683fe512d58477eded53" data-og-width="828" data-og-height="444" data-path="assets/teams-invite-members.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/vRt4FQOyBeZpD2Pu/assets/teams-invite-members.png?w=280&fit=max&auto=format&n=vRt4FQOyBeZpD2Pu&q=85&s=9586555c34d61a52476dcabf97e019d5 280w, https://mintcdn.com/codeium/vRt4FQOyBeZpD2Pu/assets/teams-invite-members.png?w=560&fit=max&auto=format&n=vRt4FQOyBeZpD2Pu&q=85&s=0469c4b432630970246fece359fa803e 560w, https://mintcdn.com/codeium/vRt4FQOyBeZpD2Pu/assets/teams-invite-members.png?w=840&fit=max&auto=format&n=vRt4FQOyBeZpD2Pu&q=85&s=ef7bf04637dfb5575caf5b4b3577fb98 840w, https://mintcdn.com/codeium/vRt4FQOyBeZpD2Pu/assets/teams-invite-members.png?w=1100&fit=max&auto=format&n=vRt4FQOyBeZpD2Pu&q=85&s=c6eb3a93aaf1a46e3d7fd2f36df9ec09 1100w, https://mintcdn.com/codeium/vRt4FQOyBeZpD2Pu/assets/teams-invite-members.png?w=1650&fit=max&auto=format&n=vRt4FQOyBeZpD2Pu&q=85&s=6c2a93b6ca7c117f7ef5ea0a9a7202e8 1650w, https://mintcdn.com/codeium/vRt4FQOyBeZpD2Pu/assets/teams-invite-members.png?w=2500&fit=max&auto=format&n=vRt4FQOyBeZpD2Pu&q=85&s=22edfa0c57bac40ede579e2378c1f924 2500w" />
+  <img />
 </Frame>
 
 ## User Groups
@@ -3259,7 +3469,7 @@ Already subscribed on Pro and want to upgrade? Head to your [Plan Management](ht
 # Plans and Credit Usage
 Source: https://docs.windsurf.com/plugins/accounts/usage
 
-
+Understand Windsurf pricing plans, prompt credits, usage tracking, automatic refills, and how to upgrade from Free to Pro, Teams, or Enterprise.
 
 Prompt credits are consumed whenever a message is sent to Cascade with a premium model. Every model has it's own credit multiplier with the default message costing 1 credit. You can view all available models and their associated costs on the [models page.](/windsurf/models)
 
@@ -3316,7 +3526,7 @@ There are a few ways to view your usage.
 Go to the Cascade usage directly by clicking on the overflow menu, and then selecting "Cascade Usage".
 
 <Frame>
-  <img style={{ maxHeight: "300px" }} src="https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/plan-info/usage-entry-cascade.png?fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=a74510115a9f8fff9c8c9a37c56aeab1" data-og-width="1048" width="1048" data-og-height="606" height="606" data-path="assets/windsurf/plan-info/usage-entry-cascade.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/plan-info/usage-entry-cascade.png?w=280&fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=1b0c503ceb58d0ebca583ff38dd822f0 280w, https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/plan-info/usage-entry-cascade.png?w=560&fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=335558709e71bcde9308ba107d3dd8d2 560w, https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/plan-info/usage-entry-cascade.png?w=840&fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=5c607ad2afe0fd32e6d7a9f7c168dccf 840w, https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/plan-info/usage-entry-cascade.png?w=1100&fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=608ee0c427fb4501b4ab048e4f462f80 1100w, https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/plan-info/usage-entry-cascade.png?w=1650&fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=44795d58415164704bef38d460dc8840 1650w, https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/plan-info/usage-entry-cascade.png?w=2500&fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=207be7ea24bd8eca66d6058daf06b889 2500w" />
+  <img />
 </Frame>
 
 View the settings panel by clicking on "Windsurf Settings" on the status bar, followed by selecting the "Plan Info" tab.
@@ -3348,6 +3558,22 @@ Automatic Credit Refills are purchased in configurable increments (multiples of 
 If you run out of prompt credits, you can purchase additional credits in the [billing website](https://codeium.com/plan). Additional prompt credits can be purchased at a rate of \$10 for 250 credits for Pro users.
 
 For Team and Enterprise plans, additional credits are purchased within and treated as a pool amongst all members of the team at a rate of \$40 for 1000 pooled credits. Please contact your Teams admin to purchase more credits if you're on a team plan.
+
+## Add-on Credit Transfers
+
+If you upgrade your personal Pro plan to a Teams plan, any unused add-on prompt credits on your Pro account are moved over to your new team (and become part of the team's pooled add-on credits). If you're invited to a different team instead, your add-on credits do not automatically move with your user—you'll need to use them before switching, or submit a Support ticket to have them transferred.
+
+## Seat-Based Credit Allocation (Teams & Enterprise)
+
+On Teams and Enterprise plans, prompt credits are allocated on a per-seat basis. Each seat in your plan receives a fixed number of credits at the start of each billing cycle (500 for Teams, 1000 for Enterprise). These credits are tied to the seat itself, not the specific user occupying it.
+
+If a team member leaves mid-billing cycle and a new member joins to fill that seat, the new member inherits the seat's existing credit usage. For example, if your plan has 50 seats and all are in use, and one member departs after using 300 of their 500 credits, the person who takes that seat will start with only 200 credits remaining for the rest of the billing period. This is because the seat's credits were partially consumed before the new member arrived.
+
+When this happens, you may see a notice on your usage page indicating that you joined a seat that was previously used during the current billing period. This is expected behavior and does not indicate any error with your account. Your credits will fully reset to the plan's standard allocation at the start of the next billing cycle.
+
+<Tip>
+  If you are an admin managing a team where members frequently rotate, keep in mind that adding new members to recently vacated seats may result in those members starting with fewer credits for the remainder of the billing period. All seats reset to their full credit allocation at the beginning of each new billing cycle.
+</Tip>
 
 ## Usage examples
 
@@ -3420,7 +3646,7 @@ Additional prompt credits can be purchased at a rate of \$40 for 1000 pooled cre
 
 Coming soon, Enterprise will be self-serviceable with month-to-month pricing. The Enterprise plan includes self-serve SSO integration and enhanced security features.
 
-For enterprise support, account management, and more involved deployments such as Hybrid or FedRAMP under an annual commitment, contact our enterprise team at [trust.windsurf.com](https://trust.windsurf.com) for any standard security collateral.
+For enterprise support, account management, and more involved deployments such as Custom Deployment Options or FedRAMP under an annual commitment, [contact our sales team](https://windsurf.com/contact/enterprise). For standard security collateral, visit [trust.windsurf.com](https://trust.windsurf.com).
 
 ### Using a Free plan
 
@@ -3455,10 +3681,10 @@ If you change your mind and decide not to cancel before the end of the usage mon
 For Teams or Enterprise plans, only the admin can cancel the plan, delete the team and remove users.
 
 
-# Overview
+# Cascade Overview
 Source: https://docs.windsurf.com/plugins/cascade/cascade-overview
 
-
+Cascade brings agentic AI coding to JetBrains with Write/Chat modes, voice input, tool access, turbo mode, and real-time collaboration.
 
 Windsurf's Cascade brings the best of agentic coding to the JetBrains suite.
 
@@ -3468,7 +3694,7 @@ To open Cascade, press `Cmd/Ctrl+L` or click the Cascade icon.
 
 Select your desired model from the selection menu below the Cascade conversation input box. Click below too see the full breakdown of the available models and their availability across different plans and pricing.
 
-<Card title="Models" icon="robot" href="/windsurf/models" horizontal={true}>
+<Card title="Models" icon="robot" href="/windsurf/models">
   Model availability in Windsurf.
 </Card>
 
@@ -3478,7 +3704,7 @@ Cascade comes in two modes: **Write** and **Chat**.
 
 Write mode allows Cascade to create and make modifications to your codebase, while Chat mode is optimized for questions around your codebase or general coding principles.
 
-<video autoPlay muted loop playsInline className="w-full aspect-video" src="https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains-cascade-modes.mp4?fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=dab1edae206eabdc1a675462866b1ad6" data-path="assets/jetbrains-cascade-modes.mp4" />
+<video />
 
 # Queued Messages
 
@@ -3491,7 +3717,7 @@ To add a message to the queue, simply type in your message while Cascade is work
 
 # Access to Tools
 
-Cascade has a variety of tools at its disposal, such as Search, Analyze, [Web Search](/windsurf/web-search), and the [terminal](/windsurf/terminal).
+Cascade has a variety of tools at its disposal, such as Search, Analyze, [Web Search](/windsurf/cascade/web-search), and the [terminal](/windsurf/terminal).
 
 It can detect which packages and tools that you're using, which ones need to be installed, and even install them for you. Just ask Cascade how to run your project and press Accept.
 
@@ -3501,7 +3727,7 @@ It can detect which packages and tools that you're using, which ones need to be 
 
 Use Voice input to use your voice to interact with Cascade. In its current form it can transcribe your speech to text.
 
-<video autoPlay controls muted loop playsInline className="w-full aspect-video" src="https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf/cascade/voice-mode.mp4?fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=b6881ef11385d4f05fa151e0808a9e78" data-path="assets/windsurf/cascade/voice-mode.mp4" />
+<video />
 
 # Revert to previous steps
 
@@ -3509,17 +3735,25 @@ You have the ability to revert changes that Cascade has made if you want to. Sim
 
 <Warning>Reverts are currently irreversible, so be careful!</Warning>
 
-<video autoPlay controls muted loop playsInline className="w-full aspect-video" src="https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf/cascade/cascade-revert.mp4?fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=fe494383062acfc1efe07b23c03607a2" data-path="assets/windsurf/cascade/cascade-revert.mp4" />
+<video />
 
-# Turbo Mode
+# Auto-Execution Modes
 
-In Turbo mode, Cascade will always execute the command, unless it is in the deny list.
+Cascade supports three levels of command auto-execution in JetBrains: **Off**, **Auto**, and **Turbo**. You can select your preferred level via the Windsurf Settings panel.
 
-You can toggle this via the Windsurf - Settings panel in the bottom right hand corner of the editor.
+| Level     | Description                                                                                                    |
+| --------- | -------------------------------------------------------------------------------------------------------------- |
+| **Off**   | Never auto-execute terminal commands, except those in your allow list.                                         |
+| **Auto**  | Model decides whether to auto-execute commands based on safety assessment. Available with premium models only. |
+| **Turbo** | Always auto-execute terminal commands and browser controls, except those in your deny list.                    |
+
+<Note>For Teams and Enterprise users, administrators can set a maximum allowed auto-execution level. Users can select any level up to that maximum, but cannot exceed it.</Note>
 
 <Frame>
-  <img style={{ maxHeight: "500px" }} src="https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf/cascade/cascade-turbo-mode.png?fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=8860ea8311000ae2cc440cef26560620" data-og-width="680" width="680" data-og-height="60" height="60" data-path="assets/windsurf/cascade/cascade-turbo-mode.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf/cascade/cascade-turbo-mode.png?w=280&fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=dbcaa01fab58d7ba1fac05acc91ae12f 280w, https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf/cascade/cascade-turbo-mode.png?w=560&fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=c5dc736ca3cd591d00f0c8b3b4f13f90 560w, https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf/cascade/cascade-turbo-mode.png?w=840&fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=13ee4803cf3edcdaba2b9d76dcf109aa 840w, https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf/cascade/cascade-turbo-mode.png?w=1100&fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=389cfcb06aec368986869bfd15a42553 1100w, https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf/cascade/cascade-turbo-mode.png?w=1650&fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=e9829ad62b78b641213d472b4bca8683 1650w, https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf/cascade/cascade-turbo-mode.png?w=2500&fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=db556ad06ddff8c4fbe5186569bf8334 2500w" />
+  <img />
 </Frame>
+
+For more details on auto-execution levels and allow/deny lists, see the [Terminal documentation](/windsurf/terminal#auto-executed-cascade-commands).
 
 # Real-time collaboration
 
@@ -3541,7 +3775,7 @@ For enterprise customers managing multiple repositories, you can enforce ignore 
 # Model Context Protocol (MCP)
 Source: https://docs.windsurf.com/plugins/cascade/mcp
 
-
+Configure MCP servers to extend Cascade with custom tools and services using stdio, HTTP, or SSE transports with admin controls for Teams and Enterprise.
 
 **MCP (Model Context Protocol)** is a protocol that enables LLMs to access custom tools and services.
 An MCP client (Cascade, in this case) can make requests to MCP servers to access tools that they provide.
@@ -3559,14 +3793,15 @@ If you cannot find your desired MCP plugin, you can add it manually by clicking 
 When you click on an MCP server, simply click `+ Add Server` to expose the server and its tools to Cascade.
 
 <Frame>
-  <img src="https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/plugins/mcp-server-templates.jpg?fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=06f96424bd8374333d6969006868456e" data-og-width="1666" width="1666" data-og-height="1388" height="1388" data-path="assets/plugins/mcp-server-templates.jpg" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/plugins/mcp-server-templates.jpg?w=280&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=5b2d971d3bf67cc6086400971450795a 280w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/plugins/mcp-server-templates.jpg?w=560&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=7cd83fdadc63dc1ad56e248627b2c3ca 560w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/plugins/mcp-server-templates.jpg?w=840&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=10df4adfb6948fdaa90de722bfec030b 840w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/plugins/mcp-server-templates.jpg?w=1100&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=c218409460599a4640e7d0561d67828a 1100w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/plugins/mcp-server-templates.jpg?w=1650&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=f0a89fdd40125f56652d2a07e36a560f 1650w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/plugins/mcp-server-templates.jpg?w=2500&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=d2205e6e71979118c375006caae1e259 2500w" />
+  <img />
 </Frame>
 
-Cascade supports two [transport types](https://modelcontextprotocol.io/docs/concepts/transports) for MCP servers: `stdio` and `http`.
+Cascade supports three [transport types](https://modelcontextprotocol.io/docs/concepts/transports) for MCP
+servers: `stdio`,  `Streamable HTTP`, and `SSE`.
+
+Cascade also supports OAuth for each transport type.
 
 For `http` servers, the URL should reflect that of the endpoint and resemble `https://<your-server-url>/mcp`.
-
-We can also support streamable HTTP transport and MCP Authentication.
 
 <Note>Make sure to press the refresh button after you add a new MCP plugin.</Note>
 
@@ -3574,11 +3809,9 @@ We can also support streamable HTTP transport and MCP Authentication.
 
 The `~/.codeium/mcp_config.json` file is a JSON file that contains a list of servers that Cascade can connect to.
 
-The JSON should follow the same schema as the config file for Claude Desktop.
+Here’s an example configuration, which sets up a single server for GitHub:
 
-Here's an example configuration, which sets up a single server for GitHub:
-
-```json  theme={null}
+```json theme={null}
 {
   "mcpServers": {
     "github": {
@@ -3595,31 +3828,57 @@ Here's an example configuration, which sets up a single server for GitHub:
 }
 ```
 
-It's important to note that for HTTP servers, the configuration is slightly different and requires a `serverUrl` field.
+Be sure to provide the required arguments and environment variables for the servers that you want to use.
+
+See the [official MCP server reference repository](https://github.com/modelcontextprotocol/servers) or [OpenTools](https://opentools.com/) for some example servers.
+
+### Remote HTTP MCPs
+
+It's important to note that for remote HTTP MCPs, the configuration is slightly
+different and requires a `serverUrl` or `url` field.
 
 Here's an example configuration for an HTTP server:
 
-```json  theme={null}
+```json theme={null}
 {
   "mcpServers": {
-    "figma": {
-      "serverUrl": "<your-server-url>/mcp"
+    "remote-http-mcp": {
+      "serverUrl": "<your-server-url>/mcp",
+      "headers": {
+        "API_KEY": "value"
+      }
     }
   }
 }
 ```
 
-<Note>For Figma Dev Mode MCP server, make sure you have updated to the latest Figma desktop app version to use the new `/mcp` endpoint.</Note>
+### Config Interpolation
 
-Be sure to provide the required arguments and environment variables for the servers that you want to use.
+The `~/.codeium/mcp_config.json` file handles interpolation of
+environment variables in these fields: `command`, `args`, `env`, `serverUrl`, `url`, and
+`headers`.
 
-See the [official MCP server reference repository](https://github.com/modelcontextprotocol/servers) or [OpenTools](https://opentools.com/) for some example servers.
+Here’s an example configuration, which uses an `AUTH_TOKEN` environment variable
+in `headers`.
+
+```json theme={null}
+{
+  "mcpServers": {
+    "remote-http-mcp": {
+      "serverUrl": "<your-server-url>/mcp",
+      "headers": {
+        "API_KEY": "Bearer ${env:AUTH_TOKEN}"
+      }
+    }
+  }
+}
+```
 
 ## Admin Controls (Teams & Enterprises)
 
 Team admins can toggle MCP access for their team, as well as whitelist approved MCP servers for their team to use:
 
-<Card title="MCP Team Settings" horizontal={true} icon="hammer" href="https://windsurf.com/team/settings">
+<Card title="MCP Team Settings" icon="hammer" href="https://windsurf.com/team/settings">
   Configurable MCP settings for your team.
 </Card>
 
@@ -3646,13 +3905,13 @@ When you whitelist an MCP server, the system uses **regex pattern matching** wit
     * **Server ID**: `github-mcp-server`
     * **Server Config (JSON)**: *(leave empty)*
 
-    ```json  theme={null}
+    ```json theme={null}
     {}
     ```
 
     **Matching User Config (`mcp_config.json`):**
 
-    ```json  theme={null}
+    ```json theme={null}
     {
       "mcpServers": {
         "github-mcp-server": {
@@ -3682,7 +3941,7 @@ When you whitelist an MCP server, the system uses **regex pattern matching** wit
     * **Server ID**: `github-mcp-server`
     * **Server Config (JSON)**:
 
-    ```json  theme={null}
+    ```json theme={null}
     {
       "command": "docker",
       "args": [
@@ -3701,7 +3960,7 @@ When you whitelist an MCP server, the system uses **regex pattern matching** wit
 
     **Matching User Config (`mcp_config.json`):**
 
-    ```json  theme={null}
+    ```json theme={null}
     {
       "mcpServers": {
         "github-mcp-server": {
@@ -3731,7 +3990,7 @@ When you whitelist an MCP server, the system uses **regex pattern matching** wit
     * **Server ID**: `python-mcp-server`
     * **Server Config (JSON)**:
 
-    ```json  theme={null}
+    ```json theme={null}
     {
       "command": "python3",
       "args": ["/.*\\.py", "--port", "[0-9]+"]
@@ -3740,7 +3999,7 @@ When you whitelist an MCP server, the system uses **regex pattern matching** wit
 
     **Matching User Config (`mcp_config.json`):**
 
-    ```json  theme={null}
+    ```json theme={null}
     {
       "mcpServers": {
         "python-mcp-server": {
@@ -3798,13 +4057,13 @@ Remember: Once you whitelist any server, **all other servers are automatically b
 
 * Since MCP tool calls can invoke code written by arbitrary server implementers, we do not assume liability
   for MCP tool call failures. To reiterate:
-* We currently support an MCP server's [tools](https://modelcontextprotocol.io/docs/concepts/tools) and [resources](https://modelcontextprotocol.io/docs/concepts/resources), not [prompts](https://modelcontextprotocol.io/docs/concepts/prompts).
+* We currently support an MCP server's [tools](https://modelcontextprotocol.io/docs/concepts/tools), [resources](https://modelcontextprotocol.io/docs/concepts/resources), and [prompts](https://modelcontextprotocol.io/docs/concepts/prompts).
 
 
 # Memories & Rules
 Source: https://docs.windsurf.com/plugins/cascade/memories
 
-
+Configure Cascade memories and rules to persist context across conversations with global rules, workspace rules, and system-level rules for enterprise.
 
 `Memories` is the system for sharing and persisting context across conversations.
 
@@ -3815,7 +4074,7 @@ There are two mechanisms for this in Cascade: Memories, which can be automatical
 Memories and Rules can be accessed and configured at any time by clicking on the `Customizations` icon in the top right slider menu in Cascade. To edit an existing memory, simply click into it and then click the `Edit` button.
 
 <Frame>
-  <img src="https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/managing-memories-jb.gif?s=364abea59051eb01f19dbe91ba7bcf35" data-og-width="800" width="800" data-og-height="506" height="506" data-path="assets/managing-memories-jb.gif" data-optimize="true" data-opv="3" />
+  <img />
 </Frame>
 
 ## Memories
@@ -3889,713 +4148,47 @@ For example:
 </coding_guidelines>
 ```
 
+## System-Level Rules (Enterprise)
 
-# Models
+Enterprise organizations can deploy system-level rules that apply globally across all workspaces and cannot be modified by end users without administrator permissions. This is ideal for enforcing organization-wide coding standards, security policies, and compliance requirements.
+
+System-level rules are loaded from OS-specific directories:
+
+**macOS:**
+
+```
+/Library/Application Support/Windsurf/rules/*.md
+```
+
+**Linux/WSL:**
+
+```
+/etc/windsurf/rules/*.md
+```
+
+**Windows:**
+
+```
+C:\ProgramData\Windsurf\rules\*.md
+```
+
+Place your rule files (as `.md` files) in the appropriate directory for your operating system. The system will automatically load all `.md` files from these directories.
+
+### How System Rules Work
+
+System-level rules are merged with workspace and global rules, providing additional context to Cascade without overriding user-defined rules. This allows organizations to establish baseline standards while still permitting teams to add project-specific customizations.
+
+In the Cascade UI, system-level rules are displayed with a "System" label and cannot be deleted by end users.
+
+<Note>
+  **Important**: System-level rules should be managed by your IT or security team. Ensure your internal teams handle deployment, updates, and compliance according to your organization's policies. You can use standard tools and workflows such as Mobile Device Management (MDM) or Configuration Management to do so.
+</Note>
+
+
+# Cascade Models
 Source: https://docs.windsurf.com/plugins/cascade/models
 
-
-
-export const ModelsTable = () => {
-  const [showAll, setShowAll] = useState(false);
-  const windsurfIcon = {
-    light: "https://exafunction.github.io/public/icons/docs/Windsurf-black-symbol.png",
-    dark: "https://exafunction.github.io/public/icons/docs/Windsurf-white-symbol.png"
-  };
-  const openaiIcon = {
-    light: "https://exafunction.github.io/public/icons/docs/OpenAI-black-monoblossom.png",
-    dark: "https://exafunction.github.io/public/icons/docs/OpenAI-white-monoblossom.png"
-  };
-  const claudeIcon = {
-    light: "https://exafunction.github.io/public/icons/docs/claude-logo-clay.png",
-    dark: "https://exafunction.github.io/public/icons/docs/claude-logo-clay.png"
-  };
-  const deepseekIcon = {
-    light: "https://exafunction.github.io/public/icons/docs/deepseek-logo.png",
-    dark: "https://exafunction.github.io/public/icons/docs/deepseek-logo.png"
-  };
-  const geminiIcon = {
-    light: "https://exafunction.github.io/public/icons/docs/gemini-models-icon.png",
-    dark: "https://exafunction.github.io/public/icons/docs/gemini-models-icon.png"
-  };
-  const grokIcon = {
-    light: "https://exafunction.github.io/public/icons/docs/Grok_Logomark_Dark.png",
-    dark: "https://exafunction.github.io/public/icons/docs/Grok_Logomark_Light.png"
-  };
-  const qwenIcon = {
-    light: "https://exafunction.github.io/public/icons/docs/qwen-logo.png",
-    dark: "https://exafunction.github.io/public/icons/docs/qwen-logo.png"
-  };
-  const kimiIcon = {
-    light: "https://exafunction.github.io/public/icons/docs/kimi-k2-icon.png",
-    dark: "https://exafunction.github.io/public/icons/docs/kimi-k2-icon.png"
-  };
-  const byokOnly = <a href="/windsurf/models#bring-your-own-key-byok" className="text-gray-700 dark:text-white font-normal">BYOK</a>;
-  const apiPricingOnly = <a href="/windsurf/models#api-pricing" className="text-gray-700 dark:text-white font-normal">API Pricing</a>;
-  const empty = "";
-  const byokApiPricing = <>{byokOnly}<br />/<br />{apiPricingOnly}</>;
-  const checkmark = <>
-      <img className="block dark:hidden" src={"https://exafunction.github.io/public/icons/docs/checkmark-black.png"} alt="Available" style={{
-    width: '16px',
-    height: '16px',
-    margin: '0 auto',
-    pointerEvents: 'none'
-  }} />
-      <img className="hidden dark:block" src={"https://exafunction.github.io/public/icons/docs/checkmark-white.png"} alt="Available" style={{
-    width: '16px',
-    height: '16px',
-    margin: '0 auto',
-    pointerEvents: 'none'
-  }} />
-    </>;
-  const models = [{
-    name: "SWE-1.5",
-    icon: windsurfIcon,
-    credits: "1",
-    hasGift: true,
-    free: empty,
-    pro: checkmark,
-    teams: checkmark,
-    enterprise: checkmark,
-    trial: checkmark
-  }, {
-    name: "SWE-1",
-    icon: windsurfIcon,
-    credits: "0",
-    hasGift: true,
-    free: checkmark,
-    pro: checkmark,
-    teams: checkmark,
-    enterprise: checkmark,
-    trial: checkmark
-  }, {
-    name: "Claude Sonnet 4.5",
-    icon: claudeIcon,
-    credits: "2",
-    hasGift: true,
-    free: empty,
-    pro: checkmark,
-    teams: checkmark,
-    enterprise: "3x",
-    trial: checkmark
-  }, {
-    name: "Claude Sonnet 4.5 (Thinking)",
-    icon: claudeIcon,
-    credits: "3",
-    hasGift: true,
-    free: empty,
-    pro: checkmark,
-    teams: checkmark,
-    enterprise: "4x",
-    trial: checkmark
-  }, {
-    name: "Claude Haiku 4.5",
-    icon: claudeIcon,
-    credits: "1",
-    free: checkmark,
-    pro: checkmark,
-    teams: checkmark,
-    enterprise: checkmark,
-    trial: checkmark
-  }, {
-    name: "Claude Opus 4.1",
-    icon: claudeIcon,
-    credits: "20",
-    free: empty,
-    pro: checkmark,
-    teams: checkmark,
-    enterprise: checkmark,
-    trial: checkmark
-  }, {
-    name: "Claude Opus 4.1 Thinking",
-    icon: claudeIcon,
-    credits: "20",
-    free: empty,
-    pro: checkmark,
-    teams: checkmark,
-    enterprise: checkmark,
-    trial: checkmark
-  }, {
-    name: "GPT-5.1 (no reasoning)",
-    icon: openaiIcon,
-    credits: "0",
-    hasGift: true,
-    free: "0.5",
-    pro: "0",
-    teams: "0",
-    enterprise: "0",
-    trial: "0"
-  }, {
-    name: "GPT-5.1 (low reasoning)",
-    icon: openaiIcon,
-    credits: "0",
-    hasGift: true,
-    free: "0.5",
-    pro: "0",
-    teams: "0",
-    enterprise: "0",
-    trial: "0"
-  }, {
-    name: "GPT-5.1 (medium reasoning)",
-    icon: openaiIcon,
-    credits: "0",
-    hasGift: true,
-    free: "1.0",
-    pro: "0",
-    teams: "0",
-    enterprise: "0",
-    trial: "0"
-  }, {
-    name: "GPT-5.1 (high reasoning)",
-    icon: openaiIcon,
-    credits: "0",
-    hasGift: true,
-    free: "2.0",
-    pro: "0",
-    teams: "0",
-    enterprise: "0",
-    trial: "0"
-  }, {
-    name: "GPT-5.1 (no reasoning, high priority)",
-    icon: openaiIcon,
-    credits: "0.5",
-    hasGift: true,
-    free: "1.0",
-    pro: checkmark,
-    teams: checkmark,
-    enterprise: checkmark,
-    trial: checkmark
-  }, {
-    name: "GPT-5.1 (low reasoning, high priority)",
-    icon: openaiIcon,
-    credits: "0.5",
-    hasGift: true,
-    free: "1.0",
-    pro: checkmark,
-    teams: checkmark,
-    enterprise: checkmark,
-    trial: checkmark
-  }, {
-    name: "GPT-5.1 (medium reasoning, high priority)",
-    icon: openaiIcon,
-    credits: "1.0",
-    hasGift: true,
-    free: "2.0",
-    pro: checkmark,
-    teams: checkmark,
-    enterprise: checkmark,
-    trial: checkmark
-  }, {
-    name: "GPT-5.1 (high reasoning, high priority)",
-    icon: openaiIcon,
-    credits: "2.0",
-    hasGift: true,
-    free: "4.0",
-    pro: checkmark,
-    teams: checkmark,
-    enterprise: checkmark,
-    trial: checkmark
-  }, {
-    name: "GPT-5.1-Codex",
-    icon: openaiIcon,
-    credits: "0",
-    hasGift: true,
-    free: "0.5",
-    pro: "0",
-    teams: "0",
-    enterprise: "0",
-    trial: "0"
-  }, {
-    name: "GPT-5.1-Codex Mini",
-    icon: openaiIcon,
-    credits: "0",
-    hasGift: true,
-    free: "0.5",
-    pro: "0",
-    teams: "0",
-    enterprise: "0",
-    trial: "0"
-  }, {
-    name: "GPT-5 (low reasoning)",
-    icon: openaiIcon,
-    credits: "0.5",
-    free: "0.5",
-    pro: checkmark,
-    teams: checkmark,
-    enterprise: checkmark,
-    trial: checkmark
-  }, {
-    name: "GPT-5 (medium reasoning)",
-    icon: openaiIcon,
-    credits: "1",
-    free: "0.5",
-    pro: checkmark,
-    teams: checkmark,
-    enterprise: checkmark,
-    trial: checkmark
-  }, {
-    name: "GPT-5 (high reasoning)",
-    icon: openaiIcon,
-    credits: "2",
-    free: "1.5",
-    pro: checkmark,
-    teams: checkmark,
-    enterprise: checkmark,
-    trial: checkmark
-  }, {
-    name: "GPT-5-Codex",
-    icon: openaiIcon,
-    credits: "0",
-    hasGift: true,
-    free: "0.5",
-    pro: checkmark,
-    teams: checkmark,
-    enterprise: checkmark,
-    trial: checkmark
-  }, {
-    name: "Gemini 2.5 Pro",
-    icon: geminiIcon,
-    credits: "1",
-    free: checkmark,
-    pro: checkmark,
-    teams: checkmark,
-    enterprise: checkmark,
-    trial: checkmark
-  }, {
-    name: "xAI Grok Code Fast",
-    icon: grokIcon,
-    credits: "0",
-    hasGift: true,
-    free: empty,
-    pro: checkmark,
-    teams: checkmark,
-    enterprise: checkmark,
-    trial: checkmark
-  }, {
-    name: "Kimi K2",
-    icon: kimiIcon,
-    credits: "0.5",
-    free: empty,
-    pro: checkmark,
-    teams: checkmark,
-    enterprise: empty,
-    trial: checkmark
-  }, {
-    name: "Qwen3-Coder Fast",
-    icon: qwenIcon,
-    credits: "2",
-    hasGift: true,
-    free: empty,
-    pro: checkmark,
-    teams: checkmark,
-    enterprise: empty,
-    trial: checkmark
-  }, {
-    name: "Qwen3-Coder",
-    icon: qwenIcon,
-    credits: "0.5",
-    free: empty,
-    pro: checkmark,
-    teams: checkmark,
-    enterprise: empty,
-    trial: checkmark
-  }, {
-    name: "o3",
-    icon: openaiIcon,
-    credits: "1",
-    free: checkmark,
-    pro: checkmark,
-    teams: checkmark,
-    enterprise: checkmark,
-    trial: checkmark
-  }, {
-    name: "o3 (high reasoning)",
-    icon: openaiIcon,
-    credits: "1",
-    free: checkmark,
-    pro: checkmark,
-    teams: checkmark,
-    enterprise: checkmark,
-    trial: checkmark
-  }, {
-    name: "Claude 3.7 Sonnet",
-    icon: claudeIcon,
-    credits: "2",
-    free: byokOnly,
-    pro: checkmark,
-    teams: checkmark,
-    enterprise: "1x",
-    trial: byokOnly
-  }, {
-    name: "Claude 3.7 Sonnet (Thinking)",
-    icon: claudeIcon,
-    credits: "3",
-    free: byokOnly,
-    pro: checkmark,
-    teams: checkmark,
-    enterprise: "1.25x",
-    trial: byokOnly
-  }, {
-    name: "Claude Sonnet 4",
-    icon: claudeIcon,
-    credits: "2",
-    hasGift: true,
-    free: byokOnly,
-    pro: checkmark,
-    teams: checkmark,
-    enterprise: "3x",
-    trial: checkmark
-  }, {
-    name: "Claude Sonnet 4 (Thinking)",
-    icon: claudeIcon,
-    credits: "3",
-    hasGift: true,
-    free: byokOnly,
-    pro: checkmark,
-    teams: checkmark,
-    enterprise: "4x",
-    trial: checkmark
-  }, {
-    name: "gpt-oss 120B (Medium)",
-    icon: openaiIcon,
-    credits: "0.25",
-    free: empty,
-    pro: checkmark,
-    teams: checkmark,
-    enterprise: checkmark,
-    trial: checkmark
-  }, {
-    name: "GPT-4o",
-    icon: openaiIcon,
-    credits: "1",
-    free: checkmark,
-    pro: checkmark,
-    teams: checkmark,
-    enterprise: checkmark,
-    trial: checkmark
-  }, {
-    name: "GPT-4.1",
-    icon: openaiIcon,
-    credits: "1",
-    free: checkmark,
-    pro: checkmark,
-    teams: checkmark,
-    enterprise: checkmark,
-    trial: checkmark
-  }, {
-    name: "Claude 3.5 Sonnet",
-    icon: claudeIcon,
-    credits: "2",
-    free: byokOnly,
-    pro: checkmark,
-    teams: checkmark,
-    enterprise: checkmark,
-    trial: byokOnly
-  }, {
-    name: "Claude 4 Opus",
-    icon: claudeIcon,
-    credits: byokOnly,
-    free: byokOnly,
-    pro: byokOnly,
-    teams: empty,
-    enterprise: empty,
-    trial: byokOnly
-  }, {
-    name: "Claude 4 Opus (Thinking)",
-    icon: claudeIcon,
-    credits: byokOnly,
-    free: byokOnly,
-    pro: byokOnly,
-    teams: empty,
-    enterprise: empty,
-    trial: byokOnly
-  }, {
-    name: "DeepSeek-V3-0324",
-    icon: deepseekIcon,
-    credits: "0",
-    free: empty,
-    pro: checkmark,
-    teams: empty,
-    enterprise: empty,
-    trial: checkmark
-  }, {
-    name: "DeepSeek-R1",
-    icon: deepseekIcon,
-    credits: "0.5",
-    free: empty,
-    pro: checkmark,
-    teams: empty,
-    enterprise: empty,
-    trial: checkmark
-  }];
-  return <>
-      <style>{`
-        .gift-tooltip-container:hover .gift-tooltip {
-          opacity: 1 !important;
-          visibility: visible !important;
-        }
-        #table-container {
-          overflow: visible !important;
-          max-height: none !important;
-          height: auto !important;
-        }
-        #models-table {
-          overflow: visible !important;
-          max-height: none !important;
-          height: auto !important;
-        }
-        @media (max-width: 768px) {
-          #table-container {
-            overflow-x: auto !important;
-            -webkit-overflow-scrolling: touch !important;
-          }
-          #models-table {
-            min-width: 700px !important;
-          }
-        }
-        #table-container * {
-          overflow: visible !important;
-        }
-      `}</style>
-      <div id="table-container" style={{
-    width: 'auto',
-    borderRadius: '8px',
-    overflow: 'visible',
-    maxHeight: 'none',
-    height: 'auto'
-  }} className="light:bg-white dark:bg-zinc-900 border border-black/10 dark:border-white/10">
-        <table id="models-table" style={{
-    width: '100%',
-    borderCollapse: 'collapse',
-    fontSize: '14px',
-    tableLayout: 'auto',
-    margin: '0',
-    padding: '0',
-    height: 'auto',
-    maxHeight: 'none'
-  }}>
-          <thead style={{
-    margin: '0',
-    padding: '0'
-  }}>
-            <tr className="border-b border-black/10 dark:!border-white/10">
-              <th style={{
-    padding: '16px 16px',
-    textAlign: 'left',
-    fontWeight: '500',
-    minWidth: '200px'
-  }} className="text-gray-700 dark:text-white">Model</th>
-              <th style={{
-    padding: '16px 8px',
-    textAlign: 'center',
-    fontWeight: '500',
-    minWidth: '80px'
-  }} className="text-gray-700 dark:text-white">Credits</th>
-              <th style={{
-    padding: '16px 8px',
-    textAlign: 'center',
-    fontWeight: '500',
-    minWidth: '60px'
-  }} className="text-gray-700 dark:text-white">Free</th>
-              <th style={{
-    padding: '16px 8px',
-    textAlign: 'center',
-    fontWeight: '500',
-    minWidth: '60px'
-  }} className="text-gray-700 dark:text-white">Pro</th>
-              <th style={{
-    padding: '16px 8px',
-    textAlign: 'center',
-    fontWeight: '500',
-    minWidth: '80px'
-  }} className="text-gray-700 dark:text-white">Teams</th>
-              <th style={{
-    padding: '16px 8px',
-    textAlign: 'center',
-    fontWeight: '500',
-    minWidth: '120px'
-  }} className="text-gray-700 dark:text-white">Enterprise</th>
-              <th style={{
-    padding: '16px 8px',
-    textAlign: 'center',
-    fontWeight: '500',
-    minWidth: '60px'
-  }} className="text-gray-700 dark:text-white">Trial</th>
-            </tr>
-          </thead>
-          <tbody style={{
-    margin: '0',
-    padding: '0'
-  }}>
-            {models.filter((model, index) => showAll || index < 12).map((model, index, filteredArray) => <tr key={model.name} className={`${index === filteredArray.length - 1 ? '' : 'border-b border-black/10 dark:!border-white/10'}`}>
-                <td style={{
-    padding: '8px',
-    fontWeight: '500',
-    verticalAlign: 'middle'
-  }}>
-                  <div style={{
-    display: 'flex',
-    alignItems: 'center',
-    gap: '8px',
-    whiteSpace: 'nowrap'
-  }}>
-                    <span style={{
-    display: 'inline-flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    width: '20px',
-    height: '20px',
-    flexShrink: 0
-  }}>
-                      <img className="block dark:hidden" src={model.icon.light} alt={`${model.name} icon`} style={{
-    width: '20px',
-    height: '20px',
-    objectFit: 'contain',
-    pointerEvents: 'none',
-    userSelect: 'none'
-  }} />
-                      <img className="hidden dark:block" src={model.icon.dark} alt={`${model.name} icon`} style={{
-    width: '20px',
-    height: '20px',
-    objectFit: 'contain',
-    pointerEvents: 'none',
-    userSelect: 'none'
-  }} />
-                    </span>
-                    <span className="text-gray-700 dark:text-white">{model.name}</span>
-                  </div>
-                </td>
-                <td style={{
-    padding: '10px',
-    textAlign: 'center',
-    verticalAlign: 'middle'
-  }}>
-                  <div style={{
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    gap: '4px'
-  }}>
-                    <span className="text-gray-700 dark:text-white">{model.credits}</span>
-                    {model.hasGift && <div className="gift-tooltip-container" style={{
-    position: 'relative',
-    display: 'inline-flex'
-  }}>
-                        <span style={{
-    display: 'inline-flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    width: '16px',
-    height: '16px'
-  }}>
-                          <img className="block dark:hidden" src="https://exafunction.github.io/public/icons/docs/gift-black.png" alt="Gift icon" style={{
-    width: '16px',
-    height: '16px',
-    objectFit: 'contain',
-    pointerEvents: 'none',
-    userSelect: 'none'
-  }} />
-                          <img className="hidden dark:block" src="https://exafunction.github.io/public/icons/docs/gift-white.png" alt="Gift icon" style={{
-    width: '16px',
-    height: '16px',
-    objectFit: 'contain',
-    pointerEvents: 'none',
-    userSelect: 'none'
-  }} />
-                        </span>
-                        <div className="gift-tooltip" style={{
-    position: 'absolute',
-    bottom: '100%',
-    left: '50%',
-    transform: 'translateX(-50%)',
-    marginBottom: '8px',
-    padding: '8px 12px',
-    backgroundColor: '#333',
-    color: 'white',
-    borderRadius: '6px',
-    fontSize: '12px',
-    whiteSpace: 'nowrap',
-    opacity: '0',
-    visibility: 'hidden',
-    transition: 'opacity 0.2s, visibility 0.2s',
-    zIndex: '1000',
-    pointerEvents: 'none'
-  }}>
-                          Promo pricing only available for a limited time
-                          <div style={{
-    position: 'absolute',
-    top: '100%',
-    left: '50%',
-    transform: 'translateX(-50%)',
-    width: '0',
-    height: '0',
-    borderLeft: '5px solid transparent',
-    borderRight: '5px solid transparent',
-    borderTop: '5px solid #333'
-  }}></div>
-                        </div>
-                      </div>}
-                  </div>
-                </td>
-                <td style={{
-    padding: '10px',
-    textAlign: 'center',
-    verticalAlign: 'middle'
-  }}>{model.free}</td>
-                <td style={{
-    padding: '10px',
-    textAlign: 'center',
-    verticalAlign: 'middle'
-  }}>{model.pro}</td>
-                <td style={{
-    padding: '10px',
-    textAlign: 'center',
-    verticalAlign: 'middle'
-  }}>{model.teams}</td>
-                <td style={{
-    padding: '10px',
-    textAlign: 'center',
-    verticalAlign: 'middle'
-  }}>{model.enterprise}</td>
-                <td style={{
-    padding: '10px',
-    textAlign: 'center',
-    verticalAlign: 'middle'
-  }}>{model.trial}</td>
-              </tr>)}
-          </tbody>
-        </table>
-      </div>
-      <div style={{
-    display: 'flex',
-    justifyContent: 'center',
-    padding: '16px 0',
-    borderTop: 'none'
-  }}>
-        <button onClick={() => {
-    if (!showAll) {
-      setShowAll(true);
-    } else {
-      setShowAll(false);
-    }
-  }} style={{
-    display: 'inline-flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    padding: '10px 20px',
-    backgroundColor: 'transparent',
-    border: '1px solid #868686',
-    borderRadius: '8px',
-    fontSize: '14px',
-    fontWeight: '500',
-    cursor: 'pointer',
-    transition: 'all 0.2s ease',
-    minWidth: '140px'
-  }} className="text-gray-700 hover:bg-gray-50 dark:border-gray-600 dark:text-white dark:hover:bg-gray-800">
-          {showAll ? 'Show Less Models' : 'Show More Models'}
-        </button>
-      </div>
-    </>;
-};
+Available AI models in Cascade including SWE-1.5, SWE-1, Claude, GPT, and bring-your-own-key (BYOK) options with credit costs.
 
 In Cascade, you can easily switch between different models of your choosing.
 
@@ -4639,7 +4232,7 @@ Currently, we only support BYOK for these models:
 # Web and Docs Search
 Source: https://docs.windsurf.com/plugins/cascade/web-search
 
-
+Enable Cascade to search the web and read documentation pages in real-time using @web and @docs mentions for up-to-date context.
 
 Cascade can now intuitively parse through and chunk up web pages and documentation, providing realtime context to the models. The key way to understand this feature is that Cascade will browse the Internet as a human would.
 
@@ -4649,7 +4242,7 @@ Our web tools are designed in such a way that gets only the information that is 
 
 To help you better understand how Web Search works, we've recorded a short video covering the key concepts and best practices.
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/moIySJ4d0UY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen />
+<iframe title="YouTube video player" />
 
 ### Quick Start
 
@@ -4664,8 +4257,8 @@ The fastest way to get started is to activate web search in your Windsurf Settin
 
 Cascade can deduce that certain prompts from the user may require a real-time web search to provide the optimal response. In these cases, Cascade will perform a web search and provide the results to the user. This can happen automatically or manually using the `@web` mention.
 
-<Frame style={{ border: "none", background: "none" }}>
-  <img src="https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf/cascade/cascade-search-web.png?fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=b525aef8bc3d129ee5a6d93d10c2cb06" data-og-width="1150" width="1150" data-og-height="530" height="530" data-path="assets/windsurf/cascade/cascade-search-web.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf/cascade/cascade-search-web.png?w=280&fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=e2eee016969bdcd5f0572659690c7df7 280w, https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf/cascade/cascade-search-web.png?w=560&fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=3b131c992adfe832ded1b8722cbb4e7f 560w, https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf/cascade/cascade-search-web.png?w=840&fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=2cdac74f260dedf5da5bf42abe82869d 840w, https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf/cascade/cascade-search-web.png?w=1100&fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=27abbec8f15aeec6e0319093cbf4d049 1100w, https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf/cascade/cascade-search-web.png?w=1650&fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=e96bf16e2f5a79fce342efbbf2bed8fb 1650w, https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf/cascade/cascade-search-web.png?w=2500&fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=f95fde4ebf0cac5e0dfb792ae238d071 2500w" />
+<Frame>
+  <img />
 </Frame>
 
 ## Reading Pages
@@ -4676,8 +4269,8 @@ Pages are picked up either from web search results, inferred based on the conver
 
 We break pages up into multiple chunks, very similar to how a human would read a page: for a long page we skim to the section we want then read the text that's relevant. This is how Cascade operates as well.
 
-<Frame style={{ border: "none", background: "none" }}>
-  <img src="https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf/cascade/cascade-parse-url.png?fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=9963f9eadcca6c5e8152cae398999e00" data-og-width="1158" width="1158" data-og-height="538" height="538" data-path="assets/windsurf/cascade/cascade-parse-url.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf/cascade/cascade-parse-url.png?w=280&fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=4b943dbae4a899d98f8d1e30588634a2 280w, https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf/cascade/cascade-parse-url.png?w=560&fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=1f549cf84cb41fb9b853d87d9972e069 560w, https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf/cascade/cascade-parse-url.png?w=840&fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=a79f381fe2fae01f383bf4836f734055 840w, https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf/cascade/cascade-parse-url.png?w=1100&fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=a67a8ec724d365f27c18e4a6f6d25f08 1100w, https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf/cascade/cascade-parse-url.png?w=1650&fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=c791fad06d7c86395d52d4792f321eb5 1650w, https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf/cascade/cascade-parse-url.png?w=2500&fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=e04bbf62bc9adbbd5c40d2d1e27d9bcf 2500w" />
+<Frame>
+  <img />
 </Frame>
 
 It's worth noting that not all pages can be parsed. We are actively working on improving the quality of our website reading. If you have specific sites you'd like us to handle better, feel free to file a feature request!
@@ -4686,7 +4279,7 @@ It's worth noting that not all pages can be parsed. We are actively working on i
 # Workflows
 Source: https://docs.windsurf.com/plugins/cascade/workflows
 
-
+Create reusable Cascade workflows as markdown files to automate repetitive tasks like deployments, PR reviews, and code formatting with slash commands.
 
 Workflows enable users to define a series of steps to guide Cascade through a repetitive set of tasks, such as deploying a service or responding to PR comments.
 
@@ -4701,7 +4294,7 @@ Rules generally provide large language models with guidance by providing persist
 Workflows extend this concept by providing a structured sequence of steps or prompts at the trajectory level, guiding the model through a series of interconnected tasks or actions.
 
 <Frame>
-  <img style={{ maxHeight: "400px" }} src="https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf/cascade/use-workflow-pr.png?fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=753d27e7c9e49d1feca84a2b8272f8e6" data-og-width="718" width="718" data-og-height="510" height="510" data-path="assets/windsurf/cascade/use-workflow-pr.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf/cascade/use-workflow-pr.png?w=280&fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=b8f833514a2b7a1bad49bfaf84e47f8a 280w, https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf/cascade/use-workflow-pr.png?w=560&fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=400b2a092b1e34276e0281085a106e1c 560w, https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf/cascade/use-workflow-pr.png?w=840&fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=9d2098efff896dea137777fb7876f23b 840w, https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf/cascade/use-workflow-pr.png?w=1100&fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=582ff2b958ad653f19c8c31d7ed2af58 1100w, https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf/cascade/use-workflow-pr.png?w=1650&fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=ecbde9bac2a87f74beba39b1542f079e 1650w, https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf/cascade/use-workflow-pr.png?w=2500&fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=0b22373ae141547fbe493d1314acfcfa 2500w" />
+  <img />
 </Frame>
 
 To execute a Workflow, users simply invoke it in Cascade using the `/[workflow-name]` command.
@@ -4736,13 +4329,13 @@ When you create a new workflow, it will be saved in the `.windsurf/workflows/` d
 
 Workflow files are limited to 12000 characters each.
 
-<video autoPlay controls muted loop playsInline className="w-full aspect-video" src="https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf/cascade/create-workflow.mp4?fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=d79db41f1ecd46f1fcdf07476bf2aaf1" data-path="assets/windsurf/cascade/create-workflow.mp4" />
+<video />
 
 ### Generate a Workflow with Cascade
 
 You can also ask Cascade to generate Workflows for you! This works particularly well for Workflows involving a series of steps in a particular CLI tool.
 
-<video autoPlay controls muted loop playsInline className="w-full aspect-video" src="https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf/cascade/create-workflow-with-cascade.mp4?fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=f4d4dc32f319a356a776e03d355907a5" data-path="assets/windsurf/cascade/create-workflow-with-cascade.mp4" />
+<video />
 
 ## Example Workflows
 
@@ -4793,11 +4386,54 @@ There are a myriad of use cases for Workflows, such as:
   Integrate and trigger security vulnerability scans on your codebase as part of the CI/CD pipeline or on demand.
 </Card>
 
+## System-Level Workflows (Enterprise)
 
-# Compatibility
+Enterprise organizations can deploy system-level workflows that are available globally across all workspaces and cannot be modified by end users without administrator permissions. This is ideal for enforcing organization-wide development processes, deployment procedures, and compliance workflows.
+
+System-level workflows are loaded from OS-specific directories:
+
+**macOS:**
+
+```
+/Library/Application Support/Windsurf/workflows/*.md
+```
+
+**Linux/WSL:**
+
+```
+/etc/windsurf/workflows/*.md
+```
+
+**Windows:**
+
+```
+C:\ProgramData\Windsurf\workflows\*.md
+```
+
+Place your workflow files (as `.md` files) in the appropriate directory for your operating system. The system will automatically load all `.md` files from these directories.
+
+### Workflow Precedence
+
+When workflows with the same name exist at multiple levels, system-level workflows take the highest precedence:
+
+1. **System** (highest priority) - Organization-wide workflows deployed by IT
+2. **Workspace** - Project-specific workflows in `.windsurf/workflows/`
+3. **Global** - User-defined workflows
+4. **Built-in** - Default workflows provided by Windsurf
+
+This means that if an organization deploys a system-level workflow with a specific name, it will override any workspace, global, or built-in workflow with the same name.
+
+In the Cascade UI, system-level workflows are displayed with a "System" label and cannot be deleted by end users.
+
+<Note>
+  **Important**: System-level workflows should be managed by your IT or security team. Ensure your internal teams handle deployment, updates, and compliance according to your organization's policies. You can use standard tools and workflows such as Mobile Device Management (MDM) or Configuration Management to do so.
+</Note>
+
+
+# IDE Compatibility
 Source: https://docs.windsurf.com/plugins/compatibility
 
-
+Supported IDEs and version requirements for Windsurf Plugins including VS Code, JetBrains, Visual Studio, NeoVim, Vim, Emacs, Xcode, Sublime Text, and Eclipse.
 
 Visit our [download page](https://windsurf.com/download) for a list of supported IDEs and installation instructions.
 
@@ -4830,7 +4466,7 @@ Contact your internal Windsurf administrator if you have questions.
 # Welcome to Windsurf Plugins
 Source: https://docs.windsurf.com/plugins/getting-started
 
-
+Install and set up Windsurf Plugins for JetBrains, VS Code, Visual Studio, Vim, NeoVim, Jupyter, Chrome, and other IDEs with AI-powered coding assistance.
 
 **Windsurf Plugins** bring our suite of AI tools to various IDEs and editors, empowering developers to dream bigger by meeting them where they are.
 
@@ -4838,31 +4474,31 @@ Source: https://docs.windsurf.com/plugins/getting-started
   Get started with your team!
 </Card>
 
-<CardGroup cols={3}>
+<CardGroup>
   <Card
     title="Cascade"
     icon={
-    <svg
-      width="25"
-      height="25"
-      viewBox="0 0 1292 1292"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <path
-        d="M1195 599C1195 848.08 993.08 1050 744 1050C494.92 1050 293 848.08 293 599C293 349.92 494.92 148 744 148C993.08 148 1195 349.92 1195 599ZM411.5 599C411.5 782.635 560.365 931.5 744 931.5C927.635 931.5 1076.5 782.635 1076.5 599C1076.5 415.365 927.635 266.5 744 266.5C560.365 266.5 411.5 415.365 411.5 599Z"
-        fill="#34E8BB"
-      />
-      <path
-        d="M1096.19 1053.62C1116.8 1078.03 1113.86 1114.77 1087.65 1133.04C1002.41 1192.46 903.441 1229.92 799.584 1241.61C676.505 1255.46 552.082 1232.51 442.049 1175.65C332.016 1118.79 241.314 1030.58 181.415 922.172C130.87 830.693 104.172 728.301 103.33 624.396C103.071 592.449 131.338 568.79 163.173 571.479C195.007 574.168 218.29 602.208 219.218 634.143C221.573 715.175 243.206 794.78 282.679 866.22C331.512 954.6 405.457 1026.51 495.161 1072.87C584.866 1119.22 686.302 1137.94 786.643 1126.64C867.75 1117.51 945.198 1089.11 1012.66 1044.15C1039.24 1026.44 1075.58 1029.21 1096.19 1053.62Z"
-        fill="#34E8BB"
-      />
-      <path
-        d="M177.334 450.08C146.261 442.514 126.947 411.072 137.349 380.829C160.687 312.983 195.56 249.512 240.566 193.267C285.571 137.023 339.851 89.0802 400.928 51.4326C428.153 34.6511 463.065 46.5999 477.261 75.2582C491.457 103.917 479.508 138.389 452.641 155.738C406.542 185.506 365.436 222.584 330.994 265.627C296.552 308.67 269.39 356.906 250.456 408.411C239.421 438.428 208.408 457.646 177.334 450.08Z"
-        fill="#34E8BB"
-      />
-    </svg>
-  }
+  <svg
+    width="25"
+    height="25"
+    viewBox="0 0 1292 1292"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M1195 599C1195 848.08 993.08 1050 744 1050C494.92 1050 293 848.08 293 599C293 349.92 494.92 148 744 148C993.08 148 1195 349.92 1195 599ZM411.5 599C411.5 782.635 560.365 931.5 744 931.5C927.635 931.5 1076.5 782.635 1076.5 599C1076.5 415.365 927.635 266.5 744 266.5C560.365 266.5 411.5 415.365 411.5 599Z"
+      fill="#34E8BB"
+    />
+    <path
+      d="M1096.19 1053.62C1116.8 1078.03 1113.86 1114.77 1087.65 1133.04C1002.41 1192.46 903.441 1229.92 799.584 1241.61C676.505 1255.46 552.082 1232.51 442.049 1175.65C332.016 1118.79 241.314 1030.58 181.415 922.172C130.87 830.693 104.172 728.301 103.33 624.396C103.071 592.449 131.338 568.79 163.173 571.479C195.007 574.168 218.29 602.208 219.218 634.143C221.573 715.175 243.206 794.78 282.679 866.22C331.512 954.6 405.457 1026.51 495.161 1072.87C584.866 1119.22 686.302 1137.94 786.643 1126.64C867.75 1117.51 945.198 1089.11 1012.66 1044.15C1039.24 1026.44 1075.58 1029.21 1096.19 1053.62Z"
+      fill="#34E8BB"
+    />
+    <path
+      d="M177.334 450.08C146.261 442.514 126.947 411.072 137.349 380.829C160.687 312.983 195.56 249.512 240.566 193.267C285.571 137.023 339.851 89.0802 400.928 51.4326C428.153 34.6511 463.065 46.5999 477.261 75.2582C491.457 103.917 479.508 138.389 452.641 155.738C406.542 185.506 365.436 222.584 330.994 265.627C296.552 308.67 269.39 356.906 250.456 408.411C239.421 438.428 208.408 457.646 177.334 450.08Z"
+      fill="#34E8BB"
+    />
+  </svg>
+}
     href="/plugins/cascade/cascade-overview"
   >
     Windsurf's coding agent.
@@ -4877,156 +4513,164 @@ Source: https://docs.windsurf.com/plugins/getting-started
   </Card>
 </CardGroup>
 
-## Plugin Set Up
+## Jetbrains
 
-Our plugins for Visual Studio Code and JetBrains are our most popular plugins.
-The installation steps for these two are given below.
-For other IDEs and editors like Eclipse, Visual Studio, Neovim, Google Colab, and more, visit [our download page](https://windsurf.com/download) to get started.
+We strongly recommend using the native Windsurf Editor or the JetBrains local plugin for their advanced agentic AI capabilities and cutting-edge features.
+All other plugins are under maintenance mode.
 
 <Note>
   These steps do not apply for enterprises on a self-hosted plan.
   If you are an enterprise user, please refer to the instructions in your enterprise portal.
 </Note>
 
+<Note>
+  For remote development environments, use the "Windsurf (Remote Development)" plugin instead. See the [Remote Development section](#remote-development-maintenance-mode) below.
+</Note>
+
+<Steps>
+  <Step title="Install Local Plugin">
+    Open the `Plugins` menu in your JetBrains IDE. The shortcut for this is `⌘+,` on Mac and `Ctrl+,` on Linux/Windows. It is also accessible from the settings menu.
+    Search for the Windsurf plugin, and install it. The plugin loader will prompt you to restart the IDE.
+
+    <Frame>
+      <img />
+    </Frame>
+  </Step>
+
+  <Step title="Wait for Language Server">
+    Upon successful installation, Windsurf will begin downloading a language server.
+    This is the program that communicates with our APIs to let you use Windsurf's AI features.
+    The download usually takes ten to twenty seconds, but the download speed may depend on your internet connection.
+    In the meantime, you are free to use your IDE as usual.
+
+    You should see a notification on the bottom right to indicate the progress of the download.
+
+    <Frame>
+      <img />
+    </Frame>
+  </Step>
+
+  <Step title="Authorize">
+    Open a project. Windsurf should prompt you to log in with a notification popup at the bottom right linking you to an online login page.
+    Equivalently, click the widget at the right of the bottom status bar and select the login option there.
+
+    <Frame>
+      <img />
+    </Frame>
+
+    If you do not have an account or otherwise are not already logged in online, you will be prompted to login.
+
+    <Frame>
+      <img />
+    </Frame>
+
+    Once you have logged in online, the webpage will indicate that you can return to your IDE.
+
+    <Frame>
+      <img />
+    </Frame>
+  </Step>
+
+  <Step title="All Done!">
+    You can now enjoy Windsurf's rich AI featureset: Autocomplete, Chat, Command, and more.
+
+    At any point, you can check your status by clicking the status bar widget at the bottom right.
+    If logged in, you will have access to your Windsurf settings and other controls.
+
+    If you'd like early access to new features, click on "Switch to Pre-Release"
+    to try out the [latest pre-release version](https://plugins.jetbrains.com/plugin/20540-windsurf-plugin-for-python-js-java-go--/versions/pre-release)
+    of the plugin.
+
+    <Frame>
+      <img />
+    </Frame>
+  </Step>
+</Steps>
+
+### Remote Development (maintenance mode)
+
+For JetBrains IDEs used in remote development environments, you need to use the separate "Windsurf (Remote Development)" plugin.
+
+This plugin is in maintenance mode. For advanced agentic AI capabilities and cutting-edge features, we strongly recommend using the native Windsurf Editor or the JetBrains local plugin.
+
+#### Requirements
+
+* JetBrains IDE version 2025.1.3 or greater
+
+#### Installation Steps
+
+<Steps>
+  <Step title="Install on Host">
+    Open the `Plugins (Host)` menu in your JetBrains IDE. The shortcut for this is `⌘+,` on Mac and `Ctrl+,` on Linux/Windows. It is also accessible from the settings menu.
+    Search for **"Windsurf (Remote Development)"** and install it.
+    Restart your IDE when prompted.
+
+    <Frame>
+      <img />
+    </Frame>
+  </Step>
+
+  <Step title="Install on Client">
+    Open the `Plugins (Client)` menu and search for **"Windsurf (Remote Development)"**.
+    Install the plugin and restart the IDE again.
+
+    <Frame>
+      <img />
+    </Frame>
+  </Step>
+
+  <Step title="Wait for Language Server">
+    After installing the plugin on the host, Windsurf will begin downloading a language server.
+    This is the program that communicates with our APIs to let you use Windsurf's AI features.
+    The download usually takes ten to twenty seconds, but the download speed may depend on your internet connection.
+    In the meantime, you are free to use your IDE as usual.
+
+    You should see a notification on the bottom right to indicate the progress of the download.
+
+    <Frame>
+      <img />
+    </Frame>
+  </Step>
+
+  <Step title="Authorize">
+    After the language server download is completed, Windsurf should prompt you to log in with a notification popup at the bottom right linking you to an online login page.
+    Equivalently, click the widget at the right of the bottom status bar and select the login option there.
+
+    <Frame>
+      <img />
+    </Frame>
+
+    If you do not have an account or otherwise are not already logged in online, you will be prompted to login.
+
+    <Frame>
+      <img />
+    </Frame>
+
+    Once you have logged in online, the webpage will indicate that you can return to your IDE.
+
+    <Frame>
+      <img />
+    </Frame>
+  </Step>
+
+  <Step title="All Done!">
+    You can now use Windsurf's AI features in your remote development environment.
+  </Step>
+</Steps>
+
+## Older Plugins
+
+We strongly recommend using the native Windsurf Editor or the JetBrains local plugin for their advanced agentic AI capabilities and cutting-edge features.
+All plugins below are under maintenance mode.
+
 <Tabs>
-  <Tab title="JetBrains">
-    <Note>
-      For remote development environments, use the "Windsurf (Remote Development)" plugin instead. See the [Remote Development section](#remote-development) below.
-    </Note>
-
-    <Steps>
-      <Step title="Install Plugin">
-        Open the `Plugins` menu in your JetBrains IDE. The shortcut for this is `⌘+,` on Mac and `Ctrl+,` on Linux/Windows. It is also accessible from the settings menu.
-        Search for the Windsurf plugin, and install it. The plugin loader will prompt you to restart the IDE.
-
-        <Frame>
-          <img src="https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_plugin_install.png?fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=e33799e1448d861a017d76f8c81daab8" data-og-width="1368" width="1368" data-og-height="1052" height="1052" data-path="assets/jetbrains_plugin_install.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_plugin_install.png?w=280&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=9fd0638ea39f24f470cd24a8d6e3700a 280w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_plugin_install.png?w=560&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=b8c9b4838d07cbb0cb477f49fcf7659f 560w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_plugin_install.png?w=840&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=72dc21e16b15c6f2b0e13ceed560f8c4 840w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_plugin_install.png?w=1100&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=e1f9d2bceffa745a5487787382ebbfa4 1100w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_plugin_install.png?w=1650&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=94428045a530787f402d9cfa389729f8 1650w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_plugin_install.png?w=2500&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=4f00851b0234e8a481aa9a20c72961f9 2500w" />
-        </Frame>
-      </Step>
-
-      <Step title="Wait for Language Server">
-        Upon successful installation, Windsurf will begin downloading a language server.
-        This is the program that communicates with our APIs to let you use Windsurf's AI features.
-        The download usually takes ten to twenty seconds, but the download speed may depend on your internet connection.
-        In the meantime, you are free to use your IDE as usual.
-
-        You should see a notification on the bottom right to indicate the progress of the download.
-
-        <Frame>
-          <img src="https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_ls_download_bar.png?fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=83c47b7eb7dc9329b628a46e8907def2" data-og-width="1174" width="1174" data-og-height="158" height="158" data-path="assets/jetbrains_ls_download_bar.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_ls_download_bar.png?w=280&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=e61bb008da3ab29782aceef44a2e9d88 280w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_ls_download_bar.png?w=560&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=6eeba8339ea901196394bf1912132cef 560w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_ls_download_bar.png?w=840&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=1c65098e81553ff68bf4bff80eb976a0 840w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_ls_download_bar.png?w=1100&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=23a76b659007fe928a2cf6ff314a68e5 1100w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_ls_download_bar.png?w=1650&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=25969302c3a2abbbb60a2daa80bccd25 1650w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_ls_download_bar.png?w=2500&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=f04b9995097d675928760a7e546d5713 2500w" />
-        </Frame>
-      </Step>
-
-      <Step title="Authorize">
-        Open a project. Windsurf should prompt you to log in with a notification popup at the bottom right linking you to an online login page.
-        Equivalently, click the widget at the right of the bottom status bar and select the login option there.
-
-        <Frame>
-          <img src="https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_login_widget.png?fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=bfa992229c936db6bf7a8127db88f45a" data-og-width="690" width="690" data-og-height="230" height="230" data-path="assets/jetbrains_login_widget.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_login_widget.png?w=280&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=09182ac0963790dec8622fb99e34beb0 280w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_login_widget.png?w=560&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=7fe6b1876ddc3720f719d04300ea5f55 560w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_login_widget.png?w=840&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=9d30ffe36b2a622968d83d90d2ea6d5b 840w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_login_widget.png?w=1100&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=93f54e0d9ccbc80f9b7d66e6a6378e14 1100w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_login_widget.png?w=1650&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=ad5d4305bcec8771cf038bde807640b0 1650w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_login_widget.png?w=2500&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=df3653940d8c5336400baa666cf9e47b 2500w" />
-        </Frame>
-
-        If you do not have an account or otherwise are not already logged in online, you will be prompted to login.
-
-        <Frame>
-          <img src="https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/login_prompt_webpage.png?fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=672f1635e88f7046b5eb4b3105a2df7a" data-og-width="1896" width="1896" data-og-height="1442" height="1442" data-path="assets/login_prompt_webpage.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/login_prompt_webpage.png?w=280&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=db65794f3cc9d2d96e9749cfb9b80483 280w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/login_prompt_webpage.png?w=560&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=1e2030393a08040b3edce944b1003b7b 560w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/login_prompt_webpage.png?w=840&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=b26d305a7c779494bb0ed0163a5b8357 840w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/login_prompt_webpage.png?w=1100&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=89f1408e2589cef146bbf5dbe02a50a3 1100w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/login_prompt_webpage.png?w=1650&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=fa96ee1301840a5549005389757324cd 1650w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/login_prompt_webpage.png?w=2500&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=8d5b9aaeaf0f0c2fd75ee1bd12a9e849 2500w" />
-        </Frame>
-
-        Once you have logged in online, the webpage will indicate that you can return to your IDE.
-
-        <Frame>
-          <img src="https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/login_successful_webpage.png?fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=d7984d21a30dec05af01c3cd7e7b8f7c" data-og-width="1702" width="1702" data-og-height="450" height="450" data-path="assets/login_successful_webpage.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/login_successful_webpage.png?w=280&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=d8eca1dc4cfeb08312bf679c0697631d 280w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/login_successful_webpage.png?w=560&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=23cd31e8b0d21511fb91807ee653f899 560w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/login_successful_webpage.png?w=840&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=beb4a54dac8a5dac142434ca28da5620 840w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/login_successful_webpage.png?w=1100&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=0c06cd132ae347e4237a2952c4c41dce 1100w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/login_successful_webpage.png?w=1650&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=65828b581f20e71d39c398c1309b0056 1650w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/login_successful_webpage.png?w=2500&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=98db7a38bf6b302ba716262e7241266d 2500w" />
-        </Frame>
-      </Step>
-
-      <Step title="All Done!">
-        You can now enjoy Windsurf's rich AI featureset: Autocomplete, Chat, Command, and more.
-
-        At any point, you can check your status by clicking the status bar widget at the bottom right.
-        If logged in, you will have access to your Windsurf settings and other controls.
-
-        <Frame>
-          <img src="https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_status_bar.png?fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=88a5e47f629e1845d61e658b5deb78cb" data-og-width="688" width="688" data-og-height="542" height="542" data-path="assets/jetbrains_status_bar.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_status_bar.png?w=280&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=6ca052f2cf4072827fe0180984f6d1d5 280w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_status_bar.png?w=560&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=2fbb2d670a421204bc26db5ab2e68ba4 560w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_status_bar.png?w=840&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=129172ac81e47df236bf764927276358 840w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_status_bar.png?w=1100&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=16f1bcd9b876b8798efc5c2d40c692e8 1100w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_status_bar.png?w=1650&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=209654eb653db633278201a472142377 1650w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_status_bar.png?w=2500&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=4aac0c027b201204d2e095e6e0729f68 2500w" />
-        </Frame>
-      </Step>
-    </Steps>
-
-    ## Remote Development
-
-    For JetBrains IDEs used in remote development environments, you need to use the separate "Windsurf (Remote Development)" plugin.
-
-    ### Requirements
-
-    * JetBrains IDE version 2025.1.3 or greater
-
-    ### Installation Steps
-
-    <Steps>
-      <Step title="Install on Host">
-        Open the `Plugins (Host)` menu in your JetBrains IDE. The shortcut for this is `⌘+,` on Mac and `Ctrl+,` on Linux/Windows. It is also accessible from the settings menu.
-        Search for **"Windsurf (Remote Development)"** and install it.
-        Restart your IDE when prompted.
-
-        <Frame>
-          <img src="https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_remote_plugin_install_host.png?fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=d211e58031d19dd7c14625882e105068" data-og-width="1494" width="1494" data-og-height="1110" height="1110" data-path="assets/jetbrains_remote_plugin_install_host.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_remote_plugin_install_host.png?w=280&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=414c87310c072979677ba0f40c87ca39 280w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_remote_plugin_install_host.png?w=560&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=2730fab386283bcda33d7dd3a4bcc680 560w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_remote_plugin_install_host.png?w=840&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=3ffc5ed84ab5b76a7988ec43d13d9bd0 840w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_remote_plugin_install_host.png?w=1100&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=b89fbb65563423783a5e3bdc10f1b798 1100w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_remote_plugin_install_host.png?w=1650&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=0bc28c1317b0f8d495bfc8d528103644 1650w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_remote_plugin_install_host.png?w=2500&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=7e116f50fadc495064267b0f28949269 2500w" />
-        </Frame>
-      </Step>
-
-      <Step title="Install on Client">
-        Open the `Plugins (Client)` menu and search for **"Windsurf (Remote Development)"**.
-        Install the plugin and restart the IDE again.
-
-        <Frame>
-          <img src="https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_remote_plugin_install_client.png?fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=ab22c1e39b3e2213a042c5b77e9485da" data-og-width="1496" width="1496" data-og-height="1098" height="1098" data-path="assets/jetbrains_remote_plugin_install_client.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_remote_plugin_install_client.png?w=280&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=db937a60880616dd0bd4a5f596ba92ec 280w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_remote_plugin_install_client.png?w=560&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=8dec360498151e89fb91d5f44ed377d3 560w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_remote_plugin_install_client.png?w=840&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=1d9289fbf9d8439ee32f6e788d00a4cf 840w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_remote_plugin_install_client.png?w=1100&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=7dcc7308ca332a6ec3958bb7d0ab4b3e 1100w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_remote_plugin_install_client.png?w=1650&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=e306e9c40b837c5ac92d9dff86383483 1650w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_remote_plugin_install_client.png?w=2500&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=1c249ed8f90c6ff91d2893bf5cfb3c0b 2500w" />
-        </Frame>
-      </Step>
-
-      <Step title="Wait for Language Server">
-        After installing the plugin on the host, Windsurf will begin downloading a language server.
-        This is the program that communicates with our APIs to let you use Windsurf's AI features.
-        The download usually takes ten to twenty seconds, but the download speed may depend on your internet connection.
-        In the meantime, you are free to use your IDE as usual.
-
-        You should see a notification on the bottom right to indicate the progress of the download.
-
-        <Frame>
-          <img src="https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_ls_download_bar.png?fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=83c47b7eb7dc9329b628a46e8907def2" data-og-width="1174" width="1174" data-og-height="158" height="158" data-path="assets/jetbrains_ls_download_bar.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_ls_download_bar.png?w=280&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=e61bb008da3ab29782aceef44a2e9d88 280w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_ls_download_bar.png?w=560&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=6eeba8339ea901196394bf1912132cef 560w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_ls_download_bar.png?w=840&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=1c65098e81553ff68bf4bff80eb976a0 840w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_ls_download_bar.png?w=1100&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=23a76b659007fe928a2cf6ff314a68e5 1100w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_ls_download_bar.png?w=1650&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=25969302c3a2abbbb60a2daa80bccd25 1650w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_ls_download_bar.png?w=2500&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=f04b9995097d675928760a7e546d5713 2500w" />
-        </Frame>
-      </Step>
-
-      <Step title="Authorize">
-        After the language server download is completed, Windsurf should prompt you to log in with a notification popup at the bottom right linking you to an online login page.
-        Equivalently, click the widget at the right of the bottom status bar and select the login option there.
-
-        <Frame>
-          <img src="https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_login_widget.png?fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=bfa992229c936db6bf7a8127db88f45a" data-og-width="690" width="690" data-og-height="230" height="230" data-path="assets/jetbrains_login_widget.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_login_widget.png?w=280&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=09182ac0963790dec8622fb99e34beb0 280w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_login_widget.png?w=560&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=7fe6b1876ddc3720f719d04300ea5f55 560w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_login_widget.png?w=840&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=9d30ffe36b2a622968d83d90d2ea6d5b 840w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_login_widget.png?w=1100&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=93f54e0d9ccbc80f9b7d66e6a6378e14 1100w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_login_widget.png?w=1650&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=ad5d4305bcec8771cf038bde807640b0 1650w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_login_widget.png?w=2500&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=df3653940d8c5336400baa666cf9e47b 2500w" />
-        </Frame>
-
-        If you do not have an account or otherwise are not already logged in online, you will be prompted to login.
-
-        <Frame>
-          <img src="https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/login_prompt_webpage.png?fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=672f1635e88f7046b5eb4b3105a2df7a" data-og-width="1896" width="1896" data-og-height="1442" height="1442" data-path="assets/login_prompt_webpage.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/login_prompt_webpage.png?w=280&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=db65794f3cc9d2d96e9749cfb9b80483 280w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/login_prompt_webpage.png?w=560&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=1e2030393a08040b3edce944b1003b7b 560w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/login_prompt_webpage.png?w=840&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=b26d305a7c779494bb0ed0163a5b8357 840w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/login_prompt_webpage.png?w=1100&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=89f1408e2589cef146bbf5dbe02a50a3 1100w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/login_prompt_webpage.png?w=1650&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=fa96ee1301840a5549005389757324cd 1650w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/login_prompt_webpage.png?w=2500&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=8d5b9aaeaf0f0c2fd75ee1bd12a9e849 2500w" />
-        </Frame>
-
-        Once you have logged in online, the webpage will indicate that you can return to your IDE.
-
-        <Frame>
-          <img src="https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/login_successful_webpage.png?fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=d7984d21a30dec05af01c3cd7e7b8f7c" data-og-width="1702" width="1702" data-og-height="450" height="450" data-path="assets/login_successful_webpage.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/login_successful_webpage.png?w=280&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=d8eca1dc4cfeb08312bf679c0697631d 280w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/login_successful_webpage.png?w=560&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=23cd31e8b0d21511fb91807ee653f899 560w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/login_successful_webpage.png?w=840&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=beb4a54dac8a5dac142434ca28da5620 840w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/login_successful_webpage.png?w=1100&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=0c06cd132ae347e4237a2952c4c41dce 1100w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/login_successful_webpage.png?w=1650&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=65828b581f20e71d39c398c1309b0056 1650w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/login_successful_webpage.png?w=2500&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=98db7a38bf6b302ba716262e7241266d 2500w" />
-        </Frame>
-      </Step>
-
-      <Step title="All Done!">
-        You can now use Windsurf's AI features in your remote development environment.
-      </Step>
-    </Steps>
-  </Tab>
-
   <Tab title="Visual Studio Code">
     <Steps>
       <Step title="Install Plugin">
         Find the Windsurf Plugin (formerly Codeium) in the VS Code Marketplace and install it.
 
         <Frame>
-          <img src="https://mintcdn.com/codeium/vRt4FQOyBeZpD2Pu/assets/vscode_extension_page.png?fit=max&auto=format&n=vRt4FQOyBeZpD2Pu&q=85&s=543ab4d80d64932510d9db4378301ec0" data-og-width="3100" width="3100" data-og-height="2300" height="2300" data-path="assets/vscode_extension_page.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/vRt4FQOyBeZpD2Pu/assets/vscode_extension_page.png?w=280&fit=max&auto=format&n=vRt4FQOyBeZpD2Pu&q=85&s=fb00864f666577f53b8a181e1b88df08 280w, https://mintcdn.com/codeium/vRt4FQOyBeZpD2Pu/assets/vscode_extension_page.png?w=560&fit=max&auto=format&n=vRt4FQOyBeZpD2Pu&q=85&s=0743d2d63420106c444beb5374ec7b3f 560w, https://mintcdn.com/codeium/vRt4FQOyBeZpD2Pu/assets/vscode_extension_page.png?w=840&fit=max&auto=format&n=vRt4FQOyBeZpD2Pu&q=85&s=440c8a34f7c89bbf426e15667655829a 840w, https://mintcdn.com/codeium/vRt4FQOyBeZpD2Pu/assets/vscode_extension_page.png?w=1100&fit=max&auto=format&n=vRt4FQOyBeZpD2Pu&q=85&s=83b8a64f44cdbe1cf9efe010b7342956 1100w, https://mintcdn.com/codeium/vRt4FQOyBeZpD2Pu/assets/vscode_extension_page.png?w=1650&fit=max&auto=format&n=vRt4FQOyBeZpD2Pu&q=85&s=eb7bb2de6afff351cebf2e18acc9cd84 1650w, https://mintcdn.com/codeium/vRt4FQOyBeZpD2Pu/assets/vscode_extension_page.png?w=2500&fit=max&auto=format&n=vRt4FQOyBeZpD2Pu&q=85&s=f2105aca1cfba29b0204d7d7106ad209 2500w" />
+          <img />
         </Frame>
       </Step>
 
@@ -5035,14 +4679,14 @@ For other IDEs and editors like Eclipse, Visual Studio, Neovim, Google Colab, an
         Equivalently, you can log in to Windsurf via the profile icon at the bottom of the left sidebar.
 
         <Frame>
-          <img src="https://mintcdn.com/codeium/vRt4FQOyBeZpD2Pu/assets/vscode_login_init_left.png?fit=max&auto=format&n=vRt4FQOyBeZpD2Pu&q=85&s=40142fcfc135e01628f5545051b8120a" data-og-width="1870" width="1870" data-og-height="360" height="360" data-path="assets/vscode_login_init_left.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/vRt4FQOyBeZpD2Pu/assets/vscode_login_init_left.png?w=280&fit=max&auto=format&n=vRt4FQOyBeZpD2Pu&q=85&s=2be3c8e105210bd0e97a58a664f4103a 280w, https://mintcdn.com/codeium/vRt4FQOyBeZpD2Pu/assets/vscode_login_init_left.png?w=560&fit=max&auto=format&n=vRt4FQOyBeZpD2Pu&q=85&s=01652fe32e88c74950f06f6672738d3e 560w, https://mintcdn.com/codeium/vRt4FQOyBeZpD2Pu/assets/vscode_login_init_left.png?w=840&fit=max&auto=format&n=vRt4FQOyBeZpD2Pu&q=85&s=839e1a7da0b9d1a067df915a4682d7a8 840w, https://mintcdn.com/codeium/vRt4FQOyBeZpD2Pu/assets/vscode_login_init_left.png?w=1100&fit=max&auto=format&n=vRt4FQOyBeZpD2Pu&q=85&s=cc6ed5cf56bba1a46fa2351ea5ae4129 1100w, https://mintcdn.com/codeium/vRt4FQOyBeZpD2Pu/assets/vscode_login_init_left.png?w=1650&fit=max&auto=format&n=vRt4FQOyBeZpD2Pu&q=85&s=30ac41ca56988bc8be76bfec9e769143 1650w, https://mintcdn.com/codeium/vRt4FQOyBeZpD2Pu/assets/vscode_login_init_left.png?w=2500&fit=max&auto=format&n=vRt4FQOyBeZpD2Pu&q=85&s=434c27fe1917b8726a025f1486dcb51b 2500w" />
+          <img />
         </Frame>
 
         <Note>If you get an error message indicating that the browser cannot open a link from Visual Studio Code, you may need to update your browser and restart the authorization flow.</Note>
         If you do not have an account or otherwise are not already logged in online, you will be prompted to create an account or login.
 
         <Frame>
-          <img src="https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/login_prompt_webpage.png?fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=672f1635e88f7046b5eb4b3105a2df7a" data-og-width="1896" width="1896" data-og-height="1442" height="1442" data-path="assets/login_prompt_webpage.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/login_prompt_webpage.png?w=280&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=db65794f3cc9d2d96e9749cfb9b80483 280w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/login_prompt_webpage.png?w=560&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=1e2030393a08040b3edce944b1003b7b 560w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/login_prompt_webpage.png?w=840&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=b26d305a7c779494bb0ed0163a5b8357 840w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/login_prompt_webpage.png?w=1100&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=89f1408e2589cef146bbf5dbe02a50a3 1100w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/login_prompt_webpage.png?w=1650&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=fa96ee1301840a5549005389757324cd 1650w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/login_prompt_webpage.png?w=2500&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=8d5b9aaeaf0f0c2fd75ee1bd12a9e849 2500w" />
+          <img />
         </Frame>
 
         Once you sign in, you will be redirected back to Visual Studio Code via pop-up.
@@ -5063,7 +4707,7 @@ For other IDEs and editors like Eclipse, Visual Studio, Neovim, Google Colab, an
   </Tab>
 
   <Tab title="Vim / Neovim">
-    ## Extension Installation
+    ### Extension Installation
 
     <Steps>
       <Step title="Install Plugin">
@@ -5071,7 +4715,7 @@ For other IDEs and editors like Eclipse, Visual Studio, Neovim, Google Colab, an
       </Step>
     </Steps>
 
-    ## Using Windsurf Plugin
+    ### Using Windsurf Plugin
 
     <Steps>
       <Step title="Setup">
@@ -5082,7 +4726,7 @@ For other IDEs and editors like Eclipse, Visual Studio, Neovim, Google Colab, an
         Windsurf can suggest multiple lines of code from a partial function header:
 
         <Frame>
-          <img src="https://mintcdn.com/codeium/vRt4FQOyBeZpD2Pu/assets/vim_tutorial/snippet_one.png?fit=max&auto=format&n=vRt4FQOyBeZpD2Pu&q=85&s=409f51d6a4a90405ac91cee23edee16b" alt="Snippet one" data-og-width="508" width="508" data-og-height="260" height="260" data-path="assets/vim_tutorial/snippet_one.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/vRt4FQOyBeZpD2Pu/assets/vim_tutorial/snippet_one.png?w=280&fit=max&auto=format&n=vRt4FQOyBeZpD2Pu&q=85&s=f7cf715f9ca4607000836ad41098c421 280w, https://mintcdn.com/codeium/vRt4FQOyBeZpD2Pu/assets/vim_tutorial/snippet_one.png?w=560&fit=max&auto=format&n=vRt4FQOyBeZpD2Pu&q=85&s=b064ea325a36519a2f081ddd4afc8c88 560w, https://mintcdn.com/codeium/vRt4FQOyBeZpD2Pu/assets/vim_tutorial/snippet_one.png?w=840&fit=max&auto=format&n=vRt4FQOyBeZpD2Pu&q=85&s=aa4513cd8c1daa07eb8a5473fad0226b 840w, https://mintcdn.com/codeium/vRt4FQOyBeZpD2Pu/assets/vim_tutorial/snippet_one.png?w=1100&fit=max&auto=format&n=vRt4FQOyBeZpD2Pu&q=85&s=b56a682eb2e30c81e6904a36b5b72fcd 1100w, https://mintcdn.com/codeium/vRt4FQOyBeZpD2Pu/assets/vim_tutorial/snippet_one.png?w=1650&fit=max&auto=format&n=vRt4FQOyBeZpD2Pu&q=85&s=92686ebc384206730389c69594851839 1650w, https://mintcdn.com/codeium/vRt4FQOyBeZpD2Pu/assets/vim_tutorial/snippet_one.png?w=2500&fit=max&auto=format&n=vRt4FQOyBeZpD2Pu&q=85&s=31e4005807287bb3951513358bb5a5bc 2500w" />
+          <img alt="Snippet one" />
         </Frame>
       </Step>
 
@@ -5094,21 +4738,21 @@ For other IDEs and editors like Eclipse, Visual Studio, Neovim, Google Colab, an
         Windsurf also understands comments:
 
         <Frame>
-          <img src="https://mintcdn.com/codeium/vRt4FQOyBeZpD2Pu/assets/vim_tutorial/snippet_two.png?fit=max&auto=format&n=vRt4FQOyBeZpD2Pu&q=85&s=48c14b1d408acb68c97e5dac5c4ed421" alt="Snippet two" data-og-width="712" width="712" data-og-height="392" height="392" data-path="assets/vim_tutorial/snippet_two.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/vRt4FQOyBeZpD2Pu/assets/vim_tutorial/snippet_two.png?w=280&fit=max&auto=format&n=vRt4FQOyBeZpD2Pu&q=85&s=2e064f0a8827a48f944eafe210e5c548 280w, https://mintcdn.com/codeium/vRt4FQOyBeZpD2Pu/assets/vim_tutorial/snippet_two.png?w=560&fit=max&auto=format&n=vRt4FQOyBeZpD2Pu&q=85&s=a22b17ea2cb1267b903e984279784a29 560w, https://mintcdn.com/codeium/vRt4FQOyBeZpD2Pu/assets/vim_tutorial/snippet_two.png?w=840&fit=max&auto=format&n=vRt4FQOyBeZpD2Pu&q=85&s=612bba50ea0377516d3a36fb91fc1d50 840w, https://mintcdn.com/codeium/vRt4FQOyBeZpD2Pu/assets/vim_tutorial/snippet_two.png?w=1100&fit=max&auto=format&n=vRt4FQOyBeZpD2Pu&q=85&s=f20f1a31efb451e1b83b4cafeacd4250 1100w, https://mintcdn.com/codeium/vRt4FQOyBeZpD2Pu/assets/vim_tutorial/snippet_two.png?w=1650&fit=max&auto=format&n=vRt4FQOyBeZpD2Pu&q=85&s=234f14baa7491420f5d6acd5861b86ad 1650w, https://mintcdn.com/codeium/vRt4FQOyBeZpD2Pu/assets/vim_tutorial/snippet_two.png?w=2500&fit=max&auto=format&n=vRt4FQOyBeZpD2Pu&q=85&s=5da32fd160fe285587e69c53c3e5798a 2500w" />
+          <img alt="Snippet two" />
         </Frame>
       </Step>
     </Steps>
   </Tab>
 
   <Tab title="Visual Studio">
-    ## Extension Installation
+    ### Extension Installation
 
     <Steps>
       <Step title="Open Extension Marketplace">
         In the Visual Studio menu bar, click **Extensions → Manage Extensions**.
 
         <Frame>
-          <img src="https://mintcdn.com/codeium/vRt4FQOyBeZpD2Pu/assets/visual_studio_tutorial/manage_extensions.png?fit=max&auto=format&n=vRt4FQOyBeZpD2Pu&q=85&s=35d03bb50b8499567c41ea93fe8ea178" alt="Manage Extensions" data-og-width="636" width="636" data-og-height="171" height="171" data-path="assets/visual_studio_tutorial/manage_extensions.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/vRt4FQOyBeZpD2Pu/assets/visual_studio_tutorial/manage_extensions.png?w=280&fit=max&auto=format&n=vRt4FQOyBeZpD2Pu&q=85&s=416afdc177726f0f9c866b723cfb09fa 280w, https://mintcdn.com/codeium/vRt4FQOyBeZpD2Pu/assets/visual_studio_tutorial/manage_extensions.png?w=560&fit=max&auto=format&n=vRt4FQOyBeZpD2Pu&q=85&s=e6df383e2a067ba6475470d6cbc34a95 560w, https://mintcdn.com/codeium/vRt4FQOyBeZpD2Pu/assets/visual_studio_tutorial/manage_extensions.png?w=840&fit=max&auto=format&n=vRt4FQOyBeZpD2Pu&q=85&s=8b672de47a30dae2279447d5071647d5 840w, https://mintcdn.com/codeium/vRt4FQOyBeZpD2Pu/assets/visual_studio_tutorial/manage_extensions.png?w=1100&fit=max&auto=format&n=vRt4FQOyBeZpD2Pu&q=85&s=64ef339b35d3e09063b47214e9b27b64 1100w, https://mintcdn.com/codeium/vRt4FQOyBeZpD2Pu/assets/visual_studio_tutorial/manage_extensions.png?w=1650&fit=max&auto=format&n=vRt4FQOyBeZpD2Pu&q=85&s=82c6fe8c9bdd815b6acd429d0c565d93 1650w, https://mintcdn.com/codeium/vRt4FQOyBeZpD2Pu/assets/visual_studio_tutorial/manage_extensions.png?w=2500&fit=max&auto=format&n=vRt4FQOyBeZpD2Pu&q=85&s=31660b8e9a9f255853e9c9a92c6c6f07 2500w" />
+          <img alt="Manage Extensions" />
         </Frame>
       </Step>
 
@@ -5116,7 +4760,7 @@ For other IDEs and editors like Eclipse, Visual Studio, Neovim, Google Colab, an
         In **Manage Extensions**, click **Visual Studio Marketplace**, search for **Windsurf**, then click **Download**.
 
         <Frame>
-          <img src="https://mintcdn.com/codeium/vRt4FQOyBeZpD2Pu/assets/visual_studio_tutorial/install.png?fit=max&auto=format&n=vRt4FQOyBeZpD2Pu&q=85&s=1c004b5b2883643ab0724038ae1df460" alt="Install plugin" data-og-width="1413" width="1413" data-og-height="985" height="985" data-path="assets/visual_studio_tutorial/install.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/vRt4FQOyBeZpD2Pu/assets/visual_studio_tutorial/install.png?w=280&fit=max&auto=format&n=vRt4FQOyBeZpD2Pu&q=85&s=a007c5f8382e0817a778134f6694216c 280w, https://mintcdn.com/codeium/vRt4FQOyBeZpD2Pu/assets/visual_studio_tutorial/install.png?w=560&fit=max&auto=format&n=vRt4FQOyBeZpD2Pu&q=85&s=862e9691e57566e2aa58c4d75e7a6122 560w, https://mintcdn.com/codeium/vRt4FQOyBeZpD2Pu/assets/visual_studio_tutorial/install.png?w=840&fit=max&auto=format&n=vRt4FQOyBeZpD2Pu&q=85&s=a0e1e22639f1cd3f23c34a4711fe6c8c 840w, https://mintcdn.com/codeium/vRt4FQOyBeZpD2Pu/assets/visual_studio_tutorial/install.png?w=1100&fit=max&auto=format&n=vRt4FQOyBeZpD2Pu&q=85&s=e65588fa8b416221893890e1258f7833 1100w, https://mintcdn.com/codeium/vRt4FQOyBeZpD2Pu/assets/visual_studio_tutorial/install.png?w=1650&fit=max&auto=format&n=vRt4FQOyBeZpD2Pu&q=85&s=9f93244c33e62ced42cd0821621d4f26 1650w, https://mintcdn.com/codeium/vRt4FQOyBeZpD2Pu/assets/visual_studio_tutorial/install.png?w=2500&fit=max&auto=format&n=vRt4FQOyBeZpD2Pu&q=85&s=d25e02bc6f2eb42835819599d3abc677 2500w" />
+          <img alt="Install plugin" />
         </Frame>
       </Step>
 
@@ -5137,7 +4781,7 @@ For other IDEs and editors like Eclipse, Visual Studio, Neovim, Google Colab, an
       </Step>
     </Steps>
 
-    ## Using Windsurf Plugin
+    ### Using Windsurf Plugin
 
     <Steps>
       <Step title="Setup">
@@ -5148,7 +4792,7 @@ For other IDEs and editors like Eclipse, Visual Studio, Neovim, Google Colab, an
         Windsurf can suggest multiple lines of code from a partial function signature:
 
         <Frame>
-          <img src="https://mintcdn.com/codeium/vRt4FQOyBeZpD2Pu/assets/visual_studio_tutorial/suggestion.png?fit=max&auto=format&n=vRt4FQOyBeZpD2Pu&q=85&s=3ddaac8fa3871d2e99b4c6dfffc5f789" alt="Suggestion example" data-og-width="1128" width="1128" data-og-height="461" height="461" data-path="assets/visual_studio_tutorial/suggestion.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/vRt4FQOyBeZpD2Pu/assets/visual_studio_tutorial/suggestion.png?w=280&fit=max&auto=format&n=vRt4FQOyBeZpD2Pu&q=85&s=1448fac1000c33cdd119f88869c60dd5 280w, https://mintcdn.com/codeium/vRt4FQOyBeZpD2Pu/assets/visual_studio_tutorial/suggestion.png?w=560&fit=max&auto=format&n=vRt4FQOyBeZpD2Pu&q=85&s=0e4bc4744a3ed4375adcf78e03ff53eb 560w, https://mintcdn.com/codeium/vRt4FQOyBeZpD2Pu/assets/visual_studio_tutorial/suggestion.png?w=840&fit=max&auto=format&n=vRt4FQOyBeZpD2Pu&q=85&s=ab860784ccdd78a51e4543f509462bb5 840w, https://mintcdn.com/codeium/vRt4FQOyBeZpD2Pu/assets/visual_studio_tutorial/suggestion.png?w=1100&fit=max&auto=format&n=vRt4FQOyBeZpD2Pu&q=85&s=6379563a39b42f35c75803f796df1237 1100w, https://mintcdn.com/codeium/vRt4FQOyBeZpD2Pu/assets/visual_studio_tutorial/suggestion.png?w=1650&fit=max&auto=format&n=vRt4FQOyBeZpD2Pu&q=85&s=25be46fdb00bacfa7fa2e0ef4c8bcdd6 1650w, https://mintcdn.com/codeium/vRt4FQOyBeZpD2Pu/assets/visual_studio_tutorial/suggestion.png?w=2500&fit=max&auto=format&n=vRt4FQOyBeZpD2Pu&q=85&s=6f0edde75be0fcbb96831fc19c9cb24b 2500w" />
+          <img alt="Suggestion example" />
         </Frame>
       </Step>
 
@@ -5156,20 +4800,20 @@ For other IDEs and editors like Eclipse, Visual Studio, Neovim, Google Colab, an
         Press **Tab** to accept.
 
         <Frame>
-          <img src="https://mintcdn.com/codeium/vRt4FQOyBeZpD2Pu/assets/visual_studio_tutorial/post_accept.png?fit=max&auto=format&n=vRt4FQOyBeZpD2Pu&q=85&s=34e5899a41e604482b545aac8bb0bf8f" alt="After accept" data-og-width="1215" width="1215" data-og-height="514" height="514" data-path="assets/visual_studio_tutorial/post_accept.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/vRt4FQOyBeZpD2Pu/assets/visual_studio_tutorial/post_accept.png?w=280&fit=max&auto=format&n=vRt4FQOyBeZpD2Pu&q=85&s=547a8c512319311afde66b85fc384b65 280w, https://mintcdn.com/codeium/vRt4FQOyBeZpD2Pu/assets/visual_studio_tutorial/post_accept.png?w=560&fit=max&auto=format&n=vRt4FQOyBeZpD2Pu&q=85&s=5d6c7f779af6634ed38e464734cb7ab4 560w, https://mintcdn.com/codeium/vRt4FQOyBeZpD2Pu/assets/visual_studio_tutorial/post_accept.png?w=840&fit=max&auto=format&n=vRt4FQOyBeZpD2Pu&q=85&s=f65b3ac5034af9d806fe00c7d9aaf01e 840w, https://mintcdn.com/codeium/vRt4FQOyBeZpD2Pu/assets/visual_studio_tutorial/post_accept.png?w=1100&fit=max&auto=format&n=vRt4FQOyBeZpD2Pu&q=85&s=936a5940183e70d7fb3c58272d78a7ff 1100w, https://mintcdn.com/codeium/vRt4FQOyBeZpD2Pu/assets/visual_studio_tutorial/post_accept.png?w=1650&fit=max&auto=format&n=vRt4FQOyBeZpD2Pu&q=85&s=86aabe30bd517678dff634ac3129a674 1650w, https://mintcdn.com/codeium/vRt4FQOyBeZpD2Pu/assets/visual_studio_tutorial/post_accept.png?w=2500&fit=max&auto=format&n=vRt4FQOyBeZpD2Pu&q=85&s=91c5bc89660bc155a52881097e3e5d32 2500w" />
+          <img alt="After accept" />
         </Frame>
       </Step>
     </Steps>
   </Tab>
 
   <Tab title="Jupyter Notebook">
-    ## Install Windsurf Plugin
+    ### Install Windsurf Plugin
 
     <Steps>
       <Step title="Install Jupyter Extension">
         Open a new Jupyter Lab session. In a cell, paste and run `Shift+Enter` the following:
 
-        ```python  theme={null}
+        ```python theme={null}
         import sys
         !{sys.executable} -m pip install -U pip --user
         !{sys.executable} -m pip install -U codeium-jupyter --user
@@ -5177,7 +4821,7 @@ For other IDEs and editors like Eclipse, Visual Studio, Neovim, Google Colab, an
 
         If you’re inside a virtual environment, run:
 
-        ```python  theme={null}
+        ```python theme={null}
         import sys
         !{sys.executable} -m pip install -U pip
         !{sys.executable} -m pip install -U codeium-jupyter
@@ -5190,13 +4834,13 @@ For other IDEs and editors like Eclipse, Visual Studio, Neovim, Google Colab, an
         Relaunch Jupyter and open a notebook. Open the settings (<kbd>Ctrl</kbd> + <kbd>,</kbd>) and navigate to the **Windsurf** section. You’ll see fields for an enterprise URL and a token.
 
         <Frame>
-          <img src="https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jupyter_tutorial/codeium_settings.png?fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=9f4d0045130c5c2bebe332eb1d61aeea" alt="Settings UI" data-og-width="1025" width="1025" data-og-height="301" height="301" data-path="assets/jupyter_tutorial/codeium_settings.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jupyter_tutorial/codeium_settings.png?w=280&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=162c3268841b817f01749aee3552dcc9 280w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jupyter_tutorial/codeium_settings.png?w=560&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=e08893da2d05a135e0719e302ab8bbc8 560w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jupyter_tutorial/codeium_settings.png?w=840&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=bae56ae676f7ebd4b861d985c15b6623 840w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jupyter_tutorial/codeium_settings.png?w=1100&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=163443a500f99b4873bf3f38271b5db1 1100w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jupyter_tutorial/codeium_settings.png?w=1650&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=a4f11966eb9d3a054d82774cb3ee5eb3 1650w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jupyter_tutorial/codeium_settings.png?w=2500&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=d3cc874ea9e1112e0a8953ec7e454de2 2500w" />
+          <img alt="Settings UI" />
         </Frame>
 
         Click **Get Windsurf Authentication Token** and follow the link. Paste the token back into the settings dialog.
 
         <Frame>
-          <img src="https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jupyter_tutorial/settings_menu.png?fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=a22a4747a45c1f02e43ca6e8cf73c043" alt="Settings menu" data-og-width="330" width="330" data-og-height="89" height="89" data-path="assets/jupyter_tutorial/settings_menu.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jupyter_tutorial/settings_menu.png?w=280&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=9ff8010f2bab99477dc6143a1c627404 280w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jupyter_tutorial/settings_menu.png?w=560&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=3615e49192449c2871c742cc6812fa0a 560w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jupyter_tutorial/settings_menu.png?w=840&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=4164277a320d562ec583876cea600b6b 840w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jupyter_tutorial/settings_menu.png?w=1100&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=1ff36ad08f69cc0bde8d590034029758 1100w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jupyter_tutorial/settings_menu.png?w=1650&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=d29f63555bbc2cdc2ac54d98d0dc6e72 1650w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jupyter_tutorial/settings_menu.png?w=2500&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=bb2a9dfeacd4adf7ff4cd9a90a78e1ed 2500w" />
+          <img alt="Settings menu" />
         </Frame>
 
         <Note>If you can’t find the Windsurf settings, you likely didn’t restart Jupyter. Stop the server (Ctrl+C) and start it again with <code>jupyter lab</code>.</Note>
@@ -5210,7 +4854,7 @@ For other IDEs and editors like Eclipse, Visual Studio, Neovim, Google Colab, an
         After signing in, copy the token and paste it into the settings dialog.
 
         <Frame>
-          <img src="https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jupyter_tutorial/auth_token_setting.png?fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=51ac326b9b5870e5fdc8ff11c8ce6e8a" alt="Auth token field" data-og-width="818" width="818" data-og-height="326" height="326" data-path="assets/jupyter_tutorial/auth_token_setting.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jupyter_tutorial/auth_token_setting.png?w=280&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=db97a07d99805d9c8a56f253acbd259f 280w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jupyter_tutorial/auth_token_setting.png?w=560&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=4b4f08330a3041594a839d80ec833ddf 560w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jupyter_tutorial/auth_token_setting.png?w=840&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=18c98ae77723fd5bc25f793eff2fcb90 840w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jupyter_tutorial/auth_token_setting.png?w=1100&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=e974df5acdb06d0d7dadbef21684ccca 1100w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jupyter_tutorial/auth_token_setting.png?w=1650&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=b923ea1ace4ad384ec770bdbaac6a82a 1650w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jupyter_tutorial/auth_token_setting.png?w=2500&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=a3884bf89040738d3554afa0aac63f64 2500w" />
+          <img alt="Auth token field" />
         </Frame>
       </Step>
 
@@ -5219,14 +4863,14 @@ For other IDEs and editors like Eclipse, Visual Studio, Neovim, Google Colab, an
       </Step>
     </Steps>
 
-    ## Using Windsurf Plugin
+    ### Using Windsurf Plugin
 
     <Steps>
       <Step title="From Code">
         Windsurf can suggest multiple lines of code from a partial function header:
 
         <Frame>
-          <img src="https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jupyter_tutorial/snippet_one.png?fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=ace6fe93ebf37f70b9301a67636f2fd7" alt="Snippet one" data-og-width="1420" width="1420" data-og-height="346" height="346" data-path="assets/jupyter_tutorial/snippet_one.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jupyter_tutorial/snippet_one.png?w=280&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=5db0e5ae372503b71b2d792aa632fd9b 280w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jupyter_tutorial/snippet_one.png?w=560&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=5baa7f886ba56d65b421f2e2df295398 560w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jupyter_tutorial/snippet_one.png?w=840&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=78745dbc56aef001c0b60bfa7092a06b 840w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jupyter_tutorial/snippet_one.png?w=1100&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=e6ce86b48ef7d026e28600dae80aea89 1100w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jupyter_tutorial/snippet_one.png?w=1650&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=77c19d0021a2e43fffe9a28268c8d7cd 1650w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jupyter_tutorial/snippet_one.png?w=2500&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=33b460e1899dad65fe12aa43689f6fa9 2500w" />
+          <img alt="Snippet one" />
         </Frame>
       </Step>
 
@@ -5236,21 +4880,21 @@ For other IDEs and editors like Eclipse, Visual Studio, Neovim, Google Colab, an
         Windsurf also understands comments:
 
         <Frame>
-          <img src="https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jupyter_tutorial/snippet_two.png?fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=d657826f2cac6722e9ba2633849b44dc" alt="Snippet two" data-og-width="1741" width="1741" data-og-height="518" height="518" data-path="assets/jupyter_tutorial/snippet_two.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jupyter_tutorial/snippet_two.png?w=280&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=8094efb944365b016f410708e5854a34 280w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jupyter_tutorial/snippet_two.png?w=560&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=425c1d267db9bcfacbbd6d996916368d 560w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jupyter_tutorial/snippet_two.png?w=840&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=849f45ba96471b2b53677d80d8eae790 840w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jupyter_tutorial/snippet_two.png?w=1100&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=611df7d45ea5789a06981329dfcb5dc5 1100w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jupyter_tutorial/snippet_two.png?w=1650&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=214e01071dc31a3e44f7ce0633d0a6ab 1650w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jupyter_tutorial/snippet_two.png?w=2500&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=9c2459b43729aa7e660731b8ea879366 2500w" />
+          <img alt="Snippet two" />
         </Frame>
       </Step>
     </Steps>
   </Tab>
 
   <Tab title="Chrome">
-    ## Install Windsurf
+    ### Install Windsurf
 
     <Steps>
       <Step title="Install Chrome Extension">
         Visit the [Chrome Web Store page](https://chrome.google.com/webstore/detail/codeium/hobjkcpmjhlegmobgonaagepfckjkceh) and click **Add to Chrome**.
 
         <Frame>
-          <img src="https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/chrome_tutorial/chrome_web_store.png?fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=9989340a425cba8df53bb8f85dd34813" alt="Chrome Web Store" data-og-width="2070" width="2070" data-og-height="1608" height="1608" data-path="assets/chrome_tutorial/chrome_web_store.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/chrome_tutorial/chrome_web_store.png?w=280&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=834cc3bb444ad9ec13a8a989346e666b 280w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/chrome_tutorial/chrome_web_store.png?w=560&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=6e812133130031e529828fff3f925b14 560w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/chrome_tutorial/chrome_web_store.png?w=840&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=6a3736332b19591e34d3782a88f09b12 840w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/chrome_tutorial/chrome_web_store.png?w=1100&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=48f83426105236382b48c7f51928db2b 1100w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/chrome_tutorial/chrome_web_store.png?w=1650&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=3751fafd621904917842eaf0f2f2398e 1650w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/chrome_tutorial/chrome_web_store.png?w=2500&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=df259a9f0ecf6c7189ac297e9aefdbce 2500w" />
+          <img alt="Chrome Web Store" />
         </Frame>
       </Step>
 
@@ -5258,7 +4902,7 @@ For other IDEs and editors like Eclipse, Visual Studio, Neovim, Google Colab, an
         Open the extensions dropdown and click the **Pin** icon so the Windsurf icon stays visible.
 
         <Frame>
-          <img src="https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/chrome_tutorial/pin_extension.png?fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=e291a9235581423bb3434721d89aeddb" alt="Pin extension" data-og-width="1106" width="1106" data-og-height="674" height="674" data-path="assets/chrome_tutorial/pin_extension.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/chrome_tutorial/pin_extension.png?w=280&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=a9dd8b598724993cd71c448707c9ab2b 280w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/chrome_tutorial/pin_extension.png?w=560&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=c215fd00878ef5f2c809f8e2acade79e 560w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/chrome_tutorial/pin_extension.png?w=840&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=ee817d72513244ad9532d264047cfbbd 840w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/chrome_tutorial/pin_extension.png?w=1100&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=e6130b064d7b038d0d13d38dd1d3d194 1100w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/chrome_tutorial/pin_extension.png?w=1650&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=0f4b67a7564baaf43ee4ae9450f1f381 1650w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/chrome_tutorial/pin_extension.png?w=2500&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=c9ef5340e75b9d05fd524b01f2c57c39 2500w" />
+          <img alt="Pin extension" />
         </Frame>
       </Step>
 
@@ -5266,7 +4910,7 @@ For other IDEs and editors like Eclipse, Visual Studio, Neovim, Google Colab, an
         The extension opens a sign-in page automatically. If not, click the extension icon and follow the link.
 
         <Frame>
-          <img src="https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/chrome_tutorial/sign_in.png?fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=b92a046f9481a49030330a057a6d7177" alt="Sign in" data-og-width="1106" width="1106" data-og-height="674" height="674" data-path="assets/chrome_tutorial/sign_in.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/chrome_tutorial/sign_in.png?w=280&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=471978ae434d9be2305be09601c2a7ad 280w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/chrome_tutorial/sign_in.png?w=560&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=3704e3bcba6b7aade113cf2ad3398ccf 560w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/chrome_tutorial/sign_in.png?w=840&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=9f875919b3bdccc1d3b08275b90ccea5 840w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/chrome_tutorial/sign_in.png?w=1100&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=21fd3d55dc25b0bfcc2004cefb67bc3f 1100w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/chrome_tutorial/sign_in.png?w=1650&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=a951cddb545a99b0de7ddcc390eb7b0d 1650w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/chrome_tutorial/sign_in.png?w=2500&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=15b6d1d12cd6bb88a536d565fb7b6a95 2500w" />
+          <img alt="Sign in" />
         </Frame>
       </Step>
 
@@ -5274,19 +4918,19 @@ For other IDEs and editors like Eclipse, Visual Studio, Neovim, Google Colab, an
         After signing in, the icon turns normal and you’re ready to code. Try [creating a new Colab notebook](https://colab.research.google.com/#create=true).
 
         <Frame>
-          <img src="https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/chrome_tutorial/signed_in.png?fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=0a3dbc6098340fbda5885248e4f30971" alt="Signed in" data-og-width="1106" width="1106" data-og-height="674" height="674" data-path="assets/chrome_tutorial/signed_in.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/chrome_tutorial/signed_in.png?w=280&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=01dc7f61188923760b5a75f1e2532124 280w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/chrome_tutorial/signed_in.png?w=560&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=7ffcf643cbe32654bc80eff70440d75d 560w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/chrome_tutorial/signed_in.png?w=840&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=5d3c9563cbd760cd488223912c9445d3 840w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/chrome_tutorial/signed_in.png?w=1100&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=6edc863a24ebb25ae271d4918d562852 1100w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/chrome_tutorial/signed_in.png?w=1650&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=6de5eb4216cb63af89d8d18884b07b9b 1650w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/chrome_tutorial/signed_in.png?w=2500&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=4ff317a853324b3144067cb8f1fa3102 2500w" />
+          <img alt="Signed in" />
         </Frame>
       </Step>
     </Steps>
 
-    ## Using Windsurf
+    ### Using Windsurf
 
     <Steps>
       <Step title="From Code">
         Windsurf can suggest multiple lines of code from a partial function header:
 
         <Frame>
-          <img src="https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/chrome_tutorial/snippet_one.png?fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=907e36fdf207886da70c41f1efe7e7b7" alt="Snippet one" data-og-width="1106" width="1106" data-og-height="674" height="674" data-path="assets/chrome_tutorial/snippet_one.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/chrome_tutorial/snippet_one.png?w=280&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=53b5257099a5bd20c890b67e4080f08f 280w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/chrome_tutorial/snippet_one.png?w=560&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=29fa468001dd327293c5a14ee43a5695 560w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/chrome_tutorial/snippet_one.png?w=840&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=7fc22df136b0461ebc35bb41dfb8af83 840w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/chrome_tutorial/snippet_one.png?w=1100&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=9e1db1d578ab2168339fce418197fd41 1100w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/chrome_tutorial/snippet_one.png?w=1650&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=3fb969227f2f5d800e4067a49e020079 1650w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/chrome_tutorial/snippet_one.png?w=2500&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=91802d76fd6c9806f46943604c99339f 2500w" />
+          <img alt="Snippet one" />
         </Frame>
       </Step>
 
@@ -5296,21 +4940,21 @@ For other IDEs and editors like Eclipse, Visual Studio, Neovim, Google Colab, an
         Windsurf also understands comments:
 
         <Frame>
-          <img src="https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/chrome_tutorial/snippet_two.png?fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=db1902f22de4179508f52be5c3c6a93d" alt="Snippet two" data-og-width="1106" width="1106" data-og-height="766" height="766" data-path="assets/chrome_tutorial/snippet_two.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/chrome_tutorial/snippet_two.png?w=280&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=d2be18c5a55cb46ccfc9f0ce8a3c002a 280w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/chrome_tutorial/snippet_two.png?w=560&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=4e93fd3dea87d4bc03835c46b53bf0f3 560w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/chrome_tutorial/snippet_two.png?w=840&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=6357d45579279755890cd64528d746dd 840w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/chrome_tutorial/snippet_two.png?w=1100&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=ab818650cfb3bfae7e55e2c18112414f 1100w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/chrome_tutorial/snippet_two.png?w=1650&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=404add16420561c8841b41fadff1a98b 1650w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/chrome_tutorial/snippet_two.png?w=2500&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=4a40487f9d3c5bfa9c0eefba4a11ace9 2500w" />
+          <img alt="Snippet two" />
         </Frame>
       </Step>
     </Steps>
   </Tab>
 
   <Tab title="Eclipse">
-    ## Extension Installation
+    ### Extension Installation
 
     <Steps>
       <Step title="Drag the Install button">
         Visit the [Windsurf Plugin page on Eclipse Marketplace](https://marketplace.eclipse.org/content/codeium) and drag the **Install** button to the Eclipse toolbar.
 
         <Frame>
-          <img src="https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/eclipse_tutorial/drag.png?fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=363884b6bb7b71f1efab7219883a9271" alt="Drag Install button" data-og-width="1430" width="1430" data-og-height="732" height="732" data-path="assets/eclipse_tutorial/drag.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/eclipse_tutorial/drag.png?w=280&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=37d5eaf723594c3fd6599c03c297ae20 280w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/eclipse_tutorial/drag.png?w=560&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=a83d8af2d19370650ac88366c0252214 560w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/eclipse_tutorial/drag.png?w=840&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=44297a3be5cb504566c11c867e17f5c5 840w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/eclipse_tutorial/drag.png?w=1100&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=3f9b740b3f5bc0b67a037bf1c403606b 1100w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/eclipse_tutorial/drag.png?w=1650&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=02bcaddcb99d549b2d323751ef4fba6c 1650w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/eclipse_tutorial/drag.png?w=2500&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=4aedfb377482d2ac03d8d99f55158dfc 2500w" />
+          <img alt="Drag Install button" />
         </Frame>
       </Step>
 
@@ -5318,7 +4962,7 @@ For other IDEs and editors like Eclipse, Visual Studio, Neovim, Google Colab, an
         In the **Confirm Selected Features** prompt, click **Confirm**.
 
         <Frame>
-          <img src="https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/eclipse_tutorial/confirm.png?fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=a32ed25242dcb249c11a7b549b879fcf" alt="Confirm features" data-og-width="1192" width="1192" data-og-height="666" height="666" data-path="assets/eclipse_tutorial/confirm.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/eclipse_tutorial/confirm.png?w=280&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=8a134c9e360984f92cbca1ee217ca2f9 280w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/eclipse_tutorial/confirm.png?w=560&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=7d08236d876c313f7257c74df221414b 560w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/eclipse_tutorial/confirm.png?w=840&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=32a3a79993859fc6ec8ea268333b6767 840w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/eclipse_tutorial/confirm.png?w=1100&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=f86f1eb16741cbc52b7b21bdf0bcf593 1100w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/eclipse_tutorial/confirm.png?w=1650&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=ac140245225a09c3ab6469b898ed682c 1650w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/eclipse_tutorial/confirm.png?w=2500&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=b0635e1f3b6066136c0731c5eadc9715 2500w" />
+          <img alt="Confirm features" />
         </Frame>
       </Step>
 
@@ -5326,7 +4970,7 @@ For other IDEs and editors like Eclipse, Visual Studio, Neovim, Google Colab, an
         In the **Trust Artifacts** prompt, select **Unsigned** and click **Trust**.
 
         <Frame>
-          <img src="https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/eclipse_tutorial/trust.png?fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=e8181502397e14314c82d732bc56bddc" alt="Trust unsigned" data-og-width="1154" width="1154" data-og-height="590" height="590" data-path="assets/eclipse_tutorial/trust.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/eclipse_tutorial/trust.png?w=280&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=47cfb9f8ae6aeab5b9a87d08c0facc48 280w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/eclipse_tutorial/trust.png?w=560&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=1f9478bea57ad783cd3c0f7b446436aa 560w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/eclipse_tutorial/trust.png?w=840&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=361d411feec0edc856f5dd46437f3512 840w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/eclipse_tutorial/trust.png?w=1100&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=5c1459169457ee70f9cc2c82b6faef70 1100w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/eclipse_tutorial/trust.png?w=1650&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=3ea5f60185028fb4b52cdf7087ec0551 1650w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/eclipse_tutorial/trust.png?w=2500&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=a0f54f8feacf2b1e30da3808022c1567 2500w" />
+          <img alt="Trust unsigned" />
         </Frame>
       </Step>
 
@@ -5334,7 +4978,7 @@ For other IDEs and editors like Eclipse, Visual Studio, Neovim, Google Colab, an
         When prompted, restart Eclipse to complete the installation.
 
         <Frame>
-          <img src="https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/eclipse_tutorial/restart.png?fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=237032c3f9306b396c29a8c24bece219" alt="Restart Eclipse" data-og-width="1084" width="1084" data-og-height="242" height="242" data-path="assets/eclipse_tutorial/restart.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/eclipse_tutorial/restart.png?w=280&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=d6d53e409bcdc6e4f756a6aaf29faba3 280w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/eclipse_tutorial/restart.png?w=560&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=2877868a2b0a70233684ce58a34e0b44 560w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/eclipse_tutorial/restart.png?w=840&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=9e4c0f636cd24e2b12bbe4d5e436070d 840w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/eclipse_tutorial/restart.png?w=1100&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=6ef483575c3fdf79072e016894621a50 1100w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/eclipse_tutorial/restart.png?w=1650&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=a4ea8f50dc911e9b5ec2a85f161e0b37 1650w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/eclipse_tutorial/restart.png?w=2500&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=722f43d8070574cac6c61d6374fe973b 2500w" />
+          <img alt="Restart Eclipse" />
         </Frame>
       </Step>
 
@@ -5345,7 +4989,7 @@ For other IDEs and editors like Eclipse, Visual Studio, Neovim, Google Colab, an
       <Step title="All Done!">You’re ready to use Windsurf in Eclipse.</Step>
     </Steps>
 
-    ## Using Windsurf
+    ### Using Windsurf
 
     <Steps>
       <Step title="Setup">
@@ -5355,7 +4999,7 @@ For other IDEs and editors like Eclipse, Visual Studio, Neovim, Google Colab, an
       <Step title="From Code">
         Windsurf can suggest multiple lines of code from a partial function header:
 
-        ```java  theme={null}
+        ```java theme={null}
         package test;
 
         public class Fib {
@@ -5376,7 +5020,7 @@ For other IDEs and editors like Eclipse, Visual Studio, Neovim, Google Colab, an
 # Guide for Admins
 Source: https://docs.windsurf.com/plugins/guide-for-admins
 
-Windsurf Guide for Enterprise Admins
+Enterprise admin guide for deploying Windsurf at scale. Configure SSO, SCIM, RBAC, analytics, and team management for large organizations.
 
 # Windsurf Guide for Enterprise Admins
 
@@ -5411,8 +5055,8 @@ Windsurf Guide for Enterprise Admins
 ## 3.   Core Windsurf Concepts
 
 * **Team** – flat collections of members; no nested teams. Teams (also called *Groups*) drive **role assignment** and **analytics grouping**, letting you scope permissions and view usage metrics per cohort.
-* **Roles & Permissions** – predefined RBAC; admins are primarily responsible for **team management**, **Windsurf feature settings**, and **analytics**. Built-in roles usually cover these needs, but creating a custom role with *analytics-view* permission lets team managers and leads see metrics for their own teams. (<a href="/plugins/accounts/rbac-role-management" target="_blank">RBAC docs</a>)
-* **Admin Portal** – centralized UI for user & team management, credit usage, SSO configuration, feature toggles (<a href="/plugins/cascade/web-search" target="_blank">Web Search</a>, <a href="/plugins/cascade/mcp" target="_blank">MCP</a>, <a href="/windsurf/cascade/app-deploys" target="_blank">Deploys</a>), analytics dashboards/report export, service keys for API usage, and role/permission controls.
+* **Roles & Permissions** – predefined RBAC; admins are primarily responsible for **team management**, **Windsurf feature settings**, and **analytics**. Built-in roles usually cover these needs, but creating a custom role with *analytics-view* permission lets team managers and leads see metrics for their own teams. (<a href="/plugins/accounts/rbac-role-management">RBAC docs</a>)
+* **Admin Portal** – centralized UI for user & team management, credit usage, SSO configuration, feature toggles (<a href="/plugins/cascade/web-search">Web Search</a>, <a href="/plugins/cascade/mcp">MCP</a>, <a href="/windsurf/cascade/app-deploys">Deploys</a>), analytics dashboards/report export, service keys for API usage, and role/permission controls.
 * **Agents & Workspaces** – Windsurf IDE and Jetbrains Plugins are Agentic
 
 ### 3.1   Admin Portal Overview
@@ -5436,16 +5080,25 @@ The Admin Portal provides centralized management for all Windsurf enterprise fea
 
 > **Important:** These feature controls affect behavior for your entire organization and can only be modified by administrators. New major features with data privacy implications are released in the "off" state by default to ensure you have control over when and how they're enabled.
 
-The <a href="https://windsurf.com/team/settings" target="_blank">Admin Portal</a> gives you granular control over Windsurf features that can be enabled or disabled per team. **Data Privacy Note:** Some features require storing additional data or telemetry as noted below:
+The <a href="https://windsurf.com/team/settings">Admin Portal</a> gives you granular control over Windsurf features that can be enabled or disabled per team. **Data Privacy Note:** Some features require storing additional data or telemetry as noted below:
 
 **Models Configuration**
 
 * Configure which AI models your teams can access within Windsurf
 * Select multiple models for different use cases (code completion, chat, etc.)
 
+**Default Model Override**
+
+* Set the default Cascade model for users on your team
+* This model is pre-selected each time a user opens Windsurf (not just the first time)
+* Users can still change their model at any time during a session
+* Only models enabled in Models Configuration are available as default options
+
 **Auto Run Terminal Commands** *(Beta)*
 
-* Allow or restrict Cascade's ability to auto-execute commands on users' machines
+* Set the maximum auto-execution level for terminal commands across your organization
+* Four levels available: **Disabled** (no auto-execution), **Allowlist Only** (only allowlisted commands), **Auto** (AI-judged safe commands), and **Turbo** (all commands except denylisted)
+* Users can select any level up to the maximum you configure, giving them flexibility within your security policy
 * [Learn more about auto-executed commands](https://docs.windsurf.com/windsurf/terminal#auto-executed-cascade-commands)
 
 **MCP Servers** *(Beta)*
@@ -5453,32 +5106,32 @@ The <a href="https://windsurf.com/team/settings" target="_blank">Admin Portal</a
 * Enable users to configure and use Model Context Protocol (MCP) servers
 * Maintain whitelisted MCP servers for approved integrations
 * **Security Note:** Review operational and security implications before enabling, as MCP can create infrastructure resources outside Windsurf's security monitoring
-* <a href="https://docs.windsurf.com/plugins/cascade/mcp#model-context-protocol-mcp" target="_blank">Learn more about Model Context Protocol (MCP)</a>
-* <a href="https://docs.windsurf.com/plugins/cascade/mcp#admin-controls-teams-%26-enterprises" target="_blank">MCP admin controls for teams & enterprises</a>
+* <a href="https://docs.windsurf.com/plugins/cascade/mcp#model-context-protocol-mcp">Learn more about Model Context Protocol (MCP)</a>
+* <a href="https://docs.windsurf.com/plugins/cascade/mcp#admin-controls-teams-%26-enterprises">MCP admin controls for teams & enterprises</a>
 
 **App Deploys** *(Beta)*
 
 * Manage deployment permissions for your teams in Cascade
-* <a href="https://docs.windsurf.com/windsurf/cascade/app-deploys#app-deploys" target="_blank">Learn more about App Deploys</a>
+* <a href="https://docs.windsurf.com/windsurf/cascade/app-deploys#app-deploys">Learn more about App Deploys</a>
 
 **Conversation Sharing**
 
 * Allow team members to share Cascade conversations with others
 * Conversations are securely uploaded to Windsurf servers
 * Shareable links are restricted to logged-in team members only
-* <a href="https://docs.windsurf.com/windsurf/cascade/cascade#sharing-your-conversation" target="_blank">Learn more about sharing conversations</a>
+* <a href="https://docs.windsurf.com/windsurf/cascade/cascade#sharing-your-conversation">Learn more about sharing conversations</a>
 
 **PR Reviews (GitHub Integration)**
 
 * Install Windsurf in your team's GitHub organization
 * Enable PR review automation and description editing
-* <a href="https://docs.windsurf.com/windsurf-reviews/windsurf-reviews#windsurf-pr-reviews" target="_blank">Learn more about Windsurf PR Reviews</a>
+* <a href="https://docs.windsurf.com/windsurf-reviews/windsurf-reviews#windsurf-pr-reviews">Learn more about Windsurf PR Reviews</a>
 
 **Knowledge Base Management**
 
 * Curate knowledge from Google Drive sources for your development teams
 * Upload and organize internal documentation and resources
-* <a href="https://docs.windsurf.com/context-awareness/overview#knowledge-base-beta" target="_blank">Learn more about Knowledge Base</a>
+* <a href="https://docs.windsurf.com/context-awareness/overview#knowledge-base-beta">Learn more about Knowledge Base</a>
 
 ***
 
@@ -5494,7 +5147,7 @@ The <a href="https://windsurf.com/team/settings" target="_blank">Admin Portal</a
 | **Recommended approach** | Create Windsurf-specific *app* in IdP; use **role-based** group assignments rather than org-wide `All Employees` group |
 | **Common pitfalls**      | Email suffix mismatches, duplicate user aliases                                                                        |
 
-*See the <a href="https://docs.windsurf.com/plugins/accounts/sso-scim" target="_blank">SSO & SCIM Setup Guide</a> for step-by-step configuration for Okta, Azure AD, Google, and Generic SAML.*
+*See the <a href="https://docs.windsurf.com/plugins/accounts/sso-scim">SSO & SCIM Setup Guide</a> for step-by-step configuration for Okta, Azure AD, Google, and Generic SAML.*
 
 ### 4.2   SCIM Provisioning
 
@@ -5503,7 +5156,7 @@ The <a href="https://windsurf.com/team/settings" target="_blank">Admin Portal</a
   * Create / deactivate **users** automatically
   * Create **teams** automatically (or manage manually)
   * Users can belong to **multiple teams**
-  * Custom team creation via SCIM API (<a href="https://docs.windsurf.com/plugins/accounts/sso-scim#scim-api" target="_blank">docs</a>)
+  * Custom team creation via SCIM API (<a href="https://docs.windsurf.com/plugins/accounts/sso-scim#scim-api">docs</a>)
 * **Mapping strategies**
   * 1 IdP group → 1 Windsurf team (simple, most common)
   * Functional vs. project-based group prefixes (e.g. `proj-foo-devs`)
@@ -5531,7 +5184,7 @@ The <a href="https://windsurf.com/team/settings" target="_blank">Admin Portal</a
 | **Adoption Overview** | Track total active users, daily engagement |
 | **Team Activity**     | Team usage                                 |
 
-Analytics shows the **percentage of code written by Windsurf**, helping quantify impact—see your dashboards at <a href="https://windsurf.com/team/analytics" target="_blank">team analytics</a>.
+Analytics shows the **percentage of code written by Windsurf**, helping quantify impact—see your dashboards at <a href="https://windsurf.com/team/analytics">team analytics</a>.
 
 ### 6.2   APIs
 
@@ -5539,22 +5192,22 @@ Analytics shows the **percentage of code written by Windsurf**, helping quantify
 | -------- | -------------------------- |
 | **REST** | SCIM management, analytics |
 
-* Generate service keys under <a href="https://windsurf.com/team/settings" target="_blank">**Team Settings → Service Keys**</a>. Scope keys to *least privilege* needed.
-* More advanced reporting and usage management: see the <a href="https://docs.windsurf.com/plugins/accounts/api-reference/api-introduction" target="_blank">API Reference</a>.
-* For team management: see the <a href="https://docs.windsurf.com/plugins/accounts/sso-scim#scim-api" target="_blank">SCIM API – Custom Teams</a>.
+* Generate service keys under <a href="https://windsurf.com/team/settings">**Team Settings → Service Keys**</a>. Scope keys to *least privilege* needed.
+* More advanced reporting and usage management: see the <a href="https://docs.windsurf.com/plugins/accounts/api-reference/api-introduction">API Reference</a>.
+* For team management: see the <a href="https://docs.windsurf.com/plugins/accounts/sso-scim#scim-api">SCIM API – Custom Teams</a>.
 
 ***
 
 ## 7.   Operational Considerations
 
-* **Status Pages** – monitor live service health: <a href="https://status.windsurf.com/" target="_blank">Windsurf</a>, <a href="https://status.anthropic.com/" target="_blank">Anthropic</a>, <a href="https://status.openai.com/" target="_blank">OpenAI</a>
+* **Status Pages** – monitor live service health: <a href="https://status.windsurf.com/">Windsurf</a>, <a href="https://status.anthropic.com/">Anthropic</a>, <a href="https://status.openai.com/">OpenAI</a>
 * **Support Channels** – windsurf.com/support
 
 ***
 
 ## 8.   Setting Up End Users for Success
 
-1. Point end users to the <a href="https://docs.windsurf.com/plugins/getting-started" target="_blank">Windsurf installation guide</a> to install the appropriate extension or desktop client.
+1. Point end users to the <a href="https://docs.windsurf.com/plugins/getting-started">Windsurf installation guide</a> to install the appropriate extension or desktop client.
 2. Publish an internal "Getting Started with Windsurf" page (link to official docs)
 3. Hold live onboarding sessions / record short demos
 4. Curate starter project templates & sample prompts
@@ -5564,16 +5217,16 @@ Analytics shows the **percentage of code written by Windsurf**, helping quantify
 
 ## 9.   Additional Resources
 
-* <a href="https://docs.windsurf.com/plugins/accounts/sso-scim" target="_blank">SSO & SCIM Setup Guide</a>
-* <a href="https://docs.windsurf.com/plugins/accounts/sso-scim#scim-api" target="_blank">SCIM API – Custom Teams</a>
-* <a href="https://docs.windsurf.com/plugins/accounts/api-reference/introduction" target="_blank">Analytics API Reference</a>
-* <a href="/plugins/accounts/rbac-role-management" target="_blank">RBAC Controls</a>
+* <a href="https://docs.windsurf.com/plugins/accounts/sso-scim">SSO & SCIM Setup Guide</a>
+* <a href="https://docs.windsurf.com/plugins/accounts/sso-scim#scim-api">SCIM API – Custom Teams</a>
+* <a href="https://docs.windsurf.com/plugins/accounts/api-reference/introduction">Analytics API Reference</a>
+* <a href="/plugins/accounts/rbac-role-management">RBAC Controls</a>
 
 
 # Reporting Security Concerns
 Source: https://docs.windsurf.com/security/reporting
 
-
+Report security vulnerabilities to Windsurf securely via email with GPG encryption. Learn about our coordinated disclosure policy and safe harbor.
 
 Windsurf takes the security of our products and services seriously. If you believe you have found a security vulnerability in any Windsurf-owned services, please report it to us as described below.
 
@@ -5673,22 +5326,164 @@ We will not take legal action against you or administrative action against your 
 *Last updated: December 10, 2024*
 
 
-# Tab
+# FedRAMP Security Admin Guide
+Source: https://docs.windsurf.com/security/security-admin-guide
+
+Windsurf FedRAMP Security Admin Guide for securely setting up, configuring, operating, and decommissioning top-level administrative accounts. Includes role definitions, account lifecycle procedures, and a reference table of all admin-controlled security settings.
+
+# FedRAMP Security Admin Guide
+
+This guide describes how to securely set up, configure, operate, and decommission top-level administrative accounts in Windsurf. It covers administrative role definitions, account lifecycle procedures, and all admin-controlled security settings with their associated functions, security impacts, and recommended values.
+
+<Note>This guide is written for the Windsurf FedRAMP deployment which runs on AWS GovCloud. The FedRAMP deployment uses a dedicated enterprise portal and SSO-based authentication (OIDC or SAML 2.0). Some features described in other Windsurf documentation for the SaaS offering are not available in the FedRAMP environment.</Note>
+
+***
+
+## Administrative role definitions
+
+Windsurf uses a Role-Based Access Control (RBAC) system to govern administrative privileges. Roles are managed through the Admin Portal under the Role Management settings section and can be assigned to individual users.
+
+### Built-in roles
+
+Windsurf provides two built-in roles that cannot be deleted.
+
+| Role      | Description                                                                                                                                                                   | Default permissions           |
+| --------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------- |
+| **Admin** | Full administrative access to organization settings, user management, analytics, and security controls. This is the highest level of privilege a user can hold within a team. | All permissions enabled       |
+| **User**  | Standard end-user access with no administrative permissions. Users can access Windsurf's coding features but cannot view or modify organization settings.                     | No administrative permissions |
+
+### Custom roles
+
+Administrators can create custom roles to implement the principle of least privilege. Custom roles are composed of granular permissions selected from the categories below. To create a custom role, navigate to the Admin Portal and open the Role Management section under Settings.
+
+### Permission reference
+
+The table below lists every permission available for role assignment in the FedRAMP deployment. Each permission controls access to a specific administrative function.
+
+| Category            | Permission               | Description                                              |
+| ------------------- | ------------------------ | -------------------------------------------------------- |
+| **Teams**           | Teams Read-Only          | Read-only access to the teams management page            |
+| **Teams**           | Teams Update             | Ability to update user roles on the teams page           |
+| **Teams**           | Teams Delete             | Ability to remove users from the teams page              |
+| **Analytics**       | Analytics Read           | Read access to the analytics page and dashboards         |
+| **Attribution**     | Attribution Read         | Read access to the attribution page                      |
+| **License**         | License Read             | Read access to the license page                          |
+| **SSO**             | SSO Read                 | Read access to the SSO configuration page                |
+| **SSO**             | SSO Write                | Ability to configure and modify SSO provider settings    |
+| **Service Key**     | Service Key Read         | Read access to the service keys page                     |
+| **Service Key**     | Service Key Create       | Ability to create new service keys for API access        |
+| **Service Key**     | Service Key Update       | Ability to modify existing service keys                  |
+| **Service Key**     | Service Key Delete       | Ability to revoke and delete service keys                |
+| **Role Management** | Role Read                | Read access to the roles tab in settings                 |
+| **Role Management** | Role Create              | Ability to create new roles                              |
+| **Role Management** | Role Update              | Ability to modify existing role definitions              |
+| **Role Management** | Role Delete              | Ability to delete roles                                  |
+| **External Chat**   | External Chat Management | Ability to modify external chat model configurations     |
+| **Indexing**        | Indexing Read            | Read access to the indexing configuration page           |
+| **Indexing**        | Indexing Create          | Ability to create new indexes                            |
+| **Indexing**        | Indexing Update          | Ability to update existing indexed repositories          |
+| **Indexing**        | Indexing Delete          | Ability to delete indexes                                |
+| **Indexing**        | Indexing Management      | Ability to perform index database management and pruning |
+| **Fine-Tuning**     | Fine-Tuning Read         | Read access to the fine-tuning page                      |
+| **Fine-Tuning**     | Fine-Tuning Create       | Ability to create fine-tuning jobs                       |
+| **Fine-Tuning**     | Fine-Tuning Update       | Ability to update fine-tuning jobs                       |
+| **Fine-Tuning**     | Fine-Tuning Delete       | Ability to delete fine-tuning jobs                       |
+
+<Note>A number of these permissions (such as Attribution, License, SSO, Indexing, Fine-Tuning) exist in the RBAC system but their corresponding portal pages are not available in the FedRAMP multitenant deployment. These permissions are included in the role management UI for completeness but do not grant access to any active features in this environment.</Note>
+
+***
+
+## Admin account lifecycle procedures
+
+This section describes the end-to-end lifecycle of a top-level administrative account, from initial creation through decommissioning.
+
+### Account setup
+
+**SSO-based onboarding** is the primary provisioning method in the FedRAMP deployment. The platform supports both OIDC and SAML 2.0 for Single Sign-On integration. Users authenticate through the configured identity provider, and after the user's first login creates their account, an administrator assigns the appropriate role through the Admin Portal. Note that SSO integration in the FedRAMP environment requires coordination with the Windsurf FedRAMP team and cannot be configured in a self-serve capacity.
+
+Every new admin account should be configured according to the principle of least privilege. Prefer custom roles with only the permissions needed for the administrator's responsibilities rather than assigning the full Admin role unless the user requires complete system access.
+
+### Authentication and MFA requirements
+
+The FedRAMP deployment uses Single Sign-On exclusively, supporting both OIDC and SAML 2.0 protocols. Email and password authentication is not available. All users must authenticate through the configured identity provider.
+
+Multi-Factor Authentication (MFA) is enforced through the organization's identity provider. Windsurf inherits the MFA policies configured in the connected IdP, meaning that all authentication strength requirements (such as requiring a second factor, phishing-resistant authenticators, or conditional access policies) are governed at the IdP level. Organizations should configure their IdP to require MFA for all users accessing the Windsurf application, particularly for accounts holding administrative roles.
+
+<Warning>Windsurf strongly recommends requiring MFA for all administrative accounts. Configure your identity provider to enforce MFA as a condition for accessing the Windsurf application.</Warning>
+
+### Account configuration
+
+After an administrative account is created, the following configuration steps should be completed.
+
+**Role assignment** determines the scope of the account's administrative access. Assign roles through the Admin Portal by navigating to the Manage Team tab, locating the user, clicking Edit, and selecting the appropriate role from the dropdown. Changes take effect immediately.
+
+**Service key management** is required when the administrator needs API access for automation or analytics. Service keys are created under Settings with scoped permissions matching the key's intended use. Each service key should be named descriptively (for example, "Analytics Dashboard") and assigned a role with the minimum permissions required.
+
+### Account operation
+
+Ongoing operational practices for administrative accounts include the following.
+
+**Regular access reviews** should be conducted to verify that administrative accounts still require their current level of access. Review the list of users with the Admin role periodically through the Manage Team tab and adjust roles as responsibilities change.
+
+**Activity monitoring** is available through the built-in analytics dashboards. Administrators with Analytics Read permission can track user activity, engagement metrics, and feature usage. The Analytics API provides programmatic access to this data for integration with external monitoring systems.
+
+**Service key rotation** should be performed on a regular schedule. To rotate a key, create a new service key with the same permissions, update the consuming system to use the new key, and then delete the old key.
+
+### Account decommissioning
+
+When an administrator no longer requires access, the account should be decommissioned promptly using the following procedure.
+
+<Steps>
+  <Step title="Revoke administrative role">
+    Navigate to the Admin Portal, open the Manage Team tab, locate the user, click Edit, and change their role from Admin to User (or a custom role with no administrative permissions).
+  </Step>
+
+  <Step title="Revoke service keys">
+    Delete any service keys that were created by or exclusively used by the departing administrator. Navigate to Settings, then Service Key, and delete the relevant keys.
+  </Step>
+
+  <Step title="Remove or deactivate the account">
+    Remove the user through the Manage Team tab by clicking Delete next to their name. This will deactivate the user's Windsurf account and release their license seat.
+  </Step>
+
+  <Step title="Review residual access">
+    Verify that the decommissioned account no longer appears in any administrative role by checking the Manage Team user list filtered by the Admin role. Confirm that all service keys associated with the account have been deleted.
+  </Step>
+</Steps>
+
+<Warning>Decommission administrative accounts immediately when an administrator changes roles or leaves the organization. Delayed decommissioning creates unnecessary security exposure.</Warning>
+
+***
+
+## Security settings reference
+
+The table below documents all admin-controlled security settings available in the FedRAMP deployment's Admin Portal. Each entry describes the setting's function, its security impact, and the recommended configuration for a security-conscious deployment.
+
+| Setting                              | Function                                                                                                                                                                                                                                                                   | Security impact                                                                                                                                                                                           | Recommended value                                                                                                                                                                    |
+| ------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| **Role-Based Access Control (RBAC)** | Controls which administrative actions each user can perform based on their assigned role and permissions. Managed under the Role Management section in Settings.                                                                                                           | Limits the blast radius of compromised accounts by restricting permissions to only what each user needs. Overly broad role assignments increase the potential impact of a single account compromise.      | **Configure with least privilege.** Create custom roles with only the permissions each administrator requires. Reserve the built-in Admin role for a small number of administrators. |
+| **Service key permissions**          | Scopes API access tokens to specific permission sets, controlling which operations automated systems can perform. Managed under the Service Key section in Settings.                                                                                                       | Service keys with excessive permissions can be exploited if leaked, granting unauthorized access to user management, analytics, or other functions.                                                       | **Scope to minimum required permissions.** Create dedicated service keys for each integration with only the permissions that integration needs. Rotate keys regularly.               |
+| **SSO provider configuration**       | Configures the identity provider used for all user authentication, supporting both OIDC and SAML 2.0 protocols. Email/password authentication is not available. SSO setup requires coordination with the Windsurf FedRAMP team. Managed under the SSO section in Settings. | Centralizes authentication through the organization's IdP, enabling enforcement of MFA, conditional access, and session policies. Misconfiguration could lock out all users or allow unauthorized access. | **Configure with your organization's approved identity provider (OIDC or SAML 2.0).** Verify the configuration by testing login with a non-admin account before rolling out broadly. |
+
+*Last updated: January 28, 2026*
+
+
+# Windsurf Tab
 Source: https://docs.windsurf.com/tab/overview
 
-A powerful next-intent prediction experience routed to a single keystroke.
+Windsurf Tab provides AI-powered code suggestions with Tab to Jump, Tab to Import, and inline suggestions, powered by our custom model.
 
 **Windsurf Tab** has evolved from a simple autocomplete tool into a contextually aware diff-suggestion and navigation engine for writing code.
 
-It is powered by SWE-1-mini, our in-house model trained from scratch to optimize for speed and flow awareness.
+It is powered by our custom in-house model, trained from scratch to optimize for speed and flow awareness.
 
 <Frame>
-  <video autoPlay muted loop playsInline src="https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/tabdemo.mp4?fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=eb7a88258f63bdedb0895c79dc251ba4" data-path="assets/windsurf/tabdemo.mp4" />
+  <video />
 </Frame>
 
 Suggestions are based on the context of your code, terminal, Cascade chat history, your prior actions around the editor, and even your clipboard (must opt in via advanced Settings).
 
-Tab is able to make edits *both before and after* your current cursor position. You can press `esc` to cancel a suggestion.
+Tab is able to make complex edits *both before and after* your current cursor position. You can press `esc` to cancel a suggestion.
 
 Suggestions will also disappear if you continue typing or navigating without accepting them.
 
@@ -5697,7 +5492,6 @@ Suggestions will also disappear if you continue typing or navigating without acc
 * **Accept suggestion**: `tab`
 * **Cancel suggestion**: `esc`
 * **Accept suggestion word-by-word**: `⌘+→` (VS Code), `⌥+⇧+\` (JetBrains)
-* **Next/previous suggestion**: `⌥+]`/`⌥+[`
 
 ## Tab to Jump
 
@@ -5706,7 +5500,7 @@ Windsurf can also anticipate your next cursor position and prompt you with a `Ta
 If you accept by simply pressing `tab`, then you will be taken to that next position.
 
 <Frame>
-  <video style={{ transform: 'scale(1.12)' }} autoPlay muted loop playsInline src="https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/tab-to-jump.mp4?fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=5985dadc5b900d497e55946d6f429c91" data-path="assets/windsurf/tab-to-jump.mp4" />
+  <video />
 </Frame>
 
 ## Tab to Import
@@ -5714,48 +5508,38 @@ If you accept by simply pressing `tab`, then you will be taken to that next posi
 After defining a new dependency to use in a file, just simply hit `tab` to import it at the top of the file once the hint shows. Your cursor will stay in the same position.
 
 <Frame>
-  <video autoPlay muted loop playsInline src="https://mintcdn.com/codeium/vRt4FQOyBeZpD2Pu/assets/tab-import.mp4?fit=max&auto=format&n=vRt4FQOyBeZpD2Pu&q=85&s=9e1a5dce9a510ea50295228011d93eab" data-path="assets/tab-import.mp4" />
+  <video />
 </Frame>
 
 ## Settings
 
-Windsurf Tab is split up into two main configurable parts: Autocomplete and Supercomplete.
+Windsurf Tab is offered in two modes: Autocomplete and Supercomplete.
 
-Autocompletes typically appear at your cursor, and Supercompletes appear either in small windows around your cursor, which can suggest both deletions and additions.
+Supercomplete is our most powerful and recommended mode, appearing in small windows around your cursor to suggest both deletions and additions.
 
-Autocomplete and Supercomplete can be toggled on and off. Autocomplete speeds can also be configured between Slow, Default, and Fast modes.
+Autocomplete is a more traditional autocomplete mode that appears at your cursor.
 
 You can also opt-in to using your clipboard as context. This means if you copy something to your clipboard, Windsurf will be able to use it as context.
 
-You can also toggle Tab to Import and Tab to Jump functionalities, and choose whether or not you want to highlight the code after an accepted Tab suggestion.
+Tab to Import and Tab to Jump functionalities are also individually configurable in the settings.
 
 <Frame>
-  <img src="https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/tab-settings.png?fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=1b86247d84676fc10f627af39905cd93" data-og-width="1018" width="1018" data-og-height="1166" height="1166" data-path="assets/windsurf/tab-settings.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/tab-settings.png?w=280&fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=16b8411f418af07bae750c84464306c3 280w, https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/tab-settings.png?w=560&fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=06dd67ed7ceae54a24192a3974e6bec5 560w, https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/tab-settings.png?w=840&fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=ab33f2279f4e4935ff878207ac6dfd56 840w, https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/tab-settings.png?w=1100&fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=042f119119f55a8102f870c4911a8113 1100w, https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/tab-settings.png?w=1650&fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=fe460dc8d3ffece1513964774185995b 1650w, https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/tab-settings.png?w=2500&fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=4c013b3f283b515e7309937a91c3a4c4 2500w" />
+  <img />
 </Frame>
 
-## Fill In The Middle (FIM)
+## Context Awareness
 
-Windsurf Tab can Fill In The Middle (FIM), meaning it can make suggestions while your cursor is in the middle of a line of code.
-
-<Frame>
-  <video autoPlay muted loop playsInline src="https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/inline-fim.mp4?fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=5526ce74678d75590b1c8182bcaa2125" data-path="assets/windsurf/inline-fim.mp4" />
-</Frame>
-
-Read more about in-line FIM on our blog [here](https://windsurf.com/blog/inline-fim-code-suggestions).
-
-## Terminal Context Awareness
-
-Windsurf Tab is also context aware of your the content of your terminal.
+Windsurf Tab is broadly context-aware and adaptively responds to your current coding context, including recent terminal activity, your recent code changes, and clipboard contents.
 
 <Frame>
-  <video autoPlay muted loop playsInline src="https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/tab-terminal-context.mp4?fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=8f567165363a508e416d08c7bb30773c" data-path="assets/windsurf/tab-terminal-context.mp4" />
+  <video />
 </Frame>
 
 
 # General Issues
 Source: https://docs.windsurf.com/troubleshooting/plugins-common-issues
 
-
+Common Windsurf plugin issues including subscription problems, cancellation, telemetry settings, account deletion, and chat panel troubleshooting.
 
 ### I subscribed to Pro but I'm stuck on the Free tier
 
@@ -5794,10 +5578,15 @@ Please reach out to us if this happens! A screen recording would be much appreci
 Please see the intructions for various plugins [here](/troubleshooting/gathering-logs)
 
 
-# Eclipse
+# Eclipse Troubleshooting
 Source: https://docs.windsurf.com/troubleshooting/plugins-enterprise/eclipse
 
+Troubleshoot Eclipse plugin issues including startup problems, empty chat screen, WebView2, and certificate errors with Java keystore solutions.
 
+<Note>
+  We strongly recommend using the native Windsurf Editor or the JetBrains local plugin for their advanced agentic AI capabilities and cutting-edge features.
+  The Eclipse plugin is under maintenance mode.
+</Note>
 
 # Supported Versions
 
@@ -5809,18 +5598,6 @@ In Eclipse, logs are written to the following paths:
 
 * **Mac/Linux**: \~/.codeium/codeium.log
 * **Windows**: C:\Users\<username>.codeium\codeium.log
-
-# How to reset or change your Enterprise URL
-
-1. Open the settings/preferences dialog.
-
-2. Select Codeium.
-
-3. Set the Portal URL to `<NEW_URL>`. Then click the Apply and Close button.
-
-<Frame>
-  <img src="https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/plugins/troubleshooting-eclipse-portal-url.jpg?fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=a7a3dc48899d017362dff5b8cac8d7b3" data-og-width="2890" width="2890" data-og-height="2099" height="2099" data-path="assets/plugins/troubleshooting-eclipse-portal-url.jpg" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/plugins/troubleshooting-eclipse-portal-url.jpg?w=280&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=f7049748ba25b58625cc311027b5e72d 280w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/plugins/troubleshooting-eclipse-portal-url.jpg?w=560&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=50ea671aea859baee84dd99612e65c7b 560w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/plugins/troubleshooting-eclipse-portal-url.jpg?w=840&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=ae2c7d50a45a09e7aca67f2bb3203a06 840w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/plugins/troubleshooting-eclipse-portal-url.jpg?w=1100&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=4fabb3f06336d578744b7ba05282ab7b 1100w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/plugins/troubleshooting-eclipse-portal-url.jpg?w=1650&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=7096312ee2fbef2921692bbe40abba21 1650w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/plugins/troubleshooting-eclipse-portal-url.jpg?w=2500&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=97be642c613ab57ec808da69b2fbd0a3 2500w" />
-</Frame>
 
 # Known IDE issues and solutions
 
@@ -5877,10 +5654,10 @@ Enter the Keystore password.
 ```
 
 
-# JetBrains
+# JetBrains Troubleshooting
 Source: https://docs.windsurf.com/troubleshooting/plugins-enterprise/jetbrains
 
-
+Troubleshoot JetBrains plugin issues including JCEF errors, certificate problems, custom workspaces, and extension diagnostics.
 
 # Supported Versions
 
@@ -5900,12 +5677,6 @@ For older versions of the extension:
 2. Export or copy the logs
 
 # Known IDE issues and solutions
-
-## Cascade doesn't work (or Windsurf plugin doesn't work at all)
-
-If the Windsurf JetBrains plugin isn't working, a good first step is to try and reset the plugin by going to `Help > Find Action > Reset Windsurf Enterprise Updater`.
-
-If the issue is isolated to a few users, this is likely because the Enterprise Domain URL certificate is not loaded to your IDE. Your team's admin should know how to do this.
 
 ## Cascade not being displayed
 
@@ -6004,61 +5775,194 @@ Non-enterprise users get automatic workspace indexing:
 
 After completing the setup steps above, Cascade should be able to access your workspace and function normally.
 
+## Keyboard Shortcuts Not Working in Rider on Windows
 
-# Troubleshooting Checklist
-Source: https://docs.windsurf.com/troubleshooting/plugins-enterprise/troubleshooting-checklist
+If you are using JetBrains Rider on Windows and experience issues where Shift+Enter does not create a new line in Cascade, or the Delete key does not work, this is caused by a keybinding conflict with Rider's Unit Test Tool Window.
 
+This is a known issue affecting AI plugins in Rider. To resolve this:
 
+1. Open your JetBrains IDE Settings by going to `File > Settings`
 
-Running into issues with Codeium? Use this checklist of common debugging techniques to try and resolve the issue, otherwise file a support ticket on help.windsurf.com.
+2. Navigate to `Keymap`
 
-## 1. Make sure the Codeium plugin has been installed properly
+3. Search for "Unit Test Tool Window Action"
 
-If you are a Codeium Enterprise user, make sure to follow the instructions that are available at your enterprise portal URL (https\://\[YOUR\_PORTAL\_URL]/install). Furthermore, remember to install the Codeium Enterprise Updater plugin, not the standard Codeium plugin. Finally, ensure that the enterprise portal url that you set in the plugin's settings is correct and formatted correctly (https\://\[YOUR\_PORTAL\_URL])
+4. Disable or reassign the conflicting keybindings (Shift+Enter and Delete)
 
-If you are on Teams or Codeium's free tier, follow the instructions outlined at windsurf.com/download.
-
-In either case, make sure that your current IDE version is supported by Codeium.
-
-## 2. Check Codeium's Feature Reference guide
-
-If a particular feature is unavailable, it could be because it is not yet supported in your IDE. You can check which features are available on which IDEs using the feature reference guides linked below. Codeium is constantly expanding our coverage and striving to bring all features to all IDEs.
-
-Codeium SaaS Feature Reference Guide
-
-Codeium Self Host Feature Reference Guide
-
-## 3. Try some common troubleshooting techniques
-
-Sometimes a good old restart does the trick. Some things we recommend trying:
-
-* *Try reloading your IDE*. Sometimes reloading the IDE fixes the issue. On JetBrains IDEs, you can try and reset the Codeium extension by going to `Help` --> `Find Action` --> `Reset Codeium`.
-
-* *Try logging in and out of Codeium*. Enterprise users can sign out by navigating to their Enterprise Portal URL in the browser, clicking on their Profile icon, scrolling down to the bottom and clicking "Sign Out". Teams and free tier users can sign out by navigating to windsurf.com, clicking on their Profile icon, and selecting "Sign Out" from the dropdown menu.
-
-* *Try uninstalling and reinstalling the plugin*. Sometimes conflicting plugins or IDE settings can cause issues that are resolved by simply removing the plugin and reinstalling it.
-
-## 4. Look through the help center articles with fixes to common issues
-
-We have documented issues that users commonly run into in the following help center articles. Be sure to look through these -- it's likely that someone has experienced the same issue as you!
-
-[Common VSCode IDE Issues](/troubleshooting/plugins-enterprise/vscode)
-
-[Common JetBrains IDE Issues](/troubleshooting/plugins-enterprise/jetbrains)
-
-[Common Visual Studio IDE Issues](/troubleshooting/plugins-enterprise/visualstudio)
-
-[Common Eclipse IDE Issues](/troubleshooting/plugins-enterprise/eclipse)
-
-## 5. Grab the logs and file a Support Request
-
-Still no luck? At this point, you might want to file a support request by submitting a help ticket on help.windsurf.com. *Make sure to attach logs and other useful debug info to your ticket*! This enables the Windsurf team to resolve your issue as fast as possible. Instructions on how to get logs for each specific IDE can be found in the "IDE and Extension troubleshooting" section in the left menu.
+5. Restart your IDE for the changes to take effect
 
 
-# Visual Studio
+# Proxy Configuration for Windsurf in JetBrains IDEs
+Source: https://docs.windsurf.com/troubleshooting/plugins-enterprise/jetbrains-proxy
+
+Configure HTTP/HTTPS proxy settings for Windsurf plugin in JetBrains IDEs including remote development and Gateway environments.
+
+Some corporate and enterprise networks route traffic through HTTP/HTTPS proxies. The Windsurf plugin in JetBrains IDEs needs to reach external Windsurf services (for sign-in and AI features), so you may need to configure a proxy before things work reliably.
+
+## When Proxy Configuration May Be Required
+
+Proxy configuration may be required if:
+
+* You see "Failed to connect" or similar network errors in Windsurf
+* The Windsurf panel in the IDE stays blank and never loads
+* Cascade or other Windsurf features cannot connect or time out
+
+This guide covers:
+
+* Checking whether your network uses a proxy
+* Configuring the IDE's proxy
+* Enabling Windsurf's proxy detection
+* Configuring proxy settings for JetBrains Remote
+
+## Check Whether Your Network Uses a Proxy
+
+Before changing anything:
+
+Ask your IT / infra / network team:
+
+* Do we use an HTTP/HTTPS proxy for outbound traffic?
+* If yes, is it configured automatically (system settings / PAC file / device management), or do I need to configure it manually in applications?
+
+If your organization does not use a proxy, you usually don't need to change these settings.
+
+If your organization does use one, collect the proxy details (address, port, and any credentials). You can share screenshots of the JetBrains HTTP Proxy and Windsurf settings with them so they can tell you exactly what to fill in.
+
+## Configure the JetBrains IDE Proxy
+
+First, make sure the IDE itself can access the internet through your proxy — in particular, that it can reach `windsurf.com`.
+
+1. Open Settings / Preferences in your JetBrains IDE. For example: File → Settings… (Windows/Linux) or ⌘, → Settings… (macOS).
+
+2. Go to Appearance & Behavior → System Settings → HTTP Proxy.
+
+<img alt="JetBrains HTTP Proxy Settings" />
+
+3. Choose the appropriate option based on your IT team's guidance:
+   * **No proxy** – if your network does not use a proxy.
+   * **Auto-detect proxy settings** or **Use system proxy settings** – if the proxy is configured globally on your machine.
+   * **Manual proxy configuration** – if IT provided a specific proxy host/port (and optional username/password) to enter here.
+
+4. Use Check connection… (if available) to verify the configuration — ideally test connectivity to `https://windsurf.com` from this dialog.
+
+5. Apply the changes and restart the IDE if prompted.
+
+If the IDE itself cannot reach the network (for example, plugin marketplace, updates, or built-in web features fail, or you cannot reach `https://windsurf.com` from within the IDE), fix that here first. Windsurf relies on this connectivity.
+
+## Enable Windsurf Proxy Detection in JetBrains
+
+Once your IDE-level proxy is set (or confirmed not needed), configure how Windsurf uses those settings.
+
+The Windsurf plugin has its own Detect proxy option inside its settings:
+
+1. In your JetBrains IDE, open Settings / Preferences.
+
+2. Navigate to Tools → Windsurf Settings.
+
+3. Find the Detect proxy toggle.
+
+<img alt="Windsurf Proxy Detection Settings" />
+
+4. Turn Detect proxy ON if:
+   * Your proxy is configured at the OS or IDE level, and
+   * IT expects applications to "just pick up" those settings.
+
+5. Click Apply and OK if needed, then restart the IDE.
+
+6. Try using Windsurf again:
+   * Open the Windsurf panel from the IDE sidebar
+   * Run Cascade or retry the operation that was failing with "Failed to connect" or showing a blank screen
+
+If you see new connection issues after enabling Detect proxy, you can:
+
+* Turn Detect proxy back OFF,
+* Double-check your IDE HTTP Proxy configuration (including that it can reach `https://windsurf.com`), and
+* Confirm with IT whether additional manual configuration is required.
+
+## Proxy Configuration in JetBrains Remote
+
+If you use JetBrains Remote Development (for example via JetBrains Gateway, a remote backend, or a cloud dev environment), there are effectively two places where proxy settings matter:
+
+* Your local machine, running the thin client.
+* The remote machine, where the actual IDE backend (and Windsurf) runs.
+
+When you connect with JetBrains Remote, Windsurf's network requests originate from the remote machine, not from your local laptop. This means:
+
+* Proxy setup on the remote IDE affects how Windsurf connects to Windsurf services.
+* The remote machine may need its own proxy configuration, even if your local machine is already set up correctly.
+
+<Warning>
+  For JetBrains remote development, you must use the dedicated "Windsurf (Remote Development)" plugin, not the standard Windsurf plugin. Make sure you've installed Windsurf (Remote Development) as described in the Remote Development section of the Windsurf JetBrains getting started guide.
+</Warning>
+
+### Configure the Proxy for the Remote Environment
+
+1. Connect to your remote backend using JetBrains Remote / Gateway.
+
+2. Open Settings / Preferences in the remote IDE session (this opens the settings for the IDE running on the remote machine).
+
+3. Configure the proxy for the remote IDE:
+   * Go to Appearance & Behavior → System Settings → HTTP Proxy on the remote IDE.
+   * Set the proxy according to your IT team's instructions (No proxy / Auto-detect / Use system proxy / Manual).
+   * If the IDE provides a Check connection… button, use it to test connectivity to `https://windsurf.com` from the remote machine.
+
+4. Configure Windsurf on the remote IDE:
+   * Go to Tools → Windsurf Settings (still in the remote session).
+   * Enable Detect proxy if your IT team expects applications on the remote host to use system/IDE proxy settings.
+
+5. Apply the changes, then restart the remote IDE backend or disconnect and reconnect your remote session.
+
+6. Open the Windsurf panel again in the remote IDE and retry the previously failing action.
+
+<Note>
+  It's common in corporate setups that both your local machine and the remote machine have their own proxy rules. Make sure you follow IT guidance for each side; fixing only the local proxy will not help if the remote host itself cannot reach the internet (including `https://windsurf.com`) without its own proxy configuration.
+</Note>
+
+## When to Change What
+
+### Change Only the Local IDE HTTP Proxy
+
+If:
+
+* You are not using JetBrains Remote, and
+* Other JetBrains features already work after setting it, and
+* Windsurf works without touching its own settings, and
+* The IDE can reach `https://windsurf.com`.
+
+### Enable Windsurf "Detect Proxy"
+
+(Local or remote) if:
+
+* The proxy is already set up at the OS or IDE level on that machine, and
+* Windsurf is the only thing that can't connect, or shows a blank Windsurf panel.
+
+### Configure Proxy on the Remote IDE
+
+If:
+
+* You use JetBrains Remote,
+* You've installed the Windsurf (Remote Development) plugin for that environment, and
+* Errors occur only when connected to a remote backend, or
+* IT says the remote server must also go through a proxy to reach the internet (including `https://windsurf.com`).
+
+### Talk to IT / Infra
+
+If:
+
+* You're not sure whether your environment uses a proxy at all, or
+* You've configured the HTTP Proxy + Windsurf Detect proxy (locally and/or remotely) and verified connection to `https://windsurf.com`, but still see blank Windsurf panels or connection failures.
+
+Your IT / infra team is the final source of truth—they can confirm whether you need a proxy on your local machine, your remote machine, or both, how it should be configured in JetBrains, and whether the Windsurf Detect proxy setting should be enabled in your environment.
+
+
+# Visual Studio Troubleshooting
 Source: https://docs.windsurf.com/troubleshooting/plugins-enterprise/visualstudio
 
+Troubleshoot Visual Studio plugin issues including IntelliCode conflicts, Tab key bindings, and marketplace visibility problems.
 
+<Note>
+  We strongly recommend using the native Windsurf Editor or the JetBrains local plugin for their advanced agentic AI capabilities and cutting-edge features.
+  The Visual Studio plugin is under maintenance mode.
+</Note>
 
 # Supported Versions
 
@@ -6067,14 +5971,6 @@ Visual Studio 17.5.5 or greater.
 # Gathering extension logs
 
 Go to `View > Output`, select `Codeium` in the dropdown, and copy the logs.
-
-# How to reset or change your Enterprise URL
-
-1. Open the settings/preferences dialog (Tools → Options).
-2. Select Codeium.
-3. Set the Portal URL to `<NEW_URL>` and set the API URL to `<NEW_URL>/_route/api_server`.
-4. Click OK and restart Visual Studio.
-5. Upon restart, you will be prompted to sign in to the enterprise portal.
 
 # Known IDE issues and solutions
 
@@ -6087,7 +5983,7 @@ Make sure that you are using VS version 2022 17.5.5 or greater.
 This happens if Visual Studio's IntelliCode suggestions are displayed at the same time as Codeium's. Disable all IntelliCode options as shown below:
 
 <Frame>
-  <img src="https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/plugins/troubleshooting-visualstudio-disable-intellicode.jpg?fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=97b198bc53016b25ea553ddd054875d8" data-og-width="653" width="653" data-og-height="473" height="473" data-path="assets/plugins/troubleshooting-visualstudio-disable-intellicode.jpg" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/plugins/troubleshooting-visualstudio-disable-intellicode.jpg?w=280&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=b032036da49a875f3854575e868f2b83 280w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/plugins/troubleshooting-visualstudio-disable-intellicode.jpg?w=560&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=ec243d5e51b41d2f46ed3e3fd84f7232 560w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/plugins/troubleshooting-visualstudio-disable-intellicode.jpg?w=840&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=862348338e23a5093572c7399ec34147 840w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/plugins/troubleshooting-visualstudio-disable-intellicode.jpg?w=1100&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=1a8dad7959abb04d44577ac4a8e8c359 1100w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/plugins/troubleshooting-visualstudio-disable-intellicode.jpg?w=1650&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=4e09f2520c0cac6706b8a7f6b65608cb 1650w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/plugins/troubleshooting-visualstudio-disable-intellicode.jpg?w=2500&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=42d638451565f63c48db111eb003437d 2500w" />
+  <img />
 </Frame>
 
 ## Tab key is not always accepting completions
@@ -6095,16 +5991,21 @@ This happens if Visual Studio's IntelliCode suggestions are displayed at the sam
 You can rebind this to a different keyboard shortcut in your settings:
 
 <Frame>
-  <img src="https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/plugins/troubleshooting-visualstudio-keybindings.jpg?fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=b8ce35af4c3ab56df5a5a24f8ff1acfb" data-og-width="854" width="854" data-og-height="577" height="577" data-path="assets/plugins/troubleshooting-visualstudio-keybindings.jpg" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/plugins/troubleshooting-visualstudio-keybindings.jpg?w=280&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=d7113b4cc5dee3c760ed228efd7b7558 280w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/plugins/troubleshooting-visualstudio-keybindings.jpg?w=560&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=a7ad49c9077b52a9dfb1a12fb813ee0b 560w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/plugins/troubleshooting-visualstudio-keybindings.jpg?w=840&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=3cd6a94281f0cfffbe464dcdef7d7db4 840w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/plugins/troubleshooting-visualstudio-keybindings.jpg?w=1100&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=973712226fe19b3c63f06655f2b35ed3 1100w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/plugins/troubleshooting-visualstudio-keybindings.jpg?w=1650&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=f6032a95e9267b5d611f8ab89243c246 1650w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/plugins/troubleshooting-visualstudio-keybindings.jpg?w=2500&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=b5ede19300c8a150f8f0279b7611cb6f 2500w" />
+  <img />
 </Frame>
 
 
-# Visual Studio Code (VSCode)
+# Visual Studio Code (VSCode) Troubleshooting
 Source: https://docs.windsurf.com/troubleshooting/plugins-enterprise/vscode
 
+Troubleshoot VS Code extension issues including proxy settings, certificate errors, API server configuration, and chat response problems.
 
+<Note>
+  We strongly recommend using the native Windsurf Editor or the JetBrains local plugin for their advanced agentic AI capabilities and cutting-edge features.
+  The VSCode plugin is under maintenance mode.
+</Note>
 
-VS Code 1.89 or greater are supported!
+VSCode 1.89 or greater are supported.
 
 # Gathering extension logs
 
@@ -6121,46 +6022,12 @@ Starting in VS Code Extension 1.10.0, the Extension Diagnostics are accessible f
 4. You should see something similar to the image below:
 
 <Frame>
-  <img src="https://mintcdn.com/codeium/vRt4FQOyBeZpD2Pu/assets/plugins/troubleshooting-vscode-showlogs.jpg?fit=max&auto=format&n=vRt4FQOyBeZpD2Pu&q=85&s=8a5317496a257a1efffaf5191c7963c9" data-og-width="2244" width="2244" data-og-height="410" height="410" data-path="assets/plugins/troubleshooting-vscode-showlogs.jpg" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/vRt4FQOyBeZpD2Pu/assets/plugins/troubleshooting-vscode-showlogs.jpg?w=280&fit=max&auto=format&n=vRt4FQOyBeZpD2Pu&q=85&s=4268142b3843c514977b07d8388232a3 280w, https://mintcdn.com/codeium/vRt4FQOyBeZpD2Pu/assets/plugins/troubleshooting-vscode-showlogs.jpg?w=560&fit=max&auto=format&n=vRt4FQOyBeZpD2Pu&q=85&s=728c2a187b07fa4e33dc32f5a9c7e9fb 560w, https://mintcdn.com/codeium/vRt4FQOyBeZpD2Pu/assets/plugins/troubleshooting-vscode-showlogs.jpg?w=840&fit=max&auto=format&n=vRt4FQOyBeZpD2Pu&q=85&s=2635e312277210b8124f3676fe9b13ed 840w, https://mintcdn.com/codeium/vRt4FQOyBeZpD2Pu/assets/plugins/troubleshooting-vscode-showlogs.jpg?w=1100&fit=max&auto=format&n=vRt4FQOyBeZpD2Pu&q=85&s=33cab90539c14a54e1d5b29d7d2a6f1e 1100w, https://mintcdn.com/codeium/vRt4FQOyBeZpD2Pu/assets/plugins/troubleshooting-vscode-showlogs.jpg?w=1650&fit=max&auto=format&n=vRt4FQOyBeZpD2Pu&q=85&s=a249a33aaa1e4a9c8b6f99e08e08e8bc 1650w, https://mintcdn.com/codeium/vRt4FQOyBeZpD2Pu/assets/plugins/troubleshooting-vscode-showlogs.jpg?w=2500&fit=max&auto=format&n=vRt4FQOyBeZpD2Pu&q=85&s=271ab0396f1060a9cfda797488f66eda 2500w" />
+  <img />
 </Frame>
 
 5. Change the dropdown in the top right that reads "Extension Host" and select "Codeium"
 
 6. Export or copy the logs
-
-# How to reset or change your Enterprise URL
-
-1. Navigate to the Codeium Enterprise extension settings by pressing Ctrl+Shift+X. Choose the Enterprise Updater (purple extension)
-
-<Frame>
-  <img src="https://mintcdn.com/codeium/vRt4FQOyBeZpD2Pu/assets/plugins/troubleshooting-vscode-enterprise-updater.jpg?fit=max&auto=format&n=vRt4FQOyBeZpD2Pu&q=85&s=aa08c3bed861bc4a12a74b28858c2a55" data-og-width="2562" width="2562" data-og-height="970" height="970" data-path="assets/plugins/troubleshooting-vscode-enterprise-updater.jpg" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/vRt4FQOyBeZpD2Pu/assets/plugins/troubleshooting-vscode-enterprise-updater.jpg?w=280&fit=max&auto=format&n=vRt4FQOyBeZpD2Pu&q=85&s=6dff61250d3afaf74e3c9a9d82d2a7c2 280w, https://mintcdn.com/codeium/vRt4FQOyBeZpD2Pu/assets/plugins/troubleshooting-vscode-enterprise-updater.jpg?w=560&fit=max&auto=format&n=vRt4FQOyBeZpD2Pu&q=85&s=84d1995dca640571726c2b662e02d082 560w, https://mintcdn.com/codeium/vRt4FQOyBeZpD2Pu/assets/plugins/troubleshooting-vscode-enterprise-updater.jpg?w=840&fit=max&auto=format&n=vRt4FQOyBeZpD2Pu&q=85&s=29e543f61bfabeb697cf5cb126f5a165 840w, https://mintcdn.com/codeium/vRt4FQOyBeZpD2Pu/assets/plugins/troubleshooting-vscode-enterprise-updater.jpg?w=1100&fit=max&auto=format&n=vRt4FQOyBeZpD2Pu&q=85&s=94021abd9458a7089a51a7da36b7047f 1100w, https://mintcdn.com/codeium/vRt4FQOyBeZpD2Pu/assets/plugins/troubleshooting-vscode-enterprise-updater.jpg?w=1650&fit=max&auto=format&n=vRt4FQOyBeZpD2Pu&q=85&s=6101e40ac8cd97629067ec2710c014ed 1650w, https://mintcdn.com/codeium/vRt4FQOyBeZpD2Pu/assets/plugins/troubleshooting-vscode-enterprise-updater.jpg?w=2500&fit=max&auto=format&n=vRt4FQOyBeZpD2Pu&q=85&s=6ad969ea4a22dd12fff360b4d7caf0a4 2500w" />
-</Frame>
-
-2. Click on the gear icon and select `Extension Settings`
-
-<Frame>
-  <img src="https://mintcdn.com/codeium/vRt4FQOyBeZpD2Pu/assets/plugins/troubleshooting-vscode-enterprise-settings.jpg?fit=max&auto=format&n=vRt4FQOyBeZpD2Pu&q=85&s=47b9618b69cdb38b242f6766a72bacf3" data-og-width="1386" width="1386" data-og-height="574" height="574" data-path="assets/plugins/troubleshooting-vscode-enterprise-settings.jpg" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/vRt4FQOyBeZpD2Pu/assets/plugins/troubleshooting-vscode-enterprise-settings.jpg?w=280&fit=max&auto=format&n=vRt4FQOyBeZpD2Pu&q=85&s=3c8b645ed9b6fddfdc7cf07270e80df6 280w, https://mintcdn.com/codeium/vRt4FQOyBeZpD2Pu/assets/plugins/troubleshooting-vscode-enterprise-settings.jpg?w=560&fit=max&auto=format&n=vRt4FQOyBeZpD2Pu&q=85&s=4a7fe1acf97e3998c3506bbb9743424f 560w, https://mintcdn.com/codeium/vRt4FQOyBeZpD2Pu/assets/plugins/troubleshooting-vscode-enterprise-settings.jpg?w=840&fit=max&auto=format&n=vRt4FQOyBeZpD2Pu&q=85&s=0b74e308ec0a7286a552a80fb48d6c13 840w, https://mintcdn.com/codeium/vRt4FQOyBeZpD2Pu/assets/plugins/troubleshooting-vscode-enterprise-settings.jpg?w=1100&fit=max&auto=format&n=vRt4FQOyBeZpD2Pu&q=85&s=85c6e05c54f1b4720ef1fbcc6df6ce7e 1100w, https://mintcdn.com/codeium/vRt4FQOyBeZpD2Pu/assets/plugins/troubleshooting-vscode-enterprise-settings.jpg?w=1650&fit=max&auto=format&n=vRt4FQOyBeZpD2Pu&q=85&s=b83d8d8034e0ab304bec47db41704618 1650w, https://mintcdn.com/codeium/vRt4FQOyBeZpD2Pu/assets/plugins/troubleshooting-vscode-enterprise-settings.jpg?w=2500&fit=max&auto=format&n=vRt4FQOyBeZpD2Pu&q=85&s=24433d5a06f9bb89d77d81d2938ce0c9 2500w" />
-</Frame>
-
-3. In the extension settings, click the gear icon and select `Reset Setting` for each box populated with a URL
-
-<Frame>
-  <img src="https://mintlify.s3.us-west-1.amazonaws.com/codeium/assets/plugins/troubleshooting-vscode-enterprise-reset-settings.jpg" />
-</Frame>
-
-4. Reload VSCode by going to View -> Command Palette. Once the command palette is open type "Reload window" and press enter.
-
-5. Once reloaded, you should be prompted to Set URL. From here, type in the new URL.
-
-<Frame>
-  <img src="https://mintcdn.com/codeium/vRt4FQOyBeZpD2Pu/assets/plugins/troubleshooting-vscode-enterprise-url.jpg?fit=max&auto=format&n=vRt4FQOyBeZpD2Pu&q=85&s=23248d22ccac6991079450a59dda8188" data-og-width="1984" width="1984" data-og-height="630" height="630" data-path="assets/plugins/troubleshooting-vscode-enterprise-url.jpg" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/vRt4FQOyBeZpD2Pu/assets/plugins/troubleshooting-vscode-enterprise-url.jpg?w=280&fit=max&auto=format&n=vRt4FQOyBeZpD2Pu&q=85&s=0aa1514fb4fa89dafb9f8487f9cc8661 280w, https://mintcdn.com/codeium/vRt4FQOyBeZpD2Pu/assets/plugins/troubleshooting-vscode-enterprise-url.jpg?w=560&fit=max&auto=format&n=vRt4FQOyBeZpD2Pu&q=85&s=dfe25827e12131e74664a26e959a6688 560w, https://mintcdn.com/codeium/vRt4FQOyBeZpD2Pu/assets/plugins/troubleshooting-vscode-enterprise-url.jpg?w=840&fit=max&auto=format&n=vRt4FQOyBeZpD2Pu&q=85&s=f81f0a8da8ee4edb651169f6ceb61771 840w, https://mintcdn.com/codeium/vRt4FQOyBeZpD2Pu/assets/plugins/troubleshooting-vscode-enterprise-url.jpg?w=1100&fit=max&auto=format&n=vRt4FQOyBeZpD2Pu&q=85&s=bc2b0ecbc0e62c8ce33f5fc5e88c5794 1100w, https://mintcdn.com/codeium/vRt4FQOyBeZpD2Pu/assets/plugins/troubleshooting-vscode-enterprise-url.jpg?w=1650&fit=max&auto=format&n=vRt4FQOyBeZpD2Pu&q=85&s=f9606b889995bb79aa865e36a9a931be 1650w, https://mintcdn.com/codeium/vRt4FQOyBeZpD2Pu/assets/plugins/troubleshooting-vscode-enterprise-url.jpg?w=2500&fit=max&auto=format&n=vRt4FQOyBeZpD2Pu&q=85&s=de21165ac09d862697403d6e1332a2c1 2500w" />
-</Frame>
-
-6. Close out of the Setting tab.
-
-7. Reload VSCode by going to View -> Command Palette. Once the command palette is open type 'Reload window' and press enter.
-
-8. After reloading, you should see a pop-up in the bottom right prompting you to sign in to Codeium. If not, go to the bottom left Accounts tab and click Sign in with Auth to use Codeium. Either method will redirect you to your Codeium Enterprise portal.
 
 # Known IDE issues and solutions
 
@@ -6181,31 +6048,10 @@ If you are trying to send messages to Codeium chat but not seeing responses, che
 ## Unable to read file .../package.json
 
 ```
-Unable to read file .../.vscode/extensions/codeium.codeium-<version>/package.json 
+Unable to read file .../.vscode/extensions/codeium.codeium-<version>/package.json
 ```
 
 If the above error shows up in the Codeium logs, try deleting the extension folder (.../.vscode/extensions/codeium.codeium-\<version>) and reinstall the extension.
-
-## VS Code Enterprise Updater Loop
-
-"Codeium Enterprise Updated" every time you open VSCode, try restarting all extensions
-
-1. Open the command palette ( CTRL + SHIFT + P )
-2. Run 'Disable All Installed Extensions'
-3. Run 'Enable all Extensions'
-4. Restart VS Code
-
-Make sure all extensions are enabled again.
-
-## Enterprise updater doesn't install Codeium extension
-
-The Enterprise updater is installed, but no extension is being downloaded or installed in VSCode. No extension logs option is available in VSCode output window drop down. The only available log you can see is:
-
-```
-[info] ExtensionService#_doActivateExtension Codeium.codeium-enterprise-updater, startup: false, activationEvent: 'onStartupFinished'
-```
-
-If you have previously disabled the Codeium extension and later uninstalled it, VSCode will not clear the disabled flag.
 
 In order to do so manually:
 
@@ -6246,10 +6092,10 @@ It is important that the full certificate chain is being presented from wherever
 The Network Proxy Text VS Code extension is useful for debugging certificate issues.
 
 
-# Gathering Logs
+# Gathering Plugin Logs
 Source: https://docs.windsurf.com/troubleshooting/plugins-gathering-logs
 
-
+How to collect diagnostic logs from JetBrains, VS Code, Eclipse, Visual Studio, and NeoVim for troubleshooting Windsurf plugin issues.
 
 If you're having issues, the first step in the troubleshooting process is to retrieve the logs from your IDE. Here's how you can get Windsurf logs for each of the major IDEs:
 
@@ -6292,8 +6138,8 @@ If you're having issues, the first step in the troubleshooting process is to ret
 
 4. You should see something similar to the image below:
 
-<Frame style={{ border: 'none', background: 'none' }}>
-  <img src="https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/extension-diagnostics-log.png?fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=5559a02942eaf0fe736625f13e86bf67" data-og-width="2042" width="2042" data-og-height="272" height="272" data-path="assets/extension-diagnostics-log.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/extension-diagnostics-log.png?w=280&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=2344ea0881b4de4a4433812e6c956e23 280w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/extension-diagnostics-log.png?w=560&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=429e361008386d9abcf033d991477321 560w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/extension-diagnostics-log.png?w=840&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=a0ad762267a2b4c3af14027caf4eb2bf 840w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/extension-diagnostics-log.png?w=1100&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=deb9ce059733784d94a337a19993a5c5 1100w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/extension-diagnostics-log.png?w=1650&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=56faddc7414338ad6e16650acba2d53a 1650w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/extension-diagnostics-log.png?w=2500&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=88e03340e7060bc698560856ffe32fb4 2500w" />
+<Frame>
+  <img />
 </Frame>
 
 5. Export or copy the logs
@@ -6319,7 +6165,7 @@ Then the logs should be written to that file.
 # Common Windsurf Issues
 Source: https://docs.windsurf.com/troubleshooting/windsurf-common-issues
 
-
+Troubleshoot common Windsurf Editor issues including rate limiting, MacOS security warnings, Windows updates, Linux crashes, and terminal problems.
 
 ### General FAQ
 
@@ -6367,8 +6213,8 @@ We've gone ahead and developed a [Pyright extension specifically for Windsurf](/
 
 You can download diagnostic logs by going to your Cascade Panel, tapping the three dots in the top right corner, and then clicking "Download Diagnostics".
 
-<Frame style={{ border: 'none', background: 'none' }}>
-  <img src="https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/windsurf-download-diagnostics.png?fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=b92c1e66d7d6b88e45147038adaae291" data-og-width="806" width="806" data-og-height="612" height="612" data-path="assets/windsurf/windsurf-download-diagnostics.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/windsurf-download-diagnostics.png?w=280&fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=09afe7b42fc139c708989d828fe37897 280w, https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/windsurf-download-diagnostics.png?w=560&fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=48eadc9aaa349983cd70ac95be11d88a 560w, https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/windsurf-download-diagnostics.png?w=840&fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=28b3a95b07e2f2730eb458e609c7a26b 840w, https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/windsurf-download-diagnostics.png?w=1100&fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=2dd140d8ad56ca5d8cff1f4b2e4bea91 1100w, https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/windsurf-download-diagnostics.png?w=1650&fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=07607f0f91a6f96ddaed9d5094866a2a 1650w, https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/windsurf-download-diagnostics.png?w=2500&fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=dc790fe0efd81f7f728d2c49cee15b40 2500w" />
+<Frame>
+  <img />
 </Frame>
 
 ### On MacOS, I see a pop-up: 'Windsurf' is damaged and cannot be opened.
@@ -6402,7 +6248,7 @@ This is usually due to an Electron permissions issue, which VSCode also has, and
 
 The easiest way to fix it is to run the following:
 
-```bash  theme={null}
+```bash theme={null}
 sudo chown root:root /path/to/windsurf/chrome-sandbox
 sudo chown 4755 /path/to/windsurf/chrome-sandbox
 ```
@@ -6435,11 +6281,61 @@ We cannot auto-update Windsurf when it is run as Administrator. Please re-run Wi
 
 Please reach out to us if this happens! A screen recording would be much appreciated. This can often be solved by clearing your chat history (`~/.codeium/windsurf/cascade`).
 
+### Terminal session appears stuck in Cascade
 
-# Gathering Logs
+If a terminal command has finished running in the terminal but Cascade still shows the session as in progress or stuck, this can be caused by several issues:
+
+**Default terminal profile not set**
+
+This may be caused by the default terminal profile not being explicitly set. To resolve this, you can set the default terminal profile in your Editor settings.
+
+Open the Settings UI (Cmd/Ctrl + ,), search for "terminal default profile", and set the appropriate value for your operating system. Alternatively, you can add the following to your `settings.json`:
+
+For macOS:
+
+```json theme={null}
+"terminal.integrated.defaultProfile.osx": "zsh"
+```
+
+For Windows:
+
+```json theme={null}
+"terminal.integrated.defaultProfile.windows": "PowerShell"
+```
+
+For Linux:
+
+```json theme={null}
+"terminal.integrated.defaultProfile.linux": "bash"
+```
+
+Replace the value with your preferred shell (e.g., `bash`, `zsh`, `PowerShell`, `Command Prompt`, etc.).
+
+**Customized zsh themes**
+
+In some cases, a heavily customized zsh theme (for example, themes from Oh My Zsh, Powerlevel10k, or other prompt frameworks) can also cause Cascade to think a command is still running even after it finishes. To check if this is the issue:
+
+1. Open your `~/.zshrc` file in a text editor.
+2. Temporarily disable your theme by commenting out lines that set or load it, such as `ZSH_THEME="..."`, `source ~/.p10k.zsh`, or `eval "$(oh-my-posh init zsh)"`.
+3. Save the file, restart Windsurf (or open a new terminal in Windsurf), and run a command again.
+
+If the terminal session no longer appears stuck in Cascade, you can either keep a simpler theme in `~/.zshrc`, or create a separate, minimal zsh configuration used only by the Windsurf terminal so your other terminals can continue using the more complex theme.
+
+**Systemd terminal context tracking (Linux)**
+
+On some newer Linux distributions (reported on Fedora 43 and later), the shell startup chain (`~/.bashrc` → `/etc/bashrc` → `/etc/profile.d/80-systemd-osc-context.sh`) can enable systemd "terminal context tracking," which emits OSC 3008 escape sequences via `PS0` or `PROMPT_COMMAND`. These extra control sequences can interfere with Cascade's output parsing, causing a command to appear stuck or resulting in captured output that looks missing or truncated—even though the terminal displays it correctly.
+
+To work around this issue, prevent the OSC context sequences from being emitted in the Cascade terminal by not sourcing `/etc/bashrc` from your `~/.bashrc`, or by creating a minimal shell configuration file used only for Windsurf/Cascade.
+
+### Docker Container Not Visible in Remote Explorer When Using WSL
+
+When connecting to Docker containers inside WSL, the remote explorer window may not display available containers to connect to, requiring users to use the command palette workaround. Use Cmd+P (macOS) or Ctrl+P (Windows) → "Dev Containers: Attach to Running Container" to see the full list of running containers.
+
+
+# Gathering Windsurf Logs
 Source: https://docs.windsurf.com/troubleshooting/windsurf-gathering-logs
 
-
+How to download diagnostic logs from Windsurf Editor using the Command Palette or Cascade panel for troubleshooting support.
 
 If you're having issues, the first step in the troubleshooting process is to retrieve the logs from your IDE. Here's how you can get Windsurf logs for each of the major IDEs:
 
@@ -6453,15 +6349,15 @@ If you're having issues, the first step in the troubleshooting process is to ret
 
 Alternatively, you can also click on the three dots in the top right corner of the Cascade panel and select "Download Diagnostics".
 
-<Frame style={{ border: 'none', background: 'none', width: '75%', margin: '0 auto', display: 'flex'}}>
-  <img src="https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/windsurf-download-diagnostics.png?fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=b92c1e66d7d6b88e45147038adaae291" data-og-width="806" width="806" data-og-height="612" height="612" data-path="assets/windsurf/windsurf-download-diagnostics.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/windsurf-download-diagnostics.png?w=280&fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=09afe7b42fc139c708989d828fe37897 280w, https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/windsurf-download-diagnostics.png?w=560&fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=48eadc9aaa349983cd70ac95be11d88a 560w, https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/windsurf-download-diagnostics.png?w=840&fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=28b3a95b07e2f2730eb458e609c7a26b 840w, https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/windsurf-download-diagnostics.png?w=1100&fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=2dd140d8ad56ca5d8cff1f4b2e4bea91 1100w, https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/windsurf-download-diagnostics.png?w=1650&fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=07607f0f91a6f96ddaed9d5094866a2a 1650w, https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/windsurf-download-diagnostics.png?w=2500&fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=dc790fe0efd81f7f728d2c49cee15b40 2500w" />
+<Frame>
+  <img />
 </Frame>
 
 
 # Proxy Configuration in Windsurf Editor
 Source: https://docs.windsurf.com/troubleshooting/windsurf-proxy-configuration
 
-Configure HTTP/HTTPS proxy settings for Windsurf Editor in corporate and enterprise networks
+Configure HTTP/HTTPS proxy settings for Windsurf Editor in corporate networks. Includes auto-detect, manual configuration, and SSH remote proxy setup.
 
 Some corporate and enterprise networks route traffic through HTTP/HTTPS proxies. Windsurf Editor needs to reach a few external services (for sign-in and AI features), so you may need to configure a proxy before things work reliably.
 
@@ -6517,8 +6413,8 @@ If your proxy is **already configured on your machine** (for example via system 
 
    * Retry sign-in or any previously failing operation
 
-<Frame style={{ border: 'none', background: 'none' }}>
-  <img style={{ maxHeight: "500px" }} src="https://mintcdn.com/codeium/wMUgYjlL-wAQ3CJD/assets/windsurf/proxy-detect-proxy-setting.png?fit=max&auto=format&n=wMUgYjlL-wAQ3CJD&q=85&s=a1d3af3f5373df545673865fed24697f" data-og-width="1773" width="1773" data-og-height="790" height="790" data-path="assets/windsurf/proxy-detect-proxy-setting.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/wMUgYjlL-wAQ3CJD/assets/windsurf/proxy-detect-proxy-setting.png?w=280&fit=max&auto=format&n=wMUgYjlL-wAQ3CJD&q=85&s=2f6331eb85274e8c72faf513d8e959d0 280w, https://mintcdn.com/codeium/wMUgYjlL-wAQ3CJD/assets/windsurf/proxy-detect-proxy-setting.png?w=560&fit=max&auto=format&n=wMUgYjlL-wAQ3CJD&q=85&s=5e9e89fef86395266a8b5f28477eb871 560w, https://mintcdn.com/codeium/wMUgYjlL-wAQ3CJD/assets/windsurf/proxy-detect-proxy-setting.png?w=840&fit=max&auto=format&n=wMUgYjlL-wAQ3CJD&q=85&s=bda2658c46a8d21e3d4ab35050be5b23 840w, https://mintcdn.com/codeium/wMUgYjlL-wAQ3CJD/assets/windsurf/proxy-detect-proxy-setting.png?w=1100&fit=max&auto=format&n=wMUgYjlL-wAQ3CJD&q=85&s=8b1361b3cbf8761247cedcd46c3587de 1100w, https://mintcdn.com/codeium/wMUgYjlL-wAQ3CJD/assets/windsurf/proxy-detect-proxy-setting.png?w=1650&fit=max&auto=format&n=wMUgYjlL-wAQ3CJD&q=85&s=4ed02d6803aca6770e95cfccc23ddeda 1650w, https://mintcdn.com/codeium/wMUgYjlL-wAQ3CJD/assets/windsurf/proxy-detect-proxy-setting.png?w=2500&fit=max&auto=format&n=wMUgYjlL-wAQ3CJD&q=85&s=4b283fb6eca856637928945ce25cae56 2500w" />
+<Frame>
+  <img />
 </Frame>
 
 If things stop working after enabling this, you can turn **Detect proxy** back **OFF** and use manual settings instead (see next section), or follow guidance from your IT team.
@@ -6557,8 +6453,8 @@ If your organization requires you to **manually specify** the proxy in applicati
 
    * Retry the operation that was failing with **"Failed to connect"** or similar errors
 
-<Frame style={{ border: 'none', background: 'none' }}>
-  <img style={{ maxHeight: "500px" }} src="https://mintcdn.com/codeium/wMUgYjlL-wAQ3CJD/assets/windsurf/proxy-manual-configuration.png?fit=max&auto=format&n=wMUgYjlL-wAQ3CJD&q=85&s=7bc6103beb74c91208fe342992217dea" data-og-width="1418" width="1418" data-og-height="1430" height="1430" data-path="assets/windsurf/proxy-manual-configuration.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/wMUgYjlL-wAQ3CJD/assets/windsurf/proxy-manual-configuration.png?w=280&fit=max&auto=format&n=wMUgYjlL-wAQ3CJD&q=85&s=ef9f1b3410da3fe8776f1ad2eb419c96 280w, https://mintcdn.com/codeium/wMUgYjlL-wAQ3CJD/assets/windsurf/proxy-manual-configuration.png?w=560&fit=max&auto=format&n=wMUgYjlL-wAQ3CJD&q=85&s=702bd073a97f4112c9e76d53adf3dc48 560w, https://mintcdn.com/codeium/wMUgYjlL-wAQ3CJD/assets/windsurf/proxy-manual-configuration.png?w=840&fit=max&auto=format&n=wMUgYjlL-wAQ3CJD&q=85&s=712a60ff3b35955aaecaca8972da366b 840w, https://mintcdn.com/codeium/wMUgYjlL-wAQ3CJD/assets/windsurf/proxy-manual-configuration.png?w=1100&fit=max&auto=format&n=wMUgYjlL-wAQ3CJD&q=85&s=ce168c344baee5bd57e56abe2eefa8ee 1100w, https://mintcdn.com/codeium/wMUgYjlL-wAQ3CJD/assets/windsurf/proxy-manual-configuration.png?w=1650&fit=max&auto=format&n=wMUgYjlL-wAQ3CJD&q=85&s=d888c7b78f525fee3d8870ef5981d52a 1650w, https://mintcdn.com/codeium/wMUgYjlL-wAQ3CJD/assets/windsurf/proxy-manual-configuration.png?w=2500&fit=max&auto=format&n=wMUgYjlL-wAQ3CJD&q=85&s=623ea038b7a99d01e36ca63a7d319ef2 2500w" />
+<Frame>
+  <img />
 </Frame>
 
 ***
@@ -6593,8 +6489,8 @@ To configure the proxy for remote environments:
 
 <Note>These **remote** proxy settings are independent from the general proxy / Detect proxy options described above. In some environments you may need to configure **both** the local editor proxy and the Windsurf Remote SSH proxy values.</Note>
 
-<Frame style={{ border: 'none', background: 'none' }}>
-  <img style={{ maxHeight: "500px" }} src="https://mintcdn.com/codeium/wMUgYjlL-wAQ3CJD/assets/windsurf/proxy-remote-ssh-settings.png?fit=max&auto=format&n=wMUgYjlL-wAQ3CJD&q=85&s=195e25ee466aab96a8cde2965d2222f3" data-og-width="1938" width="1938" data-og-height="903" height="903" data-path="assets/windsurf/proxy-remote-ssh-settings.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/wMUgYjlL-wAQ3CJD/assets/windsurf/proxy-remote-ssh-settings.png?w=280&fit=max&auto=format&n=wMUgYjlL-wAQ3CJD&q=85&s=86cd824f54a74f3ea601c58bb7d103e7 280w, https://mintcdn.com/codeium/wMUgYjlL-wAQ3CJD/assets/windsurf/proxy-remote-ssh-settings.png?w=560&fit=max&auto=format&n=wMUgYjlL-wAQ3CJD&q=85&s=4d4c4363168e537da3e0c0e025d8b597 560w, https://mintcdn.com/codeium/wMUgYjlL-wAQ3CJD/assets/windsurf/proxy-remote-ssh-settings.png?w=840&fit=max&auto=format&n=wMUgYjlL-wAQ3CJD&q=85&s=4bd9b6797a0d9d3cb6400a20e4ba3415 840w, https://mintcdn.com/codeium/wMUgYjlL-wAQ3CJD/assets/windsurf/proxy-remote-ssh-settings.png?w=1100&fit=max&auto=format&n=wMUgYjlL-wAQ3CJD&q=85&s=e29db80228010fa32f40f2bbb6a63ca3 1100w, https://mintcdn.com/codeium/wMUgYjlL-wAQ3CJD/assets/windsurf/proxy-remote-ssh-settings.png?w=1650&fit=max&auto=format&n=wMUgYjlL-wAQ3CJD&q=85&s=04355a89927533be56bdc0f8508a696c 1650w, https://mintcdn.com/codeium/wMUgYjlL-wAQ3CJD/assets/windsurf/proxy-remote-ssh-settings.png?w=2500&fit=max&auto=format&n=wMUgYjlL-wAQ3CJD&q=85&s=944281d9600a09e55b4f3582c0f31839 2500w" />
+<Frame>
+  <img />
 </Frame>
 
 ***
@@ -6619,12 +6515,12 @@ If you're unsure which of these applies to you, your **IT / infra team is the so
 # Windsurf PR Reviews
 Source: https://docs.windsurf.com/windsurf-reviews/windsurf-reviews
 
-
+AI-powered GitHub pull request reviews for Teams and Enterprise. Automatically review PRs, edit titles, and provide feedback as GitHub comments.
 
 Windsurf PR Reviews helps teams streamline code reviews with AI-powered feedback on GitHub pull requests. This feature is currently in beta for Teams and Enterprise customers using GitHub Cloud.
 
-<Frame style={{ border: 'none', background: 'none', margin: '0 auto', display: 'flex'}}>
-  <img src="https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/external-apps/github-bot-pr.png?fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=b1e100ae9ff71de84cf1b2b939db8e12" data-og-width="2120" width="2120" data-og-height="1156" height="1156" data-path="assets/external-apps/github-bot-pr.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/external-apps/github-bot-pr.png?w=280&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=cd92e04121f32251117b939eaa666b2d 280w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/external-apps/github-bot-pr.png?w=560&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=c8f9c2350fa281444d6a3337fae74ea1 560w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/external-apps/github-bot-pr.png?w=840&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=5ef52c4a1e831b14885aa116054c0075 840w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/external-apps/github-bot-pr.png?w=1100&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=e1d052ca684b4ca413b15eb871d1666c 1100w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/external-apps/github-bot-pr.png?w=1650&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=4548978dd7d615103c1dc2778ecea0ee 1650w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/external-apps/github-bot-pr.png?w=2500&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=0eed14d8f1f05325371337e5f3a9068a 2500w" />
+<Frame>
+  <img />
 </Frame>
 
 ## How It Works
@@ -6671,11 +6567,11 @@ For effective PR reviews:
 # Analytics
 Source: https://docs.windsurf.com/windsurf/accounts/analytics
 
-
+View individual user analytics, team analytics, usage patterns, and metrics for your Windsurf usage including code completion stats and AI-written code percentage.
 
 ## Individuals
 
-<Card title="User Analytics" horizontal={true} icon="user" href="https://windsurf.com/profile">
+<Card title="User Analytics" icon="user" href="https://windsurf.com/profile">
   User analytics are available for viewing and sharing on your own [profile](https://windsurf.com/profile) page.
 </Card>
 
@@ -6683,7 +6579,7 @@ See your completion stats, [refer](https://windsurf.com/referral) your friends, 
 
 ## Teams
 
-<Card title="Team Analytics" horizontal={true} icon="users" href="https://windsurf.com/team/analytics">
+<Card title="Team Analytics" icon="users" href="https://windsurf.com/team/analytics">
   Windsurf makes managing your team easy from one dashboard.
 </Card>
 
@@ -6694,14 +6590,14 @@ See your completion stats, [refer](https://windsurf.com/referral) your friends, 
 Team leads and managers can also see an aggregate of their team members' usage patterns and analytics, including Percent of Code Written (PCW) by AI, total lines of code written, total tool calls, credit consumption, and more.
 
 <Frame>
-  <img src="https://mintcdn.com/codeium/vRt4FQOyBeZpD2Pu/assets/teams/team-analytics-pcw.jpg?fit=max&auto=format&n=vRt4FQOyBeZpD2Pu&q=85&s=55fc677bc12bf29fade2bd8152eb4712" data-og-width="1313" width="1313" data-og-height="985" height="985" data-path="assets/teams/team-analytics-pcw.jpg" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/vRt4FQOyBeZpD2Pu/assets/teams/team-analytics-pcw.jpg?w=280&fit=max&auto=format&n=vRt4FQOyBeZpD2Pu&q=85&s=b5e996e20bbde88e14ff033a56e89c69 280w, https://mintcdn.com/codeium/vRt4FQOyBeZpD2Pu/assets/teams/team-analytics-pcw.jpg?w=560&fit=max&auto=format&n=vRt4FQOyBeZpD2Pu&q=85&s=42db5449e81d53614c0ac600f5625d6b 560w, https://mintcdn.com/codeium/vRt4FQOyBeZpD2Pu/assets/teams/team-analytics-pcw.jpg?w=840&fit=max&auto=format&n=vRt4FQOyBeZpD2Pu&q=85&s=703e903949018491e3db70d5da873233 840w, https://mintcdn.com/codeium/vRt4FQOyBeZpD2Pu/assets/teams/team-analytics-pcw.jpg?w=1100&fit=max&auto=format&n=vRt4FQOyBeZpD2Pu&q=85&s=abc9b188e2fdd9e2f5a395f594d1ba0d 1100w, https://mintcdn.com/codeium/vRt4FQOyBeZpD2Pu/assets/teams/team-analytics-pcw.jpg?w=1650&fit=max&auto=format&n=vRt4FQOyBeZpD2Pu&q=85&s=f9544605eb542dc0c5ecf29836196670 1650w, https://mintcdn.com/codeium/vRt4FQOyBeZpD2Pu/assets/teams/team-analytics-pcw.jpg?w=2500&fit=max&auto=format&n=vRt4FQOyBeZpD2Pu&q=85&s=6f5b57d0857d14a96b33cdb131a72431 2500w" />
+  <img />
 </Frame>
 
 
 # Analytics API
 Source: https://docs.windsurf.com/windsurf/accounts/api-reference/analytics-api-introduction
 
-Enterprise analytics API for querying Windsurf usage data
+Enterprise analytics API for querying Windsurf usage data including autocomplete, chat, command, and Cascade metrics.
 
 ## Overview
 
@@ -6732,7 +6628,7 @@ The Analytics API provides three main endpoints:
 # API Reference
 Source: https://docs.windsurf.com/windsurf/accounts/api-reference/api-introduction
 
-Enterprise API for querying Windsurf usage data and managing configurations
+Enterprise API for querying Windsurf usage data and managing configurations with service key authentication.
 
 ## Overview
 
@@ -6761,15 +6657,22 @@ The Windsurf API uses service keys for authentication. Service keys must be incl
 
 ### Required Permissions
 
-All Analytics API endpoints require "Teams Read-only" permissions.
+Different API endpoints require different permissions. Refer to the individual endpoint documentation for the specific permission required:
 
-All Usage API endpoints require "Billing Write" permissions.
+| Endpoint                                                                                                      | Required Permission |
+| ------------------------------------------------------------------------------------------------------------- | ------------------- |
+| [Custom Analytics](/windsurf/accounts/api-reference/custom-analytics) (`/Analytics`)                          | Analytics Read      |
+| [User Page Analytics](/windsurf/accounts/api-reference/user-page-analytics) (`/UserPageAnalytics`)            | Teams Read-Only     |
+| [Cascade Analytics](/windsurf/accounts/api-reference/cascade-analytics) (`/CascadeAnalytics`)                 | Teams Read-Only     |
+| [Set Usage Configuration](/windsurf/accounts/api-reference/usage-config) (`/UsageConfig`)                     | Billing Write       |
+| [Get Usage Configuration](/windsurf/accounts/api-reference/get-usage-config) (`/GetUsageConfig`)              | Billing Read        |
+| [Get Team Credit Balance](/windsurf/accounts/api-reference/get-team-credit-balance) (`/GetTeamCreditBalance`) | Billing Read        |
 
 ### Using Service Keys
 
 Include your service key in the request body of all API calls:
 
-```json  theme={null}
+```json theme={null}
 {
   "service_key": "your_service_key_here",
   // ... other parameters
@@ -6791,7 +6694,7 @@ For API support and questions, please contact [Windsurf Support](https://windsur
 Source: https://docs.windsurf.com/windsurf/accounts/api-reference/cascade-analytics
 
 POST https://server.codeium.com/api/v1/CascadeAnalytics
-Query Cascade-specific usage metrics and data
+Query Cascade-specific usage metrics including lines suggested/accepted, model usage, credit consumption, and tool usage statistics.
 
 ## Overview
 
@@ -6799,27 +6702,27 @@ Retrieve Cascade-specific analytics data including lines suggested/accepted, mod
 
 ## Request
 
-<ParamField body="service_key" type="string" required>
+<ParamField type="string">
   Your service key with "Teams Read-only" permissions
 </ParamField>
 
-<ParamField body="group_name" type="string">
+<ParamField type="string">
   Filter results to users in a specific group. Cannot be used with `emails` parameter.
 </ParamField>
 
-<ParamField body="start_timestamp" type="string">
+<ParamField type="string">
   Start time in RFC 3339 format (e.g., `2023-01-01T00:00:00Z`)
 </ParamField>
 
-<ParamField body="end_timestamp" type="string">
+<ParamField type="string">
   End time in RFC 3339 format (e.g., `2023-12-31T23:59:59Z`)
 </ParamField>
 
-<ParamField body="emails" type="array">
+<ParamField type="array">
   Array of email addresses to filter results. Cannot be used with `group_name` parameter.
 </ParamField>
 
-<ParamField body="ide_types" type="array">
+<ParamField type="array">
   Filter by IDE type. Available options:
 
   * `"editor"` - Windsurf Editor
@@ -6828,7 +6731,7 @@ Retrieve Cascade-specific analytics data including lines suggested/accepted, mod
   If omitted, returns data for both IDEs.
 </ParamField>
 
-<ParamField body="query_requests" type="array" required>
+<ParamField type="array">
   Array of data source queries to execute. Each object should contain one of the supported data sources.
 </ParamField>
 
@@ -6838,7 +6741,7 @@ Retrieve Cascade-specific analytics data including lines suggested/accepted, mod
 
 Query for daily Cascade lines suggested and accepted.
 
-```json  theme={null}
+```json theme={null}
 {
   "cascade_lines": {}
 }
@@ -6854,7 +6757,7 @@ Query for daily Cascade lines suggested and accepted.
 
 Query for model usage, credit consumption, and mode data.
 
-```json  theme={null}
+```json theme={null}
 {
   "cascade_runs": {}
 }
@@ -6880,7 +6783,7 @@ Query for model usage, credit consumption, and mode data.
 
 Query for tool usage statistics (aggregate counts).
 
-```json  theme={null}
+```json theme={null}
 {
   "cascade_tool_usage": {}
 }
@@ -6913,7 +6816,7 @@ Query for tool usage statistics (aggregate counts).
 
 ## Example Request
 
-```bash  theme={null}
+```bash theme={null}
 curl -X POST --header "Content-Type: application/json" \
 --data '{
   "service_key": "your_service_key_here",
@@ -7013,7 +6916,7 @@ https://server.codeium.com/api/v1/CascadeAnalytics
 
 ### Example Response
 
-```json  theme={null}
+```json theme={null}
 {
   "queryResults": [
     {
@@ -7074,7 +6977,7 @@ https://server.codeium.com/api/v1/CascadeAnalytics
 Source: https://docs.windsurf.com/windsurf/accounts/api-reference/custom-analytics
 
 POST https://server.codeium.com/api/v1/Analytics
-Flexible analytics querying with custom selections, filters, and aggregations
+Flexible analytics querying with custom selections, filters, and aggregations for autocomplete, chat, command, and PCW data.
 
 ## Overview
 
@@ -7082,69 +6985,113 @@ The Custom Analytics API provides flexible querying capabilities for autocomplet
 
 ## Request
 
-<ParamField body="service_key" type="string" required>
-  Your service key with "Teams Read-only" permissions
+<ParamField type="string">
+  Your service key with "Analytics Read" permissions
 </ParamField>
 
-<ParamField body="group_name" type="string">
+<ParamField type="string">
   Filter results to users in a specific group (optional)
 </ParamField>
 
-<ParamField body="query_requests" type="array" required>
+<ParamField type="array">
   Array of query request objects defining the data to retrieve
+
+  <Expandable title="Query Request Object">
+    <ParamField type="string">
+      Data source to query. Options:
+
+      * `QUERY_DATA_SOURCE_USER_DATA` - Autocomplete data
+      * `QUERY_DATA_SOURCE_CHAT_DATA` - Chat data
+      * `QUERY_DATA_SOURCE_COMMAND_DATA` - Command data
+      * `QUERY_DATA_SOURCE_PCW_DATA` - Percent Code Written data
+    </ParamField>
+
+    <ParamField type="array">
+      Array of field selections to retrieve
+
+      <Expandable title="Selection Object">
+        <ParamField type="string">
+          Field name to select (see Available Fields section)
+        </ParamField>
+
+        <ParamField type="string">
+          Alias for the field. If not specified, defaults to `{aggregation_function}_{field_name}` (lowercase)
+        </ParamField>
+
+        <ParamField type="string">
+          Aggregation function to apply:
+
+          * `QUERY_AGGREGATION_UNSPECIFIED` (default)
+          * `QUERY_AGGREGATION_COUNT`
+          * `QUERY_AGGREGATION_SUM`
+          * `QUERY_AGGREGATION_AVG`
+          * `QUERY_AGGREGATION_MAX`
+          * `QUERY_AGGREGATION_MIN`
+        </ParamField>
+      </Expandable>
+    </ParamField>
+
+    <ParamField type="array">
+      Array of filters to apply
+
+      <Expandable title="Filter Object">
+        <ParamField type="string">
+          Field name to filter on
+        </ParamField>
+
+        <ParamField type="string">
+          Filter operation:
+
+          * `QUERY_FILTER_EQUAL`
+          * `QUERY_FILTER_NOT_EQUAL`
+          * `QUERY_FILTER_GREATER_THAN`
+          * `QUERY_FILTER_LESS_THAN`
+          * `QUERY_FILTER_GE` (greater than or equal)
+          * `QUERY_FILTER_LE` (less than or equal)
+        </ParamField>
+
+        <ParamField type="string">
+          Value to compare against
+        </ParamField>
+      </Expandable>
+    </ParamField>
+
+    <ParamField type="array">
+      Array of aggregations to group by
+
+      <Expandable title="Aggregation Object">
+        <ParamField type="string">
+          Field name to group by
+        </ParamField>
+
+        <ParamField type="string">
+          Alias for the aggregation field
+        </ParamField>
+      </Expandable>
+    </ParamField>
+  </Expandable>
 </ParamField>
 
 ## Query Request Structure
 
 Each query request object contains:
 
-<ParamField body="data_source" type="string" required>
-  Data source to query. Options:
-
-  * `QUERY_DATA_SOURCE_USER_DATA` - Autocomplete data
-  * `QUERY_DATA_SOURCE_CHAT_DATA` - Chat data
-  * `QUERY_DATA_SOURCE_COMMAND_DATA` - Command data
-  * `QUERY_DATA_SOURCE_PCW_DATA` - Percent Code Written data
-</ParamField>
-
-<ParamField body="selections" type="array" required>
-  Array of field selections to retrieve (see Selections section)
-</ParamField>
-
-<ParamField body="filters" type="array">
-  Array of filters to apply (see Filters section)
-</ParamField>
-
-<ParamField body="aggregations" type="array">
-  Array of aggregations to group by (see Aggregations section)
-</ParamField>
+* **data\_source** (required): Data source to query
+* **selections** (required): Array of field selections to retrieve
+* **filters** (optional): Array of filters to apply
+* **aggregations** (optional): Array of aggregations to group by
 
 ## Selections
 
 Selections define which fields to retrieve and how to aggregate them.
 
-<ParamField body="field" type="string" required>
-  Field name to select (see Available Fields section)
-</ParamField>
-
-<ParamField body="name" type="string">
-  Alias for the field. If not specified, defaults to `{aggregation_function}_{field_name}` (lowercase)
-</ParamField>
-
-<ParamField body="aggregation_function" type="string">
-  Aggregation function to apply:
-
-  * `QUERY_AGGREGATION_UNSPECIFIED` (default)
-  * `QUERY_AGGREGATION_COUNT`
-  * `QUERY_AGGREGATION_SUM`
-  * `QUERY_AGGREGATION_AVG`
-  * `QUERY_AGGREGATION_MAX`
-  * `QUERY_AGGREGATION_MIN`
-</ParamField>
+* **field** (required): Field name to select
+* **name** (optional): Alias for the field
+* **aggregation\_function** (optional): Aggregation function to apply
 
 ### Selection Example
 
-```json  theme={null}
+```json theme={null}
 {
   "field": "num_acceptances",
   "name": "total_acceptances",
@@ -7156,28 +7103,13 @@ Selections define which fields to retrieve and how to aggregate them.
 
 Filters narrow down data to elements meeting specific criteria.
 
-<ParamField body="name" type="string" required>
-  Field name to filter on
-</ParamField>
-
-<ParamField body="value" type="string" required>
-  Value to compare against
-</ParamField>
-
-<ParamField body="filter" type="string" required>
-  Filter operation:
-
-  * `QUERY_FILTER_EQUAL`
-  * `QUERY_FILTER_NOT_EQUAL`
-  * `QUERY_FILTER_GREATER_THAN`
-  * `QUERY_FILTER_LESS_THAN`
-  * `QUERY_FILTER_GE` (greater than or equal)
-  * `QUERY_FILTER_LE` (less than or equal)
-</ParamField>
+* **name** (required): Field name to filter on
+* **filter** (required): Filter operation
+* **value** (required): Value to compare against
 
 ### Filter Example
 
-```json  theme={null}
+```json theme={null}
 {
   "name": "language",
   "filter": "QUERY_FILTER_EQUAL",
@@ -7189,17 +7121,12 @@ Filters narrow down data to elements meeting specific criteria.
 
 Aggregations group data by specified criteria.
 
-<ParamField body="field" type="string" required>
-  Field name to group by
-</ParamField>
-
-<ParamField body="name" type="string" required>
-  Alias for the aggregation field
-</ParamField>
+* **field** (required): Field name to group by
+* **name** (required): Alias for the aggregation field
 
 ### Aggregation Example
 
-```json  theme={null}
+```json theme={null}
 {
   "field": "ide",
   "name": "ide_type"
@@ -7325,7 +7252,7 @@ For date filtering in PCW queries, use `start_timestamp` and `end_timestamp` in 
 
 ### User Data Example
 
-```bash  theme={null}
+```bash theme={null}
 curl -X POST --header "Content-Type: application/json" \
 --data '{
   "service_key": "your_service_key_here",
@@ -7346,12 +7273,12 @@ curl -X POST --header "Content-Type: application/json" \
       ],
       "filters": [
         {
-          "name": "hour",
+          "name": "date",
           "filter": "QUERY_FILTER_GE",
           "value": "2024-01-01"
         },
         {
-          "name": "hour",
+          "name": "date",
           "filter": "QUERY_FILTER_LE",
           "value": "2024-02-01"
         }
@@ -7364,7 +7291,7 @@ https://server.codeium.com/api/v1/Analytics
 
 ### Chat Data Example
 
-```bash  theme={null}
+```bash theme={null}
 curl -X POST --header "Content-Type: application/json" \
 --data '{
   "service_key": "your_service_key_here",
@@ -7399,7 +7326,7 @@ https://server.codeium.com/api/v1/Analytics
 
 ### Command Data Example
 
-```bash  theme={null}
+```bash theme={null}
 curl -X POST --header "Content-Type: application/json" \
 --data '{
   "service_key": "your_service_key_here",
@@ -7444,7 +7371,7 @@ https://server.codeium.com/api/v1/Analytics
 
 ### PCW Data Example
 
-```bash  theme={null}
+```bash theme={null}
 curl -X POST --header "Content-Type: application/json" \
 --data '{
   "service_key": "your_service_key_here",
@@ -7506,7 +7433,7 @@ https://server.codeium.com/api/v1/Analytics
 
 #### User Data Response
 
-```json  theme={null}
+```json theme={null}
 {
   "queryResults": [
     {
@@ -7525,7 +7452,7 @@ https://server.codeium.com/api/v1/Analytics
 
 #### Chat Data Response
 
-```json  theme={null}
+```json theme={null}
 {
   "queryResults": [
     {
@@ -7550,7 +7477,7 @@ https://server.codeium.com/api/v1/Analytics
 
 #### Command Data Response
 
-```json  theme={null}
+```json theme={null}
 {
   "queryResults": [
     {
@@ -7577,7 +7504,7 @@ https://server.codeium.com/api/v1/Analytics
 
 #### PCW Data Response
 
-```json  theme={null}
+```json theme={null}
 {
   "queryResults": [
     {
@@ -7609,7 +7536,7 @@ https://server.codeium.com/api/v1/Analytics
 # Error Handling
 Source: https://docs.windsurf.com/windsurf/accounts/api-reference/errors
 
-Common error messages and debugging tips for the Analytics API
+Common error messages and debugging tips for the Analytics API including authentication, query structure, and rate limiting errors.
 
 ## Overview
 
@@ -7619,7 +7546,7 @@ The Analytics API returns detailed error messages to help debug invalid queries.
 
 When an error occurs, the API returns an error response with a descriptive message:
 
-```json  theme={null}
+```json theme={null}
 {
   "error": "Error message describing what went wrong"
 }
@@ -7645,12 +7572,12 @@ When an error occurs, the API returns an error response with a descriptive messa
   <Accordion title="Insufficient permissions">
     **Error:** `Insufficient permissions`
 
-    **Cause:** The service key doesn't have the required "Teams Read-only" permissions.
+    **Cause:** The service key doesn't have the required permissions for the endpoint you're calling.
 
     **Solution:**
 
     * Update the service key permissions in team settings
-    * Ensure the service key has "Teams Read-only" access
+    * Refer to the [API introduction](/windsurf/accounts/api-reference/api-introduction#required-permissions) for the specific permission required by each endpoint
   </Accordion>
 </AccordionGroup>
 
@@ -7664,7 +7591,7 @@ When an error occurs, the API returns an error response with a descriptive messa
 
     **Solution:** Add at least one selection to your query request:
 
-    ```json  theme={null}
+    ```json theme={null}
     "selections": [
       {
         "field": "num_acceptances",
@@ -7696,7 +7623,7 @@ When an error occurs, the API returns an error response with a descriptive messa
 
     **Invalid:**
 
-    ```json  theme={null}
+    ```json theme={null}
     "selections": [
       {
         "field": "num_acceptances",
@@ -7711,7 +7638,7 @@ When an error occurs, the API returns an error response with a descriptive messa
 
     **Valid:**
 
-    ```json  theme={null}
+    ```json theme={null}
     "selections": [
       {
         "field": "num_acceptances",
@@ -7746,7 +7673,7 @@ When an error occurs, the API returns an error response with a descriptive messa
 
     **Invalid:**
 
-    ```json  theme={null}
+    ```json theme={null}
     "aggregations": [
       {
         "field": "distinct_developer_days",
@@ -7757,7 +7684,7 @@ When an error occurs, the API returns an error response with a descriptive messa
 
     **Valid:**
 
-    ```json  theme={null}
+    ```json theme={null}
     "aggregations": [
       {
         "field": "api_key",
@@ -7822,7 +7749,7 @@ When an error occurs, the API returns an error response with a descriptive messa
 
     **Invalid:**
 
-    ```json  theme={null}
+    ```json theme={null}
     {
       "group_name": "engineering",
       "emails": ["user@example.com"]
@@ -7831,7 +7758,7 @@ When an error occurs, the API returns an error response with a descriptive messa
 
     **Valid:**
 
-    ```json  theme={null}
+    ```json theme={null}
     {
       "group_name": "engineering"
     }
@@ -7839,7 +7766,7 @@ When an error occurs, the API returns an error response with a descriptive messa
 
     **Or:**
 
-    ```json  theme={null}
+    ```json theme={null}
     {
       "emails": ["user@example.com", "user2@example.com"]
     }
@@ -7870,7 +7797,7 @@ When an error occurs, the API returns an error response with a descriptive messa
 
 Begin with basic queries and gradually add complexity:
 
-```json  theme={null}
+```json theme={null}
 {
   "service_key": "your_key",
   "query_requests": [
@@ -7916,11 +7843,183 @@ If you continue to experience issues:
 Error handling and validation have been improved in API version 1.10.0 and later. If you're using an older version, consider updating to get more detailed error messages.
 
 
+# Get Team Credit Balance
+Source: https://docs.windsurf.com/windsurf/accounts/api-reference/get-team-credit-balance
+
+POST https://server.codeium.com/api/v1/GetTeamCreditBalance
+Retrieve the current credit balance for your team, including prompt credits per seat, add-on credits, and billing cycle information.
+
+## Overview
+
+Retrieve the current credit balance information for your team. This includes prompt credits allocated per seat, the number of seats, add-on credit usage, and billing cycle dates.
+
+## Request
+
+<ParamField type="string">
+  Your service key with "Billing Read" permissions
+</ParamField>
+
+### Example Request
+
+```bash theme={null}
+curl -X POST --header "Content-Type: application/json" \
+--data '{
+  "service_key": "your_service_key_here"
+}' \
+https://server.codeium.com/api/v1/GetTeamCreditBalance
+```
+
+## Response
+
+<ResponseField name="promptCreditsPerSeat" type="integer">
+  Number of prompt credits allocated per seat for the current billing cycle
+</ResponseField>
+
+<ResponseField name="numSeats" type="integer">
+  Number of seats on the team
+</ResponseField>
+
+<ResponseField name="addOnCreditsAvailable" type="integer">
+  Total add-on credits available for the team
+</ResponseField>
+
+<ResponseField name="addOnCreditsUsed" type="integer">
+  Add-on credits consumed so far in the current billing cycle
+</ResponseField>
+
+<ResponseField name="billingCycleStart" type="string">
+  Start of the current billing cycle (ISO 8601 timestamp)
+</ResponseField>
+
+<ResponseField name="billingCycleEnd" type="string">
+  End of the current billing cycle (ISO 8601 timestamp)
+</ResponseField>
+
+### Example Response
+
+```json theme={null}
+{
+  "promptCreditsPerSeat": 500,
+  "numSeats": 50,
+  "addOnCreditsAvailable": 10000,
+  "addOnCreditsUsed": 3500,
+  "billingCycleStart": "2026-01-01T00:00:00Z",
+  "billingCycleEnd": "2026-02-01T00:00:00Z"
+}
+```
+
+## Error Responses
+
+Common error scenarios:
+
+* Invalid service key or insufficient permissions
+* Feature not available for your plan (requires enterprise tier)
+* Rate limit exceeded
+
+
+# Get Usage Configuration
+Source: https://docs.windsurf.com/windsurf/accounts/api-reference/get-usage-config
+
+POST https://server.codeium.com/api/v1/GetUsageConfig
+Retrieve add-on credit cap configuration at team, group, or user level for enterprise billing management.
+
+## Overview
+
+Retrieve the current add-on credit cap configuration for your organization. You can query configurations at the team level, for specific groups, or for individual users.
+
+## Request
+
+<ParamField type="string">
+  Your service key with "Billing Read" permissions
+</ParamField>
+
+### Scope Configuration (Choose One)
+
+<ParamField type="boolean">
+  Set to `true` to retrieve the configuration at the team level
+</ParamField>
+
+<ParamField type="string">
+  Retrieve the configuration for a specific group by providing the group ID
+</ParamField>
+
+<ParamField type="string">
+  Retrieve the configuration for a specific user by providing their email address
+</ParamField>
+
+<Info>
+  You must provide one of `team_level`, `group_id`, or `user_email` to define the scope.
+</Info>
+
+### Example Request - Get Team-Level Configuration
+
+```bash theme={null}
+curl -X POST --header "Content-Type: application/json" \
+--data '{
+  "service_key": "your_service_key_here",
+  "team_level": true
+}' \
+https://server.codeium.com/api/v1/GetUsageConfig
+```
+
+### Example Request - Get Group Configuration
+
+```bash theme={null}
+curl -X POST --header "Content-Type: application/json" \
+--data '{
+  "service_key": "your_service_key_here",
+  "group_id": "engineering_team"
+}' \
+https://server.codeium.com/api/v1/GetUsageConfig
+```
+
+### Example Request - Get User Configuration
+
+```bash theme={null}
+curl -X POST --header "Content-Type: application/json" \
+--data '{
+  "service_key": "your_service_key_here",
+  "user_email": "user@example.com"
+}' \
+https://server.codeium.com/api/v1/GetUsageConfig
+```
+
+## Response
+
+<ResponseField name="add_on_credit_cap" type="integer">
+  The configured add-on credit cap value. If this field is not present in the response, there is no cap configured at the requested scope level.
+</ResponseField>
+
+### Example Response - With Cap Configured
+
+```json theme={null}
+{
+  "add_on_credit_cap": 10000
+}
+```
+
+### Example Response - No Cap Configured
+
+```json theme={null}
+{}
+```
+
+## Error Responses
+
+Common error scenarios:
+
+* Invalid service key or insufficient permissions
+* Multiple scope parameters provided
+* No scope parameter provided
+* Invalid group ID or user email
+* Rate limit exceeded
+
+
 # Set Usage Configuration
 Source: https://docs.windsurf.com/windsurf/accounts/api-reference/usage-config
 
 POST https://server.codeium.com/api/v1/UsageConfig
-Configure usage caps for add-on credits
+Set or clear add-on credit caps at team, group, or user level for enterprise billing management.
 
 ## Overview
 
@@ -7928,17 +8027,17 @@ Set or clear usage caps on add-on credits for your organization. You can scope t
 
 ## Request
 
-<ParamField body="service_key" type="string" required>
-  Your service key with appropriate permissions
+<ParamField type="string">
+  Your service key with "Billing Write" permissions
 </ParamField>
 
 ### Credit Cap Configuration (Choose One)
 
-<ParamField body="clear_add_on_credit_cap" type="boolean">
+<ParamField type="boolean">
   Set to `true` to clear the existing add-on credit cap
 </ParamField>
 
-<ParamField body="set_add_on_credit_cap" type="integer">
+<ParamField type="integer">
   Set a new add-on credit cap (integer value)
 </ParamField>
 
@@ -7948,15 +8047,15 @@ Set or clear usage caps on add-on credits for your organization. You can scope t
 
 ### Scope Configuration (Choose One)
 
-<ParamField body="team_level" type="boolean">
+<ParamField type="boolean">
   Set to `true` to apply the configuration at the team level
 </ParamField>
 
-<ParamField body="group_id" type="string">
+<ParamField type="string">
   Apply the configuration to a specific group by providing the group ID
 </ParamField>
 
-<ParamField body="user_email" type="string">
+<ParamField type="string">
   Apply the configuration to a specific user by providing their email address
 </ParamField>
 
@@ -7966,7 +8065,7 @@ Set or clear usage caps on add-on credits for your organization. You can scope t
 
 ### Example Request - Set Credit Cap for Team
 
-```bash  theme={null}
+```bash theme={null}
 curl -X POST --header "Content-Type: application/json" \
 --data '{
   "service_key": "your_service_key_here",
@@ -7978,7 +8077,7 @@ https://server.codeium.com/api/v1/UsageConfig
 
 ### Example Request - Set Credit Cap for Group
 
-```bash  theme={null}
+```bash theme={null}
 curl -X POST --header "Content-Type: application/json" \
 --data '{
   "service_key": "your_service_key_here",
@@ -7990,7 +8089,7 @@ https://server.codeium.com/api/v1/UsageConfig
 
 ### Example Request - Set Credit Cap for User
 
-```bash  theme={null}
+```bash theme={null}
 curl -X POST --header "Content-Type: application/json" \
 --data '{
   "service_key": "your_service_key_here",
@@ -8002,7 +8101,7 @@ https://server.codeium.com/api/v1/UsageConfig
 
 ### Example Request - Clear Credit Cap
 
-```bash  theme={null}
+```bash theme={null}
 curl -X POST --header "Content-Type: application/json" \
 --data '{
   "service_key": "your_service_key_here",
@@ -8033,7 +8132,7 @@ Common error scenarios:
 Source: https://docs.windsurf.com/windsurf/accounts/api-reference/user-page-analytics
 
 POST https://server.codeium.com/api/v1/UserPageAnalytics
-Retrieve user activity data from the teams page
+Retrieve user activity statistics including names, emails, last activity times, and active days from the teams page.
 
 ## Overview
 
@@ -8041,25 +8140,25 @@ Get user activity statistics that appear on the teams page, including user names
 
 ## Request
 
-<ParamField body="service_key" type="string" required>
+<ParamField type="string">
   Your service key with "Teams Read-only" permissions
 </ParamField>
 
-<ParamField body="group_name" type="string">
+<ParamField type="string">
   Filter results to users in a specific group (optional)
 </ParamField>
 
-<ParamField body="start_timestamp" type="string">
+<ParamField type="string">
   Start time in RFC 3339 format (e.g., `2023-01-01T00:00:00Z`)
 </ParamField>
 
-<ParamField body="end_timestamp" type="string">
+<ParamField type="string">
   End time in RFC 3339 format (e.g., `2023-12-31T23:59:59Z`)
 </ParamField>
 
 ### Example Request
 
-```bash  theme={null}
+```bash theme={null}
 curl -X POST --header "Content-Type: application/json" \
 --data '{
   "service_key": "your_service_key_here",
@@ -8111,12 +8210,16 @@ https://server.codeium.com/api/v1/UserPageAnalytics
     <ResponseField name="lastCommandUsageTime" type="string">
       The most recent timestamp the command modality was used in RFC 3339 format
     </ResponseField>
+
+    <ResponseField name="teamStatus" type="string">
+      The user's team membership status. Possible values: `USER_TEAM_STATUS_UNSPECIFIED`, `USER_TEAM_STATUS_PENDING`, `USER_TEAM_STATUS_APPROVED`, `USER_TEAM_STATUS_REJECTED`. Note that the API returns all users regardless of team status, while the Manage Members UI only shows approved users.
+    </ResponseField>
   </Expandable>
 </ResponseField>
 
 ### Example Response
 
-```json  theme={null}
+```json theme={null}
 {
   "userTableStats": [
     {
@@ -8124,21 +8227,24 @@ https://server.codeium.com/api/v1/UserPageAnalytics
       "email": "alice@windsurf.com",
       "lastUpdateTime": "2024-10-10T22:56:10.771591Z",
       "apiKey": "aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa",
-      "activeDays": 178
+      "activeDays": 178,
+      "teamStatus": "USER_TEAM_STATUS_APPROVED"
     },
     {
       "name": "Bob",
       "email": "bob@windsurf.com",
       "lastUpdateTime": "2024-10-10T18:11:23.980237Z",
       "apiKey": "bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb",
-      "activeDays": 462
+      "activeDays": 462,
+      "teamStatus": "USER_TEAM_STATUS_APPROVED"
     },
     {
       "name": "Charlie",
       "email": "charlie@windsurf.com",
       "lastUpdateTime": "2024-10-10T16:43:46.117870Z",
       "apiKey": "cccccccc-cccc-cccc-cccc-cccccccccccc",
-      "activeDays": 237
+      "activeDays": 237,
+      "teamStatus": "USER_TEAM_STATUS_PENDING"
     }
   ]
 }
@@ -8161,7 +8267,7 @@ Common error scenarios:
 # Domain Verification
 Source: https://docs.windsurf.com/windsurf/accounts/domain-verification
 
-
+Verify your organization's domain ownership with DNS TXT records to enable SSO, user management, and automatic team invitations in Windsurf.
 
 Domain verification is the process of proving that your organization owns or controls a specific domain. This prevents spoofing or unauthorized use of your domain and enables secure organization-level features in Windsurf, such as SSO and user management.
 
@@ -8214,7 +8320,7 @@ Users with an email that ends in your verified domain will still be able to sign
 # Role Based Access & Management
 Source: https://docs.windsurf.com/windsurf/accounts/rbac-role-management
 
-Configure and manage role-based access controls, permissions, and user management for your Windsurf team
+Configure RBAC permissions, create custom roles, and manage user access for Windsurf Teams and Enterprise plans.
 
 Windsurf's Role-Based Access Control system provides granular, role-based access to enterprise resources, enabling administrators to assign permissions and roles dynamically for secure and efficient access management.
 
@@ -8237,7 +8343,7 @@ The role-based access system integrates seamlessly with Windsurf's existing auth
 
 Roles can be created and managed in the Windsurf admin console via the Settings tab. For Windsurf's SaaS offering, access the Settings tab at:
 
-<Card title="Team Settings" horizontal={true} icon="gear" href="https://windsurf.com/team/settings">
+<Card title="Team Settings" icon="gear" href="https://windsurf.com/team/settings">
   Manage roles, permissions, and team settings from the admin console.
 </Card>
 
@@ -8415,7 +8521,7 @@ These sorting options make it easier to find specific users and understand team 
 # Setting up SSO & SCIM
 Source: https://docs.windsurf.com/windsurf/accounts/sso-scim
 
-
+Configure Single Sign-On (SSO) and SCIM provisioning for your organization using Google Workspace, Microsoft Azure AD, Okta, or other SAML identity providers.
 
 This feature is only available to Teams and Enterprise users.
 
@@ -8430,13 +8536,13 @@ This feature is only available to Teams and Enterprise users.
     On the google admin console (admin.google.com) click **Apps -> Web and mobile apps** on the left.
 
     <Frame>
-      <img src="https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/sso-google.png?fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=9d300c86c609da6ee3fb630e91f4de3e" data-og-width="530" width="530" data-og-height="788" height="788" data-path="assets/auth/sso-google.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/sso-google.png?w=280&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=9403af117b9c97981fe559adb9b978fc 280w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/sso-google.png?w=560&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=058d140139f82caca5fee61a7d1f68cf 560w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/sso-google.png?w=840&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=b94d0aaf6b28f8646827af8918d07df8 840w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/sso-google.png?w=1100&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=f3898fed99df69da663658fd214d8676 1100w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/sso-google.png?w=1650&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=7a78f68f99b617431f0df9f765a8bec0 1650w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/sso-google.png?w=2500&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=19da5d516023353f4cc46dba47ce5b25 2500w" />
+      <img />
     </Frame>
 
     Click on **Add app**, and then **Add custom SAML app**.
 
     <Frame>
-      <img src="https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/sso-google2.png?fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=44375b535f269f130aea8c5bd6e736be" data-og-width="514" width="514" data-og-height="534" height="534" data-path="assets/auth/sso-google2.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/sso-google2.png?w=280&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=15b8ea405f2270379d74bfc0f4f2d59b 280w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/sso-google2.png?w=560&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=4a7a6ea30e5b1656dd8e92612494d632 560w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/sso-google2.png?w=840&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=db37dd58c7c32527476d114151bb7b66 840w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/sso-google2.png?w=1100&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=baa8aaa599b97b9c59f45eb0796febb4 1100w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/sso-google2.png?w=1650&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=5c1ae0fe3ac82b2965a2eea3601af438 1650w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/sso-google2.png?w=2500&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=f67c6c78e1ff1bd171532584e4aa7c2f 2500w" />
+      <img />
     </Frame>
 
     Fill out **App name** with `Windsurf`, and click **Next**.
@@ -8465,13 +8571,13 @@ This feature is only available to Teams and Enterprise users.
     * Click **Finish**
 
     <Frame>
-      <img src="https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/sso-google3.png?fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=c29f0ebf5a05dd5fae3a1127c4111d29" data-og-width="2078" width="2078" data-og-height="862" height="862" data-path="assets/auth/sso-google3.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/sso-google3.png?w=280&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=585b8d21d5b284ee28d9bd911c0d4295 280w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/sso-google3.png?w=560&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=1a0dd06112db14e2acabe0750583dd71 560w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/sso-google3.png?w=840&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=c82b1e1f6cf07b54049170ee5ac36eda 840w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/sso-google3.png?w=1100&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=fdac0e1950fd2e618710c99cee1c7656 1100w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/sso-google3.png?w=1650&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=45f58fd68db2619d5e87b3995c7103bf 1650w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/sso-google3.png?w=2500&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=d6ae5462ed098ae48de0aa6b5801cacf 2500w" />
+      <img />
     </Frame>
 
     On Codeium’s settings page, click **Enable Login with SAML**, and then click **Save**. Make sure to click on **Test Login** to make sure login works as expected. All users now will have SSO login enforced.
   </Tab>
 
-  <Tab title="Azure AD SSO">
+  <Tab title="Microsoft Entra ID">
     Windsurf Enterprise now supports sign in with Single Sign-On (SSO) via SAML. If your organization uses Microsoft Entra ID (formerly Azure AD), you will be able to use SSO with Windsurf.
 
     <Note>Windsurf only supports SP-initiated SSO; IDP-initiated SSO is NOT currently supported.</Note>
@@ -8483,19 +8589,19 @@ This feature is only available to Teams and Enterprise users.
     1. In Microsoft Entra ID, click on **Add**, and then **Enterprise Application**.
 
     <Frame>
-      <img src="https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/sso-azure.png?fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=70c1ef27e1870d1f95176d12cd7c9c47" data-og-width="854" width="854" data-og-height="384" height="384" data-path="assets/auth/sso-azure.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/sso-azure.png?w=280&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=1b88d7269fba84433a203348fd8a3920 280w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/sso-azure.png?w=560&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=2f71d980824f058c3a36d499f4f488d6 560w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/sso-azure.png?w=840&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=9bef7d83fd3afa0d42b25b81ab20d8e3 840w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/sso-azure.png?w=1100&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=b9c7eb219d3ff471f38175b0be2cdac8 1100w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/sso-azure.png?w=1650&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=6802d42ea85adeb86d22f32e59ef8a5f 1650w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/sso-azure.png?w=2500&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=0eac589296d06ffcf16e6d2bdc771d0c 2500w" />
+      <img />
     </Frame>
 
     2. Click on **Create your own application**.
 
     <Frame>
-      <img src="https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/sso-azure2.png?fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=d8d3d2b159172edef9033487d1167b52" data-og-width="680" width="680" data-og-height="202" height="202" data-path="assets/auth/sso-azure2.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/sso-azure2.png?w=280&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=66949d79e560dcf2c75bcafdcfb1b54a 280w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/sso-azure2.png?w=560&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=6ad3c318b6e47fa95b3e8677d01846ce 560w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/sso-azure2.png?w=840&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=febe960a9ff782cebaf247868fd22bee 840w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/sso-azure2.png?w=1100&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=f1c804a5b3dd2310840c95327f46241c 1100w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/sso-azure2.png?w=1650&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=7c4186eb8abb76e222579aae95f5b000 1650w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/sso-azure2.png?w=2500&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=1274eed53f279fbe64b0d52294708672 2500w" />
+      <img />
     </Frame>
 
     3. Name your application **Windsurf**, select *Integrate any other application you don't find in the gallery*, and then click **Create**.
 
     <Frame>
-      <img src="https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/sso-azure3.png?fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=38dd3186171705ca16387dfff4a5b24b" data-og-width="968" width="968" data-og-height="342" height="342" data-path="assets/auth/sso-azure3.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/sso-azure3.png?w=280&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=6c9dc6a0601145171999431fb61e0c4d 280w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/sso-azure3.png?w=560&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=87b686e30cea98fa1075ceffc0fa40f1 560w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/sso-azure3.png?w=840&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=b03c9c18b557b0f3d113d86fa8c30577 840w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/sso-azure3.png?w=1100&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=43bd3dc28697ed33fe0342dd456d2d3d 1100w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/sso-azure3.png?w=1650&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=20d19e9d664e7c835253b775229a969f 1650w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/sso-azure3.png?w=2500&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=abebde3954de441e86f120269ac6b092 2500w" />
+      <img />
     </Frame>
 
     ## Part 2: Configure SAML and User Attributes in Microsoft Entra ID
@@ -8546,13 +8652,13 @@ This feature is only available to Teams and Enterprise users.
     Click on Applications on the left sidebar, and then Create App Integration
 
     <Frame>
-      <img src="https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/sso-okta1.png?fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=e3f879d2fa7faeba003aa04e2c5d3a4a" data-og-width="1248" width="1248" data-og-height="962" height="962" data-path="assets/auth/sso-okta1.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/sso-okta1.png?w=280&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=07c6dc86816c5d6cf956401bee450128 280w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/sso-okta1.png?w=560&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=2f2d86ae21cdef97580a0824ca01ffc8 560w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/sso-okta1.png?w=840&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=ec432c4e43c969491df691687b1c8719 840w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/sso-okta1.png?w=1100&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=4f42e54a6f8de42f3fa17349df08394e 1100w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/sso-okta1.png?w=1650&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=9f1cb10571d1c2ea02bf30638a762e9c 1650w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/sso-okta1.png?w=2500&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=5c76f872b9163ec64637213aa646ba30 2500w" />
+      <img />
     </Frame>
 
     Select SAML 2.0 as the sign-in method
 
     <Frame>
-      <img src="https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/sso-okta2.png?fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=df39e8a15a879d8f2798a4284087c567" data-og-width="1600" width="1600" data-og-height="1023" height="1023" data-path="assets/auth/sso-okta2.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/sso-okta2.png?w=280&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=26a63721d0018efa7b8a4800e6f408bb 280w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/sso-okta2.png?w=560&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=c052bfa279c58dc361223b5582a62c80 560w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/sso-okta2.png?w=840&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=00ed32012a519da9011059476f423aa6 840w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/sso-okta2.png?w=1100&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=eb3839e1a82fa9bc1467a456a38a993b 1100w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/sso-okta2.png?w=1650&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=c678d8128c2aa8d5b42eb1ff185d80a8 1650w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/sso-okta2.png?w=2500&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=9586e95f5e7e3cc3f167548bdcec2b48 2500w" />
+      <img />
     </Frame>
 
     Set the app name as Windsurf (or to any other name), and click Next
@@ -8567,7 +8673,7 @@ This feature is only available to Teams and Enterprise users.
     Configure the attribute statements as following, and then click **Next**.
 
     <Frame>
-      <img src="https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/sso-okta3.png?fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=0903972c21dd13147a1adfe8791f1679" data-og-width="1398" width="1398" data-og-height="602" height="602" data-path="assets/auth/sso-okta3.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/sso-okta3.png?w=280&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=f247cb5627519ba2052a1c66bcabac11 280w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/sso-okta3.png?w=560&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=8b0e97b79dbe969605c026e1d42918bf 560w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/sso-okta3.png?w=840&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=2c9e0db1830545f4605ec52128d0c13f 840w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/sso-okta3.png?w=1100&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=f21b1c853cd6e3fb6234eaba4936714a 1100w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/sso-okta3.png?w=1650&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=e207e6d97821d5b568bcb3175aaa877c 1650w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/sso-okta3.png?w=2500&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=5b9415f606224a480a8a21fd39d3c6b7 2500w" />
+      <img />
     </Frame>
 
     In the feedback section, select “This is an internal app that we have created”, and click **Finish**.
@@ -8584,7 +8690,7 @@ This feature is only available to Teams and Enterprise users.
     * Test the login with the Test Login button. You should see a success message:
 
     <Frame>
-      <img src="https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/sso-okta4.png?fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=574e091c869162bc41dc0aa36cd209fa" data-og-width="1046" width="1046" data-og-height="270" height="270" data-path="assets/auth/sso-okta4.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/sso-okta4.png?w=280&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=c0de67fc05d02d94917d0eb38a93bfc7 280w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/sso-okta4.png?w=560&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=8a4532d29bde6a981fcfa56b16d2089c 560w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/sso-okta4.png?w=840&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=b166bddfbf60fd9be17010aedbc5f300 840w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/sso-okta4.png?w=1100&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=4cc97e1ce5cbce8fe4b68f5736943608 1100w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/sso-okta4.png?w=1650&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=10278811dec7a4ace3e27dafafe4dfdf 1650w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/sso-okta4.png?w=2500&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=85583cef85521726dc3daa5307b6d733 2500w" />
+      <img />
     </Frame>
 
     At this point everything should have been configured, and can now add users to the new Windsurf Okta application.
@@ -8592,7 +8698,7 @@ This feature is only available to Teams and Enterprise users.
     You should share your organization's custom Login Portal URL with your users and ask them to sign in via that link.
 
     <Frame>
-      <img src="https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/sso-okta5.png?fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=f3ccced59b0cbc7d0f0b1b6b39f1ee1c" data-og-width="988" width="988" data-og-height="312" height="312" data-path="assets/auth/sso-okta5.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/sso-okta5.png?w=280&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=02f37508edd5db6db866fd78e4a7acb9 280w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/sso-okta5.png?w=560&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=c12ca954c3031664fbcd2ca960b5383b 560w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/sso-okta5.png?w=840&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=75b02544b99c1e0a578234b57a07ea34 840w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/sso-okta5.png?w=1100&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=cb11ec40d15a57198f780ae701029f44 1100w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/sso-okta5.png?w=1650&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=e51d3d2475655aef87f71b8b6105fb55 1650w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/sso-okta5.png?w=2500&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=46ba7597ae1b616f37354006d6c5f907 2500w" />
+      <img />
     </Frame>
 
     Users who login to Windsurf via SSO will be auto-approved into the team.
@@ -8608,7 +8714,7 @@ This feature is only available to Teams and Enterprise users.
     ### Login with SAML config failed: Firebase: Error (auth/operation-not-allowed)
 
     <Frame>
-      <img src="https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/sso-okta6.png?fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=f65534799dfd8f941a68dc9fc72236d4" data-og-width="617" width="617" data-og-height="92" height="92" data-path="assets/auth/sso-okta6.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/sso-okta6.png?w=280&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=4f6a8118ceb9a6511557fb3d5a89cfd8 280w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/sso-okta6.png?w=560&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=0cc4bcb6da5527e085f1e95e7565b2f6 560w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/sso-okta6.png?w=840&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=f1b542a1a5d5f18a6f07ce1fef0099f8 840w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/sso-okta6.png?w=1100&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=5b8cdc47c2f5c742e4bef33ba4eb459a 1100w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/sso-okta6.png?w=1650&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=087c32afb9c9f9850d596b218be3f923 1650w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/sso-okta6.png?w=2500&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=02c760fbfa8d931d9781b596ede9d08d 2500w" />
+      <img />
     </Frame>
 
     This points to your an invalid SSO ID, or your SSO URL being incorrect, make sure it is alphanumeric and has no extra spaces or invalid characters. Please go over the steps in the guide again and make sure you use the correct values.
@@ -8616,7 +8722,7 @@ This feature is only available to Teams and Enterprise users.
     ### Login with SAML config failed: Firebase: SAML Response \<Issuer> mismatch. (auth/invalid-credential)
 
     <Frame>
-      <img src="https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/sso-okta7.png?fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=446c8ad9510b7dcc8e744c7b80862c29" data-og-width="752" width="752" data-og-height="117" height="117" data-path="assets/auth/sso-okta7.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/sso-okta7.png?w=280&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=efd56e3400b53ceb05c2a6f3f16dca44 280w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/sso-okta7.png?w=560&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=f41a12504545c5f78998cb6f152564c9 560w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/sso-okta7.png?w=840&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=21967311e74ec09546b31c6f49dc2dd8 840w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/sso-okta7.png?w=1100&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=2d07267015603fb0e6d4ccd0ba3c1e81 1100w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/sso-okta7.png?w=1650&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=619c0eaf530646e7b6dd294d5cc2712a 1650w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/sso-okta7.png?w=2500&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=a6217bfd37b259f63112cf22c3bb098b 2500w" />
+      <img />
     </Frame>
 
     This points to your IdP entity ID being invalid, please make sure you copy it correctly from the Okta portal, without any extra characters or spaces before or after the string.
@@ -8671,7 +8777,7 @@ This feature is only available to Teams and Enterprise users.
     Go to Microsoft Entra ID on Azure, click on Enterprise applications on the left sidebar, and then click on the existing Windsurf application in the list.
 
     <Frame>
-      <img src="https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/scim-azure.png?fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=c2425d24cadc8997c694a4b8a950169a" data-og-width="1258" width="1258" data-og-height="664" height="664" data-path="assets/auth/scim-azure.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/scim-azure.png?w=280&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=d2a0a5702a29ce1264d133bb5d3545c1 280w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/scim-azure.png?w=560&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=f91fd83f53b34bab00d17c64358ac511 560w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/scim-azure.png?w=840&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=4fc4661fa56013064005d8d923a13547 840w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/scim-azure.png?w=1100&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=196d0489a6a5fdf4200ab92e7f5835d5 1100w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/scim-azure.png?w=1650&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=fb03af9c8d156c0f5c2331ab5289d588 1650w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/scim-azure.png?w=2500&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=58bcf8651ea7dc34d4f7e561b7c6ab34 2500w" />
+      <img />
     </Frame>
 
     ## Step 3: Setup SCIM provisioning
@@ -8679,7 +8785,7 @@ This feature is only available to Teams and Enterprise users.
     Click on Get started under Provision User Accounts in the middle (step 3), and then click on Get started again.
 
     <Frame>
-      <img src="https://mintcdn.com/codeium/s3SYO8XdSvmrABvq/assets/auth/scim-azure2.png?fit=max&auto=format&n=s3SYO8XdSvmrABvq&q=85&s=1e9c8417da7568dc587941955f6d0ace" data-og-width="2582" width="2582" data-og-height="1858" height="1858" data-path="assets/auth/scim-azure2.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/s3SYO8XdSvmrABvq/assets/auth/scim-azure2.png?w=280&fit=max&auto=format&n=s3SYO8XdSvmrABvq&q=85&s=ce2a379d150e9b6383eeb48e52c96a01 280w, https://mintcdn.com/codeium/s3SYO8XdSvmrABvq/assets/auth/scim-azure2.png?w=560&fit=max&auto=format&n=s3SYO8XdSvmrABvq&q=85&s=4f51c287262043282173de0e1efc538c 560w, https://mintcdn.com/codeium/s3SYO8XdSvmrABvq/assets/auth/scim-azure2.png?w=840&fit=max&auto=format&n=s3SYO8XdSvmrABvq&q=85&s=21c65050cb093e453197eecbd348d773 840w, https://mintcdn.com/codeium/s3SYO8XdSvmrABvq/assets/auth/scim-azure2.png?w=1100&fit=max&auto=format&n=s3SYO8XdSvmrABvq&q=85&s=074fcdd9f2ef2e03ad23580185dd48fe 1100w, https://mintcdn.com/codeium/s3SYO8XdSvmrABvq/assets/auth/scim-azure2.png?w=1650&fit=max&auto=format&n=s3SYO8XdSvmrABvq&q=85&s=324c2d04d90956f34ee3c9a8c11ef548 1650w, https://mintcdn.com/codeium/s3SYO8XdSvmrABvq/assets/auth/scim-azure2.png?w=2500&fit=max&auto=format&n=s3SYO8XdSvmrABvq&q=85&s=cd3257cf044253173943f57c3b89a5b6 2500w" />
+      <img />
     </Frame>
 
     Under the Provisioning setup page, select the following options.
@@ -8689,13 +8795,13 @@ This feature is only available to Teams and Enterprise users.
     Admin Credentials > Tenant URL: [https://server.codeium.com/scim/v2](https://server.codeium.com/scim/v2)
 
     <Frame>
-      <img src="https://mintcdn.com/codeium/s3SYO8XdSvmrABvq/assets/auth/scim-azure-admin-credentials.png?fit=max&auto=format&n=s3SYO8XdSvmrABvq&q=85&s=ee0b34f8f0f131441eb9ca9e89ccbcda" data-og-width="560" width="560" data-og-height="416" height="416" data-path="assets/auth/scim-azure-admin-credentials.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/s3SYO8XdSvmrABvq/assets/auth/scim-azure-admin-credentials.png?w=280&fit=max&auto=format&n=s3SYO8XdSvmrABvq&q=85&s=c8581d4e4ad89b8a5edf7c138c364854 280w, https://mintcdn.com/codeium/s3SYO8XdSvmrABvq/assets/auth/scim-azure-admin-credentials.png?w=560&fit=max&auto=format&n=s3SYO8XdSvmrABvq&q=85&s=b689bb2e0efdf652f56a2a9b94b51f27 560w, https://mintcdn.com/codeium/s3SYO8XdSvmrABvq/assets/auth/scim-azure-admin-credentials.png?w=840&fit=max&auto=format&n=s3SYO8XdSvmrABvq&q=85&s=9a5e159c52dd929afbc02ce2292f05e5 840w, https://mintcdn.com/codeium/s3SYO8XdSvmrABvq/assets/auth/scim-azure-admin-credentials.png?w=1100&fit=max&auto=format&n=s3SYO8XdSvmrABvq&q=85&s=babac19088e58725307bdadaa495f9d6 1100w, https://mintcdn.com/codeium/s3SYO8XdSvmrABvq/assets/auth/scim-azure-admin-credentials.png?w=1650&fit=max&auto=format&n=s3SYO8XdSvmrABvq&q=85&s=6b2a1255d4ee047ee6f9aa4556dbaa21 1650w, https://mintcdn.com/codeium/s3SYO8XdSvmrABvq/assets/auth/scim-azure-admin-credentials.png?w=2500&fit=max&auto=format&n=s3SYO8XdSvmrABvq&q=85&s=ebf7a44a0053609e44623549c6aae9b5 2500w" />
+      <img />
     </Frame>
 
     Leave the Azure provisioning page open, now go to the Windsurf web portal, and click on the profile icon  in the NavBar on the top of the page.Under Team Settings, select Service Key and click on Add Service Key. Enter any key name (such as 'Azure SCIM Provisioning'), **select the "SCIM Provisioning" role you created earlier**, and click Create Service Key. Copy the output key, go back to the Azure page, paste it to Secret Token.
 
     <Frame>
-      <img src="https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/scim-azure3.png?fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=80477c2c0d31631e38e217b22e9f42a3" data-og-width="1612" width="1612" data-og-height="1013" height="1013" data-path="assets/auth/scim-azure3.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/scim-azure3.png?w=280&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=c547369cd10d19d77dbdb3586045c027 280w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/scim-azure3.png?w=560&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=e375425a3fe55cc5425f53e78b34f32f 560w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/scim-azure3.png?w=840&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=f15b3e3d387acd4ac3371b882595252a 840w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/scim-azure3.png?w=1100&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=49e6c3e224944aef0dfa88b13b401a74 1100w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/scim-azure3.png?w=1650&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=7dd27466493288c1d49a4327070f9f6f 1650w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/scim-azure3.png?w=2500&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=4f40f4c6d50b15c421ba344a2013a8cc 2500w" />
+      <img />
     </Frame>
 
     (What you should see after creating the key on Windsurf)
@@ -8709,13 +8815,13 @@ This feature is only available to Teams and Enterprise users.
     After clicking on Save, a new option Mappings should have appeared in the Provisioning page. Expand Mappings, and click on Provision Microsoft Entra ID Users
 
     <Frame>
-      <img src="https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/scim-azure4.png?fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=276791b068bd34c2bcbe5321e95abfd6" data-og-width="666" width="666" data-og-height="438" height="438" data-path="assets/auth/scim-azure4.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/scim-azure4.png?w=280&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=6e36e1d72d4db00f49e114fdcc4a25be 280w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/scim-azure4.png?w=560&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=c11c14a5020abebd95bb43a970d88584 560w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/scim-azure4.png?w=840&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=190236b1aaadafb15d6b7b7bc320ade2 840w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/scim-azure4.png?w=1100&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=9d153d92aeb12bfaf4bd7868270d0e17 1100w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/scim-azure4.png?w=1650&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=00ff52c3a669e6dbb4f7346e0831fa23 1650w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/scim-azure4.png?w=2500&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=640997349e4672552c5f07b170e81d22 2500w" />
+      <img />
     </Frame>
 
     Under attribute Mappings, delete all fields under displayName, leaving only the fields userName, active, and displayName.
 
     <Frame>
-      <img src="https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/scim-azure5.png?fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=ddb9440614a4bc04f7c561bbf64a2d5a" data-og-width="1260" width="1260" data-og-height="190" height="190" data-path="assets/auth/scim-azure5.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/scim-azure5.png?w=280&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=394d02238802b10210ff30262a7e669e 280w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/scim-azure5.png?w=560&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=da13a8c0a933b23e30d66c8a25c7509b 560w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/scim-azure5.png?w=840&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=fef036d0c788f16fe95ebca4f360388d 840w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/scim-azure5.png?w=1100&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=b3a2f8ec1b2b3482ec86aa26e3dad431 1100w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/scim-azure5.png?w=1650&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=b4c4b2f43e28978d2c3acafee01a3ed0 1650w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/scim-azure5.png?w=2500&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=3bf1b1e6d6863d74fd5344f25ac07ecc 2500w" />
+      <img />
     </Frame>
 
     For active, now click on Edit. Under Expression, modify the field to
@@ -8729,7 +8835,7 @@ This feature is only available to Teams and Enterprise users.
     Your user attributes should look like
 
     <Frame>
-      <img src="https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/scim-azure6.png?fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=2beab12c979d3272d522293080634811" data-og-width="2826" width="2826" data-og-height="490" height="490" data-path="assets/auth/scim-azure6.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/scim-azure6.png?w=280&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=4a8ee3358e95d0cd9d50bd0d538564a7 280w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/scim-azure6.png?w=560&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=a80cc215059b3780ca14c6ba370a6586 560w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/scim-azure6.png?w=840&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=60057214f7d952812b598371e6c978d3 840w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/scim-azure6.png?w=1100&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=e9bcab8fd1017d0892bea2a169ac02e9 1100w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/scim-azure6.png?w=1650&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=786f7e9bf633dcbd60d8059a61caf106 1650w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/scim-azure6.png?w=2500&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=d4e9a7b532a2f85244bcaa90572ba06a 2500w" />
+      <img />
     </Frame>
 
     In the Attribute Mapping page, click on Save on top, and navigate back to the Provisioning page.
@@ -8737,13 +8843,13 @@ This feature is only available to Teams and Enterprise users.
     Now click on the same page, under Mappings click on Provision Microsoft Entra ID Groups. Now only click delete for externalId, and click Save on top. Navigate back to the Provisioning page.
 
     <Frame>
-      <img src="https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/scim-azure7.png?fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=11e89ce7d057c455ea00e0f469351b61" data-og-width="1258" width="1258" data-og-height="203" height="203" data-path="assets/auth/scim-azure7.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/scim-azure7.png?w=280&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=cd56976ca792e265e725662085b17a19 280w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/scim-azure7.png?w=560&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=bd115677b029f5e93699ab0a03768382 560w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/scim-azure7.png?w=840&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=d4bded4bf9d8689909e28c61ad510ce0 840w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/scim-azure7.png?w=1100&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=d57065b32eff89171254875a8df64498 1100w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/scim-azure7.png?w=1650&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=b6360f57f064b8ef7a10b63de8cfc7ef 1650w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/scim-azure7.png?w=2500&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=51e4b607b0652154956ce119600415ba 2500w" />
+      <img />
     </Frame>
 
     On the Provisioning page at the bottom, there should also be a Provisioning Status toggle. Set that to On to enable SCIM syncing. Now every 40 minutes your users and groups for the Entra ID application will be synced to Windsurf.
 
     <Frame>
-      <img src="https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/scim-azure8.png?fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=1214073ce82bd85a1c2a57834005608f" data-og-width="686" width="686" data-og-height="306" height="306" data-path="assets/auth/scim-azure8.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/scim-azure8.png?w=280&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=53139148e9394f611f436dc2128bcc33 280w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/scim-azure8.png?w=560&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=a227c181354a371f3ae4aa13673a5c89 560w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/scim-azure8.png?w=840&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=b9f85d836d1f06eb19a365d2f0cd9106 840w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/scim-azure8.png?w=1100&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=6dd2cc814ee02f9bd402348e8c202d38 1100w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/scim-azure8.png?w=1650&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=35af8b5f5183e3d4bfda09ec4d7b092b 1650w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/scim-azure8.png?w=2500&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=d69d23c955420b31547dabb0b0950863 2500w" />
+      <img />
     </Frame>
 
     Click on Save to finish, you have now enabled user and group syncing for SCIM. Only users and groups assigned to the application will be synced to Windsurf. Note that removing users only disables them access to Windsurf (and stops them from taking up a seat) rather than deleting users due to Azure's SCIM design.
@@ -8931,13 +9037,13 @@ This feature is only available to Teams and Enterprise users.
     1. Navigate to Applications, and add a Generic SAML service provider
 
     <Frame>
-      <img src="https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/duo-sso-1.png?fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=7e598d7e9a9ee2c3884caa1c60ba68ff" data-og-width="2230" width="2230" data-og-height="920" height="920" data-path="assets/auth/duo-sso-1.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/duo-sso-1.png?w=280&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=3aec1b67ffcd908e98ff8fdc8efb9f13 280w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/duo-sso-1.png?w=560&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=6fae9b15acbd20d00ba1342e29c03566 560w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/duo-sso-1.png?w=840&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=2a92b9bd222d601f17445724a5740c4d 840w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/duo-sso-1.png?w=1100&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=07e9adea00e0cab9016ad608222894f5 1100w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/duo-sso-1.png?w=1650&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=78b9eeb4b38c111b8a305442ecf22038 1650w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/duo-sso-1.png?w=2500&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=f3fae806d80ac44e2feb9be6d623c311 2500w" />
+      <img />
     </Frame>
 
     2. Navigate to SSO in Team Settings
 
     <Frame>
-      <img src="https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/windsurf-sso-team-settings.png?fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=df8dde8b5b66a27532a3f42cdd803a17" data-og-width="1676" width="1676" data-og-height="1444" height="1444" data-path="assets/auth/windsurf-sso-team-settings.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/windsurf-sso-team-settings.png?w=280&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=24e65a0584ca92c5092e7a8b39d29a85 280w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/windsurf-sso-team-settings.png?w=560&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=a1aaf95ae69ecadbb071f972cf209d9a 560w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/windsurf-sso-team-settings.png?w=840&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=8e0faad235bc863532c0cf5e8260d51f 840w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/windsurf-sso-team-settings.png?w=1100&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=c1d83d71116443257b524c595132a21d 1100w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/windsurf-sso-team-settings.png?w=1650&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=ad30f5f9af3dde7f95666544e8a483ef 1650w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/windsurf-sso-team-settings.png?w=2500&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=fcf587e6ef653eff95139a4d550e3e08 2500w" />
+      <img />
     </Frame>
 
     3. When enabling SAML for the first time, you will be required to set up your SSO ID. **You will not be able to change it later.**
@@ -8951,7 +9057,7 @@ This feature is only available to Teams and Enterprise users.
     6. Copy the certificate value from the Duo portal and paste it in the `X509 Certificate` field in the Windsurf portal
 
     <Frame>
-      <img src="https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/duo-sso-3.png?fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=a7594c846a32e958a1bacfc01c5d3ef3" data-og-width="1536" width="1536" data-og-height="290" height="290" data-path="assets/auth/duo-sso-3.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/duo-sso-3.png?w=280&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=953a07d45101a639db53f6d22667c2a0 280w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/duo-sso-3.png?w=560&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=1fbc8e990bebcbad0cd70f9bce288a8b 560w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/duo-sso-3.png?w=840&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=769ba894b06157867cba16e6c7c9858b 840w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/duo-sso-3.png?w=1100&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=0e65532cda4e2039dfe07c02fd55aa52 1100w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/duo-sso-3.png?w=1650&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=9095538c85e97051654d911b3bb10e91 1650w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/duo-sso-3.png?w=2500&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=f907b2efbe7eaabdaa8aa8c6fb350d86 2500w" />
+      <img />
     </Frame>
 
     7. Copy the `SP Identity ID` value from the Windsurf portal and paste it into the `Entity ID` field in the Duo portal.
@@ -8961,7 +9067,7 @@ This feature is only available to Teams and Enterprise users.
     9. In the Duo portal, configure the attribute statements as following:
 
     <Frame>
-      <img src="https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/duo-sso-4.png?fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=bb3b514b94a6b0ebba19aa492c8be4a2" data-og-width="1676" width="1676" data-og-height="290" height="290" data-path="assets/auth/duo-sso-4.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/duo-sso-4.png?w=280&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=a3de0ba0a3a188f34f178c200209cc17 280w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/duo-sso-4.png?w=560&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=88374d6e4f03ce1e45cb3094fe3e98e8 560w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/duo-sso-4.png?w=840&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=d94638ec8d0a22bfa7ec00eb6514ec58 840w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/duo-sso-4.png?w=1100&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=f1c7e2ae138409c19a56dd12287fdaec 1100w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/duo-sso-4.png?w=1650&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=7cfe010d8214ae7e7b655b5b6efba472 1650w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/duo-sso-4.png?w=2500&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=769ae9ad721e322e67f6d84bf139a33d 2500w" />
+      <img />
     </Frame>
 
     10. Enable the SAML login in the Windsurf portal so you can test it.
@@ -8989,13 +9095,13 @@ This feature is only available to Teams and Enterprise users.
     1. Navigate to Applications and add Windsurf as a SAML Application
 
     <Frame>
-      <img src="https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/pingid-1.png?fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=f86f6145e0eac599178ca9d9ee66b776" data-og-width="2258" width="2258" data-og-height="1068" height="1068" data-path="assets/auth/pingid-1.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/pingid-1.png?w=280&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=0ad46a1b2741392e7b9317cb469e55ea 280w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/pingid-1.png?w=560&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=894534973d6592c29d157db78a542b26 560w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/pingid-1.png?w=840&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=cea5d47e23bcff6ef6811358f893533f 840w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/pingid-1.png?w=1100&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=1e2f9e94729c777800b7b9e4dfe32082 1100w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/pingid-1.png?w=1650&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=6b7ab758d275aa2b2e63a9c4e01bea62 1650w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/pingid-1.png?w=2500&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=dfb01b08c5fdd2ebe1d9e80e5052426b 2500w" />
+      <img />
     </Frame>
 
     2. Navigate to SSO in Team Settings
 
     <Frame>
-      <img src="https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/windsurf-sso-team-settings.png?fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=df8dde8b5b66a27532a3f42cdd803a17" data-og-width="1676" width="1676" data-og-height="1444" height="1444" data-path="assets/auth/windsurf-sso-team-settings.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/windsurf-sso-team-settings.png?w=280&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=24e65a0584ca92c5092e7a8b39d29a85 280w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/windsurf-sso-team-settings.png?w=560&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=a1aaf95ae69ecadbb071f972cf209d9a 560w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/windsurf-sso-team-settings.png?w=840&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=8e0faad235bc863532c0cf5e8260d51f 840w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/windsurf-sso-team-settings.png?w=1100&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=c1d83d71116443257b524c595132a21d 1100w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/windsurf-sso-team-settings.png?w=1650&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=ad30f5f9af3dde7f95666544e8a483ef 1650w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/windsurf-sso-team-settings.png?w=2500&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=fcf587e6ef653eff95139a4d550e3e08 2500w" />
+      <img />
     </Frame>
 
     3. When enabling SAML for the first time, you will be required to set up your SSO ID. **You will not be able to change it later.**
@@ -9008,7 +9114,7 @@ This feature is only available to Teams and Enterprise users.
     * Entity ID - this is the `SP Entity ID` from the Windsurf portal.
 
     <Frame>
-      <img src="https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/pingid-3.png?fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=e33dc0b9d021309da0fcdb2ac4f08bbb" data-og-width="974" width="974" data-og-height="672" height="672" data-path="assets/auth/pingid-3.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/pingid-3.png?w=280&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=085f011d0ddf369d9b05502ccbfbb5dc 280w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/pingid-3.png?w=560&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=160eebad525ebc56527d0c9e9945492a 560w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/pingid-3.png?w=840&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=fccab270df675b3608a5e72afdcda1bc 840w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/pingid-3.png?w=1100&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=dcab45be60955341f5e47e1746fd36f4 1100w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/pingid-3.png?w=1650&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=6819f76a0f703860f8f53fc486bf696d 1650w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/pingid-3.png?w=2500&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=4d1dde99a6c5a62b6c1798f1c694e220 2500w" />
+      <img />
     </Frame>
 
     5. Copy the `Issuer ID` from PingID to the `IdP Entity ID` value in the Windsurf portal.
@@ -9026,7 +9132,7 @@ This feature is only available to Teams and Enterprise users.
     * `lastName` - Family Name
 
     <Frame>
-      <img src="https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/pingid-4.png?fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=4ff17f07bfb897072fb68e212ee2ac12" data-og-width="1398" width="1398" data-og-height="780" height="780" data-path="assets/auth/pingid-4.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/pingid-4.png?w=280&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=7af2eb21b83c86fa66ab0a93b744a81a 280w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/pingid-4.png?w=560&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=c817c9e4a5abbe3827baf40050108679 560w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/pingid-4.png?w=840&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=1f4f584e1f6586dadb0632457eb840f1 840w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/pingid-4.png?w=1100&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=062bae9cd58477962da4f51fb5590bc4 1100w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/pingid-4.png?w=1650&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=efa1fb0cc4d775c8695521195d31949e 1650w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/pingid-4.png?w=2500&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=4fe0ba0d6cd6b3eb6796557696e9a08d 2500w" />
+      <img />
     </Frame>
 
     9. Add/edit any other policies and access as required by your setup/organization
@@ -9049,7 +9155,7 @@ This feature is only available to Teams and Enterprise users.
 # Getting started with Teams and Enterprise
 Source: https://docs.windsurf.com/windsurf/accounts/teams-getting-started
 
-
+Set up Windsurf Teams and Enterprise plans with team management, SSO, analytics, user groups, and priority support for your organization.
 
 Windsurf scales from solo projects to large-scale enterprise codebases. Our Teams and Enterprise plans unlock collaboration features such as team management, Single Sign-On (SSO), advanced analytics, and priority support.
 
@@ -9066,12 +9172,12 @@ Windsurf scales from solo projects to large-scale enterprise codebases. Our Team
     Enter the number of users you want to include in the subscription.
 
     <Frame>
-      <img width="500" src="https://mintcdn.com/codeium/vRt4FQOyBeZpD2Pu/assets/teams/teams-select-user-count.jpg?fit=max&auto=format&n=vRt4FQOyBeZpD2Pu&q=85&s=582deab2967a8eb9ff268bebf25f321f" data-og-width="1024" data-og-height="468" data-path="assets/teams/teams-select-user-count.jpg" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/vRt4FQOyBeZpD2Pu/assets/teams/teams-select-user-count.jpg?w=280&fit=max&auto=format&n=vRt4FQOyBeZpD2Pu&q=85&s=8810085f0de14ff2d4d61b29b028b1a5 280w, https://mintcdn.com/codeium/vRt4FQOyBeZpD2Pu/assets/teams/teams-select-user-count.jpg?w=560&fit=max&auto=format&n=vRt4FQOyBeZpD2Pu&q=85&s=07fa89646e4670e6520a37355e175116 560w, https://mintcdn.com/codeium/vRt4FQOyBeZpD2Pu/assets/teams/teams-select-user-count.jpg?w=840&fit=max&auto=format&n=vRt4FQOyBeZpD2Pu&q=85&s=5b712acd037787cf263eeaea34debbfb 840w, https://mintcdn.com/codeium/vRt4FQOyBeZpD2Pu/assets/teams/teams-select-user-count.jpg?w=1100&fit=max&auto=format&n=vRt4FQOyBeZpD2Pu&q=85&s=bccc7371d19f089c749937e66fe43c88 1100w, https://mintcdn.com/codeium/vRt4FQOyBeZpD2Pu/assets/teams/teams-select-user-count.jpg?w=1650&fit=max&auto=format&n=vRt4FQOyBeZpD2Pu&q=85&s=a73c51f360563a55333d6433288d6308 1650w, https://mintcdn.com/codeium/vRt4FQOyBeZpD2Pu/assets/teams/teams-select-user-count.jpg?w=2500&fit=max&auto=format&n=vRt4FQOyBeZpD2Pu&q=85&s=7a235b1dd1a339be26ba718203367a5f 2500w" />
+      <img />
     </Frame>
   </Step>
 
   <Step title="Manage and invite team members">
-    <Card title="Manage Team Members" horizontal={true} icon="users" href="https://windsurf.com/team/members">
+    <Card title="Manage Team Members" icon="users" href="https://windsurf.com/team/members">
       Windsurf makes managing your team easy from one dashboard.
     </Card>
 
@@ -9081,7 +9187,7 @@ Windsurf scales from solo projects to large-scale enterprise codebases. Our Team
   </Step>
 
   <Step title="Configure team settings (optional)">
-    <Card title="Team Settings" horizontal={true} icon="gear" href="https://windsurf.com/team/settings">
+    <Card title="Team Settings" icon="gear" href="https://windsurf.com/team/settings">
       Configurable settings for your team.
     </Card>
 
@@ -9089,7 +9195,7 @@ Windsurf scales from solo projects to large-scale enterprise codebases. Our Team
   </Step>
 
   <Step title="Set up Authentication (optional)">
-    <Card title="Authentication" horizontal={true} icon="lock" href="/windsurf/accounts/sso-scim">
+    <Card title="Authentication" icon="lock" href="/windsurf/accounts/sso-scim">
       Set up SSO, SCIM, Duo, or PingID for your team.
     </Card>
 
@@ -9106,7 +9212,7 @@ To add or remove members from your team, navigate to the [Manage team page](http
 From here, you can invite and view your team, add SSO, update the number of seats in your team, or even cancel or switch your plan.
 
 <Frame>
-  <img width="500" src="https://mintcdn.com/codeium/vRt4FQOyBeZpD2Pu/assets/teams-invite-members.png?fit=max&auto=format&n=vRt4FQOyBeZpD2Pu&q=85&s=67056692b986683fe512d58477eded53" data-og-width="828" data-og-height="444" data-path="assets/teams-invite-members.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/vRt4FQOyBeZpD2Pu/assets/teams-invite-members.png?w=280&fit=max&auto=format&n=vRt4FQOyBeZpD2Pu&q=85&s=9586555c34d61a52476dcabf97e019d5 280w, https://mintcdn.com/codeium/vRt4FQOyBeZpD2Pu/assets/teams-invite-members.png?w=560&fit=max&auto=format&n=vRt4FQOyBeZpD2Pu&q=85&s=0469c4b432630970246fece359fa803e 560w, https://mintcdn.com/codeium/vRt4FQOyBeZpD2Pu/assets/teams-invite-members.png?w=840&fit=max&auto=format&n=vRt4FQOyBeZpD2Pu&q=85&s=ef7bf04637dfb5575caf5b4b3577fb98 840w, https://mintcdn.com/codeium/vRt4FQOyBeZpD2Pu/assets/teams-invite-members.png?w=1100&fit=max&auto=format&n=vRt4FQOyBeZpD2Pu&q=85&s=c6eb3a93aaf1a46e3d7fd2f36df9ec09 1100w, https://mintcdn.com/codeium/vRt4FQOyBeZpD2Pu/assets/teams-invite-members.png?w=1650&fit=max&auto=format&n=vRt4FQOyBeZpD2Pu&q=85&s=6c2a93b6ca7c117f7ef5ea0a9a7202e8 1650w, https://mintcdn.com/codeium/vRt4FQOyBeZpD2Pu/assets/teams-invite-members.png?w=2500&fit=max&auto=format&n=vRt4FQOyBeZpD2Pu&q=85&s=22edfa0c57bac40ede579e2378c1f924 2500w" />
+  <img />
 </Frame>
 
 ## User Groups
@@ -9123,7 +9229,7 @@ Already subscribed on Pro and want to upgrade? Head to your [Plan Management](ht
 # Plans and Credit Usage
 Source: https://docs.windsurf.com/windsurf/accounts/usage
 
-
+Understand Windsurf pricing plans, prompt credits, usage tracking, automatic refills, and how to upgrade from Free to Pro, Teams, or Enterprise.
 
 Prompt credits are consumed whenever a message is sent to Cascade with a premium model. Every model has it's own credit multiplier with the default message costing 1 credit. You can view all available models and their associated costs on the [models page.](/windsurf/models)
 
@@ -9186,7 +9292,7 @@ There are a few ways to view your usage.
 Go to the Cascade usage directly by clicking on the overflow menu, and then selecting "Cascade Usage".
 
 <Frame>
-  <img style={{ maxHeight: "300px" }} src="https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/plan-info/usage-entry-cascade.png?fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=a74510115a9f8fff9c8c9a37c56aeab1" data-og-width="1048" width="1048" data-og-height="606" height="606" data-path="assets/windsurf/plan-info/usage-entry-cascade.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/plan-info/usage-entry-cascade.png?w=280&fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=1b0c503ceb58d0ebca583ff38dd822f0 280w, https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/plan-info/usage-entry-cascade.png?w=560&fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=335558709e71bcde9308ba107d3dd8d2 560w, https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/plan-info/usage-entry-cascade.png?w=840&fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=5c607ad2afe0fd32e6d7a9f7c168dccf 840w, https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/plan-info/usage-entry-cascade.png?w=1100&fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=608ee0c427fb4501b4ab048e4f462f80 1100w, https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/plan-info/usage-entry-cascade.png?w=1650&fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=44795d58415164704bef38d460dc8840 1650w, https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/plan-info/usage-entry-cascade.png?w=2500&fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=207be7ea24bd8eca66d6058daf06b889 2500w" />
+  <img />
 </Frame>
 
 View the settings panel by clicking on "Windsurf Settings" on the status bar, followed by selecting the "Plan Info" tab.
@@ -9218,6 +9324,24 @@ Automatic Credit Refills are purchased in configurable increments (multiples of 
 If you run out of prompt credits, you can purchase additional credits in the [billing website](https://windsurf.com/plan). Additional prompt credits can be purchased at a rate of \$10 for 250 credits for Pro users.
 
 For Team and Enterprise plans, additional credits are purchased within and treated as a pool amongst all members of the team at a rate of \$40 for 1000 pooled credits. Please contact your Teams admin to purchase more credits if you're on a team plan.
+
+Add-on credits require an active subscription to be used. If your subscription expires, any remaining add-on credits cannot be used until you resubscribe. Your add-on credits will not be removed and will remain available once you resubscribe.
+
+## Add-on Credit Transfers
+
+If you upgrade your personal Pro plan to a Teams plan, any unused add-on prompt credits on your Pro account are moved over to your new team (and become part of the team's pooled add-on credits). If you're invited to a different team instead, your add-on credits do not automatically move with your user—you'll need to use them before switching, or submit a Support ticket to have them transferred.
+
+## Seat-Based Credit Allocation (Teams & Enterprise)
+
+On Teams and Enterprise plans, prompt credits are allocated on a per-seat basis. Each seat in your plan receives a fixed number of credits at the start of each billing cycle (500 for Teams, 1000 for Enterprise). These credits are tied to the seat itself, not the specific user occupying it.
+
+If a team member leaves mid-billing cycle and a new member joins to fill that seat, the new member inherits the seat's existing credit usage. For example, if your plan has 50 seats and all are in use, and one member departs after using 300 of their 500 credits, the person who takes that seat will start with only 200 credits remaining for the rest of the billing period. This is because the seat's credits were partially consumed before the new member arrived.
+
+When this happens, you may see a notice on your usage page indicating that you joined a seat that was previously used during the current billing period. This is expected behavior and does not indicate any error with your account. Your credits will fully reset to the plan's standard allocation at the start of the next billing cycle.
+
+<Tip>
+  If you are an admin managing a team where members frequently rotate, keep in mind that adding new members to recently vacated seats may result in those members starting with fewer credits for the remainder of the billing period. All seats reset to their full credit allocation at the beginning of each new billing cycle.
+</Tip>
 
 ## Usage examples
 
@@ -9325,10 +9449,10 @@ If you change your mind and decide not to cancel before the end of the usage mon
 For Teams or Enterprise plans, only the admin can cancel the plan, delete the team and remove users.
 
 
-# Advanced
+# Advanced Configuration
 Source: https://docs.windsurf.com/windsurf/advanced
 
-
+Advanced Windsurf configurations including SSH support, Dev Containers, WSL, extension marketplace settings, and gitignore access for Cascade.
 
 All advanced configurations can be found in Windsurf Settings which can be accessed by the top right dropdown → Windsurf Settings or Command Palette (Ctrl/⌘+Shift+P) → Open Windsurf Settings Page.
 
@@ -9347,25 +9471,11 @@ This extension has worked great for our internal development, but there are some
 
 * We don't have all the features of the Microsoft SSH extension right now. We mostly just support the important thing: connecting to a host. If you have feature requests, let us know!
 
-* Connecting to a remote host via SSH then accessing a devcontainer on that remote host won't work like it does in VSCode. (We're working on it!) For now, if you want to do this, we recommend instead manually setting up an SSH daemon inside your devcontainer. Here is the set-up which we've found to work, but please be careful to make sure it's right for your use-case.
+* To access a devcontainer on a remote host after connecting via SSH, use the Command Palette (Ctrl/Cmd+Shift+P) and choose one of the following options:
 
-  1. Inside the devcontainer, run this once (running multiple times may mess up your `sshd_config`):
-
-  ```
-  sudo -s -- <<HERE
-  sed -i '/SSO SSH Config START/Q' /etc/ssh/sshd_config
-  echo "Port 2222" >> /etc/ssh/sshd_config
-  ssh-keygen -A
-  HERE
-  ```
-
-  2. Inside the devcontainer, run this in a terminal you keep alive (e.g. via tmux):
-
-  ```
-  sudo /usr/sbin/sshd -D
-  ```
-
-  3. Then just connect to your remote host via SSH in windsurf, but using the port 2222.
+<Frame>
+  <img />
+</Frame>
 
 * SSH agent-forwarding is on by default, and will use Windsurf's latest connection to that host. If you're having trouble with it, try reloading the window to refresh the connection.
 
@@ -9412,7 +9522,7 @@ You can access WSL by clicking on the `Open a Remote Window` button in the botto
 You can change the marketplace you use to download extensions from. To do this, go to `Windsurf Settings` and modify the Marketplace URL settings under the `General` section.
 
 <Frame>
-  <img src="https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/marketplace.png?fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=6c7f06982ae1e5792aa12b1f1970b667" data-og-width="3420" width="3420" data-og-height="2130" height="2130" data-path="assets/windsurf/marketplace.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/marketplace.png?w=280&fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=79dd7846d8b8a335db5332a58b4c9d69 280w, https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/marketplace.png?w=560&fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=cecf49e3ff27f3b5395a0c6edb8f5586 560w, https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/marketplace.png?w=840&fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=b00c825189ed8984c9d5ffb0b804abce 840w, https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/marketplace.png?w=1100&fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=afee6fa94e68a56b6adeb0b57c19d8a9 1100w, https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/marketplace.png?w=1650&fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=1bc7c733c51537a85bc6b7aec1cc5153 1650w, https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/marketplace.png?w=2500&fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=fb79355a10c6c82a57f6506f7843ac54 2500w" />
+  <img />
 </Frame>
 
 ## Windsurf Plugins
@@ -9427,14 +9537,14 @@ You can change the marketplace you use to download extensions from. To do this, 
 # AI Commit Messages
 Source: https://docs.windsurf.com/windsurf/ai-commit-message
 
-
+Generate meaningful git commit messages automatically with AI by analyzing your code changes with a single click in Windsurf.
 
 Generate git commit messages with a single click. This feature analyzes your code changes and creates meaningful commit messages that describe what you've done.
 
 Available with no limits to all paid users!
 
 <Frame>
-  <img src="https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf/ai-commit-message.png?fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=99e873d7ec0f7929281ddfa1550d9e36" data-og-width="2066" width="2066" data-og-height="888" height="888" data-path="assets/windsurf/ai-commit-message.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf/ai-commit-message.png?w=280&fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=07ddbe3f3baa2097432efbbe9f671823 280w, https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf/ai-commit-message.png?w=560&fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=7490934c801292c0ad7e0e7167be456e 560w, https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf/ai-commit-message.png?w=840&fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=7fe66ddc711541b11c1a9172cf04fea1 840w, https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf/ai-commit-message.png?w=1100&fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=8d0f2934011712b96e09038e02f8b870 1100w, https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf/ai-commit-message.png?w=1650&fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=9856a56cb713d1368110d8b57057eafa 1650w, https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf/ai-commit-message.png?w=2500&fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=1805071f771905484c76bb0a42974994 2500w" />
+  <img />
 </Frame>
 
 # How It Works
@@ -9466,15 +9576,132 @@ For better results:
 Your code and commit messages remain private. We don't store your code changes or use them for training our models.
 
 
+# AGENTS.md
+Source: https://docs.windsurf.com/windsurf/cascade/agents-md
+
+Create AGENTS.md files to provide directory-scoped instructions to Cascade. Instructions automatically apply based on file location in your project.
+
+`AGENTS.md` files provide a simple way to give Cascade context-aware instructions that automatically apply based on where the file is located in your project. This is particularly useful for providing directory-specific coding guidelines, architectural decisions, or project conventions.
+
+## How It Works
+
+When you create an `AGENTS.md` file (or `agents.md`), Windsurf automatically discovers it and uses its contents as instructions for Cascade. The behavior depends on where the file is placed:
+
+* **Root directory**: When placed at the root of your workspace or git repository, the instructions apply globally to all files (similar to an "always on" rule)
+* **Subdirectories**: When placed in a subdirectory, the instructions automatically apply only when working with files in that directory or its children
+
+This location-based scoping makes `AGENTS.md` ideal for providing targeted guidance without cluttering a single global configuration file.
+
+## Creating an AGENTS.md File
+
+Simply create a file named `AGENTS.md` or `agents.md` in the desired directory. The file uses plain markdown with no special frontmatter required.
+
+### Example Structure
+
+```
+my-project/
+├── AGENTS.md                    # Global instructions for the entire project
+├── frontend/
+│   ├── AGENTS.md                # Instructions specific to frontend code
+│   └── src/
+│       └── components/
+│           └── AGENTS.md        # Instructions specific to components
+├── backend/
+│   └── AGENTS.md                # Instructions specific to backend code
+└── docs/
+    └── AGENTS.md                # Instructions for documentation
+```
+
+### Example Content
+
+Here's an example `AGENTS.md` file for a React components directory:
+
+```markdown theme={null}
+# Component Guidelines
+
+When working with components in this directory:
+
+- Use functional components with hooks
+- Follow the naming convention: ComponentName.tsx for components, useHookName.ts for hooks
+- Each component should have a corresponding test file: ComponentName.test.tsx
+- Use CSS modules for styling: ComponentName.module.css
+- Export components as named exports, not default exports
+
+## File Structure
+
+Each component folder should contain:
+- The main component file
+- A test file
+- A styles file (if needed)
+- An index.ts for re-exports
+```
+
+## Discovery and Scoping
+
+Windsurf automatically discovers `AGENTS.md` files throughout your workspace:
+
+* **Workspace scanning**: All `AGENTS.md` files within your workspace and its subdirectories are discovered
+* **Git repository support**: For git repositories, Windsurf also searches parent directories up to the git root
+* **Case insensitive**: Both `AGENTS.md` and `agents.md` are recognized
+
+### Automatic Scoping
+
+The key benefit of `AGENTS.md` is automatic scoping based on file location:
+
+| File Location           | Scope                                                        |
+| ----------------------- | ------------------------------------------------------------ |
+| Workspace root          | Applies to all files (always on)                             |
+| `/frontend/`            | Applies when working with files in `/frontend/**`            |
+| `/frontend/components/` | Applies when working with files in `/frontend/components/**` |
+
+This means you can have multiple `AGENTS.md` files at different levels, each providing increasingly specific guidance for their respective directories.
+
+## Best Practices
+
+To get the most out of `AGENTS.md` files:
+
+* **Keep instructions focused**: Each `AGENTS.md` should contain instructions relevant to its directory's purpose
+* **Use clear formatting**: Bullet points, headers, and code blocks make instructions easier for Cascade to follow
+* **Be specific**: Concrete examples and explicit conventions work better than vague guidelines
+* **Avoid redundancy**: Don't repeat global instructions in subdirectory files; they inherit from parent directories
+
+### Content Guidelines
+
+```markdown theme={null}
+# Good Example
+- Use TypeScript strict mode
+- All API responses must include error handling
+- Follow REST naming conventions for endpoints
+
+# Less Effective Example
+- Write good code
+- Be careful with errors
+- Use best practices
+```
+
+## Comparison with Rules
+
+While both `AGENTS.md` and [Rules](/windsurf/cascade/memories#rules) provide instructions to Cascade, they serve different purposes:
+
+| Feature  | AGENTS.md                        | Rules                                            |
+| -------- | -------------------------------- | ------------------------------------------------ |
+| Location | In project directories           | `.windsurf/rules/` or global                     |
+| Scoping  | Automatic based on file location | Manual (glob, always on, model decision, manual) |
+| Format   | Plain markdown                   | Markdown with frontmatter                        |
+| Best for | Directory-specific conventions   | Cross-cutting concerns, complex activation logic |
+
+Use `AGENTS.md` when you want simple, location-based instructions. Use Rules when you need more control over when and how instructions are applied.
+
+
 # App Deploys
 Source: https://docs.windsurf.com/windsurf/cascade/app-deploys
 
-
+Deploy web applications directly from Windsurf to Netlify with public URLs, automatic builds, and project claiming for Next.js, React, Vue, and Svelte.
 
 App Deploys lets you deploy web applications and sites directly within Windsurf through Cascade tool calls. This feature helps you share your work through public URLs, update your deployments, and claim projects for further customization. This feature is in beta and support for additional frameworks, more robust builds, etc. are coming soon.
 
 <Frame>
-  <img src="https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf/cascade/app-deploys-ui.png?fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=af9bd2cc96a163d94b37138e4b07175b" data-og-width="2072" width="2072" data-og-height="576" height="576" data-path="assets/windsurf/cascade/app-deploys-ui.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf/cascade/app-deploys-ui.png?w=280&fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=f7749aa40047cd53500509e6f49bad09 280w, https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf/cascade/app-deploys-ui.png?w=560&fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=0177a7044dd52ab525faea6d89a1af88 560w, https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf/cascade/app-deploys-ui.png?w=840&fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=b30f29bcf042450ad924ae857d2c9504 840w, https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf/cascade/app-deploys-ui.png?w=1100&fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=761b5d5b39f8144cb5d6934cb5aaa76e 1100w, https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf/cascade/app-deploys-ui.png?w=1650&fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=766c633b6efde77ae0c216d7511a8f71 1650w, https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf/cascade/app-deploys-ui.png?w=2500&fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=5f3e3662d6bbeee76d6ffa66c969ab6e 2500w" />
+  <img />
 </Frame>
 
 ## Overview
@@ -9507,7 +9734,7 @@ When you use App Deploys, your code is uploaded to our server and deployed to th
 <SUBDOMAIN_NAME>.windsurf.build
 ```
 
-<video autoPlay muted loop playsInline className="w-full aspect-video" src="https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf/cascade/app-deploys-demo1.mp4?fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=844977e5cf94c8393e2418bdaec2e921" data-path="assets/windsurf/cascade/app-deploys-demo1.mp4" />
+<video />
 
 ### Deployment Process
 
@@ -9610,7 +9837,7 @@ If your deployment fails:
 ### Netlify Site Not Found
 
 <Frame>
-  <img src="https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf/cascade/netlify-site-not-found.png?fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=80793d24da70db2cfd1021616c6db559" data-og-width="2430" width="2430" data-og-height="1618" height="1618" data-path="assets/windsurf/cascade/netlify-site-not-found.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf/cascade/netlify-site-not-found.png?w=280&fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=cc57c11e4e864e7b79f330acba7f02a3 280w, https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf/cascade/netlify-site-not-found.png?w=560&fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=ecffcf4ed8d41cb79ca4c6fce4473af6 560w, https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf/cascade/netlify-site-not-found.png?w=840&fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=c6a9909ad8b609b0753330582460f8c4 840w, https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf/cascade/netlify-site-not-found.png?w=1100&fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=a6cc6e8cb3fc5f0ccb06160c727fceb2 1100w, https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf/cascade/netlify-site-not-found.png?w=1650&fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=0a0f34b9a8645a16037f693c1cefea62 1650w, https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf/cascade/netlify-site-not-found.png?w=2500&fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=8f84f5ba46e662de4b98bac21f0df39b 2500w" />
+  <img />
 </Frame>
 
 This likely means that your build failed. Please claim your site (you can find it on your [deploy history](https://windsurf.com/deploy)) and check the build logs for more details. Often times you can paste your build logs into Cascade and ask for help.
@@ -9644,14 +9871,85 @@ This error occurs when your project ID is not found in our system of records or 
 3. Try redeploying and telling Cascade to use the `project_id` from the `windsurf_deployment.yaml` file more explicitly
 
 <Frame>
-  <img src="https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf/cascade/app-deploys-download-config-file.png?fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=8e8633a61f54753db07de541413ace9c" data-og-width="1966" width="1966" data-og-height="1408" height="1408" data-path="assets/windsurf/cascade/app-deploys-download-config-file.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf/cascade/app-deploys-download-config-file.png?w=280&fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=60858082545eaa214b3c4eede56279e8 280w, https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf/cascade/app-deploys-download-config-file.png?w=560&fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=262cdbb04ab309fe91e469534873d941 560w, https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf/cascade/app-deploys-download-config-file.png?w=840&fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=5ad571a090d3aa725da55c434845c15d 840w, https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf/cascade/app-deploys-download-config-file.png?w=1100&fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=ee0aee2445e04bb2414d59d47b449464 1100w, https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf/cascade/app-deploys-download-config-file.png?w=1650&fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=9372bc2d4014f98662fed8de06b2f8b6 1650w, https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf/cascade/app-deploys-download-config-file.png?w=2500&fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=ef554e119347a1df792558d90e9b6284 2500w" />
+  <img />
 </Frame>
 
 
-# Overview
+# Arena Mode
+Source: https://docs.windsurf.com/windsurf/cascade/arena
+
+Run multiple Cascade instances in parallel using arena mode to explore different approaches simultaneously.
+
+Cascade supports **arena mode** to allow you to easily compare responses from different models on the same prompt.
+
+| Mode       | Use Case                                |
+| ---------- | --------------------------------------- |
+| **Single** | Run Cascade with a single chosen model  |
+| **Arena**  | Compare responses from different models |
+
+## Arena Mode
+
+To enter arena mode, click the **arena** button in the model picker and choose your preferred models.
+
+When you select multiple models, Cascade will independently execute your prompt with each model in a separate session. Each model also gets its own [worktree](./worktrees) for isolation.
+
+<Tip>
+  If you want to view both conversations at the same time, you can drag the
+  Cascade tab into the main editor window to expand the available space.
+</Tip>
+
+You can independently continue working in each Cascade conversation, including accepting or rejecting changes or asking follow-up questions.
+Since each model has its own [worktree](./worktrees), you can iterate on each response without affecting the others sessions.
+
+### Choosing the better response
+
+When you're ready to commit to a particular approach, you should click the "X is better" button to **discard** other conversations and *converge* all models to continue with your chosen approach.
+The next message you send after converging will be sent to all models you have selected, allowing you to continue trying out different approaches.
+
+<Frame>
+  <img />
+</Frame>
+
+## Battle Groups
+
+Instead of manually selecting models, you can select one of our curated model groups to have Cascade randomly choose two models to compare. We have two random model groups available:
+
+* **Frontier**: Includes frontier reasoning models like GPT 5.2, Claude Opus/Sonnet 4.5, Gemini 3 Pro, etc., optimized for intelligence.
+* **Fast**: Includes fast reasoning models like SWE 1.5, Claude Haiku, etc., optimized for speed.
+
+When you use one of the battle groups, the exact model names are hidden from you until you click the "X is better" button to converge the models. Then, the original model names are revealed and the conversations are reshuffled.
+
+## When To Use Arena Mode
+
+Arena mode is particularly useful when you want to:
+
+* Compare code quality across different models
+* Explore different approaches to a hard problem
+* Test out a new model without abandoning your standard preference
+* Access frontier models at reduced cost by using the battle groups
+
+## Limitations
+
+* Arena mode is only supported for workspaces that have git initialized
+* By default, only Git-tracked files are copied into the worktrees created for each model; you can configure a [setup hook](./worktrees#setup-hook) to copy additional files as needed
+
+## Related Features
+
+<CardGroup>
+  <Card title="Worktrees" icon="code-branch" href="/windsurf/cascade/worktrees">
+    Isolate parallel work in separate git worktrees.
+  </Card>
+
+  <Card title="Hooks" icon="plug" href="/windsurf/cascade/hooks">
+    Automate actions before and after Cascade operations.
+  </Card>
+</CardGroup>
+
+
+# Cascade Overview
 Source: https://docs.windsurf.com/windsurf/cascade/cascade
 
-
+Cascade is Windsurf's agentic AI assistant with Code/Chat modes, tool calling, voice input, checkpoints, real-time awareness, and linter integration.
 
 Windsurf's Cascade unlocks a new level of collaboration between human and AI.
 
@@ -9659,18 +9957,18 @@ To open Cascade, press `Cmd/Ctrl+L`click the Cascade icon in the top right corne
 
 ### Quick links to features
 
-<CardGroup cols={2}>
-  <Card title="Web Search" icon="globe-pointer" href="/windsurf/web-search">
+<CardGroup>
+  <Card title="Web Search" icon="globe-pointer" href="/windsurf/cascade/web-search">
     Search the web for information to be referenced in Cascade's suggestions.
   </Card>
 
-  <Card title="Memories & Rules" icon="cloud-word" href="/windsurf/memories">
+  <Card title="Memories & Rules" icon="cloud-word" href="/windsurf/cascade/memories">
     Memories and rules help customize behavior.
   </Card>
 </CardGroup>
 
-<CardGroup cols={2}>
-  <Card title="MCP" icon="hammer" href="/windsurf/mcp">
+<CardGroup>
+  <Card title="MCP" icon="hammer" href="/windsurf/cascade/mcp">
     MCP servers extend the agent's capabilities.
   </Card>
 
@@ -9679,7 +9977,7 @@ To open Cascade, press `Cmd/Ctrl+L`click the Cascade icon in the top right corne
   </Card>
 </CardGroup>
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Workflows" icon="list" href="/windsurf/cascade/workflows">
     Automate repetitive trajectories.
   </Card>
@@ -9693,7 +9991,7 @@ To open Cascade, press `Cmd/Ctrl+L`click the Cascade icon in the top right corne
 
 Select your desired model from the selection menu below the Cascade conversation input box. Click below too see the full list of the available models and their availability across different plans and pricing.
 
-<Card title="Models" icon="gear-code" href="/windsurf/models" horizontal={true}>
+<Card title="Models" icon="gear-code" href="/windsurf/models">
   Model availability in Windsurf.
 </Card>
 
@@ -9713,7 +10011,7 @@ In the background, a specialized planning agent continuously refines the long-te
 
 Cascade will create a Todo list within the conversation to track progress on complex tasks. To make changes to the plan, simply ask Cascade to make updates to the Todo list.
 
-Cascade may also automatically make updates to the plan as it picks up new information, such as a [Memory](/windsurf/memories), during the course of a conversation.
+Cascade may also automatically make updates to the plan as it picks up new information, such as a [Memory](/windsurf/cascade/memories), during the course of a conversation.
 
 # Queued Messages
 
@@ -9726,7 +10024,7 @@ To add a message to the queue, simply type in your message while Cascade is work
 
 # Tool Calling
 
-Cascade has a variety of tools at its disposal, such as Search, Analyze, [Web Search](/windsurf/web-search), [MCP](/windsurf/mcp), and the [terminal](/windsurf/terminal).
+Cascade has a variety of tools at its disposal, such as Search, Analyze, [Web Search](/windsurf/cascade/web-search), [MCP](/windsurf/cascade/mcp), and the [terminal](/windsurf/terminal).
 
 It can detect which packages and tools that you're using, which ones need to be installed, and even install them for you. Just ask Cascade how to run your project and press Accept.
 
@@ -9735,14 +10033,14 @@ It can detect which packages and tools that you're using, which ones need to be 
 You can configure an `Auto-Continue` setting to have Cascade automatically continue its response if it hits a limit. These will consume a prompt credit(s) corresponding to the model you are using.
 
 <Frame>
-  <video autoPlay muted loop playsInline src="https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf/cascade/auto-continue.mp4?fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=0f75d2d9de596f1ead6f37c4f68eca43" data-path="assets/windsurf/cascade/auto-continue.mp4" />
+  <video />
 </Frame>
 
 # Voice input
 
 Use Voice input to use your voice to interact with Cascade. In its current form it can transcribe your speech to text.
 
-<video autoPlay controls muted loop playsInline className="w-full aspect-video" src="https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf/cascade/voice-mode.mp4?fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=b6881ef11385d4f05fa151e0808a9e78" data-path="assets/windsurf/cascade/voice-mode.mp4" />
+<video />
 
 # Named Checkpoints and Reverts
 
@@ -9750,11 +10048,11 @@ You have the ability to revert changes that Cascade has made. Simply hover your 
 
 <Warning>Reverts are currently irreversible, so be careful!</Warning>
 
-<video autoPlay controls muted loop playsInline className="w-full aspect-video" src="https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf/cascade/cascade-revert.mp4?fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=fe494383062acfc1efe07b23c03607a2" data-path="assets/windsurf/cascade/cascade-revert.mp4" />
+<video />
 
 You can also create a named snapshot/checkpoint of the current state of your project from within the conversation, which you can easily navigate to and revert at any time.
 
-<video autoPlay controls muted loop playsInline className="w-full aspect-video" src="https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf/cascade/namedcheckpoints.mp4?fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=d3c50b95ea5c2e67c2f08f00af4d11f6" data-path="assets/windsurf/cascade/namedcheckpoints.mp4" />
+<video />
 
 # Real-time awareness
 
@@ -9762,14 +10060,14 @@ A unique capability of Windsurf and Cascade is that it is aware of your real-tim
 
 Simply instruct Cascade to "Continue".
 
-<video autoPlay controls muted loop playsInline className="w-full aspect-video" src="https://mintcdn.com/codeium/vRt4FQOyBeZpD2Pu/assets/windsurf-continue.mp4?fit=max&auto=format&n=vRt4FQOyBeZpD2Pu&q=85&s=72fa8688e966ff308daa5876e6dc7f98" data-path="assets/windsurf-continue.mp4" />
+<video />
 
 # Send problems to Cascade
 
 When you have problems in your code which show up in the Problems panel at the bottom of the editor, simply click the `Send to Cascade` button to bring them into the Cascade panel as an @ mention.
 
 <Frame>
-  <img style={{ maxHeight: "500px" }} src="https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf/cascade/send-problems-to-cascade.png?fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=46a20b503cb0cda0139ab1b081ca3de3" data-og-width="316" width="316" data-og-height="122" height="122" data-path="assets/windsurf/cascade/send-problems-to-cascade.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf/cascade/send-problems-to-cascade.png?w=280&fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=28061b4d7f851d8840f436f8b0919e15 280w, https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf/cascade/send-problems-to-cascade.png?w=560&fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=93934a76820912a1fd5a1778cf641844 560w, https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf/cascade/send-problems-to-cascade.png?w=840&fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=0aab2818d64a7b08e266baacf6560cce 840w, https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf/cascade/send-problems-to-cascade.png?w=1100&fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=fe744688100032ab1c298e97ef822efc 1100w, https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf/cascade/send-problems-to-cascade.png?w=1650&fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=8d794127338249c9fbc74399ac7d1414 1650w, https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf/cascade/send-problems-to-cascade.png?w=2500&fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=74ef3a1d9023525aeea7ca654149a3b4 2500w" />
+  <img />
 </Frame>
 
 # Explain and fix
@@ -9777,7 +10075,7 @@ When you have problems in your code which show up in the Problems panel at the b
 For any errors that you run into from within the editor, you can simply highlight the error and click `Explain and Fix` to have Cascade fix it for you.
 
 <Frame>
-  <img style={{ maxHeight: "500px" }} src="https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/windsurf-explain-fix.png?fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=e2d18a81a54554b523805d75317488f5" data-og-width="886" width="886" data-og-height="140" height="140" data-path="assets/windsurf/windsurf-explain-fix.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/windsurf-explain-fix.png?w=280&fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=79109955cb9719ec411c6f41ff2a4f52 280w, https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/windsurf-explain-fix.png?w=560&fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=a122405e2d8bf975f03842eb63fda6e3 560w, https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/windsurf-explain-fix.png?w=840&fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=628e64768d102e28f380f1d5f8c1a770 840w, https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/windsurf-explain-fix.png?w=1100&fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=13161a7f834d458a9436b337d67cc58f 1100w, https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/windsurf-explain-fix.png?w=1650&fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=1d9ebea051ccb1a80798c57e2ef2b89b 1650w, https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/windsurf-explain-fix.png?w=2500&fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=c2e9a3082c59fe0299d68fcfd74b4185 2500w" />
+  <img />
 </Frame>
 
 # Ignoring files
@@ -9793,7 +10091,7 @@ For enterprise customers managing multiple repositories, you can enforce ignore 
 Cascade can automatically fix linting errors on generated code. This is turned on by default, but it can be disabled by clicking `Auto-fix` on the tool call, and clicking `disable`. This edit will not consume any credits.
 
 <Frame>
-  <img src="https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf/cascade/auto-fix-lint.png?fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=ae3f3ecca77f0a0a646adedb91b6a22e" data-og-width="584" width="584" data-og-height="196" height="196" data-path="assets/windsurf/cascade/auto-fix-lint.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf/cascade/auto-fix-lint.png?w=280&fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=4c3726305eed4f34d6985a4fe06b5816 280w, https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf/cascade/auto-fix-lint.png?w=560&fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=fb969e8bfe739b9daa9d0ef6284a19fe 560w, https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf/cascade/auto-fix-lint.png?w=840&fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=462f5f2e5fd3f6e632bf417c35f739bd 840w, https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf/cascade/auto-fix-lint.png?w=1100&fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=651fa582a7c313772372a49bad3438b1 1100w, https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf/cascade/auto-fix-lint.png?w=1650&fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=1aed8edc51e41f0121e93d5dd253be07 1650w, https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf/cascade/auto-fix-lint.png?w=2500&fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=0c3129926f6965afb414bf5e5dd641cd 2500w" />
+  <img />
 </Frame>
 
 When Cascade makes an edit with the primary goal of fixing lints that it created and auto-detected,
@@ -9802,7 +10100,7 @@ fixing lint errors increases the number of tool calls that Cascade makes.
 
 # Sharing your conversation
 
-<Note>This feature is currently only available for Teams and Enterprise customers. Currently not available to Hybrid customers.</Note>
+<Note>This feature is currently only available for Teams and Enterprise customers.</Note>
 
 You can share your Cascade trajectories with your team by clicking the `...` Additional options button in the top right of the Cascade panel, and clicking `Share Conversation`.
 
@@ -9812,7 +10110,7 @@ You can also reference previous conversations with other conversations via an `@
 
 When you do this, Cascade will retrieve the most relevant and useful information like the conversation summaries and checkpoints, and specific parts of the conversation that you query for. It typically will not retrieve the full conversation as to not overwhelm the context window.
 
-<video autoPlay controls muted loop playsInline className="w-full aspect-video" src="https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf/cascade/at-mention-convos.mp4?fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=f580f0222fdf75ec42cb7a9470e6de02" data-path="assets/windsurf/cascade/at-mention-convos.mp4" />
+<video />
 
 # Simultaneous Cascades
 
@@ -9820,17 +10118,15 @@ Users can have multiple Cascades running simultaneously. You can navigate betwee
 
 <Warning>If two Cascades edit the same file at the same time, the edits can race, and sometimes the second edit will fail.</Warning>
 
+If you expect two Cascades to edit similar files, you should consider using [worktrees](./worktrees) to keep them isolated.
 
-# Cascade Hooks (Beta)
+
+# Cascade Hooks
 Source: https://docs.windsurf.com/windsurf/cascade/hooks
 
-
+Execute custom shell commands at key points in Cascade's workflow for logging, security controls, validation, and enterprise governance with pre and post hooks.
 
 Cascade Hooks enable you to execute custom shell commands at key points during Cascade's workflow. This powerful extensibility feature allows you to log operations, enforce guardrails, run validation checks, or integrate with external systems.
-
-<Warning>
-  **Beta Release**: Cascade Hooks are currently in beta and undergoing active development. Features and APIs may change. Please contact [Windsurf Support](https://windsurf.com/support) with feedback or bug reports.
-</Warning>
 
 <Note>
   Hooks are designed for power users and enterprise teams who need fine-grained control over Cascade's behavior. They require basic shell scripting knowledge.
@@ -9840,8 +10136,8 @@ Cascade Hooks enable you to execute custom shell commands at key points during C
 
 Hooks unlock a wide range of automation and governance capabilities:
 
-* **Logging & Analytics**: Track every file read, code change, or command executed by Cascade for compliance and usage analysis
-* **Security Controls**: Block Cascade from accessing sensitive files or running dangerous commands
+* **Logging & Analytics**: Track every file read, code change, command executed, user prompt, or Cascade response for compliance and usage analysis
+* **Security Controls**: Block Cascade from accessing sensitive files, running dangerous commands, or processing policy-violating prompts
 * **Quality Assurance**: Run linters, formatters, or tests automatically after code modifications
 * **Custom Workflows**: Integrate with issue trackers, notification systems, or deployment pipelines
 * **Team Standardization**: Enforce coding standards and best practices across your organization
@@ -9872,7 +10168,8 @@ System-level hooks are ideal for organization-wide policies enforced on shared d
 
 User-level hooks are perfect for personal preferences and optional workflows.
 
-* **Location**: `~/.codeium/windsurf/hooks.json`
+* **Windsurf IDE**: `~/.codeium/windsurf/hooks.json`
+* **JetBrains Plugin**: `~/.codeium/hooks.json`
 
 #### Workspace-Level
 
@@ -9888,7 +10185,7 @@ Workspace-level hooks allow teams to version control project-specific policies a
 
 Here is an example of the basic structure of the hooks configuration:
 
-```json  theme={null}
+```json theme={null}
 {
   "hooks": {
     "pre_read_code": [
@@ -9919,7 +10216,7 @@ Each hook accepts the following parameters:
 
 ## Hook Events
 
-Cascade provides eight hook events that cover the most critical actions in the agent workflow.
+Cascade provides eleven hook events that cover the most critical actions in the agent workflow.
 
 ### Common Input Structure
 
@@ -9933,7 +10230,7 @@ All hooks receive a JSON object with the following common fields:
 | `timestamp`         | string | ISO 8601 timestamp when the hook was triggered                     |
 | `tool_info`         | object | Event-specific information (varies by hook type)                   |
 
-In the following examples, the common fields are omitted for brevity. There are eight major types of hook events:
+In the following examples, the common fields are omitted for brevity. There are eleven major types of hook events:
 
 ### pre\_read\_code
 
@@ -9943,7 +10240,7 @@ Triggered **before** Cascade reads a code file. This may block the action if the
 
 **Input JSON**:
 
-```json  theme={null}
+```json theme={null}
 {
   "agent_action_name": "pre_read_code",
   "tool_info": {
@@ -9962,7 +10259,7 @@ Triggered **after** Cascade successfully reads a code file.
 
 **Input JSON**:
 
-```json  theme={null}
+```json theme={null}
 {
   "agent_action_name": "post_read_code",
   "tool_info": {
@@ -9981,7 +10278,7 @@ Triggered **before** Cascade writes or modifies a code file. This may block the 
 
 **Input JSON**:
 
-```json  theme={null}
+```json theme={null}
 {
   "agent_action_name": "pre_write_code",
   "tool_info": {
@@ -10004,7 +10301,7 @@ Triggered **after** Cascade writes or modifies a code file.
 
 **Input JSON**:
 
-```json  theme={null}
+```json theme={null}
 {
   "agent_action_name": "post_write_code",
   "tool_info": {
@@ -10027,7 +10324,7 @@ Triggered **before** Cascade executes a terminal command. This may block the act
 
 **Input JSON**:
 
-```json  theme={null}
+```json theme={null}
 {
   "agent_action_name": "pre_run_command",
   "tool_info": {
@@ -10045,7 +10342,7 @@ Triggered **after** Cascade executes a terminal command.
 
 **Input JSON**:
 
-```json  theme={null}
+```json theme={null}
 {
   "agent_action_name": "post_run_command",
   "tool_info": {
@@ -10063,7 +10360,7 @@ Triggered **before** Cascade invokes an MCP (Model Context Protocol) tool. This 
 
 **Input JSON**:
 
-```json  theme={null}
+```json theme={null}
 {
   "agent_action_name": "pre_mcp_tool_use",
   "tool_info": {
@@ -10087,7 +10384,7 @@ Triggered **after** Cascade successfully invokes an MCP tool.
 
 **Input JSON**:
 
-```json  theme={null}
+```json theme={null}
 {
   "agent_action_name": "post_mcp_tool_use",
   "tool_info": {
@@ -10104,6 +10401,74 @@ Triggered **after** Cascade successfully invokes an MCP tool.
 }
 ```
 
+### pre\_user\_prompt
+
+Triggered **before** Cascade processes the text of a user's prompt. This may block the action if the hook exits with code 2.
+
+**Use cases**: Log all user prompts for auditing, block potentially harmful or policy-violating prompts
+
+**Input JSON**:
+
+```json theme={null}
+{
+  "agent_action_name": "pre_user_prompt",
+  "tool_info": {
+    "user_prompt": "can you run the echo hello command"
+  }
+}
+```
+
+The `show_output` configuration option does not apply to this hook.
+
+### post\_cascade\_response
+
+Triggered **after** Cascade completes a response to a user's prompt. This hook receives the full Cascade response ever since the last user input.
+
+**Use cases**: Log all Cascade responses for auditing, analyze response patterns, send responses to external systems for compliance review
+
+**Input JSON**:
+
+```json theme={null}
+{
+  "agent_action_name": "post_cascade_response",
+  "tool_info": {
+    "response": "### Planner Response\n\nI'll help you create that file.\n\n*Created file `/path/to/file.py`*\n\n### Planner Response\n\nThe file has been created successfully."
+  }
+}
+```
+
+The `response` field contains the markdown-formatted content of Cascade's response since the last user input. This includes planner responses, tool actions (file reads, writes, commands), and any other steps Cascade took.
+
+The `show_output` configuration option does not apply to this hook.
+
+<Warning>
+  The `response` content is derived from trajectory data and may contain sensitive information from your codebase or conversations. Handle this data according to your organization's security and privacy policies.
+</Warning>
+
+### post\_setup\_worktree
+
+Triggered **after** a new [git worktree](./worktrees) is created and configured. The hook is executed inside the new **worktree** directory.
+
+**Use cases**: Copy `.env` files or other untracked files into the worktree, install dependencies, run setup scripts
+
+**Environment Variables**:
+
+| Variable               | Description                                                                                                                |
+| ---------------------- | -------------------------------------------------------------------------------------------------------------------------- |
+| `$ROOT_WORKSPACE_PATH` | The absolute path to the original workspace. Use this to access files or run commands relative to the original repository. |
+
+**Input JSON**:
+
+```json theme={null}
+{
+  "agent_action_name": "post_setup_worktree",
+  "tool_info": {
+    "worktree_path": "/Users/me/.windsurf/worktrees/my-repo/abmy-repo-c123",
+    "root_workspace_path": "/Users/me/projects/my-repo"
+  }
+}
+```
+
 ## Exit Codes
 
 Your hook scripts communicate results through exit codes:
@@ -10115,7 +10480,7 @@ Your hook scripts communicate results through exit codes:
 | Any other | Error          | Action proceeds normally                                                                             |
 
 <Warning>
-  Only **pre-hooks** (pre\_read\_code, pre\_write\_code, pre\_run\_command, pre\_mcp\_tool\_use) can block actions using exit code 2. Post-hooks cannot block since the action has already occurred.
+  Only **pre-hooks** (pre\_user\_prompt, pre\_read\_code, pre\_write\_code, pre\_run\_command, pre\_mcp\_tool\_use) can block actions using exit code 2. Post-hooks cannot block since the action has already occurred.
 </Warning>
 
 Keep in mind that the user can see any hook-generated standard output and standard error in the Cascade UI if `show_output` is true.
@@ -10126,9 +10491,9 @@ Keep in mind that the user can see any hook-generated standard output and standa
 
 Track every action Cascade takes for auditing purposes.
 
-**Config** (`~/.codeium/windsurf/hooks.json`):
+**Config**:
 
-```json  theme={null}
+```json theme={null}
 {
   "hooks": {
     "post_read_code": [
@@ -10154,6 +10519,11 @@ Track every action Cascade takes for auditing purposes.
         "command": "python3 /Users/yourname/hooks/log_input.py",
         "show_output": true
       }
+    ],
+    "post_cascade_response": [
+      {
+        "command": "python3 /Users/yourname/hooks/log_input.py"
+      }
     ]
   }
 }
@@ -10161,7 +10531,7 @@ Track every action Cascade takes for auditing purposes.
 
 **Script** (`log_input.py`):
 
-```python  theme={null}
+```python theme={null}
 #!/usr/bin/env python3
 
 import sys
@@ -10196,9 +10566,9 @@ This script appends every hook invocation to a log file, creating an audit trail
 
 Prevent Cascade from reading files outside a specific directory.
 
-**Config** (`~/.codeium/windsurf/hooks.json`):
+**Config**:
 
-```json  theme={null}
+```json theme={null}
 {
   "hooks": {
     "pre_read_code": [
@@ -10213,7 +10583,7 @@ Prevent Cascade from reading files outside a specific directory.
 
 **Script** (`block_read_access.py`):
 
-```python  theme={null}
+```python theme={null}
 #!/usr/bin/env python3
 
 import sys
@@ -10253,9 +10623,9 @@ When Cascade attempts to read a file outside the allowed directory, this hook bl
 
 Prevent Cascade from executing potentially harmful commands.
 
-**Config** (`~/.codeium/windsurf/hooks.json`):
+**Config**:
 
-```json  theme={null}
+```json theme={null}
 {
   "hooks": {
     "pre_run_command": [
@@ -10270,7 +10640,7 @@ Prevent Cascade from executing potentially harmful commands.
 
 **Script** (`block_dangerous_commands.py`):
 
-```python  theme={null}
+```python theme={null}
 #!/usr/bin/env python3
 
 import sys
@@ -10307,13 +10677,132 @@ if __name__ == "__main__":
 
 This hook scans commands for dangerous patterns and blocks them before execution.
 
+### Blocking Policy-Violating Prompts
+
+Prevent users from submitting prompts that violate organizational policies.
+
+**Config**:
+
+```json theme={null}
+{
+  "hooks": {
+    "pre_user_prompt": [
+      {
+        "command": "python3 /Users/yourname/hooks/block_bad_prompts.py"
+      }
+    ]
+  }
+}
+```
+
+**Script** (`block_bad_prompts.py`):
+
+```python theme={null}
+#!/usr/bin/env python3
+
+import sys
+import json
+
+BLOCKED_PATTERNS = [
+    "something dangerous",
+    "bypass security",
+    "ignore previous instructions"
+]
+
+def main():
+    # Read the JSON data from stdin
+    input_data = sys.stdin.read()
+
+    # Parse the JSON
+    try:
+        data = json.loads(input_data)
+
+        if data.get("agent_action_name") == "pre_user_prompt":
+            tool_info = data.get("tool_info", {})
+            user_prompt = tool_info.get("user_prompt", "").lower()
+
+            for pattern in BLOCKED_PATTERNS:
+                if pattern in user_prompt:
+                    print(f"Prompt blocked: Contains prohibited content. The user cannot ask the agent to do bad things.", file=sys.stderr)
+                    sys.exit(2)  # Exit code 2 blocks the prompt
+
+    except json.JSONDecodeError as e:
+        print(f"Error parsing JSON: {e}", file=sys.stderr)
+        sys.exit(1)
+
+if __name__ == "__main__":
+    main()
+```
+
+This hook examines user prompts before they are processed and blocks any that contain prohibited patterns. When a prompt is blocked, the user sees an error message in the Cascade UI.
+
+### Logging Cascade Responses
+
+Track all Cascade responses for compliance auditing or analytics.
+
+**Config**:
+
+```json theme={null}
+{
+  "hooks": {
+    "post_cascade_response": [
+      {
+        "command": "python3 /Users/yourname/hooks/log_cascade_response.py"
+      }
+    ]
+  }
+}
+```
+
+**Script** (`log_cascade_response.py`):
+
+```python theme={null}
+#!/usr/bin/env python3
+
+import sys
+import json
+from datetime import datetime
+
+def main():
+    # Read the JSON data from stdin
+    input_data = sys.stdin.read()
+
+    # Parse the JSON
+    try:
+        data = json.loads(input_data)
+
+        if data.get("agent_action_name") == "post_cascade_response":
+            tool_info = data.get("tool_info", {})
+            cascade_response = tool_info.get("response", "")
+            trajectory_id = data.get("trajectory_id", "unknown")
+            timestamp = data.get("timestamp", datetime.now().isoformat())
+
+            # Log to file
+            with open("/Users/yourname/hooks/cascade_responses.log", "a") as f:
+                f.write(f"\n{'='*80}\n")
+                f.write(f"Timestamp: {timestamp}\n")
+                f.write(f"Trajectory ID: {trajectory_id}\n")
+                f.write(f"Response:\n{cascade_response}\n")
+
+            print(f"Logged Cascade response for trajectory {trajectory_id}")
+
+    except json.JSONDecodeError as e:
+        print(f"Error parsing JSON: {e}", file=sys.stderr)
+        sys.exit(1)
+
+if __name__ == "__main__":
+    main()
+```
+
+This hook logs every Cascade response to a file, creating an audit trail of all AI-generated content. You can extend this to send data to external logging systems, databases, or compliance platforms.
+
 ### Running Code Formatters After Edits
 
 Automatically format code files after Cascade modifies them.
 
-**Config** (`~/.codeium/windsurf/hooks.json`):
+**Config**:
 
-```json  theme={null}
+```json theme={null}
 {
   "hooks": {
     "post_write_code": [
@@ -10328,7 +10817,7 @@ Automatically format code files after Cascade modifies them.
 
 **Script** (`format_code.sh`):
 
-```bash  theme={null}
+```bash theme={null}
 #!/bin/bash
 
 # Read JSON from stdin
@@ -10353,6 +10842,52 @@ exit 0
 ```
 
 This hook automatically runs the appropriate formatter based on the file type after each edit.
+
+### Setting Up Worktrees
+
+Copy environment files and install dependencies when a new worktree is created.
+
+**Config** (in `.windsurf/hooks.json`):
+
+```json theme={null}
+{
+  "hooks": {
+    "post_setup_worktree": [
+      {
+        "command": "bash $ROOT_WORKSPACE_PATH/hooks/setup_worktree.sh",
+        "show_output": true
+      }
+    ]
+  }
+}
+```
+
+**Script** (`hooks/setup_worktree.sh`):
+
+```bash theme={null}
+#!/bin/bash
+
+# Copy environment files from the original workspace
+if [ -f "$ROOT_WORKSPACE_PATH/.env" ]; then
+    cp "$ROOT_WORKSPACE_PATH/.env" .env
+    echo "Copied .env file"
+fi
+
+if [ -f "$ROOT_WORKSPACE_PATH/.env.local" ]; then
+    cp "$ROOT_WORKSPACE_PATH/.env.local" .env.local
+    echo "Copied .env.local file"
+fi
+
+# Install dependencies
+if [ -f "package.json" ]; then
+    npm install
+    echo "Installed npm dependencies"
+fi
+
+exit 0
+```
+
+This hook ensures each worktree has the necessary environment configuration and dependencies installed automatically.
 
 ## Best Practices
 
@@ -10433,7 +10968,7 @@ Enterprise IT teams can deploy system-level hooks using standard tools and workf
 
 After deployment, verify that hooks are properly installed and cannot be bypassed:
 
-```bash  theme={null}
+```bash theme={null}
 # Verify system hooks are present
 ls -la /etc/windsurf/hooks.json  # Linux
 ls -la "/Library/Application Support/Windsurf/hooks.json"  # macOS
@@ -10454,7 +10989,7 @@ sudo chmod 644 /etc/windsurf/hooks.json
 
 For project-specific conventions, teams can use workspace-level hooks in version control:
 
-```bash  theme={null}
+```bash theme={null}
 # Add to your repository
 .windsurf/
 ├── hooks.json
@@ -10478,7 +11013,7 @@ This allows teams to standardize development practices. Be sure to keep security
 # Model Context Protocol (MCP)
 Source: https://docs.windsurf.com/windsurf/cascade/mcp
 
-
+Integrate MCP servers with Cascade to access custom tools like GitHub, databases, and APIs. Configure stdio, HTTP, and SSE transports with admin controls for Teams.
 
 **MCP (Model Context Protocol)** is a protocol that enables LLMs to access custom tools and services.
 An MCP client (Cascade, in this case) can make requests to MCP servers to access tools that they provide.
@@ -10487,47 +11022,48 @@ See the [official MCP docs](https://modelcontextprotocol.io/) for more informati
 
 <Note>Enterprise users must manually turn this on via settings</Note>
 
-## Adding a new MCP plugin
+## Adding a new MCP
 
-New MCP plugins can be added from the Plugin Store, which you can access by clicking on the `Plugins` icon in the top right menu in the Cascade panel, or from the `Windsurf Settings` > `Cascade` > `Plugins` section.
+New MCPs can be added from the MCP Marketplace, which you access by
+clicking on the `MCPs` icon in the top right menu in the Cascade panel, or from
+the `Windsurf Settings` > `Cascade` > `MCP Servers` section.
 
-If you cannot find your desired MCP plugin, you can add it manually by editing the raw `mcp_config.json` file.
+If you cannot find your desired MCP, you can add it manually by editing the raw `mcp_config.json` file.
 
-Official MCP plugins will show up with a blue checkmark, indicating that they are made by the parent service company.
+Official MCPs will show up with a blue checkmark, indicating that they are made by the parent service company.
 
-When you click on a plugin, simply click `Install` to expose the server and its tools to Cascade.
+When you click on a MCP, simply click `Install` to expose the server and its tools to Cascade.
 
-Windsurf supports two [transport types](https://modelcontextprotocol.io/docs/concepts/transports) for MCP servers: `stdio` and `http`.
+Windsurf supports three [transport types](https://modelcontextprotocol.io/docs/concepts/transports) for MCP
+servers: `stdio`,  `Streamable HTTP`, and `SSE`.
+
+Windsurf also supports OAuth for each transport type.
 
 For `http` servers, the URL should reflect that of the endpoint and resemble `https://<your-server-url>/mcp`.
 
-We can also support streamable HTTP transport and MCP Authentication.
-
-<Note>Make sure to press the refresh button after you add a new MCP plugin.</Note>
-
 <Frame>
-  <img src="https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf/cascade/mcp/mcp-plugin-store.png?fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=d755c65b22df71e8d035f440cb2fff22" data-og-width="1138" width="1138" data-og-height="828" height="828" data-path="assets/windsurf/cascade/mcp/mcp-plugin-store.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf/cascade/mcp/mcp-plugin-store.png?w=280&fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=a7e3ab90cf04cdfabbdd580f83aea2b2 280w, https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf/cascade/mcp/mcp-plugin-store.png?w=560&fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=0011e35c9f6a2202f26e3485ef017b2c 560w, https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf/cascade/mcp/mcp-plugin-store.png?w=840&fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=92c63c6e862e266842486022c402866d 840w, https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf/cascade/mcp/mcp-plugin-store.png?w=1100&fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=26f17c37647e79435ca3ade47e087147 1100w, https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf/cascade/mcp/mcp-plugin-store.png?w=1650&fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=1202cfe8ef04923199de9625ffe8aaa6 1650w, https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf/cascade/mcp/mcp-plugin-store.png?w=2500&fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=d582ec77762e3e0ca99d65d5525e64a6 2500w" />
+  <img />
 </Frame>
 
 ## Configuring MCP tools
 
-Each plugin has a certain number of tools it has access to. Cascade has a limit of 100 total tools that it has access to at any given time.
+Each MCP has a certain number of tools it has access to. Cascade has a limit of 100 total tools that it has access to at any given time.
 
-At the plugin level, you can navigate to the Tools tab and toggle the tools that you wish to enable. Or, from the `Windsurf Settings`, you can click on the `Manage plugins` button.
+On each MCP settings page, you can toggle the tools that you wish to enable. To
+open settings for a MCP, click on the `MCPs` icon in the top right menu in the
+Cascade panel, and click on the desired MCP.
 
 <Frame>
-  <img src="https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf/cascade/mcp/mcp-manage-plugin-tools.png?fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=30757b56f44e15c789a6f9f50dfa6035" data-og-width="1130" width="1130" data-og-height="700" height="700" data-path="assets/windsurf/cascade/mcp/mcp-manage-plugin-tools.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf/cascade/mcp/mcp-manage-plugin-tools.png?w=280&fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=ba55e144bbb094c2cc9425c5225a01a1 280w, https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf/cascade/mcp/mcp-manage-plugin-tools.png?w=560&fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=f3b5992248f1c307fec42269b6172b43 560w, https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf/cascade/mcp/mcp-manage-plugin-tools.png?w=840&fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=a4d03feb4bc0128fab8236a5184f5aed 840w, https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf/cascade/mcp/mcp-manage-plugin-tools.png?w=1100&fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=4067473f9a179c67e3dabd16db2c870b 1100w, https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf/cascade/mcp/mcp-manage-plugin-tools.png?w=1650&fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=1b6598d6418581175716d87b40903fee 1650w, https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf/cascade/mcp/mcp-manage-plugin-tools.png?w=2500&fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=5d12db70cab4e15dbf199f629d4d40d4 2500w" />
+  <img />
 </Frame>
 
 ## mcp\_config.json
 
 The `~/.codeium/windsurf/mcp_config.json` file is a JSON file that contains a list of servers that Cascade can connect to.
 
-The JSON should follow the same schema as the config file for Claude Desktop.
-
 Here’s an example configuration, which sets up a single server for GitHub:
 
-```json  theme={null}
+```json theme={null}
 {
   "mcpServers": {
     "github": {
@@ -10544,37 +11080,215 @@ Here’s an example configuration, which sets up a single server for GitHub:
 }
 ```
 
-It's important to note that for HTTP servers, the configuration is slightly different and requires a `serverUrl` field.
+Be sure to provide the required arguments and environment variables for the servers that you want to use.
+
+See the [official MCP server reference repository](https://github.com/modelcontextprotocol/servers) or [OpenTools](https://opentools.com/) for some example servers.
+
+### Popular MCP Server Examples
+
+Below are configuration examples for some commonly used MCP servers. These can be added to your `mcp_config.json` file.
+
+<AccordionGroup>
+  <Accordion title="GitHub" description="Repository management, file operations, and GitHub API integration.">
+    The GitHub MCP server provides tools for repository management, file operations, issue tracking, and pull request management.
+
+    **Using npx:**
+
+    ```json theme={null}
+    {
+      "mcpServers": {
+        "github": {
+          "command": "npx",
+          "args": ["-y", "@modelcontextprotocol/server-github"],
+          "env": {
+            "GITHUB_PERSONAL_ACCESS_TOKEN": "<YOUR_PERSONAL_ACCESS_TOKEN>"
+          }
+        }
+      }
+    }
+    ```
+
+    **Using Docker:**
+
+    ```json theme={null}
+    {
+      "mcpServers": {
+        "github": {
+          "command": "docker",
+          "args": [
+            "run", "-i", "--rm",
+            "-e", "GITHUB_PERSONAL_ACCESS_TOKEN",
+            "ghcr.io/github/github-mcp-server"
+          ],
+          "env": {
+            "GITHUB_PERSONAL_ACCESS_TOKEN": "<YOUR_PERSONAL_ACCESS_TOKEN>"
+          }
+        }
+      }
+    }
+    ```
+
+    To create a personal access token, visit [GitHub Settings > Developer settings > Personal access tokens](https://github.com/settings/tokens).
+  </Accordion>
+
+  <Accordion title="Slack" description="Channel management and messaging capabilities for Slack workspaces.">
+    The Slack MCP server enables channel management, messaging, and workspace interactions.
+
+    ```json theme={null}
+    {
+      "mcpServers": {
+        "slack": {
+          "command": "npx",
+          "args": ["-y", "@anthropic/mcp-server-slack"],
+          "env": {
+            "SLACK_BOT_TOKEN": "<YOUR_SLACK_BOT_TOKEN>",
+            "SLACK_TEAM_ID": "<YOUR_SLACK_TEAM_ID>"
+          }
+        }
+      }
+    }
+    ```
+
+    To set up a Slack bot token:
+
+    1. Create a Slack App at [api.slack.com/apps](https://api.slack.com/apps)
+    2. Add the required OAuth scopes (e.g., `channels:read`, `chat:write`, `users:read`)
+    3. Install the app to your workspace and copy the Bot User OAuth Token
+  </Accordion>
+
+  <Accordion title="PostgreSQL" description="Read-only database access with schema inspection capabilities.">
+    The PostgreSQL MCP server provides read-only access to PostgreSQL databases, including schema inspection and query execution.
+
+    ```json theme={null}
+    {
+      "mcpServers": {
+        "postgres": {
+          "command": "npx",
+          "args": ["-y", "@modelcontextprotocol/server-postgres"],
+          "env": {
+            "POSTGRES_CONNECTION_STRING": "postgresql://user:password@localhost:5432/database"
+          }
+        }
+      }
+    }
+    ```
+
+    <Warning>The PostgreSQL server provides read-only access by default for safety. Ensure your connection string uses appropriate credentials with limited permissions.</Warning>
+  </Accordion>
+
+  <Accordion title="Filesystem" description="Secure file operations with configurable access controls.">
+    The Filesystem MCP server provides secure access to local files and directories with configurable access controls.
+
+    ```json theme={null}
+    {
+      "mcpServers": {
+        "filesystem": {
+          "command": "npx",
+          "args": [
+            "-y", "@modelcontextprotocol/server-filesystem",
+            "/path/to/allowed/directory"
+          ]
+        }
+      }
+    }
+    ```
+
+    You can specify multiple allowed directories by adding additional path arguments. Only files within these directories will be accessible.
+  </Accordion>
+
+  <Accordion title="Brave Search" description="Web and local search using Brave's Search API.">
+    The Brave Search MCP server enables web search capabilities using Brave's Search API.
+
+    ```json theme={null}
+    {
+      "mcpServers": {
+        "brave-search": {
+          "command": "npx",
+          "args": ["-y", "@anthropic/mcp-server-brave-search"],
+          "env": {
+            "BRAVE_API_KEY": "<YOUR_BRAVE_API_KEY>"
+          }
+        }
+      }
+    }
+    ```
+
+    To get a Brave API key, sign up at [brave.com/search/api](https://brave.com/search/api/).
+  </Accordion>
+
+  <Accordion title="Memory" description="Knowledge graph-based persistent memory system.">
+    The Memory MCP server provides a persistent memory system using a knowledge graph, allowing Cascade to remember information across sessions.
+
+    ```json theme={null}
+    {
+      "mcpServers": {
+        "memory": {
+          "command": "npx",
+          "args": ["-y", "@modelcontextprotocol/server-memory"]
+        }
+      }
+    }
+    ```
+
+    The memory server stores data locally and persists across sessions, making it useful for maintaining context about projects, preferences, and learned information.
+  </Accordion>
+</AccordionGroup>
+
+### Remote HTTP MCPs
+
+It's important to note that for remote HTTP MCPs, the configuration is slightly
+different and requires a `serverUrl` or `url` field.
 
 Here's an example configuration for an HTTP server:
 
-```json  theme={null}
+```json theme={null}
 {
   "mcpServers": {
-    "figma": {
-      "serverUrl": "<your-server-url>/mcp"
+    "remote-http-mcp": {
+      "serverUrl": "<your-server-url>/mcp",
+      "headers": {
+        "API_KEY": "value"
+      }
     }
   }
 }
 ```
 
-<Note>For Figma Dev Mode MCP server, make sure you have updated to the latest Figma desktop app version to use the new `/mcp` endpoint.</Note>
+### Config Interpolation
 
-Be sure to provide the required arguments and environment variables for the servers that you want to use.
+The `~/.codeium/windsurf/mcp_config.json` file handles interpolation of
+environment variables in these fields: `command`, `args`, `env`, `serverUrl`, `url`, and
+`headers`.
 
-See the [official MCP server reference repository](https://github.com/modelcontextprotocol/servers) or [OpenTools](https://opentools.com/) for some example servers.
+Here’s an example configuration, which uses an `AUTH_TOKEN` environment variable
+in `headers`.
+
+```json theme={null}
+{
+  "mcpServers": {
+    "remote-http-mcp": {
+      "serverUrl": "<your-server-url>/mcp",
+      "headers": {
+        "API_KEY": "Bearer ${env:AUTH_TOKEN}"
+      }
+    }
+  }
+}
+```
 
 ## Admin Controls (Teams & Enterprises)
 
 Team admins can toggle MCP access for their team, as well as whitelist approved MCP servers for their team to use:
 
-<Card title="MCP Team Settings" horizontal={true} icon="hammer" href="https://windsurf.com/team/settings">
+<Card title="MCP Team Settings" icon="hammer" href="https://windsurf.com/team/settings">
   Configurable MCP settings for your team.
 </Card>
 
 <Warning>The above link will only work if you have admin privileges for your team.</Warning>
 
 By default, users within a team will be able to configure their own MCP servers. However, once you whitelist even a single MCP server, **all non-whitelisted servers will be blocked** for your team.
+
+<Note>The Server ID in the whitelist must match the key name case sensitive used in the user's `mcp_config.json`.</Note>
 
 ### How Server Matching Works
 
@@ -10595,13 +11309,13 @@ When you whitelist an MCP server, the system uses **regex pattern matching** wit
     * **Server ID**: `github-mcp-server`
     * **Server Config (JSON)**: *(leave empty)*
 
-    ```json  theme={null}
+    ```json theme={null}
     {}
     ```
 
     **Matching User Config (`mcp_config.json`):**
 
-    ```json  theme={null}
+    ```json theme={null}
     {
       "mcpServers": {
         "github-mcp-server": {
@@ -10631,7 +11345,7 @@ When you whitelist an MCP server, the system uses **regex pattern matching** wit
     * **Server ID**: `github-mcp-server`
     * **Server Config (JSON)**:
 
-    ```json  theme={null}
+    ```json theme={null}
     {
       "command": "docker",
       "args": [
@@ -10650,7 +11364,7 @@ When you whitelist an MCP server, the system uses **regex pattern matching** wit
 
     **Matching User Config (`mcp_config.json`):**
 
-    ```json  theme={null}
+    ```json theme={null}
     {
       "mcpServers": {
         "github-mcp-server": {
@@ -10680,7 +11394,7 @@ When you whitelist an MCP server, the system uses **regex pattern matching** wit
     * **Server ID**: `python-mcp-server`
     * **Server Config (JSON)**:
 
-    ```json  theme={null}
+    ```json theme={null}
     {
       "command": "python3",
       "args": ["/.*\\.py", "--port", "[0-9]+"]
@@ -10689,7 +11403,7 @@ When you whitelist an MCP server, the system uses **regex pattern matching** wit
 
     **Matching User Config (`mcp_config.json`):**
 
-    ```json  theme={null}
+    ```json theme={null}
     {
       "mcpServers": {
         "python-mcp-server": {
@@ -10747,13 +11461,13 @@ Remember: Once you whitelist any server, **all other servers are automatically b
 
 * Since MCP tool calls can invoke code written by arbitrary server implementers, we do not assume liability
   for MCP tool call failures. To reiterate:
-* We currently support an MCP server's [tools](https://modelcontextprotocol.io/docs/concepts/tools) and [resources](https://modelcontextprotocol.io/docs/concepts/resources), not [prompts](https://modelcontextprotocol.io/docs/concepts/prompts).
+* We currently support an MCP server's [tools](https://modelcontextprotocol.io/docs/concepts/tools), [resources](https://modelcontextprotocol.io/docs/concepts/resources), and [prompts](https://modelcontextprotocol.io/docs/concepts/prompts).
 
 
 # Memories & Rules
 Source: https://docs.windsurf.com/windsurf/cascade/memories
 
-
+Persist context across Cascade conversations with auto-generated memories and user-defined rules at global, workspace, and system levels for enterprise teams.
 
 `Memories` is the system for sharing and persisting context across conversations.
 
@@ -10763,7 +11477,7 @@ There are two mechanisms for this in Windsurf: Memories, which can be automatica
 
 Memories and Rules can be accessed and configured at any time by clicking on the `Customizations` icon in the top right slider menu in Cascade, or via “Windsurf - Settings” in the bottom-right hand corner. To edit an existing memory, simply click into it and then click the `Edit` button.
 
-<video autoPlay controls muted loop playsInline className="aspect-video" src="https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf/cascade/memories-rules.mp4?fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=2a80ad4bb69460c082c09f9633ab3649" data-path="assets/windsurf/cascade/memories-rules.mp4" />
+<video />
 
 ## Memories
 
@@ -10845,11 +11559,283 @@ To help Cascade follow your rules effectively, follow these best practices:
 </coding_guidelines>
 ```
 
+## System-Level Rules (Enterprise)
+
+Enterprise organizations can deploy system-level rules that apply globally across all workspaces and cannot be modified by end users without administrator permissions. This is ideal for enforcing organization-wide coding standards, security policies, and compliance requirements.
+
+System-level rules are loaded from OS-specific directories:
+
+**macOS:**
+
+```
+/Library/Application Support/Windsurf/rules/*.md
+```
+
+**Linux/WSL:**
+
+```
+/etc/windsurf/rules/*.md
+```
+
+**Windows:**
+
+```
+C:\ProgramData\Windsurf\rules\*.md
+```
+
+Place your rule files (as `.md` files) in the appropriate directory for your operating system. The system will automatically load all `.md` files from these directories.
+
+### How System Rules Work
+
+System-level rules are merged with workspace and global rules, providing additional context to Cascade without overriding user-defined rules. This allows organizations to establish baseline standards while still permitting teams to add project-specific customizations.
+
+In the Windsurf UI, system-level rules are displayed with a "System" label and cannot be deleted by end users.
+
+<Note>
+  **Important**: System-level rules should be managed by your IT or security team. Ensure your internal teams handle deployment, updates, and compliance according to your organization's policies. You can use standard tools and workflows such as Mobile Device Management (MDM) or Configuration Management to do so.
+</Note>
+
+
+# Cascade Modes
+Source: https://docs.windsurf.com/windsurf/cascade/modes
+
+Cascade offers multiple distinct modes, each optimized for different types of tasks.
+
+Cascade offers three distinct modes, each with a different set of capabilities designed for specific workflows.
+
+| Mode               | Use case                            | Tools             |
+| ------------------ | ----------------------------------- | ----------------- |
+| [Code](#code-mode) | Complex features, refactoring       | All tools enabled |
+| [Plan](#plan-mode) | Complex features requiring planning | All tools enabled |
+| [Ask](#ask-mode)   | Learning, planning, questions       | Search tools only |
+
+You can switch between different modes using the mode toggle below the Cascade input box, or by using the keyboard shortcut `⌘+.` (Mac) or `Ctrl+.` (Windows/Linux).
+
+## Code Mode
+
+**Code mode** is Windsurf's default fully agentic mode, designed for making changes to your codebase.
+
+In Code mode, Cascade can:
+
+* Create, edit, and delete files
+* Run terminal commands
+* Search and analyze your codebase
+* Install dependencies
+* Execute multi-step tasks autonomously
+
+Use Code mode when you want Cascade to actively work on your project and implement changes.
+
+<Tip>We recommend you use Code mode as your default mode for most tasks.</Tip>
+
+## Plan Mode
+
+**Plan mode** helps you think through complex tasks by developing a detailed implementation plan before writing any code.
+
+In Plan mode, Cascade will:
+
+* Explore your codebase to understand the current state
+* Ask clarifying questions to ensure the plan aligns with your goals
+* Provide multiple options for you to choose from with an interactive interface
+* Present a detailed plan, written in an external Markdown file, with implementation steps
+
+When Cascade is finished, you can click "Implement" on the plan file to automatically switch to Code mode and begin implementing the plan.
+
+<Frame>
+  <img />
+</Frame>
+
+### Continuing from a plan
+
+The markdown file created in plan mode can be particularly useful for continuing work across multiple sessions.
+
+Plans are stored in your `~/.windsurf/plans` directory and are available in the [@mentions](/chat/overview#%40-mentions) menu.
+By mentioning a plan file, you can continue implementation with a fresh context.
+
+This can be particularly useful when an initial implementation went awry: just discard the original changes, tweak the plan file, and click "Implement" to attempt implementation again in a new conversation.
+
+### Exiting plan mode
+
+There are multiple different ways to move from planning to implementation:
+
+* Click the "Implement" button on the plan file
+* Change your mode to Code mode in the input box
+* Let the agent *automatically* switch to Code mode when it detects that you're ready to implement
+
+## Ask Mode
+
+**Ask mode** is a read-only mode optimized for questions and exploration.
+
+In ask mode, Cascade can search and analyze your codebase, but cannot make any changes.
+
+
+# Skills
+Source: https://docs.windsurf.com/windsurf/cascade/skills
+
+Skills help Cascade handle complex, multi-step tasks.
+
+The hardest engineering tasks often take more than just good prompts. They might require reference scripts, templates, checklists, and other supporting files. Skills let you bundle all of these together into folders that Cascade can invoke (read and use).
+
+Skills are a great way to teach Cascade how to execute multi-step workflows consistently.
+
+Cascade uses [**progressive disclosure**](https://agentskills.io/what-are-skills#how-skills-work) to intelligently invoke skills only when they're relevant to the task at hand. You can also manually invoke skills.
+
+For more details on the Skills specification, visit [agentskills.io](https://agentskills.io/home).
+
+## How to Create a Skill
+
+### Using the UI (easiest)
+
+1. Open the Cascade panel
+2. Click the three dots in the top right of the panel to open up the customizations menu
+3. Click on the `Skills` section
+4. Click `+ Workspace` to create a workspace (project-specific) skill, or `+ Global` to create a global skill
+5. Name the skill (lowercase letters, numbers, and hyphens only)
+
+### Manual Creation
+
+**Workspace Skill (project-specific):**
+
+1. Create a directory: `.windsurf/skills/<skill-name>/`
+2. Add a `SKILL.md` file with YAML frontmatter
+
+**Global Skill (available in all workspaces):**
+
+1. Create a directory: `~/.codeium/windsurf/skills/<skill-name>/`
+2. Add a `SKILL.md` file with YAML frontmatter
+
+## SKILL.md File Format
+
+Each skill requires a `SKILL.md` file with YAML frontmatter containing the skill's metadata:
+
+### Example skill
+
+```markdown theme={null}
+---
+name: deploy-to-production
+description: Guides the deployment process to production with safety checks
+---
+
+## Pre-deployment Checklist
+1. Run all tests
+2. Check for uncommitted changes
+3. Verify environment variables
+
+## Deployment Steps
+Follow these steps to deploy safely...
+
+[Reference supporting files in this directory as needed]
+```
+
+### Required Frontmatter Fields
+
+* **name**: Unique identifier for the skill (displayed in UI and used for @-mentions)
+* **description**: Brief explanation shown to the model to help it decide when to invoke the skill
+
+Examples of valid names: `deploy-to-staging`, `code-review`, `setup-dev-environment`
+
+## Adding Supporting Resources
+
+Place any supporting files in the skill folder alongside `SKILL.md`. These files become available to Cascade when the skill is invoked:
+
+```
+.windsurf/skills/deploy-to-production/
+├── SKILL.md
+├── deployment-checklist.md
+├── rollback-procedure.md
+└── config-template.yaml
+```
+
+## Invoking Skills
+
+### Automatic Invocation
+
+When your request matches a skill's description, Cascade automatically invokes the skill and uses its instructions and resources to complete the task. This is the most common way skills are used—you simply describe what you want to do, and Cascade determines which skills are relevant.
+
+The `description` field in your skill's frontmatter is key: it helps Cascade understand when to invoke the skill. Write descriptions that clearly explain what the skill does and when it should be used.
+
+### Manual Invocation
+
+You can always explicitly activate a skill by typing `@skill-name` in the Cascade input. This is useful when you want to ensure a specific skill is used, or when you want to invoke a skill that might not be automatically triggered by your request.
+
+## Skill Scopes
+
+| Scope     | Location                      | Availability                   |
+| --------- | ----------------------------- | ------------------------------ |
+| Workspace | `.windsurf/skills/`           | Current workspace/project only |
+| Global    | `~/.codeium/windsurf/skills/` | All workspaces/projects        |
+
+## Example Use Cases
+
+### Deployment Workflow
+
+Create a skill with deployment scripts, environment configs, and rollback procedures:
+
+```
+.windsurf/skills/deploy-staging/
+├── SKILL.md
+├── pre-deploy-checks.sh
+├── environment-template.env
+└── rollback-steps.md
+```
+
+### Code Review Guidelines
+
+Include style guides, security checklists, and review templates:
+
+```
+.windsurf/skills/code-review/
+├── SKILL.md
+├── style-guide.md
+├── security-checklist.md
+└── review-template.md
+```
+
+### Testing Procedures
+
+Bundle test templates, coverage requirements, and CI/CD configs:
+
+```
+.windsurf/skills/run-tests/
+├── SKILL.md
+├── test-template.py
+├── coverage-config.json
+└── ci-workflow.yaml
+```
+
+## Best Practices
+
+1. **Write clear descriptions**: The description helps Cascade decide when to invoke the skill. Be specific about what the skill does and when it should be used.
+
+2. **Include relevant resources**: Templates, checklists, and examples make skills more useful. Think about what files would help someone complete the task.
+
+3. **Use descriptive names**: `deploy-to-staging` is better than `deploy1`. Names should clearly indicate what the skill does.
+
+## Skills vs Rules
+
+Skills and Rules are both ways to customize Cascade's behavior, but they serve different purposes:
+
+| Feature    | Skills                                                             | Rules                                                              |
+| ---------- | ------------------------------------------------------------------ | ------------------------------------------------------------------ |
+| Purpose    | Complex tasks with supporting resources                            | Behavioral guidelines and preferences                              |
+| Structure  | Folder with SKILL.md + resource files                              | Single .md file                                                    |
+| Invocation | Automatic (progressive disclosure) or @-mention                    | Trigger-based (always-on, glob patterns, or manual)                |
+| Best for   | Multi-step workflows, deployment procedures, code review processes | Coding style preferences, project conventions, response formatting |
+
+Use Skills when you need Cascade to follow a specific procedure with supporting files. Use Rules when you want to influence how Cascade behaves across conversations.
+
+## Related Documentation
+
+If Skills aren't what you're looking for, check out these other Cascade features:
+
+* **[Workflows](./workflows)** - Automate repetitive tasks with reusable markdown workflows invoked via slash commands
+* **[AGENTS.md](./agents-md)** - Provide directory-scoped instructions that automatically apply based on file location
+* **[Memories & Rules](./memories)** - Persist context across conversations with auto-generated memories and user-defined rules
+
 
 # Web and Docs Search
 Source: https://docs.windsurf.com/windsurf/cascade/web-search
 
-
+Search the web and documentation directly from Cascade using @web and @docs mentions, URL parsing, and real-time context from web pages.
 
 Cascade can now intuitively parse through and chunk up web pages and documentation, providing realtime context to the models. The key way to understand this feature is that Cascade will browse the Internet as a human would.
 
@@ -10859,7 +11845,7 @@ Our web tools are designed in such a way that gets only the information that is 
 
 To help you better understand how Web Search works, we've recorded a short video covering the key concepts and best practices.
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/moIySJ4d0UY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen />
+<iframe title="YouTube video player" />
 
 ### Quick Start
 
@@ -10874,8 +11860,8 @@ The fastest way to get started is to activate web search in your Windsurf Settin
 
 Cascade can deduce that certain prompts from the user may require a real-time web search to provide the optimal response. In these cases, Cascade will perform a web search and provide the results to the user. This can happen automatically or manually using the `@web` mention.
 
-<Frame style={{ border: "none", background: "none" }}>
-  <img src="https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf/cascade/cascade-search-web.png?fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=b525aef8bc3d129ee5a6d93d10c2cb06" data-og-width="1150" width="1150" data-og-height="530" height="530" data-path="assets/windsurf/cascade/cascade-search-web.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf/cascade/cascade-search-web.png?w=280&fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=e2eee016969bdcd5f0572659690c7df7 280w, https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf/cascade/cascade-search-web.png?w=560&fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=3b131c992adfe832ded1b8722cbb4e7f 560w, https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf/cascade/cascade-search-web.png?w=840&fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=2cdac74f260dedf5da5bf42abe82869d 840w, https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf/cascade/cascade-search-web.png?w=1100&fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=27abbec8f15aeec6e0319093cbf4d049 1100w, https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf/cascade/cascade-search-web.png?w=1650&fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=e96bf16e2f5a79fce342efbbf2bed8fb 1650w, https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf/cascade/cascade-search-web.png?w=2500&fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=f95fde4ebf0cac5e0dfb792ae238d071 2500w" />
+<Frame>
+  <img />
 </Frame>
 
 ## Reading Pages
@@ -10886,8 +11872,8 @@ Pages are picked up either from web search results, inferred based on the conver
 
 We break pages up into multiple chunks, very similar to how a human would read a page: for a long page we skim to the section we want then read the text that's relevant. This is how Cascade operates as well.
 
-<Frame style={{ border: "none", background: "none" }}>
-  <img src="https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf/cascade/cascade-parse-url.png?fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=9963f9eadcca6c5e8152cae398999e00" data-og-width="1158" width="1158" data-og-height="538" height="538" data-path="assets/windsurf/cascade/cascade-parse-url.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf/cascade/cascade-parse-url.png?w=280&fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=4b943dbae4a899d98f8d1e30588634a2 280w, https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf/cascade/cascade-parse-url.png?w=560&fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=1f549cf84cb41fb9b853d87d9972e069 560w, https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf/cascade/cascade-parse-url.png?w=840&fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=a79f381fe2fae01f383bf4836f734055 840w, https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf/cascade/cascade-parse-url.png?w=1100&fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=a67a8ec724d365f27c18e4a6f6d25f08 1100w, https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf/cascade/cascade-parse-url.png?w=1650&fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=c791fad06d7c86395d52d4792f321eb5 1650w, https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf/cascade/cascade-parse-url.png?w=2500&fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=e04bbf62bc9adbbd5c40d2d1e27d9bcf 2500w" />
+<Frame>
+  <img />
 </Frame>
 
 It's worth noting that not all pages can be parsed. We are actively working on improving the quality of our website reading. If you have specific sites you'd like us to handle better, feel free to file a feature request!
@@ -10896,7 +11882,7 @@ It's worth noting that not all pages can be parsed. We are actively working on i
 # Workflows
 Source: https://docs.windsurf.com/windsurf/cascade/workflows
 
-
+Automate repetitive tasks in Cascade with reusable workflows defined as markdown files. Create PR review, deployment, testing, and code formatting workflows.
 
 Workflows enable users to define a series of steps to guide Cascade through a repetitive set of tasks, such as deploying a service or responding to PR comments.
 
@@ -10911,7 +11897,7 @@ Rules generally provide large language models with guidance by providing persist
 Workflows extend this concept by providing a structured sequence of steps or prompts at the trajectory level, guiding the model through a series of interconnected tasks or actions.
 
 <Frame>
-  <img style={{ maxHeight: "400px" }} src="https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf/cascade/use-workflow-pr.png?fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=753d27e7c9e49d1feca84a2b8272f8e6" data-og-width="718" width="718" data-og-height="510" height="510" data-path="assets/windsurf/cascade/use-workflow-pr.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf/cascade/use-workflow-pr.png?w=280&fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=b8f833514a2b7a1bad49bfaf84e47f8a 280w, https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf/cascade/use-workflow-pr.png?w=560&fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=400b2a092b1e34276e0281085a106e1c 560w, https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf/cascade/use-workflow-pr.png?w=840&fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=9d2098efff896dea137777fb7876f23b 840w, https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf/cascade/use-workflow-pr.png?w=1100&fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=582ff2b958ad653f19c8c31d7ed2af58 1100w, https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf/cascade/use-workflow-pr.png?w=1650&fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=ecbde9bac2a87f74beba39b1542f079e 1650w, https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf/cascade/use-workflow-pr.png?w=2500&fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=0b22373ae141547fbe493d1314acfcfa 2500w" />
+  <img />
 </Frame>
 
 To execute a Workflow, users simply invoke it in Cascade using the `/[workflow-name]` command.
@@ -10946,13 +11932,13 @@ When you create a new workflow, it will be saved in the `.windsurf/workflows/` d
 
 Workflow files are limited to 12000 characters each.
 
-<video autoPlay controls muted loop playsInline className="w-full aspect-video" src="https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf/cascade/create-workflow.mp4?fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=d79db41f1ecd46f1fcdf07476bf2aaf1" data-path="assets/windsurf/cascade/create-workflow.mp4" />
+<video />
 
 ### Generate a Workflow with Cascade
 
 You can also ask Cascade to generate Workflows for you! This works particularly well for Workflows involving a series of steps in a particular CLI tool.
 
-<video autoPlay controls muted loop playsInline className="w-full aspect-video" src="https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf/cascade/create-workflow-with-cascade.mp4?fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=f4d4dc32f319a356a776e03d355907a5" data-path="assets/windsurf/cascade/create-workflow-with-cascade.mp4" />
+<video />
 
 ## Example Workflows
 
@@ -11003,11 +11989,159 @@ There are a myriad of use cases for Workflows, such as:
   Integrate and trigger security vulnerability scans on your codebase as part of the CI/CD pipeline or on demand.
 </Card>
 
+## System-Level Workflows (Enterprise)
+
+Enterprise organizations can deploy system-level workflows that are available globally across all workspaces and cannot be modified by end users without administrator permissions. This is ideal for enforcing organization-wide development processes, deployment procedures, and compliance workflows.
+
+System-level workflows are loaded from OS-specific directories:
+
+**macOS:**
+
+```
+/Library/Application Support/Windsurf/workflows/*.md
+```
+
+**Linux/WSL:**
+
+```
+/etc/windsurf/workflows/*.md
+```
+
+**Windows:**
+
+```
+C:\ProgramData\Windsurf\workflows\*.md
+```
+
+Place your workflow files (as `.md` files) in the appropriate directory for your operating system. The system will automatically load all `.md` files from these directories.
+
+### Workflow Precedence
+
+When workflows with the same name exist at multiple levels, system-level workflows take the highest precedence:
+
+1. **System** (highest priority) - Organization-wide workflows deployed by IT
+2. **Workspace** - Project-specific workflows in `.windsurf/workflows/`
+3. **Global** - User-defined workflows
+4. **Built-in** - Default workflows provided by Windsurf
+
+This means that if an organization deploys a system-level workflow with a specific name, it will override any workspace, global, or built-in workflow with the same name.
+
+In the Windsurf UI, system-level workflows are displayed with a "System" label and cannot be deleted by end users.
+
+<Note>
+  **Important**: System-level workflows should be managed by your IT or security team. Ensure your internal teams handle deployment, updates, and compliance according to your organization's policies. You can use standard tools and workflows such as Mobile Device Management (MDM) or Configuration Management to do so.
+</Note>
+
+
+# Worktrees
+Source: https://docs.windsurf.com/windsurf/cascade/worktrees
+
+Automatically set up git worktrees for parallel Cascade tasks
+
+Windsurf supports using git worktrees to run Cascade tasks in parallel without interfering with your main workspace.
+
+When using worktrees, each Cascade conversation gets its own session, allowing Cascade to make edits, or build and test code without interfering with your main workspace.
+
+## Basic worktree usage
+
+The simplest way to get started with using worktrees is switch to the "Worktree" mode in the bottom right corner of the Cascade input.
+
+<Frame>
+  <img />
+</Frame>
+
+<Note>
+  Currently, you can only switch to a worktree at the beginning of a Cascade session. Conversations cannot be moved to a different worktree once started.
+</Note>
+
+After Cascade makes file changes in the worktree, you have the option of clicking "merge" to incorporate those changes back into your main workspace.
+
+<Frame>
+  <img />
+</Frame>
+
+## Location
+
+Worktrees are organized by repo name inside `~/.windsurf/worktrees/<repo_name>`.
+
+Each worktree is given a unique random name.
+
+To see a list of active worktrees, you can run `git worktree list` from within the repository directory.
+
+## Setup hook
+
+Each worktree contains a copy of your repository files, but does not include `.env` files or other packages that aren't version-controlled.
+
+If you would like to include additional files or packages in each worktree, you can use the `post_setup_worktree` [hook](./hooks#post_setup_worktree) to copy them into the worktree directory.
+
+The `post_setup_worktree` hook runs after each worktree is created and configured. It is executed inside the new **worktree** directory.
+
+The `$ROOT_WORKSPACE_PATH` environment variable points to the original workspace path and can be used to access files or run commands relative to the original repository.
+
+### Example
+
+Copy environment files and install dependencies when a new worktree is created.
+
+**Config** (in `.windsurf/hooks.json`):
+
+```json theme={null}
+{
+  "hooks": {
+    "post_setup_worktree": [
+      {
+        "command": "bash $ROOT_WORKSPACE_PATH/hooks/setup_worktree.sh",
+        "show_output": true
+      }
+    ]
+  }
+}
+```
+
+**Script** (`hooks/setup_worktree.sh`):
+
+```bash theme={null}
+#!/bin/bash
+
+# Copy environment files from the original workspace
+if [ -f "$ROOT_WORKSPACE_PATH/.env" ]; then
+    cp "$ROOT_WORKSPACE_PATH/.env" .env
+    echo "Copied .env file"
+fi
+
+if [ -f "$ROOT_WORKSPACE_PATH/.env.local" ]; then
+    cp "$ROOT_WORKSPACE_PATH/.env.local" .env.local
+    echo "Copied .env.local file"
+fi
+
+# Install dependencies
+if [ -f "package.json" ]; then
+    npm install
+    echo "Installed npm dependencies"
+fi
+
+exit 0
+```
+
+This hook ensures each worktree has the necessary environment configuration and dependencies installed automatically.
+
+## Cleanup
+
+Windsurf automatically cleans up older worktrees when creating a new worktree to prevent excessive disk usage. Each workspace can have up to **20** worktrees.
+
+Worktrees are cleaned up based on when they were last accessed—the oldest ones are removed first. This cleanup happens on a per-workspace basis, ensuring that worktrees from different repositories remain independent of each other.
+
+Additionally, if you manually delete a Cascade conversation, Windsurf will automatically delete the associated worktree.
+
+## Source Control Panel
+
+By default, Windsurf does not show worktrees created by Cascade in the SCM Panel.
+You can set `git.showWindsurfWorktrees` to `true` in your settings to override this and enable visualizing the worktrees in the SCM Panel.
+
 
 # Codemaps (Beta)
 Source: https://docs.windsurf.com/windsurf/codemaps
 
-Hierarchical maps for codebase understanding.
+Create shareable hierarchical maps of your codebase to visualize code execution flow and component relationships. Navigate and share with teammates.
 
 Powered by a specialized agent, Codemaps are shareable artifacts that bridge the gap between human comprehension and AI reasoning, making it possible to navigate, discuss, and modify large codebases with precision and context.
 
@@ -11021,7 +12155,7 @@ While [DeepWiki](/windsurf/deepwiki) provides symbol-level documentation, Codema
 
 To navigate a Codemap, click on any node to instantly jump to that file and function. Each node in the Codemap links directly to the corresponding location in your code.
 
-<video autoPlay controls muted loop playsInline className="w-full aspect-video" src="https://mintcdn.com/codeium/K1c0U9TfuKxwshS5/assets/windsurf/codemaps/codemaps-overview.mp4?fit=max&auto=format&n=K1c0U9TfuKxwshS5&q=85&s=e8b8990690ec210cced0f78ba1969fac" data-path="assets/windsurf/codemaps/codemaps-overview.mp4" />
+<video />
 
 ## Accessing Codemaps
 
@@ -11041,7 +12175,7 @@ To create a new Codemap:
    * Generating from Cascade: Create new Codemaps from the bottom of a Cascade conversation
 3. The Codemap agent explores your repository, identify relevant files and functions, and generate a hierarchical view
 
-<video autoPlay controls muted loop playsInline className="w-full aspect-video" src="https://mintcdn.com/codeium/K1c0U9TfuKxwshS5/assets/windsurf/codemaps/create-codemaps.mp4?fit=max&auto=format&n=K1c0U9TfuKxwshS5&q=85&s=ea5da928e3e72962b2bb5f2b75b659c6" data-path="assets/windsurf/codemaps/create-codemaps.mp4" />
+<video />
 
 ## Sharing Codemaps
 
@@ -11051,19 +12185,19 @@ You can share Codemaps with teammates as links that can be viewed in a browser.
   For enterprise customers, sharing Codemaps requires opt-in because they need to be stored on our servers. By default, Codemaps are only available within your Team and require authentication to view.
 </Warning>
 
-<video autoPlay controls muted loop playsInline className="w-full aspect-video" src="https://mintcdn.com/codeium/K1c0U9TfuKxwshS5/assets/windsurf/codemaps/share-codemaps.mp4?fit=max&auto=format&n=K1c0U9TfuKxwshS5&q=85&s=ca21fbc4275a16bef9c59026ac3b4f63" data-path="assets/windsurf/codemaps/share-codemaps.mp4" />
+<video />
 
 ## Using Codemaps with Cascade
 
 You can include Codemap information as context in your [Cascade](/windsurf/cascade) conversations by using `@-mention` to reference a Codemap.
 
-<video autoPlay controls muted loop playsInline className="w-full aspect-video" src="https://mintcdn.com/codeium/K1c0U9TfuKxwshS5/assets/windsurf/codemaps/codemap-cascade.mp4?fit=max&auto=format&n=K1c0U9TfuKxwshS5&q=85&s=500ca2181f5ec83c309a3994e70499dc" data-path="assets/windsurf/codemaps/codemap-cascade.mp4" />
+<video />
 
 
 # C#, .NET, and CPP
 Source: https://docs.windsurf.com/windsurf/csharp-cpp
 
-C# / C++ Development Setup for Windsurf
+Setup guide for C#, .NET Core, .NET Framework (Mono), and C++ development in Windsurf using open-source tooling like OmniSharp, clangd, and LLDB.
 
 # Windsurf Development Environment Setup Guide
 
@@ -11117,7 +12251,7 @@ You can install either or both in the same workspace.
 
 **You must create/edit `.vscode/tasks.json` in your workspace root** and customize these templates:
 
-```jsonc  theme={null}
+```jsonc theme={null}
 {
   "version": "2.0.0",
   "tasks": [
@@ -11144,7 +12278,7 @@ You can install either or both in the same workspace.
 
 **You must create/edit `.vscode/launch.json` in your workspace root** and update the paths:
 
-```jsonc  theme={null}
+```jsonc theme={null}
 {
   "version": "0.2.0",
   "configurations": [
@@ -11171,7 +12305,7 @@ You can install either or both in the same workspace.
 
 ### CLI equivalents
 
-```bash  theme={null}
+```bash theme={null}
 # .NET Core
 $ dotnet build
 $ dotnet run
@@ -11214,7 +12348,7 @@ For non‑CMake workflows you can still invoke `make`, `ninja`, etc. via custom 
 
 **Create/edit `.vscode/tasks.json`** for your C/C++ project:
 
-```jsonc  theme={null}
+```jsonc theme={null}
 {
   "version": "2.0.0",
   "tasks": [
@@ -11257,13 +12391,13 @@ For non‑CMake workflows you can still invoke `make`, `ninja`, etc. via custom 
 # DeepWiki
 Source: https://docs.windsurf.com/windsurf/deepwiki
 
-
+Get AI-powered explanations of code symbols with DeepWiki. Hover over functions, variables, and classes to understand unfamiliar code in your codebase.
 
 We've implemented [Devin's DeepWiki feature](https://docs.devin.ai/work-with-devin/deepwiki) inside of the Windsurf Editor. Use it to get up to speed on unfamiliar parts of your codebase.
 
 You can find the DeepWiki interface in the Primary Side Bar / Activity Bar.
 
-<video autoPlay controls muted loop playsInline className="w-full aspect-video" src="https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf/deepwiki-demo.mp4?fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=3b9abf7eda8d39b6a9ae8c064fe876c5" data-path="assets/windsurf/deepwiki-demo.mp4" />
+<video />
 
 To use DeepWiki, hover over a symbol in your codebase and press `Cmd+Shift+Click` to open detailed explanations of code symbols.
 
@@ -11271,13 +12405,13 @@ Unlike classical hover cards that just show basic type information, DeepWiki-pow
 
 You can send the DeepWiki explanation to Cascade as an `@-mention` by clicking the `⋮` button in the top right of the DeepWiki panel and selecting `Add to Cascade`.
 
-<img style={{ display: "block", margin: "auto" }} src="https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf/deepwiki-example.jpg?fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=9db91d022ef27a79e0ba6fda0d2c40d2" data-og-width="2050" width="2050" data-og-height="2448" height="2448" data-path="assets/windsurf/deepwiki-example.jpg" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf/deepwiki-example.jpg?w=280&fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=3ea454d7da800bb3633c84cbe9af6c89 280w, https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf/deepwiki-example.jpg?w=560&fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=340e0cdaa399de417a3d6839da0744d8 560w, https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf/deepwiki-example.jpg?w=840&fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=0e4f40f8b8701a456bd36f406595f2b4 840w, https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf/deepwiki-example.jpg?w=1100&fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=d6ef8f220509e93dc3fb6a38ad93bde3 1100w, https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf/deepwiki-example.jpg?w=1650&fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=5f721f23b3adb4595b555cb2402cca26 1650w, https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf/deepwiki-example.jpg?w=2500&fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=151a4d17b15b5c27d77180dbdd60e545 2500w" />
+<img />
 
 
 # Welcome to Windsurf
 Source: https://docs.windsurf.com/windsurf/getting-started
 
-
+Download and install Windsurf IDE for Mac, Windows, or Linux. Import VS Code or Cursor settings, configure themes, and start coding with AI-powered assistance.
 
 Tomorrow's editor, today.
 
@@ -11286,33 +12420,33 @@ Windsurf is a next-generation AI IDE built to keep you in the flow. On this page
 <Card
   title="Cascade"
   icon={
-    <svg
-      width="25"
-      height="25"
-      viewBox="0 0 1292 1292"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <path
-        d="M1195 599C1195 848.08 993.08 1050 744 1050C494.92 1050 293 848.08 293 599C293 349.92 494.92 148 744 148C993.08 148 1195 349.92 1195 599ZM411.5 599C411.5 782.635 560.365 931.5 744 931.5C927.635 931.5 1076.5 782.635 1076.5 599C1076.5 415.365 927.635 266.5 744 266.5C560.365 266.5 411.5 415.365 411.5 599Z"
-        fill="#34E8BB"
-      />
-      <path
-        d="M1096.19 1053.62C1116.8 1078.03 1113.86 1114.77 1087.65 1133.04C1002.41 1192.46 903.441 1229.92 799.584 1241.61C676.505 1255.46 552.082 1232.51 442.049 1175.65C332.016 1118.79 241.314 1030.58 181.415 922.172C130.87 830.693 104.172 728.301 103.33 624.396C103.071 592.449 131.338 568.79 163.173 571.479C195.007 574.168 218.29 602.208 219.218 634.143C221.573 715.175 243.206 794.78 282.679 866.22C331.512 954.6 405.457 1026.51 495.161 1072.87C584.866 1119.22 686.302 1137.94 786.643 1126.64C867.75 1117.51 945.198 1089.11 1012.66 1044.15C1039.24 1026.44 1075.58 1029.21 1096.19 1053.62Z"
-        fill="#34E8BB"
-      />
-      <path
-        d="M177.334 450.08C146.261 442.514 126.947 411.072 137.349 380.829C160.687 312.983 195.56 249.512 240.566 193.267C285.571 137.023 339.851 89.0802 400.928 51.4326C428.153 34.6511 463.065 46.5999 477.261 75.2582C491.457 103.917 479.508 138.389 452.641 155.738C406.542 185.506 365.436 222.584 330.994 265.627C296.552 308.67 269.39 356.906 250.456 408.411C239.421 438.428 208.408 457.646 177.334 450.08Z"
-        fill="#34E8BB"
-      />
-    </svg>
-  }
+  <svg
+    width="25"
+    height="25"
+    viewBox="0 0 1292 1292"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M1195 599C1195 848.08 993.08 1050 744 1050C494.92 1050 293 848.08 293 599C293 349.92 494.92 148 744 148C993.08 148 1195 349.92 1195 599ZM411.5 599C411.5 782.635 560.365 931.5 744 931.5C927.635 931.5 1076.5 782.635 1076.5 599C1076.5 415.365 927.635 266.5 744 266.5C560.365 266.5 411.5 415.365 411.5 599Z"
+      fill="#34E8BB"
+    />
+    <path
+      d="M1096.19 1053.62C1116.8 1078.03 1113.86 1114.77 1087.65 1133.04C1002.41 1192.46 903.441 1229.92 799.584 1241.61C676.505 1255.46 552.082 1232.51 442.049 1175.65C332.016 1118.79 241.314 1030.58 181.415 922.172C130.87 830.693 104.172 728.301 103.33 624.396C103.071 592.449 131.338 568.79 163.173 571.479C195.007 574.168 218.29 602.208 219.218 634.143C221.573 715.175 243.206 794.78 282.679 866.22C331.512 954.6 405.457 1026.51 495.161 1072.87C584.866 1119.22 686.302 1137.94 786.643 1126.64C867.75 1117.51 945.198 1089.11 1012.66 1044.15C1039.24 1026.44 1075.58 1029.21 1096.19 1053.62Z"
+      fill="#34E8BB"
+    />
+    <path
+      d="M177.334 450.08C146.261 442.514 126.947 411.072 137.349 380.829C160.687 312.983 195.56 249.512 240.566 193.267C285.571 137.023 339.851 89.0802 400.928 51.4326C428.153 34.6511 463.065 46.5999 477.261 75.2582C491.457 103.917 479.508 138.389 452.641 155.738C406.542 185.506 365.436 222.584 330.994 265.627C296.552 308.67 269.39 356.906 250.456 408.411C239.421 438.428 208.408 457.646 177.334 450.08Z"
+      fill="#34E8BB"
+    />
+  </svg>
+}
   href="/windsurf/cascade"
 >
   Your agentic chatbot that can collaborate with you like never before.
 </Card>
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Usage" icon="bars-progress" href="/windsurf/accounts/usage">
     Credits and usage.
   </Card>
@@ -11322,7 +12456,7 @@ Windsurf is a next-generation AI IDE built to keep you in the flow. On this page
   </Card>
 </CardGroup>
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="MCP" icon="hammer" href="/windsurf/cascade/mcp">
     MCP servers extend the agent's capabilities.
   </Card>
@@ -11340,7 +12474,7 @@ Windsurf is a next-generation AI IDE built to keep you in the flow. On this page
   </Card>
 </CardGroup>
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Workflows" icon="list" href="/windsurf/cascade/workflows">
     Automate repetitive trajectories.
   </Card>
@@ -11362,32 +12496,32 @@ To get started, please ensure that your device meets the requirements, click the
   <Tab title="Mac">
     Minimum OS Version: OS X Yosemite
 
-    <a href="https://windsurf.com/windsurf/download_mac" target="_blank" rel="noopener noreferrer">
-      <button style={{width: '170px', backgroundColor: '#34E8BB', color: 'white', padding: '5px 10px', border: 'none', borderRadius: '5px', cursor: 'pointer', fontSize: '0.8rem', display: 'flex', justifyContent: 'center'}}>Download for Mac</button>
+    <a href="https://windsurf.com/windsurf/download_mac">
+      <button>Download for Mac</button>
     </a>
   </Tab>
 
   <Tab title="Windows">
     Minimum OS Version: Windows 10
 
-    <a href="https://windsurf.com/windsurf/download" target="_blank" rel="noopener noreferrer">
-      <button style={{width: '170px', backgroundColor: '#34E8BB', color: 'white', padding: '5px 10px', border: 'none', borderRadius: '5px', cursor: 'pointer', fontSize: '0.8rem', display: 'flex', justifyContent: 'center'}}>Download for Windows</button>
+    <a href="https://windsurf.com/windsurf/download">
+      <button>Download for Windows</button>
     </a>
   </Tab>
 
   <Tab title="Ubuntu">
     Minimum OS Version: >= 20.04 (or glibc >= 2.31, glibcxx >= 3.4.26)
 
-    <a href="https://windsurf.com/windsurf/download_linux" target="_blank" rel="noopener noreferrer">
-      <button style={{width: '170px', backgroundColor: '#34E8BB', color: 'white', padding: '5px 10px', border: 'none', borderRadius: '5px', cursor: 'pointer', fontSize: '0.8rem', display: 'flex', justifyContent: 'center'}}>Download for Ubuntu</button>
+    <a href="https://windsurf.com/windsurf/download_linux">
+      <button>Download for Ubuntu</button>
     </a>
   </Tab>
 
   <Tab title="Other Linux distributions">
     Minimum OS Version: glibc >= 2.28, glibcxx >= 3.4.25
 
-    <a href="https://windsurf.com/windsurf/download_linux" target="_blank" rel="noopener noreferrer">
-      <button style={{width: '170px', backgroundColor: '#34E8BB', color: 'white', padding: '5px 10px', border: 'none', borderRadius: '5px', cursor: 'pointer', fontSize: '0.8rem', display: 'flex', justifyContent: 'center'}}>Download for Linux</button>
+    <a href="https://windsurf.com/windsurf/download_linux">
+      <button>Download for Linux</button>
     </a>
   </Tab>
 </Tabs>
@@ -11397,7 +12531,7 @@ To get started, please ensure that your device meets the requirements, click the
 Once you have Windsurf running, you will see the page below. Let's get started! Note that you can always restart this onboarding flow with the "Reset Onboarding" command.
 
 <Frame>
-  <img src="https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/onboarding/welcome.png?fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=f8eae97bf290f1badc7b21e0d9566f89" data-og-width="2344" width="2344" data-og-height="1464" height="1464" data-path="assets/windsurf/onboarding/welcome.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/onboarding/welcome.png?w=280&fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=005fb62783dbc69d26ba4a385f631af4 280w, https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/onboarding/welcome.png?w=560&fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=14329b88b359c30fbdeeafaf1441d658 560w, https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/onboarding/welcome.png?w=840&fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=18079c6db1af8451a06e2fa912375593 840w, https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/onboarding/welcome.png?w=1100&fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=5cbf9997ee5be2bb64bdd84526149cb6 1100w, https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/onboarding/welcome.png?w=1650&fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=ab65ebee097953eceab05b38a43e5ad1 1650w, https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/onboarding/welcome.png?w=2500&fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=02cbfbdcbf741d50ecda7fc91a62fa61 2500w" />
+  <img />
 </Frame>
 
 ### 1. Select setup flow
@@ -11405,7 +12539,7 @@ Once you have Windsurf running, you will see the page below. Let's get started! 
 If you're coming from VS Code or Cursor, you can easily import your configurations. Otherwise, select "Start fresh". You can also optionally install `windsurf` in PATH such that you can run `windsurf` from your command line.
 
 <Frame>
-  <img src="https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/onboarding/setup.png?fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=5696da6d3a63cd10ddcac4575dbf89fd" data-og-width="2064" width="2064" data-og-height="1145" height="1145" data-path="assets/windsurf/onboarding/setup.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/onboarding/setup.png?w=280&fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=18b359f2e6bc1d0f47178756d66c2bed 280w, https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/onboarding/setup.png?w=560&fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=ea2bf29ede4c4a0e5d8fdb070378b4ac 560w, https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/onboarding/setup.png?w=840&fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=9455bc3d88661425c53ed8161ec8b414 840w, https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/onboarding/setup.png?w=1100&fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=2548c1e288bb60ebf1d0edd0f340dbea 1100w, https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/onboarding/setup.png?w=1650&fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=056c36416dd07b786b4ed53fe7a564d3 1650w, https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/onboarding/setup.png?w=2500&fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=092178864dd7fe1c03b2976496e73e38 2500w" />
+  <img />
 </Frame>
 
 <Tabs>
@@ -11413,7 +12547,7 @@ If you're coming from VS Code or Cursor, you can easily import your configuratio
     Choose your keybindings here, either default VS Code bindings or Vim bindings.
 
     <Frame>
-      <img src="https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/onboarding/keybind.png?fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=14c9adde7dd5bb1073108c510934f3cb" data-og-width="2484" width="2484" data-og-height="1378" height="1378" data-path="assets/windsurf/onboarding/keybind.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/onboarding/keybind.png?w=280&fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=50cd06dba4b9b5bc24ae5a0a8ffaa13c 280w, https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/onboarding/keybind.png?w=560&fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=c80c971c5a6be4742a8cec4ae39a3154 560w, https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/onboarding/keybind.png?w=840&fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=2a71d5cd42fa0ae851e30e510e080add 840w, https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/onboarding/keybind.png?w=1100&fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=a8f9325c773c67a7eb6c46f707cc9d1d 1100w, https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/onboarding/keybind.png?w=1650&fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=271228fc3ec4a31aae38c987c563a2e4 1650w, https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/onboarding/keybind.png?w=2500&fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=8a80c36c3544513a10a7246e7ee163ca 2500w" />
+      <img />
     </Frame>
   </Tab>
 
@@ -11421,7 +12555,7 @@ If you're coming from VS Code or Cursor, you can easily import your configuratio
     You can migrate your settings, extensions, or both here.
 
     <Frame>
-      <img src="https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/onboarding/vscode_migration.png?fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=cf14f085ccba168dd02c791f381507b7" data-og-width="2486" width="2486" data-og-height="1378" height="1378" data-path="assets/windsurf/onboarding/vscode_migration.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/onboarding/vscode_migration.png?w=280&fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=be0a7d7e959c7d4f17dd9bbab09d93da 280w, https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/onboarding/vscode_migration.png?w=560&fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=db53903b9b8dd576e1518817595fbf95 560w, https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/onboarding/vscode_migration.png?w=840&fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=b8746c6a2666cd70ec6c50243d6ca688 840w, https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/onboarding/vscode_migration.png?w=1100&fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=df6a9a5097deea2b557cb33faf652b2d 1100w, https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/onboarding/vscode_migration.png?w=1650&fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=e04a2d1f08d35cc5fca41de9b1526c2c 1650w, https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/onboarding/vscode_migration.png?w=2500&fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=b61712da092e6f78cdf55bb26eafec19 2500w" />
+      <img />
     </Frame>
   </Tab>
 
@@ -11429,7 +12563,7 @@ If you're coming from VS Code or Cursor, you can easily import your configuratio
     You can migrate your settings, extensions, or both here.
 
     <Frame>
-      <img src="https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/onboarding/vscode_migration.png?fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=cf14f085ccba168dd02c791f381507b7" data-og-width="2486" width="2486" data-og-height="1378" height="1378" data-path="assets/windsurf/onboarding/vscode_migration.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/onboarding/vscode_migration.png?w=280&fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=be0a7d7e959c7d4f17dd9bbab09d93da 280w, https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/onboarding/vscode_migration.png?w=560&fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=db53903b9b8dd576e1518817595fbf95 560w, https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/onboarding/vscode_migration.png?w=840&fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=b8746c6a2666cd70ec6c50243d6ca688 840w, https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/onboarding/vscode_migration.png?w=1100&fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=df6a9a5097deea2b557cb33faf652b2d 1100w, https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/onboarding/vscode_migration.png?w=1650&fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=e04a2d1f08d35cc5fca41de9b1526c2c 1650w, https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/onboarding/vscode_migration.png?w=2500&fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=b61712da092e6f78cdf55bb26eafec19 2500w" />
+      <img />
     </Frame>
   </Tab>
 </Tabs>
@@ -11439,7 +12573,7 @@ If you're coming from VS Code or Cursor, you can easily import your configuratio
 Choose your favorite color theme from these defaults! Don't worry, you can always change this later. Note that if you imported from VS Code, your imported theme will override this.
 
 <Frame>
-  <img src="https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/onboarding/theme.png?fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=7bd1ce64f97063988605a7e6bcf3f734" data-og-width="2482" width="2482" data-og-height="1380" height="1380" data-path="assets/windsurf/onboarding/theme.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/onboarding/theme.png?w=280&fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=6e36c2c32b1e83a9fd15df667da59dc7 280w, https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/onboarding/theme.png?w=560&fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=11966f5933b6c2e9ada918ce1d7c0d0b 560w, https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/onboarding/theme.png?w=840&fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=9476b0a4d2ce83ebbf4cf152dda5ccf4 840w, https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/onboarding/theme.png?w=1100&fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=2b1f53bdae2e265546a75ba30296fbd6 1100w, https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/onboarding/theme.png?w=1650&fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=6288fdd29e53109b342ad3ae0d1e76d9 1650w, https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/onboarding/theme.png?w=2500&fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=5e54ab80cbec8a5b1566e2b0d1eb7338 2500w" />
+  <img />
 </Frame>
 
 ### 3. Sign up / Log in
@@ -11447,13 +12581,13 @@ Choose your favorite color theme from these defaults! Don't worry, you can alway
 To use Windsurf, you need to use your Windsurf account or create one if you don't have one. Signing up is completely free!
 
 <Frame>
-  <img src="https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/onboarding/auth.png?fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=e92373636e9415e67b79e5eaeff399be" data-og-width="2346" width="2346" data-og-height="1468" height="1468" data-path="assets/windsurf/onboarding/auth.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/onboarding/auth.png?w=280&fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=294b45fb8e516d4167a25fc961f1492f 280w, https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/onboarding/auth.png?w=560&fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=4dc80b61233742fa5f82cd356d9797a6 560w, https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/onboarding/auth.png?w=840&fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=211852dc25f36bee964445d153bec911 840w, https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/onboarding/auth.png?w=1100&fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=0937518814e0b4d554f456a4443157c1 1100w, https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/onboarding/auth.png?w=1650&fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=e71da6a9b23a1ca36a7ef16ca3dcff2c 1650w, https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/onboarding/auth.png?w=2500&fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=f7e672f5485b2576a9bd786bbc5c2a3b 2500w" />
+  <img />
 </Frame>
 
 Once you've authenticated correctly, you should see this page. Hit "Open Windsurf" and you're good to go!
 
 <Frame>
-  <img src="https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/onboarding/authenticated.png?fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=8d8091bca31c571afe1ef5caf9b03459" data-og-width="2348" width="2348" data-og-height="1464" height="1464" data-path="assets/windsurf/onboarding/authenticated.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/onboarding/authenticated.png?w=280&fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=c163b16fd147765d61509069f3c57a5c 280w, https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/onboarding/authenticated.png?w=560&fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=1e536ad5a679300854270bd6afb5872d 560w, https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/onboarding/authenticated.png?w=840&fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=88848a858d8d595f133b7d9717c7ec42 840w, https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/onboarding/authenticated.png?w=1100&fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=29794c0b2973bc7fa3d83d8cad5a97d6 1100w, https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/onboarding/authenticated.png?w=1650&fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=c682364c3ea41ca340b08e7223634a08 1650w, https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/onboarding/authenticated.png?w=2500&fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=f4d1fab9349270cf1e45cdce9b96ccf2 2500w" />
+  <img />
 </Frame>
 
 #### Having Trouble?
@@ -11465,7 +12599,7 @@ If you're having trouble with this authentication flow, you can also log in and 
     Click the "Copy link" button to copy an authentication link to your clipboard and enter this link into your browser.
 
     <Frame>
-      <img src="https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/onboarding/manual_auth.png?fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=c4aabe6e213b964e315fbc6940f0c5b0" data-og-width="2478" width="2478" data-og-height="1376" height="1376" data-path="assets/windsurf/onboarding/manual_auth.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/onboarding/manual_auth.png?w=280&fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=80e0ce95eae787bde316beece809171f 280w, https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/onboarding/manual_auth.png?w=560&fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=3e12bcc62cd40a901231ed0df13ec807 560w, https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/onboarding/manual_auth.png?w=840&fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=d8e3243f8e810544e8760b4955473116 840w, https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/onboarding/manual_auth.png?w=1100&fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=22c9e1ef6b6e44ee96f5d25ce800fd7c 1100w, https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/onboarding/manual_auth.png?w=1650&fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=7eb3acc5725041e61faff7e38987b1bd 1650w, https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/onboarding/manual_auth.png?w=2500&fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=e448bba3a8db9737afc21bc0beeab2fb 2500w" />
+      <img />
     </Frame>
   </Tab>
 
@@ -11473,7 +12607,7 @@ If you're having trouble with this authentication flow, you can also log in and 
     Copy the authentication code displayed in the link and enter it into Windsurf.
 
     <Frame>
-      <img src="https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/onboarding/manual_auth_onboarding.png?fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=5911333c632d5ded717d685c3ff77cac" data-og-width="1990" width="1990" data-og-height="1858" height="1858" data-path="assets/windsurf/onboarding/manual_auth_onboarding.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/onboarding/manual_auth_onboarding.png?w=280&fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=43fea2449ae6e1bacb4963ca8ca1032f 280w, https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/onboarding/manual_auth_onboarding.png?w=560&fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=3dc7aa7a77ec0445ff7f703c52fa2a07 560w, https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/onboarding/manual_auth_onboarding.png?w=840&fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=b4954c56ee344993063a57d90ab7520f 840w, https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/onboarding/manual_auth_onboarding.png?w=1100&fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=56d65f38851aa93dc92a050701124564 1100w, https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/onboarding/manual_auth_onboarding.png?w=1650&fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=163193b36e3392e875056ea419964c7e 1650w, https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/onboarding/manual_auth_onboarding.png?w=2500&fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=cf81c5776781f5a045c00188525d9a26 2500w" />
+      <img />
     </Frame>
   </Tab>
 </Tabs>
@@ -11481,7 +12615,7 @@ If you're having trouble with this authentication flow, you can also log in and 
 ### 4. Let's Surf!
 
 <Frame>
-  <video autoPlay muted loop playsInline src="https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/onboarding/lets_surf.mp4?fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=8f26c1a8770b94a299752d7401149cff" data-path="assets/windsurf/onboarding/lets_surf.mp4" />
+  <video />
 </Frame>
 
 <Card title="Recommended Plugins" icon="puzzle-piece" href="/windsurf/recommended-plugins">
@@ -11493,7 +12627,7 @@ If you're having trouble with this authentication flow, you can also log in and 
 To update Windsurf, you can click on the "Restart to Update ->" button in the top right corner of the menu bar.
 
 <Frame>
-  <img src="https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/update-windsurf.png?fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=254e39b2e81a7746d82b36387dae2504" data-og-width="600" width="600" data-og-height="66" height="66" data-path="assets/windsurf/update-windsurf.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/update-windsurf.png?w=280&fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=3d8ddcf4953bf6e6d473ca409c8339b5 280w, https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/update-windsurf.png?w=560&fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=57ee243166d1fb0c3f484e42e754e8d6 560w, https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/update-windsurf.png?w=840&fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=795caa1807eaf8a2ec8f4b17bf45605f 840w, https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/update-windsurf.png?w=1100&fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=0220ef88f8a4255335a85a7a706ae978 1100w, https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/update-windsurf.png?w=1650&fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=9b6016aea367886fe6bba680cba079e3 1650w, https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/update-windsurf.png?w=2500&fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=a99b17d4724852271eb9ff1585dda26f 2500w" />
+  <img />
 </Frame>
 
 If you are not seeing this button, you can:
@@ -11509,7 +12643,7 @@ Now that you've successfully opened Windsurf, let's try out some of the features
 <AccordionGroup>
   <Accordion title="Write with Cascade">
     <Frame>
-      <img src="https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf/cascade.png?fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=1e48173bc3499c03f11be933a6b45596" data-og-width="2062" width="2062" data-og-height="1548" height="1548" data-path="assets/windsurf/cascade.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf/cascade.png?w=280&fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=a4971f06a1b0db06e584fb6d1ef559e0 280w, https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf/cascade.png?w=560&fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=779260952ff032eb725ead59de3df12f 560w, https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf/cascade.png?w=840&fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=188aa1618c8cbb1d2071fe1c61ab848e 840w, https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf/cascade.png?w=1100&fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=fbd11dcdb5a734646efbe9c614daa11c 1100w, https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf/cascade.png?w=1650&fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=c41b8d9fc7646a394c6782ec32bd7481 1650w, https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf/cascade.png?w=2500&fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=90ea2b0b61b99a87656c598c4021b809 2500w" />
+      <img />
     </Frame>
 
     On the right side of the IDE, you'll notice a new panel called "Cascade". This is your AI-powered code assistant! You can chat, write code, and run code with Cascade! Learn more about how it works [here](/windsurf/cascade).
@@ -11517,7 +12651,7 @@ Now that you've successfully opened Windsurf, let's try out some of the features
 
   <Accordion title="Generate a project with Cascade">
     <Frame>
-      <img src="https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf/cascade_generate.png?fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=876d94d833f7156fb19ced5da29ac3f9" data-og-width="2062" width="2062" data-og-height="1548" height="1548" data-path="assets/windsurf/cascade_generate.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf/cascade_generate.png?w=280&fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=ffa1ab7d0b8dd0c9fe90aa7d77bf77a9 280w, https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf/cascade_generate.png?w=560&fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=6889dda9cc550bddf283314ab8f9b133 560w, https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf/cascade_generate.png?w=840&fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=fb86594ac84530a6702a7537ef69448c 840w, https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf/cascade_generate.png?w=1100&fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=05e25b8b725389e3b07bf37fe9eddca8 1100w, https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf/cascade_generate.png?w=1650&fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=73771a74119b9a4a6866b4319536409f 1650w, https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf/cascade_generate.png?w=2500&fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=df50412402714a91aee87be93835ef3c 2500w" />
+      <img />
     </Frame>
 
     You can create brand new projects with Cascade! Click the "New Project" button to get started.
@@ -11525,7 +12659,7 @@ Now that you've successfully opened Windsurf, let's try out some of the features
 
   <Accordion title="Open Folder / Connect to Remote Server">
     <Frame>
-      <img src="https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/open_workspace.png?fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=23af27c11317a2d69cb04f092e1da13f" data-og-width="2062" width="2062" data-og-height="1548" height="1548" data-path="assets/windsurf/open_workspace.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/open_workspace.png?w=280&fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=d603279bad581f354e6b43903514b7c1 280w, https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/open_workspace.png?w=560&fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=56ece329970c50df74c3cdbe5246ca91 560w, https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/open_workspace.png?w=840&fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=4183d72c3d95711f349488d9aa2fe706 840w, https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/open_workspace.png?w=1100&fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=963000e12ded6a54a1bb92254a5c1d8e 1100w, https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/open_workspace.png?w=1650&fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=6f924d832f13ea8129faff2f8efe0afc 1650w, https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/open_workspace.png?w=2500&fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=2836093ae7dfcd22a42c2b67c7e6aec0 2500w" />
+      <img />
     </Frame>
 
     You can open a folder or connect to a remote server via SSH or a local dev container. Learn more [here](/windsurf/advanced).
@@ -11533,7 +12667,7 @@ Now that you've successfully opened Windsurf, let's try out some of the features
 
   <Accordion title="Configure Windsurf Settings">
     <Frame>
-      <img style={{width: '50%', display: 'block', margin: 'auto'}} src="https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/windsurf-settings-panel.png?fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=4f123cb41fe4557a31249af717324652" data-og-width="754" width="754" data-og-height="986" height="986" data-path="assets/windsurf/windsurf-settings-panel.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/windsurf-settings-panel.png?w=280&fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=580c37ac863ac6d056b9a1d3f49af8eb 280w, https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/windsurf-settings-panel.png?w=560&fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=611c985dd4341ebeea5849ddd0d799c8 560w, https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/windsurf-settings-panel.png?w=840&fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=23e9348bda1251078fafbdc0b3d7d4de 840w, https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/windsurf-settings-panel.png?w=1100&fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=139591b7dee7631615f7796a513a57bb 1100w, https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/windsurf-settings-panel.png?w=1650&fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=2160a7972f2119c212a360dde6774215 1650w, https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/windsurf-settings-panel.png?w=2500&fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=46fc8a94ad9db6a25dcb56add2a41b12 2500w" />
+      <img />
     </Frame>
 
     Click on the "Windsurf - Settings" button on the bottom right to pop up the settings panel. To access Advanced Settings, click on the button in this panel or select "Windsurf Settings" in the top right profile dropdown.
@@ -11541,7 +12675,7 @@ Now that you've successfully opened Windsurf, let's try out some of the features
 
   <Accordion title="Open Command Palette">
     <Frame>
-      <img src="https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf/command_palette.png?fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=8fb19cd757b7daa72bf441aa71d30a7f" data-og-width="2058" width="2058" data-og-height="1544" height="1544" data-path="assets/windsurf/command_palette.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf/command_palette.png?w=280&fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=f26ee32a3ed595e17c26d622f660071a 280w, https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf/command_palette.png?w=560&fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=4d0161b7ea21da7e8aa9ef9027012b7c 560w, https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf/command_palette.png?w=840&fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=19ce0df2dca06c79c1e7b67c18683d23 840w, https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf/command_palette.png?w=1100&fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=09452a389208d7ea9090bb1f1bb26cde 1100w, https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf/command_palette.png?w=1650&fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=dfddd4ad6e05a1b309307b3812c0faee 1650w, https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf/command_palette.png?w=2500&fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=d76eba40fdf193ce8452b73c79872786 2500w" />
+      <img />
     </Frame>
 
     You can open the command palette with the `⌘+⇧+P` (on Mac) or `Ctrl+Shift+P` (on Windows/Linux) shortcut. Explore the available commands!
@@ -11557,13 +12691,13 @@ Open the command palette (Mac: `⌘+⇧+P`, Windows/Linux: `Ctrl+Shift+P`) and t
 <Tabs>
   <Tab title="VS Code">
     <Frame>
-      <img src="https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/import-vscode.png?fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=ad0b864c3db087628f26d86241d23616" data-og-width="1452" width="1452" data-og-height="404" height="404" data-path="assets/import-vscode.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/import-vscode.png?w=280&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=3f4f14bb9d1a267b2db392eadb96a0bf 280w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/import-vscode.png?w=560&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=b9c0a03c827f00476da27cf7c8332781 560w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/import-vscode.png?w=840&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=6d190021d5db196d2bba19a75f0db97c 840w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/import-vscode.png?w=1100&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=c2179de3cf831230df52c0fa3fdd536f 1100w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/import-vscode.png?w=1650&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=fbd66a97327cae9d6e6f9ef3e9e675cf 1650w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/import-vscode.png?w=2500&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=a26ade4508041ac54a5824220b28adf9 2500w" />
+      <img />
     </Frame>
   </Tab>
 
   <Tab title="Cursor">
     <Frame>
-      <img src="https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/import-cursor.png?fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=a96df0b3235675e3713d0bf306170130" data-og-width="1454" width="1454" data-og-height="272" height="272" data-path="assets/windsurf/import-cursor.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/import-cursor.png?w=280&fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=9c5a65d015d3317e1a0ef82198b773db 280w, https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/import-cursor.png?w=560&fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=c43270598e2c7b8c2076dd1c8a61988c 560w, https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/import-cursor.png?w=840&fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=34466e33238f48ad21cb0562d8ac614b 840w, https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/import-cursor.png?w=1100&fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=bc477138c32b95bb6fcb393c647a52fb 1100w, https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/import-cursor.png?w=1650&fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=7ef71a68b964490ce26e621198c7f4a2 1650w, https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/import-cursor.png?w=2500&fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=c0d6766df74a3902b395d6120fb2c1c5 2500w" />
+      <img />
     </Frame>
   </Tab>
 </Tabs>
@@ -11619,7 +12753,7 @@ To uninstall Windsurf from your system, follow these steps:
       <Tab title="Mac/Linux">
         Delete the Windsurf configuration folder:
 
-        ```bash  theme={null}
+        ```bash theme={null}
         rm -rf ~/.codeium/windsurf
         ```
       </Tab>
@@ -11647,7 +12781,7 @@ To uninstall Windsurf from your system, follow these steps:
 # Guide for Admins
 Source: https://docs.windsurf.com/windsurf/guide-for-admins
 
-Windsurf Guide for Enterprise Admins
+Enterprise admin guide for deploying Windsurf at scale. Configure SSO, SCIM, RBAC, analytics, and team management for large organizations.
 
 # Windsurf Guide for Enterprise Admins
 
@@ -11682,8 +12816,8 @@ Windsurf Guide for Enterprise Admins
 ## 3.   Core Windsurf Concepts
 
 * **Team** – flat collections of members; no nested teams. Teams (also called *Groups*) drive **role assignment** and **analytics grouping**, letting you scope permissions and view usage metrics per cohort.
-* **Roles & Permissions** – predefined RBAC; admins are primarily responsible for **team management**, **Windsurf feature settings**, and **analytics**. Built-in roles usually cover these needs, but creating a custom role with *analytics-view* permission lets team managers and leads see metrics for their own teams. (<a href="/windsurf/accounts/rbac-role-management" target="_blank">RBAC docs</a>)
-* **Admin Portal** – centralized UI for user & team management, credit usage, SSO configuration, feature toggles (<a href="/windsurf/cascade/web-search" target="_blank">Web Search</a>, <a href="/windsurf/cascade/mcp" target="_blank">MCP</a>, <a href="/windsurf/cascade/app-deploys" target="_blank">Deploys</a>), analytics dashboards/report export, service keys for API usage, and role/permission controls.
+* **Roles & Permissions** – predefined RBAC; admins are primarily responsible for **team management**, **Windsurf feature settings**, and **analytics**. Built-in roles usually cover these needs, but creating a custom role with *analytics-view* permission lets team managers and leads see metrics for their own teams. (<a href="/windsurf/accounts/rbac-role-management">RBAC docs</a>)
+* **Admin Portal** – centralized UI for user & team management, credit usage, SSO configuration, feature toggles (<a href="/windsurf/cascade/web-search">Web Search</a>, <a href="/windsurf/cascade/mcp">MCP</a>, <a href="/windsurf/cascade/app-deploys">Deploys</a>), analytics dashboards/report export, service keys for API usage, and role/permission controls.
 * **Agents & Workspaces** – Windsurf IDE and Jetbrains Plugins are Agentic
 
 ### 3.1   Admin Portal Overview
@@ -11707,49 +12841,67 @@ The Admin Portal provides centralized management for all Windsurf enterprise fea
 
 > **Important:** These feature controls affect behavior for your entire organization and can only be modified by administrators. New major features with data privacy implications are released in the "off" state by default to ensure you have control over when and how they're enabled.
 
-The <a href="https://windsurf.com/team/settings" target="_blank">Admin Portal</a> gives you granular control over Windsurf features that can be enabled or disabled per team. **Data Privacy Note:** Some features require storing additional data or telemetry as noted below:
+The <a href="https://windsurf.com/team/settings">Admin Portal</a> gives you granular control over Windsurf features that can be enabled or disabled per team. **Data Privacy Note:** Some features require storing additional data or telemetry as noted below:
 
 **Models Configuration**
 
 * Configure which AI models your teams can access within Windsurf
 * Select multiple models for different use cases (code completion, chat, etc.)
 
+**Default Model Override**
+
+* Set the default Cascade model for users on your team
+* This model is pre-selected each time a user opens Windsurf (not just the first time)
+* Users can still change their model at any time during a session
+* Only models enabled in Models Configuration are available as default options
+
 **Auto Run Terminal Commands** *(Beta)*
 
-* Allow or restrict Cascade's ability to auto-execute commands on users' machines
+* Set the maximum auto-execution level for terminal commands across your organization
+* Four levels available: **Disabled** (no auto-execution), **Allowlist Only** (only allowlisted commands), **Auto** (AI-judged safe commands), and **Turbo** (all commands except denylisted)
+* Users can select any level up to the maximum you configure, giving them flexibility within your security policy
 * [Learn more about auto-executed commands](https://docs.windsurf.com/windsurf/terminal#auto-executed-cascade-commands)
+
+**Terminal Command Lists** *(Beta)*
+
+* Configure **team-wide allowlist and denylist** for terminal commands that apply to all team members
+* **Allowlist**: Commands in this list will be auto-executed without user confirmation (when auto-execution is enabled)
+* **Denylist**: Commands in this list will always require user approval before execution
+* **Precedence**: The denylist takes precedence over the allowlist—if a command matches both lists, it will require approval
+* Access via <a href="https://windsurf.com/team/settings">Admin Portal</a> → Team Settings → Terminal Commands → **Manage Lists**
+* These team-level lists are merged with individual user allow/deny lists configured in Windsurf settings
 
 **MCP Servers** *(Beta)*
 
 * Enable users to configure and use Model Context Protocol (MCP) servers
 * Maintain whitelisted MCP servers for approved integrations
 * **Security Note:** Review operational and security implications before enabling, as MCP can create infrastructure resources outside Windsurf's security monitoring
-* <a href="https://docs.windsurf.com/plugins/cascade/mcp#model-context-protocol-mcp" target="_blank">Learn more about Model Context Protocol (MCP)</a>
-* <a href="https://docs.windsurf.com/plugins/cascade/mcp#admin-controls-teams-%26-enterprises" target="_blank">MCP admin controls for teams & enterprises</a>
+* <a href="https://docs.windsurf.com/plugins/cascade/mcp#model-context-protocol-mcp">Learn more about Model Context Protocol (MCP)</a>
+* <a href="https://docs.windsurf.com/plugins/cascade/mcp#admin-controls-teams-%26-enterprises">MCP admin controls for teams & enterprises</a>
 
 **App Deploys** *(Beta)*
 
 * Manage deployment permissions for your teams in Cascade
-* <a href="https://docs.windsurf.com/windsurf/cascade/app-deploys#app-deploys" target="_blank">Learn more about App Deploys</a>
+* <a href="https://docs.windsurf.com/windsurf/cascade/app-deploys#app-deploys">Learn more about App Deploys</a>
 
 **Conversation Sharing**
 
 * Allow team members to share Cascade conversations with others
 * Conversations are securely uploaded to Windsurf servers
 * Shareable links are restricted to logged-in team members only
-* <a href="https://docs.windsurf.com/windsurf/cascade/cascade#sharing-your-conversation" target="_blank">Learn more about sharing conversations</a>
+* <a href="https://docs.windsurf.com/windsurf/cascade/cascade#sharing-your-conversation">Learn more about sharing conversations</a>
 
 **PR Reviews (GitHub Integration)**
 
 * Install Windsurf in your team's GitHub organization
 * Enable PR review automation and description editing
-* <a href="https://docs.windsurf.com/windsurf-reviews/windsurf-reviews#windsurf-pr-reviews" target="_blank">Learn more about Windsurf PR Reviews</a>
+* <a href="https://docs.windsurf.com/windsurf-reviews/windsurf-reviews#windsurf-pr-reviews">Learn more about Windsurf PR Reviews</a>
 
 **Knowledge Base Management**
 
 * Curate knowledge from Google Drive sources for your development teams
 * Upload and organize internal documentation and resources
-* <a href="https://docs.windsurf.com/context-awareness/overview#knowledge-base-beta" target="_blank">Learn more about Knowledge Base</a>
+* <a href="https://docs.windsurf.com/context-awareness/overview#knowledge-base-beta">Learn more about Knowledge Base</a>
 
 ***
 
@@ -11765,7 +12917,7 @@ The <a href="https://windsurf.com/team/settings" target="_blank">Admin Portal</a
 | **Recommended approach** | Create Windsurf-specific *app* in IdP; use **role-based** group assignments rather than org-wide `All Employees` group |
 | **Common pitfalls**      | Email suffix mismatches, duplicate user aliases                                                                        |
 
-*See the <a href="https://docs.windsurf.com/windsurf/accounts/sso-scim" target="_blank">SSO & SCIM Setup Guide</a> for step-by-step configuration for Okta, Azure AD, Google, and Generic SAML.*
+*See the <a href="https://docs.windsurf.com/windsurf/accounts/sso-scim">SSO & SCIM Setup Guide</a> for step-by-step configuration for Okta, Azure AD, Google, and Generic SAML.*
 
 ### 4.2   SCIM Provisioning
 
@@ -11774,7 +12926,7 @@ The <a href="https://windsurf.com/team/settings" target="_blank">Admin Portal</a
   * Create / deactivate **users** automatically
   * Create **teams** automatically (or manage manually)
   * Users can belong to **multiple teams**
-  * Custom team creation via SCIM API (<a href="https://docs.windsurf.com/windsurf/accounts/sso-scim#scim-api" target="_blank">docs</a>)
+  * Custom team creation via SCIM API (<a href="https://docs.windsurf.com/windsurf/accounts/sso-scim#scim-api">docs</a>)
 * **Mapping strategies**
   * 1 IdP group → 1 Windsurf team (simple, most common)
   * Functional vs. project-based group prefixes (e.g. `proj-foo-devs`)
@@ -11802,7 +12954,7 @@ The <a href="https://windsurf.com/team/settings" target="_blank">Admin Portal</a
 | **Adoption Overview** | Track total active users, daily engagement |
 | **Team Activity**     | Team usage                                 |
 
-Analytics shows the **percentage of code written by Windsurf**, helping quantify impact—see your dashboards at <a href="https://windsurf.com/team/analytics" target="_blank">team analytics</a>.
+Analytics shows the **percentage of code written by Windsurf**, helping quantify impact—see your dashboards at <a href="https://windsurf.com/team/analytics">team analytics</a>.
 
 ### 6.2   APIs
 
@@ -11810,22 +12962,22 @@ Analytics shows the **percentage of code written by Windsurf**, helping quantify
 | -------- | -------------------------- |
 | **REST** | SCIM management, analytics |
 
-* Generate service keys under <a href="https://windsurf.com/team/settings" target="_blank">**Team Settings → Service Keys**</a>. Scope keys to *least privilege* needed.
-* More advanced reporting: see the <a href="https://docs.windsurf.com/plugins/accounts/api-reference/introduction" target="_blank">Analytics API Reference</a>.
-* For team management: see the <a href="https://docs.windsurf.com/windsurf/accounts/sso-scim#scim-api" target="_blank">SCIM API – Custom Teams</a>.
+* Generate service keys under <a href="https://windsurf.com/team/settings">**Team Settings → Service Keys**</a>. Scope keys to *least privilege* needed.
+* More advanced reporting: see the <a href="https://docs.windsurf.com/plugins/accounts/api-reference/introduction">Analytics API Reference</a>.
+* For team management: see the <a href="https://docs.windsurf.com/windsurf/accounts/sso-scim#scim-api">SCIM API – Custom Teams</a>.
 
 ***
 
 ## 7.   Operational Considerations
 
-* **Status Pages** – monitor live service health: <a href="https://status.windsurf.com/" target="_blank">Windsurf</a>, <a href="https://status.anthropic.com/" target="_blank">Anthropic</a>, <a href="https://status.openai.com/" target="_blank">OpenAI</a>
+* **Status Pages** – monitor live service health: <a href="https://status.windsurf.com/">Windsurf</a>, <a href="https://status.anthropic.com/">Anthropic</a>, <a href="https://status.openai.com/">OpenAI</a>
 * **Support Channels** – windsurf.com/support
 
 ***
 
 ## 8.   Setting Up End Users for Success
 
-1. Point end users to the <a href="https://docs.windsurf.com/windsurf/getting-started" target="_blank">Windsurf installation guide</a> to install the appropriate extension or desktop client.
+1. Point end users to the <a href="https://docs.windsurf.com/windsurf/getting-started">Windsurf installation guide</a> to install the appropriate extension or desktop client.
 2. Publish an internal “Getting Started with Windsurf” page (link to official docs)
 3. Hold live onboarding sessions / record short demos
 4. Curate starter project templates & sample prompts
@@ -11835,718 +12987,16 @@ Analytics shows the **percentage of code written by Windsurf**, helping quantify
 
 ## 9.   Additional Resources
 
-* <a href="https://docs.windsurf.com/windsurf/accounts/sso-scim" target="_blank">SSO & SCIM Setup Guide</a>
-* <a href="https://docs.windsurf.com/windsurf/accounts/sso-scim#scim-api" target="_blank">SCIM API – Custom Teams</a>
-* <a href="https://docs.windsurf.com/plugins/accounts/api-reference/introduction" target="_blank">Analytics API Reference</a>
-* <a href="/windsurf/accounts/rbac-role-management" target="_blank">RBAC Controls</a>
+* <a href="https://docs.windsurf.com/windsurf/accounts/sso-scim">SSO & SCIM Setup Guide</a>
+* <a href="https://docs.windsurf.com/windsurf/accounts/sso-scim#scim-api">SCIM API – Custom Teams</a>
+* <a href="https://docs.windsurf.com/plugins/accounts/api-reference/introduction">Analytics API Reference</a>
+* <a href="/windsurf/accounts/rbac-role-management">RBAC Controls</a>
 
 
-# Models
+# AI Models
 Source: https://docs.windsurf.com/windsurf/models
 
-
-
-export const ModelsTable = () => {
-  const [showAll, setShowAll] = useState(false);
-  const windsurfIcon = {
-    light: "https://exafunction.github.io/public/icons/docs/Windsurf-black-symbol.png",
-    dark: "https://exafunction.github.io/public/icons/docs/Windsurf-white-symbol.png"
-  };
-  const openaiIcon = {
-    light: "https://exafunction.github.io/public/icons/docs/OpenAI-black-monoblossom.png",
-    dark: "https://exafunction.github.io/public/icons/docs/OpenAI-white-monoblossom.png"
-  };
-  const claudeIcon = {
-    light: "https://exafunction.github.io/public/icons/docs/claude-logo-clay.png",
-    dark: "https://exafunction.github.io/public/icons/docs/claude-logo-clay.png"
-  };
-  const deepseekIcon = {
-    light: "https://exafunction.github.io/public/icons/docs/deepseek-logo.png",
-    dark: "https://exafunction.github.io/public/icons/docs/deepseek-logo.png"
-  };
-  const geminiIcon = {
-    light: "https://exafunction.github.io/public/icons/docs/gemini-models-icon.png",
-    dark: "https://exafunction.github.io/public/icons/docs/gemini-models-icon.png"
-  };
-  const grokIcon = {
-    light: "https://exafunction.github.io/public/icons/docs/Grok_Logomark_Dark.png",
-    dark: "https://exafunction.github.io/public/icons/docs/Grok_Logomark_Light.png"
-  };
-  const qwenIcon = {
-    light: "https://exafunction.github.io/public/icons/docs/qwen-logo.png",
-    dark: "https://exafunction.github.io/public/icons/docs/qwen-logo.png"
-  };
-  const kimiIcon = {
-    light: "https://exafunction.github.io/public/icons/docs/kimi-k2-icon.png",
-    dark: "https://exafunction.github.io/public/icons/docs/kimi-k2-icon.png"
-  };
-  const byokOnly = <a href="/windsurf/models#bring-your-own-key-byok" className="text-gray-700 dark:text-white font-normal">BYOK</a>;
-  const apiPricingOnly = <a href="/windsurf/models#api-pricing" className="text-gray-700 dark:text-white font-normal">API Pricing</a>;
-  const empty = "";
-  const byokApiPricing = <>{byokOnly}<br />/<br />{apiPricingOnly}</>;
-  const checkmark = <>
-      <img className="block dark:hidden" src={"https://exafunction.github.io/public/icons/docs/checkmark-black.png"} alt="Available" style={{
-    width: '16px',
-    height: '16px',
-    margin: '0 auto',
-    pointerEvents: 'none'
-  }} />
-      <img className="hidden dark:block" src={"https://exafunction.github.io/public/icons/docs/checkmark-white.png"} alt="Available" style={{
-    width: '16px',
-    height: '16px',
-    margin: '0 auto',
-    pointerEvents: 'none'
-  }} />
-    </>;
-  const models = [{
-    name: "SWE-1.5",
-    icon: windsurfIcon,
-    credits: "1",
-    hasGift: true,
-    free: empty,
-    pro: checkmark,
-    teams: checkmark,
-    enterprise: checkmark,
-    trial: checkmark
-  }, {
-    name: "SWE-1",
-    icon: windsurfIcon,
-    credits: "0",
-    hasGift: true,
-    free: checkmark,
-    pro: checkmark,
-    teams: checkmark,
-    enterprise: checkmark,
-    trial: checkmark
-  }, {
-    name: "Claude Sonnet 4.5",
-    icon: claudeIcon,
-    credits: "2",
-    hasGift: true,
-    free: empty,
-    pro: checkmark,
-    teams: checkmark,
-    enterprise: "3x",
-    trial: checkmark
-  }, {
-    name: "Claude Sonnet 4.5 (Thinking)",
-    icon: claudeIcon,
-    credits: "3",
-    hasGift: true,
-    free: empty,
-    pro: checkmark,
-    teams: checkmark,
-    enterprise: "4x",
-    trial: checkmark
-  }, {
-    name: "Claude Haiku 4.5",
-    icon: claudeIcon,
-    credits: "1",
-    free: checkmark,
-    pro: checkmark,
-    teams: checkmark,
-    enterprise: checkmark,
-    trial: checkmark
-  }, {
-    name: "Claude Opus 4.1",
-    icon: claudeIcon,
-    credits: "20",
-    free: empty,
-    pro: checkmark,
-    teams: checkmark,
-    enterprise: checkmark,
-    trial: checkmark
-  }, {
-    name: "Claude Opus 4.1 Thinking",
-    icon: claudeIcon,
-    credits: "20",
-    free: empty,
-    pro: checkmark,
-    teams: checkmark,
-    enterprise: checkmark,
-    trial: checkmark
-  }, {
-    name: "GPT-5.1 (no reasoning)",
-    icon: openaiIcon,
-    credits: "0",
-    hasGift: true,
-    free: "0.5",
-    pro: "0",
-    teams: "0",
-    enterprise: "0",
-    trial: "0"
-  }, {
-    name: "GPT-5.1 (low reasoning)",
-    icon: openaiIcon,
-    credits: "0",
-    hasGift: true,
-    free: "0.5",
-    pro: "0",
-    teams: "0",
-    enterprise: "0",
-    trial: "0"
-  }, {
-    name: "GPT-5.1 (medium reasoning)",
-    icon: openaiIcon,
-    credits: "0",
-    hasGift: true,
-    free: "1.0",
-    pro: "0",
-    teams: "0",
-    enterprise: "0",
-    trial: "0"
-  }, {
-    name: "GPT-5.1 (high reasoning)",
-    icon: openaiIcon,
-    credits: "0",
-    hasGift: true,
-    free: "2.0",
-    pro: "0",
-    teams: "0",
-    enterprise: "0",
-    trial: "0"
-  }, {
-    name: "GPT-5.1 (no reasoning, high priority)",
-    icon: openaiIcon,
-    credits: "0.5",
-    hasGift: true,
-    free: "1.0",
-    pro: checkmark,
-    teams: checkmark,
-    enterprise: checkmark,
-    trial: checkmark
-  }, {
-    name: "GPT-5.1 (low reasoning, high priority)",
-    icon: openaiIcon,
-    credits: "0.5",
-    hasGift: true,
-    free: "1.0",
-    pro: checkmark,
-    teams: checkmark,
-    enterprise: checkmark,
-    trial: checkmark
-  }, {
-    name: "GPT-5.1 (medium reasoning, high priority)",
-    icon: openaiIcon,
-    credits: "1.0",
-    hasGift: true,
-    free: "2.0",
-    pro: checkmark,
-    teams: checkmark,
-    enterprise: checkmark,
-    trial: checkmark
-  }, {
-    name: "GPT-5.1 (high reasoning, high priority)",
-    icon: openaiIcon,
-    credits: "2.0",
-    hasGift: true,
-    free: "4.0",
-    pro: checkmark,
-    teams: checkmark,
-    enterprise: checkmark,
-    trial: checkmark
-  }, {
-    name: "GPT-5.1-Codex",
-    icon: openaiIcon,
-    credits: "0",
-    hasGift: true,
-    free: "0.5",
-    pro: "0",
-    teams: "0",
-    enterprise: "0",
-    trial: "0"
-  }, {
-    name: "GPT-5.1-Codex Mini",
-    icon: openaiIcon,
-    credits: "0",
-    hasGift: true,
-    free: "0.5",
-    pro: "0",
-    teams: "0",
-    enterprise: "0",
-    trial: "0"
-  }, {
-    name: "GPT-5 (low reasoning)",
-    icon: openaiIcon,
-    credits: "0.5",
-    free: "0.5",
-    pro: checkmark,
-    teams: checkmark,
-    enterprise: checkmark,
-    trial: checkmark
-  }, {
-    name: "GPT-5 (medium reasoning)",
-    icon: openaiIcon,
-    credits: "1",
-    free: "0.5",
-    pro: checkmark,
-    teams: checkmark,
-    enterprise: checkmark,
-    trial: checkmark
-  }, {
-    name: "GPT-5 (high reasoning)",
-    icon: openaiIcon,
-    credits: "2",
-    free: "1.5",
-    pro: checkmark,
-    teams: checkmark,
-    enterprise: checkmark,
-    trial: checkmark
-  }, {
-    name: "GPT-5-Codex",
-    icon: openaiIcon,
-    credits: "0",
-    hasGift: true,
-    free: "0.5",
-    pro: checkmark,
-    teams: checkmark,
-    enterprise: checkmark,
-    trial: checkmark
-  }, {
-    name: "Gemini 2.5 Pro",
-    icon: geminiIcon,
-    credits: "1",
-    free: checkmark,
-    pro: checkmark,
-    teams: checkmark,
-    enterprise: checkmark,
-    trial: checkmark
-  }, {
-    name: "xAI Grok Code Fast",
-    icon: grokIcon,
-    credits: "0",
-    hasGift: true,
-    free: empty,
-    pro: checkmark,
-    teams: checkmark,
-    enterprise: checkmark,
-    trial: checkmark
-  }, {
-    name: "Kimi K2",
-    icon: kimiIcon,
-    credits: "0.5",
-    free: empty,
-    pro: checkmark,
-    teams: checkmark,
-    enterprise: empty,
-    trial: checkmark
-  }, {
-    name: "Qwen3-Coder Fast",
-    icon: qwenIcon,
-    credits: "2",
-    hasGift: true,
-    free: empty,
-    pro: checkmark,
-    teams: checkmark,
-    enterprise: empty,
-    trial: checkmark
-  }, {
-    name: "Qwen3-Coder",
-    icon: qwenIcon,
-    credits: "0.5",
-    free: empty,
-    pro: checkmark,
-    teams: checkmark,
-    enterprise: empty,
-    trial: checkmark
-  }, {
-    name: "o3",
-    icon: openaiIcon,
-    credits: "1",
-    free: checkmark,
-    pro: checkmark,
-    teams: checkmark,
-    enterprise: checkmark,
-    trial: checkmark
-  }, {
-    name: "o3 (high reasoning)",
-    icon: openaiIcon,
-    credits: "1",
-    free: checkmark,
-    pro: checkmark,
-    teams: checkmark,
-    enterprise: checkmark,
-    trial: checkmark
-  }, {
-    name: "Claude 3.7 Sonnet",
-    icon: claudeIcon,
-    credits: "2",
-    free: byokOnly,
-    pro: checkmark,
-    teams: checkmark,
-    enterprise: "1x",
-    trial: byokOnly
-  }, {
-    name: "Claude 3.7 Sonnet (Thinking)",
-    icon: claudeIcon,
-    credits: "3",
-    free: byokOnly,
-    pro: checkmark,
-    teams: checkmark,
-    enterprise: "1.25x",
-    trial: byokOnly
-  }, {
-    name: "Claude Sonnet 4",
-    icon: claudeIcon,
-    credits: "2",
-    hasGift: true,
-    free: byokOnly,
-    pro: checkmark,
-    teams: checkmark,
-    enterprise: "3x",
-    trial: checkmark
-  }, {
-    name: "Claude Sonnet 4 (Thinking)",
-    icon: claudeIcon,
-    credits: "3",
-    hasGift: true,
-    free: byokOnly,
-    pro: checkmark,
-    teams: checkmark,
-    enterprise: "4x",
-    trial: checkmark
-  }, {
-    name: "gpt-oss 120B (Medium)",
-    icon: openaiIcon,
-    credits: "0.25",
-    free: empty,
-    pro: checkmark,
-    teams: checkmark,
-    enterprise: checkmark,
-    trial: checkmark
-  }, {
-    name: "GPT-4o",
-    icon: openaiIcon,
-    credits: "1",
-    free: checkmark,
-    pro: checkmark,
-    teams: checkmark,
-    enterprise: checkmark,
-    trial: checkmark
-  }, {
-    name: "GPT-4.1",
-    icon: openaiIcon,
-    credits: "1",
-    free: checkmark,
-    pro: checkmark,
-    teams: checkmark,
-    enterprise: checkmark,
-    trial: checkmark
-  }, {
-    name: "Claude 3.5 Sonnet",
-    icon: claudeIcon,
-    credits: "2",
-    free: byokOnly,
-    pro: checkmark,
-    teams: checkmark,
-    enterprise: checkmark,
-    trial: byokOnly
-  }, {
-    name: "Claude 4 Opus",
-    icon: claudeIcon,
-    credits: byokOnly,
-    free: byokOnly,
-    pro: byokOnly,
-    teams: empty,
-    enterprise: empty,
-    trial: byokOnly
-  }, {
-    name: "Claude 4 Opus (Thinking)",
-    icon: claudeIcon,
-    credits: byokOnly,
-    free: byokOnly,
-    pro: byokOnly,
-    teams: empty,
-    enterprise: empty,
-    trial: byokOnly
-  }, {
-    name: "DeepSeek-V3-0324",
-    icon: deepseekIcon,
-    credits: "0",
-    free: empty,
-    pro: checkmark,
-    teams: empty,
-    enterprise: empty,
-    trial: checkmark
-  }, {
-    name: "DeepSeek-R1",
-    icon: deepseekIcon,
-    credits: "0.5",
-    free: empty,
-    pro: checkmark,
-    teams: empty,
-    enterprise: empty,
-    trial: checkmark
-  }];
-  return <>
-      <style>{`
-        .gift-tooltip-container:hover .gift-tooltip {
-          opacity: 1 !important;
-          visibility: visible !important;
-        }
-        #table-container {
-          overflow: visible !important;
-          max-height: none !important;
-          height: auto !important;
-        }
-        #models-table {
-          overflow: visible !important;
-          max-height: none !important;
-          height: auto !important;
-        }
-        @media (max-width: 768px) {
-          #table-container {
-            overflow-x: auto !important;
-            -webkit-overflow-scrolling: touch !important;
-          }
-          #models-table {
-            min-width: 700px !important;
-          }
-        }
-        #table-container * {
-          overflow: visible !important;
-        }
-      `}</style>
-      <div id="table-container" style={{
-    width: 'auto',
-    borderRadius: '8px',
-    overflow: 'visible',
-    maxHeight: 'none',
-    height: 'auto'
-  }} className="light:bg-white dark:bg-zinc-900 border border-black/10 dark:border-white/10">
-        <table id="models-table" style={{
-    width: '100%',
-    borderCollapse: 'collapse',
-    fontSize: '14px',
-    tableLayout: 'auto',
-    margin: '0',
-    padding: '0',
-    height: 'auto',
-    maxHeight: 'none'
-  }}>
-          <thead style={{
-    margin: '0',
-    padding: '0'
-  }}>
-            <tr className="border-b border-black/10 dark:!border-white/10">
-              <th style={{
-    padding: '16px 16px',
-    textAlign: 'left',
-    fontWeight: '500',
-    minWidth: '200px'
-  }} className="text-gray-700 dark:text-white">Model</th>
-              <th style={{
-    padding: '16px 8px',
-    textAlign: 'center',
-    fontWeight: '500',
-    minWidth: '80px'
-  }} className="text-gray-700 dark:text-white">Credits</th>
-              <th style={{
-    padding: '16px 8px',
-    textAlign: 'center',
-    fontWeight: '500',
-    minWidth: '60px'
-  }} className="text-gray-700 dark:text-white">Free</th>
-              <th style={{
-    padding: '16px 8px',
-    textAlign: 'center',
-    fontWeight: '500',
-    minWidth: '60px'
-  }} className="text-gray-700 dark:text-white">Pro</th>
-              <th style={{
-    padding: '16px 8px',
-    textAlign: 'center',
-    fontWeight: '500',
-    minWidth: '80px'
-  }} className="text-gray-700 dark:text-white">Teams</th>
-              <th style={{
-    padding: '16px 8px',
-    textAlign: 'center',
-    fontWeight: '500',
-    minWidth: '120px'
-  }} className="text-gray-700 dark:text-white">Enterprise</th>
-              <th style={{
-    padding: '16px 8px',
-    textAlign: 'center',
-    fontWeight: '500',
-    minWidth: '60px'
-  }} className="text-gray-700 dark:text-white">Trial</th>
-            </tr>
-          </thead>
-          <tbody style={{
-    margin: '0',
-    padding: '0'
-  }}>
-            {models.filter((model, index) => showAll || index < 12).map((model, index, filteredArray) => <tr key={model.name} className={`${index === filteredArray.length - 1 ? '' : 'border-b border-black/10 dark:!border-white/10'}`}>
-                <td style={{
-    padding: '8px',
-    fontWeight: '500',
-    verticalAlign: 'middle'
-  }}>
-                  <div style={{
-    display: 'flex',
-    alignItems: 'center',
-    gap: '8px',
-    whiteSpace: 'nowrap'
-  }}>
-                    <span style={{
-    display: 'inline-flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    width: '20px',
-    height: '20px',
-    flexShrink: 0
-  }}>
-                      <img className="block dark:hidden" src={model.icon.light} alt={`${model.name} icon`} style={{
-    width: '20px',
-    height: '20px',
-    objectFit: 'contain',
-    pointerEvents: 'none',
-    userSelect: 'none'
-  }} />
-                      <img className="hidden dark:block" src={model.icon.dark} alt={`${model.name} icon`} style={{
-    width: '20px',
-    height: '20px',
-    objectFit: 'contain',
-    pointerEvents: 'none',
-    userSelect: 'none'
-  }} />
-                    </span>
-                    <span className="text-gray-700 dark:text-white">{model.name}</span>
-                  </div>
-                </td>
-                <td style={{
-    padding: '10px',
-    textAlign: 'center',
-    verticalAlign: 'middle'
-  }}>
-                  <div style={{
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    gap: '4px'
-  }}>
-                    <span className="text-gray-700 dark:text-white">{model.credits}</span>
-                    {model.hasGift && <div className="gift-tooltip-container" style={{
-    position: 'relative',
-    display: 'inline-flex'
-  }}>
-                        <span style={{
-    display: 'inline-flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    width: '16px',
-    height: '16px'
-  }}>
-                          <img className="block dark:hidden" src="https://exafunction.github.io/public/icons/docs/gift-black.png" alt="Gift icon" style={{
-    width: '16px',
-    height: '16px',
-    objectFit: 'contain',
-    pointerEvents: 'none',
-    userSelect: 'none'
-  }} />
-                          <img className="hidden dark:block" src="https://exafunction.github.io/public/icons/docs/gift-white.png" alt="Gift icon" style={{
-    width: '16px',
-    height: '16px',
-    objectFit: 'contain',
-    pointerEvents: 'none',
-    userSelect: 'none'
-  }} />
-                        </span>
-                        <div className="gift-tooltip" style={{
-    position: 'absolute',
-    bottom: '100%',
-    left: '50%',
-    transform: 'translateX(-50%)',
-    marginBottom: '8px',
-    padding: '8px 12px',
-    backgroundColor: '#333',
-    color: 'white',
-    borderRadius: '6px',
-    fontSize: '12px',
-    whiteSpace: 'nowrap',
-    opacity: '0',
-    visibility: 'hidden',
-    transition: 'opacity 0.2s, visibility 0.2s',
-    zIndex: '1000',
-    pointerEvents: 'none'
-  }}>
-                          Promo pricing only available for a limited time
-                          <div style={{
-    position: 'absolute',
-    top: '100%',
-    left: '50%',
-    transform: 'translateX(-50%)',
-    width: '0',
-    height: '0',
-    borderLeft: '5px solid transparent',
-    borderRight: '5px solid transparent',
-    borderTop: '5px solid #333'
-  }}></div>
-                        </div>
-                      </div>}
-                  </div>
-                </td>
-                <td style={{
-    padding: '10px',
-    textAlign: 'center',
-    verticalAlign: 'middle'
-  }}>{model.free}</td>
-                <td style={{
-    padding: '10px',
-    textAlign: 'center',
-    verticalAlign: 'middle'
-  }}>{model.pro}</td>
-                <td style={{
-    padding: '10px',
-    textAlign: 'center',
-    verticalAlign: 'middle'
-  }}>{model.teams}</td>
-                <td style={{
-    padding: '10px',
-    textAlign: 'center',
-    verticalAlign: 'middle'
-  }}>{model.enterprise}</td>
-                <td style={{
-    padding: '10px',
-    textAlign: 'center',
-    verticalAlign: 'middle'
-  }}>{model.trial}</td>
-              </tr>)}
-          </tbody>
-        </table>
-      </div>
-      <div style={{
-    display: 'flex',
-    justifyContent: 'center',
-    padding: '16px 0',
-    borderTop: 'none'
-  }}>
-        <button onClick={() => {
-    if (!showAll) {
-      setShowAll(true);
-    } else {
-      setShowAll(false);
-    }
-  }} style={{
-    display: 'inline-flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    padding: '10px 20px',
-    backgroundColor: 'transparent',
-    border: '1px solid #868686',
-    borderRadius: '8px',
-    fontSize: '14px',
-    fontWeight: '500',
-    cursor: 'pointer',
-    transition: 'all 0.2s ease',
-    minWidth: '140px'
-  }} className="text-gray-700 hover:bg-gray-50 dark:border-gray-600 dark:text-white dark:hover:bg-gray-800">
-          {showAll ? 'Show Less Models' : 'Show More Models'}
-        </button>
-      </div>
-    </>;
-};
+Available AI models in Windsurf Cascade including SWE-1.5, Claude, GPT, and BYOK options. Compare model capabilities, credit costs, and performance.
 
 In Cascade, you can easily switch between different models of your choosing.
 
@@ -12590,16 +13040,16 @@ Currently, we only support BYOK for these models:
 # Windsurf Previews
 Source: https://docs.windsurf.com/windsurf/previews
 
-
+Preview your web app locally in Windsurf IDE or browser with element selection, error capture, and direct integration with Cascade for rapid iteration.
 
 Windsurf Previews allow you to view the local deployment of your app either in the IDE or in the browser (optimized for Google Chrome, Arc, and Chromium based browsers) with listeners, allowing you to iterate rapidly by easily sending elements and errors back to Cascade as context.
 
-<video autoPlay muted loop playsInline className="w-full aspect-video" src="https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/previews/browser-preview-demo.mp4?fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=b3befa08affd8c5c10a84ae9259d0f15" data-path="assets/windsurf/previews/browser-preview-demo.mp4" />
+<video />
 
 Windsurf Previews are opened via tool call, so just ask Cascade to preview your site to get started. Alternatively, you can also click the Web icon in the Cascade toolbar to automatically propagate the natural language prompt to enter the proxy.
 
-<Frame style={{ border: 'none', background: 'none' }}>
-  <img src="https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/previews/website-tools-icon.png?fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=6a607c6a7beaafe915760d80a78c8da6" data-og-width="392" width="392" data-og-height="216" height="216" data-path="assets/windsurf/previews/website-tools-icon.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/previews/website-tools-icon.png?w=280&fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=7222fc826af6a55cb824fb3fce30ce84 280w, https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/previews/website-tools-icon.png?w=560&fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=bfbfb672a37d24ef3f11a52c62ae050c 560w, https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/previews/website-tools-icon.png?w=840&fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=bae2bad59e313d1fe53e47c3c9141f5b 840w, https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/previews/website-tools-icon.png?w=1100&fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=a3cafe879660aa08f70dca8e269a3032 1100w, https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/previews/website-tools-icon.png?w=1650&fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=038211eef5f4587cfced6ea316d62ec9 1650w, https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/previews/website-tools-icon.png?w=2500&fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=9dff09c4af8de6a34ec980815bdc13cd 2500w" />
+<Frame>
+  <img />
 </Frame>
 
 # Send Elements to Cascade
@@ -12624,11 +13074,11 @@ You can disable Windsurf Previews from Windsurf - Settings. This will prevent Ca
 # Recommended Extensions
 Source: https://docs.windsurf.com/windsurf/recommended-extensions
 
-Recommended Extensions for Windsurf
+Popular Open VSX extensions for Windsurf including Python, Java, C#, GitLens, and more. Replicate familiar IDE experiences from VS Code, Eclipse, or Visual Studio.
 
 # Windsurf: Embracing the Agentic VS Code OSS Experience
 
-<VideoEmbed src="https://www.loom.com/embed/fea821e99c554d8baadd746df3655dbe?sid=b6e8f249-1854-4780-a8bc-80fc8c91361c" />
+<VideoEmbed />
 
 ## Recommended Extensions
 
@@ -12679,22 +13129,22 @@ Be sure to check out the full Open VSX marketplace for other useful extensions t
 # Terminal
 Source: https://docs.windsurf.com/windsurf/terminal
 
-
+Use Windsurf's enhanced terminal with Command mode, Cascade integration, Turbo mode for auto-execution, and allow/deny lists for command control.
 
 # Command in the terminal
 
 Use our [Command](/command/overview) modality in the terminal (`Cmd/Ctrl+I`) to generate the proper CLI syntax from prompts in natural language.
 
-<Frame style={{ border: 'none', background: 'none' }}>
-  <img src="https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf-terminal-command.png?fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=b03f1498ac0b7dc344270f975f9a234f" data-og-width="980" width="980" data-og-height="164" height="164" data-path="assets/windsurf-terminal-command.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf-terminal-command.png?w=280&fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=ec94b782cbe3b3d0a3e8d44ce7b27c74 280w, https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf-terminal-command.png?w=560&fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=9e3839c701ba2308cbc754842c8472a4 560w, https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf-terminal-command.png?w=840&fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=25245a6097e94c63ed47cb382097f82b 840w, https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf-terminal-command.png?w=1100&fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=ecfdf898fe06e81255add438d3daff49 1100w, https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf-terminal-command.png?w=1650&fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=c46a449c560b98a2e295e904601a3c51 1650w, https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf-terminal-command.png?w=2500&fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=44ec229230a00b642a4aa61f1d4c571c 2500w" />
+<Frame>
+  <img />
 </Frame>
 
 # Send terminal selection to Cascade
 
 Highlight a portion of of the stack trace and press `Cmd/Ctrl+L` to send it to Cascade, where you can reference this selection in your next prompt.
 
-<Frame style={{ border: 'none', background: 'none' }}>
-  <img src="https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf-terminal-selection-mention.png?fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=0f8b76d17cdd96983010e88d9dadf265" data-og-width="744" width="744" data-og-height="144" height="144" data-path="assets/windsurf-terminal-selection-mention.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf-terminal-selection-mention.png?w=280&fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=3123ae3c3b9d8fdc2a0ed5714554da0f 280w, https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf-terminal-selection-mention.png?w=560&fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=8f51c119c9e38fb22de968c62be4deb0 560w, https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf-terminal-selection-mention.png?w=840&fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=2e3dabb40323131b23575fceef294ff0 840w, https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf-terminal-selection-mention.png?w=1100&fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=a4ebfaaa9b1ed7fcbba0c471731a8319 1100w, https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf-terminal-selection-mention.png?w=1650&fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=1d236c51a624f3f307ab65a5088910f8 1650w, https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf-terminal-selection-mention.png?w=2500&fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=26af2fd26f29c5a4d9f119c6d943314f 2500w" />
+<Frame>
+  <img />
 </Frame>
 
 # @-mention your terminal
@@ -12702,24 +13152,53 @@ Highlight a portion of of the stack trace and press `Cmd/Ctrl+L` to send it to C
 Chat with Cascade about your active terminals.
 
 <Frame>
-  <video autoPlay muted loop playsInline src="https://mintcdn.com/codeium/vRt4FQOyBeZpD2Pu/assets/terminal-at-mention.mp4?fit=max&auto=format&n=vRt4FQOyBeZpD2Pu&q=85&s=bf7766fe81e0847d7f58d4126980fe64" data-path="assets/terminal-at-mention.mp4" />
+  <video />
 </Frame>
 
 # Auto-executed Cascade commands
 
-Cascade has the ability to run terminal commands on its own with user permission. However, certain terminal commands can be accepted or rejected automatically through the Allow and Deny lists.
+Cascade has the ability to run terminal commands on its own with user permission. You can configure how Cascade handles command execution through four distinct auto-execution levels, and certain terminal commands can be accepted or rejected automatically through the Allow and Deny lists.
 
-By enabling Auto mode, it will rely on Cascade's judgement on whether the command requires the user's permission to be executed. This feature is only available for messages sent with premium models.
+## Auto-Execution Levels
 
-### Turbo Mode
+Windsurf provides four levels of command auto-execution, giving you control over how Cascade runs terminal commands:
 
-In Turbo mode, Cascade will always execute the command, unless it is in the deny list.
+| Level              | Description                                                                                                                                                                                                                 |
+| ------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Disabled**       | Auto-execution is completely disabled. All commands require manual approval before execution.                                                                                                                               |
+| **Allowlist Only** | Only commands that match entries in your allow list can be auto-executed. All other commands require manual approval.                                                                                                       |
+| **Auto**           | Cascade uses its judgment to determine whether a command is safe to auto-execute. Commands deemed potentially risky will still require your approval. This feature is only available for messages sent with premium models. |
+| **Turbo**          | All commands are auto-executed immediately, except those in your deny list.                                                                                                                                                 |
 
-You can toggle this via the Windsurf - Settings panel in the bottom right hand corner of the editor.
+You can select your preferred auto-execution level via the Windsurf Settings panel in the bottom right corner of the editor.
 
 <Frame>
-  <img style={{ maxHeight: "500px" }} src="https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf/cascade/cascade-turbo-mode.png?fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=8860ea8311000ae2cc440cef26560620" data-og-width="680" width="680" data-og-height="60" height="60" data-path="assets/windsurf/cascade/cascade-turbo-mode.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf/cascade/cascade-turbo-mode.png?w=280&fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=dbcaa01fab58d7ba1fac05acc91ae12f 280w, https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf/cascade/cascade-turbo-mode.png?w=560&fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=c5dc736ca3cd591d00f0c8b3b4f13f90 560w, https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf/cascade/cascade-turbo-mode.png?w=840&fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=13ee4803cf3edcdaba2b9d76dcf109aa 840w, https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf/cascade/cascade-turbo-mode.png?w=1100&fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=389cfcb06aec368986869bfd15a42553 1100w, https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf/cascade/cascade-turbo-mode.png?w=1650&fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=e9829ad62b78b641213d472b4bca8683 1650w, https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf/cascade/cascade-turbo-mode.png?w=2500&fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=db556ad06ddff8c4fbe5186569bf8334 2500w" />
+  <img />
 </Frame>
+
+### Admin-Controlled Maximum Level (Teams & Enterprise)
+
+For Teams and Enterprise users, administrators can set a maximum allowed auto-execution level for their organization. This setting restricts which levels are available to team members, allowing admins to enforce security policies while still giving users flexibility within those bounds.
+
+When an admin sets a maximum level, users can select any level up to and including that maximum. For example, if an admin sets the maximum to "Auto", users can choose between Disabled, Allowlist Only, or Auto, but cannot enable Turbo mode.
+
+Administrators can configure this setting in the <a href="https://windsurf.com/team/settings">Admin Portal</a> under Team Settings.
+
+### Team-Wide Command Lists (Teams & Enterprise)
+
+Administrators can configure **team-wide allowlist and denylist** for terminal commands that apply to all team members. These lists work in addition to individual user allow/deny lists.
+
+| List Type     | Behavior                                                                                                                              |
+| ------------- | ------------------------------------------------------------------------------------------------------------------------------------- |
+| **Allowlist** | Commands matching entries in this list will be auto-executed without user confirmation (when auto-execution is enabled for the user). |
+| **Denylist**  | Commands matching entries in this list will always require user approval before execution, regardless of user settings.               |
+
+**Key behaviors:**
+
+* **Team and user configs are merged**: Team-level lists are combined with individual user allow/deny lists configured in Windsurf settings. A command matching either the team or user allowlist will be auto-executed (unless blocked by a denylist).
+* The **denylist takes precedence** over the allowlist—if a command matches both lists (at either team or user level), it will require approval
+
+To configure team-wide command lists, go to the <a href="https://windsurf.com/team/settings">Admin Portal</a> → Team Settings → Terminal Commands → **Manage Lists**.
 
 ### Allow list
 
@@ -12728,7 +13207,7 @@ An allow list defines a set of terminal commands that will always auto-execute. 
 The setting can be via Command Palette → Open Settings (UI) → Search for `windsurf.cascadeCommandsAllowList`.
 
 <Frame>
-  <img style={{ maxHeight: "500px" }} src="https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf/cascade/allow-list.png?fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=be27cab4ada44ba016f41cf7d943ae20" data-og-width="2098" width="2098" data-og-height="770" height="770" data-path="assets/windsurf/cascade/allow-list.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf/cascade/allow-list.png?w=280&fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=67d775a5a8dc5f74a9b1d743b265a9e1 280w, https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf/cascade/allow-list.png?w=560&fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=fc3414e119592d5e9f7499e5e4e95d59 560w, https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf/cascade/allow-list.png?w=840&fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=05dc8b80e975470b071eeefff32484e1 840w, https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf/cascade/allow-list.png?w=1100&fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=19be334d151ab04ea1c32f1732c0ed60 1100w, https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf/cascade/allow-list.png?w=1650&fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=7a16f9b1638e6a6b9cf4124460fdd308 1650w, https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf/cascade/allow-list.png?w=2500&fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=e347583986d3f7cd0e220b87494263c2 2500w" />
+  <img />
 </Frame>
 
 ### Deny list
@@ -12738,20 +13217,37 @@ A deny list defines a set of terminal commands that will never auto-execute. For
 The setting can be via Command Palette → Open Settings (UI) → Search for `windsurf.cascadeCommandsDenyList`.
 
 <Frame>
-  <img style={{ maxHeight: "500px" }} src="https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf/cascade/deny-list.png?fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=83f5c447deeb931e68781fbd6cb89733" data-og-width="2090" width="2090" data-og-height="624" height="624" data-path="assets/windsurf/cascade/deny-list.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf/cascade/deny-list.png?w=280&fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=479a1b8b643adefbca8fcd08bbb2d4cd 280w, https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf/cascade/deny-list.png?w=560&fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=fb60fb1ea1f66c2cd63eb62ae0513675 560w, https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf/cascade/deny-list.png?w=840&fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=83520e9689fae159e121ccce1dc72901 840w, https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf/cascade/deny-list.png?w=1100&fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=a4832324125ef273f72d41f315a434ca 1100w, https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf/cascade/deny-list.png?w=1650&fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=28da77a6ed6fb67a2467df9bd95c7c90 1650w, https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf/cascade/deny-list.png?w=2500&fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=01bc9a72d11a63527867a908cdace643 2500w" />
+  <img />
 </Frame>
+
+# Dedicated terminal
+
+Starting in Wave 13, Windsurf introduced a dedicated terminal for Cascade to use for running commands on macOS.
+This dedicated terminal is separate from your default terminal and *always* uses `zsh` as the shell.
+
+<Frame>
+  <img />
+</Frame>
+
+The dedicated terminal *will* use your zsh configuration, so aliases and environment variables will be available from `.zshrc` and other zsh-specific files.
+
+If you use a different shell instead of `zsh`, and want Windsurf to use shared environment variables, we recommend creating a shared configuration file that both shells can source.
+
+### Troubleshooting
+
+If you have issues with the dedicated terminal, you can revert to the legacy terminal by enabling the Legacy Terminal Profile option in Windsurf settings.
 
 
 # Vibe and Replace
 Source: https://docs.windsurf.com/windsurf/vibe-and-replace
 
-
+AI-powered find and replace that applies natural language prompts to each match. Use Smart mode for careful changes or Fast mode for quick transformations.
 
 Vibe and Replace is an evolution of find and replace that allows you to search through your codebase for exact text matches and apply an AI prompt to each replacement.
 
 Use this for more context-aware transformations and refactors.
 
-<video autoPlay controls muted loop playsInline className="w-full aspect-video" src="https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/vibe-and-replace.mp4?fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=af192ccb94e21e78607f5a8b6884b580" data-path="assets/windsurf/vibe-and-replace.mp4" />
+<video />
 
 ## Modes
 

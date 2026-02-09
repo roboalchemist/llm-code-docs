@@ -1,5 +1,9 @@
 # Source: https://docs.helicone.ai/guides/prompt-engineering/use-constrained-outputs.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.helicone.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Use constrained outputs
 
 > Set clear boundaries and rules for the model's responses to improve accuracy, consistency, and utility

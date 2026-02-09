@@ -1,5 +1,9 @@
 # Source: https://docs.ultravox.ai/webhooks/securing-webhooks.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.ultravox.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Securing Webhooks
 
 > Learn how to verify webhook authenticity and protect your endpoints from malicious requests.
@@ -76,8 +80,3 @@ During development, you can test your webhook security implementation by:
 
 By implementing these checks, you ensure that only authentic, recent, and unmodified webhooks from Ultravox are processed by your system.
 Remember to store your webhook secret securely and never expose it in client-side code or public repositories.
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.ultravox.ai/llms.txt

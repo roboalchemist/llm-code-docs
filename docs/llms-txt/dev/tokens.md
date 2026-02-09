@@ -1,5 +1,9 @@
 # Source: https://dev.writer.com/home/tokens.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://dev.writer.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Understand tokens
 
 Tokens are the atomic units that language models use to process text. Language models understand tokens rather than characters or bytes. Each token represents a single unit of meaning, like a word or a group of words.

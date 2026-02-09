@@ -1,5 +1,9 @@
 # Source: https://infisical.com/docs/documentation/platform/access-controls/role-based-access-controls.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://infisical.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Role-based Access Controls
 
 > Learn how to use RBAC to manage user permissions.

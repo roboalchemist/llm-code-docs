@@ -28,7 +28,7 @@ You can use the tooling to update subscriptions that meet the following criteria
 - Are active
 - Don’t automatically collect tax
 - Have sufficient [address information](https://docs.stripe.com/tax/customer-locations.md#address-hierarchy-other) to calculate tax
-- Have the [tax behavior](https://docs.stripe.com/tax/products-prices-tax-codes-tax-behavior.md#setting-tax-behavior-on-a-price-\(optional\)) set on the price
+- Have the [tax behavior](https://docs.stripe.com/tax/products-prices-tax-codes-tax-behavior.md#set-tax-behavior-on-price) set on the price
 
 You need to update the following types of subscriptions:
 
@@ -142,11 +142,9 @@ const customer = await stripe.customers.retrieve(
 // Set your secret key. Remember to switch to your live secret key in production.
 // See your keys here: https://dashboard.stripe.com/apikeys
 sc := stripe.NewClient("<<YOUR_SECRET_KEY>>")
-params := &stripe.CustomerRetrieveParams{
-  Customer: stripe.String("{{CUSTOMER_ID}}"),
-}
+params := &stripe.CustomerRetrieveParams{}
 params.AddExpand("tax")
-result, err := sc.V1Customers.Retrieve(context.TODO(), params)
+result, err := sc.V1Customers.Retrieve(context.TODO(), "{{CUSTOMER_ID}}", params)
 ```
 
 ```dotnet
@@ -344,10 +342,9 @@ params := &stripe.CustomerUpdateParams{
     State: stripe.String("OR"),
     Country: stripe.String("US"),
   },
-  Customer: stripe.String("{{CUSTOMER_ID}}"),
 }
 params.AddExpand("tax")
-result, err := sc.V1Customers.Update(context.TODO(), params)
+result, err := sc.V1Customers.Update(context.TODO(), "{{CUSTOMER_ID}}", params)
 ```
 
 ```dotnet
@@ -462,11 +459,8 @@ const product = await stripe.products.update(
 // Set your secret key. Remember to switch to your live secret key in production.
 // See your keys here: https://dashboard.stripe.com/apikeys
 sc := stripe.NewClient("<<YOUR_SECRET_KEY>>")
-params := &stripe.ProductUpdateParams{
-  TaxCode: stripe.String("{{TAXCODE_ID}}"),
-  ID: stripe.String("{{PRODUCT_ID}}"),
-}
-result, err := sc.V1Products.Update(context.TODO(), params)
+params := &stripe.ProductUpdateParams{TaxCode: stripe.String("{{TAXCODE_ID}}")}
+result, err := sc.V1Products.Update(context.TODO(), "{{PRODUCT_ID}}", params)
 ```
 
 ```dotnet
@@ -569,9 +563,8 @@ const price = await stripe.prices.update(
 sc := stripe.NewClient("<<YOUR_SECRET_KEY>>")
 params := &stripe.PriceUpdateParams{
   TaxBehavior: stripe.String(stripe.PriceTaxBehaviorExclusive),
-  Price: stripe.String("{{PRICE_ID}}"),
 }
-result, err := sc.V1Prices.Update(context.TODO(), params)
+result, err := sc.V1Prices.Update(context.TODO(), "{{PRICE_ID}}", params)
 ```
 
 ```dotnet
@@ -688,9 +681,9 @@ const subscription = await stripe.subscriptions.update(
 sc := stripe.NewClient("<<YOUR_SECRET_KEY>>")
 params := &stripe.SubscriptionUpdateParams{
   AutomaticTax: &stripe.SubscriptionUpdateAutomaticTaxParams{Enabled: stripe.Bool(true)},
-  SubscriptionExposedID: stripe.String("{{SUBSCRIPTION_ID}}"),
 }
-result, err := sc.V1Subscriptions.Update(context.TODO(), params)
+result, err := sc.V1Subscriptions.Update(
+  context.TODO(), "{{SUBSCRIPTION_ID}}", params)
 ```
 
 ```dotnet
@@ -979,10 +972,9 @@ const subscriptionSchedule = await stripe.subscriptionSchedules.retrieve(
 // Set your secret key. Remember to switch to your live secret key in production.
 // See your keys here: https://dashboard.stripe.com/apikeys
 sc := stripe.NewClient("<<YOUR_SECRET_KEY>>")
-params := &stripe.SubscriptionScheduleRetrieveParams{
-  Schedule: stripe.String("{{SUBSCRIPTIONSCHEDULE_ID}}"),
-}
-result, err := sc.V1SubscriptionSchedules.Retrieve(context.TODO(), params)
+params := &stripe.SubscriptionScheduleRetrieveParams{}
+result, err := sc.V1SubscriptionSchedules.Retrieve(
+  context.TODO(), "{{SUBSCRIPTIONSCHEDULE_ID}}", params)
 ```
 
 ```dotnet
@@ -1238,9 +1230,9 @@ params := &stripe.SubscriptionScheduleUpdateParams{
   DefaultSettings: &stripe.SubscriptionScheduleUpdateDefaultSettingsParams{
     AutomaticTax: &stripe.SubscriptionAutomaticTaxParams{Enabled: stripe.Bool(true)},
   },
-  Schedule: stripe.String("{{SUBSCRIPTIONSCHEDULE_ID}}"),
 }
-result, err := sc.V1SubscriptionSchedules.Update(context.TODO(), params)
+result, err := sc.V1SubscriptionSchedules.Update(
+  context.TODO(), "{{SUBSCRIPTIONSCHEDULE_ID}}", params)
 ```
 
 ```dotnet

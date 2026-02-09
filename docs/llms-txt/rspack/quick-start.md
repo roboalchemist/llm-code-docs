@@ -1,13 +1,11 @@
 # Source: https://rspack.dev/guide/start/quick-start.md
 
-import { PackageManagerTabs } from '@theme';
-
 # Quick start
 
 Get up to speed quickly with a new Rspack based project.
 
-* [Create a new project](#create-a-new-project): Use the CLI to create a brand-new Rspack or Rsbuild project.
-* [Migrating from existing projects](#migrating-from-existing-projects): Migrate from a webpack-based project to Rspack.
+- [Create a new project](#create-a-new-project): Use the CLI to create a brand-new Rspack or Rsbuild project.
+- [Migrating from existing projects](#migrating-from-existing-projects): Migrate from a webpack-based project to Rspack.
 
 ## Ecosystem
 
@@ -21,17 +19,14 @@ Rspack supports using [Node.js](https://nodejs.org/), [Deno](https://deno.com/),
 
 You can refer to the following installation guides and choose one runtime:
 
-* [Install Node.js](https://nodejs.org/en/download)
-* [Install Bun](https://bun.com/docs/installation)
-* [Install Deno](https://docs.deno.com/runtime/getting_started/installation/)
+- [Install Node.js](https://nodejs.org/en/download)
+- [Install Bun](https://bun.com/docs/installation)
+- [Install Deno](https://docs.deno.com/runtime/getting_started/installation/)
 
 :::tip Version requirements
 
-Rspack has the following Node.js version requirements:
-
-* `@rspack/cli >= v1.0.0` requires Node.js 18.12.0 or higher.
-* `@rspack/core >= v1.5.0` requires Node.js 18.12.0 or higher.
-* `@rspack/core < v1.5.0` requires Node.js 16.0.0 or higher.
+- Rspack v2 requires Node.js 20.19.0 or higher.
+- Rspack v1 requires Node.js 18.12.0 or higher.
 
 :::
 
@@ -43,7 +38,26 @@ Rsbuild is a high-performance build tool powered by Rspack and developed by the 
 
 We recommend using [Rsbuild](https://rsbuild.rs/) to create new projects, simply run the following command:
 
-<PackageManagerTabs command="create rsbuild@latest" />
+
+```sh [npm]
+npm create rsbuild@latest
+```
+
+```sh [yarn]
+yarn create rsbuild
+```
+
+```sh [pnpm]
+pnpm create rsbuild@latest
+```
+
+```sh [bun]
+bun create rsbuild@latest
+```
+
+```sh [deno]
+deno init --npm rsbuild@latest
+```
 
 > For more information, refer to [Rsbuild - Quick start](https://rsbuild.rs/guide/start/quick-start).
 
@@ -53,7 +67,26 @@ Rspack CLI is a tool comparable to webpack CLI, offering the basic `serve` and `
 
 Run the following command to create an Rspack CLI project:
 
-<PackageManagerTabs command="create rspack@latest" />
+
+```sh [npm]
+npm create rspack@latest
+```
+
+```sh [yarn]
+yarn create rspack
+```
+
+```sh [pnpm]
+pnpm create rspack@latest
+```
+
+```sh [bun]
+bun create rspack@latest
+```
+
+```sh [deno]
+deno init --npm rspack@latest
+```
 
 Then follow the prompts in your terminal.
 
@@ -78,11 +111,11 @@ npx -y create-rsbuild -d my-app -t react
 
 We provide an online example based on Rsbuild. The example gives an intuitive feel for the build performance of Rspack and the development experience of Rsbuild:
 
-* [Rsbuild CodeSandbox example](https://codesandbox.io/p/github/rstackjs/rsbuild-codesandbox-example)
+- [Rsbuild CodeSandbox example](https://codesandbox.io/p/github/rstackjs/rsbuild-codesandbox-example)
 
 Here we also provide an online example based on Wasm and WebContainer on StackBlitz:
 
-* [Rsbuild StackBlitz Example](https://stackblitz.com/~/github.com/rstackjs/rsbuild-stackblitz-example)
+- [Rsbuild StackBlitz Example](https://stackblitz.com/~/github.com/rstackjs/rsbuild-stackblitz-example)
 
 ## Manual installation
 
@@ -96,7 +129,26 @@ npm init -y
 
 Then installing [@rspack/core](https://www.npmjs.com/package/@rspack/core) and [@rspack/cli](https://www.npmjs.com/package/@rspack/cli) as dev dependencies:
 
-<PackageManagerTabs command="add @rspack/core @rspack/cli -D" />
+
+```sh [npm]
+npm add @rspack/core @rspack/cli -D
+```
+
+```sh [yarn]
+yarn add @rspack/core @rspack/cli -D
+```
+
+```sh [pnpm]
+pnpm add @rspack/core @rspack/cli -D
+```
+
+```sh [bun]
+bun add @rspack/core @rspack/cli -D
+```
+
+```sh [deno]
+deno add npm:@rspack/core npm:@rspack/cli -D
+```
 
 Update your build scripts to use Rspack CLI:
 
@@ -116,13 +168,13 @@ Next, see [Configure Rspack](/config/index.md) to learn about how to configure R
 
 If you need to migrate from an existing project to Rspack, you can refer to the following guides:
 
-* [Migrating from webpack to Rspack](/guide/migration/webpack.md)
-* [Migrating from webpack to Rsbuild](https://rsbuild.rs/guide/migration/webpack)
-* [Migrating from Create React App to Rsbuild](https://rsbuild.rs/guide/migration/cra)
-* [Migrating from Vue CLI to Rsbuild](https://rsbuild.rs/guide/migration/vue-cli)
-* [Migrating from Vite to Rsbuild](https://rsbuild.rs/guide/migration/vite)
-* [Migrating from Tsup to Rslib](https://rslib.rs/guide/migration/tsup)
-* [Migrating from Storybook](/guide/migration/storybook.md)
+- [Migrating from webpack to Rspack](/guide/migration/webpack.md)
+- [Migrating from webpack to Rsbuild](https://rsbuild.rs/guide/migration/webpack)
+- [Migrating from Create React App to Rsbuild](https://rsbuild.rs/guide/migration/cra)
+- [Migrating from Vue CLI to Rsbuild](https://rsbuild.rs/guide/migration/vue-cli)
+- [Migrating from Vite to Rsbuild](https://rsbuild.rs/guide/migration/vite)
+- [Migrating from Tsup to Rslib](https://rslib.rs/guide/migration/tsup)
+- [Migrating from Storybook](/guide/migration/storybook.md)
 
 ## Install canary version
 

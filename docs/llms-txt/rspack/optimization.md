@@ -1,11 +1,13 @@
 # Source: https://rspack.dev/config/optimization.md
 
-import { ApiMeta } from '@components/ApiMeta';
-import PropertyType from '../../../components/PropertyType.tsx';
+CC 4.0 License> The content of this section is derived from the content of the following links and is subject to the CC BY 4.0 license.
+> 
+> - [https://webpack.js.org/configuration/optimization/](https://webpack.js.org/configuration/optimization/)
+> 
+> The following contents can be assumed to be the result of modifications and deletions based on the original contents if not specifically stated.
+> 
+> 
 
-import WebpackLicense from '@components/WebpackLicense';
-
-<WebpackLicense from="https://webpack.js.org/configuration/optimization/" />
 
 # Optimization
 
@@ -13,13 +15,9 @@ Rspack will select appropriate optimization configuration based on the [`mode`](
 
 ## optimization.moduleIds
 
-<PropertyType
-  type="'natural' | 'named' | 'deterministic'"
-  defaultValueList={[
-  { defaultValue: "'deterministic'", mode: 'production' },
-  { defaultValue: "'named'", mode: 'development' },
-]}
-/>
+- Type: `'natural' | 'named' | 'deterministic'`
+- Default:[production mode](/config/mode#production) is`'deterministic'`, [development mode](/config/mode#development) is`'named'`
+
 
 Tells Rspack which algorithm to use when generating module ids.
 
@@ -43,13 +41,9 @@ The `deterministic` option is useful for long term caching, and results in small
 
 ## optimization.chunkIds
 
-<PropertyType
-  type="'natural' | 'named' | 'deterministic' | 'size' | 'total-size'"
-  defaultValueList={[
-  { defaultValue: "'named'", mode: 'development' },
-  { defaultValue: "'deterministic'", mode: 'production' },
-]}
-/>
+- Type: `'natural' | 'named' | 'deterministic' | 'size' | 'total-size'`
+- Default:[development mode](/config/mode#development) is`'named'`, [production mode](/config/mode#production) is`'deterministic'`
+
 
 Tells Rspack which algorithm to use when generating chunk ids.
 
@@ -73,7 +67,9 @@ export default {
 
 ## optimization.mergeDuplicateChunks
 
-<PropertyType type="boolean" defaultValueList={[{ defaultValue: 'true' }]} />
+- Type: `boolean`
+- Default:`true`
+
 
 Whether to merge chunks which contain the same modules. Setting `optimization.mergeDuplicateChunks` to `false` will disable this optimization.
 
@@ -87,13 +83,9 @@ export default {
 
 ## optimization.minimize
 
-<PropertyType
-  type="boolean"
-  defaultValueList={[
-  { defaultValue: 'true', mode: 'production' },
-  { defaultValue: 'false', mode: 'development' },
-]}
-/>
+- Type: `boolean`
+- Default:[production mode](/config/mode#production) is`true`, [development mode](/config/mode#development) is`false`
+
 
 Whether to use the minimizer declared in [`optimization.minimizer`](#optimizationminimizer) to minimize the bundle.
 
@@ -107,15 +99,9 @@ export default {
 
 ## optimization.minimizer
 
-<PropertyType
-  type="Array<Plugin>"
-  defaultValueList={[
-  {
-    defaultValue:
-      '[new SwcJsMinimizerRspackPlugin(), new LightningCssMinimizerRspackPlugin()]',
-  },
-]}
-/>
+- Type: `Array<Plugin>`
+- Default:`[new SwcJsMinimizerRspackPlugin(), new LightningCssMinimizerRspackPlugin()]`
+
 
 Customize the minimizer. By default, [`rspack.SwcJsMinimizerRspackPlugin`](/plugins/rspack/swc-js-minimizer-rspack-plugin.md) and [`rspack.LightningCssMinimizerRspackPlugin`](/plugins/rspack/lightning-css-minimizer-rspack-plugin.md) are used.
 
@@ -160,7 +146,9 @@ export default {
 
 ## optimization.removeAvailableModules
 
-<PropertyType type="boolean" defaultValueList={[{ defaultValue: 'true' }]} />
+- Type: `boolean`
+- Default:`true`
+
 
 Whether to detect and remove modules from chunks when these modules are already included in parent chunks. This optimization helps to reduce duplicated modules in the bundle.
 
@@ -180,7 +168,9 @@ Disabling this optimization is dangerous, as it may significantly increase the b
 
 ## optimization.removeEmptyChunks
 
-<PropertyType type="boolean" defaultValueList={[{ defaultValue: 'true' }]} />
+- Type: `boolean`
+- Default:`true`
+
 
 Detect and remove empty chunks generated in the compilation. Setting `optimization.removeEmptyChunks` to `false` will disable this optimization.
 
@@ -194,7 +184,9 @@ export default {
 
 ## optimization.runtimeChunk
 
-<PropertyType type="boolean | string | { name: string } | { name: (entrypoint: { name: string }) => string }" defaultValueList={[{ defaultValue: 'false' }]} />
+- Type: `boolean | string | { name: string } | { name: (entrypoint: { name: string }) => string }`
+- Default:`false`
+
 
 Used to control how the Rspack's [runtime](/misc/glossary.md#runtime) chunk is generated.
 
@@ -241,13 +233,9 @@ Imported modules are initialized for each runtime chunk separately, so if you in
 
 ## optimization.realContentHash
 
-<PropertyType
-  type="boolean"
-  defaultValueList={[
-  { defaultValue: 'true', mode: 'production' },
-  { defaultValue: 'false', mode: 'development' },
-]}
-/>
+- Type: `boolean`
+- Default:[production mode](/config/mode#production) is`true`, [development mode](/config/mode#development) is`false`
+
 
 Adds an additional hash compilation pass after the assets have been processed to get the correct asset content hashes. This feature will enable by default in production mode.
 
@@ -264,7 +252,8 @@ export default {
 
 ## optimization.splitChunks
 
-<PropertyType type="false | object" />
+- Type: `false | object`
+
 
 Rspack supports splitting chunks with the `optimization.splitChunks` configuration item.
 
@@ -276,13 +265,9 @@ See available options for configuring this behavior in the [SplitChunksPlugin](/
 
 ## optimization.sideEffects
 
-<PropertyType
-  type="boolean | 'flag'"
-  defaultValueList={[
-  { defaultValue: 'true', mode: 'production' },
-  { defaultValue: "'flag'", mode: 'development' },
-]}
-/>
+- Type: `boolean | 'flag'`
+- Default:[production mode](/config/mode#production) is`true`, [development mode](/config/mode#development) is`'flag'`
+
 
 If you only want Rspack use the manual `sideEffects` flag via (`package.json` and `rules[].sideEffects`) and don't analyse source code:
 
@@ -316,7 +301,9 @@ Effect of this optimization depends on your codebase, try it for possible perfor
 
 ## optimization.providedExports
 
-<PropertyType type="boolean" defaultValueList={[{ defaultValue: 'true' }]} />
+- Type: `boolean`
+- Default:`true`
+
 
 After enabling, Rspack will analyze which exports the module provides, including re-exported modules. A warning or error will be issued when importing members that reference non-existent exports. By default, `optimization.providedExports` is enabled. This analysis will increase build time. You may consider disabling this configuration in development mode. Disabling it may lead to errors related to runtime circular dependencies as mentioned in the [SideEffects section](/guide/optimization/tree-shaking.md#reexports-optimization).
 
@@ -331,13 +318,9 @@ export default {
 
 ## optimization.usedExports
 
-<PropertyType
-  type="boolean | 'global'"
-  defaultValueList={[
-  { defaultValue: 'true', mode: 'production' },
-  { defaultValue: 'false', mode: 'development' },
-]}
-/>
+- Type: `boolean | 'global'`
+- Default:[production mode](/config/mode#production) is`true`, [development mode](/config/mode#development) is`false`
+
 
 Tells Rspack to determine used exports for each module. This depends on `optimization.providedExports`.
 Information collected by `optimization.usedExports` is used by other optimizations or code generation i.e.
@@ -365,13 +348,9 @@ export default {
 
 ## optimization.mangleExports
 
-<PropertyType
-  type="boolean | 'deterministic' | 'size' "
-  defaultValueList={[
-  { defaultValue: 'deterministic', mode: 'production' },
-  { defaultValue: 'false', mode: 'development' },
-]}
-/>
+- Type: `boolean | 'deterministic' | 'size' `
+- Default:[production mode](/config/mode#production) is`deterministic`, [development mode](/config/mode#development) is`false`
+
 
 `optimization.mangleExports` allows to control export mangling.
 
@@ -386,23 +365,18 @@ The following values are supported:
 
 ## optimization.inlineExports
 
-<ApiMeta addedVersion="1.7.0" />
+[Added in v1.7.0](https://github.com/web-infra-dev/rspack/releases/tag/v1.7.0)
+- Type: `boolean`
+- Default:[production mode](/config/mode#production) is`true`, [development mode](/config/mode#development) is`false`
 
-<PropertyType
-  type="boolean"
-  defaultValueList={[
-  { defaultValue: 'true', mode: 'production' },
-  { defaultValue: 'false', mode: 'development' },
-]}
-/>
 
 Performs cross-module inline optimization for:
 
 1. Exported constant value in leaf modules of the module graph:
-   * `null` or `undefined`
-   * `boolean` values (`true` or `false`)
-   * `number` with length \<= 6
-   * `string` with length \<= 6
+   - `null` or `undefined`
+   - `boolean` values (`true` or `false`)
+   - `number` with length \<= 6
+   - `string` with length \<= 6
 
 2. Exported TypeScript enums that collected by [`builtin:swc-loader collectTypeScriptInfo.exportedEnum`](/guide/features/builtin-swc-loader.md#collecttypescriptinfoexportedenum)
 
@@ -444,13 +418,9 @@ For more details, refer to the [inline const example](https://github.com/rstackj
 
 ## optimization.innerGraph
 
-<PropertyType
-  type="boolean"
-  defaultValueList={[
-  { defaultValue: 'true', mode: 'production' },
-  { defaultValue: 'false', mode: 'development' },
-]}
-/>
+- Type: `boolean`
+- Default:[production mode](/config/mode#production) is`true`, [development mode](/config/mode#development) is`false`
+
 
 `optimization.innerGraph` tells Rspack whether to perform a more detailed analysis of variable assignments. This helps Rspack to identify unused module exports, thereby reducing the size of the bundled output.
 
@@ -474,13 +444,9 @@ Here we assign the `value` to `value2`. Both `value2` and `value` are accessed w
 
 ## optimization.concatenateModules
 
-<PropertyType
-  type="boolean"
-  defaultValueList={[
-  { defaultValue: 'true', mode: 'production' },
-  { defaultValue: 'false', mode: 'development' },
-]}
-/>
+- Type: `boolean`
+- Default:[production mode](/config/mode#production) is`true`, [development mode](/config/mode#development) is`false`
+
 
 Tells Rspack to find segments of the module graph which can be safely concatenated into a single module. Depends on [optimization.providedExports](#optimizationprovidedexports) and [optimization.usedExports](#optimizationusedexports). By default `optimization.concatenateModules` is enabled in `production` mode and disabled elsewise.
 
@@ -494,15 +460,17 @@ export default {
 
 ## optimization.nodeEnv
 
-<PropertyType type="boolean | string" defaultValueList={[{ defaultValue: 'false' }]} />
+- Type: `boolean | string`
+- Default:`false`
+
 
 Tells Rspack to set `process.env.NODE_ENV` to a given string value. `optimization.nodeEnv` uses [DefinePlugin](/plugins/webpack/define-plugin.md) unless set to false.
 `optimization.nodeEnv` **defaults** to [mode](/config/mode.md) if set, else falls back to `'production'`.
 
 Possible values:
 
-* any string: the value to set `process.env.NODE_ENV` to.
-* false: do not modify/set the value of `process.env.NODE_ENV`.
+- any string: the value to set `process.env.NODE_ENV` to.
+- false: do not modify/set the value of `process.env.NODE_ENV`.
 
 ```js title="rspack.config.mjs"
 export default {
@@ -519,13 +487,9 @@ When [mode](/config/mode.md) is set to `'none'`, `optimization.nodeEnv` defaults
 
 ## optimization.emitOnErrors
 
-<PropertyType
-  type="boolean"
-  defaultValueList={[
-  { defaultValue: 'false', mode: 'production' },
-  { defaultValue: 'true', mode: 'development' },
-]}
-/>
+- Type: `boolean`
+- Default:[production mode](/config/mode#production) is`false`, [development mode](/config/mode#development) is`true`
+
 
 Use the `optimization.emitOnErrors` to emit assets whenever there are errors while compiling. This ensures that erroring assets are emitted. The errors are emitted into the generated code and will cause errors at runtime.
 
@@ -539,9 +503,10 @@ export default {
 
 ## optimization.avoidEntryIife
 
-<ApiMeta addedVersion="1.2.0" />
+[Added in v1.2.0](https://github.com/web-infra-dev/rspack/releases/tag/v1.2.0)
+- Type: `boolean`
+- Default:`false`
 
-<PropertyType type="boolean" defaultValueList={[{ defaultValue: 'false' }]} />
 
 Use `optimization.avoidEntryIife` to avoid wrapping the entry module in an IIFE when it is required (search for `"This entry needs to be wrapped in an IIFE because"` in [rspack\_plugin\_javascript](https://github.com/web-infra-dev/rspack/blob/main/crates/rspack_plugin_javascript/src/plugin/mod.rs)). This approach helps optimize performance for JavaScript engines and helps tree shaking when building ESM libraries.
 

@@ -10,6 +10,6 @@ Note that the endpoints do not require the authentication token, the calls are a
 
 <!-- -->
 
-## https://docs.apify.com/api/v2/log-get.md
+## [Get log](https://docs.apify.com/api/v2/log-get.md)
 
-https://docs.apify.com/api/v2/log-get.md
+[/logs/{buildOrRunId}](https://docs.apify.com/api/v2/log-get.md)

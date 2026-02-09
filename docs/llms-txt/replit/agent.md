@@ -1,5 +1,9 @@
 # Source: https://docs.replit.com/replitai/agent.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.replit.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Replit Agent
 
 > Replit Agent uses AI to set up and create apps from scratch. Describe your app in everyday language, and it can set up and create your Replit App in minutes.
@@ -21,19 +25,16 @@ export const TeamsCredits = '$40';
 
 export const CoreCredits = '$25';
 
-export const AssistantCheckpointCost = '$0.05';
-
 Agent uses powerful AI technology to transform your ideas into applications
 and seamlessly add new features by describing what you want.
 
 <Tip>
   **New with Agent 3** - Extended autonomous builds with minimal supervision,
-  App Testing for self-validation, two ways to start an app (design-first vs.
-  full app first), and Agents & Automations for building your own autonomous
-  systems.
+  App Testing for self-validation, Fast and Full build modes, and Agents & Automations
+  for building your own autonomous systems.
 </Tip>
 
-<YouTubeEmbed videoId="IYiVPrxY8-Y" title="YouTube video player" />
+<YouTubeEmbed videoId="nr6qrQTv7QI" title="Now Available: Replit Agent 3" />
 
 ## Features
 
@@ -49,59 +50,77 @@ Chat with Agent in your Replit App to receive the following support:
 * Design, create, and modify database structures
 * Streamline environment setup and dependency management
 
-## Build Modes
+## Creating Apps
+
+When starting a new project on Replit, you have two options on the homepage:
+
+* **App**: Build full-stack applications, websites with backends, AI-powered apps, and more
+* **Design**: Create slides, static websites, prototypes, and visual designs (see [Design Mode](/replitai/design-mode))
+
+<Frame>
+  <img src="https://mintcdn.com/replit/6KciCEIm5HrhSv3n/images/replitai/app-vs-design.png?fit=max&auto=format&n=6KciCEIm5HrhSv3n&q=85&s=53e69e48babddba6a8ad71080beb14ab" alt="Replit homepage showing App and Design tabs for creating new projects" data-og-width="1294" width="1294" data-og-height="746" height="746" data-path="images/replitai/app-vs-design.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/replit/6KciCEIm5HrhSv3n/images/replitai/app-vs-design.png?w=280&fit=max&auto=format&n=6KciCEIm5HrhSv3n&q=85&s=d93ca3651211e76afac65b9e61897347 280w, https://mintcdn.com/replit/6KciCEIm5HrhSv3n/images/replitai/app-vs-design.png?w=560&fit=max&auto=format&n=6KciCEIm5HrhSv3n&q=85&s=4263e592c7addf7339e1fc16b3528d65 560w, https://mintcdn.com/replit/6KciCEIm5HrhSv3n/images/replitai/app-vs-design.png?w=840&fit=max&auto=format&n=6KciCEIm5HrhSv3n&q=85&s=cbb2436d4cf07e6fce707f5a82090bf4 840w, https://mintcdn.com/replit/6KciCEIm5HrhSv3n/images/replitai/app-vs-design.png?w=1100&fit=max&auto=format&n=6KciCEIm5HrhSv3n&q=85&s=993a4060d1f3736ac6273fcd8aafe808 1100w, https://mintcdn.com/replit/6KciCEIm5HrhSv3n/images/replitai/app-vs-design.png?w=1650&fit=max&auto=format&n=6KciCEIm5HrhSv3n&q=85&s=25668ec5a7a901efce62a7337d9165dc 1650w, https://mintcdn.com/replit/6KciCEIm5HrhSv3n/images/replitai/app-vs-design.png?w=2500&fit=max&auto=format&n=6KciCEIm5HrhSv3n&q=85&s=41231b7eb5b08800e8b6c7383a08745b 2500w" />
+</Frame>
+
+This section covers building Apps with Agent.
+
+### Stack selection
+
+When you type your prompt in the App tab, Agent automatically suggests an app type based on your description:
+
+* **Web App**: Most common—full-stack web applications with frontend and backend
+* **Data App**: Data-focused applications with visualization and analysis
+* **Other types**: Agent may suggest other specialized technology stacks based on your needs
+
+After auto-classification, you can change the App type using a dropdown if the suggested one doesn't match your vision.
 
 <Info>
-  **New in Agent 3**: Choose between two distinct build approaches to match your
-  development style and project needs.
+  Most projects are classified as Web Apps. If you're unsure, start with the Replit-suggested App type.
 </Info>
 
-When you submit your initial prompt to create an app, Agent creates a feature list based on your request. You'll then see the question "How do you want to continue?" with two build options:
+### Build modes
 
-<Frame>
-  <img src="https://mintcdn.com/replit/fq3p5W3K0mVwvlo1/images/replitai/agent-build-modes-selection.png?fit=max&auto=format&n=fq3p5W3K0mVwvlo1&q=85&s=9b3798227f9a1da43b50a9395272d338" alt="Agent build mode selection interface showing 'Build the full app' and 'Start with a design' options" data-og-width="1302" width="1302" data-og-height="616" height="616" data-path="images/replitai/agent-build-modes-selection.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/replit/fq3p5W3K0mVwvlo1/images/replitai/agent-build-modes-selection.png?w=280&fit=max&auto=format&n=fq3p5W3K0mVwvlo1&q=85&s=7992b3b7197bc011fc6a2150ea47504a 280w, https://mintcdn.com/replit/fq3p5W3K0mVwvlo1/images/replitai/agent-build-modes-selection.png?w=560&fit=max&auto=format&n=fq3p5W3K0mVwvlo1&q=85&s=72c2239b51da8ec93840413f7698570e 560w, https://mintcdn.com/replit/fq3p5W3K0mVwvlo1/images/replitai/agent-build-modes-selection.png?w=840&fit=max&auto=format&n=fq3p5W3K0mVwvlo1&q=85&s=7b0ab982fcb40aae1db8b678762392b3 840w, https://mintcdn.com/replit/fq3p5W3K0mVwvlo1/images/replitai/agent-build-modes-selection.png?w=1100&fit=max&auto=format&n=fq3p5W3K0mVwvlo1&q=85&s=cf9ac71ef288f8b3b9735d9b4f912126 1100w, https://mintcdn.com/replit/fq3p5W3K0mVwvlo1/images/replitai/agent-build-modes-selection.png?w=1650&fit=max&auto=format&n=fq3p5W3K0mVwvlo1&q=85&s=a7ea0acba4bcf2040192880d33c4fd3e 1650w, https://mintcdn.com/replit/fq3p5W3K0mVwvlo1/images/replitai/agent-build-modes-selection.png?w=2500&fit=max&auto=format&n=fq3p5W3K0mVwvlo1&q=85&s=5fa995420e73b3f2c35129a30aff4392 2500w" />
-</Frame>
+After entering your prompt, you have two key choices which affect how Agent builds your app:
 
-You can also choose to "continue planning" if you want to refine the feature list before building begins.
+#### Fast build vs. full build
 
-### Start with a design
+Choose your build speed based on your needs. Select the ⚡ lightning bolt icon in the prompt box to enable Fast build, or leave it off for Full build.
 
-Perfect for seeing visual results first:
+| Mode           | Duration      | Best For                                                    |
+| -------------- | ------------- | ----------------------------------------------------------- |
+| **Fast**       | \~3-5 minutes | Quick prototypes, lightweight apps                          |
+| **Full build** | 10+ minutes   | Complex apps, comprehensive features, hands-off development |
 
-* **Quick design phase**: Agent creates a clickable front-end prototype in \~3 minutes
-* **Visual-first approach**: See how your app will look and feel before building functionality
-* **Flexible continuation**: Press "Build functionality" to have Agent complete a full working version of your app
-* **User-controlled pacing**: You decide when to move from visual prototyping to a finished application
+**Key differences:**
 
-After the design phase, you'll see options to continue:
+* **Fast build**: Select the ⚡ icon in the prompt box. Agent works quickly to create a working version. Great for rapid prototyping and when you want to stay engaged with the build process.
+* **Full build**: Leave the ⚡ icon unselected. Agent uses more autonomy from the first build and tests its own work. Results in more polished, comprehensive applications but takes longer.
 
-<Frame>
-  <img src="https://mintcdn.com/replit/pnpczhK4itt7pXl2/images/replitai/keep-iterating-design-or-build-functionality.png?fit=max&auto=format&n=pnpczhK4itt7pXl2&q=85&s=de99d5fe3010980b7af6043df5baf070" alt="Interface showing 'Keep iterating on design' and 'Build functionality' options after design phase" data-og-width="926" width="926" data-og-height="250" height="250" data-path="images/replitai/keep-iterating-design-or-build-functionality.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/replit/pnpczhK4itt7pXl2/images/replitai/keep-iterating-design-or-build-functionality.png?w=280&fit=max&auto=format&n=pnpczhK4itt7pXl2&q=85&s=ec8a67afbb53fe0e80cc7c42d437f333 280w, https://mintcdn.com/replit/pnpczhK4itt7pXl2/images/replitai/keep-iterating-design-or-build-functionality.png?w=560&fit=max&auto=format&n=pnpczhK4itt7pXl2&q=85&s=1bb6b1c33c970f2865034040fe8ee8d7 560w, https://mintcdn.com/replit/pnpczhK4itt7pXl2/images/replitai/keep-iterating-design-or-build-functionality.png?w=840&fit=max&auto=format&n=pnpczhK4itt7pXl2&q=85&s=0cc0b6200b35c36798ff8420dd711697 840w, https://mintcdn.com/replit/pnpczhK4itt7pXl2/images/replitai/keep-iterating-design-or-build-functionality.png?w=1100&fit=max&auto=format&n=pnpczhK4itt7pXl2&q=85&s=7aa9bd9bd40b61f163593ce83afbda72 1100w, https://mintcdn.com/replit/pnpczhK4itt7pXl2/images/replitai/keep-iterating-design-or-build-functionality.png?w=1650&fit=max&auto=format&n=pnpczhK4itt7pXl2&q=85&s=52aa38c4ced6e97873c752a87073dd54 1650w, https://mintcdn.com/replit/pnpczhK4itt7pXl2/images/replitai/keep-iterating-design-or-build-functionality.png?w=2500&fit=max&auto=format&n=pnpczhK4itt7pXl2&q=85&s=39b8a3bca913ae1a1ee9fdfd3d8b3924 2500w" />
-</Frame>
+<Note>
+  **Web Apps only**: Fast is currently only available for Web Apps.
+</Note>
 
-### Build the full app
+#### Build vs. Plan
 
-Ideal for comprehensive application development:
+Choose when Agent starts building:
 
-* **Complete functionality**: Agent builds out the full functionality of your app from the start
-* **Initial build**: Agent creates an initial working application in \~10 minutes
-* **Comprehensive scope**: Full-stack development with frontend, backend, and integrations
+* **Build**: Agent immediately starts building your app based on your prompt
+* **Plan**: Agent creates an initial plan that you can review and iterate on before building begins
 
-After the initial build phase, you can:
+**When to use Plan mode:**
 
-* **Review the full task list**: See exactly what Agent plans to build next
-* **Accept or modify**: Approve the plan or request changes before full implementation
-* **Complete the build** (New in Agent 3): Let Agent finish the comprehensive development (can run for up to 200 minutes)
+* You want to refine requirements before committing to a build
+* You're exploring different approaches to a complex problem
+* You need to align on scope with stakeholders before development
 
-After creating an MVP, you'll see options to continue building:
-
-<Frame>
-  <img src="https://mintcdn.com/replit/fq3p5W3K0mVwvlo1/images/replitai/continue-building-or-dismiss.png?fit=max&auto=format&n=fq3p5W3K0mVwvlo1&q=85&s=0d46c6d59a763e2cd2ba1400c2447470" alt="Interface showing 'Dismiss' and 'Continue building' options after MVP creation" data-og-width="924" width="924" data-og-height="284" height="284" data-path="images/replitai/continue-building-or-dismiss.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/replit/fq3p5W3K0mVwvlo1/images/replitai/continue-building-or-dismiss.png?w=280&fit=max&auto=format&n=fq3p5W3K0mVwvlo1&q=85&s=de1b3f5fe35e6b476c782b0c5ad155a5 280w, https://mintcdn.com/replit/fq3p5W3K0mVwvlo1/images/replitai/continue-building-or-dismiss.png?w=560&fit=max&auto=format&n=fq3p5W3K0mVwvlo1&q=85&s=0f0ee9c8293a69ff2a2c137ff26b453d 560w, https://mintcdn.com/replit/fq3p5W3K0mVwvlo1/images/replitai/continue-building-or-dismiss.png?w=840&fit=max&auto=format&n=fq3p5W3K0mVwvlo1&q=85&s=323d4abc86ea8bbd01bd80c00b225d61 840w, https://mintcdn.com/replit/fq3p5W3K0mVwvlo1/images/replitai/continue-building-or-dismiss.png?w=1100&fit=max&auto=format&n=fq3p5W3K0mVwvlo1&q=85&s=de7c9325426de70e691edb519900db7e 1100w, https://mintcdn.com/replit/fq3p5W3K0mVwvlo1/images/replitai/continue-building-or-dismiss.png?w=1650&fit=max&auto=format&n=fq3p5W3K0mVwvlo1&q=85&s=ed293e15bc0ff28e494e24af4cc07075 1650w, https://mintcdn.com/replit/fq3p5W3K0mVwvlo1/images/replitai/continue-building-or-dismiss.png?w=2500&fit=max&auto=format&n=fq3p5W3K0mVwvlo1&q=85&s=ae651e16ebb81184bcf707f9c654cb9c 2500w" />
-</Frame>
+Learn more about [Plan Mode](/replitai/plan-mode) for collaborative planning workflows.
 
 ## Autonomous Features (New in Agent 3)
 
 Agent 3 introduces powerful autonomous capabilities that enable extended, self-supervised development with minimal human intervention.
+
+<Note>
+  **Core and Teams only**: Autonomous mode features require a Core or Teams subscription.
+</Note>
 
 ### App Testing
 
@@ -249,18 +268,8 @@ Each checkpoint lets you perform the following actions:
 <Info>
   Agent uses effort-based pricing where you pay based on the complexity and
   scope of your request. Simple changes typically cost less than complex builds.
-  Initial planning and proposal stages are free - you only pay when Agent
-  implements approved changes. Learn more about [Agent
-  billing](/billing/ai-billing#agent-billing).
+  Learn more about [Agent billing](/billing/ai-billing#agent-billing).
 </Info>
-
-### Advanced capabilities
-
-For complex projects, you can enable additional Agent capabilities through toggles in the chat toolbar:
-
-**High Power mode**: Uses more sophisticated AI models for advanced problem-solving. Ideal for complex integrations, performance optimizations, or unfamiliar technologies.
-
-Learn more about when and how to use this advanced feature in the [Dynamic Intelligence documentation](/replitai/dynamic-intelligence).
 
 ### Progress tab
 
@@ -294,7 +303,7 @@ The **Progress** tab shows a record of Agent's actions in real-time. Access it t
 Ready to start building with Agent? Here's how to begin:
 
 1. **Create your first app**: Use the [Create with AI quickstart](/getting-started/quickstarts/ask-ai/)
-2. **Choose your build mode**: Start with a design for visual-first development or build the full app for comprehensive functionality
+2. **Choose your build mode**: Select Fast for quick iterations or full build for comprehensive development
 3. **Learn effective prompting**: Follow our [vibe coding guide](/tutorials/how-to-vibe-code)
 4. **Set up billing controls**: Configure [spending management](/billing/managing-spend)
 5. **Explore Agent 3 features**: Try [App Testing](/replitai/app-testing) for self-validation, [Autonomy Level](/replitai/autonomy-level) for customized workflows, and [Agents & Automations](/replitai/agents-and-automations) for building intelligent systems

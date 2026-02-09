@@ -14,46 +14,46 @@ The API endpoints in this section allow you to manage your Apify Actors versions
 | `"TARBALL"`      | Source code is downloaded using a tarball or Zip file from a URL specified in the `tarballUrl` field.                                                                                                                                                                                                                                                                         |
 | `"GITHUB_GIST"`  | Source code is taken from a GitHub Gist, whose URL is specified in the `gitHubGistUrl` field.                                                                                                                                                                                                                                                                                 |
 
-For more information about source code and Actor versions, check out https://docs.apify.com/platform/actors/development/actor-definition/source-code in Actors documentation.
+For more information about source code and Actor versions, check out [Source code](https://docs.apify.com/platform/actors/development/actor-definition/source-code) in Actors documentation.
 
 <!-- -->
 
-## https://docs.apify.com/api/v2/act-versions-get.md
+## [Get list of versions](https://docs.apify.com/api/v2/act-versions-get.md)
 
-https://docs.apify.com/api/v2/act-versions-get.md
+[/acts/{actorId}/versions](https://docs.apify.com/api/v2/act-versions-get.md)
 
-## https://docs.apify.com/api/v2/act-versions-post.md
+## [Create version](https://docs.apify.com/api/v2/act-versions-post.md)
 
-https://docs.apify.com/api/v2/act-versions-post.md
+[/acts/{actorId}/versions](https://docs.apify.com/api/v2/act-versions-post.md)
 
-## https://docs.apify.com/api/v2/act-version-get.md
+## [Get version](https://docs.apify.com/api/v2/act-version-get.md)
 
-https://docs.apify.com/api/v2/act-version-get.md
+[/acts/{actorId}/versions/{versionNumber}](https://docs.apify.com/api/v2/act-version-get.md)
 
-## https://docs.apify.com/api/v2/act-version-put.md
+## [Update version](https://docs.apify.com/api/v2/act-version-put.md)
 
-https://docs.apify.com/api/v2/act-version-put.md
+[/acts/{actorId}/versions/{versionNumber}](https://docs.apify.com/api/v2/act-version-put.md)
 
-## https://docs.apify.com/api/v2/act-version-delete.md
+## [Delete version](https://docs.apify.com/api/v2/act-version-delete.md)
 
-https://docs.apify.com/api/v2/act-version-delete.md
+[/acts/{actorId}/versions/{versionNumber}](https://docs.apify.com/api/v2/act-version-delete.md)
 
-## https://docs.apify.com/api/v2/act-version-env-vars-get.md
+## [Get list of environment variables](https://docs.apify.com/api/v2/act-version-env-vars-get.md)
 
-https://docs.apify.com/api/v2/act-version-env-vars-get.md
+[/acts/{actorId}/versions/{versionNumber}/env-vars](https://docs.apify.com/api/v2/act-version-env-vars-get.md)
 
-## https://docs.apify.com/api/v2/act-version-env-vars-post.md
+## [Create environment variable](https://docs.apify.com/api/v2/act-version-env-vars-post.md)
 
-https://docs.apify.com/api/v2/act-version-env-vars-post.md
+[/acts/{actorId}/versions/{versionNumber}/env-vars](https://docs.apify.com/api/v2/act-version-env-vars-post.md)
 
-## https://docs.apify.com/api/v2/act-version-env-var-get.md
+## [Get environment variable](https://docs.apify.com/api/v2/act-version-env-var-get.md)
 
-https://docs.apify.com/api/v2/act-version-env-var-get.md
+[/acts/{actorId}/versions/{versionNumber}/env-vars/{envVarName}](https://docs.apify.com/api/v2/act-version-env-var-get.md)
 
-## https://docs.apify.com/api/v2/act-version-env-var-put.md
+## [Update environment variable](https://docs.apify.com/api/v2/act-version-env-var-put.md)
 
-https://docs.apify.com/api/v2/act-version-env-var-put.md
+[/acts/{actorId}/versions/{versionNumber}/env-vars/{envVarName}](https://docs.apify.com/api/v2/act-version-env-var-put.md)
 
-## https://docs.apify.com/api/v2/act-version-env-var-delete.md
+## [Delete environment variable](https://docs.apify.com/api/v2/act-version-env-var-delete.md)
 
-https://docs.apify.com/api/v2/act-version-env-var-delete.md
+[/acts/{actorId}/versions/{versionNumber}/env-vars/{envVarName}](https://docs.apify.com/api/v2/act-version-env-var-delete.md)

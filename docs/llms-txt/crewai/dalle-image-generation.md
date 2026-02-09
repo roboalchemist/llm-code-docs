@@ -1,5 +1,9 @@
 # Source: https://docs.crewai.com/en/learn/dalle-image-generation.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.crewai.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Image Generation with DALL-E
 
 > Learn how to use DALL-E for AI-powered image generation in your CrewAI projects

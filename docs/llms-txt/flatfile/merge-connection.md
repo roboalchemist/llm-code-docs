@@ -1,5 +1,9 @@
 # Source: https://flatfile.com/docs/plugins/merge-connection.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://flatfile.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Merge.dev Connection Plugin
 
 > Connect Flatfile to the Merge.dev unified API platform to sync data from hundreds of third-party integrations including HRIS, ATS, CRM, and Accounting systems.
@@ -10,7 +14,7 @@ The Merge.dev Connection Plugin enables users to sync data from hundreds of thir
 
 Install the plugin using npm:
 
-```bash
+```bash  theme={null}
 npm install @flatfile/plugin-connect-via-merge
 ```
 
@@ -30,7 +34,7 @@ This plugin is configured through Flatfile Secrets rather than code-based option
 
 The plugin exports a single function:
 
-```typescript
+```typescript  theme={null}
 mergePlugin(): (listener: FlatfileListener) => void
 ```
 
@@ -44,7 +48,7 @@ mergePlugin(): (listener: FlatfileListener) => void
 ## Usage Examples
 
 <CodeGroup>
-  ```javascript JavaScript
+  ```javascript JavaScript theme={null}
   import { FlatfileListener } from "@flatfile/listener";
   import { mergePlugin } from "@flatfile/plugin-connect-via-merge";
 
@@ -54,7 +58,7 @@ mergePlugin(): (listener: FlatfileListener) => void
   }
   ```
 
-  ```typescript TypeScript
+  ```typescript TypeScript theme={null}
   import { FlatfileListener } from "@flatfile/listener";
   import { mergePlugin } from "@flatfile/plugin-connect-via-merge";
 
@@ -68,7 +72,7 @@ mergePlugin(): (listener: FlatfileListener) => void
 ### Complete Setup Example
 
 <CodeGroup>
-  ```javascript JavaScript
+  ```javascript JavaScript theme={null}
   import { FlatfileListener } from "@flatfile/listener";
   import { mergePlugin } from "@flatfile/plugin-connect-via-merge";
 
@@ -83,7 +87,7 @@ mergePlugin(): (listener: FlatfileListener) => void
   }
   ```
 
-  ```typescript TypeScript
+  ```typescript TypeScript theme={null}
   import { FlatfileListener } from "@flatfile/listener";
   import { mergePlugin } from "@flatfile/plugin-connect-via-merge";
 
@@ -106,7 +110,7 @@ mergePlugin(): (listener: FlatfileListener) => void
 2. **Use the Plugin:** The plugin automatically looks for the `MERGE_ACCESS_KEY` secret in the Space where it's running.
 
 <CodeGroup>
-  ```javascript JavaScript
+  ```javascript JavaScript theme={null}
   import { FlatfileListener } from "@flatfile/listener";
   import { mergePlugin } from "@flatfile/plugin-connect-via-merge";
 
@@ -116,7 +120,7 @@ mergePlugin(): (listener: FlatfileListener) => void
   }
   ```
 
-  ```typescript TypeScript
+  ```typescript TypeScript theme={null}
   import { FlatfileListener } from "@flatfile/listener";
   import { mergePlugin } from "@flatfile/plugin-connect-via-merge";
 

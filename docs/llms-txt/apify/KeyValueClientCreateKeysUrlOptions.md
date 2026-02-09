@@ -2,6 +2,10 @@
 
 # KeyValueClientCreateKeysUrlOptions<!-- -->
 
+Options for creating a public URL to list keys in a Key-Value Store.
+
+Extends [KeyValueClientListKeysOptions](https://docs.apify.com/api/client/js/api/client/js/reference/interface/KeyValueClientListKeysOptions.md) with URL expiration control.
+
 ### Hierarchy
 
 * [KeyValueClientListKeysOptions](https://docs.apify.com/api/client/js/api/client/js/reference/interface/KeyValueClientListKeysOptions.md)
@@ -20,7 +24,7 @@
 
 ## Properties<!-- -->[**](#Properties)
 
-### [**](#collection)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/key_value_store.ts#L359)optionalinheritedcollection
+### [**](#collection)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/key_value_store.ts#L558)optionalinheritedcollection
 
 **collection?
 
@@ -30,7 +34,7 @@
 
 Inherited from KeyValueClientListKeysOptions.collection
 
-### [**](#exclusiveStartKey)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/key_value_store.ts#L358)optionalinheritedexclusiveStartKey
+### [**](#exclusiveStartKey)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/key_value_store.ts#L557)optionalinheritedexclusiveStartKey
 
 **exclusiveStartKey?
 
@@ -40,7 +44,7 @@ Inherited from KeyValueClientListKeysOptions.collection
 
 Inherited from KeyValueClientListKeysOptions.exclusiveStartKey
 
-### [**](#expiresInSecs)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/key_value_store.ts#L365)optionalexpiresInSecs
+### [**](#expiresInSecs)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/key_value_store.ts#L569)optionalexpiresInSecs
 
 **expiresInSecs?
 
@@ -48,7 +52,7 @@ Inherited from KeyValueClientListKeysOptions.exclusiveStartKey
 
 : number
 
-### [**](#limit)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/key_value_store.ts#L357)optionalinheritedlimit
+### [**](#limit)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/key_value_store.ts#L556)optionalinheritedlimit
 
 **limit?
 
@@ -58,7 +62,7 @@ Inherited from KeyValueClientListKeysOptions.exclusiveStartKey
 
 Inherited from KeyValueClientListKeysOptions.limit
 
-### [**](#prefix)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/key_value_store.ts#L360)optionalinheritedprefix
+### [**](#prefix)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/key_value_store.ts#L559)optionalinheritedprefix
 
 **prefix?
 
@@ -68,7 +72,7 @@ Inherited from KeyValueClientListKeysOptions.limit
 
 Inherited from KeyValueClientListKeysOptions.prefix
 
-### [**](#signature)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/key_value_store.ts#L361)optionalinheritedsignature
+### [**](#signature)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/key_value_store.ts#L560)optionalinheritedsignature
 
 **signature?
 

@@ -16,26 +16,7 @@ Use the optional UI kit at [apps-sdk-ui](https://openai.github.io/apps-sdk-ui) f
 
 The host injects `window.openai` with UI-related globals and methods for calling tools, sending follow-ups, and managing layout. In your widget, read values directly from `window.openai` (e.g., `window.openai.toolOutput`, `window.openai.locale`) or through helper hooks like `useOpenAiGlobal` shown later.
 
-`window.openai` is the bridge between your frontend and ChatGPT. Use the quick reference below to understand the available data and APIs before you dive into component scaffolding.
-
-### List of capabilities
-
-| Capability | What it does | Typical use |
-| --- | --- | --- |
-| State & data | `window.openai.toolInput` | Arguments supplied when the tool was invoked. |
-| State & data | `window.openai.toolOutput` | Your `structuredContent`. Keep fields concise; the model reads them verbatim. |
-| State & data | `window.openai.toolResponseMetadata` | The `_meta` payload; only the widget sees it, never the model. |
-| State & data | `window.openai.widgetState` | Snapshot of UI state persisted between renders. |
-| State & data | `window.openai.setWidgetState(state)` | Stores a new snapshot synchronously; call it after every meaningful UI interaction. |
-| Widget runtime APIs | `window.openai.callTool(name, args)` | Invoke another MCP tool from the widget (mirrors model-initiated calls). |
-| Widget runtime APIs | `window.openai.sendFollowUpMessage({ prompt })` | Ask ChatGPT to post a message authored by the component. |
-| Widget runtime APIs | `window.openai.uploadFile(file)` | Upload a user-selected file and receive a `fileId`. |
-| Widget runtime APIs | `window.openai.getFileDownloadUrl({ fileId })` | Retrieve a temporary download URL for a file uploaded by the widget or provided via file params. |
-| Widget runtime APIs | `window.openai.requestDisplayMode(...)` | Request PiP/fullscreen modes. |
-| Widget runtime APIs | `window.openai.requestModal(...)` | Spawn a modal owned by ChatGPT. |
-| Widget runtime APIs | `window.openai.notifyIntrinsicHeight(...)` | Report dynamic widget heights to avoid scroll clipping. |
-| Widget runtime APIs | `window.openai.openExternal({ href })` | Open a vetted external link in the user’s browser. |
-| Context | `window.openai.theme`, `window.openai.displayMode`, `window.openai.maxHeight`, `window.openai.safeArea`, `window.openai.view`, `window.openai.userAgent`, `window.openai.locale` | Environment signals you can read—or subscribe to via `useOpenAiGlobal`—to adapt visuals and copy. |
+`window.openai` is the bridge between your frontend and ChatGPT. For the full API reference, see [Apps SDK Reference](https://developers.openai.com/apps-sdk/reference#windowopenai-component-bridge).
 
 ### useOpenAiGlobal
 
@@ -101,7 +82,7 @@ Anything you pass to `setWidgetState` is sent to the model, so keep the payload 
 
 `window.openai.callTool` lets the component directly make MCP tool calls. Use this for direct manipulations (refresh data, fetch nearby restaurants). Design tools to be idempotent where possible and return updated structured content that the model can reason over in subsequent turns.
 
-Please note that your tool needs to be marked as [able to be initiated by the component](/apps-sdk/build/mcp-server###allow-component-initiated-tool-access).
+Please note that your tool needs to be marked as [able to be initiated by the component](https://developers.openai.com/apps-sdk/build/mcp-server###allow-component-initiated-tool-access).
 
 ```tsx
 async function refreshPlaces(city: string) {
@@ -163,12 +144,12 @@ You can close the widget two ways: from the UI by calling `window.openai.request
   "content": "...",
   "metadata": {
     "openai/closeWidget": true,
-    "openai/widgetDomain": "https://chatgpt.com",
+    "openai/widgetDomain": "https://myapp.example.com",
     "openai/widgetCSP": {
-      "connect_domains": ["https://chatgpt.com"],
+      "connect_domains": ["https://api.myapp.example.com"],
       "resource_domains": ["https://*.oaistatic.com"],
       "redirect_domains": ["https://checkout.example.com"], // Optional: allow openExternal redirects + return link
-      "frame_domains": ["https://*.example.com"]  // Optional: allow iframes from these domains
+      "frame_domains": ["https://*.example.com"] // Optional: allow iframes from these domains
     }
   }
 }
@@ -189,6 +170,16 @@ If the UI needs more space—like maps, tables, or embedded editors—ask the ho
 ```tsx
 await window.openai?.requestDisplayMode({ mode: "fullscreen" });
 // Note: on mobile, PiP may be coerced to fullscreen
+```
+
+### Open a modal
+
+Use `window.openai.requestModal` to open a host-controlled modal. You can pass a different UI template from the same app by providing the template URI that you registered on your MCP server with `registerResource`, or omit `template` to open the current one.
+
+```tsx
+await window.openai.requestModal({
+  template: "ui://widget/checkout.html",
+});
 ```
 
 ### Use host-backed navigation
@@ -258,20 +249,20 @@ If your component requires drag-and-drop, charts, or other libraries, add them n
 
 Your entry file should mount a component into a `root` element and read initial data from `window.openai.toolOutput` or persisted state.
 
-We have provided some example apps under the [examples page](./examples#pizzaz-list-source), for example, for a "Pizza list" app, which is a list of pizza restaurants.
+We have provided some example apps under the [examples page](https://developers.openai.com/apps-sdk/build/examples#pizzaz-list-source), for example, for a "Pizza list" app, which is a list of pizza restaurants.
 
 ### Explore the Pizzaz component gallery
 
-We provide a number of example components in the [Apps SDK examples](/apps-sdk/build/examples). Treat them as blueprints when shaping your own UI:
+We provide a number of example components in the [Apps SDK examples](https://developers.openai.com/apps-sdk/build/examples). Treat them as blueprints when shaping your own UI:
 
 - **Pizzaz List** – ranked card list with favorites and call-to-action buttons.  
-  ![Screenshot of the Pizzaz list component](/images/apps-sdk/pizzaz-list.png)
+  ![Screenshot of the Pizzaz list component](https://developers.openai.com/images/apps-sdk/pizzaz-list.png)
 - **Pizzaz Carousel** – embla-powered horizontal scroller that demonstrates media-heavy layouts.  
-  ![Screenshot of the Pizzaz carousel component](/images/apps-sdk/pizzaz-carousel.png)
+  ![Screenshot of the Pizzaz carousel component](https://developers.openai.com/images/apps-sdk/pizzaz-carousel.png)
 - **Pizzaz Map** – Mapbox integration with fullscreen inspector and host state sync.  
-  ![Screenshot of the Pizzaz map component](/images/apps-sdk/pizzaz-map.png)
+  ![Screenshot of the Pizzaz map component](https://developers.openai.com/images/apps-sdk/pizzaz-map.png)
 - **Pizzaz Album** – stacked gallery view built for deep dives on a single place.  
-  ![Screenshot of the Pizzaz album component](/images/apps-sdk/pizzaz-album.png)
+  ![Screenshot of the Pizzaz album component](https://developers.openai.com/images/apps-sdk/pizzaz-album.png)
 - **Pizzaz Video** – scripted player with overlays and fullscreen controls.
 
 Each example shows how to bundle assets, wire host APIs, and structure state for real conversations. Copy the one closest to your use case and adapt the data layer for your tool responses.
@@ -299,7 +290,7 @@ export function useWidgetState<T extends WidgetState>(
 
     return typeof defaultState === "function"
       ? defaultState()
-      : defaultState ?? null;
+      : (defaultState ?? null);
   });
 
   useEffect(() => {
@@ -370,7 +361,7 @@ Run `npm run build` to produce `dist/component.js`. If esbuild complains about m
 
 ## Embed the component in the server response
 
-See the [Set up your server docs](/apps-sdk/build/mcp-server#) for how to embed the component in your MCP server response.
+See the [Set up your server docs](https://developers.openai.com/apps-sdk/build/mcp-server#) for how to embed the component in your MCP server response.
 
 Component UI templates are the recommended path for production.
 

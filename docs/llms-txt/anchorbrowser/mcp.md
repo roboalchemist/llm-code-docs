@@ -1,5 +1,9 @@
 # Source: https://docs.anchorbrowser.io/advanced/mcp.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.anchorbrowser.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # MCP - Hosted Version
 
 > Use Anchor with Model Context Protocol (MCP) in your preferred agentic tools via our hosted service
@@ -64,9 +68,9 @@ For advanced customization needs, see our [Open Source MCP Server](/advanced/mcp
       }
       ```
 
-      <Info>
+      <Note>
         If you don't have your Anchor API key yet, you can get it from [Anchor UI](https://app.anchorbrowser.io/api-keys).
-      </Info>
+      </Note>
 
       You should now see Anchor MCP server in the list of MCP servers in Cursor. It should say '24 tools enabled'. If you don't see it, disable and re-enable Anchor MCP server, or wait a little longer.
     </Step>

@@ -1,5 +1,9 @@
 # Source: https://loops.so/docs/account/team-switcher.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://loops.so/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Team switcher
 
 > Learn how to create and connect multiple Loops accounts with one email address.

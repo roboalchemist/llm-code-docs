@@ -3363,4 +3363,3 @@ Because we already have "type" annotated everywhere, the application just works 
 ## ⛳ Checkpoint 4[​](#-checkpoint-4 "Direct link to ⛳ Checkpoint 4")
 
 Our application is fully ready to be deployed. You can always add more features, optimize performance in some areas, make error handling nicer, use "as" even less, and so on.
- make error handling nicer, use "as" even less, and so on.

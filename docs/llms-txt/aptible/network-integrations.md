@@ -1,5 +1,9 @@
 # Source: https://www.aptible.com/docs/core-concepts/integrations/network-integrations.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.aptible.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Network Integrations: VPC Peering & VPN Tunnels
 
 # VPC Peering
@@ -10,16 +14,65 @@ Aptible offers VPC Peering to connect a user’s existing network to their Aptib
 
 ## Setup
 
-VPC Peering connections can only be set up by contacting [Aptible Support](/how-to-guides/troubleshooting/aptible-support).
+VPC Peering requests can be submitted through the Aptible Dashboard:
+
+<Steps>
+  <Step title="Navigate to VPC Peering">
+    Go to the Dedicated Stack where you want to create the peering connection and select the **VPC Peering** tab.
+  </Step>
+
+  <Step title="Create VPC Peering Request">
+    Click **Create VPC Peering Request**. Only Account Owners can create VPC peering requests.
+  </Step>
+
+  <Step title="Select Peering Type">
+    Choose your peering destination:
+
+    * **Peer to AWS Account**: Connect your Aptible stack to an external AWS VPC you own
+    * **Peer to Aptible Dedicated Stack**: Connect two of your Aptible dedicated stacks together
+  </Step>
+</Steps>
+
+### Peering to an AWS Account
+
+When peering to an external AWS VPC:
+
+1. The Dashboard displays your Aptible VPC information (AWS Account ID, VPC ID, Region, and CIDR) needed to create the peering connection in AWS.
+2. Go to the [Peering Connections page](https://console.aws.amazon.com/vpc/home#PeeringConnections) in the AWS VPC Dashboard and click **Create VPC Peering Connection**.
+3. Select your own VPC as the local VPC and enter the Aptible VPC details (shown in the Dashboard) for the peer VPC.
+4. After creating the peering connection in AWS, copy the **VPC Peering Connection ID** (starts with `pcx-`) and enter it in the Aptible Dashboard form.
+5. Submit the request. The Aptible team will accept the peering connection and follow up with next steps.
+
+### Peering to Another Aptible Dedicated Stack
+
+When peering two Aptible dedicated stacks together:
+
+1. Select the target dedicated stack from the dropdown.
+2. Submit the request. The Aptible team will configure the peering connection between your stacks.
+
+<Note>
+  You must have at least two dedicated stacks to use this option.
+</Note>
 
 ## Managing VPC Peering
-
-VPC Peering connections can only be managed by the Aptible Support Team. This includes deprovisioning VPC Peering connections.
 
 The details and status of VPC Peering connections can be viewed within the Aptible Dashboard by:
 
 * Navigating to the respective Dedicated Stack
 * Selecting the "VPC Peering" tab
+
+### Requesting Deletion
+
+To request deletion of a VPC peering connection:
+
+1. Navigate to the Dedicated Stack and select the **VPC Peering** tab.
+2. Find the peering connection you want to delete and click **Request Deletion**.
+3. Confirm by typing the connection ID.
+4. Submit the request. The Aptible team will process the deletion.
+
+<Note>
+  Only Account Owners can request VPC peering deletion.
+</Note>
 
 # VPN Tunnels
 

@@ -1,219 +1,319 @@
 # Source: https://getlago.com/docs/api-reference/audit-logs/get-all-activity-logs.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://getlago.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # List all activity logs
 
 > This endpoint retrieves all existing activity logs that represent actions performed on application resources.
 
+
+
 ## OpenAPI
 
 ````yaml GET /activity_logs
+openapi: 3.1.0
+info:
+  title: Lago API documentation
+  description: >-
+    Lago API allows your application to push customer information and metrics
+    (events) from your application to the billing application.
+  version: 1.41.0
+  license:
+    name: AGPLv3
+    identifier: AGPLv3
+  contact:
+    email: tech@getlago.com
+servers:
+  - url: https://api.getlago.com/api/v1
+    description: US Lago cluster
+  - url: https://api.eu.getlago.com/api/v1
+    description: EU Lago cluster
+security:
+  - bearerAuth: []
+tags:
+  - name: activity_logs
+    description: Everything about Activity logs
+    externalDocs:
+      description: Find out more
+      url: https://doc.getlago.com/api-reference/audit-logs/activity-logs-object
+  - name: analytics
+    description: Everything about Analytics
+  - name: api_logs
+    description: Everything about API logs
+    externalDocs:
+      description: Find out more
+      url: https://doc.getlago.com/api-reference/audit-logs/api-logs-object
+  - name: billable_metrics
+    description: Everything about Billable metric collection
+    externalDocs:
+      description: Find out more
+      url: https://doc.getlago.com/api-reference/billable-metrics/object
+  - name: features
+    description: Everything about Feature collection
+    externalDocs:
+      description: Find out more
+      url: https://doc.getlago.com/api-reference/features/object
+  - name: entitlements
+    description: Everything about Entitlement collection
+    externalDocs:
+      description: Find out more
+      url: https://doc.getlago.com/api-reference/entitlements/object
+  - name: billing_entities
+    description: Everything about Billing Entities
+    externalDocs:
+      description: Find out more
+      url: https://doc.getlago.com/api-reference/billing-entities/object
+  - name: customers
+    description: Everything about Customer collection
+    externalDocs:
+      description: Find out more
+      url: https://doc.getlago.com/api-reference/customers/object
+  - name: plans
+    description: Everything about Plan collection
+    externalDocs:
+      description: Find out more
+      url: https://doc.getlago.com/api-reference/plans/object
+  - name: subscriptions
+    description: Everything about Subscription collection
+    externalDocs:
+      description: Find out more
+      url: https://doc.getlago.com/api-reference/subscriptions/subscription-object
+  - name: events
+    description: Everything about Event collection
+    externalDocs:
+      description: Find out more
+      url: https://doc.getlago.com/api-reference/events/event-object
+  - name: organizations
+    description: Everything about Organization collection
+    externalDocs:
+      description: Find out more
+      url: https://doc.getlago.com/api-reference/organizations/organization-object
+  - name: taxes
+    description: Everything about Tax collection
+    externalDocs:
+      description: Find out more
+      url: https://doc.getlago.com/api-reference/taxes/tax-object
+  - name: coupons
+    description: Everything about Coupon collection
+    externalDocs:
+      description: Find out more
+      url: https://doc.getlago.com/api-reference/coupons/coupon-object
+  - name: add_ons
+    description: Everything about Add-on collection
+    externalDocs:
+      description: Find out more
+      url: https://doc.getlago.com/api-reference/add-ons/add-on-object
+  - name: fees
+    description: Everything about Fees
+    externalDocs:
+      description: Find out more
+      url: https://doc.getlago.com/api-reference/invoices/invoice-object#fee-object
+  - name: invoices
+    description: Everything about Invoice collection
+    externalDocs:
+      description: Find out more
+      url: https://doc.getlago.com/api-reference/invoices/invoice-object
+  - name: wallets
+    description: Everything about Wallet collection
+    externalDocs:
+      description: Find out more
+      url: https://doc.getlago.com/api-reference/wallets/wallet-object
+  - name: credit_notes
+    description: Everything about Credit notes collection
+    externalDocs:
+      description: Find out more
+      url: https://doc.getlago.com/api-reference/credit-notes/credit-note-object
+  - name: webhooks
+    description: Everything about Webhooks
+    externalDocs:
+      description: Find out more
+      url: >-
+        https://doc.getlago.com/api-reference/webhooks/format---signature#1-retrieve-the-public-key
+  - name: webhook_endpoints
+    description: Everything about Webhook Endpoints
+    externalDocs:
+      description: Find out more
+      url: >-
+        https://doc.getlago.com/api-reference/webhook-endpoints/webhook-endpoint-object
+  - name: payment_receipts
+    description: Everything about Payment receipts
+    externalDocs:
+      description: Find out more
+      url: >-
+        https://doc.getlago.com/api-reference/payment-receipts/payment-receipt-object
+  - name: payment_requests
+    description: Everything about PaymentRequests
+    externalDocs:
+      description: Find out more
+      url: >-
+        https://doc.getlago.com/api-reference/payment-requests/payment-request-object
+  - name: payments
+    description: Everything about Payments
+    externalDocs:
+      description: Find out more
+      url: https://doc.getlago.com/api-reference/payments/payment-object
+externalDocs:
+  description: Lago Github
+  url: https://github.com/getlago
 paths:
-  path: /activity_logs
-  method: get
-  servers:
-    - url: https://api.getlago.com/api/v1
-      description: US Lago cluster
-    - url: https://api.eu.getlago.com/api/v1
-      description: EU Lago cluster
-  request:
-    security:
-      - title: bearerAuth
-        parameters:
-          query: {}
-          header:
-            Authorization:
-              type: http
-              scheme: bearer
-          cookie: {}
-    parameters:
-      path: {}
-      query:
-        page:
-          schema:
-            - type: integer
-              required: false
-              description: Page number.
-              example: 1
+  /activity_logs:
+    get:
+      tags:
+        - activity_logs
+      summary: List all activity logs
+      description: >-
+        This endpoint retrieves all existing activity logs that represent
+        actions performed on application resources.
+      operationId: findAllActivityLogs
+      parameters:
+        - $ref: '#/components/parameters/page'
+        - $ref: '#/components/parameters/per_page'
+        - name: from_date
+          in: query
+          description: Filter activity logs from a specific date.
+          required: false
           explode: true
-        per_page:
           schema:
-            - type: integer
-              required: false
-              description: Number of records per page.
-              example: 20
+            type: string
+            format: date
+            example: '2022-08-09'
+        - name: to_date
+          in: query
+          description: Filter activity logs up to a specific date.
+          required: false
           explode: true
-        from_date:
           schema:
-            - type: string
-              required: false
-              description: Filter activity logs from a specific date.
-              format: date
-              example: '2022-08-09'
+            type: string
+            format: date
+            example: '2022-08-09'
+        - name: activity_types[]
+          in: query
+          description: Filter results by activity types
+          required: false
           explode: true
-        to_date:
           schema:
-            - type: string
-              required: false
-              description: Filter activity logs up to a specific date.
-              format: date
-              example: '2022-08-09'
+            type: array
+            items:
+              type: string
+            example:
+              - billing_metric.created
+              - billing_metric.updated
+        - name: activity_sources[]
+          in: query
+          description: Filter results by activity sources
+          required: false
           explode: true
-        activity_types[]:
           schema:
-            - type: array
-              items:
-                allOf:
-                  - type: string
-              required: false
-              description: Filter results by activity types
-              example:
-                - billing_metric.created
-                - billing_metric.updated
-          explode: true
-        activity_sources[]:
-          schema:
-            - type: array
-              items:
-                allOf:
-                  - type: string
-                    enum:
-                      - api
-                      - front
-                      - system
-              required: false
-              description: Filter results by activity sources
-              example:
+            type: array
+            items:
+              type: string
+              enum:
                 - api
                 - front
+                - system
+            example:
+              - api
+              - front
+        - name: user_emails[]
+          in: query
+          description: Filter results by user emails
+          required: false
           explode: true
-        user_emails[]:
           schema:
-            - type: array
-              items:
-                allOf:
-                  - type: string
-              required: false
-              description: Filter results by user emails
-              example:
-                - dinesh@piedpiper.test
+            type: array
+            items:
+              type: string
+            example:
+              - dinesh@piedpiper.test
+        - $ref: '#/components/parameters/external_customer_id'
+        - $ref: '#/components/parameters/external_subscription_id'
+        - name: resource_ids[]
+          in: query
+          description: Filter results by resources unique identifiers
+          required: false
           explode: true
-        external_customer_id:
           schema:
-            - type: string
-              required: false
-              description: Unique identifier assigned to the customer in your application.
-              example: 5eb02857-a71e-4ea2-bcf9-57d3a41bc6ba
+            type: array
+            items:
+              type: string
+              format: uuid
+            example:
+              - 5eb02857-a71e-4ea2-bcf9-57d3a41bc6ba
+              - 1a901a90-1a90-1a90-1a90-1a901a901a90
+        - name: resource_types[]
+          in: query
+          description: Filter results by resource class types
+          required: false
           explode: true
-        external_subscription_id:
           schema:
-            - type: string
-              required: false
-              description: External subscription ID
-              example: 5eb02857-a71e-4ea2-bcf9-57d3a41bc6ba
-          explode: true
-        resource_ids[]:
-          schema:
-            - type: array
-              items:
-                allOf:
-                  - type: string
-                    format: uuid
-              required: false
-              description: Filter results by resources unique identifiers
-              example:
-                - 5eb02857-a71e-4ea2-bcf9-57d3a41bc6ba
-                - 1a901a90-1a90-1a90-1a90-1a901a901a90
-          explode: true
-        resource_types[]:
-          schema:
-            - type: array
-              items:
-                allOf:
-                  - type: string
-              required: false
-              description: Filter results by resource class types
-              example:
-                - BillableMetric
-                - Invoice
-          explode: true
-      header: {}
-      cookie: {}
-    body: {}
-  response:
-    '200':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              activity_logs:
-                allOf:
-                  - type: array
-                    items:
-                      $ref: '#/components/schemas/ActivityLogObject'
-              meta:
-                allOf:
-                  - $ref: '#/components/schemas/PaginationMeta'
-            refIdentifier: '#/components/schemas/ActivityLogsPaginated'
-            requiredProperties:
-              - activity_logs
-              - meta
-        examples:
-          example:
-            value:
-              activity_logs:
-                - activity_id: 1a901a90-1a90-1a90-1a90-1a901a901a90
-                  user_email: dinesh@piedpiper.test
-                  activity_type: billing_metric.created
-                  activity_source: api
-                  activity_object:
-                    lago_id: dad68bc7-c01a-4ad8-a87b-13e78693a5bc
-                    plan_id: b9155544-e261-4e92-b54e-f65d7609294c
-                  activity_object_changes:
-                    plan_id:
-                      - null
-                      - b9155544-e261-4e92-b54e-f65d7609294c
-                  external_customer_id: 5eb02857-a71e-4ea2-bcf9-57d3a41bc6ba
-                  external_subscription_id: external_id
-                  resource_id: 5eb02857-a71e-4ea2-bcf9-57d3a41bc6ba
-                  resource_type: BillableMetric
-                  organization_id: 1a901a90-1a90-1a90-1a90-1a901a901a90
-                  logged_at: '2025-03-31T12:31:44Z'
-                  created_at: '2022-04-29T08:59:51Z'
-              meta:
-                current_page: 2
-                next_page: 3
-                prev_page: 1
-                total_pages: 4
-                total_count: 70
-        description: List of activity logs
-    '401':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              status:
-                allOf:
-                  - type: integer
-                    format: int32
-                    example: 401
-              error:
-                allOf:
-                  - type: string
-                    example: Unauthorized
-            refIdentifier: '#/components/schemas/ApiErrorUnauthorized'
-            requiredProperties:
-              - status
-              - error
-        examples:
-          example:
-            value:
-              status: 401
-              error: Unauthorized
-        description: Unauthorized error
-  deprecated: false
-  type: path
+            type: array
+            items:
+              type: string
+            example:
+              - BillableMetric
+              - Invoice
+      responses:
+        '200':
+          description: List of activity logs
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ActivityLogsPaginated'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
 components:
+  parameters:
+    page:
+      name: page
+      in: query
+      description: Page number.
+      required: false
+      explode: true
+      schema:
+        type: integer
+        example: 1
+    per_page:
+      name: per_page
+      in: query
+      description: Number of records per page.
+      required: false
+      explode: true
+      schema:
+        type: integer
+        example: 20
+    external_customer_id:
+      name: external_customer_id
+      in: query
+      description: Unique identifier assigned to the customer in your application.
+      required: false
+      explode: true
+      schema:
+        type: string
+        example: 5eb02857-a71e-4ea2-bcf9-57d3a41bc6ba
+    external_subscription_id:
+      name: external_subscription_id
+      in: query
+      description: External subscription ID
+      required: false
+      explode: true
+      schema:
+        type: string
+        example: 5eb02857-a71e-4ea2-bcf9-57d3a41bc6ba
   schemas:
+    ActivityLogsPaginated:
+      type: object
+      required:
+        - activity_logs
+        - meta
+      properties:
+        activity_logs:
+          type: array
+          items:
+            $ref: '#/components/schemas/ActivityLogObject'
+        meta:
+          $ref: '#/components/schemas/PaginationMeta'
     ActivityLogObject:
       type: object
       required:
@@ -356,5 +456,29 @@ components:
           type: integer
           description: Total number of records.
           example: 70
+    ApiErrorUnauthorized:
+      type: object
+      required:
+        - status
+        - error
+      properties:
+        status:
+          type: integer
+          format: int32
+          example: 401
+        error:
+          type: string
+          example: Unauthorized
+  responses:
+    Unauthorized:
+      description: Unauthorized error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ApiErrorUnauthorized'
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
 
 ````

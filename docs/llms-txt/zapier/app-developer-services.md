@@ -1,5 +1,9 @@
 # Source: https://docs.zapier.com/platform/quickstart/app-developer-services.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.zapier.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # App Developer Services
 
 > If you don't have the time or resources to dedicate towards developing your own integration, Zapier has Solution Partners who may be able to assist you. Solution Partners can build and maintain Zapier integrations for you, including private integrations, public integrations, and custom actions, making them a smart way to extend your dev team’s capacity.

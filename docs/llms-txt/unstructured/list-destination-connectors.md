@@ -1,124 +1,198 @@
 # Source: https://docs.unstructured.io/api-reference/destinations/list-destination-connectors.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.unstructured.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # List destination connectors
 
 > Retrieve a list of available destination connectors.
 
+
+
 ## OpenAPI
 
 ````yaml https://platform.unstructuredapp.io/openapi.json get /api/v1/destinations/
+openapi: 3.1.0
+info:
+  title: Platform API
+  version: 3.1.0
+servers:
+  - url: https://platform.unstructuredapp.io/
+    description: Unstructured Platform API
+    x-speakeasy-server-id: platform-api
+security: []
 paths:
-  path: /api/v1/destinations/
-  method: get
-  servers:
-    - url: https://platform.unstructuredapp.io/
-      description: Unstructured Platform API
-  request:
-    security:
-      - title: HTTPBearer
-        parameters:
-          query: {}
-          header:
-            Authorization:
-              type: http
-              scheme: bearer
-          cookie: {}
-    parameters:
-      path: {}
-      query:
-        destination_type:
+  /api/v1/destinations/:
+    get:
+      tags:
+        - destinations
+      summary: List destination connectors
+      description: Retrieve a list of available destination connectors.
+      operationId: list_destinations
+      parameters:
+        - name: destination_type
+          in: query
+          required: false
           schema:
-            - type: enum<string>
-              enum:
-                - astradb
-                - azure_ai_search
-                - couchbase
-                - databricks_volumes
-                - databricks_volume_delta_tables
-                - delta_table
-                - elasticsearch
-                - gcs
-                - kafka-cloud
-                - milvus
-                - mongodb
-                - motherduck
-                - neo4j
-                - onedrive
-                - pinecone
-                - postgres
-                - redis
-                - qdrant-cloud
-                - s3
-                - snowflake
-                - weaviate-cloud
-                - ibm_watsonx_s3
-              required: false
-              title: DestinationConnectorType
-              refIdentifier: '#/components/schemas/DestinationConnectorType'
-            - type: 'null'
-              required: false
-              title: Destination Type
-      header:
-        unstructured-api-key:
+            anyOf:
+              - $ref: '#/components/schemas/DestinationConnectorType'
+              - type: 'null'
+            title: Destination Type
+        - name: unstructured-api-key
+          in: header
+          required: false
           schema:
-            - type: string
-              required: false
-              title: Unstructured-Api-Key
-            - type: 'null'
-              required: false
-              title: Unstructured-Api-Key
-      cookie: {}
-    body: {}
-  response:
-    '200':
-      application/json:
-        schemaArray:
-          - type: array
-            items:
-              allOf:
-                - $ref: '#/components/schemas/DestinationConnectorInformation'
-            title: Response List Destinations
-        examples:
-          example:
-            value:
-              - id: 3c90c3cc-0d44-4b50-8888-8dd25736052a
-                name: <string>
-                type: astradb
-                config:
-                  collection_name: <string>
-                  keyspace: <string>
-                  batch_size: 123
-                  api_endpoint: <string>
-                  token: <string>
-                created_at: '2023-11-07T05:31:56Z'
-                updated_at: '2023-11-07T05:31:56Z'
-        description: Successful Response
-    '422':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              detail:
-                allOf:
-                  - items:
-                      $ref: '#/components/schemas/ValidationError'
-                    type: array
-                    title: Detail
-            title: HTTPValidationError
-            refIdentifier: '#/components/schemas/HTTPValidationError'
-        examples:
-          example:
-            value:
-              detail:
-                - loc:
-                    - <string>
-                  msg: <string>
-                  type: <string>
-        description: Validation Error
-  deprecated: false
-  type: path
+            anyOf:
+              - type: string
+              - type: 'null'
+            title: Unstructured-Api-Key
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/DestinationConnectorInformation'
+                title: Response List Destinations
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
 components:
   schemas:
+    DestinationConnectorType:
+      type: string
+      enum:
+        - azure
+        - astradb
+        - azure_ai_search
+        - couchbase
+        - databricks_volumes
+        - databricks_volume_delta_tables
+        - delta_table
+        - elasticsearch
+        - gcs
+        - kafka-cloud
+        - milvus
+        - mongodb
+        - motherduck
+        - neo4j
+        - onedrive
+        - opensearch
+        - pinecone
+        - postgres
+        - redis
+        - qdrant-cloud
+        - s3
+        - snowflake
+        - teradata
+        - weaviate-cloud
+        - ibm_watsonx_s3
+      title: DestinationConnectorType
+    DestinationConnectorInformation:
+      properties:
+        id:
+          type: string
+          format: uuid
+          title: Id
+        name:
+          type: string
+          title: Name
+        type:
+          anyOf:
+            - $ref: '#/components/schemas/DestinationConnectorType'
+            - type: string
+          title: Type
+        config:
+          anyOf:
+            - $ref: '#/components/schemas/AzureDestinationConnectorConfig'
+            - $ref: '#/components/schemas/AstraDBConnectorConfig'
+            - $ref: '#/components/schemas/AzureAISearchConnectorConfig'
+            - $ref: '#/components/schemas/CouchbaseDestinationConnectorConfig'
+            - $ref: '#/components/schemas/DatabricksVolumesConnectorConfig'
+            - $ref: '#/components/schemas/DatabricksVDTDestinationConnectorConfig'
+            - $ref: '#/components/schemas/DeltaTableConnectorConfig'
+            - $ref: '#/components/schemas/ElasticsearchConnectorConfig'
+            - $ref: '#/components/schemas/GCSDestinationConnectorConfig'
+            - $ref: '#/components/schemas/KafkaCloudDestinationConnectorConfig'
+            - $ref: '#/components/schemas/MilvusDestinationConnectorConfig'
+            - $ref: '#/components/schemas/MongoDBConnectorConfig'
+            - $ref: '#/components/schemas/Neo4jDestinationConnectorConfig'
+            - $ref: '#/components/schemas/OneDriveDestinationConnectorConfig'
+            - $ref: '#/components/schemas/OpenSearchConnectorConfig'
+            - $ref: '#/components/schemas/PineconeDestinationConnectorConfig'
+            - $ref: '#/components/schemas/PostgresDestinationConnectorConfig'
+            - $ref: '#/components/schemas/RedisDestinationConnectorConfig'
+            - $ref: '#/components/schemas/QdrantCloudDestinationConnectorConfig'
+            - $ref: '#/components/schemas/S3DestinationConnectorConfig'
+            - $ref: '#/components/schemas/SnowflakeDestinationConnectorConfig'
+            - $ref: '#/components/schemas/TeradataDestinationConnectorConfig'
+            - $ref: '#/components/schemas/WeaviateDestinationConnectorConfig'
+            - $ref: '#/components/schemas/IBMWatsonxS3DestinationConnectorConfig'
+            - additionalProperties: true
+              type: object
+          title: Config
+        created_at:
+          type: string
+          format: date-time
+          title: Created At
+        updated_at:
+          anyOf:
+            - type: string
+              format: date-time
+            - type: 'null'
+          title: Updated At
+      type: object
+      required:
+        - id
+        - name
+        - type
+        - config
+        - created_at
+      title: DestinationConnectorInformation
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
+    AzureDestinationConnectorConfig:
+      properties:
+        remote_url:
+          type: string
+          title: Remote Url
+        account_name:
+          anyOf:
+            - type: string
+            - type: 'null'
+          title: Account Name
+        account_key:
+          anyOf:
+            - type: string
+            - type: 'null'
+          title: Account Key
+        connection_string:
+          anyOf:
+            - type: string
+            - type: 'null'
+          title: Connection String
+        sas_token:
+          anyOf:
+            - type: string
+            - type: 'null'
+          title: Sas Token
+      type: object
+      required:
+        - remote_url
+      title: AzureDestinationConnectorConfig
     AstraDBConnectorConfig:
       properties:
         collection_name:
@@ -132,12 +206,17 @@ components:
         batch_size:
           type: integer
           title: Batch Size
+        binary_encode_vectors:
+          type: boolean
+          title: Binary Encode Vectors
+          default: true
         api_endpoint:
           type: string
           title: Api Endpoint
         token:
           type: string
           title: Token
+      additionalProperties: true
       type: object
       required:
         - collection_name
@@ -197,6 +276,39 @@ components:
         - username
         - password
       title: CouchbaseDestinationConnectorConfig
+    DatabricksVolumesConnectorConfig:
+      properties:
+        host:
+          type: string
+          title: Host
+        catalog:
+          type: string
+          title: Catalog
+        schema:
+          type: string
+          title: Schema
+          default: default
+        volume:
+          type: string
+          title: Volume
+        volume_path:
+          type: string
+          title: Volume Path
+        client_secret:
+          type: string
+          title: Client Secret
+        client_id:
+          type: string
+          title: Client Id
+      type: object
+      required:
+        - host
+        - catalog
+        - volume
+        - volume_path
+        - client_secret
+        - client_id
+      title: DatabricksVolumesConnectorConfig
     DatabricksVDTDestinationConnectorConfig:
       properties:
         server_hostname:
@@ -251,39 +363,6 @@ components:
         - catalog
         - volume
       title: DatabricksVDTDestinationConnectorConfig
-    DatabricksVolumesConnectorConfig:
-      properties:
-        host:
-          type: string
-          title: Host
-        catalog:
-          type: string
-          title: Catalog
-        schema:
-          type: string
-          title: Schema
-          default: default
-        volume:
-          type: string
-          title: Volume
-        volume_path:
-          type: string
-          title: Volume Path
-        client_secret:
-          type: string
-          title: Client Secret
-        client_id:
-          type: string
-          title: Client Id
-      type: object
-      required:
-        - host
-        - catalog
-        - volume
-        - volume_path
-        - client_secret
-        - client_id
-      title: DatabricksVolumesConnectorConfig
     DeltaTableConnectorConfig:
       properties:
         aws_access_key_id:
@@ -305,87 +384,6 @@ components:
         - aws_region
         - table_uri
       title: DeltaTableConnectorConfig
-    DestinationConnectorInformation:
-      properties:
-        id:
-          type: string
-          format: uuid
-          title: Id
-        name:
-          type: string
-          title: Name
-        type:
-          $ref: '#/components/schemas/DestinationConnectorType'
-        config:
-          anyOf:
-            - $ref: '#/components/schemas/AstraDBConnectorConfig'
-            - $ref: '#/components/schemas/AzureAISearchConnectorConfig'
-            - $ref: '#/components/schemas/CouchbaseDestinationConnectorConfig'
-            - $ref: '#/components/schemas/DatabricksVolumesConnectorConfig'
-            - $ref: '#/components/schemas/DatabricksVDTDestinationConnectorConfig'
-            - $ref: '#/components/schemas/DeltaTableConnectorConfig'
-            - $ref: '#/components/schemas/ElasticsearchConnectorConfig'
-            - $ref: '#/components/schemas/GCSDestinationConnectorConfig'
-            - $ref: '#/components/schemas/KafkaCloudDestinationConnectorConfig'
-            - $ref: '#/components/schemas/MilvusDestinationConnectorConfig'
-            - $ref: '#/components/schemas/MongoDBConnectorConfig'
-            - $ref: '#/components/schemas/Neo4jDestinationConnectorConfig'
-            - $ref: '#/components/schemas/OneDriveDestinationConnectorConfig'
-            - $ref: '#/components/schemas/PineconeDestinationConnectorConfig'
-            - $ref: '#/components/schemas/PostgresDestinationConnectorConfig'
-            - $ref: '#/components/schemas/RedisDestinationConnectorConfig'
-            - $ref: '#/components/schemas/QdrantCloudDestinationConnectorConfig'
-            - $ref: '#/components/schemas/S3DestinationConnectorConfig'
-            - $ref: '#/components/schemas/SnowflakeDestinationConnectorConfig'
-            - $ref: '#/components/schemas/WeaviateDestinationConnectorConfig'
-            - $ref: '#/components/schemas/IBMWatsonxS3DestinationConnectorConfig'
-            - additionalProperties: true
-              type: object
-          title: Config
-        created_at:
-          type: string
-          format: date-time
-          title: Created At
-        updated_at:
-          anyOf:
-            - type: string
-              format: date-time
-            - type: 'null'
-          title: Updated At
-      type: object
-      required:
-        - id
-        - name
-        - type
-        - config
-        - created_at
-      title: DestinationConnectorInformation
-    DestinationConnectorType:
-      type: string
-      enum:
-        - astradb
-        - azure_ai_search
-        - couchbase
-        - databricks_volumes
-        - databricks_volume_delta_tables
-        - delta_table
-        - elasticsearch
-        - gcs
-        - kafka-cloud
-        - milvus
-        - mongodb
-        - motherduck
-        - neo4j
-        - onedrive
-        - pinecone
-        - postgres
-        - redis
-        - qdrant-cloud
-        - s3
-        - snowflake
-        - weaviate-cloud
-        - ibm_watsonx_s3
-      title: DestinationConnectorType
     ElasticsearchConnectorConfig:
       properties:
         hosts:
@@ -418,59 +416,6 @@ components:
         - remote_url
         - service_account_key
       title: GCSDestinationConnectorConfig
-    IBMWatsonxS3DestinationConnectorConfig:
-      properties:
-        iam_api_key:
-          type: string
-          title: Iam Api Key
-        access_key_id:
-          type: string
-          title: Access Key Id
-        secret_access_key:
-          type: string
-          title: Secret Access Key
-        iceberg_endpoint:
-          type: string
-          title: Iceberg Endpoint
-        object_storage_endpoint:
-          type: string
-          title: Object Storage Endpoint
-        object_storage_region:
-          type: string
-          title: Object Storage Region
-        catalog:
-          type: string
-          title: Catalog
-        max_retries_connection:
-          type: integer
-          title: Max Retries Connection
-        namespace:
-          type: string
-          title: Namespace
-        table:
-          type: string
-          title: Table
-        max_retries:
-          type: integer
-          title: Max Retries
-        record_id_key:
-          type: string
-          title: Record Id Key
-      type: object
-      required:
-        - iam_api_key
-        - access_key_id
-        - secret_access_key
-        - iceberg_endpoint
-        - object_storage_endpoint
-        - object_storage_region
-        - catalog
-        - max_retries_connection
-        - namespace
-        - table
-        - max_retries
-        - record_id_key
-      title: IBMWatsonxS3DestinationConnectorConfig
     KafkaCloudDestinationConnectorConfig:
       properties:
         bootstrap_servers:
@@ -613,6 +558,86 @@ components:
         - client_cred
         - remote_url
       title: OneDriveDestinationConnectorConfig
+    OpenSearchConnectorConfig:
+      properties:
+        hosts:
+          items:
+            type: string
+          type: array
+          minItems: 1
+          title: Hosts
+          description: List of OpenSearch hosts to connect to
+        index_name:
+          type: string
+          title: Index Name
+          description: Name of the OpenSearch index to read from or write to
+        username:
+          anyOf:
+            - type: string
+            - type: 'null'
+          title: Username
+          description: Username for basic authentication
+        password:
+          anyOf:
+            - type: string
+            - type: 'null'
+          title: Password
+          description: Password for basic authentication
+        aws_access_key_id:
+          anyOf:
+            - type: string
+            - type: 'null'
+          title: Aws Access Key Id
+          description: >-
+            AWS access key ID for IAM authentication. When provided with
+            aws_secret_access_key, IAM authentication is used instead of basic
+            auth. Region and service type are auto-detected from the host URL.
+        aws_secret_access_key:
+          anyOf:
+            - type: string
+            - type: 'null'
+          title: Aws Secret Access Key
+          description: >-
+            AWS secret access key for IAM authentication. Required when
+            aws_access_key_id is provided.
+        aws_session_token:
+          anyOf:
+            - type: string
+            - type: 'null'
+          title: Aws Session Token
+          description: >-
+            AWS session token for temporary credentials (optional). Only used
+            when aws_access_key_id and aws_secret_access_key are provided.
+        use_ssl:
+          anyOf:
+            - type: boolean
+            - type: 'null'
+          title: Use Ssl
+          description: Whether to use SSL for the connection
+          default: true
+      type: object
+      required:
+        - hosts
+        - index_name
+      title: OpenSearchConnectorConfig
+      description: >-
+        OpenSearch connector configuration.
+
+
+        OpenSearch is a fork of Elasticsearch with similar functionality.
+
+        Supports two authentication methods:
+
+        1. Basic auth: username + password
+
+        2. AWS IAM auth: aws_access_key_id + aws_secret_access_key (+ optional
+        aws_session_token)
+
+
+        For AWS OpenSearch Service or OpenSearch Serverless, region and service
+        type
+
+        are auto-detected from the host URL.
     PineconeDestinationConnectorConfig:
       properties:
         index_name:
@@ -667,27 +692,6 @@ components:
         - table_name
         - batch_size
       title: PostgresDestinationConnectorConfig
-    QdrantCloudDestinationConnectorConfig:
-      properties:
-        url:
-          type: string
-          title: Url
-        api_key:
-          type: string
-          title: Api Key
-        collection_name:
-          type: string
-          title: Collection Name
-        batch_size:
-          type: integer
-          title: Batch Size
-      type: object
-      required:
-        - url
-        - api_key
-        - collection_name
-        - batch_size
-      title: QdrantCloudDestinationConnectorConfig
     RedisDestinationConnectorConfig:
       properties:
         host:
@@ -728,6 +732,27 @@ components:
         - ssl
         - batch_size
       title: RedisDestinationConnectorConfig
+    QdrantCloudDestinationConnectorConfig:
+      properties:
+        url:
+          type: string
+          title: Url
+        api_key:
+          type: string
+          title: Api Key
+        collection_name:
+          type: string
+          title: Collection Name
+        batch_size:
+          type: integer
+          title: Batch Size
+      type: object
+      required:
+        - url
+        - api_key
+        - collection_name
+        - batch_size
+      title: QdrantCloudDestinationConnectorConfig
     S3DestinationConnectorConfig:
       properties:
         remote_url:
@@ -814,6 +839,119 @@ components:
         - database
         - schema
       title: SnowflakeDestinationConnectorConfig
+    TeradataDestinationConnectorConfig:
+      properties:
+        host:
+          type: string
+          title: Host
+        user:
+          type: string
+          title: User
+        password:
+          type: string
+          title: Password
+        database:
+          anyOf:
+            - type: string
+            - type: 'null'
+          title: Database
+        dbs_port:
+          type: integer
+          minimum: 1
+          title: Dbs Port
+          default: 1025
+        table_name:
+          type: string
+          title: Table Name
+          default: elements
+        batch_size:
+          type: integer
+          minimum: 1
+          title: Batch Size
+          default: 50
+        record_id_key:
+          anyOf:
+            - type: string
+            - type: 'null'
+          title: Record Id Key
+          default: record_id
+      type: object
+      required:
+        - host
+        - user
+        - password
+      title: TeradataDestinationConnectorConfig
+    WeaviateDestinationConnectorConfig:
+      properties:
+        cluster_url:
+          type: string
+          title: Cluster Url
+        api_key:
+          type: string
+          title: Api Key
+        collection:
+          anyOf:
+            - type: string
+            - type: 'null'
+          title: Collection
+      type: object
+      required:
+        - cluster_url
+        - api_key
+      title: WeaviateDestinationConnectorConfig
+    IBMWatsonxS3DestinationConnectorConfig:
+      properties:
+        iam_api_key:
+          type: string
+          title: Iam Api Key
+        access_key_id:
+          type: string
+          title: Access Key Id
+        secret_access_key:
+          type: string
+          title: Secret Access Key
+        iceberg_endpoint:
+          type: string
+          title: Iceberg Endpoint
+        object_storage_endpoint:
+          type: string
+          title: Object Storage Endpoint
+        object_storage_region:
+          type: string
+          title: Object Storage Region
+        catalog:
+          type: string
+          title: Catalog
+        max_retries_connection:
+          type: integer
+          title: Max Retries Connection
+        namespace:
+          type: string
+          title: Namespace
+        table:
+          type: string
+          title: Table
+        max_retries:
+          type: integer
+          title: Max Retries
+        record_id_key:
+          type: string
+          title: Record Id Key
+      type: object
+      required:
+        - iam_api_key
+        - access_key_id
+        - secret_access_key
+        - iceberg_endpoint
+        - object_storage_endpoint
+        - object_storage_region
+        - catalog
+        - max_retries_connection
+        - namespace
+        - table
+        - max_retries
+        - record_id_key
+      title: IBMWatsonxS3DestinationConnectorConfig
     ValidationError:
       properties:
         loc:
@@ -835,23 +973,5 @@ components:
         - msg
         - type
       title: ValidationError
-    WeaviateDestinationConnectorConfig:
-      properties:
-        cluster_url:
-          type: string
-          title: Cluster Url
-        api_key:
-          type: string
-          title: Api Key
-        collection:
-          anyOf:
-            - type: string
-            - type: 'null'
-          title: Collection
-      type: object
-      required:
-        - cluster_url
-        - api_key
-      title: WeaviateDestinationConnectorConfig
 
 ````

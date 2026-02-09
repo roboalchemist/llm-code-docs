@@ -1,5 +1,9 @@
 # Source: https://docs.replit.com/replitai/mcp/figma.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.replit.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Figma MCP integration
 
 > Connect Agent to your Figma files via MCP to explore layers, extract design data, capture screenshots, and generate starter code from designs.

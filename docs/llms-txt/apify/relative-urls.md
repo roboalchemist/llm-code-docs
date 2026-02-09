@@ -1,10 +1,12 @@
 # Source: https://docs.apify.com/academy/scraping-basics-javascript/legacy/crawling/relative-urls.md
 
-# Source: https://docs.apify.com/academy/web-scraping-for-beginners/crawling/relative-urls.md
-
 # Relative URLs
 
 **Learn about absolute and relative URLs used on web pages and how to work with them when parsing HTML with Cheerio in your scraper.**
+
+Archived course
+
+This is an archive of our old course. Check out our new [Web scraping basics for JavaScript devs](https://docs.apify.com/academy/scraping-basics-javascript.md) course instead! We plan to completely retire this old course in a few months.
 
 ***
 
@@ -26,13 +28,13 @@ But in the Elements tab, when checking the `<a href="...">` attributes, the URLs
 
 What's up with that? This short version of the URL is called a **relative URL**, and the full length one is called an **absolute URL**.
 
-> https://developer.mozilla.org/en-US/docs/Learn/Common_questions/Web_mechanics/What_is_a_URL#absolute_urls_vs._relative_urls.
+> [Learn more about absolute and relative URLs](https://developer.mozilla.org/en-US/docs/Learn/Common_questions/Web_mechanics/What_is_a_URL#absolute_urls_vs._relative_urls).
 
 We'll see why the difference between relative URLs and absolute URLs is important a bit later in this lesson.
 
 ## Browser vs Node.js: The Differences
 
-Let's update the Node.js code from the https://docs.apify.com/academy/web-scraping-for-beginners/crawling/finding-links.md to see why links with relative URLs can be a problem.
+Let's update the Node.js code from the [Finding links lesson](https://docs.apify.com/academy/scraping-basics-javascript/legacy/crawling/finding-links.md) to see why links with relative URLs can be a problem.
 
 
 ```
@@ -104,4 +106,4 @@ Cheerio can't resolve the URL itself, because until you provide the necessary in
 
 ## Next up
 
-The https://docs.apify.com/academy/web-scraping-for-beginners/crawling/first-crawl.md will teach you how to use the collected URLs to crawl all the individual product pages.
+The [next lesson](https://docs.apify.com/academy/scraping-basics-javascript/legacy/crawling/first-crawl.md) will teach you how to use the collected URLs to crawl all the individual product pages.

@@ -1,5 +1,9 @@
 # Source: https://docs.agent.ai/actions/use_genai.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.agent.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Use GenAI (LLM)
 
 ## Overview

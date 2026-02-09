@@ -1,14 +1,18 @@
 # Source: https://docs.anchorbrowser.io/advanced/popup-blocker.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.anchorbrowser.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Popup Blocker
 
 > Block cookie banners and consent dialogs in your browser sessions
 
 Popup blocking is enabled by default in Anchor Browser. It blocks cookie banners and consent dialogs to create cleaner automation experiences.
 
-<Info>
+<Note>
   Popup blocking is enabled by default. Disable it only if you need to test popup-related functionality.
-</Info>
+</Note>
 
 ## Quick Start
 

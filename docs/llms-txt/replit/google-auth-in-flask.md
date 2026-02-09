@@ -1,5 +1,9 @@
 # Source: https://docs.replit.com/additional-resources/google-auth-in-flask.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.replit.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Google Authentication in Python and Flask
 
 > Learn how to implement Google OAuth authentication in a Flask app on Replit, including user login and Google Sheets API integration.

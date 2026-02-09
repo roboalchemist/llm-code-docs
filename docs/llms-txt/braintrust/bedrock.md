@@ -1,5 +1,9 @@
 # Source: https://braintrust.dev/docs/integrations/ai-providers/bedrock.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://braintrust.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # AWS Bedrock
 
 > Configure AWS Bedrock to access Amazon's foundation models
@@ -34,8 +38,3 @@ Popular AWS Bedrock models include:
 * [AWS Bedrock Documentation](https://docs.aws.amazon.com/bedrock/)
 * [Bedrock Model IDs](https://docs.aws.amazon.com/bedrock/latest/userguide/model-ids.html)
 * [Bedrock Pricing](https://aws.amazon.com/bedrock/pricing/)
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://braintrust.dev/docs/llms.txt

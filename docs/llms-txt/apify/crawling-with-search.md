@@ -8,7 +8,7 @@ Limiting pagination is a common practice on e-commerce sites. It makes sense: a 
 
 ![Pagination in on Google search results page](data:image/png;base64,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)
 
-> In a rush? Skip the tutorial and get the https://github.com/apify-projects/apify-extra-library/tree/master/examples/crawler-with-filters.
+> In a rush? Skip the tutorial and get the [full code example](https://github.com/apify-projects/apify-extra-library/tree/master/examples/crawler-with-filters).
 
 ## How to overcome the limit
 
@@ -70,19 +70,19 @@ Some sites will allow you to construct non-overlapping ranges. For example, you 
 
 Non-overlapping ranges should remove the possibility of duplicate products (unless a ) and the lowest number of pages.
 
-If the website supports only overlapping ranges (e.g. **$0-$5**, **$5–10**), it is not a big problem. Only a small portion of the listings will be duplicates, and they can be removed using a https://docs.apify.com/platform/storage/request-queue.md.
+If the website supports only overlapping ranges (e.g. **$0-$5**, **$5–10**), it is not a big problem. Only a small portion of the listings will be duplicates, and they can be removed using a [request queue](https://docs.apify.com/platform/storage/request-queue.md).
 
 #### Can a listing have more values?
 
 In rare cases, a listing can have more than one value that you are filtering in a range. A typical example is Amazon, where each product has several offers and those offers have different prices. If any of those offers is within the range, the product is shown.
 
-No easy way exists to get around this but the price range split works even with duplicate listings, use a https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set or request queue to deduplicate them.
+No easy way exists to get around this but the price range split works even with duplicate listings, use a [JS set](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set) or request queue to deduplicate them.
 
 #### How is the range passed to the URL?
 
 In the easiest case, you can pass the range directly in the page's URL. For example, `https://example.com/products?price=0-10`. Sometimes, you will need to do some query composition because the price range might be encoded together with more information into a single parameter.
 
-Some sites don't have page URLs with filters and instead load the filtered products via https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest. Those can be GET or POST requests with varying **URL** and **payload** syntax.
+Some sites don't have page URLs with filters and instead load the filtered products via [XHRs](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest). Those can be GET or POST requests with varying **URL** and **payload** syntax.
 
 The nice thing here is that if you get to understand how their internal API works, you can have it return more products per page or extract full product details just from this single request.
 
@@ -284,6 +284,6 @@ await crawler.addRequests(requestsToEnqueue);
 
 ## Summary
 
-And that's it. We have an elegant solution for a complicated problem. In a real project, you would want to make this a bit more robust and https://docs.apify.com/academy/expert-scraping-with-apify/saving-useful-stats.md. This will let you know what filters you went through and how many products each of them had.
+And that's it. We have an elegant solution for a complicated problem. In a real project, you would want to make this a bit more robust and [save analytics data](https://docs.apify.com/academy/expert-scraping-with-apify/saving-useful-stats.md). This will let you know what filters you went through and how many products each of them had.
 
-Check out the https://github.com/apify-projects/apify-extra-library/tree/master/examples/crawler-with-filters.
+Check out the [full code example](https://github.com/apify-projects/apify-extra-library/tree/master/examples/crawler-with-filters).

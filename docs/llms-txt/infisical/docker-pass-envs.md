@@ -1,5 +1,9 @@
 # Source: https://infisical.com/docs/integrations/platforms/docker-pass-envs.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://infisical.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Docker Run
 
 > Learn how to pass secrets to your docker container at run time.

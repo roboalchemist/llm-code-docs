@@ -1,5 +1,9 @@
 # Source: https://docs.chatling.ai/team-members/roles.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.chatling.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Roles & Permissions
 
 > Learn how to invite team members to your project and assign them different roles.

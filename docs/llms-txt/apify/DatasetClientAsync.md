@@ -35,7 +35,7 @@ Async sub-client for manipulating a single dataset.
 
 ## Methods<!-- -->[**](#Methods)
 
-### [**](#__init__)[**](https://undefined/apify/apify-client-python/blob/master//src/apify_client/clients/resource_clients/dataset.py#L647)\_\_init\_\_
+### [**](#__init__)[**](https://undefined/apify/apify-client-python/blob/25ff4e51e07fe25d1d338b042eacba1ec0c63e84//src/apify_client/clients/resource_clients/dataset.py#L647)\_\_init\_\_
 
 * ****\_\_init\_\_**(\*, base\_url, root\_client, http\_client, resource\_id, resource\_path, params): None
 
@@ -73,7 +73,7 @@ Async sub-client for manipulating a single dataset.
 
   #### Returns None
 
-### [**](#create_items_public_url)[**](https://undefined/apify/apify-client-python/blob/master//src/apify_client/clients/resource_clients/dataset.py#L1101)create\_items\_public\_url
+### [**](#create_items_public_url)[**](https://undefined/apify/apify-client-python/blob/25ff4e51e07fe25d1d338b042eacba1ec0c63e84//src/apify_client/clients/resource_clients/dataset.py#L1101)create\_items\_public\_url
 
 * **async **create\_items\_public\_url**(\*, offset, limit, clean, desc, fields, omit, unwind, skip\_empty, skip\_hidden, flatten, view, expires\_in\_secs): str
 
@@ -104,7 +104,7 @@ Async sub-client for manipulating a single dataset.
 
   #### Returns str
 
-### [**](#delete)[**](https://undefined/apify/apify-client-python/blob/master//src/apify_client/clients/resource_clients/dataset.py#L680)delete
+### [**](#delete)[**](https://undefined/apify/apify-client-python/blob/25ff4e51e07fe25d1d338b042eacba1ec0c63e84//src/apify_client/clients/resource_clients/dataset.py#L680)delete
 
 * **async **delete**(): None
 
@@ -116,7 +116,7 @@ Async sub-client for manipulating a single dataset.
 
   #### Returns None
 
-### [**](#get)[**](https://undefined/apify/apify-client-python/blob/master//src/apify_client/clients/resource_clients/dataset.py#L651)get
+### [**](#get)[**](https://undefined/apify/apify-client-python/blob/25ff4e51e07fe25d1d338b042eacba1ec0c63e84//src/apify_client/clients/resource_clients/dataset.py#L651)get
 
 * **async **get**(): dict | None
 
@@ -128,7 +128,7 @@ Async sub-client for manipulating a single dataset.
 
   #### Returns dict | None
 
-### [**](#get_items_as_bytes)[**](https://undefined/apify/apify-client-python/blob/master//src/apify_client/clients/resource_clients/dataset.py#L860)get\_items\_as\_bytes
+### [**](#get_items_as_bytes)[**](https://undefined/apify/apify-client-python/blob/25ff4e51e07fe25d1d338b042eacba1ec0c63e84//src/apify_client/clients/resource_clients/dataset.py#L860)get\_items\_as\_bytes
 
 * **async **get\_items\_as\_bytes**(\*, item\_format, offset, limit, desc, clean, bom, delimiter, fields, omit, unwind, skip\_empty, skip\_header\_row, skip\_hidden, xml\_root, xml\_row, flatten, signature): bytes
 
@@ -210,7 +210,7 @@ Async sub-client for manipulating a single dataset.
 
   #### Returns bytes
 
-### [**](#get_statistics)[**](https://undefined/apify/apify-client-python/blob/master//src/apify_client/clients/resource_clients/dataset.py#L1080)get\_statistics
+### [**](#get_statistics)[**](https://undefined/apify/apify-client-python/blob/25ff4e51e07fe25d1d338b042eacba1ec0c63e84//src/apify_client/clients/resource_clients/dataset.py#L1080)get\_statistics
 
 * **async **get\_statistics**(): dict | None
 
@@ -222,7 +222,7 @@ Async sub-client for manipulating a single dataset.
 
   #### Returns dict | None
 
-### [**](#iterate_items)[**](https://undefined/apify/apify-client-python/blob/master//src/apify_client/clients/resource_clients/dataset.py#L776)iterate\_items
+### [**](#iterate_items)[**](https://undefined/apify/apify-client-python/blob/25ff4e51e07fe25d1d338b042eacba1ec0c63e84//src/apify_client/clients/resource_clients/dataset.py#L776)iterate\_items
 
 * **async **iterate\_items**(\*, offset, limit, clean, desc, fields, omit, unwind, skip\_empty, skip\_hidden, signature): AsyncIterator\[dict]
 
@@ -276,7 +276,7 @@ Async sub-client for manipulating a single dataset.
 
   #### Returns AsyncIterator\[dict]
 
-### [**](#list_items)[**](https://undefined/apify/apify-client-python/blob/master//src/apify_client/clients/resource_clients/dataset.py#L687)list\_items
+### [**](#list_items)[**](https://undefined/apify/apify-client-python/blob/25ff4e51e07fe25d1d338b042eacba1ec0c63e84//src/apify_client/clients/resource_clients/dataset.py#L687)list\_items
 
 * **async **list\_items**(\*, offset, limit, clean, desc, fields, omit, unwind, skip\_empty, skip\_hidden, flatten, view, signature): [ListPage](https://docs.apify.com/api/client/python/api/client/python/reference/class/ListPage.md)
 
@@ -338,7 +338,7 @@ Async sub-client for manipulating a single dataset.
 
   #### Returns [ListPage](https://docs.apify.com/api/client/python/api/client/python/reference/class/ListPage.md)
 
-### [**](#push_items)[**](https://undefined/apify/apify-client-python/blob/master//src/apify_client/clients/resource_clients/dataset.py#L1053)push\_items
+### [**](#push_items)[**](https://undefined/apify/apify-client-python/blob/25ff4e51e07fe25d1d338b042eacba1ec0c63e84//src/apify_client/clients/resource_clients/dataset.py#L1053)push\_items
 
 * **async **push\_items**(items): None
 
@@ -356,7 +356,7 @@ Async sub-client for manipulating a single dataset.
 
   #### Returns None
 
-### [**](#stream_items)[**](https://undefined/apify/apify-client-python/blob/master//src/apify_client/clients/resource_clients/dataset.py#L956)stream\_items
+### [**](#stream_items)[**](https://undefined/apify/apify-client-python/blob/25ff4e51e07fe25d1d338b042eacba1ec0c63e84//src/apify_client/clients/resource_clients/dataset.py#L956)stream\_items
 
 * **async **stream\_items**(\*, item\_format, offset, limit, desc, clean, bom, delimiter, fields, omit, unwind, skip\_empty, skip\_header\_row, skip\_hidden, xml\_root, xml\_row, signature): AsyncIterator\[impit.Response]
 
@@ -434,7 +434,7 @@ Async sub-client for manipulating a single dataset.
 
   #### Returns AsyncIterator\[impit.Response]
 
-### [**](#update)[**](https://undefined/apify/apify-client-python/blob/master//src/apify_client/clients/resource_clients/dataset.py#L661)update
+### [**](#update)[**](https://undefined/apify/apify-client-python/blob/25ff4e51e07fe25d1d338b042eacba1ec0c63e84//src/apify_client/clients/resource_clients/dataset.py#L661)update
 
 * **async **update**(\*, name, general\_access): dict
 
@@ -458,7 +458,7 @@ Async sub-client for manipulating a single dataset.
 
 ## Properties<!-- -->[**](#Properties)
 
-### [**](#http_client)[**](https://undefined/apify/apify-client-python/blob/master//src/apify_client/clients/base/base_client.py#L94)http\_client
+### [**](#http_client)[**](https://undefined/apify/apify-client-python/blob/25ff4e51e07fe25d1d338b042eacba1ec0c63e84//src/apify_client/clients/base/base_client.py#L94)http\_client
 
 **http\_client: [HTTPClient](https://docs.apify.com/api/client/python/api/client/python/reference/class/HTTPClient.md) | [HTTPClientAsync](https://docs.apify.com/api/client/python/api/client/python/reference/class/HTTPClientAsync.md)
 
@@ -466,19 +466,19 @@ Inherited from [BaseClientAsync.http\_client](https://docs.apify.com/api/client/
 
 Overrides [\_BaseBaseClient.http\_client](https://docs.apify.com/api/client/python/api/client/python/reference/class/_BaseBaseClient.md#http_client)
 
-### [**](#params)[**](https://undefined/apify/apify-client-python/blob/master//src/apify_client/clients/base/base_client.py#L17)params
+### [**](#params)[**](https://undefined/apify/apify-client-python/blob/25ff4e51e07fe25d1d338b042eacba1ec0c63e84//src/apify_client/clients/base/base_client.py#L17)params
 
 **params: dict
 
 Inherited from [\_BaseBaseClient.params](https://docs.apify.com/api/client/python/api/client/python/reference/class/_BaseBaseClient.md#params)
 
-### [**](#resource_id)[**](https://undefined/apify/apify-client-python/blob/master//src/apify_client/clients/base/base_client.py#L15)resource\_id
+### [**](#resource_id)[**](https://undefined/apify/apify-client-python/blob/25ff4e51e07fe25d1d338b042eacba1ec0c63e84//src/apify_client/clients/base/base_client.py#L15)resource\_id
 
 **resource\_id: str | None
 
 Inherited from [\_BaseBaseClient.resource\_id](https://docs.apify.com/api/client/python/api/client/python/reference/class/_BaseBaseClient.md#resource_id)
 
-### [**](#root_client)[**](https://undefined/apify/apify-client-python/blob/master//src/apify_client/clients/base/base_client.py#L95)root\_client
+### [**](#root_client)[**](https://undefined/apify/apify-client-python/blob/25ff4e51e07fe25d1d338b042eacba1ec0c63e84//src/apify_client/clients/base/base_client.py#L95)root\_client
 
 **root\_client: [ApifyClient](https://docs.apify.com/api/client/python/api/client/python/reference/class/ApifyClient.md) | [ApifyClientAsync](https://docs.apify.com/api/client/python/api/client/python/reference/class/ApifyClientAsync.md)
 
@@ -486,7 +486,7 @@ Inherited from [BaseClientAsync.root\_client](https://docs.apify.com/api/client/
 
 Overrides [\_BaseBaseClient.root\_client](https://docs.apify.com/api/client/python/api/client/python/reference/class/_BaseBaseClient.md#root_client)
 
-### [**](#url)[**](https://undefined/apify/apify-client-python/blob/master//src/apify_client/clients/base/base_client.py#L16)url
+### [**](#url)[**](https://undefined/apify/apify-client-python/blob/25ff4e51e07fe25d1d338b042eacba1ec0c63e84//src/apify_client/clients/base/base_client.py#L16)url
 
 **url: str
 

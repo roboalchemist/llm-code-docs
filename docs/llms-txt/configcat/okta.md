@@ -2,140 +2,130 @@
 
 # Source: https://configcat.com/docs/advanced/team-management/saml/identity-providers/okta.md
 
-# Source: https://configcat.com/docs/advanced/team-management/scim/identity-providers/okta.md
+# Okta Identity Provider
 
-# Source: https://configcat.com/docs/advanced/team-management/saml/identity-providers/okta.md
+Copy page
 
-# Source: https://configcat.com/docs/advanced/team-management/scim/identity-providers/okta.md
-
-# Source: https://configcat.com/docs/advanced/team-management/saml/identity-providers/okta.md
-
-# Source: https://configcat.com/docs/advanced/team-management/scim/identity-providers/okta.md
-
-# Source: https://configcat.com/docs/advanced/team-management/saml/identity-providers/okta.md
-
-# Source: https://configcat.com/docs/advanced/team-management/scim/identity-providers/okta.md
-
-# Source: https://configcat.com/docs/advanced/team-management/saml/identity-providers/okta.md
-
-# Source: https://configcat.com/docs/advanced/team-management/scim/identity-providers/okta.md
-
-# (Beta) User Provisioning (SCIM) with Okta
-
-info
-
-**Beta Feature**: SCIM provisioning is in public beta. It has been thoroughly tested with various Identity Providers. We're now collecting feedback from real-world usage to fine-tune the experience. Share your feedback [here](https://configcat.com/support).
+Connect ConfigCat with Okta via SAML.
 
 ## Introduction[​](#introduction "Direct link to Introduction")
 
-Each Identity Provider requires specific information to configure a SCIM integration. The following guide will walk you through how you can connect ConfigCat with Okta via SCIM.
+Each SSO Identity Provider requires specific information to configure a SAML integration. The following guide will walk you through how you can connect ConfigCat with Okta as a SAML Identity Provider.
 
 ## 1. Create an Application in Okta[​](#1-create-an-application-in-okta "Direct link to 1. Create an Application in Okta")
 
-* Log in to [Okta](https://login.okta.com/), go to the admin Dashboard, select `Applications`, and click on `Create App Integration`.
+* Log in to [Okta](https://login.okta.com/), go to the admin Dashboard, and select `Applications`.
 
-  ![Okta applications](/docs/assets/scim/okta/create_app.png)
+  ![Okta applications](/docs/assets/saml/okta/applications.png)
+
+* Click on `Create App Integration`.
+
+  ![Okta create app](/docs/assets/saml/okta/create_app.png)
 
 * Select `SAML 2.0` as the Sign-in method.
 
-  ![Okta select SAML](/docs/assets/scim/okta/app_type.png)
+  ![Okta select SAML](/docs/assets/saml/okta/select_saml.png)
 
 * Enter a descriptive `App name`, then click `Next`.
 
-  ![Okta app name](/docs/assets/scim/okta/app_name.png)
+  ![Okta app name](/docs/assets/saml/okta/app_name.png)
 
 The next step will guide you on how to collect the information required for the appearing `Configure SAML` section.
 
-## 2. Configure SAML authentication for the Okta Application[​](#2-configure-saml-authentication-for-the-okta-application "Direct link to 2. Configure SAML authentication for the Okta Application")
+## 2. Configure SAML for the Okta Application[​](#2-configure-saml-for-the-okta-application "Direct link to 2. Configure SAML for the Okta Application")
 
-* Follow our [SAML configuration guide for Okta](https://configcat.com/docs/docs/advanced/team-management/saml/identity-providers/okta/.md#2-configure-saml-for-the-okta-application).
+* Open your organization's authentication settings on the [ConfigCat Dashboard](https://app.configcat.com/organization/authentication).
 
-## 3. Configure Provisioning (SCIM) for the Okta Application[​](#3-configure-provisioning-scim-for-the-okta-application "Direct link to 3. Configure Provisioning (SCIM) for the Okta Application")
+  ![ConfigCat authentication settings](/docs/assets/saml/dashboard/authentication.png)
 
-* Click on `Edit` at the `App Settings`.
+* Click `ADD SAML IDENTITY PROVIDER`.
 
-  ![Okta edit app settings](/docs/assets/scim/okta/edit_settings.png)
+  ![ConfigCat Add Identity Provider](/docs/assets/saml/dashboard/add_idp.png)
 
-* Check the `Enable SCIM provisioning` checkbox, and hit `Save`.
+* Give a name for your Identity Provider, and click `Create`.
 
-  ![Okta enable provisioning](/docs/assets/scim/okta/enable_provisioning.png)
+  ![ConfigCat Name Identity Provider](/docs/assets/saml/dashboard/okta_name.png)
 
-* Gather the `SCIM URL` and the `Token` from the [Authentication & Provisioning](https://app.configcat.com/organization/authentication/) page in ConfigCat.
+* From the next section of the dialog, copy the following values and paste them into the Okta application.
 
-  ![SCIM URL and token](/docs/assets/scim/dashboard/token_generate_url.png) ![SCIM token](/docs/assets/scim/dashboard/token.png)
+  * `Entity ID` -> `Audience URI (SP Entity ID)`
 
-* Select the `Provisioning` tab and click on the `Edit` button.
+  * `Assertion Consumer Service` -> `Single sign on URL`
 
-  ![Okta edit provisioning](/docs/assets/scim/okta/edit_provisioning.png)
+    ![ConfigCat SAML configuration](/docs/assets/saml/dashboard/acs_entity_id_1.png) ![Okta SAML url EID](/docs/assets/saml/okta/okta_acs_eid.png)
 
-* On the `SCIM Connection` section configure the following:
+* Set the `Name ID format` to `EmailAddress`, then click `Next`.
 
-  * Add the `SCIM URL` from the ConfigCat Dashboard as the `SCIM connector base URL`.
+  ![Okta SAML nameid](/docs/assets/saml/okta/okta_name_id.png)
 
-  * Set the `Unique identifier field for users` field to `email`.
+* Select `I'm an Okta customer adding an internal app`. Complete the form with any comments and click `Finish`.
 
-  * Check the following `Supported provisioning actions`:
+  ![Okta SAML feedback](/docs/assets/saml/okta/feedback.png)
 
-    <!-- -->
+## 3. Configure ConfigCat with SAML Details from Okta[​](#3-configure-configcat-with-saml-details-from-okta "Direct link to 3. Configure ConfigCat with SAML Details from Okta")
 
-    * `Push New Users`
-    * `Push Profile Updates`
-    * `Push Groups`
+You can choose one of the following options to configure ConfigCat with SAML Identity Provider metadata.
 
-  * Select the `HTTP Header` as the `Authentication Mode`.
+* Metadata URL
+* Manual Configuration
 
-  * Set the `Token` from the ConfigCat Dashboard as the `HTTP Header Authorization`.
+- Select the `Sign On` tab.
 
-  * Click on `Save`.
-    <br />
-    <br />
+  ![Okta sign on tab](/docs/assets/saml/okta/metadata_url1.png)
 
-  ![Okta SCIM connection](/docs/assets/scim/okta/scim_connection.png)
+- Copy the URL of `View IdP metadata`.
 
-* Select the `To App` menu item and click on `Edit`.
+  ![Okta metadata url](/docs/assets/saml/okta/metadata_url2.png)
 
-  ![Okta To App edit](/docs/assets/scim/okta/to_app_edit.png)
+- Paste the copied value into the `Metadata URL` field at ConfigCat.
 
-* Check the `Create Users`, `Update User Attributes`, and `Deactivate Users` checkboxes, and hit `Save`.
+  ![ConfigCat metadata url](/docs/assets/saml/okta/cc_metadata_new.png)
 
-  ![Okta To App save](/docs/assets/scim/okta/to_app_save.png)
+- Select the **trusted domains**. Only user accounts from trusted domains can login with SAML SSO. You can bind multiple verified domains to a SAML Identity Provider.
 
-## 4. Assign Users/Groups to Okta Application[​](#4-assign-usersgroups-to-okta-application "Direct link to 4. Assign Users/Groups to Okta Application")
+  ![Select trusted domains](/docs/assets/saml/dashboard/select_trusted_domains.png)
 
-To select users for synchronization into ConfigCat, you have to assign their Okta group to the Application.
+- Click on `Save`.
 
-* Select the `Assignments` tab, click on the `Assign` dropdown, and select `Assign to Groups`.
+* Select the `Sign On` tab, and click on `View SAML setup instructions`.
 
-  ![Okta assign groups](/docs/assets/scim/okta/assign_groups.png)
+  ![Okta SAML setup](/docs/assets/saml/okta/manual_setup.png)
 
-* Click the `Assign` button on those groups whose members you want to sync to ConfigCat.
+* Copy the value of the `Identity Provider Single Sign-On URL` and `X.509 Certificate` fields and paste them into the Configuration dialog at ConfigCat.
 
-  ![Okta assign group](/docs/assets/scim/okta/assign_group.png)
+  ![Okta manual configuration](/docs/assets/saml/okta/manual.png)![ConfigCat manual configuration](/docs/assets/saml/okta/manual_cc_new.png)
 
-The above action starts the synchronization of the selected users but not their groups.
+* Select the **trusted domains**. Only user accounts from trusted domains can login with SAML SSO. You can bind multiple verified domains to a SAML Identity Provider.
 
-caution
+  ![Select trusted domains](/docs/assets/saml/dashboard/select_trusted_domains.png)
 
-Okta does not support using the same Okta group for assignments and for syncing group-member relations. You need to create a separate group that is used exclusively for syncing group-member relations. These groups are called `Push Groups` in Okta.
+* Click on `Save`.
 
-To learn more, see [Okta's documentation about Push Groups](https://help.okta.com/en-us/content/topics/users-groups-profiles/usgp-about-group-push.htm).
+## 4. Assign Users to Okta Application[​](#4-assign-users-to-okta-application "Direct link to 4. Assign Users to Okta Application")
 
-To enable group syncing, create separate groups for the users that you want to sync and add these new groups to the application as `Push Groups`.
+To let users authenticate via SAML, you need to assign individual users or groups to the Okta application.
 
-* Go to the `Push Groups` tab, click on the `Push Groups` dropdown, and select `Find groups by name`.
+* Select the `Assignments` tab, and select either the `Assign to People` or the `Assign to Groups` option.
 
-  ![Okta push groups](/docs/assets/scim/okta/push_groups.png)
+  ![Okta assign to groups](/docs/assets/saml/okta/assign.png)
 
-* Select the group that you want to push, and click on the `Save` button.
+## 5. Sign In[​](#5-sign-in "Direct link to 5. Sign In")
 
-  ![Okta add push group](/docs/assets/scim/okta/add_push_group.png)
+* Go to the [ConfigCat Log In](https://app.configcat.com) page, and click `COMPANY ACCOUNT - SAML`.
 
-* Make sure that the created push group's status is active.
+  ![ConfigCat SAML login](/docs/assets/saml/dashboard/saml_login.png)
 
-  ![Okta push group active](/docs/assets/scim/okta/push_group_active.png)
+* Sign in with your company email address assigned to the Okta application.
 
-* You should see each synced group and user on ConfigCat's [Authentication & Provisioning](https://app.configcat.com/organization/authentication/) page.
+  ![ConfigCat SAML company login](/docs/assets/saml/dashboard/company_email.png)
 
-## 5. Next Steps[​](#5-next-steps "Direct link to 5. Next Steps")
+* ConfigCat will redirect you to Okta's sign in page. Type your credentials, and click `Sign In`.
 
-* Continue with [assigning ConfigCat permissions to the synced groups](https://configcat.com/docs/docs/advanced/team-management/scim/scim-overview/.md#groups).
+  ![Okta sign in](/docs/assets/saml/okta/okta_sign_in.png)
+
+* You should be redirected to ConfigCat signed in with your company account.
+
+## 6. Next Steps[​](#6-next-steps "Direct link to 6. Next Steps")
+
+* Configure [User provisioning (SCIM)](https://configcat.com/docs/advanced/team-management/scim/scim-overview.md)
+* or configure the [auto-assignment of users](https://configcat.com/docs/advanced/team-management/auto-assign-users.md) if you don't want to provision your users with your Identity Provider.

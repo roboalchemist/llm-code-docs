@@ -1,5 +1,9 @@
 # Source: https://infisical.com/docs/documentation/platform/pam/product-reference/credential-rotation.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://infisical.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Credential Rotation
 
 > Learn how to automate credential rotation for your PAM resources.
@@ -46,8 +50,3 @@ Automated rotation is currently supported for the following resource types:
 <Note>
   We are constantly adding support for more resource types.
 </Note>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://infisical.com/docs/llms.txt

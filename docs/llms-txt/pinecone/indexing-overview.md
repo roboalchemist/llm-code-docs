@@ -1,5 +1,9 @@
 # Source: https://docs.pinecone.io/guides/index-data/indexing-overview.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pinecone.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Indexing overview
 
 > Understand key concepts related to indexing data in Pinecone.
@@ -35,7 +39,7 @@ Learn more:
 * [Lexical search](/guides/search/lexical-search)
 
 <Tip>
-  Semantic search can miss results based on exact keyword matches, while lexical search can miss results based on relationships. To lift these limitations, you can perform [hybrid search](/guides/search/hybrid-search).
+  Semantic search can miss results based on exact keyword matches, while lexical search can miss results based on relationships. To work around these limitations, you can perform [hybrid search](/guides/search/hybrid-search).
 </Tip>
 
 #### Limitations
@@ -180,6 +184,10 @@ Pinecone's filtering language supports the following operators:
 
 <Note>
   Only `$and` and `$or` are allowed at the top level of the query expression.
+</Note>
+
+<Note>
+  Each `$in` or `$nin` operator accepts a maximum of 10,000 values. Exceeding this limit will cause the request to fail. For more information, see [Metadata filter limits](/reference/api/database-limits#metadata-filter-limits).
 </Note>
 
 For example, the following has a `"genre"` metadata field with a list of strings:

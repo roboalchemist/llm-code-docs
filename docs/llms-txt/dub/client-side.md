@@ -2,13 +2,9 @@
 
 # Source: https://dub.co/docs/conversions/leads/client-side.md
 
-# Source: https://dub.co/docs/conversions/sales/client-side.md
-
-# Source: https://dub.co/docs/conversions/leads/client-side.md
-
-# Source: https://dub.co/docs/conversions/sales/client-side.md
-
-# Source: https://dub.co/docs/conversions/leads/client-side.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://dub.co/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Client-side tracking
 
@@ -225,7 +221,7 @@ Then, you'll need to install the Dub client-side script and set up the necessary
 
 Once the analytics script is installed, you can start tracking lead events in your application on the client-side.
 
-### Track leads from URL query parameters
+### Track leads from URL query parameters (recommended)
 
 If you redirect users to a thank-you page after a successful action, you can track leads by reading query parameters from the URL.
 

@@ -1,5 +1,9 @@
 # Source: https://docs.ollama.com/windows.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.ollama.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Windows
 
 Ollama runs as a native Windows application, including NVIDIA and AMD Radeon GPU support.

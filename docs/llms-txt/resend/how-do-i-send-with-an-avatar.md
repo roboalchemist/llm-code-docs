@@ -1,5 +1,9 @@
 # Source: https://resend.com/docs/knowledge-base/how-do-i-send-with-an-avatar.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://resend.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # How do I send with an avatar?
 
 > Learn how to show your avatar in the inbox of your recipients.
@@ -42,7 +46,7 @@ Avatars in Yahoo only display in the mobile app and inside an opened email on de
 
 ## Apple Mail
 
-Apple Mail only shows avatars if recipients have added images to contacts. Alternatively, you can set up [Apple Branded Mail](/knowledge-base/how-do-i-set-set-up-apple-branded-mail), a proprietary Apple format that displays your logo as an avatar in the inbox of Apple Mail, or [set up BIMI](/dashboard/domains/bimi#what-is-bimi) with a Verified Mark Certificate (Apple Mail does not support CMC).
+Apple Mail only shows avatars if recipients have added images to contacts. Alternatively, you can set up [Apple Branded Mail](/knowledge-base/how-do-i-set-set-up-apple-branded-mail), a proprietary Apple format introduced with iOS 18.2 that displays your logo as an avatar in the inbox of Apple Mail, or [set up BIMI](/dashboard/domains/bimi#what-is-bimi) with a Verified Mark Certificate.
 
 ## Using Gravatar
 
@@ -59,7 +63,7 @@ This means **you can only**:
 1. Add your avatar to a real inbox, limiting it only to that provider
 2. Send mail from the same address that you set the avatar on
 
-The way around this is [BIMI (Brand Indicators for Message Identification)](/dashboard/domains/bimi). It is much more difficult to obtain, but supports by nearly all providers and allows you to send from any address on that domain.
+The way around this is [BIMI (Brand Indicators for Message Identification)](/dashboard/domains/bimi). BIMI now supports Common Mark Certificates (CMC) in addition to Verified Mark Certificates (VMC), making it more accessible. It is supported by nearly all major providers and allows you to send from any address on that domain.
 
 <Note>
   Need assistance setting up BIMI? [We can help](https://resend.com/help).

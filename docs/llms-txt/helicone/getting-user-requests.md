@@ -1,5 +1,9 @@
 # Source: https://docs.helicone.ai/guides/cookbooks/getting-user-requests.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.helicone.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Getting User Requests
 
 > Use the Request API to retrieve user-specific requests, allowing you to monitor, debug, and track costs for individual users.

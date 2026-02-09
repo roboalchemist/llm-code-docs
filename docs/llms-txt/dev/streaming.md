@@ -1,5 +1,9 @@
 # Source: https://dev.writer.com/home/streaming.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://dev.writer.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Stream responses from the API
 
 > Stream API responses in real-time with Server-Sent Events. Reduce latency and display generated content as it's created for better user experience.

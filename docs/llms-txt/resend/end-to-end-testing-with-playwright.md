@@ -1,5 +1,9 @@
 # Source: https://resend.com/docs/knowledge-base/end-to-end-testing-with-playwright.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://resend.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # How to set up E2E testing with Playwright
 
 > End to end testing ensures your entire app flow is fully functioning.
@@ -18,7 +22,7 @@ Prefer watching a video? Check out our video walkthrough below.
 
 For simplicity, we'll create a GET endpoint that sends an email to the testing account, `delivered@resend.dev` on fetch.
 
-```ts app/api/send/route.ts theme={null}
+```ts app/api/send/route.ts theme={"theme":{"light":"github-light","dark":"vesper"}}
 import { Resend } from 'resend';
 const resend = new Resend(process.env.RESEND_API_KEY);
 
@@ -50,7 +54,7 @@ Create a test spec file at `e2e/app.spec.ts`. You can test in two ways:
 
 Calling the Resend API tests the entire API flow, including Resend's API responses, but counts towards your account's sending quota.
 
-```ts e2e/app.spec.ts theme={null}
+```ts e2e/app.spec.ts theme={"theme":{"light":"github-light","dark":"vesper"}}
 import { test, expect } from '@playwright/test';
 
 test('does not mock the response and calls the Resend API', async ({
@@ -68,7 +72,7 @@ test('does not mock the response and calls the Resend API', async ({
 
 Mocking the response lets you test *your* app's flow without calling the Resend API and impacting your account's sending quota.
 
-```ts e2e/app.spec.ts theme={null}
+```ts e2e/app.spec.ts theme={"theme":{"light":"github-light","dark":"vesper"}}
 import { test, expect } from '@playwright/test';
 
 test("mocks the response and doesn't call the Resend API", async ({ page }) => {
@@ -106,7 +110,7 @@ Write your config file, paying special attention to a few properties:
 * `webServer`: provide instructions for Playwright to run your app before starting the tests
 * `projects`: an array of the browsers you want to test
 
-```ts playwright.config.ts theme={null}
+```ts playwright.config.ts theme={"theme":{"light":"github-light","dark":"vesper"}}
 import { defineConfig, devices } from '@playwright/test';
 import path from 'path';
 
@@ -171,7 +175,7 @@ export default defineConfig({
 
 You can run the test by installing Playwright and running the tests.
 
-```bash  theme={null}
+```bash  theme={"theme":{"light":"github-light","dark":"vesper"}}
 npx playwright install
 npx playwright test
 ```

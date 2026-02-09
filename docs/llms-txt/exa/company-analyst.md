@@ -1,4 +1,8 @@
-# Source: https://docs.exa.ai/examples/company-analyst.md
+# Source: https://exa.ai/docs/examples/company-analyst.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://exa.ai/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Company Analyst
 
@@ -35,7 +39,7 @@ Exa is a fully neural search engine built using a foundational embeddings model 
 
 Let's try Exa, using the Python SDK! We can use the`find_similar_and_contents` function to find similar links and get contents from each link. The input is simply a URL, [https://thrift.house](https://thrift.house) and we set `num_results=10`(this is customizable up to thousands of results in Exa).
 
-By specifying `highlights={"num_sentences":2}` for each search result, Exa will also identify and return a two sentence excerpt from the content that's relevant to our query. This will allow us to quickly understand each website that we find.
+By specifying `highlights={"max_characters":2000}` for each search result, Exa will also identify and return relevant excerpts from the content. This will allow us to quickly understand each website that we find.
 
 ```Python Python theme={null}
 !pip install exa_py
@@ -50,7 +54,7 @@ input_url = "https://thrift.house"
 
 search_response = exa.find_similar_and_contents(
         input_url,
-        highlights={"num_sentences":2},
+        highlights={"max_characters":2000},
         num_results=10)
 
 companies = search_response.results
@@ -181,8 +185,3 @@ And we’re done! We’ve built an app that takes in a company webpage and uses 
 3. Gather useful content and summarize it with OpenAI
 
 Hopefully you found this tutorial helpful and are ready to start building your very own company analyst! Whether you want to generate sales leads or research competitors to your own company, Exa's got you covered.
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.exa.ai/llms.txt

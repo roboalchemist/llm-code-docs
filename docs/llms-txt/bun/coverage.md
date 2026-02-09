@@ -1,5 +1,9 @@
 # Source: https://bun.com/docs/guides/test/coverage.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://bun.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Generate code coverage reports with the Bun test runner
 
 Bun's test runner supports built-in *code coverage reporting*. This makes it easy to see how much of the codebase is covered by tests and find areas that are not currently well-tested.
@@ -44,4 +48,4 @@ coverage = true # always enable coverage
 
 ***
 
-Refer to [Docs > Test runner > Coverage](https://bun.sh/docs/test/coverage) for complete documentation on code coverage reporting in Bun.
+Refer to [Docs > Test runner > Coverage](/test/code-coverage) for complete documentation on code coverage reporting in Bun.

@@ -1,8 +1,18 @@
 # Source: https://graphite-58cc94ce.mintlify.dev/docs/navigate-stack.md
 
+## Documentation Index
+
+Fetch the complete documentation index at: https://graphite-58cc94ce.mintlify.dev/docs/llms.txt
+
+Use this file to discover all available pages before exploring further.
+
 # Navigate A Stack
 
 > Learn how to navigate stacked branches with the Graphite CLI.
+
+<Frame>
+  <iframe width="750" height="360" src="https://www.youtube.com/embed/pYKuimOYWaA?si=lfPQ3iocq2z9UU8Z" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen />
+</Frame>
 
 ## Prerequisites
 
@@ -12,7 +22,7 @@ To navigate a stack of branches with the Graphite CLI, make sure you've:
 
 * [Authenticated with GitHub](/install-the-cli#authenticating-the-cli)
 
-* [Initialized `gt`](/initialize-in-a-repo) in a repo of your choice
+* [Initialized `gt`](/cli-quick-start#initializing-graphite) in a repo of your choice
 
 * [Created](/create-stack) or tracked a branch/stack of branches
 

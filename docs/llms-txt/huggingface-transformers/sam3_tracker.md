@@ -1,4 +1,4 @@
-# Source: https://huggingface.co/docs/transformers/v5.0.0rc1/model_doc/sam3_tracker.md
+# Source: https://huggingface.co/docs/transformers/v5.0.0/model_doc/sam3_tracker.md
 
 # SAM3 Tracker
 
@@ -282,15 +282,15 @@ Sam3Tracker can use masks from previous predictions as input to refine segmentat
 
 #### transformers.Sam3TrackerConfig[[transformers.Sam3TrackerConfig]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/sam3_tracker/configuration_sam3_tracker.py#L152)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/sam3_tracker/configuration_sam3_tracker.py#L150)
 
-[Sam3TrackerConfig](/docs/transformers/v5.0.0rc1/en/model_doc/sam3_tracker#transformers.Sam3TrackerConfig) is the configuration class to store the configuration of a [Sam3TrackerModel](/docs/transformers/v5.0.0rc1/en/model_doc/sam3_tracker#transformers.Sam3TrackerModel). It is used to instantiate a
+[Sam3TrackerConfig](/docs/transformers/v5.0.0/en/model_doc/sam3_tracker#transformers.Sam3TrackerConfig) is the configuration class to store the configuration of a [Sam3TrackerModel](/docs/transformers/v5.0.0/en/model_doc/sam3_tracker#transformers.Sam3TrackerModel). It is used to instantiate a
 SAM3_TRACKER model according to the specified arguments, defining the memory attention, memory encoder, and image encoder
 configs. Instantiating a configuration defaults will yield a similar configuration to that of the SAM 2.1 Hiera-tiny
 [facebook/sam3_tracker.1-hiera-tiny](https://huggingface.co/facebook/sam3_tracker.1-hiera-tiny) architecture.
 
-Configuration objects inherit from [PreTrainedConfig](/docs/transformers/v5.0.0rc1/en/main_classes/configuration#transformers.PreTrainedConfig) and can be used to control the model outputs. Read the
-documentation from [PreTrainedConfig](/docs/transformers/v5.0.0rc1/en/main_classes/configuration#transformers.PreTrainedConfig) for more information.
+Configuration objects inherit from [PreTrainedConfig](/docs/transformers/v5.0.0/en/main_classes/configuration#transformers.PreTrainedConfig) and can be used to control the model outputs. Read the
+documentation from [PreTrainedConfig](/docs/transformers/v5.0.0/en/main_classes/configuration#transformers.PreTrainedConfig) for more information.
 
 Example:
 
@@ -303,7 +303,7 @@ Example:
 ... )
 
 >>> # Initializing a Sam3TrackerConfig with `"facebook/sam3_tracker.1_hiera_tiny"` style configuration
->>> configuration = Sam3Trackerconfig()
+>>> configuration = Sam3TrackerConfig()
 
 >>> # Initializing a Sam3TrackerModel (with random weights) from the `"facebook/sam3_tracker.1_hiera_tiny"` style configuration
 >>> model = Sam3TrackerModel(configuration)
@@ -325,9 +325,9 @@ Example:
 
 vision_config (Union[`dict`, `Sam3TrackerVisionConfig`], *optional*) : Dictionary of configuration options used to initialize `Sam3TrackerVisionConfig`.
 
-prompt_encoder_config (Union[`dict`, `Sam3TrackerPromptEncoderConfig`], *optional*) : Dictionary of configuration options used to initialize [Sam3TrackerPromptEncoderConfig](/docs/transformers/v5.0.0rc1/en/model_doc/sam3_tracker#transformers.Sam3TrackerPromptEncoderConfig).
+prompt_encoder_config (Union[`dict`, `Sam3TrackerPromptEncoderConfig`], *optional*) : Dictionary of configuration options used to initialize [Sam3TrackerPromptEncoderConfig](/docs/transformers/v5.0.0/en/model_doc/sam3_tracker#transformers.Sam3TrackerPromptEncoderConfig).
 
-mask_decoder_config (Union[`dict`, `Sam3TrackerMaskDecoderConfig`], *optional*) : Dictionary of configuration options used to initialize [Sam3TrackerMaskDecoderConfig](/docs/transformers/v5.0.0rc1/en/model_doc/sam3_tracker#transformers.Sam3TrackerMaskDecoderConfig).
+mask_decoder_config (Union[`dict`, `Sam3TrackerMaskDecoderConfig`], *optional*) : Dictionary of configuration options used to initialize [Sam3TrackerMaskDecoderConfig](/docs/transformers/v5.0.0/en/model_doc/sam3_tracker#transformers.Sam3TrackerMaskDecoderConfig).
 
 initializer_range (`float`, *optional*, defaults to 0.02) : Standard deviation for parameter initialization.
 
@@ -335,13 +335,13 @@ initializer_range (`float`, *optional*, defaults to 0.02) : Standard deviation f
 
 #### transformers.Sam3TrackerPromptEncoderConfig[[transformers.Sam3TrackerPromptEncoderConfig]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/sam3_tracker/configuration_sam3_tracker.py#L27)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/sam3_tracker/configuration_sam3_tracker.py#L25)
 
 This is the configuration class to store the configuration of a `Sam3TrackerPromptEncoder`. The `Sam3TrackerPromptEncoder`
 module is used to encode the input 2D points and bounding boxes.
 
-Configuration objects inherit from [PreTrainedConfig](/docs/transformers/v5.0.0rc1/en/main_classes/configuration#transformers.PreTrainedConfig) and can be used to control the model outputs. Read the
-documentation from [PreTrainedConfig](/docs/transformers/v5.0.0rc1/en/main_classes/configuration#transformers.PreTrainedConfig) for more information.
+Configuration objects inherit from [PreTrainedConfig](/docs/transformers/v5.0.0/en/main_classes/configuration#transformers.PreTrainedConfig) and can be used to control the model outputs. Read the
+documentation from [PreTrainedConfig](/docs/transformers/v5.0.0/en/main_classes/configuration#transformers.PreTrainedConfig) for more information.
 
 **Parameters:**
 
@@ -365,13 +365,13 @@ scale (`float`, *optional*, defaults to 1) : The scale factor for the prompt enc
 
 #### transformers.Sam3TrackerMaskDecoderConfig[[transformers.Sam3TrackerMaskDecoderConfig]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/sam3_tracker/configuration_sam3_tracker.py#L79)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/sam3_tracker/configuration_sam3_tracker.py#L77)
 
 This is the configuration class to store the configuration of a `Sam3TrackerMaskDecoder`. It is used to instantiate a SAM3_TRACKER
 memory encoder according to the specified arguments, defining the model architecture.
 
-Configuration objects inherit from [PreTrainedConfig](/docs/transformers/v5.0.0rc1/en/main_classes/configuration#transformers.PreTrainedConfig) and can be used to control the model outputs. Read the
-documentation from [PreTrainedConfig](/docs/transformers/v5.0.0rc1/en/main_classes/configuration#transformers.PreTrainedConfig) for more information.
+Configuration objects inherit from [PreTrainedConfig](/docs/transformers/v5.0.0/en/main_classes/configuration#transformers.PreTrainedConfig) and can be used to control the model outputs. Read the
+documentation from [PreTrainedConfig](/docs/transformers/v5.0.0/en/main_classes/configuration#transformers.PreTrainedConfig) for more information.
 
 **Parameters:**
 
@@ -403,16 +403,16 @@ dynamic_multimask_stability_thresh (`float`, *optional*, defaults to 0.98) : The
 
 #### transformers.Sam3TrackerProcessor[[transformers.Sam3TrackerProcessor]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/sam3_tracker/processing_sam3_tracker.py#L37)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/sam3_tracker/processing_sam3_tracker.py#L35)
 
-Constructs a SAM3_TRACKER processor which wraps a SAM3_TRACKER image processor and an 2D points & Bounding boxes processor into a
-single processor.
+Constructs a Sam3TrackerProcessor which wraps a image processor into a single processor.
 
-[Sam3TrackerProcessor](/docs/transformers/v5.0.0rc1/en/model_doc/sam3_tracker#transformers.Sam3TrackerProcessor) offers all the functionalities of `Sam3TrackerImageProcessorFast` and [Sam3TrackerVideoProcessor](/docs/transformers/v5.0.0rc1/en/model_doc/sam3_tracker_video#transformers.Sam3TrackerVideoProcessor). See the docstring of
-`~Sam3TrackerImageProcessorFast.__call__` and [__call__()](/docs/transformers/v5.0.0rc1/en/model_doc/sam3_tracker_video#transformers.Sam3TrackerVideoProcessor.__call__) for more information.
+[Sam3TrackerProcessor](/docs/transformers/v5.0.0/en/model_doc/sam3_tracker#transformers.Sam3TrackerProcessor) offers all the functionalities of [Sam3ImageProcessorFast](/docs/transformers/v5.0.0/en/model_doc/sam3#transformers.Sam3ImageProcessorFast). See the
+[~Sam3ImageProcessorFast](/docs/transformers/v5.0.0/en/model_doc/sam3#transformers.Sam3ImageProcessorFast) for more information.
 
-__call__transformers.Sam3TrackerProcessor.__call__https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/sam3_tracker/processing_sam3_tracker.py#L59[{"name": "images", "val": ": typing.Union[ForwardRef('PIL.Image.Image'), numpy.ndarray, ForwardRef('torch.Tensor'), list['PIL.Image.Image'], list[numpy.ndarray], list['torch.Tensor'], NoneType] = None"}, {"name": "segmentation_maps", "val": ": typing.Union[ForwardRef('PIL.Image.Image'), numpy.ndarray, ForwardRef('torch.Tensor'), list['PIL.Image.Image'], list[numpy.ndarray], list['torch.Tensor'], NoneType] = None"}, {"name": "input_points", "val": ": typing.Union[list[list[list[list[float]]]], torch.Tensor, NoneType] = None"}, {"name": "input_labels", "val": ": typing.Union[list[list[list[int]]], torch.Tensor, NoneType] = None"}, {"name": "input_boxes", "val": ": typing.Union[list[list[list[float]]], torch.Tensor, NoneType] = None"}, {"name": "original_sizes", "val": ": typing.Union[list[list[float]], torch.Tensor, NoneType] = None"}, {"name": "return_tensors", "val": ": typing.Union[str, transformers.utils.generic.TensorType, NoneType] = None"}, {"name": "**kwargs", "val": ""}]- **images** (`ImageInput`, *optional*) --
-  The image(s) to process.
+__call__transformers.Sam3TrackerProcessor.__call__https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/sam3_tracker/processing_sam3_tracker.py#L51[{"name": "images", "val": ": typing.Union[ForwardRef('PIL.Image.Image'), numpy.ndarray, ForwardRef('torch.Tensor'), list['PIL.Image.Image'], list[numpy.ndarray], list['torch.Tensor'], NoneType] = None"}, {"name": "segmentation_maps", "val": ": typing.Union[ForwardRef('PIL.Image.Image'), numpy.ndarray, ForwardRef('torch.Tensor'), list['PIL.Image.Image'], list[numpy.ndarray], list['torch.Tensor'], NoneType] = None"}, {"name": "input_points", "val": ": list[list[list[list[float]]]] | torch.Tensor | None = None"}, {"name": "input_labels", "val": ": list[list[list[int]]] | torch.Tensor | None = None"}, {"name": "input_boxes", "val": ": list[list[list[float]]] | torch.Tensor | None = None"}, {"name": "original_sizes", "val": ": list[list[float]] | torch.Tensor | None = None"}, {"name": "return_tensors", "val": ": str | transformers.utils.generic.TensorType | None = None"}, {"name": "**kwargs", "val": ""}]- **images** (`Union[PIL.Image.Image, numpy.ndarray, torch.Tensor, list, list, list]`, *optional*) --
+  Image to preprocess. Expects a single or batch of images with pixel values ranging from 0 to 255. If
+  passing in images with pixel values between 0 and 1, set `do_rescale=False`.
 - **segmentation_maps** (`ImageInput`, *optional*) --
   The segmentation maps to process.
 - **input_points** (`list[list[list[list[float]]]]`, `torch.Tensor`, *optional*) --
@@ -423,30 +423,28 @@ __call__transformers.Sam3TrackerProcessor.__call__https://github.com/huggingface
   The bounding boxes to add to the frame.
 - **original_sizes** (`list[list[float]]`, `torch.Tensor`, *optional*) --
   The original sizes of the images.
-- **return_tensors** (`str` or `TensorType`, *optional*) --
-  The type of tensors to return.
-- ****kwargs** --
-  Additional keyword arguments to pass to the image processor.0A [BatchEncoding](/docs/transformers/v5.0.0rc1/en/main_classes/tokenizer#transformers.BatchEncoding) with the following fields- `pixel_values` (`torch.Tensor`): The processed image(s).
+- **return_tensors** (`Union[str, ~utils.generic.TensorType]`, *optional*) --
+  If set, will return tensors of a particular framework. Acceptable values are:
+
+  - `'pt'`: Return PyTorch `torch.Tensor` objects.
+  - `'np'`: Return NumPy `np.ndarray` objects.0A [BatchEncoding](/docs/transformers/v5.0.0/en/main_classes/tokenizer#transformers.BatchEncoding) with the following fields- `pixel_values` (`torch.Tensor`): The processed image(s).
 - `original_sizes` (`list[list[float]]`): The original sizes of the images.
 - `labels` (`torch.Tensor`): The processed segmentation maps (if provided).
 - `input_points` (`torch.Tensor`): The processed points.
 - `input_labels` (`torch.Tensor`): The processed labels.
 - `input_boxes` (`torch.Tensor`): The processed bounding boxes.
 
-This method uses `Sam3TrackerImageProcessorFast.__call__` method to prepare image(s) for the model. It also prepares 2D
-points and bounding boxes for the model if they are provided.
-
 **Parameters:**
 
-image_processor (`Sam3TrackerImageProcessorFast`) : An instance of `Sam3TrackerImageProcessorFast`.
+image_processor (`Sam3ImageProcessorFast`) : The image processor is a required input.
 
-target_size (`int`, *optional*) : The target size (target_size, target_size) to which the image will be resized.
+target_size (`int`, *optional*) : The target size (in pixels) for normalizing input points and bounding boxes. If not provided, defaults to the image processor's size configuration. All input coordinates (points and boxes) are normalized to this size before being passed to the model. This ensures consistent coordinate representation regardless of the original image dimensions.
 
-point_pad_value (`int`, *optional*, defaults to -10) : The value used for padding input points.
+point_pad_value (`int`, *optional*, defaults to -10) : The value used for padding input points when batching sequences of different lengths. This value is used to mark padded positions and is preserved during coordinate normalization.
 
 **Returns:**
 
-`A [BatchEncoding](/docs/transformers/v5.0.0rc1/en/main_classes/tokenizer#transformers.BatchEncoding) with the following fields`
+`A [BatchEncoding](/docs/transformers/v5.0.0/en/main_classes/tokenizer#transformers.BatchEncoding) with the following fields`
 
 - `pixel_values` (`torch.Tensor`): The processed image(s).
 - `original_sizes` (`list[list[float]]`): The original sizes of the images.
@@ -456,7 +454,7 @@ point_pad_value (`int`, *optional*, defaults to -10) : The value used for paddin
 - `input_boxes` (`torch.Tensor`): The processed bounding boxes.
 #### post_process_masks[[transformers.Sam3TrackerProcessor.post_process_masks]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/sam3_tracker/processing_sam3_tracker.py#L474)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/sam3_tracker/processing_sam3_tracker.py#L457)
 
 Remove padding and upscale masks to the original image size.
 
@@ -487,12 +485,12 @@ is given by original_size.
 
 #### transformers.Sam3TrackerModel[[transformers.Sam3TrackerModel]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/sam3_tracker/modeling_sam3_tracker.py#L762)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/sam3_tracker/modeling_sam3_tracker.py#L770)
 
 Segment Anything Model 2 (SAM 2) for generating segmentation masks, given an input image and
 input points and labels, boxes, or masks.
 
-This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
+This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
 library implements for all its model (such as downloading or saving, resizing the input embeddings, pruning heads
 etc.)
 
@@ -500,10 +498,10 @@ This model is also a PyTorch [torch.nn.Module](https://pytorch.org/docs/stable/n
 Use it as a regular PyTorch Module and refer to the PyTorch documentation for all matter related to general usage
 and behavior.
 
-forwardtransformers.Sam3TrackerModel.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/sam3_tracker/modeling_sam3_tracker.py#L878[{"name": "pixel_values", "val": ": typing.Optional[torch.FloatTensor] = None"}, {"name": "input_points", "val": ": typing.Optional[torch.FloatTensor] = None"}, {"name": "input_labels", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "input_boxes", "val": ": typing.Optional[torch.FloatTensor] = None"}, {"name": "input_masks", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "image_embeddings", "val": ": typing.Optional[torch.FloatTensor] = None"}, {"name": "multimask_output", "val": ": bool = True"}, {"name": "attention_similarity", "val": ": typing.Optional[torch.FloatTensor] = None"}, {"name": "target_embedding", "val": ": typing.Optional[torch.FloatTensor] = None"}, {"name": "**kwargs", "val": ": typing_extensions.Unpack[transformers.utils.generic.TransformersKwargs]"}]- **pixel_values** (`torch.FloatTensor` of shape `(batch_size, num_channels, image_size, image_size)`, *optional*) --
+forwardtransformers.Sam3TrackerModel.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/sam3_tracker/modeling_sam3_tracker.py#L888[{"name": "pixel_values", "val": ": torch.FloatTensor | None = None"}, {"name": "input_points", "val": ": torch.FloatTensor | None = None"}, {"name": "input_labels", "val": ": torch.LongTensor | None = None"}, {"name": "input_boxes", "val": ": torch.FloatTensor | None = None"}, {"name": "input_masks", "val": ": torch.LongTensor | None = None"}, {"name": "image_embeddings", "val": ": torch.FloatTensor | None = None"}, {"name": "multimask_output", "val": ": bool = True"}, {"name": "attention_similarity", "val": ": torch.FloatTensor | None = None"}, {"name": "target_embedding", "val": ": torch.FloatTensor | None = None"}, {"name": "**kwargs", "val": ": typing_extensions.Unpack[transformers.utils.generic.TransformersKwargs]"}]- **pixel_values** (`torch.FloatTensor` of shape `(batch_size, num_channels, image_size, image_size)`, *optional*) --
   The tensors corresponding to the input images. Pixel values can be obtained using
-  `image_processor_class`. See `image_processor_class.__call__` for details (`processor_class` uses
-  `image_processor_class` for processing images).
+  [Sam3ImageProcessorFast](/docs/transformers/v5.0.0/en/model_doc/sam3#transformers.Sam3ImageProcessorFast). See [Sam3ImageProcessorFast.__call__()](/docs/transformers/v5.0.0/en/model_doc/fuyu#transformers.FuyuImageProcessor.__call__) for details (`processor_class` uses
+  [Sam3ImageProcessorFast](/docs/transformers/v5.0.0/en/model_doc/sam3#transformers.Sam3ImageProcessorFast) for processing images).
 - **input_points** (`torch.FloatTensor` of shape `(batch_size, num_points, 2)`) --
   Input 2D spatial points, this is used by the prompt encoder to encode the prompt. Generally yields to much
   better results. The points can be obtained by passing a list of list of list to the processor that will
@@ -557,7 +555,7 @@ forwardtransformers.Sam3TrackerModel.forwardhttps://github.com/huggingface/trans
   Embedding of the target concept, to be provided to the mask decoder for target-semantic prompting in case
   the model is used for personalization as introduced in [PerSAM](https://huggingface.co/papers/2305.03048).0`transformers.models.sam3_tracker.modeling_sam3_tracker.Sam3TrackerImageSegmentationOutput` or `tuple(torch.FloatTensor)`A `transformers.models.sam3_tracker.modeling_sam3_tracker.Sam3TrackerImageSegmentationOutput` or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([Sam3TrackerConfig](/docs/transformers/v5.0.0rc1/en/model_doc/sam3_tracker#transformers.Sam3TrackerConfig)) and inputs.
+elements depending on the configuration ([Sam3TrackerConfig](/docs/transformers/v5.0.0/en/model_doc/sam3_tracker#transformers.Sam3TrackerConfig)) and inputs.
 
 - **iou_scores** (`torch.FloatTensor` of shape `(batch_size, point_batch_size, num_masks)`) -- The Intersection over Union (IoU) scores of the predicted masks.
 - **pred_masks** (`torch.FloatTensor` of shape `(batch_size, point_batch_size, num_masks, height, width)`) -- The predicted low-resolution masks. This is an alias for `low_res_masks`. These masks need to be post-processed
@@ -571,7 +569,7 @@ elements depending on the configuration ([Sam3TrackerConfig](/docs/transformers/
   Attentions weights of the vision model.
 - **mask_decoder_attentions** (`tuple(torch.FloatTensor)`, *optional*, returned when `output_attentions=True`) -- Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length, sequence_length)`.
   Attentions weights of the mask decoder.
-The [Sam3TrackerModel](/docs/transformers/v5.0.0rc1/en/model_doc/sam3_tracker#transformers.Sam3TrackerModel) forward method, overrides the `__call__` special method.
+The [Sam3TrackerModel](/docs/transformers/v5.0.0/en/model_doc/sam3_tracker#transformers.Sam3TrackerModel) forward method, overrides the `__call__` special method.
 
 Although the recipe for forward pass needs to be defined within this function, one should call the `Module`
 instance afterwards instead of this since the former takes care of running the pre and post processing steps while
@@ -581,14 +579,16 @@ Example:
 
 ```python
 >>> from PIL import Image
->>> import requests
+>>> import httpx
+>>> from io import BytesIO
 >>> from transformers import AutoModel, AutoProcessor
 
 >>> model = AutoModel.from_pretrained("danelcsb/sam3_tracker.1_hiera_tiny")
 >>> processor = AutoProcessor.from_pretrained("danelcsb/sam3_tracker.1_hiera_tiny")
 
->>> img_url = "https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/transformers/model_doc/sam-car.png"
->>> raw_image = Image.open(requests.get(img_url, stream=True).raw).convert("RGB")
+>>> url = "https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/transformers/model_doc/sam-car.png"
+>>> with httpx.stream("GET", url) as response:
+...     raw_image = Image.open(BytesIO(response.read())).convert("RGB")
 >>> input_points = [[[400, 650]]]  # 2D location of a window on the car
 >>> inputs = processor(images=raw_image, input_points=input_points, return_tensors="pt")
 
@@ -603,7 +603,7 @@ Example:
 
 **Parameters:**
 
-config ([Sam3TrackerConfig](/docs/transformers/v5.0.0rc1/en/model_doc/sam3_tracker#transformers.Sam3TrackerConfig)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
+config ([Sam3TrackerConfig](/docs/transformers/v5.0.0/en/model_doc/sam3_tracker#transformers.Sam3TrackerConfig)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
 
 **Returns:**
 
@@ -611,7 +611,7 @@ config ([Sam3TrackerConfig](/docs/transformers/v5.0.0rc1/en/model_doc/sam3_track
 
 A `transformers.models.sam3_tracker.modeling_sam3_tracker.Sam3TrackerImageSegmentationOutput` or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([Sam3TrackerConfig](/docs/transformers/v5.0.0rc1/en/model_doc/sam3_tracker#transformers.Sam3TrackerConfig)) and inputs.
+elements depending on the configuration ([Sam3TrackerConfig](/docs/transformers/v5.0.0/en/model_doc/sam3_tracker#transformers.Sam3TrackerConfig)) and inputs.
 
 - **iou_scores** (`torch.FloatTensor` of shape `(batch_size, point_batch_size, num_masks)`) -- The Intersection over Union (IoU) scores of the predicted masks.
 - **pred_masks** (`torch.FloatTensor` of shape `(batch_size, point_batch_size, num_masks, height, width)`) -- The predicted low-resolution masks. This is an alias for `low_res_masks`. These masks need to be post-processed
@@ -625,17 +625,53 @@ elements depending on the configuration ([Sam3TrackerConfig](/docs/transformers/
   Attentions weights of the vision model.
 - **mask_decoder_attentions** (`tuple(torch.FloatTensor)`, *optional*, returned when `output_attentions=True`) -- Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length, sequence_length)`.
   Attentions weights of the mask decoder.
+#### get_image_features[[transformers.Sam3TrackerModel.get_image_features]]
+
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/sam3_tracker/modeling_sam3_tracker.py#L1065)
+
+Example:
+
+```python
+```
+
+**Parameters:**
+
+pixel_values (`torch.FloatTensor`) : Input pixel values of shape `(batch_size, num_channels, height, width)`.
+
+**Returns:**
+
+``transformers.models.sam3_tracker.modeling_sam3_tracker.Sam3TrackerVisionEncoderOutput` or `tuple(torch.FloatTensor)``
+
+A `transformers.models.sam3_tracker.modeling_sam3_tracker.Sam3TrackerVisionEncoderOutput` or a tuple of
+`torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
+elements depending on the configuration ([Sam3TrackerConfig](/docs/transformers/v5.0.0/en/model_doc/sam3_tracker#transformers.Sam3TrackerConfig)) and inputs.
+
+- **last_hidden_state** (`torch.FloatTensor` of shape `(batch_size, sequence_length, hidden_size)`, *optional*) -- Sequence of hidden-states at the output of the last layer of the model.
+- **pooler_output** (`torch.FloatTensor` of shape `(batch_size, hidden_size)`, *optional*) -- Last layer hidden-state after a pooling operation on the spatial dimensions.
+- **hidden_states** (`tuple`, *optional*, returned when `output_hidden_states=True` is passed or when `config.output_hidden_states=True`) -- Tuple of `torch.FloatTensor` (one for the output of the embeddings, if the model has an embedding layer, +
+  one for the output of each layer) of shape `(batch_size, sequence_length, hidden_size)`.
+
+  Hidden-states of the model at the output of each layer plus the optional initial embedding outputs.
+- **attentions** (`tuple`, *optional*, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) -- Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length,
+  sequence_length)`.
+
+  Attentions weights after the attention softmax, used to compute the weighted average in the self-attention
+  heads.
+- **fpn_hidden_states** (`tuple(torch.FloatTensor)`) -- Tuple of `torch.FloatTensor` (one for each feature level, from high to low resolution) of shape
+  `(batch_size, hidden_size, height, width)`. Feature maps from the Feature Pyramid Network neck.
+- **fpn_position_encoding** (`tuple(torch.FloatTensor)`) -- Tuple of `torch.FloatTensor` (one for each feature level, from high to low resolution) of shape
+  `(batch_size, hidden_size, height, width)`. Positional encodings corresponding to the `fpn_hidden_states`.
 
 ## Sam3TrackerPreTrainedModel[[transformers.Sam3TrackerPreTrainedModel]]
 
 #### transformers.Sam3TrackerPreTrainedModel[[transformers.Sam3TrackerPreTrainedModel]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/sam3_tracker/modeling_sam3_tracker.py#L116)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/sam3_tracker/modeling_sam3_tracker.py#L116)
 
 Segment Anything Model 3 (SAM 3) for generating segmentation masks, given an input image and
 input points and labels, boxes, or masks.
 
-_forward_unimplementedtransformers.Sam3TrackerPreTrainedModel.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0rc1/src/torch/nn/modules/module.py#L388[{"name": "*input", "val": ": typing.Any"}]
+_forward_unimplementedtransformers.Sam3TrackerPreTrainedModel.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0/src/torch/nn/modules/module.py#L391[{"name": "*input", "val": ": typing.Any"}]
 Define the computation performed at every call.
 
 Should be overridden by all subclasses.
@@ -647,5 +683,5 @@ registered hooks while the latter silently ignores them.
 
 **Parameters:**
 
-config ([PreTrainedConfig](/docs/transformers/v5.0.0rc1/en/main_classes/configuration#transformers.PreTrainedConfig)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
+config ([PreTrainedConfig](/docs/transformers/v5.0.0/en/main_classes/configuration#transformers.PreTrainedConfig)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
 

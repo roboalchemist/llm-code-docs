@@ -1,20 +1,6 @@
 # Source: https://www.daytona.io/docs/en/typescript-sdk/git.md
 
-# Source: https://www.daytona.io/docs/en/python-sdk/sync/git.md
-
-# Source: https://www.daytona.io/docs/en/typescript-sdk/git.md
-
-# Source: https://www.daytona.io/docs/en/python-sdk/sync/git.md
-
-# Source: https://www.daytona.io/docs/en/typescript-sdk/git.md
-
-# Source: https://www.daytona.io/docs/en/python-sdk/sync/git.md
-
-# Source: https://www.daytona.io/docs/en/typescript-sdk/git.md
-
-# Source: https://www.daytona.io/docs/en/python-sdk/sync/git.md
-
-# Source: https://www.daytona.io/docs/en/typescript-sdk/git.md
+# Source: https://www.daytona.io/docs/en/ruby-sdk/git.md
 
 # Source: https://www.daytona.io/docs/en/python-sdk/sync/git.md
 
@@ -65,7 +51,7 @@ Initializes a new Git handler instance.
 
 ```python
 @intercept_errors(message_prefix="Failed to add files: ")
-def add(path: str, files: List[str]) -> None
+def add(path: str, files: list[str]) -> None
 ```
 
 Stages the specified files for the next commit, similar to
@@ -75,7 +61,7 @@ running 'git add' on the command line.
 
 - `path` _str_ - Path to the Git repository root. Relative paths are resolved based on
   the sandbox working directory.
-- `files` _List[str]_ - List of file paths or directories to stage, relative to the repository root.
+- `files` _list[str]_ - List of file paths or directories to stage, relative to the repository root.
   
 
 **Example**:
@@ -125,10 +111,10 @@ print(f"Branches: {response.branches}")
 @intercept_errors(message_prefix="Failed to clone repository: ")
 def clone(url: str,
           path: str,
-          branch: Optional[str] = None,
-          commit_id: Optional[str] = None,
-          username: Optional[str] = None,
-          password: Optional[str] = None) -> None
+          branch: str | None = None,
+          commit_id: str | None = None,
+          username: str | None = None,
+          password: str | None = None) -> None
 ```
 
 Clones a Git repository into the specified path. It supports
@@ -140,12 +126,12 @@ repository if credentials are provided.
 - `url` _str_ - Repository URL to clone from.
 - `path` _str_ - Path where the repository should be cloned. Relative paths are resolved
   based on the sandbox working directory.
-- `branch` _Optional[str]_ - Specific branch to clone. If not specified,
+- `branch` _str | None_ - Specific branch to clone. If not specified,
   clones the default branch.
-- `commit_id` _Optional[str]_ - Specific commit to clone. If specified,
+- `commit_id` _str | None_ - Specific commit to clone. If specified,
   the repository will be left in a detached HEAD state at this commit.
-- `username` _Optional[str]_ - Git username for authentication.
-- `password` _Optional[str]_ - Git password or token for authentication.
+- `username` _str | None_ - Git username for authentication.
+- `password` _str | None_ - Git password or token for authentication.
   
 
 **Example**:
@@ -217,8 +203,8 @@ sandbox.git.commit(
 ```python
 @intercept_errors(message_prefix="Failed to push changes: ")
 def push(path: str,
-         username: Optional[str] = None,
-         password: Optional[str] = None) -> None
+         username: str | None = None,
+         password: str | None = None) -> None
 ```
 
 Pushes all local commits on the current branch to the remote
@@ -229,8 +215,8 @@ username and password/token.
 
 - `path` _str_ - Path to the Git repository root. Relative paths are resolved based on
   the sandbox working directory.
-- `username` _Optional[str]_ - Git username for authentication.
-- `password` _Optional[str]_ - Git password or token for authentication.
+- `username` _str | None_ - Git username for authentication.
+- `password` _str | None_ - Git password or token for authentication.
   
 
 **Example**:
@@ -252,8 +238,8 @@ sandbox.git.push(
 ```python
 @intercept_errors(message_prefix="Failed to pull changes: ")
 def pull(path: str,
-         username: Optional[str] = None,
-         password: Optional[str] = None) -> None
+         username: str | None = None,
+         password: str | None = None) -> None
 ```
 
 Pulls changes from the remote repository. If the remote repository requires authentication,
@@ -263,8 +249,8 @@ provide username and password/token.
 
 - `path` _str_ - Path to the Git repository root. Relative paths are resolved based on
   the sandbox working directory.
-- `username` _Optional[str]_ - Git username for authentication.
-- `password` _Optional[str]_ - Git password or token for authentication.
+- `username` _str | None_ - Git username for authentication.
+- `password` _str | None_ - Git password or token for authentication.
   
 
 **Example**:

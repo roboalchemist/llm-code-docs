@@ -1,8 +1,12 @@
 # Source: https://bun.com/docs/guides/process/spawn-stdout.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://bun.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Read stdout from a child process
 
-When using [`Bun.spawn()`](https://bun.com/docs/api/spawn), the `stdout` of the child process can be consumed as a `ReadableStream` via `proc.stdout`.
+When using [`Bun.spawn()`](/runtime/child-process), the `stdout` of the child process can be consumed as a `ReadableStream` via `proc.stdout`.
 
 ```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
 const proc = Bun.spawn(["echo", "hello"]);
@@ -23,4 +27,4 @@ const proc = Bun.spawn(["echo", "hello"], {
 
 ***
 
-See [Docs > API > Child processes](https://bun.com/docs/api/spawn) for complete documentation.
+See [Docs > API > Child processes](/runtime/child-process) for complete documentation.

@@ -1,5 +1,9 @@
 # Source: https://docs.embedchain.ai/community/connect-with-us.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.embedchain.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # 🤝 Connect with Us
 
 We believe in building a vibrant and supportive community around embedchain. There are various channels through which you can connect with us, stay updated, and contribute to the ongoing discussions:

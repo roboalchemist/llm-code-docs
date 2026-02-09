@@ -1,10 +1,12 @@
 # Source: https://docs.apify.com/academy/scraping-basics-javascript/legacy/data-extraction/node-js-scraper.md
 
-# Source: https://docs.apify.com/academy/web-scraping-for-beginners/data-extraction/node-js-scraper.md
-
 # Scraping with Node.js
 
 **Learn how to use JavaScript and Node.js to create a web scraper, plus take advantage of the Cheerio and Got-scraping libraries to make your job easier.**
+
+Archived course
+
+This is an archive of our old course. Check out our new [Web scraping basics for JavaScript devs](https://docs.apify.com/academy/scraping-basics-javascript.md) course instead! We plan to completely retire this old course in a few months.
 
 ***
 
@@ -12,7 +14,7 @@ Finally, we have everything ready to start scraping! Yes, the setup was a bit da
 
 ## Downloading HTML
 
-We will use the `got-scraping` library to download the HTML of products that are https://warehouse-theme-metal.myshopify.com/collections/sales. We already worked with this page earlier in the https://docs.apify.com/academy/web-scraping-for-beginners/data-extraction/using-devtools.md lessons.
+We will use the `got-scraping` library to download the HTML of products that are [on sale in the Warehouse store](https://warehouse-theme-metal.myshopify.com/collections/sales). We already worked with this page earlier in the [Extracting Data with DevTools](https://docs.apify.com/academy/scraping-basics-javascript/legacy/data-extraction/using-devtools.md) lessons.
 
 Replace the contents of your **main.js** file with this code:
 
@@ -31,11 +33,11 @@ console.log(html);
 
 Now run the script using the `node main.js` command from the previous lesson. After a brief moment, you should see the page's HTML printed to your terminal.
 
-> `gotScraping` is an `async` function and the `await` keyword is used to pause execution of the script until it returns the `response`. If you're new to this, go through an https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Asynchronous.
+> `gotScraping` is an `async` function and the `await` keyword is used to pause execution of the script until it returns the `response`. If you're new to this, go through an [introduction to asynchronous JavaScript](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Asynchronous).
 
 ## Parsing HTML
 
-Having the HTML printed to the terminal is not very helpful. To extract the data, we first have to parse it. Parsing the HTML allows us to query the individual HTML elements, similarly to the way we did it in the browser in the https://docs.apify.com/academy/web-scraping-for-beginners/data-extraction/using-devtools.md lessons.
+Having the HTML printed to the terminal is not very helpful. To extract the data, we first have to parse it. Parsing the HTML allows us to query the individual HTML elements, similarly to the way we did it in the browser in the [Extracting Data with DevTools](https://docs.apify.com/academy/scraping-basics-javascript/legacy/data-extraction/using-devtools.md) lessons.
 
 To parse the HTML with the `cheerio` library. Replace the code in your **main.js** with the following code:
 
@@ -69,8 +71,8 @@ Great, we successfully parsed the HTML and extracted the text of the `<h1>` elem
 
 The script first downloaded the page's HTML using the Got Scraping library. Then, it parsed the downloaded `html` with `cheerio` using the `load()` function, and allowed us to work with it using the `$` variable (the `$` name is an old convention). The next `$('h1')` function call looked inside the parsed HTML and found the `<h1>` element. Finally, the script extracted the text from the element using the `.text()` function and printed it to the terminal with `console.log()`.
 
-> `$('h1')` is very similar to calling `document.querySelector('h1')` in the browser and `element.text()` is similar to `element.textContent` from the earlier DevTools lessons. https://github.com/cheeriojs/cheerio#readme to learn more about its syntax.
+> `$('h1')` is very similar to calling `document.querySelector('h1')` in the browser and `element.text()` is similar to `element.textContent` from the earlier DevTools lessons. [Visit the cheerio documentation](https://github.com/cheeriojs/cheerio#readme) to learn more about its syntax.
 
 ## Next up
 
-In the https://docs.apify.com/academy/web-scraping-for-beginners/data-extraction/node-continued.md we will learn more about Cheerio and use it to extract all the products' data from Fakestore.
+In the [next lesson](https://docs.apify.com/academy/scraping-basics-javascript/legacy/data-extraction/node-continued.md) we will learn more about Cheerio and use it to extract all the products' data from Fakestore.

@@ -1,5 +1,9 @@
 # Source: https://docs.tavily.com/documentation/about.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.tavily.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # About
 
 > Welcome to Tavily!
@@ -79,8 +83,3 @@ To get started with Tavily's APIs and SDKs using code, head to our [Quickstart G
 <Note>
   Got questions? Stumbled upon an issue? Simply intrigued? Don't hesitate! Our support team is always on standby, eager to assist. Join us, dive deep, and redefine your search experience! [Contact us!](mailto:support@tavily.com)
 </Note>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.tavily.com/llms.txt

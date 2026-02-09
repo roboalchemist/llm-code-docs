@@ -1,5 +1,9 @@
 # Source: https://docs.tavily.com/examples/use-cases/meeting-prep.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.tavily.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Meeting Prep
 
 > Build an intelligent meeting preparation agent with real-time web research capabilities using Tavily's API and Google Calendar integration
@@ -33,8 +37,3 @@ This repository demonstrates how to build a meeting preparation agent with real-
 5. **Google Calendar Integration**: (via mcp-use) Access and analyze your meeting data.
 6. **Async FastAPI Backend**: High-performance, async-ready backend for fast responses.
 7. **Modern React Frontend**: Interactive UI for dynamic user interactions.
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.tavily.com/llms.txt

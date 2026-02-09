@@ -2,6 +2,8 @@
 
 # Multi-Armed Bandit - Optimizing Decisions in Real-Time
 
+Copy page
+
 ## Introduction[​](#introduction "Direct link to Introduction")
 
 In an ever-evolving digital landscape, making optimal decisions swiftly can be the difference between success and stagnation. The Multi-Armed Bandit framework embodies this principle, offering a dynamic approach to decision-making that balances the exploration of new opportunities with the exploitation of known strategies. Explore the strategic world of Multi-Armed Bandits, where every choice has the potential to significantly enhance performance and outcomes.

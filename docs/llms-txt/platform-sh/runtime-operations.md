@@ -3,7 +3,7 @@
 # Runtime operations
 
 Runtime operations allow you to trigger one-off commands or scripts on your project.
-Similar to [crons](https://docs.upsun.com/create-apps/app-reference/single-runtime-image.md#crons), they run in the app container but not on a specific schedule.
+Similar to [crons](https://docs.upsun.com/create-apps/image-properties/crons.md), they run in the app container but not on a specific schedule.
 You can [define runtime operations](#define-a-runtime-operation) in your [app configuration](https://docs.upsun.com/create-apps/app-reference/single-runtime-image.md)
 and [trigger them](#run-a-runtime-operation) at any time through the Upsun CLI.
 
@@ -54,7 +54,7 @@ The name of the runtime operation in this case is `clear-rebuild`.
 
 For more possibilities, see other [runtime operation examples](#runtime-operation-examples).
 
-## Run a runtime operation 
+## Run a runtime operation
 
 A runtime operation can be triggered through the Upsun CLI once it has been [defined](#define-a-runtime-operation).
 Run the following command:
@@ -108,7 +108,7 @@ but want to avoid going through the whole Upsun [build and deploy processes](htt
 The following examples assume that the frontend and backend containers are included in the same environment.
 This isn’t necessary for the commands to run successfully.<BR>
 What is necessary is that the build destination for your frontend **is  writable at runtime**
-(meaning, you must [define a mount](https://docs.upsun.com/create-apps/app-reference/single-runtime-image.md#mounts) for it).
+(meaning, you must [define a mount](https://docs.upsun.com/create-apps/image-properties/mounts.md) for it).
 If you don’t want to include a build within a mount (especially if your data source **isn’t** on Upsun),
 you can use [source operations](https://docs.upsun.com/create-apps/source-operations.md) to achieve a similar effect,
 but through generating a new commit.
@@ -252,7 +252,7 @@ applications:
   myapp:
     source:
       root: "/"
-    type: python:3.13
+    type: python:3.14
     operations:
       manual-migration:
         role: admin

@@ -1,5 +1,9 @@
 # Source: https://docs.promptlayer.com/introduction.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.promptlayer.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Welcome to PromptLayer
 
 > PromptLayer is the largest platform for prompt engineering
@@ -55,8 +59,3 @@ Learn about all the cool things PromptLayer can help you do
     Understand high-level analytics of your LLM usage.
   </Card>
 </CardGroup>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.promptlayer.com/llms.txt

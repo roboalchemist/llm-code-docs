@@ -1,4 +1,8 @@
-# Source: https://docs.perplexity.ai/cookbook/showcase/truth-tracer.md
+# Source: https://docs.perplexity.ai/docs/cookbook/showcase/truth-tracer.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.perplexity.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # TruthTracer | AI-Powered Misinformation Detection Platform
 
@@ -13,7 +17,7 @@
 ## Features
 
 * **Multi-method Analysis** combining fact-checking, trust chain analysis, and Socratic reasoning
-* **AI-Powered Verification** using Perplexity's Sonar, Sonar Deep Research, and Sonar Reasoning models
+* **AI-Powered Verification** using Perplexity's Sonar, Sonar Deep Research, and Sonar Reasoning Pro  models
 * **Real-time Processing** with parallel execution of multiple analysis methods
 * **Evidence-based Results** providing sources, confidence scores, and detailed reasoning
 * **Clean Architecture** with NestJS backend and React frontend
@@ -88,7 +92,7 @@ CONFIDENCE_WEIGHT_SOCRATIC=0.20
 ## Code Explanation
 
 * **Backend**: NestJS application with clean architecture following TypeScript best practices
-* **AI Integration**: Perplexity Sonar API with three specialized models - Sonar for fact-checking, Sonar Deep Research for trust chain analysis, and Sonar Reasoning for logical evaluation
+* **AI Integration**: Perplexity Sonar API with three specialized models - Sonar for fact-checking, Sonar Deep Research for trust chain analysis, and Sonar Reasoning Pro for logical evaluation
 * **Parallel Processing**: Simultaneous execution of all three analysis methods for efficient claim verification
 * **Response Sanitization**: Custom JSON parsing and validation to handle various API response formats
 * **Confidence Scoring**: Weighted scoring system combining results from all three analysis methods

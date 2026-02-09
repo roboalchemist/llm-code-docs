@@ -1,5 +1,9 @@
 # Source: https://getlago.com/docs/guide/invoicing/e-invoicing/contributions.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://getlago.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # E-Invoicing contributions
 
 > Learn how to contribute new E-Invoicing formats and jurisdictions to Lago
@@ -110,8 +114,3 @@ end
 ```
 
 If a completely new and independent tag is required, create a dedicated class to render it. The corresponding `Builder` class should invoke it only when the conditions for the specific country or implementation are met.
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://getlago.com/docs/llms.txt

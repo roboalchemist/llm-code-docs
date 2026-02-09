@@ -3,7 +3,6 @@
 ---
 url: /docs/guide/usage/linter/rules/eslint/no-new-func.md
 ---
-# eslint/no-new-func&#x20;
 
 ### What it does
 

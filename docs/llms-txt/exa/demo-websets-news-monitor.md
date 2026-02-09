@@ -1,4 +1,8 @@
-# Source: https://docs.exa.ai/examples/demo-websets-news-monitor.md
+# Source: https://exa.ai/docs/examples/demo-websets-news-monitor.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://exa.ai/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Websets News Monitor
 
@@ -238,8 +242,3 @@ In our demo, we solve this using embeddings, vector search, and an LLM to classi
 </Steps>
 
 You can view the complete deduplication implementation [here](https://github.com/exa-labs/websets-news-monitor/blob/main/src/lib/dedupe.ts).
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.exa.ai/llms.txt

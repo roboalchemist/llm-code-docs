@@ -2,10 +2,7 @@
 
 # Update value
 
-```
-PATCH 
-/v1/settings/:settingKeyOrId/value
-```
+Copy page
 
 This endpoint updates the value of a Feature Flag or Setting with a collection of [JSON Patch](https://jsonpatch.com) operations in a specified Environment identified by the [SDK key](https://app.configcat.com/sdkkey) passed in the `X-CONFIGCAT-SDKKEY` header.
 
@@ -15,7 +12,7 @@ The advantage of using JSON Patch is that you can describe individual update ope
 
 For example: We have the following resource.
 
-```
+```json
 {
   "rolloutPercentageItems": [
     {
@@ -30,11 +27,12 @@ For example: We have the following resource.
   "rolloutRules": [],
   "value": false
 }
+
 ```
 
 If we send an update request body as below:
 
-```
+```json
 [
   {
     "op": "replace",
@@ -42,11 +40,12 @@ If we send an update request body as below:
     "value": true
   }
 ]
+
 ```
 
 Only the default served value is going to be set to `true` and all the Percentage Rules are remaining unchanged. So we get a response like this:
 
-```
+```json
 {
   "rolloutPercentageItems": [
     {
@@ -61,6 +60,7 @@ Only the default served value is going to be set to `true` and all the Percentag
   "rolloutRules": [],
   "value": true
 }
+
 ```
 
 ## Request[​](#request "Direct link to Request")

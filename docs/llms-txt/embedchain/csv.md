@@ -1,5 +1,9 @@
 # Source: https://docs.embedchain.ai/components/data-sources/csv.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.embedchain.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # 📊 CSV
 
 You can load any csv file from your local file system or through a URL. Headers are included for each line, so if you have an `age` column, `18` will be added as `age: 18`.
@@ -8,7 +12,7 @@ You can load any csv file from your local file system or through a URL. Headers 
 
 ### Load from a local file
 
-```python
+```python  theme={null}
 from embedchain import App
 app = App()
 app.add('/path/to/file.csv', data_type='csv')
@@ -16,7 +20,7 @@ app.add('/path/to/file.csv', data_type='csv')
 
 ### Load from URL
 
-```python
+```python  theme={null}
 from embedchain import App
 app = App()
 app.add('https://people.sc.fsu.edu/~jburkardt/data/csv/airtravel.csv', data_type="csv")

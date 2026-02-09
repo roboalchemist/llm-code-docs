@@ -2,10 +2,7 @@
 
 # Get Groups
 
-```
-GET 
-/v2/:organizationId/Groups
-```
+Copy page
 
 This endpoint returns a list of groups.
 

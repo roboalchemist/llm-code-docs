@@ -1,5 +1,9 @@
 # Source: https://docs.helicone.ai/guides/cookbooks/predefining-request-id.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.helicone.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Predefined Request IDs
 
 > Learn how to predefine Helicone request IDs for advanced tracking and asynchronous operations in your LLM applications.

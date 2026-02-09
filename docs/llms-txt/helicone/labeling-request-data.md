@@ -1,5 +1,9 @@
 # Source: https://docs.helicone.ai/guides/cookbooks/labeling-request-data.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.helicone.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # How to Label Your Request Data
 
 > Label your request data to make it easier to search and filter in Helicone. Learn about custom properties, feedback, and scores.

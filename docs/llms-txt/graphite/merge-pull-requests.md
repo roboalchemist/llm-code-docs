@@ -1,6 +1,11 @@
 # Source: https://graphite-58cc94ce.mintlify.dev/docs/merge-pull-requests.md
 
-# Merge Pull Requests
+## Documentation Index
+
+> Fetch the complete documentation index at: https://graphite-58cc94ce.mintlify.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+## Merge Pull Requests
 
 > Learn how to seamlessly merge a single PR or stack of PRs with Graphite and handle merge conflicts efficiently.
 
@@ -126,8 +131,6 @@ As a result, the length of a merge job depends on how many PRs need to be rebase
 
 Today, merge stack supports label-based merge queues, with future plans to support GitHub's merge queue (currently not compatible).
 
-If you're not sure whether `Merge (N)` will work with your team's merge process, feel free to reach out to **[support@graphite.dev](mailto:support@graphite.dev)**—we'd love to help you with this.
-
 ## Automatic rebasing
 
 <Tip>
@@ -162,7 +165,7 @@ on:
 
 If your CI hasn't been configured to ignore Graphite's temporary branches yet, your CI job may fail due to an error looking like:
 
-```
+```bash
 Fetching base branch: refs/heads/graphite-base/*
 fatal: couldn't find remote ref refs/heads/graphite-base/*
 ```

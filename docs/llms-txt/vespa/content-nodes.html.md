@@ -348,7 +348,7 @@ curl -X PUT -H "Content-Type: application/json" --data '
 - Refer to [administrative procedures](../operations/self-managed/admin-procedures.html) for configuration and state monitoring / management. 
 - Try the [Multinode testing and observability](https://github.com/vespa-engine/sample-apps/tree/master/examples/operations/multinode) sample app to get familiar with interfaces and behavior. 
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ### On this page:
 

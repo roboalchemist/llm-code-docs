@@ -18,7 +18,7 @@ const error = new Error("Boom 💥");
 console.error(error); // Prints: Boom 💥
 ```
 
-For more, checkout the [Node.js documentation](https://nodejs.org/dist/latest-v16.x/docs/api/console.html).
+For more, checkout the [Node.js documentation](https://nodejs.org/docs/latest-v22.x/api/console.html).
 
 We automatically disable console logging for store extensions.
 
@@ -41,8 +41,7 @@ During development, we show the stack trace and add an action to jump to the err
 
 ### Extension Issue Dashboard
 
-When unhandled exceptions and Promise rejections occur in the production build of a public extension, Raycast tries to redact all potentially sensitive information they may include, and reports them to our error backend. As an extension author, or as the manager of an organisation, you can view and manage error reports for your public extensions by going to <https://www.raycast.com/extension-issues>, or by finding your extension in Raycast's root, `Store` command, or `Manage Extensions` command, and using the `View Issues` action.\
-The dashboard should give you an overview of what issues occurred, how many times, how many users were affected, and more. Each issue additionally has a detail view, including a stack trace, breadcrumbs (typically the actions performed before the crash), extension release date, Raycast version, macOS version.
+When unhandled exceptions and Promise rejections occur in the production build of a public extension, Raycast tries to redact all potentially sensitive information they may include, and reports them to our error backend. As an extension author, or as the manager of an organisation, you can view and manage error reports for your public extensions by going to <https://www.raycast.com/extension-issues>, or by finding your extension in Raycast's root, `Store` command, or `Manage Extensions` command, and using the `View Issues` action. The dashboard should give you an overview of what issues occurred, how many times, how many users were affected, and more. Each issue additionally has a detail view, including a stack trace, breadcrumbs (typically the actions performed before the crash), extension release date, Raycast version, macOS version.
 
 ![Extension Issues](https://2922539984-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-Me_8A39tFhZg3UaVoSN%2Fuploads%2Fgit-blob-e3c7a6de170fa071b3e0caf1ac8f93d283255a91%2Fextension-issues.webp?alt=media)
 

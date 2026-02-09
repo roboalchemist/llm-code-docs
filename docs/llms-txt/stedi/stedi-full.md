@@ -21,6 +21,14 @@ Accounts can have unlimited members, and members can be [assigned different role
 
 It's possible to have multiple accounts, though using one account is recommended for most customers. If you need additional accounts, [contact us](https://www.stedi.com/contact) and we'll enable them for you.
 
+### Join an existing account
+
+During [sign up](https://portal.stedi.com/auth/sign-up), Stedi checks whether your email domain is associated with an existing Stedi account. If it is, you can request to join that account instead of creating a new one.
+
+For example, if you sign up with `john.doe@example.com` and your company already has a Stedi account for `example.com`, you'll see the option to request to join it. This helps prevent duplicate accounts for the same organization.
+
+You'll receive an email when the account admin invites you to join the account and log in.
+
 ### Change account theme
 
 To change your account theme:
@@ -36,8 +44,6 @@ To change your account theme:
 
 Your account can have many members - a member represents an individual email address used to log into the account. You may want to add additional members so that other individuals in your organization can help manage transactions and troubleshoot issues.
 
-If you've installed a Stedi app, a vendor may also request to be invited to your account, so they can investigate and troubleshoot issues directly during support sessions.
-
 ### Invite members
 
 To add members to your account:
@@ -49,6 +55,10 @@ To add members to your account:
 5. Click **Send invitation**.
 
 The invited member will receive an email with instructions about how to accept the invitation and log into the account. Invitations do not expire, but can be revoked by any account admin at any time before acceptance.
+
+<Note>
+  Stedi apps may automatically add one or more support users with a [Developer role](/healthcare/accounts-and-billing#assign-member-roles) to your account during installation. These support users allow your vendor to help you troubleshoot issues directly within your account and assist with implementation.
+</Note>
 
 ### Assign member roles
 
@@ -204,6 +214,14 @@ Accounts can have unlimited members, and members can be [assigned different role
 
 It's possible to have multiple accounts, though using one account is recommended for most customers. If you need additional accounts, [contact us](https://www.stedi.com/contact) and we'll enable them for you.
 
+### Join an existing account
+
+During [sign up](https://portal.stedi.com/auth/sign-up), Stedi checks whether your email domain is associated with an existing Stedi account. If it is, you can request to join that account instead of creating a new one.
+
+For example, if you sign up with `john.doe@example.com` and your company already has a Stedi account for `example.com`, you'll see the option to request to join it. This helps prevent duplicate accounts for the same organization.
+
+You'll receive an email when the account admin invites you to join the account and log in.
+
 ### Change account theme
 
 To change your account theme:
@@ -219,8 +237,6 @@ To change your account theme:
 
 Your account can have many members - a member represents an individual email address used to log into the account. You may want to add additional members so that other individuals in your organization can help manage transactions and troubleshoot issues.
 
-If you've installed a Stedi app, a vendor may also request to be invited to your account, so they can investigate and troubleshoot issues directly during support sessions.
-
 ### Invite members
 
 To add members to your account:
@@ -232,6 +248,10 @@ To add members to your account:
 5. Click **Send invitation**.
 
 The invited member will receive an email with instructions about how to accept the invitation and log into the account. Invitations do not expire, but can be revoked by any account admin at any time before acceptance.
+
+<Note>
+  Stedi apps may automatically add one or more support users with a [Developer role](/healthcare/accounts-and-billing#assign-member-roles) to your account during installation. These support users allow your vendor to help you troubleshoot issues directly within your account and assist with implementation.
+</Note>
 
 ### Assign member roles
 
@@ -348,7 +368,7 @@ The app is now installed, and your vendor can begin submitting transactions thro
 
 [Contact us](https://www.stedi.com/contact) to discuss adding your business to the Stedi app directory. The process is simple and can be completed in 1-2 days:
 
-1. Meet with our team to align on how your customers' accounts will map to Stedi organizations.
+1. Meet with our team to align on how your customers' accounts will map to Stedi organizations. During this process, you can request to automatically add one or more support users (members) with a [Developer role](/healthcare/accounts-and-billing#assign-member-roles) to accounts that install your app. This allows your support team to troubleshoot issues directly within customer accounts and help with implementation.
 2. Confirm that existing services contracts and a partner or platform integration agreement are in place.
 3. Supply your company logo, URL, support email, and description.
 4. We publish your app listing to the directory and make it discoverable to customers.
@@ -392,22 +412,48 @@ You can submit batch checks manually by uploading CSV files to the Stedi portal 
 
 ## Transaction enrollment
 
-Some payers require [transaction enrollment](/healthcare/transaction-enrollment) before you can start sending them eligibility checks. The [Payer Network](https://www.stedi.com/healthcare/network) specifies which payers require enrollment.
+<Tip>
+  If the provider is already enrolled for real-time eligibility checks through Stedi, you don't need to enroll again for batch eligibility checks.
+</Tip>
+
+[Transaction enrollment](/healthcare/transaction-enrollment) is the process of registering a provider to exchange specific healthcare transactions with a payer.
+
+Most payers don't require transaction enrollment for eligibility checks. Those that do, such as the Centers for Medicare & Medicaid Services (CMS), typically allow multiple enrollments with different clearinghouses. That means enrolling through Stedi shouldn't cancel or interfere with any existing enrollments you have through other clearinghouses.
+
+Enrolling through Stedi for eligibility checks also doesn't affect your existing enrollments for other transaction types. For example, enrolling with Stedi won't unenroll the provider from receiving transactions like Electronic Remittance Advices (ERAs) through other clearinghouses.
+
+You can check whether a specific payer requires enrollment for eligibility checks in the [Payer Network](https://www.stedi.com/healthcare/network) or through the [Payers API](/healthcare/api-reference/get-payer).
+
+If enrollment is required, complete the following steps:
+
+1. Create a provider record with the information required for enrollment. If you already have a record for the provider, you can skip this step. [Stedi portal](https://portal.stedi.com/app/healthcare/providers) | [API endpoint](/healthcare/api-reference/post-enrollment-create-provider)
+2. Submit an enrollment request for real-time eligibility checks - batch eligibility checks use the same enrollment process as real-time eligibility checks. [Stedi portal](https://portal.stedi.com/app/healthcare/enrollments) | [API endpoint](/healthcare/api-reference/post-enrollment-create-enrollment)
 
 ## Manual submission
 
-To upload a CSV file with batch eligibility checks, go to the [Eligibility check batches](https://portal.stedi.com/app/healthcare/checks/batch) page in the Stedi portal and click **+ New CSV batch**.
+You can submit batch eligibility checks through bulk CSV upload.
 
-### CSV upload
+### Create new CSV batch
 
-You can download a [template CSV file](/files/batch-eligibility-template.csv) with all of the supported properties.
+To create a new CSV batch:
 
-* Each row in the file corresponds to one batch eligibility check. You can submit up to 1,000 checks per CSV file.
-* CSV batch checks support a subset of the properties available in the API. The available properties cover the vast majority of use cases. Contact [Stedi support](https://www.stedi.com/contact) if you need to include additional properties.
+1. Go to the [Batch eligibility checks page](https://portal.stedi.com/app/healthcare/checks/batch).
+2. Click **+ New batch from CSV**.
+3. Enter a unique name for the batch. Stedi displays this name in the list of batch uploads. This name is for your reference only - we don't send it to payers.
+4. (Optional) Click **Advanced options** to configure a custom **Retry duration** between 8 and 24 hours. This is the maximum number of hours that Stedi will retry checks in the batch that fail due to payer connectivity issues. The default is 8 hours.
+5. Click **Create** to go to the CSV upload page for your new batch.
 
-Once you upload the CSV file, click **Verify file** so Stedi can validate the data in each eligibility check. You can fix any validation errors and re-upload the CSV file as many times as needed.
+### Upload CSV file
 
-When the file is error-free, you'll be able to click **Execute batch** to send the eligibility checks to Stedi. Stedi processes the checks asynchronously, implementing best practices to avoid payer throttling.
+On the CSV upload page for your batch:
+
+1. Click **Download a template** to download the CSV template with the supported fields. You can also download it from this link: [template CSV file](/files/batch-eligibility-template.csv).
+2. Populate the template with eligibility checks. Each row in the template represents one eligibility check. You can submit up to 10,000 checks per CSV file. The upload page contains detailed documentation for each possible field and recommendations for which fields to include for the best chance of success.
+3. Click **+ Upload file** to upload your complete CSV file.
+4. Click **Verify file** so Stedi can validate the data in each eligibility check. You can fix any errors and re-upload the CSV file as many times as needed. When the file is error-free, you'll be able to execute the batch.
+5. Click **Execute batch** to send the eligibility checks to Stedi for processing.
+
+Stedi processes the checks asynchronously, implementing best practices to avoid payer throttling. Each eligibility check in the batch is stored in its own eligibility search. You can review the details of each check from the [Eligibility searches page](https://portal.stedi.com/app/healthcare/eligibility).
 
 ### Batch status
 
@@ -444,7 +490,7 @@ The information you provide to the payer in an eligibility check can vary, depen
 | Information                                    | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
 | ---------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `tradingPartnerServiceId`                      | <ul><li>This is the payer ID. Visit the [Payer Network](https://www.stedi.com/healthcare/network) for a complete list. You can send requests using the primary payer ID, the Stedi payer ID, or any alias listed in the payer record.</li><li> If you don't know the payer, try submitting an [insurance discovery check](/healthcare/insurance-discovery) instead.</li></ul>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
-| `submitterTransactionIdentifier`               | <ul><li>A unique identifier for the eligibility check within the batch.</li><li>Stedi returns this identifier in the response for the [Poll Batch Eligibility Checks](/healthcare/api-reference/get-healthcare-polling-eligibility) endpoint so you can correlate eligibility responses with the original eligibility check.</li></ul>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
+| `submitterTransactionIdentifier`               | <ul><li>A unique identifier for the eligibility check within the batch.</li><li>Stedi returns this identifier in the response for the [Retrieve Batch Check Statuses](/healthcare/api-reference/get-healthcare-batch-eligibility-check-statuses) and [Poll Batch Eligibility Checks](/healthcare/api-reference/get-healthcare-polling-eligibility) endpoints so you can correlate the original eligibility request with its processing status and the payer's response.</li></ul>                                                                                                                                                                                                                                                                                                                                                                                                                                            |
 | `provider` object, name and identifier         | <ul><li>You must include the provider's name - either the `firstName` and `lastName` of a specific provider within a practice or the `organizationName`.</li><li>You must include an identifier - this is typically the provider's [National Provider Identifier](https://www.stedi.com/docs/healthcare/national-provider-identifier) (`npi`). If the provider doesn't have an NPI, you can supply an alternative, such as their `taxId` or `ssn`.</li></ul>                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
 | `subscriber` and/or `dependents` objects       | <ul><li>The `dependents` object is optional - refer to the scenarios when the [patient qualifies as a dependent](/healthcare/send-eligibility-checks#dependents).</li><li>At a minimum, our API requires that you supply at least one of these fields in the request: `memberId`, `dateOfBirth`, or `lastName`. However, each payer has different requirements, so you should supply the fields necessary for each payer to identify the subscriber in their system.</li><li> When all four of `memberId`, `dateOfBirth`, `firstName`, and `lastName` are provided, payers are required to return a response if the member is in their database. Some payers may be able to search with less information, but this varies by payer.</li><li> We recommend always including the patient's member ID when possible. Learn more about [patient information](/healthcare/send-eligibility-checks#patient-information).</li></ul> |
 | `encounter` object, service dates              | <ul><li>You can specify either a single `dateOfService` or a `beginningDateOfService` and `endDateOfService`. The payer defaults to using the current date in their timezone if you don't include one.</li><li>When checking eligibility for today, omit the `dateOfService` property to ensure consistent behavior across payers.</li><li> We recommend submitting dates up to 12 months in the past or up to the end of the current month. Payers aren't required to support dates outside these ranges. However, some payers such as the Centers for Medicare and Medicaid Services (CMS) do support requests for dates further in the future - especially the next calendar month. Check the payer's documentation to determine their specific behavior.</li></ul>                                                                                                                                                       |
@@ -469,7 +515,7 @@ Some payers return the patient's MBI in one of the following properties of the s
 
 If the value in either of these properties matches the format specified in the [Medicare Beneficiary Identifier documentation](https://www.cms.gov/training-education/partner-outreach-resources/new-medicare-card/medical-beneficiary-identifiers-mbis), the number is likely an MBI, and we recommend sending a follow-up eligibility check to CMS for additional benefits data. You're most likely to receive an MBI in eligibility check responses from commercial Medicare Advantage plans, but they can also be present in responses from Medicaid plans for dual-eligible patients.
 
-When you don't know a patient's MBI, you can use Stedi's eligibility check APIs to perform an MBI lookup using their Social Security Number instead. Stedi returns a complete benefits response from CMS with the patient's MBI in the `subscriber` object for future reference. Visit [Medicare Beneficiary Identifier (MBI) lookup](/healthcare/mbi-lookup) for complete details.
+When you don't know a patient's MBI, you can use Stedi's eligibility check APIs to perform an MBI lookup instead of a standard eligibility check. Stedi returns a complete benefits response from CMS with the patient's MBI in the `subscriber` object for future reference. Visit [Medicare Beneficiary Identifier (MBI) lookup](/healthcare/mbi-lookup) for complete details.
 
 <Tip>
   **Don't** submit eligibility checks for Medicare Advantage plans to CMS (HETS)
@@ -586,9 +632,16 @@ Asynchronous batch checks don’t count toward your Stedi account [concurrency l
 
 There are no limits on the number of batches you can run in parallel.
 
-## Automatic retries
+## Configure automatic retries
 
-Stedi retries checks that fail due to [payer connectivity issues](/healthcare/eligibility-troubleshooting#payer-connectivity-issues) for up to 8 hours. Therefore, it can take up to 8 hours for all checks in a batch to return results.
+Stedi retries checks that fail due to [payer connectivity issues](/healthcare/eligibility-troubleshooting#payer-connectivity-issues) for 8 - 24 hours, depending on the specified retry period. It can take up to the configured retry period for all checks in a batch to return results.
+
+You can configure the retry period for a batch by:
+
+* **API:** Include the optional `maxRetryHours` property in the request.
+* **CSV upload:** Open **Advanced options** during creation and select a **Retry duration** from the dropdown.
+
+For both submission methods, you can choose a value between 8 and 24 hours. If not set, the default is 8 hours.
 
 ## Retrieve batch results
 
@@ -600,7 +653,7 @@ You can review the progress of batch eligibility checks submitted through API or
 
 Click the batch name to view its details, including the status of each check in the batch. You can also download the original CSV input, if the batch was submitted as a CSV file.
 
-On the batch details page, you can click any eligibility check to review it in [Eligibility Manager](/healthcare/eligibility-manager), including the full request and response payload. You'll also be able to edit the request details for failed eligibility checks and resubmit them to the payer.
+On the batch details page, you can click any eligibility check to review it in the Stedi portal, including the full request and response payload. You'll also be able to edit the request details for failed eligibility checks and resubmit them to the payer.
 
 ### Status endpoints
 
@@ -644,7 +697,10 @@ The following is an example response for two checks in a batch submitted through
 * The first check has an `eligibilitySearchStatus` of `active`, indicating that the payer returned at least one active eligibility and benefit type. This means that the patient has active coverage for at least some services. it's `state` is `COMPLETED`, indicating that the check was successfully processed and that the payer returned a response.
 * The second check has an `eligibilitySearchStatus` of `failed`, indicating that Stedi didn't receive benefits information from the payer. Its `state` is `COMPLETED_WITH_ERRORS`, which typically indicates that Stedi couldn't get a response from the payer after retrying. Failures like this are often due to payer connectivity issues.
 
-Each check's `additionalInfo.eligibility` object includes the `submitterTransactionIdentifier` you assigned when you submitted the batch. This identifier is also present in the polling results, allowing you to correlate the status of each check with the original request and the results from the polling endpoint.
+Each check's `additionalInfo.eligibility` object includes the following [eligibility check identifiers](#eligibility-check-identifiers):
+
+* `submitterTransactionIdentifier`: The identifier you assigned to the check when submitting the batch.
+* `id`: The globally unique, Stedi-assigned eligibility check ID.
 
 ```json
 {
@@ -653,6 +709,7 @@ Each check's `additionalInfo.eligibility` object includes the `submitterTransact
       "additionalInfo": {
         "eligibility": {
           "eligibilitySearchId": "01932c61-2d4f-7d22-85fa-c7db2e13e771",
+          "id": "ec_01932c61-2d4f-7d22-85fa-c7db2e13e770",
           "submitterTransactionIdentifier": "ABC123456789",
           "eligibilitySearchStatus": "active",
           "payerId": "BCBS",
@@ -705,9 +762,9 @@ We recommend using the [Retrieve Batch Status](/healthcare/api-reference/get-hea
 * Don't start polling until either the `successCount` or the `errorCount` are greater than zero because these properties indicate checks that Stedi has finished processing. Or, you may want to poll once when the batch `status` is `COMPLETED` or `COMPLETED_WITH_ERRORS`, meaning all checks have been processed.
 * You can stop polling when the `inProgressCount` reaches zero or when the batch `status` is `COMPLETED` or `COMPLETED_WITH_ERRORS`.
 
-While batches are in progress, a single polling attempt may not retrieve responses for all checks within the batch. Most batches complete in 15 to 30 minutes. However, Stedi retries checks that fail due to [payer connectivity issues](/healthcare/eligibility-troubleshooting#payer-connectivity-issues) for up to 8 hours, so it can take up to 8 hours for all checks in a batch to return results.
+While batches are in progress, a single polling attempt may not retrieve responses for all checks within the batch. Most batches complete in 15 to 30 minutes. However, Stedi retries checks that fail due to [payer connectivity issues](/healthcare/eligibility-troubleshooting#payer-connectivity-issues) for 8 - 24 hours, depending on the configured retry period. It can take up to the configured retry period for all checks in a batch to return results.
 
-After your initial poll, use exponential backoff with jitter. Start at 2 minutes and approximately double the wait between polls, up to 8 hours. For example, you might use something similar to the following formula (all values in seconds):
+After your initial poll, use exponential backoff with jitter. Start at 2 minutes and approximately double the wait between polls, up to the end of the configured retry period. For example, you might use something similar to the following formula (all values in seconds) for the 8-hour default retry period:
 
 ```
 wait_time = (0 if attempt == 0 else min(120 * 2**(attempt - 1), 8*60*60)) + random(0, 30)
@@ -742,7 +799,7 @@ The polling endpoint only returns checks that have been fully processed. These a
 
 * Returned benefits information indicating either active or inactive coverage. These checks have a final `state` of `COMPLETED` and an `eligibilitySearchStatus` of `active` or `inactive`.
 * Returned an error response from the payer that doesn't indicate payer connectivity issues. For example, if the payer returns an error indicating that the member ID is invalid, Stedi considers this a completed check and returns it in the batch results with the associated [`AAA` error](/healthcare/eligibility-troubleshooting#payer-aaa-errors) of `72` (Invalid/Missing Subscriber/Insured ID). These checks have a final `state` of `COMPLETED` and an `eligibilitySearchStatus` of `failed`.
-* Returned `AAA` errors `42` or `80` for Stedi's entire retry period. These `AAA` errors indicate payer connectivity issues, and Stedi retries checks that fail due to payer connectivity issues for up to 8 hours. After 8 hours, Stedi returns it in the batch results with the associated `AAA` error. These checks have a final `state` of `COMPLETED_WITH_ERRORS` and an `eligibilitySearchStatus` of `failed`.
+* Returned `AAA` errors `42` or `80` for the entire retry period. These `AAA` errors indicate payer connectivity issues, and Stedi retries checks that fail due to payer connectivity issues for 8 - 24 hours. After the configured retry period, Stedi returns it in the batch results with the associated `AAA` error. These checks have a final `state` of `COMPLETED_WITH_ERRORS` and an `eligibilitySearchStatus` of `failed`.
 * Stedi couldn't process due to validation errors in the request data. These checks have a final `state` of `VALIDATION_FAILED` and an `eligibilitySearchStatus` of `failed`.
 
 Checks that Stedi hasn't yet finished processing aren't included in the polling results. For example, the polling endpoint won't return results for checks that are eligible for automatic retries.
@@ -750,7 +807,29 @@ Checks that Stedi hasn't yet finished processing aren't included in the polling 
 You'll need to track the status of pending checks to determine when to stop polling. You can do this with either of the status endpoints:
 
 * [Retrieve Batch Status](/healthcare/api-reference/get-healthcare-batch-eligibility-status): Returns summary information about the batch, including the `inProgressCount`, which indicates how many checks are still pending. You can stop polling when this count reaches zero or when the batch `status` is `COMPLETED` or `COMPLETED_WITH_ERRORS`.
-* [Retrieve Batch Check Statuses](/healthcare/api-reference/get-healthcare-batch-eligibility-check-statuses): Returns status information for all checks in the batch, including those that are still pending. The information for each check includes the `submitterTransactionIdentifier` you assigned when you submitted the batch. This identifier is also present in the polling results, allowing you to correlate the status of each check with the results from the polling endpoint.
+* [Retrieve Batch Check Statuses](/healthcare/api-reference/get-healthcare-batch-eligibility-check-statuses): Returns status information for all checks in the batch, including those that are still pending. The information for each check includes the `submitterTransactionIdentifier` you assigned when you submitted the batch. This identifier is also present in the polling results, allowing you to correlate the original eligibility request with its processing status and the payer's response.
+
+## Eligibility check identifiers
+
+There are two identifiers you can use to reference individual eligibility checks within a batch. They're returned in both the Retrieve Batch Check Statuses and the Poll Batch Checks endpoint responses.
+
+### Submitter transaction identifier
+
+The submitter transaction identifier is an ID that you assign to each eligibility check you submit in a batch. It must be unique within the batch.
+
+* **Batch Check Statuses:** [`items[].additionalInfo.eligibility.submitterTransactionIdentifier`](/healthcare/api-reference/get-healthcare-batch-eligibility-check-statuses#response.items.additionalInfo.eligibility.submitterTransactionIdentifier)
+* **Poll Batch Checks:** [`items[].submitterTransactionIdentifier`](/healthcare/api-reference/get-healthcare-polling-eligibility#response.items.submitterTransactionIdentifier)
+
+You can use the submitter transaction identifier to correlate the original eligibility request with both its processing status and the payer's benefit response.
+
+### Eligibility check ID
+
+The eligibility check ID is a globally unique identifier that Stedi automatically assigns to each eligibility check. It's formatted as `ec_<UUID>`.
+
+* **Batch Check Statuses:** [`items[].additionalInfo.eligibility.id`](/healthcare/api-reference/get-healthcare-batch-eligibility-check-statuses#response.items.additionalInfo.eligibility.id)
+* **Poll Batch Checks:** [`items[].id`](/healthcare/api-reference/get-healthcare-polling-eligibility#response.items.id)
+
+You can use the eligibility check ID to link directly to an eligibility check's results in the Stedi portal. The format for direct portal links is: `https://portal.stedi.com/app/healthcare/eligibility/{search-id}/inspect/{check-id}`, where `{search-id}` is the [eligibility search ID](/healthcare/api-reference/get-healthcare-polling-eligibility#response.items.eligibilitySearchId) and `{check-id}` is the unique, Stedi-assigned eligibility check ID. You can find the eligibility search ID at the top of an eligibility search's details page in the [Stedi portal](https://portal.stedi.com/app/healthcare/eligibility).
 
 ## Costs
 
@@ -813,6 +892,19 @@ You can only run real-time claim status checks for production claims that have e
 Requests for test claims or claims the payer hasn't yet accepted for processing won't return results. That's why our [claim status best practices](#best-practices) recommend waiting at least a week after submission before attempting to check a claim's status. You also won't be able to check the status if Stedi or the payer rejected a claim with a [277CA claim acknowledgment](/healthcare/receive-claim-responses).
 
 You can find examples of claim status requests and responses in the [sample requests and responses](#sample-requests-and-responses) section on this page.
+
+## Transaction enrollment
+
+[Transaction enrollment](/healthcare/transaction-enrollment) is the process of registering a provider to exchange specific healthcare transactions with a payer. Some payers require enrollment before allowing providers to submit real-time claim status checks through a new clearinghouse. This enrollment process is separate from the transaction enrollment process for 837 claims.
+
+Enrolling through Stedi may cancel existing real-time claim status enrollments you have through other clearinghouses. We can help you determine whether this applies to your specific payers. However, enrolling through Stedi for real-time claim status checks doesn't affect your existing enrollments for other transaction types. For example, enrolling with Stedi won't unenroll the provider from receiving transactions like Electronic Remittance Advices (ERAs) through other clearinghouses.
+
+You can check whether a specific payer requires transaction enrollment for real-time claim status checks in the [Payer Network](https://www.stedi.com/healthcare/network) or through the [Payers API](/healthcare/api-reference/get-payer).
+
+To enroll, complete the following steps:
+
+1. Create a provider record with the information required for enrollment. If you already have a record for the provider, you can skip this step. [Stedi portal](https://portal.stedi.com/app/healthcare/providers) | [API endpoint](/healthcare/api-reference/post-enrollment-create-provider)
+2. Submit an enrollment request for real-time claim status. [Stedi portal](https://portal.stedi.com/app/healthcare/enrollments) | [API endpoint](/healthcare/api-reference/post-enrollment-create-enrollment)
 
 ## Manual submission
 
@@ -1132,6 +1224,8 @@ The following example shows a claim status request and response for a claim that
 </Accordion>
 
 The following example shows a claim status request and response for a claim that has been processed and paid. The payer is UnitedHealthcare, and the request uses the primary payer ID `87726`.
+
+Note that this example response includes the payment amount and the service line item details. Some payers return this information in claim status responses, but most don't. You should typically plan to get these details from the 835 Electronic Remittance Advice (ERA) instead.
 
 <Accordion title="Accepted, paid - Subscriber - UnitedHealthcare">
   <Tabs items={["Request", "Response"]}>
@@ -1647,11 +1741,157 @@ Payers generally only allow a provider organization to check the status of the c
 
 Payers often archive claims older than 18 months, but this varies by payer. If you try to check the status of a claim from several years ago, the payer may return an error even if the information you submit matches a real historical claim.
 
-## Billing for claim status
 
-We don't bill you for API calls that return 4xx or 5xx errors. For example, you won't be charged when a request fails because the payer isn't supported - in this case, Stedi returns a `400` HTTP status code.
+# Claim edits and repairs
+Source: https://www.stedi.com/docs/healthcare/claim-edits-and-repairs
 
-All other transactions are billed at the usage rates according to your contract.
+***
+
+title: Claim edits and repairs
+sidebarTitle: "Edits and repairs"
+---------------------------------
+
+Stedi checks each claim you submit for errors that could lead to rejections or denials.
+
+Depending on the type of error, Stedi will either fix the issue automatically (repair) or reject the claim (edit rejection) with instructions explaining what to change before resubmitting. This process helps ensure claims are complete, accurate, HIPAA-compliant, and aligned with payer-specific rules *before* they reach the payer.
+
+Catching and resolving issues early through claim edits and repairs streamlines claims processing so providers can get paid faster.
+
+## Repairs
+
+Repairs are fixes that Stedi applies to claims before checking them against our library of [claim edits](#edits). They fix problems with a known, deterministic solution, such as formatting issues. For example, if a phone number contains dashes or spaces, a repair might remove them so the claim passes validation.
+
+We don't use repairs to change substantive or clinical content. For example, a repair won't change a CPT code in a claim to reflect a different procedure. That's a substantive change that requires resubmission.
+
+Claim repairs don't require any action from you - they happen automatically, so you don't need to make changes or resubmit.
+
+## Edits
+
+Claim edits are validation rules that check a specific requirement. For example, an edit might check that each phone number in the claim contains exactly 10 digits. Many of our [repairs](#repairs) fix issues that would cause claims to fail one or more edits. For example, a repair may remove dashes in a phone number so it's in the right format for the edit validation. If the phone number still doesn't have 10 digits, the claim fails the edit.
+
+Stedi runs our entire library of edits on each claim you submit. This applies to both new claims and existing claims you're resubmitting through Stedi.
+
+When a claim fails one or more edits, Stedi rejects the claim and doesn't send it to the payer. You'll receive detailed error messages for all of the edits the claim failed along with instructions for what to change before resubmission.
+
+* **API:** Stedi returns an HTTP `400` status and includes the edit rejections in the `errors` array.
+* **Stedi portal:** Stedi indicates edit rejections immediately in the portal form.
+* **SFTP:** Stedi rejects the claim with a [277CA claim acknowledgment](/healthcare/submit-claims-sftp-connection#277ca-claim-acknowledgment) containing the edit rejection details. You'll receive the 277CA rejection within minutes after claim submission in your `from-stedi` directory.
+
+You'll need to fix the issues causing the edit failures and resubmit the claim with the same Claim Frequency Code. For example, if you initially submitted the claim to Stedi with code `1`, you should resubmit it to Stedi with code `1`.
+
+### Example edit rejections
+
+The following example shows edit rejections returned in an API response. The `errors` array contains all the edits that the claim failed, along with detailed descriptions and follow-up actions:
+
+```json
+{
+  "status": "ERROR",
+  "controlNumber": "1",
+  "tradingPartnerServiceId": "6400",
+  "claimReference": {
+    "correlationId": "01AAAC3A5BB1CCCC3DDD5JJJJ3",
+    "patientControlNumber": "12345678",
+    "timeOfResponse": "2026-01-06T19:21:18.287Z",
+    "payerId": "6400",
+    "formatVersion": "5010",
+    "rhclaimNumber": "01AAAC3A5BB1CCCC3DDD5JJJJ3",
+    "serviceLines": [
+      {
+        "lineItemControlNumber": "111222333"
+      }
+    ]
+  },
+  "errors": [
+    {
+      "code": "33",
+      "description": "The subscriber date of birth, 20260201, is invalid. The date of birth cannot be later than the transaction date and must reflect a reasonable subscriber age. Correct and resubmit.",
+      "followupAction": "Please Correct and Resubmit"
+    },
+    {
+      "code": "33",
+      "description": "Diagnosis Code FZ9888 does not exist in ICD-10. Please review and resubmit.",
+      "followupAction": "Please Correct and Resubmit"
+    },
+    {
+      "code": "33",
+      "description": "Total claim charge amount ($130.00) does not equal the sum of all service line charge amounts ($109.20) for this claim. Correct and resubmit.",
+      "followupAction": "Please Correct and Resubmit"
+    }
+  ],
+  "meta": {
+    "traceId": "bd67003d-ce55-4b94-a89d-66e11110d0c"
+  },
+  "payer": {
+    "payerName": "Cigna",
+    "payerId": "6400"
+  },
+  "httpStatusCode": "400 BAD_REQUEST"
+}
+```
+
+### Stedi's edit database
+
+Stedi has a growing library of claim edits, including edits for specific payers. You can review a filterable, up-to-date list of all our claim edits in our [Edits database](https://edits.stedi.com/).
+
+There's no standardized universal library of claim edits. However, a large number of industry-standard edits originate from HIPAA rules (such as using ICD-10 as the standard coding system) and from Centers for Medicare & Medicaid Services (CMS) rules, such as the National Correct Coding Initiative (NCCI). NCCI edits were originally developed by CMS for Medicare, but many non-Medicare payers have adopted them or use them as a baseline.
+
+Our goal is to eventually cover all non-provider-specific edits that can be deterministically applied to claims. You can submit requests for new edits or updates to existing ones through our [Request a claim edit](https://www.stedi.com/request-claim-edit) form.
+
+### SNIP framework
+
+Edits are often categorized using the Strategic National Implementation Process (SNIP) framework. The framework was created by the Workgroup for Electronic Data Interchange (WEDI), which sets guidelines (but not standards) for how EDI should be implemented in healthcare.
+
+Each SNIP type, or level, checks a different aspect of a claim's correctness. You can find the SNIP level of all of our edits in the [Edits database](https://edits.stedi.com/).
+
+**SNIP Type 1: EDI Standard Integrity Testing**
+
+Edits that check whether the claim uses valid EDI syntax. Examples:
+
+* Are the EDI segments in the right order?
+* Do fields meant for numbers contain numbers?
+
+**SNIP Type 2: HIPAA Implementation Guide Requirement Testing**
+
+Edits that check whether the claim uses HIPAA-compliant X12 syntax. Examples:
+
+* Invalid phone numbers
+* Invalid date of birth
+* Invalid billing provider address
+* Missing primary payer
+
+**SNIP Type 3: HIPAA Balance Testing**
+
+Edits that check whether the billing amounts in the claim add up correctly. Examples:
+
+* Non-zero adjustment amounts
+* COB claims must be balanced
+* Total claim charges must equal line-level charges
+
+**SNIP Type 4: HIPAA Inter-Segment Situation Testing**
+
+Edits that check whether fields are present or missing based on the presence of other fields. Examples:
+
+* Missing accident date
+* Missing admission source code
+
+**SNIP Type 5: HIPAA External Code Set Testing**
+
+Checks that fields that use official HIPAA-adopted code sets only contain valid values. For example, an edit could check for invalid ICD-10-CM diagnosis codes.
+
+**SNIP Type 6: Product Type/Type of Service Testing**
+
+Edits that check whether the claim is valid and in the right format for the type of healthcare service listed. These edits catch mismatches between the procedure code being billed and the type of claim or service category. Examples:
+
+* Using a CDT dental code in an 837P professional claim.
+* Billing a surgery CPT code under a diagnostic service type.
+* Including a revenue code, which is used only in 837I institutional claims, in an 837P professional claim.
+
+**SNIP Type 7: Trading Partner-Specific Testing**
+
+Edits that check whether the claim complies with rules in HIPAA guides that apply only to government payers like Medicare and Medicaid. Examples:
+
+* Invalid primary diagnosis on Medicare chiropractic claims
+* Missing initial treatment date for Medicare chiropractic claims
 
 
 # Acknowledgments and ERAs overview
@@ -1721,6 +1961,7 @@ Each 277CA typically correlates to one 837 claim. However:
 * Some payers may send a single 277CA that [references multiple claims](/healthcare/receive-claim-responses#correlate-277ca).
 * Payers sometimes split a single claim into multiple claims during processing. In these cases, you may receive multiple 277CAs from the payer for the original claim you submitted.
 * Payers may send another 277CA when they forward a claim to a secondary payer in a coordination of benefits scenario.
+* (SFTP only) When you submit a [bulk claim](/healthcare/submit-claims-sftp-connection#bulk-claims), you'll typically receive one 277CA per claim. For example, if you submit a bulk transaction containing information for 10 claims, you'll typically receive 10 separate 277CAs.
 
 ### 277CA vs. claim status check
 
@@ -1735,6 +1976,10 @@ If you're waiting for an ERA, you should first check the related 277CA to confir
 
 Then, you can run a real-time claim status check to get updates about the claim's adjudication and payment status.
 
+### Transaction enrollment
+
+[Transaction enrollment](/healthcare/transaction-enrollment) isn't required to receive 277CA claim acknowledgments through Stedi. Stedi automatically processes 277CAs for all claims submitted through Stedi, regardless of the submission method (API, SFTP, or portal).
+
 ## 835 Electronic Remittance Advice (ERA)
 
 <Tip>
@@ -1745,6 +1990,19 @@ Then, you can run a real-time claim status check to get updates about the claim'
 The ERA contains details about payments for specific services and explanations for any adjustments or denials. The payer only sends ERAs for claims they have accepted for adjudication. If a claim is rejected in a 277CA, there's no adjudication or payment information to report.
 
 You'll typically only receive one 835 ERA per claim. However, payers may occasionally retransmit another identical [duplicate ERA](/healthcare/receive-claim-responses#duplicate-eras).
+
+### Transaction enrollment
+
+[Transaction enrollment](/healthcare/transaction-enrollment) is the process of registering a provider to exchange specific healthcare transactions with a payer. Transaction enrollment is **always** required before a provider can receive 835 ERAs through Stedi.
+
+ERAs can only be sent to a single clearinghouse, so enrolling with Stedi cancels existing ERA enrollments you have through other clearinghouses. Once enrolled with Stedi, the provider will no longer receive ERAs from that payer through the previous clearinghouse.
+
+However, enrolling through Stedi for 835 ERAs doesn't affect your existing enrollments for other transaction types. For example, enrolling with Stedi won't automatically unenroll the provider from transactions, such as 837 claims, that they're processing through other clearinghouses.
+
+To enroll for ERAs through Stedi, complete the following steps:
+
+1. Create a provider record with the information required for enrollment. If you already have a record for the provider, you can skip this step. [Stedi portal](https://portal.stedi.com/app/healthcare/providers) | [API endpoint](/healthcare/api-reference/post-enrollment-create-provider)
+2. Submit an enrollment request for claim payment (835 ERA). [Stedi portal](https://portal.stedi.com/app/healthcare/enrollments) | [API endpoint](/healthcare/api-reference/post-enrollment-create-enrollment)
 
 
 # Claims code lists
@@ -2115,7 +2373,7 @@ Used in the following APIs and properties:
 Used in the following APIs and properties:
 
 * Professional claims `subscriber.paymentResponsibilityLevelCode` and `claimInformation.otherSubscriberInformation.paymentResponsibilityLevelCode` properties.
-* Institutional claims `claimInformation.otherSubscriberInformation.paymentResponsibilityLevelCode` property.
+* Institutional claims `subscriber.paymentResponsibilityLevelCode` and `claimInformation.otherSubscriberInformation.paymentResponsibilityLevelCode` properties.
 * Dental claims `subscriber.paymentResponsibilityLevelCode` and `claimInformation.otherSubscriberInformation.paymentResponsibilityLevelCode` properties.
 
 <Accordion title="Payment Responsibility Sequence Number Codes">
@@ -2326,8 +2584,8 @@ This code is returned in the [`transactions.detailInfo.paymentInfo.claimAdjustme
 
 This code is returned in the following properties:
 
-* [`transactions[].detailInfo[].paymentInfo[].claimAdjustments[].adjustmentReasonCode`](/healthcare/api-reference/get-healthcare-reports-835#response.transactions.detailInfo\[].paymentInfo\[].claimAdjustments\[].adjustmentReasonCode1) (1-6)
-* [`transactions[].detailInfo[].paymentInfo[].serviceLines[].serviceAdjustments[].adjustmentReasonCode`](/healthcare/api-reference/get-healthcare-reports-835#response.transactions.detailInfo\[].paymentInfo\[].serviceLines\[].serviceAdjustments\[].adjustmentReasonCode1) (1-6)
+* [`transactions[].detailInfo[].paymentInfo[].claimAdjustments[].adjustmentReasonCode`](/healthcare/api-reference/get-healthcare-reports-835#response.transactions.detailInfo.paymentInfo.claimAdjustments.adjustmentReasonCode1) (1-6)
+* [`transactions[].detailInfo[].paymentInfo[].serviceLines[].serviceAdjustments[].adjustmentReasonCode`](/healthcare/api-reference/get-healthcare-reports-835#response.transactions.detailInfo.paymentInfo.serviceLines.serviceAdjustments.adjustmentReasonCode1) (1-6)
 
 CARCs identify the reason for an adjustment. Visit [Claim Adjustment Reason Codes](https://x12.org/codes/claim-adjustment-reason-codes) in the X12 documentation for a complete list.
 
@@ -2451,9 +2709,9 @@ This code identifies the reason for an adjustment made to the provider's account
 
 This code is returned in the following properties:
 
-* [`transactions[].detailInfo[].paymentInfo[].inpatientAdjudication.claimPaymentRemarkCode`](/healthcare/api-reference/get-healthcare-reports-835#response.transactions.detailInfo\[].paymentInfo\[].inpatientAdjudication.claimPaymentRemarkCode1) (1-6)
-* [`transactions[].detailInfo[].paymentInfo[].outpatientAdjudication.claimPaymentRemarkCode`](/healthcare/api-reference/get-healthcare-reports-835#response.transactions.detailInfo\[].paymentInfo\[].outpatientAdjudication.claimPaymentRemarkCode1) (1-6)
-* [`transactions[].detailInfo[].paymentInfo[].serviceLines[].healthCareCheckRemarkCodes[].remarkCode`](/healthcare/api-reference/get-healthcare-reports-835#response.transactions.detailInfo\[].paymentInfo\[].serviceLines\[].healthCareCheckRemarkCodes\[].remarkCode) - this property can either be a RARC or a National Council for Prescription Drug Programs Reject/Payment Code
+* [`transactions[].detailInfo[].paymentInfo[].inpatientAdjudication.claimPaymentRemarkCode`](/healthcare/api-reference/get-healthcare-reports-835#response.transactions.detailInfo.paymentInfo.inpatientAdjudication.claimPaymentRemarkCode1) (1-6)
+* [`transactions[].detailInfo[].paymentInfo[].outpatientAdjudication.claimPaymentRemarkCode`](/healthcare/api-reference/get-healthcare-reports-835#response.transactions.detailInfo.paymentInfo.outpatientAdjudication.claimPaymentRemarkCode1) (1-6)
+* [`transactions[].detailInfo[].paymentInfo[].serviceLines[].healthCareCheckRemarkCodes[].remarkCode`](/healthcare/api-reference/get-healthcare-reports-835#response.transactions.detailInfo.paymentInfo.serviceLines.healthCareCheckRemarkCodes.remarkCode) - this property can either be a RARC or a National Council for Prescription Drug Programs Reject/Payment Code
 
 RARCs provide additional explanation for an adjustment already described by a Claim Adjustment Reason Code (CARC) or convey information about remittance processing.
 
@@ -2479,7 +2737,7 @@ You may need to reference the following code lists when working with the 276/277
 
 ### Claim status
 
-Used in the `claims.claimStatus.statusCode` property. This is the status code used to identify the status of an entire claim or a service line. For example, code `20` means `Accepted for Processing`.
+Used in the [`claims.claimStatus.statusCode`](/healthcare/api-reference/post-healthcare-claim-status#response.claims.claimStatus.statusCode) property. This is the status code used to identify the status of an entire claim or a service line. For example, code `20` means `Accepted for Processing`.
 
 This is either a Health Care Claim Status Code or a National Council for Prescription Drug Programs (NCPDP) Reject/Payment Code, when the status is related to pharmacy claims.
 
@@ -2488,13 +2746,257 @@ This is either a Health Care Claim Status Code or a National Council for Prescri
 
 ### Claim status category
 
-Used in the `claims.claimStatus.statusCategoryCode` property. For example, code `F1` means `Finalized/Revised - Adjudication information has been changed`.
+A code that provides more detail about the claim status. For example, code `F1` means `Finalized/Revised - Adjudication information has been changed`.
+
+It's returned in the following properties:
+
+* [`claims.claimStatus.statusCategoryCode`](https://www.stedi.com/docs/healthcare/api-reference/post-healthcare-claim-status#response.claims.claimStatus.statusCategoryCode)
+* [`claims.serviceDetails.status.statusCategoryCode`](/healthcare/api-reference/post-healthcare-claim-status#response.claims.serviceDetails.status.statusCategoryCode)
 
 Visit [Claim Status Category Codes](https://x12.org/codes/claim-status-category-codes) in the official X12 documentation for a complete list.
 
+### Entity identifier
+
+A code identifying the organizational entity, physical location, property, or individual associated with the `claims.claimStatus.statusCode`. For example, code `1G` means `Oncology Center`.
+
+It's returned in the following properties:
+
+* [`claims.claimStatus.entityCode`](/healthcare/api-reference/post-healthcare-claim-status#response.claims.claimStatus.entityCode)
+* [`claims.serviceDetails.status.entityCode`](/healthcare/api-reference/post-healthcare-claim-status#response.claims.serviceDetails.status.entityCode)
+
+<Accordion title="Entity Identifier Codes">
+  - `1E` - Health Maintenance Organization (HMO)
+  - `1G` - Oncology Center
+  - `1H` - Kidney Dialysis Unit
+  - `1I` - Preferred Provider Organization (PPO)
+  - `1O` - Acute Care Hospital
+  - `1P` - Provider
+  - `1Q` - Military Facility
+  - `1R` - University, College or School
+  - `1S` - Outpatient Surgicenter
+  - `1T` - Physician, Clinic or Group Practice
+  - `1U` - Long Term Care Facility
+  - `1V` - Extended Care Facility
+  - `1W` - Psychiatric Health Facility
+  - `1X` - Laboratory
+  - `1Y` - Retail Pharmacy
+  - `1Z` - Home Health Care
+  - `2A` - Federal, State, County or City Facility
+  - `2B` - Third-Party Administrator
+  - `2D` - Miscellaneous Health Care Facility
+  - `2E` - Non-Health Care Miscellaneous Facility
+  - `2I` - Church Operated Facility
+  - `2K` - Partnership
+  - `2P` - Public Health Service Facility
+  - `2Q` - Veterans Administration Facility
+  - `2S` - Public Health Service Indian Service Facility
+  - `2Z` - Hospital Unit of an Institution (prison hospital, college infirmary, etc.)
+  - `03` - Dependent
+  - `3A` - Hospital Unit Within an Institution for the Mentally Retarded
+  - `3C` - Tuberculosis and Other Respiratory Diseases Facility
+  - `3D` - Obstetrics and Gynecology Facility
+  - `3E` - Eye, Ear, Nose and Throat Facility
+  - `3F` - Rehabilitation Facility
+  - `3G` - Orthopedic Facility
+  - `3H` - Chronic Disease Facility
+  - `3I` - Other Specialty Facility
+  - `3J` - Children's General Facility
+  - `3K` - Children's Hospital Unit of an Institution
+  - `3L` - Children's Psychiatric Facility
+  - `3M` - Children's Tuberculosis and Other Respiratory Diseases Facility
+  - `3N` - Children's Eye, Ear, Nose and Throat Facility
+  - `3O` - Children's Rehabilitation Facility
+  - `3P` - Children's Orthopedic Facility
+  - `3Q` - Children's Chronic Disease Facility
+  - `3R` - Children's Other Specialty Facility
+  - `3S` - Institution for Mental Retardation
+  - `3T` - Alcoholism and Other Chemical Dependency Facility
+  - `3U` - General Inpatient Care for AIDS/ARC Facility
+  - `3V` - AIDS/ARC Unit
+  - `3W` - Specialized Outpatient Program for AIDS/ARC
+  - `3X` - Alcohol/Drug Abuse or Dependency Inpatient Unit
+  - `3Y` - Alcohol/Drug Abuse or Dependency Outpatient Services
+  - `3Z` - Arthritis Treatment Center
+  - `4A` - Birthing Room/LDRP Room
+  - `4B` - Burn Care Unit
+  - `4C` - Cardiac Catherization Laboratory
+  - `4D` - Open-Heart Surgery Facility
+  - `4E` - Cardiac Intensive Care Unit
+  - `4F` - Angioplasty Facility
+  - `4G` - Chronic Obstructive Pulmonary Disease Service Facility
+  - `4H` - Emergency Department
+  - `4I` - Trauma Center (Certified)
+  - `4J` - Extracorporeal Shock-Wave Lithotripter (ESWL) Unit
+  - `4L` - Genetic Counseling/Screening Services
+  - `4M` - Adult Day Care Program Facility
+  - `4N` - Alzheimer's Diagnostic/Assessment Services
+  - `4O` - Comprehensive Geriatric Assessment Facility
+  - `4P` - Emergency Response (Geriatric) Unit
+  - `4Q` - Geriatric Acute Care Unit
+  - `4R` - Geriatric Clinics
+  - `4S` - Respite Care Facility
+  - `4U` - Patient Education Unit
+  - `4V` - Community Health Promotion Facility
+  - `4W` - Worksite Health Promotion Facility
+  - `4X` - Hemodialysis Facility
+  - `4Y` - Home Health Services
+  - `4Z` - Hospice
+  - `5A` - Medical Surgical or Other Intensive Care Unit
+  - `5B` - Histopathology Laboratory
+  - `5C` - Blood Bank
+  - `5D` - Neonatal Intensive Care Unit
+  - `5E` - Obstetrics Unit
+  - `5F` - Occupational Health Services
+  - `5G` - Organized Outpatient Services
+  - `5H` - Pediatric Acute Inpatient Unit
+  - `5I` - Psychiatric Child/Adolescent Services
+  - `5J` - Psychiatric Consultation-Liaison Services
+  - `5K` - Psychiatric Education Services
+  - `5L` - Psychiatric Emergency Services
+  - `5M` - Psychiatric Geriatric Services
+  - `5N` - Psychiatric Inpatient Unit
+  - `5O` - Psychiatric Outpatient Services
+  - `5P` - Psychiatric Partial Hospitalization Program
+  - `5Q` - Megavoltage Radiation Therapy Unit
+  - `5R` - Radioactive Implants Unit
+  - `5S` - Therapeutic Radioisotope Facility
+  - `5T` - X-Ray Radiation Therapy Unit
+  - `5U` - CT Scanner Unit
+  - `5V` - Diagnostic Radioisotope Facility
+  - `5W` - Magnetic Resonance Imaging (MRI) Facility
+  - `5X` - Ultrasound Unit
+  - `5Y` - Rehabilitation Inpatient Unit
+  - `5Z` - Rehabilitation Outpatient Services
+  - `6A` - Reproductive Health Services
+  - `6B` - Skilled Nursing or Other Long-Term Care Unit
+  - `6C` - Single Photon Emission Computerized Tomography (SPECT) Unit
+  - `6D` - Organized Social Work Service Facility
+  - `6E` - Outpatient Social Work Services
+  - `6F` - Emergency Department Social Work Services
+  - `6G` - Sports Medicine Clinic/Services
+  - `6H` - Hospital Auxiliary Unit
+  - `6I` - Patient Representative Services
+  - `6J` - Volunteer Services Department
+  - `6K` - Outpatient Surgery Services
+  - `6L` - Organ/Tissue Transplant Unit
+  - `6M` - Orthopedic Surgery Facility
+  - `6N` - Occupational Therapy Services
+  - `6O` - Physical Therapy Services
+  - `6P` - Recreational Therapy Services
+  - `6Q` - Respiratory Therapy Services
+  - `6R` - Speech Therapy Services
+  - `6S` - Women's Health Center/Services
+  - `6U` - Cardiac Rehabilitation Program Facility
+  - `6V` - Non-Invasive Cardiac Assessment Services
+  - `6W` - Emergency Medical Technician
+  - `6X` - Disciplinary Contact
+  - `6Y` - Case Manager
+  - `7C` - Place of Occurrence
+  - `13` - Contracted Service Provider
+  - `17` - Consultant's Office
+  - `28` - Subcontractor
+  - `30` - Service Supplier
+  - `36` - Employer
+  - `40` - Receiver
+  - `43` - Claimant Authorized Representative
+  - `44` - Data Processing Service Bureau
+  - `61` - Performed At
+  - `71` - Attending Physician
+  - `72` - Operating Physician
+  - `73` - Other Physician
+  - `74` - Corrected Insured
+  - `77` - Service Location
+  - `80` - Hospital
+  - `82` - Rendering Provider
+  - `84` - Subscriber's Employer
+  - `85` - Billing Provider
+  - `87` - Pay-to Provider
+  - `95` - Research Institute
+  - `CK` - Pharmacist
+  - `CZ` - Admitting Surgeon
+  - `D2` - Commercial Insurer
+  - `DD` - Assistant Surgeon
+  - `DJ` - Consulting Physician
+  - `DK` - Ordering Physician
+  - `DN` - Referring Provider
+  - `DO` - Dependent Name
+  - `DQ` - Supervising Physician
+  - `E1` - Person or Other Entity Legally Responsible for a Child
+  - `E2` - Person or Other Entity With Whom a Child Resides
+  - `E7` - Previous Employer
+  - `E9` - Participating Laboratory
+  - `FA` - Facility
+  - `FD` - Physical Address
+  - `FE` - Mail Address
+  - `G0` - Dependent Insured
+  - `G3` - Clinic
+  - `GB` - Other Insured
+  - `GD` - Guardian
+  - `GI` - Paramedic
+  - `GJ` - Paramedical Company
+  - `GK` - Previous Insured
+  - `GM` - Spouse Insured
+  - `GY` - Treatment Facility
+  - `HF` - Healthcare Professional Shortage Area (HPSA) Facility
+  - `HH` - Home Health Agency
+  - `I3` - Independent Physicians Association (IPA)
+  - `IJ` - Injection Point
+  - `IL` - Insured or Subscriber
+  - `IN` - Insurer
+  - `LI` - Independent Lab
+  - `LR` - Legal Representative
+  - `MR` - Medical Insurance Carrier
+  - `MSC` - Mammography Screening Center
+  - `OB` - Ordered By
+  - `OD` - Doctor of Optometry
+  - `OX` - Oxygen Therapy Facility
+  - `P0` - Patient Facility
+  - `P2` - Primary Insured or Subscriber
+  - `P3` - Primary Care Provider
+  - `P4` - Prior Insurance Carrier
+  - `P6` - Third Party Reviewing Preferred Provider Organization (PPO)
+  - `P7` - Third Party Repricing Preferred Provider Organization (PPO)
+  - `PRP` - Primary Payer
+  - `PT` - Party to Receive Test Report
+  - `PV` - Party performing certification
+  - `PW` - Pickup Address
+  - `QA` - Pharmacy
+  - `QB` - Purchase Service Provider
+  - `QC` - Patient
+  - `QD` - Responsible Party
+  - `QE` - Policyholder
+  - `QH` - Physician
+  - `QK` - Managed Care
+  - `QL` - Chiropractor
+  - `QN` - Dentist
+  - `QO` - Doctor of Osteopathy
+  - `QS` - Podiatrist
+  - `QV` - Group Practice
+  - `QY` - Medical Doctor
+  - `RC` - Receiving Location
+  - `RW` - Rural Health Clinic
+  - `S4` - Skilled Nursing Facility
+  - `SEP` - Secondary Payer
+  - `SJ` - Service Provider
+  - `SU` - Supplier/Manufacturer
+  - `T4` - Transfer Point | Used to identify the geographic location where a patient is transferred or diverted.
+  - `TL` - Testing Laboratory
+  - `TQ` - Third Party Reviewing Organization (TPO)
+  - `TT` - Transfer To
+  - `TTP` - Tertiary Payer
+  - `TU` - Third Party Repricing Organization (TPO)
+  - `UH` - Nursing Home
+  - `X3` - Utilization Management Organization
+  - `X4` - Spouse
+  - `X5` - Durable Medical Equipment Supplier
+  - `ZZ` - Mutually Defined
+</Accordion>
+
 ### Product or service ID qualifier
 
-Used in the `serviceLineInformation.productOrServiceIDQualifier` request property and the `claims.serviceDetails.service.serviceIdQualifierCode` property in the response.
+Used in the [`serviceLineInformation.productOrServiceIDQualifier`](/healthcare/api-reference/post-healthcare-claim-status#body.serviceLineInformation.productOrServiceIDQualifier) request property and returned in the [`claims.serviceDetails.service.serviceIdQualifierCode`](/healthcare/api-reference/post-healthcare-claim-status#response.claims.serviceDetails.service.serviceIdQualifierCode) response property.
+
+It identifies the source of the associated procedure code.
 
 <Accordion title="Product or Service ID Qualifier">
   | Code | Description                                                                            | Usage Notes                                                                                                                                                                                                                                                                                                                                                                                                              |
@@ -3968,6 +4470,10 @@ COB checks can help ensure that you submit claims to the correct payer and avoid
 
 COB doesn't support Medicare plans. However, most Medicare Advantage plans are supported. Visit the [Payer Network](https://www.stedi.com/healthcare/network?query=eyIyNzAiOnt9LCIyNzYiOnt9LCI4MzUiOnt9LCI4MzdQIjp7fSwiODM3SSI6e30sIjgzN0QiOnt9LCJDT0IiOnsiaXNTdXBwb3J0ZWQiOnRydWV9fQ%3D%3D\&page=0) for a complete list of supported payers.
 
+## Transaction enrollment
+
+[Transaction enrollment](/healthcare/transaction-enrollment) isn't required to run COB checks through Stedi.
+
 ## How COB checks work
 
 You submit a coordination of benefits request with information for one of the patient's health plans. The information required is similar to a standard eligibility check – first name, last name, DOB, and either member ID or SSN – and you should first run a [real-time eligibility check](https://www.stedi.com/docs/healthcare/api-reference/post-healthcare-eligibility) to ensure that the member’s details are accurate.
@@ -4056,7 +4562,7 @@ Source: https://www.stedi.com/docs/healthcare/credentialing-and-enrollment
 
 ## title: Credentialing and enrollment
 
-Healthcare providers must complete three distinct enrollment processes to work with payers and send transactions through clearinghouses:
+Healthcare providers may need to complete three distinct enrollment processes to work with payers and send transactions through clearinghouses. Which processes are required depends on the payer and the types of transactions the provider wants to send and receive.
 
 * **Credentialing:** Validating a healthcare provider's qualifications
 * **Payer enrollment:** Registering a credentialed provider with a specific payer's health plan(s)
@@ -4078,6 +4584,10 @@ Credentialing establishes that a provider meets the payer's standards for provid
 **Timeline:** Credentialing typically takes 90-180 days to complete.
 
 **Who handles it:** Providers must complete credentialing directly with each payer or through a specialized credentialing service. **Stedi doesn't handle the credentialing process.**
+
+<Tip>
+  There is a subset of eligibility payers who require credentialing but not transaction enrollment. If you get [`AAA` errors](/healthcare/eligibility-troubleshooting#payer-aaa-errors) in the `4x` range (such as `43`), the provider may need to complete credentialing with the payer even if transaction enrollment isn't required. Contact the payer to resolve.
+</Tip>
 
 ## Payer enrollment
 
@@ -4122,14 +4632,14 @@ A much smaller number of payers also require transaction enrollment before provi
 </Warning>
 
 
-# Active coverage
+# Active coverage, eligibility dates, plan details
 Source: https://www.stedi.com/docs/healthcare/eligibility-active-coverage-benefits
 
 ***
 
-title: "Active coverage"
-sidebarTitle: "Active coverage"
--------------------------------
+title: "Active coverage, eligibility dates, plan details"
+sidebarTitle: "Active coverage, eligibility dates, plan details"
+----------------------------------------------------------------
 
 After you send a successful eligibility or insurance discovery check, the payer sends back an X12 271 eligibility response containing the patient’s benefits information. Stedi transforms the 271 response from the original X12 EDI into JSON, making it easier to read, understand, and ingest into your system.
 
@@ -4147,7 +4657,7 @@ You can find the full benefits response shape in the [Real-Time Eligibility Chec
 
 You need two key pieces of information to determine whether the patient's health plan covers the requested service. The patient has coverage when:
 
-1. The date of service is within the [eligibility period](#when-is-the-patient-eligible-for-benefits%3F) for their health plan.
+1. The date of service is within the [eligibility period](#when-is-the-patient-eligible-for-benefits) for their health plan.
 2. They have [active coverage](#active-and-inactive-coverage) for the applicable [service type code](#service-type-codes).
 
 Once you know that the patient has coverage, you can determine [patient responsibility](/healthcare/eligibility-patient-responsibility-benefits), or how much the patient will pay for the service. For example, you can determine the patient's co-payment, deductible, and out-of-pocket maximum.
@@ -4166,11 +4676,12 @@ The following example shows part of the benefits response for a health plan that
 {/* schema:PlanDateInformation:unwrap */}
 
 ```json
-"planDateInformation": {
-  "planBegin": "20240101",
-  "planEnd": "20241231",
-  "eligibilityBegin": "20240102"
-}
+"planDateInformation":
+  {
+    "planBegin": "20240101",
+    "planEnd": "20241231",
+    "eligibilityBegin": "20240102"
+  }
 ```
 
 ### Plan dates for dependents
@@ -4240,7 +4751,7 @@ The following example shows a patient's co-payment for psychiatric, psychotherap
 
 ### Active and inactive coverage
 
-You can quickly determine whether a patient has active coverage for specific service types when the `benefitsInformation.code` is set to `1` (Active Coverage). The following example shows a member with active coverage for service type code `30` (Health Benefit Plan Coverage).
+You can quickly determine whether a patient has active coverage for specific service types when the `benefitsInformation.code` is set to values `1` - `5`. The following example shows a member with active coverage for service type code `30` (Health Benefit Plan Coverage).
 
 {/* schema:BenefitsInformation */}
 
@@ -4266,7 +4777,7 @@ You can quickly determine whether a patient has active coverage for specific ser
 }
 ```
 
-Likewise, you can quickly determine when a patient has inactive coverage for a service type when the `benefitsInformation.code` is set to `6` (Inactive). The following example shows a member with inactive coverage for service type code `30` (Health Plan Benefit Coverage).
+Likewise, you can quickly determine when a patient has inactive coverage for a service type when the `benefitsInformation.code` is set to values `6` - `8`. The following example shows a member with inactive coverage for service type code `30` (Health Plan Benefit Coverage).
 
 {/* schema:BenefitsInformation */}
 
@@ -4280,6 +4791,8 @@ Likewise, you can quickly determine when a patient has inactive coverage for a s
   "inPlanNetworkIndicator": "Not Applicable"
 }
 ```
+
+You can also assume the patient has active coverage for a service type when benefits information for that service type is included in the response, even if there is no explicit `benefitsInformation` object with `code` = `1` - `5`. For example, if the response contains a `benefitsInformation` object with `code` = `B` (Co-Payment) for service type code `30`, you can assume the patient has active coverage for that service type.
 
 ### Benefit type codes
 
@@ -4356,7 +4869,7 @@ The following three `benefitsInformation` objects all have the same `serviceType
 {/* schema:BenefitsInformation:unwrapArray */}
 
 ```json
-"items": [
+"benefitsInformation": [
   {
     "code": "1",
     "name": "Active Coverage",
@@ -4414,7 +4927,7 @@ Payers send benefit-specific dates when certain benefits within a plan have diff
 * Some government programs like Medicare split coverage (Part A, B, D, etc.), each with its own effective date.
 * You may switch plans during open enrollment, and new benefits might have different effective dates.
 
-## Does the patient have carveout benefits?
+### Carveout benefits
 
 A carveout is when the primary payer for a plan lets another entity handle certain benefits. Carveout administrators often specialize in benefits for a particular service, such as mental health services or pharmacy benefits. For example, many Blue Cross Blue Shield (BCBS) plans carve out mental (behavioral) health benefits to Magellan, a mental health payer.
 
@@ -4422,7 +4935,7 @@ Carveouts are part of a single health plan, so they're different from secondary 
 
 Most payers omit carveout benefits from eligibility responses, but many include the carveout administrator's information.
 
-### Carveout administrator information
+#### Carveout administrator information
 
 Don't rely on `benefitsRelatedEntities.entityIdentifier` to identify carveout administrators because the value can vary between payers.
 
@@ -4474,7 +4987,7 @@ The following example shows a benefits response for a patient whose mental healt
 ]
 ```
 
-### Get carveout benefits details
+#### Get carveout benefits details
 
 When payers return carveout administrator information, you can:
 
@@ -4486,7 +4999,7 @@ If you use the right STC, many carveout admins will return the missing carveout 
 
 If the primary payer doesn't return the carveout administrator's details, you can try checking the patient's member ID card. The back of the card often lists the carveout administrator's name and contact information. You can also try calling the primary payer and checking their website or portal.
 
-## Does the patient have pharmacy benefits?
+### Pharmacy benefits
 
 Some payers include benefits for STC `88` (Pharmacy) in eligibility responses, but these benefit entries usually only indicate that pharmacy coverage exists with `code` = `1` (Active coverage). They often don't include specific benefit details.
 
@@ -4529,7 +5042,7 @@ However, some payers do return specific pharmacy benefit details, such as co-pay
 }
 ```
 
-### Pharmacy Benefits Manager
+#### Pharmacy Benefits Manager
 
 Pharmacy benefits are often handled by a Pharmacy Benefits Manager (PBM), a company separate from the payer.
 
@@ -4563,13 +5076,25 @@ The following example shows a benefits response indicating that the patient's ph
 }
 ```
 
-### RxBINs and RxPCNs
+#### RxBINs and RxPCNs
 
 Pharmacy Bank Identification Numbers (RxBINs) and Processor Control Numbers (RxPCNs) tell pharmacies where to send claims. RxBINs and RxPCNs are often on the member's insurance card.
 
 Payers don't typically include these codes in eligibility responses.
 
-## What's the plan name?
+### Crossover coverage
+
+Crossover coverage is the process where a primary insurance payer (usually Medicare) automatically forwards claims and related information to a secondary payer (typically Medicaid or a supplemental private insurer) after processing. When there's crossover coverage, you won't need to manually resubmit claims to the secondary payer - it happens automatically.
+
+When the patient has crossover coverage, the eligibility response may contain information about crossover carriers, such as their names and identifiers, in the `benefitsInformation.benefitsRelatedEntities` array. However, you **shouldn't** automatically assume the responding payer will automatically forward crossover claims to those payers.
+
+To determine whether a claim has been sent to a crossover carrier, you must review the 835 ERA. Visit [crossover claims](/healthcare/receive-claim-responses#crossover-claims) for more details.
+
+## What are the patient's plan details?
+
+The following details about the patient's health plan are sometimes included in the eligibility response. Not all payers return this information, and behavior can vary by payer.
+
+### Plan name
 
 The only standard property that contains a health plan product or program name is `benefitsInformation.planCoverage`.
 
@@ -4601,7 +5126,7 @@ You may also be able to identify the plan name through the following properties,
 * Some properties may contain a name for the group (often named for the employer if they sponsor the plan), insurance policy, or network. These properties are: `groupDescription`, `planDescription`, and `planNetworkIdDescription`. These properties may be included in the `subscriber`, `dependents`, or `benefitsInformation.benefitsAdditionalInformation` objects, depending on where the payer places this information in the benefit response.
 * Some payers may send something like a plan name in `planInformation.planDescription` or as unstructured text in `benefitsInformation.additionalInformation.description`.
 
-### BCBS home plan
+#### BCBS home plan
 
 Many Blue Cross Blue Shield (BCBS) payers are part of the BlueCard Program, which makes it easier to run eligibility checks for patients receiving care outside their home state. With BlueCard, you can send eligibility checks to any participating BCBS payer, and BlueCard routes them to the patient's home plan for benefits verification.
 
@@ -4611,24 +5136,22 @@ Stedi enriches the eligibility response with information about the patient's hom
 
 In JSON responses, Stedi returns information about the patient's home plan in a `benefitsInformation[].benefitsRelatedEntities` entry. The relevant object's `entityIdentifier` property is set to `Party Performing Verification`.
 
+{/* schema:BenefitsInformation */}
+
 ```json
-"benefitsInformation": [
-  {
-    "code": "1",
-    "serviceTypeCodes": ["30"],
-    ...
-    "benefitsRelatedEntities": [
-      {
-        "entityIdentifier": "Party Performing Verification",
-        "entityType": "Non-Person Entity",
-        "entityName": "Blue Cross Blue Shield of Alabama",
-        "entityIdentification": "PI",
-        "entityIdentificationValue": "00510BC"
-      }
-    ]
-  },
-    ...
-]
+{
+  "code": "1",
+  "serviceTypeCodes": ["30"],
+  "benefitsRelatedEntities": [
+    {
+      "entityIdentifier": "Party Performing Verification",
+      "entityType": "Non-Person Entity",
+      "entityName": "Blue Cross Blue Shield of Alabama",
+      "entityIdentification": "PI",
+      "entityIdentificationValue": "00510BC"
+    }
+  ]
+}
 ```
 
 In X12 EDI responses, Stedi returns this information in `Loop 2120C` (Subscriber Benefit Related Entity) or `Loop 2120D` (Dependent Benefit Related Entity), depending on whether the patient is the subscriber or a dependent. The `NM1-01` composite is set to `VER` (Party Performing Verification).
@@ -4646,19 +5169,31 @@ BCBS enrichment isn't supported when:
 * The patient's plan is a stand-alone dental product.
 * The patient is part of a Federal Employee Program (FEP). In this case, the patient has `R` before their member ID.
 
-## Does the patient have crossover coverage?
+### Plan number
 
-Crossover coverage is the process where a primary insurance payer (usually Medicare) automatically forwards claims and related information to a secondary payer (typically Medicaid or a supplemental private insurer) after processing. When there's crossover coverage, you won't need to manually resubmit claims to the secondary payer - it happens automatically.
+A plan number is the payer's unique ID for a plan. Not all payers return the patient's plan number. When returned, it can appear in multiple places, including outside the `benefitsInformation` object. Check the following properties in order:
 
-When the patient has crossover coverage, the eligibility response may contain information about crossover carriers, such as their names and identifiers, in the `benefitsInformation.benefitsRelatedEntities` array. However, you **shouldn't** automatically assume the responding payer will automatically forward crossover claims to those payers.
+* [`subscriber.planNumber`](/healthcare/api-reference/post-healthcare-eligibility#response.subscriber.planNumber)
+* [`benefitsInformation.benefitsAdditionalInformation.planNumber`](/healthcare/api-reference/post-healthcare-eligibility#response.benefitsInformation.benefitsAdditionalInformation.planNumber)
+* [`planInformation.planNumber`](/healthcare/api-reference/post-healthcare-eligibility#response.planInformation.planNumber)
 
-To determine whether a claim has been sent to a crossover carrier, you must review the 835 ERA. Visit [crossover claims](/healthcare/receive-claim-responses#crossover-claims) for more details.
+### Group number
 
-## Does the patient have a Medicare Advantage plan?
+A group number is the payer's code for the employer or other party that purchased the plan. Employees on a group plan typically share the same group number, though there are exceptions. Some employers use different group numbers for different employee categories, like union members and management.
+
+Not all payers return the patient's group number. When returned, it can appear in multiple places, including outside the `benefitsInformation` object. Check the following properties in order:
+
+* [`subscriber.groupNumber`](/healthcare/api-reference/post-healthcare-eligibility#response.subscriber.groupNumber)
+* [`benefitsInformation.benefitsAdditionalInformation.groupNumber`](/healthcare/api-reference/post-healthcare-eligibility#response.benefitsInformation.benefitsAdditionalInformation.groupNumber)
+* [`planInformation.groupNumber`](/healthcare/api-reference/post-healthcare-eligibility#response.planInformation.groupNumber)
+
+### Medicare Advantage plans
 
 A Medicare Advantage plan (also known as Medicare Part C) is a type of health plan offered by private insurance companies approved by Medicare. It provides all the benefits of standard Medicare (Parts A and B) and often includes additional services such as prescription drug coverage, vision, dental, and hearing care. Medicare Advantage plans also include an annual out-of-pocket spending limit, offering financial protection beyond what standard Medicare provides.
 
-### Commercial payer responses
+Here's how to identify Medicare Advantage plans in eligibility responses from commercial payers and CMS.
+
+#### Commercial payers
 
 A response from a commercial payer likely contains a Medicare Advantage plan when it has any of the following properties:
 
@@ -4667,7 +5202,7 @@ A response from a commercial payer likely contains a Medicare Advantage plan whe
 
 Behavior varies by payer, so these properties may not always be included, even if the patient has a Medicare Advantage plan.
 
-### CMS responses
+#### CMS
 
 A response from CMS likely contains a Medicare Advantage plan when it has the following properties:
 
@@ -5035,187 +5570,6 @@ Returned in the `benefitsInformation.timeQualifierCode` and `benefitsInformation
 * `36` - Admission
 
 
-# Eligibility Manager with Stedi Agent
-Source: https://www.stedi.com/docs/healthcare/eligibility-manager
-
-***
-
-title: Eligibility Manager with Stedi Agent
-sidebarTitle: "Eligibility Manager + Stedi Agent"
--------------------------------------------------
-
-Eligibility Manager provides insight into your eligibility check pipeline and helps you identify, diagnose, and fix failed eligibility checks. For example, you can filter for all of the eligibility checks that failed during a payer outage and retry once the payer is back online.
-
-In the app, you can:
-
-* Review every eligibility check you submit through the app or Stedi APIs.
-* Search and filter historical eligibility checks by status, Payer ID, date, and error code.
-* Edit and retry failed eligibility checks and review the details of each attempt. With the [Stedi Agent](#stedi-agent), you can resolve common recoverable errors automatically with the same best practices our Support team uses for troubleshooting.
-* Use the Debug view to systematically troubleshoot failed eligibility checks until you receive a successful response from the payer.
-
-## Example troubleshooting workflow
-
-The following example shows how Eligibility Manager can help you track and resolve eligibility check failures:
-
-<Steps>
-  <Step title="New eligibility check">
-    You submit an eligibility check through Stedi's [Eligibility Check
-    API](/healthcare/api-reference/post-healthcare-eligibility) for Nick Smith.
-    Stedi sends it to the payer and creates a new eligibility search record in
-    the app containing the request details.
-  </Step>
-
-  <Step title="Initial failure - Subscriber not found">
-    The payer returns an [AAA
-    error](/healthcare/eligibility-troubleshooting#payer-aaa-errors) code `75` -
-    Subscriber/Insured Not Found. Eligibility Manager shows that the status for
-    the new eligibility search is `Failed`.
-  </Step>
-
-  <Step title="Edit and retry">
-    You open the eligibility search, diagnose the error, correct the
-    subscriber's first name to "Nicholas", and submit the updated eligibility
-    check. Stedi stores the updated request as another entry in the existing
-    eligibility search.
-  </Step>
-
-  <Step title="Success - Active coverage">
-    The payer returns a successful response showing active insurance coverage
-    for Nicholas Smith. The status of the Eligibility Search changes to
-    `Active`, and you can view the request and response details for both
-    iterations of the eligibility check - the original failure and the
-    successful retry - within the same eligibility search record.
-  </Step>
-</Steps>
-
-## Eligibility search
-
-Eligibility Manager stores eligibility check requests in groups called eligibility searches.
-
-When you submit an eligibility check through the app or API, Stedi creates a new eligibility search record. Every time you retry that eligibility check, Stedi stores the retry details within the existing eligibility search. This creates a clear timeline of troubleshooting efforts for failed requests.
-
-### Create
-
-You can create a new eligibility search through the app or Stedi APIs.
-
-* **App:** Click **New search** and enter the eligibility check details into the interactive form.
-* **API:** Use the [Eligibility Check API](/healthcare/api-reference/post-healthcare-eligibility) to submit an eligibility check programmatically.
-
-Once you submit the eligibility check, Stedi creates a new eligibility search in the app.
-
-#### External Patient ID
-
-You can optionally add a **External Patient ID** to the request. This should be a unique identifier for the patient in your system. Adding this identifier helps you identify eligibility checks for the same patient over time.
-
-### Filter
-
-You can filter eligibility searches by the following criteria:
-
-* **Error code:** By the [AAA code](/healthcare/eligibility-troubleshooting#payer-aaa-errors) returned by the payer. For example, `42` errors indicate a connectivity issue.
-* **Payer:** By the Payer ID (62308) or business name (such as Cigna)
-* **Status:** By Queued, Started, Failed, Inactive, and Active
-* **Date:** A date range for when the initial eligibility check within an eligibility search was submitted. For example, a filter beginning on October 1st would only include eligibility searches with an initial submission on or after October 1st. It would *not* include an eligibility search with an initial submission on September 30th and a retry on October 1st.
-
-Results are sorted by the date of the original eligibility check within the eligibility search, with the most recent listed first.
-
-### Statuses
-
-The status of an eligibility search is determined by the most recent eligibility check in the record. For example, if the most recent iteration of a check failed, the status of the entire eligibility search is `Failed`, even if a previous version of the request succeeded.
-
-An eligibility search can have one of the following statuses:
-
-* **Queued:** Stedi placed the eligibility check in its internal queue and will send it to the payer when resources are available. This status is common when you schedule batch eligibility check refreshes through the API or perform large bulk retries that exceed your account's concurrency budget. You can typically expect the status to change to `Started` within a few seconds.
-* **Started:** Stedi sent your eligibility check to the payer and is waiting for a response.
-* **Failed:** The payer returned an error code in the response. Review the error code and retry the eligibility check.
-* **Inactive:** The payer's response doesn't contain an active eligibility and benefit type.
-* **Active:** The payer's response contains an active eligibility and benefit type (codes 1-5). Visit [Eligibility and benefit type codes](/healthcare/eligibility-active-coverage-benefits#benefit-type-codes) for a complete list.
-
-## Get payer details with the Stedi Agent
-
-The Stedi Agent is an AI assistant that can answer your questions about supported payers. To use it, you must be at least an [Operator](/healthcare/accounts-and-billing#members) role within your Stedi account.
-
-The Stedi Agent can help you:
-
-* Determine the correct payer ID for supported payers
-* Map your internal payer names to Stedi's supported payers
-* Determine which payers require [transaction enrollment](/healthcare/transaction-enrollment)
-* Identify which payers support medical, dental, or both use cases
-* Get help with other payer-related questions
-
-To start chatting with the Stedi Agent:
-
-1. Go to the [Chats page](https://portal.stedi.com/app/healthcare/chats) in the Stedi portal.
-2. Click **New chat** and select **Payer Finder**.
-3. Type your question in the chat window and press **Enter.** For example, you could ask "What is the payer ID for Aetna?" or "Does Cigna support dental use cases?" You can also ask more complex questions, like "Which payers support dental use cases and require transaction enrollment?" Talk to Stedi Agent like you would a human support agent.
-4. Ask follow-up questions as needed. You can ask multiple questions about different payers in the same chat.
-
-The Stedi Agent will respond to your questions and display its answers in the chat window.
-
-### Review chat history
-
-You can review a list of all past chats with Stedi Agent on the [Chats page](https://portal.stedi.com/app/healthcare/chats). Click any chat to open it and review the conversation. You can restart any previous chat by sending a new message. Note that this page also contains the agent's eligibility recovery attempts, which are read only.
-
-## Retry failed eligibility checks
-
-When an eligibility check fails, you can edit the request details and resubmit it until you get a successful response. You can either retry the entire eligibility search (the latest iteration of the eligibility check) or select a specific iteration to retry.
-
-There are three ways to retry a failed eligibility check: using the [Stedi Agent](#retry-with-the-stedi-agent), [manually resubmitting](#edit-and-retry) the request, or using [Debug view](#debug-view).
-
-### Retry with the Stedi Agent
-
-You can use the Stedi Agent to troubleshoot and resolve common recoverable eligibility check errors automatically. To use it, you must be at least an [Operator](/healthcare/accounts-and-billing#members) role within your Stedi account.
-
-To resolve an eligibility check failure with the Stedi Agent:
-
-1. Go to the [Eligibility searches page](https://portal.stedi.com/app/healthcare/eligibility).
-2. Click **Resolve with Stedi Agent** next to an eligibility search. This is button is only available next to eligibility searches with common recoverable errors.
-3. The Stedi Agent opens a side panel in Debug view.
-4. The Stedi Agent analyzes the eligibility request and works through best practice recovery strategies based on the error type. For example, if the payer returned an error code `75` (Subscriber/Insured Not Found), the agent may try different combinations of patient data or adjust the name format to find a match in the payer's system.
-
-Each time the agent retries the eligibility check, it stores the new request in the same eligibility search record and it shows up in Debug view in real time. This allows you to see the history of attempts and the progression of the agent's troubleshooting efforts.
-
-The agent only accesses data from the eligibility search it's working on. It can't access data from other searches, customers, or systems.
-
-You can review past recovery attempts with Stedi Agent from the [Chats page](https://portal.stedi.com/app/healthcare/chats). These attempts are read only - you won't be able to send chat messages to the agent.
-
-### Manually edit and retry
-
-To manually resubmit an eligibility check:
-
-1. Go to the [Eligibility searches page](https://portal.stedi.com/app/healthcare/eligibility).
-2. Click the eligibility search you want to troubleshoot to view its details.
-3. Click **Actions > Edit and retry**.
-4. Update the request details as needed, and click **Submit**.
-
-You'll know the retry was successful when the [status of the eligibility search](#statuses) is either `Active` or `Inactive`. If the status of the eligibility search is still `Failed`, you may want to try resolving in [Debug view](#debug-view) or using the [Stedi Agent](#stedi-agent), if available.
-
-### Iterate in Debug view
-
-Debug view is a workspace where you can systematically troubleshoot failed eligibility checks until you receive a successful response from the payer. For example, first you might try swapping the patient's nickname (Dave) for their full name (David) to see if that returns benefits information. In the next iteration, you might try submitting the request with a different service type code or dropping the date of birth.
-
-Debug view shows all past iterations of the eligibility check and highlights the differences between each new version of the request. You can also draft and submit new requests directly from this page. This format helps you understand what you've already tried and quickly iterate on failed requests.
-
-To troubleshoot eligibility checks in Debug view:
-
-1. Go to the [Eligibility searches page](https://portal.stedi.com/app/healthcare/eligibility).
-2. Click the eligibility search you want to troubleshoot to view its details.
-3. Click **Actions > Debug** to enter Debug view.
-4. Click **+ Add draft** to create a new draft request. Stedi pre-populates the draft with the details from the most recent eligibility check in the search.
-5. Update the draft request as needed. Use the **Edit columns** list to show or hide specific fields in the request.
-6. Click the green arrow when you're ready to submit the updated eligibility check draft.
-
-Stedi runs the check and moves it to the list of **Past checks**. Stedi highlights the differences between it and other past checks so you can see a clear record of your troubleshooting efforts. You can repeat this process as many times as needed to get a successful response.
-
-## Stedi Agent usage notes
-
-Please note:
-
-* The Stedi Agent is available on all paid Stedi plans at no additional cost beyond those for related API calls.
-* The agent is assistive. Outputs can be incorrect or incomplete. Verify all responses before taking any action based on them.
-* You are responsible for any actions you instruct or authorize the AI service to take, including generating billable requests on your behalf.
-* Your chats with the Stedi Agent aren't private - they're visible to anyone with access to your Stedi account.
-
-
 # Provider network status, authorizations, referrals
 Source: https://www.stedi.com/docs/healthcare/eligibility-network-status-authorization-referrals
 
@@ -5389,6 +5743,12 @@ In these cases, do the following:
 Some payers offer “gold carding” programs that let certain providers skip prior authorization requirements. In some cases, gold carding is required by state law.
 
 Unfortunately, you can't reliably get a provider's gold card status from an eligibility response. If you think a provider may qualify, check directly with the payer or provider.
+
+### Prior authorization status
+
+Payers typically don't indicate whether the requesting provider has obtained prior authorization for services that require it. Instead, they indicate whether prior authorization is required for a specific service type code (STC) or procedure code.
+
+If you need to check the status of an existing prior authorization, contact the payer directly or use their provider portal if they have one.
 
 ## Is a referral required?
 
@@ -5656,6 +6016,32 @@ However, health plans regulated under HIPAA **must** return any applicable patie
 
 These lists don't necessarily extend to dental or vision plans. Some payers may support returning patient responsibility information for additional STCs.
 
+## How much is left (accumulators)?
+
+Benefit types, such as deductibles, usually include accumulator data, which indicates the amount of the benefit remaining for the calendar year. In fact, the [federally mandated](https://www.caqh.org/core/operating-rules#widget_1706047899185__operating_rules_mandate) Phase II CAQH CORE 260: Eligibility & Benefits Data Content (270/271) Rule requires HIPAA-covered health plans to return remaining deductible amounts for many commonly used service type codes (STCs), including `30` (Health Benefit Plan Coverage).
+
+When present, accumulator information is provided in a separate `benefitsInformation` object, with the `timeQualifierCode` set to `29` for `Remaining`.
+
+The following example shows a deductible benefit (`code`: `C`) for health benefit plan coverage (STC `30`). The `timeQualifierCode` of `29` indicates that this is the remaining amount, and the `benefitAmount` of `0` indicates that the patient has already met their deductible for the year. The `inPlanNetworkIndicatorCode` of `W` indicates that this benefit is not specific to in-network or out-of-network providers.
+
+{/* schema:BenefitsInformation */}
+
+```json
+{
+  "code": "C",
+  "name": "Deductible",
+  "serviceTypeCodes": ["30"],
+  "serviceTypes": ["Health Benefit Plan Coverage"],
+  "coverageLevelCode": "IND",
+  "coverageLevel": "Individual",
+  "timeQualifierCode": "29",
+  "timeQualifier": "Remaining",
+  "benefitAmount": "0",
+  "inPlanNetworkIndicatorCode": "W",
+  "inPlanNetworkIndicator": "Not Applicable"
+}
+```
+
 ## No Surprises Act
 
 The No Surprises Act is a federal law that protects patients from surprise medical bills — especially in emergency situations or when they unknowingly receive care from out-of-network providers. Under NSA, patients also have the right to a good faith estimate for non-emergency care if they're uninsured or self-pay.
@@ -5865,6 +6251,217 @@ If the payer provides prior authorization information in the eligibility respons
 If the payer doesn't provide prior authorization information for a service or procedure, you can assume that prior authorization isn't required.
 
 
+# Eligibility searches view
+Source: https://www.stedi.com/docs/healthcare/eligibility-searches-view
+
+***
+
+title: Eligibility searches view
+sidebarTitle: "Eligibility searches view"
+-----------------------------------------
+
+The eligibility searches view provides insight into your eligibility check pipeline and helps you identify, diagnose, and fix failed eligibility checks. For example, you can filter for all the eligibility checks that failed during a payer outage and retry once the payer is back online.
+
+In the app, you can:
+
+* Review every eligibility check you submit through the app or Stedi APIs.
+* Search and filter historical eligibility checks by status, Payer ID, date, and error code.
+* Edit and retry failed eligibility checks and review the details of each attempt. With the [Stedi Agent](#stedi-agent), you can resolve common recoverable errors automatically with the same best practices our Support team uses for troubleshooting.
+* Use the Debug view to systematically troubleshoot failed eligibility checks until you receive a successful response from the payer.
+
+## Example troubleshooting workflow
+
+The following example shows how the eligibility searches view can help you track and resolve eligibility check failures:
+
+<Steps>
+  <Step title="New eligibility check">
+    You submit an eligibility check through Stedi's [Eligibility Check
+    API](/healthcare/api-reference/post-healthcare-eligibility) for Nick Smith.
+    Stedi sends it to the payer and creates a new eligibility search record in
+    the app containing the request details.
+  </Step>
+
+  <Step title="Initial failure - Subscriber not found">
+    The payer returns an [AAA
+    error](/healthcare/eligibility-troubleshooting#payer-aaa-errors) code `75` -
+    Subscriber/Insured Not Found. The eligibility searches view shows that the
+    status for the new eligibility search is `Failed`.
+  </Step>
+
+  <Step title="Edit and retry">
+    You open the eligibility search, diagnose the error, correct the
+    subscriber's first name to "Nicholas", and submit the updated eligibility
+    check. Stedi stores the updated request as another entry in the existing
+    eligibility search.
+  </Step>
+
+  <Step title="Success - Active coverage">
+    The payer returns a successful response showing active insurance coverage
+    for Nicholas Smith. The status of the Eligibility Search changes to
+    `Active`, and you can view the request and response details for both
+    iterations of the eligibility check - the original failure and the
+    successful retry - within the same eligibility search record.
+  </Step>
+</Steps>
+
+## Eligibility search
+
+Stedi stores eligibility check requests in groups called eligibility searches.
+
+When you submit an eligibility check through the app or API, Stedi creates a new eligibility search record. Every time you retry that eligibility check, Stedi stores the retry details within the existing eligibility search. This creates a clear timeline of troubleshooting efforts for failed requests.
+
+### Create
+
+You can create a new eligibility search through the app or Stedi APIs.
+
+* **App:** Click **New search** and enter the eligibility check details into the interactive form.
+* **API:** Use the [Eligibility Check API](/healthcare/api-reference/post-healthcare-eligibility) to submit an eligibility check programmatically.
+
+Once you submit the eligibility check, Stedi creates a new eligibility search in the app.
+
+#### External Patient ID
+
+You can optionally add a **External Patient ID** to the request. This should be a unique identifier for the patient in your system. Adding this identifier helps you identify eligibility checks for the same patient over time.
+
+### Filter
+
+You can filter eligibility searches by the following criteria:
+
+* **Error code:** By the [AAA code](/healthcare/eligibility-troubleshooting#payer-aaa-errors) returned by the payer. For example, `42` errors indicate a connectivity issue.
+* **Payer:** By the Payer ID (62308) or business name (such as Cigna)
+* **Status:** By Queued, Started, Failed, Inactive, and Active
+* **Date:** A date range for when the initial eligibility check within an eligibility search was submitted. For example, a filter beginning on October 1st would only include eligibility searches with an initial submission on or after October 1st. It would *not* include an eligibility search with an initial submission on September 30th and a retry on October 1st.
+* **Provider NPI:** By the National Provider Identifier (NPI) of the requesting provider.
+
+Results are sorted by the date of the original eligibility check within the eligibility search, with the most recent listed first.
+
+### Statuses
+
+The status of an eligibility search is determined by the most recent eligibility check in the record. For example, if the most recent iteration of a check failed, the status of the entire eligibility search is `Failed`, even if a previous version of the request succeeded.
+
+An eligibility search can have one of the following statuses:
+
+* **Queued:** Stedi placed the eligibility check in its internal queue and will send it to the payer when resources are available. This status is common when you schedule batch eligibility check refreshes through the API or perform large bulk retries that exceed your account's concurrency budget. You can typically expect the status to change to `Started` within a few seconds.
+* **Started:** Stedi sent your eligibility check to the payer and is waiting for a response.
+* **Failed:** The payer returned an error code in the response. Review the error code and retry the eligibility check.
+* **Inactive:** The payer's response doesn't contain an active eligibility and benefit type.
+* **Active:** The payer's response contains an active eligibility and benefit type (codes 1-5). Visit [Eligibility and benefit type codes](/healthcare/eligibility-active-coverage-benefits#benefit-type-codes) for a complete list.
+
+## Get payer details with the Stedi Agent
+
+The Stedi Agent is an AI assistant that can answer your questions about supported payers. To use it, you must be at least an [Operator](/healthcare/accounts-and-billing#members) role within your Stedi account.
+
+The Stedi Agent can help you:
+
+* Determine the correct payer ID for supported payers
+* Map your internal payer names to Stedi's supported payers
+* Determine which payers require [transaction enrollment](/healthcare/transaction-enrollment)
+* Identify which payers support medical, dental, or both use cases
+* Get help with other payer-related questions
+
+To start chatting with the Stedi Agent:
+
+1. Go to the [Chats page](https://portal.stedi.com/app/healthcare/chats) in the Stedi portal.
+2. Click **New chat** and select **Payer Finder**.
+3. Type your question in the chat window and press **Enter.** For example, you could ask "What is the payer ID for Aetna?" or "Does Cigna support dental use cases?" You can also ask more complex questions, like "Which payers support dental use cases and require transaction enrollment?" Talk to Stedi Agent like you would a human support agent.
+4. Ask follow-up questions as needed. You can ask multiple questions about different payers in the same chat.
+
+The Stedi Agent will respond to your questions and display its answers in the chat window.
+
+### Review chat history
+
+You can review a list of all past chats with Stedi Agent on the [Chats page](https://portal.stedi.com/app/healthcare/chats). Click any chat to open it and review the conversation. You can restart any previous chat by sending a new message. Note that this page also contains the agent's eligibility recovery attempts, which are read only.
+
+## Review eligibility check errors
+
+The [Eligibility check errors page](https://portal.stedi.com/app/healthcare/checks/reports/errors) shows a list of recent eligibility check `AAA` error codes. These are errors the payer returns when they reject your eligibility request. They specify the reasons for rejection and any recommended follow-up actions.
+
+To go to this page, open the **Eligibility** menu in the navigation bar and select **Errors**.
+
+![Eligibility check errors page](/images/providers/eligibility-check-errors.png)
+
+The errors are grouped by error code, and you can filter the list by Payer ID. You can look up any payer's ID in the [Payer Network](https://www.stedi.com/healthcare/network). Click on an error code to review a list of all the instances of that error.
+
+This page helps you identify patterns in eligibility check failures. For example, if you see a large number of errors with code `75` (Subscriber/Insured Not Found) for a specific payer, you might want to investigate whether there are common issues with the patient data being submitted to that payer.
+
+Visit [Payer `AAA` errors](/healthcare/eligibility-troubleshooting#payer-aaa-errors) for a complete list of `AAA` errors and their possible causes and resolutions.
+
+## Retry failed eligibility checks
+
+When an eligibility check fails, you can edit the request details and resubmit it until you get a successful response. You can either retry the entire eligibility search (the latest iteration of the eligibility check) or select a specific iteration to retry.
+
+There are three ways to retry a failed eligibility check: using the [Stedi Agent](#retry-with-the-stedi-agent), [manually resubmitting](#edit-and-retry) the request, or using [Debug view](#debug-view).
+
+### Retry with the Stedi Agent
+
+You can use the Stedi Agent to troubleshoot and resolve common recoverable eligibility check errors automatically. To use it, you must be at least an [Operator](/healthcare/accounts-and-billing#members) role within your Stedi account.
+
+To resolve an eligibility check failure with the Stedi Agent:
+
+1. Go to the [Eligibility searches page](https://portal.stedi.com/app/healthcare/eligibility).
+2. Click **Resolve with Stedi Agent** next to an eligibility search. This is button is only available next to eligibility searches with common recoverable errors.
+3. The Stedi Agent opens a side panel in Debug view.
+4. The Stedi Agent analyzes the eligibility request and works through best practice recovery strategies based on the error type. For example, if the payer returned an error code `75` (Subscriber/Insured Not Found), the agent may try different combinations of patient data or adjust the name format to find a match in the payer's system.
+
+Each time the agent retries the eligibility check, it stores the new request in the same eligibility search record and it shows up in Debug view in real time. This allows you to see the history of attempts and the progression of the agent's troubleshooting efforts.
+
+The agent only accesses data from the eligibility search it's working on. It can't access data from other searches, customers, or systems.
+
+You can review past recovery attempts with Stedi Agent from the [Chats page](https://portal.stedi.com/app/healthcare/chats). These attempts are read only - you won't be able to send chat messages to the agent.
+
+### Manually edit and retry
+
+To manually resubmit an eligibility check:
+
+1. Go to the [Eligibility searches page](https://portal.stedi.com/app/healthcare/eligibility).
+2. Click the eligibility search you want to troubleshoot to view its details.
+3. Click **Actions > Edit and retry**.
+4. Update the request details as needed, and click **Submit**.
+
+You'll know the retry was successful when the [status of the eligibility search](#statuses) is either `Active` or `Inactive`. If the status of the eligibility search is still `Failed`, you may want to try resolving in [Debug view](#debug-view) or using the [Stedi Agent](#stedi-agent), if available.
+
+### Iterate in Debug view
+
+Debug view is a workspace where you can systematically troubleshoot failed eligibility checks until you receive a successful response from the payer. For example, first you might try swapping the patient's nickname (Dave) for their full name (David) to see if that returns benefits information. In the next iteration, you might try submitting the request with a different service type code or dropping the date of birth.
+
+Debug view shows all past iterations of the eligibility check and highlights the differences between each new version of the request. You can also draft and submit new requests directly from this page. This format helps you understand what you've already tried and quickly iterate on failed requests.
+
+To troubleshoot eligibility checks in Debug view:
+
+1. Go to the [Eligibility searches page](https://portal.stedi.com/app/healthcare/eligibility).
+2. Click the eligibility search you want to troubleshoot to view its details.
+3. Click **Actions > Debug** to enter Debug view.
+4. Click **+ Add draft** to create a new draft request. Stedi pre-populates the draft with the details from the most recent eligibility check in the search.
+5. Update the draft request as needed. Use the **Edit columns** list to show or hide specific fields in the request.
+6. Click the green arrow when you're ready to submit the updated eligibility check draft.
+
+Stedi runs the check and moves it to the list of **Past checks**. Stedi highlights the differences between it and other past checks so you can see a clear record of your troubleshooting efforts. You can repeat this process as many times as needed to get a successful response.
+
+## Link to specific eligibility checks
+
+Stedi assigns a globally unique identifier to each eligibility check, formatted as `ec_<UUID>`. For example: `ec_f81d4fae-7dec-11d0-a765-00a0c91e6b12`.
+
+The unique eligibility check ID is returned in the following locations:
+
+* **SOAP Eligibility Check endpoint:** `stedi-id` header in the HTTP response
+* **JSON and Raw X12 Eligibility Check endpoints** `id` property in the JSON response
+* **Poll Batch Checks endpoint:** `items.id` property in the JSON response
+* **Retrieve Batch Check Statuses endpoint:** `items[].additionalInfo.eligibility.id` property in the JSON response
+
+You can use the eligibility check ID to link directly to a specific eligibility check's results in the Stedi portal. The format for direct portal links is: `https://portal.stedi.com/app/healthcare/eligibility/{search-id}/inspect/{check-id}`, where `{search-id}` is the eligibility search ID and `{check-id}` is the unique Stedi-assigned eligibility check ID.
+
+You can find the eligibility search ID at the top of an eligibility search's details page. Visit [Eligibility searches](https://portal.stedi.com/app/healthcare/eligibility) to review a list of your eligibility searches.
+
+## Stedi Agent usage notes
+
+Please note:
+
+* The Stedi Agent is available on all paid Stedi plans at no additional cost beyond those for related API calls.
+* The agent is assistive. Outputs can be incorrect or incomplete. Verify all responses before taking any action based on them.
+* You are responsible for any actions you instruct or authorize the AI service to take, including generating billable requests on your behalf.
+* Your chats with the Stedi Agent aren't private - they're visible to anyone with access to your Stedi account.
+
+
 # STCs and procedure codes
 Source: https://www.stedi.com/docs/healthcare/eligibility-stc-procedure-codes
 
@@ -5951,17 +6548,17 @@ Ranges of applicable codes are represented as `rangeStart - rangeEnd`.
 \| ----------|--------------|-------------|
 \| `97151 - 97157` | ABA Therapy | `BD`, `MH` |
 \| `97810`, `97811 - 97814` | Acupuncture | `64`, `1` |
-\| `96401 - 96549` | Chemotherapy | `ON`, `82`, `92` |
-\| `96493` | Chemotherapy, IV push | `82`, `92` |
-\| `96494` | Chemotherapy, additional infusion | `82`, `92` |
+\| `96401 - 96549` | Chemotherapy | `ON`, `78`, `87`, `91`, `92` |
+\| `96493` | Chemotherapy, IV push | `78`, `87`, `91`, `92` |
+\| `96494` | Chemotherapy, additional infusion | `78`, `87`, `91`, `92` |
 \| `99490`, `99439`, `99491`, `99437`, `99487` | Chronic Care Management (CCM) services | `A4`, `MH`, `98`, `1` |
 \| too many to list | Dermatology | `3`, `98` |
 \| `E1399` | Durable Medical Equipment | `DM`, `11`, `12`, `18` |
 \| `96375` | IV push | `92` |
 \| `96360`, `96365`, `96366` | IV Therapy/Infusion | `92`, `98` |
 \| too many to list | Maternity (professional) | `BT`, `BU`, `BV`, `69` |
-\| `97802` | Medical nutrition therapy | `98`, `MH`, `1` |
-\| `97803` | Medical nutrition follow-up | `98`, `MH`, `1` |
+\| `97802` | Medical nutrition therapy | `98`, `MH`, `BZ`, `1` |
+\| `97803` | Medical nutrition follow-up | `98`, `MH`, `BZ`, `1` |
 \| too many to list | Mental health | `MH`, `96`, `98`, `A4`, `BD`, `CF` |
 \| `95700 - 96020` | Neurology | `98` |
 \| `99460`, `99463` | Newborn/facility | `65`, `BI` |
@@ -6329,42 +6926,19 @@ sidebarTitle: "Troubleshooting"
 
 A list of potential errors and possible resolutions when submitting 270/271 eligibility checks.
 
-## Payer unable to find patient
+## Review eligibility check errors
 
-Sometimes, a payer can't return benefits information for a patient even when the patient exists in their system. This problem can occur for a couple reasons.
+The [Eligibility check errors page](https://portal.stedi.com/app/healthcare/checks/reports/errors) shows a list of recent eligibility check `AAA` error codes. These are errors the payer returns when they reject your eligibility request. They specify the reasons for rejection and any recommended follow-up actions.
 
-### Multiple matching records
+To go to this page, open the **Eligibility** menu in the navigation bar and select **Errors**.
 
-Payers can have multiple records of patients with the same name and date of birth. The payer cannot return benefits information unless they are able to identify a unique match within their system.
+![Eligibility check errors page](/images/providers/eligibility-check-errors.png)
 
-To avoid this issue, we recommend:
+The errors are grouped by error code, and you can filter the list by Payer ID. You can look up any payer's ID in the [Payer Network](https://www.stedi.com/healthcare/network). Click on an error code to review a list of all the instances of that error.
 
-* Include all of the demographic information available for a patient.
-* Include the patient's member ID, if available.
+This page helps you identify patterns in eligibility check failures. For example, if you see a large number of errors with code `75` (Subscriber/Insured Not Found) for a specific payer, you might want to investigate whether there are common issues with the patient data being submitted to that payer.
 
-### Information discrepancies
-
-There can be discrepancies between the information the provider has collected from the patient and the record the payer has in their system. These discrepancies can lead to issues returning a patient, even though a match exists. Some examples include differences in spelling the patient's name, using a nickname instead of the full name ("Nick" vs. "Nicolas"), and accidentally transposing numbers in the date of birth.
-
-If a request fails to return the expected member in the response, we recommend progressively sending additional eligibility check requests with fewer patient identity and demographic data elements, or different combinations of those. This allows you to identify and handle cases where there are data errors or discrepancies between payer and provider data.
-
-### Name mismatches
-
-If the payer fails to find a matching plan member due to a name mismatch, the `errors` array in the response typically has the `code` set to one of the following values:
-
-* `65`: Invalid/Missing Patient Name
-* `67`: Patient Not Found
-* `73`: Invalid/Missing Subscriber/Insured Name
-* `75`: Subscriber/Insured Not Found
-
-These error codes are set by the payer, not by Stedi, so it's possible that other error codes could be returned.
-
-Resolving the error may require trying different name variations until the check is successful.
-
-* Replace any nickname or shortened name with the full legal name, for example "Robert" instead of "Bob".
-* Replace any non-English or accented characters (letters with diacritical marks) such as "Ñ" or "é" with the closest equivalent within the character restrictions. Stedi automatically replaces most such characters with the usual closest equivalent but this might not match the payer's record. For example, the character "Đ" could be transliterated to "D" or "J" depending on the romanization system used.
-* For compound names try using only one or the other part. You can also try try removing the separator, or changing the separator from hyphen to space, or vice versa. Some payers may ignore special or separator characters when performing name searches.
-* If the patient has recently changed their name, for example due to marriage, then the name stated by the patient or printed on their ID card might not match the payer's record. Try both the current and previous name.
+Visit [Payer `AAA` errors](#payer-aaa-errors) for a complete list of `AAA` errors and their possible causes and resolutions.
 
 ## Retry strategy
 
@@ -6412,6 +6986,84 @@ You should also consider the following common error cases when implementing retr
 | `79`      | `200`       | Stedi successfully sent your request to the payer, but the payer rejected it.                                    | First, retry as soon as possible with a different member and a different [NPI](/healthcare/national-provider-identifier). This helps determine whether the issue is with the original request or there is a broader issue with the payer. If you determine the issue is with the payer, follow our guidance for [payer connectivity issues](#payer-connectivity-issues). |
 | `79`      | `400`       | Either Stedi doesn't recognize the payer ID you provided, or the payer is not configured for eligibility checks. | **Don't automatically retry.** Fix the payer ID or contact Stedi support to resolve.                                                                                                                                                                                                                                                                                     |
 
+## Payer unable to find patient
+
+Sometimes, a payer can't return benefits information for a patient even when the patient exists in their system. This problem can occur for a couple reasons.
+
+### Multiple matching records
+
+Payers can have multiple records of patients with the same name and date of birth. The payer cannot return benefits information unless they are able to identify a unique match within their system.
+
+To avoid this issue, we recommend:
+
+* Include all of the demographic information available for a patient.
+* Include the patient's member ID, if available.
+
+### Information discrepancies
+
+There can be discrepancies between the information the provider has collected from the patient and the record the payer has in their system. These discrepancies can lead to issues returning a patient, even though a match exists. Some examples include differences in spelling the patient's name, using a nickname instead of the full name ("Nick" vs. "Nicolas"), and accidentally transposing numbers in the date of birth.
+
+If a request fails to return the expected member in the response, we recommend progressively sending additional eligibility check requests with fewer patient identity and demographic data elements, or different combinations of those. This allows you to identify and handle cases where there are data errors or discrepancies between payer and provider data.
+
+### Name mismatches
+
+If the payer fails to find a matching plan member due to a name mismatch, the `errors` array in the response typically has the `code` set to one of the following values:
+
+* `65`: Invalid/Missing Patient Name
+* `67`: Patient Not Found
+* `73`: Invalid/Missing Subscriber/Insured Name
+* `75`: Subscriber/Insured Not Found
+
+These error codes are set by the payer, not by Stedi, so it's possible that other error codes could be returned.
+
+Resolving the error may require trying different name variations until the check is successful.
+
+* Replace any nickname or shortened name with the full legal name, for example "Robert" instead of "Bob".
+* Replace any non-English or accented characters (letters with diacritical marks) such as "Ñ" or "é" with the closest equivalent within the character restrictions. Stedi automatically replaces most such characters with the usual closest equivalent but this might not match the payer's record. For example, the character "Đ" could be transliterated to "D" or "J" depending on the romanization system used.
+* For compound names try using only one or the other part. You can also try try removing the separator, or changing the separator from hyphen to space, or vice versa. Some payers may ignore special or separator characters when performing name searches.
+* If the patient has recently changed their name, for example due to marriage, then the name stated by the patient or printed on their ID card might not match the payer's record. Try both the current and previous name.
+
+## Medi-Cal portal credentials
+
+Medicaid California (Medi-Cal) is one of the few payers that require additional credentials to process eligibility checks.
+
+When submitting eligibility checks to Medi-Cal, you must include the username and password the requesting provider uses to log into Medi-Cal's [Provider Portal](https://mcweb.apps.prd.cammis.medi-cal.ca.gov/). These credentials will be different for each provider.
+
+* **JSON endpoint**: Set the [`portalUsername`](/healthcare/api-reference/post-healthcare-eligibility#body.portalUsername) and [`portalPassword`](/healthcare/api-reference/post-healthcare-eligibility#body.portalPassword) properties.
+* **Raw X12 endpoint:** Include the portal credentials as `REF` segments within `Loop 2100B`.
+  * username: `REF02` when `REF01` is set to `JD` (User Identification)
+  * password: `REF02` when `REF01` is set to `4A` (Personal Identification Number (PIN))
+* **Stedi portal:** To add these fields to the [New eligibility check form](https://portal.stedi.com/app/healthcare/checks/create), click **Select fields** and check the boxes next to **Portal username** and **Portal password**.
+
+If you don't include the provider's portal credentials or if the credentials are invalid, you'll receive an [`AAA` error](#payer-aaa-errors) with code `41` (Authorization/Access Restrictions) at the `payer` or `provider` level.
+
+## Missing member ID
+
+Our eligibility check endpoints require submitting at least one of the patient's member ID, date of birth, or last name in the request. However, some payers always require the member ID and reject requests without it.
+
+Stedi tracks which payers require the member ID and returns a warning when you submit an eligibility check to one of those payers without it. The warning appears in the `warnings` array along with the [`AAA` error](#payer-aaa-errors) from the payer in the `errors` array.
+
+```json
+  {
+    "warnings": [
+      {
+        "code": "request::270::member_id_required",
+        "description": "This payer requires the patient's member ID to be included in eligibility requests."
+      }
+    ],
+    "errors": [
+      {
+        "code": "72",
+        "description": "Invalid/Missing Subscriber/Insured ID",
+        ...
+      }
+    ],
+    ...
+  }
+```
+
+Eligibility check requirements vary by payer. If we don't know whether a payer requires the member ID for eligibility checks, we don't return a warning.
+
 ## Errors
 
 You may encounter the following types of errors when submitting eligibility requests.
@@ -6437,40 +7089,82 @@ The following error resulted from an unrecognized payer ID:
 
 ```json
 {
-  "controlNumber": "123456789",
-  "tradingPartnerServiceId": "TEST2",
+  "meta": {
+    "outboundTraceId": "01KEJ02BRD3H716AP3HRBDM5Y8"
+  },
+  "controlNumber": "602859072",
+  "tradingPartnerServiceId": "AHS",
   "errors": [
     {
       "code": "79",
       "description": "Invalid Participant Identification",
       "followupAction": "Please Correct and Resubmit",
       "location": "2100A",
-      "possibleResolutions": "Payer TEST2 is not configured. Please check our published payer list or contact Stedi support to resolve."
+      "possibleResolutions": "Payer AHS is not configured. Please check our published payer list or contact Stedi support to resolve."
     }
   ],
-  "status": "ERROR"
+  "status": "ERROR",
+  "eligibilitySearchId": "019ba401-2f01-7262-a2b8-8707b70198c9",
+  "id": "ec_9d6a4f2b-1c7e-4e9a-b3f8-0a2c5e1d7b84"
 }
 ```
 
 ### Validation errors
 
-Stedi validates the structure of your eligibility request and will not submit your request to the payer if it is missing required fields or if the data is not formatted correctly. The following Stedi validation error resulted from a missing `provider` object:
+You may receive validation errors from Stedi or, rarely, from the payer.
+
+#### Stedi
+
+Stedi validates the structure of your eligibility request and won't submit your request to the payer if it's missing required fields or if the data is formatted incorrectly. The following Stedi validation error resulted from a missing required property:
+
+```json
+{
+  "message": "Missing required field: provider npi, serviceProviderNumber, payorId, taxId, ssn, pharmacyProcessorNumber, servicesPlanID, or employersId is required",
+  "code": "BAD_REQUEST",
+  "eligibilitySearchId": "019ba403-e5ce-7181-8a2f-8cf093dde812",
+  "id": "ec_9d6a4f2b-1c7e-4e9a-b3f8-0a2c5e1d7b84"
+}
+```
+
+The following shows an example of a Stedi validation error resulting from an invalid date format:
+
+```json
+{
+  "message": "subscriber.dateOfBirth: Provided date should be valid and in YYYYMMDD format.",
+  "code": "INVALID_REQUEST_BODY",
+  "eligibilitySearchId": "019ba405-e1ec-79e2-bde2-830664a901df",
+  "id": "ec_9d6a4f2b-1c7e-4e9a-b3f8-0a2c5e1d7b84"
+}
+```
+
+#### Payer (999 rejections)
+
+Stedi's validation catches the majority of syntax and structural issues. However, some payers may occasionally return a [999 Implementation Acknowledgment](https://portal.stedi.com/app/guides/view/hipaa/implementation-acknowledgment-x231/01HRF41ES1DVGCA6X1EHSRPFXZ) indicating that the request was rejected.
+
+Stedi can usually translate these 999 rejections into a more user-friendly 271 response with descriptive [`AAA` errors](#payer-aaa-errors) in the `errors` array. When Stedi can't generate a 271, we return the raw 999 in the `x12` property, set the `status` to `ERROR`, and include the number of EDI syntax errors in the `implementationTransactionSetSyntaxError` property. The `errors` array includes a general description indicating that the payer rejected the request due to validation errors.
+
+The following example shows a 999 that resulted from sending the payer more than one STC code in the request:
 
 {/* schema:EligibilityCheckResponseContent */}
 
 ```json
 {
-  "controlNumber": "123456789",
-  "tradingPartnerServiceId": "CIGNA",
+  "id": "ec_019c00bb-2293-7241-b283-9b94642b4ec4",
+  "transactionSetAcknowledgement": "R",
+  "tradingPartnerServiceId": "TESTPAYER",
   "errors": [
     {
-      "code": "33",
-      "description": "Input Errors",
-      "followupAction": "Please Correct and Resubmit",
-      "possibleResolutions": "Missing required field: provider"
+      "description": "The payer or intermediary clearinghouse rejected the request with validation errors. The original EDI response is returned in the `x12` field. Contact Stedi Support if you need further help."
     }
   ],
-  "status": "ERROR"
+  "implementationTransactionSetSyntaxError": "5",
+  "controlNumber": "123456789",
+  "x12": "ISA*00*          *00*          *ZZ*STEDI          *01*11234567890    *260127*1032*^*00501*000000000*0*P*:~GS*FA*STEDI*11234567890*20260127*1032*0*X*005010X231A1~ST*999*0001*005010X231A1~AK1*HS*1*005010X231A1~AK2*270*0001~IK3*EQ*12**8~IK4*1*0*5*32~IK5*R*5~AK9*R*1*1*0~SE*8*0001~GE*1*0~IEA*1*000000000~",
+  "meta": {
+    "outboundTraceId": "01KG0BP8NA69HK7095HE8XG03F"
+  },
+  "status": "ERROR",
+  "eligibilitySearchId": "019c00bb-229e-72c3-8585-8b28f0556a38"
 }
 ```
 
@@ -6717,6 +7411,7 @@ At a high level, you can experience errors in the following categories:
 * [SOAP faults](#soap-faults): Issues with the request `Envelope` or `Header` elements, such as malformed XML.
 * [CORE-compliant errors](#core-compliant-errors): The request don't conform to CAQH CORE rules for eligibility checks.
 * [X12 EDI validation errors](#x12-edi-validation-errors): The X12 EDI transaction doesn't match the required format.
+* [Too many requests errors](#too-many-requests): You've exceeded your concurrency limit.
 * [Payer `AAA` errors](#payer-aaa-errors): Errors from the payer indicating issues with processing your request.
 
 #### Authentication errors
@@ -6878,6 +7573,36 @@ When there are validation errors, Stedi returns an HTTP `400` status code. There
   </soapenv:Envelope>
   ```
 
+#### Too many requests
+
+If you exceed your [concurrency limit](/healthcare/api-reference#concurrency-limits) for the SOAP endpoint:
+
+* Stedi returns an HTTP `429` status code.
+* The X12 EDI transaction inside the `Payload` element contains an `AAA` error with code `42`.
+
+Stedi will continue rejecting additional requests with a `429` status code until one of your previous requests is completed.
+
+The following example shows a too many requests response:
+
+```xml
+<soapenv:Envelope xmlns:soapenv="http://www.w3.org/2003/05/soap-envelope">
+  <soapenv:Body>
+    <COREEnvelopeRealTimeResponse>
+      <PayloadType>X12_271_Response_005010X279A1</PayloadType>
+      <ProcessingMode>RealTime</ProcessingMode>
+      <PayloadID>019afed8-aa83-7fe2-a1bf-18dd5942a772</PayloadID>
+      <TimeStamp>2025-12-08T16:43:23Z</TimeStamp>
+      <SenderID>STEDI</SenderID>
+      <ReceiverID>686460348755</ReceiverID>
+      <CORERuleVersion>2.2.0</CORERuleVersion>
+      <Payload><![CDATA[ISA*00*          *00*          *ZZ*STEDI          ...*AAA*Y**42*R*...]]></Payload>
+      <ErrorCode>Success</ErrorCode>
+      <ErrorMessage> </ErrorMessage>
+    </COREEnvelopeRealTimeResponse>
+  </soapenv:Body>
+</soapenv:Envelope>
+```
+
 
 # Overview
 Source: https://www.stedi.com/docs/healthcare/eligibility-workflows-overview
@@ -6890,7 +7615,7 @@ sidebarTitle: "Overview"
 
 Eligibility refers to a patient's qualification to receive specific medical benefits, services, or coverage under their health plan.
 
-Stedi allows you to reliably determine patient eligibility, even when the patient doesn't know or can't provide accurate insurance information. Once you integrate with Stedi, you can use the UI tools in Eligibility Manager to test, troubleshoot, and monitor your entire eligibility pipeline.
+Stedi allows you to reliably determine patient eligibility, even when the patient doesn't know or can't provide accurate insurance information. Once you integrate with Stedi, you can use the UI tools in the Stedi portal to test, troubleshoot, and monitor your entire eligibility pipeline.
 
 ## Eligibility workflows
 
@@ -6900,132 +7625,17 @@ Here's an overview of the eligibility workflows you can automate with Stedi APIs
 * [Insurance discovery](/healthcare/insurance-discovery): Find a patient's active health plans using their demographic information, such as their name and date of birth. Insurance discovery checks return the same benefits information as a standard eligibility check, making them a great backup for verifying coverage when eligibility checks fail or aren't possible.
 * [Coordination of benefits](/healthcare/coordination-of-benefits): Determine whether a patient has multiple, overlapping coverages and if so, which plan is primarily responsible for payment (primacy). COB checks help you submit claims to the correct payer and avoid claim denials.
 
-## Eligibility Manager
+## Eligibility searches view
 
-[Eligibility Manager](/healthcare/eligibility-manager) helps you track and manage your entire eligibility pipeline. It provides a centralized view of all your eligibility checks, including real-time and batch requests, and helps you efficiently troubleshoot issues and review patient coverage details. With Stedi Agent, you can resolve common errors automatically with the same best practices our Support team uses for troubleshooting.
+The [Eligibility searches view](/healthcare/eligibility-searches-view) helps you track and manage your entire eligibility pipeline. It provides a centralized view of all your eligibility checks, including real-time and batch requests, and helps you efficiently troubleshoot issues and review patient coverage details. With Stedi Agent, you can resolve common errors automatically with the same best practices our Support team uses for troubleshooting.
 
-Within Eligibility Manager, you can also manually submit new eligibility checks and coordination of benefits checks as needed.
+Within the Stedi portal, you can also manually submit new eligibility checks and coordination of benefits checks as needed.
 
 ## MCP server
 
 Our [Model Context Protocol (MCP) server](/healthcare/mcp-server) defines a set of tools that AI agents can use to perform and troubleshoot eligibility checks through Stedi.
 
 When building agents that work with eligibility data, we recommend using our MCP server. It excels at individual eligibility checks, especially when your agent needs to retrieve coverage data in real time.
-
-
-# Enhanced claim validation
-Source: https://www.stedi.com/docs/healthcare/enhanced-claim-validation
-
-***
-
-title: Enhanced claim validation
-sidebarTitle: "Enhanced validation"
------------------------------------
-
-Enhanced claim validation uses hundreds of additional *edits* (the industry term for validation rules) to increase claim acceptance rates.
-
-When a claim fails enhanced validation, Stedi does not submit it to the payer. Instead, Stedi returns a synchronous response with a detailed error message you can use to diagnose and fix the issue.
-
-**Enhanced validation is only available for 837P professional claims.**
-
-## Enable enhanced validation
-
-To enable enhanced validation for the [Professional Claims](/healthcare/api-reference/post-healthcare-claims) or [Professional Claims Raw x12](/healthcare/api-reference/post-healthcare-claims-raw-x12), set the `Stedi-Validation` header to `snip`.
-
-<Warning>
-  There is an **additional cost per claim submission** when you use enhanced
-  validation. Please reach out to support for access and pricing information.
-</Warning>
-
-## Example validation error
-
-The following sample error message resulted from a [SNIP validation Level 3](#level-3-balancing) failure. Specifically, the total claim charge amount did not match the total of all service line charge amounts reported in the claim.
-
-```json
-{
-  "errors": [
-    {
-      "id": "481",
-      "note": "The total claim charge amount must balance to the sum of all service line charge amounts reported in the Professional Service (SV1) segments for this claim.",
-      "loop_context": null,
-      "validations": [
-        {
-          "Any": [
-            {
-              "All": [
-                {
-                  "Rule": "Expected 'C:2300:1300:CLM-02' (100) to be equal to '[\"P:2400:3700:SV1-02\"]' (92)"
-                }
-              ]
-            }
-          ]
-        }
-      ]
-    }
-  ]
-}
-```
-
-## Automatic fixes
-
-When you enable enhanced validation, Stedi also automatically fixes common errors before sending the claim. These include invalid date/time formats and character encoding issues.
-
-## Rejection monitoring
-
-Stedi automatically monitors your 277 rejections to proactively build new rules for enhanced validation based on previous failures.
-
-## SNIP validation
-
-SNIP (Strategic National Implementation Process) validation is a set of guidelines established by the Workgroup for Electronic Data Interchange (WEDI) and the Centers for Medicare & Medicaid Services (CMS) to ensure claims meet specific standards and rules.
-
-Stedi's enhanced validation tests SNIP levels 1-7, which include a wide range of requirements.
-
-### Level 1: EDI syntax
-
-Determine whether the generated EDI file meets basic X12 standard syntax rules, such as:
-
-* Are the data elements within the specified maximum and minimum lengths?
-* Are all of the required segments and elements present?
-* Are all of the loops in the correct order?
-* Are delimiters used correctly?
-
-### Level 2: HIPAA syntax
-
-Determine whether the generated EDI file complies with HIPAA-specific rules, such as:
-
-* Are all of the required segments and elements present in the claim? For example, the request must include the billing provider's address information and tax identification number.
-* Are all required qualifiers included correctly? For example, the request must include a qualifier code that indicates whether the subscriber is an individual person or an non-person entity, such as a company.
-* Are the parent-child relationships between segments and elements correct? For example, the Claim Information loop contains child loops with information about various providers, ambulance pickup/dropoff (if applicable), and the service facility.
-
-### Level 3: Balancing
-
-Determine whether the financial data in the claim is computed correctly, such as whether claim totals match the sum of the service line items.
-
-### Level 4: Situations
-
-Determine whether the claim meets the situational rules specified in the HIPAA implementation guide.
-
-Situational rules describe scenarios where when A information is present, B information must also be present. For example, when a claim is for an accident, the request must include the accident date.
-
-### Level 5: External code sets
-
-<Note>Not yet supported.</Note>
-Determine whether the values from external code sets used in the claim are
-valid. This includes: - Code sets such as ICD, CPT, and NDC as well as status
-codes and adjustment reason codes. - Code formats. For example, ICD-10 codes
-must be alphanumeric with a specific length.
-
-### Level 6: Product type/Type of service
-
-<Note>Not yet supported.</Note>
-Determine whether the claim meets the requirements for the specific type of
-service or product being billed. For example, if the claim is for an ambulance
-service, does the request include information about the transport reason and
-distance traveled?
-
-### Level 7: Payer-specific
-
-Determine whether the claim meets additional, payer-specific requirements. For example, Vermont Medicaid requires all uppercase characters in the request. Stedi's enhanced validation checks whether claims to Vermont Medicaid use all uppercase characters and returns a warning if not.
 
 
 # Developer Docs
@@ -7139,9 +7749,16 @@ Insurance discovery checks have the following limitations:
   </Step>
 </Steps>
 
-## Enrollment requirements
+## Transaction enrollment
 
-Before you can perform insurance discovery checks, you must complete [transaction enrollment](/healthcare/transaction-enrollment) for Payer ID: DISCOVERY.
+[Transaction enrollment](/healthcare/transaction-enrollment) is the process of registering a provider to exchange specific healthcare transactions with a payer.
+
+Unlike standard eligibility checks, insurance discovery checks **always** require transaction enrollment. This is because insurance discovery checks involve sending requests to a special Stedi payer ([payer ID: `DISCOVERY`](https://www.stedi.com/healthcare/network?page=0\&search=disco\&entry=UQKWC). The provider must be enrolled with this payer to run insurance discovery checks.
+
+To enroll, complete the following steps:
+
+1. Create a provider record with the information required for enrollment. If you already have a record for the provider, you can skip this step. [Stedi portal](https://portal.stedi.com/app/healthcare/providers) | [API endpoint](/healthcare/api-reference/post-enrollment-create-provider)
+2. Submit an enrollment request for **Real-time eligibility checks**. Use `DISCOVERY` as the payer ID (Stedi Insurance Discovery). [Stedi portal](https://portal.stedi.com/app/healthcare/enrollments) | [API endpoint](/healthcare/api-reference/post-enrollment-create-enrollment)
 
 ### Medicaid Provider ID
 
@@ -7498,14 +8115,12 @@ While some healthcare institutions can submit eligibility checks directly in X12
 
 ## Billing for eligibility checks
 
-There are four classes of eligibility transactions that are considered non-billable:
+Transactions are billable at the usage rates specified in your contract unless they fall into one of the following non-billable categories:
 
 1. All eligibility checks you send in [Test Mode](/healthcare/test-mode).
 2. All eligibility checks that return `AAA` = `42` or `AAA` = `80` errors, which indicate that the payer is down.
 3. All eligibility checks that return `AAA` = `79` errors, which indicate there was a problem connecting to this payer.
 4. All API calls that return `4xx` or `5xx` errors.
-
-All other transactions are billed at the usage rates according to your contract.
 
 
 # Overview
@@ -7586,6 +8201,21 @@ The Health Insurance Portability and Accountability Act (HIPAA) mandates that cl
 
 While some healthcare institutions can submit claims and claim status requests directly in X12 HIPAA, many of today's software applications are built to use more modern data formats like JSON. That's why Stedi offers two types of APIs for claims processing: one that accepts JSON and automatically converts it to X12 HIPAA behind the scenes, and another that accepts X12 HIPAA directly.
 
+## Billing for claims processing
+
+The following sections designate which types of requests are billable.
+
+### 837 claims and 275 attachments
+
+Transactions are billable at the usage rates specified in your contract, except for API calls that return 4xx or 5xx errors. For example, you won't be charged when a request fails because the payer isn't supported - in this case, Stedi returns a `400` HTTP status code.
+
+### 276/277 real-time claim status
+
+Transactions are billable at the usage rates specified in your contract unless they fall into the following non-billable categories:
+
+* API calls that return 4xx or 5xx errors. For example, you won't be charged when a request fails because the payer isn't supported - in this case, Stedi returns a `400` HTTP status code.
+* Claim status responses containing [Claim Status Category Codes](https://x12.org/codes/claim-status-category-codes) `E0`, `E1`, or `E2`. These codes indicate that either the payer is unresponsive or that Stedi couldn't parse your request.
+
 
 # Medicare Beneficiary Identifier (MBI) lookup
 Source: https://www.stedi.com/docs/healthcare/mbi-lookup
@@ -7598,65 +8228,156 @@ sidebarTitle: MBI lookup for CMS checks
 
 A [Medicare Beneficiary Identifier (MBI)](https://www.cms.gov/training-education/partner-outreach-resources/new-medicare-card/medical-beneficiary-identifiers-mbis) is a unique, randomly-generated identifier assigned to individuals enrolled in Medicare. You must include the patient's MBI in every eligibility check you submit to the Centers for Medicare and Medicaid Services ([payer ID: CMS](https://www.stedi.com/healthcare/network/cms)).
 
-When patients don't know their MBI, you can use Stedi's eligibility APIs to perform an MBI lookup using their Social Security Number instead. Stedi returns a complete eligibility response containing the patient’s coverage status and their MBI for future reference.
+When patients don't know their MBI, you can use Stedi's eligibility APIs to perform an MBI lookup instead of a standard eligibility check. Stedi returns a complete eligibility response containing the patient’s coverage status and their MBI for future reference.
 
 <Warning>
   There is an additional cost to perform MBI lookups with Stedi's eligibility
-  check APIs. Please contact Stedi customer support to enable access and add MBI
-  lookups to your agreement.
+  check APIs. Visit [pricing](https://www.stedi.com/pricing) for details.
 </Warning>
 
-## Enrollment
+## Types of MBI lookups
 
-Before you can perform MBI lookups, you must complete [transaction enrollment](/healthcare/transaction-enrollment) for [payer ID: MBILU](https://www.stedi.com/healthcare/network/ASKVB).
+There are two types of MBI lookups you can perform with Stedi. For each, you'll use a special payer ID that tells Stedi to perform an MBI lookup for the patient in addition to a standard eligibility check.
 
-## Perform an MBI Lookup
+| Type     | What's required                                                    | Payer ID     |
+| -------- | ------------------------------------------------------------------ | ------------ |
+| With SSN | first name, last name, date of birth, Social Security Number (SSN) | `MBILU`      |
+| No SSN   | first name, last name, date of birth, U.S. state                   | `MBILUNOSSN` |
 
-You can perform MBI lookups using the following endpoints:
+<Note>
+  When running an MBI lookup without SSN using our [raw
+  X12](/healthcare/api-reference/post-healthcare-eligibility-raw-x12) or
+  [SOAP](/healthcare/api-reference/post-healthcare-eligibility-soap) endpoints,
+  you must include a city, in addition to a U.S. state, in `Loop 2100C N4`. You
+  can use a dummy city value, such as `DUMMY`, if needed. If you omit the city
+  value, you'll receive an X12 validation error.
+</Note>
+
+We recommend running MBI lookups **with** the patient's SSN whenever possible. When the SSN is present, the MBI lookup has a higher likelihood of successfully returning their MBI. MBI lookups with no SSN are a fallback option when the patient's SSN isn't available.
+
+You don't need to include more patient demographic information than what's required, such as additional address data. It doesn’t improve MBI lookup success rates.
+
+## Transaction enrollment
+
+[Transaction enrollment](/healthcare/transaction-enrollment) is the process of registering a provider to exchange specific healthcare transactions with a payer.
+
+Unlike standard eligibility checks, MBI lookups **always** require transaction enrollment. This is because MBI lookups involve sending requests to special Stedi payers that tell Stedi to perform the MBI lookup in addition to a standard eligibility check. The provider must be enrolled with Stedi's MBI lookup payers to use these services.
+
+To enroll, complete the following steps:
+
+1. Create a provider record with the information required for enrollment. If you already have a record for the provider, you can skip this step. [Stedi portal](https://portal.stedi.com/app/healthcare/providers) | [API endpoint](/healthcare/api-reference/post-enrollment-create-provider)
+2. Submit an enrollment request for **Real-time eligibility checks**. [Stedi portal](https://portal.stedi.com/app/healthcare/enrollments) | [API endpoint](/healthcare/api-reference/post-enrollment-create-enrollment)
+
+   Select the payer ID based on the type of MBI lookup you want to perform:
+
+   * **With SSN:** [`MBILU` (CMS MBI Lookup)](https://www.stedi.com/healthcare/network?page=0\&search=MBIL\&entry=ASKVB)
+   * **No SSN:** [`MBILUNOSSN` (CMS MBI Lookup Without SSN)](https://www.stedi.com/healthcare/network?page=0\&search=MBIL\&entry=APSMC)
+
+If you want to perform both types of MBI lookups, you must submit separate enrollment requests for each payer ID.
+
+## Run MBI lookups
+
+You can run MBI lookups with and without SSN using the following endpoints:
 
 * [Real-Time Eligibility Check JSON](/healthcare/api-reference/post-healthcare-eligibility)
 * [Real-Time Eligibility Check Raw X12](/healthcare/api-reference/post-healthcare-eligibility-raw-x12)
+* [Real-Time Eligibility Check SOAP](/healthcare/api-reference/post-healthcare-eligibility-soap)
 * [Batch Eligibility Check](/healthcare/api-reference/post-healthcare-batch-eligibility)
+
+You can also run MBI lookups **with SSN** through batch CSV uploads. MBI lookups with no SSN aren't supported for batch CSV.
 
 ### Request
 
-Construct an eligibility check request that includes the patient's first name, last name, date of birth, and Social Security Number (SSN).
+Construct an eligibility check request that includes the required patient demographic data:
 
-Set the `tradingPartnerServiceId` to `MBILU`. This is a special payer ID that tells Stedi to perform an MBI lookup for the patient in addition to a standard eligibility check.
+* **With SSN:** first name, last name, date of birth, Social Security Number (SSN)
+* **No SSN:** first name, last name, date of birth, U.S. state
 
-The following sample request performs an MBI lookup for a patient named Jane Doe.
+<Note>
+  When running an MBI lookup without SSN using our [raw
+  X12](/healthcare/api-reference/post-healthcare-eligibility-raw-x12) or
+  [SOAP](/healthcare/api-reference/post-healthcare-eligibility-soap) endpoints,
+  you must include a city, in addition to a U.S. state, in `Loop 2100C N4`. You
+  can use a dummy city value, such as `DUMMY`, if needed. If you omit the city
+  value, you'll receive an X12 validation error.
+</Note>
+
+Set the `tradingPartnerServiceId` to:
+
+* **With SSN:** `MBILU`
+* **No SSN:** `MBILUNOSSN`
+
+These are special payer IDs that tell Stedi to perform an MBI lookup for the patient in addition to a standard eligibility check.
+
+You don't need to include other patient information, such as additional address data. It doesn’t improve lookup success rates.
+
+The following sample requests show how to perform an MBI lookup for a patient named Jane Doe.
 
 {/* schema:EligibilityCheckRequestContent */}
 
-```bash Example MBI Lookup request
-curl --request POST \
-  --url https://healthcare.us.stedi.com/2024-04-01/change/medicalnetwork/eligibility/v3 \
-  --header 'Authorization: <api-key>' \
-  --header 'Content-Type: application/json' \
-  --data '{
-  "tradingPartnerServiceId": "MBILU",
-  "externalPatientId": "UAA111222333",
-  "encounter": {
-    "serviceTypeCodes": [
-      "30"
-    ]
-  },
-  "provider": {
-    "organizationName": "ACME Health Services",
-    "npi": "1999999984"
-  },
-  "subscriber": {
-    "dateOfBirth": "19000101",
-    "firstName": "Jane",
-    "lastName": "Doe",
-    "ssn": "123456789"
-  }
-}'
-```
+<Tabs items={["With SSN", "No SSN"]}>
+  <Tab value="With SSN">
+    ```bash Example MBI Lookup request
+    curl --request POST \
+      --url https://healthcare.us.stedi.com/2024-04-01/change/medicalnetwork/eligibility/v3 \
+      --header 'Authorization: <api-key>' \
+      --header 'Content-Type: application/json' \
+      --data '{
+      "tradingPartnerServiceId": "MBILU",
+      "externalPatientId": "UAA111222333",
+      "encounter": {
+        "serviceTypeCodes": [
+          "30"
+        ]
+      },
+      "provider": {
+        "organizationName": "ACME Health Services",
+        "npi": "1999999984"
+      },
+      "subscriber": {
+        "dateOfBirth": "19000101",
+        "firstName": "Jane",
+        "lastName": "Doe",
+        "ssn": "123456789"
+      }
+    }'
+    ```
+  </Tab>
+
+  <Tab value="No SSN">
+    ```bash Example MBI Lookup request
+    curl --request POST \
+      --url https://healthcare.us.stedi.com/2024-04-01/change/medicalnetwork/eligibility/v3 \
+      --header 'Authorization: <api-key>' \
+      --header 'Content-Type: application/json' \
+      --data '{
+      "tradingPartnerServiceId": "MBILUNOSSN",
+      "externalPatientId": "UAA111222333",
+      "encounter": {
+        "serviceTypeCodes": [
+          "30"
+        ]
+      },
+      "provider": {
+        "organizationName": "ACME Health Services",
+        "npi": "1999999984"
+      },
+      "subscriber": {
+        "dateOfBirth": "19000101",
+        "firstName": "Jane",
+        "lastName": "Doe",
+        "address": {
+          "state": "WV"
+        }
+      }
+    }'
+    ```
+  </Tab>
+</Tabs>
 
 ### Response
 
-Stedi uses the patient’s demographic data and SSN to perform an MBI lookup. If there is a match, Stedi submits an eligibility check to CMS.
+Stedi uses the patient’s demographic data and SSN to perform an MBI lookup. If there is a match, Stedi submits an eligibility check to CMS. The response shape is the same for both the SSN and no SSN lookup types.
 
 Stedi returns a complete eligibility response from CMS for the patient and places the patient's MBI in the `subscriber.memberId` property.
 Visit [Determine patient benefits](/healthcare/eligibility-active-coverage-benefits) for details about how you can use the eligibility response to determine a patient's coverage status and benefits.
@@ -7675,6 +8396,7 @@ The following example shows a CMS eligibility response returned from an MBI look
     "outboundTraceId": "11112222333344445555666677"
   },
   "controlNumber": "112233445",
+  "id": "ec_01234567-89ab-cdef-0123-456789abcdef",
   "reassociationKey": "112233445",
   "tradingPartnerServiceId": "CMS",
   "provider": {
@@ -8157,6 +8879,8 @@ MBI lookups you perform using the [Batch Eligibility Check](/healthcare/api-refe
 
 When you submit the following mock MBI lookup request to the [Real-Time Eligibility Check](/healthcare/api-reference/post-healthcare-eligibility) endpoint with a [test API key](/healthcare/api-reference#api-key-types), Stedi returns mock benefits data you can use for testing.
 
+This mock request is for an MBI lookup with SSN.
+
 <Tip>
   Mock requests are free for testing purposes and won't incur any charges in
   your Stedi account.
@@ -8358,6 +9082,15 @@ You can use the MCP server directly in an MCP client to retrieve payer informati
 ```
 Does Cigna support eligibility checks?
 ```
+
+## MCP server vs. Stedi Agent
+
+The Stedi Agent and the Model Context Protocol (MCP) server can both help you resolve failed eligibility checks and find payer information, but they serve different use cases.
+
+* The [Stedi Agent](/healthcare/stedi-agent) is a Stedi-controlled, AI assistant within the Stedi portal. It's ready to use whenever you need it. Unlike the MCP server, you can't manage or invoke the Stedi Agent programmatically - you can only use it within the Stedi portal. The Stedi Agent is built on top of the MCP server, meaning it uses the MCP server's exposed tools to perform actions.
+* The [MCP Server](/healthcare/mcp-server) provides a set of tools, which are a wrapper around Stedi's APIs, that AI agents can use to find payer information and perform and troubleshoot eligibility checks. The MCP server includes the same retry logic (in a prompt) that the Stedi Agent uses to automatically resolve eligibility check failures.
+
+  You can use the MCP server to build your own AI agents tailored to your use case. Unlike the Stedi Agent, you'll need to install and configure the MCP server for your preferred AI agent.
 
 ## Pricing
 
@@ -8812,9 +9545,15 @@ Stedi autogenerates a PDF version of each processed 835 ERA. To download the PDF
 2. Click the 835 ERA transaction you want to download.
 3. On the **Overview** tab, click **Download 835 ERA PDF**.
 
-The PDF contains a human-readable version of the ERA, including payment details, adjustments, and explanations for each service line. It adheres to the Standard Paper Remittance (SPR) format required by the Centers for Medicare and Medicaid Services (CMS).
+You can also retrieve the PDF programmatically by calling the [835 ERA PDF](/healthcare/api-reference/get-era-pdf) endpoint.
 
-This is a PDF representation of the 835 ERA - it's not the same as an Explanation of Benefits (EOB) or an Explanation of Payment (EOP) that you may receive from the payer. - **EOB:** A statement from a payer explaining how a medical claim was processed, including what was covered, denied, and the remaining patient responsibility. The patient receives an EOB after a claim has been adjudicated. - **EOP:** A version of the EOB for the provider. It contains more information related to how the payer has adjudicated the claim. The provider receives the EOP after claim adjudication and payment are sent. - **ERA:** An electronic file that details payment and claim adjustment information. The provider receives the ERA after the payer has adjudicated the claim and issued payment, typically at the same time the funds are deposited electronically.
+The PDF contains a human-readable version of the ERA, including payment details, adjustments, and explanations for each service line. It resembles the Standard Paper Remittance (SPR) format that the Centers for Medicare and Medicaid Services (CMS) uses for ERA PDFs, regardless of which payer sent the ERA.
+
+This is a PDF representation of the 835 ERA - it's not the same as an Explanation of Benefits (EOB) that you may receive from the payer.
+
+* **EOB:** A statement from a payer explaining how a medical claim was processed, including what was covered, denied, and the remaining patient responsibility. The patient receives an EOB after a claim has been adjudicated.
+* **EOP:** A version of the EOB for the provider. It contains more information related to how the payer has adjudicated the claim. The provider receives the EOP after claim adjudication and payment are sent.
+* **ERA:** An electronic file that details payment and claim adjustment information. The provider receives the ERA after the payer has adjudicated the claim and issued payment, typically at the same time the funds are deposited electronically.
 
 ## Determine 277CA sender
 
@@ -8901,7 +9640,7 @@ The 277CA response helps you understand whether a claim was accepted or rejected
 ### Status overview
 
 For a high-level overview of the claim's acceptance/rejection status, examine the following array:
-[`transactions[].payers[].claimStatusTransactions[].claimStatusDetails[].serviceProviderClaimStatuses`](https://www.stedi.com/docs/healthcare/api-reference/get-healthcare-reports-277#response.transactions.payers\[].claimStatusTransactions\[].claimStatusDetails\[].serviceProviderClaimStatuses).
+[`transactions[].payers[].claimStatusTransactions[].claimStatusDetails[].serviceProviderClaimStatuses`](/healthcare/api-reference/get-healthcare-reports-277#response.transactions.payers.claimStatusTransactions.claimStatusDetails.serviceProviderClaimStatuses).
 
 This array typically only includes basic status information like "accepted for processing" or "denied". It's helpful for quickly determining the overall status of the claim. The following example shows a `providerClaimStatuses` object indicating that the claim was accepted for processing.
 
@@ -8924,7 +9663,7 @@ This array typically only includes basic status information like "accepted for p
 ### Status details
 
 For more detailed acceptance and rejection information for the entire claim, examine the following array:
-[`transactions[].payers[].claimStatusTransactions[].claimStatusDetails[].patientClaimStatusDetails[].claims[].claimStatus`](https://www.stedi.com/docs/healthcare/api-reference/get-healthcare-reports-277#response.transactions.payers\[].claimStatusTransactions\[].claimStatusDetails\[].patientClaimStatusDetails\[].claims\[].claimStatus).
+[`transactions[].payers[].claimStatusTransactions[].claimStatusDetails[].patientClaimStatusDetails[].claims[].claimStatus`](/healthcare/api-reference/get-healthcare-reports-277#response.transactions.payers.claimStatusTransactions.claimStatusDetails.patientClaimStatusDetails.claims.claimStatus).
 
 This array contains more detailed information about acceptance or rejection, including:
 
@@ -8959,7 +9698,7 @@ The following example shows a `claimStatus` object indicating that the claim was
 ```
 
 Not all payers send detailed accepted and rejection data for individual service lines. When available, this information will be in the following array:
-[`transactions[].payers[].claimStatusTransactions[].claimStatusDetails[].patientClaimStatusDetails[].claims[].serviceLines[].serviceClaimStatuses`](https://www.stedi.com/docs/healthcare/api-reference/get-healthcare-reports-277#response.transactions.payers\[].claimStatusTransactions\[].claimStatusDetails\[].patientClaimStatusDetails\[].claims\[].serviceLines\[].serviceClaimStatuses).
+[`transactions[].payers[].claimStatusTransactions[].claimStatusDetails[].patientClaimStatusDetails[].claims[].serviceLines[].serviceClaimStatuses`](/healthcare/api-reference/get-healthcare-reports-277#response.transactions.payers.claimStatusTransactions.claimStatusDetails.patientClaimStatusDetails.claims.serviceLines.serviceClaimStatuses).
 
 This can help you better identify the errors that caused the rejection. The following example shows a `serviceClaimStatuses` object from the same claim indicating that the service line was rejected as unprocessable and highlights the subscriber's member ID. Combined with the previous example, this indicates that the claim was rejected due to a missing or invalid member ID.
 
@@ -9070,7 +9809,12 @@ You may also need to cancel duplicate claims or claims that were submitted in er
 
 ## Preparing claim resubmissions or cancellations
 
-To revise or cancel a claim, you'll need to resubmit the claim with the proper Claim Frequency Code, the original claim's Payer Claim Control Number (if available), and any other corrections. We also strongly recommend setting a new Patient Control Number to make tracking the resubmission easier.
+To revise or cancel a claim, you'll need to resubmit the claim with:
+
+* The proper [Claim Frequency Code](#claim-frequency-code)
+* The original claim's [Payer Claim Control Number (if available)](#payer-claim-control-number-pccn)
+* A new, unique [Patient Control Number (PCN)](#patient-control-number)
+* Any other necessary corrections
 
 ### Claim Frequency Code
 
@@ -9086,7 +9830,13 @@ The following diagram shows how claims can be rejected by Stedi or the payer at 
 
 ![Claim response lifecycle](/images/healthcare-apis/claim-resubmission-codes.svg)
 
-Use the following table to determine which Claim Frequency Code is right for your use case. The following rules apply to professional, institutional, and dental claims for most payers except [Medicare](#medicare-resubmission), which only accepts code `1` for resubmissions.
+#### Choose the right code
+
+The following guidance can help you determine which Claim Frequency Code is right for your use case. These rules apply to professional, institutional, and dental claims for most payers.
+
+<Tip>
+  Some payers have different rules. For example, [Medicare](#medicare-resubmission) only accepts code `1` for resubmissions. Always adhere to the payer's specific guidance when resubmitting or canceling claims.
+</Tip>
 
 | Scenario                                                                            | How you'll know                                                                                                                                                                                                                                                                                                                       | Claim Frequency Code                                                         |
 | ----------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
@@ -9142,13 +9892,20 @@ You can retrieve the Payer Claim Control Number (PCCN) for the original claim fr
 
 ### Patient Control Number
 
-When correcting or replacing claims, we also recommend setting a new, unique Patient Control Number in:
+When resubmitting claims with any Claim Frequency Code (`1`, `7`, or `8`), we strongly recommend setting a new, unique Patient Control Number (PCN).
+
+The value you supply will be present in both the 277CA and the 835 ERA responses, allowing you to correlate the resubmitted claim with its responses later. You can set the PCN in the following locations:
 
 * `claimInformation.patientControlNumber` in JSON.
 * `Loop 2300 CLM01` (Patient Control Number) in X12 EDI.
 * **Patient account number** (Box 26) in Stedi's CMS-1500 claim form UI.
 
-The value you supply will be present in both the 277CA and the 835 ERA responses. Setting a unique value for the resubmission will help you more easily correlate the resubmitted claim with its responses later.
+When assigning a PCN, follow these best practices:
+
+* Use a unique PCN for each claim. The identifier should be more complex than a simple sequential number and should be hard to guess.
+* Use random strings. Formats with patient initials or the date of service in them can create duplicates. We recommend using [nanoid](https://www.npmjs.com/package/nanoid) or a similar library to create a strong, unique 17-character PCN for each claim.
+* Keep it 17 characters or less. Some payers cut off values longer than 17 characters in ERAs and claim acknowledgments, which makes it hard to match them with the original claim.
+* Use alphanumeric characters only. Avoid special characters, as many payers don't handle them properly.
 
 ### Medicare resubmission
 
@@ -9166,7 +9923,7 @@ Ensure that the updated claim includes:
 * [Patient Control Number](#patient-control-number) (recommended)
 * Any other necessary corrections to the claim
 
-Once you've prepared the updated claim, you can resubmit it through the Stedi API, an SFTP connection. or the Stedi portal. The resubmission process is the same for both corrections and cancellations - the Claim Frequency Code indicates which action you want to take.
+Once you've prepared the updated claim, you can resubmit it through the Stedi API, an SFTP connection, or the Stedi portal. The resubmission process is the same for both corrections and cancellations - the Claim Frequency Code indicates which action you want to take.
 
 ### API resubmission
 
@@ -9183,23 +9940,44 @@ Resubmit through one of Stedi's claim submission endpoints:
 
 Visit [SFTP submission](/healthcare/submit-claims-sftp-connection) for details on how to format and submit X12 EDI claims through SFTP.
 
-### Manual resubmission
+### CMS-1500 form (professional)
 
 <Warning>
   Stedi's CMS-1500 claim form UI is mostly limited to the CMS-1500 form fields. It may not be able to successfully resubmit complex claims originally submitted through our APIs or SFTP.
 </Warning>
 
-To manually resubmit a claim through the Stedi portal:
+To resubmit a professional claim through Stedi's interactive CMS-1500 form:
 
-1. Go to the [Transactions](https://portal.stedi.com/app/healthcare/transactions) page in your Stedi account and click the claim you want to resubmit.
-2. Click **Edit and resubmit**. Stedi opens the claim in an interactive editor.
-3. Make changes to the claim.
+1. Go to the [Transactions page](https://portal.stedi.com/app/healthcare/transactions) and click the claim you want to resubmit to open its details page.
+2. Click **Edit and resubmit** and select **1500 resubmission**. Stedi opens the interactive CMS-1500 form prepopulated with the claim's information.
+3. Make any necessary changes to the claim.
+   * Make sure to update the [Claim Frequency Code](#claim-frequency-code), the [Payer Claim Control Number](#payer-claim-control-number-pccn), and the [Patient Control Number](#patient-control-number) according to best practices.
+   * You can click **Related transactions** to review related 277CAs containing the errors you need to address before resubmitting. Click a transaction to review its details.
+4. Click **Submit claim** to resubmit the updated claim to the payer.
+
+Stedi validates the updated claim and submits it to the payer. It will appear on the [Transactions page](https://portal.stedi.com/app/healthcare/transactions) as a new 837 claim. You will also receive new [277CA claim acknowledgments](/providers/providers-claim-acknowledgments) indicating whether the resubmitted claim was accepted or rejected.
+
+### X12 EDI editor
+
+To resubmit a professional, dental, or institutional claim through Stedi's X12 EDI editor:
+
+1. Go to the [Transactions page](https://portal.stedi.com/app/healthcare/transactions) and click the claim you want to resubmit to open its details page.
+
+2. Click **Edit and resubmit** and select **X12 EDI resubmission**. Stedi opens the claim in an interactive editor with the X12 EDI on the left and the EDI specification on the right.
+
+   As you hover over different parts of the EDI, Stedi highlights the corresponding part of the specification in the **Inspector** tab to help you understand what each part of the EDI means and how to edit it correctly.
+   ![X12 EDI editor](/images/providers/x12-claim-resubmission.png)
+
+3. Make changes to the claim EDI.
+   * You can type directly in the EDI editor or copy and paste updated EDI from another source.
    * Make sure to update the [Claim Frequency Code](#claim-frequency-code), the [Payer Claim Control Number](#payer-claim-control-number-pccn), and the [Patient Control Number](#patient-control-number) according to best practices.
    * You can switch to the **Reference transactions** tab to review related 277CAs containing the errors you need to address before resubmitting. Click a transaction to review its details.
+
 4. Click **Review and submit**. Stedi shows a comparison of the original claim and the new claim containing your changes.
+
 5. Click **Resubmit claim** to send the updated claim to the payer.
 
-Stedi validates the updated claim and submits it to the payer. It will appear on the [Transactions page](https://portal.stedi.com/app/healthcare/transactions) as a new 837 claim. You will also receive new 277CA claim acknowledgments indicating whether the resubmitted claim was accepted or rejected.
+Stedi validates the updated claim and submits it to the payer. It will appear on the [Transactions page](https://portal.stedi.com/app/healthcare/transactions) as a new 837 claim. You will also receive new [277CA claim acknowledgments](/providers/providers-claim-acknowledgments) indicating whether the resubmitted claim was accepted or rejected.
 
 
 # Real-time eligibility checks
@@ -9226,7 +10004,18 @@ You can send real-time eligibility checks to payers manually through the Stedi p
 
 ## Transaction enrollment
 
-Some payers require [transaction enrollment](/healthcare/transaction-enrollment) before you can start sending them eligibility checks. The [Payer Network](https://www.stedi.com/healthcare/network) specifies which payers require enrollment.
+[Transaction enrollment](/healthcare/transaction-enrollment) is the process of registering a provider to exchange specific healthcare transactions with a payer.
+
+Most payers don't require transaction enrollment for eligibility checks. Those that do, such as the Centers for Medicare & Medicaid Services (CMS), typically allow multiple enrollments with different clearinghouses. That means enrolling through Stedi shouldn't cancel or interfere with any existing enrollments you have through other clearinghouses.
+
+Enrolling through Stedi for real-time eligibility checks also doesn't affect your existing enrollments for other transaction types. For example, enrolling with Stedi won't unenroll the provider from receiving transactions like Electronic Remittance Advices (ERAs) through other clearinghouses.
+
+You can check whether a specific payer requires enrollment for eligibility checks in the [Payer Network](https://www.stedi.com/healthcare/network) or through the [Payers API](/healthcare/api-reference/get-payer).
+
+To enroll, complete the following steps:
+
+1. Create a provider record with the information required for enrollment. If you already have a record for the provider, you can skip this step. [Stedi portal](https://portal.stedi.com/app/healthcare/providers) | [API endpoint](/healthcare/api-reference/post-enrollment-create-provider)
+2. Submit an enrollment request for real-time eligibility checks. [Stedi portal](https://portal.stedi.com/app/healthcare/enrollments) | [API endpoint](/healthcare/api-reference/post-enrollment-create-enrollment)
 
 ## Testing
 
@@ -9463,6 +10252,7 @@ The response contains the patient's benefits information. Visit [Determine patie
         "outboundTraceId": "01J2VZA127GH93JT74HJU"
       },
       "controlNumber": "214976898",
+      "id": "ec_01234567-89ab-cdef-0123-456789abcdef",
       "reassociationKey": "123456789",
       "tradingPartnerServiceId": "123456789",
       "provider": {
@@ -10521,6 +11311,7 @@ The response contains the patient's benefits information. Visit [Determine patie
         "outboundTraceId": "01J2VZA127GH93JT74HJU"
       },
       "controlNumber": "214976898",
+      "id": "ec_01234567-89ab-cdef-0123-456789abcdef",
       "reassociationKey": "123456789",
       "tradingPartnerServiceId": "123456789",
       "provider": {
@@ -11553,6 +12344,13 @@ The response contains the patient's benefits information. Visit [Determine patie
 
 #### SOAP endpoint
 
+Note that the HTTP response must also include two additional headers:
+
+* `stedi-id`: The Stedi-assigned unique identifier for the eligibility check, formatted as `ec_<UUID>`. For example: `id: ec_f81d4fae-7dec-11d0-a765-00a0c91e6b12`.
+* `stedi-eligibility-search-id`: A Stedi-assigned identifier that allows Stedi to group eligibility checks for the same patient into a unified record in the Stedi portal called an [eligibility search](/healthcare/eligibility-searches-view). For example: `stedi-eligibility-search-id: 01997873-bebb-7b33-81ef-f408866dfb2cb`.
+
+The response body is a SOAP message, and its structure is similar to the request.
+
 <Tabs items={["Request - SOAP", "Response"]}>
   <Tab value="Request - SOAP">
     ```bash
@@ -11636,6 +12434,19 @@ We **don't recommend** using Postman for requests containing Protected Health In
 
 Visit [API clients](/healthcare/api-reference#api-clients) for a list of recommended clients you can use instead.
 
+## Eligibility check ID
+
+Stedi assigns a globally unique identifier to each eligibility check, formatted as `ec_<UUID>`. For example: `ec_f81d4fae-7dec-11d0-a765-00a0c91e6b12`.
+
+The unique eligibility check ID is returned in the following locations:
+
+* **SOAP:** `stedi-id` header in the HTTP response
+* **JSON and Raw X12:** `id` property in the JSON response
+
+You can use this eligibility check ID to debug failures, correlate retries, and link directly to an eligibility check's results in the Stedi portal. The format for direct portal links is: `https://portal.stedi.com/app/healthcare/eligibility/{search-id}/inspect/{check-id}`, where `{search-id}` is the [eligibility search ID](/healthcare/api-reference/post-healthcare-eligibility#response.eligibilitySearchId) and `{check-id}` is the unique Stedi-assigned eligibility check ID.
+
+You can find the eligibility search ID at the top of an eligibility search's details page in the portal. Visit [Eligibility searches](https://portal.stedi.com/app/healthcare/eligibility) to review a list of your eligibility searches.
+
 ## Patient information
 
 All payers are required to be able to search for patients using the following "bare minimum" subsets of information. They will return benefits information as long as they can find a unique match for the patient within their system.
@@ -11702,7 +12513,7 @@ Some payers return the patient's MBI in one of the following properties of the s
 
 If the value in either of these properties matches the format specified in the [Medicare Beneficiary Identifier documentation](https://www.cms.gov/training-education/partner-outreach-resources/new-medicare-card/medical-beneficiary-identifiers-mbis), the number is likely an MBI, and we recommend sending a follow-up eligibility check to CMS for additional benefits data. You're most likely to receive an MBI in eligibility check responses from commercial Medicare Advantage plans, but they can also be present in responses from Medicaid plans for dual-eligible patients.
 
-When you don't know a patient's MBI, you can use Stedi's eligibility check APIs to perform an MBI lookup using their Social Security Number instead. Stedi returns a complete benefits response from CMS with the patient's MBI in the `subscriber` object for future reference. Visit [Medicare Beneficiary Identifier (MBI) lookup](/healthcare/mbi-lookup) for complete details.
+When you don't know a patient's MBI, you can use Stedi's eligibility check APIs to perform an MBI lookup instead of a standard eligibility check. Stedi returns a complete benefits response from CMS with the patient's MBI in the `subscriber` object for future reference. Visit [Medicare Beneficiary Identifier (MBI) lookup](/healthcare/mbi-lookup) for complete details.
 
 <Tip>
   **Don't** submit eligibility checks for Medicare Advantage plans to CMS (HETS)
@@ -11794,6 +12605,15 @@ Please note:
 * You are responsible for any actions you instruct or authorize the AI service to take, including generating billable requests on your behalf.
 * Your chats with the Stedi Agent aren't private - they're visible to anyone with access to your Stedi account.
 
+## Stedi Agent vs. MCP server
+
+The Stedi Agent and the Model Context Protocol (MCP) server can both help you resolve failed eligibility checks and find payer information, but they serve different use cases.
+
+* The [Stedi Agent](/healthcare/stedi-agent) is a Stedi-controlled, AI assistant within the Stedi portal. It's ready to use whenever you need it. Unlike the MCP server, you can't manage or invoke the Stedi Agent programmatically - you can only use it within the Stedi portal. The Stedi Agent is built on top of the MCP server, meaning it uses the MCP server's exposed tools to perform actions.
+* The [MCP Server](/healthcare/mcp-server) provides a set of tools, which are a wrapper around Stedi's APIs, that AI agents can use to find payer information and perform and troubleshoot eligibility checks. The MCP server includes the same retry logic (in a prompt) that the Stedi Agent uses to automatically resolve eligibility check failures.
+
+  You can use the MCP server to build your own AI agents tailored to your use case. Unlike the Stedi Agent, you'll need to install and configure the MCP server for your preferred AI agent.
+
 
 # Claim attachments
 Source: https://www.stedi.com/docs/healthcare/submit-claim-attachments
@@ -11808,29 +12628,59 @@ Claim attachments are additional documents that help justify or validate a claim
 
 Attachments can include medical records, treatment plans, radiographs, photographs, itemized bills, and letters from providers - the type required for each claim depends on the services listed and the payer's rules. For example, a claim for a dental crown may require X-rays, while a claim for a surgery may require an operative report.
 
+You can submit [unsolicited 275 claim attachments](#solicited-vs-unsolicited-attachments) for professional, dental, and institutional claims in either JSON or X12 EDI format. For professional claims you can also submit attachments through the Stedi portal.
+
+## Supported payers
+
+You can check which payers support 275 claim attachments using the [Payer Network](https://www.stedi.com/healthcare/network) or the [Payers API](/healthcare/api-reference/get-payer). If you try to submit claim attachments to a payer that doesn't support them, Stedi blocks the submission before it reaches the payer:
+
+* **APIs:** When you submit a claim with attachments to an unsupported payer, Stedi returns a `400` HTTP error with an explanatory error message. For example:
+
+  ```json
+  {
+    "code": "TRANSACTION_TYPE_NOT_SUPPORTED",
+    "message": "Payer 62308 (Stedi Payer ID HGJLR) is not configured for Unsolicited Claim Attachment (275). Please check our published payer list or contact Stedi support to resolve."
+  }
+  ```
+
+* **SFTP:** When you submit a claim with attachments to an unsupported payer, Stedi rejects it with a [277CA claim acknowledgment](/healthcare/claim-responses-overview#277ca-claim-acknowledgment) explaining the issue. For example:
+
+  ```
+  STC*A7:N21*[DATE]*PR*[AMOUNT]********Payer 62308 (Stedi Payer ID HGJLR) is not configured for Unsolicited Claim Attachment (275). Please check our published payer list or contact Stedi support to resolve.~
+  ```
+
 ## Transaction enrollment
 
-Some payers require enrollment before allowing providers to submit 275 claim attachments. This enrollment process is separate from the transaction enrollment process for 837 claims.
+[Transaction enrollment](/healthcare/transaction-enrollment) is the process of registering a provider to exchange specific healthcare transactions with a payer. Some payers require enrollment before allowing providers to submit 275 claim attachments. When required, this enrollment process is separate from the transaction enrollment process for 837 claims.
 
-The [Payer Network](https://www.stedi.com/healthcare/network?query=eyIyNzAiOnt9LCIyNzYiOnt9LCI4MzUiOnt9LCI4MzdQIjp7fSwiODM3SSI6e30sIjgzN0QiOnt9LCJDT0IiOnt9LCIyNzVTIjp7ImlzU3VwcG9ydGVkIjp0cnVlfSwiMjc1VSI6eyJpc1N1cHBvcnRlZCI6dHJ1ZX19\&page=0) lists which payers require transaction enrollment for 275 claim attachments. Visit [transaction enrollment](/healthcare/transaction-enrollment) for details about the transaction enrollment process.
+You can check whether a specific payer requires transaction enrollment for 275 attachments in the [Payer Network](https://www.stedi.com/healthcare/network) or through the [Payers API](/healthcare/api-reference/get-payer).
+
+To enroll, complete the following steps:
+
+1. Create a provider record with the information required for enrollment. If you already have a record for the provider, you can skip this step. [Stedi portal](https://portal.stedi.com/app/healthcare/providers) | [API endpoint](/healthcare/api-reference/post-enrollment-create-provider)
+2. Submit an enrollment request for the type of claim attachments you plan to send (solicited or unsolicited). [Stedi portal](https://portal.stedi.com/app/healthcare/enrollments) | [API endpoint](/healthcare/api-reference/post-enrollment-create-enrollment)
 
 ## Submit claim attachments
 
-You can submit unsolicited 275 claim attachments through the following methods:
+Unsolicited 275 claim attachments are a separate transaction type from 837 claims. They're linked to the claim through [specific identifiers](#reference-attachments-in-a-claim) that indicate an attachment will follow the claim submission.
 
-* **Professional claims:** Claim form UI, API, and SFTP
-* **Dental claims:** API and SFTP
-* **Institutional claims:** SFTP only
+The submission methods available for 275 claim attachments depend on the claim type:
+
+* **Professional claim attachments:** [claim form UI](#claim-form-ui), [JSON APIs](#json-apis), [X12 EDI APIs](#x12-edi-apis), and [SFTP](#sftp)
+* **Dental claim attachments:** [JSON APIs](#json-apis), [X12 EDI APIs](#x12-edi-apis), and [SFTP](#sftp)
+* **Institutional claim attachments:** [JSON APIs](#json-apis), [X12 EDI APIs](#x12-edi-apis), and [SFTP](#sftp)
 
 ### Claim form UI
 
-You can submit attachments through the Stedi portal when manually submitting a professional claim. The claim submission UI is based on the CMS-1500 Claim Form.
+You can submit attachments through the Stedi portal at the same time you are manually submitting a professional claim. The claim submission UI is based on the CMS-1500 Claim Form. Visit [Submit professional claims](/healthcare/submit-professional-claims#ui-submission) for instructions.
 
-Visit [Submit professional claims](/healthcare/submit-professional-claims#manual-submission) for instructions.
+<Note>
+  UI attachment submission isn't supported for dental or institutional claims.
+</Note>
 
 ### JSON APIs
 
-You can submit [unsolicited claim attachments](#solicited-vs-unsolicited-attachments) through Stedi JSON APIs. Submitting claim attachments in JSON requires three steps:
+You can submit [unsolicited claim attachments](#solicited-vs-unsolicited-attachments) through Stedi JSON APIs for all claim types. Submitting claim attachments in JSON requires three steps:
 
 <Steps>
   <Step title="Create the claim attachment.">
@@ -11859,6 +12709,7 @@ You can submit [unsolicited claim attachments](#solicited-vs-unsolicited-attachm
 
     * [Professional Claims JSON](/healthcare/api-reference/post-healthcare-claims)
     * [Dental Claims JSON](/healthcare/api-reference/post-healthcare-dental-claims)
+    * [Institutional Claims JSON](/healthcare/api-reference/post-healthcare-institutional-claims)
 
     You must include [specific properties](#reference-attachments-in-a-claim) in your request to identify the attachment and tell Stedi which attachment file to use. These properties are `attachmentReportTypeCode`, `attachmentTransmissionCode`, and `attachmentId`.
 
@@ -11870,7 +12721,7 @@ The payer processes the claim and attachment together, and sends back [277CA and
 
 ### X12 EDI APIs
 
-You can submit [unsolicited claim attachments](#solicited-vs-unsolicited-attachments) in X12 EDI format through Stedi's APIs. This approach is useful when you have an existing system that generates X12 EDI files and you want to send them through Stedi.
+You can submit [unsolicited claim attachments](#solicited-vs-unsolicited-attachments) through Stedi X12 EDI APIs for all claim types. This approach is useful when you have an existing system that generates X12 EDI files and you want to send them through Stedi.
 
 With X12 EDI submissions, you don't need to upload the attachment file to Stedi first - you can send the entire 275 transaction directly to the payer. Submitting claim attachments through our X12 EDI APIs requires two steps:
 
@@ -11880,6 +12731,7 @@ With X12 EDI submissions, you don't need to upload the attachment file to Stedi 
 
     * [Professional Claims Raw X12](/healthcare/api-reference/post-healthcare-claims-raw-x12)
     * [Dental Claims Raw X12](/healthcare/api-reference/post-healthcare-dental-claims-raw-x12)
+    * [Institutional Claims Raw X12](/healthcare/api-reference/post-healthcare-institutional-claims-raw-x12)
 
     In addition to the claim information, you must include [specific elements](#reference-attachments-in-a-claim) in either `Loop 2300` or `Loop 2400` (professional claims only) to identify the attachment. These elements are `PWK01`, `PWK02`, and `PWK06`.
   </Step>
@@ -11892,51 +12744,61 @@ With X12 EDI submissions, you don't need to upload the attachment file to Stedi 
   </Step>
 </Steps>
 
-Once received, the payer processes the claim and attachment together, and sends back [277CA and 835 ERA responses](/healthcare/submit-claim-attachments#payer-responses).
+Once received, the payer processes the claim and attachment together and sends back [277CA and 835 ERA responses](/healthcare/submit-claim-attachments#payer-responses).
 
 ### SFTP
 
-You can submit [unsolicited claim attachments](#solicited-vs-unsolicited-attachments) in X12 EDI format through SFTP.
+You can submit [unsolicited claim attachments](#solicited-vs-unsolicited-attachments) in X12 EDI format through SFTP for all claim types.
 
-SFTP submission is ideal if you need to send institutional claim attachments or you have attachments that are larger than 6MB. We recommend limiting attachments to 64MB each, but some payers may have different size requirements. When in doubt, check the payer's documentation to determine their specific limits.
+SFTP submission is ideal if you need to send institutional claim attachments or you have attachments that are larger than 6MB.
 
-Submitting claim attachments through SFTP requires two steps:
+Submitting claim attachments through SFTP requires sending two transactions to the payer. You can send these transactions as separate files or together in the same file as long as the claim and the attachment are within the same interchange (`ISA`/`IEA`) envelope:
 
 <Steps>
-  <Step title="Submit the claim.">
-    Submit an 837 professional, dental, or institutional claim to the payer through [Stedi SFTP](/healthcare/submit-claims-sftp-connection).
+  <Step title="837 claim.">
+    Submit an 837 professional, dental, or institutional claim to the payer through [Stedi SFTP](/healthcare/submit-claims-sftp-connection#837-claims).
 
     You must include specific elements in either `Loop 2300` or `Loop 2400` (professional claims only) to identify the attachment. These elements are `PWK01`, `PWK02`, and `PWK06`.
   </Step>
 
-  <Step title="Submit the attachment.">
-    Submit a 275 claim attachment to the payer through [Stedi SFTP](/healthcare/submit-claims-sftp-connection).
+  <Step title="275 claim attachment.">
+    Submit a 275 claim attachment to the payer through [Stedi SFTP](/healthcare/submit-claims-sftp-connection#275-claim-attachments).
 
     You must submit a payer identifier in `Loop 1000A NM109` so Stedi can route the attachment to the correct payer. This identifier **must** be a payer ID or payer ID alias listed in the [Payer Network](https://www.stedi.com/healthcare/network). For example, you could use `60054`, `HPQRS`, `AETNA`, or any other listed payer ID alias for Aetna.
+
+    We recommend limiting attachments to 64MB each, but some payers may have different size requirements. When in doubt, check the payer's documentation to determine their specific limits.
   </Step>
 </Steps>
 
-Once received, the payer processes the claim and attachment together, and sends back [277CA and 835 ERA responses](/healthcare/submit-claim-attachments#payer-responses).
+Once received, the payer processes the claim and attachment together and sends back [277CA and 835 ERA responses](/healthcare/submit-claim-attachments#payer-responses).
 
 ## Reference attachments in a claim
 
 To submit an unsolicited claim attachment, you must submit a claim that references the attachment(s) in the appropriate location. When submitting claims through Stedi APIs or SFTP, include the following properties or elements to identify the attachment(s).
 
 <Note>
-  If you're submitting claims manually, visit [Submit professional claims](/healthcare/submit-professional-claims#manual-submission) for instructions.
+  If you're submitting claims manually, visit [Submit professional claims](/healthcare/submit-professional-claims#ui-submission) for instructions.
 </Note>
 
 ### Attachment level
 
 You can specify attachments that relate to the entire claim or to a specific service line.
 
-* **Entire claim:** For professional and dental claims, you can specify claim-level attachments in the `claimInformation.claimSupplementalInformation.reportInformation` object or the `claimInformation.claimSupplementalInformation.reportInformations[]` array (multiple attachments). This object corresponds to segment `PWK` in `Loop 2300`.
+#### Entire claim
 
-  API reference docs: [professional](/healthcare/api-reference/post-healthcare-claims#body.claimInformation.claimSupplementalInformation.reportInformation) | [dental](/healthcare/api-reference/post-healthcare-dental-claims#body.claimInformation.claimSupplementalInformation.reportInformation)
+For professional, dental, and institutional claims, you can specify claim-level attachments in the `claimInformation.claimSupplementalInformation.reportInformation` object or the `claimInformation.claimSupplementalInformation.reportInformations[]` array (for multiple attachments). These structures correspond to segment `PWK` in `Loop 2300`.
 
-* **Service line:** For professional claims, you can specify service line attachments in the `claimInformation.serviceLines.serviceLineSupplementalInformation` object array. This object corresponds to segment `PWK` in `Loop 2400`.
+API reference docs: [professional](/healthcare/api-reference/post-healthcare-claims#body.claimInformation.claimSupplementalInformation.reportInformation) | [dental](/healthcare/api-reference/post-healthcare-dental-claims#body.claimInformation.claimSupplementalInformation.reportInformation) | [institutional](/healthcare/api-reference/post-healthcare-institutional-claims#body.claimInformation.claimSupplementalInformation.reportInformation)
+
+#### Service line
+
+* **Professional claim attachments:** Specify service line attachments in the `claimInformation.serviceLines.serviceLineSupplementalInformation` array. This object corresponds to segment `PWK` in `Loop 2400`.
 
   API reference docs: [professional](/healthcare/api-reference/post-healthcare-claims#body.claimInformation.serviceLines.serviceLineSupplementalInformation)
+
+* **Institutional claim attachments:** For institutional claims, you can specify service line attachments in the `claimInformation.serviceLines.serviceLineSupplementalInformation` object or the `claimInformation.serviceLines.serviceLineSupplementalInformations[]` array (for multiple attachments). These structures correspond to segment `PWK` in `Loop 2400`.
+
+  API reference docs: [institutional](/healthcare/api-reference/post-healthcare-institutional-claims#body.claimInformation.serviceLines.serviceLineSupplementalInformation)
 
 ### Required properties
 
@@ -11973,7 +12835,7 @@ You can only submit unsolicited claim attachments through Stedi APIs and SFTP. C
 
 ## Payer responses
 
-The payer processes claims and claim attachments together. When you submit a claim attachment, you'll receive the same [277CA and 835 ERA responses](/healthcare/receive-claim-responses#response-types) for the claim as you would for a regular claim submission.
+The payer processes claims and claim attachments together. When you submit a claim attachment, you'll receive the same [277CA and 835 ERA responses](/healthcare/receive-claim-responses#retrieve-responses-from-stedi) for the claim as you would for a regular claim submission.
 
 If a claim is rejected, pended, or denied due to issues with attachments, you'll likely receive error codes in the 277CA response that indicate the issue. However, the exact error codes used depend on the payer's system and how they handle attachments.
 
@@ -12012,9 +12874,16 @@ You may need to complete the following steps before sending claims.
 
 ### Transaction enrollment
 
-All payers require providers to complete an enrollment process before they can start receiving 835 ERAs. Some payers also require enrollment before allowing providers to submit claims.
+[Transaction enrollment](/healthcare/transaction-enrollment) is the process of registering a provider to exchange specific healthcare transactions with a payer. Some payers require enrollment before allowing providers to submit 837 claims through a new clearinghouse.
 
-The [Stedi Payer Network](https://www.stedi.com/healthcare/network) lists which payers require transaction enrollment. Visit [Transaction enrollment](/healthcare/transaction-enrollment) for details about the transaction enrollment process.
+Enrolling through Stedi may cancel existing claims enrollments you have through other clearinghouses. We can help you determine whether this applies to your specific payers. However, enrolling through Stedi for 837 claims doesn't affect your existing enrollments for other transaction types. For example, enrolling with Stedi won't unenroll the provider from receiving transactions like Electronic Remittance Advices (ERAs) through other clearinghouses.
+
+You can check whether a specific payer requires transaction enrollment for 837 claims in the [Payer Network](https://www.stedi.com/healthcare/network) or through the [Payers API](/healthcare/api-reference/get-payer).
+
+To enroll, complete the following steps:
+
+1. Create a provider record with the information required for enrollment. If you already have a record for the provider, you can skip this step. [Stedi portal](https://portal.stedi.com/app/healthcare/providers) | [API endpoint](/healthcare/api-reference/post-enrollment-create-provider)
+2. Submit an enrollment request for the claim type. [Stedi portal](https://portal.stedi.com/app/healthcare/enrollments) | [API endpoint](/healthcare/api-reference/post-enrollment-create-enrollment)
 
 ### Coordination of benefits check
 
@@ -12072,15 +12941,41 @@ Stedi returns an error 999 when it rejects a claim due to X12 EDI validation err
 
 We recommend including a unique value in `CLM01` (Patient Control Number) for each claim. This value is returned in both the 277 Claim Acknowledgment and 835 ERA responses, so you can use it to correlate responses with the original claim.
 
+#### Bulk claims
+
+You can submit multiple claims in the same 837 transaction by including multiple instances of the following loops:
+
+* `Loop 2000A` (Billing Provider)
+* `Loop 2000B` (Subscriber)
+* `Loop 2300` (Claim Information)
+
+After submission, Stedi separates your bulk 837 transaction into individual claims and sends each claim separately to the payer. This includes multiple claims going to the same payer - all claims within a bulk submission are sent individually to maintain consistency.
+
+The following example would produce 12 separate claims (2 x 3 x 2 = 12):
+
+* 837 transaction contains information for two billing providers (2x `Loop 2000A`)
+* Each billing provider has three subscribers (3x `Loop 2000B`)
+* Each subscriber has two claims (2x `Loop 2300`)
+
+Stedi returns one 999 Implementation Acknowledgment per bulk 837 transaction, and then you'll typically receive separate 277CA claim acknowledgments *for each claim*. Note that Stedi sends accepted claims to the payer, even if other claims within the batch fail our validation. You should monitor for [277CA rejections](#277ca-claim-acknowledgment) and resubmit those claims accordingly.
+
+Each claim will also receive its own test ERA from Stedi's test clearinghouse if the payer was `STEDITEST`. Visit [Test claims workflow](/healthcare/test-claims-workflow#generate-test-eras) for details.
+
+<Note>
+  You'll be billed per claim submitted, not per bulk 837 transaction. For
+  example, if you submit a bulk 837 transaction with 10 claims, you'll be billed
+  for 10 claims.
+</Note>
+
 ### 275 claim attachments
 
 Claim attachments must adhere to the [275 Patient Information](https://portal.stedi.com/app/guides/view/hipaa/patient-information-x210/01HQ4HZ8ZBY2CZGPCVVM8JTK22) X12 HIPAA specification.
 
 Before you can submit an attachment, you must first submit a claim that references the attachment(s) in the appropriate location. Visit [Claim attachments](/healthcare/submit-claim-attachments) for complete instructions.
 
-We recommend limiting attachments to 64MB each, but some payers may have different size requirements. When in doubt, check the payer's documentation to determine their specific limits.
+You must submit a payer identifier in `Loop 1000A NM109` so Stedi can route the attachment to the correct payer. This identifier must be a payer ID or payer ID alias listed in the [Payer Network](https://www.stedi.com/healthcare/network). For example, you could use `60054`, `HPQRS`, `AETNA`, or any other listed payer ID alias for Aetna.
 
-This limit is per attachment file - you can submit multiple attachment files in each 275 transaction.
+We recommend limiting attachments to 64MB each, but some payers may have different size requirements. When in doubt, check the payer's documentation to determine their specific limits. This limit is per attachment file - you can submit multiple attachment files in each 275 transaction.
 
 ### Envelope and header
 
@@ -12163,6 +13058,7 @@ Each 277CA typically correlates to one 837 claim. However:
 * Some payers may send a single 277CA that [references multiple claims](/healthcare/receive-claim-responses#correlate-277ca).
 * Payers sometimes split a single claim into multiple claims during processing. In these cases, you may receive multiple 277CAs from the payer for the original claim you submitted.
 * Payers may send another 277CA when they forward a claim to a secondary payer in a coordination of benefits scenario.
+* (SFTP only) When you submit a [bulk claim](/healthcare/submit-claims-sftp-connection#bulk-claims), you'll typically receive one 277CA per claim. For example, if you submit a bulk transaction containing information for 10 claims, you'll typically receive 10 separate 277CAs.
 
 #### Determine sender
 
@@ -12243,9 +13139,16 @@ You may need to complete the following steps before sending claims.
 
 ### Transaction enrollment
 
-All payers require providers to complete an enrollment process before they can start receiving 835 ERAs. Some payers also require enrollment before allowing providers to submit claims.
+[Transaction enrollment](/healthcare/transaction-enrollment) is the process of registering a provider to exchange specific healthcare transactions with a payer. Some payers require enrollment before allowing providers to submit 837 claims through a new clearinghouse.
 
-The [Stedi Payer Network](https://www.stedi.com/healthcare/network) lists which payers require transaction enrollment. Visit [Transaction enrollment](/healthcare/transaction-enrollment) for details about the transaction enrollment process.
+Enrolling through Stedi may cancel existing claims enrollments you have through other clearinghouses. We can help you determine whether this applies to your specific payers. However, enrolling through Stedi for 837 claims doesn't affect your existing enrollments for other transaction types. For example, enrolling with Stedi won't unenroll the provider from receiving transactions like Electronic Remittance Advices (ERAs) through other clearinghouses.
+
+You can check whether a specific payer requires transaction enrollment for 837 claims in the [Payer Network](https://www.stedi.com/healthcare/network) or through the [Payers API](/healthcare/api-reference/get-payer).
+
+To enroll, complete the following steps:
+
+1. Create a provider record with the information required for enrollment. If you already have a record for the provider, you can skip this step. [Stedi portal](https://portal.stedi.com/app/healthcare/providers) | [API endpoint](/healthcare/api-reference/post-enrollment-create-provider)
+2. Submit an enrollment request for the claim type. [Stedi portal](https://portal.stedi.com/app/healthcare/enrollments) | [API endpoint](/healthcare/api-reference/post-enrollment-create-enrollment)
 
 ### Coordination of benefits check
 
@@ -12313,10 +13216,21 @@ The information you submit for a claim depends on your use case. Refer to the [D
 \| `submitter` object | Information about the entity submitting the claim. This can be either an individual or an organization, such as a doctor, hospital, or insurance company. |
 \| `receiver` object | Information about the payer, such as an insurance company or government agency. |
 \| `subscriber` and/or `dependent` objects | Information about the patient who received the medical services. Note that if a dependent has their own, unique member ID for their health plan, you should submit their information in the `subscriber` object and omit the `dependent` object from the request. You can check whether the dependent has a unique member ID by submitting an [Eligibility Check](/healthcare/api-reference/post-healthcare-eligibility) to the payer for the dependent. The payer will return the member ID in the `dependents.memberId` field, if present. |
-\| `claimInformation` object | Information about the claim, such as the patient control number, claim charge amount, and place of service code. It also includes information about each individual service line included in the claim. |
+\| `claimInformation` object | Information about the claim, such as the [patient control number](#patient-control-number), claim charge amount, and place of service code. It also includes information about each individual service line included in the claim. |
 \| `billing` object | Information about the billing provider, such as the [NPI](/healthcare/national-provider-identifier), taxonomy code, and organization name. |
 
 {/* prettier-ignore-end */}
+
+#### Patient Control Number
+
+You must submit a Patient Control Number (PCN) with each claim in [`claimInformation.patientControlNumber`](/healthcare/api-reference/post-healthcare-dental-claims#body.claimInformation.patientControlNumber). The payer returns this value in related transactions, such as the 277CA claim acknowledgment and 835 Electronic Remittance Advice (ERA), so you can correlate responses and real-time claim status checks with the original claim.
+
+When assigning a PCN, follow these best practices:
+
+* Use a unique PCN for each claim. The identifier should be more complex than a simple sequential number and should be hard to guess.
+* Use random strings. Formats with patient initials or the date of service in them can create duplicates. We recommend using [nanoid](https://www.npmjs.com/package/nanoid) or a similar library to create a strong, unique 17-character PCN for each claim.
+* Keep it 17 characters or less. Some payers cut off values longer than 17 characters in ERAs and claim acknowledgments, which makes it hard to match them with the original claim.
+* Use alphanumeric characters only. Avoid special characters, as many payers don't handle them properly.
 
 #### Service line identification
 
@@ -12350,9 +13264,14 @@ You must submit a payer identifier in `Loop 2010BB` (Payer Name) `NM109` so Sted
 
 #### `CLM01` (Patient Control Number)
 
-We **strongly recommend** submitting a unique value for `Loop 2300` (Claim Information) `CLM01` (Patient Control Number). The payer returns this value in related transactions, such as the 277CA and 835 ERA, so you can correlate responses and real-time claim status checks with the original claim.
+We **strongly recommend** submitting a unique value for `Loop 2300` (Claim Information) `CLM01` (Patient Control Number). The payer returns this value in related transactions, such as the 277CA claim acknowledgment and 835 Electronic Remittance Advice (ERA), so you can correlate responses and real-time claim status checks with the original claim.
 
-We recommend using only alphanumeric characters and generating unique values that are the shortest possible length. Stedi accepts any valid value, but some payers replace non-alphanumeric characters and truncate shorter than the official 20-character limit. When this happens, the payer returns a different identifier in responses than the one you originally sent, making it more difficult to correlate the claim and perform real-time claim status checks.
+When assigning a PCN, follow these best practices:
+
+* Use a unique PCN for each claim. The identifier should be more complex than a simple sequential number and should be hard to guess.
+* Use random strings. Formats with patient initials or the date of service in them can create duplicates. We recommend using [nanoid](https://www.npmjs.com/package/nanoid) or a similar library to create a strong, unique 17-character PCN for each claim.
+* Keep it 17 characters or less. Some payers cut off values longer than 17 characters in ERAs and claim acknowledgments, which makes it hard to match them with the original claim.
+* Use alphanumeric characters only. Avoid special characters, as many payers don't handle them properly.
 
 #### Service line identification
 
@@ -12562,7 +13481,7 @@ The following examples send a dental claim. The response shape is the same for b
         "correlationId": "01JDQMX92Q1T561BH8NKX750TQ",
         "patientControlNumber": "0U1LBRS4",
         "timeOfResponse": "2024-11-27T20:27:27.077Z",
-        "payerID": "52133",
+        "payerId": "52133",
         "formatVersion": "5010",
         "rhclaimNumber": "01JDQMX92Q1T561BH8NKX750TQ",
         "serviceLines": [
@@ -12577,7 +13496,7 @@ The following examples send a dental claim. The response shape is the same for b
       },
       "payer": {
         "payerName": "United HealthCare Dental",
-        "payerID": "52133"
+        "payerId": "52133"
       }
     }
     ```
@@ -12679,9 +13598,16 @@ You may need to complete the following steps before sending claims.
 
 ### Transaction enrollment
 
-All payers require providers to complete an enrollment process before they can start receiving 835 ERAs. Some payers also require enrollment before allowing providers to submit claims.
+[Transaction enrollment](/healthcare/transaction-enrollment) is the process of registering a provider to exchange specific healthcare transactions with a payer. Some payers require enrollment before allowing providers to submit 837 claims through a new clearinghouse.
 
-The [Stedi Payer Network](https://www.stedi.com/healthcare/network) lists which payers require transaction enrollment. Visit [Transaction enrollment](/healthcare/transaction-enrollment) for details about the transaction enrollment process.
+Enrolling through Stedi may cancel existing claims enrollments you have through other clearinghouses. We can help you determine whether this applies to your specific payers. However, enrolling through Stedi for 837 claims doesn't affect your existing enrollments for other transaction types. For example, enrolling with Stedi won't unenroll the provider from receiving transactions like Electronic Remittance Advices (ERAs) through other clearinghouses.
+
+You can check whether a specific payer requires transaction enrollment for 837 claims in the [Payer Network](https://www.stedi.com/healthcare/network) or through the [Payers API](/healthcare/api-reference/get-payer).
+
+To enroll, complete the following steps:
+
+1. Create a provider record with the information required for enrollment. If you already have a record for the provider, you can skip this step. [Stedi portal](https://portal.stedi.com/app/healthcare/providers) | [API endpoint](/healthcare/api-reference/post-enrollment-create-provider)
+2. Submit an enrollment request for the claim type. [Stedi portal](https://portal.stedi.com/app/healthcare/enrollments) | [API endpoint](/healthcare/api-reference/post-enrollment-create-enrollment)
 
 ### Coordination of benefits check
 
@@ -12748,16 +13674,35 @@ The information you submit for a claim depends on your use case. Refer to the [I
 \| `submitter` object | Information about the entity submitting the claim. This is an organization, such as a hospital or other treatment center. |
 \| `receiver` object | Information about the entity responsible for the payment of the claim, such as an insurance company or government agency. |
 \| `subscriber` and/or `dependent` objects | Information about the patient who received the medical services. Note that if a dependent has their own, unique member ID for their health plan, you should submit their information in the `subscriber` object and omit the `dependent` object from the request. You can check whether the dependent has a unique member ID by submitting an [Eligibility Check](/healthcare/api-reference/post-healthcare-eligibility) to the payer for the dependent. The payer will return the member ID in the `dependents.memberId` field, if present. |
-\| `claimInformation` object | Information about the claim, such as the claim filing code (identifies the type of claim), claim charge amount, and place of service code. It also includes information about each individual service line included in the claim. |
+\| `claimInformation` object | Information about the claim, such as the [Patient Control Number](#patient-control-number), claim filing code (identifies the type of claim), claim charge amount, and place of service code. It also includes information about each individual service line included in the claim. |
 \| Billing provider | You **must** supply information about the billing provider in either the `providers` or `billing` object. This includes the provider's [NPI](/healthcare/national-provider-identifier), name, and other information. |
 
 {/* prettier-ignore-end */}
+
+#### Patient Control Number
+
+You must submit a Patient Control Number (PCN) with each claim in [`claimInformation.patientControlNumber`](/healthcare/api-reference/post-healthcare-institutional-claims#body.claimInformation.patientControlNumber). The payer returns this value in related transactions, such as the 277CA claim acknowledgment and 835 Electronic Remittance Advice (ERA), so you can correlate responses and real-time claim status checks with the original claim.
+
+When assigning a PCN, follow these best practices:
+
+* Use a unique PCN for each claim. The identifier should be more complex than a simple sequential number and should be hard to guess.
+* Use random strings. Formats with patient initials or the date of service in them can create duplicates. We recommend using [nanoid](https://www.npmjs.com/package/nanoid) or a similar library to create a strong, unique 17-character PCN for each claim.
+* Keep it 17 characters or less. Some payers cut off values longer than 17 characters in ERAs and claim acknowledgments, which makes it hard to match them with the original claim.
+* Use alphanumeric characters only. Avoid special characters, as many payers don't handle them properly.
 
 #### Service line identification
 
 A claim can contain multiple service lines. Since the payer may accept, reject, or pay a subset of those lines, you can receive an 835 ERA that references a `patientControlNumber`, but only pertains to some of the service lines.
 
 However, the `claimInformation.serviceLines.lineItemControlNumber` serves as a unique identifier for each service line in your claim submission. This value appears in the 277CA claim acknowledgment and 835 ERA as the `lineItemControlNumber`, allowing you to correlate these responses to specific service lines from the original claim. We strongly recommend setting the `lineItemControlNumber` to a ULID or other unique identifier for each service line. We recommend using a ULID instead of a UUID because the property has a max of 30 characters.
+
+#### Admission source code
+
+The admission source code tells you where the patient came from, such as the emergency room (ER), a doctor’s referral, or another facility. Most institutional claims require the admission source code. The one exception is non-patient lab services, where no patient is present.
+
+You must include the admission source code in the [`claimInformation.claimCodeInformation.admissionSourceCode`](/healthcare/api-reference/post-healthcare-institutional-claims#body.claimInformation.claimCodeInformation.admissionSourceCode) property for all institutional claims **except** when the `claimInformation.placeOfServiceCode` contains `14` (Non-Patient Laboratory).
+
+Stedi rejects claims that don't meet this requirement.
 
 #### Conditional requirements
 
@@ -12783,9 +13728,14 @@ You must submit a payer identifier in `Loop 2010BB` (Payer Name) `NM109` so Sted
 
 #### `CLM01` (Patient Control Number)
 
-We **strongly recommend** submitting a unique value for `Loop 2300` (Claim Information) `CLM01` (Patient Control Number). The payer returns this value in related transactions, such as the 277CA and 835 ERA, so you can correlate responses and real-time claim status checks with the original claim.
+We **strongly recommend** submitting a unique value for `Loop 2300` (Claim Information) `CLM01` (Patient Control Number). The payer returns this value in related transactions, such as the 277CA claim acknowledgment and 835 Electronic Remittance Advice (ERA), so you can correlate responses and real-time claim status checks with the original claim.
 
-We recommend using only alphanumeric characters and generating unique values that are the shortest possible length. Stedi accepts any valid value, but some payers replace non-alphanumeric characters and truncate shorter than the official 20-character limit. When this happens, the payer returns a different identifier in responses than the one you originally sent, making it more difficult to correlate the claim and perform real-time claim status checks.
+When assigning a PCN, follow these best practices:
+
+* Use a unique PCN for each claim. The identifier should be more complex than a simple sequential number and should be hard to guess.
+* Use random strings. Formats with patient initials or the date of service in them can create duplicates. We recommend using [nanoid](https://www.npmjs.com/package/nanoid) or a similar library to create a strong, unique 17-character PCN for each claim.
+* Keep it 17 characters or less. Some payers cut off values longer than 17 characters in ERAs and claim acknowledgments, which makes it hard to match them with the original claim.
+* Use alphanumeric characters only. Avoid special characters, as many payers don't handle them properly.
 
 #### Service line identification
 
@@ -12795,6 +13745,14 @@ However, the line item control number serves as a unique identifier for each ser
 
 * You can set the line item control number in `Loop 2400 REF02`, when `REF01` = `6R`. The line item control number appears in the 277CA and 835 ERA responses as the `lineItemControlNumber`, allowing you to correlate these responses to specific service lines from the original claim.
 * If you don’t set the line item control number for a service line, Stedi uses a ULID.
+
+#### Admission source code
+
+The admission source code tells you where the patient came from, such as the emergency room (ER), a doctor’s referral, or another facility. Most institutional claims require the admission source code. The one exception is non-patient lab services, where no patient is present.
+
+You must include the admission source code in `Loop 2300 CLI02` (Admission Source Code) for all institutional claims **except** when `Loop 2300 C02301` (Facility Type Code) is `14` (Non-Patient Laboratory).
+
+Stedi rejects claims that don't meet this requirement.
 
 ### Character restrictions
 
@@ -12850,7 +13808,8 @@ The following example sends an institutional claim. The response shape contains 
         "paymentResponsibilityLevelCode": "P",
         "firstName": "JANE",
         "lastName": "DOE",
-        "groupNumber": "67890"
+        "gender": "F",
+        "dateOfBirth": "19000101"
       },
       "claimInformation": {
         "claimFilingCode": "ZZ",
@@ -12872,7 +13831,7 @@ The following example sends an institutional claim. The response shape contains 
             "serviceDateEnd": "20241015",
             "lineItemControlNumber": "111222333",
             "institutionalService": {
-              "serviceLineRevenueCode": "90",
+              "serviceLineRevenueCode": "0800",
               "lineItemChargeAmount": "500.00",
               "measurementUnit": "UN",
               "serviceUnitCount": "1",
@@ -12929,15 +13888,20 @@ The following example sends an institutional claim. The response shape contains 
     ```json
     {
       "status": "SUCCESS",
-      "controlNumber": "123456",
+      "controlNumber": "1",
       "tradingPartnerServiceId": "87726",
       "claimReference": {
-        "correlationId": "01JABEX6DPF4FCT2J0Y0SGFCY8",
-        "patientControlNumber": "00001111222233334444",
-        "timeOfResponse": "2024-10-16T20:04:32.962Z",
+        "correlationId": "01KC24VSDFN11V59RS1P5EP3N9",
+        "patientControlNumber": "<YOUR-CLAIM-ID>",
+        "timeOfResponse": "2025-12-09T18:09:36.099Z",
         "formatVersion": "5010",
-        "claimType": "INST",
-        "rhClaimNumber": "01JABEX6DPF4FCT2J0Y0SGFCY8"
+        "rhClaimNumber": "01KC24VSDFN11V59RS1P5EP3N9",
+        "payerId": "87726",
+        "serviceLines": [
+          {
+            "lineItemControlNumber": "111222333"
+          }
+        ]
       },
       "httpStatusCode": "200 OK",
       "payer": {
@@ -12945,7 +13909,7 @@ The following example sends an institutional claim. The response shape contains 
         "payerID": "87726"
       },
       "meta": {
-        "traceId": "a742ab42-a6f3-4232-a88c-197d341afdbe"
+        "traceId": "9c0c2445-721a-497c-a155-da91508b956b"
       }
     }
     ```
@@ -13041,9 +14005,16 @@ You may need to complete the following steps before sending claims.
 
 ### Transaction enrollment
 
-All payers require providers to complete an enrollment process before they can start receiving 835 ERAs. Some payers also require enrollment before allowing providers to submit claims.
+[Transaction enrollment](/healthcare/transaction-enrollment) is the process of registering a provider to exchange specific healthcare transactions with a payer. Some payers require enrollment before allowing providers to submit 837 claims through a new clearinghouse.
 
-The [Stedi Payer Network](https://www.stedi.com/healthcare/network) lists which payers require transaction enrollment. Visit [Transaction enrollment](/healthcare/transaction-enrollment) for details about the transaction enrollment process.
+Enrolling through Stedi may cancel existing claims enrollments you have through other clearinghouses. We can help you determine whether this applies to your specific payers. However, enrolling through Stedi for 837 claims doesn't affect your existing enrollments for other transaction types. For example, enrolling with Stedi won't unenroll the provider from receiving transactions like Electronic Remittance Advices (ERAs) through other clearinghouses.
+
+You can check whether a specific payer requires transaction enrollment for 837 claims in the [Payer Network](https://www.stedi.com/healthcare/network) or through the [Payers API](/healthcare/api-reference/get-payer).
+
+To enroll, complete the following steps:
+
+1. Create a provider record with the information required for enrollment. If you already have a record for the provider, you can skip this step. [Stedi portal](https://portal.stedi.com/app/healthcare/providers) | [API endpoint](/healthcare/api-reference/post-enrollment-create-provider)
+2. Submit an enrollment request for the claim type. [Stedi portal](https://portal.stedi.com/app/healthcare/enrollments) | [API endpoint](/healthcare/api-reference/post-enrollment-create-enrollment)
 
 ### Coordination of benefits check
 
@@ -13063,6 +14034,10 @@ You can submit professional claims either through our interactive claim form or 
 
 ### CMS-1500 claim form
 
+<Warning>
+  You can only submit claims to the patient's primary health plan through our interactive CMS-1500 form. You must submit secondary or tertiary claims through X12 EDI upload, API, or SFTP instead.
+</Warning>
+
 To submit a professional claim, do one of the following:
 
 * Go to the [Transactions page](https://portal.stedi.com/app/healthcare/transactions) and click **+ Submit claim manually**.
@@ -13077,7 +14052,10 @@ Enter the required information for your professional claim. Notably:
 * Select whether you want to submit a **Production** or **Test** claim.
   * Production claims are sent to the payer.
   * Test claims aren't sent to the payer. Stedi validates them and displays them in the portal so you can get familiar with Stedi's claim processing workflow. Stedi responds to test claims with a 277CA claim acknowledgment, but you won't receive an 835 Electronic Remittance Advice (ERA).
-* We strongly recommend submitting a unique value for the **Patient account number**. The payer returns this value in related transactions, such as the 277CA and 835 ERA, so you can correlate responses and real-time claim status checks with the original claim. We recommend using only alphanumeric characters and generating unique values of the shortest possible length, as some payers replace non-alphanumeric characters and truncate them to shorter lengths than the official 20-character limit. In these cases, the payer returns a different identifier in responses than the one you originally sent, making it more difficult to correlate the claim and perform real-time claim status checks.
+* We strongly recommend submitting a unique value for the **Patient account number**. The identifier should be more complex than a simple sequential number and should be hard to guess. The payer returns this value in related transactions, such as the 277CA and 835 ERA, so you can correlate responses and real-time claim status checks with the original claim.
+  * Keep it 17 characters or less. Some payers cut off values longer than 17 characters in ERAs and claim acknowledgments, which makes it hard to match them with the original claim.
+  * Use alphanumeric characters only. Avoid special characters, as many payers don't handle them properly.
+  * Use random strings. Formats with patient initials or the date of service in them can create duplicates.
 * You can submit claim-level attachments in **Box 19** and service-line attachments in **Box 24 - Service lines**. Note that you can't add attachments to claims that were already submitted through the portal. To include attachments for those, resubmit the claim with the attachments.
   * Click **Add attachment** to specify the details for an attachment.
   * Choose the appropriate **Report type** for each attachment.
@@ -13140,10 +14118,21 @@ The information you submit for a claim depends on your use case. Refer to the [P
 \| `submitter` object | Information about the entity submitting the claim. This can be either an individual or an organization, such as a doctor, hospital, or insurance company. |
 \| `receiver` object | Information about the payer, such as an insurance company or government agency. |
 \| `subscriber` and/or `dependent` objects | Information about the patient who received the medical services. Note that if a dependent has their own, unique member ID for their health plan, you should submit their information in the `subscriber` object and omit the `dependent` object from the request. You can check whether the dependent has a unique member ID by submitting an [Eligibility Check](/healthcare/api-reference/post-healthcare-eligibility) to the payer for the dependent. The payer will return the member ID in the `dependents.memberId` field, if present. |
-\| `claimInformation` object | Information about the claim, such as the patient control number, claim charge amount, and place of service code. It also includes information about each individual service line included in the claim. |
+\| `claimInformation` object | Information about the claim, such as the [patient control number](#patient-control-number), claim charge amount, and place of service code. It also includes information about each individual service line included in the claim. |
 \| `billing` object | Information about the billing provider, such as the [NPI](/healthcare/national-provider-identifier), taxonomy code, and organization name. |
 
 {/* prettier-ignore-end */}
+
+#### Patient Control Number
+
+You must submit a Patient Control Number (PCN) with each claim in [`claimInformation.patientControlNumber`](/healthcare/api-reference/post-healthcare-claims#body.claimInformation.patientControlNumber). The payer returns this value in related transactions, such as the 277CA claim acknowledgment and 835 Electronic Remittance Advice (ERA), so you can correlate responses and real-time claim status checks with the original claim.
+
+When assigning a PCN, follow these best practices:
+
+* Use a unique PCN for each claim. The identifier should be more complex than a simple sequential number and should be hard to guess.
+* Use random strings. Formats with patient initials or the date of service in them can create duplicates. We recommend using [nanoid](https://www.npmjs.com/package/nanoid) or a similar library to create a strong, unique 17-character PCN for each claim.
+* Keep it 17 characters or less. Some payers cut off values longer than 17 characters in ERAs and claim acknowledgments, which makes it hard to match them with the original claim.
+* Use alphanumeric characters only. Avoid special characters, as many payers don't handle them properly.
 
 #### Service line identification
 
@@ -13177,9 +14166,14 @@ You must submit a payer identifier in `Loop 2010BB` (Payer Name) `NM109` so Sted
 
 #### `CLM01` (Patient Control Number)
 
-We **strongly recommend** submitting a unique value for `Loop 2300` (Claim Information) `CLM01` (Patient Control Number). The payer returns this value in related transactions, such as the 277CA and 835 ERA, so you can correlate responses and real-time claim status checks with the original claim.
+We **strongly recommend** submitting a unique value for `Loop 2300` (Claim Information) `CLM01` (Patient Control Number). The payer returns this value in related transactions, such as the 277CA claim acknowledgment and 835 Electronic Remittance Advice (ERA), so you can correlate responses and real-time claim status checks with the original claim.
 
-We recommend using only alphanumeric characters and generating unique values that are the shortest possible length. Stedi accepts any valid value, but some payers replace non-alphanumeric characters and truncate shorter than the official 20-character limit. When this happens, the payer returns a different identifier in responses than the one you originally sent, making it more difficult to correlate the claim and perform real-time claim status checks.
+When assigning a PCN, follow these best practices:
+
+* Use a unique PCN for each claim. The identifier should be more complex than a simple sequential number and should be hard to guess.
+* Use random strings. Formats with patient initials or the date of service in them can create duplicates. We recommend using [nanoid](https://www.npmjs.com/package/nanoid) or a similar library to create a strong, unique 17-character PCN for each claim.
+* Keep it 17 characters or less. Some payers cut off values longer than 17 characters in ERAs and claim acknowledgments, which makes it hard to match them with the original claim.
+* Use alphanumeric characters only. Avoid special characters, as many payers don't handle them properly.
 
 #### Service line identification
 
@@ -13363,7 +14357,7 @@ The following examples send a professional claim. The response shape is the same
         "correlationId": "01HTQX03MMP4XHBT4QBGDAD9DG",
         "patientControlNumber": "22266555",
         "timeOfResponse": "2024-04-05T19:50:34.275Z",
-        "payerID": "6400",
+        "payerId": "6400",
         "formatVersion": "5010",
         "rhclaimNumber": "01HTQX03MMP4XHBT4QBGDAD9DG"
       },
@@ -13373,7 +14367,7 @@ The following examples send a professional claim. The response shape is the same
       },
       "payer": {
         "payerName": "Cigna",
-        "payerID": "6400"
+        "payerId": "6400"
       }
     }
     ```
@@ -13514,7 +14508,8 @@ You can use the following methods to determine:
 
 * The transaction types supported for each payer.
 * The payer IDs you need to send transactions through Stedi.
-* Which payers support medical, dental, or both use cases.
+* Which payers support medical, dental, and vision use cases.
+* The states and territories where each payer operates.
 * Which payers require [transaction enrollment](/healthcare/transaction-enrollment) before you can begin exchanging transactions.
 
 ### Payer Network
@@ -13553,6 +14548,15 @@ You can determine which payers support medical use cases, dental use cases, visi
 * The [Retrieve Payer](/healthcare/api-reference/get-payer), [List Payers](/healthcare/api-reference/get-payers), and [Search Payers](/healthcare/api-reference/get-search-payers) endpoints return a `coverageTypes` array for each payer indicating supported use cases.
 
 For example, Aetna's **Coverage types** in the network are **Dental, Medical, Vision**. That means you can submit eligibility checks and claims for medical, dental, and vision services to Aetna.
+
+## Operating states
+
+You can determine where payers operate and accept transactions.
+
+* The [Payer Network](https://www.stedi.com/healthcare/network) lists **Operating states** for each payer that indicate where they operate.
+* The [Retrieve Payer](/healthcare/api-reference/get-payer), [List Payers](/healthcare/api-reference/get-payers), and [Search Payers](/healthcare/api-reference/get-search-payers) endpoints return an `operatingStates` array for each payer indicating where they operate.
+
+For example, Cigna's **Operating states** in the network are **NATIONAL**, indicating that Cigna operates throughout the entire United States.
 
 ## Other names
 
@@ -13807,13 +14811,13 @@ Both the test 277CA and the test 835 ERA will include the Patient Control Number
 
 ### 277CA claim acknowledgment
 
-* **JSON:** [`transactions[].payers[].claimStatusTransactions[].claimStatusDetails[].patientClaimStatusDetails[].claims[].claimStatus.patientAccountNumber`](/healthcare/api-reference/get-healthcare-reports-277#response.transactions.payers\[].claimStatusTransactions\[].claimStatusDetails\[].patientClaimStatusDetails\[].claims\[].claimStatus.patientAccountNumber)
+* **JSON:** [`transactions[].payers[].claimStatusTransactions[].claimStatusDetails[].patientClaimStatusDetails[].claims[].claimStatus.patientAccountNumber`](/healthcare/api-reference/get-healthcare-reports-277#response.transactions.payers.claimStatusTransactions.claimStatusDetails.patientClaimStatusDetails.claims.claimStatus.patientAccountNumber)
 * **X12 EDI:** `Loop 2200D TRN02` (Patient Control Number)
 * **Stedi portal:** Go to the [Transactions](https://portal.stedi.com/app/healthcare/transactions) page, find the 277CA, and click it to review its **Overview** tab. The Patient Control Number is displayed as the **Patient account number**.
 
 ### 835 Electronic Remittance Advice (ERA)
 
-* **JSON:** [`transactions[].detailInfo[].paymentInfo[].claimPaymentInfo.patientControlNumber`](/healthcare/api-reference/get-healthcare-reports-835#response.transactions.detailInfo\[].paymentInfo\[].claimPaymentInfo.patientControlNumber)
+* **JSON:** [`transactions[].detailInfo[].paymentInfo[].claimPaymentInfo.patientControlNumber`](/healthcare/api-reference/get-healthcare-reports-835#response.transactions.detailInfo.paymentInfo.claimPaymentInfo.patientControlNumber)
 * **X12 EDI:** `Loop 2100 CLP01` (Patient Control Number)
 * **Stedi portal:** Go to the [Transactions](https://portal.stedi.com/app/healthcare/transactions) page, find the 835 ERA, and click it to review its **Overview** tab. The Patient Control Number is listed as the first number in the **Claim identifiers** field.
 
@@ -13851,7 +14855,7 @@ You can also submit a mock Medicare Beneficiary Identifier (MBI) lookup. MBI loo
 
 ### Test the Stedi Agent
 
-The [Stedi Agent](/healthcare/eligibility-manager#retry-with-the-stedi-agent) resolves recoverable eligibility check errors automatically with the same best practices our Support team uses for troubleshooting. You can run a specific mock eligibility check to evaluate the Stedi Agent:
+The [Stedi Agent](/healthcare/eligibility-searches-view#retry-with-the-stedi-agent) resolves recoverable eligibility check errors automatically with the same best practices our Support team uses for troubleshooting. You can run a specific mock eligibility check to evaluate the Stedi Agent:
 
 1. Create a new eligibility check and select **Stedi Agent** as the payer. Keep all other properties set to their defaults.
 2. Submit the check. It's designed to fail so you can watch the agent resolve issues in real time. Specifically, it returns `AAA` error `73` (Invalid/Missing Subscriber/Insured Name).
@@ -13986,7 +14990,7 @@ Here's how it works:
   <Step title="Complete any payer-specific requirements.">
     For some payers, such as those with [one-click enrollment](/providers/providers-submit-enrollment-requests#one-click-enrollment), Stedi can complete the entire enrollment process for you. We sign enrollment PDF forms on your behalf, when possible, to speed up the process and eliminate extra work for your team.
 
-    If payers require additional steps as part of their standard enrollment process, Stedi sets the enrollment status to `PROVIDER_ACTION_REQUIRED` and leaves a note on the enrollment request with clear steps to move the process forward.
+    If payers require additional steps from providers as part of their standard enrollment process, Stedi sets the enrollment status to `PROVIDER_ACTION_REQUIRED` and adds a task to the enrollment request with clear instructions. The enrollment process continues once the required tasks are completed.
 
     You can check which payers require additional steps on our [Transaction Enrollments Hub](https://enrollments.stedi.com/?v=1a7685bc14df80ed8e07000c941f6bff).
   </Step>
@@ -14097,9 +15101,64 @@ This is called the `userEmail` property in the Stedi API, the **user\_email** co
 
 This email address can be different from the contact information you provided in the provider record. Set it to wherever you want to receive Stedi's communications about the enrollment.
 
+## Manage tasks
+
+Tasks are actions that either the provider or Stedi need to complete to move the enrollment process forward. Tasks can include:
+
+* Providing additional documentation or signatures.
+* Completing payer-specific requirements.
+* Reviewing and confirming details.
+
+When there's a new task that requires the provider to take action, Stedi adds a task to the enrollment request with instructions and sets the enrollment status to **Provider Action Required**. The email address listed as the **Person for Stedi to contact** will also receive a notification that there's a new task to complete.
+
+You can review and manage tasks at the top of the enrollment request's details page in the Stedi portal. Once you've taken the required action, check the box next to the task to mark it as complete. Stedi is automatically notified when you complete a task, and the enrollment process continues.
+
+## Manage documents
+
+Some payers require additional documents to complete the enrollment process, such as:
+
+* Signed enrollment forms
+* A practice's W-9 tax form
+* A voided check
+
+We'll send you a notification when enrollment requests require additional documentation. You can download the required forms and upload completed documents to Stedi. **Only PDF files are supported.**
+
+### API
+
+You can use the following API endpoints to manage enrollment documents programmatically:
+
+* [Upload Enrollment Document](/healthcare/api-reference/post-enrollment-document-upload): Get a pre-signed URL to upload a PDF document related to a specific enrollment request.
+* [Download Enrollment Document](/healthcare/api-reference/get-enrollment-document-download): Get a pre-signed URL to download a specific PDF document related to an enrollment request.
+* [Delete Enrollment Document](/healthcare/api-reference/delete-enrollment-document): Delete a specific PDF document related to an enrollment request.
+
+### Enrollments UI
+
+To upload PDF documents in the Stedi portal:
+
+1. Go to the [Enrollments page](https://portal.stedi.com/app/healthcare/enrollments) and click the enrollment request that requires documentation.
+2. Scroll to the **Documents** section at the bottom of the page.
+3. Click **Upload new document** and choose the PDF file you want to upload.
+
+![Transaction enrollment documents](/images/providers/enrollment-documents.png)
+
+Uploaded documents are listed in the **Documents** section. Click any document to view it in your web browser. You can also click **...** (ellipses) to the right of the document to:
+
+* Download the original PDF file.
+* Copy a secure link to view the file, which you can share with any member of your Stedi account.
+* Delete the file, if necessary.
+
 ## Review enrollment details
 
-You can review each enrollment request's [status](#enrollment-statuses) on the [Enrollments page](https://portal.stedi.com/app/healthcare/enrollments) in Stedi. Click any enrollment request to go to its details page. The details page includes information about the provider, information about the payer, and details about the enrollment process.
+You can track the status of your transaction enrollment requests from the [Enrollments page](https://portal.stedi.com/app/healthcare/enrollments) in your account.
+
+Click an enrollment request to view its details, including:
+
+* The provider and payer associated with the enrollment.
+* The transaction types included in the enrollment.
+* The current status of the enrollment.
+* Any notes or instructions from Stedi or the payer.
+* The history of status changes and actions taken on the enrollment.
+* Enrollment documents, such as signed PDF forms.
 
 Alternatively, you can retrieve information about enrollment requests through the [List Enrollments](/healthcare/api-reference/get-enrollment-list-enrollments) endpoint.
 
@@ -14116,6 +15175,14 @@ Stedi sends a notification email once per hour with a summary of enrollment requ
 Email notifications are sent to the address designated as the **Person for Stedi to contact** about the enrollment. This is typically the email associated with the Stedi account that created the enrollment request, and it may differ from the provider's designated contact.
 
 If you aren't receiving notification emails as expected, contact Stedi support in Slack or Teams.
+
+## CMS auto-enrollment
+
+The Centers for Medicare and Medicaid Services (CMS) is one of the few payers that requires enrollment for eligibility checks.
+
+Eligibility checks to CMS fail with `AAA` error `41` when a provider isn't properly enrolled. In these cases, Stedi automatically submits the required transaction enrollment request. CMS usually processes these enrollments within 24-48 hours.
+
+Note that providers must also complete payer enrollment with CMS to become an active Medicare provider. If their NPI isn't active in [PECOS](https://pecos.cms.hhs.gov/pecos/login.do#headingLv1), the system CMS uses to manage active providers, the transaction enrollment request will be rejected and set to `REJECTED` status. If that happens, we'll send you instructions explaining how to resolve the issue.
 
 ## Enrollments hub
 
@@ -14261,6 +15328,14 @@ To create a Stedi account with the **Basic** plan:
 
 Stedi begins provisioning your account. You'll be able to submit [transaction enrollment requests](/providers/providers-transaction-enrollment-intro) in about 15 minutes. However, you can start [running eligibility checks](/providers/providers-eligibility-checks) immediately.
 
+### Join existing account
+
+During sign up, Stedi checks whether your email domain is associated with an existing Stedi account. If it is, you can request to join that account instead of creating a new one.
+
+For example, if you sign up with `john.doe@example.com` and your company already has a Stedi account for `example.com`, you'll see the option to request to join it. This helps prevent duplicate accounts for the same organization.
+
+You'll receive an email when the account admin invites you to join the account and log in.
+
 ## Add members
 
 Your Stedi account can have many members - a member represents an individual email address used to log into the account. You may want to add additional members so that other individuals in your organization can help manage transactions and troubleshoot issues. Your vendor may also request to be invited to your account, so they can investigate and troubleshoot issues directly during support sessions.
@@ -14324,6 +15399,14 @@ Accounts can have unlimited members, and members can be [assigned different role
 
 It's possible to have multiple accounts, though using one account is recommended for most customers. If you need additional accounts, [contact us](https://www.stedi.com/contact) and we'll enable them for you.
 
+### Join an existing account
+
+During [sign up](https://portal.stedi.com/auth/sign-up), Stedi checks whether your email domain is associated with an existing Stedi account. If it is, you can request to join that account instead of creating a new one.
+
+For example, if you sign up with `john.doe@example.com` and your company already has a Stedi account for `example.com`, you'll see the option to request to join it. This helps prevent duplicate accounts for the same organization.
+
+You'll receive an email when the account admin invites you to join the account and log in.
+
 ### Change account theme
 
 To change your account theme:
@@ -14339,8 +15422,6 @@ To change your account theme:
 
 Your account can have many members - a member represents an individual email address used to log into the account. You may want to add additional members so that other individuals in your organization can help manage transactions and troubleshoot issues.
 
-If you've installed a Stedi app, a vendor may also request to be invited to your account, so they can investigate and troubleshoot issues directly during support sessions.
-
 ### Invite members
 
 To add members to your account:
@@ -14352,6 +15433,10 @@ To add members to your account:
 5. Click **Send invitation**.
 
 The invited member will receive an email with instructions about how to accept the invitation and log into the account. Invitations do not expire, but can be revoked by any account admin at any time before acceptance.
+
+<Note>
+  Stedi apps may automatically add one or more support users with a [Developer role](/healthcare/accounts-and-billing#assign-member-roles) to your account during installation. These support users allow your vendor to help you troubleshoot issues directly within your account and assist with implementation.
+</Note>
 
 ### Assign member roles
 
@@ -14632,6 +15717,104 @@ If you're waiting for an ERA, you should first check the related 277CA to confir
 Then, you can run a [real-time claim status check](/providers/providers-check-claim-status) to get updates about the claim's adjudication and payment status.
 
 
+# Claim edits and repairs
+Source: https://www.stedi.com/docs/providers/providers-claim-edits-and-repairs
+
+***
+
+title: Claim edits and repairs
+sidebarTitle: "Edits and repairs"
+---------------------------------
+
+Stedi checks each claim you submit for errors that could lead to rejections or denials.
+
+Depending on the type of error, Stedi will either fix the issue automatically (repair) or reject the claim (edit rejection) with instructions explaining what to change before resubmitting. This process helps ensure claims are complete, accurate, HIPAA-compliant, and aligned with payer-specific rules *before* they reach the payer.
+
+Catching and resolving issues early through claim edits and repairs streamlines claims processing so providers can get paid faster.
+
+## Repairs
+
+Repairs are fixes that Stedi applies to claims before checking them against our library of [claim edits](#edits). They fix problems with a known, deterministic solution, such as formatting issues. For example, if a phone number contains dashes or spaces, a repair might remove them so the claim passes validation.
+
+We don't use repairs to change substantive or clinical content. For example, a repair won't change a CPT code in a claim to reflect a different procedure. That's a substantive change that requires resubmission.
+
+Claim repairs don't require any action from you - they happen automatically, so you don't need to make changes or resubmit.
+
+## Edits
+
+Claim edits are validation rules that check a specific requirement. For example, an edit might check that each phone number in the claim contains exactly 10 digits. Many of our [repairs](#repairs) fix issues that would cause claims to fail one or more edits. For example, a repair may remove dashes in a phone number so it's in the right format for the edit validation. If the phone number still doesn't have 10 digits, the claim fails the edit.
+
+Stedi runs our entire library of edits on each claim you submit. This applies to both new claims and claims you're resubmitting through Stedi.
+
+When a claim fails one or more edits, Stedi doesn't send it to the payer. Instead, you'll see a validation error for each edit the claim failed. You'll need to fix the issues causing the edit failures before you can successfully submit the claim to Stedi.
+
+![Claim edit validation failure](/images/providers/claim-edit-validation-failure.png)
+
+### Stedi's edit database
+
+Stedi has a growing library of claim edits, including edits for specific payers. You can review a filterable, up-to-date list of all our claim edits in our [Edits database](https://edits.stedi.com/).
+
+There's no standardized universal library of claim edits. However, a large number of industry-standard edits originate from HIPAA rules (such as using ICD-10 as the standard coding system) and from Centers for Medicare & Medicaid Services (CMS) rules, such as the National Correct Coding Initiative (NCCI). NCCI edits were originally developed by CMS for Medicare, but many non-Medicare payers have adopted them or use them as a baseline.
+
+Our goal is to eventually cover all non-provider-specific edits that can be deterministically applied to claims. You can submit requests for new edits or updates to existing ones through our [Request a claim edit](https://www.stedi.com/request-claim-edit) form.
+
+### SNIP framework
+
+Edits are often categorized using the Strategic National Implementation Process (SNIP) framework. The framework was created by the Workgroup for Electronic Data Interchange (WEDI), which sets guidelines (but not standards) for how EDI should be implemented in healthcare.
+
+Each SNIP type, or level, checks a different aspect of a claim's correctness. You can find the SNIP level of all of our edits in the [Edits database](https://edits.stedi.com/).
+
+**SNIP Type 1: EDI Standard Integrity Testing**
+
+Edits that check whether the claim uses valid EDI syntax. Examples:
+
+* Are the EDI segments in the right order?
+* Do fields meant for numbers contain numbers?
+
+**SNIP Type 2: HIPAA Implementation Guide Requirement Testing**
+
+Edits that check whether the claim uses HIPAA-compliant X12 syntax. Examples:
+
+* Invalid phone numbers
+* Invalid date of birth
+* Invalid billing provider address
+* Missing primary payer
+
+**SNIP Type 3: HIPAA Balance Testing**
+
+Edits that check whether the billing amounts in the claim add up correctly. Examples:
+
+* Non-zero adjustment amounts
+* COB claims must be balanced
+* Total claim charges must equal line-level charges
+
+**SNIP Type 4: HIPAA Inter-Segment Situation Testing**
+
+Edits that check whether fields are present or missing based on the presence of other fields. Examples:
+
+* Missing accident date
+* Missing admission source code
+
+**SNIP Type 5: HIPAA External Code Set Testing**
+
+Checks that fields that use official HIPAA-adopted code sets only contain valid values. For example, an edit could check for invalid ICD-10-CM diagnosis codes.
+
+**SNIP Type 6: Product Type/Type of Service Testing**
+
+Edits that check whether the claim is valid and in the right format for the type of healthcare service listed. These edits catch mismatches between the procedure code being billed and the type of claim or service category. Examples:
+
+* Using a CDT dental code in an 837P professional claim.
+* Billing a surgery CPT code under a diagnostic service type.
+* Including a revenue code, which is used only in 837I institutional claims, in an 837P professional claim.
+
+**SNIP Type 7: Trading Partner-Specific Testing**
+
+Edits that check whether the claim complies with rules in HIPAA guides that apply only to government payers like Medicare and Medicaid. Examples:
+
+* Invalid primary diagnosis on Medicare chiropractic claims
+* Missing initial treatment date for Medicare chiropractic claims
+
+
 # CMS-1500 Claim Form PDF
 Source: https://www.stedi.com/docs/providers/providers-cms-1500-claim-form-pdf
 
@@ -14726,7 +15909,11 @@ Stedi autogenerates a PDF version of each processed 835 ERA. To download the PDF
 
 The PDF contains a human-readable version of the ERA, including payment details, adjustments, and explanations for each service line. It adheres to the Standard Paper Remittance (SPR) format required by the Centers for Medicare and Medicaid Services (CMS).
 
-This is a PDF representation of the 835 ERA - it's not the same as an Explanation of Benefits (EOB) or an Explanation of Payment (EOP) that you may receive from the payer. - **EOB:** A statement from a payer explaining how a medical claim was processed, including what was covered, denied, and the remaining patient responsibility. The patient receives an EOB after a claim has been adjudicated. - **EOP:** A version of the EOB for the provider. It contains more information related to how the payer has adjudicated the claim. The provider receives the EOP after claim adjudication and payment are sent. - **ERA:** An electronic file that details payment and claim adjustment information. The provider receives the ERA after the payer has adjudicated the claim and issued payment, typically at the same time the funds are deposited electronically.
+This is a PDF representation of the 835 ERA - it's not the same as an Explanation of Benefits (EOB) or an Explanation of Payment (EOP) that you may receive from the payer.
+
+* **EOB:** A statement from a payer explaining how a medical claim was processed, including what was covered, denied, and the remaining patient responsibility. The patient receives an EOB after a claim has been adjudicated.
+* **EOP:** A version of the EOB for the provider. It contains more information related to how the payer has adjudicated the claim. The provider receives the EOP after claim adjudication and payment are sent.
+* **ERA:** An electronic file that details payment and claim adjustment information. The provider receives the ERA after the payer has adjudicated the claim and issued payment, typically at the same time the funds are deposited electronically.
 
 ### Download X12 EDI
 
@@ -14754,7 +15941,7 @@ sidebarTitle: Run eligibility checks
 
 You can run both real-time and batch 270/271 eligibility checks in your account to verify a patient's insurance coverage and benefits.
 
-You can also run a special kind of real-time eligibility check called a Medicare Beneficiary Identifier (MBI) lookup. MBI lookups allow you to retrieve benefits information from the Centers for Medicare and Medicaid Services (CMS) using a patient's Social Security Number (SSN) instead of their MBI.
+You can also run a special kind of real-time eligibility check called a Medicare Beneficiary Identifier (MBI) lookup. MBI lookups allow you to retrieve benefits information from the Centers for Medicare and Medicaid Services (CMS) when you don't know the patient's MBI.
 
 ## Real-time eligibility checks
 
@@ -14765,13 +15952,12 @@ To run a new eligibility check:
 1. Go to the [Eligibility searches page](https://portal.stedi.com/app/healthcare/eligibility).
 2. Click **+ New eligibility check**.
 3. Enter the required information.
-   * We recommend starting with the default form fields, but you can click **Select fields** to include additional information, such as dependent information or service dates.
+   * We recommend starting with the default form fields, but you can click **Select fields** to include additional information, such as dependent information or service dates. Review [basic eligibility request fields](#basic-eligibility-request-fields) for detailed instructions and tips for completing the form.
    * Choosing the right service type code (STC) or procedure code is very important for getting the best results from the payer.
      * We recommend submitting one STC per request, unless you've tested and are certain that the payer supports multiple.
      * To request general medical benefits, we recommend using STC `30` (Health Benefit Plan Coverage).
      * To request general dental benefits, we recommend using STC `35` (Dental Care).
      * When requesting benefits for specific services, you should test the STCs that seem most appropriate to determine which ones yield the most benefits information. Our docs for choosing the right [STCs and procedure codes](/providers/providers-stc-procedure-codes) explain how.
-   * Review [eligibility best practices](#eligibility-best-practices) for detailed instructions and tips for completing the form.
 4. Click **Submit**.
 
 Stedi runs the eligibility check and stores it in a new [eligibility search](/providers/providers-eligibility-search). Stedi automatically opens the **Eligibility search** overview page for the check.
@@ -14782,18 +15968,49 @@ Click **View** to see the details of the eligibility check, including a [benefit
 
 A Medicare Beneficiary Identifier (MBI) is a unique, randomly-generated identifier assigned to individuals enrolled in Medicare. You must include the patient's MBI in every eligibility check you submit to the Centers for Medicare and Medicaid Services (CMS).
 
-When patients don't know their MBI, you can perform a special type of real-time eligibility check, called an MBI lookup, using the patient's Social Security Number (SSN) instead.
+When patients don't know their MBI, you can perform an MBI lookup instead of a standard eligibility check.
 
-To perform an MBI lookup:
+### Types of MBI lookups
+
+There are two types of MBI lookups you can perform with Stedi. For each, you'll use a special payer that tells Stedi to perform an MBI lookup for the patient in addition to a standard eligibility check.
+
+| Type     | What's required                                                    | Payer                          |
+| -------- | ------------------------------------------------------------------ | ------------------------------ |
+| With SSN | first name, last name, date of birth, Social Security Number (SSN) | **CMS MBI Lookup**             |
+| No SSN   | first name, last name, date of birth, U.S. state                   | **CMS MBI Lookup Without SSN** |
+
+We recommend running MBI lookups **with** the patient's SSN whenever possible. When the SSN is present, the MBI lookup has a higher likelihood of successfully returning their MBI. MBI lookups with no SSN are a fallback option when the patient's SSN isn't available.
+
+You don't need to include more patient demographic information than what's required, such as additional address data. It doesn’t improve MBI lookup success rates.
+
+### Run an MBI lookup
+
+To run an MBI lookup:
 
 1. Go to the [Eligibility searches page](https://portal.stedi.com/app/healthcare/eligibility) and click **+ New eligibility check**.
-2. Construct an eligibility check request that includes the patient's first name, last name, date of birth, and SSN.
-   * To do this, you'll need to click **Select fields** and check the box next to **Social Security Number (SSN)** under the **Subscriber** section.
-   * Review our [best practices](#eligibility-best-practices) for detailed instructions and tips.
-3. Set the **Trading partner service ID** to **CMS MBI Lookup**.
-4. Click **Submit**.
 
-Stedi uses the patient’s demographic data and SSN to perform an MBI lookup. If there is a match, Stedi submits an eligibility check to CMS. Stedi returns a complete eligibility response from CMS for the patient and returns the patient's MBI as the subscriber's member ID.
+2. Construct an eligibility check request with the required patient demographic data. You don't need to include more than the required fields, such as extra address data. Extra demographic data won't improve lookup success rates.
+   * **With SSN:** Include the patient's first name, last name, date of birth, and SSN.
+
+     You'll need to click **Select fields** and check the box next to **Social Security Number (SSN)** under the **Subscriber** section. This adds the SSN field to the form.
+     ![Select SSN field](/images/providers/mbi-lookup-add-ssn.png)
+
+   * **No SSN:** Include the patient's first name, last name, date of birth, and U.S. state.
+
+     You'll need to click **Select fields** and check the box next to **State** under the **Subscriber > Address** section. This adds the **State** field to the form. You can leave the rest of the address fields blank.
+     ![Select state field](/images/providers/mbi-lookup-add-state.png)
+
+3. Set the **Trading partner service ID** to either:
+   * **CMS MBI Lookup** for MBI lookups with SSN.
+   * **CMS MBI Lookup Without SSN** for MBI lookups without SSN.
+
+4. Enter the rest of the required information. Review [basic eligibility request fields](#basic-eligibility-request-fields) for detailed instructions about how to complete the **Provider** and **Encounter** sections.
+
+5. Click **Submit**.
+
+Stedi uses the patient's demographic data and SSN to perform an MBI lookup. If there is a match, Stedi submits an eligibility check to CMS. Stedi returns a complete eligibility response from CMS for the patient and returns the patient's MBI as the subscriber's member ID.
+
+Stedi automatically opens the **Eligibility search** overview page for the MBI lookup when it's complete.
 
 <Tip>
   Medicare Advantage plans have their own unique member ID, which **isn't** returned in the MBI lookup response. You also shouldn't submit eligibility checks for Medicare Advantage plans to CMS (HETS) - you should submit them to the actual Medicare Advantage plan payer instead.
@@ -14803,16 +16020,25 @@ Stedi uses the patient’s demographic data and SSN to perform an MBI lookup. If
 
 We recommend using batch checks for bulk workflows that aren't time sensitive, such as monthly or weekly eligibility refreshes. You can submit batch eligibility checks through bulk CSV upload.
 
-To submit batch checks:
+### Create new CSV batch
+
+To create a new CSV batch:
 
 1. Go to the [Batch eligibility checks page](https://portal.stedi.com/app/healthcare/checks/batch).
 2. Click **+ New batch from CSV**.
-3. Enter a name for the batch. Stedi displays this name in the list of batch uploads. This name is for your reference only - we don't send it to payers.
-4. Click **Download a template** to download the CSV template with the supported fields. You can also download it from this link: [template CSV file](/files/batch-eligibility-template.csv).
-5. Populate the template with eligibility checks. Each row in the template represents one eligibility check. You can submit up to 1,000 checks per CSV file. Review our [best practices](#eligibility-best-practices) for tips on what information to include for each check.
-6. Click **+ Upload file** to upload your complete CSV file.
-7. Click **Verify file** so Stedi can validate the data in each eligibility check. You can fix any errors and re-upload the CSV file as many times as needed. When the file is error-free, you'll be able to execute the batch.
-8. Click **Execute batch** to send the eligibility checks to Stedi for processing.
+3. Enter a unique name for the batch. Stedi displays this name in the list of batch uploads. This name is for your reference only - we don't send it to payers.
+4. (Optional) Click **Advanced options** to configure a custom **Retry duration** between 8 and 24 hours. This is the maximum number of hours that Stedi will retry checks in the batch that fail due to payer connectivity issues. The default is 8 hours.
+5. Click **Create** to go to the CSV upload page for your new batch.
+
+### Upload CSV file
+
+On the CSV upload page for your batch:
+
+1. Click **Download a template** to download the CSV template with the supported fields. You can also download it from this link: [template CSV file](/files/batch-eligibility-template.csv).
+2. Populate the template with eligibility checks. Each row in the template represents one eligibility check. You can submit up to 10,000 checks per CSV file. The upload page contains detailed documentation for each possible field and recommendations for which fields to include for the best chance of success.
+3. Click **+ Upload file** to upload your complete CSV file.
+4. Click **Verify file** so Stedi can validate the data in each eligibility check. You can fix any errors and re-upload the CSV file as many times as needed. When the file is error-free, you'll be able to execute the batch.
+5. Click **Execute batch** to send the eligibility checks to Stedi for processing.
 
 Stedi begins processing the batch. Each eligibility check in the batch is stored in its own eligibility search. You can review the details of each check from the [Eligibility searches page](https://portal.stedi.com/app/healthcare/eligibility).
 
@@ -14822,13 +16048,13 @@ You can review the progress of submitted batches on the [Batch eligibility check
 
 * The batch status changes to **In progress** while Stedi is processing the batch.
 * The batch status changes to **Completed** when Stedi has sent all checks in the batch to payers and received responses.
-* Most batches complete in 15 to 30 minutes. However, Stedi retries checks that fail due to payer connectivity issues for up to 8 hours, so it can take up to 8 hours for all checks in a batch to return results.
+* Most batches complete in 15 to 30 minutes. However, Stedi retries checks that fail due to payer connectivity issues for up to the configured retry period, so it can take up to the end of the retry period for all checks in a batch to return results.
 
 Click a batch to view its details, including the status of each check in the batch. Click any eligibility check to go to its details page.
 
 From the batch details page, you can also download the original CSV input by clicking **Download** under **Original input file**.
 
-## Eligibility best practices
+## Basic eligibility request fields
 
 For the best chance of success, start by sending the smallest possible set of fields in your eligibility checks. Adding extra data can lead to unnecessary rejections.
 
@@ -14836,10 +16062,11 @@ We recommend starting with the following information. Only include more if the p
 
 {/* prettier-ignore-start */}
 
-| Information                               | Best Practices                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |   |                                   |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |   |                |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| Information                               | Instructions                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |   |                                   |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |   |                |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
 | ----------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | - | --------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | - | -------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | **Encounter**, service or procedure codes | You must include either a service type code (STC) or a procedure code and qualifier. This tells the payer what kinds of benefits information you're requesting. Most medical payers don't support procedure codes. Some dental payers do, but we recommend trying an STC first.<ul><li>We recommend STC `30` (Health Benefit Plan Coverage) to retrieve a patient's general medical benefits and `35` to retrieve a patient's general dental benefits. Visit [STCs and procedure codes](/providers/providers-stc-procedure-codes) for details about how to request benefits for specific medical and dental services.</li><li>We recommend including no more than one STC in each request.</li><li>By default, the real-time eligibility check form allows you to choose a **Service type code**. If you want to include a procedure code instead, click **Select fields** and select the boxes for the **Procedure code** and **Product or service ID qualifier** to add them to the form. Note that you can submit either an STC or a procedure code and qualifier - not both.</li><li>You can only submit STCs for batch checks in the `serviceTypeCode` field. Procedure codes aren't supported.</li></ul>                                                            |   |                                   |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |   |                |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
 | **Encounter**, service dates              | Stedi uses the today's date in the payer's timezone as the date of service by default. If you want to check eligibility for today's date, don't submit a service date.<ul><li>To add past or future service dates to a real-time check, click **Select fields** and select either **Date of service** (single service date) or both the **Beginning date of service** and **End date of service** (date range).</li><li>To add past or future service dates in batch checks, use either the `encounterDateOfService` (single service date) or the `encounterBeginningDateOfService` and `encounterEndDateOfService` (date range) fields.</li><li> We recommend submitting dates up to 12 months in the past or up to the end of the current month. Payers aren't required to support dates outside these ranges. However, some payers such as the Centers for Medicare and Medicaid Services (CMS) do support requests for dates further in the future - especially the next calendar month. Check the payer's documentation to determine their specific behavior.</li></ul>                                                                                                                                                                                              |   | **Provider**, name and identifier | You must include the provider's name and an identifier. You can submit either the provider's organization name or their first and last name. For the identifier, we recommend submitting the provider's NPI. If they don't have an NPI, you can use an alternative, like their Social Security Number (SSN) or tax ID (EIN). <ul><li>By default, the real-time eligibility check form allows you to specify the provider's **Organization name**. If you want to include an individual provider's name instead, click **Select fields** and select **First name** and **Last name** under **Provider**.</li><li>By default, the real-time eligibility check form allows you to input the provider's **NPI**. If you want to use an alternative, click **Select fields** and select the **Tax ID** or **SSN** under **Provider**.</li></ul> |   | **Subscriber** | At a minimum, you must specify at least one of these fields in the request: **Date of birth**, **Last name**, or **Member ID**. <ul><li>Each payer has different requirements, so you should supply the fields necessary for each payer to identify the subscriber in their system.</li><li> When you supply the subscriber's member ID, first name, last name, and date of birth, payers are required to return a response if the member is in their database. Some payers may be able to search with less information, but this varies by payer.</li><li>Enter the subscriber's name exactly as written on their insurance card, if available, including any special or punctuation characters such as apostrophes, hyphens (dashes), or spaces.</li></ul> |
+| **Subscriber**                            | <ul><li>At a minimum, you must supply at least the subscriber's **Member ID**, **Date of birth**, or **Last name**. However, each payer has different requirements, so you should supply the fields necessary for each payer to identify the subscriber in their system. </li><li>When you supply the subscriber's member ID, first name, last name, and date of birth, payers are required to return a response if the member is in their database. That's why these are the default form fields.</li><li>If you need to run an MBI lookup with the subscriber's Social Security Number (SSN), click **Select fields** and check the box next to **Social Security Number (SSN)** under the **Subscriber** section. This adds the SSN field to the form.</li></ul>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |   |                                   |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |   |                |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
 | **Dependents**                            | A patient qualifies as a dependent for eligibility checks when they are listed as a dependent on the subscriber's insurance plan and the payer cannot uniquely identify the patient through information outside the subscriber's policy. If the patient has their own member ID (even if it only differs by a suffix like `0`), you must identify them in the **Subscriber** section instead. <ul><li>To add a dependent to the real-time eligibility check form, click **Select fields** and select **Dependents**.</li><li>You can only submit one dependent per eligibility check.</li><li> Most Medicaid plans don't support dependents - you'll almost always need to submit the child as a subscriber in the **Subscriber** section. Sending dependent information here for payers that don't support dependents will either cause an error, or the payer may return results for the subscriber instead.</li><li>We strongly recommend including the dependent's date of birth in the request when available because many payers return errors without it.</li><li>Enter the dependent's name exactly as written on their insurance card, if available, including any special or punctuation characters such as apostrophes, hyphens (dashes), or spaces.</li></ul> |   | **Trading partner service ID**    | You must specify the payer.<ul><li>For real-time eligibility checks, select the payer from the dropdown list.</li><li>For MBI lookups, you must select **CMS MBI Lookup** from the dropdown list.</li> <li>For batch checks, you must specify the payer's Stedi payer ID. You can find the Stedi payer ID in the [Payer Network](https://www.stedi.com/healthcare/network). You can use the Stedi payer ID or any Payer ID alias.</li></ul>                                                                                                                                                                                                                                                                                                                                                                                                |   |                |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
 
 {/* prettier-ignore-end */}
@@ -14877,6 +16104,7 @@ To filter eligibility searches:
    * **Payer:** By the Payer ID (62308) or business name (such as Cigna)
    * **Status:** By `Active`, `Inactive`, `Failed`, `Started`, `Queued`
    * **Date started:** A date range for when the initial eligibility check within an eligibility search was submitted. For example, a filter beginning on October 1st would only include eligibility searches with an initial submission on or after October 1st. It would *not* include an eligibility search with an initial submission on September 30th and a retry on October 1st.
+   * **Provider NPI:** By the National Provider Identifier (NPI) of the requesting provider.
 4. Click **Apply filters**.
 
 Results are sorted by the date of the original eligibility check within the eligibility search, with the most recent listed first.
@@ -14913,9 +16141,13 @@ You can edit the request details for failed eligibility checks and resubmit them
 
 ## Review eligibility check errors
 
-The [Eligibility check errors page](https://portal.stedi.com/app/healthcare/checks/reports/errors) shows a list of all the recent eligibility check error codes.
+The [Eligibility check errors page](https://portal.stedi.com/app/healthcare/checks/reports/errors) shows a list of recent eligibility check `AAA` error codes. These are errors the payer returns when they reject your eligibility request. They specify the reasons for rejection and any recommended follow-up actions.
 
-The errors are grouped by error code, and you can filter the list by Payer ID. You can look up any payer's ID in the [Payer Network](https://www.stedi.com/healthcare/network). Click on an error code to review a list of all the instances of that particular error.
+To go to this page, open the **Eligibility** menu in the navigation bar and select **Errors**.
+
+![Eligibility check errors page](/images/providers/eligibility-check-errors.png)
+
+The errors are grouped by error code, and you can filter the list by Payer ID. You can look up any payer's ID in the [Payer Network](https://www.stedi.com/healthcare/network). Click on an error code to review a list of all the instances of that error.
 
 This page helps you identify patterns in eligibility check failures. For example, if you see a large number of errors with code `75` (Subscriber/Insured Not Found) for a specific payer, you might want to investigate whether there are common issues with the patient data being submitted to that payer.
 
@@ -15073,6 +16305,42 @@ In rare cases, the enrollment status might be set to `REJECTED` if the payer den
 * There was incorrect data in the enrollment submission.
 
 If an enrollment is rejected, Stedi puts a note on the enrollment request explaining the reason and how to resolve it. Contact Stedi support with any additional questions.
+
+## Manage enrollment tasks
+
+Tasks are actions that either the provider or Stedi need to complete to move the enrollment process forward. Tasks can include:
+
+* Providing additional documentation or signatures.
+* Completing payer-specific requirements.
+* Reviewing and confirming details.
+
+When there's a new task that requires the provider to take action, Stedi adds a task to the enrollment request with instructions and sets the enrollment status to **Provider Action Required**. The email address listed as the **Person for Stedi to contact** will also receive a notification that there's a new task to complete.
+
+You can review and manage tasks at the top of the enrollment request's details page in the Stedi portal. Once you've taken the required action, check the box next to the task to mark it as complete. Stedi is automatically notified when you complete a task, and the enrollment process continues.
+
+## Manage enrollment documents
+
+Some payers require additional documents to complete the enrollment process, such as:
+
+* Signed enrollment forms
+* A practice's W-9 tax form
+* A voided check
+
+We'll send you a notification when enrollment requests require additional documentation. You can download the required forms and upload completed documents to Stedi. **Only PDF files are supported.**
+
+To upload PDF documents in the Stedi portal:
+
+1. Go to the [Enrollments page](https://portal.stedi.com/app/healthcare/enrollments) and click the enrollment request that requires documentation.
+2. Scroll to the **Documents** section at the bottom of the page.
+3. Click **Upload new document** and choose the PDF file you want to upload.
+
+![Transaction enrollment documents](/images/providers/enrollment-documents.png)
+
+Uploaded documents are listed in the **Documents** section. Click any document to view it in your web browser. You can also click **...** (ellipses) to the right of the document to:
+
+* Download the original PDF file.
+* Copy a secure link to view the file, which you can share with any member of your Stedi account.
+* Delete the file, if necessary.
 
 ## Cancel enrollments
 
@@ -15255,24 +16523,58 @@ Once you find the transaction you want to review or resubmit, click it to open i
 
 ## Revise and resubmit claims
 
+You can manually revise and resubmit professional, dental, and institutional claims in the Stedi portal. The resubmission process is the same for both corrections and cancellations - the [Claim Frequency Code](#claim-frequency-code) indicates which action you want to take.
+
+* For professional claims, you can edit and resubmit through either the interactive CMS-1500 form or the X12 EDI editor.
+* For dental and institutional claims, you can only edit and resubmit through the X12 EDI editor.
+
+### CMS-1500 form (professional)
+
 <Warning>
   Stedi's CMS-1500 claim form UI is mostly limited to the CMS-1500 form fields. It may not be able to successfully resubmit complex claims originally submitted through our APIs or SFTP.
 </Warning>
 
-You can manually revise and resubmit professional, dental, and institutional claims in your account. The resubmission process is the same for both corrections and cancellations - the [Claim Frequency Code](#claim-frequency-code) indicates which action you want to take.
+To resubmit a professional claim through Stedi's interactive CMS-1500 form:
 
-To manually resubmit a claim:
+1. Go to the [Transactions page](https://portal.stedi.com/app/healthcare/transactions) and click the claim you want to resubmit to open its details page.
+2. Click **Edit and resubmit** and select **1500 resubmission**. Stedi opens the interactive CMS-1500 form prepopulated with the claim's information.
+3. Make any necessary changes to the claim.
+   * Make sure to update the [Claim Frequency Code](#claim-frequency-code), the [Payer Claim Control Number](#payer-claim-control-number-pccn), and the [Patient Control Number](#patient-control-number) according to best practices.
+   * You can click **Related transactions** to review related 277CAs containing the errors you need to address before resubmitting. Click a transaction to review its details.
+4. Click **Submit claim** to resubmit the updated claim to the payer.
 
-1. Go to the details page for the claim you want to resubmit.
-2. Click **Edit and resubmit**. Stedi opens the claim in an interactive editor with the X12 EDI on the left and the EDI specification on the right. As you hover over different parts of the EDI, Stedi highlights the corresponding part of the specification in the **Inspector** tab to help you understand what each part of the EDI means and how to edit it correctly.
+Stedi validates the updated claim and submits it to the payer. It will appear on the [Transactions page](https://portal.stedi.com/app/healthcare/transactions) as a new 837 claim. You will also receive new [277CA claim acknowledgments](/providers/providers-claim-acknowledgments) indicating whether the resubmitted claim was accepted or rejected.
+
+### X12 EDI editor
+
+To resubmit a professional, dental, or institutional claim through Stedi's X12 EDI editor:
+
+1. Go to the [Transactions page](https://portal.stedi.com/app/healthcare/transactions) and click the claim you want to resubmit to open its details page.
+
+2. Click **Edit and resubmit** and select **X12 EDI resubmission**. Stedi opens the claim in an interactive editor with the X12 EDI on the left and the EDI specification on the right.
+
+   As you hover over different parts of the EDI, Stedi highlights the corresponding part of the specification in the **Inspector** tab to help you understand what each part of the EDI means and how to edit it correctly.
+   ![X12 EDI editor](/images/providers/x12-claim-resubmission.png)
+
 3. Make changes to the claim EDI.
    * You can type directly in the EDI editor or copy and paste updated EDI from another source.
    * Make sure to update the [Claim Frequency Code](#claim-frequency-code), the [Payer Claim Control Number](#payer-claim-control-number-pccn), and the [Patient Control Number](#patient-control-number) according to best practices.
    * You can switch to the **Reference transactions** tab to review related 277CAs containing the errors you need to address before resubmitting. Click a transaction to review its details.
+
 4. Click **Review and submit**. Stedi shows a comparison of the original claim and the new claim containing your changes.
+
 5. Click **Resubmit claim** to send the updated claim to the payer.
 
 Stedi validates the updated claim and submits it to the payer. It will appear on the [Transactions page](https://portal.stedi.com/app/healthcare/transactions) as a new 837 claim. You will also receive new [277CA claim acknowledgments](/providers/providers-claim-acknowledgments) indicating whether the resubmitted claim was accepted or rejected.
+
+## Resubmission best practices
+
+To revise or cancel a claim, you'll need to resubmit the claim with:
+
+* The proper [Claim Frequency Code](#claim-frequency-code)
+* The original claim's [Payer Claim Control Number (if available)](#payer-claim-control-number-pccn)
+* A new, unique [Patient Control Number (PCN)](#patient-control-number)
+* Any other necessary corrections
 
 ### Claim Frequency Code
 
@@ -15287,7 +16589,13 @@ The following diagram shows how claims can be rejected by Stedi or the payer at 
 
 ![Claim response lifecycle](/images/healthcare-apis/claim-resubmission-codes.svg)
 
-Use the following table to determine which Claim Frequency Code is right for your use case. These rules apply to professional, institutional, and dental claims for most payers except [Medicare](#medicare-resubmission), which only accepts code `1` for resubmissions.
+#### Choose the right code
+
+The following guidance can help you determine which Claim Frequency Code is right for your use case. These rules apply to professional, institutional, and dental claims for most payers.
+
+<Tip>
+  Some payers have different rules. For example, [Medicare](#medicare-resubmission) only accepts code `1` for resubmissions. Always adhere to the payer's specific guidance when resubmitting or canceling claims.
+</Tip>
 
 | Scenario                                                                            | How you'll know                                                                                                                                                                                                                                                                                                                       | Claim Frequency Code                                                         |
 | ----------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
@@ -15334,12 +16642,19 @@ You can retrieve the Payer Claim Control Number (PCCN) for the original claim fr
 
 ### Patient Control Number
 
-When correcting or replacing claims, we also recommend setting a new, unique Patient Control Number in:
+When resubmitting claims with any Claim Frequency Code (`1`, `7`, or `8`), we strongly recommend setting a new, unique Patient Control Number (PCN).
+
+The value you supply will be present in both the 277CA and the 835 ERA responses, allowing you to correlate the resubmitted claim with its responses later. You can set the PCN in the following locations:
 
 * `Loop 2300 CLM01` (Patient Control Number) in X12 EDI.
 * **Patient account number** (Box 26) in Stedi's CMS-1500 claim form UI.
 
-The value you supply will be present in both the 277CA and the 835 ERA responses. Setting a unique value for the resubmission will help you more easily correlate the resubmitted claim with its responses later.
+When assigning a PCN, follow these best practices:
+
+* Use a unique PCN for each claim. The identifier should be more complex than a simple sequential number and should be hard to guess.
+* Use random strings. Formats with patient initials or the date of service in them can create duplicates. We recommend using [nanoid](https://www.npmjs.com/package/nanoid) or a similar library to create a strong, unique 17-character PCN for each claim.
+* Keep it 17 characters or less. Some payers cut off values longer than 17 characters in ERAs and claim acknowledgments, which makes it hard to match them with the original claim.
+* Use alphanumeric characters only. Avoid special characters, as many payers don't handle them properly.
 
 ### Medicare resubmission
 
@@ -15435,17 +16750,17 @@ Ranges of applicable codes are represented as `rangeStart - rangeEnd`.
 \| ----------|--------------|-------------|
 \| `97151 - 97157` | ABA Therapy | `BD`, `MH` |
 \| `97810`, `97811 - 97814` | Acupuncture | `64`, `1` |
-\| `96401 - 96549` | Chemotherapy | `ON`, `82`, `92` |
-\| `96493` | Chemotherapy, IV push | `82`, `92` |
-\| `96494` | Chemotherapy, additional infusion | `82`, `92` |
+\| `96401 - 96549` | Chemotherapy | `ON`, `78`, `87`, `91`, `92` |
+\| `96493` | Chemotherapy, IV push | `78`, `87`, `91`, `92` |
+\| `96494` | Chemotherapy, additional infusion | `78`, `87`, `91`, `92` |
 \| `99490`, `99439`, `99491`, `99437`, `99487` | Chronic Care Management (CCM) services | `A4`, `MH`, `98`, `1` |
 \| too many to list | Dermatology | `3`, `98` |
 \| `E1399` | Durable Medical Equipment | `DM`, `11`, `12`, `18` |
 \| `96375` | IV push | `92` |
 \| `96360`, `96365`, `96366` | IV Therapy/Infusion | `92`, `98` |
 \| too many to list | Maternity (professional) | `BT`, `BU`, `BV`, `69` |
-\| `97802` | Medical nutrition therapy | `98`, `MH`, `1` |
-\| `97803` | Medical nutrition follow-up | `98`, `MH`, `1` |
+\| `97802` | Medical nutrition therapy | `98`, `MH`, `BZ`, `1` |
+\| `97803` | Medical nutrition follow-up | `98`, `MH`, `BZ`, `1` |
 \| too many to list | Mental health | `MH`, `96`, `98`, `A4`, `BD`, `CF` |
 \| `95700 - 96020` | Neurology | `98` |
 \| `99460`, `99463` | Newborn/facility | `65`, `BI` |
@@ -15783,6 +17098,10 @@ You can submit professional claims through our interactive claim form or by uplo
 
 ## Claim form (professional only)
 
+<Warning>
+  You can only submit claims to the patient's primary health plan through our interactive CMS-1500 form. You must submit secondary or tertiary claims through X12 EDI upload, API, or SFTP instead.
+</Warning>
+
 To submit a professional claim, do one of the following:
 
 * Go to the [Transactions page](https://portal.stedi.com/app/healthcare/transactions) and click **+ Submit claim manually**.
@@ -15797,7 +17116,10 @@ Enter the required information for your professional claim. Notably:
 * Select whether you want to submit a **Production** or **Test** claim.
   * Production claims are sent to the payer.
   * Test claims aren't sent to the payer. Stedi validates them and displays them in the portal so you can get familiar with Stedi's claim processing workflow. Stedi responds to test claims with a 277CA claim acknowledgment, but you won't receive an 835 Electronic Remittance Advice (ERA).
-* We strongly recommend submitting a unique value for the **Patient account number**. The payer returns this value in related transactions, such as the 277CA and 835 ERA, so you can correlate responses and real-time claim status checks with the original claim. We recommend using only alphanumeric characters and generating unique values of the shortest possible length, as some payers replace non-alphanumeric characters and truncate them to shorter lengths than the official 20-character limit. In these cases, the payer returns a different identifier in responses than the one you originally sent, making it more difficult to correlate the claim and perform real-time claim status checks.
+* We strongly recommend submitting a unique value for the **Patient account number**. The identifier should be more complex than a simple sequential number and should be hard to guess. The payer returns this value in related transactions, such as the 277CA and 835 ERA, so you can correlate responses and real-time claim status checks with the original claim.
+  * Keep it 17 characters or less. Some payers cut off values longer than 17 characters in ERAs and claim acknowledgments, which makes it hard to match them with the original claim.
+  * Use alphanumeric characters only. Avoid special characters, as many payers don't handle them properly.
+  * Use random strings. Formats with patient initials or the date of service in them can create duplicates.
 * You can submit claim-level attachments in **Box 19** and service-line attachments in **Box 24 - Service lines**. Note that you can't add attachments to claims that were already submitted through the portal. To include attachments for those, resubmit the claim with the attachments.
   * Click **Add attachment** to specify the details for an attachment.
   * Choose the appropriate **Report type** for each attachment.
@@ -15979,6 +17301,42 @@ This is called the **Person for Stedi to contact** on the enrollment request for
 
 This email address can be different from the contact information you provided in the provider record. Set it to wherever you want to receive Stedi's communications about the enrollment.
 
+## Complete enrollment tasks
+
+Tasks are actions that either the provider or Stedi need to complete to move the enrollment process forward. Tasks can include:
+
+* Providing additional documentation or signatures.
+* Completing payer-specific requirements.
+* Reviewing and confirming details.
+
+When there's a new task that requires the provider to take action, Stedi adds a task to the enrollment request with instructions and sets the enrollment status to **Provider Action Required**. The email address listed as the **Person for Stedi to contact** will also receive a notification that there's a new task to complete.
+
+You can review and manage tasks at the top of the enrollment request's details page in the Stedi portal. Once you've taken the required action, check the box next to the task to mark it as complete. Stedi is automatically notified when you complete a task, and the enrollment process continues.
+
+## Upload enrollment documents
+
+Some payers require additional documents to complete the enrollment process, such as:
+
+* Signed enrollment forms
+* A practice's W-9 tax form
+* A voided check
+
+We'll send you a notification when enrollment requests require additional documentation. You can download the required forms and upload completed documents to Stedi. **Only PDF files are supported.**
+
+To upload PDF documents in the Stedi portal:
+
+1. Go to the [Enrollments page](https://portal.stedi.com/app/healthcare/enrollments) and click the enrollment request that requires documentation.
+2. Scroll to the **Documents** section at the bottom of the page.
+3. Click **Upload new document** and choose the PDF file you want to upload.
+
+![Transaction enrollment documents](/images/providers/enrollment-documents.png)
+
+Uploaded documents are listed in the **Documents** section. Click any document to view it in your web browser. You can also click **...** (ellipses) to the right of the document to:
+
+* Download the original PDF file.
+* Copy a secure link to view the file, which you can share with any member of your Stedi account.
+* Delete the file, if necessary.
+
 ## Practices and facilities with multiple providers or locations
 
 Some healthcare organizations operate multiple facilities or practices under a shared structure. This is common in hospital systems, clinic networks, or large medical groups where multiple service locations operate under the same billing entity.
@@ -16002,6 +17360,14 @@ To determine whether a payer is eligible for one-click enrollment:
 The following example shows that one-click enrollment is available for 835 ERAs with Blue Cross Blue Shield of Illinois.
 
 ![Payer Network - one-click enrollment](/images/providers/payer-network-one-click.png)
+
+## CMS auto-enrollment
+
+The Centers for Medicare and Medicaid Services (CMS) is one of the few payers that requires enrollment for eligibility checks.
+
+Eligibility checks to CMS fail with `AAA` error `41` when a provider isn't properly enrolled. In these cases, Stedi automatically submits the required transaction enrollment request. CMS usually processes these enrollments within 24-48 hours.
+
+Note that providers must also complete payer enrollment with CMS to become an active Medicare provider. If their NPI isn't active in [PECOS](https://pecos.cms.hhs.gov/pecos/login.do#headingLv1), the system CMS uses to manage active providers, the transaction enrollment request will be rejected and set to `REJECTED` status. If that happens, we'll send you instructions explaining how to resolve the issue.
 
 
 # Support
@@ -16146,7 +17512,7 @@ You can also submit a mock Medicare Beneficiary Identifier (MBI) lookup. MBI loo
 
 ### Test the Stedi Agent
 
-The [Stedi Agent](/healthcare/eligibility-manager#retry-with-the-stedi-agent) resolves recoverable eligibility check errors automatically with the same best practices our Support team uses for troubleshooting. You can run a specific mock eligibility check to evaluate the Stedi Agent:
+The [Stedi Agent](/healthcare/eligibility-searches-view#retry-with-the-stedi-agent) resolves recoverable eligibility check errors automatically with the same best practices our Support team uses for troubleshooting. You can run a specific mock eligibility check to evaluate the Stedi Agent:
 
 1. Create a new eligibility check and select **Stedi Agent** as the payer. Keep all other properties set to their defaults.
 2. Submit the check. It's designed to fail so you can watch the agent resolve issues in real time. Specifically, it returns `AAA` error `73` (Invalid/Missing Subscriber/Insured Name).
@@ -16298,7 +17664,7 @@ Stedi handles most of the transaction enrollment process for you. Here's how it 
   <Step title="Complete any payer-specific requirements.">
     For some payers, such as those with [one-click enrollment](/providers/providers-submit-enrollment-requests#one-click-enrollment), Stedi can complete the entire enrollment process for you. We sign enrollment PDF forms on your behalf, when possible, to speed up the process and eliminate extra work for your team.
 
-    Some enrollments may require you to complete additional steps. If there are additional steps, we'll set the enrollment status to **PROVIDER ACTION REQUIRED** and provide clear instructions.
+    Some enrollments may require you to complete additional steps. If there are additional steps, we'll set the enrollment status to **PROVIDER ACTION REQUIRED** and add a task to the enrollment request with clear instructions. The enrollment process continues once you complete the required tasks.
   </Step>
 
   <Step title="Enrollment is live.">
@@ -26840,6 +28206,24 @@ Artifacts refer to the transaction and file execution payloads from files Stedi 
 By default, Stedi retains your artifact files for 10 years. In some cases, you may want Stedi to remove artifacts to comply with PII/PHI retention policies. You can configure data retention on the [EDI Settings](https://portal.stedi.com/app/core/settings) page.
 
 
+# Delete Enrollment Document
+Source: https://www.stedi.com/docs/healthcare/api-reference/delete-enrollment-document
+
+***
+
+openapi: enrollment delete /documents/{documentId}
+title: Delete Enrollment Document
+sidebarTitle: "Delete Document"
+-------------------------------
+
+This endpoint deletes the specified PDF document associated with a [transaction enrollment](/healthcare/transaction-enrollment).
+
+1. Call this endpoint with the document ID for the PDF document you want to delete. The document ID is returned in the responses for the [Retrieve Enrollment](/healthcare/api-reference/get-enrollment) and [List Enrollments](/healthcare/api-reference/get-enrollment-list-enrollments) endpoints.
+2. The endpoint returns an empty response to indicate that the document has been successfully deleted.
+
+You can also delete enrollment documents manually from the enrollment's details page in the Stedi portal.
+
+
 # Delete Provider
 Source: https://www.stedi.com/docs/healthcare/api-reference/delete-enrollment-provider
 
@@ -26863,7 +28247,32 @@ title: Delete Enrollment
 sidebarTitle: "Delete Enrollment"
 ---------------------------------
 
-This endpoint allows you to delete a [transaction enrollment](/healthcare/transaction-enrollment) that is still in `DRAFT` status. To update or delete an enrollment that is already in `STEDI_ACTION_REQUIRED`, `PROVIDER_ACTION_REQUIRED`, `PROVISIONING`, `LIVE`, `REJECTED`, or `CANCELED` status, contact support.
+This endpoint allows you to delete a [transaction enrollment](/healthcare/transaction-enrollment) that is still in `DRAFT` status.
+
+
+# Download Enrollment Document
+Source: https://www.stedi.com/docs/healthcare/api-reference/get-enrollment-document-download
+
+***
+
+openapi: enrollment get /documents/{documentId}/download
+title: Download Enrollment Document
+sidebarTitle: "Download Document"
+---------------------------------
+
+This endpoint returns a pre-signed URL that you can use to download a PDF document related to the specified [transaction enrollment](/healthcare/transaction-enrollment).
+
+1. Call this endpoint with the document ID for the PDF document you want to download. The document ID is returned in the responses for the [Retrieve Enrollment](/healthcare/api-reference/get-enrollment) and [List Enrollments](/healthcare/api-reference/get-enrollment-list-enrollments) endpoints.
+2. The endpoint returns a pre-signed URL that you can use to download the specified PDF document.
+3. Use a `GET` request to download the PDF document from the pre-signed URL.
+
+   ```bash
+   curl --request GET \
+   --url "<downloadUrl>" \
+   --output /path/to/file.pdf
+   ```
+
+You can also download enrollment documents manually from the enrollment's details page in the Stedi portal.
 
 
 # List Enrollments
@@ -26926,6 +28335,30 @@ sidebarTitle: "Retrieve Enrollment"
 -----------------------------------
 
 This endpoint retrieves details for the specified [transaction enrollment](/healthcare/transaction-enrollment).
+
+
+# 835 ERA PDF
+Source: https://www.stedi.com/docs/healthcare/api-reference/get-era-pdf
+
+***
+
+sidebarTitle: "835 ERA PDF"
+title: "835 ERA PDF"
+openapi: healthcare get /electronic-remittance-advice/{transactionId}/pdf
+-------------------------------------------------------------------------
+
+This endpoint uses an 835 Electronic Remittance Advice (ERA) `transactionId` to retrieve its associated PDF file.
+
+Stedi autogenerates a PDF file for each processed 835 ERA. The PDF contains a human-readable version of the ERA, including payment details, adjustments, and explanations for each service line. It resembles the Standard Paper Remittance (SPR) format that the Centers for Medicare and Medicaid Services (CMS) uses for ERA PDFs, regardless of which payer sent the ERA.
+
+1. Call this endpoint with the `transactionId` path parameter set to the 835 ERA's transaction ID. This ID is included in the transaction processed event for the 835 ERA, which you can receive automatically through Stedi [webhooks](/healthcare/configure-webhooks). You can also retrieve this ID through the [Poll Transactions](/healthcare/api-reference/get-poll-transactions) endpoint or from the transaction's details page within the Stedi portal.
+2. By default, the endpoint returns the PDF as a base64-encoded string. To receive the unencoded PDF data, include the `Accept: application/pdf` request header.
+
+To view the PDF, save the PDF data to a file with a `.pdf` extension.
+
+<Note>
+  This is a PDF representation of the 835 ERA - it's not the same as an Explanation of Benefits (EOB) that you may receive from the payer. [Learn more](/healthcare/receive-claim-responses#835-era-pdf)
+</Note>
 
 
 # Retrieve File Execution Input
@@ -27013,7 +28446,7 @@ sidebarTitle: "Poll Batch Checks"
 This endpoint retrieves the results of asynchronous eligibility checks you submitted through the asynchronous [Batch Eligibility Checks](/healthcare/api-reference/post-healthcare-batch-eligibility) endpoint or through [CSV upload](/healthcare/batch-refresh-eligibility-checks#manual-submission) in the Stedi portal. It doesn't return results for real-time eligibility checks.
 
 1. Call this endpoint. You can optionally add one or more query parameters to filter the results you want to retrieve.
-2. The endpoint returns completed checks matching the criteria. Stedi retries checks that fail due to [payer connectivity issues](/healthcare/eligibility-troubleshooting#payer-connectivity-issues) for up to 8 hours. Therefore, it can take up to 8 hours for all checks in a batch to return results.
+2. The endpoint returns completed checks matching the criteria. Stedi retries checks that fail due to [payer connectivity issues](/healthcare/eligibility-troubleshooting#payer-connectivity-issues) for 8 - 24 hours. It can take up to the configured retry period for all checks in a batch to return results.
 
 Each `item` in the response contains the benefits information for a completed eligibility check. Note that our documentation lists all enums officially allowed in the eligibility response. Some payers return non-compliant values, which Stedi passes through as is.
 
@@ -27047,7 +28480,7 @@ The 277CA claim acknowledgment indicates whether a claim was accepted or rejecte
 2. The endpoint returns the 277CA in JSON format.
 
 <Note>
-  * Visit [277CA claim status details](/healthcare/receive-claim-responses#277ca-claim-status-details) to
+  * Visit [277CA claim status details](/healthcare/receive-claim-responses#interpret-277ca-claim-status) to
     learn which parts of the 277CA contain claim status information.
   * Visit [Correlate 277CA](/healthcare/receive-claim-responses#correlate-277ca) to learn how to match 277CAs to the original claim.
 </Note>
@@ -27265,8 +28698,8 @@ Stedi weights results based on text match relevance and additional factors, such
 
 This page contains two examples of search results:
 
-* **Basic Search**: The `SearchPayers_example1` response shows the results of a basic search for the query string "Blue Cross". The URL for this request is `https://healthcare.us.stedi.com/2024-04-01/payers/search?query=Blue%20Cross`.
-* **Complex Search**: The `SearchPayers_example2` response shows the results of a more advanced search that includes a query string for "Blue Cross", plus additional query parameters that filter for payers supporting eligibility checks and real-time claim status. The URL for this request is `https://healthcare.us.stedi.com/2024-04-01/payers/search?query=Blue%20Cross&eligibilityCheck=SUPPORTED&claimStatus=SUPPORTED`. This advanced search only returns payers that support both eligibility checks and claim status, while the basic search returns all payers, regardless of the transaction types they support.
+* **Search for query string**: This example response shows the results of a basic search for the query string "Blue Cross". The URL for this request is `https://healthcare.us.stedi.com/2024-04-01/payers/search?query=Blue%20Cross`.
+* **Search with multiple filters**: This example response shows the results of a more advanced search that includes a query string for "Blue Cross", plus additional query parameters that filter for payers supporting eligibility checks and real-time claim status. The URL for this request is `https://healthcare.us.stedi.com/2024-04-01/payers/search?query=Blue%20Cross&eligibilityCheck=SUPPORTED&claimStatus=SUPPORTED`. This advanced search only returns payers that support both eligibility checks and claim status, while the basic search returns all payers, regardless of the transaction types they support.
 
 Both examples are truncated for brevity to show only one payer matching the results.
 
@@ -27283,10 +28716,7 @@ openapi: core get /transactions/{transactionId}/input
 
 This endpoint retrieves a transaction's input document before it passes through any translation or mappings.
 
-The input document can be in either X12 EDI or JSON format, depending on the direction of the transaction. For example:
-
-* If you send an 834 benefit enrollment to a payer, the input document will be in the JSON format you submitted to Stedi's API.
-* If a payer sends you an 835 ERA, the input document will be in the original X12 EDI format.
+The input document can be in either X12 EDI or JSON format, depending on the direction of the transaction. For example, if a payer sends you an 835 ERA, the input document will be in the original X12 EDI format.
 
 Note that when the input is X12 EDI, the document only includes the transaction information (`ST` to `SE` segments) and doesn't include the envelope. To retrieve the full X12 EDI document with the envelope, use the [Retrieve File Execution Input](/healthcare/api-reference/get-execution-input) endpoint instead.
 
@@ -27311,10 +28741,7 @@ openapi: core get /transactions/{transactionId}/output
 
 This endpoint retrieves a transaction's output document, which is the result after Stedi has finished translating and mapping the input document.
 
-The output document can be in either X12 EDI or JSON format, depending on the direction of the transaction. For example:
-
-* If you send an 834 benefit enrollment to a payer, the output document will be an X12 EDI 834 benefit enrollment transaction.
-* If a payer sends you an 835 ERA, the output document will be a JSON representation of the 835 ERA.
+The output document can be in either X12 EDI or JSON format, depending on the direction of the transaction. For example, if a payer sends you an 835 ERA, the output document will be a JSON representation of the 835 ERA.
 
 Note that when the output is X12 EDI, the document only includes the transaction information (`ST` to `SE` segments) and doesn't include the envelope.
 
@@ -27482,7 +28909,7 @@ When endpoints share a concurrency pool, it means the total number of in-flight 
 
 When you reach the maximum concurrency limit for an endpoint, Stedi rejects additional requests with a `429` HTTP status code until one of your previous requests is completed. Rejected requests have the following error message:
 
-```
+```json
 {
   "message": "The request can't be submitted because the sender's submission has been throttled: CUSTOMER_LIMIT",
   "code": "TOO_MANY_REQUESTS"
@@ -27562,9 +28989,9 @@ title: Eligibility mock requests
 sidebarTitle: "Testing: Send mock requests"
 -------------------------------------------
 
-When you submit the following requests to the [Real-Time Eligibility Check](/healthcare/api-reference/post-healthcare-eligibility) endpoint with a test API key, Stedi returns mock benefits data from the specified payer you can use for testing.
+When you submit the following requests with a [test API key](/healthcare/api-reference#api-key-types), Stedi returns mock benefits data from the specified payer you can use for testing.
 
-You can also submit these mock requests through the [New eligibility check](https://portal.stedi.com/app/healthcare/checks/create) form in the UI when **Test mode** is enabled.
+You can also submit most of these mock requests through the [New eligibility check](https://portal.stedi.com/app/healthcare/checks/create) form in the UI when **Test mode** is enabled.
 
 <Tip>
   Mock requests are free for testing purposes and won't incur any charges in
@@ -27583,7 +29010,11 @@ We **don't recommend** using Postman for requests containing Protected Health In
 
 Visit [API clients](/healthcare/api-reference#api-clients) for a list of recommended clients you can use instead.
 
-## Medical - Active coverage
+## JSON endpoint
+
+The following examples are mock checks for the [Real-Time Eligibility Check JSON](/healthcare/api-reference/post-healthcare-eligibility) endpoint.
+
+### Medical - Active coverage
 
 Request notes:
 
@@ -27591,11 +29022,11 @@ Request notes:
 * `provider`: You can use any organization name and any NPI, as long as it passes [check digit validation](https://www.cms.gov/Regulations-and-Guidance/Administrative-Simplification/NationalProvIdentStand/Downloads/NPIcheckdigit.pdf). To generate a dummy NPI, you can use [this free tool](https://jsfiddle.net/alexdresko/cLNB6).
 * `subscriber`: You must use the exact values in the test request. Other birth dates, first names, last names, member IDs, and Social Security Numbers return errors.
 
-### Dependent
+#### Dependent
 
 Each of these examples represent an eligibility check for a dependent. An individual qualifies as a dependent for eligibility checks when they are listed as a dependent on the subscriber's insurance plan AND the payer cannot uniquely identify them through information outside the subscriber's policy.
 
-These example requests follow best practices for structuring eligibility checks. Specifically, all requests include the dependent's information, including their date of birth, in the `dependents` array. Some payers may allow different structures, such as sending the dependent's information in the `subscriber` object with the subscriber's member ID. However, we recommend following the guidance outlined in the [Real-Time Eligibility Check](/healthcare/api-reference/mock-requests-eligibility-checks#dependent) endpoint documentation for the most reliable results across all payers.
+These example requests follow best practices for structuring eligibility checks. Specifically, all requests include the dependent's information, including their date of birth, in the `dependents` array. Some payers may allow different structures, such as sending the dependent's information in the `subscriber` object with the subscriber's member ID. However, we recommend following the guidance outlined in the [Real-Time Eligibility Check](/healthcare/api-reference/post-healthcare-eligibility#body.dependents) endpoint documentation for the most reliable results across all payers.
 
 The way dependent information is included in the response varies by payer. Some contain the dependent's information in the `subscriber` object. Some include the actual subscriber's information in the `subscriber` object and the dependent's information in the `dependents` array.
 
@@ -27821,7 +29252,7 @@ In this example, the dependent Jane is the subscriber John's spouse. Jane's info
   ```
 </Accordion>
 
-### Subscriber only
+#### Subscriber only
 
 The following examples request benefits information for the subscriber only. The subscriber's information is sent in the `subscriber` object in the request. The payer's response contains the subscriber's information in the `subscriber` object and doesn't include any dependent information.
 
@@ -28191,9 +29622,11 @@ The following examples request benefits information for the subscriber only. The
   ```
 </Accordion>
 
-### MBI lookup for CMS checks
+#### MBI lookup for CMS checks
 
-You must include the patient's Medicare Beneficiary Identifier (MBI) in every eligibility check you submit to the Centers for Medicare and Medicaid Services ([Payer ID: CMS](https://www.stedi.com/healthcare/network/cms)). When patients don’t know their MBI, you can use Stedi’s eligibility APIs to perform an MBI lookup using their Social Security Number instead. Visit [MBI lookup](/healthcare/mbi-lookup#enrollment) for more information.
+You must include the patient's Medicare Beneficiary Identifier (MBI) in every eligibility check you submit to the Centers for Medicare and Medicaid Services ([Payer ID: CMS](https://www.stedi.com/healthcare/network/cms)). When patients don’t know their MBI, you can use Stedi’s eligibility APIs to perform an MBI lookup.
+
+This mock request is for an MBI lookup with the patient's Social Security Number (SSN), but you can also perform an MBI lookup without an SSN. Visit [MBI lookup](/healthcare/mbi-lookup) for more information.
 
 <Accordion title="MBI lookup mock request">
   {/* schema:EligibilityCheckRequestContent */}
@@ -28224,7 +29657,7 @@ You must include the patient's Medicare Beneficiary Identifier (MBI) in every el
   ```
 </Accordion>
 
-## Medical - Inactive coverage
+### Medical - Inactive coverage
 
 The following example requests benefits information for the subscriber.
 
@@ -28257,7 +29690,7 @@ The following example requests benefits information for the subscriber.
   ```
 </Accordion>
 
-## Dental
+### Dental
 
 The following example requests benefits information for the subscriber.
 
@@ -28278,7 +29711,7 @@ Request notes:
     --header 'Authorization: Key {test_api_key}' \
     --header 'Content-Type: application/json' \
     --data '{
-      "tradingPartnerServiceId": "100925",
+      "tradingPartnerServiceId": "AMTAS00425",
       "provider": {
           "firstName": "Plaque",
           "lastName": "Penguin",
@@ -28337,7 +29770,7 @@ Request notes:
     --header 'Authorization: Key {test_api_key}' \
     --header 'Content-Type: application/json' \
     --data '{
-      "tradingPartnerServiceId": "59-1031071",
+      "tradingPartnerServiceId": "62308",
       "provider": {
           "organizationName": "One",
           "npi": "1999999984"
@@ -28366,7 +29799,7 @@ Request notes:
     --header 'Authorization: Key {test_api_key}' \
     --header 'Content-Type: application/json' \
     --data '{
-      "tradingPartnerServiceId": "101256",
+      "tradingPartnerServiceId": "10134",
       "provider": {
           "organizationName": "One",
           "npi": "1999999984"
@@ -28413,11 +29846,11 @@ Request notes:
   ```
 </Accordion>
 
-## Common AAA errors
+### Common AAA errors
 
 The following requests return mock data for the most common Payer `AAA` errors. Visit [Eligibility troubleshooting](/healthcare/eligibility-troubleshooting) for a complete list of AAA error codes, other common eligibility check issues, and recommended resolution steps.
 
-### 42 - Unable to respond at current time
+#### 42 - Unable to respond at current time
 
 The following example request returns a `42` AAA error code, indicating that the payer is unable to respond at the current time. This is typically a temporary issue with the payer’s system, but it can also be an extended outage or the payer throttling your requests.
 
@@ -28448,7 +29881,7 @@ The following example request returns a `42` AAA error code, indicating that the
   ```
 </Accordion>
 
-### 43 - Invalid/Missing Provider Identification
+#### 43 - Invalid/Missing Provider Identification
 
 The following example request returns a `43` AAA error code. This error can occur if provider's NPI is not registered with the payer, the provider's NPI is not registered *correctly* with the payer, or the payer requires an agreement.
 
@@ -28479,7 +29912,7 @@ The following example request returns a `43` AAA error code. This error can occu
   ```
 </Accordion>
 
-### 72 - Invalid/Missing Subscriber/Insured ID
+#### 72 - Invalid/Missing Subscriber/Insured ID
 
 The following example request returns a `72` AAA error code. This error can occur if the subscriber member ID was incorrect in the request, the request does not meet the payer's requirements for the subscriber ID, or there is another unidentified error in the request data.
 
@@ -28510,7 +29943,7 @@ The following example request returns a `72` AAA error code. This error can occu
   ```
 </Accordion>
 
-### 73 - Invalid/Missing Subscriber/Insured Name
+#### 73 - Invalid/Missing Subscriber/Insured Name
 
 The following example request returns a `73` AAA error code. This error can occur if an incorrect subscriber name was submitted, the subscriber name was missing, the subscriber name was spelled incorrectly, or the request doesn't meet the payer's requirements for the subscriber's name.
 
@@ -28541,7 +29974,7 @@ The following example request returns a `73` AAA error code. This error can occu
   ```
 </Accordion>
 
-### 75 - Subscriber/Insured Not Found
+#### 75 - Subscriber/Insured Not Found
 
 The following example request returns a `75` AAA error code. This error occurs when the payer can't find the subscriber in their database. You should verify the subscriber details and try sending different combinations of `firstName`, `lastName`, `dateOfBirth`, and `memberId`. Note that not all search combinations are supported by all payers.
 
@@ -28572,7 +30005,7 @@ The following example request returns a `75` AAA error code. This error occurs w
   ```
 </Accordion>
 
-### 79 - Invalid Participant Identification
+#### 79 - Invalid Participant Identification
 
 The following example request returns a `79` AAA error code. This error occurs when there is a problem connecting with the payer. You should contact Stedi support for assistance.
 
@@ -28603,9 +30036,46 @@ The following example request returns a `79` AAA error code. This error occurs w
   ```
 </Accordion>
 
+## SOAP endpoint
+
+The following example is a mock check for the [Real-Time Eligibility Check SOAP](/healthcare/api-reference/post-healthcare-eligibility-soap) endpoint.
+
+<Accordion title="SOAP - Mock request 1">
+  {/* schema:EligibilityCheckRequestContent */}
+
+  ```bash
+  curl --request POST \
+    --url "https://healthcare.us.stedi.com/2025-06-01/protocols/caqh-core" \
+    --header "Content-Type: application/soap+xml" \
+    --data '<soapenv:Envelope xmlns:soapenv="http://www.w3.org/2003/05/soap-envelope" xmlns:cor="http://www.caqh.org/SOAP/WSDL/CORERule2.2.0.xsd">
+    <soapenv:Header>
+      <wsse:Security soapenv:mustUnderstand="true" xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
+        <wsse:UsernameToken>
+          <wsse:Username>STEDI-ACCOUNT-ID</wsse:Username>
+          <wsse:Password>STEDI-API-KEY</wsse:Password>
+        </wsse:UsernameToken>
+      </wsse:Security>
+    </soapenv:Header>
+    <soapenv:Body>
+        <cor:COREEnvelopeRealTimeRequest>
+          <PayloadType>X12_270_Request_005010X279A1</PayloadType>
+          <ProcessingMode>RealTime</ProcessingMode>
+          <PayloadID>f81d4fae-7dec-11d0-a765-00a0c91e6b12</PayloadID>
+          <TimeStamp>2007-08-30T10:20:34.000Z</TimeStamp>
+          <SenderID>STEDI</SenderID>
+          <ReceiverID>STEDI</ReceiverID>
+          <CORERuleVersion>2.2.0</CORERuleVersion>
+          <Payload><![CDATA[ISA*00*          *00*          *ZZ*AV09311993     *01*030240928      *240229*0904*^*00501*000000151*1*P*:~GS*HS*1510848*030240928*20221130*0904*000000001*X*005010X279A1~ST*270*0001*005010X279A1~BHT*0022*13*00000000000000000000000000*20221206*1300~HL*1**20*1~NM1*PR*2*Stedi Test*****PI*STEDI~HL*2*1*21*1~NM1*1P*2*STEDI*****XX*1447848577~HL*3*2*22*0~NM1*IL*1*Prohaska*Bernie****MI*23051322~DMG*D8*19990101~EQ*30~SE*11*0001~GE*1*000000001~IEA*1*000000151~]]></Payload>
+        </cor:COREEnvelopeRealTimeRequest>
+    </soapenv:Body>
+  </soapenv:Envelope>'
+
+  ```
+</Accordion>
+
 ## Test the Stedi Agent
 
-The [Stedi Agent](/healthcare/eligibility-manager#retry-with-the-stedi-agent) resolves recoverable eligibility check errors automatically with the same best practices our Support team uses for troubleshooting. You can run the following mock eligibility check to evaluate the Stedi Agent.
+The [Stedi Agent](/healthcare/eligibility-searches-view#retry-with-the-stedi-agent) resolves recoverable eligibility check errors automatically with the same best practices our Support team uses for troubleshooting. You can run the following mock eligibility check to evaluate the Stedi Agent.
 
 <Accordion title="Stedi Agent - Mock request">
   {/* schema:EligibilityCheckRequestContent */}
@@ -28679,9 +30149,13 @@ This endpoint allows you to submit a [transaction enrollment](/healthcare/transa
 
 Once the status is set to `STEDI_ACTION_REQUIRED`, Stedi begins processing the enrollment request. You can track its progress through the Stedi portal or the API.
 
-## Contacts
+## Contact information
 
-You must add a contact to an enrollment request. This is where the payer will send communications about the enrollment, if needed.
+You must submit a contact in `primaryContact`. This is where the payer will send communications about the enrollment, if needed.
+
+The contact information you provide doesn't need to match the existing contact information on the provider record. This allows you to specify different contacts for different payers as needed.
+
+When adding a contact, follow these best practices:
 
 * The provider's name and address should match exactly what the payer has on file. Some payers reject enrollment requests with addresses that don't match their records.
 * However, you may want to set the phone number or email to your own contact details. Do this when you want the payer to contact you about the enrollment instead of the provider directly.
@@ -28706,12 +30180,46 @@ You can now add the provider to one or more transaction enrollment requests.
 
 All providers you create through this endpoint are available on the [Providers page](https://portal.stedi.com/app/healthcare/providers) for you to review and manage.
 
-## Contacts
+## Contact information
 
-You can add one or more contacts to a provider record. This is where the payer will send communications about the enrollment, if needed.
+You can add one or more `contacts` to a provider record. Contacts on the provider record are for convenience - they allow the Stedi portal to prepopulate contact information options when you create enrollment requests manually. However, they **aren't** automatically added to enrollment requests you submit through the portal or API, and you can submit different contact information in enrollment requests for the provider as needed.
 
-* The provider's name and address should match exactly what the payer has on file. Some payers reject enrollment requests with addresses that don't match their records.
+When adding a contact, follow these best practices:
+
+* The provider's name and address should match exactly what payers have on file. Some payers reject enrollment requests with addresses that don't match their records. Remember that you can add different contacts to enrollment requests for specific payers if needed.
 * However, you may want to set the phone number or email to your own contact details. Do this when you want the payer to contact you about the enrollment instead of the provider directly.
+
+
+# Upload Enrollment Document
+Source: https://www.stedi.com/docs/healthcare/api-reference/post-enrollment-document-upload
+
+***
+
+openapi: enrollment post /enrollments/{enrollmentId}/documents
+title: Upload Enrollment Document
+sidebarTitle: "Upload Document"
+-------------------------------
+
+This endpoint returns a pre-signed URL that you can use to upload a PDF document related to the specified [transaction enrollment](/healthcare/transaction-enrollment).
+
+1. Call this endpoint with the enrollment ID for the transaction enrollment request where you want to upload the PDF. The enrollment ID is returned in the responses for the [Create Enrollment](/healthcare/api-reference/post-enrollment-create-enrollment) and [List Enrollments](/healthcare/api-reference/get-enrollment-list-enrollments) endpoints. It's also listed at the top of the [enrollment's details page](https://portal.stedi.com/app/healthcare/enrollments) in the Stedi portal.
+2. The endpoint returns a pre-signed URL that you can use to upload the PDF document to the enrollment record. The URL expires in 24 hours.
+3. Use a `PUT` request to upload the attachment file to the pre-signed URL (`uploadURL`) in the response. The request must include a `Content-Type` header set to `application/pdf`.
+
+   ```bash
+   curl --request PUT \
+   --url "<uploadUrl>" \
+   --header "Content-Type: application/pdf" \
+   --upload-file /path/to/file.pdf
+   ```
+
+   Uploaded documents are listed on the enrollment's details page in the Stedi portal.
+
+## Document status
+
+Calling this endpoint creates a new document record on the enrollment with its status set to `PENDING`. When you successfully upload the PDF to the pre-signed URL, the document record's status changes from `PENDING` to `UPLOADED`.
+
+After 24 hours, Stedi automatically deletes any document records that are still in the `PENDING` status. In this case, you'll need to call this endpoint again to get a new pre-signed URL for uploading the document.
 
 
 # Update Enrollment
@@ -28747,6 +30255,33 @@ Please note:
 * Updating a provider record doesn't affect associated enrollments that are in `SUBMITTED`, `PROVISIONING` or `LIVE` status. If you need to update the provider details for an enrollment with these statuses, contact support.
 
 
+# Update Enrollment Task
+Source: https://www.stedi.com/docs/healthcare/api-reference/post-enrollment-update-task
+
+***
+
+openapi: enrollment post /tasks/{taskId}
+title: Update Enrollment Task
+sidebarTitle: "Update Task"
+---------------------------
+
+This endpoint updates the completion status and data of a task associated with a [transaction enrollment](/healthcare/transaction-enrollment).
+
+Stedi adds tasks to an enrollment when specific actions are required to complete the enrollment process. For example, we might add a task to request additional information from the provider.
+
+When the task's `responsibleParty` is set to `PROVIDER`, you can use this endpoint to mark the task as completed once the provider has taken the required action. You can also use this endpoint to mark tasks as incomplete if they were marked complete in error.
+
+1. Call this endpoint with the `completed` property set to `true` to mark the task as completed. Optionally, provide additional details in the `responseData` object.
+
+2. The endpoint returns the updated task record.
+
+Stedi displays the task as completed in the Stedi portal and proceeds with the enrollment process.
+
+## Task rank order
+
+You must complete tasks in the order defined by their `rank` property. For example, you can't complete a task with rank `2` if there's an uncompleted task on the enrollment record with rank `1`. If you try to complete a task out of order, the endpoint returns an HTTP `400` error.
+
+
 # Batch Eligibility Check
 Source: https://www.stedi.com/docs/healthcare/api-reference/post-healthcare-batch-eligibility
 
@@ -28758,7 +30293,7 @@ title: Batch Eligibility Check
 
 You may want to periodically conduct asynchronous batch eligibility checks for your entire patient population or a subset of patients, such as those who have active care plans or who have future services scheduled. These data refreshes allow you to proactively reach out to patients when they lose or change coverage.
 
-* Call this endpoint with a JSON payload containing one or more eligibility checks. You can submit up to 10,000 individual eligibility checks within a single batch, and you can submit as many batches as you need to process.
+* Call this endpoint with a JSON payload containing one or more eligibility checks. You can submit up to 10,000 individual eligibility checks within a single batch, and you can submit as many batches as you need to process. Use the optional `maxRetryHours` property to configure the automatic retry period for checks that fail due to payer connectivity issues.
 * The endpoint returns a synchronous response containing a `batchId` that you can use to retrieve the results of these checks later, using the [Poll Batch Eligibility Checks](/healthcare/api-reference/get-healthcare-polling-eligibility) endpoint.
 * Stedi translates each eligibility check included in the request to the X12 270 EDI format and sends it to the appropriate payer.
 
@@ -28902,14 +30437,15 @@ This endpoint only supports [unsolicited attachments](/healthcare/submit-claim-a
 </Note>
 
 
-# Dental Claims Raw X12
+# Dental Claims (837D) Raw X12
 Source: https://www.stedi.com/docs/healthcare/api-reference/post-healthcare-dental-claims-raw-x12
 
 ***
 
 openapi: healthcare post /dental-claims/raw-x12-submission
-title: Dental Claims Raw X12
-----------------------------
+title: Dental Claims (837D) Raw X12
+sidebarTitle: Dental Claims Raw X12
+-----------------------------------
 
 This endpoint is ideal if you have an existing system that generates X12 EDI files and you want to send them through Stedi.
 
@@ -28923,14 +30459,15 @@ This endpoint is ideal if you have an existing system that generates X12 EDI fil
 </Note>
 
 
-# Dental Claims JSON
+# Dental Claims (837D) JSON
 Source: https://www.stedi.com/docs/healthcare/api-reference/post-healthcare-dental-claims
 
 ***
 
 openapi: healthcare post /dental-claims/submission
-title: Dental Claims JSON
--------------------------
+title: Dental Claims (837D) JSON
+sidebarTitle: Dental Claims JSON
+--------------------------------
 
 This endpoint sends 837D dental claims to payers.
 
@@ -28996,10 +30533,10 @@ Real-time eligibility checks are ideal for in-person patient visits, telehealth 
 
 ## Headers
 
-| Name              | Required | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
-| ----------------- | -------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `Content-Type`    | Yes      | Set to `application/soap+xml`.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
-| `X-Forwarded-For` | No       | **(CMS requests only):** Starting November 8, 2025, the Centers for Medicare & Medicaid Services (CMS) requires submitters to include network IP addresses from an eligibility request's point of origin through receipt by the HETS system.<ul><li>To comply with this requirement, you may need to include the `X-Forwarded-For` header in requests to CMS.</li> <li>When present, this header should contain a comma-separated list of upstream IP addresses, starting with the originating system and continuing through every intermediary. You can exclude your IP address from the list. Visit [CMS traceability requirements](https://www.stedi.com/docs/healthcare/send-eligibility-checks#cms-traceability-requirements) for details and examples.</li></ul> |
+| Name              | Required | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
+| ----------------- | -------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `Content-Type`    | Yes      | Set to `application/soap+xml`.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
+| `X-Forwarded-For` | No       | **(CMS requests only):** Starting November 8, 2025, the Centers for Medicare & Medicaid Services (CMS) requires submitters to include network IP addresses from an eligibility request's point of origin through receipt by the HETS system.<ul><li>To comply with this requirement, you may need to include the `X-Forwarded-For` header in requests to CMS.</li> <li>When present, this header should contain a comma-separated list of upstream IP addresses, starting with the originating system and continuing through every intermediary. You can exclude your IP address from the list. Visit [CMS traceability requirements](/healthcare/send-eligibility-checks#cms-traceability-requirements) for details and examples.</li></ul> |
 
 ## Request
 
@@ -29100,7 +30637,14 @@ The `Body` element contains the request details, and it must conform to the [CAQ
 
 ## Response
 
-The response is a SOAP message, and the structure is similar to the request. The `Payload` element typically contains the payer's X12 EDI 271 response. However, if you send a request that fails X12 EDI validation, it will contain a 999 Implementation Acknowledgment indicating the errors.
+The HTTP response must include the following additional headers:
+
+| Header                        | Description                                                                                                                                                                                                     | Example                                   |
+| ----------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------- |
+| `stedi-id`                    | A Stedi-assigned unique identifier for the eligibility check, formatted as `ec_<UUID>`. You can use this ID to track the eligibility check and deep link to its results in the Stedi portal.                    | `ec_f81d4fae-7dec-11d0-a765-00a0c91e6b12` |
+| `stedi-eligibility-search-id` | A Stedi-assigned identifier that allows Stedi to group eligibility checks for the same patient into a unified record in the Stedi portal called an [eligibility search](/healthcare/eligibility-searches-view). | `01997873-bebb-7b33-81ef-f408866dfb2cb`   |
+
+The response body is a SOAP message, and its structure is similar to the request. The `Payload` element typically contains the payer's X12 EDI 271 response. However, if you send a request that fails X12 EDI validation, it will contain a 999 Implementation Acknowledgment indicating the errors.
 
 ```xml
 <soapenv:Envelope xmlns:soapenv="http://www.w3.org/2003/05/soap-envelope"
@@ -29145,14 +30689,18 @@ The response body includes the following elements:
 
 ## HTTP status codes
 
+Most errors return SOAP, but some return JSON containing the HTTP status code and a brief message describing the error.
+
 {/* prettier-ignore-start */}
 
-| Status Code        | Description                                                                                                                                                                                                                                                                               |
-| ------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `200 OK`           | Indicates a successful request. Note that Stedi returns a `200` even when the payer returns [`AAA` errors](/healthcare/eligibility-troubleshooting#payer-aaa-errors) in the 271 response.                                                                                                 |
-| `400 Bad Request`  | Indicates a [SOAP fault](/healthcare/eligibility-troubleshooting#soap-faults), an error with the [SOAP request body](/healthcare/eligibility-troubleshooting#core-compliant-errors), or an [X12 EDI validation error](/healthcare/eligibility-troubleshooting#x12-edi-validation-errors). |
-| `401 Unauthorized` | Indicates issues with the API key you provided.                                                                                                                                                                                                                                           |
-| `404 Not Found`    | Indicates an error with the endpoint URL you provided.                                                                                                                                                                                                                                    |
+| Status Code                 | Response | Description                                                                                                                                                                                                                                                                                                                                                                               |
+| --------------------------- | -------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `200 OK`                    | SOAP     | Indicates a successful request. Note that Stedi returns a `200` even when the payer returns [`AAA` errors](/healthcare/eligibility-troubleshooting#payer-aaa-errors) in the 271 response.                                                                                                                                                                                                 |
+| `400 Bad Request`           | SOAP     | Indicates a [SOAP fault](/healthcare/eligibility-troubleshooting#soap-faults), an error with the [SOAP request body](/healthcare/eligibility-troubleshooting#core-compliant-errors), or an [X12 EDI validation error](/healthcare/eligibility-troubleshooting#x12-edi-validation-errors).                                                                                                 |
+| `401 Unauthorized`          | SOAP     | Indicates issues with the Stedi account ID or API key you provided. [Example](/healthcare/eligibility-troubleshooting#authentication-errors)                                                                                                                                                                                                                                              |
+| `404 Not Found`             | JSON     | Indicates that the specified endpoint doesn't exist. Verify that you are using the correct URL for this endpoint: `https://healthcare.us.stedi.com/2025-06-01/protocols/caqh-core`.                                                                                                                                                                                                       |
+| `429 Too Many Requests`     | SOAP     | Indicates that you have exceeded your [concurrency limit](/healthcare/api-reference#concurrency-limits) for this endpoint. The X12 response will contain an `AAA` error with code `42`. Stedi will continue rejecting additional requests with a `429` status code until one of your previous requests is completed. [Example](/healthcare/eligibility-troubleshooting#too-many-requests) |
+| `500 Internal Server Error` | JSON     | Indicates an unexpected error on Stedi's side. If you encounter this error, please contact [Stedi Support](https://stedi.com/support) for assistance.                                                                                                                                                                                                                                     |
 
 {/* prettier-ignore-end */}
 
@@ -29200,14 +30748,15 @@ This endpoint is ideal if you have an existing system that generates X12 EDI fil
 </Note>
 
 
-# Institutional Claims JSON
+# Institutional Claims (837I) JSON
 Source: https://www.stedi.com/docs/healthcare/api-reference/post-healthcare-institutional-claims
 
 ***
 
 openapi: healthcare post /change/medicalnetwork/institutionalclaims/v1/submission
-title: Institutional Claims JSON
---------------------------------
+title: Institutional Claims (837I) JSON
+sidebarTitle: Institutional Claims JSON
+---------------------------------------
 
 This endpoint sends 837I institutional claims to payers.
 
@@ -29753,6 +31302,34 @@ openapi: core post /fragments/{fragmentGroupId}
 You can optionally specify a [mapping](/edi-platform/mappings) to transform the fragment to Stedi's Guide JSON format. If you don't specify a mapping, the fragment must match the [Guide JSON](/edi-platform/operate/transform-json/guide-json) format for the specified guide.
 
 [Fragments](/edi-platform/fragments) allow you to split large transactions into smaller chunks for easier processing. You can enable fragments for one repeated EDI segment in each transaction set and then split the transaction into chunks based on that segment. For example, if you enable fragments on the `LIN` loop in an 846 Inventory Inquiry/Advice, you can stage fragments containing batches of `LIN` loops. Later, when you call the Create Outbound Transaction endpoint, Stedi stitches the fragments together into a single transaction and delivers it to your trading partner.
+
+
+# Retry Executions
+Source: https://www.stedi.com/docs/edi-platform/api-reference/core/post-retry-file-executions
+
+***
+
+title: Retry Executions
+sidebarTitle: "Retry executions"
+openapi: core post /executions/retry
+------------------------------------
+
+The endpoint queues file executions that match the criteria specified in `condition` for retry. This includes child executions generated from past retry attempts - all matching executions will be queued. You can use this endpoint to programmatically handle `file.failed` events.
+
+The endpoint returns an empty response upon success. You can monitor the status of retries using the [Poll Executions](/edi-platform/api-reference/core/get-pollingexecutions) endpoint or through the Stedi portal.
+
+## How retries work
+
+Stedi only retries each execution ID once. That's because when you retry a file, Stedi creates a child execution with a new ID and links it to the original (parent) execution.
+
+To retry a file multiple times, you'll need to either pass the execution ID of the latest retry attempt to this endpoint or specify a matching `condition`. For example, if you specify that Stedi should retry all executions with a `status` of `FAILED`, Stedi will queue all executions matching that criterion, including the latest child execution in existing retry chains.
+
+That retry execution is linked to the original execution through the following properties:
+
+* `parentExecutionId`: The ID of the execution's parent execution, if it is part of a retry chain.
+* `childExecutionId`: The ID of this execution's child execution, if it is part of a retry chain.
+
+You can also review all of a file's retry attempts in the Stedi portal.
 
 
 # Stage transactions
@@ -31660,7 +33237,7 @@ The source for each example is derived from the following JSON:
 
 <Info>
   (`$string` is a [JSONata
-  function](/edi-platform/mappings/jsonata/jsonata-functions/string#dollarstring))
+  function](/edi-platform/mappings/jsonata/jsonata-functions/string#string))
 </Info>
 
 #### Convert a value to a number
@@ -31671,7 +33248,7 @@ The source for each example is derived from the following JSON:
 
 <Info>
   (`$number` is a [JSONata
-  function](/edi-platform/mappings/jsonata/jsonata-functions/numeric#dollarnumber))
+  function](/edi-platform/mappings/jsonata/jsonata-functions/numeric#number))
 </Info>
 
 ### 1.3 String manipulation
@@ -31773,9 +33350,9 @@ The source for each example is derived from the following JSON:
 <br />
 
 <Info>
-  [$map](/edi-platform/mappings/jsonata/jsonata-functions/higher-order#dollarmap)
-  is used to convert all items in `orders.volume` array to a
-  [$number](/edi-platform/mappings/jsonata/jsonata-functions/numeric#dollarnumber).
+  [$map](/edi-platform/mappings/jsonata/jsonata-functions/higher-order#map) is
+  used to convert all items in `orders.volume` array to a
+  [$number](/edi-platform/mappings/jsonata/jsonata-functions/numeric#number).
 </Info>
 
 ### 1.7 Variables

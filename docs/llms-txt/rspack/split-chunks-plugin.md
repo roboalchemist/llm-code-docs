@@ -1,9 +1,13 @@
 # Source: https://rspack.dev/plugins/webpack/split-chunks-plugin.md
 
-import WebpackLicense from '@components/WebpackLicense';
-import { ApiMeta } from '../../../../components/ApiMeta';
+CC 4.0 License> The content of this section is derived from the content of the following links and is subject to the CC BY 4.0 license.
+> 
+> - [https://webpack.js.org/configuration/optimization/](https://webpack.js.org/configuration/optimization/)
+> 
+> The following contents can be assumed to be the result of modifications and deletions based on the original contents if not specifically stated.
+> 
+> 
 
-<WebpackLicense from="https://webpack.js.org/configuration/optimization/" />
 
 # SplitChunksPlugin
 
@@ -19,10 +23,10 @@ By default it only affects on-demand chunks, because changing initial chunks wou
 
 Rspack will automatically split chunks based on these conditions:
 
-* New chunk can be shared OR modules are from the node\_modules folder
-* New chunk would be bigger than 20kb (before min+gz)
-* Maximum number of parallel requests when loading chunks on demand would be lower or equal to 30
-* Maximum number of parallel requests at initial page load would be lower or equal to 30
+- New chunk can be shared OR modules are from the node\_modules folder
+- New chunk would be bigger than 20kb (before min+gz)
+- Maximum number of parallel requests when loading chunks on demand would be lower or equal to 30
+- Maximum number of parallel requests at initial page load would be lower or equal to 30
 
 When trying to fulfill the last two conditions, bigger chunks are preferred.
 
@@ -98,7 +102,7 @@ export default {
 
 #### splitChunks.cacheGroups.\{cacheGroup}.chunks
 
-* **Type:**
+- **Type:**
 
 ```ts
 type OptimizationSplitChunksChunks =
@@ -109,13 +113,13 @@ type OptimizationSplitChunksChunks =
   | ((chunk: Chunk) => boolean);
 ```
 
-* **Default:** `'async'`
+- **Default:** `'async'`
 
 This option controls which chunks should be selected for code splitting. When a string is provided, the possible values are `all`, `async` and `initial`.
 
-* `all`: Split all types of chunks, including [initial chunks](/misc/glossary.md#initial-chunk) and [async chunks](/misc/glossary.md#async-chunk).
-* `initial`: Only split initial chunks.
-* `async`: Only split async chunks.
+- `all`: Split all types of chunks, including [initial chunks](/misc/glossary.md#initial-chunk) and [async chunks](/misc/glossary.md#async-chunk).
+- `initial`: Only split initial chunks.
+- `async`: Only split async chunks.
 
 Generally, setting it to `all` can help reduce duplicate modules being bundled, as it means chunks can be shared between initial chunks and async chunks.
 
@@ -194,15 +198,15 @@ export default {
 
 ### splitChunks.maxAsyncRequests
 
-* **Type:** `number`
-* **Default:** `30`
+- **Type:** `number`
+- **Default:** `30`
 
 Maximum number of parallel requests when on-demand loading.
 
 ### splitChunks.maxInitialRequests
 
-* **Type:** `number`
-* **Default:** `30`
+- **Type:** `number`
+- **Default:** `30`
 
 Maximum number of parallel requests at an entry point.
 
@@ -210,15 +214,15 @@ Maximum number of parallel requests at an entry point.
 
 #### splitChunks.cacheGroups.\{cacheGroup}.minChunks
 
-* **Type:** `number`
-* **Default:** `1`
+- **Type:** `number`
+- **Default:** `1`
 
 The minimum times must a module be shared among chunks before splitting.
 
 ### splitChunks.hidePathInfo
 
-* **Type:** `boolean`
-* **Default:** defaults to `true` if `options.mode` is `'production'`, otherwise defaults to `false`
+- **Type:** `boolean`
+- **Default:** defaults to `true` if `options.mode` is `'production'`, otherwise defaults to `false`
 
 Prevents exposing path info when creating names for parts splitted by maxSize.
 
@@ -226,8 +230,8 @@ Prevents exposing path info when creating names for parts splitted by maxSize.
 
 #### splitChunks.cacheGroups.\{cacheGroup}.minSize
 
-* **Type:** `number | Record<string, number>`
-* **Default:** `20000` in production and `10000` in others
+- **Type:** `number | Record<string, number>`
+- **Default:** `20000` in production and `10000` in others
 
 When using the `number` type of configuration, the same `minSize` will be configured for all module types defined in [`splitChunks.defaultSizeTypes`](/plugins/webpack/split-chunks-plugin.md#splitchunksdefaultsizetypes).
 
@@ -264,8 +268,8 @@ For example, the above configuration means that the minimum size of javascript m
 
 #### splitChunks.cacheGroups.\{cacheGroup}.minSizeReduction
 
-* \*\*Type: \*\* `number | Record<string, number>`
-* **Default:** `0`
+- \*\*Type: \*\* `number | Record<string, number>`
+- **Default:** `0`
 
 If there are several small modules in the build output, developers may not want to generate separate chunks for them even if their total size exceeds the `minSize` threshold. In this case, you can use the `minSizeReduction` parameter to set the minimum size reduction threshold required for module splitting.
 
@@ -325,8 +329,8 @@ The difference between `maxInitialSize` and `maxSize` is that `maxInitialSize` w
 
 ### splitChunks.automaticNameDelimiter
 
-* **Type:** `string`
-* **Default:** `-`
+- **Type:** `string`
+- **Default:** `-`
 
 By default Rspack will generate names using origin and name of the chunk (e.g. vendors-main.js).
 
@@ -336,8 +340,8 @@ This option lets you specify the delimiter to use for the generated names.
 
 #### splitChunks.cacheGroups.\{cacheGroup}.name
 
-* **Type:** `string | function`
-* **Default:** `false`
+- **Type:** `string | function`
+- **Default:** `false`
 
 > where the version of the function type is `>=0.4.1`.
 
@@ -359,7 +363,7 @@ If the `splitChunks.name` matches an [entry point](/config/entry.md) name, the e
 
 #### splitChunks.cacheGroups.\{cacheGroup}.filename
 
-* **Type:** `string | function`
+- **Type:** `string | function`
 
 Allows to override the filename when and only when it's an initial chunk. All placeholders available in output.filename are also available here.
 
@@ -384,10 +388,9 @@ export default {
 
 ### splitChunks.usedExports
 
-<ApiMeta addedVersion="1.0.0" />
-
-* **Type:** `boolean`
-* **Default:** Value of [optimization.usedExports](/config/optimization.md#optimizationusedexports)
+[Added in v1.0.0](https://github.com/web-infra-dev/rspack/releases/tag/v1.0.0)
+- **Type:** `boolean`
+- **Default:** Value of [optimization.usedExports](/config/optimization.md#optimizationusedexports)
 
 Enabling this configuration, the splitting of chunks will be grouped based on the usage of modules exports in different runtimes, ensuring the optimal loading size in each runtime.
 
@@ -434,8 +437,8 @@ chunk baz
 
 ### splitChunks.defaultSizeTypes
 
-* **Type:** `string[]`
-* **Default:** `["javascript", "unknown"]`, and if `experiments.css` is enabled, it will also include `"css"`
+- **Type:** `string[]`
+- **Default:** `["javascript", "css", "unknown"]`
 
 When calculating the size of chunks, only the sizes of javascript modules and built-in css modules are taken into account by default. For example, when configuring `minSize: 300`, both javascript modules and css modules need to meet the requirement in order to be split.
 
@@ -470,14 +473,14 @@ export default {
 
 #### splitChunks.cacheGroups.\{cacheGroup}.priority
 
-* **Type:** `number`
-* **Default:** `-20`
+- **Type:** `number`
+- **Default:** `-20`
 
 A module can belong to multiple cache groups. The optimization will prefer the cache group with a higher `priority`. The default groups have a negative priority to allow custom groups to take higher priority (default value is `0` for custom groups).
 
 #### splitChunks.cacheGroups.\{cacheGroup}.test
 
-* **Type:** `RegExp | string | (module: Module, { chunkGraph: ChunkGraph, moduleGraph: ModuleGraph }) => boolean`
+- **Type:** `RegExp | string | (module: Module, { chunkGraph: ChunkGraph, moduleGraph: ModuleGraph }) => boolean`
 
 > where the version of the function type is `>=0.4.1`.
 
@@ -489,20 +492,20 @@ Using the function type of `test` will significantly reduce build performance, a
 
 #### splitChunks.cacheGroups.\{cacheGroup}.enforce
 
-* **Type:** `boolean`
+- **Type:** `boolean`
 
 Tells Rspack to ignore `splitChunks.minSize`, splitChunks`.minChunks`, `splitChunks.maxAsyncRequests` and `splitChunks.maxInitialRequests` options and always create chunks for this cache group.
 
 #### splitChunks.cacheGroups.\{cacheGroup}.idHint
 
-* **Type:** `string`
+- **Type:** `string`
 
 Sets the hint for chunk id. It will be added to chunk's filename.
 
 #### splitChunks.cacheGroups.\{cacheGroup}.reuseExistingChunk
 
-* **Type:** `boolean`
-* **Default** `false`
+- **Type:** `boolean`
+- **Default** `false`
 
 Whether to reuse existing chunks when possible. If so, after splitting, the newly created chunk contains modules that are exactly the same as those in the original chunk, the original chunk will be reused, and no new chunk will be generated, which may affect the final filename of the chunk. For example:
 
@@ -522,6 +525,6 @@ If the setting of reuseExistingChunk is set to `false`, then the module B in chu
 
 #### splitChunks.cacheGroups.\{cacheGroup}.type
 
-* **Types:** `string | RegExp`
+- **Types:** `string | RegExp`
 
 Allows to assign modules to a cache group by module type.

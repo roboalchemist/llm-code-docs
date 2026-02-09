@@ -1,4 +1,8 @@
-# Source: https://docs.exa.ai/changelog/livecrawl-preferred-option.md
+# Source: https://exa.ai/docs/changelog/livecrawl-preferred-option.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://exa.ai/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # New Livecrawl Option: Preferred
 
@@ -69,8 +73,3 @@ result = exa.get_contents(urls, livecrawl="preferred")
 ```
 
 This change maintains your preference for fresh content while improving reliability.
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.exa.ai/llms.txt

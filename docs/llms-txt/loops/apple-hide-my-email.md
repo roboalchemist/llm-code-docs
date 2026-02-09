@@ -1,5 +1,9 @@
 # Source: https://loops.so/docs/deliverability/apple-hide-my-email.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://loops.so/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Sending emails to Apple “Hide my email” addresses
 
 Apple has recently begun offering their iCloud+ users more and more privacy options when it comes to how they move and appear on the internet.

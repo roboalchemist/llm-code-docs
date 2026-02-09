@@ -24,9 +24,9 @@ Decision boundary tuning is easier when you have a golden set to iterate against
 
 1. **Author at least five direct prompts** that explicitly reference your data, product name, or verbs you expect the user to say.
 2. **Draft five indirect prompts** where the user states a goal but not the tool (“I need to keep our launch tasks organized”).
-3. **Add negative prompts** that should *not* trigger your app so you can measure precision.
+3. **Add negative prompts** that should _not_ trigger your app so you can measure precision.
 
-Use these prompts later in [Optimize metadata](/apps-sdk/guides/optimize-metadata) to hill-climb on recall and precision without overfitting to a single request.
+Use these prompts later in [Optimize metadata](https://developers.openai.com/apps-sdk/guides/optimize-metadata) to hill-climb on recall and precision without overfitting to a single request.
 
 ## Scope the minimum lovable feature
 
@@ -44,7 +44,7 @@ Once a scenario is in scope, draft the tool contract:
 
 - Inputs: the parameters the model can safely provide. Keep them explicit, use enums when the set is constrained, and document defaults.
 - Outputs: the structured content you will return. Add fields the model can reason about (IDs, timestamps, status) in addition to what your UI renders.
-- Component intent: whether you need a read-only viewer, an editor, or a multiturn workspace. This influences the [component planning](/apps-sdk/plan/components) and storage model later.
+- Component intent: whether you need a read-only viewer, an editor, or a multiturn workspace. This influences the [component planning](https://developers.openai.com/apps-sdk/plan/components) and storage model later.
 
 Review these drafts with stakeholders—especially legal or compliance teams—before you invest in implementation. Many integrations require PII reviews or data processing agreements before they can ship to production.
 

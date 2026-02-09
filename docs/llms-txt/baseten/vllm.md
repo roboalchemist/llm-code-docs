@@ -1,14 +1,18 @@
 # Source: https://docs.baseten.co/examples/vllm.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.baseten.co/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Run any LLM with vLLM
 
 > Serve a wide range of models
 
-Another great option for inference is [vLLM](#), which supports a wide range of models and performance optimizations.
+Another great option for inference is [vLLM](https://docs.vllm.ai/), which supports a wide range of models and performance optimizations.
 
 ## Example: Deploy Qwen 2.5 3B on an L4
 
-This configuration serves [Qwen 2.5 3B](#) with vLLM on an L4 GPU. Running this model is fast and cheap, making it a good example for documentation, but the process of deploying it is very similar to larger models like [Llama 3.3 70B](#).
+This configuration serves [Qwen 2.5 3B](https://huggingface.co/Qwen/Qwen2.5-3B-Instruct) with vLLM on an L4 GPU. Running this model is fast and cheap, making it a good example for documentation, but the process of deploying it is very similar to larger models like [Llama 3.3 70B](/examples/models/llama/llama-3.3-70B-instruct).
 
 ## Setup
 

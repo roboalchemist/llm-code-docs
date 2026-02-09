@@ -1,5 +1,9 @@
 # Source: https://docs.ultravox.ai/voices/cloning.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.ultravox.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Voice Cloning
 
 > Create Custom Voices
@@ -51,8 +55,3 @@ For optimal results, ensure your audio sample meets these criteria:
 
 * Maximum of one audio file per voice
 * 10MB file size maximum
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.ultravox.ai/llms.txt

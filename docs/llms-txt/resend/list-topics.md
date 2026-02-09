@@ -1,5 +1,9 @@
 # Source: https://resend.com/docs/api-reference/topics/list-topics.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://resend.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # List Topics
 
 > Retrieve a list of topics for the authenticated user.
@@ -63,7 +67,7 @@ export const QueryParams = ({type, isRequired}) => {
 <QueryParams type="topics" isRequired={true} />
 
 <RequestExample>
-  ```ts Node.js theme={null}
+  ```ts Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
   import { Resend } from 'resend';
 
   const resend = new Resend('re_xxxxxxxxx');
@@ -71,13 +75,13 @@ export const QueryParams = ({type, isRequired}) => {
   const { data, error } = await resend.topics.list();
   ```
 
-  ```php PHP theme={null}
+  ```php PHP theme={"theme":{"light":"github-light","dark":"vesper"}}
   $resend = Resend::client('re_xxxxxxxxx');
 
   $resend->topics->list();
   ```
 
-  ```python Python theme={null}
+  ```python Python theme={"theme":{"light":"github-light","dark":"vesper"}}
   import resend
 
   resend.api_key = "re_xxxxxxxxx"
@@ -85,7 +89,7 @@ export const QueryParams = ({type, isRequired}) => {
   resend.Topics.list()
   ```
 
-  ```ruby Ruby theme={null}
+  ```ruby Ruby theme={"theme":{"light":"github-light","dark":"vesper"}}
   require "resend"
 
   Resend.api_key = "re_xxxxxxxxx"
@@ -93,7 +97,7 @@ export const QueryParams = ({type, isRequired}) => {
   Resend::Topics.list()
   ```
 
-  ```go Go theme={null}
+  ```go Go theme={"theme":{"light":"github-light","dark":"vesper"}}
   import (
   	"context"
 
@@ -103,11 +107,11 @@ export const QueryParams = ({type, isRequired}) => {
   func main() {
   	client := resend.NewClient("re_xxxxxxxxx")
 
-  	topics, err := client.Topics.ListWithContext(context.TODO(), nil)
+  	client.Topics.ListWithContext(context.TODO(), nil)
   }
   ```
 
-  ```rust Rust theme={null}
+  ```rust Rust theme={"theme":{"light":"github-light","dark":"vesper"}}
   use resend_rs::{list_opts::ListOptions, Resend, Result};
 
   #[tokio::main]
@@ -120,7 +124,7 @@ export const QueryParams = ({type, isRequired}) => {
   }
   ```
 
-  ```java Java theme={null}
+  ```java Java theme={"theme":{"light":"github-light","dark":"vesper"}}
   import com.resend.*;
 
   public class Main {
@@ -132,7 +136,7 @@ export const QueryParams = ({type, isRequired}) => {
   }
   ```
 
-  ```csharp .NET theme={null}
+  ```csharp .NET theme={"theme":{"light":"github-light","dark":"vesper"}}
   using Resend;
 
   IResend resend = ResendClient.Create( "re_xxxxxxxxx" ); // Or from DI
@@ -141,14 +145,14 @@ export const QueryParams = ({type, isRequired}) => {
   Console.WriteLine( "Nr Topics={0}", resp.Content.Data.Count );
   ```
 
-  ```bash cURL theme={null}
+  ```bash cURL theme={"theme":{"light":"github-light","dark":"vesper"}}
   curl -X GET 'https://api.resend.com/topics' \
        -H 'Authorization: Bearer re_xxxxxxxxx'
   ```
 </RequestExample>
 
 <ResponseExample>
-  ```json Response theme={null}
+  ```json Response theme={"theme":{"light":"github-light","dark":"vesper"}}
   {
     "object": "list",
     "has_more": false,

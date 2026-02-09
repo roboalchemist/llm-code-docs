@@ -1,5 +1,9 @@
 # Source: https://docs.pinecone.io/guides/manage-data/delete-data.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pinecone.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Delete records
 
 > Delete records by ID or metadata filter from indexes
@@ -127,7 +131,7 @@ Since Pinecone records can always be efficiently accessed using their ID, deleti
   curl "https://$INDEX_HOST/vectors/delete" \
     -H "Api-Key: $PINECONE_API_KEY" \
     -H 'Content-Type: application/json' \
-    -H "X-Pinecone-API-Version: 2025-04" \
+    -H "X-Pinecone-Api-Version: 2025-10" \
     -d '{
       "ids": [
         "id-1", 
@@ -288,7 +292,7 @@ For example, the following code deletes all records with a `genre` field set to 
   curl -i "https://$INDEX_HOST/vectors/delete" \
     -H 'Api-Key: $PINECONE_API_KEY' \
     -H 'Content-Type: application/json' \
-    -H "X-Pinecone-API-Version: 2025-04" \
+    -H "X-Pinecone-Api-Version: 2025-10" \
     -d '{
       "filter": {"genre": {"$eq": "documentary"}},
       "namespace": "example-namespace"
@@ -405,7 +409,7 @@ To delete all of the records in a namespace but not the namespace itself, provid
   curl "https://$INDEX_HOST/vectors/delete" \
     -H "Api-Key: $PINECONE_API_KEY" \
     -H 'Content-Type: application/json' \
-    -H "X-Pinecone-API-Version: 2025-04" \
+    -H "X-Pinecone-Api-Version: 2025-10" \
     -d '{
       "deleteAll": true,
       "namespace": "example-namespace"

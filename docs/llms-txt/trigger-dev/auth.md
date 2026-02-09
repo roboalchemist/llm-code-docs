@@ -1,5 +1,9 @@
 # Source: https://trigger.dev/docs/realtime/auth.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://trigger.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Realtime authentication
 
 > Authenticating real-time API requests with Public Access Tokens or Trigger Tokens
@@ -21,7 +25,7 @@ Use Public Access Tokens to subscribe to runs and receive real-time updates in y
 
 You can create a Public Access Token using the `auth.createPublicToken` function in your **backend** code:
 
-```tsx  theme={null}
+```tsx  theme={"theme":"css-variables"}
 // Somewhere in your backend code
 import { auth } from "@trigger.dev/sdk";
 
@@ -32,7 +36,7 @@ const publicToken = await auth.createPublicToken(); // 👈 this public access t
 
 By default a Public Access Token has no permissions. You must specify the scopes you need when creating a Public Access Token:
 
-```ts  theme={null}
+```ts  theme={"theme":"css-variables"}
 import { auth } from "@trigger.dev/sdk";
 
 const publicToken = await auth.createPublicToken({
@@ -46,7 +50,7 @@ const publicToken = await auth.createPublicToken({
 
 This will allow the token to read all runs, which is probably not what you want. You can specify only certain runs by passing an array of run IDs:
 
-```ts  theme={null}
+```ts  theme={"theme":"css-variables"}
 import { auth } from "@trigger.dev/sdk";
 
 const publicToken = await auth.createPublicToken({
@@ -60,7 +64,7 @@ const publicToken = await auth.createPublicToken({
 
 You can scope the token to only read certain tasks:
 
-```ts  theme={null}
+```ts  theme={"theme":"css-variables"}
 import { auth } from "@trigger.dev/sdk";
 
 const publicToken = await auth.createPublicToken({
@@ -74,7 +78,7 @@ const publicToken = await auth.createPublicToken({
 
 Or tags:
 
-```ts  theme={null}
+```ts  theme={"theme":"css-variables"}
 import { auth } from "@trigger.dev/sdk";
 
 const publicToken = await auth.createPublicToken({
@@ -88,7 +92,7 @@ const publicToken = await auth.createPublicToken({
 
 Or a specific batch of runs:
 
-```ts  theme={null}
+```ts  theme={"theme":"css-variables"}
 import { auth } from "@trigger.dev/sdk";
 
 const publicToken = await auth.createPublicToken({
@@ -102,7 +106,7 @@ const publicToken = await auth.createPublicToken({
 
 You can also combine scopes. For example, to read runs with specific tags and for specific tasks:
 
-```ts  theme={null}
+```ts  theme={"theme":"css-variables"}
 import { auth } from "@trigger.dev/sdk";
 
 const publicToken = await auth.createPublicToken({
@@ -119,7 +123,7 @@ const publicToken = await auth.createPublicToken({
 
 By default, Public Access Token's expire after 15 minutes. You can specify a different expiration time when creating a Public Access Token:
 
-```ts  theme={null}
+```ts  theme={"theme":"css-variables"}
 import { auth } from "@trigger.dev/sdk";
 
 const publicToken = await auth.createPublicToken({
@@ -155,7 +159,7 @@ For triggering tasks from your frontend, you need special "trigger" tokens. Thes
 
 ### Creating Trigger Tokens
 
-```ts  theme={null}
+```ts  theme={"theme":"css-variables"}
 import { auth } from "@trigger.dev/sdk";
 
 // Somewhere in your backend code
@@ -166,7 +170,7 @@ const triggerToken = await auth.createTriggerPublicToken("my-task");
 
 You can pass multiple tasks to create a token that can trigger multiple tasks:
 
-```ts  theme={null}
+```ts  theme={"theme":"css-variables"}
 import { auth } from "@trigger.dev/sdk";
 
 // Somewhere in your backend code
@@ -177,7 +181,7 @@ const triggerToken = await auth.createTriggerPublicToken(["my-task-1", "my-task-
 
 You can also create tokens that can be used multiple times:
 
-```ts  theme={null}
+```ts  theme={"theme":"css-variables"}
 import { auth } from "@trigger.dev/sdk";
 
 // Somewhere in your backend code
@@ -190,7 +194,7 @@ const triggerToken = await auth.createTriggerPublicToken("my-task", {
 
 These tokens also expire, with the default expiration time being 15 minutes. You can specify a custom expiration time:
 
-```ts  theme={null}
+```ts  theme={"theme":"css-variables"}
 import { auth } from "@trigger.dev/sdk";
 
 // Somewhere in your backend code

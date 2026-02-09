@@ -1,4 +1,8 @@
-# Source: https://docs.perplexity.ai/guides/structured-outputs.md
+# Source: https://docs.perplexity.ai/docs/grounded-llm/output-control/structured-outputs.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.perplexity.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Structured Outputs Guide
 
@@ -6,23 +10,21 @@
 
 Structured outputs enable you to enforce specific response formats from Perplexity's models, ensuring consistent, machine-readable data that can be directly integrated into your applications without manual parsing.
 
-We currently support two types of structured outputs: **JSON Schema** and **Regex**. LLM responses will work to match the specified format, except for the following cases:
+We currently support **JSON Schema** structured outputs. To enable structured outputs, add a `response_format` field to your request with the following structure:
 
-* The output exceeds `max_tokens`
+```json  theme={null}
+{
+  "response_format": {
+    "type": "json_schema",
+    "json_schema": {
+      "name": "your_schema_name",
+      "schema": { /* your JSON schema object */ }
+    }
+  }
+}
+```
 
-Enabling the structured outputs can be done by adding a `response_format` field in the request:
-
-**JSON Schema**
-
-* `response_format: { type: "json_schema", json_schema: {"schema": object} }` .
-
-* The schema should be a valid JSON schema object.
-
-**Regex** (only available for `sonar` right now)
-
-* `response_format: { type: "regex", regex: {"regex": str} }` .
-
-* The regex is a regular expression string.
+The `name` field is required and must be 1-64 alphanumeric characters. The schema should be a valid JSON schema object. LLM responses will match the specified format unless the output exceeds `max_tokens`.
 
 <Tip>
   **Improve Schema Compliance**: Give the LLM some hints about the output format in your prompts to improve adherence to the structured format.
@@ -31,209 +33,436 @@ Enabling the structured outputs can be done by adding a `response_format` field 
 </Tip>
 
 <Info>
-  The first request with a new JSON Schema or Regex expects to incur delay on the first token. Typically, it takes 10 to 30 seconds to prepare the new schema, and may result in timeout errors. Once the schema has been prepared, the subsequent requests will not see such delay.
+  The first request with a new JSON Schema expects to incur delay on the first token. Typically, it takes 10 to 30 seconds to prepare the new schema, and may result in timeout errors. Once the schema has been prepared, the subsequent requests will not see such delay.
 </Info>
 
 ## Examples
 
-### 1. Financial Analysis with JSON Schema
+### 1. Financial Analysis
 
-<CodeGroup>
-  ```python Python theme={null}
-  from perplexity import Perplexity
-  from typing import List, Optional
-  from pydantic import BaseModel
+<Tabs>
+  <Tab title="Agentic Research API">
+    <CodeGroup>
+      ```python Python theme={null}
+      from perplexity import Perplexity
+      from typing import List, Optional
+      from pydantic import BaseModel
 
-  class FinancialMetrics(BaseModel):
-      company: str
-      quarter: str
-      revenue: float
-      net_income: float
-      eps: float
-      revenue_growth_yoy: Optional[float] = None
-      key_highlights: Optional[List[str]] = None
+      class FinancialMetrics(BaseModel):
+          company: str
+          quarter: str
+          revenue: float
+          net_income: float
+          eps: float
+          revenue_growth_yoy: Optional[float] = None
+          key_highlights: Optional[List[str]] = None
 
-  client = Perplexity()
+      client = Perplexity()
 
-  completion = client.chat.completions.create(
-      model="sonar-pro",
-      messages=[
-          {
-              "role": "user",
-              "content": "Analyze the latest quarterly earnings report for Apple Inc. Extract key financial metrics."
-          }
-      ],
-      response_format={
-          "type": "json_schema",
-          "json_schema": {
-              "schema": FinancialMetrics.model_json_schema()
-          }
-      }
-  )
-
-  metrics = FinancialMetrics.model_validate_json(completion.choices[0].message.content)
-  print(f"Revenue: ${metrics.revenue}B")
-  ```
-
-  ```typescript TypeScript theme={null}
-  import Perplexity from '@perplexity-ai/perplexity_ai';
-
-  interface FinancialMetrics {
-    company: string;
-    quarter: string;
-    revenue: number;
-    net_income: number;
-    eps: number;
-    revenue_growth_yoy?: number;
-    key_highlights?: string[];
-  }
-
-  const client = new Perplexity();
-
-  const completion = await client.chat.completions.create({
-    model: 'sonar-pro',
-    messages: [
-      {
-        role: 'user',
-        content: 'Analyze the latest quarterly earnings report for Apple Inc. Extract key financial metrics.'
-      }
-    ],
-    response_format: {
-      type: 'json_schema',
-      json_schema: {
-        schema: {
-          type: 'object',
-          properties: {
-            company: { type: 'string' },
-            quarter: { type: 'string' },
-            revenue: { type: 'number' },
-            net_income: { type: 'number' },
-            eps: { type: 'number' },
-            revenue_growth_yoy: { type: 'number' },
-            key_highlights: {
-              type: 'array',
-              items: { type: 'string' }
-            }
-          },
-          required: ['company', 'quarter', 'revenue', 'net_income', 'eps']
-        }
-      }
-    }
-  });
-
-  const metrics: FinancialMetrics = JSON.parse(completion.choices[0].message.content);
-  ```
-
-  ```bash cURL theme={null}
-  curl -X POST "https://api.perplexity.ai/chat/completions" \
-    -H "Authorization: Bearer YOUR_API_KEY" \
-    -H "Content-Type: application/json" \
-    -d '{
-      "model": "sonar-pro",
-      "messages": [
-        {
-          "role": "user", 
-          "content": "Analyze the latest quarterly earnings report for Apple Inc. Extract key financial metrics."
-        }
-      ],
-      "response_format": {
-        "type": "json_schema",
-        "json_schema": {
-          "schema": {
-            "type": "object",
-            "properties": {
-              "company": {"type": "string"},
-              "quarter": {"type": "string"},
-              "revenue": {"type": "number"},
-              "net_income": {"type": "number"},
-              "eps": {"type": "number"},
-              "revenue_growth_yoy": {"type": "number"},
-              "key_highlights": {
-                "type": "array",
-                "items": {"type": "string"}
+      response = client.responses.create(
+          preset="pro-search",
+          input="Analyze the latest quarterly earnings report for Apple Inc. Extract key financial metrics.",
+          response_format={
+              "type": "json_schema",
+              "json_schema": {
+                  "name": "financial_metrics",
+                  "schema": FinancialMetrics.model_json_schema()
               }
-            },
-            "required": ["company", "quarter", "revenue", "net_income", "eps"]
+          }
+      )
+
+
+      metrics = FinancialMetrics.model_validate_json(response.output_text)
+      print(f"Revenue: ${metrics.revenue}B")
+      ```
+
+      ```typescript TypeScript theme={null}
+      import Perplexity from '@perplexity-ai/perplexity_ai';
+
+      interface FinancialMetrics {
+        company: string;
+        quarter: string;
+        revenue: number;
+        net_income: number;
+        eps: number;
+        revenue_growth_yoy?: number;
+        key_highlights?: string[];
+      }
+
+      const client = new Perplexity();
+
+      const response = await client.responses.create({
+        preset: 'pro-search',
+        input: 'Analyze the latest quarterly earnings report for Apple Inc. Extract key financial metrics.',
+        response_format: {
+          type: 'json_schema',
+          json_schema: {
+            name: 'financial_metrics',
+            schema: {
+              type: 'object',
+              properties: {
+                company: { type: 'string' },
+                quarter: { type: 'string' },
+                revenue: { type: 'number' },
+                net_income: { type: 'number' },
+                eps: { type: 'number' },
+                revenue_growth_yoy: { type: 'number' },
+                key_highlights: {
+                  type: 'array',
+                  items: { type: 'string' }
+                }
+              },
+              required: ['company', 'quarter', 'revenue', 'net_income', 'eps']
+            }
           }
         }
+      });
+
+      const metrics: FinancialMetrics = JSON.parse(response.output_text);
+      ```
+
+      ```bash cURL theme={null}
+      curl -X POST "https://api.perplexity.ai/v1/responses" \
+        -H "Authorization: Bearer YOUR_API_KEY" \
+        -H "Content-Type: application/json" \
+        -d '{
+          "preset": "pro-search",
+          "input": "Analyze the latest quarterly earnings report for Apple Inc. Extract key financial metrics.",
+          "response_format": {
+            "type": "json_schema",
+            "json_schema": {
+              "name": "financial_metrics",
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "company": {"type": "string"},
+                  "quarter": {"type": "string"},
+                  "revenue": {"type": "number"},
+                  "net_income": {"type": "number"},
+                  "eps": {"type": "number"},
+                  "revenue_growth_yoy": {"type": "number"},
+                  "key_highlights": {
+                    "type": "array",
+                    "items": {"type": "string"}
+                  }
+                },
+                "required": ["company", "quarter", "revenue", "net_income", "eps"]
+              }
+            }
+          }
+        }' | jq
+      ```
+    </CodeGroup>
+  </Tab>
+
+  <Tab title="Chat Completions API">
+    <CodeGroup>
+      ```python Python theme={null}
+      from perplexity import Perplexity
+      from typing import List, Optional
+      from pydantic import BaseModel
+
+      class FinancialMetrics(BaseModel):
+          company: str
+          quarter: str
+          revenue: float
+          net_income: float
+          eps: float
+          revenue_growth_yoy: Optional[float] = None
+          key_highlights: Optional[List[str]] = None
+
+      client = Perplexity()
+
+      completion = client.chat.completions.create(
+          model="sonar-pro",
+          messages=[
+              {
+                  "role": "user",
+                  "content": "Analyze the latest quarterly earnings report for Apple Inc. Extract key financial metrics."
+              }
+          ],
+          response_format={
+              "type": "json_schema",
+              "json_schema": {
+                  "schema": FinancialMetrics.model_json_schema()
+              }
+          }
+      )
+
+      metrics = FinancialMetrics.model_validate_json(completion.choices[0].message.content)
+      print(f"Revenue: ${metrics.revenue}B")
+      ```
+
+      ```typescript TypeScript theme={null}
+      import Perplexity from '@perplexity-ai/perplexity_ai';
+
+      interface FinancialMetrics {
+        company: string;
+        quarter: string;
+        revenue: number;
+        net_income: number;
+        eps: number;
+        revenue_growth_yoy?: number;
+        key_highlights?: string[];
       }
-    }' | jq
-  ```
-</CodeGroup>
 
-### 2. Extract Contact Information with Regex
+      const client = new Perplexity();
 
-<CodeGroup>
-  ```python Python theme={null}
-  from perplexity import Perplexity
-
-  client = Perplexity()
-
-  completion = client.chat.completions.create(
-      model="sonar",
-      messages=[
+      const completion = await client.chat.completions.create({
+        model: 'sonar-pro',
+        messages: [
           {
+            role: 'user',
+            content: 'Analyze the latest quarterly earnings report for Apple Inc. Extract key financial metrics.'
+          }
+        ],
+        response_format: {
+          type: 'json_schema',
+          json_schema: {
+            schema: {
+              type: 'object',
+              properties: {
+                company: { type: 'string' },
+                quarter: { type: 'string' },
+                revenue: { type: 'number' },
+                net_income: { type: 'number' },
+                eps: { type: 'number' },
+                revenue_growth_yoy: { type: 'number' },
+                key_highlights: {
+                  type: 'array',
+                  items: { type: 'string' }
+                }
+              },
+              required: ['company', 'quarter', 'revenue', 'net_income', 'eps']
+            }
+          }
+        }
+      });
+
+      const metrics: FinancialMetrics = JSON.parse(completion.choices[0].message.content);
+      ```
+
+      ```bash cURL theme={null}
+      curl -X POST "https://api.perplexity.ai/chat/completions" \
+        -H "Authorization: Bearer YOUR_API_KEY" \
+        -H "Content-Type: application/json" \
+        -d '{
+          "model": "sonar-pro",
+          "messages": [
+            {
+              "role": "user", 
+              "content": "Analyze the latest quarterly earnings report for Apple Inc. Extract key financial metrics."
+            }
+          ],
+          "response_format": {
+            "type": "json_schema",
+            "json_schema": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "company": {"type": "string"},
+                  "quarter": {"type": "string"},
+                  "revenue": {"type": "number"},
+                  "net_income": {"type": "number"},
+                  "eps": {"type": "number"},
+                  "revenue_growth_yoy": {"type": "number"},
+                  "key_highlights": {
+                    "type": "array",
+                    "items": {"type": "string"}
+                  }
+                },
+                "required": ["company", "quarter", "revenue", "net_income", "eps"]
+              }
+            }
+          }
+        }' | jq
+      ```
+    </CodeGroup>
+  </Tab>
+</Tabs>
+
+### 2. Extract Contact Information
+
+<Tabs>
+  <Tab title="Agentic Research API">
+    <CodeGroup>
+      ```python Python theme={null}
+      from perplexity import Perplexity
+      from pydantic import BaseModel
+
+      class ContactInfo(BaseModel):
+          email: str
+
+      client = Perplexity()
+
+      response = client.responses.create(
+          preset="fast-search",
+          input="Find the direct email address for the investor relations contact at Tesla Inc.",
+          response_format={
+              "type": "json_schema",
+              "json_schema": {
+                  "name": "contact_info",
+                  "schema": ContactInfo.model_json_schema()
+              }
+          }
+      )
+
+
+      contact = ContactInfo.model_validate_json(response.output_text)
+      print(f"Investor Relations Email: {contact.email}")
+      ```
+
+      ```typescript TypeScript theme={null}
+      import Perplexity from '@perplexity-ai/perplexity_ai';
+
+      interface ContactInfo {
+        email: string;
+      }
+
+      const client = new Perplexity();
+
+      const response = await client.responses.create({
+        preset: 'fast-search',
+        input: 'Find the direct email address for the investor relations contact at Tesla Inc.',
+        response_format: {
+          type: 'json_schema',
+          json_schema: {
+            name: 'contact_info',
+            schema: {
+              type: 'object',
+              properties: {
+                email: { type: 'string' }
+              },
+              required: ['email']
+            }
+          }
+        }
+      });
+
+      const contact: ContactInfo = JSON.parse(response.output_text);
+      console.log(`Investor Relations Email: ${contact.email}`);
+      ```
+
+      ```bash cURL theme={null}
+      curl -X POST "https://api.perplexity.ai/v1/responses" \
+        -H "Authorization: Bearer YOUR_API_KEY" \
+        -H "Content-Type: application/json" \
+        -d '{
+          "preset": "fast-search",
+          "input": "Find the direct email address for the investor relations contact at Tesla Inc.",
+          "response_format": {
+            "type": "json_schema",
+            "json_schema": {
+              "name": "contact_info",
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "email": {"type": "string"}
+                },
+                "required": ["email"]
+              }
+            }
+          }
+        }' | jq
+      ```
+    </CodeGroup>
+  </Tab>
+
+  <Tab title="Chat Completions API">
+    <CodeGroup>
+      ```python Python theme={null}
+      from perplexity import Perplexity
+      from pydantic import BaseModel
+
+      class ContactInfo(BaseModel):
+          email: str
+
+      client = Perplexity()
+
+      completion = client.chat.completions.create(
+          model="sonar",
+          messages=[
+              {
+                  "role": "user",
+                  "content": "Find the direct email address for the investor relations contact at Tesla Inc."
+              }
+          ],
+          response_format={
+              "type": "json_schema",
+              "json_schema": {
+                  "schema": ContactInfo.model_json_schema()
+              }
+          }
+      )
+
+      contact = ContactInfo.model_validate_json(completion.choices[0].message.content)
+      print(f"Investor Relations Email: {contact.email}")
+      ```
+
+      ```typescript TypeScript theme={null}
+      import Perplexity from '@perplexity-ai/perplexity_ai';
+
+      interface ContactInfo {
+        email: string;
+      }
+
+      const client = new Perplexity();
+
+      const completion = await client.chat.completions.create({
+        model: 'sonar',
+        messages: [
+          {
+            role: 'user',
+            content: 'Find the direct email address for the investor relations contact at Tesla Inc.'
+          }
+        ],
+        response_format: {
+          type: 'json_schema',
+          json_schema: {
+            schema: {
+              type: 'object',
+              properties: {
+                email: { type: 'string' }
+              },
+              required: ['email']
+            }
+          }
+        }
+      });
+
+      const contact: ContactInfo = JSON.parse(completion.choices[0].message.content);
+      console.log(`Investor Relations Email: ${contact.email}`);
+      ```
+
+      ```bash cURL theme={null}
+      curl -X POST "https://api.perplexity.ai/chat/completions" \
+        -H "Authorization: Bearer YOUR_API_KEY" \
+        -H "Content-Type: application/json" \
+        -d '{
+          "model": "sonar",
+          "messages": [
+            {
               "role": "user",
               "content": "Find the direct email address for the investor relations contact at Tesla Inc."
+            }
+          ],
+          "response_format": {
+            "type": "json_schema",
+            "json_schema": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "email": {"type": "string"}
+                },
+                "required": ["email"]
+              }
+            }
           }
-      ],
-      response_format={
-          "type": "regex",
-          "regex": {
-              "regex": r"[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}"
-          }
-      }
-  )
-
-  email = completion.choices[0].message.content
-  print(f"Investor Relations Email: {email}")
-  ```
-
-  ```typescript TypeScript theme={null}
-  import Perplexity from '@perplexity-ai/perplexity_ai';
-
-  const client = new Perplexity();
-
-  const completion = await client.chat.completions.create({
-    model: 'sonar',
-    messages: [
-      {
-        role: 'user',
-        content: 'Find the direct email address for the investor relations contact at Tesla Inc.'
-      }
-    ],
-    response_format: {
-      type: 'regex',
-      regex: {
-        regex: '[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}'
-      }
-    }
-  });
-
-  const email = completion.choices[0].message.content;
-  ```
-
-  ```bash cURL theme={null}
-  curl -X POST "https://api.perplexity.ai/chat/completions" \
-    -H "Authorization: Bearer YOUR_API_KEY" \
-    -H "Content-Type: application/json" \
-    -d '{
-      "model": "sonar",
-      "messages": [
-        {
-          "role": "user",
-          "content": "Find the direct email address for the investor relations contact at Tesla Inc."
-        }
-      ],
-      "response_format": {
-        "type": "regex",
-        "regex": {
-          "regex": "[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}"
-        }
-      }
-    }' | jq
-  ```
-</CodeGroup>
+        }' | jq
+      ```
+    </CodeGroup>
+  </Tab>
+</Tabs>
 
 ## Best Practices
 
@@ -241,9 +470,9 @@ Enabling the structured outputs can be done by adding a `response_format` field 
 
 For Python users, we recommend using the Pydantic library to [generate JSON schema](https://docs.pydantic.dev/latest/api/base_model/#pydantic.BaseModel.model_json_schema).
 
-**Unsupported JSON Schemas**
+### Unsupported JSON Schemas
 
-Recursive JSON schema is not supported. As a result of that, unconstrained objects are not supported either. Here's a few example of unsupported schemas:
+Recursive JSON schema is not supported. As a result of that, unconstrained objects are not supported either. Here are a few examples of unsupported schemas:
 
 ```
 # UNSUPPORTED!
@@ -263,27 +492,6 @@ class RecursiveJson(BaseModel):
 
   To ensure all links are valid, use the links returned in the `citations` or `search_results` fields from the API response. Never count on the model to return valid links directly as part of the JSON response content.
 </Warning>
-
-### Generating responses using a regex
-
-**Supported Regex**
-
-* Characters: `\d`, `\w`, `\s` , `.`
-* Character classes: `[0-9A-Fa-f]` , `[^x]`
-* Quantifiers: `*`, `?` , `+`, `{3}`, `{2,4}` , `{3,}`
-* Alternation: `|`
-* Group: `( ... )`
-* Non-capturing group: `(?: ... )`
-
-**Unsupported Regex**
-
-* Contents of group: `\1`
-* Anchors: `^`, `$`, `\b`
-* Positive lookahead: `(?= ... )`
-* Negative lookahead: `(?! ... )`
-* Positive look-behind: `(?<= ... )`
-* Negative look-behind: `(?<! ... )`
-* Recursion: `(?R)`
 
 ## Perplexity's JSON Schema Implementation
 
@@ -360,4 +568,4 @@ Let me format this information as required.
 {"country":"France","capital":"Paris","population":67750000,"official_language":"French"}
 ```
 
-For a reusable implementation to extract JSON from reasoning model outputs, see our [example utility on GitHub](https://github.com/ppl-ai/api-discussion/blob/main/utils/extract_json_reasoning_models.py).
+For a reusable implementation to extract JSON from reasoning model outputs, see our [example utility on GitHub](https://github.com/perplexityai/api-discussion/blob/main/utils/extract_json_reasoning_models.py).

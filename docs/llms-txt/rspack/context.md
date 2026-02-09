@@ -2,15 +2,20 @@
 
 # Source: https://rspack.dev/config/context.md
 
-import WebpackLicense from '@components/WebpackLicense';
-import PropertyType from '@components/PropertyType';
-import { Tabs, Tab } from '@theme';
+CC 4.0 License> The content of this section is derived from the content of the following links and is subject to the CC BY 4.0 license.
+> 
+> - [https://webpack.js.org/configuration/entry-context/#context](https://webpack.js.org/configuration/entry-context/#context)
+> 
+> The following contents can be assumed to be the result of modifications and deletions based on the original contents if not specifically stated.
+> 
+> 
 
-<WebpackLicense from="https://webpack.js.org/configuration/entry-context/#context" />
 
 # Context
 
-<PropertyType type="string" defaultValueList={[{ defaultValue: 'process.cwd()' }]} />
+- Type: `string`
+- Default:`process.cwd()`
+
 
 The `context` configuration is used to set the base directory for Rspack builds.
 
@@ -22,33 +27,34 @@ By default, Rspack uses the current working directory of the Node.js process as 
 
 For example, you can use [`__dirname`](https://nodejs.org/docs/latest/api/modules.html#__dirname) as the base directory:
 
-<Tabs>
-  <Tab label="ESM">
-    ```js title="rspack.config.mjs"
-    import { dirname } from 'node:path';
-    import { fileURLToPath } from 'node:url';
 
-    const __dirname = dirname(fileURLToPath(import.meta.url));
+**ESM**
 
-    export default {
-      context: __dirname,
-      entry: {
-        main: './src/index.js',
-      },
-    };
-    ```
-  </Tab>
+```js title="rspack.config.mjs"
+import { dirname } from 'node:path';
+import { fileURLToPath } from 'node:url';
 
-  <Tab label="CJS">
-    ```js title="rspack.config.cjs"
-    module.exports = {
-      context: __dirname,
-      entry: {
-        main: './src/index.js',
-      },
-    };
-    ```
-  </Tab>
-</Tabs>
+const __dirname = dirname(fileURLToPath(import.meta.url));
+
+export default {
+  context: __dirname,
+  entry: {
+    main: './src/index.js',
+  },
+};
+```
+
+
+**CJS**
+
+```js title="rspack.config.cjs"
+module.exports = {
+  context: __dirname,
+  entry: {
+    main: './src/index.js',
+  },
+};
+```
+
 
 In the above example, the `main` entry will be resolved based on the `path.join(__dirname, './src/index.js')` path.

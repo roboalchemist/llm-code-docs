@@ -1,115 +1,74 @@
 # Source: https://docs.argil.ai/api-reference/endpoint/avatars.list.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.argil.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # List all avatars
 
 > Returns an array of Avatar objects available for the user
 
+
+
 ## OpenAPI
 
 ````yaml get /avatars
+openapi: 3.0.1
+info:
+  title: Argil API
+  description: API for AI clone video generation
+  version: 1.0.0
+  license:
+    name: MIT
+servers:
+  - url: https://api.argil.ai/v1
+security:
+  - ApiKeyAuth: []
 paths:
-  path: /avatars
-  method: get
-  servers:
-    - url: https://api.argil.ai/v1
-  request:
-    security:
-      - title: ApiKeyAuth
-        parameters:
-          query: {}
-          header:
-            x-api-key:
-              type: apiKey
-              description: API key to be included in the x-api-key header
-          cookie: {}
-    parameters:
-      path: {}
-      query:
-        orientation:
+  /avatars:
+    get:
+      summary: List all avatars
+      description: Returns an array of Avatar objects available for the user
+      parameters:
+        - name: orientation
+          in: query
+          description: Filter avatars by orientation
+          required: false
           schema:
-            - type: enum<string>
-              enum:
-                - ASPECT_RATIO_16_9
-                - ASPECT_RATIO_9_16
-              required: false
-              description: Filter avatars by orientation
-        model:
+            $ref: '#/components/schemas/AvatarOrientation'
+        - name: model
+          in: query
+          description: Filter avatars by model type
+          required: false
           schema:
-            - type: enum<string>
-              enum:
-                - ARGIL_V1
-                - ARGIL_ATOM
-              required: false
-              description: Filter avatars by model type
-      header: {}
-      cookie: {}
-    body: {}
-  response:
-    '200':
-      application/json:
-        schemaArray:
-          - type: array
-            items:
-              allOf:
-                - $ref: '#/components/schemas/Avatar'
-        examples:
-          example:
-            value:
-              - id: 3c90c3cc-0d44-4b50-8888-8dd25736052a
-                name: <string>
-                actorName: <string>
-                createAt: '2023-11-07T05:31:56Z'
-                updatedAt: '2023-11-07T05:31:56Z'
-                gestures:
-                  - label: <string>
-                    slug: <string>
-                    startFrame: 123
-                status: NOT_TRAINED
-                width: 123
-                height: 123
-                thumbnailUrl: <string>
-                coverImageUrl: <string>
-                extras: {}
-                orientation: ASPECT_RATIO_16_9
-                model: ARGIL_V1
-        description: An array of avatars
-    '400':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              code:
-                allOf:
-                  - type: integer
-                    format: int32
-              message:
-                allOf:
-                  - type: string
-            refIdentifier: '#/components/schemas/Error'
-        examples:
-          example:
-            value:
-              code: 123
-              message: <string>
-        description: Unexpected error
-  deprecated: false
-  type: path
+            $ref: '#/components/schemas/AvatarModel'
+      responses:
+        '200':
+          description: An array of avatars
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Avatar'
+        '400':
+          description: Unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
 components:
   schemas:
-    AvatarStatus:
+    AvatarOrientation:
       type: string
       enum:
-        - NOT_TRAINED
-        - TRAINING
-        - TRAINING_FAILED
-        - IDLE
-        - REFUSED
-      description: |
-        * NOT_TRAINED - Initial state after creation
-        * TRAINING - Avatar is currently training
-        * TRAINING_FAILED - Training process failed
-        * IDLE - Avatar is ready to use
-        * REFUSED - Avatar was refused by moderation
+        - ASPECT_RATIO_16_9
+        - ASPECT_RATIO_9_16
+    AvatarModel:
+      type: string
+      enum:
+        - ARGIL_V1
+        - ARGIL_ATOM
     Avatar:
       type: object
       properties:
@@ -120,7 +79,7 @@ components:
           type: string
         actorName:
           type: string
-        createAt:
+        createdAt:
           type: string
           format: date-time
         updatedAt:
@@ -169,15 +128,39 @@ components:
           $ref: '#/components/schemas/AvatarOrientation'
         model:
           $ref: '#/components/schemas/AvatarModel'
-    AvatarOrientation:
+    Error:
+      type: object
+      properties:
+        code:
+          type: integer
+          format: int32
+        message:
+          type: string
+    AvatarStatus:
       type: string
       enum:
-        - ASPECT_RATIO_16_9
-        - ASPECT_RATIO_9_16
-    AvatarModel:
-      type: string
-      enum:
-        - ARGIL_V1
-        - ARGIL_ATOM
+        - NOT_TRAINED
+        - TRAINING
+        - TRAINING_FAILED
+        - IDLE
+        - REFUSED
+      description: >
+        * NOT_TRAINED - Initial state after VIDEO mode avatar creation (before
+        training starts)
+
+        * TRAINING - Avatar is currently training. For IMAGE mode avatars, this
+        is the initial status after creation.
+
+        * TRAINING_FAILED - Training process failed
+
+        * IDLE - Avatar is ready to use
+
+        * REFUSED - Avatar was refused by moderation
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: x-api-key
+      description: API key to be included in the x-api-key header
 
 ````

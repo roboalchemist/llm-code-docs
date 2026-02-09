@@ -1,16 +1,17 @@
 # Source: https://gofastmcp.com/clients/auth/oauth.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://gofastmcp.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # OAuth Authentication
 
 > Authenticate your FastMCP client via OAuth 2.1.
 
 export const VersionBadge = ({version}) => {
-  return <code className="version-badge-container">
-            <p className="version-badge">
-                <span className="version-badge-label">New in version:</span> 
-                <code className="version-badge-version">{version}</code>
-            </p>
-        </code>;
+  return <Badge stroke size="lg" icon="gift" iconType="regular" className="version-badge">
+            New in version <code>{version}</code>
+        </Badge>;
 };
 
 <VersionBadge version="2.6.0" />
@@ -33,7 +34,7 @@ The simplest way to use OAuth is to pass the string `"oauth"` to the `auth` para
 from fastmcp import Client
 
 # Uses default OAuth settings
-async with Client("https://fastmcp.cloud/mcp", auth="oauth") as client:
+async with Client("https://your-server.fastmcp.app/mcp", auth="oauth") as client:
     await client.ping()
 ```
 
@@ -45,9 +46,9 @@ To fully configure the OAuth flow, use the `OAuth` helper and pass it to the `au
 from fastmcp import Client
 from fastmcp.client.auth import OAuth
 
-oauth = OAuth(mcp_url="https://fastmcp.cloud/mcp")
+oauth = OAuth(mcp_url="https://your-server.fastmcp.app/mcp")
 
-async with Client("https://fastmcp.cloud/mcp", auth=oauth) as client:
+async with Client("https://your-server.fastmcp.app/mcp", auth=oauth) as client:
     await client.ping()
 ```
 
@@ -127,11 +128,11 @@ encrypted_storage = FernetEncryptionWrapper(
 )
 
 oauth = OAuth(
-    mcp_url="https://fastmcp.cloud/mcp",
+    mcp_url="https://your-server.fastmcp.app/mcp",
     token_storage=encrypted_storage
 )
 
-async with Client("https://fastmcp.cloud/mcp", auth=oauth) as client:
+async with Client("https://your-server.fastmcp.app/mcp", auth=oauth) as client:
     await client.ping()
 ```
 

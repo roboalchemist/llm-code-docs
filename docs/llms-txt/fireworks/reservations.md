@@ -1,5 +1,9 @@
 # Source: https://docs.fireworks.ai/deployments/reservations.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.fireworks.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Reserved capacity
 
 Enterprise accounts can purchase reserved capacity, typically with 1 year commitments. Reserved capacity has the following advantages over ordinary [on-demand deployments](/guides/ondemand-deployments):
@@ -32,5 +36,5 @@ manager. If you are a new, prospective customer, please reach out to our [sales 
 To view your existing reservations, run:
 
 ```
-firectl list reservations
+firectl reservation list
 ```

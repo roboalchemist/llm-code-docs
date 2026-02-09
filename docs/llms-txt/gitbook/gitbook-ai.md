@@ -1,8 +1,4 @@
-# Source: https://gitbook.com/docs/documentation/zh/creating-content/searching-your-content/gitbook-ai.md
-
-# Source: https://gitbook.com/docs/documentation/fr/creating-content/searching-your-content/gitbook-ai.md
-
-# Source: https://gitbook.com/docs/creating-content/searching-your-content/gitbook-ai.md
+# Source: https://gitbook.com/docs/documentation/ja-gitbook-documentation/creating-content/searching-your-content/gitbook-ai.md
 
 # Source: https://gitbook.com/docs/documentation/zh/creating-content/searching-your-content/gitbook-ai.md
 
@@ -15,7 +11,7 @@
 When engaging with GitBook AI, you have the ability to ask questions or elaborate on specific requirements. This AI-driven tool is designed to review your documentation in real-time, providing you with quick, direct answers.
 
 {% hint style="info" %}
-GitBook AI search is available both within the GitBook app to search internal content, and [in published content to search that specific docs site](https://gitbook.com/docs/publishing-documentation/ai-search).&#x20;
+GitBook AI search is available both within the GitBook app to search internal content, and [in published content to search that specific docs site](https://gitbook.com/docs/publishing-documentation/ai-search).
 {% endhint %}
 
 ## GitBook AI helps you find answers in the GitBook app
@@ -24,7 +20,7 @@ GitBook AI search is available both within the GitBook app to search internal co
 This feature is available on [Pro and Enterprise plans](https://www.gitbook.com/pricing).
 {% endhint %}
 
-You can enable GitBook AI for your organization’s internal content, allowing you to ask questions and get semantic answers about your internal knowledge base.&#x20;
+You can enable GitBook AI for your organization’s internal content, allowing you to ask questions and get semantic answers about your internal knowledge base.
 
 Head to the **Organization settings** page and, in the **General** tab, toggle the **Enable GitBook AI** setting on.
 

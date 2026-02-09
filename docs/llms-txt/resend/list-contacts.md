@@ -1,8 +1,42 @@
 # Source: https://resend.com/docs/api-reference/contacts/list-contacts.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://resend.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # List Contacts
 
 > Show all contacts.
+
+export const ResendParamField = ({children, body, path, ...props}) => {
+  const [lang, setLang] = useState(() => {
+    return localStorage.getItem('code') || '"Node.js"';
+  });
+  useEffect(() => {
+    const onStorage = event => {
+      const key = event.detail.key;
+      if (key === 'code') {
+        setLang(event.detail.value);
+      }
+    };
+    document.addEventListener('mintlify-localstorage', onStorage);
+    return () => {
+      document.removeEventListener('mintlify-localstorage', onStorage);
+    };
+  }, []);
+  const toCamelCase = str => typeof str === 'string' ? str.replace(/[_-](\w)/g, (_, c) => c.toUpperCase()) : str;
+  const resolvedBody = useMemo(() => {
+    const value = JSON.parse(lang);
+    return value === 'Node.js' ? toCamelCase(body) : body;
+  }, [body, lang]);
+  const resolvedPath = useMemo(() => {
+    const value = JSON.parse(lang);
+    return value === 'Node.js' ? toCamelCase(path) : path;
+  }, [path, lang]);
+  return <ParamField body={resolvedBody} path={resolvedPath} {...props}>
+      {children}
+    </ParamField>;
+};
 
 export const QueryParams = ({type, isRequired}) => {
   return <>
@@ -60,10 +94,16 @@ export const QueryParams = ({type, isRequired}) => {
     </>;
 };
 
+## Path Parameters
+
+<ResendParamField path="segment_id" type="string">
+  The Segment ID to filter contacts by. If provided, only contacts in this Segment will be returned.
+</ResendParamField>
+
 <QueryParams type="contacts" isRequired={false} />
 
 <RequestExample>
-  ```ts Node.js theme={null}
+  ```ts Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
   import { Resend } from 'resend';
 
   const resend = new Resend('re_xxxxxxxxx');
@@ -71,13 +111,13 @@ export const QueryParams = ({type, isRequired}) => {
   const { data, error } = await resend.contacts.list();
   ```
 
-  ```php PHP theme={null}
+  ```php PHP theme={"theme":{"light":"github-light","dark":"vesper"}}
   $resend = Resend::client('re_xxxxxxxxx');
 
   $resend->contacts->list();
   ```
 
-  ```python Python theme={null}
+  ```python Python theme={"theme":{"light":"github-light","dark":"vesper"}}
   import resend
 
   resend.api_key = "re_xxxxxxxxx"
@@ -85,7 +125,7 @@ export const QueryParams = ({type, isRequired}) => {
   resend.Contacts.list()
   ```
 
-  ```ruby Ruby theme={null}
+  ```ruby Ruby theme={"theme":{"light":"github-light","dark":"vesper"}}
   require "resend"
 
   Resend.api_key = "re_xxxxxxxxx"
@@ -93,15 +133,19 @@ export const QueryParams = ({type, isRequired}) => {
   Resend::Contacts.list()
   ```
 
-  ```go Go theme={null}
+  ```go Go theme={"theme":{"light":"github-light","dark":"vesper"}}
+  package main
+
   import "github.com/resend/resend-go/v3"
 
-  client := resend.NewClient("re_xxxxxxxxx")
+  func main() {
+  	client := resend.NewClient("re_xxxxxxxxx")
 
-  contacts, err := client.Contacts.List()
+  	client.Contacts.List()
+  }
   ```
 
-  ```rust Rust theme={null}
+  ```rust Rust theme={"theme":{"light":"github-light","dark":"vesper"}}
   use resend_rs::{Resend, Result, list_opts::ListOptions};
 
   #[tokio::main]
@@ -119,7 +163,7 @@ export const QueryParams = ({type, isRequired}) => {
   }
   ```
 
-  ```java Java theme={null}
+  ```java Java theme={"theme":{"light":"github-light","dark":"vesper"}}
   import com.resend.*;
 
   public class Main {
@@ -131,7 +175,7 @@ export const QueryParams = ({type, isRequired}) => {
   }
   ```
 
-  ```csharp .NET theme={null}
+  ```csharp .NET theme={"theme":{"light":"github-light","dark":"vesper"}}
   using Resend;
 
   IResend resend = ResendClient.Create( "re_xxxxxxxxx" ); // Or from DI
@@ -140,14 +184,14 @@ export const QueryParams = ({type, isRequired}) => {
   Console.WriteLine( "Nr Contacts={0}", resp.Content.Data.Count );
   ```
 
-  ```bash cURL theme={null}
+  ```bash cURL theme={"theme":{"light":"github-light","dark":"vesper"}}
   curl -X GET 'https://api.resend.com/contacts' \
        -H 'Authorization: Bearer re_xxxxxxxxx'
   ```
 </RequestExample>
 
 <ResponseExample>
-  ```json Response theme={null}
+  ```json Response theme={"theme":{"light":"github-light","dark":"vesper"}}
   {
     "object": "list",
     "has_more": false,
@@ -158,11 +202,7 @@ export const QueryParams = ({type, isRequired}) => {
         "first_name": "Steve",
         "last_name": "Wozniak",
         "created_at": "2023-10-06T23:47:56.678Z",
-        "unsubscribed": false,
-        "properties": {
-          "company_name": "Acme Corp",
-          "department": "Engineering"
-        }
+        "unsubscribed": false
       }
     ]
   }

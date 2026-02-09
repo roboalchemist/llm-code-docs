@@ -4,32 +4,18 @@
 
 # Source: https://docs.embedchain.ai/components/introduction.md
 
-# Source: https://docs.embedchain.ai/use-cases/introduction.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.embedchain.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
 
-# Source: https://docs.embedchain.ai/get-started/introduction.md
-
-# Source: https://docs.embedchain.ai/components/introduction.md
-
-# Source: https://docs.embedchain.ai/use-cases/introduction.md
-
-# Source: https://docs.embedchain.ai/get-started/introduction.md
-
-# Source: https://docs.embedchain.ai/components/introduction.md
-
-# Source: https://docs.embedchain.ai/use-cases/introduction.md
-
-# Source: https://docs.embedchain.ai/get-started/introduction.md
-
-# Source: https://docs.embedchain.ai/components/introduction.md
-
-# Source: https://docs.embedchain.ai/use-cases/introduction.md
-
-# 🧱 Introduction
+# 🧩 Introduction
 
 ## Overview
 
-You can use embedchain to create the following usecases:
+You can configure following components
 
-* [Chatbots](/use-cases/chatbots)
-* [Question Answering](/use-cases/question-answering)
-* [Semantic Search](/use-cases/semantic-search)
+* [Data Source](/components/data-sources/overview)
+* [LLM](/components/llms)
+* [Embedding Model](/components/embedding-models)
+* [Vector Database](/components/vector-databases)
+* [Evaluation](/components/evaluation)

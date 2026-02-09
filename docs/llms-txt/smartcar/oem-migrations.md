@@ -1,5 +1,9 @@
 # Source: https://smartcar.com/docs/connect/re-auth/oem-migrations.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://smartcar.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # OEM Migrations and Re-authentication
 
 > Understanding when and why vehicle owners need to re-authenticate due to OEM infrastructure changes and migrations.
@@ -199,8 +203,3 @@ If you have questions about an upcoming migration or need assistance implementin
 <Note>
   For enterprise customers, coordinate Tesla tenant setup and other OEM-specific configurations with your Solutions Architect before going live with customer-facing vehicles.
 </Note>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://smartcar.com/docs/llms.txt

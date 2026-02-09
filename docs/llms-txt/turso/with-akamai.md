@@ -1,5 +1,9 @@
 # Source: https://docs.turso.tech/features/embedded-replicas/with-akamai.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.turso.tech/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Turso + Linode by Akamai
 
 > Deploy a JavaScript/Rust app using [Turso embedded replicas](/features/embedded-replicas) to [Akamai](https://www.linode.com/).

@@ -1,5 +1,9 @@
 # Source: https://docs.turso.tech/cli/db/import.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.turso.tech/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # db import
 
 You can import an existing SQLite file to Turso Cloud using the following command:

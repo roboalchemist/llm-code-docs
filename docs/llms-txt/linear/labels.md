@@ -46,7 +46,7 @@ Take bulk actions by selecting multiple labels (`x` or `Shift `+ click), then ri
 
 ### Label descriptions
 
-Add brief label descriptions in label settings. These descriptions appear when you hover over an applied label anywhere in Linear. These descriptions give a consistent understanding of when a label should be applied. [Product Intelligence](https://linear.app/docs/product-intelligence) also considers label descriptions to inform whether to suggest a particular label.
+Add brief label descriptions in label settings. These descriptions appear when you hover over an applied label anywhere in Linear. These descriptions give a consistent understanding of when a label should be applied. [Triage Intelligence](https://linear.app/docs/triage-intelligence) also considers label descriptions to inform whether to suggest a particular label.
 
 ### Archive labels
 

@@ -6,11 +6,7 @@
 
 Better Auth SvelteKit example.
 
-***
 
-title: SvelteKit Example
-description: Better Auth SvelteKit example.
--------------------------------------------
 
 This is an example of how to use Better Auth with SvelteKit.
 

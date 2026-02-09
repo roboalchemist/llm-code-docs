@@ -2,17 +2,9 @@
 
 # Source: https://docs.augmentcode.com/jetbrains/using-augment/chat-context.md
 
-# Source: https://docs.augmentcode.com/using-augment/chat-context.md
-
-# Source: https://docs.augmentcode.com/jetbrains/using-augment/chat-context.md
-
-# Source: https://docs.augmentcode.com/using-augment/chat-context.md
-
-# Source: https://docs.augmentcode.com/jetbrains/using-augment/chat-context.md
-
-# Source: https://docs.augmentcode.com/using-augment/chat-context.md
-
-# Source: https://docs.augmentcode.com/jetbrains/using-augment/chat-context.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.augmentcode.com/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Focusing Context in Chat
 

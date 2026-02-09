@@ -1,5 +1,9 @@
 # Source: https://braintrust.dev/docs/api-reference/acls/create-acl.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://braintrust.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Create acl
 
 > Create a new acl. If there is an existing acl with the same contents as the one specified in the request, will return the existing acl unmodified
@@ -287,7 +291,3 @@ components:
         page](https://www.braintrustdata.com/app/settings?subroute=api-keys).
 
 ````
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://braintrust.dev/docs/llms.txt

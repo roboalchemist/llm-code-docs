@@ -292,7 +292,7 @@ escape_2 = '\\', ( '\\' | 't' | 'n' | 'f' | 'r' | '"' | 'x', hexdigit, hexdigit 
 hexdigit = digit | 'a' | 'b' | 'c' | 'd' | 'e' | 'f' | 'A' | 'B' | 'C' | 'D' | 'E' | 'F' ;
 ```
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ### On this page:
 

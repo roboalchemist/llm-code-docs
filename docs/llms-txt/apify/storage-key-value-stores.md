@@ -4,7 +4,7 @@
 
 This section describes API endpoints to manage Key-value stores. Key-value store is a simple storage for saving and reading data records or files. Each data record is represented by a unique key and associated with a MIME content type. Key-value stores are ideal for saving screenshots, Actor inputs and outputs, web pages, PDFs or to persist the state of crawlers.
 
-For more information, see the https://docs.apify.com/platform/storage/key-value-store.
+For more information, see the [Key-value store documentation](https://docs.apify.com/platform/storage/key-value-store).
 
 note
 
@@ -12,42 +12,42 @@ Some of the endpoints do not require the authentication token, the calls are aut
 
 <!-- -->
 
-## https://docs.apify.com/api/v2/key-value-stores-get.md
+## [Get list of key-value stores](https://docs.apify.com/api/v2/key-value-stores-get.md)
 
-https://docs.apify.com/api/v2/key-value-stores-get.md
+[/key-value-stores](https://docs.apify.com/api/v2/key-value-stores-get.md)
 
-## https://docs.apify.com/api/v2/key-value-stores-post.md
+## [Create key-value store](https://docs.apify.com/api/v2/key-value-stores-post.md)
 
-https://docs.apify.com/api/v2/key-value-stores-post.md
+[/key-value-stores](https://docs.apify.com/api/v2/key-value-stores-post.md)
 
-## https://docs.apify.com/api/v2/key-value-store-get.md
+## [Get store](https://docs.apify.com/api/v2/key-value-store-get.md)
 
-https://docs.apify.com/api/v2/key-value-store-get.md
+[/key-value-stores/{storeId}](https://docs.apify.com/api/v2/key-value-store-get.md)
 
-## https://docs.apify.com/api/v2/key-value-store-put.md
+## [Update store](https://docs.apify.com/api/v2/key-value-store-put.md)
 
-https://docs.apify.com/api/v2/key-value-store-put.md
+[/key-value-stores/{storeId}](https://docs.apify.com/api/v2/key-value-store-put.md)
 
-## https://docs.apify.com/api/v2/key-value-store-delete.md
+## [Delete store](https://docs.apify.com/api/v2/key-value-store-delete.md)
 
-https://docs.apify.com/api/v2/key-value-store-delete.md
+[/key-value-stores/{storeId}](https://docs.apify.com/api/v2/key-value-store-delete.md)
 
-## https://docs.apify.com/api/v2/key-value-store-keys-get.md
+## [Get list of keys](https://docs.apify.com/api/v2/key-value-store-keys-get.md)
 
-https://docs.apify.com/api/v2/key-value-store-keys-get.md
+[/key-value-stores/{storeId}/keys](https://docs.apify.com/api/v2/key-value-store-keys-get.md)
 
-## https://docs.apify.com/api/v2/key-value-store-record-get.md
+## [Get record](https://docs.apify.com/api/v2/key-value-store-record-get.md)
 
-https://docs.apify.com/api/v2/key-value-store-record-get.md
+[/key-value-stores/{storeId}/records/{recordKey}](https://docs.apify.com/api/v2/key-value-store-record-get.md)
 
-## https://docs.apify.com/api/v2/key-value-store-record-head.md
+## [Check if a record exists](https://docs.apify.com/api/v2/key-value-store-record-head.md)
 
-https://docs.apify.com/api/v2/key-value-store-record-head.md
+[/key-value-stores/{storeId}/records/{recordKey}](https://docs.apify.com/api/v2/key-value-store-record-head.md)
 
-## https://docs.apify.com/api/v2/key-value-store-record-put.md
+## [Store record](https://docs.apify.com/api/v2/key-value-store-record-put.md)
 
-https://docs.apify.com/api/v2/key-value-store-record-put.md
+[/key-value-stores/{storeId}/records/{recordKey}](https://docs.apify.com/api/v2/key-value-store-record-put.md)
 
-## https://docs.apify.com/api/v2/key-value-store-record-delete.md
+## [Delete record](https://docs.apify.com/api/v2/key-value-store-record-delete.md)
 
-https://docs.apify.com/api/v2/key-value-store-record-delete.md
+[/key-value-stores/{storeId}/records/{recordKey}](https://docs.apify.com/api/v2/key-value-store-record-delete.md)

@@ -1,25 +1,27 @@
-# Source: https://braintrust.dev/docs/core/projects.md
+# Source: https://braintrust.dev/docs/admin/projects.md
 
-# Projects
+> ## Documentation Index
+> Fetch the complete documentation index at: https://braintrust.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
-> Create and configure projects
+# Manage projects
 
-A project is analogous to an AI feature in your application. Some customers create separate projects for development and production to help track workflows. Projects contain all [experiments](/core/experiments), [logs](/core/logs), [datasets](/core/datasets) and [playgrounds](/core/playground) for the feature.
+> Configure project settings and features
 
-Projects house configuration settings shared across the project.
+Projects organize AI features in your application. Each project contains logs, experiments, datasets, prompts, and other functions. Configure project-specific settings to customize behavior for your use case.
 
 ## Create a project
 
-You can create projects through the UI or programmatically via the SDK.
-
 <Tabs>
   <Tab title="UI" icon="mouse-pointer-2">
-    To create a new project in the UI, navigate to your organization's project list and select **+ Project**. Enter a project name and click **Create**.
+    1. Navigate to your organization's project list
+    2. Click **+ Project**
+    3. Enter a project name
+    4. Optionally add a description
+    5. Click **Create**
   </Tab>
 
   <Tab title="SDK" icon="terminal">
-    To create a project in code, use the `projects.create()` method.
-
     <Note>
       If a project already exists, `projects.create()` returns a handle. There is no separate `.get()` method.
     </Note>
@@ -31,9 +33,9 @@ You can create projects through the UI or programmatically via the SDK.
       // Get a handle to the project (creates if it doesn't exist)
       const project = braintrust.projects.create({ name: "my-project" });
 
-      // Use the project to create functions, log data, etc.
-      project.tools.create({...});
+      // Use the project to create functions
       project.prompts.create({...});
+      project.tools.create({...});
       ```
 
       ```python  theme={"theme":{"light":"github-light","dark":"github-dark-dimmed"}}
@@ -42,19 +44,19 @@ You can create projects through the UI or programmatically via the SDK.
       # Get a handle to the project (creates if it doesn't exist)
       project = braintrust.projects.create(name="my-project")
 
-      # Use the project to create functions, log data, etc.
-      project.tools.create(...)
+      # Use the project to create functions
       project.prompts.create(...)
+      project.tools.create(...)
       ```
     </CodeGroup>
 
-    You can also create projects when initializing experiments or loggers:
+    Projects are automatically created when initializing experiments or loggers:
 
     <CodeGroup dropdown>
       ```typescript  theme={"theme":{"light":"github-light","dark":"github-dark-dimmed"}}
       import * as braintrust from "braintrust";
 
-      // Creates project "my-project" if it doesn't exist
+      // Creates "my-project" if it doesn't exist
       const experiment = braintrust.init("my-project", {
         experiment: "my-experiment"
       });
@@ -63,8 +65,11 @@ You can create projects through the UI or programmatically via the SDK.
       ```python  theme={"theme":{"light":"github-light","dark":"github-dark-dimmed"}}
       import braintrust
 
-      # Creates project "my-project" if it doesn't exist
-      experiment = braintrust.init(project="my-project", experiment="my-experiment")
+      # Creates "my-project" if it doesn't exist
+      experiment = braintrust.init(
+          project="my-project",
+          experiment="my-experiment"
+      )
       ```
     </CodeGroup>
 
@@ -72,68 +77,159 @@ You can create projects through the UI or programmatically via the SDK.
   </Tab>
 </Tabs>
 
-## Tags
+## Configure AI providers
 
-Braintrust supports tags that you can use throughout your project to curate logs, datasets, and even experiments. You can filter based on tags in the UI to track various kinds of data across your application, and how they change over time. Tags can be created in the **Configuration** tab by selecting **Add tag** and entering a tag name, selecting a color, and adding an optional description.
+Project-level AI provider keys override [organization-level keys](/admin/organizations#configure-ai-providers). Use project-level keys when:
 
-<img src="https://mintcdn.com/braintrust/tQWbJcq__mTOHSpB/images/guides/projects/tags.png?fit=max&auto=format&n=tQWbJcq__mTOHSpB&q=85&s=8f260cc34d0f4fc1bb5eab1f0f2c6e2f" alt="Create tag" width="568" height="307" data-og-width="1136" data-og-height="614" data-path="images/guides/projects/tags.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/braintrust/tQWbJcq__mTOHSpB/images/guides/projects/tags.png?w=280&fit=max&auto=format&n=tQWbJcq__mTOHSpB&q=85&s=73ab129d8c94f9b603f8e8f08c7c1249 280w, https://mintcdn.com/braintrust/tQWbJcq__mTOHSpB/images/guides/projects/tags.png?w=560&fit=max&auto=format&n=tQWbJcq__mTOHSpB&q=85&s=abde1a808502397bda4082b1d7257058 560w, https://mintcdn.com/braintrust/tQWbJcq__mTOHSpB/images/guides/projects/tags.png?w=840&fit=max&auto=format&n=tQWbJcq__mTOHSpB&q=85&s=3e3dc349ed62231fd1f4f61436c47527 840w, https://mintcdn.com/braintrust/tQWbJcq__mTOHSpB/images/guides/projects/tags.png?w=1100&fit=max&auto=format&n=tQWbJcq__mTOHSpB&q=85&s=b1d5674eb94123b0eb853bc11ea6c3cf 1100w, https://mintcdn.com/braintrust/tQWbJcq__mTOHSpB/images/guides/projects/tags.png?w=1650&fit=max&auto=format&n=tQWbJcq__mTOHSpB&q=85&s=ae1e50fbcc1bdf1813763968f931c6a0 1650w, https://mintcdn.com/braintrust/tQWbJcq__mTOHSpB/images/guides/projects/tags.png?w=2500&fit=max&auto=format&n=tQWbJcq__mTOHSpB&q=85&s=bf1afdd76c6e33442e9ce07f51304b5c 2500w" />
+* Different projects need separate billing or rate limits
+* You want to isolate API usage by project
+* Projects require different provider accounts or credentials
 
-For more information about using tags to curate logs, check out the [logging guide](/core/logs#tags-and-queues).
+You can also configure project-level AI providers inline from playgrounds within that project. When running a playground, you can set up providers without navigating to configuration settings.
 
-## Human review
+To configure project-level AI providers:
 
-You can define scores and labels for manual human review, either as feedback from your users (through the API) or directly through the UI. Scores you define on the **Configuration** page will be available in every experiment and log in your project.
+1. Navigate to your project.
+2. Go to <Icon icon="settings-2" /> **Configuration**.
+3. Under **Project**, select **Project AI providers**.
+4. Click the provider you want to configure.
+5. Enter your API key for that provider.
+6. Click **Save**.
 
-To create a new score, select **Add human review score** and enter a name and score type. You can add multiple options and decide if you want to allow writing to the expected field instead of the score, or multiple choice.
+Project-level providers are available in a project's playgrounds, experiments, and when using the AI Proxy with the project's context.
 
-<img src="https://mintcdn.com/braintrust/tQWbJcq__mTOHSpB/images/guides/projects/human-review.png?fit=max&auto=format&n=tQWbJcq__mTOHSpB&q=85&s=f83f0b9810e5f678f6f3ce0b958122dd" alt="Create human review score" width={1124 / 2} height={976 / 2} data-og-width="1124" data-og-height="976" data-path="images/guides/projects/human-review.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/braintrust/tQWbJcq__mTOHSpB/images/guides/projects/human-review.png?w=280&fit=max&auto=format&n=tQWbJcq__mTOHSpB&q=85&s=2277a93f7d403cf103d848e0c23e0821 280w, https://mintcdn.com/braintrust/tQWbJcq__mTOHSpB/images/guides/projects/human-review.png?w=560&fit=max&auto=format&n=tQWbJcq__mTOHSpB&q=85&s=68edcbafd1c48741db00462b9244ece1 560w, https://mintcdn.com/braintrust/tQWbJcq__mTOHSpB/images/guides/projects/human-review.png?w=840&fit=max&auto=format&n=tQWbJcq__mTOHSpB&q=85&s=45146e63f6ecf1a8c3a82613e903fce1 840w, https://mintcdn.com/braintrust/tQWbJcq__mTOHSpB/images/guides/projects/human-review.png?w=1100&fit=max&auto=format&n=tQWbJcq__mTOHSpB&q=85&s=1302c18c9d5ae7cb7ef98af3060507b0 1100w, https://mintcdn.com/braintrust/tQWbJcq__mTOHSpB/images/guides/projects/human-review.png?w=1650&fit=max&auto=format&n=tQWbJcq__mTOHSpB&q=85&s=095d96ae3c7753761584702edc70b82f 1650w, https://mintcdn.com/braintrust/tQWbJcq__mTOHSpB/images/guides/projects/human-review.png?w=2500&fit=max&auto=format&n=tQWbJcq__mTOHSpB&q=85&s=8f276072e13d5814b8038f39e852d972 2500w" />
+<Note>
+  API keys are encrypted at rest using [transparent data encryption](https://en.wikipedia.org/wiki/Transparent_data_encryption) with a [unique 256-bit key and nonce](https://libsodium.gitbook.io/doc/secret-key_cryptography/aead).
+</Note>
 
-To learn more about human review, check out the [full guide](/core/human-review).
+### Add custom providers
 
-## Aggregate scores
+Braintrust supports custom AI providers at both the organization and project level. See [Custom providers](/integrations/ai-providers/custom) for details on configuring custom endpoints.
 
-Aggregate scores are formulas that combine multiple scores into a single value. This can be useful for creating a single score that represents the overall experiment.
+## Add tags
 
-To create an aggregate score, select **Add aggregate score** and enter a name, formula, and description. Braintrust currently supports three types of aggregate scores:
+Tags help organize and filter logs, datasets, and experiments:
 
-<img src="https://mintcdn.com/braintrust/286-LRz_qGMfyggP/images/core/experiments/add-aggregate-score.png?fit=max&auto=format&n=286-LRz_qGMfyggP&q=85&s=04e0cfcc3540ccd8f96c75b0f6d3c59d" alt="Add aggregate score" width={1136 / 2} height={1012 / 2} data-og-width="1136" data-og-height="1012" data-path="images/core/experiments/add-aggregate-score.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/braintrust/286-LRz_qGMfyggP/images/core/experiments/add-aggregate-score.png?w=280&fit=max&auto=format&n=286-LRz_qGMfyggP&q=85&s=5dd7274a5f0929f25b89d3eb61c45d5f 280w, https://mintcdn.com/braintrust/286-LRz_qGMfyggP/images/core/experiments/add-aggregate-score.png?w=560&fit=max&auto=format&n=286-LRz_qGMfyggP&q=85&s=411833a6bf9b3280a3cbdcbe0c4c8042 560w, https://mintcdn.com/braintrust/286-LRz_qGMfyggP/images/core/experiments/add-aggregate-score.png?w=840&fit=max&auto=format&n=286-LRz_qGMfyggP&q=85&s=bb763140b615fd285dbcf0b3ac59f9bc 840w, https://mintcdn.com/braintrust/286-LRz_qGMfyggP/images/core/experiments/add-aggregate-score.png?w=1100&fit=max&auto=format&n=286-LRz_qGMfyggP&q=85&s=95ad65a931300136b5cee76f008fac00 1100w, https://mintcdn.com/braintrust/286-LRz_qGMfyggP/images/core/experiments/add-aggregate-score.png?w=1650&fit=max&auto=format&n=286-LRz_qGMfyggP&q=85&s=f7a65f4528a6a037174a804b67304294 1650w, https://mintcdn.com/braintrust/286-LRz_qGMfyggP/images/core/experiments/add-aggregate-score.png?w=2500&fit=max&auto=format&n=286-LRz_qGMfyggP&q=85&s=003b53a2981c4aaa86d64dd2fba7a632 2500w" />
+1. Go to <Icon icon="settings-2" /> **Settings**.
+2. Under **Project**, select **Tags**.
+3. Click **Add tag**.
+4. Enter tag details:
+   * **Name**: Tag identifier.
+   * **Color**: Visual indicator.
+   * **Description**: Optional explanation.
+5. Click **Save**.
 
-Braintrust currently supports three types of aggregate scores:
+Use tags to track data by user type, feature, environment, or any custom category. Filter by tags in logs, experiments, and datasets. For more information about using tags, see [View logs](/observe/view-logs#tags-and-queues).
 
-* **Weighted average** - A weighted average of selected scores.
-* **Minimum** - The minimum value among the selected scores.
-* **Maximum** - The maximum value among the selected scores.
+## Configure human review
 
-To learn more about aggregate scores, check out the [experiments guide](/core/experiments/interpret#aggregate-weighted-scores).
+Review scores appear in all logs and experiments in a project. Use them for quality control, data labeling, or [feedback collection](/annotate/human-review).
 
-## Online scoring
+1. Go to <Icon icon="settings-2" /> **Settings**.
+2. Under **Project**, select **Human review**.
+3. Click **+ Human review score**.
+4. Enter a name and description for your score. Descriptions support Markdown.
+5. Select a score type:
+   * **Categorical score**: Predefined options with assigned scores. Each option gets a unique percentage value between 0% and 100% (stored as 0 to 1). Use for classification tasks like sentiment or correctness categories. Also supports writing to the `expected` field instead of creating a score.
+   * **Continuous score**: Numeric values between 0% and 100% with a slider input control. Use for subjective quality assessments like helpfulness or tone.
+   * **Free-form input**: String values written to the `metadata` field at a specified path. Use for explanations, corrections, or structured feedback.
+6. Click **Save**.
 
-Braintrust supports server-side online evaluations that are automatically run asynchronously as you upload logs. To create an online evaluation, select **Add rule** and input the rule name, description, and which scorers and sampling rate you'd like to use. You can choose from custom scorers available in this project and others in your organization, or built-in scorers. Decide if you'd like to apply the rule to the root span or any other spans in your traces.
+<Tip>
+  You can also create human review scores as you review traces. In the trace view, click **+ Human review score** and define the score as described above.
+</Tip>
 
-For more information about online evaluations, check out the [logging guide](/core/logs#online-evaluation).
+For more information, see [Add human feedback](/annotate/human-review).
 
-## Span iframes
+## Create aggregate scores
 
-You can configure span iframes from your project settings. For more information, check out the [extend traces](/guides/traces/extend/#custom-rendering-for-span-fields) guide.
+Combine multiple scores into a single metric:
 
-## Comparison key
+1. Go to <Icon icon="settings-2" /> **Settings**.
+2. Under **Project**, select **Aggregate scores**.
+3. Click **Add aggregate score**.
+4. Define the aggregation:
+   * **Name**: Score identifier.
+   * **Type**: Weighted average, minimum, or maximum.
+   * **Selected scores**: Scores to aggregate.
+   * **Weights**: For weighted averages, set score weights.
+   * **Description**: Optional explanation.
+5. Click **Save**.
 
-When comparing multiple experiments, you can customize the expression you're using to evaluate test cases by changing the comparison key. It defaults to "input," but you can change it in your project's **Configuration** tab.
+Aggregate scores appear in experiment summaries and comparisons. Use them to create composite quality metrics or overall performance indicators. For more information, see [Interpret evaluation results](/evaluate/interpret-results#use-aggregate-scores).
 
-<img src="https://mintcdn.com/braintrust/tQWbJcq__mTOHSpB/images/guides/projects/comparison-key.png?fit=max&auto=format&n=tQWbJcq__mTOHSpB&q=85&s=395cdce8f0459bbbd4ac591d9d8e0650" alt="Create comparison key" width={1552 / 2} height={282 / 2} data-og-width="1552" data-og-height="282" data-path="images/guides/projects/comparison-key.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/braintrust/tQWbJcq__mTOHSpB/images/guides/projects/comparison-key.png?w=280&fit=max&auto=format&n=tQWbJcq__mTOHSpB&q=85&s=f2a0d804e9bf494fd2e3e51846fab6e3 280w, https://mintcdn.com/braintrust/tQWbJcq__mTOHSpB/images/guides/projects/comparison-key.png?w=560&fit=max&auto=format&n=tQWbJcq__mTOHSpB&q=85&s=3fc8632c4a7bb7df4ff10dc664c74409 560w, https://mintcdn.com/braintrust/tQWbJcq__mTOHSpB/images/guides/projects/comparison-key.png?w=840&fit=max&auto=format&n=tQWbJcq__mTOHSpB&q=85&s=77c6e881a1c686ed1c28df376b5d87ea 840w, https://mintcdn.com/braintrust/tQWbJcq__mTOHSpB/images/guides/projects/comparison-key.png?w=1100&fit=max&auto=format&n=tQWbJcq__mTOHSpB&q=85&s=eba38a4ed439e35a85d70c894c5639b9 1100w, https://mintcdn.com/braintrust/tQWbJcq__mTOHSpB/images/guides/projects/comparison-key.png?w=1650&fit=max&auto=format&n=tQWbJcq__mTOHSpB&q=85&s=4726778c4a41ad4e0553b17de24af3e5 1650w, https://mintcdn.com/braintrust/tQWbJcq__mTOHSpB/images/guides/projects/comparison-key.png?w=2500&fit=max&auto=format&n=tQWbJcq__mTOHSpB&q=85&s=88204b9577364076cd496d701868e626 2500w" />
+## Set up online scoring
 
-For more information about the comparison key, check out the [evaluation guide](/core/experiments/interpret#customizing-the-comparison-key).
+Define project-level scoring rules that automatically evaluate production logs as they arrive. These rules can be created here or when creating and editing scorers.
 
-## Edit project name and description
+1. Go to <Icon icon="settings-2" /> **Settings**.
+2. Under **Project**, select **Online scoring**.
+3. Click **Add rule**.
+4. Configure the rule:
+   * **Name**: Rule identifier.
+   * **Scorers**: Select which scorers to run.
+   * **Sampling rate**: Percentage of logs to evaluate (1-100%).
+   * **Filter**: Optional SQL query to select specific logs.
+   * **Span type**: Apply to root spans or all spans.
+5. Click **Save**.
 
-To edit the name and description of a project, do the following:
+Online scoring rules run asynchronously in the background. View results in the logs page alongside other scores. Rules can also be created and managed when working with individual scorers. For more information, see [Create scoring rules](/observe/score-online#create-scoring-rules).
 
-1. Navigate to the project overview.
-2. Click **Edit project**.
-3. Edit the name and description.
+## Configure span iframes
+
+Customize how specific span fields render in the UI:
+
+1. Go to <Icon icon="settings-2" /> **Settings**.
+2. Under **Project**, select **Span iframes**.
+3. Click **Add iframe**.
+4. Configure rendering:
+   * **Field path**: Which field to render (e.g., `output.html`).
+   * **iframe URL**: Template for the iframe src attribute.
+5. Click **Save**.
+
+Use span iframes to render HTML, charts, or custom visualizations directly in trace views. For more information, see [Extend traces](/instrument/advanced-tracing#custom-rendering-for-span-fields).
+
+## Set comparison key
+
+Customize how experiments match test cases:
+
+1. Go to <Icon icon="settings-2" /> **Settings**.
+2. Under **Project**, select **Advanced**.
+3. Enter a SQL expression (default: `input`).
 4. Click **Save**.
 
+Examples:
 
----
+* `input.question` - Match by question field only.
+* `input.user_id` - Match by user.
+* `[input.query, metadata.category]` - Match by multiple fields.
 
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://braintrust.dev/docs/llms.txt
+The comparison key determines which test cases are considered the same across experiments. For more information, see [Compare experiments](/evaluate/compare-experiments#customize-the-comparison-key).
+
+## Edit project details
+
+Update project name and description:
+
+1. Navigate to your project.
+2. Click **Edit project** in the top-right.
+3. Modify name and description.
+4. Click **Save**.
+
+## Delete a project
+
+<Warning>
+  Deleting a project permanently removes all logs, experiments, datasets, and functions. This cannot be undone.
+</Warning>
+
+1. Navigate to **Configuration**.
+2. Scroll to the bottom of the page.
+3. Click **Delete project**.
+4. Confirm by typing the project name.
+5. Click **Delete**.
+
+## Next steps
+
+* [Control access](/admin/access-control) to projects with permission groups
+* [Set up automations](/admin/automations) for project-specific alerts
+* [View logs](/observe/view-logs) filtered by tags and metadata
+* [Run evaluations](/evaluate/run-evaluations) on project datasets

@@ -1,5 +1,9 @@
 # Source: https://docs.zapier.com/powered-by-zapier/api-reference/common-types/responses.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.zapier.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Responses
 
 > Responses for the API follow the <a href="https://jsonapi.org/format/#fetching-resources-responses-200" target="_blank">JSON API spec</a> for fetching resources.

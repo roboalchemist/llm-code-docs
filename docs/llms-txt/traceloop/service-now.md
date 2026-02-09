@@ -1,5 +1,9 @@
 # Source: https://www.traceloop.com/docs/openllmetry/integrations/service-now.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.traceloop.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # LLM Observability with Service Now Cloud Observability and OpenLLMetry
 
 <Frame>
@@ -13,8 +17,3 @@ access token:
 TRACELOOP_BASE_URL=https://ingest.lightstep.com
 TRACELOOP_HEADERS="lightstep-access-token=<YOUR_ACCESS_TOKEN>"
 ```
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://www.traceloop.com/docs/llms.txt

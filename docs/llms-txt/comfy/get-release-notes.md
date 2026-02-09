@@ -1,117 +1,90 @@
 # Source: https://docs.comfy.org/api-reference/releases/get-release-notes.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.comfy.org/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Get release notes
 
 > Fetch release notes from Strapi with caching
 
+
+
 ## OpenAPI
 
 ````yaml https://api.comfy.org/openapi get /releases
+openapi: 3.0.2
+info:
+  title: Comfy API
+  version: '1.0'
+servers:
+  - url: https://api.comfy.org
+security: []
 paths:
-  path: /releases
-  method: get
-  servers:
-    - url: https://api.comfy.org
-  request:
-    security: []
-    parameters:
-      path: {}
-      query:
-        project:
+  /releases:
+    get:
+      tags:
+        - Releases
+      summary: Get release notes
+      description: Fetch release notes from Strapi with caching
+      operationId: GetReleaseNotes
+      parameters:
+        - description: The project to get release notes for
+          in: query
+          name: project
+          required: true
           schema:
-            - type: enum<string>
-              enum:
-                - comfyui
-                - comfyui_frontend
-                - desktop
-              required: true
-              description: The project to get release notes for
-        current_version:
+            enum:
+              - comfyui
+              - comfyui_frontend
+              - desktop
+              - cloud
+            type: string
+        - description: The current version to filter release notes
+          in: query
+          name: current_version
           schema:
-            - type: string
-              description: The current version to filter release notes
-        locale:
+            type: string
+        - description: The locale for the release notes
+          in: query
+          name: locale
           schema:
-            - type: enum<string>
-              enum:
-                - en
-                - es
-                - fr
-                - ja
-                - ko
-                - ru
-                - zh
-              description: The locale for the release notes
-              default: en
-        form_factor:
+            default: en
+            enum:
+              - en
+              - es
+              - fr
+              - ja
+              - ko
+              - ru
+              - zh
+            type: string
+        - description: The platform requesting the release notes
+          in: query
+          name: form_factor
           schema:
-            - type: string
-              description: The platform requesting the release notes
-      header: {}
-      cookie: {}
-    body: {}
-  response:
-    '200':
-      application/json:
-        schemaArray:
-          - type: array
-            items:
-              allOf:
-                - $ref: '#/components/schemas/ReleaseNote'
-        examples:
-          example:
-            value:
-              - attention: low
-                content: <string>
-                id: 123
-                project: comfyui
-                published_at: '2023-11-07T05:31:56Z'
-                version: <string>
-        description: Release notes retrieved successfully
-    '400':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              error:
-                allOf:
-                  - &ref_0
-                    type: string
-              message:
-                allOf:
-                  - &ref_1
-                    type: string
-            refIdentifier: '#/components/schemas/ErrorResponse'
-            requiredProperties: &ref_2
-              - error
-              - message
-        examples:
-          example:
-            value:
-              error: <string>
-              message: <string>
-        description: Bad request
-    '500':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              error:
-                allOf:
-                  - *ref_0
-              message:
-                allOf:
-                  - *ref_1
-            refIdentifier: '#/components/schemas/ErrorResponse'
-            requiredProperties: *ref_2
-        examples:
-          example:
-            value:
-              error: <string>
-              message: <string>
-        description: Internal server error
-  deprecated: false
-  type: path
+            type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ReleaseNote'
+                type: array
+          description: Release notes retrieved successfully
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Bad request
+        '500':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Internal server error
 components:
   schemas:
     ReleaseNote:
@@ -135,6 +108,7 @@ components:
             - comfyui
             - comfyui_frontend
             - desktop
+            - cloud
           type: string
         published_at:
           description: When the release note was published
@@ -150,6 +124,16 @@ components:
         - attention
         - content
         - published_at
+      type: object
+    ErrorResponse:
+      properties:
+        error:
+          type: string
+        message:
+          type: string
+      required:
+        - error
+        - message
       type: object
 
 ````

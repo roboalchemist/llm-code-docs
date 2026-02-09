@@ -1,8 +1,4 @@
-# Source: https://gitbook.com/docs/documentation/zh/creating-content/formatting.md
-
-# Source: https://gitbook.com/docs/documentation/fr/creating-content/formatting.md
-
-# Source: https://gitbook.com/docs/creating-content/formatting.md
+# Source: https://gitbook.com/docs/documentation/ja-gitbook-documentation/creating-content/formatting.md
 
 # Source: https://gitbook.com/docs/documentation/zh/creating-content/formatting.md
 

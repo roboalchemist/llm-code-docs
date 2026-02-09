@@ -1,5 +1,9 @@
 # Source: https://braintrust.dev/docs/api-reference/users/list-users.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://braintrust.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # List users
 
 > List out all users. The users are sorted by creation date, with the most recently-created users coming first
@@ -306,7 +310,3 @@ components:
         page](https://www.braintrustdata.com/app/settings?subroute=api-keys).
 
 ````
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://braintrust.dev/docs/llms.txt

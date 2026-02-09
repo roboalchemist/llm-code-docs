@@ -1,4 +1,8 @@
-# Source: https://mintlify.com/docs/customize/custom-scripts.md
+# Source: https://www.mintlify.com/docs/customize/custom-scripts.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.mintlify.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Custom scripts
 
@@ -22,9 +26,13 @@ Tailwind CSS arbitrary values are not supported. For custom values, use the `sty
 <img style={{ width: '350px', margin: '12px auto' }} src="/path/image.jpg" />
 ```
 
+<Warning>
+  Using the `style` prop can cause a layout shift on page load, especially on custom mode pages. Use Tailwind CSS classes or custom CSS files instead to avoid shifts or flickering.
+</Warning>
+
 ## Custom CSS
 
-Add CSS files to your repository and their defined class names will be applied and available in all of your `MDX` files.
+Add CSS files to your repository and their defined class names will be applied and available in all of your MDX files.
 
 ### Adding `style.css`
 
@@ -55,6 +63,7 @@ Mintlify has a set of common identifiers and selectors to help you tag important
     * AssistantEntry: `assistant-entry`
     * AssistantEntryMobile: `assistant-entry-mobile`
     * Banner: `banner`
+    * BodyContent: `body-content`
     * ChangelogFilters: `changelog-filters`
     * ChangelogFiltersContent: `changelog-filters-content`
     * ChatAssistantSheet: `chat-assistant-sheet`
@@ -62,6 +71,12 @@ Mintlify has a set of common identifiers and selectors to help you tag important
     * ContentArea: `content-area`
     * ContentContainer: `content-container`
     * ContentSideLayout: `content-side-layout`
+    * FeedbackForm: `feedback-form`
+    * FeedbackFormCancel: `feedback-form-cancel`
+    * FeedbackFormInput: `feedback-form-input`
+    * FeedbackFormSubmit: `feedback-form-submit`
+    * FeedbackThumbsDown: `feedback-thumbs-down`
+    * FeedbackThumbsUp: `feedback-thumbs-up`
     * Footer: `footer`
     * Header: `header`
     * NavBarTransition: `navbar-transition`

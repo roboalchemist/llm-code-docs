@@ -1,5 +1,9 @@
 # Source: https://polar.sh/docs/guides/schedule-subscription-downgrades-qstash.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://polar.sh/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # How to schedule subscription downgrades with Upstash QStash
 
 > Learn how to automatically schedule subscription downgrades at the end of the current billing period using the Polar API and Upstash QStash.
@@ -254,8 +258,3 @@ Test the complete flow to ensure downgrades are scheduled and executed correctly
     ```
   </Step>
 </Steps>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://polar.sh/docs/llms.txt

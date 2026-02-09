@@ -1,5 +1,9 @@
 # Source: https://docs.asapp.com/security/external-ip-blocking.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.asapp.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # External IP Blocking
 
 > Use External IP Blocking to block IP addresses from accessing your data.
@@ -8,7 +12,7 @@ ASAPP has tools in place to monitor and automatically block activity based on ma
 
 By default, ASAPP does not block IPs of end users who exhibit abusive behaviors towards agents. IP blocking is trivial to evade and often causes unintended collateral damage to normal users since IP address are dynamic.
 
-It can happen that a previously blocked IP address become the IP address for a valid user, preventing the valid user from using ASAPP and your product.
+It can happen that a previously blocked IP address becomes the IP address for a valid user, preventing the valid user from using ASAPP and your product.
 
 While we do not recommend IP blocking, you are still able to block users by IP address to help address urgent protection needs.
 
@@ -27,7 +31,7 @@ You are able to access IP Addresses in Conversation Manager, giving you insight 
   <img src="https://mintcdn.com/asapp/BoXlOITRW7VjgmOG/image/uuid-372e0f2b-7357-8f03-3120-540923097202.png?fit=max&auto=format&n=BoXlOITRW7VjgmOG&q=85&s=9327070a3ad2f38afece80e4c3fb2ead" data-og-width="1440" width="1440" data-og-height="900" height="900" data-path="image/uuid-372e0f2b-7357-8f03-3120-540923097202.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/asapp/BoXlOITRW7VjgmOG/image/uuid-372e0f2b-7357-8f03-3120-540923097202.png?w=280&fit=max&auto=format&n=BoXlOITRW7VjgmOG&q=85&s=03e5bcb46213a7469732dbc6e64201a5 280w, https://mintcdn.com/asapp/BoXlOITRW7VjgmOG/image/uuid-372e0f2b-7357-8f03-3120-540923097202.png?w=560&fit=max&auto=format&n=BoXlOITRW7VjgmOG&q=85&s=6cc8fd03e4c5320a8d69232e6630cebd 560w, https://mintcdn.com/asapp/BoXlOITRW7VjgmOG/image/uuid-372e0f2b-7357-8f03-3120-540923097202.png?w=840&fit=max&auto=format&n=BoXlOITRW7VjgmOG&q=85&s=ec3b94125ee56473838687eeb0e299d6 840w, https://mintcdn.com/asapp/BoXlOITRW7VjgmOG/image/uuid-372e0f2b-7357-8f03-3120-540923097202.png?w=1100&fit=max&auto=format&n=BoXlOITRW7VjgmOG&q=85&s=a69e9cc3f43308f0038b175622da0302 1100w, https://mintcdn.com/asapp/BoXlOITRW7VjgmOG/image/uuid-372e0f2b-7357-8f03-3120-540923097202.png?w=1650&fit=max&auto=format&n=BoXlOITRW7VjgmOG&q=85&s=746dd41defbed575730de047d1a09b98 1650w, https://mintcdn.com/asapp/BoXlOITRW7VjgmOG/image/uuid-372e0f2b-7357-8f03-3120-540923097202.png?w=2500&fit=max&auto=format&n=BoXlOITRW7VjgmOG&q=85&s=e0b0beec1ff1cff9c06122c6c8613bae 2500w" />
 </Frame>
 
-IP Addresses can be unblocked by clicking the trash icon on the blocked IP's row, and then saving and deploying the updated list.
+You can unblock IP Addresses by clicking the trash icon on the blocked IP's row, and then saving and deploying the updated list.
 
 <Note>
   Blocked users receive an error message and the Chat bubble will not appear at the end of their screen.
@@ -37,7 +41,7 @@ IP Addresses can be unblocked by clicking the trash icon on the blocked IP's row
 
 ## Additional Contextual Information
 
-Dynamic's ISP IP rotates quite often. This means that the 1-1 relationship between a public IP and an individual/device/client is merely temporary and the assignment will continually change in the future as described below.
+Dynamic ISP IP rotates quite often. This means that the 1-1 relationship between a public IP and an individual/device/client is merely temporary and the assignment will continually change in the future as described below.
 
 **ISP Assignation within the Time**
 

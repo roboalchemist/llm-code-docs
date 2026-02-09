@@ -1,5 +1,9 @@
 # Source: https://resend.com/docs/knowledge-base/what-sending-feature-to-use.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://resend.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # What sending feature should I be using?
 
 > How to pick between our different sending features depending on your number of recipients and the nature of the message.

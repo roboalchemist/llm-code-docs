@@ -2,7 +2,7 @@
 
 # Apify MCP server
 
-The Apify's MCP server (https://mcp.apify.com) allows AI applications and agents to interact with the Apify platform using https://modelcontextprotocol.io/. The server enables AI agents to discover and run Actors from https://apify.com/store, access storages and results, and enabled AI coding assistants to access Apify documentation and tutorials.
+The Apify's MCP server ([mcp.apify.com](https://mcp.apify.com)) allows AI applications and agents to interact with the Apify platform using [Model Context Protocol](https://modelcontextprotocol.io/). The server enables AI agents to discover and run Actors from [Apify Store](https://apify.com/store), access storages and results, and enabled AI coding assistants to access Apify documentation and tutorials.
 
 ![Apify MCP Server](/assets/images/apify_mcp_server-d7b7369162651886da809d991d23e26e.png)
 
@@ -11,12 +11,16 @@ The Apify's MCP server (https://mcp.apify.com) allows AI applications and agents
 Before connecting your AI to Apify, you'll need three things:
 
 * *An Apify account* - Sign up for an Apify account, if you don't have one.
-* *Apify API token* - Get your API token from the **Integrations** section in https://console.apify.com/account#/integrations. This token authorizes the MCP server to run Actors on your behalf. Make sure to keep it secure.
-* *MCP client* - An AI agent or client that supports Model Context Protocol (MCP) This could be Anthropic's Claude for Desktop, a VS Code extension with MCP support, or any application that implements the MCP specification. The https://modelcontextprotocol.io/clients maintains a list of compatible clients.
+* *Apify API token* - Get your API token from the **Integrations** section in [Apify Console](https://console.apify.com/account#/integrations). This token authorizes the MCP server to run Actors on your behalf. Make sure to keep it secure.
+* *MCP client* - An AI agent or client that supports Model Context Protocol (MCP) This could be Anthropic's Claude for Desktop, a VS Code extension with MCP support, or any application that implements the MCP specification. The [official MCP documentation](https://modelcontextprotocol.io/clients) maintains a list of compatible clients.
 
 ## Quick start
 
 You can connect to the Apify MCP server in two ways: use our hosted service for a quick and easy setup using , or run the server locally for development and testing using .
+
+SSE transport deprecated
+
+Server-Sent Events (SSE) transport will be removed on April 1, 2026. The Apify MCP server now uses Streamable HTTP, in line with the official MCP specification. Visit [mcp.apify.com](https://mcp.apify.com/) to update your client configuration.
 
 ### Streamable HTTP with OAuth (recommended)
 
@@ -56,11 +60,11 @@ You can also use your Apify token directly, instead of OAuth, by setting the `Au
 ```
 
 
-Replace `<APIFY_TOKEN>` with your actual Apify API token from the https://console.apify.com/account#/integrations.
+Replace `<APIFY_TOKEN>` with your actual Apify API token from the [Integrations section](https://console.apify.com/account#/integrations).
 
 Quick setup options
 
-*MCP server configuration for other clients*: Use the https://mcp.apify.com/ to select Actors and tools, then copy the configuration to your client.
+*MCP server configuration for other clients*: Use the [UI configuration tool](https://mcp.apify.com/) to select Actors and tools, then copy the configuration to your client.
 
 #### Client configuration
 
@@ -72,7 +76,7 @@ Here's how to add the Apify MCP server to popular text editors and AI assistants
 
 One-click installation
 
-The https://mcp.apify.com/ offers a one-click install button for Cursor that automatically applies the configuration to your client.
+The [Apify UI configurator](https://mcp.apify.com/) offers a one-click install button for Cursor that automatically applies the configuration to your client.
 
 To add Apify MCP server to Cursor manually:
 
@@ -114,11 +118,11 @@ To add Apify MCP server to Cursor manually:
    ```
 
 
-   Replace `<APIFY_TOKEN>` with your actual Apify API token from the https://console.apify.com/account#/integrations.
+   Replace `<APIFY_TOKEN>` with your actual Apify API token from the [Integrations section](https://console.apify.com/account#/integrations).
 
 One-click installation
 
-The https://mcp.apify.com/ offers a one-click install button for VS Code that automatically applies the configuration to your client.
+The [Apify UI configurator](https://mcp.apify.com/) offers a one-click install button for VS Code that automatically applies the configuration to your client.
 
 VS Code supports MCP through GitHub Copilot's agent mode (requires Copilot subscription):
 
@@ -164,11 +168,11 @@ VS Code supports MCP through GitHub Copilot's agent mode (requires Copilot subsc
    ```
 
 
-   Replace `<APIFY_TOKEN>` with your actual Apify API token from the https://console.apify.com/account#/integrations.
+   Replace `<APIFY_TOKEN>` with your actual Apify API token from the [Integrations section](https://console.apify.com/account#/integrations).
 
 One-click installation
 
-Download and run the https://github.com/apify/actors-mcp-server/releases/latest/download/apify-mcp-server.mcpb for one-click installation.
+Download and run the [Apify MCP Server .mcpb file](https://github.com/apify/actors-mcp-server/releases/latest/download/apify-mcp-server.mcpb) for one-click installation.
 
 To manually configure Apify's MCP server for Claude Desktop:
 
@@ -192,7 +196,7 @@ To manually configure Apify's MCP server for Claude Desktop:
 ```
 
 
-Replace `<APIFY_TOKEN>` with your actual Apify API token from the https://console.apify.com/account#/integrations.
+Replace `<APIFY_TOKEN>` with your actual Apify API token from the [Integrations section](https://console.apify.com/account#/integrations).
 
 ### Local stdio
 
@@ -238,27 +242,27 @@ Use the UI configurator `https://mcp.apify.com/` to select your tools visually, 
 
 ### Available tools
 
-| Tool name                               | Category     | Enabled by default | Description                                                                                           |
-| --------------------------------------- | ------------ | ------------------ | ----------------------------------------------------------------------------------------------------- |
-| `search-actors`                         | actors       | ✅                 | Search for Actors in Apify Store                                                                      |
-| `fetch-actor-details`                   | actors       | ✅                 | Retrieve detailed information about a specific Actor                                                  |
-| `call-actor`\*                          | actors       | ❔                 | Call an Actor and get its run results                                                                 |
-| https://apify.com/apify/rag-web-browser | Actor        | ✅                 | Browse and extract web data                                                                           |
-| `search-apify-docs`                     | docs         | ✅                 | Search the Apify documentation for relevant pages                                                     |
-| `fetch-apify-docs`                      | docs         | ✅                 | Fetch the full content of an Apify documentation page by its URL                                      |
-| `get-actor-run`                         | runs         |                    | Get detailed information about a specific Actor run                                                   |
-| `get-actor-run-list`                    | runs         |                    | Get a list of an Actor's runs, filterable by status                                                   |
-| `get-actor-log`                         | runs         |                    | Retrieve the logs for a specific Actor run                                                            |
-| `get-dataset`                           | storage      |                    | Get metadata about a specific dataset                                                                 |
-| `get-dataset-items`                     | storage      |                    | Retrieve items from a dataset with support for filtering and pagination                               |
-| `get-dataset-schema`                    | storage      |                    | Generate a JSON schema from dataset items                                                             |
-| `get-key-value-store`                   | storage      |                    | Get metadata about a specific key-value store                                                         |
-| `get-key-value-store-keys`              | storage      |                    | List the keys within a specific key-value store                                                       |
-| `get-key-value-store-record`            | storage      |                    | Get the value associated with a specific key in a key-value store                                     |
-| `get-dataset-list`                      | storage      |                    | List all available datasets for the user                                                              |
-| `get-key-value-store-list`              | storage      |                    | List all available key-value stores for the user                                                      |
-| `add-actor`\*                           | experimental | ❔                 | Add an Actor as a new tool for the user to call                                                       |
-| `get-actor-output`\*                    | -            | ✅                 | Retrieve the output from an Actor call which is not included in the output preview of the Actor tool. |
+| Tool name                                                        | Category     | Enabled by default | Description                                                                                           |
+| ---------------------------------------------------------------- | ------------ | ------------------ | ----------------------------------------------------------------------------------------------------- |
+| `search-actors`                                                  | actors       | ✅                 | Search for Actors in Apify Store                                                                      |
+| `fetch-actor-details`                                            | actors       | ✅                 | Retrieve detailed information about a specific Actor                                                  |
+| `call-actor`\*                                                   | actors       | ❔                 | Call an Actor and get its run results                                                                 |
+| [apify/rag-web-browser](https://apify.com/apify/rag-web-browser) | Actor        | ✅                 | Browse and extract web data                                                                           |
+| `search-apify-docs`                                              | docs         | ✅                 | Search the Apify documentation for relevant pages                                                     |
+| `fetch-apify-docs`                                               | docs         | ✅                 | Fetch the full content of an Apify documentation page by its URL                                      |
+| `get-actor-run`                                                  | runs         |                    | Get detailed information about a specific Actor run                                                   |
+| `get-actor-run-list`                                             | runs         |                    | Get a list of an Actor's runs, filterable by status                                                   |
+| `get-actor-log`                                                  | runs         |                    | Retrieve the logs for a specific Actor run                                                            |
+| `get-dataset`                                                    | storage      |                    | Get metadata about a specific dataset                                                                 |
+| `get-dataset-items`                                              | storage      |                    | Retrieve items from a dataset with support for filtering and pagination                               |
+| `get-dataset-schema`                                             | storage      |                    | Generate a JSON schema from dataset items                                                             |
+| `get-key-value-store`                                            | storage      |                    | Get metadata about a specific key-value store                                                         |
+| `get-key-value-store-keys`                                       | storage      |                    | List the keys within a specific key-value store                                                       |
+| `get-key-value-store-record`                                     | storage      |                    | Get the value associated with a specific key in a key-value store                                     |
+| `get-dataset-list`                                               | storage      |                    | List all available datasets for the user                                                              |
+| `get-key-value-store-list`                                       | storage      |                    | List all available key-value stores for the user                                                      |
+| `add-actor`\*                                                    | experimental | ❔                 | Add an Actor as a new tool for the user to call                                                       |
+| `get-actor-output`\*                                             | -            | ✅                 | Retrieve the output from an Actor call which is not included in the output preview of the Actor tool. |
 
 Retrieving full output
 
@@ -272,7 +276,55 @@ This dynamic discovery means your AI can adapt to new tasks without manual confi
 
 Dynamic tool discovery
 
-When you use the `actors` tool category, clients that support dynamic tool discovery (such as Claude.ai web and VS Code) will automatically receive the `add-actor` tool instead of `call-actor` for enhanced Actor discovery capabilities. For a detailed overview of client support for dynamic discovery, see the https://github.com/apify/mcp-client-capabilities.
+When you use the `actors` tool category, clients that support dynamic tool discovery (such as Claude.ai web and VS Code) will automatically receive the `add-actor` tool instead of `call-actor` for enhanced Actor discovery capabilities. For a detailed overview of client support for dynamic discovery, see the [MCP client capabilities package](https://github.com/apify/mcp-client-capabilities).
+
+## Telemetry
+
+The MCP server collects telemetry data about tool calls and MCP clients to help Apify understand usage patterns and improve the service. Participation in this program is optional and you may opt out if you prefer not to share any information.
+
+### Data collection
+
+All telemetry data is collected and stored securely. We do not collect any sensitive information such as conversations, arguments passed to tools, API tokens, or personal data.
+
+The server collects anonymous information about tool usage, including:
+
+* Basic information about used tools (calls, success/failure, duration)
+* MCP client attributes (client name, version, capabilities)
+
+By default, telemetry is *enabled* for all tool calls.
+
+### Opt out of telemetry
+
+#### Remote server
+
+For the remote server (`mcp.apify.com`), you can opt out of telemetry by adding the `telemetry-enabled=false` query parameter to the server URL:
+
+
+```
+https://mcp.apify.com?telemetry-enabled=false
+```
+
+
+#### Local stdio server
+
+For the local stdio server, opt out of telemetry using a CLI flag or an environment variable. When both the CLI flag and environment variable are set, the CLI flag takes precedence.
+
+* *CLI flag*: set the `--telemetry-enabled` CLI flag to `false`:
+
+
+  ```
+  npx @apify/actors-mcp-server --telemetry-enabled=false
+  ```
+
+
+* *Environment variable*: set the `TELEMETRY_ENABLED` environment variable to `false`:
+
+
+  ```
+  export TELEMETRY_ENABLED=false
+  npx @apify/actors-mcp-server
+  ```
+
 
 ## Advanced usage
 
@@ -294,7 +346,7 @@ The Apify MCP server allows up to *30* requests per second per user. This limit 
 
 ##### Authentication errors
 
-* *Check your API token*: Verify that your Apify API token is correct. You can find it in the **Integrations** section of the https://console.apify.com/account#/integrations. Without a valid token, the server cannot start Actor runs.
+* *Check your API token*: Verify that your Apify API token is correct. You can find it in the **Integrations** section of the [Apify Console](https://console.apify.com/account#/integrations). Without a valid token, the server cannot start Actor runs.
 * *Set environment variable for local development*: When running the MCP server locally, ensure you have set the `APIFY_TOKEN` environment variable.
 
 ##### Local environment setup
@@ -308,13 +360,13 @@ The Apify MCP server allows up to *30* requests per second per user. This limit 
 
 ## Support and resources
 
-The Apify MCP Server is an open-source project. Report bugs, suggest features, or ask questions in the https://github.com/apify/apify-mcp-server/issues.
+The Apify MCP Server is an open-source project. Report bugs, suggest features, or ask questions in the [GitHub repository](https://github.com/apify/apify-mcp-server/issues).
 
-If you find this project useful, please star it on https://github.com/apify/apify-mcp-server to show your support!
+If you find this project useful, please star it on [GitHub](https://github.com/apify/apify-mcp-server) to show your support!
 
 To learn more about MCP and Apify integration:
 
-* https://modelcontextprotocol.io - Learn about the open standard on the official MCP website – understanding the protocol can help you build custom agents.
-* https://blog.apify.com/how-to-use-mcp/ - Learn how to expose over thousands of Apify Actors to AI agents with Claude and LangGraph, and configure MCP clients and servers.
-* https://www.youtube.com/watch?v=BKu8H91uCTg - Integrate thousands of Apify Actors and Agents with Claude.
-* https://apify.com/jiri.spilka/tester-mcp-client - A specialized client Actor that you can run to simulate an AI agent in your browser. Useful for testing your setup with a chat UI.
+* [Model Context Protocol specification](https://modelcontextprotocol.io) - Learn about the open standard on the official MCP website – understanding the protocol can help you build custom agents.
+* [How to use MCP with Apify Actors](https://blog.apify.com/how-to-use-mcp/) - Learn how to expose over thousands of Apify Actors to AI agents with Claude and LangGraph, and configure MCP clients and servers.
+* [Video tutorial](https://www.youtube.com/watch?v=BKu8H91uCTg) - Integrate thousands of Apify Actors and Agents with Claude.
+* [Apify Tester MCP Client](https://apify.com/jiri.spilka/tester-mcp-client) - A specialized client Actor that you can run to simulate an AI agent in your browser. Useful for testing your setup with a chat UI.

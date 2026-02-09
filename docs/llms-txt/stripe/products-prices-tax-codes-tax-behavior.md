@@ -15,9 +15,6 @@ See our [list of available tax codes](https://docs.stripe.com/tax/tax-codes.md).
 ## Preset tax codes 
 
 When activating Stripe Tax you can set two types of preset tax codes: one for products and one for shipping. You can set both in the [Tax settings](https://dashboard.stripe.com/settings/tax) in the Dashboard.
-![The tax settings showing the preset tax codes, and the default shipping tax code.](https://b.stripecdn.com/docs-statics-srv/assets/pp-settings-v3.4a3660016d805248b9fb49f1bffffd76.png)
-
-The tax settings showing the preset tax codes, and the default shipping tax code.
 
 ### Preset product tax code 
 
@@ -42,7 +39,7 @@ Tax-exclusive prices are common in the US and Canada and for B2B sales in other 
 
 Tax-inclusive prices are common for B2C sales in many markets outside the US. When set to inclusive, the amount your buyer pays remains constant, regardless of the tax amount (zero or positive). This applies to sales subject to reverse charge as well. The unit price differs between transactions subject to reverse charge and those that aren’t. If no tax applies, the tax-inclusive price is the unit price. If the tax amount is positive, the unit price is lower, excluding the tax amount.
 
-### Setting a default tax behavior (recommended)
+### Set a default tax behavior  (Recommended)
 
 You can define a default tax behavior that applies to every price that has no tax behavior defined. You can setup the default tax behavior in the [Stripe Tax settings](https://dashboard.stripe.com/settings/tax) under the **Include tax in prices** section.
 
@@ -54,833 +51,734 @@ After you set the default tax behavior, all prices that don’t have a `tax_beha
 
 To override this setting for an individual price, [set a tax behavior on a price](https://docs.stripe.com/tax/products-prices-tax-codes-tax-behavior.md#setting-tax-behavior-on-a-price-\(optional\)).
 
-## Setting tax behavior on a price (optional)
+## Set tax behavior on a price  (Optional)
 
 You can set the tax behavior for a *Price* (Prices define how much and how often to charge for products. This includes how much the product costs, what currency to use, and the interval if the price is for subscriptions) when creating it with the Dashboard or the API. When creating a Price in the Dashboard, you can inspect the impact of your pricing model on your revenue.
 
-> You can’t change `tax_behavior` after it’s been set to one of “exclusive” or “inclusive”.
-![Tax behavior for a Price object in the Stripe Dashboard](https://b.stripecdn.com/docs-statics-srv/assets/pp_pricing.c4124697874540947a451121f0c73c4d.png)
+> You can’t change `tax_behavior` after it’s been set to **exclusive** or **inclusive**.
 
-To create a Price with `tax_behavior` through the API, it might look like this:
+To create a Price with `tax_behavior` through the API:
 
-#### curl
-
-```bash
+```curl
 curl https://api.stripe.com/v1/prices \
- -u <<YOUR_SECRET_KEY>>: \
- -d unit_amount=10000 \
- -d currency=usd \
- -d product=prod_q23fxaHasd \-d tax_behavior=exclusive \
- -d "recurring[interval]"=month
+  -u "<<YOUR_SECRET_KEY>>:" \
+  -d unit_amount=10000 \
+  -d currency=usd \
+  -d product="{{PRODUCT_ID}}" \
+  -d tax_behavior=exclusive \
+  -d "recurring[interval]"=month
 ```
 
-#### Ruby
+```cli
+stripe prices create  \
+  --unit-amount=10000 \
+  --currency=usd \
+  --product="{{PRODUCT_ID}}" \
+  --tax-behavior=exclusive \
+  -d "recurring[interval]"=month
+```
 
 ```ruby
-
 # Set your secret key. Remember to switch to your live secret key in production.
 # See your keys here: https://dashboard.stripe.com/apikeys
-Stripe.api_key = '<<YOUR_SECRET_KEY>>'
+client = Stripe::StripeClient.new("<<YOUR_SECRET_KEY>>")
 
-price = Stripe::Price.create(
-    {
-      unit_amount: 100_00,
-      product: 'prod_q23fxaHasd',
-      currency: 'usd',tax_behavior: 'exclusive',
-      recurring: {
-        interval: 'month'
-      }
-    }
-  )
+price = client.v1.prices.create({
+  unit_amount: 10000,
+  currency: 'usd',
+  product: '{{PRODUCT_ID}}',
+  tax_behavior: 'exclusive',
+  recurring: {interval: 'month'},
+})
 ```
-
-#### Python
 
 ```python
-
 # Set your secret key. Remember to switch to your live secret key in production.
 # See your keys here: https://dashboard.stripe.com/apikeys
-stripe.api_key = '<<YOUR_SECRET_KEY>>'
+client = StripeClient("<<YOUR_SECRET_KEY>>")
 
-price = stripe.Price.create(
-  unit_amount=10000,
-  product="prod_q23fxaHasd",
-  currency="usd",tax_behavior="exclusive",
-  recurring={
-    "interval": "month"
-  },
-)
+# For SDK versions 12.4.0 or lower, remove '.v1' from the following line.
+price = client.v1.prices.create({
+  "unit_amount": 10000,
+  "currency": "usd",
+  "product": "{{PRODUCT_ID}}",
+  "tax_behavior": "exclusive",
+  "recurring": {"interval": "month"},
+})
 ```
 
-#### PHP
-
 ```php
-
 // Set your secret key. Remember to switch to your live secret key in production.
 // See your keys here: https://dashboard.stripe.com/apikeys
-\Stripe\Stripe::setApiKey('<<YOUR_SECRET_KEY>>');
+$stripe = new \Stripe\StripeClient('<<YOUR_SECRET_KEY>>');
 
-$price = \Stripe\Price::create([
+$price = $stripe->prices->create([
   'unit_amount' => 10000,
-  'product' => 'prod_q23fxaHasd',
-  'currency' => 'usd','tax_behavior' => 'exclusive',
-  'recurring' => [
-    'interval' => 'month'
-  ]
+  'currency' => 'usd',
+  'product' => '{{PRODUCT_ID}}',
+  'tax_behavior' => 'exclusive',
+  'recurring' => ['interval' => 'month'],
 ]);
 ```
 
-#### Node.js
+```java
+// Set your secret key. Remember to switch to your live secret key in production.
+// See your keys here: https://dashboard.stripe.com/apikeys
+StripeClient client = new StripeClient("<<YOUR_SECRET_KEY>>");
 
-```javascript
+PriceCreateParams params =
+  PriceCreateParams.builder()
+    .setUnitAmount(10000L)
+    .setCurrency("usd")
+    .setProduct("{{PRODUCT_ID}}")
+    .setTaxBehavior(PriceCreateParams.TaxBehavior.EXCLUSIVE)
+    .setRecurring(
+      PriceCreateParams.Recurring.builder()
+        .setInterval(PriceCreateParams.Recurring.Interval.MONTH)
+        .build()
+    )
+    .build();
 
+// For SDK versions 29.4.0 or lower, remove '.v1()' from the following line.
+Price price = client.v1().prices().create(params);
+```
+
+```node
 // Set your secret key. Remember to switch to your live secret key in production.
 // See your keys here: https://dashboard.stripe.com/apikeys
 const stripe = require('stripe')('<<YOUR_SECRET_KEY>>');
 
 const price = await stripe.prices.create({
   unit_amount: 10000,
-  product: "prod_q23fxaHasd",
-  currency: "usd",tax_behavior: "exclusive",
-  recurring: { interval: "month" }
+  currency: 'usd',
+  product: '{{PRODUCT_ID}}',
+  tax_behavior: 'exclusive',
+  recurring: {
+    interval: 'month',
+  },
 });
 ```
 
-#### Java
-
-```java
-
+```go
 // Set your secret key. Remember to switch to your live secret key in production.
 // See your keys here: https://dashboard.stripe.com/apikeys
-Stripe.apiKey = "<<YOUR_SECRET_KEY>>";
-
-PriceCreateParams params =
-  PriceCreateParams.builder()
-    .setUnitAmount(10000L)
-    .setProduct("prod_q23fxaHasd")
-    .setCurrency("usd")
-    .setTaxBehavior(PriceCreateParams.TaxBehavior.EXCLUSIVE)
-    .setRecurring(
-      PriceCreateParams.Recurring.builder()
-        .setInterval(PriceCreateParams.Recurring.Interval.MONTH)
-        .build())
-    .build();
-
-Price price = Price.create(params);
-
+sc := stripe.NewClient("<<YOUR_SECRET_KEY>>")
+params := &stripe.PriceCreateParams{
+  UnitAmount: stripe.Int64(10000),
+  Currency: stripe.String(stripe.CurrencyUSD),
+  Product: stripe.String("{{PRODUCT_ID}}"),
+  TaxBehavior: stripe.String(stripe.PriceTaxBehaviorExclusive),
+  Recurring: &stripe.PriceCreateRecurringParams{
+    Interval: stripe.String(stripe.PriceRecurringIntervalMonth),
+  },
+}
+result, err := sc.V1Prices.Create(context.TODO(), params)
 ```
-
-#### .NET
 
 ```dotnet
-
 // Set your secret key. Remember to switch to your live secret key in production.
 // See your keys here: https://dashboard.stripe.com/apikeys
-StripeConfiguration.ApiKey = "<<YOUR_SECRET_KEY>>";
-
-var options = new PriceCreateOptions {
-  UnitAmount = 10000,
-  Product = "prod_q23fxaHasd",
-  Currency = "usd",
-  TaxBehavior = "exclusive",
-  Recurring = new PriceRecurringOptions {
-    Interval = "month"
-  }
+var options = new PriceCreateOptions
+{
+    UnitAmount = 10000,
+    Currency = "usd",
+    Product = "{{PRODUCT_ID}}",
+    TaxBehavior = "exclusive",
+    Recurring = new PriceRecurringOptions { Interval = "month" },
 };
-
-var service = new PriceService();
+var client = new StripeClient("<<YOUR_SECRET_KEY>>");
+var service = client.V1.Prices;
 Price price = service.Create(options);
-```
-
-#### Go
-
-```go
-
-// Set your secret key. Remember to switch to your live secret key in production.
-// See your keys here: https://dashboard.stripe.com/apikeys
-stripe.Key = "<<YOUR_SECRET_KEY>>"
-
-params := &stripe.PriceParams{
-        UnitAmount:  stripe.Int64(10000),
-        Product:     stripe.String("prod_q23fxaHasd"),
-        Currency:    stripe.String("usd"),
-        TaxBehavior: stripe.String("exclusive"),
-        Recurring: &stripe.PriceRecurringParams{
-                Interval: stripe.String("month")
-        }
-}
-
-p, _ := price.New(params)
 ```
 
 For a *multi-currency Price* (A single Price object can support multiple currencies. Each purchase uses one of the supported currencies for the Price, depending on how you use the Price in your integration), use the [currency_options.<currency>.tax_behavior](https://docs.stripe.com/api/prices/create.md#create_price-currency_options-tax_behavior) parameter to set different tax behaviors for different currencies.
 
-In some cases, you might want to use a custom price that hasn’t been pre-configured. You can pass in `price_data` instead of a price ID. For example, accepting a one time payment for a custom price might look like this:
+In some cases, you might want to use a custom price that hasn’t been pre-configured. You can pass in `price_data` instead of a price ID. For example, accepting a one time payment for a custom price with the [hosted version of Checkout](https://docs.stripe.com/checkout/quickstart.md) looks like this:
 
-#### curl
-
-```bash
+```curl
 curl https://api.stripe.com/v1/checkout/sessions \
- -u <<YOUR_SECRET_KEY>>: \
- -d success_url="https://example.com/success" \
- -d "payment_method_types[0]"=card \-d "line_items[0][price_data][currency]"="usd" \
- -d "line_items[0][price_data][unit_amount]"=10000 \
- -d "line_items[0][price_data][tax_behavior]"="exclusive" \
- -d "line_items[0][price_data][product]"="prod_Jb3wOhvaIOZZTM" \
- -d "line_items[0][quantity]"=2 \
- -d mode=payment
+  -u "<<YOUR_SECRET_KEY>>:" \
+  -d "line_items[0][price_data][currency]"=usd \
+  -d "line_items[0][price_data][unit_amount]"=10000 \
+  -d "line_items[0][price_data][tax_behavior]"=exclusive \
+  -d "line_items[0][price_data][product]"="{{PRODUCT_ID}}" \
+  -d "line_items[0][quantity]"=2 \
+  -d mode=payment \
+  --data-urlencode success_url="https://example.com/success"
 ```
 
-#### Ruby
+```cli
+stripe checkout sessions create  \
+  -d "line_items[0][price_data][currency]"=usd \
+  -d "line_items[0][price_data][unit_amount]"=10000 \
+  -d "line_items[0][price_data][tax_behavior]"=exclusive \
+  -d "line_items[0][price_data][product]"="{{PRODUCT_ID}}" \
+  -d "line_items[0][quantity]"=2 \
+  --mode=payment \
+  --success-url="https://example.com/success"
+```
 
 ```ruby
-
 # Set your secret key. Remember to switch to your live secret key in production.
 # See your keys here: https://dashboard.stripe.com/apikeys
-Stripe.api_key = '<<YOUR_SECRET_KEY>>'
+client = Stripe::StripeClient.new("<<YOUR_SECRET_KEY>>")
 
-session = Stripe::Checkout::Session.create(
+session = client.v1.checkout.sessions.create({
+  line_items: [
     {
-      success_url: 'https://example.com/success',
-      mode: 'payment',
-      payment_method_types: ['card'],
-      line_items: [
-        {
-          quantity: 2,
-          price_data: {
-            currency: 'usd',
-            unit_amount: 100_00,
-            tax_behavior: 'exclusive',
-            product: 'prod_q23fxaHasd'
-          }
-        }
-      ]
-    }
-  )
+      price_data: {
+        currency: 'usd',
+        unit_amount: 10000,
+        tax_behavior: 'exclusive',
+        product: '{{PRODUCT_ID}}',
+      },
+      quantity: 2,
+    },
+  ],
+  mode: 'payment',
+  success_url: 'https://example.com/success',
+})
 ```
 
-#### Python
-
 ```python
-
 # Set your secret key. Remember to switch to your live secret key in production.
 # See your keys here: https://dashboard.stripe.com/apikeys
-stripe.api_key = '<<YOUR_SECRET_KEY>>'
+client = StripeClient("<<YOUR_SECRET_KEY>>")
 
-session = stripe.checkout.Session.create(
-  success_url="https://example.com/success",
-  mode="payment",
-  payment_method_types=["card"],
-  line_items=[
+# For SDK versions 12.4.0 or lower, remove '.v1' from the following line.
+session = client.v1.checkout.sessions.create({
+  "line_items": [
     {
-      "quantity": 2,
       "price_data": {
         "currency": "usd",
         "unit_amount": 10000,
         "tax_behavior": "exclusive",
-        "product": "prod_q23fxaHasd"
-      }
-    }
+        "product": "{{PRODUCT_ID}}",
+      },
+      "quantity": 2,
+    },
   ],
-)
+  "mode": "payment",
+  "success_url": "https://example.com/success",
+})
 ```
 
-#### PHP
-
 ```php
-
 // Set your secret key. Remember to switch to your live secret key in production.
 // See your keys here: https://dashboard.stripe.com/apikeys
-\Stripe\Stripe::setApiKey('<<YOUR_SECRET_KEY>>');
+$stripe = new \Stripe\StripeClient('<<YOUR_SECRET_KEY>>');
 
-$session = \Stripe\Checkout\Session::create([
-  'success_url' => 'https://example.com/success',
-  'mode' => 'payment',
-  'payment_method_types' => ['card'],
+$session = $stripe->checkout->sessions->create([
   'line_items' => [
     [
-      'quantity' => 2,
       'price_data' => [
         'currency' => 'usd',
         'unit_amount' => 10000,
         'tax_behavior' => 'exclusive',
-        'product' => 'prod_q23fxaHasd'
-      ]
-    ]
-  ]
+        'product' => '{{PRODUCT_ID}}',
+      ],
+      'quantity' => 2,
+    ],
+  ],
+  'mode' => 'payment',
+  'success_url' => 'https://example.com/success',
 ]);
 ```
 
-#### Node.js
+```java
+// Set your secret key. Remember to switch to your live secret key in production.
+// See your keys here: https://dashboard.stripe.com/apikeys
+StripeClient client = new StripeClient("<<YOUR_SECRET_KEY>>");
 
-```javascript
+SessionCreateParams params =
+  SessionCreateParams.builder()
+    .addLineItem(
+      SessionCreateParams.LineItem.builder()
+        .setPriceData(
+          SessionCreateParams.LineItem.PriceData.builder()
+            .setCurrency("usd")
+            .setUnitAmount(10000L)
+            .setTaxBehavior(SessionCreateParams.LineItem.PriceData.TaxBehavior.EXCLUSIVE)
+            .setProduct("{{PRODUCT_ID}}")
+            .build()
+        )
+        .setQuantity(2L)
+        .build()
+    )
+    .setMode(SessionCreateParams.Mode.PAYMENT)
+    .setSuccessUrl("https://example.com/success")
+    .build();
 
+// For SDK versions 29.4.0 or lower, remove '.v1()' from the following line.
+Session session = client.v1().checkout().sessions().create(params);
+```
+
+```node
 // Set your secret key. Remember to switch to your live secret key in production.
 // See your keys here: https://dashboard.stripe.com/apikeys
 const stripe = require('stripe')('<<YOUR_SECRET_KEY>>');
 
 const session = await stripe.checkout.sessions.create({
-  success_url: "https://example.com/success",
-  mode: "payment",
-  payment_method_types: ["card"],
   line_items: [
     {
-      quantity: 2,
       price_data: {
-        currency: "usd",
+        currency: 'usd',
         unit_amount: 10000,
-        tax_behavior: "exclusive",
-        product: "prod_q23fxaHasd"
-      }
-    }
-  ]
+        tax_behavior: 'exclusive',
+        product: '{{PRODUCT_ID}}',
+      },
+      quantity: 2,
+    },
+  ],
+  mode: 'payment',
+  success_url: 'https://example.com/success',
 });
 ```
 
-#### Java
-
-```java
-
+```go
 // Set your secret key. Remember to switch to your live secret key in production.
 // See your keys here: https://dashboard.stripe.com/apikeys
-Stripe.apiKey = "<<YOUR_SECRET_KEY>>";
-
-SessionCreateParams params =
-  SessionCreateParams.builder()
-    .setSuccessUrl("https://example.com/success")
-    .setMode(SessionCreateParams.Mode.PAYMENT)
-    .addPaymentMethodType(SessionCreateParams.PaymentMethodType.CARD)
-    .addLineItem(
-      SessionCreateParams.LineItem.builder()
-        .setQuantity(2L)
-        .setPriceData(
-          SessionCreateParams.LineItem.PriceData.builder()
-            .setCurrency("usd")
-            .setUnitAmount(10000L)
-            .setTaxBehavior(
-              SessionCreateParams.LineItem.PriceData.TaxBehavior.EXCLUSIVE)
-            .setProduct("prod_q23fxaHasd")
-            .build())
-        .build())
-    .build();
-
-Session session = Session.create(params);
-
+sc := stripe.NewClient("<<YOUR_SECRET_KEY>>")
+params := &stripe.CheckoutSessionCreateParams{
+  LineItems: []*stripe.CheckoutSessionCreateLineItemParams{
+    &stripe.CheckoutSessionCreateLineItemParams{
+      PriceData: &stripe.CheckoutSessionCreateLineItemPriceDataParams{
+        Currency: stripe.String(stripe.CurrencyUSD),
+        UnitAmount: stripe.Int64(10000),
+        TaxBehavior: stripe.String("exclusive"),
+        Product: stripe.String("{{PRODUCT_ID}}"),
+      },
+      Quantity: stripe.Int64(2),
+    },
+  },
+  Mode: stripe.String(stripe.CheckoutSessionModePayment),
+  SuccessURL: stripe.String("https://example.com/success"),
+}
+result, err := sc.V1CheckoutSessions.Create(context.TODO(), params)
 ```
-
-#### .NET
 
 ```dotnet
-
 // Set your secret key. Remember to switch to your live secret key in production.
 // See your keys here: https://dashboard.stripe.com/apikeys
-StripeConfiguration.ApiKey = "<<YOUR_SECRET_KEY>>";
-
-var options = new SessionCreateOptions {
-  SuccessUrl = "https://example.com/success",
-  Mode = "payment",
-  PaymentMethodTypes = new List<string>{ "card" },
-  LineItems = new List<SessionLineItemOptions>{
-    new SessionLineItemOptions {
-      Quantity = 2,
-      PriceData = new SessionLineItemPriceDataOptions {
-        Currency = "usd",
-        UnitAmount = 10000,
-        TaxBehavior = "exclusive",
-        Product = "prod_q23fxaHasd"
-      }
-    }
-  }
+var options = new Stripe.Checkout.SessionCreateOptions
+{
+    LineItems = new List<Stripe.Checkout.SessionLineItemOptions>
+    {
+        new Stripe.Checkout.SessionLineItemOptions
+        {
+            PriceData = new Stripe.Checkout.SessionLineItemPriceDataOptions
+            {
+                Currency = "usd",
+                UnitAmount = 10000,
+                TaxBehavior = "exclusive",
+                Product = "{{PRODUCT_ID}}",
+            },
+            Quantity = 2,
+        },
+    },
+    Mode = "payment",
+    SuccessUrl = "https://example.com/success",
 };
-
-var service = new SessionService();
-Session session = service.Create(options);
+var client = new StripeClient("<<YOUR_SECRET_KEY>>");
+var service = client.V1.Checkout.Sessions;
+Stripe.Checkout.Session session = service.Create(options);
 ```
 
-#### Go
-
-```go
-
-// Set your secret key. Remember to switch to your live secret key in production.
-// See your keys here: https://dashboard.stripe.com/apikeys
-stripe.Key = "<<YOUR_SECRET_KEY>>"
-
-params := &stripe.CheckoutSessionParams{
-        SuccessURL:         stripe.String("https://example.com/success"),
-        Mode:               stripe.String("payment"),
-        PaymentMethodTypes: stripe.StringSlice([]string{"card"}),
-        LineItems: []*stripe.CheckoutSessionLineItemParams{{
-                Quantity: stripe.Int64(2),
-                PriceData: &stripe.CheckoutSessionLineItemPriceDataParams{
-                        Currency:    stripe.String("usd"),
-                        UnitAmount:  stripe.Int64(10000),
-                        TaxBehavior: stripe.String("exclusive"),
-                        Product:     stripe.String("prod_q23fxaHasd")
-                }
-        }}
-}
-
-s, _ := session.New(params)
-```
-
-## Setting a tax code on a product (recommended) 
+## Set a tax code on a product  (Recommended)
 
 When creating Products in the Dashboard you can set your `tax_code` in the dropdown by searching for any available [tax code](https://docs.stripe.com/tax/tax-codes.md). If you don’t, Stripe Tax uses the preset tax code defined on the [Dashboard](https://dashboard.stripe.com/settings/tax). If a product could fit multiple codes, for example, a SaaS product used for personal or business use depending on the type of customer, we recommend creating two separate products in Stripe and assigning the appropriate code to each.
-![Tax codes for a product in the Stripe Dashboard](https://b.stripecdn.com/docs-statics-srv/assets/pp_product_tax_category.e6ad090b235a41108b8843420db18330.png)
 
-To create a Product with `tax_code` using the API, it might look like this:
+To create a Product with `tax_code` using the API:
 
-#### curl
-
-```bash
+```curl
 curl https://api.stripe.com/v1/products \
- -u <<YOUR_SECRET_KEY>>: \
- -d name="Test Product" \
- -d tax_code="txcd_10000000"
+  -u "<<YOUR_SECRET_KEY>>:" \
+  -d name="Test Product" \
+  -d tax_code="{{TAXCODE_ID}}"
 ```
 
-#### Ruby
+```cli
+stripe products create  \
+  --name="Test Product" \
+  --tax-code="{{TAXCODE_ID}}"
+```
 
 ```ruby
-
 # Set your secret key. Remember to switch to your live secret key in production.
 # See your keys here: https://dashboard.stripe.com/apikeys
-Stripe.api_key = '<<YOUR_SECRET_KEY>>'
+client = Stripe::StripeClient.new("<<YOUR_SECRET_KEY>>")
 
-product = Stripe::Product.create(
-    { name: 'Test Product', tax_code: 'txcd_10000000' }
-  )
+product = client.v1.products.create({
+  name: 'Test Product',
+  tax_code: '{{TAXCODE_ID}}',
+})
 ```
-
-#### Python
 
 ```python
-
 # Set your secret key. Remember to switch to your live secret key in production.
 # See your keys here: https://dashboard.stripe.com/apikeys
-stripe.api_key = '<<YOUR_SECRET_KEY>>'
+client = StripeClient("<<YOUR_SECRET_KEY>>")
 
-product = stripe.Product.create(
-  name="Test Product",
-  tax_code="txcd_10000000",
-)
+# For SDK versions 12.4.0 or lower, remove '.v1' from the following line.
+product = client.v1.products.create({
+  "name": "Test Product",
+  "tax_code": "{{TAXCODE_ID}}",
+})
 ```
 
-#### PHP
-
 ```php
-
 // Set your secret key. Remember to switch to your live secret key in production.
 // See your keys here: https://dashboard.stripe.com/apikeys
-\Stripe\Stripe::setApiKey('<<YOUR_SECRET_KEY>>');
+$stripe = new \Stripe\StripeClient('<<YOUR_SECRET_KEY>>');
 
-$product = \Stripe\Product::create([
+$product = $stripe->products->create([
   'name' => 'Test Product',
-  'tax_code' => 'txcd_10000000'
+  'tax_code' => '{{TAXCODE_ID}}',
 ]);
 ```
 
-#### Node.js
+```java
+// Set your secret key. Remember to switch to your live secret key in production.
+// See your keys here: https://dashboard.stripe.com/apikeys
+StripeClient client = new StripeClient("<<YOUR_SECRET_KEY>>");
 
-```javascript
+ProductCreateParams params =
+  ProductCreateParams.builder()
+    .setName("Test Product")
+    .setTaxCode("{{TAXCODE_ID}}")
+    .build();
 
+// For SDK versions 29.4.0 or lower, remove '.v1()' from the following line.
+Product product = client.v1().products().create(params);
+```
+
+```node
 // Set your secret key. Remember to switch to your live secret key in production.
 // See your keys here: https://dashboard.stripe.com/apikeys
 const stripe = require('stripe')('<<YOUR_SECRET_KEY>>');
 
 const product = await stripe.products.create({
-  name: "Test Product",
-  tax_code: "txcd_10000000"
+  name: 'Test Product',
+  tax_code: '{{TAXCODE_ID}}',
 });
 ```
 
-#### Java
-
-```java
-
+```go
 // Set your secret key. Remember to switch to your live secret key in production.
 // See your keys here: https://dashboard.stripe.com/apikeys
-Stripe.apiKey = "<<YOUR_SECRET_KEY>>";
-
-ProductCreateParams params =
-  ProductCreateParams.builder()
-    .setName("Test Product")
-    .setTaxCode(""txcd_10000000"")
-    .build();
-
-Product product = Product.create(params);
-
+sc := stripe.NewClient("<<YOUR_SECRET_KEY>>")
+params := &stripe.ProductCreateParams{
+  Name: stripe.String("Test Product"),
+  TaxCode: stripe.String("{{TAXCODE_ID}}"),
+}
+result, err := sc.V1Products.Create(context.TODO(), params)
 ```
 
-#### .NET
-
 ```dotnet
-
 // Set your secret key. Remember to switch to your live secret key in production.
 // See your keys here: https://dashboard.stripe.com/apikeys
-StripeConfiguration.ApiKey = "<<YOUR_SECRET_KEY>>";
-
-var options = new ProductCreateOptions {
-  Name = "Test Product",
-  TaxCode = ""txcd_10000000""
+var options = new ProductCreateOptions
+{
+    Name = "Test Product",
+    TaxCode = "{{TAXCODE_ID}}",
 };
-
-var service = new ProductService();
+var client = new StripeClient("<<YOUR_SECRET_KEY>>");
+var service = client.V1.Products;
 Product product = service.Create(options);
 ```
 
-#### Go
+In some cases, you might want to use a custom product that hasn’t been pre-configured. You can pass in `product_data` instead of a product ID. For example, accepting a one time payment for a custom product with the [hosted version of Checkout](https://docs.stripe.com/checkout/quickstart.md) looks like this:
 
-```go
-
-// Set your secret key. Remember to switch to your live secret key in production.
-// See your keys here: https://dashboard.stripe.com/apikeys
-stripe.Key = "<<YOUR_SECRET_KEY>>"
-
-params := &stripe.ProductParams{
-        Name:    stripe.String("Test Product"),
-        TaxCode: stripe.String(""txcd_10000000"")
-}
-
-p, _ := product.New(params)
-```
-
-In some cases, you might want to use a custom product that hasn’t been pre-configured. You can pass in `product_data` instead of a product ID. For example, accepting a one time payment for a custom product might look like this:
-
-#### curl
-
-```bash
+```curl
 curl https://api.stripe.com/v1/checkout/sessions \
- -u <<YOUR_SECRET_KEY>>: \
- -d success_url="https://example.com/success" \
- -d "payment_method_types[0]"=card \
- -d "line_items[0][price_data][currency]"="usd" \
- -d "line_items[0][price_data][unit_amount]"=10000 \
- -d "line_items[0][price_data][tax_behavior]"="exclusive" \
- -d "line_items[0][price_data][product_data][name]"="Product name" \
- -d "line_items[0][price_data][product_data][tax_code]"="txcd_10000000" \
- -d "line_items[0][quantity]"=2 \
- -d mode=payment
+  -u "<<YOUR_SECRET_KEY>>:" \
+  -d "line_items[0][price_data][currency]"=usd \
+  -d "line_items[0][price_data][unit_amount]"=10000 \
+  -d "line_items[0][price_data][tax_behavior]"=exclusive \
+  -d "line_items[0][price_data][product_data][name]"="Test Product" \
+  -d "line_items[0][price_data][product_data][tax_code]"="{{TAXCODE_ID}}" \
+  -d "line_items[0][quantity]"=2 \
+  -d mode=payment \
+  --data-urlencode success_url="https://example.com/success"
 ```
 
-#### Ruby
+```cli
+stripe checkout sessions create  \
+  -d "line_items[0][price_data][currency]"=usd \
+  -d "line_items[0][price_data][unit_amount]"=10000 \
+  -d "line_items[0][price_data][tax_behavior]"=exclusive \
+  -d "line_items[0][price_data][product_data][name]"="Test Product" \
+  -d "line_items[0][price_data][product_data][tax_code]"="{{TAXCODE_ID}}" \
+  -d "line_items[0][quantity]"=2 \
+  --mode=payment \
+  --success-url="https://example.com/success"
+```
 
 ```ruby
-
 # Set your secret key. Remember to switch to your live secret key in production.
 # See your keys here: https://dashboard.stripe.com/apikeys
-Stripe.api_key = '<<YOUR_SECRET_KEY>>'
+client = Stripe::StripeClient.new("<<YOUR_SECRET_KEY>>")
 
-session = Stripe::Checkout::Session.create(
+session = client.v1.checkout.sessions.create({
+  line_items: [
     {
-      success_url: 'https://example.com/success',
-      mode: 'payment',
-      payment_method_types: ['card'],
-      line_items: [
-        {
-          quantity: 2,
-          price_data: {
-            currency: 'usd',
-            unit_amount: 100_00,
-            tax_behavior: 'exclusive',
-            product_data: {
-              name: 'Product name',
-              tax_code: 'txcd_10000000'
-            }
-          }
-        }
-      ]
-    }
-  )
+      price_data: {
+        currency: 'usd',
+        unit_amount: 10000,
+        tax_behavior: 'exclusive',
+        product_data: {
+          name: 'Test Product',
+          tax_code: '{{TAXCODE_ID}}',
+        },
+      },
+      quantity: 2,
+    },
+  ],
+  mode: 'payment',
+  success_url: 'https://example.com/success',
+})
 ```
 
-#### Python
-
 ```python
-
 # Set your secret key. Remember to switch to your live secret key in production.
 # See your keys here: https://dashboard.stripe.com/apikeys
-stripe.api_key = '<<YOUR_SECRET_KEY>>'
+client = StripeClient("<<YOUR_SECRET_KEY>>")
 
-session = stripe.checkout.Session.create(
-  success_url="https://example.com/success",
-  mode="payment",
-  payment_method_types=["card"],
-  line_items=[
+# For SDK versions 12.4.0 or lower, remove '.v1' from the following line.
+session = client.v1.checkout.sessions.create({
+  "line_items": [
     {
-      "quantity": 2,
       "price_data": {
         "currency": "usd",
         "unit_amount": 10000,
         "tax_behavior": "exclusive",
-        "product_data": {
-          "name": "Product name",
-          "tax_code": "txcd_10000000"
-        }
-      }
-    }
+        "product_data": {"name": "Test Product", "tax_code": "{{TAXCODE_ID}}"},
+      },
+      "quantity": 2,
+    },
   ],
-)
+  "mode": "payment",
+  "success_url": "https://example.com/success",
+})
 ```
 
-#### PHP
-
 ```php
-
 // Set your secret key. Remember to switch to your live secret key in production.
 // See your keys here: https://dashboard.stripe.com/apikeys
-\Stripe\Stripe::setApiKey('<<YOUR_SECRET_KEY>>');
+$stripe = new \Stripe\StripeClient('<<YOUR_SECRET_KEY>>');
 
-$session = \Stripe\Checkout\Session::create([
-  'success_url' => 'https://example.com/success',
-  'mode' => 'payment',
-  'payment_method_types' => ['card'],
+$session = $stripe->checkout->sessions->create([
   'line_items' => [
     [
-      'quantity' => 2,
       'price_data' => [
         'currency' => 'usd',
         'unit_amount' => 10000,
         'tax_behavior' => 'exclusive',
         'product_data' => [
-          'name' => 'Product name',
-          'tax_code' => 'txcd_10000000'
-        ]
-      ]
-    ]
-  ]
+          'name' => 'Test Product',
+          'tax_code' => '{{TAXCODE_ID}}',
+        ],
+      ],
+      'quantity' => 2,
+    ],
+  ],
+  'mode' => 'payment',
+  'success_url' => 'https://example.com/success',
 ]);
 ```
 
-#### Node.js
+```java
+// Set your secret key. Remember to switch to your live secret key in production.
+// See your keys here: https://dashboard.stripe.com/apikeys
+StripeClient client = new StripeClient("<<YOUR_SECRET_KEY>>");
 
-```javascript
+SessionCreateParams params =
+  SessionCreateParams.builder()
+    .addLineItem(
+      SessionCreateParams.LineItem.builder()
+        .setPriceData(
+          SessionCreateParams.LineItem.PriceData.builder()
+            .setCurrency("usd")
+            .setUnitAmount(10000L)
+            .setTaxBehavior(SessionCreateParams.LineItem.PriceData.TaxBehavior.EXCLUSIVE)
+            .setProductData(
+              SessionCreateParams.LineItem.PriceData.ProductData.builder()
+                .setName("Test Product")
+                .setTaxCode("{{TAXCODE_ID}}")
+                .build()
+            )
+            .build()
+        )
+        .setQuantity(2L)
+        .build()
+    )
+    .setMode(SessionCreateParams.Mode.PAYMENT)
+    .setSuccessUrl("https://example.com/success")
+    .build();
 
+// For SDK versions 29.4.0 or lower, remove '.v1()' from the following line.
+Session session = client.v1().checkout().sessions().create(params);
+```
+
+```node
 // Set your secret key. Remember to switch to your live secret key in production.
 // See your keys here: https://dashboard.stripe.com/apikeys
 const stripe = require('stripe')('<<YOUR_SECRET_KEY>>');
 
 const session = await stripe.checkout.sessions.create({
-  success_url: "https://example.com/success",
-  mode: "payment",
-  payment_method_types: ["card"],
   line_items: [
     {
-      quantity: 2,
       price_data: {
-        currency: "usd",
+        currency: 'usd',
         unit_amount: 10000,
-        tax_behavior: "exclusive",
-        product_data: { name: "Product name", tax_code: "txcd_10000000" }
-      }
-    }
-  ]
+        tax_behavior: 'exclusive',
+        product_data: {
+          name: 'Test Product',
+          tax_code: '{{TAXCODE_ID}}',
+        },
+      },
+      quantity: 2,
+    },
+  ],
+  mode: 'payment',
+  success_url: 'https://example.com/success',
 });
 ```
 
-#### Java
-
-```java
-
+```go
 // Set your secret key. Remember to switch to your live secret key in production.
 // See your keys here: https://dashboard.stripe.com/apikeys
-Stripe.apiKey = "<<YOUR_SECRET_KEY>>";
-
-SessionCreateParams params =
-  SessionCreateParams.builder()
-    .setSuccessUrl("https://example.com/success")
-    .setMode(SessionCreateParams.Mode.PAYMENT)
-    .addPaymentMethodType(SessionCreateParams.PaymentMethodType.CARD)
-    .addLineItem(
-        SessionCreateParams.LineItem.builder()
-          .setQuantity(2L)
-          .setPriceData(
-            SessionCreateParams.LineItem.PriceData.builder()
-              .setCurrency("usd")
-              .setUnitAmount(10000L)
-              .setTaxBehavior(
-                SessionCreateParams.LineItem.PriceData.TaxBehavior.EXCLUSIVE)
-              .setProductData(
-                SessionCreateParams.LineItem.PriceData.ProductData.builder()
-                  .setName("Product name")
-                  .setTaxCode(""txcd_10000000"")
-                  .build())
-                .build())
-            .build())
-      .build();
-
-Session session = Session.create(params);
-
+sc := stripe.NewClient("<<YOUR_SECRET_KEY>>")
+params := &stripe.CheckoutSessionCreateParams{
+  LineItems: []*stripe.CheckoutSessionCreateLineItemParams{
+    &stripe.CheckoutSessionCreateLineItemParams{
+      PriceData: &stripe.CheckoutSessionCreateLineItemPriceDataParams{
+        Currency: stripe.String(stripe.CurrencyUSD),
+        UnitAmount: stripe.Int64(10000),
+        TaxBehavior: stripe.String("exclusive"),
+        ProductData: &stripe.CheckoutSessionCreateLineItemPriceDataProductDataParams{
+          Name: stripe.String("Test Product"),
+          TaxCode: stripe.String("{{TAXCODE_ID}}"),
+        },
+      },
+      Quantity: stripe.Int64(2),
+    },
+  },
+  Mode: stripe.String(stripe.CheckoutSessionModePayment),
+  SuccessURL: stripe.String("https://example.com/success"),
+}
+result, err := sc.V1CheckoutSessions.Create(context.TODO(), params)
 ```
-
-#### .NET
 
 ```dotnet
-
 // Set your secret key. Remember to switch to your live secret key in production.
 // See your keys here: https://dashboard.stripe.com/apikeys
-StripeConfiguration.ApiKey = "<<YOUR_SECRET_KEY>>";
-
-var options = new SessionCreateOptions {
-  SuccessUrl = "https://example.com/success",
-  Mode = "payment",
-  PaymentMethodTypes = new List<string>{ "card" },
-  LineItems = new List<SessionLineItemOptions>{
-    new SessionLineItemOptions {
-      Quantity = 2,
-      PriceData = new SessionLineItemPriceDataOptions {
-        Currency = "usd",
-        UnitAmount = 10000,
-        TaxBehavior = "exclusive",
-        ProductData = new SessionLineItemPriceDataProductDataOptions {
-          Name = "Product name",
-          TaxCode = ""txcd_10000000""
-        }
-      }
-    }
-  }
+var options = new Stripe.Checkout.SessionCreateOptions
+{
+    LineItems = new List<Stripe.Checkout.SessionLineItemOptions>
+    {
+        new Stripe.Checkout.SessionLineItemOptions
+        {
+            PriceData = new Stripe.Checkout.SessionLineItemPriceDataOptions
+            {
+                Currency = "usd",
+                UnitAmount = 10000,
+                TaxBehavior = "exclusive",
+                ProductData = new Stripe.Checkout.SessionLineItemPriceDataProductDataOptions
+                {
+                    Name = "Test Product",
+                    TaxCode = "{{TAXCODE_ID}}",
+                },
+            },
+            Quantity = 2,
+        },
+    },
+    Mode = "payment",
+    SuccessUrl = "https://example.com/success",
 };
-
-var service = new SessionService();
-Session session = service.Create(options);
+var client = new StripeClient("<<YOUR_SECRET_KEY>>");
+var service = client.V1.Checkout.Sessions;
+Stripe.Checkout.Session session = service.Create(options);
 ```
 
-#### Go
-
-```go
-
-// Set your secret key. Remember to switch to your live secret key in production.
-// See your keys here: https://dashboard.stripe.com/apikeys
-stripe.Key = "<<YOUR_SECRET_KEY>>"
-
-params := &stripe.CheckoutSessionParams{
-        SuccessURL:         stripe.String("https://example.com/success"),
-        Mode:               stripe.String("payment"),
-        PaymentMethodTypes: stripe.StringSlice([]string{"card"}),
-        LineItems: []*stripe.CheckoutSessionLineItemParams{&stripe.CheckoutSessionLineItemParams{
-                Quantity: stripe.Int64(2),
-                PriceData: &stripe.CheckoutSessionLineItemPriceDataParams{
-                        Currency:    stripe.String("usd"),
-                        UnitAmount:  stripe.Int64(10000),
-                        TaxBehavior: stripe.String("exclusive"),
-                        ProductData: &stripe.CheckoutSessionLineItemPriceDataProductDataParams{
-                                Name:    stripe.String("Product name"),
-                                TaxCode: stripe.String(""txcd_10000000"")
-                        }
-                }
-        }}
-}
-
-s, _ := session.New(params)
-```
-
-## Creating a shipping rate with tax code (optional) 
+## Create a shipping rate with tax code  (Optional)
 
 Checkout payment mode allows you to set shipping rates and charge tax on shipping. You can automatically calculate tax on shipping charges by setting the tax code on the shipping rate in the Dashboard or [API](https://docs.stripe.com/api/shipping_rates.md).
-![Shipping rate with a tax code in the Stripe Dashboard](https://b.stripecdn.com/docs-statics-srv/assets/pp_shipping_rate_v3.a204f73ab02310683aace14717d960f4.png)
 
-#### curl
-
-```bash
+```curl
 curl https://api.stripe.com/v1/shipping_rates \
- -u <<YOUR_SECRET_KEY>>: \
- -d display_name="Ground shipping" \
- -d type="fixed_amount" \
- -d "fixed_amount[amount]"=500 \
- -d "fixed_amount[currency]"=usd \
- -d tax_behavior="inclusive" \
- -d tax_code="txcd_92010001"
+  -u "<<YOUR_SECRET_KEY>>:" \
+  -d display_name="Ground shipping" \
+  -d type=fixed_amount \
+  -d "fixed_amount[amount]"=500 \
+  -d "fixed_amount[currency]"=usd \
+  -d tax_behavior=inclusive \
+  -d tax_code="{{TAXCODE_ID}}"
 ```
 
-#### Ruby
+```cli
+stripe shipping_rates create  \
+  --display-name="Ground shipping" \
+  --type=fixed_amount \
+  -d "fixed_amount[amount]"=500 \
+  -d "fixed_amount[currency]"=usd \
+  --tax-behavior=inclusive \
+  --tax-code="{{TAXCODE_ID}}"
+```
 
 ```ruby
-
 # Set your secret key. Remember to switch to your live secret key in production.
 # See your keys here: https://dashboard.stripe.com/apikeys
-Stripe.api_key = '<<YOUR_SECRET_KEY>>'
+client = Stripe::StripeClient.new("<<YOUR_SECRET_KEY>>")
 
-shipping_rate = Stripe::ShippingRate.create(
-    {
-      display_name: 'Ground shipping',
-      type: 'fixed_amount',
-      fixed_amount: {
-        amount: 500,
-        currency: 'usd'
-      },
-      tax_behavior: 'inclusive',
-      tax_code: 'txcd_92010001'
-    }
-  )
+shipping_rate = client.v1.shipping_rates.create({
+  display_name: 'Ground shipping',
+  type: 'fixed_amount',
+  fixed_amount: {
+    amount: 500,
+    currency: 'usd',
+  },
+  tax_behavior: 'inclusive',
+  tax_code: '{{TAXCODE_ID}}',
+})
 ```
-
-#### Python
 
 ```python
-
 # Set your secret key. Remember to switch to your live secret key in production.
 # See your keys here: https://dashboard.stripe.com/apikeys
-stripe.api_key = '<<YOUR_SECRET_KEY>>'
+client = StripeClient("<<YOUR_SECRET_KEY>>")
 
-shipping_rate = stripe.ShippingRate.create(
-  display_name="Ground shipping",
-  type="fixed_amount",
-  fixed_amount={
-    'amount': 500,
-    'currency': 'usd'
-  },
-  tax_behavior="inclusive",
-  tax_code="txcd_92010001",
-)
+# For SDK versions 12.4.0 or lower, remove '.v1' from the following line.
+shipping_rate = client.v1.shipping_rates.create({
+  "display_name": "Ground shipping",
+  "type": "fixed_amount",
+  "fixed_amount": {"amount": 500, "currency": "usd"},
+  "tax_behavior": "inclusive",
+  "tax_code": "{{TAXCODE_ID}}",
+})
 ```
 
-#### PHP
-
 ```php
-
 // Set your secret key. Remember to switch to your live secret key in production.
 // See your keys here: https://dashboard.stripe.com/apikeys
-\Stripe\Stripe::setApiKey('<<YOUR_SECRET_KEY>>');
+$stripe = new \Stripe\StripeClient('<<YOUR_SECRET_KEY>>');
 
-$shipping_rate = \Stripe\ShippingRate::create([
+$shippingRate = $stripe->shippingRates->create([
   'display_name' => 'Ground shipping',
   'type' => 'fixed_amount',
   'fixed_amount' => [
     'amount' => 500,
-    'currency' => 'usd'
+    'currency' => 'usd',
   ],
   'tax_behavior' => 'inclusive',
-  'tax_code' => 'txcd_92010001'
+  'tax_code' => '{{TAXCODE_ID}}',
 ]);
 ```
 
-#### Node.js
-
-```javascript
-
-// Set your secret key. Remember to switch to your live secret key in production.
-// See your keys here: https://dashboard.stripe.com/apikeys
-const stripe = require('stripe')('<<YOUR_SECRET_KEY>>');
-
-const shippingRate = await stripe.shippingRates.create({
-  name: "Ground shipping",
-  type: 'fixed_amount',
-  fixed_amount: {
-    amount: 500,
-    currency: 'usd'
-  },
-  tax_behavior: "inclusive",
-  tax_code: "txcd_92010001"
-});
-```
-
-#### Java
-
 ```java
-
 // Set your secret key. Remember to switch to your live secret key in production.
 // See your keys here: https://dashboard.stripe.com/apikeys
-Stripe.apiKey = "<<YOUR_SECRET_KEY>>";
+StripeClient client = new StripeClient("<<YOUR_SECRET_KEY>>");
 
 ShippingRateCreateParams params =
   ShippingRateCreateParams.builder()
@@ -888,61 +786,66 @@ ShippingRateCreateParams params =
     .setType(ShippingRateCreateParams.Type.FIXED_AMOUNT)
     .setFixedAmount(
       ShippingRateCreateParams.FixedAmount.builder()
-        .setAmount(500)
+        .setAmount(500L)
         .setCurrency("usd")
-        .build())
+        .build()
+    )
     .setTaxBehavior(ShippingRateCreateParams.TaxBehavior.INCLUSIVE)
-    .setTaxCode("txcd_92010001")
+    .setTaxCode("{{TAXCODE_ID}}")
     .build();
 
-ShippingRate shippingRate = ShippingRate.create(params);
-
+// For SDK versions 29.4.0 or lower, remove '.v1()' from the following line.
+ShippingRate shippingRate = client.v1().shippingRates().create(params);
 ```
 
-#### .NET
-
-```dotnet
-
+```node
 // Set your secret key. Remember to switch to your live secret key in production.
 // See your keys here: https://dashboard.stripe.com/apikeys
-StripeConfiguration.ApiKey = "<<YOUR_SECRET_KEY>>";
+const stripe = require('stripe')('<<YOUR_SECRET_KEY>>');
 
-var options = new ShippingRateCreateOptions {
-  DisplayName = "Ground shipping",
-  Type = "fixed_amount",
-  FixedAmount = new ShippingRateFixedAmountOptions
-  {
-    Amount = 500,
-    Currency = "usd"
+const shippingRate = await stripe.shippingRates.create({
+  display_name: 'Ground shipping',
+  type: 'fixed_amount',
+  fixed_amount: {
+    amount: 500,
+    currency: 'usd',
   },
-  TaxBehavior = "exclusive",
-  TaxCode = "txcd_92010001"
-};
-
-var service = new ShippingRateService();
-ShippingRate shippingRate = service.Create(options);
+  tax_behavior: 'inclusive',
+  tax_code: '{{TAXCODE_ID}}',
+});
 ```
-
-#### Go
 
 ```go
-
 // Set your secret key. Remember to switch to your live secret key in production.
 // See your keys here: https://dashboard.stripe.com/apikeys
-stripe.Key = "<<YOUR_SECRET_KEY>>"
-
-params := &stripe.ShippingRateParams{
-        DisplayName: stripe.String("Ground shipping"),
-        Type: stripe.String("fixed_amount"),
-        FixedAmount: &stripe.ShippingRateFixedAmountParams{
-          Amount: stripe.Int64(500),
-          Currency: stripe.String("usd")
-        },
-        TaxBehavior: stripe.String("inclusive"),
-        TaxCode:     stripe.String("txcd_92010001")
+sc := stripe.NewClient("<<YOUR_SECRET_KEY>>")
+params := &stripe.ShippingRateCreateParams{
+  DisplayName: stripe.String("Ground shipping"),
+  Type: stripe.String("fixed_amount"),
+  FixedAmount: &stripe.ShippingRateCreateFixedAmountParams{
+    Amount: stripe.Int64(500),
+    Currency: stripe.String(stripe.CurrencyUSD),
+  },
+  TaxBehavior: stripe.String(stripe.ShippingRateTaxBehaviorInclusive),
+  TaxCode: stripe.String("{{TAXCODE_ID}}"),
 }
+result, err := sc.V1ShippingRates.Create(context.TODO(), params)
+```
 
-s, _ := shippingrate.New(params)
+```dotnet
+// Set your secret key. Remember to switch to your live secret key in production.
+// See your keys here: https://dashboard.stripe.com/apikeys
+var options = new ShippingRateCreateOptions
+{
+    DisplayName = "Ground shipping",
+    Type = "fixed_amount",
+    FixedAmount = new ShippingRateFixedAmountOptions { Amount = 500, Currency = "usd" },
+    TaxBehavior = "inclusive",
+    TaxCode = "{{TAXCODE_ID}}",
+};
+var client = new StripeClient("<<YOUR_SECRET_KEY>>");
+var service = client.V1.ShippingRates;
+ShippingRate shippingRate = service.Create(options);
 ```
 
 ## See also

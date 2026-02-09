@@ -1,5 +1,9 @@
 # Source: https://docs.embedchain.ai/components/data-sources/image.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.embedchain.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # 🖼️ Image
 
 To use an image as data source, just add `data_type` as `image` and pass in the path of the image (local or hosted).
@@ -10,7 +14,7 @@ You would require an OpenAI API key with access to `gpt-4-vision-preview` model 
 
 ### Without customization
 
-```python
+```python  theme={null}
 import os
 from embedchain import App
 
@@ -25,7 +29,7 @@ print(response)
 
 ### Customization
 
-```python
+```python  theme={null}
 import os
 from embedchain import App
 from embedchain.loaders.image import ImageLoader

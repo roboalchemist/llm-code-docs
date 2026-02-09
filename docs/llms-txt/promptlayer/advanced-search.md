@@ -1,5 +1,9 @@
 # Source: https://docs.promptlayer.com/why-promptlayer/advanced-search.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.promptlayer.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Advanced Search
 
 PromptLayer advanced search capabilities allows you to find exactly what you want using tags, search queries, metadata, favorites, and score filtering.
@@ -110,8 +114,3 @@ Tagging a request is easy. Read more about it [here](/features/prompt-history/or
 By selecting the "favorite" tag, you can narrow by favorited requests. To favorite a request, click the star on the top right on the dashboard.
 
 <img src="https://mintcdn.com/promptlayer/4xCQDros0B-lHSut/images/favorites.png?fit=max&auto=format&n=4xCQDros0B-lHSut&q=85&s=55a51b8e7e425801be43b62c1b72366d" alt="Favorites" data-og-width="1472" width="1472" data-og-height="857" height="857" data-path="images/favorites.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/promptlayer/4xCQDros0B-lHSut/images/favorites.png?w=280&fit=max&auto=format&n=4xCQDros0B-lHSut&q=85&s=9a5dc4c602f01ca9a142100526a68861 280w, https://mintcdn.com/promptlayer/4xCQDros0B-lHSut/images/favorites.png?w=560&fit=max&auto=format&n=4xCQDros0B-lHSut&q=85&s=e938bb79344794aa13b803e9600748a4 560w, https://mintcdn.com/promptlayer/4xCQDros0B-lHSut/images/favorites.png?w=840&fit=max&auto=format&n=4xCQDros0B-lHSut&q=85&s=734d4728f74934134ed2fb86808058ce 840w, https://mintcdn.com/promptlayer/4xCQDros0B-lHSut/images/favorites.png?w=1100&fit=max&auto=format&n=4xCQDros0B-lHSut&q=85&s=687f3e40429a1968727c31008d5373a8 1100w, https://mintcdn.com/promptlayer/4xCQDros0B-lHSut/images/favorites.png?w=1650&fit=max&auto=format&n=4xCQDros0B-lHSut&q=85&s=29d75ed5a7fb637cee3baf0e6b011d65 1650w, https://mintcdn.com/promptlayer/4xCQDros0B-lHSut/images/favorites.png?w=2500&fit=max&auto=format&n=4xCQDros0B-lHSut&q=85&s=2d116d1a6a01af7dae0f766f3444c202 2500w" />
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.promptlayer.com/llms.txt

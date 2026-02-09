@@ -1,166 +1,162 @@
 # Source: https://docs.datafold.com/api-reference/monitors/list-monitors.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.datafold.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # List Monitors
+
+
 
 ## OpenAPI
 
 ````yaml openapi-public.json get /api/v1/monitors
+openapi: 3.1.0
+info:
+  contact:
+    email: support@datafold.com
+    name: API Support
+  description: >-
+    The Datafold API reference is a guide to our available endpoints and
+    authentication methods.
+
+    If you're just getting started with Datafold, we recommend first checking
+    out our [documentation](https://docs.datafold.com).
+
+
+    :::info
+      To use the Datafold API, you should first create a Datafold API Key,
+      which should be stored as a local environment variable named DATAFOLD_API_KEY.
+      This can be set in your Datafold Cloud's Settings under the Account page.
+    :::
+  title: Datafold API
+  version: latest
+servers:
+  - description: Default server
+    url: https://app.datafold.com
+security:
+  - ApiKeyAuth: []
 paths:
-  path: /api/v1/monitors
-  method: get
-  servers:
-    - url: https://app.datafold.com
-      description: Default server
-  request:
-    security:
-      - title: ApiKeyAuth
-        parameters:
-          query: {}
-          header:
-            Authorization:
-              type: apiKey
-              description: Use the 'Authorization' header with the format 'Key <api-key>'
-          cookie: {}
-    parameters:
-      path: {}
-      query:
-        page:
+  /api/v1/monitors:
+    get:
+      tags:
+        - Monitors
+      summary: List Monitors
+      operationId: list_monitors_api_v1_monitors_get
+      parameters:
+        - description: The page number to retrieve.
+          in: query
+          name: page
+          required: false
           schema:
-            - type: integer
-              required: false
-              title: Page
-              description: The page number to retrieve.
-              default: 1
-        page_size:
+            default: 1
+            description: The page number to retrieve.
+            title: Page
+            type: integer
+        - description: The number of items to retrieve per page.
+          in: query
+          name: page_size
+          required: false
           schema:
-            - type: integer
-              required: false
-              title: Page Size
-              description: The number of items to retrieve per page.
-              default: 20
-        order_by:
+            default: 20
+            description: The number of items to retrieve per page.
+            title: Page Size
+            type: integer
+        - description: Field to order the monitors by.
+          in: query
+          name: order_by
+          required: false
           schema:
-            - type: enum<string>
-              enum:
-                - id
-                - name
-                - last_triggered
-                - last_run
-                - created_by_id
-              required: false
-              title: SortableFields
-              description: Field to order the monitors by.
-              refIdentifier: '#/components/schemas/SortableFields'
-            - type: 'null'
-              required: false
-              title: Order By
-              description: Field to order the monitors by.
-        sort_order:
+            anyOf:
+              - $ref: '#/components/schemas/SortableFields'
+              - type: 'null'
+            description: Field to order the monitors by.
+            title: Order By
+        - description: Specify the order direction for the monitors.
+          in: query
+          name: sort_order
+          required: false
           schema:
-            - type: enum<string>
-              enum:
-                - asc
-                - desc
-              required: false
-              title: Sort Order
-              description: Specify the order direction for the monitors.
-              default: desc
-        tags:
+            default: desc
+            description: Specify the order direction for the monitors.
+            enum:
+              - asc
+              - desc
+            title: Sort Order
+            type: string
+        - description: Comma-separated tags to filter monitors by.
+          in: query
+          name: tags
+          required: false
           schema:
-            - type: string
-              required: false
-              title: Tags
-              description: Comma-separated tags to filter monitors by.
-      header: {}
-      cookie: {}
-    body: {}
-  response:
-    '200':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              count:
-                allOf:
-                  - description: Total number of monitors.
-                    title: Count
-                    type: integer
-              monitors:
-                allOf:
-                  - description: List of monitor details.
-                    items:
-                      $ref: '#/components/schemas/ApiPublicGetMonitorOut'
-                    title: Monitors
-                    type: array
-              page:
-                allOf:
-                  - description: Current page number in the paginated result.
-                    title: Page
-                    type: integer
-              page_size:
-                allOf:
-                  - description: Number of monitors per page.
-                    title: Page Size
-                    type: integer
-              total_pages:
-                allOf:
-                  - description: Total number of pages available.
-                    title: Total Pages
-                    type: integer
-            title: ApiPublicListMonitorsOut
-            refIdentifier: '#/components/schemas/ApiPublicListMonitorsOut'
-            requiredProperties:
-              - count
-              - monitors
-              - page
-              - page_size
-              - total_pages
-        examples:
-          example:
-            value:
-              count: 123
-              monitors:
-                - created_at: '2023-11-07T05:31:56Z'
-                  enabled: true
-                  id: 123
-                  last_alert: '2023-11-07T05:31:56Z'
-                  last_run: '2023-11-07T05:31:56Z'
-                  modified_at: '2023-11-07T05:31:56Z'
-                  monitor_type: diff
-                  name: <string>
-                  state: ok
-                  tags:
-                    - <string>
-              page: 123
-              page_size: 123
-              total_pages: 123
-        description: Successful Response
-    '422':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              detail:
-                allOf:
-                  - items:
-                      $ref: '#/components/schemas/ValidationError'
-                    title: Detail
-                    type: array
-            title: HTTPValidationError
-            refIdentifier: '#/components/schemas/HTTPValidationError'
-        examples:
-          example:
-            value:
-              detail:
-                - loc:
-                    - <string>
-                  msg: <string>
-                  type: <string>
-        description: Validation Error
-  deprecated: false
-  type: path
+            description: Comma-separated tags to filter monitors by.
+            title: Tags
+            type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiPublicListMonitorsOut'
+          description: Successful Response
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
 components:
   schemas:
+    SortableFields:
+      enum:
+        - id
+        - name
+        - last_triggered
+        - last_run
+        - created_by_id
+      title: SortableFields
+      type: string
+    ApiPublicListMonitorsOut:
+      properties:
+        count:
+          description: Total number of monitors.
+          title: Count
+          type: integer
+        monitors:
+          description: List of monitor details.
+          items:
+            $ref: '#/components/schemas/ApiPublicGetMonitorOut'
+          title: Monitors
+          type: array
+        page:
+          description: Current page number in the paginated result.
+          title: Page
+          type: integer
+        page_size:
+          description: Number of monitors per page.
+          title: Page Size
+          type: integer
+        total_pages:
+          description: Total number of pages available.
+          title: Total Pages
+          type: integer
+      required:
+        - count
+        - monitors
+        - page
+        - page_size
+        - total_pages
+      title: ApiPublicListMonitorsOut
+      type: object
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          title: Detail
+          type: array
+      title: HTTPValidationError
+      type: object
     ApiPublicGetMonitorOut:
       properties:
         created_at:
@@ -234,18 +230,6 @@ components:
         - enabled
       title: ApiPublicGetMonitorOut
       type: object
-    MonitorRunState:
-      enum:
-        - ok
-        - alert
-        - error
-        - learning
-        - checking
-        - created
-        - skipped
-        - cancelled
-      title: MonitorRunState
-      type: string
     ValidationError:
       properties:
         loc:
@@ -267,5 +251,23 @@ components:
         - type
       title: ValidationError
       type: object
+    MonitorRunState:
+      enum:
+        - ok
+        - alert
+        - error
+        - learning
+        - checking
+        - created
+        - skipped
+        - cancelled
+      title: MonitorRunState
+      type: string
+  securitySchemes:
+    ApiKeyAuth:
+      description: Use the 'Authorization' header with the format 'Key <api-key>'
+      in: header
+      name: Authorization
+      type: apiKey
 
 ````

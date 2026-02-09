@@ -1,5 +1,9 @@
 # Source: https://docs.zapier.com/platform/build/test-auth.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.zapier.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Test authentication
 
 > Testing a user's authentication is crucially important, as it is later used to test subsequent trigger and action steps when built.

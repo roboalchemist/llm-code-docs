@@ -1,5 +1,9 @@
 # Source: https://gofastmcp.com/python-sdk/fastmcp-client-tasks.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://gofastmcp.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # tasks
 
 # `fastmcp.client.tasks`
@@ -8,13 +12,13 @@ SEP-1686 client Task classes.
 
 ## Classes
 
-### `TaskNotificationHandler` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/client/tasks.py#L89" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+### `TaskNotificationHandler` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/client/tasks.py#L26" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
 
 MessageHandler that routes task status notifications to Task objects.
 
 **Methods:**
 
-#### `dispatch` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/client/tasks.py#L96" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+#### `dispatch` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/client/tasks.py#L33" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
 
 ```python  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
 dispatch(self, message: Message) -> None
@@ -22,7 +26,7 @@ dispatch(self, message: Message) -> None
 
 Dispatch messages, including task status notifications.
 
-### `Task` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/client/tasks.py#L110" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+### `Task` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/client/tasks.py#L47" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
 
 Abstract base class for MCP background tasks (SEP-1686).
 
@@ -31,7 +35,7 @@ or executes synchronously (graceful degradation per SEP-1686).
 
 **Methods:**
 
-#### `task_id` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/client/tasks.py#L168" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+#### `task_id` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/client/tasks.py#L105" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
 
 ```python  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
 task_id(self) -> str
@@ -39,7 +43,7 @@ task_id(self) -> str
 
 Get the task ID.
 
-#### `returned_immediately` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/client/tasks.py#L173" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+#### `returned_immediately` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/client/tasks.py#L110" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
 
 ```python  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
 returned_immediately(self) -> bool
@@ -52,7 +56,7 @@ Check if server executed the task immediately.
 * True if server executed synchronously (graceful degradation or no task support)
 * False if server accepted background execution
 
-#### `on_status_change` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/client/tasks.py#L208" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+#### `on_status_change` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/client/tasks.py#L145" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
 
 ```python  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
 on_status_change(self, callback: Callable[[GetTaskResult], None | Awaitable[None]]) -> None
@@ -70,7 +74,7 @@ Supports both sync and async callbacks (auto-detected).
 * `callback`: Function to call with GetTaskResult when status changes.
   Can return None (sync) or Awaitable\[None] (async).
 
-#### `status` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/client/tasks.py#L234" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+#### `status` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/client/tasks.py#L171" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
 
 ```python  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
 status(self) -> GetTaskResult
@@ -81,7 +85,7 @@ Get current task status.
 If server executed immediately, returns synthetic completed status.
 Otherwise queries the server for current status.
 
-#### `result` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/client/tasks.py#L265" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+#### `result` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/client/tasks.py#L202" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
 
 ```python  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
 result(self) -> TaskResultT
@@ -91,7 +95,7 @@ Wait for and return the task result.
 
 Must be implemented by subclasses to return the appropriate result type.
 
-#### `wait` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/client/tasks.py#L272" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+#### `wait` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/client/tasks.py#L209" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
 
 ```python  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
 wait(self) -> GetTaskResult
@@ -117,7 +121,7 @@ on status changes when server sends notifications/tasks/status.
 
 * `TimeoutError`: If desired state not reached within timeout
 
-#### `cancel` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/client/tasks.py#L335" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+#### `cancel` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/client/tasks.py#L272" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
 
 ```python  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
 cancel(self) -> None
@@ -131,7 +135,7 @@ execution and move the task to cancelled state.
 Note: If server executed immediately (graceful degradation), this is a no-op
 as there's no server-side task to cancel.
 
-### `ToolTask` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/client/tasks.py#L357" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+### `ToolTask` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/client/tasks.py#L294" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
 
 Represents a tool call that may execute in background or immediately.
 
@@ -140,7 +144,7 @@ or executes synchronously (graceful degradation per SEP-1686).
 
 **Methods:**
 
-#### `result` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/client/tasks.py#L399" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+#### `result` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/client/tasks.py#L336" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
 
 ```python  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
 result(self) -> CallToolResult
@@ -155,7 +159,7 @@ Otherwise waits for background task to complete and retrieves result.
 
 * The parsed tool result (same as call\_tool returns)
 
-### `PromptTask` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/client/tasks.py#L459" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+### `PromptTask` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/client/tasks.py#L396" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
 
 Represents a prompt call that may execute in background or immediately.
 
@@ -164,7 +168,7 @@ or executes synchronously (graceful degradation per SEP-1686).
 
 **Methods:**
 
-#### `result` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/client/tasks.py#L490" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+#### `result` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/client/tasks.py#L427" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
 
 ```python  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
 result(self) -> mcp.types.GetPromptResult
@@ -179,7 +183,7 @@ Otherwise waits for background task to complete and retrieves result.
 
 * The prompt result with messages and description
 
-### `ResourceTask` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/client/tasks.py#L524" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+### `ResourceTask` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/client/tasks.py#L461" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
 
 Represents a resource read that may execute in background or immediately.
 
@@ -188,7 +192,7 @@ or executes synchronously (graceful degradation per SEP-1686).
 
 **Methods:**
 
-#### `result` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/client/tasks.py#L560" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+#### `result` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/client/tasks.py#L497" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
 
 ```python  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
 result(self) -> list[mcp.types.TextResourceContents | mcp.types.BlobResourceContents]
@@ -202,8 +206,3 @@ Otherwise waits for background task to complete and retrieves result.
 **Returns:**
 
 * list\[ReadResourceContents]: The resource contents
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://gofastmcp.com/llms.txt

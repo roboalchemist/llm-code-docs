@@ -1,5 +1,9 @@
 # Source: https://getlago.com/docs/guide/introduction/welcome-to-lago.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://getlago.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Welcome to Lago
 
 > Lago is an open-source software for metering and usage-based billing. It's the best alternative to Chargebee, Recurly or Stripe Billing for companies that need to handle complex billing logic.

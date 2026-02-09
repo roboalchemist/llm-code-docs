@@ -1,6 +1,6 @@
 # Source: https://rspack.dev/blog/announcing-0-1.md
 
-*March 06, 2023*
+_March 06, 2023_
 
 # Announcing Rspack 0.1
 
@@ -10,16 +10,16 @@ Today we are so thrilled to announce that Rspack is officially released! Rspack 
 
 There are a lot of giant JavaScript applications inside ByteDance. They have very complex build configurations/scripts which may cost ten minutes to half an hour. We have tried so many ways to improve the build performance, but all existing solutions in the world lead to some other issues while solving some of them. After tons of work, we understand the requirements for a bundler are:
 
-* Dev startup performance. `npm run dev` is a daily script for developers that may run many times. Reducing the cost of them to one minute from ten minutes is really life-saving.
-* Build performance. `npm run build` is common in CI/CD environments and determines the efficiency of launch. Many giant applications in ByteDance are built in 20 ~ 30 minutes. If we can reduce it to 3~5 minutes, developers will be really productive.
-* Flexible configuration. Giant projects always have complex configurations and can't be standardized. Back in time, we migrated some of the projects to other build tools to improve build performance, and the hardest part is changing the configuration.
-* Production optimization. We tried various solutions in the community and webpack gave the best result in production optimization like chunk-splitting, tree-shaking, etc. A better chunk strategy can help web apps get better metrics performance.
+- Dev startup performance. `npm run dev` is a daily script for developers that may run many times. Reducing the cost of them to one minute from ten minutes is really life-saving.
+- Build performance. `npm run build` is common in CI/CD environments and determines the efficiency of launch. Many giant applications in ByteDance are built in 20 \~ 30 minutes. If we can reduce it to 3\~5 minutes, developers will be really productive.
+- Flexible configuration. Giant projects always have complex configurations and can't be standardized. Back in time, we migrated some of the projects to other build tools to improve build performance, and the hardest part is changing the configuration.
+- Production optimization. We tried various solutions in the community and webpack gave the best result in production optimization like chunk-splitting, tree-shaking, etc. A better chunk strategy can help web apps get better metrics performance.
 
 In conclusion, we decided to build our own bundler, which is `Rspack`.
 
 ## How is Rspack doing now?
 
-The Rspack project started about 11 months ago. Although it's still in the early stages, it can bring 5~10 times improvement to applications' build scripts. The metrics can be better when we finish all the optimizations.
+The Rspack project started about 11 months ago. Although it's still in the early stages, it can bring 5\~10 times improvement to applications' build scripts. The metrics can be better when we finish all the optimizations.
 
 Rspack has completed the architecture of webpack loader. It means you can use all kinds of loaders in the community, such as `babel-loader`, `less-loader`, `svgr` etc. We are planning to support all features of loader in Rspack. By that time, you can use loaders which haven't been supported for now, such as `vue-loader`.
 
@@ -31,17 +31,17 @@ Rspack is now available in all frameworks inside ByteDance, and we are trying to
 
 Rspack can not be shipped today without the inspiration and support of various projects in the community. We would like to show our respect to these predecessors:
 
-* [The webpack team and community](https://webpack.js.org/) for creating a great bundler and ecosystem from which we draw a lot of inspiration.
-* [@sokra](https://github.com/sokra) for the great work on the [webpack](https://github.com/webpack/webpack) project.
-* [@ScriptedAlchemy](https://github.com/ScriptedAlchemy) for creating Module Federation and helping Rspack connect with the community.
-* The [SWC](https://github.com/swc-project/swc) project created by [@kdy1](https://github.com/kdy1), which powers Rspack's code parsing, transformation and minification.
-* The [esbuild](https://github.com/evanw/esbuild) project created by [@evanw](https://github.com/evanw), which inspired the concurrent architecture of Rspack.
-* The [NAPI-RS](https://github.com/napi-rs/napi-rs) project created by [@Brooooooklyn](https://github.com/Brooooooklyn), which powers Rspack's node-binding implementation.
-* The [Parcel](https://github.com/parcel-bundler/parcel) project created by [@devongovett](https://github.com/devongovett) which is the pioneer of rust bundler and inspired Rspack's incremental rebuild design.
-* The [Vite](https://github.com/vitejs/vite) project created by [Evan You](https://github.com/yyx990803) which inspired Rspack's compatibility design of webpack's ecosystem.
-* The [Rolldown](https://github.com/rolldown-rs/rolldown) project created by [Rolldown team](https://github.com/sponsors/rolldown-rs), which explores the possibility of making a performant bundler in Rust with Rollup-compatible API. It inspires the design principles of Rspack.
-* The [html-webpack-plugin](https://github.com/jantimon/html-webpack-plugin) project created by [@jantimon](https://github.com/jantimon), `@rspack/html-plugin` is a fork of [html-webpack-plugin](https://github.com/jantimon/html-webpack-plugin) to avoid some webpack API usage not supported in Rspack.
-* The [Turbopack](https://github.com/vercel/turbo) project which inspired the ast path logic of Rspack.
+- [The webpack team and community](https://webpack.js.org/) for creating a great bundler and ecosystem from which we draw a lot of inspiration.
+- [@sokra](https://github.com/sokra) for the great work on the [webpack](https://github.com/webpack/webpack) project.
+- [@ScriptedAlchemy](https://github.com/ScriptedAlchemy) for creating Module Federation and helping Rspack connect with the community.
+- The [SWC](https://github.com/swc-project/swc) project created by [@kdy1](https://github.com/kdy1), which powers Rspack's code parsing, transformation and minification.
+- The [esbuild](https://github.com/evanw/esbuild) project created by [@evanw](https://github.com/evanw), which inspired the concurrent architecture of Rspack.
+- The [NAPI-RS](https://github.com/napi-rs/napi-rs) project created by [@Brooooooklyn](https://github.com/Brooooooklyn), which powers Rspack's node-binding implementation.
+- The [Parcel](https://github.com/parcel-bundler/parcel) project created by [@devongovett](https://github.com/devongovett) which is the pioneer of rust bundler and inspired Rspack's incremental rebuild design.
+- The [Vite](https://github.com/vitejs/vite) project created by [Evan You](https://github.com/yyx990803) which inspired Rspack's compatibility design of webpack's ecosystem.
+- The [Rolldown](https://github.com/rolldown-rs/rolldown) project created by [Rolldown team](https://github.com/sponsors/rolldown-rs), which explores the possibility of making a performant bundler in Rust with Rollup-compatible API. It inspires the design principles of Rspack.
+- The [html-webpack-plugin](https://github.com/jantimon/html-webpack-plugin) project created by [@jantimon](https://github.com/jantimon), `@rspack/html-plugin` is a fork of [html-webpack-plugin](https://github.com/jantimon/html-webpack-plugin) to avoid some webpack API usage not supported in Rspack.
+- The [Turbopack](https://github.com/vercel/turbo) project which inspired the ast path logic of Rspack.
 
 ## Future plans
 
@@ -70,5 +70,5 @@ Webpack has already accumulated very rich test cases, and in the future Rspack w
 
 ## Trial
 
-* Quick start: [rspack.rs](/guide/start/quick-start.md)
-* GitHub Repo: [github.com/web-infra-dev/rspack](https://github.com/web-infra-dev/rspack)
+- Quick start: [rspack.rs](/guide/start/quick-start.md)
+- GitHub Repo: [github.com/web-infra-dev/rspack](https://github.com/web-infra-dev/rspack)

@@ -1,5 +1,9 @@
 # Source: https://infisical.com/docs/documentation/platform/secrets-mgmt/concepts/secrets-rotation.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://infisical.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Secrets Rotation
 
 > Learn what secrets rotation is, why it matters, and how Infisical enables it.

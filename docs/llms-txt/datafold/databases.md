@@ -1,5 +1,9 @@
 # Source: https://docs.datafold.com/integrations/databases.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.datafold.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Set Up Your Data Connection
 
 > Set up your Data Connection with Datafold.
@@ -25,13 +29,15 @@
 
   <Card title="Google Cloud Storage (GCS)" icon="file" href="/integrations/databases/google-cloud-storage" horizontal />
 
-  <Card title="MongoDB" icon="file" href="/integrations/databases/mongodb" horizontal />
-
   <Card title="MySQL" icon="file" href="/integrations/databases/mysql" horizontal />
 
   <Card title="MariaDB" icon="file" href="/integrations/databases/mariadb" horizontal />
 
+  <Card title="Microsoft SQL Server" icon="file" href="/integrations/databases/sql-server" horizontal />
+
   <Card title="Netezza" icon="file" href="/integrations/databases/netezza" horizontal />
+
+  <Card title="OpenText Analytics Database (Vertica)" icon="file" href="/integrations/databases/vertica" horizontal />
 
   <Card title="Oracle" icon="file" href="/integrations/databases/oracle" horizontal />
 
@@ -43,13 +49,9 @@
 
   <Card title="SAP HANA" icon="file" href="/integrations/databases/sap-hana" horizontal />
 
+  <Card title="Starburst" icon="file" href="/integrations/databases/starburst" horizontal />
+
   <Card title="Teradata" icon="file" href="/integrations/databases/teradata" horizontal />
 
   <Card title="Trino" icon="file" href="/integrations/databases/trino" horizontal />
-
-  <Card title="Vertica" icon="file" href="/integrations/databases/vertica" horizontal />
-
-  <Card title="Microsoft SQL Server" icon="file" href="/integrations/databases/sql-server" horizontal />
-
-  <Card title="Starburst" icon="file" href="/integrations/databases/starburst" horizontal />
 </CardGroup>

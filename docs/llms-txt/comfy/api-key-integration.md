@@ -1,5 +1,9 @@
 # Source: https://docs.comfy.org/development/comfyui-server/api-key-integration.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.comfy.org/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # ComfyUI Account API Key Integration
 
 > This article explains how to use ComfyUI Account API Key to call paid API nodes in headless mode

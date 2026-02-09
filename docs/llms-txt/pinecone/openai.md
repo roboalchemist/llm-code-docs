@@ -1,5 +1,9 @@
 # Source: https://docs.pinecone.io/integrations/openai.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pinecone.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # OpenAI
 
 > Using OpenAI and Pinecone to combine deep learning capabilities for embedding generation with efficient vector storage and retrieval

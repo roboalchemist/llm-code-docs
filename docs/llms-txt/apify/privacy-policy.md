@@ -6,9 +6,9 @@ Last Updated: February 10, 2025
 
 Welcome to the Apify Privacy Policy!
 
-Apify Technologies s.r.o. ("**Apify**," "**we**," "**our**" or "**us**") operates website apify.com (“**Website**”), provides its customers with the computer platform “Apify” (the "**Platform**") and some other services and functions, as specified in the https://docs.apify.com/legal/general-terms-and-conditions.md (the "**Services**").
+Apify Technologies s.r.o. ("**Apify**," "**we**," "**our**" or "**us**") operates website apify.com (“**Website**”), provides its customers with the computer platform “Apify” (the "**Platform**") and some other services and functions, as specified in the [Apify General Terms and Conditions](https://docs.apify.com/legal/general-terms-and-conditions.md) (the "**Services**").
 
-Apify is committed to transparency in the processing of information. This is where we describe how we handle your personal data. “**Personal data**” is any information that is directly linked or can be linked to you. Capitalized terms not otherwise defined in this Privacy Policy will have the meaning outlined in the https://docs.apify.com/legal/general-terms-and-conditions.md.
+Apify is committed to transparency in the processing of information. This is where we describe how we handle your personal data. “**Personal data**” is any information that is directly linked or can be linked to you. Capitalized terms not otherwise defined in this Privacy Policy will have the meaning outlined in the [Apify General Terms and Conditions](https://docs.apify.com/legal/general-terms-and-conditions.md).
 
 ## When the Privacy Policy applies
 
@@ -56,7 +56,7 @@ Like most websites and technology services delivered over the internet, we autom
 
 ### Cookies
 
-When you visit our Website or use our Platform or our Services, we may collect some personal data in the form of cookies (a cookie is a small data file placed on your computer's hard drive that contains information that allows us to track your activity on the Website and Platform). The cookie does not contain personal data; however, if you provide us with some personal data, the cookies may act as an identifier to tie your personal data to your IP address or computer. We are committed to following the highest standards of privacy protection in relation to cookies. Other than the cookies necessary for the Website to function, you can always choose not to allow the cookies while using our Website or Platform. Read more information about the cookies we use and how we use them and ensure your privacy at the same time in our https://docs.apify.com/legal/cookie-policy.md.
+When you visit our Website or use our Platform or our Services, we may collect some personal data in the form of cookies (a cookie is a small data file placed on your computer's hard drive that contains information that allows us to track your activity on the Website and Platform). The cookie does not contain personal data; however, if you provide us with some personal data, the cookies may act as an identifier to tie your personal data to your IP address or computer. We are committed to following the highest standards of privacy protection in relation to cookies. Other than the cookies necessary for the Website to function, you can always choose not to allow the cookies while using our Website or Platform. Read more information about the cookies we use and how we use them and ensure your privacy at the same time in our [Cookie Policy](https://docs.apify.com/legal/cookie-policy.md).
 
 ## How We Use Your Personal Data
 

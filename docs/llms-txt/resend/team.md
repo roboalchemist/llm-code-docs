@@ -1,5 +1,9 @@
 # Source: https://resend.com/docs/dashboard/settings/team.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://resend.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Managing Teams
 
 > Manage your account across multiple teams
@@ -46,10 +50,17 @@ Upon confirmation, your team member will be given the new role.
 
 ## Leave your Resend team
 
-If your team has another admin, you can leave your team by following these steps:
+You can leave your team by following these steps:
 
 1. Navigate to your [**Team Settings**](https://resend.com/settings/team).
 2. Under members, click on <span className="inline-block align-middle"><Icon icon="ellipsis" iconType="solid" /></span> next to your name for more options.
 3. Select the **Leave Team** button.
 
 Upon confirmation, you will leave your team.
+
+<Note>
+  If you are the last member of the team, leaving will permanently delete the
+  team and all its data. You will be prompted to confirm this action by typing
+  **DELETE**. If the team still has other members, but you are the only admin,
+  you will be prompted to promote another member to admin before leaving.
+</Note>

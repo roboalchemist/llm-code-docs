@@ -2,21 +2,9 @@
 
 # Source: https://docs.frigade.com/guides/custom/collections.md
 
-# Source: https://docs.frigade.com/platform/collections.md
-
-# Source: https://docs.frigade.com/guides/custom/collections.md
-
-# Source: https://docs.frigade.com/platform/collections.md
-
-# Source: https://docs.frigade.com/guides/custom/collections.md
-
-# Source: https://docs.frigade.com/platform/collections.md
-
-# Source: https://docs.frigade.com/guides/custom/collections.md
-
-# Source: https://docs.frigade.com/platform/collections.md
-
-# Source: https://docs.frigade.com/guides/custom/collections.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.frigade.com/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Using Custom Components in Collections
 
@@ -34,7 +22,7 @@ To start, let's get a Collection set up with a Custom Flow in it:
     2. Use the three dot menu to rename your flow to "The Rug"
     3. In the Advanced Flow editor, replace the default YAML with the following:
 
-    ```yaml
+    ```yaml  theme={"system"}
     type: macguffin
     title: The Rug
     subtitle: It really ties the room together.
@@ -63,7 +51,7 @@ Let's fix that by wiring up a new `<Macguffin>` Component and registering it wit
   <Step title="Create a Macguffin Component">
     Paste the following code into `Macguffin.tsx`
 
-    ```jsx
+    ```jsx  theme={"system"}
     import { Flow, type FlowProps } from '@frigade/react';
 
     export function Macguffin(props: FlowProps) {
@@ -83,7 +71,7 @@ Let's fix that by wiring up a new `<Macguffin>` Component and registering it wit
   <Step title="Pass your Component into the Provider">
     Add the `flowTypes` prop to `<Frigade.Provider>` to map your new `<Macguffin>` Component to the `macguffin` Flow type
 
-    ```jsx
+    ```jsx  theme={"system"}
     import * as Frigade from '@frigade/react';
 
     import { Macguffin } from 'Macguffin.tsx'

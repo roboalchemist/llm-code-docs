@@ -1,4 +1,4 @@
-# Source: https://huggingface.co/docs/transformers/v5.0.0rc1/model_doc/madlad-400.md
+# Source: https://huggingface.co/docs/transformers/v5.0.0/model_doc/madlad-400.md
 
 # MADLAD-400
 

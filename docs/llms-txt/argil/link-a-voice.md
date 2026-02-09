@@ -1,5 +1,9 @@
 # Source: https://docs.argil.ai/resources/link-a-voice.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.argil.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Link a new voice to your avatar
 
 > Change the default voice of your avatar

@@ -1,10 +1,10 @@
-# Source: https://docs.intelligems.io/offer-experiences/offers-limits.md
+# Source: https://docs.intelligems.io/offer-personalizations/offers-limits.md
 
 # Offers Limits
 
-## Understanding the Offer Limit for Experiences and Offer Tests
+## Understanding the Offer Limit for Personalizations and Offer Tests
 
-To ensure smooth performance and prevent conflicts with other third-party discount apps (such as those integrated via Shopify), our platform enforces an **offer limit** on the number of *active* offers you can run at any given time. This includes Offers related to both **Experiences** and **Offer Tests**.
+To ensure smooth performance and prevent conflicts with other third-party discount apps (such as those integrated via Shopify), our platform enforces an **offer limit** on the number of *active* offers you can run at any given time. This includes Offers related to both **Personalizations** and **Offer Tests**.
 
 ### What is the Offer Limit?
 
@@ -22,18 +22,18 @@ Offers that count towards this limit include those in the following states:
 
 Once you reach the offer limit, you won’t be able to create or enable new offers until space is made. This is where archiving comes into play:
 
-1. **Archiving an Experience** allows you to free up space without having to delete an offer entirely.
-2. **Archived Experiences**:
-   * Are labeled as archived in the Experiences page.
+1. **Archiving a Personalization** allows you to free up space without having to delete an offer entirely.
+2. **Archived Personalizations**:
+   * Are labeled as archived in the Personalizations page.
    * Can be **un-archived** as long as you’re within your offer limit.
 
 **Note**: You **cannot archive** an active (live) offer without first confirming that you want to end it.
 
-#### How Do I Archive an Experience?
+#### How Do I Archive a Personalization?
 
-To archive an Experience, navigate to the Experiences page. Locate the card for the Experience you'd like to archive, then click the three dots on the right-hand side of the card to access more options and select the archive option.
+To archive a Personalization, navigate to the Personalizations page. Locate the card for the Personalization you'd like to archive, then click the three dots on the right-hand side of the card to access more options and select the archive option.
 
-Alternatively, you can also archive an Experience from its detail page. Once inside an Experience, the archive option can be found by clicking the three dots in the same spot on the top header.
+Alternatively, you can also archive a Personalization from its detail page. Once inside an Personalization, the archive option can be found by clicking the three dots in the same spot on the top header.
 
 What Should I Do if I Hit the Limit?
 

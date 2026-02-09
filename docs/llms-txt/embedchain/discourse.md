@@ -1,5 +1,9 @@
 # Source: https://docs.embedchain.ai/components/data-sources/discourse.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.embedchain.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # 🗨️ Discourse
 
 You can now easily load data from your community built with [Discourse](https://discourse.org/).
@@ -8,7 +12,7 @@ You can now easily load data from your community built with [Discourse](https://
 
 1. Setup the Discourse Loader with your community url.
 
-```Python
+```Python  theme={null}
 from embedchain.loaders.discourse import DiscourseLoader
 
 dicourse_loader = DiscourseLoader(config={"domain": "https://community.openai.com"})
@@ -16,7 +20,7 @@ dicourse_loader = DiscourseLoader(config={"domain": "https://community.openai.co
 
 2. Once you setup the loader, you can create an app and load data using the above discourse loader
 
-```Python
+```Python  theme={null}
 import os
 from embedchain.pipeline import Pipeline as App
 
@@ -35,7 +39,7 @@ NOTE: The `add` function of the app will accept any executable search query to l
 
 3. We automatically create a chunker to chunk your discourse data, however if you wish to provide your own chunker class. Here is how you can do that:
 
-```Python
+```Python  theme={null}
 
 from embedchain.chunkers.discourse import DiscourseChunker
 from embedchain.config.add_config import ChunkerConfig

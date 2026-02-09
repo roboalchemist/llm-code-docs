@@ -1,5 +1,9 @@
 # Source: https://docs.pinecone.io/guides/assistant/chat-with-assistant.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pinecone.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Chat through the standard interface
 
 > Chat with your assistant using the standard interface and API.
@@ -72,7 +76,7 @@ The following example sends a message and requests a default response:
   curl "https://prod-1-data.ke.pinecone.io/assistant/chat/$ASSISTANT_NAME" \
     -H "Api-Key: $PINECONE_API_KEY" \
     -H "Content-Type: application/json" \
-    -H "X-Pinecone-API-Version: 2025-04" \
+    -H "X-Pinecone-Api-Version: 2025-10" \
     -d '{
     "messages": [
       {
@@ -141,6 +145,8 @@ The example above returns a result like the following:
 
 ### Streaming response
 
+Streaming responses can improve perceived latency by allowing users to see content as it's generated, rather than waiting for the complete response. This creates a more responsive chat experience, especially for longer responses.
+
 The following example sends a message and requests a streaming response:
 
 <Note>
@@ -193,7 +199,7 @@ The following example sends a message and requests a streaming response:
   curl "https://prod-1-data.ke.pinecone.io/assistant/chat/$ASSISTANT_NAME" \
     -H "Api-Key: $PINECONE_API_KEY" \
     -H "Content-Type: application/json" \
-    -H "X-Pinecone-API-Version: 2025-04" \
+    -H "X-Pinecone-Api-Version: 2025-10" \
     -d '{
     "messages": [
       {
@@ -276,7 +282,7 @@ The following example uses the `json_response` parameter to instruct the assista
   curl "https://prod-1-data.ke.pinecone.io/assistant/chat/$ASSISTANT_NAME" \
     -H "Api-Key: $PINECONE_API_KEY" \
     -H "Content-Type: application/json" \
-    -H "X-Pinecone-API-Version: 2025-04" \
+    -H "X-Pinecone-Api-Version: 2025-10" \
     -d '{
     "messages": [
       {
@@ -452,10 +458,18 @@ Pinecone Assistant supports the following models:
 
 * `gpt-4o` (default)
 * `gpt-4.1`
+* `gpt-5`
 * `o4-mini`
-* `claude-3-5-sonnet`
-* `claude-3-7-sonnet`
+* `claude-sonnet-4-5`
 * `gemini-2.5-pro`
+
+<Note>
+  Anthropic has [deprecated](https://platform.claude.com/docs/en/about-claude/model-deprecations) the Claude 3.5 Sonnet and Claude 3.7 Sonnet models. Assistant automatically routes chat requests that specify `claude-3-5-sonnet` or `claude-3-7-sonnet` to `claude-sonnet-4-5` at the same price.
+</Note>
+
+<Tip>
+  For chat applications, we recommend using GPT models (`gpt-4o`, `gpt-4.1`, `gpt-5`, or `o4-mini`) as they typically provide faster response times compared to other models.
+</Tip>
 
 To choose a non-default model for your assistant, set the `model` parameter in the request:
 
@@ -504,7 +518,7 @@ To choose a non-default model for your assistant, set the `model` parameter in t
   curl "https://prod-1-data.ke.pinecone.io/assistant/chat/$ASSISTANT_NAME" \
     -H "Api-Key: $PINECONE_API_KEY" \
     -H "Content-Type: application/json" \
-    -H "X-Pinecone-API-Version: 2025-04" \
+    -H "X-Pinecone-Api-Version: 2025-10" \
     -d '{
     "messages": [
       {
@@ -554,7 +568,7 @@ In the following example, the `messages` object includes prior messages that are
   curl "https://prod-1-data.ke.pinecone.io/assistant/chat/$ASSISTANT_NAME" \
     -H "Api-Key: $PINECONE_API_KEY " \
     -H "Content-Type: application/json" \
-    -H "X-Pinecone-API-Version: 2025-04" \
+    -H "X-Pinecone-Api-Version: 2025-10" \
     -d '{
     "messages": [
       {
@@ -640,7 +654,7 @@ You can [filter which documents to use for chat completions](/guides/assistant/f
   curl "https://prod-1-data.ke.pinecone.io/assistant/chat/$ASSISTANT_NAME" \
     -H "Api-Key: $PINECONE_API_KEY "\
     -H "Content-Type: application/json" \
-    -H "X-Pinecone-API-Version: 2025-04" \
+    -H "X-Pinecone-Api-Version: 2025-10" \
     -d '{
     "messages": [
       {
@@ -709,7 +723,7 @@ While additional tokens will be used for other parameters (e.g., the system prom
   curl "https://prod-1-data.ke.pinecone.io/assistant/chat/$ASSISTANT_NAME" \
     -H "Api-Key: $PINECONE_API_KEY" \
     -H "Content-Type: application/json" \
-    -H "X-Pinecone-API-Version: 2025-04" \
+    -H "X-Pinecone-Api-Version: 2025-10" \
     -d '{
     "messages": [
       {
@@ -782,7 +796,7 @@ To control the sampling temperature for a model, set the `temperarture` paramete
   curl "https://prod-1-data.ke.pinecone.io/assistant/chat/$ASSISTANT_NAME" \
     -H "Api-Key: $PINECONE_API_KEY" \
     -H "Content-Type: application/json" \
-    -H "X-Pinecone-API-Version: 2025-04" \
+    -H "X-Pinecone-Api-Version: 2025-10" \
     -d '{
     "messages": [
       {
@@ -810,7 +824,7 @@ ASSISTANT_NAME="example-assistant"
 curl "https://prod-1-data.ke.pinecone.io/assistant/chat/$ASSISTANT_NAME" \
   -H "Api-Key: $PINECONE_API_KEY" \
   -H "Content-Type: application/json" \
-  -H "X-Pinecone-API-Version: 2025-04" \
+  -H "X-Pinecone-Api-Version: 2025-10" \
   -d '{
   "messages": [
     {

@@ -2,25 +2,15 @@
 
 # Source: https://docs.windsurf.com/plugins/accounts/usage.md
 
-# Source: https://docs.windsurf.com/windsurf/accounts/usage.md
-
-# Source: https://docs.windsurf.com/plugins/accounts/usage.md
-
-# Source: https://docs.windsurf.com/windsurf/accounts/usage.md
-
-# Source: https://docs.windsurf.com/plugins/accounts/usage.md
-
-# Source: https://docs.windsurf.com/windsurf/accounts/usage.md
-
-# Source: https://docs.windsurf.com/plugins/accounts/usage.md
-
-# Source: https://docs.windsurf.com/windsurf/accounts/usage.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.windsurf.com/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Plans and Credit Usage
 
-Prompt credits are consumed whenever a message is sent to Cascade with a premium model. Every model has it's own credit multiplier with the default message costing 1 credit. You can view all available models and their associated costs on the [models page.](/windsurf/models)
+> Understand Windsurf pricing plans, prompt credits, usage tracking, automatic refills, and how to upgrade from Free to Pro, Teams, or Enterprise.
 
-Prompt credits are issued monthly according to your plan. They do not roll over to the next month—whether or not you’ve used them, your credit balance will reset at the start of each new billing cycle. Once your monthly prompt credits run out, if you have add-on credits, those will automatically be used instead. Unlike prompt credits, add-on credits do not expire and can be carried over until they’re fully used.
+Prompt credits are consumed whenever a message is sent to Cascade with a premium model. Every model has it's own credit multiplier with the default message costing 1 credit. You can view all available models and their associated costs on the [models page.](/windsurf/models)
 
 Upon using all of your credits, select premium models will no longer be accessible; however, you will still be able to use several other models that we've made available for free.
 
@@ -30,15 +20,11 @@ The [Free](#using-a-free-plan) plan includes:
 
 * 25 prompt credits
 * Unlimited Windsurf Tab
-* Unlimited Previews
-* 1 App Deploy per day
 
 The 2 week [Pro Trial](#using-a-free-pro-trial) includes:
 
 * 100 prompt credits
 * Unlimited Windsurf Tab
-* Unlimited Previews
-* 10 App Deploys per day
 
 The [Pro](#using-pro-plan) plan includes everything in Free, but with:
 
@@ -66,7 +52,7 @@ The [Enterprise](#using-enterprise-plan) plan includes everything in Teams, but 
 
 If you run out of credits on any paid plan, you will have the option of [purchasing additional credits](#purchasing-additional-credits) or setting up [Automatic Credit Refills](#automatic-credit-refills).
 
-After upgrading, your paid plan will start immediately and you'll have access to premium models again. To learn more about the quotas and features per pricing plan, [click here](https://windsurf.com/pricing).
+After upgrading, your paid plan will start immediately and you'll have access to premium models again. To learn more about the quotas and features per pricing plan, [click here](https://codeium.com/pricing).
 
 ## Errors
 
@@ -84,13 +70,13 @@ Go to the Cascade usage directly by clicking on the overflow menu, and then sele
 
 View the settings panel by clicking on "Windsurf Settings" on the status bar, followed by selecting the "Plan Info" tab.
 
-You can also view it on your plan page at [windsurf.com/subscription/manage-plan](https://windsurf.com/subscription/manage-plan) after you're authenticated.
+You can also view it on your plan page at [codeium.com/plan](https://codeium.com/plan) after you're authenticated.
 
 ## Upgrading to a paid plan
 
-To learn more about paid features or to upgrade to a paid plan, [click here](https://windsurf.com/subscription/manage-plan). Paid plans include Pro for individuals, Teams for organizations, and Enterprise for larger companies.
+To learn more about paid features or to upgrade to a paid plan, [click here](https://codeium.com/plan). Paid plans include Pro for individuals, Teams for organizations, and Enterprise for larger companies.
 
-We accept all major credit cards, Apple Pay, Cash App Pay, Google Pay, Link, WeChat Pay, and Alipay. If you have a payment method not listed, please reach out to us at [support](https://windsurf.com/support). You may need to disable your VPN to view the relevant payment methods for your region.
+We accept all major credit cards, Apple Pay, Cash App Pay, Google Pay, Link, WeChat Pay, and Alipay. If you have a payment method not listed, please reach out to us at [support](https://codeium.com/support). You may need to disable your VPN to view the relevant payment methods for your region.
 
 ## What happens when you run out of prompt credits?
 
@@ -108,15 +94,31 @@ Automatic Credit Refills are purchased in configurable increments (multiples of 
 
 ## Purchasing additional credits
 
-If you run out of prompt credits, you can purchase additional credits in the [billing website](https://windsurf.com/plan). Additional prompt credits can be purchased at a rate of \$10 for 250 credits for Pro users.
+If you run out of prompt credits, you can purchase additional credits in the [billing website](https://codeium.com/plan). Additional prompt credits can be purchased at a rate of \$10 for 250 credits for Pro users.
 
 For Team and Enterprise plans, additional credits are purchased within and treated as a pool amongst all members of the team at a rate of \$40 for 1000 pooled credits. Please contact your Teams admin to purchase more credits if you're on a team plan.
+
+## Add-on Credit Transfers
+
+If you upgrade your personal Pro plan to a Teams plan, any unused add-on prompt credits on your Pro account are moved over to your new team (and become part of the team's pooled add-on credits). If you're invited to a different team instead, your add-on credits do not automatically move with your user—you'll need to use them before switching, or submit a Support ticket to have them transferred.
+
+## Seat-Based Credit Allocation (Teams & Enterprise)
+
+On Teams and Enterprise plans, prompt credits are allocated on a per-seat basis. Each seat in your plan receives a fixed number of credits at the start of each billing cycle (500 for Teams, 1000 for Enterprise). These credits are tied to the seat itself, not the specific user occupying it.
+
+If a team member leaves mid-billing cycle and a new member joins to fill that seat, the new member inherits the seat's existing credit usage. For example, if your plan has 50 seats and all are in use, and one member departs after using 300 of their 500 credits, the person who takes that seat will start with only 200 credits remaining for the rest of the billing period. This is because the seat's credits were partially consumed before the new member arrived.
+
+When this happens, you may see a notice on your usage page indicating that you joined a seat that was previously used during the current billing period. This is expected behavior and does not indicate any error with your account. Your credits will fully reset to the plan's standard allocation at the start of the next billing cycle.
+
+<Tip>
+  If you are an admin managing a team where members frequently rotate, keep in mind that adding new members to recently vacated seats may result in those members starting with fewer credits for the remainder of the billing period. All seats reset to their full credit allocation at the beginning of each new billing cycle.
+</Tip>
 
 ## Usage examples
 
 To explain how credits work, here's a simple example:
 
-When you send a message to Cascade with a premium model, 1 Prompt credit is consumed. It doesn't matter how many actions Cascade takes to fulfill your request - whether it searches your codebase, analyzes files, or makes edits - you only pay for the initial prompt.
+When you send a message to Cascade with a premium model, 1 prompt credit is consumed. It doesn't matter how many actions Cascade takes to fulfill your request - whether it searches your codebase, analyzes files, or makes edits - you only pay for the initial prompt.
 
 This simplified system makes it much easier to predict and manage your usage. No more complicated calculations of flow actions or different credit types.
 
@@ -183,14 +185,14 @@ Additional prompt credits can be purchased at a rate of \$40 for 1000 pooled cre
 
 Coming soon, Enterprise will be self-serviceable with month-to-month pricing. The Enterprise plan includes self-serve SSO integration and enhanced security features.
 
+For enterprise support, account management, and more involved deployments such as Custom Deployment Options or FedRAMP under an annual commitment, [contact our sales team](https://windsurf.com/contact/enterprise). For standard security collateral, visit [trust.windsurf.com](https://trust.windsurf.com).
+
 ### Using a Free plan
 
 The Free plan comes with:
 
 * 25 prompt credits/month
 * Unlimited Windsurf Tab
-* Unlimited Previews
-* 1 App Deploy per day
 
 Windsurf can still be used for free after your credits are exhausted! There are several models available that cost 0 credits to use.
 
@@ -200,7 +202,7 @@ When editing code, you'll have access to unlimited Tab completions and AI comman
 
 You can now update your payment method, billing details, tax ID, and view past invoices directly from your Windsurf account. Follow the steps below to make changes securely via Stripe.
 
-Visit [windsurf.com/subscription/manage-plan](https://windsurf.com/subscription/manage-plan) and log into your account if prompted.
+Visit [windsurf.com/team/manage-plan](https://windsurf.com/team/manage-plan) and log into your account if prompted.
 You can view and download your previous invoices and receipts.
 
 * On the billing page, select the Update Payment button.
@@ -211,7 +213,7 @@ You can view and download your previous invoices and receipts.
 
 ## Canceling your paid plan
 
-As a paid individial user, you can cancel your plan at any time by browsing to the [windsurf.com/subscription/manage-plan](https://windsurf.com/subscription/manage-plan) page.
+As a paid individial user, you can cancel your plan at any time by browsing to the [windsurf.com/subscription/plan-management](https://windsurf.com/subscription/plan-management) page.
 Upon canceling your paid plan, you'll still have access to all of your credits from your monthly quota and add-on prompt credits until the end of the usage month. After the usage month, all add-on prompt credits will expire and you'll be downgraded to the Free plan where you'll be provided a limited number of prompt credits.
 If you change your mind and decide not to cancel before the end of the usage month, you can renew your plan by visiting the billing page.
 

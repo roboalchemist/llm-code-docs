@@ -1,5 +1,9 @@
 # Source: https://docs.anchorbrowser.io/essentials/tool-building.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.anchorbrowser.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Tools - Browser Control API
 
 Anchor Browser offers API endpoints (also known as "agentic tools") to simplify the usage of the browser, and enable browser utilization *without any coding*

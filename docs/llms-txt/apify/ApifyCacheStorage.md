@@ -18,7 +18,7 @@ It can be set as a storage for Scrapy's built-in `HttpCacheMiddleware`, which ca
 
 ## Methods<!-- -->[**](#Methods)
 
-### [**](#__init__)[**](https://github.com/apify/apify-sdk-python/blob/f050b2684cf6d5e88bafe381599a3653d220ec14//src/apify/scrapy/extensions/_httpcache.py#L38)\_\_init\_\_
+### [**](#__init__)[**](https://github.com/apify/apify-sdk-python/blob/a01870a180ed391b8b6cad8d1894f12bcc879136//src/apify/scrapy/extensions/_httpcache.py#L38)\_\_init\_\_
 
 * ****\_\_init\_\_**(settings): None
 
@@ -28,7 +28,7 @@ It can be set as a storage for Scrapy's built-in `HttpCacheMiddleware`, which ca
 
   #### Returns None
 
-### [**](#close_spider)[**](https://github.com/apify/apify-sdk-python/blob/f050b2684cf6d5e88bafe381599a3653d220ec14//src/apify/scrapy/extensions/_httpcache.py#L69)close\_spider
+### [**](#close_spider)[**](https://github.com/apify/apify-sdk-python/blob/a01870a180ed391b8b6cad8d1894f12bcc879136//src/apify/scrapy/extensions/_httpcache.py#L69)close\_spider
 
 * ****close\_spider**(\_, current\_time): None
 
@@ -43,7 +43,7 @@ It can be set as a storage for Scrapy's built-in `HttpCacheMiddleware`, which ca
 
   #### Returns None
 
-### [**](#open_spider)[**](https://github.com/apify/apify-sdk-python/blob/f050b2684cf6d5e88bafe381599a3653d220ec14//src/apify/scrapy/extensions/_httpcache.py#L46)open\_spider
+### [**](#open_spider)[**](https://github.com/apify/apify-sdk-python/blob/a01870a180ed391b8b6cad8d1894f12bcc879136//src/apify/scrapy/extensions/_httpcache.py#L46)open\_spider
 
 * ****open\_spider**(spider): None
 
@@ -57,7 +57,7 @@ It can be set as a storage for Scrapy's built-in `HttpCacheMiddleware`, which ca
 
   #### Returns None
 
-### [**](#retrieve_response)[**](https://github.com/apify/apify-sdk-python/blob/f050b2684cf6d5e88bafe381599a3653d220ec14//src/apify/scrapy/extensions/_httpcache.py#L112)retrieve\_response
+### [**](#retrieve_response)[**](https://github.com/apify/apify-sdk-python/blob/a01870a180ed391b8b6cad8d1894f12bcc879136//src/apify/scrapy/extensions/_httpcache.py#L112)retrieve\_response
 
 * ****retrieve\_response**(\_, request, current\_time): Response | None
 
@@ -73,7 +73,7 @@ It can be set as a storage for Scrapy's built-in `HttpCacheMiddleware`, which ca
 
   #### Returns Response | None
 
-### [**](#store_response)[**](https://github.com/apify/apify-sdk-python/blob/f050b2684cf6d5e88bafe381599a3653d220ec14//src/apify/scrapy/extensions/_httpcache.py#L144)store\_response
+### [**](#store_response)[**](https://github.com/apify/apify-sdk-python/blob/a01870a180ed391b8b6cad8d1894f12bcc879136//src/apify/scrapy/extensions/_httpcache.py#L144)store\_response
 
 * ****store\_response**(\_, request, response): None
 

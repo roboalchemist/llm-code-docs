@@ -1,5 +1,9 @@
 # Source: https://docs.unstructured.io/support/how-to/invoice-issue.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.unstructured.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Raise an invoice issue or request a refund
 
 To raise an issue about an unpaid invoice that Unstructured has sent you, or to request a refund for an invoice that you have already paid, email Unstructured Support at [support@unstructured.io](mailto:support@unstructured.io).

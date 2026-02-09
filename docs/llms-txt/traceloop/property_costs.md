@@ -1,5 +1,9 @@
 # Source: https://www.traceloop.com/docs/api-reference/costs/property_costs.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.traceloop.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Get costs by property
 
 Query your LLM costs broken down by a specific association property. This helps you understand how costs are distributed across different values of a property (e.g., by user\_id, session\_id, or any other association property you track).
@@ -84,8 +88,3 @@ The API can return special values:
 * `"No_Association"` as property\_name if no spans have the requested association properties
 * `"No_Value"` as a value for spans that don't have a value for the specified property
 * `"Unknown_Value"` for spans where the property exists but has an empty value
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://www.traceloop.com/docs/llms.txt

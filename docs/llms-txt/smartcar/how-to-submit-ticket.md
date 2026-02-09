@@ -1,5 +1,9 @@
 # Source: https://smartcar.com/docs/help/how-to-submit-ticket.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://smartcar.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 > Learn how to submit a support ticket through the Smartcar Support Center, including step-by-step instructions and eligibility details based on your plan.
 
 # How to Submit a Ticket in the Support Center

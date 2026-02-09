@@ -2,10 +2,6 @@
 
 # Source: https://vitest.dev/config/environment.md
 
-# Source: https://vitest.dev/guide/environment.md
-
-# Source: https://vitest.dev/config/environment.md
-
 ---
 url: /config/environment.md
 ---

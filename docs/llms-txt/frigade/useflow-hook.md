@@ -1,5 +1,9 @@
 # Source: https://docs.frigade.com/guides/custom/useflow-hook.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.frigade.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # useFlow Hook
 
 The `useFlow` hook sits one layer deeper in the React SDK than the [Flow Component](/guides/custom/flow-component) and serves as the connection between our vanilla JS data layer and React Components.
@@ -12,14 +16,14 @@ Additionally, we'll leverage a series of prebuilt Frigade component primitives s
 The final result looks like this:
 
 <Frame caption="A custom built progress badge">
-  <img src="https://mintlify.s3.us-west-1.amazonaws.com/frigade-docs/images/guides/custom/custom-progress-badge.png" style={{maxWidth: '400px'}} />
+  <img src="https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/guides/custom/custom-progress-badge.png?fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=9db56ca86dd2bd80c270248acceb3b6f" style={{maxWidth: '400px'}} data-og-width="700" width="700" data-og-height="350" height="350" data-path="images/guides/custom/custom-progress-badge.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/guides/custom/custom-progress-badge.png?w=280&fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=a1c94bd4415bbad009f37e70ce372d4e 280w, https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/guides/custom/custom-progress-badge.png?w=560&fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=e39ecc540c1f4a3f7e2bec87d626e781 560w, https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/guides/custom/custom-progress-badge.png?w=840&fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=88811d8bf9c7224d4f69889fc4d54b2f 840w, https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/guides/custom/custom-progress-badge.png?w=1100&fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=4e5b634471ad031429613b18b7d7ac7e 1100w, https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/guides/custom/custom-progress-badge.png?w=1650&fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=b91842a120890f3a7f716c8aace60a02 1650w, https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/guides/custom/custom-progress-badge.png?w=2500&fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=b1a7f358bd45ea049003447218d9efa2 2500w" />
 </Frame>
 
 First, create a new Flow in the Frigade Dashboard by navigating to the **Flows** tab and clicking **Create Flow**. Select **Custom Flow** as the Flow type.
 
 You can use any code you wish for the YAML configuration, however, we recommend starting with the following example:
 
-```yaml
+```yaml  theme={"system"}
 steps:
     # Only the id field is required per step.
   - id: unique-step-id-1
@@ -36,7 +40,7 @@ steps:
 
 We're now ready to wire in the frontend code. Start by simply importing the `useFlow` hook. We'll then use the hook to get the flow data and calculate the number of steps completed and the total number of steps:
 
-```jsx
+```jsx  theme={"system"}
 import { useFlow } from '@frigade/react';
 
 export function ProgressBadge() {
@@ -49,9 +53,9 @@ export function ProgressBadge() {
 
 To see the full list of methods and fields in the `flow` object, see the [Flow API Reference](/sdk/js/flow).
 
-Now, all we have left to do is to build the UI. We'll use the `Box` and `Text` components from the Frigade React SDK to build the UI. We'll also use the `IconRender` component to render the ChevronRight icon from the `lucide-react` package:
+Now, all we have left to do is to build the UI. We'll use the `Box` and `Text` components from the Frigade Engage React SDK to build the UI. We'll also use the `IconRender` component to render the ChevronRight icon from the `lucide-react` package:
 
-```jsx
+```jsx  theme={"system"}
 import { Box, Text, useFlow } from '@frigade/react';
 import { ChevronRight } from 'lucide-react';
 
@@ -149,4 +153,4 @@ export function ProgressBadge() {
 }
 ```
 
-That's it! You've built a custom component using the Frigade React SDK.
+That's it! You've built a custom component using the Frigade Engage React SDK.

@@ -1,10 +1,14 @@
 # Source: https://docs.galileo.ai/deployments/deploying-galileo-eks-zero-access/eks-cluster-config-example-zero-access.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.galileo.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # EKS Cluster Config Example | Zero Access Deployment
 
 > Access a zero-access EKS cluster configuration example for secure Galileo deployments on Amazon EKS, following best practices for Kubernetes security.
 
-```Bash
+```Bash  theme={null}
 ---
 apiVersion: eksctl.io/v1alpha5
 kind: ClusterConfig

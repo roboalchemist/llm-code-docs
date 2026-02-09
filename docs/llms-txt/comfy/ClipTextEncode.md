@@ -1,5 +1,9 @@
 # Source: https://docs.comfy.org/built-in-nodes/ClipTextEncode.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.comfy.org/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # ClipTextEncode - ComfyUI Built-in Node Documentation
 
 > The ClipTextEncode node is used to convert text prompts into AI-understandable 'language' for image generation.

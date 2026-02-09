@@ -1,5 +1,9 @@
 # Source: https://trigger.dev/docs/tags.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://trigger.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Tags
 
 > Tags allow you to easily filter runs in the dashboard and when using the SDK.
@@ -29,14 +33,14 @@ There are two ways to add tags to a run:
 You can add tags when triggering a run using the `tags` option. All the different [trigger](/triggering) methods support this.
 
 <CodeGroup>
-  ```ts trigger theme={null}
+  ```ts trigger theme={"theme":"css-variables"}
   const handle = await myTask.trigger(
     { message: "hello world" },
     { tags: ["user_123456", "org_abcdefg"] }
   );
   ```
 
-  ```ts batchTrigger theme={null}
+  ```ts batchTrigger theme={"theme":"css-variables"}
   const batch = await myTask.batchTrigger([
     {
       payload: { message: "foo" },
@@ -58,7 +62,7 @@ This will create a run with the tags `user_123456` and `org_abcdefg`. They look 
 
 Use the `tags.add()` function to add tags to a run from inside the `run` function. This will add the tag `product_1234567` to the run:
 
-```ts  theme={null}
+```ts  theme={"theme":"css-variables"}
 import { task, tags } from "@trigger.dev/sdk";
 
 export const myTask = task({
@@ -82,7 +86,7 @@ Tags do not propagate to child runs automatically. By default runs have no tags 
 
 It's easy to propagate tags if you want:
 
-```ts  theme={null}
+```ts  theme={"theme":"css-variables"}
 export const myTask = task({
   id: "my-task",
   run: async (payload: Payload, { ctx }) => {
@@ -109,7 +113,7 @@ On the Runs page open the filter menu, choose "Tags" and then start typing in th
 
 You can provide filters to the `runs.list` SDK function, including an array of tags.
 
-```ts  theme={null}
+```ts  theme={"theme":"css-variables"}
 import { runs } from "@trigger.dev/sdk";
 
 // Loop through all runs with the tag "user_123456" that have completed

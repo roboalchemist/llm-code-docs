@@ -1,5 +1,9 @@
 # Source: https://docs.tavus.io/sections/conversational-video-interface/conversation/customizations/call-duration-and-timeout.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.tavus.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Call Duration and Timeout
 
 > Configure call duration and timeout behavior to manage how and when a conversation ends.

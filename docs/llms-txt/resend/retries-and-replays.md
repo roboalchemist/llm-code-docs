@@ -1,4 +1,8 @@
-# Source: https://resend.com/docs/dashboard/webhooks/retries-and-replays.md
+# Source: https://resend.com/docs/webhooks/retries-and-replays.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://resend.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Retries and Replays
 

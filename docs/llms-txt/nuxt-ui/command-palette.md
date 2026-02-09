@@ -9,16 +9,18 @@
 Use the `v-model` directive to control the value of the CommandPalette or the `default-value` prop to set the initial value when you do not need to control its state.
 
 ```vue
+<script setup lang="ts">
+import type { CommandPaletteGroup } from '@nuxt/ui'
+</script>
+
 <template>
   <UCommandPalette class="flex-1 h-80" />
 </template>
 ```
 
-<tip to="#control-selected-items">
-
-You can also use the `@update:model-value` event to listen to the selected item(s).
-
-</tip>
+> [!TIP]
+> See: #control-selected-items
+> You can also use the `@update:model-value` event to listen to the selected item(s).
 
 ### Groups
 
@@ -32,11 +34,8 @@ The CommandPalette component filters groups and ranks matching commands by relev
 - [`postFilter?: (searchTerm: string, items: T[]) => T[]`](#with-post-filtered-items)
 - `highlightedIcon?: string`
 
-<caution>
-
-You must provide an `id` for each group otherwise the group will be ignored.
-
-</caution>
+> [!CAUTION]
+> You must provide an `id` for each group otherwise the group will be ignored.
 
 Each group contains an `items` array of objects that define the commands. Each item can have the following properties:
 
@@ -60,40 +59,61 @@ Each group contains an `items` array of objects that define the commands. Each i
 You can pass any property from the [Link](/docs/components/link#props) component such as `to`, `target`, etc.
 
 ```vue
+<script setup lang="ts">
+import type { CommandPaletteGroup } from '@nuxt/ui'
+</script>
+
 <template>
   <UCommandPalette class="flex-1" />
 </template>
 ```
 
-<tip to="#with-children-in-items">
-
-Each item can take a `children` array of objects with the following properties to create submenus:
-
-</tip>
+> [!TIP]
+> See: #with-children-in-items
+> Each item can take a `children` array of objects with the following properties to create submenus:
 
 ### Multiple
 
 Use the `multiple` prop to allow multiple selections.
 
 ```vue
+<script setup lang="ts">
+import type { CommandPaletteGroup } from '@nuxt/ui'
+</script>
+
 <template>
   <UCommandPalette multiple class="flex-1" />
 </template>
 ```
 
-<caution>
-
-Ensure to pass an array to the `default-value` prop or the `v-model` directive.
-
-</caution>
+> [!CAUTION]
+> Ensure to pass an array to the `default-value` prop or the `v-model` directive.
 
 ### Placeholder
 
 Use the `placeholder` prop to change the placeholder text.
 
 ```vue
+<script setup lang="ts">
+import type { CommandPaletteGroup } from '@nuxt/ui'
+</script>
+
 <template>
   <UCommandPalette placeholder="Search an app..." class="flex-1" />
+</template>
+```
+
+### Size `4.4+`
+
+Use the `size` prop to change the size of the CommandPalette.
+
+```vue
+<script setup lang="ts">
+import type { CommandPaletteGroup } from '@nuxt/ui'
+</script>
+
+<template>
+  <UCommandPalette size="xl" class="flex-1" />
 </template>
 ```
 
@@ -102,90 +122,82 @@ Use the `placeholder` prop to change the placeholder text.
 Use the `icon` prop to customize the input [Icon](/docs/components/icon). Defaults to `i-lucide-search`.
 
 ```vue
+<script setup lang="ts">
+import type { CommandPaletteGroup } from '@nuxt/ui'
+</script>
+
 <template>
   <UCommandPalette icon="i-lucide-box" class="flex-1" />
 </template>
 ```
 
-<framework-only>
-<template v-slot:nuxt="">
-<tip to="/docs/getting-started/integrations/icons/nuxt#theme">
+**Nuxt:**
+> [!TIP]
+> See: /docs/getting-started/integrations/icons/nuxt#theme
+> You can customize this icon globally in your `app.config.ts` under `ui.icons.search` key.
 
-You can customize this icon globally in your `app.config.ts` under `ui.icons.search` key.
-
-</tip>
-</template>
-
-<template v-slot:vue="">
-<tip to="/docs/getting-started/integrations/icons/vue#theme">
-
-You can customize this icon globally in your `vite.config.ts` under `ui.icons.search` key.
-
-</tip>
-</template>
-</framework-only>
+**Vue:**
+> [!TIP]
+> See: /docs/getting-started/integrations/icons/vue#theme
+> You can customize this icon globally in your `vite.config.ts` under `ui.icons.search` key.
 
 ### Selected Icon
 
 Use the `selected-icon` prop to customize the selected item [Icon](/docs/components/icon). Defaults to `i-lucide-check`.
 
 ```vue
+<script setup lang="ts">
+import type { CommandPaletteGroup } from '@nuxt/ui'
+</script>
+
 <template>
   <UCommandPalette multiple selected-icon="i-lucide-circle-check" class="flex-1" />
 </template>
 ```
 
-<framework-only>
-<template v-slot:nuxt="">
-<tip to="/docs/getting-started/integrations/icons/nuxt#theme">
+**Nuxt:**
+> [!TIP]
+> See: /docs/getting-started/integrations/icons/nuxt#theme
+> You can customize this icon globally in your `app.config.ts` under `ui.icons.check` key.
 
-You can customize this icon globally in your `app.config.ts` under `ui.icons.check` key.
-
-</tip>
-</template>
-
-<template v-slot:vue="">
-<tip to="/docs/getting-started/integrations/icons/vue#theme">
-
-You can customize this icon globally in your `vite.config.ts` under `ui.icons.check` key.
-
-</tip>
-</template>
-</framework-only>
+**Vue:**
+> [!TIP]
+> See: /docs/getting-started/integrations/icons/vue#theme
+> You can customize this icon globally in your `vite.config.ts` under `ui.icons.check` key.
 
 ### Trailing Icon
 
 Use the `trailing-icon` prop to customize the trailing [Icon](/docs/components/icon) when an item has children. Defaults to `i-lucide-chevron-right`.
 
 ```vue
+<script setup lang="ts">
+import type { CommandPaletteGroup } from '@nuxt/ui'
+</script>
+
 <template>
   <UCommandPalette trailing-icon="i-lucide-arrow-right" class="flex-1" />
 </template>
 ```
 
-<framework-only>
-<template v-slot:nuxt="">
-<tip to="/docs/getting-started/integrations/icons/nuxt#theme">
+**Nuxt:**
+> [!TIP]
+> See: /docs/getting-started/integrations/icons/nuxt#theme
+> You can customize this icon globally in your `app.config.ts` under `ui.icons.chevronRight` key.
 
-You can customize this icon globally in your `app.config.ts` under `ui.icons.chevronRight` key.
-
-</tip>
-</template>
-
-<template v-slot:vue="">
-<tip to="/docs/getting-started/integrations/icons/vue#theme">
-
-You can customize this icon globally in your `vite.config.ts` under `ui.icons.chevronRight` key.
-
-</tip>
-</template>
-</framework-only>
+**Vue:**
+> [!TIP]
+> See: /docs/getting-started/integrations/icons/vue#theme
+> You can customize this icon globally in your `vite.config.ts` under `ui.icons.chevronRight` key.
 
 ### Loading
 
 Use the `loading` prop to show a loading icon on the CommandPalette.
 
 ```vue
+<script setup lang="ts">
+import type { CommandPaletteGroup } from '@nuxt/ui'
+</script>
+
 <template>
   <UCommandPalette loading class="flex-1" />
 </template>
@@ -196,40 +208,37 @@ Use the `loading` prop to show a loading icon on the CommandPalette.
 Use the `loading-icon` prop to customize the loading icon. Defaults to `i-lucide-loader-circle`.
 
 ```vue
+<script setup lang="ts">
+import type { CommandPaletteGroup } from '@nuxt/ui'
+</script>
+
 <template>
   <UCommandPalette loading loading-icon="i-lucide-loader" class="flex-1" />
 </template>
 ```
 
-<framework-only>
-<template v-slot:nuxt="">
-<tip to="/docs/getting-started/integrations/icons/nuxt#theme">
+**Nuxt:**
+> [!TIP]
+> See: /docs/getting-started/integrations/icons/nuxt#theme
+> You can customize this icon globally in your `app.config.ts` under `ui.icons.loading` key.
 
-You can customize this icon globally in your `app.config.ts` under `ui.icons.loading` key.
-
-</tip>
-</template>
-
-<template v-slot:vue="">
-<tip to="/docs/getting-started/integrations/icons/vue#theme">
-
-You can customize this icon globally in your `vite.config.ts` under `ui.icons.loading` key.
-
-</tip>
-</template>
-</framework-only>
+**Vue:**
+> [!TIP]
+> See: /docs/getting-started/integrations/icons/vue#theme
+> You can customize this icon globally in your `vite.config.ts` under `ui.icons.loading` key.
 
 ### Close
 
 Use the `close` prop to display a [Button](/docs/components/button) to dismiss the CommandPalette.
 
-<tip>
-
-An `update:open` event will be emitted when the close button is clicked.
-
-</tip>
+> [!TIP]
+> An `update:open` event will be emitted when the close button is clicked.
 
 ```vue
+<script setup lang="ts">
+import type { CommandPaletteGroup } from '@nuxt/ui'
+</script>
+
 <template>
   <UCommandPalette close class="flex-1" />
 </template>
@@ -238,6 +247,10 @@ An `update:open` event will be emitted when the close button is clicked.
 You can pass any property from the [Button](/docs/components/button) component to customize it.
 
 ```vue
+<script setup lang="ts">
+import type { CommandPaletteGroup } from '@nuxt/ui'
+</script>
+
 <template>
   <UCommandPalette class="flex-1" />
 </template>
@@ -248,28 +261,24 @@ You can pass any property from the [Button](/docs/components/button) component t
 Use the `close-icon` prop to customize the close button [Icon](/docs/components/icon). Defaults to `i-lucide-x`.
 
 ```vue
+<script setup lang="ts">
+import type { CommandPaletteGroup } from '@nuxt/ui'
+</script>
+
 <template>
   <UCommandPalette close close-icon="i-lucide-arrow-right" class="flex-1" />
 </template>
 ```
 
-<framework-only>
-<template v-slot:nuxt="">
-<tip to="/docs/getting-started/integrations/icons/nuxt#theme">
+**Nuxt:**
+> [!TIP]
+> See: /docs/getting-started/integrations/icons/nuxt#theme
+> You can customize this icon globally in your `app.config.ts` under `ui.icons.close` key.
 
-You can customize this icon globally in your `app.config.ts` under `ui.icons.close` key.
-
-</tip>
-</template>
-
-<template v-slot:vue="">
-<tip to="/docs/getting-started/integrations/icons/vue#theme">
-
-You can customize this icon globally in your `vite.config.ts` under `ui.icons.close` key.
-
-</tip>
-</template>
-</framework-only>
+**Vue:**
+> [!TIP]
+> See: /docs/getting-started/integrations/icons/vue#theme
+> You can customize this icon globally in your `vite.config.ts` under `ui.icons.close` key.
 
 ### Back
 
@@ -278,6 +287,10 @@ Use the `back` prop to customize or hide the back button (with `false` value) di
 You can pass any property from the [Button](/docs/components/button) component to customize it.
 
 ```vue
+<script setup lang="ts">
+import type { CommandPaletteGroup } from '@nuxt/ui'
+</script>
+
 <template>
   <UCommandPalette class="flex-1" />
 </template>
@@ -288,34 +301,34 @@ You can pass any property from the [Button](/docs/components/button) component t
 Use the `back-icon` prop to customize the back button [Icon](/docs/components/icon). Defaults to `i-lucide-arrow-left`.
 
 ```vue
+<script setup lang="ts">
+import type { CommandPaletteGroup } from '@nuxt/ui'
+</script>
+
 <template>
   <UCommandPalette back back-icon="i-lucide-house" class="flex-1" />
 </template>
 ```
 
-<framework-only>
-<template v-slot:nuxt="">
-<tip to="/docs/getting-started/integrations/icons/nuxt#theme">
+**Nuxt:**
+> [!TIP]
+> See: /docs/getting-started/integrations/icons/nuxt#theme
+> You can customize this icon globally in your `app.config.ts` under `ui.icons.arrowLeft` key.
 
-You can customize this icon globally in your `app.config.ts` under `ui.icons.arrowLeft` key.
-
-</tip>
-</template>
-
-<template v-slot:vue="">
-<tip to="/docs/getting-started/integrations/icons/vue#theme">
-
-You can customize this icon globally in your `vite.config.ts` under `ui.icons.arrowLeft` key.
-
-</tip>
-</template>
-</framework-only>
+**Vue:**
+> [!TIP]
+> See: /docs/getting-started/integrations/icons/vue#theme
+> You can customize this icon globally in your `vite.config.ts` under `ui.icons.arrowLeft` key.
 
 ### Disabled
 
 Use the `disabled` prop to disable the CommandPalette.
 
 ```vue
+<script setup lang="ts">
+import type { CommandPaletteGroup } from '@nuxt/ui'
+</script>
+
 <template>
   <UCommandPalette disabled class="flex-1" />
 </template>
@@ -479,6 +492,9 @@ function onSelect(item: any) {
 </template>
 ```
 
+> [!TIP]
+> Use the `value-key` prop to select a field of an item to use as the value instead of the object itself. Use the `by` prop to compare objects by a field instead of reference.
+
 ### Control search term
 
 Use the `v-model:search-term` directive to control the search term.
@@ -577,11 +593,8 @@ function onSelect() {
 </template>
 ```
 
-<note>
-
-This example uses the `@update:model-value` event to reset the search term when an item is selected.
-
-</note>
+> [!NOTE]
+> This example uses the `@update:model-value` event to reset the search term when an item is selected.
 
 ### With children in items
 
@@ -709,21 +722,8 @@ const groups = [{
 </template>
 ```
 
-<note>
-
-When navigating into a submenu:
-
-- The search term is reset
-- A back button appears in the input
-- You can go back to the previous group by pressing the <kbd value="backspace">
-
-
-
-</kbd>
-
- key
-
-</note>
+> [!NOTE]
+> When navigating into a submenu:The search term is resetA back button appears in the inputYou can go back to the previous group by pressing the  key
 
 ### With fetched items
 
@@ -795,11 +795,8 @@ const groups = computed(() => [{
 </template>
 ```
 
-<note>
-
-This example uses [`refDebounced`](https://vueuse.org/shared/refDebounced/#refdebounced) to debounce the API calls.
-
-</note>
+> [!NOTE]
+> This example uses [`refDebounced`](https://vueuse.org/shared/refDebounced/#refdebounced) to debounce the API calls.
 
 ### With post-filtered items
 
@@ -824,8 +821,8 @@ const items = [
     level: 3
   },
   {
-    id: '/docs/getting-started#tailwind-css-v4',
-    label: 'Tailwind CSS v4',
+    id: '/docs/getting-started#tailwind-css',
+    label: 'Tailwind CSS',
     level: 3
   },
   {
@@ -855,11 +852,8 @@ function postFilter(searchTerm: string, items: any[]) {
 </template>
 ```
 
-<note>
-
-Start typing to see items with higher level appear.
-
-</note>
+> [!NOTE]
+> Start typing to see items with higher level appear.
 
 ### With custom fuse search
 
@@ -877,11 +871,8 @@ You can use the `fuse` prop to override the options of [useFuse](https://vueuse.
 }
 ```
 
-<tip>
-
-The `fuseOptions` are the options of [Fuse.js](https://www.fusejs.io/api/options.html), the `resultLimit` is the maximum number of results to return and the `matchAllWhenSearchEmpty` is a boolean to match all items when the search term is empty.
-
-</tip>
+> [!TIP]
+> The `fuseOptions` are the options of [Fuse.js](https://www.fusejs.io/api/options.html), the `resultLimit` is the maximum number of results to return and the `matchAllWhenSearchEmpty` is a boolean to match all items when the search term is empty.
 
 You can for example set `{ fuseOptions: { includeMatches: true } }` to highlight the search term in the items.
 
@@ -905,15 +896,13 @@ const { data: users } = await useFetch('https://jsonplaceholder.typicode.com/use
 </template>
 ```
 
-### With virtualization <badge label="4.1+"></badge>
+### With virtualization `4.1+`
 
 Use the `virtualize` prop to enable virtualization for large lists as a boolean or an object with options like `{ estimateSize: 32, overscan: 12 }`.
 
-<warning target="_blank" to="https://github.com/unovue/reka-ui/issues/1885">
-
-When enabled, all groups are flattened into a single list due to a limitation of Reka UI.
-
-</warning>
+> [!WARNING]
+> See: https://github.com/unovue/reka-ui/issues/1885
+> When enabled, all groups are flattened into a single list due to a limitation of Reka UI.
 
 ```vue [CommandPaletteVirtualizeExample.vue]
 <script setup lang="ts">
@@ -950,29 +939,32 @@ You can use the CommandPalette component inside a [Popover](/docs/components/pop
 
 ```vue [PopoverCommandPaletteExample.vue]
 <script setup lang="ts">
+import type { CommandPaletteItem } from '@nuxt/ui'
+
 const items = ref([
   {
     label: 'bug',
     value: 'bug',
     chip: {
-      color: 'error' as const
+      color: 'error'
     }
   },
   {
     label: 'feature',
     value: 'feature',
     chip: {
-      color: 'success' as const
+      color: 'success'
     }
   },
   {
     label: 'enhancement',
     value: 'enhancement',
     chip: {
-      color: 'info' as const
+      color: 'info'
     }
   }
-])
+] satisfies CommandPaletteItem[])
+
 const label = ref([])
 </script>
 
@@ -1192,11 +1184,8 @@ const users = [
 </template>
 ```
 
-<note>
-
-This can be useful when using the CommandPalette inside a [`Modal`](/docs/components/modal) for example.
-
-</note>
+> [!NOTE]
+> This can be useful when using the CommandPalette inside a [`Modal`](/docs/components/modal) for example.
 
 ### With footer slot
 
@@ -1400,11 +1389,9 @@ const groups = [
 </template>
 ```
 
-<tip to="#slots">
-
-You can also use the `#item`, `#item-leading`, `#item-label` and `#item-trailing` slots to customize all items.
-
-</tip>
+> [!TIP]
+> See: #slots
+> You can also use the `#item`, `#item-leading`, `#item-label` and `#item-trailing` slots to customize all items.
 
 ## API
 
@@ -1419,22 +1406,23 @@ interface CommandPaletteProps {
    * The element or component this component should render as.
    */
   as?: any;
+  size?: "sm" | "md" | "xs" | "lg" | "xl" | undefined;
   /**
    * The icon displayed in the input.
    */
-  icon?: string | object | undefined;
+  icon?: any;
   /**
    * The icon displayed on the right side of the input.
    */
-  trailingIcon?: string | object | undefined;
+  trailingIcon?: any;
   /**
    * The icon displayed when an item is selected.
    */
-  selectedIcon?: string | object | undefined;
+  selectedIcon?: any;
   /**
    * The icon displayed when an item has children.
    */
-  childrenIcon?: string | object | undefined;
+  childrenIcon?: any;
   /**
    * The placeholder text for the input.
    */
@@ -1448,42 +1436,51 @@ interface CommandPaletteProps {
    * Display a close button in the input (useful when inside a Modal for example).
    * `{ size: 'md', color: 'neutral', variant: 'ghost' }`{lang="ts-type"}
    */
-  close?: boolean | Partial<ButtonProps> | undefined;
+  close?: boolean | Omit<ButtonProps, LinkPropsKeys> | undefined;
   /**
    * The icon displayed in the close button.
    */
-  closeIcon?: string | object | undefined;
+  closeIcon?: any;
   /**
    * Display a button to navigate back in history.
    * `{ size: 'md', color: 'neutral', variant: 'link' }`{lang="ts-type"}
    * @default "true"
    */
-  back?: boolean | ButtonProps | undefined;
+  back?: boolean | Omit<ButtonProps, LinkPropsKeys> | undefined;
   /**
    * The icon displayed in the back button.
    */
-  backIcon?: string | object | undefined;
-  groups?: CommandPaletteGroup<CommandPaletteItem>[] | undefined;
+  backIcon?: any;
+  /**
+   * Configure the input or hide it with `false`.
+   * @default "true"
+   */
+  input?: boolean | Omit<InputProps<AcceptableValue>, "modelValue" | "defaultValue"> | undefined;
+  groups?: G[] | undefined;
   /**
    * Options for [useFuse](https://vueuse.org/integrations/useFuse).
    */
-  fuse?: UseFuseOptions<CommandPaletteItem> | undefined;
+  fuse?: n<T> | undefined;
   /**
    * Enable virtualization for large lists.
    * Note: when enabled, all groups are flattened into a single list due to a limitation of Reka UI (https://github.com/unovue/reka-ui/issues/1885).
    * @default "false"
    */
-  virtualize?: boolean | { overscan?: number | undefined; estimateSize?: number | undefined; } | undefined;
+  virtualize?: boolean | { overscan?: number | undefined; estimateSize?: number | ((index: number) => number) | undefined; } | undefined;
+  /**
+   * When `items` is an array of objects, select the field to use as the value instead of the object itself.
+   */
+  valueKey?: GetItemKeys<T> | undefined;
   /**
    * The key used to get the label from the item.
    * @default "\"label\""
    */
-  labelKey?: GetItemKeys<CommandPaletteItem> | undefined;
+  labelKey?: GetItemKeys<T> | undefined;
   /**
    * The key used to get the description from the item.
    * @default "\"description\""
    */
-  descriptionKey?: GetItemKeys<CommandPaletteItem> | undefined;
+  descriptionKey?: GetItemKeys<T> | undefined;
   /**
    * Whether to preserve the order of groups as defined in the `groups` prop when filtering.
    * When `false`, groups will appear based on item matches.
@@ -1500,8 +1497,7 @@ interface CommandPaletteProps {
    */
   disabled?: boolean | undefined;
   /**
-   * The controlled value of the listbox. Can be binded with with `v-model`.
-   * @default "\"\""
+   * The controlled value of the listbox. Can be binded with `v-model`.
    */
   modelValue?: AcceptableValue | AcceptableValue[] | undefined;
   /**
@@ -1518,13 +1514,17 @@ interface CommandPaletteProps {
    */
   selectionBehavior?: "replace" | "toggle" | undefined;
   /**
+   * Use this to compare objects by a particular field, or pass your own comparison function for complete control over how objects are compared.
+   */
+  by?: string | ((a: AcceptableValue, b: AcceptableValue) => boolean) | undefined;
+  /**
    * When `true`, the loading icon will be displayed.
    */
   loading?: boolean | undefined;
   /**
    * The icon when the `loading` prop is `true`.
    */
-  loadingIcon?: string | object | undefined;
+  loadingIcon?: any;
   /**
    * @default "\"\""
    */
@@ -1558,8 +1558,8 @@ interface CommandPaletteSlots {
  * Emitted events for the CommandPalette component
  */
 interface CommandPaletteEmits {
-  update:modelValue: (payload: [value: CommandPaletteItem]) => void;
-  highlight: (payload: [payload: { ref: HTMLElement; value: CommandPaletteItem; } | undefined]) => void;
+  update:modelValue: (payload: [value: T]) => void;
+  highlight: (payload: [payload: { ref: HTMLElement; value: T; } | undefined]) => void;
   entryFocus: (payload: [event: CustomEvent<any>]) => void;
   leave: (payload: [event: Event]) => void;
   update:open: (payload: [value: boolean]) => void;
@@ -1575,26 +1575,26 @@ export default defineAppConfig({
     commandPalette: {
       slots: {
         root: 'flex flex-col min-h-0 min-w-0 divide-y divide-default',
-        input: '[&>input]:h-12',
+        input: '',
         close: '',
         back: 'p-0',
         content: 'relative overflow-hidden flex flex-col',
         footer: 'p-1',
         viewport: 'relative scroll-py-1 overflow-y-auto flex-1 focus:outline-none',
         group: 'p-1 isolate',
-        empty: 'py-6 text-center text-sm text-muted',
-        label: 'p-1.5 text-xs font-semibold text-highlighted',
-        item: 'group relative w-full flex items-start gap-1.5 p-1.5 text-sm select-none outline-none before:absolute before:z-[-1] before:inset-px before:rounded-md data-disabled:cursor-not-allowed data-disabled:opacity-75',
-        itemLeadingIcon: 'shrink-0 size-5',
+        empty: 'text-center text-muted',
+        label: 'font-semibold text-highlighted',
+        item: 'group relative w-full flex items-start select-none outline-none before:absolute before:z-[-1] before:inset-px before:rounded-md data-disabled:cursor-not-allowed data-disabled:opacity-75',
+        itemLeadingIcon: 'shrink-0',
         itemLeadingAvatar: 'shrink-0',
-        itemLeadingAvatarSize: '2xs',
-        itemLeadingChip: 'shrink-0 size-5',
-        itemLeadingChipSize: 'md',
-        itemTrailing: 'ms-auto inline-flex gap-1.5 items-center',
-        itemTrailingIcon: 'shrink-0 size-5',
-        itemTrailingHighlightedIcon: 'shrink-0 size-5 text-dimmed hidden group-data-highlighted:inline-flex',
-        itemTrailingKbds: 'hidden lg:inline-flex items-center shrink-0 gap-0.5',
-        itemTrailingKbdsSize: 'md',
+        itemLeadingAvatarSize: '',
+        itemLeadingChip: 'shrink-0',
+        itemLeadingChipSize: '',
+        itemTrailing: 'ms-auto inline-flex items-center',
+        itemTrailingIcon: 'shrink-0',
+        itemTrailingHighlightedIcon: 'shrink-0 text-dimmed hidden group-data-highlighted:inline-flex',
+        itemTrailingKbds: 'hidden lg:inline-flex items-center shrink-0',
+        itemTrailingKbdsSize: '',
         itemWrapper: 'flex-1 flex flex-col text-start min-w-0',
         itemLabel: 'truncate space-x-1 text-dimmed',
         itemDescription: 'truncate text-muted',
@@ -1609,6 +1609,83 @@ export default defineAppConfig({
           },
           false: {
             viewport: 'divide-y divide-default'
+          }
+        },
+        size: {
+          xs: {
+            input: '[&>input]:h-10',
+            empty: 'py-3 text-xs',
+            label: 'p-1 text-[10px]/3 gap-1',
+            item: 'p-1 text-xs gap-1',
+            itemLeadingIcon: 'size-4',
+            itemLeadingAvatarSize: '3xs',
+            itemLeadingChip: 'size-4',
+            itemLeadingChipSize: 'sm',
+            itemTrailing: 'gap-1',
+            itemTrailingIcon: 'size-4',
+            itemTrailingHighlightedIcon: 'size-4',
+            itemTrailingKbds: 'gap-0.5',
+            itemTrailingKbdsSize: 'sm'
+          },
+          sm: {
+            input: '[&>input]:h-11',
+            empty: 'py-4 text-xs',
+            label: 'p-1.5 text-[10px]/3 gap-1.5',
+            item: 'p-1.5 text-xs gap-1.5',
+            itemLeadingIcon: 'size-4',
+            itemLeadingAvatarSize: '3xs',
+            itemLeadingChip: 'size-4',
+            itemLeadingChipSize: 'sm',
+            itemTrailing: 'gap-1.5',
+            itemTrailingIcon: 'size-4',
+            itemTrailingHighlightedIcon: 'size-4',
+            itemTrailingKbds: 'gap-0.5',
+            itemTrailingKbdsSize: 'sm'
+          },
+          md: {
+            input: '[&>input]:h-12',
+            empty: 'py-6 text-sm',
+            label: 'p-1.5 text-xs gap-1.5',
+            item: 'p-1.5 text-sm gap-1.5',
+            itemLeadingIcon: 'size-5',
+            itemLeadingAvatarSize: '2xs',
+            itemLeadingChip: 'size-5',
+            itemLeadingChipSize: 'md',
+            itemTrailing: 'gap-1.5',
+            itemTrailingIcon: 'size-5',
+            itemTrailingHighlightedIcon: 'size-5',
+            itemTrailingKbds: 'gap-0.5',
+            itemTrailingKbdsSize: 'md'
+          },
+          lg: {
+            input: '[&>input]:h-13',
+            empty: 'py-7 text-sm',
+            label: 'p-2 text-xs gap-2',
+            item: 'p-2 text-sm gap-2',
+            itemLeadingIcon: 'size-5',
+            itemLeadingAvatarSize: '2xs',
+            itemLeadingChip: 'size-5',
+            itemLeadingChipSize: 'md',
+            itemTrailing: 'gap-2',
+            itemTrailingIcon: 'size-5',
+            itemTrailingHighlightedIcon: 'size-5',
+            itemTrailingKbds: 'gap-0.5',
+            itemTrailingKbdsSize: 'md'
+          },
+          xl: {
+            input: '[&>input]:h-14',
+            empty: 'py-8 text-base',
+            label: 'p-2 text-sm gap-2',
+            item: 'p-2 text-base gap-2',
+            itemLeadingIcon: 'size-6',
+            itemLeadingAvatarSize: 'xs',
+            itemLeadingChip: 'size-6',
+            itemLeadingChipSize: 'lg',
+            itemTrailing: 'gap-2',
+            itemTrailingIcon: 'size-6',
+            itemTrailingHighlightedIcon: 'size-6',
+            itemTrailingKbds: 'gap-0.5',
+            itemTrailingKbdsSize: 'lg'
           }
         },
         active: {
@@ -1632,6 +1709,9 @@ export default defineAppConfig({
             itemLeadingIcon: 'animate-spin'
           }
         }
+      },
+      defaultVariants: {
+        size: 'md'
       }
     }
   }
@@ -1640,8 +1720,4 @@ export default defineAppConfig({
 
 ## Changelog
 
-<component-changelog>
-
-
-
-</component-changelog>
+See the [releases page](https://github.com/nuxt/ui/releases) for the latest changes.

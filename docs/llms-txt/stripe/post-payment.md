@@ -4,13 +4,15 @@
 
 Learn what you can do after receiving a payment link payment.
 
+If your Connect platform uses [customer-configured Accounts](https://docs.stripe.com/api/v2/core/accounts/create.md#v2_create_accounts-configuration-customer), use our [guide](https://docs.stripe.com/connect/use-accounts-as-customers.md) to replace `Customer` and event references in your code with the equivalent Accounts v2 API references.
+
 After you receive a payment through a payment link, you can track payments, manage fulfillment automatically, view payment link metrics, and more.
 
 ## Track payments 
 
 After your customer makes a payment using a payment link, you can see it in the payments overview in the [Dashboard](https://dashboard.stripe.com/payments). If you’re new to Stripe, you receive an email after your first payment. To receive emails for all successful payments, update your notification preferences in your [Personal details](https://dashboard.stripe.com/settings/user) settings.
 
-Stripe creates a new [guest customer](https://docs.stripe.com/payments/checkout/guest-customers.md) for one-time payments and a new [Customer](https://docs.stripe.com/api/customers.md) when selling a subscription or [saving a payment method for future use](https://docs.stripe.com/payment-links/customize.md#save-payment-details-for-future-use).
+Stripe creates a new [guest customer](https://docs.stripe.com/payments/checkout/guest-customers.md) for one-time payments and a new [Customer](https://docs.stripe.com/api/customers.md) object when selling a subscription or [saving a payment method for future use](https://docs.stripe.com/payment-links/customize.md#save-payment-details-for-future-use).
 
 ## Automatically handle fulfillment 
 
@@ -38,7 +40,7 @@ Create a link that you can send to customers, letting them log in and manage the
 
 Stripe can automatically send email receipts to your customers after successful payments. You can enable this feature with the [email customers for successful payments](https://dashboard.stripe.com/settings/emails) option in your email receipt settings. To customize your receipt color and logo, go to the [Branding settings](https://dashboard.stripe.com/settings/branding).
 
-To display custom text, use the [description](https://docs.stripe.com/api/payment_intents/create.md#create_payment_intent-description) attribute on the [PaymentIntent](https://docs.stripe.com/api/payment_intents/object.md). Some examples include:
+To display custom text, use the [description](https://docs.stripe.com/api/payment_intents/create.md#create_payment_intent-description) attribute on the [PaymentIntent](https://docs.stripe.com/api/payment_intents/object.md) object. Some examples include:
 
 - Description of goods or services provided
 - Authorization code
@@ -68,7 +70,7 @@ The customer email with links to the invoice PDF and receipt
 
 When using Payment Links, the following factors determine the language of the receipt and invoice:
 
-- If the session creates a [Customer](https://docs.stripe.com/api/customers/object.md) (for example, through the `customer_creation` parameter or `subscription` mode), the browser locale of the user opening the Payment Link URL determines the language of the receipt and invoice.
+- If the session creates a [Customer](https://docs.stripe.com/api/customers/object.md) object (for example, through the `customer_creation` parameter or `subscription` mode), the browser locale of the user opening the Payment Link URL determines the language of the receipt and invoice.
 - If the session doesn’t create a Customer, the [language setting](https://dashboard.stripe.com/settings/emails) from your Stripe Dashboard is applied instead.
 
 ## View payment link metrics 

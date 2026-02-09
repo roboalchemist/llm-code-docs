@@ -1,14 +1,18 @@
 # Source: https://docs.asapp.com/agent-desk/insights-manager/live-insights.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.asapp.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Live Insights Overview
 
 > Learn how to use Live Insights to monitor and analyze real-time contact center activity.
 
-Live Insights provides tools to track agent and conversation performance in real-time. You can:
+Live Insights provides tools to track agent and conversation performance in real time. You can:
 
 * Monitor all queues
 * Monitor alerts
-* Drill down into each queue to gain insight into what areas need attention.
+* Drill down into each queue to gain insight into what areas need attention
 
 <Frame>
   <img src="https://mintcdn.com/asapp/3gV5ovdpglqSwLMa/images/messaging-platform/insights-monitor-operations.png?fit=max&auto=format&n=3gV5ovdpglqSwLMa&q=85&s=af091f8cea7d5efa413df25de50f2867" data-og-width="1893" width="1893" data-og-height="1176" height="1176" data-path="images/messaging-platform/insights-monitor-operations.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/asapp/3gV5ovdpglqSwLMa/images/messaging-platform/insights-monitor-operations.png?w=280&fit=max&auto=format&n=3gV5ovdpglqSwLMa&q=85&s=5a9e8dd73243f3587162facfc33580d8 280w, https://mintcdn.com/asapp/3gV5ovdpglqSwLMa/images/messaging-platform/insights-monitor-operations.png?w=560&fit=max&auto=format&n=3gV5ovdpglqSwLMa&q=85&s=6835b3726b1dc679e90f7ab5281d4725 560w, https://mintcdn.com/asapp/3gV5ovdpglqSwLMa/images/messaging-platform/insights-monitor-operations.png?w=840&fit=max&auto=format&n=3gV5ovdpglqSwLMa&q=85&s=a94ec9510fa8a42dbcce80a025132c72 840w, https://mintcdn.com/asapp/3gV5ovdpglqSwLMa/images/messaging-platform/insights-monitor-operations.png?w=1100&fit=max&auto=format&n=3gV5ovdpglqSwLMa&q=85&s=f0ae78fee9983aba08fae5f543498443 1100w, https://mintcdn.com/asapp/3gV5ovdpglqSwLMa/images/messaging-platform/insights-monitor-operations.png?w=1650&fit=max&auto=format&n=3gV5ovdpglqSwLMa&q=85&s=5eed6b808c680faa4f9549e8c8827f40 1650w, https://mintcdn.com/asapp/3gV5ovdpglqSwLMa/images/messaging-platform/insights-monitor-operations.png?w=2500&fit=max&auto=format&n=3gV5ovdpglqSwLMa&q=85&s=450357c6f47ae0f8fc4315fac02d2fcf 2500w" />
@@ -21,7 +25,7 @@ Live Insights provides tools to track agent and conversation performance in real
 
 The Queue Details page for each queue shows performance across the most important metrics.
 
-All metrics displayed in the dashboard update in true real-time. Metrics can be categorized either as "Right Now" or "Current Period":
+All metrics that the dashboard displays update in true real time. You can categorize metrics either as "Right Now" or "Current Period":
 
 * Right Now metrics update immediately upon a change in the ecosystem.
 * Current Period metrics will constantly update in aggregate over the day.
@@ -38,7 +42,7 @@ ASAPP continues to improve the Live Insights experience with new touch points to
 2. **Single Queue and Queue Groups** → These now include two pages:
 
    * **Conversations:** Displays performance data for all conversations currently connected to an agent, as well as live transcripts and alerts.
-   * **Performance:** Displays queue performance data, both for 'right now' and rolling 'since 12 am'. It also provides agent performance data and showcases feedback sent by customers.
+   * **Performance:** Displays queue performance data, both for 'right now' and rolling 'since 12 am'. It also provides agent performance data and showcases feedback that customers send.
 
 ### Two Views: Conversations & Performance
 
@@ -62,4 +66,4 @@ Displays performance data for all conversations currently connected to an agent,
 
 **Performance:**
 
-Displays queue performance data, both for 'right now' and rolling 'since 12 am'. It also provides agent performance data and showcases feedback sent by customers.
+Displays queue performance data, both for 'right now' and rolling 'since 12 am'. It also provides agent performance data and showcases feedback that customers send.

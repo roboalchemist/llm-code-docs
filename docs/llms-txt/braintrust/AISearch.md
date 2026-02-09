@@ -1,5 +1,9 @@
 # Source: https://braintrust.dev/docs/cookbook/recipes/AISearch.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://braintrust.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # AI Search Bar
 
 <div className="text-sm">[Contributed](https://github.com/braintrustdata/braintrust-cookbook/blob/main/examples/AISearch/ai_search_evals.ipynb) by [Austin Moehle](https://www.linkedin.com/in/austinmxx/) on 2024-03-04</div>
@@ -946,8 +950,3 @@ Fine tuned model compared to Long Prompt:
 
 See results for Fine tuned model at https://www.braintrust.dev/app/braintrust.dev/p/AI%20Search%20Cookbook/Fine%20tuned%20model
 ```
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://braintrust.dev/docs/llms.txt

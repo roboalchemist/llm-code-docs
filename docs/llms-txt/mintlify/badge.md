@@ -1,4 +1,8 @@
-# Source: https://mintlify.com/docs/components/badge.md
+# Source: https://www.mintlify.com/docs/components/badge.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.mintlify.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Badge
 
@@ -21,6 +25,7 @@ Badges support multiple color variants to convey different meanings.
 <Badge color="gray">Badge</Badge>
 <Badge color="blue">Badge</Badge>
 <Badge color="green">Badge</Badge>
+<Badge color="yellow">Badge</Badge>
 <Badge color="orange">Badge</Badge>
 <Badge color="red">Badge</Badge>
 <Badge color="purple">Badge</Badge>
@@ -33,6 +38,7 @@ Badges support multiple color variants to convey different meanings.
 <Badge color="gray">Badge</Badge>
 <Badge color="blue">Badge</Badge>
 <Badge color="green">Badge</Badge>
+<Badge color="yellow">Badge</Badge>
 <Badge color="orange">Badge</Badge>
 <Badge color="red">Badge</Badge>
 <Badge color="purple">Badge</Badge>
@@ -139,7 +145,7 @@ Combine multiple properties for custom badge styles.
 <ResponseField name="color" type="string" default="gray">
   Badge color variant.
 
-  Options: `gray`, `blue`, `green`, `orange`, `red`,
+  Options: `gray`, `blue`, `green`, `yellow`, `orange`, `red`,
   `purple`, `white`, `surface`, `white-destructive`, `surface-destructive`.
 </ResponseField>
 
@@ -160,11 +166,11 @@ Combine multiple properties for custom badge styles.
 
   Options:
 
-  * [Font Awesome icon](https://fontawesome.com/icons) name
-  * [Lucide icon](https://lucide.dev/icons) name
-  * JSX-compatible SVG code wrapped in curly braces
+  * [Font Awesome](https://fontawesome.com/icons) icon name, if you have the `icons.library` [property](/organize/settings#param-icons) set to `fontawesome` in your `docs.json`
+  * [Lucide](https://lucide.dev/icons) icon name, if you have the `icons.library` [property](/organize/settings#param-icons) set to `lucide` in your `docs.json`
   * URL to an externally hosted icon
   * Path to an icon file in your project
+  * SVG code wrapped in curly braces
 
   For custom SVG icons:
 

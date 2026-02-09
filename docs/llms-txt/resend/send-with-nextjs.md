@@ -1,5 +1,9 @@
 # Source: https://resend.com/docs/send-with-nextjs.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://resend.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Send emails with Next.js
 
 > Learn how to send your first email using Next.js and the Resend Node.js SDK.
@@ -24,16 +28,20 @@ Prefer watching a video? Check out our video walkthrough below.
 Get the Resend Node.js SDK.
 
 <CodeGroup>
-  ```bash npm theme={null}
+  ```bash npm theme={"theme":{"light":"github-light","dark":"vesper"}}
   npm install resend
   ```
 
-  ```bash yarn theme={null}
+  ```bash yarn theme={"theme":{"light":"github-light","dark":"vesper"}}
   yarn add resend
   ```
 
-  ```bash pnpm theme={null}
+  ```bash pnpm theme={"theme":{"light":"github-light","dark":"vesper"}}
   pnpm add resend
+  ```
+
+  ```bash bun theme={"theme":{"light":"github-light","dark":"vesper"}}
+  bun add resend
   ```
 </CodeGroup>
 
@@ -41,7 +49,7 @@ Get the Resend Node.js SDK.
 
 Start by creating your email template on `components/email-template.tsx`.
 
-```tsx components/email-template.tsx theme={null}
+```tsx components/email-template.tsx theme={"theme":{"light":"github-light","dark":"vesper"}}
 import * as React from 'react';
 
 interface EmailTemplateProps {
@@ -59,36 +67,13 @@ export function EmailTemplate({ firstName }: EmailTemplateProps) {
 
 ## 3. Send email using React
 
-Create an API file under `pages/api/send.ts` if you're using the [Pages Router](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) or create a route file under `app/api/send/route.ts` if you're using the [App Router](https://nextjs.org/docs/app/building-your-application/routing/router-handlers).
+Create a route file under `app/api/send/route.ts` (or `pages/api/send.ts` if you're using [Pages Router](https://nextjs.org/docs/pages/building-your-application/routing/api-routes)).
 
 Import the React email template and send an email using the `react` parameter.
 
 <CodeGroup>
-  ```ts pages/api/send.ts theme={null}
-  import type { NextApiRequest, NextApiResponse } from 'next';
-  import { EmailTemplate } from '../../components/EmailTemplate';
-  import { Resend } from 'resend';
-
-  const resend = new Resend(process.env.RESEND_API_KEY);
-
-  export default async (req: NextApiRequest, res: NextApiResponse) => {
-    const { data, error } = await resend.emails.send({
-      from: 'Acme <onboarding@resend.dev>',
-      to: ['delivered@resend.dev'],
-      subject: 'Hello world',
-      react: EmailTemplate({ firstName: 'John' }),
-    });
-
-    if (error) {
-      return res.status(400).json(error);
-    }
-
-    res.status(200).json(data);
-  };
-  ```
-
-  ```ts app/api/send/route.ts theme={null}
-  import { EmailTemplate } from '../../../components/EmailTemplate';
+  ```ts app/api/send/route.ts theme={"theme":{"light":"github-light","dark":"vesper"}}
+  import { EmailTemplate } from '../../../components/email-template';
   import { Resend } from 'resend';
 
   const resend = new Resend(process.env.RESEND_API_KEY);
@@ -112,16 +97,39 @@ Import the React email template and send an email using the `react` parameter.
     }
   }
   ```
+
+  ```ts pages/api/send.ts theme={"theme":{"light":"github-light","dark":"vesper"}}
+  import type { NextApiRequest, NextApiResponse } from 'next';
+  import { EmailTemplate } from '../../components/email-template';
+  import { Resend } from 'resend';
+
+  const resend = new Resend(process.env.RESEND_API_KEY);
+
+  export default async (req: NextApiRequest, res: NextApiResponse) => {
+    const { data, error } = await resend.emails.send({
+      from: 'Acme <onboarding@resend.dev>',
+      to: ['delivered@resend.dev'],
+      subject: 'Hello world',
+      react: EmailTemplate({ firstName: 'John' }),
+    });
+
+    if (error) {
+      return res.status(400).json(error);
+    }
+
+    res.status(200).json(data);
+  };
+  ```
 </CodeGroup>
 
 ## 4. Try it yourself
 
 <CardGroup>
-  <Card title="Next.js Example (Pages Router)" icon="arrow-up-right-from-square" href="https://github.com/resend/resend-nextjs-pages-router-example">
+  <Card title="Next.js Example (App Router)" icon="arrow-up-right-from-square" href="https://github.com/resend/resend-nextjs-app-router-example">
     See the full source code.
   </Card>
 
-  <Card title="Next.js Example (App Router)" icon="arrow-up-right-from-square" href="https://github.com/resend/resend-nextjs-app-router-example">
+  <Card title="Next.js Example (Pages Router)" icon="arrow-up-right-from-square" href="https://github.com/resend/resend-nextjs-pages-router-example">
     See the full source code.
   </Card>
 </CardGroup>

@@ -2,10 +2,6 @@
 
 # Source: https://docs.convex.dev/functions.md
 
-# Source: https://docs.convex.dev/dashboard/deployments/functions.md
-
-# Source: https://docs.convex.dev/functions.md
-
 # Functions
 
 Functions run on the backend and are written in JavaScript (or TypeScript). They are automatically available as APIs accessed through [client libraries](/client/react.md). Everything you do in the Convex backend starts from functions.

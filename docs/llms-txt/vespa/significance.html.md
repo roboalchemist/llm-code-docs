@@ -161,7 +161,7 @@ The resolution logic is as follows:
 - When language is implicitly detected 
   - Select the last specified model with the detected language. If not available, try “un” and then “en” languages. Fail if none are available.
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ### On this page:
 

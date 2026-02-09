@@ -1,5 +1,9 @@
 # Source: https://flatfile.com/docs/embedding/angular.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://flatfile.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Angular Embedding
 
 > Embed Flatfile in Angular applications
@@ -8,7 +12,7 @@ Embed Flatfile in your Angular application using our Angular SDK. This provides 
 
 ## Installation
 
-```bash
+```bash  theme={null}
 npm install @flatfile/angular-sdk
 ```
 
@@ -18,7 +22,7 @@ npm install @flatfile/angular-sdk
 
 Add the `SpaceModule` to your Angular module:
 
-```typescript
+```typescript  theme={null}
 import { NgModule } from "@angular/core";
 import { SpaceModule } from "@flatfile/angular-sdk";
 
@@ -36,7 +40,7 @@ export class AppModule {}
 
 Create a component to handle the Flatfile embed:
 
-```typescript
+```typescript  theme={null}
 import { Component } from "@angular/core";
 import { SpaceService, ISpace } from "@flatfile/angular-sdk";
 
@@ -77,7 +81,7 @@ export class ImportComponent {
   page.
 </Note>
 
-```typescript
+```typescript  theme={null}
 // app.module.ts
 import { NgModule } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
@@ -94,7 +98,7 @@ import { AppComponent } from "./app.component";
 export class AppModule {}
 ```
 
-```typescript
+```typescript  theme={null}
 // app.component.ts
 import { Component } from "@angular/core";
 import { SpaceService, ISpace } from "@flatfile/angular-sdk";
@@ -129,7 +133,7 @@ To create a new Space each time:
 1. Add a `workbook` configuration object. Read more about workbooks [here](../core-concepts/workbooks).
 2. Optionally [deploy](../core-concepts/listeners) a `listener` for custom data processing. Your listener will contain your validations and transformations
 
-```typescript
+```typescript  theme={null}
 spaceProps: ISpace = {
   publishableKey: "pk_your_publishable_key",
   workbook: {
@@ -155,7 +159,7 @@ For detailed workbook configuration, see the [Workbook API Reference](https://re
 
 For production applications, implement proper space management on your server to ensure security and proper access control:
 
-```typescript
+```typescript  theme={null}
 // Frontend Component
 @Component({
   selector: "app-import",
@@ -213,7 +217,7 @@ For detailed configuration options, authentication settings, and advanced featur
 
 You can also use the `flatfile-space` component directly in your template:
 
-```typescript
+```typescript  theme={null}
 @Component({
   selector: "app-import",
   template: `
@@ -250,7 +254,7 @@ export class ImportComponent {
 
 The Angular SDK is built with TypeScript and includes full type definitions:
 
-```typescript
+```typescript  theme={null}
 import { ISpace, SpaceService } from "@flatfile/angular-sdk";
 
 interface ImportData {

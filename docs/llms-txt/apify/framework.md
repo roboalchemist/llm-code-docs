@@ -2,18 +2,6 @@
 
 # Source: https://docs.apify.com/academy/scraping-basics-javascript/framework.md
 
-# Source: https://docs.apify.com/academy/scraping-basics-python/framework.md
-
-# Source: https://docs.apify.com/academy/scraping-basics-javascript/framework.md
-
-# Source: https://docs.apify.com/academy/scraping-basics-python/framework.md
-
-# Source: https://docs.apify.com/academy/scraping-basics-javascript/framework.md
-
-# Source: https://docs.apify.com/academy/scraping-basics-python/framework.md
-
-# Source: https://docs.apify.com/academy/scraping-basics-javascript2/framework.md
-
 # Using a scraping framework with Node.js
 
 **In this lesson, we'll rework our application for watching prices so that it builds on top of a scraping framework. We'll use Crawlee to make the program simpler, faster, and more robust.**
@@ -30,7 +18,7 @@ Before rewriting our code, let's point out several caveats in our current soluti
 * *Browser means rewrite:* We got lucky extracting variants. If the website didn't include a fallback, we might have had no choice but to spin up a browser instance and automate clicking on buttons. Such a change in the underlying technology would require a complete rewrite of our program.
 * *No error handling:* The scraper stops if it encounters issues. It should allow for skipping problematic products with warnings or retrying downloads when the website returns temporary errors.
 
-In this lesson, we'll address all of the above issues while keeping the code concise with the help of a scraping framework. We'll use https://crawlee.dev/, not just because we created it, but because it's the most popular JavaScript framework for web scraping.
+In this lesson, we'll address all of the above issues while keeping the code concise with the help of a scraping framework. We'll use [Crawlee](https://crawlee.dev/), not just because we created it, but because it's the most popular JavaScript framework for web scraping.
 
 ## Starting with Crawlee
 
@@ -380,7 +368,7 @@ await crawler.exportData('dataset.csv');
 ```
 
 
-Depending on what we find helpful, we can tweak the logs to include more or less detail. Check the Crawlee docs on the https://crawlee.dev/js/api/core/class/Log for more details on what you can do with it.
+Depending on what we find helpful, we can tweak the logs to include more or less detail. Check the Crawlee docs on the [Log instance](https://crawlee.dev/js/api/core/class/Log) for more details on what you can do with it.
 
 If we compare `index.js` and `oldindex.js` now, it's clear we've cut at least 20 lines of code compared to the original program, even with the extra logging we've added. Throughout this lesson, we've introduced features to match the old scraper's functionality, but at each phase, the code remained clean and readable. Plus, we've been able to focus on what's unique to the website we're scraping and the data we care about.
 
@@ -394,11 +382,11 @@ These challenges are here to help you test what you’ve learned in this lesson.
 
 Real world
 
-You're about to touch the real web, which is practical and exciting! But websites change, so some exercises might break. If you run into any issues, please leave a comment below or https://github.com/apify/apify-docs/issues.
+You're about to touch the real web, which is practical and exciting! But websites change, so some exercises might break. If you run into any issues, please leave a comment below or [file a GitHub Issue](https://github.com/apify/apify-docs/issues).
 
 ### Build a Crawlee scraper of F1 Academy drivers
 
-Scrape information about all https://en.wikipedia.org/wiki/F1_Academy drivers listed on the official https://www.f1academy.com/Racing-Series/Drivers page. Each item you push to Crawlee's default dataset should include the following data:
+Scrape information about all [F1 Academy](https://en.wikipedia.org/wiki/F1_Academy) drivers listed on the official [Drivers](https://www.f1academy.com/Racing-Series/Drivers) page. Each item you push to Crawlee's default dataset should include the following data:
 
 * URL of the driver's f1academy.com page
 * Name
@@ -436,7 +424,7 @@ If you export the dataset as JSON, it should look something like this:
 Need a nudge?
 
 * The website uses `DD/MM/YYYY` format for the date of birth. You'll need to change the format to the ISO 8601 standard with dashes: `YYYY-MM-DD`
-* To locate the Instagram URL, use the attribute selector `a[href*='instagram']`. Learn more about attribute selectors in the https://developer.mozilla.org/en-US/docs/Web/CSS/Attribute_selectors.
+* To locate the Instagram URL, use the attribute selector `a[href*='instagram']`. Learn more about attribute selectors in the [MDN docs](https://developer.mozilla.org/en-US/docs/Web/CSS/Attribute_selectors).
 
 Solution
 
@@ -453,20 +441,24 @@ const crawler = new CheerioCrawler({
         const value = $(itemElement).find('h4').text().trim();
         info[name] = value;
       }
+
       const detail = {};
       for (const linkElement of $('.driver-detail--cta-group a').toArray()) {
         const name = $(linkElement).find('p').text().trim();
         const value = $(linkElement).find('h2').text().trim();
         detail[name] = value;
-      });
-      const [dobDay, dobMonth, dobYear] = info['DOB'].split("/");
-      pushData({
+      }
+
+      const dob = info.DOB ?? '';
+      const [dobDay = '', dobMonth = '', dobYear = ''] = dob.split('/');
+
+      await pushData({
         url: request.url,
         name: $('h1').text().trim(),
-        team: detail['Team'],
-        nationality: info['Nationality'],
-        dob: `${dobYear}-${dobMonth}-${dobDay}`,
-        instagram_url: $(".common-social-share a[href*='instagram']").attr('href'),
+        team: detail.Team,
+        nationality: info.Nationality,
+        dob: dobYear && dobMonth && dobDay ? `${dobYear}-${dobMonth}-${dobDay}` : null,
+        instagram_url: $(".common-social-share a[href*='instagram']").attr('href') ?? null,
       });
     } else {
       await enqueueLinks({ selector: '.teams-driver-item a', label: 'DRIVER' });
@@ -481,7 +473,7 @@ await crawler.exportData('dataset.json');
 
 ### Use Crawlee to find the ratings of the most popular Netflix films
 
-The https://www.netflix.com/tudum/top10 page has a table listing the most popular Netflix films worldwide. Scrape the movie names from this page, then search for each movie on https://www.imdb.com/. Assume the first search result is correct and retrieve the film's rating. Each item you push to Crawlee's default dataset should include the following data:
+The [Global Top 10](https://www.netflix.com/tudum/top10) page has a table listing the most popular Netflix films worldwide. Scrape the movie names from this page, then search for each movie on [IMDb](https://www.imdb.com/). Assume the first search result is correct and retrieve the film's rating. Each item you push to Crawlee's default dataset should include the following data:
 
 * URL of the film's IMDb page
 * Title
@@ -538,33 +530,31 @@ Solution
 
 
 ```
-import { CheerioCrawler, Request } from 'crawlee';
 import { escape } from 'node:querystring';
+
+import { CheerioCrawler, Request } from 'crawlee';
 
 const crawler = new CheerioCrawler({
   async requestHandler({ $, request, enqueueLinks, pushData, addRequests }) {
     if (request.label === 'IMDB') {
-      // handle IMDB film page
-      pushData({
-        url: request.url,
-        title: $('h1').text().trim(),
-        rating: $("[data-testid='hero-rating-bar__aggregate-rating__score']").first().text().trim(),
-      });
+      const title = $('h1').text().trim();
+      const rating = $("[data-testid='hero-rating-bar__aggregate-rating__score']").first().text().trim();
+      if (title && rating) {
+        await pushData({
+          url: request.url,
+          title,
+          rating,
+        });
+      }
     } else if (request.label === 'IMDB_SEARCH') {
-      // handle IMDB search results
       await enqueueLinks({ selector: '.find-result-item a', label: 'IMDB', limit: 1 });
-
-    } else if (request.label === 'NETFLIX') {
-      // handle Netflix table
-      const $buttons = $('[data-uia="top10-table-row-title"] button');
-      const requests = $buttons.toArray().map(buttonElement => {
+    } else {
+      const requests = $("[data-uia='top10-table-row-title'] button").toArray().map((buttonElement) => {
         const name = $(buttonElement).text().trim();
         const imdbSearchUrl = `https://www.imdb.com/find/?q=${escape(name)}&s=tt&ttype=ft`;
         return new Request({ url: imdbSearchUrl, label: 'IMDB_SEARCH' });
       });
-      await addRequests($requests.get());
-    } else {
-      throw new Error(`Unexpected request label: ${request.label}`);
+      await addRequests(requests);
     }
   },
 });

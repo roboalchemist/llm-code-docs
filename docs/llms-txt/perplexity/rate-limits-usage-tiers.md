@@ -1,4 +1,8 @@
-# Source: https://docs.perplexity.ai/guides/rate-limits-usage-tiers.md
+# Source: https://docs.perplexity.ai/docs/admin/rate-limits-usage-tiers.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.perplexity.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Rate Limits & Usage Tiers
 
@@ -43,7 +47,6 @@ Usage tiers determine your **rate limits** and access to **beta features** based
     | ------------------------------------------ | ------------------------- |
     | `sonar-deep-research`                      | 5                         |
     | `sonar-reasoning-pro`                      | 50                        |
-    | `sonar-reasoning`                          | 50                        |
     | `sonar-pro`                                | 50                        |
     | `sonar`                                    | 50                        |
     | POST `/async/chat/completions`             | 5                         |
@@ -55,10 +58,9 @@ Usage tiers determine your **rate limits** and access to **beta features** based
     | Model                                      | Requests per minute (RPM) |
     | ------------------------------------------ | ------------------------- |
     | `sonar-deep-research`                      | 10                        |
-    | `sonar-reasoning-pro`                      | 50                        |
-    | `sonar-reasoning`                          | 50                        |
-    | `sonar-pro`                                | 50                        |
-    | `sonar`                                    | 50                        |
+    | `sonar-reasoning-pro`                      | 150                       |
+    | `sonar-pro`                                | 150                       |
+    | `sonar`                                    | 150                       |
     | POST `/async/chat/completions`             | 10                        |
     | GET `/async/chat/completions`              | 3000                      |
     | GET `/async/chat/completions/{request_id}` | 6000                      |
@@ -69,7 +71,6 @@ Usage tiers determine your **rate limits** and access to **beta features** based
     | ------------------------------------------ | ------------------------- |
     | `sonar-deep-research`                      | 20                        |
     | `sonar-reasoning-pro`                      | 500                       |
-    | `sonar-reasoning`                          | 500                       |
     | `sonar-pro`                                | 500                       |
     | `sonar`                                    | 500                       |
     | POST `/async/chat/completions`             | 20                        |
@@ -82,7 +83,6 @@ Usage tiers determine your **rate limits** and access to **beta features** based
     | ------------------------------------------ | ------------------------- |
     | `sonar-deep-research`                      | 40                        |
     | `sonar-reasoning-pro`                      | 1,000                     |
-    | `sonar-reasoning`                          | 1,000                     |
     | `sonar-pro`                                | 1,000                     |
     | `sonar`                                    | 1,000                     |
     | POST `/async/chat/completions`             | 40                        |
@@ -94,10 +94,9 @@ Usage tiers determine your **rate limits** and access to **beta features** based
     | Model                                      | Requests per minute (RPM) |
     | ------------------------------------------ | ------------------------- |
     | `sonar-deep-research`                      | 60                        |
-    | `sonar-reasoning-pro`                      | 2,000                     |
-    | `sonar-reasoning`                          | 2,000                     |
-    | `sonar-pro`                                | 2,000                     |
-    | `sonar`                                    | 2,000                     |
+    | `sonar-reasoning-pro`                      | 4,000                     |
+    | `sonar-pro`                                | 4,000                     |
+    | `sonar`                                    | 4,000                     |
     | POST `/async/chat/completions`             | 60                        |
     | GET `/async/chat/completions`              | 3000                      |
     | GET `/async/chat/completions/{request_id}` | 6000                      |
@@ -107,10 +106,9 @@ Usage tiers determine your **rate limits** and access to **beta features** based
     | Model                                      | Requests per minute (RPM) |
     | ------------------------------------------ | ------------------------- |
     | `sonar-deep-research`                      | 100                       |
-    | `sonar-reasoning-pro`                      | 2,000                     |
-    | `sonar-reasoning`                          | 2,000                     |
-    | `sonar-pro`                                | 2,000                     |
-    | `sonar`                                    | 2,000                     |
+    | `sonar-reasoning-pro`                      | 4,000                     |
+    | `sonar-pro`                                | 4,000                     |
+    | `sonar`                                    | 4,000                     |
     | POST `/async/chat/completions`             | 100                       |
     | GET `/async/chat/completions`              | 3000                      |
     | GET `/async/chat/completions/{request_id}` | 6000                      |
@@ -119,19 +117,50 @@ Usage tiers determine your **rate limits** and access to **beta features** based
 
 ***
 
-## Search Rate Limits
+## Chat Completions API Rate Limits
+
+The Chat Completions API uses tier-based rate limits that scale with your usage tier:
+
+|    Tier    | QPS (Queries per Second) | Requests per Minute |
+| :--------: | :----------------------: | :-----------------: |
+| **Tier 0** |           1 QPS          |        50/min       |
+| **Tier 1** |           3 QPS          |       150/min       |
+| **Tier 2** |           8 QPS          |       500/min       |
+| **Tier 3** |          17 QPS          |      1,000/min      |
+| **Tier 4** |          33 QPS          |      2,000/min      |
+| **Tier 5** |          33 QPS          |      2,000/min      |
+| **Tier 6** |          167 QPS         |      10,000/min     |
+
+***
+
+## Agentic Research API Rate Limits
+
+The Agentic Research API uses tier-based rate limits that scale with your usage tier:
+
+|    Tier    | QPS (Queries per Second) | Requests per Minute |
+| :--------: | :----------------------: | :-----------------: |
+| **Tier 0** |           1 QPS          |        50/min       |
+| **Tier 1** |           3 QPS          |       150/min       |
+| **Tier 2** |           8 QPS          |       500/min       |
+| **Tier 3** |          17 QPS          |      1,000/min      |
+| **Tier 4** |          33 QPS          |      2,000/min      |
+| **Tier 5** |          33 QPS          |      2,000/min      |
+| **Tier 6** |          167 QPS         |      10,000/min     |
+
+***
+
+## Search API Rate Limits
 
 The Search API has separate rate limits that apply to all usage tiers:
 
-| Endpoint       | Rate Limit            | Burst Capacity |
-| -------------- | --------------------- | -------------- |
-| POST `/search` | 3 requests per second | 3 requests     |
+| Endpoint       | Rate Limit             | Burst Capacity |
+| -------------- | ---------------------- | -------------- |
+| POST `/search` | 50 requests per second | 50 requests    |
 
 **Search Rate Limiter Behavior:**
 
-* **Burst**: Can handle 3 requests instantly
-* **Refill**: 1 token every 333ms
-* **Sustained**: Exactly 3 QPS average over time
+* **Burst**: Can handle 50 requests instantly
+* **Sustained**: Exactly 50 QPS average over time
 
 <Note>
   Search rate limits are independent of your usage tier and apply consistently across all accounts using the same leaky bucket algorithm.
@@ -140,7 +169,7 @@ The Search API has separate rate limits that apply to all usage tiers:
 <Info>
   **Need Higher Search Rate Limits?**
 
-  If you require increased rate limits for the Search API beyond the standard 3 requests per second, please fill out our [rate limit increase request form](https://perplexity.typeform.com/to/yctmfyVT). We'll review your use case and work with you to accommodate your needs.
+  If you require increased rate limits for the Search API beyond the standard 50 requests per second, please fill out our [rate limit increase request form](https://perplexity.typeform.com/to/yctmfyVT). We'll review your use case and work with you to accommodate your needs.
 </Info>
 
 ***
@@ -167,46 +196,46 @@ Our rate limiting system uses a **leaky bucket algorithm** that allows for burst
   </Accordion>
 
   <Accordion title="Rate Limiter Behavior Example">
-    Let's examine how **3 requests per second** works in practice:
+    Let's examine how **50 requests per second** works in practice:
 
     **Parameters:**
 
-    * Capacity: 3 tokens
-    * Leak rate: 3 tokens/second
-    * Refill: 1 token every 333ms
+    * Capacity: 50 tokens
+    * Leak rate: 50 tokens/second
+    * Refill: 1 token every 20ms
 
     **Scenario 1: Burst Traffic**
 
     ```
-    Time 0.0s: Bucket full (3 tokens)
-    → Send 3 requests instantly → ALL ALLOWED ✅
-    → Send 4th request → REJECTED ❌ (bucket empty)
+    Time 0.0s: Bucket full (50 tokens)
+    → Send 50 requests instantly → ALL ALLOWED ✅
+    → Send 51st request → REJECTED ❌ (bucket empty)
 
-    Time 0.333s: 1 token refilled
+    Time 0.020s: 1 token refilled
     → Send 1 request → ALLOWED ✅
     → Send 2nd request → REJECTED ❌
 
-    Time 0.666s: 1 more token refilled
+    Time 0.040s: 1 more token refilled
     → Send 1 request → ALLOWED ✅
     ```
 
-    **Scenario 2: Steady 3 QPS**
+    **Scenario 2: Steady 50 QPS**
 
     ```
-    Request every 333ms:
-    Time 0.0s: Request → ✅ (3→2 tokens)
-    Time 0.333s: Request → ✅ (2+1-1=2 tokens)
-    Time 0.666s: Request → ✅ (2+1-1=2 tokens)
-    ... maintains 2-3 tokens, all requests pass
+    Request every 20ms:
+    Time 0.0s: Request → ✅ (50→49 tokens)
+    Time 0.020s: Request → ✅ (49+1-1=49 tokens)
+    Time 0.040s: Request → ✅ (49+1-1=49 tokens)
+    ... maintains 49-50 tokens, all requests pass
     ```
 
-    **Scenario 3: Slightly Over 3 QPS**
+    **Scenario 3: Slightly Over 50 QPS**
 
     ```
-    Request every 300ms (≈3.33 QPS):
+    Request every 19ms (≈52.6 QPS):
     → Eventually tokens deplete faster than refill
     → Some requests start getting rejected
-    → Achieves exactly 3 QPS on average
+    → Achieves exactly 50 QPS on average
     ```
   </Accordion>
 
@@ -251,9 +280,9 @@ When you exceed your rate limits:
 
 **Example Recovery Times:**
 
-* **3 QPS limit**: 1 token refills every 333ms
 * **50 QPS limit**: 1 token refills every 20ms
 * **500 QPS limit**: 1 token refills every 2ms
+* **1,000 QPS limit**: 1 token refills every 1ms
 
 <Tip>
   **Best Practices:**

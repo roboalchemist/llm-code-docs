@@ -1,12 +1,10 @@
 # Source: https://docs.livekit.io/transport/self-hosting/vm.md
 
-# Source: https://docs.livekit.io/home/self-hosting/vm.md
-
-LiveKit docs › Self-hosting › Virtual machine
+LiveKit docs › Self-hosting › Virtual machines
 
 ---
 
-# Deploy to a VM
+# Virtual machines
 
 > This guide helps you to set up a production-ready LiveKit server on a cloud virtual machine.
 
@@ -14,7 +12,7 @@ This configuration utilizes Docker Compose and Caddy. Your LiveKit server will s
 
 You do not need separate SSL certificates for this set up, we will provision them automatically with Caddy. (by using Let's Encrypt or ZeroSSL)
 
-If desired, the generator can also assist with setting up LiveKit [Ingress](https://docs.livekit.io/home/ingress/overview.md) and [Egress](https://docs.livekit.io/home/egress/overview.md). This gives you the ability to ingest media from other sources, as well as enabling recording capabilities.
+If desired, the generator can also assist with setting up LiveKit [Ingress](https://docs.livekit.io/transport/media/ingress-egress/ingress.md) and [Egress](https://docs.livekit.io/transport/media/ingress-egress/egress.md). This gives you the ability to ingest media from other sources, as well as enabling recording capabilities.
 
 ## Pre-requisites
 
@@ -179,7 +177,7 @@ When the ports are successfully opened, running `curl http://<yourdomain>` shoul
 
 ---
 
-This document was rendered at 2025-11-18T23:54:59.941Z.
-For the latest version of this document, see [https://docs.livekit.io/home/self-hosting/vm.md](https://docs.livekit.io/home/self-hosting/vm.md).
+This document was rendered at 2026-02-03T03:25:20.569Z.
+For the latest version of this document, see [https://docs.livekit.io/transport/self-hosting/vm.md](https://docs.livekit.io/transport/self-hosting/vm.md).
 
 To explore all LiveKit documentation, see [llms.txt](https://docs.livekit.io/llms.txt).

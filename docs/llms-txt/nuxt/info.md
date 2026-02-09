@@ -1,0 +1,89 @@
+# Source: https://nuxt.com/raw/docs/3.x/api/commands/info.md
+
+# Source: https://nuxt.com/raw/docs/4.x/api/commands/info.md
+
+# nuxt info
+
+> The info command logs information about the current or specified Nuxt project.
+
+```bash [Terminal]
+npx nuxt info [ROOTDIR] [--cwd=<directory>]
+```
+
+The `info` command logs information about the current or specified Nuxt project.
+
+## Arguments
+
+<table>
+<thead>
+  <tr>
+    <th>
+      Argument
+    </th>
+    
+    <th>
+      Description
+    </th>
+  </tr>
+</thead>
+
+<tbody>
+  <tr>
+    <td>
+      <code>
+        ROOTDIR="."
+      </code>
+    </td>
+    
+    <td>
+      Specifies the working directory (default: <code>
+        .
+      </code>
+      
+      )
+    </td>
+  </tr>
+</tbody>
+</table>
+
+## Options
+
+<table>
+<thead>
+  <tr>
+    <th>
+      Option
+    </th>
+    
+    <th>
+      Default
+    </th>
+    
+    <th>
+      Description
+    </th>
+  </tr>
+</thead>
+
+<tbody>
+  <tr>
+    <td>
+      <code>
+        --cwd=<directory>
+      </code>
+    </td>
+    
+    <td>
+      
+    </td>
+    
+    <td>
+      Specify the working directory, this takes precedence over ROOTDIR (default: <code>
+        .
+      </code>
+      
+      )
+    </td>
+  </tr>
+</tbody>
+</table>

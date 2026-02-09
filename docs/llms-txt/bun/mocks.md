@@ -1,5 +1,9 @@
 # Source: https://bun.com/docs/test/mocks.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://bun.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Mocks
 
 > Learn how to create and use mock functions, spies, and module mocks in Bun tests
@@ -429,26 +433,26 @@ test("foo, bar, baz", () => {
   const barSpy = spyOn(barModule, "bar");
   const bazSpy = spyOn(bazModule, "baz");
 
-  // Original values
-  expect(fooSpy).toBe("foo");
-  expect(barSpy).toBe("bar");
-  expect(bazSpy).toBe("baz");
+  // Original implementations still work
+  expect(fooModule.foo()).toBe("foo");
+  expect(barModule.bar()).toBe("bar");
+  expect(bazModule.baz()).toBe("baz");
 
   // Mock implementations
   fooSpy.mockImplementation(() => 42);
   barSpy.mockImplementation(() => 43);
   bazSpy.mockImplementation(() => 44);
 
-  expect(fooSpy()).toBe(42);
-  expect(barSpy()).toBe(43);
-  expect(bazSpy()).toBe(44);
+  expect(fooModule.foo()).toBe(42);
+  expect(barModule.bar()).toBe(43);
+  expect(bazModule.baz()).toBe(44);
 
   // Restore all
   mock.restore();
 
-  expect(fooSpy()).toBe("foo");
-  expect(barSpy()).toBe("bar");
-  expect(bazSpy()).toBe("baz");
+  expect(fooModule.foo()).toBe("foo");
+  expect(barModule.bar()).toBe("bar");
+  expect(bazModule.baz()).toBe("baz");
 });
 ```
 
@@ -456,10 +460,10 @@ Using `mock.restore()` can reduce the amount of code in your tests by adding it 
 
 ## Vitest Compatibility
 
-For added compatibility with tests written for Vitest, Bun provides the `vi` global object as an alias for parts of the Jest mocking API:
+For added compatibility with tests written for Vitest, Bun provides the `vi` object as an alias for parts of the Jest mocking API:
 
 ```ts title="test.ts" icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/typescript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=c6cceedec8f82d2cc803d7c6ec82b240" theme={"theme":{"light":"github-light","dark":"dracula"}}
-import { test, expect } from "bun:test";
+import { test, expect, vi } from "bun:test";
 
 // Using the 'vi' alias similar to Vitest
 test("vitest compatibility", () => {

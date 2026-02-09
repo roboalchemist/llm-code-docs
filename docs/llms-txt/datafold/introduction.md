@@ -1,5 +1,9 @@
 # Source: https://docs.datafold.com/api-reference/introduction.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.datafold.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Introduction
 
 Our REST API allows you to interact with Datafold programmatically. To use it, you'll need an API key. Follow the instructions below to get started.
@@ -25,7 +29,7 @@ Authorization: Key {API_KEY}
 For example, if you're using cURL:
 
 ```bash  theme={null}
-curl https://api.datafold.com/api/v1/... -H "Authorization: Key {API_KEY}"
+curl https://app.datafold.com/api/v1/... -H "Authorization: Key {API_KEY}"
 ```
 
 ## Datafold SDK

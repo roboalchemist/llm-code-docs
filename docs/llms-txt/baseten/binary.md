@@ -1,5 +1,9 @@
 # Source: https://docs.baseten.co/inference/output-format/binary.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.baseten.co/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Model I/O in binary
 
 > Decode and save binary model output
@@ -34,10 +38,16 @@ If you need a deployed model to try the invocation examples below, follow these 
     </Step>
 
     <Step title="Deploy the Truss">
-      Deploy the Truss to Baseten with:
+      Deploy the Truss to Baseten for development:
 
       ```sh  theme={"system"}
-      truss push
+      truss push --watch
+      ```
+
+      Or for production:
+
+      ```sh  theme={"system"}
+      truss push --publish
       ```
     </Step>
   </Steps>
@@ -59,8 +69,8 @@ import requests
 import msgpack
 
 
-model_id = "MODEL_ID" # Replace with your model ID
-deployment = "development" # `development`, `production`, or a deployment ID
+model_id = "MODEL_ID"  # Replace this with your model ID
+deployment = "development"  # `development`, `production`, or a deployment ID
 baseten_api_key = os.environ["BASETEN_API_KEY"]
 # Specify the URL to which you want to send the POST request
 url = f"https://model-{model_id}.api.baseten.co/{deployment}/predict"
@@ -135,8 +145,8 @@ import os
 import requests
 import json
 
-model_id = "MODEL_ID" # Replace with your model ID
-deployment = "development" # `development`, `production`, or a deployment ID
+model_id = "MODEL_ID"  # Replace this with your model ID
+deployment = "development"  # `development`, `production`, or a deployment ID
 baseten_api_key = os.environ["BASETEN_API_KEY"]
 # Specify the URL to which you want to send the POST request
 url = f"https://model-{model_id}.api.baseten.co/{deployment}/predict"

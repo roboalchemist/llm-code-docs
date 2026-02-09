@@ -1,5 +1,9 @@
 # Source: https://docs.chatling.ai/chatbot/builder/canvas.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.chatling.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Canvas
 
 > Learn about the canvas and how to navigate and interact with it.

@@ -2,10 +2,6 @@
 
 # Source: https://jam.dev/docs/jam-for-customer-support/zendesk.md
 
-# Source: https://jam.dev/docs/integrations/zendesk.md
-
-# Source: https://jam.dev/docs/jam-for-customer-support/zendesk.md
-
 # Zendesk
 
 1. Create a new [Recording Link](https://jam.dev/docs/recording-links#how-it-works) from the Jam browser extension.

@@ -1,9 +1,13 @@
 # Source: https://docs.unstructured.io/examplecode/codesamples/oss/multi-files-api-processing.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.unstructured.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Multi-file API processing
 
 <Note>
-  This sample code utilizes the [Unstructured Partition Endpoint](/api-reference/partition/overview).
+  This sample code utilizes the legacy [Unstructured Partition Endpoint](/api-reference/legacy-api/partition/overview).
 </Note>
 
 ## Introduction

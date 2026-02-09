@@ -1,5 +1,9 @@
 # Source: https://docs.fireflies.ai/schema/input/update-meeting-state-input.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.fireflies.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # UpdateMeetingStateInput
 
 > Schema for UpdateMeetingStateInput
@@ -11,8 +15,3 @@
 <ParamField path="action" type="MeetingStateAction!" required>
   The action to perform. Must be one of: `pause_recording` or `resume_recording`
 </ParamField>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.fireflies.ai/llms.txt

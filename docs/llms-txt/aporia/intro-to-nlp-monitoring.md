@@ -2,10 +2,6 @@
 
 # Source: https://docs.aporia.com/v1/nlp/intro-to-nlp-monitoring.md
 
-# Source: https://docs.aporia.com/nlp/intro-to-nlp-monitoring.md
-
-# Source: https://docs.aporia.com/v1/nlp/intro-to-nlp-monitoring.md
-
 # Intro to NLP Monitoring
 
 This guide will walk you through the core concepts of NLP model monitoring. Before soon, you'll be able to detect drift and measure model performance for your NLP models 🚀

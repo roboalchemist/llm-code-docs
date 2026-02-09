@@ -1,8 +1,6 @@
 # Source: https://docs.livekit.io/reference/telephony/troubleshooting.md
 
-# Source: https://docs.livekit.io/sip/troubleshooting.md
-
-LiveKit docs › Reference › Troubleshooting
+LiveKit docs › Telephony › Troubleshooting
 
 ---
 
@@ -11,6 +9,10 @@ LiveKit docs › Reference › Troubleshooting
 > Common issues and solutions for SIP.
 
 The following sections cover some of the common issues and solutions for LiveKit SIP integrations.
+
+> 💡 **Provider documentation**
+> 
+> Consult your SIP trunking provider's documentation. Your provider might include additional documentation for specific errors and have their own recommended troubleshooting steps.
 
 ## General issues
 
@@ -30,9 +32,9 @@ This error commonly occurs in regions where regulations require calls to remain 
 
 #### Solution
 
-Use region pinning to restrict calls to a specific region. For inbound calls, use [region-based endpoints](https://docs.livekit.io/sip/cloud.md#inbound-calls). For outbound calls, specify the `destination_country` parameter when you create an [outbound trunk](https://docs.livekit.io/sip/trunk-outbound.md#region-pinning).
+Use region pinning to restrict calls to a specific region. For inbound calls, use [region-based endpoints](https://docs.livekit.io/telephony/features/region-pinning.md). For outbound calls, specify the `destination_country` parameter when you create an [outbound trunk](https://docs.livekit.io/telephony/making-calls/outbound-trunk.md#region-pinning).
 
-To learn more see [SIP cloud and region pinning](https://docs.livekit.io/sip/cloud.md).
+To learn more see [SIP cloud and region pinning](https://docs.livekit.io/telephony/features/region-pinning.md).
 
 ### 404 - Not Found
 
@@ -55,7 +57,7 @@ Poor audio quality is often caused by network issues. If connectivity isn't the 
 
 #### Solution
 
-Enable background noise cancellation (BVC) for your agent, along with client-side echo cancellation. Both are recommended for the optimal audio quality. To learn more, see [Noise cancellation](https://docs.livekit.io/home/cloud/noise-cancellation.md).
+Enable background noise cancellation (BVC) for your agent, along with client-side echo cancellation. Both are recommended for the optimal audio quality. To learn more, see [Noise cancellation](https://docs.livekit.io/transport/media/enhanced-noise-cancellation.md).
 
 ## Call transfer issues
 
@@ -89,7 +91,7 @@ This usually happens when the agent name is missing or incorrect in the dispatch
 Make sure the agent name matches in both of the following places:
 
 - When creating your agent: set `agent_name` for `AgentServer`. To learn more, see [Explicit agent dispatch](https://docs.livekit.io/agents/server/agent-dispatch.md#explicit).
-- When creating your dispatch rule: set `agent_name` in `RoomAgentDispatch`. For an example, see [Caller dispatch rule (individual)](https://docs.livekit.io/sip/dispatch-rule.md#caller-dispatch-rule-individual-).
+- When creating your dispatch rule: set `agent_name` in `RoomAgentDispatch`. For an example, see [Caller dispatch rule (individual)](https://docs.livekit.io/telephony/accepting-calls/dispatch-rule.md#caller-dispatch-rule-individual-).
 
 To learn more, see [Agent dispatch](https://docs.livekit.io/agents/server/agent-dispatch.md).
 
@@ -105,11 +107,15 @@ For example, the SIP endpoint for Telnyx is `sip.telnyx.com`. If you include a s
 
 #### Solution
 
-Check with your SIP trunking provider and verify you're using the correct SIP endpoint in the `address` field for your outbound trunk. To learn more, see [Create an outbound trunk](https://docs.livekit.io/sip/trunk-outbound.md#create).
+Check with your SIP trunking provider and verify you're using the correct SIP endpoint in the `address` field for your outbound trunk. To learn more, see [Create an outbound trunk](https://docs.livekit.io/telephony/making-calls/outbound-trunk.md#create).
+
+## Additional resources
+
+For SIP errors not covered in this topic, see [List of SIP response codes](https://en.wikipedia.org/wiki/List_of_SIP_response_codes).
 
 ---
 
-This document was rendered at 2025-11-18T23:55:22.693Z.
-For the latest version of this document, see [https://docs.livekit.io/sip/troubleshooting.md](https://docs.livekit.io/sip/troubleshooting.md).
+This document was rendered at 2026-02-03T03:25:13.870Z.
+For the latest version of this document, see [https://docs.livekit.io/reference/telephony/troubleshooting.md](https://docs.livekit.io/reference/telephony/troubleshooting.md).
 
 To explore all LiveKit documentation, see [llms.txt](https://docs.livekit.io/llms.txt).

@@ -1,129 +1,120 @@
 # Source: https://www.activepieces.com/docs/endpoints/pieces/install.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.activepieces.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Install Piece
 
 > Add a piece to a platform
 
+
+
 ## OpenAPI
 
 ````yaml POST /v1/pieces
+openapi: 3.0.3
+info:
+  title: Activepieces Documentation
+  version: 0.0.0
+servers:
+  - url: https://cloud.activepieces.com/api
+    description: Production Server
+security: []
+externalDocs:
+  url: https://www.activepieces.com/docs
+  description: Find more info here
 paths:
-  path: /v1/pieces
-  method: post
-  servers:
-    - url: https://cloud.activepieces.com/api
-      description: Production Server
-  request:
-    security:
-      - title: apiKey
-        parameters:
-          query: {}
-          header:
-            Authorization:
-              type: http
-              scheme: bearer
-              description: Use your api key generated from the admin console
-          cookie: {}
-    parameters:
-      path: {}
-      query: {}
-      header: {}
-      cookie: {}
-    body:
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              packageType:
-                allOf:
-                  - type: string
-                    enum:
-                      - ARCHIVE
-              scope:
-                allOf:
-                  - type: string
-                    enum:
-                      - PLATFORM
-              pieceName:
-                allOf:
-                  - minLength: 1
-                    type: string
-              pieceVersion:
-                allOf:
-                  - pattern: ^[0-9]+\.[0-9]+\.[0-9]+$
-                    type: string
-              pieceArchive:
-                allOf:
-                  - type: object
-                    properties:
-                      filename:
-                        type: string
-                      data: {}
-                      type:
-                        type: string
-                        enum:
-                          - file
-                    required:
-                      - filename
-                      - data
-                      - type
-            title: Private Piece
-            requiredProperties:
-              - packageType
-              - scope
-              - pieceName
-              - pieceVersion
-              - pieceArchive
-          - type: object
-            properties:
-              packageType:
-                allOf:
-                  - type: string
-                    enum:
-                      - REGISTRY
-              scope:
-                allOf:
-                  - type: string
-                    enum:
-                      - PLATFORM
-              pieceName:
-                allOf:
-                  - minLength: 1
-                    type: string
-              pieceVersion:
-                allOf:
-                  - pattern: ^[0-9]+\.[0-9]+\.[0-9]+$
-                    type: string
-            title: NPM Piece
-            requiredProperties:
-              - packageType
-              - scope
-              - pieceName
-              - pieceVersion
-        examples:
-          example:
-            value:
-              packageType: ARCHIVE
-              scope: PLATFORM
-              pieceName: <string>
-              pieceVersion: <string>
-              pieceArchive:
-                filename: <string>
-                data: <any>
-                type: file
-  response:
-    '201':
-      application/json:
-        schemaArray:
-          - type: object
-            properties: {}
-        examples:
-          example:
-            value: {}
-        description: Default Response
-  deprecated: false
-  type: path
+  /v1/pieces:
+    post:
+      tags:
+        - pieces
+      summary: Add a piece to a platform
+      description: Add a piece to a platform
+      requestBody:
+        content:
+          application/json:
+            schema:
+              anyOf:
+                - title: Private Piece
+                  type: object
+                  properties:
+                    packageType:
+                      type: string
+                      enum:
+                        - ARCHIVE
+                    scope:
+                      type: string
+                      enum:
+                        - PLATFORM
+                    pieceName:
+                      minLength: 1
+                      type: string
+                    pieceVersion:
+                      pattern: ^[0-9]+\.[0-9]+\.[0-9]+$
+                      type: string
+                    pieceArchive:
+                      type: object
+                      properties:
+                        filename:
+                          type: string
+                        data: {}
+                        type:
+                          type: string
+                          enum:
+                            - file
+                        mimetype:
+                          type: string
+                      required:
+                        - filename
+                        - data
+                        - type
+                  required:
+                    - packageType
+                    - scope
+                    - pieceName
+                    - pieceVersion
+                    - pieceArchive
+                - title: NPM Piece
+                  type: object
+                  properties:
+                    projectId:
+                      type: string
+                    packageType:
+                      type: string
+                      enum:
+                        - REGISTRY
+                    scope:
+                      type: string
+                      enum:
+                        - PLATFORM
+                    pieceName:
+                      minLength: 1
+                      type: string
+                    pieceVersion:
+                      pattern: ^[0-9]+\.[0-9]+\.[0-9]+$
+                      type: string
+                  required:
+                    - projectId
+                    - packageType
+                    - scope
+                    - pieceName
+                    - pieceVersion
+      responses:
+        '201':
+          description: Default Response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: {}
+      security:
+        - apiKey: []
 components:
-  schemas: {}
+  securitySchemes:
+    apiKey:
+      type: http
+      description: Use your api key generated from the admin console
+      scheme: bearer
 
 ````

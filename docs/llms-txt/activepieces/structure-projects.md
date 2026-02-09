@@ -1,5 +1,9 @@
 # Source: https://www.activepieces.com/docs/admin-guide/guides/structure-projects.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.activepieces.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # How to Structure Projects
 
 <Snippet file="enterprise-feature.mdx" />
@@ -12,8 +16,3 @@ There are two types of projects:
 * **Team Projects**: Team projects are shared spaces that can be created and managed from this page. Multiple users can be invited to a team project, allowing them to collaborate, share access to flows, connections, and tables, and work together.
 
 When organizing your work, create team projects for group collaboration and utilize personal projects for individual or private tasks.
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://www.activepieces.com/docs/llms.txt

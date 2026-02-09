@@ -58,6 +58,8 @@
 
 # Source: https://docs.n8n.io/user-management/rbac/projects/index.md
 
+# Source: https://docs.n8n.io/user-management/rbac/custom-roles/index.md
+
 # Source: https://docs.n8n.io/user-management/rbac/index.md
 
 # Source: https://docs.n8n.io/user-management/oidc/troubleshooting/index.md
@@ -1106,13 +1108,13 @@
 
 # Source: https://docs.n8n.io/integrations/builtin/core-nodes/n8n-nodes-base.code/index.md
 
-# Source: https://docs.n8n.io/integrations/builtin/core-nodes/n8n-nodes-langchain.respondtochat/index.md
-
 # Source: https://docs.n8n.io/integrations/builtin/core-nodes/n8n-nodes-langchain.mcptrigger/index.md
 
 # Source: https://docs.n8n.io/integrations/builtin/core-nodes/n8n-nodes-langchain.mcpClient/index.md
 
 # Source: https://docs.n8n.io/integrations/builtin/core-nodes/n8n-nodes-langchain.guardrails/index.md
+
+# Source: https://docs.n8n.io/integrations/builtin/core-nodes/n8n-nodes-langchain.chat/index.md
 
 # Source: https://docs.n8n.io/integrations/builtin/core-nodes/n8n-nodes-base.xml/index.md
 
@@ -2102,6 +2104,8 @@
 
 # Source: https://docs.n8n.io/hosting/configuration/environment-variables/workflows/index.md
 
+# Source: https://docs.n8n.io/hosting/configuration/environment-variables/workflow-history/index.md
+
 # Source: https://docs.n8n.io/hosting/configuration/environment-variables/user-management-smtp-2fa/index.md
 
 # Source: https://docs.n8n.io/hosting/configuration/environment-variables/timezone-localization/index.md
@@ -2447,6 +2451,8 @@
 # Source: https://docs.n8n.io/advanced-ai/rag-in-n8n/index.md
 
 # Source: https://docs.n8n.io/advanced-ai/intro-tutorial/index.md
+
+# Source: https://docs.n8n.io/advanced-ai/human-in-the-loop-tools/index.md
 
 # Source: https://docs.n8n.io/advanced-ai/chat-hub/index.md
 

@@ -1,4 +1,8 @@
-# Source: https://mintlify.com/docs/customize/react-components.md
+# Source: https://www.mintlify.com/docs/customize/react-components.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.mintlify.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # React
 
@@ -81,7 +85,7 @@ export const ColorGenerator = () => {
 
 ## Using React components
 
-You can build React components directly in your `MDX` files using [React hooks](https://react.dev/reference/react/hooks).
+You can build React components directly in your MDX files using [React hooks](https://react.dev/reference/react/hooks).
 
 ### Example
 
@@ -152,11 +156,11 @@ The counter renders as an interactive React component.
 
 ## Importing components
 
-To import React components in your `MDX` files, the component files must be located in the `snippets` folder. You can then import them into any `MDX` page in your documentation. Learn more about [reusable snippets](/create/reusable-snippets).
+To import React components in your MDX files, the component files must be located in the `/snippets/` folder. Learn more about [reusable snippets](/create/reusable-snippets).
 
 ### Example
 
-This example declares a `ColorGenerator` component that uses multiple React hooks and then uses it in an `MDX` file.
+This example declares a `ColorGenerator` component that uses multiple React hooks and then uses it in an MDX file.
 
 Create `color-generator.jsx` file in the `snippets` folder:
 
@@ -273,7 +277,7 @@ export const ColorGenerator = () => {
 }
 ```
 
-Import the `ColorGenerator` component and use it in an `MDX` file:
+Import the `ColorGenerator` component and use it in an MDX file:
 
 ```mdx  theme={null}
 import { ColorGenerator } from "/snippets/color-generator.jsx"

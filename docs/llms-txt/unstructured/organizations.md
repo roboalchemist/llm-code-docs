@@ -1,5 +1,9 @@
 # Source: https://docs.unstructured.io/ui/account/organizations.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.unstructured.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Organizational accounts
 
 <Note>
@@ -194,7 +198,7 @@ To add a user to an organizational account as a member:
   Removing a member from an organizational account also removes the member from all of the organizational account's workspaces. The member will no longer
   have access to the organizational account or any of its workspaces. The member will continue to be able to use their personal account and personal workspace.
 
-  Any connectors, workflows, jobs, or other resources that were created by the member within the organizational accounts's workspaces will not be removed.
+  Any connectors, workflows, jobs, or other resources that were created by the member within the organizational accounts' workspaces will not be removed.
 
   The only way to reverse removing a member from an organizational account is to add the member back to the organizational account—and to each of the workspaces that the member might have previously
   been a member of in that organizational account.

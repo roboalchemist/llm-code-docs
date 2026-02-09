@@ -1,5 +1,9 @@
 # Source: https://docs.lunary.ai/docs/integrations/javascript/vercel-ai-sdk.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.lunary.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Vercel AI SDK
 
 > Send Vercel AI SDK telemetry to Lunary via OpenTelemetry.
@@ -120,8 +124,3 @@ Deploy or start your app locally and trigger the instrumented route. Open the Lu
 dashboard and visit **Observability → Traces** to confirm new spans tagged with your
 `service.name` and metadata. From there you can drill into token usage, latency, and
 prompt/response payloads per trace.
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.lunary.ai/llms.txt

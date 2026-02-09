@@ -1,5 +1,9 @@
 # Source: https://loops.so/docs/creating-emails/using-templates.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://loops.so/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Using templates
 
 > How to draft emails with predefined templates in Loops.
@@ -40,8 +44,3 @@ Loops offers templates across each of the three [email types](https://loops.so/d
 </Warning>
 
 5. Once your template is ready to test, send a test email to yourself to see how your design renders in the inbox.
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://loops.so/docs/llms.txt

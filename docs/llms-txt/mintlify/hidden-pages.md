@@ -1,20 +1,24 @@
-# Source: https://mintlify.com/docs/organize/hidden-pages.md
+# Source: https://www.mintlify.com/docs/organize/hidden-pages.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.mintlify.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Hidden pages
 
 > Hide pages from your navigation while keeping them accessible.
 
-Hidden pages are removed from your site's navigation but remain publicly accessible to anyone who knows their URL.
+Hidden pages are not included in your site's navigation but remain publicly accessible to anyone who knows their URL.
 
 Use hidden pages for content that you want to be accessible on your site or referenced as context for AI tools, but not discoverable through the navigation.
 
 For content requiring strict access control, you must configure [authentication](/deploy/authentication-setup).
 
-If you want to hide pages for specific groups of users, use personalization to control [page visibility](/authentication-personalization/overview#page-visibility).
+To restrict pages to specific groups of users, configure [group-based access control](/deploy/authentication-setup#control-access-with-groups).
 
 ## Hiding a page
 
-A page is hidden if it is not included in your `docs.json` navigation. To hide a page, remove it from your navigation structure.
+To hide a page, remove it from your navigation structure. Any pages that are not included in your `docs.json` navigation are hidden.
 
 Hidden pages use the same URL structure as regular pages based on their file path. For example,  `guides/hidden-page.mdx` would be accessible at `docs.yoursite.com/guides/hidden-page`.
 

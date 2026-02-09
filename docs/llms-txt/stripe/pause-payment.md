@@ -8,7 +8,7 @@ Learn how to pause payment collection on subscriptions.
 
 Pausing payment collection is often used to temporarily offer your services for free. This is sometimes referred to as a “grace period” if a customer needs additional time to pay or can’t pay for one or more billing periods.
 
-You can pause or resume collection in the [Stripe Dashboard](https://support.stripe.com/questions/how-to-pause-or-cancel-subscriptions) or the API. While collection is paused, *subscriptions* (A Subscription represents the product details associated with the plan that your customer subscribes to. Allows you to charge the customer on a recurring basis) still generate *invoices* (Invoices are statements of amounts owed by a customer. They track the status of payments from draft through paid or otherwise finalized. Subscriptions automatically generate invoices, or you can manually create a one-off invoice), but you have a few options for handling these invoices.  Review the following use cases to determine the best approach for you:
+You can pause or resume collection in the [Stripe Dashboard](https://support.stripe.com/questions/how-to-pause-or-cancel-subscriptions) or the API. While collection is paused, *subscriptions* (A Subscription represents the product details associated with the plan that your customer subscribes to. Allows you to charge the customer on a recurring basis) still generate *invoices* (Invoices are statements of amounts owed by a customer. They track the status of payments from draft through paid or otherwise finalized. Subscriptions automatically generate invoices, or you can manually create a one-off invoice), but you have a few options for handling these invoices. Review the following use cases to determine the best approach for you:
 
 | Use case                                                                                                                                                      | API configuration                 |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------- |
@@ -111,9 +111,9 @@ params := &stripe.SubscriptionUpdateParams{
   PauseCollection: &stripe.SubscriptionUpdatePauseCollectionParams{
     Behavior: stripe.String(stripe.SubscriptionPauseCollectionBehaviorVoid),
   },
-  SubscriptionExposedID: stripe.String("{{SUBSCRIPTION_ID}}"),
 }
-result, err := sc.V1Subscriptions.Update(context.TODO(), params)
+result, err := sc.V1Subscriptions.Update(
+  context.TODO(), "{{SUBSCRIPTION_ID}}", params)
 ```
 
 ```dotnet
@@ -223,9 +223,9 @@ params := &stripe.SubscriptionUpdateParams{
   PauseCollection: &stripe.SubscriptionUpdatePauseCollectionParams{
     Behavior: stripe.String(stripe.SubscriptionPauseCollectionBehaviorKeepAsDraft),
   },
-  SubscriptionExposedID: stripe.String("{{SUBSCRIPTION_ID}}"),
 }
-result, err := sc.V1Subscriptions.Update(context.TODO(), params)
+result, err := sc.V1Subscriptions.Update(
+  context.TODO(), "{{SUBSCRIPTION_ID}}", params)
 ```
 
 ```dotnet
@@ -318,11 +318,8 @@ const invoice = await stripe.invoices.update(
 // Set your secret key. Remember to switch to your live secret key in production.
 // See your keys here: https://dashboard.stripe.com/apikeys
 sc := stripe.NewClient("<<YOUR_SECRET_KEY>>")
-params := &stripe.InvoiceUpdateParams{
-  AutoAdvance: stripe.Bool(true),
-  Invoice: stripe.String("{{INVOICE_ID}}"),
-}
-result, err := sc.V1Invoices.Update(context.TODO(), params)
+params := &stripe.InvoiceUpdateParams{AutoAdvance: stripe.Bool(true)}
+result, err := sc.V1Invoices.Update(context.TODO(), "{{INVOICE_ID}}", params)
 ```
 
 ```dotnet
@@ -425,9 +422,9 @@ params := &stripe.SubscriptionUpdateParams{
   PauseCollection: &stripe.SubscriptionUpdatePauseCollectionParams{
     Behavior: stripe.String(stripe.SubscriptionPauseCollectionBehaviorMarkUncollectible),
   },
-  SubscriptionExposedID: stripe.String("{{SUBSCRIPTION_ID}}"),
 }
-result, err := sc.V1Subscriptions.Update(context.TODO(), params)
+result, err := sc.V1Subscriptions.Update(
+  context.TODO(), "{{SUBSCRIPTION_ID}}", params)
 ```
 
 ```dotnet

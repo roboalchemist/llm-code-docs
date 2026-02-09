@@ -1,5 +1,9 @@
 # Source: https://infisical.com/docs/documentation/platform/pki/guides/request-cert-acme.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://infisical.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Obtain a Certificate via ACME
 
 The [ACME enrollment method](/documentation/platform/pki/enrollment-methods/acme) lets any [ACME client](https://letsencrypt.org/docs/client-options/) obtain TLS certificates from Infisical using the [ACME protocol](https://en.wikipedia.org/wiki/Automatic_Certificate_Management_Environment).
@@ -87,25 +91,25 @@ In the following steps, we explore an end-to-end workflow for obtaining a certif
     </Note>
   </Step>
 
-  <Step title="Create a certificate template">
-    Next, follow the guide [here](/documentation/platform/pki/certificates/templates#guide-to-creating-a-certificate-template) to create a [certificate template](/documentation/platform/pki/certificates/templates).
+  <Step title="Create a certificate policy">
+    Next, follow the guide [here](/documentation/platform/pki/certificates/policies#guide-to-creating-a-certificate-policy) to create a [certificate policy](/documentation/platform/pki/certificates/policies).
 
-    The certificate template will constrain what attributes may or may not be allowed in the request to issue a certificate.
+    The certificate policy will constrain what attributes may or may not be allowed in the request to issue a certificate.
     For example, you can specify that the requested common name must adhere to a specific format like `*.acme.com` and
     that the maximum TTL cannot exceed 1 year.
 
-    If you're looking to issue TLS server certificates, you should select the **TLS Server Certificate** option under the **Template Preset** dropdown.
+    If you're looking to issue TLS server certificates, you should select the **TLS Server Certificate** option under the **Policy Preset** dropdown.
   </Step>
 
   <Step title="Create a certificate profile">
     Next, follow the guide [here](/documentation/platform/pki/certificates/profiles#guide-to-creating-a-certificate-profile) to create a [certificate profile](/documentation/platform/pki/certificates/profiles)
     that will be referenced when requesting a certificate.
 
-    The certificate profile specifies which certificate template and issuing CA should be used to validate an incoming certificate request and issue a certificate;
+    The certificate profile specifies which certificate policy and issuing CA should be used to validate an incoming certificate request and issue a certificate;
     it also specifies the [enrollment method](/documentation/platform/pki/enrollment-methods/overview) for how certificates can be requested against this profile
     to begin with.
 
-    You should specify the certificate template from Step 2, the issuing CA from Step 1, and the **ACME** option in the **Enrollment Method** dropdown when creating the certificate profile.
+    You should specify the certificate policy from Step 2, the issuing CA from Step 1, and the **ACME** option in the **Enrollment Method** dropdown when creating the certificate profile.
   </Step>
 
   <Step title="Request a certificate">
@@ -129,8 +133,3 @@ In the following steps, we explore an end-to-end workflow for obtaining a certif
     </Note>
   </Step>
 </Steps>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://infisical.com/docs/llms.txt

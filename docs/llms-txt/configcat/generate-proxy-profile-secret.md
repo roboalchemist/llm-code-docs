@@ -2,10 +2,7 @@
 
 # Generate Secret
 
-```
-POST 
-/v1/proxy-profiles/:proxyProfileId/secret
-```
+Copy page
 
 This endpoint (re)generates a secret token for a Proxy Profile identified by the `proxyProfileId` parameter.
 

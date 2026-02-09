@@ -1,5 +1,9 @@
 # Source: https://getlago.com/docs/guide/analytics/invoice-overdue.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://getlago.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Overdue invoices
 
 The Overdue Invoices dashboard displays the total amount from your finalized invoices that are either pending or failed and have passed their due date. It does not include voided or disputed invoices. At a glance, you can see what your customers owe you, providing quick insight into the state of your revenue collection.

@@ -1,5 +1,9 @@
 # Source: https://docs.comfy.org/built-in-nodes/CheckpointLoaderSimple.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.comfy.org/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # CheckpointLoaderSimple - ComfyUI Built-in Node Documentation
 
 > The CheckpointLoaderSimple node is used to load model files from specified locations and decompose them into three core components: the main model, text encoder, and image encoder/decoder.

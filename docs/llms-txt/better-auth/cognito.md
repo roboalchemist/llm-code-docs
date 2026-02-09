@@ -4,11 +4,7 @@
 
 Amazon Cognito provider setup and usage.
 
-***
 
-title: Cognito
-description: Amazon Cognito provider setup and usage.
------------------------------------------------------
 
 <Steps>
   <Step>
