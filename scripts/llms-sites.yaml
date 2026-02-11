@@ -438,6 +438,9 @@ sites:
 - name: ideogram
   base_url: https://docs.ideogram.ai/
   description: Ideogram AI image generation platform
+- name: icepanel
+  base_url: https://docs.icepanel.io/
+  description: IcePanel visual architecture modeling tool using C4 model for software teams
 - name: infera
   base_url: https://docs.infera.org/
   description: Infera AI inference optimization platform
