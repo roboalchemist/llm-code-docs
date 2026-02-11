@@ -915,6 +915,13 @@ repositories:
     target_folder: "docs/github-scraped/tree-sitter"
     branch: "master"
 
+  - name: "terraform-cloud"
+    description: "Terraform Cloud (HCP Terraform) - HashiCorp's managed service for Terraform with remote state management, run environments, VCS integration, policy enforcement, team collaboration, and cost estimation"
+    repo_url: "https://github.com/hashicorp/web-unified-docs.git"
+    source_folder: "content/terraform-docs-common/docs/cloud-docs"
+    target_folder: "docs/github-scraped/terraform-cloud"
+    branch: "main"
+
   - name: "terraform-ls"
     description: "Terraform Language Server - Official Terraform language server maintained by HashiCorp providing IDE features to LSP-compatible editors"
     repo_url: "https://github.com/hashicorp/terraform-ls.git"
