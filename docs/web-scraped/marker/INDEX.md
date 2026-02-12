@@ -102,6 +102,7 @@ Marker benchmarks favorably against commercial tools like Llamaparse and Mathpix
 ## For More Information
 
 See the complete [README.md](README.md) for:
+
 - Detailed configuration options
 - Advanced usage examples
 - Custom processor development

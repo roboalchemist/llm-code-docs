@@ -24,6 +24,7 @@ Once `modal` is configured, you can deploy it to your workspace by running:
 > modal deploy marker_modal_deployment.py
 
 Notes:
+
 - `marker` has a few models it uses. By default, the endpoint will check if these models are loaded and download them if not (first request will be slow). You can avoid this by running
 
 > modal run marker_modal_deployment.py::download_models
@@ -31,6 +32,7 @@ Notes:
 Which will create a [`Modal Volume`](https://modal.com/docs/guide/Volumes) to store them for re-use.
 
 Once the deploy is finished, you can:
+
 - Test a file upload locally through your CLI using an `invoke_conversion` command we expose through Modal's [`local_entrypoint`](https://modal.com/docs/reference/modal.App#local_entrypoint)
 - Get the URL of your endpoint and make a request through a client of your choice.
 
@@ -38,19 +40,19 @@ Once the deploy is finished, you can:
 
 If your endpoint is live, simply run this command:
 
-```
+```bash
 $ modal run marker_modal_deployment.py::invoke_conversion --pdf-file <PDF_FILE_PATH> --output-format markdown
 ```
 
 And it'll automatically detect the URL of your new endpoint using [`.get_web_url()`](https://modal.com/docs/guide/webhook-urls#determine-the-url-of-a-web-endpoint-from-code), make sure it's healthy, submit your file, and store its output on your machine (in the same directory).
 
-**Making a request using your own client**
+## Making a request using your own client
 
 If you want to make requests elsewhere e.g. with cURL or a client like Insomnia, you'll need to get the URL.
 
 When your `modal deploy` command from earlier finishes, it'll include your endpoint URL at the end. For example:
 
-```
+```bash
 $ modal deploy marker_modal_deployment.py
 ...
 ✓ Created objects.
@@ -62,32 +64,34 @@ $ modal deploy marker_modal_deployment.py
 ```
 
 If you accidentally close your terminal session, you can also always go into Modal's dashboard and:
-  - Find the app (default name: `datalab-marker-modal-demo`)
-  - Click on `MarkerModalDemoService`
-  - Find your endpoint URL
+
+- Find the app (default name: `datalab-marker-modal-demo`)
+- Click on `MarkerModalDemoService`
+- Find your endpoint URL
 
 Once you have your URL, make a request to `{YOUR_ENDPOINT_URL}/convert` like this (you can also use Insomnia, etc.):
-```
+
+```bash
 curl --request POST \
   --url {BASE_URL}/convert \
   --header 'Content-Type: multipart/form-data' \
   --form file=@/Users/cooldev/sample.pdf \
   --form output_format=html
-  ```
+```
 
 You should get a response like this
 
-```
+```json
 {
-	"success": true,
-	"filename": "sample.pdf",
-	"output_format": "html",
-	"json": null,
-	"html": "<YOUR_RESPONSE_CONTENT>",
-	"markdown": null,
-	"images": {},
-	"metadata": {... page level metadata ...},
-	"page_count": 2
+    "success": true,
+    "filename": "sample.pdf",
+    "output_format": "html",
+    "json": null,
+    "html": "<YOUR_RESPONSE_CONTENT>",
+    "markdown": null,
+    "images": {},
+    "metadata": {... page level metadata ...},
+    "page_count": 2
 }
 ```
 

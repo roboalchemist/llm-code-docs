@@ -1,6 +1,6 @@
 # Source: https://github.com/VikParuchuri/marker/blob/master/README.md
 
-# Marker
+## Marker
 
 Marker converts documents to markdown, JSON, chunks, and HTML quickly and accurately.
 
@@ -17,7 +17,7 @@ For our managed API or on-prem document intelligence solution, check out [our pl
 
 ## Performance
 
-<img src="data/images/overall.png" width="800px"/>
+<img src="data/images/overall.png" width="800px" alt="Overall performance comparison"/>
 
 Marker benchmarks favorably compared to cloud services like Llamaparse and Mathpix, as well as other open source tools.
 
@@ -31,7 +31,7 @@ For the highest accuracy, pass the `--use_llm` flag to use an LLM alongside mark
 
 Here is a table benchmark comparing marker, gemini flash alone, and marker with use_llm:
 
-<img src="data/images/table.png" width="400px"/>
+<img src="data/images/table.png" width="400px" alt="Table benchmark comparison"/>
 
 As you can see, the use_llm mode offers higher accuracy than marker or gemini alone.
 
@@ -43,26 +43,27 @@ As you can see, the use_llm mode offers higher accuracy than marker or gemini al
 | [Switch Transformers](https://arxiv.org/pdf/2101.03961.pdf) | arXiv paper | [View](https://github.com/VikParuchuri/marker/blob/master/data/examples/markdown/switch_transformers/switch_trans.md) | [View](https://github.com/VikParuchuri/marker/blob/master/data/examples/json/switch_trans.json) |
 | [Multi-column CNN](https://arxiv.org/pdf/1804.07821.pdf) | arXiv paper | [View](https://github.com/VikParuchuri/marker/blob/master/data/examples/markdown/multicolcnn/multicolcnn.md)                 | [View](https://github.com/VikParuchuri/marker/blob/master/data/examples/json/multicolcnn.json)         |
 
-# Commercial usage
+## Commercial usage
 
 Our model weights use a modified AI Pubs Open Rail-M license (free for research, personal use, and startups under $2M funding/revenue) and our code is GPL. For broader commercial licensing or to remove GPL requirements, visit our pricing page [here](https://www.datalab.to/pricing?utm_source=gh-marker).
 
-# Hosted API & On-prem
+## Hosted API & On-prem
 
 There's a [hosted API](https://www.datalab.to?utm_source=gh-marker) and [painless on-prem solution](https://www.datalab.to/blog/self-serve-on-prem-licensing) for marker - it's free to sign up, and we'll throw in credits for you to test it out.
 
 The API:
+
 - Supports PDF, image, PPT, PPTX, DOC, DOCX, XLS, XLSX, HTML, EPUB files
 - Is 1/4th the price of leading cloud-based competitors
 - Fast - ~15s for a 250 page PDF
 - Supports LLM mode
 - High uptime (99.99%)
 
-# Community
+## Community
 
 [Discord](https://discord.gg//KuZwXNGnfH) is where we discuss future development.
 
-# Installation
+## Installation
 
 You'll need python 3.10+ and [PyTorch](https://pytorch.org/get-started/locally/).
 
@@ -78,7 +79,7 @@ If you want to use marker on documents other than PDFs, you will need to install
 pip install marker-pdf[full]
 ```
 
-# Usage
+## Usage
 
 First, some configuration:
 
@@ -104,6 +105,7 @@ marker_single /path/to/file.pdf
 You can pass in PDFs or images.
 
 Options:
+
 - `--page_range TEXT`: Specify which pages to process. Accepts comma-separated page numbers and ranges. Example: `--page_range "0,5-10,20"` will process pages 0, 5 through 10, and page 20.
 - `--output_format [markdown|json|html|chunks]`: Specify the format for the output results.
 - `--output_dir PATH`: Directory where output files will be saved. Defaults to the value specified in settings.OUTPUT_DIR.
@@ -227,7 +229,8 @@ text, _, images = text_from_rendered(rendered)
 
 This takes all the same configuration as the PdfConverter.  You can specify the configuration `force_layout_block=Table` to avoid layout detection and instead assume every page is a table.  Set `output_format=json` to also get cell bounding boxes.
 
-You can also run this via the CLI with
+You can also run this via the CLI with:
+
 ```shell
 marker_single FILENAME --use_llm --force_layout_block Table --converter_cls marker.converters.table.TableConverter --output_format json
 ```
@@ -248,7 +251,8 @@ rendered = converter("FILEPATH")
 
 This takes all the same configuration as the PdfConverter.
 
-You can also run this via the CLI with
+You can also run this via the CLI with:
+
 ```shell
 marker_single FILENAME --converter_cls marker.converters.ocr.OCRConverter
 ```
@@ -281,7 +285,7 @@ rendered = converter("FILEPATH")
 
 Rendered will have an `original_markdown` field.  If you pass this back in next time you run the converter, as the `existing_markdown` config key, you can skip re-parsing the document.
 
-# Output Formats
+## Output Formats
 
 ## Markdown
 
@@ -380,7 +384,7 @@ All output formats will return a metadata dictionary, with the following fields:
 }
 ```
 
-# LLM Services
+## LLM Services
 
 When running with the `--use_llm` flag, you have a choice of services you can use:
 
@@ -393,7 +397,7 @@ When running with the `--use_llm` flag, you have a choice of services you can us
 
 These services may have additional optional configuration as well - you can see it by viewing the classes.
 
-# Internals
+## Internals
 
 Marker is easy to extend.  The core units of marker are:
 
@@ -421,7 +425,7 @@ This will start a fastapi server that you can access at `localhost:8001`.  You c
 
 You can send requests like this:
 
-```
+```python
 import requests
 import json
 
@@ -435,7 +439,7 @@ requests.post("http://localhost:8001/marker", data=json.dumps(post_data)).json()
 
 Note that this is not a very robust API, and is only intended for small-scale use.  If you want to use this server, but want a more robust conversion option, you can use the hosted [Datalab API](https://www.datalab.to/plans).
 
-# Troubleshooting
+## Troubleshooting
 
 There are some settings that you may find useful if things aren't working the way you expect:
 
@@ -448,9 +452,9 @@ There are some settings that you may find useful if things aren't working the wa
 
 Pass the `debug` option to activate debug mode.  This will save images of each page with detected layout and text, as well as output a json file with additional bounding box information.
 
-# Benchmarks
+## Benchmarks
 
-## Overall PDF Conversion
+## PDF Conversion Benchmarks
 
 We created a [benchmark set](https://huggingface.co/datasets/datalab-to/marker_benchmark) by extracting single PDF pages from common crawl.  We scored based on a heuristic that aligns text with ground truth text segments, and an LLM as a judge scoring method.
 
@@ -463,7 +467,7 @@ We created a [benchmark set](https://huggingface.co/datasets/datalab-to/marker_b
 
 Benchmarks were run on an H100 for markjer and docling - llamaparse and mathpix used their cloud services.  We can also look at it by document type:
 
-<img src="data/images/per_doc.png" width="1000px"/>
+<img src="data/images/per_doc.png" width="1000px" alt="Per document type benchmark results"/>
 
 | Document Type        | Marker heuristic | Marker LLM | Llamaparse Heuristic | Llamaparse LLM | Mathpix Heuristic | Mathpix LLM | Docling Heuristic | Docling LLM |
 |----------------------|------------------|------------|----------------------|----------------|-------------------|-------------|-------------------|-------------|
@@ -479,7 +483,7 @@ Benchmarks were run on an H100 for markjer and docling - llamaparse and mathpix 
 | Newspaper page       | 98.8733          | 4.25806    | 84.7492              | 3.90323        | 96.9963           | 4.45161     | 92.6496           | 3.51613     |
 | Magazine page        | 98.2145          | 4.38776    | 87.2902              | 3.97959        | 93.5934           | 4.16327     | 93.0892           | 4.02041     |
 
-## Throughput
+### Throughput
 
 We benchmarked throughput using a [single long PDF](https://www.greenteapress.com/thinkpython/thinkpython.pdf).
 
@@ -489,7 +493,7 @@ We benchmarked throughput using a [single long PDF](https://www.greenteapress.co
 
 The projected throughput is 122 pages per second on an H100 - we can run 22 individual processes given the VRAM used.
 
-## Table Conversion
+### Table Extraction Performance
 
 Marker can extract tables from PDFs using `marker.converters.table.TableConverter`. The table extraction performance is measured by comparing the extracted HTML representation of tables against the original HTML representations using the test split of [FinTabNet](https://developer.ibm.com/exchanges/data/all/fintabnet/). The HTML representations are compared using a tree edit distance based metric to judge both structure and content. Marker detects and identifies the structure of all tables in a PDF page and achieves these scores:
 
@@ -503,7 +507,7 @@ The `--use_llm` flag can significantly improve table recognition performance, as
 
 We filter out tables that we cannot align with the ground truth, since fintabnet and our layout model have slightly different detection methods (this results in some tables being split/merged).
 
-## Running your own benchmarks
+### Running your own benchmarks
 
 You can benchmark the performance of marker on your machine. Install marker manually with:
 
@@ -512,7 +516,7 @@ git clone https://github.com/VikParuchuri/marker.git
 poetry install
 ```
 
-### Overall PDF Conversion
+#### Overall PDF Conversion
 
 Download the benchmark data [here](https://drive.google.com/file/d/1ZSeWDo2g1y0BRLT7KnbmytV2bjWARWba/view?usp=sharing) and unzip. Then run the overall benchmark like this:
 
@@ -527,7 +531,8 @@ Options:
 - `--methods` can be `llamaparse`, `mathpix`, `docling`, `marker`.  Comma separated.
 - `--scores` which scoring functions to use, can be `llm`, `heuristic`.  Comma separated.
 
-### Table Conversion
+#### Table Conversion
+
 The processed FinTabNet dataset is hosted [here](https://huggingface.co/datasets/datalab-to/fintabnet-test) and is automatically downloaded. Run the benchmark with:
 
 ```shell
@@ -539,7 +544,7 @@ Options:
 - `--use_llm` uses an llm with marker to improve accuracy.
 - `--use_gemini` also benchmarks gemini 2.0 flash.
 
-# How it works
+## How it works
 
 Marker is a pipeline of deep learning models:
 
@@ -551,7 +556,7 @@ Marker is a pipeline of deep learning models:
 
 It only uses models where necessary, which improves speed and accuracy.
 
-# Limitations
+## Limitations
 
 PDF is a tricky format, so marker will not always work perfectly.  Here are some known limitations that are on the roadmap to address:
 
@@ -560,9 +565,10 @@ PDF is a tricky format, so marker will not always work perfectly.  Here are some
 
 Note: Passing the `--use_llm` and `--force_ocr` flags will mostly solve these issues.
 
-# Usage and Deployment Examples
+## Usage and Deployment Examples
 
 You can always run `marker` locally, but if you wanted to expose it as an API, we have a few options:
+
 - Our platform API which is powered by `marker` and `surya` and is easy to test out - it's free to sign up, and we'll include credits, [try it out here](https://datalab.to)
 - Our painless on-prem solution for commercial use, which you can [read about here](https://www.datalab.to/blog/self-serve-on-prem-licensing) and gives you privacy guarantees with high throughput inference optimizations.
 - [Deployment example with Modal](./examples/README_MODAL.md) that shows you how to deploy and access `marker` through a web endpoint using [`Modal`](https://modal.com). Modal is an AI compute platform that enables developers to deploy and scale models on GPUs in minutes.
