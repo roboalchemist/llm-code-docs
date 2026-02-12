@@ -1,4 +1,6 @@
-# Source: https://github.com/docling-project/docling/blob/main/docs/examples/index.md
+<!-- Source: https://github.com/docling-project/docling/blob/main/docs/examples/index.md -->
+
+# Examples
 
 In this space, you can explore numerous Docling application recipes & end-to-end workflows!
 

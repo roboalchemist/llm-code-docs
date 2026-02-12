@@ -1,9 +1,8 @@
-# Source: https://github.com/docling-project/docling/blob/main/docs/faq/index.md
+<!-- Source: https://github.com/docling-project/docling/blob/main/docs/faq/index.md -->
 
 # FAQ
 
 This is a collection of FAQ collected from the user questions on <https://github.com/docling-project/docling/discussions>.
-
 
 ??? question "Is Python 3.14 supported?"
 
@@ -11,13 +10,11 @@ This is a collection of FAQ collected from the user questions on <https://github
 
     Python 3.14 is supported from Docling 2.59.0.
 
-
 ??? question "Is Python 3.13 supported?"
 
     ### Is Python 3.13 supported?
 
     Python 3.13 is supported from Docling 2.18.0.
-
 
 ??? question "Install conflicts with numpy (python 3.13)"
 
@@ -52,7 +49,6 @@ This is a collection of FAQ collected from the user questions on <https://github
 
     Source: Issue [#283](https://github.com/docling-project/docling/issues/283#issuecomment-2465035868)
 
-
 ??? question "Is macOS x86_64 supported?"
 
     ### Is macOS x86_64 supported?
@@ -68,7 +64,6 @@ This is a collection of FAQ collected from the user questions on <https://github
     ```
 
     Source: Issue [#1694](https://github.com/docling-project/docling/issues/1694).
-
 
 ??? question "I get this error ImportError: libGL.so.1: cannot open shared object file: No such file or directory"
 
@@ -102,7 +97,6 @@ This is a collection of FAQ collected from the user questions on <https://github
         dnf install mesa-libGL
         ```
 
-
 ??? question "Are text styles (bold, underline, etc) supported?"
 
     ### Are text styles (bold, underline, etc) supported?
@@ -110,7 +104,6 @@ This is a collection of FAQ collected from the user questions on <https://github
     Text styles are supported in the `DoclingDocument` format.
     Currently only the declarative backends (i.e. the ones used for docx, pptx, markdown, html, etc) are able to set
     the correct text styles. Support for PDF is not yet possible.
-
 
 ??? question "How do I run completely offline?"
 
@@ -134,7 +127,6 @@ This is a collection of FAQ collected from the user questions on <https://github
 
     Source: Issue [#326](https://github.com/docling-project/docling/issues/326)
 
-
 ??? question " Which model weights are needed to run Docling?"
     ### Which model weights are needed to run Docling?
 
@@ -143,7 +135,6 @@ This is a collection of FAQ collected from the user questions on <https://github
     For processing PDF documents, Docling requires the model weights from <https://huggingface.co/ds4sd/docling-models>.
 
     When OCR is enabled, some engines also require model artifacts. For example EasyOCR, for which Docling has [special pipeline options](https://github.com/docling-project/docling/blob/main/docling/datamodel/pipeline_options.py#L68) to control the runtime behavior.
-
 
 ??? question "SSL error downloading model weights"
 
@@ -167,7 +158,6 @@ This is a collection of FAQ collected from the user questions on <https://github
         export REQUESTS_CA_BUNDLE=${CERT_PATH}
         ```
 
-
 ??? question "Which OCR languages are supported?"
 
     ### Which OCR languages are supported?
@@ -189,14 +179,12 @@ This is a collection of FAQ collected from the user questions on <https://github
     pipeline_options.ocr_options.lang = ["fr", "de", "es", "en"]  # example of languages for EasyOCR
     ```
 
-
 ??? question "Some images are missing from MS Word and Powerpoint"
 
     ### Some images are missing from MS Word and Powerpoint
 
     The image processing library used by Docling is able to handle embedded WMF images only on Windows platform.
     If you are on other operating systems, these images will be ignored.
-
 
 ??? question "`HybridChunker` triggers warning: 'Token indices sequence length is longer than the specified maximum sequence length for this model'"
 
@@ -235,7 +223,6 @@ This is a collection of FAQ collected from the user questions on <https://github
     Also see [docling#725](https://github.com/docling-project/docling/issues/725).
 
     Source: Issue [docling-core#119](https://github.com/docling-project/docling-core/issues/119)
-
 
 ??? question "How to use flash attention?"
 

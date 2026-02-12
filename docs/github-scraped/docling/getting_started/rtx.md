@@ -1,11 +1,10 @@
-# Source: https://github.com/docling-project/docling/blob/main/docs/getting_started/rtx.md
+<!-- Source: https://github.com/docling-project/docling/blob/main/docs/getting_started/rtx.md -->
 
 # ⚡ RTX GPU Acceleration
 
 <div style="text-align: center">
     <img loading="lazy" alt="Docling on RTX" src="../../assets/nvidia_logo_green.svg" width="200px" />
 </div>
-
 
 Whether you're an AI enthusiast, researcher, or developer working with document processing, this guide will help you unlock the full potential of your NVIDIA RTX GPU with Docling.
 

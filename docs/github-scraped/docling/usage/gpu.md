@@ -1,4 +1,4 @@
-# Source: https://github.com/docling-project/docling/blob/main/docs/usage/gpu.md
+<!-- Source: https://github.com/docling-project/docling/blob/main/docs/usage/gpu.md -->
 
 # GPU support
 
@@ -10,7 +10,6 @@ This guide describes how to maximize GPU performance for Docling pipelines. It c
 
     Improvements and optimizations strategies for maximizing the GPU performance is an
     active topic. Regularly check these guidelines for updates.
-
 
 ### Standard Pipeline
 
@@ -51,7 +50,7 @@ The current Docling OCR engines rely on third-party libraries, hence GPU support
 
 The only setup which is known to work at the moment is RapidOCR with the torch backend, which can be enabled via
 
-```py
+```python
 pipeline_options = PdfPipelineOptions()
 pipeline_options.ocr_options = RapidOcrOptions(
     backend="torch",
@@ -60,7 +59,6 @@ pipeline_options.ocr_options = RapidOcrOptions(
 
 More details in the GitHub discussion [#2451](https://github.com/docling-project/docling/discussions/2451).
 
-
 ### VLM Pipeline
 
 For best GPU utilization, use a local inference server. Docling supports inference servers which exposes the OpenAI-compatible chat completion endpoints. For example:
@@ -68,7 +66,6 @@ For best GPU utilization, use a local inference server. Docling supports inferen
 - vllm: `http://localhost:8000/v1/chat/completions` (available only on Linux)
 - LM Studio: `http://localhost:1234/v1/chat/completions` (available both on Linux and Windows)
 - Ollama: `http://localhost:11434/v1/chat/completions` (available both on Linux and Windows)
-
 
 #### Start the inference server
 
@@ -113,10 +110,7 @@ from docling.datamodel.settings import settings
 settings.perf.page_batch_size = 64  # default is 4
 ```
 
-#### Complete example
-
 For a complete example see [gpu_vlm_pipeline.py](../examples/gpu_vlm_pipeline.py).
-
 
 #### Available models
 
@@ -137,7 +131,6 @@ TBA.
 | Num tables | 95 | 258 |
 | Format type | PDF | Parquet of images |
 
-
 ### Test infrastructure
 
 | | g6e.2xlarge | RTX 5090 | RTX 5070 |
@@ -147,7 +140,6 @@ TBA.
 | RAM | 64GB | 128GB | 64GB |
 | GPU | NVIDIA L40S 48GB | NVIDIA GeForce RTX 5090 | NVIDIA GeForce RTX 5070 |
 | CUDA Version | 13.0, driver 580.95.05 | 13.0, driver 580.105.08 | 13.0, driver 581.57 |
-
 
 ### Results
 

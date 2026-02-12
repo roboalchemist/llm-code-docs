@@ -24,14 +24,10 @@ The Actor stores results in:
 
 Read more about the [Docling Actor](.actor/README.md), including how to use it via the Apify API and CLI.
 
-- 💻 [GitHub][github]
-- 📖 [Docs][docs]
-- 📦 [Docling Actor][apify]
+* 💻 [GitHub][github]
+* 📖 [Docs][docs]
+* 📦 [Docling Actor][apify]
 
 [github]: https://github.com/docling-project/docling/tree/main/.actor/
 [docs]: https://github.com/docling-project/docling/tree/main/.actor/README.md
 [apify]: https://apify.com/vancura/docling?fpr=docling
-
-
-
-

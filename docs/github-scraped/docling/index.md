@@ -50,7 +50,8 @@ Docling simplifies document processing, parsing diverse formats — including ad
 * 💻 Simple and convenient CLI
 
 ### What's new
-* 📤 Structured [information extraction][extraction] \[🧪 beta\]
+
+* 📤 Structured information extraction \[🧪 beta\]
 * 📑 New layout model (**Heron**) by default, for faster PDF parsing
 * 🔌 [MCP server](https://docling-project.github.io/docling/usage/mcp/) for agentic applications
 * 💬 Parsing of Web Video Text Tracks (WebVTT) files
@@ -66,9 +67,9 @@ Docling simplifies document processing, parsing diverse formats — including ad
 
 🚀 The journey has just begun! Join us and become a part of the growing Docling community.
 
-- <a href="https://github.com/docling-project/docling">:fontawesome-brands-github: GitHub</a>
-- <a href="https://docling.ai/discord">:fontawesome-brands-discord: Discord</a>
-- <a href="https://linkedin.com/company/docling/">:fontawesome-brands-linkedin: LinkedIn</a>
+* <a href="https://github.com/docling-project/docling">:fontawesome-brands-github: GitHub</a>
+* <a href="https://docling.ai/discord">:fontawesome-brands-discord: Discord</a>
+* <a href="https://linkedin.com/company/docling/">:fontawesome-brands-linkedin: LinkedIn</a>
 
 ## Live assistant
 

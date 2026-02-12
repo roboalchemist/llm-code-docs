@@ -1,4 +1,6 @@
-# Source: https://github.com/docling-project/docling/blob/main/docs/getting_started/quickstart.md
+<!-- Source: https://github.com/docling-project/docling/blob/main/docs/getting_started/quickstart.md -->
+
+# Quickstart
 
 ## Basic usage
 
@@ -34,6 +36,7 @@ docling https://arxiv.org/pdf/2206.01062
 ```
 
 The CLI provides various options, such as 🥚[GraniteDocling](https://huggingface.co/ibm-granite/granite-docling-258M) (incl. MLX acceleration) & other VLMs:
+
 ```bash
 docling --pipeline vlm --vlm-model granite_docling https://arxiv.org/pdf/2206.01062
 ```

@@ -25,11 +25,13 @@ While Docling excels at extracting structural elements (like tables and nested h
 ## Components
 
 ### Docling Parser
+
 The `DoclingParser` is a specialized module within Semantica that uses Docling's `DocumentConverter` to extract high-fidelity Markdown and structured tables. It serves as the entry point for turning raw documents into semantic data.
 
 - 💻 [Docling Parser Implementation](https://github.com/Hawksight-AI/semantica/blob/main/semantica/parse/docling_parser.py)
 
 ### Knowledge Graph Builder
+
 Semantica uses the output from the `DoclingParser` to extract entities and relations, which are then stored in a property graph (Neo4j, FalkorDB) or a triplet store (RDF).
 
 ## Installation

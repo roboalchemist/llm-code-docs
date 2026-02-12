@@ -6,9 +6,7 @@ Pipeline options allow to customize the execution of the models during the conve
 This includes options for the OCR engines, the table model as well as enrichment options which
 can be enabled with `do_xyz = True`.
 
-
 This is an automatic generated API reference of the all the pipeline options available in Docling.
-
 
 ::: docling.datamodel.pipeline_options
     handler: python
@@ -35,4 +33,3 @@ This is an automatic generated API reference of the all the pipeline options ava
     options:
         show_if_no_docstring: true
         show_submodules: true -->
-        

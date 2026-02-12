@@ -1,4 +1,6 @@
-# Source: https://github.com/docling-project/docling/blob/main/docs/usage/jobkit.md
+<!-- Source: https://github.com/docling-project/docling/blob/main/docs/usage/jobkit.md -->
+
+# Jobkit
 
 Docling's document conversion can be executed as distributed jobs using [Docling Jobkit](https://github.com/docling-project/docling-jobkit).
 
@@ -27,7 +29,7 @@ Example configuration file:
 
 ```yaml
 options:               # Example Docling's conversion options
-  do_ocr: false         
+  do_ocr: false
 sources:               # Source location (here Google Drive)
   - kind: google_drive
     path_id: 1X6B3j7GWlHfIPSF9VUkasN-z49yo1sGFA9xv55L2hSE
@@ -61,7 +63,7 @@ Step 1: Enable the [Google Drive API](https://console.cloud.google.com/apis/enab
 - Go to the Google [Cloud Console](https://console.cloud.google.com/).
 - Search for “Google Drive API” and enable it.
 
-Step 2: [Create OAuth credentials](https://developers.google.com/workspace/drive/api/quickstart/python#authorize_credentials_for_a_desktop_application). 
+Step 2: [Create OAuth credentials](https://developers.google.com/workspace/drive/api/quickstart/python#authorize_credentials_for_a_desktop_application).
 
 - Go to APIs & Services > Credentials.
 - Click “+ Create credentials” > OAuth client ID.
@@ -79,8 +81,8 @@ Step 4: Edit configuration file.
 
 - Edit `credentials_path` with your path to `google_drive_credentials.json`.
 - Edit `path_id` with your source or target location. It can be obtained from the URL as follows:
-    - Folder: `https://drive.google.com/drive/u/0/folders/1yucgL9WGgWZdM1TOuKkeghlPizuzMYb5` > folder id is `1yucgL9WGgWZdM1TOuKkeghlPizuzMYb5`.
-    - File: `https://docs.google.com/document/d/1bfaMQ18_i56204VaQDVeAFpqEijJTgvurupdEDiaUQw/edit` > document id is `1bfaMQ18_i56204VaQDVeAFpqEijJTgvurupdEDiaUQw`.
+  - Folder: `https://drive.google.com/drive/u/0/folders/1yucgL9WGgWZdM1TOuKkeghlPizuzMYb5` > folder id is `1yucgL9WGgWZdM1TOuKkeghlPizuzMYb5`.
+  - File: `https://docs.google.com/document/d/1bfaMQ18_i56204VaQDVeAFpqEijJTgvurupdEDiaUQw/edit` > document id is `1bfaMQ18_i56204VaQDVeAFpqEijJTgvurupdEDiaUQw`.
 
 Step 5: Authenticate via CLI.
 

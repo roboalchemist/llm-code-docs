@@ -1,4 +1,6 @@
-# Source: https://github.com/docling-project/docling/blob/main/docs/usage/advanced_options.md
+<!-- Source: https://github.com/docling-project/docling/blob/main/docs/usage/advanced_options.md -->
+
+# Advanced Options
 
 ## Model prefetching and offline usage
 
@@ -6,7 +8,7 @@ By default, models are downloaded automatically upon first usage. If you would p
 to explicitly prefetch them for offline use (e.g. in air-gapped environments) you can do
 that as follows:
 
-**Step 1: Prefetch the models**
+### Step 1: Prefetch the models
 
 Use the `docling-tools models download` utility:
 
@@ -29,7 +31,7 @@ $ docling-tools models download-hf-repo ds4sd/SmolDocling-256M-preview
 Downloading ds4sd/SmolDocling-256M-preview model from HuggingFace...
 ```
 
-**Step 2: Use the prefetched models**
+### Step 2: Use the prefetched models
 
 ```python
 from docling.datamodel.base_models import InputFormat
@@ -89,7 +91,6 @@ The options in this list require the explicit `enable_remote_services=True` when
 
 - `PictureDescriptionApiOptions`: Using vision models via API calls.
 
-
 ## Adjust pipeline features
 
 The example file [custom_convert.py](../examples/custom_convert.py) contains multiple ways
@@ -99,7 +100,6 @@ one can adjust the conversion pipeline and features.
 
 You can control if table structure recognition should map the recognized structure back to PDF cells (default) or use text cells from the structure prediction itself.
 This can improve output quality if you find that multiple columns in extracted tables are erroneously merged into one.
-
 
 ```python
 from docling.datamodel.base_models import InputFormat
@@ -132,7 +132,6 @@ doc_converter = DocumentConverter(
     }
 )
 ```
-
 
 ## Impose limits on the document size
 

@@ -1,5 +1,4 @@
-# Source: https://github.com/docling-project/docling/blob/main/docs/usage/vision_models.md
-
+<!-- Source: https://github.com/docling-project/docling/blob/main/docs/usage/vision_models.md -->
 
 # Vision Models
 
@@ -15,7 +14,6 @@ Docling supports vision-language models which output:
     For a comprehensive overview of **all models and stages** in Docling (Layout, Table Structure, OCR, VLM, etc.), see the **[Model Catalog](model_catalog.md)**.
 
 ## Quick Start
-
 
 For running Docling using local models with the `VlmPipeline`:
 
@@ -121,7 +119,6 @@ pipeline_options = VlmPipelineOptions(
     )
 )
 ```
-
 
 ## Remote models
 

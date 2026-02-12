@@ -1,6 +1,9 @@
-# Source: https://github.com/docling-project/docling/blob/main/docs/getting_started/installation.md
+<!-- Source: https://github.com/docling-project/docling/blob/main/docs/getting_started/installation.md -->
+
+# Installation
 
 To use Docling, simply install `docling` from your Python package manager, e.g. pip:
+
 ```bash
 pip install docling
 ```
@@ -49,7 +52,6 @@ Some Docling functionalities require additional third-party packages and are the
 The following table summarizes the extras available in the `docling` package. They can be activated with:
 `pip install "docling[NAME1,NAME2]"`
 
-
 | Extra | Description |
 | - | - |
 | `asr` | Installs dependencies for running the ASR pipeline. |
@@ -59,9 +61,7 @@ The following table summarizes the extras available in the `docling` package. Th
 | `ocrmac` | Installs the OcrMac OCR engine. |
 | `rapidocr` | Installs the [RapidOCR](https://github.com/RapidAI/RapidOCR) OCR engine with [onnxruntime](https://github.com/microsoft/onnxruntime/) backend. |
 
-
 ### OCR engines
-
 
 Docling supports multiple OCR engines for processing scanned documents. The current version provides
 the following engines.

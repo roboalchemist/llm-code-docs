@@ -1,4 +1,4 @@
-# Source: https://github.com/docling-project/docling/blob/main/docs/usage/model_catalog.md
+<!-- Source: https://github.com/docling-project/docling/blob/main/docs/usage/model_catalog.md -->
 
 # Model Catalog
 

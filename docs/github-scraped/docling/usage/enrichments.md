@@ -1,4 +1,6 @@
-# Source: https://github.com/docling-project/docling/blob/main/docs/usage/enrichments.md
+<!-- Source: https://github.com/docling-project/docling/blob/main/docs/usage/enrichments.md -->
+
+# Enrichments
 
 Docling allows to enrich the conversion pipeline with additional steps which process specific document components,
 e.g. code blocks, pictures, etc. The extra steps usually require extra models executions which may increase
@@ -12,7 +14,6 @@ The following table provides an overview of the default enrichment models availa
 | Formula understanding | `do_formula_enrichment` | `TextItem` with label `FORMULA` | See [docs below](#formula-understanding). |
 | Picture classification | `do_picture_classification` | `PictureItem` | See [docs below](#picture-classification). |
 | Picture description | `do_picture_description` | `PictureItem` | See [docs below](#picture-description). |
-
 
 ## Enrichments details
 
@@ -112,13 +113,11 @@ result = converter.convert("https://arxiv.org/pdf/2501.17887")
 doc = result.document
 ```
 
-
 ### Picture description
 
 The picture description step allows to annotate a picture with a vision model. This is also known as a "captioning" task.
 The Docling pipeline allows to load and run models completely locally as well as connecting to remote API which support the chat template.
 Below follow a few examples on how to use some common vision model and remote services.
-
 
 ```py
 from docling.document_converter import DocumentConverter, PdfFormatOption
@@ -207,7 +206,6 @@ pipeline_options.picture_description_options = PictureDescriptionApiOptions(
 End-to-end code snippets for cloud providers are available in the examples section:
 
 - [IBM watsonx.ai](../examples/pictures_description_api.py)
-
 
 ## Develop new enrichment models
 

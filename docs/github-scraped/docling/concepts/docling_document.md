@@ -25,19 +25,19 @@ serialized as YAML and the right one shows the corresponding parts of the origin
 A `DoclingDocument` exposes top-level fields for the document content, organized in two categories.
 The first category is the _content items_, which are stored in these fields:
 
-- `texts`: All items that have a text representation (paragraph, section heading, equation, ...). Base class is `TextItem`.
-- `tables`: All tables, type `TableItem`. Can carry structure annotations.
-- `pictures`: All pictures, type `PictureItem`. Can carry structure annotations.
-- `key_value_items`: All key-value items.
+* `texts`: All items that have a text representation (paragraph, section heading, equation, ...). Base class is `TextItem`.
+* `tables`: All tables, type `TableItem`. Can carry structure annotations.
+* `pictures`: All pictures, type `PictureItem`. Can carry structure annotations.
+* `key_value_items`: All key-value items.
 
 All of the above fields are lists and store items inheriting from the `DocItem` type. They can express different
 data structures depending on their type, and reference parents and children through JSON pointers.
 
 The second category is _content structure_, which is encapsulated in:
 
-- `body`: The root node of a tree-structure for the main document body
-- `furniture`: The root node of a tree-structure for all items that don't belong into the body (headers, footers, ...)
-- `groups`: A set of items that don't represent content, but act as containers for other content items (e.g. a list, a chapter)
+* `body`: The root node of a tree-structure for the main document body
+* `furniture`: The root node of a tree-structure for all items that don't belong into the body (headers, footers, ...)
+* `groups`: A set of items that don't represent content, but act as containers for other content items (e.g. a list, a chapter)
 
 All of the above fields are only storing `NodeItem` instances, which reference children and parents
 through JSON pointers.
