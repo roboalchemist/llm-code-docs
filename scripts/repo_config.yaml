@@ -873,6 +873,13 @@ repositories:
     target_folder: "docs/github-scraped/zustand"
     branch: "main"
 
+  - name: "Docling"
+    description: "Docling - Open-source document processing library for converting PDFs, DOCX, PPTX, HTML, images, and more into structured formats like Markdown and JSON"
+    repo_url: "https://github.com/docling-project/docling.git"
+    source_folder: "docs"
+    target_folder: "docs/github-scraped/docling"
+    branch: "main"
+
   - name: "Docusaurus"
     description: "Docusaurus - Static site generator for building documentation websites with React, versioning, and i18n support"
     repo_url: "https://github.com/facebook/docusaurus.git"
