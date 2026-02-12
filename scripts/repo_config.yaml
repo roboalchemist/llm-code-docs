@@ -348,6 +348,13 @@ repositories:
     target_folder: "docs/github-scraped/matplotlib"
     branch: "main"
 
+  - name: "MinerU"
+    description: "MinerU - Open-source tool for extracting high-quality structured data from PDFs, transforming complex documents into LLM-ready markdown/JSON for agentic workflows"
+    repo_url: "https://github.com/opendatalab/MinerU.git"
+    source_folder: "docs/en"
+    target_folder: "docs/github-scraped/mineru"
+    branch: "master"
+
   - name: "Milvus"
     description: "Milvus - Open source vector database for AI applications"
     repo_url: "https://github.com/milvus-io/milvus-docs.git"
