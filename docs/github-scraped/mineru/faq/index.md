@@ -16,7 +16,6 @@ For unresolved problems, join our [Discord](https://discord.gg/Tdedn9GTXq) or [W
     
     Reference: [#388](https://github.com/opendatalab/MinerU/issues/388)
 
-
 ??? question "Missing text information in parsing results when installing and using on Linux systems."
 
     MinerU uses `pypdfium2` instead of `pymupdf` as the PDF page rendering engine in versions >=2.0 to resolve AGPLv3 license issues. On some Linux distributions, due to missing CJK fonts, some text may be lost during the process of rendering PDFs to images.

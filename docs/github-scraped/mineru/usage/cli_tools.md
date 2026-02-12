@@ -3,7 +3,9 @@
 # Command Line Tools Usage Instructions
 
 ## View Help Information
+
 To view help information for MinerU command line tools, you can use the `--help` parameter. Here are help information examples for various command line tools:
+
 ```bash
 mineru --help
 Usage: mineru [OPTIONS]
@@ -28,6 +30,7 @@ Options:
                                   Model source, default: huggingface
   --help                          Show help information
 ```
+
 ```bash
 mineru-api --help
 Usage: mineru-api [OPTIONS]
@@ -38,6 +41,7 @@ Options:
   --reload        Enable auto-reload (development mode)
   --help          Show this message and exit.
 ```
+
 ```bash
 mineru-gradio --help
 Usage: mineru-gradio [OPTIONS]
@@ -68,63 +72,62 @@ Some parameters of MinerU command line tools have equivalent environment variabl
 Here are the environment variables and their descriptions:
 
 - `MINERU_DEVICE_MODE`:
-    * Used to specify inference device
-    * supports device types like `cpu/cuda/cuda:0/npu/mps`
-    * only effective for `pipeline` and `vlm-transformers` backends.
-  
-- `MINERU_VIRTUAL_VRAM_SIZE`: 
-    * Used to specify maximum GPU VRAM usage per process (GB)
-    * only effective for `pipeline` backend.
-  
-- `MINERU_MODEL_SOURCE`: 
-    * Used to specify model source
-    * supports `huggingface/modelscope/local`
-    * Default is `huggingface`; you can switch via an environment variable to `modelscope` to use a domestic acceleration mirror, or switch to `local` to use a local model.
+  - Used to specify inference device
+  - supports device types like `cpu/cuda/cuda:0/npu/mps`
+  - only effective for `pipeline` and `vlm-transformers` backends.
 
-  
-- `MINERU_TOOLS_CONFIG_JSON`: 
-    * Used to specify configuration file path
-    * defaults to `mineru.json` in user directory, can specify other configuration file paths through environment variables.
-  
+- `MINERU_VIRTUAL_VRAM_SIZE`:
+  - Used to specify maximum GPU VRAM usage per process (GB)
+  - only effective for `pipeline` backend.
+
+- `MINERU_MODEL_SOURCE`:
+  - Used to specify model source
+  - supports `huggingface/modelscope/local`
+  - Default is `huggingface`; you can switch via an environment variable to `modelscope` to use a domestic acceleration mirror, or switch to `local` to use a local model.
+
+- `MINERU_TOOLS_CONFIG_JSON`:
+  - Used to specify configuration file path
+  - defaults to `mineru.json` in user directory, can specify other configuration file paths through environment variables.
+
 - `MINERU_FORMULA_ENABLE`:
-    * Used to enable formula parsing
-    * defaults to `true`, can be set to `false` through environment variables to disable formula parsing.
-  
+  - Used to enable formula parsing
+  - defaults to `true`, can be set to `false` through environment variables to disable formula parsing.
+
 - `MINERU_FORMULA_CH_SUPPORT`:
-    * Used to enable Chinese formula parsing optimization (experimental feature)
-    * Default is `false`, can be set to `true` via environment variable to enable Chinese formula parsing optimization.
-    * Only effective for `pipeline` backend.
-  
+  - Used to enable Chinese formula parsing optimization (experimental feature)
+  - Default is `false`, can be set to `true` via environment variable to enable Chinese formula parsing optimization.
+  - Only effective for `pipeline` backend.
+
 - `MINERU_TABLE_ENABLE`:
-    * Used to enable table parsing
-    * Default is `true`, can be set to `false` via environment variable to disable table parsing.
+  - Used to enable table parsing
+  - Default is `true`, can be set to `false` via environment variable to disable table parsing.
 
 - `MINERU_TABLE_MERGE_ENABLE`:
-    * Used to enable table merging functionality
-    * Default is `true`, can be set to `false` via environment variable to disable table merging functionality.
+  - Used to enable table merging functionality
+  - Default is `true`, can be set to `false` via environment variable to disable table merging functionality.
 
 - `MINERU_PDF_RENDER_TIMEOUT`:
-    * Used to set the timeout (in seconds) for rendering PDFs to images.
-    * Default is `300` seconds; you can set a different value via an environment variable to adjust the rendering timeout.
-    * Only effective on Linux and macOS systems.
+  - Used to set the timeout (in seconds) for rendering PDFs to images.
+  - Default is `300` seconds; you can set a different value via an environment variable to adjust the rendering timeout.
+  - Only effective on Linux and macOS systems.
 
 - `MINERU_PDF_RENDER_THREADS`:
-    * Used to set the number of threads used when rendering PDFs to images.
-    * Default is `4`; you can set a different value via an environment variable to adjust the number of threads for image rendering.
-    * Only effective on Linux and macOS systems.
+  - Used to set the number of threads used when rendering PDFs to images.
+  - Default is `4`; you can set a different value via an environment variable to adjust the number of threads for image rendering.
+  - Only effective on Linux and macOS systems.
 
 - `MINERU_INTRA_OP_NUM_THREADS`:
-    * Used to set the intra_op thread count for ONNX models, affects the computation speed of individual operators
-    * Default is `-1` (auto-select), can be set to other values via environment variable to adjust the thread count.
+  - Used to set the intra_op thread count for ONNX models, affects the computation speed of individual operators
+  - Default is `-1` (auto-select), can be set to other values via environment variable to adjust the thread count.
 
 - `MINERU_INTER_OP_NUM_THREADS`:
-    * Used to set the inter_op thread count for ONNX models, affects the parallel execution of multiple operators
-    * Default is `-1` (auto-select), can be set to other values via environment variable to adjust the thread count.
+  - Used to set the inter_op thread count for ONNX models, affects the parallel execution of multiple operators
+  - Default is `-1` (auto-select), can be set to other values via environment variable to adjust the thread count.
 
 - `MINERU_HYBRID_BATCH_RATIO`:
-    * Used to set the batch ratio for small model processing in `hybrid-*` backends.
-    * Commonly used in `hybrid-http-client`, it allows adjusting the VRAM usage of a single client by controlling the batch ratio of small models.
-    * Single Client VRAM Size | MINERU_HYBRID_BATCH_RATIO
+  - Used to set the batch ratio for small model processing in `hybrid-*` backends.
+  - Commonly used in `hybrid-http-client`, it allows adjusting the VRAM usage of a single client by controlling the batch ratio of small models.
+  - Single Client VRAM Size | MINERU_HYBRID_BATCH_RATIO
       ------------------------|--------------------------
       <= 6   GB               | 8
       <= 4.5 GB               | 4
@@ -132,11 +135,11 @@ Here are the environment variables and their descriptions:
       <= 2.5 GB               | 1
 
 - `MINERU_HYBRID_FORCE_PIPELINE_ENABLE`:
-    * Used to force the text extraction part in `hybrid-*` backends to be processed using small models.
-    * Defaults to `false`. Can be set to `true` via environment variable to enable this feature, thereby reducing hallucinations in certain extreme cases.
+  - Used to force the text extraction part in `hybrid-*` backends to be processed using small models.
+  - Defaults to `false`. Can be set to `true` via environment variable to enable this feature, thereby reducing hallucinations in certain extreme cases.
 
 - `MINERU_VL_MODEL_NAME`:
-    * Used to specify the model name for the vlm/hybrid backend, allowing you to designate the model required for MinerU to run when multiple models exist on a remote openai-server.
+  - Used to specify the model name for the vlm/hybrid backend, allowing you to designate the model required for MinerU to run when multiple models exist on a remote openai-server.
 
 - `MINERU_VL_API_KEY`:
-    * Used to specify the API Key for the vlm/hybrid backend, enabling authentication on the remote openai-server.
+  - Used to specify the API Key for the vlm/hybrid backend, enabling authentication on the remote openai-server.

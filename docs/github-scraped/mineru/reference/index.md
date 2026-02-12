@@ -1,6 +1,6 @@
 # Source: https://github.com/opendatalab/MinerU/blob/master/docs/en/reference/index.md
 
-# Reference Documentation
+## Reference Documentation
 
 This section provides detailed reference materials for MinerU project. Here you can find technical specifications, API documentation, output file formats, and version history.
 

@@ -1,6 +1,6 @@
 # Source: https://github.com/opendatalab/MinerU/blob/master/docs/en/reference/changelog.md
 
-# Changelog
+## Changelog
 
 This document records the update history of MinerU project for version 2.6.7 and earlier. For the latest version updates, please check the project [README](https://github.com/opendatalab/MinerU/blob/master/README.md).
 
@@ -14,7 +14,7 @@ This document records the update history of MinerU project for version 2.6.7 and
 
 ### 2.6.6 (2025/12/02)
 
-**`mineru-api` tool optimizations**
+#### `mineru-api` tool optimizations
 
 - Added descriptive text to `mineru-api` interface parameters to improve API documentation readability.
 - You can use the environment variable `MINERU_API_ENABLE_FASTAPI_DOCS` to control whether the auto-generated interface documentation page is enabled (enabled by default).
@@ -36,19 +36,19 @@ This document records the update history of MinerU project for version 2.6.7 and
 
 ### 2.6.2 (2025/10/24)
 
-**`pipeline` backend optimizations**
+#### `pipeline` backend optimizations
 
 - Added experimental support for Chinese formulas, which can be enabled by setting the environment variable `export MINERU_FORMULA_CH_SUPPORT=1`. This feature may cause a slight decrease in MFR speed and failures in recognizing some long formulas. It is recommended to enable it only when parsing Chinese formulas is needed. To disable this feature, set the environment variable to `0`.
 - `OCR` speed significantly improved by 200%~300%, thanks to the optimization solution provided by [@cjsdurj](https://github.com/cjsdurj)
-- `OCR` models optimized for improved accuracy and coverage of Latin script recognition, and updated Cyrillic, Arabic, Devanagari, Telugu (te), and Tamil (ta) language systems to `ppocr-v5` version, with accuracy improved by over 40% compared to previous models 
+- `OCR` models optimized for improved accuracy and coverage of Latin script recognition, and updated Cyrillic, Arabic, Devanagari, Telugu (te), and Tamil (ta) language systems to `ppocr-v5` version, with accuracy improved by over 40% compared to previous models
 
-**`vlm` backend optimizations**
+#### `vlm` backend optimizations
 
 - `table_caption` and `table_footnote` matching logic optimized to improve the accuracy of table caption and footnote matching and reading order rationality in scenarios with multiple consecutive tables on a page
 - Optimized CPU resource usage during high concurrency when using `vllm` backend, reducing server pressure
 - Adapted to `vllm` version 0.11.0
 
-**General optimizations**
+#### General optimizations
 
 - Cross-page table merging effect optimized, added support for cross-page continuation table merging, improving table merging effectiveness in multi-column merge scenarios
 - Added environment variable configuration option `MINERU_TABLE_MERGE_ENABLE` for table merging feature. Table merging is enabled by default and can be disabled by setting this variable to `0`
@@ -77,18 +77,18 @@ With only 1.2B parameters, MinerU2.5's accuracy on the OmniDocBench benchmark co
 
 The model has been released on [HuggingFace](https://huggingface.co/opendatalab/MinerU2.5-2509-1.2B) and [ModelScope](https://modelscope.cn/models/opendatalab/MinerU2.5-2509-1.2B) platforms. Welcome to download and use!
 
-**Core Highlights**
+#### Core Highlights
 
 - SOTA Performance with Extreme Efficiency: As a 1.2B model, it achieves State-of-the-Art (SOTA) results that exceed models in the 10B and 100B+ classes, redefining the performance-per-parameter standard in document AI.
 - Advanced Architecture for Across-the-Board Leadership: By combining a two-stage inference pipeline (decoupling layout analysis from content recognition) with a native high-resolution architecture, it achieves SOTA performance across five key areas: layout analysis, text recognition, formula recognition, table recognition, and reading order.
 
-**Key Capability Enhancements**
+#### Key Capability Enhancements
 
 - Layout Detection: Delivers more complete results by accurately covering non-body content like headers, footers, and page numbers. It also provides more precise element localization and natural format reconstruction for lists and references.
 - Table Parsing: Drastically improves parsing for challenging cases, including rotated tables, borderless/semi-structured tables, and long/complex tables.
 - Formula Recognition: Significantly boosts accuracy for complex, long-form, and hybrid Chinese-English formulas, greatly enhancing the parsing capability for mathematical documents.
 
-**Repository Adjustments**
+#### Repository Adjustments
 
 Additionally, with the release of vlm 2.5, we have made some adjustments to the repository:
 
@@ -97,7 +97,7 @@ Additionally, with the release of vlm 2.5, we have made some adjustments to the 
 - The vlm accelerated inference framework has been switched from `sglang` to `vllm`, achieving full compatibility with the vllm ecosystem, allowing users to use the MinerU2.5 model and accelerated inference on any platform that supports the vllm framework.
 - Due to major upgrades in the vlm model supporting more layout types, we have made some adjustments to the structure of the parsing intermediate file `middle.json` and result file `content_list.json`. Please refer to the [documentation](https://opendatalab.github.io/MinerU/reference/output_files/) for details.
 
-**Other Repository Optimizations**
+#### Other Repository Optimizations
 
 - Removed file extension whitelist validation for input files. When input files are PDF documents or images, there are no longer requirements for file extensions, improving usability.
 
@@ -115,12 +115,12 @@ Additionally, with the release of vlm 2.5, we have made some adjustments to the 
 
 ### 2.2.0 (2025/09/05)
 
-**Major Updates**
+#### Major Updates
 
 - In this version, we focused on improving table parsing accuracy by introducing a new [wired table recognition model](https://github.com/RapidAI/TableStructureRec) and a brand-new hybrid table structure parsing algorithm, significantly enhancing the table recognition capabilities of the `pipeline` backend.
 - We also added support for cross-page table merging, which is supported by both `pipeline` and `vlm` backends, further improving the completeness and accuracy of table parsing.
 
-**Other Updates**
+#### Other Updates
 
 - The `pipeline` backend now supports 270-degree rotated table parsing, bringing support for table parsing in 0/90/270-degree orientations
 - `pipeline` added OCR capability support for Thai and Greek, and updated the English OCR model to the latest version. English recognition accuracy improved by 11%, Thai recognition model accuracy is 82.68%, and Greek recognition model accuracy is 89.28% (by PPOCRv5)
@@ -158,20 +158,20 @@ Additionally, with the release of vlm 2.5, we have made some adjustments to the 
 
 ### 2.1.4 (2025/07/23)
 
-**Bug Fixes**
+#### Bug Fixes
 
 - Fixed the issue of excessive memory consumption during the `MFR` step in the `pipeline` backend under certain scenarios #2771
 - Fixed the inaccurate matching between `image`/`table` and `caption`/`footnote` under certain conditions #3129
 
 ### 2.1.1 (2025/07/16)
 
-**Bug fixes**
+#### Bug fixes
 
 - Fixed text block content loss issue that could occur in certain `pipeline` scenarios #3005
 - Fixed issue where `sglang-client` required unnecessary packages like `torch` #2968
 - Updated `dockerfile` to fix incomplete text content parsing due to missing fonts in Linux #2915
 
-**Usability improvements**
+#### Usability improvements
 
 - Updated `compose.yaml` to facilitate direct startup of `sglang-server`, `mineru-api`, and `mineru-gradio` services
 - Launched brand new [online documentation site](https://opendatalab.github.io/MinerU/), simplified readme, providing better documentation experience
@@ -180,20 +180,20 @@ Additionally, with the release of vlm 2.5, we have made some adjustments to the 
 
 This is the first major update of MinerU 2, which includes a large number of new features and improvements, covering significant performance optimizations, user experience enhancements, and bug fixes. The detailed update contents are as follows:
 
-**Performance Optimizations**
+#### Performance Optimizations
 
 - Significantly improved preprocessing speed for documents with specific resolutions (around 2000 pixels on the long side).
 - Greatly enhanced post-processing speed when the `pipeline` backend handles batch processing of documents with fewer pages (<10 pages).
 - Layout analysis speed of the `pipeline` backend has been increased by approximately 20%.
 
-**Experience Enhancements**
+#### Experience Enhancements
 
 - Built-in ready-to-use `fastapi service` and `gradio webui`. For detailed usage instructions, please refer to [Documentation](https://opendatalab.github.io/MinerU/usage/quick_usage/#advanced-usage-via-api-webui-sglang-clientserver).
 - Adapted to `sglang` version `0.4.8`, significantly reducing the GPU memory requirements for the `vlm-sglang` backend. It can now run on graphics cards with as little as `8GB GPU memory` (Turing architecture or newer).
 - Added transparent parameter passing for all commands related to `sglang`, allowing the `sglang-engine` backend to receive all `sglang` parameters consistently with the `sglang-server`.
 - Supports feature extensions based on configuration files, including `custom formula delimiters`, `enabling heading classification`, and `customizing local model directories`. For detailed usage instructions, please refer to [Documentation](https://opendatalab.github.io/MinerU/usage/quick_usage/#extending-mineru-functionality-with-configuration-files).
 
-**New Features**
+#### New Features
 
 - Updated the `pipeline` backend with the PP-OCRv5 multilingual text recognition model, supporting text recognition in 37 languages such as French, Spanish, Portuguese, Russian, and Korean, with an average accuracy improvement of over 30%. [Details](https://paddlepaddle.github.io/PaddleOCR/latest/en/version3.x/algorithm/PP-OCRv5/PP-OCRv5_multi_languages.html)
 - Introduced limited support for vertical text layout in the `pipeline` backend.
@@ -222,7 +222,7 @@ This is the first major update of MinerU 2, which includes a large number of new
 
 ### 2.0.0 (2025/06/13)
 
-**New Architecture**
+#### New Architecture
 
 MinerU 2.0 has been deeply restructured in code organization and interaction methods, significantly improving system usability, maintainability, and extensibility.
 
@@ -233,7 +233,7 @@ MinerU 2.0 has been deeply restructured in code organization and interaction met
 - **Streamlined Code Structure**: Removed thousands of lines of redundant code, simplified class inheritance logic, significantly improving code readability and development efficiency.
 - **Unified Intermediate Format Output**: Adopted standardized `middle_json` format, compatible with most secondary development scenarios based on this format, ensuring seamless ecosystem business migration.
 
-**New Model**
+#### New Model
 
 MinerU 2.0 integrates our latest small-parameter, high-performance multimodal document parsing model, achieving end-to-end high-speed, high-precision document understanding.
 
@@ -242,7 +242,7 @@ MinerU 2.0 integrates our latest small-parameter, high-performance multimodal do
 - **Ultimate Inference Speed**: Achieves peak throughput exceeding 10,000 tokens/s through `sglang` acceleration on a single NVIDIA 4090 card, easily handling large-scale document processing requirements.
 - **Online Experience**: You can experience our brand-new VLM model on [MinerU.net](https://mineru.net/OpenSourceTools/Extractor), [Hugging Face](https://huggingface.co/spaces/opendatalab/MinerU), and [ModelScope](https://www.modelscope.cn/studios/OpenDataLab/MinerU).
 
-**Incompatible Changes Notice**
+#### Incompatible Changes Notice
 
 To improve overall architectural rationality and long-term maintainability, this version contains some incompatible changes:
 
@@ -317,7 +317,7 @@ Fixed several compatibility issues
 
 ### 1.3.0 (2025/04/03)
 
-**Installation and compatibility optimizations**
+#### Installation and compatibility optimizations
 
 - Resolved compatibility issues caused by `detectron2` by removing `layoutlmv3` usage in layout
 - Extended torch version compatibility to 2.2~2.6 (excluding 2.5)
@@ -325,18 +325,18 @@ Fixed several compatibility issues
 - Extended Python compatibility to versions 3.10~3.12, fixing the issue of automatic downgrade to version 0.6.1 when installing in non-3.10 environments
 - Optimized offline deployment process, eliminating the need to download any model files after successful deployment
 
-**Performance optimizations**
+#### Performance optimizations
 
 - Enhanced parsing speed for batches of small files by supporting batch processing of multiple PDF files ([script example](demo/batch_demo.py)), with formula parsing speed improved by up to 1400% and overall parsing speed improved by up to 500% compared to version 1.0.1
 - Reduced memory usage and improved parsing speed by optimizing MFR model loading and usage (requires re-running the [model download process](docs/how_to_download_models_zh_cn.md) to get incremental updates to model files)
 - Optimized GPU memory usage, requiring only 6GB minimum to run this project
 - Improved running speed on MPS devices
 
-**Parsing effect optimizations**
+#### Parsing effect optimizations
 
 - Updated MFR model to `unimernet(2503)`, fixing line break loss issues in multi-line formulas
 
-**Usability optimizations**
+#### Usability optimizations
 
 - Completely replaced the `paddle` framework and `paddleocr` in the project by using `paddleocr2torch`, resolving conflicts between `paddle` and `torch`, as well as thread safety issues caused by the `paddle` framework
 - Added real-time progress bar display during parsing, allowing precise tracking of parsing progress and making the waiting process more bearable
@@ -353,16 +353,16 @@ Fixed some issues
 
 This version includes several fixes and improvements to enhance parsing efficiency and accuracy:
 
-**Performance Optimization**
+#### Performance Optimization
 
 - Increased classification speed for PDF documents in auto mode.
 
-**Parsing Optimization**
+#### Parsing Optimization
 
 - Improved parsing logic for documents containing watermarks, significantly enhancing the parsing results for such documents.
 - Enhanced the matching logic for multiple images/tables and captions within a single page, improving the accuracy of image-text matching in complex layouts.
 
-**Bug Fixes**
+#### Bug Fixes
 
 - Fixed an issue where image/table spans were incorrectly filled into text blocks under certain conditions.
 - Resolved an issue where title blocks were empty in some cases.
@@ -376,11 +376,11 @@ In this version we have focused on improving parsing accuracy and efficiency:
 - The layout recognition model has been upgraded to the latest `doclayout_yolo(2501)` model, improving layout recognition accuracy.
 - The formula parsing model has been upgraded to the latest `unimernet(2501)` model, improving formula recognition accuracy.
 
-**Performance optimization**
+#### Performance optimization
 
 - On devices that meet certain configuration requirements (16GB+ VRAM), by optimizing resource usage and restructuring the processing pipeline, overall parsing speed has been increased by more than 50%.
 
-**Parsing effect optimization**
+#### Parsing effect optimization
 
 - Added a new heading classification feature (testing version, enabled by default) to the online demo ([mineru.net](https://mineru.net/OpenSourceTools/Extractor)/[huggingface](https://huggingface.co/spaces/opendatalab/MinerU)/[modelscope](https://www.modelscope.cn/studios/OpenDataLab/MinerU)), which supports hierarchical classification of headings, thereby enhancing document structuring.
 
@@ -388,17 +388,17 @@ In this version we have focused on improving parsing accuracy and efficiency:
 
 This is our first official release, where we have introduced a completely new API interface and enhanced compatibility through extensive refactoring, as well as a brand new automatic language identification feature:
 
-**New API Interface**
+#### New API Interface
 
 - For the data-side API, we have introduced the Dataset class, designed to provide a robust and flexible data processing framework. This framework currently supports a variety of document formats, including images (.jpg and .png), PDFs, Word documents (.doc and .docx), and PowerPoint presentations (.ppt and .pptx). It ensures effective support for data processing tasks ranging from simple to complex.
 - For the user-side API, we have meticulously designed the MinerU processing workflow as a series of composable Stages. Each Stage represents a specific processing step, allowing users to define new Stages according to their needs and creatively combine these stages to customize their data processing workflows.
 
-**Enhanced Compatibility**
+#### Enhanced Compatibility
 
 - By optimizing the dependency environment and configuration items, we ensure stable and efficient operation on ARM architecture Linux systems.
 - We have deeply integrated with Huawei Ascend NPU acceleration, providing autonomous and controllable high-performance computing capabilities. This supports the localization and development of AI application platforms in China. [Ascend NPU Acceleration](https://github.com/opendatalab/MinerU/blob/master/docs/README_Ascend_NPU_Acceleration_zh_CN.md)
 
-**Automatic Language Identification**
+#### Automatic Language Identification
 
 - By introducing a new language recognition model, setting the `lang` configuration to `auto` during document parsing will automatically select the appropriate OCR language model, improving the accuracy of scanned document parsing.
 
@@ -460,4 +460,3 @@ Optimized dependency conflict issues and installation documentation
 ### Initial Open-Source Release (2024/07/05)
 
 MinerU project's first open-source release
-

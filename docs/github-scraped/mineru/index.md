@@ -49,7 +49,6 @@ Compared to well-known commercial products domestically and internationally, Min
 
 ![type:video](https://github.com/user-attachments/assets/4bea02c9-6d54-4cd6-97ed-dff14340982c)
 
-
 ## Key Features
 
 - Remove headers, footers, footnotes, page numbers and other elements to ensure semantic coherence
@@ -64,7 +63,6 @@ Compared to well-known commercial products domestically and internationally, Min
 - Support multiple visualization results, including layout visualization, span visualization, etc., for efficient confirmation of output effects and quality inspection
 - Support pure CPU environment operation, and support GPU(CUDA)/NPU(CANN)/MPS acceleration
 - Compatible with Windows, Linux and Mac platforms
-
 
 ## User Guide
 

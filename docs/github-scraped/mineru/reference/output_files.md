@@ -1,6 +1,6 @@
 # Source: https://github.com/opendatalab/MinerU/blob/master/docs/en/reference/output_files.md
 
-# MinerU Output Files Documentation
+## MinerU Output Files Documentation
 
 ## Overview
 
@@ -196,7 +196,7 @@ inference_result: list[PageInferenceResults] = []
 
 ##### Block Structure Hierarchy
 
-```
+```text
 Level 1 blocks (table | image)
 └── Level 2 blocks
     └── Lines
@@ -238,10 +238,12 @@ Level 1 blocks (table | image)
 ##### Line and Span Structure
 
 **Line fields**:
+
 - `bbox`: Rectangular box coordinates of the line
 - `spans`: List of contained spans
 
 **Span fields**:
+
 - `bbox`: Rectangular box coordinates of the span
 - `type`: Span type (`image`, `table`, `text`, `inline_equation`, `interline_equation`)
 - `content` | `img_path`: Text content or image path
@@ -452,11 +454,13 @@ Text levels are distinguished through the `text_level` field:
 **File naming format**: `{original_filename}_model.json`
 
 ##### File format description
+
 - Two-level nested list: outer list = pages; inner list = content blocks of that page
 - Each block is a dict with at least: `type`, `bbox`, `angle`, `content` (some types add extra fields like `score`, `block_tags`, `content_tags`, `format`)
 - Designed for direct, raw model inspection
 
 ##### Supported content types (type field values)
+
 ```json
 {
   "text": "Plain text",
@@ -483,11 +487,13 @@ Text levels are distinguished through the `text_level` field:
 ```
 
 ##### Coordinate system
+
 - `bbox` = `[x0, y0, x1, y1]` (top-left, bottom-right)
 - Origin at top-left of the page
 - All coordinates are normalized percentages in `[0,1]`
 
 ##### Sample data
+
 ```json
 [
   [
@@ -522,22 +528,24 @@ Text levels are distinguished through the `text_level` field:
 Structure is broadly similar to the pipeline backend, but with these differences:
 
 - `list` becomes a second‑level block, a new field `sub_type` distinguishes list categories:
-    * `text`: ordinary list
-    * `ref_text`: reference / bibliography style list
+  - `text`: ordinary list
+  - `ref_text`: reference / bibliography style list
 - New `code` block type with `sub_type`(a code block always has at least a `code_body`, it may optionally have a `code_caption`):
-    * `code`
-    * `algorithm`
-- `discarded_blocks` may contain additional types: 
-    * `header`
-    * `footer`
-    * `page_number`
-    * `aside_text`
-    * `page_footnote`
+  - `code`
+  - `algorithm`
+- `discarded_blocks` may contain additional types:
+  - `header`
+  - `footer`
+  - `page_number`
+  - `aside_text`
+  - `page_footnote`
 - All blocks include an `angle` field indicating rotation (one of `0, 90, 180, 270`).
 
 ##### Examples
+
 - Example: list block
-    ```json
+
+  ```json
     {
       "bbox": [174,155,818,333],
       "type": "list",
@@ -586,7 +594,8 @@ Structure is broadly similar to the pipeline backend, but with these differences
     ```
 
 - Example: code block with optional caption:
-    ```json
+
+  ```json
     {
       "type": "code",
       "bbox": [114,780,885,1231],
@@ -640,16 +649,17 @@ Structure is broadly similar to the pipeline backend, but with these differences
 Based on the pipeline format, with these VLM-specific extensions:
 
 - New `code` type with `sub_type` (`code` | `algorithm`):
-    * Fields: `code_body` (string), optional `code_caption` (list of strings)
+  - Fields: `code_body` (string), optional `code_caption` (list of strings)
 - New `list` type with `sub_type` (`text` | `ref_text`):
-    * Field: `list_items` (array of strings)
+  - Field: `list_items` (array of strings)
 - All `discarded_blocks` entries are also output (e.g., headers, footers, page numbers, margin notes, page footnotes).
 - Existing types (`image`, `table`, `text`, `equation`) remain unchanged.
 - `bbox` still uses the 0–1000 normalized coordinate mapping.
 
-
 ##### Examples
+
 Example: code (algorithm) entry
+
 ```json
 {
   "type": "code",
@@ -662,6 +672,7 @@ Example: code (algorithm) entry
 ```
 
 Example: list (text) entry
+
 ```json
 {
   "type": "list",
@@ -678,6 +689,7 @@ Example: list (text) entry
 ```
 
 Example: discarded blocks output
+
 ```json
 [
   {
@@ -699,16 +711,13 @@ Example: discarded blocks output
 
 The above files constitute MinerU's complete output results. Users can choose appropriate files for subsequent processing based on their needs:
 
-- **Model outputs** (Use raw outputs):  
-    * model.json
-  
+- **Model outputs** (Use raw outputs):
+  - model.json
 - **Debugging and verification** (Use visualization files):
-    * layout.pdf
-    * span.pdf 
-  
+  - layout.pdf
+  - span.pdf
 - **Content extraction**: (Use simplified files):
-    * *.md
-    * content_list.json
-  
+  - *.md
+  - content_list.json
 - **Secondary development**: (Use structured files):
-    * middle.json
+  - middle.json
