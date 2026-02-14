@@ -705,6 +705,13 @@ repositories:
     target_folder: "docs/github-scraped/typescript"
     branch: "v2"
 
+  - name: "Typer"
+    description: "Typer - Python CLI framework built on Click with automatic API documentation and automatic command line interface generation from Python type hints"
+    repo_url: "https://github.com/fastapi/typer.git"
+    source_folder: "docs"
+    target_folder: "docs/github-scraped/typer"
+    branch: "master"
+
   - name: "typescript-eslint"
     description: "TypeScript ESLint - ESLint parser and plugin for TypeScript enabling linting of TypeScript code with TypeScript-specific rules"
     repo_url: "https://github.com/typescript-eslint/typescript-eslint.git"
