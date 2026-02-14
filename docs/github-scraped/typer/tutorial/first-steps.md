@@ -152,7 +152,7 @@ Notice that the order is important. The last name has to go after the first name
 
 If you called it with:
 
-```
+```bash
 $ python main.py Gutiérrez Camila
 ```
 
@@ -418,14 +418,14 @@ It's quite technical... and somewhat pedantic.
 
 *Parameter* refers to the variable name in a function *declaration*. Like:
 
-```
+```python
 def bring_person(name: str, lastname: str = ""):
     pass
 ```
 
 *Argument* refers to the value passed when *calling* a function. Like:
 
-```
+```python
 person = bring_person("Camila", lastname="Gutiérrez")
 ```
 

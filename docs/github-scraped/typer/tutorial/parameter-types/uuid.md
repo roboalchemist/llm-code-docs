@@ -10,7 +10,7 @@ It's a standard format for identifiers, like passport numbers, but for anything,
 
 They look like this:
 
-```
+```python
 d48edaa6-871a-4082-a196-4daab372d4a1
 ```
 

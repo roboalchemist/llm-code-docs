@@ -6,19 +6,19 @@ Commands can also have their own *CLI options*.
 
 In fact, each command can have different *CLI arguments* and *CLI options*:
 
-{* docs_src/commands/options/tutorial001_an_py39.py hl[9,15:18,28:30,39] *}
+{* docs_src/commands/options/tutorial001_an_py39.py hl[9,15:18,28:30,39]*}
 
 Here we have multiple commands, with different *CLI parameters*:
 
 * `create`:
-    * `username`: a *CLI argument*.
+  * `username`: a *CLI argument*.
 * `delete`:
-    * `username`: a *CLI argument*.
-    * `--force`: a *CLI option*, if not provided, it's prompted.
+  * `username`: a *CLI argument*.
+  * `--force`: a *CLI option*, if not provided, it's prompted.
 * `delete-all`:
-    * `--force`: a *CLI option*, if not provided, it's prompted.
+  * `--force`: a *CLI option*, if not provided, it's prompted.
 * `init`:
-    * Doesn't take any *CLI parameters*.
+  * Doesn't take any *CLI parameters*.
 
 <div class="termy">
 

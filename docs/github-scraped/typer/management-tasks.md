@@ -43,7 +43,7 @@ For conversations that are more difficult, for example to reject a PR, you can a
 ## Edit PR Titles
 
 * Edit the PR title to start with an emoji from <a href="https://gitmoji.dev/" class="external-link" target="_blank">gitmoji</a>.
-    * Use the emoji character, not the GitHub code. So, use `🐛` instead of `:bug:`. This is so that it shows up correctly outside of GitHub, for example in the release notes.
+  * Use the emoji character, not the GitHub code. So, use `🐛` instead of `:bug:`. This is so that it shows up correctly outside of GitHub, for example in the release notes.
 * Start the title with a verb. For example `Add`, `Refactor`, `Fix`, etc. This way the title will say the action that the PR does. Like `Add support for teleporting`, instead of `Teleporting wasn't working, so this PR fixes it`.
 * Edit the text of the PR title to start in "imperative", like giving an order. So, instead of `Adding support for teleporting` use `Add support for teleporting`.
 * Try to make the title descriptive about what it achieves. If it's a feature, try to describe it, for example `Add support for teleporting` instead of `Create TeleportAdapter class`.
@@ -60,22 +60,22 @@ The same GitHub Action <a href="https://github.com/tiangolo/latest-changes" clas
 Make sure you use a supported label from the <a href="https://github.com/tiangolo/latest-changes#using-labels" class="external-link" target="_blank">latest-changes list of labels</a>:
 
 * `breaking`: Breaking Changes
-    * Existing code will break if they update the version without changing their code. This rarely happens, so this label is not frequently used.
+  * Existing code will break if they update the version without changing their code. This rarely happens, so this label is not frequently used.
 * `security`: Security Fixes
-    * This is for security fixes, like vulnerabilities. It would almost never be used.
+  * This is for security fixes, like vulnerabilities. It would almost never be used.
 * `feature`: Features
-    * New features, adding support for things that didn't exist before.
+  * New features, adding support for things that didn't exist before.
 * `bug`: Fixes
-    * Something that was supported didn't work, and this fixes it. There are many PRs that claim to be bug fixes because the user is doing something in an unexpected way that is not supported, but they considered it what should be supported by default. Many of these are actually features or refactors. But in some cases there's an actual bug.
+  * Something that was supported didn't work, and this fixes it. There are many PRs that claim to be bug fixes because the user is doing something in an unexpected way that is not supported, but they considered it what should be supported by default. Many of these are actually features or refactors. But in some cases there's an actual bug.
 * `refactor`: Refactors
-    * This is normally for changes to the internal code that don't change the behavior. Normally it improves maintainability, or enables future features, etc.
+  * This is normally for changes to the internal code that don't change the behavior. Normally it improves maintainability, or enables future features, etc.
 * `upgrade`: Upgrades
-    * This is for upgrades to direct dependencies from the project, or extra optional dependencies, normally in `pyproject.toml`. So, things that would affect final users, they would end up receiving the upgrade in their code base once they update. But this is not for upgrades to internal dependencies used for development, testing, docs, etc. Those internal dependencies or GitHub Action versions should be marked as `internal`, not `upgrade`.
+  * This is for upgrades to direct dependencies from the project, or extra optional dependencies, normally in `pyproject.toml`. So, things that would affect final users, they would end up receiving the upgrade in their code base once they update. But this is not for upgrades to internal dependencies used for development, testing, docs, etc. Those internal dependencies or GitHub Action versions should be marked as `internal`, not `upgrade`.
 * `docs`: Docs
-    * Changes in docs. This includes updating the docs, fixing typos. But it doesn't include changes to translations.
-    * You can normally quickly detect it by going to the "Files changed" tab in the PR and checking if the updated file(s) starts with `docs/en/docs`. The original version of the docs is always in English, so in `docs/en/docs`.
+  * Changes in docs. This includes updating the docs, fixing typos. But it doesn't include changes to translations.
+  * You can normally quickly detect it by going to the "Files changed" tab in the PR and checking if the updated file(s) starts with `docs/en/docs`. The original version of the docs is always in English, so in `docs/en/docs`.
 * `internal`: Internal
-    * Use this for changes that only affect how the repo is managed. For example upgrades to internal dependencies, changes in GitHub Actions or scripts, etc.
+  * Use this for changes that only affect how the repo is managed. For example upgrades to internal dependencies, changes in GitHub Actions or scripts, etc.
 
 /// tip
 
@@ -94,7 +94,7 @@ Some tools like Dependabot, will add some labels, like `dependencies`, but have 
 * A PR should have a specific use case that it is solving.
 
 * If the PR is for a feature, it should have docs.
-    * Unless it's a feature we want to discourage, like support for a corner case that we don't want users to use.
+  * Unless it's a feature we want to discourage, like support for a corner case that we don't want users to use.
 * The docs should include a source example file, not write Python directly in Markdown.
 * If the source example(s) file can have different syntax for different Python versions, there should be different versions of the file, and they should be shown in tabs in the docs.
 * There should be tests testing the source example.

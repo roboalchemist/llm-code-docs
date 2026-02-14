@@ -89,7 +89,7 @@ $ code ./
 
 You can see that you have a generated project structure that looks like:
 
-```
+```text
 .
 ├── pyproject.toml
 ├── README.md
@@ -502,7 +502,7 @@ And then go to <a href="https://pypi.org/manage/account/token/" class="external-
 
 Let's say your new API token is:
 
-```
+```text
 pypi-wubalubadubdub-deadbeef1234
 ```
 

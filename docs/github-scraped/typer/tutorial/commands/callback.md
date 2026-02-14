@@ -14,7 +14,7 @@ But we can use `@app.callback()` for that.
 
 It's very similar to `@app.command()`, but it declares the *CLI parameters* for the main CLI application (before the commands):
 
-{* docs_src/commands/callback/tutorial001_py39.py hl[25,26,27,28,29,30,31,32] *}
+{* docs_src/commands/callback/tutorial001_py39.py hl[25,26,27,28,29,30,31,32]*}
 
 Here we create a `callback` with a `--verbose` *CLI option*.
 
@@ -81,7 +81,7 @@ Error: No such option: --verbose
 
 It's also possible to add a callback when creating the `typer.Typer()` app:
 
-{* docs_src/commands/callback/tutorial002_py39.py hl[4,5,8] *}
+{* docs_src/commands/callback/tutorial002_py39.py hl[4,5,8]*}
 
 That achieves the same as with `@app.callback()`.
 
@@ -102,7 +102,7 @@ Creating user: Camila
 
 If you added a callback when creating the `typer.Typer()` app, it's possible to override it with `@app.callback()`:
 
-{* docs_src/commands/callback/tutorial003_py39.py hl[11,12,13] *}
+{* docs_src/commands/callback/tutorial003_py39.py hl[11,12,13]*}
 
 Now `new_callback()` will be the one used.
 
@@ -126,7 +126,7 @@ You can also add a callback just to add the documentation in the docstring.
 
 It can be convenient especially if you have several lines of text, as the indentation will be automatically handled for you:
 
-{* docs_src/commands/callback/tutorial004_py39.py hl[8,9,10,11,12,13,14,15,16] *}
+{* docs_src/commands/callback/tutorial004_py39.py hl[8,9,10,11,12,13,14,15,16]*}
 
 Now the callback will be used mainly to extract the docstring for the help text.
 

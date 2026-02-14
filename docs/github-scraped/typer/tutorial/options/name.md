@@ -20,7 +20,7 @@ def main(user_name: Annotated[Optional[str], typer.Option()] = None):
 
 **Typer** will create a *CLI option*:
 
-```
+```text
 --user-name
 ```
 
@@ -147,7 +147,7 @@ You can pass these *CLI option* short names to `tar`:
 * `-x`: means "e`X`tract", to decompress and extract the contents.
 * `-v`: means "`V`erbose", to print on the screen what it is doing, so you can know that it's decompressing each file and can entertain yourself while you wait.
 * `-f`: means "`F`ile", this one requires a value, the compressed file to extract (in our example, this is `myproject.tar.gz`).
-    * So if you use all the short names together, this `-f` has to come last, to receive the value that comes next to it.
+  * So if you use all the short names together, this `-f` has to come last, to receive the value that comes next to it.
 
 For example:
 
@@ -274,7 +274,7 @@ $ python main.py -n Camila
 
 </div>
 
-### *CLI option* short names together
+### Combine long and short names
 
 You can create multiple short names and use them together.
 

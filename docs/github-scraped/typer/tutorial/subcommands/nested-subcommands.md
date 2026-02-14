@@ -166,24 +166,24 @@ Burning town: Atlantis
 
 ## Deeply nested subcommands
 
-Now let's say that all these commands in the `lands.py` *CLI program* should be part of the previous *CLI program* we built in the first example.
+Now let's say that all these commands in the `lands.py` *CLI program*should be part of the previous*CLI program* we built in the first example.
 
 We want our *CLI program* to have these commands/command groups:
 
 * `users`:
-    * `create`
-    * `delete`
+  * `create`
+  * `delete`
 * `items`:
-    * `create`
-    * `delete`
-    * `sell`
+  * `create`
+  * `delete`
+  * `sell`
 * `lands`:
-    * `reigns`:
-        * `conquer`
-        * `destroy`
-    * `towns`:
-        * `found`
-        * `burn`
+  * `reigns`:
+    * `conquer`
+    * `destroy`
+  * `towns`:
+    * `found`
+    * `burn`
 
 This already is a quite deeply nested "tree" of commands/command groups.
 
@@ -272,9 +272,9 @@ But for your final application, only `main.py` would need it.
 
 ## Recap
 
-That's it, you can just add **Typer** applications one inside another as much as you want and create complex *CLI programs* while writing simple code.
+That's it, you can just add **Typer**applications one inside another as much as you want and create complex*CLI programs* while writing simple code.
 
-You can probably achieve a simpler *CLI program* design that's easier to use than the example here. But if your requirements are complex, **Typer** helps you build your *CLI app* easily.
+You can probably achieve a simpler *CLI program*design that's easier to use than the example here. But if your requirements are complex,**Typer**helps you build your*CLI app* easily.
 
 /// tip
 

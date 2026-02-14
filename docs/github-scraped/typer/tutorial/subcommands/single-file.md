@@ -64,7 +64,6 @@ So we pass the name we want to use for each subcommand as the function argument 
 
 It still works the same:
 
-
 <div class="termy">
 
 ```console
@@ -87,7 +86,6 @@ Commands:
 </div>
 
 Check the `items` command:
-
 
 <div class="termy">
 
@@ -119,7 +117,6 @@ Selling item: Vase
 </div>
 
 And the same for the `users` command:
-
 
 <div class="termy">
 

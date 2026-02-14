@@ -52,7 +52,6 @@ import typer
 
 app = typer.Typer()
 
-
 @app.command()
 def hello(name: Optional[str] = None):
     if name:
@@ -60,14 +59,12 @@ def hello(name: Optional[str] = None):
     else:
         typer.echo("Hello World!")
 
-
 @app.command()
 def bye(name: Optional[str] = None):
     if name:
         typer.echo(f"Bye {name}")
     else:
         typer.echo("Goodbye!")
-
 
 if __name__ == "__main__":
     app()
@@ -111,7 +108,7 @@ There's nothing wrong with using Python directly to run it. And, in fact, if som
 
 ⛔️ But in your terminal, you won't get completion when hitting <kbd>TAB</kbd> for any of the subcommands or options, like `hello`, `bye`, and `--name`.
 
-### Run with the `typer` command.
+### Run with the `typer` command
 
 You can also run the same script with the `typer` command:
 
@@ -222,10 +219,11 @@ You can specify one of the following **CLI options**:
 
 When your run a script with the `typer` command it will use the app from the following priority:
 
-* An app object from the `--app` *CLI Option*.
-* A function to convert to a **Typer** app from `--func` *CLI Option* (like when using `typer.run()`).
-* A **Typer** app in a variable with a name of `app`, `cli`, or `main`.
-* The first **Typer** app available in the file, with any name.
+*An app object from the `--app`*CLI Option*.
+*A function to convert to a**Typer**app from `--func`*CLI Option* (like when using `typer.run()`).
+*A**Typer** app in a variable with a name of `app`, `cli`, or `main`.
+*The first**Typer** app available in the file, with any name.
+
 * A function in a variable with a name of `main`, `cli`, or `app`.
 * The first function in the file, with any name.
 

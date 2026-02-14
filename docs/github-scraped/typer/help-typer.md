@@ -43,16 +43,16 @@ You can connect with <a href="https://tiangolo.com" class="external-link" target
 You can:
 
 * <a href="https://github.com/tiangolo" class="external-link" target="_blank">Follow me on **GitHub**</a>.
-    * See other Open Source projects I have created that could help you.
-    * Follow me to see when I create a new Open Source project.
+  * See other Open Source projects I have created that could help you.
+  * Follow me to see when I create a new Open Source project.
 * <a href="https://twitter.com/tiangolo" class="external-link" target="_blank">Follow me on **Twitter**</a>.
-    * Tell me how you use Typer (I love to hear that).
-    * Hear when I make announcements or release new tools.
+  * Tell me how you use Typer (I love to hear that).
+  * Hear when I make announcements or release new tools.
 * <a href="https://www.linkedin.com/in/tiangolo/" class="external-link" target="_blank">Connect with me on **Linkedin**</a>.
-    * Hear when I make announcements or release new tools (although I use Twitter more often 🤷‍♂).
+  * Hear when I make announcements or release new tools (although I use Twitter more often 🤷‍♂).
 * Read what I write (or follow me) on <a href="https://dev.to/tiangolo" class="external-link" target="_blank">**Dev.to**</a> or <a href="https://medium.com/@tiangolo" class="external-link" target="_blank">**Medium**</a>.
-    * Read other ideas, articles, and read about tools I have created.
-    * Follow me to read when I publish something new.
+  * Read other ideas, articles, and read about tools I have created.
+  * Follow me to read when I publish something new.
 
 ## Tweet about **Typer**
 
@@ -109,8 +109,8 @@ If they reply, there's a high chance you would have solved their problem, congra
 
 * Now, if that solved their problem, you can ask them to:
 
-    * In GitHub Discussions: mark the comment as the **answer**.
-    * In GitHub Issues: **close** the issue**.
+  * In GitHub Discussions: mark the comment as the **answer**.
+  * In GitHub Issues: **close** the issue**.
 
 ## Watch the GitHub repository
 
@@ -143,7 +143,7 @@ Here's what to have in mind and how to review a pull request:
 
 * First, make sure you **understand the problem** that the pull request is trying to solve. It might have a longer discussion in a GitHub Discussion or issue.
 
-* There's also a good chance that the pull request is not actually needed because the problem can be solved in a **different way**. Then you can suggest or ask about that.
+  * There's also a good chance that the pull request is not actually needed because the problem can be solved in a **different way**. Then you can suggest or ask about that.
 
 ### Don't worry about style
 
@@ -190,10 +190,10 @@ You can [contribute](contributing.md){.internal-link target=_blank} to the sourc
 * To fix a typo you found on the documentation.
 * To propose new documentation sections.
 * To fix an existing issue/bug.
-    * Make sure to add tests.
+  * Make sure to add tests.
 * To add a new feature.
-    * Make sure to add tests.
-    * Make sure to add documentation if it's relevant.
+  * Make sure to add tests.
+  * Make sure to add documentation if it's relevant.
 
 ## Help Maintain Typer
 

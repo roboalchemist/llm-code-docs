@@ -31,7 +31,7 @@ But in some special use cases you might want to use these special types. For exa
 
 This means that even if your file has text written in a non-english language, e.g. a `text.txt` file with:
 
-```
+```python
 la cigüeña trae al niño
 ```
 
@@ -80,7 +80,7 @@ For writing text, you can use `typer.FileTextWrite`:
 
 This would be for writing human text, like:
 
-```
+```python
 some settings
 la cigüeña trae al niño
 ```
@@ -171,11 +171,11 @@ $ ls ./binary.dat
 You can use several configuration parameters for these types (classes) in `typer.Option()` and `typer.Argument()`:
 
 * `mode`: controls the "<a href="https://docs.python.org/3/library/functions.html#open" class="external-link" target="_blank">mode</a>" to open the file with.
-    * It's automatically set for you by using the classes above.
-    * Read more about it below.
+  * It's automatically set for you by using the classes above.
+  * Read more about it below.
 * `encoding`: to force a specific encoding, e.g. `"utf-8"`.
 * `lazy`: delay <abbr title="input and output, reading and writing files">I/O</abbr> operations. Automatic by default.
-    * By default, when writing files, Typer will generate a file-like object that is not yet the actual file. Once you start writing, it will go, open the file and start writing to it, but not before. This is mainly useful to avoid creating the file until you start writing to it. It's normally safe to leave this automatic. But you can overwrite it setting `lazy=False`. By default, it's `lazy=True` for writing and `lazy=False` for reading.
+  * By default, when writing files, Typer will generate a file-like object that is not yet the actual file. Once you start writing, it will go, open the file and start writing to it, but not before. This is mainly useful to avoid creating the file until you start writing to it. It's normally safe to leave this automatic. But you can overwrite it setting `lazy=False`. By default, it's `lazy=True` for writing and `lazy=False` for reading.
 * `atomic`: if true, all writes will actually go to a temporal file and then moved to the final destination after completing. This is useful with files modified frequently by several users/programs.
 
 ## Advanced `mode`

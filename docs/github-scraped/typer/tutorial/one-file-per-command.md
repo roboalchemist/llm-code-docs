@@ -139,8 +139,8 @@ Adding user: Camila
 
 ## Callbacks
 
-Have in mind that if you include a sub-app with `app.add_typer()` **without a name**, the commands will be added to the top level, so **only the top level callback** (if there's any) will be used, the one declared in the main app.
+Have in mind that if you include a sub-app with `app.add_typer()` __without a name__, the commands will be added to the top level, so __only the top level callback__ (if there's any) will be used, the one declared in the main app.
 
-If you **want to use a callback** for a sub-app, you need to include the sub-app **with a name**, which creates a sub-command grouping the commands in that sub-app. 🤓
+If you __want to use a callback__ for a sub-app, you need to include the sub-app __with a name__, which creates a sub-command grouping the commands in that sub-app. 🤓
 
 In the example above, if the `users` sub-app had a callback, it would be used. But if the `version` sub-app had a callback, it would not be used, because the `version` sub-app was included without a name.

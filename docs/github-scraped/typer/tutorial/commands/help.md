@@ -6,7 +6,7 @@ The same as before, you can add help for the commands in the docstrings and the 
 
 And the `typer.Typer()` application receives a parameter `help` that you can pass with the main help text for your CLI program:
 
-{* docs_src/commands/help/tutorial001_an_py39.py hl[5,10:12,23,27:31,44,48:52,61:63] *}
+{* docs_src/commands/help/tutorial001_an_py39.py hl[5,10:12,23,27:31,44,48:52,61:63]*}
 
 Check it:
 
@@ -94,7 +94,7 @@ You will also see how to use "Callbacks" later, and those include a way to add t
 
 You will probably be better adding the help text as a docstring to your functions, but if for some reason you wanted to overwrite it, you can use the `help` function argument passed to `@app.command()`:
 
-{* docs_src/commands/help/tutorial002_py39.py hl[6,14] *}
+{* docs_src/commands/help/tutorial002_py39.py hl[6,14]*}
 
 Check it:
 
@@ -128,7 +128,7 @@ There could be cases where you have a command in your app that you need to depre
 
 You can mark it with the parameter `deprecated=True`:
 
-{* docs_src/commands/help/tutorial003_py39.py hl[14] *}
+{* docs_src/commands/help/tutorial003_py39.py hl[14]*}
 
 And when you show the `--help` option you will see it's marked as "`deprecated`":
 

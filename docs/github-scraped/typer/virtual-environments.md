@@ -12,7 +12,7 @@ If you already know about virtual environments, how to create them and use them,
 
 /// tip
 
-A **virtual environment** is different than an **environment variable**.
+A **virtual environment**is different than an**environment variable**.
 
 An **environment variable** is a variable in the system that can be used by programs.
 
@@ -122,7 +122,7 @@ Activate the new virtual environment so that any Python command you run or packa
 
 /// tip
 
-Do this **every time** you start a **new terminal session** to work on the project.
+Do this **every time**you start a**new terminal session** to work on the project.
 
 ///
 
@@ -166,7 +166,7 @@ $ source .venv/Scripts/activate
 
 /// tip
 
-Every time you install a **new package** in that environment, **activate** the environment again.
+Every time you install a **new package**in that environment,**activate** the environment again.
 
 This makes sure that if you use a **terminal (<abbr title="command line interface">CLI</abbr>) program** installed by that package, you use the one from your virtual environment and not any other that could be installed globally, probably with a different version than what you need.
 
@@ -425,8 +425,6 @@ This way, when you run `python` it won't try to run it from that virtual environ
 
 Now you're ready to start working on your project.
 
-
-
 /// tip
 
 Do you want to understand what's all that above?
@@ -439,7 +437,7 @@ Continue reading. 👇🤓
 
 To work with Typer you need to install <a href="https://www.python.org/" class="external-link" target="_blank">Python</a>.
 
-After that, you would need to **install** Typer and any other **packages** you want to use.
+After that, you would need to **install**Typer and any other**packages** you want to use.
 
 To install packages you would normally use the `pip` command that comes with Python (or similar alternatives).
 
@@ -520,11 +518,11 @@ flowchart LR
 
 /// tip
 
-It's very common in Python packages to try the best to **avoid breaking changes** in **new versions**, but it's better to be safe, and install newer versions intentionally and when you can run the tests to check everything is working correctly.
+It's very common in Python packages to try the best to **avoid breaking changes**in**new versions**, but it's better to be safe, and install newer versions intentionally and when you can run the tests to check everything is working correctly.
 
 ///
 
-Now, imagine that with **many** other **packages** that all your **projects depend on**. That's very difficult to manage. And you would probably end up running some projects with some **incompatible versions** of the packages, and not knowing why something isn't working.
+Now, imagine that with **many**other**packages**that all your**projects depend on**. That's very difficult to manage. And you would probably end up running some projects with some **incompatible versions** of the packages, and not knowing why something isn't working.
 
 Also, depending on your operating system (e.g. Linux, Windows, macOS), it could have come with Python already installed. And in that case it probably had some packages pre-installed with some specific versions **needed by your system**. If you install packages in the global Python environment, you could end up **breaking** some of the programs that came with your operating system.
 
@@ -712,7 +710,7 @@ and use that one.
 
 ////
 
-An important detail is that it will put the virtual environment path at the **beginning** of the `PATH` variable. The system will find it **before** finding any other Python available. This way, when you run `python`, it will use the Python **from the virtual environment** instead of any other `python` (for example, a `python` from a global environment).
+An important detail is that it will put the virtual environment path at the **beginning**of the `PATH` variable. The system will find it**before**finding any other Python available. This way, when you run `python`, it will use the Python**from the virtual environment** instead of any other `python` (for example, a `python` from a global environment).
 
 Activating a virtual environment also changes a couple of other things, but this is one of the most important things it does.
 
@@ -762,7 +760,7 @@ So, you can confirm if you are in the correct virtual environment.
 
 It's easy to activate one virtual environment, get one Python, and then **go to another project**.
 
-And the second project **wouldn't work** because you are using the **incorrect Python**, from a virtual environment for another project.
+And the second project **wouldn't work**because you are using the**incorrect Python**, from a virtual environment for another project.
 
 It's useful being able to check what `python` is being used. 🤓
 
@@ -833,10 +831,12 @@ Once you are ready and want to use a tool to **manage the entire project**, pack
 `uv` can do a lot of things, it can:
 
 * **Install Python** for you, including different versions
-* Manage the **virtual environment** for your projects
-* Install **packages**
-* Manage package **dependencies and versions** for your project
-* Make sure you have an **exact** set of packages and versions to install, including their dependencies, so that you can be sure that you can run your project in production exactly the same as in your computer while developing, this is called **locking**
+
+*Manage the**virtual environment** for your projects
+*Install**packages**
+*Manage package**dependencies and versions** for your project
+*Make sure you have an**exact**set of packages and versions to install, including their dependencies, so that you can be sure that you can run your project in production exactly the same as in your computer while developing, this is called**locking**
+
 * And many other things
 
 ## Conclusion

@@ -18,7 +18,8 @@ In that case, you can raise a `typer.Exit()` exception:
 
 There are several things to see in this example.
 
-* The CLI program is the function `main()`, not the others. This is the one that takes a *CLI argument*.
+*The CLI program is the function `main()`, not the others. This is the one that takes a*CLI argument*.
+
 * The function `maybe_create_user()` can terminate the program by raising `typer.Exit()`.
 * If the program is terminated by `maybe_create_user()` then `send_new_user_notification()` will never execute inside of `main()`.
 

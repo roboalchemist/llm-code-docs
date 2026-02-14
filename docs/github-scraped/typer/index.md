@@ -223,7 +223,7 @@ if __name__ == "__main__":
 And that will:
 
 * Explicitly create a `typer.Typer` app.
-    * The previous `typer.run` actually creates one implicitly for you.
+  * The previous `typer.run` actually creates one implicitly for you.
 * Add two subcommands with `@app.command()`.
 * Execute the `app()` itself, as if it was a function (instead of `typer.run`).
 

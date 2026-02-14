@@ -99,7 +99,6 @@ In a future section you will see how to use custom markup in the `help` for *CLI
 
 If you are in a hurry you can jump there, but otherwise, it would be better to continue reading here and following the tutorial in order.
 
-
 ## Hide default from help
 
 You can tell Typer to not show the default value in the help text with `show_default=False`:

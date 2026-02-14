@@ -9,7 +9,6 @@ This can be done by declaring a function parameter of type `typer.Context`.
 Similarly, you can also declare a function parameter with type `typer.CallbackParam` in case a callback could be used
 by several CLI parameters, and you need to figure out which one it was.
 
-
 ```python
 from typing import Annotated
 
